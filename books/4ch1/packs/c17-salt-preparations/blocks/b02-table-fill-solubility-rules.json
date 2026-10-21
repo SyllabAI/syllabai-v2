@@ -1,0 +1,91 @@
+{
+  "id": "c17-salt-preparations/b02",
+  "type": "table-fill",
+  "chapterKey": "u2:c17",
+  "ord": 2,
+  "pdfPageAnchor": 182,
+  "specPointRefs": [
+    "2.34"
+  ],
+  "glossaryRefs": [
+    "salt",
+    "precipitate"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "The solubility rules of record - complete the table (one short phrase per cell).",
+    "columns": [
+      "Class of compound",
+      "Soluble in water?"
+    ],
+    "rows": [
+      {
+        "label": "Common sodium, potassium and ammonium compounds",
+        "cells": [
+          {
+            "accepts": [
+              "all soluble",
+              "yes, without exception"
+            ],
+            "hint": "the always-soluble trio"
+          }
+        ]
+      },
+      {
+        "label": "All nitrates",
+        "cells": [
+          {
+            "accepts": [
+              "all soluble"
+            ],
+            "hint": "no exceptions"
+          }
+        ]
+      },
+      {
+        "label": "Common chlorides",
+        "cells": [
+          {
+            "accepts": [
+              "soluble except silver and lead chlorides"
+            ],
+            "hint": "two famous exceptions"
+          }
+        ]
+      },
+      {
+        "label": "Common sulfates",
+        "cells": [
+          {
+            "accepts": [
+              "soluble except barium (and lead; calcium slightly)"
+            ],
+            "hint": "check the heavy ions"
+          }
+        ]
+      },
+      {
+        "label": "Common carbonates",
+        "cells": [
+          {
+            "accepts": [
+              "insoluble except sodium, potassium and ammonium carbonates"
+            ],
+            "hint": "Group 1 rescues them"
+          }
+        ]
+      },
+      {
+        "label": "Common hydroxides",
+        "cells": [
+          {
+            "accepts": [
+              "insoluble except sodium, potassium (calcium hydroxide slightly soluble)"
+            ],
+            "hint": "one near-miss exception"
+          }
+        ]
+      }
+    ]
+  }
+}

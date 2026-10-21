@@ -1,0 +1,61 @@
+{
+  "id": "c23-crude-oil/b03",
+  "type": "drag-label",
+  "chapterKey": "u4:c23",
+  "ord": 3,
+  "pdfPageAnchor": 279,
+  "specPointRefs": [
+    "4.8",
+    "4.9"
+  ],
+  "glossaryRefs": [
+    "fractional-distillation",
+    "fraction"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "The fractionating column - drag each fraction to where it leaves (Figure 23.3, hot bottom / cool top).",
+    "labels": [
+      "refinery gases",
+      "gasoline (petrol)",
+      "kerosene",
+      "diesel oil",
+      "fuel oil",
+      "bitumen"
+    ],
+    "regions": [
+      {
+        "id": "top",
+        "text": "coolest, at the top - bottle gases and camping stoves"
+      },
+      {
+        "id": "upper",
+        "text": "fuel for cars"
+      },
+      {
+        "id": "upper-mid",
+        "text": "fuel for aircraft (formerly paraffin)"
+      },
+      {
+        "id": "lower-mid",
+        "text": "fuel for lorries, trains, some cars"
+      },
+      {
+        "id": "lower",
+        "text": "fuel for ships, power stations and central heating"
+      },
+      {
+        "id": "bottom",
+        "text": "hottest, at the bottom - road surfaces and roofs"
+      }
+    ],
+    "solution": {
+      "top": "refinery gases",
+      "upper": "gasoline (petrol)",
+      "upper-mid": "kerosene",
+      "lower-mid": "diesel oil",
+      "lower": "fuel oil",
+      "bottom": "bitumen"
+    }
+  }
+}

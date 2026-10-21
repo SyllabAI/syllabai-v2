@@ -1,0 +1,33 @@
+{
+  "task": "T-BOOK-013",
+  "lane": "content (Unit 4 packs c22-c29) — S0-S2 of record; S3/S4 PENDING-OPERATOR behind the F-BOOK-0001 licensing release gate",
+  "operator_order": "② Units 2–4 packs (plan T-BOOK-011..013) (trace 1a15f60b53d4e0d5)",
+  "trace": "1a15f60b53d4e0d5",
+  "generated": "2026-10-22T10:15:00Z",
+  "gate_of_record": {
+    "law": "ADR-BOOK-0001 §4: 'no full-book launch (Phase C flip) until LICENSE-DATA.md carries a Student-Book amendment (operator follow-up)' — the amendment has NOT landed; F-BOOK-0001 stands open",
+    "discipline": "this lane therefore wrote ZERO DB rows for u4: no chapter flip, no block ingest, no glossary ingest for the u4 file, no pack flip; the serve proof's u4:c22 boundary probe returns honest null (the 133c viewer) — the gate is verifiably holding",
+    "staging_isolation": "the Phase B ingest's staging glossary deliberately EXCLUDED u4-organic-chemistry.yaml — the 24 u4 terms remain authored-layer-only (their future validation lane also unlanded by the same gate)"
+  },
+  "s0_s2_of_record": {
+    "packs": "c22-intro-organic / c23-crude-oil / c24-alkanes / c25-alkenes / c26-alcohols / c27-carboxylic-acids / c28-esters / c29-synthetic-polymers — status draft with the gate note in-file",
+    "blocks": "46 (6/8/5/5/6/5/5/6); 8 of 11 types; page-true anchors from the sha-pinned parse digest (c22 264-269, c23 277-284 incl. the cracking section at 282-284, c24 286-289, c25 291-294, c26 296-300, c27 302-305, c28 306-309, c29 311-317)",
+    "eq_builder_laws": "5 builders: methane combustion (CH4 + 2O2 -> CO2 + 2H2O), propane combustion (C3H8 + 5O2 -> 3CO2 + 4H2O), ethene + bromine addition (C2H4 + Br2 -> C2H4Br2), weak-acid partial ionisation (CH3COOH ⇌ CH3COO- + H+), esterification (CH3COOH + C2H5OH ⇌ CH3COOC2H5 + H2O) — all balance/charge verified by the fact-pass reviewer",
+    "glossary": "24 terms in u4-organic-chemistry.yaml with the ms layer (authored layer only — unlanded per the gate)",
+    "bank_refs": ["sme-eq-4-1-introduction-q2", "sme-eq-4-2-crude-oil-q4", "sme-eq-4-3-alkanes-q8", "sme-eq-4-4-alkenes-q9", "sme-eq-4-5-alcohols-q2", "sme-eq-4-6-carboxylic-acids-q7", "sme-eq-4-7-esters-q7", "sme-eq-4-8-synthetic-polymers-q5"],
+    "review": "adversarial: fact-pass u4 PASS (0×S1; 4×S2 all resolved — 3 were ref-scope notes resolved as binding-law disclosures, 1 was the ester descriptor ambiguity fixed), examiner-voice u4 PASS (7 fixes applied: the structural-formula definition per book p267, and/or for incomplete combustion, orange-not-orange-brown, the H+-ions reword, ester-uses book re-anchoring, the single-monomer accept); both re-gates PASS, zero regressions",
+    "lint": "G1-G4 0 findings across ALL 29 packs / 177 blocks (u4 packs linted and green while still draft — the S2 gate can run before S3 by design)"
+  },
+  "verification": {
+    "gate_holding": "serve proof: u4:c22 → null (chapter SUGGESTED → 133c viewer); book_blocks u4:* = 0; book_glossary_terms has no u4-only rows",
+    "lint": "G1-G4 0 findings (29 packs / 177 blocks)",
+    "refs_law": "every authored specPointRefs ⊆ the chapter's DB join set (verified by the ingest DRY-RUN shape check + the ingest's own law once the gate lifts)"
+  },
+  "disclosures": [
+    "the pack.yaml files carry 'status: draft # S3/S4 PENDING-OPERATOR: F-BOOK-0001 release gate' — the honest-empty state is visible at the authoring layer itself",
+    "cracking (4.17/4.18) is authored in c23 (book section CRACKING, pdf 282-284) — verified from the parse full text before anchor placement",
+    "the unbound u4 codes (4.6, 4.13, 4.22, 4.26, 4.34C, 4.38C, 4.47C, 4.48C) are avoided in refs and covered by F-BOOK-0005's proposed repair lane",
+    "unblock cost estimate: one operator order — the S3/S4 script set (flip/ingest/spotcheck/flip/serve) is proven on u1 (golive), u1-completion (T-BOOK-016) and u2+u3 (this dispatch)"
+  ],
+  "status": "UNIT-4 S0-S2 OF RECORD (46 authored blocks + 24 glossary terms, lint green, adversarially reviewed; S3/S4 held by the F-BOOK-0001 gate — zero DB-plane writes)"
+}

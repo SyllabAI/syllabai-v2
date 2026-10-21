@@ -1,0 +1,144 @@
+{
+  "id": "c18-chemical-tests/b04",
+  "type": "table-fill",
+  "chapterKey": "u2:c18",
+  "ord": 4,
+  "pdfPageAnchor": 202,
+  "specPointRefs": [
+    "2.45",
+    "2.46"
+  ],
+  "glossaryRefs": [
+    "precipitate"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Cations - flame colours and sodium hydroxide precipitates (one short phrase per cell).",
+    "columns": [
+      "Ion",
+      "Flame colour",
+      "With NaOH solution"
+    ],
+    "rows": [
+      {
+        "label": "Li+",
+        "cells": [
+          {
+            "accepts": [
+              "crimson"
+            ],
+            "hint": "red family"
+          },
+          {
+            "accepts": [
+              "no precipitate (soluble hydroxide)"
+            ],
+            "hint": "Group 1 dissolves"
+          }
+        ]
+      },
+      {
+        "label": "Na+",
+        "cells": [
+          {
+            "accepts": [
+              "yellow"
+            ],
+            "hint": "street-lamp colour"
+          },
+          {
+            "accepts": [
+              "no precipitate (soluble hydroxide)"
+            ],
+            "hint": "Group 1 dissolves"
+          }
+        ]
+      },
+      {
+        "label": "K+",
+        "cells": [
+          {
+            "accepts": [
+              "lilac"
+            ],
+            "hint": "through blue glass"
+          },
+          {
+            "accepts": [
+              "no precipitate (soluble hydroxide)"
+            ],
+            "hint": "Group 1 dissolves"
+          }
+        ]
+      },
+      {
+        "label": "Ca2+",
+        "cells": [
+          {
+            "accepts": [
+              "orange-red"
+            ],
+            "hint": "brick-ish"
+          },
+          {
+            "accepts": [
+              "white precipitate"
+            ],
+            "hint": "slightly soluble"
+          }
+        ]
+      },
+      {
+        "label": "Cu2+",
+        "cells": [
+          {
+            "accepts": [
+              "blue-green"
+            ],
+            "hint": "the greenish one"
+          },
+          {
+            "accepts": [
+              "blue precipitate"
+            ],
+            "hint": "pale blue gel"
+          }
+        ]
+      },
+      {
+        "label": "Fe2+",
+        "cells": [
+          {
+            "accepts": [
+              "no characteristic flame colour"
+            ],
+            "hint": "flame silent"
+          },
+          {
+            "accepts": [
+              "green precipitate"
+            ],
+            "hint": "the green one"
+          }
+        ]
+      },
+      {
+        "label": "Fe3+",
+        "cells": [
+          {
+            "accepts": [
+              "no characteristic flame colour"
+            ],
+            "hint": "flame silent"
+          },
+          {
+            "accepts": [
+              "brown precipitate"
+            ],
+            "hint": "rust-coloured gel"
+          }
+        ]
+      }
+    ]
+  }
+}

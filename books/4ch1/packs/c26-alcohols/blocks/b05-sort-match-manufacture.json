@@ -1,0 +1,57 @@
+{
+  "id": "c26-alcohols/b05",
+  "type": "sort-match",
+  "chapterKey": "u4:c26",
+  "ord": 5,
+  "pdfPageAnchor": 300,
+  "specPointRefs": [
+    "4.32C",
+    "4.33C"
+  ],
+  "glossaryRefs": [
+    "fermentation"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Two routes to ethanol - match each condition to the process it belongs to (Fermentation vs Hydration of ethene table).",
+    "items": [
+      {
+        "id": "yeast",
+        "text": "yeast enzymes, sugars from crops"
+      },
+      {
+        "id": "anaerobic",
+        "text": "carried out in the absence of air"
+      },
+      {
+        "id": "optimum-temp",
+        "text": "around 30 degrees C - warm but not denaturing"
+      },
+      {
+        "id": "steam",
+        "text": "ethene reacted with steam"
+      },
+      {
+        "id": "phosphoric",
+        "text": "phosphoric acid catalyst, about 300 degrees C, high pressure"
+      }
+    ],
+    "targets": [
+      {
+        "id": "fermentation",
+        "text": "fermentation (renewable, batch, slower)"
+      },
+      {
+        "id": "hydration",
+        "text": "hydration of ethene (from cracking, continuous, faster)"
+      }
+    ],
+    "solution": {
+      "yeast": "fermentation",
+      "anaerobic": "fermentation",
+      "optimum-temp": "fermentation",
+      "steam": "hydration",
+      "phosphoric": "hydration"
+    }
+  }
+}

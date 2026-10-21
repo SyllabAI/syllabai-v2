@@ -1,0 +1,46 @@
+{
+  "id": "c19-energetics/b06",
+  "type": "num-stepper",
+  "chapterKey": "u3:c19",
+  "ord": 6,
+  "pdfPageAnchor": 227,
+  "specPointRefs": [
+    "3.3",
+    "3.4"
+  ],
+  "glossaryRefs": [
+    "calorimetry",
+    "concentration",
+    "enthalpy-change"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Activity 4 of record: 25.0 cm3 of 2.00 mol/dm3 KOH neutralised by HCl; the graph cross-over lands at 28.00 cm3 of acid. Find the acid concentration (Calculations for Activity 4).",
+    "steps": [
+      {
+        "prompt": "Moles of KOH measured out (n = c x V, V in dm3)",
+        "answer": 0.05,
+        "unit": [
+          "mol"
+        ],
+        "hint": "2.00 x 25.0/1000"
+      },
+      {
+        "prompt": "Moles of HCl at complete neutralisation (OH- + H+ is 1:1)",
+        "answer": 0.05,
+        "unit": [
+          "mol"
+        ],
+        "hint": "same as KOH"
+      },
+      {
+        "prompt": "Concentration of the HCl (c = n / V)",
+        "answer": 1.79,
+        "unit": [
+          "mol/dm3"
+        ],
+        "hint": "0.0500 / 0.02800 = 1.7857... -> 1.79"
+      }
+    ]
+  }
+}

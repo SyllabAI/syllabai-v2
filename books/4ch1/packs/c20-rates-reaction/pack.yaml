@@ -1,0 +1,17 @@
+# S0 output of record - c20-rates-reaction (T-BOOK-012)
+chapter: "c20"
+chapter_key: "u3:c20"
+title: "Rates of reaction"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 7
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p236 intro, p237 graph figure + gradient stepper, p238 excess callout, p240 factor sort, p246 profile drag, p247 mcq"
+blocks:
+  - {ord: 1, id: "c20-rates-reaction/b01", type: prose, file: "blocks/b01-prose-rate-collision.json", anchor: 236}
+  - {ord: 2, id: "c20-rates-reaction/b02", type: figure, file: "blocks/b02-figure-volume-graph.json", anchor: 237}
+  - {ord: 3, id: "c20-rates-reaction/b03", type: num-stepper, file: "blocks/b03-num-stepper-graph-gradient.json", anchor: 237}
+  - {ord: 4, id: "c20-rates-reaction/b04", type: callout, file: "blocks/b04-callout-chips-in-excess.json", anchor: 238}
+  - {ord: 5, id: "c20-rates-reaction/b05", type: sort-match, file: "blocks/b05-sort-match-factors.json", anchor: 240}
+  - {ord: 6, id: "c20-rates-reaction/b06", type: drag-label, file: "blocks/b06-drag-label-profile.json", anchor: 246}
+  - {ord: 7, id: "c20-rates-reaction/b07", type: mcq-embed, file: "blocks/b07-mcq-check.json", anchor: 247}

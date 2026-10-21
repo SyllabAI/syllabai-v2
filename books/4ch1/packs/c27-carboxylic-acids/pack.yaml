@@ -1,0 +1,15 @@
+# S0 output of record - c27-carboxylic-acids (T-BOOK-013; PHASE C - S0/S1/S2 only, see the licensing gate)
+chapter: "c27"
+chapter_key: "u4:c27"
+title: "Carboxylic acids (chemistry only)"
+status: draft # S3/S4 PENDING-OPERATOR: F-BOOK-0001 release gate (no Phase C flip until the LICENSE-DATA.md amendment lands)
+block_schema: "book.block/1"
+planned_blocks: 5
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p302 intro, p303 members table, p304 weak-acid callout + ionisation builder, p305 mcq"
+blocks:
+  - {ord: 1, id: "c27-carboxylic-acids/b01", type: prose, file: "blocks/b01-prose-carboxylic.json", anchor: 302}
+  - {ord: 2, id: "c27-carboxylic-acids/b02", type: table-fill, file: "blocks/b02-table-fill-acid-members.json", anchor: 303}
+  - {ord: 3, id: "c27-carboxylic-acids/b03", type: callout, file: "blocks/b03-callout-weak-acid.json", anchor: 304}
+  - {ord: 4, id: "c27-carboxylic-acids/b04", type: eq-builder, file: "blocks/b04-eq-builder-weak-ionisation.json", anchor: 304}
+  - {ord: 5, id: "c27-carboxylic-acids/b05", type: mcq-embed, file: "blocks/b05-mcq-check.json", anchor: 305}

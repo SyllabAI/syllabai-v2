@@ -1,0 +1,45 @@
+{
+  "id": "c16-acids-alkalis-titrations/b05",
+  "type": "num-stepper",
+  "chapterKey": "u2:c16",
+  "ord": 5,
+  "pdfPageAnchor": 179,
+  "specPointRefs": [
+    "2.33C"
+  ],
+  "glossaryRefs": [
+    "titration",
+    "titre",
+    "concentration"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "A titration: 25.0 cm3 of 0.100 mol/dm3 sodium hydroxide is exactly neutralised by 20.0 cm3 of hydrochloric acid. Find the acid concentration.",
+    "steps": [
+      {
+        "prompt": "Moles of NaOH measured out (n = c x V, V in dm3)",
+        "answer": 0.0025,
+        "unit": [
+          "mol"
+        ],
+        "hint": "0.100 x 25.0/1000"
+      },
+      {
+        "prompt": "Moles of HCl that reacted (the equation is 1:1)",
+        "answer": 0.0025,
+        "unit": [
+          "mol"
+        ],
+        "hint": "same as NaOH"
+      },
+      {
+        "prompt": "Concentration of the HCl (c = n / V, V in dm3)",
+        "answer": 0.125,
+        "unit": [
+          "mol/dm3"
+        ],
+        "hint": "0.0025 / (20.0/1000)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "id": "c22-intro-organic/b02",
+  "type": "table-fill",
+  "chapterKey": "u4:c22",
+  "ord": 2,
+  "pdfPageAnchor": 265,
+  "specPointRefs": [
+    "4.2"
+  ],
+  "glossaryRefs": [
+    "empirical-formula"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "The five ways to write an organic molecule - complete the table (one short phrase per cell).",
+    "columns": [
+      "Type of formula",
+      "What it shows"
+    ],
+    "rows": [
+      {
+        "label": "Empirical",
+        "cells": [
+          {
+            "accepts": [
+              "the simplest whole-number ratio of atoms"
+            ],
+            "hint": "divide down"
+          }
+        ]
+      },
+      {
+        "label": "Molecular",
+        "cells": [
+          {
+            "accepts": [
+              "the actual number of each atom in one molecule"
+            ],
+            "hint": "the real count"
+          }
+        ]
+      },
+      {
+        "label": "General",
+        "cells": [
+          {
+            "accepts": [
+              "a pattern (like CnH2n+2) covering the whole homologous series"
+            ],
+            "hint": "n does the counting"
+          }
+        ]
+      },
+      {
+        "label": "Structural",
+        "cells": [
+          {
+            "accepts": [
+              "shows the atoms in order so how they are joined is unambiguous, without drawing every bond (e.g. CH3CH2OH)"
+            ],
+            "hint": "CH3CH2OH style"
+          }
+        ]
+      },
+      {
+        "label": "Displayed",
+        "cells": [
+          {
+            "accepts": [
+              "every bond AND every atom drawn as a 2-D picture"
+            ],
+            "hint": "all the lines shown"
+          }
+        ]
+      }
+    ]
+  }
+}

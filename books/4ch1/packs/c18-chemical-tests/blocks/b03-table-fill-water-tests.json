@@ -1,0 +1,44 @@
+{
+  "id": "c18-chemical-tests/b03",
+  "type": "table-fill",
+  "chapterKey": "u2:c18",
+  "ord": 3,
+  "pdfPageAnchor": 201,
+  "specPointRefs": [
+    "2.49",
+    "2.50"
+  ],
+  "glossaryRefs": [],
+  "version": 1,
+  "content": {
+    "prompt": "Testing for water - both tests of record (one short phrase per cell).",
+    "columns": [
+      "Test",
+      "Positive result"
+    ],
+    "rows": [
+      {
+        "label": "Chemical: anhydrous copper(II) sulfate",
+        "cells": [
+          {
+            "accepts": [
+              "white powder turns blue - water is present"
+            ],
+            "hint": "water of crystallisation returns"
+          }
+        ]
+      },
+      {
+        "label": "Physical: boiling point",
+        "cells": [
+          {
+            "accepts": [
+              "boils at exactly 100 degrees C at 1 atmosphere - pure water"
+            ],
+            "hint": "a purity test, not an identity test"
+          }
+        ]
+      }
+    ]
+  }
+}

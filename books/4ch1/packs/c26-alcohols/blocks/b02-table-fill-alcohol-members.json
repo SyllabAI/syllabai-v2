@@ -1,0 +1,70 @@
+{
+  "id": "c26-alcohols/b02",
+  "type": "table-fill",
+  "chapterKey": "u4:c26",
+  "ord": 2,
+  "pdfPageAnchor": 297,
+  "specPointRefs": [
+    "4.30C"
+  ],
+  "glossaryRefs": [
+    "homologous-series"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "The first four alcohols - complete the table (Table 26.1 conventions, propan-1-ol and butan-1-ol only).",
+    "columns": [
+      "Alcohol",
+      "Molecular formula"
+    ],
+    "rows": [
+      {
+        "label": "Methanol",
+        "cells": [
+          {
+            "accepts": [
+              "CH3OH"
+            ],
+            "hint": "one carbon"
+          }
+        ]
+      },
+      {
+        "label": "Ethanol",
+        "cells": [
+          {
+            "accepts": [
+              "C2H5OH",
+              "CH3CH2OH"
+            ],
+            "hint": "two carbons"
+          }
+        ]
+      },
+      {
+        "label": "Propan-1-ol",
+        "cells": [
+          {
+            "accepts": [
+              "C3H7OH",
+              "CH3CH2CH2OH"
+            ],
+            "hint": "-OH on carbon 1"
+          }
+        ]
+      },
+      {
+        "label": "Butan-1-ol",
+        "cells": [
+          {
+            "accepts": [
+              "C4H9OH",
+              "CH3CH2CH2CH2OH"
+            ],
+            "hint": "four carbons"
+          }
+        ]
+      }
+    ]
+  }
+}

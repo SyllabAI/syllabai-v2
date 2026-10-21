@@ -1,0 +1,16 @@
+# S0 output of record - c12-halogens (T-BOOK-011)
+chapter: "c12"
+chapter_key: "u2:c12"
+title: "The halogens"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p139 intro+states table, p141 displacement, p142 redox reminder/equation, p143 mcq"
+blocks:
+  - {ord: 1, id: "c12-halogens/b01", type: prose, file: "blocks/b01-prose-group-7-family.json", anchor: 139}
+  - {ord: 2, id: "c12-halogens/b02", type: sort-match, file: "blocks/b02-sort-match-halogen-states.json", anchor: 139}
+  - {ord: 3, id: "c12-halogens/b03", type: callout, file: "blocks/b03-callout-displaces-not-bromide.json", anchor: 141}
+  - {ord: 4, id: "c12-halogens/b04", type: eq-builder, file: "blocks/b04-eq-builder-displacement-ionic.json", anchor: 142}
+  - {ord: 5, id: "c12-halogens/b05", type: callout, file: "blocks/b05-callout-reactivity-trend-explained.json", anchor: 143}
+  - {ord: 6, id: "c12-halogens/b06", type: mcq-embed, file: "blocks/b06-mcq-check.json", anchor: 143}

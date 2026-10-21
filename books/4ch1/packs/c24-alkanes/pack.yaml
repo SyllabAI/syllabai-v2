@@ -1,0 +1,15 @@
+# S0 output of record - c24-alkanes (T-BOOK-013; PHASE C - S0/S1/S2 only, see the licensing gate)
+chapter: "c24"
+chapter_key: "u4:c24"
+title: "Alkanes"
+status: draft # S3/S4 PENDING-OPERATOR: F-BOOK-0001 release gate (no Phase C flip until the LICENSE-DATA.md amendment lands)
+block_schema: "book.block/1"
+planned_blocks: 5
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p286 intro, p287 formulae sort, p288 combustion builder, p289 substitution callout + mcq"
+blocks:
+  - {ord: 1, id: "c24-alkanes/b01", type: prose, file: "blocks/b01-prose-saturated.json", anchor: 286}
+  - {ord: 2, id: "c24-alkanes/b02", type: sort-match, file: "blocks/b02-sort-match-alkane-formulae.json", anchor: 287}
+  - {ord: 3, id: "c24-alkanes/b03", type: eq-builder, file: "blocks/b03-eq-builder-propane-combustion.json", anchor: 288}
+  - {ord: 4, id: "c24-alkanes/b04", type: callout, file: "blocks/b04-callout-substitution-uv.json", anchor: 289}
+  - {ord: 5, id: "c24-alkanes/b05", type: mcq-embed, file: "blocks/b05-mcq-check.json", anchor: 289}

@@ -1,0 +1,52 @@
+{
+  "id": "c23-crude-oil/b06",
+  "type": "sort-match",
+  "chapterKey": "u4:c23",
+  "ord": 6,
+  "pdfPageAnchor": 281,
+  "specPointRefs": [
+    "4.14",
+    "4.15",
+    "4.16"
+  ],
+  "glossaryRefs": [
+    "acid-rain"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Engine and fuel chemistry - match each pollutant story to its cause.",
+    "items": [
+      {
+        "id": "nox",
+        "text": "oxides of nitrogen form in car engines"
+      },
+      {
+        "id": "so2",
+        "text": "sulfur dioxide forms when fuels burn"
+      },
+      {
+        "id": "acid-rain",
+        "text": "dilute sulfuric and nitric acids form in the atmosphere"
+      }
+    ],
+    "targets": [
+      {
+        "id": "high-temp",
+        "text": "the temperature is high enough for N2 and O2 from air to react"
+      },
+      {
+        "id": "impurities",
+        "text": "the hydrocarbon fuel carries sulfur impurities from the crude oil"
+      },
+      {
+        "id": "dissolve",
+        "text": "SO2 and NOx dissolve in rainwater (and oxidise) - acid rain"
+      }
+    ],
+    "solution": {
+      "nox": "high-temp",
+      "so2": "impurities",
+      "acid-rain": "dissolve"
+    }
+  }
+}

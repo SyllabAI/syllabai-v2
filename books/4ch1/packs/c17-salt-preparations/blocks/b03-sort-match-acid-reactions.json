@@ -1,0 +1,61 @@
+{
+  "id": "c17-salt-preparations/b03",
+  "type": "sort-match",
+  "chapterKey": "u2:c17",
+  "ord": 3,
+  "pdfPageAnchor": 185,
+  "specPointRefs": [
+    "2.37",
+    "2.38"
+  ],
+  "glossaryRefs": [
+    "salt",
+    "neutralisation"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Reactions of acids - match each reactant pair to its products.",
+    "items": [
+      {
+        "id": "acid-metal",
+        "text": "acid + metal (above hydrogen)"
+      },
+      {
+        "id": "acid-base",
+        "text": "acid + metal oxide / hydroxide"
+      },
+      {
+        "id": "acid-carbonate",
+        "text": "acid + metal carbonate"
+      },
+      {
+        "id": "acid-alkali",
+        "text": "acid + alkali"
+      }
+    ],
+    "targets": [
+      {
+        "id": "salt-h2",
+        "text": "salt + hydrogen"
+      },
+      {
+        "id": "salt-water",
+        "text": "salt + water only"
+      },
+      {
+        "id": "salt-water-co2",
+        "text": "salt + water + carbon dioxide"
+      },
+      {
+        "id": "salt-water-ionic",
+        "text": "salt + water (the H+ + OH- story)"
+      }
+    ],
+    "solution": {
+      "acid-metal": "salt-h2",
+      "acid-base": "salt-water",
+      "acid-carbonate": "salt-water-co2",
+      "acid-alkali": "salt-water-ionic"
+    }
+  }
+}

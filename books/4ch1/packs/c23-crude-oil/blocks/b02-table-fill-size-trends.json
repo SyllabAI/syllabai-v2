@@ -1,0 +1,67 @@
+{
+  "id": "c23-crude-oil/b02",
+  "type": "table-fill",
+  "chapterKey": "u4:c23",
+  "ord": 2,
+  "pdfPageAnchor": 278,
+  "specPointRefs": [
+    "4.10"
+  ],
+  "glossaryRefs": [
+    "intermolecular-forces"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "How physical properties change as the hydrocarbon molecules get bigger - complete the table.",
+    "columns": [
+      "Property",
+      "Trend as molecule size increases"
+    ],
+    "rows": [
+      {
+        "label": "Boiling point",
+        "cells": [
+          {
+            "accepts": [
+              "increases - bigger molecules have stronger intermolecular forces"
+            ],
+            "hint": "which forces must break?"
+          }
+        ]
+      },
+      {
+        "label": "Volatility (how easily it evaporates)",
+        "cells": [
+          {
+            "accepts": [
+              "decreases - evaporation gets slower"
+            ],
+            "hint": "opposite of boiling point"
+          }
+        ]
+      },
+      {
+        "label": "Viscosity (how it flows)",
+        "cells": [
+          {
+            "accepts": [
+              "increases - thicker, more syrupy"
+            ],
+            "hint": "bitumen vs petrol"
+          }
+        ]
+      },
+      {
+        "label": "Flammability",
+        "cells": [
+          {
+            "accepts": [
+              "decreases - smaller fractions burn more easily"
+            ],
+            "hint": "gases catch fire fastest"
+          }
+        ]
+      }
+    ]
+  }
+}

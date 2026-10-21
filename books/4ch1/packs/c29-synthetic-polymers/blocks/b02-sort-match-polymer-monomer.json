@@ -1,0 +1,61 @@
+{
+  "id": "c29-synthetic-polymers/b02",
+  "type": "sort-match",
+  "chapterKey": "u4:c29",
+  "ord": 2,
+  "pdfPageAnchor": 313,
+  "specPointRefs": [
+    "4.45",
+    "4.46"
+  ],
+  "glossaryRefs": [
+    "monomer",
+    "polymer"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Deduce the monomer from the polymer - match each addition polymer to its monomer.",
+    "items": [
+      {
+        "id": "polyethene",
+        "text": "poly(ethene)"
+      },
+      {
+        "id": "polypropene",
+        "text": "poly(propene)"
+      },
+      {
+        "id": "pvc",
+        "text": "poly(chloroethene), PVC"
+      },
+      {
+        "id": "ptfe",
+        "text": "poly(tetrafluoroethene), PTFE"
+      }
+    ],
+    "targets": [
+      {
+        "id": "ethene",
+        "text": "ethene, CH2=CH2"
+      },
+      {
+        "id": "propene",
+        "text": "propene, CH2=CHCH3"
+      },
+      {
+        "id": "chloroethene",
+        "text": "chloroethene, CH2=CHCl"
+      },
+      {
+        "id": "tfe",
+        "text": "tetrafluoroethene, CF2=CF2"
+      }
+    ],
+    "solution": {
+      "polyethene": "ethene",
+      "polypropene": "propene",
+      "pvc": "chloroethene",
+      "ptfe": "tfe"
+    }
+  }
+}

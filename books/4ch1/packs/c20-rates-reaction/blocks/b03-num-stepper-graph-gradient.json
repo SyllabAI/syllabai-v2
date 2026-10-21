@@ -1,0 +1,40 @@
+{
+  "id": "c20-rates-reaction/b03",
+  "type": "num-stepper",
+  "chapterKey": "u3:c20",
+  "ord": 3,
+  "pdfPageAnchor": 237,
+  "specPointRefs": [
+    "3.15"
+  ],
+  "glossaryRefs": [
+    "rate-of-reaction"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Reading Figure 20.6's curve: about 0.47 g of carbon dioxide forms in the first minute, but only about 0.20 g in the second. Compare the rates.",
+    "steps": [
+      {
+        "prompt": "Average rate in the first minute (g of CO2 per minute)",
+        "answer": 0.47,
+        "unit": [
+          "g/min"
+        ],
+        "hint": "0.47 g in 1 min"
+      },
+      {
+        "prompt": "Average rate in the second minute",
+        "answer": 0.2,
+        "unit": [
+          "g/min"
+        ],
+        "hint": "0.20 g in 1 min"
+      },
+      {
+        "prompt": "Which minute is faster, and why (steepness)?",
+        "answer": "the first minute - the curve is steeper",
+        "hint": "slope = rate"
+      }
+    ]
+  }
+}

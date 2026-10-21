@@ -1,0 +1,77 @@
+{
+  "id": "c29-synthetic-polymers/b04",
+  "type": "table-fill",
+  "chapterKey": "u4:c29",
+  "ord": 4,
+  "pdfPageAnchor": 316,
+  "specPointRefs": [
+    "4.49C"
+  ],
+  "glossaryRefs": [
+    "condensation-polymerisation",
+    "monomer"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Addition vs condensation polymerisation - complete the comparison table.",
+    "columns": [
+      "Feature",
+      "Addition",
+      "Condensation (polyesters)"
+    ],
+    "rows": [
+      {
+        "label": "Monomer(s) needed",
+        "cells": [
+          {
+            "accepts": [
+              "one alkene monomer (C=C)"
+            ],
+            "hint": "single family member"
+          },
+          {
+            "accepts": [
+              "two monomers - a diol and a dicarboxylic acid",
+              "or one monomer carrying both -OH and -COOH (self-polymerises)"
+            ],
+            "hint": "two ends each"
+          }
+        ]
+      },
+      {
+        "label": "Small molecule lost",
+        "cells": [
+          {
+            "accepts": [
+              "none - everything joins the chain"
+            ],
+            "hint": "addition = nothing out"
+          },
+          {
+            "accepts": [
+              "water, at every ester link"
+            ],
+            "hint": "condensation = water out"
+          }
+        ]
+      },
+      {
+        "label": "Link in the chain",
+        "cells": [
+          {
+            "accepts": [
+              "plain C-C backbone"
+            ],
+            "hint": "opened double bond"
+          },
+          {
+            "accepts": [
+              "ester links (-COO-)"
+            ],
+            "hint": "the ester family again"
+          }
+        ]
+      }
+    ]
+  }
+}

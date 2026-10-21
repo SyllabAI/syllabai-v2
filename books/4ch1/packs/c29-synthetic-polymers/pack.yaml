@@ -1,0 +1,16 @@
+# S0 output of record - c29-synthetic-polymers (T-BOOK-013; PHASE C - S0/S1/S2 only, see the licensing gate)
+chapter: "c29"
+chapter_key: "u4:c29"
+title: "Synthetic polymers"
+status: draft # S3/S4 PENDING-OPERATOR: F-BOOK-0001 release gate (no Phase C flip until the LICENSE-DATA.md amendment lands)
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p311 intro, p313 deduce sort, p314 poly(propene) figure, p316 addition-vs-condensation table, p316 disposal callout, p317 mcq"
+blocks:
+  - {ord: 1, id: "c29-synthetic-polymers/b01", type: prose, file: "blocks/b01-prose-addition-polymerisation.json", anchor: 311}
+  - {ord: 2, id: "c29-synthetic-polymers/b02", type: sort-match, file: "blocks/b02-sort-match-polymer-monomer.json", anchor: 313}
+  - {ord: 3, id: "c29-synthetic-polymers/b03", type: figure, file: "blocks/b03-figure-polypropene.json", anchor: 314}
+  - {ord: 4, id: "c29-synthetic-polymers/b04", type: table-fill, file: "blocks/b04-table-fill-addition-vs-condensation.json", anchor: 316}
+  - {ord: 5, id: "c29-synthetic-polymers/b05", type: callout, file: "blocks/b05-callout-disposal.json", anchor: 316}
+  - {ord: 6, id: "c29-synthetic-polymers/b06", type: mcq-embed, file: "blocks/b06-mcq-check.json", anchor: 317}

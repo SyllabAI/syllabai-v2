@@ -1,0 +1,17 @@
+# S0 output of record - c14-reactivity-series (T-BOOK-011)
+chapter: "c14"
+chapter_key: "u2:c14"
+title: "Reactivity series"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 7
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p154 intro, p155 series figure + order drag, p156 redox builder, p162 mcq, p164 predictions sort, p165 rusting callout"
+blocks:
+  - {ord: 1, id: "c14-reactivity-series/b01", type: prose, file: "blocks/b01-prose-reactivity-series.json", anchor: 154}
+  - {ord: 2, id: "c14-reactivity-series/b02", type: figure, file: "blocks/b02-figure-reactivity-series.json", anchor: 155}
+  - {ord: 3, id: "c14-reactivity-series/b03", type: drag-label, file: "blocks/b03-drag-label-series-order.json", anchor: 155}
+  - {ord: 4, id: "c14-reactivity-series/b04", type: eq-builder, file: "blocks/b04-eq-builder-mg-oxidation.json", anchor: 156}
+  - {ord: 5, id: "c14-reactivity-series/b05", type: mcq-embed, file: "blocks/b05-mcq-check.json", anchor: 162}
+  - {ord: 6, id: "c14-reactivity-series/b06", type: sort-match, file: "blocks/b06-sort-match-predictions.json", anchor: 164}
+  - {ord: 7, id: "c14-reactivity-series/b07", type: callout, file: "blocks/b07-callout-rusting.json", anchor: 165}

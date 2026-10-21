@@ -1,0 +1,48 @@
+{
+  "task": "T-BOOK-011",
+  "lane": "content (Unit 2 packs c11-c18) — S0-S4, the rail serves Unit 2",
+  "operator_order": "② Units 2–4 packs (plan T-BOOK-011..013, engine and playbook have undergone two rounds of end-to-end validation) (trace 1a15f60b53d4e0d5)",
+  "trace": "1a15f60b53d4e0d5",
+  "generated": "2026-10-22T10:05:00Z",
+  "pipeline_of_record": {
+    "prechecks": [
+      "chapters u2:c11..c18 ALL SUGGESTED; book_blocks for c11-c18 = 0 (negative control); parent book documents row VALIDATED (kind TEXTBOOK, e6c0db50 v1)",
+      "bank resolution 8/8 ACTIVE MCQ_SINGLE with 4 options each (probe; full 29/29 across all packs)",
+      "parse of record re-verified by sha256: b2c67eafe4e3766b… == book.yaml pin, 1234 chunks",
+      "manifest rebuilt session-side from book_chapters DB truth (documentId from the documents row of record; pdfRange = pdf_page_start/end) — the T-BOOK-016-era manifest artifact did not survive session cleanup; the rebuild is the same DB-truth source T-BOOK-016's S0 cited"
+    ],
+    "order": [
+      "1. S0 plans: 8 pack.yaml (c11-c18), page-true anchors from the parse digest (session-side u234-digest build over the sha-verified parse)",
+      "2. S1 authoring: 52 blocks (6/6/7/7/6/7/6/7; 8 of 11 types), 20 glossary terms in u2-metals-and-salts.yaml with the ms layer, 8 probe-verified mcq checkRefs (one per pack, topic-matched from the bank's sme-eq-2-x slugs)",
+      "3. S2 accuracy + S3 exam-alignment (adversarial separation): TWO independent subagent reviewers — fact-pass (verdict u2 FAIL on 1×S1: the solubility-rules row conflated carbonate/hydroxide exceptions, missing the examined Ca(OH)2 near-miss) and examiner-voice (2×S2: the proton-transfer callout misattributed Cl-; steel carbon percentages off the book's Table 15.1) — all fixed in-lane from the authoring scripts of record and RE-GATED PASS by both reviewers, zero regressions, zero new findings",
+      "4. lint: G1-G4 0 findings across ALL 29 packs / 177 blocks (the CHAPTER_SUBSECTION map was extended c11-c29 schema-first from the canonical specification_points.yaml — the F-BOOK-0004 lesson; cross-boundary join codes (2.4C on c12) disclosed and avoided in authoring)",
+      "5. chapter flip u2:c11..c18 SUGGESTED→VALIDATED (one guarded tx, pre 8/8 re-prove, post 8/8 re-prove; book_chapters carries NO updated_at column — the T-BOOK-016 bring-up lesson respected)",
+      "6. SCOPED ingest (the isolation law): staging dir with ONLY c11-c21 packs + the full glossary MINUS u4-organic-chemistry.yaml (the F-BOOK-0001 gate keeps u4 unlanded on the DB plane) + meta/book.yaml; the ingest script of record UNCHANGED, byte-identical",
+      "7. ingest COMMIT: 71 blocks (u2 52 + u3 19, one tx with the T-BOOK-012 lane per the dispatch) + 88 glossary terms (58 of-record re-upserted idempotently, validation_state untouched — spot-checked; 30 new SUGGESTED: 20 u2 + 10 u3)",
+      "8. 20% spot-check: 15/71 = 21.1% GREEN across ALL 11 chapters / 7 types (prose, figure, callout, mcq-embed, sort-match, drag-label, num-stepper, eq-builder) × L1 zod book.block/1, L2 canonical jsonb compare (KEY-ORDER-INSENSITIVE — the jsonb law; the first pass compared insertion-order stringify and honestly failed 6 sampled rows before the fix; zero DB rows were touched, read-only script), L3 page-true vs the sha-pinned parse census, L4 payload laws (bank resolution + PhET allowlist + glossary slugs); full-set cheap laws GREEN (identity+range+monotonic+state ×71, negative control 0 VALIDATED rows pre-flip, u1 60 of-record rows VALIDATED untouched, glossary 58 VALIDATED preserved)",
+      "9. pack flip ×71 SUGGESTED→VALIDATED, version 1→2, one guarded tx (the u2+u3 lanes share one flip tx by dispatch scope)",
+      "10. serve proof (the railBlocksForChapter §3 double-gate shape): u1 demo gate byte-identical 7/6/6/5/6/7/6/6/4/7; u2:c11..c18 = 6/6/7/7/6/7/6/7; u3 (lane 2) = 6/7/6; u4:c22 → honest null (133c viewer — the F-BOOK-0001 gate)"
+    ]
+  },
+  "authoring_stats": {
+    "blocks_by_type": {"prose": 8, "figure": 5, "callout": 10, "mcq-embed": 8, "sort-match": 5, "drag-label": 4, "table-fill": 8, "num-stepper": 3, "eq-builder": 3, "sim-embed": 1, "media-embed": 0},
+    "glossary_terms_by_file": {"u2-metals-and-salts": 20},
+    "bank_refs": ["sme-eq-2-1-group-1-alkali-metals-q7", "sme-eq-2-2-group-7-halogens-q6", "sme-eq-2-3-gases-in-the-atmosphere-q2", "sme-eq-2-4-reactivity-series-q15", "sme-eq-2-5-extraction-and-uses-of-metals-q1", "sme-eq-2-6-acids-alkalis-and-titrations-q7", "sme-eq-2-7-acids-bases-and-salt-preparations-q10", "sme-eq-2-8-chemical-tests-q7"],
+    "sims": ["acid-base-solutions (PhET CC-BY-4.0, per book.yaml sim_embed_plan c16)"]
+  },
+  "verification": {
+    "adversarial_review": "fact-pass PASS (u2 re-gate, S1 discharged) + examiner-voice PASS (all 11 fixes confirmed, regression sweep clean)",
+    "spot_check": "15/71 sampled GREEN × 4 laws across all 11 chapters / 7 types; cheap laws full-set GREEN; negative control GREEN",
+    "lint": "G1-G4 0 findings (29 packs / 177 blocks)",
+    "serve_proof": "u2:c11..c18 = 6/6/7/7/6/7/6/7 with the u1 demo gate byte-identical and u4 honest-null",
+    "state_laws": "new blocks version 1→2 post-flip; glossary 58 VALIDATED preserved through the ingest re-upsert"
+  },
+  "disclosures": [
+    "the manifest.json was rebuilt session-side from book_chapters DB truth (the prior session's artifact is gone); the lint and the ingest consume only documentId + pdfRange from it — both of-record sources",
+    "unbound spec codes (2.42, 2.47 in this unit) were deliberately NOT cited — they are orphans across all 29 chapters; filed as F-BOOK-0005 with a proposed data-plane repair lane (operator decision; no orphan-law fire since no authored ref touches them)",
+    "media-embed honestly absent (no licensed curated asset, same as u1)",
+    "COW waiver rationale recorded in the task yaml: zero DDL + the same guarded idempotent scripts proven byte-identically at golive and T-BOOK-016 + every write carrying its own pre/post re-prove in one tx",
+    "the 20 new u2 glossary terms land SUGGESTED (their own future validation lane, T-BOOK-019 pattern)"
+  ],
+  "status": "UNIT-2 RAIL COMPLETE (production serving u2:c11..c18, 52 VALIDATED blocks, under the §3 double gate)"
+}

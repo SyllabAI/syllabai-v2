@@ -1,0 +1,56 @@
+{
+  "id": "c20-rates-reaction/b06",
+  "type": "drag-label",
+  "chapterKey": "u3:c20",
+  "ord": 6,
+  "pdfPageAnchor": 246,
+  "specPointRefs": [
+    "3.13",
+    "3.14C"
+  ],
+  "glossaryRefs": [
+    "activation-energy",
+    "exothermic",
+    "enthalpy-change"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Label the reaction profile (Figures 20.25/20.26) - drag each term to its place on the diagram.",
+    "labels": [
+      "reactants",
+      "products",
+      "delta H (overall energy change)",
+      "activation energy without catalyst",
+      "activation energy with catalyst"
+    ],
+    "regions": [
+      {
+        "id": "start",
+        "text": "left-hand plateau (energy of the starting chemicals)"
+      },
+      {
+        "id": "end",
+        "text": "right-hand plateau (energy of the finishing chemicals)"
+      },
+      {
+        "id": "gap",
+        "text": "overall difference between the two plateaux"
+      },
+      {
+        "id": "hill",
+        "text": "height of the single big hill from reactants to the top"
+      },
+      {
+        "id": "hill-small",
+        "text": "height of the smaller twin-hill route the catalyst opens"
+      }
+    ],
+    "solution": {
+      "start": "reactants",
+      "end": "products",
+      "gap": "delta H (overall energy change)",
+      "hill": "activation energy without catalyst",
+      "hill-small": "activation energy with catalyst"
+    }
+  }
+}

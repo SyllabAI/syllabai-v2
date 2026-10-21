@@ -1,0 +1,62 @@
+{
+  "id": "c19-energetics/b02",
+  "type": "sort-match",
+  "chapterKey": "u3:c19",
+  "ord": 2,
+  "pdfPageAnchor": 217,
+  "specPointRefs": [
+    "3.1"
+  ],
+  "glossaryRefs": [
+    "exothermic",
+    "endothermic"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Sort the reactions - exothermic or endothermic (Sections: Exothermic / Endothermic reactions).",
+    "items": [
+      {
+        "id": "combustion",
+        "text": "burning methane on a hob"
+      },
+      {
+        "id": "neutralisation",
+        "text": "adding acid to alkali in a polystyrene cup"
+      },
+      {
+        "id": "hand-warmer",
+        "text": "an oxidation hand-warmer warming your pocket"
+      },
+      {
+        "id": "thermal-decomp",
+        "text": "heating limestone (calcium carbonate) in a kiln"
+      },
+      {
+        "id": "citric-bicarb",
+        "text": "citric acid solution + sodium hydrogencarbonate"
+      },
+      {
+        "id": "photosynthesis",
+        "text": "photosynthesis in a leaf"
+      }
+    ],
+    "targets": [
+      {
+        "id": "exo",
+        "text": "exothermic - temperature of surroundings rises"
+      },
+      {
+        "id": "endo",
+        "text": "endothermic - temperature of surroundings falls"
+      }
+    ],
+    "solution": {
+      "combustion": "exo",
+      "neutralisation": "exo",
+      "hand-warmer": "exo",
+      "thermal-decomp": "endo",
+      "citric-bicarb": "endo",
+      "photosynthesis": "endo"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+# S0 output of record - c26-alcohols (T-BOOK-013; PHASE C - S0/S1/S2 only, see the licensing gate)
+chapter: "c26"
+chapter_key: "u4:c26"
+title: "Alcohols (chemistry only)"
+status: draft # S3/S4 PENDING-OPERATOR: F-BOOK-0001 release gate (no Phase C flip until the LICENSE-DATA.md amendment lands)
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p296 intro, p297 members table + combustion builder, p298 oxidation callout, p300 manufacture sort + mcq"
+blocks:
+  - {ord: 1, id: "c26-alcohols/b01", type: prose, file: "blocks/b01-prose-alcohols.json", anchor: 296}
+  - {ord: 2, id: "c26-alcohols/b02", type: table-fill, file: "blocks/b02-table-fill-alcohol-members.json", anchor: 297}
+  - {ord: 3, id: "c26-alcohols/b03", type: eq-builder, file: "blocks/b03-eq-builder-ethanol-combustion.json", anchor: 297}
+  - {ord: 4, id: "c26-alcohols/b04", type: callout, file: "blocks/b04-callout-dichromate-oxidation.json", anchor: 298}
+  - {ord: 5, id: "c26-alcohols/b05", type: sort-match, file: "blocks/b05-sort-match-manufacture.json", anchor: 300}
+  - {ord: 6, id: "c26-alcohols/b06", type: mcq-embed, file: "blocks/b06-mcq-check.json", anchor: 300}

@@ -1,0 +1,16 @@
+# S0 output of record - c19-energetics (T-BOOK-012)
+chapter: "c19"
+chapter_key: "u3:c19"
+title: "Energetics"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p216 intro, p217 exo/endo sort, p218 energy-level figure, p219 sign callout, p226 mcq, p227 activity-4 stepper"
+blocks:
+  - {ord: 1, id: "c19-energetics/b01", type: prose, file: "blocks/b01-prose-endo-exo.json", anchor: 216}
+  - {ord: 2, id: "c19-energetics/b02", type: sort-match, file: "blocks/b02-sort-match-exo-endo.json", anchor: 217}
+  - {ord: 3, id: "c19-energetics/b03", type: figure, file: "blocks/b03-figure-energy-level.json", anchor: 218}
+  - {ord: 4, id: "c19-energetics/b04", type: callout, file: "blocks/b04-callout-delta-h-sign.json", anchor: 219}
+  - {ord: 5, id: "c19-energetics/b05", type: mcq-embed, file: "blocks/b05-mcq-check.json", anchor: 226}
+  - {ord: 6, id: "c19-energetics/b06", type: num-stepper, file: "blocks/b06-num-stepper-neutralisation-calc.json", anchor: 227}
