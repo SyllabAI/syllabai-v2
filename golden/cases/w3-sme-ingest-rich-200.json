@@ -1,6 +1,7 @@
 {
   "name": "w3-sme-ingest-rich-200",
-  "description": "SME question-bank ingest (multipart part 'file') over the V7-seeded bank — 200 IngestSummary with deactivated:0 (fresh corpus cor-t51-1: 1 MCQ + 1 structured 2-part; KG codes resolve to the V6 WCH11 seed). N-4 rich-200 family (T-MIG-051). Replay requires golden/tools/seed-t51-rich200.ts state.",
+  "justified": true,
+  "description": "SME question-bank ingest (multipart part 'file') over the V7-seeded bank — 200 IngestSummary with deactivated:0 (fresh corpus cor-t51-1: 1 MCQ + 1 structured 2-part; KG codes resolve to the V6 WCH11 seed). N-4 rich-200 family (T-MIG-051). Replay requires golden/tools/seed-t51-rich200.ts state. T-SM-REPLAY-REPIN-1: the corpus's spec-point mappings are re-anchored WCH11-T1.1/T1.2 -> WCH11-T1.1a/T1.2a (the seed's new edgeless SPEC_POINT anchor nodes) because the live G4 anchor-type guard (T-MIG-139) rejects SUBTOPIC-anchored question_spec_points; expects byte-unchanged (the per-ingest census is code-independent); operator ruling trace 1a16041a4ba7a509.",
   "method": "POST",
   "path": "/api/v1/admin/question-bank/ingest",
   "bodyFile": "files/t51-corpus.zip",
