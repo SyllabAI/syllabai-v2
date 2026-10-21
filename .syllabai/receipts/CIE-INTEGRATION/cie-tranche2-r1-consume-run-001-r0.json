@@ -1,0 +1,44 @@
+{
+  "receipt": "cie-tranche2-r1-consume-run-001-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15f8160e677949 ('Tranche-2')",
+  "operatorOrder": "the tranche-2 verdict program (tranche2_verdictProgram of cie-anchor-gap-census-r0.json) — round-1: the residual T2_near census promotion fleet-wide + the head-bank operator verdict sheet; the r9/tranche-1 chain unchanged",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-22T09:10:00Z",
+  "phase": "TRANCHE-2 ROUND-1 LANDED END-TO-END of record: the residual T2_near census (423 entries) promoted to V6 in the resources lane (PR SyllabAI/syllabai-resources#30 merged bb15452) and consumed at the advanced pin (PR #272 merged 5a2d695); the T2_near class retires fleet-wide; the CENSUS RE-PIN EXACT 6,715 / 5,696 / 9,276 UNCHANGED — the anchor gap 12,363 q / 17,538 parts stands; the round's value = provenance upgrade + the hint-class retirement + the material universe finding",
+  "resourcesLaneOfRecord": {
+    "receipt": "T-SPECS-CIE-TRANCHE2-R1",
+    "pr": "SyllabAI/syllabai-resources#30 (MERGED bb15452701110c27acf59637db059b6053e50b1e; commit built via the API tree transport after the sandbox git-push transport repeatedly died on the fat pack — disclosed)",
+    "componentA": "the residual T2_near census promoted fleet-wide: 423 entries re-tiered T2_near -> V6_near_text_verdict (method operator_verdict, prior cie_*_text_join recorded verbatim) across 15 CIE sidecars — anchored-class 196 (151 part + 45 note entries, the census receipt's tranche-2-scope enrichment) + t2only 227 (162 part entries in 8 lanes the census receipt's tranche-1 queue did NOT cover — the census-queue hole, disclosed of record; + 65 notes, the notes-axis scope); 423 == the post-tranche-1 t2Hints census EXACT (584 - 161); battery T1-T10 9/9 PASS on the rebased base",
+    "componentB": "the head-bank operator review sheet (cie-a-level-chemistry-25): 1,336 sidecar-pending parts / 256 entities (J4_residue 1 / multi_hit 10 / declared_link 20 / record_less 1 / no_match 224) — NOTHING auto-applied (the no-match mappings are semantic judgments, ADR-030 + AGENT.md rule 3); the sheet = the operator ruling instrument (the c11 batch pattern)",
+    "rebaseDisclosure": "REBASED of record onto fc6bf29 mid-lane — the sibling T-SPECS-CIE-COMPLETE-1 lane (operator order trace 1a15f79acff5346d) moved main by 4 commits with a spec-links overlap (business-23 + manifest + README); the fleet T2 census re-verified byte-identical on the new base; business-23's inherited stale totals (COMPLETE-1's own counters: stored 34 vs recomputed 70) corrected with provable V7 attribution (delta 36 == the V7-only item count exactly)"
+  },
+  "consumeOfRecord": {
+    "engine": "apps/hub/scripts/cie/cie_consume_spec_links.py (PIN aa0b4de1 -> bb15452, STAMP 2026-10-22T07:30:00Z, directive/trace advanced; the consumption law UNCHANGED)",
+    "collisionAndReconsume": "the first staging (built on the pre-collision maps) is DISCARDED — the sibling wave landed their own fc6bf29-consume (12 lanes, the V7 note joins) + the CONTENT-AUDIT validator re-base (the two-pin law) mid-lane; the consume re-ran on their state (staging 7ac42f15, byte-identical across two clean runs)",
+    "figures": "codesFromSidecar 520 (the dedup-surviving keys), t2Hints 423 -> 0 (the class retires in the maps), 12 maps re-merged, 44 bundle manifests re-keyed to bb15452, 77 files changed",
+    "validator": "advanced per the sibling two-pin law: accepted pins {aa0b4de1, fc6bf29c, bb15452}; verify:cie PASS"
+  },
+  "censusRepinOfRecord": {
+    "figuresPre": "6,715 q / 5,696 part-rows / 9,276 pkg | GAP 12,363 q / 17,538 parts",
+    "figuresPost": "6,715 q / 5,696 part-rows / 9,276 pkg | GAP 12,363 q / 17,538 parts — EXACT UNCHANGED (verified pre AND post apply)",
+    "whyNoMovement": "the promoted entries matched codes the maps ALREADY carried via the upstream lineages (upstream_item_join / sme_declared_link_rekey classes) — the bundle-side question/part sets are unchanged; the promotion upgraded the PROVENANCE (accepted-near hints -> operator-ratified authoritative) and retired the T2 hint class",
+    "materialFinding": "THE SIDECAR-PENDING UNIVERSE IS NOT THE BUNDLE GAP UNIVERSE: the census receipt's tranche-2 mass order (16,335 sidecar-pending parts) and its tranche-1 queue (155/161) were computed on the SIDECAR codes-empty state; the bundle gap (the census tool's zero-code class) is computed on the MAPS — for the 162-entry population (and the T2 residual generally) the maps already carried the codes. The census receipt's figures stay historical-of-record (append-only); the tranche-2 sheet program's pools must be derived from the MAP zero-code universe from now on: chemistry-25's map-universe pool = 1,342 zero-code parts (vs the sidecar pool 1,336/256 — the sheet regeneration reconciles; the map's zero-code parts carry declaredUnresolved spcpt refs — the sid pool derivation field of record)"
+  },
+  "gates": [
+    "verify:cie PASSED (CIE_PIN set {aa0b4de1, fc6bf29c, bb15452}, 393+ assertions)",
+    "verify:corpus (verify_corpus_23a.ts) PASSED — math zero-baseline intact",
+    "verify:flashcard-sync exit 0",
+    "census_per_slug.ts re-pin GREEN (6,715/5,696/9,276 EXACT, pre and post)",
+    "build:hub exit 0 (prebuild chain + next build)"
+  ],
+  "writeLedger": {
+    "repo": "resources PR #30 merged bb15452 + v2 PR #272 merged 5a2d695 + this receipt/worklog; zero DB contact, zero prod contact, zero LLM spend",
+    "disclosures": "the discarded first staging (stale-map base); the API-tree commit transport for the resources lane (the git push transport died repeatedly on the fat pack — the sandbox disk filled to 100% mid-lane from dead push packs, cleaned of record); the business-23 inherited-totals correction"
+  },
+  "nextAct": {
+    "operator": "the chem-25 review sheet awaits the ruling batches (regenerate the sheet on the map-universe pool first — the follow-up lane act); each ruled batch lands via the same chain (verdicts -> consume -> census re-pin -> PR -> the operator-gated 134c); the 134c gate stays parked while the census is unchanged (no DB movement pending the first true gap-closing round)",
+    "lane": "sheet regeneration (map-universe pools for all 38 banks) + the ruling-batch encoding engines on the operator's batches"
+  },
+  "hygiene": "zero secret values in any file/log/receipt; the dispatch/API tokens remote-URL-extracted bash-inline, bearer-only, never printed/persisted; fetch-first + race-guards throughout (three mid-flight collisions caught: the COMPLETE-1 resources rebase, the v2 sibling consume wave, the PR-272 window); no force"
+}
