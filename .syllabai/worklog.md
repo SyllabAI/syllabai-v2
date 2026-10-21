@@ -11100,3 +11100,16 @@ Stage Summary:
 - Operator's three questions answered: (1) Edexcel organized correctly; CIE organized honestly but with a thin lattice join (42.6% notes bridged, 39.8% spec coverage), disclosed in-UI; (2) 93/94 manifests exact, chemistry-19 manifest stale-by-design-gap (524 vs 693 served, live correct); (3) CIE History's "missing notes" = incomplete upstream 2024-2026 lattice join (63/87 notes unanchored, 13/21 topics empty) — data present, mapping in progress upstream, honestly disclosed.
 - Operator decision menu returned: (a) upstream lattice-join completion (fixes history + 11 bundles at once); (b) chemistry-19 manifest refresh; (c) pure-2 ghost ruling (remove/label/commission); (d) optional operator-gated manufacturing for the 9 zero-question courses per the maths-b precedent; (e) TS4 mixed-theme upstream review.
 - Receipt: .syllabai/receipts/CONTENT-AUDIT/run-001-cie-edexcel-content-audit-r0.json
+
+---
+Task ID: w0a-t138-slot4-rewire-20261021 (trace 1a15f07f9583c6cd — operator order "Use this key", AQ.Ab8RN6…-form value)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8, chat 1148fa2b)
+
+Work Log:
+- STAGED: .creds/gemini-key-incoming-20261021 0600 53B fp16 bcf46b4ca86b8707 (same AQ.* issuance family as the run-003 pool; duplicate-vs-fresh unresolvable lane-side).
+- SANDBOX PROBE x3, ZERO RPD: models-list header-form + ?key= form + embedContent gemini-embedding-001@768 executor-mirror — ALL 400 FAILED_PRECONDITION "User location is not supported for the API use" = sandbox egress geo-block (REGION LAW of record); key live/429/403 verdict DEFERS to executor egress at the window run.
+- WIRE: T138_GEMINI_KEY_4 (403-dead of record, RUN-003) rewired with the incoming key via secrets REST sealed box (key_id 3380204578043523366): PUT 204, updated_at 15:11:30Z -> 15:25:38Z; frozen 4-shard matrix + residual-95 composition 14+14+13+54 preserved byte-exact; prior sibling slot update 15:11:30Z PRE-dates the operator order (same-value no-op if duplicated, else last-order-wins).
+- INCIDENT: narrow-wipe recurrence #4 lane-side (post-recycle realign reset wiped snapshot-tracked lane paths) — FULL RECOVERY from snapshot commit e03aa5e, all of-record fp16s verified (gh-pat a8ccee736aa8c75b, vcp d254bbfaac004354, neon 4c2e12da872b6959, rows 5eb6076e5b81e835/3514B, worklog intact); lane paths pinned .git/info/exclude (repo-local) to de-track future snapshots.
+
+Stage Summary:
+- Shard-4 slot carries operator key fp16 bcf46b4ca86b8707 verdict-at-run (1000-RPD class -> shard-4 54-row slice drains one window; spent/dup AQ.* class -> ~40/key walls hold, 1-2 windows for the 95). Window law UNCHANGED: bash scripts/t138-drain-fire.sh at/after 07:05Z Oct 22, gates refusable, FORCE=1 only on explicit operator order. Receipt: .syllabai/receipts/T-MIG-138/run-007-slot4-rewire-w0a.json. Secrets fp16-only throughout; zero dispatch/prod/DB/Neon/LLM contact beyond 3 geo-rejected metadata probes.

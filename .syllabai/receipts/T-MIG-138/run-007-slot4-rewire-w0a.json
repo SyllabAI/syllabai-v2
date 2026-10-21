@@ -1,0 +1,43 @@
+{
+  "receipt": "run-007-slot4-rewire-w0a",
+  "band": "T-MIG-138",
+  "agent": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b)",
+  "trace": "1a15f07f9583c6cd",
+  "operator_order": "Use this key: AQ.Ab8RN6… (value staged, never of-record in receipts; fp16 only)",
+  "date_utc": "2026-10-21T15:25:38Z",
+  "staged": {
+    "path": ".creds/gemini-key-incoming-20261021",
+    "mode": "600",
+    "bytes": 53,
+    "fp16": "bcf46b4ca86b8707",
+    "format_note": "AQ.Ab8RN6… prefix = same issuance family as the four briefing pool keys; RUN-003 finding: AQ.* keys do NOT carry the legacy 1000-RPD embedding class (shard-1 walled 1 doc/26 vectors, shard-4 403 from first request)"
+  },
+  "sandbox_probe": {
+    "calls": 3,
+    "rpd_consumed": 0,
+    "probes": [
+      "GET /v1beta/models (x-goog-api-key header form)",
+      "GET /v1beta/models (?key= query form)",
+      "POST /v1beta/models/gemini-embedding-001:embedContent outputDimensionality=768 (executor-mirror)"
+    ],
+    "result": "ALL 400 FAILED_PRECONDITION 'User location is not supported for the API use'",
+    "interpretation": "sandbox egress geo-block (REGION LAW of record: Gemini embedding egress works from GitHub Actions, never the sandbox); both transports reach Google's region gate; key live/429/403 verdict DEFERS to executor egress at the window run"
+  },
+  "wire": {
+    "target": "T138_GEMINI_KEY_4 (shard-4 slot, 403-dead of record per RUN-003)",
+    "method": "GitHub Actions secrets REST, sealed box (libsodium), key_id 3380204578043523366",
+    "put_http": 204,
+    "metadata": { "before_updated_at": "2026-10-21T15:11:30Z", "after_updated_at": "2026-10-21T15:25:38Z" },
+    "composition_law": "frozen 4-shard matrix preserved; residual-95 composition 14+14+13+54 byte-exact (rows fp16 5eb6076e5b81e835, 3514B)",
+    "prior_slot_update_disclosed": "15:11:30Z sibling update PRE-dates the operator order; same-value no-op if duplicated, else last-operator-order-wins",
+    "script_of_record": "scripts/t138-pool-slot4-wire.py"
+  },
+  "incident": {
+    "class": "narrow-wipe recurrence #4 (lane-side) — post-recycle realign reset --hard wiped snapshot-tracked lane paths (e03aa5e tracked .creds/, worklog.md, scripts/, .tmp/)",
+    "recovery": "FULL from snapshot commit e03aa5e objects; verified: gh-pat.candidate a8ccee736aa8c75b/40B, vcp-incoming-20261021 d254bbfaac004354/60B, neon 4c2e12da872b6959/69B, rows 5eb6076e5b81e835/3514B, worklog 376 lines",
+    "guard": "lane paths pinned in .git/info/exclude (repo-local) to de-track future snapshots"
+  },
+  "window_law": "UNCHANGED: fire = bash scripts/t138-drain-fire.sh at/after 07:05Z Oct 22 (rows 3514B/95 pin gate, GitHub-Date window gate rc=3, no-duplicate gate rc=4; FORCE=1 only on explicit operator order); mode=backfill-sharded rows=residual-95 ref=main",
+  "projection": "if the slot-4 key carries the 1000-RPD class, shard-4's 54-row slice drains in one window; if spent/duplicate AQ.*-class, composition holds at ~40/key walls (95 rows -> 1-2 further windows)",
+  "hygiene": "secrets fp16-only throughout; no key/token echoed or persisted beyond the 0600 staging; zero dispatch/prod/DB/Neon/LLM contact beyond the 3 geo-rejected metadata probes"
+}
