@@ -33,6 +33,7 @@ import {
   SUBJECT,
   misRow,
   nbaRoutes,
+  NOW_TEXT,
   reviewRow,
   skillRow,
 } from "./nba-helpers";
@@ -458,6 +459,135 @@ describe("GET /exam-series + PUT/DELETE /courses/{slug}/target-series — Learne
       { match: /update learner_course_enrolments/, rows: [] },
     ]).request("/api/v1/learners/me/courses/chm/target-series", { method: "DELETE" });
     expect(res.status).toBe(204);
+  });
+});
+
+// ── my courses (T-TEACH-001 — v2-native, additive) ───────────────────────────
+
+/**
+ * T-TEACH-001 (operator order trace 1a15ece07422fcd9) — the account-backed
+ * "my courses" roster over learner_course_enrolments. Pinned here: the
+ * authz shell, the empty/populated GET views (created_at → addedAt wire,
+ * added order), the idempotent PUT mechanics (insert new / keep existing /
+ * delete absent with the any() binding), the one-time seed semantics the
+ * hub relies on, and the two-envelope body law (missing slugs →
+ * validation_failed with the jakarta default; wrong element shape →
+ * malformed_body; bad slug shape → validation_failed).
+ */
+describe("GET/PUT /api/v1/learners/me/courses — T-TEACH-001 my courses", () => {
+  const MY_COURSES_SELECT = /select course_slug, created_at from learner_course_enrolments where learner_id = \? order by created_at asc, course_slug asc$/;
+  const ENROLMENTS_SELECT = /select id, course_slug from learner_course_enrolments where learner_id = \?$/;
+  const ENROLMENT_DELETE = /delete from learner_course_enrolments where learner_id = \? and course_slug = any\( \? \)$/;
+  const ENROLMENT_INSERT = /insert into learner_course_enrolments/;
+
+  test("authz shell: anonymous GET/PUT /courses → the Boot 401 before any handler work", async () => {
+    const app = makeApp(anon, routesWith({}));
+    const get = await app.request("/api/v1/learners/me/courses");
+    expect(get.status).toBe(401);
+    const put = await app.request("/api/v1/learners/me/courses", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ slugs: ["igcse-chemistry-19"] }),
+    });
+    expect(put.status).toBe(401);
+  });
+
+  test("GET empty roster → 200 {courses: []}", async () => {
+    const res = await makeApp(asStudent, [
+      { match: MY_COURSES_SELECT, rows: [] },
+    ]).request("/api/v1/learners/me/courses");
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ courses: [] });
+  });
+
+  test("GET populated roster → created_at maps to addedAt, added order preserved (oldest first)", async () => {
+    const res = await makeApp(asStudent, [
+      {
+        match: MY_COURSES_SELECT,
+        rows: [
+          { course_slug: "igcse-chemistry-19", created_at: "2026-10-01T08:00:00Z" },
+          { course_slug: "igcse-physics-25", created_at: "2026-10-19T09:30:00Z" },
+        ],
+      },
+    ]).request("/api/v1/learners/me/courses");
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.courses).toEqual([
+      { slug: "igcse-chemistry-19", addedAt: "2026-10-01T08:00:00.000Z" },
+      { slug: "igcse-physics-25", addedAt: "2026-10-19T09:30:00.000Z" },
+    ]);
+  });
+
+  test("PUT happy path → inserts only the NEW slugs (target null), keeps existing, returns the final roster", async () => {
+    const routes: Route[] = [
+      ...routesWith({}),
+      { match: ENROLMENTS_SELECT, rows: [{ id: "e1", course_slug: "igcse-chemistry-19" }] },
+      { match: ENROLMENT_DELETE, rows: [] },
+      { match: ENROLMENT_INSERT, rows: [] },
+      {
+        match: MY_COURSES_SELECT,
+        rows: [
+          { course_slug: "igcse-chemistry-19", created_at: "2026-10-01T08:00:00Z" },
+          { course_slug: "igcse-physics-25", created_at: NOW_TEXT },
+        ],
+      },
+    ];
+    const res = await makeApp(asStudent, routes).request("/api/v1/learners/me/courses", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ slugs: ["igcse-chemistry-19", "igcse-physics-25"] }),
+    });
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(body.courses.map((c: { slug: string }) => c.slug)).toEqual([
+      "igcse-chemistry-19",
+      "igcse-physics-25",
+    ]);
+  });
+
+  test("PUT removing a dropped course fires the any()-bound delete", async () => {
+    let deleteRan = false;
+    const routes: Route[] = [
+      ...routesWith({}),
+      { match: ENROLMENTS_SELECT, rows: [{ id: "e1", course_slug: "igcse-chemistry-19" }, { id: "e2", course_slug: "igcse-physics-25" }] },
+      { match: ENROLMENT_DELETE, rowsFor: () => { deleteRan = true; return []; } },
+      { match: ENROLMENT_INSERT, rows: [] },
+      { match: MY_COURSES_SELECT, rows: [{ course_slug: "igcse-chemistry-19", created_at: "2026-10-01T08:00:00Z" }] },
+    ];
+    const res = await makeApp(asStudent, routes).request("/api/v1/learners/me/courses", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ slugs: ["igcse-chemistry-19"] }),
+    });
+    expect(res.status).toBe(200);
+    expect(deleteRan).toBe(true); // physics dropped → its enrolment (and any exam target) goes
+  });
+
+  test("PUT body law: missing slugs → validation_failed (jakarta default); non-array → malformed_body; bad slug shape → validation_failed", async () => {
+    const app = makeApp(asStudent, routesWith({}));
+    const missing = await app.request("/api/v1/learners/me/courses", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    expect(missing.status).toBe(400);
+    expect((await missing.json()).message).toBe("slugs: must not be null");
+
+    const notArray = await app.request("/api/v1/learners/me/courses", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ slugs: "igcse-chemistry-19" }),
+    });
+    expect(notArray.status).toBe(400);
+    expect((await notArray.json()).error).toBe("malformed_body");
+
+    const badSlug = await app.request("/api/v1/learners/me/courses", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ slugs: ["Chm_Target"] }),
+    });
+    expect(badSlug.status).toBe(400);
+    expect((await badSlug.json()).message).toBe('slugs[0]: must match "^[a-z0-9]+(-[a-z0-9]+)*$"');
   });
 });
 

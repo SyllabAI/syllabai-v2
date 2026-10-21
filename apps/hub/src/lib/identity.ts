@@ -105,6 +105,15 @@ export function clearIdentity(): void {
   window.dispatchEvent(new CustomEvent(IDENTITY_EVENT));
 }
 
+/**
+ * Non-hook identity read for store-level sync layers (T-TEACH-001) — the
+ * same derivation useIdentity snapshots, callable outside React (the
+ * my-courses write-through mirror reads this on its debounce tick).
+ */
+export function readIdentitySnapshot(): Identity | null {
+  return readIdentity();
+}
+
 /** Reactive identity for role-aware surfaces. `null` until hydration + when signed out. */
 export function useIdentity(): Identity | null {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);

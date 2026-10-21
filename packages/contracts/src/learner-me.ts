@@ -94,3 +94,48 @@ export const assignmentSubmissionRequestSchema = z.object({
   score: z.number().int().min(0).max(1000).nullable().optional(),
 });
 export type AssignmentSubmissionRequest = z.infer<typeof assignmentSubmissionRequestSchema>;
+
+/**
+ * T-TEACH-001 — server-side "my courses" (v2-native, additive; operator
+ * order trace 1a15ece07422fcd9). The account-backed roster behind the
+ * student's personally added courses (TEACHER_MODE_PLAN.md §6 migration
+ * row: "syllabai.mySubjects.v1 → student's course list server-side").
+ *
+ * Storage law: the roster LIVES in the existing learner_course_enrolments
+ * table (learner_id + course_slug unique; target_series_id nullable) —
+ * one enrolment concept, no parallel table, no dual source of truth. A
+ * row's created_at IS the "when I added it" fact; the exam-series target
+ * (T-C79/ADR-035) rides the SAME row. Removing a course from the roster
+ * deletes the enrolment row and with it any exam target (dropping the
+ * course drops its target — honest by construction).
+ *
+ * Law:
+ *  - GET  /api/v1/learners/me/courses → MyCoursesView (added order,
+ *         oldest first — the enrolment's own created_at ordering).
+ *  - PUT  /api/v1/learners/me/courses ← SetMyCoursesRequest — the FULL
+ *         desired slug set (idempotent write-through; already-present
+ *         slugs keep their original created_at, new slugs gain now(),
+ *         absent slugs are removed).
+ *  - Slugs use the SAME law as target-series (LearnerExamSeriesController
+ *    .validatedSlug: /^[a-z0-9]+(-[a-z0-9]+)*$/ — the kebab-case registry
+ *    key shape), bounded by the varchar(100) column. Registry membership
+ *    is validated at READ time by the hub (the localStorage roster's
+ *    law) — the API does not own the content registry.
+ */
+export const userCourseViewSchema = z.object({
+  slug: z.string(),
+  addedAt: z.string(),
+});
+export type UserCourseView = z.infer<typeof userCourseViewSchema>;
+
+export const myCoursesViewSchema = z.object({
+  courses: z.array(userCourseViewSchema),
+});
+export type MyCoursesView = z.infer<typeof myCoursesViewSchema>;
+
+export const setMyCoursesRequestSchema = z.object({
+  slugs: z
+    .array(z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'must match "^[a-z0-9]+(-[a-z0-9]+)*$"'))
+    .max(100),
+});
+export type SetMyCoursesRequest = z.infer<typeof setMyCoursesRequestSchema>;

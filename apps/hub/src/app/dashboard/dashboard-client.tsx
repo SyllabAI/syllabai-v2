@@ -47,7 +47,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useMySubjects } from "@/lib/my-subjects";
+import { useMyCoursesSync, useMySubjects } from "@/lib/my-subjects";
 import { useIdentity } from "@/lib/identity";
 import { useLastOpened, resourceLabel } from "@/lib/last-opened";
 import { useCourseProgress } from "@/lib/progress";
@@ -413,6 +413,7 @@ function SubjectCard({
 }
 
 export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
+  useMyCoursesSync(); // T-TEACH-001 — mirror the roster to core while signed in (write-through + reconcile)
   const { slugs, has, add, remove } = useMySubjects();
   const identity = useIdentity();
   const lastOpened = useLastOpened();

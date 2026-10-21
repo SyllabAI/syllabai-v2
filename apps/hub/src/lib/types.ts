@@ -2032,3 +2032,19 @@ export interface ClaAssistantThreadView {
   lastActiveAt: string;
   messages: ClaAssistantThreadViewMessage[];
 }
+
+// ── my courses (T-TEACH-001; the account-backed roster) ────────────────────
+// The hub mirrors the contracts shapes by hand (the LearnerClassroomView
+// style — the hub does not import @syllabai/contracts). GET/PUT
+// /api/v1/learners/me/courses over learner_course_enrolments; the write is
+// a FULL slug-set replace (idempotent write-through), created_at is the
+// addedAt, oldest first.
+
+export interface UserCourseView {
+  slug: string;
+  addedAt: string;
+}
+
+export interface MyCoursesView {
+  courses: UserCourseView[];
+}

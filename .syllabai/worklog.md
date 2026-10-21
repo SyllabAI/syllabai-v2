@@ -10966,3 +10966,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-138 drain re-armed for the 07:00Z/07:05Z Oct 22 window with the 95-row residual rebuilt byte-law-exact from public artifacts; window fire is one law-gated command on the next operator re-key; projection unchanged (1-2 further windows at ~40/key walls; op#4/op#1 pool keys operator-keyed; PAT rotation CRITICAL standing).
+Task ID: T-TEACH-001 (trace 1a15ece07422fcd9 — operator order "server-side my courses for student accounts: small table + API + write-through from the existing picker, keeping localStorage as cache per the plan's write-through law")
+Agent: zai-web lane (main agent, session web-590847c1-cf63-4098-b0c8-a90085355429)
+Task: land the account-backed "my courses" roster (TEACHER_MODE_PLAN.md §6 migration row) — API + hub write-through.
+
+Work Log:
+- DESIGN CORRECTION of record: the planned user_courses table + hand-wired 0006 migration were WITHDRAWN mid-implementation — learner_course_enrolments (nullable target_series_id, learner_id+course_slug unique) already IS the server-side student course list. One enrolment concept, zero new DDL, exam targets ride the same row. The withdrawal + the drizzle-kit 0000/0005 snapshot-id collision discovered on the way (PRE-EXISTING; generate AND check fail on main) are documented in the receipt.
+- contracts/learner-me.ts: MyCoursesView/UserCourseView + setMyCoursesRequestSchema — slug law aligned to the target-series kebab law (^[a-z0-9]+(-[a-z0-9]+)*$, max 100 = the varchar(100) column), NOT a looser shape.
+- services/learner-me: myCourses() (created_at IS addedAt, oldest-first) + setMyCourses() (full-set replace: insert new with target null, keep existing untouched so created_at survives, delete dropped via the fleet's any() binding); module interface + factory wired.
+- routes/learnerme.ts: GET/PUT /courses as a v2-native additive block (frozen core never exposed the roster) with the two-envelope body law (COURSES_DEFAULTS).
+- hub: types.ts MyCoursesView mirror (hand-mirrored, the LearnerClassroomView style); api.ts myCourses/setMyCourses; lib/my-subjects.ts useMyCoursesSync() — localStorage stays the UI cache (signed-out behavior byte-unchanged); signed in: every local write PUTs the full set (debounced), identity acquisition reconciles once (server empty + local non-empty = seed; else server wins + local mirrors, applyingRemote kills the echo PUT); mounted in dashboard-client.
+- api.v2-surface.test.ts: the /learners/me/courses row's zero-emitter comment flipped to T-TEACH-001 hub-routed (the row itself was already pinned — T-MIG-096's routing-availability foresight).
+- Verification: bun test apps/api = 2409/0/13 (new describe: 6 tests — shell 401s, GET views, PUT mechanics, body law); hub tsc + eslint clean; surface suite 34/34.
+
+Stage Summary:
+- The student's course list is now ACCOUNT-BACKED of record: PUT/GET /api/v1/learners/me/courses over learner_course_enrolments, hub write-through with server-wins reconcile + one-time seed migration of existing localStorage rosters. Zero DB writes (the storage table already existed), zero LLM, zero frozen-core contact. Receipt: .syllabai/receipts/HUB-TEACH/t-teach-001-my-courses-r0.json. Next: T-TEACH-002 feature toggles (ADR first).

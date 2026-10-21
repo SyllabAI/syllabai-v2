@@ -82,9 +82,11 @@ import type {
   FlashcardRatingView,
   FlashcardReviewScheduleView,
   LearnerAssignmentView,
+  MyCoursesView,
   NextBestActionsView,
   NoteVoteView,
   ReviewView,
+  SetMyCoursesRequest,
   SetTargetRequest,
 } from "@syllabai/contracts";
 
@@ -910,6 +912,85 @@ export async function clearTargetSeries(
     where learner_id = ${learnerId} and course_slug = ${courseSlug}`;
 }
 
+// ── my courses — the account-backed roster (T-TEACH-001, v2-native) ─────────
+
+/**
+ * T-TEACH-001 (operator order trace 1a15ece07422fcd9) — the server-side
+ * "my courses" roster over learner_course_enrolments (TEACHER_MODE_PLAN.md
+ * §6 migration row). The enrolment row IS the add event: created_at is the
+ * addedAt the view reports, oldest first. The exam-series target rides the
+ * same row (target_series_id nullable) — one enrolment concept, no dual
+ * source of truth.
+ */
+export async function myCourses(
+  deps: FlashcardRatingRecordDeps,
+  learnerId: string,
+): Promise<MyCoursesView> {
+  const rows = (await deps.sql`
+    select course_slug, created_at
+    from learner_course_enrolments
+    where learner_id = ${learnerId}
+    order by created_at asc, course_slug asc`) as unknown as Array<{
+    course_slug: string;
+    created_at: string | Date;
+  }>;
+  return {
+    courses: rows.map((r) => ({
+      slug: r.course_slug,
+      addedAt: toInstant(r.created_at),
+    })),
+  };
+}
+
+/**
+ * PUT /api/v1/learners/me/courses — the FULL desired slug set (idempotent
+ * write-through). Already-present slugs keep their original created_at
+ * (the "when I added it" fact survives every sync); new slugs are inserted
+ * (target_series_id null — targeting is a separate act); absent slugs are
+ * DELETED, enrolment row and any exam target with it (dropping the course
+ * drops its target — honest by construction, disclosed in the hub note).
+ * Statements are deliberately plain (no tx seam): every statement is
+ * idempotent against the desired set and the unique pair index makes the
+ * insert path self-healing on retry — the hub re-PUTs on divergence.
+ */
+export async function setMyCourses(
+  deps: FlashcardRatingRecordDeps,
+  learnerId: string,
+  request: SetMyCoursesRequest,
+): Promise<MyCoursesView> {
+  for (const slug of request.slugs) {
+    if (!isValidCourseSlug(slug)) {
+      throw new BadRequestError("course slug must be a kebab-case registry key");
+    }
+  }
+  const slugs = [...new Set(request.slugs)]; // set semantics; insertion order kept for inserts
+  const existing = (await deps.sql`
+    select id, course_slug
+    from learner_course_enrolments
+    where learner_id = ${learnerId}`) as unknown as Array<{
+    id: string;
+    course_slug: string;
+  }>;
+  const existingSlugs = new Set(existing.map((r) => r.course_slug));
+  const desired = new Set(slugs);
+  const toRemove = [...existingSlugs].filter((s) => !desired.has(s));
+  const toAdd = slugs.filter((s) => !existingSlugs.has(s));
+  if (toRemove.length > 0) {
+    await deps.sql`
+      delete from learner_course_enrolments
+      where learner_id = ${learnerId}
+        and course_slug = any(${toRemove})`;
+  }
+  const now = deps.clock.now().toISOString();
+  for (const slug of toAdd) {
+    await deps.sql`
+      insert into learner_course_enrolments
+        (id, learner_id, course_slug, target_series_id, created_at, updated_at)
+      values (${deps.clock.newId()}, ${learnerId}, ${slug}, null, ${now}, ${now})`;
+  }
+  return myCourses(deps, learnerId);
+}
+
 // ── learner assignments (V49/V51) ───────────────────────────────────────────
 
 const toAssignmentView = (a: AssignmentRow) => ({
@@ -1208,6 +1289,8 @@ export interface LearnerMeModule {
     request: SetTargetRequest,
   ) => Promise<CourseExamTargetView>;
   clearTargetSeries: (learnerId: string, courseSlug: string) => Promise<void>;
+  myCourses: (learnerId: string) => Promise<MyCoursesView>;
+  setMyCourses: (learnerId: string, request: SetMyCoursesRequest) => Promise<MyCoursesView>;
   examTargetsFor: (learnerId: string) => Promise<CourseExamTargetView[]>;
   learnerAssignments: (learnerId: string) => Promise<LearnerAssignmentView[]>;
   submitAssignment: (
@@ -1266,6 +1349,8 @@ export function buildLearnerMeModule(
     setTargetSeries: (learnerId, courseSlug, request) =>
       setTargetSeries(deps, learnerId, courseSlug, request),
     clearTargetSeries: (learnerId, courseSlug) => clearTargetSeries(deps, learnerId, courseSlug),
+    myCourses: (learnerId) => myCourses(deps, learnerId),
+    setMyCourses: (learnerId, request) => setMyCourses(deps, learnerId, request),
     examTargetsFor: (learnerId) => examTargetsFor(deps, learnerId),
     learnerAssignments: (learnerId) => learnerAssignments(deps, learnerId),
     submitAssignment: (learnerId, assignmentId, request) =>
