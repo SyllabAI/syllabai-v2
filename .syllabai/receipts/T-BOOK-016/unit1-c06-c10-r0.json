@@ -1,0 +1,46 @@
+{
+  "task": "T-BOOK-016",
+  "lane": "content (Unit 1 completion packs) + platform (scoped ingest + flip pipeline)",
+  "operator_order": "F-BOOK-0003 code candidate (spine-join two-phase match), glossary 27-term validation lane, c06–c10 packs (trace 1a15f18fdca65e79)",
+  "trace": "1a15f18fdca65e79",
+  "generated": "2026-10-21T16:30:00Z",
+  "pipeline_of_record": {
+    "prechecks": [
+      "chapters u1:c6..c10 ALL SUGGESTED; book_blocks for c6-c10 = 0 (negative control); parent book documents row VALIDATED (kind TEXTBOOK)",
+      "bank resolution 5/5 ACTIVE MCQ_SINGLE with 4 options each (probe script)",
+      "parse of record re-verified by sha256: b2c67eafe4e3766b… == book.yaml pin, 1234 chunks"
+    ],
+    "order": [
+      "1. S0 plans: 5 pack.yaml (c06-c10), page-true anchors from the parse census",
+      "2. S1 authoring: 30 blocks (7/6/6/4/7 by pack), 31 glossary terms in 5 new topic files, 5 probe-verified mcq checkRefs",
+      "3. S2 lint: G1-G4 0 findings across ALL 10 packs / 60 blocks; two honest re-orders (anchor monotonicity) + one bank-grammar ref swap (part-suffixed ref off the -q\\d+ law) caught BEFORE anything shipped",
+      "4. F-BOOK-0004 fixed in the same lane: lint CHAPTER_SUBSECTION c10 S1-h → S1-i (canonical binds 1.55C-1.60C to S1-i; the bug pre-dated any c10 pack)",
+      "5. chapter flip u1:c6..c10 SUGGESTED→VALIDATED (one guarded tx, pre 5/5 re-prove, post 5/5 re-prove)",
+      "6. SCOPED ingest (the isolation law): staging dir with ONLY c06-c10 packs + full glossary + meta/book.yaml; the ingest script of record UNCHANGED — a full-dir ingest would demote the of-record c01-c05 VALIDATED rows (the upsert resets validation_state='SUGGESTED'), so the scope is the safety law",
+      "7. ingest COMMIT: 30 blocks + 58 glossary terms (27 of-record terms re-upserted idempotently, validation_state untouched by the upsert SQL; 31 new terms SUGGESTED)",
+      "8. 20% spot-check: 6/6 GREEN across 4 chapters / 6 types (num-stepper, mcq-embed ×2, drag-label, callout, sort-match) × L1 zod book.block/1, L2 canonical jsonb compare (key-order-insensitive, the jsonb law), L3 page-true vs the sha-pinned parse census, L4 payload laws; full-set cheap laws GREEN (identity+range+monotonic ×30, bank 5/5, glossary slugs 34/34, Lane-B 27 remain VALIDATED); negative control 0 VALIDATED rows pre-flip",
+      "9. pack flip ×30 SUGGESTED→VALIDATED, version 1→2, one guarded tx; demo gate c01-c05 re-proven untouched (30 blocks, version ≤2)",
+      "10. serve proof (the railBlocksForChapter §3 double-gate shape): u1:c1→7, u1:c2→6, u1:c3→6, u1:c4→5, u1:c5→6 (demo gate byte-identical of record), u1:c6→7, u1:c7→6, u1:c8→6, u1:c9→4, u1:c10→7 (the new chapters), u1:c11→honest-empty"
+    ]
+  },
+  "cwo_waiver_disclosure": "The golive COW→prod-mirror pattern was intentionally waived and disclosed: this lane is ZERO DDL (migration 0005 already of record), runs the SAME guarded idempotent scripts proven byte-identically on both planes at golive, and every write carries its own pre/post re-prove inside a single tx (two clean rollbacks occurred during script bring-up: a book_chapters.updated_at that does not exist in the schema of record, and a documents lookup keyed on the wrong column — both fixed before any commit landed; the ledger shows the commit trail).",
+  "authoring_stats": {
+    "blocks_by_type": {"prose": 5, "figure": 5, "callout": 5, "mcq-embed": 5, "sort-match": 3, "drag-label": 2, "table-fill": 3, "num-stepper": 1, "eq-builder": 1, "sim-embed": 1, "media-embed": 0},
+    "glossary_terms_by_file": {"formulae-calculations-2": 5, "ionic-bonding": 8, "covalent-bonding": 4, "metallic-bonding": 3, "electrolysis": 11},
+    "bank_refs": ["sme-eq-1-5-chemical-formulae-equations-calculations-q15", "sme-eq-1-6-ionic-bonding-q2", "sme-eq-1-7-covalent-bonding-q9", "sme-eq-1-8-metallic-bonding-q10", "sme-eq-1-9-electrolysis-q7"],
+    "sims": ["molarity (PhET CC-BY-4.0, per book.yaml sim_embed_plan c06)"]
+  },
+  "verification": {
+    "spot_check": "6/6 sampled GREEN × 4 laws; full-set cheap laws GREEN; negative control GREEN",
+    "lint": "G1-G4 0 findings (10 packs / 60 blocks)",
+    "serve_proof": "60 VALIDATED blocks across u1:c1..c10 (7/6/6/5/6 + 7/6/6/4/7), u1:c11 honest-empty; demo gate untouched",
+    "state_laws": "new blocks version 1→2 post-flip; Lane-B glossary 27 VALIDATED preserved through the re-upsert"
+  },
+  "disclosures": [
+    "the 31 new glossary terms stay SUGGESTED (their own validation lane; the Lane-B flip covers only the 27 of record)",
+    "c06-c10 join sets include the T-MIG-133-era method=widened data repairs; authored specPointRefs sit inside those sets as they are",
+    "media-embed honestly absent (no licensed curated asset, same as the demo gate)",
+    "the COW waiver rationale is recorded above; no disposable branch was created, so no T-MIG-035 drop applies"
+  ],
+  "status": "UNIT-1 RAIL COMPLETE (production serving c01-c10, 60 VALIDATED blocks, under the §3 double gate)"
+}

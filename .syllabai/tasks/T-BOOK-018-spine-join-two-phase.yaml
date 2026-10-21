@@ -1,0 +1,54 @@
+version: 1
+task:
+  id: T-BOOK-018
+  title: "F-BOOK-0003 r1 — the spine-join two-phase widened match (code candidate applied) + the standing orphan census"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15f18fdca65e79)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-010]
+  execution_record: >
+    The F-BOOK-0003 code candidate, applied as lane 1 of the operator
+    dispatch trace 1a15f18fdca65e79. Design of record: phase 1 (r0) runs
+    UNTOUCHED (flattened-bullet tiers 1/2/3); phase 2 rescues REVIEW
+    bullets ONLY by EVIDENCE-BASED attach - the missing official tokens
+    must ride a sub-clause bullet folded into a DIFFERENT bullet of the
+    same box (tokens(sub) ⊆ tokens(official)), head-containment floor 0.5
+    keeps the anchor genuinely about the point, and the reconstituted
+    containment (head ∪ attached) clears the SAME 0.9/0.75 bars the
+    single-phase law uses (tier 2/3); method="widened" (the 27-row
+    data-repair precedent class, now native), lineage "<loId>#b<n>+attach";
+    deterministic best-wins assignment (tier, then score, then spine
+    globalOrder, then bullet order; each sub-clause attaches at most
+    once, each bullet at most once). Proof of record: 8/8 unit tests
+    including the VERBATIM p.39 c4 LO box (chem_v3_u1_c4_pdf039_0113,
+    sha-pinned parse b2c67eaf - 1.18's sub-clauses interleaved after the
+    identify bullet, reproduced in the fixture); full-parse census
+    (scripts/spine-census.ts, session-side standing tool): 62 LO chunks /
+    29 chapters - binding-set equality 14/29, the 15 non-equal chapters
+    carry EXACTLY the 27 operator method=widened data repairs (verified
+    27/27 - the honest review-lane dispositions an offline engine cannot
+    and should not derive), EXTRA=0 everywhere (zero out-of-law binds),
+    intersecting provenance 146 codes with ZERO method/tier drift (sole
+    disclosed delta: 1.18 score 0.611->1.0 - the attach evidence
+    completing the containment the data repair only approximated); api
+    tsc 0; full suite 2417 pass / 0 fail. No DB writes, no re-ingest of
+    record (all join-set rows stay as they are); the engine improvement
+    applies at any FUTURE 133b run and to the other books' onboarding.
+    Receipt: .syllabai/receipts/T-BOOK-018/spine-join-two-phase-r0.json.
+base:
+  repo: "syllabai-v2 @ t-book-016-018/triple-lane-r0"
+basis: "F-BOOK-0003 (findings.jsonl); ADR-BOOK-0001 §3; the content-maps code grammar (contracts specCodeRefSchema); the 27-row method=widened data-repair precedent"
+scope:
+  allowed:
+    - "apps/api/src/services/ingestion/books/spine-join.ts (two-phase)"
+    - "apps/api/src/services/ingestion/books/spine-join.test.ts (new)"
+    - "books/4ch1/qa/findings.jsonl (F-BOOK-0003 status + F-BOOK-0004)"
+    - ".syllabai/receipts/T-BOOK-018/**"
+    - ".syllabai/tasks/T-BOOK-018-spine-join-two-phase.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "books-ingest-133b.ts behavior changes (runner consumes the same output shape)"
+    - "DB spec_codes re-writes (rows of record)"
+    - "new DDL"

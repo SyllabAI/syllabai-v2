@@ -1,0 +1,38 @@
+# books/4ch1 glossary - AUTHORED layer of record (T-BOOK-016, pack c06 refs)
+subject_code: "4ch1"
+terms:
+  - term: "concentration"
+    slug: concentration
+    definition: "The amount of substance per unit volume of solution: c = n / V, quoted in mol/dm3 (1 dm3 = 1000 cm3)."
+    ms_accepts: ["moles per dm3", "c = n / V"]
+    ms_avoids: ["strength of a solution"]
+    aliases: ["molar concentration"]
+    source: "authored:pack-c06-c10-r0"
+  - term: "molar gas volume"
+    slug: molar-gas-volume
+    definition: "The volume of one mole of any gas: 24 dm3 at room temperature and pressure (rtp)."
+    ms_accepts: ["24 dm3 at rtp", "24000 cm3 per mole at rtp"]
+    ms_avoids: ["22.4 dm3 (that is stp, not the exam's rtp)"]
+    aliases: []
+    source: "authored:pack-c06-c10-r0"
+  - term: "excess"
+    slug: excess
+    definition: "More than enough of a reactant; the OTHER reactant is the limiting one and fixes the amount of product."
+    ms_accepts: ["more than enough of that reactant", "the other reactant is limiting"]
+    ms_avoids: ["all of it reacts (an excess never fully reacts)"]
+    aliases: ["in excess"]
+    source: "authored:pack-c06-c10-r0"
+  - term: "titration"
+    slug: titration
+    definition: "A technique for reacting a solution of exactly known volume with one of known concentration to find an unknown concentration."
+    ms_accepts: ["measured volume from a burette added until the end point", "used with an indicator"]
+    ms_avoids: ["just mixing two solutions"]
+    aliases: []
+    source: "authored:pack-c06-c10-r0"
+  - term: "titre"
+    slug: titre
+    definition: "The volume of solution delivered by the burette during a titration, read from the graduation marks."
+    ms_accepts: ["the burette volume used", "final reading minus initial reading"]
+    ms_avoids: ["the colour change (that is the end point)"]
+    aliases: []
+    source: "authored:pack-c06-c10-r0"

@@ -1,0 +1,65 @@
+version: 1
+task:
+  id: T-BOOK-016
+  title: "Unit 1 completion packs (c06-c10) through S0-S4 — authoring, lint green, scoped ingest, 20% spot-check, pack flip; the rail serves the whole Unit 1"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15f18fdca65e79)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-010, T-BOOK-004, T-BOOK-005, T-BOOK-006, T-BOOK-007]
+  execution_record: >
+    Executed per BOOK-BUILD-PLAYBOOK (S0-S4) under the operator dispatch
+    "F-BOOK-0003 code candidate, glossary 27-term validation lane, c06-c10
+    packs" (trace 1a15f18fdca65e79). S0: 5 pack.yaml plans (c06-c10 =
+    Formulae part 2 / Ionic / Covalent / Metallic / Electrolysis), page-true
+    anchored to the sha-pinned parse of record census (b2c67eaf, byte-
+    verified this session; ranges 73-83/84-93/94-106/107-109/110-122 =
+    book_chapters DB truth). S1: 30 blocks (9 of the 11 block types; 6
+    types sampled), anchors monotonic page-true after two honest
+    re-orders; 31 authored glossary terms across 5 new topic files with
+    the ms_accepts/ms_avoids layer; 1 mcq-embed per pack carrying REAL
+    bank external-refs probe-verified ACTIVE MCQ_SINGLE with 4 options
+    (q15 formulae / q2 ionic / q9 covalent / q10 metallic / q7
+    electrolysis); specPointRefs all inside the DB join sets of record
+    (1.34C-1.35C / 1.37-1.43 / 1.44-1.51 / 1.52C-1.54C / 1.55C-1.60C).
+    S2: lint G1-G4 0 findings across ALL 10 packs / 60 blocks (two gate
+    cycles: the lint caught three anchor monotonicity breaks and the bank
+    grammar rejects part-suffixed refs before anything shipped); lint map
+    bug F-BOOK-0004 fixed (c10 was mapped S1-h, canonical binds S1-i).
+    S3: scoped ingest of record (staging dir carrying ONLY c06-c10 packs +
+    the full glossary + meta/book.yaml; the ingest script of record
+    UNCHANGED, byte-identical) - this isolates c01-c05 whose rows are
+    of record (a full-dir ingest would demote their VALIDATED rows via the
+    upsert's SUGGESTED reset). COW stage intentionally waived and
+    disclosed: zero DDL (0005 already of record), the same guarded
+    idempotent scripts proven byte-identically on both planes at golive,
+    every write pre/post re-proven in its own tx. Pipeline on PRODUCTION:
+    chapter flip u1:c6..c10 (pre 5/5 SUGGESTED, post 5/5 VALIDATED, one
+    tx) -> ingest COMMIT 30 blocks + 58 glossary terms (27 re-upserted
+    idempotently, state untouched; 31 new SUGGESTED) -> 20% spot-check 6/6
+    GREEN (num-stepper/mcq/drag-label/callout/sort-match/mcq x L1 zod / L2
+    canonical jsonb / L3 page-true vs the sha-pinned parse census / L4
+    payload laws) + full-set cheap laws GREEN (identity/range/monotonic
+    x30, bank 5/5, glossary slugs 34/34, Lane-B 27 remain VALIDATED) +
+    negative control 0 VALIDATED rows pre-flip. S4: pack flip x30
+    SUGGESTED->VALIDATED, version 1->2, demo gate c01-c05 verified
+    untouched (30 blocks, v<=2); serve proof (railBlocksForChapter double
+    gate): u1:c1..c10 = 7/6/6/5/6/7/6/6/4/7, u1:c11 honest-empty - THE
+    RAIL SERVES THE WHOLE UNIT 1. Receipt:
+    .syllabai/receipts/T-BOOK-016/unit1-c06-c10-r0.json. ADR §3 L-content.
+base:
+  repo: "syllabai-v2 @ t-book-016-018/triple-lane-r0 (off b05bf769 lineage)"
+basis: "BOOK-BUILD-PLAYBOOK S0-S4 + G1-G4; BOOK-PACK-SPEC; ADR-BOOK-0001 §3/§6; books/4ch1/meta/book.yaml spine; book_chapters DB truth (join sets + ranges); probe-verified live bank"
+scope:
+  allowed:
+    - "books/4ch1/packs/c06..c10 (new packs)"
+    - "books/4ch1/glossary/*.yaml (5 new topic files)"
+    - "scripts/books/lint.mjs (CHAPTER_SUBSECTION c10 fix, F-BOOK-0004)"
+    - ".syllabai/receipts/T-BOOK-016/**"
+    - ".syllabai/tasks/T-BOOK-016-unit1-c06-c10.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "c01-c05 pack/block changes (of record)"
+    - "new DDL (0005 is the migration of record)"
+    - "book question text re-served (page-jump law; mcq-embed is checkRefs only)"

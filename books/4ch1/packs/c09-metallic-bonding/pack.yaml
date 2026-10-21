@@ -1,0 +1,14 @@
+# S0 output of record - c09-metallic-bonding
+chapter: "c09"
+chapter_key: "u1:c9"
+title: "Metallic bonding"
+status: published # S4 flip of record — T-BOOK-016 (operator dispatch trace 1a15f18fdca65e79); DB book_blocks VALIDATED of record
+block_schema: "book.block/1"
+planned_blocks: 4
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "chem_only chapter (3 pages): p107 intro, p108 lattice diagram + properties + check - compact pack by design"
+blocks:
+  - {ord: 1, id: "c09-metallic-bonding/b01", type: prose, file: "blocks/b01-prose.json", anchor: 107}
+  - {ord: 2, id: "c09-metallic-bonding/b02", type: figure, file: "blocks/b02-figure-metallic-lattice.json", anchor: 108}
+  - {ord: 3, id: "c09-metallic-bonding/b03", type: sort-match, file: "blocks/b03-sort-match-metal-properties.json", anchor: 108}
+  - {ord: 4, id: "c09-metallic-bonding/b04", type: mcq-embed, file: "blocks/b04-mcq-check.json", anchor: 108}

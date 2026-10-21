@@ -11142,3 +11142,20 @@ Work Log:
 
 Stage Summary:
 - The deploy window is now honest by construction. Files: classroom-tab.tsx + class-detail-client.tsx only; zero API/DB contact.
+
+---
+Task ID: T-BOOK-016/017/018 triple-lane r0 (trace 1a15f18fdca65e79, operator dispatch "F-BOOK-0003 code candidate (spine-join two-phase match), glossary 27-term validation lane, c06–c10 packs")
+Agent: r0 (Super Z, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355)
+
+Work Log:
+- fetch-first: origin/main b05bf769 (the golive bookkeeping merge of record) carried the full T-BOOK chain; work branch t-book-016-018/triple-lane-r0 cut off it (the three lanes land as three scoped commits on one branch — one dispatch, one atomic landing, the rebase-race of PR #256 not tripled).
+- LANE 1 / T-BOOK-018 (F-BOOK-0003 r1): the two-phase widened match applied to spine-join.ts — phase 1 untouched; phase 2 rescues REVIEW bullets only by evidence-based attach (tokens(sub) ⊆ tokens(official), head floor 0.5, reconstituted containment clears the SAME 0.9/0.75 bars), method=widened, deterministic best-wins. Proven: 8/8 unit tests incl. the verbatim p.39 c4 LO box; full-parse census 29 chapters (binding equality 14/29, the 15 non-equal carry EXACTLY the 27 operator widened data repairs, EXTRA=0 everywhere, intersecting provenance 146 codes ZERO method/tier drift; sole disclosed delta 1.18 score 0.611→1.0); api tsc 0; suite 2417/0. Zero DB writes; the census script is the standing orphan-vs-canonical-graph verify.
+- LANE 2 / T-BOOK-017 (glossary validation): 27/27 terms pass V1 schema (contracts zod) / V2 authored-truth canonical / V3 ms-layer / V4 definition-floor; flip of record ONE guarded tx on PRODUCTION — VALIDATED=27. State-preservation law verified: the ingest upsert never touches validation_state (the 27 survived the lane-3 re-upsert, spot-checked).
+- LANE 3 / T-BOOK-016 (c06-c10): 30 blocks authored (7/6/6/4/7; 9 of 11 types; anchors page-true monotonic after two honest re-orders the lint caught), 31 glossary terms in 5 new topic files, 5 mcq checkRefs probe-verified ACTIVE MCQ_SINGLE ×4 options; lint G1-G4 0 across ALL 10 packs / 60 blocks (F-BOOK-0004 fixed: the c10 S1-h→S1-i map bug, caught before first fire); chapter flip u1:c6..c10 (guarded tx) → SCOPED ingest COMMIT 30 blocks + 58 terms (staging dir isolates c01-c05 of-record rows from the upsert's SUGGESTED reset — the isolation law) → 20% spot-check 6/6 GREEN ×4 laws + full-set cheap laws + negative control 0 → pack flip ×30 (v1→2, demo gate re-proven untouched) → serve proof u1:c1..c10 = 7/6/6/5/6/7/6/6/4/7, u1:c11 honest-empty. THE RAIL SERVES THE WHOLE UNIT 1.
+- COW waiver disclosed in the receipt: zero DDL + the same scripts proven byte-identically at golive + per-tx pre/post re-proves; two clean bring-up rollbacks (nonexistent book_chapters.updated_at; documents keyed on id instead of document_id) — fixed before any commit landed, zero partial state.
+- Cred files re-staged 0600 (.prod_url/.neon_pat), inline only; rotation advisories stand.
+
+Stage Summary:
+- Production Neon of record: parent book + 10 chapters (u1:c1..c10) + 60 book_blocks ALL VALIDATED; 58 glossary terms (27 VALIDATED + 31 SUGGESTED, their own future lane); checks resolve to the live bank; the §3 double gate satisfied for the WHOLE Unit 1.
+- Repo of record: spine-join two-phase + tests; c06-c10 packs published; 5 glossary files; lint map fix; findings F-BOOK-0003 (discharged) + F-BOOK-0004 (new, fixed); task yamls + receipts ×3; this append.
+- Open items: (1) the 31 new glossary terms SUGGESTED (validation lane candidate); (2) Units 2-4 packs (plan T-BOOK-011..013) — the engine + playbook now proven end-to-end twice; (3) F-BOOK-0001 LICENSE-DATA.md amendment still gates Phase C; (4) PAT rotation (GitHub + Neon).

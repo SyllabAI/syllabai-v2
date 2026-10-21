@@ -1,0 +1,50 @@
+{
+  "id": "c10-electrolysis/b02",
+  "type": "drag-label",
+  "chapterKey": "u1:c10",
+  "ord": 2,
+  "pdfPageAnchor": 111,
+  "specPointRefs": [
+    "1.57C"
+  ],
+  "glossaryRefs": [
+    "anode",
+    "cathode",
+    "anion",
+    "cation"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Label the two electrodes and the ions each one attracts (PANiC).",
+    "labels": [
+      "positive anode",
+      "negative cathode",
+      "anions go here",
+      "cations go here"
+    ],
+    "regions": [
+      {
+        "id": "plus-elec",
+        "text": "The electrode joined to the + terminal"
+      },
+      {
+        "id": "minus-elec",
+        "text": "The electrode joined to the - terminal"
+      },
+      {
+        "id": "to-plus",
+        "text": "Negative ions migrate to this electrode"
+      },
+      {
+        "id": "to-minus",
+        "text": "Positive ions migrate to this electrode"
+      }
+    ],
+    "solution": {
+      "plus-elec": "positive anode",
+      "minus-elec": "negative cathode",
+      "to-plus": "anions go here",
+      "to-minus": "cations go here"
+    }
+  }
+}
