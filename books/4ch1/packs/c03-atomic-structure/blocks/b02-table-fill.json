@@ -1,0 +1,87 @@
+{
+  "id": "c03-atomic-structure/b02",
+  "type": "table-fill",
+  "chapterKey": "u1:c3",
+  "ord": 2,
+  "pdfPageAnchor": 34,
+  "specPointRefs": [
+    "1.15",
+    "1.16"
+  ],
+  "glossaryRefs": [
+    "proton",
+    "neutron",
+    "electron"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Complete the subatomic particle table (relative values).",
+    "columns": [
+      "Particle",
+      "Relative mass",
+      "Relative charge"
+    ],
+    "rows": [
+      {
+        "label": "Proton",
+        "cells": [
+          {
+            "accepts": [
+              "1",
+              "one"
+            ],
+            "hint": "the heavy standard"
+          },
+          {
+            "accepts": [
+              "+1",
+              "1+",
+              "+ 1"
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Neutron",
+        "cells": [
+          {
+            "accepts": [
+              "1",
+              "one"
+            ]
+          },
+          {
+            "accepts": [
+              "0",
+              "none",
+              "no charge",
+              "zero"
+            ],
+            "hint": "neutral"
+          }
+        ]
+      },
+      {
+        "label": "Electron",
+        "cells": [
+          {
+            "accepts": [
+              "negligible",
+              "1/1836",
+              "almost 0",
+              "~0"
+            ],
+            "hint": "so small it is ignored"
+          },
+          {
+            "accepts": [
+              "-1",
+              "1-",
+              "-1"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

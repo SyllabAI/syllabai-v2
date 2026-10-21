@@ -10788,3 +10788,18 @@ Work Log:
 Stage Summary:
 - The rail is now FEATURE-COMPLETE for phase A: shell (003), widgets (004-006), glossary/checks/tutor wiring (007-009) — awaiting only the PACKS (T-BOOK-010) to have anything to serve, by construction.
 - Evidence emission from rail checks stays OFF (post-pilot surface); staging COW proofs pending operator keys (carries 002/003 pending items).
+
+---
+Task ID: T-BOOK-010-r0 (trace 1a15de049a869781, operator order "T-BOOK-010 (Unit 1 packs S0-S4)")
+Agent: r0 (Super Z, zai-web session web-c414c074, chat 08b3170a)
+Task: Author the Unit 1 demo-gate packs (c01-c05) through S0-S4 with the pack lint of record and the ingest of record.
+
+Work Log:
+- Grounded on the REAL coordinates of record: the books slices manifest (book-slices-manifest-v2: chapter pdf ranges u1:c1 11-22 ... u1:c5 47-72, docId e6c0db50... v1) + graph/igcse-chemistry/specification_points.yaml (182 points; S1 subsection bindings a-h) + the SME corpus bundle (real MCQ-first question orders per unit-1 topic → the checkRefs of record).
+- S0: 5 pack.yaml plans; book.yaml sha256 TBDs retired (PDF d48020e0... from the archive manifest; parse v3 b2c67ea... computed). S1: 30 blocks / 9 types / 27 authored glossary terms (ms layer); media-embed honestly absent (no licensed asset in the gate).
+- S2: scripts/books/lint.mjs — the gate caught 39 findings across two cycles: the LINT's own chapterKey derivation (u1:4 vs the u1:c4 grammar), the figure payload law (content.page REQUIRED by contracts), and two anchor monotonicity breaks. Fixed to 0 findings, exit 0. The lint doing its job IS the story of the lane.
+- S3: books-ingest-rail.ts — DB binding laws at ingest (chapter VALIDATED, refs ⊆ join set, checkRefs resolve ACTIVE MCQ_SINGLE; SUGGESTED-only writes; idempotent upsert; single tx with honest rollback on ANY skip). DRY RUN exit 0. DB apply PENDING-OPERATOR (no Neon key — carries T-BOOK-002).
+- S4: PENDING-OPERATOR (spot-check + pack flip, ADR §3 L-content).
+
+Stage Summary:
+- The demo gate's content plane is AUTHOR-COMPLETE and LINT-GREEN: 5 packs / 30 blocks / 27 terms of record, ingest staged and idempotent. The rail goes visible the moment the operator applies + flips — by construction, never before.

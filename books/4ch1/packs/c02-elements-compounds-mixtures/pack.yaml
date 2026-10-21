@@ -1,0 +1,15 @@
+# S0 output of record - c02-elements-compounds-mixtures
+chapter: "c02"
+chapter_key: "u1:c2"
+title: "Elements, compounds and mixtures"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+blocks:
+  - {ord: 1, id: "c02-elements-compounds-mixtures/b01", type: prose, file: "blocks/b01-prose.json", anchor: 23}
+  - {ord: 2, id: "c02-elements-compounds-mixtures/b02", type: sort-match, file: "blocks/b02-sort-match.json", anchor: 24}
+  - {ord: 3, id: "c02-elements-compounds-mixtures/b03", type: callout, file: "blocks/b03-callout.json", anchor: 26}
+  - {ord: 4, id: "c02-elements-compounds-mixtures/b04", type: num-stepper, file: "blocks/b04-num-stepper.json", anchor: 28}
+  - {ord: 5, id: "c02-elements-compounds-mixtures/b05", type: drag-label, file: "blocks/b05-drag-label.json", anchor: 29}
+  - {ord: 6, id: "c02-elements-compounds-mixtures/b06", type: mcq-embed, file: "blocks/b06-mcq-embed.json", anchor: 30}

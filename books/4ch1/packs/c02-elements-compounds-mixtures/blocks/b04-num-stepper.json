@@ -1,0 +1,39 @@
+{
+  "id": "c02-elements-compounds-mixtures/b04",
+  "type": "num-stepper",
+  "chapterKey": "u1:c2",
+  "ord": 4,
+  "pdfPageAnchor": 28,
+  "specPointRefs": [
+    "1.12"
+  ],
+  "glossaryRefs": [
+    "rf-value"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "A chromatogram: the substance moves 3.2 cm, the solvent front moves 4.0 cm. Find Rf.",
+    "steps": [
+      {
+        "prompt": "Substance distance (cm)",
+        "answer": 3.2,
+        "unit": [
+          "cm"
+        ]
+      },
+      {
+        "prompt": "Solvent front distance (cm)",
+        "answer": 4.0,
+        "unit": [
+          "cm"
+        ]
+      },
+      {
+        "prompt": "Rf = substance / solvent (no units)",
+        "answer": 0.8,
+        "sigFigs": 2,
+        "hint": "divide the two distances; quote to 2 significant figures"
+      }
+    ]
+  }
+}

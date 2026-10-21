@@ -1,0 +1,194 @@
+# books/4ch1 glossary - AUTHORED layer of record (BOOK-PACK-SPEC s5).
+# The seed file (seed-states-and-solutions.yaml) is the floor; this file
+# carries the examiner-safe definitions + the ms_accepts/ms_avoids layer.
+subject_code: "4ch1"
+terms:
+  - term: "atom"
+    slug: atom
+    definition: "The smallest neutral particle of an element: a nucleus of protons and neutrons, surrounded by electrons in shells."
+    ms_accepts: ["nucleus (protons + neutrons) + electrons", "neutral particle"]
+    ms_avoids: ["molecule (different particle)"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p337"
+  - term: "Avogadro constant"
+    slug: avogadro-constant
+    definition: "The number of particles in one mole of a substance: 6.02 x 10^23 per mole."
+    ms_accepts: ["6.02 x 10^23 per mole"]
+    ms_avoids: ["Avogadro's number of grams"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "balanced equation"
+    slug: balanced-equation
+    definition: "A symbol equation with the same number of atoms of each element on both sides; balancing uses whole-number coefficients, never changed formulae."
+    ms_accepts: ["same atoms each side", "change the big numbers (coefficients)"]
+    ms_avoids: ["changing the small numbers (formulae)"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "boiling"
+    slug: boiling
+    definition: "Liquid to gas throughout the liquid at the boiling point; bubbles form within the liquid."
+    ms_accepts: ["liquid to gas at the boiling point", "occurs throughout the liquid"]
+    ms_avoids: ["evaporation (they are different)"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p337"
+  - term: "chromatography"
+    slug: chromatography
+    definition: "A separation technique that splits dissolved substances by their different solubilities and attractions to the stationary phase."
+    ms_accepts: ["separation of dissolved substances", "solubility differences"]
+    ms_avoids: ["dyes climbing (unqualified)"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p339"
+  - term: "compound"
+    slug: compound
+    definition: "A substance of two or more elements chemically bonded in fixed proportions, which can only be separated by chemical reactions."
+    ms_accepts: ["chemically bonded", "fixed ratio/proportion", "separated by chemical means"]
+    ms_avoids: ["mixture"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p339"
+  - term: "condensing"
+    slug: condensing
+    definition: "Gas to liquid when a gas cools to or below its boiling point; particles lose energy and move closer."
+    ms_accepts: ["condensation", "gas to liquid"]
+    ms_avoids: ["freezing (solid to liquid is melting)"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p339"
+  - term: "electron"
+    slug: electron
+    definition: "Subatomic particle in shells around the nucleus with negligible mass and relative charge -1; shell occupancy controls reactions."
+    ms_accepts: ["relative charge -1", "negligible mass", "in shells"]
+    ms_avoids: ["orbiting planet model (outdated phrasing)"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "element"
+    slug: element
+    definition: "A substance that cannot be split into anything simpler by chemical means; all its atoms have the same atomic number."
+    ms_accepts: ["one type of atom", "cannot be broken down chemically"]
+    ms_avoids: ["pure substance (mixtures can be pure too)"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p341"
+  - term: "empirical formula"
+    slug: empirical-formula
+    definition: "The simplest whole-number ratio of atoms of each element in a compound; the molecular formula is a whole-number multiple of it."
+    ms_accepts: ["simplest whole-number ratio"]
+    ms_avoids: ["actual number of atoms (that is molecular formula)"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p341"
+  - term: "evaporation"
+    slug: evaporation
+    definition: "Liquid to gas at the surface only, at any temperature; faster when warmer."
+    ms_accepts: ["gas formation at the surface", "below the boiling point"]
+    ms_avoids: ["boiling"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "group"
+    slug: group
+    definition: "A vertical column of the Periodic Table; elements in the same group have the same number of electrons in their outer shell and similar reactions."
+    ms_accepts: ["vertical column", "same outer-shell electrons", "similar chemical properties"]
+    ms_avoids: ["same number of shells (that is a period)"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p341"
+  - term: "isotope"
+    slug: isotope
+    definition: "Atoms of the same element with the same number of protons but different numbers of neutrons; same chemical properties."
+    ms_accepts: ["same protons", "different neutrons", "same chemical properties"]
+    ms_avoids: ["different element"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p341"
+  - term: "melting"
+    slug: melting
+    definition: "Solid to liquid at the melting point, when particles gain enough energy to overcome fixed positions."
+    ms_accepts: ["solid to liquid", "at the melting point"]
+    ms_avoids: ["liquefying (unqualified)"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p328"
+  - term: "mixture"
+    slug: mixture
+    definition: "Two or more substances not chemically bonded; each keeps its own properties and they can be separated physically."
+    ms_accepts: ["not chemically joined", "separated by physical means"]
+    ms_avoids: ["compound"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p343"
+  - term: "mole"
+    slug: mole
+    definition: "The unit for amount of substance; one mole contains 6.02 x 10^23 particles (the Avogadro constant)."
+    ms_accepts: ["amount of substance", "6.02 x 10^23 particles"]
+    ms_avoids: ["a count of molecules only"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p343"
+  - term: "molecule"
+    slug: molecule
+    definition: "Two or more atoms covalently bonded together; can be of one element or a compound."
+    ms_accepts: ["covalently bonded atoms"]
+    ms_avoids: ["any joined atoms (ionic lattices are not molecules)"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p343"
+  - term: "neutron"
+    slug: neutron
+    definition: "Subatomic particle in the nucleus with relative mass 1 and zero charge."
+    ms_accepts: ["relative mass 1", "no charge", "in the nucleus"]
+    ms_avoids: ["neutral charge (say 'no charge' or 'zero charge')"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "noble gas"
+    slug: noble-gas
+    definition: "Group 0 elements: helium, neon, argon, krypton, xenon, radon. They have full outer shells and do not readily react."
+    ms_accepts: ["Group 0", "full outer shell", "unreactive / do not readily react"]
+    ms_avoids: ["never react"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p343"
+  - term: "period"
+    slug: period
+    definition: "A horizontal row of the Periodic Table; elements in the same period have the same number of occupied electron shells."
+    ms_accepts: ["horizontal row", "same number of occupied shells"]
+    ms_avoids: ["same outer electrons"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "proton"
+    slug: proton
+    definition: "Subatomic particle in the nucleus with relative mass 1 and relative charge +1; its number fixes the element (the atomic number)."
+    ms_accepts: ["relative charge +1", "relative mass 1", "in the nucleus"]
+    ms_avoids: ["positive electron"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "relative atomic mass (Ar)"
+    slug: relative-atomic-mass
+    definition: "The weighted mean mass of an atom of an element compared with 1/12 the mass of a carbon-12 atom."
+    ms_accepts: ["weighted mean mass", "compared to carbon-12"]
+    ms_avoids: ["mass number (that is protons + neutrons)"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "relative formula mass (Mr)"
+    slug: relative-formula-mass
+    definition: "The sum of the relative atomic masses in the formula of a substance; has no units."
+    ms_accepts: ["sum of Ar values", "no units"]
+    ms_avoids: ["molar mass with units (that is g/mol, not Mr)"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "Rf value"
+    slug: rf-value
+    definition: "Distance moved by the substance divided by distance moved by the solvent front; always between 0 and 1."
+    ms_accepts: ["distance substance / distance solvent", "ratio of distances"]
+    ms_avoids: ["how far the dye goes"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "state symbol"
+    slug: state-symbol
+    definition: "(s), (l), (g) or (aq) after a formula, showing the physical state of each species in an equation."
+    ms_accepts: ["(s)/(l)/(g)/(aq)", "physical state"]
+    ms_avoids: ["melting symbols"]
+    aliases: []
+    source: "authored:pack-c01-c05-r0"
+  - term: "states of matter"
+    slug: states-of-matter
+    definition: "The three physical forms matter takes - solid, liquid and gas. The state depends on the arrangement, movement and energy of the particles."
+    ms_accepts: ["solid, liquid and gas", "arrangement/movement/energy of particles"]
+    ms_avoids: ["four states of matter"]
+    aliases: []
+    source: "seed:chunks_v3#chem_v3_u0_c0_pdf337_1259:p328"
+  - term: "sublimation"
+    slug: sublimation
+    definition: "Solid to gas directly, without passing through the liquid state."
+    ms_accepts: ["solid straight to gas", "no liquid stage"]
+    ms_avoids: ["solid to liquid"]
+    aliases: []
+    source: "seed:chunks_v3#glossary:p337"

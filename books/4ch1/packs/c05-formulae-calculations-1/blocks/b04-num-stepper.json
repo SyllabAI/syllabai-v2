@@ -1,0 +1,45 @@
+{
+  "id": "c05-formulae-calculations-1/b04",
+  "type": "num-stepper",
+  "chapterKey": "u1:c5",
+  "ord": 4,
+  "pdfPageAnchor": 58,
+  "specPointRefs": [
+    "1.27",
+    "1.31"
+  ],
+  "glossaryRefs": [
+    "mole",
+    "relative-formula-mass",
+    "avogadro-constant"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "The mole ladder: magnesium, Ar = 24.3.",
+    "steps": [
+      {
+        "prompt": "Moles in 48.6 g of Mg (n = m / Ar)",
+        "answer": 2,
+        "unit": [
+          "mol"
+        ],
+        "hint": "48.6 / 24.3"
+      },
+      {
+        "prompt": "Number of atoms in that sample (n x 6.02 x 10^23)",
+        "answer": "1.204e24",
+        "hint": "2 x 6.02 x 10^23 - enter as 1.204e24"
+      },
+      {
+        "prompt": "Mass of 0.25 mol of Mg (m = n x Ar)",
+        "answer": 6.075,
+        "unit": [
+          "g"
+        ],
+        "tolerance": 0.001,
+        "sigFigs": 3,
+        "hint": "0.25 x 24.3"
+      }
+    ]
+  }
+}
