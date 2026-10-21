@@ -10,6 +10,22 @@
  * content-maps/fig46 law); provenance rides the content-maps code grammar
  * {spineCode, officialCode, officialId, tier, score, lineage, method}.
  *
+ * F-BOOK-0003 r1 — the TWO-PHASE widened law: the book's LO boxes
+ * interleave colon-continuation sub-clauses AFTER the next top-level
+ * bullet (the p.39 c4 typesetting: 1.18's "in order of atomic number" and
+ * "in groups and periods" fold into the 1.19 bullet), so a head bullet's
+ * flattened matchText misses its own official wording's continuation
+ * tokens (containment 0.611 < 0.75 → honest review). Phase 1 matches the
+ * flattened bullets exactly as r0 did. Phase 2 rescues REVIEW bullets
+ * ONLY, by EVIDENCE-BASED attach: the missing official tokens must be
+ * carried verbatim-class by a sub-clause bullet folded into a DIFFERENT
+ * bullet of the same box (tokens(sub) ⊆ tokens(official)), and the
+ * reconstituted containment (head ∪ attached) must clear the same 0.9/
+ * 0.75 bars the single-phase law uses. The bind records method="widened"
+ * (the data-repair precedent class, now native) and lineage "lo:<id>#b<n>
+ * +attach". Deterministic: best tier first, then score, then spine order,
+ * then bullet order; each sub-clause attaches at most once.
+ *
  * Deterministic: no clocks, no randomness, no model calls. The spine is
  * INJECTED (the runner passes loadConceptGraphSnapshot().specPoints; tests
  * pass synthetic points) — this module never touches the filesystem.
@@ -108,6 +124,15 @@ function containment(officialTokens: string[], bulletTokens: Set<string>): numbe
   for (const t of officialTokens) if (bulletTokens.has(t)) shared += 1;
   return shared / officialTokens.length;
 }
+
+// F-BOOK-0003 r1 — the two-phase widened law's bars. The head floor keeps
+// the anchor bullet genuinely about the point (a random low-overlap bullet
+// must not borrow a foreign sub-clause); the reconstituted bars are the
+// SAME 0.9/0.75 the single-phase tiers require — widening changes WHERE the
+// continuation tokens come from, never how much evidence a bind needs.
+const WIDENED_HEAD_FLOOR = 0.5;
+const WIDENED_TIER2_BAR = 0.9;
+const WIDENED_TIER3_BAR = 0.75;
 
 const TIER_VERBATIM = 1;
 const TIER_HIGH = 2;
@@ -227,6 +252,10 @@ export function joinChapterLearningObjectives(
   const bySpine = new Map<string, SpecCodeRef>();
   const seen = new Set<string>();
   const review: ChapterJoinResult["review"] = [];
+  // F-BOOK-0003 r1: review entries keyed by their deduped matchText so the
+  // widened phase can re-associate them with their LoBullet objects
+  const reviewByKey = new Map<string, ChapterJoinResult["review"][number]>();
+  const boundKeys = new Set<string>();
   let matched = 0;
   for (const bullet of bullets) {
     const key = normalizeStatement(bullet.matchText);
@@ -234,29 +263,133 @@ export function joinChapterLearningObjectives(
     seen.add(key);
     const { ref, best } = matchBullet(bullet, spine, loId);
     if (ref === null) {
-      review.push({
+      const entry = {
         text: bullet.text,
         nearOfficialCode: best?.officialCode ?? null,
         nearScore: best?.score ?? null,
-      });
+      };
+      review.push(entry);
+      reviewByKey.set(key, entry);
       continue;
     }
     matched += 1;
+    boundKeys.add(key);
     const prev = bySpine.get(ref.spineCode);
     if (prev === undefined) {
       bySpine.set(ref.spineCode, ref);
     } else {
-      // duplicate LO box repeats: keep the better tier/score
-      const rank = (r: SpecCodeRef) => (r.method === "verbatim" ? 0 : r.method === "normalized" ? 1 : 2);
+      // duplicate LO box repeats: keep the better tier/score (widened outranks
+      // fuzzy: it is attach-evidenced like normalized, not a bare near-miss)
+      const rank = (r: SpecCodeRef) =>
+        r.method === "verbatim" ? 0 : r.method === "normalized" ? 1 : r.method === "widened" ? 2 : 3;
       if (rank(ref) < rank(prev) || (rank(ref) === rank(prev) && (ref.score ?? 0) > (prev.score ?? 0))) {
         bySpine.set(ref.spineCode, ref);
       }
     }
   }
+  // ── phase 2 (F-BOOK-0003 r1): the widened attach for REVIEW bullets ──
+  // Evidence law: a sub-clause folded under a DIFFERENT bullet carries the
+  // missing official tokens verbatim-class. Best-wins, deterministic.
+  const reviewBullets: Array<{ bullet: LoBullet; review: ChapterJoinResult["review"][number] }> = [];
+  for (const bullet of bullets) {
+    const key = normalizeStatement(bullet.matchText);
+    if (boundKeys.has(key)) continue;
+    const entry = reviewByKey.get(key);
+    if (entry !== undefined && !reviewBullets.some((rb) => rb.bullet.text === bullet.text)) {
+      reviewBullets.push({ bullet, review: entry });
+    }
+  }
+  // sub-clause inventory (dedupe identical sub texts across box repeats;
+  // first occurrence order is the deterministic inventory order)
+  const subInventory: Array<{ text: string; tokens: string[] }> = [];
+  const subSeen = new Set<string>();
+  for (const bullet of bullets) {
+    for (const sub of bullet.subs) {
+      const n = normalizeStatement(sub);
+      if (n === "" || subSeen.has(n)) continue;
+      subSeen.add(n);
+      subInventory.push({ text: sub, tokens: n.split(" ") });
+    }
+  }
+  const boundCodes = new Set(bySpine.keys());
+  interface Candidate {
+    bullet: LoBullet;
+    point: SpinePoint;
+    officialTokens: string[];
+    score: number;
+    tier: number;
+    subs: Array<{ text: string; tokens: string[] }>;
+  }
+  const candidates: Candidate[] = [];
+  for (const { bullet } of reviewBullets) {
+    const headTokens = new Set(normalizeStatement(bullet.text).split(" "));
+    for (const sp of spine) {
+      if (boundCodes.has(sp.code)) continue;
+      const on = normalizeStatement(sp.wording);
+      if (on === "") continue;
+      const ot = on.split(" ");
+      const cHead = containment(ot, headTokens);
+      if (cHead < WIDENED_HEAD_FLOOR) continue;
+      const otSet = new Set(ot);
+      const attachable = subInventory.filter(
+        (s) => s.tokens.length > 0 && s.tokens.every((t) => otSet.has(t)),
+      );
+      if (attachable.length === 0) continue;
+      const union = new Set(headTokens);
+      for (const s of attachable) for (const t of s.tokens) union.add(t);
+      const score = containment(ot, union);
+      if (score >= WIDENED_TIER3_BAR) {
+        candidates.push({
+          bullet,
+          point: sp,
+          officialTokens: ot,
+          score,
+          tier: score >= WIDENED_TIER2_BAR ? TIER_HIGH : TIER_MEDIUM,
+          subs: attachable,
+        });
+      }
+    }
+  }
+  // deterministic best-wins assignment: tier asc, score desc, spine order,
+  // bullet order; each bullet binds at most once more, each sub at most once
+  candidates.sort(
+    (a, b) =>
+      a.tier - b.tier ||
+      b.score - a.score ||
+      a.point.globalOrder - b.point.globalOrder ||
+      a.bullet.index - b.bullet.index,
+  );
+  const widenedBound = new Set<string>();
+  const usedSubs = new Set<string>();
+  let widenedBullets = 0;
+  for (const c of candidates) {
+    if (widenedBound.has(c.bullet.text) || boundCodes.has(c.point.code)) continue;
+    if (c.subs.some((s) => usedSubs.has(s.text))) continue;
+    for (const s of c.subs) usedSubs.add(s.text);
+    widenedBound.add(c.bullet.text);
+    boundCodes.add(c.point.code);
+    widenedBullets += 1;
+    const tierName = c.tier === TIER_HIGH ? "2" : "3";
+    bySpine.set(c.point.code, {
+      spineCode: c.point.code,
+      officialCode: c.point.officialCode,
+      officialId: c.point.code,
+      tier: tierName,
+      score: Number(c.score.toFixed(4)),
+      lineage: `${loId}#b${c.bullet.index}+attach`,
+      method: "widened",
+    });
+  }
+  // the review lane shrinks by exactly the widened binds (never silent:
+  // what remains here is what NO bullet+attach evidence could map)
+  const finalReview = reviewBullets
+    .filter(({ bullet }) => !widenedBound.has(bullet.text))
+    .map(({ review }) => review);
+
   // collapse duplicate box repeats into one lineage label per code
   const refs = [...bySpine.values()].map((r) => ({
     ...r,
-    lineage: `${loId}#${r.lineage.split("#")[1]}`,
+    lineage: r.lineage.includes("+attach") ? r.lineage : `${loId}#${r.lineage.split("#")[1]}`,
   }));
   refs.sort((a, b) => {
     const pa = a.officialCode.split(".").map((x) => parseInt(x, 10) || 0);
@@ -266,5 +399,5 @@ export function joinChapterLearningObjectives(
     }
     return a.officialCode < b.officialCode ? -1 : a.officialCode > b.officialCode ? 1 : 0;
   });
-  return { refs, matchedBullets: matched, droppedCaptions, review };
+  return { refs, matchedBullets: matched + widenedBullets, droppedCaptions, review: finalReview };
 }
