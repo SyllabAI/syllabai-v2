@@ -11130,3 +11130,15 @@ Work Log:
 
 Stage Summary:
 - T-TEACH-002 COMPLETE as a branch (PR next): the pilot teacher can now turn tutor / CLA-CHECK / Smart Mark off per class with server-side, fail-closed, cost-zero enforcement where the anchors are real — and an honest recorded-state disclosure where they are not (no pretended coverage). Receipt: .syllabai/receipts/HUB-TEACH/t-teach-002-class-feature-toggles-r0.json. Next: T-TEACH-003 (ADR-027 D1 — enrollment-scoped marking queue), then T-TEACH-004 (core class workspace parity).
+
+---
+Task ID: T-TEACH-002 hotfix (deploy-window honesty guard)
+Agent: zai-web lane (main agent, session web-590847c1-cf63-4098-b0c8-a90085355429)
+Task: the merged hub auto-deploys Vercel BEFORE the api/migration ship — the learner classroom view on an OLD api serves NO features block, and the unguarded `!c.features.tutor` render would falsely badge every class "tutor off / fact-check off / smart mark off" (a dishonest UI state), while the teacher panel would TypeError.
+
+Work Log:
+- Guard of record: learner badges optional-chained (`c.features?.x` — absent block renders NO badge, never a false off); teacher panel CONDITIONAL on the features block (`detail.features && (...)` — no dehydrated control rows) + the toggle handler refuses on a missing block.
+- hub tsc + eslint clean. Deploy law restated: apply 0006 to Neon → seed course_registry → deploy the api; until then the hub is harmlessly dormant (no panel, no badges, toggles unreachable).
+
+Stage Summary:
+- The deploy window is now honest by construction. Files: classroom-tab.tsx + class-detail-client.tsx only; zero API/DB contact.
