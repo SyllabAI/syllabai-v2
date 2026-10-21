@@ -1,0 +1,35 @@
+{
+ "task": "T-BOOK-023",
+ "lane": "content — glossary validation lane r3: the 24 u4 organic-chemistry terms verified V1-V4 then flipped (the T-BOOK-022 vehicle re-run, SCOPE LAW INVERTED)",
+ "operator_order": "execute (trace 1a16008800e7c255) — the r3 lane the fire receipt and T-BOOK-022 both named",
+ "trace": "1a16008800e7c255",
+ "generated": "2026-10-21T20:02:37Z",
+ "laws": "V1 schema (bookGlossaryTermSchema zod, authored snake_case -> camelCase map + nullables defaulted — the r2 vehicle's mechanical map) / V2 authored-truth (DB row == authored file canonical key-order-insensitive compare, BOTH DIRECTIONS) / V3 ms layer (>=1 ms_accepts AND >=1 ms_avoids) / V4 definition floor (>=40 chars) + the kebab slug law + the duplicate-slug guard — T-BOOK-017/019/022 laws VERBATIM",
+ "scope_law_inverted": "u4-organic-chemistry.yaml IN scope (the F-BOOK-0001 gate discharged by the amendment of record e832e617; the u4 S3/S4 fire r0 bd38e04d landed the 24 rows SUGGESTED); the 88 of-record terms re-validated as bonus + VALIDATED drift guard; seed- files skipped (the standing law)",
+ "authored_layer": {
+  "terms_total": 112,
+  "u4_flip_scope": 24,
+  "of_record_bonus": 88,
+  "files": "9 authored (non-seed) files; u4-organic-chemistry.yaml = 24 terms"
+ },
+ "validation_results": {
+  "v1_v3_v4": "112/112 PASS, 0 findings (after the in-lane shape-map lesson below)",
+  "v2": "24/24 forward exact; 0 SUGGESTED strays outside scope; of-record 88 all VALIDATED (0 drift)",
+  "state_census_pre": "{SUGGESTED:24, VALIDATED:88}, rows 112"
+ },
+ "flip_of_record": {
+  "tx": "ONE guarded tx on PRODUCTION — pre (in tx) {SUGGESTED:24} -> UPDATE book_glossary_terms SET validation_state='VALIDATED', updated_at=now() WHERE validation_state='SUGGESTED' AND slug = any(24 u4 authored slugs) (rowcount 24) -> post (in tx) {VALIDATED:112} -> COMMIT; fresh-connection re-probe {VALIDATED:112}",
+  "output": "COMMIT: glossary flip 24 SUGGESTED->VALIDATED (one tx) — glossary of record 112/112; fresh-connection re-probe: {\"VALIDATED\":112}"
+ },
+ "idempotence_proof": "re-run live: VALIDATION GREEN on the post-world ({VALIDATED:112}), 0 eligible rows, no-op COMMIT, state unchanged (the r1/r2 idempotence law, proven in BOTH worlds now)",
+ "honest_first_passes": [
+  "V1 first run failed the of-record terms on the contract shape (authored snake_case vs the schema's camelCase requireds) — fixed by the r2 vehicle's mechanical snake->camel map with nullables defaulted; the LAWS unchanged; the failure cost zero DB rows",
+  "the idempotence re-run initially refused the post-flip world as drift (V2 pre-flip assertions + the of-record census ==88) — rewritten to the r2 law's two honest worlds (pre {S:24,V:88} / post {V:112}); any other census = loud refusal; the refusal cost zero DB rows"
+ ],
+ "sandbox_rollback_of_record": "the local clone was found rolled back to the T-BOOK-015-era snapshot at lane start (reflog 3 entries: clone/checkout/T-BOOK-015; session scripts, the fire's session-side log and local worklog entries erased) — the REMOTE was verified intact and AHEAD (bd38e04d an ancestor of main, +4 commits: the PR #270/#272 wave + the kappa durable record 3b6680d1 with its own UNION-REPAIR of five dropped worklog sections; no history rewrite, nothing lost), local main restored to 3b6680d1 (mode-bit-only noise discarded) before any lane work; node_modules reinstalled from the lockfile; the fire's session log is not locally recoverable (its receipt carries the chain verbatim)",
+ "script_of_record": "apps/api/scripts/session/glossary-validate-r3.ts (session-side untracked per the T-BOOK-017/019/022 law; <booksDir> [--check|--commit])",
+ "log_of_record": "session-side tee: /home/z/my-project/logs/glossary-r3-flip-r0.log (the flip AND the idempotence re-run verbatim)",
+ "serving_impact": "glossary surfaces gate on VALIDATED per the T-BOOK-007 wiring — all 112 terms now serve; u1-u4 blocks of record untouched (177 VALIDATED, 29/29 chapters)",
+ "the_24_slugs": ["acid-rain", "addition-reaction", "biodegradable", "carboxyl-group", "complete-combustion", "condensation-polymerisation", "cracking", "ester", "fermentation", "fraction", "fractional-distillation", "functional-group", "homologous-series", "hydrocarbon", "hydroxyl-group", "incomplete-combustion", "isomer", "monomer", "polymer", "saturated-hydrocarbon", "substitution-reaction", "unsaturated-hydrocarbon", "volatile", "weak-acid"],
+ "status": "GLOSSARY 112/112 VALIDATED of record — the full book of record is green end-to-end (29/29 chapters, 177 blocks, 112 terms)"
+}
