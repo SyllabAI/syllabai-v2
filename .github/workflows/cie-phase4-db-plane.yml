@@ -102,7 +102,12 @@ jobs:
     # fast on the run-002 defect classes; at the optionA green it fired
     # mid-fleet (the job-level timeout cancel does NOT trip the `cancelled()`
     # guard below — the gate-hardening law: give the proof room to finish).
-    timeout-minutes: 180
+    # run-007 (39520673306) MEASURED the healthy fleet first-hand: 41/45
+    # ok=true in 177 min, the tail 4 banks ~15-25 min by sibling pace
+    # -> ~195-205 min fleet-only — the 180 ceiling fired BELOW the healthy
+    # fleet it proves (the same latent-contradiction class as the tranche-2
+    # raw floors). 240 = measured + provisioning + ~18% headroom.
+    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -218,7 +223,11 @@ jobs:
     # only admission is an ALL-GREEN cow-proof, verbatim:
     if: ${{ needs.cow-proof.result == 'success' && (inputs.mode == 'cow+prod' || inputs.mode == '' || inputs.mode == 'prod-only') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    # run-007 fleetPaceOfRecord: job 2 runs the SAME ~200-min fleet against
+    # prod (+ pre-flight census + postverify) — the 120 ceiling would fire
+    # mid-fleet on a HEALTHY prod apply too. 300 = measured + ~50% headroom
+    # (prod writes deserve the slack).
+    timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
