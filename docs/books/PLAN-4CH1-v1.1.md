@@ -257,3 +257,28 @@ worklog: append per template
 | 6 | Kognity research dossier 2026-10-20 (internal) | competitive frame |
 
 **Limitations.** Chapter-level spec joins are trusted from the contract's documented join law (LO-box verbatim-class matching); per-point bank density in Neon is asserted, not queried, from this sandbox (T-BOOK-020 closes it). PhET sim availability per topic is from the public PhET catalog's chemistry suite and should be pinned per-sim in T-BOOK-006. ADR next-number and flag mechanism were bounded but not pinned (T-BOOK-001). The PAT used for this audit was chat-provided: treat as exposed; rotate after the batch.
+
+---
+
+## Errata (2026-10-21, ADR-BOOK-0001)
+
+Corrections of record discovered while landing T-BOOK-001/002 — the in-repo
+plan stays honest via errata rather than silent rewrites:
+
+1. **§5 `attempts.surface`** → the `attempts` table has no `surface` column;
+   the discriminator rides the existing free-varchar `attempts.provenance`
+   (`'BOOK_CHECK'`, app-level constant in contracts). `attempts` is
+   Flyway-owned: **zero DDL** (frozen-core law, AGENT_BRIEFING rule 6).
+   See ADR-BOOK-0001 §12 + finding F-BOOK-0002.
+2. **§5 pack `status`** → `book_blocks.validation_state` reuses the content
+   4-state law (`SUGGESTED/VALIDATED/REJECTED/FLAGGED`,
+   `validationStateSchema`) — REUSE-not-redeclare; serving gate = VALIDATED
+   book AND VALIDATED pack.
+3. **§10 "ADR-0xx draft"** → superseded by
+   `docs/adr/ADR-BOOK-0001-interactive-rail-over-student-book-spine.md`
+   (band law `T-BOOK-xxx`, ADR namespace `ADR-BOOK-000x`, rollout levers,
+   licensing release gate + F-BOOK-0001).
+4. **No-orphan-packs is DB-enforced**: composite FK
+   `book_blocks → book_chapters(document_id, doc_version, chapter_key)`
+   through `uq_book_chapters_identity` — stronger than the lint-only
+   reading of §5.

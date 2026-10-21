@@ -1,0 +1,49 @@
+version: 1
+task:
+  id: T-BOOK-001
+  title: "ADR-BOOK-0001 (band law, rollout levers, licensing gate) + band-ID + flag-mechanism pin-down (closes V6/V8) + F-BOOK-0001"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15c06dccb485d1)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-000, T-BOOK-015]
+  execution_record: >
+    Operator directive 2026-10-21: review+merge PR #236 yourself, then
+    T-BOOK-001/002. PR #236 was merged by R0-AUTO cron (8596358) before manual
+    merge; review confirmed 17 intended files + green verify/hub.
+    T-BOOK-001 executed: (a) V8 closed — ADR namespace decision: ADR-BOOK-000x
+    for the books band, disjoint from ADR-MIG-000x and the master-pack numeric
+    series (referenced by code, never renumbered); (b) V6 closed — rollout =
+    three enumerated levers with repo precedent (book VALIDATED flip T-C20,
+    pack VALIDATED flip reusing the content 4-state via validationStateSchema
+    REUSE, hub committed entry registry extending the 133k
+    BOOKS_ARCHIVE_COURSES one-line-per-course law); cohort gating deferred
+    (pilot scale = course entry set; teacher-assignments class_id pattern is
+    the post-pilot precedent) — no flag framework built; (c) LICENSE-DATA.md
+    (sha dd5d78ade261) reviewed as release-gate input — GAP FOUND: no
+    Student-Book hosting amendment → F-BOOK-0001 (S2, licensing, open,
+    operator follow-up) + release-gate law in ADR §4; (d) plan §10's seven
+    draft decisions ratified as ADR §5–11 with schema consequences (composite
+    FK no-orphan-packs via uq_book_chapters_identity; 4-state pack flip);
+    (e) plan §5 attempts.surface deviation discovered: real column is
+    attempts.provenance (free varchar, Flyway-owned table — zero DDL law);
+    app-level 'BOOK_CHECK' constant → F-BOOK-0002 (filed with T-BOOK-002) +
+    errata appended to in-repo plan. No code changes in this task.
+base:
+  repo: "syllabai-v2 @ 9b3a281 (t-book-001 branch basis)"
+basis: >
+  Operator directive 2026-10-21 (chat, trace 1a15c06dccb485d1);
+  PLAN-4CH1-v1.1 §8 T-BOOK-001 row + §10 ADR draft; T-BOOK-000 V6/V8 items;
+  AGENT_BRIEFING rule 6 (frozen-core/Flyway law); doctrine pack T-BOOK-015.
+scope:
+  allowed:
+    - "docs/adr/ADR-BOOK-0001-interactive-rail-over-student-book-spine.md"
+    - "docs/books/PLAN-4CH1-v1.1.md (errata section only)"
+    - "books/4ch1/qa/findings.jsonl (append F-BOOK-0001)"
+    - ".syllabai/tasks/T-BOOK-001-adr-band-flag-licensing.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "packages/** (contracts + migration are T-BOOK-002's lane)"
+    - "apps/** (hub entry lever lands with T-BOOK-003/040)"
+    - "syllabai-resources/** (LICENSE-DATA.md amendment is the operator's follow-up)"

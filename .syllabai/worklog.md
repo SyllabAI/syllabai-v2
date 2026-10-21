@@ -10497,3 +10497,23 @@ Work Log:
 
 Stage Summary:
 - Merges this run: 1 (#236 -> 8596358). Skips: 1 (#232, gate b, 6th). Main @ 8596358 hub+verify green. Zero prod/Neon writes, zero force-pushes, zero auth failures.
+
+---
+Task ID: T-BOOK-001
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15c06dccb485d1)
+Task: ADR-BOOK-0001 — band law, rollout levers, licensing gate; close V6/V8; LICENSE-DATA review; findings F-BOOK-0001.
+
+Work Log:
+- Operator ordered self-review+merge of PR #236 then T-BOOK-001/002. PR #236 was already merged by R0-AUTO (8596358) — review verified: exactly 17 intended files, verify+hub green, post-merge main green.
+- V8 closed: ADR-BOOK-000x namespace for the books band (disjoint from ADR-MIG-000x and master-pack numeric ADR-013..036 which are cited as-is).
+- V6 closed: rollout = three levers with precedent (book VALIDATED flip, pack VALIDATED flip reusing validationStateSchema 4-state, hub committed entry registry per 133k one-line-per-course law); cohort gating deferred to the teacher-assignments pattern; no flag framework.
+- LICENSE-DATA.md (sha dd5d78ade261) reviewed: SME/CAIE/CIE-specs covered; Student-Book hosting amendment MISSING → F-BOOK-0001 (S2 licensing, open, operator follow-up) + release-gate law (no Phase C flip until amended).
+- Plan §10's seven decisions ratified as ADR §5–11; composite FK no-orphan-packs pinned via uq_book_chapters_identity.
+- Plan §5 deviation found: attempts has no surface column (it is Flyway-owned; provenance is the discriminator) → zero-DTL decision, app-level BOOK_CHECK; F-BOOK-0002 filed with T-BOOK-002; errata section appended to in-repo plan.
+- Sandbox git hygiene: workflow files showed mode-only diffs (100644→100755) — core.fileMode=false set locally; branch reset onto origin/main 9b3a281.
+- Docs-only change: 1 ADR + plan errata + findings entry + task yaml + worklog. No packages/apps touched.
+
+Stage Summary:
+- Books band now has its constitution: ADR-BOOK-0001 ACCEPTED (band law T-BOOK-xxx, ADR-BOOK-000x namespace, 3 rollout levers, licensing release gate, 7 ratified decisions, zero-DDL attempts law).
+- Findings ledger live: F-BOOK-0001 (licensing amendment gap, operator follow-up).
+- T-BOOK-002 unblocked with schema consequences pinned (composite FK, 4-state pack flip, no attempts DDL).
