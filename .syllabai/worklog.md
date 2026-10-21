@@ -10724,3 +10724,21 @@ Work Log:
 
 Stage Summary:
 - Merges this run: 1 (#243 -> cfe0124, first full R0 intake since #214). Zero code conflicts; worklog union byte-exact. Main @ cfe0124 hub+verify green. Zero prod/Neon writes, zero force-pushes, zero auth failures.
+
+---
+Task ID: 4MB1-QUALITY badsum-recon-run-001-r0 (trace 1a15deb8b4677c05, operator order "the 57 badSum totalMark reconciliation")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- This lane IS the "QP-total recovery round" the emitter law anticipated (bundle-questions.ts @HEAD: badSum excluded, "nothing is rewritten (the flags ride the archive for the QP-total recovery round filed in the band-2 receipt)").
+- Class of record extracted from run-db-difficulty/bridge.json (byOrder why=badSum) = EXACTLY 57 across 38 papers; independently recomputed on the bundle of record (git 8ee371e, 65 sets / 1,249 q) = 57/57 VERIFIED identical; emitted side re-proven 1,192/1,192 part-sum-passing.
+- Official anchor: pastpapers-blueprints.json @HEAD (63 4MB1 QP-footer rows, 320-row file). One recon-script bug honestly caught en route (bp_key split cut YYYY|MM — produced 57 false NO_OFFICIAL; fixed to YYYY-MM).
+- VERDICTS vs official per-question marks: TOTALMARK_FIELD_WRONG 4 (partsSum == official, declared wrong: 2019-01-01r#q6 3->2, 2022-06-02#q10 14->15, 2025-11-02#q10 9->7, 2026-06-02#q10 11->13) — clean field stamps, emitter-passing AS-IS after fix; PARSE TARGETS 49 (15 PARTS_WRONG where declared == official but parts defective + 34 BOTH_DIVERGE where neither matches) — dominant mode is parse OVER-segmentation (partsSum > official in 30/34, e.g. 2024-06-02r#q9 carries a 24-mark part inside an officially 10-mark q; 2023-01-02#q10 partsSum 32 vs official 11); NO_OFFICIAL 4 (3x in 2019-01-4mb1-01, the of-record no-bp paper; 1x 2022-01-4mb1-02r#q0 — an ORDER-0 question breaking the (topicSlug,order) ref namespace, needs re-order before any official join).
+- Paper rollup (38 papers): partsSum OVER official in 31, UNDER in 7; declared == 100 in 34/38; the drift papers of record now fully explained (2019-01-01 declared 86/partsSum 81/no official; 2019-01-01r 92/91/official 96; 2023-01-02 85/108/official 87; 2022-06-02r 89/97/official 100). Worst over-parses: 2024-06-02r +24, 2022-01-02 +18, 2018-06-02r +17.
+- DB cross-check (READ-ONLY, zero writes): 0/57 badSum refs present in questions (0 active) — emitter exclusion verified on the wire plane; live maths-b rows exactly 1,192.
+- Fix manifest of record (fix-manifest-57.json): 4 cleanFieldFixes + 49 parseRepairTargets (official anchor per q + required end state sumParts==official==declared) + 4 blocked. EMISSION DELTA: 1,192 -> 1,196 after field fixes -> 1,245 after parse repairs; blocked 4; ceiling 1,249.
+- Zero prod writes, zero DB writes, zero bundle writes — NO writable surface carries these 57 today (bundle empty at HEAD; restore-vs-ratify remains the open operator ruling); manifest applies at restore/re-ingest. NEON used SELECT-only, key inline-only; scrub-assert pass.
+- Artifacts: scripts/run-badsum-recon/{bundle-1249-8ee371e.json, pastpapers-blueprints-HEAD.json, emitter-law-bundle-questions-HEAD.ts, reconciliation-57.json, paper-rollup-db-check.json, fix-manifest-57.json} + run-badsum-recon-57-of-record.json + scripts r0_badsum_recon.py / r0_badsum_paper_rollup.mjs / r0_badsum_manifest.py.
+
+Stage Summary:
+- The 57 badSum class is fully reconciled against official QP-footer evidence and reduced to an actionable fix manifest: 4 one-line field stamps + 49 parse-lane repair targets (over-segmentation dominant) + 4 blocked (evidence/order). The emitter's badSum exclusion is now fully EXPLAINED and QUANTIFIED (emission ceiling 1,245/1,249 after repairs; 3 questions need QP-footer recovery for the no-bp paper, 1 needs re-order). No surface was writable — the manifest rides for restore.
