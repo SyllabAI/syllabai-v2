@@ -108,7 +108,12 @@ const SEVEN = ["manifest.json", "curriculum.json", "concept-graph.json", "notes.
 // T-SPECS-CIE-CONSUME-1 (r9, trace 1a1585c244ccd141): pin advanced 0fe5f772 ->
 // 75981cad — the four CIE-relevant subtrees verified tree-sha-identical between
 // the two pins; the only corpus delta is spec-links/ (the consumed sidecars).
-const CIE_PIN = "75981cad0b08c190fb70902eb6cdca1f76b9cd68";
+// TRANCHE-1 (trace 1a15e4200e6af579): pin advanced 75981cad -> aa0b4de1 —
+// parsed/RevisionNotes/Flashcards tree-sha-IDENTICAL to the r9 pin;
+// SME-ExamQuestion moved but ALL changed files are igcse-accounting-17*
+// (Edexcel) — zero CIE corpus contact; the CIE input delta is spec-links/
+// (the T-SPECS-CIE-TRANCHE1-T2NEAR-1 verdict round, PR SyllabAI/syllabai-resources#22).
+const CIE_PIN = "aa0b4de1b732738b4d02dabdd02d9ead85522907";
 const D1_SKELETON = "cie-a-level-maths-20-pure-2";
 
 function checkRealBundle(slug: string, code: string): void {
