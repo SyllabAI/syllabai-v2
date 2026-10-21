@@ -10595,3 +10595,17 @@ Work Log:
 
 Stage Summary:
 - The gate cycle's crown evidence: the FIRST full-fleet completion was exactly the run that exposed the last census-law divergence — on the disposable copy, zero prod exposure, honest red over false green. The census now measures the emission law BY CONSTRUCTION; the floors chase the truth, never the guess. Hygiene: env-only credentials, zero-DB local proofs, fetch-first, no force.
+
+---
+Task ID: cie-phase4-run-009-closure (the A-path discharge COMPLETE; ruling A trace 1a15b161bf960249)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: run-009 (39543834994) FULLY GREEN — cow-proof SUCCESS + prod-apply SUCCESS; the CIE fleet LANDED ON PRODUCTION receipted end-to-end; the phase-4 prod-apply closes of record.
+
+Work Log:
+- Run-009 (cow+prod @ 0fc97ff, the PR #241 part-ROW census merge, dispatched 04:24:10Z): census pre-flight GREEN; the COW fleet ~112 min — ALL 45 slugs ok=true, the part-ROW floors GREEN by construction (the first GREEN COW-proof of the nine-run cycle); 06:16:57Z cow-proof SUCCESS; the all-green admission law opened job 2; the PROD fleet 06:20:18Z-07:34:27Z (~74 min): 45/45 ok=true, every real bank postverified; fleet summary {selected:45, realApplied:37, realSeedOnly:3, stubsSeeded:4, skeletonsSkipped:1, failures:0, questionsIngested:6599, partsIngested:5618, optionsIngested:14084}; "PROD receipt floors GREEN" verbatim.
+- PRODUCTION STATE OF RECORD: 6,599 active CIE questions (spec-anchored servable truth, byte-exact vs census) / 5,618 part rows / 14,084 option rows / the full optionA tree (version-scoped namespaces, six shared subject roots, tail-based UNIT laws). The optionA join semantics PROVEN on the live store: the 9709 siblings reused ONLY the shared version-scoped root (mechanics +0/=29, pure-1 +0/=43, postverify nodes=167 family-wide) and the 0973/0653 trios likewise (+250/=1, +239/=1, +116/=1) — the graft class ABSENT on production. The run-005 five slugs arrived as the idempotent no-op set (chemistry-25 +0/=484 REUSED, zero created).
+- THE GATE CYCLE OF RECORD (nine runs): every defect caught on the disposable copy or cancelled before admission; ZERO unreviewed prod contact across the cycle; the two run-005 ungated minutes 202-cancelled and proven idempotent on the gated re-run. Retired classes: resolveMode seam; the 5 run-002 fleet classes; the sixth spec shape; course-slug compression; the servable-truth floors; the admission law; the ceilings; the part-ROW census law.
+- Receipt: cie-phase4-prod-apply-run-009-r0.json. NEXT: the CIE registry fill audit (HUB-REGISTRY fill-where-served, 45 rows); the anchor-gap follow-up (13,479 raw unanchored — phase-2 completion, measurable per slug); the operator's phase-5 QA plane is the next gate; PAT rotation operator-keyed.
+
+Stage Summary:
+- THE PHASE-4 PROD-APPLY IS COMPLETE OF RECORD: the CIE fleet landed on production gated end-to-end — census pre-flight, 134c COW-proof, all-green admission, prod-apply, floors GREEN — nine runs of honest evidence, zero prod exposure to any defect. The A-path (ruling A) is discharged: identity-stable laws re-landed, gate trio re-run, cow+prod dispatched, COW-proof green, prod-apply complete — receipted end-to-end as ordered.
