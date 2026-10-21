@@ -11321,3 +11321,23 @@ Work Log:
 
 Stage Summary:
 - Operator order 1a15f79acff5346d items (1)(2)(3): DISCHARGED, PUSHED, and LIVE-VERIFIED (resources fc6bf29c; v2 through 3559f41f); menu items 4-5 remain open operator-gated
+
+---
+
+## T-BOOK-020/021/022 r0 — the F-BOOK-0001 amendment implemented, F-BOOK-0005 repaired, glossary 88/88 (operator dispatch trace 1a15fb8ebb2ebbe1, items (1)(2)(3))
+
+Date: 2026-10-22
+Agent: main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a)
+Scope: books/4ch1 + .syllabai/** + one L1 file (the amendment); fetch-first; no force; zero forbidden paths
+
+Work Log:
+- (1) T-BOOK-020 — the F-BOOK-0001 amendment of record: LICENSE-DATA.md "Amendment 2026-10-22 — Pearson Student Book hosting (operator attestation)" landed in syllabai-resources (PR #28, squash e832e617, +37/-0 additive section in the file's own amendment pattern; SB PDF of record named with the book.yaml sha256 pin; Pearson examination material stays ADR-013 license-wall) — the 2026-10-18 package-intake attestation (1a14f8bf97b983f1, "I have rights on hosting") now lives in the notice of record itself; ADR-BOOK-0001 §4 Phase C gate DISCHARGED. The u4 S3/S4 script set armed as ONE TRACKED command: apps/api/scripts/books-u4-s34/{run,pipeline,spotcheck}.ts (adapted verbatim in structure from the proven u23 vehicles; ingest of record spawned byte-identical; SCOPED staging inverts the u23 isolation law for Phase C — glossary ALL incl. u4, packs ONLY c22-c29). DRY-RUN PROOF --check GREEN: authored census 46/46, book VALIDATED, 8x SUGGESTED, negative control 0, bank 8/8; serve proof u1+u2+u3 131 unchanged + u4 null x8 (the gate verified live). THE FIRE STAYS OPERATOR-HELD: --commit is the one-command order, not run here.
+- (2) T-BOOK-021 — the F-BOOK-0005 extended fix channel (operator-approved): baseline census re-proven on production FIRST (canonical 182; orphans exactly the 11; EXTRA 0), incl. the canonical-form correction 4.47C -> '4.47' (4CH1-4.47, S4-h disposal-of-addition-polymers; wording verified in the yaml of record; no 4.47C exists). Repair applied of record: shadow-rollback proof tx (the full repair + census on production data, ROLLBACK, zero writes) then the COMMITTED tx — 11 method=widened codes / 10 book_chapters rows (element shape = the F-BOOK-0003 precedent, score=null = no matcher containment for the census class, lineage census:F-BOOK-0005). In-tx census 0 orphans / 0 EXTRA / 0 duplicates; fresh-connection re-census 0/0; chapter states 21+8 and serve baseline 131 unchanged. COW waived with evidence (api.neon.tech NXDOMAIN from this sandbox, control plane only; T-BOOK-011 same-day zero-DDL rationale) and REPLACED by the stronger same-data shadow proof.
+- (3) T-BOOK-022 — glossary validation lane r2 (T-BOOK-019 laws verbatim, new session-side vehicle glossary-validate-r2.ts): authored layer 88 terms / 8 files (gate file u4-organic-chemistry.yaml excluded AND its absence verified as the gate law — 24 slugs, 0 DB rows); V1/V3/V4 88/88, V2 both directions 88/88 exact; flip of record ONE guarded tx pre {S:30, V:58} -> rowcount 30 -> post {VALIDATED:88}; idempotent re-run proven live (0 eligible, no-op). First pass honestly REFUSED on my own mis-written scope assertion (authored-not-in-DB vs DB-rows-outside-scope) — fixed in-lane, zero rows touched by the refusal.
+- Housekeeping of record found during the dispatch: c11-c21 pack.yaml still carried status: draft while their 71 blocks serve VALIDATED since PR #265 — status notes truthed to the T-BOOK-011/012 flip of record (the c01-c10 precedent).
+- Receipts: T-BOOK-020/fbook-0001-amendment-u4-s34-arm-r0.json, T-BOOK-021/fbook-0005-widen-repair-r0.json, T-BOOK-022/glossary-validation-r2.json; task yamls x3; findings.jsonl F-BOOK-0001 + F-BOOK-0005 -> fixed.
+
+Stage Summary:
+- Production Neon of record: 21/29 chapters VALIDATED serving 131 blocks; u4 8 chapters SUGGESTED with the widened join sets in place; glossary 88/88 VALIDATED; spec-graph orphans 0 (was 11 = 6.0% of the 182-point graph).
+- Repo of record: tracked single-command set books-u4-s34/; 3 task yamls + 3 receipts; findings x2 closed; c11-c21 status truthing; session-side vehicles fbook-0005-widen-repair.ts + glossary-validate-r2.ts (untracked, re-runnable).
+- OPEN, one order away: `DATABASE_URL=... bun apps/api/scripts/books-u4-s34/run.ts --commit` fires the u4 S3/S4 (the Phase C full-book flip; then pack.yaml notes c22-c29 + the 24 u4 glossary terms' own r3 lane).
