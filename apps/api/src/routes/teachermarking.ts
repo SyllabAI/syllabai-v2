@@ -50,6 +50,13 @@
  * pipeline's rejection decisions — the captured keyless laws never reach the
  * generator, so the golden rig is byte-untouched); the noop publisher and
  * the κ gate + evidence contract are untouched.
+ *
+ * T-TEACH-003 (ADR-027 D1): every surface passes the JWT identity as the
+ * scope principal — reads render only the requesting teacher's enrolled
+ * learners' answers, the single mark paths 404 out-of-scope answers like
+ * nonexistent ones, and the batch reports out-of-scope ids as the honest
+ * SKIPPED_OUT_OF_SCOPE. The scope is the SERVICE layer's law (the enrollment
+ * join, live-computed); the route's only duty is handing over the identity.
  */
 import { Hono, type Context } from "hono";
 import type { ZodError } from "zod";
@@ -243,13 +250,16 @@ export function createTeacherMarkingRouter(
   });
 
   // GET /answers?state=&page=&size= (:148-176) — dual-shape G-5 surface
+  // T-TEACH-003 (ADR-027 D1): every queue surface scopes to the JWT identity
+  // (getAuth set by the shell — the shell invariant makes the `!` safe).
   r.get("/answers", async (c) => {
+    const auth = getAuth(c)!; // shell invariant
     const state = parseMarkingState(c.req.query("state") ?? "PENDING");
     const page = intParam(c, "page");
     const size = intParam(c, "size");
     if (page === null && size === null) {
       // the unchanged contract — the plain AnswerMarkingView list (:153-155)
-      return c.json(await module.queue.answersList(state));
+      return c.json(await module.queue.answersList(state, auth.userId));
     }
     // bounds verbatim (:156-163); defaults 0 / 50 (DEFAULT_ANSWER_PAGE_SIZE)
     const p = page ?? 0;
@@ -258,36 +268,46 @@ export function createTeacherMarkingRouter(
     if (s < 1 || s > 200) {
       throw new BadRequestError("size must be between 1 and 200");
     }
-    return c.json(await module.queue.answersPaged(state, p, s));
+    return c.json(await module.queue.answersPaged(state, p, s, auth.userId));
   });
 
   // GET /queue-v2?state=&page=&size= (:204-213) — dual-shape; bounds in the
   // service (unit-pinned there per the controller javadoc :201-203)
   r.get("/queue-v2", async (c) => {
+    const auth = getAuth(c)!; // shell invariant
     const state = parseMarkingState(c.req.query("state") ?? "PENDING");
     const page = intParam(c, "page");
     const size = intParam(c, "size");
-    return c.json(await module.queue.markingQueuePaged(state, page, size));
+    return c.json(await module.queue.markingQueuePaged(state, page, size, auth.userId));
   });
 
-  // GET /throughput (:220-223) — counts of what happened, never estimates
-  r.get("/throughput", async (c) => c.json(await module.queue.throughput()));
+  // GET /throughput (:220-223) — counts of what happened, never estimates;
+  // scoped to the requesting teacher's enrollment (ADR-027 D1)
+  r.get("/throughput", async (c) => {
+    const auth = getAuth(c)!; // shell invariant
+    return c.json(await module.queue.throughput(auth.userId));
+  });
 
   // POST /smart-mark-batch (:231-235) — 1..50 ids, deduplicated
   // order-preserving; idempotent; each item its own transaction (partial
   // success preserved). Body errors follow the two-envelope law (R-1).
+  // T-TEACH-003 (ADR-027 D1): per-item enrollment scope — out-of-scope ids
+  // answer the honest SKIPPED_OUT_OF_SCOPE with an explicit reason.
   r.post("/smart-mark-batch", async (c) => {
+    const auth = getAuth(c)!; // shell invariant
     const raw = await readJsonBody(c);
     if (!raw.ok) return c.json(malformedBody(), 400);
     const parsed = smartMarkBatchRequestSchema.safeParse(raw.value);
     if (!parsed.success) return bodyErrorResponse(c, parsed.error, raw.value);
-    return c.json(await module.queue.smartMarkBatch(parsed.data.answerIds));
+    return c.json(await module.queue.smartMarkBatch(parsed.data.answerIds, auth.userId));
   });
 
-  // GET /answers/{id} (:243-252) — the rich single view (smart + human runs)
+  // GET /answers/{id} (:243-252) — the rich single view (smart + human runs);
+  // scoped: an out-of-scope answer 404s like a nonexistent one (D1 invisibility)
   r.get("/answers/:id", async (c) => {
+    const auth = getAuth(c)!; // shell invariant
     const id = parseUuid(c.req.param("id"));
-    const view = await module.queue.answerById(id);
+    const view = await module.queue.answerById(id, auth.userId);
     if (view === null) {
       throw new NotFoundError("answer", id);
     }
@@ -303,8 +323,9 @@ export function createTeacherMarkingRouter(
   // is the @PrePersist analog (the fresh wall-clock instant born at save —
   // the comparator tolerates it BY NAME, the fleet law).
   r.post("/answers/:id/smart-mark", async (c) => {
+    const auth = getAuth(c)!; // shell invariant
     const id = parseUuid(c.req.param("id"));
-    const result = await module.teacherSmartMark.markAnswer(id);
+    const result = await module.teacherSmartMark.markAnswer(id, auth.userId);
     return c.json(smartMarkResultView(result, new Date().toISOString()));
   });
 

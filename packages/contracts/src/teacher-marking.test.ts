@@ -416,9 +416,16 @@ describe("throughputViewSchema (F-33-1(a) zero-fill law)", () => {
 });
 
 describe("smart-mark batch views", () => {
-  it("SmartMarkBatchItem outcome vocabulary is the frozen three-value set (:361-384)", () => {
+  it("SmartMarkBatchItem outcome vocabulary: the frozen three-value set (:361-384) + the ADR-027 D1 extension (justified: true — T-TEACH-003)", () => {
+    // justified: the operator-authored ADR-027 (canonical master-pack record)
+    // mandates the SKIPPED-family outcome for out-of-scope batch ids ("the
+    // honest SKIPPED-family outcome with an explicit reason — never silently
+    // dropped, never fabricated"). The three frozen values stay legal and the
+    // plain "SKIPPED" shorthand stays illegal; captured bodies only ever carry
+    // frozen values, so every recorded wire posture still parses.
     expect(smartMarkBatchItemSchema.safeParse({ answerId: UUID, outcome: "MARKED", marksAwarded: 3, reason: null }).success).toBe(true);
     expect(smartMarkBatchItemSchema.safeParse({ answerId: UUID, outcome: "SKIPPED_ALREADY_MARKED", marksAwarded: null, reason: null }).success).toBe(true);
+    expect(smartMarkBatchItemSchema.safeParse({ answerId: UUID, outcome: "SKIPPED_OUT_OF_SCOPE", marksAwarded: null, reason: "out of scope" }).success).toBe(true);
     expect(smartMarkBatchItemSchema.safeParse({ answerId: UUID, outcome: "FAILED", marksAwarded: null, reason: "SCHEME_NOT_VALIDATED" }).success).toBe(true);
     expect(smartMarkBatchItemSchema.safeParse({ answerId: UUID, outcome: "SKIPPED", marksAwarded: null, reason: null }).success).toBe(false);
   });

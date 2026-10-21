@@ -1136,7 +1136,10 @@ export interface MarkingThroughputView {
 
 export interface SmartMarkBatchItem {
   answerId: string;
-  outcome: "MARKED" | "FAILED" | "SKIPPED_ALREADY_MARKED";
+  // T-TEACH-003 (ADR-027 D1): SKIPPED_OUT_OF_SCOPE — an out-of-scope answer
+  // reports the honest SKIPPED family with an explicit reason and a null
+  // marksAwarded (no answer-state leak); counted in the view's `skipped`.
+  outcome: "MARKED" | "FAILED" | "SKIPPED_ALREADY_MARKED" | "SKIPPED_OUT_OF_SCOPE";
   marksAwarded: number | null;
   reason: string | null;
 }

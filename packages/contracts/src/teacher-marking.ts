@@ -399,10 +399,21 @@ export type ThroughputView = z.infer<typeof throughputViewSchema>;
 /**
  * SmartMarkBatchView (:487-489) — partial success preserved: each item its
  * own transaction; marked/skipped/failed are Java longs.
+ *
+ * ADR-027 D1 (T-TEACH-003): the frozen three-value outcome set (:361-384)
+ * gains SKIPPED_OUT_OF_SCOPE — the batch's per-item honesty law extended to
+ * the enrollment scope. An out-of-scope answer id reports the SKIPPED family
+ * with an explicit reason (never silently dropped, never fabricated, never a
+ * fake FAILED). The captured batch bodies were captured under the ADR-027
+ * pilot-scope mode, so every recorded wire posture still parses byte-identical
+ * (MARKED / SKIPPED_ALREADY_MARKED only); the new value is reachable only from
+ * answers outside the requesting teacher's enrollment scope. The `skipped`
+ * count on SmartMarkBatchView covers both SKIPPED_* outcomes (the honest
+ * "not marked, not failed" bucket).
  */
 export const smartMarkBatchItemSchema = z.object({
   answerId: z.string().uuid(),
-  outcome: z.enum(["MARKED", "SKIPPED_ALREADY_MARKED", "FAILED"]),
+  outcome: z.enum(["MARKED", "SKIPPED_ALREADY_MARKED", "SKIPPED_OUT_OF_SCOPE", "FAILED"]),
   marksAwarded: z.number().int().nullable(),
   reason: z.string().nullable(),
 });

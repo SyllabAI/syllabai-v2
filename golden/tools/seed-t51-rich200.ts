@@ -30,6 +30,20 @@
  *          law (uuidCompare) is under test. The constants deliberately
  *          reverse their unsigned/hex order so the pre-fix string-lex port
  *          FAILS the case and the signed comparator passes it.
+ *       5. T-TEACH-003 (ADR-027 D1): the SCOPE-COVERAGE state — the marking
+ *          rich-200 captures were taken under the ADR's interim pilot-scope
+ *          mode (the global read); once v2 ships the enrollment-scoped
+ *          surfaces, the captured bodies stay reproducible ONLY when the
+ *          replaying teacher's enrollment scope covers the attempting
+ *          learner. This stage enrolls t51-student (User 1, who made the two
+ *          pinned attempts) into one ACTIVE class per replay teacher that
+ *          exists on the instrument db: the t51 bootstrap admin (ADMIN+TEACHER
+ *          — the LOCAL runner's marking bearer) and user_20 (the ci-replay
+ *          TEACHER token, minted before this stage runs). Idempotent on the
+ *          ux_class_teacher_course_name partial unique + ux_cmember_pair.
+ *          The empty-state classroom pins are UNAFFECTED: they declare
+ *          tranche "empty" (replay BEFORE this stage) and pin user_20's /
+ *          user_21's own surfaces, not the t51 admin's roster.
  *
  *   --stage all       (legacy one-shot for capture environments; NOT for the
  *                      golden replay split — it includes the two ingests)
@@ -325,6 +339,52 @@ const check = await sql`
   select id, created_at from attempts
   where id in (${ATTEMPT_1}, ${ATTEMPT_2}) order by created_at asc, id asc`;
 console.log("tied attempts:", check.map((r) => `${r.id} @ ${r.created_at?.toISOString()}`));
+
+// ── 5b. T-TEACH-003 (ADR-027 D1): the scope-coverage state ──────────────────
+// The marking rich-200 cases replay as a TEACHER-path bearer; once the
+// marking surfaces are enrollment-scoped, the captured bodies reproduce only
+// when that teacher's scope covers the attempting learner (t51-student).
+// Every candidate replay teacher present on the instrument db gets ONE
+// ACTIVE class with t51-student enrolled: deterministic PER-TEACHER fixed
+// uuids (the tool's own constants — no user input), idempotent re-runs.
+// Course refs stay opaque hub-owned strings (V51) — no registry row is
+// implied or needed.
+const T51_STUDENT_ID = (
+  await sql`select id from users where email = ${STUDENT_EMAIL}`
+).map((r) => r.id as string)[0];
+if (!T51_STUDENT_ID) throw new Error("t51-student account missing — stage accounts first");
+// the replay teachers: the t51 bootstrap admin always; user_20 (ci-replay's
+// TEACHER token) when the row exists (capture boots never mint it).
+// Distinct class uuid per teacher — a shared id would PK-conflict on the
+// second insert and on-conflict-do-nothing would silently skip the coverage.
+const replayTeachers: Array<{ email: string; classId: string; membershipId: string }> = [
+  {
+    email: ADMIN_EMAIL,
+    classId: "7e150000-0000-4000-8000-00000000c0a1",
+    membershipId: "7e150000-0000-4000-8000-00000000c0b1",
+  },
+  {
+    email: "user_20@example.invalid",
+    classId: "7e150000-0000-4000-8000-00000000c0a2",
+    membershipId: "7e150000-0000-4000-8000-00000000c0b2",
+  },
+];
+for (const t of replayTeachers) {
+  const teacherRow = (
+    await sql`select id from users where email = ${t.email}`
+  ).map((r) => r.id as string)[0];
+  if (!teacherRow) continue; // not minted on this instrument (e.g. capture boot) — honest skip
+  await sql`
+    insert into classes (id, teacher_id, course_slug, course_label, name, status, created_at)
+    values (${t.classId}, ${teacherRow}, ${"t51-replay-scope"}, ${"T51 Replay Scope"},
+            ${"T51 Replay Scope (golden)"}, ${"ACTIVE"}, now())
+    on conflict do nothing`;
+  await sql`
+    insert into class_members (id, class_id, student_id, enrolled_by, enrolled_at)
+    values (${t.membershipId}, ${t.classId}, ${T51_STUDENT_ID}, ${teacherRow}, now())
+    on conflict do nothing`;
+  console.log(`scope coverage: t51-student enrolled for replay teacher ${t.email}`);
+}
 
 await sql.end();
 console.log(`\nADMIN_TOKEN=${adminToken}`);
