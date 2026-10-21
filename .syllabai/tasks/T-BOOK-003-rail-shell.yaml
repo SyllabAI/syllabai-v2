@@ -1,0 +1,76 @@
+version: 1
+task:
+  id: T-BOOK-003
+  title: "Rail shell — two-pane layout on the 133c viewer, mobile accordion, honest-empty states + the rail serving/progress API"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15db310b5605cd)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-001, T-BOOK-002]
+  execution_record: >
+    Executed per ADR-BOOK-0001 (§3 serving law, §5 rail-not-rewrite, §8
+    coverage-not-mastery). API (apps/api): BooksReadApp grows three methods —
+    railBlocksForChapter (DOUBLE gate: parent book VALIDATED via the same
+    latest-version join chaptersForBook uses, AND block rows VALIDATED via
+    book_blocks.validation_state — unknown/unvalidated book ⇒ null ⇒ 404
+    T-C20, no flipped pack ⇒ [] honest-empty; rows parse at the boundary
+    through bookBlockSchema = the strict wall), chapterProgressFor +
+    upsertChapterProgress (uq_chapter_progress_identity upsert, RETURNING).
+    Routes (routes/books.ts): GET /:documentId/blocks?chapter= (public-read
+    posture — corpus content, zero PII; 400 chapterKeyOr400 grammar
+    ^u\d+:c\d+$, 404 T-C20, 200 [] honest-empty) + GET/PUT
+    /:documentId/progress (AUTH-GATED via requireAuth middleware — the
+    counter-posture, user signal/PII; userId rides the verified JWT context,
+    never the wire; PUT body law pct int 0..100 + lastOrd ≥1|null, fixed
+    "malformed request" 400 body per the assessment-routes convention).
+    HUB (apps/hub): lib/books-rail.ts (the lib/books.ts precedent, rail side:
+    strict-shape MIRROR of the book.block/1 envelope, type-only contracts
+    import, honest-null fetcher, no-store); components/books/rail/
+    rail-workspace.tsx ("use client" shell — ONE stream instance swapping
+    between the desktop rail column (md: border-l) and the mobile accordion
+    (Collapsible under the pane) purely via classes, so widget state never
+    forks at T-BOOK-004; PdfPaneHandle.scrollToPage imperative page jumps
+    ("see p.N"); IntersectionObserver lastOrd + scroll-pct tracking, PUT
+    debounced 1.2s, 401 silently skips persistence — progress is a coverage
+    signal, not a gate; r0 block views: prose/callout/figure render full
+    content, sim/media render link cards with attribution, the 6 interactive
+    types render honest anchor cards pending the T-BOOK-004..006 players);
+    app/api/books/progress/route.ts (the core/questions posture pipe: httpOnly
+    cookie → Bearer forward, GET+PUT pass-through with status — a pipe, never
+    a store); lib/core-proxy.ts verb set widened GET|POST → +PUT (additive);
+    viewer page: fetchBookRailBlocks(docId, target.chapterKey) — null AND []
+    BOTH render the unchanged 133c page byte-for-byte, only a non-empty
+    VALIDATED stream mounts RailWorkspace. LOCAL PROOF: api tsc 0, hub tsc 0,
+    bun test 1903/1903 (books-routes.test.ts 27/27 incl. the new rail
+    describes: blocks round-trip/honest-empty/T-C20/400 grammar/mapper-throw +
+    progress auth-gates/round-trips/malformed-body law). PENDING-OPERATOR:
+    visible rail = a flipped pack (T-BOOK-010 S4); staging COW proof of the
+    progress upsert stays with the T-BOOK-002 pending item (no NEON_PAT in
+    this session).
+base:
+  repo: "syllabai-v2 @ origin/main (branch t-book-003/rail-shell)"
+basis: >
+  ADR-BOOK-0001 (merged eed02c1 lineage) §3/§5/§8; PLAN-4CH1-v1.1 §8 T-BOOK-003
+  row; T-BOOK-002 contracts book.block/1 + chapter_progress + ATTEMPT law
+  (merged ac5361d); lib/books.ts honest-failure + schema-mirror laws (133c);
+  PdfPaneHandle.scrollToPage (133 mock-scoring seam); core/questions route
+  posture (the cookie→Bearer pipe); answer-input routes test law (auth
+  seeding).
+scope:
+  allowed:
+    - "apps/api/src/services/books.ts"
+    - "apps/api/src/routes/books.ts"
+    - "apps/api/test/content/books-routes.test.ts"
+    - "apps/hub/src/lib/books-rail.ts (new)"
+    - "apps/hub/src/lib/core-proxy.ts (verb-set widening only)"
+    - "apps/hub/src/components/books/rail/** (new)"
+    - "apps/hub/src/app/api/books/progress/** (new)"
+    - "apps/hub/src/app/courses/[course]/books/[docId]/page.tsx (rail mount conditional)"
+    - ".syllabai/tasks/T-BOOK-003-rail-shell.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "packages/contracts/** (book.block/1 is FROZEN at T-BOOK-002; a 12th type is an ADR)"
+    - "packages/db/** (zero new DDL — migration 0005 already carries the family)"
+    - "attempts/** (check wiring is T-BOOK-008's lane)"
+    - "PdfPane internals (133c/e/g/h laws stand — consumers only, via the handle)"

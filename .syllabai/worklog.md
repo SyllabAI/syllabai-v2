@@ -10659,6 +10659,19 @@ Work Log:
 
 Stage Summary:
 - "the backfill drain resumes at RPD reset" EXECUTED of record: 121/216 docs drained this window, 95-doc residual byte-persisted for the next window; every gate of the staged recipe honored (window, no-duplicate-acts, honest-red). Next repo receipt = Task-67; next workspace = Task-47. Standing residuals unchanged (PAT rotation CRITICAL overdue; hub deploy incident operator-keyed; op#4/op#1 pool keys operator-keyed).
+Task ID: T-BOOK-003-r0 (trace 1a15db310b5605cd, operator order "T-BOOK-003 (rail shell) → 004–009 → T-BOOK-010")
+Agent: r0 (Super Z, zai-web session web-c414c074, chat 08b3170a)
+Task: The rail shell — two-pane layout on the existing 133c viewer, mobile accordion, honest-empty states; plus the rail serving/progress API the shell consumes.
+
+Work Log:
+- Fetch-first at open: main moved (6987467; PRs #237 T-BOOK-001 ADR + #238 T-BOOK-002 rail tables MERGED — book.block/1 contracts, migration 0005, ATTEMPT_PROVENANCE law all live of record). PR #236 (doctrine) merged earlier of record. Branch t-book-003/rail-shell off origin/main; core.fileMode false (local checkout noise silenced).
+- API: BooksReadApp +3 methods (railBlocksForChapter DOUBLE gate — book VALIDATED via the chaptersForBook join + rows VALIDATED via validation_state; null/[]/stream tri-state; bookBlockSchema at the boundary) + progress get/upsert (uq_chapter_progress_identity, RETURNING). Routes: GET /blocks (public-read, chapterKeyOr400 grammar ^u\d+:c\d+$, T-C20 404, honest-empty []) + GET/PUT /progress (requireAuth — the counter-posture: user signal = PII; PUT body law pct 0..100 int, lastOrd ≥1|null, fixed malformed-request 400).
+- HUB: lib/books-rail.ts (mirror law verbatim: strict envelope mirror, type-only contracts import, honest-null, no-store); rail-workspace.tsx (ONE stream instance, desktop rail column ↔ mobile accordion via classes — no DOM duplication, widget state cannot fork; PdfPaneHandle.scrollToPage jumps; IntersectionObserver lastOrd + debounced 1.2s PUT; 401 = silent skip, coverage not a gate; r0 views: prose/callout/figure full, sim/media link cards + attribution, 6 interactive types honest anchor cards pending 004..006); /api/books/progress pipe (cookie→Bearer, the core/questions posture); core-proxy verb set +PUT (additive); viewer page conditional — null AND [] render the unchanged 133c page byte-for-byte, only a non-empty VALIDATED stream mounts the shell.
+- LOCAL PROOF: api tsc 0 / hub tsc 0 / bun test 1903/1903 (books-routes 27/27: blocks round-trip + honest-empty + T-C20 + grammar 400s + mcq-embed bank-law mapper throw + progress auth/round-trip/malformed law).
+
+Stage Summary:
+- The rail is a SURFACE law-true end to end: double-gated serving, honest-empty unchanged-133c, progress as the ONLY new persisted signal (auth-gated), zero DDL, zero contracts changes, PdfPane untouched (handle consumers only). Visible rail awaits a flipped pack (T-BOOK-010 S4) — by construction, never before.
+- PENDING-OPERATOR: staging COW proof of migration 0005 + the progress upsert (no NEON_PAT in session; carries the T-BOOK-002 pending item).
 ---
 Task ID: HUB-REGISTRY cie-fill-where-served (trace 1a15dbaad30a6cc1 — the run-009 onGreen obligation, on-the-spot)
 Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)

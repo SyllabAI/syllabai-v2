@@ -40,7 +40,10 @@ export interface CoreFetchResult<T> {
  *  verdicts — returns them so routes can map status → client guidance. */
 export async function coreFetchAuthorized<T>(
   path: string,
-  init: { method: "GET" | "POST"; token: string | null; body?: unknown },
+  // T-BOOK-003: "PUT" joins the verb set (the chapter_progress upsert — a
+  // user-signal write that is NOT an AI call; the ADR-029 comment above
+  // describes the AI posture, the verb set is just transport).
+  init: { method: "GET" | "POST" | "PUT"; token: string | null; body?: unknown },
 ): Promise<CoreFetchResult<T>> {
   const base = coreBaseUrl();
   if (!base) throw new CoreProxyError(503, "core_not_configured", "The SyllabAI backend is not configured for this deployment.");

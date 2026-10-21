@@ -17,20 +17,52 @@ import { Hono } from "hono";
 import { z } from "zod";
 
 import { createBooksRouter } from "../../src/routes/books";
-import { booksRowMappers } from "../../src/services/books";
+import { booksRowMappers, railRowMappers } from "../../src/services/books";
 import type { BooksReadApp } from "../../src/services/books";
 import { toErrorResponse, apiError } from "../../src/services/identity/errors";
+import type { AuthContext } from "../../src/middleware/auth";
 import {
   bookChapterSchema,
   bookCitationTargetSchema,
   bookShelfEntrySchema,
+  bookBlockSchema,
+  chapterProgressSchema,
   type BookChapter,
   type BookShelfEntry,
+  type BookBlock,
+  type ChapterProgress,
 } from "@syllabai/contracts";
 
 const PILOT_DOC = "e6c0db50-0f84-55de-b50c-e4d49285cd6d";
 const UNKNOWN_DOC = "00000000-0000-4000-8000-0000000000d1";
 const COURSE = "igcse-chemistry-19";
+const LEARNER_ID = "aa645313-5930-4381-91ed-caff67a2f836";
+const STUDENT: AuthContext = {
+  email: "student@example.edu",
+  userId: LEARNER_ID,
+  roles: ["STUDENT"],
+  tokenVersion: 1,
+};
+
+/** T-BOOK-003 fixture — one authored rail block (book.block/1 strict shape).
+ *  Real chemistry, page-true anchor (the chapter's first PDF page). */
+const RAIL_BLOCK: BookBlock = {
+  id: "c01-states-and-solutions/b01",
+  documentId: PILOT_DOC,
+  docVersion: 1,
+  chapterKey: "u1:c1",
+  ord: 1,
+  type: "prose",
+  pdfPageAnchor: 12,
+  content: {
+    text: "Particle theory in one pass: the three states differ in how close the particles are and how much they move — not in what the particles are.",
+  },
+  checkRefs: [],
+  glossaryRefs: ["states-of-matter"],
+  specPointRefs: ["1.1"],
+  validationState: "VALIDATED",
+  version: 1,
+};
 
 const SHELF_ENTRY: BookShelfEntry = {
   documentId: PILOT_DOC,
@@ -99,12 +131,46 @@ function fakeApp(overrides: Partial<BooksReadApp> = {}): BooksReadApp {
         chapter,
       };
     },
+    // T-BOOK-003 rail defaults — BEFORE the overrides spread, so a test's
+    // override wins cleanly (spread-last law, no ?? guards needed).
+    railBlocksForChapter: async (documentId, chapterKey) => {
+      if (documentId !== PILOT_DOC) return null; // unknown/unvalidated book
+      return chapterKey === "u1:c1" ? [RAIL_BLOCK] : []; // flipped pack vs honest-empty
+    },
+    chapterProgressFor: async (userId, documentId, chapterKey) =>
+      userId === LEARNER_ID && documentId === PILOT_DOC && chapterKey === "u1:c1"
+        ? {
+            userId,
+            documentId,
+            chapterKey,
+            railScrolledPct: 42,
+            lastOrd: 2,
+            updatedAt: "2026-10-21T09:30:00.000Z",
+          }
+        : null,
+    upsertChapterProgress: async (userId, documentId, chapterKey, railScrolledPct, lastOrd) => ({
+      userId,
+      documentId,
+      chapterKey,
+      railScrolledPct,
+      lastOrd,
+      updatedAt: "2026-10-21T09:45:00.000Z",
+    }),
     ...overrides,
   };
 }
 
-function router(app: BooksReadApp): Hono {
-  return new Hono()
+function router(app: BooksReadApp, auth: AuthContext | null = null): Hono {
+  const root = new Hono();
+  if (auth != null) {
+    // the answer-input routes test law: seed the auth context directly (the
+    // JWT filter's observable OUTCOME, not its cryptography)
+    root.use("*", async (c, next) => {
+      c.set("syllabai.auth" as never, auth as never);
+      await next();
+    });
+  }
+  return root
     .onError((err, c) => {
       // the global error law of apps/api/src/index.ts, mirrored for the
       // bare test app (NotFoundException → 404 not_found, etc.)
@@ -335,5 +401,166 @@ describe("GET /api/v1/content/books/:documentId?page=N (133d citation target)", 
     const body = (await res.json()) as Record<string, unknown>;
     expect(body.status).toBe(404);
     expect(body.error).toBe("not_found");
+  });
+});
+
+// ── T-BOOK-003: the interactive rail (blocks + chapter_progress) ─────────────
+
+describe("GET /api/v1/content/books/:documentId/blocks", () => {
+  test("200 — VALIDATED pack stream, book.block/1 strict round-trip, ord-ordered", async () => {
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}/blocks?chapter=u1:c1`,
+    );
+    expect(res.status).toBe(200);
+    const parsed = z.array(bookBlockSchema).parse(await res.json());
+    expect(parsed).toHaveLength(1);
+    expect(parsed[0]?.type).toBe("prose");
+    expect(parsed[0]?.pdfPageAnchor).toBe(12);
+    expect(parsed[0]?.specPointRefs).toEqual(["1.1"]);
+  });
+
+  test("200 [] — known book, chapter with NO flipped pack (honest-empty, not 404)", async () => {
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}/blocks?chapter=u1:c2`,
+    );
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual([]);
+  });
+
+  test("404 — unknown/unvalidated book (T-C20, same answer as the chapters route)", async () => {
+    for (const app of [
+      fakeApp(), // unknown doc → repository null
+      fakeApp({
+        railBlocksForChapter: async () => null, // unvalidated-book shape
+      }),
+    ]) {
+      const res = await router(app).request(
+        `/api/v1/content/books/${UNKNOWN_DOC}/blocks?chapter=u1:c1`,
+      );
+      expect(res.status).toBe(404);
+      const body = (await res.json()) as Record<string, unknown>;
+      expect(body.error).toBe("not_found");
+      expect(body.message).toBe(`Book ${UNKNOWN_DOC} not found`);
+    }
+  });
+
+  test("400 — chapter parameter absent (validation_failed, message law)", async () => {
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}/blocks`,
+    );
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("missing required parameter: chapter");
+  });
+
+  test("400 — chapter parameter malformed (the u<unit>:c<chapter> grammar)", async () => {
+    for (const bad of ["1:1", "u1c1", "u1:xexam", "u:n", "u1:c"]) {
+      const res = await router(fakeApp()).request(
+        `/api/v1/content/books/${PILOT_DOC}/blocks?chapter=${encodeURIComponent(bad)}`,
+      );
+      expect(res.status).toBe(400);
+      const body = (await res.json()) as Record<string, unknown>;
+      expect(body.error).toBe("validation_failed");
+    }
+  });
+
+  test("a block row that fails book.block/1 THROWS at the mapper (honest 500 upstream)", () => {
+    expect(() =>
+      railRowMappers.toRailBlock({
+        id: "c01/bad",
+        document_id: PILOT_DOC,
+        doc_version: 1,
+        chapter_key: "u1:c1",
+        ord: 1,
+        type: "mcq-embed", // bank law: mcq-embed REQUIRES non-empty checkRefs
+        pdf_page_anchor: null,
+        content: {},
+        check_refs: [],
+        glossary_refs: [],
+        spec_point_refs: [],
+        validation_state: "VALIDATED",
+        version: 1,
+      }),
+    ).toThrow();
+  });
+});
+
+describe("GET/PUT /api/v1/content/books/:documentId/progress", () => {
+  test("401 — unauthenticated GET (the auth-gated posture; Boot 401 body)", async () => {
+    const res = await router(fakeApp(), null).request(
+      `/api/v1/content/books/${PILOT_DOC}/progress?chapter=u1:c1`,
+    );
+    expect(res.status).toBe(401);
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.error).toBe("Unauthorized");
+  });
+
+  test("401 — unauthenticated PUT (the user signal never rides an anonymous request)", async () => {
+    const res = await router(fakeApp(), null).request(
+      `/api/v1/content/books/${PILOT_DOC}/progress?chapter=u1:c1`,
+      { method: "PUT", body: JSON.stringify({ railScrolledPct: 50 }) },
+    );
+    expect(res.status).toBe(401);
+  });
+
+  test("200 GET — the caller's row, chapterProgressSchema round-trip", async () => {
+    const res = await router(fakeApp(), STUDENT).request(
+      `/api/v1/content/books/${PILOT_DOC}/progress?chapter=u1:c1`,
+    );
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { progress: unknown };
+    const parsed = chapterProgressSchema.parse(body.progress);
+    expect(parsed.railScrolledPct).toBe(42);
+    expect(parsed.lastOrd).toBe(2);
+    expect(parsed.userId).toBe(LEARNER_ID);
+  });
+
+  test("200 GET — no row yet answers {progress: null} (first open, not an error)", async () => {
+    const res = await router(fakeApp(), STUDENT).request(
+      `/api/v1/content/books/${PILOT_DOC}/progress?chapter=u1:c2`,
+    );
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ progress: null });
+  });
+
+  test("200 PUT — the upsert round-trips the row of record", async () => {
+    const res = await router(fakeApp(), STUDENT).request(
+      `/api/v1/content/books/${PILOT_DOC}/progress?chapter=u1:c1`,
+      { method: "PUT", body: JSON.stringify({ railScrolledPct: 88, lastOrd: 5 }) },
+    );
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { progress: unknown };
+    const parsed = chapterProgressSchema.parse(body.progress);
+    expect(parsed.railScrolledPct).toBe(88);
+    expect(parsed.lastOrd).toBe(5);
+  });
+
+  test("400 PUT — pct out of range / non-integer / missing (fixed malformed-request body)", async () => {
+    for (const body of [
+      { railScrolledPct: 101 },
+      { railScrolledPct: -1 },
+      { railScrolledPct: 12.5 },
+      { lastOrd: 3 },
+      "not-an-object",
+    ]) {
+      const res = await router(fakeApp(), STUDENT).request(
+        `/api/v1/content/books/${PILOT_DOC}/progress?chapter=u1:c1`,
+        { method: "PUT", body: JSON.stringify(body) },
+      );
+      expect(res.status).toBe(400);
+      const parsed = (await res.json()) as Record<string, unknown>;
+      expect(parsed.error).toBe("bad_request");
+      expect(parsed.message).toBe("malformed request");
+    }
+  });
+
+  test("400 — progress routes reject a malformed chapter key (shared chapterKeyOr400 gate)", async () => {
+    const res = await router(fakeApp(), STUDENT).request(
+      `/api/v1/content/books/${PILOT_DOC}/progress?chapter=nonsense`,
+    );
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.error).toBe("validation_failed");
   });
 });
