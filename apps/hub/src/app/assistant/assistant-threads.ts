@@ -37,7 +37,9 @@ export interface AssistantMessage {
   context?: {
     kind: string;
     anchor: string;
-    attempted?: boolean;
+    /** nullable of record: the ask response's attempted rides null when the
+     *  server hasn't resolved attempt evidence (phase-3b round-trip honesty) */
+    attempted?: boolean | null;
   };
 }
 
@@ -51,6 +53,13 @@ export interface AssistantThread {
    *  the rail filters slug-to-slug, never by label. */
   courseSlug?: string | null;
   courseLabel?: string | null;
+  /** §22 sync-tier seam (phase 3b, plan §4): the server mirror anchor;
+   *  null = local-only thread. Load() preserves it across reloads. */
+  sessionId?: string | null;
+  /** creation order — deterministic eviction tie-break (clock ties are
+   *  real: fast asks and test loops land in the same millisecond; the
+   *  question store's seq law, phase-3b parity) */
+  seq?: number;
 }
 
 const KEY = "syllabai.assistant.threads.v1";
@@ -69,6 +78,9 @@ interface StoredState {
 let state: StoredState = load();
 const listeners = new Set<() => void>();
 
+/** monotonic creation counter — survives reload via load()'s derive step */
+let seqCounter = 0;
+
 function load(): StoredState {
   if (typeof window === "undefined") return { threads: [], activeId: null };
   try {
@@ -79,6 +91,8 @@ function load(): StoredState {
     const threads = parsed.threads
       .filter((t) => t && typeof t.id === "string" && Array.isArray(t.messages))
       .slice(0, MAX_THREADS);
+    // seq continuity: new threads must sort AFTER everything already stored
+    seqCounter = threads.reduce((m, t) => Math.max(m, t.seq ?? 0), 0) + 1;
     return {
       threads,
       activeId:
@@ -180,6 +194,7 @@ export function createThread(title = "New chat", course?: AssistantCourseContext
     createdAt: now,
     updatedAt: now,
     messages: [],
+    seq: seqCounter++,
     ...(course ? { courseSlug: course.slug, courseLabel: course.label } : {}),
   };
   commit({ threads: [thread, ...state.threads].slice(0, MAX_THREADS), activeId: thread.id });
@@ -272,4 +287,134 @@ export function relativeTime(at: number): string {
   if (diff < 86_400_000) return `${Math.floor(diff / 3_600_000)}h ago`;
   if (diff < 7 * 86_400_000) return `${Math.floor(diff / 86_400_000)}d ago`;
   return new Date(at).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+}
+
+// ── sync-tier functions (DC-6 phase 3b; docs/DC6-ASSISTANT-SURFACE-SYNC-PLAN.md §4) ──
+// The same laws the question store pinned in phase 3, adapted to the
+// assistant's single-active-pointer shape: the local store stays the source
+// of truth; the server is a best-effort full-state mirror. These functions
+// are the store's ENTIRE sync surface — the loop lives in assistant-sync.ts
+// (component layer), keeping the zero-cross-surface decoupling law.
+
+/** One hydrated server thread (the sync module maps the wire view to this
+ *  shape — messages are the LOCAL role union; `content` not `payload`). */
+export interface HydratedAssistantThread {
+  sessionId: string;
+  title: string;
+  courseSlug: string | null;
+  createdAt: number;
+  updatedAt: number;
+  messages: AssistantMessage[];
+}
+
+/**
+ * Bind a local thread to its server anchor (the lazy-bind moment). The
+ * FIRST binding wins (recovery goes through unbind — a stale-server
+ * rebinding is never silent); unknown threads no-op.
+ */
+export function bindAssistantSession(localThreadId: string, serverThreadId: string) {
+  const t = state.threads.find((th) => th.id === localThreadId);
+  if (!t) return;
+  if (t.sessionId != null) return; // first binding wins (monotonic, idempotent)
+  updateInPlace(localThreadId, { sessionId: serverThreadId });
+}
+
+/**
+ * Drop the binding: a 404 said the server thread is gone (deleted
+ * elsewhere). Deletion is respected — the thread stays local-only and is
+ * NOT re-created for the rest of the session (the sync module owns the
+ * drop marker).
+ */
+export function unbindAssistantSession(localThreadId: string) {
+  const t = state.threads.find((th) => th.id === localThreadId);
+  if (!t || t.sessionId == null) return;
+  updateInPlace(localThreadId, { sessionId: null });
+}
+
+/** One thread by id — the sync module's read seam (it must be able to
+ *  mirror a RENAMED thread that is not the active one). */
+export function getAssistantThread(id: string): AssistantThread | null {
+  return state.threads.find((t) => t.id === id) ?? null;
+}
+
+/** All threads (tests + the future cross-question rail read). The array is
+ *  the live state reference — treat it read-only; commit() replaces it. */
+export function getAssistantThreads(): AssistantThread[] {
+  return state.threads;
+}
+
+/**
+ * Upsert server threads that are NOT already bound locally (local wins — a
+ * bound thread is never clobbered). Hydration NEVER moves the active
+ * pointer (restoring a conversation stays an explicit user act) and
+ * respects the family caps with the survivor law: under full-store
+ * pressure the non-active, non-addition threads evict first, then the
+ * oldest additions yield — and the return count discloses exactly how many
+ * landed. Malformed messages skip (never throw).
+ */
+export function hydrateAssistantThreads(incoming: HydratedAssistantThread[]): number {
+  const bound = new Set(
+    state.threads
+      .filter((t) => t.sessionId != null)
+      .map((t) => t.sessionId as string),
+  );
+  const fresh = incoming.filter(
+    (s) => !bound.has(s.sessionId) && s.messages.length > 0,
+  );
+  if (fresh.length === 0) return 0;
+  const now = Date.now();
+  const additions: AssistantThread[] = fresh.map((s) => ({
+    id: newThreadId(),
+    title: s.title,
+    createdAt: s.createdAt || now,
+    updatedAt: s.updatedAt || now,
+    messages: s.messages.filter(validAssistantMessage).slice(-MAX_MESSAGES_PER_THREAD),
+    seq: seqCounter++,
+    ...(s.courseSlug ? { courseSlug: s.courseSlug } : {}),
+    sessionId: s.sessionId,
+  }));
+  // stale pointers protect nothing — only pointers to LIVE threads count
+  const liveIds = new Set(state.threads.map((t) => t.id));
+  const protectedActive =
+    state.activeId != null && liveIds.has(state.activeId) ? state.activeId : null;
+  let threads = [...state.threads, ...additions];
+  if (threads.length > MAX_THREADS) {
+    const additionIds = new Set(additions.map((a) => a.id));
+    const overflow = threads.length - MAX_THREADS;
+    const evictable = threads
+      .filter((t) => t.id !== protectedActive && !additionIds.has(t.id))
+      .sort((a, b) => a.updatedAt - b.updatedAt || (a.seq ?? 0) - (b.seq ?? 0));
+    const evict = new Set(evictable.slice(0, Math.max(0, overflow)).map((t) => t.id));
+    if (evict.size < overflow) {
+      const oldestAdditions = additions
+        .filter((a) => !evict.has(a.id))
+        .sort((a, b) => a.updatedAt - b.updatedAt || (a.seq ?? 0) - (b.seq ?? 0));
+      for (const t of oldestAdditions) {
+        if (evict.size >= overflow) break;
+        evict.add(t.id);
+      }
+    }
+    threads = threads.filter((t) => !evict.has(t.id));
+  }
+  commit({ threads });
+  const survivorIds = new Set(threads.map((t) => t.id));
+  return additions.filter((a) => survivorIds.has(a.id)).length;
+}
+
+/** Stored-message validation for the role union: a malformed entry is
+ *  dropped, never thrown (the family's validMessage law). */
+function validAssistantMessage(m: unknown): m is AssistantMessage {
+  if (!m || typeof m !== "object") return false;
+  const x = m as Record<string, unknown>;
+  if (typeof x.at !== "number") return false;
+  if (x.role !== "user" && x.role !== "assistant") return false;
+  return typeof x.content === "string";
+}
+
+/** Patch sync fields WITHOUT touching updatedAt or the ordering (a bind is
+ *  not a conversation update — the rail's recency must not move). */
+function updateInPlace(id: string, patch: Partial<AssistantThread>) {
+  commit({
+    threads: state.threads.map((t) => (t.id === id ? { ...t, ...patch } : t)),
+  });
 }

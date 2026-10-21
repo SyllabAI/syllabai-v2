@@ -31,6 +31,9 @@
  */
 import { Hono } from "hono";
 import {
+  claAssistantThreadCreateSchema,
+  claAssistantThreadSyncSchema,
+  claAssistantThreadViewSchema,
   claThreadCreateSchema,
   claThreadSyncSchema,
   claThreadViewSchema,
@@ -77,20 +80,37 @@ export function createClaThreadsRouter(store: ClaThreadStore): Hono {
     await next();
   });
 
-  // POST / — the lazy-bind moment → 201 ClaThreadCreated
+  // POST / — the lazy-bind moment → 201 ClaThreadCreated. The surface branch
+  // is the phase-3b slit opened (plan §3): the ROW's surface law picks the
+  // schema — 'assistant' admits NO questionId/questionNumber (the DB scope
+  // CHECK's mirror, .strict()), 'question_cla' keeps the phase-3 law
+  // byte-identical.
   r.post("/", async (c) => {
     const auth = getAuth(c)!;
     const body = await readJsonBody(c);
-    const parsed = claThreadCreateSchema.safeParse(body);
-    if (!parsed.success) {
-      return c.json(apiError(400, "bad_request", "malformed request"), 400);
-    }
-    if (parsed.data.surface !== "question_cla") {
-      // 'assistant' is RESERVED (plan §5.4): the DB CHECK carries the value;
-      // the API admits only the question surface until the follow-up lands
-      return c.json(apiError(400, "bad_request", "malformed request"), 400);
-    }
+    const rawSurface = (body as { surface?: unknown } | undefined)?.surface;
     try {
+      if (rawSurface === "assistant") {
+        const parsed = claAssistantThreadCreateSchema.safeParse(body);
+        if (!parsed.success) {
+          return c.json(apiError(400, "bad_request", "malformed request"), 400);
+        }
+        const view = await store.create(auth.userId, {
+          surface: "assistant",
+          questionId: null,
+          questionNumber: null,
+          courseSlug: parsed.data.courseSlug,
+          title: parsed.data.title,
+        });
+        // the wire law: the view validates against the assistant contract —
+        // a defensive parse (never fires; the store constructs the shape)
+        const wire = claAssistantThreadViewSchema.parse(view);
+        return c.json({ threadId: wire.threadId, createdAt: wire.createdAt }, 201);
+      }
+      const parsed = claThreadCreateSchema.safeParse(body);
+      if (!parsed.success) {
+        return c.json(apiError(400, "bad_request", "malformed request"), 400);
+      }
       const view = await store.create(auth.userId, parsed.data);
       // the wire law: the view validates against the ratified contract —
       // a defensive parse (never fires; the store constructs the shape)
@@ -128,7 +148,8 @@ export function createClaThreadsRouter(store: ClaThreadStore): Hono {
   });
 
   // GET /:threadId — the §22 retrieval: the caller's own transcript,
-  // seq-ordered
+  // seq-ordered. The ROW's surface picks the view schema (plan §3): a
+  // question row can never parse as an assistant view and vice versa.
   r.get("/:threadId", async (c) => {
     const auth = getAuth(c)!;
     const rawId = c.req.param("threadId");
@@ -136,8 +157,12 @@ export function createClaThreadsRouter(store: ClaThreadStore): Hono {
       return c.json(apiError(400, "bad_request", "malformed request"), 400);
     }
     try {
-      const view = claThreadViewSchema.parse(await store.view(auth.userId, rawId));
-      return c.json(view, 200);
+      const view = await store.view(auth.userId, rawId);
+      const wire =
+        view.surface === "assistant"
+          ? claAssistantThreadViewSchema.parse(view)
+          : claThreadViewSchema.parse(view);
+      return c.json(wire, 200);
     } catch (e) {
       const mapped = mapThreadErrors(e, c);
       if (mapped) return mapped;
@@ -145,7 +170,10 @@ export function createClaThreadsRouter(store: ClaThreadStore): Hono {
     }
   });
 
-  // PUT /:threadId — the full-state mirror write (plan §3)
+  // PUT /:threadId — the full-state mirror write (plan §3). The ROW's
+  // surface law is read BEFORE the body parse (surfaceOf — the oracle law
+  // fires first): an assistant row admits ONLY the assistant sync schema,
+  // a question row ONLY the phase-3 schema — the caller never picks.
   r.put("/:threadId", async (c) => {
     const auth = getAuth(c)!;
     const rawId = c.req.param("threadId");
@@ -153,11 +181,25 @@ export function createClaThreadsRouter(store: ClaThreadStore): Hono {
       return c.json(apiError(400, "bad_request", "malformed request"), 400);
     }
     const body = await readJsonBody(c);
-    const parsed = claThreadSyncSchema.safeParse(body);
-    if (!parsed.success) {
-      return c.json(apiError(400, "bad_request", "malformed request"), 400);
-    }
     try {
+      const surface = await store.surfaceOf(auth.userId, rawId);
+      if (surface === "assistant") {
+        const parsed = claAssistantThreadSyncSchema.safeParse(body);
+        if (!parsed.success) {
+          return c.json(apiError(400, "bad_request", "malformed request"), 400);
+        }
+        const synced = await store.sync(auth.userId, rawId, {
+          title: parsed.data.title,
+          questionNumber: null,
+          courseSlug: parsed.data.courseSlug,
+          messages: parsed.data.messages,
+        });
+        return c.json(synced, 200);
+      }
+      const parsed = claThreadSyncSchema.safeParse(body);
+      if (!parsed.success) {
+        return c.json(apiError(400, "bad_request", "malformed request"), 400);
+      }
       const synced = await store.sync(auth.userId, rawId, parsed.data);
       return c.json(synced, 200);
     } catch (e) {

@@ -25,6 +25,7 @@ import type { Clock } from "../tutor/session-store";
 import { ConflictError, NotFoundError } from "../tutor/errors";
 import type {
   ClaAnswerView,
+  ClaAssistantThreadSyncMessage,
   ClaThreadSyncMessage,
   ClaThreadViewMessage,
 } from "@syllabai/contracts";
@@ -71,7 +72,10 @@ export interface ClaThreadSummaryRecord {
 
 export interface ClaThreadCreateInput {
   surface: string;
-  questionId: string;
+  /** NULL for assistant rows (the DB scope CHECK: assistant ⇔ question_id
+   *  IS NULL — the phase-3b widening; docs/DC6-ASSISTANT-SURFACE-SYNC-PLAN.md
+   *  §3). question_cla rows keep the NOT NULL law. */
+  questionId: string | null;
   questionNumber: number | null;
   courseSlug: string | null;
   title: string;
@@ -81,7 +85,9 @@ export interface ClaThreadSyncInput {
   title: string;
   questionNumber: number | null;
   courseSlug: string | null;
-  messages: ClaThreadSyncMessage[];
+  /** The two surface unions — the ROUTE admits exactly one per row (the
+   *  surfaceOf branch); the store is shape-agnostic (jsonb passthrough). */
+  messages: Array<ClaThreadSyncMessage | ClaAssistantThreadSyncMessage>;
 }
 
 interface ThreadRow {
@@ -213,6 +219,15 @@ export function buildClaThreadStore(sql: SqlFn, clock: Clock) {
         lastActiveAt: t.last_active_at,
         messageCount: Number(t.message_count ?? 0),
       }));
+    },
+
+    /** The row's surface — the PUT admission branch reads it BEFORE parsing
+     *  the body: a thread's surface law is the ROW's, never the caller's
+     *  (plan §3). Foreign/unknown → the same 404 as every other operation
+     *  (the §22 oracle law). */
+    async surfaceOf(learnerId: string, threadId: string): Promise<string> {
+      const thread = await owned(learnerId, threadId);
+      return thread.surface;
     },
 
     /** Full transcript, seq-ordered; foreign/unknown 404 (the oracle law). */

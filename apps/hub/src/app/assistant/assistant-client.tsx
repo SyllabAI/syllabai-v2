@@ -48,6 +48,7 @@ import {
   useAssistantSnapshot,
   type AssistantMessage,
 } from "./assistant-threads";
+import { hydrateAssistantFromServer, scheduleAssistantSync } from "./assistant-sync";
 
 /** Stable empty transcript — a fresh array per render would defeat memoization. */
 const EMPTY_THREAD: AssistantMessage[] = [];
@@ -149,6 +150,13 @@ export function AssistantClient({
     threadRef.current?.scrollTo({ top: threadRef.current.scrollHeight });
   }, [thread, busy]);
 
+  // DC-6 phase 3b: hydration is once per session (guarded inside the sync
+  // module), token-gated, silent-failure — the rail's course filter scopes
+  // what shows after; the store's active pointer never moves here.
+  useEffect(() => {
+    void hydrateAssistantFromServer();
+  }, []);
+
   // question contexts load their topic's compact catalog lazily; the loading
   // flag is derived (set selected + no result yet), so the effect only ever
   // sets state from the async fetch itself
@@ -201,6 +209,9 @@ export function AssistantClient({
     // can never append this exchange to the wrong conversation
     const threadId = ensureActiveThread({ slug: course.slug, label: course.label }).id;
     appendMessages(threadId, [{ role: "user", content: text, at: Date.now() }]);
+    // the mirror loop (phase 3b): both legs commit separately — the trailing
+    // debounce coalesces them into ONE full-state PUT per ask burst
+    scheduleAssistantSync(threadId);
     setDraft("");
     setBusy(true);
     setError(null);
@@ -265,6 +276,7 @@ export function AssistantClient({
           },
         },
       ]);
+      scheduleAssistantSync(threadId);
     } catch {
       setError({ text: "Network error while asking — check your connection and try again." });
     } finally {

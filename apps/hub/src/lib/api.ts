@@ -104,6 +104,9 @@ import type {
   ClaThreadSync,
   ClaThreadSynced,
   ClaThreadView,
+  ClaAssistantThreadCreate,
+  ClaAssistantThreadSync,
+  ClaAssistantThreadView,
   RevisionNoteBodyView,
   RevisionNotesIndexView,
   MarkSchemeRevealView,
@@ -1682,8 +1685,9 @@ export const api = {
   // thread to its server anchor (lazily, on the first logged-in ask); sync
   // PUTs the full transcript (idempotent on retry — same seq = same row);
   // list hydrates the question-scoped history on another device; get
-  // fetches one transcript; delete is the data-minimization right (no call
-  // site v1 — the rail follow-up owns it).
+  // fetches one transcript; delete is the data-minimization right (its
+  // first call sites are the phase-3b assistant-rail delete + the phase-3c
+  // question-rail verbs).
   claThreadCreate: (body: ClaThreadCreate) =>
     request<ClaThreadCreated>("/api/v1/learners/me/cla/threads", {
       method: "POST",
@@ -1711,6 +1715,27 @@ export const api = {
     request<void>(`/api/v1/learners/me/cla/threads/${encodeURIComponent(threadId)}`, {
       method: "DELETE",
     }),
+
+  // DC-6 phase 3b — the assistant-surface branch of the same family (the
+  // assistant-sync module is the only caller; the ROW's surface law picks
+  // the schema server-side, so these ride the same paths with the assistant
+  // shapes — no question fields anywhere).
+  claAssistantThreadCreate: (body: ClaAssistantThreadCreate) =>
+    request<ClaThreadCreated>("/api/v1/learners/me/cla/threads", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+
+  claAssistantThreadSync: (threadId: string, body: ClaAssistantThreadSync) =>
+    request<ClaThreadSynced>(`/api/v1/learners/me/cla/threads/${encodeURIComponent(threadId)}`, {
+      method: "PUT",
+      body: JSON.stringify(body),
+    }),
+
+  claAssistantThreadGet: (threadId: string) =>
+    request<ClaAssistantThreadView>(
+      `/api/v1/learners/me/cla/threads/${encodeURIComponent(threadId)}`,
+    ),
 
   // CLA (contract §2–§7): the context + mode are explicit and server-resolved
   // (fail-closed 404 on anything unvalidated/foreign); CHECK pre-attempt is a
