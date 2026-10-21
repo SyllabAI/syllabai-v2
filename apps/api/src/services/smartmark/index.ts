@@ -503,8 +503,8 @@ export class SmartMarkService {
       with recursive qn as (
         select distinct question_id, node_id from question_topics
         union
-        select distinct question_id, spec_point_id as node_id
-        from question_spec_points where spec_point_id is not null
+        select distinct question_id, spec_point_node_id as node_id
+        from question_spec_points where spec_point_node_id is not null
       ), up as (
         select qn.question_id, tn.id as node_id, 0 as depth,
                case when tn.node_type = 'SUBJECT' then tn.id end as subj_node
