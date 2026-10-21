@@ -73,5 +73,17 @@
   "134c PARKED",
   "PAT rotation STILL CRITICAL overdue (same fingerprint through this lane's v2 push)",
   "optional parse_report reconcile lane (low priority)"
- ]
+ ],
+ "assetMirrorFix": {
+  "trigger": "CI verify on PR #284 run 39688270307: 3 fails in 'run-002 repair — the committed asset-map coherence law' (cie-a-level-chemistry-25, cie-a-level-computer-science-19, cie-igcse-computer-science-23)",
+  "rootCause": "the 3 bare-ref slugs carry asset-map.json whose importRef field MIRRORS the manifest pin (the test's own law: 'the map's pin IS the manifest's pin (provenance-consistent)') — the fleet stamp moved the manifests but not these mirrors; the vintage-plane sweep had classified them as content-bearing and missed the mirror class",
+  "fix": "3 asset-maps importRef 0fe5f772 -> c5f20c52 (object-level diff discipline: importRef only; round-trip format proven); local test file 12/12 green",
+  "sweepStatement": "full-tree re-sweep for 0fe5f772 post-fix: remaining hits are historical provenance fields inside byte-frozen content (notes/questions provenance blocks, pre-existing at origin/main and green there), the phase-2 _report_cie_maps.json historical census, test fixtures, and history-bearing receipts/worklogs — all lawful history, none actionable"
+ },
+ "ciNonAttribution": {
+  "residual": "CI verify stays red on the cie-phase4-roster TS4L throw ('bundle TOPIC cie-igcse-history-2024-2026-TS4L does not carry the official -T tail')",
+  "proof": "first-hand: pristine base worktree at 5a14c527 (zero lane changes) throws the BYTE-IDENTICAL error (0 pass/1 fail/1 error on the roster file); local battery summary 2482 pass/13 skip/1 fail/1 error == the #279/#280 receipt's recorded throw signature ('byte-identical PR #279 fleet-bump TS4L tail throw on head and main@1f7aed2e')",
+  "inputAnalysis": "the roster census reads ONLY courses.json + curriculum.json + questions.json — all byte-untouched by this lane (scope census: 42 manifests + maps + validator ts + asset-maps only); the thrown-about node codes live in byte-frozen curriculum trees",
+  "class": "the pre-existing main-red #279/#280 class; merge proceeds under the #280 operator-ruled non-attribution precedent"
+ }
 }
