@@ -108,7 +108,7 @@ const TOOLS = [
     href: (slug: string) => `/teacher/assignments?course=${slug}`,
     icon: ListChecks,
     title: "Assignments",
-    desc: "Build from the bank, assign with a due date, track completion on the SAMPLE roster, remediate in one click.",
+    desc: "Build from the bank, assign with a due date, track completion on the real roster, remediate in one click.",
     badge: "Phase 2",
   },
   {

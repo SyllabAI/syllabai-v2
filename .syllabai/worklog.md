@@ -11208,3 +11208,20 @@ Work Log:
 
 Stage Summary:
 - w0a stands down as FALLBACK for the 07:05Z Oct 22 window; r1c fires run #11. w0a fallback artifact armed (gates refusable rc=2/3/4/5) and fires ONLY on the full fallback condition. Slot-4 divergence flagged for operator ruling. Receipt: .syllabai/receipts/T-MIG-138/run-008-fallback-standdown-ack-w0a.json. Secrets fp16-only; zero dispatch/secret/DB contact this act.
+
+---
+Task ID: T-TEACH-004 (trace 1a15ece07422fcd9 — the approved queue, item 4; session order "T-TEACH-004", trace 1a15f9286810571d)
+Agent: zai-web lane (main agent, session web-590847c1-cf63-4098-b0c8-a90085355429)
+Task: Core class workspace parity — live classes embed the course's resources/past papers (plus the corpus-local teacher tools), real counts, honest empty states.
+
+Work Log:
+- Pre-flight: fetch-first (origin/main at a7979ab, the T-MIG-138 w0a ack — branch cut from true head); queue position verified from the T-TEACH-003 receipt's `next` field ("T-TEACH-004 — core class workspace parity"); no backlog TSV carries the T-TEACH ids — the receipts are the queue of record.
+- Gap confirmed first-hand: the CORE class workspace (class-detail-client) had roster + announcements + AI-feature toggles + KG heatmap link, but NONE of the course resource surfaces the browser-local container embeds (local workspace: notes/questions/flashcards/graph rows + Test Builder/Assignments/Validation tools). The one-course model (classes.course_slug) made the parity surface well-defined.
+- Implemented: page.tsx computes slug → past-papers archive count from the committed corpus index (server-only lib; unmapped = honest 0) and passes paperCounts down; dispatcher threads courses+paperCounts into the CORE branch only (LOCAL branch input unchanged); class-detail-client gains the parity section — 5 resource cards (Revision Notes, Exam Questions, Flashcards, Knowledge Graph ?course=, Past Papers) with /api/course-stats counts + the server-passed paper count, 3 tool cards deep-linked ?course=, a Course hub header action. Skeletons on fetch failure, "no corpus package" badge, "no papers in the archive yet" honest zero (card still links — the archive's empty state routes to the deterministic practice papers).
+- Honesty fix disclosed: the live workspace's Assignments tool copy says "live roster" (verified: core-backed, SAMPLE sim retired); the local container's stale "SAMPLE roster" copy corrected in the same pass (one line, behavior untouched).
+- Zero API/contract/schema/DB surface: detail already carried courseSlug; course-stats already existed; the 292K index is already imported by six server pages. No new heavy dependency, no iframes ("embed" = the rows live in the workspace, links into the real hub surfaces — the established local-container pattern).
+- Gates: typecheck x4 exit 0; bun test apps/api packages 2458/0/13 (byte-identical to the T-TEACH-003 baseline); build:hub exit 0 (/teacher/classes/[id] compiles); eslint clean on all four changed files; registry equivalence check (94 courses: 93 full + 1 pilot, all bundled — every live class's courseSlug resolves).
+
+Stage Summary:
+- The operator's workspace directive ("inside there, all the tools and course resources will exist", trace 1a0ec61d5612aa6d) now holds for BOTH class concepts: the local container and the live core class. The approved four-item queue (T-TEACH-001..004) is complete; the cross-surface teacher authz audit remains the named open item for the operator's review of the remaining queue.
+- Receipt: .syllabai/receipts/HUB-TEACH/t-teach-004-core-class-workspace-parity-r0.json
