@@ -3,14 +3,15 @@
  "generatedUtc": "2026-10-20T00:00:00Z",
  "importSource": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@0fe5f77210f74aaeb3f6c491dfe0263d12db738c",
+  "ref": "main@c5f20c5278137fb16a427f68b3332f1431eb345b",
   "upstreamSchemas": [
    "syllabai.sme-revision-note/1.0",
    "syllabai.sme-revision-notes-course/1.0",
    "syllabai.sme-exam-questions/1.1",
    "syllabai.sme-spec-point-index/1.0",
    "syllabai.sme-flashcard-deck/1.0"
-  ]
+  ],
+  "note": "CIE-REFRESH-1 pin-vintage convergence (2026-10-22): importSource.ref re-pinned to the refresh-time tip main@c5f20c52 per the operator dispatch (trace 1a1608dfdd3007d1). Content is NOT re-derived at this pin: the CIE corpus content inputs (Official-Specifications/parsed/cie-*, SME-RevisionNotes, SME-Flashcards, CIE SME-ExamQuestion paths) are tree-identical 0fe5f772..c5f20c52 (zero-delta proof of record in the run receipt) — content byte-untouched by this lane; linkage re-verified fleet-wide by the T-SPECS-CIE-CONSUME-1 engine re-run (staging hash e89eff6f12e7b47b25f5fda8b0ab3caec11d85eddc1b8758d326f920b46751c5, post-apply idempotence changed=0/44)."
  },
  "curriculum": {
   "board": "Cambridge International",
@@ -34,7 +35,7 @@
  "treeKind": "official-spine",
  "officialSpine": {
   "spine": "spines/cie-a-level-physics-25.json",
-  "resourcesSha": "bb15452701110c27acf59637db059b6053e50b1e",
+  "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
   "attachmentMap": "content-maps/cie-a-level-physics-25.json"
  }
 }

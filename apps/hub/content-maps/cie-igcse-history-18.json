@@ -20,13 +20,13 @@
   }
  },
  "course": "cie-igcse-history-18",
- "generatedUtc": "2026-10-21T13:45:00Z",
+ "generatedUtc": "2026-10-22T12:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-history-18/spec_point_index.json": {
    "sha256": "db8d1ef21895ff63d423c1bf20d4be76281085a11e15ca39c1f60e5c78594f5c"
   },
   "spec-links/cie-igcse-history-18.json": {
-   "sha256": "d9abba9fe52d14946156272a8b3eb8758171209f3404d82277f05f3e5af8a90a"
+   "sha256": "43db56257100efc3c9b3e5232a8a95a17f0268af591d25648683d683f0d676cb"
   },
   "spine": {
    "file": "spines/cie-igcse-history-18.json"
@@ -15415,7 +15415,7 @@
   ],
   "uncoveredSpineCodes": 246
  },
- "resourcesSha": "aa0b4de1b732738b4d02dabdd02d9ead85522907",
+ "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -15424,15 +15424,17 @@
    "census": {
     "codesAttachedFromSidecar": 186,
     "codesByMethod": {
+     "agent_semantic_note_join": 119,
      "operator_verdict": 69
     },
     "codesByTier": {
      "V1_name_text_identity": 28,
-     "V2_name_phrase_identity": 41
+     "V2_name_phrase_identity": 41,
+     "V7_agent_note_join": 119
     },
-    "itemsWithCodes": 55,
+    "itemsWithCodes": 124,
     "ladderCodesRetained": 27,
-    "sidecarCodes": 69,
+    "sidecarCodes": 188,
     "sidecarItems": 407,
     "sidecarOnlyItems": 0,
     "t2Hints": 0

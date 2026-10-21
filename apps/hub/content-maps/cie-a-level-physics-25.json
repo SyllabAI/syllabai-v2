@@ -20,7 +20,7 @@
   }
  },
  "course": "cie-a-level-physics-25",
- "generatedUtc": "2026-10-21T13:45:00Z",
+ "generatedUtc": "2026-10-22T12:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-a-level-physics-25/spec_point_index.json": {
    "sha256": "00f70fba2cf5551e8a75d6853d5f2761db7d61b09eb68d249eccbb56600cc332"
@@ -29,7 +29,7 @@
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
   },
   "spec-links/cie-a-level-physics-25.json": {
-   "sha256": "ffd35c1e16afcf9ca27333746645890ddbdbe6a2f8977bcefd1b35bdc9bfa974"
+   "sha256": "a1c4923a05c6111c96762b835623fab1f5ceffac04276a4a1a44fc7e1c331aa9"
   },
   "spine": {
    "file": "spines/cie-a-level-physics-25.json"
@@ -31699,29 +31699,19 @@
   "rn_3PQ83TpWPt7PpHpZ": {
    "codes": [
     {
-     "lineage": "subtopic_title_scope",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "18.4.1",
-     "officialId": null,
+     "officialId": "CIE_A_LEVEL_PHYSICS_2025_2027:18.4.1",
      "score": null,
      "spineCode": "18.4.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_ccXrJFsq3nk5JCTf"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
    ],
    "kind": "note",
    "subtopicScopedIds": [
     "spcpt_ccXrJFsq3nk5JCTf"
-   ],
-   "t2HintCodes": [
-    {
-     "method": "cie_definition_text_join",
-     "officialCode": "18.4.1",
-     "officialId": "CIE_A_LEVEL_PHYSICS_2025_2027:18.4.1",
-     "spineCode": "18.4.1",
-     "tier": "T2_near"
-    }
    ]
   },
   "rn_3TdJtpTzvdX5JqxD": {
@@ -35977,28 +35967,28 @@
   ],
   "uncoveredSpineCodes": 117
  },
- "resourcesSha": "aa0b4de1b732738b4d02dabdd02d9ead85522907",
+ "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
   "specLinks": {
    "census": {
-    "codesAttachedFromSidecar": 675,
+    "codesAttachedFromSidecar": 676,
     "codesByMethod": {
      "cie_index_rejoin": 660,
-     "operator_verdict": 15
+     "operator_verdict": 16
     },
     "codesByTier": {
      "J4_name_phrase_identity": 660,
-     "V6_near_text_verdict": 15
+     "V6_near_text_verdict": 16
     },
     "itemsWithCodes": 652,
-    "ladderCodesRetained": 133,
+    "ladderCodesRetained": 132,
     "sidecarCodes": 676,
     "sidecarItems": 2053,
     "sidecarOnlyItems": 0,
-    "t2Hints": 1
+    "t2Hints": 0
    },
    "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
    "regime": "spec_links_sidecar_accepted",

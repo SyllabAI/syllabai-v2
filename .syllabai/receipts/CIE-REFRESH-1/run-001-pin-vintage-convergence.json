@@ -1,0 +1,77 @@
+{
+ "receipt": "cie-refresh-1-run-001-pin-vintage-convergence",
+ "family": "CIE-REFRESH-1",
+ "lane": "T-SPECS-CIE-CONSUME-1 (fleet re-run) + CIE-REFRESH-1 stamp pass",
+ "operatorTrace": "1a1608dfdd3007d1",
+ "operatorOrder": "'dispatch the CIE 44-lane refresh to close the pin-vintage gap (CIE rides a 10-20 cut while Edexcel rides 10-21)'",
+ "agent": "main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+ "generatedUtc": "2026-10-22T12:00:00Z",
+ "pinDiscipline": {
+  "resourcesShaFrom": "0fe5f77210f74aaeb3f6c491dfe0263d12db738c (the 2026-10-20 CIE consume wave cut)",
+  "resourcesShaTo": "c5f20c5278137fb16a427f68b3332f1431eb345b (the refresh-time tip; resources origin/main verified fetch-first at lane start)",
+  "zeroDeltaProof": {
+   "claim": "the CIE corpus CONTENT inputs are tree-identical 0fe5f772..c5f20c52 — content is NOT re-derived at the new pin",
+   "SME-RevisionNotes": "0 delta files",
+   "SME-Flashcards": "2 delta files, both igcse-chemistry-modular-24 (Edexcel)",
+   "SME-ExamQuestion": "20 delta files, all igcse-* (Edexcel: accounting-17 x2, chemistry-modular-24 x2, economics-17, geography-19, science-double-award-17 x2) — zero CIE contact",
+   "Official-Specifications": "2 delta files (_flashcard_map_report.json, _sme_map_report.json — telemetry only); parsed/cie-* untouched",
+   "Official-ExamQuestion": "382 delta files, 100% igcse-chemistry-19 (Edexcel wave-12/F41-43) + meta — zero cie paths; NOT a CIE bundle input plane (CIE upstreamSchemas = SME plane: sme-revision-note/1.0, sme-revision-notes-course/1.0, sme-exam-questions/1.1, sme-spec-point-index/1.0, sme-flashcard-deck/1.0)",
+   "books/cambridge-international": "79 new files = FUTURE book-pipeline inputs (source PDFs + READMEs; parsed/ empty .gitkeep) — not consumed by any CIE bundle",
+   "spec-links": "38 delta files = the engine's input plane (30 CIE sidecars: tranche-1 residual + band A; 7 Edexcel; README/manifest)"
+  }
+ },
+ "engineRun": {
+  "engine": "apps/hub/scripts/cie/cie_consume_spec_links.py (committed T-SPECS-CIE-CONSUME-1), session-side patched copy — band-D class: only per-run states patched (HUB/PIN/STAMP/operatorDirective/gatewayTrace), method untouched",
+  "pin": "c5f20c5278137fb16a427f68b3332f1431eb345b",
+  "stamp": "2026-10-22T12:00:00Z",
+  "sheetGates": "resolves=634 ambiguous=166 (unchanged, per band-D verification)",
+  "sidecars": 44,
+  "changed": 44,
+  "codesFromSidecar": 10505,
+  "t2Hints": 0,
+  "sheetConflictsKept": 289,
+  "inlineRewrites": 0,
+  "stagingHash": "e89eff6f12e7b47b25f5fda8b0ab3caec11d85eddc1b8758d326f920b46751c5",
+  "battery": "M1/R1-R6 fail-closed green 44/44",
+  "sessionSideAdaptation": "R4 gate widened for the re-run-at-moved-pin case: manifest diff == {officialSpine} (normal move) OR diff == set() AND staged officialSpine.resourcesSha == PIN (the two band-A lanes band D already re-keyed — the honest no-op). All other R4 states still fail closed. Disclosed here; the committed engine is untouched.",
+  "firstRunIncident": "run 1 crashed post-loop (NameError: session-side operatorDirective replacement referenced a patch-script variable) BEFORE report write; staging evidence discarded, patched states corrected, re-run clean — zero repo contact (staging-only)"
+ },
+ "apply": {
+  "mode": "byte-exact verbatim copy (CIE bundles are indent=1 at origin/main; engine stages the same format — no re-serialization)",
+  "filesApplied": 265,
+  "selfVerification": "every copy byte-compared; staged maps pin/stamp asserted pre-replace",
+  "census": "90 files: 44 content manifests + 44 content-maps + _report_cie_consume.json + validate_cie_bundles.ts; zero paths outside apps/hub/{content,content-maps,scripts} + .syllabai"
+ },
+ "idempotence": {
+  "proof": "post-apply engine re-run at the same pin: changed=0/44, stagingHash null — all 44 lanes converge to byte-identical maps at c5f20c52"
+ },
+ "stampPass": {
+  "targets": 44,
+  "importSource.ref": "main@0fe5f772... -> main@c5f20c5278137fb16a427f68b3332f1431eb345b",
+  "importSource.note": "provenance disclosure added per the NEXTBUMP-2 maths-b precedent (content NOT re-derived; zero-delta proof; engine re-run evidence)",
+  "officialSpine.resourcesSha": "-> c5f20c52 fleet-wide (42 moved by the engine apply + 2 band lanes already there)",
+  "generatedUtc": "untouched on stamp-only lanes (the note carries the date); engine-apply lanes carry the run stamp",
+  "skeleton": "cie-a-level-maths-20-pure-2 untouched by design (ref = receipt path, A2 skeleton, teaching content arrives with the sibling wave)",
+  "formatDiscipline": "per-file round-trip proof (re-dump of parsed original == raw bytes) before any write; object-level diff discipline (only importSource.ref + importSource.note)"
+ },
+ "validatorLadder": {
+  "file": "apps/hub/scripts/validate_cie_bundles.ts",
+  "advance": "CIE_PIN bb154527 -> c5f20c52; bb154527 demoted to PRIOR; aa0b4de1 demoted to PRIOR_2; fc6bf29c exits the 3-slot ladder",
+  "precedent": "the pin moves WITH the of-record (fa7ede6/0c8892d precedent, tranche-2-R1 note)"
+ },
+ "gates": {
+  "validate_cie_bundles": "PASSED (all card paper-count assertions + bundle shape at the advanced ladder)",
+  "build_hub": "exit 0 (prebuild chain incl. verify:cie + corpus-static 223.6MB + next build)",
+  "nodeModulesIncident": "sandbox wipe class: node_modules/.bin empty at build time -> bun install --frozen-lockfile (930 packages, 5.3s) -> build green; no lockfile drift",
+  "publicOutputs": "gitignored (apps/hub/.gitignore /public/corpus*) — zero phantom paths in status"
+ },
+ "scopeCensus": "apps/hub/content (44 manifests) + apps/hub/content-maps (44 + report) + apps/hub/scripts/validate_cie_bundles.ts + .syllabai/** — CIE lanes ONLY; zero Edexcel/registry/spine files touched",
+ "resourcesRepo": "UNTOUCHED — resources transit ledger stays 28 (next resources push records 29)",
+ "openItems": [
+  "CIE teaching-content wave for the pure-2 skeleton (separate dispatch class)",
+  "maths-b Stage-2 regen (operator-keyed)",
+  "134c PARKED",
+  "PAT rotation STILL CRITICAL overdue (same fingerprint through this lane's v2 push)",
+  "optional parse_report reconcile lane (low priority)"
+ ]
+}

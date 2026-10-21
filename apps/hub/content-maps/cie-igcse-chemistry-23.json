@@ -20,7 +20,7 @@
   }
  },
  "course": "cie-igcse-chemistry-23",
- "generatedUtc": "2026-10-21T13:45:00Z",
+ "generatedUtc": "2026-10-22T12:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-chemistry-23/spec_point_index.json": {
    "sha256": "4f2fa3fcbb34ce03e163c2ba267488b50aa37fd2df7edeb77182a0eec1ac393c"
@@ -29,7 +29,7 @@
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
   },
   "spec-links/cie-igcse-chemistry-23.json": {
-   "sha256": "7035085e057fd9ea58390a3b87c6d17a90c6a1921b7306c6e7ae2c29c6fa53fb"
+   "sha256": "e4bf74c85e4bc455eefc3007f1ba187127631be04a7ab06790a2880010837fbe"
   },
   "spine": {
    "file": "spines/cie-igcse-chemistry-23.json"
@@ -8074,15 +8074,14 @@
   "qstnprt_Fsmt6knDFJ2rJSPZ": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "7.1.1",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:7.1.1",
      "score": null,
      "spineCode": "7.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_qfwhmmkgrtk422RQ"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -8096,16 +8095,7 @@
      "viaSpcpt": "spcpt_WVfphKB5BVVPGRkv"
     }
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_definition_text_join",
-     "officialCode": "7.1.1",
-     "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:7.1.1",
-     "spineCode": "7.1.1",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_FtGbpgFqt3kG3CYr": {
    "codes": [
@@ -10439,27 +10429,17 @@
   "qstnprt_T4t3HWr7vftN3ByX": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "7.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "7.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_tsMfFzD86gwkbwZq"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_definition_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "7.1.1",
      "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:7.1.1",
+     "score": null,
      "spineCode": "7.1.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_T6MK6xCkvm2ZVJTz": {
    "codes": [
@@ -10900,27 +10880,17 @@
   "qstnprt_WVTQSCH5q5BvX62M": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "7.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "7.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_tsMfFzD86gwkbwZq"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_definition_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "7.1.1",
      "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:7.1.1",
+     "score": null,
      "spineCode": "7.1.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_WXx6Ng2pnXb4B9rX": {
    "codes": [
@@ -12890,6 +12860,16 @@
    "codes": [
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "7.1.1",
+     "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:7.1.1",
+     "score": null,
+     "spineCode": "7.1.1",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_index_rejoin",
      "officialCode": "7.1.7",
      "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:7.1.7",
@@ -12897,17 +12877,6 @@
      "spineCode": "7.1.7",
      "tier": "J1_definition_text_identity",
      "unit": null
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "7.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "7.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_tsMfFzD86gwkbwZq"
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -12921,16 +12890,7 @@
      "viaSpcpt": "spcpt_bVMTBprCm95v9zGJ"
     }
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_definition_text_join",
-     "officialCode": "7.1.1",
-     "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:7.1.1",
-     "spineCode": "7.1.1",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_hPTNdM5MwD5j4dnS": {
    "codes": [
@@ -15432,27 +15392,17 @@
   "qstnprt_xgXGdPDRGtK6Dnmf": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.2.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_D764gYXKJ7KtYYGC"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_definition_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.2.2",
      "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:8.2.2",
+     "score": null,
      "spineCode": "8.2.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_xnMTBbXkmTSS6Ygx": {
    "codes": [
@@ -16310,27 +16260,17 @@
   "rn_99HKSdZMvWBfKM3f": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.2.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_D764gYXKJ7KtYYGC"
-    }
-   ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_definition_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.2.2",
      "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:8.2.2",
+     "score": null,
      "spineCode": "8.2.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "note"
   },
   "rn_9v5cmHfCgDsrYP4D": {
    "codes": [
@@ -18282,30 +18222,32 @@
   ],
   "uncoveredSpineCodes": 121
  },
- "resourcesSha": "aa0b4de1b732738b4d02dabdd02d9ead85522907",
+ "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
   "specLinks": {
    "census": {
-    "codesAttachedFromSidecar": 350,
+    "codesAttachedFromSidecar": 356,
     "codesByMethod": {
      "cie_definition_text_join": 97,
-     "cie_index_rejoin": 256
+     "cie_index_rejoin": 256,
+     "operator_verdict": 6
     },
     "codesByTier": {
      "J1_definition_text_identity": 181,
      "J2_definition_phrase_identity": 4,
      "J4_name_phrase_identity": 71,
-     "T1_verbatim": 97
+     "T1_verbatim": 97,
+     "V6_near_text_verdict": 6
     },
     "itemsWithCodes": 317,
-    "ladderCodesRetained": 488,
+    "ladderCodesRetained": 482,
     "sidecarCodes": 359,
     "sidecarItems": 634,
     "sidecarOnlyItems": 0,
-    "t2Hints": 6
+    "t2Hints": 0
    },
    "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
    "regime": "spec_links_sidecar_accepted",

@@ -115,9 +115,9 @@ const SEVEN = ["manifest.json", "curriculum.json", "concept-graph.json", "notes.
 // SME-ExamQuestion moved but ALL changed files are igcse-accounting-17*
 // (Edexcel) — zero CIE corpus contact; the CIE input delta is spec-links/
 // (the T-SPECS-CIE-TRANCHE1-T2NEAR-1 verdict round, PR SyllabAI/syllabai-resources#22).
-const CIE_PIN_PRIOR = "aa0b4de1b732738b4d02dabdd02d9ead85522907"; // tranche-1 pin — still of-record for the 32 CIE bundles whose sidecars COMPLETE-1 did not touch (per-course pin movement is the consume engine's own semantics)
-const CIE_PIN_PRIOR_2 = "fc6bf29cea9d3e56020962355b4c0f63aa05535d"; // COMPLETE-1 consume r0 pin (trace 1a15f79acff5346d) — superseded fleet-wide by the tranche-2 consume (all 44 re-keyed)
-const CIE_PIN = "bb15452701110c27acf59637db059b6053e50b1e"; // TRANCHE-2-R1 consume (trace 1a15f8160e677949): pin advanced fc6bf29c -> bb15452 — the upstream delta is spec-links/ (the T-SPECS-CIE-TRANCHE2-R1 residual T2 census promotion, 423 entries -> V6, PR SyllabAI/syllabai-resources#30, merged bb15452; the fleet T2 census byte-identical across the mid-lane rebase); spines tree-unchanged; the census re-pin EXACT 6,715/5,696/9,276 UNCHANGED; the pin moves WITH the of-record (fa7ede6/0c8892d precedent)
+const CIE_PIN_PRIOR = "bb15452701110c27acf59637db059b6053e50b1e"; // tranche-2-R1 pin — superseded fleet-wide by the CIE-REFRESH-1 re-key (all 44 teaching bundles re-keyed at c5f20c52; linkage byte-verified, engine fleet re-run 44/44 green)
+const CIE_PIN_PRIOR_2 = "aa0b4de1b732738b4d02dabdd02d9ead85522907"; // tranche-1 pin — superseded fleet-wide by the CIE-REFRESH-1 re-key
+const CIE_PIN = "c5f20c5278137fb16a427f68b3332f1431eb345b"; // CIE-REFRESH-1 run-001 consume (operator dispatch 'dispatch the CIE 44-lane refresh to close the pin-vintage gap', trace 1a1608dfdd3007d1): pin advanced bb154527 -> c5f20c52 — the CIE corpus content inputs are tree-identical 0fe5f772..c5f20c52 (zero-delta proof of record: SME-ExamQuestion delta all Edexcel, books/ = future pipeline inputs, parsed/RevisionNotes/Flashcards CIE untouched); the only input delta is spec-links/ (band A 140 fragmented-math rows + tranche-1 residual); content-maps + officialSpine.resourcesSha re-keyed fleet-wide, importSource.ref stamped with provenance notes; post-apply idempotence changed=0/44; the pin moves WITH the of-record (fa7ede6/0c8892d precedent)
 function checkRealBundle(slug: string, code: string): void {
   const dir = path.join(CONTENT, slug);
   const missing = SEVEN.filter((f) => !existsSync(path.join(dir, f)));
