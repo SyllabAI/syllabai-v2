@@ -10676,3 +10676,22 @@ Work Log:
 
 Stage Summary:
 - THE CIE REGISTRY FILL AUDIT IS DISCHARGED OF RECORD: 45/45 rows audited evidence-gated; 44 filled with the exact of-record cv codes (registry now 49/94 mapped), pure-2 honest-gated; coreBridge operator-keyed absent; the optionA join semantics visible in the registry itself; the validator now enforces the fill law instead of the launch posture. Zero DB contact, zero secret values, fetch-first. Residuals of record: 45 unmapped rows with receipt-named unlocks; the 13,479-question anchor gap (the CIE lane's phase-2 completion follow-up); PAT rotation operator-keyed and overdue.
+
+---
+Task ID: 4MB1-QUALITY qv-mirror-run-001-r0 (trace 1a15dd3759520e2d, operator order "fire the qv mirror lane")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Order discharges the OPEN DECISION from run-001 / tb-band-probe-001+002: mirror questions.difficulty onto the serving plane (question_versions) for the 1,192 current versions of ACTIVE maths-b fetch-bank questions.
+- SCHEMA FACT of record (dry-run-001 discovery): question_versions has NO difficulty_source column — the decision text's "(+difficulty_source)" is INAPPLICABLE on the qv plane; lane mirrors difficulty ONLY; provenance stays on questions (difficulty_source AI_VALIDATED asserted pre-apply). Deviation disclosed.
+- dry-run-001 HONEST ABORT: assertion misread the run-001 worklog hist (2:303/3:737/4:162 INCLUDES the 10 inactive twins 8@3/2@4 -> active-of-record = 303/729/160). Zero plane movement. dry-run-002 clean: preLane (ALL 1,192 qv at 3), no older versions, one max-row/question, twins 10@3, baseline sha 20d02bd3e6ea8443.
+- apply-001 ROLLED BACK CLEANLY (postgres-js tx.unsafe param typing: integer=text in VALUES join on qv.version) — zero rows committed, proven by apply-002 pre-state still preLane.
+- apply-002 LANDED (single tx): FOR UPDATE lock on 1,192 + in-tx baseline-sha re-prove OK; 6 chunked parameterized tx.unsafe UPDATEs (200x5+192, tuples cast ::uuid/::int/::int) with guard qv.difficulty=3; COMMITTED 1,192. Post-verify: qv hist {2:303,3:729,4:160} == questions plane EXACT; per-row plane equality 1192/1192; twins 10@3 UNTOUCHED.
+- apply-003 IDEMPOTENCY PROVEN: clean no-op (0 rows; pre-sha e374759b6d611865).
+- probe v2 ALL PASS 12/12 legs in 20s: mirror-identity PER-ROW 0/271 on the served roster (S3 wire hist {"2":93,"3":155,"4":23} == questions hist); cap10 difficultySeq [2x10] nonDecreasing (easiest-first); wire-bands-spread distinctBands=3; cap50 hist {"2":50} totalMarks 127 (pre-mirror: {"3":50}/207); targetMarks-25 = 11 q ALL band-2, 25/25 marks (was 7 band-3); determinism identical; idsMatchSim TRUE on every assembly shape; shells green (health/unauthed-401/root-empty/malformed-400).
+- EFFECTS LIVE: test-builder serves band-aware maths-b (difficulty-then-id now real); SME package surface (package.ts qv reader) carries the bands too; the 57 badSum questions remain unclassified on BOTH planes (emitter law unchanged); restore+re-ingest would re-run this lane (coupling disclosed in db-apply receipt).
+- Disclosed prod writes: the 1,192-row qv mirror (THE order) + fresh probe account + single-row TEACHER flip (id+email scoped, verified) + cleanup disable of ALL r0-tb-band-probe-* accounts (5 cumulative). NEON_KEY inline-only; bearer/password/URI never printed; scrub-assert pass.
+- Artifacts (local): scripts/run-qv-mirror/{dry-run-001-hist-misassert,dry-run-002,apply-002,apply-003-idempotency,worklog-entry}.json/md + r0_testbuilder_band_probe_v2_transcript.json; script r0_qv_mirror.mjs.
+
+Stage Summary:
+- 4MB1 difficulty LIVE ON BOTH PLANES (questions 1,202 + question_versions 1,192 current rows; bands 2:303/3:729/4:160 active; twins excluded by design). Band-aware assembly proven IN ACTION on the live wire (easiest-first, id-by-id law-exact). Difficulty axis of the 4MB1-QUALITY arc CLOSED end-to-end: classify (run-001 census) -> apply questions plane (db-apply-run-001) -> mirror serving plane (this lane). Residuals unchanged (PAT rotation, prj_D7vf, Vercel prune, bundle restore-vs-ratify operator ruling).
