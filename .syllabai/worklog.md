@@ -11459,3 +11459,12 @@ Stage Summary:
 - End state of record: 29/29 chapters VALIDATED, 177 blocks serving (u4 6/8/5/5/6/5/5/6 = 46; u1 60 + u2 52 + u3 19 unchanged), glossary {SUGGESTED:24, VALIDATED:88} with the in-run VALIDATED invariant held; independent fresh-connection census matches exactly. The ADR-BOOK-0001 §3 double gate now passes the FULL book — the rail serves u1..u4.
 - Bookkeeping of record (this commit): pack.yaml c22-c29 status draft->published x8 (the runner's own printed follow-up); receipt u4-s34-fire-r0.json; task yaml T-BOOK-020 -> DISCHARGED + fire_record; findings.jsonl untouched (ledger integrity — F-BOOK-0001's fix field was true when landed).
 - Stage Summary: the T-BOOK-013 unblock_path is DISCHARGED end-to-end — the amendment (e832e617) armed the gate lift, the operator order fired it, and the single command of record ran the verified script set unchanged. OPEN (operator-gated, NOT run): the 24 u4 glossary terms' own r3 validation lane (T-BOOK-017 pattern; slugs of record in the receipt) — the standing flip law keeps VALIDATED flips behind an explicit order. PAT rotation overdue x7.
+
+## receipt(R0-AUTO) — r0-cron-20261022-0330 (2026-10-21T19:30Z sweep)
+
+- Task ID: r0-cron-20261022-0330 (Job 438940)
+- MERGED: PR #271 → bd38e04 — T-BOOK-020 fire r0: full-book flip 29/29 chapters VALIDATED, 177 packs armed (head 1f2250e)
+- INTAKE RACE NOTE: sweep opened with head 28044a5 mergeable=dirty; lane pushed new head 1f2250e (self-intaked origin/main, MAIN_IS_ANCESTOR verified) seconds into the sweep — R0's local merge attempt was a no-op "Already up to date"; proceeded on the lane's fresh head
+- Gates: head 1f2250e verify ✓ hub ✓ (bounded wait, CI in-flight at open); mergeable unknown→zero-divergence (main is ancestor, PUT safe per doctrine); reviews 0 / comments 0; diff in-bounds — .syllabai receipt/tasks/worklog + books/4ch1 packs c22-c29; no *.java, no core/hub content, no DB/prod writes
+- Post-merge main CI: bd38e04 verify ✓ hub ✓ (completed success)
+- Bookkeeping only: .syllabai/** — no code, no force
