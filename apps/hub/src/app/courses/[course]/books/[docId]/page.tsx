@@ -6,6 +6,8 @@ import type { BookChapter } from "@syllabai/contracts";
 
 import { loadHubCourse } from "@/lib/courses";
 import { relatedNotesForChapter } from "@/lib/books-notes";
+import { fetchBookRailBlocks } from "@/lib/books-rail";
+import { RailWorkspace } from "@/components/books/rail/rail-workspace";
 import {
   fetchBookChapters,
   fetchBookShelf,
@@ -179,6 +181,15 @@ export default async function BookViewerPage({
   // pilots) render none either, since no note can intersect.
   const relatedNotes = relatedNotesForChapter(target, hub.notes);
 
+  // T-BOOK-003 — the rail of record for this chapter. The ADR-BOOK-0001 §3
+  // serving law, verbatim: the rail serves a pack only when the parent book
+  // is VALIDATED AND the pack is VALIDATED — the api enforced both; here,
+  // null (rail unavailable) AND [] (no flipped pack) BOTH render the
+  // unchanged 133c page below, byte-for-byte. Only a non-empty VALIDATED
+  // stream mounts the two-pane shell.
+  const railBlocks = await fetchBookRailBlocks(docId, target.chapterKey);
+  const railOn = railBlocks != null && railBlocks.length > 0;
+
   // slice pane path; null → whole-book fallback (the 133c mount)
   const sliceRel = mountEntry ? bookSlicePathForCourse(slug, mountEntry.file) : null;
   const panePath = sliceRel ?? wholePdfPath;
@@ -251,17 +262,33 @@ export default async function BookViewerPage({
           )}
         </div>
       </div>
-      <div className="min-h-0 flex-1">
-        <PdfPane
-          url={corpusViewerUrl(panePath)}
-          fallbackUrl={booksRawUrl(wholePdfPath)}
-          downloadUrl={booksRawUrl(wholePdfPath)}
-          label={`${book?.title ?? "Student book"} — ${target.title}`}
-          active
-          initialPage={initialPage}
-          className="h-full"
+      {railOn ? (
+        <RailWorkspace
+          documentId={docId}
+          chapterKey={target.chapterKey}
+          chapterTitle={target.title}
+          blocks={railBlocks!}
+          pane={{
+            url: corpusViewerUrl(panePath),
+            fallbackUrl: booksRawUrl(wholePdfPath),
+            downloadUrl: booksRawUrl(wholePdfPath),
+            label: `${book?.title ?? "Student book"} — ${target.title}`,
+            initialPage,
+          }}
         />
-      </div>
+      ) : (
+        <div className="min-h-0 flex-1">
+          <PdfPane
+            url={corpusViewerUrl(panePath)}
+            fallbackUrl={booksRawUrl(wholePdfPath)}
+            downloadUrl={booksRawUrl(wholePdfPath)}
+            label={`${book?.title ?? "Student book"} — ${target.title}`}
+            active
+            initialPage={initialPage}
+            className="h-full"
+          />
+        </div>
+      )}
     </div>
   );
 }

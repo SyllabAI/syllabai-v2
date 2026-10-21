@@ -27,6 +27,66 @@ import { Hono } from "hono";
 
 import type { BooksReadApp } from "../services/books";
 import { apiError, NotFoundException } from "../services/identity/errors";
+import { getAuth, requireAuth } from "../middleware/auth";
+
+/** T-BOOK-003: the chapterKey request grammar ("u<unit>:c<chapter>") — the
+ *  same law bookChapterSchema documents; the rail only reads, never invents,
+ *  keys, so a malformed key is a 400 before any DB round trip. */
+const CHAPTER_KEY_RE = /^u\d+:c\d+$/;
+
+function chapterKeyOr400(c: { req: { query(name: string): string | undefined } }):
+  | { ok: true; chapterKey: string }
+  | { ok: false; response: Response } {
+  const raw = c.req.query("chapter");
+  if (raw == null || raw.trim() === "") {
+    return {
+      ok: false,
+      response: Response.json(
+        apiError(400, "validation_failed", "missing required parameter: chapter"),
+        { status: 400 },
+      ),
+    };
+  }
+  if (!CHAPTER_KEY_RE.test(raw.trim())) {
+    return {
+      ok: false,
+      response: Response.json(
+        apiError(400, "validation_failed", "malformed parameter: chapter (expected u<unit>:c<chapter>)"),
+        { status: 400 },
+      ),
+    };
+  }
+  return { ok: true, chapterKey: raw.trim() };
+}
+
+/** T-BOOK-003: the progress PUT body law — pct 0..100 int, lastOrd ≥1 int
+ *  or absent; anything else is the fixed 400 "malformed request" body (the
+ *  assessment routes' convention — detail never echoes to the client). */
+function parseProgressBody(
+  body: unknown,
+): { ok: true; pct: number; lastOrd: number | null } | { ok: false } {
+  if (typeof body !== "object" || body == null) return { ok: false };
+  const { railScrolledPct, lastOrd } = body as {
+    railScrolledPct?: unknown;
+    lastOrd?: unknown;
+  };
+  if (typeof railScrolledPct !== "number" || !Number.isInteger(railScrolledPct) || railScrolledPct < 0 || railScrolledPct > 100) {
+    return { ok: false };
+  }
+  if (lastOrd == null) return { ok: true, pct: railScrolledPct, lastOrd: null };
+  if (typeof lastOrd !== "number" || !Number.isInteger(lastOrd) || lastOrd < 1) {
+    return { ok: false };
+  }
+  return { ok: true, pct: railScrolledPct, lastOrd };
+}
+
+async function readJsonBody(c: { req: { json(): Promise<unknown> } }): Promise<unknown> {
+  try {
+    return await c.req.json();
+  } catch {
+    return null;
+  }
+}
 
 export function createBooksRouter(app: BooksReadApp): Hono {
   return new Hono()
@@ -50,6 +110,59 @@ export function createBooksRouter(app: BooksReadApp): Hono {
         throw new NotFoundException("Book", documentId);
       }
       return c.json(chapters);
+    })
+    // ── T-BOOK-003: the interactive rail ────────────────────────────────────
+    // GET /:documentId/blocks?chapter=u<n>:c<n> → BookBlock[] (VALIDATED only).
+    // PUBLIC-READ posture (same family as the shelf/chapters): the block
+    // stream is corpus content, zero PII — the DOUBLE gate (book AND pack
+    // VALIDATED) is the serving law, auth is not. Unknown/unvalidated book
+    // ⇒ 404 (T-C20); a known book with no flipped pack ⇒ 200 [] — the
+    // honest-empty the viewer's unchanged-133c law consumes.
+    .get("/:documentId/blocks", async (c) => {
+      const gate = chapterKeyOr400(c);
+      if (!gate.ok) return gate.response;
+      const documentId = c.req.param("documentId");
+      const blocks = await app.railBlocksForChapter(documentId, gate.chapterKey);
+      if (blocks == null) throw new NotFoundException("Book", documentId);
+      return c.json(blocks);
+    })
+    // GET/PUT /:documentId/progress — the ONE new user signal (ADR §8).
+    // AUTH-GATED (user signal, PII — the counter-posture to the public-read
+    // corpus family above): requireAuth is the shell; userId rides the
+    // verified JWT context, never the wire.
+    .use("/:documentId/progress", async (c, next) => {
+      const redirect = requireAuth(c);
+      if (redirect instanceof Response) return redirect;
+      await next();
+    })
+    .use("/:documentId/progress", async (c, next) => {
+      const gate = chapterKeyOr400(c);
+      if (!gate.ok) return gate.response;
+      await next();
+    })
+    .get("/:documentId/progress", async (c) => {
+      const auth = getAuth(c)!;
+      const progress = await app.chapterProgressFor(
+        auth.userId,
+        c.req.param("documentId"),
+        c.req.query("chapter")!.trim(),
+      );
+      return c.json({ progress });
+    })
+    .put("/:documentId/progress", async (c) => {
+      const auth = getAuth(c)!;
+      const parsed = parseProgressBody(await readJsonBody(c));
+      if (!parsed.ok) {
+        return c.json(apiError(400, "bad_request", "malformed request"), 400);
+      }
+      const progress = await app.upsertChapterProgress(
+        auth.userId,
+        c.req.param("documentId"),
+        c.req.query("chapter")!.trim(),
+        parsed.pct,
+        parsed.lastOrd,
+      );
+      return c.json({ progress });
     })
     .get("/:documentId", async (c) => {
       // band 133d: the citation-target resolution. ?page parses to a positive
