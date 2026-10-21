@@ -15,7 +15,7 @@
  */
 import fs from "node:fs";
 
-const CONTENT = "/home/z/my-project/syllabai-v2/apps/hub/content";
+const CONTENT = (process.env.SYLLABAI_HUB_PROJECT ?? "/home/z/my-project/syllabai-v2/apps/hub") + "/content"; // T-CONSUME-EDX-2: lane worktree override
 const DIR = "/home/z/my-project/work/relink_23c";
 
 type Qset = { topicId?: string; slug?: string; relatedNoteIds?: string[]; [k: string]: unknown };

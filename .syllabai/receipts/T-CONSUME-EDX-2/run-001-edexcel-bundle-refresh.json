@@ -1,0 +1,59 @@
+{
+  "band": "T-CONSUME-EDX-2",
+  "run": "run-001",
+  "at": "2026-10-21T15:05Z",
+  "order": "operator dispatch 2026-10-21 (zai-web, session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, gateway trace 1a15e803d32947c9): 'CIE update channel, Edexcel refresh, NEXT #2 pin upgrade (now will include fix + ruling)' — the Edexcel-refresh leg, with the operator's premise that the pin bump lands the T-SPEC-ACCT-REPAIR-1 fix and the T-SPEC-ACCT-ADJ-1 ruling into the learner UI; all consumption targets v2 (syllabai-hub-v2.vercel.app; hub retired per operator)",
+  "executor": "main agent (Super Z operator session, this lane worktree /home/z/my-project/v2-lane-tedx2 @ origin/main 238d5cad)",
+  "verdict": "SHIPPED — 49 Edexcel packs rebuilt + re-flipped at SyllabAI/syllabai-resources @ main@aa0b4de1b732738b4d02dabdd02d9ead85522907 (census-validated tranche-1 tip; the parallel wave-10 tip 8ac98e87 has ZERO SME/spec-links/parsed delta vs the pin — 48 files, all Official-ExamQuestion converter domain); the T-CONSUME-EDX-1 accounting byte-at-HEAD exception is LIFTED per dispatch: igcse-accounting-17 x2 rebuilt, their attachment maps regenerated from the REPAIRED sidecars (Stage-2 pin 2e17aab0 -> aa0b4de1), official flip re-applied through G1-G5 — phantom codes 0 (were the seed-era poison class), adjudication anchors live in the served bundles (FIN-STAT IGCSE_ACCOUNTING:S4.172 x24; INTRO-BK S1.123/S2.134/S2.138/S2.139/S2.140/S1.120 all present); the entire T-CONSUME-EDX-1 post-build stack re-applied (math dictionaries 1020/1020 refetched 0-failed, span patch 21,429->0 gate-class, fix_tail, clean-segment grafts 357 fields, 23c relink 16->0 via 5 widget pages x3, 23d 12-lane gap annotations, registry operator-field carry); every gate at baseline zero; build:hub green; 49-pack manifest-count census == HEAD exactly (content-count-neutral refresh)",
+  "finding_of_record": {
+    "why_the_refresh_is_real": "the committed packs carried two vintages: 46 packs @ 6ee5ada (T-CONSUME-EDX-1, 2026-10-20) and igcse-accounting-17 x2 byte-at-HEAD @ 7575585-era (the maps-vs-spine poison era) — this run unifies everything on aa0b4de1, whose spec-links sidecars carry the 41 deterministic repoints (T-SPEC-ACCT-REPAIR-1, transit 26) and the 12/12 operator-verified overrides (T-SPEC-ACCT-ADJ-1, transit 27)",
+    "accounting_fix_landing": "attachment maps regenerated from repaired sidecars: phantom scan on the maps 0/0 (seed-era maps matched the phantom-class regex; regenerated maps 0); post-flip bundle scan (all 5 files x2 packs, unit-qualified IGCSE_ACCOUNTING: form) = 0 phantom hits; G4 referential integrity passed against the committed spine (spine of record untouched by the repair — v2 spines needed no rebuild)",
+    "content_delta_of_record": "manifest counts across the 49 rebuilt packs: HEAD == rebuilt on every key (notes/questionSets/questions/parts/marks/flashcards/specPoints all zero delta) — the upstream SME item universe for these lanes is unchanged since 6ee5ada; the refresh moves TEXT/linkage/provenance, not counts; igcse-maths-b-16 and igcse-chemistry-19 stay byte-exact at HEAD (see scope_guards)",
+    "upstream_text_reality": "the fresh upstream SME md STILL embeds MathML speech-text (e.g. `table row cell ... end table`) — the aria-label->MathML->LaTeX extraction remains a MANDATORY post-build step (the 23a gate docstring's own law); the T-CONSUME-EDX-1 stack was re-applied in full and is now documented as the reproducible path",
+    "pin_provenance": "home-page Bundle pin renders the PILOT manifest's importSource.ref — this lane stamped it aa0b4de1 (provenance only, pinNote added); RACE DISCLOSURE: the parallel wave-10 bundle sync (7e68c096, PR #253) re-bound the golden manifest ref to resources main@8ac98e87 — the wave-10 lane's authority over golden provenance was honored at rebase (theirs taken); the served pin therefore names 8ac98e87, a DESCENDANT of this lane's build pin aa0b4de1 — every dispatch claim (fix + ruling + tranche-1 included) still holds by ancestry"
+  },
+  "changes": [
+    {
+      "file": "apps/hub/content/<49 Edexcel packs>/**",
+      "what": "fresh corpus import @ aa0b4de1: pinned tree JSONs (fetch_trees_edx2.py, truncation-checked) -> fetch_corpus 12,031/12,031 failed=0 (size-validated vs pinned trees) -> build_bundles rebuild (CIE scope guard: 44 cie- courses skipped) -> apply_official_flip 49/49 non-CIE (golden refused by construction; accounting x2 now INCLUDED — T-CONSUME-EDX-1 guard lifted with rationale in-script)"
+    },
+    {
+      "file": "apps/hub/content-maps/igcse-accounting-17-*.json + _report.json",
+      "what": "Stage 2 regenerated for accounting x2 @ aa0b4de1 (RESOURCES_SHA bumped in attach_official_map.py); _report.json carry-forward merged: 47 non-accounting rows byte-exact from the seed-era report + 2 regenerated rows + totals recomputed (T-CONSUME-EDX-1 registry carry-forward law)"
+    },
+    {
+      "file": "apps/hub/content/igcse-chemistry-19/, igcse-maths-b-16/",
+      "what": "restored byte-exact from HEAD twice (after the corpus build and again after the patch stack): golden = ADR-037 official past papers + T-MIG spec-tagging are not corpus-builder-reproducible (another lane's authority); maths-b = the operator's own restore ruling (content 4MB1 restore, trace 1a15de779f2250f9) plus T-MIG-136 spec-anchors.json; foreign artifacts prerequisites.json + spec-anchors.json restored; golden manifest ref stamped aa0b4de1 (provenance only, pinNote added); maths-b manifest left at its of-record vintage (disclosed mixed pin)"
+    },
+    {
+      "file": "apps/hub/scripts/import_corpus/{fetch_corpus,build_bundles}.py, fetch_trees_edx2.py (new)",
+      "what": "pins bumped 6ee5ada -> aa0b4de1; fetch_trees_edx2.py = pinned-commit tree fetcher (env GH_TOKEN, bash-inline only, truncation fail-closed); PROJECT made env-overridable (SYLLABAI_HUB_PROJECT) so the lane ran against its worktree without committing machine-local paths"
+    },
+    {
+      "file": "apps/hub/scripts/{attach_official_map.py, apply_official_flip.py, fetch_sme_math_23a.ts, patch_corpus_math_23a.ts, fix_tail_23b.ts, patch_related_notes_23c.ts, annotate_fc_gap_23d.py}",
+      "what": "Stage-2 pin bump + the same env override pattern applied to the whole post-build stack; apply_official_flip accounting exclusion LIFTED (premise repaired upstream + maps regenerated; the G1-G5 gates are the repair's acceptance test)"
+    }
+  ],
+  "verification": {
+    "fetch": "12,031/12,031 failed=0, size-validated vs the pinned tree JSONs; trees fetched at the pin commit with truncated=false on all three subtrees",
+    "corpus_gate_23a": "ALL ZERO — spans 0, dollar 0, text-garbage 0, multiline 0, baretext 0, danglingRefs 0 — CORPUS GATE PASSED (residual path: dictionary patch 21,592 seen / 22,104 fixed / 101 unfixed -> fix_tail 6 files -> clean-segment grafts 321 (v1) + 36 (v2 gate-exact pairing) -> 0)",
+    "flashcard_sync": "PASS (exit 0)",
+    "cie_validator": "PASS — CIE VALIDATOR PASSED (paper-count assertions hold); zero CIE paths touched (git status census: 0 cie- entries)",
+    "registry_integrity": "courses.json restored byte-exact from HEAD after the builder dropped operator-maintained fields (coreBridge on the two 4MA1 rows + curriculumCode on 5 rows — the same regression class T-CONSUME-EDX-1 fixed for CIE rows); 94 rows; CIE rows verified untouched by the builder itself",
+    "accounting_assertions": "treeKind official-spine x2; importSource.ref + officialSpine.resourcesSha = aa0b4de1; specPoints 36/48 == spine scope; phantom 0; adjudication anchors present in served linkage",
+    "census": "49-pack manifest counts HEAD==rebuilt on every key (zero delta aggregate)",
+    "full_build": "bun run build:hub exit 0 (prebuild validators + next build green), re-run after the golden provenance stamp"
+  },
+  "scope_guards": [
+    "CIE packs (44 in content/) + spines/maps: zero bytes touched (status census 0 cie- paths)",
+    "igcse-chemistry-19 (golden) + igcse-maths-b-16: byte-exact HEAD content; golden manifest provenance stamp only",
+    "spines/*.json: byte-untouched (spine of record was not an input to the upstream repair)",
+    "registry courses.json: byte-exact HEAD (operator-maintained identity fields carried)",
+    "secrets untouched: GH_TOKEN via bash-inline env only, never on disk; fetch-first on both repos; no force anywhere"
+  ],
+  "followups": [
+    "45 non-accounting Edexcel attachment maps (content-maps/) remain seed-era @ 2e17aab0 while their upstream spec-links advanced (REJOIN-1 x22, R41/R42, 4PH1/4CH1/4BI1 parse rounds) — Stage-2 refresh for those lanes is its own dispatch (same acceptance shape as this run's accounting leg)",
+    "igcse-maths-b-16 manifest keeps its of-record vintage ref (content not corpus-derived at any single pin) — mixed-pin state disclosed, operator may rule",
+    "PAT rotation still CRITICAL overdue (fingerprint a8ccee736aa8c75b, transit 27+ on the same fingerprint; rotation REQUIRED before any re-supply per law)"
+  ]
+}

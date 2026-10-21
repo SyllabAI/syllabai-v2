@@ -53,7 +53,10 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 
 # resources main @ Stage 2 pin (carries T-SPEC-4..10 verdicts + NORM-1 parses)
-RESOURCES_SHA = "2e17aab05c200bf48d8bb89538c7b7c316cc0651"
+# T-CONSUME-EDX-2: bumped to the census-validated tranche-1 tip — first pin that
+# carries T-SPEC-ACCT-REPAIR-1 (41 deterministic repoints) + T-SPEC-ACCT-ADJ-1
+# (12/12 operator-verified overrides) in spec-links/igcse-accounting-17-*.json.
+RESOURCES_SHA = "aa0b4de1b732738b4d02dabdd02d9ead85522907"
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 DEFAULT_CACHE = Path("/home/z/my-project/work/spec-maps-cache")
 

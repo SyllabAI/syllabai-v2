@@ -34,14 +34,15 @@ from collections import OrderedDict, defaultdict
 
 WORK = "/home/z/my-project/work"
 CACHE = os.path.join(WORK, "corpus-cache")
-PROJECT = "/home/z/my-project/syllabai-v2/apps/hub"
+# T-CONSUME-EDX-2: lane worktree override via env (bash-inline); default unchanged.
+PROJECT = os.environ.get("SYLLABAI_HUB_PROJECT", "/home/z/my-project/syllabai-v2/apps/hub")
 CONTENT = os.path.join(PROJECT, "content")
 DOCS = os.path.join(PROJECT, "docs")
 
 # T-CONSUME-EDX-1: pin every fetch + hotlink to the exact resources commit the
 # bundles claim in importSource.ref — provenance must resolve forever, and raw
 # CDN serves any sha permanently.
-RESOURCES_SHA = "6ee5ada3f858b4e916422b2a302002089ee63792"
+RESOURCES_SHA = "aa0b4de1b732738b4d02dabdd02d9ead85522907"  # T-CONSUME-EDX-2 pin (census-validated tranche-1 tip; includes T-SPEC-ACCT-REPAIR-1 + T-SPEC-ACCT-ADJ-1)
 RESOURCES_DATE = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())  # stamped at each build
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 

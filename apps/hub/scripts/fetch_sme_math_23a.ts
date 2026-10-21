@@ -12,7 +12,7 @@ import { createHash } from "crypto";
 import { MathMLToLaTeX } from "mathml-to-latex";
 import { looksLikeSpeechText } from "../src/lib/speech-math";
 
-const CONTENT = "/home/z/my-project/syllabai-v2/apps/hub/content";
+const CONTENT = (process.env.SYLLABAI_HUB_PROJECT ?? "/home/z/my-project/syllabai-v2/apps/hub") + "/content"; // T-CONSUME-EDX-2: lane worktree override
 const CACHE = "/home/z/my-project/work/mathml-cache";
 mkdirSync(CACHE, { recursive: true });
 

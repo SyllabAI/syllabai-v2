@@ -1,6 +1,6 @@
 # Corpus Import & Mapping Integrity Report
 
-Imported from `SyllabAI/syllabai-resources` @ `main` (`6ee5ada`, 2026-10-20T20:40:04Z) — 
+Imported from `SyllabAI/syllabai-resources` @ `main` (`aa0b4de`, 2026-10-21T13:21:31Z) — 
 the operator-authorized Save My Exams corpus (see `LICENSE-DATA.md` upstream).
 
 Every course is imported with its **own corpus-native navigation tree**:

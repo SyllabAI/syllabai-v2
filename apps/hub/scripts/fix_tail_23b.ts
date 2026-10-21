@@ -8,7 +8,7 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import katex from "katex";
 
-const CONTENT = "/home/z/my-project/syllabai-v2/apps/hub/content";
+const CONTENT = (process.env.SYLLABAI_HUB_PROJECT ?? "/home/z/my-project/syllabai-v2/apps/hub") + "/content"; // T-CONSUME-EDX-2: lane worktree override
 
 const katexOk = (t: string) => {
   try {

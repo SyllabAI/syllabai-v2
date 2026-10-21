@@ -1,0 +1,28 @@
+{
+  "receipt": "CIE-INTEGRATION/cie-channel-verification-run-001-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15e803d32947c9 ('CIE update channel, Edexcel refresh, NEXT #2 pin upgrade')",
+  "agent": "main agent (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "generatedUtc": "2026-10-21T15:10:00Z",
+  "phase": "CIE update channel VERIFIED-CURRENT of record — the tranche-1 chain is landed END-TO-END by the r0-integrator lane (trace 1a15e4200e6af579) and re-verified first-hand by this lane; ZERO mutations filed (bookkeeping receipt); the channel's remaining items are OPERATOR-GATED by their own receipts",
+  "chainOfRecord": {
+    "step1_resources": "T-SPECS-CIE-TRANCHE1-T2NEAR-1: 155-part T2_near queue promoted to V6_near_text_verdict (161 sidecar entries re-tiered in place, 9 cie- lanes), battery T1-T10 10/10 GREEN, landed 8e291010 and merged as resources PR #22 (aa0b4de1) — first-hand read of graph/reports/T_SPECS_CIE_TRANCHE1_T2NEAR_RECORD.md at the tip",
+    "step2_consume": "tranche-1 consume re-run in v2 (cie-tranche1-t2near-run-001-r0): V6 entries consume-authoritative (sidecar_rank V* -> rank 0), linkage-only bundle re-emit, census re-pin EXACT — expQ 6,599 -> 6,715 (+116, the lane-side prediction hit to the question), gap 12,479 -> 12,363; landed c3b8b70a + floors re-base c14d4b2b, merged as v2 PR #252 (238d5cad) — figures confirmed from the merge commit message and the receipt json",
+    "step3_this_lane": "the Edexcel refresh leg (T-CONSUME-EDX-2 run-001) ran with the CIE scope guard HARD-ON: 44 cie- content packs byte-untouched (status census 0), CIE validator PASS, CIE spines/maps zero bytes — the CIE channel's of-record state is exactly what PR #252 left"
+  },
+  "verification": [
+    "resources tip aa0b4de1 carries 8e291010 (tranche-1) in its first-parent line (git log first-hand)",
+    "v2 origin/main 238d5cad merge message re-states the census re-pin EXACT figures (6,599 -> 6,715 / 12,479 -> 12,363) and the OPERATOR-GATED 134c",
+    "validate_cie_bundles.ts (verify:cie) PASS in this lane's final battery — the CIE bundle surface is coherent post-refresh",
+    "the census receipt cie-anchor-gap-census-r0.json figures-of-record law (computed, never transcribed) respected: no figure re-stated here beyond the receipts' own"
+  ],
+  "outstandingAndGated": {
+    "134c_cow_prod_re_run": "OPERATOR-GATED per the tranche-1 receipt's nextAct and the phase-4 plane posture — NOT fireable by this dispatch's 'CIE update channel' wording (the tranche-1 receipt itself says 'say the word to fire the 134c re-run')",
+    "tranche2": "the 16,335-part verdict program (chemistry-25 1,336 / physics-25 1,279 / pure-3 1,273 / intl-maths-23-extended 1,243 ...) — programmed of record in the census receipt, requires an explicit operator order",
+    "tranche3": "the 1,203-part SME coverage gap — same posture"
+  },
+  "disclosures": [
+    "no CIE lane work was filed by this session beyond verification — the parallel r0-integrator lane (same operator, trace 1a15e4200e6af579) owns tranche-1 of record",
+    "this receipt rides the T-CONSUME-EDX-2 run-001 commit (one push, both receipts + worklog append)"
+  ]
+}

@@ -10981,3 +10981,25 @@ Work Log:
 
 Stage Summary:
 - The student's course list is now ACCOUNT-BACKED of record: PUT/GET /api/v1/learners/me/courses over learner_course_enrolments, hub write-through with server-wins reconcile + one-time seed migration of existing localStorage rosters. Zero DB writes (the storage table already existed), zero LLM, zero frozen-core contact. Receipt: .syllabai/receipts/HUB-TEACH/t-teach-001-my-courses-r0.json. Next: T-TEACH-002 feature toggles (ADR first).
+
+---
+Task ID: T-CONSUME-EDX-2 run-001 + CIE-INTEGRATION cie-channel-verification-run-001-r0 (trace 1a15e803d32947c9 — "CIE update channel, Edexcel refresh, NEXT #2 pin upgrade (now will include fix + ruling)")
+Agent: main agent (Super Z, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, lane worktree rebased onto bcca191e after two mid-lane concurrency catches)
+Task: the Edexcel-refresh leg + the CIE-channel verification leg of the operator's three-item dispatch; the pin upgrade carries T-SPEC-ACCT-REPAIR-1 (fix) + T-SPEC-ACCT-ADJ-1 (ruling) into the served learner bundles.
+
+Work Log:
+- STATE RECONCILED FIRST: the adjudication lane (T-SPEC-ACCT-ADJ-1 @ 67a173b9, transit 27) and the tranche-1 chain (resources PR #22 aa0b4de1 + v2 PR #252 238d5cad, census re-pin EXACT) were already of record from parallel/operator lanes — this dispatch's live residue = Edexcel refresh + pin bump + CIE channel verification.
+- PIN OF RECORD: aa0b4de1 (the census-validated tranche-1 tip) — the newer tip 8ac98e87 (wave-10 stub sweep, PR #23) verified ZERO SME/spec-links/parsed delta vs the pin (48 files, all Official-ExamQuestion converter domain); pin discipline kept to the census-validated commit.
+- FETCH: pinned tree JSONs via new fetch_trees_edx2.py (commit-pinned variant of fetch_trees_21e, truncation fail-closed, env GH_TOKEN bash-inline only) -> fetch_corpus 12,031/12,031 failed=0 size-validated.
+- BUILD: 49 Edexcel packs rebuilt (CIE guard: 44 cie- skipped by construction); golden igcse-chemistry-19 + igcse-maths-b-16 restored byte-exact from HEAD TWICE (build + patch stack both clobber foreign-authority content: ADR-037 past papers wiring / operator restore ruling 04aee80e / T-MIG-136 spec-anchors; prerequisites.json + spec-anchors.json restored).
+- ACCOUNTING FIX LANDING (the dispatch's "fix + ruling"): Stage-2 attachment maps regenerated for igcse-accounting-17 x2 from the repaired sidecars (attach_official_map pin 2e17aab0 -> aa0b4de1); phantom scan maps 0/0; the T-CONSUME-EDX-1 flip exclusion LIFTED with in-script rationale; flip G1-G5 PASS x2; served bundles: treeKind official-spine, ref+spineSha aa0b4de1, specPoints 36/48 == spine scope, phantom 0 in all 5 files x2 packs, adjudication anchors live (FIN-STAT S4.172 x24; INTRO-BK S1.123/S2.134/S2.138/S2.139/S2.140/S1.120).
+- POST-BUILD STACK RE-APPLIED (the reproducible path, now documented): math dictionaries 1020/1020 refetched 0-failed -> patch_corpus_math (21,592 seen / 22,104 fixed) -> fix_tail (6 files) -> clean-segment grafts (321 v1 + 36 v2 gate-exact parallel-tree pairing) -> 23c relink 16 -> 0 (5 widget pages x3, 200 OK) -> 23d 12-lane gap annotations -> registry restored byte-exact (builder had dropped operator fields coreBridge/curriculumCode — same regression class T-CONSUME-EDX-1 fixed for CIE rows).
+- GATES: corpus 23a ALL ZERO (0/0/0/0/0/0) / flashcard-sync PASS / CIE validator PASS / build:hub exit 0 (re-run after the golden provenance stamp round) / 49-pack manifest-count census HEAD==rebuilt zero-delta.
+- CIE CHANNEL VERIFIED-CURRENT: chain re-verified first-hand (resources 8e291010 + PR #22; v2 c3b8b70a + PR #252; census re-pin EXACT figures confirmed); zero CIE mutations this lane; 134c re-run + tranche-2/3 remain OPERATOR-GATED per their own receipts.
+- TWO MID-LANE CONCURRENCY CATCHES (fetch-first discipline): (1) 238d5cad -> 2d6f1da3 = wave-10 bundle sync PR #253 + 4MB1-QUALITY receipt quartet + T-MIG-138 run-006 — wave-10 re-bound the golden manifest ref to resources main@8ac98e87, its authority over golden provenance HONORED (theirs taken; my aa0b4de1 golden stamp withdrawn; sole file conflict); (2) 2d6f1da3 -> bcca191e = T-TEACH-001 my-courses (zero footprint overlap, worklog append only). Both resolved as append-only unions; re-verified gates post-rebase (corpus 0 regressions / fc-sync PASS / cie PASS / accounting phantom 0 + S4.172 x24).
+- Receipts: .syllabai/receipts/T-CONSUME-EDX-2/run-001-edexcel-bundle-refresh.json + .syllabai/receipts/CIE-INTEGRATION/cie-channel-verification-run-001-r0.json.
+
+Stage Summary:
+- NEXT #2 LANDED: the learner UI accounting surfaces carry zero phantom codes and the operator-verified anchors at resources@aa0b4de1; the home-page pin names 8ac98e87 (wave-10's rebind, descendant of the build pin).
+- PAT rotation still CRITICAL overdue (transit 27 resources + this v2 push on the same fingerprint) — REQUIRED before any re-supply.
+- Followups: 45 non-accounting Edexcel attachment maps remain seed-era @ 2e17aab0 (own dispatch); maths-b manifest keeps its of-record vintage ref (disclosed mixed pin).

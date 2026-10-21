@@ -186,7 +186,13 @@ def main() -> int:
 
     slugs = sorted(p.name for p in CONTENT.iterdir() if p.is_dir())
     slugs = [s for s in slugs if not s.startswith("cie-")]  # T-CONSUME-EDX-1 scope guard: Edexcel flip only — CIE packs are another lane's authority
-    slugs = [s for s in slugs if not s.startswith("igcse-accounting-17-")]  # T-CONSUME-EDX-1: accounting stays at its committed flip — the committed content-maps reference spine codes outside the committed accounting spine scope (pre-existing maps-vs-spine inconsistency, own lane); their upstream data deltas are metadata-only
+    # T-CONSUME-EDX-1 excluded igcse-accounting-17-* here ("maps-vs-spine
+    # inconsistency, own lane"). LIFTED in T-CONSUME-EDX-2: the upstream
+    # inconsistency is REPAIRED (T-SPEC-ACCT-REPAIR-1 @ dc960918, 41 deterministic
+    # repoints) and operator-adjudicated (T-SPEC-ACCT-ADJ-1 @ 67a173b9, 12/12
+    # overrides with first-hand evidence), and this lane regenerated the two
+    # accounting attachment maps from the repaired sidecars at pin aa0b4de1 —
+    # the G1-G5 gates below are now the repair's acceptance test.
     if args.course:
         unknown = [c for c in args.course if c not in slugs]
         if unknown:

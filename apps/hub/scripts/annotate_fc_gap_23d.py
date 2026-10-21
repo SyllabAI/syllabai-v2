@@ -5,11 +5,12 @@ Adds `gaps.flashcards` to manifest.json with the 4-way verification evidence
 (upstream corpus / live hub / course nav / SME sitemap census 2026-09-21).
 Pure manifest metadata — no card data touched.
 """
+import os
 import json
 import time
 import urllib.request
 
-CONTENT = "/home/z/my-project/syllabai-v2/apps/hub/content"
+CONTENT = os.environ.get("SYLLABAI_HUB_PROJECT", "/home/z/my-project/syllabai-v2/apps/hub") + "/content"  # T-CONSUME-EDX-2: lane worktree override
 UA = "syllabai-demo-corpus-audit"
 
 LANES = {

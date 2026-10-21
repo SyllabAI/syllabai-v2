@@ -43,7 +43,7 @@ import {
   genericChain,
 } from "../src/lib/speech-extras";
 
-const CONTENT = "/home/z/my-project/syllabai-v2/apps/hub/content";
+const CONTENT = (process.env.SYLLABAI_HUB_PROJECT ?? "/home/z/my-project/syllabai-v2/apps/hub") + "/content"; // T-CONSUME-EDX-2: lane worktree override
 const CACHE = "/home/z/my-project/work/mathml-cache";
 
 const MARK = /\b(open parentheses|close parentheses|open bracket|close bracket|open curly|close curly|open angle brackets|close angle brackets|fraction numerator|over denominator|end fraction|end table|end cell|end row|end stack|end attributes|end style|end enclose|enclose|to the power|end exponent|square root|end root|cube root|with bar on top|open square brackets|close square brackets|plus-or-minus|direct double arrow|rightwards arrow|identical to|cross times|plus sign|minus sign|percent sign|presubscript|presuperscript|subscript|superscript|stack sum|sum from|sum for|begin mathsize|left parenthesis|right parenthesis|left bracket|right bracket|left square brackets|right square brackets|horizontal strike|vertical strike|vertical line|end strike|up diagonal strike|down diagonal strike|asterisk times|almost equal to|proportional to|less or equal than|greater or equal than|intersection|union|empty set|apostrophe)\b/i;
