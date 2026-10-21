@@ -1,0 +1,52 @@
+{
+  "receipt": "CIE-INTEGRATION/cie-anchor-gap-census-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15e1a7178f229d ('anchor-gap follow-up')",
+  "operatorOrder": "the anchor-gap follow-up — the CIE lane's phase-2 completion work, the run-009/fill-receipt residual ('13,479 raw unanchored — phase-2 completion, measurable per slug')",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-21T11:35:00Z",
+  "phase": "the anchor-gap CENSUS + TRIAGE of record — the measurable-per-slug law fulfilled, the of-record figure re-pinned, the completion program defined; ZERO repo-content changes (bookkeeping receipt), no bundle/map edits without verdicts",
+
+  "reconciliationOfRecord": {
+    "rePin": "THE OF-RECORD 13,479 DOES NOT RECONCILE and is hereby re-pinned: the fleet census of record (scripts/census_per_slug.ts, the run-008/009 law) computes raw 19,097 = anchored 6,599 + zero-code 12,479 + dupOrder 19 + badSum 0 (question level); tranche-2's own anchored count 6,618 (= 6,599 + the 19 dupOrder) gives 19,097 - 6,618 = 12,479 EXACTLY. The tranche-2 receipt's '13,479' carries a +1,000 slip — the same hardcode-instead-of-compute honesty class as the run-008 audit rider (expectedOfRecord) — propagated verbatim into run-009 nextAct, the fill receipt residual, and the worklog",
+    "figuresOfRecordFromNowOn": "ANCHORED 6,599 questions / 7,970+ parts (spec-anchored servable truth, byte-exact on production) | ANCHOR GAP 12,479 questions / 17,693 parts (zero-code) | the gap figure is COMPUTED from the census tool, never transcribed"
+  },
+
+  "rootCauseOfRecord": {
+    "law": "the shim's anchor law (bundle-questions.ts): a question with NO spec codes on ANY part is excluded (unmapped) — primaryTopicCode is REQUIRED by the frozen validate (the learner-model join); codes that fail spine resolution THROW, so the fleet's 45/45 ok proves zero unresolvable-code drift; badSum 0 fleet-wide; dupOrder 19 (the four known banks)",
+    "finding": "the zero-code parts CARRY the code fields (specPointCodes/specPointIds/smeSpecPointIds) — the fields exist, the VALUES are missing: the upstream EQ→spec join (the spec-links sidecar verdict lane, syllabai-resources) resolved only a fraction of the SME spec-point entities (spcpt_*) to official spine codes; the bundle emission consumed EXACTLY the resolved subset (faithful)",
+    "verifiedNotADefect": "the T2_near discipline PROVEN end-to-end: 155 sidecar parts carry accepted-near codes (tier T2_near) — the r9 consume held every one out of bundle linkage as items[].t2HintCodes (spot-verified: cie-igcse-business-23 qstnprt_g3gJ82tZGCHpKNjf → t2HintCodes[{officialCode 1.3.3, tier T2_near}], codes []); the consume law ('T2_near NEVER in codes, NEVER in bundle linkage') held with zero leaks",
+    "pinLaw": "resources pin 75981cad vs tip e4533d7: spec-links delta = the two Edexcel igcse-accounting-17 sidecars + manifest ONLY (zero CIE sidecars moved); SME-ExamQuestion moved (25c1421ed539 → 13393b168836) but ALL 14 changed files are igcse-accounting-17* (Edexcel) — zero CIE corpus contact; the other two CIE-relevant subtrees tree-sha-identical"
+  },
+
+  "anchorGapDecomposition": {
+    "unit": "part-level, the sidecar three-way (spec-links at tip e4533d7 × the committed bundles)",
+    "pendingVerdictDebt": "16,335 parts — the sidecar carries them as pending (the SME side anchored the part to spcpt entities; NO accepted verdict joins them to official codes). THE PHASE-2 COMPLETION WORK PROPER — mass order: chemistry-25 1,336 / physics-25 1,279 / pure-3 1,273 / intl-maths-23-extended 1,243 / maths-25-extended 1,214 / maths-25-core 1,128 / pure-1 1,108 / cs-19 935 / intl-maths-23-core 902 / business-23-A 598 / ps-1 572 / business-25 558 / ps-2 489 / geography-25 440 / further-maths 412 / business-23-I 380 / mechanics 366 / history-18 264 / sdv-physics 220 / ict-21 208 / sdv-bio 188 / accounting-21 161 / sdv-chem 125 / english-language-25 121 / geography-20 100 / english-lit-21 88 / religious-studies-23 84 / economics-20 72 / biology-23 71 / cs-23 65 / chemistry-23 54 / env-mgmt-25 51 / biology-25 41 / combined-physics 40 / combined-chem 38 / combined-bio 29 / english-language-20 23 / physics-23 19",
+    "t2NearReviewQueue": "155 parts — the sidecar carries ACCEPTED-NEAR codes (tier T2_near, method cie_definition_text_join), held out of linkage by law: business-23-I 41 / biology-25 37 / chemistry-25 25 / physics-25 15 / sdv-chem 15 / physics-23 7 / cs-23 6 / combined-bio 6 / combined-chem 3. THE OPERATOR'S REVIEW QUEUE — each hint already names its official code; an operator-verdict round promotes them (the V* authoritative class) and the whole chain re-lands",
+    "smeCoverageGap": "1,203 parts — NO sidecar entry, NO smeSpecPointIds: the SME corpus itself never anchored them (economics-25 585 of 625 raw — its 0% anchored rate of record; intl-maths-23-extended 82; geography-20 114; economics-20 119; the remainder small). The deepest class — upstream corpus work, not verdict work",
+    "noteFlashcardAxis": "the same join debt exists on the notes/flashcards axis (e.g. intl-maths-23-extended notes: 33 coded / 145 pending, flashcards 971 pending) — inside the same verdict program's scope; the 13,479-of-record framing covered questions, this receipt discloses the sibling axes"
+  },
+
+  "completionProgramOfRecord": {
+    "tranche1_t2NearVerdicts": "OPERATOR-KEYED, smallest: 155 verdicts on already-computed spine-resolvable hints (the queue above, part-id named). Chain: operator-verdict entries into the sidecars (resources lane) → cie_consume_spec_links.py re-run (pin advance e4533d7 with the tree-sha law recorded) → bundle linkage re-emit (linkage-fields-only law) → census re-pin → PR → the 134c cow+prod re-run to land them (OPERATOR-GATED dispatch per the phase-4 posture)",
+    "tranche2_verdictProgram": "the 16,335-part name-phrase verdict program per bank (the phase-2 completion work proper) — tranche-shaped by the mass order above; tier laws unchanged (operator_verdict authoritative; T2_near non-authoritative; never guessed); each bank's tranche lands via the same chain as tranche-1",
+    "tranche3_smeCoverage": "the 1,203-part upstream coverage gap (economics-25's 585 first) — SME corpus work in the resources lane, upstream of any verdict",
+    "standingLaws": "ADR-030 (never invent) + the tier ladder (operator_verdict > T1_verbatim > J* > upstream_item_join > sme_declared_link_rekey > subtopic_title_scope) + the census-is-computed law govern every tranche; the census/floors re-pin with each landing; the registry curriculumCodes are UNAFFECTED (cv namespaces already filled — the fill-where-served act landed the mappings)"
+  },
+
+  "validation": {
+    "method": "zero-DB: the census tool of record (census_per_slug.ts) + direct bundle/sidecar reads; every total cross-checked (17,693 = 16,335 + 155 + 1,203 EXACT; 19,097 = 6,599 + 12,479 + 19 EXACT); the T2_near leak-check spot-verified on the v2 maps",
+    "artifacts": "the census TSV + the triage tables ride this receipt; the triage script persisted lane-side (scripts/cie_fill_audit_r0.py family, /home/z/my-project/scripts/)"
+  },
+  "hygiene": "zero credentials/uris/PATs in any file or log; ZERO DB contact; fetch-first branch cut at origin/main b37e8c5; the resources lane read via a sparse blob:none clone (spec-links only); no force",
+  "fence": ".syllabai/receipts/CIE-INTEGRATION/** + .syllabai/worklog.md — nothing else (zero content changes without verdicts)",
+  "residuals": [
+    "the anchor gap itself: 12,479 questions / 17,693 parts — closed only through the verdict tranches above",
+    "the 13,479 slip: the tranche-2 receipt text is historical-of-record (append-only discipline) — the re-pin lives HERE and in every census from now on (computed, never transcribed)",
+    "the 134c re-run for each tranche's landing remains OPERATOR-GATED (the phase-4 plane posture)"
+  ],
+  "nextAct": {
+    "operator": "the tranche-1 verdict round (155 T2_near) is the highest-certainty next step — say the word and the sidecar verdict entries go up for review; tranche-2 bank order on operator preference (the mass order: chemistry-25, physics-25, pure-3, intl-maths-23-extended)",
+    "lane": "on operator verdicts: consume → re-emit → census re-pin → PR → the operator-gated 134c re-run"
+  }
+}

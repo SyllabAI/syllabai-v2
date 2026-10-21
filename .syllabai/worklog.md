@@ -10803,3 +10803,20 @@ Work Log:
 
 Stage Summary:
 - The demo gate's content plane is AUTHOR-COMPLETE and LINT-GREEN: 5 packs / 30 blocks / 27 terms of record, ingest staged and idempotent. The rail goes visible the moment the operator applies + flips — by construction, never before.
+
+---
+Task ID: CIE-INTEGRATION anchor-gap-census-r0 (trace 1a15e1a7178f229d — the "anchor-gap follow-up" order)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: operator "anchor-gap follow-up" — the CIE lane's phase-2 completion work; the measurable-per-slug law fulfilled; the of-record figure re-pinned; the completion program defined.
+
+Work Log:
+- RECONCILIATION FIRST: the of-record "13,479 raw unanchored" DOES NOT RECONCILE — the census of record computes 19,097 raw = 6,599 anchored + 12,479 zero-code + 19 dupOrder + 0 badSum (EXACT), and tranche-2's own anchored count (6,618) gives 19,097 − 6,618 = 12,479 EXACTLY. The +1,000 is a slip in the tranche-2 receipt (the hardcode-instead-of-compute honesty class of the run-008 audit rider), propagated verbatim into run-009 nextAct + the fill receipt residual. RE-PINNED: 12,479 questions / 17,693 parts — computed from the census tool from now on, never transcribed.
+- ROOT CAUSE, evidence-gated: the zero-code parts CARRY the code fields with EMPTY values — the upstream EQ→spec join (the spec-links sidecar verdict lane in syllabai-resources) resolved only a fraction of the spcpt_* entities to official codes; the bundle emission consumed EXACTLY the resolved subset (faithful; codes failing spine resolution THROW, and the fleet's 45/45 ok proves zero such drift; badSum 0).
+- THE THREE-WAY DECOMPOSITION (17,693 zero-code parts, EXACT): 16,335 sidecar-pending (the verdict debt — mass order chemistry-25 1,336 / physics-25 1,279 / pure-3 1,273 / intl-maths-extended 1,243 / maths-25-extended 1,214 / maths-25-core 1,128 / pure-1 1,108 / cs-19 935 ...) + 155 T2_near (accepted-near hints HELD OUT of linkage by law — the operator's review queue: business-23-I 41 / biology-25 37 / chemistry-25 25 / physics-25 15 / sdv-chem 15 / physics-23 7 / cs-23 6 / combined-bio 6 / combined-chem 3) + 1,203 no-anchor (the SME-side coverage gap — economics-25 585 of 625 raw, its 0% rate explained).
+- THE T2_NEAR LAW PROVEN END-TO-END: all 155 hints ride the maps as items[].t2HintCodes (spot-verified on business-23), codes[] empty, bundle linkage untouched — the r9 consume discipline held with zero leaks. The 155 were NOT a mechanical tranche (my first "recoverable" read was wrong — corrected by the tier field: they are verdict-class work by design).
+- PIN LAW VERIFIED: resources 75981cad → e4533d7: spec-links delta = the two Edexcel accounting-17 sidecars + manifest ONLY; SME-ExamQuestion moved but ALL 14 files igcse-accounting-17* (Edexcel) — zero CIE corpus contact; RevisionNotes/Flashcards/Official-Specifications tree-sha-identical.
+- PROGRAM OF RECORD: tranche-1 = the operator's 155 T2_near verdicts (highest certainty; chain: sidecar verdicts → consume re-run at the advanced pin → linkage-only re-emit → census re-pin → PR → the OPERATOR-GATED 134c re-run); tranche-2 = the 16,335-part verdict program per bank (tier laws unchanged, never guessed); tranche-3 = the 1,203 SME-side coverage gap (econ-25 first). Registry curriculumCodes unaffected (the fill act already landed the cv namespaces).
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-anchor-gap-census-r0.json. Fence: .syllabai/** only — ZERO content changes without verdicts (ADR-030).
+
+Stage Summary:
+- THE ANCHOR GAP IS NOW MEASURABLE, DECOMPOSED, AND PROGRAMMED OF RECORD: 12,479 q / 17,693 parts re-pinned (the 13,479 slip disclosed); three-way split with per-bank tables; root cause upstream (the verdict lane), the bundle/ingest/census chain PROVEN faithful; the T2_near queue (155) named for the operator; tranches 1-3 defined with the full landing chain receipt-named. Zero DB contact, zero content edits, fetch-first.
