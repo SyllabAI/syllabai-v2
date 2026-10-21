@@ -1,0 +1,37 @@
+{
+ "task": "T-BOOK-022",
+ "lane": "content — glossary validation lane r2 (the T-BOOK-019 pattern re-run): the 30 new u2/u3 terms verified V1-V4 then flipped",
+ "operator_order": "(3) Arrange verification channels for 30 new u2/u3 terms (trace 1a15fb8ebb2ebbe1)",
+ "trace": "1a15fb8ebb2ebbe1",
+ "generated": "2026-10-22T19:35:00Z",
+ "laws": "V1 schema (bookGlossaryTermSchema zod) / V2 authored-truth (DB row == authored files canonical compare, both directions) / V3 ms layer (>=1 ms_accepts AND >=1 ms_avoids) / V4 definition floor (>=40 chars) — T-BOOK-017/019 laws VERBATIM",
+ "scope_law": "all authored (non-seed) glossary files EXCEPT u4-organic-chemistry.yaml (the F-BOOK-0001 gate keeps u4 unlanded on the DB plane; the lane now VERIFIES the gate by absence — 24 u4 authored slugs probed: 0 DB rows; a GATE VIOLATION finding fires if any ever lands)",
+ "authored_layer": {
+  "terms": 88,
+  "files": {
+   "states-and-solutions.yaml": 27,
+   "ionic-bonding.yaml": 8,
+   "covalent-bonding.yaml": 4,
+   "metallic-bonding.yaml": 3,
+   "electrolysis.yaml": 11,
+   "formulae-calculations-2.yaml": 5,
+   "u2-metals-and-salts.yaml": 20,
+   "u3-physical-chemistry.yaml": 10
+  },
+  "the_30_new": "20 u2 + 10 u3 (ingested SUGGESTED by the T-BOOK-011/012 SCOPED ingest)"
+ },
+ "validation_results": {
+  "v1_v3_v4": "88/88 PASS, 0 findings",
+  "v2": "88/88 exact, both directions; DB rows outside scope: 0",
+  "state_census_pre": "30 SUGGESTED + 58 VALIDATED among authored slugs (exactly the expected pre-world)"
+ },
+ "flip_of_record": {
+  "tx": "ONE guarded tx on PRODUCTION — pre {SUGGESTED:30, VALIDATED:58} -> UPDATE ... where validation_state='SUGGESTED' and slug = any(88 authored slugs) (rowcount 30) -> post {VALIDATED:88}; row total invariant held",
+  "output": "flip: 30 rows SUGGESTED -> VALIDATED; post-flip state {\"VALIDATED\":88}; COMMIT (V1-V4 pass 88/88, V2 exact 88/88)"
+ },
+ "idempotence_proof": "re-run live: 0 eligible rows, no-op commit, state unchanged {VALIDATED:88} (the r1 idempotence law)",
+ "honest_first_pass": "the first run REFUSED to flip on a mis-written scope assertion of mine (I expected the 24 unlanded u4 terms to appear as DB-rows-outside-scope; they are authored-not-in-DB — absence, not presence) — the refusal cost zero DB rows, the check was rewritten to verify the gate by absence, second run GREEN; the refusal path working as designed is itself evidence the vehicle is honest",
+ "script_of_record": "apps/api/scripts/session/glossary-validate-r2.ts (session-side untracked per the T-BOOK-017/019 law; <booksDir> [--check])",
+ "serving_impact": "none at the rail level (glossary states gate tutor-side glossary surfaces per T-BOOK-007 wiring); u1-u3 blocks of record untouched (131 VALIDATED)",
+ "status": "GLOSSARY 88/88 VALIDATED of record (58 + 30; the 24 u4 terms stay unlanded behind the gate — their own r3 lane)"
+}

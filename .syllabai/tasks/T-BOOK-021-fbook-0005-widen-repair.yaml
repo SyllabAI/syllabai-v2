@@ -1,0 +1,51 @@
+version: 1
+task:
+  id: T-BOOK-021
+  title: "F-BOOK-0005 widen repair applied of record — the 11 orphaned spec points bound (shadow proof tx + committed tx, census 0 orphans / 0 EXTRA)"
+  owner: "main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator trace 1a15fb8ebb2ebbe1)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-spine-repair
+  deps: [T-BOOK-011, T-BOOK-018, "F-BOOK-0005"]
+  execution_record: >
+    Operator order item (2): "Approve the extended fix channel for
+    F-BOOK-0005" — the approval that opens the finding's own proposed
+    data-plane repair lane. Applied 2026-10-22: (1) SHADOW PROOF PLANE — the
+    ENTIRE repair + census inside ONE tx on production and ROLLBACK (zero
+    persisted writes; the proof ran on production data itself); (2) the
+    COMMITTED TX — the identical body with COMMIT: 11 method=widened codes
+    across 10 book_chapters rows (u2:c17 +2.42, u2:c18 +2.47, u3:c21 +3.22C,
+    u4:c22 +4.6, u4:c23 +4.13, u4:c24 +4.22, u4:c25 +4.26, u4:c27 +4.34C,
+    u4:c28 +4.38C, u4:c29 +4.47+4.48C), element shape mirroring the
+    F-BOOK-0003 precedent of record (7 keys, tier "2", lineage
+    census:F-BOOK-0005; score=null because NO matcher containment exists for
+    the census class — the precedent carried its 0.611 failed-containment
+    measure, this lane's evidence is the canonical subsection binding + the
+    finding). Pre re-prove: 10 rows present, none pre-bound, all 11 codes
+    canonical. Post: in-tx census 0 orphans / 0 EXTRA / 0 duplicate codes;
+    fresh-connection re-census 0/0; chapter states 21 VALIDATED + 8
+    SUGGESTED unchanged; serve baseline unchanged (131 VALIDATED blocks
+    u1-u3, u4 null — spec_codes never affect railBlocksForChapter).
+    CANONICAL-FORM CORRECTION of record: the finding's "4.47C" label is the
+    canonical official_code '4.47' (4CH1-4.47, S4-h, "explain problems in
+    the disposal of addition polymers..."; wording + subsection verified in
+    the specification_points.yaml of record; the graph of record has no
+    4.47C) — disclosed in findings.jsonl. COW WAIVER of record: the Neon
+    control plane is unreachable from this session (api.neon.tech NXDOMAIN,
+    reproducible; the DATA plane unAffected), so the F-BOOK-0003-style COW
+    branch could not be cut; waived per the same-day T-BOOK-011 rationale
+    (zero DDL, guarded idempotent tx) and REPLACED by the stronger same-data
+    shadow-rollback proof plane above.
+base:
+  repo: "syllabai-v2 @ this branch (script session-side: apps/api/scripts/session/fbook-0005-widen-repair.ts, re-runnable, untracked)"
+basis: "F-BOOK-0005 fix field (the proposed lane, approved by this order); the F-BOOK-0003 precedent (u1:c4 4CH1-1.18 widened element + both-planes posture); T-BOOK-018 census semantics"
+scope:
+  allowed:
+    - "DB book_chapters.spec_codes row-level appends (11 codes / 10 rows, guarded idempotent tx)"
+    - "findings.jsonl F-BOOK-0005 -> fixed"
+    - ".syllabai/receipts/T-BOOK-021/** + task yaml + worklog append"
+  forbidden:
+    - "any engine change (spine-join.ts untouched — the orphans are engine-INDEPENDENT per the T-BOOK-018 census)"
+    - "any pack/block/glossary write (zero; the authored refs stay inside the bound join sets)"
+  idempotence: "a re-run of either mode REFUSES (pre re-prove fails on already-bound codes) — the honest no-op posture; the census inside the vehicle re-verifies 0/0 at will"
