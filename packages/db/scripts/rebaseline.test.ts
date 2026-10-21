@@ -242,15 +242,15 @@ describe("specialTypeMap", () => {
 // ---------------------------------------------------------------------------
 
 describe("verifyBaseline (checked-in baseline)", () => {
-  test("70/666/97/61/112 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  test("70/667/98/62/115 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
     expect(v.inventory).toContain("tables 70/70");
-    expect(v.inventory).toContain("columns 666");
-    expect(v.inventory).toContain("indexes 97");
-    expect(v.inventory).toContain("fks 61");
-    expect(v.inventory).toContain("checks 112");
+    expect(v.inventory).toContain("columns 667");
+    expect(v.inventory).toContain("indexes 98");
+    expect(v.inventory).toContain("fks 62");
+    expect(v.inventory).toContain("checks 115");
   });
 
   test("runtime loader sees the real table inventory", async () => {

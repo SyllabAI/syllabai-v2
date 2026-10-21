@@ -1,6 +1,6 @@
 {
   "id": "25b06fcf-5fe6-4f49-bc88-469d20b8312d",
-  "prevId": "8c24e095-b5f0-4ce4-a490-e612a4ed9b10",
+  "prevId": "c9cbbfc3-7f24-457e-a887-d283248d47fb",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -8654,14 +8654,15 @@
               "expression": "curriculum_code",
               "isExpression": false,
               "asc": true,
-              "nulls": "last"
+              "nulls": "last",
+              "opclass": "text_ops"
             }
           ],
           "isUnique": false,
           "concurrently": false,
           "method": "btree",
           "with": {},
-          "where": "\"curriculum_code\" IS NOT NULL"
+          "where": "(curriculum_code IS NOT NULL)"
         }
       },
       "foreignKeys": {},

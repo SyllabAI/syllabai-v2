@@ -94,6 +94,9 @@ export const SMART_MARK_BATCH_LIMIT = 50;
 export const KAPPA_DEFAULT_THRESHOLD = 0.6;
 export const SCOPE_ALL = "ALL";
 export const SCOPE_PAPER = "PAPER";
+/** T-SM-KAPPA-SUBJECT (D2, #29 comment 3): subject-level calibration packet
+ *  scope — one subject's served papers + topic-anchored corpus, one κ row. */
+export const SCOPE_SUBJECT = "SUBJECT";
 /**
  * Answer.MarkingState.values() — the throughput overview zeroes every state.
  * FIVE values per frozen Answer.java:34 = { PENDING, SMART_MARKED,
@@ -336,6 +339,9 @@ export interface KappaEvaluationView {
   id: string;
   scope: string;
   paperId: string | null;
+  /** T-SM-KAPPA-SUBJECT: the subject key on SUBJECT-scope rows; null on
+   *  ALL/PAPER rows (additive DTO law — new field, names unchanged). */
+  subjectId: string | null;
   sampleSize: number;
   kappa: number;
   observedAgreement: number;
@@ -701,7 +707,7 @@ export class TeacherSmartMarkService {
         update attempts set marking_state = ${"SMART_MARKED"} where id = ${attemptId}
       `;
       const total = await this.recomputeAttemptTotal(attemptId, answer.question_marks);
-      const authoritative = await this.shared.kappaGatePassed(answer.exam_paper_id);
+      const authoritative = await this.shared.kappaGatePassed(answer.exam_paper_id, answer.question_id);
       if (authoritative) {
         // evidence only when the attempt's marking is COMPLETE (:145-157);
         // re-read mirrors findByAttemptIdOrderByQuestionPartId (the frozen
@@ -982,6 +988,41 @@ export class TeacherMarkingService {
             order by h.created_at asc
           `) as unknown as HumanMarkRow[]);
 
+    const pairs = await this.collectPairs(humanSample);
+
+    const stats = cohenKappa(pairs);
+    const evaluationId = this.clock.newId();
+    const scope = examPaperId === null ? SCOPE_ALL : SCOPE_PAPER;
+    const passed = stats.kappa >= KAPPA_DEFAULT_THRESHOLD;
+    const computedAt = this.clock.now().toISOString();
+    await this.sql`
+      insert into smart_mark_agreement_evaluations (id, scope, exam_paper_id,
+        sample_size, kappa, observed_agreement, threshold, passed, computed_at, computed_by)
+      values (${evaluationId}, ${scope}, ${examPaperId}, ${stats.sampleSize},
+        ${stats.kappa}, ${stats.observedAgreement}, ${KAPPA_DEFAULT_THRESHOLD},
+        ${passed}, ${computedAt}, ${computedBy})
+    `;
+    return {
+      id: evaluationId,
+      scope,
+      paperId: examPaperId,
+      subjectId: null,
+      sampleSize: stats.sampleSize,
+      kappa: stats.kappa,
+      observedAgreement: stats.observedAgreement,
+      threshold: KAPPA_DEFAULT_THRESHOLD,
+      passed,
+      computedAt,
+    };
+  }
+
+  /** T-SM-KAPPA-SUBJECT — the pairing law of evaluateAgreement (:170-212)
+   *  verbatim, extracted so the ALL/PAPER lane and the SUBJECT lane share
+   *  ONE implementation (composition, never a fork). Newest smart run per
+   *  answer (findLatest THEN validation_passed filter), point-level pairing
+   *  against the human mark's per_point_decisions; ConflictError when no
+   *  pairable decisions exist (parity with the frozen :952 guard). */
+  private async collectPairs(humanSample: HumanMarkRow[]): Promise<Array<[number, number]>> {
     const pairs: Array<[number, number]> = [];
     for (const mark of humanSample) {
       if (mark.per_point_decisions === null || Object.keys(mark.per_point_decisions).length === 0) {
@@ -1019,23 +1060,79 @@ export class TeacherMarkingService {
       throw new ConflictError(
         "no paired smart/human mark-point decisions available for κ evaluation");
     }
+    return pairs;
+  }
 
+  /** T-SM-KAPPA-SUBJECT (D2, #29 comment 3) — subject-level calibration
+   *  packet: same pairing + persistence law as evaluateAgreement (:897),
+   *  sampled across the subject's served papers AND topic-anchored corpus.
+   *  Subject membership derivation mirrors kappaGatePassed's (R2-audit
+   *  verified shape, #29 comment 2 addendum): paper lane via
+   *  exam_papers.subject_id, tree lane via question_topics ∪
+   *  question_spec_points up PART_OF edges to a SUBJECT node →
+   *  subjects.knowledge_node_id. relation_type = 'PART_OF' and the depth
+   *  guard are LOAD-BEARING (prereq-graph cycles); full-literal SQL per the
+   *  no-.raw() fleet convention. Operator-triggered only — the unfiltered
+   *  walk scans the question_topics/qsp bridges (~12k rows, seconds on
+   *  prod-sized data; measured during the R2 audit). */
+  async evaluateAgreementForSubject(
+    subjectId: string,
+    computedBy: string,
+  ): Promise<KappaEvaluationView> {
+    const humanSample: HumanMarkRow[] = (await this.sql`
+      with recursive qn as (
+        select distinct question_id, node_id from question_topics
+        union
+        select distinct question_id, spec_point_id as node_id
+        from question_spec_points where spec_point_id is not null
+      ), up as (
+        select qn.question_id, tn.id as node_id, 0 as depth,
+               case when tn.node_type = 'SUBJECT' then tn.id end as subj_node
+        from qn join knowledge_nodes tn on tn.id = qn.node_id
+        union all
+        select up.question_id, p.id, up.depth + 1,
+               case when p.node_type = 'SUBJECT' then p.id else up.subj_node end
+        from up
+        join knowledge_edges e
+          on e.source_node_id = up.node_id and e.relation_type = 'PART_OF'
+        join knowledge_nodes p on p.id = e.target_node_id
+        where up.subj_node is null and up.depth < 8
+      ), qsub as (
+        select q.id as question_id, ep.subject_id as subject_id
+        from questions q join exam_papers ep on ep.id = q.exam_paper_id
+        union
+        select distinct u.question_id, s.id as subject_id
+        from (select distinct question_id, subj_node from up
+              where subj_node is not null) u
+        join subjects s on s.knowledge_node_id = u.subj_node
+      )
+      select h.id, h.answer_id, h.marker_id, h.marks_awarded, h.per_point_decisions,
+             h.comments, h.created_at
+      from human_marks h
+      join answers ans on ans.id = h.answer_id
+      join attempts at on at.id = ans.attempt_id
+      join qsub on qsub.question_id = at.question_id
+      where qsub.subject_id = ${subjectId}
+      order by h.created_at asc
+    `) as unknown as HumanMarkRow[];
+
+    const pairs = await this.collectPairs(humanSample);
     const stats = cohenKappa(pairs);
     const evaluationId = this.clock.newId();
-    const scope = examPaperId === null ? SCOPE_ALL : SCOPE_PAPER;
     const passed = stats.kappa >= KAPPA_DEFAULT_THRESHOLD;
     const computedAt = this.clock.now().toISOString();
     await this.sql`
-      insert into smart_mark_agreement_evaluations (id, scope, exam_paper_id,
+      insert into smart_mark_agreement_evaluations (id, scope, exam_paper_id, subject_id,
         sample_size, kappa, observed_agreement, threshold, passed, computed_at, computed_by)
-      values (${evaluationId}, ${scope}, ${examPaperId}, ${stats.sampleSize},
+      values (${evaluationId}, ${SCOPE_SUBJECT}, null, ${subjectId}, ${stats.sampleSize},
         ${stats.kappa}, ${stats.observedAgreement}, ${KAPPA_DEFAULT_THRESHOLD},
         ${passed}, ${computedAt}, ${computedBy})
     `;
     return {
       id: evaluationId,
-      scope,
-      paperId: examPaperId,
+      scope: SCOPE_SUBJECT,
+      paperId: null,
+      subjectId,
       sampleSize: stats.sampleSize,
       kappa: stats.kappa,
       observedAgreement: stats.observedAgreement,
@@ -1084,6 +1181,41 @@ export class TeacherMarkingService {
       id: e.id,
       scope: e.scope,
       paperId: e.exam_paper_id,
+      subjectId: null,
+      sampleSize: e.sample_size,
+      kappa: e.kappa,
+      observedAgreement: e.observed_agreement,
+      threshold: e.threshold,
+      passed: e.passed,
+      computedAt: e.computed_at,
+    };
+  }
+
+  /** T-SM-KAPPA-SUBJECT (D2, #29 comment 3) — newest SUBJECT-scope evaluation
+   *  for one subject. Same read law as latestEvaluation (:282-293):
+   *  findFirst…OrderByComputedAtDesc with the id-desc determinism tie-break;
+   *  null when none exists → the route 404s. The partial index
+   *  idx_agreement_subject_latest backs this lookup. */
+  async latestSubjectEvaluation(subjectId: string): Promise<KappaEvaluationView | null> {
+    const rows = (await this.sql`
+      select id, scope, exam_paper_id, subject_id, sample_size, kappa, observed_agreement,
+             threshold, passed, computed_at
+      from smart_mark_agreement_evaluations
+      where scope = ${SCOPE_SUBJECT} and subject_id = ${subjectId}
+      order by computed_at desc, id desc
+      limit 1
+    `) as unknown as Array<{
+      id: string; scope: string; exam_paper_id: string | null; subject_id: string | null;
+      sample_size: number; kappa: number; observed_agreement: number; threshold: number;
+      passed: boolean; computed_at: string;
+    }>;
+    const e = rows[0];
+    if (!e) return null;
+    return {
+      id: e.id,
+      scope: e.scope,
+      paperId: e.exam_paper_id,
+      subjectId: e.subject_id,
       sampleSize: e.sample_size,
       kappa: e.kappa,
       observedAgreement: e.observed_agreement,

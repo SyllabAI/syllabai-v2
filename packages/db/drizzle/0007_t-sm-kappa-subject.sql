@@ -1,0 +1,8 @@
+ALTER TABLE "smart_mark_agreement_evaluations" DROP CONSTRAINT "ck_agreement_scope";--> statement-breakpoint
+ALTER TABLE "smart_mark_agreement_evaluations" ADD COLUMN "subject_id" uuid;--> statement-breakpoint
+ALTER TABLE "smart_mark_agreement_evaluations" ADD CONSTRAINT "smart_mark_agreement_evaluations_subject_id_fkey" FOREIGN KEY ("subject_id") REFERENCES "public"."subjects"("id") ON DELETE no action ON UPDATE no action;--> statement-breakpoint
+CREATE INDEX "idx_agreement_subject_latest" ON "smart_mark_agreement_evaluations" USING btree ("subject_id" uuid_ops,"computed_at" timestamptz_ops) WHERE (scope = 'SUBJECT'::text);--> statement-breakpoint
+ALTER TABLE "smart_mark_agreement_evaluations" ADD CONSTRAINT "ck_agreement_subject" CHECK (((scope)::text <> 'SUBJECT'::text) OR (subject_id IS NOT NULL));--> statement-breakpoint
+ALTER TABLE "smart_mark_agreement_evaluations" ADD CONSTRAINT "ck_agreement_all" CHECK (((scope)::text <> 'ALL'::text) OR (subject_id IS NULL));--> statement-breakpoint
+ALTER TABLE "smart_mark_agreement_evaluations" ADD CONSTRAINT "ck_agreement_key_exclusive" CHECK (NOT (subject_id IS NOT NULL AND exam_paper_id IS NOT NULL));--> statement-breakpoint
+ALTER TABLE "smart_mark_agreement_evaluations" ADD CONSTRAINT "ck_agreement_scope" CHECK ((scope)::text = ANY ((ARRAY['PAPER'::character varying, 'ALL'::character varying, 'SUBJECT'::character varying])::text[]));

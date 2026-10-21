@@ -1,6 +1,6 @@
 {
   "id": "8c24e095-b5f0-4ce4-a490-e612a4ed9b10",
-  "prevId": "1a706529-fc6f-44db-a61f-914c3959548c",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -2041,6 +2041,72 @@
       },
       "isRLSEnabled": false
     },
+    "public.class_features": {
+      "name": "class_features",
+      "schema": "",
+      "columns": {
+        "class_id": {
+          "name": "class_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "smart_mark": {
+          "name": "smart_mark",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "tutor": {
+          "name": "tutor",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "cla": {
+          "name": "cla",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_by": {
+          "name": "updated_by",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "fk_class_features_class": {
+          "name": "fk_class_features_class",
+          "tableFrom": "class_features",
+          "tableTo": "classes",
+          "columnsFrom": [
+            "class_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.class_members": {
       "name": "class_members",
       "schema": "",
@@ -2383,6 +2449,97 @@
           "value": "(target_type)::text = ANY (ARRAY[('exam_paper'::character varying)::text, ('question_version'::character varying)::text, ('mark_scheme'::character varying)::text, ('question'::character varying)::text, ('document'::character varying)::text])"
         }
       },
+      "isRLSEnabled": false
+    },
+    "public.course_registry": {
+      "name": "course_registry",
+      "schema": "",
+      "columns": {
+        "course_slug": {
+          "name": "course_slug",
+          "type": "varchar(100)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "curriculum_code": {
+          "name": "curriculum_code",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "level": {
+          "name": "level",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "subject": {
+          "name": "subject",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "board": {
+          "name": "board",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "label": {
+          "name": "label",
+          "type": "varchar(160)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(16)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source": {
+          "name": "source",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "synced_at": {
+          "name": "synced_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ix_course_registry_cc": {
+          "name": "ix_course_registry_cc",
+          "columns": [
+            {
+              "expression": "curriculum_code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            }
+          ],
+          "isUnique": false,
+          "where": "(curriculum_code IS NOT NULL)",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
       "isRLSEnabled": false
     },
     "public.curriculum_versions": {
@@ -6921,6 +7078,12 @@
           "primaryKey": false,
           "notNull": false
         },
+        "subject_id": {
+          "name": "subject_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
         "sample_size": {
           "name": "sample_size",
           "type": "integer",
@@ -6965,7 +7128,32 @@
           "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "idx_agreement_subject_latest": {
+          "name": "idx_agreement_subject_latest",
+          "columns": [
+            {
+              "expression": "subject_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "computed_at",
+              "isExpression": false,
+              "asc": false,
+              "nulls": "first",
+              "opclass": "timestamptz_ops"
+            }
+          ],
+          "isUnique": false,
+          "where": "(scope = 'SUBJECT'::text)",
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
       "foreignKeys": {
         "smart_mark_agreement_evaluations_exam_paper_id_fkey": {
           "name": "smart_mark_agreement_evaluations_exam_paper_id_fkey",
@@ -6973,6 +7161,19 @@
           "tableTo": "exam_papers",
           "columnsFrom": [
             "exam_paper_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "smart_mark_agreement_evaluations_subject_id_fkey": {
+          "name": "smart_mark_agreement_evaluations_subject_id_fkey",
+          "tableFrom": "smart_mark_agreement_evaluations",
+          "tableTo": "subjects",
+          "columnsFrom": [
+            "subject_id"
           ],
           "columnsTo": [
             "id"
@@ -6991,7 +7192,19 @@
         },
         "ck_agreement_scope": {
           "name": "ck_agreement_scope",
-          "value": "(scope)::text = ANY ((ARRAY['PAPER'::character varying, 'ALL'::character varying])::text[])"
+          "value": "(scope)::text = ANY ((ARRAY['PAPER'::character varying, 'ALL'::character varying, 'SUBJECT'::character varying])::text[])"
+        },
+        "ck_agreement_subject": {
+          "name": "ck_agreement_subject",
+          "value": "((scope)::text <> 'SUBJECT'::text) OR (subject_id IS NOT NULL)"
+        },
+        "ck_agreement_all": {
+          "name": "ck_agreement_all",
+          "value": "((scope)::text <> 'ALL'::text) OR (subject_id IS NULL)"
+        },
+        "ck_agreement_key_exclusive": {
+          "name": "ck_agreement_key_exclusive",
+          "value": "NOT (subject_id IS NOT NULL AND exam_paper_id IS NOT NULL)"
         },
         "smart_mark_agreement_evaluations_sample_size_check": {
           "name": "smart_mark_agreement_evaluations_sample_size_check",
@@ -8506,162 +8719,6 @@
           "concurrently": false,
           "method": "btree",
           "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.class_features": {
-      "name": "class_features",
-      "schema": "",
-      "columns": {
-        "class_id": {
-          "name": "class_id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "smart_mark": {
-          "name": "smart_mark",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": true
-        },
-        "tutor": {
-          "name": "tutor",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": true
-        },
-        "cla": {
-          "name": "cla",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": true
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "updated_by": {
-          "name": "updated_by",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": false
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "fk_class_features_class": {
-          "name": "fk_class_features_class",
-          "tableFrom": "class_features",
-          "tableTo": "classes",
-          "columnsFrom": [
-            "class_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {},
-      "isRLSEnabled": false
-    },
-    "public.course_registry": {
-      "name": "course_registry",
-      "schema": "",
-      "columns": {
-        "course_slug": {
-          "name": "course_slug",
-          "type": "varchar(100)",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "curriculum_code": {
-          "name": "curriculum_code",
-          "type": "varchar(50)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "level": {
-          "name": "level",
-          "type": "varchar(40)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "subject": {
-          "name": "subject",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "code": {
-          "name": "code",
-          "type": "varchar(20)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "board": {
-          "name": "board",
-          "type": "varchar(50)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "label": {
-          "name": "label",
-          "type": "varchar(160)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "status": {
-          "name": "status",
-          "type": "varchar(16)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "source": {
-          "name": "source",
-          "type": "varchar(200)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "synced_at": {
-          "name": "synced_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {
-        "ix_course_registry_cc": {
-          "name": "ix_course_registry_cc",
-          "columns": [
-            {
-              "expression": "curriculum_code",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {},
-          "where": "\"curriculum_code\" IS NOT NULL"
         }
       },
       "foreignKeys": {},

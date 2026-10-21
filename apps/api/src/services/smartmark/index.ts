@@ -465,9 +465,24 @@ export class SmartMarkService {
     private readonly clock: SubmitClock,
   ) {}
 
-  /** κ release gate (:333-344): newest ALL-scope eval, or the paper-scoped
-   * one, must have passed. Absence of any evaluation = gated (fail-closed). */
-  async kappaGatePassed(examPaperId: string | null): Promise<boolean> {
+  /** κ release gate (:333-344 + T-SM-KAPPA-SUBJECT / D2, #29 comment 3):
+   * newest ALL-scope eval, OR the paper-scoped one, OR the subject-scoped
+   * one for the question's subject, must have passed. Absence of any
+   * evaluation = gated (fail-closed, unchanged).
+   *
+   * Subject derivation (R2-audit-verified shape, #29 comment 2 addendum):
+   * paper-bound questions resolve through exam_papers.subject_id;
+   * topic-anchored questions walk the knowledge tree via question_topics ∪
+   * question_spec_points up PART_OF edges to a SUBJECT node →
+   * subjects.knowledge_node_id. The relation_type = 'PART_OF' filter and
+   * the depth guard are LOAD-BEARING: the prereq-graph edges
+   * (REQUIRES_PREREQUISITE / EXPLAINED_BY / REMEDIATED_BY) contain cycles —
+   * an unfiltered walk does not terminate. ~105/11,879 corpus questions are
+   * tree-unlinkable: for those the SUBJECT lane is skipped (no subject →
+   * no eval row can match) and the gate stays fail-closed on ALL/PAPER.
+   * teachermarking's evaluateAgreementForSubject mirrors this derivation —
+   * full-literal SQL per the no-.raw() fleet convention. */
+  async kappaGatePassed(examPaperId: string | null, questionId: string): Promise<boolean> {
     const globalRows = (await this.sql`
       select passed from smart_mark_agreement_evaluations
       where scope = ${"ALL"} order by computed_at desc
@@ -482,7 +497,43 @@ export class SmartMarkService {
           `) as unknown as AgreementRow[])
         : [];
     const paperPassed = paper.length > 0 ? paper[0]!.passed : false;
-    return global || paperPassed;
+    if (global || paperPassed) return true;
+
+    const subjectRows = (await this.sql`
+      with recursive qn as (
+        select distinct question_id, node_id from question_topics
+        union
+        select distinct question_id, spec_point_id as node_id
+        from question_spec_points where spec_point_id is not null
+      ), up as (
+        select qn.question_id, tn.id as node_id, 0 as depth,
+               case when tn.node_type = 'SUBJECT' then tn.id end as subj_node
+        from qn join knowledge_nodes tn on tn.id = qn.node_id
+        union all
+        select up.question_id, p.id, up.depth + 1,
+               case when p.node_type = 'SUBJECT' then p.id else up.subj_node end
+        from up
+        join knowledge_edges e
+          on e.source_node_id = up.node_id and e.relation_type = 'PART_OF'
+        join knowledge_nodes p on p.id = e.target_node_id
+        where up.subj_node is null and up.depth < 8
+      ), qsub as (
+        select q.id as question_id, ep.subject_id as subject_id
+        from questions q join exam_papers ep on ep.id = q.exam_paper_id
+        union
+        select distinct u.question_id, s.id as subject_id
+        from (select distinct question_id, subj_node from up
+              where subj_node is not null) u
+        join subjects s on s.knowledge_node_id = u.subj_node
+      )
+      select e2.passed from smart_mark_agreement_evaluations e2
+      where e2.scope = ${"SUBJECT"}
+        and e2.subject_id = (select subject_id from qsub
+                             where question_id = ${questionId}
+                             order by subject_id limit 1)
+      order by e2.computed_at desc limit 1
+    `) as unknown as AgreementRow[];
+    return subjectRows.length > 0 ? subjectRows[0]!.passed : false;
   }
 
   /**
@@ -561,7 +612,7 @@ export class SmartMarkService {
 
     const anyAccepted = decisions.some((d) => d.accepted);
     // κ gate evaluated ONCE per pass
-    const authoritative = anyAccepted && (await this.kappaGatePassed(attempt.exam_paper_id));
+    const authoritative = anyAccepted && (await this.kappaGatePassed(attempt.exam_paper_id, attempt.question_id));
 
     const results = new Map<string, SmartMarkResultRow>();
     for (let i = 0; i < answers.length; i++) {
@@ -706,7 +757,7 @@ export class StudentSmartMarkService {
     const scheme = await this.resolveScheme(ctx.attempt.question_id);
     this.requireRevealableScheme(scheme);
 
-    const authoritative = await this.smartMark.kappaGatePassed(ctx.attempt.exam_paper_id);
+    const authoritative = await this.smartMark.kappaGatePassed(ctx.attempt.exam_paper_id, ctx.attempt.question_id);
     // one batched pass: the SAME engine the teacher queue runs
     const results = await this.smartMark.markAttempt(attemptId);
     const parts: PartSmartMarkView[] = [];

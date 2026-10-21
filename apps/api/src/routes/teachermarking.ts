@@ -217,6 +217,9 @@ export type KappaEvaluationView = {
   id: string;
   scope: string;
   paperId: string | null;
+  /** T-SM-KAPPA-SUBJECT: the subject key on SUBJECT-scope rows; null on
+   *  ALL/PAPER rows (additive DTO law — new field, names unchanged). */
+  subjectId: string | null;
   sampleSize: number;
   kappa: number;
   observedAgreement: number;
@@ -228,6 +231,10 @@ export type KappaEvaluationView = {
 export function createTeacherMarkingRouter(
   module: TeacherMarkingModule,
   latestKappa: (paperId: string | null) => Promise<KappaEvaluationView | null>,
+  // T-SM-KAPPA-SUBJECT (D2, #29 comment 3): the SUBJECT-lane latest read —
+  // additive third seam, existing callers unaffected (default provided).
+  latestSubjectKappa: (subjectId: string) => Promise<KappaEvaluationView | null> =
+    (subjectId) => module.marking.latestSubjectEvaluation(subjectId),
 ): Hono {
   const r = new Hono();
 
@@ -365,12 +372,22 @@ export function createTeacherMarkingRouter(
       }
       const parsed = kappaScopeRequestSchema.safeParse(raw);
       if (!parsed.success) {
-        // KappaScopeRequest carries NO constraints — every schema failure is
-        // a binding failure (uuid/type) → malformed_body (R-1)
+        // T-SM-KAPPA-SUBJECT: KappaScopeRequest now carries ONE constraint —
+        // paperId/subjectId mutual exclusion — and every schema failure is
+        // still a binding failure (uuid/type/refine) → malformed_body (R-1)
         return c.json(malformedBody(), 400);
       }
       // the WHOLE BODY is nullable in the contract (absent binds null → ALL)
       const paperId = (parsed.data && parsed.data.paperId) || null;
+      const subjectId = (parsed.data && parsed.data.subjectId) || null;
+      // T-SM-KAPPA-SUBJECT (D2, #29 comment 3): {"subjectId": …} scopes the
+      // subject's calibration packet (paper lane ∪ topic-anchored corpus);
+      // both keys present never reaches here (refine → 400 above).
+      if (subjectId !== null) {
+        const evaluation = await module.marking.evaluateAgreementForSubject(
+          subjectId, auth.userId);
+        return c.json(evaluation satisfies KappaEvaluationView, 201);
+      }
       const evaluation = await module.marking.evaluateAgreement(paperId, auth.userId);
       return c.json(evaluation satisfies KappaEvaluationView, 201);
     }
@@ -378,18 +395,31 @@ export function createTeacherMarkingRouter(
     return c.json(evaluation satisfies KappaEvaluationView, 201);
   });
 
-  // GET /kappa/latest?paperId= (:282-293) — newest by scope; 404 when none
+  // GET /kappa/latest?paperId=|subjectId= (:282-293) — newest by scope; 404
+  // when none. T-SM-KAPPA-SUBJECT: ?subjectId= resolves the SUBJECT lane;
+  // both keys present → 400 (mutual exclusion, same binding law as POST).
   r.get("/kappa/latest", async (c) => {
-    const raw = c.req.query("paperId");
+    const rawPaper = c.req.query("paperId");
+    const rawSubject = c.req.query("subjectId");
     let paperId: string | null = null;
-    if (raw !== undefined) {
-      if (!UUID_RE.test(raw)) throw new BadRequestError("malformed request");
-      paperId = raw;
+    if (rawPaper !== undefined) {
+      if (!UUID_RE.test(rawPaper)) throw new BadRequestError("malformed request");
+      paperId = rawPaper;
     }
-    const evaluation = await latestKappa(paperId);
+    let subjectId: string | null = null;
+    if (rawSubject !== undefined) {
+      if (!UUID_RE.test(rawSubject)) throw new BadRequestError("malformed request");
+      subjectId = rawSubject;
+    }
+    if (paperId !== null && subjectId !== null) {
+      throw new BadRequestError("malformed request");
+    }
+    const evaluation = subjectId !== null
+      ? await latestSubjectKappa(subjectId)
+      : await latestKappa(paperId);
     if (evaluation === null) {
       // NotFoundException("kappa evaluation", paperId ?? "ALL") parity :289-291
-      throw new NotFoundError("kappa evaluation", paperId ?? "ALL");
+      throw new NotFoundError("kappa evaluation", paperId ?? subjectId ?? "ALL");
     }
     return c.json(evaluation);
   });
@@ -430,5 +460,8 @@ export function buildTeacherMarkingRouters(
   // kappa/latest read (:282-293) — newest evaluation per scope, straight read
   const latestKappa = async (paperId: string | null): Promise<KappaEvaluationView | null> =>
     module.marking.latestEvaluation(paperId);
-  return { module, teacherRoute: createTeacherMarkingRouter(module, latestKappa) };
+  // T-SM-KAPPA-SUBJECT: newest SUBJECT-scope evaluation per subject
+  const latestSubjectKappa = async (subjectId: string): Promise<KappaEvaluationView | null> =>
+    module.marking.latestSubjectEvaluation(subjectId);
+  return { module, teacherRoute: createTeacherMarkingRouter(module, latestKappa, latestSubjectKappa) };
 }

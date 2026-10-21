@@ -461,6 +461,9 @@ export const smartMarkAgreementEvaluations = pgTable("smart_mark_agreement_evalu
         id: uuid().primaryKey().notNull(),
         scope: varchar({ length: 12 }).notNull(),
         examPaperId: uuid("exam_paper_id"),
+        // T-SM-KAPPA-SUBJECT (D2): SUBJECT-scope κ rows carry the subject key;
+        // paper rows carry exam_paper_id, ALL rows carry neither (ck_agreement_key_exclusive).
+        subjectId: uuid("subject_id"),
         sampleSize: integer("sample_size").notNull(),
         kappa: doublePrecision().notNull(),
         observedAgreement: doublePrecision("observed_agreement").notNull(),
@@ -474,9 +477,21 @@ export const smartMarkAgreementEvaluations = pgTable("smart_mark_agreement_evalu
                         foreignColumns: [examPapers.id],
                         name: "smart_mark_agreement_evaluations_exam_paper_id_fkey"
                 }),
+        foreignKey({
+                        columns: [table.subjectId],
+                        foreignColumns: [subjects.id],
+                        name: "smart_mark_agreement_evaluations_subject_id_fkey"
+                }),
         check("ck_agreement_paper", sql`((scope)::text <> 'PAPER'::text) OR (exam_paper_id IS NOT NULL)`),
-        check("ck_agreement_scope", sql`(scope)::text = ANY ((ARRAY['PAPER'::character varying, 'ALL'::character varying])::text[])`),
+        check("ck_agreement_scope", sql`(scope)::text = ANY ((ARRAY['PAPER'::character varying, 'ALL'::character varying, 'SUBJECT'::character varying])::text[])`),
+        check("ck_agreement_subject", sql`((scope)::text <> 'SUBJECT'::text) OR (subject_id IS NOT NULL)`),
+        check("ck_agreement_all", sql`((scope)::text <> 'ALL'::text) OR (subject_id IS NULL)`),
+        check("ck_agreement_key_exclusive", sql`NOT (subject_id IS NOT NULL AND exam_paper_id IS NOT NULL)`),
         check("smart_mark_agreement_evaluations_sample_size_check", sql`sample_size > 0`),
+        index("idx_agreement_subject_latest").using("btree",
+                        table.subjectId.asc().nullsLast().op("uuid_ops"),
+                        table.computedAt.desc().nullsFirst().op("timestamptz_ops"))
+                .where(sql`(scope = 'SUBJECT'::text)`),
 ]);
 
 export const struggleInferences = pgTable("struggle_inferences", {

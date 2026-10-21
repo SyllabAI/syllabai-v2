@@ -353,10 +353,23 @@ describe("request bodies", () => {
     expect(kappaScopeRequestSchema.safeParse({ paperId: "nope" }).success).toBe(false);
   });
 
-  it("kappaLatestParamsSchema: optional paper uuid", () => {
+  it("kappaScopeRequestSchema: subjectId scopes the subject packet (T-SM-KAPPA-SUBJECT)", () => {
+    expect(kappaScopeRequestSchema.safeParse({ subjectId: UUID }).success).toBe(true);
+    expect(kappaScopeRequestSchema.safeParse({ subjectId: "nope" }).success).toBe(false);
+  });
+
+  it("kappaScopeRequestSchema: paperId and subjectId are mutually exclusive (→ 400)", () => {
+    expect(kappaScopeRequestSchema.safeParse({ paperId: UUID, subjectId: UUID }).success).toBe(false);
+    expect(kappaScopeRequestSchema.safeParse({ paperId: UUID, subjectId: null }).success).toBe(true);
+  });
+
+  it("kappaLatestParamsSchema: optional paper or subject uuid, mutually exclusive", () => {
     expect(kappaLatestParamsSchema.safeParse({}).success).toBe(true);
     expect(kappaLatestParamsSchema.safeParse({ paperId: UUID }).success).toBe(true);
     expect(kappaLatestParamsSchema.safeParse({ paperId: "nope" }).success).toBe(false);
+    expect(kappaLatestParamsSchema.safeParse({ subjectId: UUID }).success).toBe(true);
+    expect(kappaLatestParamsSchema.safeParse({ subjectId: "nope" }).success).toBe(false);
+    expect(kappaLatestParamsSchema.safeParse({ paperId: UUID, subjectId: UUID }).success).toBe(false);
   });
 
   it("answerIdPathSchema mirrors @PathVariable UUID (conversion failure → 400)", () => {
