@@ -22,7 +22,9 @@
  *   degrades to exactly the phase-2a local-only behavior.
  *
  * Module scope, zero React — called from the player's setMessages adapter
- * (schedule) and the overlay's open effect (hydrate).
+ * (schedule), the overlay's open effect (hydrate), and the overlay's rail
+ * verbs (phase 3c: rename/delete on a PAST thread — never the debounced
+ * active-thread loop, which a renamed/deleted rail entry can never be).
  */
 import { ApiError, api, getToken } from "@/lib/api";
 import type { ClaThreadSyncMessage, ClaThreadView } from "@/lib/types";
@@ -30,9 +32,11 @@ import {
   bindQuestionClaSession,
   getActiveThreadFor,
   hydrateQuestionClaThreads,
+  renameQuestionClaThread,
   unbindQuestionClaSession,
   type HydratedClaThread,
   type QuestionClaStoredMessage,
+  type QuestionClaThread,
 } from "./question-cla-threads";
 
 /** trailing debounce per question — one mirror PUT per ask burst, not one
@@ -44,6 +48,10 @@ const timers = new Map<string, ReturnType<typeof setTimeout>>();
 const droppedThreads = new Set<string>();
 /** question ids hydrated this session (the overlay's open effect refires) */
 const hydratedQuestions = new Set<string>();
+/** server thread ids DELETEd this session — hydration skips them, closing
+ *  the local-delete-vs-refetch race window (the durable deletion-propagation
+ *  markers — sync-tier prereg §2 OUT-c — own the cross-session law). */
+const deletedServerThreads = new Set<string>();
 
 /** Schedule a debounced full-state mirror of the question's active thread. */
 export function scheduleQuestionClaSync(questionId: string): void {
@@ -102,7 +110,13 @@ export async function hydrateQuestionClaFromServer(questionId: string): Promise<
   if (hydratedQuestions.has(questionId)) return;
   hydratedQuestions.add(questionId);
   try {
-    const summaries = await api.claThreadList({ surface: "question_cla", questionId });
+    const listed = await api.claThreadList({ surface: "question_cla", questionId });
+    // threads deleted from the rail this session never hydrate back (the
+    // DELETE-vs-refetch race window; the durable-marker follow-up owns the
+    // cross-session law)
+    const summaries = Array.isArray(listed)
+      ? listed.filter((s) => !deletedServerThreads.has(s.threadId))
+      : listed;
     if (!Array.isArray(summaries) || summaries.length === 0) return;
     // transcripts ride a per-thread fetch (the s143 discipline); an
     // individual failure skips that thread, never the hydration
@@ -123,6 +137,64 @@ export async function hydrateQuestionClaFromServer(questionId: string): Promise<
     hydrateQuestionClaThreads(questionId, incoming);
   } catch {
     // silent — the sync tier is best-effort (plan §5)
+  }
+}
+
+/**
+ * The rail's delete verb, network half (phase 3c — the family law the
+ * assistant rail shipped in phase 3b, assistant-sync.ts:110):
+ * the drop marker goes up FIRST (the debounced timer can never re-create
+ * or re-mirror it), then the server DELETE fires when the thread was bound.
+ * Fire-and-forget — a failed DELETE leaves the server row until the durable
+ * deletion-propagation follow-up (disclosed, DC6-CLA-SYNC-TIER-PLAN.md §2
+ * OUT-c); the session-scoped deletedServerThreads set keeps hydration from
+ * resurrecting it meanwhile. The LOCAL removal stays the overlay's call
+ * (deleteQuestionClaThread) so the ordering reads exactly like the rail.
+ */
+export function notifyQuestionClaThreadDeleted(thread: QuestionClaThread): void {
+  if (typeof window === "undefined") return;
+  droppedThreads.add(thread.id);
+  if (thread.sessionId != null) deletedServerThreads.add(thread.sessionId);
+  if (getActiveThreadFor(thread.questionId)?.id === thread.id) {
+    // defensive: the rail only lists non-active threads, but a pointer race
+    // must not leave a pending mirror of a deleted thread behind
+    const prev = timers.get(thread.questionId);
+    if (prev) {
+      clearTimeout(prev);
+      timers.delete(thread.questionId);
+    }
+  }
+  if (thread.sessionId == null || !getToken()) return;
+  void api.claThreadDelete(thread.sessionId).catch(() => {
+    // silent — the drop marker already prevents re-mirror this session
+  });
+}
+
+/**
+ * The rail's rename verb (phase 3c): local rename first (the store returns
+ * the fresh row), then a DIRECT full-state mirror PUT for THIS thread — a
+ * renamed rail entry is never its question's active one, so the debounced
+ * loop would never carry the title. PUT 404 = deletion respected (unbind +
+ * drop marker); every other failure is silent.
+ */
+export async function renameQuestionClaThreadOnRail(threadId: string, title: string): Promise<void> {
+  if (typeof window === "undefined") return;
+  const updated = renameQuestionClaThread(threadId, title);
+  if (!updated || updated.sessionId == null || !getToken()) return;
+  if (droppedThreads.has(updated.id)) return;
+  try {
+    await api.claThreadSync(updated.sessionId, {
+      title: updated.title,
+      questionNumber: updated.questionNumber ?? null,
+      courseSlug: updated.courseSlug ?? null,
+      messages: updated.messages.map(toWireMessage),
+    });
+  } catch (e) {
+    if (e instanceof ApiError && e.status === 404) {
+      droppedThreads.add(updated.id);
+      unbindQuestionClaSession(updated.id);
+    }
+    // every other failure is silent — the local tier stays the source of truth
   }
 }
 
