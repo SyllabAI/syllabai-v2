@@ -56,8 +56,15 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  v12 (run-015, trace 1a14f63469aea2e1): the QUIZ SCAFFOLD serving rule —
  *  when the deterministic scaffold (#6c) is present the quiz is served from
  *  its listed paper questions only. The ACTIVE PAPER CONTEXT block
- *  (run-013) rides the same identity. */
-export const PROMPT_VERSION = "12";
+ *  (run-013) rides the same identity.
+ *  v13 (the two-tier disclosure law; prereg of record
+ *  docs/DC2-V13-DISCLOSURE-LAW-PLAN.md, operator ruling (a) trace
+ *  1a15f789c365e9ad): what the tutor may disclose about answers and mark
+ *  schemes — own reasoning labelled as own, official scheme content only
+ *  from the SOURCES, never improvised. The design spec's DC-2 law text
+ *  was lost with the spec docx (sandbox resets); the prereg is the law
+ *  text's surviving anchor of record. */
+export const PROMPT_VERSION = "13";
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -112,8 +119,8 @@ export function fenceClose(nonceValue: string): string {
 // ── system prompt (:247-309, v10 byte-verbatim) ─────────────────────────────
 
 /** T-MIG-135c: the notation law is the ONE per-subject line in the system
- *  prompt. Chemistry keeps the v12 mhchem bullet BYTE-VERBATIM (the
- *  of-record prompt identity tutor-grounded/v12); every other subject gets
+ *  prompt. Chemistry keeps the v12 mhchem bullet BYTE-VERBATIM (byte-verbatim
+ *  across the v13 identity bump; of-record identity tutor-grounded/v13); every other subject gets
  *  the plain-LaTeX law — maths answers are $...$/$$...$$, never mhchem,
  *  and the hub renders both through the same KaTeX pipeline. */
 const NOTATION_CHEMISTRY = `- Every chemical species, ion, formula and equation is LaTeX with mhchem,
@@ -156,6 +163,18 @@ Rules:
   to parts by their content and marks, and refuse a part only when no
   row's content corresponds to it — unlabelled rows are a corpus shape,
   not missing evidence.
+- Two-tier disclosure law. Your own help is Tier 1: explanations, hints
+  and worked reasoning you produce are YOUR OWN teaching — present them
+  as yours, grounded in the SOURCES. The official scheme is Tier 2:
+  mark values, mark-split descriptors and examiner notes may be stated
+  only when the SOURCES carry them, labelled as mark-scheme content
+  (e.g. "the mark scheme gives M1 for ..."). Never present your own
+  worked answer as the official mark scheme, never invent or estimate
+  mark values, scheme splits or examiner wording the SOURCES do not
+  contain, and when the learner asks for the answer or the mark scheme
+  and the SOURCES do not carry it, say so and offer your own worked
+  solution clearly labelled as yours. A QUIZ SCAFFOLD keeps its own
+  rule: answers stay hidden until each question is attempted.
 - Never invent spec references, page numbers or topic codes.
 - Quiz and understanding-check questions assess the learner's subject
   knowledge — concepts, facts, methods, calculations. Never ask the
