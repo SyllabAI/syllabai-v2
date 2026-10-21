@@ -11528,3 +11528,11 @@ Work Log:
 Stage Summary:
 - F-1 is CLOSED as fixed: the mounted v2 teacher surface is now fully ownership-scoped (classes, coverage, KG trio, marking since T-TEACH-003, and now assignments). The one known independent-learner exposure on a mounted teacher surface (cohort-less roster reads) is closed with it.
 - Open items of record: F-2 guard-law (analytics mount), F-3 notes, LOCAL past-papers card, stage-5b proof watch.
+
+## receipt(R0-AUTO) — r0-cron-20261022-0400 (2026-10-21T20:00Z sweep)
+
+- Task ID: r0-cron-20261022-0400 (Job 438940)
+- MERGED: PR #273 → 57f4846 — dc1-v15: the marking-context contract, MARK CONTEXT from the marking surface (head 2c7c5b6)
+- Gates: head 2c7c5b6 verify ✓ hub ✓; mergeable=True state=clean; reviews 0 / comments 0; diff in-bounds — apps/api/src/services/tutor/* (context, karag, mark-context, prompt), api tests, docs/DC1-MARK-CONTEXT-PLAN.md; no *.java, no core/hub content, no DB/prod writes
+- Post-merge main CI: 57f4846 verify ✓ hub ✓ (bounded wait for verify)
+- Bookkeeping only: .syllabai/** — no code, no force
