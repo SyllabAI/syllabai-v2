@@ -133,7 +133,7 @@ def rekey_course(slug: str, content_root: Path | None = None, board: str | None 
             **n,
             "specPointIds": codes,
             "specPointCodes": codes,
-            "smeSpecPointIds": n.get("specPointIds") or [],
+            "smeSpecPointIds": (n["smeSpecPointIds"] if "smeSpecPointIds" in n else (n.get("specPointIds") or [])),
             "bodyMd": new_body,
         })
 
@@ -150,7 +150,7 @@ def rekey_course(slug: str, content_root: Path | None = None, board: str | None 
             **f,
             "specPointIds": codes,
             "specPointCode": codes[0] if codes else None,
-            "smeSpecPointIds": f.get("specPointIds") or [],
+            "smeSpecPointIds": (f["smeSpecPointIds"] if "smeSpecPointIds" in f else (f.get("specPointIds") or [])),
         })
 
     # ---- questions -----------------------------------------------------------
@@ -170,7 +170,7 @@ def rekey_course(slug: str, content_root: Path | None = None, board: str | None 
                     **p,
                     "specPointIds": codes,
                     "specPointCodes": codes,
-                    "smeSpecPointIds": p.get("specPointIds") or [],
+                    "smeSpecPointIds": (p["smeSpecPointIds"] if "smeSpecPointIds" in p else (p.get("specPointIds") or [])),
                 })
             s2["questions"].append(q2)
         qsets.append(s2)
