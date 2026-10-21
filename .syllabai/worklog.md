@@ -10880,3 +10880,12 @@ Work Log:
 
 Stage Summary:
 - TRANCHE-1 LANDED OF RECORD end-to-end minus the operator-gated dispatch: the 155 T2_near verdicts are authoritative in the sidecars (resources aa0b4de1) and consumed into the maps/bundles (v2, this push); the anchor gap is 12,363 q / 17,538 parts (from 12,479 / 17,693); the 134c cow+prod re-run remains OPERATOR-GATED — the DB plane still serves the pre-tranche linkage for the 9 banks until the operator fires it (arm state: bundles of record, floors re-pinned, run-009 recipe unchanged). Tranche-2 (16,335 verdict program, mass order chemistry-25 1,336 / physics-25 1,279 / pure-3 1,273 / intl-maths-extended 1,243 ...) and tranche-3 (1,203 SME coverage) continue per the census receipt. PAT rotation CRITICAL-OVERDUE.
+
+## receipt(R0-AUTO) — r0-cron-20261021-2100 (2026-10-21T13:00Z sweep)
+
+- Task ID: r0-cron-20261021-2100 (Job 438940)
+- MERGED: PR #251 → 354de42 — docs: restore ADR-037-OFFICIAL_PAPERS_WIRING.md from 743b53e5b8 + v0.7 delta; README migration-complete framing + .syllabai/ path fix (head 11c7113)
+- Gates: head 11c7113 verify ✓ hub ✓ Vercel ✓; mergeable=True state=clean; reviews 0 / comments 1 (vercel[bot] only, no blockers); diff docs-only — README.md + docs/ADR-037-OFFICIAL_PAPERS_WIRING.md; no *.java, no core/hub content, no DB/prod writes
+- Post-merge main CI: 354de42 verify ✓ hub ✓ (completed success)
+- CONTEXT: main moved during sweep — #252 (tranche-1 consume re-run, 238d5ca) lane-merged mid-sweep; #251 clean against post-#252 base
+- Bookkeeping only: .syllabai/** — no code, no force
