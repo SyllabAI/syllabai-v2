@@ -10517,3 +10517,19 @@ Stage Summary:
 - Books band now has its constitution: ADR-BOOK-0001 ACCEPTED (band law T-BOOK-xxx, ADR-BOOK-000x namespace, 3 rollout levers, licensing release gate, 7 ratified decisions, zero-DDL attempts law).
 - Findings ledger live: F-BOOK-0001 (licensing amendment gap, operator follow-up).
 - T-BOOK-002 unblocked with schema consequences pinned (composite FK, 4-state pack flip, no attempts DDL).
+
+---
+Task ID: 4MB1-QUALITY tb-band-probe-001-r0 (trace 1a15c0822560c8c9, operator order "fire a quick test-builder probe against the live API to see band-aware assembly in action")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Live-API probe of the test-builder band-aware assembly post db-apply-run-001 (2:303/3:737/4:162 on questions.difficulty). Script mirror-executes the ported law (difficulty-then-id, cap, targetMarks greedy, first-wins) over the exact serving predicate (activeByTopic + REJECTED/FLAGGED paper block) and compares /api/v1/teacher/tests/preview answers id-by-id.
+- Auth: no SYLLABAI_TEACHER_JOIN_CODE available -> fresh probe account + TEACHER role row on THAT account only (DISCLOSED PROD WRITE #1); cleanup disabled 3 r0-tb-band-probe-* accounts enabled=false (DISCLOSED #2, incl. crashed attempt-1 orphan). JWT roles ["STUDENT","TEACHER"]; creds/bearer memory-only, never printed.
+- RESULT 12/12 legs PASS: health(/actuator/health) 200; unauthed 401 shell; root-only honest-empty 0 q; band-order cap10 idsMatchSim TRUE; wire-order-is-id-order-when-bands-flat TRUE; determinism rerun identical; 3-node cap50 idsMatchSim TRUE (coverage 271/250/187 == recon EXACT, totalMarks 207); targetMarks=25 greedy idsMatchSim TRUE (7 q, 25/25); malformed topicNodeIds 400.
+- HEADLINE (honest): assembly MECHANICS exact on the wire plane, but the applied bands are NOT on that plane. STRUCTURED wire difficulty = question_versions.difficulty (servable.ts project() :336 version-over-question fallback); qv census ALL 1,192 current maths-b versions = 3/DEFAULT vs questions.difficulty 2:303/3:737/4:162 -> live histogram {"3":N} everywhere; effective live ordering = id order within flat band 3.
+- RECEIPT CORRECTION of db-apply-run-001-r0: "question_versions untouched (zero qv.difficulty readers)" was a FALSE NEGATIVE — readers exist at servable.ts:336 and sme/package.ts:169-170 (v.difficulty/v.difficultySource). The qv-untouched decision DID reach live serving surfaces.
+- Recon of record: 4MB1 root 7cb03087-1bc8-4175-9bf7-898d7dc89d48, subtree 119; questions map ONLY to the 10 spec-point aggregates (4MB1-S*-_), zero mappings on S-section children; health path is /actuator/health. Upstream eed02c1 (books docs pack) touched no platform code — finding re-checked against new tip.
+- OPERATOR DECISION (not fired; DB writes operator-gated): mirror lane qv.difficulty(+difficulty_source)=questions.difficulty on the 1,192 current versions would make test-builder AND the sme package surface band-aware live; alternative = reader-plane code change (touches frozen DTO fallback law). NEON_KEY inline-only; scrub-assert pass; no force.
+
+Stage Summary:
+- Test-builder maths-b serving PROVEN exact vs the frozen law (id-by-id x3 shapes + determinism + shells) — band-flat pending the qv-plane mirror (operator-keyed). Probe accounts left DISABLED; zero other prod writes.
