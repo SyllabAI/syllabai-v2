@@ -1,0 +1,56 @@
+version: 1
+task:
+  id: T-BOOK-024
+  title: "Student-visibility go-live proof — the L-entry lever proven already-pulled; the verbatim shelf query serves the 4CH1 interactive book from production (no technical flip remains)"
+  owner: "main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator order trace 1a1604911ce31bb5)"
+  status: DISCHARGED
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-C
+  deps: [T-BOOK-020, T-BOOK-023, ADR-BOOK-0001]
+  execution_record: >
+    Operator order "prep that flip" (trace 1a1604911ce31bb5) — the
+    product-side visibility lever this session's operator-facing answer had
+    offered as "the only step between the rail and students". Investigation
+    of record: ADR-BOOK-0001 §3 rolls the rail out with THREE levers and no
+    flag framework — L-content book flip and pack flip are the u4 S3/S4
+    fire's GREEN planes (bd38e04d), and L-entry is a COMMITTED line in
+    apps/hub/src/lib/books-registry.ts, where "igcse-chemistry-19" is
+    ALREADY present since the 133k era, pinned by its own passing bun test
+    (books-registry.test.ts 3/3 live). Cohort gating is explicitly DEFERRED
+    by the ADR ("Phase A's pilot cohort is the course-level entry set
+    itself"); the monetization/gating posture is the one open item (PLAN §9)
+    and is a business decision, not a build. CORRECTION OF RECORD: the
+    "product-side visibility/cohort flag" named in the operator-facing
+    answer does not exist as a technical gate — this lane is its resolution.
+    The lane therefore re-scoped honestly to the END-TO-END GO-LIVE PROOF,
+    run against PRODUCTION read-only (fresh connections,
+    apps/api/scripts/session/probe-golive-census.ts, untracked session-side):
+    (1) documents row of record kind=TEXTBOOK validation_state=VALIDATED,
+    383pp, "Edexcel International GCSE (9-1) Chemistry Student Book" / Jim
+    Clark — the shelf's own T-C20 gate; (2) book_chapters.course_id =
+    'igcse-chemistry-19' across all 29 chapters — the registry slug binds
+    the DB exactly; (3) THE SHELF QUERY VERBATIM (services/books.ts
+    shelfForCourse, the exact SQL the shelf route serves) returns the book
+    entry from production — students hitting the course get the book, full
+    stop; (4) chaptersForBook = 29 (the chapter registry the shelf lists);
+    (5) the rail DOUBLE gate sampled live at u1:c1 = 7 blocks and u4:c22 =
+    6 blocks; (6) glossary 112/112 VALIDATED (T-BOOK-023's end state
+    re-confirmed in the same receipt). Hub wiring verified in code: the
+    course-page Student Book card gates on courseHasBookArchive
+    (prerendered, commit-set-gated), /courses/[course]/books is
+    force-dynamic with the honest-empty posture, and the API router serves
+    shelf / chapters / blocks / checks / progress / glossary under the
+    double gate (public-read corpus family; progress + checks-submit
+    auth-gated). NOTHING was flipped: nothing remained to flip.
+base:
+  repo: "syllabai-v2 @ main (probe session-side: apps/api/scripts/session/probe-golive-census.ts, read-only, untracked)"
+basis: "ADR-BOOK-0001 §3 (three-lever rollout law + the cohort-gating deferral); apps/hub/src/lib/books-registry.ts (the committed entry set of record, 133k era); the u4 S3/S4 fire receipt (the content levers' GREEN of record)"
+scope:
+  allowed:
+    - ".syllabai/receipts/T-BOOK-024/** + task yaml + worklog append"
+  forbidden:
+    - "any DB write (every probe is read-only; every content lever is already GREEN)"
+    - "any code change to the registry / shelf / API serving path (no lever remains to build)"
+  session_scripts:
+    - "apps/api/scripts/session/probe-golive-census.ts (read-only; untracked session-side, like the T-BOOK-017/019/022/023 vehicles of record)"

@@ -1,0 +1,53 @@
+{
+  "task": "T-BOOK-024",
+  "receipt": "golive-visibility-r0",
+  "generated_utc": "2026-10-21T21:10:49Z",
+  "operator_order": {
+    "order": "prep that flip",
+    "trace_id": "1a1604911ce31bb5",
+    "context": "the product-side visibility/cohort lever offered in this session's answer to 'How long until we get the first interactive book?' (trace 1a16023ed22b827d)"
+  },
+  "finding_of_record": "NO technical lever remains between the rail and students. The ADR-BOOK-0001 §3 L-entry lever is a committed registry line, and 'igcse-chemistry-19' has been in apps/hub/src/lib/books-registry.ts since the 133k era (books-registry.test.ts 3/3 PASS live, 2026-10-21T21:10Z). The two L-content levers are the u4 S3/S4 fire's GREEN planes (bd38e04d). Cohort gating is deferred by the ADR (the pilot cohort IS the course-level entry set); monetization/gating posture (PLAN §9) is the sole open item and is an operator DECISION, not a build.",
+  "mechanism_of_record": {
+    "adr": "ADR-BOOK-0001 §3 — three levers, no flag framework",
+    "levers": {
+      "L-content_book_flip": "book_chapters/documents VALIDATED — GREEN (29/29; documents row verified this lane)",
+      "L-content_pack_flip": "book_blocks VALIDATED — GREEN (177/177, fire of record)",
+      "L-entry_course_entry": "apps/hub/src/lib/books-registry.ts BOOKS_ARCHIVE_COURSES — 'igcse-chemistry-19' ALREADY COMMITTED (133k era, commit-law 'one line per course')"
+    },
+    "cohort_gating": "DEFERRED by ADR §3 — not built, deliberately; per-class targeting follows the teacher-assignments class_id pattern if ever needed (post-pilot surface)"
+  },
+  "chain_of_record": {
+    "probe": "apps/api/scripts/session/probe-golive-census.ts (READ-ONLY, fresh connection, production Neon ep-ancient-cake-a52e4kfd)",
+    "run_utc": "2026-10-21T21:10:49Z",
+    "links": [
+      { "link": 1, "name": "documents row (the shelf's own T-C20 gate)", "result": "document_id e6c0db50-0f84-55de-b50c-e4d49285cd6d, doc_version 1, kind TEXTBOOK, validation_state VALIDATED, 383pp, title 'Edexcel International GCSE (9-1) Chemistry Student Book', author 'Jim Clark'" },
+      { "link": 2, "name": "course binding", "result": "book_chapters.course_id = 'igcse-chemistry-19' across 29 chapters — the hub slug the registry and shelf pass binds the DB exactly" },
+      { "link": 3, "name": "THE SHELF QUERY VERBATIM (services/books.ts shelfForCourse)", "result": "returns the entry: e6c0db50 / v1 / igcse-chemistry-19 / 383pp / checksum d48020e0cc0b5545b330bb59b242472198210e424525e4381cd5d2a58a58cc04 — the shelf page serves the book to students, full stop" },
+      { "link": 4, "name": "chaptersForBook (latest-version CTE)", "result": "29 chapters served" },
+      { "link": 5, "name": "rail DOUBLE gate samples (book VALIDATED AND pack rows VALIDATED)", "result": "u1:c1 = 7 blocks, u4:c22 = 6 blocks" },
+      { "link": 6, "name": "glossary plane", "result": "112/112 VALIDATED (T-BOOK-023 end state re-confirmed)" }
+    ],
+    "hub_wiring_verified_in_code": [
+      "course-page Student Book card: ready/href gate on courseHasBookArchive (prerendered, commit-set-gated) — apps/hub/src/app/courses/[course]/page.tsx",
+      "course-shell sidebar import of the same gate — apps/hub/src/components/hub/course-shell.tsx",
+      "shelf page /courses/[course]/books: force-dynamic, fetchBookShelf(slug), honest-empty posture — apps/hub/src/app/courses/[course]/books/page.tsx",
+      "API router: GET shelf/chapters/blocks/checks public-read under the double gate; progress GET/PUT + checks/submit auth-gated — apps/api/src/routes/books.ts",
+      "registry test 3/3 PASS live (4CH1 in; igcse-physics-19, igcse-biology-19, ial-maths-20-pure-1, cie-igcse-chemistry-23 all honestly out)"
+    ]
+  },
+  "correction_of_record": "The 'product-side visibility/cohort flag' offered in the operator-facing answer does not exist as a technical gate — the entry lever was already pulled in the 133k era and the content levers went GREEN at the fire. This lane is the resolution of record for that offer: the honest prep was proof, not a lever.",
+  "deployment_note": "The entry card is prerendered from the committed registry (any hub build at or after the 133k commit advertises it); the shelf is force-dynamic (live DB truth at request time); no redeploy is required by this lane. Optional smoke test: open the igcse-chemistry-19 course page in the live hub and follow 'Student Book'.",
+  "open_items": [
+    "monetization/gating posture (PLAN §9) — operator decision, not a build",
+    "4PH1 as book #2 (BOOK-NEW-SUBJECT-CHECKLIST) — the next 'one line per course' when its archive home lands",
+    "PAT rotation overdue (recurring watch item, NEXTBUMP-2 ledger concurs)"
+  ],
+  "zero_writes": true,
+  "zero_new_ddl": true,
+  "zero_forbidden_paths": true,
+  "session_logs": [
+    "/home/z/my-project/logs/golive-census-2026-10-22.json",
+    "/home/z/my-project/logs/book-census-2026-10-22.json"
+  ]
+}
