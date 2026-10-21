@@ -10742,3 +10742,20 @@ Work Log:
 
 Stage Summary:
 - The 57 badSum class is fully reconciled against official QP-footer evidence and reduced to an actionable fix manifest: 4 one-line field stamps + 49 parse-lane repair targets (over-segmentation dominant) + 4 blocked (evidence/order). The emitter's badSum exclusion is now fully EXPLAINED and QUANTIFIED (emission ceiling 1,245/1,249 after repairs; 3 questions need QP-footer recovery for the no-bp paper, 1 needs re-order). No surface was writable — the manifest rides for restore.
+
+
+---
+Task ID: Task-69 (trace 1a15de779f2250f9 — operator ruling "Restore it": the maths-b interactive bundle restored of record)
+Agent: r0 (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Task: resolve the Task-68 cross-lane conflict by operator ruling — restore the interactive 4MB1 question bank zeroed by T-CONSUME-EDX-1 (2ece53b).
+
+Work Log:
+- SANDBOX ROLLBACK #7 disclosed: gh_repos/syllabai-v2 + .credentials/ wiped mid-act (the fetch-first probe died on cd); re-cloned fresh (origin/main had advanced to 139266e — PR #242; abb7cb0 qv-mirror landed 1,192 maths-b version difficulties; 2c26811 CIE fill 44/45 — all observed, never touched); remote credential re-seated from a surviving sibling repo's provisioned URL (never printed).
+- RESTORE: questions.json byte-exact from 8ee371e (cmp exit 0, 2,864,576B; importSource pin resources@c2fcd88 verified as a real commit in the resources clone); manifest merged — the four question counts restored (65/1,249/2,392/6,341) + generatedUtc stamped, ALL refresh-lane fields byte-verbatim (the 6ee5ada notes/flashcards state with 23a LaTeX patches NOT reverted — theirs-verbatim law held).
+- VERIFY: independent count re-derivation 65 sets / 1,249 q / 2,392 parts / 6,341 marks — exact vs manifest, vs audit-004 census, vs the band-3b gate. Player + past-papers surfaces re-light on next auto-deploy (bundle plane); DB plane (band-5 bank + qv difficulty mirror) untouched.
+- Receipt restore-maths-b-interactive-r0.json filed; commit = content + receipt + worklog; fetch-first before commit; no force.
+- T-MIG-138 NOTE: GitHub authoritative 10:05:54Z Oct 21 — the 07:05Z window is PAST; the armed drain trigger condition is MET on this operator re-key. Per the 4MA1/4MB1 separation law the drain is handled as a SEPARATE act (never entangled in this 4MB1 commit).
+
+Stage Summary:
+- The interactive 4MB1 papers are RESTORED of record: bundle plane re-lights (65 sets / 1,249 questions), the T-CONSUME-EDX-1 refresh state preserved everywhere else, DB plane untouched. Open: T-MIG-138 drain firing (separate act, window past).
+- Task-69 ADDENDUM (act-time environment): the first commit attempt (f837a77 on 139266e) died on push — the sandbox filesystem hit ENOSPC 100% (even rm/truncate/rename failing; the 9GB full re-clone was the hog); all restore artifacts were staged byte-verified in /dev/shm BEFORE the clone was destroyed; re-cloned SPARSE BLOBLESS (depth 30, .syllabai + maths-b bundle + hub src only) — origin/main read 8d32377 at re-clone (badsum-recon-run-001 verified 57/57 against bundle 8ee371e = the exact blob restored here, 'manifest rides for restore' — posture CONSISTENT with this act; qv-mirror + T-BOOK-003 + r0-cron observed, untouched); artifacts re-applied byte-verified from shm; worklog union-append per law; this is the landing commit of the restore.

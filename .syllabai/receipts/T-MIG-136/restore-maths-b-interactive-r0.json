@@ -1,0 +1,17 @@
+{
+  "band": "T-MIG-136",
+  "run": "restore-maths-b-interactive-r0",
+  "at": "2026-10-21T10:06Z",
+  "order": "operator directive 2026-10-21 (zai-web, session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756-1c6b-4e7d-b981-75d3a5ff976b, gateway trace 1a15de779f2250f9): 'Restore it' — the ruling on the cross-lane conflict filed in Task-68",
+  "executor": "r0 (Super Z, T-MIG-136 lane owner)",
+  "act": "Restore apps/hub/content/igcse-maths-b-16/questions.json byte-exact from the of-record band-3/4 chain state 8ee371e (the Band-5 receipt commit; bundle generated from SyllabAI/syllabai-resources @ main@c2fcd88aea3620b9190950930d0861890d4ee524 per the bundle manifest importSource — pin existence verified first-hand in the resources clone); manifest.json merged: question counts restored (questionSets 65 / questions 1249 / parts 2392 / marks 6341) + generatedUtc stamped 2026-10-21T10:06:00Z, ALL other manifest fields byte-verbatim from the T-CONSUME-EDX-1 refresh state (generatedUtc/ref describe the notes+flashcards regeneration from main@6ee5ada — kept, theirs-verbatim: the 23a LaTeX span patches and refresh-lane notes state are NOT reverted)",
+  "verification": [
+    "questions.json BYTE-IDENTICAL to 8ee371e blob (cmp exit 0, 2,864,576 bytes)",
+    "independent count re-derivation from the restored file: 65 sets / 1,249 questions / 2,392 parts / totalMarks sum 6,341 — exact vs manifest and vs the pp-4mb1-quality-audit-004 census",
+    "manifest diff vs pre-restore: ONLY the four question counts + generatedUtc; sections/topics/specPoints/notes/flashcards/treeKind/officialSpine untouched"
+  ],
+  "context": "Cross-lane conflict of record (Task-68, d56a947 worklog): T-CONSUME-EDX-1 (2ece53b, operator order trace 1a15adbce1a36d59) zeroed the maths-b bundle questions 1,249 -> 0 framing them as 'data upstream has since determined should not exist'. Contradiction filed: upstream NEVER had maths-b topic questions (T-SME-12/no_topic_questions_on_sme known at band-3 time); the bank was MANUFACTURED from the parsed 4MB1 papers under the operator anchoring authorization trace 1a15a45dca86c409 ('But tutor and cla needed'), provenance run-003 P2. The operator has now ruled: RESTORE. The T-CONSUME-EDX-1 refresh (46 packs, notes/flashcards/spines) stays intact; only the maths-b question axis is re-instated.",
+  "planes": "hub interactive player = bundle plane (restored); tutor/API fetch-bank = DB plane (band-5, 1,192 anchored questions live since c7d1db5, untouched by this act); qv-mirror-run-001 difficulty mirror (abb7cb0) untouched",
+  "writeLedger": "2 hub content files (questions.json byte-exact restore + manifest counts/generatedUtc); receipt + worklog; zero DB/Neon/LLM/prod-contact; fetch-first before commit; no force",
+  "residuals": "T-MIG-138 drain window 07:05Z Oct 21 is PAST (GitHub authoritative 10:05:54Z Oct 21) — the armed drain trigger condition is MET on this re-key; handled as a SEPARATE act per the 4MA1/4MB1 separation law (never entangled with a 4MB1 commit); T-CONSUME-EDX-1 lane notified via this receipt + worklog entry"
+}
