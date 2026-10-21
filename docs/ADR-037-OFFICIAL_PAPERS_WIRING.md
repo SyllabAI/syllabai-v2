@@ -86,3 +86,62 @@ is CLOSED by PR #249 (merged 2026-10-21). Status moves WIRED (content) → **WIR
 > accidentally overwritten at commit `045bcd7040` (PR #249) with the literal 14-byte string "404: Not Found" — a dead
 > fetch's error body committed over the document of record. The v0.6-era content above is restored verbatim from
 > commit `743b53e5b8` (PR #239), and the v0.7 delta is re-appended from the PR #249 record. No decision content changed.
+
+
+## v0.8 export delta (2026-10-22, this PR) — the 2C tranche served + full v0.8.1 1C parity
+
+Status: WIRED + PERSISTED · 1C + 2C · corpus `syllabai-resources main@cef8d5e2`
+(converter v0.8.1) · exporter now versioned: `syllabai-resources/scripts/official_examq_export_hub.py`
+(resources PR #27, rebuilt after the session-local original was lost with its container).
+
+### What this adds
+
+`apps/hub/content/igcse-chemistry-19/questions.json` now carries, after the 28 SME sets and the
+16 official 1C sets, **16 official 2C sets** (`official-4ch1-2c-<series>`, section
+"Official past papers (4CH1/2C)", same `official-past-papers` topic/sectionSlug) — one per
+Edexcel 4CH1/2C series June 2019 → June 2026 (no June 2020: COVID): **110 questions / 607 parts /
+1120/1120 marks, 27/27 MCQs keyed, 16/16 slices all-gates PASS** at converter v0.8.0 (the 2C
+enablement wave: F34 paper parametrization + F35 MS-marker discipline + F36 sentence-form
+positives). The serving-fields contract is unchanged (problemMd verbatim + inline raw-URL figure
+markdown; solutionMd / markPoints[] G7-closed; assets with shared-ref dedup; answerStatus honesty).
+
+### The anchor law rides honestly
+
+All 607 2C parts are `pending-llm` (no spec-label wave authored for 2C yet), so all 110 2C
+questions carry NO specPointCodes and the frozen shim anchor law EXCLUDES them from the
+learner-model ingest (unmapped++) — exactly like the 1C sets at v0.6. They are fully servable
+display content the moment the bundle ships; the 2C spec-tagging wave (resources repo) is the
+scheduled unlock.
+
+### Full v0.8.1 1C parity (the same export re-bases the whole official block)
+
+The bundle of record was a palimpsest of four sync generations; the v0.8.1 sync had re-exported
+only 2020-01's adjudicated Q7(a) parts. This export regenerates ALL 16 1C sets from the v0.8.1
+corpus under one law — 44 parts change, every delta in a disclosed class:
+
+- **7 parts unmatched → linked** (F35-era linkage repairs: 2021-11 2(b)(i)/2(b)(ii)/6(b)(ii),
+  2022-06 8(b), 2023-11 2(c)(ii), 2024-11 11(a)(iv)/11(b)) — solutions gained, nothing lost.
+- **6 solutions repaired**: the old bytes served MS rows smeared from NEIGHBOURING questions
+  (marker-row hijack class, F35; e.g. 2022-06 4(b) carried a "Question Answer Notes Marks" table
+  header and 2024-11 4(a) carried 4(b)'s moles working); the served blocks now match the corpus
+  of record verbatim.
+- **14 markPoints/solution refinements**: whole-block MS rows split into the real M1..Mn points
+  (e.g. 2020-01 7(c) now serves the six 1-mark chemical-test points instead of one 6-mark blob).
+- **21 crop records normalised**: `shared` now emitted on every crop (true/false; the old
+  generations emitted it inconsistently), + 2 "(same figure as …)" owner displays resolved to the
+  human part number under the v0.8.1 topology.
+
+F37 adjudication pins re-verified post-export: 2020-01 7(a)(ii)=C chlorine, 7(a)(iii)=A astatine.
+Manifest: `generatedUtc` 2026-10-22, note rewritten; `importSource.ref` unchanged (same corpus
+SHA) and the SME-side counts stay the frozen 28/524/1404/3708 (the four-sync history law).
+
+### Regenerating
+
+```
+python3 scripts/official_examq_export_hub.py <out-stage> <current questions.json> --paper 2C
+```
+
+in `SyllabAI/syllabai-resources` (topics staged per series as `<series>-<paper>.json`). The
+exporter's gates: G-E1 disclosed-delta census vs the of-record, G-E2 part-sum + markPoints-close
++ spec-code shape, G-E3 per-series census vs the v0.8.1 MULTI-SERIES constants, G-E4 SME-prefix
+byte-identity, and the F37 key pins — fail-closed, like every gate in this pipeline.
