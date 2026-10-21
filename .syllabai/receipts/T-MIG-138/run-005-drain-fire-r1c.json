@@ -1,0 +1,49 @@
+{
+  "receipt": "T-MIG-138/run-005-drain-fire-r1c.json",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, re-key trace 1a15da204c7c4ec9; prior census trace 1a15bc876ad9acf5)",
+  "operator_order": "re-key 'ping' at 08:44Z Oct 21 executing the STAGED RECIPE of record (run-004-drain-arm + addendum-1: the drain fires on the FIRST re-key after 07:05Z Oct 21 via mode=backfill-sharded, rows = the 216-doc residual)",
+  "pre_fire_gates": {
+    "server_time": "08:44:45Z Oct 21 (GitHub Date header authoritative) — past the 07:00Z midnight-Pacific roll (PDT=UTC-7) and the 07:05Z window of record",
+    "no_duplicate_acts": "latest t-mig-138-intake run = #9 39438132654 (14:19:12Z Oct 20, success); zero runs created after 06:00Z Oct 21; total_count 9 — baseline intact",
+    "prior_census": "trace 1a15bc876ad9acf5 (00:09Z): pre-window re-key stood down correctly — NOT reset then (17:09 Pacific Oct 20, still the spent quota day); fire path re-verified curl-based (gh absent from sandbox PATH, irrelevant)"
+  },
+  "fire": {
+    "method": "scripts/t138-drain-fire.sh — the byte-exact staged recipe (dispatch note carries the arming trace 1a15ac054f484b0d verbatim)",
+    "http": "204 (dispatch accepted)",
+    "mode": "backfill-sharded",
+    "rows_input": "the 216-doc residual of record (run #9 prod-apply artifact backfill-row-ids.txt @ 14:48Z, byte-persisted lane-side t138-drain-rows.txt)"
+  },
+  "run_of_record": {
+    "id": 39571684429,
+    "run_number": 10,
+    "workflow": "t-mig-138-intake.yml",
+    "mode": "backfill-sharded",
+    "ref": "main@c1d123e5f56b3140a09c5a8b270c32de141a6b84",
+    "created_at": "2026-10-21T08:45:25Z",
+    "concluded_at": "2026-10-21T09:16:27Z",
+    "duration": "31m02s",
+    "run_conclusion": "failure — BY THE HONESTY LAW (shard-4 honest red; fail-fast:false so ALL shards ran to conclusion; cow-proof/prod-apply/backfill correctly skipped for this mode)"
+  },
+  "shard_ledger": [
+    {"shard": 1, "total": 54, "embedded": 40, "wall_hit": 1, "skipped_honest": 14, "conclusion": "success", "artifact": "t138-backfill-shard-1 (974 B)"},
+    {"shard": 2, "total": 54, "embedded": 40, "wall_hit": 1, "skipped_honest": 14, "conclusion": "success", "artifact": "t138-backfill-shard-2 (976 B)"},
+    {"shard": 3, "total": 54, "embedded": 41, "wall_hit": 1, "skipped_honest": 13, "conclusion": "success", "artifact": "t138-backfill-shard-3 (955 B)"},
+    {"shard": 4, "total": 54, "embedded": 0, "death": "first round-robin row 58eb84b9-730e-4cb0-a3e6-825bf35474cf, 26s in: 'embedding provider request failed with status 403 — no failover by design' -> exit 1 honest red, NON-RATE class — exactly the op#4 403-dead precedent (run #8)", "slice": "54 rows unattempted"}
+  ],
+  "drain_arithmetic": {
+    "embedded_this_window": 121,
+    "residual": 95,
+    "residual_composition": "41 skipped-honest (14+14+13) + 54 shard-4 unattempted slice",
+    "residual_rebuild": "deterministic from the four shard artifacts + the round-robin law (rows[3::4] = shard-4 slice); 95/95 unique, subset of the of-record 216, shard-4 log's failed row cross-checked == slice[0]",
+    "persistence": "scripts/t138-drain-rows-residual-95.txt (3,514 bytes, lane-side; values already public in the run artifacts)"
+  },
+  "new_empirical_of_record": "each healthy shard walled at ~40 rows (40/40/41) — NOT the ~1000-RPD class run-003 projected for op#2/op#3. Plausible correlation disclosed: the CIE phase-4 run-009 COW+prod legs (cow-proof 06:16:57Z ~112min + prod-apply SUCCESS 07:34:30Z ~74min, receipt c1d123e on main) shared the pool budget minutes before this 08:45Z fire. Class-vs-prespend attribution OPERATOR-KEYED — recorded, not interpreted.",
+  "expected_outcome_reconciliation": "run-004 projected '~3 healthy shards; shard-4 honest red possible while op#4 stays 403-dead' — landed EXACTLY 3 SUCCESS + shard-4 403-red. The 95 residual (vs 0) reflects the ~40-row walls — disclosed against the run-003 projection.",
+  "next_drain_of_record": "the 95-row residual at the next RPD reset (07:00Z Oct 22) on operator re-key — recipe identical (mode=backfill-sharded, rows = t138-drain-rows-residual-95.txt). op#4 (shard-4 key) still 403-dead OPERATOR-KEYED, op#1 anomaly unchanged: until replaced expect shard-4 red again; at ~40-row walls per healthy key the residual projects to 1-2 further windows.",
+  "write_ledger": "the dispatch was the ONLY wire act (the FROZEN 133d executor under its own service identity; dispatch-gate + COW protocol untouched); lane-side zero direct prod/DB/Neon/LLM contact; secrets never printed (token inline from git remote, never echoed); .syllabai-only receipt + worklog entry; lane scripts persisted (t138-drain-fire.sh, t138-drain-poll10.sh, t138-drain-rows-residual-95.txt); fetch-first, no force",
+  "residuals_of_record_unchanged": [
+    "op#4 403-dead + op#1 anomaly — operator-keyed pool keys",
+    "PAT rotation standing CRITICAL overdue",
+    "hub deploy incident operator-keyed"
+  ]
+}
