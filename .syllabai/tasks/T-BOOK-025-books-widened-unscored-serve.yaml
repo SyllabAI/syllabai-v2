@@ -3,7 +3,7 @@ task:
   id: T-BOOK-025
   title: "Books serve-chain repair — the widened unscored contract relax (score null ≡ absent) + the live incident diagnosis of record: deployed shelf renders the book with an honest no-chapters fallback and the reader 404s because the chapters route 500s on 11 honest widened (method=widened, score=null) spec refs"
   owner: "main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator incident report trace 1a16084e80a6ddd1)"
-  status: IN_REVIEW
+  status: DISCHARGED
   priority: P0
   band: T-BOOK (interactive books)
   wave: books-phase-C
@@ -62,8 +62,9 @@ task:
     and it caught what the SQL-level go-live proof structurally could not:
     the serving wall between the DB and the wire.
 base:
-  repo: "syllabai-v2 @ t-book-025/books-widened-unscored-serve (off origin/main 5a14c527)"
-  pr: "https://github.com/SyllabAI/syllabai-v2/pull/283"
+  repo: "syllabai-v2 @ t-book-025/books-widened-unscored-serve (off origin/main 5a14c527; branch DELETED post-merge)"
+  pr: "https://github.com/SyllabAI/syllabai-v2/pull/283 (squash-merged as fb48a5a4, 2026-10-22)"
+  merge_record: "operator order 'Merge PR #283' trace 1a160a2b3edd5229; squash of head f2008e82 (2 commits) onto main 5a14c527; merge gate first-hand: check-run failure set on head == failure set on main 5a14c527 (verify + hub, both the KNOWN pre-existing reds; branch 2484 pass/1 fail vs main 2482/1 = +2 new passing, zero new failures); remote branch t-book-025/books-widened-unscored-serve deleted post-merge; DEPLOY RESIDUAL remains OPEN (operator): redeploy api carrier + hub at fb48a5a4, then live witness census"
   basis: "F-BOOK-0003 r1 (the two-phase widened law — phase-2 binds are unscored of record); the SCHEMA MIRROR law (apps/hub/src/lib/books.ts header); the strict-contract wall law (toChapter — 'the mapper IS the strict-contract wall'); T-BOOK-024 (the go-live proof and its blind spot)"
 scope:
   allowed:

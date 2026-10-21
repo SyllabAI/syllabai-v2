@@ -11852,3 +11852,16 @@ Work Log:
 Stage Summary:
 - Branch t-book-025/books-widened-unscored-serve off 5a14c527; PR to follow. DEPLOY RESIDUAL (operator): redeploy the api carrier (Vercel project syllabai-v2) at merged main — the relax alone does not add the missing glossary/blocks/checks/progress routes the reader consumes — plus hub redeploy for the mirror; then the live witness census (shelf TOC 29 rows, reader opens, glossary 112).
 - LAW CANDIDATE for BOOK-SELF-IMPROVEMENT: books go-lives must include a live SSR + carrier-level census tier (DB truth ≠ serving truth; the strict wall sits BETWEEN them and is exactly where this incident lived).
+
+## T-BOOK-025 merge receipt — PR #283 squash-merged of record (operator order "Merge PR #283" trace 1a160a2b3edd5229, 2026-10-22)
+
+Work Log:
+- Merge gate verified first-hand BEFORE executing: PR #283 head f2008e82 (2 commits, 7 files, +238/-2), base 5a14c527 UNMOVED (origin/main re-fetched via inline-PAT fetch-first immediately prior), mergeable=True; check-run failure set on head == failure set on main 5a14c527 (verify + hub — both the KNOWN pre-existing reds: the TS4L CIE throw and the hub CIE corpus-verify prebuild; branch 2484 pass/1 fail vs main 2482/1 = +2 new passing tests, zero new failures) — same non-attribution posture as the PR #280 merge precedent.
+- Squash-merge executed via the API (merge_method=squash, receipt-grade commit title+message): result fb48a5a4 "Merge PR #283: T-BOOK-025 — books serve-chain repair, the widened unscored contract relax (score null ≡ absent) — the live 4CH1 incident diagnosis + fix".
+- Post-merge housekeeping: local main ff'd 5a14c527 -> fb48a5a4 (three-way clean, only the .syllabai task-yaml DISCHARGED/merge_record edits on top as this receipt commit); local + remote branch t-book-025/books-widened-unscored-serve DELETED (PR #280 convention).
+- Task yaml T-BOOK-025: IN_REVIEW -> DISCHARGED; pr line now carries the merge SHA of record; merge_record field added with the operator order trace, the CI gate evidence, and the OPEN deploy residual.
+
+Stage Summary:
+- Main of record: fb48a5a4 (T-BOOK-025 books serve-chain repair is ON MAIN — the widened unscored contract relax is discharged at the code plane).
+- STILL OPEN (operator-side, disclosed in-task as forbidden scope): REDEPLOY the api carrier (Vercel project syllabai-v2 — auto-deploy evidently off/stale, its build predates T-BOOK-007) + hub redeploy (mirror relax) at fb48a5a4, THEN the live witness census (shelf TOC 29 rows, reader opens with rail, glossary 112). Until the carrier redeploy lands, production hub courses/igcse-chemistry-19 keeps showing the honest no-chapters shelf + reader 404 — the fix is merged, not yet SERVED.
+- Law candidate (logged, unchanged): books go-lives must include a live SSR + carrier-level census tier (DB truth ≠ serving truth).
