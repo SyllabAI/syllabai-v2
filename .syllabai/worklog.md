@@ -11284,3 +11284,11 @@ Stage Summary:
 - Operator order 1a15f79acff5346d items (1)(2)(3) DISCHARGED of record: upstream lane fc6bf29c + v2 717fba99/4afdb441/35505e43
 - The CIE History gap the operator observed is closed on the learner surface (86/87 notes anchored, zero stray codes); 457 residual notes classified-not-dropped with the follow-up classes named (official-text re-parse or operator-gated semantic lane)
 - Menu items 4 (9 zero-question manufacturing) and 5 (TS4 lattice review) remain OPEN with the operator
+
+## receipt(R0-AUTO) — r0-cron-20261022-0230 (2026-10-21T18:30Z sweep)
+
+- Task ID: r0-cron-20261022-0230 (Job 438940)
+- MERGED: PR #266 → 54f5312 — band(T-SM-KAPPA-SUBJECT): κ subject-scope reader band D2 (head 3f5657a)
+- Gates: head 3f5657a verify ✓ hub ✓ Vercel ✓; mergeable=True state=clean; reviews 0 / comments 1 (vercel[bot] preview, unflagged); diff in-bounds — apps/api routes+services+tests, packages/contracts teacher-marking, packages/db drizzle migration 0007 + snapshots + schema (repo migration file only — no live DB/prod writes), rebaseline test; no *.java, no core/hub content
+- Post-merge main CI: 54f5312 hub ✓ verify ✓ (completed success)
+- Bookkeeping only: .syllabai/** — no code, no force
