@@ -10624,3 +10624,20 @@ Work Log:
 
 Stage Summary:
 - Test-builder law-fidelity + determinism RE-PROVEN live (id-by-id on 3 assembly shapes); band-aware assembly still INERT for maths-b pending the run-001 operator decision: qv mirror lane (question_versions.difficulty = questions.difficulty on 1,192 current versions) OR reader-plane change in code. Probe accounts disabled; zero other prod writes.
+
+---
+Task ID: T-MIG-134 band-134e-books-readiness-run-001-sz (the books vector arm continuation — no live operator trace; resumed after the prior session's context loss)
+Agent: Super Z (zai-web, books vector arm lane)
+Task: Reconstruct the books-intake vector-arm lane state from origin records after the sandbox rollback, then advance the physics 4PH1 books slice as far as the sandbox law allows — WITHOUT the operator gate (apply), the embedding credential (perished memory-only), or any prod contact.
+
+Work Log:
+- Recon of record: master FF'd e34fcd1 -> 1b13cb0 (247 commits; Sessions 188-205 incl. Session-204 lane 134e delivery + Session-205 deploy discharge); syllabai-v2 cloned fresh (c1d123e -> 6987467 during the lane); the lane family resolved = T-MIG-134 bands (the summary's "134b method per-set prod apply 13/13 GREEN for the 4MB1 question axis" = T-MIG-136 band 5 of record, receipt parse-4mb1-band5-apply-r0.json).
+- Package of record re-verified first-hand: release asset re-downloaded, zip sha256 a2100fe6… MATCH; source PDF materialized from resources books/.../physics/4ph1/source/ (30,915,167 B), sha256 9b0783d9… MATCH vs parse_report_v1.json.
+- RED probe (frozen bookChunkSchema vs the REAL 736-row package): 618 ok / 118 fail, content_type path ALONE — worked_example 45, extension_work 57, practical 16.
+- Fix: ADDITIVE widening BOOK_CONTENT_TYPES 17->20 (the 136a THREE-SHAPED precedent; printed-section law; no chemistry value moves). Contracts 28/28 (+4 real-row physics pins), typecheck x4 exit 0, api suite 1890/0/13, hub build exit 0, GREEN probe 736/736. Branch t-mig-134/134e-books-readiness @ d83e4bc (rebased over 6987467), PR syllabai-v2#242.
+- DRY-RUN GREEN (133f driver, zero DB/LLM): documentId d9b72a0a-23fb-5938-a0a7-a7494e7ebf9e; spine census 234/8/30/195 EXACT vs the 134c prod tree; 8 units / 28 chapters; 701/736 included (35 excluded by law, disclosed); 549 serving chunks (424 code-overlaid); 117 refs (verbatim 49 / normalized 25 / fuzzy 43) + 68 honest REVIEW near-misses (OCR-spacing LO bullets, fig46 law). Receipt: .syllabai/receipts/T-MIG-134/band-134e-books-readiness-run-001-sz.json + sandbox scripts/physics_intake_staging/dry_run_134e_run001.json.
+- Session-204 verdict CORRECTED of record: "AQ.… matches no documented consumer" was a format-heuristic miss — GeminiEmbeddingProvider sends any key verbatim via x-goog-api-key (no client-side shape validation; AIza grep-clean); Google's CURRENT key format starts AQ. Decisive test = 1-call live embedContent probe at restage. The key itself perished with the dead session (memory-only law) — re-delivery required.
+- Sandbox protocol: the lane's staging lives under /home/z/my-project/scripts/physics_intake_staging/ (probe_schema.ts, dry-run receipt, PR body, verified package+PDF); sandbox worklog restored here after the rollback ate the Session-204 entry.
+
+Stage Summary:
+- The physics books slice is APPLY-READY of record: inputs sha-verified, grammar widened + gated, deterministic dry-run green against the real spine. The operator gate is UNCHANGED and now has a precise un-block list: (1) PR #242 merge word; (2) Neon pooled URI re-stage + the apply write order (COW-proof first, 093/134c law); (3) Gemini embedding key re-delivery + the physics-row-parameterized 133d runner (the of-record workflow hardcodes the chemistry pilot row acc573b0…); (4) then validation flip -> embed backfill -> wire battery (page-true citation law). Zero prod writes, zero LLM spend, zero probe learners this lane.
