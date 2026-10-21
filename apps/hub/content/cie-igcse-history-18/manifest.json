@@ -21,8 +21,8 @@
  },
  "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
  "counts": {
-  "sections": 21,
-  "topics": 21,
+  "sections": 23,
+  "topics": 23,
   "specPoints": 371,
   "notes": 87,
   "questionSets": 18,
@@ -35,6 +35,26 @@
  "officialSpine": {
   "spine": "spines/cie-igcse-history-18.json",
   "resourcesSha": "aa0b4de1b732738b4d02dabdd02d9ead85522907",
-  "attachmentMap": "content-maps/cie-igcse-history-18.json"
+  "attachmentMap": "content-maps/cie-igcse-history-18.json",
+  "repairRun": {
+   "run": "T-SPECS-TS4-REPAIR-1-r0",
+   "date": "2026-10-22",
+   "operatorOrder": "audit menu items 4-5 + lattice residuals (trace 1a160319b5fe144d)",
+   "builderOverride": "apps/hub/scripts/build_official_spines.py HISTORY18_TOPIC_SPLIT (topic_split_map; official codes STABLE)",
+   "delta": {
+    "topicsAdded": [
+     "cie-igcse-history-2024-2026-TS4L",
+     "cie-igcse-history-2024-2026-TS4H"
+    ],
+    "pointsReparented": 31,
+    "codesChanged": 0,
+    "pointOrdersChanged": 0
+   },
+   "countsAfter": {
+    "sections": 23,
+    "topics": 23,
+    "specPoints": 371
+   }
+  }
  }
 }

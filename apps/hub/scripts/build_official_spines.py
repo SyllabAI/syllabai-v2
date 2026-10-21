@@ -66,6 +66,36 @@ CIE_RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{
 CIE_RECEIPT = (REPO.parent.parent / ".syllabai" / "receipts" / "CIE-INTEGRATION"
                / "cie-phase0-roster-manifest-r0.json")
 CIE_LEVEL_PIN = {"a-level": "A-LEVEL", "as": "AS", "igcse": "IGCSE"}
+
+# T-SPECS-TS4-REPAIR-1 — evidence-cited topic split for cie-igcse-history-18
+# (CONTENT-AUDIT decision menu item 5, operator order trace 1a160319b5fe144d).
+# The parse's region tracker emitted ONE synthesized-code run S4.001-042
+# spanning three official sections of the 0470 (2024-2026) syllabus:
+#   S4.001-011  Core A section 4 "Why was there a civil war in the United
+#               States and what were its results?" (correctly topicalized)
+#   S4.012-028  Core B section 2 "To what extent was the League of Nations
+#               a success?"
+#   S4.029-042  Core B section 3 "How far was Hitler's foreign policy to
+#               blame for the outbreak of war in Europe in 1939?"
+# The parse's own topic field MISLABELS S4.029-042 as the League section
+# (the section-3 heading was missed at the Core A -> Core B boundary, page
+# 16 of the parse); the code-prefix grouping then filed all 42 rows under
+# one topic titled by its first row — the served TS4 'Civil War' artifact
+# (CONTENT-AUDIT run-001-r0 lattice_artifact, "flagged for upstream review").
+# The remap re-keys the two Core B runs to their own topics. OFFICIAL CODES
+# ARE STABLE (the parse's 'synthesized-id' family is the join surface: SME
+# specPointCodes and the V7 joined rows move with the re-parent untouched).
+# Titles are the parse's own section headings, verbatim (the \x07 PDF bullet
+# artifact already removed per _cie_clean_title; the section-3 number comes
+# from the parse topics array's `number` field).
+HISTORY18_TOPIC_SPLIT = {
+    **{f"S4.{i:03d}": ("S4L", "2 To what extent was the League of Nations a success?")
+       for i in range(12, 29)},
+    **{f"S4.{i:03d}": ("S4H", "3 How far was Hitler\u2019s foreign policy to blame for "
+                       "the outbreak of war in Europe in 1939?")
+       for i in range(29, 43)},
+}
+
 CIE_SUBJECT_FIX = {
     "ict": "ICT",
     "computer-science": "Computer Science",
@@ -152,6 +182,10 @@ def cie_scope_rule_for(slug: str, qual: str) -> dict:
             if slug.endswith("-" + strand.lower()):
                 return {"kind": "scope_eq", "value": strand}
         raise ValueError(f"cannot scope CIE science strand bank {slug}")
+    if qual == "cie-igcse-history-2024-2026":
+        # T-SPECS-TS4-REPAIR-1: the served tree must carry Core B sections 2/3
+        # as their own topics (codes stable) — see HISTORY18_TOPIC_SPLIT.
+        return {"kind": "all", "topic_split_map": HISTORY18_TOPIC_SPLIT}
     return {"kind": "all"}
 
 
@@ -218,6 +252,15 @@ def build_course_cie(slug: str, qual: str, reg: dict, cache: Path) -> dict:
     if not scoped:
         raise ValueError(f"{slug}: no rows in scope for rule {rule}")
 
+    # T-SPECS-TS4-REPAIR-1: row-level topic re-key (codes stable; the grouping
+    # below uses the split key instead of the code prefix for mapped rows)
+    split_map: dict = rule.get("topic_split_map") or {}  # type: ignore[union-attr]
+    if split_map:
+        for r in scoped:
+            m = split_map.get(str(r["official_code"]))
+            if m:
+                r["_split_key"], r["_split_title"] = m
+
     # document order = the parse array order (upstream gate G2; families differ
     # in the `number` field — tier_columns/int_statements/ce_codes carry int
     # doc sequence, heading_bullets/nmk_outcomes carry null, lettered_items
@@ -266,8 +309,13 @@ def build_course_cie(slug: str, qual: str, reg: dict, cache: Path) -> dict:
     topics: dict[str, dict] = {}
     for r in scoped:
         code = str(r["official_code"])
-        t_key = code.split(".")[0]
-        t_title = _cie_clean_title(str((r.get("topic") or {}).get("title") or ""))
+        split = split_map.get(code)
+        if split:
+            t_key = split[0]
+            t_title = _cie_clean_title(split[1])
+        else:
+            t_key = code.split(".")[0]
+            t_title = _cie_clean_title(str((r.get("topic") or {}).get("title") or ""))
         t = topics.setdefault(t_key, {"title": "", "rows": [], "drift": []})
         if t_title and not t["title"]:
             t["title"] = t_title
@@ -275,6 +323,13 @@ def build_course_cie(slug: str, qual: str, reg: dict, cache: Path) -> dict:
             t["drift"].append(t_title)
         t["rows"].append(r)
 
+    if split_map:
+        warnings.append(
+            "T-SPECS-TS4-REPAIR-1 topic split applied: S4.012-028 -> topic 'S4L' "
+            "(Core B 2, League of Nations), S4.029-042 -> topic 'S4H' (Core B 3, "
+            "Hitler's foreign policy); official codes STABLE; the parse's topic "
+            "field mislabels S4.029-042 as the League section (the section-3 "
+            "heading was missed at the Core A -> Core B boundary)")
     for t_key, t in topics.items():
         if t["drift"]:
             warnings.append(

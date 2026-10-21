@@ -11672,23 +11672,41 @@ Stage Summary:
 - Bookkeeping only: .syllabai/** — no code, no force
 
 ---
-Task ID: NEXTBUMP-2 run-001 (durable ledger — the NEXT #2 fleet bump, PINSPLIT-1 convergence executed)
-Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, dispatch trace 1a160259e95a2b85 "Trigger NEXT #2 fleet bump")
-Task: Execute the PINSPLIT-1 ruling of record — converge the Edexcel per-course pin fleet at the bump-time tip under the >= 89260832 floor law; re-consume the 47 corpus lanes; converge golden + maths-b by provenance stamp; full gate battery; ship.
+
+## T-SPECS-TS4-REPAIR-1 r0 — audit menu item 5 discharged: the TS4 mixed-theme lattice adjudicated + repaired (code-stable topic re-parent; history-18 served spine 21/21/371 -> 23/23/371; kg 93/94 with the pure-2 ghost the only pre-existing FAIL)
+
+Date: 2026-10-22
+Agent: main agent (Z.ai, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Scope: apps/hub/scripts/build_official_spines.py + apps/hub/scripts/cie/cie_history18_topic_split.py + apps/hub/content/cie-igcse-history-18/{curriculum,manifest}.json + .syllabai/**; fetch-first; no force; zero DB writes; zero LLM; zero upstream writes
 
 Work Log:
-- State reconciled fetch-first at lane start: resources origin/main dc9c1efc (Merge PR #33) — floor law verified first-hand (89260832 IS ancestor); v2 origin/main advanced 13da4ba7 -> 6a86f415 -> f07c76f5 mid-discovery (parallel receipt lanes); lane branch cut off f07c76f5.
-- Input-tree diff classification first (the lane-shape determinant): chemistry-19 inputs 89260832..tip = ZERO (provenance stamp honest); Edexcel corpus deltas = chemistry-modular-24-unit-1/2 (maps + sidecars + flashcard maps via 1fdf2f97 T-SPEC-STAGE2-1) + spec-labels (ADR-037 plane, not a corpus input) — all other 45 lanes' consumed inputs byte-unchanged.
-- attach_official_map.py pin -> dc9c1efc; fresh cache (cache is path-keyed, not pin-keyed); 47/47 maps regenerated, re-run drift 0.
-- FAIL-CLOSED CATCH #1: the pre-flight code-loss census showed the regen would silently drop 8,361 declared-lineage codes / 8,112 items fleet-wide — root cause: attach reads specPointIds, which post-flip holds rekeyed official codes; FIX of record: declared_of() prefers smeSpecPointIds (the flip-preserved originals), falls back for pre-flip content; regen re-run: declared 8,172 preserved, losses isolated to chemistry-modular x2 (137+69) — attributed upstream (1fdf2f97 spm re-adjudication 94->59 mappings / 43->78 unmapped; demotion cascade lands honestly unmapped, no-guess held).
-- _report.json carry-forward merge (T-CONSUME-EDX-1 law): 47 regenerated rows + golden/maths-b rows byte-exact + totals recomputed (flashcardsCoded 14950->14777 with the upstream attribution, questionPartsCoded 26562->26875, notesCoded 3341->3349).
-- flip dry-run 47/47 gates green BEFORE any write; apply 47/47 (G1-G5).
-- FAIL-CLOSED CATCH #2: field-level census found the re-flip collapsed smeSpecPointIds to first-flip official codes (double-flip provenance loss; gates G1-G5 do not scan this field); FIX of record: BOC smeSpecPointIds key-presence law (carry verbatim when present incl. honestly-empty; fall back only when absent); 47 lanes restored from HEAD, re-flipped, re-verified: 0 corruption fleet-wide, 45 lanes' content byte-identical to HEAD except manifest (idempotence proof), chemistry-modular x2 real linkage updates only.
-- 49 manifests stamped importSource.ref -> main@dc9c1efc (compact corpus serialization, idempotent stamp script); golden + maths-b carry disclosure notes (golden: content byte-frozen, inputs proven identical; maths-b: of-record mixed vintage per the restore ruling trace 1a15de779f2250f9).
-- Gates: scope census 105 files exactly (CIE 0, courses.json 0, spines 0, golden/maths-b content frozen); phantom scan 0; adjudication anchors live (S4.172, S1.123, S2.134 x5, S2.138, S2.139, S2.140, S1.120); CIE validator PASS; bun install --frozen-lockfile (sandbox reset had dropped node_modules) then build:hub exit 0 (prebuild 23a + flashcard-sync + CIE + next build).
-- Receipt: .syllabai/receipts/NEXTBUMP-2/run-001-fleet-bump.json. Pushed as PR from lane/nextbump-2, self-merged, three-way verified. Resources UNTOUCHED — transit stays 28 (next resources push records 29).
+- Operator order "audit menu items 4-5, lattice residuals" (trace 1a160319b5fe144d). Item 5 of record (run-001-r0 lattice_artifact): TS4 (US Civil War) holds S4.012-042 League/Versailles/appeasement points — "flagged for upstream review, not adjudicated here". THIS lane adjudicates.
+- FINDING (two mechanical layers): (1) the parse of record's region tracker glued THREE official 0470 (2024-2026) sections into one synthesized-code run — Core A 4 Civil War S4.001-011 + Core B 2 League S4.012-028 + Core B 3 Hitler FP S4.029-042 (all rows 'synthesized-id' flagged; the parse's topic field ALSO mislabels S4.029-042 as League — the section-3 heading was missed at the Core A->B page-16 boundary); (2) the spine builder groups by code part 1 and titles from the first row — all 42 under TS4. Served-truth census: 21 topics = contiguous S1..S21 runs; Core B 1/2/3/5/6/7 + Core A 5/6 + depth F never materialized (371 points total) — the history instance of the line-fragmented-parse residual class, FILED not executed.
+- DISPOSITION: RE-PARENT, CODES STABLE (the S4.* codes are the join surface — SME specPointCodes + the V7 joined rows move untouched, exactly as the followups receipt anticipated). Builder override HISTORY18_TOPIC_SPLIT (explicit 31-code table + rule wiring + grouping re-key + meta disclosure); materializer cie_history18_topic_split.py (surgical: node key order + array positions preserved, fleet indent-1 serialization, manifest officialSpine.repairRun bump).
+- DETERMINISM BASELINE PROVEN: pre-override rebuild == live bundle content-identical (0 node diffs, edges identical) — the current script+pin IS the live generator. All gates GREEN: G1 deep-equal spine (nodes+edges; top-level metadata intentionally preserved as live — the fleet's board string predates the builder's CIE_BOARD, unrelated evolution NOT dragged in), G2 23/23/371 + point orders untouched (global 1..371), G3 0 stray spec codes across notes/flashcards/questions, G4 delta exactly +2/+2/31-reparents/orders-7..23/+4-edges/31-swaps, IDEMPOTENCE proven live. Battery: kg_export --check-only 93/94 — history-18 ok (418 nodes/417 edges/23 subs/371 pts); the 1 FAIL is the pure-2 ghost (35505e43 posture, pre-existing, untouched).
+- Scope guards: chemistry gold standard, all other 93 bundles, DB plane, concept-graph (no topic-code refs — verified), upstream resources — all byte-untouched.
 
 Stage Summary:
-- NEXT #2 LANDED of record: the 47/1/1 Edexcel pin split is DISSOLVED — 49/49 non-CIE manifests name main@dc9c1efc; 47 lanes re-consumed at the tip through the wave's gates; the floor law honored (chemistry-19's 2C labels intact — content byte-frozen).
-- Two reproducibility laws fixed in-repo (attach declared_of; BOC key-presence) — future regen/flip cycles are now idempotent across the flip boundary.
-- Open queue: CIE refresh lane (44-lane consume wave, own dispatch); maths-b Stage-2 regen is operator-keyed; 134c stays PARKED; PAT rotation STILL CRITICAL overdue (same fingerprint through this lane's push) — rotation REQUIRED before any re-supply.
+- Item 5 DISCHARGED: the learner topic tree now files League (TS4L, 17 pts) and Hitler's-foreign-policy (TS4H, 14 pts) under their own truthful topics; Civil War keeps its own 11; codes + orders + linkage byte-stable; the tree is re-generated correctly by any future Stage-1 rebuild via the tracked override.
+- Residuals filed: history-18 re-parse (Core B 1/5/6/7 + Core A 5/6 + depth F absent from the parse); the parse's S4.029-042 mislabel stands disclosed (functionally superseded by the override).
+- Receipt: .syllabai/receipts/CONTENT-AUDIT/ts4-topic-split-run-001-r0.json
+
+---
+
+## T-SPECS-TS4-REPAIR-1 r0 — audit menu item 5 discharged: the TS4 mixed-theme lattice adjudicated + repaired (code-stable topic re-parent; history-18 served spine 21/21/371 -> 23/23/371; kg 93/94 with the pure-2 ghost the only pre-existing FAIL)
+
+Date: 2026-10-22
+Agent: main agent (Z.ai, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Scope: apps/hub/scripts/build_official_spines.py + apps/hub/scripts/cie/cie_history18_topic_split.py + apps/hub/content/cie-igcse-history-18/{curriculum,manifest}.json + .syllabai/**; fetch-first; no force; zero DB writes; zero LLM; zero upstream writes
+
+Work Log:
+- Operator order "audit menu items 4-5, lattice residuals" (trace 1a160319b5fe144d). Item 5 of record (run-001-r0 lattice_artifact): TS4 (US Civil War) holds S4.012-042 League/Versailles/appeasement points — "flagged for upstream review, not adjudicated here". THIS lane adjudicates.
+- FINDING (two mechanical layers): (1) the parse of record's region tracker glued THREE official 0470 (2024-2026) sections into one synthesized-code run — Core A 4 Civil War S4.001-011 + Core B 2 League S4.012-028 + Core B 3 Hitler FP S4.029-042 (all rows 'synthesized-id' flagged; the parse's topic field ALSO mislabels S4.029-042 as League — the section-3 heading was missed at the Core A->B page-16 boundary); (2) the spine builder groups by code part 1 and titles from the first row — all 42 under TS4. Served-truth census: 21 topics = contiguous S1..S21 runs; Core B 1/2/3/5/6/7 + Core A 5/6 + depth F never materialized (371 points total) — the history instance of the line-fragmented-parse residual class, FILED not executed.
+- DISPOSITION: RE-PARENT, CODES STABLE (the S4.* codes are the join surface — SME specPointCodes + the V7 joined rows move untouched, exactly as the followups receipt anticipated). Builder override HISTORY18_TOPIC_SPLIT (explicit 31-code table + rule wiring + grouping re-key + meta disclosure); materializer cie_history18_topic_split.py (surgical: node key order + array positions preserved, fleet indent-1 serialization, manifest officialSpine.repairRun bump).
+- DETERMINISM BASELINE PROVEN: pre-override rebuild == live bundle content-identical (0 node diffs, edges identical) — the current script+pin IS the live generator. All gates GREEN: G1 deep-equal spine (nodes+edges; top-level metadata intentionally preserved as live — the fleet's board string predates the builder's CIE_BOARD, unrelated evolution NOT dragged in), G2 23/23/371 + point orders untouched (global 1..371), G3 0 stray spec codes across notes/flashcards/questions, G4 delta exactly +2/+2/31-reparents/orders-7..23/+4-edges/31-swaps, IDEMPOTENCE proven live. Battery: kg_export --check-only 93/94 — history-18 ok (418 nodes/417 edges/23 subs/371 pts); the 1 FAIL is the pure-2 ghost (35505e43 posture, pre-existing, untouched).
+- Scope guards: chemistry gold standard, all other 93 bundles, DB plane, concept-graph (no topic-code refs — verified), upstream resources — all byte-untouched.
+
+Stage Summary:
+- Item 5 DISCHARGED: the learner topic tree now files League (TS4L, 17 pts) and Hitler's-foreign-policy (TS4H, 14 pts) under their own truthful topics; Civil War keeps its own 11; codes + orders + linkage byte-stable; the tree is re-generated correctly by any future Stage-1 rebuild via the tracked override.
+- Residuals filed: history-18 re-parse (Core B 1/5/6/7 + Core A 5/6 + depth F absent from the parse); the parse's S4.029-042 mislabel stands disclosed (functionally superseded by the override).
+- Receipt: .syllabai/receipts/CONTENT-AUDIT/ts4-topic-split-run-001-r0.json
