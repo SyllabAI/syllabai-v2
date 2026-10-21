@@ -11368,3 +11368,37 @@ Work Log:
 
 Stage Summary:
 - The deck player now matches the research pass-5 laws it cites: the citation tells the truth (deviation documented, not attributed), the player filters (state x type + mistakes preset) and the device-scoped resume are live, and the e2e law-record pins all three. Direct-main push, fetch-first, no force; push auto-bakes the hub (disclosed). T-MIG-138 posture untouched (w0a FALLBACK, pre-window census of record).
+
+Task ID: T-SPEC-ACCT-ADJ-1 (durable ledger — adjudication of the 12-entry demote menu, pushed transit 27)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, dispatch trace 1a15e3f5088ea219 "adjudicate these 12 items")
+Task: Operator-delegate adjudication of the T-SPEC-ACCT-REPAIR-1 12-entry demote menu; apply verdicts to both accounting lanes, rebuild sidecars, FF push, three-way verify.
+
+Work Log:
+- Dossier first-hand (scripts/laneA_adj_dossier.py): 12 menu entries + was_official_wording provenance + part-level citation index + post-repair part codes + 101-point spine dump.
+- 12/12 OVERRIDES, 0 confirmed demotes, evidence-recorded: FIN-STAT Liquidity + Evaluating Liquidity -> S4.172; INTRO-BK Security Issues -> S1.123; Straight Line + Reducing Balance Depreciation -> S2.138; Provision for Depreciation -> S2.139 (substantive anchor, disclosed); Profit-or-Loss-on-Sale + Disposal Account -> S2.140; Debits & Credits + Double Entry System -> S2.134; Internal + External Stakeholders -> S1.120.
+- Apply fail-closed (scripts/laneA_adj_apply.py): menu=12/verdicts=12/targets-in-spine/zero-section-drift green; mappings FIN-STAT 29->31, INTRO-BK 95->105; adjudication blocks added, historical demote repair blocks preserved (additive, no rewrite); resolutions restored with supersedes_demote.
+- Sidecars rebuilt merge-mode (FIN-STAT 90/91, INTRO-BK 354/356 coded); orphan re-scan 0/0 both lanes.
+- Two fetch-first catches of origin drift mid-lane (de4d8da8 -> e4533d7d PR #21; zero overlap; rebase 3c418098 -> 67a173b9); FF push e4533d7d..67a173b9 = TRANSIT 27; three-way verified (local log == ls-remote == GitHub API, 7 files).
+
+Stage Summary:
+- Demote menu CLOSED @ origin/main 67a173b9 (transit 27). 7 pre-existing pending concepts stay deliberately unmapped.
+- PAT rotation CRITICAL overdue (transit 27, same fingerprint) — rotation REQUIRED before any re-supply.
+- Open: CIE refresh lane, Edexcel bundle refresh, NEXT #2 pin bump (75755855f9 -> 67a173b9 picks up repair + adjudication).
+
+---
+Task ID: PINSPLIT-1 (durable ledger — Edexcel pin split 47/1/1 converge-or-keep ruling of record; carries the sda-bio 2.54 verdict hand-off)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, dispatch trace 1a15ff03016efc55 "Proceed with: Edexcel pin split 47/1/1 converge-or-keep, sda-bio 2.54 verdict")
+Task: Rule on the live Edexcel per-course pin split (converge-or-keep) and land the ruling of record; execute the sda-bio 2.54 verdict resources-side.
+
+Work Log:
+- Live pin census re-enumerated manifest-by-manifest on v2 origin/main (95 entries = courses.json + 94 lanes): Edexcel fleet = 47 @ aa0b4de1 (resources PR #22 tranche-1 cut, 2026-10-21) + 1 @ 6ee5ada3 (igcse-maths-b-16, T-BOOKS-README-1 cut) + 1 @ 89260832 (igcse-chemistry-19, v0.9.0 2C spec-label cut) = the operator's 47/1/1 exactly; CIE fleet separate: 44 @ 0fe5f772 + 1 skeleton placeholder (cie-a-level-maths-20-pure-2, A2 skeleton — teaching content pending the CIE resource wave).
+- Ancestry of record: 6ee5ada3 < aa0b4de1 < 89260832 < tip — single chain, no forks, no divergence.
+- maths-b-16 straggler check: git diff 6ee5ada3..aa0b4de1 over all maths-b input trees = EMPTY (zero content delta — stale-ref only, cosmetic).
+- chemistry-19 ahead-pin check: aa0b4de1..89260832 adds the 2C spec-label wave (Official-ExamQuestion/spec-labels/2024-11/2025-06/2025-11/2026-06-2C.json; 200 files fleet-wide) consumed into the bundle by d6dbebd2 (PR #268 v0.9.0 re-export) — converging DOWN would delete student-facing spec labels (data loss, forbidden).
+- RULING of record: KEEP the 47/1/1 split. It is wave-honest per-course pinning (each lane sits at the newest cut containing its content wave), not drift; the homepage per-course pin census (6be63d26, T-DISPLAY-PINCENSUS-1) already displays it honestly. CONVERGENCE happens at the NEXT #2 fleet bump: all Edexcel lanes re-consume at the bump-time tip under that wave's gates, with the FLOOR LAW that the bump target must be >= 89260832 so chemistry-19's 2C labels survive; the maths-b straggler auto-converges there; NO solo re-key churn before that gate.
+- sda-bio 2.54 verdict (dispatch item 2): adjudicated CONFIRM-KEEP and landed RESOURCES-side — 2.54 (xylem) stands note-plane-unmapped of record (T-SPEC-3 twin law: transport definitions verbatim-match 2.53 phloem, twin_codes 2.54 records the confusable pair, re-anchoring would be a guess); the one part-plane attachment stands (qstnprt_qnj7x6Z5Hx8SM8bD, operator-verdict-part, T-SPEC-2c/2e prior verdict); DISCLOSED: that attachment's official_id lacks the Biology- scope prefix — id-hygiene drift disclosed not silently fixed; thin-point census honest (0 note mappings / 1 part). Landed @ resources origin/main f2fef72c = TRANSIT 28, three-way verified (local fetch-ref == ls-remote == GitHub API), one additive flags[] entry (2->3), mappings 166 held, G1-G5 fail-closed green.
+
+Stage Summary:
+- PINSPLIT ruling of record: KEEP 47/1/1; converge-at-NEXT-#2 with the >=89260832 floor law; footer census already honest.
+- T-SDA-BIO-254-1 CLOSED @ f2fef72c (transit 28).
+- PAT rotation STILL CRITICAL overdue (transit 28, same fingerprint) — rotation REQUIRED before any re-supply.
