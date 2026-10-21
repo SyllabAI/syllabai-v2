@@ -1,0 +1,74 @@
+{
+  "task": "T-TEACH-005",
+  "band": "HUB-TEACH",
+  "title": "cross-surface teacher authorization audit — every teacher-facing surface enumerated and gate-checked against ADR-027 §8/D1 (enrollment scope), §17 (per-object ownership) and the enabled-member law; read-only, zero code changes",
+  "operator_order_trace": "T-TEACH-004's next-field ('the operator's review of the remaining queue') resolved by the operator's order 'file T-TEACH-005 and start the audit' (session web-590847c1-cf63-4098-b0c8-a90085355429, trace 1a15fe3032dfe525); audit target named by the T-TEACH-003 receipt residual: 'teacher surfaces OUTSIDE the marking module (teacher-kg insights, per-student drill-downs, class analytics)'",
+  "date": "2026-10-22",
+  "agent": "zai-web lane (main agent, session web-590847c1)",
+  "what_this_is": [
+    "a READ-ONLY audit: no route, service, contract, schema, hub or test file was touched — the only changed paths live under .syllabai/** (this receipt + the worklog), filed direct-main under the disclosure law",
+    "method: enumerate every mount the api root composition registers under /api/v1/teacher/** (index.ts), read each router's authz shell and each backing service's per-object gates line-against-line against ADR-027 (D1 enrollment scope, D4 live computed visibility) and the §17 ownership law; then the hub side (teacher layout gate + every hub /api route's data sensitivity); then the unmounted teacher-band services (the T-MIG-053 fence); findings recorded with file:line citations"
+  ],
+  "the_three_named_targets": {
+    "teacher_kg_insights": "CLEAN — both class-KG routers (routes/teacher-kg.ts) open with the M5 router shell requireRole(c, 'TEACHER','ADMIN') AND re-gate per handler; every class-bearing call passes gate.userId into the service; classGraph (:442) and classNodeStudents (:620) call graphOwnedClass (services/knowledge/graphs.ts :226-239 — 404 'class not found' / 403 'this class belongs to another teacher' on classes.teacher_id mismatch); coverageList/History/Mark call covOwnedClass (services/knowledge/index.ts :228-239) — the same gate trio",
+    "per_student_drill_downs": "CLEAN — classLearnerKnowledgeGraph (services/knowledge/graphs.ts :1012-1038) runs the FULL triple gate in the frozen order: (1) graphOwnedClass (teacher owns the class), (2) membership short-circuit BEFORE any user lookup (select 1 from class_members where class_id and student_id — absent → 404 'learner is not a member of this class'), (3) enabled check on the account row with the SAME 404 message (no enumeration oracle distinguishing absent-member from disabled-account); the heatmap and weak-node legs count ONLY the enabled roster (enabledRoster :252-273 over memberStudentIds :242-248 — membership rows are the single source of class scope, so independent learners never move an aggregate; ADR-027 D4's live-computed law holds: no snapshots, the join is read per request)",
+    "class_analytics": "DORMANT-BY-FENCE, FINDING F-2 — the T-MIG-053 tranche-2 class-intelligence read model (services/teacher/analytics.ts, ClassAnalyticsService port) is contracts+services+fakeSql pins with NO routes and NO mounts (repo-wide import scan: zero importers of services/teacher/analytics or the services/teacher barrel; no class/overview|drill-down path registered in index.ts). Its own header discloses the posture: 'This surface predates class scoping: unlike the F-072 heatmap trio there is NO class-membership filter and NO classId parameter — only rootId'. Nothing is exposed today; the guard-law of record is filed below"
+  },
+  "full_inventory_of_record": [
+    "POST/GET /api/v1/teacher/classes(+/:id,/status,/features,/members,/announcements) — routes/classroom.ts createTeacherClassesRouter: TEACHER/ADMIN r.use shell + getAuth userId into every service call; ownedClass (services/classroom/index.ts :266-273) gates the 8 lifecycle endpoints per-object — CLEAN",
+    "GET /api/v1/teacher/learners — createTeacherRosterRouter: TEACHER/ADMIN shell; rosterLearners reads the enabled STUDENT cohort, identity projection ONLY (displayName/email, no learning data) — the V49 frozen ruling surface, pinned in services/classroom/index.ts header; recorded BY-RULING, not a finding",
+    "GET/POST /api/v1/teacher/marking/** — routes/teachermarking.ts: T-TEACH-003's ADR-027 D1 enrollment scope verified intact (queue scoped to the JWT identity, per-item 404-likes-nonexistent, batch SKIPPED_OUT_OF_SCOPE) — the baseline the audit measured the rest against — CLEAN",
+    "GET/PUT /api/v1/teacher/classes/:id/coverage(/…/history) — routes/teacher-kg.ts: shell + covOwnedClass per-object; the PUT is the band's only write and is owner-gated — CLEAN",
+    "GET /api/v1/teacher/classes/:id/knowledge-graph(/nodes/:nodeId/students | /learners/:learnerId/knowledge-graph) — shell + graphOwnedClass + enabled-member law — CLEAN (see the three named targets)",
+    "POST /api/v1/teacher/concept-graph/activate — shell + per-teacher seed activation (gate.userId passed) — CLEAN",
+    "GET /api/v1/teacher/concept-graph/edges?rootId= — shell (TEACHER/ADMIN) but the service call teacherConceptEdges(deps, raw) carries NO userId (routes/teacher-kg.ts :363) — it is a GLOBAL curriculum-content read (semantic edges within a subtree, frozen TeacherConceptGraphController :87-105 parity; curriculum tree is shared content, not teacher-owned, no learner data) — NOTE F-3a, no D1 violation (no learner answer content on the surface)",
+    "POST/GET /api/v1/teacher/assignments(/:id,/status) — routes/assignments.ts: TEACHER/ADMIN r.use shell; CREATE is ownership-gated (the V51 class gate in services/teacher-assignments/index.ts :189-193 — exists / THIS teacher's / live / same course, 403 'this class belongs to another teacher'); BUT listAssignments (:267+), assignmentRoster (:350+) and setAssignmentStatus (:329+) take NO teacherId and filter NO teacher_id — FINDING F-1, the audit's material finding",
+    "GET/POST /api/v1/teacher/tests/** — routes/testbuilder.ts: per-handler requireRole(TEACHER, ADMIN); zero learner/student/answer/submission references in the file (deterministic paper assembly over the question bank) — CLEAN",
+    "/api/v1/teacher/content (content.teacherRoute + ingestion.contentRoutingRoute + glmOcrRoute) and /api/v1/teacher/curriculum(+ /exam-series) — all four routers carry the requireRole TEACHER/ADMIN shell (routes/content/index.ts :167, routes/curriculum/index.ts :149, routes/ingestion.ts :158/:310/:413); they expose corpus/content operations only, no learner rows — CLEAN",
+    "ADMIN bands /api/v1/admin/question-bank (sme.ts) and /api/v1/admin/llm (llmadmin.ts) — requireRole('ADMIN') only, mounted outside /api/v1/teacher/** — out of teacher scope, noted for completeness",
+    "hub teacher layout (apps/hub/src/app/teacher/layout.tsx) — client-side RequireAuth(role='teacher') with the honest header: 'Core enforces TEACHER/ADMIN server-side on each call; this gate keeps the signed-out / student experience honest' — the API is the authorization boundary and the API sweep above is the authoritative audit — POSTURE OK",
+    "hub /api/teacher/* (assemble, course-data, validation-queue, class-geography, question-bank) — NO auth at the hub layer, but every payload is corpus content, deterministic SAMPLE cohort data (lib/teacher/class-sim.ts: 'cohort is SIMULATED, deterministically seeded', SAMPLE disclosure), or per-subtopic corpus coverage counts ('NOT learner mastery', class-geography header) — no learner PII, no D1 surface — CLEAN with NOTE F-3c",
+    "hub /api/kg-learner-bridge and /api/course-stats — content-id→spec-point code joins ('Codes only — no question text, note bodies or answers cross this boundary', seeded SIM learner states) and corpus resource counts — no real learner data — CLEAN with NOTE F-3c",
+    "hub teacher pages (classes, classes/[id], class-graph, marking, assignments, test-builder, validation, geography) — all data flows through the core API with the teacher's own JWT, so every page inherits the API-side gates above — POSTURE OK"
+  ],
+  "findings": [
+    {
+      "id": "F-1",
+      "severity": "HIGH (cross-scope read + cross-scope WRITE; frozen-parity inheritance, not a v2 regression)",
+      "surface": "/api/v1/teacher/assignments — list, roster, setStatus",
+      "evidence": "services/teacher-assignments/index.ts: listAssignments (:267) selects ALL assignments 'order by created_at desc limit 50' with no teacher_id predicate and calls with no teacher argument; assignmentRoster (:350) and setAssignmentStatus (:329) fetch 'from assignments where id = …' with no ownership check — setAssignmentStatus then UPDATEs the row. routes/assignments.ts hands getAuth(c)! only for create; the other three handlers pass no identity into the module.",
+      "impact": "ANY teacher-role user can (a) LIST every teacher's assignments with their per-assignment aggregates, (b) READ any assignment's roster — per-learner display names, completion/late/missing states, scores, occurred_at — including learners outside their authorization scope, and for class_id=null assignments the cohort is the ENTIRE enabled STUDENT set (independent learners INCLUDED, the one place a D1 'independent learner never appears on any teacher surface' violation exists on a mounted v2 surface), and (c) CLOSE or REOPEN any other teacher's assignment (a cross-scope write, strictly worse than the read gap).",
+      "provenance": "line-against-line port of the frozen core TeacherAssignmentController (T-MIG-117, golden-captures/t-mig-117; frozen law @ 6cad6ef) — the frozen core carries the same shape; ADR-027 D1 binds 'the T-029 marking surface (TeacherMarkingQueueService/TeacherMarkingController) and the future classroom-lane marking surface' BY NAME, so this surface was never D1-bound — exactly the 'teacher surfaces OUTSIDE the marking module keep their own authorization models' residual the T-TEACH-003 receipt filed and this audit was ordered to examine",
+      "disposition_of_record": "FILES AS THE QUEUED DECISION FOR THE OPERATOR (this audit does not change code): a v2-native ownership amendment in the T-TEACH-003 mold (list filtered to teacher_id = JWT identity or teacher_id IS NULL cohort-wide per the frozen semantics; roster + setStatus gated on the assignment's teacher_id or, for class-linked assignments, the class's teacher_id with the verbatim 403 'this class belongs to another teacher') is a deliberate divergence from frozen wire behavior and needs an operator ruling (the ADR-CLASS-0001/T-TEACH-002 amendment pattern) before any PR lands. Until ruled, the honest interim fact is: the hub assignments page exposes the gap to any teacher-role account, and the Cycle-1 pilot runs pilot-staff teachers only (ADR-027 interim consequence 2 was lifted by T-TEACH-003's landing, so this is now a live multi-teacher posture question, not a hypothetical)."
+    },
+    {
+      "id": "F-2",
+      "severity": "GUARD-RAIL (dormant code, no live exposure)",
+      "surface": "services/teacher/analytics.ts (T-MIG-053 tranche-2 ClassAnalyticsService port)",
+      "evidence": "zero importers repo-wide (services/teacher barrel itself has none); no /api/v1/teacher/class/* path registered in the api root; the fence doctrine is the file's own header ('contracts+services+fakeSql pins, NO routes/mounts, doctrine')",
+      "impact": "none today. IF ever mounted as-ported, /overview and /topics/{nodeId}/drill-down would aggregate the FULL enabled STUDENT cohort with no class-membership filter — a D1-scale exposure on day one of any such mount.",
+      "disposition_of_record": "GUARD-LAW: any future mount of the class-analytics band MUST ship class-scoped reads (teacher → authorized classes → enrolled learners) in the SAME milestone as the mount — the ADR-027 interim-rule consequence 1 pattern ('a global read behind a live authorization model is a defect, not a cleanup item') extended by name to this band. The receipt chain now carries this so no future lane re-derives it."
+    },
+    {
+      "id": "F-3",
+      "severity": "NOTES (recorded observations, no D1 violation)",
+      "items": [
+        "F-3a: GET /api/v1/teacher/concept-graph/edges is a global curriculum-content read (no per-object scope, no userId into the service) — frozen parity (:87-105), no learner data on the surface; any future widening that attaches learner states to edges must pick up the ownership gate",
+        "F-3b: GET /api/v1/teacher/learners returns the whole enabled STUDENT identity projection (name+email) to any teacher — the V49 ruling, identity-only by design (enrollment lookup depends on it); recorded so it is never mistaken for a leak",
+        "F-3c: the hub's /api/teacher/* and learner-bridge routes are unauthenticated BY DATA-CLASS: they serve committed public corpus, deterministic SAMPLE cohorts (disclosed) and resource counts — the 'teacher' in the path is a surface label, not an authorization claim; if any of these ever starts joining REAL learner rows, auth lands first (the F-2 guard-law pattern)",
+        "F-3d: adjacent, out of D1 scope: the hub ai/* proxy routes (chat/cla/mark) were not gate-audited here — they are learner-self surfaces, not teacher surfaces; flagged for any future abuse/cost audit"
+      ]
+    }
+  ],
+  "verification": {
+    "method": "read-only: every claim above carries its file:line; the api root composition (apps/api/src/index.ts mounts :206-:677) was enumerated in full so no teacher mount is unlisted; service gates were read in the source, not inferred from tests",
+    "code_untouched": "git diff at filing time shows changes ONLY under .syllabai/** (this receipt + worklog entry) — no app/, packages/, or test file modified; the audit therefore needs no test/typecheck/build cycle (nothing compiled changed)"
+  },
+  "residuals": [
+    "F-1 awaits the operator's ruling (v2-native ownership amendment vs keep frozen parity for cutover fidelity) — on a ruling, implementation is a small, well-bounded band (one service file + contracts tests), T-TEACH-003-shaped",
+    "F-2's guard-law is now of record in this receipt; the class-analytics mount band does not exist and is not queued",
+    "the T-TEACH-003 neon-replay stage-5b nightly projection proof residual is untouched by this audit (no api/package/test file changed) and stays with the standing 02:30Z cron",
+    "F-3d (ai proxy posture) is flagged for a future non-D1 audit, not queued"
+  ],
+  "next": "operator ruling on F-1; if ruled as an amendment, it files as T-TEACH-006 (assignments ownership scope) — otherwise the remaining-queue review continues with the LOCAL-container past-papers card follow-up and the stage-5b proof as the known open items"
+}
