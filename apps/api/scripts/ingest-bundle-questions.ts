@@ -31,6 +31,12 @@ import {
 } from "../src/services/sme/bundle-questions";
 import { SmeQuestionIngestService } from "../src/services/sme/index";
 import type { SubmitClock } from "../src/services/selfmark";
+// lane C ruling A (trace 1a15c1a9a7a28d21): the frozen service's transaction
+// seam requires .transaction (the identity/users.ts register-repository
+// precedent) while a postgres.js tx carries none — the of-record phase-4
+// flatten seam (cie-phase4-apply.ts) flattens .transaction onto the slug tx
+// so every statement JOINS the outer transaction (no nested BEGIN).
+import { flattenTxForFrozenServices } from "./cie-phase4-apply";
 
 const slug = process.argv[2];
 const mode = process.argv.includes("--apply")
@@ -97,7 +103,10 @@ if (mode === "dry-run") {
   const sentinel = new Error("DRY-RUN-ROLLBACK-SENTINEL (expected — the transaction is discarded)");
   try {
     await sql.begin(async (tx) => {
-      const service = new SmeQuestionIngestService(tx as never, clock);
+      const service = new SmeQuestionIngestService(
+        flattenTxForFrozenServices(tx as never) as never,
+        clock,
+      );
       const summary = await service.ingest(zip);
       console.log("[dry-run] ingest summary (rolled back):", JSON.stringify(summary));
       throw sentinel;
@@ -121,7 +130,10 @@ if (mode === "dry-run") {
   const sql = postgres(uri, { ssl: "require", max: 1, prepare: false });
   try {
     const summary = await sql.begin(async (tx) => {
-      const service = new SmeQuestionIngestService(tx as never, clock);
+      const service = new SmeQuestionIngestService(
+        flattenTxForFrozenServices(tx as never) as never,
+        clock,
+      );
       return service.ingest(zip);
     });
     console.log("[apply] ingest summary:", JSON.stringify(summary));
