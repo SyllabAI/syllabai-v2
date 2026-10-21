@@ -11899,3 +11899,20 @@ Work Log:
 Stage Summary:
 - CIE-REFRESH-1 LANDED of record: the CIE fleet rides the refresh-time tip c5f20c52 at every plane (importSource.ref + officialSpine.resourcesSha + content-maps), the Edexcel 10-21 / CIE 10-20 vintage gap is CLOSED, and the multi-layer vintage (0fe5f772/bb154527/aa0b4de1) is dissolved into one uniform pin with honest provenance notes.
 - Open queue: CIE teaching-content wave for the pure-2 skeleton (separate dispatch class); maths-b Stage-2 regen (operator-keyed); 134c PARKED; PAT rotation STILL CRITICAL overdue (same fingerprint through this lane's v2 push); optional parse_report reconcile lane (low priority).
+
+## DEPLOY api-of-record redeploy from tip run-010 — STAGED AND PRE-CLEARED for the operator order 'redeploy the api carrier' (trace 1a160d7b86d07e91)
+
+Work Log:
+- Fetch-first; main tip c390ce16 (fb48a5a4 T-BOOK-025 squash + .syllabai-only receipt). The operator order is the T-BOOK-025 deploy residual: the alias holder at syllabai-v2.vercel.app serves a build PREDATING T-BOOK-007 (diagnosis of record: chapters 500, glossary route ABSENT).
+- 093 recipe verbatim, workspace-retargeted constants (method untouched): shim v2 worktree-only, 6 concept YAMLs inlined byte-verbatim, explicit Node adapter entry; restored post-build, git-verified CLEAN tree. Bundle 346 modules / 3,296,029 bytes CJS (Oct-08 class 318/~3,081,7xx — the drift IS the books plane + waves since: a REAL code-delta deploy).
+- 6/6 asset SHAs == source pins EXACT; boot-time requireHash proven by the localgate boot itself.
+- LOCALGATE 9/9 on the production-shaped wire (staged bundle + real Neon wire): health UP; login-malformed 400 validation_failed parity; register 201 + JWT minted; learners/me/state 200; tutor CRUD net-zero (L06); cla/ask unauth 401; BOOKS shelf 1/1 + chapters 29/29 WITH nullScores=11 SERVED (the T-BOOK-025 fix IN-BUNDLE); 095 discriminator EXACT run-002 message; glossary 200 112/112 for subject=4ch1.
+- Stage of record: api/index.js + vercel.json (rewrites /api/v1/(.*) + /actuator/health) + .vercel/project.json prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ/team_ULL54qkhzKBmnKrpO6BD4mYX at the workspace stage dir. vercel CLI 62.7.0 installed.
+- DEPLOY LEG TOKEN-GATED (run-001-mainlane class): this session holds GITHUB_PAT + NEON_PAT only; no VERCEL_PAT in env/.secrets/CI (t097 workflow documents the same gate). ONE COMMAND fires it: vercel deploy --prod --yes --token <VERCEL_PAT> from the stage dir.
+- Post-stage fleet note: origin/main advanced c390ce16 -> 6404e6fa mid-flight (PR #284 CIE refresh + wave-13 hub syncs); git diff c390ce16..6404e6fa over apps/api+packages = EMPTY -> the staged bundle remains BUNDLE-SOURCE-EQUIVALENT to the new tip (run-001 content-equivalence doctrine); worklog union-resolved (their side verbatim, this entry last; a truncation mishap during the resolve was caught and fully restored from 6404e6fa + this re-append, disclosed).
+- Write ledger: 3 synthetic probe learners (lg-run010-*@example.invalid, register-only census class; 2 from harness-fix iterations, disclosed) + tutor net-zero; zero DDL/env writes/deployments/secrets on disk.
+
+Stage Summary:
+- Receipt of record: .syllabai/receipts/DEPLOY/api-of-record-redeploy-from-tip-run-010-mainlane.json — verdict PRE-CLEARED AND STAGED.
+- Probe-path knowledge bank: glossary route = GET /api/v1/content/books/glossary?subject=4ch1 (LOWERCASE qual code, registered BEFORE /:documentId); a wrong /:docId/glossary probe falls through to the global 401 gate (spring-shape) — not a route absence.
+- HUB RESIDUAL DISCLOSED: the hub mirror (apps/hub/src/lib/books.ts) needs its own redeploy to parse the carrier's now-legal null scores; until then the hub may still render the no-chapters fallback even with the carrier GREEN.
