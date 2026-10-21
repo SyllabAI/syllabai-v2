@@ -18,7 +18,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getDataProvider } from "@/lib/data";
-import { listCourses, pilotCourseSlug } from "@/lib/courses";
+import { bundlePinCensus, listCourses, pilotCourseSlug, shortPinRef } from "@/lib/courses";
 import { publicConfig } from "@/lib/config";
 import { ProvenanceBadge } from "@/components/provenance";
 
@@ -29,22 +29,32 @@ export default async function HubPage() {
   const courses = await listCourses();
   const courseCount = courses.length;
   const courseLevels = [...new Set(courses.map((c) => c.level))].sort().join(" + ");
-  const [manifest, graph, notes, topics] = await Promise.all([
+  const [manifest, graph, notes, topics, pins] = await Promise.all([
     provider.manifest(),
     provider.conceptGraph(),
     provider.revisionNotes(),
     provider.examQuestionTopics(),
+    bundlePinCensus(),
   ]);
   const questionCount = topics.reduce((a, t) => a + t.questions.length, 0);
 
   // importSource.ref is "branch@<40-hex>" — the 40-char hash cannot wrap and
   // blew out the mobile viewport by +106px (UX audit P1-2). Display a short
   // hash; the full ref stays in the manifest.
-  const at = manifest.importSource.ref.lastIndexOf("@");
-  const importRef =
-    at > 0
-      ? `${manifest.importSource.ref.slice(0, at)}@${manifest.importSource.ref.slice(at + 1, at + 11)}`
-      : manifest.importSource.ref;
+  const importRef = shortPinRef(manifest.importSource.ref);
+
+  // Per-course pin census (T-DISPLAY-PINCENSUS-1): the bundle plane carries
+  // per-course pins, so the footer must never render one course's ref as a
+  // site-wide claim. The census is computed from the committed manifests —
+  // it can report a stale or split pin distribution, but never invent one.
+  const officialPinCount = pins.groups.filter((g) => g.isPin).length;
+  const pinLine = pins.groups
+    .map((g) =>
+      g.isPin
+        ? `${g.boards.join(" + ")} ${shortPinRef(g.ref)} ×${g.courses}`
+        : `local ${g.repos.join(" + ")} ×${g.courses}`,
+    )
+    .join(" · ");
 
   const surfaces = [
     {
@@ -240,12 +250,19 @@ export default async function HubPage() {
               What is real on this surface
             </CardTitle>
             <CardDescription className="break-all">
-              Bundle: {manifest.importSource.repo}@{importRef} ·{" "}
+              Pilot bundle: {manifest.importSource.repo}@{importRef} ·{" "}
               {manifest.curriculum.board} {manifest.curriculum.level} {manifest.curriculum.subject}{" "}
               ({manifest.curriculum.code}, {manifest.curriculum.syllabusVersion})
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2.5 text-sm">
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Exam data is pinned per course (no site-wide pin) — {pins.bundled} served courses
+              across {officialPinCount} official pin{officialPinCount === 1 ? "" : "s"}: {pinLine}
+              {pins.unpinned > 0
+                ? ` · ${pins.unpinned} bundled course${pins.unpinned === 1 ? "" : "s"} with no pin recorded`
+                : ""}
+            </p>
             <div className="flex flex-wrap items-center gap-2">
               <ProvenanceBadge tier="RULE_DERIVED" />
               <span className="text-muted-foreground">

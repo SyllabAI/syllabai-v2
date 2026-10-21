@@ -11350,3 +11350,72 @@ Stage Summary:
 - LANE SELF-MERGED: PR #268 → d6dbebd (official-paper bundle sync ADR-037 v0.9.0) at 19:02:00Z mid-sweep, single-parent ff push; R0 PUT was a benign idempotent no-op on the already-merged PR (no double-merge, no force); R0 had locally pre-verified merge-tree clean
 - Post-merge main CI: 2d16b98 hub ✓ verify ✓; d6dbebd hub ✓ verify ✓
 - Bookkeeping only: .syllabai/** — no code, no force
+
+---
+Task ID: T-SPEC-STAGE2-1 (durable ledger — stage-2 refresh of the non-accounting attachment maps, pushed transit 28)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, dispatch trace 1a15f76c1e5d3799)
+Task: Extend the Stage-1 accounting maps-vs-spine treatment to the non-accounting attachment maps; validate against spines of record, repair deterministically (no-guess law), refresh downstream chain, FF push, three-way verify.
+
+Work Log:
+- Corpus: 47 non-accounting spec_point_map.json (13 IAL + 34 IGCSE, 22 quals) — dispatched "45" matches no census in the tree (49 maps / 93 sidecars / 37 flashcard maps / 39 scraped-status maps all fail); ran the full 47 as strict superset; count basis requested.
+- Battery: X2/X3/X4 clean 47/47 (Lane A phantom class does NOT recur); pools 42/47 builder-law MATCH; X5: chemistry-19 1754 orphan codes (operator-verdict-part tier; paper-qualified 4CH1-x.y registry namespace vs unprefixed spine ids), sda-bio 1.
+- Repairs: (1) chemistry-modular unit-1/unit-2 scoped re-join via map_spec_points --courses (vintage unscoped 182-pool contradicted unit_scope; 15/27 cross-unit) -> pools 100/81, mappings 59/39, chain refreshed (flashcard maps x2 + sidecars); (2) pool restatements x3 with additive provenance (econ 94->108, geog 155->240, sda-chem 131->412, mappings untouched); (3) build_learner_spec_links merge_part_codes T-SPEC-STAGE2-1 deterministic paper-prefix resolution -> chem-19 sidecar 0 orphans, 3663->1909 codes, ZERO link loss (1754/1754 targets retained via map codes; 0 coded->uncoded regressions). Two incidents caught mid-lane: empty-bundle rebuild on sparse-absent sources (restored + surgical materialization + re-run); lost call-site edit from a MultiEdit misfire (spotted via persisting orphans, fixed, re-run).
+- Operator-gated disclosure (not mutated): sda-bio IGCSE_SCIENCE_DOUBLE_AWARD:2.54 operator-verdict part code has no spine target (no 2.5x family) — verdict requested.
+- Post battery: 47/47 pools MATCH; accounting corpus byte-identical.
+- Git: mid-lane drift 0f2ddc61 (books/4bi1 only, zero overlap) rebased clean; FF push 0f2ddc61..1fdf2f97 = TRANSIT 27 -> 28; three-way verified (local == ls-remote 1fdf2f97a5e1 == GitHub API).
+
+Stage Summary:
+- T-SPEC-STAGE2-1 CLOSED @ origin/main 1fdf2f97 (transit 28): non-accounting map corpus re-attested to builder law; chemistry-19 learner sidecar healed; sda-bio 2.54 verdict operator-gated.
+- NEXT #2 pin bump target now 1fdf2f97 (carries repair + adjudication + stage-2 refresh); v2 still serving 75755855f9 (2026-09-17 cut).
+- PAT rotation CRITICAL overdue (transit 28, same fingerprint) — REQUIRED before any re-supply.
+- Open queue: CIE update channel, Edexcel bundle refresh.
+
+
+---
+Task ID: T-SPEC-EDEX-REFRESH-1 (durable ledger — Edexcel official-spec bundle drift scan, ZERO DRIFT, no push)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, current trace 1a15fbd6195b2071)
+Task: Re-verify the 21 Edexcel-side official-spec PDFs against Pearson + SME for content/URL/edition drift; deterministic repair only; zero-drift close.
+
+Work Log:
+- Driver scripts/edex_refresh_scan.py: Pearson fresh-fetch sha1+bytes re-verify x21 + SME landing courseExamSpecificationPdfLink re-discovery x39 courses.
+- Sparse surgery: 38 course manifests materialized (no-cone add; ial-biology-18 needed a retry).
+- Result: PEARSON_UNCHANGED 21/21; SME_LINK_MATCHES 20/21; igcse-business SME card -> Pearson 404 HTML (sha1 d76897c6ab) = upstream defect; manifest anchor live + byte-identical (sha1 1da38c0f2b, Issue 2). No mutation, no push, transit stays 30.
+
+Stage Summary:
+- Edexcel bundle byte-attested current as of 2026-10-22; zero drift to land. Remaining queue: NEXT #2 pin bump (75755855f9 -> fc6bf29c). Operator-gated: sda-bio 2.54, PAT rotation (CRITICAL overdue).
+
+
+---
+Task ID: T-CONSUME-VERIFY-1 (durable ledger — NEXT #2 independent verification-close; zero writes)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, current trace 1a15fbd6195b2071)
+Task: Independently verify the queued NEXT #2 pin upgrade / Edexcel refresh / CIE channel state of record; close the operator queue or repair what is genuinely open.
+
+Work Log:
+- fetch-first: FF'd this worktree d3d2fe6e-lineage -> origin/main 4c4e1bf7 (93 commits); durable-ledger dirt preserved via stash, union-appended (T-SPEC-STAGE2-1 + T-SPEC-EDEX-REFRESH-1 were absent; ADJ-1 already recorded).
+- Verified of record: T-CONSUME-EDX-2 run-001 (c2388bca) consumed the queued Edexcel refresh + pin upgrade at resources aa0b4de1 (repair + adjudication included by ancestry; anchors verified in served bundles); CIE channel consumed at fc6bf29c (7636aab1) under the two-pin law (ccbf2555).
+- Independent measurement: resources aa0b4de1 ancestor-of fc6bf29c; served+imported delta aa0b4de1..fc6bf29c over the 49 served courses = ZERO (7 changed files, all CIE-side non-served); 21/21 Edexcel spec PDFs byte-identical at Pearson (2026-10-22 fresh fetch, scripts/edex_refresh_report.json in the resources lane).
+- Live check: hub footer renders pilot pin cef8d5e25b (page.tsx:243 -> igcse-chemistry-19 manifest) — standing display semantics; DISCLOSED operator-gated: footer reads as a site-level pin while the bundle plane lawfully carries per-course pins (fix options: census badge / drop / min-pin).
+- ZERO content-plane writes, ZERO code writes, ZERO DB writes, zero pushes. Resources transit count stays 30.
+
+Stage Summary:
+- Operator queue VERIFIED CLOSED end-to-end. Operator-gated open items: footer pin-display honesty class; SME igcse-business card 404 (upstream); sda-bio 2.54 orphan; PAT rotation CRITICAL overdue (transit 30, same fingerprint). This file now carries two union-appended entries (STAGE2/EDEX) + this one, ready for the next .syllabai-only bookkeeping commit.
+
+
+---
+Task ID: T-DISPLAY-PINCENSUS-1 (durable ledger — homepage footer pin honesty: pilot-scoped bundle line + computed per-course pin census)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, dispatch trace 1a15fd1b35cef86d "Proceed with ① the homepage footer shows the pilot's old pin cef8d5e2 as a site-wide badge — misleading under the per-course pin law; want a fix?")
+Task: Operator ruling on T-CONSUME-VERIFY-1's residual finding (1) — the homepage footer rendered the PILOT's manifest pin (cef8d5e25b) as a site-level badge, a provenance claim the per-course pin law does not make. Fix the display plane only.
+
+Work Log:
+- Fix options offered of record (census badge / drop the badge / render min-pin); operator authorized without picking; lane chose the CENSUS BADGE (most honest + informative — "drop" discards provenance, "min-pin" is still one hash masquerading as a site claim).
+- Ground truth first (session-side scripts/pin_census_check.py over content/*/manifest.json + courses.json): 94 registry rows / 94 bundled / 0 unpinned / 5 distinct sources — Edexcel main@aa0b4de1b7 x47 · Cambridge International main@0fe5f77210 x44 · Edexcel main@6ee5ada3f8 x1 (igcse-maths-b-16) · Edexcel main@8926083204 x1 (pilot — re-measured at the lane base, see mid-lane drift below) · 1 local skeleton (cie-a-level-maths-20-pure-2: importSource deliberately points at SyllabAI/syllabai-v2 with an A2-skeleton prose ref — course-catalog wave marker, NOT corruption; left untouched).
+- MID-LANE DRIFT (fetch-first catch): origin/main advanced 4c4e1bf7 -> ff2b845e while the lane worked (2d16b98e T-BOOK-020/021/022; d6dbebd2 official-paper bundle sync ADR-037 v0.9.0 re-exported from resources main@89260832 — moved the PILOT's own pin cef8d5e25b -> 8926083204; ff2b845e R0 receipt). Zero overlap with the lane's two code files; durable worklog union-merged (upstream R0 receipt kept in place, the four rider entries re-appended after it, stash-drop recovery via bb6e5d348 after a pathspec-show misfire); lane rebased onto ff2b845e.
+- apps/hub/src/lib/courses.ts: cache()-wrapped bundlePinCensus() — one small manifest.json read per bundled course (never full bundles), grouped by (repo, ref), boards via registry boardOf, PIN_REF_SHAPE gate separates official branch@40hex pins from local skeletons; shortPinRef() extracted from page.tsx (same 10-hex display form, single source).
+- apps/hub/src/app/page.tsx provenance panel: "Bundle:" -> "Pilot bundle:" (pilot-scoped, same honesty class as the P2-6 stats re-scope) + census line "Exam data is pinned per course (no site-wide pin) — 94 served courses across 4 official pins: ..." above the provenance tiers; non-pin groups render "local <repo> xN"; unpinned disclosed when > 0.
+- Verified: bunx tsc --noEmit clean; eslint clean (both files); full bun run build green (prebuild validators + corpus static + next build), homepage prerendered static; prerendered HTML census verified token-for-token against the python ground truth — REBUILT + re-verified at the lane base ff2b845e after the drift rebase (pilot renders main@8926083204; census x47/x44/x1/x1 + local x1).
+- Git: fetch-first precheck + lane branch + FF push + three-way verify per standing law. This commit carries the durable-ledger union rider: T-SPEC-STAGE2-1 + T-SPEC-EDEX-REFRESH-1 + T-CONSUME-VERIFY-1 entries were absent upstream (per T-CONSUME-VERIFY-1's closing note) and land here with the lane.
+
+Stage Summary:
+- Footer no longer claims a site-wide pin: pilot line pilot-scoped; census COMPUTED every build — it can report a stale or split distribution but can never drift into a false single-hash claim.
+- Operator-gated observations (NOT mutated in this display lane): (a) Edexcel pins split 47/1/1 (pilot re-pinned to 89260832 mid-lane by the interleaved ADR-037 v0.9.0 wave; maths-b-16 @ 6ee5ada3) — converge-or-keep is a consume-plane ruling; (b) CIE pins split 44 @ 0fe5f77210 + 1 skeleton — two-pin acceptance law (ccbf2555) governs; (c) SME igcse-business card 404 (upstream); (d) sda-bio 2.54 orphan verdict pending; (e) PAT rotation CRITICAL overdue (transit 30, same fingerprint).
+- Resources repo untouched — transit count STAYS 30. This push is v2 display-plane only.

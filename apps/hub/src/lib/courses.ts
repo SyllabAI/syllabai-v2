@@ -33,6 +33,7 @@ import type {
   SimLearnerState as SimLearnerStateT,
 } from "@/lib/contracts";
 import { loadContentJson, hasContentFile } from "@/lib/corpus";
+import { boardOf } from "./board";
 
 const CourseRegistry = z.object({
   schema: z.string(),
@@ -163,6 +164,99 @@ export async function pilotCourseSlug(): Promise<string | null> {
   const all = await listCourses();
   return all.find((c) => c.status === "pilot" && c.hasBundle)?.slug ?? null;
 }
+
+// ── per-course pin census (provenance honesty, T-DISPLAY-PINCENSUS-1) ────
+//
+// The bundle plane lawfully carries PER-COURSE pins (each content/<slug>/
+// manifest.json names its own importSource.ref — several distinct pins are
+// live at any time: consume waves pin their tranche, the pilot rides its
+// ADR-037 sync). The homepage footer used to render the PILOT's manifest
+// ref as if it were a site-wide pin — a provenance claim the per-course
+// pin law does not make. This census computes the real distribution from
+// the committed manifests so the footer can state it honestly (computed,
+// never hardcoded: it cannot drift into a single-hash global claim).
+
+/** "main@<40hex>" → "main@<10hex>" — display form; the full ref stays in the manifest. */
+export function shortPinRef(ref: string): string {
+  const at = ref.lastIndexOf("@");
+  return at > 0 ? `${ref.slice(0, at)}@${ref.slice(at + 1, at + 11)}` : ref;
+}
+
+/** Official pins are "branch@<40hex>"; anything else is a non-pin source
+ *  (e.g. the A2 course-catalog skeleton manifests, which point at this repo
+ *  by design — teaching content arrives with the sibling CIE wave). */
+const PIN_REF_SHAPE = /^[^@]+@[0-9a-f]{40}$/;
+
+export interface BundlePinGroup {
+  /** bundled courses riding this source */
+  courses: number;
+  /** distinct registry boards (boardOf), alphabetical */
+  boards: string[];
+  /** distinct importSource repos behind this group */
+  repos: string[];
+  /** full importSource.ref of the group ("main@<40hex>" for official pins) */
+  ref: string;
+  /** true when ref is a branch@40hex official pin; false = local skeleton */
+  isPin: boolean;
+}
+
+export interface BundlePinCensus {
+  /** registered courses with a committed bundle */
+  bundled: number;
+  /** bundled courses whose manifest carries no importSource.ref (disclosed, never hidden) */
+  unpinned: number;
+  /** official pin groups first (busiest, then ref order), local skeletons last */
+  groups: BundlePinGroup[];
+}
+
+/**
+ * Census over the committed bundle plane: one small manifest.json read per
+ * bundled course (never the full bundle), grouped by (repo, ref). Cached —
+ * manifests are immutable between deploys (ADR-021 discipline), and the
+ * corpus loader's own revalidate:300 fetch cache backs the runtime plane.
+ */
+export const bundlePinCensus = cache(async function bundlePinCensus(): Promise<BundlePinCensus> {
+  const all = await listCourses();
+  const bundled = all.filter((c) => c.hasBundle);
+  const reads = await Promise.all(
+    bundled.map(async (c) => ({
+      board: boardOf(c),
+      m: await loadContentJson<{ importSource?: { ref?: string; repo?: string } }>(
+        `${c.slug}/manifest.json`,
+      ),
+    })),
+  );
+
+  const byKey = new Map<string, BundlePinGroup>();
+  let unpinned = 0;
+  for (const { board, m } of reads) {
+    const ref = m?.importSource?.ref ?? "";
+    if (!ref) {
+      unpinned += 1;
+      continue;
+    }
+    const repo = m?.importSource?.repo ?? "?";
+    const key = `${repo}#${ref}`;
+    const g = byKey.get(key) ?? {
+      courses: 0,
+      boards: [],
+      repos: [],
+      ref,
+      isPin: PIN_REF_SHAPE.test(ref),
+    };
+    if (!g.boards.includes(board)) g.boards.push(board);
+    if (!g.repos.includes(repo)) g.repos.push(repo);
+    g.courses += 1;
+    byKey.set(key, g);
+  }
+
+  const groups = [...byKey.values()].map((g) => ({ ...g, boards: [...g.boards].sort() }));
+  groups.sort(
+    (a, b) =>
+      Number(b.isPin) - Number(a.isPin) || b.courses - a.courses || a.ref.localeCompare(b.ref),
+  );
+  return { bundled: bundled.length, unpinned, groups };
+});
 
 /**
  * Load a course bundle. Pilot course → validates every file with the demo
