@@ -1,0 +1,67 @@
+{
+  "receipt": "db-reingest-run-001-r0",
+  "band": "4MB1-QUALITY",
+  "task_id": "trace 1a1602acb2cf8959, operator order \"DB re-ingest\"",
+  "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "discharge": "the operator-gated DB re-ingest residual of parse-repair-run-001-r0 (and, before it, ocr-repair-run-001-r0 / badsum-ruling): the prod question planes carry the repaired emission",
+  "repo_state": {
+    "tip_of_record": "f07c76f5 (fetch-first ff from 652e2cb0; 10 sibling .syllabai/bookkeeping commits, ingest-critical paths verified untouched)",
+    "bundle": "apps/hub/content/igcse-maths-b-16 (census 65 sets / 1,270 q / 2,412 parts / 6,500 marks; manifest importSource main@6ee5ada3)",
+    "bundle_last_changed": "8bc1a35c (parse-repair-run-001-r0)"
+  },
+  "mechanism_of_record": "FROZEN SmeQuestionIngestService (ADR-026 evidence-safe replace) via buildSmePackage shim + bundleQuestionsZip + flattenTxForFrozenServices — the committed apps/api/scripts/ingest-bundle-questions.ts path, zero service/shim code changes",
+  "execution_shape": {
+    "deviation_disclosed": "whole-bundle single-tx dry-run exceeded the 10-min invocation ceiling FIRST-HAND (timed 600s kill, sentinel-class rollback, ZERO persistence — the ADR-037 run-006 env lesson reproduced)",
+    "fallback": "the of-record per-package slice posture (physics-era --set law: slices compose to the identical end-state; ADR-026 replace is slice-scoped by emitted refs)",
+    "slices": "17 deterministic set-slices (<=80 q each), 3 parallel workers on disjoint slices, resume-state per slice, DRY slice-0 first (sentinel rollback, timed 271.8s, deactivated 74 == pre 74)",
+    "waves": "5 waves; 17/17 slices COMMITTED; per-slice asserts post==emitted and deactivated==pre all green",
+    "sums": "inserted 1,250; deactivated 1,192 (sum closes EXACT); zero deletions (zero-deletion law held)"
+  },
+  "emission_vs_admission": {
+    "bundle_population": 1270,
+    "shim_excluded": 20,
+    "admitted": 1250,
+    "conservation": "excluded(20) + admitted(1,250) == 1,270 EXACT (the T-MIG-136 pin is a UNION pin and holds)",
+    "excluded_class": "unmapped ONLY (badSum 0, dupOrder 0): the 11 OCR rows (2019-06-4mb1-02r q0..q10) + 9 recovered rows (2019-01-01 q7/q8/q9/q20, 2019-01-01R q16/q17, 2019-06-01R q18/q27, 2022-06-02R q5) carry NO spec-point anchors yet — the OPEN anchor-round residual; the frozen anchor law honestly refuses anchorless questions (they cannot join the learner model / tutor KG)",
+    "wording_correction_of_record": "the parse-repair pin-re-key commit (652e2cb0) parenthetical 'excluded = 0' was IMPRECISE — empirical shim counters: unmapped 20; the CI conservation assertion is unaffected",
+    "unmapped_db_footprint": "ZERO rows of any kind in the DB (unmappedRowsInDb = 0) — they ride the bundle and land with the anchor round",
+    "admitted_new_58": "57 former-badSum repaired refs (never in the DB before — emitter exclusion verified by badsum-recon-run-001) + 1 new split row (2023-01-4mb1-02 q11, the parse-repair q12 split)"
+  },
+  "content_stability_proof": "recon-003 on the 1,192 overlap PRE-apply: 0 part drift / 0 marks drift / 0 time-law mismatch / 0 non-empty stems — the re-ingest was purely ADDITIVE for content (the parse-repair repairs ride entirely in the +78 new refs; the 4 cleanFieldFix-era refs were badSum-class and never in the DB)",
+  "coupling_lanes": {
+    "difficulty_reapply": "snapshot-driven (the PRE-apply DB plane was the AI-band carrier of record; recon-002 snapshot {3/AI:729, 2/AI:303, 4/AI:160} baseline sha f66f211c2502fd3b); one tx: in-tx eligibility re-prove 1,192/1,192 at 3/DEFAULT + 3 band-grouped guarded UPDATEs (WHERE active AND ref IN band AND difficulty=3 AND source=DEFAULT) -> {band2:303, band3:729, band4:160} counts EXACT",
+    "qv_mirror": "same tx: question_versions.difficulty = questions.difficulty on current versions of ACTIVE maths-b -> 463 rows (= 303+160, the only diffs); per-row equality 1,250/1,250 post",
+    "new_58_posture": "difficulty 3 / difficultySource DEFAULT (the past-paper 1.1 shape has no difficulty word — the shim's deterministic default law); NO AI classification of record exists for them (they postdate run-001's map) — classification round is an operator-gated LLM residual, same class as the anchor round"
+  },
+  "post_verify": {
+    "set_equality": "active DB refs == shim-admitted bundle refs EXACTLY (0 missing / 0 extra, 1,250)",
+    "content": "per-ref marks + part-marks sequences byte-exact on all 1,250 (0 mismatches)",
+    "sums": "marks 6,356 == 6,356 (= 6,500 minus the 144 unmapped marks); parts 2,352 == 2,352 (= 2,412 minus 60)",
+    "time_law": "0 mismatches (max(60, marks*72)); stems all \"\" (L11)",
+    "qv_constants": "source sme-eq-igcse-maths-b-16 / method sme-corpus-import-v1 (ADR-026) / VALIDATED — uniform",
+    "spec_points_active": 2253,
+    "planes": "questions total rows 2,452 = 1,250 active + 1,202 inactive (1,192 replaced generation + 10 untouched 2022-01-4mb1-02 twins; evidence-safe — attempts/BKT/FK chains survive on deactivated rows per the frozen law)",
+    "difficulty_hist_active": {"2": 303, "3": 787, "4": 160},
+    "difficulty_source_hist_active": {"AI_VALIDATED": 1192, "DEFAULT": 58},
+    "baseline_shas": {"pre": "f66f211c2502fd3b5e2beff8f4b22a2c99c35c2c4d98d71d992bbd131bcf3d65", "post": "efa2457f91afdefeb3274742cf0d728c06d77af020f65d53b1ba3831819f2719"}
+  },
+  "idempotency_deviation_disclosed": "NO replace re-run was performed: an ADR-026 re-apply would churn a third row generation for zero end-state information; convergence is proven by the set-equality + content-exactness + the deterministic package bytes + per-slice asserts",
+  "live_probe": {
+    "instrument": "r0_testbuilder_band_probe_v2.mjs (the qv-mirror lane's of-record probe, zero code changes)",
+    "result": "9/9 legs PASS: register/teacher-flip/login/health/unauthed-401/root-empty; band-order-cap10 with mirror-identity 0/275 row mismatches on 4MB1-S3-_ (wire qv hist {2:93,3:159,4:23} == questions hist, roster 275 of 1,250); deterministic-rerun identical; band-spread-cap50; target-marks-25; malformed-400",
+    "effect": "test-builder + SME package surface serve the re-ingested planes band-aware LIVE; maths-b serving census 1,192 -> 1,250"
+  },
+  "disclosed_prod_writes": [
+    "the 17-slice ADR-026 replace: 1,250 question inserts + 1,192 deactivations + child rows (qv/mark_schemes/mark_points/question_parts/question_spec_points) — THE order",
+    "the coupling tx: 1,192 questions.difficulty/difficulty_source band re-apply + 463 question_versions.difficulty mirror",
+    "probe account lifecycle: fresh r0-tb-band-probe-* account + single-row TEACHER flip + cleanup disable of all 6 cumulative probe accounts (the sanctioned-probe posture)"
+  ],
+  "credential_law": "NEON_KEY inline-only (never printed/written); PAT inline one-time for the push, remotes scrubbed; scrub-assert pass on all artifacts (napi_/ghp_/vcp_/postgresql://neon.tech zero hits)",
+  "residuals": [
+    "anchor round for the 20 unmapped rows (11 OCR + 9 recovered) — then a small re-ingest carries them (slice-scoped, same driver)",
+    "AI difficulty classification round for the 58 DEFAULT-3 rows (+ the 20 when anchored) — operator-gated LLM spend",
+    "commandWord fill re-run for the recovered rows (pre-existing residual)",
+    "3 archive QP pages remain image-only upstream (pre-existing residual)"
+  ],
+  "artifacts": "scripts/run-db-reingest/{recon-001,recon-002,recon-003,difficulty-baseline,diag-shortfall,shim-admission,slices-plan,slices-state-w0..w2,couple-dry,couple-apply,couple-verify,post-verify}.json|.{mjs,ts} + r0_testbuilder_band_probe_v2_transcript.json (scrubbed)"
+}
