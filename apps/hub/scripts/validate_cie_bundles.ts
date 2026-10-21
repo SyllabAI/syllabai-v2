@@ -38,6 +38,25 @@ function check(name: string, ok: boolean, detail = ""): void {
   if (!ok) fails++;
 }
 
+// ── the fill-where-served law (HUB-REGISTRY, ADR-030 — the run-009 onGreen
+//    fill, trace 1a15dbaad30a6cc1) ────────────────────────────────────────
+// A CIE row carries curriculumCode iff an ACTIVE curriculum_versions row with
+// a serving corpus exists on the DB of record (run-009 prod-apply SUCCESS:
+// 45/45 ok=true — realApplied 37 / realSeedOnly 3 / stubsSeeded 4, all
+// seeded ACTIVE; the D1 skeleton pure-2 SKIPPED — "nothing to seed or
+// ingest", zero nodes, zero question sets, NO cv row). The EXACT of-record
+// code is the seed's cv law — bundle.code + "-" + syllabusVersion
+// (apps/api/src/services/curriculum/bundle-seed.ts:347) — read here straight
+// from the committed bundle manifest. coreBridge stays ABSENT everywhere
+// (operator-keyed, the T-MIG-136 maths-b law).
+function cvOfRecord(slug: string): string | undefined {
+  if (slug === "cie-a-level-maths-20-pure-2") return undefined; // the D1 skeleton — fleet-skipped, the honest gate
+  const m = JSON.parse(readFileSync(path.join(CONTENT, slug, "manifest.json"), "utf8")) as {
+    curriculum: { code: string; syllabusVersion: string };
+  };
+  return m.curriculum.code + "-" + m.curriculum.syllabusVersion;
+}
+
 // ── the card's course set + paper-count assertions ──────────────────────────
 const BOARD = "Cambridge International";
 const EXPECT: Array<{
@@ -75,8 +94,9 @@ for (const exp of EXPECT) {
   check(`registry ${exp.slug}`, row.code === exp.code && row.level === exp.level
     && row.subject === exp.subject && row.status === "full" && row.board === BOARD,
     `${row.code}/${row.level}/${row.status}/board=${row.board}`);
-  check(`registry ${exp.slug} posture pins (no curriculumCode/coreBridge)`,
-    row.curriculumCode === undefined && row.coreBridge === undefined);
+  check(`registry ${exp.slug} fill-where-served pins (curriculumCode = seed cv law, coreBridge absent)`,
+    row.coreBridge === undefined && row.curriculumCode === cvOfRecord(exp.slug),
+    `cv=${String(row.curriculumCode)}`);
 }
 
 // ── 2. bundle shape: D1 skeleton (pure-2) + real official-spine bundles ─────
@@ -187,12 +207,21 @@ for (const exp of PHASE3_ROSTER) {
     row.code === exp.code && row.level === exp.level && row.subject === exp.subject
     && row.status === "full" && row.board === BOARD,
     `${row.code}/${row.level}/${row.status}/board=${row.board}`);
-  check(`registry ${exp.slug} posture pins (no curriculumCode/coreBridge)`,
-    row.curriculumCode === undefined && row.coreBridge === undefined);
+  check(`registry ${exp.slug} fill-where-served pins (curriculumCode = seed cv law, coreBridge absent)`,
+    row.coreBridge === undefined && row.curriculumCode === cvOfRecord(exp.slug),
+    `cv=${String(row.curriculumCode)}`);
   checkRealBundle(exp.slug, exp.code);
 }
 const cieRowCount = reg.courses.filter((c) => c.board === BOARD).length;
 check("registry carries 45 CIE rows (44-slug roster + D1 pure-2)", cieRowCount === 45, String(cieRowCount));
+const cieFilled = reg.courses.filter((c) => c.board === BOARD && c.curriculumCode !== undefined).length;
+check("registry CIE fill of record: 44/45 mapped (the run-009 onGreen fill; pure-2 the honest gate)",
+  cieFilled === 44, String(cieFilled));
+check("registry coreBridge absent on ALL CIE rows (operator-keyed, the T-MIG-136 law)",
+  reg.courses.filter((c) => c.board === BOARD).every((c) => c.coreBridge === undefined));
+check("registry coreBridge of record unchanged: only the two 4MA1 maths-a rows carry it (true)",
+  JSON.stringify(reg.courses.filter((c) => c.coreBridge !== undefined).map((c) => [c.slug, c.coreBridge]))
+    === JSON.stringify([["igcse-maths-a-18-foundation", true], ["igcse-maths-a-18-higher", true]]));
 
 // ── 3. THE CARD'S PAPER-COUNT ASSERTIONS ─────────────────────────────────────
 let strictTotal = 0;

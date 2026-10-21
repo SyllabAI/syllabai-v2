@@ -7,6 +7,7 @@ import {
   pageRangeSchema,
   specCodeRefSchema,
   BOOK_CONTENT_TYPES,
+  type BookContentType,
   bookBlockSchema,
   bookGlossaryTermSchema,
   chapterProgressSchema,
@@ -75,9 +76,9 @@ describe("books — the corpus package grammar (v3 of record)", () => {
     expect((c as Record<string, unknown>)["some_future_field"]).toBe(1);
   });
 
-  test("rejects a content_type outside the censused 17-value enum", () => {
+  test("rejects a content_type outside the censused 20-value enum", () => {
     expect(() => bookChunkSchema.parse({ ...loChunk, content_type: "speculative" })).toThrow();
-    expect(BOOK_CONTENT_TYPES).toHaveLength(17);
+    expect(BOOK_CONTENT_TYPES).toHaveLength(20);
   });
 
   test("polished chunk: text_original + llm_repaired ride through", () => {
@@ -453,5 +454,94 @@ describe("books — the interactive rail grammar (T-BOOK-002, book.block/1)", ()
 
   test("attempts discriminator is the app-level constant — zero DDL (ADR-BOOK-0001 §12)", () => {
     expect(ATTEMPT_PROVENANCE_BOOK_CHECK).toBe("BOOK_CHECK");
+  });
+});
+
+// ── T-MIG-134 band 134e readiness (2026-10-21) — the physics 4PH1 census ────
+// Fixtures are REAL rows from the package of record
+// (books/pearson-edexcel/international-gcse/physics/4ph1/parsed/
+//  edexcel_igcse_physics_chunks_v1.jsonl, sha-pinned 9b0783d9… in
+//  parse_report_v1.json), lightly trimmed — the 133a fixture law.
+describe("books — the physics 4PH1 print census (the additive widening)", () => {
+  const workedExampleChunk = {
+    id: "phys_v1_u1_c1_pdf019_0046",
+    book_title: "Edexcel International GCSE (9-1) Physics Student Book",
+    author: "Brian Arnold, Penny Johnson, Steve Woolley",
+    unit_no: 1,
+    unit_name: "Forces and Motion",
+    chapter_no: 1,
+    chapter_title: "Movement and position",
+    section: "EXAMPLE2",
+    content_type: "worked_example",
+    book_pages: [9, 11],
+    pdf_pages: [19, 21],
+    char_count: 1499,
+    text: "EXAMPLE2\n\nA car is travelling along a motorway…",
+  };
+
+  const extensionWorkChunk = {
+    ...workedExampleChunk,
+    id: "phys_v1_u1_c2_pdf032_0068",
+    chapter_no: 2,
+    chapter_title: "Forces and shape",
+    section: "EXTENSION WORK",
+    content_type: "extension_work",
+    book_pages: [22, 23],
+    pdf_pages: [32, 33],
+    char_count: 528,
+    text: "EXTENSION WORK\n\nYou have probably noticed that it is easier…",
+  };
+
+  const practicalChunk = {
+    ...workedExampleChunk,
+    id: "phys_v1_u1_c2_pdf034_0072",
+    chapter_no: 2,
+    chapter_title: "Forces and shape",
+    section: "PRACTICAL:INVESTIGATEHOWTHEEXTENSION OFA SPRINGCHANGESWITHLOAD",
+    content_type: "practical",
+    book_pages: [24, 25],
+    pdf_pages: [34, 35],
+    char_count: 803,
+    text: "PRACTICAL: INVESTIGATE HOW THE EXTENSION OF A SPRING CHANGES WITH LOAD…",
+  };
+
+  test("worked_example parses (physics printed section, the 18th value)", () => {
+    const c = bookChunkSchema.parse(workedExampleChunk);
+    expect(c.content_type).toBe("worked_example");
+    expect(c.book_pages).toEqual([9, 11]);
+  });
+
+  test("extension_work parses (physics printed section, the 19th value)", () => {
+    const c = bookChunkSchema.parse(extensionWorkChunk);
+    expect(c.content_type).toBe("extension_work");
+  });
+
+  test("practical parses (physics printed section, the 20th value)", () => {
+    const c = bookChunkSchema.parse(practicalChunk);
+    expect(c.content_type).toBe("practical");
+  });
+
+  test("the widening is additive — every chemistry value unchanged", () => {
+    for (const v of [
+      "body",
+      "key_point",
+      "table_data",
+      "exam_hint",
+      "answers",
+      "learning_objectives",
+      "chapter_questions",
+      "safety",
+      "appendix",
+      "unit_questions",
+      "glossary",
+      "did_you_know",
+      "front_matter",
+      "index",
+      "divider",
+      "skills",
+      "activity",
+    ] as BookContentType[]) {
+      expect(BOOK_CONTENT_TYPES).toContain(v);
+    }
   });
 });
