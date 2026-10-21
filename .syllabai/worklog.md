@@ -11225,3 +11225,14 @@ Work Log:
 Stage Summary:
 - The operator's workspace directive ("inside there, all the tools and course resources will exist", trace 1a0ec61d5612aa6d) now holds for BOTH class concepts: the local container and the live core class. The approved four-item queue (T-TEACH-001..004) is complete; the cross-surface teacher authz audit remains the named open item for the operator's review of the remaining queue.
 - Receipt: .syllabai/receipts/HUB-TEACH/t-teach-004-core-class-workspace-parity-r0.json
+
+## receipt(R0-AUTO) — r0-cron-20261022-0200 (2026-10-21T18:00Z sweep)
+
+- Task ID: r0-cron-20261022-0200 (Job 438940)
+- MERGED (1/2): PR #262 → 6b5e0cc — dc2-v13 two-tier disclosure law, prompt v12→v13 (api-only additive; head f0322c7)
+  - Gates: head f0322c7 verify ✓ hub ✓; mergeable=True clean; reviews 0 / comments 0; diff in-bounds (api prompt+tests ×3, docs plan ×1)
+- MERGED (2/2): PR #263 → 9ecf565 — content(ADR-037): 2C tranche exported into hub bundle, 16 sets (head 77842fe)
+  - Gates: head 77842fe verify ✓ hub ✓; mergeable=True (state=unstable = Vercel preview deploy fail only — known environmental non-blocker per doctrine, cf. #261); reviews 0 / comments 1 (vercel[bot], unflagged); diff in-bounds (apps/hub/content/igcse-chemistry-19 manifest+questions.json, docs/ADR-037 delta)
+- Post-merge main CI: 6b5e0cc hub ✓ verify ✓; 9ecf565 hub ✓ verify ✓
+- No *.java, no core/hub content, no DB/prod writes in either diff
+- Bookkeeping only: .syllabai/** — no code, no force
