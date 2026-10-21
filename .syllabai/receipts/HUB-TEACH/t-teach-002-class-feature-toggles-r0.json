@@ -1,0 +1,42 @@
+{
+  "task": "T-TEACH-002",
+  "band": "HUB-TEACH",
+  "title": "class-scoped AI-feature toggles (tutor / CLA / Smart Mark) — ADR-CLASS-0001, the side-table law, the anchor-strength enforcement tiers, and the course_registry bridge",
+  "operator_order_trace": "1a15ee4593f7b571 (this session; queue approved on trace 1a15ece07422fcd9)",
+  "date": "2026-10-21",
+  "agent": "zai-web lane (main agent, session web-590847c1)",
+  "what_shipped": [
+    "docs/adr/ADR-CLASS-0001-class-feature-toggles.md — the law of record (side table, bridge, conservative-union deny, anchor-strength tiers, composition-root enforcement, honest control plane)",
+    "packages/db: migration 0006_class_feature_toggles.sql (CREATE class_features + course_registry, ADDITIVE-ONLY — zero bytes on any Flyway-era table); meta/0006_snapshot.json + _journal entry (hand-crafted: drizzle-kit generate unusable on the pre-existing 0000/0005 collision); 0000_snapshot.json advanced (the living end-state of record — same practice as the 0002/0004/0005 families); schema.ts additive tail (classFeatures + courseRegistry); packages/db/README.md §4.2 v2-owned registry",
+    "packages/contracts/classroom.ts (additive): classFeaturesViewSchema + classFeatureUpdateRequestSchema (strict); features block on TeacherClassView / TeacherClassDetailView / LearnerClassView",
+    "apps/api services/classroom/features.ts: featuresByClassId (ONE grouped read, row-absent = all-ON materialized) + setClassFeatures (partial UPSERT via COALESCE; §17 ownership injected — single-sourced ownedClass/detailOf, never forked)",
+    "apps/api services/classroom/feature-gate.ts: the deny law (conservative union over ACTIVE memberships × ACTIVE classes, COALESCE default ON; three static feature-column branches per the bind-slot discipline); the question/attempt course bridges (questions→exam_papers→subjects→curriculum_versions.code→course_registry.course_slug); the three surface resolvers (tutor courseRef??session, cla CHECK-only, smartmark attemptId path regex); withClassFeatureGate — the composition-root wrapper (POST-only, named paths, body CLONE read, unauth passes to the shell, gate-infrastructure failure = logged pass-through)",
+    "apps/api routes/classroom.ts: POST /:id/features (partial, strict; the shared error mapping); classroom service views all carry the features block (list/detail/status/create + learner overview)",
+    "apps/api src/index.ts (OUT-OF-FENCE per the mount-line precedent): featureGateDeps construction + the three wrapped mounts — tutor (ask, ask/stream), cla (ask — routes/cla.ts stays byte-ZERO per DC6 §8), smartmark ONLY (selfmark mount unwrapped: self-mark is the learner's own act)",
+    "scripts/seed-course-registry.ts: the idempotent verbatim COPIER of apps/hub/content/courses.json (94 rows; source-pinned; --prune gated orphan removal; unbridged rows reported) — an explicit operator/agent step with a receipt, never an api-boot effect",
+    "hub: types mirror (ClassFeaturesView + the three views), api.teacherSetClassFeatures, the teacher class workspace 'Class features' panel (three Switch rows with honest per-feature copy — Smart Mark badged 'recorded'), the learner classroom badges ('tutor off / fact-check off / smart mark off' — the honesty surface)",
+    "tests: test/classroom/features.test.ts (28 — the storage law, the partial-upsert bind law, ownership reuse, FIXED deny body, bridges incl. multi-slug, resolvers incl. the disclosed open tiers, the wrapper wire incl. 401 parity + policy≠availability pass-through); test/classroom/routes.test.ts (+4 — the HTTP contract); the existing classroom suites' fixtures advanced (fakeSqlWithFeatures; the batching pin 2→3 queries); contracts fixtures + rebaseline inventory pins advanced (68/650/96/60/112 → 70/666/97/61/112)"
+  ],
+  "design_decision_of_record": {
+    "side_table_not_alter": "class_features rides OUT of the Flyway-era classes row — BASELINE_DB.md §4.1 honored to the LETTER (no retirement-posture exception carved; the T-MIG-139 constraint-swap precedent stays confined to its own ratified card). Row-absent = all ON keeps every pre-existing class byte-identical.",
+    "anchor_strength": "ENFORCED v1: tutor (courseRef ?? session), CLA CHECK (questionId), Smart Mark (attempt) — all through the course_registry bridge where needed. OPEN + DISCLOSED: CLA non-CHECK kinds (node/note anchors do not reach a slug), tutor blank-courseRef-no-session (parity keeps the field optional), the 45 registry courses without curriculumCode (operator backfill is the named fix). The gate NEVER fabricates an anchor and never becomes an existence oracle.",
+    "cla_route_byte_zero": "DC6 §8 fences routes/cla.ts at ZERO bytes — the gate wraps the MOUNTED router at the composition root; the smartmark/tutor routers stay byte-zero too (capture-parity discipline).",
+    "baseline_advance": "0000_snapshot.json hand-advanced (copied verbatim from the 0006 craft) because the regen path (rebaseline pull) needs a Neon branch the migration has not touched yet; the next live db:pull rebaseline is the standing confirmation step. DISCLOSED, not silent.",
+    "course_registry_seed": "COPIED, never derived (the registry's own never-derived law) — the seed is an explicit receipted step; drift is operational (re-run + disclose), never silent; the gate degrades gracefully on an empty table (anchorless pass)."
+  },
+  "verification": {
+    "typecheck": "bun run typecheck (packages/contracts + packages/shared + packages/db + apps/api) — exit 0 x4",
+    "api_tests": "bun test apps/api — 1961 pass / 0 fail / 13 skip (102 files); the classroom band 124/0 across 3 files (features.test.ts 28 new)",
+    "packages": "bun test apps/api packages — 2454 pass / 0 fail / 13 skip (129 files; 21289 expects)",
+    "gates": "golden/runner.ts --selftest OK; retrieval-eval 22/0 + selftest 19/19; preflight_zero_core_census.py --gate GREEN LIVE=0; bun run build:hub OK; eslint clean on the changed hub files",
+    "db_baseline": "rebaseline.test.ts verifyBaseline 70/666/97/61/112 — runtime == snapshot parity, 0 drifts"
+  },
+  "residuals": [
+    "the 0006 migration must be applied to a Neon branch (and then prod at cutover) BEFORE the seed runs — the gate degrades to anchorless-pass on an empty course_registry (disclosed open tier), and the features endpoints 500 on a missing class_features table (the deploy law: migration first, then api)",
+    "operator registry backfill for the 45 curriculumCode-less courses (data authority; the Edexcel IAL family is among them)",
+    "knowledge-node curriculum anchoring for the CLA non-CHECK kinds (data-plane task, named in ADR §4)",
+    "Smart Mark attempt-level enforcement rides the SAME bridge once the registry is seeded — the toggle is live-recorded and learner-visible today, honest-badged 'recorded' in the teacher UI",
+    "unrecognized-key rejections render the house classifier's generic ': request invalid' (empty field path) — pinned as-is; a classifier nicety is out of scope"
+  ],
+  "next": "T-TEACH-003 — ADR-027 D1: the marking queue becomes enrollment-scoped (teacher → classes → members), out-of-scope answers SKIPPED honestly, receipts attached"
+}

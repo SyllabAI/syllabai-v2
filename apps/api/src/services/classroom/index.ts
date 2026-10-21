@@ -87,6 +87,7 @@ import type {
   AnnouncementReadResult,
   ClassCreateRequest,
   ClassEnrollRequest,
+  ClassFeatureUpdateRequest,
   ClassPublishRequest,
   ClassStatusRequest,
   LearnerAnnouncementView,
@@ -96,6 +97,11 @@ import type {
   TeacherClassDetailView,
   TeacherClassView,
 } from "@syllabai/contracts";
+import {
+  DEFAULT_CLASS_FEATURES,
+  featuresByClassId,
+  setClassFeatures as setClassFeaturesWrite,
+} from "./features";
 
 // ── errors (message-carrying; the route layer owns status mapping) ──────────
 //
@@ -209,7 +215,9 @@ export const TEACHER_NAME_UNAVAILABLE = "(unavailable)";
 
 // ── sql row shapes (plain column names as the selects render them) ──────────
 
-type SchoolClassRow = {
+/** The core-era class row (T-TEACH-002: exported for the features module's
+ *  injected ownership law — composition, never a fork). */
+export type SchoolClassRow = {
   id: string;
   teacher_id: string;
   course_slug: string;
@@ -253,8 +261,9 @@ const iso = (x: string | Date): string => new Date(x).toISOString();
 export type ClassroomDeps = { sql: SqlFn; clock: SubmitClock };
 
 /** §17 gate (:252-258): the class must exist AND be owned by this teacher.
- *  404 "class not found" / 403 "this class belongs to another teacher". */
-async function ownedClass(deps: ClassroomDeps, teacherId: string, classId: string): Promise<SchoolClassRow> {
+ *  404 "class not found" / 403 "this class belongs to another teacher".
+ *  (T-TEACH-002: exported for the features module's injected deps.) */
+export async function ownedClass(deps: ClassroomDeps, teacherId: string, classId: string): Promise<SchoolClassRow> {
   const rows = await deps.sql`
     select id, teacher_id, course_slug, course_label, name, status, created_at
     from classes where id = ${classId}::uuid`;
@@ -310,10 +319,11 @@ async function classDetail(deps: ClassroomDeps, teacherId: string, classId: stri
     status: classStatusWire(c.status as ClassStatus),
     createdAt: iso(c.created_at),
     members,
+    features: (await featuresByClassId(deps, [c.id])).get(c.id) ?? { ...DEFAULT_CLASS_FEATURES },
   };
 }
 
-const teacherClassViewOf = (c: SchoolClassRow, memberCount: number): TeacherClassView => ({
+const teacherClassViewOf = (c: SchoolClassRow, memberCount: number, features: TeacherClassView["features"]): TeacherClassView => ({
   id: c.id,
   courseSlug: c.course_slug,
   courseLabel: c.course_label,
@@ -321,6 +331,7 @@ const teacherClassViewOf = (c: SchoolClassRow, memberCount: number): TeacherClas
   status: classStatusWire(c.status as ClassStatus),
   memberCount,
   createdAt: iso(c.created_at),
+  features,
 });
 
 // ── teacher class lifecycle (TeacherClassController :78-159) ────────────────
@@ -357,7 +368,11 @@ export async function createClass(
     values (${id}::uuid, ${teacherId}::uuid, ${request.courseSlug}, ${request.courseLabel},
             ${name}, 'ACTIVE', ${createdAt.toISOString()}::timestamptz)
     returning id, teacher_id, course_slug, course_label, name, status, created_at`) as SchoolClassRow[];
-  return teacherClassViewOf(saved[0] as SchoolClassRow, 0);
+  return teacherClassViewOf(
+    saved[0] as SchoolClassRow,
+    0,
+    (await featuresByClassId(deps, [id])).get(id) ?? { ...DEFAULT_CLASS_FEATURES },
+  );
 }
 
 /** GET /api/v1/teacher/classes (:100-108): newest-first, LIMIT 100, member
@@ -378,7 +393,13 @@ export async function listTeacherClasses(deps: ClassroomDeps, teacherId: string)
       group by class_id`) as Array<{ class_id: string; member_count: number }>;
     for (const row of grouped) counts.set(row.class_id, Number(row.member_count));
   }
-  return mine.map((c) => teacherClassViewOf(c, counts.get(c.id) ?? 0));
+  const features = await featuresByClassId(
+    deps,
+    mine.map((c) => c.id),
+  );
+  return mine.map((c) =>
+    teacherClassViewOf(c, counts.get(c.id) ?? 0, features.get(c.id) ?? { ...DEFAULT_CLASS_FEATURES }),
+  );
 }
 
 /** GET /api/v1/teacher/classes/{id} (:110-135) — via the shared detail
@@ -408,7 +429,11 @@ export async function setClassStatus(
     update classes set status = ${parsed} where id = ${c.id}::uuid
     returning id, teacher_id, course_slug, course_label, name, status, created_at`) as SchoolClassRow[];
   const count = await memberCountOf(deps, classId);
-  return teacherClassViewOf(updated[0] as SchoolClassRow, count);
+  return teacherClassViewOf(
+    updated[0] as SchoolClassRow,
+    count,
+    (await featuresByClassId(deps, [c.id])).get(c.id) ?? { ...DEFAULT_CLASS_FEATURES },
+  );
 }
 
 // ── membership (:152-190) ────────────────────────────────────────────────────
@@ -631,9 +656,14 @@ async function workspace(deps: ClassroomDeps, learnerId: string): Promise<Classr
 }
 
 /** GET /api/v1/learners/me/classroom (:85-104): per live membership the
- *  class row with MY unread count; the flattened totalUnread badge. */
+ *  class row with MY unread count; the flattened totalUnread badge. The
+ *  features block is the learner honesty surface (ADR-CLASS-0001 §6). */
 export async function learnerOverview(deps: ClassroomDeps, learnerId: string): Promise<LearnerClassroomView> {
   const ws = await workspace(deps, learnerId);
+  const features = await featuresByClassId(
+    deps,
+    ws.memberships.map((m) => m.class_id),
+  );
   const rows = ws.memberships.map((m) => {
     const c = ws.classById.get(m.class_id) as SchoolClassRow;
     const feed = ws.announcementsByClass.get(c.id) ?? [];
@@ -646,6 +676,7 @@ export async function learnerOverview(deps: ClassroomDeps, learnerId: string): P
       teacherName: ws.teacherName(c.teacher_id),
       unreadAnnouncements: unread,
       enrolledAt: iso(m.enrolled_at),
+      features: features.get(c.id) ?? { ...DEFAULT_CLASS_FEATURES },
     };
   });
   const totalUnread = rows.reduce((sum, r) => sum + r.unreadAnnouncements, 0);
@@ -761,6 +792,7 @@ export type ClassroomModule = {
     request: ClassPublishRequest,
   ) => Promise<TeacherAnnouncementView>;
   teacherAnnouncements: (teacherId: string, classId: string) => Promise<TeacherAnnouncementView[]>;
+  setClassFeatures: (teacherId: string, classId: string, request: ClassFeatureUpdateRequest) => Promise<TeacherClassDetailView>;
   learnerOverview: (learnerId: string) => Promise<LearnerClassroomView>;
   learnerAnnouncements: (learnerId: string) => Promise<LearnerAnnouncementView[]>;
   markAnnouncementRead: (learnerId: string, announcementId: string) => Promise<AnnouncementReadResult>;
@@ -784,6 +816,18 @@ export function buildClassroomModule(sql: SqlFn, clock: SubmitClock): ClassroomM
     publishAnnouncement: (teacherId, classId, request) =>
       publishAnnouncement(deps, teacherId, classId, request),
     teacherAnnouncements: (teacherId, classId) => teacherAnnouncements(deps, teacherId, classId),
+    setClassFeatures: (teacherId, classId, request) =>
+      setClassFeaturesWrite(
+        {
+          sql,
+          clock,
+          ownedClass: (t, id) => ownedClass(deps, t, id),
+          detailOf: (t, id) => classDetail(deps, t, id),
+        },
+        teacherId,
+        classId,
+        request,
+      ),
     learnerOverview: (learnerId) => learnerOverview(deps, learnerId),
     learnerAnnouncements: (learnerId) => learnerAnnouncements(deps, learnerId),
     markAnnouncementRead: (learnerId, announcementId) =>

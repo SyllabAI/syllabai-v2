@@ -37,6 +37,7 @@ describe("classroom wire schemas", () => {
       status: "active",
       memberCount: 12,
       createdAt: "2026-10-06T01:00:00.000Z",
+      features: { smartMark: true, tutor: true, cla: true }, // T-TEACH-002
     });
     expect(parsed.memberCount).toBe(12);
     expect(parsed.status).toBe("active");
@@ -73,6 +74,7 @@ describe("classroom wire schemas", () => {
           enrolledAt: "2026-10-05T09:00:00.000Z",
         },
       ],
+      features: { smartMark: true, tutor: true, cla: true }, // T-TEACH-002
     });
     expect(parsed.members[0]!.displayName).toBe("(removed account)");
   });
@@ -101,6 +103,7 @@ describe("classroom wire schemas", () => {
           teacherName: "(unavailable)",
           unreadAnnouncements: 0,
           enrolledAt: "2026-10-05T09:00:00.000Z",
+          features: { smartMark: true, tutor: true, cla: true }, // T-TEACH-002
         },
       ],
       unreadAnnouncements: 0,

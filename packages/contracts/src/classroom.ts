@@ -61,6 +61,30 @@ import { notBlank } from "./auth";
 
 // ── teacher side ─────────────────────────────────────────────────────────────
 
+// ── T-TEACH-002 (ADR-CLASS-0001): class-scoped AI-feature toggles ────────────
+
+/** ClassFeaturesView — the per-class AI-feature state. ALWAYS present in
+ *  class views; row-absent storage materializes the all-ON defaults (the
+ *  side-table law — `class_features` row absent = every feature on). */
+export const classFeaturesViewSchema = z.object({
+  smartMark: z.boolean(),
+  tutor: z.boolean(),
+  cla: z.boolean(),
+});
+export type ClassFeaturesView = z.infer<typeof classFeaturesViewSchema>;
+
+/** ClassFeatureUpdateRequest — the PATCH body: partial by design; absent
+ *  keys keep their current value; unknown keys are rejected (strict — the
+ *  undeclared-field refusal keeps the toggle surface closed). */
+export const classFeatureUpdateRequestSchema = z
+  .object({
+    smartMark: z.boolean().optional(),
+    tutor: z.boolean().optional(),
+    cla: z.boolean().optional(),
+  })
+  .strict();
+export type ClassFeatureUpdateRequest = z.infer<typeof classFeatureUpdateRequestSchema>;
+
 /** TeacherClassView — the list row: the class + live member count. */
 export const teacherClassViewSchema = z.object({
   id: z.string().uuid(),
@@ -70,6 +94,7 @@ export const teacherClassViewSchema = z.object({
   status: z.string(),
   memberCount: z.number().int().min(0),
   createdAt: z.string(),
+  features: classFeaturesViewSchema,
 });
 export type TeacherClassView = z.infer<typeof teacherClassViewSchema>;
 
@@ -92,6 +117,7 @@ export const teacherClassDetailViewSchema = z.object({
   status: z.string(),
   createdAt: z.string(),
   members: z.array(classMemberViewSchema),
+  features: classFeaturesViewSchema,
 });
 export type TeacherClassDetailView = z.infer<typeof teacherClassDetailViewSchema>;
 
@@ -109,7 +135,9 @@ export type TeacherAnnouncementView = z.infer<typeof teacherAnnouncementViewSche
 
 // ── learner side (the classroom overlay) ─────────────────────────────────────
 
-/** LearnerClassView — my-class row: the class + MY unread count. */
+/** LearnerClassView — my-class row: the class + MY unread count. The
+ *  features block is the learner honesty surface (ADR-CLASS-0001 §6): the
+ *  student sees the state their teacher set. */
 export const learnerClassViewSchema = z.object({
   id: z.string().uuid(),
   courseSlug: z.string(),
@@ -118,6 +146,7 @@ export const learnerClassViewSchema = z.object({
   teacherName: z.string(),
   unreadAnnouncements: z.number().int().min(0),
   enrolledAt: z.string(),
+  features: classFeaturesViewSchema,
 });
 export type LearnerClassView = z.infer<typeof learnerClassViewSchema>;
 

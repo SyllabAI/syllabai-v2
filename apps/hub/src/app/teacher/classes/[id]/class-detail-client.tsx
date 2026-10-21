@@ -20,6 +20,7 @@ import {
   Megaphone,
   Network,
   Send,
+  Shield,
   Trash2,
   UserPlus,
 } from "lucide-react";
@@ -27,6 +28,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Switch } from "@/components/ui/switch";
 import {
   Select,
   SelectContent,
@@ -145,6 +147,25 @@ export function ClassDetailClient({ classId }: { classId: string }) {
     }
   };
 
+  // T-TEACH-002 (ADR-CLASS-0001): the class AI-feature toggles — a partial
+  // write per flip (absent keys keep their value server-side); the response
+  // IS the refreshed detail, so the panel re-renders from the answer.
+  const [savingFeature, setSavingFeature] = useState<string | null>(null);
+  const [featureError, setFeatureError] = useState<string | null>(null);
+  const toggleFeature = async (key: "smartMark" | "tutor" | "cla") => {
+    if (!detail) return;
+    const next = !detail.features[key];
+    setSavingFeature(key);
+    setFeatureError(null);
+    try {
+      setDetail(await api.teacherSetClassFeatures(classId, { [key]: next }));
+    } catch (err) {
+      setFeatureError(apiMessage(err, "The toggle change did not reach core."));
+    } finally {
+      setSavingFeature(null);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex min-h-[40vh] items-center justify-center">
@@ -213,6 +234,85 @@ export function ClassDetailClient({ classId }: { classId: string }) {
           enrollment/publishing are closed until you reopen it.
         </div>
       )}
+
+      {/* T-TEACH-002 (ADR-CLASS-0001): the class AI-feature toggles. The
+          enforcement honesty is rendered with the control: tutor + the CLA
+          fact-check surface deny server-side for your members today; Smart
+          Mark's toggle records your policy and rides the same learner
+          honesty surface, its attempt-level gate lands with the
+          course-registry backfill (ADR §4 anchor-strength law). */}
+      <Card>
+        <CardContent className="space-y-3 pt-4">
+          <h2 className="flex items-center gap-2 text-sm font-semibold">
+            <Shield className="size-4 text-primary" aria-hidden />
+            Class features
+          </h2>
+          <p className="text-xs text-muted-foreground">
+            Off means OFF for this class's members — the hub shows them the honest
+            "your teacher turned this off" state. Students outside your class are never
+            affected.
+          </p>
+          {featureError && (
+            <div role="alert" className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-xs text-destructive">
+              {featureError}
+            </div>
+          )}
+          <ul className="divide-y rounded-lg border">
+            <li className="flex items-center justify-between gap-3 px-3 py-2.5">
+              <div className="min-w-0">
+                <p className="text-sm font-medium">Tutor</p>
+                <p className="text-xs text-muted-foreground">
+                  The AI tutor ask surface. Off: your members' tutor asks for this
+                  course are refused before any AI spend.
+                </p>
+              </div>
+              <Switch
+                checked={detail.features.tutor}
+                disabled={savingFeature !== null}
+                onCheckedChange={() => void toggleFeature("tutor")}
+                aria-label="Toggle tutor for this class"
+              />
+            </li>
+            <li className="flex items-center justify-between gap-3 px-3 py-2.5">
+              <div className="min-w-0">
+                <p className="text-sm font-medium">CLA fact-check</p>
+                <p className="text-xs text-muted-foreground">
+                  The question CHECK surface (answer-leakage gate included). Off: your
+                  members' CHECK asks for this course are refused. Other CLA kinds stay
+                  open until their anchoring lands (ADR §4).
+                </p>
+              </div>
+              <Switch
+                checked={detail.features.cla}
+                disabled={savingFeature !== null}
+                onCheckedChange={() => void toggleFeature("cla")}
+                aria-label="Toggle CLA fact-check for this class"
+              />
+            </li>
+            <li className="flex items-center justify-between gap-3 px-3 py-2.5">
+              <div className="min-w-0">
+                <p className="text-sm font-medium">
+                  Smart Mark{" "}
+                  <Badge variant="outline" className="ml-1 font-mono text-[10px]">
+                    recorded
+                  </Badge>
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  Auto-grading + feedback explanations. Your choice is recorded and
+                  visible to the class now; attempt-level enforcement lands with the
+                  course-registry backfill (ADR §4).
+                </p>
+              </div>
+              <Switch
+                checked={detail.features.smartMark}
+                disabled={savingFeature !== null}
+                onCheckedChange={() => void toggleFeature("smartMark")}
+                aria-label="Toggle smart mark for this class"
+              />
+            </li>
+          </ul>
+        </CardContent>
+      </Card>
 
       <div className="grid gap-4 lg:grid-cols-2">
         {/* roster */}

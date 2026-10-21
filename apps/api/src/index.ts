@@ -70,6 +70,9 @@ import { buildTeacherKgRouters } from "./routes/teacher-kg";
 import { buildTutorRouters } from "./routes/tutor";
 import { buildTutorBankRouters } from "./routes/tutor-bank";
 import { buildClaRouters } from "./routes/cla";
+import { withClassFeatureGate, resolveTutorAnchor, resolveClaAnchor, resolveSmartMarkAnchor, type FeatureGateDeps } from "./services/classroom/feature-gate";
+import { requireDatabaseUrl } from "@syllabai/db";
+import { createSql } from "./services/identity/users";
 import { buildClaThreadsRouters } from "./routes/cla-threads";
 import { buildLlmChain } from "./services/llmchain";
 import { toErrorResponse, apiError } from "./services/identity/errors";
@@ -94,6 +97,12 @@ const learnerKg = buildLearnerKgRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
+// T-TEACH-002 (ADR-CLASS-0001): the class feature gate's deps — the same
+// DATABASE_URL the per-router builders use; the gate consults the
+// class_features side table + the course_registry bridge at request time.
+const featureGateDeps: FeatureGateDeps = {
+  sql: createSql(requireDatabaseUrl(process.env as { DATABASE_URL?: string })),
+};
 const teacherAssignments = buildTeacherAssignmentsRouters();
 const revisionNotes = buildRevisionNotesRouters();
 const knowledge = buildKnowledgeRouters();
@@ -298,7 +307,18 @@ app.route("/api/v1/learners/me", learnerKg.learnerKgRoute);
 // minimal app-level wiring, shipped as a separate commit per the
 // T-MIG-010/020/021/030 precedent so R0 can ratify or lift them out at review.
 app.route("/api/v1/learners/me/attempts", selfmark.selfMarkRoute);
-app.route("/api/v1/learners/me/attempts", smartmark.studentRoute);
+// T-TEACH-002 (ADR-CLASS-0001): the class feature GATE wraps ONLY the
+// smart-mark router (self-mark is the learner's own act, not an AI
+// feature — its mount stays unwrapped). Gated paths: the three POSTs
+// (anchor = attemptId → the course_registry bridge).
+app.route(
+  "/api/v1/learners/me/attempts",
+  withClassFeatureGate(smartmark.studentRoute, featureGateDeps, {
+    feature: "smart_mark",
+    paths: ["/smart-mark", "/feedback-explanation", "/improvement-plan"],
+    resolve: resolveSmartMarkAnchor,
+  }),
+);
 
 // T-MIG-042 cron router (the NightlyDecayJob takeover's api arm — the hub
 // seam forwards here; CUTOVER_RUNBOOK §3).
@@ -443,7 +463,18 @@ app.route("/api/v1/admin/llm", llmadmin.llmAdminRoute);
 // them out at review. The sessions router mounts BEFORE the ask router so
 // the /latest-never-captured-by-/:sessionId law reads top-down.
 app.route("/api/v1/tutor/sessions", tutor.tutorSessionsRoute);
-app.route("/api/v1/tutor", tutor.tutorRoute);
+// T-TEACH-002 (ADR-CLASS-0001): the class feature GATE wraps the tutor ask
+// router at the composition root — the frozen route file stays byte-zero.
+// Gated paths: POST /ask + /ask/stream (anchor = body courseRef ?? session
+// course_ref; the §4 anchor-strength law owns the honest gaps).
+app.route(
+  "/api/v1/tutor",
+  withClassFeatureGate(tutor.tutorRoute, featureGateDeps, {
+    feature: "tutor",
+    paths: ["/ask", "/ask/stream"],
+    resolve: resolveTutorAnchor,
+  }),
+);
 
 // Tutor bank bands (T-MIG-128/129 — post-core v2-native deterministic read
 // surfaces, the operator's bands, trace 1a14080256278b41): band (1) the
@@ -483,7 +514,19 @@ app.route("/api/v1/tutor/bank", tutorBank.tutorBankRoute);
 // construction + one mount line + this comment are the minimal app-level
 // wiring, shipped as a separate commit per the
 // T-MIG-010/020/031/043/052/061/060 precedent.
-app.route("/api/v1/learners/me/cla", cla.claRoute);
+// T-TEACH-002 (ADR-CLASS-0001): the class feature GATE wraps the cla ask
+// router at the composition root (routes/cla.ts stays byte-ZERO per the
+// DC6 §8 fence). Gated path: POST /ask, kind CHECK only (anchor = its
+// questionId → the course_registry bridge; other kinds are the disclosed
+// §4 OPEN tier).
+app.route(
+  "/api/v1/learners/me/cla",
+  withClassFeatureGate(cla.claRoute, featureGateDeps, {
+    feature: "cla",
+    paths: ["/ask"],
+    resolve: resolveClaAnchor,
+  }),
+);
 
 // CLA thread sync tier (DC-6 phase 3, docs/DC6-CLA-SYNC-TIER-PLAN.md).
 // V2-NATIVE additive family — NO frozen-core counterpart (feasibility path

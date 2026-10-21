@@ -35,6 +35,15 @@ import {
 import { BadRequestError, ConflictError, type SubmitClock } from "../../src/services/selfmark";
 import { fakeSql, type Route } from "../assessment/helpers";
 
+/** T-TEACH-002: the class_features grouped read rides every view assembly
+ *  (ADR-CLASS-0001 §1/§6). This wrapper appends the DEFAULT answer — the
+ *  EMPTY table (row-absent = all ON) — to a route set; tests that pin
+ *  feature rows provide their own explicit route (a later route wins
+ *  nothing: fakeSql takes the FIRST match, so put specific routes first). */
+const fakeSqlWithFeatures = (routes: Route[]) =>
+  fakeSql([...routes, { match: /from class_features/i, rows: [] }]);
+
+
 // ── fixtures (fixed-constant uuids; the fleet's captured-shape style) ───────
 
 const TEACHER = "aa000000-0000-4000-8000-000000000001";
@@ -248,7 +257,7 @@ describe("parseAnnouncementCategory / announcementCategoryWire (Announcement.Cat
 
 describe("createClass (TeacherClassController :79-98)", () => {
   test("blank (trimmed) name → 400 'class name must not be blank'", async () => {
-    const sql = fakeSql([]);
+    const sql = fakeSqlWithFeatures([]);
     const mod = buildClassroomModule(sql, clock);
     await expect(mod.createClass(TEACHER, { courseSlug: "s", courseLabel: "l", name: "   " }))
       .rejects.toThrow(BadRequestError);
@@ -259,7 +268,7 @@ describe("createClass (TeacherClassController :79-98)", () => {
   });
 
   test("case-INSENSITIVE clash over the teacher's ACTIVE classes on the same course → 409 verbatim", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       {
         match: /from classes where teacher_id = \? ::uuid and course_slug = \? and status = 'ACTIVE' order by created_at desc limit \?$/,
         rows: [classRow({ name: "period 3" })], // different case on purpose
@@ -276,7 +285,7 @@ describe("createClass (TeacherClassController :79-98)", () => {
   });
 
   test("clash is scoped to the course (same name on another course is legal)", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       {
         match: /from classes where teacher_id = \? ::uuid and course_slug = \? and status = 'ACTIVE' order by created_at desc limit \?$/,
         rows: [],
@@ -299,7 +308,7 @@ describe("createClass (TeacherClassController :79-98)", () => {
   });
 
   test("happy path: INSERT carries 'ACTIVE' + the clock's id/created_at", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       {
         match: /from classes where teacher_id = \? ::uuid and course_slug = \? and status = 'ACTIVE' order by created_at desc limit \?$/,
         rows: [],
@@ -329,7 +338,7 @@ describe("createClass (TeacherClassController :79-98)", () => {
 
 describe("listTeacherClasses (:100-108)", () => {
   test("newest-first rows + ONE grouped count query (missing counts → honest 0)", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       {
         match: /from classes where teacher_id = \? ::uuid order by created_at desc limit \?$/,
         rows: [classRow({ id: CLASS_A }), classRow({ id: CLASS_B, name: "Period 4", created_at: T0 })],
@@ -344,20 +353,22 @@ describe("listTeacherClasses (:100-108)", () => {
     expect(rows.map((r) => r.id)).toEqual([CLASS_A, CLASS_B]); // sql order preserved
     expect(rows[0]!.memberCount).toBe(7);
     expect(rows[1]!.memberCount).toBe(0); // no row in the grouped count = 0
-    expect(sql.queries).toHaveLength(2); // the batching law: two queries total
+    // the batching law: classes + ONE grouped count + ONE grouped features
+    // read (T-TEACH-002) — three queries total, never one per row
+    expect(sql.queries).toHaveLength(3);
   });
 });
 
 describe("the §17 ownership gate (:252-258)", () => {
   test("unknown class → 404 'class not found'", async () => {
-    const sql = fakeSql([ownedClassRoute([])]);
+    const sql = fakeSqlWithFeatures([ownedClassRoute([])]);
     await expect(buildClassroomModule(sql, clock).teacherClassDetail(TEACHER, CLASS_A)).rejects.toThrow(
       "class not found",
     );
   });
 
   test("another teacher's class → 403 'this class belongs to another teacher'", async () => {
-    const sql = fakeSql([ownedClassRoute([classRow({ teacher_id: OTHER_TEACHER })])]);
+    const sql = fakeSqlWithFeatures([ownedClassRoute([classRow({ teacher_id: OTHER_TEACHER })])]);
     const err = await buildClassroomModule(sql, clock)
       .teacherClassDetail(TEACHER, CLASS_A)
       .catch((e) => e);
@@ -368,7 +379,7 @@ describe("the §17 ownership gate (:252-258)", () => {
 
 describe("teacherClassDetail (:110-135)", () => {
   test("roster enrolledAt ASC + batched user load; members carry provenance", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       ownedClassRoute([classRow()]),
       rosterRoute([memberRow(LEARNER, { enrolled_at: T0 }), memberRow(STUDENT_2, { enrolled_at: T1 })]), // the DB's enrolled_at asc order
       usersBatchRoute([
@@ -385,7 +396,7 @@ describe("teacherClassDetail (:110-135)", () => {
   });
 
   test("a hard-removed account still shows, named honestly (:125-128)", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       ownedClassRoute([classRow()]),
       rosterRoute([memberRow(VANISHED_STUDENT), memberRow(LEARNER)]),
       usersBatchRoute([{ id: LEARNER, display_name: "Amara H.", email: "amara@example.test", created_at: T0 }]),
@@ -399,7 +410,7 @@ describe("teacherClassDetail (:110-135)", () => {
 
 describe("setClassStatus (:137-150)", () => {
   test("unknown status → 400 'status must be active or archived' (verbatim with quotes)", async () => {
-    const sql = fakeSql([ownedClassRoute([classRow()])]);
+    const sql = fakeSqlWithFeatures([ownedClassRoute([classRow()])]);
     const mod = buildClassroomModule(sql, clock);
     await expect(mod.setClassStatus(TEACHER, CLASS_A, { status: "deleted" })).rejects.toThrow(
       BadRequestError,
@@ -411,7 +422,7 @@ describe("setClassStatus (:137-150)", () => {
   });
 
   test("tolerant parse accepts 'ARCHIVED ' and flips with the live member count", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       ownedClassRoute([classRow()]),
       {
         match: /^update classes set status = \? where id = \? ::uuid returning/,
@@ -442,7 +453,7 @@ describe("enrollStudent (:152-186)", () => {
   });
 
   test("archived class → 409 'this class is archived — reopen it before enrolling'", async () => {
-    const sql = fakeSql([ownedClassRoute([classRow({ status: "ARCHIVED" })])]);
+    const sql = fakeSqlWithFeatures([ownedClassRoute([classRow({ status: "ARCHIVED" })])]);
     const mod = buildClassroomModule(sql, clock);
     await expect(mod.enrollStudent(TEACHER, CLASS_A, { email: "amara@example.test" })).rejects.toThrow(
       "this class is archived — reopen it before enrolling",
@@ -453,7 +464,7 @@ describe("enrollStudent (:152-186)", () => {
   });
 
   test("blank email → 400 'email must not be blank' (fail-closed)", async () => {
-    const sql = fakeSql([ownedClassRoute([classRow()])]);
+    const sql = fakeSqlWithFeatures([ownedClassRoute([classRow()])]);
     const mod = buildClassroomModule(sql, clock);
     await expect(mod.enrollStudent(TEACHER, CLASS_A, { email: "   " })).rejects.toThrow(
       "email must not be blank",
@@ -462,7 +473,7 @@ describe("enrollStudent (:152-186)", () => {
   });
 
   test("unknown email → 404 verbatim 'no account with that email — the student registers first, then you enroll'", async () => {
-    const sql = fakeSql([ownedClassRoute([classRow()]), studentLookupRoute([])]);
+    const sql = fakeSqlWithFeatures([ownedClassRoute([classRow()]), studentLookupRoute([])]);
     const mod = buildClassroomModule(sql, clock);
     const err = await mod.enrollStudent(TEACHER, CLASS_A, { email: "ghost@example.test" }).catch((e) => e);
     expect(err).toBeInstanceOf(ClassroomNotFoundError);
@@ -470,7 +481,7 @@ describe("enrollStudent (:152-186)", () => {
   });
 
   test("disabled account → 409 'that account is disabled'", async () => {
-    const sql = fakeSql([ownedClassRoute([classRow()]), studentLookupRoute([studentRow({ enabled: false })])]);
+    const sql = fakeSqlWithFeatures([ownedClassRoute([classRow()]), studentLookupRoute([studentRow({ enabled: false })])]);
     const mod = buildClassroomModule(sql, clock);
     await expect(mod.enrollStudent(TEACHER, CLASS_A, { email: "amara@example.test" })).rejects.toThrow(
       "that account is disabled",
@@ -478,7 +489,7 @@ describe("enrollStudent (:152-186)", () => {
   });
 
   test("non-STUDENT account → 409 'only student accounts can be enrolled in a class'", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       ownedClassRoute([classRow()]),
       studentLookupRoute([studentRow({ roles: ["TEACHER"] })]),
     ]);
@@ -490,7 +501,7 @@ describe("enrollStudent (:152-186)", () => {
 
   test("re-enrollment is the idempotent no-op it honestly is (no INSERT when the pair exists)", async () => {
     const inserts: string[] = [];
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       ownedClassRoute([classRow()]),
       studentLookupRoute([studentRow()]),
       existsMemberRoute(true),
@@ -507,7 +518,7 @@ describe("enrollStudent (:152-186)", () => {
 
   test("happy path: one INSERT with enrolledBy = the enrolling teacher, then the detail", async () => {
     const inserts: string[] = [];
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       ownedClassRoute([classRow()]),
       studentLookupRoute([studentRow()]),
       existsMemberRoute(false),
@@ -527,7 +538,7 @@ describe("enrollStudent (:152-186)", () => {
 describe("removeMember (:188-198)", () => {
   test("deletes exactly that member row, then the detail", async () => {
     let deleted = "";
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       ownedClassRoute([classRow()]),
       {
         match: /^delete from class_members where class_id = \? ::uuid and student_id = \? ::uuid$/,
@@ -550,7 +561,7 @@ describe("removeMember (:188-198)", () => {
 
 describe("publishAnnouncement (:200-225)", () => {
   test("archived class → 409 'this class is archived — reopen it before publishing'", async () => {
-    const sql = fakeSql([ownedClassRoute([classRow({ status: "ARCHIVED" })])]);
+    const sql = fakeSqlWithFeatures([ownedClassRoute([classRow({ status: "ARCHIVED" })])]);
     const mod = buildClassroomModule(sql, clock);
     await expect(
       mod.publishAnnouncement(TEACHER, CLASS_A, { title: "t", body: "b" }),
@@ -558,7 +569,7 @@ describe("publishAnnouncement (:200-225)", () => {
   });
 
   test("unknown category → 400 verbatim (after the archived gate, per the frozen sequencing)", async () => {
-    const sql = fakeSql([ownedClassRoute([classRow()])]);
+    const sql = fakeSqlWithFeatures([ownedClassRoute([classRow()])]);
     const mod = buildClassroomModule(sql, clock);
     await expect(
       mod.publishAnnouncement(TEACHER, CLASS_A, { title: "t", body: "b", category: "urgent" }),
@@ -567,7 +578,7 @@ describe("publishAnnouncement (:200-225)", () => {
   });
 
   test("trimmed-blank title or body → 400 'title and body must not be blank'", async () => {
-    const sql = fakeSql([ownedClassRoute([classRow()])]);
+    const sql = fakeSqlWithFeatures([ownedClassRoute([classRow()])]);
     const mod = buildClassroomModule(sql, clock);
     await expect(mod.publishAnnouncement(TEACHER, CLASS_A, { title: "   ", body: "b" })).rejects.toThrow(
       "title and body must not be blank",
@@ -578,7 +589,7 @@ describe("publishAnnouncement (:200-225)", () => {
   });
 
   test("happy path: category ABSENT → GENERAL stored; fresh row serves readCount 0 + live roster; kebab wire", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       ownedClassRoute([classRow()]),
       {
         match: /^insert into announcements \(id, teacher_id, class_id, title, body, category, created_at\)/,
@@ -604,7 +615,7 @@ describe("publishAnnouncement (:200-225)", () => {
   });
 
   test("explicit 'exam-reminder' parses to EXAM_REMINDER and serves the kebab wire", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       ownedClassRoute([classRow()]),
       {
         match: /^insert into announcements \(id, teacher_id, class_id, title, body, category, created_at\)/,
@@ -624,7 +635,7 @@ describe("publishAnnouncement (:200-225)", () => {
 
 describe("teacherAnnouncements (:227-244)", () => {
   test("newest-first LIMIT 100 + batched read counts + roster-sized memberCount", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       ownedClassRoute([classRow()]),
       announcementsByClassRoute([announcementRow({ id: ANNOUNCE_2 }), announcementRow()]),
       rosterRoute([memberRow(LEARNER), memberRow(STUDENT_2)]),
@@ -645,7 +656,7 @@ describe("teacherAnnouncements (:227-244)", () => {
 
 describe("learnerOverview (:85-104)", () => {
   test("the independent-student rule: no membership rows → the honest EMPTY (not an error)", async () => {
-    const sql = fakeSql([membershipsRoute([])]);
+    const sql = fakeSqlWithFeatures([membershipsRoute([])]);
     const mod = buildClassroomModule(sql, clock);
     const view = await mod.learnerOverview(LEARNER);
     expect(view.classes).toEqual([]);
@@ -654,7 +665,7 @@ describe("learnerOverview (:85-104)", () => {
   });
 
   test("archived classes DROP OUT of the overlay; all-archived → the honest EMPTY", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       membershipsRoute([memberRow(LEARNER)]),
       classesAnyRoute([classRow({ status: "ARCHIVED" })]),
     ]);
@@ -666,7 +677,7 @@ describe("learnerOverview (:85-104)", () => {
   });
 
   test("per-class unread + the flattened badge + the batched teacher names", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       membershipsRoute([memberRow(LEARNER)]),
       classesAnyRoute([classRow()]),
       announcementsAnyRoute([announcementRow({ id: ANNOUNCE_1 }), announcementRow({ id: ANNOUNCE_2 })]),
@@ -682,7 +693,7 @@ describe("learnerOverview (:85-104)", () => {
   });
 
   test("a vanished teacher account serves the '(unavailable)' fallback (:158-160)", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       membershipsRoute([memberRow(LEARNER)]),
       classesAnyRoute([classRow()]),
       announcementsAnyRoute([]),
@@ -697,7 +708,7 @@ describe("learnerOverview (:85-104)", () => {
 
 describe("learnerAnnouncements (:106-121)", () => {
   test("the feed across ALL my live classes with MY read flag beside each", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       membershipsRoute([memberRow(LEARNER), memberRow(STUDENT_2, { class_id: CLASS_B })]),
       classesAnyRoute([classRow(), classRow({ id: CLASS_B, name: "Period 4" })]),
       announcementsAnyRoute([
@@ -722,7 +733,7 @@ describe("learnerAnnouncements (:106-121)", () => {
 
 describe("markAnnouncementRead (:123-141)", () => {
   test("unknown announcement → 404 'announcement not found'", async () => {
-    const sql = fakeSql([announcementByIdRoute([])]);
+    const sql = fakeSqlWithFeatures([announcementByIdRoute([])]);
     const mod = buildClassroomModule(sql, clock);
     const err = await mod.markAnnouncementRead(LEARNER, ANNOUNCE_1).catch((e) => e);
     expect(err).toBeInstanceOf(ClassroomNotFoundError);
@@ -730,7 +741,7 @@ describe("markAnnouncementRead (:123-141)", () => {
   });
 
   test("the §17 membership gate: another teacher's class → 403 verbatim, nothing written", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       announcementByIdRoute([announcementRow()]),
       { match: /select 1 as one from class_members where class_id = \? ::uuid and student_id = \? ::uuid$/, rows: [] },
     ]);
@@ -743,7 +754,7 @@ describe("markAnnouncementRead (:123-141)", () => {
 
   test("the repeat is the idempotent no-op it honestly is (no INSERT on the existing receipt)", async () => {
     const inserts: string[] = [];
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       announcementByIdRoute([announcementRow()]),
       { match: /select 1 as one from class_members where class_id = \? ::uuid and student_id = \? ::uuid$/, rows: [{ one: 1 }] },
       existsReadRoute(true),
@@ -764,7 +775,7 @@ describe("markAnnouncementRead (:123-141)", () => {
 
   test("happy path: one append-only receipt row with the clock's read_at; the announcement NEVER mutates", async () => {
     let readAt = "";
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       announcementByIdRoute([announcementRow()]),
       { match: /select 1 as one from class_members where class_id = \? ::uuid and student_id = \? ::uuid$/, rows: [{ one: 1 }] },
       existsReadRoute(false),
@@ -789,7 +800,7 @@ describe("markAnnouncementRead (:123-141)", () => {
 
 describe("rosterLearners (TeacherRosterController :36-41)", () => {
   test("enabled STUDENT cohort ordered displayName asc, email asc — identity projection only", async () => {
-    const sql = fakeSql([
+    const sql = fakeSqlWithFeatures([
       rosterCohortRoute([
         { id: STUDENT_2, display_name: "Ben O.", email: "ben@example.test", created_at: T0 },
         { id: LEARNER, display_name: "Amara H.", email: "amara@example.test", created_at: T1 },
