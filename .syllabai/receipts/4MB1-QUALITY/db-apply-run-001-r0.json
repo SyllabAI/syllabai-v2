@@ -1,0 +1,50 @@
+{
+  "task": "4MB1-QUALITY db-apply-run-001-r0 — the DB difficulty-update lane (the OPEN DECISION of run-001 discharged)",
+  "operatorOrder": "fire that DB lane (trace 1a15bc8d6de82fb5)",
+  "date": "2026-10-21",
+  "what": "Applied the of-record difficulty census (.syllabai/receipts/4MB1-QUALITY/difficulty-map-1249.json, glm-4-plus band-3b class, n=80 re-ask 63.8% exact / 98.8% within-one-band) onto the band-5 DB fetch-bank maths-b rows BY external_ref: easy->2 / medium->3 / hard->4, difficulty_source -> 'AI_VALIDATED' (the store's LLM-derived+verified vocabulary per the question_spec_points provenance law). Prior state = the NULL-DIFFICULTY LAW deterministic default: difficulty 3 / 'DEFAULT' (1192/1192 refs confirmed at that state pre-apply).",
+  "structureOfRecord": {
+    "bank": "band-5 DB fetch-bank, questions table, external_ref sme-eq-igcse-maths-b-16-<YYYY-MM>-<4mb1-NN[R]>-q<order>, PER-QUESTION rows (order = the bundle's own 0-based q.order within the set; set.topicSlug = the paper slug)",
+    "size": "1,192 distinct active refs + 10 inactive twins = 1,202 rows, all STRUCTURED / PAST_PAPER",
+    "emitterLaw": "apps/api/src/services/sme/bundle-questions.ts — excludes (a) no-spec-code questions (unmapped), (b) sum(parts.marks) != totalMarks (badSum, '4MB1: 57 of 1249'), (c) duplicate orders (first wins); ADR-026 slice-scoped replace explains the 10 inactive twins of 2022-01-4mb1-02"
+  },
+  "bridge": {
+    "builder": "r0_build_bridge.py (local scripts/, method disclosed here; bundle-derived only, no credentials)",
+    "source": "bundle of record git 8ee371e:apps/hub/content/igcse-maths-b-16/questions.json (the pre-2ece53b chain)",
+    "law": "order identity: DB q<idx> <-> bundle question with order == idx in the set — the emitter's own ref law, zero positional inference",
+    "prediction": "emitted 1,192 = EXACTLY the bank size; badSum 57 = EXACTLY the audit's 57 totalMark!=sumParts population; unmapped 0; dupOrder 0",
+    "sha16": "212b9a558139b526"
+  },
+  "proofs": [
+    "64/64 DB papers passed BIDIRECTIONAL order identity (DB order set == predicted emittedOrders set, both directions, fail-closed)",
+    "marks equality per row: every DB row's marks == the bundle question's totalMarks at its order",
+    "twin law: the 10 inactive rows are exact active+inactive pairs with identical state (2022-01-4mb1-02)",
+    "reconciliation vs the map: 1,192 covered qstns, 0 strays, 57 map-only = the badSum population (disclosed, no action)",
+    "isolation: non-maths-b grouped snapshot (8 groups, sha16 d3040b167a81e255) asserted byte-identical inside the tx",
+    "race guard: plan recomputed from state captured INSIDE the tx; family row count + state hash re-verified before any write"
+  ],
+  "apply": {
+    "mode": "single transaction (sql.begin), 4 chunked parameterized tx.unsafe UPDATEs (400/batch), postgres-js 3.4.9",
+    "refsUpdated": 1192,
+    "rowsUpdated": 1202,
+    "inTxPostVerify": "offTarget=0 (exact per-row compare against the map of record, rolled back on any violation)",
+    "dbTarget": { "project": "billowing-cherry-15418366", "branch": "br-muddy", "database": "neondb", "role": "syllabai_v2_app_w2" },
+    "mapSha16": "6e7c67ac2697b989"
+  },
+  "post": {
+    "distribution": { "rank2": 303, "rank3": 737, "rank4": 162 },
+    "active": { "rank2": 303, "rank3": 729, "rank4": 160 },
+    "twins": { "rank3": 8, "rank4": 2 },
+    "difficultySource": "AI_VALIDATED (1202/1202)",
+    "idempotency": "apply-004 re-run = clean no-op (0 refs, 0 rows)",
+    "sanity": "per-paper band gradient: P1 papers mean easy-frac 0.33 / hard-frac 0.09; P2 papers mean easy-frac 0.06 / hard-frac 0.24 (consistent with run-001 position sanity easy Q6.2 / medium Q13.5 / hard Q15.0)"
+  },
+  "disclosures": [
+    "question_versions: 1,202 children left untouched — ingest-time snapshots; grep-verified ZERO readers of qv.difficulty in apps/api/src (smartmark/teachermarking use versions only as ID resolvers)",
+    "the 57 badSum bundle questions are NOT in the DB bank (emitter law) and remain unclassified on both planes",
+    "coupling: if maths-b is ever restored from the 8ee371e chain and re-ingested, the shim's NULL-DIFFICULTY LAW re-emits 3/'DEFAULT' and this lane must re-run (restore-vs-ratify is operator-keyed of record)",
+    "the tutor/test-builder serving axis reads questions.difficulty directly — the deterministic difficulty-then-id assembly now orders real bands; no deploy needed (data-plane only)",
+    "zero LLM this lane; NEON_KEY via env inline-only, scrub-asserted output (no napi_/ghp_/vcp_/postgresql:// in any artifact); runner + bridge builder stay local per the census-lane pattern"
+  ],
+  "hygiene": "bookkeeping-only commit (.syllabai/** only), fetch-first, FF-only, no force; PAT inline one-time and remote URL scrubbed post-push"
+}

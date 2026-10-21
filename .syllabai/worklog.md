@@ -10443,3 +10443,19 @@ Work Log:
 
 Stage Summary:
 - FEATURE CLOSED of record: per-course tutor STRICT SEPARATION + the course-page Tutor card are MERGED (d3a5863) and LIVE-VERIFIED in production. Residuals: Vercel deploy rate-limit window on bookkeeping pushes; PAT rotation now doubly overdue (chat-exposed twice); bare /tutor footprint-selector posture unchanged (subject-picker remains an open offer).
+---
+Task ID: 4MB1-QUALITY db-apply-run-001-r0 (trace 1a15bc8d6de82fb5, operator order "fire that DB lane")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Discharged the run-001 OPEN DECISION: the DB difficulty-update lane onto the band-5 fetch-bank maths-b rows. Race check CLEAR (no parallel lane; post-c1d6f57 commits bookkeeping-only).
+- Structure discovered first-hand: the bank is PER-QUESTION rows keyed sme-eq-igcse-maths-b-16-<series>-<4mb1-NN[R]>-q<order> — order = the bundle's own q.order, topicSlug = the paper slug; 1,192 distinct active refs + 10 inactive twins (2022-01-4mb1-02, ADR-026 replace) = 1,202 rows, all 3/'DEFAULT' per the NULL-DIFFICULTY LAW.
+- Emitter law of record pinned in bundle-questions.ts: excludes no-spec-code (unmapped), sum(parts)!=totalMarks (badSum, "4MB1: 57 of 1249" = exactly the 1249-1192 delta), duplicate orders. Bridge built from the bundle of record git 8ee371e by ORDER IDENTITY (zero positional inference): predicted emitted = 1,192 = bank size EXACT; badSum 57, unmapped 0, dupOrder 0.
+- Dry-run: 64/64 papers passed bidirectional order-identity + per-row marks equality; 1,192 refs covered, 0 strays, 57 map-only (badSum population, disclosed); plan 1,192 refs / 1,202 rows, all from 3|DEFAULT.
+- PROD APPLIED (one transaction, in-tx race guard + re-prove, 4 chunked parameterized UPDATEs): easy->2 / medium->3 / hard->4, difficulty_source -> 'AI_VALIDATED' (the store's LLM-derived+verified vocabulary per the qsp provenance law; prior state was the NULL-DIFFICULTY default). rowsUpdated 1202; in-tx post-verify offTarget=0; isolation baseline (8 non-maths-b groups, sha d3040b167a81e255) byte-identical.
+- Post: distribution 2:303 / 3:737 / 4:162 (active 303/729/160 + twins 8@3/2@4), all AI_VALIDATED; idempotency apply-004 = clean no-op; per-paper sanity: P1 easy-mean 0.33 / hard 0.09 vs P2 easy 0.06 / hard 0.24 (the expected gradient, consistent with run-001 position sanity).
+- Disclosures: question_versions (1,202 children) untouched — ingest-time snapshots, grep-verified ZERO qv.difficulty readers in apps/api/src; the 57 badSum questions stay unclassified on both planes (emitter law); if maths-b is restored + re-ingested the shim re-emits 3/'DEFAULT' and this lane re-runs (operator-keyed restore-vs-ratify coupling); the tutor/test-builder axis reads questions.difficulty directly, no deploy needed.
+- Receipt .syllabai/receipts/4MB1-QUALITY/db-apply-run-001-r0.json; map sha16 6e7c67ac2697b989, bridge sha16 212b9a558139b526; dbTarget project billowing-cherry-15418366 / branch br-muddy / neondb / syllabai_v2_app_w2. Zero LLM; NEON_KEY env inline-only, scrub-asserted; bookkeeping-only commit (.syllabai/** only), fetch-first, FF-only, no force.
+
+Stage Summary:
+- The 4MB1 difficulty classification is LIVE on the DB fetch-bank: 1,192/1,192 live rows carry verified bands (easy 303 / medium 729 / hard 160) + AI_VALIDATED provenance; smart mark, tutor and the deterministic difficulty-then-id test-builder now serve real difficulty on the maths-b axis. The run-001 census is fully discharged of record. Remaining known residuals unchanged: PAT rotation, prj_D7vf, Vercel prune, the operator-keyed bundle restore-vs-ratify ruling.
