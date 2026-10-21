@@ -96,7 +96,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Markdown } from "@/components/markdown";
 import { TeacherNav } from "@/components/teacher/teacher-nav";
+import { api } from "@/lib/api";
 import { useSavedTests } from "@/lib/teacher/stores";
+import {
+  filterTaughtCourses,
+  readBuilderDraft as readStoredDraft,
+  resolveInitialCourse,
+  writeBuilderDraft as writeStoredDraft,
+} from "@/lib/teacher/test-builder-access";
 import type { TeacherCourseData } from "@/lib/teacher/types";
 import type { AssembledQuestion, AssembledTest } from "@/lib/teacher/test-assembly";
 import type { SwitchableCourse } from "@/lib/teacher/types";
@@ -109,11 +116,11 @@ const REASON_LABELS: Record<string, string> = {
 const WEAK_LANE_CAP = 6;
 const BANK_PAGE = 40;
 
-/** Builder draft (whole builder state across refreshes) — same versioned
- *  localStorage family as stores.ts. An explicit Save commits the work and
- *  clears the draft; Discard on the landing clears it too. */
-const DRAFT_KEY = "syllabai.testBuilderDraft.v1";
-
+/** Builder draft (whole builder state across refreshes) — persisted PER
+ *  COURSE since T-TEACH-008 (one slot per class, lib/teacher/
+ *  test-builder-access.ts): switching classes never clobbers another
+ *  class's work-in-progress. An explicit Save commits the work and clears
+ *  the draft; Discard on the landing clears it too. */
 interface BuilderDraft {
   v: 1;
   course: string;
@@ -132,32 +139,25 @@ interface BuilderDraft {
   savedAt: string;
 }
 
-/** Shallow-shape guard for a restored draft: course must still exist in the
- *  course list (bank lookups would 404 otherwise) and a persisted paper must
- *  belong to the same course. Anything else degrades to "no draft". */
-function readBuilderDraft(courses: SwitchableCourse[]): BuilderDraft | null {
-  try {
-    const raw = window.localStorage.getItem(DRAFT_KEY);
-    if (!raw) return null;
-    const d = JSON.parse(raw) as BuilderDraft;
-    if (
-      !d ||
-      d.v !== 1 ||
-      typeof d.course !== "string" ||
-      !courses.some((c) => c.slug === d.course) ||
-      !Array.isArray(d.selected) ||
-      !Array.isArray(d.manualIds)
-    )
-      return null;
-    if (
-      d.test !== null &&
-      (!d.test || !Array.isArray(d.test.questions) || d.test.course?.slug !== d.course)
-    )
-      return null;
-    return d;
-  } catch {
+/** Shallow-shape guard for a restored draft of ONE (taught) course: the
+ *  stored draft must belong to the requested slug (membership in the taught
+ *  set is guaranteed by the render gate) and a persisted paper must belong
+ *  to the same course. Anything else degrades to "no draft". Storage, the
+ *  v+course identity law and the legacy-v1 migration live in
+ *  lib/teacher/test-builder-access.ts; this wrapper owns the builder's
+ *  shape law. */
+function readBuilderDraft(slug: string): BuilderDraft | null {
+  const d = readStoredDraft(slug) as BuilderDraft | null;
+  if (!d) return null;
+  if (!Array.isArray(d.selected) || !Array.isArray(d.manualIds)) return null;
+  const test = d.test;
+  if (
+    test !== null &&
+    test !== undefined &&
+    (!test || !Array.isArray(test.questions) || test.course?.slug !== slug)
+  )
     return null;
-  }
+  return d;
 }
 
 type DifficultyFilter = "all" | "easy" | "medium" | "hard";
@@ -391,7 +391,17 @@ export function TestBuilderClient({
   initialSubtopics: string[];
   initialView: "tests" | "builder";
 }) {
-  const [course, setCourse] = useState<string | null>(initialCourse);
+  // T-TEACH-008: the course resolves ONLY after the taught set loads — the
+  // builder offers the intersection of the committed registry with the
+  // courseSlugs of the teacher's OWN classes (api.teacherClasses(),
+  // ownership-scoped since T-TEACH-005/006), never the full registry.
+  const [course, setCourse] = useState<string | null>(null);
+  // null = the classes fetch is in flight; empty set = fail-closed (no
+  // taught courses known → nothing offered); a fetch error lands in
+  // taughtError (retryable) instead of silently widening the set.
+  const [taughtSlugs, setTaughtSlugs] = useState<Set<string> | null>(null);
+  const [taughtError, setTaughtError] = useState(false);
+  const [taughtAttempt, setTaughtAttempt] = useState(0);
   // course payload lives in ONE course-tagged state; loading/error derive from
   // it (no synchronous setState in the fetch effect — react-hooks lint rules)
   const [state, setState] = useState<{
@@ -436,6 +446,12 @@ export function TestBuilderClient({
 
   const [savedFlash, setSavedFlash] = useState(false);
   const { tests, save, remove } = useSavedTests();
+  // T-TEACH-008: the landing is PER-CLASS — only the current course's saves
+  // (every save has carried its course slug since stores.ts day one)
+  const courseTests = useMemo(
+    () => tests.filter((t) => t.course === course),
+    [tests, course],
+  );
   const resultRef = useRef<HTMLElement | null>(null);
 
   // ── tests-first landing / builder view ──────────────────────────────────
@@ -470,6 +486,27 @@ export function TestBuilderClient({
     window.history.replaceState(null, "", "/teacher/test-builder");
   }
 
+  /** T-TEACH-008 — the ONE class-switch path (builder select + landing
+   *  switcher share it): reset the in-memory build; the per-course draft
+   *  restores the target class's work on arrival, so the switch is
+   *  non-destructive and needs no confirm. `next` is taught by
+   *  construction — both selects render only taughtCourses. */
+  function switchCourse(next: string | null) {
+    setCourse(next);
+    setSelected(new Set());
+    setTest(null);
+    setStale(false);
+    setBank(null);
+    setBankError(null);
+    setDifficulty("all");
+    manualIdsRef.current = new Set();
+    setUndoState(null);
+  }
+
+  // T-TEACH-008 escape hatch: a saved test opened across courses sets the
+  // builder state itself — the NEXT restore-on-arrival effect run (that
+  // course change) must not clobber it with the stored draft.
+  const suppressRestoreRef = useRef(false);
   // floating bar visibility while scrolling the (long) bank
   useEffect(() => {
     const onScroll = () => setShowFloat(window.scrollY > 600);
@@ -482,18 +519,65 @@ export function TestBuilderClient({
     if (undoTimerRef.current) window.clearTimeout(undoTimerRef.current);
   }, []);
 
-  // ── restore the draft once on mount (before the browser paints, so the
-  // course/bank fetches re-run against the restored course) ────────────────
-  // The restore is deferred one microtask: synchronous setState inside an
-  // effect body is a react-hooks/set-state-in-effect violation, and the
-  // course-fetch effect's `cancelled` guard already absorbs the ordering
-  // (default-course fetch starts, is cancelled, re-runs on the restored
-  // course) — one extra cheap request, no stale writes.
+  // ── the taught set (T-TEACH-008): the teacher's own classes decide which
+  // courses the builder offers — fail-closed on fetch error (an empty set,
+  // with a retry), never the full registry ─────────────────────────────────
   useEffect(() => {
+    let cancelled = false;
+    api
+      .teacherClasses()
+      .then((classes) => {
+        if (!cancelled) {
+          setTaughtSlugs(new Set(classes.map((c) => c.courseSlug)));
+          setTaughtError(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setTaughtSlugs(new Set());
+          setTaughtError(true);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [taughtAttempt]);
+
+  const taughtCourses = useMemo(
+    () => (taughtSlugs === null ? null : filterTaughtCourses(courses, taughtSlugs)),
+    [courses, taughtSlugs],
+  );
+
+  // resolve the landing course once the taught set is known: an untaught
+  // deep-link slug degrades to the first taught course (never opens the
+  // untaught builder); no taught courses → null (the honest empty state)
+  useEffect(() => {
+    if (taughtCourses === null || course !== null) return;
+    const resolved = resolveInitialCourse(initialCourse, taughtCourses);
+    if (resolved !== null) {
+      // microtask, not synchronous — react-hooks/set-state-in-effect
+      queueMicrotask(() => setCourse(resolved));
+    }
+  }, [taughtCourses, course, initialCourse]);
+
+  // ── restore THIS course's draft on arrival — the initial mount AND every
+  // class switch (the per-course draft is what makes switching classes
+  // non-destructive, so the old "switch subject?" confirm is gone). The
+  // microtask defers the setState out of the effect body; the course-fetch
+  // effect's `cancelled` guard absorbs the ordering (default fetch starts,
+  // is cancelled, re-runs against the restored course). One escape: a saved
+  // test opened across courses sets the state itself — suppressRestoreRef
+  // hands this arrival to that flow. ─────────────────────────────────────
+  useEffect(() => {
+    if (!course) return;
     queueMicrotask(() => {
-      const d = readBuilderDraft(courses);
+      if (suppressRestoreRef.current) {
+        suppressRestoreRef.current = false;
+        hydratedRef.current = true;
+        return;
+      }
+      const d = readBuilderDraft(course);
       if (d) {
-        setCourse(d.course);
         setSelected(new Set(d.selected));
         setMode(d.mode === "count" ? "count" : "marks");
         setTargetMarks(typeof d.targetMarks === "string" && d.targetMarks ? d.targetMarks : "40");
@@ -520,14 +604,14 @@ export function TestBuilderClient({
           }));
         }
         manualIdsRef.current = new Set(d.manualIds);
-        }
+      }
       hydratedRef.current = true;
     });
-  }, [courses]);
+  }, [course]);
 
-  // ── persist the whole builder state as a draft (debounced); manual ids
-  // are only ever mutated alongside a persisted dep, so the ref read at
-  // write time is safe ───────────────────────────────────────────────────
+  // ── persist the whole builder state as a PER-COURSE draft (debounced);
+  // manual ids are only ever mutated alongside a persisted dep, so the ref
+  // read at write time is safe ─────────────────────────────────────────
   useEffect(() => {
     if (!hydratedRef.current || !course) return;
     const timer = window.setTimeout(() => {
@@ -537,12 +621,12 @@ export function TestBuilderClient({
           paperKey(testName, test.questions.map((q) => q.id)) === committedKey
         ) {
           // the paper is already committed to "Your tests" — no draft
-          window.localStorage.removeItem(DRAFT_KEY);
+          writeStoredDraft(course, null);
           return;
         }
         if (!test && selected.size === 0 && testName.trim() === "") {
           // nothing worth resuming (e.g. right after Discard) — no draft
-          window.localStorage.removeItem(DRAFT_KEY);
+          writeStoredDraft(course, null);
           return;
         }
         const draft: BuilderDraft = {
@@ -561,7 +645,7 @@ export function TestBuilderClient({
           test,
           savedAt: new Date().toISOString(),
         };
-        window.localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+        writeStoredDraft(course, draft);
       } catch {
         // private mode / quota — the draft just won't persist
       }
@@ -743,11 +827,12 @@ export function TestBuilderClient({
   }, [test, selected, allSubtopics]);
 
   // subject dropdown: dedupe identical label+code pairs, group by
-  // qualification, sort inside groups; "Ict" casing fix at display level
+  // qualification, sort inside groups; "Ict" casing fix at display level.
+  // T-TEACH-008: derived from the TAUGHT intersection, not the registry.
   const courseGroups = useMemo(() => {
     const seen = new Set<string>();
     const deduped: SwitchableCourse[] = [];
-    for (const c of [...courses].sort(
+    for (const c of [...(taughtCourses ?? [])].sort(
       (a, b) =>
         (a.level + a.label).localeCompare(b.level + b.label) ||
         a.slug.localeCompare(b.slug),
@@ -764,9 +849,9 @@ export function TestBuilderClient({
       groups.set(c.level, list);
     }
     return [...groups.entries()];
-  }, [courses]);
+  }, [taughtCourses]);
 
-  const current = courses.find((c) => c.slug === course);
+  const current = (taughtCourses ?? []).find((c) => c.slug === course);
   const paperTitle = testName.trim() || `${test?.course.subject ?? current?.label ?? ""} — class test`;
   // progress-ring target: the current marks input, clamped to the API range
   const ringMax =
@@ -944,7 +1029,7 @@ export function TestBuilderClient({
     setUndoState(null);
     manualIdsRef.current = new Set();
     try {
-      window.localStorage.removeItem(DRAFT_KEY);
+      if (course) writeStoredDraft(course, null);
     } catch {
       // ignore
     }
@@ -953,7 +1038,7 @@ export function TestBuilderClient({
   /** explicit Save commits the work — the draft is no longer needed. */
   function clearDraftAfterSave() {
     try {
-      window.localStorage.removeItem(DRAFT_KEY);
+      if (course) writeStoredDraft(course, null);
     } catch {
       // ignore
     }
@@ -1027,7 +1112,7 @@ export function TestBuilderClient({
   function onSaveTest() {
     if (!course) return;
     if (!test && selected.size === 0) return;
-    const meta = courses.find((c) => c.slug === course);
+    const meta = (taughtCourses ?? []).find((c) => c.slug === course);
     const finalName =
       testName.trim() ||
       (test
@@ -1053,6 +1138,14 @@ export function TestBuilderClient({
   function onLoadSaved(id: string) {
     const t = tests.find((x) => x.id === id);
     if (!t) return;
+    // T-TEACH-008: the landing lists only the current course's tests, but a
+    // stale id (or a save from another course) still routes honestly — the
+    // course switch lands on a taught course or is refused. A cross-course
+    // open sets the builder state itself, so the restore-on-arrival effect
+    // is suppressed for exactly that arrival.
+    if (t.course !== course && !(taughtCourses ?? []).some((c) => c.slug === t.course)) return;
+    const crossing = t.course !== course;
+    if (crossing) suppressRestoreRef.current = true;
     if (
       test &&
       test.questions.length > 0 &&
@@ -1152,20 +1245,87 @@ export function TestBuilderClient({
         </p>
       </header>
 
-      {view === "tests" ? (
-        /* ══ landing · your saved tests (empty until one is created) ══ */
+      {taughtCourses === null ? (
+        /* ══ T-TEACH-008: the taught set is loading — the builder NEVER
+           renders with the unscoped registry, not even for a frame ══ */
+        <section
+          aria-label="Loading your classes"
+          aria-live="polite"
+          className="mx-auto max-w-3xl rounded-lg border border-dashed p-10 text-center"
+        >
+          <p className="text-sm text-muted-foreground">Checking your classes…</p>
+        </section>
+      ) : taughtError && taughtCourses.length === 0 ? (
+        /* fail-closed: a class-fetch error yields the EMPTY set — the retry
+           re-runs the fetch; the full registry is never the fallback */
+        <section
+          aria-label="Class list unavailable"
+          className="mx-auto max-w-3xl rounded-lg border border-dashed p-10 text-center"
+        >
+          <p className="font-medium">Couldn&apos;t load your classes</p>
+          <p className="mx-auto mt-1 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            The Test Builder opens only the courses you teach, and the class list
+            didn&apos;t load. Nothing was widened in the meantime — retry to load your
+            classes.
+          </p>
+          <Button className="mt-4" variant="outline" onClick={() => setTaughtAttempt((n) => n + 1)}>
+            Retry
+          </Button>
+        </section>
+      ) : taughtCourses.length === 0 ? (
+        <section
+          aria-label="No taught courses"
+          className="mx-auto max-w-3xl rounded-lg border border-dashed p-10 text-center"
+        >
+          <ClipboardList className="mx-auto size-8 text-muted-foreground/60" aria-hidden />
+          <p className="mt-3 font-medium">No classes with a question bank yet</p>
+          <p className="mx-auto mt-1 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            The Test Builder opens from your classes — each class builds tests from its
+            own course&apos;s bank. Create or open a class whose course carries the
+            committed question bank, then build its tests here.
+          </p>
+          <Button asChild className="mt-4" variant="outline">
+            <Link href="/teacher/classes">Go to your classes</Link>
+          </Button>
+        </section>
+      ) : view === "tests" ? (
+        /* ══ landing · THIS class's saved tests (per-course since T-TEACH-008) ══ */
         <section aria-label="Your tests" className="mx-auto max-w-3xl space-y-4">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <h2 className="font-display text-xl font-semibold">Your tests</h2>
+              <h2 className="font-display text-xl font-semibold">
+                Your tests{current ? <> — {current.label}</> : null}
+              </h2>
               <p className="mt-1 text-sm text-muted-foreground">
-                Everything you&apos;ve built and saved — open one to rearrange, print or assign it.
+                {current ? `${current.code} · ` : ""}Everything you&apos;ve built and saved
+                for this class — open one to rearrange, print or assign it.
               </p>
             </div>
-            <Button onClick={goBuilder}>
-              <Plus className="size-4" aria-hidden />
-              Create test
-            </Button>
+            <div className="flex shrink-0 items-center gap-2">
+              <div className="relative">
+                <select
+                  aria-label="Switch class"
+                  value={course ?? ""}
+                  onChange={(e) => switchCourse(e.target.value || null)}
+                  className="h-9 max-w-56 appearance-none rounded-md border bg-background pr-8 pl-3 text-sm"
+                >
+                  {courseGroups.map(([level, list]) => (
+                    <optgroup key={level} label={level}>
+                      {list.map((c) => (
+                        <option key={c.slug} value={c.slug}>
+                          {c.label} ({c.code})
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute top-1/2 right-2.5 size-3.5 -translate-y-1/2 text-muted-foreground" />
+              </div>
+              <Button onClick={goBuilder}>
+                <Plus className="size-4" aria-hidden />
+                Create test
+              </Button>
+            </div>
           </div>
           {view === "tests" && test &&
             paperKey(testName, test.questions.map((q) => q.id)) !== committedKey && (
@@ -1191,13 +1351,16 @@ export function TestBuilderClient({
               </div>
             </div>
           )}
-          {tests.length === 0 ? (
+          {courseTests.length === 0 ? (
             <div className="rounded-lg border border-dashed p-10 text-center">
               <ClipboardList className="mx-auto size-8 text-muted-foreground/60" aria-hidden />
-              <p className="mt-3 font-medium">No tests yet</p>
+              <p className="mt-3 font-medium">
+                No tests for {current?.label ?? "this class"} yet
+              </p>
               <p className="mx-auto mt-1 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                Create your first test — pick questions from the bank yourself or auto-build from
-                the class&apos;s weakest areas, then save it here to reuse, print or assign.
+                Create the first test for this class — pick questions from the bank
+                yourself or auto-build from the class&apos;s weakest areas, then save it
+                here to reuse, print or assign. Each class keeps its own tests.
               </p>
               <Button className="mt-4" onClick={goBuilder}>
                 <Plus className="size-4" aria-hidden />
@@ -1206,7 +1369,7 @@ export function TestBuilderClient({
             </div>
           ) : (
             <ul className="space-y-2">
-              {tests.map((t) => (
+              {courseTests.map((t) => (
                 <li
                   key={t.id}
                   className="flex items-center gap-3 rounded-lg border bg-card p-3 shadow-sm"
@@ -1271,26 +1434,7 @@ export function TestBuilderClient({
                       value={course ?? ""}
                       onChange={(e) => {
                         const next = e.target.value || null;
-                        if (
-                          next !== course &&
-                          test &&
-                          test.questions.length > 0 &&
-                          !window.confirm(
-                            "Switch subject? The test you're building will be cleared unless it's saved.",
-                          )
-                        ) {
-                          e.currentTarget.value = course ?? ""; // revert the select
-                          return;
-                        }
-                        setCourse(next);
-                        setSelected(new Set());
-                        setTest(null);
-                        setStale(false);
-                        setBank(null);
-                        setBankError(null);
-                        setDifficulty("all");
-                        manualIdsRef.current = new Set();
-                        setUndoState(null);
+                        switchCourse(next);
                       }}
                       className="h-9 w-full appearance-none rounded-md border bg-background pr-8 pl-3 text-sm"
                     >
