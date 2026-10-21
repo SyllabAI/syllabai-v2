@@ -111,14 +111,16 @@ export function ClassroomTab() {
                 {/* ADR-CLASS-0001 §6 — the learner honesty surface: when a
                     teacher turns an AI feature off for THIS class, the
                     student sees the state here (and the ask surfaces refuse
-                    with the same honest message). */}
-                {!c.features.tutor && (
+                    with the same honest message). Optional-chained: an API
+                    that predates T-TEACH-002 serves no features block — the
+                    honest render is NO badge, never a false "off". */}
+                {!c.features?.tutor && (
                   <span className="text-[10px] text-muted-foreground">· tutor off</span>
                 )}
-                {!c.features.cla && (
+                {!c.features?.cla && (
                   <span className="text-[10px] text-muted-foreground">· fact-check off</span>
                 )}
-                {!c.features.smartMark && (
+                {!c.features?.smartMark && (
                   <span className="text-[10px] text-muted-foreground">· smart mark off</span>
                 )}
                 {c.unreadAnnouncements > 0 ? (

@@ -150,10 +150,12 @@ export function ClassDetailClient({ classId }: { classId: string }) {
   // T-TEACH-002 (ADR-CLASS-0001): the class AI-feature toggles — a partial
   // write per flip (absent keys keep their value server-side); the response
   // IS the refreshed detail, so the panel re-renders from the answer.
+  // Guard: an API that predates T-TEACH-002 serves no features block — the
+  // handler refuses honestly instead of crashing the page.
   const [savingFeature, setSavingFeature] = useState<string | null>(null);
   const [featureError, setFeatureError] = useState<string | null>(null);
   const toggleFeature = async (key: "smartMark" | "tutor" | "cla") => {
-    if (!detail) return;
+    if (!detail?.features) return;
     const next = !detail.features[key];
     setSavingFeature(key);
     setFeatureError(null);
@@ -240,7 +242,11 @@ export function ClassDetailClient({ classId }: { classId: string }) {
           fact-check surface deny server-side for your members today; Smart
           Mark's toggle records your policy and rides the same learner
           honesty surface, its attempt-level gate lands with the
-          course-registry backfill (ADR §4 anchor-strength law). */}
+          course-registry backfill (ADR §4 anchor-strength law). The panel
+          is CONDITIONAL on the features block: an API that predates
+          T-TEACH-002 serves none — the honest render is no panel, never a
+          dehydrated control row. */}
+      {detail.features && (
       <Card>
         <CardContent className="space-y-3 pt-4">
           <h2 className="flex items-center gap-2 text-sm font-semibold">
@@ -313,6 +319,7 @@ export function ClassDetailClient({ classId }: { classId: string }) {
           </ul>
         </CardContent>
       </Card>
+      )}
 
       <div className="grid gap-4 lg:grid-cols-2">
         {/* roster */}
