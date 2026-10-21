@@ -43,6 +43,10 @@ const ATTEMPT3_ID = "b0000000-0000-4000-8000-000000000003";
 const SCHEME_ID = "70000000-0000-4000-8000-000000000009";
 const SCHEME_SUGGESTED_ID = "70000000-0000-4000-8000-000000000008";
 const MARKER_ID = "f0000000-0000-4000-8000-000000000001";
+/** T-TEACH-003 (ADR-027 D1): the requesting teacher — the scope principal
+ *  every surface binds into the enrollment predicate. */
+const TEACHER_ID = "f1000000-0000-4000-8000-000000000001";
+const OTHER_LEARNER_ID = "aa000000-0000-4000-8000-000000000009";
 const T1 = "2026-10-01T10:00:00Z";
 const T2 = "2026-10-02T10:00:00Z";
 const T3 = "2026-10-03T10:00:00Z";
@@ -107,6 +111,14 @@ function answerRow(overrides: Partial<Record<string, unknown>> = {}): Record<str
   };
 }
 
+/**
+ * T-TEACH-003 (ADR-027 D1): the scope-gated attempt-id prelude — the FIRST
+ * lookup of markAnswer / recordHumanMark folds the enrollment join, so its
+ * rendered text carries the exists clause and binds [answerId, teacherId].
+ * The empty-rows posture IS the out-of-scope 404 (no existence leak).
+ */
+const SCOPE_ATTEMPT_LOOKUP = /select a\.attempt_id from answers a join attempts at on at\.id = a\.attempt_id where a\.id = \? and exists \( select 1 from class_members cm join classes c on c\.id = cm\.class_id where cm\.student_id = at\.learner_id and c\.teacher_id = \? \)$/;
+
 const ATTEMPT_LOCK = {
   id: ATTEMPT_ID,
   learner_id: LEARNER_ID,
@@ -157,7 +169,7 @@ function markAnswerRoutes(overrides: {
 } = {}): Route[] {
   return [
     {
-      match: /select a\.attempt_id from answers a where a\.id = \?$/,
+      match: SCOPE_ATTEMPT_LOOKUP,
       rows: [{ attempt_id: ATTEMPT_ID }],
     },
     { match: /from attempts where id = \? for update$/, rows: [ATTEMPT_LOCK] },
@@ -261,22 +273,35 @@ describe("cohenKappa", () => {
 describe("markAnswer — per-answer Smart Mark topology", () => {
   test("unknown answer 404 before any state load", async () => {
     const { module } = build([
-      { match: /select a\.attempt_id from answers a where a\.id = \?$/, rows: [] },
+      { match: SCOPE_ATTEMPT_LOOKUP, rows: [] },
     ]);
-    await expect(module.teacherSmartMark.markAnswer(ANSWER_A)).rejects.toThrow("answer");
+    await expect(module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID)).rejects.toThrow("answer");
   });
 
-  test("gate order: attempt_id lookup, then attempt row lock, then the answer graph", async () => {
+  test("gate order: the scope-gated attempt_id lookup, then attempt row lock, then the answer graph", async () => {
     const { module, sql } = build(markAnswerRoutes());
-    await module.teacherSmartMark.markAnswer(ANSWER_A);
-    expect(sql.queries[0]).toContain("select a.attempt_id from answers");
+    await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
+    // T-TEACH-003: queries[0] IS the scope gate — the enrollment join rides
+    // the first lookup, so an out-of-scope answer never reaches the lock
+    expect(sql.queries[0]).toContain("select a.attempt_id from answers a join attempts at");
+    expect(sql.queries[0]).toContain("class_members cm");
+    expect(sql.queries[0]).toContain("c.teacher_id = ?");
+    expect(sql.paramsLog[0]).toEqual([ANSWER_A, TEACHER_ID]);
     expect(sql.queries[1]).toContain("from attempts where id = ? for update");
     expect(sql.queries[2]).toContain("from answers ans join question_parts");
   });
 
+  test("T-TEACH-003: out-of-scope answer (scope join empty) 404s like a nonexistent one — no lock, no state load", async () => {
+    const routes = markAnswerRoutes();
+    routes[0] = { match: SCOPE_ATTEMPT_LOOKUP, rows: [] }; // the learner is not enrolled
+    const { module, sql } = build(routes);
+    await expect(module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID)).rejects.toThrow("answer");
+    expect(sql.queries).toHaveLength(1); // the graph/lock never ran — pure invisibility
+  });
+
   test("happy path: result row saved, provisional marks applied, total recomputed with correct", async () => {
     const { module, sql } = build(markAnswerRoutes());
-    const result = await module.teacherSmartMark.markAnswer(ANSWER_A);
+    const result = await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
     expect(result.validation_passed).toBe(true);
     expect(result.marks_awarded).toBe(2);
     expect(result.model_id).toBe("glm-4.6");
@@ -292,7 +317,7 @@ describe("markAnswer — per-answer Smart Mark topology", () => {
 
   test("kappa gate released + attempt complete → evidence fired with the faithful payload", async () => {
     const { module, publisher } = build(markAnswerRoutes());
-    await module.teacherSmartMark.markAnswer(ANSWER_A);
+    await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
     expect(publisher.calls.length).toBe(1);
     const event = publisher.calls[0]!;
     expect(event.attemptId).toBe(ATTEMPT_ID);
@@ -304,7 +329,7 @@ describe("markAnswer — per-answer Smart Mark topology", () => {
 
   test("kappa gate NOT passed → provisional (state applied, evidence never fired)", async () => {
     const { module, publisher, sql } = build(markAnswerRoutes({ kappaPassed: false }));
-    const result = await module.teacherSmartMark.markAnswer(ANSWER_A);
+    const result = await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
     expect(result.validation_passed).toBe(true);
     expect(publisher.calls.length).toBe(0);
     expect(sql.queries.some((q) => q.includes("update attempts set evidence_emitted"))).toBeFalse();
@@ -319,7 +344,7 @@ describe("markAnswer — per-answer Smart Mark topology", () => {
         ],
       }),
     );
-    await module.teacherSmartMark.markAnswer(ANSWER_A);
+    await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
     expect(publisher.calls.length).toBe(0);
   });
 
@@ -332,7 +357,7 @@ describe("markAnswer — per-answer Smart Mark topology", () => {
       rows: [{ id: SCHEME_SUGGESTED_ID, validation_state: "SUGGESTED" }],
     });
     const { module, publisher, sql } = build(routes);
-    const result = await module.teacherSmartMark.markAnswer(ANSWER_A);
+    const result = await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
     expect(result.validation_passed).toBeFalse();
     expect(result.failure_reason).toBe("SCHEME_NOT_VALIDATED");
     expect(result.marks_awarded).toBe(0);
@@ -351,12 +376,12 @@ describe("markAnswer — per-answer Smart Mark topology", () => {
       rows: [],
     });
     const { module } = build(routes);
-    await expect(module.teacherSmartMark.markAnswer(ANSWER_A)).rejects.toThrow("mark scheme");
+    await expect(module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID)).rejects.toThrow("mark scheme");
   });
 
   test("in-scope point filter: only the answer's part points reach the pipeline", async () => {
     const { module, generator } = build(markAnswerRoutes());
-    await module.teacherSmartMark.markAnswer(ANSWER_A);
+    await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
     const ctx = generator.contexts[0]!;
     expect(ctx.points.map((p) => p.id)).toEqual([POINT_A1, POINT_A2]);
     expect(ctx.schemeId).toBe(SCHEME_ID);
@@ -369,17 +394,29 @@ describe("markAnswer — per-answer Smart Mark topology", () => {
 describe("recordHumanMark — the authoritative mark law", () => {
   test("unknown answer / unknown attempt 404s in gate order", async () => {
     const { module } = build([
-      { match: /select a\.attempt_id from answers a where a\.id = \?$/, rows: [] },
+      { match: SCOPE_ATTEMPT_LOOKUP, rows: [] },
     ]);
     await expect(module.marking.recordHumanMark(ANSWER_A, MARKER_ID, 2, null, null))
       .rejects.toThrow("answer");
 
     const { module: m2 } = build([
-      { match: /select a\.attempt_id from answers a where a\.id = \?$/, rows: [{ attempt_id: ATTEMPT_ID }] },
+      { match: SCOPE_ATTEMPT_LOOKUP, rows: [{ attempt_id: ATTEMPT_ID }] },
       { match: /from attempts where id = \? for update$/, rows: [] },
     ]);
     await expect(m2.marking.recordHumanMark(ANSWER_A, MARKER_ID, 2, null, null))
       .rejects.toThrow("attempt");
+  });
+
+  test("T-TEACH-003: out-of-scope answer 404s like a nonexistent one — no mark outside authorization (D3)", async () => {
+    const routes = markAnswerRoutes();
+    routes[0] = { match: SCOPE_ATTEMPT_LOOKUP, rows: [] }; // learner not in the marker's classes
+    const { module, sql } = build(routes);
+    await expect(module.marking.recordHumanMark(ANSWER_A, MARKER_ID, 2, null, null))
+      .rejects.toThrow("answer");
+    // the lock and the graph never ran: the marker_id principal gated first
+    expect(sql.queries).toHaveLength(1);
+    expect(sql.queries[0]).toContain("c.teacher_id = ?");
+    expect(sql.paramsLog[0]).toEqual([ANSWER_A, MARKER_ID]);
   });
 
   test("part bound: 409 with the verbatim en-dash body; bound=0 admits 0", async () => {
@@ -610,8 +647,13 @@ function queueRoutes(rows: Array<Record<string, unknown>>): Route[] {
 
 describe("markingQueue — section-7 ordering + batching", () => {
   test("groups: oldest-waiting paper first, unfiled bucket LAST; within-paper label order; chain across groups", async () => {
-    const { module } = build(queueRoutes(queueAnswers()));
-    const view = await module.queue.markingQueue("PENDING");
+    const { module, sql } = build(queueRoutes(queueAnswers()));
+    const view = await module.queue.markingQueue("PENDING", TEACHER_ID);
+    // T-TEACH-003: the scope predicate rides the queue query — the teacher
+    // principal is bound, the EXISTS chain present
+    expect(sql.queries[0]).toContain("class_members cm");
+    expect(sql.queries[0]).toContain("c.teacher_id = ?");
+    expect(sql.paramsLog[0]).toEqual(["PENDING", TEACHER_ID]);
     expect(view.state).toBe("PENDING");
     expect(view.groups.map((g) => g.paperId)).toEqual([PAPER_ID, PAPER2_ID, null]);
     expect(view.groups[0]!.paperTitle).toBe("Physics Paper 1");
@@ -635,7 +677,7 @@ describe("markingQueue — section-7 ordering + batching", () => {
       answerRow({ id: ANSWER_B, attempt_created_at: T1, question_part_id: PART_B, label: "(b)" }),
     ];
     const { module } = build(queueRoutes(rows));
-    const view = await module.queue.markingQueue("PENDING");
+    const view = await module.queue.markingQueue("PENDING", TEACHER_ID);
     expect(view.groups.map((g) => g.paperId)).toEqual([PAPER_ID, null]);
     expect(view.groups[0]!.count).toBe(2);
   });
@@ -644,25 +686,33 @@ describe("markingQueue — section-7 ordering + batching", () => {
     const { module } = build(queueRoutes([
       answerRow({ id: ANSWER_A, attempt_created_at: "2026-10-05T05:15:00Z" }), // 2.5h before NOW
     ]));
-    const view = await module.queue.markingQueue("PENDING");
+    const view = await module.queue.markingQueue("PENDING", TEACHER_ID);
     expect(view.groups[0]!.oldestWaitingHours).toBe(2);
     NOW = new Date("2026-09-01T00:00:00Z"); // make the timestamp future relative to the clock
     const { module: m2 } = build(queueRoutes([
       answerRow({ id: ANSWER_A, attempt_created_at: "2099-01-01T00:00:00Z" }),
     ]));
-    const future = await m2.queue.markingQueue("PENDING");
+    const future = await m2.queue.markingQueue("PENDING", TEACHER_ID);
     expect(future.groups[0]!.oldestWaitingHours).toBeNull();
     NOW = new Date("2026-10-05T07:45:00Z"); // restore
   });
 
   test("batched lookups: exactly one queue query + one paper + one smart + one human + one identity lookup", async () => {
     const { module, sql } = build(queueRoutes(queueAnswers()));
-    await module.queue.markingQueue("PENDING");
+    await module.queue.markingQueue("PENDING", TEACHER_ID);
     const count = (re: RegExp) => sql.queries.filter((q) => re.test(q)).length;
     expect(count(/from exam_papers where id = any/)).toBe(1);
     expect(count(/from smart_mark_results where answer_id = any/)).toBe(1);
     expect(count(/from human_marks where answer_id = any/)).toBe(1);
     expect(count(/from users where id = any/)).toBe(1);
+  });
+
+  test("T-TEACH-003: an empty scope (the DB answers nothing) is the honest empty queue", async () => {
+    const { module } = build(queueRoutes([])); // no in-scope rows come back
+    const view = await module.queue.markingQueue("PENDING", TEACHER_ID);
+    expect(view.state).toBe("PENDING");
+    expect(view.groups).toEqual([]);
+    expect(view.items).toEqual([]);
   });
 
   test("latest smart/human per answer: oldest-first overwrite keeps the newest; names first-wins", async () => {
@@ -675,7 +725,7 @@ describe("markingQueue — section-7 ordering + batching", () => {
       ],
     });
     const { module } = build(routes);
-    const view = await module.queue.markingQueue("PENDING");
+    const view = await module.queue.markingQueue("PENDING", TEACHER_ID);
     const itemA = view.items.find((i) => i.answer.answerId === ANSWER_A)!;
     expect(itemA.answer.latestSmartMark!.modelId).toBe("m-new");
     expect(itemA.answer.learnerDisplayName).toBe("Ada");
@@ -693,14 +743,14 @@ describe("markingQueuePaged — G-5 whole-paper-group pagination", () => {
 
   test("page bounds: page < 0 and size out of 1..100 are 400s with verbatim bodies", async () => {
     const { module } = build(pagedRoutes());
-    await expect(module.queue.markingQueuePaged("PENDING", -1, null)).rejects.toThrow("page must be >= 0");
-    await expect(module.queue.markingQueuePaged("PENDING", null, 101)).rejects.toThrow(
+    await expect(module.queue.markingQueuePaged("PENDING", -1, null, TEACHER_ID)).rejects.toThrow("page must be >= 0");
+    await expect(module.queue.markingQueuePaged("PENDING", null, 101, TEACHER_ID)).rejects.toThrow(
       "size must be between 1 and 100 (paper groups per page)");
   });
 
   test("whole paper groups per page; the mark→next chain restarts inside the page", async () => {
     const { module } = build(pagedRoutes());
-    const page = (await module.queue.markingQueuePaged("PENDING", 0, 2)) as MarkingQueuePageView;
+    const page = (await module.queue.markingQueuePaged("PENDING", 0, 2, TEACHER_ID)) as MarkingQueuePageView;
     // groups: P1(3 items), P2(1), null(1) — page 0 carries the WHOLE first two groups
     expect(page.groups.map((g) => g.paperId)).toEqual([PAPER_ID, PAPER2_ID]);
     expect(page.items.map((i) => i.answer.answerId)).toEqual([ANSWER_B, ANSWER_A, FOURTH, ANSWER_C]);
@@ -714,7 +764,7 @@ describe("markingQueuePaged — G-5 whole-paper-group pagination", () => {
 
   test("past-the-end page is honestly empty with the real totals", async () => {
     const { module } = build(pagedRoutes());
-    const page = (await module.queue.markingQueuePaged("PENDING", 9, 2)) as MarkingQueuePageView;
+    const page = (await module.queue.markingQueuePaged("PENDING", 9, 2, TEACHER_ID)) as MarkingQueuePageView;
     expect(page.groups).toEqual([]);
     expect(page.items).toEqual([]);
     expect(page.totalGroups).toBe(3);
@@ -723,7 +773,7 @@ describe("markingQueuePaged — G-5 whole-paper-group pagination", () => {
 
   test("no page/size params → the unchanged full view (compatibility surface)", async () => {
     const { module } = build(pagedRoutes());
-    const full = await module.queue.markingQueuePaged("PENDING", null, null);
+    const full = await module.queue.markingQueuePaged("PENDING", null, null, TEACHER_ID);
     expect(full.groups.length).toBe(3);
     expect(full.items[full.items.length - 1]!.nextAnswerId).toBeNull();
   });
@@ -740,17 +790,17 @@ describe("throughput", () => {
         rowsFor: (params) => (String(params[0]) === "PENDING" ? [answerRow()] : []),
       },
       {
-        match: /select marking_state, count\(\*\) as count from answers group by marking_state/,
+        match: /select ans\.marking_state as marking_state, count\(\*\) as count from answers ans join attempts at on at\.id = ans\.attempt_id where exists/,
         rows: [
           { marking_state: "PENDING", count: "5" },
           { marking_state: "SMART_MARKED", count: "1" },
         ],
       },
       { match: /from exam_papers where id = any/, rows: [{ id: PAPER_ID, title: "Physics Paper 1", session_label: null, paper_code: "0625/12" }] },
-      { match: /select count\(\*\) as count from human_marks where created_at >= \?/, rows: [{ count: "3" }] },
+      { match: /from human_marks h join answers ans on ans\.id = h\.answer_id/, rows: [{ count: "3" }] },
     ];
     const { module, sql } = build(routes);
-    const view = await module.queue.throughput();
+    const view = await module.queue.throughput(TEACHER_ID);
     expect(view.answersByState).toEqual({
       PENDING: 5,
       SMART_MARKED: 1,
@@ -760,8 +810,11 @@ describe("throughput", () => {
     });
     expect(view.humanMarks24h).toBe(3);
     expect(view.humanMarks7d).toBe(3);
+    // T-TEACH-003: the by-state group-by (queries[0]) binds the teacher
+    // principal into the enrollment predicate
+    expect(sql.paramsLog[0]).toEqual([TEACHER_ID]);
     const sinceParams = sql.paramsLog
-      .map((p, i) => (sql.queries[i]!.includes("where created_at >= ?") ? p[0] : null))
+      .map((p, i) => (sql.queries[i]!.includes("where h.created_at >= ?") ? p[0] : null))
       .filter((v): v is string => v !== null);
     expect(sinceParams.length).toBe(2);
     const nowMs = NOW.getTime();
@@ -778,15 +831,33 @@ describe("throughput", () => {
   test("empty pending queue → null oldest age and no leaders, never invented numbers", async () => {
     const routes: Route[] = [
       { match: /from answers ans join question_parts/, rows: [] },
-      { match: /select marking_state, count\(\*\) as count from answers group by marking_state/, rows: [] },
-      { match: /select count\(\*\) as count from human_marks where created_at >= \?/, rows: [{ count: 0 }] },
+      { match: /select ans\.marking_state as marking_state, count\(\*\) as count from answers ans join attempts/, rows: [] },
+      { match: /from human_marks h join answers ans on ans\.id = h\.answer_id/, rows: [{ count: 0 }] },
     ];
     const { module } = build(routes);
-    const view = await module.queue.throughput();
+    const view = await module.queue.throughput(TEACHER_ID);
     expect(view.pendingByPaper).toEqual([]);
     expect(view.oldestPendingAt).toBeNull();
     expect(view.oldestPendingHours).toBeNull();
     expect(view.answersByState).toEqual({ PENDING: 0, SMART_MARKED: 0, HUMAN_MARKED: 0, OVERRIDDEN: 0, SELF_MARKED: 0 }); // F-33-1(a): five-key zero-fill even on an empty corpus
+  });
+
+  test("T-TEACH-003: the window counts join the enrollment chain (marks on in-scope answers only)", async () => {
+    const routes: Route[] = [
+      { match: /from answers ans join question_parts/, rows: [] },
+      { match: /select ans\.marking_state as marking_state/, rows: [] },
+      {
+        match: /from human_marks h join answers ans on ans\.id = h\.answer_id/,
+        rows: [{ count: 2 }],
+      },
+    ];
+    const { module, sql } = build(routes);
+    const view = await module.queue.throughput(TEACHER_ID);
+    expect(view.humanMarks24h).toBe(2);
+    const windowQuery = sql.queries.find((q) => q.includes("from human_marks h join answers"))!;
+    expect(windowQuery).toContain("join attempts at on at.id = ans.attempt_id");
+    expect(windowQuery).toContain("class_members cm");
+    expect(windowQuery).toContain("c.teacher_id = ?");
   });
 });
 
@@ -826,7 +897,7 @@ describe("answerById — the detail projection law (T-MIG-114)", () => {
 
   test("stringified jsonb renders the HYDRATED map on latestHumanMark (the core wire law)", async () => {
     const { module } = build(answerByIdRoutes(markRow(JSON.stringify({ [POINT_A1]: 1, [POINT_A2]: 0 }))));
-    const view = await module.queue.answerById(ANSWER_A);
+    const view = await module.queue.answerById(ANSWER_A, TEACHER_ID);
     expect(view).not.toBeNull();
     expect(view!.latestHumanMark!.perPointDecisions).toEqual({ [POINT_A1]: 1, [POINT_A2]: 0 });
   });
@@ -834,11 +905,11 @@ describe("answerById — the detail projection law (T-MIG-114)", () => {
   test("parsed-object jsonb renders unchanged; null stays null (the D04 law)", async () => {
     const parsedRoutes = answerByIdRoutes(markRow({ [POINT_A1]: 1 }));
     const { module } = build(parsedRoutes);
-    const view = await module.queue.answerById(ANSWER_A);
+    const view = await module.queue.answerById(ANSWER_A, TEACHER_ID);
     expect(view!.latestHumanMark!.perPointDecisions).toEqual({ [POINT_A1]: 1 });
 
     const { module: m2 } = build(answerByIdRoutes(markRow(null)));
-    const v2 = await m2.queue.answerById(ANSWER_A);
+    const v2 = await m2.queue.answerById(ANSWER_A, TEACHER_ID);
     expect(v2!.latestHumanMark!.perPointDecisions).toBeNull();
   });
 
@@ -846,48 +917,68 @@ describe("answerById — the detail projection law (T-MIG-114)", () => {
     const routes = answerByIdRoutes(markRow(null));
     routes[2] = { match: /from human_marks where answer_id = \?/, rows: [] };
     const { module } = build(routes);
-    const view = await module.queue.answerById(ANSWER_A);
+    const view = await module.queue.answerById(ANSWER_A, TEACHER_ID);
     expect(view!.latestHumanMark).toBeNull();
+  });
+
+  test("T-TEACH-003: an out-of-scope answer renders null (the route 404s it) — the tails never run", async () => {
+    const routes = answerByIdRoutes(markRow({ [POINT_A1]: 1 }));
+    routes[0] = { match: /from answers ans join question_parts/, rows: [] }; // scope join excludes it
+    const { module, sql } = build(routes);
+    const view = await module.queue.answerById(ANSWER_A, TEACHER_ID);
+    expect(view).toBeNull();
+    expect(sql.queries).toHaveLength(1); // no smart/human/identity lookups leak
+    expect(sql.paramsLog[0]).toEqual([ANSWER_A, TEACHER_ID]);
   });
 });
 
 // ── smartMarkBatch — bounded, idempotent, partial-success-preserving ─────────
 
 describe("smartMarkBatch", () => {
+  /** The scope read returns the requesting teacher's enrolled learners. */
+  const scopeRoute = (learners: string[]): Route => ({
+    match: /select distinct cm\.student_id from class_members cm/,
+    rows: learners.map((student_id) => ({ student_id })),
+  });
+  /** The batch's current-state read now carries the attempt's learner. */
+  const currentRoute = (rows: Array<Record<string, unknown>>): Route => ({
+    match: /select ans\.id, ans\.marking_state, ans\.marks_awarded, at\.learner_id/,
+    rows,
+  });
+
   test("empty batch is a 400 with the verbatim body", async () => {
     const { module } = build([]);
-    await expect(module.queue.smartMarkBatch([])).rejects.toThrow("answerIds must not be empty");
+    await expect(module.queue.smartMarkBatch([], TEACHER_ID)).rejects.toThrow("answerIds must not be empty");
   });
 
   test("dedup is order-preserving; over-limit unique ids are a 400 with the verbatim body", async () => {
-    const currentRoute: Route = {
-      match: /select id, marking_state, marks_awarded from answers where id = any/,
-      rows: [answerRow(), answerRow({ id: ANSWER_B, marking_state: "SMART_MARKED", marks_awarded: 2 })],
-    };
-    const { module: m2, sql } = build([...markAnswerRoutes(), currentRoute]);
-    const view = await m2.queue.smartMarkBatch([ANSWER_A, ANSWER_A, ANSWER_B]);
+    const current: Route = currentRoute([
+      answerRow(),
+      answerRow({ id: ANSWER_B, marking_state: "SMART_MARKED", marks_awarded: 2 }),
+    ]);
+    const { module: m2, sql } = build([...markAnswerRoutes(), scopeRoute([LEARNER_ID]), current]);
+    const view = await m2.queue.smartMarkBatch([ANSWER_A, ANSWER_A, ANSWER_B], TEACHER_ID);
     expect(view.requested).toBe(2); // deduplicated, order preserved
+    // T-TEACH-003: the scope read binds the teacher principal
+    expect(sql.paramsLog[0]).toEqual([TEACHER_ID]);
     const bigIds = Array.from({ length: 51 }, (_, i) =>
       `00000000-0000-4000-8000-${String(i).padStart(12, "0")}`);
-    await expect(m2.queue.smartMarkBatch(bigIds)).rejects.toThrow(
+    await expect(m2.queue.smartMarkBatch(bigIds, TEACHER_ID)).rejects.toThrow(
       "batch too large: 51 > 50 — dispatch smaller batches");
   });
 
   test("outcomes: not-found FAILED, non-PENDING SKIPPED, accepted run MARKED", async () => {
-    const currentRoute: Route = {
-      match: /select id, marking_state, marks_awarded from answers where id = any/,
-      rows: [
-        answerRow(), // ANSWER_A — PENDING → pipeline runs
-        answerRow({ id: ANSWER_B, marking_state: "SMART_MARKED", marks_awarded: 2 }),
-        answerRow({ id: ANSWER_C, marking_state: "HUMAN_MARKED", marks_awarded: 3 }),
-      ],
-    };
-    const { module } = build([...markAnswerRoutes(), currentRoute]);
+    const current: Route = currentRoute([
+      answerRow(), // ANSWER_A — PENDING, in scope → pipeline runs
+      answerRow({ id: ANSWER_B, marking_state: "SMART_MARKED", marks_awarded: 2 }),
+      answerRow({ id: ANSWER_C, marking_state: "HUMAN_MARKED", marks_awarded: 3 }),
+    ]);
+    const { module } = build([...markAnswerRoutes(), scopeRoute([LEARNER_ID]), current]);
     const view = await module.queue.smartMarkBatch([
       "00000000-0000-4000-8000-0000000000ff", // missing
       ANSWER_B, // non-PENDING
       ANSWER_A, // PENDING → pipeline accepts
-    ]);
+    ], TEACHER_ID);
     expect(view.requested).toBe(3);
     expect(view.items[0]).toEqual({
       answerId: "00000000-0000-4000-8000-0000000000ff",
@@ -908,17 +999,46 @@ describe("smartMarkBatch", () => {
     expect(view.failed).toBe(1);
   });
 
+  test("T-TEACH-003: an out-of-scope id answers the honest SKIPPED_OUT_OF_SCOPE — explicit reason, marksAwarded null (no state leak)", async () => {
+    const current: Route = currentRoute([
+      // the answer EXISTS but its learner is NOT in the teacher's scope
+      answerRow({ id: ANSWER_B, marking_state: "SMART_MARKED", marks_awarded: 2, learner_id: OTHER_LEARNER_ID }),
+      answerRow(), // in scope, PENDING → still marked (scope is per-item)
+    ]);
+    const { module } = build([...markAnswerRoutes(), scopeRoute([LEARNER_ID]), current]);
+    const view = await module.queue.smartMarkBatch([ANSWER_B, ANSWER_A], TEACHER_ID);
+    expect(view.items[0]).toEqual({
+      answerId: ANSWER_B,
+      outcome: "SKIPPED_OUT_OF_SCOPE",
+      marksAwarded: null, // the learner's marks never leak to an unauthorized teacher
+      reason: "out of scope: the learner is not enrolled in one of your classes",
+    });
+    expect(view.items[1]!.outcome).toBe("MARKED");
+    expect(view.skipped).toBe(1); // both SKIPPED_* outcomes count in the honest bucket
+    expect(view.failed).toBe(0);
+  });
+
+  test("T-TEACH-003: an empty scope skips every existing answer, still FAILED for missing ones", async () => {
+    const current: Route = currentRoute([answerRow()]);
+    const { module } = build([...markAnswerRoutes(), scopeRoute([]), current]);
+    const view = await module.queue.smartMarkBatch(
+      ["00000000-0000-4000-8000-0000000000ff", ANSWER_A], TEACHER_ID);
+    expect(view.items[0]!.outcome).toBe("FAILED");
+    expect(view.items[0]!.reason).toBe("answer not found");
+    expect(view.items[1]!.outcome).toBe("SKIPPED_OUT_OF_SCOPE");
+    expect(view.marked).toBe(0);
+    expect(view.skipped).toBe(1);
+    expect(view.failed).toBe(1);
+  });
+
   test("per-item pipeline failure → stable UNEXPECTED_ERROR code, batch continues", async () => {
     const failingGenerator = okGenerator();
     failingGenerator.propose = async () => {
       throw new Error("provider exploded with secrets");
     };
-    const currentRoute: Route = {
-      match: /select id, marking_state, marks_awarded from answers where id = any/,
-      rows: [answerRow()],
-    };
-    const { module } = build([...markAnswerRoutes(), currentRoute], spyPublisher(), failingGenerator);
-    const view = await module.queue.smartMarkBatch([ANSWER_A]);
+    const current: Route = currentRoute([answerRow()]);
+    const { module } = build([...markAnswerRoutes(), scopeRoute([LEARNER_ID]), current], spyPublisher(), failingGenerator);
+    const view = await module.queue.smartMarkBatch([ANSWER_A], TEACHER_ID);
     expect(view.items[0]).toEqual({
       answerId: ANSWER_A,
       outcome: "FAILED",

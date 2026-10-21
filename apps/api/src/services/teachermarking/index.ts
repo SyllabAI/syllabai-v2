@@ -31,6 +31,37 @@
  * Bind-slot discipline (fleet convention): every ${} slot is a bind
  * parameter; column lists inline as static template text. Multi-id lookups
  * use the fleet's `= any(${ids}::uuid[])` convention.
+ *
+ * ── T-TEACH-003 — ADR-027 D1: the marking surfaces are enrollment-scoped ────
+ *
+ * ADR-027 (canonical master-pack record) fixed the scoping law before the
+ * classroom lane existed: every teacher-facing surface that exposes learner
+ * answer content — the marking queue (all states), the paged answers lists,
+ * the throughput view, the rich single-answer view, the per-answer
+ * smart/human mark paths and the Run-Smart-Mark batch — shows ONLY answers
+ * from learners enrolled in classes ASSIGNED TO the requesting teacher.
+ * Independent learners (no class enrollment) never appear on any teacher
+ * surface, and the global `findByMarkingState` read became a DEFECT (not a
+ * cleanup item) the moment T-MIG-052 landed the Class/membership model.
+ * The interim pilot-scope mode expires with this change.
+ *
+ * Mechanics (D1/D4): visibility is computed LIVE per request — an EXISTS
+ * predicate over teacher → classes → class_members → attempts.learner_id,
+ * inlined at every read (never an inner join: a learner in two of the
+ * teacher's classes must not duplicate queue rows; never a snapshot or
+ * cache). Membership rows are the single source of truth: un-enrollment is
+ * the only revocation — an ARCHIVED class keeps its roster, so pending work
+ * never vanishes by an archive action (disclosed reading of D4's
+ * no-erasure spirit; enrollment, not class status, is the law). The
+ * single-answer paths fold the same join into their FIRST lookup, so an
+ * out-of-scope answer is indistinguishable from a nonexistent one
+ * (NotFoundError — no existence leak; D1 "teacher-invisible"). The batch
+ * classifies per item and reports out-of-scope ids as the honest
+ * SKIPPED_OUT_OF_SCOPE outcome with an explicit reason and a null
+ * marksAwarded (rendering the learner's marks would leak answer state).
+ * The κ endpoints are UNCHANGED per the ADR's own implementation note: the
+ * human sample composes upstream (marks can only ARISE in scope through the
+ * gated write paths), so no gate-math change.
  */
 import type { SqlFn } from "../assessment/sql";
 import {
@@ -284,7 +315,10 @@ export interface PendingPaperView {
 
 export interface SmartMarkBatchItem {
   answerId: string;
-  outcome: "MARKED" | "SKIPPED_ALREADY_MARKED" | "FAILED";
+  /** ADR-027 D1 (T-TEACH-003): SKIPPED_OUT_OF_SCOPE — the honest per-item
+   *  report for an answer outside the requesting teacher's enrollment scope
+   *  (explicit reason, marksAwarded null — no answer-state leak). */
+  outcome: "MARKED" | "SKIPPED_ALREADY_MARKED" | "SKIPPED_OUT_OF_SCOPE" | "FAILED";
   marksAwarded: number | null;
   reason: string | null;
 }
@@ -551,11 +585,27 @@ export class TeacherSmartMarkService {
    * markAnswer (:87-171): one answer through the pipeline; append-only
    * result row; provisional marks applied; evidence only when accepted AND
    * kappa-released AND the attempt's marking is COMPLETE (no PENDING part).
+   *
+   * T-TEACH-003 (ADR-027 D1): `teacherId` is the requesting teacher — the
+   * FIRST lookup folds the enrollment join (answers → attempts →
+   * class_members → classes where teacher_id), so an out-of-scope answer
+   * 404s exactly like a nonexistent one BEFORE any state load or lock. The
+   * batch re-rides this gate per dispatched item (defense in depth).
    */
-  async markAnswer(answerId: string): Promise<SmartMarkResultRow> {
-    // serialization point FIRST (:95-98) — the lock precedes every state load
+  async markAnswer(answerId: string, teacherId: string): Promise<SmartMarkResultRow> {
+    // scope gate + serialization-point prelude FIRST (:95-98 analog — the
+    // attempt id resolves only INSIDE the requesting teacher's enrollment
+    // scope; the lock still precedes every state load)
     const attemptIdRows = (await this.sql`
-      select a.attempt_id from answers a where a.id = ${answerId}
+      select a.attempt_id
+      from answers a
+      join attempts at on at.id = a.attempt_id
+      where a.id = ${answerId}
+        and exists (
+          select 1 from class_members cm
+          join classes c on c.id = cm.class_id
+          where cm.student_id = at.learner_id and c.teacher_id = ${teacherId}
+        )
     `) as unknown as Array<{ attempt_id: string }>;
     if (attemptIdRows.length === 0) throw new NotFoundError("answer", answerId);
     const attemptId = attemptIdRows[0]!.attempt_id;
@@ -771,6 +821,13 @@ export class TeacherMarkingService {
    * revising = attempt.evidenceEmitted → OVERRIDDEN vs HUMAN_MARKED, total
    * recompute, evidence only on the FIRST authoritative mark that COMPLETES
    * the attempt's marking.
+   *
+   * T-TEACH-003 (ADR-027 D1): `markerId` doubles as the scope principal
+   * (the route passes the JWT identity) — the FIRST lookup folds the
+   * enrollment join, so a human mark on an out-of-scope answer 404s exactly
+   * like a nonexistent one BEFORE any state load or lock (D3: paired κ
+   * calibration originates exclusively where a human marker holds
+   * authorization — a mark outside scope can never be recorded).
    */
   async recordHumanMark(
     answerId: string,
@@ -779,9 +836,18 @@ export class TeacherMarkingService {
     perPointDecisions: Record<string, number> | null,
     comments: string | null,
   ): Promise<HumanMarkView> {
-    // serialization point FIRST (:95-98) — same law as markAnswer
+    // scope gate + serialization point FIRST (:95-98 analog) — the attempt
+    // id resolves only INSIDE the marker's enrollment scope
     const attemptIdRows = (await this.sql`
-      select a.attempt_id from answers a where a.id = ${answerId}
+      select a.attempt_id
+      from answers a
+      join attempts at on at.id = a.attempt_id
+      where a.id = ${answerId}
+        and exists (
+          select 1 from class_members cm
+          join classes c on c.id = cm.class_id
+          where cm.student_id = at.learner_id and c.teacher_id = ${markerId}
+        )
     `) as unknown as Array<{ attempt_id: string }>;
     if (attemptIdRows.length === 0) throw new NotFoundError("answer", answerId);
     const attemptId = attemptIdRows[0]!.attempt_id;
@@ -1042,9 +1108,14 @@ export class TeacherMarkingQueueService {
     private readonly clock: SubmitClock,
   ) {}
 
-  /** markingQueue (:86-92): the full v2 queue with the mark→next chain. */
-  async markingQueue(state: string): Promise<MarkingQueueView> {
-    const assembled = await this.assemble(state);
+  /**
+   * markingQueue (:86-92): the full v2 queue with the mark→next chain.
+   * T-TEACH-003 (ADR-027 D1): scoped to the requesting teacher's enrollment
+   * (teacherId — the route's JWT identity); an out-of-scope answer never
+   * appears, exactly as a filtered-out row never did.
+   */
+  async markingQueue(state: string, teacherId: string): Promise<MarkingQueueView> {
+    const assembled = await this.assemble(state, teacherId);
     const items = chainNext(assembled.itemsByGroup.flat());
     return { state, groups: assembled.groupViews, items };
   }
@@ -1053,14 +1124,17 @@ export class TeacherMarkingQueueService {
    * Opt-in paged v2 queue (:109-142): pages of WHOLE paper groups — papers
    * never split across a boundary; bounds page >= 0, 1..100 papers per page
    * default 5; past-the-end is an honestly empty page, not an error; totals
-   * are the real counts of the whole state.
+   * are the real counts of the whole state — WHOLE state means the teacher's
+   * enrollment-scoped state (T-TEACH-003, ADR-027 D1): totals, page math and
+   * chains all compute inside the scope, never against the global corpus.
    */
   async markingQueuePaged(
     state: string,
     page: number | null,
     size: number | null,
+    teacherId: string,
   ): Promise<MarkingQueueView | MarkingQueuePageView> {
-    if (page === null && size === null) return this.markingQueue(state);
+    if (page === null && size === null) return this.markingQueue(state, teacherId);
     const p = page === null ? 0 : page;
     const s = size === null ? DEFAULT_PAPER_GROUPS_PER_PAGE : size;
     if (p < 0) throw new BadRequestError("page must be >= 0");
@@ -1068,7 +1142,7 @@ export class TeacherMarkingQueueService {
       throw new BadRequestError(
         "size must be between 1 and " + MAX_PAPER_GROUPS_PER_PAGE + " (paper groups per page)");
     }
-    const assembled = await this.assemble(state);
+    const assembled = await this.assemble(state, teacherId);
     const totalGroups = assembled.groupViews.length;
     const totalItems = assembled.itemsByGroup.reduce((sum, g) => sum + g.length, 0);
     const totalPages = totalGroups === 0 ? 0 : Math.floor((totalGroups + s - 1) / s);
@@ -1090,8 +1164,13 @@ export class TeacherMarkingQueueService {
    * smart-mark lookup + one human-mark lookup + one identity lookup;
    * deterministic group ordering (oldest-waiting paper first, then more
    * pending, then id — unfiled LAST); deterministic within-paper order.
+   *
+   * T-TEACH-003 (ADR-027 D1/D4): the queue query is enrollment-scoped — the
+   * EXISTS predicate resolves the requesting teacher's classes → members
+   * LIVE on every request (no snapshot); EXISTS (not an inner join) keeps a
+   * learner enrolled in two of the teacher's classes from duplicating rows.
    */
-  private async assemble(state: string): Promise<Assembled> {
+  private async assemble(state: string, teacherId: string): Promise<Assembled> {
     const queue = (await this.sql`
       select ans.id, ans.attempt_id, ans.answer_text, ans.marks_awarded, ans.marking_state,
              ans.question_part_id, qp.label, qp.prompt, qp.marks as part_marks,
@@ -1102,6 +1181,11 @@ export class TeacherMarkingQueueService {
       join attempts at on at.id = ans.attempt_id
       join questions q on q.id = at.question_id
       where ans.marking_state = ${state}
+        and exists (
+          select 1 from class_members cm
+          join classes c on c.id = cm.class_id
+          where cm.student_id = at.learner_id and c.teacher_id = ${teacherId}
+        )
       order by ans.created_at asc
     `) as unknown as MarkingAnswerRow[];
     if (queue.length === 0) return { groupViews: [], itemsByGroup: [] };
@@ -1206,8 +1290,9 @@ export class TeacherMarkingQueueService {
    * derived query with NO OrderBy (database order); the port pins the
    * paged surface's TOTAL order (createdAt asc, id asc) for determinism —
    * disclosed read-model choice, same class as compareWithinPaper.
+   * T-TEACH-003 (ADR-027 D1): enrollment-scoped like every read above.
    */
-  async answersList(state: string): Promise<AnswerMarkingView[]> {
+  async answersList(state: string, teacherId: string): Promise<AnswerMarkingView[]> {
     const rows = (await this.sql`
       select ans.id, ans.attempt_id, ans.answer_text, ans.marks_awarded, ans.marking_state,
              ans.question_part_id, qp.label, qp.prompt, qp.marks as part_marks,
@@ -1218,6 +1303,11 @@ export class TeacherMarkingQueueService {
       join attempts at on at.id = ans.attempt_id
       join questions q on q.id = at.question_id
       where ans.marking_state = ${state}
+        and exists (
+          select 1 from class_members cm
+          join classes c on c.id = cm.class_id
+          where cm.student_id = at.learner_id and c.teacher_id = ${teacherId}
+        )
       order by ans.created_at asc, ans.id asc
     `) as unknown as MarkingAnswerRow[];
     if (rows.length === 0) return [];
@@ -1231,11 +1321,14 @@ export class TeacherMarkingQueueService {
    * (Spring Data Page.getTotalElements/getTotalPages parity). Bounds live in
    * the ROUTE (Java validates in the controller :156-163) — page >= 0,
    * size 1..200 default 50.
+   * T-TEACH-003 (ADR-027 D1): BOTH the page query and the total count are
+   * enrollment-scoped — the envelope's totals are the teacher's own truth.
    */
   async answersPaged(
     state: string,
     page: number,
     size: number,
+    teacherId: string,
   ): Promise<AnswerMarkingPageView> {
     const rows = (await this.sql`
       select ans.id, ans.attempt_id, ans.answer_text, ans.marks_awarded, ans.marking_state,
@@ -1247,11 +1340,24 @@ export class TeacherMarkingQueueService {
       join attempts at on at.id = ans.attempt_id
       join questions q on q.id = at.question_id
       where ans.marking_state = ${state}
+        and exists (
+          select 1 from class_members cm
+          join classes c on c.id = cm.class_id
+          where cm.student_id = at.learner_id and c.teacher_id = ${teacherId}
+        )
       order by ans.created_at asc, ans.id asc
       limit ${size} offset ${page * size}
     `) as unknown as MarkingAnswerRow[];
     const countRows = (await this.sql`
-      select count(*)::int as total from answers where marking_state = ${state}
+      select count(*)::int as total
+      from answers ans
+      join attempts at on at.id = ans.attempt_id
+      where ans.marking_state = ${state}
+        and exists (
+          select 1 from class_members cm
+          join classes c on c.id = cm.class_id
+          where cm.student_id = at.learner_id and c.teacher_id = ${teacherId}
+        )
     `) as unknown as Array<{ total: number }>;
     const totalElements = countRows[0]?.total ?? 0;
     const totalPages = totalElements === 0 ? 0 : Math.floor((totalElements + size - 1) / size);
@@ -1311,8 +1417,13 @@ export class TeacherMarkingQueueService {
    * this surface even when a paper row exists — Java does no paper lookup
    * here. The queued 5-arg list surfaces (:110-111/:171-172) keep their
    * batched titles.
+   *
+   * T-TEACH-003 (ADR-027 D1): the answer row resolves only INSIDE the
+   * requesting teacher's enrollment scope — an out-of-scope answer renders
+   * null (the route's NotFound) exactly like a nonexistent one: no
+   * existence leak, the smart/human tails never run for it.
    */
-  async answerById(id: string): Promise<AnswerMarkingView | null> {
+  async answerById(id: string, teacherId: string): Promise<AnswerMarkingView | null> {
     const rows = (await this.sql`
       select ans.id, ans.attempt_id, ans.answer_text, ans.marks_awarded, ans.marking_state,
              ans.question_part_id, qp.label, qp.prompt, qp.marks as part_marks,
@@ -1323,6 +1434,11 @@ export class TeacherMarkingQueueService {
       join attempts at on at.id = ans.attempt_id
       join questions q on q.id = at.question_id
       where ans.id = ${id}
+        and exists (
+          select 1 from class_members cm
+          join classes c on c.id = cm.class_id
+          where cm.student_id = at.learner_id and c.teacher_id = ${teacherId}
+        )
     `) as unknown as MarkingAnswerRow[];
     const a = rows[0];
     if (!a) return null;
@@ -1355,8 +1471,17 @@ export class TeacherMarkingQueueService {
     );
   }
 
-  /** throughput (:270-331): workload by state, human windows, leaders, oldest age. */
-  async throughput(): Promise<ThroughputView> {
+  /**
+   * throughput (:270-331): workload by state, human windows, leaders, oldest age.
+   * T-TEACH-003 (ADR-027 D1): every read is enrollment-scoped to the
+   * requesting teacher — the answersByState group-by and the pending-by-paper
+   * leaders join the enrollment chain (exists), and the human-mark windows
+   * count marks on in-scope answers only (the same chain through
+   * human_marks → answers → attempts). The ADR's implementation note names
+   * "queue + throughput + pending-by-paper" as the scoped replacement set;
+   * the by-state counts ride along because they drive the same console.
+   */
+  async throughput(teacherId: string): Promise<ThroughputView> {
     const byState: Record<string, number> = {};
     // T-MIG-051 (N-4 rich-200 capture): the frozen ThroughputView serializes
     // a HashMap<String,Long> seeded in enum order (QueueService :271-276) —
@@ -1369,14 +1494,31 @@ export class TeacherMarkingQueueService {
     // bytes match the frozen core; the counts fill in from the group-by.
     for (const s of BY_STATE_WIRE_ORDER) byState[s] = 0;
     const stateRows = (await this.sql`
-      select marking_state, count(*) as count from answers group by marking_state
+      select ans.marking_state as marking_state, count(*) as count
+      from answers ans
+      join attempts at on at.id = ans.attempt_id
+      where exists (
+        select 1 from class_members cm
+        join classes c on c.id = cm.class_id
+        where cm.student_id = at.learner_id and c.teacher_id = ${teacherId}
+      )
+      group by ans.marking_state
     `) as unknown as StateCountRow[];
     for (const row of stateRows) byState[row.marking_state] = Number(row.count);
 
     const now = this.clock.now();
     const countSince = async (hours: number): Promise<number> => {
       const rows = (await this.sql`
-        select count(*) as count from human_marks where created_at >= ${new Date(now.getTime() - hours * 3_600_000).toISOString()}
+        select count(*) as count
+        from human_marks h
+        join answers ans on ans.id = h.answer_id
+        join attempts at on at.id = ans.attempt_id
+        where h.created_at >= ${new Date(now.getTime() - hours * 3_600_000).toISOString()}
+          and exists (
+            select 1 from class_members cm
+            join classes c on c.id = cm.class_id
+            where cm.student_id = at.learner_id and c.teacher_id = ${teacherId}
+          )
       `) as unknown as CountRow[];
       return Number(rows[0]!.count);
     };
@@ -1394,6 +1536,11 @@ export class TeacherMarkingQueueService {
       join attempts at on at.id = ans.attempt_id
       join questions q on q.id = at.question_id
       where ans.marking_state = ${"PENDING"}
+        and exists (
+          select 1 from class_members cm
+          join classes c on c.id = cm.class_id
+          where cm.student_id = at.learner_id and c.teacher_id = ${teacherId}
+        )
       order by ans.created_at asc
     `) as unknown as MarkingAnswerRow[];
     const pendingByPaper = new Map<string | null, number>();
@@ -1452,8 +1599,18 @@ export class TeacherMarkingQueueService {
    * answer, each item isolated (partial success preserved); idempotent —
    * non-PENDING answers are SKIPPED, not re-marked; per-item failures serve
    * the stable UNEXPECTED_ERROR code, never raw exception text (R9).
+   *
+   * T-TEACH-003 (ADR-027 D1): `teacherId` scopes the batch. The scope
+   * resolves ONCE (live, D4) for the per-item classification; every
+   * dispatched item then re-rides markAnswer's own enrollment join (defense
+   * in depth — a mid-batch un-enrollment answers FAILED "answer not found",
+   * never a mark on a revoked learner). Out-of-scope ids report the honest
+   * SKIPPED_OUT_OF_SCOPE with an explicit reason and marksAwarded null
+   * (rendering the learner's current marks would leak answer state to a
+   * teacher who must not see the answer at all) — the ADR's batch note
+   * verbatim: never silently dropped, never fabricated.
    */
-  async smartMarkBatch(answerIds: string[]): Promise<SmartMarkBatchView> {
+  async smartMarkBatch(answerIds: string[], teacherId: string): Promise<SmartMarkBatchView> {
     if (answerIds === null || answerIds.length === 0) {
       throw new BadRequestError("answerIds must not be empty");
     }
@@ -1465,11 +1622,26 @@ export class TeacherMarkingQueueService {
           " — dispatch smaller batches");
     }
 
-    const current = new Map<string, { id: string; marking_state: string; marks_awarded: number | null }>();
+    // the requesting teacher's LIVE enrollment scope (one grouped read)
+    const scopeRows = (await this.sql`
+      select distinct cm.student_id
+      from class_members cm
+      join classes c on c.id = cm.class_id
+      where c.teacher_id = ${teacherId}
+    `) as unknown as Array<{ student_id: string }>;
+    const scope = new Set(scopeRows.map((r) => r.student_id));
+
+    const current = new Map<
+      string,
+      { id: string; marking_state: string; marks_awarded: number | null; learner_id: string }
+    >();
     if (unique.length > 0) {
       const rows = (await this.sql`
-        select id, marking_state, marks_awarded from answers where id = any(${unique}::uuid[])
-      `) as unknown as Array<{ id: string; marking_state: string; marks_awarded: number | null }>;
+        select ans.id, ans.marking_state, ans.marks_awarded, at.learner_id
+        from answers ans
+        join attempts at on at.id = ans.attempt_id
+        where ans.id = any(${unique}::uuid[])
+      `) as unknown as Array<{ id: string; marking_state: string; marks_awarded: number | null; learner_id: string }>;
       for (const r of rows) current.set(r.id, r);
     }
 
@@ -1478,6 +1650,15 @@ export class TeacherMarkingQueueService {
       const a = current.get(id);
       if (a === undefined) {
         results.push({ answerId: id, outcome: "FAILED", marksAwarded: null, reason: "answer not found" });
+        continue;
+      }
+      if (!scope.has(a.learner_id)) {
+        results.push({
+          answerId: id,
+          outcome: "SKIPPED_OUT_OF_SCOPE",
+          marksAwarded: null, // no answer-state leak (ADR-027 D1)
+          reason: "out of scope: the learner is not enrolled in one of your classes",
+        });
         continue;
       }
       if (a.marking_state !== "PENDING") {
@@ -1490,7 +1671,7 @@ export class TeacherMarkingQueueService {
         continue;
       }
       try {
-        const run = await this.smartMark.markAnswer(id);
+        const run = await this.smartMark.markAnswer(id, teacherId);
         results.push({
           answerId: id,
           outcome: run.validation_passed ? "MARKED" : "FAILED",
@@ -1499,13 +1680,23 @@ export class TeacherMarkingQueueService {
             ? null
             : run.failure_reason === null ? "FAILED" : run.failure_reason,
         });
-      } catch {
+      } catch (err) {
+        // the scope gate inside markAnswer fires only on a mid-batch
+        // un-enrollment race (the item was in scope at classification);
+        // its NotFound message is the honest "answer not found" class —
+        // everything else stays the stable UNEXPECTED_ERROR code
+        if (err instanceof NotFoundError) {
+          results.push({ answerId: id, outcome: "FAILED", marksAwarded: null, reason: "answer not found" });
+          continue;
+        }
         // stable failure code; the raw error lives in the log, not the body
         results.push({ answerId: id, outcome: "FAILED", marksAwarded: null, reason: "UNEXPECTED_ERROR" });
       }
     }
     const marked = results.filter((r) => r.outcome === "MARKED").length;
-    const skipped = results.filter((r) => r.outcome === "SKIPPED_ALREADY_MARKED").length;
+    const skipped = results.filter(
+      (r) => r.outcome === "SKIPPED_ALREADY_MARKED" || r.outcome === "SKIPPED_OUT_OF_SCOPE",
+    ).length;
     const failed = results.filter((r) => r.outcome === "FAILED").length;
     return { requested: results.length, marked, skipped, failed, items: results };
   }

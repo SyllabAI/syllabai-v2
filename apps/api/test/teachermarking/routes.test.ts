@@ -69,6 +69,8 @@ function boot(opts: {
 }
 
 const TEACHER = ["TEACHER"];
+/** The route-test auth identity — the scope principal every surface hands the service (T-TEACH-003). */
+const AUTH_USER = "60000000-0000-4000-8000-000000000001";
 
 // ── authz shell (SecurityConfig /api/v1/teacher/** + @PreAuthorize parity) ──
 
@@ -107,7 +109,8 @@ test("TEACHER unpaged /answers returns the plain list (the unchanged contract)",
   const res = await app.request("/answers");
   expect(res.status).toBe(200);
   expect(Array.isArray(await res.json())).toBe(true);
-  expect(calls.answersList?.[0]).toEqual(["PENDING"]);
+  // T-TEACH-003: the JWT identity rides as the scope principal
+  expect(calls.answersList?.[0]).toEqual(["PENDING", AUTH_USER]);
 });
 
 test("paged /answers returns the page envelope; defaults 0/50", async () => {
@@ -118,7 +121,7 @@ test("paged /answers returns the page envelope; defaults 0/50", async () => {
   // the fake returns its STATIC default; the (state, page, size) args are
   // pinned separately above via calls
   expect(body).toEqual({ items: [], page: 0, size: 50, totalElements: 0, totalPages: 0 });
-  expect(calls.answersPaged?.[0]).toEqual(["PENDING", 1, 50]);
+  expect(calls.answersPaged?.[0]).toEqual(["PENDING", 1, 50, AUTH_USER]);
 });
 
 test("/answers bounds are verbatim (:156-163)", async () => {
@@ -153,7 +156,7 @@ test("state is upper-cased before the service read (:180 valueOf parity)", async
   const { app, calls } = boot({ roles: TEACHER });
   const res = await app.request("/answers?state=smart_marked");
   expect(res.status).toBe(200);
-  expect(calls.answersList?.[0]).toEqual(["SMART_MARKED"]);
+  expect(calls.answersList?.[0]).toEqual(["SMART_MARKED", AUTH_USER]);
 });
 
 // ── GET /queue-v2 — dual-shape; bounds live in the service (:204-213) ───────
@@ -162,14 +165,14 @@ test("/queue-v2 unpaged delegates (state, null, null)", async () => {
   const { app, calls } = boot({ roles: TEACHER });
   const res = await app.request("/queue-v2");
   expect(res.status).toBe(200);
-  expect(calls.markingQueuePaged?.[0]).toEqual(["PENDING", null, null]);
+  expect(calls.markingQueuePaged?.[0]).toEqual(["PENDING", null, null, AUTH_USER]);
 });
 
 test("/queue-v2 paged delegates page/size (validation unit-pinned in the service)", async () => {
   const { app, calls } = boot({ roles: TEACHER });
   const res = await app.request("/queue-v2?state=PENDING&page=2&size=7");
   expect(res.status).toBe(200);
-  expect(calls.markingQueuePaged?.[0]).toEqual(["PENDING", 2, 7]);
+  expect(calls.markingQueuePaged?.[0]).toEqual(["PENDING", 2, 7, AUTH_USER]);
 });
 
 // ── GET /throughput (:220-223) ───────────────────────────────────────────────
@@ -180,7 +183,8 @@ test("/throughput returns the counts-of-what-happened view", async () => {
   expect(res.status).toBe(200);
   const body = await res.json();
   expect(body).toHaveProperty("answersByState");
-  expect(calls.throughput).toHaveLength(1);
+  // T-TEACH-003: the throughput view scopes to the JWT identity
+  expect(calls.throughput?.[0]).toEqual([AUTH_USER]);
 });
 
 // ── POST /smart-mark-batch (:231-235; #58 contracts 1..50 ids) ──────────────
@@ -193,7 +197,8 @@ test("/smart-mark-batch valid body runs the bounded batch", async () => {
     body: JSON.stringify({ answerIds: [ANSWER_ID] }),
   });
   expect(res.status).toBe(200);
-  expect(calls.smartMarkBatch?.[0]).toEqual([[ANSWER_ID]]);
+  // T-TEACH-003: the batch scopes per-item to the JWT identity
+  expect(calls.smartMarkBatch?.[0]).toEqual([[ANSWER_ID], AUTH_USER]);
 });
 
 test("/smart-mark-batch validation: empty, 51 ids, missing body → 400", async () => {
@@ -282,6 +287,47 @@ test("malformed uuid path variable → 400 (MethodArgumentTypeMismatch parity)",
   const { app } = boot({ roles: TEACHER });
   const res = await app.request("/answers/not-a-uuid");
   expect(res.status).toBe(400);
+});
+
+// T-TEACH-003 (ADR-027 D1): the single-answer surfaces scope to the JWT
+// identity — the rich view and the per-answer smart-mark hand the principal
+// to the service (whose enrollment join decides visibility; the fake module
+// pins only the hand-off).
+
+test("the rich single view delegates (id, JWT identity) to the scoped service read", async () => {
+  const seen: unknown[][] = [];
+  const { app } = boot({
+    roles: TEACHER,
+    module: {
+      queue: {
+        answerById: (async (...args: unknown[]) => {
+          seen.push(args as unknown[]);
+          return {
+            answerId: ANSWER_ID, attemptId: "c0000000-0000-4000-8000-000000000001",
+            learnerId: AUTH_USER, learnerDisplayName: "L",
+            questionId: PAPER_ID, questionExternalRef: null,
+            partLabel: "1a", partPrompt: "p", partMarks: 2, answerText: "ans",
+            markingState: "PENDING", marksAwarded: null, latestSmartMark: null,
+            latestHumanMark: null, examPaperId: null, paperTitle: null,
+          };
+        }) as unknown as TeacherMarkingModule["queue"]["answerById"],
+      },
+    },
+  });
+  const res = await app.request(`/answers/${ANSWER_ID}`);
+  expect(res.status).toBe(200);
+  expect(seen[0]).toEqual([ANSWER_ID, AUTH_USER]);
+});
+
+test("the per-answer smart-mark tail delegates (id, JWT identity) to the scoped write", async () => {
+  const { app, calls } = boot({ roles: TEACHER });
+  const res = await app.request(`/answers/${ANSWER_ID}/smart-mark`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({}),
+  });
+  expect(res.status).toBe(200);
+  expect(calls.markAnswer?.[0]).toEqual([ANSWER_ID, AUTH_USER]);
 });
 
 // ── POST /answers/{id}/human-mark (:261-270) — 201 + contract wiring ────────
