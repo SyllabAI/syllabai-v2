@@ -1,0 +1,17 @@
+# S0 output of record - c10-electrolysis
+chapter: "c10"
+chapter_key: "u1:c10"
+title: "Electrolysis"
+status: published # S4 flip of record — T-BOOK-016 (operator dispatch trace 1a15f18fdca65e79); DB book_blocks VALIDATED of record
+block_schema: "book.block/1"
+planned_blocks: 7
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "chem_only + widget_density high: p110 intro, p111 PANiC, p112 apparatus + check, p113 OILRIG, p114 half-equations, p119 aqueous products"
+blocks:
+  - {ord: 1, id: "c10-electrolysis/b01", type: prose, file: "blocks/b01-prose.json", anchor: 110}
+  - {ord: 2, id: "c10-electrolysis/b02", type: drag-label, file: "blocks/b02-drag-label-panic.json", anchor: 111}
+  - {ord: 3, id: "c10-electrolysis/b03", type: figure, file: "blocks/b03-figure-apparatus.json", anchor: 112}
+  - {ord: 4, id: "c10-electrolysis/b04", type: mcq-embed, file: "blocks/b04-mcq-check.json", anchor: 112}
+  - {ord: 5, id: "c10-electrolysis/b05", type: callout, file: "blocks/b05-callout-oilrig.json", anchor: 113}
+  - {ord: 6, id: "c10-electrolysis/b06", type: eq-builder, file: "blocks/b06-eq-builder-half-equation.json", anchor: 114}
+  - {ord: 7, id: "c10-electrolysis/b07", type: table-fill, file: "blocks/b07-table-fill-aqueous-products.json", anchor: 119}

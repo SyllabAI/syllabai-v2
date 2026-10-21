@@ -1,0 +1,17 @@
+# S0 output of record - c06-formulae-calculations-2
+chapter: "c06"
+chapter_key: "u1:c6"
+title: "Formulae and calculations (part 2)"
+status: published # S4 flip of record — T-BOOK-016 (operator dispatch trace 1a15f18fdca65e79); DB book_blocks VALIDATED of record
+block_schema: "book.block/1"
+planned_blocks: 7
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p73 intro, p75 excess, p77 ladder + example, p78 sim, p79 titrations, p80 check"
+blocks:
+  - {ord: 1, id: "c06-formulae-calculations-2/b01", type: prose, file: "blocks/b01-prose.json", anchor: 73}
+  - {ord: 2, id: "c06-formulae-calculations-2/b02", type: callout, file: "blocks/b02-callout-excess-limiting.json", anchor: 75}
+  - {ord: 3, id: "c06-formulae-calculations-2/b03", type: num-stepper, file: "blocks/b03-num-stepper-moles-to-concentration.json", anchor: 77}
+  - {ord: 4, id: "c06-formulae-calculations-2/b04", type: figure, file: "blocks/b04-figure-concentration-example.json", anchor: 77}
+  - {ord: 5, id: "c06-formulae-calculations-2/b05", type: sim-embed, file: "blocks/b05-sim-molarity.json", anchor: 78}
+  - {ord: 6, id: "c06-formulae-calculations-2/b06", type: table-fill, file: "blocks/b06-table-fill-titration.json", anchor: 79}
+  - {ord: 7, id: "c06-formulae-calculations-2/b07", type: mcq-embed, file: "blocks/b07-mcq-check.json", anchor: 80}

@@ -1,0 +1,45 @@
+{
+  "id": "c06-formulae-calculations-2/b03",
+  "type": "num-stepper",
+  "chapterKey": "u1:c6",
+  "ord": 3,
+  "pdfPageAnchor": 77,
+  "specPointRefs": [
+    "1.34C"
+  ],
+  "glossaryRefs": [
+    "concentration",
+    "mole",
+    "relative-formula-mass"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Dissolve 20.0 g of NaOH (Mr = 40) into water and make the solution up to 250 cm3. What is the concentration?",
+    "steps": [
+      {
+        "prompt": "Moles of NaOH dissolved (n = m / Mr)",
+        "answer": 0.5,
+        "unit": [
+          "mol"
+        ],
+        "hint": "20.0 / 40"
+      },
+      {
+        "prompt": "The same volume expressed in dm3 (1 dm3 = 1000 cm3)",
+        "answer": 0.25,
+        "unit": [
+          "dm3"
+        ],
+        "hint": "250 / 1000"
+      },
+      {
+        "prompt": "Concentration (c = n / V)",
+        "answer": 2,
+        "unit": [
+          "mol/dm3"
+        ],
+        "hint": "0.5 / 0.25"
+      }
+    ]
+  }
+}

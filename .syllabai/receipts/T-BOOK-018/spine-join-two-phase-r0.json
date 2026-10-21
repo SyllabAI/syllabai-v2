@@ -1,0 +1,27 @@
+{
+  "task": "T-BOOK-018",
+  "lane": "platform (spine-join engine) — the F-BOOK-0003 code candidate",
+  "operator_order": "F-BOOK-0003 code candidate (spine-join two-phase match) (trace 1a15f18fdca65e79, lane 1 of 3)",
+  "trace": "1a15f18fdca65e79",
+  "generated": "2026-10-21T15:30:00Z",
+  "engine_change": {
+    "phase_1": "UNTOUCHED (r0 flattened-bullet tiers 1 verbatim / 2 normalized ≥0.9·≥0.5 / 3 fuzzy ≥0.75·≥0.35)",
+    "phase_2_widened": {
+      "who": "REVIEW bullets only (never a re-litigation of phase-1 binds)",
+      "evidence_law": "the missing official tokens must ride a sub-clause bullet folded into a DIFFERENT bullet of the same box: tokens(sub) ⊆ tokens(official)",
+      "head_floor": 0.5,
+      "reconstituted_bars": "containment(official, head ∪ attached) ≥ 0.9 → tier 2; ≥ 0.75 → tier 3 (the SAME bars the single-phase law uses — widening changes where the tokens come from, never how much evidence a bind needs)",
+      "provenance": "method='widened' (the 27-row data-repair precedent class, now native), tier '2'/'3', lineage '<loId>#b<n>+attach'",
+      "determinism": "best-wins assignment: tier asc, score desc, spine globalOrder asc, bullet index asc; each sub-clause attaches at most once; each bullet at most once"
+    }
+  },
+  "proof_of_record": {
+    "unit_tests": "8/8 (new spine-join.test.ts) including the VERBATIM p.39 c4 LO box fixture (chem_v3_u1_c4_pdf039_0113 — 1.18's sub-clauses interleaved after the identify bullet) and the negative classes (no attach without evidence; head floor holds; determinism)",
+    "full_parse_census": "62 LO chunks / 29 chapters through the new engine vs book_chapters.spec_codes of record (production): binding-set equality 14/29; the 15 non-equal chapters carry EXACTLY the 27 operator method=widened data repairs (verified 27/27 — the honest review-lane dispositions an offline engine cannot and should not derive); EXTRA=0 on every chapter (zero out-of-law binds); intersecting provenance 146 codes, ZERO method/tier drift",
+    "sole_disclosed_delta": "u1:c4 1.18: engine score 1.0 vs data-repair 0.611 (same method=widened/tier 2/binding) — the attach evidence completes the containment the data repair approximated; rows of record NOT rewritten",
+    "gates": "api tsc 0; full suite 2417 pass / 0 fail"
+  },
+  "standing_tool": "the census (scripts/spine-census.ts, session-side) realizes the finding's 'post-join orphan-point census vs the canonical graph' half: any future parse re-run re-derives all joins and reports orphans against the DB of record",
+  "no_db_writes": "zero DB writes this lane; no re-ingest of record; the engine applies at future 133b runs and at the other books' onboarding (4PH1 candidate)",
+  "status": "F-BOOK-0003 CODE CANDIDATE APPLIED (findings.jsonl status fixed_in T-BOOK-018)"
+}

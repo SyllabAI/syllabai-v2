@@ -68,10 +68,13 @@ for (const p of specYaml.specification_points ?? []) {
 }
 
 // chapter → subsection letter of record (the S1 binding; see receipt)
+// F-BOOK-0004: c10 was mapped to S1-h before any c10 pack existed; the
+// canonical graph binds 1.55C-1.60C to S1-i (electrolysis) — fixed at
+// T-BOOK-016, the first lane to author a c10 pack.
 const CHAPTER_SUBSECTION = {
   c01: "4CH1-S1-a", c02: "4CH1-S1-b", c03: "4CH1-S1-c", c04: "4CH1-S1-d",
   c05: "4CH1-S1-e", c06: "4CH1-S1-e", c07: "4CH1-S1-f", c08: "4CH1-S1-g",
-  c09: "4CH1-S1-h", c10: "4CH1-S1-h",
+  c09: "4CH1-S1-h", c10: "4CH1-S1-i",
 };
 
 // authored glossary slugs

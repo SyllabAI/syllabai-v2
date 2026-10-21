@@ -1,0 +1,83 @@
+{
+  "id": "c10-electrolysis/b07",
+  "type": "table-fill",
+  "chapterKey": "u1:c10",
+  "ord": 7,
+  "pdfPageAnchor": 119,
+  "specPointRefs": [
+    "1.60C"
+  ],
+  "glossaryRefs": [
+    "electrolysis",
+    "anion",
+    "cation"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Aqueous electrolysis with inert electrodes - complete the products table (Table 10.1).",
+    "columns": [
+      "Solution electrolysed",
+      "Product at the cathode (-)",
+      "Product at the anode (+)"
+    ],
+    "rows": [
+      {
+        "label": "sodium chloride solution",
+        "cells": [
+          {
+            "accepts": [
+              "hydrogen",
+              "H2"
+            ],
+            "hint": "the less reactive element of the pair"
+          },
+          {
+            "accepts": [
+              "chlorine",
+              "Cl2"
+            ],
+            "hint": "halide present"
+          }
+        ]
+      },
+      {
+        "label": "dilute sulfuric acid",
+        "cells": [
+          {
+            "accepts": [
+              "hydrogen",
+              "H2"
+            ],
+            "hint": "H+ ions discharged"
+          },
+          {
+            "accepts": [
+              "oxygen",
+              "O2"
+            ],
+            "hint": "from the water/OH- when no halide"
+          }
+        ]
+      },
+      {
+        "label": "copper(II) sulfate solution",
+        "cells": [
+          {
+            "accepts": [
+              "copper",
+              "Cu"
+            ],
+            "hint": "the less reactive element deposits"
+          },
+          {
+            "accepts": [
+              "oxygen",
+              "O2"
+            ],
+            "hint": "sulfate stays in solution"
+          }
+        ]
+      }
+    ]
+  }
+}

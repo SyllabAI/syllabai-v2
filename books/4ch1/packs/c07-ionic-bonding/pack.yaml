@@ -1,0 +1,16 @@
+# S0 output of record - c07-ionic-bonding
+chapter: "c07"
+chapter_key: "u1:c7"
+title: "Ionic bonding"
+status: published # S4 flip of record — T-BOOK-016 (operator dispatch trace 1a15f18fdca65e79); DB book_blocks VALIDATED of record
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p84 ions/charges, p85 MgO, p88 Table 7.1 + check, p89 endings, p91 language + lattice"
+blocks:
+  - {ord: 1, id: "c07-ionic-bonding/b01", type: prose, file: "blocks/b01-prose.json", anchor: 84}
+  - {ord: 2, id: "c07-ionic-bonding/b02", type: figure, file: "blocks/b02-figure-dot-cross-mgo.json", anchor: 85}
+  - {ord: 3, id: "c07-ionic-bonding/b03", type: drag-label, file: "blocks/b03-drag-label-group-charges.json", anchor: 88}
+  - {ord: 4, id: "c07-ionic-bonding/b04", type: mcq-embed, file: "blocks/b04-mcq-check.json", anchor: 88}
+  - {ord: 5, id: "c07-ionic-bonding/b05", type: sort-match, file: "blocks/b05-sort-match-ion-endings.json", anchor: 89}
+  - {ord: 6, id: "c07-ionic-bonding/b06", type: callout, file: "blocks/b06-callout-ionic-discipline.json", anchor: 91}

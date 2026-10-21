@@ -1,0 +1,16 @@
+# S0 output of record - c08-covalent-bonding
+chapter: "c08"
+chapter_key: "u1:c8"
+title: "Covalent bonding"
+status: published # S4 flip of record — T-BOOK-016 (operator dispatch trace 1a15f18fdca65e79); DB book_blocks VALIDATED of record
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p94 intro, p95 accounting note, p96 check, p97 water diagrams, p103 carbon forms, p106 trends table"
+blocks:
+  - {ord: 1, id: "c08-covalent-bonding/b01", type: prose, file: "blocks/b01-prose.json", anchor: 94}
+  - {ord: 2, id: "c08-covalent-bonding/b02", type: callout, file: "blocks/b02-callout-dot-cross-accounting.json", anchor: 95}
+  - {ord: 3, id: "c08-covalent-bonding/b03", type: mcq-embed, file: "blocks/b03-mcq-check.json", anchor: 96}
+  - {ord: 4, id: "c08-covalent-bonding/b04", type: figure, file: "blocks/b04-figure-dot-cross-water.json", anchor: 97}
+  - {ord: 5, id: "c08-covalent-bonding/b05", type: sort-match, file: "blocks/b05-sort-match-carbon-forms.json", anchor: 103}
+  - {ord: 6, id: "c08-covalent-bonding/b06", type: table-fill, file: "blocks/b06-table-fill-molecular-trends.json", anchor: 106}
