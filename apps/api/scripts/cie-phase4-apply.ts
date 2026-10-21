@@ -111,6 +111,11 @@ export interface RosterEntry {
   // diverge from what the ingest will admit, by construction
   expectedQuestions: number;
   expectedParts: number;
+  // the PACKAGE-shape parts count (pkg.counts.parts) — the disclosure half of
+  // the run-008 part-ROW law split: option-bearing parts ride the frozen
+  // MIXED emission as MCQ QUESTION rows (-pK), so package parts > part rows
+  // exactly by the option-part count. expectedParts + the delta == this.
+  expectedPackageParts: number;
   // the RAW bundle census (disclosure of record: the phase-2 anchor gap)
   rawQuestions: number;
   rawParts: number;
@@ -171,6 +176,7 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
     let questionSets = 0;
     let expectedQuestions = 0;
     let expectedParts = 0;
+    let expectedPackageParts = 0;
     let rawQuestions = 0;
     let rawParts = 0;
     let shimExclusions: { unmapped: number; badSum: number; dupOrder: number } | undefined;
@@ -214,7 +220,22 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
           throw new Error("SHIM LAW VIOLATION (roster): buildSmePackage returned an empty package for " + slug);
         }
         expectedQuestions = pkg.counts.questions ?? 0;
-        expectedParts = pkg.counts.parts ?? 0;
+        // the part-ROW law (the run-008 COW proof, 39538793021): the frozen
+        // ingest emits option-bearing parts as MCQ QUESTION rows (the -pK
+        // MIXED family law, services/sme/index.ts) — only PLAIN parts become
+        // part rows. The census floor mirrors the EMISSION law by
+        // construction: pure-STRUCTURED questions contribute ALL their
+        // parts; MIXED questions contribute only their plain parts. The
+        // package-shape count (pkg.counts.parts) stays disclosed per entry
+        // (expectedPackageParts) — never again a floor.
+        expectedParts = pkg.questions.reduce((s: number, q) => {
+          if (q.questionType !== "STRUCTURED" || q.parts === null) return s;
+          const hasOptionPart = q.parts.some((p) => p.options !== null && p.options.length > 0);
+          return s + (hasOptionPart
+            ? q.parts.filter((p) => p.options === null || p.options.length === 0).length
+            : q.parts.length);
+        }, 0);
+        expectedPackageParts = pkg.counts.parts ?? 0;
         shimExclusions = { unmapped: pkg.counts.unmapped ?? 0, badSum: pkg.counts.badSum ?? 0, dupOrder: pkg.counts.dupOrder ?? 0 };
       }
     } catch (e) {
@@ -230,7 +251,7 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
         slug, board: CIE_BOARD, level: row.level ?? curriculum.level ?? "",
         subject: row.subject ?? curriculum.subject ?? "", code: curriculum.code,
         syllabusVersion: curriculum.syllabusVersion, cls: "skeleton",
-        questionSets, expectedQuestions, expectedParts, rawQuestions: expectedQuestions, rawParts: expectedParts, nodes,
+        questionSets, expectedQuestions, expectedParts, expectedPackageParts, rawQuestions: expectedQuestions, rawParts: expectedParts, nodes,
       });
       continue;
     }
@@ -244,7 +265,7 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
       slug, board: CIE_BOARD, level: row.level ?? curriculum.level ?? "",
       subject: row.subject ?? curriculum.subject ?? "", code: curriculum.code,
       syllabusVersion: curriculum.syllabusVersion, cls,
-      questionSets, expectedQuestions, expectedParts, rawQuestions, rawParts, shimExclusions, nodes,
+      questionSets, expectedQuestions, expectedParts, expectedPackageParts, rawQuestions, rawParts, shimExclusions, nodes,
     });
   }
 
@@ -754,6 +775,16 @@ async function main(): Promise<void> {
   const partsIngested = results.reduce((s, r) => s + (r.ingest && r.ingest.parts > 0 ? r.ingest.parts : 0), 0);
   const optionsIngested = results.reduce((s, r) => s + (r.ingest && r.ingest.options > 0 ? r.ingest.options : 0), 0);
 
+  // the FLEET-WIDE floors of record, computed from the roster (all real banks,
+  // independent of the slug filter) — see the expectedOfRecord comment below
+  // for the part-ROW law split
+  const realEntries = roster.entries.filter((e) => e.cls === "real");
+  const rosterFloorQ = realEntries.reduce((s, e) => s + e.expectedQuestions, 0);
+  const rosterFloorP = realEntries.reduce((s, e) => s + e.expectedParts, 0);
+  const rosterFloorPkg = realEntries.reduce((s, e) => s + e.expectedPackageParts, 0);
+  const rawFloorQ = realEntries.reduce((s, e) => s + e.rawQuestions, 0);
+  const rawFloorP = realEntries.reduce((s, e) => s + e.rawParts, 0);
+
   const receipt = {
     receipt: "CIE-INTEGRATION/cie-phase4-fleet-" + (mode ?? "census") + ".json",
     generatedUtc: new Date().toISOString(),
@@ -783,12 +814,22 @@ async function main(): Promise<void> {
       partsIngested,
       optionsIngested,
     },
-    // the floors RE-BASED on the servable truth (the run-003 anchor law): the
-    // raw phase-3 census bytes (19,097 questions / 25,663 parts) over-counted
-    // what the frozen ingest can serve — only spec-anchored questions join
-    // (primaryTopicCode is REQUIRED by validate). The anchor gap is the CIE
-    // lane's phase-2 follow-up, disclosed per slug below.
-    expectedOfRecord: { realBanks: 40, questionsFloor: 6618, partsFloor: 9158, rawCensusOfRecord: { questions: 19097, parts: 25663 } },
+    // the floors of record — COMPUTED from the roster (never hardcoded: the
+    // tranche-3 builder left the stale tranche-2 pre-count 6618/9158 burned
+    // in here, disagreeing with the same file's own 6599/9139 pins — the
+    // run-008 audit caught it). questionsFloor = the shim's admission
+    // (spec-anchored only); partsFloor = the part-ROW law (the run-008 COW
+    // proof: option-bearing parts emit as MCQ question rows, not part rows
+    // — 5,618 part rows of 9,139 package parts fleet-wide, proven per-bank
+    // 0-mismatch against the live fleet). The raw phase-3 bytes stay
+    // disclosed (the anchor gap is the CIE lane's phase-2 follow-up).
+    expectedOfRecord: {
+      realBanks: roster.real,
+      questionsFloor: rosterFloorQ,
+      partsFloor: rosterFloorP,
+      packagePartsFloor: rosterFloorPkg,
+      rawCensusOfRecord: { questions: rawFloorQ, parts: rawFloorP },
+    },
     failures: failures.map((f) => ({ slug: f.slug, error: f.error })),
     perSlug: results,
   };

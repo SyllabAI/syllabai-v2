@@ -75,20 +75,44 @@ describe("cie-phase4 roster law", () => {
     }
     const questions = real.reduce((s, e) => s + e.expectedQuestions, 0);
     const parts = real.reduce((s, e) => s + e.expectedParts, 0);
-    // the SERVABLE census of record (the run-006 re-base): the fleet's floors
-    // and drift checks measure the SHIM'S OWN admission output —
-    // buildSmePackage is the single admission law (zero-DB, deterministic),
-    // so the roster can never diverge from what the ingest will admit. The
-    // tranche-2 "anchored" pre-count (6,618 / 9,158) mirrored only the anchor
-    // law and drifted by the shim's OTHER honest exclusion classes (badSum,
-    // dupOrder — the run-006 COW proof caught 1+1+3+14 on four banks): the
-    // servable truth is 6,599 questions / 9,139 parts (exclusions of record:
-    // unmapped 12,479 / badSum 0 / dupOrder 19). The RAW phase-3 census bytes
-    // (19,097 / 25,663) stay disclosed on every entry (rawQuestions/rawParts)
-    // — the anchor gap is the CIE lane's phase-2 follow-up, made measurable,
-    // never hidden.
+    // the SERVABLE census of record (the run-006 re-base, the run-008 split):
+    // the fleet's floors and drift checks measure the SHIM'S OWN admission
+    // output — buildSmePackage is the single admission law (zero-DB,
+    // deterministic), so the roster can never diverge from what the ingest
+    // will admit. The tranche-2 "anchored" pre-count (6,618 / 9,158)
+    // mirrored only the anchor law and drifted by the shim's OTHER honest
+    // exclusion classes (badSum, dupOrder — the run-006 COW proof caught
+    // 1+1+3+14 on four banks): the servable truth is 6,599 questions.
+    // The run-008 COW proof (39538793021, the FIRST full-fleet completion)
+    // caught the parts half of the law: the frozen ingest emits
+    // option-bearing parts as MCQ QUESTION rows (the -pK MIXED family law)
+    // — only PLAIN parts become part ROWS. expectedParts therefore mirrors
+    // the EMISSION law by construction: 5,618 part rows of 9,139 package
+    // parts (the delta 3,521 = the option-part count, fleet-measured
+    // 0-mismatch per bank). The RAW phase-3 census bytes (19,097 / 25,663)
+    // stay disclosed on every entry (rawQuestions/rawParts) — the anchor gap
+    // is the CIE lane's phase-2 follow-up, made measurable, never hidden.
     expect(questions).toBe(6599);
-    expect(parts).toBe(9139);
+    expect(parts).toBe(5618);
+    // the package-shape disclosure (the other half of the law split): the
+    // package parts stay counted, never again a floor
+    const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
+    expect(pkgParts).toBe(9139);
+    expect(parts + (pkgParts - parts)).toBe(pkgParts);
+    // bank-level pins of the row law (the run-008 fleet's own numbers):
+    // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
+    // mixed banks emit only their plain parts. physics-23 carries exactly
+    // ONE plain part among its 627 questions (fleet parts=1 of record) —
+    // the law counts it, the 626 option-parts ride as MCQ rows.
+    const physics23 = real.find((e) => e.slug === "cie-igcse-physics-23");
+    expect(physics23).toBeDefined();
+    expect(physics23!.expectedQuestions).toBe(627);
+    expect(physics23!.expectedParts).toBe(1);
+    expect(physics23!.expectedPackageParts).toBe(627);
+    const bio25 = real.find((e) => e.slug === "cie-a-level-biology-25");
+    expect(bio25).toBeDefined();
+    expect(bio25!.expectedParts).toBe(855);
+    expect(bio25!.expectedPackageParts).toBe(1513);
     const rawQ = real.reduce((s, e) => s + e.rawQuestions, 0);
     const rawP = real.reduce((s, e) => s + e.rawParts, 0);
     expect(rawQ).toBe(19097);
