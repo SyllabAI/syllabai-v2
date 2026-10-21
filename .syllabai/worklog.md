@@ -11035,3 +11035,18 @@ Work Log:
 
 Stage Summary:
 - The 134c gate is ARMED for the tranche-1 landing: workflow floors re-based to the post-tranche-1 census of record (6,715 q / 5,696 part-rows), dispatch to follow at the merged tip. The DB plane still serves the pre-tranche linkage for the 9 affected banks (business-23 +41 / chemistry-25 +23 / sdv-chem +15 / biology-25 +13 / physics-23 +7 / cs-23 +6 / combined-bio +4 / physics-25 +4 / combined-chem +3 questions) until the gated prod-apply lands.
+---
+Task ID: Task-67
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15f01e8eb6d665)
+Task: Operator "they're unspent. Use any one key, because they are from the same account" — ONE operator-supplied key staged into the pool of record; receipt T-MIG-138/run-006-key-stage-r1c.json.
+
+Work Log:
+- Probe closed first (trace 1a15efd864459bf1): two operator-supplied AQ.* candidates (...uo51w / ...66a-A) each probed 1x against gemini-embedding-001:embedContent — BOTH HTTP 400 FAILED_PRECONDITION "User location is not supported" = auth PASSED on both (invalid keys return API_KEY_INVALID; the region 400 fires after auth per the run-001 REGION LAW class); quota class unverifiable from the sandbox (region check precedes RPD).
+- STAGED of record: KEY_A (...uo51w) -> GitHub secret T138_GEMINI_KEY_4 via the secrets API (repo public key id 3380204578043523366, libsodium sealed box, PyNaCl b64-decoded raw pubkey bytes — first attempt's string-encoder mismatch fixed in-place), PUT HTTP 204, metadata verified on the secret list: _4 updated_at 2026-10-21T15:11:30Z (names + updated_at ONLY; values never printed anywhere).
+- One-key directive honored: KEY_B (...66a-A) held SPARE lane-side (.t138-key-probe.env @600), NOT staged — same account, no double budget.
+- Pool of record for the 07:00Z Oct 22 window: shard1 = T138_GEMINI_KEY (original), _2, _3, _4 = NEW (revives the 403-dead slot); op#1 anomaly stays out-of-matrix operator-keyed.
+- Projection disclosed: 95-row residual over 4 healthy shards ~24/24/24/23 -> projected 95/95, QUEUE ZERO in one window (each key needs >=24 fresh RPD; honesty law covers any shortfall); last-tranche secrets-hygiene gate becomes reachable on completion.
+- Write ledger: the secrets PUT was the ONLY state change; zero code/content/DB/Neon/LLM; secrets hygiene maintained (600 env file, fingerprint-only reporting); .syllabai-only receipt + this entry; fetch-first, no force.
+
+Stage Summary:
+- Shard-4 key slot REVIVED of record with an unspent operator key; the next re-key after 07:00Z Oct 22 projects the full 95-doc drain and queue zero. Next repo receipt = Task-68; next workspace = Task-48. Standing residuals unchanged (PAT rotation CRITICAL overdue; hub deploy incident operator-keyed; op#1 out-of-matrix).

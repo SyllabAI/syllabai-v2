@@ -1,0 +1,31 @@
+{
+  "receipt": "T-MIG-138/run-006-key-stage-r1c.json",
+  "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15f01e8eb6d665; probe trace 1a15efd864459bf1)",
+  "operator_order": "'they're unspent. Use any one key, because they are from the same account' — executing the operator-gated staging proposal (probe trace: both candidate AQ.* keys auth-VALID-REGION-BLOCKED; this order picks ONE key into the pool)",
+  "key_provenance": {
+    "candidates": "two operator-supplied AQ.* keys (fingerprints ...uo51w / ...66a-A), probed 1x gemini-embedding-001:embedContent each from sandbox egress: BOTH HTTP 400 FAILED_PRECONDITION 'User location is not supported' = auth PASSED (an invalid key returns API_KEY_INVALID; region 400 fires after auth per the run-001 REGION LAW class)",
+    "quota_assertion": "operator asserts UNSPENT and SAME ACCOUNT — hence the one-key directive (staging both would not double same-account budget)",
+    "selection": "KEY_A (...uo51w) — first-validated probe candidate"
+  },
+  "staging_act": {
+    "method": "GitHub secrets API: GET actions/secrets/public-key (key_id 3380204578043523366) -> libsodium sealed box (PyNaCl, b64-decoded raw pubkey bytes) -> PUT actions/secrets/T138_GEMINI_KEY_4",
+    "http": "204",
+    "metadata_verification": "secret list of record: T138_GEMINI_KEY 2026-10-20T14:44:29Z / _2 14:09:53Z / _3 14:09:54Z / _4 **2026-10-21T15:11:30Z <-- STAGED THIS ACT** (names + updated_at only; values never printed lane-side or here)",
+    "secret_value_handling": "operator keys live lane-side at scripts/.t138-key-probe.env (chmod 600); never echoed, never logged, absent from this receipt"
+  },
+  "pool_of_record_for_next_window": {
+    "shard1": "T138_GEMINI_KEY (the original app key, re-staged of record run-003)",
+    "shard2": "T138_GEMINI_KEY_2 (op#2)",
+    "shard3": "T138_GEMINI_KEY_3 (op#3)",
+    "shard4": "T138_GEMINI_KEY_4 = NEW ...uo51w — REVIVES the 403-dead slot",
+    "out_of_matrix": "op#1 anomaly (walled-at-26, operator-keyed) unchanged; KEY_B (...66a-A) held SPARE lane-side, NOT staged, per the one-key directive"
+  },
+  "projection_next_window": "07:00Z Oct 22 midnight-Pacific roll on operator re-key: 95-row residual, 4-shard round-robin ~24/24/24/23 — each key needs >=24 fresh RPD (A asserted unspent; original/_2/_3 per the reset law) -> projected 95/95, QUEUE ZERO, ONE window; then the last-tranche secrets-hygiene gate becomes reachable. Risks disclosed: if any legacy key's fresh budget < 24 or the ~40-wall class repeats below need, that shard honest-skips and a residual persists (the honesty law handles it); region law makes per-key quota unverifiable from the sandbox pre-window.",
+  "write_ledger": "the secrets PUT was the ONLY state change; zero code/content/DB/Neon/LLM contact; scripts persisted (t138-key-probe.sh, t138-stage-key4.py, .t138-key-probe.env @600); .syllabai-only receipt + worklog entry; fetch-first, no force",
+  "hygiene_of_record": "both candidate keys transited operator chat — rotation keyed to the last-tranche secrets-hygiene law (138c receipt); the secrets-hygiene-delete gate itself remains keyed to the LAST tranche",
+  "residuals_of_record_unchanged": [
+    "PAT rotation standing CRITICAL overdue",
+    "hub deploy incident operator-keyed",
+    "op#1 anomaly out-of-matrix operator-keyed"
+  ]
+}
