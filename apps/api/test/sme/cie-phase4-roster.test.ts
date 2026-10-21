@@ -92,12 +92,19 @@ describe("cie-phase4 roster law", () => {
     // 0-mismatch per bank). The RAW phase-3 census bytes (19,097 / 25,663)
     // stay disclosed on every entry (rawQuestions/rawParts) — the anchor gap
     // is the CIE lane's phase-2 follow-up, made measurable, never hidden.
-    expect(questions).toBe(6599);
-    expect(parts).toBe(5618);
+    // TRANCHE-1 RE-BASE (trace 1a15e4200e6af579, not a loosening): the
+    // T-SPECS-CIE-TRANCHE1-T2NEAR-1 verdict round (resources PR #22, merge
+    // aa0b4de1) promoted the census receipt's 155-part T2_near queue to the
+    // V* authoritative class and the consume re-run re-emitted the linkage —
+    // 116 fully-unmapped questions gain servability (unmapped 12,479 ->
+    // 12,363 EXACT, per slug == the lane-side prediction). Floors re-pinned
+    // from the census tool of record (cie-tranche1-t2near-run-001-r0.json).
+    expect(questions).toBe(6715);
+    expect(parts).toBe(5696);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(9139);
+    expect(pkgParts).toBe(9276);
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -106,13 +113,13 @@ describe("cie-phase4 roster law", () => {
     // the law counts it, the 626 option-parts ride as MCQ rows.
     const physics23 = real.find((e) => e.slug === "cie-igcse-physics-23");
     expect(physics23).toBeDefined();
-    expect(physics23!.expectedQuestions).toBe(627);
+    expect(physics23!.expectedQuestions).toBe(634);
     expect(physics23!.expectedParts).toBe(1);
-    expect(physics23!.expectedPackageParts).toBe(627);
+    expect(physics23!.expectedPackageParts).toBe(634);
     const bio25 = real.find((e) => e.slug === "cie-a-level-biology-25");
     expect(bio25).toBeDefined();
-    expect(bio25!.expectedParts).toBe(855);
-    expect(bio25!.expectedPackageParts).toBe(1513);
+    expect(bio25!.expectedParts).toBe(859);
+    expect(bio25!.expectedPackageParts).toBe(1529);
     const rawQ = real.reduce((s, e) => s + e.rawQuestions, 0);
     const rawP = real.reduce((s, e) => s + e.rawParts, 0);
     expect(rawQ).toBe(19097);
@@ -126,7 +133,7 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0 },
     );
-    expect(excl).toEqual({ unmapped: 12479, badSum: 0, dupOrder: 19 });
+    expect(excl).toEqual({ unmapped: 12363, badSum: 0, dupOrder: 19 });
     // the question-level identity: raw - servable = unmapped + dupOrder (each
     // exclusion removes whole questions; badSum is zero of record)
     expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder);
