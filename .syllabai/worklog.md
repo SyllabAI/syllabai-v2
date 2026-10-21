@@ -10580,3 +10580,18 @@ Work Log:
 Stage Summary:
 - The gate cycle is honest at every run: run-007 proved the guard holds under job-level cancel and measured the true healthy fleet (~200 min) — the ceiling now chases the evidence, not the guess. Production untouched (the 5 no-op slugs of record remain the only prod CIE state). Hygiene: env-only credential handling, fetch-first, no force, receipts end-to-end.
 
+
+---
+Task ID: cie-phase4-run-008-receipt + partrow-census (the A-path discharge continuation; ruling A trace 1a15b161bf960249)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: run-008 (39538793021) outcome of record — the FIRST full-fleet completion caught the census parts-law divergence on the COW — + the part-ROW census fix PR + run-009 staging.
+
+Work Log:
+- Run-008 (cow+prod @ 9e19c0d, the PR #240 ceiling merge, dispatched 03:28:50Z): the fleet completed ALL 45 slugs ok=true in ~31 min (the COW compute was warm/large vs run-007's 177-min pace — same laws, different Neon autoscale node), ZERO failures, census pre-flight GREEN; the questions floor PASSED EXACT (6,599 == 6,599); the parts floor FAILED (5,618 != 9,139 pinned); cow-proof exit 1 at 04:01:13Z; prod-apply SKIPPED (the admission law holds); COW dropped 404-clean. ZERO prod contact.
+- The delta localized first-hand: local ZERO-DB census (loadRoster + buildSmePackage) diffed per-bank against the job log — the zero/low-part banks are exactly the option-part banks (past-paper MCQ shape), partial deltas == per-bank single-part counts. ROOT LAW: the frozen ingest's MIXED emission turns option-bearing parts into MCQ QUESTION rows (-pK family); only plain parts become part ROWS; the shim's counts.parts counts the PACKAGE. Information ZERO loss — the census measured the wrong shape.
+- The correct law PROVEN: expectedParts' = per-question (hasOptionPart ? plainParts : allParts) = 5,618 fleet-wide, PER-BANK 0-MISMATCH vs the live fleet. AUDIT RIDER: the census receipt builder's expectedOfRecord was HARDCODED 6,618/9,158 — the stale tranche-2 pre-count (tranche-3 re-based the test+workflow but missed the builder; the +19/+19 = the dupOrder exclusions exactly). De-hardcoded to computed-from-roster.
+- THE FIX PR (cie-phase4/partrow-census-r0): the part-ROW census law in loadRoster (expectedParts mirrors the emission law BY CONSTRUCTION; expectedPackageParts disclosed per entry, never a floor); expectedOfRecord computed (zero hardcode); the roster test re-pinned 5,618 + the law-split bank pins (physics-23: 627 q / 1 part row of 627 package parts — the one plain part the fleet itself emitted); the workflow floors 5,618 both jobs. Gates first-hand: tsc x4 clean, battery 2379/0/13, hub build exit 0, census floors computed 6,599 / 5,618 / 9,138->9,139 pkg. Receipt: cie-phase4-prod-apply-run-008-r0.json.
+- NEXT: self-merge on green -> DISPATCH run-009 (mode=cow+prod): floors 5,618 == 5,618 by construction, the COW re-proves, prod-apply completes the tree idempotently; then the CIE registry fill audit.
+
+Stage Summary:
+- The gate cycle's crown evidence: the FIRST full-fleet completion was exactly the run that exposed the last census-law divergence — on the disposable copy, zero prod exposure, honest red over false green. The census now measures the emission law BY CONSTRUCTION; the floors chase the truth, never the guess. Hygiene: env-only credentials, zero-DB local proofs, fetch-first, no force.

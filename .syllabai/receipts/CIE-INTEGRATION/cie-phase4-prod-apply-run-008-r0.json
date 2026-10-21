@@ -1,0 +1,42 @@
+{
+  "receipt": "cie-phase4-prod-apply-run-008-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15993047a40809 + 1a15a5bb18840ac5 + 1a15b161bf960249 (ruling A)",
+  "operatorOrder": "the two-act prod apply under the optionA laws of record (ruling A); run 8 = the post-ceiling-fix dispatch (PR #240 merged 9e19c0d) on the standing re-run order, the 134c law",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-21T04:40:00Z",
+  "phase": "4 of 6 — run 8: the FIRST FULL-FLEET COMPLETION (45/45 ok=true, ZERO failures) — and the fleet floors caught the census/ingest parts-law divergence on the DISPOSABLE COW: prod-apply skipped, zero prod exposure. The gate did exactly what it exists to do.",
+  "runOfRecord": {
+    "runId": 39538793021,
+    "workflow": "cie-phase4-db-plane.yml @ main 9e19c0d (the PR #240 ceiling-fix merge; cow-proof 240 min / prod-apply 300 min)",
+    "mode": "cow+prod",
+    "dispatchedAt": "2026-10-21T03:28:50Z",
+    "conclusion": "FAILURE (cow-proof floors assertion: partsIngested 5,618 != the pinned 9,139 — an HONEST RED of the census law, not a fleet failure; prod-apply correctly skipped under the admission law)",
+    "timeline": "03:28:50Z dispatched; census pre-flight GREEN (44 bundles / 8,850 nodes / max dbCode 25/40); the fleet completed ALL 45 slugs ok=true in ~31 min (03:29-04:01Z — the COW compute was warm/large relative to run-007's 177-min pace: same laws, same sha-family, different Neon autoscale node); fleet summary {selected:45, realApplied:37, realSeedOnly:3, stubsSeeded:4, skeletonsSkipped:1, failures:0, questionsIngested:6599, partsIngested:5618}; the questions floor PASSED (6599 == 6599 EXACT); the parts floor FAILED (5618 != 9139); 04:01:13Z cow-proof exit 1; prod-apply SKIPPED (the admission law holds); the COW dropped 404-clean (post-delete GET = 404)",
+    "credentialVerdict": "the CIE4||T138 resolution passed, the fleet connected to the COW, no value ever printed (masked *** only)"
+  },
+  "defectCensusOfRecord": {
+    "method": "the run-008 job log per-slug parts= lines diffed against a LOCAL ZERO-DB census (loadRoster + buildSmePackage, bun, no DB) — then the delta localized to the ingest's emission law and PROVEN by a derived part-ROW law recomputed per bank",
+    "class": "census-parts-law divergence (the floors' parts half measured the PACKAGE, not the EMISSION)",
+    "evidence": [
+      "questions side EXACT: fleet 6,599 == census 6,599 (the run-006 question law holds)",
+      "parts side: fleet 5,618 part ROWS vs census 9,139 package parts (delta 3,521 = 38.5%)",
+      "the per-bank pattern: banks where every question carries exactly ONE OPTION-BEARING part (the past-paper MCQ shape — 0620 chem-23, 0610 bio-23, 0455 econ-20, 0452 accounting-21, the 0973 trio) ingested ZERO part rows; partial deltas elsewhere == the per-bank option-part count (9700 bio-25: 1,513 pkg -> 855 rows, delta 658 = its single-part question count)",
+      "ROOT LAW: the frozen ingest's MIXED emission (services/sme/index.ts) emits option-bearing parts as MCQ QUESTION rows (the -pK family with option rows) — only PLAIN parts become part rows. The shim's counts.parts counts ALL package parts. Information ZERO LOSS — the option parts ARE stored, as MCQ question rows; the census measured the wrong shape.",
+      "PROOF OF THE CORRECT LAW: expectedParts' = per-question (hasOptionPart ? plainParts.length : parts.length) recomputed zero-DB = 5,618 fleet-wide, PER-BANK 0-MISMATCH against the live fleet's 40 ingest lines",
+      "SECOND DEFECT (audit rider): the census receipt builder's expectedOfRecord was HARDCODED 6,618/9,158 — the STALE tranche-2 pre-count, disagreeing with the same file's own tranche-3 6,599/9,139 pins (tranche-3 re-based the test+workflow but missed the builder). The +19/+19 delta = the fleet's dupOrder exclusions exactly."
+    ],
+    "candidateFix": "the census mirrors the EMISSION law by construction: loadRoster computes expectedParts from pkg.questions with the part-ROW law; pkg.counts.parts stays disclosed per entry (expectedPackageParts) but never again a floor; the census receipt builder's expectedOfRecord becomes COMPUTED from the roster (zero hardcode); the workflow floors re-pin 9,139 -> 5,618 (both jobs); the roster test re-pins + adds the bank-level law pins (physics-23: 627 q / 1 part row of 627 package parts — the one plain part the fleet itself emitted)"
+  },
+  "guardVerdict": "THE 134c PROTOCOL AT FULL POWER: the first full-fleet completion in the phase-4 cycle was exactly the run that exposed the last census-law divergence — caught on the DISPOSABLE COW (dropped 404-clean), prod-apply skipped by the all-green admission law, ZERO production contact. The floors-of-record discipline (the gate must measure the truth it asserts) held: an honest red beats a false green.",
+  "writeLedger": {
+    "production": "ZERO writes — prod-apply skipped",
+    "cow": "created, full 45/45 fleet, dropped 404-clean — zero residue",
+    "repo": "this receipt + worklog (bookkeeping) + the fix PR cie-phase4/partrow-census-r0 (the census law + de-hardcode + re-pins)"
+  },
+  "nextAct": {
+    "lane": "PR cie-phase4/partrow-census-r0: (1) the part-ROW census law in loadRoster, (2) expectedOfRecord computed-from-roster (de-hardcode), (3) the roster test re-pin 5,618 + law-split pins, (4) the workflow floors 5,618 both jobs — gates tsc x4 + battery + hub build + census, self-merge on green (#233/#240 precedent) — then DISPATCH run-009 (mode=cow+prod): the floors must pass (5,618 == 5,618 by construction), the fleet re-proves on the COW, prod-apply completes the tree idempotently (the 5 prod slugs of record are the no-op set)",
+    "onGreen": "the CIE registry fill audit (HUB-REGISTRY fill-where-served, 45 rows, curriculumCode = <spec>-<syllabusVersion>)"
+  },
+  "hygiene": "zero secret values in any file/log/receipt; the local census/verification scripts ran ZERO-DB (no Neon contact from the sandbox); fetch-first, no force"
+}
