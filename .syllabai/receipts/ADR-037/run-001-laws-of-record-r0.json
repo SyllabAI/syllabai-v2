@@ -1,0 +1,62 @@
+{
+  "receipt": "run-001-adr037-laws-of-record-r0",
+  "lane": "ADR-037",
+  "trace": "1a15ef585f568331",
+  "operatorOrder": "file ADR-037 as a proper receipt with the two laws spelled out",
+  "posture": "LAWS OF RECORD FILED — no law ruling made, no re-apply ordered or pending; the conditional re-apply order stands armed, trigger = explicit operator ruling only",
+  "provenanceCorrectionOfRecord": {
+    "what": "the prior consultative turn (trace 1a15e80b29821f5d) disclosed 'ADR-037 exists nowhere of-record' — true of the then-local tree (8894a8c) but STALE relative to origin/main: ADR-037 is extensively of-record via sibling-lane pushes in 8894a8c..c2388bc",
+    "why": "that turn ran without fetch-first on the syllabai-v2 clone (the clone's location was itself only established this turn; the outer sandbox repo has no origin)",
+    "correction": "fetch-first this turn FF'd main 8894a8c -> c2388bc; the of-record ADR-037 chain is now first-hand",
+    "lesson": "fetch-first is not optional even for consultative turns"
+  },
+  "documentOfRecord": {
+    "doc": "docs/ADR-037-OFFICIAL_PAPERS_WIRING.md",
+    "status": "WIRED + PERSISTED (2026-10-21)",
+    "doctrine": "the converter extracts; it never authors (verbatim operator-archive extraction)",
+    "chain": [
+      "743b53e5 (PR #239) — v0.6 wired: 16 official 4CH1/1C past-paper sets into igcse-chemistry-19 (169 questions / 930 parts), solution_md / mark_points[] / assets[]",
+      "PR #249 (merged 2026-10-21) — v0.7 delta: the package/ingest extension that PERSISTS markPoints; status WIRED (content) -> WIRED + PERSISTED",
+      "045bcd7040 incident — PR #249 accidentally overwrote the doc with the literal 14-byte string '404: Not Found' (a dead fetch's error body over the document of record)",
+      "restoration — v0.6 content restored verbatim from 743b53e5b8 + v0.7 delta re-appended from the PR #249 record (docs reconciliation pass, operator trace 1a15e714070287a9); no decision content changed"
+    ]
+  },
+  "theTwoLaws": {
+    "law1_wholeBlock_1to1": {
+      "statement": "a part carrying NO markPoints persists exactly ONE mark_points row — the frozen whole-block law: 1 row : 1 part; MCQ-direct rows carry question_part_id NULL (the inner-join probe class)",
+      "codeOfRecord": [
+        "apps/api/src/services/sme/index.ts:50-55 — markPointRowsFor(): returns 1 when the part carries no markPoints (count law)",
+        "packages/db/src/schema/schema.ts:322 — mark_points (markSchemeId NOT NULL, questionPartId nullable, per-row text/marks/ordering)"
+      ],
+      "liveCorpusPosture": "GOVERNS LIVE TODAY — the corpus DB ingestion of record (lane C / Ruling A, receipt R0-4CH1-CORPUS-DB-INGEST/laneC-rulingA-apply-r0.json, corpusVersion syllabai.sme-exam-questions/1.1@de4d8da8 — PRE-v0.7 bundle) persisted 1,435 mark_points rows = 1:1 with the 1,435 admitted parts (1,202 joined-via-parts + 233 MCQ-direct, byte-matched probes)"
+    },
+    "law2_perPoint_v07": {
+      "statement": "a part CARRYING markPoints persists ONE mark_points row PER POINT — ref '<label>.<n>', per-point awardable {marks, text}; gated by the G7 sum law: every point positive AND the sum EXACTLY equals the part's marks — validate() and the shim REFUSE otherwise (fail-closed, never rewritten); packages that predate v0.7 parse markPoints=null and default to Law 1 (the != null guard class)",
+      "codeOfRecord": [
+        "packages/contracts/src/sme-question-package.ts:61 — DTO amendment (additive, the ADR-026 options-amendment precedent): SmePart.markPoints",
+        "apps/api/src/services/sme/package.ts:39/:58 — per-point awardable marks; null = whole-block point",
+        "apps/api/src/services/sme/index.ts:448/:490/:638 — saveStructuredBody() per-point rows when the part carries markPoints",
+        "apps/api/src/services/sme/bundle-questions.ts:138/:359 — shim ride-through fail-closed (refuses any part whose points don't close on its marks)",
+        "apps/api/test/sme/bundle-questions.test.ts:354 — 'ADR-037 v0.7 the markPoints ride-through laws' pinned (ride-through 1.1 -> 1.0 through the REAL frozen gates + the sum-violation refusal)"
+      ],
+      "contentPlanePosture": "OF RECORD since PR #249 — igcse-chemistry-19 questions.json regenerated from syllabai-resources main@e4533d7d (converter v0.7): 169/169 official questions anchor (was 5), 927/930 parts carry specPointCodes (1,180 registry-valid codes; 3 honest pending-llm), 1,405 markPoints with 0 sum violations, 135 crops / 7 honest stubs"
+    },
+    "selectionLaw": "the two laws co-exist by construction; the selector is the part itself — carries markPoints -> Law 2, else Law 1; the ingest summary counts ROWS via markPointRowsFor()",
+    "planeReconciliation": "content plane = Law 2 capable (v0.7 corpus, 1,405 per-point rows servable); live corpus DB = Law 1 posture (1,435 whole-block rows from the pre-v0.7 ingestion); the delta is exactly what a v0.7 re-apply would close"
+  },
+  "conditionalReapplyOrderOfRecord": {
+    "text": "order the ADR-037 v0.7 re-apply if per-point markPoints should replace the 1:1 law on the live corpus",
+    "plainSemantics": "the live corpus DB was ingested from the pre-v0.7 bundle, so its mark_points rows encode the whole-block law; stored rows cannot be re-read under a different law — if the operator rules that per-point should govern live, the corpus DB ingestion RE-APPLIES from a v0.7+ corpus so Law-2 rows replace the whole-block rows; if the ruling keeps 1:1, NO re-apply and live stands as-is",
+    "mechanicsIfFired": "the idempotency law of record already covers the rewrite: slice-scoped deactivation of exactly the re-emitted refs + fresh insert (lane C receipt; the CIE fleet proved the law; the no-op class is the second apply on identical bytes — a v0.7 apply is NOT the no-op class, the emitted rows differ)",
+    "trigger": "explicit operator ruling only — never self-fired, never inferred from content-plane state",
+    "applyTierPath": "kill-list -> operator green-light -> fresh census + dry-run against CURRENT live state (the lane C dry-run is a rehearsal, not a license) -> apply with structural proof -> receipts; fail-closed throughout"
+  },
+  "zeroWritesOfRecord": "bookkeeping-only: this receipt + the sandbox worklog; zero content-plane writes, zero DB writes, zero deploys, zero LLM calls",
+  "push": "LOCAL COMMIT OF RECORD — push BLOCKED: both credential stagings (.secrets dir + git credential-store file) wiped between turns (narrow-wipe class, recurrence #3 of record); commit lands on local main claim-in-first-commit and pushes immediately on PAT one-shot re-stage (restore-creds precedent; PAT never persisted, values never printed)",
+  "followupRegister": [
+    "PAT rotation (now quadruply overdue — recurrence of the wipe class rises with every re-stage)",
+    "environment-reset forensics (standing, from lane C receipt)",
+    "CORS config.ts:60 (standing)",
+    "stale .neon-branch.env cleanup (standing)"
+  ]
+}
