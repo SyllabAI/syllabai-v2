@@ -1,0 +1,67 @@
+{
+  "schema": "syllabai.content-audit-run/1.0",
+  "task_id": "CONTENT-AUDIT run-001-r0",
+  "operator_order": {
+    "trace": "1a15e490b7421729",
+    "verbatim": "Can you review all the content in syllabai, cie edexcel. Are the SME revision notes and exam question organized correctly. I can see that cie history is missing some revision notes. Audit thoroughly"
+  },
+  "session": "web-6139ba42-da3d-435b-8237-f8623816ae6c (trace 1a15ef6e2f2cddc1)",
+  "date": "2026-10-21",
+  "scope": "apps/hub/content/* (94 bundles: 44 CIE + 50 Edexcel) + courses.json + live hub syllabai-hub-v2.vercel.app + upstream resources@8e291010 (CIE channel pin)",
+  "read_only": true,
+  "census": {
+    "bundles": 94,
+    "manifest_vs_actual_exact": 93,
+    "manifest_drift": [
+      {
+        "bundle": "igcse-chemistry-19",
+        "field": "questions",
+        "manifest": 524,
+        "actual": 693,
+        "explanation": "golden pack = 524 SME import + 169 ADR-037 official past-paper questions (git 045bcd70 '169/169 anchored'); manifest tracks the SME import only and was never re-derived after ADR-037; live badge 693 is correct (computed from the served file); manifest is the stale outlier",
+        "severity": "cosmetic-defect (manifest accuracy), served surface correct"
+      }
+    ]
+  },
+  "organization_findings": {
+    "edexcel_50_bundles": "exemplary — notes S-bridged ~100% per bundle (98-100%), spec-point coverage 99-100% except igcse-geography-19 (17/202, lattice finer than corpus — genuine upstream corpus shape, notes themselves all bridged); corpus 23a gates verified green at T-CONSUME-EDX-2; maths-b restored of record and live-verified this session",
+    "cie_44_bundles": "thin lattice join — 1,899/4,460 notes (42.6%) carry curriculum specPointCodes; aggregate spec-point coverage 2,728/6,854 (39.8%); 12 bundles <15%: economics-25 0%, english-language-25 0%, english-literature-21 0.5%, general-paper-21 1.4%, english-language-20 2.5%, further-maths-25 4.4%, pure-3 7.7%, geography-25 8.0%, history-18 8.6%, business-25 12.9%, business-23 13.5%",
+    "disclosure_honesty": "the hub UI renders unbridged notes under an explicit 'Not yet anchored to a spec point — the spec-point mapping (still in progress upstream) will slot them into the tree' card (notes-index.tsx unmapped bucket) — the state is DISCLOSED, not silently hidden; all notes remain reachable by noteId URL and via the unmapped card",
+    "cie_questions": "counts manifest-exact everywhere; part-level anchoring thin but 0 stray codes (history 57/321; economics-25 0/625)",
+    "zero_question_bundles_9": "all upstream-faithful — SME-ExamQuestion status 'no_topic_questions_on_sme' verified at the CIE pin for cie-a-level-accounting-21, cie-a-level-economics-23, cie-igcse-accounting-25, cie-as-english-general-paper-21, igcse-english-language-a-16-paper-3-coursework, and the 6 science-double-award-modular-24 units (biology-unit-1 verified directly, siblings same status class); NOT defects; note the maths-b precedent (same status class later overturned by operator-authorized manufacturing) — the manufacturing path exists for these too and remains OPERATOR-GATED"
+  },
+  "cie_history_18_detail": {
+    "notes_import": "faithful 87/87, upstream fetch_failures 0 (upstream course manifest verified at 8e291010)",
+    "curriculum": "2024-2026 syllabus lattice: 1 SUBJECT + 21 TOPIC + 21 SUBTOPIC + 371 SPEC_POINT",
+    "bridge": "24/87 notes carry specPointCodes (32 codes, all resolve, 0 stray); 63 notes anchor only via upstream smeSpecPointIds (spcpt_* id-space) which the served lattice does not carry — orphaned to the disclosed 'not yet anchored' bucket",
+    "topic_level_gap": "13/21 topics have ZERO notes attached on the learner surface: Were the revolutions of 1848 important? (26 spec pts); 1 Was the Weimar Republic doomed from the start? (4); 2 Why was Hitler able to dominate Germany by 1934? (4); (a) How effectively did the Nazis control Germany 1933-45? (5); 1 Why did the Tsarist regime collapse in 1917? (8); 3 How did Stalin gain and hold on to power? (4); 1 How far did the US economy boom in the 1920s? (4); How was Italy unified? (21); 1 How did the Second World War in Europe develop? (12); 1 Why was there stalemate on the Western Front? (5); 2 To what extent was it a world war? (4); 3 How important were other fronts? (4); 4 Why did Germany ask for an armistice in 1918? (35)",
+    "spec_point_gap": "339/371 spec points note-less (8.6% covered)",
+    "root_cause_class": "the SME course covers its own (legacy) topic taxonomy (germany-1918-45, russia-1905-41, the-20th-century-international-relations-from-1919, the-united-states-1919-41 — zero overlap with the served subtopic slugs); the curriculum is the 2024-2026 official lattice; the only bridge is the S-code join, which the upstream spec-index attached to a minority of notes; upstream self-describes the mapping as 'still in progress'",
+    "live_verification": "revision-notes badge 87 + notes reachable; exam-questions badge 321 + 19 set links; topic sidebar renders the curriculum tree with the disclosed gaps",
+    "lattice_artifact": "TS4 (US Civil War) contains S4.012-S4.031 League-of-Nations spec points after S4.001-S4.011 civil-war points (parents verified in curriculum.json itself) — the upstream spec lattice's section-4 mixes two themes; v2 reflects it faithfully; flagged for upstream review, not adjudicated here"
+  },
+  "ghost_course": {
+    "bundle": "cie-a-level-maths-20-pure-2",
+    "state": "courses.json status 'full' + live 200 + listed in the /courses catalog (94 links) — while the bundle is 100% EMPTY (0 notes / 0 questions / 0 flashcards / 0 spec points) and upstream has NO such course (SME-RevisionNotes and SME-ExamQuestion both lack cie-a-level-maths-20-pure-2; 404 verified at the CIE pin and at resources main HEAD)",
+    "note": "CIE 9709 Pure Mathematics 2 is a real syllabus component — SME simply never published a P2 course; the other pure bundles (P1 74 notes, P3 79 notes) have content",
+    "severity": "learner-facing empty shell labeled 'full'"
+  },
+  "live_checks": {
+    "maths_b_restore": "see T-MIG-136 restore-verification run-001-r0 (same session) — both planes exact",
+    "courses_catalog": "94 links live == courses.json 94 rows",
+    "history": "revision-notes badge 87; exam-questions badge 321 + 19 links",
+    "chemistry_19": "exam-questions badge 693 (matches actual file, exceeds stale manifest 524)"
+  },
+  "operator_decision_menu": [
+    "1. CIE lattice join completion: the upstream SME spec-index mapping is self-described 'still in progress' — completing it (upstream lane) fixes history + 11 more thin bundles at once; hub UI already discloses the interim state honestly",
+    "2. igcse-chemistry-19 manifest refresh (524 -> 693 or explicit 524 SME + 169 ADR-037 split) — one-file cosmetic fix, own lane",
+    "3. cie-a-level-maths-20-pure-2 ghost: remove from the catalog, or mark status honestly (no SME coverage), or commission the P2 corpus — operator's call",
+    "4. the 9 zero-question CIE/Edexcel courses could follow the maths-b manufacturing precedent (parsed past papers -> anchored bank) — OPERATOR-GATED per T-MIG-136 law",
+    "5. TS4 mixed-theme lattice (League under Civil War) — upstream spec-index review"
+  ],
+  "artifacts": {
+    "census_json": "download/audit-bundle-census.json (local workspace)",
+    "history_coverage_script": "scripts/audit_history_coverage.py",
+    "cie_coverage_script": "scripts/audit_cie_coverage.py"
+  }
+}
