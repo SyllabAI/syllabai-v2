@@ -1,15 +1,20 @@
 # syllabai-v2
 
-TypeScript monorepo for the SyllabAI platform migration: the Java backend
-(`SyllabAI/syllabai-core`, frozen) and the product frontend
-(`SyllabAI/syllabai-hub`, frozen) are being re-platformed here as
-**apps/api** (Hono + Drizzle + Neon serverless) and **apps/hub** (imported
-Next.js frontend), sharing **packages/contracts** as the single source of
-API truth.
+TypeScript monorepo and, since the **2026-10-13 cutover**, the **only system
+of record** for SyllabAI (api-of-record `syllabai-v2.vercel.app`, hub-of-record
+`syllabai-hub-v2.vercel.app`). The Java backend (`SyllabAI/syllabai-core`,
+archived read-only) and the product frontend (`SyllabAI/syllabai-hub`, archived
+read-only) were re-platformed here as **apps/api** (Hono + Drizzle + Neon
+serverless) and **apps/hub** (imported Next.js frontend), sharing
+**packages/contracts** as the single source of API truth. The migration is
+**COMPLETE** — 100% migrated, zero-core census LIVE=0, the census gate is
+CI-enforced (`scripts/preflight_zero_core_census.py --gate` in `ci.yml`) — see
+`docs/MIGRATION_REPORT.md` here and `CUTOVER_RETIREMENT_2026-10-13.md` in the
+master pack repo `SyllabAI/syllabai`.
 
-**Both upstream repos stay as-is.** Nothing is ever written to
-`syllabai-core` or `syllabai-hub` during the migration. This repo connects
-to the **same Neon Postgres database** — the database does not move.
+**The upstream repos stay as-is.** Nothing is ever written to
+`syllabai-core` or `syllabai-hub`. This repo connects to the **same Neon
+Postgres database** — the database does not move.
 
 ## Layout
 
@@ -24,9 +29,10 @@ packages/
 books/                 # interactive-book authoring workspaces, per qualification (4ch1 pilot)
 golden/                # golden-master parity harness (Java core vs v2 api)
 docs/                  # MIGRATION_PLAN, AGENT_COORDINATION, GOLDEN_MASTER, BASELINE_DB, REFERENCE_DOCS, books/
-.sy/
-  syllabai/tasks/      # T-MIG-xxx task files (same yaml convention as the master pack)
-  syllabai/worklog.md  # append-only multi-agent worklog
+.syllabai/
+  tasks/               # T-MIG-xxx / T-BOOK-xxx task files (same yaml convention as the master pack)
+  receipts/            # byte-exact receipts of record
+  worklog.md           # append-only multi-agent worklog
 .github/workflows/ci.yml
 ```
 
