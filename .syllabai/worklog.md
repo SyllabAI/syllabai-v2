@@ -11766,3 +11766,20 @@ Stage Summary:
 - THE 4CH1 INTERACTIVE BOOK IS STUDENT-VISIBLE END-TO-END, PROVEN OF RECORD: entry card -> honest shelf (live T-C20 gate) -> 29 chapters -> 177 rail blocks -> bank-backed checks -> auth-gated progress -> 112-term glossary. No technical lever remains; the sole open posture is monetization/gating (PLAN §9) — an operator decision, not a build.
 - Deployment note: the entry card is prerendered from the committed registry (any hub build >= the 133k commit advertises it); the shelf is force-dynamic (live DB truth); no redeploy required by this lane.
 - Open queue: 4PH1 as book #2 (next 'one line per course' when its archive home lands); PAT rotation overdue (recurring).
+
+---
+
+Task ID: T-SM-REPLAY-REPIN-1 run-001 (operator ruling trace 1a16041a4ba7a509 — "rule on the corpus re-pin (I can prep the re-pinned cases for review)" — option (a) approved as filed in t-teach-003-stage-5b-replay-proof-r0.json)
+Agent: zai-web lane (main agent, session web-590847c1-cf63-4098-b0c8-a90085355429)
+
+Work Log:
+- THE RE-PIN AUTHORED (branch t-sm-replay-repin-1/corpus-repin, head 216eedea, PR #280 OPEN with the receipt riding it): (1) t51-seed.sql — in-header amendment + two EDGELESS SPEC_POINT anchor nodes …040 'WCH11-T1.1a' / …050 'WCH11-T1.2a' (collision-free ids across every uuid family; created_by 't-sm-replay-repin-1' marks them NOT-V63-dump rows); (2) t51-corpus.zip — the two specPoints codes re-anchored (the ONLY deltas are the two 'a' suffixes, proved by reverse-substitute == original; topic mappings byte-untouched); (3) both sme-ingest cases stamped justified:true + description notes — EXPECTS byte-unchanged (per-ingest census is code-independent; status 4 = 2+2 replace semantics preserved).
+- DESIGN OF RECORD: edgeless on purpose — every pinned graph/tree body selects via EDGE TRAVERSAL (learner KG recursive subtree, taxonomy subtree, teacher KG traversal), so +2 nodes change zero pinned bodies; the ingest resolves through byCode (all knowledge_nodes). Blast radius proven empty: no case body reads the staged T51 questions back; marking quartet carries zero spec-anchor echoes; history/topics pin the TOPIC mapping (untouched). Rejected alternatives of record: retyping the topic nodes (G1 law), guard exemption (operator's fail-closed order), ingest fallback (beyond the ruled scope).
+- Gates: golden runner --selftest OK; ci-replay --selftest OK; ci-replay --plan green; both edited cases parse; suite green locally on the branch tree (2496/0/13).
+- CI BLOCKAGE (non-attribution proven): PR #280's verify is red via the FLEET-WIDE main breakage introduced by PR #279 (the NEXTBUMP-2 fleet bump): cie-phase4-roster.test.ts dies at module scope — "bundle TOPIC cie-igcse-history-2024-2026-TS4L does not carry the official -T tail" (bundle-seed.ts:437 via cie-phase4-apply.ts:613) — main @ 1d8b3d95 and @ 6ed7fdea carry the IDENTICAL failure (run logs cross-checked; comment 6326807292 posted on the PR). The failing file passes 14/14 locally on this branch. NOT this lane's fence: bundle-seed + the CIE census are the CIE content lane's territory and the TS4 lattice is the standing OPEN operator item — the CIE lane is ACTIVELY iterating (T-SPECS-TS4-REPAIR-1 e024c11c landed mid-watch; the pinned bundle still carries the offending code, so main verify remains red at watch close).
+- Receipt: .syllabai/receipts/T-SM-REPLAY-REPIN-1/run-001-corpus-repin-r0.json (rides PR #280).
+
+Stage Summary:
+- The operator's corpus re-pin is PREPPED FOR REVIEW of record: PR #280 complete (re-pin + receipt + non-attribution comment), ready to merge the moment main verify heals — the post-merge neon-replay dispatch then produces BOTH the instrument-repair proof AND the stage-5b projection verdict (the w3-teacher-marking rich-200 quartet must be absent from the union fail list).
+- The nightly instrument stays staging-broken until that merge (the crash class is un-fixed at current main; the next 02:30Z cron will crash identically — expected, disclosed).
+- Standing reminder: the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law.
