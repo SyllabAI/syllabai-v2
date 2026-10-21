@@ -1,0 +1,17 @@
+# S0 output of record - c18-chemical-tests (T-BOOK-011)
+chapter: "c18"
+chapter_key: "u2:c18"
+title: "Chemical tests"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 7
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p199 intro, p200 gas tests + cation tests tables, p201 water tests, p204 anion drag + nitric callout, p205 mcq"
+blocks:
+  - {ord: 1, id: "c18-chemical-tests/b01", type: prose, file: "blocks/b01-prose-tests.json", anchor: 199}
+  - {ord: 2, id: "c18-chemical-tests/b02", type: table-fill, file: "blocks/b02-table-fill-gas-tests.json", anchor: 200}
+  - {ord: 3, id: "c18-chemical-tests/b03", type: table-fill, file: "blocks/b03-table-fill-water-tests.json", anchor: 201}
+  - {ord: 4, id: "c18-chemical-tests/b04", type: table-fill, file: "blocks/b04-table-fill-cation-tests.json", anchor: 202}
+  - {ord: 5, id: "c18-chemical-tests/b05", type: drag-label, file: "blocks/b05-drag-label-anion-tests.json", anchor: 204}
+  - {ord: 6, id: "c18-chemical-tests/b06", type: callout, file: "blocks/b06-callout-nitric-acid-first.json", anchor: 204}
+  - {ord: 7, id: "c18-chemical-tests/b07", type: mcq-embed, file: "blocks/b07-mcq-check.json", anchor: 205}

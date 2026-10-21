@@ -1,0 +1,17 @@
+# S0 output of record - c16-acids-alkalis-titrations (T-BOOK-011)
+chapter: "c16"
+chapter_key: "u2:c16"
+title: "Acids, alkalis and titrations"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 7
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p176 intro, p177 indicators drag + sim, p179 neutralisation builder + titration stepper, p181 mcq"
+blocks:
+  - {ord: 1, id: "c16-acids-alkalis-titrations/b01", type: prose, file: "blocks/b01-prose-ph-and-ions.json", anchor: 176}
+  - {ord: 2, id: "c16-acids-alkalis-titrations/b02", type: drag-label, file: "blocks/b02-drag-label-indicator-colours.json", anchor: 177}
+  - {ord: 3, id: "c16-acids-alkalis-titrations/b03", type: sim-embed, file: "blocks/b03-sim-acid-base.json", anchor: 177}
+  - {ord: 4, id: "c16-acids-alkalis-titrations/b04", type: eq-builder, file: "blocks/b04-eq-builder-neutralisation-ionic.json", anchor: 179}
+  - {ord: 5, id: "c16-acids-alkalis-titrations/b05", type: num-stepper, file: "blocks/b05-num-stepper-titration-calc.json", anchor: 179}
+  - {ord: 6, id: "c16-acids-alkalis-titrations/b06", type: callout, file: "blocks/b06-callout-burette-reading.json", anchor: 179}
+  - {ord: 7, id: "c16-acids-alkalis-titrations/b07", type: mcq-embed, file: "blocks/b07-mcq-check.json", anchor: 181}

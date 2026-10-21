@@ -1,0 +1,52 @@
+{
+  "id": "c13-gases-atmosphere/b04",
+  "type": "num-stepper",
+  "chapterKey": "u2:c13",
+  "ord": 4,
+  "pdfPageAnchor": 148,
+  "specPointRefs": [
+    "2.10",
+    "2.14"
+  ],
+  "glossaryRefs": [
+    "oxidation"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "The rusting-of-iron experiment (Figure 13.3): conical flask 130 cm3, connecting tube 12 cm3, gas syringe starts at 92 cm3 and ends at 43 cm3. Work out the percentage of oxygen in the air.",
+    "steps": [
+      {
+        "prompt": "Total volume of air at the start (flask + tube + syringe)",
+        "answer": 234,
+        "unit": [
+          "cm3"
+        ],
+        "hint": "130 + 12 + 92"
+      },
+      {
+        "prompt": "Total volume of 'air' at the end",
+        "answer": 185,
+        "unit": [
+          "cm3"
+        ],
+        "hint": "130 + 12 + 43"
+      },
+      {
+        "prompt": "Volume of oxygen used up",
+        "answer": 49,
+        "unit": [
+          "cm3"
+        ],
+        "hint": "234 - 185"
+      },
+      {
+        "prompt": "Percentage of oxygen in the air (to the nearest whole number)",
+        "answer": 21,
+        "unit": [
+          "%"
+        ],
+        "hint": "49 / 234 x 100"
+      }
+    ]
+  }
+}

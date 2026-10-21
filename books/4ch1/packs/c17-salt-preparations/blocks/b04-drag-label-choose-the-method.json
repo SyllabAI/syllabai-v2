@@ -1,0 +1,44 @@
+{
+  "id": "c17-salt-preparations/b04",
+  "type": "drag-label",
+  "chapterKey": "u2:c17",
+  "ord": 4,
+  "pdfPageAnchor": 192,
+  "specPointRefs": [
+    "2.39",
+    "2.40C",
+    "2.41C"
+  ],
+  "glossaryRefs": [
+    "precipitate",
+    "filtration"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Choose the preparation route - drag each method onto the salt situation it serves.",
+    "labels": [
+      "excess insoluble base + acid, then filter",
+      "titration (acid + alkali), no filtration",
+      "precipitation - mix two soluble salts, then filter"
+    ],
+    "regions": [
+      {
+        "id": "cu-sulfate",
+        "text": "soluble salt from an insoluble solid (e.g. copper(II) sulfate from CuO)"
+      },
+      {
+        "id": "na-salts",
+        "text": "sodium, potassium or ammonium salt (the solid would dissolve)"
+      },
+      {
+        "id": "insoluble-salt",
+        "text": "insoluble salt (e.g. lead(II) sulfate)"
+      }
+    ],
+    "solution": {
+      "cu-sulfate": "excess insoluble base + acid, then filter",
+      "na-salts": "titration (acid + alkali), no filtration",
+      "insoluble-salt": "precipitation - mix two soluble salts, then filter"
+    }
+  }
+}

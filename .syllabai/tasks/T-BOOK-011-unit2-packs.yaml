@@ -1,0 +1,58 @@
+version: 1
+task:
+  id: T-BOOK-011
+  title: "Unit 2 packs (c11-c18) through S0-S4 — authoring, adversarial review, lint green, chapter flip, scoped ingest, 20% spot-check, pack flip; the rail serves Unit 2"
+  owner: "main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator trace 1a15f60b53d4e0d5)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-B
+  deps: [T-BOOK-010, T-BOOK-016, T-BOOK-017]
+  execution_record: >
+    Executed per BOOK-BUILD-PLAYBOOK (S0-S4) under the operator dispatch
+    trace 1a15f60b53d4e0d5 "② Units 2-4 packs (plan T-BOOK-011..013, engine
+    and playbook have undergone two rounds of end-to-end validation)". S0:
+    8 pack.yaml plans (c11-c18 = The alkali metals / The halogens / Gases in
+    the atmosphere / Reactivity series / Extraction and uses of metals /
+    Acids, alkalis and titrations / Salt preparations / Chemical tests),
+    page-true anchors from the sha-pinned parse of record digest
+    (b2c67eaf re-verified this session; chapter pdf ranges = book_chapters DB
+    truth via a session-side manifest rebuild, disclosed). S1: 52 blocks
+    (6/6/7/7/6/7/6/7 by pack; 8 of the 11 types incl. the chemistry-only
+    carriers eq-builder x3 and drag-label x3, plus 1 sim-embed per the
+    book.yaml sim_embed_plan c16) + 20 new glossary terms in
+    u2-metals-and-salts.yaml with the ms layer + 8 mcq-embed checkRefs
+    probe-verified ACTIVE MCQ_SINGLE x4 options; specPointRefs all inside the
+    DB join sets of record (the cross-boundary codes 2.4C on c12 avoided;
+    unbound codes 2.42/2.47 avoided - now F-BOOK-0005). S2 accuracy +
+    S3 exam-alignment: TWO independent adversarial subagent reviewers
+    (fact-pass + examiner-voice, the S1/S2/S3 separation law) - 1 x S1
+    (c17 solubility rules row conflated carbonate/hydroxide exceptions,
+    split per the book's own Table), 12 x S2, several S3 - ALL fixed in-lane
+    and re-gated PASS by both reviewers (zero regressions). Lint: G1-G4 0
+    findings x29 packs / 177 blocks (first fire for the extended map).
+    S3/S4 on PRODUCTION (T-BOOK-016 class, COW waiver disclosed: zero DDL,
+    the same guarded idempotent scripts, per-tx pre/post re-proves):
+    prechecks 4/4 -> chapter flip u2:c11..c18 (pre 8/8 SUGGESTED, post 8/8
+    VALIDATED, one tx) -> SCOPED ingest COMMIT (staging dir with ONLY
+    c11-c21 packs + glossary minus the u4 file + meta/book.yaml; ingest
+    script of record UNCHANGED) -> 20% spot-check 15/71 = 21.1% GREEN across
+    11 chapters / 7 types x L1 zod / L2 canonical jsonb (key-order-
+    insensitive) / L3 page-true vs the sha-pinned parse census / L4 payload
+    laws + full-set cheap laws + negative control 0 VALIDATED pre-flip + u1
+    60 of-record rows untouched -> pack flip x52 (v1->2, one tx) -> serve
+    proof u2:c11..c18 = 6/6/7/7/6/7/6/7.
+base:
+  repo: "syllabai-v2 @ t-book-011-019/units-2-4-glossary-r0"
+basis: "BOOK-BUILD-PLAYBOOK S0-S4; BOOK-PACK-SPEC; ADR-BOOK-0001 (§4 Phase B under the live pilot posture; §3 double gate); the T-BOOK-016 pipeline of record"
+scope:
+  allowed:
+    - "books/4ch1/packs/c11-*..c18-* (S0 plans + S1 blocks)"
+    - "books/4ch1/glossary/u2-metals-and-salts.yaml"
+    - "scripts/books/lint.mjs (CHAPTER_SUBSECTION map extension c11-c29, canonical-derived)"
+    - "DB book_chapters/book_blocks u2 state flips (operator dispatch, guarded txs)"
+    - ".syllabai/receipts/T-BOOK-011/** + task yaml + worklog append"
+  forbidden:
+    - "the ingest script of record (unchanged; scoping via the staging dir)"
+    - "any u4 DB-plane write (the F-BOOK-0001 release gate)"
+    - "L1 corpus files"

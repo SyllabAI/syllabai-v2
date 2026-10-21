@@ -71,10 +71,21 @@ for (const p of specYaml.specification_points ?? []) {
 // F-BOOK-0004: c10 was mapped to S1-h before any c10 pack existed; the
 // canonical graph binds 1.55C-1.60C to S1-i (electrolysis) — fixed at
 // T-BOOK-016, the first lane to author a c10 pack.
+// T-BOOK-011/012/013: c11-c29 extended schema-first from the canonical
+// subsection table (specification_points.yaml), not from book.yaml notes.
+// Chapters whose DB join sets carry a neighbouring-subsection code (c12 joins
+// 2.4C from S2-a; c27/c28 join the shared 4.29C from S4-e — repeated LO-box
+// matches) bind to their DOMINANT subsection; authoring must avoid the
+// cross-boundary codes (lint G1 enforces subsection membership anyway).
 const CHAPTER_SUBSECTION = {
   c01: "4CH1-S1-a", c02: "4CH1-S1-b", c03: "4CH1-S1-c", c04: "4CH1-S1-d",
   c05: "4CH1-S1-e", c06: "4CH1-S1-e", c07: "4CH1-S1-f", c08: "4CH1-S1-g",
   c09: "4CH1-S1-h", c10: "4CH1-S1-i",
+  c11: "4CH1-S2-a", c12: "4CH1-S2-b", c13: "4CH1-S2-c", c14: "4CH1-S2-d",
+  c15: "4CH1-S2-e", c16: "4CH1-S2-f", c17: "4CH1-S2-g", c18: "4CH1-S2-h",
+  c19: "4CH1-S3-a", c20: "4CH1-S3-b", c21: "4CH1-S3-c",
+  c22: "4CH1-S4-a", c23: "4CH1-S4-b", c24: "4CH1-S4-c", c25: "4CH1-S4-d",
+  c26: "4CH1-S4-e", c27: "4CH1-S4-f", c28: "4CH1-S4-g", c29: "4CH1-S4-h",
 };
 
 // authored glossary slugs

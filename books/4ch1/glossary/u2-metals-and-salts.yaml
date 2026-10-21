@@ -1,0 +1,143 @@
+# books/4ch1 glossary - AUTHORED layer of record (T-BOOK-011, u2 packs c11-c18 refs)
+subject_code: "4ch1"
+terms:
+  - term: "alkali metal"
+    slug: alkali-metal
+    definition: "A Group 1 metal such as lithium, sodium or potassium; soft, low density, and reactive with air and water to form alkaline solutions."
+    ms_accepts: ["Group 1 metal", "reacts with water forming an alkaline solution and hydrogen"]
+    ms_avoids: ["any metal that makes an alkali (wrong definition)", "alkaline earth metal (that is Group 2)"]
+    aliases: ["Group 1 metal"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "halogen"
+    slug: halogen
+    definition: "A Group 7 non-metal such as fluorine, chlorine, bromine, iodine or astatine, existing as diatomic molecules X2."
+    ms_accepts: ["Group 7 non-metal", "forms diatomic molecules X2"]
+    ms_avoids: ["salt-forming metal (muddled wording)", "noble gas"]
+    aliases: ["Group 7 element"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "diatomic"
+    slug: diatomic
+    definition: "Made of molecules that each contain exactly two atoms, as in H2, Cl2, Br2 and I2."
+    ms_accepts: ["molecule containing two atoms"]
+    ms_avoids: ["two elements (that is a binary compound)", "double bond (unrelated)"]
+    aliases: []
+    source: "authored:pack-c11-c18-r0"
+  - term: "halide"
+    slug: halide
+    definition: "A negative ion formed when a halogen atom gains one electron, such as Cl-, Br- or I-; carries a 1- charge."
+    ms_accepts: ["negative ion of a halogen", "halogen atom that has gained an electron"]
+    ms_avoids: ["a halogen molecule (X2)", "any negative ion"]
+    aliases: []
+    source: "authored:pack-c11-c18-r0"
+  - term: "displacement"
+    slug: displacement
+    definition: "A reaction in which a more reactive element takes the place of a less reactive element in its compound or solution."
+    ms_accepts: ["more reactive element pushes out (takes the place of) a less reactive one"]
+    ms_avoids: ["displaced volume (a physics idea)", "any reaction between two elements"]
+    aliases: ["displacement reaction"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "oxidising agent"
+    slug: oxidising-agent
+    definition: "The substance that oxidises something else by taking electrons from it (or giving oxygen to it); it is itself reduced."
+    ms_accepts: ["accepts electrons and is itself reduced", "gives oxygen and is itself reduced"]
+    ms_avoids: ["the substance that is oxidised (backwards)", "anything that contains oxygen"]
+    aliases: []
+    source: "authored:pack-c11-c18-r0"
+  - term: "reactivity series"
+    slug: reactivity-series
+    definition: "The list of metals ordered from most to least reactive, based on their reactions with water, dilute acids and displacement reactions."
+    ms_accepts: ["metals arranged in order of reactivity with water/acids/displacement reactions"]
+    ms_avoids: ["list ordered by density or melting point", "the periodic table itself"]
+    aliases: ["reactivity order"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "rusting prevention"
+    slug: rusting-prevention
+    definition: "Stopping iron rusting by barrier methods (paint, oil, grease), galvanising (zinc coating), or sacrificial protection with a more reactive metal."
+    ms_accepts: ["barrier methods keep out air and water", "galvanising coats iron with zinc", "sacrificial protection uses a more reactive metal that corrodes instead"]
+    ms_avoids: ["painting removes the oxygen already present", "rusting needs only water (air is also required)"]
+    aliases: ["prevention of rusting", "sacrificial protection"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "ore"
+    slug: ore
+    definition: "A rock from the Earth's crust that contains enough metal compound (mineral) to make extraction of the metal economically worthwhile."
+    ms_accepts: ["rock containing a metal compound that can be extracted profitably"]
+    ms_avoids: ["pure metal rock (unreactive metals are native, not ores)", "any rock found underground"]
+    aliases: []
+    source: "authored:pack-c11-c18-r0"
+  - term: "native metal"
+    slug: native-metal
+    definition: "A metal found in the Earth's crust as the uncombined element, such as gold, because it is too unreactive to form compounds readily."
+    ms_accepts: ["found as the uncombined element", "unreactive metal that has not formed compounds"]
+    ms_avoids: ["metal mined from an ore compound", "an alloy dug from the ground"]
+    aliases: ["uncombined element"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "cryolite"
+    slug: cryolite
+    definition: "A mineral in which molten aluminium oxide is dissolved for electrolysis, lowering the operating temperature from over 2000 degrees C and making the process economical."
+    ms_accepts: ["dissolves Al2O3 to lower the melting/operating temperature", "makes the electrolysis cheaper"]
+    ms_avoids: ["a reactant that is reduced", "a catalyst (it acts as a solvent)"]
+    aliases: []
+    source: "authored:pack-c11-c18-r0"
+  - term: "alloy"
+    slug: alloy
+    definition: "A mixture of a metal with one or more other elements, usually metals or carbon; the different-sized atoms make it harder than the pure metal."
+    ms_accepts: ["mixture of a metal with other elements (metals or carbon)", "different-sized atoms distort the layers so they slide less easily"]
+    ms_avoids: ["a pure compound of metals", "always softer than the pure metal (backwards)"]
+    aliases: []
+    source: "authored:pack-c11-c18-r0"
+  - term: "filtration"
+    slug: filtration
+    definition: "Separating an insoluble solid (residue) from a liquid (filtrate) by passing the mixture through filter paper; used to remove excess solid in salt preparations."
+    ms_accepts: ["separates an insoluble solid from a liquid", "residue stays on the paper, filtrate passes through"]
+    ms_avoids: ["separating two liquids", "separating dissolved solutes"]
+    aliases: ["filtering"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "indicator"
+    slug: indicator
+    definition: "A dye whose colour changes with pH, used to distinguish acidic from alkaline solutions; litmus, methyl orange and phenolphthalein are the named trio."
+    ms_accepts: ["changes colour depending on pH", "litmus red in acid / blue in alkali"]
+    ms_avoids: ["universal indicator gives one colour for all pH (backwards)", "an indicator that neutralises the solution"]
+    aliases: ["acid-base indicator"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "neutralisation"
+    slug: neutralisation
+    definition: "The reaction between an acid and a base (or alkali) forming a salt and water; in ionic terms H+ plus OH- makes H2O."
+    ms_accepts: ["acid + base -> salt + water", "H+ + OH- -> H2O"]
+    ms_avoids: ["acid + alkali -> nothing (products must be named)", "pH becomes exactly 14"]
+    aliases: ["neutralisation reaction"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "hydrogen ion"
+    slug: hydrogen-ion
+    definition: "The hydrogen ion, H+(aq), that all acids produce in aqueous solution; what makes a solution acidic and what bases accept."
+    ms_accepts: ["acids are a source of hydrogen ions H+ (aq)"]
+    ms_avoids: ["acids contain H2 gas", "H- ions (the charge is backwards)"]
+    aliases: ["hydrogen ion", "H+"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "hydroxide ion"
+    slug: hydroxide-ion
+    definition: "The hydroxide ion, OH-(aq), that all alkalis produce in aqueous solution; what makes a solution alkaline and what neutralises H+."
+    ms_accepts: ["alkalis are a source of hydroxide ions OH- (aq)"]
+    ms_avoids: ["OH+ (charge backwards)", "alkalis contain hydrogen gas"]
+    aliases: ["hydroxide ion", "OH-"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "proton donor"
+    slug: proton-donor
+    definition: "An acid, in the proton-transfer theory of acids and bases: it donates H+ to a base, which is the proton acceptor."
+    ms_accepts: ["acid donates H+ (a proton)", "base accepts a proton"]
+    ms_avoids: ["base donates protons (backwards)", "proton means the whole nucleus of any atom here (it is H+)"]
+    aliases: ["proton transfer"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "salt"
+    slug: salt
+    definition: "The compound formed when the hydrogen of an acid is replaced by a metal (or ammonium) ion; salts carry a cation from the base/metal and an anion from the acid."
+    ms_accepts: ["formed when acid H is replaced by a metal or ammonium ion", "ionic compound made from acid + base/metal/carbonate reaction"]
+    ms_avoids: ["only sodium chloride (that is one example, table salt)", "a covalent molecular compound"]
+    aliases: ["salt compound"]
+    source: "authored:pack-c11-c18-r0"
+  - term: "precipitate"
+    slug: precipitate
+    definition: "The insoluble solid that forms suddenly when two solutions are mixed and their ions combine; a positive test result in many ion tests."
+    ms_accepts: ["insoluble solid formed when two solutions react"]
+    ms_avoids: ["any solid at the bottom of a beaker (undissolved solid)", "the filtrate"]
+    aliases: ["precipitation reaction"]
+    source: "authored:pack-c11-c18-r0"

@@ -1,0 +1,16 @@
+# S0 output of record - c17-salt-preparations (T-BOOK-011)
+chapter: "c17"
+chapter_key: "u2:c17"
+title: "Acids, bases and salt preparations"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p182 salts+solubility table, p185 acid reactions sort, p192 preparation drag, p194 proton-transfer callout, p196 mcq"
+blocks:
+  - {ord: 1, id: "c17-salt-preparations/b01", type: prose, file: "blocks/b01-prose-salts.json", anchor: 182}
+  - {ord: 2, id: "c17-salt-preparations/b02", type: table-fill, file: "blocks/b02-table-fill-solubility-rules.json", anchor: 182}
+  - {ord: 3, id: "c17-salt-preparations/b03", type: sort-match, file: "blocks/b03-sort-match-acid-reactions.json", anchor: 185}
+  - {ord: 4, id: "c17-salt-preparations/b04", type: drag-label, file: "blocks/b04-drag-label-choose-the-method.json", anchor: 192}
+  - {ord: 5, id: "c17-salt-preparations/b05", type: callout, file: "blocks/b05-callout-proton-transfer.json", anchor: 194}
+  - {ord: 6, id: "c17-salt-preparations/b06", type: mcq-embed, file: "blocks/b06-mcq-check.json", anchor: 196}

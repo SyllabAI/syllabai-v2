@@ -1,0 +1,16 @@
+# S0 output of record - c11-alkali-metals (T-BOOK-011)
+chapter: "c11"
+chapter_key: "u2:c11"
+title: "The alkali metals"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p132 intro+figure, p134 water reaction + observations callout, p136 summary table, p137 mcq"
+blocks:
+  - {ord: 1, id: "c11-alkali-metals/b01", type: prose, file: "blocks/b01-prose-group-1-family.json", anchor: 132}
+  - {ord: 2, id: "c11-alkali-metals/b02", type: figure, file: "blocks/b02-figure-potassium-water.json", anchor: 132}
+  - {ord: 3, id: "c11-alkali-metals/b03", type: eq-builder, file: "blocks/b03-eq-builder-sodium-water.json", anchor: 134}
+  - {ord: 4, id: "c11-alkali-metals/b04", type: callout, file: "blocks/b04-callout-observations-vocabulary.json", anchor: 134}
+  - {ord: 5, id: "c11-alkali-metals/b05", type: table-fill, file: "blocks/b05-table-fill-group-1-summary.json", anchor: 136}
+  - {ord: 6, id: "c11-alkali-metals/b06", type: mcq-embed, file: "blocks/b06-mcq-check.json", anchor: 137}

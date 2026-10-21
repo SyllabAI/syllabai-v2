@@ -1,0 +1,16 @@
+# S0 output of record - c15-extraction-metals (T-BOOK-011)
+chapter: "c15"
+chapter_key: "u2:c15"
+title: "Extraction and uses of metals (chemistry only)"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 6
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p169 ores intro, p170 below-carbon reduction, p171 above-carbon + cryolite callout, p172 alloys sort, p173 steels table, p174 mcq"
+blocks:
+  - {ord: 1, id: "c15-extraction-metals/b01", type: prose, file: "blocks/b01-prose-ores.json", anchor: 169}
+  - {ord: 2, id: "c15-extraction-metals/b02", type: drag-label, file: "blocks/b02-drag-label-extraction-method.json", anchor: 170}
+  - {ord: 3, id: "c15-extraction-metals/b03", type: callout, file: "blocks/b03-callout-cryolite-economics.json", anchor: 171}
+  - {ord: 4, id: "c15-extraction-metals/b04", type: sort-match, file: "blocks/b04-sort-match-metal-uses.json", anchor: 172}
+  - {ord: 5, id: "c15-extraction-metals/b05", type: table-fill, file: "blocks/b05-table-fill-steels.json", anchor: 173}
+  - {ord: 6, id: "c15-extraction-metals/b06", type: mcq-embed, file: "blocks/b06-mcq-check.json", anchor: 174}

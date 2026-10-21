@@ -1,0 +1,17 @@
+# S0 output of record - c13-gases-atmosphere (T-BOOK-011)
+chapter: "c13"
+chapter_key: "u2:c13"
+title: "Gases in the atmosphere"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 7
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+note: "page-true anchors ascending: p146 composition+figure, p147 copper practical callout, p148 rusting calc, p150 oxides+figure, p152 mcq"
+blocks:
+  - {ord: 1, id: "c13-gases-atmosphere/b01", type: prose, file: "blocks/b01-prose-dry-air.json", anchor: 146}
+  - {ord: 2, id: "c13-gases-atmosphere/b02", type: drag-label, file: "blocks/b02-drag-label-air-composition.json", anchor: 146}
+  - {ord: 3, id: "c13-gases-atmosphere/b03", type: callout, file: "blocks/b03-callout-copper-in-excess.json", anchor: 147}
+  - {ord: 4, id: "c13-gases-atmosphere/b04", type: num-stepper, file: "blocks/b04-num-stepper-rusting-experiment.json", anchor: 148}
+  - {ord: 5, id: "c13-gases-atmosphere/b05", type: table-fill, file: "blocks/b05-table-fill-burning-in-oxygen.json", anchor: 150}
+  - {ord: 6, id: "c13-gases-atmosphere/b06", type: figure, file: "blocks/b06-figure-magnesium-burning.json", anchor: 150}
+  - {ord: 7, id: "c13-gases-atmosphere/b07", type: mcq-embed, file: "blocks/b07-mcq-check.json", anchor: 152}

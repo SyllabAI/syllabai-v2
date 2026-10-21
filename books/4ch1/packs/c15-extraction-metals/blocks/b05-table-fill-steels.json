@@ -1,0 +1,88 @@
+{
+  "id": "c15-extraction-metals/b05",
+  "type": "table-fill",
+  "chapterKey": "u2:c15",
+  "ord": 5,
+  "pdfPageAnchor": 173,
+  "specPointRefs": [
+    "2.25C",
+    "2.26C",
+    "2.27C"
+  ],
+  "glossaryRefs": [
+    "alloy"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "The steels of record - complete the alloy table (one short phrase per cell).",
+    "columns": [
+      "Alloy",
+      "What is in it",
+      "Why it earns its use"
+    ],
+    "rows": [
+      {
+        "label": "Low-carbon (mild) steel",
+        "cells": [
+          {
+            "accepts": [
+              "iron with up to about 0.25% carbon"
+            ],
+            "hint": "a little carbon"
+          },
+          {
+            "accepts": [
+              "cheap and easily shaped - car bodies, girders, nails"
+            ],
+            "hint": "the everyday workhorse"
+          }
+        ]
+      },
+      {
+        "label": "High-carbon steel",
+        "cells": [
+          {
+            "accepts": [
+              "iron with 0.6-1.2% carbon"
+            ],
+            "hint": "more carbon"
+          },
+          {
+            "accepts": [
+              "harder but more brittle - cutting tools, masonry nails"
+            ],
+            "hint": "hard, snaps if bent"
+          }
+        ]
+      },
+      {
+        "label": "Stainless steel",
+        "cells": [
+          {
+            "accepts": [
+              "iron with chromium and usually nickel"
+            ],
+            "hint": "two extra ingredients"
+          },
+          {
+            "accepts": [
+              "does not rust - cutlery, sinks"
+            ],
+            "hint": "the corrosion-proof one"
+          }
+        ]
+      },
+      {
+        "label": "Why alloys beat pure metals (hardness)",
+        "cells": [
+          {
+            "accepts": [
+              "different-sized atoms disrupt the regular layers, so layers slide less easily"
+            ],
+            "hint": "layers cannot slip"
+          }
+        ]
+      }
+    ]
+  }
+}
