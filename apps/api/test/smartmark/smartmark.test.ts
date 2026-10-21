@@ -222,6 +222,9 @@ function markRoutes(opts: {
     { match: KAPPA_PAPER, rows: opts.kappaPaper ?? [], rowsFor: (p) => (p[1] === PAPER_ID ? opts.kappaPaper ?? [] : []) },
     { match: KAPPA_SUBJECT, rows: opts.kappaSubject ?? [], rowsFor: (p) => (p[1] === QUESTION_ID ? opts.kappaSubject ?? [] : []) },
     { match: RESULT_INSERT, rows: [] },
+    // DC-3 prior-mark law (one shared query: the engine's ordinal count + the
+    // gate's entitlement read) — zero priors keeps the baseline byte-identical.
+    { match: /as part_id, count\(r\.id\)::int as prior from answers pa/, rows: [] },
     { match: ANSWER_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_TOTAL_UPDATE, rows: [] },
