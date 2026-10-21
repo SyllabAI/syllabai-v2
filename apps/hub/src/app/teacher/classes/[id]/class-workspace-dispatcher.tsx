@@ -15,8 +15,14 @@
  * T-TEACH-004: the core workspace gains the same course-resource parity
  * (resources incl. the past-papers archive + corpus-local teacher tools,
  * scoped to the class's ONE course), so the server-passed paper counts ride
- * down to it — the local container keeps counting through /api/course-stats
- * alone (its scope is unchanged).
+ * down to it.
+ *
+ * T-TEACH-007 (the T-TEACH-004 residual, closed): the LOCAL container gains
+ * the past-papers card too — the one deliberate addition to its scope, riding
+ * the SAME server-passed paperCounts prop the core branch consumes (the count
+ * is computed once per request for every registry slug, so this costs the
+ * local branch nothing). Everything else here still counts through
+ * /api/course-stats alone.
  */
 
 import { ClassDetailClient } from "./class-detail-client";
@@ -32,7 +38,8 @@ export function ClassWorkspaceDispatcher({
   classId: string;
   courses: TeacherCourseLite[];
   /** registry slug → corpus paper count (server-computed from the committed
-   *  past-papers index; consumed by the core class workspace only) */
+   *  past-papers index; consumed by the core class workspace and, since
+   *  T-TEACH-007, by the local container's past-papers card too) */
   paperCounts: Record<string, number>;
 }) {
   const { has } = useMyClasses();
@@ -46,7 +53,7 @@ export function ClassWorkspaceDispatcher({
   // missing-class card instead.
   if (classId.startsWith("local-")) {
     return has(classId) ? (
-      <LocalClassWorkspace classId={classId} courses={courses} />
+      <LocalClassWorkspace classId={classId} courses={courses} paperCounts={paperCounts} />
     ) : (
       <LocalClassMissing />
     );
