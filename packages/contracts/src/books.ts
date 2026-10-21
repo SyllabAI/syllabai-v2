@@ -436,3 +436,60 @@ export const chapterProgressSchema = z.object({
   updatedAt: z.string(),
 });
 export type ChapterProgress = z.infer<typeof chapterProgressSchema>;
+
+// ── T-BOOK-008: the check serving + submit shapes (strict serving) ──────────
+//
+// The check-yourself lane: mcq-embed blocks carry checkRefs (bank law, the
+// envelope superRefine); the api resolves them against the question bank and
+// serves the player shapes here. TWO laws encoded:
+//   - NO correctness on the wire — railCheckQuestionSchema carries options
+//     only; the verdict exists ONLY as the submit response (the reveal), the
+//     same law the assessment submit surface follows.
+//   - the verdict carries the correct option id so the player can TEACH
+//     ("the answer is B"), never just grade.
+
+/** One bank question as the rail check player consumes it (strict). */
+export const railCheckQuestionSchema = z.object({
+  questionId: z.string().uuid(),
+  stem: z.string().min(1),
+  marks: z.number().int().min(1),
+  commandWord: z.string().nullable(),
+  options: z
+    .array(
+      z.object({
+        id: z.string().uuid(),
+        label: z.string().min(1),
+        text: z.string().min(1),
+      }),
+    )
+    .min(2),
+});
+export type RailCheckQuestion = z.infer<typeof railCheckQuestionSchema>;
+
+/** One mcq-embed block's served check: the refs of record + the resolved
+ *  question (null = an unresolved/dry ref — the honest empty, the player
+ *  renders the anchor card, never a fabricated question). */
+export const railCheckBlockSchema = z.object({
+  blockId: z.string().min(1),
+  checkRefs: z.array(z.string().min(1)).min(1),
+  question: railCheckQuestionSchema.nullable(),
+});
+export type RailCheckBlock = z.infer<typeof railCheckBlockSchema>;
+
+/** The submit body (auth-gated upstream; userId rides the JWT context). */
+export const railCheckSubmitRequestSchema = z.object({
+  blockId: z.string().min(1),
+  questionId: z.string().uuid(),
+  chosenOptionId: z.string().uuid(),
+  /** client-measured dwell; the attempts law: response_time_ms ≥ 0, NOT NULL */
+  responseTimeMs: z.number().int().min(0).max(3_600_000).optional(),
+});
+export type RailCheckSubmitRequest = z.infer<typeof railCheckSubmitRequestSchema>;
+
+/** The submit verdict (the reveal — the ONLY place correctness exists). */
+export const railCheckSubmitResultSchema = z.object({
+  correct: z.boolean(),
+  correctOptionId: z.string().uuid().nullable(),
+  marksAwarded: z.number().int().min(0),
+});
+export type RailCheckSubmitResult = z.infer<typeof railCheckSubmitResultSchema>;

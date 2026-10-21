@@ -1,0 +1,61 @@
+version: 1
+task:
+  id: T-BOOK-008
+  title: "Check wiring — checkRefs→bank query, check-yourself player live, attempts provenance='BOOK_CHECK' (zero DDL)"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15de049a869781)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-002, T-BOOK-004, T-BOOK-008-bank-density-SQL]
+  execution_record: >
+    Executed per ADR-BOOK-0001 §7 (checks come from the bank) + §12 (the
+    attempts discriminator, ZERO DDL). CONTRACTS-FIRST (additive, not the
+    frozen envelope): railCheckQuestionSchema / railCheckBlockSchema /
+    railCheckSubmitRequestSchema / railCheckSubmitResultSchema in
+    packages/contracts/src/books.ts — NO correctness on the wire (the
+    verdict exists ONLY as the submit reveal, carrying correctOptionId so
+    the player TEACHES). API: railChecksForChapter (the mcq-embed blocks →
+    refs → bank: ACTIVE + MCQ_SINGLE + current question_version stem/
+    commandWord + options ordered; the paper-block law = the assessment
+    submit's assertPaperAllowsServing posture — a question pinned to a
+    REJECTED/FLAGGED paper does not serve; unresolved ref ⇒ question:null
+    honestly, never a fabricated question) + submitRailCheck (the MCQ submit
+    law rail-scoped: 404 fail-closed on unknown question/option →
+    correct/marks from the row → INSERT attempts with
+    provenance='BOOK_CHECK', marking_state AUTO_GRADED, evidence_emitted
+    false; EVIDENCE EMISSION deliberately OFF in the pilot — the rail
+    verdict is immediate feedback, learner-model evidence from rail checks
+    is a post-pilot surface, DISCLOSED). Routes: GET /:documentId/checks
+    (public-read double gate) + POST /:documentId/checks/submit (requireAuth
+    shell registered BEFORE the route — verified order; body via
+    railCheckSubmitRequestSchema, fixed 400 malformed). HUB:
+    lib/books-checks.ts (client mirrors + honest-null fetchers), /api/books/
+    checks + /api/books/checks/submit proxies (the cookie→Bearer law on
+    submit), rail-workspace checkSource (load by ref-match; submit carries
+    the REAL blockId + dwell from question load — attempts law
+    response_time_ms ≥ 0), mcq-embed player now LIVE (load/submit/reveal;
+    radiogroup keyboard; verdict aria-live).
+    PROOF: contracts tsc 0, api tsc 0, hub tsc 0, books-routes 37/37 (checks
+    resolve/no-correctness-leak/honest-empty/T-C20/401-gate/reveal-teaching/
+    malformed-body laws), eslint clean. PENDING-OPERATOR: live bank density
+    (per-spec-point SQL, the plan's T-BOOK-020) + a staging COW check-submit
+    round trip (no NEON_PAT in session).
+base:
+  repo: "syllabai-v2 @ t-book-007/rail-wiring (stacked)"
+basis: "ADR-BOOK-0001 §7/§12; PLAN-4CH1 §8 T-BOOK-008 row; assessment/submit.ts MCQ law (:77-120); F-BOOK-0002 (ATTEMPT_PROVENANCE_BOOK_CHECK)"
+scope:
+  allowed:
+    - "packages/contracts/src/books.ts (check serving/submit schemas — additive)"
+    - "apps/api/src/services/books.ts (railChecksForChapter, submitRailCheck)"
+    - "apps/api/src/routes/books.ts (checks + submit routes)"
+    - "apps/api/test/content/books-routes.test.ts"
+    - "apps/hub/src/lib/books-checks.ts (new)"
+    - "apps/hub/src/app/api/books/checks/** (new)"
+    - "apps/hub/src/components/books/rail/** (wiring)"
+    - ".syllabai/tasks/T-BOOK-008-check-wiring.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "attempts DDL or any Flyway-owned table change (the zero-DDL law is ABSOLUTE)"
+    - "is_correct on the GET wire (serving law)"
+    - "packages/db/** (no migration)"

@@ -27,6 +27,11 @@ import {
   bookShelfEntrySchema,
   bookBlockSchema,
   chapterProgressSchema,
+  railCheckBlockSchema,
+  railCheckSubmitResultSchema,
+  bookGlossaryTermSchema,
+  type RailCheckBlock,
+  type BookGlossaryTerm,
   type BookChapter,
   type BookShelfEntry,
   type BookBlock,
@@ -62,6 +67,38 @@ const RAIL_BLOCK: BookBlock = {
   specPointRefs: ["1.1"],
   validationState: "VALIDATED",
   version: 1,
+};
+
+const CHECK_QUESTION_ID = "0b7f6a2c-1111-4222-8333-444455556666";
+const CHECK_CORRECT_OPTION_ID = "0b7f6a2c-aaaa-4bbb-8ccc-ddddeeeeffff";
+const CHECK_WRONG_OPTION_ID = "0b7f6a2c-9999-4888-8777-666655554444";
+
+/** T-BOOK-008 fixture — the SERVED check shape: NO correctness on the wire. */
+const CHECK_BLOCK: RailCheckBlock = {
+  blockId: "c01-states-and-solutions/b05",
+  checkRefs: ["sme-eq-states-of-matter-q3"],
+  question: {
+    questionId: CHECK_QUESTION_ID,
+    stem: "Which change of state is EXOTHERMIC?",
+    marks: 1,
+    commandWord: null,
+    options: [
+      { id: CHECK_CORRECT_OPTION_ID, label: "A", text: "a gas condensing" },
+      { id: CHECK_WRONG_OPTION_ID, label: "B", text: "a solid melting" },
+    ],
+  },
+};
+
+const GLOSSARY_TERM: BookGlossaryTerm = {
+  subjectCode: "4ch1",
+  term: "condensing",
+  slug: "condensing",
+  definition: "Gas to liquid when a gas cools to or below its boiling point.",
+  msAccepts: ["condensation", "gas to liquid"],
+  msAvoids: ["melting"],
+  aliases: ["condensation"],
+  audioUrl: null,
+  translations: null,
 };
 
 const SHELF_ENTRY: BookShelfEntry = {
@@ -156,6 +193,30 @@ function fakeApp(overrides: Partial<BooksReadApp> = {}): BooksReadApp {
       lastOrd,
       updatedAt: "2026-10-21T09:45:00.000Z",
     }),
+    railChecksForChapter: async (documentId, chapterKey) => {
+      if (documentId !== PILOT_DOC) return null;
+      if (chapterKey !== "u1:c1") return [];
+      return [CHECK_BLOCK];
+    },
+    submitRailCheck: async (userId, input) => {
+      if (input.questionId !== CHECK_QUESTION_ID) {
+        throw new (class extends Error {})(); // replaced below by route-level tests
+      }
+      if (input.chosenOptionId !== CHECK_CORRECT_OPTION_ID && input.chosenOptionId !== CHECK_WRONG_OPTION_ID) {
+        throw new (class extends Error {})();
+      }
+      const correct = input.chosenOptionId === CHECK_CORRECT_OPTION_ID;
+      return {
+        correct,
+        correctOptionId: CHECK_CORRECT_OPTION_ID,
+        marksAwarded: correct ? 1 : 0,
+      };
+    },
+    glossaryTerms: async (subjectCode, slugs) => {
+      if (subjectCode !== "4ch1") return [];
+      const all = [GLOSSARY_TERM];
+      return slugs == null ? all : all.filter((t) => slugs.includes(t.slug));
+    },
     ...overrides,
   };
 }
@@ -562,5 +623,125 @@ describe("GET/PUT /api/v1/content/books/:documentId/progress", () => {
     expect(res.status).toBe(400);
     const body = (await res.json()) as Record<string, unknown>;
     expect(body.error).toBe("validation_failed");
+  });
+});
+
+describe("GET /api/v1/content/books/:documentId/checks (T-BOOK-008)", () => {
+  test("200 — the mcq-embed block resolved from the bank; NO correctness field on the wire", async () => {
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}/checks?chapter=u1:c1`,
+    );
+    expect(res.status).toBe(200);
+    const parsed = z.array(railCheckBlockSchema).parse(await res.json());
+    expect(parsed).toHaveLength(1);
+    expect(parsed[0]?.question?.stem).toContain("EXOTHERMIC");
+    const q = parsed[0]?.question;
+    expect(q && JSON.stringify(q)).not.toContain("is_correct");
+    expect(q && JSON.stringify(q)).not.toContain("isCorrect");
+  });
+
+  test("200 [] — chapter with no check blocks (honest-empty, not 404)", async () => {
+    const res = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}/checks?chapter=u1:c2`,
+    );
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual([]);
+  });
+
+  test("404 unknown book / 400 malformed chapter (shared gates)", async () => {
+    const notFound = await router(fakeApp()).request(
+      `/api/v1/content/books/${UNKNOWN_DOC}/checks?chapter=u1:c1`,
+    );
+    expect(notFound.status).toBe(404);
+    const bad = await router(fakeApp()).request(
+      `/api/v1/content/books/${PILOT_DOC}/checks?chapter=nope`,
+    );
+    expect(bad.status).toBe(400);
+  });
+});
+
+describe("POST /api/v1/content/books/:documentId/checks/submit (T-BOOK-008)", () => {
+  const path = `/api/v1/content/books/${PILOT_DOC}/checks/submit?chapter=u1:c1`;
+  const body = (chosen: string) => ({
+    blockId: CHECK_BLOCK.blockId,
+    questionId: CHECK_QUESTION_ID,
+    chosenOptionId: chosen,
+    responseTimeMs: 4200,
+  });
+
+  test("401 — unauthenticated (the attempt is a learner signal)", async () => {
+    const res = await router(fakeApp(), null).request(path, {
+      method: "POST",
+      body: JSON.stringify(body(CHECK_CORRECT_OPTION_ID)),
+    });
+    expect(res.status).toBe(401);
+  });
+
+  test("200 — the correct choice reveals the verdict + marks (the ONLY correctness surface)", async () => {
+    const res = await router(fakeApp(), STUDENT).request(path, {
+      method: "POST",
+      body: JSON.stringify(body(CHECK_CORRECT_OPTION_ID)),
+    });
+    expect(res.status).toBe(200);
+    const parsed = railCheckSubmitResultSchema.parse(await res.json());
+    expect(parsed.correct).toBe(true);
+    expect(parsed.marksAwarded).toBe(1);
+    expect(parsed.correctOptionId).toBe(CHECK_CORRECT_OPTION_ID);
+  });
+
+  test("200 — the wrong choice reveals the right option id (teaching, not grading)", async () => {
+    const res = await router(fakeApp(), STUDENT).request(path, {
+      method: "POST",
+      body: JSON.stringify(body(CHECK_WRONG_OPTION_ID)),
+    });
+    const parsed = railCheckSubmitResultSchema.parse(await res.json());
+    expect(parsed.correct).toBe(false);
+    expect(parsed.marksAwarded).toBe(0);
+    expect(parsed.correctOptionId).toBe(CHECK_CORRECT_OPTION_ID);
+  });
+
+  test("400 — malformed body (non-uuid question, negative dwell)", async () => {
+    for (const bad of [
+      { ...body(CHECK_CORRECT_OPTION_ID), questionId: "not-a-uuid" },
+      { ...body(CHECK_CORRECT_OPTION_ID), responseTimeMs: -5 },
+      { blockId: "x" }, // missing fields
+    ]) {
+      const res = await router(fakeApp(), STUDENT).request(path, {
+        method: "POST",
+        body: JSON.stringify(bad),
+      });
+      expect(res.status).toBe(400);
+      const parsed = (await res.json()) as Record<string, unknown>;
+      expect(parsed.error).toBe("bad_request");
+    }
+  });
+});
+
+describe("GET /api/v1/content/books/glossary (T-BOOK-007)", () => {
+  test("200 — VALIDATED terms round-trip the strict glossary shape", async () => {
+    const res = await router(fakeApp()).request(
+      "/api/v1/content/books/glossary?subject=4ch1&slugs=condensing",
+    );
+    expect(res.status).toBe(200);
+    const parsed = z.array(bookGlossaryTermSchema).parse(await res.json());
+    expect(parsed).toHaveLength(1);
+    expect(parsed[0]?.msAccepts).toContain("gas to liquid");
+    expect(JSON.stringify(parsed)).not.toContain("validationState");
+  });
+
+  test("200 [] — unknown subject answers honestly (no cross-subject leak)", async () => {
+    const res = await router(fakeApp()).request(
+      "/api/v1/content/books/glossary?subject=4ph1",
+    );
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual([]);
+  });
+
+  test("400 — subject absent (validation_failed)", async () => {
+    const res = await router(fakeApp()).request("/api/v1/content/books/glossary");
+    expect(res.status).toBe(400);
+    const body = (await res.json()) as Record<string, unknown>;
+    expect(body.error).toBe("validation_failed");
+    expect(body.message).toBe("missing required parameter: subject");
   });
 });

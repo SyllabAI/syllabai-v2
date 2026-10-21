@@ -268,6 +268,8 @@ export default async function BookViewerPage({
           chapterKey={target.chapterKey}
           chapterTitle={target.title}
           blocks={railBlocks!}
+          courseSlug={slug}
+          specCodes={target.specCodes.map((s) => s.officialCode)}
           pane={{
             url: corpusViewerUrl(panePath),
             fallbackUrl: booksRawUrl(wholePdfPath),
