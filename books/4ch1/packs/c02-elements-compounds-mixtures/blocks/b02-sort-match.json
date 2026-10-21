@@ -1,0 +1,57 @@
+{
+  "id": "c02-elements-compounds-mixtures/b02",
+  "type": "sort-match",
+  "chapterKey": "u1:c2",
+  "ord": 2,
+  "pdfPageAnchor": 24,
+  "specPointRefs": [
+    "1.8"
+  ],
+  "glossaryRefs": [
+    "element",
+    "compound",
+    "mixture"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Classify each substance.",
+    "items": [
+      {
+        "id": "o2",
+        "text": "oxygen gas (O2)"
+      },
+      {
+        "id": "water",
+        "text": "water (H2O)"
+      },
+      {
+        "id": "air",
+        "text": "air"
+      },
+      {
+        "id": "nacl",
+        "text": "sodium chloride (NaCl)"
+      }
+    ],
+    "targets": [
+      {
+        "id": "elem",
+        "text": "element"
+      },
+      {
+        "id": "comp",
+        "text": "compound"
+      },
+      {
+        "id": "mix",
+        "text": "mixture"
+      }
+    ],
+    "solution": {
+      "o2": "elem",
+      "water": "comp",
+      "air": "mix",
+      "nacl": "comp"
+    }
+  }
+}

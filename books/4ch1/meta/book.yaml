@@ -16,13 +16,13 @@ spec_of_record:
 course_slug: "igcse-chemistry-19"
 book_of_record:
   repo: "syllabai-resources"
-  path: "edexcel-international-gcse-9-1-chemistry-student-book-pdf-free.pdf"
-  sha256: "TBD-at-first-pack-receipt"   # pin at S0 of c01
+  path: "books/pearson-edexcel/international-gcse/chemistry/4ch1/student-book.pdf"
+  sha256: "d48020e0cc0b5545b330bb59b242472198210e424525e4381cd5d2a58a58cc04"  # pinned at T-BOOK-010 S0 (the archive manifest of record)
   pages: 383
 parse_of_record:
   repo: "syllabai-resources"
   path: "parsed/edexcel_igcse_chemistry_chunks_v3.jsonl"
-  sha256: "TBD-at-first-pack-receipt"
+  sha256: "b2c67eafe4e3766bab41b41fc24795ca0fe95c1f5f55b8a3b3bffbc709af6d33"  # pinned at T-BOOK-010 S0 (computed over the of-record file)
   engine: "ibm-docling"
   chunks: 1234
   census: {body: 493, key_point: 140, table_data: 113, exam_hint: 113, answers: 83,

@@ -1,0 +1,53 @@
+version: 1
+task:
+  id: T-BOOK-010
+  title: "Unit 1 rail packs (c01-c05 demo gate) through S0-S4 — authored blocks, glossary ms layer, lint green, ingest staged"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15de049a869781)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-003, T-BOOK-004, T-BOOK-005, T-BOOK-006, T-BOOK-007]
+  execution_record: >
+    Executed per BOOK-BUILD-PLAYBOOK (S0-S4) + BOOK-PACK-SPEC (block/glossary
+    law). S0: 5 pack.yaml plans (c01-c05, the book.yaml demo_gate), sha256
+    pins of record set in meta/book.yaml (the TBDs retired: PDF
+    d48020e0..., parse v3 b2c67ea...). S1: 30 authored blocks across 5 packs
+    (9 of the 11 block types used; media-embed honestly absent — no licensed
+    curated asset in the gate), 27 authored glossary terms with the
+    ms_accepts/ms_avoids layer, 1 mcq-embed per pack carrying REAL bank
+    external-refs of record (sme-eq-<topicSlug>-q<N>, 1-mark MCQ-first
+    questions verified in the SME corpus of record), 3 REAL PhET sims
+    matching book.yaml's sim_embed_plan, all 30 anchors inside the manifest
+    chapter ranges and monotonic. S2: scripts/books/lint.mjs (G1-G4) —
+    39 findings -> 0 across two gate cycles (the lint caught the lint-side
+    chapterKey derivation bug, the figure payload law, and two anchor
+    monotonicity breaks BEFORE anything could ship). S3:
+    apps/api/scripts/books-ingest-rail.ts — DB binding at ingest (chapter
+    VALIDATED + refs ⊆ join set + checkRefs resolve; rows SUGGESTED;
+    idempotent upsert; single transaction with honest rollback on any
+    skip); DRY RUN exit 0 (30 blocks/5 chapters/27 terms); DB apply
+    PENDING-OPERATOR (no Neon key in session — carries the T-BOOK-002
+    staging item). S4: PENDING-OPERATOR (20% spot-check + the pack flip,
+    ADR §3 L-content).
+    PROOF: lint exit 0 (5 packs, 30 blocks, 0 findings); ingest dry-run
+    exit 0; api tsc 0; hub tsc 0. Receipt:
+    .syllabai/receipts/T-BOOK-010/unit1-packs-s0-s4-r0.json.
+base:
+  repo: "syllabai-v2 @ t-book-007/rail-wiring (stacked)"
+basis: "BOOK-BUILD-PLAYBOOK S0-S4 + G1-G4; BOOK-PACK-SPEC; ADR-BOOK-0001 §3/§6; books/4ch1/meta/book.yaml (spine + sim plan); the books slices manifest of record; graph specification_points.yaml (the canonical subsection bindings)"
+scope:
+  allowed:
+    - "books/4ch1/packs/** (authored packs)"
+    - "books/4ch1/glossary/** (authored layer + seed floor)"
+    - "books/4ch1/meta/book.yaml (sha256 pins only)"
+    - "scripts/books/lint.mjs (new)"
+    - "apps/api/scripts/books-ingest-rail.ts (new)"
+    - "apps/hub/src/components/books/rail/widgets/figure-block.tsx (content.page law)"
+    - ".syllabai/receipts/T-BOOK-010/**"
+    - ".syllabai/tasks/T-BOOK-010-unit1-packs.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "L3 runtime writes from this repo session (the DB apply is the operator's, on keys)"
+    - "validation_state=VALIDATED from any script (the flip is the operator's S4 lever)"
+    - "book question text re-served (page-jump law; mcq-embed is checkRefs only)"

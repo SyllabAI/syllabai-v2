@@ -1,0 +1,36 @@
+{
+  "id": "c03-atomic-structure/b03",
+  "type": "num-stepper",
+  "chapterKey": "u1:c3",
+  "ord": 3,
+  "pdfPageAnchor": 35,
+  "specPointRefs": [
+    "1.17"
+  ],
+  "glossaryRefs": [
+    "relative-atomic-mass",
+    "isotope"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Chlorine: 75% is chlorine-35, 25% is chlorine-37. Find Ar of chlorine.",
+    "steps": [
+      {
+        "prompt": "Contribution of Cl-35 (abundance x mass number)",
+        "answer": 2625,
+        "hint": "75 x 35"
+      },
+      {
+        "prompt": "Contribution of Cl-37",
+        "answer": 925,
+        "hint": "25 x 37"
+      },
+      {
+        "prompt": "Divide by the total abundance (100)",
+        "answer": 35.5,
+        "sigFigs": 3,
+        "hint": "(2625 + 925) / 100"
+      }
+    ]
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "task": "T-BOOK-010",
+  "lane": "content (Unit 1 rail packs through S0-S4)",
+  "operator_order": "T-BOOK-010 (Unit 1 packs S0-S4)",
+  "trace": "1a15de049a869781",
+  "generated": "2026-10-21T10:30:00Z",
+  "S0_plan": {
+    "packs": [
+      "c01-states-and-solutions",
+      "c02-elements-compounds-mixtures",
+      "c03-atomic-structure",
+      "c04-periodic-table",
+      "c05-formulae-calculations-1"
+    ],
+    "demo_gate": "c01-c05 (book.yaml phases.A.demo_gate)",
+    "pack_yaml_each": "chapter/chapter_key/title/status: draft/block_schema book.block/1/planned_blocks/blocks plan",
+    "sha256_pins": {
+      "book_pdf": "d48020e0cc0b5545b330bb59b242472198210e424525e4381cd5d2a58a58cc04 (the archive manifest of record)",
+      "parse_v3": "b2c67eafe4e3766bab41b41fc24795ca0fe95c1f5f55b8a3b3bffbc709af6d33 (computed over the of-record file, 1234 chunks)",
+      "note": "book.yaml TBD placeholders RETIRED (the doctrine's first-pack-receipt pin law)"
+    }
+  },
+  "S1_authoring": {
+    "blocks_total": 30,
+    "glossary_terms": 27,
+    "block_types_used": [
+      "prose",
+      "figure",
+      "callout",
+      "sort-match",
+      "table-fill",
+      "num-stepper",
+      "eq-builder",
+      "sim-embed",
+      "mcq-embed"
+    ],
+    "type_not_used": [
+      "drag-label used in c02 only",
+      "media-embed NOT used (no licensed curated asset in the demo gate — honest-absent)"
+    ],
+    "mcq_density": "1 per pack, bank-law checkRefs only: sme-eq-1-1-...-q3 / 1-2-...-q1 / 1-3-...-q1 / 1-4-...-q5 / 1-5-...-q0 (1-mark MCQ-first questions of the SME corpus of record; the external-ref grammar of the core question-bank import)",
+    "sims": [
+      "states-of-matter-basics (c01)",
+      "build-an-atom (c03)",
+      "balancing-chemical-equations (c05)"
+    ],
+    "sim_plan_alignment": "matches books/4ch1/meta/book.yaml sim_embed_plan rows for c01/c03/c05",
+    "anchors": "all 30 pdfPageAnchors inside the manifest chapter ranges (u1:c1 11-22 / c2 23-32 / c3 33-38 / c4 39-46 / c5 47-72), monotonic within each pack",
+    "prose_law": "<=120 words each, spine-framing, no book-prose duplication",
+    "glossary": "27 authored terms (ms_accepts/ms_avoids layer) in glossary/states-and-solutions.yaml; seed-states-and-solutions.yaml (199 candidates) retained as the floor"
+  },
+  "S2_lint": {
+    "script": "scripts/books/lint.mjs (G1 binding / G2 schema / G3 language / G4 licensing)",
+    "schema_law": "every block parse bookBlockSchema (book.block/1) with the EXACT ingest-time serving values injected",
+    "result": "5 packs, 30 blocks, 0 findings (exit 0)",
+    "defects_caught_by_the_gate": [
+      "chapterKey derivation u1:4 vs u1:c4 (lint-side, fixed)",
+      "figure payload law requires content.page (2 blocks fixed)",
+      "anchor monotonicity broken by sim blocks (c03 b5, c05 b5 — re-anchored)",
+      "39 findings -> 0 across two gate cycles (the lint DID its job)"
+    ]
+  },
+  "S3_ingest": {
+    "script": "apps/api/scripts/books-ingest-rail.ts",
+    "laws": "DB binding at ingest: chapter VALIDATED + specPointRefs ⊆ book_chapters join set + checkRefs resolve ACTIVE MCQ_SINGLE; rows land SUGGESTED (the flip is the operator's); idempotent upsert on uq_book_blocks_identity; one transaction, rollback on ANY skip (a partial landing is a finding, not a success)",
+    "dry_run": "30 blocks across 5 chapters + 27 glossary terms — shape/refs/anchors verified offline, exit 0",
+    "db_apply": "PENDING-OPERATOR: no DATABASE_URL/NEON key in this session — the script refuses honestly; apply on a Neon COW branch then prod (carries the T-BOOK-002 staging-apply pending item)"
+  },
+  "S4_gate": {
+    "status": "PENDING-OPERATOR",
+    "law": "20% spot-check of the 30 blocks against the page-true book slices, then the pack flip (book_blocks.validation_state = VALIDATED per pack) — the operator's lever, per ADR-BOOK-0001 §3 L-content"
+  }
+}

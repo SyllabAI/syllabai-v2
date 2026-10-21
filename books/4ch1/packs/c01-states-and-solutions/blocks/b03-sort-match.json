@@ -1,0 +1,61 @@
+{
+  "id": "c01-states-and-solutions/b03",
+  "type": "sort-match",
+  "chapterKey": "u1:c1",
+  "ord": 3,
+  "pdfPageAnchor": 13,
+  "specPointRefs": [
+    "1.2"
+  ],
+  "glossaryRefs": [
+    "melting",
+    "condensing",
+    "evaporation"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Match each change of state to its direction of travel.",
+    "items": [
+      {
+        "id": "melt",
+        "text": "melting"
+      },
+      {
+        "id": "freeze",
+        "text": "freezing"
+      },
+      {
+        "id": "evap",
+        "text": "evaporation"
+      },
+      {
+        "id": "cond",
+        "text": "condensing"
+      }
+    ],
+    "targets": [
+      {
+        "id": "s-l",
+        "text": "solid to liquid"
+      },
+      {
+        "id": "l-s",
+        "text": "liquid to solid"
+      },
+      {
+        "id": "l-g",
+        "text": "liquid to gas"
+      },
+      {
+        "id": "g-l",
+        "text": "gas to liquid"
+      }
+    ],
+    "solution": {
+      "melt": "s-l",
+      "freeze": "l-s",
+      "evap": "l-g",
+      "cond": "g-l"
+    }
+  }
+}

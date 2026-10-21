@@ -1,0 +1,14 @@
+# S0 output of record - c04-periodic-table
+chapter: "c04"
+chapter_key: "u1:c4"
+title: "The periodic table"
+status: draft
+block_schema: "book.block/1"
+planned_blocks: 5
+check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
+blocks:
+  - {ord: 1, id: "c04-periodic-table/b01", type: prose, file: "blocks/b01-prose.json", anchor: 39}
+  - {ord: 2, id: "c04-periodic-table/b02", type: figure, file: "blocks/b02-figure.json", anchor: 40}
+  - {ord: 3, id: "c04-periodic-table/b03", type: callout, file: "blocks/b03-callout.json", anchor: 41}
+  - {ord: 4, id: "c04-periodic-table/b04", type: sort-match, file: "blocks/b04-sort-match.json", anchor: 42}
+  - {ord: 5, id: "c04-periodic-table/b05", type: mcq-embed, file: "blocks/b05-mcq-embed.json", anchor: 44}

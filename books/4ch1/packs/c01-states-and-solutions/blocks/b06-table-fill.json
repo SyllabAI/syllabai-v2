@@ -1,0 +1,67 @@
+{
+  "id": "c01-states-and-solutions/b06",
+  "type": "table-fill",
+  "chapterKey": "u1:c1",
+  "ord": 6,
+  "pdfPageAnchor": 16,
+  "specPointRefs": [
+    "1.1"
+  ],
+  "glossaryRefs": [
+    "states-of-matter"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Complete the particle-model table (one word or short phrase per cell).",
+    "columns": [
+      "State",
+      "Spacing of particles",
+      "Movement of particles"
+    ],
+    "rows": [
+      {
+        "label": "Solid",
+        "cells": [
+          {
+            "accepts": [
+              "touching",
+              "close together",
+              "regular",
+              "fixed, close together"
+            ],
+            "hint": "particles are close and ordered"
+          },
+          {
+            "accepts": [
+              "vibrate about fixed positions",
+              "vibrate",
+              "vibrate in place"
+            ],
+            "hint": "they vibrate but do not change places"
+          }
+        ]
+      },
+      {
+        "label": "Gas",
+        "cells": [
+          {
+            "accepts": [
+              "far apart",
+              "widely separated",
+              "random, far apart"
+            ],
+            "hint": "mostly empty space"
+          },
+          {
+            "accepts": [
+              "random, fast, in all directions",
+              "move quickly and randomly",
+              "random fast motion"
+            ],
+            "hint": "fast and random"
+          }
+        ]
+      }
+    ]
+  }
+}

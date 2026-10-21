@@ -11,7 +11,9 @@ import { Button } from "@/components/ui/button";
 export function FigureBlock({ block, onJump }: { block: RailBlock; onJump: (p: number) => void }) {
   const c = block.content;
   const caption = typeof c.caption === "string" ? c.caption : null;
-  const page = block.pdfPageAnchor;
+  // the contract's figure law carries content.page; pdfPageAnchor is the envelope twin
+  const page =
+    typeof c.page === "number" && c.page > 0 ? c.page : block.pdfPageAnchor;
   return (
     <div className="rounded-lg border bg-card p-3 text-sm" data-ord={block.ord}>
       <p className="text-muted-foreground">
