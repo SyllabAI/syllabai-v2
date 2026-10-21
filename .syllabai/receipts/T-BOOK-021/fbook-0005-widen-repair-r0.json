@@ -1,0 +1,49 @@
+{
+ "task": "T-BOOK-021",
+ "lane": "spine — the F-BOOK-0005 data-plane widen repair applied of record (the operator-approved extended fix channel)",
+ "operator_order": "(2) Approve the extended fix channel for F-BOOK-0005 (trace 1a15fb8ebb2ebbe1)",
+ "trace": "1a15fb8ebb2ebbe1",
+ "generated": "2026-10-22T19:20:00Z",
+ "finding_of_record": "F-BOOK-0005 (books/4ch1/qa/findings.jsonl, filed 2026-10-22 at T-BOOK-011 S0): ELEVEN spec points orphaned across ALL 29 book_chapters rows — the F-BOOK-0003 class systematised, engine-INDEPENDENT (T-BOOK-018 census: binding equality with EXTRA=0; no LO bullet exists for the matcher to attach these to)",
+ "repair_map_of_record": {
+  "u2:c17": ["2.42"],
+  "u2:c18": ["2.47"],
+  "u3:c21": ["3.22C"],
+  "u4:c22": ["4.6"],
+  "u4:c23": ["4.13"],
+  "u4:c24": ["4.22"],
+  "u4:c25": ["4.26"],
+  "u4:c27": ["4.34C"],
+  "u4:c28": ["4.38C"],
+  "u4:c29": ["4.47", "4.48C"]
+ },
+ "element_shape": "{\"tier\":\"2\",\"score\":null,\"method\":\"widened\",\"lineage\":\"census:F-BOOK-0005\",\"spineCode\":\"4CH1-<code>\",\"officialId\":\"4CH1-<code>\",\"officialCode\":\"<code>\"} — 7 keys mirroring the F-BOOK-0003 precedent row (u1:c4 4CH1-1.18); score=null = NO matcher containment exists for the census class (the precedent carried its 0.611 failed-containment measure; this lane's evidence is the canonical subsection binding + the finding)",
+ "canonical_form_correction": "the finding's '4.47C' label is the canonical official_code '4.47' (4CH1-4.47, S4-h, 'explain problems in the disposal of addition polymers...' — wording + subsection verified in specification_points.yaml lines 7122-7125; the graph of record has no 4.47C); disclosed in findings.jsonl",
+ "proof_planes": {
+  "shadow_tx": {
+   "what": "the ENTIRE repair + census inside ONE tx on PRODUCTION, then ROLLBACK — zero persisted writes; the proof ran on production data itself",
+   "output": "pre re-prove GREEN (10 rows present, 11 appends planned, none pre-bound, all canonical) -> 10 row appends (9->10, 6->7, 5->6, 5->6, 11->12, 3->4, 5->6, 4->5, 6->7, 5->7 codes) -> in-tx census 0 orphans [] / 0 EXTRA [] / 0 duplicate codes -> ROLLBACK, exit 0"
+  },
+  "commit_tx": {
+   "what": "the identical body with COMMIT — one guarded idempotent tx",
+   "output": "identical pre/apply/census path -> COMMIT: 11 codes / 10 rows -> exit 0"
+  },
+  "fresh_connection_verification": "census 0 orphans [] / 0 EXTRA []; chapter states {SUGGESTED:8, VALIDATED:21} unchanged; serve baseline {u123 VALIDATED:131} unchanged (spec_codes never affect railBlocksForChapter)",
+  "cow_waiver": "the Neon control plane is unreachable from this session (api.neon.tech DNS: 'No address associated with hostname', reproducible; neon.tech apex resolves — sandbox egress policy; the DATA plane unaffected: all probes ran live) — the F-BOOK-0003-style COW branch could not be cut; waived per the same-day T-BOOK-011 rationale (zero DDL, guarded idempotent tx, pre/post re-prove in-tx) and REPLACED by the stronger same-data shadow-rollback proof plane"
+ },
+ "baseline_census_of_record": {
+  "when": "2026-10-22, pre-repair, production",
+  "canonical": "182 official codes (specification_points.yaml of record)",
+  "orphans": "exactly the 11 (2.42, 2.47, 3.22C, 4.13, 4.22, 4.26, 4.34C, 4.38C, 4.47, 4.48C — sorted; the finding's 11 with the 4.47 form correction)",
+  "extra": 0
+ },
+ "target_row_states": "u2:c17/u2:c18/u3:c21 VALIDATED (serving — the join sets widen, zero serving impact); u4:c22..c29 SUGGESTED (behind the gate; the widened codes are in place for the armed S3/S4 run)",
+ "script_of_record": "apps/api/scripts/session/fbook-0005-widen-repair.ts (session-side untracked per the T-BOOK-017/019 law; --shadow | --commit; idempotence: a re-run REFUSES on already-bound codes — the honest no-op posture)",
+ "disclosures": [
+  "zero engine changes (spine-join.ts untouched — the orphans are engine-INDEPENDENT)",
+  "zero pack/block/glossary writes (the authored refs stay inside the bound join sets; the no-orphan ingest law never fired)",
+  "u4 widened rows land while SUGGESTED — they ride into serving with the armed S3/S4 run, no special handling needed there",
+  "the T-BOOK-018 full-parse census is a re-derivation tool and stays session-side-gone; the standing orphan-vs-canonical census is now realized inside the repair vehicle (census function, canonical yaml + DB of record) and in this receipt's SQL semantics"
+ ],
+ "status": "F-BOOK-0005 REPAIRED OF RECORD (11 codes / 10 rows, both proof planes GREEN, census 0 orphans / 0 EXTRA from a fresh connection; findings.jsonl -> fixed, fixed_in T-BOOK-021)"
+}
