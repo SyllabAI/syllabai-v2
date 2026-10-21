@@ -1,0 +1,114 @@
+{
+  ".receipt": "ADR-037/run-003-stage-b2-probe-block-r0",
+  ".lane": "ADR-037",
+  ".trace": "1a15f8cd84de4909",
+  ".task": "operator credential one-shot (GH PAT + Neon API token + corpus DATABASE_URL) on the staged per-point lane — B1 push + B2 fresh live probes + real dry-run; kill-list FINAL; prod write behind green-light",
+  ".posture": "STAGE-B2 EXECUTED OF RECORD — the per-point re-apply is BLOCKED OF RECORD at the shim gate (upstream content-plane defect); zero prod DB writes, zero content-plane writes; fail-closed worked exactly as staged",
+
+  "b1_push": {
+    "status": "PUSHED OF RECORD",
+    "staged_commit": "a7526938 (run-002 receipt + census mirror)",
+    "turn_open": "fetch-first: origin advanced 82875bd9 -> a7979ab2 (5 commits, sibling fleet incl. new branch content/adr037-2c-bundle-export-r0); union-resolve rebase clean, no path collision; staged commit rebased a7526938 -> d9f2311a",
+    "push": "a7979ab2..d9f2311a main -> main (env credential helper, single invocation; PAT never in argv, never written to any repo file; exposure = in-chat one-shot only, count 5 lane-wide)",
+    "verified": "ls-remote origin/main == d9f2311a == local HEAD",
+    "pat_fingerprint": "sha256[:16] a8ccee736aa8c75b (verified GH 200 login=SyllabAI)"
+  },
+
+  "b2_environment_of_record": {
+    "neon_api_token": "fp 4c2e12da872b6959 — api.neon.tech DNS-BLOCKED in sandbox egress (curl 000, gaierror) -> COW-branch route UNAVAILABLE of record; token unused beyond that probe; disclosed fail-closed",
+    "corpus_database_url": "fp 3b8b9c5951ca595d — pooler host TCP OK; creds staged 0600 at /home/z/.secrets/secrets.env (outside repo, never committed); psycopg2 reinstalled into the active venv (sandbox reset had wiped it; prior lanes' pattern)",
+    "probe_session": "READ-ONLY enforced at session level (default_transaction_read_only = on, verified in-session)"
+  },
+
+  "b2_probes_green_of_record": {
+    "baseline_vs_laneC_receipt_EXACT": {
+      "questions_active_slice": 602,
+      "distinct_refs": 602,
+      "by_type": { "MCQ_SINGLE": 233, "STRUCTURED": 369 },
+      "parts": 1202,
+      "options": 932,
+      "spec_joins_this_apply": 1560,
+      "mark_points_part_bound": 1202,
+      "mark_points_mcq_direct": 233,
+      "mark_points_active_slice_total": 1435,
+      "spec_point_nodes_4ch1": 182,
+      "question_asset": 585,
+      "verdict": "every laneC-rulingA-apply-r0.json comparator reproduced first-hand EXACT — live is exactly the lane C applied state"
+    },
+    "gate1_sum_invariant_pre_state": {
+      "wholeblock_marks_drift_rows": 0,
+      "parts_violating_1to1": 0,
+      "mcq_direct_marks_mismatch": 0,
+      "verdict": "live is a CLEAN Law-1 posture; zero pre-existing drift (the silent under-award baseline is zero)"
+    },
+    "history_pre_state": {
+      "smart_mark_results": 368,
+      "answers": 655,
+      "safety": "breakdown jsonb, FK to answers + nullable mark_scheme_id ONLY, no mark_points FK (schema.ts:394) — deactivate+reinsert cannot break attempt history (cross-lane verified class, re-confirmed pre-state)"
+    },
+    "ref_intersection_probe_BYTE_EXACT": {
+      "method": "probe mirror rebuilt on the shared ref law verbatim (packages/shared/src/smeRef.ts smeQuestionRef + smeMemberSuffixReserve + fnv1aHex8) after the first-pass mirror DEFECTED (positional -pK numbering + missing truncation/hash law -> 855-set, 60 false survivors); the probe REFUSED to reconcile and was fixed before any kill-list use — the Stage-B2 never-assume law doing its job",
+      "emitted_entries": 1053,
+      "emitted_entries_vs_census": "EXACT (run-002 census 'emitted_refs 1053' confirmed as an ENTRY count)",
+      "emitted_distinct": 841,
+      "live_active_refs": 602,
+      "deactivate_slice_intersection": 602,
+      "live_active_not_reemitted_survivors": 0,
+      "emitted_not_live_new": 239,
+      "arithmetic": "841 = 602 + 239 EXACT — every live ref is re-emitted under the byte-exact law (zero slug-form drift); all 239 new refs belong to the official plane",
+      "executable_deactivate_law": "live active prefix census (602 enumerated refs, external_ref LIKE 'sme-eq-igcse-chemistry-19-%') == law-true re-emission set today; both definitions coincide, pinned by probe — the lane C kill-list precedent (prefix census) stands"
+    },
+    "per_plane_split_EXACT_vs_census_totals": {
+      "TOPIC_28_sets": { "admitted": 523, "refs": 795, "corpus_rows": 591, "parts": 1175, "mark_point_rows": 1402, "per_point": 0, "whole_block": 1175, "partless": 227, "options": 908, "joins": 1555 },
+      "OFFICIAL_16_sets": { "admitted": 165, "refs": 258, "corpus_rows": 222, "parts": 866, "mark_point_rows": 1428, "per_point": 1340, "whole_block": 31, "partless": 57, "options": 228, "joins": 869 },
+      "verdict": "split closes EXACT against census totals",
+      "DISPOSITION_LAW_OF_RECORD": "the topic plane carries ZERO markPoints — all 1,340 per-point (Law 2) rows live in the OFFICIAL plane; the live 1,435 rows are all Law-1 (whole-block + MCQ-direct)"
+    }
+  },
+
+  "b2_real_dry_run_BLOCKED_of_record": {
+    "tool": "apps/api/scripts/ingest-bundle-questions.ts igcse-chemistry-19 --dry-run (the of-record T-MIG-135b runner; bun 1.3.14; 930 pkgs installed)",
+    "result": "SHIM LAW VIOLATION: duplicate externalRef: sme-eq-igcse-chemistry-19-official-past-papers-q1",
+    "stage": "buildSmePackage (repo-side) — the frozen package-global seenRefs law (bundle-questions.ts:316-319) refused the bundle BEFORE the DB connection was ever opened: zero DB statements executed, zero rows touched",
+    "root_cause_of_record": "the 16 official past-paper sets ALL carry topicSlug 'official-past-papers' with per-set restarting orders (q0..q11) -> 12 base refs collide across sets (q1..q8 x16, q0 x15, q9 x14, q10 x5, q11 x2); the per-set dup-order gate (bundle-questions.ts:289-296) cannot see cross-set collisions; the seenRefs law can",
+    "classification": "UPSTREAM content-plane defect (the bundle's official-set ref namespace) — NOT fixable by the DB lane (the converter extracts; it never authors)",
+    "consequence": "the ENTIRE v0.7 per-point payload (1,340 Law-2 rows) lives in the unbuildable official plane -> the per-point ruling CANNOT execute on live until the bundle's official-set ref namespace is fixed and re-censused; a topic-plane-only apply would build clean but inserts ZERO per-point rows (topic per_point = 0) — it is a content refresh, NOT the ruling's law flip"
+  },
+
+  "census_mirror_correction_of_record": {
+    "what": "run-002's '1053-law deactivate slice' framing is superseded: 1053 is the ENTRY count (confirmed EXACT); the DISTINCT emitted-ref census is 841",
+    "why_it_mattered": "the kill-list DRAFT's deactivate set was framed as 'v0.7 emittedRowRefs INTERSECT live' — with unverified ref FORMS; the probe corrected the mirror to the byte-exact shared law and pinned the executable law as the live prefix census (602), which coincides with the law-true re-emission set (survivors 0)",
+    "status": "superseded of record, disclosed; the run-002 receipt stands as filed with this correction riding run-003"
+  },
+
+  "kill_list_FINAL": {
+    "status": "BLOCKED OF RECORD — executable shape pinned, execution awaits upstream fix + operator green-light",
+    "deactivate_slice": "all live-ACTIVE refs under external_ref LIKE 'sme-eq-igcse-chemistry-19-%' — 602 rows enumerated by probe (equals the law-true re-emission set; zero survivors); mechanism: update questions set active=false where active = true and external_ref = any(refs) (sme/index.ts:240-242 law)",
+    "insert_payload": "fresh insert through the REAL frozen ingest (the --apply path) once the shim builds: full v0.7 package (topic rows 1,402 mark_point entries incl. 1,175 whole-block + 227 part-less refresh + official rows 1,428 incl. the 1,340 per-point Law-2 rows); ZERO deletions anywhere (append-only: the 602 legacy question stacks deactivate, their mark_points/part rows survive physically; smart_mark_results untouched)",
+    "untouched_classes": "question_asset (585, probed), knowledge_nodes (182 4CH1 SPEC_POINT, read-only join ground), global tables",
+    "gates_on_apply": "the five of-record gates (sum-invariant live probe dispositive, MCQ part-less verdict, kappa re-base, coverage != per-point-done, shape-law reconciliation) + the B2 green baselines re-verified immediately pre-apply",
+    "green_light_semantics": "ONE word fires B3 AFTER the upstream bundle fix lands + a fresh census + a green --dry-run through the real tool on this connection"
+  },
+
+  "fork_paths_for_operator": {
+    "path1_recommended": "order the content lane to fix the official-set ref namespace (per-paper topicSlug under the frozen smeQuestionRef law — e.g. per-paper slugs; the shared law's truncation/hash handles length), re-census, then this lane executes B3 on green-light",
+    "path2_not_the_ruling": "topic-plane-only apply (builds clean) delivers ZERO per-point rows — a content refresh mislabeled as the law flip; requires explicit operator order if ever wanted",
+    "path3": "no DB-lane workaround exists that respects 'the converter extracts; it never authors' — hand-minting refs in SQL is refused by this lane's posture"
+  },
+
+  "credentials_discipline": {
+    "gh_pat": "one-shot in-chat; env credential helper only; never persisted to any file; fingerprint a8ccee736aa8c75b; exposure count 5 lane-wide — rotation remains the top followup register item",
+    "neon_api_token": "fingerprint 4c2e12da872b6959; UNUSED beyond DNS-block probe (api.neon.tech unreachable in sandbox)",
+    "database_url": "fingerprint 3b8b9c5951ca595d; staged 0600 outside repo; used read-only (session_read_only=on) + one build-stage-failed dry-run that never opened the DB",
+    "printed_values": "none — zero credentials in any output, receipt, commit, or worklog"
+  },
+
+  "zero_writes_statement": "zero prod DB writes (probe session read-only-enforced; dry-run refused at build before connection), zero content-plane writes, zero deploys, zero LLM calls; repo writes: scripts/adr037_reapply_probe.py + probe result + this receipt only",
+
+  "artifacts": {
+    "probe_script": "scripts/adr037_reapply_probe.py",
+    "probe_result": "scripts/adr037_reapply_probe_result.json",
+    "census_of_record": "scripts/adr037_reapply_census_result.json (run-002, unchanged)",
+    "this_receipt": ".syllabai/receipts/ADR-037/run-003-stage-b2-probe-block-r0.json"
+  }
+}
