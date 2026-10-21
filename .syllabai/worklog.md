@@ -11236,3 +11236,19 @@ Stage Summary:
 - Post-merge main CI: 6b5e0cc hub ✓ verify ✓; 9ecf565 hub ✓ verify ✓
 - No *.java, no core/hub content, no DB/prod writes in either diff
 - Bookkeeping only: .syllabai/** — no code, no force
+
+---
+
+Task ID: T-TEACH-004 CLOSE-OUT (same lane, same session — trace 1a15ece07422fcd9 queue item 4)
+Agent: zai-web lane (main agent, session web-590847c1-cf63-4098-b0c8-a90085355429)
+
+Work Log:
+- PR #264 SQUASH-MERGED as 817cf68 on main ("Merge PR #264: T-TEACH-004 — core class workspace parity, live classes embed the course resources/past papers (head 0e52b6b)"), branch deleted both sides (204 remote + local); merge landed cleanly on top of the concurrently-merged #263 (content 2C tranche — disjoint files, no rebase needed).
+- PR-head CI 3/3 SUCCESS (verify + hub + Vercel preview comment); main-head CI verify+hub 2/2 SUCCESS on 817cf68 (bounded poll).
+- This close-out: .syllabai-only push to main (worklog append-only union, the established precedent), fetch-first, no force.
+
+Stage Summary:
+- T-TEACH-004 COMPLETE of record. The operator-approved four-item queue (T-TEACH-001 server-side my-courses #254 → T-TEACH-002 class feature toggles #257/#258 → T-TEACH-003 enrollment-scoped marking #261 → T-TEACH-004 core class workspace parity #264) is COMPLETE.
+- Open items for the operator's review of the remaining queue: the cross-surface teacher authorization audit (teacher-kg insights, per-student drill-downs, class analytics — T-TEACH-003's named residual); the local container optionally gaining the past-papers card; the standing T-TEACH-003 neon-replay stage-5b proof (unaffected — no api/seed/golden contact this task).
+- Receipt: .syllabai/receipts/HUB-TEACH/t-teach-004-core-class-workspace-parity-r0.json
+- Standing reminder: the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law — it was used this session for fetch/push/PR/merge only.
