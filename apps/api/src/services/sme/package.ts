@@ -35,6 +35,18 @@ export interface SmeOption {
   isCorrect: boolean;
 }
 
+/**
+ * ADR-037 amendment (v0.7): one awardable mark point of a structured part
+ * (the converter's mark_points[] — M1..Mn rows split at the MS's explicit
+ * answer-column rows; marks ALWAYS sum to the part's marks, gate G7).
+ * Additive like the ADR-026 options amendment: unknown to packages that
+ * predate it, ignored by the frozen laws when absent.
+ */
+export interface SmeMarkPoint {
+  marks: number;
+  text: string | null;
+}
+
 export interface SmePart {
   label: string | null;
   prompt: string | null;
@@ -43,6 +55,8 @@ export interface SmePart {
   solutionMd: string | null;
   /** ADR-026 amendment: option-bearing parts make a STRUCTURED question MIXED */
   options: SmeOption[] | null;
+  /** ADR-037 amendment (v0.7): per-point awardable marks; null = whole-block point */
+  markPoints: SmeMarkPoint[] | null;
 }
 
 export interface SmeQuestion {
@@ -146,6 +160,16 @@ function parseSpecPoint(v: unknown): SmeSpecPoint {
   return { code: str(v.code), role: str(v.role), provenance: str(v.provenance) };
 }
 
+function parseMarkPoint(v: unknown): SmeMarkPoint {
+  if (!isObj(v)) throw new PackageFormatError("expected mark point object");
+  return { marks: integer(v.marks), text: str(v.text) };
+}
+
+function parseMarkPoints(v: unknown): SmeMarkPoint[] | null {
+  const items = list(v);
+  return items === null ? null : items.map(parseMarkPoint);
+}
+
 function parsePart(v: unknown): SmePart {
   if (!isObj(v)) throw new PackageFormatError("expected part object");
   return {
@@ -155,6 +179,7 @@ function parsePart(v: unknown): SmePart {
     commandWord: str(v.commandWord),
     solutionMd: str(v.solutionMd),
     options: parseOptions(v.options),
+    markPoints: parseMarkPoints(v.markPoints),
   };
 }
 

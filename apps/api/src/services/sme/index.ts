@@ -43,8 +43,16 @@ import {
   parsePackage,
   type SmeIngestSummary,
   type SmePackage,
+  type SmePart,
   type SmeQuestion,
 } from "./package";
+
+/** ADR-037 (v0.7): mark_points ROWS a part persists — per-point when the part carries markPoints, else the frozen whole-block row. */
+function markPointRowsFor(p: SmePart): number {
+  // != null on purpose: hand-constructed rows (tests) leave the field absent
+  // — only the parser binds it as null
+  return p.markPoints != null && p.markPoints.length > 0 ? p.markPoints.length : 1;
+}
 import { ArchiveFormatError, readEach, zipLimitsDefaults, type ZipLimits } from "./zip";
 
 /** the driver-agnostic sql seam + the adapter's transaction (per-module declared) */
@@ -272,7 +280,7 @@ export class SmeQuestionIngestService {
             structured++;
             primaryRow = await this.saveCorpusRow(tx, sourceDocId, q.externalRef as string, "STRUCTURED", q.stem === null ? "" : q.stem, q.marks, q, byCode.get(q.primaryTopicCode as string) as string);
             partsN += await this.saveStructuredBody(tx, primaryRow, sourceDocId, q, q.parts ?? []);
-            markPointsN += q.parts?.length ?? 0;
+            markPointsN += (q.parts ?? []).reduce((n, p) => n + markPointRowsFor(p), 0);
             topicN += await this.saveTopicRows(tx, q, byCode, primaryRow);
           } else {
             // MIXED question — the production -pN/-s multi-row family shape
@@ -300,7 +308,7 @@ export class SmeQuestionIngestService {
               const plainMarks = plainParts.reduce((sum, p) => sum + p.marks, 0);
               const structuredRow = await this.saveCorpusRow(tx, sourceDocId, (q.externalRef as string) + "-s", "STRUCTURED", q.stem === null ? "" : q.stem, plainMarks, q, byCode.get(q.primaryTopicCode as string) as string);
               partsN += await this.saveStructuredBody(tx, structuredRow, sourceDocId, q, plainParts);
-              markPointsN += plainParts.length;
+              markPointsN += plainParts.reduce((n, p) => n + markPointRowsFor(p), 0);
               topicN += await this.saveTopicRows(tx, q, byCode, structuredRow);
             }
           }
@@ -437,7 +445,7 @@ export class SmeQuestionIngestService {
     `;
   }
 
-  /** structured body: part rows in order + one mark point per part; returns the part count (:379-409) */
+  /** structured body: part rows in order + one mark point per part (per-point rows when the part carries markPoints, ADR-037 v0.7); returns the part count (:379-409) */
   private async saveStructuredBody(
     tx: SqlFn,
     questionId: string,
@@ -445,6 +453,12 @@ export class SmeQuestionIngestService {
     q: SmeQuestion,
     parts: NonNullable<SmeQuestion["parts"]>,
   ): Promise<number> {
+    const mpByLabel = new Map<string, NonNullable<SmePart["markPoints"]>>();
+    for (const p of parts) {
+      if (p.label !== null && p.markPoints != null && p.markPoints.length > 0) {
+        mpByLabel.set(p.label, p.markPoints);
+      }
+    }
     const plainMarks = parts.reduce((sum, p) => sum + p.marks, 0);
     const versionId = this.clock.newId();
     await tx`
@@ -473,6 +487,23 @@ export class SmeQuestionIngestService {
     }
     let mpOrder = 0;
     for (const part of partRows) {
+      // ADR-037 amendment (v0.7): a part carrying markPoints (the converter's
+      // M1..Mn split, validated to sum to the part's marks) persists ONE row
+      // PER POINT — Smart Mark awards per point; parts without markPoints
+      // keep the frozen whole-block law (one row, text = the solution block)
+      const mpSource = mpByLabel.get(part.label);
+      if (mpSource !== undefined) {
+        for (let i = 0; i < mpSource.length; i++) {
+          const mp = mpSource[i]!;
+          await tx`
+            insert into mark_points (id, mark_scheme_id, question_part_id, ref, ordering, text,
+              marks, acceptance_criteria, extraction_confidence, created_at)
+            values (${this.clock.newId()}, ${schemeId}, ${part.id}, ${part.label + "." + (i + 1)}, ${mpOrder++},
+              ${mp.text === null ? part.prompt : mp.text}, ${mp.marks}, ${JSON.stringify([])}, ${null}, ${this.clock.now().toISOString()})
+          `;
+        }
+        continue;
+      }
       const sol = solutionOf(q, part.label);
       await tx`
         insert into mark_points (id, mark_scheme_id, question_part_id, ref, ordering, text,
@@ -602,6 +633,21 @@ export class SmeQuestionIngestService {
                 );
               }
               optionLabels.add(o.label);
+            }
+          }
+          // ADR-037 amendment (v0.7): per-point awardable marks — when a part
+          // carries markPoints, every point must be positive and the points
+          // must sum EXACTLY to the part's marks (the converter's G7 law;
+          // fail-closed like every frozen sum law)
+          if (p.markPoints != null && p.markPoints.length > 0) {
+            const mpSum = p.markPoints.reduce((acc, mp) => acc + mp.marks, 0);
+            if (p.markPoints.some((mp) => mp.marks <= 0) || mpSum !== p.marks) {
+              throw new BadRequestError(
+                "part mark points do not sum to the part marks on " +
+                  ref +
+                  " part " +
+                  p.label,
+              );
             }
           }
         }

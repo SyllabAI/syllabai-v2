@@ -350,6 +350,41 @@ function oneSyntheticSet(difficulty: string | null, code = "1A"): BundleQuestion
   ] as unknown as BundleQuestionSet[];
 }
 
+
+describe("ADR-037 v0.7 the markPoints ride-through laws", () => {
+  const one = (sets: BundleQuestionSet[]) =>
+    buildSmePackage({ courseSlug: foundation.slug, curriculum: foundation.curriculum, sets, ...SOURCE });
+  test("per-point markPoints map 1.1 → 1.0 and pass the REAL frozen gates", () => {
+    const sets = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
+    const part = sets[0]!.questions[0]!.parts[0]!;
+    const first = Math.max(1, part.marks - 1);
+    part.markPoints = [
+      { id: "MP1", marks: first, textMd: "first awardable point" },
+      { id: "MP2", marks: part.marks - first, textMd: "second awardable point" },
+    ];
+    const pkg = one(sets);
+    const mp = pkg.questions?.[0]!.parts?.[0]!.markPoints;
+    expect(mp).not.toBeNull();
+    expect(mp!.length).toBe(2);
+    expect(mp!.reduce((s, m) => s + m.marks, 0)).toBe(part.marks);
+    expect(mp![0]!.text).toBe("first awardable point");
+    // the REAL frozen gates accept the amended tree (parse + validate)
+    const service = new SmeQuestionIngestService(THROWING_SQL, CLOCK);
+    expect(() =>
+      service.validate(parsePackage(JSON.stringify(pkg)), new Map()),
+    ).not.toThrow();
+  });
+
+  test("a markPoints sum violation refuses the shim (the G7 law, fail-closed)", () => {
+    const sets = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
+    const part = sets[0]!.questions[0]!.parts[0]!;
+    part.markPoints = [{ id: "MP1", marks: part.marks + 1, textMd: "too many marks" }];
+    expect(() => one(sets)).toThrow(
+      BundleQuestionsError,
+    );
+  });
+});
+
 describe("T-MIG-136 bands 3b+4 through T-CONSUME-EDX-1: the maths-b corpus laws", () => {
   test("the emptied-bundle reality: the shim refuses a question-less bundle (the 2ece53b law)", () => {
     // the refresh emptied the bundle question axis; the questions serve from
