@@ -1,0 +1,31 @@
+{
+ "task": "4MB1-QUALITY badsum-recon follow-up: the 57 badSum restore-vs-ratify ruling (operator order, trace 1a15e7d6114dff35)",
+ "agent": "r0 (zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "ruling": {
+  "verdict": "RESTORE (ratify rejected)",
+  "rationale": "The badSum class is a parse/extraction defect class, not intentional paper structure: Edexcel 4MB1 prints per-question totals on the QP and the official QP-footer anchors of record (pastpapers-blueprints.json) give an independent evidence base for every non-blocked member. Ratifying would permanently freeze 57 questions out of both planes despite available official evidence.",
+  "scopeExecutedThisLane": "the 4 evidence-complete cleanFieldFixes (totalMarks field stamps) applied to the bundle surface",
+  "scopeDeferred": "the 49 parse repairs REQUIRE per-part source evidence (QP part-mark re-extraction); probe finding: per-question footers extract cleanly, per-part body text layer is noisy on diagram-heavy questions -> dedicated parse-repair ops lane with pinned sources (past-papers/<spec>/past-papers/<session>/<dir>/qp.pdf)",
+  "blockedStatus": "3 of 4 blocked members UNBLOCKED by the blueprint-completion lane (2019-01:4MB1-01 row now exists: orders 10/21/23 -> official Q11=3/Q22=5/Q24=6); 1 remains blocked (2022-01-4mb1-02r order-0 needs re-order evidence before any official join)"
+ },
+ "applied": {
+  "surface": "apps/hub/content/igcse-maths-b-16/questions.json (the bundle of record, carrying the full 1,249q at HEAD)",
+  "fixes": [
+   {"paper": "2019-01-4mb1-01r", "q": 6, "totalMarks": "3->2", "evidence": "partsSum 2 == official 2"},
+   {"paper": "2022-06-4mb1-02", "q": 10, "totalMarks": "14->15", "evidence": "partsSum 15 == official 15"},
+   {"paper": "2025-11-4mb1-02", "q": 10, "totalMarks": "9->7", "evidence": "partsSum 7 == official 7"},
+   {"paper": "2026-06-4mb1-02", "q": 10, "totalMarks": "11->13", "evidence": "partsSum 13 == official 13"}
+  ],
+  "shas": {"pre": "1963d95ebb9b7894 (== MS-cleanup post-sha of record, plane unmoved since)", "post": "943b0cf13c71b075"},
+  "invariants": {"structure": "65 sets / 1,249 q / 2,392 parts unchanged", "partMarks": "byte-identical (sha 085b1c33c6ac1c1e)", "byteFormat": "single-line compact JSON preserved (1-line git diff)", "badSum": "57 -> 53 on the bundle surface"},
+  "dryRun": "DRY-then-APPLY with pre-state re-prove on disk; post-verify from disk (badSum 53, structure intact, partMarks sha equal)"
+ },
+ "dbPlane": {
+  "writes": 0,
+  "state": "the 57 remain excluded from the DB fetch-bank by the emitter law (0/57 refs; 1,192 live rows unchanged); the 53 repaired questions now PASS the badSum emitter check and would emit at any future re-ingest",
+  "coupling": "DB restore = operator-gated re-ingest lane; it would re-run the difficulty classification + qv mirror coupling disclosed in db-apply-run-001-r0"
+ },
+ "gates": "root typecheck x4 OK; hub verify:corpus PASSED; verify:cie PASSED; verify:flashcard-sync OK; full-suite bun test 6 fail proven PRE-EXISTING at clean HEAD 238d5cad (A/B stash run, identical 6) - unrelated api.v2-surface/question-cla full-suite pollution class; targeted 55/55 pass",
+ "artifacts": "scripts/run-badsum-restore/{dry-001.json, apply-001.json, qp/} (local); r0_badsum_restore.mjs",
+ "provenance": {"repo": "SyllabAI/syllabai-v2 @ 238d5cad", "officialAnchors": "pastpapers-blueprints.json (QP-footer extraction, see blueprint-completion-run-001-r0)"}
+}
