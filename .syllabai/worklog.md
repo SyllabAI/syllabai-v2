@@ -11035,145 +11035,37 @@ Work Log:
 
 Stage Summary:
 - The 134c gate is ARMED for the tranche-1 landing: workflow floors re-based to the post-tranche-1 census of record (6,715 q / 5,696 part-rows), dispatch to follow at the merged tip. The DB plane still serves the pre-tranche linkage for the 9 affected banks (business-23 +41 / chemistry-25 +23 / sdv-chem +15 / biology-25 +13 / physics-23 +7 / cs-23 +6 / combined-bio +4 / physics-25 +4 / combined-chem +3 questions) until the gated prod-apply lands.
----
-Task ID: Task-67
-Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace 1a15f01e8eb6d665)
-Task: Operator "they're unspent. Use any one key, because they are from the same account" — ONE operator-supplied key staged into the pool of record; receipt T-MIG-138/run-006-key-stage-r1c.json.
-
-Work Log:
-- Probe closed first (trace 1a15efd864459bf1): two operator-supplied AQ.* candidates (...uo51w / ...66a-A) each probed 1x against gemini-embedding-001:embedContent — BOTH HTTP 400 FAILED_PRECONDITION "User location is not supported" = auth PASSED on both (invalid keys return API_KEY_INVALID; the region 400 fires after auth per the run-001 REGION LAW class); quota class unverifiable from the sandbox (region check precedes RPD).
-- STAGED of record: KEY_A (...uo51w) -> GitHub secret T138_GEMINI_KEY_4 via the secrets API (repo public key id 3380204578043523366, libsodium sealed box, PyNaCl b64-decoded raw pubkey bytes — first attempt's string-encoder mismatch fixed in-place), PUT HTTP 204, metadata verified on the secret list: _4 updated_at 2026-10-21T15:11:30Z (names + updated_at ONLY; values never printed anywhere).
-- One-key directive honored: KEY_B (...66a-A) held SPARE lane-side (.t138-key-probe.env @600), NOT staged — same account, no double budget.
-- Pool of record for the 07:00Z Oct 22 window: shard1 = T138_GEMINI_KEY (original), _2, _3, _4 = NEW (revives the 403-dead slot); op#1 anomaly stays out-of-matrix operator-keyed.
-- Projection disclosed: 95-row residual over 4 healthy shards ~24/24/24/23 -> projected 95/95, QUEUE ZERO in one window (each key needs >=24 fresh RPD; honesty law covers any shortfall); last-tranche secrets-hygiene gate becomes reachable on completion.
-- Write ledger: the secrets PUT was the ONLY state change; zero code/content/DB/Neon/LLM; secrets hygiene maintained (600 env file, fingerprint-only reporting); .syllabai-only receipt + this entry; fetch-first, no force.
-
-Stage Summary:
-- Shard-4 key slot REVIVED of record with an unspent operator key; the next re-key after 07:00Z Oct 22 projects the full 95-doc drain and queue zero. Next repo receipt = Task-68; next workspace = Task-48. Standing residuals unchanged (PAT rotation CRITICAL overdue; hub deploy incident operator-keyed; op#1 out-of-matrix).
-
 
 ---
-Task ID: T-BOOK-010 golive-r0 (trace 1a15ecf114c3406d, operator order "apply migration 0005 on a Neon COW → run books-ingest-rail.ts → 20% spot-check → flip packs VALIDATED — the rail goes live")
-Agent: r0 (Super Z, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355)
+Task ID: CIE-PHASE4-134c-RUN-010 (operator trace 1a15ef55b189bf51 "trigger 134c") — run-010 GREEN
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: the 134c cow+prod re-run completed — the tranche-1 linkage landed on the production DB plane
 
 Work Log:
-- fetch-first: origin/main 95024009 carries the full merged chain (T-BOOK-002 0005 + 003 shell + 004-006 widgets + 007-009 wiring + 010 packs); work branch t-book-010/golive-r0 cut off it.
-- Neon COW br-lively-heart-a508fuhy created off production br-muddy-bar-a5huwldd via the console.neon.tech mirror (api.neon.tech DNS-blocked, the T-MIG-046 class); pre-checks: parent book VALIDATED, 29 chapters SUGGESTED, 0005 absent, bank 5/5 ACTIVE MCQ_SINGLE.
-- Pipeline on COW: chapter flip u1:c1..c5 → 0005 verbatim 10/10 → F-BOOK-0003 widen repair (1.18 orphan, root-caused: p.39 LO box interleaves 1.18's sub-clauses after the 1.19 bullet; containment 0.611 < 0.75 every tier; repaired per the book's 27-row method=widened precedent) → ingest COMMIT 30 blocks + 27 terms → 20% spot-check 35/0 GREEN (6 blocks × zod/DB-canonical/page-true-vs-sha-pinned-parse/payload-contracts + full-set laws + pre-flip negative control) → lint G1-G4 0 → pack flip ×30 → serve proof 7/6/6/5/6 + u1:c6 honest-empty.
-- PRODUCTION MIRROR (ep-ancient-cake-a52e4kfd, direct endpoint): the identical six stages, all COMMIT, spot-check 35/0, serve proof byte-identical — THE RAIL IS LIVE under the §3 double gate.
-- Repo bookkeeping: pack.yaml ×5 draft→published; F-BOOK-0003 filed (code-change PROPOSED, zero main delta); T-BOOK-010 execution_record S3/S4 PENDING-OPERATOR→DISCHARGED; receipt .syllabai/receipts/T-BOOK-010/unit1-golive-r0.json.
-- COW dropped + 404-verified after the proof (T-MIG-035). Credentials inline/0600 only; rotation advisory stands.
+- DISPATCH OF RECORD: run 39623595318 (run_number 10) @ main 4b22efd (the PR #255 floor re-base merge), mode=cow+prod, 2026-10-21T15:12:49Z.
+- cow-proof SUCCESS 15:12:52Z -> 16:09:25Z (~56.5 min): the full 45-slug fleet on the disposable COW branch off production, floors GREEN at the re-based census (6,715 / 5,696), COW dropped + 404-verified; the all-green admission law opened job 2.
+- prod-apply SUCCESS 16:09:27Z -> 16:58:12Z (~48.75 min): 45/45 ok=true, failures 0, every real bank with its postverify line and the per-bank drift law 0-mismatch (apply-mode ingest == bundle census per bank).
+- FLEET SUMMARY (identical on BOTH planes, artifacts cie4-cow-proof 12360026391 + cie4-prod-apply 12365166123 read first-hand): {selected:45, realApplied:37, realSeedOnly:3, stubsSeeded:4, skeletonsSkipped:1, failures:0, questionsIngested:6715, partsIngested:5696, optionsIngested:14320}.
+- DELTA OF RECORD over the run-009 baseline: questions 6,599 -> 6,715 (+116 EXACTLY the tranche-1 prediction, per-slug arithmetic of record); part rows 5,618 -> 5,696 (+78, the re-pinned part-ROW delta); options 14,084 -> 14,320 (+236). The 9 affected banks now serve the tranche-1 linkage: business-23 96 / chemistry-25 252 / sdv-chem 251 / biology-25 910 / physics-23 634 / cs-23 231 / combined-bio 13 / physics-25 409 / combined-chem 13 (per-bank ingest == bundle census). The 36 unaffected real banks re-served identical counts (idempotent); seed-only trio + 4 stubs + 1 skeleton honest-empty unchanged.
+- Receipt of record: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-prod-apply-run-010-r0.json (this commit).
+- Hygiene: zero secret values in any file/log/receipt; the dispatch PAT remote-URL-extracted bash-inline, bearer-only, never printed/persisted; zero sandbox DB contact (all fleet evidence from the CI logs + artifacts of record); fetch-first, no force.
 
 Stage Summary:
-- The interactive rail for 4CH1 Unit 1 (c01-c05 demo gate) serves VALIDATED blocks from PRODUCTION: parent book + chapters + 30 blocks all VALIDATED; checks resolve to the live bank; glossary 27 terms SUGGESTED (separate validation lane).
-- Local-only commits on t-book-010/golive-r0 (no GitHub token this session) — push/PR deferred.
-
+- THE TRANCHE-1 LINKAGE IS LIVE ON THE PRODUCTION DB PLANE of record: the 155 T2_near operator verdicts (resources PR #22 aa0b4de1 -> v2 PR #252 -> the PR #255 floor re-base -> the gated run-010) closed the full chain verdicts -> consume -> re-emit -> census re-pin -> gate re-base -> cow-proof -> prod-apply. The CIE servable truth now stands at 6,715 questions / 5,696 part rows / 14,320 options. Remaining operator levers: tranche-2 (the mass-order verdict program, the 16,335-part debt) and tranche-3 (the 1,203-part SME coverage gap) per the anchor-gap census program — each closes through the same chain; the operator's phase-5 plane (QA) is the next gate; PAT rotation CRITICAL-OVERDUE.
 
 ---
-Task ID: T-BOOK-010 golive-r0 push-of-record (trace 1a15f00892b0b159, operator re-supplied the GitHub PAT)
-Agent: r0 (Super Z, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355)
+Task ID: CIE-PHASE4-134c-RUN-010 (operator trace 1a15ef55b189bf51 "trigger 134c") — run-010 GREEN
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: the 134c cow+prod re-run completed — the tranche-1 linkage landed on the production DB plane
 
 Work Log:
-- Session resumed with the GitHub PAT delivered — open item (1) of golive-r0. fetch-first: origin/main had advanced 95024009 -> 36d72945 (4 commits: T-TEACH-001 #254, T-CONSUME-EDX-2, T-MIG-136 worklog append); branch t-book-010/golive-r0 rebased onto 36d72945.
-- Sole overlap .syllabai/worklog.md resolved as the append-only union: main's T-CONSUME-EDX-2 + T-MIG-136 entries kept verbatim; the golive-r0 entry re-appended after them with its --- separator restored; zero content lines of either side altered.
-- PAT verified as login SyllabAI (the operator account, same identity that merged #236/#252/#253/#254); push + PR + self-review + merge follow per the standing operator authorization model; squash merge per repo convention (PR number carried by the merge commit of record); token used one-shot bash-inline, never persisted to config.
+- DISPATCH OF RECORD: run 39623595318 (run_number 10) @ main 4b22efd (the PR #255 floor re-base merge), mode=cow+prod, 2026-10-21T15:12:49Z.
+- cow-proof SUCCESS 15:12:52Z -> 16:09:25Z (~56.5 min): the full 45-slug fleet on the disposable COW branch off production, floors GREEN at the re-based census (6,715 / 5,696), COW dropped + 404-verified; the all-green admission law opened job 2.
+- prod-apply SUCCESS 16:09:27Z -> 16:58:12Z (~48.75 min): 45/45 ok=true, failures 0, every real bank with its postverify line and the per-bank drift law 0-mismatch (apply-mode ingest == bundle census per bank).
+- FLEET SUMMARY (identical on BOTH planes, artifacts cie4-cow-proof 12360026391 + cie4-prod-apply 12365166123 read first-hand): {selected:45, realApplied:37, realSeedOnly:3, stubsSeeded:4, skeletonsSkipped:1, failures:0, questionsIngested:6715, partsIngested:5696, optionsIngested:14320}.
+- DELTA OF RECORD over the run-009 baseline: questions 6,599 -> 6,715 (+116 EXACTLY the tranche-1 prediction, per-slug arithmetic of record); part rows 5,618 -> 5,696 (+78, the re-pinned part-ROW delta); options 14,084 -> 14,320 (+236). The 9 affected banks now serve the tranche-1 linkage: business-23 96 / chemistry-25 252 / sdv-chem 251 / biology-25 910 / physics-23 634 / cs-23 231 / combined-bio 13 / physics-25 409 / combined-chem 13 (per-bank ingest == bundle census). The 36 unaffected real banks re-served identical counts (idempotent); seed-only trio + 4 stubs + 1 skeleton honest-empty unchanged.
+- Receipt of record: .syllabai/receipts/CIE-INTEGRATION/cie-phase4-prod-apply-run-010-r0.json (this commit).
+- Hygiene: zero secret values in any file/log/receipt; the dispatch PAT remote-URL-extracted bash-inline, bearer-only, never printed/persisted; zero sandbox DB contact (all fleet evidence from the CI logs + artifacts of record); fetch-first, no force.
 
 Stage Summary:
-- The golive-r0 bookkeeping chain (pack.yaml x5 published + F-BOOK-0003 + receipt unit1-golive-r0.json + T-BOOK-010 S3/S4 DISCHARGED) reaches origin under rebase-of-record 37dbd1cf + this push-of-record append; worklog-only commit, zero content changes; the rail itself remains live in PRODUCTION Neon per the golive receipt.
-Task ID: CONTENT-AUDIT run-001-r0 (operator order trace 1a15e490b7421729 "Can you review all the content in syllabai, cie edexcel. Are the SME revision notes and exam question organized correctly. I can see that cie history is missing some revision notes. Audit thoroughly")
-Agent: main agent (Super Z, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, trace 1a15ef6e2f2cddc1)
-Task: thorough read-only audit of all hub content (CIE + Edexcel): SME revision notes and exam questions organization, manifest/served consistency, live index consistency; special focus on the operator-observed CIE History revision-notes gaps.
-
-Work Log:
-- Reconciled scope: 94 bundles in apps/hub/content/ (44 cie-* + 50 Edexcel igcse-*/ial-*) + courses.json (94 rows). Full census scripted (fresh python, no reliance on prior receipts): manifest counts vs actual file contents for notes/questions/parts/flashcards per bundle.
-- Census result: 93/94 manifest-exact. ONE drift: igcse-chemistry-19 manifest questions 524 vs served 693 — root-caused via git archaeology (045bcd70 ADR-037 v0.7 "the spec-tagged official corpus (169/169 anchored)"): the golden pack = 524 SME + 169 official past-paper questions; manifest tracks the SME import only; live badge 693 correct; manifest stale (cosmetic).
-- Organization audit, Edexcel: notes->spec lattice bridge ~100% per bundle (98-100%), spec coverage 99-100% on 49/50 (igcse-geography-19 the exception at 17/202 — lattice finer than corpus, all notes still bridged). VERDICT: organized correctly.
-- Organization audit, CIE: bridge thin — 1,899/4,460 notes (42.6%) carry specPointCodes; aggregate coverage 2,728/6,854 spec points (39.8%); 12 bundles <15%. VERIFIED the UI discloses this honestly (notes-index.tsx unmapped bucket: "Not yet anchored to a spec point — the spec-point mapping (still in progress upstream) will slot them into the tree"); all notes remain reachable. Two cleanly separated mechanisms: bridge failure (CIE-dominant) vs lattice-finer-than-corpus (both boards).
-- CIE HISTORY DEEP-DIVE (operator's observation): notes import faithful 87/87 (upstream manifest at 8e291010: pages_scraped 87, fetch_failures 0); curriculum = 2024-2026 lattice (21 TOPIC + 21 SUBTOPIC + 371 SPEC_POINT); only 24/87 notes S-bridged (32 codes, 0 stray); 63 notes orphaned (upstream spcpt_* ids only — the served lattice carries none of that id-space, note topicSlug/sectionSlug overlap with curriculum slugs = 0); 13/21 topics have ZERO attached notes (enumerated in receipt); 339/371 spec points note-less. So the operator's "missing revision notes" = the incomplete upstream lattice join, NOT import loss. Live verified: badge 87, exam-questions badge 321 + 19 links.
-- Lattice artifact found: TS4 (US Civil War) carries S4.012-S4.031 League-of-Nations spec points after S4.001-S4.011 civil-war points (parents verified in curriculum.json) — upstream spec-index mixes two themes in section 4; v2 faithful; flagged upstream.
-- Zero-question bundles (9): all verified upstream-faithful at the CIE pin (SME-ExamQuestion status no_topic_questions_on_sme, totals questions 0) — NOT defects; the maths-b manufacturing precedent remains the operator-gated path for them.
-- GHOST COURSE: cie-a-level-maths-20-pure-2 — courses.json "status": "full", live 200, listed in the 94-course catalog — while the bundle is 100% empty and upstream has NO such course (SME-RevisionNotes and SME-ExamQuestion both 404 at the pin and at resources main HEAD; P1/P3 siblings have 74/79 notes). Learner-facing empty shell labelled "full".
-- Live catalog: 94 course links == courses.json 94 rows; history + chemistry-19 + maths-b surfaces spot-verified.
-- Read-only discipline: ZERO content files touched; the only writes are this worklog append + the receipt.
-
-Stage Summary:
-- Operator's three questions answered: (1) Edexcel organized correctly; CIE organized honestly but with a thin lattice join (42.6% notes bridged, 39.8% spec coverage), disclosed in-UI; (2) 93/94 manifests exact, chemistry-19 manifest stale-by-design-gap (524 vs 693 served, live correct); (3) CIE History's "missing notes" = incomplete upstream 2024-2026 lattice join (63/87 notes unanchored, 13/21 topics empty) — data present, mapping in progress upstream, honestly disclosed.
-- Operator decision menu returned: (a) upstream lattice-join completion (fixes history + 11 bundles at once); (b) chemistry-19 manifest refresh; (c) pure-2 ghost ruling (remove/label/commission); (d) optional operator-gated manufacturing for the 9 zero-question courses per the maths-b precedent; (e) TS4 mixed-theme upstream review.
-- Receipt: .syllabai/receipts/CONTENT-AUDIT/run-001-cie-edexcel-content-audit-r0.json
-
----
-Task ID: w0a-t138-slot4-rewire-20261021 (trace 1a15f07f9583c6cd — operator order "Use this key", AQ.Ab8RN6…-form value)
-Agent: w0a (Super Z, zai-web session web-e79a3bd8, chat 1148fa2b)
-
-Work Log:
-- STAGED: .creds/gemini-key-incoming-20261021 0600 53B fp16 bcf46b4ca86b8707 (same AQ.* issuance family as the run-003 pool; duplicate-vs-fresh unresolvable lane-side).
-- SANDBOX PROBE x3, ZERO RPD: models-list header-form + ?key= form + embedContent gemini-embedding-001@768 executor-mirror — ALL 400 FAILED_PRECONDITION "User location is not supported for the API use" = sandbox egress geo-block (REGION LAW of record); key live/429/403 verdict DEFERS to executor egress at the window run.
-- WIRE: T138_GEMINI_KEY_4 (403-dead of record, RUN-003) rewired with the incoming key via secrets REST sealed box (key_id 3380204578043523366): PUT 204, updated_at 15:11:30Z -> 15:25:38Z; frozen 4-shard matrix + residual-95 composition 14+14+13+54 preserved byte-exact; prior sibling slot update 15:11:30Z PRE-dates the operator order (same-value no-op if duplicated, else last-order-wins).
-- INCIDENT: narrow-wipe recurrence #4 lane-side (post-recycle realign reset wiped snapshot-tracked lane paths) — FULL RECOVERY from snapshot commit e03aa5e, all of-record fp16s verified (gh-pat a8ccee736aa8c75b, vcp d254bbfaac004354, neon 4c2e12da872b6959, rows 5eb6076e5b81e835/3514B, worklog intact); lane paths pinned .git/info/exclude (repo-local) to de-track future snapshots.
-
-Stage Summary:
-- Shard-4 slot carries operator key fp16 bcf46b4ca86b8707 verdict-at-run (1000-RPD class -> shard-4 54-row slice drains one window; spent/dup AQ.* class -> ~40/key walls hold, 1-2 windows for the 95). Window law UNCHANGED: bash scripts/t138-drain-fire.sh at/after 07:05Z Oct 22, gates refusable, FORCE=1 only on explicit operator order. Receipt: .syllabai/receipts/T-MIG-138/run-007-slot4-rewire-w0a.json. Secrets fp16-only throughout; zero dispatch/prod/DB/Neon/LLM contact beyond 3 geo-rejected metadata probes.
-
----
-Task ID: T-TEACH-002 (trace 1a15ee4593f7b571 — "continue" on the approved queue; T-TEACH-002 feature toggles, ADR first)
-Agent: zai-web lane (main agent, session web-590847c1-cf63-4098-b0c8-a90085355429)
-Task: class-scoped AI-feature toggles (tutor / CLA / Smart Mark) — schema + API + teacher UI + honest enforcement, ADR-CLASS-0001 first. PLUS the T-TEACH-001 close-out: PR #254 merged.
-
-Work Log:
-- T-TEACH-001 CLOSE-OUT first: CI verify on the PR head was RED (Typecheck — 5 cascading TS2322/TS2741 in the new test file: a rowsFor-only stub widened the array element union against the required `rows` field); fixed minimally (rows: [] on the stub — rowsFor wins over rows, behavior unchanged), pushed, CI GREEN (verify + hub), PR #254 SQUASH-MERGED as bcca191, branch deleted both sides. LESSON of record pinned: bun test does NOT typecheck — the local chain now always runs `bun run typecheck` before push.
-- ADR-CLASS-0001 written (docs/adr/): the anchor inventory measured ON THE WIRE first — tutor carries courseRef/session; CLA ask is stateless (CHECK→questionId is the only resolvable kind); attempts/questions carry NO course slug and the subjects→slug step is NON-DERIVABLE (the hub registry's own never-derived law) — hence the course_registry bridge COPIES content/courses.json verbatim (49/94 courses bridged; 7 curriculum codes are one-to-many → the conservative-union matching law; 45 unbridged = the disclosed open tier).
-- BASELINE_DB.md §4.1 honored to the LETTER: the toggles live in the v2-NATIVE side table class_features (row-absent = all ON), NOT on the Flyway-era classes row — no retirement-posture exception carved. 0006 migration (ADDITIVE-ONLY) + hand-crafted 0006 snapshot + journal (generate is unusable on the pre-existing 0000/0005 collision); 0000_snapshot.json advanced per the repo's living-baseline practice, DISCLOSED; §4.2 registry added to packages/db/README.md.
-- Enforcement at the COMPOSITION ROOT (index.ts wrappers): routes/cla.ts stays byte-ZERO (DC6 §8), tutor + smartmark routers byte-untouched too (capture parity); selfmark mount deliberately unwrapped (self-mark is the learner's own act, not an AI feature). Deny = 403 feature_disabled_by_teacher with the FIXED client-safe body, cost-zero (pre-pipeline). Gate-infrastructure failure = logged pass-through (policy ≠ availability). Unauth passes to the shell (401 parity).
-- Control plane: POST /api/v1/teacher/classes/:id/features (partial, strict, §17-reused); the features block rides EVERY class view (teacher list/detail/status/create + learner overview) — the learner honesty surface (classroom-tab badges + the teacher panel with Smart Mark badged "recorded").
-- Seed: scripts/seed-course-registry.ts (idempotent verbatim copier, source-pinned, --prune gated) — an explicit receipted step, never a boot effect.
-- Verification: typecheck x4 exit 0; bun test apps/api = 1961/0/13 (features.test.ts 28 new; classroom band 124/0); bun test apps/api packages = 2454/0/13; golden selftest OK; retrieval-eval 22/0 + 19/19; census --gate GREEN LIVE=0; hub build + eslint clean. rebaseline verifyBaseline advanced to 70/666/97/61/112 (0 drifts). Contracts fixtures + the classroom batching pin (2→3 queries) advanced with the law.
-
-Stage Summary:
-- T-TEACH-002 COMPLETE as a branch (PR next): the pilot teacher can now turn tutor / CLA-CHECK / Smart Mark off per class with server-side, fail-closed, cost-zero enforcement where the anchors are real — and an honest recorded-state disclosure where they are not (no pretended coverage). Receipt: .syllabai/receipts/HUB-TEACH/t-teach-002-class-feature-toggles-r0.json. Next: T-TEACH-003 (ADR-027 D1 — enrollment-scoped marking queue), then T-TEACH-004 (core class workspace parity).
-
----
-Task ID: T-TEACH-002 hotfix (deploy-window honesty guard)
-Agent: zai-web lane (main agent, session web-590847c1-cf63-4098-b0c8-a90085355429)
-Task: the merged hub auto-deploys Vercel BEFORE the api/migration ship — the learner classroom view on an OLD api serves NO features block, and the unguarded `!c.features.tutor` render would falsely badge every class "tutor off / fact-check off / smart mark off" (a dishonest UI state), while the teacher panel would TypeError.
-
-Work Log:
-- Guard of record: learner badges optional-chained (`c.features?.x` — absent block renders NO badge, never a false off); teacher panel CONDITIONAL on the features block (`detail.features && (...)` — no dehydrated control rows) + the toggle handler refuses on a missing block.
-- hub tsc + eslint clean. Deploy law restated: apply 0006 to Neon → seed course_registry → deploy the api; until then the hub is harmlessly dormant (no panel, no badges, toggles unreachable).
-
-Stage Summary:
-- The deploy window is now honest by construction. Files: classroom-tab.tsx + class-detail-client.tsx only; zero API/DB contact.
-
----
-Task ID: T-BOOK-016/017/018 triple-lane r0 (trace 1a15f18fdca65e79, operator dispatch "F-BOOK-0003 code candidate (spine-join two-phase match), glossary 27-term validation lane, c06–c10 packs")
-Agent: r0 (Super Z, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355)
-
-Work Log:
-- fetch-first: origin/main b05bf769 (the golive bookkeeping merge of record) carried the full T-BOOK chain; work branch t-book-016-018/triple-lane-r0 cut off it (the three lanes land as three scoped commits on one branch — one dispatch, one atomic landing, the rebase-race of PR #256 not tripled).
-- LANE 1 / T-BOOK-018 (F-BOOK-0003 r1): the two-phase widened match applied to spine-join.ts — phase 1 untouched; phase 2 rescues REVIEW bullets only by evidence-based attach (tokens(sub) ⊆ tokens(official), head floor 0.5, reconstituted containment clears the SAME 0.9/0.75 bars), method=widened, deterministic best-wins. Proven: 8/8 unit tests incl. the verbatim p.39 c4 LO box; full-parse census 29 chapters (binding equality 14/29, the 15 non-equal carry EXACTLY the 27 operator widened data repairs, EXTRA=0 everywhere, intersecting provenance 146 codes ZERO method/tier drift; sole disclosed delta 1.18 score 0.611→1.0); api tsc 0; suite 2417/0. Zero DB writes; the census script is the standing orphan-vs-canonical-graph verify.
-- LANE 2 / T-BOOK-017 (glossary validation): 27/27 terms pass V1 schema (contracts zod) / V2 authored-truth canonical / V3 ms-layer / V4 definition-floor; flip of record ONE guarded tx on PRODUCTION — VALIDATED=27. State-preservation law verified: the ingest upsert never touches validation_state (the 27 survived the lane-3 re-upsert, spot-checked).
-- LANE 3 / T-BOOK-016 (c06-c10): 30 blocks authored (7/6/6/4/7; 9 of 11 types; anchors page-true monotonic after two honest re-orders the lint caught), 31 glossary terms in 5 new topic files, 5 mcq checkRefs probe-verified ACTIVE MCQ_SINGLE ×4 options; lint G1-G4 0 across ALL 10 packs / 60 blocks (F-BOOK-0004 fixed: the c10 S1-h→S1-i map bug, caught before first fire); chapter flip u1:c6..c10 (guarded tx) → SCOPED ingest COMMIT 30 blocks + 58 terms (staging dir isolates c01-c05 of-record rows from the upsert's SUGGESTED reset — the isolation law) → 20% spot-check 6/6 GREEN ×4 laws + full-set cheap laws + negative control 0 → pack flip ×30 (v1→2, demo gate re-proven untouched) → serve proof u1:c1..c10 = 7/6/6/5/6/7/6/6/4/7, u1:c11 honest-empty. THE RAIL SERVES THE WHOLE UNIT 1.
-- COW waiver disclosed in the receipt: zero DDL + the same scripts proven byte-identically at golive + per-tx pre/post re-proves; two clean bring-up rollbacks (nonexistent book_chapters.updated_at; documents keyed on id instead of document_id) — fixed before any commit landed, zero partial state.
-- Cred files re-staged 0600 (.prod_url/.neon_pat), inline only; rotation advisories stand.
-
-Stage Summary:
-- Production Neon of record: parent book + 10 chapters (u1:c1..c10) + 60 book_blocks ALL VALIDATED; 58 glossary terms (27 VALIDATED + 31 SUGGESTED, their own future lane); checks resolve to the live bank; the §3 double gate satisfied for the WHOLE Unit 1.
-- Repo of record: spine-join two-phase + tests; c06-c10 packs published; 5 glossary files; lint map fix; findings F-BOOK-0003 (discharged) + F-BOOK-0004 (new, fixed); task yamls + receipts ×3; this append.
-- Open items: (1) the 31 new glossary terms SUGGESTED (validation lane candidate); (2) Units 2-4 packs (plan T-BOOK-011..013) — the engine + playbook now proven end-to-end twice; (3) F-BOOK-0001 LICENSE-DATA.md amendment still gates Phase C; (4) PAT rotation (GitHub + Neon).
-Task ID: 4MB1-QUALITY ocr-repair-run-001-r0 (trace 1a15e7d6114dff35 queue item 1; firing order "Initiate OCR to fix the capture channel")
-Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
-
-Work Log:
-- Root cause of record proven first-hand: 2019-06/4MB1-02R qp.pdf is a 36-page image-only scan (pdftotext = PMT watermarks only) — the band-2 fail-closed withhold produced the honest-empty 0/100 set, the last one in the 4MB1 archive. The blueprint of record had no 02R row for the same reason (QP-footer extraction needs a text layer).
-- Capture repair = OCR SANDWICH, zero LLM: original rasters preserved byte-faithfully + invisible tesseract 5.5.0 text layer (CLI TSV 300dpi, DejaVuSans render_mode=3, margin-window filter x∈[45,545]pt). Dual-pass law: psm3 base (clean columns/footers) + psm6 bbox-isolated recovery (figure-adjacent opener digits Q6/Q9 that psm3 classifies as graphics; junk merges dropped by bbox overlap >30%). Two-pass OCR byte-identical; PDF bytes not rebuild-stable (MuPDF object ids) so the of-record invariant = whitespace-normalized text-layer round-trip (362 lines PASS); canonical sha pinned.
-- Deterministic-grammar interaction fixes found by gate-iteration (not hand-worked): (1) extract_pymupdf covered-line law silently ate Q5/Q7 QP footers swept into pseudo-table regions — added the QP-footer span patch (F2's question-furniture principle); parser suite 18/18 green, A/B-proven identical without the patch; (2) PyMuPDF-internal OCR (v1 try) destroyed the p23 footer — CLI tesseract replaced it (kept as r0_ocr_sandwich.py v1 record).
-- Census of record: QP footers 11/11 {1:8,2:10,3:8,4:14,5:10,6:7,7:10,8:14,9:8,10:5,11:6} sum 100 == cover witness 100 == MS raw layout sequence EXACT. pdflane run_paper (UNMODIFIED grammar) on the sandwich: 11 atoms / 100 marks, V1-V4 PASS, G4/G5/G6 PASS; G1/G2/G3 fail honestly on the MS plane only (Q11 block split into q11+spurious q12, merged-cell class — S2 lane operator-keyed).
-- Record-level repairs under the standing badsum-ruling verdict (RESTORE, evidence-complete): q7 duplicate continuation-reprint part dropped (printed MS grid (a)2 (b)2 (c)1 (d)2 (e)3 = 10 == QP total); q8 part b 4->2 (MS point-sum 14 == QP total EXACT; OCR merged the gf(4) argument bracket). Post-law: all 11 partsSum == totalMarks (0 badSum candidates).
-- Archive: syllabai-pastpapers 2c438f38 pushed no-force (87b6b985..2c438f38) — sandwich qp.pdf (sha 43e05b1d..., original scan d964548f... in git history) + manifest provenance note + parsed/{qp.md,ms.md,questions.json} as-parsed.
-- Bundle: 02r record rebuilt by atoms_to_bank.build_record + spliced (11 q / 40 parts / 100 marks; manifest 1,249->1,260 q, 2,392->2,432 parts, 6,341->6,441 marks; name suffix drops); single-line JSON round-trip assert; every other set byte-identical. Blueprint builder independently corroborated: 2019-06:4MB1-02R row emitted with inferred:[] from the pushed sandwich via pdfjs. Index+blueprints regenerated at tree 2c438f38 (index delta treeSha-only; blueprints +1 row 0 changed — verified).
-- Gates: typecheck x4 rc=0; verify:corpus / flashcard-sync / cie PASS; hub suite 219 pass / 1 fail PROVEN PRE-EXISTING at clean HEAD via A/B stash (order-dependent cla-threads isolation, unrelated plane); next build exit 0.
-- Disclosed residuals: specPointCodes EMPTY on the 40 parts (anchor-pending — the 135b shim excludes them from ingest until an operator-gated anchor round); difficulty null on the bundle plane (bands live on the DB planes); commandWord = parser-extracted only (the 93% fill law not re-run — separate pass, operator-keyed); figure content raster-resident (bundle carries no figure refs by design).
-- Hygiene: PAT inline one-time per operation across 3 repos, URLs scrubbed (0 config token hits), zero DB writes, zero prod writes, zero LLM spend, NEON unused; scrub-assert pass on artifacts.
-
-Stage Summary:
-- The 2019-06 /02R empty set is REPAIRED end-to-end: capture (OCR sandwich, deterministic, two independent consumers corroborate) -> parse (unmodified grammar, 11/100 census exact) -> bundle (evidence-grounded record, 0 badSum) -> blueprint row (no inference gaps). The 4MB1 archive now has 65/65 sets with parsed questions; the remaining open items are the operator-keyed follow-ups (anchor round for the 11 new questions, S2 for the Q11 MS split, commandword fill re-run) — each rides its own lane. The adjacent 2019-06-4mb1-02 font-poisoning lane (ocr-repair-recon-run-001 runbook) is untouched and still open.
-- Receipt: .syllabai/receipts/4MB1-QUALITY/ocr-repair-run-001-r0.json
+- THE TRANCHE-1 LINKAGE IS LIVE ON THE PRODUCTION DB PLANE of record: the 155 T2_near operator verdicts (resources PR #22 aa0b4de1 -> v2 PR #252 -> the PR #255 floor re-base -> the gated run-010) closed the full chain verdicts -> consume -> re-emit -> census re-pin -> gate re-base -> cow-proof -> prod-apply. The CIE servable truth now stands at 6,715 questions / 5,696 part rows / 14,320 options. Remaining operator levers: tranche-2 (the mass-order verdict program, the 16,335-part debt) and tranche-3 (the 1,203-part SME coverage gap) per the anchor-gap census program — each closes through the same chain; the operator's phase-5 plane (QA) is the next gate; PAT rotation CRITICAL-OVERDUE.

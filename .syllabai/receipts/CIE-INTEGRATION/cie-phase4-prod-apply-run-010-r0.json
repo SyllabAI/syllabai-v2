@@ -1,0 +1,46 @@
+{
+  "receipt": "cie-phase4-prod-apply-run-010-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15ef55b189bf51 ('trigger 134c')",
+  "operatorOrder": "fire the 134c re-run — the tranche-1 linkage (155 T2_near verdicts, resources PR #22 aa0b4de1 / v2 PR #252) lands on the production DB plane; the run-009 recipe unchanged, floors re-based",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-21T17:20:00Z",
+  "phase": "TRANCHE-1 LANDED ON THE PRODUCTION DB PLANE of record: run 10 FULLY GREEN end-to-end (cow-proof SUCCESS + prod-apply SUCCESS, identical fleet summaries); the fleet floors GREEN at the re-based post-tranche-1 census of record (6,715 / 5,696); the 134c cycle's tenth run — the tranche-1 landing",
+  "runOfRecord": {
+    "runId": 39623595318,
+    "workflow": "cie-phase4-db-plane.yml @ main 4b22efd (the PR #255 floor re-base merge; cow-proof 240 / prod-apply 300 / the all-green admission law)",
+    "mode": "cow+prod",
+    "dispatchedAt": "2026-10-21T15:12:49Z",
+    "conclusion": "SUCCESS — job 1 (cow-proof) success @ 16:09:25Z (~56.5 min; the fleet on the disposable COW branch off production, floors GREEN at 6,715/5,696, COW dropped + 404-verified); job 2 (prod-apply) ADMITTED by the all-green law and success @ 16:58:12Z (~48.75 min); run completed 16:58:13Z (~105 min total — the pace gain vs run-009's 190 min consistent with the idempotent fleet over an already-populated production baseline)",
+    "timeline": "15:12:49Z dispatched @ 4b22efd (the PR #255 floor re-base merge); census pre-flight GREEN (the orchestrator's computed floor: 6,715/5,696/9,276, raw 19,097/25,663); 15:12:52Z the COW fleet — ALL 45 slugs ok=true, failures 0; 16:09:25Z cow-proof SUCCESS — the admission law opened job 2; 16:09:27Z the PROD fleet — ALL 45 slugs ok=true, failures 0, every real bank with its postverify line and the per-bank drift law 0-mismatch (apply-mode ingest == bundle census per bank, the gate proves it); 16:58:12Z the fleet summary {selected:45, realApplied:37, realSeedOnly:3, stubsSeeded:4, skeletonsSkipped:1, failures:0, questionsIngested:6715, partsIngested:5696, optionsIngested:14320}; both floor steps GREEN (the PR #255 re-based checks — any mismatch exits non-zero); artifacts of record cie4-cow-proof (12360026391) + cie4-prod-apply (12365166123), both read first-hand, summaries byte-equal"
+  },
+  "preDispatchArmOfRecord": {
+    "stalePinCatch": "the tranche-1 re-base (PR #252, c14d4b2) re-based the roster-test floors (apps/api/test/sme/cie-phase4-roster.test.ts -> 6715) but the WORKFLOW floor blocks (both jobs of cie-phase4-db-plane.yml) still checked the pre-tranche census 6599/5618 — a dispatch at that state would honestly-red at the floor step AFTER the ~112-min COW fleet; PR #255 re-based both blocks to 6715/5696 (package-shape 9,276 disclosed; raw 19097/25663 unchanged; citation inline) per the fa7ede6/0c8892d precedent — the floors move WITH the census of record, re-based not loosened",
+    "armStateVerifiedFirstHand": "the zero-DB census (scripts/census_per_slug.ts, bun, no DB contact) at the dispatch ancestry reproduced the re-pinned census of record EXACT: expQ 6,715 / part-ROW 5,696 / pkg 9,276 / raw 19,097 q / 25,663 parts (the cie-tranche1-t2near-run-001-r0 figuresAfter; +116 == unmapped -116 per-slug arithmetic of record)",
+    "orchestratorUnchanged": "the fleet floors stay COMPUTED from the roster at runtime (the 0c8892d law, never hardcoded); validate_cie_bundles.ts CIE_PIN already aa0b4de1; raw floors unchanged in ci.yml",
+    "raceGuards": "main moved c2388bc -> 36d7294 mid-lane (worklog-only, the T-MIG-136 restore-verification append) — rebased clean, zero phase-4 contact; second race-guard at push: main stayed 36d7294",
+    "prOfRecord": "PR #255 (cie-phase4/floor-rebase-r0 @ 992ee66, base 36d7294): checks verify+hub SUCCESS; self-merged (merge commit, descriptive title) -> main 4b22efedd4e6; the dispatch fired at the merged tip"
+  },
+  "expectedLandingOfRecord": {
+    "floors": "questions 6,715 / part-ROW 5,696 (the post-tranche-1 census of record) — options expected to move with the +116 question-level admissions",
+    "perSlugDelta": "business-23 +41 / chemistry-25 +23 / sdv-chem +15 / biology-25 +13 / physics-23 +7 / cs-23 +6 / combined-bio +4 / physics-25 +4 / combined-chem +3 questions (the tranche-1 delta arithmetic of record)",
+    "idempotencyPosture": "run-009's production state is the baseline: the 36 unaffected real banks re-serve identical counts (the run-005 no-op class), the 9 affected banks gain their new linkage rows via the ADR-026 evidence-safe replace"
+  },
+  "productionStateOfRecord": {
+    "fleetSummary": "{selected:45, realApplied:37, realSeedOnly:3, stubsSeeded:4, skeletonsSkipped:1, failures:0} — identical on BOTH planes (COW == PROD, artifacts read first-hand)",
+    "questions": "6,715 active CIE questions (run-009: 6,599 -> +116 EXACTLY the tranche-1 prediction, the lane-side per-slug arithmetic of record hit)",
+    "parts": "5,696 part rows (run-009: 5,618 -> +78 EXACTLY the re-pinned part-ROW delta)",
+    "options": "14,320 option rows (run-009: 14,084 -> +236, the option-class emissions of the +116 newly-admitted questions)",
+    "perSlugLandedOfRecord": "the 9 affected banks now serve the tranche-1 linkage (ingest == bundle census per bank, the apply-mode drift law proves it, failures 0): cie-igcse-business-23 96 q / cie-a-level-chemistry-25 252 q / cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry 251 q / cie-a-level-biology-25 910 q / cie-igcse-physics-23 634 q / cie-igcse-computer-science-23 231 q / cie-igcse-science-combined-science-23-biology 13 q / cie-a-level-physics-25 409 q / cie-igcse-science-combined-science-23-chemistry 13 q",
+    "idempotencyProven": "the 36 unaffected real banks re-served identical counts (the run-005/009 no-op class); the seed-only trio (econ-25 / english-language-20/25), the 4 stubs and the 1 skeleton arrived honest-empty unchanged"
+  },
+  "writeLedger": {
+    "production": "the tranche-1 linkage of record (+116 questions / +78 part rows / +236 options over the run-009 baseline) — the second gated production write of the phase-4 plane, receipted end-to-end",
+    "repo": "PR #255 merged of record (the floor re-base + worklog claim, main 4b22efd); this receipt + worklog append; artifacts cie4-cow-proof + cie4-prod-apply of record"
+  },
+  "nextAct": {
+    "onGreen": "the anchor-gap follow-up continues per the census receipt's program: tranche-2 (the mass-order verdict program: chemistry-25 1,336 / physics-25 1,279 / pure-3 1,273 / intl-maths-23-extended 1,243 ...) and tranche-3 (the 1,203-part SME coverage gap) remain OPERATOR-GATED; the operator's phase-5 plane (QA) is the next gate",
+    "hygiene": "the GitHub PAT rotation remains CRITICAL-OVERDUE (fingerprint a8ccee736aa8c75b, transited chat twice) — operator-keyed"
+  },
+  "hygiene": "zero secret values in any file/log/receipt; the dispatch PAT extracted from the remote URL bash-inline, bearer-only, never printed/persisted; zero sandbox DB contact (all fleet evidence from the CI logs of record); fetch-first, no force"
+}
