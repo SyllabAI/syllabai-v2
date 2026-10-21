@@ -10951,3 +10951,18 @@ Work Log:
 
 Stage Summary:
 - The 2019-06-02 OCR repair lane is RECON-CLOSED and execution-ready: damage quantified, root cause proven upstream, vision method proven, aligner workbench + runbank filed; the repair itself rides the next session on the better capture pass.
+
+---
+
+Task ID: T-MIG-138 run-006 (operator re-key trace 1a15ec72cb7ccd59 — PRE-WINDOW STAND-DOWN + residual-95 rebuild + window re-arm)
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b)
+Task: honor the operator re-key against the armed drain recipe (run-004 + addendum-1 + run-005 next_drain law); rebuild the 95-row residual of record (r1c lane-side rows files lost to the container-reset class); make the window fire turnkey.
+
+Work Log:
+- GATES MEASURED: GitHub-authoritative 14:16:25Z Oct 21 — PRE-WINDOW (RPD reset 07:00Z Oct 22, fire_at 07:05Z; current quota day already spent by run #10 at 08:45Z, healthy shards walled ~40 rows/key). STAND-DOWN per the recipe's window law + the direct precedent (trace 1a15bc876ad9acf5 pre-window stand-down). PAT re-verified: fp16 a8ccee736aa8c75b GET /user 200 login SyllabAI id 309817640. No-duplicate baseline intact: latest run #10 39571684429 (08:45Z, failure = honest shard-4 403 red), total 10, zero runs after.
+- RESIDUAL-95 REBUILT OF RECORD from public artifacts (the documented recovery path): run #9 39438132654 t138-prod-apply backfill-row-ids.txt (216, comma-joined 7991B) + run #10 39571684429 shard artifacts skipped-rows-{1,2,3} (14/14/13) + round-robin rows[3::4] law (shard-4 slice 54). Invariants GREEN: 95/95 unique subset of the 216, composition 14+14+13+54, slice4[0]==58eb84b9-730e-4cb0-a3e6-825bf35474cf (run-005 ledger pin), 3514B size pin, shard summaries cross-check 40/40/41 embedded. Artifact: scripts/t138-drain-rows-residual-95.txt lane-side, fp16 5eb6076e5b81e835, recency-first order preserved.
+- RE-ARM (law-gated, lane-side): t138-drain-fire.sh — rows integrity gate + window gate (GitHub Date header; refuses pre-window rc=3 unless FORCE=1 on explicit operator order) + no-duplicate gate (>=06:00Z Oct 22 refuse rc=4) + ONE dispatch mode=backfill-sharded rows=residual-95 ref=main; gate self-test LIVE: STAND-DOWN rc=3 at 14:21:03Z, dispatch leg never reached; one self-test-only counting bug (wc -l on comma-joined data) caught by the gate and fixed pre-wire. Waiter class NON-VIABLE here: armed twice (nohup 1309 / setsid 1388), exec-boundary reaper killed both — the run-004 fragility class realized without a reset; fallback of record = the operator's first re-key at/after 07:00Z Oct 22 -> any lane runs t138-drain-fire.sh (single command, gates refusable).
+- Write ledger: wire acts READ-ONLY (GETs + artifact downloads); zero dispatch / prod / DB / Neon / LLM contact; secrets fp16-only; this receipt + worklog entry = the .syllabai-only push (auto-bake consequence disclosed).
+
+Stage Summary:
+- T-MIG-138 drain re-armed for the 07:00Z/07:05Z Oct 22 window with the 95-row residual rebuilt byte-law-exact from public artifacts; window fire is one law-gated command on the next operator re-key; projection unchanged (1-2 further windows at ~40/key walls; op#4/op#1 pool keys operator-keyed; PAT rotation CRITICAL standing).

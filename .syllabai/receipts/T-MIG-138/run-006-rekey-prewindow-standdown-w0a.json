@@ -1,0 +1,33 @@
+{
+  "receipt": "T-MIG-138/run-006-rekey-prewindow-standdown-w0a.json",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b, trace 1a15ec72cb7ccd59)",
+  "operator_order": "re-key (trace 1a15ec72cb7ccd59) — the operator re-key signal of the armed T-MIG-138 drain recipe (run-004-drain-arm + addendum-1 + run-005 next_drain law: the residual fires at the RPD reset window on operator re-key, recipe identical)",
+  "decision": "STAND DOWN — PRE-WINDOW, per the armed recipe's own window law and the direct precedent (trace 1a15bc876ad9acf5: pre-window re-key stood down correctly, fire path re-verified). The window of record is the gemini-embedding-001 RPD reset (midnight Pacific, PDT=UTC-7): 07:00Z Oct 22, fire_at 07:05Z. The current quota day (opened 07:00Z Oct 21) was already spent by run #10 (08:45Z: healthy shards walled at ~40 rows/key). A pre-window fire would be a zero-yield honest red against a spent day.",
+  "gates_measured": {
+    "server_time": "Wed, 21 Oct 2026 14:16:25 GMT (GitHub Date header authoritative) — 16h44m pre-window",
+    "pat_identity": "fp16 a8ccee736aa8c75b re-verified: GET /user 200 -> login SyllabAI, id 309817640 (the credential of record, unrotated — rotation advisory standing)",
+    "no_duplicate_acts": "latest t-mig-138-intake run = #10 39571684429 (created 2026-10-21T08:45:25Z, completed failure = the honest shard-4 403 red of record); zero runs created after run #10; total_count 10 — baseline intact",
+    "artifacts_alive": "run #9 39438132654 t138-prod-apply (id 12274622604, 20923B) + run #10 shard artifacts t138-backfill-shard-1..4 (ids 12332824376/12333084098/12333047844/12332188675), none expired — the rebuild path of record is LIVE"
+  },
+  "residual_rebuild_of_record": {
+    "law": "run-005 drain arithmetic: residual = 41 skipped-honest (shards 1-3) + 54 shard-4 unattempted slice (round-robin rows[3::4] of the 216 input, 0-indexed positions 3,7,...)",
+    "rebuild": "deterministic from public artifacts via scripts/t138-rebuild-residual.py: run #9 backfill-row-ids.txt (216, comma-joined single line 7991B) + run #10 skipped-rows-{1,2,3}.txt (14/14/13, newline-per-row)",
+    "invariants_green": "95/95 unique; subset of the 216; composition 14+14+13+54; shard-4 slice[0] == 58eb84b9-730e-4cb0-a3e6-825bf35474cf (the run-005 shard-ledger pin); serialized 3514B == the run-005 lane-side size pin; shard-summary cross-checks 40/40/41 embedded wall=1 skipped 14/14/13",
+    "artifact": "scripts/t138-drain-rows-residual-95.txt (lane-side, fp16 5eb6076e5b81e835) — original-216 recency-first order preserved through the round-robin re-shard",
+    "provenance_disclosure": "the r1c lane-side rows files are gone from this sandbox (container-reset class, as the run-004 fragility disclosure anticipated); this rebuild is the documented recovery path — any lane regenerates byte-identical rows from the public artifacts"
+  },
+  "re_arm": {
+    "fire_machinery": "scripts/t138-drain-fire.sh (reconstructed; law-gated): rows integrity gate (3514B/95 pin), window gate on the GitHub-authoritative Date header (refuses pre-window rc=3 unless FORCE=1 on explicit operator order), no-duplicate gate (refuses if any run created >= 06:00Z Oct 22 rc=4), then ONE dispatch mode=backfill-sharded rows=residual-95 ref=main (204 expected) — dispatch note carries the arming trace 1a15ac054f484b0d + re-key trace 1a15ec72cb7ccd59",
+    "gate_self_test": "pre-window invocation STAND-DOWN rc=3 observed live at 14:21:03Z (dispatch leg never reached); an early rows-count off-by-one in the self-test (wc -l vs grep -c on comma-joined data) was caught by the gate and fixed before any wire act",
+    "waiter_nonviable_disclosure": "the run-004 waiter class was armed twice (nohup pid 1309; setsid pid 1388) and killed at the agent-exec boundary BOTH times — this sandbox reaps backgrounded processes between tool invocations, i.e. the documented fragility class realized WITHOUT a full reset. The window fire therefore rides the sanctioned fallback: the operator's first re-key at/after 07:00Z Oct 22 -> any lane executes scripts/t138-drain-fire.sh (law-gated, one command); the no-duplicate + window gates make a double-fire refusable",
+    "window_projection": "unchanged from run-005: at ~40-row walls per healthy key the 95-row residual projects to 1-2 further windows; op#4 (shard-4 key) still 403-dead and op#1 anomaly OPERATOR-KEYED (GitHub secrets unreadable by design — if the operator re-keyed the pool, the window run reveals it empirically via shard outcomes)"
+  },
+  "write_ledger": "wire acts READ-ONLY this window (GETs + artifact downloads + artifact-unpack; zero dispatch, zero prod/DB/Neon/LLM contact, zero code/content); lane-side persisted: t138-fetch-artifacts.sh, t138-rebuild-residual.py, t138-drain-fire.sh, t138-drain-waiter.sh, t138-drain-rows-residual-95.txt; repo-side: this receipt + the .syllabai/worklog.md entry, .syllabai-only commit, fetch-first, no force; secrets never printed (fp16 only); push auto-bakes the hub (git-linked consequence law, disclosed — .syllabai-only diff)",
+  "residuals_of_record_unchanged": [
+    "T-MIG-138 95-row residual — fires at the 07:00Z/07:05Z Oct 22 window on operator re-key (fallback: scripts/t138-drain-fire.sh, law-gated)",
+    "op#4 403-dead + op#1 walled-anomaly pool keys — operator-keyed",
+    "PAT rotation standing CRITICAL overdue (GH a8ccee736aa8c75b + Vercel d254bbfaac004354 both unrotated)",
+    "t0_readonly INSERT-on-knowledge_nodes revoke + neondb_owner API-fresh URI revocation — operator-gated",
+    "hub auto-bake watch for 2f9b0e8 and for this receipt push (non-blocking, .syllabai-only)"
+  ]
+}
