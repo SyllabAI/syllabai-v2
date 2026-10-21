@@ -184,9 +184,9 @@ jobs:
           if [ -z "$SLUGS" ]; then
             Q=$(jq -r '.summary.questionsIngested' cie4-cow-receipt.json)
             P=$(jq -r '.summary.partsIngested' cie4-cow-receipt.json)
-            echo "fleet floors: questions=${Q} parts=${P} (the part-ROW law of record 6599 / 5618 — the census mirrors the frozen MIXED emission: option-bearing parts emit as MCQ question rows, not part rows; the package-shape 9,139 stays disclosed; raw 19097/25663)"
-            [ "$Q" = "6599" ] || { echo "::error::questions != the servable census of record"; exit 1; }
-            [ "$P" = "5618" ] || { echo "::error::parts != the servable census of record"; exit 1; }
+            echo "fleet floors: questions=${Q} parts=${P} (the part-ROW law of record 6715 / 5696 — the census mirrors the frozen MIXED emission: option-bearing parts emit as MCQ question rows, not part rows; the package-shape 9,276 stays disclosed; raw 19097/25663 — the tranche-1 re-pin of record, cie-tranche1-t2near-run-001-r0 / PR #252: the workflow floors follow the census, re-based not loosened, the fa7ede6/0c8892d precedent)"
+            [ "$Q" = "6715" ] || { echo "::error::questions != the servable census of record"; exit 1; }
+            [ "$P" = "5696" ] || { echo "::error::parts != the servable census of record"; exit 1; }
           fi
           echo "COW receipt floors GREEN"
       - name: Upload the COW proof artifact
@@ -272,9 +272,9 @@ jobs:
           if [ -z "$SLUGS" ]; then
             Q=$(jq -r '.summary.questionsIngested' cie4-prod-receipt.json)
             P=$(jq -r '.summary.partsIngested' cie4-prod-receipt.json)
-            echo "fleet floors: questions=${Q} parts=${P} (the part-ROW law of record 6599 / 5618 — the census mirrors the frozen MIXED emission: option-bearing parts emit as MCQ question rows, not part rows; the package-shape 9,139 stays disclosed; raw 19097/25663)"
-            [ "$Q" = "6599" ] || { echo "::error::questions != the servable census of record"; exit 1; }
-            [ "$P" = "5618" ] || { echo "::error::parts != the servable census of record"; exit 1; }
+            echo "fleet floors: questions=${Q} parts=${P} (the part-ROW law of record 6715 / 5696 — the census mirrors the frozen MIXED emission: option-bearing parts emit as MCQ question rows, not part rows; the package-shape 9,276 stays disclosed; raw 19097/25663 — the tranche-1 re-pin of record, cie-tranche1-t2near-run-001-r0 / PR #252: the workflow floors follow the census, re-based not loosened, the fa7ede6/0c8892d precedent)"
+            [ "$Q" = "6715" ] || { echo "::error::questions != the servable census of record"; exit 1; }
+            [ "$P" = "5696" ] || { echo "::error::parts != the servable census of record"; exit 1; }
           fi
           echo "PROD receipt floors GREEN"
       - name: Upload the prod apply artifact
