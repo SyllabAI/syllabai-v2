@@ -1,0 +1,53 @@
+{
+  "receipt": "run-005-union-v090-refix-db-failclosed-r0",
+  "lane": "ADR-037 v0.7 per-point re-apply",
+  "trace": "1a15fe1207c34329",
+  "operatorOrdersExecuted": [
+    "path 1 — fix (trace 1a15fc4a3676c085, execution turn)",
+    "credential one-shot re-stage (this turn: GitHub PAT + Neon PAT)"
+  ],
+  "credentialOneShotOfRecord": {
+    "githubPAT": { "fingerprint16": "a8ccee736aa8c75b", "consumed": "push b536b2cc..0776f8de via in-session env credential helper; value never printed, never persisted, never embedded in a remote URL" },
+    "neonPAT": { "fingerprint16": "4c2e12da872b6959", "consumed": "users/me + projects list ATTEMPTED — blocked at DNS before any request authenticated" },
+    "exposureNote": "fresh GitHub PAT provisioned by the operator this turn (the long-overdue rotation executed); its chat exposure count starts at 1",
+    "notProvided": "SEED_DATABASE_URL (the production pooler connection string) — the run-003 B2 class credential — absent from this turn's one-shot"
+  },
+  "unionResolveOfRecord": {
+    "what": "origin/main advanced 4c4e1bf7 -> b536b2cc (7 sibling commits) while bd6978e2 was push-blocked; among them d6dbebd2 (PR #268, ADR-037 v0.9.0) re-exported the SAME 32 official sets WITHOUT the path-1 wiring — all 32 sets back on the shared 'official-past-papers' topicSlug",
+    "rootCauseOfRecurrence": "the resources-pipeline export generator does not carry the per-paper slug law; every re-export re-breaks the namespace until the generator adopts it — export-lane debt, flagged NOT fixed (converter law: this lane wires content, never authors the generator)",
+    "resolution": "rebase onto b536b2cc keeping v0.9.0 content wholesale + re-applied the 32-field surgical fix (scripts/adr037_path1_refnamespace_fix.py guard law re-run clean); field-by-field merge proof: 60/60 sets, exactly 32 topicSlug diffs, topicSlug==slug on all 32, zero other fields touched, zero shared-slug sets remaining",
+    "commitOfRecord": "0776f8de (amended claim-in-first-commit; local-only amend before push — never force)"
+  },
+  "v090ContentAdvanceOfRecord": {
+    "what": "the 2C tranche gained spec labels (manifest note: first 2C spec-label wave, 607/607 parts resolved, 584 tagged / 23 terminal no-spec-point) + F39/F40 ledger/crop fixes",
+    "materialDeltas": {
+      "unmapped": "111 -> 1",
+      "admitted_questions": "688 -> 798 (official base refs 165 -> 275; topic plane 523 unchanged)",
+      "options": "1136 -> 1244",
+      "per_point_rows": "1381 -> 2362",
+      "mark_point_rows_expected_at_apply": "2864 -> 3867"
+    },
+    "invariants": "g7 sum-law violations 0, dupOrder 0, package-global ref injectivity re-proven on the v0.9.0+fix bytes, topic plane byte-identical (the live 602 ground — B2 survivors-0 chain preserved by identity)",
+    "censusOfRecord": "scripts/adr037_reapply_census_result.json (v0.9.0+fix; 60 sets, raw 803q/2941p, emitted 1210 refs)",
+    "gatesReRun": "bundle-questions 25/25 (re-pinned to the v0.9.0 census: {questions 798, parts 2932, options 1244, sets 60, unmapped 1, badSum 4, dupOrder 0}), smeRef 14/14, apps/api tsc clean"
+  },
+  "docOfRecord": "docs/ADR-037-OFFICIAL_PAPERS_WIRING.md amendment r1 appended (the re-break event + supersedence, append-only)",
+  "manifestFindingResolution": "run-004's cross-lane finding 'manifest stale' RESOLVED by d6dbebd2's own v0.9.0 manifest bump (generatedUtc 2026-10-21T18:58:14Z, importSource main@89260832044566c1967811f6b40b892aad0b2c08); content pins of record: questions 9776a8c6c4862d42, curriculum bf510c697af4e450 (unchanged)",
+  "dbPlaneFailClosedOfRecord": {
+    "what": "B2 re-probe + real --dry-run NOT executed this turn — zero DB statements of any kind fired",
+    "why": "SEED_DATABASE_URL absent from the one-shot; the Neon CONTROL plane is DNS-blocked from this sandbox (api.neon.tech no-resolve — the register egress block confirmed live), so the PAT cannot self-serve a connection URI or provision the COW route; the DATA plane resolves (pg.neon.tech OK) but is unusable without the project-specific host+password",
+    "posture": "fail-closed by design — the lane does not proceed to the DB plane on assumed credentials; B3 --apply remains behind the explicit operator green-light AND a live re-probe + dry-run at execution time",
+    "unblockPath": "one-shot the production pooler connection string (SEED_DATABASE_URL class) at the next execution turn; probe + dry-run + (on green-light) apply then fire in that order"
+  },
+  "pushOfRecord": "b536b2cc..0776f8de main -> main, ls-remote verified origin/main == 0776f8de",
+  "killListState": {
+    "deactivateSlice": "UNCHANGED (live-prefix census 602, stable by topic-plane identity)",
+    "insert": "full v0.9.0+fix package under the per-paper refs through the REAL --apply; expected 3867 mark_point rows (2362 per-point) — NUMBERS ONLY; execution stays behind green-light + live dry-run"
+  },
+  "register": [
+    "export-lane generator debt: per-paper slug law must move into the resources export generator (every re-export re-breaks the namespace until then)",
+    "hub-join legacy branch: post-B3 live-behavior ruling needed (standing)",
+    "Neon control-plane egress block: standing (COW route unusable from this sandbox)",
+    "psycopg2 sandbox wipe recurrence #4 (reinstalled psycopg2-binary 2.9.13 this turn)"
+  ]
+}
