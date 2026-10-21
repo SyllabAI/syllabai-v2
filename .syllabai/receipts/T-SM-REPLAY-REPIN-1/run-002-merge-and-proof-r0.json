@@ -1,0 +1,39 @@
+{
+  "task": "T-SM-REPLAY-REPIN-1",
+  "band": "golden-corpus repair — closure run",
+  "title": "run-002: PR #280 merged on operator order; neon-replay run #53 proves the instrument repaired AND closes the T-TEACH-003 stage-5b residual — 222/223 union PASS, the first healthy union since run #48",
+  "operator_order": "\"merge #280\" (trace 1a1606df17bde6fd, session web-590847c1-cf63-4098-b0c8-a90085355429) — executes the ruling of trace 1a16041a4ba7a509 (repair option (a)) through to its proof",
+  "date": "2026-10-22",
+  "agent": "zai-web lane (main agent, session web-590847c1)",
+  "merge": {
+    "pr": 280,
+    "head": "216eedea19ad5687d55a50d11828e063cdee89e1 (t-sm-replay-repin-1/corpus-repin)",
+    "squash_commit": "4d97482a8b813f576b4858066f0733add305ccd0",
+    "three_way_verified": "local == origin == GitHub API at 4d97482a",
+    "branch_deleted": "t-sm-replay-repin-1/corpus-repin deleted both sides",
+    "ci_at_merge": "hub success; verify failure — NON-ATTRIBUTION proven first-hand from both job logs: PR head and main @ 1f7aed2e carry the BYTE-IDENTICAL failure (the PR #279 fleet bump's 'bundle TOPIC cie-igcse-history-2024-2026-TS4L does not carry the official -T tail' throw) and identical counts (2482 pass / 13 skip / 1 fail / 1 error / 21089 expect()); main red on 5 consecutive commits since the PR's base e024c11c — the lane's 'merge when main verify heals' re-arm condition was superseded by the operator order, with the blockage provably foreign",
+    "diff_fidelity": "5 files +47/−2: t51-seed.sql (header amendment + edgeless SPEC_POINT nodes …040/…050), t51-corpus.zip (the two 'a' re-anchors), both sme-ingest cases (justified:true, expects byte-unchanged), receipt run-001 — exactly the ruled shape, nothing else"
+  },
+  "proof_run": {
+    "run_id": 39681932560,
+    "run_number": 53,
+    "trigger": "workflow_dispatch @ 4d97482a (the merge commit), dispatched immediately post-merge per the receipt-of-record next field",
+    "duration": "72 s (vs the crash class: #51/#52 died pre-verdict with 2286 B artifacts; #53 produced the full 5-file artifact set incl. seed.json 27.8 kB + union.md)",
+    "guard_trace": "assert_spec_point_anchor mentions in boot-seed.log: 0 — the G4 trigger never fired; both staged SPEC_POINT-anchored INSERTs accepted",
+    "union": "222/223 PASS — seed 208/208; prod 14/15",
+    "instrument_repair_closed": "both re-pinned cases PASS in the seed posture: w3-sme-ingest-rich-200, w3-sme-ingest-replace-rich-200 (verified per-case in seed.json; w3-sme-ingest-unauthed-401 also PASS) — the staging-crash class (runs #51, #52) is CLOSED of record; the nightly 02:30Z cron resumes producing verdicts",
+    "stage_5b_residual_closed": "the marking rich-200 quartet ALL PASS and absent from the union fail list: w3-teacher-marking-answers-rich-200, w3-teacher-marking-answers-paged-rich-200, w3-teacher-marking-queue-v2-rich-200, w3-teacher-marking-throughput-rich-200 (plus all six marking unauthed-401 guards PASS) — the T-TEACH-003 stage-5b projection proof (scoped read == captured global read under stage-5b enrollment coverage) is CLOSED of record on the real Neon wire, exactly per the one-replay criterion filed in t-teach-003-stage-5b-replay-proof-r0.json"
+  },
+  "the_one_prod_failure": {
+    "case": "content-docs-teacher-realdata-200 (prod as-cowed realdata posture)",
+    "shape": "status 200 == 200; body mismatch — live prod serves a qcard-4MA1-2HR-JUN-2026.txt EXTERNAL_QUESTIONS document where the frozen capture pinned an ms.pdf MARK_SCHEME document — PRODUCTION DATA DRIFT between capture date and now, not a code or re-pin regression",
+    "disposition": "filed for R0/R6 per the union header's standing rule (failures are filed, never auto-fixed); unrelated to the re-pin (the case does not touch spec-point mappings or the marking surfaces)"
+  },
+  "main_ci_note": "verify remains red at main @ 4d97482a via the SAME fleet-bump TS4L throw (unchanged, CIE lane's fence, actively iterating); the replay check on the merge commit reads 'failure' solely from the 1-case realdata drift — both documented so the red is not misattributed",
+  "residuals": [
+    "the fleet-bump TS4L main-red stays OPEN with the CIE lane (not this lane's fence)",
+    "content-docs-teacher-realdata-200 filed for R0/R6 (realdata drift refresh or re-capture decision)",
+    "standing operator reminder: revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law"
+  ],
+  "next": "instrument of record is healed; the standing nightly cron produces verdicts; stage-5b closure noted on the T-TEACH-003 ledger; no further action queued in this band"
+}

@@ -11821,3 +11821,19 @@ Work Log:
 
 Stage Summary:
 - The maths-b DB planes of record now reconcile EXACTLY to the repaired bundle emission: 1,250 active (bands {2:303,3:787,4:160}, sources AI 1,192 + DEFAULT 58), qv mirror per-row 0 mismatches, content byte-exact, evidence-safe history preserved. Residuals: anchor round (20 unmapped rows -> small re-ingest after), AI classification round for the 58 (+20) DEFAULT rows, commandWord fill re-run, 3 image-only archive pages.
+
+---
+Task ID: T-SM-REPLAY-REPIN-1 run-002 (operator order trace 1a1606df17bde6fd — "merge #280")
+Agent: zai-web lane (main agent, session web-590847c1-cf63-4098-b0c8-a90085355429)
+
+Work Log:
+- MERGE EXECUTED ON OPERATOR ORDER: PR #280 squash-merged as 4d97482a (head 216eedea); three-way verified (local == origin == API); head branch deleted both sides. The run-001 re-arm condition ("merge when main verify heals") was superseded by the operator order with NON-ATTRIBUTION proven first-hand: PR head and main @ 1f7aed2e carry the byte-identical PR #279 fleet-bump TS4L tail throw and identical counts (2482 pass / 13 skip / 1 fail / 1 error / 21089 expect()); main red 5 consecutive commits since the PR's base e024c11c. Merge diff fidelity checked: exactly the ruled 5-file shape (+47/−2), nothing else.
+- PROOF DISPATCHED IMMEDIATELY: neon-replay run #53 (39681932560, workflow_dispatch @ 4d97482a) — completed in 72 s with the FULL artifact set (seed.json 27.8 kB + union.md present — the crash class died pre-verdict with 2286 B; #51/#52 class CLOSED). assert_spec_point_anchor mentions in boot-seed.log: 0 — the G4 guard accepted both staged inserts.
+- UNION VERDICT 222/223 PASS (seed 208/208; prod 14/15), per-case verified in seed.json: BOTH re-pinned cases PASS (w3-sme-ingest-rich-200, w3-sme-ingest-replace-rich-200) = the instrument repair closes of record; the marking rich-200 quartet ALL PASS and absent from the union fail list (w3-teacher-marking-{answers,answers-paged,queue-v2,throughput}-rich-200 + all six marking unauthed-401 guards) = the T-TEACH-003 stage-5b projection residual closes of record on the real Neon wire, exactly per the one-replay criterion filed at watch #52.
+- THE ONE PROD FAILURE DISPOSITIONED: content-docs-teacher-realdata-200 — 200 == 200 but body drift: live prod serves a qcard-4MA1-2HR-JUN-2026.txt EXTERNAL_QUESTIONS doc where the frozen capture pinned an ms.pdf MARK_SCHEME doc = production data drift between capture and now; filed for R0/R6 per the union's standing rule; unrelated to the re-pin or the marking surfaces.
+- Bookkeeping: receipt .syllabai/receipts/T-SM-REPLAY-REPIN-1/run-002-merge-and-proof-r0.json + this entry, direct-main, fetch-first, no force. PAT hygiene maintained (remote URL tokenless between operations, GH_TOKEN unset, literal scans 0 tree / 0 history).
+
+Stage Summary:
+- THE OPERATOR'S RULING IS EXECUTED END-TO-END AND PROVEN: re-pin merged (4d97482a) -> run #53 -> instrument repaired (sme-ingest pair PASS, staging crash class closed, the nightly 02:30Z cron resumes producing verdicts) AND stage-5b closed (marking quartet PASS under stage-5b enrollment coverage — scoped read == captured global read).
+- Still red and NOT ours: main verify via the PR #279 fleet-bump TS4L throw (CIE lane actively iterating); content-docs-teacher-realdata-200 filed for R0/R6 (realdata drift).
+- Standing reminder: the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law.
