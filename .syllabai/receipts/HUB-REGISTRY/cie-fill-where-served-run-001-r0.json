@@ -1,0 +1,47 @@
+{
+  "receipt": "HUB-REGISTRY/cie-fill-where-served-run-001-r0",
+  "family": "HUB-REGISTRY",
+  "operatorTrace": "1a15dbaad30a6cc1 ('CIE registry fill audit (onGreen's on-the-spot obligation)') executing the run-009 nextAct.onGreen + the fill-4ph1 nextAct.operator mandate ('on the next CIE phase-4 dispatch success, re-run this audit for the 45 CIE rows against the run receipt's seeded cv codes')",
+  "operatorOrder": "the CIE registry fill audit — the onGreen obligation of the run-009 landing (run 39543834994 FULLY GREEN: cow-proof SUCCESS + prod-apply SUCCESS, the CIE fleet on production receipted end-to-end); the HUB-REGISTRY fill-where-served law over the 45 CIE rows",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-21T09:35:00Z",
+  "mandate": {
+    "scope": "apps/hub/content/courses.json (schema syllabai-demo.course-registry/1.1) — the 45 Cambridge International rows; the hub-maintained slug → core curriculum_versions.code mapping consumed by /tutor?course=<slug> (scope.ts resolveForCourse, exact-ACTIVE-CODE)",
+    "fillWhereServedLaw": "a row earns curriculumCode iff an ACTIVE curriculum_versions row with a serving corpus exists on the DB of record, evidenced by receipts (ADR-030: never invent); the mapping must be the EXACT of-record code — the seed's cv law bundle.code + '-' + syllabusVersion (apps/api/src/services/curriculum/bundle-seed.ts:347), identical to the run-009 receipt's statement",
+    "coreBridge": "INTENTIONALLY ABSENT on all 45 CIE rows — operator-keyed per the run-009 nextAct ('coreBridge operator-keyed absent this act'), mirroring the T-MIG-136 maths-b / 4PH1 laws; the only coreBridge carriers of record remain the two 4MA1 maths-a rows (true), untouched"
+  },
+  "auditOfRecord": {
+    "method": "ZERO-DB evidence chain (the hygiene law — no sandbox/prod DB contact): the run-008 audit tool (scripts/census_per_slug.ts → loadRoster, bun, no DB) re-run at the origin tip reproduces the fleet census of record EXACT — expectedQuestions 6,599 == fleet questionsIngested 6,599; part-ROW law 5,618 == fleet partsIngested 5,618; package 9,139 == the census pin; raw 19,097 q / 25,663 parts == the phase-3 bundle counts",
+    "classLaw": "cie-phase4-apply.ts roster classes × the fleet verdicts of run-009: real + expectedQuestions>0 → realApplied (seed + ingest, postverified per bank); real + expectedQuestions==0 → realSeedOnly (seed only — 0 spec-anchored of raw); stub (official-spine tree, 0 question sets) → stubsSeeded (seed only, EQ honest-empty by construction); skeleton (0 nodes AND 0 question sets) → skeletonsSkipped — the fleet's own skip law ('nothing to seed or ingest'), NO cv row of record",
+    "verdictCensus": "45 rows = realApplied 37 + realSeedOnly 3 (cie-igcse-economics-25 0455-2027-2029, cie-igcse-english-language-20 0500-2024-2026, cie-igcse-english-language-25 0500-2027-2029 — the EQ axis honestly empty, 0 spec-anchored of 625/9/30 raw) + stubsSeeded 4 (cie-a-level-accounting-21 9706-2023-2025, cie-a-level-economics-23 9708-2023-2025, cie-as-english-general-paper-21 8021-2028-2030, cie-igcse-accounting-25 0452-2027-2029) + skeletonsSkipped 1 (cie-a-level-maths-20-pure-2, the D1 skeleton, sme-native, 0/0)",
+    "servingPosture": "all 44 non-skeleton rows carry an ACTIVE curriculum_versions row + the official-spine tree (bundle-seed law: nodes + structure edges land VALIDATED; the CLA/tutor validation gate serves VALIDATED nodes — the KG arm serves); the 37 realApplied rows additionally serve the EQ arm (6,599 spec-anchored questions / 5,618 part rows / 14,084 option rows on production of record, run-009 floors GREEN)",
+    "optionAJoinProof": "the filled set's shared curriculumCodes are EXACTLY the six shared subject roots of the optionA tree of record — 9709-2023-2025 ×5, 0460-2025-2026 ×2, 0580-2025-2027 ×2, 0607-2025-2027 ×2, 0973-2025-2027 ×3, 0653-2023-2024 ×3 (17 rows sharing 6 version-scoped namespaces; 27 rows unique) — 9709 at 5 not 6: pure-2 the skipped skeleton. The version-scoped namespace law (ruling A) is what lets two 0452 rows carry DIFFERENT codes (0452-2023-2025 / 0452-2027-2029) and the 9709 siblings share ONE root — the graft class stays ABSENT"
+  },
+  "fillOfRecord": {
+    "rows": "44 CIE rows += \"curriculumCode\": \"<code>-<syllabusVersion>\" (the exact of-record code, manifest-derived); the registry note field left byte-identical (stale-by-many, disclosed — the 136/4PH1 minimal-diff law)",
+    "notFilled": "cie-a-level-maths-20-pure-2 stays UNMAPPED — the fleet skipped it (zero curriculum nodes AND zero question sets: nothing to seed or ingest → NO cv row exists on the DB of record; ADR-030 forbids inventing the mapping). Unlock condition: the pure-2 bank's own completion lane (the D1 skeleton's phase-2 content work), receipt-named",
+    "notTouched": "all 49 Edexcel rows byte-identical (5 mapped + coreBridge carriers), FLASHCARD_SYNC_COURSES, all API/hub code, the registry 'note' field"
+  },
+  "validatorAmendment": {
+    "what": "apps/hub/scripts/validate_cie_bundles.ts — the Phase-3 launch-posture pin ('no curriculumCode/coreBridge' on CIE rows) re-based to the fill-where-served law: per-row pin curriculumCode === cvOfRecord(slug) (manifest-derived, the seed cv law) with the D1 skeleton pinned UNMAPPED, plus aggregate pins: 44/45 CIE fill of record; coreBridge absent on ALL CIE rows; coreBridge carriers of record unchanged (only the two 4MA1 maths-a rows, true)",
+    "why": "the validator's launch posture was the Phase-3 state of record; the fill act supersedes it BY ORDER — the honest-red (44 posture assertions, one per filled row) was the validator doing its job; the amendment encodes the new law WITHOUT loosening: the pin now enforces the EXACT code per row (stronger than absence), so a wrong or invented mapping fails the build",
+    "discovery": "the first aggregate coreBridge pin ('absent on ALL 94 rows') honestly red'd against the two 4MA1 maths-a rows — the carrier set of record — and was re-based to the true law (absent on all CIE rows; carriers unchanged)"
+  },
+  "validation": {
+    "diff": "apps/hub/content/courses.json: 88 insertions(+), 44 deletions(-) — 44 rows × (1 comma-patch + 1 curriculumCode line); apps/hub/scripts/validate_cie_bundles.ts: the law amendment; json parses; row order and 6-space field indent preserved; curriculumCode appended as the row's LAST field (the 4PH1/136 fill shape)",
+    "verifiers": "the hub prebuild trio all exit 0: validate_cie_bundles.ts (CIE VALIDATOR PASSED — the card's paper-count assertions hold at this tree), verify_corpus_23a.ts (CORPUS GATE PASSED), verify_flashcard_sync_courses.ts (exit 0); hub tsc --noEmit exit 0"
+  },
+  "registryStateAfter": "94 rows: 49 mapped of record (5 Edexcel: 4CH1-2017, 4MA1-2016 x2, 4MB1-2016, 4PH1-2017 + 44 CIE) / 45 honestly unmapped (13 IAL + 31 Edexcel-IGCSE 4xxx + 1 CIE D1 skeleton) — the unmapped rows keep the honest gate with their unlock conditions receipt-named (IAL/Edexcel: their own seeding lanes, none of record today; pure-2: its completion lane)",
+  "hygiene": "zero credentials/uris/PATs in any file or log; ZERO DB writes and ZERO DB contact by this act (the audit is receipt-evidenced; the fill is hub-maintained data only — the API resolves the code against the production DB of record where the 44 cv rows are already ACTIVE); fetch-first branch cut at origin/main 6987467, no force",
+  "fence": "apps/hub/content/courses.json + apps/hub/scripts/validate_cie_bundles.ts + .syllabai/receipts/HUB-REGISTRY/** + .syllabai/worklog.md — nothing else",
+  "residuals": [
+    "45 rows stay honestly gated (13 IAL + 31 Edexcel-4xxx unlock on their own curriculum-seeding lanes, none of record today; cie-a-level-maths-20-pure-2 unlocks on its completion lane)",
+    "the CIE EQ-axis anchor gap (the run-009 of-record figure: 13,479 raw questions unanchored fleet-wide) — the CIE lane's phase-2 completion follow-up, measurable per slug in every fleet receipt; the 3 realSeedOnly rows serve the KG arm only until it closes",
+    "the D1 skeleton pure-2 (sme-native, 0 nodes / 0 question sets) — its registry row honest-gated until its bank exists",
+    "PAT rotation remains operator-keyed and overdue"
+  ],
+  "nextAct": {
+    "lane": "open the PR (cie-phase4/registry-fill-r0), hold for the check lanes, self-merge on green per the #233/#240/#241 lane precedent",
+    "operator": "the phase-5 QA plane is the next gate; the anchor-gap follow-up is the CIE lane's standing phase-2 completion work; coreBridge decisions are operator-keyed per row whenever the core-questions axis earns them"
+  }
+}
