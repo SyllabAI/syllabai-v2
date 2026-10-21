@@ -10566,3 +10566,17 @@ Stage Summary:
 - The rail's data layer of record is landed: 3 tables + grammar contracts + tests, schema↔snapshot↔runtime all machine-verified consistent.
 - Next lanes unblocked: T-BOOK-003 rail shell, T-BOOK-004 block renderer, T-BOOK-007 glossary infra, T-BOOK-008 check wiring, T-BOOK-010 pack authoring (S0–S4).
 
+Task ID: cie-phase4-run-007-receipt (the A-path discharge continuation; ruling A trace 1a15b161bf960249)
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: run-007 (39520673306) outcome of record + the evidence-based ceiling fix + run-008 dispatch — the optionA prod-apply gate cycle continues receipted end-to-end.
+
+Work Log:
+- Desk state reconciled fetch-first first-hand: local main was 726 behind origin/main (1,513-file mode-noise excluded via core.filemode=false, FF-only sync); Act 2 confirmed ALREADY DISCHARGED of record (PR #217 wave-2 amendment merged 666e11a @ 14:55:32Z by the r1c desk — no re-act); the tranche-3 lane (this session's continuation) had dispatched run-007 11s after the PR #235 merge.
+- RUN-007 (39520673306, mode=cow+prod, main @ ca99c98, dispatched 00:20:02Z): census pre-flight GREEN (44 bundles / 8,850 nodes / max dbCode 25/40 / shared 141 / subject roots 6) — the optionA laws hold fleet-wide BEFORE any DB contact; the fleet then ran 177 min and completed 41/45 ok=true (36 real + 4 stubs honest-empty + 1 skeleton honest-empty), EVERY slug postverified, the optionA join semantics holding throughout (the 9709 siblings on shared version-scoped roots + tail-based UNITs, the 0973 trio siblings likewise).
+- THE CEILING FIRED at 03:20:37Z: cow-proof job-level TIMEOUT cancel at 180 min with the fleet at 41/45 (remaining: 0973-physics + the 0653 trio — ~15-25 min by sibling pace). THE HARDENED ADMISSION LAW HELD EXACTLY: prod-apply SKIPPED (needs.cow-proof.result == 'success' refuses a job-level cancel) — the run-005 breach class is CLOSED of record on live evidence, not by assertion. COW br-polished-surf-a5vp1taj dropped by the always() step, post-delete GET = 404 — zero residue, zero partial state (per-slug tx isolation). ZERO prod contact.
+- FLEET PACE OF RECORD (measured, not estimated): ~200 min fleet-only healthy. The 180 ceiling is BELOW the healthy fleet it is supposed to prove — the same class of latent contradiction as the tranche-2 raw floors. Fix: cow-proof 180->240, prod-apply 120->300 (job 2 runs the same fleet against prod: ~200 min + pre/post — 120 would have fired mid-fleet on a healthy prod apply too). Receipt: cie-phase4-prod-apply-run-007-r0.json (fleetPaceOfRecord + guardVerdict + nextAct).
+- NEXT: PR cie-phase4/gate-ceiling-r1 (one file, the #233 precedent, CI green, self-merge) -> DISPATCH run-008 (mode=cow+prod) at the merged sha -> poll -> receipt; onGreen the idempotent completion + the CIE registry fill audit.
+
+Stage Summary:
+- The gate cycle is honest at every run: run-007 proved the guard holds under job-level cancel and measured the true healthy fleet (~200 min) — the ceiling now chases the evidence, not the guess. Production untouched (the 5 no-op slugs of record remain the only prod CIE state). Hygiene: env-only credential handling, fetch-first, no force, receipts end-to-end.
+

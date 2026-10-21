@@ -1,0 +1,41 @@
+{
+  "receipt": "cie-phase4-prod-apply-run-007-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15993047a40809 + 1a15a5bb18840ac5 + 1a15b161bf960249 (ruling A)",
+  "operatorOrder": "the two-act prod apply under the optionA laws of record (ruling A); run 7 = the tranche-3 follow-up dispatch on the hardened gate (the standing re-run order as the firing authorization, the 134c law)",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-21T03:40:00Z",
+  "phase": "4 of 6 — run 7: the 180-min cow-proof ceiling fired with the fleet at 41/45 ok=true; prod-apply SKIPPED by the hardened admission law — the run-005 breach class CLOSED of record; zero prod exposure; the healthy fleet MEASURED",
+  "runOfRecord": {
+    "runId": 39520673306,
+    "workflow": "cie-phase4-db-plane.yml @ main ca99c98 (the PR #235 tranche-3 merge; dispatched 11s after the merge by the tranche-3 lane)",
+    "mode": "cow+prod",
+    "dispatchedAt": "2026-10-21T00:20:02Z",
+    "conclusion": "FAILURE (cow-proof job-level TIMEOUT cancel at the 180-min ceiling; prod-apply correctly skipped) — the 134c guard protocol holds on the hardened law: a job-level cancel (needs.result 'cancelled') no longer admits the prod-apply, verbatim needs.cow-proof.result == 'success' (PR #233). Zero production contact.",
+    "timeline": "00:20:05Z job 1 up; 00:23:28Z roster printed (CIE rows=45: real 40 / stubs 4 / skeletons 1) then the map-law census pre-flight GREEN (bundles=44 nodes=8850 maxDbCode=25/40 shared=141, subject roots 6: 0460-2025-2026, 0580-2025-2027, 0607-2025-2027, 0653-2023-2024 + 2 more) — the optionA namespace/UNIT/title laws hold fleet-wide BEFORE any DB contact; 00:30:00Z first apply (cie-a-level-chemistry-25, the idempotent no-op class: nodes +0/=484); through 03:18:25Z the fleet completed 41/45 ok=true (36 real + 4 stubs honest-empty + 1 skeleton honest-empty), EVERY slug with its postverify line; 03:20:28Z the 180-min ceiling cancelled the job mid-slug (per-slug tx isolation rolls the in-flight slug back — zero partial state); 03:20:29-34Z the always() COW drop: br-polished-surf-a5vp1taj DELETE then post-delete GET = 404 — zero residue; prod-apply job skipped 03:20:37Z",
+    "credentialVerdict": "the CIE4||T138 resolution passed the precondition, the fleet connected to the COW (branch-local owner uri), no value ever printed (logs show masked *** only)",
+    "completedAtCancel": {
+      "count": "41 of 45 ok=true (36 real + 4 stubs + 1 skeleton)",
+      "realsCompleted": "9701 chem-25; 9709 mechanics/pstats1/pstats2/pure1/pure3 (pure-2 the honest skeleton); 9702 physics-25; 0620 chem-23 + phys-23; 0580 maths-25 core+ext; 9700 bio-25; 9609 business-23; 9618 cs-19; 8291 env-mgmt-20; 0452 accounting-21; 0610 bio-23; 0450 business-23; 0264 business-25; 0478 cs-23; 0455 economics-20+25; 0500 english-language-20+25; 0475 english-literature-21; 0680 env-mgmt-25; 0606 further-maths-25; 0460 geography-20+25; 0470 history-18; 0417 ict-21; 0607 intl-maths-23 core+ext; 0490 rs-23; 0973 double-award biology+chemistry",
+      "stubs": "9706 accounting-21, 9708 economics-23, 8021 english-general-paper-21, 0452 accounting-25 (all EQ honest-empty of record)",
+      "remaining": "4 real: 0973 double-award-23-physics (the sibling) + 0653 combined-science-23 trio (biology/chemistry/physics)"
+    }
+  },
+  "fleetPaceOfRecord": {
+    "measurement": "roster 00:23:28Z -> cancel 03:20:28Z = 177 min for 41/45 slugs on the COW (incl. ~3.4 min provisioning)",
+    "tailEstimate": "the 4 remaining banks by sibling pace: 0973-chemistry took ~6 min for 239 nodes/236q; the 0653 trio + 0973-physics are the same combined-science scale -> ~15-25 min",
+    "healthyFleetTotal": "approximately 195-205 min fleet-only — the 180-min cow-proof ceiling is BELOW the measured healthy fleet; the ceiling must exceed the healthy run it is supposed to prove",
+    "ceilingFix": "cow-proof timeout 180 -> 240 (measured ~200 + provisioning + ~18% headroom); prod-apply 120 -> 300 (job 2 runs the SAME fleet against prod: ~200 min + pre-flight + postverify — the 120 ceiling would have fired mid-fleet on a HEALTHY prod apply too)"
+  },
+  "guardVerdict": "THE RUN-005 BREACH CLASS IS CLOSED OF RECORD: run-005's job-level timeout cancel admitted job 2 under the pre-233 guard (!failure() && !cancelled()); run-007's identical cancel produced prod-apply SKIPPED under the verbatim admission law needs.cow-proof.result == 'success'. The gate now fails closed on every observed path: census pre-flight (zero-DB, exit 3) -> 240-min COW proof (post-fix) -> all-green admission -> prod-apply.",
+  "writeLedger": {
+    "production": "ZERO writes — prod-apply skipped, no prod URI contact beyond the precondition check",
+    "cow": "br-polished-surf-a5vp1taj created, seeded 41/45, DROPPED post-cancel, post-delete GET = 404 — zero residue (the disposable-copy law held under cancel)",
+    "repo": "this receipt + the worklog entry only (.syllabai/**)"
+  },
+  "nextAct": {
+    "lane": "PR cie-phase4/gate-ceiling-r1: cow-proof timeout-minutes 180->240, prod-apply 120->300 (the fleetPaceOfRecord numbers, evidence-based; the PR #233 hardening precedent — one file, CI green, self-merge) — then DISPATCH run 8 (mode=cow+prod) at the merged sha; poll to completion; file the run receipt per the follow-up-commit law",
+    "onGreen": "the gated re-run completes the tree idempotently on prod (the 5 prod slugs of record are the idempotency law's own no-op set); then the CIE registry fill audit (the HUB-REGISTRY fill-where-served law, 45 rows, curriculumCode = <spec>-<syllabusVersion>)"
+  },
+  "hygiene": "zero secret values in any file/log/receipt (token extraction env-only, never echoed/persisted); zero prod-db/Neon/LLM contact by this desk outside the observed run; fetch-first, no force"
+}
