@@ -1,0 +1,60 @@
+{
+  "receipt": "T-MIG-134/band-134e-books-readiness-run-001-sz.json",
+  "task": "T-MIG-134 band 134e — the physics books slice READINESS (the 133f instrument applied to 4PH1; the books vector arm continuation lane)",
+  "lane": "books vector arm continuation (Super Z) — resumed without a live operator trace after the prior session's context loss; the 134e operator gate itself REMAINS OPEN (this receipt does not discharge it)",
+  "executed_at": "2026-10-21",
+  "sandbox_rollback_disclosure": "the sandbox rollback between windows lost the Session-204 lane's sandbox artifacts (scripts/textbook*, download/ deliverables, sandbox worklog Task-134e entry); this lane reconstructed every input from ORIGIN records only",
+  "inputs_of_record": {
+    "release": "SyllabAI/syllabai-resources tag books-intake-physics-2026-10-21 — asset edexcel_igcse_physics_rag_package.zip 46,8394 bytes sha256 a2100fe68d4aa6c0337caf267b479ab77981f9499bacbaf0fc868a7a047fa1bd RE-DOWNLOADED AND RE-VERIFIED MATCH this lane (Session-204 sha holds)",
+    "source_pdf": "books/pearson-edexcel/international-gcse/physics/4ph1/source/student-book.pdf (resources @ de4d8da, 30,915,167 bytes) sha256 9b0783d9fe99790a08255eb1f2ebb6eab5833c03ef8e36dd51b7643ac68a313a RE-VERIFIED MATCH vs parse_report_v1.json pin",
+    "chunks": "books/pearson-edexcel/international-gcse/physics/4ph1/parsed/edexcel_igcse_physics_chunks_v1.jsonl — 736 rows, 17 content types, 299 llm_polished (text_original + llm_repaired present exactly on those 299), ids unique, id-pattern 736/736",
+    "spine_bundle": "apps/hub/content/igcse-physics-19/curriculum.json (the v2 tree of record; the bundle whose 134c apply created the prod 4PH1 tree)"
+  },
+  "red_probe": {
+    "law": "the 133f fixture law + the no-silent-rewrite law — the REAL package validated against the FROZEN bookChunkSchema BEFORE any grammar change",
+    "result": "736 rows: 618 ok / 118 failed — failures on the content_type path ALONE: worked_example 45, extension_work 57, practical 16; every other field of every other row conformed (unit_no/chapter_no int-or-null, page ranges real tuples, char_count int, text_original/llm_repaired law exact)"
+  },
+  "fix": {
+    "class": "the 136a THREE-SHAPED precedent applied to the books grammar — ADDITIVE enum widening 17 -> 20, no chemistry value moves, collision laws unchanged",
+    "commit": "d83e4bc (branch t-mig-134/134e-books-readiness, rebased over origin 6987467, PR syllabai-v2#242)",
+    "deliberately_untouched": "BOOK_BLOCK_TYPES (the T-BOOK-002 rail axis) — not this lane's consumer; cross-lane disclosure for the rail lane's own physics census"
+  },
+  "gates": {
+    "contracts_tests": "28/28 (+4 new physics-census tests pinning REAL rows of record, the 133a fixture law)",
+    "typecheck_x4": "api 0 / shared 0 / contracts 0 / db 0",
+    "api_suite": "1890 pass / 0 fail / 13 skip",
+    "hub_build": "exit 0 (production build)",
+    "green_probe": "736/736 rows parse against the widened schema",
+    "pr_ci": "PR syllabai-v2#242 head d83e4bc — hub SUCCESS / verify SUCCESS / Vercel Preview Comments SUCCESS (checked first-hand via the checks API at records time)"
+  },
+  "dry_run": {
+    "driver": "apps/api/scripts/books-ingest.ts --mode dry (the 133f multi-book driver; the 133b pilot runner stays frozen)",
+    "documentId": "d9b72a0a-23fb-5938-a0a7-a7494e7ebf9e",
+    "book": "Edexcel International GCSE (9-1) Physics Student Book — Arnold/Johnson/Woolley; course igcse-physics-19; subjectCode 4PH1 (the OFFICIAL-code binding law); qualification 'Pearson Edexcel International GCSE (9-1) Physics'; engine ibm-docling@v3; pages 308",
+    "spine_census": "specCode 4PH1, nodes 234 / units(topics) 8 / subtopics(topics) 30 / specPoints 195 — EXACT vs the 134c prod-applied 4PH1 tree of record; --spine-expected 195 gate GREEN",
+    "toc": "8 units / 28 chapters (matches the parse lane's structure finding of record)",
+    "parse_census": "736 rows -> 701 included; excluded BY LAW, disclosed: front_matter 12 + index 4 (EXCLUDED_CONTENT_TYPES) + 19 divider/chapter-map group rows",
+    "chunks": "549 serving chunks, 424 overlaid with spec codes",
+    "joins": "117 refs across 28 chapters — verbatim 49 / normalized 25 / fuzzy 43; 68 honest REVIEW_REQUIRED near-misses (fig46 law — dominantly OCR-spacing corruption in LO bullets, e.g. 'Plot andexplain distance-time graphs' near 1.3 @ 0.67); zero silent drops",
+    "receipt_file": "sandbox scripts/physics_intake_staging/dry_run_134e_run001.json (full receipt; also to be mirrored into evidence on the apply lane)"
+  },
+  "write_ledger": {
+    "prod_writes": 0,
+    "db_contact": "NONE (dry mode is DB-free by construction)",
+    "llm_spend": 0,
+    "probe_learners": 0,
+    "credentials": "the lane touched NO secrets: the only credential used is the pre-existing GitHub PAT identity for clone/push/PR (fingerprints only per the standing law; plaintext never persisted)"
+  },
+  "operator_gate_unchanged": {
+    "apply": "books-ingest --mode apply — REQUIRES the operator prod-DB write order (the 093/134c law: COW-proof first) + the pooled URI re-staged (the prior session's staged URI perished with the session, memory-only)",
+    "embeddings": "the 133d CI-egress runner (t-mig-133d-backfill) — REGION LAW: Gemini embedding is IP-region-gated, never sandbox-side; needs SYLLABAI_EMBEDDING_GEMINI_API_KEY staged as T133D_GEMINI_KEY per-run + A PHYSICS ROW-PARAMETERIZED RUNNER (the of-record workflow hardcodes PILOT_ROW_ID = the chemistry acc573b0… row)",
+    "gemini_key_format_note": "CORRECTION of the Session-204 'matches no documented consumer' verdict: the consumer of record (GeminiEmbeddingProvider) sends the key VERBATIM in the x-goog-api-key header to generativelanguage.googleapis.com with NO client-side shape validation (grep-clean for AIza); Google's CURRENT documented key format starts AQ. (the new API-key format) alongside the legacy AIza. The delivered AQ.… key (fp16 d2e595728f5e) is therefore PLAUSIBLY VALID for this consumer; the decisive test is a 1-call live embedContent probe at restage. The key itself perished with the prior session (memory-only law) and must be re-delivered.",
+    "archive_viewer": "the 133c-pattern archive leg: the PDF is ALREADY tracked in resources books/.../physics/4ph1/source/ + docling_pages/ exists from the parse lane; the viewer band needs the 133c-equivalent page artifacts check at apply time"
+  },
+  "next": [
+    "PR #242 merge (operator merge word per the safe-merge advisory) — the widening must be on main before the apply lane runs",
+    "operator: re-stage the Neon pooled URI + the write order (apply leg), re-deliver the Gemini embedding key (embed leg)",
+    "apply lane: --mode apply with COW-proof first, then validation flip, then the physics-parameterized 133d embed backfill, then wire battery (tutor vector-arm citation law, page-true)",
+    "T-MIG-136 residual (the 135b apply-path TypeError) stays the 136 lane's own named defect — untouched here"
+  ]
+}
