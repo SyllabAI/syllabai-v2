@@ -1,0 +1,52 @@
+{
+ "receipt": "semantic-lane-band-a-run-001-r0",
+ "family": "CONTENT-AUDIT",
+ "operatorTrace": "1a16057229070f09",
+ "operatorOrder": "fire semantic-lane band A (the 140 fragmented-math rows) — 2026-10-22, zai-web",
+ "agent": "main agent (Z.ai, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)",
+ "generatedUtc": "2026-10-22T00:00:00Z",
+ "phase": "BAND A FIRED END-TO-END of record: 140 fragmented-math rows adjudicated per-row under AGENT.md rule 3 — 83 joins landed (additive V7_agent_note_join band layer, cited official texts) + 57 honest pendings with refined evidence-cited reasons; consumed learner-side (band D) at the band A pin; two parse-granularity corrections of record disclosed; zero DB writes, zero LLM-API spend",
+ "basis": "semantic_lane_program of lattice-residuals-run-001-r0: band A = the fragmented-math 140 rows (pure-3 76 + further-maths-25 64), vehicle = the T-SPECS-CIE-COMPLETE-1 engine shape re-run, law = AGENT.md rule 3 verbatim",
+ "laneOfRecord": {
+  "resources": {
+   "pin": "c5f20c52 (rebased over the mid-lane exporter-F44 landing bf8d56c3, zero file overlap, pushed FF)",
+   "commit": "T-SPECS-CIE-COMPLETE-1-BAND-A r0",
+   "vehicle": "scripts/cie_complete_band_fill.py (band-scoped additive layer over the COMPLETE-1 of record)",
+   "battery": "P0 verdicts-yaml round-trip byte fixed point; G1 code-in-parsed-universe + pure-3 component prefix 3.; G2 never-overwrite (pre-existing non-band codes abort); G3 additive-only byte projection (sidecar post projected to pre-band form must byte-match); G4 census-closure (76/64 exact vs the pending ledger of record); G5 idempotence proven live (re-run zero applies, 4 artifacts sha256-identical); G6 yaml-regen census fail-closed with byte restore",
+   "joins": "pure-3 60 rows / 71 code entries; further-maths-25 23 rows / 47 code entries (118 V7 band entries total); evidence rows in scripts/cie_complete_verdicts.yaml with official_texts cited per code",
+   "honestPendings": "pure-3 16 (12 = official P3 Algebra bullets 2-5 glued into parse 3.1.2: 5 polynomials + 3 partial-fractions + 4 binomial; 4 = parametric basics/eliminating/sketching + further-modelling, no P3 statement teaches them); further-maths-25 41 (topics 3/9/12 wholly absent x10; statement-level absences x31: 2.1/2.2/2.3/2.4x3/4.4/5.1-head/6.1/6.3/7.1/7.2/8.3/10.1x2/10.2+10.3/11.1-11.3/13.1+13.2/13.3-head/13.4/14.3-notes-column/14.4x2/14.5+14.6/14.7/14.8/14.10/14.13-head/14.14/14.14+14.15)",
+   "additiveLayering": "sidecar review_state.complete gains bands.A sub-block, original COMPLETE-1 blocks byte-kept; manifest cie_complete gains bands.A, original totals byte-kept (333/457 untouched); verdicts yaml band-lane rows regenerated from band inputs, all other lanes' rows object-preserved to HEAD (object-hash verified vs HEAD)"
+  },
+  "v2Consume": {
+   "pin": "d90bdc8d (rebased over the mid-lane T-SM-REPLAY-REPIN-1 landing 26a36ab1, zero hub-file overlap, pushed FF)",
+   "commit": "T-SPECS-CIE-COMPLETE-1-BAND-D r0",
+   "engine": "committed T-SPECS-CIE-CONSUME-1 engine run verbatim restricted to the two band lanes via shadow sidecar dir; PIN/STAMP/SIDECAR_DIR/SHEET_PATH the only patched states (wrapper apps/hub/scripts/cie/_band_d_run.py, session-side untracked)",
+   "gates": "sheet 634 resolves / 166 ambiguous unchanged; sidecar state ACCEPTED x2; deterministic merge (merge-twice byte-identical); codesOutsideSpine 0 both lanes; sidecarOnly 0; spineHitCodes 38/39",
+   "learnerDelta": "pure-3 notes coded 3->63/79 (16 pendings of record); fm25 4->26/67 (41 pendings; the 4th pre-coded note = rn_cN4s8zdy2xdhkqn9 plane-divergence re-converged at 14.13.1+14.13.2); 0 body diffs (codes-and-pins only); curriculum/flashcards/questions byte-identical; bundle manifest officialSpine.resourcesSha -> c5f20c52; content-maps re-pinned (coverage 63/79 + 26/67, stamp 2026-10-22T00:00:00Z)",
+   "apply": "7 writes byte-guarded (2 notes + 2 bundle manifests + 2 content-maps + 1 _report_cie_consume.json); unexpected-change guard green"
+  }
+ },
+ "correctionsOfRecord": {
+  "p3AlgebraGlue": "9709 2023-2025 Pure Mathematics 3 topic 3.1 Algebra carries FIVE official bullets (modulus / polynomial division / factor-remainder theorem / partial fractions / general binomial expansion) — ground-truthed from the official syllabus PDF 597421 — but the parse glued bullets 2-5 into parse row 3.1.2 (whose served title is the modulus-relations head), so the served spine has only 2 algebra points; the 12 binomial/PF/polynomial notes honestly pend with cited reasons; a parse/spine repair candidate for the operator, NOT written in this band",
+  "fm25LossyLattice": "the 0606 2025-2027 parse splits statement-internal example bullets into separate codes (official 4.1 -> served 4.1.1-4.1.4; official 1.3's five notation examples -> 1.3.1-1.3.5) and drops topics 3 Factors of polynomials, 9 Circular measure, 12 Series ENTIRELY (official statements 3.1-3.3, 9.1, 12.1-12.5 absent from parse and served spine) — ground-truthed from PDF 662470; the served 68-point lattice is a lossy, non-isomorphic projection of the official spec; joins were made only to served points whose own text the note genuinely teaches; a parse/spine repair candidate for the operator, NOT written in this band",
+  "bandAPremiseRefinement": "the residuals band's premise 'the spines are complete and content-verified' was verified at the component-boundary level for 9709; band A's first-hand ground-truthing refines it: spine-vs-parse serving is faithful, but the PARSES themselves under-split (P3 3.1) and under-capture (0606 topics 3/9/12) the official specs"
+ },
+ "honestDisclosures": [
+  "first apply run had a yaml-regen bug (per-slug resolve list reset made only the last slug's rows enter the yaml, appended twice, label-less): caught by this session's own post-apply verification, root-caused, fixed, and the vehicle gained the G6 fail-closed regen census with byte restore; the corrupted intermediate existed only in the working tree, was reverted via git checkout, and was NEVER pushed; the landed yaml was re-derived from pre-band state by a clean re-apply and verified row-by-row against HEAD (790 rows, other lanes object-hash equal)",
+  "first idempotence check failed (3 of 4 artifacts drifted): the band blocks recorded per-run applied/already counters which swap on re-run; fixed by deriving band-block counters from the inputs (run-invariant), per-run facts confined to the battery report; clean re-apply from pre-band state then proved G5 with all four artifacts sha256-identical",
+  "production DB touched read-only for schema introspection only (SME spcpt-id census attempt abandoned: the SME plane does not expose a spec-point table on the prod wire; adjudication used v2 note bodies + official texts instead); zero DB writes; credential chain re-derived live post-recycle: PAT fp16 d254bbfaac004354 (of-record) -> Vercel env API -> DATABASE_URL fp16 b289a2298e707904 len 122 exact match, persisted to .creds/prod_dburl.txt mode 600",
+  "sparse-checkout expanded in resources (spec-links materialized) — session-side local operation only",
+  "the 2 upstream mid-lane landings (resources bf8d56c3 exporter F44; v2 26a36ab1 T-SM-REPLAY-REPIN-1) were caught by fetch-first, verified zero-overlap, rebased clean, battery re-proven on the rebased state before each push"
+ ],
+ "operatorQueue": [
+  "band B: geography-25's 111 cross-edition rows (edition-bridge judgment per row)",
+  "band C: EL-25+20 assessment/coursework-guidance ~73 + fleet assessment_technique/set-text/marking ~171 — expected LEAVE-UNJOINED, codify the honest class per class",
+  "parse/spine repair candidates (operator-gated, separate lane): 9709 P3 3.1 bullets 2-5 (parse glue); 0606 topics 3/9/12 + statement/example split policy",
+  "the standing queue (4MB1 archive followups, PAT/Neon rotation, specPointIds backfill, DB tutor re-ingest)"
+ ],
+ "artifacts": [
+  "resources c5f20c52: scripts/cie_complete_band_fill.py + scripts/cie_complete_verdicts.yaml (790 rows: 416 resolve / 374 pending) + spec-links/{cie-a-level-maths-20-pure-3,cie-igcse-further-maths-additional-maths-25}.json (bands.A blocks) + spec-links/manifest.json (cie_complete.bands.A) + graph/reports/T_SPECS_CIE_COMPLETE_BAND_A_CHECK.json",
+  "v2 d90bdc8d: content/{pure-3,fm25}/{notes,manifest}.json + content-maps/{pure-3,fm25}.json + content-maps/_report_cie_consume.json",
+  "session-side: work/cie-complete-bandA/{complete_rows_bandA,pending_classes_bandA}.json + adjudication-ledger.md + evidence/{597421,662470}.txt + digests/; work/cie-consume-bandD/{shadow-spec-links,staging}"
+ ]
+}
