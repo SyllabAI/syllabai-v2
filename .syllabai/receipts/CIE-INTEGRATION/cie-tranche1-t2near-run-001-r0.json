@@ -1,0 +1,66 @@
+{
+  "receipt": "cie-tranche1-t2near-run-001-r0",
+  "family": "CIE-INTEGRATION",
+  "operatorTrace": "1a15e4200e6af579 ('tranche-1')",
+  "operatorOrder": "tranche-1 — fires tranche1_t2NearVerdicts of the anchor-gap census receipt of record (cie-anchor-gap-census-r0.json): the 155-part T2_near operator-verdict round, the completion program's highest-certainty tranche",
+  "agent": "r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-21T14:55:00Z",
+  "phase": "TRANCHE-1 LANDED END-TO-END of record: the 155 T2_near verdicts filed + applied in the resources lane (PR SyllabAI/syllabai-resources#22 merged, aa0b4de1), the consume re-run at the advanced pin, the linkage-only bundle re-emit, the census re-pin EXACT (expQ 6,599 -> 6,715 = +116, the lane-side prediction hit to the question); the 134c re-run remains OPERATOR-GATED",
+  "resourcesLaneOfRecord": {
+    "receipt": "T-SPECS-CIE-TRANCHE1-T2NEAR-1",
+    "pr": "SyllabAI/syllabai-resources#22 (MERGED; branch commit 8e29101, merge aa0b4de1b732738b4d02dabdd02d9ead85522907)",
+    "base": "67a173b (T-SPEC-ACCT-ADJ-1)",
+    "records": [
+      "syllabai-resources graph/reports/T_SPECS_CIE_TRANCHE1_T2NEAR_RECORD.md",
+      "syllabai-resources graph/reports/T_SPECS_CIE_TRANCHE1_T2NEAR_FILL.json",
+      "syllabai-resources graph/reports/T_SPECS_CIE_TRANCHE1_T2NEAR_CHECK.json (battery T1-T10 10/10 PASS)"
+    ],
+    "verdictSemantics": "161 sidecar code entries re-tiered IN PLACE (codes[] order preserved): tier T2_near -> V6_near_text_verdict, method cie_*_text_join -> operator_verdict; prior method recorded verbatim per row (131 cie_definition_text_join + 30 cie_text_join — the census receipt's 'method cie_definition_text_join' phrasing was a simplification; the law is the TIER, gate-audited 584/584 lower-bound zero defects); V6 is ADDITIVE to the VERDICT-1 ladder (V1-V5) — the operator ratifies a GATE-1-audited accepted-near text join as authoritative; no code invented (every pair byte-verified against BOTH the sidecar's own T2 entry AND the lane registry), no join re-derived, no pending anchor touched, 35 CIE + 49 Edexcel non-queue sidecars byte-identical, manifest additive-only",
+    "queueProvenance": "computed, never transcribed: the queue definition (v2 content-map question_part items with t2HintCodes non-empty AND codes empty) recomputed lane-side with two GREEN cross-foots — (1) per-slug counts == the census receipt's queue EXACTLY (155 parts / 161 entries / 9 lanes), (2) sidecar T2_near entries == map t2HintCodes per item per code"
+  },
+  "pinDiscipline": {
+    "resourcesSha": "aa0b4de1b732738b4d02dabdd02d9ead85522907 (75981cad -> aa0b4de1)",
+    "verification": "Official-Specifications/parsed + SME-RevisionNotes + SME-Flashcards tree-sha-IDENTICAL to the r9 pin; SME-ExamQuestion moved but ALL changed files are igcse-accounting-17* (Edexcel, the PR#21 + T-SPEC-ACCT-ADJ-1 waves) — zero CIE corpus contact; the ONLY CIE input delta is spec-links/ — this lane's input (the tranche-1 verdicts)",
+    "validator": "validate_cie_bundles.ts CIE_PIN advanced 75981cad -> aa0b4de1 of record, documented in-file"
+  },
+  "consumeRerunOfRecord": {
+    "engine": "apps/hub/scripts/cie/cie_consume_spec_links.py (PIN + STAMP + report directive/trace advanced; the consumption law UNCHANGED — V* was already rank-0 authoritative and T2_near already hint-only)",
+    "engineAmendment": "ONE disclosed amendment: stale t2HintCodes dropped when the sidecar no longer carries hints on the item — the map mirrors the sidecar's CURRENT hint set (the r9 consume rebuilt hints only when present and never removed stale ones; after the promotion the 155 items would otherwise carry their own now-authoritative codes as duplicate hints). Remaining hints rebuilt fresh; out-of-queue hints byte-preserved (audited). t2Hints census 584 -> 423 EXACT (584 - 161)",
+    "determinism": "fixed stamp 2026-10-21T13:45:00Z; staging byte-identical across two clean runs (stagingHash bf6522004fb1507930bdaa115ecdb9de6aacbf6727cfa00813b7a2d13fb8483b)",
+    "battery": "in-engine M1/M2/M3 + R1-R6: 44/44 PASS (fail-closed)",
+    "preApplyAudit": "independent lane-side audit GREEN (scripts/tranche1_preattend_audit.py): manifest delta == officialSpine.resourcesSha only; curriculum/notes/flashcards byte-identical in ALL 44 courses; questions.json moved on EXACTLY the 155 queue parts (+161 code entries, every other part and field byte-equal); the 35 non-verdict courses' questions.json byte-identical; staged maps carry the V6 entries with stale hints dropped",
+    "apply": "explicit apply: 44 bundle trees + 44 content-maps + _report_cie_consume.json; footprint 99 files (53 bundle files + 44 maps + report + engine), nothing else"
+  },
+  "censusRepinOfRecord": {
+    "figuresBefore": "ANCHORED 6,599 q / 5,618 part-rows (9,139 pkg-parts) | GAP 12,479 q / 17,693 parts | raw 19,097 q / 25,663 parts",
+    "figuresAfter": "ANCHORED 6,715 q / 5,696 part-rows (9,276 pkg-parts) | GAP 12,363 q / 17,538 parts | raw 19,097 q / 25,663 parts UNCHANGED (raw corpus untouched — linkage-only law held)",
+    "deltaArithmetic": "expQ +116 == unmapped -116 EXACTLY, per slug: business-23 41 / chemistry-25 23 / sdv-chem 15 / biology-25 13 / physics-23 7 / cs-23 6 / combined-bio 4 / physics-25 4 / combined-chem 3 — the lane-side prediction (116 distinct fully-unmapped parent questions of the 155 parts) hit EXACTLY, zero divergence; part-ROW law +78, package +137 (the emission-law counts re-derived by the census tool)",
+    "figuresOfRecordFromNowOn": "ANCHORED 6,715 questions / 5,696 part-rows | ANCHOR GAP 12,363 questions / 17,538 parts — computed from the census tool, never transcribed"
+  },
+  "gates": [
+    "verify:cie PASSED (CIE_PIN advanced 75981cad -> aa0b4de1 documented in-file)",
+    "verify:corpus (verify_corpus_23a.ts) PASSED — math zero-baseline intact",
+    "verify:flashcard-sync PASSED (exit 0)",
+    "census_per_slug.ts re-pin GREEN (delta exact, above)",
+    "hub build GREEN (prebuild chain + next build, 1,256/1,256 routes, exit 0)",
+    "resources lane battery T1-T10 10/10 PASS (base-blob re-derivation + v2-map spine cross-foot)"
+  ],
+  "disclosures": [
+    "engine amendment (stale-hint drop) — semantic requirement of the promotion, audited byte-level (see consumeRerunOfRecord.engineAmendment)",
+    "sheet generator defect caught en route: prior.method was hardcoded to cie_definition_text_join on all rows; the fill engine's fail-closed gate refused the 30 cie_text_join rows (exactly its job); fixed to verbatim per-row recording",
+    "promoted_parts miscount caught in the engine's own output review (rows vs distinct items, physics-23 13 vs 7); fixed, reverted, re-applied clean",
+    "sibling delta raced in during the lane: v2 b05e642 -> d07267a (the organization-audit receipt, trace 1a15e490b7421729) carries ONE Edexcel bundle line (igcse-maths-b-16 questions.json) verified structurally zero-linkage (65 sets both sides, 0 part linkage deltas) — zero interaction with this lane; branch cut at d07267a",
+    "out-of-scope T2 hints disclosed: 284 further question parts carry T2 hints but are ALREADY authoritative-anchored (promotion = tranche-2-scope enrichment, does not move the gap); the notes axis carries ~110 T2 hint entries (same program scope, untouched)"
+  ],
+  "hygiene": "zero credentials/uris/PATs in any file or log; ZERO DB contact; the 134c dispatch NOT fired (operator-gated); fetch-first + race-guard at both lane ignitions; no force",
+  "fence": "apps/hub/content/cie-* (linkage fields + manifest pin only), apps/hub/content-maps/cie-* + _report, apps/hub/scripts/cie/cie_consume_spec_links.py (pin/stamp/amendment), apps/hub/scripts/validate_cie_bundles.ts (CIE_PIN), .syllabai/** — the Edexcel lane byte-untouched",
+  "residuals": [
+    "the anchor gap: 12,363 questions / 17,538 parts — tranche-2 (the 16,335-part verdict program) and tranche-3 (the 1,203-part SME coverage gap) continue per the census receipt's program; the T2 promotion of the 284 already-anchored parts' hints is tranche-2-scope enrichment",
+    "the 134c cow+prod re-run to land the new linkage on the DB of record — OPERATOR-GATED (the phase-4 plane posture): the DB plane still serves the pre-tranche linkage for the 9 banks until the operator fires it; arm state: bundles of record on main, census floors re-pinned, the run-009 recipe unchanged",
+    "PAT rotation CRITICAL-OVERDUE (fingerprint a8ccee736aa8c75b)"
+  ],
+  "nextAct": {
+    "operator": "say the word to fire the 134c re-run (the tranche-1 linkage lands on the production DB plane), or order tranche-2 (the mass-order verdict program: chemistry-25 1,336 / physics-25 1,279 / pure-3 1,273 / intl-maths-23-extended 1,243 ...)",
+    "lane": "on operator fire: the 134c cow+prod re-run at the re-pinned floors; on tranche-2: the per-bank verdict rounds via the same chain (sidecar verdicts -> consume -> re-emit -> census re-pin -> PR -> operator-gated 134c)"
+  }
+}

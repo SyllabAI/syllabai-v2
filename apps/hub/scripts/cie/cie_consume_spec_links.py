@@ -25,9 +25,19 @@ Lineage precedence for dedup (strongest first):
   sidecar operator-verdict (V*) > sidecar T1_verbatim > sidecar J* >
   upstream_item_join (ladder) > sme_declared_link_rekey > subtopic_title_scope
 
-Pin of record: syllabai-resources origin/main 75981cad (the four CIE-relevant
-subtrees verified tree-sha-identical to the Phase-2/3 pin 0fe5f772; the ONLY
-input delta is spec-links/ — this lane's input).
+Pin of record: syllabai-resources origin/main aa0b4de1 (the tranche-1 advance
+75981cad -> aa0b4de1, verified: Official-Specifications/parsed, SME-RevisionNotes,
+SME-Flashcards tree-sha-IDENTICAL to the r9 pin; SME-ExamQuestion moved but ALL
+changed files are igcse-accounting-17* (Edexcel) — zero CIE corpus contact; the
+ONLY CIE input delta is spec-links/ — the T-SPECS-CIE-TRANCHE1-T2NEAR-1 verdict
+round, whose V6_near_text_verdict entries are consume-authoritative by the same
+sidecar_rank law).
+
+TRANCHE-1 RE-RUN (2026-10-21, operator order 'tranche-1', trace
+1a15e4200e6af579): consumes the tranche-1 verdict sidecars — the 155-part
+T2_near review queue of the anchor-gap census receipt promoted to the V*
+authoritative class. The consumption law is UNCHANGED (this engine's semantics
+already rank V* first and hold T2_near as hints).
 """
 from __future__ import annotations
 
@@ -48,8 +58,8 @@ RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resourc
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "75981cad0b08c190fb70902eb6cdca1f76b9cd68"
-STAMP = "2026-10-20T14:00:00Z"
+PIN = "aa0b4de1b732738b4d02dabdd02d9ead85522907"
+STAMP = "2026-10-21T13:45:00Z"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
 RANK = {  # lower wins on the same (item, code) key
@@ -169,6 +179,13 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
                             tier=h.get("tier"), method=h.get("method"),
                             spineCode=AOM.resolve_spine_code(h.get("official_code"), h.get("official_id"), None, ctx, spine_set))
                 for h in hints]
+        elif "t2HintCodes" in rec:
+            # tranche-1 amendment (trace 1a15e4200e6af579): the map mirrors the
+            # sidecar's CURRENT hint set — when the sidecar no longer carries
+            # T2_near on this item (the verdict round promoted them to V*), the
+            # stale hints copied forward from the prior consume are dropped.
+            # Remaining hints (sidecar still T2_near) are rebuilt fresh above.
+            rec.pop("t2HintCodes")
         new_items[iid] = rec
 
     # ---- sheet: sid -> code upgrades onto spcptToOfficial ------------------
@@ -587,8 +604,11 @@ def main() -> int:
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
         lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective="Start (REJOIN-1 NEXT #2 / GATE-1 record NEXT #1 — learner-UI consumption)",
-        gatewayTrace="1a1585c244ccd141",
+        operatorDirective=("tranche-1 (operator order 'tranche-1', trace 1a15e4200e6af579) — "
+                           "the tranche-1 verdict round's consume re-run: tranche1_t2NearVerdicts "
+                           "of cie-anchor-gap-census-r0 landed in the sidecars at resources pin "
+                           "aa0b4de1 (T-SPECS-CIE-TRANCHE1-T2NEAR-1); the r9 consumption law unchanged"),
+        gatewayTrace="1a15e4200e6af579",
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),
