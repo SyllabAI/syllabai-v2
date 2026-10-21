@@ -20,6 +20,12 @@
  *     by name case-insensitively) + the cohort drop law (vanished/disabled
  *     members FILTERED — the Java u != null && u.enabled() filter, NOT the
  *     classroom honesty rows)
+ *
+ * T-TEACH-006 amendment tests (the operator ruling on T-TEACH-005 F-1):
+ * the list binds the JWT identity (own newest 50), and roster/setStatus run
+ * the §17 ownership gate — 404 unknown verbatim BEFORE 403 "this assignment
+ * belongs to another teacher", the 400 status parse still beats the gate,
+ * and a foreign status flip NEVER issues the UPDATE.
  */
 import { describe, expect, test } from "bun:test";
 import {
@@ -104,7 +110,8 @@ const cohortCountRoute = (n: number): Route => ({
 });
 
 const assignmentsListRoute = (rows: Array<Record<string, unknown>>): Route => ({
-  match: /from assignments order by created_at desc limit \?$/,
+  match:
+    /from assignments where teacher_id = \? ::uuid order by created_at desc limit \?$/,
   rows,
 });
 
@@ -382,7 +389,28 @@ describe("listAssignments (:134-145)", () => {
       fakeSql([cohortCountRoute(2), assignmentsListRoute([])]),
       clock,
     );
-    expect(await mod.listAssignments()).toEqual([]);
+    expect(await mod.listAssignments(TEACHER)).toEqual([]);
+  });
+
+  test("T-TEACH-006: the list binds the JWT identity (own newest 50, params law)", async () => {
+    let captured: unknown[] = [];
+    const routes: Route[] = [
+      cohortCountRoute(2),
+      {
+        match:
+          /from assignments where teacher_id = \? ::uuid order by created_at desc limit \?$/,
+        rows: [],
+        rowsFor: (params) => {
+          captured = params;
+          return [];
+        },
+      },
+    ];
+    const sql = fakeSql(routes);
+    const mod = buildTeacherAssignmentsModule(sql, clock);
+    expect(await mod.listAssignments(TEACHER)).toEqual([]);
+    expect(captured[0]).toBe(TEACHER); // the identity is bind slot 1
+    expect(captured[1]).toBe(ASSIGNMENT_LIST_LIMIT); // the bound applies to the OWN set
   });
 
   test("newest-first summaries with the cohort denominator law + computed stats", async () => {
@@ -400,7 +428,7 @@ describe("listAssignments (:134-145)", () => {
       }),
     ];
     const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
-    const list = (await mod.listAssignments()) as Array<Record<string, unknown>>;
+    const list = (await mod.listAssignments(TEACHER)) as Array<Record<string, unknown>>;
     expect(list.length).toBe(2);
     // A: cohort 2, submitted 1 (score 8, before the future dueAt → late 0)
     expect(list[0]).toMatchObject({
@@ -428,7 +456,7 @@ describe("listAssignments (:134-145)", () => {
       submissionsRoute([submissionRow(STUDENT_1, "2026-10-05T10:00:00Z")]), // after past due
     ];
     const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
-    const list = (await mod.listAssignments()) as Array<Record<string, unknown>>;
+    const list = (await mod.listAssignments(TEACHER)) as Array<Record<string, unknown>>;
     expect(list[0]).toMatchObject({ submitted: 1, late: 1, missing: 1 });
   });
 
@@ -443,7 +471,7 @@ describe("listAssignments (:134-145)", () => {
       ]),
     ];
     const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
-    const list = (await mod.listAssignments()) as Array<Record<string, unknown>>;
+    const list = (await mod.listAssignments(TEACHER)) as Array<Record<string, unknown>>;
     expect(list[0]).toMatchObject({ submitted: 1, meanScore: 9 }); // the newest row's score
   });
 
@@ -458,7 +486,7 @@ describe("listAssignments (:134-145)", () => {
       ]),
     ];
     const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
-    const list = (await mod.listAssignments()) as Array<Record<string, unknown>>;
+    const list = (await mod.listAssignments(TEACHER)) as Array<Record<string, unknown>>;
     expect(list[0]).toMatchObject({ submitted: 2, meanScore: 8 }); // only S1's score
   });
 });
@@ -473,9 +501,35 @@ describe("setAssignmentStatus (:205-217)", () => {
       statusUpdateRoute(log),
     ];
     const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
-    const view = (await mod.setAssignmentStatus(ASG_A, "closed")) as Record<string, unknown>;
+    const view = (await mod.setAssignmentStatus(TEACHER, ASG_A, "closed")) as Record<string, unknown>;
     expect(view.status).toBe("closed");
     expect(log).toEqual(["CLOSED"]);
+  });
+
+  test("T-TEACH-006: another teacher's assignment 403s and NEVER updates", async () => {
+    const log: string[] = [];
+    const routes: Route[] = [
+      assignmentByIdRoute([assignmentRow({ teacher_id: OTHER_TEACHER })]),
+      statusUpdateRoute(log),
+    ];
+    const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
+    await expect(mod.setAssignmentStatus(TEACHER, ASG_A, "closed")).rejects.toBeInstanceOf(
+      ClassroomForbiddenError,
+    );
+    await expect(mod.setAssignmentStatus(TEACHER, ASG_A, "closed")).rejects.toThrow(
+      "this assignment belongs to another teacher",
+    );
+    expect(log).toEqual([]); // the write never ran
+  });
+
+  test("T-TEACH-006: the status parse (400) still beats the ownership gate (403)", async () => {
+    const routes: Route[] = [
+      assignmentByIdRoute([assignmentRow({ teacher_id: OTHER_TEACHER })]),
+    ];
+    const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
+    await expect(mod.setAssignmentStatus(TEACHER, ASG_A, "half-open")).rejects.toBeInstanceOf(
+      BadRequestError,
+    );
   });
 
   test("tolerant reopen (f05/f06) and the verbatim 400 on unknown values (f02)", async () => {
@@ -485,20 +539,20 @@ describe("setAssignmentStatus (:205-217)", () => {
       statusUpdateRoute(log),
     ];
     const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
-    const view = (await mod.setAssignmentStatus(ASG_A, "  OPEN  ")) as Record<string, unknown>;
+    const view = (await mod.setAssignmentStatus(TEACHER, ASG_A, "  OPEN  ")) as Record<string, unknown>;
     expect(view.status).toBe("open");
     expect(log).toEqual(["OPEN"]);
-    await expect(mod.setAssignmentStatus(ASG_A, "half-open")).rejects.toThrow(
+    await expect(mod.setAssignmentStatus(TEACHER, ASG_A, "half-open")).rejects.toThrow(
       'status must be "open" or "closed": half-open',
     );
   });
 
   test("unknown assignment → 404 verbatim (d09)", async () => {
     const mod = buildTeacherAssignmentsModule(fakeSql([assignmentByIdRoute([])]), clock);
-    await expect(mod.setAssignmentStatus(ASG_A, "open")).rejects.toBeInstanceOf(
+    await expect(mod.setAssignmentStatus(TEACHER, ASG_A, "open")).rejects.toBeInstanceOf(
       AssignmentNotFoundError,
     );
-    await expect(mod.setAssignmentStatus(ASG_A, "open")).rejects.toThrow(
+    await expect(mod.setAssignmentStatus(TEACHER, ASG_A, "open")).rejects.toThrow(
       `unknown assignment: ${ASG_A}`,
     );
   });
@@ -509,8 +563,21 @@ describe("setAssignmentStatus (:205-217)", () => {
 describe("assignmentRoster (:151-183)", () => {
   test("unknown assignment → 404 verbatim (e07); bad uuid is the route layer's law", async () => {
     const mod = buildTeacherAssignmentsModule(fakeSql([assignmentByIdRoute([])]), clock);
-    await expect(mod.assignmentRoster(ASG_A)).rejects.toThrow(
+    await expect(mod.assignmentRoster(TEACHER, ASG_A)).rejects.toThrow(
       `unknown assignment: ${ASG_A}`,
+    );
+  });
+
+  test("T-TEACH-006: another teacher's roster 403s (the §17 wording, assignment noun)", async () => {
+    const routes: Route[] = [
+      assignmentByIdRoute([assignmentRow({ teacher_id: OTHER_TEACHER })]),
+    ];
+    const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
+    await expect(mod.assignmentRoster(TEACHER, ASG_A)).rejects.toBeInstanceOf(
+      ClassroomForbiddenError,
+    );
+    await expect(mod.assignmentRoster(TEACHER, ASG_A)).rejects.toThrow(
+      "this assignment belongs to another teacher",
     );
   });
 
@@ -527,7 +594,7 @@ describe("assignmentRoster (:151-183)", () => {
       ]),
     ];
     const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
-    const roster = (await mod.assignmentRoster(ASG_A)) as {
+    const roster = (await mod.assignmentRoster(TEACHER, ASG_A)) as {
       assignment: Record<string, unknown>;
       rows: Array<Record<string, unknown>>;
     };
@@ -562,7 +629,7 @@ describe("assignmentRoster (:151-183)", () => {
       ]),
     ];
     const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
-    const roster = (await mod.assignmentRoster(ASG_A)) as {
+    const roster = (await mod.assignmentRoster(TEACHER, ASG_A)) as {
       rows: Array<Record<string, unknown>>;
     };
     expect(roster.rows.map((r) => r.state)).toEqual(["complete", "missing"]);
@@ -583,7 +650,7 @@ describe("assignmentRoster (:151-183)", () => {
       cohortUsersRoute([{ id: STUDENT_1, display_name: "Brenda Student" }]),
     ];
     const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
-    const roster = (await mod.assignmentRoster(ASG_A)) as {
+    const roster = (await mod.assignmentRoster(TEACHER, ASG_A)) as {
       rows: Array<Record<string, unknown>>;
     };
     expect(roster.rows[0]).toMatchObject({ state: "late", score: 8 });
@@ -596,7 +663,7 @@ describe("assignmentRoster (:151-183)", () => {
       classCohortUsersRoute([{ id: STUDENT_1, display_name: "Brenda Student" }]),
     ];
     const mod = buildTeacherAssignmentsModule(fakeSql(routes), clock);
-    const roster = (await mod.assignmentRoster(ASG_A)) as {
+    const roster = (await mod.assignmentRoster(TEACHER, ASG_A)) as {
       rows: Array<Record<string, unknown>>;
     };
     expect(roster.rows.length).toBe(1); // the independent student does NOT appear

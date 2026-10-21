@@ -49,6 +49,22 @@
  * Bind-slot discipline (fleet convention): every ${} slot is a bind
  * parameter; column lists and state-bearing predicates inline as static
  * template text. Instant rendering: `new Date(x).toISOString()`.
+ *
+ * T-TEACH-006 AMENDMENT (operator ruling on T-TEACH-005 finding F-1, trace
+ * 1a15ffcb82ca8689) — the v2-native ownership scope, the T-TEACH-003 mold:
+ * the frozen core read list/roster/setStatus GLOBALLY (single-teacher pilot
+ * posture; ADR-027 D1 binds the marking surface by name, never this band).
+ * Multi-teacher posture makes that a defect, not a cleanup item. This file
+ * is the DELIBERATE divergence from frozen wire behavior:
+ *   - listAssignments(teacherId)    → the teacher's OWN newest 50
+ *   - assignmentRoster(teacherId, id)  → §17 gate: 404 unknown / 403 foreign
+ *   - setAssignmentStatus(teacherId, id, …) → the same gate BEFORE the write
+ * The gate order is the ownedClass law (404 before 403); the 403 reuses the
+ * §17 foreign-object wording with the assignment noun. The 400 status parse
+ * still precedes the gate (the @Valid-before-ownership order). The cohort
+ * denominator for a cohort-less assignment is UNCHANGED (the V51 semantics:
+ * the whole enabled STUDENT set is the assignment's own target — a teacher
+ * seeing their own assignment's whole-cohort stats is not cross-scope).
  */
 import { BadRequestError, ConflictError, type SubmitClock } from "../selfmark";
 import { ClassroomForbiddenError } from "../classroom";
@@ -263,9 +279,37 @@ export async function createAssignment(
   };
 }
 
-/** GET /api/v1/teacher/assignments (:134-145) → 200 newest-first summaries. */
+/**
+ * the T-TEACH-006 ownership gate — the §17 amendment on the assignment
+ * object (the ownedAssignment twin of classroom's ownedClass): 404 unknown
+ * verbatim (d09/e07), then 403 when the row's teacher_id is not the caller.
+ * One fetch serves the gate AND the view (no re-read).
+ */
+async function ownedAssignment(
+  deps: TeacherAssignmentsDeps,
+  teacherId: string,
+  assignmentId: string,
+): Promise<AssignmentRow> {
+  const rows = (await deps.sql`
+    select id, teacher_id, course_slug, course_label, title, spec_refs, marks_total,
+           question_count, due_at, status, created_at, class_id
+    from assignments where id = ${assignmentId}::uuid`) as AssignmentRow[];
+  const a = rows[0];
+  if (!a) throw new AssignmentNotFoundError(`unknown assignment: ${assignmentId}`);
+  if (a.teacher_id !== teacherId) {
+    throw new ClassroomForbiddenError("this assignment belongs to another teacher");
+  }
+  return a;
+}
+
+/**
+ * GET /api/v1/teacher/assignments (:134-145) → 200 newest-first summaries.
+ * T-TEACH-006: scoped to the requesting teacher — the where clause binds
+ * the JWT identity, so the limit is the teacher's OWN newest 50.
+ */
 export async function listAssignments(
   deps: TeacherAssignmentsDeps,
+  teacherId: string,
 ): Promise<Array<Record<string, unknown>>> {
   const cohortRows = (await deps.sql`
     select count(distinct u.id)::int as cohort
@@ -277,6 +321,7 @@ export async function listAssignments(
     select id, teacher_id, course_slug, course_label, title, spec_refs, marks_total,
            question_count, due_at, status, created_at, class_id
     from assignments
+    where teacher_id = ${teacherId}::uuid
     order by created_at desc
     limit ${ASSIGNMENT_LIST_LIMIT}`) as AssignmentRow[];
   const memberCounts = new Map<string, number>();
@@ -325,9 +370,15 @@ function toSummary(
   };
 }
 
-/** POST /api/v1/teacher/assignments/{id}/status (:205-217) → 200 view. */
+/**
+ * POST /api/v1/teacher/assignments/{id}/status (:205-217) → 200 view.
+ * T-TEACH-006: the ownership gate runs BEFORE the write (the parse stays
+ * first — the @Valid-before-ownership order). A foreign teacher's status
+ * flip is now impossible: 400 parse → 404 unknown → 403 foreign → update.
+ */
 export async function setAssignmentStatus(
   deps: TeacherAssignmentsDeps,
+  teacherId: string,
   assignmentId: string,
   rawStatus: string,
 ): Promise<Record<string, unknown>> {
@@ -335,28 +386,25 @@ export async function setAssignmentStatus(
   if (status == null) {
     throw new BadRequestError(`status must be "open" or "closed": ${rawStatus}`);
   }
-  const rows = (await deps.sql`
-    select id, teacher_id, course_slug, course_label, title, spec_refs, marks_total,
-           question_count, due_at, status, created_at, class_id
-    from assignments where id = ${assignmentId}::uuid`) as AssignmentRow[];
-  const a = rows[0];
-  if (!a) throw new AssignmentNotFoundError(`unknown assignment: ${assignmentId}`);
+  const a = await ownedAssignment(deps, teacherId, assignmentId);
   await deps.sql`
     update assignments set status = ${status} where id = ${assignmentId}::uuid`;
   return assignmentViewOf({ ...a, status });
 }
 
-/** GET /api/v1/teacher/assignments/{id} (:151-183) → 200 roster view. */
+/**
+ * GET /api/v1/teacher/assignments/{id} (:151-183) → 200 roster view.
+ * T-TEACH-006: the roster is learner data (names, completion states,
+ * scores) — the ownership gate runs FIRST, so another teacher's roster is
+ * unreadable (403) and a cohort-less roster's whole-cohort rows are only
+ * ever served to the assignment's own author.
+ */
 export async function assignmentRoster(
   deps: TeacherAssignmentsDeps,
+  teacherId: string,
   assignmentId: string,
 ): Promise<Record<string, unknown>> {
-  const rows = (await deps.sql`
-    select id, teacher_id, course_slug, course_label, title, spec_refs, marks_total,
-           question_count, due_at, status, created_at, class_id
-    from assignments where id = ${assignmentId}::uuid`) as AssignmentRow[];
-  const a = rows[0];
-  if (!a) throw new AssignmentNotFoundError(`unknown assignment: ${assignmentId}`);
+  const a = await ownedAssignment(deps, teacherId, assignmentId);
   const latest = await latestByLearner(deps, a.id);
   // the cohort law (:156-162): NULL target → every enabled student; class
   // target → exactly that class's members, vanished/disabled DROPPED (the
@@ -423,10 +471,11 @@ export function buildTeacherAssignmentsModule(sql: SqlFn, clock: SubmitClock) {
     deps,
     createAssignment: (teacherId: string, input: AssignmentCreateRequest) =>
       createAssignment(deps, teacherId, input),
-    listAssignments: () => listAssignments(deps),
-    setAssignmentStatus: (assignmentId: string, rawStatus: string) =>
-      setAssignmentStatus(deps, assignmentId, rawStatus),
-    assignmentRoster: (assignmentId: string) => assignmentRoster(deps, assignmentId),
+    listAssignments: (teacherId: string) => listAssignments(deps, teacherId),
+    setAssignmentStatus: (teacherId: string, assignmentId: string, rawStatus: string) =>
+      setAssignmentStatus(deps, teacherId, assignmentId, rawStatus),
+    assignmentRoster: (teacherId: string, assignmentId: string) =>
+      assignmentRoster(deps, teacherId, assignmentId),
   };
 }
 
