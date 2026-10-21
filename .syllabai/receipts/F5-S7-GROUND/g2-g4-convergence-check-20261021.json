@@ -1,0 +1,244 @@
+{
+ "artifact": "g2-g4-convergence-check-20261021.json",
+ "role": "G2 seeder-convergence + G4 anchor-companion repo artifact of record — closes the F.5 §7 GH-PAT-gated residuals on credential re-delivery (trace 1a15e1a470900835)",
+ "law": "Live trigger NOT installed per drift discipline (worklog of record) — this re-runnable battery (scripts/w1c-g2g4-check.js, persisted lane-side) is the compensating artifact",
+ "run": {
+  "at": "2026-10-21T11:16:29.707Z",
+  "credential": "t0_readonly via .creds/neon-ro-uri (fp16 f0c7e4f8ce294a20), SELECT-only, zero writes",
+  "engine": "node pg at /home/z/node_modules/pg (reinstalled at the of-record path post sandbox recycle #7)"
+ },
+ "growth_accounting": {
+  "spec_point_total_now": 7404,
+  "of_record_family": 663,
+  "anchor_total_now": 20990,
+  "anchor_of_record": 8138,
+  "note": "of-record families byte-exact (C1/C3/C4/C10 PASS); growth is legal content-wave addition in OTHER families; anchor integrity 100% on the grown total (C7/C9 PASS)"
+ },
+ "battery_result": {
+  "generated_at": "2026-10-21T11:16:29.707Z",
+  "credential": "t0_readonly via .creds/neon-ro-uri (fp16 f0c7e4f8ce294a20), SELECT-only, zero writes",
+  "of_record": "G-round 2026-10-20: SPEC_POINT 663 (4CH1 182 + 4MA1 188 + 4PH1 195 + 4MB1 98), anchors 8138 100% SPEC_POINT",
+  "checks": [
+   {
+    "id": "C1",
+    "law": "G2: of-record family census 4CH1=182 4MA1=188 4PH1=195 4MB1=98 unchanged (growth-legal beyond)",
+    "expected": {
+     "4CH1": 182,
+     "4MA1": 188,
+     "4PH1": 195,
+     "4MB1": 98
+    },
+    "observed": {
+     "observed": {
+      "8021": 73,
+      "8291": 131,
+      "9609": 116,
+      "9618": 227,
+      "9700": 257,
+      "9701": 356,
+      "9702": 303,
+      "9706": 34,
+      "9708": 253,
+      "9709": 129,
+      "0264": 52,
+      "0417": 95,
+      "0450": 63,
+      "0452": 321,
+      "0455": 242,
+      "0460": 113,
+      "0470": 371,
+      "0475": 203,
+      "0478": 88,
+      "0490": 364,
+      "0500": 372,
+      "0580": 290,
+      "0606": 68,
+      "0607": 274,
+      "0610": 388,
+      "0620": 252,
+      "0625": 294,
+      "0653": 238,
+      "0680": 142,
+      "0973": 632,
+      "4CH1": 182,
+      "4MA1": 188,
+      "4MB1": 98,
+      "4PH1": 195
+     },
+     "total_now": 7404
+    },
+    "pass": true
+   },
+   {
+    "id": "C2",
+    "law": "G2: node_type distribution — SPEC_POINT family >= 663; SUBTOPIC residual present (18 of-record)",
+    "expected": {
+     "SPEC_POINT_min": 663
+    },
+    "observed": {
+     "distribution": [
+      {
+       "node_type": "SPEC_POINT",
+       "n": 7404
+      },
+      {
+       "node_type": "TOPIC",
+       "n": 1585
+      },
+      {
+       "node_type": "UNIT",
+       "n": 484
+      },
+      {
+       "node_type": "CONCEPT",
+       "n": 167
+      },
+      {
+       "node_type": "SUBJECT",
+       "n": 38
+      },
+      {
+       "node_type": "MISCONCEPTION",
+       "n": 30
+      },
+      {
+       "node_type": "SUBTOPIC",
+       "n": 18
+      }
+     ]
+    },
+    "pass": true
+   },
+   {
+    "id": "C3",
+    "law": "G2: B5 law — all 663 receipt ids still SPEC_POINT, distinct (id/code untouched)",
+    "expected": {
+     "receipt_ids_spec": 663,
+     "distinct_ids": 663
+    },
+    "observed": {
+     "receipt_ids_spec": 663,
+     "distinct_ids": 663
+    },
+    "pass": true
+   },
+   {
+    "id": "C4",
+    "law": "G2: provenance SHA-pin families of the 663 exact (spec:4CH1-2017 ×182; maths-a/physics @75755855 ×188/×195; maths-b @c2fcd88a ×98; OTHER=0)",
+    "expected": {
+     "spec-4CH1": 182,
+     "bundle-maths-a-75755855": 188,
+     "bundle-physics-75755855": 195,
+     "bundle-maths-b-c2fcd88a": 98
+    },
+    "observed": [
+     {
+      "fam": "bundle-physics-75755855",
+      "n": 195
+     },
+     {
+      "fam": "bundle-maths-a-75755855",
+      "n": 188
+     },
+     {
+      "fam": "spec-4CH1",
+      "n": 182
+     },
+     {
+      "fam": "bundle-maths-b-c2fcd88a",
+      "n": 98
+     }
+    ],
+    "pass": true
+   },
+   {
+    "id": "C5",
+    "law": "G2: KEEP residuals untouched — 12 4CH1-PR practicals + 6 WCH11 topics still SUBTOPIC",
+    "expected": {
+     "practicals": 12,
+     "wch11": 6
+    },
+    "observed": {
+     "practicals": 12,
+     "wch11": 6
+    },
+    "pass": true
+   },
+   {
+    "id": "C6",
+    "law": "G2: ck_node_type 7-value def incl SPEC_POINT, convalidated",
+    "expected": {
+     "contains_SPEC_POINT": true,
+     "convalidated": true
+    },
+    "observed": {
+     "d": "CHECK (((node_type)::text = ANY (ARRAY[('SUBJECT'::character varying)::text, ('UNIT'::character varying)::text, ('TOPIC'::character varying)::text, ('SUBTOPIC'::character varying)::text, ('MISCONCEPTION'::character varying)::text, ('CONCEPT'::character varying)::text, ('SPEC_POINT'::character varying)::text])))",
+     "convalidated": true
+    },
+    "pass": true
+   },
+   {
+    "id": "C7",
+    "law": "G4: anchor companion invariant — every anchor joins its target; zero non-SPEC_POINT targets (100% SPEC_POINT)",
+    "expected": {
+     "anchors_not_spec": 0,
+     "joined_equals_total": true
+    },
+    "observed": {
+     "total": 20990,
+     "joined": 20990,
+     "anchors_not_spec": 0
+    },
+    "pass": true
+   },
+   {
+    "id": "C8",
+    "law": "G4: anchor total vs of-record 8138 (report-only; bundle/intake waves may grow it)",
+    "expected": {
+     "of_record": 8138
+    },
+    "observed": {
+     "total_now": 20990
+    },
+    "pass": true
+   },
+   {
+    "id": "C9",
+    "law": "G4: zero dangling anchors (spec_point_node_id NULL count = 0)",
+    "expected": {
+     "null_targets": 0
+    },
+    "observed": {
+     "null_targets": 0
+    },
+    "pass": true
+   },
+   {
+    "id": "C10",
+    "law": "G2: 663 receipt ids map to 663 distinct (id, code) pairs — code stability proxy",
+    "expected": {
+     "pairs": 663
+    },
+    "observed": {
+     "pairs": 663
+    },
+    "pass": true
+   }
+  ],
+  "verdict": "GREEN — all invariants hold",
+  "invariant_ids": [
+   "C1",
+   "C3",
+   "C4",
+   "C5",
+   "C6",
+   "C7",
+   "C9",
+   "C10"
+  ],
+  "report_only_ids": [
+   "C2",
+   "C8"
+  ]
+ }
+}

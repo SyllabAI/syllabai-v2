@@ -1,0 +1,81 @@
+{
+ "receipt": "F5-S7-GROUND/w1c-records-commit-receipt-20261021.json",
+ "generated_at": "2026-10-21T11:18Z",
+ "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b-6184-4c19-b655-194e50e82b4f)",
+ "authority": "operator trace 1a15e1a470900835 (credential re-delivery + 'Proceed with Next deploy window'); window scope = the record's open credential-gated residuals (G2 seeder-convergence + G4 anchor-companion repo artifacts + records_commit — worklog of record 2026-10-20, G-round execution receipt open_items)",
+ "credentials_verified": [
+  {
+   "kind": "github_pat",
+   "staged": ".creds/gh-pat.candidate 0600 (re-staged post sandbox recycle; values never echoed)",
+   "bytes": 40,
+   "fp16": "a8ccee736aa8c75b",
+   "identity_gate": "GET https://api.github.com/user -> 200, login SyllabAI",
+   "rotation_state": "UNROTATED vs record (same credential re-delivered, not a rotation) — rotation advisory standing"
+  },
+  {
+   "kind": "vercel_pat",
+   "staged": ".creds/vcp-incoming-20261021 0600 (operator handoff of trace 1a15e1a470900835)",
+   "bytes": 60,
+   "fp16": "d254bbfaac004354",
+   "identity_gate": "GET https://api.vercel.com/v2/user -> 200, user syllabai-1403",
+   "rotation_state": "UNROTATED = the sealed live token lineage (Task-30 / R0-WAVEA of record) — rotation advisory standing CRITICAL per run-005 write ledger"
+  }
+ ],
+ "handoff_summary_reconciliation": {
+  "verdict": "the prior window summary's w1a/w1b deploy narrative + 'migration 0004_cla_thread_sync_tier prod-apply' + 'flyway ledger 63 rows' + records-repo SyllabAI/syllabai@aa43bca have ZERO footprint in the record of record (repo worklog grep clean; no 0004*.sql / *thread_sync* file at any tracked rev; zero .syllabai 0004 mentions)",
+  "named_referents": {
+   "26e11d8": "REAL commit but mundane: r1c T-MIG-138 run-004 addendum-1 receipt commit, 2026-10-20T19:29:01Z",
+   "6ebf124": "REAL commit but mundane: HUB-TUTOR course-tutors-r0 receipt commit (PR #234 lineage), 2026-10-20T23:15:43Z",
+   "flyway_63_rows": "the frozen core's V1..V63 boot posture (T-MIG substrate law), not a v2 prod ledger",
+   "fp16_b289a2298e707904": "the api DATABASE_URL of record (localgate lineage, run-002/137 eras), not a migration DSN gate",
+   "records_repo": "records of record = .syllabai/ direct-main on SyllabAI/syllabai-v2 (this repo); SyllabAI/syllabai = the active master-project-pack repo, not the records target",
+   "migration_0004_cla_thread_sync_tier": "NO referent anywhere — no file, no band, no receipt, no worklog line"
+  },
+  "zero_ddl_law": "HELD — no DDL executed or staged this window"
+ },
+ "battery": {
+  "script": "scripts/w1c-g2g4-check.js (persisted lane-side, re-runnable)",
+  "ran_at": "2026-10-21T11:16:29Z",
+  "credential": "t0_readonly via .creds/neon-ro-uri (fp16 f0c7e4f8ce294a20), SELECT-only, zero writes",
+  "verdict": "GREEN — all invariants hold (10/10 executed, 8 invariants + 2 report-only)",
+  "invariants": ["C1 family census exact 663", "C3 B5 law 663/663 receipt ids", "C4 provenance SHA-pin families exact", "C5 KEEP residuals 12+6", "C6 ck_node_type 7-value convalidated", "C7 anchors 100% SPEC_POINT targets", "C9 zero dangling anchors", "C10 663 distinct (id, code) pairs"],
+  "growth_accounting": {
+   "spec_point_total_now": 7404,
+   "of_record_family": 663,
+   "anchor_total_now": 20990,
+   "anchor_of_record": 8138,
+   "note": "of-record families byte-exact inside the grown graph; growth = legal content-wave addition (T-BOOK/ADR-037/CIE waves, PRs #245-#249 lineage); anchor integrity 100% on the grown total"
+  }
+ },
+ "files_filed": [
+  {"name": "g-round-execution-receipt-20261020.json", "bytes": 4869, "fp16": "7a655924ed01740a", "provenance": "byte-exact copy of the lane-staged G-round execution receipt (worklog-of-record fp16 match)"},
+  {"name": "g3-g5-backfill-receipt-20261020.json", "bytes": 498505, "fp16": "d121df18408da05b", "provenance": "byte-exact copy of the pre-mutation receipt of record (sha256 head fce408a2... cited in the execution receipt)"},
+  {"name": "production-ddl-snapshot-20261020.sql", "bytes": 127590, "fp16": "5266afc4b3cbfd1a", "provenance": "byte-exact copy of the live DDL snapshot companion artifact"},
+  {"name": "db-census-20261020.md", "bytes": 5597, "fp16": "75ae0be08c97cd00", "provenance": "byte-exact copy of the F.5 §7 DB census of record"},
+  {"name": "g2-g4-convergence-check-20261021.json", "bytes": 6012, "fp16": "see band listing", "provenance": "NEW — this window's G2/G4 battery result (wrapped)"},
+  {"name": "w1c-records-commit-receipt-20261021.json", "provenance": "this file"},
+  {"name": ".syllabai/worklog.md Task-70 entry", "provenance": "appended at tail, union-append per law"}
+ ],
+ "t_mig_138_drain_state": {
+  "run_of_record": "run #10 id 39571684429, t-mig-138-intake.yml @ main#c1d123e, 2026-10-21T08:45:25Z..09:16:27Z (31m02s) — receipt T-MIG-138/run-005-drain-fire-r1c.json",
+  "outcome": "121 embedded / 95 residual (41 skipped-honest + 54 shard-4 unattempted; op#4 403-dead NON-RATE)",
+  "next_window": "RPD reset 07:00Z Oct 22 on operator re-key — recipe identical (mode=backfill-sharded, rows = t138-drain-rows-residual-95.txt)",
+  "this_window": "NOT re-fired (separate-act law; window not reached)"
+ },
+ "vercel_census_get_only": {
+  "api_prj_FN5X_latest_prod": "dpl_jm9UKvuuUxnATjyX5jADuNJh READY, created ~2026-10-21T09:37Z (of-record lane redeploy)",
+  "writes": "zero — GET-only posture; no api-deploy debt outstanding of record"
+ },
+ "push": {
+  "method": "fetch-first immediately pre-commit; direct-main; no force; token inline memory-only; author w0a lane <w0a@lane.local>",
+  "auto_bake_disclosure": "this push auto-bakes a hub deployment (git-linked consequence law of record; .syllabai-only diff, no code)"
+ },
+ "write_ledger": "DB: SELECT-only (t0_readonly). GitHub: one direct-main records commit (.syllabai-only). Vercel: GET-only. LLM: none. Secrets never echoed — fingerprints only.",
+ "residuals_standing": [
+  "PAT rotation CRITICAL overdue (GH a8ccee736aa8c75b + Vercel d254bbfaac004354, both UNROTATED re-deliveries; operator-gated)",
+  "t0_readonly INSERT-on-knowledge_nodes revoke (privilege creep vs name; unused; operator-gated)",
+  "neondb_owner API-fresh URI (.creds/neon-owner-uri) revocation after operator review",
+  "T-MIG-138 95-row residual + op#4 403-dead / op#1 anomaly pool keys (operator-keyed)",
+  "prior summary's 'w1b deploy window / 0004 migration' chain: NO record referent — any real migration/deploy beyond current posture needs a fresh named operator order"
+ ]
+}
