@@ -11510,3 +11510,21 @@ Stage Summary:
 - T-SM-KAPPA-SUBJECT is receipt-complete in-repo: band + eval + operator order as three JSONs; #29 comments 3/4/5 remain the discussion surface, this ledger entry + receipts are the durable record.
 - D2 consequence #2 state: band merged + P0-fixed + migration live + runtime parse-proven; the ONLY remaining steps are (a) deploy a cdc1cd2-containing api build (operator lever), (b) run the 4CH1 teacher queue under D5 discipline, (c) pre-write D5 replica pass, (d) operator POST -> row of record -> D5.7 table.
 - Open: 4PH1 R5 (needs its own queue); G3 gates unchanged (R2-v2 provenance split + 4CH1 A3 paper-metadata hygiene); Render core suspension finding; D5 floor codification band is an optional follow-up.
+
+---
+
+Task ID: T-TEACH-006
+Agent: zai-web lane (main agent, session web-590847c1, ruling trace 1a15ffcb82ca8689)
+Task: the operator ruled "Fix it" on T-TEACH-005 finding F-1 — assignments ownership scope (the T-TEACH-003-mold v2-native amendment)
+
+Work Log:
+- ENVIRONMENT EVENT: the session workspace was wiped mid-task (fresh rootfs); re-cloned syllabai-v2 with the operator PAT, verified the T-TEACH-005 receipt intact at origin, resumed. Zero work lost.
+- Implemented the ownership scope: new ownedAssignment gate in services/teacher-assignments/index.ts (404 d09/e07 verbatim -> 403 "this assignment belongs to another teacher", the §17 wording with the assignment noun, one fetch serves gate+view); listAssignments now binds teacher_id in the SQL (own newest 50); assignmentRoster + setAssignmentStatus gate BEFORE read/write (400 parse -> 404 -> 403 -> update); routes/assignments.ts threads auth.userId into all four calls.
+- Tests: 6 new pins — list params law (slot 1 teacher / slot 2 limit), foreign roster 403 verbatim (service + router), foreign status flip 403 AND the UPDATE asserted never issued (service + router), 400-beats-403 order, 404-before-403 order.
+- Deliberate frozen-wire divergence of record in both file headers (the ruling is the decision of record); cohort denominator for cohort-less assignments unchanged (V51: the author seeing their own assignment's whole-cohort stats is not cross-scope); hub untouched (bearer token already rides every call; 403 renders the honest error band).
+- Gates: typecheck x4 clean; bun test apps/api packages 2488/0/13 (teacher-assignments band 35 -> 41); build:hub green; eslint N/A for apps/api (hub-only config). PR #274 (head 3be24ab) CI 2/2 -> squash-merged e2d5879 -> main head CI 2/2; branch deleted both sides.
+- Close-out: receipt .syllabai/receipts/HUB-TEACH/t-teach-006-assignments-ownership-scope-r0.json + this entry, direct-main per the .syllabai/** law.
+
+Stage Summary:
+- F-1 is CLOSED as fixed: the mounted v2 teacher surface is now fully ownership-scoped (classes, coverage, KG trio, marking since T-TEACH-003, and now assignments). The one known independent-learner exposure on a mounted teacher surface (cohort-less roster reads) is closed with it.
+- Open items of record: F-2 guard-law (analytics mount), F-3 notes, LOCAL past-papers card, stage-5b proof watch.

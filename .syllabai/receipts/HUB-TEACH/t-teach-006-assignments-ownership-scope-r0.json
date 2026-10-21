@@ -1,0 +1,37 @@
+{
+  "task": "T-TEACH-006",
+  "band": "HUB-TEACH",
+  "title": "assignments ownership scope — the T-TEACH-005 F-1 fix: every assignments surface (list / roster / setStatus) now scopes to the requesting teacher (the §17 ownership gate, 404-before-403); a foreign teacher's status flip 403s and NEVER issues the write",
+  "operator_order_trace": "T-TEACH-005's next-field offered the ruling; the operator ruled 'Fix it' (session web-590847c1-cf63-4098-b0c8-a90085355429, trace 1a15ffcb82ca8689) — the T-TEACH-003-mold v2-native amendment, NOT frozen-parity retention",
+  "date": "2026-10-22",
+  "agent": "zai-web lane (main agent, session web-590847c1)",
+  "what_shipped": [
+    "services/teacher-assignments/index.ts — new ownedAssignment(deps, teacherId, assignmentId) gate, the ownedClass twin: 404 'unknown assignment: {id}' verbatim (d09/e07) then 403 'this assignment belongs to another teacher' (the §17 foreign-object wording with the assignment noun, riding the existing ClassroomForbiddenError -> 403 forbidden router mapping); ONE fetch serves the gate and the view — no re-read",
+    "listAssignments(deps, teacherId) — the list query gains 'where teacher_id = $1::uuid': the LIMIT 50 bound now applies to the teacher's OWN newest 50. The whole-cohort denominator for a cohort-less assignment is UNCHANGED (the V51 semantics — the assignment's own target; a teacher seeing their own assignment's whole-cohort stats is not cross-scope)",
+    "assignmentRoster(deps, teacherId, id) — the ownership gate runs FIRST: the roster is learner data (names, completion states, scores), so a cohort-less roster's whole-cohort rows are now readable only by the assignment's own author — the T-TEACH-005 F-1 independent-learner exposure closes with it",
+    "setAssignmentStatus(deps, teacherId, id, raw) — the gate runs BEFORE the write; the 400 status parse stays first (the @Valid-before-ownership law): 400 -> 404 -> 403 -> update. A foreign teacher's close/reopen is now impossible at the service layer",
+    "routes/assignments.ts — auth.userId rides into all four service calls (create already carried it); the router shell (requireRole TEACHER/ADMIN) and the two-envelope body law are untouched",
+    "tests: 6 new pins across the service and router suites — the list binds the JWT identity (param slot 1 = teacher, slot 2 = the limit, so the bound is provably per-teacher); foreign roster 403s verbatim; foreign status flip 403s AND the UPDATE is asserted never issued (empty update log); the 400 parse beats the 403 gate; unknown assignment 404s before the ownership check (the ownedClass order); both 403s re-verified through the real Hono router over the real services"
+  ],
+  "design_decision_of_record": {
+    "forty_three_explicit_not_d1_forty_four_invisible": "assignments are teacher-authored OBJECTS (teacher_id column on the row) — the same ownership class as classes, whose §17 law is the explicit 403. ADR-027 D1's 404-invisibility is reserved for LEARNER ANSWER content where mere existence leaks learner state (T-TEACH-003's marking law). The assignment's existence is not learner-sensitive; the roster's learner rows are protected by the object gate upstream. Consistency with classroom/KG/coverage wins.",
+    "deliberate_frozen_divergence": "the frozen core's TeacherAssignmentController read/wrote globally (single-teacher pilot posture; ADR-027 D1 binds the marking surface by name only). The operator's 'Fix it' ruling IS the divergence decision of record; both file headers carry the amendment note so no future lane re-derives it from the golden captures.",
+    "cohort_denominator_unchanged": "a cohort-less assignment (class_id = null) targets the whole enabled STUDENT set by V51 design. The AUTHOR seeing whole-cohort stats on their OWN assignment is the feature; the foreign-teacher access is what this task removes.",
+    "hub_untouched": "the hub client already sends the bearer token on every call and surfaces errors honestly ('errors are surfaced, never mirrored'); a stale link to a colleague's assignment now renders the honest 403 band. Zero hub diff."
+  },
+  "verification": {
+    "typecheck": "bun run typecheck — clean x4 (packages/contracts, packages/shared, packages/db, apps/api)",
+    "api_packages_tests": "bun test apps/api packages — 2488 pass / 0 fail / 13 skip (130 files, 21724 expects) — 0-fail holds; the teacher-assignments band went 35 -> 41 with the new pins (service 30 -> 36 across 2 pre-existing files? no: service.test.ts + routes.test.ts together 41)",
+    "hub_build": "bun run build:hub — green; the assignments client compiles unchanged",
+    "eslint": "N/A for apps/api — the repo's eslint config is hub-only (recorded honestly; the T-TEACH-004 four-file eslint law does not apply to an api-only diff)",
+    "ci": "PR #274 head 3be24ab: verify + hub 2/2 green; merged squash e2d5879; main head e2d5879: verify + hub 2/2 green"
+  },
+  "environment_note": "the session workspace was WIPED mid-task (fresh rootfs — repos/ and scripts/ gone); the lane re-cloned syllabai-v2 from origin with the operator PAT and resumed; no work was lost (the audit receipt T-TEACH-005 was already merged at 9c75ded and is present in the fresh clone)",
+  "residuals": [
+    "T-TEACH-005 F-2's guard-law stands (class-analytics mount must ship scoped reads in the same milestone) — this task does not mount anything",
+    "T-TEACH-005 F-3 notes unchanged (V49 roster by-ruling; concept-edges content-only; hub corpus-only unauth routes; ai/* adjacent flag)",
+    "the T-TEACH-003 neon-replay stage-5b nightly projection proof stays with the standing 02:30Z cron",
+    "the LOCAL class container's optional past-papers card follow-up remains queued (T-TEACH-004 residual)"
+  ],
+  "next": "the remaining-queue review continues with the operator: LOCAL past-papers card, stage-5b proof watch, and any new ruling; F-1 is CLOSED as fixed"
+}
