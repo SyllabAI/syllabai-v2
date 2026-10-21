@@ -11341,3 +11341,12 @@ Stage Summary:
 - Production Neon of record: 21/29 chapters VALIDATED serving 131 blocks; u4 8 chapters SUGGESTED with the widened join sets in place; glossary 88/88 VALIDATED; spec-graph orphans 0 (was 11 = 6.0% of the 182-point graph).
 - Repo of record: tracked single-command set books-u4-s34/; 3 task yamls + 3 receipts; findings x2 closed; c11-c21 status truthing; session-side vehicles fbook-0005-widen-repair.ts + glossary-validate-r2.ts (untracked, re-runnable).
 - OPEN, one order away: `DATABASE_URL=... bun apps/api/scripts/books-u4-s34/run.ts --commit` fires the u4 S3/S4 (the Phase C full-book flip; then pack.yaml notes c22-c29 + the 24 u4 glossary terms' own r3 lane).
+
+## receipt(R0-AUTO) — r0-cron-20261022-0300 (2026-10-21T19:00Z sweep)
+
+- Task ID: r0-cron-20261022-0300 (Job 438940)
+- MERGED (1/2): PR #267 → 2d16b98 — T-BOOK-020/021/022: F-BOOK-0001 amendment + u4/S34 arm + glossary validation r2 (head 7d9b269)
+  - Gates: head 7d9b269 verify ✓ hub ✓ Vercel ✓; mergeable=True (unstable=external status only); reviews 0 / comments 1 (vercel[bot], unflagged); diff in-bounds — .syllabai receipts/tasks/worklog, apps/api/scripts/books-u4-s34, books/4ch1 packs; no *.java, no core/hub content, no DB/prod writes
+- LANE SELF-MERGED: PR #268 → d6dbebd (official-paper bundle sync ADR-037 v0.9.0) at 19:02:00Z mid-sweep, single-parent ff push; R0 PUT was a benign idempotent no-op on the already-merged PR (no double-merge, no force); R0 had locally pre-verified merge-tree clean
+- Post-merge main CI: 2d16b98 hub ✓ verify ✓; d6dbebd hub ✓ verify ✓
+- Bookkeeping only: .syllabai/** — no code, no force
