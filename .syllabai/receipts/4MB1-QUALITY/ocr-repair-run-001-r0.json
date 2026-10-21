@@ -1,0 +1,42 @@
+{
+ "receipt": "ocr-repair-run-001-r0",
+ "task": "4MB1-QUALITY ocr-repair-run-001-r0 (operator order trace 1a15e7d6114dff35, queue item 1: '2019-06-02 OCR repair lane'; firing order this session: 'Initiate OCR to fix the capture channel')",
+ "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "class": "CAPTURE-CHANNEL REPAIR — the image-only QP recovered end-to-end; the last honest-empty set of the 4MB1 archive becomes a real 11-question set",
+ "lanePredecessor": "ocr-repair-recon-run-001-r0 (sibling recon of the ADJACENT 2019-06-4mb1-02 font-poisoning damage class — doubled runs + FFFD — a different disease on a different paper; its vision-collector runbook remains open, untouched by this lane)",
+ "rootCauseOfRecord": "2019-06/4MB1-02R qp.pdf is a 36-page IMAGE-ONLY scan (pdftotext yields only PMT watermark glyphs; pdffonts: one non-embedded Arial-Italic). The deterministic pdflane captured 0/100 honestly (band-2 fail-closed withhold class; bank receipt honesty_carriers: '2019-06 02R 0/100 image-only'). No text layer existed for any consumer.",
+ "captureRepair": {
+  "method": "OCR SANDWICH — original page rasters preserved byte-faithfully + invisible tesseract 5.5.0 text layer inserted per line (CLI TSV, 300dpi, DejaVuSans render_mode=3, margin-window filter x in [45,545]pt)",
+  "dualPassLaw": "psm3 base (clean columns, footers) + psm6 bbox-isolated recovery (big opener digits next to figure boxes that psm3 layout analysis classifies as graphics — Q6/Q9 openers recovered this way; psm6 margin-junk merges overlap psm3 lines and are dropped)",
+  "engineDiscipline": "zero LLM; tesseract two-pass OCR byte-identical (determinism PASS); PDF serialization not byte-stable (MuPDF object ids) so the of-record invariant is the whitespace-normalized text-layer round-trip (362 lines, PASS) + pinned sha",
+  "parserSidePatch": "extract_pymupdf.py QP-footer span patch: the covered-line law now re-admits '(Total for Question N is M marks)' rows swept into pseudo-table regions (Q5/Q7 footers were being eaten; mirrors the F2 total-row patch's question-furniture principle); parser suite 18/18 green (6 files needed PYTHONPATH=tools — pre-existing invocation quirk, A/B-proven identical without the patch)",
+  "censusOfRecord": "QP footers 11/11 = {1:8,2:10,3:8,4:14,5:10,6:7,7:10,8:14,9:8,10:5,11:6} sum 100 == cover witness 100 == MS raw layout sequence 11 rows EXACT",
+  "independentCorroboration": "pdfjs (blueprint builder, a second consumer) read the invisible layer from the pushed sandwich and emitted the 2019-06:4MB1-02R blueprint row with inferred:[] — no gap inference needed anywhere"
+ },
+ "pipelineResult": {
+  "parse": "pdflane run_paper (UNMODIFIED grammar) on the sandwich: 11 atoms / 100 marks; V1-V4 validation PASS; G4/G5/G6 PASS; G1/G2/G3 FAIL honestly on the MS plane (see residuals)",
+  "archive": "syllabai-pastpapers 2c438f38 — qp.pdf (sandwich, sha 43e05b1dc1d04c1b...) + manifest.yaml (sha/size/provenance note; original scan sha d964548f... in git history) + parsed/{qp.md,ms.md,questions.json} as-parsed; pushed no-force 87b6b985..2c438f38",
+  "bundle": "the 02r set record rebuilt by atoms_to_bank.build_record (of-record assembler) and spliced: 11 questions / 40 parts / 100 marks; name drops the honest-empty suffix; manifest counts 1,249->1,260 questions, 2,392->2,432 parts, 6,341->6,441 marks; single-line compact JSON format preserved (round-trip assert); every other set byte-identical"
+ },
+ "recordRepairsApplied": [
+  {"question": 7, "type": "drop-continuation-reprint-duplicate-part", "detail": "the OCR layer faithfully captured the printed '(e) 3' reprint at the top of the p21-23 continuation space ('Only use this grid if you need to redraw your curve'); the parser attached it as a 6th part making partsSum 13 != 10 (badSum class). DROPPED at record assembly. Anchor: printed MS grid rows (a)2 (b)2 (c)1 (d)2 (e)3 = 10 == QP total.", "authority": "standing badsum-ruling verdict (RESTORE, evidence-complete repairs)"},
+  {"question": 8, "type": "part-marks-stamp", "detail": "part b marks 4 -> 2: OCR merged the gf(4) function-argument bracket into the marks capture. Anchor: MS point-sum a1+b2+c3+d3+e5 = 14 == QP total 14 EXACT.", "authority": "standing badsum-ruling verdict (RESTORE, evidence-complete repairs)"}
+ ],
+ "postRepairLaw": "all 11 questions partsSum == totalMarks (badSum candidates 0) — the emitter's exclusion law will NOT eat any of them at a future operator-gated re-ingest",
+ "disclosedResiduals": [
+  "MS grammar splits the Q11 block into ms-q11 + spurious ms-q12 (total rows 11 correct in the raw layout; merged-marks-cell class — the designed S2 lane is operator-keyed, not fired); the record's q11 markScheme carries the 5-point portion; marksVerified=false honesty footer rides the record",
+  "q10/q11 ship as whole-question synthesized parts (part null) — corroborated by the MS assigning part:null on all their points",
+  "specPointCodes ship EMPTY on all 40 parts (anchor-pending): the band-3b anchoring pass predates these 11 questions; the 135b shim excludes them from ingest until an anchor round lands — operator-keyed follow-up",
+  "difficulty null on the bundle plane (of-record posture: bands live on questions + question_versions DB planes)",
+  "G1/G2/G3 MS-plane gate fails disclosed above; QP plane fully green",
+  "commandWord: parser-extracted where printed; the commandword lane's 93% fill law was not re-run on these 11 questions (separate deterministic pass, operator-keyed)",
+  "figure content (graphs/diagrams) is raster-resident in the scan — atoms carry figure references to full-page rasters; the bundle plane carries zero figure refs by design (atoms_to_bank drops them); stem math is OCR-flattened where structure was graphical (the deterministic formatting-note class)",
+  "index/blueprint regen at tree 2c438f38 also absorbed sibling corpus growth already on main (index: treeSha-only delta; blueprints: +1 row, 0 changed rows — verified row-by-row)"
+ ],
+ "gatesRun": ["parser suite 18/18 (incl. PYTHONPATH=tools files)", "typecheck x4 rc=0", "verify:corpus PASS", "verify:flashcard-sync PASS", "verify:cie PASS", "hub unit suite 219 pass / 1 fail PROVEN PRE-EXISTING at clean HEAD via A/B stash (order-dependent isolation in question-cla-threads, unrelated plane)", "next build exit 0"],
+ "dbWrites": 0,
+ "prodWrites": "none (no DB, no secrets, no deploy lever pulled; the v2 push auto-bakes the hub per the git-linked consequence law, disclosed)",
+ "llmSpend": 0,
+ "artifacts": "scripts/run-ocr-02r/{r0_ocr_sandwich.py,v1 try, r0_ocr_sandwich_v2.py, sandwich-report.json, sandwich-report-v2.json, qp.ocr-sandwich.pdf, r0_dump_pages.py, r0_gate_detail.py, run-paper-stdout.json, r0_splice_02r.py, splice-report.json, parsed/ (staging), pages/ (diagnostic renders)}",
+ "hygiene": "PAT inline one-time per fetch/push, remote URLs scrubbed, git config token hits 0 across all three repos; no key/URI/bearer in any artifact; NEON unused this lane"
+}
