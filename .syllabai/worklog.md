@@ -10921,3 +10921,18 @@ Work Log:
 
 Stage Summary:
 - Task (b) residual CLOSED: the 4MB1 blueprint plane is COMPLETE (64/64 papers, per-question official marks everywhere, paper totals proven from the printed QP lines); the coverage gate now has a fully-anchored family to gate on; the no-bp paper of record is no-bp no more.
+
+---
+Task ID: 4MB1-QUALITY commandword-lane-run-001-r0 (trace 1a15e7d6114dff35, operator order item "commandWord 45%")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- ZERO-LLM lane: deterministic imperative-verb extraction, calibrated on the family's own 1,080 labeled parts. 4-variant grid (first|last x restricted|extended vocab) + 'give your answer' preamble exclusion + 'write down'->'Write' fold; WINNER first:extended 96.4% (1,041/1,080); 'last occurrence' falsified (89.8%). Proper family casing pinned (Show that / Work out / ...); existing 191 lowercase values untouched (never-overwrite).
+- BUNDLE surface: 1,144 fills of the 1,312 null parts -> part-level coverage 45.2% -> 93.0%; structure 65/1,249/2,392 unchanged; only commandWord fields touched; DRY-then-APPLY pre-sha 943b0cf1 (== badsum-ruling post-sha, race-clean chain); single-line JSON preserved.
+- DB surface: DB command_word == bundle part[0] proven 376/376 exact first (calibrate-001), then mirrored: 757 of the 816 null rows filled (59 honest no-derivation residual) in ONE guarded tx (FOR UPDATE 757 == plan, in-tx baseline re-prove, chunked parameterized VALUES-join ::uuid/::int/::text, per-row guard command_word IS NULL, in-tx post null-count 0) -> question-level coverage 31.6% -> 95.1% (1,133/1,192); plane equality 1,133/1,133 = 0 mismatches; idempotency re-run = clean no-op.
+- HONEST ABORT of record: first APPLY attempt died at the in-tx baseline re-prove (sha scope bug: DRY hashed all 1,192 rows, APPLY locked the 757-row subset) — clean rollback, zero rows committed; scope fixed to plan rows, re-proven, landed.
+- New vocabulary forms disclosed (Solve/Express/Simplify/Factorise/Prove/... = standard Edexcel command words present in unlabeled stems, absent from the source-labeled subset).
+- Receipt: .syllabai/receipts/4MB1-QUALITY/commandword-lane-run-001-r0.json; artifacts scripts/run-commandword/*.
+
+Stage Summary:
+- The commandWord residual is DISCHARGED on both surfaces: bundle 45.2% -> 93.0% part-level, DB 31.6% -> 95.1% question-level (vs chemistry benchmarks 83%/56.1%), with 96.4% calibration provenance and per-row plane equality. The last lane of the operator's four-item order standing open is the 2019-06-02 OCR repair.

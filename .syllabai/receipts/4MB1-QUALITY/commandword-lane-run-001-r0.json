@@ -1,0 +1,28 @@
+{
+ "task": "4MB1-QUALITY commandword-lane-run-001-r0 (operator order trace 1a15e7d6114dff35, item 'commandWord 45%')",
+ "agent": "r0 (zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "method": {
+  "approach": "deterministic imperative-verb extraction (zero LLM), calibrated on the family's own 1,080 labeled parts",
+  "calibration": "4-variant grid (first|last occurrence x restricted|extended vocabulary) + 'give your answer' preamble exclusion + 'write down'->'Write' family fold; WINNER first:extended = 96.4% agreement (1,041/1,080); runner-up first:restricted 96.8% but covers 285 fewer nulls; 'last occurrence' hypothesis FALSIFIED (89.8%/86.5%)",
+  "casing": "proper family forms pinned (Show that / Work out / Simplify fully / Factorise fully); existing 191 lowercase source values left untouched (never-overwrite law)",
+  "vocabularyNote": "new forms introduced beyond the source-labeled set (Solve 108 / Express 66 / Simplify 27+24 / Factorise 26+21 / Prove 19 ...) are standard Edexcel command words present in unlabeled stems"
+ },
+ "bundleSurface": {
+  "fills": 1144, "of": 2392, "previouslySet": 1080,
+  "coverage": "45.2% -> 93.0%",
+  "shas": {"pre": "943b0cf13c71b075 (== badsum-ruling post-sha, race-clean chain)", "post": "in apply receipt"},
+  "invariants": "65 sets / 1,249 q / 2,392 parts unchanged; only commandWord fields touched; single-line JSON preserved"
+ },
+ "dbSurface": {
+  "law": "DB command_word == bundle part[0].commandWord proven 376/376 exact (calibrate-001); this lane mirrors the bundle fill onto question_versions",
+  "fills": 757, "ofNulls": 816, "residualNoDerivation": 59,
+  "coverage": "31.6% (376/1,192) -> 95.1% (1,133/1,192)",
+  "tx": "single guarded tx: FOR UPDATE 757 == plan, baseline sha re-proved in-tx, chunked parameterized tx.unsafe VALUES-join (::uuid/::int/::text), per-row guard command_word IS NULL, in-tx post null-count 0",
+  "planeEquality": "1,133 rows checked DB-vs-bundle-part0: 0 mismatches",
+  "idempotency": "re-run = clean no-op (plan 0, updated 0)",
+  "honestAbortOfRecord": "first APPLY attempt aborted PRE-UPDATE by the in-tx baseline re-prove (sha scope bug: DRY hashed all 1,192 rows, APPLY locked the 757-row plan subset) — clean rollback, zero rows; scope fixed to plan rows and re-proven before the landed apply"
+ },
+ "disclosedWrites": "DB: the 757-row question_versions.command_word fill (THE order). Repo: the bundle commandWord fill. Zero other DB/prod writes; no bearer/URI printed; NEON inline-only; scrub-assert pass.",
+ "artifacts": "scripts/run-commandword/{calibrate-001, calibrate-002, calibrate-003-grid, bundle-dry-001, bundle-apply-001, dry-001, apply-001, apply-002-idempotency, fill-plan-bundle-parts}.json + scripts/r0_commandword_*.mjs",
+ "contextNote": "the of-record 'commandWord 45% vs 83%' audit line compared bundle PART-level maths-b vs chemistry part-level; the DB question-level analog was 31.6% vs chemistry 56.1% — both surfaces now materially above their benchmarks"
+}
