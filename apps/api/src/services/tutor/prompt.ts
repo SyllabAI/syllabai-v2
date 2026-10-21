@@ -16,6 +16,7 @@
 import { MAX_TURN_CHARS, ROLE_ASSISTANT, isAssistantTurn, type ConversationTurn } from "./conversation";
 import type { EvidenceItem } from "./evidence";
 import { QUIZ_STEM_BOUND, type QuizScaffold } from "./quiz-scaffold";
+import type { MarkContext } from "./mark-context";
 
 // ── refusal texts (KaRagService.java :48-83, byte-verbatim) ─────────────────
 
@@ -73,8 +74,17 @@ export const PROMPT_REGISTRY_KEY = "tutor-grounded";
  *  never a silent edit), and the tier is COMPUTED, not judged: the
  *  DISCLOSURE TIER 2 block rides the of-record leakage-policy predicate
  *  (cla/leakage-policy.ts, T-MIG-067), so the prompt tier and the evidence
- *  gate agree by construction. */
-export const PROMPT_VERSION = "14";
+ *  gate agree by construction.
+ *  v15 (DC-1, the marking-context contract; prereg of record
+ *  docs/DC1-MARK-CONTEXT-PLAN.md, operator trace 1a15fe62c2e2bd2d): spec
+ *  §3.1 P0016 — when the ask resolves an explicitly referenced marked
+ *  part, the MARK CONTEXT block carries the marking engine's OWN artifacts
+ *  (part identity, submitted answer verbatim, per-point Allocation list,
+ *  scheme lines in order, the total) — never a re-derivation; the tier-2
+ *  block names the MARK CONTEXT block as a lawful source of scheme
+ *  content. The tier is COMPUTED here too: the tutor surface's tier is 2
+ *  exactly when the marked part resolved (prepare step 2.8). */
+export const PROMPT_VERSION = "15";
 export function promptIdentity(): string {
   return `${PROMPT_REGISTRY_KEY}/v${PROMPT_VERSION}`;
 }
@@ -252,8 +262,15 @@ export interface PromptContext {
   /** v14 (the DC-2 supersession): the COMPUTED disclosure tier — 1 = hint
    *  level (the default posture; no block), 2 = explicit (the DISCLOSURE
    *  TIER 2 block renders). The tier is pipeline state (the of-record
-   *  leakage predicate, cla/leakage-policy.ts), never learner data. */
+   *  leakage predicate on the CLA surface; DC-1's computed tier on the
+   *  tutor surface), never learner data. */
   disclosureTier?: 1 | 2;
+  /** v15 (DC-1, spec §3.1 P0016): the marking engine's OWN artifacts for
+   *  the explicitly referenced marked part — OUR scaffolding, rendered as
+   *  the MARK CONTEXT block (identity, point records and total unfenced;
+   *  the submitted answer inside the fence pair — it is the learner's
+   *  data). null = no mark state (the ordinary grounded ask). */
+  markContext?: MarkContext | null;
 }
 
 /** Paper evidence renders to the larger bound (:368-376). */
@@ -416,8 +433,48 @@ export function userPrompt(
         `attempt on this question — tier 2 (explicit) of the two-tier ` +
         `disclosure law. You may state the missed marking point(s) with ` +
         `their acceptable alternatives and numeric values as the mark ` +
-        `scheme in the SOURCES gives them, labelled as mark-scheme ` +
-        `content.\n\n`,
+        `scheme in the SOURCES or the MARK CONTEXT block gives them, ` +
+        `labelled as mark-scheme content.\n\n`,
+    );
+  }
+  // v15 (DC-1, spec §3.1 P0016): the marking engine's OWN artifacts — never
+  // a re-derivation. Identity, point records and the total are OUR
+  // scaffolding (unfenced, the QUIZ SCAFFOLD class); the submitted answer
+  // is the learner's data and renders inside the fence pair (H2 doctrine).
+  // The law line pins the acceptance behaviour: verbatim quote-back + the
+  // exact per-point accounting in the FIRST paragraph; comparisons build
+  // only from the Allocations given (the spec's cross-part pin).
+  const mark = context.markContext;
+  if (mark != null) {
+    sb.push(
+      `MARK CONTEXT:\nThe learner is asking about question ` +
+        `${mark.questionNumber}, part ${mark.partLabel}, of the pinned paper ` +
+        `"${mark.paperLabel}". They already submitted an attempt and it has ` +
+        `been marked. Ground EVERY statement about their attempt in THIS ` +
+        `block only — it is the marking engine's own record; never ` +
+        `re-derive, estimate or invent any part of it. In your FIRST ` +
+        `paragraph, quote the learner's submitted answer verbatim ("You ` +
+        `wrote: ...") and give the exact per-point accounting below.\n`,
+    );
+    sb.push(
+      `Submitted answer (verbatim):\n${open}` +
+        `${mark.answerText == null ? "(no typed answer was recorded for this part)" : mark.answerText}` +
+        `${close}\n`,
+    );
+    sb.push("Per-point accounting (scheme order):\n");
+    for (const p of mark.points) {
+      sb.push(
+        `- ${p.ref} (${p.marks} mark${p.marks === 1 ? "" : "s"}): ` +
+          `${p.awarded ? "AWARDED" : "NOT awarded"} — ${p.marksAwarded}/${p.marks}; ` +
+          `scheme line: ${p.text}\n`,
+      );
+    }
+    sb.push(
+      `Total: ${mark.totalAwarded}/${mark.totalPossible} marks.\n` +
+        `When the learner asks you to compare parts, build the comparison ` +
+        `ONLY from the per-point accounting in this block, in earlier turns ` +
+        `of this conversation, or in the SOURCES — never invent another ` +
+        `part's mark state.\n\n`,
     );
   }
   const plan = context.interventionPlan;

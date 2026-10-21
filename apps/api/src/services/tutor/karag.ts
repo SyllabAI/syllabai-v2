@@ -76,6 +76,7 @@ import {
   paperPinLabel,
 } from "./paper-question";
 import { isQuizAsk, loadQuizScaffold, type QuizScaffold } from "./quiz-scaffold";
+import { loadMarkContext, type MarkContext } from "./mark-context";
 
 // ── budgets (:96-105) ───────────────────────────────────────────────────────
 
@@ -255,6 +256,15 @@ interface PreparedAsk {
   /** run-015 #6c: the deterministic quiz scaffold (null = no quiz ask, no
    *  pin, or no scaffoldable bank rows — the ask proceeds unpinned-scaffold) */
   quizScaffold: QuizScaffold | null;
+  /** DC-1 (spec §3.1 P0016): the marking engine's OWN artifacts for the
+   *  explicitly referenced marked part (null = fail-open — no pin, no
+   *  reference, no attempt, no validated result — the ask proceeds exactly
+   *  as before). Prereg of record docs/DC1-MARK-CONTEXT-PLAN.md. */
+  markContext: MarkContext | null;
+  /** DC-1 (prereg R7): the tutor surface's disclosure tier — 2 exactly when
+   *  a marked part resolved (post-attempt chat turn on a marked part, the
+   *  spec's own tier-2 trigger), else 1 (the v14 default posture). */
+  disclosureTier: 1 | 2;
 }
 
 export interface KaragDeps {
@@ -397,6 +407,31 @@ export async function prepare(
     ).catch(() => null);
   }
 
+  // 2.8 the deterministic mark context (DC-1, spec §3.1 P0016; prereg of
+  // record docs/DC1-MARK-CONTEXT-PLAN.md, operator trace 1a15fe62c2e2bd2d):
+  // a chat turn whose ask carries an explicit part reference resolves that
+  // part WITHIN the session paper pin and — when the learner's LATEST
+  // attempt on it carries a VALIDATED smart-mark result — serves the
+  // marking engine's OWN artifacts as the MARK CONTEXT block, never a
+  // re-derivation. Resolution order per the existing intent laws: the
+  // explicit reference wins, then NO mark context (the tutor pipeline has
+  // no conversation-current-part substrate — the honest degradation the
+  // prereg rules, never a fabricated one). Advisory like the pin tier:
+  // no pin, no reference, no attempt, no validated result, or any loader
+  // failure → null → the ask proceeds exactly as before. A resolved marked
+  // part is ALSO the spec's tier-2 trigger on this surface (post-attempt
+  // chat turn on a marked part) — the v14 deferral lights up here.
+  let markContext: MarkContext | null = null;
+  if (pinPaperId != null && activePaperLabel != null && learnerId != null) {
+    markContext = await loadMarkContext(
+      deps.sql,
+      pinPaperId,
+      activePaperLabel,
+      learnerId,
+      query,
+    ).catch(() => null);
+  }
+
   // 3. rank fusion (plan §7 per-kind weights — the P3 serving posture)
   //    T-MIG-133 band 133d: the spec-scoped boost rides the weightDecorator
   //    seam — the ask's matched topic codes resolve to spine official-code
@@ -499,6 +534,8 @@ export async function prepare(
     scopeCode: scope?.code ?? null,
     activePaperLabel,
     quizScaffold,
+    markContext,
+    disclosureTier: markContext != null ? 2 : 1,
   };
 }
 
@@ -597,6 +634,8 @@ async function assembleContext(
     activeInferences: inferences,
     activePaperLabel: prep.activePaperLabel,
     quizScaffold: prep.quizScaffold,
+    markContext: prep.markContext,
+    disclosureTier: prep.disclosureTier,
     courseCode: prep.scopeCode,
     now: deps.clock.now(),
   });
