@@ -23,6 +23,15 @@ import {
  *   - a re-rate resets the clock (the due marker leaves immediately);
  *   - nothing is invented: never-rated decks show no badge at all.
  *
+ * DC-8 + DC-11 pins (research pass 5):
+ *   - the deck position RESUMES after a reload (SME screenshot 198: the
+ *     returning learner continues where they stopped) — device-scoped
+ *     session state (lib/flashcard-session), never the rating overlay;
+ *   - the player FILTERS narrow the run in place: the card-state family
+ *     (with the due axis) re-queries the deck, deck-wide counters stay
+ *     honest, the "Re-run mistakes only" preset isolates the misses, and
+ *     Clear filters restores the full deck holding the current card.
+ *
  * Every test drives the REAL UI for ratings (flip → rate) and only moves
  * timestamps through the overlay — the scheduler's inputs stay shaped
  * exactly like production's.
@@ -57,7 +66,9 @@ test("rating through the deck: counters update, still-learning is due immediatel
   await page.goto(DECK_URL);
   await expect(page.locator("span.tabular-nums", { hasText: /^1\// })).toBeVisible();
 
-  // SME loop: rate only after seeing the back — controls disabled up front
+  // SYLLABAI DEVIATION (citation corrected, research pass 5 figure 7):
+  // SME's rating controls are ALWAYS visible (rate-before-flip self-testing);
+  // here rating is deliberately reveal-gated — controls disabled up front.
   await expect(page.getByRole("button", { name: "Still learning", exact: true })).toBeDisabled();
   await expect(page.getByRole("button", { name: "Know", exact: true })).toBeDisabled();
 
@@ -102,8 +113,12 @@ test("know ladder: fresh know is not due, a days-old trail is, review-due-first 
   await page.reload();
 
   await expect(page.getByText("1 due for review")).toBeVisible();
-  // current card is the first in natural order (NOT the due one) — no marker
-  await expect(page.locator("span.tabular-nums", { hasText: /^1\// })).toBeVisible();
+  // DC-8 resume: the returning learner CONTINUES where they left off — two
+  // cards were rated this session, so the run resumes at 3/74 (the earlier
+  // "fresh 1/74 after reload" expectation is superseded by the research
+  // pass-5 resume law: deck position survives a reload)
+  await expect(page.locator("span.tabular-nums", { hasText: /^3\// })).toBeVisible();
+  // the current card is card 3 in natural order (NOT the due one) — no marker
   await expect(page.getByText("due for review", { exact: true })).toHaveCount(0);
 
   // "Review due first" lifts the stalest-due card to the front — the marker
@@ -120,6 +135,62 @@ test("know ladder: fresh know is not due, a days-old trail is, review-due-first 
   await rateCurrent(page, "Still learning");
   await expect(page.getByText("1 due for review")).toBeVisible();
   await expect(page.getByText("1 still learning")).toBeVisible();
+});
+
+test("resume (DC-8): deck position survives a reload; an explicit restart persists too", async ({
+  page,
+}) => {
+  await page.goto(DECK_URL);
+  await expect(page.locator("span.tabular-nums", { hasText: /^1\// })).toBeVisible();
+
+  await rateCurrent(page, "Know"); // advances to 2/74
+  await page.reload();
+
+  // the run resumes at the saved position — the research pass-5 law
+  // (screenshot 198), SyllabAI's device-scoped analogue
+  await expect(page.locator("span.tabular-nums", { hasText: /^2\// })).toBeVisible();
+  // the rating trail is intact too — the overlay chips still count card 1
+  await expect(page.getByText("1 know")).toBeVisible();
+
+  // an explicit restart is persisted as well: the next reload stays at 1/74
+  await page.getByRole("button", { name: "Restart" }).click();
+  await expect(page.locator("span.tabular-nums", { hasText: /^1\// })).toBeVisible();
+  await page.reload();
+  await expect(page.locator("span.tabular-nums", { hasText: /^1\// })).toBeVisible();
+});
+
+test("player filters (DC-11): state family narrows the run in place, mistakes preset isolates the misses, clear restores", async ({
+  page,
+}) => {
+  await page.goto(DECK_URL);
+  await rateCurrent(page, "Know"); // card 1 → fresh know
+  await rateCurrent(page, "Still learning"); // card 2 → due now
+  await expect(page.locator("span.tabular-nums", { hasText: /^3\// })).toBeVisible();
+
+  // uncheck "Know": the fresh-know card leaves the run (74 → 73); the
+  // current card (3rd) survives, so the position holds onto it (2/73)
+  await page.getByRole("button", { name: "Filters" }).click();
+  await page.getByRole("menuitemcheckbox", { name: "Know", exact: true }).click();
+  // checkbox selections keep the menu open (query composition, like SME)
+  await expect(page.getByRole("menuitemcheckbox", { name: "Know", exact: true })).toBeVisible();
+  await page.keyboard.press("Escape");
+
+  await expect(page.locator("span.tabular-nums", { hasText: /^2\/73$/ })).toBeVisible();
+  // the deck-wide counters stay honest — the ledger is not the run
+  await expect(page.getByText("1 know")).toBeVisible();
+  await expect(page.getByText("1 still learning")).toBeVisible();
+
+  // "Re-run mistakes only": still-learning ∪ due = exactly card 2
+  await page.getByRole("button", { name: "Filters" }).click();
+  await page.getByRole("menuitem", { name: "Re-run mistakes only" }).click();
+  await expect(page.locator("span.tabular-nums", { hasText: /^1\/1$/ })).toBeVisible();
+  // counters STILL deck-wide while the run is one card
+  await expect(page.getByText("1 know")).toBeVisible();
+
+  // Clear filters restores the full deck, holding the current card (card 2)
+  await page.getByRole("button", { name: "Filters" }).click();
+  await page.getByRole("menuitem", { name: "Clear filters" }).click();
+  await expect(page.locator("span.tabular-nums", { hasText: /^2\// })).toBeVisible();
 });
 
 test("learner page: the Flashcards due section shows the deck, its due count, and deep-links to it", async ({

@@ -42,6 +42,9 @@ export default async function FlashcardDeckPage({
       sourceNoteId: c.sourceNoteId,
       sourceTitle: c.sourceTitle,
       provenanceTier: c.provenanceTier,
+      // DC-11 scope family: the deck-internal card-type axis (null buckets
+      // as "Unclassified" in the player's filter menu)
+      cardType: c.cardType ?? null,
     }));
 
   const { meta } = hub;
@@ -64,7 +67,14 @@ export default async function FlashcardDeckPage({
             }
           />
           <div className="mt-6">
-            <DeckPlayer course={meta.slug} subtopicCode={subtopicCode} cards={cards} />
+            {/* keyed per deck: navigating deck→deck must re-init the run
+                state (baseOrder/pos/filter are per-deck session state) */}
+            <DeckPlayer
+              key={`${meta.slug}:${subtopicCode}`}
+              course={meta.slug}
+              subtopicCode={subtopicCode}
+              cards={cards}
+            />
           </div>
         </div>
       </div>

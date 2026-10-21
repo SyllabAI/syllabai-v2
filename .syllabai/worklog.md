@@ -11352,119 +11352,19 @@ Stage Summary:
 - Bookkeeping only: .syllabai/** — no code, no force
 
 ---
-Task ID: T-SPEC-STAGE2-1 (durable ledger — stage-2 refresh of the non-accounting attachment maps, pushed transit 28)
-Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, dispatch trace 1a15f76c1e5d3799)
-Task: Extend the Stage-1 accounting maps-vs-spine treatment to the non-accounting attachment maps; validate against spines of record, repair deterministically (no-guess law), refresh downstream chain, FF push, three-way verify.
+
+## FLASHCARDS-DC8-DC11 r0 — the deck player's session state: mis-citation fixed + DC-11 player filters + DC-8 resume (operator order trace 1a15fdb5109fd4bd "fix the mis-citation + ship the filter/resume deltas")
+
+Date: 2026-10-21
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b)
+Scope: apps/hub flashcards surfaces (deck-player, deck page, deck-flow spec) + new lib/flashcard-session{,.test.ts} + .syllabai receipt/worklog; fetch-first; no force; zero DB/secret/dispatch acts
 
 Work Log:
-- Corpus: 47 non-accounting spec_point_map.json (13 IAL + 34 IGCSE, 22 quals) — dispatched "45" matches no census in the tree (49 maps / 93 sidecars / 37 flashcard maps / 39 scraped-status maps all fail); ran the full 47 as strict superset; count basis requested.
-- Battery: X2/X3/X4 clean 47/47 (Lane A phantom class does NOT recur); pools 42/47 builder-law MATCH; X5: chemistry-19 1754 orphan codes (operator-verdict-part tier; paper-qualified 4CH1-x.y registry namespace vs unprefixed spine ids), sda-bio 1.
-- Repairs: (1) chemistry-modular unit-1/unit-2 scoped re-join via map_spec_points --courses (vintage unscoped 182-pool contradicted unit_scope; 15/27 cross-unit) -> pools 100/81, mappings 59/39, chain refreshed (flashcard maps x2 + sidecars); (2) pool restatements x3 with additive provenance (econ 94->108, geog 155->240, sda-chem 131->412, mappings untouched); (3) build_learner_spec_links merge_part_codes T-SPEC-STAGE2-1 deterministic paper-prefix resolution -> chem-19 sidecar 0 orphans, 3663->1909 codes, ZERO link loss (1754/1754 targets retained via map codes; 0 coded->uncoded regressions). Two incidents caught mid-lane: empty-bundle rebuild on sparse-absent sources (restored + surgical materialization + re-run); lost call-site edit from a MultiEdit misfire (spotted via persisting orphans, fixed, re-run).
-- Operator-gated disclosure (not mutated): sda-bio IGCSE_SCIENCE_DOUBLE_AWARD:2.54 operator-verdict part code has no spine target (no 2.5x family) — verdict requested.
-- Post battery: 47/47 pools MATCH; accounting corpus byte-identical.
-- Git: mid-lane drift 0f2ddc61 (books/4bi1 only, zero overlap) rebased clean; FF push 0f2ddc61..1fdf2f97 = TRANSIT 27 -> 28; three-way verified (local == ls-remote 1fdf2f97a5e1 == GitHub API).
+- MIS-CITATION FIXED of record: deck-player's rating-controls comment ("SME: rate after seeing back") and the header's "the SME loop" framing mis-cited the source — research pass 5 (Addendum line 75, figure 7) documents SME's rating controls ALWAYS visible incl. the card front, a deliberate rate-before-flip self-testing affordance. The comments now state the reveal-gating is a SyllabAI DEVIATION (answer-first anchoring guard), superseding the mis-citation; the behavior itself is unchanged (the interaction-model re-derivation stays a flagged product decision). The deck-flow spec's twin comment fixed with it.
+- DC-11 SHIPPED: the player is now a session query — a Filters dropdown (active-terms count badge, SME's pattern) with the card-state family (Not viewed yet / Still learning / Know + the due axis as the honest analogue of SME's unobserved Revisit bucket) x a deck-internal scope family (card type — SME's per-lesson family is unrepresentable: content census says every deck is ONE subtopic/section, specPointCode null across the pilot), plus the DC-11-named "Re-run mistakes only" preset and Clear filters. Snapshot semantics (structural actions re-query; ratings never re-filter mid-run); deck-wide counters stay unfiltered; honest empty-filter state with an exit.
+- DC-8 SHIPPED: run position + filter persist device-scoped (new lib/flashcard-session.ts, key syllabai-hub:deck-position:<course>:<subtopic>) and resume after first paint, strictly validated (set-equality + duplicate guard — a stale corpus run DISCARDS, never silently hides/phantoms a card). Resume is deliberately device-not-account (the honesty chip's own disclosure); per-account resume = a future core-side surface. The session store is NEVER engagement evidence (no rings/mastery/queue feed). Player keyed per deck for clean deck-to-deck state.
+- Gates of record (all green): unit 16/16 (new flashcard-session.test.ts); hub tsc exit 0; build:hub exit 0 (the CI hub lane incl. corpus prebuild verifies); deck-flow e2e 7/7 (incl. the UPDATED know-ladder pin — post-reload resume at 3/74 supersedes the fresh-1/74 expectation, per pass 5 screenshot 198 — plus TWO NEW pins: resume (DC-8) and player-filters (DC-11)); a11y 8/8 with the new Filters menu on the deck player.
+- Receipt: .syllabai/receipts/FLASHCARDS-DC8-DC11/run-001-w0a.json (decisions + disclosures of record, incl. the hub auto-bake consequence law and the 19:10:02Z Oct 21 pre-window T-MIG-138 census: total_count 10, latest run #10, zero runs >= 06:00Z Oct 22).
 
 Stage Summary:
-- T-SPEC-STAGE2-1 CLOSED @ origin/main 1fdf2f97 (transit 28): non-accounting map corpus re-attested to builder law; chemistry-19 learner sidecar healed; sda-bio 2.54 verdict operator-gated.
-- NEXT #2 pin bump target now 1fdf2f97 (carries repair + adjudication + stage-2 refresh); v2 still serving 75755855f9 (2026-09-17 cut).
-- PAT rotation CRITICAL overdue (transit 28, same fingerprint) — REQUIRED before any re-supply.
-- Open queue: CIE update channel, Edexcel bundle refresh.
-
-
----
-Task ID: T-SPEC-EDEX-REFRESH-1 (durable ledger — Edexcel official-spec bundle drift scan, ZERO DRIFT, no push)
-Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, current trace 1a15fbd6195b2071)
-Task: Re-verify the 21 Edexcel-side official-spec PDFs against Pearson + SME for content/URL/edition drift; deterministic repair only; zero-drift close.
-
-Work Log:
-- Driver scripts/edex_refresh_scan.py: Pearson fresh-fetch sha1+bytes re-verify x21 + SME landing courseExamSpecificationPdfLink re-discovery x39 courses.
-- Sparse surgery: 38 course manifests materialized (no-cone add; ial-biology-18 needed a retry).
-- Result: PEARSON_UNCHANGED 21/21; SME_LINK_MATCHES 20/21; igcse-business SME card -> Pearson 404 HTML (sha1 d76897c6ab) = upstream defect; manifest anchor live + byte-identical (sha1 1da38c0f2b, Issue 2). No mutation, no push, transit stays 30.
-
-Stage Summary:
-- Edexcel bundle byte-attested current as of 2026-10-22; zero drift to land. Remaining queue: NEXT #2 pin bump (75755855f9 -> fc6bf29c). Operator-gated: sda-bio 2.54, PAT rotation (CRITICAL overdue).
-
-
----
-Task ID: T-CONSUME-VERIFY-1 (durable ledger — NEXT #2 independent verification-close; zero writes)
-Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, current trace 1a15fbd6195b2071)
-Task: Independently verify the queued NEXT #2 pin upgrade / Edexcel refresh / CIE channel state of record; close the operator queue or repair what is genuinely open.
-
-Work Log:
-- fetch-first: FF'd this worktree d3d2fe6e-lineage -> origin/main 4c4e1bf7 (93 commits); durable-ledger dirt preserved via stash, union-appended (T-SPEC-STAGE2-1 + T-SPEC-EDEX-REFRESH-1 were absent; ADJ-1 already recorded).
-- Verified of record: T-CONSUME-EDX-2 run-001 (c2388bca) consumed the queued Edexcel refresh + pin upgrade at resources aa0b4de1 (repair + adjudication included by ancestry; anchors verified in served bundles); CIE channel consumed at fc6bf29c (7636aab1) under the two-pin law (ccbf2555).
-- Independent measurement: resources aa0b4de1 ancestor-of fc6bf29c; served+imported delta aa0b4de1..fc6bf29c over the 49 served courses = ZERO (7 changed files, all CIE-side non-served); 21/21 Edexcel spec PDFs byte-identical at Pearson (2026-10-22 fresh fetch, scripts/edex_refresh_report.json in the resources lane).
-- Live check: hub footer renders pilot pin cef8d5e25b (page.tsx:243 -> igcse-chemistry-19 manifest) — standing display semantics; DISCLOSED operator-gated: footer reads as a site-level pin while the bundle plane lawfully carries per-course pins (fix options: census badge / drop / min-pin).
-- ZERO content-plane writes, ZERO code writes, ZERO DB writes, zero pushes. Resources transit count stays 30.
-
-Stage Summary:
-- Operator queue VERIFIED CLOSED end-to-end. Operator-gated open items: footer pin-display honesty class; SME igcse-business card 404 (upstream); sda-bio 2.54 orphan; PAT rotation CRITICAL overdue (transit 30, same fingerprint). This file now carries two union-appended entries (STAGE2/EDEX) + this one, ready for the next .syllabai-only bookkeeping commit.
-
-
----
-Task ID: T-DISPLAY-PINCENSUS-1 (durable ledger — homepage footer pin honesty: pilot-scoped bundle line + computed per-course pin census)
-Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, dispatch trace 1a15fd1b35cef86d "Proceed with ① the homepage footer shows the pilot's old pin cef8d5e2 as a site-wide badge — misleading under the per-course pin law; want a fix?")
-Task: Operator ruling on T-CONSUME-VERIFY-1's residual finding (1) — the homepage footer rendered the PILOT's manifest pin (cef8d5e25b) as a site-level badge, a provenance claim the per-course pin law does not make. Fix the display plane only.
-
-Work Log:
-- Fix options offered of record (census badge / drop the badge / render min-pin); operator authorized without picking; lane chose the CENSUS BADGE (most honest + informative — "drop" discards provenance, "min-pin" is still one hash masquerading as a site claim).
-- Ground truth first (session-side scripts/pin_census_check.py over content/*/manifest.json + courses.json): 94 registry rows / 94 bundled / 0 unpinned / 5 distinct sources — Edexcel main@aa0b4de1b7 x47 · Cambridge International main@0fe5f77210 x44 · Edexcel main@6ee5ada3f8 x1 (igcse-maths-b-16) · Edexcel main@8926083204 x1 (pilot — re-measured at the lane base, see mid-lane drift below) · 1 local skeleton (cie-a-level-maths-20-pure-2: importSource deliberately points at SyllabAI/syllabai-v2 with an A2-skeleton prose ref — course-catalog wave marker, NOT corruption; left untouched).
-- MID-LANE DRIFT (fetch-first catch): origin/main advanced 4c4e1bf7 -> ff2b845e while the lane worked (2d16b98e T-BOOK-020/021/022; d6dbebd2 official-paper bundle sync ADR-037 v0.9.0 re-exported from resources main@89260832 — moved the PILOT's own pin cef8d5e25b -> 8926083204; ff2b845e R0 receipt). Zero overlap with the lane's two code files; durable worklog union-merged (upstream R0 receipt kept in place, the four rider entries re-appended after it, stash-drop recovery via bb6e5d348 after a pathspec-show misfire); lane rebased onto ff2b845e.
-- apps/hub/src/lib/courses.ts: cache()-wrapped bundlePinCensus() — one small manifest.json read per bundled course (never full bundles), grouped by (repo, ref), boards via registry boardOf, PIN_REF_SHAPE gate separates official branch@40hex pins from local skeletons; shortPinRef() extracted from page.tsx (same 10-hex display form, single source).
-- apps/hub/src/app/page.tsx provenance panel: "Bundle:" -> "Pilot bundle:" (pilot-scoped, same honesty class as the P2-6 stats re-scope) + census line "Exam data is pinned per course (no site-wide pin) — 94 served courses across 4 official pins: ..." above the provenance tiers; non-pin groups render "local <repo> xN"; unpinned disclosed when > 0.
-- Verified: bunx tsc --noEmit clean; eslint clean (both files); full bun run build green (prebuild validators + corpus static + next build), homepage prerendered static; prerendered HTML census verified token-for-token against the python ground truth — REBUILT + re-verified at the lane base ff2b845e after the drift rebase (pilot renders main@8926083204; census x47/x44/x1/x1 + local x1).
-- Git: fetch-first precheck + lane branch + FF push + three-way verify per standing law. This commit carries the durable-ledger union rider: T-SPEC-STAGE2-1 + T-SPEC-EDEX-REFRESH-1 + T-CONSUME-VERIFY-1 entries were absent upstream (per T-CONSUME-VERIFY-1's closing note) and land here with the lane.
-
-Stage Summary:
-- Footer no longer claims a site-wide pin: pilot line pilot-scoped; census COMPUTED every build — it can report a stale or split distribution but can never drift into a false single-hash claim.
-- Operator-gated observations (NOT mutated in this display lane): (a) Edexcel pins split 47/1/1 (pilot re-pinned to 89260832 mid-lane by the interleaved ADR-037 v0.9.0 wave; maths-b-16 @ 6ee5ada3) — converge-or-keep is a consume-plane ruling; (b) CIE pins split 44 @ 0fe5f77210 + 1 skeleton — two-pin acceptance law (ccbf2555) governs; (c) SME igcse-business card 404 (upstream); (d) sda-bio 2.54 orphan verdict pending; (e) PAT rotation CRITICAL overdue (transit 30, same fingerprint).
-- Resources repo untouched — transit count STAYS 30. This push is v2 display-plane only.
-- PUSHED + LIVE-VERIFIED: ff2b845e..6be63d26 pure FF (lane/display-pincensus -> main, inline-PAT single line), three-way verified (local == ls-remote == GitHub API 6be63d2624, 3 files: page.tsx / courses.ts / worklog.md); Vercel deployment LIVE ~90s after push — homepage footer renders the pilot-scoped line (main@8926083204) + the 4-official-pin census + local skeleton, token-for-token as built.
-
----
-Task ID: T-SPECS-CIE-TRANCHE2-R1 (operator trace 1a15f8160e677949 "Tranche-2")
-Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
-Task: the tranche-2 verdict program round-1 — the residual T2_near census promotion fleet-wide + the head-bank operator verdict sheet; the chain landed end-to-end
-
-Work Log:
-- Program read first-hand: the census receipt's tranche2_verdictProgram + the rejoin state (634 identity-grade pairs already applied/consumed) + the consume law (V*/T1/J* authoritative, T2_near hint-only) + the substrate quantified per class (chemistry-25: 256 pending sids, 255 name-only records, 0 definitions — the identity rules exhausted; the no-match pool needs operator semantic rulings per ADR-030/rule 3).
-- RESOURCES LANE (PR #30 merged bb15452, API-tree commit transport after the git-push transport died on the fat pack — the sandbox disk hit 100% from dead push packs, cleaned of record): component A = the residual T2 census (423 entries: anchored-class 196 + t2only 227 incl. 162 part entries in 8 lanes the tranche-1 queue missed — the census-queue hole, disclosed) re-tiered T2_near -> V6 (prior verbatim), the T2_near class retired fleet-wide; component B = the chem-25 operator review sheet (1,336 parts / 256 entities; NOTHING auto-applied). REBASED onto fc6bf29 mid-lane (the COMPLETE-1 sibling lane; the fleet T2 census byte-identical on the new base; business-23's inherited stale totals corrected with provable V7 attribution). Battery T1-T10 9/9 PASS; corpus-gates GREEN (the stuck sync job = Drive-backup infra, disclosed).
-- V2 LANE (PR #272 merged 5a2d695): the first consume staging built on the stale maps DISCARDED (the sibling wave's own fc6bf29-consume + validator two-pin re-base landed mid-flight); re-consumed on their state at bb15452 (staging 7ac42f15): t2Hints 423 -> 0, 12 maps re-merged (520 dedup-surviving keys), 44 bundles re-keyed; CENSUS RE-PIN EXACT pre AND post: 6,715 / 5,696 / 9,276 UNCHANGED; validator advanced per the two-pin law; verify:cie + corpus 23a + flashcard-sync + build:hub ALL GREEN first-hand.
-- MATERIAL FINDING OF RECORD: the sidecar-pending universe is NOT the bundle gap universe — the maps already carried the promoted codes via the upstream lineages; the census receipt's queue figures stay historical-of-record; the sheet program's pools derive from the MAP zero-code universe from now on (chem-25: 1,342 parts, declaredUnresolved refs).
-- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-tranche2-r1-consume-run-001-r0.json (this commit).
-
-Stage Summary:
-- TRANCHE-2 ROUND-1 LANDED: the T2_near hint class is retired fleet-wide with operator-ratified provenance; the anchor gap stands at 12,363 q / 17,538 parts (computed). The gap-closing instrument is the operator ruling program on the MAP-universe pools (the chem-25 sheet regeneration = the next lane act, then the operator's batches). The 134c gate stays parked while the census is unchanged. PAT rotation CRITICAL-OVERDUE.
-
----
-Task ID: T-SPECS-CIE-TRANCHE2-R1 (operator trace 1a15f8160e677949 "Tranche-2")
-Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
-Task: the tranche-2 verdict program round-1 — the residual T2_near census promotion fleet-wide + the head-bank operator verdict sheet; the chain landed end-to-end
-
-Work Log:
-- Program read first-hand: the census receipt's tranche2_verdictProgram + the rejoin state (634 identity-grade pairs already applied/consumed) + the consume law (V*/T1/J* authoritative, T2_near hint-only) + the substrate quantified per class (chemistry-25: 256 pending sids, 255 name-only records, 0 definitions — the identity rules exhausted; the no-match pool needs operator semantic rulings per ADR-030/rule 3).
-- RESOURCES LANE (PR #30 merged bb15452, API-tree commit transport after the git-push transport died on the fat pack — the sandbox disk hit 100% from dead push packs, cleaned of record): component A = the residual T2 census (423 entries: anchored-class 196 + t2only 227 incl. 162 part entries in 8 lanes the tranche-1 queue missed — the census-queue hole, disclosed) re-tiered T2_near -> V6 (prior verbatim), the T2_near class retired fleet-wide; component B = the chem-25 operator review sheet (1,336 parts / 256 entities; NOTHING auto-applied). REBASED onto fc6bf29 mid-lane (the COMPLETE-1 sibling lane; the fleet T2 census byte-identical on the new base; business-23's inherited stale totals corrected with provable V7 attribution). Battery T1-T10 9/9 PASS; corpus-gates GREEN (the stuck sync job = Drive-backup infra, disclosed).
-- V2 LANE (PR #272 merged 5a2d695): the first consume staging built on the stale maps DISCARDED (the sibling wave's own fc6bf29-consume + validator two-pin re-base landed mid-flight); re-consumed on their state at bb15452 (staging 7ac42f15): t2Hints 423 -> 0, 12 maps re-merged (520 dedup-surviving keys), 44 bundles re-keyed; CENSUS RE-PIN EXACT pre AND post: 6,715 / 5,696 / 9,276 UNCHANGED; validator advanced per the two-pin law; verify:cie + corpus 23a + flashcard-sync + build:hub ALL GREEN first-hand.
-- MATERIAL FINDING OF RECORD: the sidecar-pending universe is NOT the bundle gap universe — the maps already carried the promoted codes via the upstream lineages; the census receipt's queue figures stay historical-of-record; the sheet program's pools derive from the MAP zero-code universe from now on (chem-25: 1,342 parts, declaredUnresolved refs).
-- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-tranche2-r1-consume-run-001-r0.json (this commit).
-
-Stage Summary:
-- TRANCHE-2 ROUND-1 LANDED: the T2_near hint class is retired fleet-wide with operator-ratified provenance; the anchor gap stands at 12,363 q / 17,538 parts (computed). The gap-closing instrument is the operator ruling program on the MAP-universe pools (the chem-25 sheet regeneration = the next lane act, then the operator's batches). The 134c gate stays parked while the census is unchanged. PAT rotation CRITICAL-OVERDUE.
-
-## T-BOOK-020 fire r0 — the full-book flip GREEN: 29/29 chapters VALIDATED, 177 blocks serving (operator order "fire --commit (the full-book flip)", trace 1a15fdfd1c8af76d)
-
-- Fetch-first: main 2d16b98e -> ff 4edd805c before anything (concurrent dc2-v14 supersession + ADR-037 v0.9.0 hub-bundle sync + pin-census footer; zero books/4ch1 or book-DB-plane overlap — no conflict with the fire).
-- Arm proof re-run read-only at 4edd805c: run.ts --check GREEN at the exact armed baseline (u1+u2+u3 131 of-record unchanged; u4 null x8 = the gate verified live; glossary {VALIDATED:88}; digest sha256 d2ffc1d2b862c72a).
-- THE FIRE of record: `DATABASE_URL=... bun apps/api/scripts/books-u4-s34/run.ts --commit` — the stop-on-fail chain GREEN end-to-end, EXIT=0, one command. 1/7 prechecks GREEN (authored 46/46; parent book VALIDATED; 8x SUGGESTED; negative control 0; bank 8/8 ACTIVE MCQ_SINGLE). 2/7 chapter flip u4:c22..c29 SUGGESTED->VALIDATED 8/8, one guarded tx. 3/7 SCOPED staging (8 packs + FULL glossary 10 files incl. u4-organic-chemistry.yaml — the F-BOOK-0001 gate lifted by the amendment of record e832e617; manifest 29 slices rebuilt from book_chapters DB truth; digest pinned). 4/7 the ingest of record spawned byte-identical, COMMIT: 46 blocks + 112 glossary terms all SUGGESTED. 5/7 spot-check GREEN: 10/46 = 21.7% across 8 chapters / 5 types (eq-builder, mcq-embed, prose, sort-match, table-fill); L1-L4 + cheap laws x46; u1-u3 131 untouched pre-flip. 6/7 pack flip x46 SUGGESTED->VALIDATED v1->2, one guarded tx. 7/7 serve-proof GREEN.
-- End state of record: 29/29 chapters VALIDATED, 177 blocks serving (u4 6/8/5/5/6/5/5/6 = 46; u1 60 + u2 52 + u3 19 unchanged), glossary {SUGGESTED:24, VALIDATED:88} with the in-run VALIDATED invariant held; independent fresh-connection census matches exactly. The ADR-BOOK-0001 §3 double gate now passes the FULL book — the rail serves u1..u4.
-- Bookkeeping of record (this commit): pack.yaml c22-c29 status draft->published x8 (the runner's own printed follow-up); receipt u4-s34-fire-r0.json; task yaml T-BOOK-020 -> DISCHARGED + fire_record; findings.jsonl untouched (ledger integrity — F-BOOK-0001's fix field was true when landed).
-- Stage Summary: the T-BOOK-013 unblock_path is DISCHARGED end-to-end — the amendment (e832e617) armed the gate lift, the operator order fired it, and the single command of record ran the verified script set unchanged. OPEN (operator-gated, NOT run): the 24 u4 glossary terms' own r3 validation lane (T-BOOK-017 pattern; slugs of record in the receipt) — the standing flip law keeps VALIDATED flips behind an explicit order. PAT rotation overdue x7.
-
-## receipt(R0-AUTO) — r0-cron-20261022-0330 (2026-10-21T19:30Z sweep)
-
-- Task ID: r0-cron-20261022-0330 (Job 438940)
-- MERGED: PR #271 → bd38e04 — T-BOOK-020 fire r0: full-book flip 29/29 chapters VALIDATED, 177 packs armed (head 1f2250e)
-- INTAKE RACE NOTE: sweep opened with head 28044a5 mergeable=dirty; lane pushed new head 1f2250e (self-intaked origin/main, MAIN_IS_ANCESTOR verified) seconds into the sweep — R0's local merge attempt was a no-op "Already up to date"; proceeded on the lane's fresh head
-- Gates: head 1f2250e verify ✓ hub ✓ (bounded wait, CI in-flight at open); mergeable unknown→zero-divergence (main is ancestor, PUT safe per doctrine); reviews 0 / comments 0; diff in-bounds — .syllabai receipt/tasks/worklog + books/4ch1 packs c22-c29; no *.java, no core/hub content, no DB/prod writes
-- Post-merge main CI: bd38e04 verify ✓ hub ✓ (completed success)
-- Bookkeeping only: .syllabai/** — no code, no force
+- The deck player now matches the research pass-5 laws it cites: the citation tells the truth (deviation documented, not attributed), the player filters (state x type + mistakes preset) and the device-scoped resume are live, and the e2e law-record pins all three. Direct-main push, fetch-first, no force; push auto-bakes the hub (disclosed). T-MIG-138 posture untouched (w0a FALLBACK, pre-window census of record).

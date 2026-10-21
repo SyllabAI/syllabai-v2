@@ -1,12 +1,23 @@
 "use client";
 
 /**
- * Flashcard deck player — the SME loop (research §7.1, figure 12): flip
- * card, Still learning / Know rating, deck progress, shuffle + restart.
- * Ratings always persist to the browser-local SIMULATED overlay (rings,
- * queue); on the pilot course, when signed in, they additionally record to
- * the learner's core account as append-only self-report evidence
- * (tranche 4.4 — lib/flashcard-bridge, never mastery, degrades silently).
+ * Flashcard deck player — flip card, Still learning / Know rating, deck
+ * progress, shuffle + restart. Ratings always persist to the browser-local
+ * SIMULATED overlay (rings, queue); on the pilot course, when signed in,
+ * they additionally record to the learner's core account as append-only
+ * self-report evidence (tranche 4.4 — lib/flashcard-bridge, never mastery,
+ * degrades silently).
+ *
+ * RATING-CONTROL CITATION, CORRECTED (research pass 5, figure 7): SME's
+ * rating controls are ALWAYS visible — including on the card front — as a
+ * deliberate rate-before-flip self-testing affordance ("the product trusts
+ * the learner to rate honestly rather than forcing answer-then-rate"). THIS
+ * PLAYER DEVIATES FROM THAT SOURCE: rating here is reveal-gated (disabled
+ * until the back shows). The gating is SyllabAI's own choice (an
+ * answer-first anchoring guard), NOT an SME behavior — the earlier "SME:
+ * rate after seeing back" comment was a mis-citation of the observed source
+ * and is superseded. Re-evaluating the gating itself is a product decision,
+ * out of scope for the citation fix.
  *
  * Tranche 4.6: the deck is also where the Ebbinghaus review queue is worked
  * — cards whose rating trail says they are due again carry a badge, and
@@ -15,16 +26,57 @@
  * core review-schedule feed (pilot + signed in — lib/flashcard-unified.ts),
  * so a card rated from another device can come due here too. Still timing
  * only — self-report never touches mastery.
+ *
+ * DC-8 + DC-11 (research pass 5): the player is a session QUERY over the
+ * deck, not an atomic deck — a Filters menu combines the card-state family
+ * (Not viewed yet / Still learning / Know, plus the due axis) with a
+ * deck-internal scope family (card type; SME's per-lesson family has no
+ * corpus equivalent — every SyllabAI deck is one sub-topic by construction)
+ * and a "Re-run mistakes only" preset (the highest-value default per
+ * DC-11's own note). The run position is RESUMED: the device-scoped session
+ * state (lib/flashcard-session) survives a reload — the SyllabAI analogue
+ * of SME's server-side resume, scoped to THIS DEVICE on purpose, matching
+ * the honesty chip's account/device disclosure. Filters persist with the
+ * position. The session store is never engagement evidence: a resumed card
+ * is not a done card (rings/queue read the overlay, as ever).
+ *
+ * Filter semantics (snapshot, not live): the filter re-queries the deck
+ * when the learner acts on the run's structure (filter change, shuffle,
+ * review-due-first, restore) — a rating mid-run never re-filters the run
+ * out from under the card being looked at. Deck-wide counters (still
+ * learning / know / due) stay unfiltered: the ledger is the ledger, the
+ * run is the query.
  */
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { CalendarClock, ChevronLeft, RotateCcw, Shuffle } from "lucide-react";
+import { CalendarClock, ChevronLeft, ListFilter, RotateCcw, Shuffle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Markdown } from "@/components/markdown";
 import { rateFlashcard, useCourseProgress, type Course, type FlashcardRating } from "@/lib/progress";
 import { unifiedQueue, useCoreReviewSchedule } from "@/lib/flashcard-unified";
+import {
+  ALL_ON_FILTER,
+  countActiveFilterTerms,
+  deckSessionKey,
+  filterCardIds,
+  loadDeckSession,
+  mistakesOnlyFilter,
+  saveDeckSession,
+  validateSessionAgainstDeck,
+  type DeckCardFilter,
+  type FlashcardCardState,
+} from "@/lib/flashcard-session";
 import { getToken } from "@/lib/api";
 import { isFlashcardSyncCourse } from "@/lib/flashcard-sync-eligibility";
 import { submitFlashcardRating } from "@/lib/flashcard-bridge";
@@ -37,6 +89,29 @@ export interface DeckCard {
   sourceNoteId: string | null;
   sourceTitle: string | null;
   provenanceTier: string;
+  /** corpus-native card type — the deck-internal scope axis (DC-11); null
+   *  where the importer recorded none (bucketed "Unclassified"). */
+  cardType: string | null;
+}
+
+const STATE_LABELS: Record<FlashcardCardState, string> = {
+  "not-viewed": "Not viewed yet",
+  "still-learning": "Still learning",
+  "know": "Know",
+};
+
+const CARD_TYPE_LABELS: Record<string, string> = {
+  question_and_answer: "Question / answer",
+  keyword_definition: "Key term definition",
+  true_or_false: "True or false",
+  fill_in_the_blanks: "Fill in the blanks",
+};
+
+/** Human label for a scope-family bucket; unknown corpus types render as
+ *  themselves (honest), absent types as "Unclassified". */
+function cardTypeLabel(t: string | null): string {
+  if (t === null) return "Unclassified";
+  return CARD_TYPE_LABELS[t] ?? t;
 }
 
 export function DeckPlayer({
@@ -50,9 +125,21 @@ export function DeckPlayer({
 }) {
   const progress = useCourseProgress(course);
   const core = useCoreReviewSchedule(course);
-  const [order, setOrder] = useState<string[]>(() => cards.map((c) => c.id));
+  // the run has two layers: baseOrder (the full run order — natural,
+  // shuffled, or due-first-lifted) and run (baseOrder with the session
+  // filter applied — the cards actually worked through). Filters re-query
+  // baseOrder; ratings never do (snapshot semantics — see header).
+  const [baseOrder, setBaseOrder] = useState<string[]>(() => cards.map((c) => c.id));
+  const [run, setRun] = useState<string[]>(() => cards.map((c) => c.id));
   const [pos, setPos] = useState(0);
   const [flipped, setFlipped] = useState(false);
+  // DC-11/DC-8 session state: null = unfiltered (also the pre-hydration
+  // shape — SSR renders the natural run, exactly as before this tranche)
+  const [filter, setFilter] = useState<DeckCardFilter | null>(null);
+  const [hydrated, setHydrated] = useState(false);
+  // which deck key the save effect may write for (belt-and-braces against
+  // in-place deck changes — the page also keys the player per deck)
+  const [savedFor, setSavedFor] = useState<string | null>(null);
   // tranche 4.4 honesty chip: does rating here also record to the account?
   // Read after mount (async so SSR paint stays identical — the server never
   // sees the token), then during-render adjustments are unnecessary: the
@@ -70,7 +157,9 @@ export function DeckPlayer({
   }, [course]);
 
   const byId = useMemo(() => new Map(cards.map((c) => [c.id, c])), [cards]);
-  const current = order.length > 0 ? byId.get(order[Math.min(pos, order.length - 1)]) : undefined;
+  const deckIds = useMemo(() => new Set(cards.map((c) => c.id)), [cards]);
+  const deckKey = useMemo(() => deckSessionKey(course, subtopicCode), [course, subtopicCode]);
+  const current = run.length > 0 ? byId.get(run[Math.min(pos, run.length - 1)]) : undefined;
   // T-C57 + T-C61: the rated counts and the schedule read the unified queue
   // (true cross-device trail merge when the raw trail walk completes, else
   // the T-C57 feed union, else this device alone), scoped to this deck's
@@ -91,6 +180,100 @@ export function DeckPlayer({
         .map((c) => c.cardId),
     [schedules, byId],
   );
+
+  // the filter's card lookup, bound to the CURRENT schedules for handlers.
+  // The restore effect reads the same shape through a ref pinned to the
+  // first render (a session restores into the deck as first seen — later
+  // core merges are the structural actions' business, not the restore's).
+  const lookup = useMemo(
+    () => ({
+      scheduleOf: (id: string) => {
+        const s = scheduleById.get(id);
+        return s ? { rating: s.rating, due: s.due } : undefined;
+      },
+      typeOf: (id: string) => byId.get(id)?.cardType ?? null,
+    }),
+    [scheduleById, byId],
+  );
+  const firstLookup = useRef(lookup);
+  firstLookup.current = lookup;
+
+  // the deck's scope-family buckets (deterministic; null sorts first)
+  const deckTypes = useMemo(() => {
+    const set = new Set(cards.map((c) => c.cardType));
+    return [...set].sort((a, b) => (a ?? "").localeCompare(b ?? "") || String(a).localeCompare(String(b)));
+  }, [cards]);
+
+  /** Rebuild the run from a base order under a filter, holding the given
+   *  card when it survives (else restarting at the top). */
+  const rebuildRun = (base: string[], f: DeckCardFilter | null, keepId: string | null) => {
+    const nextRun = filterCardIds(base, f, firstLookup.current);
+    setRun(nextRun);
+    const idx = keepId ? nextRun.indexOf(keepId) : -1;
+    setPos(idx >= 0 ? idx : 0);
+    setFlipped(false);
+  };
+
+  const changeFilter = (next: DeckCardFilter | null) => {
+    setFilter(next);
+    rebuildRun(baseOrder, next, current?.id ?? null);
+  };
+
+  const toggleState = (s: FlashcardCardState) => {
+    const f = filter ?? ALL_ON_FILTER;
+    changeFilter({ ...f, states: { ...f.states, [s]: !f.states[s] } });
+  };
+
+  const toggleCardType = (t: string | null) => {
+    const f = filter ?? ALL_ON_FILTER;
+    const cur = f.cardTypes;
+    const nextSet = new Set(cur === null ? deckTypes : cur);
+    const isOn = cur === null || cur.includes(t);
+    if (isOn) nextSet.delete(t);
+    else nextSet.add(t);
+    changeFilter({ ...f, cardTypes: nextSet.size === deckTypes.length ? null : [...nextSet] });
+  };
+
+  const activeTerms = countActiveFilterTerms(filter ?? ALL_ON_FILTER);
+  const activeFilter = filter ?? ALL_ON_FILTER;
+
+  // DC-8 restore: after first paint, pick up this deck's saved session —
+  // strictly validated against today's deck (a stale run discards, never
+  // hides). SSR render stays card 1 unfiltered; the session lands deferred
+  // (the same deferred-setState pattern as the honesty chip above).
+  useEffect(() => {
+    if (deckIds.size === 0) return;
+    let cancelled = false;
+    void Promise.resolve().then(() => {
+      if (cancelled) return;
+      const saved = loadDeckSession(course, subtopicCode);
+      if (saved && validateSessionAgainstDeck(saved, deckIds)) {
+        const nextRun = filterCardIds(saved.order, saved.filter, firstLookup.current);
+        setBaseOrder(saved.order);
+        setFilter(saved.filter);
+        setRun(nextRun);
+        setPos(nextRun.length > 0 ? Math.min(saved.pos, nextRun.length - 1) : 0);
+        setFlipped(false);
+      }
+      setSavedFor(deckKey);
+      setHydrated(true);
+    });
+    return () => {
+      cancelled = true;
+    };
+    // the restore reads the FIRST-render schedules (firstLookup ref) and
+    // runs once per deck — not per schedule tick
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [course, subtopicCode, deckIds, deckKey]);
+
+  // DC-8 persist: every structural change and every advance lands in the
+  // device-scoped session store (SME persists per rating; the cadence is
+  // the point — position is a first-class field, not scroll state). Never
+  // throws; a lost save degrades to a fresh run next visit.
+  useEffect(() => {
+    if (!hydrated || deckIds.size === 0 || savedFor !== deckKey) return;
+    saveDeckSession(course, subtopicCode, { v: 1, order: baseOrder, pos, filter, at: Date.now() });
+  }, [hydrated, course, subtopicCode, baseOrder, pos, filter, deckIds, deckKey, savedFor]);
 
   const advance = (rating: FlashcardRating | null) => {
     if (!current) return;
@@ -123,30 +306,48 @@ export function DeckPlayer({
       );
     }
     setFlipped(false);
-    setPos((p) => (p + 1 < order.length ? p + 1 : 0));
+    // snapshot semantics: the rating just recorded does NOT re-filter the
+    // run (the learner chose this run; the next structural action re-queries)
+    setPos((p) => (p + 1 < run.length ? p + 1 : 0));
   };
 
   const shuffle = () => {
     // deterministic reshuffle so hydration stays stable
     let seed = cards.length * 7919 + 17;
-    const arr = [...order];
+    const arr = [...baseOrder];
     for (let i = arr.length - 1; i > 0; i--) {
       seed = (seed * 1103515245 + 12345) % 2147483648;
       const j = seed % (i + 1);
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    setOrder(arr);
-    setPos(0);
-    setFlipped(false);
+    setBaseOrder(arr);
+    rebuildRun(arr, filter, null);
   };
 
-  if (!current) {
+  if (cards.length === 0) {
     return (
       <Card>
         <CardContent className="p-6 text-sm text-muted-foreground">This deck is empty.</CardContent>
       </Card>
     );
   }
+
+  if (run.length === 0) {
+    // an empty run is always the learner's own filter — say so, hand back
+    // the exit (the deck itself is non-empty by the guard above)
+    return (
+      <Card>
+        <CardContent className="p-6 text-sm">
+          <p className="text-muted-foreground">No cards match the current filters.</p>
+          <Button size="sm" variant="outline" className="mt-3" onClick={() => changeFilter(ALL_ON_FILTER)}>
+            Clear filters
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  if (!current) return null;
 
   return (
     <div className="space-y-4">
@@ -158,7 +359,7 @@ export function DeckPlayer({
           </Link>
         </Button>
         <span className="text-sm tabular-nums text-muted-foreground">
-          {pos + 1}/{order.length}
+          {pos + 1}/{run.length}
         </span>
         {syncMode && (
           <Badge
@@ -196,6 +397,69 @@ export function DeckPlayer({
           <Badge variant="outline" className="border-success/30 text-[10px] text-success">
             {know} know
           </Badge>
+          {/* DC-11 player filters — a property of the session player, not
+              the library page. Checkbox selections keep the menu open (the
+              learner composes a query); the preset/clear actions close it. */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button size="sm" variant="ghost" className="gap-1.5 text-xs">
+                <ListFilter className="size-3.5" aria-hidden /> Filters
+                {activeTerms > 0 && (
+                  <span className="ml-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-semibold leading-none text-primary-foreground tabular-nums">
+                    {activeTerms}
+                  </span>
+                )}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-60">
+              <DropdownMenuLabel>Card state</DropdownMenuLabel>
+              {(["not-viewed", "still-learning", "know"] as const).map((s) => (
+                <DropdownMenuCheckboxItem
+                  key={s}
+                  checked={activeFilter.states[s]}
+                  onCheckedChange={() => toggleState(s)}
+                  onSelect={(e) => e.preventDefault()}
+                >
+                  {STATE_LABELS[s]}
+                </DropdownMenuCheckboxItem>
+              ))}
+              <DropdownMenuCheckboxItem
+                checked={activeFilter.due}
+                onCheckedChange={() => changeFilter({ ...activeFilter, due: !activeFilter.due })}
+                onSelect={(e) => e.preventDefault()}
+              >
+                Due for review
+              </DropdownMenuCheckboxItem>
+              {deckTypes.length > 1 && (
+                <>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuLabel>Card type</DropdownMenuLabel>
+                  {deckTypes.map((t) => (
+                    <DropdownMenuCheckboxItem
+                      key={String(t)}
+                      checked={activeFilter.cardTypes === null || activeFilter.cardTypes.includes(t)}
+                      onCheckedChange={() => toggleCardType(t)}
+                      onSelect={(e) => e.preventDefault()}
+                    >
+                      {cardTypeLabel(t)}
+                    </DropdownMenuCheckboxItem>
+                  ))}
+                </>
+              )}
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onSelect={() =>
+                  changeFilter({
+                    ...mistakesOnlyFilter(),
+                    cardTypes: activeFilter.cardTypes,
+                  })
+                }
+              >
+                Re-run mistakes only
+              </DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => changeFilter(ALL_ON_FILTER)}>Clear filters</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           {dueStalestFirst.length > 0 && (
             <Button
               size="sm"
@@ -203,11 +467,13 @@ export function DeckPlayer({
               className="gap-1.5 text-xs"
               onClick={() => {
                 // lift the due cards to the front, stalest due first; the
-                // rest keep their current run order behind them
+                // rest keep their current run order behind them. The filter
+                // re-applies on the rebuilt base — due cards the filter
+                // excluded stay excluded (the learner's query is explicit).
                 const dueSet = new Set(dueStalestFirst);
-                setOrder([...dueStalestFirst, ...order.filter((id) => !dueSet.has(id))]);
-                setPos(0);
-                setFlipped(false);
+                const next = [...dueStalestFirst, ...baseOrder.filter((id) => !dueSet.has(id))];
+                setBaseOrder(next);
+                rebuildRun(next, filter, null);
               }}
             >
               <CalendarClock className="size-3.5" aria-hidden /> Review due first
@@ -233,7 +499,7 @@ export function DeckPlayer({
       <div className="h-1 overflow-hidden rounded-full bg-muted">
         <div
           className="h-full rounded-full bg-primary transition-all duration-300"
-          style={{ width: `${((pos + 1) / order.length) * 100}%` }}
+          style={{ width: `${((pos + 1) / run.length) * 100}%` }}
         />
       </div>
 
@@ -301,7 +567,10 @@ export function DeckPlayer({
         </CardContent>
       </Card>
 
-      {/* rating controls — enabled once revealed (SME: rate after seeing back) */}
+      {/* rating controls — enabled once revealed. DEVIATION NOTE (citation
+          corrected, research pass 5 figure 7): SME's controls sit visible on
+          the card FRONT (rate-before-flip self-testing); this reveal-gating
+          is SyllabAI's own answer-first choice, not an SME behavior. */}
       <div className="grid grid-cols-2 gap-2">
         <Button
           size="lg"

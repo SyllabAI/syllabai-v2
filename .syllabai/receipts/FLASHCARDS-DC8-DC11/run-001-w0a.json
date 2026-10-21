@@ -1,0 +1,56 @@
+{
+  "receipt": "FLASHCARDS-DC8-DC11/run-001-w0a.json",
+  "generated_at": "2026-10-21T19:55Z",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b-6184-4c19-b655-194e50e82b4f)",
+  "authority": "operator trace 1a15fdb5109fd4bd: \"fix the mis-citation + ship the filter/resume deltas\" — the two items the operator picked from the flashcards deep-dive of record (worklog w0a-flashcards-deepdive-20261021T1920Z, trace 1a15fd0a8ce78b41)",
+  "band": "FLASHCARDS-DC8-DC11 — the deck player's session state: the mis-citation correction + the DC-11 player filter family + the DC-8 resume position, grounded in the operator-licensed SME research pass 5 (SaveMyExams-Mocks-Flashcards-StrengthsWeaknesses-Addendum, sha256 3ce3da77 of record)",
+  "changes": [
+    {
+      "file": "apps/hub/src/app/courses/[course]/flashcards/[subtopic]/deck-player.tsx",
+      "kind": "modified",
+      "what": "(1) MIS-CITATION FIXED of record: the rating-controls comment cited \"(SME: rate after seeing back)\" and the header called flip-then-rate \"the SME loop\" — research pass 5 (line 75, figure 7) documents the opposite: SME's rating controls are ALWAYS visible including on the card front, a deliberate rate-before-flip self-testing affordance (\"the product trusts the learner to rate honestly rather than forcing answer-then-rate\"). The comments now state the reveal-gating is a DEVIATION from the cited source and a SyllabAI choice, superseding the mis-citation; the gating behavior itself is unchanged (a product decision, explicitly out of scope for a citation fix). (2) DC-11 player filter family: a Filters dropdown (Radix DropdownMenuCheckboxItem, SME's Filters-button pattern with an active-terms count badge) combining the card-state family (Not viewed yet / Still learning / Know, plus the due axis — SyllabAI's computed analogue of SME's unobserved Revisit bucket) with a deck-internal scope family (card type; SME's per-lesson family has NO corpus equivalent — content census 2026-10-21: every deck is one subtopic/section by construction, specPointCode null on all pilot cards), plus the DC-11-named \"Re-run mistakes only\" preset (still-learning union due) and Clear filters. Snapshot semantics: the filter re-queries the run on structural actions (filter change / shuffle / review-due-first / restore) and NEVER re-filters mid-run on a rating; deck-wide counters stay unfiltered (the ledger is the ledger, the run is the query); an empty filtered run renders an honest \"No cards match the current filters\" state with a Clear-filters exit. (3) DC-8 resume: the run position (and the filter that shaped it) persists device-scoped via lib/flashcard-session and restores after first paint, strictly validated — a stale run discards to a fresh start, never silently hides or phantoms a card.",
+      "also": "DeckCard gained cardType; the player is keyed per deck in page.tsx so deck-to-deck navigation re-inits the per-deck session state."
+    },
+    {
+      "file": "apps/hub/src/lib/flashcard-session.ts",
+      "kind": "new",
+      "what": "The deck player's session state module (DC-8 + DC-11): DeckCardFilter shape (states x due axis x cardTypes), ALL_ON_FILTER, mistakesOnlyFilter, isFilterAllOn, countActiveFilterTerms, matchesCardFilter (the one match rule: type scope ANDs in, the due axis ORs over the state axis), filterCardIds (order-preserving, pure via an injected lookup), normalizeFilter (strict validation — a corrupt filter degrades to unfiltered, never silently narrows), DeckSessionState + deckSessionKey (syllabai-hub:deck-position:<course>:<subtopic>), validateSessionAgainstDeck (set-equality + duplicate guard: same size, no dups, every id present), loadDeckSession/saveDeckSession (browser-guarded, never-throw). Honesty pins in the header: this store is NEVER engagement evidence (resume does not feed rings/mastery/queue — lib/progress.ts stays the overlay of record); resume is deliberately DEVICE-scoped (the SyllabAI analogue of SME's server-side per-account resume — the per-account version needs a core surface and is future work, not silently approximated)."
+    },
+    {
+      "file": "apps/hub/src/lib/flashcard-session.test.ts",
+      "kind": "new",
+      "what": "16 unit pins over the pure laws: the match truth table (state axis, due OR-axis, type scope, untyped-card rule), active-term counting, mistakes-preset composition, filterCardIds ordering/short-circuit, normalizeFilter round-trip + mangled-shape rejection (incl. the all-false legal empty-run shape), validateSessionAgainstDeck (restore/stale/phantom/duplicate/degenerate), key namespacing (colon-bearing subtopic codes)."
+    },
+    {
+      "file": "apps/hub/src/app/courses/[course]/flashcards/[subtopic]/page.tsx",
+      "kind": "modified",
+      "what": "Maps the corpus cardType into DeckCard (null-preserving) and keys the DeckPlayer per course:subtopic so run state re-inits on deck-to-deck navigation."
+    },
+    {
+      "file": "apps/hub/tests/e2e/deck-flow.spec.ts",
+      "kind": "modified",
+      "what": "The mis-citation comment fixed (\"SYLLABAI DEVIATION (citation corrected, research pass 5 figure 7)...\"); the know-ladder post-reload pin UPDATED to the resume law (the returning learner resumes at 3/74 — the earlier fresh-1/74 expectation is superseded by research pass 5 screenshot 198: deck position survives reload); TWO NEW PINS: resume (DC-8) — position survives a reload, an explicit Restart persists too, the overlay chips stay intact; player filters (DC-11) — unchecking Know narrows the run 74-to-73 in place holding the current card (2/73), the menu stays open across checkbox ticks, deck-wide counters stay honest under a 1-card run, the mistakes preset isolates the miss (1/1), Clear filters restores the deck holding the current card (2/74)."
+    }
+  ],
+  "gates": [
+    { "gate": "bun test apps/hub/src/lib/flashcard-session.test.ts", "result": "16 pass / 0 fail (42 expect calls)" },
+    { "gate": "bunx tsc --noEmit -p apps/hub/tsconfig.json", "result": "exit 0 (whole hub tree)" },
+    { "gate": "bun run build:hub (CI hub lane: verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles prebuild + next build)", "result": "exit 0" },
+    { "gate": "bunx playwright test tests/e2e/deck-flow.spec.ts (chromium, production standalone build in mock mode)", "result": "7 passed / 0 failed — incl. both new DC-8/DC-11 pins and the updated resume-semantics pin" },
+    { "gate": "bunx playwright test tests/e2e/a11y.spec.ts (axe over the deck player with the new Filters menu)", "result": "8 passed / 0 failed — deck player serious/critical violations: 0" }
+  ],
+  "decisions_of_record": [
+    "The flip-gated rating behavior is UNCHANGED — the operator ordered the mis-citation fixed, not the interaction model re-derived; the SME-faithful rate-before-flip affordance stays a flagged product decision (documented in the corrected comments).",
+    "SME's per-lesson scope family is NOT representable in the SyllabAI corpus (every deck is one subtopic; the section slug is topic-level and constant per deck; specPointCode is null across the pilot) — cardType ships as the honest deck-internal scope axis instead, and the deviation is documented in code and here.",
+    "The due axis is exposed as its own filter checkbox (OR-ed over the state axis) — SyllabAI's computed analogue of SME's Revisit bucket, whose trigger upstream was logged unconfirmed in pass 5.",
+    "Resume is device-scoped on purpose (matches the honesty chip's account/device disclosure and the local-overlay source of truth); a per-account resume needs a core surface (DC-8 full parity) and is left for a core-side lane.",
+    "Saved runs restore only under strict set-equality with today's deck — a corpus wave discards the session rather than resuming a run that would silently hide or phantom cards.",
+    "Ratings never re-filter a live run (snapshot semantics) — a learner-composed query is not yanked out from under the card being viewed; the next structural action re-queries."
+  ],
+  "disclosures": [
+    "Push to main auto-bakes the hub (git-linked consequence law, disclosed) — this band IS a hub-content change, so the bake is the point; rollback lever stays the runbook's one-call re-alias.",
+    "The hub e2e + a11y suites are lane-run (CI's hub job is build-only); both were run locally against the production standalone build and are green of record above.",
+    "T-MIG-138 posture untouched: w0a remains FALLBACK (r1c PRIMARY, window 07:05Z Oct 22, gates refusable); the standing watch fired zero writes — pre-window census of record 19:10:02Z Oct 21 (total_count 10, latest run #10, zero runs >= 06:00Z Oct 22)."
+  ],
+  "credentials": "GH PAT fp16 a8ccee736aa8c75b used GET-only for the pre-window census; push uses the staged .creds/gh-pat.candidate (value never echoed). No other wire acts."
+}
