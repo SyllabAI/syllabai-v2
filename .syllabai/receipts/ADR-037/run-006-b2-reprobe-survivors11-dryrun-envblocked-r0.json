@@ -1,0 +1,50 @@
+{
+  "receipt": "run-006-b2-reprobe-exact-survivors-11-dryrun-env-blocked-r0",
+  "lane": "ADR-037 v0.7 per-point re-apply",
+  "trace": "1a15ffecf2a949bd",
+  "operatorOrder": "SEED_DATABASE_URL one-shot (production pooler connection string) handed by the operator mid-turn with 'Is this what you are asking for?'",
+  "credentialOneShotOfRecord": {
+    "seedDatabaseUrl": { "fingerprint16": "3b8b9c5951ca595d", "consumed": "read-only probes + dry-run attempts; inline env only, never printed, never persisted; channel_binding=require accepted by psycopg2" },
+    "connectivity": "neondb / neondb_owner via ep-ancient-cake-a52e4kfd-pooler (us-east-2), sslmode=require — LIVE SLICE CONFIRMED 602 active / 602 distinct EXACT vs lane C baseline"
+  },
+  "b2_reprobe_of_record": {
+    "method": "scripts/adr037_reapply_probe.py, read-only session enforced (transaction_read_only=on)",
+    "exact_vs_baselines": {
+      "questions_active": "602/602 distinct (233 MCQ_SINGLE + 369 STRUCTURED)",
+      "parts": 1202, "options": 932, "spec_joins_active_slice": 1560,
+      "mark_points": "1202 part-bound + 233 mcq-direct = 1435",
+      "spec_point_nodes_4ch1": 182, "distinct_nodes_joined": 171,
+      "question_asset": 585,
+      "sum_invariant_pre_state": "0 / 0 / 0 (wholeblock drift, 1:1 violations, mcq mismatch — CLEAN Law-1 posture)",
+      "history_pre_state": "smart_mark_results 368, answers 655 (UNCHANGED vs run-003 pre-state; no new marking history since)"
+    },
+    "resultFile": "scripts/adr037_reapply_probe_result.json"
+  },
+  "killListCorrectionOfRecord": {
+    "what": "P5 intersection at the v0.9.0+fix bundle: deactivate slice = 591 (NOT 602); 11 live refs are NOT re-emitted — SURVIVORS",
+    "the11": "sme-eq-igcse-chemistry-19-official-past-papers-q{0,3,7,8,9} + members (5 base questions -> 11 rows: 6 MCQ + 5 STRUCTURED)",
+    "provenanceSettled": "provenance PAST_PAPER, created 2026-10-21T11:05:09Z..11:05:55Z — the CLOSING SECONDS of the SAME lane C apply wave (topic rows 10:16:57..11:05:02); arithmetic closure: 523 topic + 5 official = 528 admitted = 602 rows (591 topic-form + 11 official-form). The lane C census pinned the 602 TOTAL and 'excluded 165 unmapped official' — the 5 mapped official questions (11 rows) rode inside the total, undecomposed until this probe; run-003's survivors-0 was TRUE at v0.7 because the v0.7 mirror still emitted the old-law official forms; the v0.9.0+fix per-paper re-namespace is what EXPOSES them",
+    "law": "zero-deletion law HOLDS: deactivate = exactly the re-emitted refs (591); the 11 survivors are NEVER touched; no history risk (breakdown jsonb, no mark_points FK)",
+    "dispositionQuestionForOperator": "post-apply the 5 old-law questions stay ACTIVE alongside their per-paper re-emissions (duplicate active content class, two laws served side-by-side). Options: (a) leave active by the zero-deletion law (fail-closed default; a post-B3 retirement ruling can follow), or (b) explicit operator order EXTENDING the deactivate set by exactly these 11 refs (same idempotent deactivate+insert class, exceeds 'exactly the re-emitted refs' — needs the order spelled)"
+  },
+  "realDryRunBlockedOfRecord": {
+    "what": "the REAL --dry-run through the frozen shim + ingest was attempted THREE times and CANNOT complete in this sandbox",
+    "evidence": [
+      "shim BUILD GREEN every attempt (60 sets / 798q / 2932p / 1244o / 2902 specPoints primary 1023 — census-EXACT; corpusVersion 1.1@89260832044566c1967811f6b40b892aad0b2c08; ref law max len 80) — the run-003 blocker class is DEAD on the real bundle",
+      "attempt 1+2 (background, nohup and setsid+wrapper): process group REAPED within seconds of the launching invocation ending — no EXIT_CODE captured, zero error output",
+      "attempt 3 (foreground, full 10-min tool ceiling): KILLED by the tool timeout — the ingest wall-clock EXCEEDS 10 minutes (lane C class: ~48 min)",
+      "background-survival marker test: a setsid+disowned sleep loop written to disk died at its launcher's invocation end (1 line logged, DEAD next invocation) — NO background execution survives between invocations in this sandbox",
+      "no local postgres / docker available; Neon control plane DNS-blocked (COW unprovisionable) — no near-DB execution route"
+    ],
+    "posture": "BLOCKED BY EXECUTION ENVIRONMENT, not by law and not by credentials — the connection works (probes prove it), the bundle builds (shim proves it), the ingest cannot get an unbounded clock",
+    "dryRunCommandOfRecord": "SEED_DATABASE_URL='<pooler uri>' bun apps/api/scripts/ingest-bundle-questions.ts igcse-chemistry-19 --dry-run   # rollback tx, zero persistence, ~45-75 min; expect summary deactivated=591, questions 798 -> corpus rows 950, markPoints 3867 (per-point 2362)"
+  },
+  "pushOfRecord": "receipt + probe result + worklog pushed after this filing (claim-in-first-commit)",
+  "register": [
+    "execution-environment limit: sandbox reaps background processes at invocation end + 10-min tool ceiling — long DB lanes need a persistent-execution affordance or operator-side execution",
+    "export-lane generator debt (per-paper slug law upstream) — standing",
+    "hub-join legacy branch + the 11-survivor duplicate-class disposition — post-B3 ruling batch",
+    "Neon control-plane egress block — standing",
+    "credential exposures this turn: pooler URI pasted in chat once (fp 3b8b9c5951ca595d)"
+  ]
+}
