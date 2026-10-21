@@ -11021,3 +11021,17 @@ Work Log:
 Stage Summary:
 - Operator ruling "Restore it" (trace 1a15de779f2250f9) VERIFIED DISCHARGED of record: bundle live and byte-consistent on both planes (repo census exact, live surface exact), manifest self-consistent, anchoring total, the 53 badSum + OCR residuals the only disclosed open defects (their own lanes).
 - Zero content mutations this task (verification-only). No new commit beyond this worklog append.
+
+---
+Task ID: CIE-PHASE4-134c-RUN-010 (operator trace 1a15ef55b189bf51 "trigger 134c")
+Agent: r0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: fire the operator-gated 134c cow+prod re-run — the tranche-1 linkage (155 T2_near verdicts, resources PR #22 / v2 PR #252) lands on the production DB plane
+
+Work Log:
+- ARM STATE VERIFIED FIRST-HAND at the tip: the zero-DB census (scripts/census_per_slug.ts, bun install --frozen-lockfile 930 pkgs, no DB contact) reproduced the re-pinned census of record EXACT — expQ 6,715 / part-ROW 5,696 / pkg 9,276 / raw 19,097 q / 25,663 parts (the cie-tranche1-t2near-run-001-r0 figuresAfter; the +116 == unmapped -116 per-slug arithmetic of record).
+- GATE PRE-FLIGHT FOUND ONE STALE PIN: the tranche-1 re-base (PR #252, c14d4b2) re-based the roster-test floors (apps/api/test/sme/cie-phase4-roster.test.ts -> 6715) but the WORKFLOW floor blocks in .github/workflows/cie-phase4-db-plane.yml (both jobs) still checked the pre-tranche census 6599/5618 — a dispatch at that state would honestly-red at the floor step AFTER the ~112-min COW fleet ran. THIS commit re-bases both floor blocks to the post-tranche-1 census of record 6715/5696 (package-shape 9,276 disclosed; raw 19097/25663 unchanged; citation inline) per the fa7ede6/0c8892d precedent — the workflow floors move WITH the census of record, re-based not loosened. No other stale pins: the orchestrator's fleet floors stay COMPUTED from the roster at runtime (the 0c8892d law, never hardcoded); validate_cie_bundles.ts CIE_PIN already aa0b4de1 (advanced by the tranche-1 lane); raw floors 19,097/25,663 unchanged in ci.yml.
+- Race-guard: main moved c2388bc -> 36d7294 mid-flight (worklog-only, the T-MIG-136 restore-verification append) — rebased clean, zero contact with the phase-4 lane.
+- NEXT (this lane, after merge): dispatch cie-phase4-db-plane.yml mode=cow+prod at the merged tip (the operator's fire order, trace 1a15ef55b189bf51); poll both jobs to completion; file the run-010 receipt on green (or the honest-red receipt + diagnosis on any red — the run-002 discipline).
+
+Stage Summary:
+- The 134c gate is ARMED for the tranche-1 landing: workflow floors re-based to the post-tranche-1 census of record (6,715 q / 5,696 part-rows), dispatch to follow at the merged tip. The DB plane still serves the pre-tranche linkage for the 9 affected banks (business-23 +41 / chemistry-25 +23 / sdv-chem +15 / biology-25 +13 / physics-23 +7 / cs-23 +6 / combined-bio +4 / physics-25 +4 / combined-chem +3 questions) until the gated prod-apply lands.
