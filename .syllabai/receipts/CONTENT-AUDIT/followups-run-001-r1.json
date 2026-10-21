@@ -1,0 +1,57 @@
+{
+ "schema": "syllabai.content-audit-followups/1.0",
+ "task_id": "CONTENT-AUDIT followups run-001-r1",
+ "operator_order": "Proceed with: (1) Upstream lattice-join completion (also fixing History+11 bundles); (2) Chemistry-19 manifest refresh; (3) Pure-2 ghost handling (removal/annotation/supplementation of corpus) — gateway trace 1a15f79acff5346d, 2026-10-22, zai-web",
+ "session": "zai-web web-6139ba42 (super-z main agent)",
+ "date": "2026-10-22",
+ "basis": "CONTENT-AUDIT run-001-r0 decision menu items 1-3 (commit 8d1253f3); items 4 (manufacturing for 9 zero-question courses) and 5 (TS4 mixed-theme lattice review) remain OPEN, operator-gated",
+ "upstream_lane": {
+  "repo": "SyllabAI/syllabai-resources",
+  "lane": "T-SPECS-CIE-COMPLETE-1",
+  "of_record": "main@fc6bf29cea9d3e56020962355b4c0f63aa05535d (r0 = e1c84403 on 11 lanes + amendment fc6bf29c adding the 12th lane cie-a-level-business-23 + evidence durability fix)",
+  "engine": "scripts/cie_complete_fill.py (deterministic, fixed stamp, idempotent — re-run applies 0, byte-identical; battery C1-C5 fail-closed)",
+  "evidence": "scripts/cie_complete_verdicts.yaml (333 resolve rows with official point texts + 457 pending_classified rows with structured reasons); graph/reports/T_SPECS_CIE_COMPLETE_1_CHECK.json ok=true",
+  "tier": "V7_agent_note_join (additive to the V-ladder): agent-authored note-level joins executed under the operator order; rows individually overturnable; review_state.complete block per sidecar records ACCEPTED_operator_ordered + order trace + census",
+  "method_classes": {
+   "agent_semantic_note_join": "hand-verified content joins (history-18 69/69 incl. the 63 orphaned; a-level-business-23 hand rows)",
+   "agent_title_identity_join": "set-text/skill-statement identity (english-literature-21 92; general-paper-21 6)",
+   "agent_def_prefix_containment": "deterministic inline-SME-definition-inside-parsed-official-text, unique target (igcse-business-23 36)",
+   "agent_topic_scope_join": "theme-spanning topic pages to the theme's statement range (general-paper-21 10)"
+  },
+  "totals": {"notes_joined": 333, "code_entries": 562, "pending_classified": 457, "lanes": 12},
+  "pending_reason_classes": ["assessment_technique_note", "set_text_absent_from_served_lattice", "cross_edition_lattice_objectives_vs_content_needs_semantic_lane", "fragmented_math_statement_lattice_needs_semantic_lane", "no_unique_deterministic_target", "whole_course_overview_note", "marking_criteria_or_no_target_note", "content_absent_from_served_lattice_2027_2029", "assessment_or_coursework_guidance_note_no_unique_target"],
+  "residual_followups": [
+   "geography-25 / pure-3 / further-maths-25 / english-language-25+20 notes need either an official-text re-parse (the parsed syllabi are line-fragmented at PDF-line level — pure-3's spine carries only 39 of the parsed spec's 143 points) or an operator-gated semantic lane (AGENT.md rule 3)",
+   "TS4 mixed-theme lattice (League/Versailles/appeasement statements S4.012-042 filed under the US-civil-war topic) — audit menu item 5, still open upstream review; the 20 joined IR code rows are content-correct and move with any upstream re-parenting"
+  ]
+ },
+ "v2_consume": {
+  "commit": "717fba99",
+  "engine": "cie_consume_spec_links.py semantics verbatim (merge -> rekey -> battery M1/M2/R1-R5 all green; staging hash 5ae7172a; shadow-sidecar restriction to the 12 lane slugs; PIN/STAMP the only patched module states; resourcesSha pin fc6bf29c on the 12 consumed bundles)",
+  "apply": "byte-guarded (30 writes, 42 staged files byte-identical incl. all 12 curriculum.json)",
+  "learner_delta": {
+   "cie-igcse-history-18": "notes coded 24 -> 86/87; spec points hit 32 -> 125/371 (8.6% -> 33.7%); the operator's named gap (63 orphaned notes, 13/21 empty topics) joined incl. the legacy topics' own 2024-2026 statements (Versailles S4.029, League S4.012-028, appeasement S4.031, Wall Street Crash S18.005-007)",
+   "cie-igcse-english-literature-21": "1 -> 93/167 notes (set-text identity: 79 auto + Rebecca/Rain/anthology/Stories-of-Ourselves hands)",
+   "cie-a-level-business-23": "14 -> 130/139 (86% spec coverage)",
+   "cie-igcse-business-23": "24 -> 60/99",
+   "cie-as-english-general-paper-21": "1 -> 17/22 (theme-scope + skill identities)",
+   "cie-igcse-business-25": "7 -> 11/20",
+   "classify_only_unchanged": ["cie-igcse-economics-25 (8/8 exam-technique notes — faithful)", "cie-igcse-english-language-25", "cie-a-level-maths-20-pure-3", "cie-igcse-geography-25", "cie-igcse-further-maths-additional-maths-25"]
+  },
+  "integrity": "zero stray codes (spine membership verified per lane post-apply); additive-only (M1 no-loss battery); DB bank plane untouched (tutor-plane re-ingest remains operator-gated per the drift law, same class as the ocr-repair lane)"
+ },
+ "chemistry_19_manifest_refresh": {
+  "commit": "4afdb441",
+  "verified_first_hand": "manifest counts were SME-only (28 sets/524 q/1,404 parts/3,708 marks) vs served 44/693/2,334/5,448 — the delta is exactly the ADR-037 official adds (16/169/930/1,740); live UI was always correct (course-stats reads the files directly)",
+  "fix": "manifest.counts refreshed to the served census + additive countsProvenance block with the explicit smeCorpus / adr037OfficialAdds split (the decision menu's both-forms option); 94/94 manifests now census-exact (was 93/94)"
+ },
+ "pure_2_ghost_ruling": {
+  "commit": "35505e43",
+  "ruling": "ANNOTATION (the operator's mark-status-honestly option)",
+  "rationale": "removal would orphan the pastpapers-corpus 9709/P2 mapping and the validator's D1-skeleton expectations, and supplementation was not commissioned (P2 corpus commissioning remains a separate operator-gated manufacturing lane); annotation uses the courses.ts registry law's own honest class",
+  "change": "courses.json status full -> registered + ruling recorded verbatim in the registry note; empty bundle stays (validator-acknowledged D1 skeleton); 68 archive P2 papers stay served from the syllabai-pastpapers archive",
+  "validator": "re-based WITH the of-record (fa7ede6/0c8892d precedent): CIE_PIN aa0b4de1 -> fc6bf29c for consumed bundles + two-pin acceptance (the 32 untouched CIE bundles keep the tranche-1 pin until their next consume) + the D1 row's registry expectation 'registered'; CIE VALIDATOR PASSED 393 assertions"
+ },
+ "write_ledger": "resources: 2 commits (sidecars/manifest/README/engine/yaml/report only); v2: 3 commits (12-lane bundle+map linkage, 1 chemistry-19 manifest file, courses.json row+note + validator re-base); zero DB writes, zero prod writes, zero LLM spend, no force, fetch-first everywhere",
+ "artifacts": [".syllabai/worklog.md Task-70", "upstream graph/reports/T_SPECS_CIE_COMPLETE_1_CHECK.json", "upstream scripts/cie_complete_verdicts.yaml"]
+}
