@@ -10803,3 +10803,17 @@ Work Log:
 
 Stage Summary:
 - The demo gate's content plane is AUTHOR-COMPLETE and LINT-GREEN: 5 packs / 30 blocks / 27 terms of record, ingest staged and idempotent. The rail goes visible the moment the operator applies + flips — by construction, never before.
+---
+Task ID: trace 1a15dbb3226dbe5d (Ruling A APPLIED of record)
+Agent: R0-integrator (Super Z, main)
+
+Work Log:
+- ENVIRONMENT RESET disclosed: local repo found at 8894a8c on a foreign lineage (reflog pull --rebase not this lane's); the never-pushed Ruling A stack (1f53622/db6b611/97b6df8) orphaned + gc'd; /scripts lane tools wiped; node_modules gone; .core-db-env 755->600 re-fixed. Recovery: pins re-verified on the reset tree, FF to origin/main 6987467, amendment reconstructed from the turn-of-record evidence, re-proven 157/157 (tsc 0).
+- CONTENT DRIFT disclosed: ADR-037 (743b53e, today 08:48 +0600) wired 16 past-paper sets into the chemistry bundle (+72,866 lines) — inputs now questions 2d6601b1/manifest 7a83be77 (curriculum + notes unchanged). Fresh census: 44 sets / 693 raw -> 528 admitted / 165 excluded (ALL unmapped — the past-paper questions without spec mappings; badSum/dupOrder 0) / corpusVersion @de4d8da8.
+- Fresh dry-run GREEN (~48 min): 528q/1202 parts/932opt/1435 markPoints/1560 joins/0 topics/0 assets/0 deactivated; arithmetic EXACT (233 option-parts x 4 = 932; markPoints = census parts 1:1); assets 0 BY CONSTRUCTION (single-entry shim zip — the global question_asset guard cannot open, law-pinned + proven live).
+- APPLY EXECUTED under the standing green-light (the Ruling A object unchanged; corpus content advanced on main's own of-record trajectory; the CURRENT sequence re-proven before the write): single tx ~48 min, COMMITTED — summary byte-identical to the dry-run proof.
+- Post-apply probes (read-only): corpus 602 rows (233 MCQ_SINGLE + 369 STRUCTURED, refs all distinct), parts 1202, markPoints 1435 (1202 via parts + 233 MCQ-direct, question_part_id NULL), options 932, 4CH1 spec joins 2620->4180 (+1560 EXACT), question_asset 585 UNTOUCHED, knowledge_nodes 419 unchanged. EVERY COUNT RECONCILES.
+- Amendment committed 1acabb1 + receipt laneC-rulingA-apply-r0.json; pushed with the operator PAT (verified login SyllabAI, repo+workflow; one-shot inline URL, never persisted).
+
+Stage Summary:
+- LANE C CLOSED OF RECORD: the igcse-chemistry-19 corpus DB ingestion is LIVE (602 corpus rows / 1560 joins on the 4CH1 graph, pure-insert, idempotent law of record). Followup register: environment-reset forensics (NEW), PAT rotation (triply overdue), CORS config.ts:60, stale .neon-branch.env.

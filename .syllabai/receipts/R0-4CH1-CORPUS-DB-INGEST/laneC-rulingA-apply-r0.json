@@ -1,0 +1,42 @@
+{
+  "receipt": "laneC-rulingA-apply-r0",
+  "lane": "R0-4CH1-CORPUS-DB-INGEST",
+  "trace": "1a15dbb3226dbe5d",
+  "operatorOrder": "green-light (this turn, with the PAT one-shot hand-off) on the Ruling A chain",
+  "posture": "APPLIED OF RECORD — the corpus DB ingestion is COMMITTED to production",
+  "environmentAnomalyOfRecord": {
+    "what": "between the green-light-gate turn (1a15c1a9a7a28d21) and this turn the local repo was RESET to 8894a8c by a foreign lineage (reflog shows a pull --rebase not authored by this lane); the entire Ruling A stack (receipt 1f53622 + amendment db6b611 + gate receipt 97b6df8, never pushed) was orphaned and its objects gc'd; the lane scripts in /scripts were wiped; node_modules removed; .core-db-env perms drifted 600->755",
+    "recovery": "content pins re-verified byte-identical on the reset tree; repo FF'd to origin/main 6987467 (which had advanced with other lanes' of-record work incl. ADR-037); the amendment reconstructed from the turn-of-record evidence and re-proven (tsc 0, bundle-seed 52/52, sme 105/105); census + probe scripts re-created; perms re-fixed 600",
+    "residual": "the reset's AUTHOR and mechanism remain unidentified — the reset class is disclosed for the followup register; PAT exposure count rises to 3 (rotation now triply overdue)"
+  },
+  "contentPlaneDriftOfRecord": {
+    "what": "ADR-037 (743b53e, landed 2026-10-21 08:48 +0600 by another lane) wired 16 official past-paper sets into igcse-chemistry-19/questions.json (+72,866 lines) AFTER the standing green-light's evidence chain was proven",
+    "inputPins": { "questions": "2d6601b133ae1161 (was 013e9e32ca11b343)", "curriculum": "bf510c697af4e450 (unchanged)", "manifest": "7a83be77e7fbe59e (was e964004976abb17a)", "notes_untouched_companion": "046a9756da50402a (unchanged)" },
+    "censusOfRecordFresh": { "sets": 44, "rawQuestions": 693, "rawParts": 2334, "admitted": { "questions": 528, "parts": 1435, "options": 932, "specPointJoins": 1560, "specPointPrimary": 693 }, "excluded": { "total": 165, "class": "unmapped (the ADR-037 past-paper questions without spec mappings — honest exclusion, degrades to local-only by design)", "badSum": 0, "dupOrder": 0 }, "corpusVersion": "syllabai.sme-exam-questions/1.1@de4d8da8" },
+    "governance": "the standing green-light's object (Ruling A law + corpus ingestion through the frozen law) is unchanged; the corpus content advanced on main's own of-record trajectory; the fresh dry-run re-proved the CURRENT sequence end-to-end before the apply; the delta is fully ADR-037-attributable"
+  },
+  "dryRunProofFresh": {
+    "summary": { "questions": 528, "mcq": 0, "structured": 528, "parts": 1202, "options": 932, "markPoints": 1435, "specPointMappings": 1560, "topicMappings": 0, "assets": 0, "deactivated": 0 },
+    "arithmeticReconciliation": "1435 bundle parts = 1202 plain (question_parts rows) + 233 option-bearing (each an MCQ_SINGLE corpus row); 233 x 4 = 932 options EXACT; markPoints 1435 = 1:1 with bundle parts = the census parts EXACT; assets 0 BY CONSTRUCTION (the shim zip is single-entry package.json — the package structurally ships no assets, the global question_asset wholesale-replace guard CANNOT open — law-pinned in bundle-questions.ts:89-91 and proven live); topicMappings 0 = shim structural posture (secondaryTopicCodes:null)",
+    "duration": "~48 min wall-clock"
+  },
+  "killListAsApplied": {
+    "deactivationSlice": "questions.external_ref LIKE 'sme-eq-igcse-chemistry-19-%' — 0 rows pre-apply (probed) -> deactivated 0; pure insert",
+    "globalTables": "question_asset UNTOUCHED (585 rows pre == 585 post, probed); knowledge_nodes read-only (419 4CH1 nodes unchanged)",
+    "contentPlane": "zero writes (inputs byte-pinned; the ADR-037 content belongs to its own lane of record)"
+  },
+  "appliedState": {
+    "applySummary": { "questions": 528, "mcq": 0, "structured": 528, "parts": 1202, "options": 932, "markPoints": 1435, "specPointMappings": 1560, "topicMappings": 0, "assets": 0, "deactivated": 0, "corpusVersion": "syllabai.sme-exam-questions/1.1@de4d8da8" },
+    "postApplyProbes": { "corpusRows": 602, "rowsByType": { "MCQ_SINGLE": 233, "STRUCTURED": 369 }, "distinctRefs": 602, "questionParts": 1202, "markPointsJoinedViaParts": 1202, "markPointsMcqDirect": 233, "markPointsTotal": 1435, "options": 932, "specJoins4ch1Total": 4180, "specJoinsPreExisting": 2620, "specJoinsThisApply": 1560, "questionAssetRows": 585, "knowledgeNodes4ch1": 419 },
+    "reconciliation": "602 = 369 STRUCTURED (pure + mixed -s rows) + 233 MCQ_SINGLE (option-bearing parts, EXACT); joins 2620 + 1560 = 4180 EXACT; markPoints 1202 + 233 = 1435 EXACT (the MCQ-path mark points carry question_part_id NULL — the inner-join probe class); every count byte-matches the apply summary"
+  },
+  "coExistenceDisclosure": "the 4CH1 graph carries the fetch-bank sme-eq old-law corpus (593q, AI_VALIDATED, still growing) + past-paper lanes alongside this apply's 1560 joins — co-existence by design, consumers join by node",
+  "idempotency": "of-record law (slice-scoped deactivate of exactly the re-emitted refs + fresh insert); a re-apply would deactivate the 602 refs and re-insert — not exercised this turn (the CIE fleet proved the law; the no-op class is the second apply on identical bytes)",
+  "followupRegister": [
+    "environment-reset forensics (who/what reset the repo; guard against cross-lane clobbering)",
+    "PAT rotation (triply overdue — 3 chat exposures)",
+    "CORS config.ts:60 (standing)",
+    "stale .neon-branch.env cleanup (standing)"
+  ],
+  "push": "amendment 1acabb1 + this receipt pushed immediately after filing (PAT verified: login SyllabAI, repo+workflow scopes; one-shot inline URL, never persisted)"
+}
