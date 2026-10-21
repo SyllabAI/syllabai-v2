@@ -10459,3 +10459,26 @@ Work Log:
 
 Stage Summary:
 - The 4MB1 difficulty classification is LIVE on the DB fetch-bank: 1,192/1,192 live rows carry verified bands (easy 303 / medium 729 / hard 160) + AI_VALIDATED provenance; smart mark, tutor and the deterministic difficulty-then-id test-builder now serve real difficulty on the maths-b axis. The run-001 census is fully discharged of record. Remaining known residuals unchanged: PAT rotation, prj_D7vf, Vercel prune, the operator-keyed bundle restore-vs-ratify ruling.
+
+---
+Task ID: T-BOOK-015
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15be4bab0b4aa1)
+Task: Books doctrine pack — storage model, agent-portable build docs (any subject), self-improvement law; books/4ch1 authoring scaffold; plan v1.1 in-repo.
+
+Work Log:
+- Operator directive (chat): pin where/how the book is stored and organized; create README + docs so any agent can build an interactive book for any subject; make the pipeline self-improving (report mistakes and findings).
+- Built the doctrine pack on top of T-BOOK-000 audit facts (T-MIG-133 spine wire, chunks_v3 census, VALIDATED-only serving, licensing posture) — no platform/content code touched.
+- docs/books/BOOKS-START-HERE.md: thesis, three-layer storage model (L1 syllabai-resources corpus append-only / L2 books/<qual>/ authoring via PR / L3 Neon machine-written only), 8-step reading order, 10 hard laws, rail-pack DoD checklist.
+- docs/books/BOOK-BUILD-PLAYBOOK.md: stages 0–4, S0–S4 role/gate table (G1 binding, G2 schema+language, G3 fact, G4 terminology), per-pack receipt with playbook/prompt/lint versions (regression attribution), platform-parity + wire/flip stages, anti-patterns.
+- docs/books/BOOK-PACK-SPEC.md: workspace layout, book.yaml shape, block common fields, 11 frozen types table, glossary ms_accepts/ms_avoids format with L1 provenance, 5-rule lint law (binding/schema/language/licensing/honest-empty).
+- docs/books/BOOK-SELF-IMPROVEMENT.md: findings.jsonl schema, S1/S2/S3 severities + responses, root-cause-twice → mandatory system-change PR law, 4 finding feeds (gate receipts, 20% spot-checks, live instrumentation, cross-book reviews), phase retro template, metrics, versioned prompt registry.
+- docs/books/BOOK-NEW-SUBJECT-CHECKLIST.md: 5-phase onboarding (decision inputs → L1 intake → L2 scaffold → pilot unit → platform/launch); 4PH1 noted as candidate #2 (wph11 already in parser corpus).
+- books/4ch1/: README charter + meta/book.yaml (29-chapter spine with chem_only + widget-density flags, phases A/B/C, sim-embed plan, licensing posture; YAML-validated; census total 1234 cross-checked) + qa/findings.jsonl (empty ledger) + packs/ glossary/ skeletons.
+- Copied PLAN-4CH1-v1.1 and Kognity dossier in-repo (docs/books/); prompts/ and retro/ dirs with .gitkeep; root README: books/ layout line + reading-order item 6.
+- Task yaml registered (T-BOOK-015, IN_REVIEW); branch t-book-015/books-doctrine off 2f25475; PR to follow.
+
+Stage Summary:
+- The books program now has its own entry point and law set inside the repo: any new agent reading BOOKS-START-HERE can execute a book build for any subject without chat context.
+- Storage question of record: book corpus = syllabai-resources (append-only); interactive layer = books/<qual>/ authoring packs (PR-gated, schema-validated, ingested to DB by script); serving = Neon + VALIDATED flip; binaries never enter syllabai-v2.
+- Self-improvement of record: gate receipts feed findings ledger; S2+ findings demand system_change (prompt/lint/playbook/schema); same root cause 2× blocks next pack until the system PR lands; phase retros + metrics set the next phase's lint priorities.
+- Deferred: sha256 pins (first pack receipt, S0 c01); prompts/ files (authored per-stage at T-BOOK-010 start); zod book.block/1 (T-BOOK-002 lane).
