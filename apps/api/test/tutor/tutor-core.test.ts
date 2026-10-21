@@ -316,8 +316,8 @@ topic (e.g. "moles", "bonding", "equilibria") or ask your teacher to
 ingest the relevant material.`);
     expect(courseScopeRefusal("4CH1")).toContain('scoped to the course "4CH1"');
     expect(courseScopeRefusal("4CH1")).toContain("SyllabAI never answers across\ncourses");
-    // v12 (run-015): the QUIZ SCAFFOLD serving rule rides the bumped identity
-    expect(promptIdentity()).toBe("tutor-grounded/v12");
+    // v13 (the two-tier disclosure law): the identity follows the bumped prompt
+    expect(promptIdentity()).toBe("tutor-grounded/v13");
   });
 
   test("the v11 spec-is-a-map quiz law is in the system prompt", () => {
@@ -334,6 +334,15 @@ ingest the relevant material.`);
     expect(prompt).toContain("When a QUIZ SCAFFOLD block is present");
     expect(prompt).toContain("serve ONLY the questions it lists, in its order");
     expect(prompt).toContain("not reveal the answers before the learner attempts each one");
+  });
+
+  test("the v13 two-tier disclosure law is in the system prompt", () => {
+    const prompt = systemPrompt();
+    expect(prompt).toContain("Two-tier disclosure law");
+    expect(prompt).toContain("worked answer as the official mark scheme");
+    expect(prompt).toContain("answers stay hidden until each question is attempted");
+    // both variants carry the law (it sits in the shared Rules list)
+    expect(systemPrompt("general")).toContain("Two-tier disclosure law");
   });
 });
 
