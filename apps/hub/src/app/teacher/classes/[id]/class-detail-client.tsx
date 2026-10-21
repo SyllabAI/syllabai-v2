@@ -5,20 +5,39 @@
  * remove), the announcement board (publish with §9 categories, per-
  * announcement read counts over the real roster), and the lifecycle switch.
  *
+ * T-TEACH-004 (core class workspace parity): a live class also EMBEDS its
+ * course's resources — the same hub surfaces students use (revision notes,
+ * exam questions, flashcards, the per-subject Knowledge Graph) plus the
+ * course's past-papers archive, with real corpus counts — and the corpus-
+ * local teacher tools (Test Builder, assignments, validation) deep-linked
+ * with ?course=. The class sits on exactly ONE course (core's model), so
+ * this is one section, no per-subject repetition; the browser-local class
+ * container keeps its own per-subject layout. Resources are read-only
+ * corpus surfaces: they render for archived classes too.
+ *
  * Honesty rules: everything is live from core; the read count states what it
  * counts ("read by N of M"); a failed action surfaces its real message and
- * changes nothing locally.
+ * changes nothing locally; a missing corpus package or an empty paper
+ * archive is a badge on the card, never a fake number.
  */
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
+  ArrowRight,
   Archive,
   ArchiveRestore,
+  BookOpen,
+  ClipboardList,
+  FileCheck2,
+  FileQuestion,
+  LibraryBig,
+  ListChecks,
   Loader2,
   Megaphone,
   Network,
+  ScrollText,
   Send,
   Shield,
   Trash2,
@@ -28,6 +47,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import {
   Select,
@@ -38,6 +58,7 @@ import {
 } from "@/components/ui/select";
 import { ApiError, api } from "@/lib/api";
 import type { TeacherAnnouncementView, TeacherClassDetailView } from "@/lib/types";
+import type { TeacherCourseLite } from "../../teacher-client";
 import { cn } from "@/lib/utils";
 
 function apiMessage(err: unknown, fallback: string): string {
@@ -54,7 +75,96 @@ const CATEGORY_LABEL: Record<string, string> = {
   resource: "Resource",
 };
 
-export function ClassDetailClient({ classId }: { classId: string }) {
+/** Same shape the student dashboard and the local class workspace read from
+ *  /api/course-stats (the interface is deliberately identical — parity is the
+ *  point; a shared module would couple the two workspaces' bands). */
+interface CourseStat {
+  slug: string;
+  hasBundle: boolean;
+  topics: number;
+  notes: number;
+  questionSets: number;
+  questions: number;
+  flashcards: number;
+}
+
+const RESOURCES = [
+  {
+    key: "notes",
+    icon: BookOpen,
+    label: "Revision Notes",
+    href: (slug: string) => `/courses/${slug}/revision-notes`,
+  },
+  {
+    key: "questions",
+    icon: FileQuestion,
+    label: "Exam Questions",
+    href: (slug: string) => `/courses/${slug}/exam-questions`,
+  },
+  {
+    key: "flashcards",
+    icon: LibraryBig,
+    label: "Flashcards",
+    href: (slug: string) => `/courses/${slug}/flashcards`,
+  },
+  {
+    key: "topics",
+    icon: Network,
+    label: "Knowledge Graph",
+    href: (slug: string) => `/knowledge-graph?course=${slug}`,
+    countLabel: "topics in the corpus",
+  },
+  {
+    key: "papers",
+    icon: ScrollText,
+    label: "Past Papers",
+    href: (slug: string) => `/courses/${slug}/past-papers`,
+    pastPapers: true,
+  },
+] as const;
+
+const TOOLS = [
+  {
+    href: (slug: string) => `/teacher/test-builder?course=${slug}`,
+    icon: ClipboardList,
+    title: "Test Builder",
+    desc: "Assemble a printable, marks-aware test from the committed question bank — target the class's weakest areas, answer key included.",
+    badge: "§6",
+  },
+  {
+    href: (slug: string) => `/teacher/assignments?course=${slug}`,
+    icon: ListChecks,
+    title: "Assignments",
+    desc: "Build from the bank, assign with a due date, track completion on the live roster, remediate in one click.",
+    badge: "Phase 2",
+  },
+  {
+    href: (slug: string) => `/teacher/validation?course=${slug}`,
+    icon: FileCheck2,
+    title: "AI content validation",
+    desc: "Review real AI-authored model solutions from the bank and record approve / edit / reject verdicts before they count.",
+    badge: "Phase 2",
+  },
+] as const;
+
+function statCount(stat: CourseStat | null, key: string): number | undefined {
+  if (!stat?.hasBundle) return undefined;
+  return (stat as unknown as Record<string, number>)[key];
+}
+
+export function ClassDetailClient({
+  classId,
+  courses,
+  paperCounts,
+}: {
+  classId: string;
+  /** the server-passed registry subset (page.tsx listCourses — the same
+   *  payload the dispatcher's local branch renders) */
+  courses: TeacherCourseLite[];
+  /** registry slug → past-papers archive count (server-computed from the
+   *  committed corpus index — a server-only lib, so it arrives as data) */
+  paperCounts: Record<string, number>;
+}) {
   const [detail, setDetail] = useState<TeacherClassDetailView | null>(null);
   const [announcements, setAnnouncements] = useState<TeacherAnnouncementView[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -88,6 +198,30 @@ export function ClassDetailClient({ classId }: { classId: string }) {
   useEffect(() => {
     void load();
   }, [load]);
+
+  // T-TEACH-004: corpus counts for the class's ONE course — the same
+  // /api/course-stats payload the student dashboard and the local class
+  // workspace read. The detail (carrying courseSlug) loads first; the fetch
+  // rides the resolved slug. A failed fetch leaves the skeleton counts — the
+  // honest posture the local workspace shares; the past-papers count is a
+  // server-passed prop and never depends on this fetch.
+  const courseSlug = detail?.courseSlug ?? null;
+  const [stat, setStat] = useState<CourseStat | null>(null);
+  useEffect(() => {
+    if (!courseSlug) return;
+    let cancelled = false;
+    fetch(`/api/course-stats?slugs=${encodeURIComponent(courseSlug)}`)
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((data: { stats?: Record<string, CourseStat> }) => {
+        if (!cancelled && data.stats) setStat(data.stats[courseSlug] ?? null);
+      })
+      .catch(() => {
+        /* counts fall back to skeletons */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [courseSlug]);
 
   const enroll = async () => {
     const trimmed = email.trim();
@@ -191,6 +325,13 @@ export function ClassDetailClient({ classId }: { classId: string }) {
 
   const active = detail.status === "active";
 
+  // T-TEACH-004: the class's one course, resolved against the server-passed
+  // registry subset (live classes are created on full-status courses, all
+  // bundled — this resolves in practice). If core ever pointed at a slug the
+  // registry dropped, the section honestly stays off; the header keeps
+  // showing core's own courseLabel.
+  const course = courses.find((c) => c.slug === detail.courseSlug);
+
   return (
     <div className="space-y-4">
       <Link
@@ -211,6 +352,11 @@ export function ClassDetailClient({ classId }: { classId: string }) {
           <p className="mt-1 text-sm text-muted-foreground">{detail.courseLabel}</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+          <Button variant="outline" size="sm" asChild>
+            <Link href={`/courses/${detail.courseSlug}`}>
+              <BookOpen className="size-3.5" aria-hidden /> Course hub
+            </Link>
+          </Button>
           <Button variant="outline" size="sm" asChild>
             <Link href={`/teacher/classes/${detail.id}/knowledge-graph`}>
               <Network className="size-3.5" aria-hidden /> Class KG heatmap
@@ -319,6 +465,94 @@ export function ClassDetailClient({ classId }: { classId: string }) {
           </ul>
         </CardContent>
       </Card>
+      )}
+
+      {/* T-TEACH-004 (core class workspace parity): the class's course
+          resources — the same hub surfaces students use — plus the course's
+          past-papers archive and the corpus-local teacher tools. The class
+          sits on ONE course, so this is one section; the browser-local class
+          container keeps its per-subject layout. Read-only corpus surfaces:
+          rendered for archived classes too. */}
+      {course && (
+        <section aria-labelledby="course-resources" className="space-y-3">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <h2 id="course-resources" className="text-sm font-semibold">
+              Course resources · {course.subject}
+            </h2>
+            <span className="text-[11px] text-muted-foreground">
+              the same hub surfaces students use — not class-private copies
+            </span>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {RESOURCES.map((r) => {
+              const papers = "pastPapers" in r;
+              const count = papers ? paperCounts[course.slug] : statCount(stat, r.key);
+              return (
+                <Link
+                  key={r.key}
+                  href={r.href(course.slug)}
+                  className="group rounded-lg border bg-card p-4 transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <span className="flex size-9 items-center justify-center rounded-md bg-muted">
+                    <r.icon className="size-4" aria-hidden />
+                  </span>
+                  <p className="mt-3 flex items-center gap-1 text-sm font-semibold">
+                    {r.label}
+                    <ArrowRight
+                      className="size-3.5 text-muted-foreground transition-transform group-hover:translate-x-0.5"
+                      aria-hidden
+                    />
+                  </p>
+                  <p className="mt-1 text-xs text-muted-foreground tabular-nums">
+                    {stat && !stat.hasBundle && !papers ? (
+                      <Badge variant="outline" className="text-[10px] font-normal">
+                        no corpus package
+                      </Badge>
+                    ) : papers ? (
+                      count ? (
+                        `${count} ${count === 1 ? "paper" : "papers"} in the archive`
+                      ) : (
+                        "no papers in the archive yet"
+                      )
+                    ) : count === undefined ? (
+                      <Skeleton className="inline-block h-3 w-16" />
+                    ) : "countLabel" in r ? (
+                      `${count} ${r.countLabel}`
+                    ) : (
+                      `${count} in the corpus`
+                    )}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            {TOOLS.map((t) => (
+              <Card key={t.title} className="py-0 transition-shadow hover:shadow-md">
+                <CardContent className="p-5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="flex size-9 items-center justify-center rounded-md bg-primary/10">
+                      <t.icon className="size-4 text-primary" aria-hidden />
+                    </span>
+                    <Badge variant="outline" className="text-[10px] font-normal">
+                      {t.badge}
+                    </Badge>
+                  </div>
+                  <h3 className="mt-3 text-sm font-semibold">{t.title}</h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{t.desc}</p>
+                  <Button asChild size="sm" variant="outline" className="mt-3 gap-1.5">
+                    <Link href={t.href(course.slug)}>
+                      Open
+                      <ArrowRight className="size-3.5" aria-hidden />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
       )}
 
       <div className="grid gap-4 lg:grid-cols-2">

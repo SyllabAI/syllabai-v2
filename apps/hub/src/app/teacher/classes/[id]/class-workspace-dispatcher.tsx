@@ -1,9 +1,9 @@
 "use client";
 
 /**
- * Class id dispatcher (HUB-TEACHER-DASH wave 1) — /teacher/classes/[id]
- * serves TWO honest class concepts, and this client picks without ever
- * blurring them:
+ * Class id dispatcher (HUB-TEACHER-DASH wave 1; T-TEACH-004 parity pass) —
+ * /teacher/classes/[id] serves TWO honest class concepts, and this client
+ * picks without ever blurring them:
  *
  *   - a hub-local class container (lib/teacher/my-classes.ts, browser-local
  *     like the student's subject roster) renders LocalClassWorkspace — the
@@ -11,6 +11,12 @@
  *     resources for the class's selected subjects, per-subject sections;
  *   - anything else is a CORE class id (the RBAC-backed roster workspace)
  *     and falls through to the existing ClassDetailClient untouched.
+ *
+ * T-TEACH-004: the core workspace gains the same course-resource parity
+ * (resources incl. the past-papers archive + corpus-local teacher tools,
+ * scoped to the class's ONE course), so the server-passed paper counts ride
+ * down to it — the local container keeps counting through /api/course-stats
+ * alone (its scope is unchanged).
  */
 
 import { ClassDetailClient } from "./class-detail-client";
@@ -21,9 +27,13 @@ import type { TeacherCourseLite } from "../../teacher-client";
 export function ClassWorkspaceDispatcher({
   classId,
   courses,
+  paperCounts,
 }: {
   classId: string;
   courses: TeacherCourseLite[];
+  /** registry slug → corpus paper count (server-computed from the committed
+   *  past-papers index; consumed by the core class workspace only) */
+  paperCounts: Record<string, number>;
 }) {
   const { has } = useMyClasses();
   // hydration note: useSyncExternalStore renders the SERVER snapshot (empty
@@ -41,5 +51,5 @@ export function ClassWorkspaceDispatcher({
       <LocalClassMissing />
     );
   }
-  return <ClassDetailClient classId={classId} />;
+  return <ClassDetailClient classId={classId} courses={courses} paperCounts={paperCounts} />;
 }

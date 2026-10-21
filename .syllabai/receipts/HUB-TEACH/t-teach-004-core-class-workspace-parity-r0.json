@@ -1,0 +1,38 @@
+{
+  "task": "T-TEACH-004",
+  "band": "HUB-TEACH",
+  "title": "core class workspace parity — live classes embed the course's resources (revision notes / exam questions / flashcards / knowledge graph) and the past-papers archive, plus the corpus-local teacher tools, with real counts and honest empty states",
+  "operator_order_trace": "1a15ece07422fcd9 (the approved queue: T-TEACH-001 my-courses → T-TEACH-002 feature toggles → T-TEACH-003 enrollment-scoped marking → T-TEACH-004 this task); session web-590847c1 order 'T-TEACH-004' (trace 1a15f9286810571d)",
+  "date": "2026-10-22",
+  "agent": "zai-web lane (main agent, session web-590847c1-cf63-4098-b0c8-a90085355429)",
+  "what_shipped": [
+    "apps/hub teacher/classes/[id]/page.tsx — the server page now computes registry slug → past-papers archive count from the committed corpus index (corpusPapersForCourse, the same server-only lib the per-course archive pages use; unmapped courses count 0 — the honest zero the archive itself renders) and hands paperCounts down as data; the hasBundle-filtered course subset semantics are unchanged",
+    "class-workspace-dispatcher.tsx — threads courses + paperCounts into the CORE branch; the LOCAL branch keeps its exact prior input and behavior (per-subject layout, course-stats-only counting) — the two honest class concepts still never blur",
+    "class-detail-client.tsx — the live class workspace gains the parity section between the AI-feature toggles and the roster/announcements grid: five resource cards (Revision Notes, Exam Questions, Flashcards, Knowledge Graph deep link /knowledge-graph?course=, Past Papers archive) with real counts from /api/course-stats (the same payload the student dashboard and the local container read) + the server-passed paper count; three teacher-tool cards (Test Builder, Assignments, AI content validation) deep-linked ?course=<class's course>; a 'Course hub' header action beside the KG heatmap link",
+    "honesty states per card: skeleton while course-stats loads (fetch failure keeps it — never a fake number); 'no corpus package' badge when hasBundle=false; the past-papers card renders 'N papers in the archive' (singular aware) or 'no papers in the archive yet' and still links — the archive page's honest empty state offers the deterministic practice-papers alternative, so the link is never a dead end",
+    "the Assignments tool copy in the LIVE workspace says 'track completion on the live roster' — verified against the surface: assignments is core-backed, the SAMPLE roster sim is retired (assignments-client.tsx header). The local container's stale 'SAMPLE roster' copy was corrected in the same pass (one line, disclosed below) — leaving a known-false claim adjacent to a parity task that exists to make the two workspaces honest twins would fail the honesty law",
+    "class sits on ONE course (core's model), so the section is one course-wide band — the local container keeps its per-subject repetition; resources are read-only corpus surfaces and render for archived classes too (enrollment/publishing stay the only active-gated actions)",
+    "no API surface change, no contract change, no schema change, zero DB contact: TeacherClassDetailView already carried courseSlug; /api/course-stats already existed; the paper count is computed from the committed 292K pastpapers-index.json already imported by six server pages (no new heavy dependency)"
+  ],
+  "disclosed_copy_fix": "class-workspace-local.tsx TOOLS.Assignments desc 'SAMPLE roster' → 'real roster' (one line): the underlying surface retired the SAMPLE sim (real roster, computed complete/late/missing on core); the local card's copy predated that landing and was factually stale. In-scope by the task's own parity charter; behavior untouched.",
+  "design_decision_of_record": {
+    "parity_means_same_surfaces_not_same_layout": "the live class is ONE-course (core schema: classes.course_slug) so its resource band is one section; the local container is many-subject (browser-local subjectSlugs[]) and keeps per-subject sections. Both now embed the SAME resource families, the SAME deep links, and the SAME count semantics — the workspace directive ('all the tools and course resources will exist', trace 1a0ec61d5612aa6d) holds for both class concepts without pretending they have the same shape.",
+    "counts_are_data_not_fetches_where_the_source_is_server_only": "the past-papers index is import-bound and server-only by design (pastpapers-corpus header) — the count is computed in the server page and handed down as a plain number; the course-stats counts stay a client fetch because that API is the established cross-band payload. No new API surface invented for this.",
+    "no_iframe_embedding": "'embed' means the workspace carries the resource rows/tools inside it exactly as the local container does — links into the real hub surfaces (the same ones students open). Iframing auth'd or corpus surfaces would be a category error the hub has never made.",
+    "empty_archive_still_links": "the student course hub drops the past-papers link at zero papers; the class workspace keeps the card linking, because the archive page's honest empty state routes to the deterministic practice papers — the honest state is on the card AND at the destination.",
+    "cross_surface_authz_audit_still_open": "T-TEACH-003's residual (non-marking teacher surfaces keep their own authorization models) remains open territory: this task adds NO new authz surface (resource cards are public corpus surfaces; the class detail page remains behind the existing teacher surface). The audit stays queued for the operator's review of the remaining queue."
+  },
+  "verification": {
+    "typecheck": "bun run typecheck (packages/contracts + packages/shared + packages/db + apps/api) — exit 0 x4",
+    "api_packages_tests": "bun test apps/api packages — 2458 pass / 0 fail / 13 skip (130 files, 21347 expects) — byte-identical to the T-TEACH-003 baseline (hub-only change, no drift)",
+    "hub_build": "bun run build:hub exit 0 — /teacher/classes/[id] compiles; the route table prints unchanged",
+    "eslint": "clean on all four changed files",
+    "registry_equivalence_check": "courses.json: 94 courses = 93 full + 1 pilot, every full/pilot course hasBundle — the page's hasBundle filter and the creation page's status filter select the same set, so every live class's courseSlug resolves in the passed subset (the honest no-resolve fallback stays coded anyway)"
+  },
+  "residuals": [
+    "the local class container's per-subject resource cards still count through /api/course-stats only — it does not render the past-papers card (its per-subject RESOURCES row is wave-1/2/3 surface; adding papers there is a small follow-up if the operator wants it)",
+    "the cross-surface teacher authorization audit (teacher-kg insights, per-student drill-downs, class analytics) remains T-TEACH-004+ territory per the T-TEACH-003 receipt — unchanged by this landing",
+    "the nightly neon-replay stage-5b projection proof (T-TEACH-003 residual) is unaffected: this task touches no api/ package, no seed, no golden posture"
+  ],
+  "next": "the operator's review of the remaining queue (per the T-TEACH-003 receipt's next-field: this task completes the approved four-item queue)"
+}
