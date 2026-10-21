@@ -1,0 +1,29 @@
+{
+ "task": "4MB1-QUALITY blueprint rows + coverage gate completion (task-b residual, operator order trace 1a15e7d6114dff35)",
+ "agent": "r0 (zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "rootCauseFound": "build_paper_blueprints.ts PAPER_TOTAL regex accepted only '=' between 'paper' and the number; 4MB1 QPs print 'TOTAL FOR PAPER IS 100 MARKS' -> paperTotal=null was SYSTEMATIC for every 4MB1 row, which silently disabled the single-gap inference for the whole family (and made run-001's per-paper 'official' corrections incomplete-footer sums: Jan-2019 /01R 96 and Jan-2023 /02 87 were NOT official totals)",
+ "fix": "one-line regex amendment (is variant) + MANUAL_FOOTER_EVIDENCE map (vision-recovered footers absent from the PDF text layer, provenance field 'manual' added to the row schema, additive)",
+ "regenerated": {
+  "file": "apps/hub/src/data/pastpapers-blueprints.json",
+  "rows": "320 -> 331 (zero rows dropped; 11 added)",
+  "gate4MB1": {"before": "62 complete / 1 partial / 1 no-row", "after": "64/64 complete (0 partial, 0 no-row)"},
+  "perPaper": {
+   "2019-01:4MB1-01": "NEW ROW: 27 questions Q1..Q27 complete; Q8=3/Q9=3 via vision OCR (page renders read verbatim; arithmetic closure 25 text footers sum 94 + 6 == paperTotal 100); manual:[8,9]",
+   "2023-01:4MB1-02": "COMPLETED: Q11=13 inferred (single gap + paperTotal 100); total 87->100",
+   "2019-01:4MB1-01R": "COMPLETED: Q17=4 inferred; total 96->100",
+   "allOther4MB1": "paperTotal 100 stamped on every row (was null)"
+  },
+  "bonus": "10 chemistry rows recovered (4CH1-1C sessions 2021-11..2026-06) by the same regex fix",
+  "visionEvidence": "z-ai vision (glm-5v-turbo) on 2019-01-4MB1-01.pdf page renders: '(Total for Question 9 is 3 marks)' p5-bottom, '(Total for Question 8 is 3 marks)' p5-mid; two independent reads + paper-total closure",
+  "noOpGuard": "second-run idempotency is the generator's built-in papers-object comparison (of record); regeneration compared against HEAD: 0 dropped / 11 added"
+ },
+ "ofRecordCorrections": [
+  "run-001's 'the audit's assumed official 100 was wrong for some sessions' is itself superseded: Jan-2019 /01R official = 100 (not 96), Jan-2023 /02 official = 100 (not 87) - both printed on the QPs and now closed by footers+inference",
+  "the 5 drift papers narrative: 2019-01-01r and 2023-01-02 declared-vs-official deltas re-anchor at 100",
+  "3 of the 4 blocked badSum members gain official anchors (2019-01-01 orders 10/21/23 -> Q11=3/Q22=5/Q24=6)"
+ ],
+ "gate": "coverage gate unchanged in code (computeCoverage + generator honesty refusals); the family now renders 64/64 complete",
+ "gatesRun": "root typecheck x4 OK; hub verify:corpus PASSED (with the Lane R bundle fix in tree); verify:cie PASSED; verify:flashcard-sync OK; full-suite bun test 6 fail proven pre-existing at clean HEAD (A/B)",
+ "artifacts": "scripts/run-badsum-restore/qp/{2019-01-4MB1-01.txt, jan2019_p5_*.png, v_p5*.json} (local evidence)",
+ "provenance": {"repo": "SyllabAI/syllabai-v2 @ 238d5cad", "pastpapersRepo": "SyllabAI/syllabai-pastpapers @ treeSha 3063c7169c16a39204688749531a0c3608e56e7a (public raw, no token)"}
+}

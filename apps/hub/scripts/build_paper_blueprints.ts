@@ -63,10 +63,26 @@ interface RawExtraction {
   paperTotal: number | null;
   /** rubric says "answer N questions from ..." — optional-choice paper */
   optionalChoice: boolean;
+  /** question numbers supplied from MANUAL_FOOTER_EVIDENCE (vision-recovered) */
+  manual?: number[];
 }
 
 const PER_Q = /Total for Question\s*(\d+)\s*(?:=|is)?\s*(\d+)\s*marks?/gi;
-const PAPER_TOTAL = /Total for (?:the )?paper\s*=?\s*(\d+)\s*marks?/gi;
+// "is" variant: 4MB1 QPs print "TOTAL FOR PAPER IS 100 MARKS" (the old
+// equals-only regex silently yielded paperTotal=null for every 4MB1 row,
+// which disabled the single-gap inference and left 2023-01:4MB1-02 partial)
+const PAPER_TOTAL = /Total for (?:the )?paper\s*(?:=|is)?\s*(\d+)\s*marks?/gi;
+
+/**
+ * Vision-recovered footers for footer lines that are absent from the QP PDF
+ * text layer (rendered as image regions). Every entry is pinned to a vision
+ * OCR read of the printed footer plus arithmetic closure against the printed
+ * paper total (2019-01:4MB1-01: 25 text-layer footers sum 94, paper total
+ * 100, Q8+Q9 = 6 = 3+3 read verbatim from page renders).
+ */
+const MANUAL_FOOTER_EVIDENCE: Record<string, Record<number, number>> = {
+  "2019-01:4MB1-01": { 8: 3, 9: 3 },
+};
 
 async function extractFromPdf(buf: Buffer): Promise<RawExtraction | null> {
   const pdfjs = await loadPdfjs();
@@ -102,6 +118,7 @@ function finalize(raw: RawExtraction): {
   total: number;
   paperTotal: number | null;
   inferred: string[];
+  manual?: number[];
   optional?: true;
 } | null {
   const qns = [...raw.marks.keys()].sort((a, b) => a - b);
@@ -146,6 +163,7 @@ function finalize(raw: RawExtraction): {
     total: sum,
     paperTotal: raw.paperTotal,
     inferred,
+    ...(raw.manual?.length ? { manual: raw.manual } : {}),
     ...(optional ? { optional: true as const } : {}),
   };
 }
@@ -201,6 +219,14 @@ async function main() {
           continue;
         }
         const raw = await extractFromPdf(buf);
+        const manual = MANUAL_FOOTER_EVIDENCE[e.corpusKey];
+        if (raw && manual) {
+          for (const [qnStr, mk] of Object.entries(manual)) {
+            const qn = Number(qnStr);
+            if (!raw.marks.has(qn)) raw.marks.set(qn, mk);
+          }
+          raw.manual = Object.keys(manual).map(Number).sort((a, b) => a - b);
+        }
         const fin = raw ? finalize(raw) : null;
         if (!fin) {
           failed++;

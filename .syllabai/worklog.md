@@ -10889,3 +10889,35 @@ Stage Summary:
 - Post-merge main CI: 354de42 verify ✓ hub ✓ (completed success)
 - CONTEXT: main moved during sweep — #252 (tranche-1 consume re-run, 238d5ca) lane-merged mid-sweep; #251 clean against post-#252 base
 - Bookkeeping only: .syllabai/** — no code, no force
+
+---
+Task ID: 4MB1-QUALITY badsum-ruling-run-001-r0 (trace 1a15e7d6114dff35, operator order "2019-06-02 OCR repair lane, the 57 badSum restore-vs-ratify ruling, blueprint rows + coverage gate (task b), commandWord 45%")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Fetch-first: remote 238d5cad (4 new CIE-census commits, none touch this plane); bundle of record re-proven at HEAD: 65 sets / 1,249 q / 2,392 parts, badSum recompute = 57 with EXACT identity vs the run-001 manifest (scripts/run-badsum-recon-57-of-record.json).
+- RULING of record: RESTORE (ratify rejected) — the badSum class is a parse/extraction defect class vs printed official per-question totals, not intentional structure; evidence base = QP-footer anchors.
+- EXECUTED on the bundle surface: the 4 evidence-complete cleanFieldFixes (totalMarks stamps: 2019-01-01r#6 3->2, 2022-06-02#10 14->15, 2025-11-02#10 9->7, 2026-06-02#10 11->13; each partsSum == official anchor). DRY-then-APPLY: pre-sha 1963d95e (== MS-cleanup post of record) -> post-sha 943b0cf1; structure 65/1,249/2,392 unchanged; partMarks byte-identical; single-line JSON preserved; post-verify from disk; badSum 57 -> 53.
+- The 49 parse repairs stay a dedicated ops lane (need per-part QP evidence; probe: footers extract clean, body text layer noisy on diagram-heavy questions); sources pinned.
+- Blocked status: 3 of 4 UNBLOCKED by the sibling blueprint lane (2019-01-01 row now complete: orders 10/21/23 -> official Q11=3/Q22=5/Q24=6); 1 stays blocked (2022-01-02r order-0 re-order evidence).
+- DB plane: ZERO writes; the 57 remain emitter-excluded (0/57 refs; 1,192 live rows); the 53 repaired now PASS the emitter badSum check and would emit at a future operator-gated re-ingest (difficulty + qv-mirror coupling re-runs with it, disclosed).
+- Receipt: .syllabai/receipts/4MB1-QUALITY/badsum-restore-vs-ratify-ruling-run-001-r0.json.
+
+Stage Summary:
+- The restore-vs-ratify ruling is DISCHARGED: RESTORE of record; 4 field fixes live on the bundle surface (badSum 57->53), 53 questions now emitter-eligible for the next operator-gated re-ingest; 49 parse repairs scoped to their evidence workbench; 3/4 blocked members unblocked; the order-0 case remains the sole blocked member.
+
+---
+Task ID: 4MB1-QUALITY blueprint-completion-run-001-r0 (trace 1a15e7d6114dff35, operator order "blueprint rows + coverage gate (task b)")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- ROOT CAUSE of record: build_paper_blueprints.ts PAPER_TOTAL regex accepted only '=' between 'paper' and the number, but 4MB1 QPs print 'TOTAL FOR PAPER IS 100 MARKS' -> paperTotal=null was SYSTEMATIC on every 4MB1 row, silently disabling the single-gap inference for the whole family; run-001's per-paper 'official' corrections (Jan-2019 /01R 96, Jan-2023 /02 87) were incomplete-footer sums, now superseded (both papers print 100).
+- Fix: one-line regex amendment (is variant) + MANUAL_FOOTER_EVIDENCE map with additive row provenance field 'manual' (vision-recovered footers absent from the PDF text layer).
+- Vision evidence (z-ai vision glm-5v-turbo on 2019-01-4MB1-01.pdf page renders): '(Total for Question 9 is 3 marks)' + '(Total for Question 8 is 3 marks)' read verbatim; arithmetic closure 25 text footers (94) + 6 == paperTotal 100.
+- Regenerated pastpapers-blueprints.json: 320 -> 331 rows, ZERO dropped; 4MB1 gate census 62/1/1 -> 64/64 COMPLETE (0 partial, 0 no-bp): Jan-2019 /01 NEW row (27 questions, manual:[8,9]); Jan-2023 /02 completed (Q11=13 inferred, 87->100); Jan-2019 /01R completed (Q17=4 inferred, 96->100); paperTotal=100 stamped on all 64 rows. BONUS: 10 chemistry rows (4CH1-1C 2021-11..2026-06) recovered by the same regex fix.
+- Ripple disclosed: the 3 blocked badSum members (2019-01-01 orders 10/21/23) gain official anchors (Q11=3/Q22=5/Q24=6) — unblocked; the drift-paper narrative re-anchors at official 100 for 2019-01-01r and 2023-01-02.
+- Gates: root typecheck x4 OK; hub verify:corpus PASSED (with the Lane R bundle fix in tree); verify:cie PASSED; verify:flashcard-sync OK; full-suite bun test 6 fail proven PRE-EXISTING at clean HEAD 238d5cad via A/B stash run (identical 6; api.v2-surface + question-cla full-suite pollution class, unrelated); targeted 55/55 pass.
+- Receipt: .syllabai/receipts/4MB1-QUALITY/blueprint-completion-run-001-r0.json.
+
+Stage Summary:
+- Task (b) residual CLOSED: the 4MB1 blueprint plane is COMPLETE (64/64 papers, per-question official marks everywhere, paper totals proven from the printed QP lines); the coverage gate now has a fully-anchored family to gate on; the no-bp paper of record is no-bp no more.
