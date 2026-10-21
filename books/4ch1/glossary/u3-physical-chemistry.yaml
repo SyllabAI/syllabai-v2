@@ -1,0 +1,73 @@
+# books/4ch1 glossary - AUTHORED layer of record (T-BOOK-012, u3 packs c19-c21 refs)
+subject_code: "4ch1"
+terms:
+  - term: "exothermic"
+    slug: exothermic
+    definition: "A reaction that gives out heat energy to the surroundings, so the temperature of the surroundings rises and the enthalpy change is negative."
+    ms_accepts: ["gives out/releases heat to the surroundings", "temperature rises", "delta H is negative"]
+    ms_avoids: ["gives out energy without saying heat/temperature change", "delta H positive (sign backwards)"]
+    aliases: []
+    source: "authored:pack-c19-c21-r0"
+  - term: "endothermic"
+    slug: endothermic
+    definition: "A reaction that takes in heat energy from the surroundings, so the temperature of the surroundings falls and the enthalpy change is positive."
+    ms_accepts: ["takes in/absorbs heat from the surroundings", "temperature falls", "delta H is positive"]
+    ms_avoids: ["cold to the touch with no temperature measurement", "delta H negative (sign backwards)"]
+    aliases: []
+    source: "authored:pack-c19-c21-r0"
+  - term: "enthalpy change"
+    slug: enthalpy-change
+    definition: "The overall heat energy change of a reaction at constant pressure, symbol delta H; negative for exothermic, positive for endothermic, quoted in kJ/mol."
+    ms_accepts: ["the heat energy change between reactants and products", "delta H with the correct sign in kJ/mol"]
+    ms_avoids: ["a temperature change (that is what the thermometer reads)", "an energy without units"]
+    aliases: ["delta H", "heat energy change"]
+    source: "authored:pack-c19-c21-r0"
+  - term: "calorimetry"
+    slug: calorimetry
+    definition: "Measuring a reaction's heat change from the measured temperature change of the surroundings, using Q = mc(delta T) with the solution or water as the heated mass."
+    ms_accepts: ["Q = mc delta T", "measure temperature change of a known mass of water/solution"]
+    ms_avoids: ["thermometer measures the heat directly", "c is the speed of light (here it is specific heat capacity)"]
+    aliases: ["calorimetry experiment"]
+    source: "authored:pack-c19-c21-r0"
+  - term: "rate of reaction"
+    slug: rate-of-reaction
+    definition: "The speed at which reactants are used up or products form, measured as change in amount (or volume/mass) divided by change in time; the slope of the graph."
+    ms_accepts: ["change in amount/volume/mass divided by time", "the gradient (slope) of the graph"]
+    ms_avoids: ["how long the reaction takes (that is time, not rate)", "a single measurement without units"]
+    aliases: ["reaction rate"]
+    source: "authored:pack-c19-c21-r0"
+  - term: "collision theory"
+    slug: collision-theory
+    definition: "Reactions occur only when particles collide with at least the activation energy; rate depends on how often (and how energetically) particles collide."
+    ms_accepts: ["particles must collide with energy >= activation energy", "more frequent or more energetic collisions -> faster rate"]
+    ms_avoids: ["any collision reacts (activation energy ignored)", "particles melt into each other"]
+    aliases: []
+    source: "authored:pack-c19-c21-r0"
+  - term: "activation energy"
+    slug: activation-energy
+    definition: "The minimum energy particles must carry for a collision to react; the height of the energy hill on a reaction profile, lowered by a catalyst."
+    ms_accepts: ["minimum energy needed for a collision to lead to reaction", "energy barrier lowered by a catalyst"]
+    ms_avoids: ["energy released by the reaction (that is delta H)", "energy the catalyst supplies permanently"]
+    aliases: ["Ea"]
+    source: "authored:pack-c19-c21-r0"
+  - term: "catalyst"
+    slug: catalyst
+    definition: "A substance that increases the rate of a reaction by providing an alternative pathway of lower activation energy, and is chemically unchanged (and not used up) at the end."
+    ms_accepts: ["speeds up the reaction without being used up", "provides an alternative pathway with lower activation energy"]
+    ms_avoids: ["used up during the reaction", "makes more product (yield unchanged)", "lowers delta H (it lowers Ea, not delta H)"]
+    aliases: []
+    source: "authored:pack-c19-c21-r0"
+  - term: "reversible reaction"
+    slug: reversible-reaction
+    definition: "A reaction that proceeds in both directions, indicated by the double arrow; the forward and reverse changes happen side by side (e.g. hydrated/anhydrous copper(II) sulfate)."
+    ms_accepts: ["goes both ways / forward and reverse both occur", "symbol shown in equations"]
+    ms_avoids: ["a reaction that cannot be reversed", "an equilibrium only (reversibility is the wider term)"]
+    aliases: []
+    source: "authored:pack-c19-c21-r0"
+  - term: "dynamic equilibrium"
+    slug: dynamic-equilibrium
+    definition: "The state reached in a sealed container when the forward and reverse reactions occur at the same rate, so the concentrations of all substances stay constant."
+    ms_accepts: ["forward and reverse rates are equal", "concentrations constant (not equal)", "in a sealed/closed container"]
+    ms_avoids: ["the reaction has stopped (it is dynamic)", "amounts of reactants and products equal", "an open system"]
+    aliases: ["equilibrium"]
+    source: "authored:pack-c19-c21-r0"

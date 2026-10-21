@@ -1,0 +1,46 @@
+version: 1
+task:
+  id: T-BOOK-012
+  title: "Unit 3 packs (c19-c21) through S0-S4 — authoring, adversarial review, lint green, chapter flip, scoped ingest (shared with T-BOOK-011), 20% spot-check, pack flip; the rail serves Unit 3"
+  owner: "main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator trace 1a15f60b53d4e0d5)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-B
+  deps: [T-BOOK-010, T-BOOK-016, T-BOOK-017]
+  execution_record: >
+    Same dispatch, same pipeline as T-BOOK-011 (one staging, one ingest tx,
+    one flip tx — the u2+u3 lanes are one atomic Phase B landing). S0: 3
+    pack.yaml plans (c19-c21 = Energetics / Rates of reaction / Reversible
+    reactions and equilibria), page-true anchors from the sha-pinned parse
+    digest (c19 spans pdf 215-235, the biggest physical-chemistry chapter).
+    S1: 19 blocks (6/7/6; 8 of the 11 types incl. eq-builder x2 with the
+    double-arrow ⇌ for the CuSO4.5H2O equilibrium, num-stepper x2 on the
+    book's own Activity 4 data (25.0 cm3 of 2.00 mol/dm3 KOH, 28.00 cm3
+    cross-over -> 1.79 mol/dm3) and the Figure 20.6 mass-loss readings
+    (0.47 / 0.20 g)), + 10 new glossary terms in
+    u3-physical-chemistry.yaml with the ms layer + 3 probe-verified mcq
+    checkRefs. S2/S3: the two adversarial reviewers returned u3 PASS on
+    both hats (0 x S1); their S2/S3 fixes (c20 Figure 20.6 caption is
+    mass-LOSS on a balance, not gas collected; the collision-theory target
+    names both mechanisms) applied and re-gated PASS. Refs note of record:
+    c21/b05 (the equilibrium-shift sort) cites 3.20C+3.21C of the bound
+    join set; 3.22C (the formal shift code) is an orphan across all 29
+    chapters - F-BOOK-0005, the repair lane is operator-gated. Lint G1-G4 0
+    x29 packs / 177 blocks. S3/S4: shared with T-BOOK-011 (chapter flip
+    u3:c19..c21 inside the same 11-row tx; ingest 71 blocks one tx;
+    spot-check covers u3 6/6; pack flip x71 one tx) -> serve proof
+    u3:c19..c21 = 6/7/6.
+base:
+  repo: "syllabai-v2 @ t-book-011-019/units-2-4-glossary-r0"
+basis: "BOOK-BUILD-PLAYBOOK S0-S4; BOOK-PACK-SPEC; ADR-BOOK-0001 §3/§4; the T-BOOK-011/016 pipeline of record"
+scope:
+  allowed:
+    - "books/4ch1/packs/c19-*..c21-* (S0 plans + S1 blocks)"
+    - "books/4ch1/glossary/u3-physical-chemistry.yaml"
+    - "DB book_chapters/book_blocks u3 state flips (shared guarded txs with T-BOOK-011)"
+    - ".syllabai/receipts/T-BOOK-012/** + task yaml + worklog append"
+  forbidden:
+    - "the ingest script of record (unchanged)"
+    - "any u4 DB-plane write (the F-BOOK-0001 release gate)"
+    - "L1 corpus files"

@@ -1,0 +1,69 @@
+{
+  "id": "c21-equilibria/b05",
+  "type": "sort-match",
+  "chapterKey": "u3:c21",
+  "ord": 5,
+  "pdfPageAnchor": 253,
+  "specPointRefs": [
+    "3.20C",
+    "3.21C"
+  ],
+  "glossaryRefs": [
+    "dynamic-equilibrium"
+  ],
+  "version": 1,
+  "content": {
+    "prompt": "Steering the equilibrium - match each change to where the position of equilibrium shifts.",
+    "items": [
+      {
+        "id": "pressure-up",
+        "text": "pressure increased (fewer gas molecules on one side)"
+      },
+      {
+        "id": "pressure-down",
+        "text": "pressure decreased"
+      },
+      {
+        "id": "temp-up",
+        "text": "temperature increased"
+      },
+      {
+        "id": "temp-down",
+        "text": "temperature decreased"
+      },
+      {
+        "id": "catalyst-in",
+        "text": "catalyst added"
+      }
+    ],
+    "targets": [
+      {
+        "id": "fewer-side",
+        "text": "shifts to the side with FEWER gas molecules"
+      },
+      {
+        "id": "more-side",
+        "text": "shifts to the side with MORE gas molecules"
+      },
+      {
+        "id": "endo-dir",
+        "text": "shifts in the ENDOTHERMIC direction"
+      },
+      {
+        "id": "exo-dir",
+        "text": "shifts in the EXOTHERMIC direction"
+      },
+      {
+        "id": "no-change",
+        "text": "position unchanged - it only reaches equilibrium faster"
+      }
+    ],
+    "solution": {
+      "pressure-up": "fewer-side",
+      "pressure-down": "more-side",
+      "temp-up": "endo-dir",
+      "temp-down": "exo-dir",
+      "catalyst-in": "no-change"
+    }
+  }
+}

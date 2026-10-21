@@ -1,0 +1,35 @@
+{
+  "task": "T-BOOK-012",
+  "lane": "content (Unit 3 packs c19-c21) — S0-S4, the rail serves Unit 3",
+  "operator_order": "② Units 2–4 packs (plan T-BOOK-011..013) (trace 1a15f60b53d4e0d5)",
+  "trace": "1a15f60b53d4e0d5",
+  "generated": "2026-10-22T10:10:00Z",
+  "pipeline_of_record": {
+    "shared_with_T-BOOK-011": "one dispatch, one Phase B landing: chapter flip 11/11 (u2 8 + u3 3, one tx), SCOPED ingest 71 blocks one tx (u2 52 + u3 19), 20% spot-check 15/71 across all 11 chapters, pack flip ×71 one tx — see .syllabai/receipts/T-BOOK-011/unit2-packs-r0.json for the full pipeline of record; this receipt carries the u3-specific facts",
+    "u3_facts": [
+      "blocks 6/7/6 (c19/c20/c21); 8 of 11 types; media-embed honestly absent",
+      "page-true anchors: c19 216-233 (the biggest chapter, pdf 215-235), c20 236-247, c21 249-255",
+      "eq-builder x2 carry the double arrow ⇌ (CuSO4.5H2O ⇌ CuSO4 + 5H2O; esterification is u4) — the reversible-reaction symbol of record",
+      "num-stepper x2 use the BOOK's own numbers: Activity 4 (25.0 cm3 of 2.00 mol/dm3 KOH; 28.00 cm3 HCl cross-over → 0.0500 mol → 1.79 mol/dm3, pdf 227) and Figure 20.6 (0.47 g / 0.20 g per minute, pdf 237) — both verified against the sha-pinned parse full text",
+      "c19/b05 mcq anchors 3.2+3.8 (calorimetry practicals); c20/b06 drag-label = the reaction profile (3.13/3.14C); c21/b05 sort = the equilibrium-shift law (3.20C/3.21C of the bound set)"
+    ],
+    "review": "adversarial: fact-pass u3 PASS (0×S1, 1×S2 ref-scope note resolved as binding-law disclosure), examiner-voice u3 PASS (c20 caption mass-loss + collision target reword applied); both re-gates PASS",
+    "refs_note": "3.22C (temperature/pressure equilibrium shifts — the formal code for c21/b05's content) is an orphan across all 29 chapters; the block cites the bound 3.20C+3.21C and stays inside the binding law; filed as F-BOOK-0005 with the proposed widened-repair lane"
+  },
+  "authoring_stats": {
+    "blocks_by_type": {"prose": 3, "figure": 3, "callout": 3, "mcq-embed": 3, "sort-match": 3, "drag-label": 1, "table-fill": 1, "num-stepper": 2, "eq-builder": 2, "sim-embed": 0, "media-embed": 0},
+    "glossary_terms_by_file": {"u3-physical-chemistry": 10},
+    "bank_refs": ["sme-eq-3-1-energetics-q7", "sme-eq-3-2-rates-of-reaction-q3", "sme-eq-3-3-reversible-reactions-and-equilibria-q0"],
+    "sims": ["none (no allowlisted sim maps honestly onto the u3 topics; sim_embed_plan pins none here — disclosed)"]
+  },
+  "verification": {
+    "spot_check_u3": "sampled rows across c19/c20/c21 GREEN × 4 laws (part of the 15/71 sample); serve proof u3:c19..c21 = 6/7/6",
+    "lint": "G1-G4 0 findings (29 packs / 177 blocks)",
+    "state_laws": "new blocks version 1→2 post-flip; u1 demo gate untouched"
+  },
+  "disclosures": [
+    "the u3 glossary terms (10) land SUGGESTED with the ingest — future validation lane",
+    "no sim-embed for u3: the PhET allowlist has no honest rates/equilibrium sim beyond reactants-products-and-leftovers, which the sim_embed_plan does not pin for c19-c21 — honestly absent rather than force-fitted"
+  ],
+  "status": "UNIT-3 RAIL COMPLETE (production serving u3:c19..c21, 19 VALIDATED blocks, under the §3 double gate)"
+}
