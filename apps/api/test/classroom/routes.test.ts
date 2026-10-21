@@ -235,7 +235,10 @@ const rosterCohortRoute = (rows: Array<Record<string, unknown>>): Route => ({
 type AuthRow = Record<string, unknown> | null;
 
 function makeApp(auth: (c: Context) => AuthRow, routes: Route[]) {
-  const sql = fakeSql(routes);
+  // T-TEACH-002: the default class_features answer rides every assembly
+  // (the EMPTY table = row-absent = all ON; specific tests add their own
+  // feature rows FIRST so fakeSql's first-match law honors them).
+  const sql = fakeSql([...routes, { match: /from class_features/i, rows: [] }]);
   const module = buildClassroomModule(sql, clock);
   const app = new Hono();
   app.use("*", async (c, next) => {
@@ -1023,5 +1026,95 @@ describe("GET /api/v1/teacher/learners (:37-42 → 200)", () => {
     expect(learnerRosterViewSchema.safeParse(body[0]).success).toBeTrue();
     expect(body[0].displayName).toBe("Ann L.");
     expect(Object.keys(body[0]).sort()).toEqual(["createdAt", "displayName", "email", "id"]); // identity projection ONLY
+  });
+});
+
+// ── T-TEACH-002 (ADR-CLASS-0001): POST /:id/features — the v2-native toggle
+//    write (the frozen core had no feature concept). Pins: 200 + the detail
+//    schema with the ALWAYS-PRESENT features block (row-absent = all ON),
+//    the strict body law (undeclared keys → 400 validation_failed), and the
+//    §17 ownership 404/403 riding the shared classroomOnError mapping.
+describe("POST /api/v1/teacher/classes/:id/features (T-TEACH-002 → 200)", () => {
+  const upsertRoute: Route = {
+    match: /^insert into class_features/,
+    rows: [],
+    rowsFor: (params) => {
+      expect(params[0]).toBe(CLASS_A);
+      expect(params[2]).toBe(false); // the requested tutor flip
+      expect(params[5]).toBe(TEACHER);
+      return [];
+    },
+  };
+
+  test("happy path: 200 + the detail schema carrying the features block", async () => {
+    const { app } = makeApp(asTeacher, [
+      ownedClassRoute([classRow()]),
+      upsertRoute,
+      rosterRoute([]),
+      usersBatchRoute([]),
+      // the post-write state: fakeSql is stateless, so the grouped features
+      // read answers the row the upsert stored (tutor OFF; the rest ON)
+      {
+        match: /from class_features where class_id = any/,
+        rows: [{ class_id: CLASS_A, smart_mark: true, tutor: false, cla: true }],
+      },
+    ]);
+    const res = await app.request(`/api/v1/teacher/classes/${CLASS_A}/features`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tutor: false }),
+    });
+    expect(res.status).toBe(200);
+    const body = await res.json();
+    expect(teacherClassDetailViewSchema.safeParse(body).success).toBeTrue();
+    expect(body.features).toEqual({ smartMark: true, tutor: false, cla: true });
+  });
+
+  test("strict body: an undeclared key is the closed-surface refusal (400 validation_failed)", async () => {
+    const { app, sql } = makeApp(asTeacher, [ownedClassRoute([classRow()])]);
+    const res = await app.request(`/api/v1/teacher/classes/${CLASS_A}/features`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tutor: false, grading: true }),
+    });
+    expect(res.status).toBe(400);
+    const body = await res.json();
+    expect(body.error).toBe("validation_failed");
+    // the house classifier renders zod's unrecognized_keys as the generic
+    // ": request invalid" (empty field path, no default message) — the
+    // REFUSAL is what the law pins: closed surface, fail-closed, no write.
+    expect(body.message).toContain("request invalid");
+    expect(sql.queries.filter((q) => q.startsWith("insert into class_features"))).toHaveLength(0); // fail-closed
+  });
+
+  test("wrong type: the two-envelope binding bucket (400 malformed_body)", async () => {
+    const { app } = makeApp(asTeacher, [ownedClassRoute([classRow()])]);
+    const res = await app.request(`/api/v1/teacher/classes/${CLASS_A}/features`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tutor: "off" }),
+    });
+    expect(res.status).toBe(400);
+    expect((await res.json()).error).toBe("malformed_body");
+  });
+
+  test("unknown class → 404 verbatim; foreign class → 403 verbatim (the §17 gate)", async () => {
+    const unknown = makeApp(asTeacher, [ownedClassRoute([])]);
+    const unknownRes = await unknown.app.request(`/api/v1/teacher/classes/${CLASS_A}/features`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tutor: false }),
+    });
+    expect(unknownRes.status).toBe(404);
+    expect((await unknownRes.json()).message).toBe("class not found");
+
+    const foreign = makeApp(asTeacher, [ownedClassRoute([classRow({ teacher_id: OTHER_TEACHER })])]);
+    const foreignRes = await foreign.app.request(`/api/v1/teacher/classes/${CLASS_A}/features`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ tutor: false }),
+    });
+    expect(foreignRes.status).toBe(403);
+    expect((await foreignRes.json()).message).toBe("this class belongs to another teacher");
   });
 });

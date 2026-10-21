@@ -106,6 +106,7 @@ import { getAuth, requireAuth, requireRole } from "../middleware/auth";
 import {
   classCreateRequestSchema,
   classEnrollRequestSchema,
+  classFeatureUpdateRequestSchema,
   classPublishRequestSchema,
   classStatusRequestSchema,
 } from "@syllabai/contracts";
@@ -291,6 +292,22 @@ export function createTeacherClassesRouter(module: ClassroomModule): Hono {
     const parsed = classStatusRequestSchema.safeParse(raw.value);
     if (!parsed.success) return bodyErrorResponse(c, parsed.error);
     return c.json(await module.setClassStatus(auth.userId, id, parsed.data));
+  });
+
+  // POST /:id/features → 200 — T-TEACH-002 (ADR-CLASS-0001): the v2-native
+  // additive toggle write (the frozen core had no feature concept). The
+  // §17 ownership gate is service law (same shared ownedClass); the body
+  // is PARTIAL by design (absent keys keep their value) and STRICT
+  // (undeclared keys rejected — the closed toggle surface). Unknown class
+  // 404 / foreign 403 ride the shared classroomOnError mapping.
+  r.post("/:id/features", async (c) => {
+    const auth = getAuth(c)!;
+    const id = parseUuid(c.req.param("id"));
+    const raw = await readJsonBody(c);
+    if (!raw.ok) return c.json(malformedBody(), 400);
+    const parsed = classFeatureUpdateRequestSchema.safeParse(raw.value);
+    if (!parsed.success) return bodyErrorResponse(c, parsed.error);
+    return c.json(await module.setClassFeatures(auth.userId, id, parsed.data));
   });
 
   // POST /:id/members (:150-175) → 201 — the enroll law chain (archived 409

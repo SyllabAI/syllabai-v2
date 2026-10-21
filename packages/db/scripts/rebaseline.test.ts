@@ -242,20 +242,20 @@ describe("specialTypeMap", () => {
 // ---------------------------------------------------------------------------
 
 describe("verifyBaseline (checked-in baseline)", () => {
-  test("68/650/96/60/112 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  test("70/666/97/61/112 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 68/68");
-    expect(v.inventory).toContain("columns 650");
-    expect(v.inventory).toContain("indexes 96");
-    expect(v.inventory).toContain("fks 60");
+    expect(v.inventory).toContain("tables 70/70");
+    expect(v.inventory).toContain("columns 666");
+    expect(v.inventory).toContain("indexes 97");
+    expect(v.inventory).toContain("fks 61");
     expect(v.inventory).toContain("checks 112");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(68);
+    expect(run.size).toBe(70);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);
@@ -263,6 +263,9 @@ describe("verifyBaseline (checked-in baseline)", () => {
     expect(run.has("public.book_blocks")).toBe(true);
     expect(run.has("public.book_glossary_terms")).toBe(true);
     expect(run.has("public.chapter_progress")).toBe(true);
+    // T-TEACH-002 — the class feature toggles + the course bridge (ADR-CLASS-0001)
+    expect(run.has("public.class_features")).toBe(true);
+    expect(run.has("public.course_registry")).toBe(true);
   });
 });
 

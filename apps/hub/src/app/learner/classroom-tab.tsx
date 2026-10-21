@@ -108,6 +108,19 @@ export function ClassroomTab() {
               <Badge key={c.id} variant="outline" className="gap-1.5 py-1 text-xs">
                 {c.name}
                 <span className="text-muted-foreground">· {c.courseLabel}</span>
+                {/* ADR-CLASS-0001 §6 — the learner honesty surface: when a
+                    teacher turns an AI feature off for THIS class, the
+                    student sees the state here (and the ask surfaces refuse
+                    with the same honest message). */}
+                {!c.features.tutor && (
+                  <span className="text-[10px] text-muted-foreground">· tutor off</span>
+                )}
+                {!c.features.cla && (
+                  <span className="text-[10px] text-muted-foreground">· fact-check off</span>
+                )}
+                {!c.features.smartMark && (
+                  <span className="text-[10px] text-muted-foreground">· smart mark off</span>
+                )}
                 {c.unreadAnnouncements > 0 ? (
                   <span className="inline-flex items-center gap-0.5 rounded-full bg-primary px-1.5 text-[10px] font-semibold text-primary-foreground">
                     {c.unreadAnnouncements} new

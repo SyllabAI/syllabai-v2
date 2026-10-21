@@ -1570,3 +1570,39 @@ export const claThreadMessages = pgTable("cla_thread_messages", {
         check("ck_cla_thread_message_shape", sql`((kind)::text = 'assistant' AND payload IS NOT NULL AND text IS NULL AND question IS NULL) OR ((kind)::text <> 'assistant' AND text IS NOT NULL AND payload IS NULL)`),
         check("ck_cla_thread_message_question", sql`((kind)::text = 'error') = (question IS NOT NULL)`),
 ]);
+
+// ── T-TEACH-002 (ADR-CLASS-0001): class-scoped AI-feature toggles + the ──────
+// course_registry bridge. V2-NATIVE, ADDITIVE-ONLY (BASELINE_DB.md §4): the
+// feature state rides this side table so the Flyway-era `classes` row is
+// never altered structurally; row-absent = every feature ON. course_registry
+// COPIES the hub registry of record (apps/hub/content/courses.json) via the
+// idempotent seed script — never derived (the registry's own law).
+export const classFeatures = pgTable("class_features", {
+        classId: uuid("class_id").primaryKey().notNull(),
+        smartMark: boolean("smart_mark").default(true).notNull(),
+        tutor: boolean("tutor").default(true).notNull(),
+        cla: boolean("cla").default(true).notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).notNull(),
+        updatedBy: uuid("updated_by"),
+}, (table) => [
+        foreignKey({
+                        columns: [table.classId],
+                        foreignColumns: [classes.id],
+                        name: "fk_class_features_class"
+                }).onDelete("cascade"),
+]);
+
+export const courseRegistry = pgTable("course_registry", {
+        courseSlug: varchar("course_slug", { length: 100 }).primaryKey().notNull(),
+        curriculumCode: varchar("curriculum_code", { length: 50 }),
+        level: varchar({ length: 40 }).notNull(),
+        subject: varchar({ length: 100 }).notNull(),
+        code: varchar({ length: 20 }).notNull(),
+        board: varchar({ length: 50 }),
+        label: varchar({ length: 160 }),
+        status: varchar({ length: 16 }).notNull(),
+        source: varchar({ length: 200 }).notNull(),
+        syncedAt: timestamp("synced_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        index("ix_course_registry_cc").using("btree", table.curriculumCode.asc().nullsLast().op("text_ops")).where(sql`(curriculum_code IS NOT NULL)`),
+]);

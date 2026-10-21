@@ -1722,6 +1722,15 @@ export interface TeacherClassView {
   status: string;
   memberCount: number;
   createdAt: string;
+  features: ClassFeaturesView;
+}
+
+/** T-TEACH-002 (ADR-CLASS-0001): the per-class AI-feature state — always
+ *  present; row-absent server storage materializes the all-ON defaults. */
+export interface ClassFeaturesView {
+  smartMark: boolean;
+  tutor: boolean;
+  cla: boolean;
 }
 
 /** one roster row: the student + when they were enrolled + by whom */
@@ -1742,6 +1751,7 @@ export interface TeacherClassDetailView {
   status: string;
   createdAt: string;
   members: ClassMemberView[];
+  features: ClassFeaturesView;
 }
 
 /** teacher announcement row: content + read-state count over the roster */
@@ -1765,6 +1775,7 @@ export interface LearnerClassView {
   teacherName: string;
   unreadAnnouncements: number;
   enrolledAt: string;
+  features: ClassFeaturesView;
 }
 
 // ── F-072 class knowledge-graph heatmap (T-C35) ────────────────────────────

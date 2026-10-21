@@ -1562,6 +1562,18 @@ export const api = {
       body: JSON.stringify({ status }),
     }),
 
+  // Teacher: the class AI-feature toggles (T-TEACH-002, ADR-CLASS-0001) —
+  // partial by design (absent keys keep their value); the refreshed detail
+  // view answers with the always-present features block.
+  teacherSetClassFeatures: (
+    id: string,
+    body: { smartMark?: boolean; tutor?: boolean; cla?: boolean },
+  ) =>
+    request<TeacherClassDetailView>(`/api/v1/teacher/classes/${id}/features`, {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+
   // Teacher: the F-072 class knowledge-graph heatmap — the curriculum
   // subtree with member-only §13.3 aggregation fused with the TFA-03
   // teaching-coverage overlay (§13.4). A pure read model; archived classes
