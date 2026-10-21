@@ -1078,3 +1078,147 @@ describe("ruling A — the optionA identity laws (trace 1a15b161bf960249)", () =
     expect(spec.dbCode.includes("2017")).toBe(false);
   });
 });
+
+// ── Lane C ruling A (trace 1a15beb5881f7f31) — the Edexcel bare-tail FIFTH shape ──
+
+const CHEM_BUNDLE_PATH = join(
+  import.meta.dir,
+  "../../../hub/content/igcse-chemistry-19/curriculum.json",
+);
+const chemBundle = JSON.parse(readFileSync(CHEM_BUNDLE_PATH, "utf8")) as BundleCurriculum;
+
+describe("lane C ruling A — the Edexcel bare S-series SUBTOPIC tail (igcse-chemistry-19)", () => {
+  test("the real chemistry bundle contract: 1 SUBJECT / 4 TOPIC / 28 SUBTOPIC / 182 SPEC_POINT, bare codes, Edexcel board", () => {
+    const fams = { SUBJECT: 0, TOPIC: 0, SUBTOPIC: 0, SPEC_POINT: 0 } as Record<string, number>;
+    for (const n of chemBundle.nodes) fams[n.family] = (fams[n.family] ?? 0) + 1;
+    expect(fams).toEqual({ SUBJECT: 1, TOPIC: 4, SUBTOPIC: 28, SPEC_POINT: 182 });
+    expect(chemBundle.board).toBe("Pearson Edexcel");
+    expect(chemBundle.code).toBe("4CH1");
+    for (const n of chemBundle.nodes) {
+      if (n.family !== "SUBTOPIC") continue;
+      expect(n.code).toMatch(/^4CH1-S\d+-[a-z]$/);
+      expect(n.code.includes(":SUB")).toBe(false);
+    }
+  });
+
+  test("the fifth shape lands dbCode = the bundle code VERBATIM, byte-identical with the seeded DB of record", () => {
+    const mapped = mapBundleNodes(chemBundle, "4CH1 official specification structure");
+    // the 28 bare-tail TOPICs: verbatim dbCodes (the lane C DB probe of record:
+    // knowledge_nodes carries 4CH1-S1-a..4CH1-S4-h byte-identical)
+    let topics = 0;
+    for (const n of chemBundle.nodes) {
+      if (n.family !== "SUBTOPIC") continue;
+      const m = mapped.get(n.code)!;
+      expect(m.nodeType).toBe("TOPIC");
+      expect(m.dbCode).toBe(n.code);
+      topics++;
+    }
+    expect(topics).toBe(28);
+    expect(mapped.get("4CH1-S1-a")!.dbCode).toBe("4CH1-S1-a");
+    expect(mapped.get("4CH1-S4-h")!.dbCode).toBe("4CH1-S4-h");
+    // UNITs stay on the Edexcel order law
+    const unitCodes = [...mapped.values()].filter((m) => m.nodeType === "UNIT").map((m) => m.dbCode).sort();
+    expect(unitCodes).toEqual(["4CH1-S1", "4CH1-S2", "4CH1-S3", "4CH1-S4"]);
+    // leg 4: the self-namespaced spec points land VERBATIM under their TOPICs
+    expect(mapped.get("4CH1-1.1")!.dbCode).toBe("4CH1-1.1");
+    expect(mapped.get("4CH1-1.3")!.dbCode).toBe("4CH1-1.3");
+    const sp = mapped.get("4CH1-1.3")!;
+    expect(sp.nodeType).toBe("SPEC_POINT");
+    const parentTopic = mapped.get(sp.parentBundleCode!)!;
+    expect(parentTopic.nodeType).toBe("TOPIC");
+    expect(parentTopic.dbCode).toMatch(/^4CH1-S1-[a-z]$/);
+  });
+
+  test("the CIE gate: a CIE-board bundle with bare codes refuses UPSTREAM at the -T law (phase-4 unchanged)", () => {
+    const cieBare: BundleCurriculum = { ...chemBundle, board: "Cambridge International" };
+    expect(() => mapBundleNodes(cieBare, "x")).toThrow(
+      /does not carry the official -T tail/,
+    );
+  });
+
+  test("the CIE gate at the SUBTOPIC branch itself: a CIE-shaped hybrid still refuses the bare tail", () => {
+    // give the TOPICs their official -T tails (CIE UNIT law passes) + rewire
+    // every parent reference; the SUBTOPIC branch must then refuse the bare
+    // tail because the fifth shape is non-CIE-gated
+    const tMap: Record<string, string> = {};
+    for (const n of chemBundle.nodes) {
+      if (n.family === "TOPIC") tMap[n.code] = n.code + "-T1";
+    }
+    const hybrid: BundleCurriculum = {
+      ...chemBundle,
+      board: "Cambridge International",
+      nodes: chemBundle.nodes.map((n) => ({
+        ...n,
+        code: tMap[n.code] ?? n.code,
+        parents: n.parents.map((p) => tMap[p] ?? p),
+      })),
+    };
+    expect(() => mapBundleNodes(hybrid, "x")).toThrow(
+      /does not carry the :SUBx letter, dotted, placeholder, or letter-prefixed suffix/,
+    );
+  });
+
+  test("leg 2: a self-locating TOPIC code whose present order disagrees with its own S<n> refuses", () => {
+    const drifted: BundleCurriculum = {
+      ...chemBundle,
+      nodes: chemBundle.nodes.map((n) =>
+        n.family === "TOPIC" && n.code === "4CH1-S1" ? { ...n, order: 3 } : n,
+      ),
+    };
+    expect(() => mapBundleNodes(drifted, "x")).toThrow(
+      /order 3 disagrees with the code's own S1/,
+    );
+  });
+
+  test("leg 3 bounds: a dual-parent SUBTOPIC refuses; a dual-spec with two UNIT parents refuses", () => {
+    const dualSub: BundleCurriculum = {
+      ...chemBundle,
+      nodes: chemBundle.nodes.map((n) =>
+        n.family === "SUBTOPIC" && n.code === "4CH1-S1-a"
+          ? { ...n, parents: ["4CH1-S1", "4CH1"] }
+          : n,
+      ),
+    };
+    expect(() => mapBundleNodes(dualSub, "x")).toThrow(
+      /does not resolve exactly one in-bundle parent/,
+    );
+    const twoUnits: BundleCurriculum = {
+      ...chemBundle,
+      nodes: chemBundle.nodes.map((n) =>
+        n.family === "SPEC_POINT" && n.code === "4CH1-1.1"
+          ? { ...n, parents: ["4CH1-S1", "4CH1-S2"] }
+          : n,
+      ),
+    };
+    expect(() => mapBundleNodes(twoUnits, "x")).toThrow(
+      /dual parents do not resolve to exactly one mapped TOPIC \+ one mapped UNIT/,
+    );
+  });
+
+  test("the bare-tail verbatim law: a code whose S<n> disagrees with its parent UNIT refuses", () => {
+    const drifted: BundleCurriculum = {
+      ...chemBundle,
+      nodes: chemBundle.nodes.map((n) =>
+        n.family === "SUBTOPIC" && n.code === "4CH1-S1-a"
+          ? { ...n, code: "4CH1-S2-a" }
+          : n,
+      ),
+    };
+    // the drifted node still hangs under the S1 unit via its original edges
+    expect(() => mapBundleNodes(drifted, "x")).toThrow(/bare-tail dbCode 4CH1-S1-a is not verbatim/);
+  });
+
+  test("malformed bare shapes still refuse: two-letter tails, non-numeric sections, missing -S-", () => {
+    for (const bad of ["4CH1-S1-ab", "4CH1-SX-a", "4CH1-1-a", "4CH1-S1-A"]) {
+      const broken: BundleCurriculum = {
+        ...chemBundle,
+        nodes: chemBundle.nodes.map((n) =>
+          n.family === "SUBTOPIC" && n.code === "4CH1-S1-a" ? { ...n, code: bad } : n,
+        ),
+      };
+      expect(() => mapBundleNodes(broken, "x")).toThrow(
+        /does not carry the :SUBx letter, dotted, placeholder, or letter-prefixed suffix/,
+      );
+    }
+  });
+});

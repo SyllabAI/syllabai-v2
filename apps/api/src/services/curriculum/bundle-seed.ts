@@ -388,14 +388,30 @@ export function mapBundleNodes(
       });
       continue;
     }
-    const parent = n.parents.length === 1 ? n.parents[0] : null;
-    if (parent == null || !bundleHas(bundle, parent)) {
+    let parent: string | null = n.parents.length === 1 ? (n.parents[0] ?? null) : null;
+    // lane C leg 3 (ruling A of record, trace 1a15beb5881f7f31): the pre-order
+    // Edexcel generation attaches each SPEC_POINT to BOTH the container UNIT
+    // and the SUBTOPIC (['4CH1-S1','4CH1-S1-a']). Tolerated ONLY for
+    // SPEC_POINT + exactly two in-bundle parents; the TOPIC parent wins the
+    // mapping and the UNIT co-parent must map to a UNIT (asserted in the
+    // SPEC_POINT branch). Every other shape keeps the single-parent law.
+    const dualSpecParents: readonly string[] | null =
+      n.family === "SPEC_POINT" && n.parents.length === 2 ? n.parents : null;
+    if (dualSpecParents != null) {
+      for (const p of dualSpecParents) {
+        if (!bundleHas(bundle, p)) {
+          throw new BundleSeedConflictError(
+            "bundle node " + n.code + " does not resolve exactly one in-bundle parent",
+          );
+        }
+      }
+    } else if (parent == null || !bundleHas(bundle, parent)) {
       throw new BundleSeedConflictError(
         "bundle node " + n.code + " does not resolve exactly one in-bundle parent",
       );
     }
     if (n.family === "TOPIC") {
-      if (n.order < 1) throw new BundleSeedConflictError("bundle TOPIC " + n.code + " order < 1");
+      if (n.order != null && n.order < 1) throw new BundleSeedConflictError("bundle TOPIC " + n.code + " order < 1");
       // the optionA UNIT law: for CIE the UNIT identity is the TOPIC code's
       // own official -T tail, FAIL-CLOSED — the order digit is NOT an
       // identity (the 9709 census of record: six banks, every bank's one
@@ -406,7 +422,16 @@ export function mapBundleNodes(
       // TC/TE -> SC/SE (0580/0607 core-extended), TS -> SS (0500). Edexcel
       // stays byte-identical on the order law (S{order}).
       let unitDbCode: string;
-      if (BUNDLE_BOARD_BY_UPSTREAM[bundle.board] === CIE_BOARD_OF_RECORD) {
+      // lane C leg 2 (ruling A of record): the pre-order Edexcel generation
+      // self-locates the section in the TOPIC code itself ('4CH1-S1'..'S4' —
+      // no order field exists on those nodes). Non-CIE-gated; landed VERBATIM
+      // (byte-identical with the seeded UNIT dbCodes 4CH1-S1..S4 of the lane C
+      // probe of record). A present order that disagrees with the code's own
+      // S<n> refuses fail-closed; the order law stays the ONLY path for
+      // bundles without self-locating codes (physics igcse-physics-T1 etc.).
+      const isCie = BUNDLE_BOARD_BY_UPSTREAM[bundle.board] === CIE_BOARD_OF_RECORD;
+      const selfSection = isCie ? null : /^([A-Z0-9]+)-S(\d+)$/.exec(n.code);
+      if (isCie) {
         const m = /-T([A-Z]?[0-9]+)$/.exec(n.code);
         if (m == null) {
           throw new BundleSeedConflictError(
@@ -415,7 +440,20 @@ export function mapBundleNodes(
           );
         }
         unitDbCode = nsCode + "-S" + m[1];
+      } else if (selfSection != null) {
+        unitDbCode = n.code;
+        if (n.order != null && n.order !== Number(selfSection[2])) {
+          throw new BundleSeedConflictError(
+            "bundle TOPIC " + n.code + " order " + n.order +
+              " disagrees with the code's own S" + selfSection[2] + " — refusing the mismatch",
+          );
+        }
       } else {
+        if (n.order == null) {
+          throw new BundleSeedConflictError(
+            "bundle TOPIC " + n.code + " carries neither a self-locating -S<n> code nor an order",
+          );
+        }
         unitDbCode = subjectCode + "-S" + n.order;
       }
       byCode.set(n.code, {
@@ -446,11 +484,31 @@ export function mapBundleNodes(
       // `4MA1-S1-1.1`, `4MB1-S1-_`, `0580-S1-E1.1`. The first three shapes
       // keep byte-identical dbCodes; the uppercase-led fourth is disjoint
       // from the lowercase/dotted/placeholder vocabularies.
+      // FIFTH shape (lane C ruling A of record, trace 1a15beb5881f7f31): the
+      // Edexcel bare S-series tail — `4CH1-S1-a` — the pre-:SUB exporter
+      // generation's official identity, admitted NON-CIE-gated and landed
+      // VERBATIM (dbCode = the bundle code itself): the lane C probe of
+      // record proved all 28 seeded knowledge_nodes TOPIC dbCodes
+      // (4CH1-S1-a..4CH1-S4-h) are byte-identical with the bundle codes, so
+      // the verbatim landing is a no-op against the DB of record. A derived
+      // code that is not verbatim means the parent UNIT disagrees with the
+      // code's own S<n> — refused fail-closed. The refusal message below is
+      // kept verbatim (test-pinned twice); the fifth shape lives in this
+      // comment, not in the message.
       const m = /:SUB([a-z]|\d+(?:\.\d+)?|_|[A-Z]\d+(?:\.\d+)?)$/.exec(n.code);
-      if (m == null) {
+      const bare =
+        BUNDLE_BOARD_BY_UPSTREAM[bundle.board] === CIE_BOARD_OF_RECORD
+          ? null
+          : /^([A-Z0-9]+)-S(\d+)-([a-z])$/.exec(n.code);
+      if (m == null && bare == null) {
         throw new BundleSeedConflictError(
           "bundle SUBTOPIC " + n.code +
             " does not carry the :SUBx letter, dotted, placeholder, or letter-prefixed suffix",
+        );
+      }
+      if (parent == null) {
+        throw new BundleSeedConflictError(
+          "bundle node " + n.code + " does not resolve exactly one in-bundle parent",
         );
       }
       const parentMapped = byCode.get(parent);
@@ -459,9 +517,17 @@ export function mapBundleNodes(
           "bundle SUBTOPIC " + n.code + " parent " + parent + " is not a mapped UNIT",
         );
       }
+      const subTail = m != null ? m[1] : bare![3];
+      const subDbCode = parentMapped.dbCode + "-" + subTail;
+      if (m == null && subDbCode !== n.code) {
+        throw new BundleSeedConflictError(
+          "bundle SUBTOPIC " + n.code +
+            " bare-tail dbCode " + subDbCode + " is not verbatim — refusing the parent UNIT mismatch",
+        );
+      }
       byCode.set(n.code, {
         bundleCode: n.code,
-        dbCode: parentMapped.dbCode + "-" + m[1],
+        dbCode: subDbCode,
         nodeType: "TOPIC",
         title: bound(n.title, 200),
         description: bound(descriptionPrefix + " (subsection): " + n.title, 1000),
@@ -505,13 +571,41 @@ export function mapBundleNodes(
         "bundle SPEC_POINT " + n.code + " does not carry a numeric or letter-prefixed spec code",
       );
     }
+    if (dualSpecParents != null) {
+      const kinds = dualSpecParents.map((p) => byCode.get(p)?.nodeType ?? null);
+      const topicIdx = kinds.indexOf("TOPIC");
+      const unitIdx = kinds.indexOf("UNIT");
+      if (
+        topicIdx < 0 ||
+        unitIdx < 0 ||
+        topicIdx === unitIdx ||
+        kinds.some((k) => k !== "TOPIC" && k !== "UNIT")
+      ) {
+        throw new BundleSeedConflictError(
+          "bundle SPEC_POINT " + n.code +
+            " dual parents do not resolve to exactly one mapped TOPIC + one mapped UNIT",
+        );
+      }
+      parent = dualSpecParents[topicIdx] ?? null;
+    }
+    if (parent == null) {
+      throw new BundleSeedConflictError(
+        "bundle node " + n.code + " does not resolve exactly one in-bundle parent",
+      );
+    }
     const parentMapped = byCode.get(parent);
     if (parentMapped == null || parentMapped.nodeType !== "TOPIC") {
       throw new BundleSeedConflictError(
         "bundle SPEC_POINT " + n.code + " parent " + parent + " is not a mapped TOPIC",
       );
     }
-    let specDbCode = nsCode + "-" + n.code;
+    // lane C leg 4 (ruling A of record, trace 1a15beb5881f7f31): the pre-law
+    // Edexcel generation self-namespaces the spec codes ('4CH1-1.1' — the
+    // bundle code already carries the subject namespace, unlike the bare
+    // physics/maths generation). Landed VERBATIM (byte-identical with the
+    // seeded SPEC_POINT dbCodes 4CH1-1.1.. of the lane C probe of record);
+    // the hierarchical {subject}-{code} law stays the path for bare codes.
+    let specDbCode = n.code.startsWith(nsCode + "-") ? n.code : nsCode + "-" + n.code;
     if (alnum) {
       const grandparent =
         parentMapped.parentBundleCode == null

@@ -1,0 +1,79 @@
+{
+ "receipt_type": "F5_S7_G_ROUND_EXECUTION",
+ "generated_at": "2026-10-20T15:53:30Z",
+ "authority_order": "trace 1a159c4febff6695 (\"go\" — execute F.5 §7 G1→G5 receipt-first on production)",
+ "key_redelivery": "trace 1a159fc2fb36cf5d (Neon PAT re-staged, fp16 4c2e12da872b6959 = key of record)",
+ "pre_mutation_receipt_of_record": {
+  "file": "G3_G5_BACKFILL_RECEIPT.json",
+  "sha256": "fce408a29fd1e546a932fae3e5e629b950feb46468ed35e9c502a16f20a28402"
+ },
+ "target": {
+  "project": "billowing-cherry-15418366 (SyllabAI)",
+  "branch": "br-muddy-bar-a5huwldd (production, primary)",
+  "database": "neondb",
+  "table": "public.knowledge_nodes"
+ },
+ "ground_state_verified_pre_execution": {
+  "ck_node_type": "6 values, no SPEC_POINT (G1 un-run)",
+  "g3_receipt_ids_subtopic": "565/565",
+  "g5_receipt_ids_subtopic_4mb1": "98/98",
+  "spec_point_rows": 0,
+  "anchors_total_joined": "8138/8138",
+  "receipt_overlap": 0,
+  "verdict": "CLEAN — execution gate OPEN"
+ },
+ "G1": {
+  "at": "2026-10-20T15:50:29.428Z",
+  "action": "constraint swap ck_node_type 6-value -> 7-value (adds SPEC_POINT), single transaction, drop+add of record (g1-probe.js DDL text)",
+  "executed_as": "neondb_owner",
+  "lever": "Neon API connection_uri with role_name=neondb_owner (project-level route shape of record from reg500-dbstage.sh) — DISSOLVES the prior 'operator 2-statement DDL in console' blocker of record",
+  "post_swap_def": "CHECK (((node_type)::text = ANY (ARRAY[('SUBJECT'),('UNIT'),('TOPIC'),('SUBTOPIC'),('MISCONCEPTION'),('CONCEPT'),('SPEC_POINT')]::text)))",
+  "convalidated": true,
+  "rows_unchanged": "1022 total, distribution identical to pre-swap"
+ },
+ "G3": {
+  "at": "2026-10-20T15:50:50.689Z",
+  "action": "predicate retype SUBTOPIC -> SPEC_POINT, receipt-keyed (565 ids), batched 100/txn",
+  "pre_write_guard": "565/565 receipt ids verified SUBTOPIC before first write",
+  "batches": [{"batch":1,"ids":100,"retyped":100},{"batch":2,"ids":100,"retyped":100},{"batch":3,"ids":100,"retyped":100},{"batch":4,"ids":100,"retyped":100},{"batch":5,"ids":100,"retyped":100},{"batch":6,"ids":65,"retyped":65}],
+  "result": "retyped=565 (receipt=565), zero shortfall",
+  "post_battery": "B1-B6 ALL GREEN: census 182 4CH1 + 188 4MA1 + 195 4PH1 = 565; anchors 8138/8138 with 0 non-SPEC; residual SUBTOPIC 116 (=98 4MB1 pending G5 + 18 keep); practicals 12 untouched"
+ },
+ "G5": {
+  "at": "2026-10-20T15:51:20.679Z",
+  "action": "registry retype SUBTOPIC -> SPEC_POINT, receipt-keyed (98 4MB1 ids), single txn, 4MB1 guard",
+  "pre_write_guard": "98/98 receipt ids verified SUBTOPIC + 4MB1 before write",
+  "result": "retyped=98 (receipt=98) | 4MB1 SPEC_POINT=98 | graph SPEC_POINT total=663"
+ },
+ "final_battery": {
+  "B1_census": "4PH1=195, 4MA1=188, 4CH1=182, 4MB1=98 => SPEC_POINT=663",
+  "B2_distribution": "SPEC_POINT 663, CONCEPT 167, TOPIC 110, MISCONCEPTION 30, UNIT 29, SUBTOPIC 18, SUBJECT 5 (total 1022)",
+  "B3_anchors": "8138/8138 joined, anchors_not_spec=0 — 100% SPEC_POINT target ACHIEVED",
+  "B4_residuals": "12 4CH1-PR practicals still SUBTOPIC (deliberate keep, untouched)",
+  "B5_receipt": "663/663 receipt ids now SPEC_POINT, 663 distinct ids — id/code untouched",
+  "B6_constraint": "7-value def live incl SPEC_POINT",
+  "verdict": "6/6 GREEN"
+ },
+ "keep_subtopic_residuals": "18 rows (12 4CH1-PR-01..12 practicals VALIDATED spec-provenance + 6 WCH11-T1.1..T3.2 UNVALIDATED prose-provenance) — registry-domain decision, out of G-round scope of record",
+ "rollback_assets": {
+  "script": "scripts/g-rollback.js (staged of record, NOT executed)",
+  "legality": "G1 constraint includes SPEC_POINT (it does post-G1) AND no G2-deployed rows exist — both true at filing time",
+  "mechanism": "reverse UPDATE keyed on receipt ids ONLY"
+ },
+ "cleanup": {
+  "w0a_g3_exec": "DELETED via mirror API, HTTP 200, operation cbd80f92-2cd7-4a1d-9712-97319d9ec351 — closes the terminal-echo password disclosure (role extinct, dead cred scrubbed from g-exec-probe.js)",
+  "roles_remaining": ["t0_readonly", "syllabai_v2_app_w2", "syllabai_v2_app_w2r2", "neondb_owner"]
+ },
+ "credential_hygiene": {
+  "neon_pat": ".creds/neon-pat 0600 (fp16 4c2e12da872b6959)",
+  "ro_uri": ".creds/neon-ro-uri 0600 (pre-existing)",
+  "owner_uri": ".creds/neon-owner-uri 0600 (API-fresh password for neondb_owner — staged this round; standing rotation advisory applies; recommend revoking after operator review)",
+  "sweep": "no token/URI copies outside .creds; dead cred scrubbed from scripts"
+ },
+ "open_items": {
+  "G2_seeder_convergence": "GH-PAT-gated (GH PAT lost in recycle #6) — repo artifact when re-delivered",
+  "G4_anchor_companion_check": "GH-PAT-gated, same",
+  "records_commit": "receipts staged locally; push awaits GH PAT re-delivery",
+  "advisories": "t0_readonly INSERT-on-knowledge_nodes revoke; Neon token rotation; GH PAT rotation (double-flagged)"
+ }
+}
