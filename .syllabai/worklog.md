@@ -10708,3 +10708,19 @@ Work Log:
 
 Stage Summary:
 - 4MB1 difficulty LIVE ON BOTH PLANES (questions 1,202 + question_versions 1,192 current rows; bands 2:303/3:729/4:160 active; twins excluded by design). Band-aware assembly proven IN ACTION on the live wire (easiest-first, id-by-id law-exact). Difficulty axis of the 4MB1-QUALITY arc CLOSED end-to-end: classify (run-001 census) -> apply questions plane (db-apply-run-001) -> mirror serving plane (this lane). Residuals unchanged (PAT rotation, prj_D7vf, Vercel prune, bundle restore-vs-ratify operator ruling).
+
+---
+
+Task ID: r0-cron-20261021-1800
+Agent: R0-auto (merge desk)
+Task: periodic sweep 10:00Z — intake, gates, merge, verify, receipt
+
+Work Log:
+- PR #243 (T-BOOK-003 rail shell, head 2d1364a -> base 1714d59): head CI hub+verify GREEN, 0 reviews/no HOLD, boundary clean (10 files: apps/api books routes/services/tests, apps/hub rail workspace + progress route + lib, .syllabai; no *.java, no core/hub repo content, no Neon/prod writes) — but mergeable=DIRTY (main advanced 1714d59 -> 139266e: qv-mirror receipt + T-MIG-134 contracts).
+- INTAKE EXECUTED (established path): git merge origin/main into t-book-003/rail-shell; CODE auto-merged clean (contracts additive, zero overlap); SINGLE conflict .syllabai/worklog.md -> append-only chronological union via rebuilt resolver (scripts/r0-worklog-union.py; HEAD-side appends 09:35:20Z then main-side 09:51:54Z; byte checks: both sides' distinctive lines exactly-once, no markers, +36 lines); commit 0e4abeb, push no-force.
+- LOCAL GATES ON INTAKE: bun install --frozen-lockfile OK (930 pkgs); bun run typecheck OK (4 projects); bun test apps/api packages 2383 pass / 0 fail / 13 skip; bun golden/runner.ts --selftest OK. Head CI on 0e4abeb: hub+verify GREEN.
+- MERGED via PUT merge_method=merge -> merge commit cfe0124. Post-merge main verified: hub+verify GREEN.
+- This receipt: bookkeeping-only, .syllabai/** only, no force.
+
+Stage Summary:
+- Merges this run: 1 (#243 -> cfe0124, first full R0 intake since #214). Zero code conflicts; worklog union byte-exact. Main @ cfe0124 hub+verify green. Zero prod/Neon writes, zero force-pushes, zero auth failures.
