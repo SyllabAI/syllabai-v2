@@ -11292,3 +11292,18 @@ Stage Summary:
 - Gates: head 3f5657a verify ✓ hub ✓ Vercel ✓; mergeable=True state=clean; reviews 0 / comments 1 (vercel[bot] preview, unflagged); diff in-bounds — apps/api routes+services+tests, packages/contracts teacher-marking, packages/db drizzle migration 0007 + snapshots + schema (repo migration file only — no live DB/prod writes), rebaseline test; no *.java, no core/hub content
 - Post-merge main CI: 54f5312 hub ✓ verify ✓ (completed success)
 - Bookkeeping only: .syllabai/** — no code, no force
+---
+
+Task ID: 70-ADDENDUM-1
+Agent: main (Super Z)
+Task: live-verification attempt for the followups run-001-r1 landing — BLOCKED by a pre-existing Vercel deploy failure; diagnosis of record
+
+Work Log:
+- Live probes ~20min after push 7924d3dd: the served hub still renders the PRE-push state (history revision-notes page: unmapped card at the stale 63-item state, byte-identical responses; literature unchanged) -> the bake did NOT follow this push
+- Commit-status diagnosis (GET-only): Vercel = failure on 8e142857 (the T-BOOK-019/011/012/013 landing BEFORE this session's commits) AND on 7924d3dd (this session's head, failure @ 2026-10-21T18:24:57Z); the repo's OWN CI gates are GREEN on the session head (verify: success, hub: success)
+- Local reproduction at 7924d3dd: bun install ok; node scripts/build_corpus_static.mjs ok (223.8MB static corpus, 811 index entries); npx next build ok (full route tree incl. 108+ SSG past-papers paths) — the failure is NOT locally reproducible
+- Conclusion: the Vercel deploy lane has been red since BEFORE this session's commits (inside the T-BOOK-016..019/010 golive window or an environment/limit change); this session's 4 commits are CI-green of record; the hub surface will pick up the COMPLETE-1 learner delta on the next GREEN bake
+- This session has no Vercel credentials/visibility; the deploy-lane diagnosis (dashboard build logs -> likely deployment-size/limit or env change) is handed to the operator; nothing further attempted (no speculative infra changes from a content lane)
+
+Stage Summary:
+- Operator order 1a15f79acff5346d items (1)(2)(3): DISCHARGED of record and pushed (resources fc6bf29c; v2 7924d3dd); live-surface confirmation PENDING the operator-side Vercel fix; every assertion that CAN be verified locally/repo-side is green (engine battery C1-C5, consume M1/M2/R1-R5, CIE validator 393, verify+hub CI, local next build)
