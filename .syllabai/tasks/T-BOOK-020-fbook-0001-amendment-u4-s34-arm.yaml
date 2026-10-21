@@ -1,0 +1,58 @@
+version: 1
+task:
+  id: T-BOOK-020
+  title: "The F-BOOK-0001 amendment implemented + the u4 S3/S4 script set armed as ONE tracked command (DRY-RUN proven; the fire stays operator-held)"
+  owner: "main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator trace 1a15fb8ebb2ebbe1)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-C-gate
+  deps: [T-BOOK-013, F-BOOK-0001]
+  execution_record: >
+    Operator order item (1): "Implement the amendment—then a single command
+    can run the verified u4 S3/S4 script set". BOTH halves delivered.
+    (a) THE AMENDMENT OF RECORD: the operator's 2026-10-18 package-intake
+    hosting-rights attestation (trace 1a14f8bf97b983f1, "I have rights on
+    hosting", carried in packages/contracts/src/books.ts since T-MIG-133)
+    landed in the licensing notice of record itself — LICENSE-DATA.md
+    "Amendment 2026-10-22 — Pearson Student Book hosting (operator
+    attestation)", syllabai-resources PR #28 squash-merged as e832e617
+    (+37/-0, additive section in the file's own amendment pattern; SB PDF of
+    record named with its sha256 pin; Pearson examination material stays
+    ADR-013 license-wall; SME amendments untouched). F-BOOK-0001 -> fixed;
+    the ADR-BOOK-0001 §4 Phase C release gate is DISCHARGED. (b) THE SINGLE
+    COMMAND: the T-BOOK-013 unblock_path step-2 script set is now TRACKED at
+    apps/api/scripts/books-u4-s34/ (run.ts + pipeline.ts + spotcheck.ts) —
+    pipeline adapted verbatim in structure from the proven Phase B vehicle
+    (pipeline-u23-r1.ts); spotcheck carries the T-BOOK-011/012 L1-L4 laws;
+    run.ts chains prechecks -> chapter flip u4:c22..c29 -> SCOPED staging
+    (only c22-c29 packs + FULL glossary incl. u4-organic-chemistry.yaml —
+    the gate is lifted by the amendment of record — + meta; manifest rebuilt
+    from book_chapters DB truth; u234-digest copied in, sha256
+    d2ffc1d2b862c72a) -> the ingest of record spawned byte-identical ->
+    20% spot-check -> pack flip x46 -> serve proof (u1..u4 full book).
+    DRY-RUN PROOF (--check, read-only, this commit): PRECHECKS GREEN
+    (authored census 46/46 across c22-c29 repo packs; parent book VALIDATED;
+    8x SUGGESTED; negative control 0; bank 8/8 ACTIVE MCQ_SINGLE) +
+    SERVE-PROOF GREEN (u1 7/6/6/5/6/7/6/6/4/7, u2 6/6/7/7/6/7/6/7, u3 6/7/6
+    — 131 of-record VALIDATED unchanged; u4 null x8 = the gate verified
+    live). THE FIRE STAYS OPERATOR-HELD: --commit is the one-command order,
+    not run in this dispatch (the order arms capability; it does not fire
+    the Phase C flip).
+base:
+  repo: "syllabai-v2 @ this branch; amendment plane: syllabai-resources @ e832e617 (PR #28)"
+basis: "F-BOOK-0001 (the finding's own fix field); ADR-BOOK-0001 §4 (the gate law); T-BOOK-013 unblock_path (the script set of record); BOOK-BUILD-PLAYBOOK S3/S4"
+scope:
+  allowed:
+    - "apps/api/scripts/books-u4-s34/** (the tracked single-command set)"
+    - "LICENSE-DATA.md amendment in syllabai-resources (L1 — the operator's own follow-up, discharged by this order)"
+    - ".syllabai/receipts/T-BOOK-020/** + task yaml + worklog append"
+    - "findings.jsonl F-BOOK-0001 -> fixed"
+  forbidden:
+    - "the --commit fire (Phase C flip) without an explicit operator order"
+    - "any u4 DB write in this dispatch (zero u4 writes landed — serve proof verifies)"
+    - "modifying the ingest script of record (spawned byte-identical)"
+  fire_order:
+    - "bun apps/api/scripts/books-u4-s34/run.ts --check   # the arm proof (read-only)"
+    - "DATABASE_URL=postgres://... bun apps/api/scripts/books-u4-s34/run.ts --commit   # THE one-command u4 S3/S4"
+    - "after a GREEN run: pack.yaml status notes c22-c29 via PR; the 24 u4 glossary terms await their own r3 lane"

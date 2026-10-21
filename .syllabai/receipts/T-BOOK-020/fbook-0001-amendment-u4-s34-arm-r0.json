@@ -1,0 +1,49 @@
+{
+ "task": "T-BOOK-020",
+ "lane": "platform/licensing — the F-BOOK-0001 amendment implemented + the u4 S3/S4 armed as ONE tracked command",
+ "operator_order": "(1) Implement the amendment—then a single command can run the verified u4 S3/S4 script set (trace 1a15fb8ebb2ebbe1)",
+ "trace": "1a15fb8ebb2ebbe1",
+ "generated": "2026-10-22T19:05:00Z",
+ "part_a_amendment_of_record": {
+  "what": "LICENSE-DATA.md 'Amendment 2026-10-22 — Pearson Student Book hosting (operator attestation)' — the operator's 2026-10-18 package-intake attestation (trace 1a14f8bf97b983f1, 'I have rights on hosting') carried into the licensing notice of record itself (the file's own amendment pattern: 2026-09-17 SME, 2026-10-17 CAIE precedents)",
+  "subject": "books/pearson-edexcel/international-gcse/chemistry/4ch1/student-book.pdf (54,298,792 bytes verified via the resources contents API this session; 383pp; sha256 d48020e0cc0b5545b330bb59b242472198210e424525e4381cd5d2a58a58cc04, the book.yaml pin of record)",
+  "scope": "student-book hosting + page-exact derived surfaces inside SyllabAI surfaces (ADR-BOOK-0001 rail-over-spine); Pearson examination material stays ADR-013 license-wall; SME amendments untouched; provenance/takedown law unchanged",
+  "pr": "SyllabAI/syllabai-resources#28 (branch t-book-020/license-sb-amendment off fc6bf29c)",
+  "diff": "+37/-0, one file, pure additive section (self-reviewed via the files API)",
+  "merged": "squash e832e617b844eaeab3bf225716a0e3b148109cc4 on resources main",
+  "effect": "F-BOOK-0001 -> fixed (findings.jsonl, this PR); the ADR-BOOK-0001 §4 Phase C release gate DISCHARGED"
+ },
+ "part_b_the_single_command": {
+  "tracked_set": [
+   "apps/api/scripts/books-u4-s34/run.ts (the orchestrator: --check arm proof | --commit the full S3/S4, stop-on-fail)",
+   "apps/api/scripts/books-u4-s34/pipeline.ts (prechecks | flip-chapters u4:c22..c29 | flip-packs x46 | serve-proof; guarded tx per phase, pre/post re-prove; adapted verbatim in structure from pipeline-u23-r1.ts)",
+   "apps/api/scripts/books-u4-s34/spotcheck.ts (L1 zod / L2 canonical key-order-insensitive / L3 page-true dual-source manifest+digest / L4 payload; cheap laws full-set; u1+u2+u3 131 untouched)"
+  ],
+  "commit_chain": "prechecks -> chapter flip u4:c22..c29 -> SCOPED staging (only c22-c29 packs + FULL glossary incl. u4-organic-chemistry.yaml — the gate is lifted by the amendment of record — + meta/book.yaml; manifest rebuilt from book_chapters DB truth; digest copied in) -> the ingest of record spawned BYTE-IDENTICAL -> 20% spot-check -> pack flip x46 v1->2 -> serve proof (u1..u4 full book)",
+  "staging_isolation": "the u23 isolation law inverted for Phase C: glossary ALL 10 files (incl. the 24 u4 terms -> SUGGESTED, their own r3 lane), packs ONLY c22-c29",
+  "ingest_untouched": "books-ingest-rail.ts spawned byte-identical (the isolation law)",
+  "digest_of_record": "/home/z/my-project/assets/u234-digest.json sha256 d2ffc1d2b862c72a... (built from the sha-verified parse of record b2c67eaf)",
+  "idempotence": "prechecks carry the negative control (book_blocks u4:* = 0): a re-run after a flip REFUSES loudly — the honest drift posture, same as the proven u23 vehicles",
+  "fixes_in_lane": "run.ts: node:crypto createHash import (node:fs does not export it); Bun.spawnSync takes [cmd, ...args] array; pipeline phases got explicit client.end()+exit (the Neon serverless websocket held the event loop open — the same latent trait in the proven u23 vehicle, surfaced by the tracked re-run)"
+ },
+ "dry_run_proof": {
+  "command": "bun apps/api/scripts/books-u4-s34/run.ts --check (DATABASE_URL inline, one-shot)",
+  "prechecks": [
+   "precheck 0: authored census 46/46 blocks across c22-c29 packs (repo truth: 6/8/5/5/6/5/5/6)",
+   "precheck 1: parent book VALIDATED",
+   "precheck 2: chapters u4:c22..c29 all SUGGESTED (8/8)",
+   "precheck 3: book_blocks for c22-c29 = 0 (negative control)",
+   "precheck 4: bank 8/8 ACTIVE MCQ_SINGLE"
+  ],
+  "serve_proof": "u1 7/6/6/5/6/7/6/6/4/7 + u2 6/6/7/7/6/7/6/7 + u3 6/7/6 (131 of-record VALIDATED unchanged) + u4:c22..c29 -> null (133c viewer) x8 = the F-BOOK-0001 gate verified live",
+  "glossary_at_check_time": "{\"SUGGESTED\":30,\"VALIDATED\":58} (pre-r2; the r2 lane runs in this same dispatch)",
+  "verdict": "ARMED — PRECHECKS GREEN + SERVE PROOF GREEN, exit 0"
+ },
+ "disclosures": [
+  "THE FIRE STAYS OPERATOR-HELD: the order arms capability ('a single command CAN run'); --commit is NOT run in this dispatch — the Phase C flip is one explicit order away",
+  "the amendment was applied via the resources contents API (branch + commit + PR + squash-merge) — no resources clone; the diff was self-reviewed via the files API (+37/-0)",
+  "F-BOOK-0001's fixed_in cross-references the resources squash sha of record",
+  "post-run repo follow-ups are printed by run.ts and PR-borne: pack.yaml status notes c22-c29; the 24 u4 terms await r3"
+ ],
+ "status": "ARMED (amendment of record landed e832e617; single command tracked + DRY-RUN-proven; zero u4 DB writes this dispatch — serve proof verifies)"
+}
