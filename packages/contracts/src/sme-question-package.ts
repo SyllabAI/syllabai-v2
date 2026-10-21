@@ -57,6 +57,16 @@ export type SmeOption = z.infer<typeof smeOptionSchema>;
  * part carry its own options — an option-bearing part inside a STRUCTURED
  * question makes it MIXED (the -pN/-s multi-row family emission).
  */
+/**
+ * ADR-037 amendment (v0.7): one awardable mark point of a structured part
+ * (per-point M1..Mn rows; marks sum to the part's marks when present).
+ */
+export const smeMarkPointSchema = z.object({
+  marks: z.number().int().nullish(),
+  text: z.string().nullish(),
+});
+export type SmeMarkPoint = z.infer<typeof smeMarkPointSchema>;
+
 export const smePartSchema = z
   .object({
     label: z.string().nullish(),
@@ -65,6 +75,7 @@ export const smePartSchema = z
     commandWord: z.string().nullish(),
     solutionMd: z.string().nullish(),
     options: z.array(smeOptionSchema).nullish(),
+    markPoints: z.array(smeMarkPointSchema).nullish(),
   })
   .passthrough();
 export type SmePart = z.infer<typeof smePartSchema>;

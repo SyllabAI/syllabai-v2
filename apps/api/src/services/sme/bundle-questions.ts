@@ -95,7 +95,14 @@
  */
 import type { BundleCurriculum } from "../curriculum/bundle-seed";
 import { mapBundleNodes } from "../curriculum/bundle-seed";
-import type { SmeOption, SmePackage, SmePart, SmeQuestion, SmeSpecPoint } from "./package";
+import type {
+  SmeMarkPoint,
+  SmeOption,
+  SmePackage,
+  SmePart,
+  SmeQuestion,
+  SmeSpecPoint,
+} from "./package";
 import { smeMemberSuffixReserve, smeQuestionRef } from "@syllabai/shared";
 
 export class BundleQuestionsError extends Error {}
@@ -128,6 +135,8 @@ interface BundlePart {
   solutionMd: string | null;
   smeSpecPointIds?: string[];
   choices?: BundleChoice[] | null;
+  /** ADR-037 (v0.7): per-point awardable marks; marks ALWAYS sum to part.marks (converter gate G7) */
+  markPoints?: { id?: string; marks: number; textMd?: string }[] | null;
 }
 
 interface BundleQuestion {
@@ -347,6 +356,26 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
           }));
           optionCount += options.length;
         }
+        // ADR-037 (v0.7): per-point awardable marks ride through — fail-closed
+        // on the G7 sum law (points must close on the part's marks), exactly
+        // like the part-sum law above; a violating bundle is refused, never
+        // rewritten
+        let markPoints: SmeMarkPoint[] | null = null;
+        if (p.markPoints != null && p.markPoints.length > 0) {
+          const mpSum = p.markPoints.reduce((acc, mp) => acc + mp.marks, 0);
+          if (p.markPoints.some((mp) => !(mp.marks > 0)) || mpSum !== p.marks) {
+            throw new BundleQuestionsError(
+              "mark points do not sum to the part marks on " +
+                externalRef +
+                " part " +
+                idx,
+            );
+          }
+          markPoints = p.markPoints.map((mp) => ({
+            marks: mp.marks,
+            text: mp.textMd ?? null,
+          }));
+        }
         return {
           label: partLabel(idx),
           prompt: p.problemMd,
@@ -354,6 +383,7 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
           commandWord: p.commandWord,
           solutionMd: p.solutionMd,
           options,
+          markPoints,
         };
       });
 

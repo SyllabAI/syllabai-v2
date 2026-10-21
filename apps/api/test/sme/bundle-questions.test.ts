@@ -350,12 +350,59 @@ function oneSyntheticSet(difficulty: string | null, code = "1A"): BundleQuestion
   ] as unknown as BundleQuestionSet[];
 }
 
+
+describe("ADR-037 v0.7 the markPoints ride-through laws", () => {
+  const one = (sets: BundleQuestionSet[]) =>
+    buildSmePackage({ courseSlug: foundation.slug, curriculum: foundation.curriculum, sets, ...SOURCE });
+  test("per-point markPoints map 1.1 → 1.0 and pass the REAL frozen gates", () => {
+    const sets = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
+    const part = sets[0]!.questions[0]!.parts[0]!;
+    const first = Math.max(1, part.marks - 1);
+    part.markPoints = [
+      { id: "MP1", marks: first, textMd: "first awardable point" },
+      { id: "MP2", marks: part.marks - first, textMd: "second awardable point" },
+    ];
+    const pkg = one(sets);
+    const mp = pkg.questions?.[0]!.parts?.[0]!.markPoints;
+    expect(mp).not.toBeNull();
+    expect(mp!.length).toBe(2);
+    expect(mp!.reduce((s, m) => s + m.marks, 0)).toBe(part.marks);
+    expect(mp![0]!.text).toBe("first awardable point");
+    // the REAL frozen gates accept the amended tree (parse + validate)
+    const service = new SmeQuestionIngestService(THROWING_SQL, CLOCK);
+    expect(() =>
+      service.validate(parsePackage(JSON.stringify(pkg)), new Map()),
+    ).not.toThrow();
+  });
+
+  test("a markPoints sum violation refuses the shim (the G7 law, fail-closed)", () => {
+    const sets = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
+    const part = sets[0]!.questions[0]!.parts[0]!;
+    part.markPoints = [{ id: "MP1", marks: part.marks + 1, textMd: "too many marks" }];
+    expect(() => one(sets)).toThrow(
+      BundleQuestionsError,
+    );
+  });
+});
+
 describe("T-MIG-136 bands 3b+4 through T-CONSUME-EDX-1: the maths-b corpus laws", () => {
-  test("the emptied-bundle reality: the shim refuses a question-less bundle (the 2ece53b law)", () => {
-    // the refresh emptied the bundle question axis; the questions serve from
-    // the band-5 DB fetch-bank (1,192 anchored rows) — the shim says so
-    expect(mathsB.sets).toEqual([]);
-    expect(() => buildMathsB()).toThrow(/carries no question sets/);
+  test("the RESTORED interactive bundle builds through the shim (the 04aee80 operator ruling 'Restore it', trace 1a15de779f2250f9)", () => {
+    // the 2ece53b emptied state was superseded of record: the operator
+    // restored the interactive maths-b bundle (65 sets / 1,249 questions,
+    // byte-exact from 8ee371e) — the restored bundle builds through the
+    // shim, and the question-less refusal law is pinned synthetically below
+    expect(mathsB.sets.length).toBe(65);
+    const pkg = buildMathsB();
+    expect(pkg.counts?.sets).toBe(65);
+    // the conservation law: every bundle question either maps through or is
+    // excluded AND counted (the band-4 unmapped/badSum/dupOrder population)
+    const excluded =
+      (pkg.counts?.unmapped ?? 0) + (pkg.counts?.badSum ?? 0) + (pkg.counts?.dupOrder ?? 0);
+    expect(excluded + (pkg.questions ?? []).length).toBe(1249);
+    expect((pkg.questions ?? []).length).toBeGreaterThan(0);
+    expect(() =>
+      buildSmePackage({ courseSlug: mathsB.slug, curriculum: mathsB.curriculum, sets: [], ...SOURCE }),
+    ).toThrow(/carries no question sets/);
   });
 
   test("the deterministic mapping laws on a synthetic in-spine set: difficulty word ranks, dbCode joins, provenance", () => {
