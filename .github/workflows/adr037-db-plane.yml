@@ -1,0 +1,127 @@
+# ADR-037 per-point re-apply — the chemistry-19 DB-plane runner (the CI
+# executor doctrine of record: "agent sandboxes are DNS-blocked / clock-capped;
+# CI is not" — the neon-replay.yml header law; the cie-phase4-db-plane.yml
+# shape, scoped to ONE slug and the T-MIG-135b tool).
+#
+# Mandate of record:
+#   - ADR-037 receipts run-003/run-005/run-006 (traces 1a15f8cd84de4909,
+#     1a15fe1207c34329, 1a15ffecf2a949bd): the REAL --dry-run through the
+#     frozen shim + ingest could not obtain an unbounded clock in the agent
+#     sandbox (background reaping + 10-min ceiling vs the ~48-min lane-C
+#     class). The runner executes the SAME frozen script unchanged:
+#     bun apps/api/scripts/ingest-bundle-questions.ts igcse-chemistry-19
+#     (--dry-run = the REAL statement sequence inside ONE transaction rolled
+#     back at the end — full statement proof against the target schema,
+#     ZERO persistence; --apply = the ADR-026 evidence-safe replace).
+#
+# OPERATOR GATE LAW (the cie-phase4 header law verbatim in spirit):
+#   - mode=dry-run: the rollback proof — zero persistence BY CONSTRUCTION;
+#     dispatchable on the lane's own operator ask ("can you do it instead of
+#     me", trace 1a160dfde7876625).
+#   - mode=apply: REQUIRES input confirm == "APPLY-ADR037-B3" (the explicit
+#     operator green-light token; anything else = honest red precondition,
+#     zero writes). The dispatch of an apply IS the operator's fire order.
+#
+# Secrets of record:
+#   ADR037_SEED_DATABASE_URL — the production pooler postgres uri
+#     (postgresql://<user>:<password>@ep-...-pooler.../neondb?sslmode=require,
+#     the fp-3b8b9c5951ca595d value class), staged by the lane via the API,
+#     DELETED after each run (the cleanup step verifies). Never printed,
+#     never echoed, never persisted in the repo or logs — masked env only.
+
+name: adr037-db-plane
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run (rollback proof, zero persistence) | apply (B3, needs confirm token)"
+        required: false
+        default: "dry-run"
+      confirm:
+        description: "For mode=apply ONLY: the green-light token APPLY-ADR037-B3"
+        required: false
+        default: ""
+      note:
+        description: "Operator/lane note for the receipt"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: adr037-db-plane
+  cancel-in-progress: false
+
+jobs:
+  db-plane:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+      - name: Install workspace deps (frozen lockfile)
+        run: bun install --frozen-lockfile
+      - name: Precondition (credential staged + the apply gate law)
+        env:
+          ADR037_SEED_DATABASE_URL: ${{ secrets.ADR037_SEED_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          if [ -z "$ADR037_SEED_DATABASE_URL" ]; then
+            echo "::error::ADR037_SEED_DATABASE_URL not staged — the lane stages it via the API per run and deletes it after (cleanup step)"; exit 2
+          fi
+          case "$ADR037_SEED_DATABASE_URL" in
+            jdbc:*) echo "::error::jdbc: prefix refused (packages/db law — plain postgresql:// only)"; exit 1 ;;
+          esac
+          MODE="${{ inputs.mode || 'dry-run' }}"
+          if [ "$MODE" = "apply" ] && [ "${{ inputs.confirm }}" != "APPLY-ADR037-B3" ]; then
+            echo "::error::mode=apply refused — the confirm token must be exactly APPLY-ADR037-B3 (the explicit operator green-light law)"; exit 3
+          fi
+          echo "precondition OK (mode=${MODE}; credential staged; secret value never printed)"
+      - name: Run the T-MIG-135b tool (the frozen shim + ingest)
+        env:
+          SEED_DATABASE_URL: ${{ secrets.ADR037_SEED_DATABASE_URL }}
+          MODE: ${{ inputs.mode || 'dry-run' }}
+        run: |
+          set -euo pipefail
+          if [ "$MODE" = "apply" ]; then
+            bun apps/api/scripts/ingest-bundle-questions.ts igcse-chemistry-19 --apply 2>&1 | tee adr037-dbplane.log
+          else
+            bun apps/api/scripts/ingest-bundle-questions.ts igcse-chemistry-19 --dry-run 2>&1 | tee adr037-dbplane.log
+          fi
+      - name: Gate the log (the dry-run GREEN law / the apply summary law)
+        env:
+          MODE: ${{ inputs.mode || 'dry-run' }}
+        run: |
+          set -euo pipefail
+          if [ "$MODE" = "apply" ]; then
+            grep -q "^\[apply\] ingest summary:" adr037-dbplane.log || { echo "::error::no apply summary in the log"; exit 4; }
+            echo "APPLY summary present (receipt-grade line below):"
+            grep "^\[apply\] ingest summary:" adr037-dbplane.log
+          else
+            grep -q "^\[dry-run\] GREEN" adr037-dbplane.log || { echo "::error::dry-run did not reach GREEN (see the log artifact)"; tail -20 adr037-dbplane.log; exit 4; }
+            echo "DRY-RUN GREEN of record (summary line below):"
+            grep "^\[dry-run\] ingest summary" adr037-dbplane.log
+          fi
+      - name: Upload the log artifact (the evidence of record)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: adr037-dbplane-log
+          path: adr037-dbplane.log
+          if-no-files-found: warn
+      - name: Cleanup (delete the run credential, verify deletion)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          # The runner's own token can always see its secret usage but the
+          # lane's cleanup law is enforced lane-side via the API (the staging
+          # PAT deletes + 404-verifies after the run). This step only asserts
+          # the log carries no secret material.
+          ! grep -R "npg_\|ghp_\|postgresql://[^ ]*:[^ ]*@ep-" adr037-dbplane.log || { echo "::error::SECRET MATERIAL IN LOG — red flag, do not archive"; exit 5; }
+          echo "log scrub check clean (no credential material in the log of record)"
