@@ -11068,3 +11068,15 @@ Stage Summary:
 - The interactive rail for 4CH1 Unit 1 (c01-c05 demo gate) serves VALIDATED blocks from PRODUCTION: parent book + chapters + 30 blocks all VALIDATED; checks resolve to the live bank; glossary 27 terms SUGGESTED (separate validation lane).
 - Local-only commits on t-book-010/golive-r0 (no GitHub token this session) — push/PR deferred.
 
+
+---
+Task ID: T-BOOK-010 golive-r0 push-of-record (trace 1a15f00892b0b159, operator re-supplied the GitHub PAT)
+Agent: r0 (Super Z, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355)
+
+Work Log:
+- Session resumed with the GitHub PAT delivered — open item (1) of golive-r0. fetch-first: origin/main had advanced 95024009 -> 36d72945 (4 commits: T-TEACH-001 #254, T-CONSUME-EDX-2, T-MIG-136 worklog append); branch t-book-010/golive-r0 rebased onto 36d72945.
+- Sole overlap .syllabai/worklog.md resolved as the append-only union: main's T-CONSUME-EDX-2 + T-MIG-136 entries kept verbatim; the golive-r0 entry re-appended after them with its --- separator restored; zero content lines of either side altered.
+- PAT verified as login SyllabAI (the operator account, same identity that merged #236/#252/#253/#254); push + PR + self-review + merge follow per the standing operator authorization model; squash merge per repo convention (PR number carried by the merge commit of record); token used one-shot bash-inline, never persisted to config.
+
+Stage Summary:
+- The golive-r0 bookkeeping chain (pack.yaml x5 published + F-BOOK-0003 + receipt unit1-golive-r0.json + T-BOOK-010 S3/S4 DISCHARGED) reaches origin under rebase-of-record 37dbd1cf + this push-of-record append; worklog-only commit, zero content changes; the rail itself remains live in PRODUCTION Neon per the golive receipt.
