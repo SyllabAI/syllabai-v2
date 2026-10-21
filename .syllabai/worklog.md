@@ -11672,6 +11672,28 @@ Stage Summary:
 - Bookkeeping only: .syllabai/** — no code, no force
 
 ---
+Task ID: NEXTBUMP-2 run-001 (durable ledger — the NEXT #2 fleet bump, PINSPLIT-1 convergence executed)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, dispatch trace 1a160259e95a2b85 "Trigger NEXT #2 fleet bump")
+Task: Execute the PINSPLIT-1 ruling of record — converge the Edexcel per-course pin fleet at the bump-time tip under the >= 89260832 floor law; re-consume the 47 corpus lanes; converge golden + maths-b by provenance stamp; full gate battery; ship.
+
+Work Log:
+- State reconciled fetch-first at lane start: resources origin/main dc9c1efc (Merge PR #33) — floor law verified first-hand (89260832 IS ancestor); v2 origin/main advanced 13da4ba7 -> 6a86f415 -> f07c76f5 mid-discovery (parallel receipt lanes); lane branch cut off f07c76f5.
+- Input-tree diff classification first (the lane-shape determinant): chemistry-19 inputs 89260832..tip = ZERO (provenance stamp honest); Edexcel corpus deltas = chemistry-modular-24-unit-1/2 (maps + sidecars + flashcard maps via 1fdf2f97 T-SPEC-STAGE2-1) + spec-labels (ADR-037 plane, not a corpus input) — all other 45 lanes' consumed inputs byte-unchanged.
+- attach_official_map.py pin -> dc9c1efc; fresh cache (cache is path-keyed, not pin-keyed); 47/47 maps regenerated, re-run drift 0.
+- FAIL-CLOSED CATCH #1: the pre-flight code-loss census showed the regen would silently drop 8,361 declared-lineage codes / 8,112 items fleet-wide — root cause: attach reads specPointIds, which post-flip holds rekeyed official codes; FIX of record: declared_of() prefers smeSpecPointIds (the flip-preserved originals), falls back for pre-flip content; regen re-run: declared 8,172 preserved, losses isolated to chemistry-modular x2 (137+69) — attributed upstream (1fdf2f97 spm re-adjudication 94->59 mappings / 43->78 unmapped; demotion cascade lands honestly unmapped, no-guess held).
+- _report.json carry-forward merge (T-CONSUME-EDX-1 law): 47 regenerated rows + golden/maths-b rows byte-exact + totals recomputed (flashcardsCoded 14950->14777 with the upstream attribution, questionPartsCoded 26562->26875, notesCoded 3341->3349).
+- flip dry-run 47/47 gates green BEFORE any write; apply 47/47 (G1-G5).
+- FAIL-CLOSED CATCH #2: field-level census found the re-flip collapsed smeSpecPointIds to first-flip official codes (double-flip provenance loss; gates G1-G5 do not scan this field); FIX of record: BOC smeSpecPointIds key-presence law (carry verbatim when present incl. honestly-empty; fall back only when absent); 47 lanes restored from HEAD, re-flipped, re-verified: 0 corruption fleet-wide, 45 lanes' content byte-identical to HEAD except manifest (idempotence proof), chemistry-modular x2 real linkage updates only.
+- 49 manifests stamped importSource.ref -> main@dc9c1efc (compact corpus serialization, idempotent stamp script); golden + maths-b carry disclosure notes (golden: content byte-frozen, inputs proven identical; maths-b: of-record mixed vintage per the restore ruling trace 1a15de779f2250f9).
+- Gates: scope census 105 files exactly (CIE 0, courses.json 0, spines 0, golden/maths-b content frozen); phantom scan 0; adjudication anchors live (S4.172, S1.123, S2.134 x5, S2.138, S2.139, S2.140, S1.120); CIE validator PASS; bun install --frozen-lockfile (sandbox reset had dropped node_modules) then build:hub exit 0 (prebuild 23a + flashcard-sync + CIE + next build).
+- Receipt: .syllabai/receipts/NEXTBUMP-2/run-001-fleet-bump.json. Pushed as PR from lane/nextbump-2, self-merged, three-way verified. Resources UNTOUCHED — transit stays 28 (next resources push records 29).
+
+Stage Summary:
+- NEXT #2 LANDED of record: the 47/1/1 Edexcel pin split is DISSOLVED — 49/49 non-CIE manifests name main@dc9c1efc; 47 lanes re-consumed at the tip through the wave's gates; the floor law honored (chemistry-19's 2C labels intact — content byte-frozen).
+- Two reproducibility laws fixed in-repo (attach declared_of; BOC key-presence) — future regen/flip cycles are now idempotent across the flip boundary.
+- Open queue: CIE refresh lane (44-lane consume wave, own dispatch); maths-b Stage-2 regen is operator-keyed; 134c stays PARKED; PAT rotation STILL CRITICAL overdue (same fingerprint through this lane's push) — rotation REQUIRED before any re-supply.
+
+---
 
 ## T-SPECS-TS4-REPAIR-1 r0 — audit menu item 5 discharged: the TS4 mixed-theme lattice adjudicated + repaired (code-stable topic re-parent; history-18 served spine 21/21/371 -> 23/23/371; kg 93/94 with the pure-2 ghost the only pre-existing FAIL)
 
@@ -11727,3 +11749,20 @@ Work Log:
 Stage Summary:
 - Audit menu items 4-5 + lattice residuals DISCHARGED AS: item 5 = LANDED (T-SPECS-TS4-REPAIR-1, e024c11c); residuals = corrected premise + quantified semantic-lane program of record; item 4 = scoping band of record with the blocked verdict + the three unblock paths — the operator holds all three dispositions.
 - Receipts: CONTENT-AUDIT/{lattice-residuals-run-001-r0,zero-question-manufacturing-scoping-run-001-r0}.json
+---
+Task ID: T-BOOK-024 r0
+Agent: main (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator order trace 1a1604911ce31bb5 "prep that flip")
+Task: Prep the product-side visibility flip for the 4CH1 book — investigation found NO remaining technical lever; lane re-scoped honestly to the end-to-end go-live proof of record.
+
+Work Log:
+- Fetch-first: main 7427c555 -> fd90fbfc (NEXTBUMP-2 fleet bump, corpus-plane; zero books overlap); local ff'd, clean.
+- Mechanism of record: ADR-BOOK-0001 §3 — THREE levers, no flag framework. L-content book flip + pack flip = the fire's GREEN planes (bd38e04d). L-entry = a committed line in apps/hub/src/lib/books-registry.ts, and "igcse-chemistry-19" is ALREADY in the set (133k era), pinned by its own bun test — run LIVE this lane: 3/3 PASS (4CH1 in; physics/biology/maths/cie-chem honestly out). Cohort gating explicitly DEFERRED ("the pilot cohort IS the course-level entry set"); monetization/gating posture open (PLAN §9) = decision, not build.
+- End-to-end chain verified against PRODUCTION read-only (fresh connections, probe-golive-census.ts, session-side untracked): (1) documents row kind=TEXTBOOK VALIDATED 383pp "Edexcel International GCSE (9-1) Chemistry Student Book" / Jim Clark; (2) book_chapters.course_id='igcse-chemistry-19' x29; (3) THE SHELF QUERY VERBATIM (services/books.ts shelfForCourse) returns the entry — the shelf serves the book, full stop; (4) chaptersForBook 29; (5) rail double-gate samples u1:c1=7 / u4:c22=6; (6) glossary 112/112 VALIDATED.
+- Hub wiring verified in code: course-page Student Book card gates on courseHasBookArchive (prerendered, commit-set-gated); /courses/[course]/books force-dynamic honest shelf; API router serves shelf/chapters/blocks/checks public-read under the double gate, progress + checks-submit auth-gated.
+- CORRECTION OF RECORD: the "product-side visibility/cohort flag" offered in the operator-facing answer does not exist as a technical gate — this lane is its resolution; nothing was flipped because nothing remained to flip.
+- Bookkeeping-only PR: task yaml (DISCHARGED) + receipt golive-visibility-r0.json + this entry. Zero code changes, zero DB writes, zero new DDL, zero forbidden paths.
+
+Stage Summary:
+- THE 4CH1 INTERACTIVE BOOK IS STUDENT-VISIBLE END-TO-END, PROVEN OF RECORD: entry card -> honest shelf (live T-C20 gate) -> 29 chapters -> 177 rail blocks -> bank-backed checks -> auth-gated progress -> 112-term glossary. No technical lever remains; the sole open posture is monetization/gating (PLAN §9) — an operator decision, not a build.
+- Deployment note: the entry card is prerendered from the committed registry (any hub build >= the 133k commit advertises it); the shelf is force-dynamic (live DB truth); no redeploy required by this lane.
+- Open queue: 4PH1 as book #2 (next 'one line per course' when its archive home lands); PAT rotation overdue (recurring).
