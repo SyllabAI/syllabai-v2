@@ -372,6 +372,51 @@ describe("row mappers — the strict-contract wall (services/books)", () => {
     expect(parsed.validationState).toBe("SUGGESTED"); // schema .default fill
   });
 
+  test("T-BOOK-025: the widened unscored refs (score:null, method:widened) parse — the 4CH1 of-record shape", () => {
+    // the F-BOOK-0003 r1 two-phase widened law's phase-2 binds are UNSCORED
+    // of record; the production jsonb serializes the absence as explicit
+    // null (11 refs across 10 chapters of the 4CH1 book). The wall must
+    // accept the honest provenance marker — pre-relax it 500'd the chapters
+    // route and 404'd the reader end-to-end (T-BOOK-025 diagnosis).
+    const parsed = booksRowMappers.toChapter({
+      document_id: PILOT_DOC,
+      doc_version: 1,
+      course_id: COURSE,
+      unit_index: 4,
+      unit_title: "Chemistry in Industry",
+      chapter_index: 29,
+      chapter_key: "u4:c29",
+      title: "Reviewing chemical economics",
+      book_page_start: 262,
+      book_page_end: 268,
+      pdf_page_start: 271,
+      pdf_page_end: 277,
+      learning_objective: null,
+      spec_codes: [
+        {
+          spineCode: "4CH1-2.24",
+          officialCode: "2.24",
+          tier: "2",
+          score: null,
+          lineage: "chem_v3_u4_c29_pdf262_0157#b4",
+          method: "widened",
+        },
+        {
+          spineCode: "4CH1-2.25",
+          officialCode: "2.25",
+          tier: "2",
+          lineage: "chem_v3_u4_c29_pdf262_0157#b5",
+          method: "widened",
+        },
+      ],
+      validation_state: "VALIDATED",
+    });
+    expect(parsed.chapterKey).toBe("u4:c29");
+    expect(parsed.specCodes[0]!.method).toBe("widened");
+    expect(parsed.specCodes[0]!.score).toBeNull();
+    expect(parsed.specCodes[1]!.score).toBeUndefined();
+  });
+
   test("a row that fails the strict contract THROWS (honest 500 upstream)", () => {
     expect(() =>
       booksRowMappers.toChapter({

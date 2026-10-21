@@ -1,0 +1,78 @@
+version: 1
+task:
+  id: T-BOOK-025
+  title: "Books serve-chain repair — the widened unscored contract relax (score null ≡ absent) + the live incident diagnosis of record: deployed shelf renders the book with an honest no-chapters fallback and the reader 404s because the chapters route 500s on 11 honest widened (method=widened, score=null) spec refs"
+  owner: "main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator incident report trace 1a16084e80a6ddd1)"
+  status: IN_REVIEW
+  priority: P0
+  band: T-BOOK (interactive books)
+  wave: books-phase-C
+  deps: [T-BOOK-020, T-BOOK-023, T-BOOK-024, ADR-BOOK-0001, F-BOOK-0003]
+  execution_record: >
+    Operator incident report (trace 1a16084e80a6ddd1): "I dont see the
+    interactive book. And also the normal student book page also not
+    working" on https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/.
+    DIAGNOSIS OF RECORD (all probes read-only; live SSR fetches + direct
+    carrier curls + fresh-connection prod DB reads):
+    (1) the hub course page is HEALTHY — HTTP 200 with the ready Student
+    Book card (courseHasBookArchive true since the 133k era); the card was
+    never the failure. (2) the shelf page (force-dynamic) renders the book
+    of record (title/author/383 pages/raw-PDF link) but ZERO chapter rows,
+    3/3 deterministic, via the honest-failure branch "The chapter registry
+    could not be loaded just now" (fetchBookChapters null). (3) the reader
+    page /books/<docId>?chapter=u1:c1 returns the 404 fallback
+    (digest NEXT_HTTP_ERROR_FALLBACK;404 — the T-C20 unknown-book law
+    consuming the same null chapters). (4) THE UPSTREAM CAUSE at the
+    deployed carrier syllabai-v2.vercel.app: shelf 200 (book of record
+    served), chapters 500 internal_error, glossary 404 (route ABSENT — the
+    deployed build predates T-BOOK-007), blocks 401 (legacy fallback shape),
+    /api/health 404 — the carrier is STALE AND its chapters route fails.
+    (5) PROD DATA PROVEN CLEAN: documents TEXTBOOK/VALIDATED doc_version 1;
+    book_chapters 29 (spec_codes non-null 29/29, unit_index non-null 29/29);
+    184 spec refs, uniform rich key-set
+    lineage+method+officialCode+officialId+score+spineCode+tier;
+    book_blocks 177; book_glossary_terms VALIDATED 112. (6) ROOT CAUSE
+    ISOLATED: 11/184 refs carry score=null — ALL method=widened, tier=2,
+    across u2:c17, u2:c18, u3:c21, u4:c22-c25, c27, c28, c29(2) — the
+    F-BOOK-0003 r1 two-phase widened law's phase-2 binds are UNSCORED BY
+    DESIGN and the jsonb of record serializes that absence as explicit
+    null, while specCodeRefSchema (and the hub SCHEMA-MIRROR wall) declared
+    score: z.number().optional() — optional accepts ABSENT, not NULL — so
+    toChapter (the strict-contract wall) throws and the route 500s.
+    (7) THE 500 REPRODUCED ON CURRENT MAIN via the serve-chain probe
+    (scripts/session/probe-serve-chain.ts, untracked session-side): prod
+    rows -> verbatim BooksReadRepository SQL -> toChapter/toShelfEntry ->
+    bookChapterSchema (real @syllabai/contracts import) -> JSON round-trip
+    -> hub mirrors = RED at specCodes[9].score "Expected number, received
+    null". (8) THE FIX (additive, in this lane): score ->
+    z.number().nullable().optional() in packages/contracts/src/books.ts +
+    the hub mirror apps/hub/src/lib/books.ts (the learner-me score shape is
+    the in-repo precedent); fixtures of record added in
+    packages/contracts/src/books.test.ts (null ≡ absent, method=widened)
+    and apps/api/test/content/books-routes.test.ts (the u4:c29 row-mapper
+    gate). (9) POST-FIX SERVE-CHAIN PROBE: GREEN — SHELF 1/1 + CHAPTERS
+    29/29 through BOTH walls against real prod rows; contracts books.test
+    29 pass; books-routes.test 38 pass; root typecheck 0 errors. (10)
+    DEPLOY RESIDUAL (operator-side, outside this lane): the deployed
+    carrier must be REDEPLOYED at merged main — the schema relax alone
+    does not add the missing glossary/blocks/checks/progress routes the
+    reader consumes; hub redeploy carries the mirror relax. Sibling fact
+    of record: NO technical visibility flag ever existed (T-BOOK-024) —
+    this incident was the first real end-to-end student-surface traverse
+    and it caught what the SQL-level go-live proof structurally could not:
+    the serving wall between the DB and the wire.
+base:
+  repo: "syllabai-v2 @ t-book-025/books-widened-unscored-serve (off origin/main 5a14c527)"
+  pr: "https://github.com/SyllabAI/syllabai-v2/pull/283"
+  basis: "F-BOOK-0003 r1 (the two-phase widened law — phase-2 binds are unscored of record); the SCHEMA MIRROR law (apps/hub/src/lib/books.ts header); the strict-contract wall law (toChapter — 'the mapper IS the strict-contract wall'); T-BOOK-024 (the go-live proof and its blind spot)"
+scope:
+  allowed:
+    - "packages/contracts/src/books.ts (specCodeRefSchema.score relax + comment)"
+    - "packages/contracts/src/books.test.ts (widened null ≡ absent fixture)"
+    - "apps/hub/src/lib/books.ts (mirror relax per the SCHEMA MIRROR law)"
+    - "apps/api/test/content/books-routes.test.ts (u4:c29 row-mapper gate)"
+    - ".syllabai/tasks + .syllabai/receipts/T-BOOK-025/** + worklog append"
+  forbidden:
+    - "any DB write (the data of record is PROVEN clean — 11 null scores are honest widened provenance, never backfill-fabricated)"
+    - "any change to the ingest lanes / spine-join / u4-s34 pipeline (the writer's null is by-design; the contract now matches it)"
+    - "deploy actions (Vercel) — operator-side residual, disclosed"

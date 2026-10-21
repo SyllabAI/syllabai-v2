@@ -1,0 +1,61 @@
+{
+  "receipt": "T-BOOK-025/serve-chain-diagnosis-r0",
+  "generated": "2026-10-22",
+  "operator_order": "incident report trace 1a16084e80a6ddd1 — 'I dont see the interactive book. And also the normal student book page also not working' (https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/)",
+  "lane": "read-only live diagnosis + additive contract relax; zero DB writes; zero deploy actions",
+  "environment": {
+    "hub": "https://syllabai-hub-v2.vercel.app (current main era: books-registry + glossary proxy present)",
+    "carrier": "https://syllabai-v2.vercel.app (the deployed apps/api — discovered via the hub client-bundle public env scan, 21/22 chunks)",
+    "prod_db": "Neon ep-ancient-cake-a52e4kfd (fresh connections, closed after use; NEON_KEY inline-only, never persisted)",
+    "book_of_record": "document e6c0db50-0f84-55de-b50c-e4d49285cd6d — 'Edexcel International GCSE (9-1) Chemistry Student Book', Jim Clark, 383pp, doc_version 1"
+  },
+  "live_incident_census": {
+    "hub_course_page": "HTTP 200; the ready 'Student Book' card renders (courseHasBookArchive true; href /books; cta 'Open the book'); the 'planned next' not-ready variant ABSENT — the card was never the failure",
+    "hub_shelf_page": "SSR renders the book entry (title + author + '383 pages' + raw-PDF link) with ZERO chapter rows; honest fallback 'The chapter registry could not be loaded just now' — 3/3 deterministic re-renders",
+    "hub_reader_page": "/courses/igcse-chemistry-19/books/e6c0db50-...?chapter=u1:c1 → HTTP 200 shell with digest NEXT_HTTP_ERROR_FALLBACK;404 (the notFound() T-C20 law consuming the null chapters)",
+    "hub_glossary_proxy": "/api/books/glossary?course=igcse-chemistry-19 → HTTP 404 (upstream status passthrough — the route is ABSENT at the carrier)",
+    "carrier_direct": {
+      "GET /api/health": 404,
+      "GET /api/v1/content/books?courseId=igcse-chemistry-19": "200 — the book of record served (shelf shape unchanged since 133c)",
+      "GET /api/v1/content/books/<docId>/chapters": "500 {status:500,error:internal_error,message:'an internal error occurred'}",
+      "GET /api/v1/content/books/glossary?subject=4ch1": 404,
+      "GET /api/v1/content/books/<docId>/blocks?chapter=u1:c1": "401 legacy-fallback error shape (Spring-style body) — not the current public-read route"
+    },
+    "carrier_era": "predates T-BOOK-007 (glossary route, PR #247, 2026-10-21) — STALE; the hub is current"
+  },
+  "prod_data_census": {
+    "documents": "1 row: kind=TEXTBOOK, validation_state=VALIDATED, doc_version=1",
+    "book_chapters": "29 rows; spec_codes null 0/29; unit_index null 0/29",
+    "spec_refs": "184 total; item key-set UNIFORM: lineage+method+officialCode+officialId+score+spineCode+tier",
+    "score_null_blast_radius": {
+      "refs": "11/184",
+      "shape": "ALL method=widened, tier=2 — the F-BOOK-0003 r1 phase-2 unscored binds, serialized as explicit null",
+      "chapters_affected": "u2:c17(1), u2:c18(1), u3:c21(1), u4:c22(1), u4:c23(1), u4:c24(1), u4:c25(1), u4:c27(1), u4:c28(1), u4:c29(2)"
+    },
+    "book_blocks": 177,
+    "book_glossary_terms_VALIDATED": 112
+  },
+  "root_cause": "specCodeRefSchema.score was z.number().optional() (contracts) with the same shape in the hub SCHEMA-MIRROR wall — optional accepts ABSENT but rejects the explicit null the jsonb of record honestly carries for the widened binds; toChapter (the strict-contract wall) therefore THROWS on 10 of 29 chapter rows and the chapters route 500s (identically on the stale deployed build AND on current main); the hub's honest-failure law converts the 500 into fetchBookChapters=null → the shelf's no-chapters fallback + the reader's notFound() 404. The 133d-era spec-join data postdates the last carrier deploy, so the deployed build's identical wall reproduces the same 500 on the SAME rows.",
+  "serve_chain_probe": {
+    "vehicle": "apps/api/scripts/session/probe-serve-chain.ts (untracked session-side, read-only)",
+    "shape": "prod rows → verbatim BooksReadRepository SQL → toChapter/toShelfEntry → bookChapterSchema/bookShelfEntrySchema (real @syllabai/contracts import) → HTTP JSON round-trip → hub mirrors (verbatim copy)",
+    "pre_fix": "RED — ZodError specCodes[9].score 'Expected number, received null'",
+    "post_fix": "GREEN — SHELF 1/1 + CHAPTERS 29/29 through BOTH walls; first chapter u1:c1 'States of matter' specRefs=7 pages=2-13"
+  },
+  "fix": {
+    "contracts": "packages/contracts/src/books.ts — specCodeRefSchema.score → z.number().nullable().optional() (additive: no previously-valid payload invalidated; the learner-me score shape is the in-repo precedent)",
+    "hub_mirror": "apps/hub/src/lib/books.ts — specCodeRefMirror identical relax (SCHEMA MIRROR law: structural, never behavioral)",
+    "writer_unchanged": "the widened writer's null is BY DESIGN (F-BOOK-0003 r1) — the contract now matches the data of record; zero ingest changes",
+    "tests": [
+      "packages/contracts/src/books.test.ts — 'T-BOOK-025: the widened binds are unscored — null ≡ absent (F-BOOK-0003 r1)' (29 pass / 0 fail / 72 expect)",
+      "apps/api/test/content/books-routes.test.ts — 'T-BOOK-025: the widened unscored refs (score:null, method:widened) parse' row-mapper gate (38 pass / 0 fail / 150 expect)"
+    ],
+    "typecheck": "root typecheck (contracts/shared/db/api tsc --noEmit) 0 errors — the number|null|undefined widening broke zero consumers (grep-of-record: no reader does score arithmetic)"
+  },
+  "residuals": {
+    "operator_deploy": "REDEPLOY the api carrier (Vercel project syllabai-v2) at merged main — the relax alone does not add the missing glossary/blocks/checks/progress routes the reader consumes; hub redeploy carries the mirror relax; then re-run the live census (shelf TOC 29 rows, reader opens, glossary 112) to witness",
+    "carrier_health_route": "GET /api/health 404 at the carrier — verify the health route of main lands with the redeploy",
+    "process_law": "the go-live proof of T-BOOK-024 was SQL-level ('in code'); the student surface traverse was the missing tier — future books go-lives MUST include a live SSR + carrier-level census, not only DB-level truth"
+  },
+  "hygiene": "fresh connections closed after each probe; NEON_KEY inline-only (never persisted, never in repo files); no PAT in any artifact; session probes untracked by law"
+}
