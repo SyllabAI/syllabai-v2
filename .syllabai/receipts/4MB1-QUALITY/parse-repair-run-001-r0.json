@@ -1,0 +1,54 @@
+{
+  "lane": "4MB1-QUALITY parse-repair-run-001-r0",
+  "trace": "1a15fcd0922b2391",
+  "order": "fire the parse-repair ops lane",
+  "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "generatedUtc": "2026-10-22T05:20:00Z",
+  "scope": "The parse-repair ops lane of record: the 57-question defects-vs-official class + 10 missing-question capture gaps + 1 fused-question split, repaired on the bundle surface (apps/hub/content/igcse-maths-b-16/) against the blueprint/MS evidence chain.",
+  "rootCause": [
+    "RECON-CORRECTION of record: fix-manifest-57 (badsum-recon-run-001-r0) joined 0-based bundle orders against 1-based blueprint QP-footer keys -> 35/52 official anchors were OFF-BY-ONE. With true anchors (blueprint marks[str(order+1)], cross-checked 0 disagreements vs the archive parsed/questions.json per-question marks) ALL 52 targets are parts-only defects: declared was already correct on every one; the manifest's BOTH_DIVERGE class (34) was an off-by-one artifact.",
+    "RECEIPT CORRECTION of badsum-ruling-run-001-r0 (238d5cad): 3 of the 4 executed cleanFieldFixes were WRONG (ratified defective parts against correct declared): 2019-01-4mb1-01r#6 3->2 (true 3), 2022-06-4mb1-02#10 14->15 (true 14), 2025-11-4mb1-02#10 9->7 (true 9). The 4th ('2026-06-02#10 11->13') never landed in the bundle (pre==post in the d7ac1631 diff; on-disk was already 12) and instead an 11->13 stamp hit the WRONG SET (2026-06-4mb1-02 q11, official 11). All four reverted/repaired this lane.",
+    "REFIRE CORRECTION of badsum-ruling-refire-verify-run-001-r0: its 'all 4 fixes verified OK on-disk (2/15/7/13)' was false for the 4th (on-disk 12) and did not catch the 3 wrong stamps.",
+    "CLASS MATH of record: 57 defects vs official = 53 emitter-badSum + 4 emitter-passing-but-official-wrong (the 3 mis-stamps above + 2026-06-4mb1-02 q11).",
+    "NEW CLASS: 10 MISSING questions (never badSum-flagged because absent): 2019-01-4mb1-01 q8/q9/q10/q21, 2019-01-4mb1-01r q17/q18, 2019-06-4mb1-01r q19/q28, 2022-06-4mb1-02r q6, 2023-01-4mb1-02 q12 (fused into q11 by the parse; 10 parts sum 32 vs 13+15).",
+    "Blueprint drift check recon-era(3063c716) vs current(2c438f38): ADDITIONS ONLY (2019-01:4MB1-01 row, 2019-01:4MB1-01R key 17, 2019-06:4MB1-02R row, 2023-01:4MB1-02 key 11), ZERO value changes on shared keys - anchors are stable."
+  ],
+  "methods": [
+    "Evidence chain per drift question: QP printed per-part brackets (primary), group brackets split via MS mark rows (raw MS tables read page-level; ms.md P-annotations proven unreliable where normalized), flattened/inseparable text -> group leaf with the group total (joint-MS-row law), no-bracket questions -> single part with the official total, spare-grid/figure-caption/stem-dup parts dropped only after containment verification (substantive-line check).",
+    "33/57 structures hand-derived from QP zones + MS row tables (all cited in repair-plan-final.json); 24 auto/manual with per-leaf QP brackets; all 57 sum-validated sum(parts)==declared==official.",
+    "10 recoveries: 7 from QP text layers (incl. font-shift decode: lowercase glyph = char-29, yielding 2700 deg for 2019-06-01R q19 and '7 fewer crayons'); 3 image-only pages OCR'd (tesseract 5.5.0 psm3+psm6 dual-pass, 300-600dpi, binarized): 2019-01-01 p5 (q8/q9), p16 (q21 a), 2019-01-01R p11 (q17 jugs). Column vectors (OA(-2,4) OB(5,-3) AC(-1,-1)) and 2023-01-02 q12 function definitions (f: x->2x^2-4x+1 where x>1; g: x->20/(5+x); h: x->(ax+b)/3 with h(2)=4 and f^-1h(1.7)=2.5) read visually from 300-500dpi crops. All solutionMd transcribed from MS mark rows (no computed/invented answers; an early draft's hand-computed 2022-06-02R q6 answers were DISCARDED when they disagreed with the MS - real answers 368/$52440/$67.60/17.6%/48840).",
+    "2023-01-02 fused split: q11 keeps curve parts [4,2,1,3,3]=13 (MS: (c)(i) B1, (c)(ii) B3-ladder; (d) M1M1A1); parts 5-9 become NEW q12 row (order 11) re-stamped [1,3,2,4,5]=15 (QP p30-32 brackets, MS p19-20 rows).",
+    "2019-01-4mb1-01 q11 part0 glued q10(b) fragment stripped (recovered q10 now carries it)."
+  ],
+  "appliedDelta": {
+    "questions": "1260 -> 1270 (+10 recovered incl. q12 split-out)",
+    "parts": "2432 -> 2412 (45 spurious parts removed via drop/merge; +20 recovered parts)",
+    "marks": "6441 -> 6500",
+    "restamps": 71,
+    "declaredFixes": 4,
+    "fusedSplit": 1
+  },
+  "verification": [
+    "structural census (order=qnum-1 identity, all 65 papers): 0 missing, 0 drifted, 0 extra orders; every paper declared-sum == blueprint total 100",
+    "emitter badSum census: 0 remaining (was 53)",
+    "gates: verify:corpus PASS, verify:flashcard-sync PASS, verify:cie PASS, typecheck x4 clean, next build green",
+    "manifest.counts refreshed in the file's own 2-space pretty format (questions/parts/marks only); single-line questions.json law preserved"
+  ],
+  "notDone_disclosed": [
+    "DB re-ingest (fetch-bank/qv/difficulty planes) remains OPERATOR-GATED; at re-ingest the emitted census becomes 1,270-class and the difficulty/qv-mirror lanes re-run with it (coupling disclosed in db-apply-run-001-r0).",
+    "The 3 OCR'd QP pages (2019-01-01 p5/p16, 2019-01-01R p11) were read for content only; the pastpapers-repo archive PDFs were NOT modified (no sandwich repair pushed there this lane).",
+    "specPointIds/specPointCodes empty + commandWord null on the 10 recovered rows and moved q12 parts (anchor round + commandWord fill re-run residuals, same class as the OCR-lane 11).",
+    "2022-01-4mb1-02r q1 (order 0) parts repaired [1,1,2]=4 per its official anchor; the order-0 ref-namespace question is mooted only at re-ingest time (emitter-side it now passes).",
+    "pastpapers-blueprints.json untouched (values verified stable; all 65 maths-b rows present)."
+  ],
+  "writes": "bundle questions.json + manifest counts (this repo); receipt + worklog (.syllabai only); ZERO DB writes, ZERO prod writes, zero LLM spend; PAT inline one-time for fetch/push, scrubbed after.",
+  "artifacts": [
+    "scripts/run-parse-repair/phase-a-targets-v2.json (52-target race-checked list, true anchors)",
+    "scripts/run-parse-repair/structural-ledger.json (57 drifts + 10 missing, of record)",
+    "scripts/run-parse-repair/repair-plan-final.json (57/57 sum-validated structures with evidence)",
+    "scripts/run-parse-repair/surgery-table.json (leaf->part surgery)",
+    "scripts/run-parse-repair/apply_final.py + apply-audit.json",
+    "scripts/run-parse-repair/ms-fullpages.txt / evidence-14.txt / qp-zones-31.txt (MS/QP evidence of record)",
+    "scripts/run-parse-repair/ocr-recover/ (OCR pages + vector/formula crops)"
+  ]
+}
