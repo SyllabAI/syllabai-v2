@@ -52,7 +52,7 @@
     "applyTierPath": "kill-list -> operator green-light -> fresh census + dry-run against CURRENT live state (the lane C dry-run is a rehearsal, not a license) -> apply with structural proof -> receipts; fail-closed throughout"
   },
   "zeroWritesOfRecord": "bookkeeping-only: this receipt + the sandbox worklog; zero content-plane writes, zero DB writes, zero deploys, zero LLM calls",
-  "push": "LOCAL COMMIT OF RECORD — push BLOCKED: both credential stagings (.secrets dir + git credential-store file) wiped between turns (narrow-wipe class, recurrence #3 of record); commit lands on local main claim-in-first-commit and pushes immediately on PAT one-shot re-stage (restore-creds precedent; PAT never persisted, values never printed)",
+  "push": "PUSHED OF RECORD: b5237896 -> origin/main (925ab97f..b5237896, trace 1a15f040fa4dff99, PAT one-shot re-stage per restore-creds precedent) after clean rebase 16d288e1 -> b5237896 onto the advanced origin/main; PAT verified login SyllabAI (id 309817640, repo+workflow among scopes) and used via in-session env credential helper ONLY — never written to any file, never embedded in the remote URL, never printed; first push attempt honestly failed of record (the tool shell does not retain exports between commands -> empty-password rejection 'Invalid username or token' — the same token API-authenticated 200 immediately prior, isolating the failure to the empty env, not the token); retry with export+push in one invocation succeeded; chat exposure count of this PAT = 4 — rotation quadruply overdue",
   "followupRegister": [
     "PAT rotation (now quadruply overdue — recurrence of the wipe class rises with every re-stage)",
     "environment-reset forensics (standing, from lane C receipt)",
