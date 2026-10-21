@@ -10482,3 +10482,18 @@ Stage Summary:
 - Storage question of record: book corpus = syllabai-resources (append-only); interactive layer = books/<qual>/ authoring packs (PR-gated, schema-validated, ingested to DB by script); serving = Neon + VALIDATED flip; binaries never enter syllabai-v2.
 - Self-improvement of record: gate receipts feed findings ledger; S2+ findings demand system_change (prompt/lint/playbook/schema); same root cause 2× blocks next pack until the system PR lands; phase retros + metrics set the next phase's lint priorities.
 - Deferred: sha256 pins (first pack receipt, S0 c01); prompts/ files (authored per-stage at T-BOOK-010 start); zod book.block/1 (T-BOOK-002 lane).
+
+---
+
+Task ID: r0-cron-20261021-0900
+Agent: R0-auto (merge desk)
+Task: periodic sweep 01:00Z — gates, merge, verify, receipt
+
+Work Log:
+- PR #232 (dc6-p3b, head 70503fe unchanged): SKIPPED gate (b) — 6th consecutive; verify still failure (inherited bundle-pin red off stale base 8894a8c); no lane rebase/re-run.
+- PR #236 (T-BOOK-015 books doctrine pack, head 3002b50, base==main tip 2f25475): ALL GATES GREEN — head CI hub+verify success (Vercel Preview Comments also success this time); 0 reviews, no HOLD/BLOCKING; mergeable=True clean; boundary clean (17 files: docs/books/** doctrine pack, books/4ch1/** scaffold, README, .syllabai task/worklog; no *.java, no core/hub repo content, no Neon/prod writes; docs-only per body).
+- MERGED via PUT merge_method=merge -> merge commit 8596358. Post-merge verification: hub+verify GREEN on 8596358.
+- This receipt: bookkeeping-only, .syllabai/** only, no force.
+
+Stage Summary:
+- Merges this run: 1 (#236 -> 8596358). Skips: 1 (#232, gate b, 6th). Main @ 8596358 hub+verify green. Zero prod/Neon writes, zero force-pushes, zero auth failures.
