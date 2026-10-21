@@ -1,0 +1,51 @@
+{
+  "task": "T-BOOK-010",
+  "lane": "content (Unit 1 rail packs) + platform (rail go-live pipeline)",
+  "operator_order": "apply migration 0005 on a Neon COW → run books-ingest-rail.ts → 20% spot-check → flip packs VALIDATED — the rail goes live (trace 1a15ecf114c3406d, Neon PAT + prod connection string delivered with the order)",
+  "trace": "1a15ecf114c3406d",
+  "generated": "2026-10-21T22:30:00Z",
+  "pipeline_of_record": {
+    "order": [
+      "1. Neon COW branch created (br-lively-heart-a508fuhy off production br-muddy-bar-a5huwldd, project billowing-cherry-15418366) via console.neon.tech/api/v2 mirror (api.neon.tech DNS-blocked from this sandbox, the T-MIG-046 class); endpoint ep-wispy-sea-a5wvil0x; auth = neondb_owner (cluster copy carries the parent's role state)",
+      "2. COW pre-checks (read-only): documentId of record e6c0db50-0f84-55de-b50c-e4d49285cd6d v1; parent book documents row VALIDATED; 29 chapters ALL SUGGESTED; migration 0005 structures ABSENT (pre-apply proof); no drizzle bookkeeping table (manual-apply convention); 5 mcq checkRefs resolve ACTIVE MCQ_SINGLE, bank 4172",
+      "3. chapter flip u1:c1..c5 SUGGESTED→VALIDATED (the ingest binding law; demo gate only, c6-c10 untouched) — guarded tx, pre/post re-prove, idempotent",
+      "4. migration 0005 applied VERBATIM (packages/db/drizzle/0005_book-rail-tables.sql, 10 statements, one tx, zero new DDL): book_blocks + book_glossary_terms + chapter_progress, composite FKs to documents/book_chapters resolved, 4 indexes",
+      "5. spine repair (finding F-BOOK-0003): 1.18 orphan — widen tx on u1:c4 (the book's own 27-row widened precedent class), method=widened score=0.611 lineage=widen:chem_v3_u1_c4_pdf039_0113#b1",
+      "6. ingest: books-ingest-rail.ts DRY-RUN (30 blocks/5 chapters/27 terms, matches the S3 receipt of record) then real — COMMIT 30 blocks + 27 glossary terms all SUGGESTED, 0 skips, single tx",
+      "7. 20% spot-check (6 of 30, 4 chapters, 5 types) ALL GREEN 35/0: L1 zod book.block/1 (contracts of record), L2 DB row == authored truth (canonical jsonb compare), L3 page-true against the sha-pinned parse of record (b2c67eaf... byte-verified this session, 1234 chunks), L4 per-type payload laws (bookBlockPayloadLaws verbatim); full-set cheap laws all 30: anchors in manifest ranges of record, monotonicity, unique (chapter,ord), bank law, pack.yaml plan conformance; negative control pre-flip: serving SQL returns 0 VALIDATED rows (the unchanged-133c law)",
+      "8. repo lint G1-G4: 0 findings (manifest enriched with DB-truth pdfRanges)",
+      "9. pack flip: book_blocks.validation_state SUGGESTED→VALIDATED ×30 in one guarded tx (pre 30/0/0, post single state class, version+1)",
+      "10. serve proof (the double-gate SQL shape of railBlocksForChapter): u1:c1→7, u1:c2→6, u1:c3→6, u1:c4→5, u1:c5→6 blocks (ord-ordered, anchors page-true), u1:c6→[] honest-empty — the §3 three-state semantics",
+      "11. PRODUCTION MIRROR (the 'goes live' step, same order of record): identical pipeline replayed on ep-ancient-cake-a52e4kfd (direct endpoint) — chapter flip COMMIT, 0005 10/10 COMMIT, widen COMMIT, ingest COMMIT 30+27, spot-check 35/0 GREEN, pack flip COMMIT ×30, serve proof BYTE-IDENTICAL to the COW",
+      "12. COW branch DROPPED + 404-verified after the proof (T-MIG-035 disposable-branch discipline)"
+    ],
+    "repo_side": [
+      "pack.yaml ×5 status: draft → published (the playbook's repo-side S4 vocabulary, flip is publisher-only — executed under the operator's go-live order)",
+      "F-BOOK-0003 filed (spine kind, root-caused twice: the join's one-bullet containment law vs the book's interleaved LO-box typesetting; code change PROPOSED, zero main-branch delta tonight)",
+      "T-BOOK-010 task yaml execution_record amended: S3 PENDING-OPERATOR → DISCHARGED, S4 PENDING-OPERATOR → DISCHARGED"
+    ]
+  },
+  "spine_repair": {
+    "finding": "F-BOOK-0003",
+    "spec_point": "4CH1-1.18 (the periodic table arrangement — canonical graph S1-d)",
+    "why_orphan": "p.39 LO box interleaves 1.18's sub-clauses after the 1.19 bullet; no single bullet contains the full wording; containment 0.611 < 0.75 at every tier → the honest join dropped it to the review lane",
+    "fix_class": "method=widened (the book's existing precedent: 27 rows incl. u1:c2 1.12/1.13)",
+    "applied": ["neon-cow br-lively-heart-a508fuhy", "production ep-ancient-cake-a52e4kfd"],
+    "evidence": "parse of record chunk chem_v3_u1_c4_pdf039_0113 carries 1.18 verbatim as its first LO bullet (sha-pinned, byte-verified this session)"
+  },
+  "verification": {
+    "spot_check": "35 pass / 0 fail on BOTH planes (6-block 20% sample × 4 laws + full-set cheap laws + negative controls)",
+    "lint": "G1-G4 0 findings",
+    "serve_proof": "30 VALIDATED blocks across u1:c1..c5, ord-ordered, u1:c6 honest-empty, BOTH planes byte-identical",
+    "state_laws": "all rows version=1 pre-flip, version=2 post-flip; glossary 27 SUGGESTED (glossary flip is not part of S4 — terms serve via the rail's glossary surface law when validated separately)"
+  },
+  "disclosures": [
+    "api.neon.tech DNS-blocked from this sandbox — console.neon.tech/api/v2 mirror used (the recorded T-MIG-046 fallback), no behavior difference at the recorded shapes",
+    "chapter flip (u1:c1..c5) was a PREREQUISITE the pipeline surfaced: the ingest's DB binding law requires chapters VALIDATED; the parent book was already VALIDATED (T-MIG-133 posture); the flip is row-level DML covered by the operator's go-live order",
+    "the 1.18 widen repair is a data-plane adjudication following the book's own widened precedent — the code law (spine-join.ts) is unchanged; the system-change candidate is PROPOSED in F-BOOK-0003, pending operator",
+    "no GitHub PAT in this session: bookkeeping commits live on local branch t-book-010/golive-r0 (off origin/main 95024009) — push/PR deferred to the operator or a token re-delivery",
+    "credentials: Neon PAT + connection strings used inline env/file (0600) only, never logged; COW role tbook010_golive (created then superseded by neondb_owner) dies with the dropped branch; operator rotation advisory stands (chat-exposed)"
+  ],
+  "zero_new_ddl": "migration 0005 applied verbatim from packages/db/drizzle/0005_book-rail-tables.sql — zero new DDL authored; all other writes are row-level DML",
+  "status": "RAIL-LIVE (production serving u1:c1..c5 under the §3 double gate)"
+}

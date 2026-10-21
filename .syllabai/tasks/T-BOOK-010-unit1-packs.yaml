@@ -28,8 +28,15 @@ task:
     idempotent upsert; single transaction with honest rollback on any
     skip); DRY RUN exit 0 (30 blocks/5 chapters/27 terms); DB apply
     PENDING-OPERATOR (no Neon key in session — carries the T-BOOK-002
-    staging item). S4: PENDING-OPERATOR (20% spot-check + the pack flip,
-    ADR §3 L-content).
+    staging item). S4: DISCHARGED of record (golive-r0, operator trace
+    1a15ecf114c3406d 'the rail goes live' with Neon PAT + prod string):
+    COW br-lively-heart-a508fuhy — chapter flip c1-c5, migration 0005
+    verbatim (10/10), spine widen repair (F-BOOK-0003, 1.18 orphan),
+    ingest COMMIT 30+27, spot-check 35/0 GREEN, lint G1-G4 0, pack flip
+    x30, serve-proof 7/6/6/5/6 + u1:c6 honest-empty; PRODUCTION MIRROR
+    byte-identical; COW dropped+404-verified; pack.yaml x5
+    draft->published; receipt:
+    .syllabai/receipts/T-BOOK-010/unit1-golive-r0.json. ADR §3 L-content.
     PROOF: lint exit 0 (5 packs, 30 blocks, 0 findings); ingest dry-run
     exit 0; api tsc 0; hub tsc 0. Receipt:
     .syllabai/receipts/T-BOOK-010/unit1-packs-s0-s4-r0.json.
