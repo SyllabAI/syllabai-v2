@@ -11186,6 +11186,7 @@ Stage Summary:
 - TEACHER_ARCHITECTURE §8 now holds at the marking boundary: a teacher sees only their own classes' learners' answers; independent learners are teacher-invisible; teacher marking can never block an independent learner (D2 untouched); κ math byte-identical (the ADR's own note). ADR-027's interim pilot-scope mode expires with this landing on v2.
 - Residuals of record: the nightly neon-replay must prove the stage-5b projection once on merged main; non-marking teacher surfaces keep their own authorization models (T-TEACH-004+ audit); scope-zero teachers get the honest empty queue.
 - Receipt: .syllabai/receipts/HUB-TEACH/t-teach-003-enrollment-scoped-marking-r0.json. Next: T-TEACH-004 (core class workspace parity).
+- CLOSE-OUT (same session): fetch-first rebase caught main's concurrent .syllabai appends mid-flight (the worklog append-only union, the T-TEACH-002 precedent); PR #261 SQUASH-MERGED as 3123101 on main with the merge-title law, branch deleted both sides; main-head CI verify+hub 2/2 SUCCESS. The nightly neon-replay (02:30Z cron) is the standing end-to-end proof of the stage-5b scope-coverage projection.
 
 ## receipt(R0-AUTO) — r0-cron-20261022-0130 (2026-10-21T17:30Z sweep)
 
