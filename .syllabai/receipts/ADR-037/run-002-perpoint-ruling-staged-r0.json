@@ -1,0 +1,75 @@
+{
+  "receipt": "run-002-perpoint-ruling-staged-r0",
+  "lane": "ADR-037",
+  "trace": "1a15f8051fc9c785",
+  "operatorOrder": "\"per-point\" — the law ruling of record: per-point markPoints replace the 1:1 whole-block law on the live corpus",
+  "posture": "RULING FILED + RE-APPLY LANE STAGED — the conditional order of record (run-001 conditionalReapplyOrderOfRecord) is FIRED; the production write itself remains behind its own green-light gate per the filed apply-tier path; ZERO prod writes this turn (staging only, repo-side read-only)",
+  "rulingSemantics": "Law 2 (per-point, ADR-037 v0.7) replaces Law 1 (whole-block 1:1) as the governing law for the live corpus's ACTIVE marking stack, executed via the v0.7 re-apply; the corrected value framing of record (cross-lane assessment, trace 1a15f733c4aaf259): this is a QUALITY unlock (per-point refs/evidence/rationale as rows of record — partial credit already ran inside whole-block rows via MARKING_RULES bridges.ts:155-169) + a COVERAGE unlock (the 165 previously-unmapped official papers), NOT a run/doesn't-run unlock",
+  "emissionCensusOfRecord": {
+    "method": "repo-side mirror of the shim + frozen ingest emission laws, first-hand verified line-by-line before scripting (bundle-questions.ts admission gates :263-299 + markPoints ride-through :363-388 + spec role law :393-410; sme/index.ts emittedRowRefs :111-127, deactivate :240-242, MCQ row law :264/:299, saveStructuredBody per-point :488-514, markPointRowsFor :50-55, G7 :639-644)",
+    "artifact": "scripts/adr037_reapply_census.py + scripts/adr037_reapply_census_result.json (committed of record this turn)",
+    "validation": [
+      "raw 693 questions / 2,334 parts — EXACT match vs lane C bundle census (independent parse, same bundle)",
+      "G7 violations ZERO across all 44 sets — matches the v0.7 doc of record",
+      "1,405 bundle markPoints reconciled EXACT: 1,347 on non-choice parts + 58 on choice-bearing parts (1 point each)",
+      "per-point emission 1,340 = 1,347 - 7 (markPoints on the 5 excluded questions, verified individually)",
+      "excluded 5 of record: 1 unmapped (2-7-acids q3) + 4 badSum (official-4ch1-1c-2019-06 q0/9/10/13 — the archive-damage class of record, unchanged at v0.7)"
+    ],
+    "totals": {
+      "sets": 44,
+      "admitted_questions": 688,
+      "excluded": 5,
+      "emitted_refs_deactivate_slice_law": 1053,
+      "corpus_rows": 813,
+      "structured_rows": 529,
+      "mcq_rows": 284,
+      "part_rows": 2041,
+      "mark_point_rows": 2830,
+      "per_point_rows_part_bound": 1340,
+      "whole_block_rows_part_bound": 1206,
+      "partless_mcq_direct_rows": 284,
+      "options": 1136,
+      "spec_joins": 2424,
+      "spec_primary": 905,
+      "spec_secondary": 1519
+    },
+    "deltaVsLiveOfRecord": {
+      "admitted_questions": "+160 (528 -> 688: the newly-anchored official papers; 165 excluded -> 5)",
+      "mark_point_rows": "+1395 (1,435 whole-block -> 2,830 mixed-shape)",
+      "corpus_rows": "+211 (602 -> 813)",
+      "options": "+204 (932 -> 1,136)",
+      "spec_joins": "+864 (1,560 -> 2,424)"
+    }
+  },
+  "theTwoShapeLawsOfRecord": {
+    "lawA_mcq_stays_1to1": "every MCQ_SINGLE corpus row (pure MCQ + one per option-bearing part) persists exactly ONE part-less mark_point row — the ingest NEVER consults markPoints on the MCQ path (sme/index.ts:264/:299); 284 such rows post-apply (233 -> 284)",
+    "lawB_choicePart_markPoints_display_only": "a part carrying BOTH choices and markPoints (58 parts / 58 points, all official sets) persists NO per-point rows — its markPoints ride the bundle display-only; scoring there is option-keyed deterministic. Anyone reconciling live rows against the doc's 1,405 must apply Law A + Law B first (live per-point part-bound = 1,340, not 1,405)"
+  },
+  "killListDraft": {
+    "status": "DRAFT — final numbers pin against live probes at the dry-run stage (never fired blind)",
+    "deactivate": "update questions set active=false where active=true and external_ref = any(<v0.7 emittedRowRefs>) — slice = the 1,053-law emission ref set INTERSECT live; legacy live slice = the 602-class refs (28 SME sets + the 2020-11 demo official set's 5); the intersection count is a Stage-B2 probe, not an assumption",
+    "insert": "813 corpus rows (529 STRUCTURED + 284 MCQ_SINGLE), 2,041 question_parts, 2,830 mark_points, 1,136 options, 2,424 question_spec_points — all fresh ids, base + member ref families per emittedRowRefs",
+    "deletions": "NONE — the deactivated stack remains in place (append-only law); the 1,435 legacy whole-block rows survive under deactivated questions; replacement is at the ACTIVE level only; smart_mark_results history intact (breakdown jsonb denormalized, FK to answers only — schema.ts:394, no mark_points FK)",
+    "globalTables": "question_asset UNTOUCHED (the shim zip ships no assets — the global wholesale-replace guard CANNOT open, lane C law of record); knowledge_nodes read-only; no other tables touched",
+    "idempotency": "the of-record law (slice-scoped deactivate of exactly the re-emitted refs + fresh insert); this re-apply is NOT the no-op class — the emitted rows differ in shape and count"
+  },
+  "gatesOfRecord": {
+    "gate1_sum_invariant_dispositive": "post-apply live probe: sum(mark_points.marks where question_part_id = P) == question_parts.marks for EVERY part-bound point set in the ACTIVE slice — the marking validator checks awarded <= pointMarkCeiling(filtered points) ONLY (smartmark/index.ts:196-204, :146-148) with NO partMarks comparison, so a drifted sum = silent under-award; this probe is the green-light gate for the marking lane; applies to the 1,340 per-point + 1,206 whole-block part-bound rows; part-less rows exempt by law",
+    "gate2_mcq_partless_verdict": "the 284 part-less rows stay part-less BY LAW — the per-part marking filter selects question_part_id === answer.question_part_id (smartmark/index.ts:556) so NULL-bound points are invisible to Smart Mark, and MCQ scoring is deterministic (assessment/submit.ts reads mark_points ZERO times); reveal-surface only; nobody later 'fixes' the binding",
+    "gate3_kappa_rebase": "the chemistry subject kappa pass re-bases AFTER the re-apply (delta calibration packet, not a full re-run, per the D2 kappa-per-subject decision) — authoritative=true must rest on post-rewrite marking granularity",
+    "gate4_coverage_not_perpoint_done": "validated-scheme coverage numbers (R2 class) are shape-agnostic — do not read ~100% covered as per-point-done; Q3/Q5 re-run once post-apply to confirm point counts + the Gate-1 invariant on live",
+    "gate5_shape_laws_on_reconciliation": "any reconciliation against the 1,405 bundle figure must first apply Law A + Law B (live per-point part-bound = 1,340 within the admitted slice)"
+  },
+  "stagePlan": {
+    "B1_push": "THIS receipt + census artifacts -> origin/main — BLOCKED: PAT one-shot absent this turn (last turn's token never persisted per discipline); commits staged locally claim-in-first-commit",
+    "B2_dryrun": "core API DATABASE_URL re-stage (0600, fingerprint-only reporting) -> fresh live probes (active refs in slice, current mark_point/part/row counts, drift check vs lane C 602/1,435) + the dry-run through the REAL shim + ingest on a disposable COW branch (T-MIG-050 precedent) -> reconciliation EXACT vs this census mirror expected; BLOCKED: credentials absent this turn",
+    "B3_apply": "kill-list final (live-pinned) -> operator green-light -> apply with structural proof -> Gates 1-5 post-apply probes -> ship verification battery -> receipts run-003+"
+  },
+  "zeroWritesOfRecord": "repo-side read-only census + bookkeeping commits (.syllabai/receipts/ADR-037/** + scripts/adr037_reapply_census*); zero prod DB writes, zero content-plane writes, zero deploys, zero LLM calls",
+  "followupRegister": [
+    "PAT one-shot for the B1 push (rotation quadruply overdue — exposure #4 standing)",
+    "DATABASE_URL re-stage for B2 (fresh live probes + dry-run)",
+    "kappa re-base packet (Gate 3) scheduled AFTER B3",
+    "environment-reset forensics, CORS config.ts:60, stale .neon-branch.env (standing)"
+  ]
+}
