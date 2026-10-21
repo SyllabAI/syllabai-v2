@@ -7,9 +7,9 @@
    "viaSubtopicScope": 0
   },
   "notes": {
-   "coded": 20,
+   "coded": 21,
    "total": 84,
-   "unmapped": 64,
+   "unmapped": 63,
    "viaSubtopicScope": 8
   },
   "questionParts": {
@@ -20,7 +20,7 @@
   }
  },
  "course": "cie-igcse-science-combined-science-23-physics",
- "generatedUtc": "2026-10-21T13:45:00Z",
+ "generatedUtc": "2026-10-22T12:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-science-combined-science-23-physics/spec_point_index.json": {
    "sha256": "a1db8e3826b6aaa555e38ae67ef4a850adfde18c1c323e15be627304b179ccba"
@@ -29,7 +29,7 @@
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
   },
   "spec-links/cie-igcse-science-combined-science-23-physics.json": {
-   "sha256": "607db263bc7ebd25b2ba26c12158962fcbcb432d86e64c8c2b7f1d6c0ae990c4"
+   "sha256": "5fcf5c715b159bcb9a2b0d9c5fd32e11825bb5149b54d8abc13f2be3da0c6081"
   },
   "spine": {
    "file": "spines/cie-igcse-science-combined-science-23-physics.json"
@@ -743,30 +743,34 @@
    "unmapped": true
   },
   "rn_CWpt2pwqVtHPgDN3": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "P1.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:P1.1.1",
+     "score": null,
+     "spineCode": "P1.1.1",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "P1.1.3",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:P1.1.3",
+     "score": null,
+     "spineCode": "P1.1.3",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_czZsgHDHz4DVMcqn",
     "spcpt_sm5YDY3mRJ2Jtqrf",
     "spcpt_vPZ7Cr4dXd32gbRq"
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "P1.1.1",
-     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:P1.1.1",
-     "spineCode": "P1.1.1",
-     "tier": "T2_near"
-    },
-    {
-     "method": "cie_text_join",
-     "officialCode": "P1.1.3",
-     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:P1.1.3",
-     "spineCode": "P1.1.3",
-     "tier": "T2_near"
-    }
-   ],
-   "unmapped": true
+   "kind": "note"
   },
   "rn_DhXZNggyHHhZz2QQ": {
    "codes": [
@@ -1815,14 +1819,12 @@
  "qual": "cie-igcse-science-combined-science-2023-2024",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 34,
+  "distinctCodesAttached": 36,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 34,
+  "spineHitCodes": 36,
   "spineSpecPoints": 86,
   "uncoveredSpineCodeList": [
-   "P1.1.1",
    "P1.1.2",
-   "P1.1.3",
    "P1.2.2",
    "P1.2.3",
    "P1.2.4",
@@ -1873,28 +1875,30 @@
    "P6.4.2",
    "P6.4.3"
   ],
-  "uncoveredSpineCodes": 52
+  "uncoveredSpineCodes": 50
  },
- "resourcesSha": "aa0b4de1b732738b4d02dabdd02d9ead85522907",
+ "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
   "specLinks": {
    "census": {
-    "codesAttachedFromSidecar": 24,
+    "codesAttachedFromSidecar": 26,
     "codesByMethod": {
-     "cie_index_rejoin": 24
+     "cie_index_rejoin": 24,
+     "operator_verdict": 2
     },
     "codesByTier": {
-     "J4_name_phrase_identity": 24
+     "J4_name_phrase_identity": 24,
+     "V6_near_text_verdict": 2
     },
     "itemsWithCodes": 24,
     "ladderCodesRetained": 20,
     "sidecarCodes": 26,
     "sidecarItems": 132,
     "sidecarOnlyItems": 0,
-    "t2Hints": 2
+    "t2Hints": 0
    },
    "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
    "regime": "spec_links_sidecar_accepted",

@@ -7,9 +7,9 @@
    "viaSubtopicScope": 0
   },
   "notes": {
-   "coded": 26,
+   "coded": 27,
    "total": 66,
-   "unmapped": 40,
+   "unmapped": 39,
    "viaSubtopicScope": 14
   },
   "questionParts": {
@@ -20,7 +20,7 @@
   }
  },
  "course": "cie-igcse-science-combined-science-23-chemistry",
- "generatedUtc": "2026-10-21T13:45:00Z",
+ "generatedUtc": "2026-10-22T12:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-science-combined-science-23-chemistry/spec_point_index.json": {
    "sha256": "f673b0dbe183d7a20b2cc34171714c179e909cf0d129b977dd24b385dbc6fc21"
@@ -29,7 +29,7 @@
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
   },
   "spec-links/cie-igcse-science-combined-science-23-chemistry.json": {
-   "sha256": "b4ae72e83c0e12a27f4a3627daeff1d7c5e242ac8e1837afc58a373ab518db06"
+   "sha256": "2d80c08145db72e92a378abb1dab333679454a0650b3bf5b6fb000278007eed6"
   },
   "spine": {
    "file": "spines/cie-igcse-science-combined-science-23-chemistry.json"
@@ -5690,22 +5690,23 @@
      "spineCode": "C3.4.3",
      "tier": "J4_name_phrase_identity",
      "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C3.4.4",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.4",
+     "score": null,
+     "spineCode": "C3.4.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
     "spcpt_XfJMyKV6CYwKKW85",
     "spcpt_zprbZ3WzDvmTdWdm"
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "C3.4.4",
-     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.4",
-     "spineCode": "C3.4.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "note"
   },
   "rn_C2hGtPtHSNx8DyhK": {
    "codes": [
@@ -6015,23 +6016,24 @@
    "unmapped": true
   },
   "rn_S3VHXwNQTbdzj5pC": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C5.1.1",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C5.1.1",
+     "score": null,
+     "spineCode": "C5.1.1",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_RntZ4rrFCYQtrV8K",
     "spcpt_SpdQTrnXS2fpd96c",
     "spcpt_sbNW998wPv8xBzwp"
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "C5.1.1",
-     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C5.1.1",
-     "spineCode": "C5.1.1",
-     "tier": "T2_near"
-    }
-   ],
-   "unmapped": true
+   "kind": "note"
   },
   "rn_SJbK6Bbrwqnzr4SJ": {
    "codes": [],
@@ -6387,6 +6389,16 @@
      "spineCode": "C3.4.1",
      "tier": "J4_name_phrase_identity",
      "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "C3.4.2",
+     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.2",
+     "score": null,
+     "spineCode": "C3.4.2",
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
@@ -6394,16 +6406,7 @@
     "spcpt_FVWXC4rNywfsjCN8",
     "spcpt_n4Qb7DYqQc2qGJj3"
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "C3.4.2",
-     "officialId": "CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024:C3.4.2",
-     "spineCode": "C3.4.2",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "note"
   },
   "rn_jCZc9ZhKMJSNsVCd": {
    "codes": [
@@ -6649,9 +6652,9 @@
  "qual": "cie-igcse-science-combined-science-2023-2024",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 48,
+  "distinctCodesAttached": 49,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 48,
+  "spineHitCodes": 49,
   "spineSpecPoints": 82,
   "uncoveredSpineCodeList": [
    "C1.1.3",
@@ -6666,7 +6669,6 @@
    "C12.1.3",
    "C12.1.4",
    "C2.2.2",
-   "C3.4.2",
    "C3.5.1",
    "C3.5.2",
    "C3.5.3",
@@ -6689,33 +6691,33 @@
    "C9.3.1",
    "C9.3.2"
   ],
-  "uncoveredSpineCodes": 34
+  "uncoveredSpineCodes": 33
  },
- "resourcesSha": "aa0b4de1b732738b4d02dabdd02d9ead85522907",
+ "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
   "specLinks": {
    "census": {
-    "codesAttachedFromSidecar": 32,
+    "codesAttachedFromSidecar": 35,
     "codesByMethod": {
      "cie_index_rejoin": 23,
      "cie_text_join": 6,
-     "operator_verdict": 3
+     "operator_verdict": 6
     },
     "codesByTier": {
      "J3_name_text_identity": 1,
      "J4_name_phrase_identity": 22,
      "T1_verbatim": 6,
-     "V6_near_text_verdict": 3
+     "V6_near_text_verdict": 6
     },
     "itemsWithCodes": 30,
     "ladderCodesRetained": 30,
     "sidecarCodes": 35,
     "sidecarItems": 117,
     "sidecarOnlyItems": 0,
-    "t2Hints": 3
+    "t2Hints": 0
    },
    "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
    "regime": "spec_links_sidecar_accepted",

@@ -20,13 +20,13 @@
   }
  },
  "course": "cie-a-level-business-23",
- "generatedUtc": "2026-10-21T13:45:00Z",
+ "generatedUtc": "2026-10-22T12:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-a-level-business-23/spec_point_index.json": {
    "sha256": "3946ace8da4884e40558c251302b2564af62bd684f90162e2109226887beff6b"
   },
   "spec-links/cie-a-level-business-23.json": {
-   "sha256": "f1f6db39b90612de582d07f6a4f4735ed774af0437ea3364cca150bc9d9bd8ad"
+   "sha256": "36b60f1100b01bce5a1a94687ab6c9c532abb3e8f3d50d8c1bbbf5dad9973415"
   },
   "spine": {
    "file": "spines/cie-a-level-business-23.json"
@@ -10076,7 +10076,7 @@
   ],
   "uncoveredSpineCodes": 16
  },
- "resourcesSha": "aa0b4de1b732738b4d02dabdd02d9ead85522907",
+ "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -10085,16 +10085,19 @@
    "census": {
     "codesAttachedFromSidecar": 228,
     "codesByMethod": {
+     "agent_semantic_note_join": 71,
+     "agent_title_identity_join": 48,
      "operator_verdict": 134
     },
     "codesByTier": {
      "V1_name_text_identity": 22,
      "V2_name_phrase_identity": 58,
-     "V3_subsection_head_identity": 54
+     "V3_subsection_head_identity": 54,
+     "V7_agent_note_join": 119
     },
-    "itemsWithCodes": 108,
+    "itemsWithCodes": 224,
     "ladderCodesRetained": 1,
-    "sidecarCodes": 134,
+    "sidecarCodes": 253,
     "sidecarItems": 831,
     "sidecarOnlyItems": 0,
     "t2Hints": 0

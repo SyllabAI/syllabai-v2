@@ -20,7 +20,7 @@
   }
  },
  "course": "cie-igcse-computer-science-23",
- "generatedUtc": "2026-10-21T13:45:00Z",
+ "generatedUtc": "2026-10-22T12:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-computer-science-23/spec_point_index.json": {
    "sha256": "af7ecca31901425f77de8d91bd347e578ac8b86387d52ce3057f5484e53e67c8"
@@ -29,7 +29,7 @@
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
   },
   "spec-links/cie-igcse-computer-science-23.json": {
-   "sha256": "457bab301baeb7cb3b2e93d8d55072a545b883f03da404399abedf5268a83e56"
+   "sha256": "46cc1bfbf1b39d5da3ab6d8a8b83702a087af9c7405d20d43c3dd8527116375b"
   },
   "spine": {
    "file": "spines/cie-igcse-computer-science-23.json"
@@ -11758,27 +11758,17 @@
   "qstnprt_2FBjC5dJwnsJF3FK": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.2.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_hrtqX2Fmm5xRVbS8"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.2.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.2.2",
+     "score": null,
      "spineCode": "6.2.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_2Vdnt2C8f27ptrhb": {
    "codes": [
@@ -11825,27 +11815,17 @@
   "qstnprt_2jgvpF5qr8d9tKG8": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_gP26XyVFkNYC6QVm"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.1",
+     "score": null,
      "spineCode": "3.3.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_2mctwwXGNBjMfSzQ": {
    "codes": [
@@ -12143,27 +12123,17 @@
   "qstnprt_5zSzCRFxxcHmRj3F": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.7",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.7",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_y9hvyjgdN6XfftMK"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.7",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.7",
+     "score": null,
      "spineCode": "6.3.7",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_66jYkTTyFcfjfkgB": {
    "codes": [
@@ -12201,6 +12171,16 @@
    "codes": [
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.1.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
+     "score": null,
+     "spineCode": "5.1.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_text_join",
      "officialCode": "5.1.5",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.5",
@@ -12213,16 +12193,7 @@
    "declaredUnresolved": [
     "spcpt_jXMsZpKYfKvwXhHz"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "5.1.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
-     "spineCode": "5.1.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_6Fs3TMCV9Wpdxdmj": {
    "codes": [
@@ -12277,27 +12248,17 @@
   "qstnprt_6wbzGyMSZzYxTNb6": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PpBvnfFP4Ms9PQZZ"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "1.3.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.1",
+     "score": null,
      "spineCode": "1.3.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_74By3qvCCnmXydR9": {
    "codes": [
@@ -12397,6 +12358,16 @@
    "codes": [
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.1.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
+     "score": null,
+     "spineCode": "5.1.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_text_join",
      "officialCode": "5.1.5",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.5",
@@ -12409,16 +12380,7 @@
    "declaredUnresolved": [
     "spcpt_nSTxdp7RVp3cCYST"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "5.1.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
-     "spineCode": "5.1.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_7jvbVnVcFXWRmshT": {
    "codes": [
@@ -12459,27 +12421,17 @@
   "qstnprt_83tq5VTRQhvPX73p": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_gP26XyVFkNYC6QVm"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.1",
+     "score": null,
      "spineCode": "3.3.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_89dpnzYfyrJ9Y8xn": {
    "codes": [],
@@ -12507,27 +12459,17 @@
   "qstnprt_8PS4FqGYx55Zbpc4": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.6",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.6",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_YpvJsHgf4fknYnDy"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.6",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.6",
+     "score": null,
      "spineCode": "6.3.6",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_8sHGpNVmRNP5mghc": {
    "codes": [
@@ -12609,15 +12551,14 @@
      "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.2.2",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.2.2",
      "score": null,
      "spineCode": "6.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_hrtqX2Fmm5xRVbS8"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -12634,19 +12575,20 @@
    "declaredUnresolved": [
     "spcpt_2H3W7jyVbp8DhMCW"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.2.2",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.2.2",
-     "spineCode": "6.2.2",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_9QjfzFWJc3jP4FXN": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
+     "score": null,
+     "spineCode": "6.3.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -12662,16 +12604,7 @@
    "declaredUnresolved": [
     "spcpt_b8n777VGS35vxhZd"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.3.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
-     "spineCode": "6.3.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_9XXBQngWPnZFqpdt": {
    "codes": [],
@@ -12778,27 +12711,17 @@
   "qstnprt_BDdnwpnj2cxTnhZd": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4TzDSW7wjt83BXTF"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.2",
+     "score": null,
      "spineCode": "3.3.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_BF93Hg6Q6mrY7bxs": {
    "codes": [
@@ -12819,27 +12742,17 @@
   "qstnprt_BF9rqX3Mcq2m688h": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.8",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.8",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_wthB6gmT4cHK9Sz8"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.8",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.8",
+     "score": null,
      "spineCode": "8.1.8",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_BFCvNZwPgMmZZZKg": {
    "codes": [
@@ -12922,43 +12835,32 @@
   "qstnprt_C9ZBBvWHW9nNTbDJ": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.6",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.6",
      "score": null,
      "spineCode": "6.3.6",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_YpvJsHgf4fknYnDy"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
    ],
    "declaredUnresolved": [
     "spcpt_fRWdjJM5sdmQCZxB"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.3.6",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.6",
-     "spineCode": "6.3.6",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_CZmXYjTp3H6h5jGj": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.2",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.2",
      "score": null,
      "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4TzDSW7wjt83BXTF"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -12972,16 +12874,7 @@
      "viaSpcpt": "spcpt_crpB5X4RtvhkFdJv"
     }
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "3.3.2",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.2",
-     "spineCode": "3.3.2",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_Cg5GRcRYBR2KVPr8": {
    "codes": [
@@ -13017,6 +12910,16 @@
     },
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.1.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
+     "score": null,
+     "spineCode": "5.1.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_text_join",
      "officialCode": "5.1.5",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.5",
@@ -13030,16 +12933,7 @@
     "spcpt_jXMsZpKYfKvwXhHz",
     "spcpt_jzJ5C9rQFx3tx34W"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "5.1.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
-     "spineCode": "5.1.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_D4DjMhkhKF2wF9cx": {
    "codes": [
@@ -13138,27 +13032,17 @@
   "qstnprt_F66vj74WtVG3PPWj": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_N9ysmqPWTHkn4yct"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.1",
+     "score": null,
      "spineCode": "8.1.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_F85jxb4t9s7xYDJP": {
    "codes": [
@@ -13316,27 +13200,17 @@
   "qstnprt_G2tQ5WvfcVdFtRBt": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.7",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.7",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_y9hvyjgdN6XfftMK"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.7",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.7",
+     "score": null,
      "spineCode": "6.3.7",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_GQBGNByhTM9GZfsC": {
    "codes": [
@@ -13366,27 +13240,17 @@
   "qstnprt_GctHwxGSBjBJtFcD": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PpBvnfFP4Ms9PQZZ"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "1.3.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.1",
+     "score": null,
      "spineCode": "1.3.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_GmT5Wz32kVRH3wvg": {
    "codes": [
@@ -13406,27 +13270,17 @@
   "qstnprt_GqcxvzZDcQdW87QN": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_N9ysmqPWTHkn4yct"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.1",
+     "score": null,
      "spineCode": "8.1.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_GrwJt4pt5znyqnjc": {
    "codes": [
@@ -13662,27 +13516,17 @@
   "qstnprt_J66pXCqchH9JJVCw": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.1.4",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.1.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_WcmkNj4k9dXGwB26"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "4.1.4",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:4.1.4",
+     "score": null,
      "spineCode": "4.1.4",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_JCV2DgCpf5BF2Y5N": {
    "codes": [],
@@ -13695,27 +13539,17 @@
   "qstnprt_JDtr2MmjncZvPrf4": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_N9ysmqPWTHkn4yct"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.1",
+     "score": null,
      "spineCode": "8.1.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_JKtgjzMXt7PmH5bk": {
    "codes": [
@@ -13773,27 +13607,17 @@
   "qstnprt_JcjWgDZyFZD4jnnw": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_N9ysmqPWTHkn4yct"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.1",
+     "score": null,
      "spineCode": "8.1.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_JdxxrqqpcJh3S8bc": {
    "codes": [
@@ -13843,27 +13667,17 @@
   "qstnprt_KD65GMDysg5VfHwH": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.6",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.6",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_YpvJsHgf4fknYnDy"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.6",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.6",
+     "score": null,
      "spineCode": "6.3.6",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_KWgk8wG9WDXGychn": {
    "codes": [
@@ -13942,27 +13756,17 @@
   "qstnprt_MTwFHjQfW8Y96dCp": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.5",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.5",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_Cy7sNfqSxkwdRnyM"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.5",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.5",
+     "score": null,
      "spineCode": "3.3.5",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_Mrv5gh3tv8HfD7YY": {
    "codes": [
@@ -14130,27 +13934,17 @@
   "qstnprt_QNxRgc8NcgW35QZP": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.7",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.7",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_y9hvyjgdN6XfftMK"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.7",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.7",
+     "score": null,
      "spineCode": "6.3.7",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_QbhQtvYRpxf4RSRX": {
    "codes": [],
@@ -14323,27 +14117,17 @@
   "qstnprt_SDQtKBGz5ZR9Jkvb": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.7",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.7",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_y9hvyjgdN6XfftMK"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.7",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.7",
+     "score": null,
      "spineCode": "6.3.7",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_SDh3XQDNH8kKz4xm": {
    "codes": [
@@ -14414,27 +14198,17 @@
   "qstnprt_ShbNp4xmTS4649MZ": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_MvS5PXSq9qWddWRK"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.2",
+     "score": null,
      "spineCode": "8.1.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_SvMXgR8r57WZbCkm": {
    "codes": [
@@ -14507,6 +14281,16 @@
    "codes": [
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "8.1.1",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.1",
+     "score": null,
+     "spineCode": "8.1.1",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_text_join",
      "officialCode": "8.1.4",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.4",
@@ -14514,35 +14298,25 @@
      "spineCode": "8.1.4",
      "tier": "T1_verbatim",
      "unit": null
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_N9ysmqPWTHkn4yct"
     }
    ],
    "declaredUnresolved": [
     "spcpt_X4k5ZCwB6PZxYWJV"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "8.1.1",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.1",
-     "spineCode": "8.1.1",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_Tfc6553pHr55mzjx": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.1.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
+     "score": null,
+     "spineCode": "5.1.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
     {
      "lineage": "spec_links_sidecar_accepted",
      "method": "cie_text_join",
@@ -14557,19 +14331,20 @@
    "declaredUnresolved": [
     "spcpt_jXMsZpKYfKvwXhHz"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "5.1.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
-     "spineCode": "5.1.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_TqYwF5YZrsdKW5ZB": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.1.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
+     "score": null,
+     "spineCode": "5.1.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
     {
      "lineage": "spec_links_sidecar_accepted",
      "method": "cie_text_join",
@@ -14584,16 +14359,7 @@
    "declaredUnresolved": [
     "spcpt_wTgsPXB7QQRrtHCW"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "5.1.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
-     "spineCode": "5.1.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_V73MpQskWnxwRYky": {
    "codes": [
@@ -14616,27 +14382,17 @@
   "qstnprt_V96N2mxdW5rYRcdg": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PpBvnfFP4Ms9PQZZ"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "1.3.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.1",
+     "score": null,
      "spineCode": "1.3.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_VkZYQTPfVj54mF77": {
    "codes": [
@@ -14823,6 +14579,16 @@
   "qstnprt_XFGFYZrzYWmgMtGk": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
+     "score": null,
+     "spineCode": "6.3.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.3.4a",
@@ -14837,16 +14603,7 @@
    "declaredUnresolved": [
     "spcpt_b8n777VGS35vxhZd"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.3.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
-     "spineCode": "6.3.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_XbdwCHsppF69fYfR": {
    "codes": [
@@ -14891,27 +14648,17 @@
   "qstnprt_Y7rKkdTcwqkhmddC": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.7",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.7",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_y9hvyjgdN6XfftMK"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.7",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.7",
+     "score": null,
      "spineCode": "6.3.7",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_YK35MCVgTKyJSHGF": {
    "codes": [
@@ -14931,6 +14678,26 @@
   "qstnprt_YSJPcTR9khgkw8RR": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
+     "score": null,
+     "spineCode": "6.3.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.7",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.7",
+     "score": null,
+     "spineCode": "6.3.7",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.3.4a",
@@ -14940,61 +14707,24 @@
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_cMDFWfmYfmSXjgBR"
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.7",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.7",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_y9hvyjgdN6XfftMK"
     }
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.3.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
-     "spineCode": "6.3.4",
-     "tier": "T2_near"
-    },
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.3.7",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.7",
-     "spineCode": "6.3.7",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_YSZmr48XVqmxJh9W": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.3.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.3.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_7yQvFRq6Ky8kv2RY"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "1.3.3",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.3",
+     "score": null,
      "spineCode": "1.3.3",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_YZxhVGM38jsnGgm6": {
    "codes": [
@@ -15014,27 +14744,17 @@
   "qstnprt_YnHKh5PW9Z2HX9kj": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4TzDSW7wjt83BXTF"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.2",
+     "score": null,
      "spineCode": "3.3.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_Z7Nz7b8D6rzTtbQX": {
    "codes": [
@@ -15112,27 +14832,17 @@
   "qstnprt_ZSBPx7JxKp9VPBZ8": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_gP26XyVFkNYC6QVm"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.1",
+     "score": null,
      "spineCode": "3.3.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_ZVHNPrqrdvvV4mSQ": {
    "codes": [
@@ -15155,27 +14865,17 @@
   "qstnprt_ZXFzFTRbxpS3qFD9": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.2.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_hrtqX2Fmm5xRVbS8"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.2.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.2.2",
+     "score": null,
      "spineCode": "6.2.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_ZbVQ38KhKZgH3MwB": {
    "codes": [
@@ -15379,27 +15079,17 @@
   "qstnprt_c3NV9W3yYPCnPPS6": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.6",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.6",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_YpvJsHgf4fknYnDy"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.6",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.6",
+     "score": null,
      "spineCode": "6.3.6",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_c3SR7KJQBknVXbZ8": {
    "codes": [
@@ -15441,6 +15131,16 @@
   "qstnprt_cFPdgVPxQd9cJrPx": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
+     "score": null,
+     "spineCode": "6.3.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.3.4a",
@@ -15455,16 +15155,7 @@
    "declaredUnresolved": [
     "spcpt_b8n777VGS35vxhZd"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.3.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
-     "spineCode": "6.3.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_cM3bT4GkrYQj3vhp": {
    "codes": [
@@ -15487,6 +15178,16 @@
   "qstnprt_cWQXMy8ZsG9PWYmX": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
+     "score": null,
+     "spineCode": "6.3.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.3.4a",
@@ -15498,16 +15199,7 @@
      "viaSpcpt": "spcpt_QCk9tMyQr3Hncd6J"
     }
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.3.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
-     "spineCode": "6.3.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_ccw29wBnFqSQxZQF": {
    "codes": [
@@ -15554,27 +15246,17 @@
   "qstnprt_dWWgrxVFtVH6bjyV": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4TzDSW7wjt83BXTF"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.2",
+     "score": null,
      "spineCode": "3.3.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_dbSZDhjSwK9fqFQz": {
    "codes": [
@@ -15630,27 +15312,17 @@
   "qstnprt_f8S5r2YtGrMNm3Zq": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_HDj78GXDD7cwb6Yj"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.1",
+     "score": null,
      "spineCode": "3.3.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_fP7FpXR8h7ZCMRFv": {
    "codes": [
@@ -15778,27 +15450,17 @@
   "qstnprt_gTx3p5mjGwY9X4F8": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.2.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_hrtqX2Fmm5xRVbS8"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.2.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.2.2",
+     "score": null,
      "spineCode": "6.2.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_gXtfGRv2v6dZPGCx": {
    "codes": [
@@ -15861,27 +15523,17 @@
   "qstnprt_hkCx4FR7sCsYBbMB": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PpBvnfFP4Ms9PQZZ"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "1.3.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.1",
+     "score": null,
      "spineCode": "1.3.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_hkX7xNsc7kKK4QFf": {
    "codes": [
@@ -16115,6 +15767,16 @@
     },
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.1.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
+     "score": null,
+     "spineCode": "5.1.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_text_join",
      "officialCode": "5.1.5",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.5",
@@ -16127,16 +15789,7 @@
    "declaredUnresolved": [
     "spcpt_nSTxdp7RVp3cCYST"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "5.1.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
-     "spineCode": "5.1.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_m9XVMQSsRXMGbQF5": {
    "codes": [],
@@ -16216,27 +15869,17 @@
   "qstnprt_nJhF8MbgHCmNRNgC": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_MvS5PXSq9qWddWRK"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.2",
+     "score": null,
      "spineCode": "8.1.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_nMS4nqK5NhDJgDxR": {
    "codes": [
@@ -16291,27 +15934,17 @@
   "qstnprt_nZn6xfhQTCWyVNQZ": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_MvS5PXSq9qWddWRK"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.2",
+     "score": null,
      "spineCode": "8.1.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_nkP7FhpfJNvHBkg9": {
    "codes": [
@@ -16331,27 +15964,17 @@
   "qstnprt_nnh2DS6bGHdhfZHW": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.6",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.6",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_YpvJsHgf4fknYnDy"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.6",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.6",
+     "score": null,
      "spineCode": "6.3.6",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_pTJZMyrmFsszJjRm": {
    "codes": [
@@ -16581,6 +16204,16 @@
   "qstnprt_rZbtG6r5Smg9FHZs": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
+     "score": null,
+     "spineCode": "6.3.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.3.4a",
@@ -16595,16 +16228,7 @@
    "declaredUnresolved": [
     "spcpt_b8n777VGS35vxhZd"
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.3.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
-     "spineCode": "6.3.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_rdcT295MJ7phkMmz": {
    "codes": [
@@ -16653,27 +16277,17 @@
   "qstnprt_ry7dYCym9mcH5Smr": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.6",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.6",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_YpvJsHgf4fknYnDy"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.6",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.6",
+     "score": null,
      "spineCode": "6.3.6",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_sGCW9TvDpzV8XwXg": {
    "codes": [
@@ -16817,52 +16431,32 @@
   "qstnprt_tYMR2JdHCF2txq2P": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.6",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.6",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_YpvJsHgf4fknYnDy"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.6",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.6",
+     "score": null,
      "spineCode": "6.3.6",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_tmk9yb2c6Y8TSyh5": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.7",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.7",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_y9hvyjgdN6XfftMK"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.7",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.7",
+     "score": null,
      "spineCode": "6.3.7",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_ttmR9gxV4mFvPBCC": {
    "codes": [
@@ -16886,6 +16480,16 @@
    "codes": [
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "1.3.1",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.1",
+     "score": null,
+     "spineCode": "1.3.1",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_index_rejoin",
      "officialCode": "1.3.4",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.4",
@@ -16893,29 +16497,9 @@
      "spineCode": "1.3.4",
      "tier": "J4_name_phrase_identity",
      "unit": null
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PpBvnfFP4Ms9PQZZ"
     }
    ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "1.3.1",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.1",
-     "spineCode": "1.3.1",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "question_part"
   },
   "qstnprt_v5Gg5wYYydfxFw2p": {
    "codes": [],
@@ -17068,27 +16652,17 @@
   "qstnprt_wsHC8WYvXYmMSBJD": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.7",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.7",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_y9hvyjgdN6XfftMK"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.7",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.7",
+     "score": null,
      "spineCode": "6.3.7",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_x3bvWjMRp2h8vQNQ": {
    "codes": [
@@ -17168,27 +16742,17 @@
   "qstnprt_xMTVt5PwSpqvx2V4": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4TzDSW7wjt83BXTF"
-    }
-   ],
-   "kind": "question_part",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.2",
+     "score": null,
      "spineCode": "3.3.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "question_part"
   },
   "qstnprt_xSVZkSmFryxKFCtP": {
    "codes": [
@@ -17537,27 +17101,17 @@
   "rn_34zBXftcgbc6drNT": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_N9ysmqPWTHkn4yct"
-    }
-   ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.1",
+     "score": null,
      "spineCode": "8.1.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "note"
   },
   "rn_384NpCXbr4q38bXJ": {
    "codes": [
@@ -17758,52 +17312,32 @@
   "rn_8PPzSsp8NQczNxCC": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PpBvnfFP4Ms9PQZZ"
-    }
-   ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "1.3.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.1",
+     "score": null,
      "spineCode": "1.3.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "note"
   },
   "rn_957wFDRHscbD8VVJ": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_F6TdQnH2yysTzcG2"
-    }
-   ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.3",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.3",
+     "score": null,
      "spineCode": "8.1.3",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "note"
   },
   "rn_9G94M2YCSJPvxnmH": {
    "codes": [
@@ -18012,6 +17546,16 @@
     },
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.1.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
+     "score": null,
+     "spineCode": "5.1.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_text_join",
      "officialCode": "5.1.5",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.5",
@@ -18027,19 +17571,20 @@
     "spcpt_qSQ4tHvsYZqdZjbH",
     "spcpt_wTgsPXB7QQRrtHCW"
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "5.1.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
-     "spineCode": "5.1.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "note"
   },
   "rn_Gv8NnGZh3P9XFvHF": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
+     "score": null,
+     "spineCode": "6.3.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
     {
      "lineage": "sme_declared_link_rekey",
      "method": null,
@@ -18052,16 +17597,7 @@
      "viaSpcpt": "spcpt_QCk9tMyQr3Hncd6J"
     }
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.3.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
-     "spineCode": "6.3.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "note"
   },
   "rn_H5BQgcB2M8CBVzJm": {
    "codes": [
@@ -18227,52 +17763,32 @@
   "rn_RnjhffMHrWQFbvDW": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "4.1.4",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.1.4",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_WcmkNj4k9dXGwB26"
-    }
-   ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "4.1.4",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:4.1.4",
+     "score": null,
      "spineCode": "4.1.4",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "note"
   },
   "rn_S3JVbJYqjDTp5FfC": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.6",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.6",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_YpvJsHgf4fknYnDy"
-    }
-   ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.6",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.6",
+     "score": null,
      "spineCode": "6.3.6",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "note"
   },
   "rn_S7RDWHNYxbpjsr8v": {
    "codes": [
@@ -18293,15 +17809,14 @@
   "rn_SFrq6Z8mK5nX4jng": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.2",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.2",
      "score": null,
      "spineCode": "3.3.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4TzDSW7wjt83BXTF"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -18315,19 +17830,20 @@
      "viaSpcpt": "spcpt_3WQhvNCVYsrXcHHx"
     }
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "3.3.2",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.2",
-     "spineCode": "3.3.2",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "note"
   },
   "rn_TNVHmdHbsDhwPg4H": {
    "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "8.2.2",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.2.2",
+     "score": null,
+     "spineCode": "8.2.2",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
     {
      "lineage": "subtopic_title_scope",
      "method": null,
@@ -18335,17 +17851,6 @@
      "officialId": null,
      "score": null,
      "spineCode": "8.2.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_PQMXnQ5tBcsvXFB4"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
-     "officialCode": "8.2.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.2.2",
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_PQMXnQ5tBcsvXFB4"
@@ -18366,15 +17871,6 @@
    "subtopicScopedIds": [
     "spcpt_PQMXnQ5tBcsvXFB4",
     "spcpt_h49KrGZMc3PFGXGC"
-   ],
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "8.2.2",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.2.2",
-     "spineCode": "8.2.2",
-     "tier": "T2_near"
-    }
    ]
   },
   "rn_TjX4sdSgSJB3dgS3": {
@@ -18537,6 +18033,16 @@
    "codes": [
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "1.3.3",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.3",
+     "score": null,
+     "spineCode": "1.3.3",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_index_rejoin",
      "officialCode": "1.3.4",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.4",
@@ -18544,54 +18050,24 @@
      "spineCode": "1.3.4",
      "tier": "J4_name_phrase_identity",
      "unit": null
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "1.3.3",
-     "officialId": null,
-     "score": null,
-     "spineCode": "1.3.3",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_7yQvFRq6Ky8kv2RY"
     }
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "1.3.3",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:1.3.3",
-     "spineCode": "1.3.3",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "note"
   },
   "rn_b7pKqWRjcnFBHSGR": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_MvS5PXSq9qWddWRK"
-    }
-   ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.2",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.2",
+     "score": null,
      "spineCode": "8.1.2",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "note"
   },
   "rn_bRY5yFVfhVxWXYPC": {
    "codes": [],
@@ -18652,27 +18128,17 @@
   "rn_dJ7K22qrNjfmfNpn": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "8.1.8",
-     "officialId": null,
-     "score": null,
-     "spineCode": "8.1.8",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_wthB6gmT4cHK9Sz8"
-    }
-   ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "8.1.8",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:8.1.8",
+     "score": null,
      "spineCode": "8.1.8",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "note"
   },
   "rn_fHbxyqMZGZckMDbD": {
    "codes": [],
@@ -18703,27 +18169,17 @@
   "rn_h8jVTryX6X9yht98": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "6.3.7",
-     "officialId": null,
-     "score": null,
-     "spineCode": "6.3.7",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_y9hvyjgdN6XfftMK"
-    }
-   ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.3.7",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.7",
+     "score": null,
      "spineCode": "6.3.7",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "note"
   },
   "rn_hbxj8Phd5VK273zy": {
    "codes": [
@@ -18746,6 +18202,16 @@
   "rn_hvvw6zxTYCNt6yDh": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "6.3.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
+     "score": null,
+     "spineCode": "6.3.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
      "lineage": "sme_declared_link_rekey",
      "method": null,
      "officialCode": "6.3.4a",
@@ -18757,16 +18223,7 @@
      "viaSpcpt": "spcpt_8wFDrMgcT6FqXzFT"
     }
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.3.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.3.4-dup2",
-     "spineCode": "6.3.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "note"
   },
   "rn_j6pYJFTKSNTdCMP6": {
    "codes": [
@@ -18781,15 +18238,14 @@
      "unit": null
     },
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "6.2.2",
-     "officialId": null,
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.2.2",
      "score": null,
      "spineCode": "6.2.2",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_hrtqX2Fmm5xRVbS8"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     },
     {
      "lineage": "sme_declared_link_rekey",
@@ -18806,15 +18262,6 @@
    "kind": "note",
    "subtopicScopedIds": [
     "spcpt_2H3W7jyVbp8DhMCW"
-   ],
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "6.2.2",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:6.2.2",
-     "spineCode": "6.2.2",
-     "tier": "T2_near"
-    }
    ]
   },
   "rn_jfNZTdvv2FFKw3zT": {
@@ -18878,6 +18325,16 @@
    "codes": [
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.1.4",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
+     "score": null,
+     "spineCode": "5.1.4",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_text_join",
      "officialCode": "5.1.5",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.5",
@@ -18890,16 +18347,7 @@
    "declaredUnresolved": [
     "spcpt_jXMsZpKYfKvwXhHz"
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "5.1.4",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:5.1.4",
-     "spineCode": "5.1.4",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "note"
   },
   "rn_mFQrBpFJGgHjvxdS": {
    "codes": [
@@ -18952,6 +18400,16 @@
    "codes": [
     {
      "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "3.3.5",
+     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.5",
+     "score": null,
+     "spineCode": "3.3.5",
+     "tier": "V6_near_text_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
      "method": "cie_text_join",
      "officialCode": "3.3.6",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.6",
@@ -18959,29 +18417,9 @@
      "spineCode": "3.3.6",
      "tier": "T1_verbatim",
      "unit": null
-    },
-    {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.5",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.5",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_Cy7sNfqSxkwdRnyM"
     }
    ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
-     "officialCode": "3.3.5",
-     "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.5",
-     "spineCode": "3.3.5",
-     "tier": "T2_near"
-    }
-   ]
+   "kind": "note"
   },
   "rn_mhxmcrqmxKjJpJ6V": {
    "codes": [],
@@ -19203,27 +18641,17 @@
   "rn_rxHVWV5fGx7bP98K": {
    "codes": [
     {
-     "lineage": "sme_declared_link_rekey",
-     "method": null,
-     "officialCode": "3.3.1",
-     "officialId": null,
-     "score": null,
-     "spineCode": "3.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_HDj78GXDD7cwb6Yj"
-    }
-   ],
-   "kind": "note",
-   "t2HintCodes": [
-    {
-     "method": "cie_text_join",
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
      "officialCode": "3.3.1",
      "officialId": "CIE_IGCSE_COMPUTER_SCIENCE_2023_2025:3.3.1",
+     "score": null,
      "spineCode": "3.3.1",
-     "tier": "T2_near"
+     "tier": "V6_near_text_verdict",
+     "unit": null
     }
-   ]
+   ],
+   "kind": "note"
   },
   "rn_smNP7xpYBRzcDfMY": {
    "codes": [
@@ -19431,48 +18859,46 @@
  "qual": "cie-igcse-computer-science-2023-2025",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 79,
+  "distinctCodesAttached": 81,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 79,
+  "spineHitCodes": 81,
   "spineSpecPoints": 88,
   "uncoveredSpineCodeList": [
    "2.1.1",
    "3.1.1",
    "4.2.4",
-   "5.1.4",
    "6.3.1a",
    "6.3.2a",
    "6.3.3a",
-   "6.3.4",
    "8.1.1a"
   ],
-  "uncoveredSpineCodes": 9
+  "uncoveredSpineCodes": 7
  },
- "resourcesSha": "aa0b4de1b732738b4d02dabdd02d9ead85522907",
+ "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
   "specLinks": {
    "census": {
-    "codesAttachedFromSidecar": 219,
+    "codesAttachedFromSidecar": 294,
     "codesByMethod": {
      "cie_index_rejoin": 73,
      "cie_text_join": 145,
-     "operator_verdict": 6
+     "operator_verdict": 81
     },
     "codesByTier": {
      "J2_definition_phrase_identity": 5,
      "J4_name_phrase_identity": 68,
      "T1_verbatim": 145,
-     "V6_near_text_verdict": 6
+     "V6_near_text_verdict": 81
     },
     "itemsWithCodes": 270,
-    "ladderCodesRetained": 172,
+    "ladderCodesRetained": 113,
     "sidecarCodes": 299,
     "sidecarItems": 434,
     "sidecarOnlyItems": 0,
-    "t2Hints": 75
+    "t2Hints": 0
    },
    "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
    "regime": "spec_links_sidecar_accepted",
