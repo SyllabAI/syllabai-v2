@@ -13,6 +13,8 @@ import { bootErrorBody } from "../../src/middleware/auth";
 
 const ANSWER_ID = "a0000000-0000-4000-8000-000000000001";
 const PAPER_ID = "b0000000-0000-4000-8000-000000000001";
+/** T-SM-KAPPA-SUBJECT: the subject principal for the subject-scope tests. */
+const SUBJECT_ID = "8a000000-0000-4000-8000-0000000000a1";
 
 /** Auth contexts (roles drive the shell: anonymous/LEARNER/TEACHER/ADMIN). */
 function authFor(roles: string[] | null) {
@@ -30,6 +32,7 @@ function boot(opts: {
     teacherSmartMark?: Partial<TeacherMarkingModule["teacherSmartMark"]>;
   };
   latestKappa?: (paperId: string | null) => Promise<KappaEvaluationView | null>;
+  latestSubjectKappa?: (subjectId: string) => Promise<KappaEvaluationView | null>;
 }) {
   const calls: Record<string, unknown[]> = {};
   const fake = (name: string, ret: unknown = {}) => async (...args: unknown[]) => {
@@ -48,7 +51,8 @@ function boot(opts: {
     } as unknown as TeacherMarkingModule["queue"],
     marking: {
       recordHumanMark: fake("recordHumanMark", { id: "m1" }),
-      evaluateAgreement: fake("evaluateAgreement", { id: "k1", scope: "ALL", paperId: null, sampleSize: 0, kappa: 0.7, observedAgreement: 0.85, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z" }),
+      evaluateAgreement: fake("evaluateAgreement", { id: "k1", scope: "ALL", paperId: null, subjectId: null, sampleSize: 0, kappa: 0.7, observedAgreement: 0.85, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z" }),
+      evaluateAgreementForSubject: fake("evaluateAgreementForSubject", { id: "k2", scope: "SUBJECT", paperId: null, subjectId: SUBJECT_ID, sampleSize: 0, kappa: 0.7, observedAgreement: 0.85, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z" }),
       ...((opts.module?.marking ?? {}) as object),
     } as unknown as TeacherMarkingModule["marking"],
     teacherSmartMark: {
@@ -57,7 +61,8 @@ function boot(opts: {
     } as unknown as TeacherMarkingModule["teacherSmartMark"],
   };
   const latest = opts.latestKappa ?? (async () => null);
-  const router = createTeacherMarkingRouter(module, latest);
+  const latestSubject = opts.latestSubjectKappa ?? (async () => null);
+  const router = createTeacherMarkingRouter(module, latest, latestSubject);
   const app = new Hono();
   app.use("*", async (c, next) => {
     const a = authFor(opts.roles);
@@ -436,7 +441,7 @@ test("no evaluation on record → 404 naming the ALL scope", async () => {
 
 test("recorded evaluation returns the KappaEvaluationView shape", async () => {
   const view: KappaEvaluationView = {
-    id: "k1", scope: "ALL", paperId: null, sampleSize: 12, kappa: 0.71,
+    id: "k1", scope: "ALL", paperId: null, subjectId: null, sampleSize: 12, kappa: 0.71,
     observedAgreement: 0.86, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z",
   };
   const { app } = boot({ roles: TEACHER, latestKappa: async () => view });
@@ -455,6 +460,50 @@ test("paper-scoped latest passes the uuid through; malformed uuid → 400", asyn
   expect(seen).toEqual([PAPER_ID]);
   const bad = await app.request("/kappa/latest?paperId=nope");
   expect(bad.status).toBe(400);
+});
+
+// ── T-SM-KAPPA-SUBJECT: subject scope on the kappa surfaces (D2, #29 c3) ────
+
+test("POST /kappa/evaluate {subjectId} → 201, composes the SUBJECT lane only", async () => {
+  const { app, calls } = boot({ roles: TEACHER });
+  const res = await app.request("/kappa/evaluate", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ subjectId: SUBJECT_ID }),
+  });
+  expect(res.status).toBe(201);
+  const body = await res.json();
+  expect(body.scope).toBe("SUBJECT");
+  expect(body.subjectId).toBe(SUBJECT_ID);
+  expect(body.paperId).toBeNull();
+  expect(calls.evaluateAgreementForSubject?.[0]).toEqual([SUBJECT_ID, AUTH_USER]);
+  expect(calls.evaluateAgreement).toBeUndefined();
+});
+
+test("POST /kappa/evaluate {paperId, subjectId} → 400 (mutual exclusion, NO write)", async () => {
+  const { app, calls } = boot({ roles: TEACHER });
+  const res = await app.request("/kappa/evaluate", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ paperId: PAPER_ID, subjectId: SUBJECT_ID }),
+  });
+  expect(res.status).toBe(400);
+  expect(calls.evaluateAgreement).toBeUndefined();
+  expect(calls.evaluateAgreementForSubject).toBeUndefined();
+});
+
+test("GET /kappa/latest?subjectId= composes the SUBJECT read; malformed uuid → 400; both keys → 400", async () => {
+  const seen: Array<string> = [];
+  const { app } = boot({
+    roles: TEACHER,
+    latestSubjectKappa: async (s) => { seen.push(s); return null; },
+  });
+  const miss = await app.request(`/kappa/latest?subjectId=${SUBJECT_ID}`);
+  expect(miss.status).toBe(404);
+  expect((await miss.json()).message).toBe(`kappa evaluation ${SUBJECT_ID} not found`);
+  expect(seen).toEqual([SUBJECT_ID]);
+  const bad = await app.request("/kappa/latest?subjectId=nope");
+  expect(bad.status).toBe(400);
+  const both = await app.request(`/kappa/latest?paperId=${PAPER_ID}&subjectId=${SUBJECT_ID}`);
+  expect(both.status).toBe(400);
 });
 
 // ── R0 intake pins (review R-1/R-2, merge intake d975ed9+) ──────────────────

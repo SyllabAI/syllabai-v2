@@ -206,6 +206,9 @@ function markAnswerRoutes(overrides: {
       match: /select passed from smart_mark_agreement_evaluations/,
       rows: [{ passed: overrides.kappaPassed ?? true }],
     },
+    // T-SM-KAPPA-SUBJECT: the SUBJECT gate lane — empty here (closed gate);
+    // the e2-alias query never matches the ALL/PAPER route above.
+    { match: /select e2\.passed from smart_mark_agreement_evaluations/, rows: [] },
     { match: /select node_id from question_topics/, rows: [{ node_id: "n1" }, { node_id: "n2" }] },
     ...gradedEvidenceRoutes({ marks: 5 }),
     { match: /update attempts set evidence_emitted/, rows: [] },
@@ -1114,5 +1117,64 @@ describe("BY_STATE_WIRE_ORDER (T-MIG-051 Java HashMap iteration law)", () => {
 
   test("same key SET as the enum (only the wire order differs)", () => {
     expect([...BY_STATE_WIRE_ORDER].sort()).toEqual([...MARKING_STATES].sort());
+  });
+});
+
+// ── T-SM-KAPPA-SUBJECT: evaluateAgreementForSubject (D2, #29 comment 3) ─────
+
+const SUBJECT_ID = "8a000000-0000-4000-8000-0000000000a1";
+
+describe("evaluateAgreementForSubject — subject calibration packet (T-SM-KAPPA-SUBJECT)", () => {
+  test("samples the subject packet; scope/subject persist on the eval row", async () => {
+    const { module, sql } = build(kappaRoutes([HUMAN_MARK_ROW], [VALID_RUN]));
+    const view = await module.marking.evaluateAgreementForSubject(SUBJECT_ID, MARKER_ID);
+    expect(view.scope).toBe("SUBJECT");
+    expect(view.paperId).toBeNull();
+    expect(view.subjectId).toBe(SUBJECT_ID);
+    expect(view.sampleSize).toBe(2);
+    expect(view.kappa).toBe(1);
+    expect(view.passed).toBe(true);
+    const insertIdx = sql.queries.findIndex((q) => q.includes("insert into smart_mark_agreement_evaluations"));
+    expect(sql.queries[insertIdx]).toContain("subject_id");
+    const params = sql.paramsLog[insertIdx]!;
+    expect(params[1]).toBe("SUBJECT");
+    expect(params[2]).toBe(SUBJECT_ID);  // subject key on the row
+    expect(params[3]).toBe(2);           // sample_size
+    expect(params[7]).toBe(true);        // passed (exam_paper_id is a literal NULL, not a slot)
+  });
+
+  test("subject sample SQL derives membership from BOTH lanes (paper ∪ knowledge tree)", async () => {
+    const { module, sql } = build(kappaRoutes([HUMAN_MARK_ROW], [VALID_RUN]));
+    await module.marking.evaluateAgreementForSubject(SUBJECT_ID, MARKER_ID);
+    const sample = sql.queries.find((q) => q.includes("with recursive qn"));
+    expect(sample).toBeDefined();
+    expect(sample!.includes("relation_type = 'PART_OF'")).toBe(true);
+    expect(sample!.includes("up.depth < 8")).toBe(true);
+    expect(sample!.includes("from questions q join exam_papers ep on ep.id = q.exam_paper_id")).toBe(true);
+    expect(sample!.includes("join subjects s on s.knowledge_node_id = u.subj_node")).toBe(true);
+  });
+
+  test("empty subject packet → 409 (kappa is never invented, parity with :952)", async () => {
+    const { module } = build(kappaRoutes([], [VALID_RUN]));
+    await expect(module.marking.evaluateAgreementForSubject(SUBJECT_ID, MARKER_ID)).rejects.toThrow(
+      "no paired smart/human mark-point decisions available for κ evaluation");
+  });
+
+  test("latestSubjectEvaluation maps the newest subject row; null when none", async () => {
+    const { module: withRow } = build([
+      { match: /where scope = \? and subject_id = \?/,
+        rows: [{ id: "k9", scope: "SUBJECT", exam_paper_id: null, subject_id: SUBJECT_ID,
+                 sample_size: 9, kappa: 0.72, observed_agreement: 0.88, threshold: 0.6,
+                 passed: true, computed_at: T2 }] },
+    ]);
+    const view = await withRow.marking.latestSubjectEvaluation(SUBJECT_ID);
+    expect(view!.scope).toBe("SUBJECT");
+    expect(view!.subjectId).toBe(SUBJECT_ID);
+    expect(view!.paperId).toBeNull();
+    expect(view!.passed).toBe(true);
+    const { module: empty } = build([
+      { match: /where scope = \? and subject_id = \?/, rows: [] },
+    ]);
+    expect(await empty.marking.latestSubjectEvaluation(SUBJECT_ID)).toBeNull();
   });
 });

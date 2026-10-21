@@ -164,6 +164,8 @@ const NEWEST_SCHEME = /select id, validation_state from mark_schemes where quest
 const POINTS_MATCH = /select id, ref, ordering, text, marks, question_part_id from mark_points where mark_scheme_id = \? order by ordering/;
 const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? order by computed_at desc/;
 const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? order by computed_at desc/;
+// T-SM-KAPPA-SUBJECT: the bounded PART_OF walk resolving the question's subject
+const KAPPA_SUBJECT = /select e2\.passed from smart_mark_agreement_evaluations e2/;
 const RESULT_INSERT = /insert into smart_mark_results/;
 const ANSWER_SMART_UPDATE = /update answers set marks_awarded = \? , marking_state = \? where id = \?/;
 const ATTEMPT_SMART_UPDATE = /update attempts set marking_state = \? where id = \?/;
@@ -199,6 +201,7 @@ function markRoutes(opts: {
   validatedSchemes?: Array<Record<string, unknown>>;
   kappaAll?: Array<Record<string, unknown>>;
   kappaPaper?: Array<Record<string, unknown>>;
+  kappaSubject?: Array<Record<string, unknown>>;
   newestScheme?: Array<Record<string, unknown>>;
   onFlip?: () => void;
 } = {}): Route[] {
@@ -217,6 +220,7 @@ function markRoutes(opts: {
       ] },
     { match: KAPPA_ALL, rows: opts.kappaAll ?? [] },
     { match: KAPPA_PAPER, rows: opts.kappaPaper ?? [], rowsFor: (p) => (p[1] === PAPER_ID ? opts.kappaPaper ?? [] : []) },
+    { match: KAPPA_SUBJECT, rows: opts.kappaSubject ?? [], rowsFor: (p) => (p[1] === QUESTION_ID ? opts.kappaSubject ?? [] : []) },
     { match: RESULT_INSERT, rows: [] },
     { match: ANSWER_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_SMART_UPDATE, rows: [] },
@@ -379,5 +383,96 @@ describe("StudentSmartMarkService — learner half of F-047", () => {
     } catch (e) {
       expect(e).toBeInstanceOf(SmartFeedbackGenerationError);
     }
+  });
+});
+
+// ── T-SM-KAPPA-SUBJECT: κ gate SUBJECT lane (D2, #29 comment 3) ─────────────
+// The gate law: release on ALL ∨ PAPER ∨ SUBJECT, fail-closed on absence.
+// The subject derivation is SQL-of-record here — the bounded recursive
+// PART_OF walk (relation filter + depth guard are LOAD-BEARING: the prereq
+// graph cycles) is pinned by text assertion, matching the R2-audit-verified
+// shape (#29 comment 2 addendum).
+
+const QUESTION_UNLINKED = "90000000-0000-4000-8000-000000000009";
+
+function gateRoutes(opts: {
+  kappaAll?: Array<Record<string, unknown>>;
+  kappaPaper?: Array<Record<string, unknown>>;
+  kappaSubject?: Array<Record<string, unknown>>;
+} = {}): Route[] {
+  return [
+    { match: KAPPA_ALL, rows: opts.kappaAll ?? [] },
+    { match: KAPPA_PAPER, rows: opts.kappaPaper ?? [], rowsFor: (p) => (p[1] === PAPER_ID ? opts.kappaPaper ?? [] : []) },
+    { match: KAPPA_SUBJECT, rows: opts.kappaSubject ?? [], rowsFor: (p) => (p[1] === QUESTION_ID ? opts.kappaSubject ?? [] : []) },
+  ];
+}
+
+describe("kappaGatePassed — SUBJECT lane (T-SM-KAPPA-SUBJECT)", () => {
+  test("no evaluations → false; the subject walk is bounded (recursive qn, PART_OF, depth guard)", async () => {
+    const sql = fakeSql(gateRoutes());
+    const svc = new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK);
+    expect(await svc.kappaGatePassed(PAPER_ID, QUESTION_ID)).toBe(false);
+    const subjectQuery = sql.queries.find((q) => KAPPA_SUBJECT.test(q));
+    expect(subjectQuery).toBeDefined();
+    expect(subjectQuery!.includes("with recursive qn as (")).toBe(true);
+    expect(subjectQuery!.includes("relation_type = 'PART_OF'")).toBe(true);
+    expect(subjectQuery!.includes("up.depth < 8")).toBe(true);
+    expect(subjectQuery!.includes("from questions q join exam_papers ep on ep.id = q.exam_paper_id")).toBe(true);
+  });
+
+  test("ALL passed → true; subject lane never consulted", async () => {
+    const sql = fakeSql(gateRoutes({ kappaAll: [{ passed: true }] }));
+    const svc = new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK);
+    expect(await svc.kappaGatePassed(PAPER_ID, QUESTION_ID)).toBe(true);
+    expect(sql.queries.some((q) => KAPPA_SUBJECT.test(q))).toBe(false);
+  });
+
+  test("PAPER passed → true; subject lane never consulted", async () => {
+    const sql = fakeSql(gateRoutes({ kappaPaper: [{ passed: true }] }));
+    const svc = new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK);
+    expect(await svc.kappaGatePassed(PAPER_ID, QUESTION_ID)).toBe(true);
+    expect(sql.queries.some((q) => KAPPA_SUBJECT.test(q))).toBe(false);
+  });
+
+  test("SUBJECT passed (paper-bound attempt) → true", async () => {
+    const svc = new SmartMarkService(
+      fakeSql(gateRoutes({ kappaSubject: [{ passed: true }] })),
+      okGenerator, claimingPublisher(), FIXED_CLOCK);
+    expect(await svc.kappaGatePassed(PAPER_ID, QUESTION_ID)).toBe(true);
+  });
+
+  test("SUBJECT passed (topic-anchored attempt, tree-resolved) → true", async () => {
+    const svc = new SmartMarkService(
+      fakeSql(gateRoutes({ kappaSubject: [{ passed: true }] })),
+      okGenerator, claimingPublisher(), FIXED_CLOCK);
+    expect(await svc.kappaGatePassed(null, QUESTION_ID)).toBe(true);
+  });
+
+  test("SUBJECT failed only → false (failed row still gates)", async () => {
+    const svc = new SmartMarkService(
+      fakeSql(gateRoutes({ kappaSubject: [{ passed: false }] })),
+      okGenerator, claimingPublisher(), FIXED_CLOCK);
+    expect(await svc.kappaGatePassed(PAPER_ID, QUESTION_ID)).toBe(false);
+  });
+
+  test("SUBJECT row for another question's subject → false (key-scoped, not global)", async () => {
+    const svc = new SmartMarkService(
+      fakeSql(gateRoutes({ kappaSubject: [{ passed: true }] })),
+      okGenerator, claimingPublisher(), FIXED_CLOCK);
+    expect(await svc.kappaGatePassed(PAPER_ID, QUESTION_UNLINKED)).toBe(false);
+  });
+
+  test("tree-unlinkable question → subject subselect empty → false (fail-closed)", async () => {
+    const svc = new SmartMarkService(
+      fakeSql(gateRoutes({ kappaSubject: [{ passed: true }] })),
+      okGenerator, claimingPublisher(), FIXED_CLOCK);
+    expect(await svc.kappaGatePassed(null, QUESTION_UNLINKED)).toBe(false);
+  });
+
+  test("ALL failed + SUBJECT passed → true (any-lane release, never narrowed)", async () => {
+    const svc = new SmartMarkService(
+      fakeSql(gateRoutes({ kappaAll: [{ passed: false }], kappaSubject: [{ passed: true }] })),
+      okGenerator, claimingPublisher(), FIXED_CLOCK);
+    expect(await svc.kappaGatePassed(PAPER_ID, QUESTION_ID)).toBe(true);
   });
 });

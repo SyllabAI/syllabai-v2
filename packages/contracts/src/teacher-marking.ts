@@ -181,19 +181,37 @@ export type SmartMarkBatchRequest = z.infer<typeof smartMarkBatchRequestSchema>;
  * (:273-280): the WHOLE BODY is optional — absent body binds null and the
  * controller reads scope ALL; {"paperId": "..."} scopes one paper; an
  * invalid uuid string is a 400 (Jackson UUID parse).
+ *
+ * T-SM-KAPPA-SUBJECT (D2, #29 comment 3): {"subjectId": "..."} scopes one
+ * subject's calibration packet. paperId and subjectId are mutually
+ * exclusive — a body carrying both is a binding failure → 400 (the R-1
+ * law: every schema failure on a PRESENT body is malformed_body, never a
+ * silent scope-ALL write).
  */
 export const kappaScopeRequestSchema = z
   .object({
     paperId: z.string().uuid().nullable().default(null),
+    subjectId: z.string().uuid().nullable().default(null),
   })
   .nullable()
-  .default(null);
+  .default(null)
+  .refine(
+    (v) => v === null || !(v.paperId != null && v.subjectId != null),
+    { message: "paperId and subjectId are mutually exclusive" },
+  );
 export type KappaScopeRequest = z.infer<typeof kappaScopeRequestSchema>;
 
-/** GET /kappa/latest query param (:282-293) — optional paper uuid. */
-export const kappaLatestParamsSchema = z.object({
-  paperId: z.string().uuid().optional(),
-});
+/** GET /kappa/latest query param (:282-293) — optional paper uuid, or (new)
+ *  optional subject uuid; at most one key may be present. */
+export const kappaLatestParamsSchema = z
+  .object({
+    paperId: z.string().uuid().optional(),
+    subjectId: z.string().uuid().optional(),
+  })
+  .refine(
+    (v) => !(v.paperId != null && v.subjectId != null),
+    { message: "paperId and subjectId are mutually exclusive" },
+  );
 
 /** GET /answers/{id} + POST /answers/{id}/smart-mark|human-mark path param. */
 export const answerIdPathSchema = z.object({ id: uuidPathSchema });
