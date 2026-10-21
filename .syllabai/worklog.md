@@ -11050,3 +11050,21 @@ Work Log:
 
 Stage Summary:
 - Shard-4 key slot REVIVED of record with an unspent operator key; the next re-key after 07:00Z Oct 22 projects the full 95-doc drain and queue zero. Next repo receipt = Task-68; next workspace = Task-48. Standing residuals unchanged (PAT rotation CRITICAL overdue; hub deploy incident operator-keyed; op#1 out-of-matrix).
+
+
+---
+Task ID: T-BOOK-010 golive-r0 (trace 1a15ecf114c3406d, operator order "apply migration 0005 on a Neon COW → run books-ingest-rail.ts → 20% spot-check → flip packs VALIDATED — the rail goes live")
+Agent: r0 (Super Z, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355)
+
+Work Log:
+- fetch-first: origin/main 95024009 carries the full merged chain (T-BOOK-002 0005 + 003 shell + 004-006 widgets + 007-009 wiring + 010 packs); work branch t-book-010/golive-r0 cut off it.
+- Neon COW br-lively-heart-a508fuhy created off production br-muddy-bar-a5huwldd via the console.neon.tech mirror (api.neon.tech DNS-blocked, the T-MIG-046 class); pre-checks: parent book VALIDATED, 29 chapters SUGGESTED, 0005 absent, bank 5/5 ACTIVE MCQ_SINGLE.
+- Pipeline on COW: chapter flip u1:c1..c5 → 0005 verbatim 10/10 → F-BOOK-0003 widen repair (1.18 orphan, root-caused: p.39 LO box interleaves 1.18's sub-clauses after the 1.19 bullet; containment 0.611 < 0.75 every tier; repaired per the book's 27-row method=widened precedent) → ingest COMMIT 30 blocks + 27 terms → 20% spot-check 35/0 GREEN (6 blocks × zod/DB-canonical/page-true-vs-sha-pinned-parse/payload-contracts + full-set laws + pre-flip negative control) → lint G1-G4 0 → pack flip ×30 → serve proof 7/6/6/5/6 + u1:c6 honest-empty.
+- PRODUCTION MIRROR (ep-ancient-cake-a52e4kfd, direct endpoint): the identical six stages, all COMMIT, spot-check 35/0, serve proof byte-identical — THE RAIL IS LIVE under the §3 double gate.
+- Repo bookkeeping: pack.yaml ×5 draft→published; F-BOOK-0003 filed (code-change PROPOSED, zero main delta); T-BOOK-010 execution_record S3/S4 PENDING-OPERATOR→DISCHARGED; receipt .syllabai/receipts/T-BOOK-010/unit1-golive-r0.json.
+- COW dropped + 404-verified after the proof (T-MIG-035). Credentials inline/0600 only; rotation advisory stands.
+
+Stage Summary:
+- The interactive rail for 4CH1 Unit 1 (c01-c05 demo gate) serves VALIDATED blocks from PRODUCTION: parent book + chapters + 30 blocks all VALIDATED; checks resolve to the live bank; glossary 27 terms SUGGESTED (separate validation lane).
+- Local-only commits on t-book-010/golive-r0 (no GitHub token this session) — push/PR deferred.
+
