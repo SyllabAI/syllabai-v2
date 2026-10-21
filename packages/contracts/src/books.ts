@@ -39,12 +39,24 @@ export const pageRangeSchema = z
   .refine(([a, b]) => a <= b, { message: "page range must be [start, end] with start <= end" });
 export type PageRange = z.infer<typeof pageRangeSchema>;
 
-/** The 17 content_type values censused across all 1234 v3 chunks
+/** The 17 content_type values censused across all 1234 chemistry v3 chunks
  *  (parse_report_v3.json content_types agrees: body 493, key_point 140,
  *  table_data 113, exam_hint 113, answers 83, learning_objectives 81,
  *  chapter_questions 50, safety 44, appendix 27, unit_questions 21,
  *  glossary 21, did_you_know 17, front_matter 12, index 11, divider 6,
- *  skills 1, activity 1). */
+ *  skills 1, activity 1).
+ *
+ *  2026-10-21 ADDITIVE WIDENING of record (T-MIG-134 band 134e readiness,
+ *  the 136a THREE-SHAPED precedent): the physics 4PH1 package of record
+ *  (edexcel_igcse_physics_chunks_v1.jsonl, 736 chunks, sha-pinned
+ *  9b0783d9… in parse_report_v1.json) carries three further PRINTED-SECTION
+ *  types the chemistry census never saw — worked_example 45, extension_work
+ *  57, practical 16 (118 rows total; the RED probe failed ALL and ONLY these
+ *  rows on the content_type path alone, every other field of every other row
+ *  already conforming). The widening is additive — no chemistry value moves,
+ *  collision laws unchanged — and mirrors the printed-section law: each new
+ *  value names a verbatim printed section marker ("EXAMPLE n", "EXTENSION
+ *  WORK", "PRACTICAL: …"), never a re-typed chemistry chunk. */
 export const BOOK_CONTENT_TYPES = [
   "body",
   "key_point",
@@ -63,6 +75,10 @@ export const BOOK_CONTENT_TYPES = [
   "divider",
   "skills",
   "activity",
+  // physics 4PH1 print census (band 134e readiness, additive):
+  "worked_example",
+  "extension_work",
+  "practical",
 ] as const;
 export const bookContentTypeSchema = z.enum(BOOK_CONTENT_TYPES);
 export type BookContentType = (typeof BOOK_CONTENT_TYPES)[number];
