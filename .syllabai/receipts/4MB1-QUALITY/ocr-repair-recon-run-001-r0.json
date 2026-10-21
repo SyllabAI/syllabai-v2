@@ -1,0 +1,19 @@
+{
+ "task": "4MB1-QUALITY ocr-repair-recon-run-001-r0 (operator order trace 1a15e7d6114dff35, item '2019-06-02 OCR repair lane')",
+ "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "status": "RECON+METHOD CLOSED, EXECUTION OPEN (deliberately not half-applied)",
+ "census": {
+  "damageTokens": {"doubledMathAlnum": 87, "fffd": 42, "total": 129, "confinedTo": "2019-06-4mb1-02 (all 11 questions, 16 parts)", "bundleSha": "at d7881770"},
+  "dbSurface": {"qvStems": "CLEAN (0 damage)", "markPoints": "34/37 rows damaged (the whole-block law carries solutionMd)", "02r": "empty set of record (0 questions bundle + 0 DB rows; 2019-01-4mb1-02r also 0 DB rows)"},
+  "rootCauseOfRecord": "the UPSTREAM PDF text encoding is the lossy step: the MS PDF text layer itself carries 53 FFFD + 163 math-alnum doubled runs (pdftotext -layout, 2019-06-4MB1-02-ms.pdf) - the bundle parse inherited the damage faithfully; font ToUnicode maps DISTINCT letters to the same glyph codepoint (proven: '2aaa' = '2ax' where a AND x both render bold-a; 'BBBB' = 2 different letters) plus FFFD holes (matrix brackets, surds)",
+  "whyNotMechanical": "pure collapse is UNSAFE (distinct-letter glyph confusion); every token needs printed-page authority"
+ },
+ "methodOfRecord": {
+  "visionCollector": "scripts/r0_ocr_repair_collect.py: renders the 14 damage pages (5,6,7,8,9,11,12,13,14,15,16,17,18,19) at 2.2x, one z-ai vision (glm-5v-turbo) call per page, strict-JSON rows, resumable state file; 13/14 pages collected (p19 call stalled at session end), 113 rows",
+  "feasibilityPROVEN": "p9 probe + corpus: the vision reads the true text the text layer mangles (𝑃𝑃𝑄𝑄𝑅𝑅𝑆𝑆 -> 'P Q / R S', matrices, N = M^-1)",
+  "alignerWorkbench": "scripts/r0_ocr_repair_patcher2.mjs: line-level alignment (wrapper-stripped alnum fingerprints pre/post cluster, unique-or-majority decode, boundary-junk trim); PLAN verdict at session end: 7/93 clusters confidently resolved, 86 unresolved - corpus UNDER-CAPTURE is the bottleneck (113 vision rows vs ~200+ printed note lines; rows merged/dropped; the 6xA angle names need figure context - vision reads AOC where the record once mused AOE)",
+  "nextSessionRunbook": "1) re-collect with per-note capture prompt + half-page renders; 2) patcher2 PLAN -> expect >=90% resolved; 3) APPLY bundle (transactional per token) + DB mirror tx on the 34 mark_points rows (per-row guard text == old solutionMd exact); 4) post: 0 damage family-wide + live probe"
+ },
+ "dbWrites": 0, "repoWrites": "this receipt + worklog only",
+ "artifacts": "scripts/run-ocr-repair/{plan-002.json} + scripts/run-badsum-restore/qp/{2019-06-4MB1-02-ms.pdf, .txt, collect_state.json, v_ms_pNN.json, collect.log} + scripts/r0_ocr_repair_{collect.py, patcher.mjs, patcher2.mjs}"
+}

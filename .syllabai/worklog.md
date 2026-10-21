@@ -10936,3 +10936,18 @@ Work Log:
 
 Stage Summary:
 - The commandWord residual is DISCHARGED on both surfaces: bundle 45.2% -> 93.0% part-level, DB 31.6% -> 95.1% question-level (vs chemistry benchmarks 83%/56.1%), with 96.4% calibration provenance and per-row plane equality. The last lane of the operator's four-item order standing open is the 2019-06-02 OCR repair.
+
+---
+Task ID: 4MB1-QUALITY ocr-repair-recon-run-001-r0 (trace 1a15e7d6114dff35, operator order item "2019-06-02 OCR repair lane")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Census of record: 87 doubled math-alnum runs + 42 FFFD = 129 damage tokens, ALL confined to 2019-06-4mb1-02 (11 q / 16 parts); DB qv stems CLEAN; damage rides mark_points (34/37 rows) via the whole-block law; 2019-06-4mb1-02r = empty set both planes (2019-01-02r also 0 DB rows).
+- ROOT CAUSE of record: the UPSTREAM MS PDF text encoding is the lossy step (its own text layer: 53 FFFD + 163 doubled runs) — the parse inherited faithfully; glyph ToUnicode maps DISTINCT letters to one codepoint ('2aaa'='2ax') so pure collapse is unsafe; every token needs printed authority.
+- Method PROVEN viable: vision (glm-5v-turbo) reads what the text layer mangles (p9: matrix content transcribed correctly incl. single letters where the layer doubles); 13/14 damage pages collected (113 rows; p19 stalled at session end, resumable).
+- Aligner workbench built (line-level fingerprints + unique-decode + boundary trim); PLAN verdict 7/93 — bottleneck = corpus under-capture (notes merged/dropped by the per-page prompt), not the alignment logic.
+- EXECUTION deliberately NOT half-applied: runbook of record filed (re-collect per-note + half-page renders -> PLAN >=90% -> APPLY bundle + DB mirror tx on 34 rows guarded text==old -> post 0-damage + live probe).
+- Receipt: .syllabai/receipts/4MB1-QUALITY/ocr-repair-recon-run-001-r0.json; zero repo content changes, zero DB writes.
+
+Stage Summary:
+- The 2019-06-02 OCR repair lane is RECON-CLOSED and execution-ready: damage quantified, root cause proven upstream, vision method proven, aligner workbench + runbank filed; the repair itself rides the next session on the better capture pass.
