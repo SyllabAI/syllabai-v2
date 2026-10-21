@@ -1,0 +1,34 @@
+{
+  "task": "T-TEACH-008",
+  "band": "teacher test builder — access model",
+  "title": "the Test Builder becomes class-scoped: the dropdown restricted to the courses the teacher actually teaches, one separated builder per class (per-course drafts + per-class saved-tests landing)",
+  "operator_order": "\"restrict the dropdown to courses the teacher actually teaches. Basically teachers will access test builder from their 'class/course'. Each class will have a separated test builder\" (trace 1a1609dc31d0b735, session web-590847c1-cf63-4098-b0c8-a90085355429) — answering the lane's posed question about the open all-courses access model",
+  "date": "2026-10-22",
+  "agent": "zai-web lane (main agent, session web-590847c1)",
+  "what_shipped": [
+    "apps/hub/src/lib/teacher/test-builder-access.ts (NEW) — the pure access-scoping module: (1) filterTaughtCourses — the taught intersection, registry order preserved (classes vote membership, never ordering); (2) resolveInitialCourse — the landing-course law (a deep-linked ?course= is honored ONLY when taught; an untaught slug degrades to the first taught course, never opens the untaught builder; nothing taught → null); (3) the per-course draft store — draftKeyFor('syllabai.testBuilderDraft.v2.<slug>'), readBuilderDraft with the one-time legacy-v1 adoption per course (an other-course legacy draft is left untouched for its own visit), writeBuilderDraft with the null-clear path; (4) LEGACY_DRAFT_KEY export",
+    "apps/hub/src/app/teacher/test-builder/test-builder-client.tsx — the client rewiring: the taught set fetched on mount (api.teacherClasses()) and re-fetched on retry; course resolution deferred until the taught set lands (the builder NEVER renders the unscoped registry, not even for a frame — the loading state precedes resolution); fail-closed on class-fetch error (empty set + retry button, never the registry fallback); the landing ('Your tests') is PER-CLASS (courseTests filter; saves were course-stamped since stores.ts day one) with its own class switcher; the builder draft persists per course so switching classes is non-destructive — the old 'Switch subject? …will be cleared' confirm REMOVED (it guarded a destruction that no longer exists); restore-on-arrival effect rehydrates each course's draft on every arrival (initial + switch) with the suppressRestoreRef escape for cross-course saved-test opens; draft restore validates the stored paper belongs to the arrival course",
+    "apps/hub/src/lib/teacher/test-builder-access.test.ts (NEW) — 12 bun tests pinning the laws: intersection + registry order, fail-closed empty, untaught-degrade, per-course roundtrip + isolation, v+course identity law, adopt-and-vacate migration, other-course legacy left alone, corrupt-payload degradation",
+    ".syllabai/receipts/HUB-TEACH/t-teach-008-test-builder-class-scope-r0.json + this entry — riding PR #286"
+  ],
+  "design_decisions": {
+    "client_side_resolution": "the hub's auth is the client RequireAuth gate + the v2 API's JWT role check; server components hold no token, so the taught set is resolved in the browser — same architecture as every teacher page (the API is the authorization boundary, T-TEACH-005)",
+    "fail_closed": "a class-fetch error yields the EMPTY taught set + retry — the full registry is never the fallback (the operator's ruling is an access model, honored on error paths too)",
+    "per_course_drafts": "the single-slot v1 draft was course-tagged but single-tenant: switching classes clobbered it. One slot per course makes 'each class has a separated test builder' literal; the migration is one-time per course (adopt-and-vacate), and an other-course legacy draft is never consumed by the wrong visit",
+    "confirm_removed": "the destructive-switch confirm died with the destruction it guarded; the builder select and the landing switcher share ONE switchCourse path (reset in-memory state; the target draft restores on arrival)",
+    "frozen_planes_untouched": "the v2 API plane (/api/v1/teacher/tests/*) keeps its role-gate parity (TEACHER/ADMIN) — no G-law amendment, the ruling is the hub-surface access model; the hub BFF corpus plane keeps the T-TEACH-005-audited posture (corpus content only, no learner PII — CLEAN with NOTE F-3c)"
+  },
+  "verification": {
+    "typecheck": "hub tsc --noEmit clean; root typecheck x4 exit 0",
+    "tests": "new access-module tests 12/12; bun test apps/api packages 2482 pass / 13 skip / 1 fail / 1 error — the failing test is the KNOWN PR #279 fleet-bump TS4L throw (cie-igcse-history-2024-2026-TS4L … official -T tail), red on main identically across 4 consecutive commits — non-attribution proven first-hand",
+    "build_hub_blockage_non_attribution": "build:hub is blocked by the CIE prebuild validator (2 official-spine assertions: cie-a-level-maths-20-pure-3, cie-igcse-further-maths-additional-maths-25) — STASH-PROVEN: the CLEAN tree @ 5a14c52 (wave-12 bundle sync, the CIE lane's corpus plane) fails the identical two assertions; CI hub + verify are red on main identically",
+    "eslint": "0 errors on the touched files (the 1 repo warning is a pre-existing untouched file, deck-player.tsx)"
+  },
+  "residuals": [
+    "the fleet-bump TS4L verify red + the wave-12 CIE validator hub red stay with the CIE/content lane (main is red on both planes at watch close)",
+    "the draft autosave is debounced 250 ms — a class switch within that window can lose the last keystroke of a draft (same exposure class as the pre-existing single-slot model, now bounded to one course's slot)",
+    "the saved-tests store keeps saves from ALL courses (data-safe); the landing only ever shows the current class's — no data migration was needed or performed"
+  ],
+  "next": "PR #286 review -> merge per the standing gates (CI non-attribution documented) -> the class-scoped builder is the teacher access model of record",
+  "standing_reminder": "the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law"
+}
