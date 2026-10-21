@@ -1,0 +1,40 @@
+version: 1
+task:
+  id: T-BOOK-017
+  title: "Glossary validation lane r0 — the 27 golive terms verified V1-V4 then flipped SUGGESTED→VALIDATED in production"
+  owner: "main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a15f18fdca65e79)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A
+  deps: [T-BOOK-010, T-BOOK-007]
+  execution_record: >
+    The golive receipt's open item "glossary 27 terms SUGGESTED — separate
+    validation lane", discharged under the operator dispatch trace
+    1a15f18fdca65e79. Validation laws (per term, all 27): V1 schema -
+    bookGlossaryTermSchema (contracts zod); V2 authored-truth - DB row ==
+    books/4ch1/glossary/states-and-solutions.yaml canonical compare on
+    term/slug/definition/ms_accepts/ms_avoids/aliases; V3 ms layer - >=1
+    ms_accepts AND >=1 ms_avoids (the value-add law); V4 definition floor
+    - >=40 chars. Result 27/27 pass, 0 findings. Flip of record: ONE
+    guarded tx on PRODUCTION (pre re-prove 27 SUGGESTED, update, post
+    single state class VALIDATED=27); the state column IS the lever (the
+    rows carry no version column). State preservation law verified later
+    in the session: the T-BOOK-016 scoped ingest re-upserts the same rows
+    idempotently WITHOUT touching validation_state (ingest SQL of record
+    never sets the column) - the 27 remain VALIDATED post-ingest
+    (spot-check law). Post-lane state of record: VALIDATED=27 (the
+    golive layer) + SUGGESTED=31 (the new T-BOOK-016 terms, their own
+    future lane). Receipt: .syllabai/receipts/T-BOOK-017/glossary-validation-r0.json.
+base:
+  repo: "syllabai-v2 @ t-book-016-018/triple-lane-r0"
+basis: "BOOK-PACK-SPEC §5 (the ms layer law); contracts bookGlossaryTermSchema; the golive receipt's glossary posture (terms serve via the rail's glossary surface law when validated separately)"
+scope:
+  allowed:
+    - "DB book_glossary_terms state flip (operator dispatch, guarded tx)"
+    - ".syllabai/receipts/T-BOOK-017/**"
+    - ".syllabai/tasks/T-BOOK-017-glossary-validation-r0.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "definition/ms-layer edits (authored layer is of record; changes = versioned PRs)"
+    - "flipping the new T-BOOK-016 terms (not in this lane's mandate)"

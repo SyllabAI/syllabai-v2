@@ -1,0 +1,25 @@
+{
+  "task": "T-BOOK-017",
+  "lane": "content (glossary validation) — the golive open item 'glossary 27 terms SUGGESTED — separate validation lane'",
+  "operator_order": "glossary 27-term validation lane (trace 1a15f18fdca65e79, lane 2 of 3)",
+  "trace": "1a15f18fdca65e79",
+  "generated": "2026-10-21T16:00:00Z",
+  "validation_laws": {
+    "V1_schema": "bookGlossaryTermSchema (contracts zod) — 27/27 pass",
+    "V2_authored_truth": "DB row == books/4ch1/glossary/states-and-solutions.yaml canonical compare (term/slug/definition/ms_accepts/ms_avoids/aliases) — 27/27 pass, zero drift",
+    "V3_ms_layer": "≥1 ms_accepts AND ≥1 ms_avoids per term (the value-add law) — 27/27 pass",
+    "V4_definition_floor": "definition ≥ 40 chars (examiner-safe wording, not a stub) — 27/27 pass"
+  },
+  "flip_of_record": {
+    "plane": "production (ep-ancient-cake-a52e4kfd, direct endpoint)",
+    "tx": "ONE guarded transaction: pre re-prove 27 SUGGESTED → UPDATE … where validation_state='SUGGESTED' (rowcount 27) → post single state class VALIDATED=27 → commit",
+    "lever": "the validation_state column IS the flip lever (glossary rows carry no version column)",
+    "state_preservation": "verified later the same session: the T-BOOK-016 scoped ingest re-upserts these rows idempotently and its SQL never touches validation_state — the 27 remain VALIDATED (spot-check law of record)"
+  },
+  "post_lane_state": "VALIDATED=27 (golive layer, now serving via the rail's glossary surface law) + SUGGESTED=31 (the T-BOOK-016 authored terms — their own future lane)",
+  "disclosures": [
+    "the flip is the operator-dispatched S4-equivalent lever for the glossary lane; the script refuses to flip on ANY validation finding",
+    "script of record: session-side scripts/glossary-validate.ts (persisted, re-runnable idempotently — re-run reports 0 eligible rows)"
+  ],
+  "status": "GLOSSARY LANE DISCHARGED (27/27 VALIDATED of record)"
+}
