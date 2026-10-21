@@ -79,6 +79,8 @@ const EXPECT: Array<{
   { slug: "cie-igcse-maths-25-extended", code: "0580", level: "IGCSE", papers: 134, subject: "Mathematics", label: "Maths — Extended", components: [2, 4] },
 ];
 
+const D1_SKELETON = "cie-a-level-maths-20-pure-2"; // the honest-empty ghost bundle (ruling in courses.json note)
+
 // ── 1. registry posture ───────────────────────────────────────────────────────
 type Row = {
   slug: string; level: string; subject: string; label?: string; code: string;
@@ -92,7 +94,7 @@ for (const exp of EXPECT) {
   const row = reg.courses.find((c) => c.slug === exp.slug);
   if (!row) { check(`registry row ${exp.slug}`, false, "MISSING"); continue; }
   check(`registry ${exp.slug}`, row.code === exp.code && row.level === exp.level
-    && row.subject === exp.subject && row.status === "full" && row.board === BOARD,
+    && row.subject === exp.subject && row.status === (exp.slug === D1_SKELETON ? "registered" : "full") && row.board === BOARD,
     `${row.code}/${row.level}/${row.status}/board=${row.board}`);
   check(`registry ${exp.slug} fill-where-served pins (curriculumCode = seed cv law, coreBridge absent)`,
     row.coreBridge === undefined && row.curriculumCode === cvOfRecord(exp.slug),
@@ -113,9 +115,8 @@ const SEVEN = ["manifest.json", "curriculum.json", "concept-graph.json", "notes.
 // SME-ExamQuestion moved but ALL changed files are igcse-accounting-17*
 // (Edexcel) — zero CIE corpus contact; the CIE input delta is spec-links/
 // (the T-SPECS-CIE-TRANCHE1-T2NEAR-1 verdict round, PR SyllabAI/syllabai-resources#22).
-const CIE_PIN = "aa0b4de1b732738b4d02dabdd02d9ead85522907";
-const D1_SKELETON = "cie-a-level-maths-20-pure-2";
-
+const CIE_PIN_PRIOR = "aa0b4de1b732738b4d02dabdd02d9ead85522907"; // tranche-1 pin — still of-record for the 32 CIE bundles whose sidecars COMPLETE-1 did not touch (per-course pin movement is the consume engine's own semantics)
+const CIE_PIN = "fc6bf29cea9d3e56020962355b4c0f63aa05535d"; // COMPLETE-1 consume r0 (trace 1a15f79acff5346d): pin advanced aa0b4de1 -> fc6bf29c — the upstream delta is spec-links/ (the T-SPECS-CIE-COMPLETE-1 note-level join completion, resources fc6bf29c) + sibling lanes (T-SPEC-STAGE2-1 maps, T-PARSE-4BI1-1-R1); spines tree-unchanged; the pin moves WITH the of-record (fa7ede6/0c8892d precedent)
 function checkRealBundle(slug: string, code: string): void {
   const dir = path.join(CONTENT, slug);
   const missing = SEVEN.filter((f) => !existsSync(path.join(dir, f)));
@@ -129,7 +130,7 @@ function checkRealBundle(slug: string, code: string): void {
   check(`bundle ${slug}: real corpus bundle (notes non-empty)`, (manifest.counts?.notes ?? 0) > 0,
     JSON.stringify(manifest.counts));
   check(`bundle ${slug}: official-spine tree + resourcesSha pin + artifact links`,
-    manifest.treeKind === "official-spine" && manifest.officialSpine?.resourcesSha === CIE_PIN
+    manifest.treeKind === "official-spine" && manifest.officialSpine?.resourcesSha === CIE_PIN || manifest.officialSpine?.resourcesSha === CIE_PIN_PRIOR
     && manifest.officialSpine?.spine === `spines/${slug}.json`
     && manifest.officialSpine?.attachmentMap === `content-maps/${slug}.json`,
     `${manifest.treeKind}/${String(manifest.officialSpine?.resourcesSha ?? "").slice(0, 7)}`);
@@ -210,7 +211,7 @@ for (const exp of PHASE3_ROSTER) {
   if (!row) { check(`registry row ${exp.slug}`, false, "MISSING"); continue; }
   check(`registry ${exp.slug}`,
     row.code === exp.code && row.level === exp.level && row.subject === exp.subject
-    && row.status === "full" && row.board === BOARD,
+    && row.status === (exp.slug === D1_SKELETON ? "registered" : "full") && row.board === BOARD,
     `${row.code}/${row.level}/${row.status}/board=${row.board}`);
   check(`registry ${exp.slug} fill-where-served pins (curriculumCode = seed cv law, coreBridge absent)`,
     row.coreBridge === undefined && row.curriculumCode === cvOfRecord(exp.slug),
