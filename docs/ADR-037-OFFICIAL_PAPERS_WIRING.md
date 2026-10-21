@@ -205,3 +205,35 @@ still 0). The bundle-questions pin was re-pinned to the v0.9.0 census
 (scripts/adr037_reapply_census_result.json) and the full gate set re-proven:
 bundle-questions 25/25, smeRef 14/14, apps/api tsc clean. The namespace
 injectivity law is unchanged and re-proven on the v0.9.0 bytes.
+
+## Amendment r2 — the export generator adopts the namespace law (wave 12, resources PRs #32+#35)
+
+Amendment r1 flagged the export lane as the owner of the per-paper slug law ("every re-export
+re-breaks the namespace until the generator itself adopts it"). **Closed**: the exporter of
+record now carries the law natively (resources `scripts/official_examq_export_hub.py` F44,
+merged main@bf8d56c30f):
+
+- `topicSlug := the set's own canonical slug` at the source (export_series), with the
+  run-003 provenance in a comment — no post-export surgical fix is needed ever again;
+- official-set detection moved to slug-prefix (`is_official`) — the old
+  `topicSlug=='official-past-papers'` filters silently selected ZERO sets after this
+  amendment's law landed (G-E2 would have been vacuous);
+- **G-E1b identity closure**: the 11 set-level identity fields (topicId, slug, name, setName,
+  topicSlug, section, sectionSlug, curriculum, source, schema, relatedNoteIds) must be
+  byte-equal vs the bundle of record, with NO disclosure path — the part-level census that
+  let the r1 re-break ride through cannot see set-level fields; it can no longer happen
+  silently. Negative control verified live (a doctored shared-topicSlug bundle is refused).
+
+The wave-12 sync itself (this amendment's companion bundle): resources converter v0.10.0
+corpus (2019-06 rasterized pages recovered through the fail-closed F41 OCR layer — G1
+110/110 PASS; F42 early-MS bare-marker linkage G5 63/64; F43 MS page-table headers are
+furniture — 278 solution blocks cleaned corpus-wide, 10 mis-linked 2019-06 1C blocks
+corrected), exported under the frozen wave-12 delta census
+(syllabai-resources `scripts/exporter-disclosures/2026-10-22-wave12.json`; G-E3/G-E2/G-E1/
+G-E1b/G-E4 all green). Admitted-plane census of record
+(`scripts/adr037_wave12_census_result.json` + the re-pinned bundle-questions test):
+raw 804 questions / 2952 parts; **badSum 4 -> 0** (the 4 archive-damage 2019-06 1C questions
+now close their part-sums), admitted 803 questions / 2950 parts / 1260 options, official
+plane 275 -> **280** (+4 repaired + the recovered Q7), unmapped 1 (unchanged), dupOrder 0,
+g7 violations 0, emitted refs 1210 -> 1219, mark_point rows 3867 -> 3907. The namespace
+injectivity law is unchanged and re-proven on the wave-12 bytes.

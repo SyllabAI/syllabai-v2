@@ -94,23 +94,26 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     expect(pkg.counts).toEqual({ questions: 274, parts: 430, options: 0, sets: 45, unmapped: 1, badSum: 0, dupOrder: 0 });
   });
 
-  test("the chemistry-19 bundle builds at the ADR-037 path-1 census numbers with the per-paper official namespace (run-004)", () => {
+  test("the chemistry-19 bundle builds at the ADR-037 wave-12 census numbers with the per-paper official namespace (run-004 + wave 12)", () => {
     const pkg = buildChemistry();
-    // the per-paper census of record (60 sets: 28 topic + 16 official 1C +
-    // 16 official 2C; v0.9.0 re-export mapped the 2C tranche — spec labels
-    // landed, unmapped 111 -> 1; trace 1a15fe1207c34329 re-pin)
-    expect(pkg.counts).toEqual({ questions: 798, parts: 2932, options: 1244, sets: 60, unmapped: 1, badSum: 4, dupOrder: 0 });
+    // the wave-12 census of record (60 sets: 28 topic + 16 official 1C +
+    // 16 official 2C; converter v0.10.0 — the 2019-06 1C rasterized pages
+    // recovered through the fail-closed F41 OCR layer + F42 early-MS linkage:
+    // the 4 archive-damage questions now pass the part-sum law, badSum 4 -> 0,
+    // and the recovered Q7 joins; exporter of record F44 carries the per-paper
+    // topicSlug namespace natively)
+    expect(pkg.counts).toEqual({ questions: 803, parts: 2950, options: 1260, sets: 60, unmapped: 1, badSum: 0, dupOrder: 0 });
     const refs = (pkg.questions ?? []).map((q) => q.externalRef as string);
     // the package-global namespace is injective — the exact gate that
     // refused the pre-fix bundle (run-003: duplicate externalRef
     // sme-eq-igcse-chemistry-19-official-past-papers-q1)
     expect(new Set(refs).size).toBe(refs.length);
-    // the official plane: 275 admitted questions post-v0.9.0 (was 165 at
-    // v0.8.1 — the 2C tranche joined), per-paper ref forms, every ref
-    // embedding its own set slug
+    // the official plane: 280 admitted questions post-wave-12 (was 275 at
+    // v0.9.0: +4 repaired 2019-06 1C questions + the recovered Q7), per-paper
+    // ref forms, every ref embedding its own set slug
     const official = refs.filter((r) => r.includes("official-4ch1-"));
-    expect(official.length).toBe(275);
-    expect(new Set(official).size).toBe(275);
+    expect(official.length).toBe(280);
+    expect(new Set(official).size).toBe(280);
     for (const ref of official) {
       expect(ref).toMatch(/^sme-eq-igcse-chemistry-19-official-4ch1-(1c|2c)-\d{4}-\d{2}-q\d+$/);
     }
