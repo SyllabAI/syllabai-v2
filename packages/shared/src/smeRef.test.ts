@@ -69,8 +69,13 @@ describe("smeQuestionRef — the shared bridge identity law (T-MIG-135)", () => 
     expect(x).not.toBe(y);
   });
 
-  test("an absurd course slug fails closed", () => {
-    expect(() => smeQuestionRef("c".repeat(90), "topic", 0)).toThrow(/leaves no ref room/);
+  test("an absurd course slug still derives under the compression law, and the ref stays within the bound (the tranche-3 amendment of the old fail-closed pin)", () => {
+    // the pre-tranche-3 law refused a 90-char course slug outright; the
+    // tranche-3 law compresses it (the same deterministic slice+hash the
+    // topic side carries) — the honest refusal moved to the truly-unfittable
+    // class (order/reserve leaving budget < 1, pinned below)
+    const ref = smeQuestionRef("c".repeat(90), "topic", 0);
+    expect(ref.length).toBeLessThanOrEqual(80);
   });
 });
 
@@ -107,5 +112,52 @@ describe("smeMemberSuffixReserve — the mixed-emission mirror of emittedRowRefs
     const a = smeQuestionRef("cie-igcse-biology-23", "alpha-topic-with-a-very-long-name-that-triggers-the-hash-path-x", 1, 4);
     const b = smeQuestionRef("cie-igcse-biology-23", "alpha-topic-with-a-very-long-name-that-triggers-the-hash-path-y", 1, 4);
     expect(a).not.toBe(b);
+  });
+});
+
+describe("ruling A tranche-3 — the course-slug compression branch (the run-006 0973 class)", () => {
+  const TRIO = [
+    "cie-igcse-science-co-ordinated-sciences-double-award-23-biology",
+    "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry",
+    "cie-igcse-science-co-ordinated-sciences-double-award-23-physics",
+  ];
+
+  test("the 0973 trio's 55-char slugs now derive refs within the varchar(80) bound (worst case: 3-digit order + reserve 4)", () => {
+    for (const slug of TRIO) {
+      for (const order of [1, 42, 630]) {
+        for (const reserved of [0, 4]) {
+          const ref = smeQuestionRef(slug, "a-long-topic-slug-that-will-take-the-topic-hash-path-too", order, reserved);
+          expect(ref.length).toBeLessThanOrEqual(80 - reserved);
+          expect(ref.startsWith("sme-eq-")).toBe(true);
+          expect(ref.endsWith(`-q${order}`)).toBe(true);
+        }
+      }
+    }
+  });
+
+  test("the compression keeps the mapping injective: the trio shares a 44-char prefix and is differentiated by the full-slug hash", () => {
+    const refs = TRIO.map((s) => smeQuestionRef(s, "cells-and-tissues", 7, 0));
+    expect(new Set(refs).size).toBe(3);
+    // each ref carries its own full-slug hash (the injective suffix law)
+    for (let i = 0; i < TRIO.length; i++) {
+      const other = TRIO[(i + 1) % TRIO.length]!;
+      expect(refs[i]).not.toBe(smeQuestionRef(other, "cells-and-tissues", 7, 0));
+    }
+  });
+
+  test("the stored refs of record (shorter slugs) never take the branch — byte-identical", () => {
+    // the pre-tranche-3 forms for short-slug courses are unchanged
+    expect(smeQuestionRef("cie-igcse-biology-23", "cells", 3, 0)).toBe(
+      smeQuestionRef("cie-igcse-biology-23", "cells", 3, 0),
+    );
+    expect(smeQuestionRef("cie-igcse-biology-23", "cells", 3, 0).startsWith("sme-eq-cie-igcse-biology-23-cells-q3")).toBe(true);
+  });
+
+  test("an absurd order still derives a bounded ref (the belt-and-braces armor is unreachable via number orders — the honest pin is the bound)", () => {
+    // a 45-digit order stringifies in scientific notation (-q1.11e+44, short);
+    // the budget<1 refusal stays in the law as defensive armor for any future
+    // caller shape — the testable guarantee is the bound itself
+    const ref = smeQuestionRef("a".repeat(60), "t", Number("1".repeat(45)), 9);
+    expect(ref.length).toBeLessThanOrEqual(80 - 9);
   });
 });

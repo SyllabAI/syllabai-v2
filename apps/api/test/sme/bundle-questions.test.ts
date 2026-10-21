@@ -195,8 +195,14 @@ describe("T-MIG-135b the fail-closed shim laws", () => {
   const oneSet = (slug: string, curriculum: BundleCurriculum, sets: BundleQuestionSet[]) =>
     buildSmePackage({ courseSlug: slug, curriculum, sets, ...SOURCE });
 
-  test("ref overflow is impossible by the shared law, but an absurd course slug fails closed", () => {
-    expect(() => smeQuestionRef("c".repeat(90), "topic", 0)).toThrow(/leaves no ref room/);
+  test("ref overflow is impossible by the shared law: an absurd course slug compresses deterministically within the varchar(80) bound (the tranche-3 amendment)", () => {
+    // the pre-tranche-3 law refused a 90-char course slug outright
+    // (/leaves no ref room/); the run-006 0973 class (55-char registry
+    // slugs) required the deterministic slice+hash compression — the same
+    // law the topic side carries — so the pin moves to the bound itself
+    const ref = smeQuestionRef("c".repeat(90), "topic", 0);
+    expect(ref.length).toBeLessThanOrEqual(80);
+    expect(ref.startsWith("sme-eq-")).toBe(true);
   });
 
   test("duplicate orders are SKIPPED past the first occurrence (the dupOrder law)", () => {

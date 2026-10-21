@@ -105,15 +105,17 @@ export interface RosterEntry {
   syllabusVersion: string;
   cls: SlugClass;
   questionSets: number;
-  // the SERVABLE census (the run-003 re-base): the frozen ingest's anchor
-  // law excludes questions whose parts carry no spec-point codes (the
-  // learner-model join requires primaryTopicCode) — the fleet's floors and
-  // drift checks measure the anchored subset, never the raw bytes
+  // the SERVABLE census (the run-006 re-base): the fleet's floors and drift
+  // checks measure the SHIM'S OWN admission output — buildSmePackage is the
+  // single admission law (zero-DB, deterministic), so the roster can never
+  // diverge from what the ingest will admit, by construction
   expectedQuestions: number;
   expectedParts: number;
   // the RAW bundle census (disclosure of record: the phase-2 anchor gap)
   rawQuestions: number;
   rawParts: number;
+  // the shim's own exclusion counters (the honest disclosure class)
+  shimExclusions?: { unmapped: number; badSum: number; dupOrder: number };
   nodes: number;
 }
 
@@ -171,6 +173,7 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
     let expectedParts = 0;
     let rawQuestions = 0;
     let rawParts = 0;
+    let shimExclusions: { unmapped: number; badSum: number; dupOrder: number } | undefined;
     try {
       const sets = JSON.parse(
         readFileSync(join(dir, "questions.json"), "utf8"),
@@ -178,29 +181,44 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
       questionSets = Array.isArray(sets) ? sets.length : 0;
       for (const set of Array.isArray(sets) ? sets : []) {
         for (const q of set.questions ?? []) {
-          expectedQuestions += 1;
-          expectedParts += q.parts?.length ?? 0;
+          rawQuestions += 1;
+          rawParts += q.parts?.length ?? 0;
         }
       }
-      // the anchored re-base: only questions whose parts carry spec-point
-      // codes can join the frozen ingest (the anchor law — primaryTopicCode
-      // is REQUIRED by validate); unanchored questions are the shim's own
-      // honest exclusion, counted in the receipt's anchor census
-      let anchoredQ = 0;
-      let anchoredP = 0;
-      for (const set of Array.isArray(sets) ? sets : []) {
-        for (const q of set.questions ?? []) {
-          if ((q.parts ?? []).some((p) => (p.specPointCodes ?? []).length > 0)) {
-            anchoredQ += 1;
-            anchoredP += q.parts?.length ?? 0;
-          }
+      // the servable-truth census (the run-006 class): the tranche-2
+      // "anchored" pre-count mirrored only the anchor law and diverged from
+      // the ingest by the shim's OTHER honest exclusion classes (badSum,
+      // dupOrder — the run-006 COW proof caught 1+1+3+14 of drift on four
+      // banks). The census now measures the shim's OWN output:
+      // buildSmePackage is the single admission law (zero-DB,
+      // deterministic) — the roster can never diverge from what the ingest
+      // will admit, by construction.
+      if (questionSets > 0) {
+        const manifest = JSON.parse(
+          readFileSync(join(dir, "manifest.json"), "utf8"),
+        ) as { generatedUtc: string; importSource: { repo: string; ref: string } };
+        let pkg;
+        try {
+          pkg = buildSmePackage({
+            courseSlug: slug,
+            curriculum,
+            sets,
+            generatedUtc: manifest.generatedUtc,
+            importRef: manifest.importSource.ref.replace(/^main@/, ""),
+          });
+        } catch (e) {
+          if (e instanceof BundleQuestionsError) throw new Error("SHIM LAW VIOLATION (roster): " + e.message);
+          throw e;
         }
+        if (pkg.counts == null || pkg.questions == null) {
+          throw new Error("SHIM LAW VIOLATION (roster): buildSmePackage returned an empty package for " + slug);
+        }
+        expectedQuestions = pkg.counts.questions ?? 0;
+        expectedParts = pkg.counts.parts ?? 0;
+        shimExclusions = { unmapped: pkg.counts.unmapped ?? 0, badSum: pkg.counts.badSum ?? 0, dupOrder: pkg.counts.dupOrder ?? 0 };
       }
-      rawQuestions = expectedQuestions;
-      rawParts = expectedParts;
-      expectedQuestions = anchoredQ;
-      expectedParts = anchoredP;
-    } catch {
+    } catch (e) {
+      if (e instanceof Error && e.message.startsWith("SHIM LAW VIOLATION")) throw e;
       // no questions.json = zero sets (the honest-empty form)
     }
     const nodes = curriculum.nodes.length;
@@ -226,7 +244,7 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
       slug, board: CIE_BOARD, level: row.level ?? curriculum.level ?? "",
       subject: row.subject ?? curriculum.subject ?? "", code: curriculum.code,
       syllabusVersion: curriculum.syllabusVersion, cls,
-      questionSets, expectedQuestions, expectedParts, rawQuestions, rawParts, nodes,
+      questionSets, expectedQuestions, expectedParts, rawQuestions, rawParts, shimExclusions, nodes,
     });
   }
 
