@@ -1,9 +1,9 @@
 version: 1
 task:
   id: T-BOOK-020
-  title: "The F-BOOK-0001 amendment implemented + the u4 S3/S4 script set armed as ONE tracked command (DRY-RUN proven; the fire stays operator-held)"
+  title: "The F-BOOK-0001 amendment implemented + the u4 S3/S4 script set armed as ONE tracked command; FIRED r0 by operator order — the full-book flip GREEN"
   owner: "main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator trace 1a15fb8ebb2ebbe1)"
-  status: IN_REVIEW
+  status: DISCHARGED
   priority: P1
   band: T-BOOK (interactive books)
   wave: books-phase-C-gate
@@ -39,6 +39,51 @@ task:
     live). THE FIRE STAYS OPERATOR-HELD: --commit is the one-command order,
     not run in this dispatch (the order arms capability; it does not fire
     the Phase C flip).
+  fire_record: >
+    FIRED of record (operator order, trace 1a15fdfd1c8af76d: "fire --commit
+    (the full-book flip)"). run.ts --commit, stop-on-fail chain GREEN
+    end-to-end, exactly one command. 1/7 prechecks GREEN (authored census
+    46/46 across c22-c29 repo packs; parent book VALIDATED; chapters
+    u4:c22..c29 8x SUGGESTED; negative control book_blocks u4:* = 0; bank
+    8/8 ACTIVE MCQ_SINGLE). 2/7 chapter flip u4:c22..c29
+    SUGGESTED->VALIDATED 8/8, one guarded tx. 3/7 SCOPED staging: 8 packs
+    + FULL glossary (10 files incl. u4-organic-chemistry.yaml — the
+    F-BOOK-0001 gate lifted by the amendment of record e832e617) +
+    meta/book.yaml; manifest rebuilt from book_chapters DB truth (29
+    slices); digest of record copied in (sha256 d2ffc1d2b862c72a...).
+    4/7 the ingest of record spawned byte-identical, COMMIT: 46 blocks +
+    112 glossary terms, all SUGGESTED (the 88 existing term states
+    preserved; the 24 new u4 terms land SUGGESTED pending their r3 lane).
+    5/7 spot-check GREEN: sample 10/46 = 21.7% across 8 chapters / 5 types
+    (eq-builder, mcq-embed, prose, sort-match, table-fill); L1 zod / L2
+    canonical key-order-insensitive / L3 page-true (manifest range + the
+    sha-pinned parse span) / L4 payload on the sample; cheap laws x46;
+    u1+u2+u3 131 VALIDATED untouched pre-flip. 6/7 pack flip x46
+    SUGGESTED->VALIDATED version 1->2, one guarded tx. 7/7 serve-proof
+    GREEN: u1 7/6/6/5/6/7/6/6/4/7 + u2 6/6/7/7/6/7/6/7 + u3 6/7/6 (131
+    of-record unchanged) + u4 6/8/5/5/6/5/5/6 — 29/29 chapters VALIDATED,
+    177 blocks serving; glossary invariant held ({VALIDATED:88} pre ->
+    post, the ingest never touches states).
+
+    Independent fresh-connection census (session-side probe, post-run):
+    chapters 29 VALIDATED; blocks 177 VALIDATED v2 (min 2 / max 2 — every
+    lane's own flip is 1->2); u4 per-chapter 6/8/5/5/6/5/5/6; glossary
+    {SUGGESTED:24, VALIDATED:88}. The 24 = the u4 organic-chemistry
+    vocabulary (acid-rain, addition-reaction, biodegradable,
+    carboxyl-group, complete-combustion, condensation-polymerisation,
+    cracking, ester, fermentation, fraction, fractional-distillation,
+    functional-group, homologous-series, hydrocarbon, hydroxyl-group,
+    incomplete-combustion, isomer, monomer, polymer,
+    saturated-hydrocarbon, substitution-reaction, unsaturated-hydrocarbon,
+    volatile, weak-acid).
+
+    Repo-side follow-ups of record (the fire PR): pack.yaml c22-c29
+    draft->published; receipt u4-s34-fire-r0.json; this fire_record;
+    findings.jsonl untouched (ledger integrity — F-BOOK-0001's fix field
+    was true when landed; this fire_record is the discharge of record).
+    The 24 u4 glossary terms AWAIT their own r3 validation lane
+    (T-BOOK-017 pattern) — operator-gated per the standing flip law, NOT
+    run this dispatch.
 base:
   repo: "syllabai-v2 @ this branch; amendment plane: syllabai-resources @ e832e617 (PR #28)"
 basis: "F-BOOK-0001 (the finding's own fix field); ADR-BOOK-0001 §4 (the gate law); T-BOOK-013 unblock_path (the script set of record); BOOK-BUILD-PLAYBOOK S3/S4"

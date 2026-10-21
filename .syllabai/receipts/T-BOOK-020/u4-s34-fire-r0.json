@@ -1,0 +1,42 @@
+{
+ "task": "T-BOOK-020",
+ "lane": "the operator fire of record — the u4 S3/S4 single command run with --commit (the full-book flip)",
+ "operator_order": "fire --commit (the full-book flip)",
+ "trace": "1a15fdfd1c8af76d",
+ "generated": "2026-10-21T19:19:27Z",
+ "pre_fire_arm_proof": {
+  "what": "run.ts --check re-run read-only at main 4edd805c immediately before the fire (the Task-8 DRY-RUN re-proven on the current tree + current production)",
+  "result": "PRECHECKS GREEN + SERVE-PROOF GREEN at the exact armed baseline: u1+u2+u3 131 of-record VALIDATED unchanged (u1 7/6/6/5/6/7/6/6/4/7, u2 6/6/7/7/6/7/6/7, u3 6/7/6); u4 null x8 (133c viewer, the gate verified live); glossary {VALIDATED:88}; digest resolved sha256 d2ffc1d2b862c72a..."
+ },
+ "command_of_record": "DATABASE_URL=<production pooler, inline one-shot> bun apps/api/scripts/books-u4-s34/run.ts --commit  (repo: syllabai-v2 @ 4edd805c, branch t-book-020/u4-s34-fire for the follow-up bookkeeping; the fire itself is repo-state-independent — staging built from books/4ch1 + DB truth)",
+ "chain_of_record": {
+  "mode": "stop-on-fail; any non-zero exit aborts the remaining chain",
+  "1_prechecks": "GREEN — authored census 46/46 across c22-c29 repo packs (6/8/5/5/6/5/5/6); parent book VALIDATED; chapters u4:c22..c29 8x SUGGESTED; negative control book_blocks u4:* = 0; bank 8/8 ACTIVE MCQ_SINGLE",
+  "2_chapter_flip": "COMMIT — u4:c22..c29 SUGGESTED->VALIDATED 8/8, one guarded tx (pre {SUGGESTED:8} -> post {VALIDATED:8}, rowcount-asserted)",
+  "3_scoped_staging": "/tmp/staging-u4-s34-1792610085197 — 8 packs c22-c29 + FULL glossary (10 authored+seed files incl. u4-organic-chemistry.yaml; the F-BOOK-0001 gate lifted by the amendment of record e832e617) + meta/book.yaml; manifest rebuilt from book_chapters DB truth (29 slices); digest of record copied in (sha256 d2ffc1d2b862c72a...)",
+  "4_ingest": "COMMIT — the ingest of record spawned byte-identical: 46 blocks across 8 chapters + 112 glossary terms, all SUGGESTED (the 88 existing term states preserved; the 24 new u4 terms land SUGGESTED pending their r3 lane)",
+  "5_spot_check": "GREEN — sample 10/46 = 21.7% across 8 chapters / 5 types (eq-builder, mcq-embed, prose, sort-match, table-fill); L1 zod book.block/1 / L2 canonical key-order-insensitive jsonb / L3 page-true (manifest DB range AND sha-pinned parse census span) / L4 payload (bank resolution, glossary slugs, PhET allowlist) on the sample; cheap laws identity+range+monotonic+state x46; negative controls (all 46 SUGGESTED v1 pre-flip; u4 VALIDATED = 0; u1+u2+u3 131 untouched); glossary {SUGGESTED:24, VALIDATED:88}",
+  "6_pack_flip": "COMMIT — book_blocks c22-c29 SUGGESTED->VALIDATED x46, version 1->2, one guarded tx (pre [{SUGGESTED,46,v1,v1}] -> post [{VALIDATED,46,v2,v2}], rowcount-asserted, negative control 0 pre-VALIDATED)",
+  "7_serve_proof": "GREEN — the railBlocksForChapter double-gate emulation: u1 7/6/6/5/6/7/6/6/4/7 + u2 6/6/7/7/6/7/6/7 + u3 6/7/6 (131 of-record UNCHANGED) + u4 6/8/5/5/6/5/5/6 = 46; 29/29 chapters VALIDATED, 177 blocks serving — the FULL BOOK passes the ADR-BOOK-0001 §3 double gate"
+ },
+ "glossary_of_record": {
+  "pre": {"VALIDATED": 88},
+  "post": {"SUGGESTED": 24, "VALIDATED": 88},
+  "invariant": "VALIDATED count unchanged across the run (the ingest never touches states) — asserted in-run and held",
+  "the_24_u4_terms_suggested": ["acid-rain", "addition-reaction", "biodegradable", "carboxyl-group", "complete-combustion", "condensation-polymerisation", "cracking", "ester", "fermentation", "fraction", "fractional-distillation", "functional-group", "homologous-series", "hydrocarbon", "hydroxyl-group", "incomplete-combustion", "isomer", "monomer", "polymer", "saturated-hydrocarbon", "substitution-reaction", "unsaturated-hydrocarbon", "volatile", "weak-acid"],
+  "r3_lane": "the 24 u4 terms AWAIT their own r3 validation lane (T-BOOK-017 pattern) — operator-gated per the standing flip law, NOT run this dispatch"
+ },
+ "independent_census": "fresh-connection session-side probe post-run: chapters 29 VALIDATED; blocks 177 VALIDATED v2 (min 2 / max 2 — every lane's own flip is 1->2, so the global min/max is 2/2 across u1-u4); u4 per-chapter 6/8/5/5/6/5/5/6; glossary {SUGGESTED:24, VALIDATED:88}",
+ "digest_of_record": "/home/z/my-project/assets/u234-digest.json sha256 d2ffc1d2b862c72a... (built from the sha-verified parse of record b2c67eaf)",
+ "log_of_record": "session-side tee of the full chain output: /home/z/my-project/logs/u4-s34-fire-r0.log (EXIT=0)",
+ "fetch_first": "main 2d16b98e -> ff 4edd805c before the fire (dc2-v14 supersession + ADR-037 v0.9.0 hub-bundle sync + pin-census footer landed concurrently; zero books/4ch1 or book-DB-plane overlap — no conflict with the fire)",
+ "repo_followups_of_record": [
+  "books/4ch1/packs/c22..c29/pack.yaml status draft->published x8 (the S4 flip of record, the runner's own printed follow-up)",
+  ".syllabai/tasks/T-BOOK-020-fbook-0001-amendment-u4-s34-arm.yaml -> status DISCHARGED + fire_record (this receipt's twin)",
+  ".syllabai/receipts/T-BOOK-020/u4-s34-fire-r0.json (this file)",
+  ".syllabai/worklog.md fire-r0 entry",
+  "findings.jsonl untouched (ledger integrity — F-BOOK-0001's fix field was true when landed; the fire_record is the discharge of record)"
+ ],
+ "zero_forbidden_paths": true,
+ "zero_new_ddl": true
+}
