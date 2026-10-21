@@ -330,7 +330,7 @@ describe("V2_SURFACE_PREFIXES table (T-MIG-037 flip law)", () => {
       "/api/v1/learners/me/assignments", // T-MIG-096 run-001 L14/L15 (incl. the submissions subpath wire)
       "/api/v1/learners/me/state", // T-MIG-096 run-001 L16
       "/api/v1/learners/me/course-stats", // T-MIG-096 run-001 L17
-      "/api/v1/learners/me/courses", // T-MIG-096 run-001 L12/L13 — zero emitters, routing availability
+      "/api/v1/learners/me/courses", // T-TEACH-001 FLIP: the my-courses roster (GET + PUT) is now hub-routed (write-through sync); was T-MIG-096 run-001 L12/L13 zero-emitter availability
       "/api/v1/learners/me/flashcard-ratings", // T-MIG-095: band CLOSED (46536fd) + live re-verify PASS (run-002) — the 096 linkage writes flip
       "/api/v1/learners/me/note-votes", // T-MIG-095: same band + run-002 — per-exact-subpath, never the bare /learners/me
       "/api/v1/admin/revision-notes", // T-MIG-083: golden-verified (run-001 8/8, r9-hubx rider) — NARROW: ingest+status ONLY, rest of /api/v1/admin/** stays core

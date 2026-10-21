@@ -112,6 +112,7 @@ import type {
   MarkSchemeRevealView,
   LearnerAnnouncementView,
   LearnerClassroomView,
+  MyCoursesView,
   TeacherAnnouncementView,
   TeacherClassDetailView,
   TeacherClassView,
@@ -1606,6 +1607,19 @@ export const api = {
       `/api/v1/learners/me/classroom/announcements/${id}/read`,
       { method: "POST" },
     ),
+
+  // Learner: my courses — the account-backed roster (T-TEACH-001). The
+  // PUT is the FULL desired slug set (idempotent write-through; present
+  // slugs keep their created_at, absent slugs are removed server-side).
+  // The localStorage roster stays the UI cache; the server wins on
+  // reconcile (lib/my-subjects.ts sync layer is the only caller).
+  myCourses: () => request<MyCoursesView>("/api/v1/learners/me/courses"),
+
+  setMyCourses: (slugs: string[]) =>
+    request<MyCoursesView>("/api/v1/learners/me/courses", {
+      method: "PUT",
+      body: JSON.stringify({ slugs }),
+    }),
 
   // Attempt history (Review Hub minimal slice) — read-only view over the
   // learner's own attempts/answers evidence rows. Default limit 50 (max 100).

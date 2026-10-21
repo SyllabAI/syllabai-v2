@@ -51,6 +51,7 @@ import {
   noteVoteRequestSchema,
   setTargetRequestSchema,
   assignmentSubmissionRequestSchema,
+  setMyCoursesRequestSchema,
 } from "@syllabai/contracts";
 import { buildLearnerMeModule, type LearnerMeModule } from "../services/learner-me";
 import {
@@ -171,6 +172,9 @@ const TARGET_DEFAULTS: Record<string, Record<string, string>> = {
 const SUBMISSION_DEFAULTS: Record<string, Record<string, string>> = {
   questionsCompleted: { absent: "must not be null" },
   score: { absent: "must not be null" },
+};
+const COURSES_DEFAULTS: Record<string, Record<string, string>> = {
+  slugs: { absent: "must not be null" },
 };
 
 /** The shared error mapping for every learner-me route (the frozen handler). */
@@ -356,6 +360,51 @@ export function createLearnerMeRouter(module: LearnerMeModule): Hono {
     try {
       await module.clearTargetSeries(auth.userId, c.req.param("courseSlug"));
       return c.body(null, 204);
+    } catch (e) {
+      const mapped = mapErrors(e, c);
+      if (mapped) return mapped;
+      throw e;
+    }
+  });
+
+  // GET /courses — T-TEACH-001 (v2-native, additive; operator order trace
+  // 1a15ece07422fcd9): the account-backed "my courses" roster over
+  // learner_course_enrolments (added order, oldest first). NOT frozen-core
+  // parity — the frozen core never exposed the roster; this is the
+  // TEACHER_MODE_PLAN §6 migration row landing. Shape law: MyCoursesView.
+  r.get("/courses", async (c) => {
+    const auth = getAuth(c)!;
+    try {
+      const view = await module.myCourses(auth.userId);
+      return c.json(view, 200);
+    } catch (e) {
+      const mapped = mapErrors(e, c);
+      if (mapped) return mapped;
+      throw e;
+    }
+  });
+
+  // PUT /courses — T-TEACH-001 (v2-native, additive): the FULL desired slug
+  // set, idempotent write-through (present slugs keep their created_at,
+  // absent slugs — and any exam target riding them — are removed). The
+  // two-envelope law applies: binding failures (non-array body, wrong
+  // element types) are malformed_body; constraint failures (slug shape,
+  // size) are validation_failed. Slugs additionally re-validate in the
+  // service with the target-series kebab-case law (400 bad_request
+  // verbatim).
+  r.put("/courses", async (c) => {
+    const auth = getAuth(c)!;
+    const body = await readJsonBody(c);
+    if (body === null) return c.json(malformedBody(), 400);
+    const parsed = setMyCoursesRequestSchema.safeParse(body);
+    if (!parsed.success) {
+      const verdict = classifyBodyError(parsed.error, COURSES_DEFAULTS);
+      if (verdict.kind === "malformed") return c.json(malformedBody(), 400);
+      return c.json(apiError(400, "validation_failed", verdict.message), 400);
+    }
+    try {
+      const view = await module.setMyCourses(auth.userId, parsed.data);
+      return c.json(view, 200);
     } catch (e) {
       const mapped = mapErrors(e, c);
       if (mapped) return mapped;

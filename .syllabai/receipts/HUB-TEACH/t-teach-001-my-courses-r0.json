@@ -1,0 +1,34 @@
+{
+  "task": "T-TEACH-001",
+  "band": "HUB-TEACH",
+  "title": "server-side my courses — the account-backed roster (GET/PUT /api/v1/learners/me/courses + hub write-through)",
+  "operator_order_trace": "1a15ece07422fcd9",
+  "date": "2026-10-21",
+  "agent": "zai-web lane (main agent, session web-590847c1)",
+  "what_shipped": [
+    "contracts: learner-me.ts gains MyCoursesView/UserCourseView + setMyCoursesRequestSchema (slug law ALIGNED to the existing isValidCourseSlug kebab-case law, varchar(100) column bound at 100 slugs)",
+    "api: services/learner-me myCourses() + setMyCourses() over the EXISTING learner_course_enrolments table (target_series_id nullable — the roster IS the enrolment; created_at IS addedAt)",
+    "api: routes/learnerme.ts GET /courses + PUT /courses (v2-native additive block, two-envelope body law with COURSES_DEFAULTS)",
+    "hub: lib/types.ts MyCoursesView mirror + lib/api.ts myCourses/setMyCourses + lib/my-subjects.ts useMyCoursesSync() write-through/reconcile layer, mounted in dashboard-client"
+  ],
+  "design_decision_of_record": {
+    "decision": "NO new table. The initially planned user_courses table + 0006 migration were WITHDRAWN during implementation: learner_course_enrolments (frozen-core, Flyway-owned) already IS the student's server-side course list (learner_id + course_slug unique pair, nullable target). One enrolment concept, no dual source of truth; the exam-series target (T-C79/ADR-035) rides the same row.",
+    "consequence_disclosed": "removing a course from the roster DELETES the enrolment row and any exam target riding it (dropping the course drops its target — honest by construction, disclosed in the contract comment and the hub sync-layer docblock)",
+    "withdrawn_artifacts": "schema.ts userCourses pgTable + hand-wired 0006_user-courses.sql/snapshot/journal (never committed); the hand-wiring itself is documented because drizzle-kit generate/check on this repo fails with a PRE-EXISTING 0000/0005 snapshot-id collision (8c24e095 duplicated) — future migration lanes should know"
+  },
+  "law": {
+    "storage": "learner_course_enrolments; PUT = FULL slug-set replace, idempotent write-through; present slugs keep their created_at (the when-I-added-it fact survives every sync), absent slugs are deleted via the fleet's any() binding",
+    "sync": "localStorage stays the UI cache and works signed-out exactly as before; signed in: every local write mirrors as a full PUT (debounced per tick); on identity acquisition the sync reconciles once — server empty + local non-empty = one-time seed PUT; server non-empty = server WINS and local mirrors (remote writes set applyingRemote so no echo PUT)",
+    "slug_law": "^[a-z0-9]+(-[a-z0-9]+)*$ (the target-series law verbatim), max 100; registry membership validated at READ time by the hub (the roster's existing law)"
+  },
+  "verification": {
+    "api_tests": "bun test apps/api — 2409 pass / 0 fail / 13 skip (128 files); new describe block in test/learner-me/routes.test.ts pins authz shell 401s, empty/populated GET (created_at → addedAt wire, oldest-first), PUT insert-only-new + any()-delete-on-drop + final-roster return, body law (missing slugs → validation_failed 'slugs: must not be null'; non-array → malformed_body; bad shape → validation_failed with the kebab message)",
+    "hub_surface": "api.v2-surface.test.ts 34 pass — the /learners/me/courses row's comment flipped zero-emitter → T-TEACH-001 hub-routed",
+    "hub": "tsc --noEmit clean; eslint clean on all four touched files",
+    "scope": "zero DB writes, zero LLM, zero prod contact; no frozen-core file touched; no migration needed (the storage table already exists)"
+  },
+  "residuals": [
+    "write-through is fire-and-forget (cache law: local stays on PUT failure; next write or reconcile re-mirrors) — a stronger outbox/retry posture is deferred until the operator asks",
+    "the multi-device reconcile law is server-wins-once-per-identity-acquisition; concurrent edits across two devices converge on the next load, not in real time"
+  ]
+}
