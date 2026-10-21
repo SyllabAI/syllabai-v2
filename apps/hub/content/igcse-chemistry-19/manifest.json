@@ -25,14 +25,30 @@
   "topics": 28,
   "specPoints": 182,
   "notes": 112,
-  "questionSets": 28,
-  "questions": 524,
-  "parts": 1404,
-  "marks": 3708,
+  "questionSets": 44,
+  "questions": 693,
+  "parts": 2334,
+  "marks": 5448,
   "flashcards": 909
  },
  "treeKind": "official",
  "upstreamSchemas": [
   "syllabai.official-paper-questions/0.1"
- ]
+ ],
+ "countsProvenance": {
+  "note": "Counts census the served bundle (CONTENT-AUDIT run-001-r0 found manifest stale-by-design-gap: the import-time counts recorded only the SME corpus while the ADR-037 wiring added the official paper corpus on top). Breakdown preserved below; live UI reads the files directly and was always correct.",
+  "smeCorpus": {
+   "questionSets": 28,
+   "questions": 524,
+   "parts": 1404,
+   "marks": 3708
+  },
+  "adr037OfficialAdds": {
+   "questionSets": 16,
+   "questions": 169,
+   "parts": 930,
+   "marks": 1740,
+   "source": "ADR-037 official-paper wiring (converter v0.8.x waves through resources main@cef8d5e2)"
+  }
+ }
 }
