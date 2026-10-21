@@ -1,0 +1,51 @@
+{
+  "task": "T-SM-KAPPA-SUBJECT (phase 2 — first SUBJECT-scope κ evaluation, calculation of record)",
+  "band": "T-SM-KAPPA-SUBJECT",
+  "title": "first 4CH1 SUBJECT κ evaluation calculated read-only by the merged production law — mechanical pass (κ=1.0, n=93), substantive insufficiency proven by forensics; of-record row deliberately NOT written; band §10.3 packet-composition policy promoted to BLOCKING",
+  "trace": "1a15fce35d234775 (operator session, web)",
+  "date": "2026-10-21",
+  "agent": "zai-web lane (main agent, session web-c5f00ad5)",
+  "parent": "#29 T-SM-ROLLOUT; comment of record = #29 comment 4 (6324290735)",
+  "mode": "READ-ONLY calculation of record — writer sample SQL verbatim (evaluateAgreementForSubject, apps/api/src/services/teachermarking/index.ts:1082-1117), pairing law collectPairs (:1025-1064, JS semantics ported incl. !==0 and typeof awarded === 'boolean'), cohenKappa (:367-401, 1e-12 degenerate convention), threshold 0.6; readonly session, application_name='t-sm-kappa-subject-eval/1'",
+  "subject": {
+    "code": "4CH1",
+    "id": "e56dc9ee-aa74-426f-94a6-4b72d3dc346b",
+    "name": "Chemistry (4CH1)"
+  },
+  "packet": {
+    "human_marks_sampled": 287,
+    "lane_split": "259 paper lane + 28 tree lane, 3 markers, 2026-09-15..2026-09-29",
+    "skipped_no_per_point_decisions": 164,
+    "skipped_no_smart_run": 12,
+    "skipped_zero_key_intersection": 26,
+    "pair_contributing_answers": 85,
+    "paired_decisions": 93,
+    "confusion": { "bothYes": 1, "bothNo": 92, "smartYesOnly": 0, "humanYesOnly": 0 },
+    "observed_agreement": 1.0,
+    "expected_agreement": 0.0215,
+    "kappa": 1.0,
+    "threshold": 0.6,
+    "passed": "true (mechanical)"
+  },
+  "forensics": [
+    "84/85 pair-contributing answers scored 0 (avg 14 chars); one scored 4 -> 92/93 pairs dual-zero; positive base rate 1.1% makes observed agreement trivially perfect",
+    "164/287 marks carry no per_point_decisions: 129 OVERRIDDEN (the disagreement ground truth, kappa-invisible) + 34 HUMAN_MARKED (avg 0.06 marks)",
+    "26/123 decision-bearing marks use MCQ option-letter keys ('a'..'e') that never resolve to mark_points.id — silently dropped by the intersection law",
+    "program-level: ALL 12 of-record evals (11 ALL + 1 PAPER, 2026-09-21..2026-10-09) read kappa=1.0/observed=1.0 n=93-114; the newest ALL row (n=93) is statistically this same packet — the kappa gate has never measured scored-work agreement"
+  ],
+  "verdict": "mechanically the writer would insert scope=SUBJECT, subject_id=e56dc9ee…, sample_size=93, kappa=1.0, passed=true and light the SUBJECT release lane; substantively that is a gate passing on a degenerate packet — DO NOT WRITE THE ROW from this packet",
+  "consequence": "band §10.3 (packet composition policy, deliberately open) promoted from open item to BLOCKING; minimum law proposed (#29 comment 4 §3) and later PINNED as D5 (see operator-order-r0.json / #29 comment 5)",
+  "wave_1a_4ph1": {
+    "R1_identity": "PASS — subjects 86265a33-01a8-498c-b034-eb1a1eac9b2d (Physics 4PH1), knowledge_node_id set -> rootIdForCourseCode resolves; registry igcse-physics-19 read-only (status full); NOTE 0 exam_papers bound — pure tree lane",
+    "R2_data_audit": "PASS fresh 2026-10-21 — 348 questions / 865 parts / 865 covered / 865 point rows = 100% VALIDATED",
+    "R3_scheme_pipeline": "evidenced-complete (converter output of record)",
+    "R4_validation": "evidenced-complete (coverage counted under VALIDATED schemes only)",
+    "R5_kappa_calibration": "BLOCKED — zero human marks resolve to 4PH1; production writer would 409 (ConflictError parity :952)",
+    "R6_R8": "not started — operator-gated after R5"
+  },
+  "artifacts": {
+    "scripts": "session-side read-only scripts/kappa_subject_eval.py, kappa_eval_diagnose.py, kappa_eval_existing.py (venv psycopg2, scrub law)",
+    "raw_output": "session-side scripts/kappa_subject_eval_out.json",
+    "result_doc": "session-side download/kappa-subject-eval-4ch1-result.md"
+  }
+}

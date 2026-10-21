@@ -1,0 +1,35 @@
+{
+  "task": "T-SM-KAPPA-SUBJECT (phase 1 — band implementation)",
+  "band": "T-SM-KAPPA-SUBJECT",
+  "title": "κ subject-scope reader band — SUBJECT-scope agreement evaluations (schema 0007, SUBJECT release lane in kappaGatePassed, operator-triggered subject writer, contracts/routes, 18 tests) — closes consequence #2 of D2 per #29 comment 3",
+  "trace": "1a15fa1a3f21d7e1 (operator session, web)",
+  "date": "2026-10-21",
+  "agent": "zai-web lane (main agent, session web-c5f00ad5)",
+  "parent": "#29 T-SM-ROLLOUT; band spec = #29 comment 3 (6322846948); R2 audit = #29 comment 2 (6322323978)",
+  "pr_of_record": {
+    "number": 266,
+    "merged_sha": "54f5312",
+    "head": "3f5657a",
+    "ci": "verify + hub green at merge; post-merge main CI 54f5312 hub ✓ verify ✓ (R0 cron receipt)",
+    "scope": "apps/api routes+services+tests, packages/contracts teacher-marking, packages/db drizzle migration 0007 + snapshots + schema"
+  },
+  "schema": {
+    "migration": "packages/db/drizzle/0007_t-sm-kappa-subject.sql",
+    "changes": [
+      "smart_mark_agreement_evaluations.subject_id uuid + FK subjects(id)",
+      "ck_agreement_scope widened PAPER/ALL -> PAPER/ALL/SUBJECT",
+      "ck_agreement_subject, ck_agreement_all, ck_agreement_key_exclusive",
+      "partial index idx_agreement_subject_latest"
+    ],
+    "baseline": "advanced band-by-band per T-MIG-002-R: 0000 snapshot re-based on 0007 end-state, pinned inventory 70/666/97/61/112 -> 70/667/98/62/115 (+3 checks net — scope widened, not added)",
+    "upstream_repairs_disclosed": [
+      "snapshot chain broken on main (0001.prev off-chain, 0005 duplicated 0000 id) — re-chained in journal order",
+      "0006 snapshot stored course_registry index in pre-normalization where-spelling — normalized so 0007 carries ONLY band changes"
+    ]
+  },
+  "reader": "SmartMarkService.kappaGatePassed(examPaperId, questionId) gains the SUBJECT lane — release on ALL v PAPER v SUBJECT, fail-closed unchanged; subject derivation = the R2-audit-verified bounded recursive PART_OF walk (relation filter + depth guard are load-bearing: prereq-graph cycles); paper lane via exam_papers.subject_id, tree lane via question_topics U question_spec_points -> SUBJECT node -> subjects.knowledge_node_id; ~105/11,879 tree-unlinkable questions skip the SUBJECT lane fail-closed; 3 call sites updated (markAttempt, student surface, teachermarking markAnswer) — gate law lives ONCE in services/smartmark (T-MIG-033 composition, never a fork)",
+  "writer": "SCOPE_SUBJECT evaluateAgreementForSubject — subject packet sample via qsub CTE; pairing law shared via extracted collectPairs (one implementation); latestSubjectEvaluation; KappaEvaluationView gains additive subjectId (both copies); frozen evaluateAgreement/latestEvaluation behavior unchanged (new column defaults NULL)",
+  "routes": "kappaScopeRequestSchema/kappaLatestParamsSchema +subjectId + mutual-exclusion refine (R-1 kept); POST /kappa/evaluate subject branch; GET /kappa/latest?subjectId=; router factory default-3rd-param latestSubjectKappa seam (existing callers unaffected)",
+  "tests": "18 band cases (9 gate incl. SQL-law text pins, 4 writer, 3 route, contracts); target suites 508/508; FULL suite 2477 pass / 0 fail; typecheck 4 pkgs clean; db:check green",
+  "status": "MERGED 54f5312 — but see p0-fix-migration-d5-r0.json: the merged CTEs hardcoded a non-existent column (P0, fixed by PR #270 cdc1cd2); fakeSql route tests cannot catch column-name defects (disclosed as a fleet-wide test-law limitation)"
+}

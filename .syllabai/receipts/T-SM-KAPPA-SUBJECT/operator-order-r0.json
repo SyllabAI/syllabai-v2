@@ -1,0 +1,63 @@
+{
+  "task": "T-SM-KAPPA-SUBJECT (phase 3 — operator order: P0 fix merge, migration 0007 apply, D5 minimum-packet law pin, recompute runbook)",
+  "band": "T-SM-KAPPA-SUBJECT",
+  "title": "PR #270 merged (P0 spec_point_node_id), migration 0007 applied to production (one-transaction, pre/post-verified), band parse-proven runtime-ready, D5 minimum-packet law PINNED, 4CH1 queue worklist + recompute runbook armed",
+  "trace": "1a15fe8d1f455349 (operator session, web)",
+  "date": "2026-10-21",
+  "agent": "zai-web lane (main agent, session web-c5f00ad5)",
+  "parent": "#29 T-SM-ROLLOUT; comment of record = #29 comment 5 (6324673356)",
+  "pr270": {
+    "what": "subject-derivation CTE referenced a non-existent column — question_spec_points.spec_point_id -> spec_point_node_id (P0; information_schema-verified; band spec §3/PR #266 transcribed it wrong, the R2 audit addendum had probed the live name correctly)",
+    "blast_radius_if_unfixed": "reader SUBJECT branch throws UndefinedColumn; writer route 500s — band inert at runtime, no SUBJECT row could ever be written",
+    "merged_sha": "cdc1cd2",
+    "diff": "4 lines, 2 files; band suites 123/123 green on merge state; verify + hub CI green",
+    "lesson_disclosed": "fakeSql regex-route stubs cannot catch column-name defects — SQL-law text pins cover structure, not schema truth"
+  },
+  "migration_0007_apply": {
+    "regime_disclosure": "production has NO drizzle bookkeeping table (no drizzle schema; Flyway flyway_schema_history at rank 63 manages the frozen Java core) — TS-side migration files apply as raw SQL",
+    "backup": "all 12 smart_mark_agreement_evaluations rows dumped to session-side scripts/migration_backup_eval_rows.json BEFORE any DDL",
+    "preflight_at_apply_time": "subject_id absent ✓; ALL-scope rows carrying keys = 0 ✓ (band §10.1); census 12",
+    "execution": "8 statements, ONE transaction, lock_timeout=5s: drop+recreate ck_agreement_scope (widened PAPER/ALL/SUBJECT), add subject_id uuid, FK subjects(id), partial index idx_agreement_subject_latest, ck_agreement_subject, ck_agreement_all, ck_agreement_key_exclusive — COMMIT first pass, no retry, no partial state",
+    "postverify": "column subject_id uuid ✓; CHECKs = ck_agreement_all, ck_agreement_key_exclusive, ck_agreement_paper, ck_agreement_scope, ck_agreement_subject, sample_size_check ✓; FKs = exam_paper + subject ✓; indexes = pkey + idx_agreement_subject_latest ✓; inventory unchanged (11 ALL + 1 PAPER, all passed) ✓"
+  },
+  "runtime_readiness": "EXPLAIN plan-only parse-proof against the live migrated schema: reader SUBJECT branch (PR #270 law), writer INSERT (11-column list incl. subject_id), writer packet-sample CTE all plan cleanly — only a deploy of a build containing cdc1cd2 + a D5-clearing packet remain for a live SUBJECT row",
+  "d5_minimum_packet_law": {
+    "status": "PINNED (operator order, #29 comment 5; floors operator-revisable on #29, append-only)",
+    "scope_note": "governs operator computation and G3 evidence; the F-161 gate law kappa>=0.60 and the fail-closed reader stay frozen (T-MIG-033)",
+    "floors": {
+      "D5.1_positive_class": ">= 25 both-awarded (bothYes) decisions",
+      "D5.2_disagreement": ">= 10 split decisions (smartYesOnly + humanYesOnly)",
+      "D5.3_scored_work": ">= 50% of pair-contributing answers with marks_awarded > 0",
+      "D5.4_capture": ">= 80% of the queue's human marks carry per_point_decisions keyed by mark_points.id UUIDs (contracts cap 50 entries)",
+      "D5.5_override_capture": "every override MUST persist per_point_decisions (write path already accepts it — recordHumanMark takes perPointDecisions for first-marks and revisions; the 129 null-ppd overrides were client discipline, not a schema gap)",
+      "D5.6_authorship": "packet marks must be teacher-authored (T-TEACH-003 enrollment-scope gate); learner self-marks not queued for calibration",
+      "D5.7_disclosure": "every eval run of record appends the composition table (packet size, lane split, skip histogram, confusion matrix, floors check) to #29"
+    }
+  },
+  "queue_worklist_4ch1": {
+    "inventory": "OVERRIDDEN 218 (newest smart run 183, validated 84) / SELF_MARKED 125 (3 validated) / PENDING 124 (0) / SMART_MARKED 116 (116 validated) / HUMAN_MARKED 69 (27 validated); unmarked STRUCTURED 365, 109 with bound points on latest versions",
+    "tier_1": "63 unmarked answers whose newest validated smart run awarded >0 (7x3-mark, 16x2-mark, 40x1-mark; ~32 bound point rows) — every confirmed smart award lands as bothYes; capacity note: bothYes caps ~32, D5.1's 25 reachable-but-tight",
+    "tier_2": "56 unmarked answers whose newest validated run scored 0 — independent teacher marks produce the splits D5.2 wants observed",
+    "tier_3": "optional revise lane on the 84 OVERRIDDEN-with-validated-run answers",
+    "discipline": "every mark sends perPointDecisions (UUID-keyed, <=50); overrides included (D5.5); authorized teacher accounts only (D5.6)"
+  },
+  "recompute_runbook": [
+    "deploy a build containing cdc1cd2 (staging first, then production)",
+    "pre-write floors check: run the read-only replica (kappa_subject_eval.py 4CH1) — reproduces the writer's exact sample+pairing+kappa and reports all D5 floors; do NOT write the row unless D5.1-D5.4 hold",
+    "operator POST /api/v1/teacher/marking/kappa/evaluate {\"subjectId\":\"e56dc9ee-aa74-426f-94a6-4b72d3dc346b\"} (route law: absent body -> ALL; paperId -> PAPER; subjectId -> SUBJECT; mutual exclusion 400; no pairable decisions 409)",
+    "read-back GET /api/v1/teacher/marking/kappa/latest?subjectId=e56dc9ee-aa74-426f-94a6-4b72d3dc346b -> SUBJECT view",
+    "post the composition table (D5.7) to #29; D2 consequence #2 then closes SUBSTANTIVELY and the 4CH1 SUBJECT release lane is live end-to-end"
+  ],
+  "deliberately_not_done": [
+    "no synthetic teacher marks (ground truth must be human)",
+    "no eval row written before the D5 pre-write check passes",
+    "no packet-law codification band (server-side floor refusal) — optional follow-up, deliberately not bundled"
+  ],
+  "live_posture_probe_2026_10_22": {
+    "api_v2": "https://syllabai-v2.vercel.app — /actuator/health 200 UP; POST/GET /api/v1/teacher/marking/kappa/* answer 401 (auth wall reached — the band routes ARE in the live build, i.e. a post-#266 deployment); whether the live build contains the #270 fix is NOT verifiable without auth (no unauthenticated discriminator between 54f5312 and cdc1cd2 — the fix is SQL-only)",
+    "api_deploy_lever": "api redeploy stays the serialized operator-gated lever (CLI-only; GitHub deployments API shows hub-only statuses syllabai-hub-v2-*)",
+    "java_core": "https://syllabai-core.onrender.com answers 'Service Suspended' HTML (Render) — the frozen core the cutover runbook says must STAY DEPLOYED is currently suspended; operator attention required (roll-back lever §5 depends on a serving core)",
+    "hub": "syllabai-hub-v2.vercel.app serving; latest Production deploy bd38e04 (T-BOOK-020 fire) success"
+  },
+  "pat_note": "the operator supplied a fresh GitHub PAT this session (rotation executed — closes the standing CRITICAL overdue flag from transits 27-28); new token fingerprint not disclosed here"
+}
