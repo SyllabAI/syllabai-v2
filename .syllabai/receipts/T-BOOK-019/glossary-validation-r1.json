@@ -1,0 +1,25 @@
+{
+  "task": "T-BOOK-019",
+  "lane": "content (glossary validation) — the T-BOOK-017 open item 'the 31 new glossary terms SUGGESTED (their own future lane)'",
+  "operator_order": "① Validation lanes for 31 new glossary terms (same pattern as T-BOOK-017, scripts are reusable) (trace 1a15f60b53d4e0d5)",
+  "trace": "1a15f60b53d4e0d5",
+  "generated": "2026-10-22T09:20:00Z",
+  "validation_laws": {
+    "V1_schema": "bookGlossaryTermSchema (contracts zod) — 58/58 pass (31 new + 27 of-record re-validated as a bonus)",
+    "V2_authored_truth": "DB row == authored glossary files canonical compare (term/slug/definition/ms_accepts/ms_avoids/aliases, both directions) — 58/58 exact, zero drift",
+    "V3_ms_layer": "≥1 ms_accepts AND ≥1 ms_avoids per term (the value-add law) — 58/58 pass",
+    "V4_definition_floor": "definition ≥ 40 chars (examiner-safe wording, not a stub) — 58/58 pass"
+  },
+  "flip_of_record": {
+    "plane": "production (ep-ancient-cake-a52e4kfd, direct endpoint)",
+    "tx": "ONE guarded transaction: pre {SUGGESTED:31, VALIDATED:27} → UPDATE … where validation_state='SUGGESTED' and slug = any(58 authored slugs) (rowcount 31) → post {VALIDATED:58} → commit",
+    "lever": "the validation_state column IS the flip lever (glossary rows carry no version column)",
+    "script": "session-side apps/api/scripts/session/glossary-validate-r1.ts — re-created to the T-BOOK-017 published laws (that script was that session's workspace-side and is gone); refuses to flip on ANY validation finding; re-run idempotent (0 eligible rows)"
+  },
+  "post_lane_state": "VALIDATED=58 (27 golive layer + 31 T-BOOK-016 layer) — the authored glossary layer is fully validated at this point; the 30 new T-BOOK-011/012 u2/u3 terms land SUGGESTED with the lane-2 ingest and are a future lane (scope law: the u4-organic-chemistry.yaml file (24 terms) was deliberately EXCLUDED from the T-BOOK-011/012 staging glossary so the F-BOOK-0001-gated u4 lane stays unlanded on the DB plane)",
+  "disclosures": [
+    "the T-BOOK-017 script was not committed (session-side of record there too); the laws it implemented are published in its task yaml + receipt and were re-implemented verbatim",
+    "state-preservation re-verified: the lane-2 scoped ingest (71 blocks + 88 terms) re-upserted these 58 rows idempotently and the upsert SQL never touches validation_state — 58 remained VALIDATED (spot-check law, probed post-ingest)"
+  ],
+  "status": "GLOSSARY LANE r1 DISCHARGED (58/58 VALIDATED of record)"
+}

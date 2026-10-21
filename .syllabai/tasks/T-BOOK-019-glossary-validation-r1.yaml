@@ -1,0 +1,42 @@
+version: 1
+task:
+  id: T-BOOK-019
+  title: "Glossary validation lane r1 — the 31 T-BOOK-016 terms verified V1-V4 then flipped SUGGESTED→VALIDATED in production (the 27 of-record re-validated as a bonus)"
+  owner: "main agent (Z.ai, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a, operator trace 1a15f60b53d4e0d5)"
+  status: IN_REVIEW
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: books-phase-A/B
+  deps: [T-BOOK-017, T-BOOK-016]
+  execution_record: >
+    The T-BOOK-017 lane's open item "the 31 new glossary terms SUGGESTED (their
+    own future lane)", discharged under the operator dispatch trace
+    1a15f60b53d4e0d5 "① Validation lanes for 31 new glossary terms (same
+    pattern as T-BOOK-017, scripts are reusable)". The T-BOOK-017 script was
+    session-side (that session's workspace, gone) so the validator was
+    re-created to the SAME published laws (V1 schema - bookGlossaryTermSchema
+    zod; V2 authored-truth - DB row == the authored glossary files canonical
+    compare on term/slug/definition/ms_accepts/ms_avoids/aliases, both
+    directions; V3 ms layer - >=1 ms_accepts AND >=1 ms_avoids; V4 definition
+    floor - >=40 chars). Scope: ALL authored (non-seed) files = 58 terms; the
+    27 of-record VALIDATED rows re-validate as a bonus and are untouched by
+    the flip (state-guarded WHERE). Result: V1/V3/V4 58/58 pass, V2 58/58
+    exact, zero drift, zero findings. Flip of record: ONE guarded tx on
+    PRODUCTION - pre {SUGGESTED:31, VALIDATED:27} -> UPDATE ... where
+    validation_state='SUGGESTED' and slug = any(58 authored slugs) (rowcount
+    31) -> post {VALIDATED:58}; the state column IS the lever. Idempotent:
+    a re-run reports 0 eligible rows.
+base:
+  repo: "syllabai-v2 @ t-book-011-019/units-2-4-glossary-r0"
+basis: "T-BOOK-017 laws verbatim; BOOK-PACK-SPEC §5 (the ms layer law); the T-BOOK-017 receipt's flip posture"
+scope:
+  allowed:
+    - "DB book_glossary_terms state flip (operator dispatch, guarded tx)"
+    - ".syllabai/receipts/T-BOOK-019/**"
+    - ".syllabai/tasks/T-BOOK-019-glossary-validation-r1.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "definition/ms-layer edits (authored layer is of record; changes = versioned PRs)"
+    - "touching any other table or state"
+  session_scripts:
+    - "apps/api/scripts/session/glossary-validate-r1.ts (re-runnable; untracked session-side, like the T-BOOK-017 script of record)"
