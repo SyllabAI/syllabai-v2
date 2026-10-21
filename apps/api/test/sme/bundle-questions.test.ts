@@ -390,7 +390,12 @@ describe("T-MIG-136 bands 3b+4 through T-CONSUME-EDX-1: the maths-b corpus laws"
     // the 2ece53b emptied state was superseded of record: the operator
     // restored the interactive maths-b bundle (65 sets / 1,249 questions,
     // byte-exact from 8ee371e) — the restored bundle builds through the
-    // shim, and the question-less refusal law is pinned synthetically below
+    // shim, and the question-less refusal law is pinned synthetically below.
+    // ocr-repair-run-001-r0 (trace 1a15e7d6114dff35 'Initiate OCR to fix the
+    // capture channel') then recovered the image-only 2019-06 4MB1/02R QP:
+    // the last honest-empty set became a real 11-question/100-mark record
+    // (evidence-grounded, 0 badSum candidates) -> the of-record census is
+    // 65 sets / 1,260 questions.
     expect(mathsB.sets.length).toBe(65);
     const pkg = buildMathsB();
     expect(pkg.counts?.sets).toBe(65);
@@ -398,7 +403,7 @@ describe("T-MIG-136 bands 3b+4 through T-CONSUME-EDX-1: the maths-b corpus laws"
     // excluded AND counted (the band-4 unmapped/badSum/dupOrder population)
     const excluded =
       (pkg.counts?.unmapped ?? 0) + (pkg.counts?.badSum ?? 0) + (pkg.counts?.dupOrder ?? 0);
-    expect(excluded + (pkg.questions ?? []).length).toBe(1249);
+    expect(excluded + (pkg.questions ?? []).length).toBe(1260);
     expect((pkg.questions ?? []).length).toBeGreaterThan(0);
     expect(() =>
       buildSmePackage({ courseSlug: mathsB.slug, curriculum: mathsB.curriculum, sets: [], ...SOURCE }),
