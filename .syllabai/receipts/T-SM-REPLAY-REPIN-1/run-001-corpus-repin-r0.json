@@ -1,0 +1,31 @@
+{
+  "task": "T-SM-REPLAY-REPIN-1",
+  "band": "golden-corpus repair",
+  "title": "the operator-ruled corpus re-pin — the neon-replay instrument repair: the T51 capture corpus's two spec-point mappings re-anchored to new edgeless SPEC_POINT seed nodes (WCH11-T1.1a/T1.2a), unblocking the seed-posture staging that the live G4 anchor-type guard has been crashing since replay run #51",
+  "operator_order": "\"rule on the corpus re-pin (I can prep the re-pinned cases for review)\" (trace 1a16041a4ba7a509, session web-590847c1-cf63-4098-b0c8-a90085355429) — the operator approving repair option (a) exactly as filed in t-teach-003-stage-5b-replay-proof-r0.json (\"requested_disposition\")",
+  "date": "2026-10-22",
+  "agent": "zai-web lane (main agent, session web-590847c1)",
+  "what_shipped": [
+    "golden/cases/files/t51-seed.sql — in-header amendment note (the two added rows are NOT frozen-V63-dump rows; provenance marked created_by 't-sm-replay-repin-1', created_at '2026-10-22T00:00:00.000Z') + two EDGELESS SPEC_POINT knowledge_nodes: 20000000-0000-0000-0000-000000000040 'WCH11-T1.1a' (under …0012 WCH11-T1.1) and 20000000-0000-0000-0000-000000000050 'WCH11-T1.2a' (under …0013 WCH11-T1.2); ids chosen collision-free across every uuid family in the file; seed node census 15 -> 17",
+    "golden/cases/files/t51-corpus.zip — package.json re-anchored: the two specPoints[].code values WCH11-T1.1 -> WCH11-T1.1a and WCH11-T1.2 -> WCH11-T1.2a; the ONLY deltas are the two 'a' suffixes (proved by reverse-substitute == original); primaryTopicCode/secondaryTopicCodes (the topic mappings) byte-untouched; zip entry structure unchanged (single package.json)",
+    "golden/cases/w3-sme-ingest-rich-200.json + w3-sme-ingest-replace-rich-200.json — 'justified': true stamped (the GOLDEN_MASTER §4 mechanism, precedent auth-login-missing-fields-400) + description note citing the guard, the re-anchor and the ruling trace; the expect blocks are BYTE-UNCHANGED (the per-ingest census counts are code-independent: specPointMappings 2 per ingest, and the seq-12 status census 4 = 2 + 2 replace-semantics re-insert preserved)"
+  ],
+  "why_this_shape": {
+    "edgeless_on_purpose": "every graph/tree surface that captured bodies pin selects via EDGE TRAVERSAL from a root (learner KG recursive subtree graphs.ts:399-405; taxonomy subtree taxonomy.ts:265; teacher KG traversal kg.ts) — edgeless nodes are invisible to all of them, so the +2 nodes change zero pinned bodies; the SME ingest resolves codes through byCode (ALL knowledge_nodes rows) so the anchors resolve without edges",
+    "blast_radius_proven_empty": "no golden case body reads the staged T51 questions back (T51refs=0 across the corpus); the marking rich-200 quartet's staged attempts carry zero spec-anchor echoes; w3-history-after-submit and w3-questions-topics pin the TOPIC mapping (topicNodeId WCH11-T1.1) which is untouched; the learner KG / teacher-curriculum bodies contain no SPEC_POINT type today and cannot gain one (traversal + edgelessness)",
+    "not_the_alternatives": "retyping WCH11-T1.1/T1.2 to SPEC_POINT was REJECTED on the G1 node-type law (they are genuinely topic-level); a guard exemption was REJECTED on the operator's fail-closed G4 order; a service-layer ingest fallback would change the live ingest semantics beyond the ruled scope"
+  },
+  "verification": {
+    "harness": "golden/runner.ts --selftest OK (incl. the T-MIG-051 multipart construction over the re-anchored zip — byteLength read at runtime, content-agnostic); golden/tools/ci-replay.ts --selftest OK; ci-replay --plan green (corpus split computes; edited cases parse; justified field tolerated per the existing case precedent)",
+    "census_math": "per-ingest specPointMappings stays 2 (two specPoints entries per package); the seq-12 status census stays 4 (first ingest 2 + replace re-insert 2 — the core-captured replace semantics that the port mirrors); both sme-ingest expects byte-identical",
+    "g4_law": "both staged INSERTs now anchor SPEC_POINT rows -> the trigger assert_spec_point_anchor passes; the staging crash class (runs #51, #52) closes at the next replay",
+    "environment_note": "the sandbox cannot execute the replay (DNS-blocked, the standing posture) — the LIVE proof is the post-merge neon-replay run; tool bun-build in-sandbox prints the known postgres import noise (DNS-blocked), so the harness selftests are the lane-side gates and CI verify rides the PR"
+  },
+  "residuals": [
+    "the stage-5b projection proof (T-TEACH-003 residual) re-arms with the instrument: ONE post-merge replay whose union fail-list omits w3-teacher-marking-{answers,answers-paged,queue-v2,throughput}-rich-200 closes it of record",
+    "the two re-anchored codes are synthetic T51-family spec-statement anchors (WCH11-T1.1a/T1.2a, Edexcel statement-level convention) — they exist solely as staging anchor targets and carry no production-corpus meaning",
+    "T-MIG-139's G2 remains scoped to the repo-side seeders; this receipt is the capture-side companion the conflict demanded"
+  ],
+  "next": "PR review -> merge -> dispatch neon-replay -> union verdict of record -> stage-5b verdict; then the standing 02:30Z cron resumes producing verdicts nightly",
+  "standing_reminder": "the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law"
+}

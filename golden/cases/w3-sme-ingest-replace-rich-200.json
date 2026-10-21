@@ -1,6 +1,7 @@
 {
   "name": "w3-sme-ingest-replace-rich-200",
-  "description": "Second ingest of the SAME corpus — the ADR-026 evidence-safe replace: same externalRefs deactivate the first generation (deactivated:2) and reinsert; counts identical. One sql.transaction on the port; @Transactional on the core.",
+  "justified": true,
+  "description": "Second ingest of the SAME corpus — the ADR-026 evidence-safe replace: same externalRefs deactivate the first generation (deactivated:2) and reinsert; counts identical. One sql.transaction on the port; @Transactional on the core. T-SM-REPLAY-REPIN-1: the corpus's spec-point mappings are re-anchored WCH11-T1.1/T1.2 -> WCH11-T1.1a/T1.2a (the seed's new edgeless SPEC_POINT anchor nodes) because the live G4 anchor-type guard (T-MIG-139) rejects SUBTOPIC-anchored question_spec_points; expects byte-unchanged (the per-ingest census is code-independent); operator ruling trace 1a16041a4ba7a509.",
   "method": "POST",
   "path": "/api/v1/admin/question-bank/ingest",
   "bodyFile": "files/t51-corpus.zip",
