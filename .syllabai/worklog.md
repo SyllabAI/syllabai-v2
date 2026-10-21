@@ -11710,3 +11710,20 @@ Stage Summary:
 - Item 5 DISCHARGED: the learner topic tree now files League (TS4L, 17 pts) and Hitler's-foreign-policy (TS4H, 14 pts) under their own truthful topics; Civil War keeps its own 11; codes + orders + linkage byte-stable; the tree is re-generated correctly by any future Stage-1 rebuild via the tracked override.
 - Residuals filed: history-18 re-parse (Core B 1/5/6/7 + Core A 5/6 + depth F absent from the parse); the parse's S4.029-042 mislabel stands disclosed (functionally superseded by the override).
 - Receipt: .syllabai/receipts/CONTENT-AUDIT/ts4-topic-split-run-001-r0.json
+
+---
+
+## CONTENT-AUDIT residuals + zero-question manufacturing scoping r0 — audit menu items 4-5 follow-through: the maths mis-scope CORRECTED of record (served 9709 spines truthful, content-verified), the semantic-lane program quantified (324 named-lane rows), the manufacturing source-corpus verdict BLOCKED for all 11 candidates (the maths-b precedent's own first gate)
+
+Date: 2026-10-22
+Agent: main agent (Z.ai, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Scope: .syllabai/receipts/CONTENT-AUDIT/{lattice-residuals-run-001-r0,zero-question-manufacturing-scoping-run-001-r0}.json + worklog; read-only otherwise; fetch-first; no force; zero DB/LLM/corpus writes
+
+Work Log:
+- RESIDUALS BAND: the followups receipt's premise "pure-3's spine carries only 39 of the parsed spec's 143 points" CORRECTED of record — the 597421 parse's code prefix IS the component (1=P1..6=PS2), the boundary rows are CONTENT-VERIFIED (the 7 'PS1-titled' prefix-6 rows are Poisson/linear-combinations = PS2 topics 1-2 verbatim; the 7 'P3-titled' prefix-4 rows are forces/equilibrium/friction = Mechanics topic 1 verbatim; M-titled prefix-5 = PS1 topics; P1-titled prefix-2 = P2 topics) — the parse's TOPIC-title tracker lags at the five component boundaries, the CODE tracker is correct; every served 9709 spine serves exactly its component (33/0/39/22/17/18, orphans 0). The official-text re-parse remedy is MOOT for the maths lanes; the designed mis-placement repair was DISMISSED by evidence before any write.
+- Pending ledger of record (verdicts yaml): 457 fleet pending_classified; the named lanes: geo-25 111 (cross-edition), pure-3 76 + further-maths-25 64 (fragmented-math), EL-25 53 + EL-20 20 (assessment/coursework-guidance, no unique target). Semantic-lane program filed with its law (AGENT.md rule 3 verbatim), vehicle (the COMPLETE-1 engine shape re-run), and band plan A-D; scale disclosed (324 per-row hand adjudications — a multi-session program at the COMPLETE-1 pace; deliberately not rushed).
+- MANUFACTURING SCOPING BAND (item 4): today's served zero-question census pins 12 bundles = 11 candidates + the pure-2 ghost (35505e43 ruling restated, not re-opened; the menu's "9" corrected). SME statuses verified at HEAD via git objects (sparse checkout): 4 CIE singles no_topic_questions_on_sme; the archive of record (INGESTION_REPORT spec_stats, 56 specs) is ALL Edexcel legacy families — CIE 9706/9708/0452/8004/0470 = 0 papers, 4SD0 = 0, 4EA1 = 0. VERDICT: manufacturing BLOCKED ON SOURCE CORPUS for all 11 — the same honest blocker the maths-b scoping recorded before the 4MB1 archive landed. Paths to unblock: A archive acquisition (the maths-b shape, then T-MIG-136 bands per course), B SME-authoring commission (different cost class), C leave honestly zero (default). Recommendation: A for the structured subjects + SDA units when papers are sourced; C for GP-21 + EL-coursework (structurally poor bank candidates).
+
+Stage Summary:
+- Audit menu items 4-5 + lattice residuals DISCHARGED AS: item 5 = LANDED (T-SPECS-TS4-REPAIR-1, e024c11c); residuals = corrected premise + quantified semantic-lane program of record; item 4 = scoping band of record with the blocked verdict + the three unblock paths — the operator holds all three dispositions.
+- Receipts: CONTENT-AUDIT/{lattice-residuals-run-001-r0,zero-question-manufacturing-scoping-run-001-r0}.json

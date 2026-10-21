@@ -1,0 +1,35 @@
+{
+ "schema": "syllabai.scoping-receipt/1.0",
+ "task": "T-MIG-136-EXT scoping (CONTENT-AUDIT decision menu item 4 band)",
+ "run": "zero-question-manufacturing-scoping-run-001-r0",
+ "lane": "the maths-b manufacturing precedent scoped against the zero-question fleet — readiness census + source-corpus verdict; NO manufacture fired (the precedent's own gating law held)",
+ "operator_order": "audit menu items 4-5, lattice residuals (gateway trace 1a160319b5fe144d, 2026-10-22, zai-web)",
+ "trace": "1a160319b5fe144d",
+ "created_utc": "2026-10-22T00:00:00Z",
+ "fetch_first": "v2 ff'd 7427c555 -> f07c76f5 -> e024c11c (the lane's TS4 commit) before reads; resources ff'd a8803c56 -> dc9c1efc; no collisions (NEXTBUMP-2/PR #279 touched 0 CIE bundles of record)",
+ "precedent_of_record": "T-MIG-136 second-subject-scoping-maths-b-run-001-r0: the maths-b engine is 'parsed past papers -> anchored bank' and its scoping REFUSED manufacture while the archive held no 4MB1 papers (census 'pastpapers-index.json: 103 specs, none 4MB1'); manufacture fired only after the 4MB1 archive landed (operator-ordered collection), then bands 136a/e + the parse/anchor/restore chain",
+ "census": {
+  "zero_question_bundles_today": 12,
+  "candidates_of_record": 11,
+  "excluded": "cie-a-level-maths-20-pure-2 — the ruled ANNOTATION ghost (35505e43: status registered, intentionally-empty D1 skeleton, supplementation 'not commissioned'); the ruling stands, restated not re-opened",
+  "correction": "the audit menu said 9; the served manifests pin 12 zero-question bundles = 11 candidates + the ghost (4 CIE singles + 1 EL coursework + 6 SDA modular units)",
+  "candidates": [
+   {"slug": "cie-a-level-accounting-21", "sme_status": "no_topic_questions_on_sme (verified at HEAD via git object)", "sme_files": 2, "official_parse": "cie-a-level-accounting-2023-2025 present", "archive": "ABSENT (9706: 0 papers)"},
+   {"slug": "cie-a-level-economics-23", "sme_status": "no_topic_questions_on_sme (verified at HEAD)", "sme_files": 2, "official_parse": "cie-a-level-economics-2023-2025 present", "archive": "ABSENT (9708: 0 papers)"},
+   {"slug": "cie-igcse-accounting-25", "sme_status": "no_topic_questions_on_sme (verified at HEAD)", "sme_files": 2, "official_parse": "cie-igcse-accounting-2023-2025 + 2027-2029 present", "archive": "ABSENT (0452: 0 papers)"},
+   {"slug": "cie-as-english-general-paper-21", "sme_status": "no_topic_questions_on_sme (verified at HEAD)", "sme_files": 2, "official_parse": "cie-as-english-general-paper-2028-2030 present", "archive": "ABSENT (8004: 0 papers); essay subject — no objective bank class"},
+   {"slug": "igcse-english-language-a-16-paper-3-coursework", "sme_status": "no status field (4 files); audit's 'same status class' restated", "official_parse": "igcse-english-language-a present", "archive": "ABSENT (4EA1: 0 papers); coursework anthology — no past-paper bank class applies"},
+   {"slug": "igcse-science-double-award-modular-24-{biology,chemistry,physics}-unit-{1,2}", "sme_status": "no status field (4 files each); biology-unit-1 verified directly per the audit, siblings same class", "official_parse": "igcse-science-double-award-modular present", "archive": "ABSENT (4SD0 modular family: 0 papers; the archive holds single-award sciences only)"}
+  ],
+  "archive_of_record": "syllabai-pastpapers INGESTION_REPORT.json spec_stats: 56 specs, ALL Edexcel international-gcse/IAL legacy families (4ch1/4ph1/4ma1/4mb1/4pm1/4eb1, w-ch/ph/ma IAL); CIE syllabus codes 9706/9708/0452/0455/8004/0470 = 0 papers; 4SD0 = 0; 4EA1 = 0"
+ },
+ "verdict_of_record": "MANUFACTURING BLOCKED ON THE SOURCE CORPUS for all 11 candidates — the maths-b precedent's first gate ('no archived papers -> no manufacture') fails fleet-wide; this is the SAME honest blocker class the maths-b scoping itself hit and recorded before the 4MB1 archive landed",
+ "paths_to_unblock": [
+  {"path": "A — archive acquisition (the maths-b shape)", "steps": "operator-ordered paper collection per family (CIE 9706/9708/0452/8004 mark schemes + question papers; Edexcel 4SD0 modular units; 4EA1 P3 is N/A by nature), then the T-MIG-136 band program per course (corpus parse -> bank -> anchors -> operator-gated prod apply -> serve)", "gates": "collection lands in syllabai-pastpapers with an INGESTION_REPORT run; then per-course T-MIG-136 scoping refresh (this receipt's successor)"},
+  {"path": "B — SME authoring commission (a different lane class, NOT the maths-b precedent)", "steps": "operator commissions SME-authored banks per course (subject-expert authoring against the official spines, the notes corpus as source), then the same anchor/apply gates", "gates": "explicit operator commission per course; cost class far above the parse pipeline"},
+  {"path": "C — leave honestly zero", "steps": "the courses keep 0 questions and the honest empty-bank surface (the same disclosed class they carry today); no gate fires", "gates": "none — the default state of record"}
+ ],
+ "recommendation": "path A for the 4 CIE structured-subject singles + the 6 SDA units when the operator can source papers (CIE and 4SD0 archives are publicly rich); GP-21 and EL-coursework are structurally poor bank candidates (essay/coursework) — recommend path C for those two unless the operator wants essay-prompt banks commissioned (path B class)",
+ "write_ledger": "zero writes, zero LLM, zero prod contact; censuses via git objects (sparse checkout), the served manifests, and the archive INGESTION_REPORT of record",
+ "next": "operator disposition per path; on any path-A collection landing, the per-course T-MIG-136 scoping refresh fires (the maths-b receipt's own succession law)"
+}
