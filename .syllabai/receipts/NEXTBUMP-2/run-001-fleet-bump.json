@@ -1,0 +1,58 @@
+{
+  "band": "NEXTBUMP-2",
+  "run": "run-001",
+  "at": "2026-10-22",
+  "order": "operator dispatch 2026-10-22 (zai-web, session web-64d10b73-530a-4f71-9961-85d0436c7fb5, chat d889551c-b3b5-4885-b1c1-57af82e11b0a, gateway trace 1a160259e95a2b85): 'Trigger NEXT #2 fleet bump' — executes the PINSPLIT-1 ruling of record: CONVERGENCE of the Edexcel per-course pin fleet at the bump-time tip, under the floor law bump target >= 89260832",
+  "executor": "main agent (Super Z operator session, this lane worktree /home/z/my-project/syllabai-v2 @ branch lane/nextbump-2 cut off origin/main f07c76f5)",
+  "pin_of_record": {
+    "bump_target": "dc9c1efcfa5ccd3cb728f258b8dc2e718487d120",
+    "what_it_is": "resources origin/main tip at bump time = Merge PR #33 (T-SPECS-CIE-TRANCHE2-R2-SHEETS-1, the map-universe operator review sheets fleet-wide + the ruling-batch encoding engine V8)",
+    "floor_law": ">= 89260832 REQUIRED by the PINSPLIT-1 ruling so chemistry-19's v0.9.0 2C spec labels survive — dc9c1efc IS a descendant of 89260832 (merge-base --is-ancestor verified first-hand at lane start)",
+    "carries": "T-SPEC-STAGE2-1 (47-map corpus refresh), T-SPECS-CIE-COMPLETE-1 + amendment, T-SPECS-CIE-TRANCHE2-R1, v0.9.0 2C wave, sda-bio 2.54 verdict (transit 28), ADR-037 hub exporter, Pearson hosting amendment, tranche-2-R2 review sheets"
+  },
+  "verdict": "SHIPPED — the 47/1/1 Edexcel pin split is DISSOLVED of record: 49/49 non-CIE manifests now name main@dc9c1efc (census re-enumerated post-stamp); 47 lanes re-consumed at the tip (attachment maps regenerated + official flip re-applied through G1-G5); golden igcse-chemistry-19 and igcse-maths-b-16 converged by provenance stamp with content byte-frozen; gates ALL GREEN: flip dry-run 47/47 + apply 47/47, double-flip provenance guard 0 corruption, phantom scan 0, adjudication anchors live, CIE validator PASS, build:hub exit 0",
+  "changes": [
+    {
+      "file": "apps/hub/content-maps/*.json (47) + _report.json",
+      "what": "Stage-2 attachment maps regenerated at the tip (attach_official_map.py RESOURCES_SHA -> dc9c1efc, fresh disk cache — the cache is path-keyed, not pin-keyed): 45 seed-era maps advanced to the tip sidecars (the T-CONSUME-EDX-2 followup class: REJOIN-1 x22 / R41/R42 / parse-round linkage now lands), accounting x2 re-attested body-identical except pin + a fresher notesInlineRefs (the 23c/23d post-build stack edits post-date the old attach run), chemistry-modular-24-unit-1/2 carry the upstream Stage-2 re-adjudication; _report.json rebuilt per the carry-forward law: 47 regenerated rows (current builder row shape) + golden + maths-b rows carried byte-exact from HEAD + totals recomputed"
+    },
+    {
+      "file": "apps/hub/content/<47 lanes>/{notes,flashcards,questions}.json + manifest.json",
+      "what": "official flip re-applied 47/47 (golden refused by construction, CIE scope guard hard-on): linkage rekeyed from the tip maps; 45 lanes' content files came out BYTE-IDENTICAL to HEAD except manifest (idempotence proof — their linkage was already current), chemistry-modular x2 carry real linkage updates from the upstream re-adjudication; manifests spread-and-restamped officialSpine.resourcesSha = dc9c1efc"
+    },
+    {
+      "file": "apps/hub/content/*/manifest.json (49 importSource.ref stamps)",
+      "what": "importSource.ref -> main@dc9c1efc fleet-wide in the corpus compact serialization: 47 flipped lanes + golden (note appended: content byte-frozen, golden authority, inputs proven identical 89260832..tip by tree-diff zero over consumed subtrees) + maths-b (note: of-record mixed vintage disclosed — corpus build + operator restore ruling trace 1a15de779f2250f9 + T-MIG-136 spec-anchors + attachment map @ 2e17aab0; pin convergence per the PINSPLIT-1 straggler clause; content byte-untouched)"
+    },
+    {
+      "file": "apps/hub/scripts/attach_official_map.py, build_official_content.py",
+      "what": "TWO reproducibility fixes of record, both double-apply-safety laws: (1) attach declared_of() — read the item's ORIGINAL sme tokens (smeSpecPointIds when the flip has run, specPointIds otherwise); regen on post-flip content was feeding rekeyed official codes into the spcpt map and would have silently DROPPED the declared lineage (8361 codes / 8112 items fleet-wide — caught fail-closed by the pre-flight code-loss census, zero guesses); (2) BOC smeSpecPointIds key-presence law — a re-flip over POST-flip content collapsed smeSpecPointIds to the first-flip codes (double-flip collapse); now the field is carried verbatim when present (including honestly-empty), falling back to specPointIds only when absent (pre-flip content); plus the attach pin bump with provenance comment"
+    }
+  ],
+  "upstream_attribution_of_record": {
+    "chemistry_modular_x2_code_delta": "the ONLY content-plane losses are in igcse-chemistry-modular-24-unit-1/2 (137 + 69 items whose sole codes were declared-lineage): upstream commit 1fdf2f97 (T-SPEC-STAGE2-1, operator-ordered stage-2 refresh of the 47-map corpus, builder-law re-attestation) re-adjudicated their spm mappings 94->59 / unmapped 43->78 (unit-1 census) — the demotion cascade lands here honestly as unmapped (no-guess held; nothing force-assigned); sidecar universe 1288 items, coded 1080->1062; flashcardsCoded fleet total 14950 -> 14777 (-173) with partial offsets elsewhere, questionPartsCoded 26562 -> 26875 (+313), notesCoded 3341 -> 3349 (+8)"
+  },
+  "verification": {
+    "attach": "47/47 ok, re-run drift 0 files (determinism), content/ byte-guard FATAL-armed and never fired",
+    "flip": "dry-run 47/47 gates green BEFORE any write; apply 47/47 ok (G1 deep-equals spine, G2 counts preserved, G3 zero spcpt tokens in linkage, G4 all codes resolve in spine, G5 manifest stamps)",
+    "provenance_guard": "fleet-wide field census vs HEAD: smeSpecPointIds byte-equal on all 47 lanes (0 corruption after the key-presence fix; the pre-fix collapse was caught and repaired by restore + re-flip, disclosed in the work log)",
+    "scope_census": "git status 105 files exactly: 47 lane manifests + chemistry-modular x2 content (6 files) + 47 maps + _report.json + 2 scripts + golden manifest + maths-b manifest; CIE paths 0; courses.json byte-untouched; spines/ byte-untouched; golden + maths-b content byte-frozen (manifest-only)",
+    "phantom_scan": "0 phantom-class tokens in the accounting bundles (the T-SPEC-7/10/2c poison class); adjudication anchors live: FIN-STAT S4.172 x1, INTRO-BK S1.123/S2.134 x5/S2.138/S2.139/S2.140/S1.120",
+    "pin_census": "49/49 non-CIE importSource.ref == main@dc9c1efc (the 47/1/1 split dissolved); officialSpine.resourcesSha == dc9c1efc on the 47 re-consumed lanes; golden/maths-b officialSpine blocks honestly retain their of-record map pins (89260832-era / 2e17aab0) with disclosure notes",
+    "cie_validator": "PASS (94-row registry, D1/D2, paper-count assertions hold; 0 cie paths touched)",
+    "full_build": "bun install --frozen-lockfile (sandbox reset had dropped node_modules) then bun run build:hub exit 0 — prebuild battery (corpus 23a gate + flashcard sync + CIE validator) + next build + corpus static bake all green"
+  },
+  "scope_guards": [
+    "CIE fleet (44 @ 0fe5f772 + 1 skeleton): zero bytes touched — another lane's authority (the CIE consume wave pattern is its own dispatch)",
+    "golden igcse-chemistry-19: content byte-frozen; manifest provenance stamp only, inputs proven identical 89260832..tip",
+    "igcse-maths-b-16: content byte-frozen (operator restore ruling of record stands); pin converged with mixed-vintage disclosure",
+    "courses.json, spines/, .syllabai worklog protocol respected; no force anywhere; secrets bash-inline only (PAT used solely for the v2 push/PR, never written to disk)"
+  ],
+  "transit_ledger": "syllabai-resources UNTOUCHED this lane — transit count of record stays 28 (next resources push records 29); the v2 push is a site-plane act, not a resources transit",
+  "followups": [
+    "CIE refresh lane: the CIE fleet's own consume wave (44 lanes @ 0fe5f772 vs the tip's tranche-2-R2 state) — same acceptance shape, separate dispatch per the queue",
+    "the maths-b attachment map remains seed-era @ 2e17aab0 (disclosed in-manifest); a maths-b Stage-2 regen + flip is operator-keyed (the restore ruling's interactive-bank plane must be honored)",
+    "golden note and maths-b note carry the convergence disclosures; the homepage per-course pin census (T-DISPLAY-PINCENSUS-1) renders from manifests and now shows 49 x dc9c1efc",
+    "PAT rotation STILL CRITICAL overdue (same fingerprint across transits 26-28 + this lane's v2 push) — rotation REQUIRED before any re-supply"
+  ]
+}

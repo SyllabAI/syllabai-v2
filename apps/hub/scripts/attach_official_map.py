@@ -56,7 +56,10 @@ REPO = Path(__file__).resolve().parent.parent
 # T-CONSUME-EDX-2: bumped to the census-validated tranche-1 tip — first pin that
 # carries T-SPEC-ACCT-REPAIR-1 (41 deterministic repoints) + T-SPEC-ACCT-ADJ-1
 # (12/12 operator-verified overrides) in spec-links/igcse-accounting-17-*.json.
-RESOURCES_SHA = "aa0b4de1b732738b4d02dabdd02d9ead85522907"
+# NEXTBUMP-2: bumped to the bump-time tip (PR #33 merge) — the NEXT #2 fleet
+# bump's convergence pin per the PINSPLIT-1 ruling of record (floor law
+# >= 89260832 satisfied; carries T-SPEC-STAGE2-1 + tranche-2 + sda-bio verdict).
+RESOURCES_SHA = "dc9c1efcfa5ccd3cb728f258b8dc2e718487d120"
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 DEFAULT_CACHE = Path("/home/z/my-project/work/spec-maps-cache")
 
@@ -69,6 +72,19 @@ L_DECLARED = "sme_declared_link_rekey"
 LINEAGE_RANK = {L_UPSTREAM: 0, L_DECLARED: 1}
 
 SPCPT_RE = re.compile(r"spcpt_[A-Za-z0-9]+")
+
+
+def declared_of(item: dict) -> list[str]:
+    """NEXTBUMP-2 fix: the item's ORIGINAL sme spec-point tokens.
+
+    Post-flip content (Stage 3 rekey applied) carries the rekeyed official
+    codes in specPointIds and preserves the pre-flip tokens in
+    smeSpecPointIds; pre-flip content has no smeSpecPointIds field. Reading
+    the originals first makes the regen idempotent across the flip boundary
+    (identical attachment maps from pre-flip and post-flip content) and keeps
+    the declared lineage resolvable through the spcpt map.
+    """
+    return item.get("smeSpecPointIds") or item.get("specPointIds") or []
 
 
 def fetch_text(rel: str, cache: Path) -> str | None:
@@ -381,7 +397,7 @@ def build_course(slug: str, cache: Path, out_dir: Path) -> dict:
         inline = SPCPT_RE.findall(body)
         notes_inline_refs += len(inline)
         notes_inline_unmapped.update(r for r in inline if r not in spcpt_map)
-        attach(nid, "note", n.get("specPointIds") or [], [])
+        attach(nid, "note", declared_of(n), [])
 
     # question parts
     qp_total = 0
@@ -389,11 +405,11 @@ def build_course(slug: str, cache: Path, out_dir: Path) -> dict:
         for q in qset.get("questions", []):
             for p in q.get("parts", []):
                 qp_total += 1
-                attach(p["id"], "question_part", p.get("specPointIds") or [], [])
+                attach(p["id"], "question_part", declared_of(p), [])
 
     # flashcards
     for f in flashcards:
-        attach(f["id"], "flashcard", f.get("specPointIds") or [], [])
+        attach(f["id"], "flashcard", declared_of(f), [])
 
     # ---- reconciliation vs the spine -------------------------------------
     # keyed by the resolved spine code; None = could not be placed in this
