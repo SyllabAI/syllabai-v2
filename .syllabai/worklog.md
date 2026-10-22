@@ -11988,3 +11988,15 @@ Work Log:
 
 Stage Summary:
 - The operator's first ruling batch IS of record: 3 anchors (24 parts / 48 operator_verdict entries), 5 honest defers (22 parts stay pending, reasons verbatim), zero invention. The ruling program is proven end-to-end: operator verdict -> pre-flight gates -> encode -> consume -> census re-pin -> receipt. Next: the lane stages part-level evidence for the 5 defer rows + the 2.3.1 conditional so the operator can confirm/quarantine with evidence in hand; the remaining ~3,547 unruled sids await batches. PAT rotation REMAINS CRITICAL-OVERDUE (fp a8ccee736aa8c75b). LANE R0: IDLE (awaiting next ruling batch or evidence-staging order).
+
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-22T02:00Z)
+Agent: R0-auto (merge desk)
+Task: PR #291 merge (T-BOOK-030/031 r0 — LESSON wire: lessonPackV1 contracts + plan of record)
+
+Work Log:
+- gates: head c3b1f72 CI 2/2 success (verify + hub); mergeable unknown at sweep open -> local merge-tree precheck 0 conflicts, re-check mergeable=True/state=clean; 0 reviews / 0 comments / 0 review comments — no HOLD/BLOCKING/do-not-merge.
+- diff boundary: 3 files (packages/contracts/src/books-lesson.ts, packages/contracts/src/index.ts, docs/books/LESSON-PLAN-4CH1-v1.md) — in-boundary; 0 *.java; 0 core/hub content; 0 Neon/prod writes.
+- merged: PUT /pulls/291/merge (merge_method=merge) -> merge sha 6037ded; new main tip CI verify + hub success (bounded wait, first-hand).
+
+Stage Summary:
+- main @ 6037ded green; LESSON wire lessonPackV1 contracts + 4CH1 lesson-plan of record landed. Sweep context: TS4L census red healed at d559292 (escalation cleared after 7 red rounds); PR #285 (dc3) head CI red, skipped — lane to refresh head CI on new head; bookkeeping-only receipt push (this commit).
