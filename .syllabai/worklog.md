@@ -12574,3 +12574,16 @@ Work Log:
 Stage Summary:
 - Migration 0008 of record is LIVE on the production branch and the branch is CONVERGED with origin/main's schema end-state: the Teaching Toolkit persistence layer (resources + usage quota + ai_toolkit gate + the 4 prompt registry rows) is ready for the T-TEACH-012 routes. The lineage-B/divergence episode is documented in receipts r0+r1; the unclaimed drop is flagged as an anomaly of record. Credential law standing: rotate the Neon owner password (traveled through chat twice), revoke the GitHub PAT at lane end.
 
+---
+Task ID: T-RULE-T2-APPLY-2 (v2 half)
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: companion consume-engine amendment for the staged sidecar sid-anchors (operator trace 1a163b0eb57bd5b1 "stage that sidecar capture next"; resources half = PR #49)
+
+Work Log:
+- Resources half (branch t-rule-t2-sidecar-capture/r0 @ 5b85ea3, PR #49): 23 sid-anchor records (46 spine-verified codes) staged additively on the chem25 sidecar under anchors.operatorSidAnchors (schema syllabai.operator-sid-anchors/1.0) + manifest rows + machine record graph/reports/tranche2-r2/sidecar-capture-run-001-r0.json; gates G1-G5 all green (substrate clean, receipt cross-check, 23/23 byte-consistent vs the v2 registry @ a9bd2488, 46/46 parsed-registry pairings, additive-only proven); sheet hazard census ZERO rows for these sids.
+- v2 half (this branch): cie_consume_spec_links.py Stage B learns the sid-anchor merge law — add-if-absent (record lineage/tier/method/via carried; multi-code officialCodes) / verify-if-equal / conflict-keep+disclose (NO-GUESS); added sids leave spcptUnmapped; census sources.specLinks.census.sidAnchors; unchanged-course report rows carry sidAnchors; totals aggregate; battery A1 (plane exclusivity + census cross-foot + not-merged guard). PIN-neutral; sheet 634/166 pins untouched.
+- VALIDATION of record (scripts/ruling2_consume_anchor_test.py, isolated real-pipeline harness, no repo writes): VERIFY fixture (map @ a9bd2488) = 0/23/0 a/v/k, unmapped 262, s2o 69, merge-twice byte-identical, battery GREEN — the committed map is a FIXED POINT (durable-reproduction proof); ADD fixture (pre-APPLY-1 vintage 46/280) = 23 added, 18 sids leave unmapped -> 262/69, 23/23 plane-exclusive, battery GREEN; CONFLICT fixture = 22 verified / 1 conflict-kept + disclosed, battery GREEN.
+- Receipt .syllabai/receipts/CIE-INTEGRATION/tranche2-consume-anchors-engine-run-001-r0.json; scope: engine + receipt + worklog only; fetch-first, no force; PR to main for the consume lane's adoption at its next pin advance.
+
+Stage Summary:
+- The tranche-2 sid->codes verdicts are now durable in BOTH the consumer input (sidecar, PR #49) and the consumer law (this amendment): any consume re-run AND any full rebuild reproduce the registry of record @ a9bd2488. Residuals: resources PR #49 merge (CI-gated), V8 retraction batch for the 7 corrected sids (operator-gated; additive encoder cannot retract), B02 part-level V8 consume (pending lane step; map_changed TRUE when it runs), 10 mis-tag re-points, tranche-3, PAT rotation. LANE: IDLE.

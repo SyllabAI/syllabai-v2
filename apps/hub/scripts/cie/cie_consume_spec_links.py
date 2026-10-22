@@ -8,7 +8,10 @@ Consumption law (REJOIN-1 NEXT #2 verbatim semantics):
   - verdict semantics: operator-verdict entries (V1-V4) are authoritative;
   - T2_near: accepted-near, NON-AUTHORITATIVE hint — carried in the map as
     items[].t2HintCodes, NEVER in items[].codes, NEVER in bundle linkage;
-  - the rejoin's J*-tier entries: consumed post-gate (ACCEPTED, identity-grade).
+  - the rejoin's J*-tier entries: consumed post-gate (ACCEPTED, identity-grade);
+  - operator sid-anchors (anchors.operatorSidAnchors, T-RULE-T2-APPLY-2):
+    sid-level operator rulings -> spcptToOfficial add-if-absent / verify-if-equal /
+    conflict-keep+disclose (NO-GUESS); added sids leave spcptUnmapped; battery A1.
 
 Pipeline (deterministic, fixed stamp, fail-loud):
   A  pins      sidecar review states + sha256s + registry/spine/bundle presence
@@ -214,9 +217,43 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
                 lineage=L_SIDECAR, via="REJOIN-1:gate-1")
             sheet_added += 1
 
+    # ---- sidecar operator sid-anchors -> spcptToOfficial ---------------------
+    # T-RULE-T2-APPLY-2 law (sidecar block anchors.operatorSidAnchors, schema
+    # syllabai.operator-sid-anchors/1.0): add-if-absent / verify-if-equal /
+    # conflict-keep+disclose (NO-GUESS — the sheet law's conflict posture);
+    # added sids leave spcptUnmapped (registry-plane law of v2 @ a9bd2488,
+    # T-RULE-T2-APPLY-1). Sheet rows carry ZERO entries for these sids
+    # (censused of record) — no provenance-overwrite vector.
+    an_added = an_verified = an_kept = 0
+    oan = ((sd.get("anchors") or {}).get("operatorSidAnchors") or {}).get("anchors") or {}
+    unmapped = list(att.get("spcptUnmapped") or [])
+    for sid, ar in oan.items():
+        codes = list(ar.get("officialCodes") or [])
+        if not codes:
+            continue
+        row = spcpt.get(sid)
+        if row is None:
+            spcpt[sid] = OrderedDict(
+                officialId=ar.get("officialId") or codes[0],
+                officialCode=codes[0], officialCodes=codes,
+                unit=None, tier=ar.get("tier"), method=ar.get("method"),
+                score=None, lineage=ar.get("lineage") or L_SIDECAR,
+                via=ar.get("via"))
+            if sid in unmapped:
+                unmapped.remove(sid)
+            an_added += 1
+        else:
+            have = list(row.get("officialCodes") or
+                        ([row.get("officialCode")] if row.get("officialCode") else []))
+            if have != codes:
+                an_kept += 1  # NO-GUESS: keep the committed row, disclose
+            else:
+                an_verified += 1
+
     new_att = OrderedDict(att)
     new_att["items"] = new_items
     new_att["spcptToOfficial"] = spcpt
+    new_att["spcptUnmapped"] = unmapped
 
     # ---- recompute coverage / reconciliation --------------------------------
     def cov(kind, total):
@@ -257,7 +294,8 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
             sidecarItems=len(sd["items"]), itemsWithCodes=len([1 for it in sd["items"].values() if it.get("codes")]),
             sidecarCodes=len([1 for it in sd["items"].values() for e in (it.get("codes") or [])]),
             t2Hints=t2_total, sidecarOnlyItems=len(sidecar_only),
-            codesAttachedFromSidecar=codes_added, ladderCodesRetained=codes_kept_ladder),
+            codesAttachedFromSidecar=codes_added, ladderCodesRetained=codes_kept_ladder,
+            sidAnchors=OrderedDict(added=an_added, verified=an_verified, conflictsKept=an_kept)),
         sheetUpgrades=OrderedDict(added=sheet_added, upgraded=sheet_upgraded, conflictsKept=sheet_conflict) if (sheet_rows or sheet_upgraded or sheet_added) else None,
         t2Policy="T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage")
     sp = new_att["sources"]["specPointMap"]
@@ -492,6 +530,33 @@ def battery(slug, old_att, new_att, sd, committed, staged, sheet_rows, sidecar_o
                     if c not in spine_codes:
                         problems.append(f"R5 linkage outside spine part {p['id']}: {c}")
 
+    # A1: operator sid-anchors law — plane exclusivity + census cross-foot
+    oan = ((sd.get("anchors") or {}).get("operatorSidAnchors") or {}).get("anchors") or {}
+    _verified = _kept = 0
+    for sid, ar in oan.items():
+        codes = list(ar.get("officialCodes") or [])
+        if not codes:
+            continue
+        in_off = sid in new_att["spcptToOfficial"]
+        in_um = sid in (new_att.get("spcptUnmapped") or [])
+        if in_off and in_um:
+            problems.append(f"A1 sid in both planes {sid}")
+        row = new_att["spcptToOfficial"].get(sid)
+        if row is None:
+            problems.append(f"A1 anchor not merged {sid}")
+            continue
+        have = list(row.get("officialCodes") or
+                    ([row.get("officialCode")] if row.get("officialCode") else []))
+        if have != codes:
+            _kept += 1  # conflict-kept: disclosed, not a defect
+        else:
+            _verified += 1
+    sa = ((new_att.get("sources") or {}).get("specLinks") or {}).get("census", {}).get("sidAnchors") or {}
+    if sa.get("added", 0) + sa.get("verified", 0) + sa.get("conflictsKept", 0) != _verified + _kept:
+        problems.append(f"A1 census {dict(sa)} != battery added+verified={_verified} kept={_kept}")
+    if sa.get("conflictsKept") != _kept:
+        problems.append(f"A1 conflictsKept {sa.get('conflictsKept')} != battery {_kept}")
+
     ok = not problems
     row = OrderedDict(
         course=slug, ok=ok,
@@ -551,8 +616,10 @@ def main() -> int:
         new_bytes = dumps_map(new_att)
         map_changed = old_bytes != new_bytes
         if not map_changed:
+            _sa = (((new_att.get("sources") or {}).get("specLinks") or {}).get("census") or {}).get("sidAnchors") or {}
             report_rows.append(OrderedDict(course=slug, changed=False, ok=True,
-                                           sidecarCodes=sum(tier_census.values())))
+                                           sidecarCodes=sum(tier_census.values()),
+                                           sidAnchors=_sa))
             continue
 
         # determinism: merge twice, byte-identical
@@ -583,6 +650,10 @@ def main() -> int:
             totals["sheetUpgraded"] += sheet_counts[1]
             totals["sheetConflicts"] += sheet_counts[2]
             totals["inlineRewrites"] += rstats["inlineNewRewrites"]
+            _sa2 = (((new_att.get("sources") or {}).get("specLinks") or {}).get("census") or {}).get("sidAnchors") or {}
+            totals["sidAnchorsAdded"] += _sa2.get("added", 0)
+            totals["sidAnchorsVerified"] += _sa2.get("verified", 0)
+            totals["sidAnchorsConflictsKept"] += _sa2.get("conflictsKept", 0)
             print(f"OK {slug}: sidecar codes {sum(tier_census.values())} by {dict(sorted(tier_census.items()))} "
                   f"| sheet +{sheet_counts[0]}/~{sheet_counts[1]} | inline rewrites {rstats['inlineNewRewrites']}", flush=True)
         report_rows.append(row)
