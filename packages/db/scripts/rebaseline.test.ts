@@ -248,20 +248,20 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // DC-3 (0009_dc3-mark-entitlement) adds 3 tables, 18 columns, 3 indexes,
   // 5 fks, 3 checks → 75/702/102/70/120 (measured: verifyBaseline VERIFY
   // PASS, 0 drifts, on the union end-state; renumber receipt in the plan).
-  test("75/702/102/70/120 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  test("77/730/105/73/126 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 75/75");
-    expect(v.inventory).toContain("columns 702");
-    expect(v.inventory).toContain("indexes 102");
-    expect(v.inventory).toContain("fks 70");
-    expect(v.inventory).toContain("checks 120");
+    expect(v.inventory).toContain("tables 77/77");
+    expect(v.inventory).toContain("columns 730");
+    expect(v.inventory).toContain("indexes 105");
+    expect(v.inventory).toContain("fks 73");
+    expect(v.inventory).toContain("checks 126");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(75);
+    expect(run.size).toBe(77);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);
@@ -279,6 +279,9 @@ describe("verifyBaseline (checked-in baseline)", () => {
     expect(run.has("public.ai_mark_events")).toBe(true);
     expect(run.has("public.mark_entitlement_policies")).toBe(true);
     expect(run.has("public.mark_entitlements")).toBe(true);
+    // F-182 build — the drill surface's own lane (zero-stakes by construction)
+    expect(run.has("public.drill_draws")).toBe(true);
+    expect(run.has("public.drill_part_evidence")).toBe(true);
   });
 });
 

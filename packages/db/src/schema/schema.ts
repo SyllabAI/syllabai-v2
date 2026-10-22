@@ -1744,3 +1744,73 @@ export const aiMarkEvents = pgTable("ai_mark_events", {
                 }),
         check("ai_mark_events_ordinal_check", sql`mark_ordinal >= 1`),
 ]);
+
+// F-182 build (r0) — the per-spec-point drill surface (docs/F182-DRILL-BUILD-PLAN.md).
+// The drill's OWN address space: bundle part ids (string), never the uuid-keyed
+// questions plane. drill_draws is the recency substrate (policy P4 — naive
+// recently-seen dedupe) + the draw audit trail; drill_part_evidence is the
+// F-055-SHAPED attempt evidence (ADR-016 shape: score, time, confidence, flag),
+// immutable — one row per (draw, part), never updated. ZERO-STAKES LAW: neither
+// table is read by any gradebook/progress projection (DC-7 reads
+// attempts/ai_mark_events/revision_note_viewed only), and the drill surface
+// writes no attempts/ai_mark_events rows.
+export const drillDraws = pgTable("drill_draws", {
+        id: uuid().primaryKey().notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        course: varchar({ length: 64 }).notNull(),
+        code: varchar({ length: 32 }).notNull(),
+        seed: bigint("seed", { mode: "number" }).notNull(),
+        partIds: jsonb("part_ids").notNull(),
+        poolSize: integer("pool_size").notNull(),
+        freshPoolSize: integer("fresh_pool_size").notNull(),
+        usedFallback: boolean("used_fallback").default(false).notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        index("ix_drill_draws_learner_course_code_time").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.course.asc().nullsLast().op("text_ops"), table.code.asc().nullsLast().op("text_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+        foreignKey({
+                        columns: [table.learnerId],
+                        foreignColumns: [users.id],
+                        name: "fk_drill_draws_learner"
+                }).onDelete("cascade"),
+        check("ck_drill_draws_seed", sql`seed >= 0 AND seed <= 4294967295`),
+        check("ck_drill_draws_pool_sizes", sql`pool_size >= 0 AND fresh_pool_size >= 0`),
+]);
+
+export const drillPartEvidence = pgTable("drill_part_evidence", {
+        id: uuid().primaryKey().notNull(),
+        drawId: uuid("draw_id").notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        course: varchar({ length: 64 }).notNull(),
+        code: varchar({ length: 32 }).notNull(),
+        partId: varchar("part_id", { length: 80 }).notNull(),
+        questionId: varchar("question_id", { length: 80 }).notNull(),
+        setId: varchar("set_id", { length: 120 }).notNull(),
+        responseKind: varchar("response_kind", { length: 8 }).notNull(),
+        response: jsonb().notNull(),
+        correct: boolean(),
+        marksAwarded: integer("marks_awarded"),
+        marksPossible: integer("marks_possible").notNull(),
+        responseTimeMs: bigint("response_time_ms", { mode: "number" }).notNull(),
+        confidenceLevel: integer("confidence_level"),
+        selfDoubtFlag: boolean("self_doubt_flag").default(false).notNull(),
+        provenance: varchar({ length: 40 }).default('DRILL').notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        unique("uq_drill_evidence_draw_part").on(table.drawId, table.partId),
+        index("ix_drill_evidence_learner_time").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+        index("ix_drill_evidence_code").using("btree", table.course.asc().nullsLast().op("text_ops"), table.code.asc().nullsLast().op("text_ops")),
+        foreignKey({
+                        columns: [table.drawId],
+                        foreignColumns: [drillDraws.id],
+                        name: "fk_drill_evidence_draw"
+                }).onDelete("cascade"),
+        foreignKey({
+                        columns: [table.learnerId],
+                        foreignColumns: [users.id],
+                        name: "fk_drill_evidence_learner"
+                }).onDelete("cascade"),
+        check("ck_drill_evidence_confidence", sql`confidence_level IS NULL OR (confidence_level >= 1 AND confidence_level <= 5)`),
+        check("ck_drill_evidence_time", sql`response_time_ms >= 0`),
+        check("ck_drill_evidence_response_kind", sql`(response_kind)::text = ANY ((ARRAY['choice'::character varying, 'text'::character varying])::text[])`),
+        check("ck_drill_evidence_marks", sql`marks_awarded IS NULL OR (marks_awarded >= 0 AND marks_awarded <= marks_possible)`),
+]);
