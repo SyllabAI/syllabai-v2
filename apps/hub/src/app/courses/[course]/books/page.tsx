@@ -15,6 +15,7 @@ import {
   fetchBookSlices,
 } from "@/lib/books";
 import { booksRawUrl } from "@/lib/pastpapers-shared";
+import { fetchLessonShelfEntries } from "@/lib/books-lesson";
 import { CourseHeader } from "@/components/hub/course-header";
 import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
 import { Badge } from "@/components/ui/badge";
@@ -116,6 +117,13 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
   const slices = await fetchBookSlices(slug, book.documentId, book.docVersion);
   const sliceMap = slices ? bookSliceMapOf(slices) : null;
 
+  // T-BOOK-033 — the Lesson shelf affordance: PUBLISHED packs only (T-C20:
+  // a pack that has not been operator-VALIDATED simply is not here). The
+  // badge is a deep link to the lesson surface for that chapter.
+  const lessonChapters = new Set(
+    (await fetchLessonShelfEntries(slug)).map((e) => e.chapterKey),
+  );
+
   return (
     <Card>
       <CardContent className="space-y-4 p-4 sm:p-5">
@@ -211,6 +219,15 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
                       )}
                     </div>
                     <PageRangeBadge ch={ch} />
+                    {lessonChapters.has(ch.chapterKey) && (
+                      <Badge asChild variant="secondary" className="shrink-0 font-medium">
+                        <Link
+                          href={`/courses/${slug}/books/${book.documentId}/lesson?chapter=${encodeURIComponent(ch.chapterKey)}`}
+                        >
+                          Lesson
+                        </Link>
+                      </Badge>
+                    )}
                   </li>
                   );
                 })}

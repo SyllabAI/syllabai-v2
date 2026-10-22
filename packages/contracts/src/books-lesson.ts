@@ -49,6 +49,12 @@ export const lessonSectionSchema = z.object({
   /** Official spec point codes this section teaches; must be a subset of
    *  the chapter's join set (specCodes[].officialCode in book_chapters). */
   specRefs: z.array(z.string().min(1)).min(1),
+  /** Authored section prose in the CourseLessons section grammar
+   *  (:::box fences + [[glossary-slug]] chips + GFM tables). r0.1
+   *  (T-BOOK-033, additive): the corpus-side emit (lessonctl.py r0.4)
+   *  carries it; renderers may consume it directly — the strict serving
+   *  law is unchanged (this field is optional and ignorable). */
+  markdown: z.string().optional(),
 });
 export type LessonSection = z.infer<typeof lessonSectionSchema>;
 

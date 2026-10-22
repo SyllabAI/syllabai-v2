@@ -7,6 +7,7 @@ import type { BookChapter } from "@syllabai/contracts";
 import { loadHubCourse } from "@/lib/courses";
 import { relatedNotesForChapter } from "@/lib/books-notes";
 import { fetchBookRailBlocks } from "@/lib/books-rail";
+import { fetchChapterLesson } from "@/lib/books-lesson";
 import { RailWorkspace } from "@/components/books/rail/rail-workspace";
 import {
   fetchBookChapters,
@@ -77,10 +78,10 @@ export default async function BookViewerPage({
   searchParams,
 }: {
   params: Promise<{ course: string; docId: string }>;
-  searchParams: Promise<{ chapter?: string; page?: string; part?: string }>;
+  searchParams: Promise<{ chapter?: string; page?: string; part?: string; preview?: string }>;
 }) {
   const { course: slug, docId } = await params;
-  const { chapter: chapterParam, page: pageParam, part: partParam } = await searchParams;
+  const { chapter: chapterParam, page: pageParam, part: partParam, preview: previewParam } = await searchParams;
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
   const { meta } = hub;
@@ -190,6 +191,15 @@ export default async function BookViewerPage({
   const railBlocks = await fetchBookRailBlocks(docId, target.chapterKey);
   const railOn = railBlocks != null && railBlocks.length > 0;
 
+  // T-BOOK-033 — the Lesson toggle ("one substrate, two renderers"). The
+  // link renders only when the chapter's pack is student-visible (T-C20:
+  // published) OR the operator is previewing (?preview=1 carries through —
+  // a draft pack never appears for a plain reader visit).
+  const chapterLesson = await fetchChapterLesson(slug, target.chapterKey);
+  const lessonVisible =
+    chapterLesson != null && (!chapterLesson.previewOnly || previewParam === "1");
+  const lessonHref = `/courses/${slug}/books/${docId}/lesson?chapter=${encodeURIComponent(target.chapterKey)}` + (previewParam === "1" ? "&preview=1" : "");
+
   // slice pane path; null → whole-book fallback (the 133c mount)
   const sliceRel = mountEntry ? bookSlicePathForCourse(slug, mountEntry.file) : null;
   const panePath = sliceRel ?? wholePdfPath;
@@ -208,6 +218,13 @@ export default async function BookViewerPage({
         <span className="text-muted-foreground">
           {ordinal}/{chapters.length} · {target.title}
         </span>
+        {lessonVisible && (
+          <Button asChild variant="ghost" size="sm" className="h-7 shrink-0 px-2">
+            <Link href={lessonHref} aria-label="Open this chapter as a Lesson">
+              Lesson
+            </Link>
+          </Button>
+        )}
         <span className="ml-auto shrink-0 text-xs text-muted-foreground">
           {rangeLabel}
           {bookRangeLabel}
