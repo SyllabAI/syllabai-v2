@@ -3,14 +3,14 @@
  "generatedUtc": "2026-10-21T21:55:49Z",
  "importSource": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@1e69c5d26bfa0dc20dc78127f0cf71ec2233169c",
+  "ref": "main@329fe1f43c4a7fa3a0d9b03fe655b4ff03dff347",
   "upstreamSchemas": [
    "syllabai.sme-revision-note/1.0",
    "syllabai.sme-revision-notes-course/1.0",
    "syllabai.sme-exam-questions/1.1",
    "syllabai.sme-flashcard-deck/1.0"
   ],
-  "note": "ADR-037 converter v0.12.0 corpus (merged main): the F-178 R-VARIANT schedule tranche 1 - the 1CR paper converts for its 11 printed series (2019-06 through 2026-06; 2021-06/2021-11/2023-11/2024-11/2025-11 never printed a 1CR and 2020-06 never ran - COVID) and lands as a pure append: 11 official sets / 118 questions / 636 parts / 1210 marks (wave-15 disclosure gone=0 changed=0; exporter v4 gates G-E1..G-E5 green against the declared data cut main@1e69c5d26bfa0dc20dc78127f0cf71ec2233169c). F49 QSTART first-match law heals the isotope-label false match that truncated 2023-06 1CR Q3; F50 R-era MS marker degenerations heal generically (C60-C64) plus one genuine wrap-split answer cell (2022-01 8(b)(i)) human-transcribed into MS-LINK-OVERRIDES per F47; PUA map extensions: the ZapfDingbats tick (F033 -> U+2713) and the Symbol big-bracket trio (F8EE/F8EF/F8F0 -> U+23A1/2/3) with font trace + page render per glyph. 43 official sets (16x1C + 16x2C + 11x1CR), 398 questions, 2184 parts, 4090 marks; 316 figure crops + 8 honest stubs served via rawUrl provenance refs. The 1CR tranche serves pending-llm under the anchor law: spec-label waves are the tranche's next step (labels only, G6 judges) - all 118 1CR questions and all 636 1CR parts serve without spec codes, honestly."
+  "note": "ADR-037 converter v0.13.0 corpus (merged main): the F-178 R-VARIANT schedule tranche 2 - the 2CR paper converts for its 11 printed series (the same 11 R series as 1CR; 2021-06/2021-11/2023-11/2024-11/2025-11 never printed a 2CR and 2020-06 never ran - COVID) and lands as a pure append: 11 official sets / 79 questions / 423 parts / 770 marks (wave-16 disclosure gone=0 changed=0; exporter v4 gates G-E1..G-E5 green against the declared data cut main@329fe1f43c4a7fa3a0d9b03fe655b4ff03dff347). PUA map extensions per the F48 evidence standard: the Wingdings2 tick F050 -> U+2713 (2019-06 2CR p16 render) and the Symbol big-bracket RIGHT trio F8F9/F8FA/F8FB -> U+23A4/23A5/23A6 (2023-01 2CR 4(b)(ii) repeat-unit scaffold, p9 render) - the 6-piece bracket pair is now fully mapped, retiring the v0.12.0 right-column mirror caveat. F45 manual-crop pass: 2020-01 1(a)(ii) five particle boxes, 2020-01 6(c) displayed-formulae + bond-energy table block, 2023-01 8(a) energy-axis scaffold; review close-out 11/11 (8 emitted crops accepted as-is, 3 crop-required stubs became the manual crops), 0 review flags remain on the 2CR tranche. 54 official sets (16x1C + 16x2C + 11x1CR + 11x2CR), 477 questions, 2607 parts, 4860 marks; 368 figure crops + 8 honest stubs served via rawUrl provenance refs. The 2CR tranche serves pending-llm under the anchor law (0/79 questions and 0/423 parts carry spec codes, data-verified this lane), same as the 1CR tranche; spec-label waves remain the tranches' next step. F52 disclosure: the consumed cut predates resources v0.13.1 (the corpus-wide italic-Delta normalization U+01FB -> U+0394, 2020-01 R slices x5) - this bundle serves the pre-normalization bytes (3 occurrences in the 2020-01 2CR slice, data-verified this lane; the 2020-01 1CR pair was consumed at wave-15 and equally predates F52); corpus-side is fixed at F52, counts and part ids are unaffected, and the hub-side normalization is a future lane."
  },
  "curriculum": {
   "board": "Pearson Edexcel",
@@ -25,10 +25,10 @@
   "topics": 28,
   "specPoints": 182,
   "notes": 112,
-  "questionSets": 71,
-  "questions": 922,
-  "parts": 3588,
-  "marks": 7798,
+  "questionSets": 82,
+  "questions": 1001,
+  "parts": 4011,
+  "marks": 8568,
   "flashcards": 909
  },
  "treeKind": "official",
@@ -36,7 +36,7 @@
   "syllabai.official-paper-questions/0.1"
  ],
  "countsProvenance": {
-  "note": "Counts census the served bundle (CONTENT-AUDIT run-001-r0 found the import-time counts stale; the v0.9.0 sync recomputed them from the files; wave-12 recomputed again from the v0.10.0 corpus; wave-15 recomputed again from the v0.12.0 corpus). Breakdown preserved below; live UI reads the files directly.",
+  "note": "Counts census the served bundle (CONTENT-AUDIT run-001-r0 found the import-time counts stale; the v0.9.0 sync recomputed them from the files; wave-12 recomputed again from the v0.10.0 corpus; wave-15 recomputed again from the v0.12.0 corpus; wave-16 recomputed again from the v0.13.0 corpus). Breakdown preserved below; live UI reads the files directly.",
   "smeCorpus": {
    "questionSets": 28,
    "questions": 524,
@@ -44,11 +44,11 @@
    "marks": 3708
   },
   "adr037OfficialAdds": {
-   "questionSets": 43,
-   "questions": 398,
-   "parts": 2184,
-   "marks": 4090,
-   "source": "ADR-037 official-paper wiring (converter v0.10.0 wave-12 corpus through resources main@2275e143a0; exporter of record F44 @ bf8d56c30f; G-E1..G-E4 5/5 green under the frozen wave-12 delta census scripts/exporter-disclosures/2026-10-22-wave12.json) wave-15 appends the 1CR tranche (11 sets / 118 questions / 636 parts / 1210 marks) from the v0.12.0 corpus @ main@1e69c5d26bfa0dc20dc78127f0cf71ec2233169c (exporter v4, G-E1..G-E5 green)."
+   "questionSets": 54,
+   "questions": 477,
+   "parts": 2607,
+   "marks": 4860,
+   "source": "ADR-037 official-paper wiring (converter v0.10.0 wave-12 corpus through resources main@2275e143a0; exporter of record F44 @ bf8d56c30f; G-E1..G-E4 5/5 green under the frozen wave-12 delta census scripts/exporter-disclosures/2026-10-22-wave12.json) wave-15 appends the 1CR tranche (11 sets / 118 questions / 636 parts / 1210 marks) from the v0.12.0 corpus @ main@1e69c5d26bfa0dc20dc78127f0cf71ec2233169c (exporter v4, G-E1..G-E5 green). wave-16 appends the 2CR tranche (11 sets / 79 questions / 423 parts / 770 marks) from the v0.13.0 corpus @ main@329fe1f43c4a7fa3a0d9b03fe655b4ff03dff347 (exporter v4, G-E1..G-E5 green; expected-deltas = the of-record wave-16 disclosure's 2CR half, its 22-set baseline being the pre-wave-15 bundle)."
   }
  }
 }
