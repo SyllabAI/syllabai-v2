@@ -126,3 +126,17 @@ by it — no private tooling is needed to regenerate or audit this baseline.
 4. After a live re-baseline: typecheck `packages/db`; append a receipt under
    `.syllabai/receipts/T-MIG-002-R/`; update this header with the new capture
    date and counts.
+
+## V2-native migrations (additive-only, post-baseline — owning task ledger)
+
+Every migration after the 0000 baseline is a v2-owned additive structure per
+`docs/BASELINE_DB.md` §4. Owning task ids (the file headers carry the same):
+
+| Migration | Owning task | Structures |
+|---|---|---|
+| `0003_f5s7-g2-spec-point-constraint.sql` | T-MIG-139 (F.5 §7 G2) | `ck_node_type` seven-value law (SPEC_POINT joins) |
+| `0004_cla_thread_sync_tier.sql` | T-MIG-069 | CLA thread sync tier |
+| `0005_book-rail-tables.sql` | T-MIG-133 band 133a | `book_chapters` + the book rail tables |
+| `0006_class_feature_toggles.sql` | T-TEACH-002 (ADR-CLASS-0001) | `class_features` side table |
+| `0007_t-sm-kappa-subject.sql` | T-MIG-102 lane | `smart_mark_agreement_evaluations.subject_id` |
+| `0008_teaching_toolkit.sql` | T-TEACH-011 | `teaching_toolkit_resources` + `teaching_toolkit_usage` + `class_features.ai_toolkit` + the `prompt_versions` teaching-toolkit/* v1.0 seed rows |

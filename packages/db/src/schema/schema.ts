@@ -1597,6 +1597,10 @@ export const classFeatures = pgTable("class_features", {
         smartMark: boolean("smart_mark").default(true).notNull(),
         tutor: boolean("tutor").default(true).notNull(),
         cla: boolean("cla").default(true).notNull(),
+        // T-TEACH-011 (TEACHING_TOOLKIT_PLAN §4/§5): the Teaching Toolkit gate
+        // column — row-absent still means every feature ON (the coalesce law),
+        // DEFAULT true keeps the ADR-CLASS-0001 semantics unchanged.
+        aiToolkit: boolean("ai_toolkit").default(true).notNull(),
         updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).notNull(),
         updatedBy: uuid("updated_by"),
 }, (table) => [
@@ -1620,4 +1624,55 @@ export const courseRegistry = pgTable("course_registry", {
         syncedAt: timestamp("synced_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
         index("ix_course_registry_cc").using("btree", table.curriculumCode.asc().nullsLast().op("text_ops")).where(sql`(curriculum_code IS NOT NULL)`),
+]);
+
+// ── T-TEACH-011 (TEACHING_TOOLKIT_PLAN §5): the Teaching Toolkit append-only
+// results + the per-teacher daily quota counter. V2-NATIVE, ADDITIVE-ONLY
+// (BASELINE_DB.md §4; the smart_mark_results append-only posture): one row
+// per generation attempt — SUCCESS rows carry the validated document,
+// FAILED rows carry failure_reason (both self-heal attempts' verdicts ride
+// it) — never updated after insert. class_id is nullable (ad-hoc, no class
+// context) and ON DELETE SET NULL: deleting a class must not erase the
+// teacher's generation history (course_slug keeps the context readable).
+export const teachingToolkitResources = pgTable("teaching_toolkit_resources", {
+        id: uuid().primaryKey().notNull(),
+        teacherId: uuid("teacher_id").notNull(),
+        classId: uuid("class_id"),
+        courseSlug: varchar("course_slug", { length: 64 }).notNull(),
+        toolType: varchar("tool_type", { length: 16 }).notNull(),
+        inputMetadata: jsonb("input_metadata").notNull(),
+        output: jsonb(),
+        status: varchar({ length: 12 }).default('SUCCESS').notNull(),
+        model: varchar({ length: 120 }),
+        providerName: varchar("provider_name", { length: 40 }),
+        failureReason: varchar("failure_reason", { length: 500 }),
+        elapsedMs: integer("elapsed_ms"),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        index("ix_toolkit_resources_teacher").using("btree", table.teacherId.asc().nullsLast().op("uuid_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+        foreignKey({
+                        columns: [table.teacherId],
+                        foreignColumns: [users.id],
+                        name: "teaching_toolkit_resources_teacher_id_fkey"
+                }),
+        foreignKey({
+                        columns: [table.classId],
+                        foreignColumns: [classes.id],
+                        name: "teaching_toolkit_resources_class_id_fkey"
+                }).onDelete("set null"),
+        check("ck_toolkit_resources_status", sql`(status)::text = ANY ((ARRAY['SUCCESS'::character varying, 'FAILED'::character varying])::text[])`),
+        check("ck_toolkit_resources_tool_type", sql`(tool_type)::text = ANY ((ARRAY['lesson_plan'::character varying, 'rubric'::character varying, 'sow'::character varying, 'coach'::character varying])::text[])`),
+]);
+
+export const teachingToolkitUsage = pgTable("teaching_toolkit_usage", {
+        teacherId: uuid("teacher_id").notNull(),
+        usageDay: date("usage_day").notNull(),
+        used: integer().default(0).notNull(),
+}, (table) => [
+        foreignKey({
+                        columns: [table.teacherId],
+                        foreignColumns: [users.id],
+                        name: "teaching_toolkit_usage_teacher_id_fkey"
+                }),
+        primaryKey({ columns: [table.teacherId, table.usageDay], name: "teaching_toolkit_usage_pkey" }),
 ]);
