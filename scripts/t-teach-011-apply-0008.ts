@@ -208,7 +208,11 @@ try {
         checks.check_constraints_exact =
                 JSON.stringify(cks) === JSON.stringify(["ck_toolkit_resources_status", "ck_toolkit_resources_tool_type"]);
 
-        // 4. FKs (target + delete rule)
+        // 4. FKs (target + delete rule) — pg_constraint.confdeltype mapping:
+        //    'a'=NO ACTION (pg default), 'n'=SET NULL, 'c'=CASCADE, 'r'=RESTRICT,
+        //    'd'=SET DEFAULT. The migration file says class_id=SET NULL and both
+        //    teacher FKs=NO ACTION. (Run-002 evidence: live values n/a/a — the
+        //    driver's inverted mapping was the only red, the DB was correct.)
         const fks = (
                 await sql`select conname, confdeltype from pg_constraint where conrelid in ('public.teaching_toolkit_resources'::regclass,'public.teaching_toolkit_usage'::regclass) and contype='f' order by conname`
         ).map((r) => ({ name: r.conname, on_delete: r.confdeltype }));
@@ -216,8 +220,8 @@ try {
         checks.foreign_keys_exact =
                 fks.length === 3 &&
                 !!fks.find((f) => f.name === "teaching_toolkit_resources_class_id_fkey" && f.on_delete === "n") &&
-                !!fks.find((f) => f.name === "teaching_toolkit_resources_teacher_id_fkey" && f.on_delete === "n") &&
-                !!fks.find((f) => f.name === "teaching_toolkit_usage_teacher_id_fkey" && f.on_delete === "n");
+                !!fks.find((f) => f.name === "teaching_toolkit_resources_teacher_id_fkey" && f.on_delete === "a") &&
+                !!fks.find((f) => f.name === "teaching_toolkit_usage_teacher_id_fkey" && f.on_delete === "a");
 
         // 5. index
         checks.index_ix_toolkit_resources_teacher = (
