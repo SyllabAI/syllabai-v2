@@ -1,0 +1,57 @@
+{
+  "receipt": "run-008-b3-applied-of-record-all-gates-green-r0",
+  "lane": "ADR-037 v0.7 per-point re-apply",
+  "trace": "1a1614d7dfdc84b1",
+  "operatorOrder": "green-light (explicit, verbatim) — the B3 fire order; survivor disposition: default leave-active by the zero-deletion law (no extension ordered)",
+  "gateLawEventOfRecord": {
+    "what": "first apply dispatch (run 39708101053) FAILED HONEST RED exit 3 — the lane's dispatch driver did not forward the confirm input; the workflow's apply gate ('confirm must equal APPLY-ADR037-B3') refused EXACTLY as designed: the ingest step never ran, ZERO DB statements, secret untouched",
+    "resolution": "driver fixed to forward CONFIRM_TOKEN (scripts/adr037_ci_dispatch.py, committed with this receipt); re-dispatch gated clean",
+    "discipline": "the gate law working on the lane's own mistake is the fail-closed design proven in production-like conditions"
+  },
+  "applyOfRecord": {
+    "route": "workflow adr037-db-plane.yml mode=apply confirm=APPLY-ADR037-B3",
+    "runId": 39708335185,
+    "runUrl": "https://github.com/SyllabAI/syllabai-v2/actions/runs/39708335185",
+    "headSha": "d55929280e24",
+    "conclusion": "success",
+    "tool": "bun apps/api/scripts/ingest-bundle-questions.ts igcse-chemistry-19 --apply (the FROZEN T-MIG-135b tool; ONE atomic transaction — the ADR-026 evidence-safe replace)",
+    "bundle": "syllabai.sme-exam-questions/1.1@bf8d56c30f8b1532f9735e9f5f1d7e71c0694022 (the wave-12 bundle of record — byte-identical to the dry-run of record, verified pre-dispatch: zero bundle-drift commits)",
+    "applySummary": {"questions": 803, "structured": 803, "parts": 2635, "options": 1260, "markPoints": 3907, "specPointMappings": 2917, "topicMappings": 0, "assets": 0, "deactivated": 591},
+    "floorsVsDryRun": "EXACT — the apply summary equals the run-007 dry-run summary field-for-field (the same bundle, the same statement sequence, now committed)",
+    "secretLifecycle": "staged sealed-box (fp 3b8b9c5951ca595d) -> deleted 204 -> 404 verified; log scrub clean"
+  },
+  "gatesOfRecord": {
+    "method": "scripts/adr037_gates_postapply.py, read-only session, first-hand (result file adr037_gates_postapply_result.json)",
+    "G1_sum_invariant": {
+      "perpoint_multirow_violations": 0,
+      "wholeblock_1to1_violations": 0,
+      "parts_with_zero_mp_rows": 0,
+      "mcq_direct_mismatch": 0,
+      "verdict": "every ACTIVE part's mark_points sum EXACTLY to part.marks — the pointMarkCeiling silent-under-award risk is CLOSED on the live corpus (zero drift)"
+    },
+    "G2_exact_vs_summary": {
+      "active_rows": "969 = 958 (census new) + 11 (survivors) EXACT; by type MCQ_SINGLE 321 = 315+6, STRUCTURED 648 = 643+5",
+      "deactivated_inactive_rows": "591 EXACT",
+      "parts": "2662 = 2635 + 27 survivors EXACT",
+      "options": "1284 = 1260 + 24 survivors EXACT",
+      "markPoints": "3940 = 3907 + 33 survivors EXACT",
+      "joins": "2922 = 2917 + 5 survivors EXACT"
+    },
+    "G3_perpoint_law_shape": {
+      "perpoint_multirow_parts": 638,
+      "wholeblock_1to1_parts": 2024,
+      "verdict": "the selection law is LIVE: parts carrying markPoints serve one-row-per-point; parts without serve the frozen whole-block row — both laws co-existing side by side exactly as ADR-037 v0.7 wired"
+    },
+    "G4_survivors": {"active": 11, "expected": 11, "their_parts_options_mp_joins": "27/24/33/5 — intact, untouched, zero deletions"},
+    "G5_untouched_classes": {"smart_mark_results": 368, "answers": 655, "question_asset": 585, "spec_point_nodes_4ch1": 182, "verdict": "history cannot break (breakdown jsonb, no mark_points FK) — confirmed unchanged"}
+  },
+  "arithmeticClosureOfRecord": "pre-apply active slice 602 (591 re-emitted + 11 survivors) -> 591 deactivated + 11 intact; new population 958 rows (803 admitted questions; 643 STRUCTURED + 315 MCQ rows); parts 2635; options 1260; mark_points 3907 = 2414 per-point + 315 part-less MCQ-direct + 1178 whole-block; joins 2917 — all EXACT vs the wave-12 census + the apply summary + the survivors' computed contribution",
+  "stateOfRecord": "THE PER-POINT LAW IS LIVE ON THE PRODUCTION MARKING CORPUS: 969 active slice rows serving under the two-laws selection (per-point where the content carries markPoints, whole-block where it does not); the official past-paper plane (280 questions class) is now mapped, anchored and per-point; history-safe, sum-law-clean, fail-closed-lane from the first census to the committed apply",
+  "postB3Register": [
+    "hub-join legacy-branch ruling: the chemistry pilot still derives legacy non-prefixed refs for the fetch-bank population — the per-point Smart Mark granularity UNLOCK on the serving side needs the shared-law branch live-verified (operator order with live probes)",
+    "the 11 old-law survivors: active by the zero-deletion law; a retirement ruling (deactivate) may follow if the duplicate class matters to serving",
+    "export-lane: chemistry now emits per-paper natively (wave-12); the generator debt is closed for this lane",
+    "credential exposures: the pooler URI pasted once (fp 3b8b9c5951ca595d), reused of-record across the session; GH PAT fp a8ccee736aa8c75b",
+    "psycopg2 sandbox wipe recurrence #5 (reinstalled)"
+  ]
+}

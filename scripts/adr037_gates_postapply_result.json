@@ -1,0 +1,62 @@
+{
+ "probe": "adr037-b3-postapply-gates-1-5",
+ "readonly_session": true,
+ "session_read_only": "on",
+ "g2_active_rows": 969,
+ "g2_active_distinct_refs": 969,
+ "g2_inactive_rows_deactivated": 591,
+ "g2_active_by_type": {
+  "MCQ_SINGLE": 321,
+  "STRUCTURED": 648
+ },
+ "g2_expected_active_rows": 969,
+ "g2_expected_inactive": 591,
+ "g2_survivor_contribution": {
+  "parts": 27,
+  "options": 24,
+  "mark_points": 33,
+  "joins": 5
+ },
+ "g2_vs_summary": {
+  "parts": {
+   "live": 2662,
+   "expected": 2662,
+   "ok": true
+  },
+  "options": {
+   "live": 1284,
+   "expected": 1284,
+   "ok": true
+  },
+  "markPoints": {
+   "live": 3940,
+   "expected": 3940,
+   "ok": true
+  },
+  "joins": {
+   "live": 2922,
+   "expected": 2922,
+   "ok": true
+  }
+ },
+ "g1_perpoint_parts": {
+  "violating": 0
+ },
+ "g1_wholeblock_parts_violating": 0,
+ "g1_parts_with_zero_mp_rows": 0,
+ "g1_mcq_direct_mismatch": 0,
+ "g3_perpoint_multirow_parts": 638,
+ "g3_wholeblock_1to1_parts": 2024,
+ "g4_survivors": {
+  "rows": 11,
+  "active": 11,
+  "expected_active": 11,
+  "ok": true
+ },
+ "g4_survivor_mp_intact": 33,
+ "g5_smart_mark_results": 368,
+ "g5_answers": 655,
+ "g5_question_asset": 585,
+ "g5_spec_point_nodes_4ch1": 182,
+ "ALL_GATES": "GREEN"
+}

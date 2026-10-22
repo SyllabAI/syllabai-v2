@@ -84,10 +84,15 @@ def cmd_stage(mode: str, note: str) -> int:
         return 3
     print(f"secret staged: {SECRET_NAME} (value fp16 {fp(uri)}, never printed)")
 
-    # 3. dispatch
+    # 3. dispatch (the apply gate: the confirm token MUST ride the dispatch
+    #    inputs — the workflow's precondition compares it verbatim)
     r = s.post(
         f"{API}/actions/workflows/{WORKFLOW}/dispatches",
-        json={"ref": "main", "inputs": {"mode": mode, "note": note}},
+        json={"ref": "main", "inputs": {
+            "mode": mode,
+            "note": note,
+            "confirm": os.environ.get("CONFIRM_TOKEN", ""),
+        }},
         timeout=30,
     )
     if r.status_code != 204:
