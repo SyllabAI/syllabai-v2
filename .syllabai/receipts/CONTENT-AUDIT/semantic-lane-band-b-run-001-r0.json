@@ -1,0 +1,54 @@
+{
+  "receipt": "semantic-lane-band-b-run-001-r0",
+  "family": "CONTENT-AUDIT",
+  "operatorTrace": "1a1615fe86d96ed9",
+  "operatorOrder": "band B (geo-25's 111 cross-edition rows), band C (EL/fleet leave-unjoined codification), and then the two parse/spine repair lanes — 2026-10-22, zai-web",
+  "agent": "main agent (Z.ai, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)",
+  "generatedUtc": "2026-10-22T01:00:00Z",
+  "phase": "BAND B FIRED END-TO-END of record: geography-25's 111 cross-edition rows adjudicated per-row under AGENT.md rule 3 — 81 joins landed (additive V7_agent_note_join band layer, official 2025-2026 texts cited per code from the 664610 parse of record) + 30 honest pendings codified in 9 evidence-cited classes; consumed learner-side (band D) at the band-B pin; the cross-edition root cause of record: the SME geo-25 notes are authored against the NEXT edition (2027-2029 syllabus, doc 718150, fetched + parsed this lane) while the served lattice is 0460 2025-2026 (113 pts, doc 664610, PDF sha1 dc24f568) — the bridge was judged on STATEMENTS not numbers; zero DB writes, zero LLM-API spend",
+  "basis": "semantic_lane_program of lattice-residuals-run-001-r0: band B = geography-25's 111 cross-edition rows (the 2025-2026 lattice is complete, 113 pts, 0 orphans; each row needs the edition-bridge judgment), vehicle = the T-SPECS-CIE-COMPLETE-1 engine shape re-run, law = AGENT.md rule 3 verbatim; band A already discharged of record (semantic-lane-band-a-run-001-r0, trace 1a16057229070f09) — verified first-hand before firing",
+  "laneOfRecord": {
+    "resources": {
+      "pin": "58d7f689 (rebased over the mid-lane PR #34 exporter-harness landing b5701769, zero file overlap, battery re-proven on the rebased state, pushed FF)",
+      "commit": "T-SPECS-CIE-COMPLETE-1-BAND-B r0",
+      "vehicle": "scripts/cie_complete_band_fill_b.py (band-scoped additive layer over the COMPLETE-1 of record; the band-A engine shape with band-B constants + the N.M.K geo shape law + the bands-MERGE fix)",
+      "battery": "P0 verdicts-yaml round-trip byte fixed point; G1 code-in-parsed-universe + N.M.K geo shape law; G2 never-overwrite (pre-existing non-band codes abort); G3 additive-only byte projection (sidecar post projected to pre-band form must byte-match); G4 census-closure (81/30 exact vs the sidecar uncoded universe); G5 idempotence proven live (three consecutive applies: zero re-applies, sidecar+manifest+yaml sha256-identical; the battery report carries per-run applied/already by design); G6 yaml-regen census fail-closed with byte restore",
+      "joins": "81 rows / 111 code entries across 68 distinct served points (of 113); evidence rows in scripts/cie_complete_verdicts.yaml with official_texts cited per code",
+      "honestPendings": "30 rows in 9 codified classes: key_terms_glossary_no_unique_spec_target x11 (12 incl. the climate-change glossary), cross_edition_2027_only_content_no_2025_target x8 (the climate-change topic set + Botswana + trade/aid strategies + food globalisation + migration management), assessment_or_exam_technique_note_no_unique_target x5, no_unique_spec_target_{map_types,fieldwork,gis,images} x4, concept_primer_no_unique_spec_target x1",
+      "additiveLayering": "sidecar review_state.complete gains bands.B sub-block, original COMPLETE-1/band-A fields byte-kept; manifest cie_complete gains bands.B alongside bands.A (byte-kept); verdicts yaml ONLY the geo-25 lane's 111 rows regenerated, all other lanes' rows object-hash-verified unchanged vs HEAD (0 changed/0 dropped/0 added, 790 rows, header byte-preserved)"
+    },
+    "v2Consume": {
+      "pin": "110547a (rebased over the mid-lane PR #293 EDBUMP-1 landing d13b82b — Edexcel-only, zero geo overlap)",
+      "commit": "T-SPECS-CIE-COMPLETE-1-BAND-D r0",
+      "engine": "committed T-SPECS-CIE-CONSUME-1 engine run verbatim restricted to the band-B lane via shadow sidecar dir; PIN/STAMP/SIDECAR_DIR/SHEET_PATH/STAGING the only patched states (wrapper session-side)",
+      "gates": "sidecar review_state ACCEPTED + rejoin ACCEPTED; sheet census 634/166 exact; deterministic merge (merge-twice byte-identical; staging hash 52d3c4d7140fda70357bd5f1755c3a77540026fed2997b02c7ecff982774a11d); in-engine battery all green; codesOutsideSpine 0",
+      "learnerDelta": "exactly 81 notes change with specPointIds/specPointCodes ONLY (bodyMd byte-equal); curriculum/flashcards/questions byte-identical; bundle manifest officialSpine.resourcesSha -> 58d7f689; content-map re-pinned (generatedUtc 2026-10-22T01:00:00Z); geo-25 notes coded 5/117 -> 86/117 (81 band-B joins + 5 REJOIN-era; 30 pendings stay uncoded by the leave-unjoined law; 1 course-index note)",
+      "apply": "4 writes byte-guarded (2 bundle files + 1 content-map + 1 _report_cie_consume.json); unexpected-change guard green"
+    }
+  },
+  "correctionsOfRecord": {
+    "crossEditionRootCause": "the SME geo-25 notes' own headers link the 2027-2029 syllabus (718150-2027-2029-syllabus.pdf) and declare its codes (6.3.2, 9.1.2, 2.3.8, 10.1.1 ...) which exist in NO served lattice; the class name cross_edition_lattice_objectives_vs_content_needs is now ground-truthed: it is a 2027-authored note set served against a 2025-2026 lattice",
+    "numericCollisionsAreReal": "2027 1.1.1 (river characteristics) vs 2025-2026 1.1.1 (world population growth) — same code, unrelated points; the bridge was decided per-row on the official statement text (the note-embedded 2027 statement quoted verbatim in each header) against the 664610 parse of record",
+    "bandsOverwriteDefect": "the first apply of the copied band-A vehicle overwrote ydoc['bands'] = {'A': ...} (the band-A script's single-band assumption), silently replacing the of-record bands.A basis text with band-B content; caught by this session's own post-apply verification (yaml bands showed ['A'] carrying BAND-B lane text), root-caused (a heredoc-escaped old_str in the copy-patch silently no-opped while other patches landed), fixed by line-surgery splice to an additive bands merge; the three artifacts were restored via git checkout and re-applied clean — the corrupted intermediate existed only in the working tree and was NEVER pushed",
+    "g5Reconciliation": "band A's receipt claimed 4/4 sha-identical on re-run; this lane's mechanics show the battery report records per-run applied/already by design, so the honest form is 3/3 CONTENT artifacts identical + zero re-applies; this receipt states that form",
+    "declTokenNoise": "4 notes' declared-code extraction picked up body numerics (fertility 1.36, population 128.1/125.8, magnitude 7.8, time 11.26, latitude 66.5, map ids 60.6/78.3/83.9); all excluded from adjudication, disclosed per row"
+  },
+  "honestDisclosures": [
+    "the 2027-2029 syllabus was fetched fresh from cambridgeinternational.org (718150, 28pp) and parsed into spec2729_points.json (129 pts / 10 topics) — it is the evidence base for the 2027 side of every bridge judgment; the 2025-2026 side is the 664610 parse of record already in resources",
+    "the consume engine's _report_cie_consume.json carries the committed engine's tranche-1-era directive text verbatim (band-A wrapper discipline: only PIN/STAMP/SIDECAR_DIR/SHEET_PATH/STAGING patched); the band-B facts live in resourcesSha/stamp/courses of the same report",
+    "served-point coverage is now 68/113 points with >=1 note join for geo-25; the uncovered 45 are predominantly case-study points covered by SME exam-question banks or points with no SME note in the corpus — NOT adjudicated as gaps here",
+    "the 30 pendings stay UNCoded by the leave-unjoined law (the hub's unmapped card is their honest surface); their reasons carry the class codification band C will extend fleet-wide",
+    "both mid-lane upstream landings (resources b5701769 PR #34; v2 d13b82b PR #293) were caught by fetch-first, verified zero-overlap, rebased clean, battery re-proven on the rebased state before each push"
+  ],
+  "operatorQueue": [
+    "band C: EL-25+20 assessment/coursework-guidance ~73 + fleet assessment_technique/set-text/marking ~171 — expected LEAVE-UNJOINED, codify the honest class per class (this band's 9-class taxonomy is the template)",
+    "parse/spine repair lane 1 (operator-gated, separate): 9709 P3 3.1 bullets 2-5 (parse glue — band A's 12 honest pendings await the split)",
+    "parse/spine repair lane 2 (operator-gated, separate): 0606 topics 3/9/12 + statement/example split policy (band A's 41 honest pendings await the parse repair)",
+    "the standing queue (4MB1 archive followups, PAT/Neon rotation, specPointIds backfill, DB tutor re-ingest)"
+  ],
+  "artifacts": [
+    "resources 58d7f689: scripts/cie_complete_band_fill_b.py + scripts/cie_complete_verdicts.yaml (790 rows: 497 resolve / 293 pending) + spec-links/cie-igcse-geography-25.json (bands.B block) + spec-links/manifest.json (cie_complete.bands.B) + graph/reports/T_SPECS_CIE_COMPLETE_BAND_B_CHECK.json",
+    "v2 110547a: content/cie-igcse-geography-25/{notes,manifest}.json + content-maps/cie-igcse-geography-25.json + content-maps/_report_cie_consume.json",
+    "session-side: work/cie-bandB/{complete_rows_bandB,pending_classes_bandB}.json + 12 per-section adj_*.json + official_points_2526.json + spec2729_points.json + 718150-2027-2029-syllabus.pdf; work/cie-consume-bandB/{shadow-spec-links,staging}"
+  ]
+}
