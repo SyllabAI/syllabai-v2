@@ -1,0 +1,42 @@
+{
+  "task": "T-TEACH-011",
+  "band": "teaching toolkit — persistence (migration 0008)",
+  "title": "migration 0008_teaching_toolkit authored, offline-verified, and APPLIED to the operator-designated Neon branch (teaching_toolkit_resources + teaching_toolkit_usage + class_features.ai_toolkit)",
+  "operator_order": "\"Apply migration 0008 to the Neon branch\" (session web-528c0352-0cf7-4715-a187-50aec294b288), credentials supplied for the target endpoint in the same order",
+  "date": "2026-10-22",
+  "agent": "zai-web lane (main agent, session web-528c0352)",
+  "what_shipped": [
+    "packages/db/drizzle/0008_teaching_toolkit.sql (NEW) — additive-only per BASELINE_DB.md §4: teaching_toolkit_resources (append-only generated documents: 13 cols, id uuid DEFAULT gen_random_uuid(), FKs fk_toolkit_resources_teacher→users / fk_toolkit_resources_class→classes nullable for ad-hoc, status DEFAULT 'SUCCESS', input_metadata jsonb NOT NULL, output jsonb, model/provider_name/failure_reason/elapsed_ms, created_at DEFAULT now()) + ix_toolkit_resources_teacher (teacher_id, created_at DESC) + teaching_toolkit_usage (per-teacher daily quota counter, PK (teacher_id, usage_day), used DEFAULT 0, FK→users) + ALTER TABLE class_features ADD COLUMN ai_toolkit boolean NOT NULL DEFAULT true (ADR-CLASS-0001 row-absent = all-ON preserved; the ONLY existing table touched — the v2-native 0006 side table, zero Flyway-era bytes)",
+    "packages/db/drizzle/meta/0008_snapshot.json (NEW, hand-crafted programmatically from 0007_snapshot.json) + meta/_journal.json idx 8 — the T-TEACH-002/commit-1c3a82ea disclosed practice: drizzle-kit generate is unusable on the pre-existing 0000/0005 snapshot collision, so the snapshot is script-derived (scripts/craft_0008_snapshot.py, self-checking: prevId chain, 72 tables, column counts, journal tail, SQL anchors) — never hand-typed",
+    "packages/db/src/schema/schema.ts — additive only: teachingToolkitResources + teachingToolkitUsage exports + classFeatures.aiToolkit column with owning-task comments",
+    "packages/db/src/schema/README.md — new 'Post-baseline additive tables & columns' owning-task registry (0006/0007 back-filled rows + 0008 row, per BASELINE_DB.md §4.2)"
+  ],
+  "design_decisions": {
+    "hand_crafted_snapshot": "0006 precedent followed verbatim; the craft script derives every field from the 0007 snapshot structure (column shape, index opclass/asc/nulls forms, FK/composite-PK formats) and a pinned-toolchain empty-diff generate run proves schema.ts == snapshot == SQL intent — the strongest offline triad available without the broken declared kit 0.30.6 pair (F2a)",
+    "append_only_results": "smart_mark_results posture: a resources row is written once (SUCCESS carries the document, FAILED carries failure_reason) — no UPDATE path exists in the design; the quota counter is the only upserted surface",
+    "quota_shape": "PK (teacher_id, usage_day) + used counter matches the plan's SYLLABAI_TOOLKIT_DAILY_LIMIT (default 25/day/teacher) — route-side consumption is T-TEACH-012, not this migration",
+    "course_slug_denormalized": "resources carry course_slug varchar(64) (the classes.course_slug convention) so ad-hoc/no-class rows still resolve subject context; class_id stays nullable by design (plan §5)"
+  },
+  "application_of_record": {
+    "target": "operator-supplied pooled endpoint ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech/neondb — server-identified via GUCs as project billowing-cherry-15418366 ('SyllabAI'), branch br-muddy-bar-a5huwldd (the production branch per docs/BASELINE_DB.md §2 and the schema README); the operator ordered THIS endpoint and supplied its credentials",
+    "pre_flight": "probe (read-only): users/classes FK anchors PRESENT; toolkit tables absent; class_features ABSENT",
+    "census": "migration-signature census (scripts/neon_census_0008.py): 0002/0003(live 7-value ck_node_type)/0004/0005/0007 signatures ALL PRESENT; 0006 ABSENT; 0008 ABSENT",
+    "prerequisite": "0006_class_feature_toggles applied FIRST (one transaction, 3 statements) — the minimal hard prerequisite (0008's ALTER target); course_registry seeded ROWS stay with the existing idempotent seed script (separate lane, not DDL)",
+    "apply": "0008_teaching_toolkit.sql applied verbatim in ONE transaction (4 statements: resources, index, usage, ai_toolkit column) — atomic; an earlier attempt that threw mid-verify ROLLED BACK CLEAN (first-hand atomicity proof)",
+    "deliberately_NOT_applied": "0000 (baseline DDL — branch already IS the end-state) and 0001 (index-churn normalization across Flyway-era indexes — outside this task's fence, needs its own operator order)"
+  },
+  "verification": {
+    "offline_triad": "pinned toolchain (kit 0.31.11 + orm 0.45.3, the rebaseline.ts recipe) in a throwaway dir: drizzle-kit check 'Everything's fine' on the 0000..0008 chain; drizzle-kit generate 'No schema changes, nothing to migrate' (EMPTY DIFF — schema.ts additions captured exactly; the one earlier mismatch, string-default quoting 'SUCCESS', was caught by this gate and fixed in the craft script); packages/db tsc --noEmit exit 0 (deps completed in the throwaway toolchain; repo tree untouched, temp node_modules symlink removed after)",
+    "structural": "information_schema + pg_constraint proof on the branch: resources 13/13 cols with gen_random_uuid()/'SUCCESS'/now() defaults; usage 3/3 cols used DEFAULT 0; class_features.ai_toolkit boolean NOT NULL DEFAULT true; f/p constraints exactly 5 (2 FK resources + 1 FK usage + 2 PK); ix_toolkit_resources_teacher present",
+    "functional_smoke": "scripts/neon_smoke_0008.py, ONE transaction ROLLED BACK: T1 bogus-teacher insert → ForeignKeyViolation fk_toolkit_resources_teacher (FKs LIVE); T2 real-teacher/class insert → status SUCCESS, created_at filled, output jsonb roundtrip; T3 usage upsert ×2 → used=2 (PK conflict path LIVE); T4 fresh class_features row → ai_toolkit=true (DEFAULT LIVE); post-rollback row counts 0/0/0 — ZERO residue",
+    "final_census": "all signatures 0002..0008 PRESENT on the branch"
+  },
+  "residuals": [
+    "the branch is PRODUCTION (br-muddy-bar-a5huwldd) by the repo's own docs — the operator explicitly designated it; no Flyway-era table was touched (census + smoke evidence), but branch-designation authority stays with the operator",
+    "0001 remains unapplied here (index normalization churn on Flyway-era indexes) — fresh environments get it via the 0000..0008 chain; production's index forms were never pull-rendered, so 0001 is likely a no-op there but must not be assumed",
+    "course_registry has zero ROWS after this application — hub-course bridging (T-TEACH-002 seed script) is a separate, idempotent, row-level operation",
+    "credential law: the operator should rotate the supplied Neon role password after this task window (it traveled through chat), and the standing GitHub-PAT revocation reminder applies at lane end"
+  ],
+  "next": "T-TEACH-010 (contracts + chainAsToolkitGenerator bridge) then T-TEACH-012 (routes: generate/context/resources + quota + gate) consume this schema; card moves IN_REVIEW pending operator review of this receipt",
+  "standing_reminder": "the operator must revoke the GitHub PAT at lane end per the credential law; rotate the Neon role password supplied in this session"
+}

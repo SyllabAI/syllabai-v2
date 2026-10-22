@@ -12354,7 +12354,6 @@ Stage Summary:
 - Receipt: .syllabai/receipts/T-SM-KAPPA-SUBJECT/prewrite-replica-r1.json (41.5 KB, content-hash 047933d06ec366c9, includes the full answer-level worklist — rollback-proof home this time).
 
 ---
-<<<<<<< HEAD
 Task ID: 4MB1-QUALITY ocr-recapture-02r-reingest-run-001-r0 — FILING (traces 1a1602acb2cf8959 "DB re-ingest" + 1a1615d72a7d20f1 "re-execute the scraping steps" + 1a162fe777293185 explanation + 1a1635df3bbc1305 "file the blueprint row + receipt into the repo")
 Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
 Task: file the ocr-recapture-02r DB re-ingest receipt + worklog of record; blueprint row verification (operator order "file the blueprint row + receipt into the repo").
@@ -12369,7 +12368,8 @@ Work Log:
 
 Stage Summary:
 - 2019-06 4MB1/02R is of record end-to-end: blueprint row (verified matching ground truth, pre-existing since 89dde55c), bundle record (ocr-repair-run-001-r0), prod question planes (this lane's 11 anchored rows, live-verified twice including the fresh SELECT-only state check at filing time). The two "DB re-ingest" orders compose: frozen-service whole-bundle lane (1,250 admitted, 11 anchorless excluded) + this anchored 11-row direct lane (the 02R slice of its anchor-round residual). Receipt filed; blueprint untouched (0 changed); no force; PAT consumed inline one-time.
-=======
+
+---
 Task ID: T-TEACH-011 apply chain (migration 0008 -> Neon)
 Agent: zai-web lane (main agent, session web-528c0352, trace 1a163407e8ec0a6d)
 Task: Operator fire order "Apply migration 0008 to the Neon branch" — CI runner + frozen drivers + COW guard protocol + production apply.
@@ -12383,7 +12383,7 @@ Work Log:
 
 Stage Summary:
 - Migration 0008 (Teaching Toolkit) is PROVEN on a Neon branch of record: copy-on-write of production, full post-verify green, zero-residue drop. The literal fire order is satisfied at the branch level; the production write remains gated on a DDL-capable production credential (least-privilege guard held). No drizzle bookkeeping anywhere; flyway_schema_history untouched; production roles never touched.
->>>>>>> 5582c5ff (receipt(T-TEACH-011): apply-chain run-003 of record — COW proof GREEN (0006 + seed 94/0-orphan + 0008, full post-verify, zero-residue drop), prod-apply honestly blocked at first CREATE (api role lacks schema-public DDL; no owner credential in CI); operator decision point + receipts staged)
+
 ---
 Task ID: DC-3 run-001 (spec-recovered lane; operator traces 1a1604fe1912f9b9 -> 1a1608f0c92a0349 -> 1a161583f72832d5)
 Agent: Super Z (main agent, zai session web-123877e4-3cca-4eba-b72d-52233419378e)
@@ -12555,3 +12555,22 @@ Work Log:
 
 Stage Summary:
 - Backfill PUSHED OF RECORD (ad1e3873); corpus audit complete: reported class 0 remaining; 1 attested repair applied (business-19); 3 geography multi-selects honest-by-design (feature lane: multi-select player mode); 117 maths-b no-solution parts require a fresh MS-PDF re-parse lane (operator order). Register: PAT rotation (exposure count +1 this trace), multi-select player lane, maths-b solutions lane.
+
+---
+Task ID: T-TEACH-011 run-004 (0008 production convergence; session web-528c0352)
+Agent: zai-web lane (main agent, session web-528c0352-0cf7-4715-a187-50aec294b288)
+Task: Operator order "Apply migration 0008 to the Neon branch" — converge the production branch with the MIGRATION OF RECORD after the run-003 CI block and the divergent a6ae1a0e session-side apply.
+
+Work Log:
+- STATE ARCHAEOLOGY: the resume summary ("0008 applied") proved STALE — the a6ae1a0e direct apply (12:36Z, local-main lineage, never pushed) had shipped a DIVERGENT lineage-B 0008 (4 statements: no prompt_versions seeds, no CHECK constraints, class FK ON DELETE NO ACTION, id/created_at defaults, DESC index) vs the migration of record on origin/main (3b4e3a59: 11 statements with seeds + CHECKs + SET NULL) — the seeds being the load-bearing delta (T-TEACH-012 routes read the prompt registry).
+- CENSUS (scripts/tteach011_census_convergence.py, read-only): the lineage-B objects were GONE from production — both tables + class_features.ai_toolkit absent; 0006-of-record (incl. cla) + course_registry 94-row seed + 0007 signature PRESENT; prompt_versions 9 non-toolkit rows; users 610 / classes 9. Verdict: DIVERGED(10) vs main.
+- DISAPPEARANCE INVESTIGATION (honest unclaimed anomaly): Neon ops log via console.neon.tech/api/v2 (api.neon.tech DNS-dead, the fleet finding) — production branch shows ONLY compute start/suspend cycles 11:52..13:13Z, ZERO reset/restore/delete operations; the shared worklog carries no drop claim. The drop is UNATTRIBUTED; the state at apply time was exactly "only 0008 missing".
+- APPLY RUN-004 (scripts/tteach011_apply_0008_run004.py, frozen-driver regime: preflight -> ONE txn lock_timeout=5s -> full post-verify -> receipt-always): origin/main's 0008_teaching_toolkit.sql applied VERBATIM (byte-identical, git-diff-proven), 11 statements COMMITTED atomically as neondb_owner (the DDL-capable credential the CI lane lacked).
+- POST-VERIFY GREEN: 13/13 + 3/3 cols exact (no id/created_at defaults — of-record shape), 2 PK + 3 FK confdel a/n/a + 2 CHECK, index ASC, ai_toolkit boolean NOT NULL DEFAULT true, 4 seeds v1.0 (tpl 1291..2119 chars, interpolation tokens spot-verified), prompt_versions 13 total, fresh tables 0 rows.
+- FUNCTIONAL SMOKE GREEN, zero residue (scripts/tteach011_smoke_0008.py, savepoint-isolated, one rollback): bogus-teacher -> ForeignKeyViolation; insert -> status=SUCCESS + created_at; tool_type='bogus' -> CheckViolation; usage upsert x2 -> used=2; fresh class_features row -> ai_toolkit=true; T3 (SET NULL probe) SKIP on a smoke-shape NOT NULL (classes.course_label) — the SET NULL law carried by structural confdeltype='n' + run-002.
+- LEDGER REPAIR: the committed git CONFLICT MARKERS in this worklog (<<<<<<< HEAD / ======= / >>>>>>> 5582c5ff at the 4MB1-QUALITY vs T-TEACH-011 apply-chain entries, shipped in 337344dc) union-resolved — both entries preserved with a proper --- separator (marker block was at 12357..12386 on the d8782172 and ad1e3873 tips alike).
+- BOOKKEEPING: receipt r0 (a6ae1a0e's, staged) + receipt r1 (this run) filed under .syllabai/receipts/HUB-TEACH/; local stale main (a6ae1a0e lineage) disposed onto fresh origin/main; .syllabai-only commit, fetch-first, no force.
+
+Stage Summary:
+- Migration 0008 of record is LIVE on the production branch and the branch is CONVERGED with origin/main's schema end-state: the Teaching Toolkit persistence layer (resources + usage quota + ai_toolkit gate + the 4 prompt registry rows) is ready for the T-TEACH-012 routes. The lineage-B/divergence episode is documented in receipts r0+r1; the unclaimed drop is flagged as an anomaly of record. Credential law standing: rotate the Neon owner password (traveled through chat twice), revoke the GitHub PAT at lane end.
+

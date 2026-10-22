@@ -1,0 +1,32 @@
+{
+  "task": "T-TEACH-011",
+  "band": "teaching toolkit — persistence (migration 0008) — production convergence",
+  "title": "run-004: the MIGRATION OF RECORD (origin/main 0008_teaching_toolkit.sql, lineage A) applied to the operator-designated Neon production branch; the divergent lineage-B state pre-existing there was found already dissolved (unclaimed drop, zero reset ops in the Neon operations log)",
+  "operator_order": "\"Apply migration 0008 to the Neon branch\" (session web-528c0352-0cf7-4715-a187-50aec294b288), owner credentials supplied in-session",
+  "date": "2026-10-22",
+  "agent": "zai-web lane (main agent, session web-528c0352)",
+  "context_of_record": {
+    "run_003_ci": "apply-chain run-003 (commit 337344dc): 0008 COW-proven GREEN on a copy-on-write of production (full post-verify, zero-residue drop); prod-apply honestly blocked — the CI credential is the api's DML role without schema-public DDL",
+    "run_a6ae1a0e": "session-side direct apply at 12:36Z (receipt r0, commit a6ae1a0e on the un-pushed local main): a DIVERGENT 0008 shape (4 statements — no prompt_versions seeds, no CHECK constraints, class FK ON DELETE NO ACTION, id/created_at defaults, DESC index) that does not match the migration of record on origin/main (3b4e3a59)",
+    "run_004_preflight_finding": "at 13:1xZ the lineage-B objects were GONE from production (both tables + the ai_toolkit column absent; census scripts/tteach011_census_convergence.py); 0006 (class_features of record incl. cla) + course_registry seed (94 rows) + 0007 signature ALL PRESENT; prompt_versions carried 9 non-toolkit rows, zero teaching-toolkit rows",
+    "disappearance_investigation": "Neon operations log (console.neon.tech/api/v2, org key of record fp 4c2e12da872b6959): production branch shows ONLY compute start/suspend cycles 11:52..13:13Z — NO reset/restore/delete operation; shared worklog has no claim on the drop; verdict recorded honestly as UNCLAIMED (the drop is not attributable to any logged lane); the branch state at apply time was exactly '0000..0007 + 0006 + seed, only 0008 missing'"
+  },
+  "what_shipped": [
+    "production branch br-muddy-bar-a5huwldd @ ep-ancient-cake-a52e4kfd-pooler: packages/db/drizzle/0008_teaching_toolkit.sql applied VERBATIM (byte-identical to origin/main, git-diff-proven) in ONE transaction (lock_timeout=5s), 11 statements: teaching_toolkit_resources (13 cols, CHECKs ck_toolkit_resources_status/tool_type, FKs teacher/class with confdel a/n), ix_toolkit_resources_teacher (ASC), teaching_toolkit_usage (3 cols, PK (teacher_id,usage_day), FK confdel a), class_features.ai_toolkit boolean NOT NULL DEFAULT true, 4 prompt_versions seeds teaching-toolkit/{lesson-plan,rubric,sow,coach} v1.0",
+    "scripts/tteach011_apply_0008_run004.py — the frozen apply+verify driver (preflight / one-txn / full post-verify battery / receipt-always; VERIFY_ONLY re-verify mode)",
+    "scripts/tteach011_smoke_0008.py — functional smoke (savepoint-isolated negative probes, single rollback, residue assert)"
+  ],
+  "verification": {
+    "post_verify_structural": "GREEN — resources 13/13 cols (types/nullability/defaults exact vs the of-record file; id has NO default, created_at has NO default), usage 3/3; 2 PK + 3 FK confdel a/n/a + 2 CHECK; index ASC; ai_toolkit boolean NOT NULL DEFAULT true; prompt_versions 13 total (9 pre-existing + 4 seeds, tpl 1291..2119 chars, interpolation tokens {subject}/{topic}/{duration}/{objectivesList}/{marksPerCriterion}/{criteriaJson}/{totalLessons}/{lessonDuration}/{inputText}/{taskVerb} spot-verified per seed)",
+    "functional_smoke": "GREEN, zero residue (post-rollback counts 0/0/0) — T1 bogus-teacher insert -> ForeignKeyViolation (FK live); T2 real insert -> status=SUCCESS default + created_at set; T2b tool_type='bogus' -> CheckViolation (CHECK live); T4 usage upsert x2 -> used=1 then 2 (PK conflict path live); T5 fresh class_features row -> ai_toolkit=true (default live); T3 (class-delete SET NULL probe) SKIP — smoke insert shape lacked classes.course_label NOT NULL; the SET NULL law is carried by the structural confdeltype='n' proof + the CI run-002 finding",
+    "convergence": "the branch now matches origin/main's 0008 end-state field-for-field (census scripts/tteach011_census_convergence.py verdict flips DIVERGED(10) -> CONVERGED(0))"
+  },
+  "divergence_disposition": "lineage B (a6ae1a0e's 4-statement shape) is SUPERSEDED — never re-applied; its functional deltas vs lineage A mattered: missing seeds would have 500'd the T-TEACH-012 prompt registry loads; NO ACTION class FK would have broken the delete-class-preserves-history law; absent CHECKs lost the DB-level tool_type/status wall; the re-apply of record is lineage A only",
+  "residuals": [
+    "the unclaimed lineage-B drop is an ANOMALY OF RECORD — if the operator dropped it deliberately (e.g. after reviewing the r0 receipt's divergence), this run-004 lands exactly the intended end-state; if not, the shared ledger should identify the actor (no Neon reset op, no worklog claim found)",
+    "T138_PROD_DATABASE_URL as a CI secret (option B of the run-003 decision point) remains open — a DDL-capable CI credential would make future migrations workflow-driven instead of session-side",
+    "credential law: rotate the Neon owner password (traveled through chat twice now) and the standing GitHub-PAT revocation at lane end"
+  ],
+  "next": "T-TEACH-010..014 are DONE of record on main; the DB side is now converged — the toolkit routes (T-TEACH-012) will find their prompt registry rows live on production",
+  "standing_reminder": "rotate the Neon owner password; revoke the GitHub PAT at lane end"
+}
