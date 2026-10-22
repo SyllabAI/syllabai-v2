@@ -85,8 +85,9 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     expect(pkg.packageVersion).toBe("1.0");
     expect(pkg.source).toBe("sme-eq-igcse-maths-a-18-higher");
     expect(pkg.corpusVersion).toContain("syllabai.sme-exam-questions/1.1");
-    // 2ece53b re-import: the corpus no longer carries option-bearing parts
-    expect(pkg.counts).toEqual({ questions: 2692, parts: 3538, options: 0, sets: 58, unmapped: 9, badSum: 0, dupOrder: 2 });
+    // 2ece53b re-import carried no option-bearing parts; the 4MB1 OCR-repair
+    // wave re-introduced four option-bearing maths-a parts (options 0 -> 4)
+    expect(pkg.counts).toEqual({ questions: 2692, parts: 3538, options: 4, sets: 58, unmapped: 9, badSum: 0, dupOrder: 2 });
   });
 
   test("the foundation bundle builds at the exact manifest numbers", () => {
@@ -96,28 +97,31 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
 
   test("the chemistry-19 bundle builds at the ADR-037 wave-12 census numbers with the per-paper official namespace (run-004 + wave 12)", () => {
     const pkg = buildChemistry();
-    // the wave-12 census of record (60 sets: 28 topic + 16 official 1C +
-    // 16 official 2C; converter v0.10.0 — the 2019-06 1C rasterized pages
-    // recovered through the fail-closed F41 OCR layer + F42 early-MS linkage:
-    // the 4 archive-damage questions now pass the part-sum law, badSum 4 -> 0,
-    // and the recovered Q7 joins; exporter of record F44 carries the per-paper
-    // topicSlug namespace natively)
-    expect(pkg.counts).toEqual({ questions: 803, parts: 2950, options: 1260, sets: 60, unmapped: 1, badSum: 0, dupOrder: 0 });
+    // the R-VARIANT wave-17 census of record (82 sets: 28 topic + 54 official —
+    // 16 1C + 16 2C + the F-178 R tranches 11 1CR + 11 2CR; converter v0.13.1 —
+    // the R tranches convert (PR #46/#47), the spec-label waves resolve 1059/1059
+    // R parts with zero pending-llm (resources PR #50), and the F52 italic-Delta
+    // normalization fixes the 2020-01 R prose; unmapped 1 -> 2: the corpus-level
+    // anchor-law counter now spans the R slices' one honestly-unmapped question
+    // plus the documented 2019-06 1C terminal case)
+    expect(pkg.counts).toEqual({ questions: 999, parts: 4007, options: 1480, sets: 82, unmapped: 2, badSum: 0, dupOrder: 0 });
     const refs = (pkg.questions ?? []).map((q) => q.externalRef as string);
     // the package-global namespace is injective — the exact gate that
     // refused the pre-fix bundle (run-003: duplicate externalRef
     // sme-eq-igcse-chemistry-19-official-past-papers-q1)
     expect(new Set(refs).size).toBe(refs.length);
-    // the official plane: 280 admitted questions post-wave-12 (was 275 at
-    // v0.9.0: +4 repaired 2019-06 1C questions + the recovered Q7), per-paper
-    // ref forms, every ref embedding its own set slug
+    // the official plane: 476 admitted questions post-wave-17 (was 280 at
+    // wave-12: the F-178 R-variant tranches join — 118 1CR + 79 2CR questions
+    // minus the one terminal unmapped question that does not build a served
+    // ref), per-paper ref forms now spanning all four variants, every ref
+    // embedding its own set slug
     const official = refs.filter((r) => r.includes("official-4ch1-"));
-    expect(official.length).toBe(280);
-    expect(new Set(official).size).toBe(280);
+    expect(official.length).toBe(476);
+    expect(new Set(official).size).toBe(476);
     for (const ref of official) {
-      expect(ref).toMatch(/^sme-eq-igcse-chemistry-19-official-4ch1-(1c|2c)-\d{4}-\d{2}-q\d+$/);
+      expect(ref).toMatch(/^sme-eq-igcse-chemistry-19-official-4ch1-(1c|2c|1cr|2cr)-\d{4}-\d{2}-q\d+$/);
     }
-    // the topic plane: untouched by the fix (the live 602 refs' ground)
+    // the topic plane: untouched by the waves (999 - 476)
     expect(refs.length - official.length).toBe(523);
   });
 
@@ -209,12 +213,12 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     const multi = pkg.questions!.find((x) => (x.parts?.length ?? 0) > 1)!;
     const primaryFirst = multi.specPoints!.filter((sp) => sp.role === "PRIMARY");
     expect(primaryFirst.length).toBeGreaterThanOrEqual(1);
-    // 2ece53b re-import: the corpus's MCQ part is gone (options 0) — the
-    // option-bearing emission law stays covered by the sme.test.ts fixtures
+    // the 4MB1 OCR-repair wave re-introduced option-bearing parts (options 4) —
+    // the MCQ emission law is exercised on real corpus parts again
     const mcqPart = pkg.questions!
       .flatMap((x) => x.parts ?? [])
       .find((p) => p.options != null);
-    expect(mcqPart).toBeUndefined();
+    expect(mcqPart).toBeDefined();
     // difficulty word map spot-pins
     const byWord = (w: string) => pkg.questions!.find((x) => x.smeDifficulty === w)!;
     expect(byWord("easy").difficulty).toBe(2);
