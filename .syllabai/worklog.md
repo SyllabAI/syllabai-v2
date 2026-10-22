@@ -12603,3 +12603,18 @@ Stage Summary:
 - Writes: 1 disclosed census-class probe learner `auth-fix-verify-1792677722@example.invalid` (register + me/state read only). No code delta; no DDL; zero LLM spend; vcp_ token inline/volatile only, never printed/committed.
 - Residuals: (1) the ssoProtection enabler — operator to review dashboard members/settings; (2) `dpl_iYoT7Hrs` unpromoted — lanes may re-promote through their own gates; (3) carrier has NO git link (deploys are lane-driven API acts by design — 5 post-09:54Z commits with zero carrier deploys is NORMAL, not a fault); (4) PAT rotation overdue (agrees with wave-16 residuals) — rotate all four chat-transited secrets after the 4MA1 drain completes.
 - Receipt: .syllabai/receipts/OPS-AUTH-FIX/receipt-2026-10-22-sso-strip-realias.json
+---
+Task ID: T-MIG-134 (band 134e — the physics books APPLY leg of record)
+Agent: Super Z (books vector arm continuation lane; operator traces 1a163d4ac43d8429 write-order + 1a163dfd62419a29 execution)
+Task: Apply the physics 4PH1 package of record to prod (the COW-proof-first 093/134c law) after the operator's PR #242 merge word and pooled-URI re-stage.
+
+Work Log:
+- PR syllabai-v2#242 merged of record (squash 139266e0; head pin d83e4bc verified; hub+verify green) — the 20-shaped grammar is on main before this apply.
+- Package re-fetched after a fresh sandbox rollback: release books-intake-physics-2026-10-21 asset sha256 a2100fe6… RE-VERIFIED MATCH; source PDF re-fetched @ de4d8da, sha256 9b0783d9… + 30,915,167 B RE-VERIFIED MATCH.
+- Dry re-run (books-ingest --mode dry, bun 1.3.14, apps/api workspace): documentId d9b72a0a-23fb-5938-a0a7-a7494e7ebf9e EXACT; spine 234/8/30/195 EXACT; 736→701 included; 549 chunks / 424 overlaid; joins 117 (49v/25n/43f) / review 68 — byte-equivalent to the band's dry receipt of record (dry_run_134e_run002_sz.json this lane).
+- COW-proof: code-read of record — ingestCanonicalDocument is INSERT-only + checksum dedupe; the driver's only UPDATE is the spec_codes overlay self-scoped to the new document_row_id; pre-apply census pinned (documents 1354 / chunks 13,765 / book_blocks 177 / book_chapters 29-all-chemistry / glossary 112; physics docid absent).
+- APPLY: ONE transaction via createSql (Neon WS client, pooled URI of record) — COMMITTED 2026-10-22T13:56:53.974Z. The sandbox 10-min kill landed in the post-commit window; the in-process postverify/receipt were lost and REBUILT read-only (postverify_134e_run001.json): documents 1 / chunks 549 / chunksWithCodes 424 / bookChapters 28 / joinRefs 117 / ftsSanity('acceleration') 53 / embed law embed_rev=2 × 549 NULL-vectors / chemistry 29/177/823 UNTOUCHED. Receipt of record: band-134e-books-apply-run-001-sz.json (reconstruction disclosed inside).
+- NOT done here: embeddings (zero-API-keys law — 133d CI-egress backfill, physics-row-parameterized runner still owed), validation flip, archive/viewer leg. Lingering 'idle in transaction' session observed post-apply (pid 8189, knowledge_edges read, postgres.js) — ANOTHER lane's live session, deliberately untouched.
+
+Stage Summary:
+- The physics 4PH1 book is IN PROD: document efc8b5c4-83b6-4ecf-98e2-9b44d2923636 (documentId d9b72a0a…), 549 serving chunks SUGGESTED, 28 chapters with the 117-ref join of record. Next gates: validation flip → 133d embed backfill (needs the physics-row-parameterized runner; operator keys staged CI-side) → archive/viewer leg.
