@@ -12490,3 +12490,18 @@ Work Log:
 Stage Summary:
 - The coreBridge law of record is now enforced BOTH ways: registry carries the 24-row flip, validator refuses drift from it (including Wave-3 re-introduction attempts).
 - Hub rebuild expected READY; post-deploy verification proceeds per r0's verification_plan.
+
+---
+Task ID: T-SM-BRIDGE-WIDEN-R2
+Agent: Z.ai (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2, trace 1a163786bda7a699)
+Task: Live verification of the widened bridge after deploy dpl_8kUaTwfqLHYL8XxNnetLUGoYEgjg (READY 12:27:57Z, commit 1d721c3).
+
+Work Log:
+- One disclosed probe learner (STUDENT; register 201) — depth-1 availability TRUE for 6 sampled flipped courses (0625/0620/4MB1/9700/0580/0973 roots resolve).
+- Negative controls hold: Wave-3 geography-20 and zero-refs 4PH1 both still not_pilot.
+- Depth-2 joins live: maths-b 2018-06-4mb1-01 28/28 joined / 0 skipped; maths-25-ext 5/31 (honest skips); al-chem-25 4/11; physics-23 MCQ control 27/27 parts mapped.
+- Posture recorded: 16/22 flipped courses carry structured sets (Smart Mark button applies); 6 CIE IGCSE sciences are MCQ-only in the hub player (real attempts recorded, answer-key marking, no AI button by design).
+- End-to-end AI mark NOT fired on a new course (budget discipline; pipeline proven of record on the pilot). Receipt bridge-widen-r2-live-verified.json.
+
+Stage Summary:
+- T-SM-BRIDGE-WIDEN r0+r1+r2 COMPLETE and live-verified: the Smart Mark Exam-Questions surface is reachable in 25 courses (3 prior + 22 new), with blocked laws still enforced. Probe account remains (no attempts); PAT rotation still pending at lane close.
