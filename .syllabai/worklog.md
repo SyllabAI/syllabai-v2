@@ -12635,3 +12635,19 @@ Work Log:
 
 Stage Summary:
 - T-TEACH-015 DONE: the toolkit now grounds in where the class actually IS — SOW resumes at the first untaught spec point in true syllabus order, gaps are one click to plan, and the coach takes real corpus content (revision notes) as note cards. Remaining OPEN: T-TEACH-016 (exports; SSE deferred by operator order). Credential law standing: rotate the Neon owner password, revoke the GitHub PAT at lane end.
+
+---
+Task ID: T-TEACH-016 run-001 (exports; SSE deferred; session web-528c0352)
+Agent: zai-web lane (main agent, session web-528c0352-0cf7-4715-a187-50aec294b288)
+Task: T-TEACH-016 — browser-side exports (print-PDF, DOCX, CSV rubric) with SSE optional and DEFERRED by the operator's standing order.
+
+Work Log:
+- exports.tsx (IN-FENCE components/teaching-toolkit/**): ExportBar with Print/PDF (window.print over an embedded @media print stylesheet that isolates [data-print-root] and hides the export bar itself), Word .docx (docx@9.5.1 Packer.toBlob client-side — the ZNotes parity path, zero server rendering so the forbidden fence holds), CSV rubric levels (RFC-quoted escaping, BOM for Excel), JSON (absorbed the 014 lone button).
+- Per-tool DOCX builders mapped to the T-TEACH-010 output contracts verbatim: lesson-plan (overview/objectives/starter/mains with per-activity differentiation/plenary + follow-up + indicators/reflection/SEN/links/assessment/notes-union), rubric (metadata meta line + overview + criteria x 4-level TABLE with score-description-feedback cells + moderation), sow (objectives + per-lesson blocks with activities/assessment/differentiation/scaffolding/reflection/links/stretch), coach (snake_case sections) — AI-draft footer on every document.
+- OUT-OF-FENCE-FLAGGED (T-MIG-117 mount-line precedent, disclosed): apps/hub/package.json + bun.lock gained exactly one dependency line, docx 9.5.1 (pure-JS client-side packer; JSZip not needed).
+- [tool]/client.tsx: the document section carries data-print-root (the print plane); the export row renders under the document header.
+- Runtime smoke (scripts/tteach016_exports_smoke.ts, sandbox scripts lane): 4/4 tools produce real ZIP blobs (PK magic, 8.0-8.6 KB) against law-satisfying fixtures incl. escaped commas/quotes/newlines; CSV parses to 5 records with the RFC escaping intact (the first RED was a smoke-harness bug — raw newline inside a quoted cell is legal CSV; the parser check replaced the naive split). SMOKE GREEN.
+- Gates: hub tsc green; toolkit suite 29/29; api plane untouched by this card.
+
+Stage Summary:
+- T-TEACH-016 exports DONE of record: teachers can print/PDF, hand in a Word file, drop rubric levels into a gradebook, or keep the raw JSON. The T-TEACH band is now COMPLETE (010-016; SSE is the operator-deferred tail of 016). Credential law standing: rotate the Neon owner password, revoke the GitHub PAT at lane end.

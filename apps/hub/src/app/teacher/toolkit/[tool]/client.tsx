@@ -40,6 +40,7 @@ import {
   SowForm,
   TopicPicker,
 } from "@/components/teaching-toolkit/forms";
+import { ExportBar } from "@/components/teaching-toolkit/exports";
 import {
   CoachView,
   LessonPlanView,
@@ -403,17 +404,6 @@ export function ToolkitToolClient({
     }
   };
 
-  const exportJson = () => {
-    if (!result) return;
-    const blob = new Blob([JSON.stringify(result.output, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${tool}-${new Date().toISOString().slice(0, 10)}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
   const outputDoc = useMemo(() => result?.output ?? null, [result]);
   const failedResult = result?.resource.status === "FAILED";
 
@@ -553,11 +543,6 @@ export function ToolkitToolClient({
                 {generating && <span className="size-3 animate-spin rounded-full border-2 border-current border-t-transparent" aria-hidden />}
                 {generating ? "Generating…" : result ? "Generate again" : `Generate ${meta.title.split(" ")[0]}`}
               </Button>
-              {result && !generating && (
-                <Button variant="outline" onClick={exportJson}>
-                  Export JSON
-                </Button>
-              )}
               {formError && (
                 <p className="text-sm text-destructive" role="alert">
                   {formError}
@@ -582,9 +567,9 @@ export function ToolkitToolClient({
         </Card>
       )}
 
-      {/* the document */}
+      {/* the document — data-print-root is the print/PDF plane (T-TEACH-016) */}
       {result && outputDoc && Object.keys(outputDoc).length > 0 && (
-        <section aria-label="Generated document" className="space-y-3">
+        <section aria-label="Generated document" data-print-root className="space-y-3">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="text-sm font-semibold">Generated document</h2>
             <Badge variant="outline" className="text-[10px] font-normal">
@@ -600,6 +585,7 @@ export function ToolkitToolClient({
               AI draft — review before use
             </Badge>
           </div>
+          <ExportBar tool={tool} output={outputDoc} />
           {tool === "lesson-plan" && <LessonPlanView out={outputDoc as never} />}
           {tool === "rubric" && <RubricView out={outputDoc as never} />}
           {tool === "sow" && <SowView out={outputDoc as never} />}

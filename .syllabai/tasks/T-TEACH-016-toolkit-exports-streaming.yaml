@@ -3,7 +3,7 @@ task:
   id: T-TEACH-016
   title: "Exports (print-PDF, DOCX, CSV rubric) + optional SSE progress"
   owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
-  status: OPEN
+  status: DONE # run-001 (zai-web session web-528c0352): ExportBar (components/teaching-toolkit/exports.tsx, IN-FENCE) — Print/PDF via window.print() over an embedded @media print stylesheet isolating [data-print-root] (the app chrome hidden, export bar itself print-hidden); DOCX via `docx`@9.5.1 Packer.toBlob CLIENT-SIDE (ZNotes parity — no server rendering, the forbidden fence kept) with per-tool builders (lesson-plan sections, rubric criteria x 4-level TABLE, sow per-lesson blocks, coach snake_case sections) + AI-draft footer; CSV rubric levels with RFC-quoted escaping (BOM-prefixed for Excel); JSON export moved from the lone 014 button into the bar; runtime smoke scripts/tteach016_exports_smoke.ts: 4/4 real ZIP blobs (PK magic, 8-8.6KB) + CSV 5 records/escaping GREEN; OUT-OF-FENCE-FLAGGED (T-MIG-117 precedent): apps/hub/package.json + bun.lock one dependency line; SSE DEFERRED by operator order (this wave stays synchronous; the FailoverLlmChain.stream law stands encoded in these notes for the future lane); hub tsc green, toolkit tests 29/29
   priority: P2
   band: T-TEACH
   wave: teach-toolkit-C
@@ -18,3 +18,6 @@ task:
     print stylesheet; CSV for rubric levels). SSE only if UX needs it —
     FailoverLlmChain.stream law (failover before first delta) + streamSSE
     events per routes/tutor.ts; else keep synchronous await.
+    DELIVERED run-001: exports live (print-PDF + DOCX + CSV + JSON); SSE
+    remains the operator-deferred tail of this card — it is a UX-only
+    upgrade now that the synchronous lane is proven end-to-end.
