@@ -12839,3 +12839,20 @@ Work Log:
 
 Stage Summary:
 - DC-7 (progress attribution) is PREREGISTERED + IMPLEMENTED + PINNED + PR'D on branch dc7-progress-attribution (base 568f6024); the lane STOPS at the merge gate — the operator's merge word is the product sign-off. Rings on the two trees now read the server projection of the persisted event rows for signed-in learners (the local counter retires to the signed-out demo posture), the plan projection carries the Revise/Practise threshold law the P2 builder will render, and the dashboard's today counts share the one projection. Residuals disclosed in the prereg §5 (plan page = P2 builder; flashcards dimension; signed-out overlay posture; per-note read marker; UTC day boundary).
+
+---
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-22T18:00Z)
+Agent: R0-auto (merge desk)
+Task: PR #307 merge (dc7-progress-attribution — the progress-attribution law, spec §3.7)
+
+Work Log:
+- 5 open PRs on entry: #285/#296/#300/#303 (heads unchanged, stale red runs) + #307 fedef8a (new 01:52+08). Main on entry cc5bfc3 (two lane pushes since last sweep: 0cefc43 T-TEACH-014 r1 hotfix, cc5bfc3) CI 2/2 success — green, no escalation.
+- gate (b): #285 verify+hub FAILURE, #296 hub FAILURE, #300 verify FAILURE, #303 verify FAILURE (all stale, SHAs unchanged) → skip; #307 verify+hub 2/2 success → candidate.
+- gates (c)(d): mergeable=true mergeable_state=clean (base=cc5bfc3=current tip, no intake); 0 reviews, 0 comments — no blocking signals.
+- gate (e): 13 files +1252/-5 — .syllabai receipt+worklog append (17 additions, 0 deletions, append-only ok), apps/api (index.ts route wiring, learner/progress.ts, progress-rollup.ts +280-line test), apps/hub (dashboard-client, progress-attribution-card, progress-ring, topic-tree, progress-server + test), docs/DC7-PROGRESS-ATTRIBUTION-PLAN.md. No *.java, no core/hub-repo content, no Neon/prod surfaces; suspect-string scan clean.
+- merged: PUT /pulls/307/merge (merge_method=merge) -> merge sha c3dcd96; new main tip CI verify+hub 2/2 success (green on first poll).
+
+Stage Summary:
+- main @ c3dcd96 green; dc7 progress-attribution law of record (api learner/progress route + rollup service, hub dashboard attribution card, topic-tree/progress-ring attribution hooks).
+- Red backlog unchanged: #285/#296/#300/#303 need author rebase/new head.
+- Standing escalations unchanged: PAT rotation overdue (CRITICAL, operator ledger); neon-replay advisory red / ESC-2 untriaged. No new escalations.
