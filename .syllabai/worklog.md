@@ -11929,3 +11929,21 @@ Work Log:
 Stage Summary:
 - THE API CARRIER IS FIXED: the 4CH1 interactive book's data plane (shelf + chapters + glossary + blocks) serves GREEN on the public wire at syllabai-v2.vercel.app; the run-010 staged handoff is fully discharged; rollback anchor captured.
 - OPEN SERVING RESIDUAL (next lever, operator): the HUB redeploy — hub-v2 still runs its pre-T-BOOK-025 build whose mirror wall still rejects the carrier's legal null scores; the hub shelf/reader keeps the honest no-chapters fallback until the hub-of-record redeploy fires.
+
+---
+Task ID: 16 (mainlane, trace 1a160fcc13978a15)
+Agent: Z.ai main agent (zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)
+Task: Operator order "fire it" — the open HUB lever of the T-BOOK-025 redeploy ladder (the residual disclosed in run-010/run-011).
+
+Work Log:
+- Fetch-first: tip of record 9ed9cf55; VERCEL_PAT identity law syllabai-1403; local main ff'd af78977c -> 9ed9cf55.
+- RACE-GUARD DECISIVE: hub production latest = dpl_HXM5GMEgHEouLMogHY8HzrXuWjqz READY @ sha 2100e410 (created 2026-10-21T23:52:32Z) — an AUTO-BAKE by the Vercel git integration (the run-005 mechanism note is platform law); fb48a5a4 (the T-BOOK-025 hub mirror fix, PR #283) IS an ancestor of 2100e410; git diff 2100e410..9ed9cf55 -- apps/hub = 0 lines (the run-001 content-equivalence doctrine) -> the live hub bundle already serves the tip's hub plane.
+- ZERO-DUPLICATE law -> STAND_DOWN on a second deploy (the run-005 b917adf-ancestor precedent); "fire it" discharged as the LIVE VERIFICATION battery instead. Zero platform writes, zero deploys fired by this lane.
+- Battery (scripts/hub_standdown_battery_r012.py, lane-side; result JSON alongside): ALL GREEN 7/7 @ 00:29:51Z Oct-22 — hub /api/health {ok, syllabai-hub, dataMode:'core-api'}; /courses/igcse-chemistry-19/ serves the PUBLISHED 'Student Book — chapter by chapter' card (not the 'planned next' variant); THE SHELF /courses/igcse-chemistry-19/books renders EXACTLY 29 chapter rows under Unit 1..4 headers with pp/SB pp. badges and reader links (sample: '1. States of matter', '2. Elements, compounds and mixtures', '3. Atomic structure') and ZERO red needles; the READER /courses/igcse-chemistry-19/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d?chapter=u1:c1 -> 200; carrier re-probe chapters 29/29 + 184 spec refs + 11 score-null SERVED (byte-equal to the run-011 census — no data drift); glossary 112/112 subject=4ch1; CORS OPTIONS 204 + ACAO https://syllabai-hub-v2.vercel.app EXACT.
+- Probe defects corrected of record (the run-005 disclosed class, all lane-side, none product): (1) bare OPTIONS without Origin/ACRM gets no ACAO echo; (2) nullScores law lives on the SPEC-CODE-REF plane (specCodes[].score===null, 11 of 184 per localgate-8leg.js leg 7), not the chapter-level field; (3) case-sensitive header dict false-negative'd ACAO across HTTP/1.1-vs-2 case. Read-only DB forensic corroborated: book_chapters has no score column (spec refs in jsonb), 184/11/173 unchanged.
+- Bookkeeping: receipt DEPLOY/hub-of-record-standdown-verified-run-012-mainlane.json (this commit); session worklog Task 16; token inline/volatile-only, never printed/committed; zero probe learners (all legs unauth/read-only), zero DDL/env, llm_spend=0. Disclosure: this push may trigger one more no-code-delta hub auto-bake (run-005 platform note) — not a lane deploy act.
+
+Stage Summary:
+- T-BOOK-025 REDEPLOY LADDER FULLY CLOSED OF RECORD: carrier half = run-011 (syllabai-v2-fmnc0xe1b LIVE, census 15/15); hub half = run-012 (auto-bake dpl_HXM5GME @ tip-equivalent 2100e410, battery 7/7, STAND_DOWN of record).
+- THE OPERATOR'S ORIGINAL INCIDENT IS RESOLVED ON THE PUBLIC WIRE BOTH PLANES: the 4CH1 course page shows the published Student Book card; the shelf renders the 29-row TOC; the student book reader opens at its chapters; the 112-term glossary serves.
+- Standing residuals: PAT rotation (multi-exposure overdue); retired-boards Render console disable.

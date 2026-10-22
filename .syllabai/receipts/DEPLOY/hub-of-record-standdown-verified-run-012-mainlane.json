@@ -1,0 +1,39 @@
+{
+  "receipt": "hub-of-record-standdown-verified-run-012-mainlane",
+  "card": "operator order 'fire it' (trace 1a160fcc13978a15) — the open HUB lever of the T-BOOK-025 redeploy ladder (disclosed as the residual in run-010/run-011). The lever DISCHARGED AS STAND_DOWN + LIVE VERIFICATION: the git-integration auto-bake had already served the fix.",
+  "lane": "mainlane (Z.ai main agent, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a-413a-4779-973b-74fdd8404de7)",
+  "created_at_utc": "2026-10-22T00:32:00Z",
+  "credential": {
+    "what": "VERCEL_PAT (operator-pasted, trace 1a160ee522dd799d) used inline-only for the race-guard reads (v2/user, v6/deployments); never printed, never committed, zero env/disk writes",
+    "identity": "GET /v2/user -> syllabai-1403 (the identity law)"
+  },
+  "race_guard_of_record": {
+    "hub_project": "prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl (syllabai-hub-v2, nextjs) / team_ULL54qkhzKBmnKrpO6BD4mYX — the run-003/004 identity of record",
+    "finding": "latest hub production deployment dpl_HXM5GMEgHEouLMogHY8HzrXuWjqz READY @ sha 2100e410 (created 2026-10-21T23:52:32Z) — an AUTO-BAKE (git-integration meta, no CLI marker; the run-005 mechanism note is the platform law of record)",
+    "ancestry_law": "git merge-base --is-ancestor fb48a5a4 2100e410 = TRUE — the T-BOOK-025 mirror fix (PR #283, apps/hub/src/lib/books.ts score nullable().optional()) IS in the live hub bundle",
+    "tip_equivalence_law": "git diff 2100e410..9ed9cf55 -- apps/hub = 0 lines (tip-of-record delta = ADR-037 workflow/scripts + .syllabai receipts/worklog only) — the live bundle is hub-plane tip-equivalent per the run-001 content-equivalence doctrine",
+    "conclusion": "a second deploy would fire a bundle byte-identical on the hub plane -> ZERO-DUPLICATE law -> STAND_DOWN (the run-005 b917adf ancestor precedent)"
+  },
+  "deploy_act": "NONE FIRED (zero platform writes, zero deploys by this lane — the lever closed itself of record)",
+  "post_battery": {
+    "script": "scripts/hub_standdown_battery_r012.py (lane-side), result scripts/run012_battery_result.json",
+    "verdict": "ALL GREEN 7/7 legs @ 2026-10-22T00:29:51Z",
+    "leg1_hub_health": "200 {status:ok, service:syllabai-hub, dataMode:'core-api'} — the flip byte-law holds on the auto-baked bundle",
+    "leg2_course_page": "/courses/igcse-chemistry-19/ 200 with the PUBLISHED 'Student Book' card copy ('chapter by chapter') and NOT the 'planned next in the books rollout' variant",
+    "leg3_the_shelf": "/courses/igcse-chemistry-19/books 200 — Unit 1..4 headers, EXACTLY 29 chapter rows (sample of record: '1. States of matter', '2. Elements, compounds and mixtures', '3. Atomic structure'), reader links with chapter=u1:c1 query shape, pp/SB pp. page-range badges, and ZERO red needles ('could not be loaded' / 'No student books published' / 'temporarily unavailable' all absent) — THE T-BOOK-025 HUB-SIDE SYMPTOM IS GONE FROM THE PUBLIC WIRE",
+    "leg4_reader": "/courses/igcse-chemistry-19/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d?chapter=u1:c1 -> 200 (the operator's original 'student book page hangs' report is CLOSED)",
+    "leg5a_carrier_chapters": "200 29/29, spec refs 184, score present-null = 11 SERVED (the exact run-011 census state — no data drift)",
+    "leg5b_carrier_glossary": "200 112/112 subject=4ch1 (lowercase qual-code law)",
+    "leg6_cors": "OPTIONS with Origin+ACRM -> 204 + access-control-allow-origin: https://syllabai-hub-v2.vercel.app EXACT"
+  },
+  "probe_defects_corrected_of_record": [
+    "v1 leg6 sent bare OPTIONS (no Origin) -> no ACAO echo; a preflight MUST carry Origin+ACRM (curl with proper headers = 204 + exact ACAO). Probe-shape defect, not product.",
+    "v1 leg5a counted CHAPTER-level score field (29 absent) instead of the SPEC-CODE-REF plane where the nullScores law lives (localgate-8leg.js leg 7: specCodes[].score===null, 11 of 184). Re-probe on the correct plane = 184 refs / 11 null / 173 non-null / 0 absent = the exact Task-15 state. Probe-aiming defect, not data drift.",
+    "leg header reads were case-sensitive dict.get; HTTP/1.1 vs HTTP/2 header-case divergence false-negative'd ACAO once. Corrected to case-insensitive lookup.",
+    "DB forensic cross-check (read-only, postgres.js): book_chapters carries no score column (score lives in the spec-refs jsonb) — corroborates defect #2 and the no-drift conclusion."
+  ],
+  "data_plane_note": "no DB writes anywhere in this act; the only DB touch is the read-only forensic query; zero probe learners created (all legs unauth/read-only or anonymous SSR fetches)",
+  "rollback_anchors": "hub: dpl_HXM5GMEgHEouLMogHY8HzrXuWjqz (current, @2100e410) | dpl_9oHkwRzTNTHveyvwjrN2GuzfkYXy (@6404e6fa) | dpl_5EHfAy9C5Ydbvw7ohyPK7rjS8VsU (@c7fb2eab) || api carrier of record: syllabai-v2-fmnc0xe1b (run-011, unchanged)",
+  "platform_behavior_disclosure": "per run-005's mechanism note, pushing this receipt commit (a .syllabai-only delta) may itself trigger one more no-code-delta hub auto-bake of the identical hub tree — disclosed platform behavior, NOT a lane deploy act",
+  "verdict": "THE T-BOOK-025 REDEPLOY LADDER IS FULLY CLOSED OF RECORD: carrier half at run-011 (syllabai-v2-fmnc0xe1b LIVE, census 15/15), hub half at run-012 (auto-bake dpl_HXM5GME @ tip-equivalent 2100e410, battery 7/7) — the operator's original incident (course page without the interactive book + hanging student book page) is RESOLVED ON THE PUBLIC WIRE both planes: shelf TOC 29 rows + reader 200 + glossary 112 + chapters 29/29 with the widened-unscored nulls served"
+}
