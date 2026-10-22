@@ -12136,3 +12136,20 @@ Work Log:
 Stage Summary:
 - The semantic-lane program + both repair lanes are FULLY DISCHARGED of record: bands A/B/C (324 named-lane rows) + repair lanes 1/2; the served CIE lattices for pure-3 and fm25 now carry their official structures; the pending ledger stands at 281 rows, all classified with evidence-cited reasons, none guessed.
 - Receipt: .syllabai/receipts/CONTENT-AUDIT/parse-repair-lanes-run-001-r0.json
+
+## T-MIG-138 run-007 — the Oct 22 window fire: run #11 39571684429's successor drained 79/95 (shards 1/2/4 FULL incl. the revived KEY_4 slot; shard-3 honest-red on a NEW 503 provider-transient class at row 9); cumulative 200/216; residual 16 three-way-cross-checked and byte-pinned; next window (07:05Z Oct 23) fires 16/16 -> queue-zero
+
+Date: 2026-10-22
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)
+Scope: .syllabai/** only (this receipt + entry); lane-side scripts (fire script repoint, 16-row pin, derivation script, backup-lane briefing); fetch-first; no force; zero code/content/DB/Neon/LLM writes
+
+Work Log:
+- Operator re-key 'Ping' @ ~09:05Z = first message past the 07:05Z window (server time 09:05:12Z via GitHub Date header). Pre-flight all GREEN: fire path survived the sandbox intact; 95-row pin re-verified (95 unique uuid-shaped); no-duplicate gate CLEAN (0 runs >= 06:00Z Oct 22).
+- FIRED: HTTP 204 -> run #11 39752817044 @ 09:06:14Z, head 2b4ca4f, ~9 min. Shards 1/2/4 = 24/24, 24/24, 23/23 FULL (KEY_4 revival HELD). Shard 3 = 8/24 then 'embedding provider request failed with status 503 — no failover by design' exit 1.
+- NEW EMPIRICAL of record: 503 provider-transient class (distinct from 403 dead-key and 429 RPD-wall); no-failover-by-design held; job died before the summary echo so the unattempted rows never hit skipped-rows — residual rebuilt from logs instead.
+- Census: 79 embedded this run (unique RESULT ids, all members of the pin, 0 foreign); cumulative 200/216; residual 16 = pin-minus-embedded == shard-3-unattempted (three-way TRUE), byte-persisted t138-drain-rows-residual-16.txt with read-back verify; derivation script persisted.
+- Fire script ARMED for the next window: ROWS repointed to the 16-row pin; no-duplicate gate made day-dynamic (>= 06:00Z of the current window day, computed at run time); NOTE carries run-#11 provenance.
+- Backup lane coordination: stand-down briefing FILE issued (fallback-only, run-#11 sighting = stand down by gate and by order, triple-gated fallback, run-#12 numbering, key bench fingerprints-only, rotation law).
+
+Stage Summary:
+- 200/216 of record; 16 rows remain; next operator re-key at/after 07:05Z Oct 23 completes the drain (16 << the 24-rows-per-shard slices that ran clean this window); on completion the last-tranche secrets-hygiene gate (rotate all four chat-transited keys) becomes actionable. Receipt: .syllabai/receipts/T-MIG-138/run-007-drain-fire-r1c.json
