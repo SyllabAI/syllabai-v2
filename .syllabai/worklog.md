@@ -12059,3 +12059,17 @@ Work Log:
 Stage Summary:
 - EDBUMP-1 LANDED (pending PR merge of record): the Edexcel 48 ride the execution-time tip 08447ba9 at every pin plane (importSource.ref, officialSpine.resourcesSha, content-maps, attachment script constant); the Edexcel/CIE vintage split is closed with a zero-delta proof of record; stamp-only semantics (no content byte touched, no engine run) disclosed per file.
 - Open: pilot ref wrinkle (content @ v0.11.0, ref @ bf8d56c3 — note discloses; tighten rider available); CIE tranche2 consume lane; maths-b Stage-2 (operator-keyed); PAT rotation (operator, CRITICAL overdue); pure-2 skeleton teaching wave (separate dispatch class).
+
+---
+
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-22T02:30Z)
+Agent: R0-auto (merge desk)
+Task: PR #293 merge (EDBUMP-1 run-001 — stamp-only pin-vintage convergence, the 48 Edexcel lanes)
+
+Work Log:
+- gates: head 46c9621 CI 2/2 success (verify + hub); mergeable=True/state=clean — no intake; 0 reviews / 0 comments / 0 review comments — no HOLD/BLOCKING/do-not-merge.
+- diff boundary: 48 Edexcel content-maps + manifests (stamp-only vintage convergence), apps/hub/scripts/attach_official_map.py, _report.json, .syllabai/receipts/EDBUMP-1/run-001 disclosure + worklog — in-boundary; 0 *.java; 0 core/hub-repo content; 0 Neon/prod writes.
+- merged: PUT /pulls/293/merge (merge_method=merge) -> merge sha cd687c3; new main tip CI verify + hub success (bounded wait, first-hand).
+
+Stage Summary:
+- main @ cd687c3 green; the Edexcel 48 stamp-converged of record. PR #285 (dc3) head CI still red — skipped 3rd consecutive sweep, awaiting fresh head from lane. Bookkeeping-only receipt push (this commit).
