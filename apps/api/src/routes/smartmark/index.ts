@@ -27,6 +27,7 @@
 import { Hono } from "hono";
 import {
   buildSmartMarkModule,
+  EntitlementError,
   SmartFeedbackGenerationError,
   type MarkingCandidateGenerator,
   type FeedbackLlm,
@@ -70,6 +71,11 @@ function errorResponse(c: { json(body: unknown, status: number): Response }, e: 
   if (e instanceof NotFoundError) return c.json(apiError(404, "not_found", e.message), 404);
   if (e instanceof BadRequestError) return c.json(apiError(400, "bad_request", e.message), 400);
   if (e instanceof ConflictError) return c.json(apiError(409, "conflict", e.message), 409);
+  if (e instanceof EntitlementError) {
+    // DC-3 402 of record: the count and the reason ride the body — the gate
+    // never hides what it metered (silent metering reads as breakage)
+    return c.json({ ...apiError(402, "entitlement_required", e.message), detail: e.detail }, 402);
+  }
   if (e instanceof SmartFeedbackGenerationError) {
     // 503 with the FIXED body — detail suppressed (GlobalExceptionHandler:107-117)
     return c.json(
@@ -185,6 +191,10 @@ export function buildSmartMarkRouters(
     gradedPublisher,
     seams.clock ?? { newId: () => crypto.randomUUID(), now: () => new Date() },
     seams.llm ?? chainAsFeedbackLlm(chain),
+    "VALIDATED_ONLY",
+    // DC-3: the entitlement envelope's transaction runner — the production
+    // adapter's own begin/commit/rollback (single serialized session)
+    sql.transaction,
   );
   return { module, selfMarkModule, studentRoute: createStudentSmartMarkRouter(module) };
 }

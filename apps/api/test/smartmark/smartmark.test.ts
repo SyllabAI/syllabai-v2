@@ -172,6 +172,14 @@ const ATTEMPT_SMART_UPDATE = /update attempts set marking_state = \? where id = 
 const ATTEMPT_TOTAL_UPDATE = /update attempts set marks_awarded = \? where id = \?/;
 const TOPICS_MATCH = /select node_id from question_topics where question_id = \?/;
 const FLIP_MATCH = /update attempts set evidence_emitted = true where id = \? and evidence_emitted = false/;
+// DC-3 gate surface (migration 0008 baseline: the gate runs on every student
+// pass; seeded policy rows free+paid; row-absent learner = free)
+const DC3_ADVISORY = /select pg_advisory_xact_lock\(hashtextextended\(\s*\?\s*,\s*0\)\)/;
+const DC3_PRIOR = /select ans\.question_part_id, count\(e\.id\)::int as prior from answers ans left join ai_mark_events e on e\.learner_id = \? and e\.question_part_id = ans\.question_part_id where ans\.attempt_id = \? group by ans\.question_part_id/;
+const DC3_ENTITLEMENT = /select tier from mark_entitlements where learner_id = \?/;
+const DC3_POLICY = /select tier, re_marks_per_day as "reMarksPerDay", unlimited from mark_entitlement_policies where tier = \?/;
+const DC3_USED_TODAY = /select count\(\*\)::int as used from ai_mark_events where learner_id = \? and mark_ordinal >= 2 and created_at >= date_trunc\('day', now\(\) at time zone 'utc'\)/;
+const DC3_STAMP = /insert into ai_mark_events/;
 
 const ATTEMPT_ROW = {
   id: ATTEMPT_ID,
@@ -227,6 +235,15 @@ function markRoutes(opts: {
     { match: ATTEMPT_TOTAL_UPDATE, rows: [] },
     { match: TOPICS_MATCH, rows: [{ node_id: "20000000-0000-0000-0000-000000000012" }] },
     { match: FLIP_MATCH, rows: [], rowsFor: () => { opts.onFlip?.(); return []; } },
+    { match: DC3_ADVISORY, rows: [] },
+    { match: DC3_PRIOR, rows: (opts.answers ?? [answerRow()]).map((a) => ({ question_part_id: a.question_part_id, prior: 0 })) },
+    { match: DC3_ENTITLEMENT, rows: [] },
+    { match: DC3_POLICY, rows: [
+        { tier: "free", reMarksPerDay: 0, unlimited: false },
+        { tier: "paid", reMarksPerDay: null, unlimited: true },
+      ] },
+    { match: DC3_USED_TODAY, rows: [{ used: 0 }] },
+    { match: DC3_STAMP, rows: [] },
   ];
 }
 

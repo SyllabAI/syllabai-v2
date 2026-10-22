@@ -51,6 +51,13 @@ const RESULT_INSERT = /insert into smart_mark_results/;
 const RESULT_LATEST = /select id, answer_id, model_id, marks_awarded, confidence, validation_passed, breakdown, failure_reason from smart_mark_results where answer_id = \? order by created_at desc/;
 const ATTEMPT_SMART_UPDATE = /update attempts set marking_state = \? where id = \?/;
 const ATTEMPT_TOTAL_UPDATE = /update attempts set marks_awarded = \? where id = \?/;
+// DC-3 gate surface (migration 0008 baseline; the gate runs on every student pass)
+const DC3_ADVISORY = /select pg_advisory_xact_lock\(hashtextextended\(\s*\?\s*,\s*0\)\)/;
+const DC3_PRIOR = /select ans\.question_part_id, count\(e\.id\)::int as prior from answers ans left join ai_mark_events e on e\.learner_id = \? and e\.question_part_id = ans\.question_part_id where ans\.attempt_id = \? group by ans\.question_part_id/;
+const DC3_ENTITLEMENT = /select tier from mark_entitlements where learner_id = \?/;
+const DC3_POLICY = /select tier, re_marks_per_day as "reMarksPerDay", unlimited from mark_entitlement_policies where tier = \?/;
+const DC3_USED_TODAY = /select count\(\*\)::int as used from ai_mark_events where learner_id = \? and mark_ordinal >= 2 and created_at >= date_trunc\('day', now\(\) at time zone 'utc'\)/;
+const DC3_STAMP = /insert into ai_mark_events/;
 
 const ATTEMPT = { id: ATTEMPT_ID, learner_id: LEARNER_ID, question_id: QUESTION_ID, exam_paper_id: PAPER_ID, marking_state: "PENDING", evidence_emitted: false };
 
@@ -79,6 +86,15 @@ function baseRoutes(): Route[] {
         { id: POINT_A1, ref: "a(i)", ordering: 1, text: "states the mole ratio", marks: 2, question_part_id: PART_A },
         { id: POINT_A2, ref: "a(ii)", ordering: 2, text: "correct unit handling", marks: 1, question_part_id: PART_A },
       ] },
+    { match: DC3_ADVISORY, rows: [] },
+    { match: DC3_PRIOR, rows: [{ question_part_id: PART_A, prior: 0 }] },
+    { match: DC3_ENTITLEMENT, rows: [] },
+    { match: DC3_POLICY, rows: [
+        { tier: "free", reMarksPerDay: 0, unlimited: false },
+        { tier: "paid", reMarksPerDay: null, unlimited: true },
+      ] },
+    { match: DC3_USED_TODAY, rows: [{ used: 0 }] },
+    { match: DC3_STAMP, rows: [] },
     { match: KAPPA_ALL, rows: [] },
     { match: KAPPA_PAPER, rows: [{ passed: true }], rowsFor: (p) => (p[1] === PAPER_ID ? [{ passed: true }] : []) },
     { match: RESULT_INSERT, rows: [] },

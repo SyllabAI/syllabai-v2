@@ -542,13 +542,20 @@ export class SmartMarkService {
    * failure rolls back every provisional state change (transactional parity
    * disclosed at tranche-1: per-statement autocommit — the caller owns the
    * serialization).
+   *
+   * DC-3 (docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md): optional `tx` — the
+   * entitlement envelope runs the WHOLE pass on the caller's transaction
+   * (advisory lock → ordinal counts → policy decision → this pass → the
+   * append-only ai_mark_events stamp, atomic). Absent = the historical
+   * autocommit posture byte-identical (every existing caller unchanged).
    */
-  async markAttempt(attemptId: string): Promise<Map<string, SmartMarkResultRow>> {
+  async markAttempt(attemptId: string, tx?: SqlFn): Promise<Map<string, SmartMarkResultRow>> {
+    const db = tx ?? this.sql;
     // paper scope via the attempt→question join (frozen derivation —
     // kappaGatePassed(question.examPaperId())); "for update of a" keeps the
     // lock surface on the attempt row only, matching the frozen pessimistic
     // read (the question load is unlocked there too).
-    const attemptRows = (await this.sql`
+    const attemptRows = (await db`
       select a.id, a.learner_id, a.question_id, a.marking_state, a.evidence_emitted,
              q.exam_paper_id
       from attempts a join questions q on q.id = a.question_id
@@ -556,7 +563,7 @@ export class SmartMarkService {
     `) as unknown as AttemptLockRow[];
     if (attemptRows.length === 0) throw new NotFoundError("attempt", attemptId);
     const attempt = attemptRows[0]!;
-    const answers = (await this.sql`
+    const answers = (await db`
       select ans.id, ans.question_part_id, ans.answer_text, ans.marks_awarded, ans.marking_state,
              qp.label, qp.marks
       from answers ans join question_parts qp on qp.id = ans.question_part_id
@@ -566,7 +573,7 @@ export class SmartMarkService {
     if (answers.length === 0) {
       throw new BadRequestError("attempt carries no part answers");
     }
-    const versionRows = (await this.sql`
+    const versionRows = (await db`
       select id from question_versions where question_id = ${attempt.question_id}
       order by version desc
     `) as unknown as Array<{ id: string }>;
@@ -574,7 +581,7 @@ export class SmartMarkService {
     const versionId = versionRows[0]!.id;
 
     // newest VALIDATED scheme backs marking; none → honest per-part refusal
-    const validatedRows = (await this.sql`
+    const validatedRows = (await db`
       select id, validation_state from mark_schemes
       where question_version_id = ${versionId} and validation_state = ${"VALIDATED"}
       order by created_at desc
@@ -582,12 +589,12 @@ export class SmartMarkService {
     if (validatedRows.length === 0) {
       const refusals = new Map<string, SmartMarkResultRow>();
       for (const answer of answers) {
-        refusals.set(answer.id, await this.refuseUnvalidatedScheme(answer, versionId));
+        refusals.set(answer.id, await this.refuseUnvalidatedScheme(answer, versionId, tx));
       }
       return refusals;
     }
     const scheme = validatedRows[0]!;
-    const pointRows = (await this.sql`
+    const pointRows = (await db`
       select id, ref, ordering, text, marks, question_part_id
       from mark_points where mark_scheme_id = ${scheme.id} order by ordering
     `) as unknown as Array<Record<string, unknown>>;
@@ -619,7 +626,7 @@ export class SmartMarkService {
       const answer = answers[i]!;
       const decision = decisions[i]!;
       const resultId = this.clock.newId();
-      await this.sql`
+      await db`
         insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
           marks_awarded, confidence, validation_passed, breakdown, failure_reason,
           mark_scheme_id, scheme_validation_state, raw_output, created_at)
@@ -639,11 +646,11 @@ export class SmartMarkService {
         failure_reason: decision.failureReason,
       };
       if (decision.accepted) {
-        await this.sql`
+        await db`
           update answers set marks_awarded = ${decision.marksAwarded}, marking_state = ${"SMART_MARKED"}
           where id = ${answer.id}
         `;
-        await this.sql`
+        await db`
           update attempts set marking_state = ${"SMART_MARKED"} where id = ${attemptId}
         `;
       }
@@ -659,7 +666,7 @@ export class SmartMarkService {
         })
         .filter((m) => m !== null)
         .reduce((s, m) => s + (m ?? 0), 0);
-      await this.sql`
+      await db`
         update attempts set marks_awarded = ${total} where id = ${attemptId}
       `;
       if (authoritative) {
@@ -677,7 +684,7 @@ export class SmartMarkService {
           // the live 137b publisher): marksTotal/correct now derive from the
           // question row per the frozen :56-60 rule, like selfmark/teachermark.
           const fired = await this.publisher.publishGraded(
-            await assembleGradedEvidenceEvent(this.sql, {
+            await assembleGradedEvidenceEvent(db, {
               attemptId,
               learnerId: attempt.learner_id,
               questionId: attempt.question_id,
@@ -686,7 +693,7 @@ export class SmartMarkService {
             }),
           );
           if (fired) {
-            await this.sql`
+            await db`
               update attempts set evidence_emitted = true
               where id = ${attemptId} and evidence_emitted = false
             `;
@@ -702,15 +709,17 @@ export class SmartMarkService {
   private async refuseUnvalidatedScheme(
     answer: AnswerPartRow,
     questionVersionId: string,
+    tx?: SqlFn,
   ): Promise<SmartMarkResultRow> {
-    const refusedRows = (await this.sql`
+    const db = tx ?? this.sql;
+    const refusedRows = (await db`
       select id, validation_state from mark_schemes
       where question_version_id = ${questionVersionId} order by created_at desc
     `) as unknown as Array<{ id: string; validation_state: string }>;
     if (refusedRows.length === 0) throw new NotFoundError("mark scheme", questionVersionId);
     const refused = refusedRows[0]!;
     const resultId = this.clock.newId();
-    await this.sql`
+    await db`
       insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
         marks_awarded, confidence, validation_passed, breakdown, failure_reason,
         mark_scheme_id, scheme_validation_state, raw_output, created_at)
@@ -731,6 +740,63 @@ export class SmartMarkService {
   }
 }
 
+// ── DC-3 re-attempt entitlement (docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md) ────
+// The law of record (spec §3.3, sha256 0da8044a…): meter the SECOND AI mark
+// of a part, not the first; the ordinal is first-class on the append-only
+// ai_mark_events ledger (counted in THIS path, never inferred); the gate is
+// an entitlement policy row read server-side, never UI styling; the count is
+// disclosed at the point of gating.
+
+/** Transaction runner (the createSql.transaction shape). The composition
+ * root wires it so gate + pass + stamp run atomically under the
+ * per-(learner,question) advisory lock; optional elsewhere. */
+export type TxRunner = <T>(body: (tx: SqlFn) => Promise<T>) => Promise<T>;
+
+export interface EntitlementPartRefusal {
+  partId: string;
+  label: string;
+  priorMarks: number;
+  /** the would-be ordinal of the refused pass (>= 2 by construction) */
+  ordinal: number;
+}
+
+export interface EntitlementRefusalDetail {
+  tier: string;
+  reMarksPerDay: number | null;
+  unlimited: boolean;
+  reMarksUsedToday: number;
+  parts: EntitlementPartRefusal[];
+  reason: "ENTITLEMENT_REMARK_NOT_ENTITLED" | "ENTITLEMENT_POLICY_UNCONFIGURED";
+}
+
+/** 402 of record: the gate never hides the count or the reason (silent
+ * metering reads as breakage). */
+export class EntitlementError extends Error {
+  constructor(
+    message: string,
+    readonly detail: EntitlementRefusalDetail,
+  ) {
+    super(message);
+  }
+}
+
+const FREE_TIER_DISCLOSURE =
+  "Your first mark on this part is free -- re-marks need a paid plan.";
+const ENTITLEMENT_POLICY_UNCONFIGURED_COPY =
+  "Marking entitlement is not configured for this account tier -- Smart Mark re-marks are unavailable.";
+function trialDisclosure(remaining: number): string {
+  return `Your first mark on this part is free -- ${remaining} re-mark${remaining === 1 ? "" : "s"} left today.`;
+}
+
+/** The (learner, part, ordinal) UNIQUE index fail-closed: a concurrent
+ * double-submit's colliding stamp surfaces as an honest 409 retry. */
+function isOrdinalCollision(e: unknown): boolean {
+  const code = (e as { code?: string } | null)?.code;
+  if (code === "23505") return true;
+  const msg = e instanceof Error ? e.message : String(e);
+  return /23505|unique constraint|duplicate key/i.test(msg);
+}
+
 /**
  * StudentSmartMarkService — the learner half of F-047. One engine: runs the
  * SAME SmartMarkService pipeline as the teacher queue (this file); the
@@ -743,6 +809,7 @@ export class StudentSmartMarkService {
     private readonly llm: FeedbackLlm,
     private readonly clock: SubmitClock,
     private readonly revealPolicy: RevealPolicy = "VALIDATED_ONLY",
+    private readonly tx?: TxRunner,
   ) {}
 
   async smartMarkAttempt(learnerId: string, attemptId: string): Promise<AttemptSmartMarkView> {
@@ -758,8 +825,9 @@ export class StudentSmartMarkService {
     this.requireRevealableScheme(scheme);
 
     const authoritative = await this.smartMark.kappaGatePassed(ctx.attempt.exam_paper_id, ctx.attempt.question_id);
-    // one batched pass: the SAME engine the teacher queue runs
-    const results = await this.smartMark.markAttempt(attemptId);
+    // one batched pass: the SAME engine the teacher queue runs — behind the
+    // DC-3 entitlement envelope (gate + pass + ordinal stamp)
+    const results = await this.runEntitledPass(learnerId, attemptId, ctx);
     const parts: PartSmartMarkView[] = [];
     for (const answer of ctx.answers) {
       const result = results.get(answer.id);
@@ -794,6 +862,139 @@ export class StudentSmartMarkService {
     const source = await this.loadFeedbackSource(learnerId, attemptId, partId);
     const text = await this.generate(improveSystemPrompt(), improveUserPrompt(source), 0.3);
     return { partId, plan: text, modelId: source.result.model_id, generatedAt: this.clock.now().toISOString() };
+  }
+
+  // ── DC-3 re-attempt entitlement (the gate of record) ────────────────────
+
+  /** The entitled pass: ordinal counts → policy decision → the engine pass
+   * → the append-only ai_mark_events stamp. With a tx runner the four steps
+   * run inside ONE transaction under a per-(learner,question) advisory lock:
+   * a refused pass rolls back to exactly nothing, and a concurrent double-
+   * click's second leg sees the first leg's events and meters accordingly.
+   * Without a runner (the legacy composition/test shape) the steps run
+   * autocommit and the (learner, part, ordinal) UNIQUE index fail-closes any
+   * race — the colliding stamp rethrows as a 409, the ledger stays exact.
+   * A SCHEME_NOT_VALIDATED result consumes nothing (the engine's own law:
+   * nothing was marked). */
+  private async runEntitledPass(
+    learnerId: string,
+    attemptId: string,
+    ctx: { attempt: AttemptLockRow; answers: AnswerPartRow[] },
+  ): Promise<Map<string, SmartMarkResultRow>> {
+    const run = async (db: SqlFn): Promise<Map<string, SmartMarkResultRow>> => {
+      // the metering lock: one key per (learner, question) — self-inflicted
+      // contention only, deadlock-free by construction
+      await db`
+        select pg_advisory_xact_lock(hashtextextended(${`dc3-aimark:${learnerId}:${ctx.attempt.question_id}`}, 0))
+      `;
+      // per-part prior AI-mark counts — version-scoped part ids make the
+      // count per scheme revision by construction (acceptance (b))
+      const priorRows = (await db`
+        select ans.question_part_id, count(e.id)::int as prior
+        from answers ans
+        left join ai_mark_events e
+          on e.learner_id = ${learnerId} and e.question_part_id = ans.question_part_id
+        where ans.attempt_id = ${attemptId}
+        group by ans.question_part_id
+      `) as unknown as Array<{ question_part_id: string; prior: number }>;
+      const priorByPart = new Map(priorRows.map((r) => [r.question_part_id, r.prior]));
+
+      // the entitlement policy row: row-absent learner = free; an unknown
+      // tier or unshipped policy = fail-closed refusal, never a silent pass
+      const tierRows = (await db`
+        select tier from mark_entitlements where learner_id = ${learnerId}
+      `) as unknown as Array<{ tier: string }>;
+      const tier = tierRows[0]?.tier ?? "free";
+      const policyRows = (await db`
+        select tier, re_marks_per_day as "reMarksPerDay", unlimited
+        from mark_entitlement_policies where tier = ${tier}
+      `) as unknown as Array<{ tier: string; reMarksPerDay: number | null; unlimited: boolean }>;
+      if (policyRows.length === 0) {
+        throw new EntitlementError(ENTITLEMENT_POLICY_UNCONFIGURED_COPY, {
+          tier,
+          reMarksPerDay: null,
+          unlimited: false,
+          reMarksUsedToday: 0,
+          parts: [],
+          reason: "ENTITLEMENT_POLICY_UNCONFIGURED",
+        });
+      }
+      const policy = policyRows[0]!;
+
+      // the DC-3 law: ordinal 1 is every tier's; a re-mark (would-be ordinal
+      // >= 2) consumes the policy. Whole-pass refusal — never half-marked.
+      const reMarkParts = ctx.answers.filter(
+        (a) => (priorByPart.get(a.question_part_id) ?? 0) + 1 >= 2,
+      );
+      if (reMarkParts.length > 0 && !policy.unlimited) {
+        const perDay = policy.reMarksPerDay ?? 0;
+        const detailParts = reMarkParts.map((a) => ({
+          partId: a.question_part_id,
+          label: a.label,
+          priorMarks: priorByPart.get(a.question_part_id) ?? 0,
+          ordinal: (priorByPart.get(a.question_part_id) ?? 0) + 1,
+        }));
+        if (perDay === 0) {
+          throw new EntitlementError(FREE_TIER_DISCLOSURE, {
+            tier,
+            reMarksPerDay: 0,
+            unlimited: false,
+            reMarksUsedToday: 0,
+            parts: detailParts,
+            reason: "ENTITLEMENT_REMARK_NOT_ENTITLED",
+          });
+        }
+        const usedRows = (await db`
+          select count(*)::int as used
+          from ai_mark_events
+          where learner_id = ${learnerId} and mark_ordinal >= 2
+            and created_at >= date_trunc('day', now() at time zone 'utc')
+        `) as unknown as Array<{ used: number }>;
+        const usedToday = usedRows[0]!.used;
+        if (usedToday + reMarkParts.length > perDay) {
+          throw new EntitlementError(trialDisclosure(Math.max(perDay - usedToday, 0)), {
+            tier,
+            reMarksPerDay: perDay,
+            unlimited: false,
+            reMarksUsedToday: usedToday,
+            parts: detailParts,
+            reason: "ENTITLEMENT_REMARK_NOT_ENTITLED",
+          });
+        }
+      }
+
+      // the pass itself — on the enveloped transaction when one is wired
+      const results = await this.smartMark.markAttempt(attemptId, this.tx ? db : undefined);
+
+      // the append-only ordinal stamp: INSERT..SELECT computes the ordinal
+      // atomically; the UNIQUE index fail-closes a fallback-path race
+      for (const answer of ctx.answers) {
+        const result = results.get(answer.id);
+        if (result === undefined) {
+          throw new Error(`smart mark pass returned no result row for answer ${answer.id}`);
+        }
+        if (result.failure_reason === "SCHEME_NOT_VALIDATED") continue;
+        try {
+          await db`
+            insert into ai_mark_events (id, learner_id, question_id, attempt_id,
+              answer_id, question_part_id, mark_ordinal, pipeline_version, created_at)
+            select ${this.clock.newId()}, ${learnerId}, ${ctx.attempt.question_id}, ${attemptId},
+              ${answer.id}, ${answer.question_part_id},
+              (select count(*)::int + 1 from ai_mark_events e
+                where e.learner_id = ${learnerId} and e.question_part_id = ${answer.question_part_id}),
+              ${PIPELINE_VERSION}, ${this.clock.now().toISOString()}
+          `;
+        } catch (e) {
+          if (isOrdinalCollision(e)) {
+            throw new ConflictError("concurrent smart-mark pass on this part -- retry");
+          }
+          throw e;
+        }
+      }
+      return results;
+    };
+    if (this.tx) return this.tx(run);
+    return run(this.sql);
   }
 
   // ── grounding ─────────────────────────────────────────────────────────────
@@ -1063,10 +1264,11 @@ export function buildSmartMarkModule(
   clock: SubmitClock,
   llm: FeedbackLlm,
   revealPolicy: RevealPolicy = "VALIDATED_ONLY",
+  txRunner?: TxRunner,
 ) {
   const smartMark = new SmartMarkService(sql, generator, publisher, clock);
   return {
     smartMark,
-    student: new StudentSmartMarkService(sql, smartMark, llm, clock, revealPolicy),
+    student: new StudentSmartMarkService(sql, smartMark, llm, clock, revealPolicy, txRunner),
   };
 }
