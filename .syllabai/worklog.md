@@ -12402,3 +12402,21 @@ Stage Summary:
 - The lane's fence held: zero touches on the byte-frozen set; BASELINE_DB §4.1 honored (CREATE-only, zero ALTER on Flyway-era tables); additive-only throughout (the engine's new tx param is optional — every existing caller byte-identical).
 - Receipt: .syllabai/receipts/DC3/dc3-reattempt-entitlement-run-001-r0.json. Plan of record: docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md.
 - RENUMBER RECEIPT (merge-gate, 2026-10-22): main took the 0008 slot mid-flight (T-TEACH-011 teaching_toolkit, journal idx 8 @337344dc); this migration renumbers 0008 -> 0009 per first-pushed, mechanism byte-identical (drizzle-generated DDL byte-equal to the authored 0008_dc3 statements; union census re-measured via the offline verifyBaseline). A second mid-flight main advance (bands B/C + parse-repair receipts, tip 5cad720c) was ridden by the first rebase (2cc541b2); this second rebase rides 337344dc.
+
+---
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-22T12:00Z / 20:00+08)
+Agent: R0-auto (merge desk)
+Task: PR #294 merge (dc3-reattempt-entitlement r0 — the re-attempt economics law, spec §3.3; migration renumbered 0008->0009)
+
+Work Log:
+- escalation history: #294 collision-held vs #285 (both claimed spec §3.3 + migration 0008, no cross-ref/supersede) since 2026-10-22T03:00Z sweep; main hub red wave-14 (2b4ca4f) blocked all merges across 12:00-19:30+08 sweeps (9 escalation reports).
+- dissolution: lane rewrote #294 twice (0901e0e -> 2cc541b -> 1e69c49) renumbering its migration to 0009_dc3-mark-entitlement.sql (+ meta/0009_snapshot.json + _journal.json entry); main journal of record ends at 0008_teaching_toolkit — 0009 sole claimant, no semantic collision; #285 untouched (stale double-red head 1c2dd54, never merged).
+- gates on head 1e69c49: verify ✅ hub ✅ (in-flight at sweep open -> bounded re-check ~90s -> 2/2 success); mergeable=True/state=clean (no intake needed); 0 reviews / 0 comments / 0 review comments — no HOLD/BLOCKING/do-not-merge.
+- diff boundary: 15 files (packages/db/drizzle 0009 sql + meta snapshots + _journal.json, packages/db/src/schema, apps/api smartmark route+service+tests, docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md, .syllabai receipt+worklog) — in-boundary; 0 *.java; 0 core/hub content; 0 Neon/prod writes.
+- main tip at merge: 337344d verify+hub green (4th consecutive green tip since the CIE validator allow-list rider healed wave-14; T-TEACH-011 run-002/003 proved 0008 clean on COW in parallel).
+- merged: PUT /pulls/294/merge (merge_method=merge) -> merge sha 751916c; new main tip CI verify + hub success (bounded wait, first-hand).
+- bookkeeping-only receipt push (this commit, .syllabai/** only).
+
+Stage Summary:
+- main @ 751916c green; dc3-reattempt-entitlement law landed with migration renumbered 0009 — collision with #285 dissolved of record by the renumber itself (no explicit ruling comment; noted for the ledger).
+- remaining queue: #285 head 1c2dd54 double-red ~13.5h stale (needs lane new head; its 0008 claim historically moot, PR still open); #296 head bd2c0b1 hub red from the healed pin-red era (fresh CI needed via lane rebase/push before gate (b) can pass).
