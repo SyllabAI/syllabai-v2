@@ -1,0 +1,62 @@
+{
+ "lane": "HUB-SYNC-W15",
+ "run": "run-001-wave15-1cr-consume",
+ "dispatch": {
+  "operator_trace": "1a163a27485377e5",
+  "order": "fire the wave-15 hub sync",
+  "session": "web-64d10b73-530a-4f71-9961-85d0436c7fb5"
+ },
+ "lane_class": "wave-15 hub sync \u2014 pure-append content wave: the 11 official 4CH1-1CR sets land in the v2 pilot bundle igcse-chemistry-19; the pin re-stamps to the consumed cut; zero SME-plane changes, zero code changes",
+ "filed_open_item_closed": {
+  "filed_by": "EXPORTER-LAW-1 receipt open_items",
+  "text": "wave-15 hub sync (11 new 1CR sets into the v2 content plane) \u2014 operator-ordered lane; its manifest step now carries the G-E5 proof automatically; note-text bump must land in the same reviewed PR"
+ },
+ "inputs": {
+  "declared_data_cut": "main@1e69c5d26bfa0dc20dc78127f0cf71ec2233169c (resources v0.12.0, PR #46 merge 1e69c5d2 \u2014 the wave-15 1CR tranche; wave-16 v0.13.0 @ 329fe1f4 deliberately OUT of scope)",
+  "exporter_of_record": "701de6cd (v0.12.1, F51 G-E5 law, pre-2CR roster) \u2014 the exact version the EXPORTER-LAW-1 43-slice rehearsal proved; the tip exporter carries the 2CR roster and its G-E5 would refuse wave-15 scope (fail-closed)",
+  "bundle_of_record": "v2 origin/main d8782172 (pilot manifest pin main@855cddcf after PIN-TIGHTEN-1)",
+  "disclosure": "scripts/exporter-disclosures/2026-10-22-wave15-1cr-tranche.json @ the cut",
+  "staging": "43 topic copies materialized from the cut's own bytes via git show (G-E5 input law)"
+ },
+ "gates": {
+  "G-E5": "43/43 staging topics content-identical to main@1e69c5d2 (modulo the converter header)",
+  "G-E3": "43 slices == the MULTI-SERIES constants of record (4090 official marks)",
+  "G-E2": "part-sum / markPoints sum-law / spec-code shapes hold on all official sets",
+  "G-E1": "636 deltas == the wave-15 disclosure exactly (11 new 1CR slugs; gone=0; changed=0)",
+  "G-E1b": "set-level identity fields byte-equal on all 32 common official sets",
+  "G-E4": "SME prefix byte-identical (2605414 bytes)"
+ },
+ "staged_census": {
+  "sets": "28 SME kept + 43 official = 71",
+  "official": "398 questions / 2184 parts / 4090 marks / 3490 markPoints / 316 crops / 8 honest stubs",
+  "onecr_tranche": "11 sets / 118 questions / 636 parts / 1210 marks",
+  "onecr_spec_honesty": "0/118 questions and 0/636 parts carry spec codes \u2014 the tranche serves pending-llm under the anchor law (matches the wave-15 commit's disclosure)",
+  "assets": "no asset files land \u2014 official-set crops serve via rawUrl provenance refs into syllabai-resources (the PR #292/#297 two-file landing convention)"
+ },
+ "write_set": [
+  "apps/hub/content/igcse-chemistry-19/questions.json (60 -> 71 sets, staged output verbatim)",
+  "apps/hub/content/igcse-chemistry-19/manifest.json (importSource.ref -> main@1e69c5d2; note bumped to the wave-15 text; counts recomputed 71/922/3588/7798; countsProvenance note + adr037OfficialAdds 43/398/2184/4090 + wave-15 source append)",
+  ".syllabai/receipts/HUB-SYNC-W15/run-001-wave15-1cr-consume.json (this file)",
+  ".syllabai/worklog.md (Task HUB-SYNC-W15-R0 section appended, union-merge on the origin version)"
+ ],
+ "untouched_by_design": [
+  "the SME plane (28 sets byte-identical \u2014 G-E4)",
+  "the 32 common official sets (byte-identical \u2014 G-E1b/G-E1)",
+  "counts SME-plane fields (sections/topics/specPoints/notes/flashcards)",
+  "generatedUtc left as-is (the PR #292/#297 convention \u2014 the note is the per-wave carrier)",
+  "all 48 Edexcel non-pilot manifests, all 44 CIE manifests, content-maps/*",
+  "wave-16 (2CR tranche, resources v0.13.0) \u2014 its own future hub-sync lane",
+  "the resources repo (zero pushes to it this lane)"
+ ],
+ "disclosures": [
+  "the PIN-TIGHTEN-1 note disclosure is superseded by this wave's re-stamp (note is per-wave current text per the PR #292 replacement convention); the historical record lives in the PIN-TIGHTEN-1 receipt, the durable ledger, and git history",
+  "the 1CR parts carry zero spec codes (pending-llm anchor law) \u2014 Smart Mark bridge eligibility for these rows is unchanged registry law (no coreBridge flip in this lane)"
+ ],
+ "open_items": [
+  "wave-16 hub sync (2CR tranche, 11 sets / 79Q / 423P / 770M @ resources 329fe1f4) \u2014 operator-ordered lane",
+  "1CR spec-label waves (labels only, G6 judges) \u2014 resources-side tranche next step",
+  "CIE tranche2 consume lane (132c4b68/5178b3b6 real CIE-side input deltas)",
+  "maths-b Stage-2 regen (operator-keyed)",
+  "PAT rotation (operator, CRITICAL overdue \u2014 see transit)"
+ ]
+}

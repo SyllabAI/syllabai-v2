@@ -12505,3 +12505,22 @@ Work Log:
 
 Stage Summary:
 - T-SM-BRIDGE-WIDEN r0+r1+r2 COMPLETE and live-verified: the Smart Mark Exam-Questions surface is reachable in 25 courses (3 prior + 22 new), with blocked laws still enforced. Probe account remains (no attempts); PAT rotation still pending at lane close.
+
+---
+Task ID: HUB-SYNC-W15-R0
+Agent: r9-hubx (main agent, zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a163a27485377e5)
+Task: Operator order "fire the wave-15 hub sync" — land the wave-15 1CR tranche (11 official 4CH1-1CR sets) into the v2 pilot bundle, re-stamp the pin to the consumed cut, close the EXPORTER-LAW-1 filed open item.
+
+Work Log:
+- Scope of record (no-guess recon before firing): wave-15 = resources v0.12.0 (PR #46 merge 1e69c5d2), the F-178 R-VARIANT tranche 1 — 11 official 4CH1-1CR sets / 118Q / 636P / 1210M, pure append (disclosure gone=0 changed=0); wave-16 (2CR, v0.13.0 @ 329fe1f4) deliberately excluded — own lane.
+- Exporter of record for this wave = 701de6cd (v0.12.1, F51 G-E5, pre-2CR roster) — the exact version the EXPORTER-LAW-1 rehearsal proved; the tip exporter's roster adds 2CR and would refuse wave-15 scope (fail-closed).
+- Staged 43 topic copies from the declared cut's own bytes (git show main@1e69c5d2:...) into the lane tmp; bundle of record extracted from v2 origin/main d8782172 via git show; shared checkouts untouched throughout (lane worktrees only).
+- Gated export run ALL GREEN: G-E5 43/43 content-identical to main@1e69c5d2 (modulo converter header); G-E3 43 slices == constants (4090 marks); G-E2 sum laws; G-E1 636 deltas == the wave-15 disclosure exactly; G-E1b 32 common sets identity byte-equal; G-E4 SME prefix byte-identical (2605414 bytes).
+- Landing: questions.json staged output verbatim (71 sets = 28 SME + 43 official); manifest importSource.ref -> main@1e69c5d2 (exporter-stamped, G-E5-proven) + note bumped to the wave-15 text in the same reviewed change (F44/F51 law) + counts recomputed from the served bundle (questionSets 60->71, questions 804->922, parts 2952->3588, marks 6588->7798; SME-plane fields asserted unchanged; countsProvenance wave-15 clause + adr037OfficialAdds 43/398/2184/4090 + source append). Manifest round-trip byte-stability asserted before write.
+- Data-derived honesty: 0/118 1CR questions and 0/636 1CR parts carry spec codes — the tranche serves pending-llm under the anchor law; disclosed in the manifest note, receipt, and this ledger.
+- v2 gates: bun install --frozen-lockfile + build:hub full chain (prebuild trio incl. CIE validator + corpus-static + next build) run on the lane tree before push.
+- Transit: last recorded 30 (EXPORTER-LAW-1 v2 push); this lane's v2 push recorded as 31; disclosed: 3 additional origin pushes observed since (T-SM-BRIDGE-WIDEN r0/r1/r2) with no transit rows recorded. PAT rotation CRITICAL overdue stands.
+
+Stage Summary:
+- Wave-15 hub sync LANDED of record: the pilot bundle serves 71 sets (28 SME + 43 official, 398q/2184p/4090m official), pin = the consumed cut main@1e69c5d2, note/counts/provenance all wave-15-honest. EXPORTER-LAW-1's filed open item CLOSED.
+- Residuals: wave-16 hub sync (2CR @ 329fe1f4) awaits its operator order; 1CR spec-label waves are the resources-side next step; CIE tranche2 consume + maths-b Stage-2 regen operator-keyed; PAT rotation overdue.
