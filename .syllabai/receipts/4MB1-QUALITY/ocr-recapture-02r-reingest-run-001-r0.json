@@ -1,0 +1,58 @@
+{
+  "receipt": "4MB1-QUALITY/ocr-recapture-02r-reingest-run-001-r0.json",
+  "task": "DB re-ingest — 2019-06 4MB1/02R OCR recapture into prod question planes (11 q / 100 marks / 40 parts)",
+  "operator_orders": [
+    "trace 1a1602acb2cf8959: 'DB re-ingest' (the operator gate)",
+    "trace 1a1615d72a7d20f1: 're-execute the scraping steps, obtain....' (upstream rebuild order)",
+    "trace 1a160c6104d571c1 + this trace: plain-explanation interludes"
+  ],
+  "agent": "r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+  "executed_utc": "2026-10-22",
+  "upstream_finding": {
+    "prior_session_gap": "the prior conversation summary claimed a completed OCR repair lane (receipt/parsed/blueprint artifacts) — NONE existed on disk; blueprint of record had NO 2019-06:4MB1-02R key (recorded gap); lane rebuilt from primary sources instead of trusting the summary",
+    "corpus_state": "SyllabAI/syllabai-pastpapers HEAD qp.pdf = 36 pages / 36 images / 16,366 OCR text chars (OCR-sandwich signature; grew 2,469,386 -> 3,398,115 bytes vs the hub index snapshot); ms.pdf = native, sha256 2da23c778b14e0aa... == the of-record probe MS",
+    "db_state_found": "family sme-eq-igcse-maths-b-16- had MOVED since the qv-mirror of-record: 2,452 rows = 1,250 unique active (restore re-emission wave created_at 2026-10-20T21:11/2026-10-21T21:13) + old 1,202 flipped active=false; qv mirror re-applied 1,250/1,250; family carries question_parts (2,352); NO unique index on questions.external_ref (duplicates 2x/3x exist upstream — disclosed, not touched); 02R still 0 rows"
+  },
+  "ground_truth_chain": {
+    "qpFooters": [8, 10, 8, 14, 10, 7, 10, 14, 8, 5, 6],
+    "msBlockTotals": [8, 10, 8, 14, 10, 7, 10, 14, 8, 5, 6],
+    "totalsAB": "11/11 EXACT, paper total 100",
+    "partMarks": "40 parts; per-question sumParts == footer == MS total; sources: qp-bracket (28), official-pos where bracket lost in OCR (Q3a, Q6 a+b, Q7e), official-single (Q10, Q11)",
+    "difficulty": "z-ai CLI protocol of run_4mb1_difficulty.py (batch + re-ask): 11/11 resolved, 8/11 re-ask agreement; bands (ask-1 law of record) = 2x3 (q0 Venn, q2 prob-tree, q6 curve-graph), 3x5 (q1, q3, q4, q8, q9), 4x3 (q5 prism-angle, q7 functions, q10 vector-ratio); difficulty_source AI_VALIDATED",
+    "topics": "per-question primary_topic_node_id = the 10 4MB1-S*-_ TOPIC aggregates; spec-anchored (2H/3J-3K/10I-J/1G-H/8J-K/9A-B/4J-K/4C-F/6G-7C/4L-N/8B-D-I)",
+    "commandWords": ["Complete", "Solve", "Complete", "Calculate", "Describe", "Calculate", "Complete", "State", "Calculate", "Find", "Calculate"]
+  },
+  "writes": [
+    "questions: 11 INSERTs (external_ref sme-eq-igcse-maths-b-16-2019-06-4mb1-02r-q0..q10, STRUCTURED, stem '', marks 8/10/8/14/10/7/10/14/8/5/6, difficulty per classification, expected_time_seconds = marks x 72 (verified family law), command_word, primary_topic_node_id, provenance PAST_PAPER, active true, version 1, difficulty_source AI_VALIDATED)",
+    "question_versions: 11 INSERTs (version 1, validation_state VALIDATED, source_document_id sme-eq-igcse-maths-b-16, extraction_confidence null, extraction_method 'ocr-sandwich-recapture-v1')",
+    "question_parts: 40 INSERTs (labels a.. by order, ordering 0-based, marks MS-anchored, prompts from the OCR text layer, per-part command_word where detectable)",
+    "probe ledger: 2 self-created probe accounts (live-probe-001, live-probe-002/probe3) + scoped TEACHER role rows + enabled=false cleanup on each — the established probe-account law"
+  ],
+  "safety": {
+    "pattern": "DRY (census + absence proof + baseline sha) -> APPLY single tx (pg_advisory_xact_lock — no unique index on external_ref, upstream duplicates prove the need; in-tx absence re-check; in-tx baseline re-prove; parameterized tagged-template inserts with explicit casts; in-tx post-verify 11/11 + sum 100 + qv mirror) -> idempotency re-run (VERIFY-ONLY no-op, values verified) -> parts APPLY same law (40 parts, per-question sumParts==marks in-tx) -> live probe",
+    "zeroLLMWrite": "the only LLM spend = 2 classification calls (22 z-ai chat invocations total incl. retries) for difficulty bands; no LLM in the write path",
+    "creds": "NEON_KEY inline-only, never printed/written; scrub-assert pass on all artifacts; no PAT used (corpus repo is public raw); no force; no other plane touched"
+  },
+  "verification": {
+    "postState": "family 2,463 rows / 1,261 active / 65 papers / active hist {2:306, 3:792, 4:163} / AI_VALIDATED 1,203 / qv mirror 1,261/1,261 / 02R refs 11 + 40 parts (sumParts==marks 11/11)",
+    "liveProbe": "syllabai-v2.vercel.app: health 200, unauthed preview 401, authed preview serves the new rows BY ID (S2/S9 full-pool nodes 1/1, S10 1/1, S4 1/3, S8 1/2 — the misses are the frozen HARD_MAX=50 difficulty-then-id selection cap on pools >50, NOT a serving defect); targeted leg: 02R q0 serves with marks 8 / band 2 / commandWord Complete / 6 parts labels a-f marks [3,1,1,1,1,1]",
+    "lawMirror": "the EXACT wire serving law (activeByTopic SQL + V20 blocking-papers + isServable boundary) executed read-only: ALL 11 rows in ALL 8 mapped node rosters (roster sizes 32-276)"
+  },
+  "disclosed_deviations": [
+    "extraction_method 'ocr-sandwich-recapture-v1' vs the family's 'sme-corpus-import-v1 (ADR-026)' — capture-channel honesty (this paper entered via OCR recapture, not the corpus import); the whole point of the qv capture-channel columns",
+    "prompts carry OCR-layer noise (disclosed): e.g. 'Gis' for 'G is', 'fixr3x-5' for 'f:x→3x−5', ~4 soup lines at the tail of Q5(d); the same noise class the restored family carries (its own receipt admits 8 furniture rows)",
+    "part marks for Q3(a), Q6(a),(b), Q7(e) from the official chain by position (QP bracket lost in OCR noise); all other 36 marks read from QP brackets and all 40 verified against the MS totals",
+    "11 rows are exam_paper_id=null (paper-less, identical to the whole maths-b family law) — the maths-b bank has no exam_papers linkage (0 4MB1 rows there)",
+    "mark_schemes NOT created for the 11 rows (the family's came from the bundle's solutionMd via the restore emitter) — open residual for the content-plane lane; the official 02R MS is native text and ingestable later",
+    "family double-import state (every pre-existing ref 2-3x with old copies active=false) FOUND and left untouched — not this lane's scope, needs its own operator decision"
+  ],
+  "residuals": [
+    "content-plane: hub bundle set 2019-06-4mb1-02r (parts problemMd/solutionMd, interactive play) — bundle-restore lane scope (restore-vs-ratify surface)",
+    "mark_schemes + mark_points for the 11 rows (answer-key plane)",
+    "blueprint registration of 2019-06:4MB1-02R into the of-record pastpapers-blueprints (repo-side filing lever, operator-gated push)",
+    "repo-side receipt/worklog filing (this receipt is local; repo pushes are a separate gate)",
+    "family duplicate-copy cleanup (pre-existing, disclosed above)",
+    "57-badSum restore-vs-ratify lane + commandWord coverage + MS notation cleanup (pre-existing queue)"
+  ],
+  "artifacts": "scripts/run-ocr-recapture-02r/: pdf/{qp,ms}.pdf + pdf-probe.json, qp-text.txt, ms-text.txt, parsed/{questions,ms-parts,parts,difficulty,tail-zone}.json/txt, plan.json, dry-run-001.json, deep-census-001.json, node-probe-001.json, topic-nodes.json, schema-probe-001.json, companion-probe-001.json, apply-{apply,verify-only}.json, parts-apply-{apply,verify-only}.json, live-probe-00{1,2}.json, law-mirror-001.json, scripts r0_02r_*.mjs + probe_pdfs.py/extract_text.py/parse_qp.py/build_plan.py/extract_parts.py (scrub-asserted)"
+}
