@@ -1093,7 +1093,15 @@ function TypedAnswerWorkspace({
 
 function hasUsableChoices(part: ExamQuestion["parts"][number]): boolean {
   const c = part.choices;
-  return !!c && c.length > 0 && c.some((o) => o.label && o.textMd.trim());
+  if (!c || c.length === 0) return false;
+  // exactly-one-correct is required for auto-marking here too (not just in
+  // hasAnswerKey): upstream rows with ambiguous keys (2–3 True flags,
+  // corpus census: 4 parts) must keep the honest notice — first-match
+  // keying would silently assert an answer the corpus does not attest.
+  return (
+    c.some((o) => o.label && o.textMd.trim()) &&
+    c.filter((o) => o.isCorrect).length === 1
+  );
 }
 
 /**
