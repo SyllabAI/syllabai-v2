@@ -11960,3 +11960,14 @@ Work Log:
 
 Stage Summary:
 - Main's verify-lane root cause is REPAIRED at the law layer with the fail-closed posture intact; the TS4 sub-split content lands its honest additive UNIT identities; the PR rides the five-gate merge discipline under the 'repair main' commission.
+
+## CI-REPAIR (flake class) — the feature-gate 403 body's volatile-timestamp pin (run-001, same repair lane)
+
+Work Log:
+- Caught live during the repair lane's post-rebase verification: run1 1 fail / re-runs green — `withClassFeatureGate > a denied gated POST answers 403...` expected timestamp `...39.004Z` vs received `...39.003Z`.
+- Defect: the test compared the WHOLE body with `toEqual(apiError(...))`; apiError embeds `isoNow()` and the errors.ts header itself declares the timestamp volatile ("golden tolerance treats timestamp as volatile"). A wall-clock ms straddle between the response's and the expectation's construction instants = intermittent RED — a low-probability red-main generator of the same class, historically masked by the 13 consecutive tail-law REDs.
+- Repair: the house volatile-timestamp pattern (`questions/routes.test.ts:200`): pin the deterministic fields, `timestamp: expect.any(String)`. Repo-wide scan for the racy shape (`toEqual(apiError(...))`): this file only. Test-only; zero production files.
+- Receipt of record: .syllabai/receipts/CI-REPAIR/feature-gate-timestamp-flake-run-001-r0.json.
+
+Stage Summary:
+- The verify lane's second (latent) red generator removed; the deterministic body fields stay pinned; the wire law untouched.
