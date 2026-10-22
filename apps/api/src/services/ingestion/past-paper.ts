@@ -52,6 +52,11 @@ import type { SqlFn } from "../identity/users";
 import { ConflictException } from "../identity/errors";
 import type { PastPaperDraft } from "@syllabai/contracts";
 import { hygienicStem } from "../tutor/stem-hygiene";
+import {
+  buildAlternativeInserts,
+  extractAcceptableAnswers,
+  insertMarkPointAlternatives,
+} from "./acceptable-answers";
 
 type Row = Record<string, unknown>;
 
@@ -492,12 +497,13 @@ export async function ingestPastPaperDraft(
             limit 1`;
           if (partRows.length > 0 && partRows[0]) partId = String(partRows[0].id);
         }
+        const mpPointId = crypto.randomUUID();
         await sql`
           insert into mark_points (
             id, mark_scheme_id, question_part_id, ref, ordering, text,
             marks, acceptance_criteria, extraction_confidence, created_at
           ) values (
-            ${crypto.randomUUID()}::uuid,
+            ${mpPointId}::uuid,
             ${schemeId}::uuid,
             ${partId}::uuid,
             ${mp.questionRef},
@@ -508,6 +514,20 @@ export async function ingestPastPaperDraft(
             ${mp.confidence},
             ${new Date().toISOString()}
           )`;
+        // DC-5 (spec §3.5, prereg docs/DC5-CONFORMANCE-LINT-PLAN.md §4.2): the
+        // acceptable-answer materialisation rides the same write path,
+        // additive to the ingestion pipeline; empty extraction = no rows.
+        await insertMarkPointAlternatives(
+          sql,
+          buildAlternativeInserts(
+            mpPointId,
+            schemeId,
+            extractAcceptableAnswers(mp.text ?? ""),
+            "dc5-r1-ingestion",
+            new Date().toISOString(),
+            () => crypto.randomUUID(),
+          ),
+        );
         pointCount++;
       }
     }

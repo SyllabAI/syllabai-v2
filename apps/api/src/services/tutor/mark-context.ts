@@ -43,7 +43,12 @@ import type { SqlFn } from "./sql";
 /** One marking point of the resolved part: the scheme line of record plus
  *  its Allocation decision (the awarded flag and marksAwarded the law
  *  names), in mark_points.ordering. The marker's evidence/rationale stay
- *  out of the payload (prereg R6: not named by the law; context budget). */
+ *  out of the payload (prereg R6: not named by the law; context budget).
+ *  DC-5 (docs/DC5-CONFORMANCE-LINT-PLAN.md §4.3): the point's materialised
+ *  acceptable-answer surface rides ADDITIVELY — absent rows leave the
+ *  fields absent (fail-open; the lint's Rule B passes through for that
+ *  point, prereg R-DC5-4). The prompt renderer consumes neither field
+ *  (R-DC5-3: no prompt-side menu in run-001); the lint consumes both. */
 export interface MarkContextPoint {
   /** the scheme point's own ref (mark_points.ref, e.g. "1-c-i") */
   ref: string;
@@ -53,6 +58,10 @@ export interface MarkContextPoint {
   marks: number;
   awarded: boolean;
   marksAwarded: number;
+  /** DC-5: verbatim ALTERNATIVE rows of the point's materialised surface */
+  alternatives?: string[];
+  /** DC-5: verbatim NUMERIC rows of the point's materialised surface */
+  numericValues?: string[];
 }
 
 /** The MARK CONTEXT payload — the marking engine's own artifacts for one
@@ -300,6 +309,34 @@ export async function loadMarkContext(
     .filter((p) => p.questionPartId === partId);
   if (inScope.length === 0) return null;
 
+  // DC-5 (docs/DC5-CONFORMANCE-LINT-PLAN.md §4.3): the resolved scheme's
+  // materialised acceptable-answer surface, ONE additive query keyed to the
+  // scheme id — the drift pin's mechanism (a scheme bump is a new scheme
+  // row; the resolveScheme law above already reads the LATEST scheme, so
+  // both consumers flip atomically). Fail-open: any error or empty table
+  // leaves the surfaces absent and Rule B passes through (R-DC5-4).
+  let altRows: Array<{ mark_point_id: string; kind: string; value: string }> = [];
+  try {
+    altRows = (await sql`
+      select mark_point_id, kind, value
+      from mark_point_alternatives
+      where mark_scheme_id = ${String(schemeRows[0]!.id)}`) as unknown as Array<{
+      mark_point_id: string;
+      kind: string;
+      value: string;
+    }>;
+  } catch {
+    altRows = []; // fail-open — the materialisation is progressive
+  }
+  const altsByPoint = new Map<string, { alternatives: string[]; numericValues: string[] }>();
+  for (const r of altRows) {
+    const key = String(r.mark_point_id);
+    const bucket = altsByPoint.get(key) ?? { alternatives: [], numericValues: [] };
+    if (String(r.kind) === "NUMERIC") bucket.numericValues.push(String(r.value));
+    else bucket.alternatives.push(String(r.value));
+    altsByPoint.set(key, bucket);
+  }
+
   // the Allocation join by markPointId; ANY point without its decided
   // entry fails open (the marking engine's own every-point-decided
   // invariant — a partial accounting would break the exact-accounting pin)
@@ -311,12 +348,15 @@ export async function loadMarkContext(
   for (const point of inScope) {
     const entry = byPointId.get(point.id);
     if (entry === undefined) return null; // partial accounting — fail open
+    const surfaces = altsByPoint.get(String(point.id));
     points.push({
       ref: String(entry.ref),
       text: point.text,
       marks: point.marks,
       awarded: entry.awarded === true,
       marksAwarded: Number(entry.marksAwarded),
+      ...(surfaces?.alternatives.length ? { alternatives: surfaces.alternatives } : {}),
+      ...(surfaces?.numericValues.length ? { numericValues: surfaces.numericValues } : {}),
     });
   }
 
