@@ -1,13 +1,13 @@
 {
  "changedCourses": [
-  "cie-igcse-geography-25"
+  "cie-a-level-maths-20-pure-3"
  ],
  "consumptionLaw": "verdict semantics (operator-verdict authoritative) + T2_near non-authoritative hint (items[].t2HintCodes, never in codes/linkage) + rejoin J* post-gate (REJOIN-1 record NEXT #2 verbatim)",
  "courses": [
   {
    "changed": true,
    "codesOutsideSpine": 0,
-   "course": "cie-igcse-geography-25",
+   "course": "cie-a-level-maths-20-pure-3",
    "ok": true,
    "problems": [],
    "rekey": {
@@ -20,28 +20,26 @@
     "conflictsKept": 0,
     "upgraded": 0
    },
-   "sheetRows": 6,
+   "sheetRows": 0,
    "sidecarOnlyItems": 0,
-   "spineHitCodes": 72,
+   "spineHitCodes": 42,
    "tierCensus": {
-    "J2_definition_phrase_identity": 12,
-    "J4_name_phrase_identity": 10,
-    "T1_verbatim": 1,
-    "V7_agent_note_join": 111
+    "V2_name_phrase_identity": 51,
+    "V7_agent_note_join": 85
    },
-   "uncoveredSpineCodes": 41
+   "uncoveredSpineCodes": 1
   }
  ],
  "gatewayTrace": "1a15e4200e6af579",
  "lane": "T-SPECS-CIE-CONSUME-1",
  "operatorDirective": "tranche-1 (operator order 'tranche-1', trace 1a15e4200e6af579) \u2014 the tranche-1 verdict round's consume re-run: tranche1_t2NearVerdicts of cie-anchor-gap-census-r0 landed in the sidecars at resources pin aa0b4de1 (T-SPECS-CIE-TRANCHE1-T2NEAR-1); the r9 consumption law unchanged",
- "resourcesSha": "58d7f6892d89001f57af6b19a3a9e85766ffab90",
+ "resourcesSha": "06de1f2ac20567a2f6f49759fe71b64f7b83000a",
  "schema": "syllabai.cie-consume-report/1.0",
  "sidecars": 1,
- "stagingHash": "52d3c4d7140fda70357bd5f1755c3a77540026fed2997b02c7ecff982774a11d",
- "stamp": "2026-10-22T01:00:00Z",
+ "stagingHash": "4a04343f5e63f7bd0d0f9260759691757351032d4a1dad54f3cbba915b5055eb",
+ "stamp": "2026-10-22T02:45:00Z",
  "totals": {
-  "codesFromSidecar": 134,
+  "codesFromSidecar": 136,
   "inlineRewrites": 0,
   "sheetAdded": 0,
   "sheetConflicts": 0,

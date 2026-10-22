@@ -96,6 +96,106 @@ HISTORY18_TOPIC_SPLIT = {
        for i in range(29, 43)},
 }
 
+# T-SPECS-CIE-PARSE-REPAIR-1 — evidence-cited additive split for
+# cie-a-level-maths-20-pure-3 topic 3.1 Algebra (operator order "band B ...,
+# band C ..., and then the two parse/spine repair lanes", gateway trace
+# 1a1615fe86d96ed9, 2026-10-22; the repair candidate was FILED by
+# T-SPECS-CIE-COMPLETE-1-BAND-A's corrections of record: "9709 P3 3.1 bullets
+# 2-5 (parse glue)").
+# The 597421 parse of record glued official topic-3.1 bullets 2-5 into ONE
+# parse row (3.1.2), whose served title therefore runs from the modulus
+# relations limb through polynomial division, the factor/remainder theorem,
+# partial fractions and the general binomial expansion; the served spine
+# carried only 2 algebra points. Ground truth (official PDF 597421, fetched
+# and read this lane; the parse also lost the superscript-two glyphs):
+#   bullet 1  modulus (the parse line-split it across 3.1.1 + 3.1.2)
+#   bullet 2  divide a polynomial, of degree not exceeding 4, ...
+#   bullet 3  use the factor theorem and the remainder theorem
+#   bullet 4  recall an appropriate form for expressing rational functions
+#             in partial fractions, and carry out the decomposition ...
+#   bullet 5  use the expansion of (1 + x)^n, where n is a rational number
+#             and |x| < 1
+# THE REPAIR IS ADDITIVE: codes 3.1.1/3.1.2 stay byte-stable (the join
+# surface; 3.1.1 loses only the leaked notes-column word "functions", 3.1.2
+# is trimmed to its true bullet-1 relations limb with the superscripts
+# restored), the four bullets land as NEW points 3.1.3-3.1.6, and the
+# global point orders after 3.1.2 shift by +4 (the TS4 orders-shift delta
+# class, disclosed in the lane receipt). The pre-repair 3.1.2 glued title
+# stands disclosed in the band-A receipt and is functionally superseded by
+# the dedicated points.
+PURE3_ALGEBRA_SPLIT = {
+    "retitle_3_1_1": ("understand the meaning of | x |, sketch the graph of "
+                      "y = | ax + b | and use relations such as functions",
+                      "understand the meaning of | x |, sketch the graph of "
+                      "y = | ax + b | and use relations such as"),
+    "retitle_3_1_2": "| a | = | b | ⇔ a² = b² and | x – a | < b "
+                     "⇔ a – b < x < a + b when solving equations and "
+                     "inequalities",
+    "new_points": [
+        ("3.1.3", "divide a polynomial, of degree not exceeding 4, by a linear "
+                  "or quadratic polynomial, and identify the quotient and "
+                  "remainder (which may be zero)"),
+        ("3.1.4", "use the factor theorem and the remainder theorem"),
+        ("3.1.5", "recall an appropriate form for expressing rational functions "
+                  "in partial fractions, and carry out the decomposition, in "
+                  "cases where the denominator is no more complicated than "
+                  "( ax + b )( cx + d )( ex + f ), ( ax + b )( cx + d )², "
+                  "( ax + b )( cx² + d )"),
+        ("3.1.6", "use the expansion of (1 + x)ⁿ, where n is a rational "
+                  "number and | x | < 1"),
+    ],
+}
+
+
+def _cie_apply_pure3_algebra_split(nodes: list, edges: list, warnings: list) -> tuple[list, list]:
+    """Apply PURE3_ALGEBRA_SPLIT to an assembled pure-3 tree. Fail-closed:
+    any unexpected pre-state aborts the build."""
+    old_head, new_head = PURE3_ALGEBRA_SPLIT["retitle_3_1_1"]
+    pts = [n for n in nodes if n["family"] == "SPEC_POINT"]
+    a = next((n for n in pts if n["code"] == "3.1.1"), None)
+    b = next((n for n in pts if n["code"] == "3.1.2"), None)
+    if a is None or b is None:
+        raise ValueError("pure3 split: served 3.1.1/3.1.2 not found")
+    if a["title"] != old_head:
+        raise ValueError(f"pure3 split: 3.1.1 title drift: {a['title']!r}")
+    if b["order"] != 2 or a["order"] != 1:
+        raise ValueError(f"pure3 split: 3.1 point orders {a['order']}/{b['order']} != 1/2")
+    if not b["title"].startswith("2 | a | = | b |"):
+        raise ValueError("pure3 split: 3.1.2 title prefix drift (glued run expected)")
+    sub_code = b["parents"][0]
+    if not sub_code.endswith(":SUB3.1"):
+        raise ValueError(f"pure3 split: 3.1.2 parent {sub_code!r} unexpected")
+    a["title"] = new_head
+    b["title"] = PURE3_ALGEBRA_SPLIT["retitle_3_1_2"]
+    idx = nodes.index(b) + 1
+    new_nodes = [{"code": code, "family": "SPEC_POINT", "title": title,
+                  "description": None, "parents": [sub_code],
+                  "provenanceTier": "RULE_DERIVED", "order": 0}
+                 for code, title in PURE3_ALGEBRA_SPLIT["new_points"]]
+    nodes[idx:idx] = new_nodes
+    # global point orders: the four new points take 3..6, every pre-existing
+    # point with order >= 3 shifts by +4
+    n_new = len(new_nodes)
+    for n in nodes:
+        if n["family"] == "SPEC_POINT" and n["order"] >= 3:
+            if n in new_nodes:
+                continue
+            n["order"] += n_new
+    for k, (code, _t) in enumerate(PURE3_ALGEBRA_SPLIT["new_points"], start=3):
+        next(n for n in nodes if n["code"] == code)["order"] = k
+    e_idx = next(i for i, e in enumerate(edges)
+                 if e["source"] == sub_code and e["target"] == "3.1.2") + 1
+    edges[e_idx:e_idx] = [{"source": sub_code, "relation": "PART_OF",
+                           "target": code, "provenanceTier": "RULE_DERIVED"}
+                          for code, _t in PURE3_ALGEBRA_SPLIT["new_points"]]
+    warnings.append(
+        "pure3 3.1 algebra split applied (T-SPECS-CIE-PARSE-REPAIR-1): "
+        "+4 points 3.1.3-3.1.6 (official bullets 2-5, glued into parse 3.1.2), "
+        "3.1.1 notes-column leak trimmed, 3.1.2 trimmed to the bullet-1 "
+        "relations limb (superscripts restored), orders after 3.1.2 +4")
+    return nodes, edges
+
+
 CIE_SUBJECT_FIX = {
     "ict": "ICT",
     "computer-science": "Computer Science",
@@ -428,6 +528,10 @@ def build_course_cie(slug: str, qual: str, reg: dict, cache: Path) -> dict:
                 edges.append({"source": s_code, "relation": "PART_OF",
                               "target": assigned[id(r)], "provenanceTier": "RULE_DERIVED"})
                 n_pts += 1
+
+    if slug == "cie-a-level-maths-20-pure-3":
+        nodes, edges = _cie_apply_pure3_algebra_split(nodes, edges, warnings)
+        n_pts += len(PURE3_ALGEBRA_SPLIT["new_points"])  # meta.counts truth
 
     curriculum = {
         "board": CIE_BOARD,
