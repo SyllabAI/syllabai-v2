@@ -12193,3 +12193,22 @@ Stage Summary:
 - Next: step 2 — 4CH1 teacher queue under D5 discipline -> pre-write replica check -> POST /kappa/evaluate -> D5.7 composition table on #276 -> D2 closes.
 - Open: who fires the api-stage dirty-tree builds (00:08Z + 09:33Z Oct 22) — operator to confirm ownership; both PATs rotate at lane close.
 
+---
+Task ID: 34 (local ledger 34 — PIN-TIGHTEN-1 run-001, the pilot igcse-chemistry-19 importSource.ref tighten)
+Agent: main agent (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, gateway trace 1a162fe3fad3c5a1)
+Task: Operator order "Optional tighten rider" (trace 1a162fe3fad3c5a1) — close the pilot ref wrinkle of record.
+
+Work Log:
+- Evidence pass (no-guess): manifest note declares the ADR-037 converter v0.11.0 wave-14 corpus while importSource.ref still names main@bf8d56c30f8b — the F44 exporter-of-record citation; wrinkle of record in EDBUMP-1 receipt open_items and durable ledger line ~12061
+- Consume pins of record: PR #292 (dd7c7b27) = "ADR-037 v0.11.0 corpus" consume; PR #297 (2b4ca4f5, the last manifest touch) = "G-E gated re-export of the official block from resources 855cddcf0a" -> consumed cut of record = 855cddcf0a22e67ade24aac24f04e219dba2598f
+- Git truth (resources repo): bf8d56c3 is an ANCESTOR of 855cddcf — the pin under-claimed and is tightened FORWARD, not back-dated; 855cddcf descends from v0.11.0 (76a18897) and is an ancestor of tip 08229323; tip deliberately NOT used (content never re-derived there — pinning tip would over-claim, no-guess held)
+- Edit (string surgery, fail-closed asserts, persisted script scripts/pin_tighten_edit.py): importSource.ref -> main@855cddcf0a22e67ade24aac24f04e219dba2598f; importSource.note gains the PIN-TIGHTEN-1 disclosure (append-only); countsProvenance wave-12 citation "exporter of record F44 @ bf8d56c30f" left byte-untouched (historical census record, self-described); post-edit json-parse green, exactly-2-line git diff
+- Untouched by design: content-maps/igcse-chemistry-19.json (own generation stamp 2e17aab0 / generatedUtc 2026-09-19 — no wrinkle of record filed against it), content-maps/_report.json (fleet stamp tracks the EDBUMP-1 convergence, not the pilot), all bundle content files, 48 Edexcel manifests @ main@08447ba9, 44 CIE manifests @ main@c5f20c52, pure-2 skeleton receipt-path ref
+- Gates: bun install --frozen-lockfile (no drift) + bun run build:hub exit 0
+- Push: fetch-first re-verified at lane start (origin/main = 5cad720c), pure FF, no force, dedicated lane worktree lane-pin-tighten-1 (R4 live on the shared checkout — untouched); v2-side-only lane — resources repo untouched, transit stays 28
+- Post-push three-way verification: local git log; ls-remote origin HEAD == pushed sha; census re-run (pilot @ main@855cddcf0a..., 48 Edexcel @ main@08447ba9 residue-free, CIE untouched)
+
+Stage Summary:
+- Pilot wrinkle CLOSED of record: manifest ref now names the true consumed cut main@855cddcf0a22e67ade24aac24f04e219dba2598f; disclosure append-only; content byte-unchanged
+- Root cause observed, filed open: the exporter stamps the exporter-of-record commit (F44 @ bf8d56c3) rather than the data cut — resources-side exporter-law follow-up lane available
+- Open unchanged: CIE tranche2 consume lane; maths-b Stage-2 (operator-keyed); PAT rotation (operator, CRITICAL overdue); pilot content-map generation stamp @ 2e17aab0 noted (no wrinkle filed); receipt .syllabai/receipts/PIN-TIGHTEN-1/run-001-ref-tighten.json

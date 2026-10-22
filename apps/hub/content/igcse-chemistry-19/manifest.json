@@ -3,14 +3,14 @@
  "generatedUtc": "2026-10-21T21:55:49Z",
  "importSource": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@bf8d56c30f8b1532f9735e9f5f1d7e71c0694022",
+  "ref": "main@855cddcf0a22e67ade24aac24f04e219dba2598f",
   "upstreamSchemas": [
    "syllabai.sme-revision-note/1.0",
    "syllabai.sme-revision-notes-course/1.0",
    "syllabai.sme-exam-questions/1.1",
    "syllabai.sme-flashcard-deck/1.0"
   ],
-  "note": "ADR-037 converter v0.11.0 corpus (merged main): wave-14 closes the last three honest review items, corpus review queue now empty. F48 PUA->Unicode pass: all 23 symbol-font PUA chars in the source text layer map to real Unicode from evidence (font trace + page render per glyph - arrows, Delta x2, equilibrium, Sigma, check, bullets, degree, times, divide, minus, bond rule); served corpus text is PUA-free and fail-closed on unmapped chars (C56 pins absence + nine mappings). F46 deep-indent roman MS rows: 2023-11 1C 6(c)(ii)/6(d)(ii) link (G5 66/66), their (i)-blocks lose the absorbed rows. F47 MS-LINK-OVERRIDES ledger: 2019-06 1C 3(d)(ii) MS-image answer cell human-adjudicated as verbatim tick-table transcription (C52/C57). Four page anchors restored by the cleaner text (2021-06 2C 7(c)(i), 2022-06 2C 5(c)(ii), 2025-06 2C 6(a)(ii), 2026-06 1C 7(a)(ii)). This bundle reconciles to the corpus of record on one part: 3(d)(ii) serves the verbatim transcription (the previously staged interpretive summary + ms-image asset is superseded; sourcePage 7 restored). 32 official sets (16x1C + 16x2C), 280 questions, 1548 parts, all spec-tagged (1C wave 2 + 2C wave 1)."
+  "note": "ADR-037 converter v0.11.0 corpus (merged main): wave-14 closes the last three honest review items, corpus review queue now empty. F48 PUA->Unicode pass: all 23 symbol-font PUA chars in the source text layer map to real Unicode from evidence (font trace + page render per glyph - arrows, Delta x2, equilibrium, Sigma, check, bullets, degree, times, divide, minus, bond rule); served corpus text is PUA-free and fail-closed on unmapped chars (C56 pins absence + nine mappings). F46 deep-indent roman MS rows: 2023-11 1C 6(c)(ii)/6(d)(ii) link (G5 66/66), their (i)-blocks lose the absorbed rows. F47 MS-LINK-OVERRIDES ledger: 2019-06 1C 3(d)(ii) MS-image answer cell human-adjudicated as verbatim tick-table transcription (C52/C57). Four page anchors restored by the cleaner text (2021-06 2C 7(c)(i), 2022-06 2C 5(c)(ii), 2025-06 2C 6(a)(ii), 2026-06 1C 7(a)(ii)). This bundle reconciles to the corpus of record on one part: 3(d)(ii) serves the verbatim transcription (the previously staged interpretive summary + ms-image asset is superseded; sourcePage 7 restored). 32 official sets (16x1C + 16x2C), 280 questions, 1548 parts, all spec-tagged (1C wave 2 + 2C wave 1). PIN-TIGHTEN-1 (run-001, 2026-10-22): importSource.ref re-keyed from the stale F44 exporter-of-record citation main@bf8d56c3 to main@855cddcf0a22e67ade24aac24f04e219dba2598f — the consumed wave-14 cut of record (corpus consume PR #292 at v0.11.0; official-block re-export PR #297 from 855cddcf0a). Content unchanged; stamp-only tighten."
  },
  "curriculum": {
   "board": "Pearson Edexcel",
