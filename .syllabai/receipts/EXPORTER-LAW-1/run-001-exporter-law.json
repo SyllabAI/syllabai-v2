@@ -1,0 +1,52 @@
+{
+  "lane": "EXPORTER-LAW-1",
+  "run": "run-001-exporter-law",
+  "dispatch": {
+    "operator_trace": "1a1636787345585d",
+    "order": "resources-side exporter-law follow-up",
+    "session": "web-64d10b73-530a-4f71-9961-85d0436c7fb5"
+  },
+  "lane_class": "exporter-of-record law change (F51) — resources-side only; zero corpus changes, zero v2 content-plane changes, no engine re-run",
+  "filed_open_item_closed": {
+    "filed_by": "PIN-TIGHTEN-1 receipt open_items + durable ledger Task 34",
+    "text": "resources-side exporter-law follow-up: stamp the data cut, not the exporter-of-record commit",
+    "root_cause_of_record": "the exporter of record left importSource.ref untouched every run ('importSource.ref stays'); the pin was stamped once in the F44 era (@ bf8d56c3) and drifted from the data (wave-14 consumed 855cddcf)"
+  },
+  "law_landed": {
+    "G-E5": "--source-cut main@<40-hex> REQUIRED with --manifest (refused without it); format fail-closed; every consumed staging topics file proven content-identical to the declared cut's committed topic.json (modulo the generated_utc/generator converter header — data plane canonicalized byte-exact; header exclusion evidence-derived from the topic.json schema of record); missing staging file / unknown cut / any drift aborts before the bundle gates; the declared cut then STAMPED into the staged manifest's importSource.ref",
+    "identity_is_a_law": "no disclosure path (the G-E1b precedent, F44)",
+    "note_text": "stays the per-wave hardcode of record — the bump remains a reviewed-PR act (F44 law); the stamped ref no longer depends on it"
+  },
+  "write_set": {
+    "resources_commit": "701de6cdf065cc90d6c637d4cd7ea32912b42c83 (pure FF 1e69c5d2..701de6cd, transit 29)",
+    "scripts_official_examq_export_hub_py": "exporter v4 — +105/-4 lines: docstring gate list (v4 + G-E5), imports re+subprocess, REPO_ROOT, parse_source_cut/_cut_topic_bytes/_topic_data_plane/verify_source_cut, argparse --source-cut + pair law, ref stamp, prints",
+    "OE_CHANGELOG": "0.12.1 section (exporter-only; converter stays 0.12.0; 65 canaries untouched)",
+    "OE_LEDGER": "F51 row appended after F50 (append-only)",
+    "v2_ledger": ".syllabai/worklog.md Task EXPORTER-LAW-1 section appended (union-merged onto origin/main 4a3c3bf7 — see mechanics)",
+    "v2_receipt": ".syllabai/receipts/EXPORTER-LAW-1/run-001-exporter-law.json (this file)"
+  },
+  "proofs": [
+    "control battery persisted at scripts/exporter_law_tests.py — ALL GREEN",
+    "NC1 malformed --source-cut refused exit 2 pre-write; NC1b/NC1c pair law both directions refused",
+    "NC2 well-formed ghost cut refused (G-E5 cannot read; git show translated to the bare sha — the 'main@<hex>' pin form is not valid rev syntax, en-route defect caught pre-push)",
+    "NC3 one-field-tampered staging copy refused with the slice named (data-plane drift)",
+    "POS 43-slice rehearsal vs the v2 bundle of record + wave-15 disclosure + --allow-new-official: G-E5 43/43, G-E3 43 slices, G-E2, G-E1 census == the wave-15 disclosure exactly, G-E1b, G-E4 — staged manifest ref == main@1e69c5d2..., 28 SME sets byte-equal, 43 official (11 new 1CR) staged to lane tmp only",
+    "three-way push verification: local origin/main == 701de6cd; ls-remote HEAD == 701de6cd; pushed-tree census G-E5 x10 + 0.12.1 heading + F51 row",
+    "sparse-checkout mechanics: OE files edited as origin/main extractions, staged via hash-object + update-index --cacheinfo into the full-tree index; committed tree byte-verified post-commit",
+    "mid-lane event of record (twice): lane start on the fetched tip 751916cf (had advanced fcccda63..751916cf); at first push the fetch-first is-ancestor gate caught origin advanced again 751916cf..4a3c3bf7 (a parallel agent's R0-AUTO receipt push) and the push was CORRECTLY ABORTED before any attempt — lane rebased with union-merge on the shared ledger (both appends additive, no semantic conflict) and re-pushed; transit ledger 30 counts only the successful v2 push"
+  ],
+  "untouched_by_design": [
+    "v2 content plane incl. apps/hub/content/igcse-chemistry-19/manifest.json (already correct @ main@855cddcf after PIN-TIGHTEN-1)",
+    "content-maps/_report.json fleet stamp",
+    "all corpus files under Official-ExamQuestion/ (zero corpus changes; converter stays 0.12.0; 65 canaries untouched)",
+    "scripts/exporter-disclosures/ (no content wave in this lane — no delta census to disclose)",
+    "the top-level CHANGELOG.md / LEDGER.md (not this corpus' books of record)"
+  ],
+  "open_items": [
+    "wave-15 hub sync (11 new 1CR sets into the v2 content plane) — operator-ordered lane; its manifest step now carries the G-E5 proof automatically; note-text bump must land in the same reviewed PR",
+    "CIE tranche2 consume lane (132c4b68/5178b3b6 are real CIE-side input deltas)",
+    "maths-b Stage-2 regen (operator-keyed)",
+    "PAT rotation (operator, CRITICAL overdue — transit 29 after this lane's resources push)",
+    "further identity closure (optional, not filed): byte-hash the staged topics vs the cut rather than content-normalized JSON — rejected for now as over-refusing legitimate regenerated staging (generated_utc/generator are converter identity, not data identity)"
+  ]
+}
