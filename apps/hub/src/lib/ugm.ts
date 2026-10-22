@@ -3,10 +3,10 @@
  *
  * The consumption seam for the UGM corpus landed of record in
  * SyllabAI/syllabai-resources (UGM-Enrichment #55 facts + UGM-Resources #58
- * text, quadratics lane first) under ADR-UGM-0001 as amended 2026-10-23 and
+ * text, functions lane second) under ADR-UGM-0001 as amended 2026-10-23 and
  * the operator attestation of 2026-10-23. The hub-side import is
  * scripts/import_ugm.py → content/<lane>/ugm-resources.json
- * (schema syllabai-demo.ugm-lane-resources/1.0); this module is its only
+ * (schema syllabai-demo.ugm-lane-resources/1.1, multi-lane); this module is its only
  * reader. Math stays byte-true in UGM's native \( \) / \[ \] delimiters —
  * the shared Markdown renderer's normalizeCorpusMath already supports them.
  *
@@ -30,7 +30,11 @@ import { loadContentJson } from "@/lib/corpus";
 
 export const UGM_FLAG_KEY = "ugmLaneResources";
 
-// ── bundle schema (syllabai-demo.ugm-lane-resources/1.0) ──────────────
+// ── bundle schema (syllabai-demo.ugm-lane-resources/1.1) ──────────────
+// 1.1 (multi-lane): singular station/stationUrl → stations[]; each resource
+// carries its station slug; source.enrichment/resourcesDir are per-lane
+// arrays; coverage gains a per-lane breakdown. 1.0 (single station) is
+// superseded — schema drift degrades to the honest empty state (below).
 
 const UgmSpecPointRef = z.object({
   code: z.string(),
@@ -43,6 +47,7 @@ const UgmSpecPointRef = z.object({
 const UgmResource = z.object({
   ugmId: z.string(),
   slug: z.string(),
+  station: z.string(),
   title: z.string(),
   url: z.string(),
   resourceType: z.string().nullish(),
@@ -63,19 +68,24 @@ const UgmSpecPointIndex = z.object({
   ugmIds: z.array(z.string()),
 });
 
+const UgmStationRef = z.object({
+  slug: z.string(),
+  title: z.string(),
+  url: z.string().nullish(),
+});
+
 const UgmLaneBundle = z.object({
   schema: z.string(),
   generatedUtc: z.string(),
   reviewState: z.object({ state: z.string(), note: z.string() }),
   lane: z.string(),
-  station: z.string(),
-  stationUrl: z.string().nullish(),
+  stations: z.array(UgmStationRef).min(1),
   source: z.object({
     repo: z.string(),
     ref: z.string(),
-    enrichment: z.string(),
+    enrichment: z.array(z.string()).min(1),
     enrichmentSchema: z.string().optional(),
-    resourcesDir: z.string(),
+    resourcesDir: z.array(z.string()).min(1),
     ledger: z.string(),
     adr: z.string(),
     operatorAttestation: z.string(),
@@ -90,9 +100,18 @@ const UgmLaneBundle = z.object({
     ugmResourcesConsidered: z.number(),
     aligned: z.number(),
     nonOverlap: z.number(),
-    alignedShare: z.number(),
+    alignedShare: z.number().nullish(),
     candidateRows: z.number(),
     specPointsCovered: z.array(z.string()),
+    lanes: z.array(z.object({
+      station: z.string(),
+      stationTitle: z.string(),
+      ugmResourcesConsidered: z.number().nullish(),
+      aligned: z.number(),
+      nonOverlap: z.number(),
+      alignedShare: z.number().nullish(),
+      candidateRows: z.number(),
+    })),
   }),
   specPoints: z.array(UgmSpecPointIndex),
   resources: z.array(UgmResource),
@@ -160,4 +179,11 @@ export function ugmResourcesAt(bundle: UgmBundle, code: string): UgmResource[] {
     bundle.specPoints.find((sp) => sp.code === code)?.ugmIds ?? [],
   );
   return bundle.resources.filter((r) => ids.has(r.ugmId));
+}
+
+/** Station titles of the bundle's lanes, e.g. "Quadratics and Combining Functions". */
+export function ugmStationNames(bundle: UgmBundle): string {
+  const titles = bundle.stations.map((s) => s.title);
+  if (titles.length <= 1) return titles[0] ?? "Underground Mathematics";
+  return `${titles.slice(0, -1).join(", ")} and ${titles[titles.length - 1]}`;
 }
