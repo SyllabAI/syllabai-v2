@@ -12458,3 +12458,20 @@ Work Log:
 
 Stage Summary:
 - spcptUnmapped 280 -> 262; spcptToOfficial 46 -> 69; 23 tranche-2 sids now carry their operator-anchored official codes in the registry of record. Item/coding planes untouched by design (sidecar verdicts are the item-level path). Residuals: resources-sidecar capture of the 23 verdicts (durability), 10 mis-tag re-points, held/split reconciliation (9Dxx, pYmR, Cdtk), tranche-3 (1,203 sid-less), PAT rotation.
+
+---
+Task ID: T-SM-BRIDGE-WIDEN-R0
+Agent: Z.ai (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2, trace 1a163786bda7a699)
+Task: Operator order — "button visible in more courses sooner, without teacher queue, we will tackle that later on": widen the Exam Questions Smart Mark surface to bank-covered courses via registry coreBridge flips; G2 kappa calibration explicitly deferred by the operator.
+
+Work Log:
+- Diagnosed the operator-visible gap: the real Smart Mark button requires signed-in learner + bridge-eligible course + structured question + submitted answers; the legacy advisory lane (/api/ai/mark) is hard-off ({available:false} live-probed); bridge eligibility is registry-driven (route.ts:202).
+- Read-only DB census: 21,973 sme-eq ref'd questions (13,096 distinct; 21,962 VALIDATED schemes) already in the bank across ~30 courses incl. compressed-head slugs — the blocker was the 3-row eligible set, not the engine.
+- Coverage resolved per-course with the exact smeQuestionRef law (Python mirror incl. FNV-1a compressed-head branch); duplicate-code risk found and neutralized (0452 x2: only one root holds the questions; rootIdForCourseCode .find() order unspecified -> cie-igcse-accounting-21 excluded pending an API tie-break pin).
+- Flipped coreBridge:true on 22 point-scheme courses (6,563 validated bridgable questions): 4MB1 + CIE sciences/maths/CS/ICT (0580, 0607, 0610, 0620, 0625, 0417, 0478, 0973 x3, 9700/9701/9702, 9618, 9709 units). Wave-3 band-scheme rows stay OFF per the checklist blocked-ADR law. 42 zero-bank-refs rows stay OFF (would be ghost buttons; need bundle ingest first).
+- Zero API code changes, zero migrations, zero DB writes; registry + receipt + this worklog entry only. Hub auto-deploys from main (git-linked surface).
+
+Stage Summary:
+- Button now reachable (signed-in learners, structured questions, post-submit) in 25 courses total (3 prior + 22 new) once the hub build lands.
+- Authoritative flags on new courses ride the existing ALL-scope kappa pass (2026-10-09) — per-subject certification remains deferred of record (operator); T-SM-KAPPA-SUBJECT teacher queue unchanged.
+- Receipt: .syllabai/receipts/T-SM-BRIDGE-WIDEN/bridge-widen-r0.json (flip table, exclusions, disclosures).

@@ -1,0 +1,79 @@
+{
+  "lane": "T-SM-BRIDGE-WIDEN",
+  "run": "bridge-widen-r0",
+  "operator_order_trace": "1a163786bda7a699",
+  "operator_order": "\"button visible in more courses sooner, without teacher queue, we will tackle that later on\" (IM, 2026-10-22)",
+  "date": "2026-10-22",
+  "act": "Registry flip G3: coreBridge:true on 22 point-scheme courses whose questions already sit in the v2 bank with VALIDATED schemes — the identity-bridge eligibility law is registry-driven (apps/hub/src/app/api/core/questions/route.ts:202 eligible = status==='pilot' || coreBridge===true), so this one-file data change turns on the signed-in-learner Smart Mark surface ('Submit for marking' panel + 'Smart Mark my answers' button) for the flipped courses' Exam Questions.",
+  "mechanics": {
+    "eligibility_law": "hub /api/core/questions route — registry row gate only; per-question joins stay honesty-guarded (marks/counts must line up or the question is skipped, never mis-joined); learner must be signed in; structured questions only for AI marking (MCQs are answer-key marked); 'Submit answers' precedes the Smart Mark button",
+    "backend_unchanged": "zero API code changes; the kappaGatePassed gate keeps its current production posture (latest scope=ALL row passed=true 2026-10-09 => marks flagged authoritative globally); zero migration; zero DB writes by this lane",
+    "coverage_evidence": "read-only production DB census: 21,973 questions carry sme-eq refs (13,096 distinct), 21,962 with a VALIDATED mark scheme; per-course counts resolved via the exact smeQuestionRef law incl. the compressed-head branch (truncated course slug + 8-hex FNV-1a of the full slug) — implemented byte-mirrored in the planning script"
+  },
+  "flip": [
+    {"slug": "igcse-maths-b-16", "code": "4MB1", "validated_refs": 1250},
+    {"slug": "cie-a-level-biology-25", "code": "9700", "validated_refs": 910},
+    {"slug": "cie-igcse-physics-23", "code": "0625", "validated_refs": 634},
+    {"slug": "cie-igcse-biology-23", "code": "0610", "validated_refs": 493},
+    {"slug": "cie-igcse-chemistry-23", "code": "0620", "validated_refs": 473},
+    {"slug": "cie-a-level-physics-25", "code": "9702", "validated_refs": 409},
+    {"slug": "cie-a-level-computer-science-19", "code": "9618", "validated_refs": 264},
+    {"slug": "cie-igcse-maths-25-extended", "code": "0580", "validated_refs": 261},
+    {"slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry", "code": "0973", "validated_refs": 253},
+    {"slug": "cie-a-level-chemistry-25", "code": "9701", "validated_refs": 252},
+    {"slug": "cie-igcse-computer-science-23", "code": "0478", "validated_refs": 237},
+    {"slug": "cie-igcse-maths-international-maths-23-extended", "code": "0607", "validated_refs": 192},
+    {"slug": "cie-igcse-maths-25-core", "code": "0580", "validated_refs": 190},
+    {"slug": "cie-igcse-maths-international-maths-23-core", "code": "0607", "validated_refs": 182},
+    {"slug": "cie-igcse-ict-21", "code": "0417", "validated_refs": 133},
+    {"slug": "cie-a-level-maths-20-mechanics", "code": "9709", "validated_refs": 101},
+    {"slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics", "code": "0973", "validated_refs": 97},
+    {"slug": "cie-a-level-maths-20-pure-1", "code": "9709", "validated_refs": 81},
+    {"slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-biology", "code": "0973", "validated_refs": 48},
+    {"slug": "cie-a-level-maths-20-probability-and-statistics-2", "code": "9709", "validated_refs": 43},
+    {"slug": "cie-a-level-maths-20-pure-3", "code": "9709", "validated_refs": 37},
+    {"slug": "cie-a-level-maths-20-probability-and-statistics-1", "code": "9709", "validated_refs": 23}
+  ],
+  "flip_totals": {"courses": 22, "validated_bridgable_questions": 6563},
+  "exclusions": {
+    "wave3_band_scheme_blocked_pending_ADR (checklist law, NOT deferred by the operator order)": [
+      "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing",
+      "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing",
+      "igcse-english-language-a-16-paper-3-coursework",
+      "igcse-english-literature-16",
+      "cie-igcse-english-language-20",
+      "cie-igcse-english-language-25",
+      "cie-igcse-english-literature-21",
+      "cie-as-english-general-paper-21",
+      "cie-igcse-business-23",
+      "cie-igcse-business-25",
+      "cie-a-level-business-23",
+      "cie-igcse-history-18",
+      "cie-igcse-geography-20",
+      "cie-igcse-geography-25",
+      "cie-igcse-religious-studies-23",
+      "cie-as-environmental-management-20",
+      "cie-igcse-environmental-management-25",
+      "cie-igcse-economics-20",
+      "cie-igcse-economics-25",
+      "igcse-business-19",
+      "igcse-geography-19"
+    ],
+    "0452_duplicate_subject_code_ambiguity": "cie-igcse-accounting-21 (80 validated refs) EXCLUDED this round: subjects table carries two 0452 rows; only one row's tree holds the accounting-21 questions (160 via question_spec_points) while rootIdForCourseCode resolves with .find() over an 'order by s.code' listing — intra-code order unspecified. Flip after the API pins a deterministic tie-break (or the duplicate row is retired).",
+    "below_min_coverage_20": [
+      "cie-igcse-further-maths-additional-maths-25 (16)",
+      "cie-igcse-science-combined-science-23-biology (13)",
+      "cie-igcse-science-combined-science-23-chemistry (13)",
+      "cie-igcse-science-combined-science-23-physics (8)"
+    ],
+    "zero_bank_refs_42_rows": "Edexcel IGCSE/IAL bundles (4PH1, 4BI1, 4EC1, 4IT1, 4PM1, 4SD0, IAL units, modular variants) have NO sme-eq questions in the v2 bank yet — flipping them would ship ghost buttons; they need the bundle ingest (ingest-bundle-questions.ts) first"
+  },
+  "disclosures": [
+    "Operator explicitly deferred the G2 kappa calibration / teacher-queue work ('we will tackle that later on'): authoritative flags on the new courses ride the existing global ALL-scope pass (2026-10-09), NOT per-subject proof. T-SM-KAPPA-SUBJECT (4CH1 teacher queue) stays the certification path and is unaffected.",
+    "4MB1 inclusion supersedes the v1 D1 'parked' note (past-paper-sourced): the 4MB1-QUALITY + T-MIG-136 lanes since landed point-scheme intake; 1,250 validated refs verified.",
+    "Dashboard 'core-backed' cards remain pilot-hard-coded (PILOT_COURSE_SLUG) — dashboard stats stay 4CH1-only; the Exam Questions player is the surface widened here. Follow-up if dashboard parity is wanted.",
+    "1,176 bank refs (of 13,096 distinct) resolve to no current registry slug (pre-registry-shape imports); they affect no flipped course.",
+    "Hub auto-deploys from main (git-linked Vercel project syllabai-hub-v2); this push is the deploy lever for the hub surface. API surface untouched."
+  ],
+  "verification_plan": "post-deploy: hub /api/core/questions depth-1 availability for flipped courses with a disclosed probe learner account (precedent w0a-probe-20261008b); anonymous probes stay 'unauthenticated' by law"
+}
