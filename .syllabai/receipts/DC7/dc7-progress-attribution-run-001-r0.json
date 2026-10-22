@@ -1,0 +1,61 @@
+{
+  "receipt": "dc7-progress-attribution-run-001-r0",
+  "lane": "DC-7 tranche (P1 of the DC roadmap, spec §3.7 + roadmap Table 3)",
+  "operator_launch_word": "Launch (IM trace 1a1649ff76417ae9, 2026-10-23)",
+  "prereg": "docs/DC7-PROGRESS-ATTRIBUTION-PLAN.md (committed WITH the implementation per the #216/#225/#229/#232/DC-4 pattern)",
+  "spec_of_record": {
+    "source": "github.com/nawaf-al-hussain/FileUpload/tree/main/SME-Research (per the DC-3 receipt's provenance row)",
+    "file": "SyllabAI-SmartChat-Mark-Design-Spec.docx",
+    "size_bytes": 824492,
+    "sha256": "0da8044a0667a47c684d4b0486784be02bc4992546eca2ec2946043e9e2b287a",
+    "verdict": "EXACT match, re-verified at this lane's open after sandbox reset #8 (clone + recovered-spec staging wiped; re-clone @ 568f6024, re-download via raw.githubusercontent, byte-verify EXACT)",
+    "extractor": "scripts/recover_spec_docx.py (operator-side, persisted; 265 paragraphs / 42885 chars this run)"
+  },
+  "roadmap_reading_of_record": "Table 3 cell order is Phase | Item | Surface | Gate (header precedes items), so DC-7's phase cell reads P1 — consistent with the executive summary (P1 = DC-3, DC-4, DC-7) and the repo worklog's P1 order DC-3 → DC-4 → DC-7. Roadmap position at launch: DC-3 merged (751916cf), DC-4 merged (PR #304 → 30d8d21c), DC-7 next.",
+  "grounding_first_hand_at_main_568f6024": [
+    "events of record: ai_mark_events (one row per marked part), attempts (evidence_emitted once-only claim), revision_note_viewed (unique per user+note)",
+    "identity bridge: knowledge_nodes (uuid ↔ unique curriculum code ↔ node_type, 7-value law incl SPEC_POINT) + knowledge_edges PART_OF (source=child → target=parent, the teaching-toolkit.ts:764 law)",
+    "question→node: question_topics + question_spec_points (active-only serving filter = questions.active, the partial-index law)",
+    "note→node: revision_note.spec_point_codes (comma-separated, the string_to_array parse law)",
+    "displays of record: progress-ring.tsx self-disclosed 'browser-local SIMULATED progress overlay only' + topic-tree.tsx variant system (notes|questions|flashcards) — exactly the law's target (a local counter)",
+    "no plan tables (builder = its own P2 roadmap row); routes/learner/index.ts scope-honesty law → progress takes a NEW router module in the /api/v1/learners/me band",
+    "test harness of record: fakeSql module pins (engagement-recorder.test.ts style)"
+  ],
+  "mechanism": {
+    "new_files": [
+      "apps/api/src/services/learner/progress-rollup.ts (buildProgressProjection + buildPlanProjection + PROGRESS_PLAN_THRESHOLD_PRACTISE=5 + dayStartOf; pure read-time projection over the persisted event rows — writes nothing, no migration)",
+      "apps/api/src/routes/learner/progress.ts (GET /api/v1/learners/me/progress?course= + GET /api/v1/learners/me/plan-projection?course=; the createLearnerStateRouter authz-shell posture verbatim; buildLearnerProgressRouters composition)",
+      "apps/hub/src/lib/progress-server.ts (projectionPercentFor + useCourseProjection: signed-in learners read the server projection; signed-out/failure → null → the SIMULATED overlay fallback posture; per-slug shared cache)",
+      "apps/hub/src/app/dashboard/progress-attribution-card.tsx (the measured-fact today card — reads the SAME payload's today block; never advice; renders nothing signed out)",
+      "apps/api/test/learner/progress-rollup.test.ts (the (a)(b)(c) pins over fakeSql)",
+      "apps/hub/src/lib/progress-server.test.ts (the projection-consumer pins)"
+    ],
+    "modified_files": [
+      "apps/api/src/index.ts (one additive mount + import + construction per the minimal app-level wiring precedent)",
+      "apps/hub/src/components/hub/progress-ring.tsx (additive projectionPercent prop — present-including-0 wins over the overlay; null falls back)",
+      "apps/hub/src/components/hub/topic-tree.tsx (the two trees map onto the projection's two dimensions by variant: notes→notes, questions→questions; flashcards variant stays the overlay fact, disclosed)",
+      "apps/hub/src/app/dashboard/dashboard-client.tsx (additive mount of the attribution card next to the NBA card, separate section)"
+    ],
+    "no_changes": ["packages/contracts/**", "packages/db/** (NO migration — query-time projection)", "apps/api/src/services/tutor/prompt.ts (identity stays tutor-grounded/v15)", "both fence anchors", "the CLA route plane", "the NextBestActionsCard contract"]
+  },
+  "battery": {
+    "api_pins": "11/11 (event pins: marked part / checked note / submitted MCQ each move exactly their nodes + PART_OF ancestors and nothing else; threshold pins: first mark does not flip PRACTISE, fifth flips it, REVISE flips on the note check alone, a single MCQ submit never completes PRACTISE; consistency pin: plan projection and ring projection share one today by construction)",
+    "hub_pins": "5/5 (projectionPercentFor derivation, null-fallback posture, two-dimension separation, shared today block, cache seam)",
+    "hub_tsc": 0,
+    "hub_eslint_touched": 0,
+    "root_typecheck_x4": 0,
+    "full_suite": "2587 pass / 13 skip / 0 fail (bun test apps/api packages; the T-MIG-135b standing red did NOT recur — reconciled by the W17/ingest content waves, as first observed at the DC-4 merge)",
+    "build_hub": "exit 0 (prebuild trio incl. CIE validator + corpus-static + next build)",
+    "fence_census": "routes/cla.ts @ 3c2ceb01 / services/cla/service.ts @ db4573c7 byte-identical to main 568f6024; 11-file diff all in declared planes; packages/contracts+db+prompt.ts = 0 files",
+    "environment_note": "fresh re-clone carried NO node_modules (reset #8) — bun install --frozen-lockfile (952 packages) before the battery; sandbox-side provisioning, not a tree change"
+  },
+  "residuals_disclosed": [
+    "the plan PAGE + study-plan builder = the P2 roadmap row; DC-7 lands the projection + threshold law the builder renders",
+    "flashcards dimension outside the law's notes|questions pair (stays overlay/rating-mirror)",
+    "signed-out posture = the SIMULATED overlay (labels of record); projection serves authenticated learners",
+    "nested per-note read marker stays the overlay fact (per-note viewed ids in the payload = P2 tightening)",
+    "day boundary = UTC on the injected clock (the honest deterministic default, ADR-031)"
+  ],
+  "status": "PREREGISTERED + IMPLEMENTED + PINNED + PR'D; the lane STOPS AT THE MERGE GATE — the operator's merge word is the product sign-off",
+  "identity_of_record": "tutor-grounded/v15 (untouched)"
+}
