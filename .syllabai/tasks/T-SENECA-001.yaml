@@ -31,6 +31,22 @@ task:
     bun run typecheck 0 errors; bun test apps/api+packages 2,642 pass / 0 fail; hub tsc 0;
     eslint 0 on touched files. DB apply (0010 + import against Neon) awaits the operator's
     DATABASE_URL — same pending input as the pre-existing SQLite→Neon note.
+    LANDED (run-002, 2026-10-23): operator delivered the Neon DATABASE_URL (pooler endpoint,
+    kept in gitignored .env — never committed). 0010 applied to the LIVE hub database
+    (preflight: flyway_schema_history 63 migrations, FK targets assignments/users/
+    course_registry present, pilot slug live-verified; additive-only, no Flyway-era bytes
+    touched). Import: 5,098 rows upserted into seneca_resources (286 courseSection + 1,430
+    examQuestion + 3,382 quiz, all course_slug=igcse-chemistry-19; 5,098 distinct ids;
+    EQ marks 1×987 / 2×443; 1,430/1,430 markScheme; 167 sections topicNotes; in-DB PII
+    rescan 0). TWO run-001 latent defects fixed en route (write-path-only, unreachable by
+    the run-001 dry-run): (1) psycopg2 bare dict can't adapt to jsonb → psycopg2.extras.Json
+    wrapper; (2) 62 real EQ titles exceed varchar(300) (max 473 chars) → title widened to
+    text across 0010 SQL + schema.ts + 0000_snapshot.json + t-seneca-001-snapshot.py;
+    rebaseline verify re-run 78/725/108/74/126, 0 drifts (types compared). Empty pre-fix
+    tables dropped and re-applied before any rows were written. Gates: packages/db tsc
+    clean; full-repo bun test proven IDENTICAL with and without run-002 by stash A/B
+    (2,983 tests; 6 pre-existing suite-isolation failures in dual-run/cla posture suites,
+    not run-002's; the 27 seneca-pack tests green). PR #316 updated by push.
 base:
   repo: "syllabai-v2 @ 6bedab6 (origin/main at claim)"
 basis: >

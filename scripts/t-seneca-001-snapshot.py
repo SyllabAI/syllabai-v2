@@ -83,7 +83,7 @@ seneca_resources = table(
         col("id", "varchar(64)", not_null=True, pk=True),
         col("course_slug", "varchar(64)", not_null=True),
         col("kind", "varchar(16)", not_null=True),
-        col("title", "varchar(300)"),
+        col("title", "text"),
         col("topic_path", "text"),
         col("marks_total", "integer"),
         col("question_type", "varchar(60)"),

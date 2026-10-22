@@ -1758,7 +1758,7 @@ export const senecaResources = pgTable("seneca_resources", {
 	id: varchar("id", { length: 64 }).primaryKey().notNull(),
 	courseSlug: varchar("course_slug", { length: 64 }).notNull(),
 	kind: varchar("kind", { length: 16 }).notNull(),
-	title: varchar("title", { length: 300 }),
+	title: text("title"),
 	topicPath: text("topic_path"),
 	marksTotal: integer("marks_total"),
 	questionType: varchar("question_type", { length: 60 }),

@@ -238,7 +238,12 @@ def main():
             missing = [s for slugs in SENECA_TO_HUB.values() for s in slugs if s not in live]
             if missing:
                 sys.exit(f"BLOCKED: course_registry has no rows for {missing}")
-            psycopg2.extras.execute_batch(cur, UPSERT, batches, page_size=200)
+            # psycopg2 cannot adapt bare dicts to jsonb — wrap with Json()
+            payload = [
+                {**row, "content_json": psycopg2.extras.Json(row["content_json"])}
+                for row in batches
+            ]
+            psycopg2.extras.execute_batch(cur, UPSERT, payload, page_size=200)
         conn.commit()
         print(f"imported {len(batches)} seneca_resources rows (upsert, idempotent)")
     finally:

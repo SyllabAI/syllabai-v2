@@ -10,7 +10,7 @@ CREATE TABLE "seneca_resources" (
 	"id" varchar(64) PRIMARY KEY NOT NULL,
 	"course_slug" varchar(64) NOT NULL,
 	"kind" varchar(16) NOT NULL,
-	"title" varchar(300),
+	"title" text,
 	"topic_path" text,
 	"marks_total" integer,
 	"question_type" varchar(60),
