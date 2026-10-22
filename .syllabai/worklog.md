@@ -12651,3 +12651,23 @@ Work Log:
 
 Stage Summary:
 - T-TEACH-016 exports DONE of record: teachers can print/PDF, hand in a Word file, drop rubric levels into a gradebook, or keep the raw JSON. The T-TEACH band is now COMPLETE (010-016; SSE is the operator-deferred tail of 016). Credential law standing: rotate the Neon owner password, revoke the GitHub PAT at lane end.
+
+---
+Task ID: HUB-NORM-F52-R0
+Agent: main agent (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a1640fab65caa31)
+Task: Operator order "F52 hub normalization lane" — land the F52 italic-Delta normalization hub-side (the 5 served U+01FB glyphs -> U+0394 on the 2020-01 R slices), re-stamp the pin to the consumed cut, close the HUB-SYNC-W16 filed open item.
+
+Work Log:
+- Scope of record (no-guess recon before firing): the HUB-SYNC-W16 receipt's open item names this lane verbatim; F52 = resources v0.13.1 (PR #48 merge 4f2eb1a2, corpus-wide U+01FB -> U+0394 on the 2020-01 R slices, x5 per the F52 census; the first codepoint guess U+01DF was no-op-disproved corpus-side before landing).
+- Consumed cut adjudication: 4f2eb1a2, deliberately NOT the current resources tip 37bf191f — the R-VARIANT spec-label waves (PR #50 @ 9f1b9d29, 1059/1059 parts resolved) landed after F52 and are a different wave class (count-bearing; their own future hub-sync lane). The exporter script is byte-identical between 329fe1f4 and 4f2eb1a2 (verified); F52's content diff is exactly the 4 corpus files of the two 2020-01 R slices + bookkeeping.
+- Served census pre-verified against v2 origin/main: U+01FB x5 (1cr-2020-01 6-c-i x2; 2cr-2020-01 6-b-iv x1 + 6-c x2), zero elsewhere; the pilot questions.json/manifest.json were byte-unchanged by the 9f299325..fd3693e9 drift (sha-verified).
+- Staged 54 topic copies from the cut's own bytes (git show main@4f2eb1a2:...) into the lane tmp; bundle of record extracted from v2 origin/main fd3693e9 via git show; shared checkouts untouched throughout (lane worktrees only).
+- Exporter first run fail-closed as designed (no --expected-deltas): G-E5/G-E3/G-E2 green, then G-E1 printed the fresh changed census — EXACTLY the 3 artifact-bearing part ids (new=0 gone=0) — eyeballed against the served census before writing the disclosure file; gated re-run ALL GREEN: G-E5 54/54 @ main@4f2eb1a2; G-E3 54 slices (4860 marks); G-E2; G-E1 3 deltas == census; G-E1b identity byte-equal on all 54 official sets; G-E4 SME prefix byte-identical (2605414 bytes).
+- Normalization identity proof of record: the staged output equals the bundle of record with the 5 chars replaced (asserted on the whole serialized bundle) — this wave changes ONLY the 5 delta glyphs; U+01FB 5 -> 0, U+0394 352 -> 357; counts unchanged (82/1001/4011/8568, 4161 markPoints, 368 crops, 8 stubs).
+- Landing: questions.json staged output verbatim; manifest importSource.ref -> main@4f2eb1a2ee5561438b68d503cda82809ae6afe62 (exporter-stamped, G-E5-proven) + note bumped to the F52-normalization text in the same reviewed change (F44/F51 law) + counts recomputed-and-asserted unchanged + countsProvenance F52 clause + adr037OfficialAdds asserted unchanged (54/477/2607/4860). Manifest round-trip byte-stability asserted pre/post.
+- v2 gates: bun install --frozen-lockfile + full prebuild trio (verify_corpus_23a / verify_flashcard_sync_courses / validate_cie_bundles) + build:hub — ALL GREEN on the lane tree before push.
+- Transit: last recorded 32 (HUB-SYNC-W16); this lane's v2 push recorded as 33; disclosed: 5 additional origin pushes observed since with no transit rows (4583daea T-MIG-134, d35dcae8 T-TEACH-015, b3d6eae3 T-TEACH-016, c5586472 T-BOOK-034 re-bake, fd3693e9 PR #302 merge). PAT rotation CRITICAL overdue stands.
+
+Stage Summary:
+- F52 hub normalization LANDED of record: the pilot bundle's served text is glyph-honest (U+01FB absent corpus-wide), pin = the consumed cut main@4f2eb1a2ee5561438b68d503cda82809ae6afe62, a 3-part disclosed census, counts byte-stable. HUB-SYNC-W16's filed open item CLOSED.
+- Residuals: R-VARIANT spec-label hub-sync lane (resources PR #50 consume — 1059 parts gain spec codes, count-bearing, own disclosure); CIE tranche2 consume + maths-b Stage-2 regen operator-keyed; PAT rotation overdue.
