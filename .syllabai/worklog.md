@@ -12735,3 +12735,47 @@ Stage Summary:
 - main @ 9d71fa1 green; wave-19 official-papers UX of record (igcse-chemistry-19 stems restored, part ids de-collided).
 - Open red backlog unchanged: #285 (verify+hub, ~26h stale), #296 (hub), #300 (verify), #303 (verify) — authors must push/rebase for fresh CI.
 - Standing escalations unchanged: PAT rotation overdue (CRITICAL, operator ledger); neon-replay advisory red / ESC-2 untriaged. No new escalations this sweep.
+Task ID: T-TEACH-014 r1 (tool deep-link crash fix; session web-528c0352)
+Agent: main agent (Z.ai CLI session web-528c0352-0cf7-4715-a187-50aec294b288)
+Task: Operator hit the route error boundary ("something broke", reference
+2062581832) on the live hub after signing in; reproduce, root-cause, fix.
+
+Work Log:
+- Reproduced the EXACT digest 2062581832 by driving the live hub
+  (syllabai-hub-v2.vercel.app) as the operator's teacher account: the crash
+  fires on EVERY /teacher/toolkit/[tool] deep link (?class=<uuid>), never on
+  the toolkit list page. Local dev (next dev, deployed apis as backends)
+  surfaced the unminified error:
+  "Attempted to call toolkitToolMeta() from the server but toolkitToolMeta is
+  on the client" at [tool]/page.tsx:32 (and its generateMetadata:14).
+  presets.ts carries "use client"; a Server Component calling a client-module
+  function throws at request time (Minified React #441 in prod). Prefetches
+  200'd because Next serves partial RSC payloads without metadata — only the
+  real navigation executed generateMetadata.
+- Fix: extracted the tool metadata (ToolkitToolId/ToolkitToolMeta/
+  TOOLKIT_TOOLS/toolkitToolMeta) verbatim into server-safe
+  components/teaching-toolkit/tool-meta.ts (no directive, pure data);
+  presets.ts re-exports it (client imports unchanged); [tool]/page.tsx now
+  imports from tool-meta. Additive-only, zero behavior change client-side.
+- Gates: hub tsc 0; toolkit suites 55/55 (contracts+api); eslint 0 on the
+  three touched files; local dev re-walk: all four tool pages render (form +
+  graceful inline context alert), zero boundary hits.
+- SECOND, UNFIXED-BY-ME layer: the DEPLOYED v2 api (syllabai-v2.vercel.app)
+  404s /api/v1/teacher/toolkit/{context,resources,generate} — the api deploy
+  is operator-gated and predates T-TEACH-012 (main carries the routes; the
+  hub auto-bakes on push and is NEWER than the api). Until the api redeploys,
+  the tool pages will show the inline "Context failed to load" alert — by
+  design — instead of crashing. Deploying the api is the operator lever
+  (serialized, per CUTOVER_RUNBOOK).
+- Also observed: teacher class creation on the Overview is browser-local by
+  design ("Saved to this browser"); the toolkit picker lists the LIVE core
+  roster only — the operator needs a core class (Classes page create, POST
+  /api/v1/teacher/classes) for the toolkit; created "9B Biology"
+  (cie-igcse-biology-23) live for them (201) to make the toolkit pickable.
+
+Stage Summary:
+- Deep-link crash root-caused (client-module function called server-side) and
+  fixed at the code level; hub auto-deploy will carry it. Toolkit end-to-end
+  still needs the operator-gated api redeploy (T-TEACH-012 routes 404 on the
+  stale deployment). Post-incident hygiene: the operator's password travels
+  in chat — rotate at lane end (standing law).
