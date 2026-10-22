@@ -1,0 +1,105 @@
+{
+ "lane": "T-SPECS-CIE-TRANCHE2-B01",
+ "run": "run-001",
+ "receipt": "cie-tranche2-r2-batches-run-001-r0.json",
+ "generated_utc": "2026-10-22T02:35:00Z",
+ "session": "web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e",
+ "operator_trace": "1a160f6c106c8fa1",
+ "directive_verbatim": "I've inspected the workbook. I'll use your ruling convention: anchor, split across points, quarantine, or hold for evidence. I'll avoid forcing a match when the candidate list is weak or misleading.",
+ "operator_rulings_verbatim": [
+  "spcpt_HmMgqHYYJMyF6nVN - Oxidation Numbers | Anchor: 6.1.1, 6.1.2. Keep 2.3.1 as a candidate only if the underlying parts support that additional scope.",
+  "spcpt_jxPK72xT9PSVKKw6 - Transition elements | Anchor: 8.4.1, 8.4.2.",
+  "spcpt_7Rykpm3QJVXFkrjp - Calculating power | Anchor: P2.3.1, P2.3.2.",
+  "spcpt_wnsYq9ZtzYsVC62X - Transpiration | Anchor candidates: 8.3.1-8.3.7. Confirm the individual parts before assigning every point.",
+  "spcpt_ks6c2kQjgZkHqRzj - Pollination & fertilisation | Anchor candidates: B10.2.1, B10.2.2. Verify that both are actually covered by the linked parts.",
+  "spcpt_3G5VshJ2mzwT8ssc - Enthalpy Changes | Hold: the supplied candidate scope is broad and the existing mappings do not establish which individual points the linked part supports.",
+  "spcpt_tYWjkWkWSpM2vWZH - Photosynthesis | Hold: the supplied candidate list appears section-mismatched; do not use it to assign syllabus points.",
+  "spcpt_3gMJXKdXVpBfkmWS - Interpreting & Explaining Carbon-13 NMR Spectra | Hold for evidence: the supplied candidate excerpt does not establish the correct official anchor."
+ ],
+ "vocab_mapping_law": "anchor -> anchor(codes); anchor-candidates/confirm-first -> defer(reason verbatim, candidates NOT encoded); hold/hold-for-evidence -> defer(reason verbatim). The lane never upgrades a candidate to an anchor (ADR-030). Conditional candidate 2.3.1 on HmMgq NOT encoded - note verbatim only.",
+ "preflight": {
+  "sid_location": "8/8 sids found in sheets of record; operator evidence reading matches rows EXACTLY (classes, pending counts, scoped pools)",
+  "G2_substrate": "5/5 sidecars byte-fresh vs sheet substrate_pins (zero drift); sheet shas == _index.json",
+  "G4_registry_pairing": "6/6 anchored codes PAIRED: 6.1.1+6.1.2 -> CIE_A_LEVEL_CHEMISTRY_2025_2027; 8.4.1+8.4.2 -> CIE_IGCSE_CHEMISTRY_2023_2025; P2.3.1+P2.3.2 -> CIE_IGCSE_SCIENCE_COMBINED_SCIENCE_2023_2024",
+  "G3_pending_universe": "all ruled sids' part_refs sidecar-pending EXACT (22/1/2/4/1)"
+ },
+ "batches": {
+  "chem25-b01": {
+   "bank": "cie-a-level-chemistry-25",
+   "rulings": 3,
+   "anchor": 1,
+   "defer": 2,
+   "parts_touched": 22,
+   "entries_added": 44
+  },
+  "igcsechem23-b01": {
+   "bank": "cie-igcse-chemistry-23",
+   "rulings": 2,
+   "anchor": 1,
+   "defer": 1,
+   "parts_touched": 1,
+   "entries_added": 2
+  },
+  "combsci23-phys-b01": {
+   "bank": "cie-igcse-science-combined-science-23-physics",
+   "rulings": 1,
+   "anchor": 1,
+   "defer": 0,
+   "parts_touched": 1,
+   "entries_added": 2
+  },
+  "igcsebio23-b01": {
+   "bank": "cie-igcse-biology-23",
+   "rulings": 1,
+   "anchor": 0,
+   "defer": 1,
+   "parts_touched": 0,
+   "entries_added": 0
+  },
+  "combsci23-bio-b01": {
+   "bank": "cie-igcse-science-combined-science-23-biology",
+   "rulings": 1,
+   "anchor": 0,
+   "defer": 1,
+   "parts_touched": 0,
+   "entries_added": 0
+  }
+ },
+ "predicted_vs_actual": {
+  "parts_touched": 24,
+  "entries_added": 48,
+  "already_present_skipped": 0,
+  "delta_class": "EXACT"
+ },
+ "encoded_shape": "codes[] {official_id, official_code, tier: V8_name_phrase_verdict, method: operator_verdict, unit: null, score: null, source_sid}; pending[] PRESERVED (declared trail); tranche2_batches batch blocks written; G5 totals deltas exact",
+ "consume_of_record": {
+  "resources_pr": 37,
+  "branch": "t-specs-tranche2-b01/r0",
+  "head_sha": "132c4b6",
+  "merge_sha": "5178b3b61a19",
+  "ci": "corpus-gates SUCCESS (2.3min) + sync SUCCESS (21.2min; baseline 21.2min)",
+  "disclosed_midflight": "first apply wave aborted pre-write on sparse-missing spec-links/manifest.json; atomicity held (sidecar shas re-verified byte-identical before re-apply); zero partial writes"
+ },
+ "census_repin": {
+  "tool": "scripts/census_per_slug.ts (bun, zero-DB)",
+  "v2_tip": "391a62e69223 (incl. PR #289 ci-repair)",
+  "figures": {
+   "questions": 6715,
+   "part_rows": 5696,
+   "package_parts": 9276,
+   "raw_questions": 19097,
+   "raw_parts": 25663
+  },
+  "verdict": "EXACT UNCHANGED vs of-record"
+ },
+ "gate_posture": "134c PARKED - census unchanged, zero DB-plane movement",
+ "returns_to_operator": [
+  "5 defer rows / 22 still-pending parts (Transpiration 4, Photosynthesis 2, Enthalpy Changes 1, C-13 NMR 15, Pollination 1... bank split: chem25 16, igcsechem23 2, igcsebio23 4, combsci-bio 1)",
+  "the 2.3.1 conditional on Oxidation Numbers (part-level support staging)",
+  "nextAct: lane stages part-level verbatim evidence for the candidate/hold rows so the operator can confirm or quarantine with the evidence in hand"
+ ],
+ "residuals": [
+  "PAT rotation CRITICAL-OVERDUE (fp a8ccee736aa8c75b, operator-keyed)",
+  "tranche-3 (1,203 sid-less) after the verdict program"
+ ]
+}

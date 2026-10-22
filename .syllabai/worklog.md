@@ -11971,3 +11971,20 @@ Work Log:
 
 Stage Summary:
 - The verify lane's second (latent) red generator removed; the deterministic body fields stay pinned; the wire law untouched.
+
+---
+Task ID: T-SPECS-CIE-TRANCHE2-B01 run-001 (operator trace 1a160f6c106c8fa1 - the operator's first ruling batch)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: encode + consume the operator's 8-sid ruling batch across 5 banks; census re-pin; receipt
+
+Work Log:
+- Pre-flight first-hand, all green before any YAML: 8/8 sids located in sheets of record (operator evidence reading matches rows EXACTLY); G2 zero substrate drift (5/5 sidecars byte-fresh vs pins); G4 6/6 anchor codes registry-paired (6.1.1/6.1.2 chem25, 8.4.1/8.4.2 igcse-chem-23, P2.3.1/P2.3.2 combsci-physics); G3 pending universe exact (22/1/2/4/1).
+- Vocabulary mapping law applied + disclosed: anchor-candidates/hold -> defer (reason verbatim); candidates NEVER encoded; the 2.3.1 conditional on Oxidation Numbers NOT encoded (note verbatim only).
+- 5 batch YAMLs written (chem25-b01, igcsechem23-b01, combsci23-phys-b01, igcsebio23-b01, combsci23-bio-b01); encoder --check green x5 (predicted 24 parts / 48 entries); APPLIED x5 with predicted==actual, 0 already-present skips; G5 totals deltas exact; pending[] preserved; batch blocks + machine records + spec-links/manifest.json refreshed.
+- DISCLOSED: first apply wave aborted pre-write on sparse-missing spec-links/manifest.json (FileNotFoundError BEFORE any sidecar write - atomicity held; sidecar shas re-verified byte-identical to pins; zero partial writes).
+- CONSUME of record: resources PR #37 (t-specs-tranche2-b01/r0 @ 132c4b6) -> CI corpus-gates SUCCESS 2.3min + sync SUCCESS 21.2min (baseline 21.2min) -> merged 5178b3b61a19; main tip verified carrying the batches.
+- CENSUS RE-PIN first-hand @ v2 391a62e (incl. sibling PR #289 ci-repair): bun scripts/census_per_slug.ts -> TOTAL 6,715 / 5,696 / 9,276, raw 19,097 / 25,663 EXACT UNCHANGED. DISCLOSED: stale v2 scratch checkout refreshed (1,510 pre-rollback working files discarded; of-record = origin); bun install --frozen-lockfile for the census import graph (tree stayed clean).
+- 134c STAYS PARKED (census unchanged, zero DB movement). Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-tranche2-r2-batches-run-001-r0.json.
+
+Stage Summary:
+- The operator's first ruling batch IS of record: 3 anchors (24 parts / 48 operator_verdict entries), 5 honest defers (22 parts stay pending, reasons verbatim), zero invention. The ruling program is proven end-to-end: operator verdict -> pre-flight gates -> encode -> consume -> census re-pin -> receipt. Next: the lane stages part-level evidence for the 5 defer rows + the 2.3.1 conditional so the operator can confirm/quarantine with evidence in hand; the remaining ~3,547 unruled sids await batches. PAT rotation REMAINS CRITICAL-OVERDUE (fp a8ccee736aa8c75b). LANE R0: IDLE (awaiting next ruling batch or evidence-staging order).
