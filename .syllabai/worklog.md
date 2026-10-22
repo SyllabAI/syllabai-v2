@@ -12795,3 +12795,30 @@ Work Log:
 
 Stage Summary:
 - T-RULE-T2-APPLY-2 DONE of record: the durability loop is CLOSED — the 23 tranche-2 operator sid-anchors (46 codes) now live in BOTH planes: v2 registry @ a9bd2488 (consume engine) and resources chem25 spec-links sidecar @ resources main 3838a26 (full-rebuild substrate), byte-pinned vs each other via the stage receipt. Consume-engine law adoption still pending: syllabai-v2 branch t-rule-t2-consume-anchors/r0 awaits the consume lane's next pin advance (per the stage receipt's disclosure). Residual menu unchanged: 10 mis-tag re-points (T-RULE-T2-COND-1 flags), holds 9Dxx/pYmR + split Cdtk evidence, tranche-3 (1,203 sid-less), the 7 V8-corrected sids (retraction operator-gated, relationToV8 per record), PAT rotation, hung resources sync job. LANE: IDLE.
+Task ID: trace 1a164940c29a2b85 (MB4-MS-RATTACH run-001 — union-resolve)
+Agent: r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- UNION-RESOLVE of record: first push rejected — origin advanced 0a8c8c81 -> fc38e127 (UIUX-REPAIR-1: same file igcse-maths-b-16). Local commit abandoned; reset to fc38e127; the sibling filled ZERO of the 117 targets (02R re-sync touched already-solved parts only) so the 60-target plan applied intact on their tree.
+- SIBLING COMPLIANCE derived from their own diff corpus: en-dash law = 653 convert / 224 keep with class behavior (binary/prose -> '-'; negative-number + tight-binding keep); applied to my candidates: 9/13 converted, 4 KEEP-class retained (2x '–2' negatives, 'y–axis', '–-3'). Their 781 meta-line strips verified to never touch solutionMd (zero pure-removal fields).
+- VERIFICATION on the union tree: semantic diff vs HEAD = EXACTLY 60 solutionMd additions, ZERO other changes; prebuild gates ALL GREEN (corpus + flashcard + cie).
+- Receipt amended with union_resolve_of_record.
+
+Stage Summary:
+- MB4-MS-RATTACH run-001 complete on the union tree: 60/117 recovered (41 TIER-A + 19 TIER-B per the sibling-tree tier census), 57 honest gaps of record, sibling normalization complied with. Push pending PAT one-shot.
+
+---
+Task ID: trace 1a164940c29a2b85 (MB4-MS-RATTACH run-001)
+Agent: r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Operator order: fire the maths-b MS re-parse lane (MCQ-AUDIT run-001 residual: 117 igcse-maths-b-16 structured parts with no solutionMd -> no answer input rendered).
+- RECON: no PDF re-parse needed — the original parse intermediates ARE committed upstream (SyllabAI/syllabai-pastpapers .../4mb1/past-papers/{session}/{paper}/parsed/{ms.md,qp.md,questions.json}); 65/65 fetched 0-fail. Root cause isolated: the original import's section<->part attribution failed where ms.md section paths are merged/mis-ordered/duplicated.
+- FORMATTER RECONSTRUCTED OF RECORD by byte-identity round-trip against all 2,251 existing hub solutions: head transform, '; '-join law for consecutive same-kind non-Note bullets, EMPIRICAL glyph fate table (43 codes map incl. shifted greek set F06C->mu/F06D->nu/F067->eta/F061->maps-to/F084->leq/F085->geq/F0B7->middot; other PUA strip; ornament-only lines drop), provenance banner inherited verbatim from solved siblings. CORE GATE 1,972/2,019 = 97.67% byte-identity pre-union; 47 residual diffs inspected = pre-existing hub-side attribution artifacts.
+- APPLY (fail-closed two-tier on the UNION tree fc38e127): 60/117 solutionMd attached (41 TIER-A + 19 TIER-B); 57 left honest BY DESIGN (ms section count != hub part count — no provable attribution; forcing risks mis-attributed answers; + 2 unpaired-question targets).
+- UNION-RESOLVE: first push rejected (origin advanced 0a8c8c81 -> fc38e127 UIUX-REPAIR-1, same file); local commit abandoned; reset to fc38e127; sibling filled ZERO of the 117 targets; SIBLING COMPLIANCE: en-dash law derived from their 386-field corpus (653/224 class behavior) — 9/13 candidate occurrences converted, 4 KEEP-class kept; their meta-strip lane verified to never touch solutionMd.
+- VERIFICATION on union tree: semantic diff vs HEAD = EXACTLY 60 solutionMd additions, ZERO other changes; no-solution 117->57; prebuild gates ALL GREEN.
+- Receipt .syllabai/receipts/MB4-MS-RATTACH/run-001-solutions-rattach-r0.json; scripts persisted under sandbox scripts/ (pp_fetch_all_4mb1.py, mb4_transform.py, mb4_learn_glyphs.py, mb4_repair_apply.py).
+
+Stage Summary:
+- 60/117 recovered with provable fidelity; 57 honest gaps documented of-record (fail-closed). Durable reconstruction artifacts for any future past-paper re-import. Register: PAT rotation (overdue), multi-select player lane (3 geography), maths-b 57-residual optional deep lane.
