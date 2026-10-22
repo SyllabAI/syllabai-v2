@@ -1,0 +1,52 @@
+{
+  "lane": "EDBUMP-1",
+  "run": "run-001-stamp-convergence",
+  "dispatch": {
+    "operator_trace": "1a1615dbd41cea41",
+    "order": "fire EDBUMP-1",
+    "scope_trace": "1a1611e6237a83cd (Task 32 scoping leg, local ledger 32)",
+    "session": "web-64d10b73-530a-4f71-9961-85d0436c7fb5"
+  },
+  "lane_class": "stamp-only convergence — zero input-delta proven, no engine re-run, no content writes",
+  "target_pin": {
+    "from": "main@dc9c1efcfa5ccd3cb728f258b8dc2e718487d120",
+    "to": "main@08447ba9e706d0e503beb8243401b5dbfffe74df",
+    "note": "execution-time tip; scope-time tip 5178b3b6 advanced twice mid-lane (v0.11.0 wave-14 + CourseLessons + YPH11 parse); tail re-verified forward each time — zero-delta proof held"
+  },
+  "zero_delta_proof": {
+    "range": "dc9c1efc..08447ba9",
+    "changed_paths": 217,
+    "sme_plane_paths": 0,
+    "edexcel_spec_link_sidecars": 0,
+    "in_range_deltas": "pilot-scoped Official-ExamQuestion/igcse-chemistry-19 x102; CourseLessons x40; books/pearson-edexcel x27; CIE rulings/sidecars x15; tooling/reports x33 — none is an input plane of the 48 non-pilot Edexcel courses",
+    "artifact": "scripts/edexcel_delta_paths_dc9c1efc_08447ba9.txt (session-side)"
+  },
+  "write_set": {
+    "manifests": 48,
+    "manifest_changes": "importSource.ref -> main@08447ba9 + EDBUMP-1 provenance note; officialSpine.resourcesSha ridden on 47 (maths-b's disclosed 2e17aab0 attachment-map pin left honest; its note preserves the mixed-vintage disclosure)",
+    "content_maps": 47,
+    "content_map_changes": "resourcesSha -> 08447ba9 + generatedUtc stamp 2026-10-22T02:16:54Z (CIE-REFRESH-1 stamp semantics)",
+    "report": "apps/hub/content-maps/_report.json resourcesSha re-keyed",
+    "script": "apps/hub/scripts/attach_official_map.py RESOURCES_SHA constant re-keyed (PINSPLIT-1 convergence pin)",
+    "untouched": "44 CIE manifests @ main@c5f20c52; pilot igcse-chemistry-19 @ main@bf8d56c3; CIE skeleton pure-2 receipt-path ref; all bundle content files; .syllabai historical records"
+  },
+  "proofs": [
+    "per-file byte-exact round-trip combos found for all 96 JSON files before any edit (fail-closed)",
+    "deep-diff assertion per file: exactly the intended field paths (dot-prefix assertion bug caught by own fail-closed pass 1 and fixed pre-apply)",
+    "post-apply census: 48 Edexcel @ main@08447ba9, 44 CIE @ main@c5f20c52, pilot @ main@bf8d56c3, skeleton receipt-path ref untouched",
+    "worktree-wide old-pin residue: only .syllabai/receipts/NEXTBUMP-2/run-001-fleet-bump.json (immutable historical record)"
+  ],
+  "gates": [
+    "bun install --frozen-lockfile: 930 packages, no lockfile drift",
+    "bun run build:hub: exit 0",
+    "full CI battery runs on the PR at the FULL-GREEN bar (TS4L repaired at a5cff7d6; non-attribution posture neither available nor needed)"
+  ],
+  "resources_repo": "UNTOUCHED — transit stays 28",
+  "open_items": [
+    "pilot wrinkle: wave-14 consumed v0.11.0 content but manifest ref still declares main@bf8d56c3 (note discloses); tighten rider available to a future lane",
+    "CIE tranche2 consume lane (132c4b68/5178b3b6 are real CIE-side input deltas)",
+    "maths-b Stage-2 regen (operator-keyed)",
+    "PAT rotation (operator, CRITICAL overdue)",
+    "pure-2 skeleton teaching wave (separate dispatch class)"
+  ]
+}
