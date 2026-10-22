@@ -1,0 +1,52 @@
+{
+  "card": "LEVER api-of-record redeploy from tip — EXECUTED AND VERIFIED (the operator credential paste trace 1a162eb113e1d5ed discharged the run-012 staged handoff: VERCEL_PAT + Neon pooler DATABASE_URL [+ a Neon API key, delivered-unused, fp recorded]; the staged bundle was REBUILT at the then-current tip 5cad720 after main advanced 13 commits past the run-012 base and the sandbox wiped mid-session a second time)",
+  "receipt": "api-of-record-redeploy-from-tip-run-013-executed-mainlane",
+  "lane": "main (Z.ai main agent, zai-web session web-590847c1-cf63-4098-b0c8-a90085355429, chat 986f6715-e92f-43a2-a13a-818c0a1a7d17)",
+  "created_at_utc": "2026-10-22T09:35Z",
+  "operator_traces": [
+    "1a162eb113e1d5ed — the credential paste (VERCEL_PAT vcp_… fp d254bbfaac004354; NEON_API_KEY napi_… fp 4c2e12da872b6959; DATABASE_URL pooler string fp 3b8b9c5951ca595d)",
+    "1a1615bd91730f99 — the standing 'pick up that deploy next' order (run-012 staged the handoff)"
+  ],
+  "identity_chain": [
+    "sha256 fp d254bbfaac004354: the pasted VERCEL_PAT is BYTE-IDENTICAL to the VERCEL_PAT of record (.creds/vercel.env of the Task-48 deploy dpl_BBGcKUBy5qUZ8ps79a9UsDvjymXr, the teacher-credential-handoff-run-004 identity chain) — the operator re-delivered the same secret",
+    "vercel whoami = syllabai-1403 (CLI 62.7.0, npm-installed this session after the wipe) — the of-record identity, matching run-011",
+    "DATABASE_URL endpoint ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech = the of-record Neon wire EXACT (run-010/011 receipt wording)",
+    "all three secrets: volatile env ONLY per bash invocation (the harness shell is per-call — re-armed inline each act), never printed to receipts/logs, never persisted to disk/config/repo"
+  ],
+  "midflight_state_notes": [
+    "SANDBOX WIPE #2 (recurring class): the clone, the run-012 stage dir, and the session gate scripts were lost between the staging act and the credential paste; ALL rebuilt from the of-record repo state (fresh shallow clone, remote token-stripped immediately) + the conversation-held script bodies; the run-012 staged receipt SURVIVED of record (pushed as 9ef7175, verified ancestor of the tip, 13 behind)",
+    "main advanced cd3be78 -> 5cad720 (13 commits: LESSON wire follow-up hub libs + contracts growth + EDBUMP-1 + T-MIG-138 drain-fire bookkeeping); plane re-census: carrier (apps/api+packages) delta vs the last serve 6404e6fa = bundle-seed tail law +20 + contracts/books-lesson.ts +111 +1 + 4 test files (REAL code delta — the deploy remained warranted); hub-src delta 372a2b7..5cad720 = EMPTY (verified by tree-diff after fetching the bake sha — two earlier 'hub-src moved' readings were shallow parent-diff artifacts, discarded)",
+    "tip 5cad720 CI: verify SUCCESS (the carrier gate) / hub FAILURE — non-attribution pulled first-hand from the hub job log (run 39754751632/job 119743823533): 'CIE VALIDATOR FAILED — 3 assertion(s)' -> prebuild exit 1, the content lane's validator plane, zero carrier relation (the run-011 precedent holds: the localgate is the deploy gate; CI red on a foreign plane does not block)",
+    "hub plane posture while token-bearing: last READY hub auto-bake = dpl_HxwZq41mnjinvMYfUrR45oj3T4Kk @ 372a2b7 (T-BOOK-033 Lesson renderer, 02:55Z); the tip bake dpl_ErerZ2NQTPNbm95z (09:21Z) ERRORed on the SAME CIE validator; since hub-src 372a2b7..5cad720 = EMPTY the live hub IS hub-src-current — no hub lever; DISCLOSED OPEN FOREIGN RESIDUAL: the CIE validator red blocks BOTH the GH hub workflow AND the Vercel hub bake — any future hub-src push will fail to bake until the content lane heals it"
+  ],
+  "build_at_tip_5cad720": [
+    "093 recipe verbatim, workspace-retargeted constants ONLY (rebuilt script at the session scripts dir); shim v2 worktree-only, restored, git-verified CLEAN tree",
+    "6/6 asset SHAs == the of-record source pins EXACT (the 6 concept YAMLs byte-unchanged cd3be78..5cad720, tree-diff empty — pins 24fa91ac…/8a651dd9…/e53e5f87…/b3b75292…/b1fea699…/a7b14cbd…)",
+    "bundle: 347 modules / 3,298,001 bytes CJS (run-012 staging class: 347/3,297,951 — the +50 bytes IS the contracts +6-line growth; run-010 class 346/3,296,029); bun 1.3.14"
+  ],
+  "localgate_19_19_ALL_PASS": [
+    "staged bundle under a real Node http server + the REAL Neon wire (the credential the run-012 gate lacked): 1 health 200 UP; 2 login-malformed 400 'password: must not be blank' EXACT; 3 register 201 (lg-run013-1792661376@example.invalid, register-only census class); 4 learners/me/state 200; 5a-e tutor create/list-nonempty/latest/delete/list-after-delete net-zero (L06 law); 6 cla/ask unauth 401; 7a shelf 200 1/1; 7b chapters 200 29/29 WITH specScoreNulls=11 (the T-BOOK-025 fix IN-BUNDLE); 7c glossary 200 112/112; 8 095 discriminator 400 'cardId: card id must be the hub content id' EXACT; 9 blocks 200 7 (u1:c1)"
+  ],
+  "pre_deploy_snapshot": {
+    "api_project_of_record": "prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ (team of record)",
+    "alias_holder_before": "dpl_DNwXstszZiRtNrcX1n2MDLpnB2Pj — the run-011 deployment (syllabai-v2-fmnc0xe1b, READY, created 00:08:14Z) — the run-010 disclosed gap closed via the token: the top READY production deployment IS the run-011 bundle",
+    "rollback_anchor": "dpl_DNwXstszZiRtNrcX1n2MDLpnB2Pj (re-aliasable); deeper lineage: dpl_GfV24BcbF8jwnzLp7b1gVRodVBBV (kmhsg8lt3, July class, READY)"
+  },
+  "deploy_leg": [
+    "EXECUTED: vercel deploy --prod --yes --token (CLI 62.7.0) from the 3-file stage at tip 5cad720 (api/index.js 3,298,001 B + vercel.json rewrites + .vercel/project.json)",
+    "RESULT: dpl_EzDQbaRkZw7X7QdcmpazZXCuxkBM READY (created 09:33:27Z, syllabai-v2-lm57oaztz-syllab-ai.vercel.app) PROMOTED to the production alias syllabai-v2.vercel.app (alias probe 200 first-hand)",
+    "token hygiene: VERCEL_PAT volatile env only; never printed/persisted/committed; zero repo contact"
+  ],
+  "post_deploy_census_21_21_ALL_PASS": [
+    "L1 health 200 UP; L2 shelf 1/1; L3 chapters 29/29 WITH 11 specScoreNulls SERVED; L4 glossary 112/112; L5 blocks 7 (u1:c1); L6 login parity EXACT; L7 cla/ask 401; L8 CORS 204 + ACAO EXACT https://syllabai-hub-v2.vercel.app; L9 hostile 403 no-ACAO (Task-17 prune holding); L10 register 201 (census-run013-post-1792661689@example.invalid, register-only); L11 me/state 200 (JWT law); L12 095 discriminator EXACT; L13 hub-v2 /api/health 200 {dataMode core-api}; L14 alias re-probe 200 stable; L15 unknown-course probe answered (200/404-class, non-discriminating leg, honestly noted)",
+    "ZERO wire-visible behavior change vs the run-011 serve — exactly as projected: the delta (tail-law admission + compile-time contracts) is currency, not a fix; every of-record census signature byte-matches the pre-deploy snapshot"
+  ],
+  "write_ledger": "prod Neon: 2 synthetic probe learners total (register-only census class: lg-run013-* gate 1, census-run013-post-* census 1) + tutor rows net-zero; ZERO DDL; ZERO env writes; ZERO secret material printed/logged/committed (fps only); 1 production deployment (the operator-ordered act)",
+  "neon_api_key_disclosure": "the napi_ key (fp 4c2e12da872b6959) was delivered with the paste and held UNUSED (fp recorded only) — the Neon wire credential (DATABASE_URL) was the operative secret for the gate; no Neon API call was needed by any leg of record",
+  "rollback_anchors": [
+    "dpl_EzDQbaRkZw7X7QdcmpazZXCuxkBM (NEW — live)",
+    "dpl_DNwXstszZiRtNrcX1n2MDLpnB2Pj (run-011, READY, re-aliasable — the pre-deploy holder)",
+    "dpl_GfV24BcbF8jwnzLp7b1gVRodVBBV (July class, READY)"
+  ],
+  "verdict": "DEPLOYED AND VERIFIED — api-of-record serves main tip 5cad720 as dpl_EzDQbaRkZw7X7QdcmpazZXCuxkBM (READY, PROMOTED, public); localgate 19/19 on the real Neon wire pre-fire; post-deploy census 21/21 with zero behavior drift; identity chain closed (fp d254bbfaac004354 = the of-record VERCEL_PAT; whoami syllabai-1403); rollback lineage captured; the hub plane is hub-src-current via the 372a2b7 bake (no lever); the CIE validator red (foreign) blocks future hub bakes — disclosed open residual for the content lane"
+}
