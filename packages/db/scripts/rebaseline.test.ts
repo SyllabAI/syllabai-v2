@@ -256,20 +256,25 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // index count) on top of the F-182 re-baseline (was 75/702/102/70/120 ->
   // 77/730/105/73/126) -> 78/739/107/75/127
   // (docs/DC5-CONFORMANCE-LINT-PLAN.md + docs/F182-DRILL-BUILD-PLAN.md).
-  test("78/739/107/75/127 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // Study-Plan Builder (0012_study_plans) adds 1 table, 8 columns,
+  // 0 explicit indexes, 1 fk, 1 check (uq_study_plan_learner rides
+  // uniqueConstraints; the PK auto-index is not counted — the mpa precedent)
+  // on top of the DC-5 baseline -> 79/747/107/76/128
+  // (docs/STUDY-PLAN-BUILDER-PLAN.md).
+  test("79/747/107/76/128 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 78/78");
-    expect(v.inventory).toContain("columns 739");
+    expect(v.inventory).toContain("tables 79/79");
+    expect(v.inventory).toContain("columns 747");
     expect(v.inventory).toContain("indexes 107");
-    expect(v.inventory).toContain("fks 75");
-    expect(v.inventory).toContain("checks 127");
+    expect(v.inventory).toContain("fks 76");
+    expect(v.inventory).toContain("checks 128");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(78);
+    expect(run.size).toBe(79);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);
@@ -292,6 +297,9 @@ describe("verifyBaseline (checked-in baseline)", () => {
     expect(run.has("public.drill_part_evidence")).toBe(true);
     // DC-5 — the materialised acceptable-answer surface (additive, v2-owned)
     expect(run.has("public.mark_point_alternatives")).toBe(true);
+    // Study-Plan Builder — the learner's plan-config row (additive, v2-owned;
+    // the ONLY persisted state of the lane — the week stays a projection)
+    expect(run.has("public.study_plans")).toBe(true);
   });
 });
 

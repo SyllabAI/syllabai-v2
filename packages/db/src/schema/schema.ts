@@ -1853,3 +1853,31 @@ export const markPointAlternatives = pgTable("mark_point_alternatives", {
                 }).onDelete("cascade"),
         check("ck_mpa_kind", sql`(kind)::text = ANY ((ARRAY['ALTERNATIVE'::character varying, 'NUMERIC'::character varying])::text[])`),
 ]);
+
+// ── Study-Plan Builder (docs/STUDY-PLAN-BUILDER-PLAN.md) ─────────────────
+// v2-only table (BASELINE_DB.md §4): CREATE-only, zero bytes touched on any
+// Flyway-era table. The learner's plan-config row — the three builder steps
+// of record (courses, per-course exam seasons, per-day minutes) — is the
+// ONLY persisted state of the lane; the generated week and every task
+// completion state are query-time projections over the DC-7 event rows
+// (never stored). uq_study_plan_learner = ONE active plan per learner (PUT
+// replaces); created_at is the day-walk anchor and never moves on edit.
+
+export const studyPlans = pgTable("study_plans", {
+        id: uuid().primaryKey().notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        courses: jsonb().notNull(),
+        seasons: jsonb().notNull(),
+        weekdayMinutes: integer("weekday_minutes").notNull(),
+        weekendMinutes: integer("weekend_minutes").notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        unique("uq_study_plan_learner").on(table.learnerId),
+        foreignKey({
+                        columns: [table.learnerId],
+                        foreignColumns: [users.id],
+                        name: "fk_study_plans_learner"
+                }).onDelete("cascade"),
+        check("ck_study_plan_minutes", sql`((weekday_minutes >= 0) AND (weekend_minutes >= 0))`),
+]);
