@@ -132,6 +132,28 @@ export interface ChapterLesson {
   previewOnly: boolean;
 }
 
+// ── the chapter-key join law (T-BOOK-033/status-flip r1 rider) ───────────────
+// The SAME chapter lives in two key formats: the DB rail coordinate
+// (book_chapters.chapter_key, `u<unit>:c<N>` — no padding; the live reader
+// carries "u1:c1") and the lessonPack chapterKey (contracts grammar
+// `u<N>:c<NN>` — zero-padded; the baked index carries "u1:c01"). Every
+// pack↔chapter join normalizes to the unit/chapter INTEGERS. Unknown
+// shapes → null (honest-absent: callers keep their exact-match behavior).
+export function normalizedChapterKey(k: string): string | null {
+  const m = /^u(\d+):c(\d+)$/.exec(k.trim());
+  return m ? `u${Number(m[1])}:c${Number(m[2])}` : null;
+}
+
+/** The index row for a chapter key in EITHER format; null = no pack (honest). */
+export function findChapterKeyInIndex(
+  idx: { packId: string; chapterKey: string }[],
+  chapterKey: string,
+): { packId: string; chapterKey: string } | null {
+  const want = normalizedChapterKey(chapterKey);
+  if (!want) return null;
+  return idx.find((p) => normalizedChapterKey(p.chapterKey) === want) ?? null;
+}
+
 /**
  * The lesson for one chapter, for the READER TOGGLE + LESSON PAGE.
  * Published packs return previewOnly=false; draft/reviewed return the
@@ -143,7 +165,7 @@ export const fetchChapterLesson = cache(
   async (courseSlug: string, chapterKey: string): Promise<ChapterLesson | null> => {
     const idx = await fetchLessonIndex(courseSlug);
     if (!idx) return null;
-    const entry = idx.find((p) => p.chapterKey === chapterKey);
+    const entry = findChapterKeyInIndex(idx, chapterKey);
     if (!entry) return null;
     const pack = await fetchLessonPack(courseSlug, entry.packId);
     if (!pack) return null;

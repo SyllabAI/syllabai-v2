@@ -16,7 +16,12 @@ import { notFound } from "next/navigation";
 
 import { loadHubCourse } from "@/lib/courses";
 import { fetchBookChapters } from "@/lib/books";
-import { fetchChapterLesson, fetchLessonIndex } from "@/lib/books-lesson";
+import {
+  fetchChapterLesson,
+  fetchLessonIndex,
+  findChapterKeyInIndex,
+  normalizedChapterKey,
+} from "@/lib/books-lesson";
 import { LessonView } from "@/components/books/lesson/lesson-view";
 
 export const dynamic = "force-dynamic";
@@ -39,13 +44,23 @@ export default async function LessonPage({
   const chapters = await fetchBookChapters(docId);
   if (chapters === null || chapters.length === 0) notFound();
 
-  // chapter resolution: ?chapter= (exact) → the first chapter that has a
-  // pack in the committed index. No pack anywhere → notFound (honest).
+  // chapter resolution: ?chapter= in EITHER key format (rail u1:c1 or pack
+  // u1:c01 — the r1 join law) → that pack; else the first index chapter the
+  // book actually has; else the first index row. No pack anywhere →
+  // notFound (honest).
   const idx = await fetchLessonIndex(slug);
   if (!idx || idx.length === 0) notFound();
+  const bookChapterKeys = new Set(
+    chapters
+      .map((c) => normalizedChapterKey(c.chapterKey))
+      .filter((k): k is string => k != null),
+  );
   const chapterKey =
-    (chapterParam && idx.some((p) => p.chapterKey === chapterParam) ? chapterParam : null) ??
-    idx.map((p) => p.chapterKey).find((k) => chapters.some((c) => c.chapterKey === k)) ??
+    (chapterParam ? findChapterKeyInIndex(idx, chapterParam)?.chapterKey : null) ??
+    idx.find((p) => {
+      const k = normalizedChapterKey(p.chapterKey);
+      return k != null && bookChapterKeys.has(k);
+    })?.chapterKey ??
     idx[0].chapterKey;
 
   const lesson = await fetchChapterLesson(slug, chapterKey);
