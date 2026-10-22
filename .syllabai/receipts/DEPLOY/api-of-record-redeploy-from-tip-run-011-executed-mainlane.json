@@ -1,0 +1,46 @@
+{
+  "card": "LEVER api-of-record redeploy from tip — EXECUTED (the staged handoff of receipt api-of-record-redeploy-from-tip-run-010-mainlane.json fired with the operator-pasted VERCEL_PAT)",
+  "receipt": "api-of-record-redeploy-from-tip-run-011-executed-mainlane",
+  "lane": "main (Z.ai main agent, zai-web session web-c414c074-1cb4-4bd5-b111-546be3b49355, chat 08b3170a)",
+  "created_at_utc": "2026-10-22T00:00Z",
+  "operator_traces": [
+    "1a160d7b86d07e91 'redeploy the api carrier' (the standing order whose deploy leg was TOKEN-GATED and staged by run-010)",
+    "1a160ee522dd799d (the VERCEL_PAT paste — this lane identified the staged handoff as the halted act and fired it)"
+  ],
+  "source_of_record": "bundle built at main tip c390ce16 (BUNDLE-SOURCE-EQUIVALENT to 6404e6fa and 2100e410: git diff c390ce16..6404e6fa over apps/api+packages = EMPTY, proven in run-010; 2100e410 is .syllabai-only on top)",
+  "pre_deploy_snapshot": {
+    "token_identity": "vercel whoami = syllabai-1403 (CLI 62.7.0)",
+    "rollback_anchor": "syllabai-v2-kmhsg8lt3-syllab-ai.vercel.app (the most recent pre-deploy deployment in the project ls — the stale alias holder serving the predates-T-BOOK-007 build; READY and re-aliasable)",
+    "disclosed": "vercel inspect on the alias errored this session (tool-harness glitch); the anchor is captured from the project ls of record instead"
+  },
+  "deploy_leg": [
+    "EXECUTED: vercel deploy --prod --yes --token (CLI 62.7.0) from the 2-file stage of run-010 (api/index.js 3,296,029 bytes + vercel.json rewrites + .vercel/project.json prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ/team_ULL54qkhzKBmnKrpO6BD4mYX)",
+    "RESULT: Ready in 11s — deployment syllabai-v2-fmnc0xe1b-syllab-ai.vercel.app PROMOTED to production alias syllabai-v2.vercel.app",
+    "CLI warned 'Deployment Protection is on (Vercel Authentication)' — DISPROVEN by the census: every leg answered anonymously (public 200s), production is UNPROTECTED (the warning is the CLI's generic banner; no bypass needed)",
+    "token hygiene: VERCEL_PAT held in the volatile session env only; never printed to receipts/logs/repo; never persisted to disk/config"
+  ],
+  "live_census_15_15": [
+    "1 health 200 UP (public, anonymous)",
+    "2 books shelf 200 1/1 for courseId=igcse-chemistry-19 (doc e6c0db50, 383pp)",
+    "3 BOOKS CHAPTERS 200 29/29 (units 1,2,3,4) WITH nullScores=11 SERVED — THE T-BOOK-025 WIDENED-UNSCORED FIX IS LIVE ON PRODUCTION (the exact root-cause count of the incident diagnosis now passes the strict-contract wall on the public wire)",
+    "4 BOOKS GLOSSARY 200 112/112 for subject=4ch1 — the T-BOOK-007 route family (ABSENT on the stale build) IS LIVE",
+    "5 login-malformed 400 validation_failed 'password: must not be blank' (of-record exact)",
+    "6 cla/ask unauth 401 boot law",
+    "7 CORS preflight 204 + ACAO EXACT https://syllabai-hub-v2.vercel.app",
+    "8 hostile origin 403 no-ACAO (Task-17 prune holding)",
+    "9 hub-v2 /api/health 200 (the section-2 flip posture holding)",
+    "10 zombie syllabai-api-v2 404 not_found (zero collateral)",
+    "11 probe learner register 201 (synthetic census-run010-live-*@example.invalid, accessToken minted, STUDENT role)",
+    "12 learners/me/state 200 with the minted Bearer (JWT law)",
+    "13 THE 095 LAW DISCRIMINATOR PASS: whitespace-cardId flashcard-ratings POST -> 400 validation_failed 'cardId: card id must be the hub content id' (the run-002 census message EXACT) — the zod law is LIVE on the new dpl",
+    "14 books blocks route 200 (u1:c1 = 7 blocks served — was 401 legacy shape on the stale build)",
+    "15 alias sanity re-probe 200 (stable serving)"
+  ],
+  "write_ledger": "prod Neon: 3 synthetic probe learners this census act (census-run010-live-*@example.invalid, register-only — 1 lost to an extractor bug pre-INSERT-visible, 1 re-run, 1 for the authenticated legs; all the of-record census class) + ZERO tutor writes this act; ZERO DDL; ZERO env writes; 1 production deployment (the operator-ordered act); no secret material printed/logged/committed",
+  "rollback_anchors": [
+    "syllabai-v2-kmhsg8lt3-syllab-ai.vercel.app (PRE-DEPLOY alias holder — the stale predates-T-BOOK-007 build; re-aliasable in one command/dashboard act)",
+    "earlier READY lineage per the run-002/003 receipts (dpl_CgHcMLAcK3 / dpl_Att7u / dpl_A8UAPTfbA2j3wBs6wzHbdoTB2eee class) — status not re-verified this act (inspect glitch disclosed)"
+  ],
+  "hub_residual_disclosed": "THE OPERATOR ORDER COVERED THE API CARRIER ONLY; the hub (syllabai-hub-v2.vercel.app) still runs its pre-T-BOOK-025 build whose SCHEMA-MIRROR wall (apps/hub/src/lib/books.ts) still declares score z.number().optional() and will REJECT the carrier's now-legal null scores — the hub shelf/reader keeps the honest no-chapters fallback until the HUB REDEPLOY (the next lever, same token class, hub-of-record receipts run-001..005 procedure)",
+  "verdict": "DEPLOYED AND VERIFIED — api-of-record serves main tip c390ce16/6404e6fa-equivalent as syllabai-v2-fmnc0xe1b (READY, PROMOTED, public); 15/15 live census legs green including the full books witness trio (shelf 1/1, chapters 29/29 with 11 nulls, glossary 112) and the 095 discriminator of-record-exact; the T-BOOK-025 serving fix is LIVE on the api carrier; rollback anchor captured; the hub mirror redeploy remains the open serving residual"
+}

@@ -11916,3 +11916,16 @@ Stage Summary:
 - Receipt of record: .syllabai/receipts/DEPLOY/api-of-record-redeploy-from-tip-run-010-mainlane.json — verdict PRE-CLEARED AND STAGED.
 - Probe-path knowledge bank: glossary route = GET /api/v1/content/books/glossary?subject=4ch1 (LOWERCASE qual code, registered BEFORE /:documentId); a wrong /:docId/glossary probe falls through to the global 401 gate (spring-shape) — not a route absence.
 - HUB RESIDUAL DISCLOSED: the hub mirror (apps/hub/src/lib/books.ts) needs its own redeploy to parse the carrier's now-legal null scores; until then the hub may still render the no-chapters fallback even with the carrier GREEN.
+
+## DEPLOY api-of-record redeploy from tip run-011 — EXECUTED AND VERIFIED (the run-010 staged handoff fired with the operator-pasted VERCEL_PAT, trace 1a160ee522dd799d)
+
+Work Log:
+- Token verified via the CLI of record (vercel whoami = syllabai-1403, CLI 62.7.0); pre-deploy snapshot captured (rollback anchor syllabai-v2-kmhsg8lt3-syllab-ai.vercel.app — the stale predates-T-BOOK-007 holder; vercel inspect glitched, ls-of-record used, disclosed).
+- DEPLOY EXECUTED from the run-010 stage: Ready in 11s — syllabai-v2-fmnc0xe1b-syllab-ai.vercel.app PROMOTED to production alias syllabai-v2.vercel.app. CLI's "Deployment Protection" banner DISPROVEN by census (all legs answer anonymously).
+- LIVE CENSUS 15/15 GREEN: health 200; shelf 1/1 (e6c0db50, 383pp); CHAPTERS 200 29/29 WITH nullScores=11 SERVED (THE T-BOOK-025 FIX LIVE ON THE PUBLIC WIRE); GLOSSARY 200 112/112 (T-BOOK-007 family LIVE); login parity exact; cla/ask 401; CORS 204 + ACAO exact hub-v2; hostile 403; hub /api/health 200; zombie 404; register 201 + state 200 (JWT law); 095 discriminator EXACT ('cardId: card id must be the hub content id'); BLOCKS route 200 (u1:c1 = 7 blocks, was 401 legacy shape); alias re-probe stable.
+- Token hygiene: VERCEL_PAT volatile env only, never printed/persisted/committed. Write ledger: 3 synthetic census learners (register-only class) + zero tutor writes; zero DDL/env writes; 1 production deployment.
+- Receipt of record: .syllabai/receipts/DEPLOY/api-of-record-redeploy-from-tip-run-011-executed-mainlane.json (verdict DEPLOYED AND VERIFIED).
+
+Stage Summary:
+- THE API CARRIER IS FIXED: the 4CH1 interactive book's data plane (shelf + chapters + glossary + blocks) serves GREEN on the public wire at syllabai-v2.vercel.app; the run-010 staged handoff is fully discharged; rollback anchor captured.
+- OPEN SERVING RESIDUAL (next lever, operator): the HUB redeploy — hub-v2 still runs its pre-T-BOOK-025 build whose mirror wall still rejects the carrier's legal null scores; the hub shelf/reader keeps the honest no-chapters fallback until the hub-of-record redeploy fires.
