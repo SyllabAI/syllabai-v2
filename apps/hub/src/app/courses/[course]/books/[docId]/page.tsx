@@ -194,11 +194,16 @@ export default async function BookViewerPage({
   // T-BOOK-033 — the Lesson toggle ("one substrate, two renderers"). The
   // link renders only when the chapter's pack is student-visible (T-C20:
   // published) OR the operator is previewing (?preview=1 carries through —
-  // a draft pack never appears for a plain reader visit).
+  // a draft pack never appears for a plain reader visit). The href carries
+  // the PACK's canonical chapterKey (r1 join law: the rail coordinate
+  // u1:c1 resolves too, but the exact-pack key is the tightest payload).
   const chapterLesson = await fetchChapterLesson(slug, target.chapterKey);
   const lessonVisible =
     chapterLesson != null && (!chapterLesson.previewOnly || previewParam === "1");
-  const lessonHref = `/courses/${slug}/books/${docId}/lesson?chapter=${encodeURIComponent(target.chapterKey)}` + (previewParam === "1" ? "&preview=1" : "");
+  const lessonHref = chapterLesson
+    ? `/courses/${slug}/books/${docId}/lesson?chapter=${encodeURIComponent(chapterLesson.pack.chapterKey)}` +
+      (previewParam === "1" ? "&preview=1" : "")
+    : null;
 
   // slice pane path; null → whole-book fallback (the 133c mount)
   const sliceRel = mountEntry ? bookSlicePathForCourse(slug, mountEntry.file) : null;
@@ -218,7 +223,7 @@ export default async function BookViewerPage({
         <span className="text-muted-foreground">
           {ordinal}/{chapters.length} · {target.title}
         </span>
-        {lessonVisible && (
+        {lessonVisible && lessonHref && (
           <Button asChild variant="ghost" size="sm" className="h-7 shrink-0 px-2">
             <Link href={lessonHref} aria-label="Open this chapter as a Lesson">
               Lesson

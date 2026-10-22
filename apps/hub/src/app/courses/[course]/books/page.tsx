@@ -15,7 +15,7 @@ import {
   fetchBookSlices,
 } from "@/lib/books";
 import { booksRawUrl } from "@/lib/pastpapers-shared";
-import { fetchLessonShelfEntries } from "@/lib/books-lesson";
+import { fetchLessonShelfEntries, normalizedChapterKey } from "@/lib/books-lesson";
 import { CourseHeader } from "@/components/hub/course-header";
 import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
 import { Badge } from "@/components/ui/badge";
@@ -119,9 +119,18 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
 
   // T-BOOK-033 — the Lesson shelf affordance: PUBLISHED packs only (T-C20:
   // a pack that has not been operator-VALIDATED simply is not here). The
-  // badge is a deep link to the lesson surface for that chapter.
+  // badge is a deep link to the lesson surface for that chapter. The
+  // r1 join law: pack keys (u1:c01) and DB rail keys (u1:c1) are the same
+  // chapter in two formats — the membership test normalizes BOTH sides.
   const lessonChapters = new Set(
-    (await fetchLessonShelfEntries(slug)).map((e) => e.chapterKey),
+    (await fetchLessonShelfEntries(slug))
+      .map((e) => normalizedChapterKey(e.chapterKey))
+      .filter((k): k is string => k != null),
+  );
+  const lessonBadgeChapters = new Set(
+    (chapters ?? [])
+      .map((c) => normalizedChapterKey(c.chapterKey))
+      .filter((k): k is string => k != null && lessonChapters.has(k)),
   );
 
   return (
@@ -219,7 +228,7 @@ async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) 
                       )}
                     </div>
                     <PageRangeBadge ch={ch} />
-                    {lessonChapters.has(ch.chapterKey) && (
+                    {lessonBadgeChapters.has(ch.chapterKey) && (
                       <Badge asChild variant="secondary" className="shrink-0 font-medium">
                         <Link
                           href={`/courses/${slug}/books/${book.documentId}/lesson?chapter=${encodeURIComponent(ch.chapterKey)}`}
