@@ -1,0 +1,130 @@
+/**
+ * F-182 drill-surface contract pins — the wire law the routes validate
+ * through (docs/F182-DRILL-BUILD-PLAN.md).
+ */
+import { describe, expect, test } from "bun:test";
+
+import {
+  drillAddressesQuerySchema,
+  drillAddressesResponseSchema,
+  drillDrawRequestSchema,
+  drillDrawResponseSchema,
+  drillEvidenceRequestSchema,
+  drillEvidenceResponseSchema,
+  drillPartViewSchema,
+  drillResponseSchema,
+} from "./drill";
+
+const DRAW_ID = "d1000000-0000-4000-8000-000000000001";
+const EVIDENCE_ID = "e1000000-0000-4000-8000-000000000001";
+
+const partView = {
+  partId: "qstnprt_abc",
+  questionId: "q1",
+  setId: "official-4ch1-1c-2019-06",
+  plane: "official" as const,
+  order: 0,
+  marks: 1,
+  questionType: "multiple_choice",
+  commandWord: null,
+  problemMd: "The change is called",
+  choices: [
+    { label: "A", textMd: "vaporisation" },
+    { label: "B", textMd: "condensation" },
+  ],
+  specPointCodes: ["4CH1-1.2"],
+};
+
+describe("drill draw request", () => {
+  test("seed is optional; the response always carries the one used", () => {
+    expect(drillDrawRequestSchema.parse({ course: "igcse-chemistry-19", code: "4CH1-1.25" }).seed).toBeUndefined();
+    expect(drillDrawRequestSchema.parse({ course: "c", code: "x", seed: 7 }).seed).toBe(7);
+  });
+
+  test("rejects out-of-uint32 seeds, empty code, non-integer seed", () => {
+    expect(drillDrawRequestSchema.safeParse({ course: "c", code: "x", seed: 0xffffffff + 1 }).success).toBe(false);
+    expect(drillDrawRequestSchema.safeParse({ course: "c", code: "", seed: 1 }).success).toBe(false);
+    expect(drillDrawRequestSchema.safeParse({ course: "c", code: "x", seed: 1.5 }).success).toBe(false);
+    expect(drillDrawRequestSchema.safeParse({ course: "c", code: "x", seed: -1 }).success).toBe(false);
+  });
+});
+
+describe("drill part view — the answer-leakage law", () => {
+  test("accepts the client view (choices without isCorrect)", () => {
+    expect(drillPartViewSchema.parse(partView).partId).toBe("qstnprt_abc");
+  });
+
+  test("an empty specPointCodes list can never render (anchor law)", () => {
+    expect(drillPartViewSchema.safeParse({ ...partView, specPointCodes: [] }).success).toBe(false);
+  });
+
+  test("structured parts carry null choices", () => {
+    expect(drillPartViewSchema.parse({ ...partView, choices: null, questionType: "structured" }).choices).toBeNull();
+  });
+});
+
+describe("drill draw response", () => {
+  test("round-trips the full draw envelope", () => {
+    const body = {
+      drawId: DRAW_ID,
+      course: "igcse-chemistry-19",
+      code: "4CH1-1.25",
+      seed: 123,
+      poolSize: 155,
+      freshPoolSize: 140,
+      usedFallback: false,
+      parts: [partView],
+    };
+    expect(drillDrawResponseSchema.parse(body)).toEqual(body);
+  });
+
+  test("drawId must be a uuid", () => {
+    expect(drillDrawResponseSchema.safeParse({ drawId: "not-a-uuid", course: "c", code: "x", seed: 1, poolSize: 5, freshPoolSize: 5, usedFallback: false, parts: [] }).success).toBe(false);
+  });
+});
+
+describe("drill evidence request — the F-055 shape", () => {
+  test("choice and text responses both bind", () => {
+    expect(
+      drillResponseSchema.parse({ kind: "choice", label: "B" }),
+    ).toEqual({ kind: "choice", label: "B" });
+    expect(
+      drillResponseSchema.parse({ kind: "text", text: "condensation" }),
+    ).toEqual({ kind: "text", text: "condensation" });
+    expect(drillResponseSchema.safeParse({ kind: "choice", label: "" }).success).toBe(false);
+  });
+
+  test("confidence obeys the 1..5 band, time is non-negative", () => {
+    const base = { drawId: DRAW_ID, partId: "p1", response: { kind: "text", text: "x" }, responseTimeMs: 1200 };
+    expect(drillEvidenceRequestSchema.parse(base).confidenceLevel).toBeUndefined();
+    expect(drillEvidenceRequestSchema.parse({ ...base, confidenceLevel: 5, selfDoubtFlag: true }).selfDoubtFlag).toBe(true);
+    expect(drillEvidenceRequestSchema.safeParse({ ...base, confidenceLevel: 0 }).success).toBe(false);
+    expect(drillEvidenceRequestSchema.safeParse({ ...base, confidenceLevel: 6 }).success).toBe(false);
+    expect(drillEvidenceRequestSchema.safeParse({ ...base, responseTimeMs: -1 }).success).toBe(false);
+  });
+});
+
+describe("drill evidence response — the instant-reveal carrier", () => {
+  test("ungraded structured evidence is null/null, never 0", () => {
+    const body = { evidenceId: EVIDENCE_ID, drawId: DRAW_ID, partId: "p1", correct: null, marksAwarded: null, marksPossible: 2, solutionMd: "i) ..." };
+    expect(drillEvidenceResponseSchema.parse(body)).toEqual(body);
+  });
+
+  test("server-graded MCQ evidence carries the boolean and the marks", () => {
+    const body = { evidenceId: EVIDENCE_ID, drawId: DRAW_ID, partId: "p1", correct: true, marksAwarded: 1, marksPossible: 1, solutionMd: "**Final answer:** B" };
+    expect(drillEvidenceResponseSchema.parse(body)).toEqual(body);
+  });
+});
+
+describe("drill addresses", () => {
+  test("query requires course; response pins the census summary shape", () => {
+    expect(drillAddressesQuerySchema.parse({ course: "igcse-chemistry-19" }).course).toBe("igcse-chemistry-19");
+    expect(drillAddressesQuerySchema.safeParse({}).success).toBe(false);
+    const body = {
+      course: "igcse-chemistry-19",
+      summary: { specPointAddresses: 182, covered: 171, drillable: 157, thin: 14, uncovered: 11 },
+      addresses: [{ code: "4CH1-1.25", official: 103, topic: 52, combined: 155, drillable: true }],
+    };
+    expect(drillAddressesResponseSchema.parse(body)).toEqual(body);
+  });
+});

@@ -1,6 +1,6 @@
 {
   "id": "4478097e-c710-4a32-b0ac-b9efe42982e3",
-  "prevId": "029496d1-cf58-449f-80f9-b06ed65c06b4",
+  "prevId": "",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -9240,6 +9240,364 @@
         "ck_mark_entitlement_policies_law": {
           "name": "ck_mark_entitlement_policies_law",
           "value": "(unlimited IS TRUE) OR (re_marks_per_day IS NOT NULL)"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.drill_draws": {
+      "name": "drill_draws",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "learner_id": {
+          "name": "learner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "course": {
+          "name": "course",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "varchar(32)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "seed": {
+          "name": "seed",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "part_ids": {
+          "name": "part_ids",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pool_size": {
+          "name": "pool_size",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "fresh_pool_size": {
+          "name": "fresh_pool_size",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "used_fallback": {
+          "name": "used_fallback",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ix_drill_draws_learner_course_code_time": {
+          "name": "ix_drill_draws_learner_course_code_time",
+          "columns": [
+            {
+              "expression": "learner_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "course",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": false,
+              "nulls": "first",
+              "opclass": "timestamptz_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "fk_drill_draws_learner": {
+          "name": "fk_drill_draws_learner",
+          "tableFrom": "drill_draws",
+          "tableTo": "users",
+          "columnsFrom": [
+            "learner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ck_drill_draws_seed": {
+          "name": "ck_drill_draws_seed",
+          "value": "seed >= 0 AND seed <= 4294967295"
+        },
+        "ck_drill_draws_pool_sizes": {
+          "name": "ck_drill_draws_pool_sizes",
+          "value": "pool_size >= 0 AND fresh_pool_size >= 0"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.drill_part_evidence": {
+      "name": "drill_part_evidence",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "draw_id": {
+          "name": "draw_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "learner_id": {
+          "name": "learner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "course": {
+          "name": "course",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "code": {
+          "name": "code",
+          "type": "varchar(32)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "part_id": {
+          "name": "part_id",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "question_id": {
+          "name": "question_id",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "set_id": {
+          "name": "set_id",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "response_kind": {
+          "name": "response_kind",
+          "type": "varchar(8)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "response": {
+          "name": "response",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "correct": {
+          "name": "correct",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "marks_awarded": {
+          "name": "marks_awarded",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "marks_possible": {
+          "name": "marks_possible",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "response_time_ms": {
+          "name": "response_time_ms",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "confidence_level": {
+          "name": "confidence_level",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "self_doubt_flag": {
+          "name": "self_doubt_flag",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "provenance": {
+          "name": "provenance",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'DRILL'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ix_drill_evidence_learner_time": {
+          "name": "ix_drill_evidence_learner_time",
+          "columns": [
+            {
+              "expression": "learner_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": false,
+              "nulls": "first",
+              "opclass": "timestamptz_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ix_drill_evidence_code": {
+          "name": "ix_drill_evidence_code",
+          "columns": [
+            {
+              "expression": "course",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "fk_drill_evidence_draw": {
+          "name": "fk_drill_evidence_draw",
+          "tableFrom": "drill_part_evidence",
+          "tableTo": "drill_draws",
+          "columnsFrom": [
+            "draw_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "fk_drill_evidence_learner": {
+          "name": "fk_drill_evidence_learner",
+          "tableFrom": "drill_part_evidence",
+          "tableTo": "users",
+          "columnsFrom": [
+            "learner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "uq_drill_evidence_draw_part": {
+          "name": "uq_drill_evidence_draw_part",
+          "nullsNotDistinct": false,
+          "columns": [
+            "draw_id",
+            "part_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "ck_drill_evidence_confidence": {
+          "name": "ck_drill_evidence_confidence",
+          "value": "confidence_level IS NULL OR (confidence_level >= 1 AND confidence_level <= 5)"
+        },
+        "ck_drill_evidence_time": {
+          "name": "ck_drill_evidence_time",
+          "value": "response_time_ms >= 0"
+        },
+        "ck_drill_evidence_response_kind": {
+          "name": "ck_drill_evidence_response_kind",
+          "value": "(response_kind)::text = ANY ((ARRAY['choice'::character varying, 'text'::character varying])::text[])"
+        },
+        "ck_drill_evidence_marks": {
+          "name": "ck_drill_evidence_marks",
+          "value": "marks_awarded IS NULL OR (marks_awarded >= 0 AND marks_awarded <= marks_possible)"
         }
       },
       "isRLSEnabled": false

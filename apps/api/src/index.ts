@@ -56,6 +56,7 @@ import { buildSmeRouters } from "./routes/sme";
 import { buildInterventionRouters } from "./routes/intervention";
 import { buildLearnerRouters } from "./routes/learner";
 import { buildLearnerProgressRouters } from "./routes/learner/progress";
+import { buildDrillRouters, drillErrorResponse } from "./routes/drill";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildTeacherAssignmentsRouters } from "./routes/assignments";
 import { buildTeachingToolkitRouters } from "./routes/teaching-toolkit";
@@ -97,6 +98,7 @@ const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const learnerKg = buildLearnerKgRouters();
 const learnerProgress = buildLearnerProgressRouters();
+const drill = buildDrillRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
@@ -307,6 +309,23 @@ app.route("/api/v1/learners/me", learnerKg.learnerKgRoute);
 // plan and the dashboard can never disagree. Additive mount per the
 // minimal app-level wiring precedent.
 app.route("/api/v1/learners/me", learnerProgress.learnerProgressRoute);
+
+// F-182 drill surface routers (the per-spec-point drill; prereg
+// docs/F182-DRILL-BUILD-PLAN.md under the opening plan
+// docs/F182-DRILL-SURFACE-PLAN.md §6.1). F-182-SPEC-NATIVE paths, not a
+// frozen-port band: GET /api/v1/learners/me/drill/addresses (the drillable
+// address picker — the census of record's fail-closed floor P3),
+// POST /api/v1/learners/me/drill/draw (the 5-part draw, policies P1..P5
+// untouched from the opening's pure modules) and
+// POST /api/v1/learners/me/drill/evidence (the F-055-shaped attempt-evidence
+// seam over the drill address space — one immutable row per (draw, part),
+// the instant post-attempt reveal riding the ack). The router owns its
+// authz internally (the createLearnerStateRouter shell posture). ZERO-STAKES
+// LAW: the drill writes ONLY its own tables (drill_draws +
+// drill_part_evidence, migration 0010_drill_surface) and reads NO
+// progress-bearing table — no attempts, no ai_mark_events, no gradebook
+// events, ever. Additive mount per the minimal app-level wiring precedent.
+app.route("/api/v1/learners/me/drill", drill.drillRoute);
 
 // Marking routers (T-MIG-032 — Wave 3). Path parity with the frozen core:
 // LearnerSelfMarkController + StudentSmartMarkController share the
@@ -726,6 +745,11 @@ app.all("/api/v1/*", (c) => {
  * serves (:224-230: "internal_error" / "an internal error occurred").
  */
 app.onError((err, c) => {
+  // F-182 lane: UnknownCourseError is the drill's fail-closed course registry
+  // (the anchor law) — 404 not_found, never a 500 (drillErrorResponse also
+  // maps the identity-domain errors; the drill module shares the shape).
+  const drillMapped = drillErrorResponse(err);
+  if (drillMapped) return c.json(drillMapped.body, drillMapped.status as 400 | 401 | 403 | 404 | 409 | 429);
   const mapped = toErrorResponse(err);
   if (mapped) {
     if (mapped.headers) for (const [k, v] of Object.entries(mapped.headers)) c.header(k, v);
