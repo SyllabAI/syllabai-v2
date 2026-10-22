@@ -22,9 +22,9 @@
  },
  "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
  "counts": {
-  "sections": 11,
-  "topics": 25,
-  "specPoints": 68,
+  "sections": 14,
+  "topics": 34,
+  "specPoints": 77,
   "notes": 67,
   "questionSets": 17,
   "questions": 256,
@@ -35,7 +35,39 @@
  "treeKind": "official-spine",
  "officialSpine": {
   "spine": "spines/cie-igcse-further-maths-additional-maths-25.json",
-  "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
-  "attachmentMap": "content-maps/cie-igcse-further-maths-additional-maths-25.json"
+  "resourcesSha": "b83a3799a039350ea0dc759afe2fda188ed45806",
+  "attachmentMap": "content-maps/cie-igcse-further-maths-additional-maths-25.json",
+  "repairRun": {
+   "run": "T-SPECS-CIE-PARSE-REPAIR-2-r0",
+   "date": "2026-10-22",
+   "operatorOrder": "band B (geo-25's 111 cross-edition rows), band C (EL/fleet leave-unjoined codification), and then the two parse/spine repair lanes (trace 1a1615fe86d96ed9)",
+   "builderOverride": "apps/hub/scripts/build_official_spines.py FM25_ADDED_TOPICS (purely additive; zero existing nodes/edges/codes change; statement/example split policy codified in the override)",
+   "delta": {
+    "topicsAdded": [
+     "T3 Factors of polynomials",
+     "T9 Circular measure",
+     "T12 Series"
+    ],
+    "subtopicsAdded": 9,
+    "pointsAdded": [
+     "3.1.1",
+     "3.2.1",
+     "3.3.1",
+     "9.1.1",
+     "12.1.1",
+     "12.2.1",
+     "12.3.1",
+     "12.4.1",
+     "12.5.1"
+    ],
+    "codesChanged": 0,
+    "note": "topic and point orders reassigned by official sequence (relative order of pre-existing points preserved)"
+   },
+   "countsAfter": {
+    "sections": 14,
+    "topics": 34,
+    "specPoints": 77
+   }
+  }
  }
 }

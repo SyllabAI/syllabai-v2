@@ -147,6 +147,140 @@ PURE3_ALGEBRA_SPLIT = {
 }
 
 
+# T-SPECS-CIE-PARSE-REPAIR-2 — evidence-cited additive topics for
+# cie-igcse-further-maths-additional-maths-25 (the second parse/spine repair
+# lane of the operator order trace 1a1615fe86d96ed9; the candidate was FILED
+# by T-SPECS-CIE-COMPLETE-1-BAND-A's corrections of record: "0606 topics
+# 3/9/12 + statement/example split policy").
+# The 662470 (0606 2025-2027) parse DROPPED topics 3, 9 and 12 entirely:
+#   topic 3  Factors of polynomials   (statements 3.1-3.3)
+#   topic 9  Circular measure         (statement  9.1)
+#   topic 12 Series                   (statements 12.1-12.5)
+# Ground truth re-verified this lane from the official PDF 662470 (fetched
+# fresh; statements verbatim below).
+# STATEMENT/EXAMPLE SPLIT POLICY of record (codified here): the served 0606
+# grammar renders official statements as SUBTOPIC nodes (code T:SUBN.M, the
+# statement as title) and their example sub-bullets as SPEC_POINTs (N.M.K —
+# the parse invented the K digit, e.g. official 1.3's five notation examples
+# became 1.3.1-1.3.5). Those receipted over-split codes are the JOIN SURFACE
+# and stay byte-stable; a rename would drift every receipt that cites them.
+# Statements with NO official sub-bullets materialize their full statement
+# text as BOTH the subtopic title and ONE point N.M.1 (the parse grammar's
+# own first-point slot) so the examinable content exists at point level for
+# notes/questions to join. The repair is purely ADDITIVE: zero existing
+# nodes/edges/codes change; topic/subtopic/point orders after each insertion
+# shift by the disclosed deltas.
+FM25_ADDED_TOPICS = [
+    {
+        "num": "3", "title": "Factors of polynomials",
+        "subtopics": [
+            ("3.1", "Know and use the remainder and factor theorems."),
+            ("3.2", "Find factors of polynomials."),
+            ("3.3", "Solve cubic equations."),
+        ],
+    },
+    {
+        "num": "9", "title": "Circular measure",
+        "subtopics": [
+            ("9.1", "Solve problems involving the arc length and sector area of "
+                    "a circle, including knowledge and use of radian measure."),
+        ],
+    },
+    {
+        "num": "12", "title": "Series",
+        "subtopics": [
+            ("12.1", "Use the binomial theorem for expansion of (a + b)ⁿ for "
+                     "positive integer n."),
+            ("12.2", "Use the general term nCr aⁿ⁻ˣ bʳ, "
+                     "0 ⩽ r ⩽ n."),
+            ("12.3", "Recognise arithmetic and geometric progressions and "
+                     "understand the difference between them."),
+            ("12.4", "Use the formulas for the nth term and for the sum of the "
+                     "first n terms to solve problems involving arithmetic or "
+                     "geometric progressions."),
+            ("12.5", "Use the condition for the convergence of a geometric "
+                     "progression, and the formula for the sum to infinity of a "
+                     "convergent geometric progression."),
+        ],
+    },
+]
+
+
+def _cie_apply_fm25_added_topics(nodes: list, edges: list, warnings: list,
+                                 subject_code: str, qual: str) -> tuple[list, list]:
+    """Insert the dropped 0606 topics as full subtrees. Fail-closed on any
+    unexpected pre-state (the three topic numbers must be absent, the
+    surrounding topics present)."""
+    qual_prefix = qual + "-T"
+    present = {n["code"] for n in nodes if n["family"] == "TOPIC"}
+    for t in FM25_ADDED_TOPICS:
+        want = f"{qual_prefix}{t['num']}"
+        if want in present:
+            raise ValueError(f"fm25 repair: topic {want} already present")
+    # topic order: reassigned 1..N by the official topic number after the
+    # insertions — the served convention is the official topic sequence
+    # index positions: insert each new topic's subtree right before the first
+    # node whose topic number is greater (nodes array is topic-ordered)
+    for t in FM25_ADDED_TOPICS:
+        tnum_i = int(t["num"])
+        t_code = f"{qual_prefix}{tnum_i}"
+        pos = next(i for i, n in enumerate(nodes)
+                   if n["family"] in ("TOPIC", "SUBTOPIC", "SPEC_POINT")
+                   and _fm25_node_tnum(n, qual_prefix) > tnum_i)
+        topic_node = {"code": t_code, "family": "TOPIC", "title": t["title"],
+                      "description": None, "parents": [subject_code],
+                      "provenanceTier": "RULE_DERIVED", "order": 0}
+        edges.append({"source": subject_code, "relation": "PART_OF",
+                      "target": t_code, "provenanceTier": "RULE_DERIVED"})
+        sub_nodes, pt_nodes, new_edges = [], [], []
+        for s_i, (stmt_code, stmt_text) in enumerate(t["subtopics"], start=1):
+            s_code = f"{t_code}:SUB{stmt_code}"
+            sub_nodes.append({"code": s_code, "family": "SUBTOPIC", "title": stmt_text,
+                              "description": None, "parents": [t_code],
+                              "provenanceTier": "RULE_DERIVED", "order": s_i})
+            new_edges.append({"source": t_code, "relation": "PART_OF",
+                              "target": s_code, "provenanceTier": "RULE_DERIVED"})
+            pt_nodes.append({"code": f"{stmt_code}.1", "family": "SPEC_POINT",
+                             "title": stmt_text, "description": None,
+                             "parents": [s_code], "provenanceTier": "RULE_DERIVED",
+                             "order": 0})
+            new_edges.append({"source": s_code, "relation": "PART_OF",
+                              "target": f"{stmt_code}.1", "provenanceTier": "RULE_DERIVED"})
+        nodes[pos:pos] = [topic_node] + sub_nodes + pt_nodes
+        edges.extend(new_edges)
+    # reassign orders: topics 1..N by official number; subtopic orders stay
+    # per-topic local (already set); point orders = global document sequence
+    for i, n in enumerate((n for n in nodes if n["family"] == "TOPIC"), start=1):
+        pass
+    t_sorted = sorted((n for n in nodes if n["family"] == "TOPIC"),
+                      key=lambda n: _fm25_node_tnum(n, qual_prefix))
+    for i, n in enumerate(t_sorted, start=1):
+        n["order"] = i
+    k = 0
+    for n in nodes:
+        if n["family"] == "SPEC_POINT":
+            k += 1
+            n["order"] = k
+    warnings.append(
+        "fm25 topics 3/9/12 materialized (T-SPECS-CIE-PARSE-REPAIR-2): +3 topics, "
+        "+9 subtopics, +9 points (3.1.1,3.2.1,3.3.1,9.1.1,12.1.1-12.5.1), statement/"
+        "example split policy codified (over-split codes byte-stable; sub-bullet-less "
+        "statements land as point N.M.1)")
+    return nodes, edges
+
+
+def _fm25_node_tnum(node: dict, qual_prefix: str) -> int:
+    c = node.get("code") or ""
+    if not c.startswith(qual_prefix):
+        return 999
+    tail = c[len(qual_prefix):]
+    num = tail.split(":", 1)[0].split(".", 1)[0]
+    try:
+        return int(num)
+    except ValueError:
+        return 999
+
+
 def _cie_apply_pure3_algebra_split(nodes: list, edges: list, warnings: list) -> tuple[list, list]:
     """Apply PURE3_ALGEBRA_SPLIT to an assembled pure-3 tree. Fail-closed:
     any unexpected pre-state aborts the build."""
@@ -532,6 +666,9 @@ def build_course_cie(slug: str, qual: str, reg: dict, cache: Path) -> dict:
     if slug == "cie-a-level-maths-20-pure-3":
         nodes, edges = _cie_apply_pure3_algebra_split(nodes, edges, warnings)
         n_pts += len(PURE3_ALGEBRA_SPLIT["new_points"])  # meta.counts truth
+    if slug == "cie-igcse-further-maths-additional-maths-25":
+        nodes, edges = _cie_apply_fm25_added_topics(nodes, edges, warnings, slug, qual)
+        n_pts += sum(len(t["subtopics"]) for t in FM25_ADDED_TOPICS)  # meta.counts truth
 
     curriculum = {
         "board": CIE_BOARD,
@@ -556,7 +693,7 @@ def build_course_cie(slug: str, qual: str, reg: dict, cache: Path) -> dict:
             "suffixed": len(suffixed),
             "examples": sorted(set(suffixed))[:8],
         },
-        "counts": {"topics": len(topics), "subtopics": n_sub, "specPoints": n_pts,
+        "counts": {"topics": len([n for n in nodes if n["family"] == "TOPIC"]), "subtopics": len([n for n in nodes if n["family"] == "SUBTOPIC"]), "specPoints": n_pts,
                    "parsePool": len(rows_all), "scopedPool": len(scoped), "orphans": len(orphans)},
         "orphans": orphans,
         "warnings": warnings,

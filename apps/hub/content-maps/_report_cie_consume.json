@@ -1,13 +1,13 @@
 {
  "changedCourses": [
-  "cie-a-level-maths-20-pure-3"
+  "cie-igcse-further-maths-additional-maths-25"
  ],
  "consumptionLaw": "verdict semantics (operator-verdict authoritative) + T2_near non-authoritative hint (items[].t2HintCodes, never in codes/linkage) + rejoin J* post-gate (REJOIN-1 record NEXT #2 verbatim)",
  "courses": [
   {
    "changed": true,
    "codesOutsideSpine": 0,
-   "course": "cie-a-level-maths-20-pure-3",
+   "course": "cie-igcse-further-maths-additional-maths-25",
    "ok": true,
    "problems": [],
    "rekey": {
@@ -22,24 +22,25 @@
    },
    "sheetRows": 0,
    "sidecarOnlyItems": 0,
-   "spineHitCodes": 42,
+   "spineHitCodes": 49,
    "tierCensus": {
-    "V2_name_phrase_identity": 51,
-    "V7_agent_note_join": 85
+    "V1_name_text_identity": 1,
+    "V2_name_phrase_identity": 17,
+    "V7_agent_note_join": 59
    },
-   "uncoveredSpineCodes": 1
+   "uncoveredSpineCodes": 28
   }
  ],
  "gatewayTrace": "1a15e4200e6af579",
  "lane": "T-SPECS-CIE-CONSUME-1",
  "operatorDirective": "tranche-1 (operator order 'tranche-1', trace 1a15e4200e6af579) \u2014 the tranche-1 verdict round's consume re-run: tranche1_t2NearVerdicts of cie-anchor-gap-census-r0 landed in the sidecars at resources pin aa0b4de1 (T-SPECS-CIE-TRANCHE1-T2NEAR-1); the r9 consumption law unchanged",
- "resourcesSha": "06de1f2ac20567a2f6f49759fe71b64f7b83000a",
+ "resourcesSha": "b83a3799a039350ea0dc759afe2fda188ed45806",
  "schema": "syllabai.cie-consume-report/1.0",
  "sidecars": 1,
- "stagingHash": "4a04343f5e63f7bd0d0f9260759691757351032d4a1dad54f3cbba915b5055eb",
- "stamp": "2026-10-22T02:45:00Z",
+ "stagingHash": "03aa55358a01620e62d5ab8927e42e63a1b8a458ec257a5f69ac27883893fa08",
+ "stamp": "2026-10-22T03:15:00Z",
  "totals": {
-  "codesFromSidecar": 136,
+  "codesFromSidecar": 77,
   "inlineRewrites": 0,
   "sheetAdded": 0,
   "sheetConflicts": 0,
