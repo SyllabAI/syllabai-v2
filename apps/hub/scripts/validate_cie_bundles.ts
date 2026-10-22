@@ -280,12 +280,14 @@ check("registry coreBridge CIE law of record: exactly the 21 T-SM-BRIDGE-WIDEN r
     )
   && reg.courses.filter((c) => c.board === BOARD && c.coreBridge === true).length
     === BRIDGED_CIE_SLUGS.length);
-check("registry coreBridge of record: exactly the T-SM-BRIDGE-WIDEN r0 set — the two 4MA1 maths-a rows (T-MIG-135d) + igcse-maths-b-16 (this lane) + the 21 CIE rows (this lane), every flagged row true",
+check("registry coreBridge of record: exactly the T-SM-BRIDGE-WIDEN r0 set — the two 4MA1 maths-a rows (T-MIG-135d) + igcse-maths-b-16 (this lane) + the 21 CIE rows (this lane) + the two T-SM-EDX-INGEST linear science rows (igcse-biology-19, igcse-physics-19; bank-verified 2026-10-22: 322+489 refs, all VALIDATED), every flagged row true",
   (() => {
     const expected = new Set<string>([
       "igcse-maths-a-18-foundation",
       "igcse-maths-a-18-higher",
       "igcse-maths-b-16",
+      "igcse-biology-19",
+      "igcse-physics-19",
       ...BRIDGED_CIE_SLUGS,
     ]);
     const flagged = reg.courses.filter((c) => c.coreBridge !== undefined);

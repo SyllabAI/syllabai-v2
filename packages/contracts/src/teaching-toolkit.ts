@@ -403,6 +403,60 @@ export const toolkitOutcomeSchema = z.object({
 });
 export type ToolkitOutcome = z.infer<typeof toolkitOutcomeSchema>;
 
+// ── grounding depth (T-TEACH-015) — coverage-aware prefill, read-only ────────
+
+/** The SOW resume pointer: the class's first not-yet-taught spec point in
+ *  NATURAL syllabus order (the dotted-code trap: 1.2 precedes 1.10). Untaught
+ *  = teaching_coverage says NOT_TAUGHT or has no row (the heatmap's
+ *  "unrecorded" posture — only the teacher's TAUGHT assertion clears a
+ *  point). null when the course's spec points are all taught or absent —
+ *  the grounding-level specPoints* counts keep the banner honest either way. */
+export const toolkitSowResumeSchema = z.object({
+  specPointNodeId: z.string().uuid(),
+  specCode: z.string().max(40),
+  specTitle: z.string().max(300),
+  topicNodeId: z.string().uuid().nullable(),
+  topicTitle: z.string().max(300).nullable(),
+});
+export type ToolkitSowResume = z.infer<typeof toolkitSowResumeSchema>;
+
+/** A topic with untaught spec points, syllabus order — the SOW range lane.
+ *  NOT mastery-weakness data: the analytics-backed weakness preselect
+ *  (plan §6 "weakness options", the /teacher/tests/weakness-options source)
+ *  stays UNSERVED until the class-analytics lane (T-MIG-034) ports the
+ *  service — the toolkit never fabricates weakness data. */
+export const toolkitCoverageGapSchema = z.object({
+  topicNodeId: z.string().uuid(),
+  topicTitle: z.string().max(300),
+  untaughtCount: z.number().int().nonnegative(),
+  totalCount: z.number().int().nonnegative(),
+});
+export type ToolkitCoverageGap = z.infer<typeof toolkitCoverageGapSchema>;
+
+/** A coach note-card candidate: the class course's revision notes (body_md —
+ *  the real content source; spec_point_codes join the course tree) then
+ *  book-chapter learning objectives. body rides the coach inputText cap
+ *  (2000) — long notes truncate with an ellipsis, disclosed in the UI. */
+export const toolkitPassageSchema = z.object({
+  passageId: z.string().max(80),
+  source: z.enum(["revision_note", "book_chapter"]),
+  title: z.string().max(300),
+  body: z.string().max(2000),
+  ref: z.string().max(160).nullable(),
+});
+export type ToolkitPassage = z.infer<typeof toolkitPassageSchema>;
+
+export const toolkitGroundingSchema = z.object({
+  /** class coverage over the course's spec-point universe (0/0 when the
+   *  course has no spec tree — the banner hides honestly) */
+  specPointsTaught: z.number().int().nonnegative(),
+  specPointsTotal: z.number().int().nonnegative(),
+  sowResume: toolkitSowResumeSchema.nullable(),
+  coverageGaps: z.array(toolkitCoverageGapSchema).max(8),
+  passages: z.array(toolkitPassageSchema).max(12),
+});
+export type ToolkitGrounding = z.infer<typeof toolkitGroundingSchema>;
+
 export const toolkitQuotaSchema = z.object({
   used: z.number().int(),
   limit: z.number().int(),
@@ -418,6 +472,12 @@ export const toolkitContextResponseSchema = z.object({
   /** present only when the request carried ?topicId= */
   outcomes: z.array(toolkitOutcomeSchema).optional(),
   topic: toolkitTopicSchema.optional(),
+  /** T-TEACH-015 grounding depth — present only for class-bound contexts
+   *  whose course resolves a spec tree (curriculum_code prefix join). Ad-hoc
+   *  course contexts have no class coverage to ground in. Additive depth:
+   *  a grounding build failure degrades to the block's ABSENCE (logged,
+   *  never silent) — the primary context contract is never hostage to it. */
+  grounding: toolkitGroundingSchema.optional(),
 });
 export type ToolkitContextResponse = z.infer<typeof toolkitContextResponseSchema>;
 

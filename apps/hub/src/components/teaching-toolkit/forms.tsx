@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import type { ToolkitOutcomeView, ToolkitTopicView } from "@/lib/types";
+import type { ToolkitOutcomeView, ToolkitPassageView, ToolkitTopicView } from "@/lib/types";
 import {
   ASSESSMENT_TYPES,
   ASSIGNMENT_TYPES,
@@ -476,9 +476,19 @@ export function SowForm({
 export function CoachForm({
   value,
   onChange,
+  passages = [],
+  attachedTitle = null,
+  onAttach,
+  onDetach,
 }: {
   value: CoachFormData;
   onChange: (patch: Partial<CoachFormData>) => void;
+  /** T-TEACH-015 note cards: the class course's revision notes + chapter
+   *  objectives (empty when the context serves no grounding block) */
+  passages?: ToolkitPassageView[];
+  attachedTitle?: string | null;
+  onAttach?: (passage: ToolkitPassageView) => void;
+  onDetach?: () => void;
 }) {
   return (
     <div className="space-y-4">
@@ -511,6 +521,42 @@ export function CoachForm({
           </Select>
         </div>
       </div>
+      {passages.length > 0 && (
+        <div className="space-y-1.5">
+          <Label>Attach a note card from this class's course (optional)</Label>
+          <Select
+            value="__none__"
+            onValueChange={(v) => {
+              const picked = passages.find((p) => p.passageId === v);
+              if (picked) onAttach?.(picked);
+            }}
+          >
+            <SelectTrigger className={selCls}>
+              <SelectValue placeholder="Pick a revision note or chapter objective…" />
+            </SelectTrigger>
+            <SelectContent className="max-h-72">
+              {passages.map((p) => (
+                <SelectItem key={p.passageId} value={p.passageId}>
+                  {p.title}
+                  {p.source === "revision_note" ? " — revision note" : " — chapter"}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {attachedTitle && (
+            <p className="text-[11px] text-muted-foreground">
+              Attached: {attachedTitle}{" "}
+              <button
+                type="button"
+                className="underline underline-offset-2 hover:text-foreground"
+                onClick={() => onDetach?.()}
+              >
+                detach
+              </button>
+            </p>
+          )}
+        </div>
+      )}
       <div className="space-y-1.5">
         <Label>Passage / note card</Label>
         <Textarea
@@ -518,7 +564,12 @@ export function CoachForm({
           maxLength={2000}
           placeholder="Paste the passage, notes or explanation the coach should work from…"
           value={value.inputText}
-          onChange={(e) => onChange({ inputText: e.target.value })}
+          onChange={(e) => {
+            // editing after an attach means the text has diverged from the
+            // source — the attached label goes with it (honest, not sticky)
+            if (attachedTitle) onDetach?.();
+            onChange({ inputText: e.target.value });
+          }}
         />
         <p className="text-[11px] text-muted-foreground">{value.inputText.length} / 2000</p>
       </div>

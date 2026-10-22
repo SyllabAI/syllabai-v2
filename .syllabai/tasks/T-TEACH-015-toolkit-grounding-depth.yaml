@@ -3,7 +3,7 @@ task:
   id: T-TEACH-015
   title: "Grounding depth — coverage-aware SOW resume, weakness preselect, note-card passage for coach"
   owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
-  status: OPEN
+  status: DONE # run-001 (zai-web session web-528c0352): context grounding block (contracts toolkitGroundingSchema: specPointsTaught/Total + sowResume + coverageGaps + passages; ad-hoc contexts carry NONE) — spec join of record = curriculum_code FIRST token prefix (proven against prod: '4MB1-S1-1A' quals AND '0500-2024-2026-S1.001' full-code trees both match); NATURAL syllabus order via specCodeCompare (the 1.2 < 1.10 dotted trap, pinned by a scrambled-fixture test); untaught = NOT_TAUGHT or unmarked (heatmap posture), TAUGHT clears; SOW resume banner + gap chips prefill the free-topic lane; coach note cards = revision_note.body_md (spec_point_codes 100% join, prod-verified) then chapter objectives, body capped at the inputText 2000 law with ellipsis disclosure; HONEST GAPS of record: (a) weakness->emphasis preselect UNSERVED — /teacher/tests/weakness-options is the 501 analytics-unported law (T-MIG-034), the toolkit never fabricates weakness data; (b) grounding outage degrades to the block's ABSENCE (logged, never silent) — primary context bulletproof; read-only over teaching_coverage kept (the forbidden fence); tests 29/29 toolkit (5 new), full suite 2573 pass + 3 PRE-EXISTING T-MIG-135b failures (proven on the clean tree, unrelated content lane); contracts/api/hub typechecks green
   priority: P2
   band: T-TEACH
   wave: teach-toolkit-C
@@ -19,3 +19,6 @@ task:
     point'; weakness options -> emphasis preselect (same source as
     /teacher/tests/weakness-options); coach passage may pick a book chapter /
     revision note of the class course (parity with ZNotes note cards).
+    DELIVERED run-001: resume + gaps + passages live; the weakness->emphasis
+    half is the documented honest gap above — it lands when the class
+    analytics lane (T-MIG-034) ports the service this card names.

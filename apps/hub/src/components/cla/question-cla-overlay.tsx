@@ -66,6 +66,7 @@
 
 import { useEffect, useMemo, useRef, useState, type Dispatch, type SetStateAction } from "react";
 import { createPortal } from "react-dom";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
@@ -90,6 +91,7 @@ import {
   Minimize2,
   PanelRightOpen,
   Pencil,
+  Scale,
   Send,
   Sparkles,
   SquarePen,
@@ -99,6 +101,12 @@ import {
 } from "lucide-react";
 
 import { useClaPanelForm, useClaDock, useIsDesktop, useIsWide, claHeaderCircleBtn } from "./cla-panel-mode";
+import {
+  QUESTION_UNDERSTAND_PROMPT,
+  QUESTION_WHY_MARKED,
+  questionApproachPrompt,
+  questionWhyMarkedHref,
+} from "@/lib/lens-registry";
 import {
   deleteQuestionClaThread,
   insertQuestionClaThread,
@@ -193,6 +201,7 @@ export function QuestionClaOverlay({
   join,
   questionNumber,
   initialTargetId,
+  course,
   messages,
   setMessages,
 }: {
@@ -208,6 +217,8 @@ export function QuestionClaOverlay({
   questionNumber: number | null;
   /** a hub part id to pre-aim Approach at (from a part's lightbulb button) */
   initialTargetId: string | null;
+  /** the course slug — scopes the why-marked lens's tutor deep link (DC-4) */
+  course: string;
   messages: QuestionClaMessage[];
   setMessages: Dispatch<SetStateAction<QuestionClaMessage[]>>;
 }) {
@@ -222,6 +233,9 @@ export function QuestionClaOverlay({
   const { toast } = useToast();
   const bottomRef = useRef<HTMLDivElement | null>(null);
   const popupRef = useRef<HTMLDivElement | null>(null);
+  // DC-4: the why-marked lens deep-links the free tutor (client-side push —
+  // the panel stays mounted; the tutor page boots the pinned ask via ?q=).
+  const router = useRouter();
 
   // SME chat-widget parity (HUB-CLA-POPUP + HUB-CLA-SIDEBAR): popup
   // (floating, bottom-right), sidebar (the physically docked right column),
@@ -374,13 +388,18 @@ export function QuestionClaOverlay({
     });
   };
 
-  const understandPrompt =
-    "What is this question asking me to do? Walk through each part — the command words, the marks, and what the examiner is looking for. Don't tell me the answers.";
-  const approachPrompt = target
-    ? target.anchor === "QUESTION_PART"
-      ? `Help me work through part (${target.label}) step by step — coach me toward the answer without giving it away.`
-      : "Help me work through this question step by step — coach me toward the answer without giving it away."
-    : "";
+  // DC-4: the lens templates live in the registry of record
+  // (lib/lens-registry.ts) — byte-identical to the previously inline consts.
+  const understandPrompt = QUESTION_UNDERSTAND_PROMPT;
+  const approachPrompt = questionApproachPrompt(target);
+  // the why-marked lens anchors the tutor ask on the question's own first
+  // line (the helpHref pattern of record, question-player.tsx:575)
+  const questionFirstLine = question
+    ? ((question.parts[0]?.problemMd ?? "")
+        .split("\n")
+        .map((l) => l.trim())
+        .find(Boolean) ?? null)
+    : null;
 
   const hideTargetRow = targets.length <= 1 && targets[0]?.label === "question";
 
@@ -506,6 +525,25 @@ export function QuestionClaOverlay({
                   {target?.anchor === "QUESTION_PART"
                     ? `Coach me through part (${target?.label}) without the answer`
                     : "Coach me through this question without the answer"}
+                </span>
+              </button>
+              {/* DC-4 — the why-marked lens (spec §3.4 "Why was I marked
+                  this"): the marking context rides the tutor pipeline (v15
+                  markContext, DC-1), not the byte-frozen CLA route plane —
+                  so the hook is the anchored tutor deep link (the helpHref
+                  pattern of record). */}
+              <button
+                type="button"
+                disabled={!question || !course}
+                onClick={() => router.push(questionWhyMarkedHref(course, questionFirstLine))}
+                className="flex flex-col gap-1 rounded-xl bg-primary/10 px-3 py-2.5 text-left transition-colors hover:bg-primary/15 disabled:pointer-events-none disabled:opacity-50"
+              >
+                <span className="flex items-center gap-1.5 text-[13px] font-semibold">
+                  <Scale className="size-3.5 shrink-0 text-primary" aria-hidden />
+                  {QUESTION_WHY_MARKED.title}
+                </span>
+                <span className="text-[11px] leading-snug text-muted-foreground">
+                  {QUESTION_WHY_MARKED.description}
                 </span>
               </button>
             </div>

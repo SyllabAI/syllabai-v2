@@ -12574,6 +12574,288 @@ Work Log:
 Stage Summary:
 - Migration 0008 of record is LIVE on the production branch and the branch is CONVERGED with origin/main's schema end-state: the Teaching Toolkit persistence layer (resources + usage quota + ai_toolkit gate + the 4 prompt registry rows) is ready for the T-TEACH-012 routes. The lineage-B/divergence episode is documented in receipts r0+r1; the unclaimed drop is flagged as an anomaly of record. Credential law standing: rotate the Neon owner password (traveled through chat twice), revoke the GitHub PAT at lane end.
 
+Task ID: HUB-SYNC-W16-R0
+Agent: main agent (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a163ce60ef6f5a5)
+Task: Operator order "wave-16 sync" — land the wave-16 2CR tranche (11 official 4CH1-2CR sets) into the v2 pilot bundle, re-stamp the pin to the consumed cut, close the HUB-SYNC-W15 filed open item.
+
+Work Log:
+- Scope of record (no-guess recon before firing): the HUB-SYNC-W15 receipt's open item names wave-16 verbatim (2CR tranche, 11 sets / 79Q / 423P / 770M @ resources 329fe1f4); wave-16 = resources v0.13.0 (PR #47 merge, the r2cr conversion of record) + its disclosure scripts/exporter-disclosures/2026-10-22-wave16-2cr-tranche.json.
+- Consumed cut adjudication: 329fe1f4, deliberately NOT the tip 4f2eb1a2 (v0.13.1 F52) — F52 changed the 2020-01 1CR corpus bytes after wave-15 consumed them, so a tip-side export would emit changed deltas on the 1CR slice and break the pure-append class; at the declared cut the 43 common sets are byte-identical to the served bundle (r2cr: corpus byte-identical modulo generator/timestamp) and G-E1b proves identity live. F52 residual disclosed honestly (see receipt open_items).
+- Exporter of record: official_examq_export_hub.py v4 @ 329fe1f4 (F51 G-E5 law + 2CR roster, 54 slices). expected-deltas input = the of-record disclosure's 2CR half (faithful projection: 11 new keys / 423 part ids; the 22-set of-record census's baseline is the pre-wave-15 bundle — derivation disclosed in the receipt).
+- Staged 54 topic copies from the declared cut's own bytes (git show main@329fe1f4:...) into the lane tmp; bundle of record extracted from v2 origin/main ad1e3873 via git show; shared checkouts untouched throughout (lane worktrees only: resources detached @ 329fe1f4, v2 branch hub-sync-w16-r0).
+- Gated export run ALL GREEN: G-E5 54/54 content-identical to main@329fe1f4 (modulo converter header); G-E3 54 slices == constants (4860 marks); G-E2 sum laws; G-E1 423 deltas == the 2CR-half census exactly (11 new 2CR slugs, gone=0, changed=0); G-E1b identity byte-equal on all 43 common official sets; G-E4 SME prefix byte-identical (2605414 bytes).
+- Landing: questions.json staged output verbatim (82 sets = 28 SME + 54 official); manifest importSource.ref -> main@329fe1f43c4a7fa3a0d9b03fe655b4ff03dff347 (exporter-stamped, G-E5-proven) + note bumped to the wave-16 text in the same reviewed change (F44/F51 law; exporter hardcode lags by design) + counts recomputed from the served bundle (questionSets 71->82, questions 922->1001, parts 3588->4011, marks 7798->8568; SME-plane fields asserted unchanged 4/28/182/112/909; countsProvenance wave-16 clause + adr037OfficialAdds 54/477/2607/4860 + source append). Manifest round-trip byte-stability asserted pre- and post-edit.
+- Data-derived honesty: 0/79 2CR questions and 0/423 2CR parts carry spec codes (counted from the staged output, no assumption) — the tranche serves pending-llm under the anchor law, same as 1CR; disclosed in the manifest note, receipt, and this ledger. F52 residual data-verified: 3 U+01FB occurrences in the served 2020-01 2CR slice (the pre-normalization bytes; corpus fixed at v0.13.1, hub-side normalization = future lane).
+- v2 gates: bun install --frozen-lockfile + full prebuild trio (verify_corpus_23a / verify_flashcard_sync_courses / validate_cie_bundles) + build:hub (build_corpus_static + next build) — ALL GREEN on the lane tree before push.
+- Transit: last recorded 31 (HUB-SYNC-W15); this lane's v2 push recorded as 32; disclosed: 2 additional origin pushes observed since with no transit rows (68e16619 4MB1-QUALITY receipt filing, ad1e3873 MCQ choices backfill — the latter carries no durable-worklog section). PAT rotation CRITICAL overdue stands.
+
+Stage Summary:
+- Wave-16 hub sync LANDED of record: the pilot bundle serves 82 sets (28 SME + 54 official, 477q/2607p/4860m official), pin = the consumed cut main@329fe1f43c4a7fa3a0d9b03fe655b4ff03dff347, note/counts/provenance all wave-16-honest. HUB-SYNC-W15's filed open item CLOSED.
+- Residuals: F52 hub normalization lane (U+01FB -> U+0394 on the served 2020-01 1CR+2CR slices, own disclosure); 1CR/2CR spec-label waves are the resources-side next step; CIE tranche2 consume + maths-b Stage-2 regen operator-keyed; PAT rotation overdue.
+
+## OPS-AUTH-FIX r0 — carrier login restored: Vercel SSO deployment-protection strip + prod re-alias to the run-013 of-record (trace 1a163dc54a34a7cd)
+
+- Operator order: "I want to fix login and auth". Symptom: hub-side auth broken. Fetch-first diagnosis found NO code defect — the auth laws of record (JWT mint, validation_failed parity, 401 guards, CORS ACAO-exact) were intact; the wire was walled.
+- Root cause: project `syllabai-v2` had Vercel SSO deployment protection ENABLED (`ssoProtection.deploymentType = all_except_custom_domains`) — the prod vercel.app domain is NOT a custom domain, so unauthenticated browser auth calls were platform-walled. Hub project posture is `null` (parity reference). Enablement window: after the 09:55Z 21/21 census, before 13:46Z first probe; enabler unattributable via API — operator dashboard review recommended.
+- Second finding: prod alias drift — `/v4/aliases` listed EMPTY while deployment records claimed the domain; live domain served platform NOT_FOUND. Re-aliased `syllabai-v2.vercel.app` + `syllabai-v2-syllab-ai.vercel.app` -> `dpl_EzDQbaRkZw7X7QdcmpazZXCuxkBM` (run-013 of-record, census-verified 21/21 at 09:55Z). oldDeploymentId of record: `dpl_iYoT7HrsRr8o` (09:54:44Z, meta "Z User/z@container/Initial commit", unverified — remains READY but unpromoted).
+- API quirk of record: POST /v2/deployments/{id}/aliases accepts the `alias` key; the `name` key misparses ("invalid_alias .vercel.app").
+- Verification battery (live, public wire): login-malformed 400 validation_failed EXACT; bad-creds 401; register 201-shape + accessToken (STUDENT, jti/uid); login 200 + accessToken; me/state 200; OPTIONS 204 ACAO = https://syllabai-hub-v2.vercel.app exactly; /actuator/health 200 UP; hub /api/health 200 coreConfigured. Route paths of record are under `/api/v1/*` (the deployment rewrites `/api/v1/(.*)` + `/actuator/health` -> the out/api/index lambda) — `/healthz`-root probes are NOT the app's paths.
+- Writes: 1 disclosed census-class probe learner `auth-fix-verify-1792677722@example.invalid` (register + me/state read only). No code delta; no DDL; zero LLM spend; vcp_ token inline/volatile only, never printed/committed.
+- Residuals: (1) the ssoProtection enabler — operator to review dashboard members/settings; (2) `dpl_iYoT7Hrs` unpromoted — lanes may re-promote through their own gates; (3) carrier has NO git link (deploys are lane-driven API acts by design — 5 post-09:54Z commits with zero carrier deploys is NORMAL, not a fault); (4) PAT rotation overdue (agrees with wave-16 residuals) — rotate all four chat-transited secrets after the 4MA1 drain completes.
+- Receipt: .syllabai/receipts/OPS-AUTH-FIX/receipt-2026-10-22-sso-strip-realias.json
+---
+Task ID: T-MIG-134 (band 134e — the physics books APPLY leg of record)
+Agent: Super Z (books vector arm continuation lane; operator traces 1a163d4ac43d8429 write-order + 1a163dfd62419a29 execution)
+Task: Apply the physics 4PH1 package of record to prod (the COW-proof-first 093/134c law) after the operator's PR #242 merge word and pooled-URI re-stage.
+
+Work Log:
+- PR syllabai-v2#242 merged of record (squash 139266e0; head pin d83e4bc verified; hub+verify green) — the 20-shaped grammar is on main before this apply.
+- Package re-fetched after a fresh sandbox rollback: release books-intake-physics-2026-10-21 asset sha256 a2100fe6… RE-VERIFIED MATCH; source PDF re-fetched @ de4d8da, sha256 9b0783d9… + 30,915,167 B RE-VERIFIED MATCH.
+- Dry re-run (books-ingest --mode dry, bun 1.3.14, apps/api workspace): documentId d9b72a0a-23fb-5938-a0a7-a7494e7ebf9e EXACT; spine 234/8/30/195 EXACT; 736→701 included; 549 chunks / 424 overlaid; joins 117 (49v/25n/43f) / review 68 — byte-equivalent to the band's dry receipt of record (dry_run_134e_run002_sz.json this lane).
+- COW-proof: code-read of record — ingestCanonicalDocument is INSERT-only + checksum dedupe; the driver's only UPDATE is the spec_codes overlay self-scoped to the new document_row_id; pre-apply census pinned (documents 1354 / chunks 13,765 / book_blocks 177 / book_chapters 29-all-chemistry / glossary 112; physics docid absent).
+- APPLY: ONE transaction via createSql (Neon WS client, pooled URI of record) — COMMITTED 2026-10-22T13:56:53.974Z. The sandbox 10-min kill landed in the post-commit window; the in-process postverify/receipt were lost and REBUILT read-only (postverify_134e_run001.json): documents 1 / chunks 549 / chunksWithCodes 424 / bookChapters 28 / joinRefs 117 / ftsSanity('acceleration') 53 / embed law embed_rev=2 × 549 NULL-vectors / chemistry 29/177/823 UNTOUCHED. Receipt of record: band-134e-books-apply-run-001-sz.json (reconstruction disclosed inside).
+- NOT done here: embeddings (zero-API-keys law — 133d CI-egress backfill, physics-row-parameterized runner still owed), validation flip, archive/viewer leg. Lingering 'idle in transaction' session observed post-apply (pid 8189, knowledge_edges read, postgres.js) — ANOTHER lane's live session, deliberately untouched.
+
+Stage Summary:
+- The physics 4PH1 book is IN PROD: document efc8b5c4-83b6-4ecf-98e2-9b44d2923636 (documentId d9b72a0a…), 549 serving chunks SUGGESTED, 28 chapters with the 117-ref join of record. Next gates: validation flip → 133d embed backfill (needs the physics-row-parameterized runner; operator keys staged CI-side) → archive/viewer leg.
+---
+---
+Task ID: T-TEACH-015 run-001 (grounding depth; session web-528c0352)
+Agent: zai-web lane (main agent, session web-528c0352-0cf7-4715-a187-50aec294b288)
+Task: The approved toolkit lane continues (010..014 all DONE of record) — deliver T-TEACH-015: coverage-aware SOW resume, weakness preselect, coach note-card passages.
+
+Work Log:
+- Precondition of record: migration 0008 re-verified LIVE on the Neon production branch (VERIFY_ONLY run at 13:45Z, GREEN — 13/13+3/3 cols, 17 constraints, 4 seeds, 0 rows) before implementation began.
+- PROD DATA CENSUS (read-only, operator DSN): 7,580 SPEC_POINT nodes (each under exactly one TOPIC via PART_OF); spec code prefixes prove the course join of record = curriculum_code FIRST token ('4MB1-S1-1A' quals AND '0500-2024-2026-S1.001' full-code trees both match split_part(code,'-',1)||'-'); teaching_coverage 0 rows (fresh feature); revision_note 112 rows, spec_point_codes join knowledge_nodes 182/182 (100%); book_chapters 29 rows with real LO text (249-1613 chars).
+- Contracts (packages/contracts/src/teaching-toolkit.ts): toolkitSowResumeSchema + toolkitCoverageGapSchema + toolkitPassageSchema + toolkitGroundingSchema (specPointsTaught/Total + sowResume? + gaps<=8 + passages<=12); context response gains grounding? (class-bound only — ad-hoc carries NONE; outage degrades to ABSENCE, logged never silent). Weakness->emphasis preselect is the DOCUMENTED HONEST GAP: the named source /teacher/tests/weakness-options 501s until T-MIG-034 ports analytics; the toolkit never fabricates weakness data.
+- Route (apps/api/src/routes/teaching-toolkit.ts): buildGrounding (3 read-only queries: spec universe by prefix, teaching_coverage rows for the class, revision notes joined via unnest(string_to_array(spec_point_codes,',')) with book-order limit 12) + specCodeCompare (natural sort: digit runs numeric, 1.2 < 1.10 pinned) + trimPassageBody (inputText 2000 cap, ellipsis disclosure); context() builds grounding for class-bound contexts with a curriculum prefix, both topic lanes carry it.
+- Hub: types mirror (ToolkitGroundingView family); CoachForm gains the note-card picker (passages/attachedTitle/onAttach/onDetach; textarea edit detaches the label — honest, not sticky); [tool]/client.tsx gains the SOW resume banner (coverage X of Y, next-up spec point, Plan-this-topic prefill, gap chips) prefilling the FREE-TOPIC lane (the resume topic is a spec-tree node, the picker lists chapters — different lanes, disclosed in-code) + coach passage wiring + class-switch reset.
+- Tests (apps/api/test/teachingtoolkit/routes.test.ts): groundingRoutes trio helper; 5 new pins (scrambled-fixture natural order + NOT_TAUGHT never clears + gaps syllabus order + passages rn-first; TAUGHT advances resume; fully-taught null-with-honest-counts; ad-hoc NO grounding; outage degrades 200-without-block); 4 existing class-context tests extended with the trio.
+- Gates: toolkit 29/29; FULL suite 2573 pass / 13 skip / 3 fail — the 3 T-MIG-135b bundle-gate failures PROVEN pre-existing (git stash re-run on the clean tree: same 3, unrelated wave-15 content lane); contracts + api typecheck green; hub tsc green.
+
+Stage Summary:
+- T-TEACH-015 DONE: the toolkit now grounds in where the class actually IS — SOW resumes at the first untaught spec point in true syllabus order, gaps are one click to plan, and the coach takes real corpus content (revision notes) as note cards. Remaining OPEN: T-TEACH-016 (exports; SSE deferred by operator order). Credential law standing: rotate the Neon owner password, revoke the GitHub PAT at lane end.
+
+---
+Task ID: T-TEACH-016 run-001 (exports; SSE deferred; session web-528c0352)
+Agent: zai-web lane (main agent, session web-528c0352-0cf7-4715-a187-50aec294b288)
+Task: T-TEACH-016 — browser-side exports (print-PDF, DOCX, CSV rubric) with SSE optional and DEFERRED by the operator's standing order.
+
+Work Log:
+- exports.tsx (IN-FENCE components/teaching-toolkit/**): ExportBar with Print/PDF (window.print over an embedded @media print stylesheet that isolates [data-print-root] and hides the export bar itself), Word .docx (docx@9.5.1 Packer.toBlob client-side — the ZNotes parity path, zero server rendering so the forbidden fence holds), CSV rubric levels (RFC-quoted escaping, BOM for Excel), JSON (absorbed the 014 lone button).
+- Per-tool DOCX builders mapped to the T-TEACH-010 output contracts verbatim: lesson-plan (overview/objectives/starter/mains with per-activity differentiation/plenary + follow-up + indicators/reflection/SEN/links/assessment/notes-union), rubric (metadata meta line + overview + criteria x 4-level TABLE with score-description-feedback cells + moderation), sow (objectives + per-lesson blocks with activities/assessment/differentiation/scaffolding/reflection/links/stretch), coach (snake_case sections) — AI-draft footer on every document.
+- OUT-OF-FENCE-FLAGGED (T-MIG-117 mount-line precedent, disclosed): apps/hub/package.json + bun.lock gained exactly one dependency line, docx 9.5.1 (pure-JS client-side packer; JSZip not needed).
+- [tool]/client.tsx: the document section carries data-print-root (the print plane); the export row renders under the document header.
+- Runtime smoke (scripts/tteach016_exports_smoke.ts, sandbox scripts lane): 4/4 tools produce real ZIP blobs (PK magic, 8.0-8.6 KB) against law-satisfying fixtures incl. escaped commas/quotes/newlines; CSV parses to 5 records with the RFC escaping intact (the first RED was a smoke-harness bug — raw newline inside a quoted cell is legal CSV; the parser check replaced the naive split). SMOKE GREEN.
+- Gates: hub tsc green; toolkit suite 29/29; api plane untouched by this card.
+
+Stage Summary:
+- T-TEACH-016 exports DONE of record: teachers can print/PDF, hand in a Word file, drop rubric levels into a gradebook, or keep the raw JSON. The T-TEACH band is now COMPLETE (010-016; SSE is the operator-deferred tail of 016). Credential law standing: rotate the Neon owner password, revoke the GitHub PAT at lane end.
+
+---
+Task ID: HUB-NORM-F52-R0
+Agent: main agent (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, operator trace 1a1640fab65caa31)
+Task: Operator order "F52 hub normalization lane" — land the F52 italic-Delta normalization hub-side (the 5 served U+01FB glyphs -> U+0394 on the 2020-01 R slices), re-stamp the pin to the consumed cut, close the HUB-SYNC-W16 filed open item.
+
+Work Log:
+- Scope of record (no-guess recon before firing): the HUB-SYNC-W16 receipt's open item names this lane verbatim; F52 = resources v0.13.1 (PR #48 merge 4f2eb1a2, corpus-wide U+01FB -> U+0394 on the 2020-01 R slices, x5 per the F52 census; the first codepoint guess U+01DF was no-op-disproved corpus-side before landing).
+- Consumed cut adjudication: 4f2eb1a2, deliberately NOT the current resources tip 37bf191f — the R-VARIANT spec-label waves (PR #50 @ 9f1b9d29, 1059/1059 parts resolved) landed after F52 and are a different wave class (count-bearing; their own future hub-sync lane). The exporter script is byte-identical between 329fe1f4 and 4f2eb1a2 (verified); F52's content diff is exactly the 4 corpus files of the two 2020-01 R slices + bookkeeping.
+- Served census pre-verified against v2 origin/main: U+01FB x5 (1cr-2020-01 6-c-i x2; 2cr-2020-01 6-b-iv x1 + 6-c x2), zero elsewhere; the pilot questions.json/manifest.json were byte-unchanged by the 9f299325..fd3693e9 drift (sha-verified).
+- Staged 54 topic copies from the cut's own bytes (git show main@4f2eb1a2:...) into the lane tmp; bundle of record extracted from v2 origin/main fd3693e9 via git show; shared checkouts untouched throughout (lane worktrees only).
+- Exporter first run fail-closed as designed (no --expected-deltas): G-E5/G-E3/G-E2 green, then G-E1 printed the fresh changed census — EXACTLY the 3 artifact-bearing part ids (new=0 gone=0) — eyeballed against the served census before writing the disclosure file; gated re-run ALL GREEN: G-E5 54/54 @ main@4f2eb1a2; G-E3 54 slices (4860 marks); G-E2; G-E1 3 deltas == census; G-E1b identity byte-equal on all 54 official sets; G-E4 SME prefix byte-identical (2605414 bytes).
+- Normalization identity proof of record: the staged output equals the bundle of record with the 5 chars replaced (asserted on the whole serialized bundle) — this wave changes ONLY the 5 delta glyphs; U+01FB 5 -> 0, U+0394 352 -> 357; counts unchanged (82/1001/4011/8568, 4161 markPoints, 368 crops, 8 stubs).
+- Landing: questions.json staged output verbatim; manifest importSource.ref -> main@4f2eb1a2ee5561438b68d503cda82809ae6afe62 (exporter-stamped, G-E5-proven) + note bumped to the F52-normalization text in the same reviewed change (F44/F51 law) + counts recomputed-and-asserted unchanged + countsProvenance F52 clause + adr037OfficialAdds asserted unchanged (54/477/2607/4860). Manifest round-trip byte-stability asserted pre/post.
+- v2 gates: bun install --frozen-lockfile + full prebuild trio (verify_corpus_23a / verify_flashcard_sync_courses / validate_cie_bundles) + build:hub — ALL GREEN on the lane tree before push.
+- Transit: last recorded 32 (HUB-SYNC-W16); this lane's v2 push recorded as 33; disclosed: 5 additional origin pushes observed since with no transit rows (4583daea T-MIG-134, d35dcae8 T-TEACH-015, b3d6eae3 T-TEACH-016, c5586472 T-BOOK-034 re-bake, fd3693e9 PR #302 merge). PAT rotation CRITICAL overdue stands.
+
+Stage Summary:
+- F52 hub normalization LANDED of record: the pilot bundle's served text is glyph-honest (U+01FB absent corpus-wide), pin = the consumed cut main@4f2eb1a2ee5561438b68d503cda82809ae6afe62, a 3-part disclosed census, counts byte-stable. HUB-SYNC-W16's filed open item CLOSED.
+- Residuals: R-VARIANT spec-label hub-sync lane (resources PR #50 consume — 1059 parts gain spec codes, count-bearing, own disclosure); CIE tranche2 consume + maths-b Stage-2 regen operator-keyed; PAT rotation overdue.
+
+---
+Task ID: T-SM-BRIDGE-WIDEN-42LIST-R0
+Agent: Z.ai (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2)
+Task: Operator (a) ruled 4MB1 needs no Smart Mark work now (bank was sourced from past papers by another agent), (b) asked for the enumerated list of the 42 registry rows whose question banks were never imported.
+
+Work Log:
+- Re-ran bridge_widen_plan.py fresh (registry @ d878217; DB read-only): registry 94 rows, already-eligible 25, zero-bank-refs 42, low-coverage 4, wave3 22, flip-candidate 1 (cie-igcse-accounting-21 held on the 0452 duplicate-code tie-break).
+- Enumerated the 42 for the operator (39 Edexcel + 3 CIE); CSV delivered operator-side.
+- Recorded operator decision: 4MB1 needs no further Smart Mark work (bank exists via past-paper intake); no revert of its widen-lane flip.
+
+Stage Summary:
+- The 42 = registry rows with zero sme-eq questions; remedy for 39 Edexcel rows = bundle ingest; 2 CIE accounting rows need a CIE corpus import; Pure-2 stays the honest skeleton. Read-only census; no writes.
+
+---
+Task ID: T-SM-EDX-INGEST-R0
+Agent: Z.ai (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2, trace 1a163bc5c7ebebf5)
+Task: Operator order "kick off an Edexcel bundle ingest for a priority subset (e.g. the linear IGCSE sciences 4BI1/4PH1/4SD0 first)".
+
+Work Log:
+- Sandbox rollback #4 at lane start (deep pre-widen restore); nothing of record affected; creds re-supplied by operator; DSN verified by DATA census gate (string fingerprint mismatch under 5 renderings, disclosed — bank counts matched the of-record exactly; foreign deltas noted: validated schemes +11, ALL-scope kappa passed evals 1→11).
+- Seeds: igcse-biology-19 APPLIED (subject 8b2c0ac9, root ed25a7be, cv 4BI1-2017, 204 nodes/203 edges/176 specPoints); igcse-physics-19 seed SKIPPED BY LAW (existing 4PH1 tree provenance src@75755855 vs bundle pin src@08447ba9 — seeder refuses cross-provenance re-seed; existing tree left untouched and PROVEN to serve: ingest resolved all spec codes fail-closed).
+- SD0 STRAND DEFECT found before apply: the three 4SD0 bundles derive colliding node codes (bio T1 vs chem T1 both → 4SD0-S1; spec codes collide: 4SD0-1.1 bio vs chem). CIE 0973 is the proven pattern (strand-lettered codes, 782 nodes, zero collisions). The lane's biology SD0 seed (applied 14:03:43Z) was surgically UNDONE (161 nodes/160 edge endpoints/1 subject/1 cv, provenance-scoped, 8 in-tx abort assertions, zero questions/learner/teacher data). All three SD0 rows PARKED pending a strand-coded bundle re-export.
+- Ingest (DISCLOSED atomicity deviation: sandbox kills tool calls at ~10 min and reaps background children — verified twice; slice runner apps/api/scripts/slice-ingest-bundle-questions.ts runs the same shim + frozen service + flattenTx seam with ONE TX PER QUESTION-SET, resume-ledgered, per-slice dry-run proof GREEN first): igcse-biology-19 21/21 sets (322 refs/322 VALIDATED/858 spec joins; raw 324 → 2 anchor-law exclusions named); igcse-physics-19 24/24 sets (489/489, zero exclusions). Bank 22,906→23,717 (+811 exact); STRUCTURED 14,708→15,519.
+- Flips: coreBridge:true on igcse-biology-19 (+curriculumCode 4BI1-2017 fill-where-served) and igcse-physics-19 (cv already of record) — coreBridge law of record now 26 rows; validate_cie_bundles.ts global pin advanced 24→26; prebuild 393 PASS/0 FAIL; full local hub build GREEN 1m47s.
+- Rebase over parallel HUB-SYNC-W17 (origin 322b32f→e589a43, PR #301) — no overlap on touched files; worklog union-resolved.
+- Receipt: .syllabai/receipts/T-SM-EDX-INGEST/ingest-r0.json (full preflight, deviations, censuses, SD0 ruling, followup).
+
+Stage Summary:
+- Smart Mark surface widened to 27 courses pending hub build (bio-19 + physics-19 bank-backed and flipped; 811 new bridgable validated questions).
+- SD0 ×3 parked of record on an upstream bundle defect with the fix law named (strand-coded re-export mirroring CIE 0973) — the seeder's honest-red did its job.
+- Post-merge: hub auto-build; depth-1 probes with a fresh disclosed learner; negative control = SD0 row must stay not_pilot; PAT rotation CRITICAL overdue (also flagged by other lanes' transit rows).
+
+---
+Task ID: DC-4 run-001 (operator launch trace 1a1640aef2c7e389, "launch DC-4")
+Agent: r0 (Super Z, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)
+
+Work Log:
+- Spec of record byte-verified at recovery: SyllabAI-SmartChat-Mark-Design-Spec.docx sha256 0da8044a0667…287a EXACT (full sha from the DC-3 receipt; recovery trace 1a163f9f233e8531, post sandbox reset #7). §3.4 "Lens Cards as Navigation" is the law of record; §3.3 DC-3 merged today (751916cf).
+- Grounding first-hand: the 4 observed opener cards ALREADY ship on NoteCla (inline QUICK_ACTIONS, operator spec verbatim) + 2 chips on QuestionClaOverlay, opener-only predicates shipped — the missing law is the DATA-ROW shape (id, surface, template id, router target), pinned templates, and router hooks. Misconception-drilling / approach-scaffold pages do not exist; honest realisation = in-chat governed asks (the quiz-scaffold-precedent reading) + the why-marked tutor deep link (the ?q= boot seam, helpHref pattern).
+- Prereg: docs/DC4-LENS-CARDS-NAVIGATION-PLAN.md (committed WITH the implementation per the #216/#225/#229 pattern).
+- Mechanism (additive-only, hub-side): lib/lens-registry.ts (rows + closed 3-kind target vocabulary + pinned template bytes + deterministic href builders); components/cla/lens-grid.tsx (generic LensGrid + LensRouterCta, markup byte-identical to the shipped cards); note-cla.tsx renders from the registry, ask() records lensId, thread-scoped router CTA under lens-originated answers (never after a refusal); question-cla-overlay.tsx keeps its chip bytes with prompts moved to registry constants + NEW why-marked card ("Why was I marked this" → /tutor?course=&q= — DC-1 markContext through the tutor pipeline, since the CLA route plane is byte-frozen); question-player passes course.
+- Battery: lens pins 13/13; hub tsc exit 0; eslint (touched files) exit 0; root typecheck ×4 exit 0; full suite 2573 pass / 13 skip / 3 fail — the 3 = the PRE-EXISTING T-MIG-135b content-census class (clean-tree-proven by T-TEACH-015, identical census); build:hub full chain exit 0 (prebuild trio + next build); fence anchors diff-0 (routes/cla.ts @72644a96, services/cla/service.ts @efbbfd61); no prompt.ts / PROMPT_VERSION / contracts / db changes — identity stays tutor-grounded/v15.
+
+Stage Summary:
+- DC-4 is PREREGISTERED + IMPLEMENTED + PINNED on branch dc4-lens-cards (base f97690cabc23); the PR rides the five-gate discipline and STOPS at the merge gate — the operator's merge word is the product sign-off. Acceptance: (a) grammar = pinned template bytes + governed pipelines (R-LLM doctrine); (b) router = closed vocabulary + deterministic hrefs + thread-scoped CTA + deep-link builder pins; (c) opener-only preserved structurally. Residuals disclosed in plan §5 (course-index route targets; mark-context fail-open; in-chat drilling/approach).
+
+---
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-22T17:00Z)
+Agent: R0-auto (merge desk)
+Task: PR #306 merge (wave-19 official-papers UX — stems restored, part ids de-collided, MS junk off)
+
+Work Log:
+- 5 open PRs on entry: #285/#296/#300/#303/#306. Main tip on entry 30d8d21 (lane self-merged #304 at 00:21+08) CI 2/2 success — main green, no escalation trigger.
+- gate (b) head CI: #285 1c2dd54 verify+hub FAILURE (stale ~26h) skip; #296 bd2c0b1 hub FAILURE skip; #300 7e242f8 verify FAILURE skip; #303 cce0230 verify FAILURE skip — all four head SHAs unchanged, no new runs; #306 b208009 verify+hub 2/2 success.
+- gates (c)(d) on #306: mergeable=true mergeable_state=clean (base=30d8d21=current tip, no intake needed); 0 reviews, 0 comments — no REQUEST_CHANGES/HOLD/BLOCKING/do-not-merge.
+- gate (e) diff boundary: 1 file only, apps/hub/content/igcse-chemistry-19/questions.json (+3867/-3867); no *.java, no core/hub-repo content, no Neon/prod surfaces. Patch omitted by API (large diff), so validated the head blob directly: JSON valid, list of 82 items preserved base→head, +71KB consistent with stem restoration; suspect-string scan clean.
+- merged: PUT /pulls/306/merge (merge_method=merge) -> merge sha 9d71fa1; new main tip CI verify+hub 2/2 success (bounded re-check, green on first poll).
+- skips did NOT re-run merge-intake: all four are plain head-red (gate b), not collisions; lane needs new heads/rebase to re-trigger CI.
+
+Stage Summary:
+- main @ 9d71fa1 green; wave-19 official-papers UX of record (igcse-chemistry-19 stems restored, part ids de-collided).
+- Open red backlog unchanged: #285 (verify+hub, ~26h stale), #296 (hub), #300 (verify), #303 (verify) — authors must push/rebase for fresh CI.
+- Standing escalations unchanged: PAT rotation overdue (CRITICAL, operator ledger); neon-replay advisory red / ESC-2 untriaged. No new escalations this sweep.
+Task ID: T-TEACH-014 r1 (tool deep-link crash fix; session web-528c0352)
+Agent: main agent (Z.ai CLI session web-528c0352-0cf7-4715-a187-50aec294b288)
+Task: Operator hit the route error boundary ("something broke", reference
+2062581832) on the live hub after signing in; reproduce, root-cause, fix.
+
+Work Log:
+- Reproduced the EXACT digest 2062581832 by driving the live hub
+  (syllabai-hub-v2.vercel.app) as the operator's teacher account: the crash
+  fires on EVERY /teacher/toolkit/[tool] deep link (?class=<uuid>), never on
+  the toolkit list page. Local dev (next dev, deployed apis as backends)
+  surfaced the unminified error:
+  "Attempted to call toolkitToolMeta() from the server but toolkitToolMeta is
+  on the client" at [tool]/page.tsx:32 (and its generateMetadata:14).
+  presets.ts carries "use client"; a Server Component calling a client-module
+  function throws at request time (Minified React #441 in prod). Prefetches
+  200'd because Next serves partial RSC payloads without metadata — only the
+  real navigation executed generateMetadata.
+- Fix: extracted the tool metadata (ToolkitToolId/ToolkitToolMeta/
+  TOOLKIT_TOOLS/toolkitToolMeta) verbatim into server-safe
+  components/teaching-toolkit/tool-meta.ts (no directive, pure data);
+  presets.ts re-exports it (client imports unchanged); [tool]/page.tsx now
+  imports from tool-meta. Additive-only, zero behavior change client-side.
+- Gates: hub tsc 0; toolkit suites 55/55 (contracts+api); eslint 0 on the
+  three touched files; local dev re-walk: all four tool pages render (form +
+  graceful inline context alert), zero boundary hits.
+- SECOND, UNFIXED-BY-ME layer: the DEPLOYED v2 api (syllabai-v2.vercel.app)
+  404s /api/v1/teacher/toolkit/{context,resources,generate} — the api deploy
+  is operator-gated and predates T-TEACH-012 (main carries the routes; the
+  hub auto-bakes on push and is NEWER than the api). Until the api redeploys,
+  the tool pages will show the inline "Context failed to load" alert — by
+  design — instead of crashing. Deploying the api is the operator lever
+  (serialized, per CUTOVER_RUNBOOK).
+- Also observed: teacher class creation on the Overview is browser-local by
+  design ("Saved to this browser"); the toolkit picker lists the LIVE core
+  roster only — the operator needs a core class (Classes page create, POST
+  /api/v1/teacher/classes) for the toolkit; created "9B Biology"
+  (cie-igcse-biology-23) live for them (201) to make the toolkit pickable.
+
+Stage Summary:
+- Deep-link crash root-caused (client-module function called server-side) and
+  fixed at the code level; hub auto-deploy will carry it. Toolkit end-to-end
+  still needs the operator-gated api redeploy (T-TEACH-012 routes 404 on the
+  stale deployment). Post-incident hygiene: the operator's password travels
+  in chat — rotate at lane end (standing law).
+
+---
+Task ID: T-RULE-T2-APPLY-2 run-002 (operator trace 1a164946b43eed19 "merge PR #49 and proceed")
+Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: merge SyllabAI/syllabai-resources PR #49 (the chem25 spec-links sidecar capture staged by run-001) and proceed — closing the durability residual of T-RULE-T2-APPLY-1 (v2 a9bd2488)
+
+Work Log:
+- PR #49 identified first-hand: T-RULE-T2-APPLY-2 "stage the 23 tranche-2 operator sid-anchors on the chem25 sidecar of record", head t-rule-t2-sidecar-capture/r0 @ 5b85ea3 (branched @ 4f2eb1a), 3 files +397/-0, created 2026-10-22T13:37:35Z; directive of the stage = this lane's operator order (trace 1a163b0eb57bd5b1).
+- PRE-MERGE OF-RECORD VERIFICATION (first-hand, scripts/t2sidecar_verify_pr49.py, ALL GREEN): 23/23 anchor rows match — 6 unconditional set-equal to B02 verbatim @ bd2c0b1 (evidence quotes/ranges) + 17 conditional ORDER-SENSITIVE to download/tranche2_conditional_resolution_r0.json incl. exact specPointIds (YpKq order note: receipt of record orders [24.2.3,24.2.1,24.2.4] — earlier session shorthand reordered; sidecar+registry faithful to the receipt); 46 distinct codes ALL present as SPEC_POINT nodes in the 484-node spine @ a9bd2488; 23/23 byte-consistent vs v2 spcptToOfficial (lineage operator_ruling_tranche2) @ a9bd2488; holds 9Dxx/pYmR + split Cdtk correctly absent; diff additive-only (manifest fleet row operator_sid_anchors + courses row + machine receipt graph/reports/tranche2-r2/sidecar-capture-run-001-r0.json).
+- CI TRIAGE (official-export-gates red on 5b85ea3 AND after update-branch onto 1f2aab4 @ e936182): G-E1 delta census != --expected-deltas. PROVEN NOT CAUSED BY THE PR: exporter of record (official_examq_export_hub.py) source-verified to read ONLY Official-ExamQuestion/igcse-chemistry-19/*, the v2 igcse-19 hub bundle, the disclosure file + STEM-RESTORE.json — spec-links/* invisible to every scripts-tests.yml step; local census repro (scripts/t2sidecar_census_repro.sh, no --expected-deltas = the only census-printing mode) on the PR branch tree AND on main 1f2aab4 WITHOUT the PR files produced BYTE-IDENTICAL 5,214-delta listings — caused by the v2 wave-19 bundle move (v2 PR #306 merged 17:02:37Z, igcse-19 bundle 71->82 sets) post-dating the wave-18 zero-census disclosure (15:11Z).
+- RESOLUTION OF THE TRIAGE: PR #57 (wave-19 exporter v5 + disclosure 2026-10-22-wave19-ux-stems.json + STEM-RESTORE.json ledger) merged to resources main @ 3a1e99b at 17:20:41Z, 11 min before this merge; post-merge local gate-mode repro on merged main @ 3838a26 vs the current v2 bundle (0cefc43): G-E1 ok "regeneration is a byte-level no-op" + G-E1b/G-E2/G-E3/G-E4 ok, exit 0 — the gate debt was retired by the wave-19 lane concurrently, and this PR's files remain invisible to it.
+- MERGE (operator order): race-guard clear (head e936182, state open); merge-commit per resources convention ("Merge PR #NN: ...") via API with full of-record body (verification battery + triage + timeline) -> merge 3838a264 @ 2026-10-22T17:32:09Z (parents 3a1e99b + e936182), PR #49 state merged=True.
+- POST-MERGE VERIFICATION: sidecar sha256 on main = 7d23b94793974852f8e74c73db6a3b48bff82036109d2e1ac6e4c06c52b16188 == the stage receipt's sidecarSha256After pin (BYTE-EXACT); 23 anchors rows + counts {sids:23, distinctCodes:46, unconditional:6, conditionalResolved:17}; manifest fleet row + courses row present; CI on main tip: official-export-gates SUCCESS + corpus-gates SUCCESS. DISCLOSED: the sync (Google Drive mirror) job hung in_progress >25 min on both e936182 and 3838a26 (non-blocking, was success/cancelled on prior runs) — minor ops anomaly, no data-plane effect.
+
+Stage Summary:
+- T-RULE-T2-APPLY-2 DONE of record: the durability loop is CLOSED — the 23 tranche-2 operator sid-anchors (46 codes) now live in BOTH planes: v2 registry @ a9bd2488 (consume engine) and resources chem25 spec-links sidecar @ resources main 3838a26 (full-rebuild substrate), byte-pinned vs each other via the stage receipt. Consume-engine law adoption still pending: syllabai-v2 branch t-rule-t2-consume-anchors/r0 awaits the consume lane's next pin advance (per the stage receipt's disclosure). Residual menu unchanged: 10 mis-tag re-points (T-RULE-T2-COND-1 flags), holds 9Dxx/pYmR + split Cdtk evidence, tranche-3 (1,203 sid-less), the 7 V8-corrected sids (retraction operator-gated, relationToV8 per record), PAT rotation, hung resources sync job. LANE: IDLE.
+Task ID: trace 1a164940c29a2b85 (MB4-MS-RATTACH run-001 — union-resolve)
+Agent: r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- UNION-RESOLVE of record: first push rejected — origin advanced 0a8c8c81 -> fc38e127 (UIUX-REPAIR-1: same file igcse-maths-b-16). Local commit abandoned; reset to fc38e127; the sibling filled ZERO of the 117 targets (02R re-sync touched already-solved parts only) so the 60-target plan applied intact on their tree.
+- SIBLING COMPLIANCE derived from their own diff corpus: en-dash law = 653 convert / 224 keep with class behavior (binary/prose -> '-'; negative-number + tight-binding keep); applied to my candidates: 9/13 converted, 4 KEEP-class retained (2x '–2' negatives, 'y–axis', '–-3'). Their 781 meta-line strips verified to never touch solutionMd (zero pure-removal fields).
+- VERIFICATION on the union tree: semantic diff vs HEAD = EXACTLY 60 solutionMd additions, ZERO other changes; prebuild gates ALL GREEN (corpus + flashcard + cie).
+- Receipt amended with union_resolve_of_record.
+
+Stage Summary:
+- MB4-MS-RATTACH run-001 complete on the union tree: 60/117 recovered (41 TIER-A + 19 TIER-B per the sibling-tree tier census), 57 honest gaps of record, sibling normalization complied with. Push pending PAT one-shot.
+
+---
+Task ID: trace 1a164940c29a2b85 (MB4-MS-RATTACH run-001)
+Agent: r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Operator order: fire the maths-b MS re-parse lane (MCQ-AUDIT run-001 residual: 117 igcse-maths-b-16 structured parts with no solutionMd -> no answer input rendered).
+- RECON: no PDF re-parse needed — the original parse intermediates ARE committed upstream (SyllabAI/syllabai-pastpapers .../4mb1/past-papers/{session}/{paper}/parsed/{ms.md,qp.md,questions.json}); 65/65 fetched 0-fail. Root cause isolated: the original import's section<->part attribution failed where ms.md section paths are merged/mis-ordered/duplicated.
+- FORMATTER RECONSTRUCTED OF RECORD by byte-identity round-trip against all 2,251 existing hub solutions: head transform, '; '-join law for consecutive same-kind non-Note bullets, EMPIRICAL glyph fate table (43 codes map incl. shifted greek set F06C->mu/F06D->nu/F067->eta/F061->maps-to/F084->leq/F085->geq/F0B7->middot; other PUA strip; ornament-only lines drop), provenance banner inherited verbatim from solved siblings. CORE GATE 1,972/2,019 = 97.67% byte-identity pre-union; 47 residual diffs inspected = pre-existing hub-side attribution artifacts.
+- APPLY (fail-closed two-tier on the UNION tree fc38e127): 60/117 solutionMd attached (41 TIER-A + 19 TIER-B); 57 left honest BY DESIGN (ms section count != hub part count — no provable attribution; forcing risks mis-attributed answers; + 2 unpaired-question targets).
+- UNION-RESOLVE: first push rejected (origin advanced 0a8c8c81 -> fc38e127 UIUX-REPAIR-1, same file); local commit abandoned; reset to fc38e127; sibling filled ZERO of the 117 targets; SIBLING COMPLIANCE: en-dash law derived from their 386-field corpus (653/224 class behavior) — 9/13 candidate occurrences converted, 4 KEEP-class kept; their meta-strip lane verified to never touch solutionMd.
+- VERIFICATION on union tree: semantic diff vs HEAD = EXACTLY 60 solutionMd additions, ZERO other changes; no-solution 117->57; prebuild gates ALL GREEN.
+- Receipt .syllabai/receipts/MB4-MS-RATTACH/run-001-solutions-rattach-r0.json; scripts persisted under sandbox scripts/ (pp_fetch_all_4mb1.py, mb4_transform.py, mb4_learn_glyphs.py, mb4_repair_apply.py).
+
+Stage Summary:
+- 60/117 recovered with provable fidelity; 57 honest gaps documented of-record (fail-closed). Durable reconstruction artifacts for any future past-paper re-import. Register: PAT rotation (overdue), multi-select player lane (3 geography), maths-b 57-residual optional deep lane.
+
+---
+Task ID: DC-7 run-001 (operator launch trace 1a1649ff76417ae9, "Launch")
+Agent: r0 (Super Z, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)
+
+Work Log:
+- Sandbox reset #8 at lane open (clone + recovered-spec staging wiped; local operator worklog rolled back to the T-C83 snapshot again): re-cloned (main tip 568f6024 — R0-AUTO had merged wave-19 PR #306 post-DC-4; fence anchors still 3c2ceb01/db4573c7), re-located the spec of record via the DC-3 receipt's provenance row (github.com/nawaf-al-hussain/FileUpload/tree/main/SME-Research), re-downloaded + re-verified sha256 0da8044a0667…287a EXACT, re-staged operator-side.
+- Roadmap adjudication first-hand: Table 3's cell order is Phase | Item | Surface | Gate (header precedes items) → DC-7's phase cell reads P1 (consistent with the exec summary + the worklog's P1 order DC-3 → DC-4 → DC-7). An earlier misalignment read (phase column trailing) was corrected before launch; disclosed in the prereg header.
+- DC-7 law of record (§3.7 "Progress Attribution"): every progress-bearing act publishes an evidence event; every display is a projection of those events — never a local counter; three display levels × SEPARATE notes|questions dimensions; the plan subscribes with per-task-type thresholds (Revise flips on the note check; Practise at five marked parts, the proposed default); acceptance (a) event pins (b) threshold pin (c) consistency pin.
+- Grounding first-hand at 568f6024: the event facts exist (ai_mark_events per marked part, attempts with the once-only evidence claim, revision_note_viewed unique per user+note); the identity bridge is knowledge_nodes (uuid↔code↔node_type) + PART_OF edges (child→parent); note→node rides spec_point_codes (comma-parse law); questions filter = active; the hub's rings self-disclose "browser-local SIMULATED progress overlay only" — exactly the law's target; the variant system IS the observed two trees; no plan tables (builder = P2 row).
+- Prereg: docs/DC7-PROGRESS-ATTRIBUTION-PLAN.md (committed WITH the implementation per the #216/#225/#229/#232/DC-4 pattern).
+- Mechanism (additive-only): services/learner/progress-rollup.ts (buildProgressProjection + buildPlanProjection, PROGRESS_PLAN_THRESHOLD_PRACTISE=5, UTC day on the injected clock; pure read-time projection — NO migration, writes nothing); routes/learner/progress.ts (GET /progress + GET /plan-projection, the authz-shell posture verbatim) + one additive mount line in index.ts; hub lib/progress-server.ts (signed-in → server projection; signed-out/failure → the SIMULATED overlay fallback posture); progress-ring + topic-tree consume it (variant→dimension mapping: notes tree→notes, questions tree→questions); dashboard measured-fact today card (separate from the NBA card's recommendation law). The marked-part unit is the ai_mark_events ROW (a first-run distinct-question reading was corrected to the part counter — the spec's "five marked parts" / "across three parts" units).
+- Battery: api pins 11/11 + hub pins 5/5; hub tsc 0; eslint (touched) 0; root typecheck ×4 0; full suite 2587/13/0 (the T-MIG-135b standing red did NOT recur — reconciled by the W17/ingest waves, as first seen at the DC-4 merge); build:hub 0; fence anchors diff-0; contracts/db/prompt.ts = 0 files — identity stays tutor-grounded/v15. Environment note: the fresh re-clone carried no node_modules; bun install --frozen-lockfile (952 pkgs) before the battery — sandbox-side, not a tree change.
+- Receipt: .syllabai/receipts/DC7/dc7-progress-attribution-run-001-r0.json (full grounding, mechanism, battery, residuals).
+
+Stage Summary:
+- DC-7 (progress attribution) is PREREGISTERED + IMPLEMENTED + PINNED + PR'D on branch dc7-progress-attribution (base 568f6024); the lane STOPS at the merge gate — the operator's merge word is the product sign-off. Rings on the two trees now read the server projection of the persisted event rows for signed-in learners (the local counter retires to the signed-out demo posture), the plan projection carries the Revise/Practise threshold law the P2 builder will render, and the dashboard's today counts share the one projection. Residuals disclosed in the prereg §5 (plan page = P2 builder; flashcards dimension; signed-out overlay posture; per-note read marker; UTC day boundary).
+
+---
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-22T18:00Z)
+Agent: R0-auto (merge desk)
+Task: PR #307 merge (dc7-progress-attribution — the progress-attribution law, spec §3.7)
+
+Work Log:
+- 5 open PRs on entry: #285/#296/#300/#303 (heads unchanged, stale red runs) + #307 fedef8a (new 01:52+08). Main on entry cc5bfc3 (two lane pushes since last sweep: 0cefc43 T-TEACH-014 r1 hotfix, cc5bfc3) CI 2/2 success — green, no escalation.
+- gate (b): #285 verify+hub FAILURE, #296 hub FAILURE, #300 verify FAILURE, #303 verify FAILURE (all stale, SHAs unchanged) → skip; #307 verify+hub 2/2 success → candidate.
+- gates (c)(d): mergeable=true mergeable_state=clean (base=cc5bfc3=current tip, no intake); 0 reviews, 0 comments — no blocking signals.
+- gate (e): 13 files +1252/-5 — .syllabai receipt+worklog append (17 additions, 0 deletions, append-only ok), apps/api (index.ts route wiring, learner/progress.ts, progress-rollup.ts +280-line test), apps/hub (dashboard-client, progress-attribution-card, progress-ring, topic-tree, progress-server + test), docs/DC7-PROGRESS-ATTRIBUTION-PLAN.md. No *.java, no core/hub-repo content, no Neon/prod surfaces; suspect-string scan clean.
+- merged: PUT /pulls/307/merge (merge_method=merge) -> merge sha c3dcd96; new main tip CI verify+hub 2/2 success (green on first poll).
+
+Stage Summary:
+- main @ c3dcd96 green; dc7 progress-attribution law of record (api learner/progress route + rollup service, hub dashboard attribution card, topic-tree/progress-ring attribution hooks).
+- Red backlog unchanged: #285/#296/#300/#303 need author rebase/new head.
+- Standing escalations unchanged: PAT rotation overdue (CRITICAL, operator ledger); neon-replay advisory red / ESC-2 untriaged. No new escalations.
 ---
 Task ID: T-RULE-T2-APPLY-2 (v2 half)
 Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)

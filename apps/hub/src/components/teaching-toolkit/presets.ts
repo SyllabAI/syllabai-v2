@@ -10,46 +10,20 @@
  *
  * REMOVED vs the ZNotes originals: the subject / board / level pickers —
  * the picked class resolves those server-side (the operator directive).
+ *
+ * The tool METADATA (ToolkitToolId / ToolkitToolMeta / TOOLKIT_TOOLS /
+ * toolkitToolMeta) moved to ./tool-meta — a server-safe module with no
+ * "use client" — because [tool]/page.tsx (a Server Component) calls
+ * toolkitToolMeta() and calling into a client module from the server
+ * throws at request time (the 2026-10-22 deep-link crash, digest
+ * 2062581832). This file re-exports it so client imports are unchanged.
  */
 
-export type ToolkitToolId = "lesson-plan" | "rubric" | "sow" | "coach";
-
-export interface ToolkitToolMeta {
-  id: ToolkitToolId;
-  title: string;
-  subtitle: string;
-  color: string;
-}
-
-export const TOOLKIT_TOOLS: ToolkitToolMeta[] = [
-  {
-    id: "lesson-plan",
-    title: "Lesson Plan Generator",
-    subtitle: "Duration-driven plan with verbatim outcome groundings",
-    color: "#E25881",
-  },
-  {
-    id: "rubric",
-    title: "Rubric Developer",
-    subtitle: "Criterion × 4-level scale — scores computed from marks",
-    color: "#F89900",
-  },
-  {
-    id: "sow",
-    title: "Curriculum Mapper",
-    subtitle: "Multi-lesson scheme of work with differentiation",
-    color: "#26B3E8",
-  },
-  {
-    id: "coach",
-    title: "Learning Coach",
-    subtitle: "Clarify or challenge a passage for any audience",
-    color: "#49B081",
-  },
-];
-
-export const toolkitToolMeta = (id: string): ToolkitToolMeta | undefined =>
-  TOOLKIT_TOOLS.find((t) => t.id === id);
+export type {
+  ToolkitToolId,
+  ToolkitToolMeta,
+} from "./tool-meta";
+export { TOOLKIT_TOOLS, toolkitToolMeta } from "./tool-meta";
 
 // ── option lists (closed presets — the backend enum law mirrors these) ──────
 

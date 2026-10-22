@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ToolkitToolClient } from "./client";
-import { toolkitToolMeta } from "@/components/teaching-toolkit/presets";
+import { toolkitToolMeta } from "@/components/teaching-toolkit/tool-meta";
 
 export const dynamic = "force-dynamic";
 

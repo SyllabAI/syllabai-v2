@@ -1,0 +1,2058 @@
+{
+  "task": "T-MIG-133 band 133f (r7a) — multi-book ingestion driver (second-subject roll)",
+  "mode": "dry",
+  "driver": "apps/api/scripts/books-ingest.ts (band 133f; the 133b pilot runner stays frozen of record)",
+  "book": {
+    "documentId": "d9b72a0a-23fb-5938-a0a7-a7494e7ebf9e",
+    "title": "Edexcel International GCSE (9-1) Physics Student Book",
+    "author": "Brian Arnold, Penny Johnson, Steve Woolley",
+    "checksum": "9b0783d9fe99790a08255eb1f2ebb6eab5833c03ef8e36dd51b7643ac68a313a",
+    "pages": 308,
+    "course": "igcse-physics-19",
+    "subjectCode": "4PH1",
+    "subjectTitle": "Physics",
+    "qualification": "Pearson Edexcel International GCSE (9-1) Physics",
+    "parseRef": "resources@de4d8da reconstructed provenance of record",
+    "engine": "ibm-docling@v3"
+  },
+  "spine": {
+    "source": "apps/hub/content/igcse-physics-19/curriculum.json",
+    "law": "bundle-injected via bundle-spine.ts (the second-subject source of record; the 133b pinned-snapshot spine stays the chemistry pilot's)",
+    "census": {
+      "specCode": "4PH1",
+      "nodes": 234,
+      "topics": 8,
+      "subtopics": 30,
+      "specPoints": 195,
+      "byTier": {
+        "unspecified": 195
+      }
+    },
+    "expected": 195
+  },
+  "parse": {
+    "rows": 736,
+    "included": 701,
+    "excluded": {
+      "byType": {
+        "front_matter": 12,
+        "index": 4
+      },
+      "byGroup": {
+        "Front matter (contents, about this book, assessment overview)": 7,
+        "Unit 1 divider and chapter map": 2,
+        "Unit 2 divider and chapter map": 1,
+        "Unit 3 divider and chapter map": 2,
+        "Unit 4 divider and chapter map": 2,
+        "Unit 5 divider and chapter map": 1,
+        "Unit 6 divider and chapter map": 1,
+        "Unit 7 divider and chapter map": 2,
+        "Unit 8 divider and chapter map": 1
+      }
+    }
+  },
+  "toc": {
+    "units": [
+      {
+        "index": 1,
+        "title": "Forces and Motion",
+        "chapters": 5
+      },
+      {
+        "index": 2,
+        "title": "Electricity",
+        "chapters": 4
+      },
+      {
+        "index": 3,
+        "title": "Waves",
+        "chapters": 4
+      },
+      {
+        "index": 4,
+        "title": "Energy Resources and Energy Transfer",
+        "chapters": 4
+      },
+      {
+        "index": 5,
+        "title": "Solids, Liquids and Gases",
+        "chapters": 2
+      },
+      {
+        "index": 6,
+        "title": "Magnetism and Electromagnetism",
+        "chapters": 2
+      },
+      {
+        "index": 7,
+        "title": "Radioactivity and Particles",
+        "chapters": 4
+      },
+      {
+        "index": 8,
+        "title": "Astrophysics",
+        "chapters": 3
+      }
+    ],
+    "chapters": [
+      {
+        "key": "u1:c1",
+        "title": "Movement and position",
+        "pdfPages": [
+          13,
+          27
+        ],
+        "bookPages": [
+          3,
+          17
+        ],
+        "loChars": 4832,
+        "refs": [
+          {
+            "spineCode": "4PH1-1.4",
+            "officialCode": "1.4",
+            "officialId": "4PH1-1.4",
+            "tier": "3",
+            "score": 0.8421,
+            "lineage": "phys_v1_u1_c1_pdf013_0029#b3",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-1.5",
+            "officialCode": "1.5",
+            "officialId": "4PH1-1.5",
+            "tier": "3",
+            "score": 0.8571,
+            "lineage": "phys_v1_u1_c1_pdf013_0029#b5",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-1.7",
+            "officialCode": "1.7",
+            "officialId": "4PH1-1.7",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u1_c1_pdf013_0029#b2",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-1.9",
+            "officialCode": "1.9",
+            "officialId": "4PH1-1.9",
+            "tier": "3",
+            "score": 0.75,
+            "lineage": "phys_v1_u1_c1_pdf013_0029#b8",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 4,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Plot andexplain distance-time graphs",
+            "nearOfficialCode": "1.3",
+            "nearScore": 0.6666666666666666
+          },
+          {
+            "text": "Determine acceleration from thegradient of a velocitytime graph average speed= distance moved time taken",
+            "nearOfficialCode": "1.8",
+            "nearScore": 0.7
+          },
+          {
+            "text": "Know and use the relationship between acceleration, change in velocity and time taken: acceleration= PHYSICS ONLY",
+            "nearOfficialCode": "1.2P",
+            "nearScore": 0.9230769230769231
+          },
+          {
+            "text": "In later chaptersyou will meet the units for:",
+            "nearOfficialCode": "1.18",
+            "nearScore": 0.35
+          },
+          {
+            "text": "Use therelationship betweenfinal speed,initial speed, acceleration and distance moved: (final speed）²=（initial speed)²+(2xaccelerationx distance moved) v²=u²+（2xaxs） FORCES AND MOTION Sametimes you may see 'd” used as the symbol for distance travelled, but in this book ‘s' will be used to be consistent with the symbol used in A level maths and physics. MOVEMENT AND POSITION Speed Is a term that is often used in everyday life. Action films often feature high-speed chases, Speed is a cause of fatal accidents on the road. Sprinters aim for greater speed in competition with other athletes. Rockets must reach a high enough speed to put communications satellites in orbit around the Earth. This chapter will explain how speed is defined and measured and how distance-time graphs are used to show the movement of an object as time passes, We shall then look at changing speed - acceleration and deceleration. We shall use velocity-time graphs to find the acceleration of an object. We shall also find how far an object has travelled using its velocity-time graph. ‘You will find out about the difference between speed and velocity on page 6. AVERAGE SPEED A car travels 100 kilometres in 2 hours so the average speed of the car is 50 km/h. You can work this out by doing a simple calculation using the following definition of speed: distance moved, s @ speed, y= = oe . time taken, t 5 yro-= i The average speed of the car during the journey is the total distance travelled, divided by the time taken for the jourmey. If you look at the speedometer in a car you will see that the speed of the car changes from instant to instant as the accelerator or brake is used. The speedometer therefore shows the instantaneous speed of the car. UNITS OF SPEED Typically the distance moved is measured in metres and time taken in seconds, so the speed is in metres per second (m/s). Other units can be used for speed, such as kilometres per hour (km/h), or centimetres per second (cm/s). In physics the units we use are metric, but you can measure speed in miles per hour (mph). Many cars show speed in both mph and kilometres per hour (kph or km/h). Exam questions should be in metric units, so remember that m is the abbreviation for metres (and not miles). REARRANGING THE SPEED EQUATION A Figure 1.2 You can use the triangle method for rearranging equations like s = ¥ x f. If you are given information about speed and time taken, you will be expected to rearrange the speed equation to make the distance moved the subject: distance moved, 5 = average speed, v x time, t and to make the time taken the subject if you are given the distance moved and speed: time taken, t= Detanes moved, s average speed, ¥ REMINDER To use the triangle method to rearrange an equation, cover up the part of the triangle that you want to find. For axampla, in Figure 1.2, if you want to work out how tong if) it takes to move a distance (s) at a given speed (v), covering f in Figure 1.2 leaves S, or distance divided by speed. If an examination question asks you to write out the equation for calculating speed, distance or time, always give the actual equation (such ass =v xf). You may not get the mark if you just draw the tnangle.",
+            "nearOfficialCode": "1.4",
+            "nearScore": 0.8947368421052632
+          }
+        ]
+      },
+      {
+        "key": "u1:c2",
+        "title": "Forces and shape",
+        "pdfPages": [
+          28,
+          37
+        ],
+        "bookPages": [
+          18,
+          27
+        ],
+        "loChars": 1153,
+        "refs": [
+          {
+            "spineCode": "4PH1-1.11",
+            "officialCode": "1.11",
+            "officialId": "4PH1-1.11",
+            "tier": "3",
+            "score": 0.8667,
+            "lineage": "phys_v1_u1_c2_pdf028_0058#b1",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-1.13",
+            "officialCode": "1.13",
+            "officialId": "4PH1-1.13",
+            "tier": "3",
+            "score": 0.75,
+            "lineage": "phys_v1_u1_c2_pdf028_0058#b3",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-1.14",
+            "officialCode": "1.14",
+            "officialId": "4PH1-1.14",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u1_c2_pdf028_0058#b4",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-1.15",
+            "officialCode": "1.15",
+            "officialId": "4PH1-1.15",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u1_c2_pdf028_0058#b5",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-1.16",
+            "officialCode": "1.16",
+            "officialId": "4PH1-1.16",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u1_c2_pdf028_0058#b6",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-1.22",
+            "officialCode": "1.22",
+            "officialId": "4PH1-1.22",
+            "tier": "3",
+            "score": 0.875,
+            "lineage": "phys_v1_u1_c2_pdf028_0058#b7",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-1.23",
+            "officialCode": "1.23",
+            "officialId": "4PH1-1.23",
+            "tier": "3",
+            "score": 0.7647,
+            "lineage": "phys_v1_u1_c2_pdf028_0058#b8",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 7,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Identify different typesof force such asgravitational or electrostatic",
+            "nearOfficialCode": "1.12",
+            "nearScore": 0.6
+          },
+          {
+            "text": "Describe elasticbehaviour asthe ability ofa material to recoveritsoriginal shape after the forcescausing deformation have been removed Forcesare simplypushes andpullsof one thing on another.Sometimes we can see their effects quite clearly.InFigure 2.1,the tug ispulling the tanker; elasticrope;the force applied by the crusherpermanentlychanges the shape ofthecars.In thischapterwewill discussdifferent typesofforcesand lookat their effects on the way that objectsmove.",
+            "nearOfficialCode": "1.24",
+            "nearScore": 0.5454545454545454
+          }
+        ]
+      },
+      {
+        "key": "u1:c3",
+        "title": "Forces and movement",
+        "pdfPages": [
+          38,
+          49
+        ],
+        "bookPages": [
+          28,
+          39
+        ],
+        "loChars": 1605,
+        "refs": [
+          {
+            "spineCode": "4PH1-1.17",
+            "officialCode": "1.17",
+            "officialId": "4PH1-1.17",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u1_c3_pdf038_0079#b1",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-1.18",
+            "officialCode": "1.18",
+            "officialId": "4PH1-1.18",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u1_c3_pdf038_0079#b2",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-1.19",
+            "officialCode": "1.19",
+            "officialId": "4PH1-1.19",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u1_c3_pdf038_0079#b3",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-1.20",
+            "officialCode": "1.20",
+            "officialId": "4PH1-1.20",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u1_c3_pdf038_0079#b4",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-1.21",
+            "officialCode": "1.21",
+            "officialId": "4PH1-1.21",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u1_c3_pdf038_0079#b5",
+            "method": "normalized"
+          }
+        ],
+        "matchedBullets": 5,
+        "droppedCaptions": 0,
+        "review": []
+      },
+      {
+        "key": "u1:c4",
+        "title": "Momentum",
+        "pdfPages": [
+          50,
+          57
+        ],
+        "bookPages": [
+          40,
+          47
+        ],
+        "loChars": 349,
+        "refs": [
+          {
+            "spineCode": "4PH1-1.28P",
+            "officialCode": "1.28P",
+            "officialId": "4PH1-1.28P",
+            "tier": "3",
+            "score": 0.8095,
+            "lineage": "phys_v1_u1_c4_pdf050_0103#b2",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 1,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Know and use therelationshipbetween momentum, mass and velocity:",
+            "nearOfficialCode": "1.25P",
+            "nearScore": 0.625
+          },
+          {
+            "text": "Use the ideaofmomentum to explain safety features",
+            "nearOfficialCode": "1.26P",
+            "nearScore": 0.6666666666666666
+          },
+          {
+            "text": "Use the conservation ofmomentum tocalculate the mass,velocity or momentum ofobjects",
+            "nearOfficialCode": "1.27P",
+            "nearScore": 0.6428571428571429
+          }
+        ]
+      },
+      {
+        "key": "u1:c5",
+        "title": "The turning effect of forces (physics only)",
+        "pdfPages": [
+          58,
+          64
+        ],
+        "bookPages": [
+          48,
+          54
+        ],
+        "loChars": 1304,
+        "refs": [
+          {
+            "spineCode": "4PH1-1.30P",
+            "officialCode": "1.30P",
+            "officialId": "4PH1-1.30P",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u1_c5_pdf058_0122#b1",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-1.31P",
+            "officialCode": "1.31P",
+            "officialId": "4PH1-1.31P",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u1_c5_pdf058_0122#b3",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-1.32P",
+            "officialCode": "1.32P",
+            "officialId": "4PH1-1.32P",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u1_c5_pdf058_0122#b2",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-1.33P",
+            "officialCode": "1.33P",
+            "officialId": "4PH1-1.33P",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u1_c5_pdf058_0122#b4",
+            "method": "normalized"
+          }
+        ],
+        "matchedBullets": 4,
+        "droppedCaptions": 0,
+        "review": []
+      },
+      {
+        "key": "u2:c6",
+        "title": "Mains electricity",
+        "pdfPages": [
+          69,
+          76
+        ],
+        "bookPages": [
+          59,
+          66
+        ],
+        "loChars": 2427,
+        "refs": [
+          {
+            "spineCode": "4PH1-2.2",
+            "officialCode": "2.2",
+            "officialId": "4PH1-2.2",
+            "tier": "3",
+            "score": 0.7917,
+            "lineage": "phys_v1_u2_c6_pdf069_0141#b1",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-2.3",
+            "officialCode": "2.3",
+            "officialId": "4PH1-2.3",
+            "tier": "3",
+            "score": 0.7742,
+            "lineage": "phys_v1_u2_c6_pdf069_0141#b4",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-2.5",
+            "officialCode": "2.5",
+            "officialId": "4PH1-2.5",
+            "tier": "3",
+            "score": 0.95,
+            "lineage": "phys_v1_u2_c6_pdf069_0141#b6",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-2.6",
+            "officialCode": "2.6",
+            "officialId": "4PH1-2.6",
+            "tier": "3",
+            "score": 0.7826,
+            "lineage": "phys_v1_u2_c6_pdf069_0141#b3",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 4,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Know and use therelationship betweenpower.current and voltage: power=currentxvoltage P=lxV andapplytherelationship to the selection of appropriate fuses UNITS In this unit, you will need to use ampere (A) as the unit of current, coulomb (C) as the unit of charge, joule (J) as the unit of energy, ohm (Ω) as the unit of resistance, second (s) as the unit of time, volt (V) as the unit of voltage and watt (W) as the unit of power. When you turn on your computer, television and most other appliances in your home the electricity you use is almost certainly going to come from the mains supply. This electrical energy usually enters our homes through an underground cable. The cable is connected to an electricity meter, which measures the amount of electrical energy used. From here, the cable is connected to a consumer unit or a fuse box, which contains fuses or circuit breakers for the various circuits in your home. Fuses and circuit breakers are safety devices which shut off the electricity in a circuit if the current in them becomes too large (see page 61). Most of the wires that leave the fuse box are connected to ring main circuits that are hidden in the walls or floors around each room. Individual pieces of electrical equipment are connected to these circuits using plugs.",
+            "nearOfficialCode": "2.1",
+            "nearScore": 0.9444444444444444
+          }
+        ]
+      },
+      {
+        "key": "u2:c7",
+        "title": "Current and voltage in circuits",
+        "pdfPages": [
+          77,
+          84
+        ],
+        "bookPages": [
+          67,
+          74
+        ],
+        "loChars": 591,
+        "refs": [
+          {
+            "spineCode": "4PH1-2.7",
+            "officialCode": "2.7",
+            "officialId": "4PH1-2.7",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c7_pdf077_0159#b1",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-2.12",
+            "officialCode": "2.12",
+            "officialId": "4PH1-2.12",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c7_pdf077_0159#b2",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-2.13",
+            "officialCode": "2.13",
+            "officialId": "4PH1-2.13",
+            "tier": "3",
+            "score": 0.8125,
+            "lineage": "phys_v1_u2_c7_pdf077_0159#b5",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-2.16",
+            "officialCode": "2.16",
+            "officialId": "4PH1-2.16",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c7_pdf077_0159#b3",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-2.18",
+            "officialCode": "2.18",
+            "officialId": "4PH1-2.18",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c7_pdf077_0159#b4",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-2.20",
+            "officialCode": "2.20",
+            "officialId": "4PH1-2.20",
+            "tier": "3",
+            "score": 0.7778,
+            "lineage": "phys_v1_u2_c7_pdf077_0159#b6",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 6,
+        "droppedCaptions": 0,
+        "review": []
+      },
+      {
+        "key": "u2:c8",
+        "title": "Electrical resistance",
+        "pdfPages": [
+          85,
+          93
+        ],
+        "bookPages": [
+          75,
+          83
+        ],
+        "loChars": 451,
+        "refs": [
+          {
+            "spineCode": "4PH1-2.8",
+            "officialCode": "2.8",
+            "officialId": "4PH1-2.8",
+            "tier": "2",
+            "score": 0.9048,
+            "lineage": "phys_v1_u2_c8_pdf085_0182#b1",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-2.10",
+            "officialCode": "2.10",
+            "officialId": "4PH1-2.10",
+            "tier": "3",
+            "score": 0.8462,
+            "lineage": "phys_v1_u2_c8_pdf085_0182#b4",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-2.11",
+            "officialCode": "2.11",
+            "officialId": "4PH1-2.11",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c8_pdf085_0182#b2",
+            "method": "verbatim"
+          }
+        ],
+        "matchedBullets": 3,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Describe how current varies with voltagein wires investigate this experimentally",
+            "nearOfficialCode": "2.9",
+            "nearScore": 0.5
+          }
+        ]
+      },
+      {
+        "key": "u2:c9",
+        "title": "Electric charge (physics only)",
+        "pdfPages": [
+          94,
+          102
+        ],
+        "bookPages": [
+          84,
+          92
+        ],
+        "loChars": 694,
+        "refs": [
+          {
+            "spineCode": "4PH1-2.22P",
+            "officialCode": "2.22P",
+            "officialId": "4PH1-2.22P",
+            "tier": "2",
+            "score": 0.9231,
+            "lineage": "phys_v1_u2_c9_pdf094_0206#b1",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-2.23P",
+            "officialCode": "2.23P",
+            "officialId": "4PH1-2.23P",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c9_pdf094_0206#b3",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-2.24P",
+            "officialCode": "2.24P",
+            "officialId": "4PH1-2.24P",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c9_pdf094_0206#b5",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-2.25P",
+            "officialCode": "2.25P",
+            "officialId": "4PH1-2.25P",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c9_pdf094_0206#b6",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-2.26P",
+            "officialCode": "2.26P",
+            "officialId": "4PH1-2.26P",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c9_pdf094_0206#b2",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-2.27P",
+            "officialCode": "2.27P",
+            "officialId": "4PH1-2.27P",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c9_pdf094_0206#b4",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-2.28P",
+            "officialCode": "2.28P",
+            "officialId": "4PH1-2.28P",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u2_c9_pdf094_0206#b7",
+            "method": "verbatim"
+          }
+        ],
+        "matchedBullets": 7,
+        "droppedCaptions": 0,
+        "review": []
+      },
+      {
+        "key": "u3:c10",
+        "title": "Properties of waves",
+        "pdfPages": [
+          107,
+          115
+        ],
+        "bookPages": [
+          97,
+          105
+        ],
+        "loChars": 1076,
+        "refs": [
+          {
+            "spineCode": "4PH1-3.2",
+            "officialCode": "3.2",
+            "officialId": "4PH1-3.2",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c10_pdf107_0236#b1",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.3",
+            "officialCode": "3.3",
+            "officialId": "4PH1-3.3",
+            "tier": "3",
+            "score": 0.7692,
+            "lineage": "phys_v1_u3_c10_pdf107_0236#b2",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-3.4",
+            "officialCode": "3.4",
+            "officialId": "4PH1-3.4",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c10_pdf107_0236#b3",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.5",
+            "officialCode": "3.5",
+            "officialId": "4PH1-3.5",
+            "tier": "3",
+            "score": 0.95,
+            "lineage": "phys_v1_u3_c10_pdf107_0236#b4",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-3.7",
+            "officialCode": "3.7",
+            "officialId": "4PH1-3.7",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c10_pdf107_0236#b5",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.8",
+            "officialCode": "3.8",
+            "officialId": "4PH1-3.8",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c10_pdf107_0236#b7",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.9",
+            "officialCode": "3.9",
+            "officialId": "4PH1-3.9",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c10_pdf107_0236#b6",
+            "method": "verbatim"
+          }
+        ],
+        "matchedBullets": 7,
+        "droppedCaptions": 0,
+        "review": []
+      },
+      {
+        "key": "u3:c11",
+        "title": "The electromagnetic spectrum",
+        "pdfPages": [
+          116,
+          122
+        ],
+        "bookPages": [
+          106,
+          112
+        ],
+        "loChars": 1189,
+        "refs": [
+          {
+            "spineCode": "4PH1-3.10",
+            "officialCode": "3.10",
+            "officialId": "4PH1-3.10",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c11_pdf116_0257#b1",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.11",
+            "officialCode": "3.11",
+            "officialId": "4PH1-3.11",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c11_pdf116_0257#b2",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.12",
+            "officialCode": "3.12",
+            "officialId": "4PH1-3.12",
+            "tier": "3",
+            "score": 0.8545,
+            "lineage": "phys_v1_u3_c11_pdf116_0257#b3",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-3.13",
+            "officialCode": "3.13",
+            "officialId": "4PH1-3.13",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u3_c11_pdf116_0257#b4",
+            "method": "normalized"
+          }
+        ],
+        "matchedBullets": 4,
+        "droppedCaptions": 0,
+        "review": []
+      },
+      {
+        "key": "u3:c12",
+        "title": "Light waves",
+        "pdfPages": [
+          123,
+          132
+        ],
+        "bookPages": [
+          113,
+          122
+        ],
+        "loChars": 919,
+        "refs": [
+          {
+            "spineCode": "4PH1-3.14",
+            "officialCode": "3.14",
+            "officialId": "4PH1-3.14",
+            "tier": "3",
+            "score": 0.8,
+            "lineage": "phys_v1_u3_c12_pdf123_0270#b1",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-3.15",
+            "officialCode": "3.15",
+            "officialId": "4PH1-3.15",
+            "tier": "2",
+            "score": 0.9286,
+            "lineage": "phys_v1_u3_c12_pdf123_0270#b4",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-3.16",
+            "officialCode": "3.16",
+            "officialId": "4PH1-3.16",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c12_pdf123_0270#b5",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.19",
+            "officialCode": "3.19",
+            "officialId": "4PH1-3.19",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c12_pdf123_0270#b3",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.21",
+            "officialCode": "3.21",
+            "officialId": "4PH1-3.21",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c12_pdf123_0270#b10",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.22",
+            "officialCode": "3.22",
+            "officialId": "4PH1-3.22",
+            "tier": "3",
+            "score": 0.8,
+            "lineage": "phys_v1_u3_c12_pdf123_0270#b11",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 6,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Fioure 12.1 In the Hall of Mirrorsat the tairground thereflection of light can be very confusing!",
+            "nearOfficialCode": "3.15",
+            "nearScore": 0.42857142857142855
+          },
+          {
+            "text": "Practical:investigate the refraction of light,using rectangularblocks,semi-circularblocksand triangular prisms",
+            "nearOfficialCode": "3.17",
+            "nearScore": 0.6666666666666666
+          },
+          {
+            "text": "Knowand use therelationshipbetweenrefractiveindex, angle of incidence and angle of refraction: sini sinr.",
+            "nearOfficialCode": "3.15",
+            "nearScore": 0.5
+          },
+          {
+            "text": "Describe the roleof total internal reflection in prisms",
+            "nearOfficialCode": "3.20",
+            "nearScore": 0.5
+          }
+        ]
+      },
+      {
+        "key": "u3:c13",
+        "title": "Sound",
+        "pdfPages": [
+          133,
+          139
+        ],
+        "bookPages": [
+          123,
+          129
+        ],
+        "loChars": 1489,
+        "refs": [
+          {
+            "spineCode": "4PH1-3.23",
+            "officialCode": "3.23",
+            "officialId": "4PH1-3.23",
+            "tier": "3",
+            "score": 0.8462,
+            "lineage": "phys_v1_u3_c13_pdf133_0292#b1",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-3.24P",
+            "officialCode": "3.24P",
+            "officialId": "4PH1-3.24P",
+            "tier": "3",
+            "score": 0.8462,
+            "lineage": "phys_v1_u3_c13_pdf133_0292#b2",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-3.25P",
+            "officialCode": "3.25P",
+            "officialId": "4PH1-3.25P",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c13_pdf133_0292#b3",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.27P",
+            "officialCode": "3.27P",
+            "officialId": "4PH1-3.27P",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u3_c13_pdf133_0292#b6",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-3.28P",
+            "officialCode": "3.28P",
+            "officialId": "4PH1-3.28P",
+            "tier": "2",
+            "score": 0.9375,
+            "lineage": "phys_v1_u3_c13_pdf133_0292#b7",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-3.29P",
+            "officialCode": "3.29P",
+            "officialId": "4PH1-3.29P",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u3_c13_pdf133_0292#b8",
+            "method": "normalized"
+          }
+        ],
+        "matchedBullets": 6,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Figure13.2The sound produced by the speakers must be loud but alsoof good quality.",
+            "nearOfficialCode": "7.21",
+            "nearScore": 0.2857142857142857
+          },
+          {
+            "text": "Understand how an oscilloscope and microphone canbe used to displaya sound wave",
+            "nearOfficialCode": "3.26P",
+            "nearScore": 0.7142857142857143
+          },
+          {
+            "text": "Most of the sound we hear travels to us in a straight line(Path B).",
+            "nearOfficialCode": "3.28P",
+            "nearScore": 0.5625
+          },
+          {
+            "text": "But some sound travels upwards(Path A).",
+            "nearOfficialCode": "6.10P",
+            "nearScore": 0.19047619047619047
+          },
+          {
+            "text": "If the temperature conditionsareright,then as the sound waves travel through theair they arerefracted and followa curvedpath downwards(Path C).",
+            "nearOfficialCode": "3.7",
+            "nearScore": 0.38461538461538464
+          },
+          {
+            "text": "Wenowreceive two setsofsoundwaves.",
+            "nearOfficialCode": "2.18",
+            "nearScore": 0.07692307692307693
+          },
+          {
+            "text": "So the sound wehearseems louder and clearer.",
+            "nearOfficialCode": "7.15",
+            "nearScore": 0.2857142857142857
+          }
+        ]
+      },
+      {
+        "key": "u4:c14",
+        "title": "Energy transfers",
+        "pdfPages": [
+          143,
+          148
+        ],
+        "bookPages": [
+          133,
+          138
+        ],
+        "loChars": 1693,
+        "refs": [
+          {
+            "spineCode": "4PH1-4.1",
+            "officialCode": "4.1",
+            "officialId": "4PH1-4.1",
+            "tier": "3",
+            "score": 0.88,
+            "lineage": "phys_v1_u4_c14_pdf143_0320#b2",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-4.2",
+            "officialCode": "4.2",
+            "officialId": "4PH1-4.2",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u4_c14_pdf143_0320#b1",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-4.4",
+            "officialCode": "4.4",
+            "officialId": "4PH1-4.4",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u4_c14_pdf143_0320#b3",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-4.5",
+            "officialCode": "4.5",
+            "officialId": "4PH1-4.5",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u4_c14_pdf143_0320#b4",
+            "method": "normalized"
+          }
+        ],
+        "matchedBullets": 4,
+        "droppedCaptions": 0,
+        "review": []
+      },
+      {
+        "key": "u4:c15",
+        "title": "Thermal energy",
+        "pdfPages": [
+          149,
+          159
+        ],
+        "bookPages": [
+          139,
+          149
+        ],
+        "loChars": 1069,
+        "refs": [
+          {
+            "spineCode": "4PH1-4.6",
+            "officialCode": "4.6",
+            "officialId": "4PH1-4.6",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u4_c15_pdf149_0334#b1",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-4.7",
+            "officialCode": "4.7",
+            "officialId": "4PH1-4.7",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u4_c15_pdf149_0334#b3",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-4.8",
+            "officialCode": "4.8",
+            "officialId": "4PH1-4.8",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u4_c15_pdf149_0334#b5",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-4.9",
+            "officialCode": "4.9",
+            "officialId": "4PH1-4.9",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u4_c15_pdf149_0334#b2",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-4.10",
+            "officialCode": "4.10",
+            "officialId": "4PH1-4.10",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u4_c15_pdf149_0334#b4",
+            "method": "verbatim"
+          }
+        ],
+        "matchedBullets": 5,
+        "droppedCaptions": 0,
+        "review": []
+      },
+      {
+        "key": "u4:c16",
+        "title": "Work and power",
+        "pdfPages": [
+          160,
+          167
+        ],
+        "bookPages": [
+          150,
+          157
+        ],
+        "loChars": 604,
+        "refs": [
+          {
+            "spineCode": "4PH1-4.11",
+            "officialCode": "4.11",
+            "officialId": "4PH1-4.11",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u4_c16_pdf160_0360#b1",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-4.13",
+            "officialCode": "4.13",
+            "officialId": "4PH1-4.13",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u4_c16_pdf160_0360#b2",
+            "method": "normalized"
+          }
+        ],
+        "matchedBullets": 2,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Know and use the relationship: kinetic energy=×mass×speed squared KE=×m×v² The unit of energy is named after James Joule. It was Joule who realised that heat was a store of energy. He showed that kinetic energy could be transferred to heat. At that time heat was measured in calories.",
+            "nearOfficialCode": "4.3",
+            "nearScore": 0.7142857142857143
+          }
+        ]
+      },
+      {
+        "key": "u4:c17",
+        "title": "Energy resources and electricity generation (physics only)",
+        "pdfPages": [
+          168,
+          177
+        ],
+        "bookPages": [
+          158,
+          167
+        ],
+        "loChars": 1536,
+        "refs": [
+          {
+            "spineCode": "4PH1-4.18P",
+            "officialCode": "4.18P",
+            "officialId": "4PH1-4.18P",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u4_c17_pdf168_0376#b1",
+            "method": "normalized"
+          }
+        ],
+        "matchedBullets": 1,
+        "droppedCaptions": 0,
+        "review": []
+      },
+      {
+        "key": "u5:c18",
+        "title": "Density and pressure",
+        "pdfPages": [
+          183,
+          190
+        ],
+        "bookPages": [
+          173,
+          180
+        ],
+        "loChars": 930,
+        "refs": [
+          {
+            "spineCode": "4PH1-5.3",
+            "officialCode": "5.3",
+            "officialId": "4PH1-5.3",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u5_c18_pdf183_0403#b1",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-5.4",
+            "officialCode": "5.4",
+            "officialId": "4PH1-5.4",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u5_c18_pdf183_0403#b3",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-5.6",
+            "officialCode": "5.6",
+            "officialId": "4PH1-5.6",
+            "tier": "3",
+            "score": 0.8947,
+            "lineage": "phys_v1_u5_c18_pdf183_0403#b2",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 3,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Know and use the relationship between pressure,force and area: force F pressure= area A UNITS In this sectionyou need touse degree Celsius(°C）and Kelvin (K)as the units of temperature(these units both represent thesame changein temperaturebut the Kelvin scale starts from absolute zero, as explained later),kilogram per cubic metre (kg/m)as the unit of density, cubic metre(m?)as the unit of volume, pascal (Pa)as the unit ofpressure and square metre (m²)as the unit of area. Itisimportant toremember",
+            "nearOfficialCode": "5.5",
+            "nearScore": 0.9375
+          }
+        ]
+      },
+      {
+        "key": "u5:c19",
+        "title": "Solids, liquids and gases",
+        "pdfPages": [
+          191,
+          202
+        ],
+        "bookPages": [
+          181,
+          192
+        ],
+        "loChars": 2428,
+        "refs": [
+          {
+            "spineCode": "4PH1-5.8P",
+            "officialCode": "5.8P",
+            "officialId": "4PH1-5.8P",
+            "tier": "3",
+            "score": 0.7727,
+            "lineage": "phys_v1_u5_c19_pdf191_0427#b2",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-5.9P",
+            "officialCode": "5.9P",
+            "officialId": "4PH1-5.9P",
+            "tier": "2",
+            "score": 0.9167,
+            "lineage": "phys_v1_u5_c19_pdf191_0427#b3",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-5.10P",
+            "officialCode": "5.10P",
+            "officialId": "4PH1-5.10P",
+            "tier": "3",
+            "score": 0.75,
+            "lineage": "phys_v1_u5_c19_pdf191_0427#b4",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-5.11P",
+            "officialCode": "5.11P",
+            "officialId": "4PH1-5.11P",
+            "tier": "3",
+            "score": 0.875,
+            "lineage": "phys_v1_u5_c19_pdf191_0427#b5",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 4,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "PHYSICS ONLY",
+            "nearOfficialCode": null,
+            "nearScore": null
+          },
+          {
+            "text": "Know that specific heat capacity is the energy required to change the temperature ofan object by",
+            "nearOfficialCode": "4.12",
+            "nearScore": 0.5555555555555556
+          },
+          {
+            "text": "Use the equation: capacityxchangein temperature PHYSICS ONLY We thinkthat all matterismadeupof tinyparticles thatare moving.Theway that theparticlesare arranged and theway that theymovedetermine the propertiesofamaterial,such asitsstate atroom temperatureorits density. PHYSICS ONLY",
+            "nearOfficialCode": "5.3",
+            "nearScore": 0.4
+          },
+          {
+            "text": "Draw up a table to summarise the way that particles are arranged in solids, liquids and gases.",
+            "nearOfficialCode": "5.10P",
+            "nearScore": 0.75
+          },
+          {
+            "text": "Explain how ideas about particles can account for the absolute zero of temperature.",
+            "nearOfficialCode": "5.20",
+            "nearScore": 0.5833333333333334
+          },
+          {
+            "text": "What doyou need to assume about the temperature of the gas?Explain your answer.",
+            "nearOfficialCode": "1.26P",
+            "nearScore": 0.4444444444444444
+          },
+          {
+            "text": "Youput thelid on a jarinakitchenwhere theair temperature is20°C. The jargetsleft out in thewinter,and the air temperature drops to-5°C. Explain whathappens to the airpressure in the cold jar.",
+            "nearOfficialCode": "3.21",
+            "nearScore": 0.42857142857142855
+          },
+          {
+            "text": "Explain why it might bemore difficult toremove the lid of the jar when it is cold.",
+            "nearOfficialCode": "8.18P",
+            "nearScore": 0.4666666666666667
+          }
+        ]
+      },
+      {
+        "key": "u6:c20",
+        "title": "Magnetism and electromagnetism",
+        "pdfPages": [
+          207,
+          215
+        ],
+        "bookPages": [
+          197,
+          205
+        ],
+        "loChars": 954,
+        "refs": [
+          {
+            "spineCode": "4PH1-6.2",
+            "officialCode": "6.2",
+            "officialId": "4PH1-6.2",
+            "tier": "3",
+            "score": 0.8333,
+            "lineage": "phys_v1_u6_c20_pdf207_0464#b1",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-6.3",
+            "officialCode": "6.3",
+            "officialId": "4PH1-6.3",
+            "tier": "3",
+            "score": 0.7778,
+            "lineage": "phys_v1_u6_c20_pdf207_0464#b3",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-6.5",
+            "officialCode": "6.5",
+            "officialId": "4PH1-6.5",
+            "tier": "3",
+            "score": 0.875,
+            "lineage": "phys_v1_u6_c20_pdf207_0464#b7",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-6.7",
+            "officialCode": "6.7",
+            "officialId": "4PH1-6.7",
+            "tier": "3",
+            "score": 0.8571,
+            "lineage": "phys_v1_u6_c20_pdf207_0464#b2",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 4,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Know that an electric current in a conductorproduces a magneticfieldaround it",
+            "nearOfficialCode": "6.8",
+            "nearScore": 0.6428571428571429
+          },
+          {
+            "text": "Practical:investigate the magnetic field pattern fora permanentbarmagnetand between two barmagnets",
+            "nearOfficialCode": "6.4",
+            "nearScore": 0.5
+          },
+          {
+            "text": "Understand the termmagneticfield line",
+            "nearOfficialCode": "6.4",
+            "nearScore": 0.5
+          },
+          {
+            "text": "Describe the construction ofelectromagnets",
+            "nearOfficialCode": "6.9P",
+            "nearScore": 0.6
+          },
+          {
+            "text": "Draw magnetic fieldpatterns fora straight wire, a flatcircular coil and asolenoid when each is carrying a current UNITS In this section you will need to use ampere (A)as the unit of current,volt (M) as the unit of voltage and watt (W) as the unit of power.",
+            "nearOfficialCode": "6.1",
+            "nearScore": 0.8181818181818182
+          }
+        ]
+      },
+      {
+        "key": "u6:c21",
+        "title": "Electric motors and electromagnetic induction",
+        "pdfPages": [
+          216,
+          226
+        ],
+        "bookPages": [
+          206,
+          216
+        ],
+        "loChars": 2510,
+        "refs": [
+          {
+            "spineCode": "4PH1-6.12",
+            "officialCode": "6.12",
+            "officialId": "4PH1-6.12",
+            "tier": "3",
+            "score": 0.8276,
+            "lineage": "phys_v1_u6_c21_pdf216_0486#b3",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-6.14",
+            "officialCode": "6.14",
+            "officialId": "4PH1-6.14",
+            "tier": "2",
+            "score": 0.9167,
+            "lineage": "phys_v1_u6_c21_pdf216_0486#b5",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-6.15",
+            "officialCode": "6.15",
+            "officialId": "4PH1-6.15",
+            "tier": "3",
+            "score": 0.7949,
+            "lineage": "phys_v1_u6_c21_pdf216_0486#b6",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-6.17P",
+            "officialCode": "6.17P",
+            "officialId": "4PH1-6.17P",
+            "tier": "2",
+            "score": 0.9,
+            "lineage": "phys_v1_u6_c21_pdf216_0486#b8",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-6.18P",
+            "officialCode": "6.18P",
+            "officialId": "4PH1-6.18P",
+            "tier": "2",
+            "score": 0.9,
+            "lineage": "phys_v1_u6_c21_pdf216_0486#b9",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-6.19P",
+            "officialCode": "6.19P",
+            "officialId": "4PH1-6.19P",
+            "tier": "3",
+            "score": 0.8966,
+            "lineage": "phys_v1_u6_c21_pdf216_0486#b10",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 6,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "PHYSICS ONLY",
+            "nearOfficialCode": null,
+            "nearScore": null
+          },
+          {
+            "text": "Know that thereis a force on a chargedparticle when it moves in a magnetic field as long as its motion isnotparallel to thefield",
+            "nearOfficialCode": "6.11P",
+            "nearScore": 0.7142857142857143
+          },
+          {
+            "text": "Use the left-hand rule topredict the direction of theresulting force when a wire carries a current perpendicularto a magneticfield",
+            "nearOfficialCode": "6.13",
+            "nearScore": 0.7083333333333334
+          },
+          {
+            "text": "Describe the generationof electricity by the rotation ofamagnetwithinacoilofwireandofacoilofwire withinamagneticfield,and describethe factors that affect the size of the inducedvoltage",
+            "nearOfficialCode": "6.9P",
+            "nearScore": 0.6
+          },
+          {
+            "text": "Know and use the relationship: inputpower=outputpower PHYSICS ONLY",
+            "nearOfficialCode": "3.2",
+            "nearScore": 0.625
+          },
+          {
+            "text": "Explain why transformers are used in National Grids.",
+            "nearOfficialCode": "4.7",
+            "nearScore": 0.25
+          },
+          {
+            "text": "Draw a fully labelled diagram of a transformer.",
+            "nearOfficialCode": "8.12P",
+            "nearScore": 0.36363636363636365
+          },
+          {
+            "text": "Explain why a transformer will not work if a d.c. voltage is applied across its primary coil.",
+            "nearOfficialCode": "2.17",
+            "nearScore": 0.36363636363636365
+          },
+          {
+            "text": "A transformer has 200 turns on its primary coil and 5000 turns on its secondary coil. Calculate the voltage across the secondary coil when a voltage of 2 V a.c. is applied across the primary coil. END OFPHYSICSONLY",
+            "nearOfficialCode": "6.19P",
+            "nearScore": 0.6206896551724138
+          },
+          {
+            "text": "The diagrambelow shows abar magnet being pushed into a long coil. Asensitive meter is connected across the coil. Describewhat happens to themeterwhen:",
+            "nearOfficialCode": "6.16",
+            "nearScore": 0.5263157894736842
+          }
+        ]
+      },
+      {
+        "key": "u7:c22",
+        "title": "Atoms and radioactivity",
+        "pdfPages": [
+          231,
+          241
+        ],
+        "bookPages": [
+          221,
+          231
+        ],
+        "loChars": 1067,
+        "refs": [
+          {
+            "spineCode": "4PH1-7.3",
+            "officialCode": "7.3",
+            "officialId": "4PH1-7.3",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u7_c22_pdf231_0517#b3",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-7.4",
+            "officialCode": "7.4",
+            "officialId": "4PH1-7.4",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u7_c22_pdf231_0517#b4",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-7.5",
+            "officialCode": "7.5",
+            "officialId": "4PH1-7.5",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u7_c22_pdf231_0517#b5",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-7.6",
+            "officialCode": "7.6",
+            "officialId": "4PH1-7.6",
+            "tier": "2",
+            "score": 0.9375,
+            "lineage": "phys_v1_u7_c22_pdf231_0517#b2",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-7.7",
+            "officialCode": "7.7",
+            "officialId": "4PH1-7.7",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u7_c22_pdf231_0517#b6",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-7.8",
+            "officialCode": "7.8",
+            "officialId": "4PH1-7.8",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u7_c22_pdf231_0517#b7",
+            "method": "normalized"
+          }
+        ],
+        "matchedBullets": 6,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Describe the structure of an atom in terms of protons, describe particular nuclei",
+            "nearOfficialCode": "6.9P",
+            "nearScore": 0.6
+          }
+        ]
+      },
+      {
+        "key": "u7:c23",
+        "title": "Radiation and half-life",
+        "pdfPages": [
+          243,
+          250
+        ],
+        "bookPages": [
+          233,
+          240
+        ],
+        "loChars": 448,
+        "refs": [
+          {
+            "spineCode": "4PH1-7.12",
+            "officialCode": "7.12",
+            "officialId": "4PH1-7.12",
+            "tier": "3",
+            "score": 0.8889,
+            "lineage": "phys_v1_u7_c23_pdf243_0555#b4",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 1,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Know thatphotographic film ora Geiger-Muller detector can detect ionising radiation",
+            "nearOfficialCode": "7.9",
+            "nearScore": 0.5
+          },
+          {
+            "text": "Explain the sourcesofbackground(ionising)radiation from Earth and space",
+            "nearOfficialCode": "7.10",
+            "nearScore": 0.7272727272727273
+          },
+          {
+            "text": "Know that the activity of a radioactive source decreases overtime and ismeasured inbecquerels",
+            "nearOfficialCode": "7.11",
+            "nearScore": 0.631578947368421
+          },
+          {
+            "text": "Use the concept of thehalf-lifeto carryout simple s",
+            "nearOfficialCode": "4.3",
+            "nearScore": 0.5714285714285714
+          }
+        ]
+      },
+      {
+        "key": "u7:c24",
+        "title": "Applications of radioactivity",
+        "pdfPages": [
+          251,
+          259
+        ],
+        "bookPages": [
+          241,
+          249
+        ],
+        "loChars": 414,
+        "refs": [
+          {
+            "spineCode": "4PH1-7.15",
+            "officialCode": "7.15",
+            "officialId": "4PH1-7.15",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u7_c24_pdf251_0576#b2",
+            "method": "verbatim"
+          }
+        ],
+        "matchedBullets": 1,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Describeuses ofradioactivity in industry and medicine",
+            "nearOfficialCode": "7.14",
+            "nearScore": 0.5
+          },
+          {
+            "text": "Beable to describe the dangersof ionisingradiations including:",
+            "nearOfficialCode": "7.16",
+            "nearScore": 0.717948717948718
+          }
+        ]
+      },
+      {
+        "key": "u7:c25",
+        "title": "Fission and fusion",
+        "pdfPages": [
+          260,
+          264
+        ],
+        "bookPages": [
+          250,
+          254
+        ],
+        "loChars": 1020,
+        "refs": [
+          {
+            "spineCode": "4PH1-7.18",
+            "officialCode": "7.18",
+            "officialId": "4PH1-7.18",
+            "tier": "3",
+            "score": 0.75,
+            "lineage": "phys_v1_u7_c25_pdf260_0599#b3",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-7.23",
+            "officialCode": "7.23",
+            "officialId": "4PH1-7.23",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u7_c25_pdf260_0599#b6",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-7.25",
+            "officialCode": "7.25",
+            "officialId": "4PH1-7.25",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u7_c25_pdf260_0599#b8",
+            "method": "verbatim"
+          }
+        ],
+        "matchedBullets": 3,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Know thatnuclear reactions,including fission,fusion andradioactive decay,canbe a source ofenergy",
+            "nearOfficialCode": "7.17",
+            "nearScore": 0.5
+          },
+          {
+            "text": "Understand the roleof shielding arounda nuclear reactor",
+            "nearOfficialCode": "7.22",
+            "nearScore": 0.5555555555555556
+          },
+          {
+            "text": "Know that the fission of U-235produces tworadioactive daughternuclei anda small number ofneutrons",
+            "nearOfficialCode": "2.14",
+            "nearScore": 0.5
+          },
+          {
+            "text": "Describe howa chain reaction can be setup if the neutronsproduced by one fission strike otherU-235 nuclei",
+            "nearOfficialCode": "7.20",
+            "nearScore": 0.6190476190476191
+          },
+          {
+            "text": "Describenuclear fusion as the creation of larger nucleiresulting in a loss of mass from smaller nuclei. accompaniedbyareleaseofenergy",
+            "nearOfficialCode": "7.24",
+            "nearScore": 0.7083333333333334
+          },
+          {
+            "text": "Explain why nuclearfusion doesnot happen at low temperatures and pressures,due to electrostatic repulsion ofprotons",
+            "nearOfficialCode": "7.26",
+            "nearScore": 0.6666666666666666
+          },
+          {
+            "text": "Describe theroleplayed by the control rods and moderatorin thefission process",
+            "nearOfficialCode": "7.21",
+            "nearScore": 0.6428571428571429
+          }
+        ]
+      },
+      {
+        "key": "u8:c26",
+        "title": "Motion in the universe",
+        "pdfPages": [
+          269,
+          274
+        ],
+        "bookPages": [
+          259,
+          264
+        ],
+        "loChars": 899,
+        "refs": [
+          {
+            "spineCode": "4PH1-8.1",
+            "officialCode": "8.1",
+            "officialId": "4PH1-8.1",
+            "tier": "3",
+            "score": 0.8333,
+            "lineage": "phys_v1_u8_c26_pdf269_0613#b1",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-8.3",
+            "officialCode": "8.3",
+            "officialId": "4PH1-8.3",
+            "tier": "2",
+            "score": 0.9583,
+            "lineage": "phys_v1_u8_c26_pdf269_0613#b4",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-8.4",
+            "officialCode": "8.4",
+            "officialId": "4PH1-8.4",
+            "tier": "3",
+            "score": 0.8966,
+            "lineage": "phys_v1_u8_c26_pdf269_0613#b2",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-8.6",
+            "officialCode": "8.6",
+            "officialId": "4PH1-8.6",
+            "tier": "3",
+            "score": 0.8636,
+            "lineage": "phys_v1_u8_c26_pdf269_0613#b5",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 4,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Describe the differences in the orbits of comets. moonsandplanets",
+            "nearOfficialCode": "8.5",
+            "nearScore": 0.7272727272727273
+          }
+        ]
+      },
+      {
+        "key": "u8:c27",
+        "title": "Stellar evolution",
+        "pdfPages": [
+          275,
+          279
+        ],
+        "bookPages": [
+          265,
+          269
+        ],
+        "loChars": 749,
+        "refs": [
+          {
+            "spineCode": "4PH1-8.2",
+            "officialCode": "8.2",
+            "officialId": "4PH1-8.2",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u8_c27_pdf275_0632#b5",
+            "method": "normalized"
+          },
+          {
+            "spineCode": "4PH1-8.7",
+            "officialCode": "8.7",
+            "officialId": "4PH1-8.7",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u8_c27_pdf275_0632#b6",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-8.8",
+            "officialCode": "8.8",
+            "officialId": "4PH1-8.8",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u8_c27_pdf275_0632#b7",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-8.9",
+            "officialCode": "8.9",
+            "officialId": "4PH1-8.9",
+            "tier": "1",
+            "score": 1,
+            "lineage": "phys_v1_u8_c27_pdf275_0632#b8",
+            "method": "verbatim"
+          },
+          {
+            "spineCode": "4PH1-8.11P",
+            "officialCode": "8.11P",
+            "officialId": "4PH1-8.11P",
+            "tier": "3",
+            "score": 0.7647,
+            "lineage": "phys_v1_u8_c27_pdf275_0632#b2",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-8.12P",
+            "officialCode": "8.12P",
+            "officialId": "4PH1-8.12P",
+            "tier": "2",
+            "score": 1,
+            "lineage": "phys_v1_u8_c27_pdf275_0632#b3",
+            "method": "normalized"
+          }
+        ],
+        "matchedBullets": 6,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "PHYSICS ONLY",
+            "nearOfficialCode": null,
+            "nearScore": null
+          },
+          {
+            "text": "Know that the Sun is a star at the centre of our Solar System",
+            "nearOfficialCode": "2.14",
+            "nearScore": 0.6
+          }
+        ]
+      },
+      {
+        "key": "u8:c28",
+        "title": "Cosmology",
+        "pdfPages": [
+          281,
+          284
+        ],
+        "bookPages": [
+          271,
+          274
+        ],
+        "loChars": 768,
+        "refs": [
+          {
+            "spineCode": "4PH1-8.14P",
+            "officialCode": "8.14P",
+            "officialId": "4PH1-8.14P",
+            "tier": "3",
+            "score": 0.875,
+            "lineage": "phys_v1_u8_c28_pdf281_0646#b3",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-8.16P",
+            "officialCode": "8.16P",
+            "officialId": "4PH1-8.16P",
+            "tier": "3",
+            "score": 0.75,
+            "lineage": "phys_v1_u8_c28_pdf281_0646#b2",
+            "method": "fuzzy"
+          },
+          {
+            "spineCode": "4PH1-8.17P",
+            "officialCode": "8.17P",
+            "officialId": "4PH1-8.17P",
+            "tier": "3",
+            "score": 0.875,
+            "lineage": "phys_v1_u8_c28_pdf281_0646#b5",
+            "method": "fuzzy"
+          }
+        ],
+        "matchedBullets": 3,
+        "droppedCaptions": 0,
+        "review": [
+          {
+            "text": "Describe thepast evolution of the Universe and the main argumentsinfavour of the BigBang",
+            "nearOfficialCode": "8.13P",
+            "nearScore": 0.6111111111111112
+          },
+          {
+            "text": "Describe thatif a wave sourceismoving relative to an observer there will beachange in the observed frequency and wavelength Figure 28.2 A telescope to look at stars change in wavelength velocityofagalaxy reference wavelength speedoflight A-Ao △A C",
+            "nearOfficialCode": "8.15P",
+            "nearScore": 0.7391304347826086
+          },
+          {
+            "text": "Explain why thered-shift ofgalaxiesprovides evidence for the expansion of theUniverse",
+            "nearOfficialCode": "8.18P",
+            "nearScore": 0.7333333333333333
+          }
+        ]
+      }
+    ]
+  },
+  "join": {
+    "chapters": 28,
+    "refs": 117,
+    "tierCensus": {
+      "fuzzy": 43,
+      "verbatim": 49,
+      "normalized": 25
+    },
+    "reviewItems": 68
+  },
+  "chunks": {
+    "count": 549,
+    "overlaidWithCodes": 424
+  },
+  "headerSample": "Physics 4PH1 | Edexcel IGCSE Student Book | Qu0:xexperimental-skills-book-p1 | p.11",
+  "applied": {
+    "documentRowId": "efc8b5c4-83b6-4ecf-98e2-9b44d2923636",
+    "documentId": "d9b72a0a-23fb-5938-a0a7-a7494e7ebf9e",
+    "duplicate": false,
+    "duplicate_evidence": "pre-apply census physics_docid_present=0 (pre_apply_census.json, snapshot identical to the Task-12 preflight baseline)",
+    "chunks": 549,
+    "postverify": {
+      "documents": 1,
+      "chunks": 549,
+      "chunksWithCodes": 424,
+      "bookChapters": 28,
+      "joinRefs": 117,
+      "ftsSanity_acceleration": 53,
+      "sampleHeader": "Physics 4PH1 | Edexcel IGCSE Student Book | Qu0:xexperimental-skills-book-p1 | p.11\\nEXPERIMENTAL SKILLS",
+      "embed_law": "embed_rev=2 x 549 rows, embedding NULL count 0-written (the zero-API-keys law; backfill = the 133d CI-egress runner)",
+      "chemistry_untouched": "book_chapters 29 / book_blocks 177 / chem document_chunks 823 — all EXACT vs the pre-apply baseline"
+    },
+    "postverifyStatus": "PASS",
+    "postverify_provenance": "RECONSTRUCTED read-only post-commit by the same lane: the driver transaction COMMITTED at 2026-10-22T13:56:53.974Z (documents.created_at of record) but the sandbox 10-min kill landed in the post-commit postverify/receipt window — the receipt of record was rebuilt from a read-only postverify whose legs are byte-equivalent to the driver postverify; full leg dump: postverify_134e_run001.json",
+    "appliedAt": "2026-10-22T13:56:53.974Z",
+    "embeddings": "NOT written (zero-API-keys law; embed_rev=2 rows with NULL vectors — backfill via the book-agnostic 133d runner scripts/t-mig-133d-backfill-exec.ts on CI egress; key staged by operator 2026-10-22, sandbox region-law re-confirmed same day — venue of record stands)",
+    "write_ledger": {
+      "prod_writes": "documents +1, document_chunks +549, book_chapters +28, spec_codes overlays 424 (self-scoped)",
+      "cow_proof": "PASS — code-read of record: ingestCanonicalDocument is insert-only + checksum dedupe; overlay UPDATE self-scoped to the new document_row_id; chemistry e6c0db50 and all other documents untouched (census deltas exactly +1/+549/+28)"
+    },
+    "applied_by": "books vector arm continuation lane (Super Z), operator write order = the pooled-URI delivery for the apply leg (trace 1a163d4ac43d8429), execution trace 1a163dfd62419a29"
+  }
+}

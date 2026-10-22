@@ -1,0 +1,38 @@
+{
+  "task": "OPS-AUTH-FIX",
+  "run": "r0",
+  "date": "2026-10-22",
+  "operator_order": "user: 'I want to fix login and auth' (trace 1a163dc54a34a7cd)",
+  "symptom": "hub-side login/auth against the api carrier broken from the user's perspective",
+  "diagnosis": [
+    "Carrier project syllabai-v2 had Vercel SSO deployment protection ENABLED (ssoProtection.deploymentType = all_except_custom_domains) — the production vercel.app domain is not a custom domain, so every unauthenticated browser call (login/register/me/state) was walled; hub project has ssoProtection null (parity reference).",
+    "Production alias/domain assignment drift: /v4/aliases listed EMPTY while deployment records still claimed the domain; live prod domain served platform NOT_FOUND pre-fix.",
+    "Enablement window: after the 09:55Z 21/21 census (green) and before 13:46Z first probe. Enabler not attributable from the API (no audit-log access on this plan) — operator should review dashboard members/settings.",
+    "NOT a code defect: all three READY deployments (00:08:14Z dpl_DNwXstsz, 09:33:27Z dpl_EzDQbaRk = run-013 of-record, 09:54:44Z dpl_iYoT7Hrs) share the api-stage bundle recipe (src/api/index.js + src/vercel.json -> out/api/index lambda; rewrites /api/v1/(.*) and /actuator/health). Route paths of record are under /api/v1/*."
+  ],
+  "acts": [
+    "ACT 1: PATCH /v9/projects/syllabai-v2 ssoProtection -> null (restores hub-parity public posture). Verified via re-GET.",
+    "ACT 2: re-alias syllabai-v2.vercel.app and syllabai-v2-syllab-ai.vercel.app -> dpl_EzDQbaRkZw7X7QdcmpazZXCuxkBM (run-013 of-record, census-verified 21/21 at 09:55Z). API quirk of record: POST /v2/deployments/{id}/aliases accepts key 'alias' (the 'name' key misparses to invalid_alias). oldDeploymentId of both: dpl_iYoT7HrsRr8o (09:54:44Z, meta 'Z User/z@container/Initial commit', unverified build)."
+  ],
+  "verification": [
+    "POST /api/v1/auth/login malformed -> 400 validation_failed ('password: must not be blank') — frozen parity law",
+    "POST /api/v1/auth/login bad creds -> 401",
+    "POST /api/v1/auth/register (with displayName) -> 201-shape + accessToken (STUDENT role, jti/uid)",
+    "POST /api/v1/auth/login (probe creds) -> 200 + accessToken",
+    "GET /api/v1/learners/me/state with JWT -> 200",
+    "OPTIONS /api/v1/auth/login -> 204, ACAO = https://syllabai-hub-v2.vercel.app exactly",
+    "GET /actuator/health -> 200 {groups:[liveness,readiness], status:UP}",
+    "hub /api/health -> 200 coreConfigured"
+  ],
+  "writes": [
+    "1 disclosed census-class probe learner: auth-fix-verify-1792677722@example.invalid (register + me/state read only)"
+  ],
+  "no_code_delta": true,
+  "secrets": "Vercel vcp_ token inline/volatile only, never printed/committed; zero DB DDL; zero LLM spend",
+  "residuals": [
+    "enabler of the ssoProtection flip unattributed — operator dashboard review recommended",
+    "dpl_iYoT7Hrs (09:54:44Z) remains READY but unverified/unpromoted — lanes may re-promote through their own gates",
+    "carrier has no git link (link type null) — deploys are lane-driven API acts by design; 5 post-09:54Z commits producing zero carrier deploys is NORMAL, not a fault",
+    "PAT rotation overdue (also flagged in wave-16 residuals) — rotate all four chat-transited secrets after the 4MA1 drain completes"
+  ]
+}
