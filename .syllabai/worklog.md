@@ -11947,3 +11947,16 @@ Stage Summary:
 - T-BOOK-025 REDEPLOY LADDER FULLY CLOSED OF RECORD: carrier half = run-011 (syllabai-v2-fmnc0xe1b LIVE, census 15/15); hub half = run-012 (auto-bake dpl_HXM5GME @ tip-equivalent 2100e410, battery 7/7, STAND_DOWN of record).
 - THE OPERATOR'S ORIGINAL INCIDENT IS RESOLVED ON THE PUBLIC WIRE BOTH PLANES: the 4CH1 course page shows the published Student Book card; the shelf renders the 29-row TOC; the student book reader opens at its chapters; the 112-term glossary serves.
 - Standing residuals: PAT rotation (multi-exposure overdue); retired-boards Render console disable.
+
+## CI-REPAIR main's verify lane — the CIE UNIT tail trailing-variant admission (run-001, the operator order 'repair main', trace 1a160f74bd9fde81)
+
+Work Log:
+- Diagnosis first-hand: the ci workflow RED on main for 13 consecutive commits (e024c11c 21:08:11Z .. 9ed9cf55 00:17:48Z, runs 39676279557/39698838917 pulled + parsed); verify/Test 2484 pass / 1 fail / 1 error every run; reproduced byte-identically locally on 9ed9cf55.
+- Root cause: e024c11c (the operator-ordered T-SPECS-TS4-REPAIR-1 TS4 lattice repair) introduced synthesized TOPICs cie-igcse-history-2024-2026-TS4L (League S4.012-028) + TS4H (Hitler FP S4.029-042); the optionA CIE UNIT tail law (bundle-seed.ts /-T([A-Z]?[0-9]+)$/) refuses tails not ENDING in digits; the module-level map-law census (cie-phase4-roster.test.ts:25 -> mapLawCensus -> mapBundleNodes over 44 banks) threw at load: 'TS4L does not carry the official -T tail'. The fail-closed guard did its job; the content commit never rode the verify lane.
+- Repair direction: LAW-SIDE admission, content byte-untouched (the receipted sub-split codes stay stable; a content-side rename would drift the receipt + the spine builder's codes). The tail group admits at most ONE trailing uppercase letter after the digits: /-T([A-Z]?[0-9]+[A-Z]?)$/ — the same trailing-variant-letter position the SPEC_POINT sixth shape carries. All previously-matching tails capture byte-identically (greedy digits + optional end letter); refusal message verbatim; order still never the identity. New additive version-scoped UNITs: 0470-2024-2026-SS4L / SS4H (SS4 pre-existing, unchanged).
+- Pins added: the trailing-variant UNIT law (X105 mini-bundle SS4/SS4L/SS4H pairwise distinct), the byte-identical pre-existing tails (X106 T1/TB2/TE3/TS4), two-trailing-letters still refuse (X107), and the REAL history-18 TS4-family UNIT identities over the committed curriculum.json (roster test).
+- Full local verify lane on the branch head: typecheck + bun test apps/api packages + golden selftest + retrieval-eval selftest + the zero-core census gate --gate (numbers in the PR body of record).
+- Receipt of record: .syllabai/receipts/CI-REPAIR/cie-unit-tail-trailing-variant-run-001-r0.json. Scope: 2 code files + receipt + this entry; zero content files, zero DB writes, zero env; fetch-first, no force.
+
+Stage Summary:
+- Main's verify-lane root cause is REPAIRED at the law layer with the fail-closed posture intact; the TS4 sub-split content lands its honest additive UNIT identities; the PR rides the five-gate merge discipline under the 'repair main' commission.

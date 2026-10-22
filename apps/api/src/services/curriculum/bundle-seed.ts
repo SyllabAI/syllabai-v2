@@ -421,6 +421,24 @@ export function mapBundleNodes(
       // disjoint, 0452 plain digits), TB/TC/TP -> SB/SC/SP (0653/0973),
       // TC/TE -> SC/SE (0580/0607 core-extended), TS -> SS (0500). Edexcel
       // stays byte-identical on the order law (S{order}).
+      //
+      // TRAILING-VARIANT extension (the ci-repair of record; main's verify
+      // lane RED since e024c11c): the corpus's own SYNTHESIZED history-18
+      // convention — the spine builder's TS<order> TOPIC family (T + S +
+      // digits, the shape 0500 shares) — grew the T-SPECS-TS4-REPAIR-1
+      // sub-split: the glued TS4 run's Core B members moved to their own
+      // TOPICs TS4L (League, S4.012-028) and TS4H (Hitler foreign policy,
+      // S4.029-042) with every sibling code byte-stable. Shape: T + S +
+      // digits + ONE trailing uppercase letter — the same trailing-variant
+      // letter position the SPEC_POINT sixth shape already carries
+      // ('C4.1.1a'/'P1.5.1b'). The tail group admits at most one trailing
+      // uppercase letter AFTER the digits: every previously-matching tail
+      // captures BYTE-IDENTICALLY (greedy digits + an optional letter only
+      // extend at the end), so all pre-existing UNIT identities are
+      // untouched; the sub-split lands its own version-scoped UNITS
+      // SS4 / SS4L / SS4H — pairwise distinct, the order still never
+      // consulted, the refusal message verbatim (order-only and non-tail
+      // shapes still refuse).
       let unitDbCode: string;
       // lane C leg 2 (ruling A of record): the pre-order Edexcel generation
       // self-locates the section in the TOPIC code itself ('4CH1-S1'..'S4' —
@@ -432,7 +450,7 @@ export function mapBundleNodes(
       const isCie = BUNDLE_BOARD_BY_UPSTREAM[bundle.board] === CIE_BOARD_OF_RECORD;
       const selfSection = isCie ? null : /^([A-Z0-9]+)-S(\d+)$/.exec(n.code);
       if (isCie) {
-        const m = /-T([A-Z]?[0-9]+)$/.exec(n.code);
+        const m = /-T([A-Z]?[0-9]+[A-Z]?)$/.exec(n.code);
         if (m == null) {
           throw new BundleSeedConflictError(
             "bundle TOPIC " + n.code +

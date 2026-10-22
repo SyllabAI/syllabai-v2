@@ -924,6 +924,49 @@ describe("run-002 repair — the dbCode shape widenings (synthetic CIE mini-bund
     expect(mapped.get("X101-TE1:SUBE1.1")!.nodeType).toBe("TOPIC");
   });
 
+  test("the trailing-variant UNIT tail: T + S + digits + one letter lands its own UNIT (the history-18 sub-split law, the ci-repair of record)", () => {
+    // the e024c11c sub-split shape: the glued TS4 run's Core B members became
+    // their own TOPICs TS4L / TS4H with every sibling code byte-stable — the
+    // strict tail law refused them mid-census (main RED since). The tail
+    // group admits at most ONE trailing uppercase letter AFTER the digits;
+    // the order is still never the identity (TS4L sits at order 5, SS4L).
+    const b = miniBundle("cie-mini-split", "X105", [
+      CIEnode("TOPIC", "X105-2025-2027-TS4", ["cie-mini-split"], 4),
+      CIEnode("TOPIC", "X105-2025-2027-TS4L", ["cie-mini-split"], 5),
+      CIEnode("TOPIC", "X105-2025-2027-TS4H", ["cie-mini-split"], 6),
+    ]);
+    const mapped = mapBundleNodes(b, "prefix");
+    expect(mapped.get("X105-2025-2027-TS4")!.dbCode).toBe("X105-2025-2027-SS4");
+    expect(mapped.get("X105-2025-2027-TS4")!.nodeType).toBe("UNIT");
+    expect(mapped.get("X105-2025-2027-TS4L")!.dbCode).toBe("X105-2025-2027-SS4L");
+    expect(mapped.get("X105-2025-2027-TS4H")!.dbCode).toBe("X105-2025-2027-SS4H");
+    // pairwise distinct UNIT identities (no graft back onto the civil-war SS4)
+    const units = [...mapped.values()].filter((m) => m.nodeType === "UNIT").map((m) => m.dbCode);
+    expect(new Set(units).size).toBe(units.length);
+  });
+
+  test("the pre-existing tails capture BYTE-IDENTICALLY under the trailing-variant extension (no identity drift)", () => {
+    // every shape the strict law admitted still maps to the same UNIT dbCode
+    const b = miniBundle("cie-mini-tails", "X106", [
+      CIEnode("TOPIC", "X106-2025-2027-T1", ["cie-mini-tails"], 1),
+      CIEnode("TOPIC", "X106-2025-2027-TB2", ["cie-mini-tails"], 2),
+      CIEnode("TOPIC", "X106-2025-2027-TE3", ["cie-mini-tails"], 3),
+      CIEnode("TOPIC", "X106-2025-2027-TS4", ["cie-mini-tails"], 4),
+    ]);
+    const mapped = mapBundleNodes(b, "prefix");
+    expect(mapped.get("X106-2025-2027-T1")!.dbCode).toBe("X106-2025-2027-S1");
+    expect(mapped.get("X106-2025-2027-TB2")!.dbCode).toBe("X106-2025-2027-SB2");
+    expect(mapped.get("X106-2025-2027-TE3")!.dbCode).toBe("X106-2025-2027-SE3");
+    expect(mapped.get("X106-2025-2027-TS4")!.dbCode).toBe("X106-2025-2027-SS4");
+  });
+
+  test("two trailing letters still refuse (the extension admits AT MOST one variant letter)", () => {
+    const b = miniBundle("cie-mini-two-letters", "X107", [
+      CIEnode("TOPIC", "X107-2025-2027-TS4XY", ["cie-mini-two-letters"], 4),
+    ]);
+    expect(() => mapBundleNodes(b, "p")).toThrow(/does not carry the official -T tail/);
+  });
+
   test("FIFTH shape: the letter-prefixed unit.seq SPEC_POINT lands <ns>-S1.001 verbatim (0500/0470/8021 law)", () => {
     const b = miniBundle("cie-mini-sp", "X102", [
       CIEnode("SUBTOPIC", "X102-TE1:SUB_", ["X102-TE1"], 1),

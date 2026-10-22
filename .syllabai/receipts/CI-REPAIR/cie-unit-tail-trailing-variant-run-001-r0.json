@@ -1,0 +1,40 @@
+{
+  "receipt": "CI-REPAIR/cie-unit-tail-trailing-variant-run-001-r0.json",
+  "class": "ci-repair",
+  "verdict": "REPAIRED AND VERIFIED (local full verify lane; PR merge gate pending at receipt time)",
+  "commission": "operator IM order 'repair main' (trace 1a160f74bd9fde81)",
+  "diagnosis": {
+    "symptom": "the ci workflow's verify/Test step RED on main for 13 consecutive commits (e024c11c 2026-10-21T21:08:11Z .. 9ed9cf55 2026-10-22T00:17:48Z); 2484 pass / 1 fail / 1 error per run",
+    "breaking_commit": "e024c11c (T-SPECS-TS4-REPAIR-1 r0: the TS4 mixed-theme lattice repair — the operator-ordered audit menu item 5)",
+    "root_cause": "the sub-split introduced two new synthesized TOPIC codes cie-igcse-history-2024-2026-TS4L (League, spec points S4.012-028) and cie-igcse-history-2024-2026-TS4H (Hitler foreign policy, S4.029-042). The CIE UNIT tail law (apps/api/src/services/curriculum/bundle-seed.ts, the optionA law: /-T([A-Z]?[0-9]+)$/) refuses any TOPIC tail that does not END in digits — T + S + digits + trailing letter does not match. The module-level census in apps/api/test/sme/cie-phase4-roster.test.ts (mapLawCensus -> mapBundleNodes over all 44 mapped banks) threw BundleSeedConflictError at load time: 'bundle TOPIC cie-igcse-history-2024-2026-TS4L does not carry the official -T tail'. The fail-closed guard did exactly its job; the content commit did not ride the verify lane before landing.",
+    "error_location": "apps/api/src/services/curriculum/bundle-seed.ts:437 (throw) via apps/api/scripts/cie-phase4-apply.ts:613 (mapLawCensus) via apps/api/test/sme/cie-phase4-roster.test.ts:25 (module-level census)"
+  },
+  "repair": {
+    "direction": "law-side admission, content untouched (the receipted sub-split codes TS4L/TS4H stay byte-stable; every spec point code and V7 join untouched; the alternative content-side rename would drift the receipted codes)",
+    "change": "the CIE UNIT tail group admits AT MOST ONE trailing uppercase letter AFTER the digits: /-T([A-Z]?[0-9]+[A-Z]?)$/ — the same trailing-variant-letter position the SPEC_POINT sixth shape already carries ('C4.1.1a'/'P1.5.1b'). History-18's TS<order> family is the corpus's own synthesized convention (T + S + digits, the shape 0500 shares); the sub-split extends it with the semantic trailing letter.",
+    "fail_closed_preserved": [
+      "anchored regex: the tail must still be the code's own -T suffix",
+      "at most one trailing letter: TS4XY still refuses (unit-pinned)",
+      "the refusal message byte-verbatim (test-pinned twice: bundle-seed.test.ts, roster-adjacent refusal test)",
+      "the order is still never the identity: UNIT dbCodes derive from the tail only",
+      "all previously-matching tails capture BYTE-IDENTICALLY (greedy digits + optional letter extend only at the end) — zero pre-existing identity drift (unit-pinned across T1/TB2/TE3/TS4)"
+    ],
+    "new_unit_identities": [
+      "0470-2024-2026-SS4 (the civil-war core, pre-existing, unchanged)",
+      "0470-2024-2026-SS4L (League — NEW, additive, version-scoped)",
+      "0470-2024-2026-SS4H (Hitler foreign policy — NEW, additive, version-scoped)"
+    ]
+  },
+  "pins_added": [
+    "bundle-seed.test.ts: the trailing-variant UNIT tail lands SS4/SS4L/SS4H pairwise distinct (synthetic mini-bundle X105)",
+    "bundle-seed.test.ts: the pre-existing tails T1/TB2/TE3/TS4 capture byte-identically under the extension (X106)",
+    "bundle-seed.test.ts: two trailing letters still refuse (X107)",
+    "cie-phase4-roster.test.ts: the history-18 TS4 sub-split UNIT identities of record over the REAL committed curriculum.json"
+  ],
+  "verification": {
+    "reproduced_first": "bun test apps/api packages on 9ed9cf55: 2484 pass / 1 fail / 1 error — the identical CI numbers (run 39698838917)",
+    "local_full_verify_lane": "typecheck + bun test apps/api packages + golden selftest + retrieval-eval + zero-core census gate — results in the PR body of record",
+    "unchanged_pins": "mapLaw.green true, bundlesMapped 44, maxDbCodeLength 25, the shared-code join matrix, the 9709 disjoint UNIT space, sharedSubjectRoots — all hold"
+  },
+  "scope": "2 code files + 1 receipt + worklog line; zero content files; zero DB writes; zero env/secrets; fetch-first; no force"
+}
