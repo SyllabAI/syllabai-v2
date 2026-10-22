@@ -1744,3 +1744,81 @@ export const aiMarkEvents = pgTable("ai_mark_events", {
                 }),
         check("ai_mark_events_ordinal_check", sql`mark_ordinal >= 1`),
 ]);
+
+// ── Seneca resource packs (T-SENECA-001) — V2-NATIVE, ADDITIVE-ONLY ─────────
+// The teacher assignment creator's "Seneca resources" option (the operator
+// commission of 2026-10-23): content rows linked ONLY to hub courses that
+// exist (courses.json), the pack task list hung off the core-era
+// `assignments` row by FK (side-table law — the assignments row is never
+// ALTERed), and per-learner per-task completion with SERVER-side scoring.
+// Corpus: the operator-approved Seneca Resource Hub harvest
+// (syllabai-experimental @ d67bc1e3), PII-scrubbed.
+
+export const senecaResources = pgTable("seneca_resources", {
+	id: varchar("id", { length: 64 }).primaryKey().notNull(),
+	courseSlug: varchar("course_slug", { length: 64 }).notNull(),
+	kind: varchar("kind", { length: 16 }).notNull(),
+	title: varchar("title", { length: 300 }),
+	topicPath: text("topic_path"),
+	marksTotal: integer("marks_total"),
+	questionType: varchar("question_type", { length: 60 }),
+	contentJson: jsonb("content_json").notNull(),
+	createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+}, (table) => [
+	index("ix_seneca_resources_course_kind").using("btree", table.courseSlug.asc().nullsLast().op("text_ops"), table.kind.asc().nullsLast().op("text_ops")),
+	index("ix_seneca_resources_topic").using("btree", table.courseSlug.asc().nullsLast().op("text_ops"), table.topicPath.asc().nullsLast().op("text_ops")),
+	check("seneca_resources_kind_check", sql`("kind"::text = ANY ((ARRAY['courseSection'::character varying, 'examQuestion'::character varying, 'quiz'::character varying])::text[]))`),
+	check("seneca_resources_marks_check", sql`("marks_total" IS NULL OR ("marks_total" >= 0))`),
+]);
+
+export const assignmentResources = pgTable("assignment_resources", {
+	id: uuid().primaryKey().notNull(),
+	assignmentId: uuid("assignment_id").notNull(),
+	resourceId: varchar("resource_id", { length: 64 }).notNull(),
+	position: integer("position").notNull(),
+	createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+}, (table) => [
+	unique("ux_assignment_resources_pair").on(table.assignmentId, table.resourceId),
+	index("ix_assignment_resources_assignment").using("btree", table.assignmentId.asc().nullsLast().op("uuid_ops"), table.position.asc().nullsLast().op("int4_ops")),
+	index("ix_assignment_resources_resource").using("btree", table.resourceId.asc().nullsLast().op("text_ops")),
+	foreignKey({
+			columns: [table.assignmentId],
+			foreignColumns: [assignments.id],
+			name: "fk_assignment_resources_assignment"
+		}).onDelete("cascade"),
+	foreignKey({
+			columns: [table.resourceId],
+			foreignColumns: [senecaResources.id],
+			name: "fk_assignment_resources_resource"
+		}),
+	check("assignment_resources_position_check", sql`("position" >= 1)`),
+]);
+
+export const assignmentResourceStates = pgTable("assignment_resource_states", {
+	id: uuid().primaryKey().notNull(),
+	assignmentId: uuid("assignment_id").notNull(),
+	learnerId: uuid("learner_id").notNull(),
+	resourceId: varchar("resource_id", { length: 64 }).notNull(),
+	status: varchar("status", { length: 16 }).default('todo').notNull(),
+	marksAwarded: integer("marks_awarded"),
+	score: doublePrecision("score"),
+	completedAt: timestamp("completed_at", { withTimezone: true }),
+	updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+}, (table) => [
+	unique("ux_assignment_resource_states_triple").on(table.assignmentId, table.learnerId, table.resourceId),
+	index("ix_assignment_resource_states_learner").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops")),
+	index("ix_assignment_resource_states_assignment").using("btree", table.assignmentId.asc().nullsLast().op("uuid_ops")),
+	foreignKey({
+			columns: [table.assignmentId],
+			foreignColumns: [assignments.id],
+			name: "fk_assignment_resource_states_assignment"
+		}).onDelete("cascade"),
+	foreignKey({
+			columns: [table.learnerId],
+			foreignColumns: [users.id],
+			name: "fk_assignment_resource_states_learner"
+		}).onDelete("cascade"),
+	check("assignment_resource_states_status_check", sql`("status"::text = ANY ((ARRAY['todo'::character varying, 'complete'::character varying])::text[]))`),
+	check("assignment_resource_states_marks_check", sql`("marks_awarded" IS NULL OR ("marks_awarded" >= 0))`),
+	check("assignment_resource_states_score_check", sql`("score" IS NULL OR (("score" >= 0) AND ("score" <= 1)))`),
+]);

@@ -45,6 +45,8 @@ import { Label } from "@/components/ui/label";
 import { TeacherNav } from "@/components/teacher/teacher-nav";
 import { api, ApiError } from "@/lib/api";
 import type {
+  AssignmentPackLibraryView,
+  AssignmentPackResourceRow,
   AssignmentRosterView,
   AssignmentSummaryView,
   TeacherClassView,
@@ -76,11 +78,15 @@ export function AssignmentsClient({
   initialCourse,
   fromTest,
   initialSubtopics,
+  senecaEnabled,
 }: {
   courses: SwitchableCourse[];
   initialCourse: string | null;
   fromTest: string | null;
   initialSubtopics: string[];
+  /** T-SENECA-001 flag gate — absent flag/slug = false (bank-only, the
+   *  pre-pack UI byte-for-byte). */
+  senecaEnabled: boolean;
 }) {
   const [course, setCourse] = useState<string | null>(initialCourse);
   const [state, setState] = useState<{
@@ -117,6 +123,82 @@ export function AssignmentsClient({
   const [maxQuestions, setMaxQuestions] = useState("20");
   const [creating, setCreating] = useState(false);
   const [createError, setCreateError] = useState<string | null>(null);
+
+  // ── Seneca resource packs (T-SENECA-001) — the content-source OPTION.
+  // "bank" keeps the existing assembly flow byte-for-byte; "resources"
+  // picks from the course-linked Seneca library (course-scoped by the page
+  // context — NO course filterer anywhere). Flag-gated: senecaEnabled.
+  const [source, setSource] = useState<"bank" | "resources">("bank");
+  const [packKind, setPackKind] = useState<"courseSection" | "examQuestion" | "quiz">(
+    "courseSection",
+  );
+  const [packTopic, setPackTopic] = useState<string>("");
+  const [packQ, setPackQ] = useState("");
+  const [packQDebounced, setPackQDebounced] = useState("");
+  const [packLibrary, setPackLibrary] = useState<AssignmentPackLibraryView | null>(null);
+  const [packLoading, setPackLoading] = useState(false);
+  const [packError, setPackError] = useState<string | null>(null);
+  const [packPicked, setPackPicked] = useState<AssignmentPackResourceRow[]>([]);
+
+  // course switch clears the pack picker state (per-course libraries)
+  useEffect(() => {
+    setPackTopic("");
+    setPackQ("");
+    setPackQDebounced("");
+    setPackPicked([]);
+    setPackLibrary(null);
+    setPackError(null);
+  }, [course]);
+
+  useEffect(() => {
+    const t = setTimeout(() => setPackQDebounced(packQ), 300);
+    return () => clearTimeout(t);
+  }, [packQ]);
+
+  // the picker feed — the course rides the page's OWN context (D4 of the
+  // plan of record); a course with no linked library renders its honest
+  // empty state
+  useEffect(() => {
+    if (!builderOpen || source !== "resources" || !course) return;
+    let cancelled = false;
+    setPackLoading(true);
+    setPackError(null);
+    api
+      .teacherPackLibrary(course, {
+        kind: packKind,
+        topic: packTopic || undefined,
+        q: packQDebounced.trim() || undefined,
+        limit: 200,
+      })
+      .then((view) => {
+        if (!cancelled) setPackLibrary(view);
+      })
+      .catch((err: unknown) => {
+        if (!cancelled) setPackError(apiMessage(err, "The resource library is unavailable right now."));
+      })
+      .finally(() => {
+        if (!cancelled) setPackLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [builderOpen, source, course, packKind, packTopic, packQDebounced]);
+
+  const packPickedIds = useMemo(() => new Set(packPicked.map((r) => r.id)), [packPicked]);
+  const togglePackPick = (row: AssignmentPackResourceRow) =>
+    setPackPicked((cur) =>
+      packPickedIds.has(row.id) ? cur.filter((r) => r.id !== row.id) : [...cur, row],
+    );
+  // the marks law: exam questions carry their marks (min 1), sections and
+  // quizzes are 1-mark completion tasks — mirrored from the API's create law
+  const packPickedMarks = useMemo(
+    () =>
+      packPicked.reduce(
+        (a, r) => a + (r.kind === "examQuestion" ? Math.max(1, r.marksTotal ?? 1) : 1),
+        0,
+      ),
+    [packPicked],
+  );
 
   // V51 class targeting (TFA-02): the classes this teacher owns — the create
   // form can target one of them instead of the whole cohort. "cohort" keeps
@@ -294,7 +376,34 @@ export function AssignmentsClient({
     null;
 
   const createAssignment = useCallback(async () => {
-    if (!course || selected.size === 0 || !data) return;
+    if (!course) return;
+    if (source === "resources") {
+      if (packPicked.length === 0) return;
+      setCreating(true);
+      setCreateError(null);
+      try {
+        const meta = courses.find((c) => c.slug === course);
+        const created = await api.teacherCreateAssignmentPack({
+          title: title.trim() || `${packLibrary?.courseLabel ?? "Seneca resources"} — ${packPicked.length} resource${packPicked.length === 1 ? "" : "s"}`,
+          courseSlug: course,
+          courseLabel: packLibrary?.courseLabel ?? meta?.label ?? course,
+          dueAt: new Date(`${dueAt}T23:59:00`).toISOString(),
+          classId: targetClass === "cohort" ? null : targetClass,
+          resourceIds: packPicked.map((r) => r.id),
+        });
+        await loadList();
+        setSelectedId(created.assignmentId);
+        setTitle("");
+        setPackPicked([]);
+        setBuilderOpen(false);
+      } catch (err: unknown) {
+        setCreateError(apiMessage(err, "failed to register the pack on core"));
+      } finally {
+        setCreating(false);
+      }
+      return;
+    }
+    if (selected.size === 0 || !data) return;
     setCreating(true);
     setCreateError(null);
     try {
@@ -337,7 +446,7 @@ export function AssignmentsClient({
     } finally {
       setCreating(false);
     }
-  }, [course, selected, data, useMarksTarget, targetMarks, maxQuestions, title, dueAt, courses, loadList, targetClass]);
+  }, [course, selected, data, useMarksTarget, targetMarks, maxQuestions, title, dueAt, courses, loadList, targetClass, source, packPicked, packLibrary]);
 
   const flipStatus = useCallback(
     async (id: string, status: "open" | "closed") => {
@@ -504,6 +613,43 @@ export function AssignmentsClient({
                 </div>
               </div>
 
+              {/* content-source OPTION (T-SENECA-001) — flag-gated; "bank"
+                  keeps the existing assembly flow byte-for-byte */}
+              {senecaEnabled && (
+                <div className="flex flex-wrap items-center gap-2" role="group" aria-label="Content source">
+                  <span className="text-xs text-muted-foreground">Content source:</span>
+                  <button
+                    type="button"
+                    onClick={() => setSource("bank")}
+                    aria-pressed={source === "bank"}
+                    className={cn(
+                      "rounded-md border px-2.5 py-1 text-xs transition-colors",
+                      source === "bank" ? "bg-primary text-primary-foreground" : "hover:bg-muted/60",
+                    )}
+                  >
+                    Question bank
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSource("resources")}
+                    aria-pressed={source === "resources"}
+                    className={cn(
+                      "rounded-md border px-2.5 py-1 text-xs transition-colors",
+                      source === "resources" ? "bg-primary text-primary-foreground" : "hover:bg-muted/60",
+                    )}
+                  >
+                    Seneca resources
+                  </button>
+                  <span className="text-[11px] text-muted-foreground">
+                    {source === "bank"
+                      ? "Assemble marks-aware papers from the question bank."
+                      : `Pick from the ${packLibrary?.courseLabel ?? current?.label ?? "course"} Seneca library — already linked to this course, no filtering needed.`}
+                  </span>
+                </div>
+              )}
+
+              {source === "bank" && (
+                <>
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="space-y-1.5">
                   <Label htmlFor="asg-marks">Target marks</Label>
@@ -578,6 +724,112 @@ export function AssignmentsClient({
                   )}
                 </div>
               </fieldset>
+                </>
+              )}
+
+              {source === "resources" && (
+                <div className="space-y-3">
+                  <div className="flex flex-wrap items-center gap-2">
+                    {(["courseSection", "examQuestion", "quiz"] as const).map((k) => (
+                      <button
+                        key={k}
+                        type="button"
+                        onClick={() => setPackKind(k)}
+                        aria-pressed={packKind === k}
+                        className={cn(
+                          "rounded-md border px-2.5 py-1 text-xs transition-colors",
+                          packKind === k ? "bg-primary text-primary-foreground" : "hover:bg-muted/60",
+                        )}
+                      >
+                        {k === "courseSection" ? "Notes" : k === "examQuestion" ? "Exam questions" : "Quizzes"}
+                      </button>
+                    ))}
+                    <div className="relative ml-auto">
+                      <select
+                        aria-label="Topic within this course"
+                        value={packTopic}
+                        onChange={(e) => setPackTopic(e.target.value)}
+                        className="h-8 max-w-64 appearance-none rounded-md border bg-background pr-8 pl-2 text-xs"
+                      >
+                        <option value="">All topics in this course</option>
+                        {(packLibrary?.topics ?? []).map((t) => (
+                          <option key={t} value={t}>
+                            {t}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute top-1/2 right-2 size-3 -translate-y-1/2 text-muted-foreground" />
+                    </div>
+                  </div>
+
+                  <Input
+                    aria-label="Search Seneca resources"
+                    placeholder="Search titles & topics in this course's Seneca library…"
+                    value={packQ}
+                    onChange={(e) => setPackQ(e.target.value)}
+                  />
+
+                  <div className="max-h-72 space-y-1 overflow-y-auto rounded-md border p-2">
+                    {packLoading && (
+                      <p className="p-2 text-xs text-muted-foreground" role="status">
+                        Loading the course library…
+                      </p>
+                    )}
+                    {packError && (
+                      <p className="p-2 text-xs font-medium text-destructive" role="alert">
+                        {packError}
+                      </p>
+                    )}
+                    {!packLoading && !packError && (packLibrary?.resources.length ?? 0) === 0 && (
+                      <p className="p-2 text-xs text-muted-foreground">
+                        No Seneca resources linked to this course yet — the library fills as courses
+                        come online (the pilot: Edexcel IGCSE Chemistry).
+                      </p>
+                    )}
+                    {packLibrary?.resources.map((row) => (
+                      <label
+                        key={row.id}
+                        className="flex cursor-pointer items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-muted/60"
+                      >
+                        <Checkbox
+                          checked={packPickedIds.has(row.id)}
+                          onCheckedChange={() => togglePackPick(row)}
+                        />
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate">{row.title ?? "(untitled resource)"}</span>
+                          {row.topicPath && (
+                            <span className="block truncate text-[10px] text-muted-foreground">
+                              {row.topicPath}
+                            </span>
+                          )}
+                        </span>
+                        <Badge variant="outline" className="shrink-0 text-[10px] font-normal">
+                          {row.kind === "courseSection" ? "notes" : row.kind === "quiz" ? "quiz" : "exam q"}
+                        </Badge>
+                        {row.kind === "examQuestion" && row.marksTotal != null && (
+                          <span className="shrink-0 tabular-nums text-muted-foreground">{row.marksTotal} mk</span>
+                        )}
+                      </label>
+                    ))}
+                  </div>
+
+                  <p className="text-xs text-muted-foreground">
+                    {packPicked.length === 0
+                      ? "Pick resources above — they run as ordered tasks (notes → study, exam questions → marks against the scheme, quizzes → done)."
+                      : `${packPicked.length} resource${packPicked.length === 1 ? "" : "s"} selected · ${packPickedMarks} marks · ordered as picked`}
+                  </p>
+                  {packPicked.length > 0 && (
+                    <div className="max-h-28 space-y-1 overflow-y-auto rounded-md border p-2">
+                      {packPicked.map((r, i) => (
+                        <p key={r.id} className="truncate text-[11px] text-muted-foreground">
+                          <span className="mr-1.5 font-semibold text-foreground">{i + 1}.</span>
+                          {r.title ?? "(untitled resource)"}
+                        </p>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
 
               {createError && (
                 <p className="text-xs font-medium text-destructive" role="alert">
@@ -600,7 +852,12 @@ export function AssignmentsClient({
                 <Button
                   size="sm"
                   onClick={createAssignment}
-                  disabled={creating || !course || selected.size === 0 || !dueAt}
+                  disabled={
+                    creating ||
+                    !course ||
+                    !dueAt ||
+                    (source === "bank" ? selected.size === 0 : packPicked.length === 0)
+                  }
                   className="gap-1.5"
                 >
                   {creating ? (

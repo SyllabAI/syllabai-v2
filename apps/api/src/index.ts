@@ -58,6 +58,7 @@ import { buildLearnerRouters } from "./routes/learner";
 import { buildLearnerProgressRouters } from "./routes/learner/progress";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildTeacherAssignmentsRouters } from "./routes/assignments";
+import { buildAssignmentPacksRouters } from "./routes/assignment-packs"; // T-SENECA-001 (r5) — the Seneca resource packs (v2-native, additive; the T-TEACH-012 one-mount-line precedent)
 import { buildTeachingToolkitRouters } from "./routes/teaching-toolkit";
 import { buildResearchRouters } from "./routes/research";
 import { buildIngestionRouters } from "./routes/ingestion";
@@ -107,6 +108,7 @@ const featureGateDeps: FeatureGateDeps = {
   sql: createSql(requireDatabaseUrl(process.env as { DATABASE_URL?: string })),
 };
 const teacherAssignments = buildTeacherAssignmentsRouters();
+const assignmentPacks = buildAssignmentPacksRouters(); // T-SENECA-001
 const revisionNotes = buildRevisionNotesRouters();
 const knowledge = buildKnowledgeRouters();
 const teacherKg = buildTeacherKgRouters();
@@ -600,6 +602,18 @@ app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
 // commit per the T-MIG-010/020/021/030/032/033/034/041t2/052t2 precedent so
 // R0 can ratify or lift them out at review.
 app.route("/api/v1/teacher/assignments", teacherAssignments.teacherAssignmentsRoute);
+
+// Assignment packs (T-SENECA-001 — the teacher assignment creator's "Seneca
+// resources" option; v2-native additive side-family, the frozen assignments
+// wire untouched). Teacher: library feed + create + preview at
+// /api/v1/teacher/assignment-packs; learner: pack detail + task completion
+// under /api/v1/learners/me/assignment-packs. The pack IS an `assignments`
+// row + side-table tasks, so the existing hand-in/roster/agenda surfaces
+// work unchanged. OUT-OF-FENCE COMMIT (T-SENECA-001, R0 ratification
+// requested): the import + construction + two mount lines are the minimal
+// app-level wiring, the T-TEACH-012 precedent.
+app.route("/api/v1/teacher/assignment-packs", assignmentPacks.teacherPacksRoute);
+app.route("/api/v1/learners/me", assignmentPacks.learnerPacksRoute);
 
 // Teaching Toolkit router (T-TEACH-012 — the 4 educator-ai generators,
 // plan of record docs/TEACHING_TOOLKIT_PLAN.md). Mounted at

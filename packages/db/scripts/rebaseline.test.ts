@@ -247,21 +247,24 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // 17 columns, 1 index, 3 fks, 2 checks → 72/684/99/65/117;
   // DC-3 (0009_dc3-mark-entitlement) adds 3 tables, 18 columns, 3 indexes,
   // 5 fks, 3 checks → 75/702/102/70/120 (measured: verifyBaseline VERIFY
-  // PASS, 0 drifts, on the union end-state; renumber receipt in the plan).
-  test("75/702/102/70/120 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // PASS, 0 drifts, on the union end-state; renumber receipt in the plan);
+  // T-SENECA-001 (0010_seneca_resource_packs) adds 3 tables, 23 columns,
+  // 6 indexes, 4 fks, 6 checks → 78/725/108/74/126 (measured: verifyBaseline
+  // VERIFY PASS, 0 drifts, on the union end-state).
+  test("78/725/108/74/126 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 75/75");
-    expect(v.inventory).toContain("columns 702");
-    expect(v.inventory).toContain("indexes 102");
-    expect(v.inventory).toContain("fks 70");
-    expect(v.inventory).toContain("checks 120");
+    expect(v.inventory).toContain("tables 78/78");
+    expect(v.inventory).toContain("columns 725");
+    expect(v.inventory).toContain("indexes 108");
+    expect(v.inventory).toContain("fks 74");
+    expect(v.inventory).toContain("checks 126");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(75);
+    expect(run.size).toBe(78);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);

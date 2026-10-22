@@ -1,0 +1,65 @@
+version: 1
+task:
+  id: T-SENECA-001
+  title: "Seneca resource packs — the resource option inside the existing teacher assignment creator (4CH1-linked, no course filterer)"
+  owner: "Super Z (zai-web session web-d0c9a0d3-6cbb-48ca-91b1-54896d1b585e)"
+  status: IN_REVIEW
+  priority: P1
+  wave: teacher-flows
+  deps: []
+  execution_record: >
+    Operator commission (IM trace 1a1651ae815dc3d5, 2026-10-23): "syllabai-hub-v2.vercel.app
+    The teacher dashboard. There might already be an assignment creator, just add the option
+    there. Only for the subject/courses that are in syllabai right now. For example edexcel
+    igcse chemistry, link the resources to that course. So we wont be needing the course
+    filterer. Plan out more. I think you have to make some changes."
+    Design of record: docs/SENECA_RESOURCE_PACKS_PLAN.md. The frozen assignments family
+    (contracts/assignments.ts, routes/assignments.ts, services/teacher-assignments) is NOT
+    touched — the option rides a self-contained v2-native module (the T-TEACH-012 fence
+    shape) + additive-only side tables (the 0006 class_features precedent). Resource corpus:
+    the operator-approved Seneca Resource Hub harvest (syllabai-experimental d67bc1e3,
+    SME attestation family 2026-10-23; PII-scrubbed), linked ONLY to hub courses that exist
+    (pilot: igcse-chemistry-19, Edexcel IGCSE Chemistry 4CH1).
+    LANDED (run-001): contracts assignment-packs.ts + barrel line; 0010 migration + 3 tables
+    (schema.ts + meta snapshot via scripts/t-seneca-001-snapshot.py + rebaseline pins advanced
+    75/702/102/70/120 → 78/725/108/74/126, VERIFY 0 drifts); self-contained route (2 mount
+    lines, OUT-OF-FENCE flagged); 27 tests (17 service + 10 routes) GREEN; hub client methods;
+    creator source toggle + course-scoped picker (NO course filterer); learner PackPlayer +
+    pack-aware hand-in; flags.json senecaCourseResources (igcse-chemistry-19); import script
+    (dry-run census 286 sections + 1,430 exam questions + 3,382 quizzes = 5,098 rows, PII gate
+    clean, map law fail-closed vs courses.json AND course_registry at write time). Gates:
+    bun run typecheck 0 errors; bun test apps/api+packages 2,642 pass / 0 fail; hub tsc 0;
+    eslint 0 on touched files. DB apply (0010 + import against Neon) awaits the operator's
+    DATABASE_URL — same pending input as the pre-existing SQLite→Neon note.
+base:
+  repo: "syllabai-v2 @ 6bedab6 (origin/main at claim)"
+basis: >
+  Operator order above; T-TEACH-012 self-contained-fence precedent; UGM import precedent
+  (corpus → loader → flag-gated surfaces); BASELINE_DB.md §4 additive-only law.
+scope:
+  allowed:
+    - "packages/contracts/src/assignment-packs.ts"
+    - "packages/contracts/src/index.ts (export lines only)"
+    - "packages/db/src/schema/schema.ts (additive tables + README note)"
+    - "packages/db/drizzle/0010_seneca_resource_packs.sql"
+    - "packages/db/drizzle/meta (journal + 0000_snapshot.json additive entries)"
+    - "packages/db/scripts/rebaseline.test.ts (count-pin advance only, the 0008/0009 precedent)"
+    - "apps/hub/src/lib/types.ts (pack view types)"
+    - "scripts/t-seneca-001-snapshot.py"
+    - "apps/api/src/routes/assignment-packs.ts"
+    - "apps/api/src/index.ts (mount line only)"
+    - "apps/api/test/assignmentpacks/**"
+    - "apps/hub/src/lib/api.ts (client methods)"
+    - "apps/hub/src/app/teacher/assignments/**"
+    - "apps/hub/src/app/learner/assignments-tab.tsx"
+    - "apps/hub/content/flags.json"
+    - "scripts/import_seneca_resources.py"
+    - "docs/SENECA_RESOURCE_PACKS_PLAN.md"
+    - ".syllabai/tasks/T-SENECA-001.yaml (status/execution_record only)"
+    - ".syllabai/receipts/T-SENECA-001/**"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "packages/contracts/src/assignments.ts + learner.ts (frozen T-MIG-117 wire)"
+    - "apps/api/src/services/teacher-assignments/** (frozen port)"
+    - "apps/hub/content/* course bundles (corpus planes untouched)"
+    - "syllabai-core / syllabai-hub (frozen, C1)"

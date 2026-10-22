@@ -28,6 +28,22 @@ the bottom of this file.
 
 ## flyway_schema_history — core-owned, NEVER managed by Drizzle
 
+## Additive v2-native tables (each with its owning task)
+
+Hand-authored, additive-only (BASELINE_DB.md §4) — never part of the
+drizzle-kit pull baseline:
+
+- `bookChapters` / `bookBlocks` / `bookGlossaryTerms` / `chapterProgress` —
+  T-MIG-133 (Student Books) / T-BOOK-xxx band (0005).
+- `classFeatures`, `courseRegistry` — T-TEACH-002 (0006).
+- `markEntitlementPolicies`, `markEntitlements`, `aiMarkEvents` — DC-3
+  re-attempt entitlement (0009).
+- `senecaResources`, `assignmentResources`, `assignmentResourceStates` —
+  T-SENECA-001 (0010): the teacher assignment creator's "Seneca resources"
+  option — course-linked harvest rows, the pack task list hung off the
+  core-era `assignments` row by FK (side-table law), per-learner states
+  with server-side scoring.
+
 `flyway_schema_history` is present in the generated schema (62/62 tables are
 modelled — none omitted silently) but is **Flyway-owned forever**:
 
