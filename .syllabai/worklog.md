@@ -12172,3 +12172,24 @@ Stage Summary:
 - THE API CARRIER IS AT TIP CLASS OF RECORD: syllabai-v2.vercel.app serves 5cad720 (dpl_EzDQbaRkZw7X7QdcmpazZXCuxkBM) with the whole books read-plane, the 095 law, and the tail-law-era curriculum code IN-BUNDLE; census 21/21 green on both sides of the fire; rollback = re-alias dpl_DNwXstszZiRtNrcX1n2MDLpnB2Pj.
 - OPEN FOREIGN RESIDUALS: (1) CIE validator 3-assertion red blocks hub builds (GH workflow + Vercel bake) — content lane; (2) PR #285 dc3 head CI red — its lane; (3) PAT rotation CRITICAL overdue — the vcp_ token has now ridden THREE receipt chains and the GitHub PAT rides every push.
 - Standing reminder: the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law — and with today's plaintext paste, rotation of ALL THREE delivered credentials is advised once no lane needs them.
+---
+Task ID: T-SM-KAPPA-SUBJECT-DEPLOY-R0-RESUME (fire leg executed — order complete)
+Agent: Z.ai (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2; trace 1a162e7030a519dd)
+Task: operator order "deploy the cdc1cd2 build" — resume of the durable-ledger deploy (trace 1a1605558e578ec5) whose fire leg was quota-blocked; this run completed build + localgate + fire.
+
+Work Log:
+- Creds re-supplied by the operator (GitHub PAT + Vercel token), installed 0600, preflight 200/200; runbook v1 fired: clone + ancestry green, link/pull green, but a repo-root CLI preview built the KNOWN empty-build trap (404 all routes) — misdiagnosed first as 'apps/api root' then as 'do not stomp an external api-stage lane'; both draft conclusions RETRACTED of record after LEDGER RECOVERY (the durable T-SM-KAPPA-SUBJECT-DEPLOY-R0 entry disclosed the 093 recipe law: bundle deploy unit, env-less previews, localgate-as-staging-gate, dirty-tree carrier provenance problem).
+- Recipe executed verbatim (tools recovered in-tree, constants retargeted per the r9 class): build leg COMPLETE at cdc1cd23fa3dc0225a7974a48c05a8125581fbe8 — shim v2 clean, source pins 6/6 EXACT, bundle 347 modules / 3,298,012 B CJS (of-record at this commit: 345 / 3,287,769 — +2/+10,243 DISCLOSED, same bun+lockfile; localgate is the functional gate); worktree restored PRISTINE.
+- LOCALGATE 8/8 ALL PASS on the real Neon wire (health UP, login-malformed 400, register 201 = 1 census-class probe learner r0-092gate-<ts>@example.invalid DISCLOSED, tutor CRUD net-zero, L06 law); DSN via the Vercel env API, 0600, SHREDDED pre-fire with localgate-server.cjs.
+- 113 project assertion OK; stage = exactly 3 files, zero secrets.
+- FIRE LEG GREEN: vercel deploy --prod --yes from the stage -> CREATED syllabai-v2-o9px7r2qa-syllab-ai.vercel.app (dpl_iYoT7HrsRr8o52k3CHxtFTjDmjdi), Ready in 15s, NO quota rejection (window rolled); alias verified post-fire: syllabai-v2.vercel.app -> dpl_iYoT7HrsRr8o52k3CHxtFTjDmjdi.
+- Post-fire probes: /actuator/health 200 {groups:[liveness,readiness],status:UP} (the exact localgate shape, live); kappa/evaluate 4CH1 401; kappa/latest 4CH1 401; kappa/evaluate 4PH1 401 (R5 BLOCKED preserved).
+- Carrier change of record: dpl_EzDQbaRkZw7X7QdcmpazZXCuxkBM (api-stage dirty tree 09:33Z, unverified content) -> dpl_iYoT7HrsRr8o52k3CHxtFTjDmjdi (verified cdc1cd2 bundle) — the provenance improvement the order sought.
+- Hygiene: junk preview dpl_BQFGGVcz deleted mid-investigation; automation bypass secret revoked (0 remain); vercel-pull env files purged; no token at rest in .git/config; PATs to be rotated by the operator at lane close.
+
+Stage Summary:
+- Operator path step 1 (deploy the cdc1cd2 build) COMPLETE of record: production serves the verified cdc1cd2 093-recipe bundle.
+- Receipts: deploy-cdc1cd2-r1.json (fire) + deploy-investigation-r0.json (corrected arc + retractions).
+- Next: step 2 — 4CH1 teacher queue under D5 discipline -> pre-write replica check -> POST /kappa/evaluate -> D5.7 composition table on #276 -> D2 closes.
+- Open: who fires the api-stage dirty-tree builds (00:08Z + 09:33Z Oct 22) — operator to confirm ownership; both PATs rotate at lane close.
+

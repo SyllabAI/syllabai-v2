@@ -1,0 +1,44 @@
+{
+  "band": "T-SM-KAPPA-SUBJECT",
+  "kind": "deploy-fire",
+  "id": "deploy-cdc1cd2-r1",
+  "createdAtUtc": "2026-10-22T09:57:05Z",
+  "gatewayTrace": "1a162e7030a519dd",
+  "order": "deploy the cdc1cd2 build (operator order 'execute', chat 371a9d19-b6bb-4173-9696-cee324b265a1; creds re-supplied 2026-10-22 ~09:18Z)",
+  "recipe": "T-MIG-093 of record (gitSource lever FORBIDDEN — empty-build trap law 16:36:33Z); tools recovered in-tree from .syllabai/receipts/T-MIG-093/tools/, constants retargeted per the r9 adaptation class (REPO=worktrees/syllabai-v2-deploy, STAGE=deploy-stage), method untouched",
+  "build_leg": {
+    "commit": "cdc1cd23fa3dc0225a7974a48c05a8125581fbe8 (PR #270 merge; lineage-verified ancestor of origin/main=5cad720; detached checkout, fetch-first)",
+    "shim_v2": "applied CLEAN (both patch patterns matched, zero drift); generated asset module inlines the 6 hash-pinned concept-graph YAMLs byte-verbatim; explicit Node adapter entry written; worktree RESTORED PRISTINE after build (0 tracked deltas, generated files removed)",
+    "source_pins_6_of_6_exact": {
+      "learner-me/concepts.yaml": "24fa91ac7149682b",
+      "learner-me/concept_edges.yaml": "8a651dd9e60bfefa",
+      "learner-me/practicals.yaml": "e53e5f87606a2b5a",
+      "teacher/concept-graph/relationships.yaml": "b3b7529222d77d80",
+      "teacher/concept-graph/specification_points.yaml": "b1fea69953205077",
+      "teacher/concept-graph/topics.yaml": "a7b14cbdd34bb9fe"
+    },
+    "bundle": "347 modules / 3,298,012 bytes CJS (3.30 MB), bun 1.3.14, 930 packages frozen-lockfile",
+    "drift_disclosure": "of-record build at the same commit (trace 1a1605558e578ec5): 345 modules / 3,287,769 B — delta +2 modules / +10,243 B with identical bun major.minor and lockfile; source pins 6/6 EXACT and the localgate is the functional gate of record; drift disclosed, not silently accepted"
+  },
+  "localgate_leg": {
+    "verdict": "8/8 ALL PASS on the real Neon wire (real Node http server over the bundle, LOCAL-ONLY 44-byte JWT key per law)",
+    "legs": "health 200 UP {groups:[liveness,readiness]}; login-malformed 400 validation_failed; register 201 real INSERT (probe learner r0-092gate-<ts>@example.invalid — the of-record census class, DISCLOSED); tutor-create 201; tutor-list-nonempty 200 (L06 law); tutor-latest 200; tutor-delete 204; tutor-list-after-delete 200 [] (net-zero)",
+    "dsn_provenance": "DATABASE_URL fetched via the Vercel env API (production target), staged 0600 as .env.localgate, SHREDDED before the fire leg (never uploaded); localgate-server.cjs also shredded pre-fire"
+  },
+  "fire_leg": {
+    "command": "vercel deploy --prod --yes from /home/z/my-project/deploy-stage (api/index.js + vercel.json rewrites [/api/v1/(.*) -> /api/index, /actuator/health -> /api/index] + .vercel/project.json)",
+    "pre_fire_assertions": "113 project law OK (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX); stage contained exactly 3 files, zero secrets",
+    "result": "CREATED — https://syllabai-v2-o9px7r2qa-syllab-ai.vercel.app, Ready in 15s, no quota rejection (the api-deployments-free-per-day block from trace 1a1605558e578ec5 has rolled)",
+    "deployment_uid": "dpl_iYoT7HrsRr8o52k3CHxtFTjDmjdi",
+    "alias": "syllabai-v2.vercel.app -> dpl_iYoT7HrsRr8o52k3CHxtFTjDmjdi (verified via the aliases API post-fire)"
+  },
+  "post_fire_probes": {
+    "actuator_health": "200 {\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"} (the exact localgate shape, live)",
+    "kappa_evaluate_4ch1": "401 (auth wall intact, route present)",
+    "kappa_latest_4ch1": "401",
+    "kappa_evaluate_4ph1": "401 (R5 BLOCKED posture preserved)"
+  },
+  "carrier_change": "prod carrier: dpl_EzDQbaRkZw7X7QdcmpazZXCuxkBM (api-stage dirty tree, 09:33:27Z, UNVERIFIED content) -> dpl_iYoT7HrsRr8o52k3CHxtFTjDmjdi (verified cdc1cd2 093-recipe bundle) — the provenance improvement the order sought (prior finding of record: carriers built from UNPUSHED DIRTY trees)",
+  "bookkeeping": "receipt + ledger append (.syllabai-only commit, fetch-first, no force) + status advance on #276; DSN/creds hygiene: Vercel + GitHub PATs to be rotated by the operator at lane close",
+  "next_in_operator_path": "step 2: 4CH1 teacher queue under D5 discipline -> pre-write replica check -> POST /kappa/evaluate -> D5.7 composition table on #276 -> D2 closes"
+}
