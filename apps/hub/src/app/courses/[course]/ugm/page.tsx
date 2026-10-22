@@ -4,19 +4,20 @@ import { Compass, Landmark, ShieldCheck, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { boardOf, getCourseMeta } from "@/lib/courses";
-import { getUgmBundle } from "@/lib/ugm";
+import { getUgmBundle, ugmStationNames } from "@/lib/ugm";
 import { CourseHeader } from "@/components/hub/course-header";
 
 /**
  * Underground Mathematics index — the per-spec-point resource library for
- * one course lane (quadratics station first, ADR-UGM-0001 as amended
- * 2026-10-23). Serves ONLY when the flags.json gate lists this course AND
- * the committed bundle validates; otherwise notFound() — the flag law is
- * absent=OFF and an unflagged page must not exist, not merely be empty.
+ * one course (multi-lane: quadratics first, Combining Functions second;
+ * ADR-UGM-0001 as amended 2026-10-23). Serves ONLY when the flags.json gate
+ * lists this course AND the committed bundle validates; otherwise
+ * notFound() — the flag law is absent=OFF and an unflagged page must not
+ * exist, not merely be empty.
  *
  * Honesty surfaces baked in: review_state SUGGESTED with its note, the
  * corpus pin, the rights holder + license line, and the primaryPick marker
- * (the corpus's own curation, not our ranking). The 3 declared
+ * (the corpus's own curation, not our ranking). The 14 declared
  * non-overlaps are listed with their recorded reasons — coverage is never
  * manufactured (AGENT.md rule 3 mirrored hub-side).
  */
@@ -43,7 +44,7 @@ export default async function CourseUgmPage({
         meta={meta}
         crumb="Underground Mathematics"
         title="Underground Mathematics"
-        description={`Cambridge's Underground Mathematics ${ugm.station} collection for ${boardOf(meta)} ${meta.level} ${meta.subject} — ${coverage.aligned} resources mapped across ${ugm.specPoints.length} specification points, each with suggestions and worked solutions. Alignment candidates are SUGGESTED, promoted only through the review gate.`}
+        description={`Cambridge's Underground Mathematics ${ugmStationNames(ugm)} collections for ${boardOf(meta)} ${meta.level} ${meta.subject} — ${coverage.aligned} resources mapped across ${ugm.specPoints.length} specification points, each with suggestions and worked solutions. Alignment candidates are SUGGESTED, promoted only through the review gate.`}
       />
 
       {/* provenance & rights card — always first, never buried */}
@@ -137,7 +138,7 @@ export default async function CourseUgmPage({
             </span>
           </h2>
           <p className="text-[13px] text-muted-foreground">
-            These {ugm.station} resources were considered and deliberately left unmapped — the
+            These {ugmStationNames(ugm)} resources were considered and deliberately left unmapped — the
             recorded reasons are kept visible instead of manufactured coverage.
           </p>
           <ul className="grid gap-2 sm:grid-cols-2">

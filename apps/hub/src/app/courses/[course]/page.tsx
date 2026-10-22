@@ -218,7 +218,7 @@ export default async function CourseHubPage({
               {
                 icon: Compass,
                 title: "Underground Mathematics",
-                desc: `Cambridge's Underground Mathematics ${ugm.station} collection — rich problems with suggestions and worked solutions, mapped to this course's specification points (alignment candidates, SUGGESTED).`,
+                desc: `Cambridge's Underground Mathematics (Quadratics and Combining Functions collections) — rich problems with suggestions and worked solutions, mapped to this course's specification points (alignment candidates, SUGGESTED).`,
                 tags: ["Study", "Practice"] as FrameworkTag[],
                 href: `${base}/ugm`,
                 countLabel: `${ugm.coverage.aligned} resources · ${ugm.specPoints.length} spec points`,
