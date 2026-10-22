@@ -12957,3 +12957,16 @@ Work Log:
 
 Stage Summary:
 - F-182 BUILD LANDED of record (branch f182-drill-build-r0): the drill surface is LIVE code — contracts, route, seam, UI — with the zero-stakes law structural (own tables, never read by gradebook). The lane now stands at the F-183 gate: the MS-reveal LAW (markPoints M1..Mn, drill-mode never teacher-gated) is the next titled lane, then F-184 strength surface (ADR-031), F-185 model-driven draw, F-186 battles. Residuals disclosed in the prereg §8 (serverless packaging is a deploy-lane concern behind the bank port; recency naive by design P4; structured ungraded until the marking lanes; 11 uncovered + 14 thin addresses are the corpus queue; reveal is submit-to-reveal until F-183).
+
+---
+Task ID: T-RULE-T2-V8-RETRACT-1 run-003
+Agent: operator desk (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, trace 1a16541e55a06bd1)
+
+Work Log:
+- Directive "7-sid V8 retraction batch" — the operator gate disclosed at resources 5b85ea3 (relationToV8 per record) + run-002 disclosures OPENS of record.
+- RESOURCES SIDE (PR #68, merged @ e7c7a68): 42 removals + 12 additions (tier tranche2_conditional_resolved) + 1 verify-only group across the 7 sids (6kfK/HmMg/Zt25 CORRECTS, YpKq/Ytmx EXTENDS, WXp9/jptn NARROWS demoted-to-secondary); anchors.operatorSidAnchors byte-frozen; anchors.v8Retraction block (schema syllabai.operator-v8-retraction/1.0); manifest additive operatorV8Retraction row; machine record graph/reports/tranche2-r2/v8-retraction-run-001-r0.json; sidecar sha 7d23b947 -> ddf81735; gates G0-G6 all green; relationToV8 claims reconciled as ENTRY counts (per-sid parts 7/22/1/10/3/4/1 = 93 entries, all in chem25 — 94-sidecar scan).
+- V2 SIDE (this commit): the consume engine learns the operator V8-retraction law — Stage B surgical (item, code) ladder drops (L_SIDECAR V8 operator-verdict mirror only; other lineages preserved verbatim, NO-GUESS guard) + the zero-code mirror (merged-empty no longer resurrects stale codes) + M1 retraction exemption (provenance-checked per pair); pin advance 3838a264 -> e7c7a68 (the PR-#68-merged tip); 44 maps re-keyed + chem25 item plane -42/+12 + chem25 questions bundle; every other bank's items byte-unchanged (proven per-bank); validator pin ladder extended (CIE_PIN_PRIOR_4 = 3838a264); roster census re-pinned 6780/5782/9402, unmapped 12298 (identity 12317 == 12298+19 re-proven); receipt tranche2-v8-retraction-consume-run-003-r0.json.
+- FULL LOCAL LANE GREEN: typecheck 0; bun test 2639 pass / 13 skip / 0 fail; verify:corpus + verify:flashcard-sync + validate_cie_bundles PASSED; roster 15/15.
+
+Stage Summary:
+- The 7-sid V8 retraction is CONSUMED of record: sidAnchors 0/23/0 (byte fixed point preserved), v8RetractDropped 42, post-apply idempotence changed=0/44. Census movement = ONE chem25 question (8W7s, the 26.1.4 mis-tag residual). Residuals unchanged: 10 mis-tag re-points, holds 9Dxx/pYmR + split Cdtk, tranche-3, PAT rotation, hung resources sync job. LANE: IDLE.

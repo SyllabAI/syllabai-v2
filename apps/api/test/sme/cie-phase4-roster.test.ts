@@ -115,12 +115,27 @@ describe("cie-phase4 roster law", () => {
     // 859/1529 bank anchors byte-stable; map-law census green 44/44.
     // Floors re-pinned from the live census of the adopted tree
     // (scripts/t2consume_census_probe.ts over loadRoster + mapLawCensus).
-    expect(questions).toBe(6781);
-    expect(parts).toBe(5786);
+    // TRANCHE-2 RETRACTION RE-BASE (T-RULE-T2-V8-RETRACT-1 run-003, operator
+    // order '7-sid V8 retraction batch', trace 1a16541e55a06bd1, not a
+    // loosening): the operator gate disclosed at run-002 opens — resources
+    // PR #68 retracts the b01/b02 V8 part-level entries the tranche-2 ruling
+    // corrects (42 removals + 12 ruling assignments tier
+    // tranche2_conditional_resolved + 1 verify-only group across 7 sids;
+    // anchors byte-frozen, sidAnchors 0/23/0) and the consume engine's
+    // retraction law (surgical (item, code) drops + the zero-code mirror)
+    // lands them: ONE chem25 question loses its only coded part
+    // (qstnprt_8W7sTFyZCChbbB8q, the of-record 26.1.4 mis-tag residual) —
+    // questions 6781 -> 6780, parts 5786 -> 5782, pkgParts 9406 -> 9402,
+    // unmapped 12,297 -> 12,298 EXACT (raw 19,097/25,663 UNCHANGED; the
+    // identity rawQ - questions == unmapped + dupOrder re-proven:
+    // 12,317 == 12,298 + 19). Floors re-pinned from the live census
+    // (scripts/t2retract_census_probe.ts over loadRoster + mapLawCensus).
+    expect(questions).toBe(6780);
+    expect(parts).toBe(5782);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(9406);
+    expect(pkgParts).toBe(9402);
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -149,7 +164,7 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0 },
     );
-    expect(excl).toEqual({ unmapped: 12297, badSum: 0, dupOrder: 19 });
+    expect(excl).toEqual({ unmapped: 12298, badSum: 0, dupOrder: 19 });
     // the question-level identity: raw - servable = unmapped + dupOrder (each
     // exclusion removes whole questions; badSum is zero of record)
     expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder);
