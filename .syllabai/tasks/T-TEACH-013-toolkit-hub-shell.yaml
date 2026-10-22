@@ -1,0 +1,23 @@
+version: 1
+task:
+  id: T-TEACH-013
+  title: "Hub shell — /teacher/toolkit tab, class picker, resource history"
+  owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
+  status: OPEN
+  priority: P1
+  band: T-TEACH
+  wave: teach-toolkit-B
+  deps: [T-TEACH-012]
+  scope:
+    allowed:
+      - "apps/hub/src/app/teacher/toolkit/**"
+      - "apps/hub/src/components/teacher/teacher-nav.tsx (one TABS row)"
+      - "apps/hub/src/lib/api.ts (client fns)"
+    forbidden:
+      - "any change to existing teacher pages"
+  notes: >
+    Class picker from api.teacherClasses() (live core rosters; the same
+    server-resolved course registry pattern as test-builder/page.tsx).
+    History list via GET resources?limit=50 with ?resourceId deep link.
+    No subject picker anywhere: context chips render the class-resolved
+    Subject/Board/Level/Curriculum code.

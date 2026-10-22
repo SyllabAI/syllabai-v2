@@ -1,0 +1,24 @@
+version: 1
+task:
+  id: T-TEACH-014
+  title: "Hub tool pages — 4 forms (class-context, no subject) + ported renderers + class-workspace TOOLS cards"
+  owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
+  status: OPEN
+  priority: P0
+  band: T-TEACH
+  wave: teach-toolkit-B
+  deps: [T-TEACH-013]
+  scope:
+    allowed:
+      - "apps/hub/src/app/teacher/toolkit/[tool]/**"
+      - "apps/hub/src/components/teaching-toolkit/**"
+      - "apps/hub/src/app/teacher/classes/[id]/class-detail-client.tsx (TOOLS array addition)"
+      - "apps/hub/src/app/teacher/classes/[id]/class-workspace-local.tsx (TOOLS array addition)"
+    forbidden:
+      - "existing TOOLS card removal/reordering"
+  notes: >
+    Forms port from znotes/recreation forms.tsx minus subject inputs;
+    lesson-plan objectives auto-attached verbatim from context endpoint
+    (read-only checklist, deselect allowed). Renderers port from
+    renderers.tsx (ZNotes tab structures). Rubric scores computed
+    client-side 100/75/50/25% of marksPerCriterion. Staged progress UX.

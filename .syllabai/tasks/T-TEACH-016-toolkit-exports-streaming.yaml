@@ -1,0 +1,20 @@
+version: 1
+task:
+  id: T-TEACH-016
+  title: "Exports (print-PDF, DOCX, CSV rubric) + optional SSE progress"
+  owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
+  status: OPEN
+  priority: P2
+  band: T-TEACH
+  wave: teach-toolkit-C
+  deps: [T-TEACH-014]
+  scope:
+    allowed:
+      - "apps/hub/src/components/teaching-toolkit/** (exports + progress)"
+    forbidden:
+      - "new server-side document rendering services"
+  notes: >
+    Browser-side exports (ZNotes parity: docx+JSZip client-side; PDF via
+    print stylesheet; CSV for rubric levels). SSE only if UX needs it —
+    FailoverLlmChain.stream law (failover before first delta) + streamSSE
+    events per routes/tutor.ts; else keep synchronous await.

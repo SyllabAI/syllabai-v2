@@ -1,0 +1,28 @@
+version: 1
+task:
+  id: T-TEACH-010
+  title: "Teaching Toolkit contracts + prompt registry seeds + chainAsToolkitGenerator bridge"
+  owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
+  status: OPEN
+  priority: P1
+  band: T-TEACH (teacher AI toolkit — plan: docs/TEACHING_TOOLKIT_PLAN.md)
+  wave: teach-toolkit-A
+  deps: []
+  scope:
+    allowed:
+      - "packages/contracts/src/teaching-toolkit.ts"
+      - "packages/contracts/src/teaching-toolkit.test.ts"
+      - "packages/contracts/src/index.ts (one barrel line)"
+      - "apps/api/src/services/llmchain/bridges.ts (additive bridge only)"
+    forbidden:
+      - "apps/hub/**"
+      - "packages/db/src/schema/schema.ts (that is T-TEACH-011)"
+      - "any Flyway-era table or upstream repo"
+  notes: >
+    Payload schemas WITHOUT subject (class-resolved server-side, operator
+    directive). Output schemas = the four fidelity-validated contracts from
+    znotes/recreation (syllabai-experimental). Prompts are ORIGINAL (ZNotes
+    server prompts unknowable); seed prompt_versions rows
+    teaching-toolkit/{lesson-plan,rubric,sow,coach} v1.0. Bridge:
+    temperature 0.5, maxTokens 8000, reasoningEffort low, JSON wall +
+    one self-heal retry (proven loop, 4/4 tools EXACT).

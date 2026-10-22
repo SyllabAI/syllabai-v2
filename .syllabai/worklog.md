@@ -12000,3 +12000,28 @@ Work Log:
 
 Stage Summary:
 - main @ 6037ded green; LESSON wire lessonPackV1 contracts + 4CH1 lesson-plan of record landed. Sweep context: TS4L census red healed at d559292 (escalation cleared after 7 red rounds); PR #285 (dc3) head CI red, skipped — lane to refresh head CI on new head; bookkeeping-only receipt push (this commit).
+
+---
+Task ID: T-TEACH-PLAN (planning only — T-TEACH-010..016 filed OPEN)
+Agent: main agent (Z.ai, zai-web session web-528c0352, chat a7ae5075, trace 1a16153b3e129e51)
+Task: Analyze the Teacher Dashboard and plan integration of the 4 educator-ai
+generators (recreated from ZNotes with 100% structural fidelity) into SyllabAI.
+
+Work Log:
+- Cloned syllabai-v2; deep-dived teacher surfaces (9 routes), auth (JWT +
+  requireRole), schema (classes/course_registry/knowledge_nodes/
+  teaching_coverage/book_chapters/class_features), LLM chain
+  (FailoverLlmChain, groq->gemini->openrouter, bridges/seams), conventions
+  (task yaml fences, additive-only migrations, envelope law, prompt_versions).
+- Wrote docs/TEACHING_TOOLKIT_PLAN.md: class-context-replaces-subject-picker
+  law (operator directive), grounding map (SPEC_POINTs verbatim ->
+  learningObjectives, teaching_coverage-aware SOW), contracts/routes/persistence/
+  quota design (SYLLABAI_TOOLKIT_DAILY_LIMIT=25/day/teacher), hub UI mounts
+  (TOOLS grid + /teacher/toolkit tab), risk register, ZNotes divergences.
+- Filed 7 task cards T-TEACH-010..016 (OPEN, waves teach-toolkit-A/B/C) with
+  scope fences; no code changed — planning only.
+
+Stage Summary:
+- Integration is precedent-clean: every element maps to an existing in-repo
+  pattern (smart-mark sync LLM posture, ADR-CLASS-0001 gating, test-builder
+  deep links, prompt_versions registry). Ready for T-TEACH-010 claim.

@@ -1,0 +1,22 @@
+version: 1
+task:
+  id: T-TEACH-011
+  title: "Migration 0008 — teaching_toolkit_resources + teaching_toolkit_usage + class_features.ai_toolkit"
+  owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
+  status: OPEN
+  priority: P1
+  band: T-TEACH
+  wave: teach-toolkit-A
+  deps: [T-TEACH-010]
+  scope:
+    allowed:
+      - "packages/db/drizzle/0008_teaching_toolkit.sql"
+      - "packages/db/src/schema/schema.ts (additive tables/column only)"
+      - "packages/db/src/schema/README.md (owning task id row)"
+    forbidden:
+      - "ALTER/INDEX on any Flyway-era table beyond the additive ai_toolkit column"
+  notes: >
+    Additive-only per docs/BASELINE_DB.md. class_features.ai_toolkit boolean
+    NOT NULL DEFAULT true preserves the row-absent = all-ON law
+    (ADR-CLASS-0001). Append-only results posture (smart_mark_results
+    precedent). Verify with db:generate/db:check, not db:pull surprises.

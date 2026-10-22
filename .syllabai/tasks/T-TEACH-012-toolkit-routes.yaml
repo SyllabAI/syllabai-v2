@@ -1,0 +1,28 @@
+version: 1
+task:
+  id: T-TEACH-012
+  title: "Toolkit API routes — generate/context/resources + quota + class feature gate + tests"
+  owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
+  status: OPEN
+  priority: P0
+  band: T-TEACH
+  wave: teach-toolkit-A
+  deps: [T-TEACH-010, T-TEACH-011]
+  scope:
+    allowed:
+      - "apps/api/src/routes/teaching-toolkit.ts"
+      - "apps/api/src/index.ts (one mount line)"
+      - "apps/api/src/middleware/ratelimit.ts (add toolkit to llm tier)"
+      - "apps/api/test/teachingtoolkit/**"
+    forbidden:
+      - "apps/hub/**"
+      - "any change to existing route families"
+  notes: >
+    POST /api/v1/teacher/toolkit/generate {toolType,classId?,courseId?,data}.
+    requireRole TEACHER/ADMIN; class ownership check (classes.teacher_id =
+    JWT uid) -> course_registry context; class_features.ai_toolkit gate;
+    SYLLABAI_TOOLKIT_DAILY_LIMIT (default 25/day/teacher) via
+    teaching_toolkit_usage upsert, 429 toolkit_quota_exhausted; seam
+    seams.chain ?? buildLlmChain(env) -> chainAsToolkitGenerator; zod wall;
+    persist row; return {resource, output, elapsedMs, model}. Envelope law:
+    malformed_body / validation_failed. Tests with fake chain seam.

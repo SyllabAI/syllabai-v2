@@ -1,0 +1,21 @@
+version: 1
+task:
+  id: T-TEACH-015
+  title: "Grounding depth — coverage-aware SOW resume, weakness preselect, note-card passage for coach"
+  owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
+  status: OPEN
+  priority: P2
+  band: T-TEACH
+  wave: teach-toolkit-C
+  deps: [T-TEACH-014]
+  scope:
+    allowed:
+      - "apps/api/src/routes/teaching-toolkit.ts (context endpoint extensions)"
+      - "apps/hub/src/components/teaching-toolkit/**"
+    forbidden:
+      - "any write to teaching_coverage (read-only grounding)"
+  notes: >
+    teaching_coverage (read-only) -> SOW 'resume from first untaught spec
+    point'; weakness options -> emphasis preselect (same source as
+    /teacher/tests/weakness-options); coach passage may pick a book chapter /
+    revision note of the class course (parity with ZNotes note cards).
