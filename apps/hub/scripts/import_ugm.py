@@ -6,13 +6,18 @@ Mirrors the import_content.py discipline: reads a LOCAL checkout/snapshot of
 SyllabAI/syllabai-resources at a pinned ref (never GitHub at runtime), and
 emits a versioned, self-describing JSON bundle committed under content/.
 
-Sources of record (course cie-a-level-maths-20-pure-1, two UGM lanes):
+Sources of record (course cie-a-level-maths-20-pure-1, three UGM lanes):
   - lane 1 (quadratics): UGM-Enrichment/...-quadratics.json (#55) +
     UGM-Resources/pure-1-quadratics/ (#58), landed of record main@91eed732
   - lane 2 (functions):  UGM-Enrichment/...-functions.json +
     UGM-Resources/pure-1-functions/ (PR #61, T-UGM-MODE1-2 / T-UGM-IMPORT-2),
     landed of record main@a32c6c0f
-  both under ADR-UGM-0001 (as amended 2026-10-23) + the operator attestation
+  - lane 3 (coordinate geometry): UGM-Enrichment/...-coordinate-geometry.json +
+    UGM-Resources/pure-1-coordinate-geometry/ (PR #66, T-UGM-MODE1-3 /
+    T-UGM-IMPORT-3), landed of record main@7e11a74c — the FIRST multi-station
+    lane (Geometry of Equations + Circles under one spine subtopic; the
+    enrichment's stationScope block is the of-record station breakdown)
+  all under ADR-UGM-0001 (as amended 2026-10-23) + the operator attestation
   of 2026-10-23 ("downloaded text can ship into SyllabAI. We have permission").
 
 Output: content/<lane>/ugm-resources.json, schema
@@ -22,16 +27,19 @@ are kept; the hub renderer's normalizeCorpusMath already supports them) plus
 the declared non-overlaps. Schema 1.0 (single station) is superseded: the
 singular `station`/`stationUrl` become `stations[]`, `source.enrichment` /
 `source.resourcesDir` become per-lane arrays, each resource gains its `station`
-slug, and `coverage` gains a per-lane breakdown. Serve-side gating is the
+slug (its front-matter UGM station — multi-station lanes carry several under
+one lane), and `coverage` gains a per-lane breakdown. Serve-side gating is the
 flags.json law (absent=OFF), not this file — the bundle landing alone does not
 surface anything.
 
 Usage:
   python3 scripts/import_ugm.py --repo <syllabai-resources-snapshot-dir> \
-      [--ref main@a32c6c0f...] [--lane cie-a-level-maths-20-pure-1]
+      [--ref main@7e11a74c40eb5667fedea5cd9a3c49e03b302e8b] \
+      [--lane cie-a-level-maths-20-pure-1]
 
 The script audits before writing (fail-closed, PER LANE): enrichment row
-census, blob identity (sha256 vs MANIFEST.json v2 lane block), front-matter ↔
+census, blob identity (sha256 vs MANIFEST.json v2 lane block), the
+stationScope/stationBreakdown census for multi-station lanes, front-matter ↔
 enrichment spec-point set equality per resource, primaryPick uniqueness,
 delimiter balance per body — ANY failure aborts with no file written.
 """
@@ -52,11 +60,14 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-DEFAULT_REF = "main@a32c6c0f3e27941e03e08b3344f276b2010a2f31"
+DEFAULT_REF = "main@7e11a74c40eb5667fedea5cd9a3c49e03b302e8b"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
-# Per-course UGM lane mapping. Each lane block mirrors one UGM station and one
-# spine subtopic; the bundle merges lanes (a course's UGM surface is one index).
+# Per-course UGM lane mapping. Single-station blocks (`station` + `title`)
+# mirror one UGM station; multi-station blocks (lane 3+) declare `laneSlug` +
+# `laneTitle` + `stations[]` and are audited against the enrichment's
+# stationScope of record. The bundle merges lanes (a course's UGM surface is
+# one index).
 # expected: {resources, rows, aligned, nonOverlap} — the audited census of record.
 LANE_STATIONS = {
     "cie-a-level-maths-20-pure-1": [
@@ -76,6 +87,18 @@ LANE_STATIONS = {
             "ledger": "LEDGER.md — T-UGM-MODE1-2 and T-UGM-IMPORT-2 (PR #61)",
             "expected": {"resources": 38, "rows": 50, "aligned": 27, "nonOverlap": 11},
         },
+        {
+            "laneSlug": "coordinate-geometry",
+            "laneTitle": "Coordinate Geometry",
+            "stations": [
+                {"slug": "geometry-of-equations", "title": "Geometry of Equations"},
+                {"slug": "circles", "title": "Circles"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-1-coordinate-geometry.json",
+            "res_dir": "UGM-Resources/pure-1-coordinate-geometry",
+            "ledger": "LEDGER.md — T-UGM-MODE1-3 and T-UGM-IMPORT-3 (PR #66)",
+            "expected": {"resources": 85, "rows": 77, "aligned": 61, "nonOverlap": 24},
+        },
     ],
 }
 
@@ -91,8 +114,14 @@ def spec_code_key(code):
 
 
 def import_lane(repo, lane_block):
-    """Run the full per-lane audit + join; returns the lane's bundle parts."""
-    station = lane_block["station"]
+    """Run the full per-lane audit + join; returns the lane's bundle parts.
+
+    Lane blocks come in two shapes: single-station (lanes 1-2: `station` +
+    `title`) and multi-station (lane 3+: `laneSlug` + `laneTitle` +
+    `stations[]`, audited against the enrichment's stationScope block).
+    """
+    station = lane_block.get("station") or lane_block["laneSlug"]
+    st_slugs = [s["slug"] for s in lane_block.get("stations") or [{"slug": station}]]
     exp = lane_block["expected"]
 
     # ── 1. enrichment facts of record ────────────────────────────────────
@@ -107,6 +136,26 @@ def import_lane(repo, lane_block):
        enr.get("coverage", {}).get("nonOverlap") != exp["nonOverlap"]:
         fail(f"[{station}] enrichment coverage {enr.get('coverage', {}).get('aligned')}/"
              f"{enr.get('coverage', {}).get('nonOverlap')} != expected {exp['aligned']}/{exp['nonOverlap']}")
+
+    # ── 1b. multi-station stationScope audit (new shape from lane 3) ────
+    ss_by_slug = {}
+    if lane_block.get("stations"):
+        ss_stations = (enr.get("stationScope") or {}).get("stations")
+        if not isinstance(ss_stations, list) or not ss_stations:
+            fail(f"[{station}] multi-station lane but enrichment carries no stationScope.stations")
+        ss_by_slug = {s.get("slug"): s for s in ss_stations}
+        if sorted(ss_by_slug) != sorted(st_slugs):
+            fail(f"[{station}] stationScope slugs {sorted(ss_by_slug)} != lane block {sorted(st_slugs)}")
+        breakdown = enr.get("coverage", {}).get("stationBreakdown") or {}
+        for s in lane_block["stations"]:
+            sc = ss_by_slug.get(s["slug"], {})
+            if sc.get("title") != s["title"]:
+                fail(f"[{station}] stationScope title drift for {s['slug']}: {sc.get('title')!r} != {s['title']!r}")
+            bk = breakdown.get(s["slug"])
+            if not isinstance(bk, dict):
+                fail(f"[{station}] no coverage.stationBreakdown entry for {s['slug']}")
+            if any(bk.get(k) != sc.get(k) for k in ("resources", "aligned", "nonOverlap")):
+                fail(f"[{station}] stationScope/stationBreakdown census drift for {s['slug']}")
 
     # ── 2. corpus text of record (blob identity vs MANIFEST.json v2) ────
     res_dir = os.path.join(repo, lane_block["res_dir"])
@@ -149,8 +198,11 @@ def import_lane(repo, lane_block):
             fail(f"[{station}] no ugm_id: {f}")
         if ugm_id in parsed:
             fail(f"[{station}] duplicate ugm_id: {ugm_id}")
-        if (ri.get("station") or station) != station:
-            fail(f"[{station}] front-matter station {ri.get('station')!r} != lane station {station!r}: {f}")
+        if lane_block.get("stations") and not ri.get("station"):
+            fail(f"[{station}] multi-station lane requires front-matter station: {f}")
+        fst = ri.get("station") or st_slugs[0]
+        if fst not in st_slugs:
+            fail(f"[{station}] front-matter station {ri.get('station')!r} not in lane stations {st_slugs}: {f}")
         # the corpus law: delimiters stay balanced per file (build audit law)
         if body.count(r"\(") != body.count(r"\)") or body.count(r"\[") != body.count(r"\]"):
             fail(f"[{station}] delimiter imbalance in {f}")
@@ -160,6 +212,7 @@ def import_lane(repo, lane_block):
         parsed[ugm_id] = {
             "ugmId": ugm_id,
             "file": f,
+            "station": fst,
             "title": _title_from_fm_or_body(fm, body, ugm_id),
             "url": fm.get("source"),
             "resourceType": _tag_prefix(fm, "type/"),
@@ -210,7 +263,7 @@ def import_lane(repo, lane_block):
         resources.append({
             "ugmId": slug,
             "slug": slug,
-            "station": station,
+            "station": p["station"],
             "title": p["title"],
             "url": p["url"],
             "resourceType": p["resourceType"],
@@ -235,7 +288,7 @@ def import_lane(repo, lane_block):
         resources.append({
             "ugmId": slug,
             "slug": slug,
-            "station": station,
+            "station": p["station"],
             "title": r.get("title") or p["title"],
             "url": r.get("url") or p["url"],
             "resourceType": p["resourceType"],
@@ -273,7 +326,7 @@ def import_lane(repo, lane_block):
     cov = enr.get("coverage", {})
     lane_coverage = {
         "station": station,
-        "stationTitle": lane_block["title"],
+        "stationTitle": lane_block.get("laneTitle", lane_block.get("title", station)),
         "ugmResourcesConsidered": cov.get("ugmResourcesConsidered"),
         "aligned": cov.get("aligned"),
         "nonOverlap": cov.get("nonOverlap"),
@@ -281,8 +334,16 @@ def import_lane(repo, lane_block):
         "candidateRows": total_rows,
     }
 
+    if lane_block.get("stations"):
+        stations_ref = [{"slug": s["slug"], "title": s["title"],
+                         "url": (ss_by_slug.get(s["slug"]) or {}).get("url")}
+                        for s in lane_block["stations"]]
+    else:
+        stations_ref = [{"slug": station, "title": lane_block["title"],
+                         "url": next(iter(enr["perSpecPoint"].values())).get("ugmStationUrl")}]
+
     return {
-        "station_url": next(iter(enr["perSpecPoint"].values())).get("ugmStationUrl"),
+        "stations": stations_ref,
         "resources": resources,
         "spec_points": spec_points,
         "coverage": lane_coverage,
@@ -332,10 +393,7 @@ def main():
                     "review/promotion gate promotes them; no coverage manufactured (rule 3).",
         },
         "lane": lane,
-        "stations": [
-            {"slug": lb["station"], "title": lb["title"], "url": p["station_url"]}
-            for lb, p in zip(lane_blocks, parts)
-        ],
+        "stations": [st for p in parts for st in p["stations"]],
         "source": {
             "repo": "SyllabAI/syllabai-resources",
             "ref": args.ref,
@@ -378,7 +436,9 @@ def main():
     os.replace(tmp, out_path)
     size = os.path.getsize(out_path)
     print(f"OK  {out_path}  ({size/1024:.0f} KB)")
-    print(f"    {len(lane_blocks)} lanes: {[lb['station'] for lb in lane_blocks]}")
+    lane_keys = [lb.get("station") or lb.get("laneSlug") for lb in lane_blocks]
+    n_stations = sum(len(lb.get("stations") or [1]) for lb in lane_blocks)
+    print(f"    {len(lane_blocks)} lanes / {n_stations} stations: {lane_keys}")
     print(f"    {len(spec_points)} spec points, {total_rows} candidate rows, "
           f"{nonov_total} non-overlaps, {len(resources)} bodies joined")
 
