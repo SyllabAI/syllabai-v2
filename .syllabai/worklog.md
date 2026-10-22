@@ -12856,3 +12856,18 @@ Stage Summary:
 - main @ c3dcd96 green; dc7 progress-attribution law of record (api learner/progress route + rollup service, hub dashboard attribution card, topic-tree/progress-ring attribution hooks).
 - Red backlog unchanged: #285/#296/#300/#303 need author rebase/new head.
 - Standing escalations unchanged: PAT rotation overdue (CRITICAL, operator ledger); neon-replay advisory red / ESC-2 untriaged. No new escalations.
+
+---
+Task ID: F182-OPENING (trace 1a164deaaf1847ed)
+Agent: Z.ai (main agent, operator IM lane)
+Task: Operator word "Proceed" — open the F-182 per-spec-point drill surface (the first Kognity-line build item, dossier Deep Dive D §8.5 row 1): the read-only foundation PR (per-spec-point census + 5-part draw policy + pin battery).
+
+Work Log:
+- Grounding first-hand at main: bundle of record apps/hub/content/igcse-chemistry-19/questions.json = 82 sets (54 official + 28 topic) / 1001 Q / 4011 P at file level, reconciling with the wave-17 serving census (999/4007 built) by exactly the 2 terminal unmapped questions; anchor hygiene corpus-wide 0 outside-spine / 0 malformed codes; spine = 182 SPEC_POINT nodes of 215.
+- Mechanism (additive-only, read-only over the served plane): services/drill/census.ts (collectParts anchor law + computeCensus per-address anchorings with fail-closed spine validation); services/drill/draw.ts (mulberry32 + Fisher-Yates over a part-id-sorted copy; naive recency dedupe with a disclosed thin-pool fallback; DrillDrawError below the 5-part floor; zero-stakes by construction — writes nothing, no clock); scripts/f182_drill_census.ts + the committed census-of-record.json (deterministic, anti-drift-pinned); test/drill/draw.test.ts (15 pins: anchor/plane/multi-code laws, P3 fail-closed, P5 determinism, P4 dedupe + fallback disclosure, RNG stability, artifact-equals-recomputation, wave-17 reconciliation, coverage of record, strongest-address draw, drillable-count match).
+- Census of record at open: 3928 eligible parts (2537 official + 1391 topic) across 171/182 spine addresses — 157 drillable (>=5 pool, 86.3% of the spine), 14 thin, 11 uncovered; strongest address 4CH1-1.25 (155 parts). Unit note disclosed: the tracker gate receipt counted label decisions (2526); the census counts part x code anchorings — the file of record governs.
+- Policy decisions P1..P6 preregistered in docs/F182-DRILL-SURFACE-PLAN.md §4 (part unit; single-code address; fail-closed floor; recency dedupe with retakability override; determinism; zero-stakes by construction). No endpoint, no contracts churn, no DB, no UI in this PR — the build PR adds zod contracts + the drill route + the F-055-shaped evidence seam + the hub UI against these pinned shapes.
+- Battery: root typecheck 0; full suite 2602 pass / 13 skip / 0 fail (the 15 drill pins included); golden selftest OK; retrieval-eval 22 tests 0 fail + 19/19 vectors; zero-core census gate GREEN; census regeneration byte-identical. Receipt: .syllabai/receipts/F182-OPENING/f182-drill-opening-run-001-r0.json.
+
+Stage Summary:
+- F-182 OPENED (read-only foundation of record): the drill bank census + the 5-part draw policy are code + pinned artifact, not prose. The lane stops at the build-PR gate (contracts/route/evidence/UI next); F-183 reveal law, F-184 strength surface, F-185 model-driven draw, F-186 battles follow per the filed dossier line.
