@@ -242,20 +242,23 @@ describe("specialTypeMap", () => {
 // ---------------------------------------------------------------------------
 
 describe("verifyBaseline (checked-in baseline)", () => {
-  test("70/667/98/62/115 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // count bumps per baseline-extending migration: 70/667/98/62/115 was the
+  // T-MIG-002-R proof; T-TEACH-011 (0008_teaching_toolkit) adds 2 tables,
+  // 17 columns, 1 index, 3 fks, 2 checks → 72/684/99/65/117.
+  test("72/684/99/65/117 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 70/70");
-    expect(v.inventory).toContain("columns 667");
-    expect(v.inventory).toContain("indexes 98");
-    expect(v.inventory).toContain("fks 62");
-    expect(v.inventory).toContain("checks 115");
+    expect(v.inventory).toContain("tables 72/72");
+    expect(v.inventory).toContain("columns 684");
+    expect(v.inventory).toContain("indexes 99");
+    expect(v.inventory).toContain("fks 65");
+    expect(v.inventory).toContain("checks 117");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(70);
+    expect(run.size).toBe(72);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);
@@ -266,6 +269,9 @@ describe("verifyBaseline (checked-in baseline)", () => {
     // T-TEACH-002 — the class feature toggles + the course bridge (ADR-CLASS-0001)
     expect(run.has("public.class_features")).toBe(true);
     expect(run.has("public.course_registry")).toBe(true);
+    // T-TEACH-011 — the Teaching Toolkit append-only results + quota counter
+    expect(run.has("public.teaching_toolkit_resources")).toBe(true);
+    expect(run.has("public.teaching_toolkit_usage")).toBe(true);
   });
 });
 

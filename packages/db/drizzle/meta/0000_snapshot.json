@@ -1,6 +1,6 @@
 {
-  "id": "8c24e095-b5f0-4ce4-a490-e612a4ed9b10",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "029496d1-cf58-449f-80f9-b06ed65c06b4",
+  "prevId": "dbf0efb6-ca6f-46c8-8272-650305c9f1c0",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -2067,6 +2067,13 @@
         },
         "cla": {
           "name": "cla",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
+        },
+        "ai_toolkit": {
+          "name": "ai_toolkit",
           "type": "boolean",
           "primaryKey": false,
           "notNull": true,
@@ -8054,6 +8061,212 @@
           "value": "(status)::text = ANY ((ARRAY['TAUGHT'::character varying, 'NOT_TAUGHT'::character varying])::text[])"
         }
       },
+      "isRLSEnabled": false
+    },
+    "public.teaching_toolkit_resources": {
+      "name": "teaching_toolkit_resources",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "teacher_id": {
+          "name": "teacher_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "class_id": {
+          "name": "class_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "course_slug": {
+          "name": "course_slug",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tool_type": {
+          "name": "tool_type",
+          "type": "varchar(16)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "input_metadata": {
+          "name": "input_metadata",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "output": {
+          "name": "output",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(12)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'SUCCESS'"
+        },
+        "model": {
+          "name": "model",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "provider_name": {
+          "name": "provider_name",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "failure_reason": {
+          "name": "failure_reason",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "elapsed_ms": {
+          "name": "elapsed_ms",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ix_toolkit_resources_teacher": {
+          "name": "ix_toolkit_resources_teacher",
+          "columns": [
+            {
+              "expression": "teacher_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": false,
+              "nulls": "first",
+              "opclass": "timestamptz_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "teaching_toolkit_resources_teacher_id_fkey": {
+          "name": "teaching_toolkit_resources_teacher_id_fkey",
+          "tableFrom": "teaching_toolkit_resources",
+          "tableTo": "users",
+          "columnsFrom": [
+            "teacher_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "teaching_toolkit_resources_class_id_fkey": {
+          "name": "teaching_toolkit_resources_class_id_fkey",
+          "tableFrom": "teaching_toolkit_resources",
+          "tableTo": "classes",
+          "columnsFrom": [
+            "class_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "set null",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ck_toolkit_resources_status": {
+          "name": "ck_toolkit_resources_status",
+          "value": "(status)::text = ANY ((ARRAY['SUCCESS'::character varying, 'FAILED'::character varying])::text[])"
+        },
+        "ck_toolkit_resources_tool_type": {
+          "name": "ck_toolkit_resources_tool_type",
+          "value": "(tool_type)::text = ANY ((ARRAY['lesson_plan'::character varying, 'rubric'::character varying, 'sow'::character varying, 'coach'::character varying])::text[])"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.teaching_toolkit_usage": {
+      "name": "teaching_toolkit_usage",
+      "schema": "",
+      "columns": {
+        "teacher_id": {
+          "name": "teacher_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "usage_day": {
+          "name": "usage_day",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "used": {
+          "name": "used",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "teaching_toolkit_usage_teacher_id_fkey": {
+          "name": "teaching_toolkit_usage_teacher_id_fkey",
+          "tableFrom": "teaching_toolkit_usage",
+          "tableTo": "users",
+          "columnsFrom": [
+            "teacher_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "teaching_toolkit_usage_pkey": {
+          "name": "teaching_toolkit_usage_pkey",
+          "columns": [
+            "teacher_id",
+            "usage_day"
+          ]
+        }
+      },
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
       "isRLSEnabled": false
     },
     "public.telemetry_events": {
