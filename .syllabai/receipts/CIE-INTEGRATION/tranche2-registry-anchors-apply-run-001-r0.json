@@ -1,0 +1,151 @@
+{
+ "anchors": {
+  "conditional_resolved": {
+   "spcpt_26qcCY45Rx3S5Q75": [
+    "23.3.2",
+    "23.4.4"
+   ],
+   "spcpt_6kfKxfq3Q9w2RBGz": [
+    "24.2.5",
+    "24.2.7"
+   ],
+   "spcpt_7GFsrZwSKvKWbScF": [
+    "1.4.3",
+    "1.4.6"
+   ],
+   "spcpt_HmMgqHYYJMyF6nVN": [
+    "6.1.1",
+    "6.1.3"
+   ],
+   "spcpt_WXp9yV6RjmGqJnn3": [
+    "12.1.3"
+   ],
+   "spcpt_Y6Qj4KVdMvB2kpqv": [
+    "7.1.4",
+    "7.1.7"
+   ],
+   "spcpt_YpKqb5HsZsxDZymV": [
+    "24.2.3",
+    "24.2.1",
+    "24.2.4"
+   ],
+   "spcpt_Ytmx9DyG2jXQB5D6": [
+    "19.2.2",
+    "19.2.3"
+   ],
+   "spcpt_Zt25mTwwxK5GP3RX": [
+    "28.1.2",
+    "1.3.8"
+   ],
+   "spcpt_c7vFrg8fTnmm4kcp": [
+    "7.1.2",
+    "7.1.3",
+    "7.1.9"
+   ],
+   "spcpt_fFh7hPWmj22BJ5tJ": [
+    "24.2.1",
+    "24.2.4"
+   ],
+   "spcpt_gXGMxJcrhrnxtZD6": [
+    "1.4.2",
+    "1.4.4",
+    "1.4.6",
+    "1.4.8"
+   ],
+   "spcpt_hZTPmmSRrdvvX3Qd": [
+    "8.2.1",
+    "8.2.2"
+   ],
+   "spcpt_j9xWMbPMSC6qSJnY": [
+    "23.4.1",
+    "23.4.2"
+   ],
+   "spcpt_jptnPNnPshVwycwD": [
+    "13.1.1"
+   ],
+   "spcpt_kYX8rJ8Ff8TSC2TK": [
+    "11.3.1",
+    "11.3.2"
+   ],
+   "spcpt_sFJ6ZPXvkT79fC2f": [
+    "4.1.2",
+    "4.1.3"
+   ]
+  },
+  "distinctCodes": 46,
+  "unconditional": {
+   "spcpt_2ThbMTgPgvQbtpTc": [
+    "28.4.1",
+    "28.4.2"
+   ],
+   "spcpt_BsxZ3K63vTYS5gtF": [
+    "32.2.3",
+    "32.2.4"
+   ],
+   "spcpt_XQ97pkXbbVSfgqZD": [
+    "19.2.1",
+    "19.2.2",
+    "19.2.3"
+   ],
+   "spcpt_kmmQMJ52BJxbDd6g": [
+    "33.3.1",
+    "33.3.2",
+    "33.3.3",
+    "33.3.4"
+   ],
+   "spcpt_mVXNDWrRyFCbsscr": [
+    "32.2.5",
+    "32.2.6"
+   ],
+   "spcpt_qd7Tc37DJzJjRrmk": [
+    "18.2.1",
+    "18.2.2"
+   ]
+  }
+ },
+ "disclosures": [
+  "HmMg anchored 6.1.1+6.1.3 per part-level evidence of record (b01 verbatim carried 6.1.1+6.1.2; 6.1.2 rejected \u2014 zero equation-balancing parts among 23; 6.1.3 exercised by 4 ON-change parts) \u2014 correction of record vs b01.",
+  "gXGM6 ID fix: tranche-2 record spcpt_gXGMxJcrhrnxtZD prefix-resolves to package id spcpt_gXGMxJcrhrnxtZD6 (trailing 6).",
+  "WXp9 anchored 12.1.3 only; 12.1.4 secondary (single indirect part), 14.1.6 gate NOT met (effects covered, reactions not) \u2014 per resolution receipt.",
+  "DURABILITY RESIDUAL: map is engine-derived from inputs @ resourcesSha c5f20c52; the 23 sid->codes verdicts must be captured into the resources spec-links sidecar before the next fleet re-key, else the consume engine will not reproduce these rows.",
+  "B02 branch t-specs-tranche2-b02-receipt/r0 is receipt-only and parked (map untouched there); its 12-defer rows were resolved part-level by T-RULE-T2-COND-1 of record.",
+  "10 mis-tag re-points + held/split reconciliation remain separate residuals (unaffected here)."
+ ],
+ "generatedUtc": "2026-10-22T12:14:45Z",
+ "inputs": {
+  "b02VerbatimBatch": {
+   "commit": "bd2c0b1ef650ef58b9b525f901c65d530ebb17a4",
+   "note": "operator rulings verbatim \u2014 6 unconditional rows applied; holds/quarantine/split excluded",
+   "receipt": ".syllabai/receipts/CIE-INTEGRATION/cie-tranche2-r2-batches-run-002-r0.json"
+  },
+  "mapAfter": {
+   "sha256": "bb0cc3b6476f6bd588143002834bcc6273b328ee9c0ba7743013e96a32b710d7",
+   "spcptToOfficial": 69,
+   "spcptUnmapped": 262
+  },
+  "mapBefore": {
+   "sha256": "6893d77aff9a879626302916fccdbb1cac136b22f456eb67e057beb454daf7ef",
+   "spcptToOfficial": 46,
+   "spcptUnmapped": 280
+  },
+  "resolutionReceipt": {
+   "path": "download/tranche2_conditional_resolution_r0.json (session deliverable of record)",
+   "rows": 17,
+   "sha256": "384c27fb58d6093ac5eb6727fd653704541930f88d35270b104efa1dc1497235"
+  },
+  "spine": "apps/hub/spines/cie-a-level-chemistry-25.json @ origin/main (46/46 anchored codes verified in-spine)"
+ },
+ "lane": "R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+ "receipt": "tranche2-registry-anchors-apply-run-001-r0",
+ "semantics": {
+  "declaredUnresolvedRetention": "anchored sids retained on items per 656 in-file precedents",
+  "excluded": {
+   "spcpt_9Dxx4xs6KDbb85cJ": "hold for evidence",
+   "spcpt_CdtkSssKHMzw5ZTn": "split pending part-level confirmation (21.1.2 vs 36.1.2)",
+   "spcpt_pYmRWxPrtMDKj5ym": "quarantine"
+  },
+  "multiCodeEntries": "officialCodes list introduced (field existed; prior 46 entries single-code); officialCode = primary first code",
+  "plane": "registry-only \u2014 items/contentCoverage/reconciliation/spcptSubtopicScope byte-unchanged (sha256-proven in-script)"
+ },
+ "task": "T-RULE-T2-APPLY-1 \u2014 apply the tranche-2 anchored codes to the chem25 content-map registry (operator directive \"apply the anchored codes to the content-map registry (280 spec points still unmapped)\")"
+}
