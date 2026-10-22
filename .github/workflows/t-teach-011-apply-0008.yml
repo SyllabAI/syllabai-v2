@@ -1,0 +1,149 @@
+# T-TEACH-011 — migration 0008 (Teaching Toolkit) apply runner.
+#
+# The operator's fire order ("Apply migration 0008 to the Neon branch"),
+# executed behind the 133d/138 guard protocol of record:
+#   job 1 (cow-proof): a disposable Neon COW branch off production (in-line
+#     read_write endpoint, NEON_API_KEY = the CI write-capable key of record),
+#     branch-local owner password reset (PRODUCTION ROLES NEVER TOUCHED), the
+#     FROZEN driver (scripts/t-teach-011-apply-0008.ts) applies 0008 as RAW
+#     SQL under the 0007 regime — preflight, backup-first, ONE transaction
+#     lock_timeout=5s, full post-verify — then DROP the COW + 404-verify,
+#     even on failure (if: always(), the T-MIG-035 discipline).
+#   job 2 (prod-apply, needs job 1 ALL GREEN): the same frozen driver against
+#     the production DATABASE_URL of record (T138_PROD_DATABASE_URL), receipt
+#     artifact. NO drizzle bookkeeping is created (the 0007 disclosure law);
+#     flyway_schema_history is untouched; the migration is additive-only
+#     (2 new tables + class_features.ai_toolkit + 4 prompt_versions seeds).
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched (the dispatch = the operator's fire order per the 093/133b law).
+# Secrets of record: NEON_API_KEY (exists), T138_PROD_DATABASE_URL (exists).
+# Vars of record: NEON_PROJECT_ID, NEON_PARENT_BRANCH_ID (exist).
+
+name: t-teach-011-apply-0008
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "cow+prod (default — full guard protocol) | cow-only (branch proof, no production write)"
+        required: false
+        default: "cow+prod"
+      note:
+        description: "Operator note for this apply run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-teach-011-apply-0008
+  cancel-in-progress: false
+
+jobs:
+  cow-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-teach-011-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          PW=$(echo "$RESP" | jq -r '.role.password')
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Apply 0008 against the COW (frozen driver — preflight/backup/one-txn/postverify)
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/t011-cow.uri
+          chmod 600 /tmp/t011-cow.uri
+          bun scripts/t-teach-011-apply-0008.ts --db file:/tmp/t011-cow.uri \
+            --mode apply --receipt cow-apply-receipt-0008.json
+      - name: Upload the COW receipt artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t011-cow-receipt
+          path: cow-apply-receipt-0008.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-proof
+    if: ${{ !failure() && !cancelled() && (inputs.mode == 'cow+prod' || inputs.mode == '') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Apply 0008 against PRODUCTION (frozen driver — preflight/backup/one-txn/postverify)
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          printf '%s' "$T138_PROD_DATABASE_URL" > /tmp/t011-prod.uri
+          chmod 600 /tmp/t011-prod.uri
+          bun scripts/t-teach-011-apply-0008.ts --db file:/tmp/t011-prod.uri \
+            --mode apply --receipt prod-apply-receipt-0008.json
+      - name: Upload the prod apply receipt artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t011-prod-receipt
+          path: prod-apply-receipt-0008.json
+          if-no-files-found: ignore
