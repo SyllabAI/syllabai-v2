@@ -171,6 +171,11 @@ export function classifyRequest(
       path === "/api/v1/learners/me/cla/ask" ||
       // transcription pays vision-model tokens exactly like an ask (:145-148)
       path === "/api/v1/learners/me/answer-input/transcribe" ||
+      // Teaching Toolkit generation pays document-sized tokens exactly like
+      // an ask (T-TEACH-012) — the teacher's identity keys the same tier the
+      // same way (the JWT userId subject); the per-teacher daily quota is a
+      // SECOND gate the toolkit route itself owns
+      path === "/api/v1/teacher/toolkit/generate" ||
       // Smart Mark surfaces run the marking pipeline once per PART (:149-157)
       (path.startsWith("/api/v1/learners/me/attempts/") &&
         (path.endsWith("/smart-mark") ||

@@ -57,6 +57,7 @@ import { buildInterventionRouters } from "./routes/intervention";
 import { buildLearnerRouters } from "./routes/learner";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildTeacherAssignmentsRouters } from "./routes/assignments";
+import { buildTeachingToolkitRouters } from "./routes/teaching-toolkit";
 import { buildResearchRouters } from "./routes/research";
 import { buildIngestionRouters } from "./routes/ingestion";
 import { buildBooksApp } from "./services/books";
@@ -125,6 +126,7 @@ const cla = buildClaRouters(process.env, { chain: llmChain });
 const claThreads = buildClaThreadsRouters(process.env);
 const answerInput = buildAnswerInputRouters(process.env, { chain: llmChain });
 const llmadmin = buildLlmAdminRouters(process.env, llmChain);
+const teachingToolkit = buildTeachingToolkitRouters(process.env, { chain: llmChain });
 
 const app = new Hono();
 
@@ -583,6 +585,21 @@ app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
 // commit per the T-MIG-010/020/021/030/032/033/034/041t2/052t2 precedent so
 // R0 can ratify or lift them out at review.
 app.route("/api/v1/teacher/assignments", teacherAssignments.teacherAssignmentsRoute);
+
+// Teaching Toolkit router (T-TEACH-012 — the 4 educator-ai generators,
+// plan of record docs/TEACHING_TOOLKIT_PLAN.md). Mounted at
+// /api/v1/teacher/toolkit (generate/context/resources); the router owns
+// its TEACHER/ADMIN authz internally, and generation rides THE ONE chain
+// of record above (chainAsToolkitGenerator, the T-TEACH-010 bridge).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-TEACH-012, R0 ratification requested):
+// T-TEACH-012's scope.allowed covers routes/teaching-toolkit.ts,
+// middleware/ratelimit.ts (the llm-tier line) and test/teachingtoolkit/**
+// — NOT this file. The import + construction + one mount line + this
+// comment are the minimal app-level wiring, shipped as a separate commit
+// per the T-MIG-010/020/021/030/032/033/034/041t2/052t2/T-MIG-117
+// precedent so R0 can ratify or lift them out at review.
+app.route("/api/v1/teacher/toolkit", teachingToolkit.toolkitRoute);
 
 // Revision-notes + knowledge + teacher-KG/coverage/concept-graph routers
 // (T-MIG-082 tranche-1 — the deferred-mount band, r4b). Path parity with the
