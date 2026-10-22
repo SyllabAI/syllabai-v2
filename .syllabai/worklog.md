@@ -12095,3 +12095,24 @@ Stage Summary:
 - Band B DISCHARGED END-TO-END of record: geo-25 notes coded 5/117 -> 86/117; the 30 pendings stay uncoded by the leave-unjoined law with evidence-cited class reasons (the hub's unmapped card is their honest surface); band A byte-preserved throughout.
 - Receipt: .syllabai/receipts/CONTENT-AUDIT/semantic-lane-band-b-run-001-r0.json
 - NEXT per the same order: band C (EL-25+20 + fleet leave-unjoined codification, ~244 rows, this band's 9-class taxonomy as template), then the two parse/spine repair lanes (9709 P3 3.1 glue; 0606 topics 3/9/12 + statement/example split policy).
+
+---
+
+## T-SPECS-CIE-COMPLETE-1-BAND-C r0 — the leave-unjoined codification fired: 206 fleet/EL pending rows codified per class, zero code entries written anywhere (hub unmapped card = the honest surface of record; 7 classes kept from COMPLETE-1 and content-sampling-verified; taxonomy of record now carries A+B+C)
+
+Date: 2026-10-22
+Agent: main agent (Z.ai, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Scope: resources scripts/cie_complete_band_fill_c.py + cie_complete_verdicts.yaml + spec-links/manifest.json + graph/reports/T_SPECS_CIE_COMPLETE_BAND_C_CHECK.json (pin cdd514c3) + .syllabai/**; fetch-first; no force; zero DB writes; zero LLM; zero upstream writes; ZERO v2-plane content writes by design (no codes -> no learner delta)
+
+Work Log:
+- Operator order (trace 1a1615fe86d96ed9), third band of the same order. Band A (83 joins + 57 pendings, trace 1a16057229070f09) and band B (81 joins + 30 pendings, this session's lane of record) verified first-hand; the remaining non-band-A/B pending universe censused at EXACTLY 206 rows across 8 lanes — the band-C scope.
+- CLASSES KEPT from the COMPLETE-1 of record, VERIFIED by content sampling this lane (3+ notes read per class): EL-25/20's 73 = exam-question technique + coursework guidance ("How to Write a Letter", "Coursework Overview", "Question 3 Skills"); fleet assessment_technique 54 = paper/command-word pages ("Paper 4: Business Strategy", "Evaluation Questions"); literature-21's 42 = named set texts (Blues for an Alabama Sky, I'm the King of the Castle) with no set-text points in any served lattice; business-23/AL's 30 no_unique_deterministic_target = genuine multi-candidate ambiguity the COMPLETE-1 lane quarantined rather than guessed (rule 7 posture, codified not resolved); GP-21 overview/marking 5; business-25's 2 = 2027-2029-only content (Companies / business organisation types).
+- Every row's reason refined to the codified evidence format: class + taxonomy basis + the row's own label/section/topic surface + the overturnability law. Zero joins manufactured.
+- Vehicle scripts/cie_complete_band_fill_c.py (codification-only shape): battery P0/C1/C2/C3/C4 all green — census-closure 206/206 EXACT; every COURSE sidecar sha-verified byte-identical pre/post (C2); exactly the 206 band-C rows changed vs HEAD with all resolve + band-A/B rows byte-preserved (C3); idempotence proven live (C4). CORRECTION of record: first apply false-alarmed C2 on spec-links/manifest.json (the vehicle's own additive target sat inside the no-write glob) — root-caused as a scope bug, fixed, artifacts restored via git checkout, re-applied clean; never pushed in the flagged state.
+- Additivity: yaml bands A+B+C; manifest cie_complete.bands.A/B/C; A/B byte-kept throughout. The mid-lane TRANCHE2-B02 landing (85e0d13a, chem25 sidecars) caught by fetch-first, rebased clean (zero yaml overlap — tranche-2 verdict entries live in the sidecars), battery re-proven on the rebased state with zero drift before the push.
+- NO v2 consume by design: a codification band writes no codes, so there is no learner delta; the v2 bundles/maps are byte-untouched and the honest unmapped-card surface is already live.
+
+Stage Summary:
+- Band C DISCHARGED of record: all 324 named-lane rows of the semantic-lane program are now dispositioned (band A 140: 83 joins + 57 pendings; band B 111: 81 joins + 30 codified pendings; band C 206: codified leave-unjoined) — the pending ledger now carries refined evidence-cited reasons everywhere; the fleet's pending universe stands at 293 rows, all classified, none guessed.
+- Receipt: .syllabai/receipts/CONTENT-AUDIT/semantic-lane-band-c-run-001-r0.json
+- NEXT per the same order: the two parse/spine repair lanes (9709 P3 3.1 glue; 0606 topics 3/9/12 + statement/example split policy).
