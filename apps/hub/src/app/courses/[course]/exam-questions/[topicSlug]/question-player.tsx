@@ -476,6 +476,7 @@ export function QuestionPlayer({
           join={claFor ? (bridge.data.questions[claFor.q.id] ?? null) : null}
           questionNumber={claFor ? claFor.index + 1 : null}
           initialTargetId={claFor?.targetId ?? null}
+          course={course}
           messages={
             claFor
               ? (claSnapshot.threads.find(
