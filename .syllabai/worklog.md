@@ -12212,3 +12212,59 @@ Stage Summary:
 - Pilot wrinkle CLOSED of record: manifest ref now names the true consumed cut main@855cddcf0a22e67ade24aac24f04e219dba2598f; disclosure append-only; content byte-unchanged
 - Root cause observed, filed open: the exporter stamps the exporter-of-record commit (F44 @ bf8d56c3) rather than the data cut — resources-side exporter-law follow-up lane available
 - Open unchanged: CIE tranche2 consume lane; maths-b Stage-2 (operator-keyed); PAT rotation (operator, CRITICAL overdue); pilot content-map generation stamp @ 2e17aab0 noted (no wrinkle filed); receipt .syllabai/receipts/PIN-TIGHTEN-1/run-001-ref-tighten.json
+
+---
+Task ID: T-TEACH-010/011/012 (wave teach-toolkit-A, run-001)
+Agent: main agent (Z.ai CLI session, zai-web web-528c0352, trace 1a162e84603bdf11)
+Task: Implement the Teaching Toolkit backend — contracts + bridge (010),
+migration 0008 (011), routes/quota/gate/tests (012), per the operator's
+"start implementing 010 -> 011 -> 012" directive.
+
+Work Log:
+- T-TEACH-010 (commit 614e05ac): packages/contracts/src/teaching-toolkit.ts —
+  4 input schemas (subject ABSENT; classId XOR courseId envelope), 4 output
+  schemas = the fidelity-validated ZNotes capture contracts (coach snake_case
+  preserved), 16/10/9/16/20/5 preset constants, toolkitLevelScores
+  (100/75/50/25), TOOLKIT_PROMPT_REGISTRY map, ToolkitInputByTool (rider
+  commit). 26 bun:test pins. bridges.ts chainAsToolkitGenerator (temp 0.5,
+  maxTokens 8000, effort low, truncation refusal, fence-tolerant JSON wall,
+  shape-agnostic ToolkitGenerator port). Barrel one-liner + llmchain export
+  block (OUT-OF-FENCE-flagged disclosures).
+- T-TEACH-011 (commit c029fec2): drizzle-kit generate -> migration
+  0008_teaching_toolkit.sql + journal + snapshot; schema.ts additive tables
+  teaching_toolkit_resources (append-only; class FK ON DELETE SET NULL so
+  class deletion preserves history — disclosed) + teaching_toolkit_usage +
+  class_features.ai_toolkit DEFAULT true; prompt_versions seed rows
+  teaching-toolkit/{lesson-plan,rubric,sow,coach} v1.0 (the fence-legal seed
+  home for 010's "prompt registry seeds", disclosed); schema README
+  owning-task ledger; db:check green.
+- T-TEACH-011 amendment (commit 0f360ac0): the rebaseline verify gate went
+  red on the new runtime structures (it pins runtime==0000_snapshot) —
+  0000_snapshot.json re-baselined to the drizzle-kit-generated 0008 render
+  (offline edition of the T-MIG-002-R procedure) and rebaseline.test.ts
+  counts bumped 70/667/98/62/115 -> 72/684/99/65/117 with the toolkit tables
+  pinned in the inventory law. Verify green, 0 drifts.
+- T-TEACH-012 (commit d80da5ce + rider): routes/teaching-toolkit.ts
+  (self-contained module+router per the fence): POST /generate,
+  GET /context (book-chapter topic lane + spec-tree PART_OF lane with
+  teaching_coverage), GET /resources (+/:id). Ownership ladder
+  404 class_not_found -> 403 forbidden -> 409 archived; ai_toolkit gate 403
+  feature_disabled_by_teacher; quota SYLLABAI_TOOLKIT_DAILY_LIMIT=25
+  atomic consume-before-spend, 429 toolkit_quota_exhausted + Retry-After;
+  dead chain 503 toolkit_unavailable consumes NOTHING; generation law:
+  registry templates ({token} interpolation + pure-token line collapse),
+  zod wall + structure laws + ONE self-heal retry (incl. bridge-refused
+  UNPARSEABLE/TRUNCATED — the recreation's proven loop), 502
+  toolkit_generation_failed + FAILED self-forensic rows; silent pins
+  (subject, verbatim objectives, computed rubric scores, sow persona).
+  ratelimit llm-tier line + index.ts mount (both OUT-OF-FENCE-flagged).
+  24 route tests (fakeSql + fake generator seam, T-MIG-052-t2 pattern).
+- Gates: full suite 2552 pass / 0 fail; typecheck 0 errors; db:check green.
+
+Stage Summary:
+- Wave teach-toolkit-A COMPLETE of record; cards 010/011/012 DONE.
+- Key decisions of record: prompt seeds ride migration 0008 (fence);
+  class_id ON DELETE SET NULL (history retention); quota consumes before
+  the chain call (failed attempts spend); the interpolated template rides
+  the system slot with a fixed user go-line (disclosed adaptation).
+- Next: wave teach-toolkit-B (013 hub shell, 014 tool pages + TOOLS cards).

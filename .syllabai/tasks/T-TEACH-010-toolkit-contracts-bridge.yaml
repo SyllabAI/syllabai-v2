@@ -3,7 +3,7 @@ task:
   id: T-TEACH-010
   title: "Teaching Toolkit contracts + prompt registry seeds + chainAsToolkitGenerator bridge"
   owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
-  status: OPEN
+  status: DONE # run-001 (zai-web session web-528c0352, trace 1a162e84603bdf11): contracts teaching-toolkit.ts (4 input schemas subject-ABSENT per the operator directive + the 4 fidelity-validated output schemas + presets + toolkitLevelScores + TOOLKIT_PROMPT_REGISTRY map + ToolkitInputByTool rider) + 26 bun:test pins + barrel one-liner (OUT-OF-FENCE-flagged) + bridges.ts chainAsToolkitGenerator (temp 0.5/maxTokens 8000/effort low/truncation refusal/JSON wall) + llmchain export block; commit 614e05ac; prompt seed ROWS deferred to migration 0008 (the fence-legal home, disclosed)
   priority: P1
   band: T-TEACH (teacher AI toolkit — plan: docs/TEACHING_TOOLKIT_PLAN.md)
   wave: teach-toolkit-A
