@@ -59,7 +59,7 @@ REPO = Path(__file__).resolve().parent.parent
 # NEXTBUMP-2: bumped to the bump-time tip (PR #33 merge) — the NEXT #2 fleet
 # bump's convergence pin per the PINSPLIT-1 ruling of record (floor law
 # >= 89260832 satisfied; carries T-SPEC-STAGE2-1 + tranche-2 + sda-bio verdict).
-RESOURCES_SHA = "dc9c1efcfa5ccd3cb728f258b8dc2e718487d120"
+RESOURCES_SHA = "08447ba9e706d0e503beb8243401b5dbfffe74df"
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 DEFAULT_CACHE = Path("/home/z/my-project/work/spec-maps-cache")
 

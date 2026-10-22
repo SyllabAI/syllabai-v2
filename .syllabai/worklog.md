@@ -12041,3 +12041,21 @@ Work Log:
 Stage Summary:
 - THE CARRIER CURRENCY LADDER IS STAGED AT THE CURRENT TIP: stage complete (6/6 pins, clean tree, boot laws proven), live baseline 15/15, rollback anchor of record (run-011's fmnc0xe1b class). TWO volatile credentials discharge the remaining legs: (1) Neon pooler DATABASE_URL -> the 17-check DB-class localgate; (2) VERCEL_PAT -> 'cd /home/z/my-project/api-stage && vercel deploy --prod --yes --token <VERCEL_PAT>' (the run-010->011 staged-handoff class); expect ZERO wire-visible behavior change (tail-law admission + compile-time contracts — the act is CURRENCY, not incident-driven).
 - Standing reminder: the operator must revoke the GitHub PAT (ghp_h4D…) at migration end per the credential law (multi-exposure overdue).
+
+---
+Task ID: 33 (local ledger 33 — EDBUMP-1 run-001, the Edexcel stamp-only pin-vintage convergence)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, dispatch trace 1a1615dbd41cea41 "fire EDBUMP-1", scope trace 1a1611e6237a83cd)
+Task: Re-key the 48 non-pilot Edexcel manifests at the execution-time resources tip 08447ba9; stamp-only class (zero input-delta proven at scope, Task 32); dedicated lane worktree (R4 agent live on the shared checkout); full-green CI bar.
+
+Work Log:
+- Fetch-first at fire time: resources tip had advanced TWICE since scope (5178b3b6 -> 08447ba9: v0.11.0 wave-14 PUA-free corpus + CourseLessons authoring home + T-PARSE-YPH11-1 IAL book parse); v2 origin advanced d5592928 -> cd3be784 (wave-14 hub sync + LESSON wire). Tail re-verification re-run forward: delta dc9c1efc..08447ba9 = 217 paths, SME-* count 0, Edexcel spec-link sidecars 0 — zero-delta premise HELD; target pin advanced to 08447ba9.
+- Dedicated worktree (git worktree add -b lane/edbump-1 ... origin/main) — shared checkout untouched (R4 agent holds it dirty); write-set enumerated on the branch tip: 97 files = 48 manifests + 47 content-maps + _report.json + attach_official_map.py (NOT 1:1: igcse-maths-b-16's map regenerated at its own cut 2e17aab0, correctly outside the SHA mirror).
+- Stamp pass A (scripts/edbump1_stamp.py, fail-closed): per-file byte-exact round-trip proof for all 96 JSON files BEFORE any edit; deep-diff assertion per file (own assertion bug — dot-prefix paths — caught by pass 1 fail-closed, fixed pre-apply, zero files written in the failed pass except attach_official_map.py which was reset before the clean re-run); applied: 48 manifests importSource.ref -> main@08447ba9 + EDBUMP-1 provenance note (maths-b note preserves its mixed-vintage disclosure verbatim-tail), 47 maps resourcesSha + generatedUtc stamp 2026-10-22T02:16:54Z (CIE-REFRESH-1 stamp semantics), _report.json resourcesSha, attach_official_map.py RESOURCES_SHA.
+- Stamp pass B (scripts/edbump1_stamp_spine.py): officialSpine.resourcesSha ridden on 47 manifests (CIE-REFRESH-1 precedent: both planes ride); maths-b's disclosed 2e17aab0 attachment pin LEFT HONEST (skip of record); post-pass old-hex residue across the write-set: 0.
+- Post-apply census: 48 Edexcel @ main@08447ba9 + 44 CIE @ main@c5f20c52 (untouched) + pilot @ main@bf8d56c3 (untouched) + skeleton receipt-path ref (untouched); worktree-wide old-pin residue: only the immutable NEXTBUMP-2 historical receipt.
+- Gates: bun install --frozen-lockfile 930 pkgs (no drift); bun run build:hub exit 0; full CI battery on the PR at the FULL-GREEN bar (TS4L healed a5cff7d6 — non-attribution posture neither available nor needed).
+- Receipt: .syllabai/receipts/EDBUMP-1/run-001-stamp-convergence.json. Resources repo UNTOUCHED — transit stays 28.
+
+Stage Summary:
+- EDBUMP-1 LANDED (pending PR merge of record): the Edexcel 48 ride the execution-time tip 08447ba9 at every pin plane (importSource.ref, officialSpine.resourcesSha, content-maps, attachment script constant); the Edexcel/CIE vintage split is closed with a zero-delta proof of record; stamp-only semantics (no content byte touched, no engine run) disclosed per file.
+- Open: pilot ref wrinkle (content @ v0.11.0, ref @ bf8d56c3 — note discloses; tighten rider available); CIE tranche2 consume lane; maths-b Stage-2 (operator-keyed); PAT rotation (operator, CRITICAL overdue); pure-2 skeleton teaching wave (separate dispatch class).
