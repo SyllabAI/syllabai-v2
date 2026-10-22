@@ -12333,3 +12333,22 @@ Stage Summary:
   ?class=&course= via a DISTINCT Toolkit card group (module-level TOOLS
   href signatures take only the course slug — the existing render law was
   not touched).
+
+---
+Task ID: T-SM-KAPPA-SUBJECT-PREWRITE-R1
+Agent: Z.ai (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2, trace 1a1632b3f05c90cd)
+Task: Operator-path step 2 under operator order "GO" — 4CH1 pre-write replica check + queue worklist staging (operator-order-r0 §6.2 law: do not POST unless D5.1–D5.4 hold).
+
+Work Log:
+- Sandbox rollback #3 hit at turn start (third of the lane): .creds/, the session's recon scripts, and the local worklog were wiped again. Nothing of-record lost — receipts, RESUME entry, and the #276 status advance all live on origin main / GitHub; prod untouched. Tokens re-installed from session context; DSN re-pulled via the Vercel env API of-record path (fingerprint b289a2298e707904 == localgate of-record EXACT).
+- Rebuilt the pre-write replica from the deployed source (the r0 scripts were sandbox-local and lost): apps/api/src/services/teachermarking/index.ts:1082-1117 sample SQL verbatim (additive SELECT columns question_id/paper_lane/marking_state disclosed; row set/ordering unchanged), :1025-1064 collectPairs (JS semantics ported: !== 0, typeof awarded === "boolean"), :503-512 normalizeBreakdown, :367-401 cohenKappa (1e-12 convention), :94 threshold 0.6. Law identical at deployed cdc1cd2 and tip aadbd085 (0 drift commits). Script committed this time: scripts/kappa_subject_replica.py (lesson: r0 scripts died with the sandbox).
+- Self-verification gate: cutoff replay at 2026-10-21T19:02:00Z reproduces eval-4ch1-r0 EXACTLY (287 sampled, 259 paper/28 tree, skips 164/12/26, 85 contributing answers, 93 pairs, confusion 1/92/0/0, κ=1.0, 97 UUID/26 option-keyed, 3 markers) — MATCH. One reconciliation of record: r0 §2/§4 printed 129 null-ppd packet overrides, but r0's own histogram leaves 1 mark unaccounted (129+34=163 vs 164); replica reconciles at 130 (130+34=164 exact). D5.5 verdict unchanged.
+- Fresh packet (2026-10-22T10:51Z): IDENTICAL to r0 — 0 new human marks since the r0 cutoff (and none since 2026-09-29). Floors: D5.1 1<25 FAIL, D5.2 0<10 FAIL, D5.3 1/85=1.2% FAIL, D5.4 97/287=33.8% FAIL, D5.5 130/218 null-ppd FAIL, D5.6 PASS (3 markers, 0 self-marked in packet).
+- Queue worklist regenerated from live data: tier-1 60 answers / 60 bound points (was 63 in the Oct 21 inventory — OVERRIDDEN 218→217 drift disclosed), tier-2 56/56, tier-3 84/91. Concrete answer ids staged durably in the receipt.
+- POST /api/v1/teacher/marking/kappa/evaluate NOT fired — pinned runbook §6.2 law holds (D5.1–D5.4 fail). The gate correctly holds; no row written; production untouched.
+- D5.7 composition table + status posted to v2 #276 (target of record per rollout-mirror law).
+
+Stage Summary:
+- Step 2 is human-blocked, not agent-blocked: the teacher queue (tier worklist in prewrite-replica-r1.json, concrete answer ids) must run under D5 discipline — every mark with perPointDecisions (UUID-keyed ≤50), overrides included, authorized teacher accounts.
+- The moment floors hold: re-run the committed replica → POST (authorized identity; computedBy = auth.userId) → GET latest read-back → D2 closes substantively.
+- Receipt: .syllabai/receipts/T-SM-KAPPA-SUBJECT/prewrite-replica-r1.json (41.5 KB, content-hash 047933d06ec366c9, includes the full answer-level worklist — rollback-proof home this time).
