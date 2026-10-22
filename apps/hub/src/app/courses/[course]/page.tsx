@@ -26,7 +26,7 @@ import { CourseSwitcher } from "@/components/hub/course-switcher";
 import { TagChip } from "@/components/hub/chrome";
 import { allCourseParams } from "@/lib/static-params";
 import { courseHasBookArchive } from "@/lib/books-registry";
-import { getUgmBundle } from "@/lib/ugm";
+import { getUgmBundle, ugmStationNames } from "@/lib/ugm";
 
 type FrameworkTag = "Study" | "Practice" | "Diagnose";
 
@@ -218,7 +218,7 @@ export default async function CourseHubPage({
               {
                 icon: Compass,
                 title: "Underground Mathematics",
-                desc: `Cambridge's Underground Mathematics (Quadratics and Combining Functions collections) — rich problems with suggestions and worked solutions, mapped to this course's specification points (alignment candidates, SUGGESTED).`,
+                desc: `Cambridge's Underground Mathematics (${ugmStationNames(ugm)} collections) — rich problems with suggestions and worked solutions, mapped to this course's specification points (alignment candidates, SUGGESTED).`,
                 tags: ["Study", "Practice"] as FrameworkTag[],
                 href: `${base}/ugm`,
                 countLabel: `${ugm.coverage.aligned} resources · ${ugm.specPoints.length} spec points`,
