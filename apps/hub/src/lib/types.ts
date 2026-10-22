@@ -1769,6 +1769,86 @@ export interface TeacherAnnouncementView {
   createdAt: string;
 }
 
+// ── T-TEACH-013 — the Teaching Toolkit wire (mirrors
+// @syllabai/contracts/src/teaching-toolkit.ts; the hub speaks JSON, not zod).
+// THE OPERATOR DIRECTIVE: no subject picker anywhere — the picked class
+// resolves Subject/Board/Level/Curriculum server-side and rides back as the
+// read-only context chips.
+
+export type ToolkitToolType = "lesson-plan" | "rubric" | "sow" | "coach";
+
+/** read-only class context chips — the visual replacement for the removed
+ *  subject picker (resolved server-side from the owned class row). */
+export interface ToolkitClassContextView {
+  classId: string | null;
+  courseId: string;
+  classLabel: string | null;
+  subject: string;
+  board: string | null;
+  level: string;
+  curriculumCode: string | null;
+}
+
+export interface ToolkitQuotaView {
+  used: number;
+  limit: number;
+  /** next UTC midnight (ISO) — the counter's reset instant */
+  resetsAt: string;
+}
+
+/** a topic lane row: book chapters for the class's course (Phase A) */
+export interface ToolkitTopicView {
+  topicId: string;
+  title: string;
+  learningObjective: string | null;
+  /** "book_chapter" | "spec_tree" */
+  source: string;
+}
+
+/** one auto-attachable outcome (SPEC_POINT title or the chapter's learning
+ *  objective); coverage rides teaching_coverage when applicable */
+export interface ToolkitOutcomeView {
+  nodeId: string | null;
+  title: string;
+  coverage: "TAUGHT" | "NOT_TAUGHT" | null;
+}
+
+export interface ToolkitContextView {
+  context: ToolkitClassContextView;
+  quota: ToolkitQuotaView;
+  topics: ToolkitTopicView[];
+  topic?: ToolkitTopicView;
+  outcomes?: ToolkitOutcomeView[];
+}
+
+export interface ToolkitResourceSummaryView {
+  id: string;
+  toolType: ToolkitToolType;
+  courseId: string;
+  classId: string | null;
+  status: "SUCCESS" | "FAILED";
+  model: string | null;
+  providerName: string | null;
+  elapsedMs: number | null;
+  createdAt: string;
+  /** { toolType, data, context } — the prompt inputs + resolved chips */
+  input: Record<string, unknown>;
+}
+
+export interface ToolkitResourceDetailView extends ToolkitResourceSummaryView {
+  output: Record<string, unknown> | null;
+  failureReason: string | null;
+}
+
+export interface ToolkitGenerateResultView {
+  resource: ToolkitResourceSummaryView;
+  output: Record<string, unknown>;
+  elapsedMs: number;
+  model: string;
+  providerName: string;
+  quota: ToolkitQuotaView;
+}
+
 /** learner-side class row (the classroom overlay) + unread badge */
 export interface LearnerClassView {
   id: string;

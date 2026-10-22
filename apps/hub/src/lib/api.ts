@@ -118,6 +118,11 @@ import type {
   TeacherClassView,
   ClassKnowledgeGraphView,
   ClassNodeStudentsView,
+  ToolkitContextView,
+  ToolkitGenerateResultView,
+  ToolkitResourceDetailView,
+  ToolkitResourceSummaryView,
+  ToolkitToolType,
 } from "./types";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
@@ -1603,6 +1608,52 @@ export const api = {
     request<LearnerKnowledgeGraphView>(
       `/api/v1/teacher/classes/${classId}/learners/${learnerId}/knowledge-graph?rootId=${encodeURIComponent(rootId)}`,
     ),
+
+  // ── Teaching Toolkit (T-TEACH-013): the 4 educator-ai generators.
+  // NO subject input anywhere — the picked class resolves Subject / Board /
+  // Level / Curriculum server-side (the operator directive); the chips ride
+  // back read-only in the context payload. Generation is synchronous and
+  // typically takes 10–25 s (document-sized LLM output).
+
+  // Teacher: class context — chips + quota + the course's book-chapter topic
+  // lane; ?topicId= resolves the topic's auto-attachable outcomes
+  // (SPEC_POINTs with teaching_coverage, or the chapter's learning objective).
+  teacherToolkitContext: (classId: string, topicId?: string) =>
+    request<ToolkitContextView>(
+      `/api/v1/teacher/toolkit/context?classId=${encodeURIComponent(classId)}${
+        topicId ? `&topicId=${encodeURIComponent(topicId)}` : ""
+      }`,
+    ),
+
+  // Teacher: generate one toolkit document for a class. body.data is the
+  // per-tool payload (validated server-side against the closed presets).
+  teacherToolkitGenerate: (body: {
+    toolType: ToolkitToolType;
+    classId: string;
+    data: unknown;
+  }) =>
+    request<ToolkitGenerateResultView>("/api/v1/teacher/toolkit/generate", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+
+  // Teacher: my generated resources, newest first (own rows only).
+  teacherToolkitResources: (params?: {
+    limit?: number;
+    type?: ToolkitToolType;
+    classId?: string;
+  }) => {
+    const qs = new URLSearchParams();
+    if (params?.limit) qs.set("limit", String(params.limit));
+    if (params?.type) qs.set("type", params.type);
+    if (params?.classId) qs.set("classId", params.classId);
+    const suffix = qs.toString() ? `?${qs.toString()}` : "";
+    return request<ToolkitResourceSummaryView[]>(`/api/v1/teacher/toolkit/resources${suffix}`);
+  },
+
+  // Teacher: one resource's full document (ownership-checked server-side).
+  teacherToolkitResource: (id: string) =>
+    request<ToolkitResourceDetailView>(`/api/v1/teacher/toolkit/resources/${id}`),
 
   // Learner: my classroom overview — classes + flattened unread badge.
   // Empty for the independent student; that empty IS the honest state.
