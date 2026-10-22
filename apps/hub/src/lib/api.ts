@@ -2,8 +2,10 @@
  * SyllabAI API client.
  *
  * Routing:
- * - Production (Vercel): `NEXT_PUBLIC_API_BASE_URL` points at the Spring Boot
- *   service on Render (e.g. https://syllabai-core.onrender.com) — absolute URLs.
+ * - Production (Vercel): `NEXT_PUBLIC_API_BASE_URL` pointed at the Spring Boot
+ *   service on Render (e.g. https://syllabai-core.onrender.com — RETIRED
+ *   2026-10-23, operator decision; core fully retired, hub serves standalone
+ *   from this repo) — absolute URLs.
  * - Sandbox preview: relative URLs with `XTransformPort` query, which the Caddy
  *   gateway forwards to the Java backend on port 8080.
  *
@@ -969,7 +971,8 @@ const USER_KEY = "syllabai.user";
 export function apiPath(path: string): string {
   // path arrives like "/api/v1/auth/login" or ".../tree?includeMisconceptions=true".
   // The resolved base is documented as the bare API origin (e.g.
-  // https://syllabai-core.onrender.com), but a trailing /api/v1 (as older
+  // https://syllabai-core.onrender.com — RETIRED 2026-10-23, core fully
+  // retired), but a trailing /api/v1 (as older
   // deployment notes described) must not double the prefix — normalize it
   // away so both operator conventions produce identical URLs.
   const base = resolveBase(path);

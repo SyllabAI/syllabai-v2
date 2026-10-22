@@ -61,16 +61,17 @@ redirect into the pilot course's hub.
 
 ## Environment
 
+**Core retirement (2026-10-23, operator decision): the standalone core
+service is fully retired. The hub serves standalone from this repo —
+production origin of record: `https://syllabai-hub-v2.vercel.app`.**
+The core-facing variables below remain wired in code but have no live
+target; `mock` is the serving posture of record (bundled corpus).
+
 | Variable | Where | Purpose |
 |---|---|---|
-| `NEXT_PUBLIC_API_BASE_URL` | client | core origin, e.g. `https://syllabai-core.onrender.com` (browser→core direct) |
-| `SYLLABAI_CORE_BASE_URL` | server | same origin for the `/api/ai/*` proxies + the question bridge |
-| `HUB_DATA_MODE` | server | `mock` (default, bundled corpus) \| `core-api` |
-
-**Deployment prerequisite:** core's CORS allow-list
-(`SYLLABAI_CORS_ORIGINS` on the Render service) must include this app's
-production origin — e.g. `https://<hub-domain>.vercel.app` alongside the
-existing entries.
+| `NEXT_PUBLIC_API_BASE_URL` | client | RETIRED with core — browser→core direct; no current origin of record |
+| `SYLLABAI_CORE_BASE_URL` | server | RETIRED with core — was the `/api/ai/*` proxies + question bridge origin |
+| `HUB_DATA_MODE` | server | `mock` (default, bundled corpus — serving posture of record) \| `core-api` (retired target) |
 
 ## The 4CH1 bridge (pilot learner model)
 

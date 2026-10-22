@@ -8,8 +8,10 @@
  * only; writes stay in syllabai-web.
  *
  * Activation: SYLLABAI_CORE_BASE_URL must be set (e.g.
- * https://syllabai-core.onrender.com). Optionally SYLLABAI_CORE_TOKEN for a
- * pilot JWT. The base URL is resolved SERVER-SIDE ONLY (no NEXT_PUBLIC_*).
+ * https://syllabai-core.onrender.com — RETIRED 2026-10-23, operator decision:
+ * core fully retired, this provider has no live target). Optionally
+ * SYLLABAI_CORE_TOKEN for a pilot JWT. The base URL is resolved SERVER-SIDE
+ * ONLY (no NEXT_PUBLIC_*).
  */
 import type { DemoDataProvider } from "./types";
 import { mockProvider } from "./mock";
