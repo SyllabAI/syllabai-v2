@@ -12795,6 +12795,8 @@ Work Log:
 
 Stage Summary:
 - T-RULE-T2-APPLY-2 DONE of record: the durability loop is CLOSED — the 23 tranche-2 operator sid-anchors (46 codes) now live in BOTH planes: v2 registry @ a9bd2488 (consume engine) and resources chem25 spec-links sidecar @ resources main 3838a26 (full-rebuild substrate), byte-pinned vs each other via the stage receipt. Consume-engine law adoption still pending: syllabai-v2 branch t-rule-t2-consume-anchors/r0 awaits the consume lane's next pin advance (per the stage receipt's disclosure). Residual menu unchanged: 10 mis-tag re-points (T-RULE-T2-COND-1 flags), holds 9Dxx/pYmR + split Cdtk evidence, tranche-3 (1,203 sid-less), the 7 V8-corrected sids (retraction operator-gated, relationToV8 per record), PAT rotation, hung resources sync job. LANE: IDLE.
+
+---
 Task ID: trace 1a164940c29a2b85 (MB4-MS-RATTACH run-001 — union-resolve)
 Agent: r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
 
@@ -12856,6 +12858,42 @@ Stage Summary:
 - main @ c3dcd96 green; dc7 progress-attribution law of record (api learner/progress route + rollup service, hub dashboard attribution card, topic-tree/progress-ring attribution hooks).
 - Red backlog unchanged: #285/#296/#300/#303 need author rebase/new head.
 - Standing escalations unchanged: PAT rotation overdue (CRITICAL, operator ledger); neon-replay advisory red / ESC-2 untriaged. No new escalations.
+
+---
+Task ID: F182-OPENING (trace 1a164deaaf1847ed)
+Agent: Z.ai (main agent, operator IM lane)
+Task: Operator word "Proceed" — open the F-182 per-spec-point drill surface (the first Kognity-line build item, dossier Deep Dive D §8.5 row 1): the read-only foundation PR (per-spec-point census + 5-part draw policy + pin battery).
+
+Work Log:
+- Grounding first-hand at main: bundle of record apps/hub/content/igcse-chemistry-19/questions.json = 82 sets (54 official + 28 topic) / 1001 Q / 4011 P at file level, reconciling with the wave-17 serving census (999/4007 built) by exactly the 2 terminal unmapped questions; anchor hygiene corpus-wide 0 outside-spine / 0 malformed codes; spine = 182 SPEC_POINT nodes of 215.
+- Mechanism (additive-only, read-only over the served plane): services/drill/census.ts (collectParts anchor law + computeCensus per-address anchorings with fail-closed spine validation); services/drill/draw.ts (mulberry32 + Fisher-Yates over a part-id-sorted copy; naive recency dedupe with a disclosed thin-pool fallback; DrillDrawError below the 5-part floor; zero-stakes by construction — writes nothing, no clock); scripts/f182_drill_census.ts + the committed census-of-record.json (deterministic, anti-drift-pinned); test/drill/draw.test.ts (15 pins: anchor/plane/multi-code laws, P3 fail-closed, P5 determinism, P4 dedupe + fallback disclosure, RNG stability, artifact-equals-recomputation, wave-17 reconciliation, coverage of record, strongest-address draw, drillable-count match).
+- Census of record at open: 3928 eligible parts (2537 official + 1391 topic) across 171/182 spine addresses — 157 drillable (>=5 pool, 86.3% of the spine), 14 thin, 11 uncovered; strongest address 4CH1-1.25 (155 parts). Unit note disclosed: the tracker gate receipt counted label decisions (2526); the census counts part x code anchorings — the file of record governs.
+- Policy decisions P1..P6 preregistered in docs/F182-DRILL-SURFACE-PLAN.md §4 (part unit; single-code address; fail-closed floor; recency dedupe with retakability override; determinism; zero-stakes by construction). No endpoint, no contracts churn, no DB, no UI in this PR — the build PR adds zod contracts + the drill route + the F-055-shaped evidence seam + the hub UI against these pinned shapes.
+- Battery: root typecheck 0; full suite 2602 pass / 13 skip / 0 fail (the 15 drill pins included); golden selftest OK; retrieval-eval 22 tests 0 fail + 19/19 vectors; zero-core census gate GREEN; census regeneration byte-identical. Receipt: .syllabai/receipts/F182-OPENING/f182-drill-opening-run-001-r0.json.
+
+Stage Summary:
+
+---
+Task ID: T-UGM-HUB-CONSUME-1 (operator instruction: "review + merge PR #58 (and #55 — trivial ledger conflict), (2) I can wire hub consumption in syllabai-v2")
+Agent: Super Z (zai-web session web-6e44932a-9395-44ac-a2c0-2065fd87c4bf)
+Task: (1) review + merge syllabai-resources PRs #55 (UGM-Enrichment facts) and #58 (UGM-Resources text, quadratics lane); (2) wire hub consumption of the UGM corpus in syllabai-v2 — the successor of the dropped #305 link module
+
+Work Log:
+- PR #55 review (checker retained in agent workspace): schema `syllabai.ugm-spec-enrichment/1.0` + review_state SUGGESTED; row census 61 candidate rows (8/12/20/10/11 over 1.1.1-1.1.5) across 56 unique resources + 3 non-overlaps each with a recorded reason; primaryPick exactly 1 per code, set = {name-that-graph, discriminating, quad-solving-sorter, r7328, r6215}; URL hygiene undergroundmathematics.org-only; licensing block carries Cambridge/UCLES. Evidence posted as a review comment (self-approval impossible — same PAT owns both PRs; the merge itself is the operator-delegated gate).
+- PR #55 merge: LEDGER append-conflict vs main (wave-19 entries landed in the same region) resolved locally — main's block kept, T-UGM-MODE1-1 appended at true EOF; branch updated 60149e3; merged as 85394bb.
+- PR #58 review: 59/59 sha256 byte-match MANIFEST.json; front-matter law (source/author/rights/resource_identity/spec_map; subsection_provenance PROVIDER+SUGGESTED; per-point provenance AI_SUGGESTED + confidence); spec_points present on exactly the 56 aligned files, absent on exactly the 3 declared non-overlaps; primaryPick=true exactly 5, identical set to #55 (cross-checked programmatically); delimiter balance 59/59 files (independent re-audit of the 6,434=6,434 build claim); HTML-leak scan clean (single hit = the math literal `-2<p<8`, verified false positive). Evidence review comment posted.
+- PR #58 merge: LEDGER tail conflict (both entries appended at EOF) resolved locally in append-log order (MODE1-1 then IMPORT-1); 928abe4; merged as 91eed732. Post-merge main verified via API: both LEDGER entries present and ordered, UGM-Resources 59 files + UGM-Enrichment 2 files present, LICENSE-DATA Amendment 2026-10-23 present.
+- Hub consumption design: corpus plane already law-bound (bundles under content/<slug>/, loader seam lib/corpus.ts, shared Markdown renderer's normalizeCorpusMath ALREADY supports UGM's native \( \)/\[ \] delimiters — no import-time math transform needed, of-record bodies stay byte-true).
+- Importer scripts/import_ugm.py (fail-closed, mirrors import_content.py): audits enrichment schema+state, blob identity 59/59 sha256 vs MANIFEST.json (run against a snapshot verified by git-blob-SHA equality with resources main 91eed732), front-matter↔enrichment spec-point set equality per resource, primaryPick uniqueness, 61/56/3 census, per-body delimiter balance — ANY failure aborts before writing. Output content/cie-a-level-maths-20-pure-1/ugm-resources.json (270KB, schema syllabai-demo.ugm-lane-resources/1.0): bodies stored ONCE in resources[], spec points reference by ugmIds (a resource may candidate under multiple codes — 61 rows > 56 resources is by design, verified r6526-class); math totals 2870/2870 inline + 347/347 block = 6,434 exactly matching the corpus build audit.
+- Flag law content/flags.json (syllabai-demo.hub-content-flags/1.0): absent file/key/slug = OFF (ADR-CLASS-0001 practice adapted to content), one-flip kill, gates RENDERING only; currently lists cie-a-level-maths-20-pure-1 only.
+- Loader src/lib/ugm.ts (server-only, React-cached, Zod-validated): ugmFeatureEnabled + getUgmBundle (null = honest empty on flag-off/missing/schema-drift) + ugmResourceById/ugmResourcesAt.
+- Surfaces: course hub card in the Revision band (rendered only when flag+bundle live — no roadmap ghost card); /courses/[course]/ugm per-spec-point index (source&rights card first: review state, corpus pin, attestation, text-only note; primaryPick starred as the corpus's own curation; declared non-overlaps listed with reasons); /courses/[course]/ugm/[ugmId] reader through the shared Markdown pipeline (outbound-link law flattens UGM URLs to attribution text; per-point confidence chips; non-overlap reason card where applicable).
+- Manifest addendum on the pure-1 bundle: upstreamSchemas += ugm-spec-enrichment/1.0 + ugm-resource-text/1.0, counts.ugmResources=59, importSource.ugmNote pins the UGM import ref (main@91eed732) separately from the SME vintage pin (the original ref is untouched).
+- Gates, all green locally: bun transpile 4/4 touched files; hub tsc --noEmit exit 0; eslint 0 on the 4 files; the full prebuild battery (corpus gate PASSED, validate_cie_bundles PASSED incl. "pure-1 bank size intact (67)", flashcard sync green); runtime Zod check through the real loader (flag on/off semantics, bundle parse 59/5, 1.1.3 census 20, primaryPick name-that-graph, body roundtrip byte-true).
+
+Stage Summary:
+- syllabai-resources main @ 91eed732 now carries the quadratics lane of record: facts (#55) + text (#58) + ordered LEDGER + license amendment — the operator's direct-import directive (ADR-UGM-0001 as amended 2026-10-23, attestation 2026-10-23) is fully landed of record.
+- This commit wires the consumption side flag-gated for cie-a-level-maths-20-pure-1; it supersedes the dropped #305 module shape (content-in instead of links-out).
 ---
 Task ID: T-RULE-T2-APPLY-2 (v2 half)
 Agent: R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
