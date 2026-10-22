@@ -1,6 +1,6 @@
 {
-  "id": "029496d1-cf58-449f-80f9-b06ed65c06b4",
-  "prevId": "dbf0efb6-ca6f-46c8-8272-650305c9f1c0",
+  "id": "4478097e-c710-4a32-b0ac-b9efe42982e3",
+  "prevId": "029496d1-cf58-449f-80f9-b06ed65c06b4",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -8939,6 +8939,309 @@
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.ai_mark_events": {
+      "name": "ai_mark_events",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "learner_id": {
+          "name": "learner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "question_id": {
+          "name": "question_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "attempt_id": {
+          "name": "attempt_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "answer_id": {
+          "name": "answer_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "question_part_id": {
+          "name": "question_part_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mark_ordinal": {
+          "name": "mark_ordinal",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pipeline_version": {
+          "name": "pipeline_version",
+          "type": "varchar(24)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ux_ai_mark_events_learner_part_ordinal": {
+          "name": "ux_ai_mark_events_learner_part_ordinal",
+          "columns": [
+            {
+              "expression": "learner_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "question_part_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "mark_ordinal",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ix_ai_mark_events_learner_part": {
+          "name": "ix_ai_mark_events_learner_part",
+          "columns": [
+            {
+              "expression": "learner_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "question_part_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            },
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "timestamptz_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ix_ai_mark_events_attempt": {
+          "name": "ix_ai_mark_events_attempt",
+          "columns": [
+            {
+              "expression": "attempt_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "fk_ai_mark_events_learner": {
+          "name": "fk_ai_mark_events_learner",
+          "tableFrom": "ai_mark_events",
+          "tableTo": "users",
+          "columnsFrom": [
+            "learner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "fk_ai_mark_events_attempt": {
+          "name": "fk_ai_mark_events_attempt",
+          "tableFrom": "ai_mark_events",
+          "tableTo": "attempts",
+          "columnsFrom": [
+            "attempt_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "fk_ai_mark_events_answer": {
+          "name": "fk_ai_mark_events_answer",
+          "tableFrom": "ai_mark_events",
+          "tableTo": "answers",
+          "columnsFrom": [
+            "answer_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ai_mark_events_ordinal_check": {
+          "name": "ai_mark_events_ordinal_check",
+          "value": "mark_ordinal >= 1"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.mark_entitlements": {
+      "name": "mark_entitlements",
+      "schema": "",
+      "columns": {
+        "learner_id": {
+          "name": "learner_id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "tier": {
+          "name": "tier",
+          "type": "varchar(16)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_by": {
+          "name": "updated_by",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "fk_mark_entitlements_learner": {
+          "name": "fk_mark_entitlements_learner",
+          "tableFrom": "mark_entitlements",
+          "tableTo": "users",
+          "columnsFrom": [
+            "learner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "fk_mark_entitlements_tier": {
+          "name": "fk_mark_entitlements_tier",
+          "tableFrom": "mark_entitlements",
+          "tableTo": "mark_entitlement_policies",
+          "columnsFrom": [
+            "tier"
+          ],
+          "columnsTo": [
+            "tier"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.mark_entitlement_policies": {
+      "name": "mark_entitlement_policies",
+      "schema": "",
+      "columns": {
+        "tier": {
+          "name": "tier",
+          "type": "varchar(16)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "re_marks_per_day": {
+          "name": "re_marks_per_day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "unlimited": {
+          "name": "unlimited",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_by": {
+          "name": "updated_by",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ck_mark_entitlement_policies_tier": {
+          "name": "ck_mark_entitlement_policies_tier",
+          "value": "(tier)::text = ANY ((ARRAY['free'::character varying, 'trial'::character varying, 'paid'::character varying])::text[])"
+        },
+        "ck_mark_entitlement_policies_law": {
+          "name": "ck_mark_entitlement_policies_law",
+          "value": "(unlimited IS TRUE) OR (re_marks_per_day IS NOT NULL)"
+        }
+      },
       "isRLSEnabled": false
     }
   },

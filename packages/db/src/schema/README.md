@@ -140,3 +140,12 @@ Every migration after the 0000 baseline is a v2-owned additive structure per
 | `0006_class_feature_toggles.sql` | T-TEACH-002 (ADR-CLASS-0001) | `class_features` side table |
 | `0007_t-sm-kappa-subject.sql` | T-MIG-102 lane | `smart_mark_agreement_evaluations.subject_id` |
 | `0008_teaching_toolkit.sql` | T-TEACH-011 | `teaching_toolkit_resources` + `teaching_toolkit_usage` + `class_features.ai_toolkit` + the `prompt_versions` teaching-toolkit/* v1.0 seed rows |
+| `0009_dc3-mark-entitlement.sql` | DC-3 re-attempt entitlement (docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md) | `ai_mark_events` (APPEND-ONLY ordinal ledger, (learner, part, ordinal) UNIQUE fail-closed) + `mark_entitlement_policies` (seeded free/paid; trial unshipped — spec open question (a) operator-gated) + `mark_entitlements` (row-absent = free) |
+
+DC-3 substrate notes: `ai_mark_events` is APPEND-ONLY (the markAttempt
+ordinal ledger — counted in the marking path, never inferred); entitlement
+state rides side tables (the 0006 class_features precedent; row-absent
+learner = free); the trial row ships only when the operator's business
+ruling lands (spec open question (a)). Authored as 0008; RENUMBERED 0009 at
+the merge gate per first-pushed (T-TEACH-011 took the 0008 slot mid-flight,
+337344dc) — mechanism byte-identical.

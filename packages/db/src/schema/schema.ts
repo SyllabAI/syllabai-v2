@@ -1676,3 +1676,71 @@ export const teachingToolkitUsage = pgTable("teaching_toolkit_usage", {
                 }),
         primaryKey({ columns: [table.teacherId, table.usageDay], name: "teaching_toolkit_usage_pkey" }),
 ]);
+
+// ── DC-3 re-attempt entitlement (docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md) ──
+// v2-only tables (BASELINE_DB.md §4.2): CREATE-only, zero bytes touched on
+// any Flyway-era table. The markAttempt ordinal is first-class on the
+// append-only ai_mark_events ledger (counted in the markAttempt path, never
+// inferred); entitlement state rides side tables (the 0006 class_features
+// precedent) — row-absent = free.
+
+export const markEntitlementPolicies = pgTable("mark_entitlement_policies", {
+        tier: varchar({ length: 16 }).primaryKey(),
+        reMarksPerDay: integer("re_marks_per_day"),
+        unlimited: boolean().default(false).notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).notNull(),
+        updatedBy: uuid("updated_by"),
+}, (table) => [
+        check("ck_mark_entitlement_policies_tier", sql`(tier)::text = ANY ((ARRAY['free'::character varying, 'trial'::character varying, 'paid'::character varying])::text[])`),
+        check("ck_mark_entitlement_policies_law", sql`(unlimited IS TRUE) OR (re_marks_per_day IS NOT NULL)`),
+]);
+
+export const markEntitlements = pgTable("mark_entitlements", {
+        learnerId: uuid("learner_id").primaryKey().notNull(),
+        tier: varchar({ length: 16 }).notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).notNull(),
+        updatedBy: uuid("updated_by"),
+}, (table) => [
+        foreignKey({
+                        columns: [table.learnerId],
+                        foreignColumns: [users.id],
+                        name: "fk_mark_entitlements_learner"
+                }).onDelete("cascade"),
+        foreignKey({
+                        columns: [table.tier],
+                        foreignColumns: [markEntitlementPolicies.tier],
+                        name: "fk_mark_entitlements_tier"
+                }),
+]);
+
+export const aiMarkEvents = pgTable("ai_mark_events", {
+        id: uuid().primaryKey().notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        questionId: uuid("question_id").notNull(),
+        attemptId: uuid("attempt_id").notNull(),
+        answerId: uuid("answer_id").notNull(),
+        questionPartId: uuid("question_part_id").notNull(),
+        markOrdinal: integer("mark_ordinal").notNull(),
+        pipelineVersion: varchar("pipeline_version", { length: 24 }).notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        uniqueIndex("ux_ai_mark_events_learner_part_ordinal").on(table.learnerId, table.questionPartId, table.markOrdinal),
+        index("ix_ai_mark_events_learner_part").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.questionPartId.asc().nullsLast().op("uuid_ops"), table.createdAt.asc().nullsLast().op("timestamptz_ops")),
+        index("ix_ai_mark_events_attempt").using("btree", table.attemptId.asc().nullsLast().op("uuid_ops")),
+        foreignKey({
+                        columns: [table.learnerId],
+                        foreignColumns: [users.id],
+                        name: "fk_ai_mark_events_learner"
+                }).onDelete("cascade"),
+        foreignKey({
+                        columns: [table.attemptId],
+                        foreignColumns: [attempts.id],
+                        name: "fk_ai_mark_events_attempt"
+                }),
+        foreignKey({
+                        columns: [table.answerId],
+                        foreignColumns: [answers.id],
+                        name: "fk_ai_mark_events_answer"
+                }),
+        check("ai_mark_events_ordinal_check", sql`mark_ordinal >= 1`),
+]);

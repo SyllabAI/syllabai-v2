@@ -244,21 +244,24 @@ describe("specialTypeMap", () => {
 describe("verifyBaseline (checked-in baseline)", () => {
   // count bumps per baseline-extending migration: 70/667/98/62/115 was the
   // T-MIG-002-R proof; T-TEACH-011 (0008_teaching_toolkit) adds 2 tables,
-  // 17 columns, 1 index, 3 fks, 2 checks → 72/684/99/65/117.
-  test("72/684/99/65/117 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // 17 columns, 1 index, 3 fks, 2 checks → 72/684/99/65/117;
+  // DC-3 (0009_dc3-mark-entitlement) adds 3 tables, 18 columns, 3 indexes,
+  // 5 fks, 3 checks → 75/702/102/70/120 (measured: verifyBaseline VERIFY
+  // PASS, 0 drifts, on the union end-state; renumber receipt in the plan).
+  test("75/702/102/70/120 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 72/72");
-    expect(v.inventory).toContain("columns 684");
-    expect(v.inventory).toContain("indexes 99");
-    expect(v.inventory).toContain("fks 65");
-    expect(v.inventory).toContain("checks 117");
+    expect(v.inventory).toContain("tables 75/75");
+    expect(v.inventory).toContain("columns 702");
+    expect(v.inventory).toContain("indexes 102");
+    expect(v.inventory).toContain("fks 70");
+    expect(v.inventory).toContain("checks 120");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(72);
+    expect(run.size).toBe(75);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);
@@ -272,6 +275,10 @@ describe("verifyBaseline (checked-in baseline)", () => {
     // T-TEACH-011 — the Teaching Toolkit append-only results + quota counter
     expect(run.has("public.teaching_toolkit_resources")).toBe(true);
     expect(run.has("public.teaching_toolkit_usage")).toBe(true);
+    // DC-3 — the re-attempt entitlement substrate (additive, v2-owned)
+    expect(run.has("public.ai_mark_events")).toBe(true);
+    expect(run.has("public.mark_entitlement_policies")).toBe(true);
+    expect(run.has("public.mark_entitlements")).toBe(true);
   });
 });
 
