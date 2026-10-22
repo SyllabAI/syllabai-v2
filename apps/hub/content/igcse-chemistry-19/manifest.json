@@ -1,16 +1,16 @@
 {
  "schema": "syllabai-demo.content-bundle/2.0",
- "generatedUtc": "2026-10-21T21:55:49Z",
+ "generatedUtc": "2026-10-22T14:25:00Z",
  "importSource": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@4f2eb1a2ee5561438b68d503cda82809ae6afe62",
+  "ref": "main@9f1b9d293f4e639fb47c7c9a06564e5c67309ca8",
   "upstreamSchemas": [
    "syllabai.sme-revision-note/1.0",
    "syllabai.sme-revision-notes-course/1.0",
    "syllabai.sme-exam-questions/1.1",
    "syllabai.sme-flashcard-deck/1.0"
   ],
-  "note": "ADR-037 converter v0.13.1 corpus (merged main): the F52 corpus-wide italic-Delta normalization lands hub-side - the 5 served U+01FB glyphs (MyriadPro-It custom encoding, the first codepoint guess U+01DF having been no-op-disproved corpus-side) normalize to U+0394 on the 2020-01 R slices: 1CR 6(c)(i) x2, 2CR 6(b)(iv) x1 + 6(c) x2 (data-verified; a 3-part changed census disclosed of record: official-4ch1-1cr-2020-01 offp_2020-01_6-c-i; official-4ch1-2cr-2020-01 offp_2020-01_6-b-iv + offp_2020-01_6-c; new=0 gone=0). Exporter v4 gates G-E1..G-E5 green against the declared data cut main@4f2eb1a2ee5561438b68d503cda82809ae6afe62; G-E1b identity byte-equal on all 54 official sets; G-E4 SME prefix byte-identical; counts unchanged. Whole-bundle normalization identity asserted of record: the current bundle with U+01FB->U+0394 equals the staged output byte-for-byte - this wave changes ONLY the 5 delta glyphs. Bundle posture: 82 sets (28 SME + 54 official: 16x1C + 16x2C + 11x1CR + 11x2CR), 1001 questions, 4011 parts, 8568 marks; 368 figure crops + 8 honest stubs via rawUrl provenance refs. The 1CR+2CR tranches serve pending-llm under the anchor law (0 spec codes, data-verified at wave-16); the R-VARIANT spec-label waves (resources PR #50, 1059/1059 parts resolved) are consumed by their own future hub-sync lane, not this one."
+  "note": "ADR-037 converter v0.13.1 corpus (merged main main@9f1b9d293f4e): the R-VARIANT spec-label waves (F-178 protocol, trace 1a163a753e3bd999) — 1059/1059 R-tranche parts resolved (948 content-labeled + 111 verbatim/near-verbatim inherited from the labeled 1C/2C corpus + 44 terminal no-spec-point with reasons per the F38 precedent classes); zero pending-llm corpus-wide; the harness census line moves 197 -> 1 unmapped questions. Lands as a pure content wave against the previously-synced R copies: wave-17 disclosure changed=1015 / new=0 / gone=0 (specPointCodes + the F52 italic-Delta fix on the 2020-01 R slices); exporter v4 gates G-E1 census exact + G-E1b identity-clean on all 54 common sets + G-E3 (54 slices / 4860 marks) + G-E4 (SME prefix 2605414 B) green. Data-cut proof: all 54 consumed staging topics content-identical to main@9f1b9d293f4e modulo the converter header (the F51 G-E5 data-plane proof, executed via the API in lieu of git show)."
  },
  "curriculum": {
   "board": "Pearson Edexcel",
@@ -36,7 +36,7 @@
   "syllabai.official-paper-questions/0.1"
  ],
  "countsProvenance": {
-  "note": "Counts census the served bundle (CONTENT-AUDIT run-001-r0 found the import-time counts stale; the v0.9.0 sync recomputed them from the files; wave-12 recomputed again from the v0.10.0 corpus; wave-15 recomputed again from the v0.12.0 corpus; wave-16 recomputed again from the v0.13.0 corpus). Breakdown preserved below; live UI reads the files directly.; the F52 normalization lane re-verified all counts unchanged from the v0.13.1 corpus (a 3-part text-level census, no count deltas)",
+  "note": "Counts census the served bundle (CONTENT-AUDIT run-001-r0 found the import-time counts stale; the v0.9.0 sync recomputed them from the files; wave-12 recomputed again from the v0.10.0 corpus; wave-15 recomputed again from the v0.12.0 corpus; wave-16 recomputed again from the v0.13.0 corpus). Breakdown preserved below; live UI reads the files directly.",
   "smeCorpus": {
    "questionSets": 28,
    "questions": 524,
