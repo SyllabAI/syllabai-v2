@@ -12717,3 +12717,21 @@ Work Log:
 
 Stage Summary:
 - DC-4 is PREREGISTERED + IMPLEMENTED + PINNED on branch dc4-lens-cards (base f97690cabc23); the PR rides the five-gate discipline and STOPS at the merge gate — the operator's merge word is the product sign-off. Acceptance: (a) grammar = pinned template bytes + governed pipelines (R-LLM doctrine); (b) router = closed vocabulary + deterministic hrefs + thread-scoped CTA + deep-link builder pins; (c) opener-only preserved structurally. Residuals disclosed in plan §5 (course-index route targets; mark-context fail-open; in-chat drilling/approach).
+
+---
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-22T17:00Z)
+Agent: R0-auto (merge desk)
+Task: PR #306 merge (wave-19 official-papers UX — stems restored, part ids de-collided, MS junk off)
+
+Work Log:
+- 5 open PRs on entry: #285/#296/#300/#303/#306. Main tip on entry 30d8d21 (lane self-merged #304 at 00:21+08) CI 2/2 success — main green, no escalation trigger.
+- gate (b) head CI: #285 1c2dd54 verify+hub FAILURE (stale ~26h) skip; #296 bd2c0b1 hub FAILURE skip; #300 7e242f8 verify FAILURE skip; #303 cce0230 verify FAILURE skip — all four head SHAs unchanged, no new runs; #306 b208009 verify+hub 2/2 success.
+- gates (c)(d) on #306: mergeable=true mergeable_state=clean (base=30d8d21=current tip, no intake needed); 0 reviews, 0 comments — no REQUEST_CHANGES/HOLD/BLOCKING/do-not-merge.
+- gate (e) diff boundary: 1 file only, apps/hub/content/igcse-chemistry-19/questions.json (+3867/-3867); no *.java, no core/hub-repo content, no Neon/prod surfaces. Patch omitted by API (large diff), so validated the head blob directly: JSON valid, list of 82 items preserved base→head, +71KB consistent with stem restoration; suspect-string scan clean.
+- merged: PUT /pulls/306/merge (merge_method=merge) -> merge sha 9d71fa1; new main tip CI verify+hub 2/2 success (bounded re-check, green on first poll).
+- skips did NOT re-run merge-intake: all four are plain head-red (gate b), not collisions; lane needs new heads/rebase to re-trigger CI.
+
+Stage Summary:
+- main @ 9d71fa1 green; wave-19 official-papers UX of record (igcse-chemistry-19 stems restored, part ids de-collided).
+- Open red backlog unchanged: #285 (verify+hub, ~26h stale), #296 (hub), #300 (verify), #303 (verify) — authors must push/rebase for fresh CI.
+- Standing escalations unchanged: PAT rotation overdue (CRITICAL, operator ledger); neon-replay advisory red / ESC-2 untriaged. No new escalations this sweep.
