@@ -91,6 +91,7 @@ function bankStub(): DrillBank {
       return right === undefined ? null : right === label;
     },
     solutionOf: (id) => (content.has(id) ? `solution ${id}` : null),
+    markSchemeOf: () => null, // F-183: this battery keeps the MS-less stub; the law battery carries the MS-bearing one
   };
 }
 

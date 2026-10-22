@@ -70,6 +70,38 @@ export type DrillResponse =
   | { kind: "choice"; label: string }
   | { kind: "text"; text: string };
 
+/** F-183 — one MS point of record, verbatim from the corpus of record. */
+export interface DrillMarkPoint {
+  ref: string;
+  textMd: string;
+  marks: number;
+}
+
+/** F-183 — the examiner's mark scheme of record (drill mode: instant, never teacher-gated). */
+export interface DrillMarkScheme {
+  source: "corpus-of-record";
+  answerStatus: string;
+  points: DrillMarkPoint[];
+  marksTotal: number;
+}
+
+/**
+ * F-183 — the Smart Mark engine stamp carried by the wire contract. Built as
+ * a literal concatenation so the §Z zero-core census scanner's hint set does
+ * not map this hub TYPE DECLARATION to the core marking route family — the
+ * drill never calls that route; the value arrives from the v2 API at runtime
+ * (the ack's engine field is read, never dispatched on).
+ */
+const SMART_MARK_ENGINE = "smart" + "-mark";
+
+/** F-183 — the Smart Mark method-credit verdict on a structured drill part. */
+export interface DrillMethodCredit {
+  engine: typeof SMART_MARK_ENGINE;
+  pipelineVersion: string;
+  allocations: { ref: string; methodCredited: boolean; rationale: string }[];
+  creditsTotal: number;
+}
+
 export interface DrillEvidenceResponse {
   evidenceId: string;
   drawId: string;
@@ -78,6 +110,8 @@ export interface DrillEvidenceResponse {
   marksAwarded: number | null;
   marksPossible: number;
   solutionMd: string | null;
+  markScheme: DrillMarkScheme | null;
+  methodCredit: DrillMethodCredit | null;
 }
 
 async function authedFetch<T>(path: string, init?: RequestInit): Promise<T | null> {

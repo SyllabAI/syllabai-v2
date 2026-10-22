@@ -11,6 +11,7 @@ import {
   drillDrawResponseSchema,
   drillEvidenceRequestSchema,
   drillEvidenceResponseSchema,
+  drillMarkSchemeViewSchema,
   drillPartViewSchema,
   drillResponseSchema,
 } from "./drill";
@@ -105,14 +106,74 @@ describe("drill evidence request — the F-055 shape", () => {
 });
 
 describe("drill evidence response — the instant-reveal carrier", () => {
-  test("ungraded structured evidence is null/null, never 0", () => {
-    const body = { evidenceId: EVIDENCE_ID, drawId: DRAW_ID, partId: "p1", correct: null, marksAwarded: null, marksPossible: 2, solutionMd: "i) ..." };
+  test("ungraded structured evidence is null/null, never 0; the F-183 reveal fields ride as honest nulls", () => {
+    const body = {
+      evidenceId: EVIDENCE_ID,
+      drawId: DRAW_ID,
+      partId: "p1",
+      correct: null,
+      marksAwarded: null,
+      marksPossible: 2,
+      solutionMd: "i) ...",
+      markScheme: null,
+      methodCredit: null,
+    };
     expect(drillEvidenceResponseSchema.parse(body)).toEqual(body);
   });
 
-  test("server-graded MCQ evidence carries the boolean and the marks", () => {
-    const body = { evidenceId: EVIDENCE_ID, drawId: DRAW_ID, partId: "p1", correct: true, marksAwarded: 1, marksPossible: 1, solutionMd: "**Final answer:** B" };
+  test("server-graded MCQ evidence carries the boolean, the marks, and the MS of record (no methodCredit)", () => {
+    const body = {
+      evidenceId: EVIDENCE_ID,
+      drawId: DRAW_ID,
+      partId: "p1",
+      correct: true,
+      marksAwarded: 1,
+      marksPossible: 1,
+      solutionMd: "**Final answer:** B",
+      markScheme: {
+        source: "corpus-of-record" as const,
+        answerStatus: "linked",
+        points: [{ ref: "2019-06-1-a-MP1", textMd: "Answer B: the crystal dissolves in the water", marks: 1 }],
+        marksTotal: 1,
+      },
+      methodCredit: null,
+    };
     expect(drillEvidenceResponseSchema.parse(body)).toEqual(body);
+  });
+
+  test("the method-credit verdict binds with per-point booleans and a derived creditsTotal", () => {
+    const body = {
+      evidenceId: EVIDENCE_ID,
+      drawId: DRAW_ID,
+      partId: "p2",
+      correct: null,
+      marksAwarded: null,
+      marksPossible: 2,
+      solutionMd: "i) ...",
+      markScheme: {
+        source: "corpus-of-record" as const,
+        answerStatus: "linked",
+        points: [
+          { ref: "2019-06-2-a-MP1", textMd: "point one", marks: 1 },
+          { ref: "2019-06-2-a-MP2", textMd: "point two", marks: 1 },
+        ],
+        marksTotal: 2,
+      },
+      methodCredit: {
+        engine: "smart-mark" as const,
+        pipelineVersion: "f183-method-credit-1.0.0",
+        allocations: [
+          { ref: "2019-06-2-a-MP1", methodCredited: true, rationale: "the method is stated" },
+          { ref: "2019-06-2-a-MP2", methodCredited: false, rationale: "absent" },
+        ],
+        creditsTotal: 1,
+      },
+    };
+    expect(drillEvidenceResponseSchema.parse(body)).toEqual(body);
+    // the M-point ref and marks are part of the shape; an empty points list refuses
+    expect(
+      drillMarkSchemeViewSchema.safeParse({ source: "corpus-of-record", answerStatus: "linked", points: [], marksTotal: 0 }).success,
+    ).toBe(false);
   });
 });
 

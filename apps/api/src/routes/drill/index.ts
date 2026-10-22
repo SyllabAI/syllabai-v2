@@ -39,6 +39,7 @@ import {
   drawForLearner,
   recordDrillEvidence,
 } from "../../services/drill/serve";
+import type { DrillMethodCreditGenerator } from "../../services/drill/reveal";
 import { createDrillStore, type DrillStore } from "../../services/drill/store";
 
 /** The assessment-route binding law: a failed safeParse IS the binding failure. */
@@ -57,6 +58,12 @@ async function readJsonBody(c: { req: { json: () => Promise<unknown> } }): Promi
 export interface DrillRouterDeps {
   bankOf(course: string): DrillBank;
   store: DrillStore;
+  /**
+   * F-183 — the Smart Mark method-credit seam (structured drill parts).
+   * Optional + nullable: the dormant posture (zero-key boots, tests without a
+   * stub) degrades to the honest null on the ack — law L6.
+   */
+  methodCreditGenerator?: DrillMethodCreditGenerator | null;
 }
 
 export function createDrillRouter(deps: DrillRouterDeps): Hono {
@@ -127,7 +134,7 @@ export function createDrillRouter(deps: DrillRouterDeps): Hono {
       );
     }
     const bank = deps.bankOf(draw.course);
-    const outcome = await recordDrillEvidence(bank, deps.store, auth.userId, parsed.data);
+    const outcome = await recordDrillEvidence(bank, deps.store, auth.userId, parsed.data, deps.methodCreditGenerator ?? null);
     return c.json(outcome, 201);
   });
 
@@ -137,7 +144,11 @@ export function createDrillRouter(deps: DrillRouterDeps): Hono {
 /** Module + router composition for the app root — the buildLearnerProgressRouters shape. */
 export function buildDrillRouters(
   env: Record<string, string | undefined> = process.env,
-  opts: { bankOf?: (course: string) => DrillBank; store?: DrillStore } = {},
+  opts: {
+    bankOf?: (course: string) => DrillBank;
+    store?: DrillStore;
+    methodCreditGenerator?: DrillMethodCreditGenerator | null;
+  } = {},
 ) {
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql: SqlFn = createSql(databaseUrl) as unknown as SqlFn;
@@ -145,6 +156,7 @@ export function buildDrillRouters(
     drillRoute: createDrillRouter({
       bankOf: opts.bankOf ?? bundleBank,
       store: opts.store ?? createDrillStore(sql),
+      methodCreditGenerator: opts.methodCreditGenerator ?? null,
     }),
   };
 }

@@ -144,10 +144,73 @@ export const drillEvidenceRequestSchema = z.object({
 });
 export type DrillEvidenceRequest = z.infer<typeof drillEvidenceRequestSchema>;
 
+// ── F-183 — the MS-reveal law (drill mode) ─────────────────────────────────
+
 /**
- * The evidence ack + the INSTANT reveal: solutionMd rides the response to
- * the recorded attempt (never before it). `correct`/`marksAwarded` are null
- * for ungraded structured parts — never zero, never invented.
+ * One mark-scheme point OF RECORD, verbatim from the corpus of record (the
+ * served bundle's per-part `markPoints` — the examiner's own M1..Mn points).
+ * `ref` is the corpus point id of record (never re-derived), `textMd` the
+ * examiner's text byte-for-byte, `marks` the point's mark value.
+ */
+export const drillMarkPointSchema = z.object({
+  ref: z.string().min(1),
+  textMd: z.string().min(1),
+  marks: z.number().int().min(0),
+});
+export type DrillMarkPoint = z.infer<typeof drillMarkPointSchema>;
+
+/**
+ * The drill mark scheme view — the corpus of record's MS for one part. There
+ * is deliberately NO validationState field: the drill never reads the
+ * AI-extracted mark_schemes plane, so no teacher-gating policy applies
+ * (F-183 law L2 — instant in drill, never teacher-gated; everywhere else the
+ * MarkSchemeReveal gating stays as-is).
+ */
+export const drillMarkSchemeViewSchema = z.object({
+  source: z.literal("corpus-of-record"),
+  /** The bundle's answerStatus of record ("linked" today), verbatim. */
+  answerStatus: z.string().min(1),
+  /** The M1..Mn points in corpus order (never reordered). */
+  points: z.array(drillMarkPointSchema).min(1),
+  /** Derived: sum of point marks — the bank fail-closes unless it equals the part's marks. */
+  marksTotal: z.number().int().min(0),
+});
+export type DrillMarkSchemeView = z.infer<typeof drillMarkSchemeViewSchema>;
+
+/** One Smart Mark method-credit allocation (the ADR-025 Decision vocabulary,
+ * per point: was the method credited — boolean, never invented marks). */
+export const drillMethodCreditAllocationSchema = z.object({
+  ref: z.string().min(1),
+  methodCredited: z.boolean(),
+  rationale: z.string().min(1),
+});
+export type DrillMethodCreditAllocation = z.infer<typeof drillMethodCreditAllocationSchema>;
+
+/**
+ * The Smart Mark method-credit verdict on a STRUCTURED drill part — computed
+ * against the MS of record at reveal time, Ephemeral (rides the ack; nothing
+ * is persisted — the zero-stakes law: no attempts/ai_mark_events, ever).
+ */
+export const drillMethodCreditViewSchema = z.object({
+  engine: z.literal("smart-mark"),
+  pipelineVersion: z.string().min(1),
+  allocations: z.array(drillMethodCreditAllocationSchema),
+  /** Derived: how many points earned method credit. */
+  creditsTotal: z.number().int().min(0),
+});
+export type DrillMethodCreditView = z.infer<typeof drillMethodCreditViewSchema>;
+
+/**
+ * The evidence ack + the INSTANT reveal (F-183 law L1): the reveal rides the
+ * response to the recorded attempt (never before it — the draw response has
+ * no answer facts and no MS). `correct`/`marksAwarded` are null for ungraded
+ * structured parts — never zero, never invented.
+ *
+ * F-183 upgrades the reveal to the REAL mark scheme: `markScheme` carries the
+ * corpus-of-record M1..Mn points verbatim (law L3); `methodCredit` carries the
+ * Smart Mark verdict on structured parts (law L4). Both are honest nulls when
+ * the corpus carries no linked MS for the part / the generator seam is dormant
+ * (law L6 — visible to the metric, never paraphrased into a fake MS).
  */
 export const drillEvidenceResponseSchema = z.object({
   evidenceId: z.string().uuid(),
@@ -157,5 +220,7 @@ export const drillEvidenceResponseSchema = z.object({
   marksAwarded: z.number().int().nullable(),
   marksPossible: z.number().int().min(0),
   solutionMd: z.string().nullable(),
+  markScheme: drillMarkSchemeViewSchema.nullable(),
+  methodCredit: drillMethodCreditViewSchema.nullable(),
 });
 export type DrillEvidenceResponse = z.infer<typeof drillEvidenceResponseSchema>;
