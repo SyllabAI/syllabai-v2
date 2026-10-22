@@ -8,7 +8,10 @@ Consumption law (REJOIN-1 NEXT #2 verbatim semantics):
   - verdict semantics: operator-verdict entries (V1-V4) are authoritative;
   - T2_near: accepted-near, NON-AUTHORITATIVE hint — carried in the map as
     items[].t2HintCodes, NEVER in items[].codes, NEVER in bundle linkage;
-  - the rejoin's J*-tier entries: consumed post-gate (ACCEPTED, identity-grade).
+  - the rejoin's J*-tier entries: consumed post-gate (ACCEPTED, identity-grade);
+  - operator sid-anchors (anchors.operatorSidAnchors, T-RULE-T2-APPLY-2):
+    sid-level operator rulings -> spcptToOfficial add-if-absent / verify-if-equal /
+    conflict-keep+disclose (NO-GUESS); added sids leave spcptUnmapped; battery A1.
 
 Pipeline (deterministic, fixed stamp, fail-loud):
   A  pins      sidecar review states + sha256s + registry/spine/bundle presence
@@ -25,19 +28,31 @@ Lineage precedence for dedup (strongest first):
   sidecar operator-verdict (V*) > sidecar T1_verbatim > sidecar J* >
   upstream_item_join (ladder) > sme_declared_link_rekey > subtopic_title_scope
 
-Pin of record: syllabai-resources origin/main aa0b4de1 (the tranche-1 advance
-75981cad -> aa0b4de1, verified: Official-Specifications/parsed, SME-RevisionNotes,
-SME-Flashcards tree-sha-IDENTICAL to the r9 pin; SME-ExamQuestion moved but ALL
-changed files are igcse-accounting-17* (Edexcel) — zero CIE corpus contact; the
-ONLY CIE input delta is spec-links/ — the T-SPECS-CIE-TRANCHE1-T2NEAR-1 verdict
-round, whose V6_near_text_verdict entries are consume-authoritative by the same
-sidecar_rank law).
+Pin of record: syllabai-resources origin/main 3838a264 (the T-RULE-T2-APPLY-2
+ADOPTION advance, operator order 'adopt the consume-law on v2 branch', trace
+1a164dcf6cff9061): consumed vintage c5f20c52 (the CIE-REFRESH-1 re-key, v2
+8e740fc4) -> the PR-#49-merged tip 3838a264, verified: SME-RevisionNotes,
+SME-ExamQuestion, Official-Specifications tree-sha-IDENTICAL to the c5f20c52
+pin; Official-ExamQuestion moved but 100% igcse-chemistry-19 wave-19 exporter
+surface (not an engine input); scripts moved but the engine's ONE script input
+cie_rejoin_resolutions.yaml is blob-identical (2bcd4db3, sheet 634/166 pins
+hold); the ONLY consumed-input delta is spec-links/ — 8 sidecars of record:
+the 23 tranche-2 operator sid-anchors (anchors.operatorSidAnchors, PR #49,
+5b85ea3) + the pending item-plane verdict rounds (T-RULE-T2-B01 132c4b6,
+B02 e4f4a34, COMPLETE-1-BAND-B geo-25 58d7f68, PARSE-REPAIR-1/2 06de1f2a +
+b83a3799), all consume-authoritative by the sidecar_rank law.
 
 TRANCHE-1 RE-RUN (2026-10-21, operator order 'tranche-1', trace
 1a15e4200e6af579): consumes the tranche-1 verdict sidecars — the 155-part
 T2_near review queue of the anchor-gap census receipt promoted to the V*
 authoritative class. The consumption law is UNCHANGED (this engine's semantics
 already rank V* first and hold T2_near as hints).
+
+T-RULE-T2-APPLY-2 ADOPTION (2026-10-22, operator order 'adopt the consume-law
+on v2 branch', trace 1a164dcf6cff9061): the Stage B operator sid-anchor law
+(anchors.operatorSidAnchors -> spcptToOfficial add-if-absent / verify-if-equal /
+conflict-keep+disclose; added sids leave spcptUnmapped; census sidAnchors;
+battery A1) adopted of record at the pin advance to the PR-#49-merged tip.
 """
 from __future__ import annotations
 
@@ -58,8 +73,8 @@ RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resourc
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "aa0b4de1b732738b4d02dabdd02d9ead85522907"
-STAMP = "2026-10-21T13:45:00Z"
+PIN = "3838a264d105e15a7cb8e908fb04d72847f8f94b"
+STAMP = "2026-10-22T18:50:00Z"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
 RANK = {  # lower wins on the same (item, code) key
@@ -214,9 +229,43 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
                 lineage=L_SIDECAR, via="REJOIN-1:gate-1")
             sheet_added += 1
 
+    # ---- sidecar operator sid-anchors -> spcptToOfficial ---------------------
+    # T-RULE-T2-APPLY-2 law (sidecar block anchors.operatorSidAnchors, schema
+    # syllabai.operator-sid-anchors/1.0): add-if-absent / verify-if-equal /
+    # conflict-keep+disclose (NO-GUESS — the sheet law's conflict posture);
+    # added sids leave spcptUnmapped (registry-plane law of v2 @ a9bd2488,
+    # T-RULE-T2-APPLY-1). Sheet rows carry ZERO entries for these sids
+    # (censused of record) — no provenance-overwrite vector.
+    an_added = an_verified = an_kept = 0
+    oan = ((sd.get("anchors") or {}).get("operatorSidAnchors") or {}).get("anchors") or {}
+    unmapped = list(att.get("spcptUnmapped") or [])
+    for sid, ar in oan.items():
+        codes = list(ar.get("officialCodes") or [])
+        if not codes:
+            continue
+        row = spcpt.get(sid)
+        if row is None:
+            spcpt[sid] = OrderedDict(
+                officialId=ar.get("officialId") or codes[0],
+                officialCode=codes[0], officialCodes=codes,
+                unit=None, tier=ar.get("tier"), method=ar.get("method"),
+                score=None, lineage=ar.get("lineage") or L_SIDECAR,
+                via=ar.get("via"))
+            if sid in unmapped:
+                unmapped.remove(sid)
+            an_added += 1
+        else:
+            have = list(row.get("officialCodes") or
+                        ([row.get("officialCode")] if row.get("officialCode") else []))
+            if have != codes:
+                an_kept += 1  # NO-GUESS: keep the committed row, disclose
+            else:
+                an_verified += 1
+
     new_att = OrderedDict(att)
     new_att["items"] = new_items
     new_att["spcptToOfficial"] = spcpt
+    new_att["spcptUnmapped"] = unmapped
 
     # ---- recompute coverage / reconciliation --------------------------------
     def cov(kind, total):
@@ -257,7 +306,8 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
             sidecarItems=len(sd["items"]), itemsWithCodes=len([1 for it in sd["items"].values() if it.get("codes")]),
             sidecarCodes=len([1 for it in sd["items"].values() for e in (it.get("codes") or [])]),
             t2Hints=t2_total, sidecarOnlyItems=len(sidecar_only),
-            codesAttachedFromSidecar=codes_added, ladderCodesRetained=codes_kept_ladder),
+            codesAttachedFromSidecar=codes_added, ladderCodesRetained=codes_kept_ladder,
+            sidAnchors=OrderedDict(added=an_added, verified=an_verified, conflictsKept=an_kept)),
         sheetUpgrades=OrderedDict(added=sheet_added, upgraded=sheet_upgraded, conflictsKept=sheet_conflict) if (sheet_rows or sheet_upgraded or sheet_added) else None,
         t2Policy="T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage")
     sp = new_att["sources"]["specPointMap"]
@@ -492,6 +542,33 @@ def battery(slug, old_att, new_att, sd, committed, staged, sheet_rows, sidecar_o
                     if c not in spine_codes:
                         problems.append(f"R5 linkage outside spine part {p['id']}: {c}")
 
+    # A1: operator sid-anchors law — plane exclusivity + census cross-foot
+    oan = ((sd.get("anchors") or {}).get("operatorSidAnchors") or {}).get("anchors") or {}
+    _verified = _kept = 0
+    for sid, ar in oan.items():
+        codes = list(ar.get("officialCodes") or [])
+        if not codes:
+            continue
+        in_off = sid in new_att["spcptToOfficial"]
+        in_um = sid in (new_att.get("spcptUnmapped") or [])
+        if in_off and in_um:
+            problems.append(f"A1 sid in both planes {sid}")
+        row = new_att["spcptToOfficial"].get(sid)
+        if row is None:
+            problems.append(f"A1 anchor not merged {sid}")
+            continue
+        have = list(row.get("officialCodes") or
+                    ([row.get("officialCode")] if row.get("officialCode") else []))
+        if have != codes:
+            _kept += 1  # conflict-kept: disclosed, not a defect
+        else:
+            _verified += 1
+    sa = ((new_att.get("sources") or {}).get("specLinks") or {}).get("census", {}).get("sidAnchors") or {}
+    if sa.get("added", 0) + sa.get("verified", 0) + sa.get("conflictsKept", 0) != _verified + _kept:
+        problems.append(f"A1 census {dict(sa)} != battery added+verified={_verified} kept={_kept}")
+    if sa.get("conflictsKept") != _kept:
+        problems.append(f"A1 conflictsKept {sa.get('conflictsKept')} != battery {_kept}")
+
     ok = not problems
     row = OrderedDict(
         course=slug, ok=ok,
@@ -551,8 +628,10 @@ def main() -> int:
         new_bytes = dumps_map(new_att)
         map_changed = old_bytes != new_bytes
         if not map_changed:
+            _sa = (((new_att.get("sources") or {}).get("specLinks") or {}).get("census") or {}).get("sidAnchors") or {}
             report_rows.append(OrderedDict(course=slug, changed=False, ok=True,
-                                           sidecarCodes=sum(tier_census.values())))
+                                           sidecarCodes=sum(tier_census.values()),
+                                           sidAnchors=_sa))
             continue
 
         # determinism: merge twice, byte-identical
@@ -583,6 +662,10 @@ def main() -> int:
             totals["sheetUpgraded"] += sheet_counts[1]
             totals["sheetConflicts"] += sheet_counts[2]
             totals["inlineRewrites"] += rstats["inlineNewRewrites"]
+            _sa2 = (((new_att.get("sources") or {}).get("specLinks") or {}).get("census") or {}).get("sidAnchors") or {}
+            totals["sidAnchorsAdded"] += _sa2.get("added", 0)
+            totals["sidAnchorsVerified"] += _sa2.get("verified", 0)
+            totals["sidAnchorsConflictsKept"] += _sa2.get("conflictsKept", 0)
             print(f"OK {slug}: sidecar codes {sum(tier_census.values())} by {dict(sorted(tier_census.items()))} "
                   f"| sheet +{sheet_counts[0]}/~{sheet_counts[1]} | inline rewrites {rstats['inlineNewRewrites']}", flush=True)
         report_rows.append(row)
@@ -604,11 +687,13 @@ def main() -> int:
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
         lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("tranche-1 (operator order 'tranche-1', trace 1a15e4200e6af579) — "
-                           "the tranche-1 verdict round's consume re-run: tranche1_t2NearVerdicts "
-                           "of cie-anchor-gap-census-r0 landed in the sidecars at resources pin "
-                           "aa0b4de1 (T-SPECS-CIE-TRANCHE1-T2NEAR-1); the r9 consumption law unchanged"),
-        gatewayTrace="1a15e4200e6af579",
+        operatorDirective=("T-RULE-T2-APPLY-2 adoption (operator order 'adopt the consume-law on v2 "
+                           "branch', trace 1a164dcf6cff9061) — the Stage B operator sid-anchor law "
+                           "adopted of record at the pin advance: consumed vintage c5f20c52 (the "
+                           "CIE-REFRESH-1 re-key) -> the PR-#49-merged tip 3838a264; the 23 "
+                           "sid-anchors reproduce as a fixed point (verify-if-equal) plus the "
+                           "pending item-plane verdict rounds consume per the sidecar_rank law"),
+        gatewayTrace="1a164dcf6cff9061",
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),
@@ -619,6 +704,9 @@ def main() -> int:
                        "hint (items[].t2HintCodes, never in codes/linkage) + rejoin J* post-gate "
                        "(REJOIN-1 record NEXT #2 verbatim)",
         courses=report_rows)
+    # quiescent-run robustness (T-RULE-T2-APPLY-2 adoption run-002 disclosure): at changed=0
+    # no per-course staging dir exists yet — create the staging root so the report still lands.
+    os.makedirs(STAGING, exist_ok=True)
     with open(os.path.join(STAGING, "_report_cie_consume.json"), "w", encoding="utf8") as f:
         f.write(dumps_map(report) + "\n")
     print(json.dumps({"changed": len(changed), "totals": dict(totals), "stagingHash": stage_hash}, indent=1), flush=True)

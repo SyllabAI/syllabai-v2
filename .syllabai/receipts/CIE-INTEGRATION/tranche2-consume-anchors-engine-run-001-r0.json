@@ -1,0 +1,28 @@
+{
+ "change": {
+  "file": "apps/hub/scripts/cie/cie_consume_spec_links.py",
+  "law": "Stage B merges sd.anchors.operatorSidAnchors (schema syllabai.operator-sid-anchors/1.0) into spcptToOfficial: add-if-absent (carrying record lineage/tier/method/via; officialCodes multi-code; officialCode=primary) / verify-if-equal (no-op) / conflict-keep+disclose (NO-GUESS, the sheet conflict posture); added sids are removed from spcptUnmapped (registry-plane law of v2 @ a9bd2488); census at sources.specLinks.census.sidAnchors {added, verified, conflictsKept}; report rows carry sidAnchors for unchanged courses; totals aggregate the three counters; battery A1 (plane exclusivity + census cross-foot + anchor-not-merged guard). PIN-neutral (the consume lane advances PIN at its next re-run); sheet 634/166 pins untouched.",
+  "scope": "engine only + receipt + worklog; zero map/bundle/content changes"
+ },
+ "disclosures": [
+  "adoption path: the consume lane adopts this amendment at its next pin advance (CIE_RESOURCES at the PR-#49-merged tip); B02's part-level V8 consume is a separate pending step (map_changed TRUE when it runs \u2014 item plane)",
+  "7 sids carry b01/b02 V8 entries the ruling corrects \u2014 retraction operator-gated, separate residual",
+  "verification ran WITHOUT Stage A pins/staging writes (isolated harness); full-engine re-run remains the consume lane's gate"
+ ],
+ "generatedUtc": "2026-10-22T13:41:33Z",
+ "lane": "R0-integrator (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+ "receipt": "tranche2-consume-anchors-engine-run-001-r0",
+ "sources": {
+  "registryOfRecord": "apps/hub/content-maps/cie-a-level-chemistry-25.json @ a9bd2488 (T-RULE-T2-APPLY-1)",
+  "resolutions": "T-RULE-T2-COND-1 receipt + T-SPECS-CIE-TRANCHHE2-B02 verbatim rows (see PR #49 receipt)",
+  "sidecarBlock": "anchors.operatorSidAnchors @ resources branch t-rule-t2-sidecar-capture/r0 5b85ea3 (PR #49)"
+ },
+ "task": "T-RULE-T2-APPLY-2 (v2 half) \u2014 consume-engine amendment for the sidecar operator sid-anchors (companion to resources PR #49)",
+ "validation": {
+  "add": "pre-APPLY-1 vintage fixture (46/280): 23 added / 0 kept; 18 sids removed from unmapped -> 262/69; 23/23 plane-exclusive; battery GREEN",
+  "conflict": "altered-row fixture: 22 verified / 1 conflict-kept + disclosed; battery GREEN",
+  "method": "isolated per-course pipeline run of the REAL amended engine (merge_course -> refresh_bundle -> battery) for cie-a-level-chemistry-25 with the real sidecar (PR #49 vintage) + real spine/bundles, three fixtures, no repo writes",
+  "script": "scripts/ruling2_consume_anchor_test.py (session-local harness of record)",
+  "verify": "committed map @ a9bd2488: sidAnchors 0 added / 23 verified / 0 kept; unmapped 262, s2o 69; merge twice byte-identical; battery GREEN \u2014 the committed map is a FIXED POINT of the amended law (durable-reproduction proof)"
+ }
+}

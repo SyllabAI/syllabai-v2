@@ -151,14 +151,27 @@ const SEVEN = ["manifest.json", "curriculum.json", "concept-graph.json", "notes.
 // SME-ExamQuestion moved but ALL changed files are igcse-accounting-17*
 // (Edexcel) — zero CIE corpus contact; the CIE input delta is spec-links/
 // (the T-SPECS-CIE-TRANCHE1-T2NEAR-1 verdict round, PR SyllabAI/syllabai-resources#22).
+// ADOPTION (T-RULE-T2-APPLY-2 run-002, operator order 'adopt the consume-law on
+// v2 branch', trace 1a164dcf6cff9061): pin advanced c5f20c52 -> 3838a264 (the
+// PR-#49-merged tip of record) — SME-RevisionNotes/SME-ExamQuestion/
+// Official-Specifications tree-sha-IDENTICAL to the c5f20c52 pin; the ONLY
+// consumed-input delta is spec-links/ (8 sidecars of record: PR #49 operator
+// sid-anchors + B01/B02 + BAND-B geo-25 + PARSE-REPAIR-1/2 — the repair pins
+// below are SUPERSEDED by this uniform re-key: their sidecar state is carried
+// inside the 3838a26 sidecars of record and the consume re-proved them);
+// engine fleet re-run 44/44 battery green, sidAnchors 0/23/0 byte-fixed-point,
+// two clean runs staging-hash identical, post-apply idempotence changed=0/44;
+// roster floors re-pinned 6715/5696/9276 -> 6781/5786/9406 (the 195 V8
+// part-level entries, B01 48 + B02 147).
 const CIE_PIN_PRIOR = "bb15452701110c27acf59637db059b6053e50b1e"; // tranche-2-R1 pin — superseded fleet-wide by the CIE-REFRESH-1 re-key (all 44 teaching bundles re-keyed at c5f20c52; linkage byte-verified, engine fleet re-run 44/44 green)
 const CIE_PIN_PRIOR_2 = "aa0b4de1b732738b4d02dabdd02d9ead85522907"; // tranche-1 pin — superseded fleet-wide by the CIE-REFRESH-1 re-key
-const CIE_PIN = "c5f20c5278137fb16a427f68b3332f1431eb345b"; // CIE-REFRESH-1 run-001 consume (operator dispatch 'dispatch the CIE 44-lane refresh to close the pin-vintage gap', trace 1a1608dfdd3007d1): pin advanced bb154527 -> c5f20c52 — the CIE corpus content inputs are tree-identical 0fe5f772..c5f20c52 (zero-delta proof of record: SME-ExamQuestion delta all Edexcel, books/ = future pipeline inputs, parsed/RevisionNotes/Flashcards CIE untouched); the only input delta is spec-links/ (band A 140 fragmented-math rows + tranche-1 residual); content-maps + officialSpine.resourcesSha re-keyed fleet-wide, importSource.ref stamped with provenance notes; post-apply idempotence changed=0/44; the pin moves WITH the of-record (fa7ede6/0c8892d precedent)
+const CIE_PIN_PRIOR_3 = "c5f20c5278137fb16a427f68b3332f1431eb345b"; // CIE-REFRESH-1 pin — superseded fleet-wide by the T-RULE-T2-APPLY-2 run-002 adoption re-key at 3838a264 (all 44 bundles re-keyed; sidAnchors 0/23/0; post-apply idempotence changed=0/44)
+const CIE_PIN = "3838a264d105e15a7cb8e908fb04d72847f8f94b"; // T-RULE-T2-APPLY-2 run-002 ADOPTION (operator order 'adopt the consume-law on v2 branch', trace 1a164dcf6cff9061): pin advanced c5f20c52 -> 3838a264 — the PR-#49-merged tip of record; the CIE corpus content inputs are tree-identical c5f20c52..3838a264 (zero-delta proof of record: SME-RevisionNotes fa26536f / SME-ExamQuestion 7ac8c435 / Official-Specifications c95ed99f identical); the only consumed-input delta is spec-links/ (8 sidecars: PR #49 anchors 5b85ea3 + B01 132c4b6 + B02 e4f4a34 + BAND-B geo 58d7f68 + PARSE-REPAIR-1/2 06de1f2a/b83a3799); the 23 operator sid-anchors reproduce as a BYTE FIXED POINT (verify-if-equal, spcptToOfficial 69 + spcptUnmapped 262 byte-equal pre/post on all 44 banks); 195 V8 part-level verdict entries consumed (B01 48 + B02 147); two clean runs staging-hash identical e70254275d31b40a07b7021b270fed328f1cd156c06e1f6b9db3ae8c0e78d9ae; post-apply idempotence changed=0/44; the pin moves WITH the of-record (fa7ede6/0c8892d precedent)
 // REPAIR PINS of record (rider band of T-BOOK-033/status-flip r0, trace 1a162e924c017891 — the allow-list was not advanced when the three receipted repair lanes re-keyed their manifests, leaving main's hub check red on 3 assertions; every pin below is cited verbatim from its landed receipt on main):
 const CIE_PIN_REPAIR_PURE3 = "06de1f2ac20567a2f6f49759fe71b64f7b83000a"; // T-SPECS-CIE-PARSE-REPAIR-1 r0 (ea7b9942): the 9709 P3 3.1 algebra-glue repair — band-D consume re-keyed the pure-3 manifest "manifest pin -> 06de1f2a with repairRun carried" (resources side = 06de1f2a)
 const CIE_PIN_REPAIR_FM25 = "b83a3799a039350ea0dc759afe2fda188ed45806"; // T-SPECS-CIE-PARSE-REPAIR-2 r0 (b149e119): the 0606 topics-3/9/12 repair — band-D consume re-keyed the fm25 manifest "manifest pin -> b83a3799a with repairRun carried" (resources side = b83a3799a)
 const CIE_PIN_REPAIR_GEO25 = "58d7f6892d89001f57af6b19a3a9e85766ffab90"; // T-SPECS-CIE-COMPLETE-1-BAND-D r0 (2c1c370b): geo-25 band-B consume — "bundle manifest officialSpine.resourcesSha -> 58d7f689 (band-B resources tip)"
-const CIE_PINS_ACCEPTED = [CIE_PIN, CIE_PIN_PRIOR, CIE_PIN_PRIOR_2, CIE_PIN_REPAIR_PURE3, CIE_PIN_REPAIR_FM25, CIE_PIN_REPAIR_GEO25];
+const CIE_PINS_ACCEPTED = [CIE_PIN, CIE_PIN_PRIOR, CIE_PIN_PRIOR_2, CIE_PIN_PRIOR_3, CIE_PIN_REPAIR_PURE3, CIE_PIN_REPAIR_FM25, CIE_PIN_REPAIR_GEO25];
 function checkRealBundle(slug: string, code: string): void {
   const dir = path.join(CONTENT, slug);
   const missing = SEVEN.filter((f) => !existsSync(path.join(dir, f)));
