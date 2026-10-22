@@ -1,0 +1,47 @@
+{
+  "receipt": "run-007-dryrun-green-of-record-ci-route-r0",
+  "lane": "ADR-037 v0.7 per-point re-apply",
+  "trace": "1a160dfde7876625",
+  "operatorAsk": "'Can you do it instead of me?' — the lane executes the REAL --dry-run itself via the CI executor doctrine of record (neon-replay.yml header: 'agent sandboxes are DNS-blocked; CI is not'; the cie-phase4-db-plane.yml dispatch shape)",
+  "executionOfRecord": {
+    "route": "GitHub Actions workflow adr037-db-plane.yml (committed cccee66f, infra-only), workflow_dispatch mode=dry-run",
+    "runId": 39696614127,
+    "runUrl": "https://github.com/SyllabAI/syllabai-v2/actions/runs/39696614127",
+    "headSha": "cccee66fe7e7",
+    "conclusion": "success",
+    "tool": "bun apps/api/scripts/ingest-bundle-questions.ts igcse-chemistry-19 --dry-run (the FROZEN T-MIG-135b tool, unchanged; rollback tx — zero persistence by construction)",
+    "duration": "dispatched 23:56:34Z, completed by 00:14Z poll (~15 min incl. install — the CI->us-east-2 statement latency vs the sandbox's ~200ms)",
+    "logScrub": "zero credential material in the log of record (the postgresql:///npg_/ghp_ hits are the workflow's own law-text echoes; the credential-pattern regex user:pass@host matched NOTHING)"
+  },
+  "dryRunSummaryOfRecord": {
+    "logLine": "[dry-run] GREEN — the exact statement sequence executed and rolled back",
+    "summary": {"questions": 803, "mcq": 0, "structured": 803, "parts": 2635, "options": 1260, "markPoints": 3907, "specPointMappings": 2917, "topicMappings": 0, "assets": 0, "deactivated": 591},
+    "corpusVersion": "syllabai.sme-exam-questions/1.1@bf8d56c30f8b1532f9735e9f5f1d7e71c0694022",
+    "shim": "sets=60 questions=803 parts=2950 options=1260 specPoints=2917 (primary 1030) — BUILD GREEN through the package-global seenRefs gate (the run-003 blocker class remains dead)"
+  },
+  "wave12ReconciliationOfRecord": {
+    "what": "the dry-run executed against the NEWEST bundle of record — sibling 5a14c527 (wave-12, the ADR-037 content lane) landed the F41-F44 exporter repairs @bf8d56c3 AFTER the run-006 census: badSum 4->0, official plane 275->280, 10 mis-linked 1C answer blocks corrected, 2019-06 recovered via the F41 OCR layer",
+    "namespace": "the per-paper namespace HELD on the wave-12 bundle (shared-slug sets = 0 first-hand; the sibling exporter now emits it natively) — the injectivity gate passed at build, so the fix is no longer dependent on this lane's wiring alone",
+    "pinLaw": "the wave-12 census pin (803/2950/1260/60/1/0/0) re-pinned by the sibling per the re-based-not-loosened law; this lane's run-006 expectations are superseded: kill-list insert expectation markPoints 3867 -> 3907, spec joins 2902 -> 2917, options 1244 -> 1260, admitted 798 -> 803",
+    "deactivated": "591 EXACT vs the run-006 corrected kill-list — the live slice was untouched by the content wave and the 11-survivor law holds"
+  },
+  "credentialLifecycleOfRecord": {
+    "staged": "ADR037_SEED_DATABASE_URL via the API, libsodium sealed box, value fp16 3b8b9c5951ca595d (the operator's of-record paste, reused from this conversation's plane — no new paste, no new exposure)",
+    "deleted": "204 after the run; GET-after 404 VERIFIED",
+    "ghPat": "fp16 a8ccee736aa8c75b (the run-005-stage paste; reused of-record across the session's turns)"
+  },
+  "gateState": {
+    "dryRun": "GREEN OF RECORD (this receipt) — the B3 gate's dry-run precondition is SATISFIED against the current bundle",
+    "remainingForB3": [
+      "the explicit operator green-light (the workflow's mode=apply dispatch with confirm == APPLY-ADR037-B3 IS the fire order — one dispatch, no further credential handling needed)",
+      "the 11-survivor disposition (run-006): default leave-active by the zero-deletion law, or an explicit extend-deactivate order"
+    ],
+    "expectedFloorsAtApply": {"deactivated": 591, "questions": 803, "markPoints": 3907, "specPointMappings": 2917, "options": 1260, "assets": 0, "survivors_untouched": 11}
+  },
+  "register": [
+    "origin/main advanced cccee66f -> af78977c mid-turn (wave-13 hub sync) — union-resolve armed for this receipt",
+    "the CI executor affordance stays of record for B3 (the apply dispatch reuses the same secret lifecycle: stage -> run -> delete + 404)",
+    "export-lane generator debt: CLOSED for chemistry (wave-12 emits per-paper natively) — the other 46 lanes' exports still to verify by the fleet's own census law",
+    "hub-join legacy branch + the 11-survivor duplicate-class: post-B3 ruling batch"
+  ]
+}
