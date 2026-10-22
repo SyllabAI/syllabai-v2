@@ -195,6 +195,14 @@ export const coachInputSchema = z.object({
 });
 export type CoachInput = z.infer<typeof coachInputSchema>;
 
+/** toolType → validated input map (the route's per-tool data wall). */
+export interface ToolkitInputByTool extends Record<ToolkitToolType, unknown> {
+  "lesson-plan": LessonPlanInput;
+  rubric: RubricInput;
+  sow: SowInput;
+  coach: CoachInput;
+}
+
 // ── output schemas (the fidelity-validated captured contracts) ───────────────
 
 /** Loose-on-prose helpers: required, non-empty, bounded against pathological
