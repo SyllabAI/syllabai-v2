@@ -56,6 +56,7 @@ import { buildSmeRouters } from "./routes/sme";
 import { buildInterventionRouters } from "./routes/intervention";
 import { buildLearnerRouters } from "./routes/learner";
 import { buildLearnerProgressRouters } from "./routes/learner/progress";
+import { buildLearnerStudyPlanRouters } from "./routes/learner/study-plan";
 import { buildDrillRouters, drillErrorResponse } from "./routes/drill";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildTeacherAssignmentsRouters } from "./routes/assignments";
@@ -98,6 +99,7 @@ const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const learnerKg = buildLearnerKgRouters();
 const learnerProgress = buildLearnerProgressRouters();
+const learnerStudyPlan = buildLearnerStudyPlanRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
@@ -314,6 +316,17 @@ app.route("/api/v1/learners/me", learnerKg.learnerKgRoute);
 // plan and the dashboard can never disagree. Additive mount per the
 // minimal app-level wiring precedent.
 app.route("/api/v1/learners/me", learnerProgress.learnerProgressRoute);
+
+// Study-Plan Builder routers (spec §5.3 + roadmap Table 3 P2 row; prereg
+// docs/STUDY-PLAN-BUILDER-PLAN.md). DC-7-SPEC-NATIVE paths under the same
+// band: GET/PUT /api/v1/learners/me/study-plan and GET
+// /api/v1/learners/me/study-plan/defaults — the plan-config upsert (the
+// lane's ONLY write, migration 0012_study_plans) and the deterministic
+// week generator whose task completion states ride the DC-7
+// buildPlanProjection subscription (nothing completion-shaped is stored).
+// The router owns its authz internally (the shell posture). Additive mount
+// per the minimal app-level wiring precedent.
+app.route("/api/v1/learners/me", learnerStudyPlan.learnerStudyPlanRoute);
 
 // F-182 drill surface routers (the per-spec-point drill; prereg
 // docs/F182-DRILL-BUILD-PLAN.md under the opening plan
