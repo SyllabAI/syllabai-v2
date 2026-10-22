@@ -1,5 +1,15 @@
 # LESSON — the Kognity-style HTML book (T-BOOK-030 plan of record)
 
+> **AMENDMENT (T-BOOK-031, trace 1a16138fde2c155d, operator directive):** lesson
+> authoring now lives in **`CourseLessons/` in syllabai-resources** — a
+> self-improving, any-agent authoring home organized by board → qualification →
+> subject, with its own doctrine pack (START-HERE / FEATURE-SPEC /
+> BUILD-PLAYBOOK / VALIDATION / SELF-IMPROVEMENT / TRACKER), `lessonctl.py`
+> pipeline CLI, and findings ledger. The L1 lessons built there emit
+> `lessonPackV1` JSON (contracts below) into the platform. This doc remains the
+> platform-side plan of record (contracts, renderer, serving); the
+> corpus-side authoring laws live in CourseLessons.
+
 **Version:** v1 · **Trace:** 1a161271845ba415 · **Date:** 2026-10-22 (Asia/Dhaka)
 **Operator directive chain:** "both" (trace 1a1611a346d9725d) → "past papers + mark schemes + parsed book = best resource on the internet" (trace 1a161271845ba415).
 **Supersedes:** nothing — this EXTENDS PLAN-4CH1-v1.1 §5 (rail doctrine). The rail stays; the PDF stays untouched.
