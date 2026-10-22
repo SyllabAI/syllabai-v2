@@ -1,0 +1,53 @@
+{
+  "task": "DC-4 lens cards as navigation (P1) — run-001",
+  "date": "2026-10-22",
+  "spec_of_record": {
+    "document": "SyllabAI-SmartChat-Mark-Design-Spec.docx",
+    "sha256": "0da8044a0667a47c684d4b0486784be02bc4992546eca2ec2946043e9e2b287a",
+    "verify": "EXACT vs the DC-3 receipt's full sha-of-record (recovery trace 1a163f9f233e8531, post-reset #7)",
+    "section": "\u00a73.4 Lens Cards as Navigation"
+  },
+  "operator": {
+    "launch_word": "trace 1a1640aef2c7e389 'launch DC-4'",
+    "lane": "P1 of the DC roadmap; roadmap order DC-3 (merged 751916cf) -> DC-4 -> DC-7"
+  },
+  "prereg": "docs/DC4-LENS-CARDS-NAVIGATION-PLAN.md (committed WITH the implementation, the #216/#225/#229 pattern)",
+  "base": "origin/main f97690cabc23 at lane battery time",
+  "files": [
+    "docs/DC4-LENS-CARDS-NAVIGATION-PLAN.md",
+    "apps/hub/src/lib/lens-registry.ts",
+    "apps/hub/src/lib/lens-registry.test.ts",
+    "apps/hub/src/components/cla/lens-grid.tsx",
+    "apps/hub/src/components/cla/note-cla.tsx",
+    "apps/hub/src/components/cla/question-cla-overlay.tsx",
+    "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx",
+    ".syllabai/receipts/DC4/dc4-lens-cards-run-001-r0.json",
+    ".syllabai/worklog.md"
+  ],
+  "mechanism": {
+    "registry": "lenses = data rows (id, surface, templateId, routerTarget) + closed 3-kind target vocabulary (route | in-chat | tutor-mark-context) + pinned template bytes",
+    "notes_rows": "definitions/summary/pitfalls/exam-help — operator-spec card texts byte-preserved; router mapping of record: Definitions+Pitfalls->flashcards, Summary+Exam help->exam-questions",
+    "questions_rows": "understand (in-chat EXPLAIN) + approach (in-chat HINT targeted = the approach scaffold; both branches pinned) + NEW why-marked card -> /tutor?course=&q= deep link (DC-1 markContext through the tutor pipeline; the CLA route plane is byte-frozen)",
+    "router_hooks": "thread-scoped LensRouterCta under lens-originated answers (suppressed on refusal); grids stay inside the shipped empty-state predicates (opener-only)"
+  },
+  "acceptance": {
+    "grammar_pins": "template bytes byte-pinned (lens-registry.test.ts 13/13) + governed pipelines (CLA modes; DC-2 tier law; tutor markContext) — R-LLM doctrine: LLM output never golden-gated",
+    "router_pins": "closed vocabulary + lensRouteHrefFor + why-marked deep-link builder pinned; unknown lens id fails open to null",
+    "opener_only": "structural — the registry adds no render path; both grids render only on the empty thread"
+  },
+  "battery": {
+    "lens_pins": "13/13",
+    "hub_tsc": "exit 0",
+    "eslint_touched_files": "exit 0",
+    "root_typecheck": "exit 0 (contracts/shared/db/api)",
+    "full_suite": "2573 pass / 13 skip / 3 fail — the 3 = the pre-existing T-MIG-135b content-census class (clean-tree-proven by T-TEACH-015, identical census)",
+    "build_hub": "exit 0 (prebuild trio incl. CIE validator + corpus-static + next build)",
+    "fence_census": "routes/cla.ts @72644a96 diff-0; services/cla/service.ts @efbbfd61 diff-0",
+    "identity": "no prompt.ts change; PROMPT_VERSION stays 15 (tutor-grounded/v15)"
+  },
+  "honest_gaps": [
+    "notes router targets resolve to course index routes (no note->subtopic-slug join in the panel; a later join can tighten additively)",
+    "why-marked deep-links the free tutor; mark context resolves per DC-1's own fail-open law (no marked attempt/pin -> ordinary grounded ask)",
+    "misconception drilling / approach scaffold remain in-chat governed asks, not pages (the quiz-scaffold-precedent reading)"
+  ]
+}

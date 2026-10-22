@@ -47,12 +47,9 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
-  BookMarked,
   BookOpenText,
-  GraduationCap,
   Info,
   Loader2,
-  ListChecks,
   Minimize2,
   PanelRightOpen,
   Send,
@@ -72,53 +69,16 @@ import { getToken } from "@/lib/api";
 import { cn } from "@/lib/utils";
 import { CitationPaperLink } from "@/components/citations/citation-paper-link";
 import { useClaPanelForm, useClaDock, useIsDesktop, useIsWide, claHeaderCircleBtn } from "./cla-panel-mode";
+import { LensGrid, LensRouterCta, LENS_ROUTE_CTA_COPY } from "./lens-grid";
+import { NOTES_LENSES, lensRouteHrefFor, lensRouteTargetFor } from "@/lib/lens-registry";
 
 type NoteMode = "EXPLAIN" | "SUMMARIZE";
 
-interface QuickAction {
-  id: string;
-  title: string;
-  description: string;
-  prompt: string;
-  mode: NoteMode;
-  icon: typeof BookMarked;
-}
-
-/** Operator spec, verbatim — titles, descriptions and prompts. */
-const QUICK_ACTIONS: QuickAction[] = [
-  {
-    id: "definitions",
-    title: "Definitions",
-    description: "Define the key terms in this revision note",
-    prompt: "Define the key terms in this revision note",
-    mode: "EXPLAIN",
-    icon: BookMarked,
-  },
-  {
-    id: "summary",
-    title: "Summary",
-    description: "Summarise the key points",
-    prompt: "Summarise the key points",
-    mode: "SUMMARIZE",
-    icon: ListChecks,
-  },
-  {
-    id: "pitfalls",
-    title: "Pitfalls",
-    description: "Examine common misconceptions",
-    prompt: "Examine common misconceptions",
-    mode: "EXPLAIN",
-    icon: TriangleAlert,
-  },
-  {
-    id: "exam-help",
-    title: "Exam help",
-    description: "Tips for understanding this topic",
-    prompt: "Give tips for understanding this topic and how it is examined",
-    mode: "EXPLAIN",
-    icon: GraduationCap,
-  },
-];
+// DC-4 — Lens Cards as Navigation (docs/DC4-LENS-CARDS-NAVIGATION-PLAN.md):
+// the four lens cards moved to the registry of record
+// (apps/hub/src/lib/lens-registry.ts) — data rows (id, surface, template
+// id, router target) with these card texts byte-preserved; the grid
+// renders from the registry in the empty state below.
 
 interface ClaMessage {
   role: "user" | "assistant";
@@ -130,6 +90,8 @@ interface ClaMessage {
   refused?: boolean;
   evidenceCount?: number;
   latencyMs?: number;
+  /** DC-4: the lens row id when the ask originated from a lens card */
+  lensId?: string;
 }
 
 export function NoteCla({
@@ -186,10 +148,15 @@ export function NoteCla({
     threadRef.current?.scrollTo({ top: threadRef.current.scrollHeight });
   }, [thread, busy]);
 
-  async function ask(mode: NoteMode, question: string, isQuickAction: boolean) {
+  async function ask(
+    mode: NoteMode,
+    question: string,
+    isQuickAction: boolean,
+    lensId?: string,
+  ) {
     if (busy || !question.trim()) return;
     const history = thread.map((m) => ({ role: m.role, content: m.content }));
-    setThread((t) => [...t, { role: "user", content: question.trim() }]);
+    setThread((t) => [...t, { role: "user", content: question.trim(), lensId }]);
     setBusy(true);
     setError(null);
     try {
@@ -295,23 +262,12 @@ export function NoteCla({
           starts they're gone, like SME's suggestions */}
       <div ref={threadRef} className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-3">
         {thread.length === 0 && !busy && (
-          <div className="grid grid-cols-2 gap-2 pt-1">
-            {QUICK_ACTIONS.map((a) => (
-              <button
-                key={a.id}
-                type="button"
-                disabled={busy}
-                onClick={() => ask(a.mode, a.prompt, true)}
-                className="flex flex-col gap-1 rounded-xl bg-primary/10 px-3 py-2.5 text-left transition-colors hover:bg-primary/15 disabled:pointer-events-none disabled:opacity-50"
-              >
-                <span className="flex items-center gap-1.5 text-[13px] font-semibold">
-                  <a.icon className="size-3.5 shrink-0 text-primary" aria-hidden />
-                  {a.title}
-                </span>
-                <span className="text-[11px] leading-snug text-muted-foreground">{a.description}</span>
-              </button>
-            ))}
-          </div>
+          <LensGrid
+            lenses={NOTES_LENSES}
+            columns={2}
+            disabled={busy}
+            onPick={(l) => ask(l.mode, l.prompt, true, l.id)}
+          />
         )}
         {thread.map((m, i) =>
           m.role === "user" ? (
@@ -362,6 +318,21 @@ export function NoteCla({
                   })}
                 </div>
               )}
+              {(() => {
+                // DC-4 acceptance (b): a lens-originated answer terminates
+                // in its router hook (never after a refusal, and never in
+                // the empty state — the hook is thread-scoped).
+                const prev = i > 0 ? thread[i - 1] : undefined;
+                const route =
+                  prev && prev.role === "user" && prev.lensId && !m.refused
+                    ? lensRouteTargetFor(prev.lensId)
+                    : null;
+                return route ? (
+                  <LensRouterCta href={lensRouteHrefFor(course, route.to)}>
+                    {LENS_ROUTE_CTA_COPY[route.to]}
+                  </LensRouterCta>
+                ) : null;
+              })()}
               {/* the §19-style traceability footer — collapsed behind a
                   tiny disclosure (SME shows nothing; the data stays one
                   click away) */}

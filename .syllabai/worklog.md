@@ -12703,3 +12703,17 @@ Stage Summary:
 - Smart Mark surface widened to 27 courses pending hub build (bio-19 + physics-19 bank-backed and flipped; 811 new bridgable validated questions).
 - SD0 ×3 parked of record on an upstream bundle defect with the fix law named (strand-coded re-export mirroring CIE 0973) — the seeder's honest-red did its job.
 - Post-merge: hub auto-build; depth-1 probes with a fresh disclosed learner; negative control = SD0 row must stay not_pilot; PAT rotation CRITICAL overdue (also flagged by other lanes' transit rows).
+
+---
+Task ID: DC-4 run-001 (operator launch trace 1a1640aef2c7e389, "launch DC-4")
+Agent: r0 (Super Z, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)
+
+Work Log:
+- Spec of record byte-verified at recovery: SyllabAI-SmartChat-Mark-Design-Spec.docx sha256 0da8044a0667…287a EXACT (full sha from the DC-3 receipt; recovery trace 1a163f9f233e8531, post sandbox reset #7). §3.4 "Lens Cards as Navigation" is the law of record; §3.3 DC-3 merged today (751916cf).
+- Grounding first-hand: the 4 observed opener cards ALREADY ship on NoteCla (inline QUICK_ACTIONS, operator spec verbatim) + 2 chips on QuestionClaOverlay, opener-only predicates shipped — the missing law is the DATA-ROW shape (id, surface, template id, router target), pinned templates, and router hooks. Misconception-drilling / approach-scaffold pages do not exist; honest realisation = in-chat governed asks (the quiz-scaffold-precedent reading) + the why-marked tutor deep link (the ?q= boot seam, helpHref pattern).
+- Prereg: docs/DC4-LENS-CARDS-NAVIGATION-PLAN.md (committed WITH the implementation per the #216/#225/#229 pattern).
+- Mechanism (additive-only, hub-side): lib/lens-registry.ts (rows + closed 3-kind target vocabulary + pinned template bytes + deterministic href builders); components/cla/lens-grid.tsx (generic LensGrid + LensRouterCta, markup byte-identical to the shipped cards); note-cla.tsx renders from the registry, ask() records lensId, thread-scoped router CTA under lens-originated answers (never after a refusal); question-cla-overlay.tsx keeps its chip bytes with prompts moved to registry constants + NEW why-marked card ("Why was I marked this" → /tutor?course=&q= — DC-1 markContext through the tutor pipeline, since the CLA route plane is byte-frozen); question-player passes course.
+- Battery: lens pins 13/13; hub tsc exit 0; eslint (touched files) exit 0; root typecheck ×4 exit 0; full suite 2573 pass / 13 skip / 3 fail — the 3 = the PRE-EXISTING T-MIG-135b content-census class (clean-tree-proven by T-TEACH-015, identical census); build:hub full chain exit 0 (prebuild trio + next build); fence anchors diff-0 (routes/cla.ts @72644a96, services/cla/service.ts @efbbfd61); no prompt.ts / PROMPT_VERSION / contracts / db changes — identity stays tutor-grounded/v15.
+
+Stage Summary:
+- DC-4 is PREREGISTERED + IMPLEMENTED + PINNED on branch dc4-lens-cards (base f97690cabc23); the PR rides the five-gate discipline and STOPS at the merge gate — the operator's merge word is the product sign-off. Acceptance: (a) grammar = pinned template bytes + governed pipelines (R-LLM doctrine); (b) router = closed vocabulary + deterministic hrefs + thread-scoped CTA + deep-link builder pins; (c) opener-only preserved structurally. Residuals disclosed in plan §5 (course-index route targets; mark-context fail-open; in-chat drilling/approach).
