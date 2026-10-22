@@ -12116,3 +12116,23 @@ Stage Summary:
 - Band C DISCHARGED of record: all 324 named-lane rows of the semantic-lane program are now dispositioned (band A 140: 83 joins + 57 pendings; band B 111: 81 joins + 30 codified pendings; band C 206: codified leave-unjoined) — the pending ledger now carries refined evidence-cited reasons everywhere; the fleet's pending universe stands at 293 rows, all classified, none guessed.
 - Receipt: .syllabai/receipts/CONTENT-AUDIT/semantic-lane-band-c-run-001-r0.json
 - NEXT per the same order: the two parse/spine repair lanes (9709 P3 3.1 glue; 0606 topics 3/9/12 + statement/example split policy).
+
+---
+
+## T-SPECS-CIE-PARSE-REPAIR-1 + -2 r0 — BOTH parse/spine repair lanes fired end-to-end (the operator order's final two items): 9709 P3 3.1 algebra glue unglued (spine 39->43, codes 3.1.1/3.1.2 stable, bullets 2-5 = new 3.1.3-3.1.6, 12 joins) and 0606 topics 3/9/12 materialized (lattice 68->77 pts / 11->14 topics, statement/example split policy codified, 9 joins); determinism baselines sha-proven; kg 93/94 (pure-2 ghost only); bun test 0 fail both landings
+
+Date: 2026-10-22
+Agent: main agent (Z.ai, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)
+Scope: v2 build_official_spines.py + spines + content/{cie-a-level-maths-20-pure-3,cie-igcse-further-maths-additional-maths-25}/** + content-maps (ea7b994, b149e11); resources cie_parse_repair_join.py + cie_parse_repair2_join.py + sidecars + verdicts yaml + manifest (06de1f2a, b83a3799a) + .syllabai/**; fetch-first; no force; zero DB writes; zero LLM
+
+Work Log:
+- Operator order (trace 1a1615fe86d96ed9), items 3-4 of the fired sequence. Both repair candidates were FILED by band A's corrections of record and operator-gated by this order — the gate is this lane.
+- LANE 1 (9709 P3 3.1): official PDF 597421 fetched fresh — FIVE official bullets confirmed; the parse glued bullets 2-5 into parse 3.1.2 and lost the ² glyphs. PURE3_ALGEBRA_SPLIT override (tracked): codes 3.1.1/3.1.2 STABLE (3.1.1 notes-column leak trimmed; 3.1.2 trimmed to the true bullet-1 relations limb, superscripts restored — the glued title stands disclosed, functionally superseded), bullets 2-5 = NEW 3.1.3-3.1.6 verbatim. Determinism baseline: pre-override rebuild sha256-IDENTICAL to the live spine. Delta: +4/+4, 37 order shifts all +4. 12 band-A pendings join their dedicated points (the band-A reasons themselves named the bullets); 4 stay pending. Consumed learner-side (notes 63->75/79).
+- LANE 2 (0606 topics 3/9/12): official PDF 662470 fetched fresh. FM25_ADDED_TOPICS override (tracked): +3 TOPIC/+9 SUBTOPIC/+9 SPEC_POINT nodes, +21 edges, ZERO existing nodes changed; STATEMENT/EXAMPLE SPLIT POLICY codified (over-split N.M.K codes byte-stable — the join surface; sub-bullet-less statements land as point N.M.1). Determinism baseline sha-proven. 9 pendings join; Operations-with-Polynomials stays (no statement teaches it); the 31 band-A statement-level rows byte-untouched. Consumed (notes 23->32/67).
+- GATES both lanes: kg_export --check-only 93/94 (pure-3 ok 54/53/43; fm25 ok 126/125/34/77; the 1 FAIL = the pre-existing pure-2 ghost, untouched); bun test apps/api packages 0 fail both landings (fresh sandbox: bun install first — the 72 zod failures were missing node_modules, not drift); consumptions merge-twice deterministic, learner deltas byte-guarded.
+- CORRECTIONS of record: repair-1's re-run double-appended resolve rows (24/12 abort caught by the fail-closed R-guard, yaml restored by the guard itself); repair-2's first R3 assumed the universe was only the touched rows; repair-2's first consume ran with a hand-typed PIN matching only the 8-char prefix — caught by this session's own full-sha verify BEFORE any apply, wrapper corrected, consume re-run (wrong-pin staging was scratch-only); the fm25 manifest counts convention corrected mid-lane; the CIE meta.counts now reads assembled-node truth (pure-3 rebuild byte-verified after the patch).
+- Mid-lane parallel landings ridden cleanly: resources 855cddcf (wave-14 v0.11.0) rebased with zero drift + battery re-proven before the push.
+
+Stage Summary:
+- The semantic-lane program + both repair lanes are FULLY DISCHARGED of record: bands A/B/C (324 named-lane rows) + repair lanes 1/2; the served CIE lattices for pure-3 and fm25 now carry their official structures; the pending ledger stands at 281 rows, all classified with evidence-cited reasons, none guessed.
+- Receipt: .syllabai/receipts/CONTENT-AUDIT/parse-repair-lanes-run-001-r0.json
