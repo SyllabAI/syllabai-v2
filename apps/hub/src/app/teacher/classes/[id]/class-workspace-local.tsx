@@ -51,17 +51,20 @@ import { useRouter } from "next/navigation";
 import {
   ArrowRight,
   BookOpen,
+  BookOpenCheck,
   ClipboardCheck,
   ClipboardList,
   Database,
   FileCheck2,
   FileQuestion,
+  GraduationCap,
   LibraryBig,
   ListChecks,
   Map as MapIcon,
   Network,
   Pencil,
   ScrollText,
+  Sparkles,
   Trash2,
   Users,
 } from "lucide-react";
@@ -135,6 +138,45 @@ const TOOLS = [
     title: "AI content validation",
     desc: "Review real AI-authored model solutions from the bank and record approve / edit / reject verdicts before they count.",
     badge: "Phase 2",
+  },
+] as const;
+
+// T-TEACH-014 — the Teaching Toolkit group (the 4 educator-ai generators).
+// Distinct from TOOLS on purpose: the deep link carries the CLASS id (the
+// grounding key) alongside the course slug, and the tool pages render the
+// server-resolved Subject/Board/Level chips — no subject picker anywhere.
+const TOOLKIT_CARDS = [
+  {
+    href: (classId: string, slug: string) => `/teacher/toolkit/lesson-plan?class=${classId}&course=${slug}`,
+    color: "#E25881",
+    icon: BookOpenCheck,
+    title: "Lesson Plan Generator",
+    desc: "Duration-driven lesson plan with the topic's curriculum objectives attached verbatim — starter to plenary, differentiation included.",
+    badge: "Toolkit",
+  },
+  {
+    href: (classId: string, slug: string) => `/teacher/toolkit/rubric?class=${classId}&course=${slug}`,
+    color: "#F89900",
+    icon: ClipboardCheck,
+    title: "Rubric Developer",
+    desc: "Analytic rubric across up to four criteria with a computed four-level scale — scores derive from marks, never guessed.",
+    badge: "Toolkit",
+  },
+  {
+    href: (classId: string, slug: string) => `/teacher/toolkit/sow?class=${classId}&course=${slug}`,
+    color: "#26B3E8",
+    icon: MapIcon,
+    title: "Curriculum Mapper",
+    desc: "Multi-lesson scheme of work — objectives, activities, differentiation and stretch for each lesson, building progressively.",
+    badge: "Toolkit",
+  },
+  {
+    href: (classId: string, slug: string) => `/teacher/toolkit/coach?class=${classId}&course=${slug}`,
+    color: "#49B081",
+    icon: GraduationCap,
+    title: "Learning Coach",
+    desc: "Clarify or challenge a passage for any audience — key concepts, critical details, applications and connections.",
+    badge: "Toolkit",
   },
 ] as const;
 
@@ -449,6 +491,36 @@ export function LocalClassWorkspace({
                       <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{t.desc}</p>
                       <Button asChild size="sm" variant="outline" className="mt-3 gap-1.5">
                         <Link href={t.href(c.slug)}>
+                          Open
+                          <ArrowRight className="size-3.5" aria-hidden />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* T-TEACH-014 — the Teaching Toolkit group: the 4 educator-ai
+                  generators, grounded in THIS class. */}
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {TOOLKIT_CARDS.map((t) => (
+                  <Card key={t.title} className="py-0 transition-shadow hover:shadow-md">
+                    <CardContent className="p-5">
+                      <div className="flex items-center justify-between gap-2">
+                        <span
+                          className="flex size-9 items-center justify-center rounded-md"
+                          style={{ backgroundColor: `${t.color}1a` }}
+                        >
+                          <t.icon className="size-4" style={{ color: t.color }} aria-hidden />
+                        </span>
+                        <Badge variant="outline" className="text-[10px] font-normal">
+                          {t.badge}
+                        </Badge>
+                      </div>
+                      <h3 className="mt-3 text-sm font-semibold">{t.title}</h3>
+                      <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{t.desc}</p>
+                      <Button asChild size="sm" variant="outline" className="mt-3 gap-1.5">
+                        <Link href={t.href(classId, c.slug)}>
                           Open
                           <ArrowRight className="size-3.5" aria-hidden />
                         </Link>
