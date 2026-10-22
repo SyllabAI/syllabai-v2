@@ -118,6 +118,11 @@ const SEVEN = ["manifest.json", "curriculum.json", "concept-graph.json", "notes.
 const CIE_PIN_PRIOR = "bb15452701110c27acf59637db059b6053e50b1e"; // tranche-2-R1 pin — superseded fleet-wide by the CIE-REFRESH-1 re-key (all 44 teaching bundles re-keyed at c5f20c52; linkage byte-verified, engine fleet re-run 44/44 green)
 const CIE_PIN_PRIOR_2 = "aa0b4de1b732738b4d02dabdd02d9ead85522907"; // tranche-1 pin — superseded fleet-wide by the CIE-REFRESH-1 re-key
 const CIE_PIN = "c5f20c5278137fb16a427f68b3332f1431eb345b"; // CIE-REFRESH-1 run-001 consume (operator dispatch 'dispatch the CIE 44-lane refresh to close the pin-vintage gap', trace 1a1608dfdd3007d1): pin advanced bb154527 -> c5f20c52 — the CIE corpus content inputs are tree-identical 0fe5f772..c5f20c52 (zero-delta proof of record: SME-ExamQuestion delta all Edexcel, books/ = future pipeline inputs, parsed/RevisionNotes/Flashcards CIE untouched); the only input delta is spec-links/ (band A 140 fragmented-math rows + tranche-1 residual); content-maps + officialSpine.resourcesSha re-keyed fleet-wide, importSource.ref stamped with provenance notes; post-apply idempotence changed=0/44; the pin moves WITH the of-record (fa7ede6/0c8892d precedent)
+// REPAIR PINS of record (rider band of T-BOOK-033/status-flip r0, trace 1a162e924c017891 — the allow-list was not advanced when the three receipted repair lanes re-keyed their manifests, leaving main's hub check red on 3 assertions; every pin below is cited verbatim from its landed receipt on main):
+const CIE_PIN_REPAIR_PURE3 = "06de1f2ac20567a2f6f49759fe71b64f7b83000a"; // T-SPECS-CIE-PARSE-REPAIR-1 r0 (ea7b9942): the 9709 P3 3.1 algebra-glue repair — band-D consume re-keyed the pure-3 manifest "manifest pin -> 06de1f2a with repairRun carried" (resources side = 06de1f2a)
+const CIE_PIN_REPAIR_FM25 = "b83a3799a039350ea0dc759afe2fda188ed45806"; // T-SPECS-CIE-PARSE-REPAIR-2 r0 (b149e119): the 0606 topics-3/9/12 repair — band-D consume re-keyed the fm25 manifest "manifest pin -> b83a3799a with repairRun carried" (resources side = b83a3799a)
+const CIE_PIN_REPAIR_GEO25 = "58d7f6892d89001f57af6b19a3a9e85766ffab90"; // T-SPECS-CIE-COMPLETE-1-BAND-D r0 (2c1c370b): geo-25 band-B consume — "bundle manifest officialSpine.resourcesSha -> 58d7f689 (band-B resources tip)"
+const CIE_PINS_ACCEPTED = [CIE_PIN, CIE_PIN_PRIOR, CIE_PIN_PRIOR_2, CIE_PIN_REPAIR_PURE3, CIE_PIN_REPAIR_FM25, CIE_PIN_REPAIR_GEO25];
 function checkRealBundle(slug: string, code: string): void {
   const dir = path.join(CONTENT, slug);
   const missing = SEVEN.filter((f) => !existsSync(path.join(dir, f)));
@@ -130,8 +135,14 @@ function checkRealBundle(slug: string, code: string): void {
   };
   check(`bundle ${slug}: real corpus bundle (notes non-empty)`, (manifest.counts?.notes ?? 0) > 0,
     JSON.stringify(manifest.counts));
+  // rider fix (same band): the disjunction was &&-bound only on its last arm — JS precedence made the
+  // spine/attachmentMap law apply to CIE_PIN_PRIOR_2 alone (and treeKind to CIE_PIN alone). The tightened
+  // form below requires treeKind + pin ∈ allow-list + artifact links for EVERY accepted pin; census
+  // pre-verify: all 44 real bundles carry correct spine/attachmentMap paths (pure-2 skeleton excluded
+  // by its own branch), so the tighten flips no bundle verdict — it closes the false-accept class only.
   check(`bundle ${slug}: official-spine tree + resourcesSha pin + artifact links`,
-    manifest.treeKind === "official-spine" && manifest.officialSpine?.resourcesSha === CIE_PIN || manifest.officialSpine?.resourcesSha === CIE_PIN_PRIOR || manifest.officialSpine?.resourcesSha === CIE_PIN_PRIOR_2
+    manifest.treeKind === "official-spine"
+    && CIE_PINS_ACCEPTED.includes(manifest.officialSpine?.resourcesSha as string)
     && manifest.officialSpine?.spine === `spines/${slug}.json`
     && manifest.officialSpine?.attachmentMap === `content-maps/${slug}.json`,
     `${manifest.treeKind}/${String(manifest.officialSpine?.resourcesSha ?? "").slice(0, 7)}`);
