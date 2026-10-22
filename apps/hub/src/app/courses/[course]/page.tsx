@@ -5,6 +5,7 @@ import {
   BookMarked,
   BookOpen,
   CircleHelp,
+  Compass,
   FileQuestion,
   Files,
   GraduationCap,
@@ -25,6 +26,7 @@ import { CourseSwitcher } from "@/components/hub/course-switcher";
 import { TagChip } from "@/components/hub/chrome";
 import { allCourseParams } from "@/lib/static-params";
 import { courseHasBookArchive } from "@/lib/books-registry";
+import { getUgmBundle } from "@/lib/ugm";
 
 type FrameworkTag = "Study" | "Practice" | "Diagnose";
 
@@ -81,6 +83,10 @@ export default async function CourseHubPage({
   // the 4CH1 pilot runs on the official Pearson tree; every other course runs
   // on the corpus's own (SME) tree until the official mapping lands upstream
   const officialTree = hub.treeKind !== "sme-native";
+  // UGM lane resources (ADR-UGM-0001 as amended 2026-10-23): the card only
+  // exists when the flags.json gate lists this course AND the committed
+  // bundle validates (lib/ugm.ts absent=OFF law) — no roadmap ghost card.
+  const ugm = await getUgmBundle(meta.slug);
 
   const bands: { id: string; title: string; tagline: string; items: ResourceItem[] }[] = [
     {
@@ -205,6 +211,21 @@ export default async function CourseHubPage({
           countLabel: `${stats.flashcards} card${stats.flashcards === 1 ? "" : "s"}`,
           ready: stats.flashcards > 0,
         },
+        // Underground Mathematics lane library — flagged + bundled courses
+        // only (see the ugm const above); absent otherwise, never a stub.
+        ...(ugm
+          ? [
+              {
+                icon: Compass,
+                title: "Underground Mathematics",
+                desc: `Cambridge's Underground Mathematics ${ugm.station} collection — rich problems with suggestions and worked solutions, mapped to this course's specification points (alignment candidates, SUGGESTED).`,
+                tags: ["Study", "Practice"] as FrameworkTag[],
+                href: `${base}/ugm`,
+                countLabel: `${ugm.coverage.aligned} resources · ${ugm.specPoints.length} spec points`,
+                ready: true,
+              },
+            ]
+          : []),
         {
           icon: Lightbulb,
           title: "Smart Lesson",
