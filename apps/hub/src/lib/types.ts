@@ -1813,12 +1813,52 @@ export interface ToolkitOutcomeView {
   coverage: "TAUGHT" | "NOT_TAUGHT" | null;
 }
 
+// ── T-TEACH-015 grounding depth (coverage-aware prefill, read-only) ────────
+
+/** the class's first not-yet-taught spec point, natural syllabus order */
+export interface ToolkitSowResumeView {
+  specPointNodeId: string;
+  specCode: string;
+  specTitle: string;
+  topicNodeId: string | null;
+  topicTitle: string | null;
+}
+
+/** a topic with untaught spec points, syllabus order — coverage gaps, NOT
+ *  mastery-weakness data (the analytics lane stays with T-MIG-034) */
+export interface ToolkitCoverageGapView {
+  topicNodeId: string;
+  topicTitle: string;
+  untaughtCount: number;
+  totalCount: number;
+}
+
+/** a coach note-card candidate: revision notes then chapter objectives */
+export interface ToolkitPassageView {
+  passageId: string;
+  source: "revision_note" | "book_chapter";
+  title: string;
+  body: string;
+  ref: string | null;
+}
+
+export interface ToolkitGroundingView {
+  /** class coverage over the course's spec-point universe (0/0 = no tree) */
+  specPointsTaught: number;
+  specPointsTotal: number;
+  sowResume: ToolkitSowResumeView | null;
+  coverageGaps: ToolkitCoverageGapView[];
+  passages: ToolkitPassageView[];
+}
+
 export interface ToolkitContextView {
   context: ToolkitClassContextView;
   quota: ToolkitQuotaView;
   topics: ToolkitTopicView[];
   topic?: ToolkitTopicView;
   outcomes?: ToolkitOutcomeView[];
+  /** T-TEACH-015 grounding depth — class-bound contexts only */
+  grounding?: ToolkitGroundingView;
 }
 
 export interface ToolkitResourceSummaryView {

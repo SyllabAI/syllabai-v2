@@ -12618,3 +12618,20 @@ Work Log:
 
 Stage Summary:
 - The physics 4PH1 book is IN PROD: document efc8b5c4-83b6-4ecf-98e2-9b44d2923636 (documentId d9b72a0a…), 549 serving chunks SUGGESTED, 28 chapters with the 117-ref join of record. Next gates: validation flip → 133d embed backfill (needs the physics-row-parameterized runner; operator keys staged CI-side) → archive/viewer leg.
+---
+---
+Task ID: T-TEACH-015 run-001 (grounding depth; session web-528c0352)
+Agent: zai-web lane (main agent, session web-528c0352-0cf7-4715-a187-50aec294b288)
+Task: The approved toolkit lane continues (010..014 all DONE of record) — deliver T-TEACH-015: coverage-aware SOW resume, weakness preselect, coach note-card passages.
+
+Work Log:
+- Precondition of record: migration 0008 re-verified LIVE on the Neon production branch (VERIFY_ONLY run at 13:45Z, GREEN — 13/13+3/3 cols, 17 constraints, 4 seeds, 0 rows) before implementation began.
+- PROD DATA CENSUS (read-only, operator DSN): 7,580 SPEC_POINT nodes (each under exactly one TOPIC via PART_OF); spec code prefixes prove the course join of record = curriculum_code FIRST token ('4MB1-S1-1A' quals AND '0500-2024-2026-S1.001' full-code trees both match split_part(code,'-',1)||'-'); teaching_coverage 0 rows (fresh feature); revision_note 112 rows, spec_point_codes join knowledge_nodes 182/182 (100%); book_chapters 29 rows with real LO text (249-1613 chars).
+- Contracts (packages/contracts/src/teaching-toolkit.ts): toolkitSowResumeSchema + toolkitCoverageGapSchema + toolkitPassageSchema + toolkitGroundingSchema (specPointsTaught/Total + sowResume? + gaps<=8 + passages<=12); context response gains grounding? (class-bound only — ad-hoc carries NONE; outage degrades to ABSENCE, logged never silent). Weakness->emphasis preselect is the DOCUMENTED HONEST GAP: the named source /teacher/tests/weakness-options 501s until T-MIG-034 ports analytics; the toolkit never fabricates weakness data.
+- Route (apps/api/src/routes/teaching-toolkit.ts): buildGrounding (3 read-only queries: spec universe by prefix, teaching_coverage rows for the class, revision notes joined via unnest(string_to_array(spec_point_codes,',')) with book-order limit 12) + specCodeCompare (natural sort: digit runs numeric, 1.2 < 1.10 pinned) + trimPassageBody (inputText 2000 cap, ellipsis disclosure); context() builds grounding for class-bound contexts with a curriculum prefix, both topic lanes carry it.
+- Hub: types mirror (ToolkitGroundingView family); CoachForm gains the note-card picker (passages/attachedTitle/onAttach/onDetach; textarea edit detaches the label — honest, not sticky); [tool]/client.tsx gains the SOW resume banner (coverage X of Y, next-up spec point, Plan-this-topic prefill, gap chips) prefilling the FREE-TOPIC lane (the resume topic is a spec-tree node, the picker lists chapters — different lanes, disclosed in-code) + coach passage wiring + class-switch reset.
+- Tests (apps/api/test/teachingtoolkit/routes.test.ts): groundingRoutes trio helper; 5 new pins (scrambled-fixture natural order + NOT_TAUGHT never clears + gaps syllabus order + passages rn-first; TAUGHT advances resume; fully-taught null-with-honest-counts; ad-hoc NO grounding; outage degrades 200-without-block); 4 existing class-context tests extended with the trio.
+- Gates: toolkit 29/29; FULL suite 2573 pass / 13 skip / 3 fail — the 3 T-MIG-135b bundle-gate failures PROVEN pre-existing (git stash re-run on the clean tree: same 3, unrelated wave-15 content lane); contracts + api typecheck green; hub tsc green.
+
+Stage Summary:
+- T-TEACH-015 DONE: the toolkit now grounds in where the class actually IS — SOW resumes at the first untaught spec point in true syllabus order, gaps are one click to plan, and the coach takes real corpus content (revision notes) as note cards. Remaining OPEN: T-TEACH-016 (exports; SSE deferred by operator order). Credential law standing: rotate the Neon owner password, revoke the GitHub PAT at lane end.

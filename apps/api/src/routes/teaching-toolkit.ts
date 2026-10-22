@@ -69,6 +69,10 @@ import {
   type RubricOutput,
   type SowInput,
   type SowOutput,
+  type ToolkitCoverageGap,
+  type ToolkitGrounding,
+  type ToolkitPassage,
+  type ToolkitSowResume,
   type ToolkitClassContext,
   type ToolkitGenerateResponse,
   type ToolkitInputByTool,
@@ -516,6 +520,53 @@ function mapSummary(row: ToolkitResourceRow) {
   };
 }
 
+/**
+ * Natural spec-code comparator (T-TEACH-015) — the syllabus order the dotted
+ * codes imply, which plain lexicographic ordering breaks ('1.10' sorts before
+ * '1.2'). Tokenize digit/non-digit runs; digit runs compare numerically, and
+ * a digit run sorts before a letter run at the same slot ('4MB1-S1-1A' vs
+ * '4MB1-S1-1B' rides the numeric prefix then the letter tiebreak).
+ */
+export function specCodeCompare(a: string, b: string): number {
+  const tokens = (s: string): string[] => s.match(/\d+|\D+/g) ?? [];
+  const at = tokens(a);
+  const bt = tokens(b);
+  const len = Math.max(at.length, bt.length);
+  for (let i = 0; i < len; i++) {
+    const x = at[i];
+    const y = bt[i];
+    if (x === undefined) return -1;
+    if (y === undefined) return 1;
+    const xNum = /^\d+$/.test(x);
+    const yNum = /^\d+$/.test(y);
+    if (xNum && yNum) {
+      const d = Number(x) - Number(y);
+      if (d !== 0) return d;
+      continue;
+    }
+    if (xNum !== yNum) {
+      // mixed slot: the run STARTING with a digit goes first, then the
+      // plain string tiebreak keeps the order total
+      const xLead = /^\d/.test(x);
+      const yLead = /^\d/.test(y);
+      if (xLead !== yLead) return xLead ? -1 : 1;
+    }
+    const c = x.localeCompare(y);
+    if (c !== 0) return c;
+  }
+  return 0;
+}
+
+/** coach inputText cap (the passage rides it; the ellipsis is the honest
+ *  truncation disclosure). */
+const PASSAGE_BODY_MAX = 2000;
+
+function trimPassageBody(body: string): string {
+  const clean = body.trim();
+  if (clean.length <= PASSAGE_BODY_MAX) return clean;
+  return `${clean.slice(0, PASSAGE_BODY_MAX - 1).trimEnd()}\u2026`;
+}
+
 function utcDay(at: Date): string {
   return at.toISOString().slice(0, 10);
 }
@@ -549,6 +600,7 @@ export interface TeachingToolkitModule {
     topics: Array<{ topicId: string; title: string; learningObjective: string | null; source: string }>;
     topic?: { topicId: string; title: string; learningObjective: string | null; source: string };
     outcomes?: Array<{ nodeId: string | null; title: string; coverage: string | null }>;
+    grounding?: ToolkitGrounding;
   }>;
   listResources(
     teacherId: string,
@@ -689,6 +741,134 @@ export function buildTeachingToolkitModule(deps: {
     if (!template) throw new ToolkitPromptRegistryError(reg.registryKey);
     templateCache.set(tool, template);
     return template;
+  };
+
+  // ── T-TEACH-015 grounding depth (READ-ONLY over teaching_coverage) ────────
+  //
+  // The spec join of record: the course's curriculum_code FIRST token is the
+  // code prefix BOTH seeding styles share — qualification-code trees
+  // ('4MB1-2016' → '4MB1-S1-1A', '4CH1-2017' → '4CH1-1.1') and full-code
+  // trees ('0500-2024-2026' → '0500-2024-2026-S1.001') alike. The spec
+  // points ride knowledge_edges PART_OF onto their TOPIC parent; coverage
+  // rides teaching_coverage rows for THIS class (the heatmap's read lane).
+  const buildGrounding = async (
+    classId: string,
+    curriculumCode: string,
+    chapters: Array<{ id: string; title: string; learning_objective: string | null }>,
+  ): Promise<ToolkitGrounding> => {
+    const prefix = `${curriculumCode.split("-")[0]}-`;
+
+    const specRows = (await deps.sql`
+      select n.id, n.code, n.title, t.id as topic_id, t.title as topic_title
+      from knowledge_nodes n
+      join knowledge_edges e on e.source_node_id = n.id and e.relation_type = 'PART_OF'
+      join knowledge_nodes t on t.id = e.target_node_id
+      where n.node_type = 'SPEC_POINT' and n.code like ${prefix} || '%'`) as Array<{
+      id: string;
+      code: string;
+      title: string;
+      topic_id: string;
+      topic_title: string;
+    }>;
+
+    const covRows = (await deps.sql`
+      select spec_point_node_id, status from teaching_coverage
+      where class_id = ${classId}::uuid`) as Array<{
+      spec_point_node_id: string;
+      status: string;
+    }>;
+
+    const noteRows = (await deps.sql`
+      select rn.note_id, rn.title, rn.topic_title, rn.body_md, rn.spec_point_codes
+      from revision_note rn
+      where exists (
+        select 1 from unnest(string_to_array(rn.spec_point_codes, ',')) as code
+        join knowledge_nodes n on n.code = code
+        where n.code like ${prefix} || '%')
+      order by rn.topic_order asc, rn.subtopic_order asc, rn.note_order asc
+      limit 12`) as Array<{
+      note_id: string;
+      title: string;
+      topic_title: string;
+      body_md: string;
+      spec_point_codes: string;
+    }>;
+
+    const taughtByPoint = new Map<string, string>();
+    for (const row of covRows) taughtByPoint.set(row.spec_point_node_id, row.status);
+    const isTaught = (nodeId: string): boolean => taughtByPoint.get(nodeId) === "TAUGHT";
+
+    const specs = specRows
+      .map((row) => ({ ...row, title: row.title.slice(0, 300) }))
+      .sort((a, b) => specCodeCompare(a.code, b.code));
+
+    const taughtCount = specs.filter((s) => isTaught(s.id)).length;
+    const firstUn = specs.find((s) => !isTaught(s.id)) ?? null;
+    const sowResume: ToolkitSowResume | null = firstUn
+      ? {
+          specPointNodeId: firstUn.id,
+          specCode: firstUn.code,
+          specTitle: firstUn.title,
+          topicNodeId: firstUn.topic_id,
+          topicTitle: firstUn.topic_title.slice(0, 300),
+        }
+      : null;
+
+    // coverage gaps: topics in syllabus order (by their first untaught spec
+    // point), biggest run of untaught content first in the TEACHER's reading
+    // order — NOT a mastery claim (the weakness lane stays with T-MIG-034)
+    const byTopic = new Map<string, { title: string; total: number; untaught: number }>();
+    for (const s of specs) {
+      const agg = byTopic.get(s.topic_id) ?? { title: s.topic_title, total: 0, untaught: 0 };
+      agg.total += 1;
+      if (!isTaught(s.id)) agg.untaught += 1;
+      byTopic.set(s.topic_id, agg);
+    }
+    const coverageGaps: ToolkitCoverageGap[] = [];
+    for (const [topicId, agg] of byTopic) {
+      if (agg.untaught > 0 && coverageGaps.length < 8) {
+        coverageGaps.push({
+          topicNodeId: topicId,
+          topicTitle: agg.title.slice(0, 300),
+          untaughtCount: agg.untaught,
+          totalCount: agg.total,
+        });
+      }
+    }
+
+    // coach note cards: the course's revision notes (body_md — the real
+    // content source) first, then chapter learning objectives; the body cap
+    // rides the coach inputText contract
+    const passages: ToolkitPassage[] = [];
+    for (const n of noteRows) {
+      if (passages.length >= 12) break;
+      passages.push({
+        passageId: `rn:${n.note_id}`.slice(0, 80),
+        source: "revision_note",
+        title: n.title.slice(0, 300),
+        body: trimPassageBody(n.body_md),
+        ref: n.spec_point_codes ? n.spec_point_codes.slice(0, 160) : null,
+      });
+    }
+    for (const ch of chapters) {
+      if (passages.length >= 12) break;
+      if (!ch.learning_objective?.trim()) continue;
+      passages.push({
+        passageId: `bc:${ch.id}`.slice(0, 80),
+        source: "book_chapter",
+        title: ch.title.slice(0, 300),
+        body: trimPassageBody(ch.learning_objective),
+        ref: null,
+      });
+    }
+
+    return {
+      specPointsTaught: taughtCount,
+      specPointsTotal: specs.length,
+      sowResume,
+      coverageGaps,
+      passages,
+    };
   };
 
   const persistRow = async (row: {
@@ -917,7 +1097,21 @@ export function buildTeachingToolkitModule(deps: {
         level: ctx.level,
         curriculumCode: ctx.curriculumCode,
       };
-      if (!params.topicId) return { context: wireContext, quota, topics };
+
+      // grounding depth (T-TEACH-015) — class-bound only (ad-hoc contexts
+      // have no coverage to ground in). Additive depth: a build failure
+      // degrades to the block's ABSENCE — logged, never silent — so the
+      // primary context (chips/topics/outcomes) stays bulletproof.
+      let grounding: ToolkitGrounding | undefined;
+      if (ctx.classId && ctx.curriculumCode) {
+        try {
+          grounding = await buildGrounding(ctx.classId, ctx.curriculumCode, topicRows);
+        } catch (err) {
+          console.error("[teaching-toolkit] grounding build failed:", err);
+        }
+      }
+
+      if (!params.topicId) return { context: wireContext, quota, topics, grounding };
 
       // topic outcomes: the book-chapter lane first, then the spec-tree lane
       const chapterRows = (await deps.sql`
@@ -938,7 +1132,7 @@ export function buildTeachingToolkitModule(deps: {
         const outcomes = chapter.learning_objective
           ? [{ nodeId: null, title: chapter.learning_objective, coverage: null }]
           : [];
-        return { context: wireContext, quota, topics, topic, outcomes };
+        return { context: wireContext, quota, topics, topic, outcomes, grounding };
       }
       const nodeRows = (await deps.sql`
         select id, title, node_type from knowledge_nodes where id = ${params.topicId}::uuid`) as Array<{
@@ -963,6 +1157,7 @@ export function buildTeachingToolkitModule(deps: {
         context: wireContext,
         quota,
         topics,
+        grounding,
         topic: {
           topicId: node.id,
           title: node.title,

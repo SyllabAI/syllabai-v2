@@ -38,6 +38,10 @@ const NEW_ID = "7e571d00-0000-4000-8000-000000000001";
 const CHAPTER_ID = "ee000000-0000-4000-8000-000000000001";
 const TOPIC_NODE = "20000000-0000-4000-8000-000000000012";
 const SPEC_POINT = "21000000-0000-4000-8000-000000000001";
+const SPEC_B = "21000000-0000-4000-8000-000000000002";
+const SPEC_C = "21000000-0000-4000-8000-000000000003";
+const TOPIC_B = "20000000-0000-4000-8000-000000000013";
+const NOTE_ID = "rn_fixture_0001";
 const COURSE = "igcse-biology-06";
 
 const NOW = new Date("2026-10-22T09:00:00Z");
@@ -260,6 +264,30 @@ const specPointsRoute = (rows: Array<Record<string, unknown>>): Route => ({
   rows,
 });
 
+// ── T-TEACH-015 grounding routes (every class-bound context now serves through)
+
+const specUniverseRoute = (rows: Array<Record<string, unknown>>): Route => ({
+  match: /join knowledge_nodes t on t\.id = e\.target_node_id where n\.node_type = 'SPEC_POINT' and n\.code like \? \|\| '%'$/,
+  rows,
+});
+
+const coverageRowsRoute = (rows: Array<Record<string, unknown>>): Route => ({
+  match: /select spec_point_node_id, status from teaching_coverage where class_id = \? ::uuid$/,
+  rows,
+});
+
+const revisionNotesRoute = (rows: Array<Record<string, unknown>>): Route => ({
+  match: /from revision_note rn where exists/,
+  rows,
+});
+
+/** the grounding trio a class-bound context runs (empty universes default) */
+const groundingRoutes = (
+  specs: Array<Record<string, unknown>> = [],
+  cov: Array<Record<string, unknown>> = [],
+  notes: Array<Record<string, unknown>> = [],
+): Route[] => [specUniverseRoute(specs), coverageRowsRoute(cov), revisionNotesRoute(notes)];
+
 const resourcesListRoute = (rows: Array<Record<string, unknown>>): Route => ({
   match: /from teaching_toolkit_resources where teacher_id = \? ::uuid and \(/,
   rows,
@@ -420,7 +448,7 @@ describe("class-context ownership ladder + gates", () => {
     expect(genRes.status).toBe(409);
 
     const { app: readApp } = makeApp(
-      [classRoute([classRow({ status: "ARCHIVED" })]), courseRoute(), quotaReadRoute([{ used: 2 }]), chapterTopicsRoute([])],
+      [classRoute([classRow({ status: "ARCHIVED" })]), courseRoute(), quotaReadRoute([{ used: 2 }]), chapterTopicsRoute([]), ...groundingRoutes()],
       fakeGenerator([]),
     );
     const ctxRes = await readApp.request(`/api/v1/teacher/toolkit/context?classId=${CLASS_A}`);
@@ -662,6 +690,7 @@ describe("context + resources", () => {
         chapterTopicsRoute([
           { id: CHAPTER_ID, title: "Enzymes", learning_objective: "Describe enzyme action." },
         ]),
+        ...groundingRoutes(),
       ],
       fakeGenerator([]),
     );
@@ -691,6 +720,7 @@ describe("context + resources", () => {
         quotaReadRoute([{ used: 0 }]),
         chapterTopicsRoute([]),
         chapterByIdRoute([{ id: CHAPTER_ID, title: "Enzymes", learning_objective: "Describe enzyme action." }]),
+        ...groundingRoutes(),
       ],
       fakeGenerator([]),
     );
@@ -716,6 +746,7 @@ describe("context + resources", () => {
         specPointsRoute([
           { id: SPEC_POINT, title: "Describe enzyme action", coverage: "TAUGHT" },
         ]),
+        ...groundingRoutes(),
       ],
       fakeGenerator([]),
     );
@@ -772,5 +803,173 @@ describe("context + resources", () => {
     const missing = makeApp([resourceById({})], fakeGenerator([]));
     const missingRes = await missing.app.request(`/api/v1/teacher/toolkit/resources/${RESOURCE_A}`);
     expect(missingRes.status).toBe(404);
+  });
+});
+
+// ── grounding depth (T-TEACH-015) ────────────────────────────────────────────
+
+describe("grounding depth (T-TEACH-015)", () => {
+  // scrambled on purpose: the service must sort NATURALLY (1.1 < 1.2 < 1.10
+  // — plain lexicographic would put 1.10 first and resume at the wrong point)
+  const specs = [
+    { id: SPEC_POINT, code: "0610-1.10", title: "Chromatography", topic_id: TOPIC_B, topic_title: "Separation" },
+    { id: SPEC_B, code: "0610-1.2", title: "States of matter", topic_id: TOPIC_NODE, topic_title: "States of matter" },
+    { id: SPEC_C, code: "0610-1.1", title: "Particle theory", topic_id: TOPIC_NODE, topic_title: "States of matter" },
+  ];
+
+  test("class context grounds: natural-order resume, NOT_TAUGHT never clears a point, gaps in syllabus order, passages revision-notes-first", async () => {
+    const { app } = makeApp(
+      [
+        classRoute([classRow()]),
+        courseRoute(),
+        quotaReadRoute([]),
+        chapterTopicsRoute([
+          { id: CHAPTER_ID, title: "Enzymes", learning_objective: "Describe enzyme action." },
+        ]),
+        ...groundingRoutes(
+          specs,
+          [{ spec_point_node_id: SPEC_C, status: "NOT_TAUGHT" }],
+          [
+            {
+              note_id: NOTE_ID,
+              title: "States of matter",
+              topic_title: "States of matter",
+              body_md: "Particles arrangement explains states.",
+              spec_point_codes: "0610-1.1,0610-1.2",
+            },
+          ],
+        ),
+      ],
+      fakeGenerator([]),
+    );
+    const res = await app.request(`/api/v1/teacher/toolkit/context?classId=${CLASS_A}`);
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { grounding: Record<string, unknown> };
+    expect(body.grounding).toEqual({
+      specPointsTaught: 0,
+      specPointsTotal: 3,
+      sowResume: {
+        specPointNodeId: SPEC_C,
+        specCode: "0610-1.1",
+        specTitle: "Particle theory",
+        topicNodeId: TOPIC_NODE,
+        topicTitle: "States of matter",
+      },
+      coverageGaps: [
+        { topicNodeId: TOPIC_NODE, topicTitle: "States of matter", untaughtCount: 2, totalCount: 2 },
+        { topicNodeId: TOPIC_B, topicTitle: "Separation", untaughtCount: 1, totalCount: 1 },
+      ],
+      passages: [
+        {
+          passageId: `rn:${NOTE_ID}`,
+          source: "revision_note",
+          title: "States of matter",
+          body: "Particles arrangement explains states.",
+          ref: "0610-1.1,0610-1.2",
+        },
+        {
+          passageId: `bc:${CHAPTER_ID}`,
+          source: "book_chapter",
+          title: "Enzymes",
+          body: "Describe enzyme action.",
+          ref: null,
+        },
+      ],
+    });
+  });
+
+  test("TAUGHT clears a point and the resume pointer advances", async () => {
+    const { app } = makeApp(
+      [
+        classRoute([classRow()]),
+        courseRoute(),
+        quotaReadRoute([]),
+        chapterTopicsRoute([]),
+        ...groundingRoutes(specs, [{ spec_point_node_id: SPEC_C, status: "TAUGHT" }]),
+      ],
+      fakeGenerator([]),
+    );
+    const res = await app.request(`/api/v1/teacher/toolkit/context?classId=${CLASS_A}`);
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      grounding: {
+        specPointsTaught: number;
+        sowResume: { specCode: string } | null;
+        coverageGaps: Array<{ topicNodeId: string; topicTitle: string; untaughtCount: number; totalCount: number }>;
+      };
+    };
+    expect(body.grounding.specPointsTaught).toBe(1);
+    expect(body.grounding.sowResume?.specCode).toBe("0610-1.2");
+    expect(body.grounding.coverageGaps).toEqual([
+      { topicNodeId: TOPIC_NODE, topicTitle: "States of matter", untaughtCount: 1, totalCount: 2 },
+      { topicNodeId: TOPIC_B, topicTitle: "Separation", untaughtCount: 1, totalCount: 1 },
+    ]);
+  });
+
+  test("a fully-taught class resumes null with no gaps — counts stay honest", async () => {
+    const { app } = makeApp(
+      [
+        classRoute([classRow()]),
+        courseRoute(),
+        quotaReadRoute([]),
+        chapterTopicsRoute([]),
+        ...groundingRoutes(specs, specs.map((s) => ({ spec_point_node_id: s.id, status: "TAUGHT" }))),
+      ],
+      fakeGenerator([]),
+    );
+    const res = await app.request(`/api/v1/teacher/toolkit/context?classId=${CLASS_A}`);
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      grounding: {
+        specPointsTaught: number;
+        specPointsTotal: number;
+        sowResume: unknown;
+        coverageGaps: unknown[];
+      };
+    };
+    expect(body.grounding.specPointsTaught).toBe(3);
+    expect(body.grounding.specPointsTotal).toBe(3);
+    expect(body.grounding.sowResume).toBeNull();
+    expect(body.grounding.coverageGaps).toEqual([]);
+  });
+
+  test("an ad-hoc course context carries NO grounding block (no class, no coverage)", async () => {
+    const { app } = makeApp(
+      [courseRoute(), quotaReadRoute([]), chapterTopicsRoute([]), ...groundingRoutes()],
+      fakeGenerator([]),
+    );
+    const res = await app.request(`/api/v1/teacher/toolkit/context?courseId=${COURSE}`);
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as { grounding?: unknown };
+    expect("grounding" in body).toBe(false);
+  });
+
+  test("a grounding outage degrades honestly: 200 without the block, never a dead context", async () => {
+    const { app } = makeApp(
+      [
+        classRoute([classRow()]),
+        courseRoute(),
+        quotaReadRoute([]),
+        chapterTopicsRoute([]),
+        {
+          match: /join knowledge_nodes t on t\.id = e\.target_node_id where n\.node_type = 'SPEC_POINT'/,
+          rows: [],
+          rowsFor: () => {
+            throw new Error("spec universe unavailable");
+          },
+        },
+      ],
+      fakeGenerator([]),
+    );
+    const res = await app.request(`/api/v1/teacher/toolkit/context?classId=${CLASS_A}`);
+    expect(res.status).toBe(200);
+    const body = (await res.json()) as {
+      grounding?: unknown;
+      topics: unknown[];
+      quota: { used: number };
+    };
+    expect("grounding" in body).toBe(false);
+    expect(body.quota).toBeDefined();
+    expect(body.topics).toEqual([]);
   });
 });

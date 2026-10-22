@@ -59,6 +59,7 @@ import type {
   ToolkitContextView,
   ToolkitGenerateResultView,
   ToolkitOutcomeView,
+  ToolkitPassageView,
   ToolkitQuotaView,
   ToolkitResourceSummaryView,
 } from "@/lib/types";
@@ -136,6 +137,9 @@ export function ToolkitToolClient({
   const [outcomes, setOutcomes] = useState<ToolkitOutcomeView[] | null>(null);
   const [outcomeSel, setOutcomeSel] = useState<Set<string>>(new Set());
   const [freeObjectives, setFreeObjectives] = useState("");
+  // T-TEACH-015 coach note card — the attached passage's label; the textarea
+  // stays the single source of truth (the label detaches on edit)
+  const [coachPassage, setCoachPassage] = useState<ToolkitPassageView | null>(null);
 
   // ── forms ──────────────────────────────────────────────────────────────────
   const [lessonPlan, setLessonPlan] = useState<LessonPlanFormData>(DEFAULT_LESSON_PLAN);
@@ -198,6 +202,12 @@ export function ToolkitToolClient({
     };
   }, [classId, topicId, needsTopic, tool]);
 
+  // a class switch invalidates the grounding surfaces (passages are
+  // course-scoped) — the attached label goes with them
+  useEffect(() => {
+    setCoachPassage(null);
+  }, [classId]);
+
   // per-class history strip (same tool only)
   const loadHistory = useCallback(async () => {
     if (!classId) return;
@@ -253,6 +263,59 @@ export function ToolkitToolClient({
 
   const topics = ctx?.topics ?? [];
   const pickedTopic = topicId ? (topics.find((t) => t.topicId === topicId)?.title ?? "") : freeTopic;
+
+  // T-TEACH-015 — the SOW resume banner: where the class actually IS in the
+  // syllabus (teaching_coverage, read-only). "Plan this topic" prefills the
+  // free-topic lane — the resume topic is a spec-tree node, and the picker's
+  // chapter list is a different lane, so the prefill rides the free text.
+  const grounding = ctx?.grounding ?? null;
+  const resume = grounding?.sowResume ?? null;
+  const sowGroundingBlock = tool === "sow" && grounding ? (
+    <div className="space-y-2 rounded-lg border border-dashed bg-muted/30 p-3">
+      <p className="text-xs font-medium">
+        Class coverage: {grounding.specPointsTaught} of {grounding.specPointsTotal} spec points marked taught
+      </p>
+      {resume && (
+        <>
+          <p className="text-xs text-muted-foreground">
+            Next up in the syllabus:{" "}
+            <span className="font-medium text-foreground">{resume.specCode}</span> — {resume.specTitle}
+            {resume.topicTitle ? ` (in ${resume.topicTitle})` : ""}
+          </p>
+          {resume.topicTitle && (
+            <Button
+              variant="outline"
+              size="sm"
+              className="h-7 text-xs"
+              onClick={() => {
+                setTopicId(null);
+                setFreeTopic(resume.topicTitle ?? "");
+              }}
+            >
+              Plan this topic
+            </Button>
+          )}
+        </>
+      )}
+      {grounding.coverageGaps.length > 0 && (
+        <div className="flex flex-wrap gap-1.5">
+          {grounding.coverageGaps.map((g) => (
+            <button
+              key={g.topicNodeId}
+              onClick={() => {
+                setTopicId(null);
+                setFreeTopic(g.topicTitle);
+              }}
+              title={`${g.untaughtCount} of ${g.totalCount} spec points not yet taught`}
+              className="rounded-full border px-2.5 py-0.5 text-[11px] text-muted-foreground hover:bg-muted/60 hover:text-foreground"
+            >
+              {g.topicTitle} · {g.untaughtCount}/{g.totalCount} not taught
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  ) : null;
 
   const topicBlock = needsTopic ? (
     <TopicPicker
@@ -467,10 +530,22 @@ export function ToolkitToolClient({
               </RubricForm>
             ) : tool === "sow" ? (
               <SowForm value={sow} onChange={(patch) => setSow((v) => ({ ...v, ...patch }))}>
+                {sowGroundingBlock}
                 {topicBlock}
               </SowForm>
             ) : (
-              <CoachForm value={coach} onChange={(patch) => setCoach((v) => ({ ...v, ...patch }))} />
+              <CoachForm
+                value={coach}
+                onChange={(patch) => setCoach((v) => ({ ...v, ...patch }))}
+                passages={grounding?.passages ?? []}
+                attachedTitle={coachPassage?.title ?? null}
+                onAttach={(p) => {
+                  setCoach((v) => ({ ...v, inputText: p.body }));
+                  setCoachPassage(p);
+                  setFormError(null);
+                }}
+                onDetach={() => setCoachPassage(null)}
+              />
             )}
 
             <div className="mt-5 flex flex-wrap items-center gap-3">
