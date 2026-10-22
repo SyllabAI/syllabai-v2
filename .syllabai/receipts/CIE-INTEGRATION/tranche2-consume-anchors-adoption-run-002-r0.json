@@ -1,5 +1,5 @@
 {
- "lane": "T-RULE-T2-APPLY-2 (v2 half) run-002 — consume-law ADOPTION",
+ "lane": "T-RULE-T2-APPLY-2 (v2 half) run-002 \u2014 consume-law ADOPTION",
  "operatorDirective": "adopt the consume-law on v2 branch (gateway trace 1a164dcf6cff9061, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
  "generatedUtc": "2026-10-22T19:05:00Z",
  "adoption": {
@@ -12,28 +12,51 @@
  "pinAdvanceLaw": {
   "consumedInputDelta": "spec-links/ ONLY: 8 sidecars + manifest.json of record (PR #49 anchors 5b85ea3; T-RULE-T2-B01 132c4b6; B02 e4f4a34; COMPLETE-1-BAND-B geo-25 58d7f68; PARSE-REPAIR-1/2 06de1f2a + b83a3799)",
   "identicalSubtrees": "SME-RevisionNotes fa26536f / SME-ExamQuestion 7ac8c435 / Official-Specifications c95ed99f tree-sha-IDENTICAL to the c5f20c52 pin",
-  "nonEngineDeltas": "Official-ExamQuestion (igcse-chemistry-19 wave-19 exporter surface), books (future pipeline), graph (records), scripts (exporter v5) — zero engine-input contact",
-  "sheet": "cie_rejoin_resolutions.yaml blob-identical 2bcd4db3 — 634 resolves / 166 quarantines pins hold"
+  "nonEngineDeltas": "Official-ExamQuestion (igcse-chemistry-19 wave-19 exporter surface), books (future pipeline), graph (records), scripts (exporter v5) \u2014 zero engine-input contact",
+  "sheet": "cie_rejoin_resolutions.yaml blob-identical 2bcd4db3 \u2014 634 resolves / 166 quarantines pins hold"
  },
  "gates": {
   "ignition": "full-engine run 44/44 sidecars, battery M1/R1-R6/A1 ALL GREEN, exit 0",
-  "sidAnchors": {"added": 0, "verified": 23, "conflictsKept": 0, "meaning": "the 23 registry rows @ a9bd2488 reproduce as a BYTE FIXED POINT through the adopted law — verify-if-equal, no rewrites; spcptToOfficial 69 rows and spcptUnmapped 262 byte-equal pre/post across ALL 44 banks"},
+  "sidAnchors": {
+   "added": 0,
+   "verified": 23,
+   "conflictsKept": 0,
+   "meaning": "the 23 registry rows @ a9bd2488 reproduce as a BYTE FIXED POINT through the adopted law \u2014 verify-if-equal, no rewrites; spcptToOfficial 69 rows and spcptUnmapped 262 byte-equal pre/post across ALL 44 banks"
+  },
   "determinism": "two clean runs staging-hash byte-identical e70254275d31b40a07b7021b270fed328f1cd156c06e1f6b9db3ae8c0e78d9ae",
   "independentAudit": "scripts/t2consume_adoption_audit.py GREEN: adds sidecar-lineage-only + spine-resolved + sidecar-traceable; maps: every key outside {resourcesSha, generatedUtc, items, reconciliation, contentCoverage, sources, inputs} deep-equal incl. declaredUnresolved + spcptSubtopicScope; bundles: curriculum byte-identical, manifest diff == officialSpine.resourcesSha only, smeSpecPointIds byte-equal, linkage moves only on newly-coded items",
-  "postApplyIdempotence": "re-run at the applied tree: changed=0/44, exit 0 — the applied fleet is a quiescent fixed point of the amended law",
-  "totals": {"codesFromSidecar": 10837, "t2Hints": 0, "sheetAdded": 0, "sheetUpgraded": 0, "sheetConflicts": 289, "inlineRewrites": 23}
+  "postApplyIdempotence": "re-run at the applied tree: changed=0/44, exit 0 \u2014 the applied fleet is a quiescent fixed point of the amended law",
+  "totals": {
+   "codesFromSidecar": 10837,
+   "t2Hints": 0,
+   "sheetAdded": 0,
+   "sheetUpgraded": 0,
+   "sheetConflicts": 289,
+   "inlineRewrites": 23
+  },
+  "localFullLane": "typecheck 0; bun test apps/api packages 2602 pass / 13 skip / 0 fail; golden selftest OK; hub prebuild chain (verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles) all exit 0"
  },
  "itemPlaneDelta": {
-  "banks": {"cie-a-level-chemistry-25": 191, "cie-igcse-chemistry-23": 2, "cie-igcse-science-combined-science-23-physics": 2},
+  "banks": {
+   "cie-a-level-chemistry-25": 191,
+   "cie-igcse-chemistry-23": 2,
+   "cie-igcse-science-combined-science-23-physics": 2
+  },
   "totalAddedPairs": 195,
-  "attribution": "EXACTLY the tranche-2 operator V8_name_phrase_verdict part-level surface (B01 48 + B02 147 = 195) — the branch receipt's 'B02 part-level V8 consume pending; map_changed TRUE when it runs' prediction landed; every other pending sidecar round (BAND-B geo-25 81 joins, PARSE-REPAIR pure-3/fm-additional 27 joins, B01 non-V8) absorbed on existing (item, code) keys = verify-path byte-stable",
+  "attribution": "EXACTLY the tranche-2 operator V8_name_phrase_verdict part-level surface (B01 48 + B02 147 = 195) \u2014 the branch receipt's 'B02 part-level V8 consume pending; map_changed TRUE when it runs' prediction landed; every other pending sidecar round (BAND-B geo-25 81 joins, PARSE-REPAIR pure-3/fm-additional 27 joins, B01 non-V8) absorbed on existing (item, code) keys = verify-path byte-stable",
   "bodyMdFirstRender": "20 chem25 notes / 23 inline spcpt tokens gained their first real-code render (the 23 anchor sids' inline refs; APPLY-1 was registry-plane-only by design and left bodies untouched; this re-emit reconciles them, R3-exact substitution independently re-verified)"
  },
  "disclosures": [
   "engine quiescent-run robustness fix carried by this commit: at changed=0 the staging root is now created before the report write (the changed=0 edge crashed pre-fix; discovered by this run's own idempotence pass; zero effect on merge output)",
-  "7 sids carry b01/b02 V8 item-level entries the tranche-2 ruling corrects — the consume mirrors the sidecar of record; retraction remains OPERATOR-GATED separate residual (relationToV8 per record)",
-  "resources origin/main has advanced past the pin of record (d89c2e6b) — next advance's input, out of scope here",
+  "7 sids carry b01/b02 V8 item-level entries the tranche-2 ruling corrects \u2014 the consume mirrors the sidecar of record; retraction remains OPERATOR-GATED separate residual (relationToV8 per record)",
+  "resources origin/main has advanced past the pin of record (d89c2e6b) \u2014 next advance's input, out of scope here",
   "residuals unchanged: 10 mis-tag re-points, holds 9Dxx/pYmR + split Cdtk, tranche-3 (1,203 sid-less), PAT rotation, hung resources sync job"
  ],
- "scope": "engine constants/directive + quiescent fix + 44 content-maps + 48 bundle files + receipt + worklog; fetch-first, no force"
+ "scope": "engine constants/directive + quiescent fix + 44 content-maps + 48 bundle files + receipt + worklog; fetch-first, no force",
+ "pinLadderAdvance": {
+  "validator": "apps/hub/scripts/validate_cie_bundles.ts \u2014 CIE_PIN advanced c5f20c52 -> 3838a264 (the PR-#49-merged tip), CIE_PIN_PRIOR_3 = c5f20c52 demoted into the ladder, allow-list extended; repair pins (PURE3/FM25/GEO25) disclosed as SUPERSEDED by the uniform re-key (their sidecar state carried inside the 3838a26 sidecars of record); CIE VALIDATOR PASSED locally at this tree",
+  "rosterFloors": "apps/api/test/sme/cie-phase4-roster.test.ts \u2014 servable census of record re-pinned from the live census of the adopted tree (t2consume_census_probe.ts over loadRoster + mapLawCensus): questions 6715 -> 6781 (+66), parts 5696 -> 5786 (+90), pkgParts 9276 -> 9406 (+130), shimExclusions.unmapped 12363 -> 12297 (-66, identity rawQ - questions == unmapped + dupOrder re-proven); raw 19,097/25,663 UNCHANGED; physics-23 634/1/634 + bio-25 859/1529 byte-stable; map-law census green 44/44 (maxDbCodeLength 25, shared roots identical)",
+  "attribution": "the moved floors = EXACTLY the 195 operator V8 part-level entries (B01 48 + B02 147; all question_part-kind: chem25 +191, chemistry-23 +2, sci-comb-physics +2) \u2014 +66 questions gain servability as their newly-coded parts admit",
+  "ciTriage": "first CI pass on the adoption (838d9853) was RED on both jobs \u2014 PROVEN to be the stale of-record pins, not the adoption: verify failed at the roster's pinned census (Expected 6715, Received 6781 \u2014 the tool recomputes live); hub failed the CIE validator's 44 pin-in-allow-list assertions (found 3838a26, ladder pinned c5f20c52); main 56db3b96 itself green; both ladders advanced of record here (the CIE-REFRESH-1 'validator pin ladder advanced' law), full local lane re-proven green before push: typecheck 0, bun test 2602 pass / 13 skip / 0 fail, golden selftest OK, verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles all exit 0"
+ }
 }

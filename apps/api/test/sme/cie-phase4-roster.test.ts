@@ -99,12 +99,28 @@ describe("cie-phase4 roster law", () => {
     // 116 fully-unmapped questions gain servability (unmapped 12,479 ->
     // 12,363 EXACT, per slug == the lane-side prediction). Floors re-pinned
     // from the census tool of record (cie-tranche1-t2near-run-001-r0.json).
-    expect(questions).toBe(6715);
-    expect(parts).toBe(5696);
+    // TRANCHE-2 ADOPTION RE-BASE (T-RULE-T2-APPLY-2 run-002, operator order
+    // 'adopt the consume-law on v2 branch', trace 1a164dcf6cff9061, not a
+    // loosening): the consume engine's operator sid-anchor law adopted of
+    // record at the pin advance c5f20c52 -> 3838a264 (the PR-#49-merged
+    // tip) — the 23 sid-anchors reproduce as a BYTE FIXED POINT (registry
+    // plane already carried them @ a9bd2488) and the pending item-plane
+    // operator V8 part-level verdict surface (B01 48 + B02 147 = 195
+    // entries across cie-a-level-chemistry-25 +191, cie-igcse-chemistry-23
+    // +2, cie-igcse-science-combined-science-23-physics +2) lands — ALL on
+    // question_part items: +66 questions gain servability as their
+    // newly-coded parts admit (unmapped 12,363 -> 12,297 EXACT), +90 plain
+    // part rows, +130 package parts;
+    // raw 19,097/25,663 UNCHANGED; physics-23 634/1/634 and bio-25
+    // 859/1529 bank anchors byte-stable; map-law census green 44/44.
+    // Floors re-pinned from the live census of the adopted tree
+    // (scripts/t2consume_census_probe.ts over loadRoster + mapLawCensus).
+    expect(questions).toBe(6781);
+    expect(parts).toBe(5786);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(9276);
+    expect(pkgParts).toBe(9406);
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -133,7 +149,7 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0 },
     );
-    expect(excl).toEqual({ unmapped: 12363, badSum: 0, dupOrder: 19 });
+    expect(excl).toEqual({ unmapped: 12297, badSum: 0, dupOrder: 19 });
     // the question-level identity: raw - servable = unmapped + dupOrder (each
     // exclusion removes whole questions; badSum is zero of record)
     expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder);
