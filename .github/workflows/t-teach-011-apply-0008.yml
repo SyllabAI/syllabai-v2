@@ -5,15 +5,19 @@
 #   job 1 (cow-proof): a disposable Neon COW branch off production (in-line
 #     read_write endpoint, NEON_API_KEY = the CI write-capable key of record),
 #     branch-local owner password reset (PRODUCTION ROLES NEVER TOUCHED), the
-#     FROZEN driver (scripts/t-teach-011-apply-0008.ts) applies 0008 as RAW
-#     SQL under the 0007 regime — preflight, backup-first, ONE transaction
-#     lock_timeout=5s, full post-verify — then DROP the COW + 404-verify,
-#     even on failure (if: always(), the T-MIG-035 discipline).
-#   job 2 (prod-apply, needs job 1 ALL GREEN): the same frozen driver against
+#     FROZEN chain applies as RAW SQL under the 0007 regime — preflight,
+#     backup-first, ONE transaction per file, lock_timeout=5s, full
+#     post-verify — then DROP the COW + 404-verify, even on failure
+#     (if: always(), the T-MIG-035 discipline).
+#   job 2 (prod-apply, needs job 1 ALL GREEN): the same frozen chain against
 #     the production DATABASE_URL of record (T138_PROD_DATABASE_URL), receipt
 #     artifact. NO drizzle bookkeeping is created (the 0007 disclosure law);
-#     flyway_schema_history is untouched; the migration is additive-only
-#     (2 new tables + class_features.ai_toolkit + 4 prompt_versions seeds).
+#     flyway_schema_history is untouched; both migrations are additive-only.
+#
+# RUN-001 FINDING OF RECORD (CI run 39768229860): the COW preflight proved
+# class_features ABSENT on production — migration 0006 (T-TEACH-002) was
+# authored but never applied there. 0008 ALTER/FK-references class_features,
+# so the apply CHAIN of record is: 0006 → seed-course-registry → 0008.
 #
 # OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
 # dispatched (the dispatch = the operator's fire order per the 093/133b law).
@@ -89,18 +93,29 @@ jobs:
           [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
           ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
           echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
-      - name: Apply 0008 against the COW (frozen driver — preflight/backup/one-txn/postverify)
+      - name: Apply 0006 against the COW (prerequisite repair — frozen driver)
         run: |
           printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/t011-cow.uri
           chmod 600 /tmp/t011-cow.uri
+          bun scripts/t-teach-011-apply-0006.ts --db file:/tmp/t011-cow.uri \
+            --mode apply --receipt cow-apply-receipt-0006.json
+      - name: Seed course_registry on the COW (the T-TEACH-002 copier of record, no --prune)
+        run: |
+          DATABASE_URL="$(cat /tmp/t011-cow.uri)" bun scripts/seed-course-registry.ts \
+            | tee seed-course-registry-cow.log
+      - name: Apply 0008 against the COW (frozen driver — preflight/backup/one-txn/postverify)
+        run: |
           bun scripts/t-teach-011-apply-0008.ts --db file:/tmp/t011-cow.uri \
             --mode apply --receipt cow-apply-receipt-0008.json
-      - name: Upload the COW receipt artifact
+      - name: Upload the COW receipt artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: t011-cow-receipt
-          path: cow-apply-receipt-0008.json
+          name: t011-cow-receipts
+          path: |
+            cow-apply-receipt-0006.json
+            seed-course-registry-cow.log
+            cow-apply-receipt-0008.json
           if-no-files-found: ignore
       - name: DROP the COW + 404-verify (zero residue, even on failure)
         if: always()
@@ -132,18 +147,33 @@ jobs:
           bun-version: "1.2.23"
       - name: Install workspace deps
         run: bun install --frozen-lockfile
-      - name: Apply 0008 against PRODUCTION (frozen driver — preflight/backup/one-txn/postverify)
+      - name: Apply 0006 against PRODUCTION (prerequisite repair — frozen driver)
         env:
           T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
         run: |
           printf '%s' "$T138_PROD_DATABASE_URL" > /tmp/t011-prod.uri
           chmod 600 /tmp/t011-prod.uri
+          bun scripts/t-teach-011-apply-0006.ts --db file:/tmp/t011-prod.uri \
+            --mode apply --receipt prod-apply-receipt-0006.json
+      - name: Seed course_registry on PRODUCTION (the T-TEACH-002 copier of record, no --prune)
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          DATABASE_URL="$(cat /tmp/t011-prod.uri)" bun scripts/seed-course-registry.ts \
+            | tee seed-course-registry-prod.log
+      - name: Apply 0008 against PRODUCTION (frozen driver — preflight/backup/one-txn/postverify)
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
           bun scripts/t-teach-011-apply-0008.ts --db file:/tmp/t011-prod.uri \
             --mode apply --receipt prod-apply-receipt-0008.json
-      - name: Upload the prod apply receipt artifact
+      - name: Upload the prod apply receipt artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: t011-prod-receipt
-          path: prod-apply-receipt-0008.json
+          name: t011-prod-receipts
+          path: |
+            prod-apply-receipt-0006.json
+            seed-course-registry-prod.log
+            prod-apply-receipt-0008.json
           if-no-files-found: ignore
