@@ -30,10 +30,11 @@ import {
   ConflictException,
   NotFoundException,
 } from "../identity/errors";
-import type { DrillPartView } from "@syllabai/contracts";
+import type { DrillMarkSchemeView, DrillMethodCreditView, DrillPartView } from "@syllabai/contracts";
 
 import type { DrillBank, DrillPartContent } from "./bank";
 import { drawForAddress, DrillDrawError, DRAW_SIZE } from "./draw";
+import { revealForEvidence, type DrillMethodCreditGenerator } from "./reveal";
 import type { DrillPart } from "./census";
 import type { DrillEvidenceInsert, DrillStore } from "./store";
 
@@ -143,6 +144,10 @@ export interface DrillEvidenceOutcome {
   marksAwarded: number | null;
   marksPossible: number;
   solutionMd: string | null;
+  /** F-183 — the MS of record, verbatim (null when the part carries no linked MS — law L6). */
+  markScheme: DrillMarkSchemeView | null;
+  /** F-183 — the Smart Mark method-credit verdict on structured parts (ephemeral, never stored). */
+  methodCredit: DrillMethodCreditView | null;
 }
 
 export async function recordDrillEvidence(
@@ -150,6 +155,8 @@ export async function recordDrillEvidence(
   store: DrillStore,
   learnerId: string,
   input: DrillEvidenceInput,
+  /** F-183 — the injected method-credit seam (null = the dormant posture). */
+  methodCreditGenerator: DrillMethodCreditGenerator | null = null,
 ): Promise<DrillEvidenceOutcome> {
   const draw = await store.drawOf(learnerId, input.drawId);
   if (!draw) {
@@ -203,6 +210,17 @@ export async function recordDrillEvidence(
   };
   const recorded = await store.recordEvidence(insert);
 
+  // F-183 law L1 — the reveal rides THIS ack, post-attempt by construction:
+  // the evidence row above is already immutable-committed. L3: the MS of
+  // record passes through verbatim; L4: the method-credit verdict (structured
+  // parts only) computes against it and is NEVER persisted (zero-stakes law).
+  const reveal = await revealForEvidence(
+    bank,
+    input.partId,
+    { responseKind: input.response.kind, responseText: input.response.kind === "text" ? input.response.text : "" },
+    methodCreditGenerator,
+  );
+
   return {
     evidenceId: recorded.id,
     drawId: input.drawId,
@@ -211,5 +229,7 @@ export async function recordDrillEvidence(
     marksAwarded,
     marksPossible: part.marks,
     solutionMd: bank.solutionOf(input.partId),
+    markScheme: reveal.markScheme,
+    methodCredit: reveal.methodCredit,
   };
 }

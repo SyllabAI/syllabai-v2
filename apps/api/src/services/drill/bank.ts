@@ -57,6 +57,25 @@ export interface DrillPartContent {
   readonly choices: readonly { label: string; textMd: string }[] | null;
 }
 
+/** One MS point OF RECORD — verbatim from the bundle's markPoints (F-183 L3). */
+export interface DrillMarkSchemePoint {
+  readonly ref: string;
+  readonly textMd: string;
+  readonly marks: number;
+}
+
+/**
+ * The MS of record for one part (F-183): the served bundle's per-part
+ * `markPoints` + `answerStatus`, verbatim. marksTotal is DERIVED (sum of the
+ * point marks) and the bank refuses to serve a part whose point marks do not
+ * sum to the part's marks — the examiner's arithmetic is not negotiable.
+ */
+export interface DrillBankMarkScheme {
+  readonly answerStatus: string;
+  readonly points: readonly DrillMarkSchemePoint[];
+  readonly marksTotal: number;
+}
+
 export interface DrillBank {
   readonly course: string;
   readonly parts: readonly DrillPart[];
@@ -78,6 +97,12 @@ export interface DrillBank {
   isCorrectChoice(partId: string, label: string): boolean | null;
   /** The instant post-attempt reveal (the F-183 lane formalizes the law). */
   solutionOf(partId: string): string | null;
+  /**
+   * F-183 — the MS of record for one part, verbatim from the corpus
+   * (markPoints + answerStatus). Null when the part carries no linked MS of
+   * record (law L6: honest null, never paraphrased into a fake MS).
+   */
+  markSchemeOf(partId: string): DrillBankMarkScheme | null;
 }
 
 interface BankEntry {
@@ -93,6 +118,9 @@ interface RichBundlePart {
   questionType?: string | null;
   commandWord?: string | null;
   choices?: { label: string; textMd: string; isCorrect?: boolean }[] | null;
+  /** F-183: the MS of record (the wave-20 solution-enrichment wave; answerStatus "linked"). */
+  markPoints?: { id: string; marks: number; textMd: string }[] | null;
+  answerStatus?: string | null;
 }
 
 const banks = new Map<string, BankEntry>();
@@ -124,6 +152,7 @@ export function bundleBank(course: string): DrillBank {
   const correctLabelByPart = new Map<string, string>();
   const marksByPart = new Map<string, number>();
   const solutionByPart = new Map<string, string>();
+  const msByPart = new Map<string, DrillBankMarkScheme>();
   for (const set of sets) {
     for (const question of set.questions as BundleQuestion[]) {
       for (const raw of question.parts) {
@@ -144,6 +173,23 @@ export function bundleBank(course: string): DrillBank {
         marksByPart.set(part.id, part.marks);
         if (typeof part.solutionMd === "string") {
           solutionByPart.set(part.id, part.solutionMd);
+        }
+        if (Array.isArray(part.markPoints) && part.markPoints.length > 0) {
+          // F-183 fail-closed arithmetic law: the examiner's points must sum
+          // to the part's marks — a bank that served a disagreeing MS would
+          // be inventing a second truth (the real-bundle baseline is 2535
+          // linked parts, 0 mismatches — the pin lives in bank.test.ts).
+          const marksTotal = part.markPoints.reduce((sum, mp) => sum + mp.marks, 0);
+          if (marksTotal !== part.marks) {
+            throw new Error(
+              `drill bank ${course}: part ${part.id} markPoints sum ${marksTotal} != part marks ${part.marks} — refusing to serve a disagreeing MS of record`,
+            );
+          }
+          msByPart.set(part.id, {
+            answerStatus: part.answerStatus ?? "unknown",
+            points: part.markPoints.map((mp) => ({ ref: mp.id, textMd: mp.textMd, marks: mp.marks })),
+            marksTotal,
+          });
         }
         if (part.choices) {
           const correct = part.choices.find((ch) => ch.isCorrect === true);
@@ -168,6 +214,7 @@ export function bundleBank(course: string): DrillBank {
       return correct === label;
     },
     solutionOf: (partId) => solutionByPart.get(partId) ?? null,
+    markSchemeOf: (partId) => msByPart.get(partId) ?? null,
   };
   banks.set(course, { bank });
   return bank;

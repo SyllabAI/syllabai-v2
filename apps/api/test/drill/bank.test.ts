@@ -64,3 +64,41 @@ describe("F-182 bank of record — the real chemistry bundle", () => {
     expect(bank.marksOf("qstnprt_does_not_exist")).toBeNull();
   });
 });
+
+describe("F-183 MS of record — the real chemistry bundle", () => {
+  test("the MS-linked share of the eligible corpus matches the baseline of record (2537/3928)", () => {
+    const linked = bank.parts.filter((p) => bank.markSchemeOf(p.partId) !== null);
+    expect(linked).toHaveLength(2537);
+    // the honest nulls are visible too: 1391 parts carry solutionMd (or
+    // nothing) but NO linked MS — law L6, never paraphrased into a fake MS
+    const unlinked = bank.parts.filter((p) => bank.markSchemeOf(p.partId) === null);
+    expect(unlinked).toHaveLength(3928 - 2537);
+  });
+
+  test("the examiner's arithmetic holds corpus-wide: marksTotal == part.marks on EVERY linked part", () => {
+    for (const part of bank.parts) {
+      const ms = bank.markSchemeOf(part.partId);
+      if (!ms) continue;
+      expect(ms.points.length).toBeGreaterThanOrEqual(1);
+      const sum = ms.points.reduce((s, pt) => s + pt.marks, 0);
+      expect(sum).toBe(part.marks);
+      expect(ms.marksTotal).toBe(part.marks);
+    }
+  });
+
+  test("a known official-plane part serves its MS of record VERBATIM (law L3)", () => {
+    const ms = bank.markSchemeOf("offp_2019-06_1c_1-a");
+    expect(ms).not.toBeNull();
+    expect(ms!.answerStatus).toBe("linked");
+    expect(ms!.marksTotal).toBe(1);
+    expect([...ms!.points]).toEqual([
+      { ref: "2019-06-1-a-MP1", textMd: "Answer B: the crystal dissolves in the water", marks: 1 },
+    ]);
+  });
+
+  test("an unlinked part degrades honestly: no MS, but the solution prose still reveals", () => {
+    const unlinked = bank.parts.find((p) => bank.markSchemeOf(p.partId) === null && bank.solutionOf(p.partId));
+    expect(unlinked).toBeDefined();
+    expect(bank.solutionOf(unlinked!.partId)!.length).toBeGreaterThan(0);
+  });
+});

@@ -77,7 +77,7 @@ import { withClassFeatureGate, resolveTutorAnchor, resolveClaAnchor, resolveSmar
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "./services/identity/users";
 import { buildClaThreadsRouters } from "./routes/cla-threads";
-import { buildLlmChain } from "./services/llmchain";
+import { buildLlmChain, chainAsDrillMethodCreditGenerator } from "./services/llmchain";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -98,7 +98,6 @@ const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const learnerKg = buildLearnerKgRouters();
 const learnerProgress = buildLearnerProgressRouters();
-const drill = buildDrillRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
@@ -125,6 +124,12 @@ const ingestion = buildIngestionRouters();
 // honest 503 postures everywhere are byte-identical to the pre-adapter
 // surface; keyed boots generate/mark/transcribe for real with failover.
 const llmChain = buildLlmChain();
+// F-183 — the drill's method-credit seam rides THE ONE CHAIN OF RECORD (the
+// smartmark posture): dormant on zero-key boots (the honest null on the ack,
+// law L6), live method-credit verdicts when the chain is up.
+const drill = buildDrillRouters(process.env, {
+  methodCreditGenerator: chainAsDrillMethodCreditGenerator(llmChain),
+});
 const tutor = buildTutorRouters(process.env, { chain: llmChain });
 const cla = buildClaRouters(process.env, { chain: llmChain });
 const claThreads = buildClaThreadsRouters(process.env);

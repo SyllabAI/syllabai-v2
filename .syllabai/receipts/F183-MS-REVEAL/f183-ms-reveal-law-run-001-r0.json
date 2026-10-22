@@ -1,0 +1,32 @@
+{
+  "receipt": "f183-ms-reveal-law-run-001-r0",
+  "lane": "F-183 build — the instant MS-reveal law in drill mode goes live: the real mark scheme of record (M1..Mn verbatim) + Smart Mark method-credit verdicts on structured parts + the drill-only gating law (instant, never teacher-gated, boundaries preserved)",
+  "operator_launch_word": "Proceed: F-183 (MS-reveal law) (IM trace 1a165913bfff6c0d, 2026-10-23)",
+  "prereg": "docs/F183-MS-REVEAL-LAW-PLAN.md (committed WITH the implementation per the #216/#225/#229/#232/DC-4/F182 pattern); foundations of record docs/F182-DRILL-SURFACE-PLAN.md + docs/F182-DRILL-BUILD-PLAN.md (the F-182 build disclosed 'the LAW is F-183's title' — this PR is that title)",
+  "spec_of_record": "Kognity dossier v1.1 Deep Dive D §8.4-8.5 (tracker F-183, repo syllabai-v2, deps F-182/F-047/F-144); positioning line: the solutions are the examiner's",
+  "grounding_first_hand_at_main": "v2 main edd5a91d1dad (F-182 build PR #315 merged + wave-20 solution-enrichment carrying the bundle markPoints of record); the live tracker row read first-hand (ledger main b74692eab10, F-183 Not Started, deps F-182 In Progress + F-047 In Progress + F-144 In Progress); bundle measured first-hand: markPoints {id,marks,textMd}[] + answerStatus 'linked' on 2537/3928 eligible parts, point-marks sum == part-marks on ALL 2537 (0 mismatches)",
+  "mechanism": {
+    "contracts": "packages/contracts/src/drill.ts — drillEvidenceResponseSchema gains exactly two nullable fields: markScheme {source:'corpus-of-record', answerStatus, points:{ref,textMd,marks}[], marksTotal} | null and methodCredit {engine:'smart-mark', pipelineVersion, allocations:{ref,methodCredited,rationale}[], creditsTotal} | null; NO validationState anywhere on the drill MS view (law L2 — the gated plane cannot reach the ack)",
+    "law": "services/drill/reveal.ts (NEW) — the law module L1..L6: L1 instant (reveal computed only after store.recordEvidence commits, rides the same ack); L2 never teacher-gated (drill reads the served corpus, never the mark_schemes plane); L3 verbatim (corpus point id/textMd/order preserved, marksTotal derived, bank fail-closed on arithmetic); L4 method credit (ADR-025 Decision vocabulary adapted, structured parts only, EPHEMERAL — persisted nowhere, the zero-stakes law holds); L5 boundaries (services/questions/reveal.ts byte-identical zero diff; draw response carries no reveal fields — schema-level + on-the-wire pins); L6 honest nulls (unlinked MS, dormant/absent/invalid generator -> null, never paraphrase)",
+    "bank": "services/drill/bank.ts — DrillBank port gains markSchemeOf(partId): the corpus MS verbatim built in the same single bundle pass, FAIL-CLOSED when point marks != part marks (refuses to serve a disagreeing MS of record)",
+    "generator": "services/llmchain/bridges.ts — chainAsDrillMethodCreditGenerator over THE ONE LLM CHAIN OF RECORD (the chainAsCandidateGenerator posture at drill scale: temperature 0.1, reasoningEffort LOW, budget 300+150/point capped 2000, truncation refuses, strict-JSON allocations); the validator-trio law adapted (no invented refs, no duplicates, rationale required) runs in reveal.ts BEFORE the ack; app root composes buildDrillRouters(env, {methodCreditGenerator: chainAsDrillMethodCreditGenerator(llmChain)}) — no second chain, dormant on zero-key boots (L6)",
+    "hub": "apps/hub/src/app/practice/drill/client.tsx + lib/drill.ts — the reveal panel renders the examiner's MS of record above the solution prose: per-point M-label + markdown text + marks + the method-credit chip when the verdict exists + the credits summary line with pipelineVersion; unlinked parts render exactly the F-182 prose reveal (honest degradation, visible)"
+  },
+  "battery": {
+    "typecheck": "root (contracts/shared/db/api) 0 errors; hub tsc --noEmit 0",
+    "suite": "bun test apps/api packages: 2700 pass / 13 skip / 0 fail (144 files; 61 new pins over the F-182 receipt's 2639: contracts drill 3, the reveal-law battery 18 (L2/L3/L4/L5/L6 + validator unit + on-the-wire block), real-bundle MS pins 4 (the 2537/3928 baseline, the corpus-wide arithmetic loop, the verbatim known-part pin, the honest-degradation lane), routes.test.ts untouched-but-green on the extended stub)",
+    "golden": "selftest OK",
+    "hub_build": "build:hub exit 0 (Compiled successfully)",
+    "lint": "eslint on every touched hub file: 0 problems (4 pre-existing problems on main disclosed in the plan §8, untouched by this PR)",
+    "census_anti_drift": "draw.test.ts green — census-of-record.json regenerates byte-identically; this PR touches no census surface",
+    "baseline_metric": "% drill reveals showing full M-point MS = 64.6% of record (2535/3924 offered parts; 2394/3557 structured); method-credit agreement measurement is the F-185 lane's title consuming these acks"
+  },
+  "residuals": [
+    "1389 drillable-pool parts reveal prose-only under law L6 until content lands — the metric makes the gap visible; the law refuses to paraphrase a missing MS into a fake one",
+    "the method-credit verdict is one-shot synchronous on the evidence ack (<= 2000 tokens per structured part); a refusal degrades to the null verdict and the drill stays fully usable; async/queued verdicts are the F-185 lane's concern",
+    "no live-model agreement number is asserted in this PR — the metric infrastructure lands here, model-driven quality is F-185's title",
+    "per-point method credit is boolean (the ADR-025 verdict vocabulary); partial method marks are the marking lanes' concern",
+    "the non-drill reveal surfaces (MarkSchemeReveal VALIDATED_ONLY / INCLUDE_SUGGESTED) are untouched by construction — zero diff on services/questions/reveal.ts, its battery green unchanged"
+  ],
+  "trace": "1a165913bfff6c0d"
+}

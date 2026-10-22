@@ -9,7 +9,9 @@
  * P3), zero stakes (nothing here feeds gradebook/progress — the drill writes
  * its own evidence lane only), retakable with a fresh draw (every retake is a
  * new server-drawn seed — policy P5), and the INSTANT post-attempt reveal
- * (the solution rides the evidence ack; F-183 formalizes the reveal law).
+ * (the solution rides the evidence ack; F-183 is the landed reveal law: the
+ * examiner's MS of record renders verbatim with the Smart Mark method-credit
+ * verdicts on structured parts).
  *
  * Posture: signed-out visitors get the sign-in CTA (the drill is an
  * identity-bearing surface — draws and evidence key to the learner); any
@@ -45,6 +47,12 @@ function topicGroupOf(code: string): string {
   // "4CH1-1.25" -> topic "1"; "4CH1-2.33C" -> "2"
   const afterPrefix = code.split("-")[1] ?? code;
   return afterPrefix.split(".")[0] ?? afterPrefix;
+}
+
+/** F-183: the examiner-facing point label — the corpus point id's M-suffix ("2019-06-2-a-MP1" -> "MP1"). */
+function msPointLabel(ref: string): string {
+  const suffix = ref.split("-").pop() ?? ref;
+  return suffix.startsWith("MP") || suffix.startsWith("M") ? suffix : ref;
 }
 
 interface SessionLogEntry {
@@ -335,7 +343,7 @@ export function DrillClient({ course }: { course: string }) {
             )}
 
             {revealed ? (
-              <div className="space-y-2 rounded-md border-t pt-3">
+              <div className="space-y-3 rounded-md border-t pt-3">
                 <p className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                   {revealed.correct === true && (
                     <span className="flex items-center gap-1 text-success">
@@ -347,13 +355,54 @@ export function DrillClient({ course }: { course: string }) {
                       <XCircle className="size-4" aria-hidden /> Not quite
                     </span>
                   )}
-                  {revealed.correct === null && <span>Recorded — self-check against the solution</span>}
+                  {revealed.correct === null && <span>Recorded — self-check against the mark scheme</span>}
                   <span className="ml-auto font-normal normal-case">
                     {revealed.marksAwarded === null
                       ? `${revealed.marksPossible} mark${revealed.marksPossible === 1 ? "" : "s"} possible`
                       : `${revealed.marksAwarded}/${revealed.marksPossible}`}
                   </span>
                 </p>
+                {revealed.markScheme ? (
+                  <div className="space-y-2 rounded-md border bg-muted/30 p-3" aria-label="Mark scheme of record">
+                    <p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                      Mark scheme — the examiner&apos;s points of record ({revealed.markScheme.marksTotal}{" "}
+                      {revealed.markScheme.marksTotal === 1 ? "mark" : "marks"})
+                    </p>
+                    <ul className="space-y-2">
+                      {revealed.markScheme.points.map((pt) => {
+                        const verdict = revealed.methodCredit?.allocations.find((a) => a.ref === pt.ref);
+                        return (
+                          <li key={pt.ref} className="flex items-start gap-2 text-sm">
+                            <Badge variant="outline" className="mt-0.5 shrink-0 font-mono text-[10px]">
+                              {msPointLabel(pt.ref)}
+                            </Badge>
+                            <span className="min-w-0 flex-1">
+                              <Markdown>{pt.textMd}</Markdown>
+                            </span>
+                            <span className="ml-1 shrink-0 text-xs text-muted-foreground">
+                              {pt.marks} {pt.marks === 1 ? "mark" : "marks"}
+                            </span>
+                            {verdict && (
+                              <span
+                                className={`ml-1 shrink-0 whitespace-nowrap text-xs ${
+                                  verdict.methodCredited ? "text-success" : "text-muted-foreground"
+                                }`}
+                              >
+                                {verdict.methodCredited ? "method credited" : "no method credit"}
+                              </span>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    {revealed.methodCredit && (
+                      <p className="text-xs text-muted-foreground">
+                        Smart Mark method credit: {revealed.methodCredit.creditsTotal}/{revealed.markScheme.points.length}{" "}
+                        points · {revealed.methodCredit.pipelineVersion}
+                      </p>
+                    )}
+                  </div>
+                ) : null}
                 <Markdown>{revealed.solutionMd ?? "No solution bundled for this part."}</Markdown>
                 <Button onClick={nextPart}>
                   {pos + 1 < draw.parts.length ? (
