@@ -38,6 +38,40 @@ function check(name: string, ok: boolean, detail = ""): void {
   if (!ok) fails++;
 }
 
+/**
+ * T-SM-BRIDGE-WIDEN r0 (operator order trace 1a163786bda7a699, 2026-10-22):
+ * "button visible in more courses sooner, without teacher queue, we will
+ * tackle that later on" — the operator-keyed coreBridge law of record now
+ * carries TRUE on these 21 CIE rows (bank-verified point-scheme courses:
+ * every row's sme-eq refs exist in the v2 bank under a VALIDATED mark
+ * scheme; counts in the receipt of record). The Wave-3 band-scheme rows
+ * stay coreBridge-absent pending the levels-of-response ADR — this pin
+ * continues to enforce that exclusion.
+ */
+const BRIDGED_CIE_SLUGS: readonly string[] = [
+  "cie-a-level-biology-25",
+  "cie-a-level-chemistry-25",
+  "cie-a-level-computer-science-19",
+  "cie-a-level-maths-20-mechanics",
+  "cie-a-level-maths-20-probability-and-statistics-1",
+  "cie-a-level-maths-20-probability-and-statistics-2",
+  "cie-a-level-maths-20-pure-1",
+  "cie-a-level-maths-20-pure-3",
+  "cie-a-level-physics-25",
+  "cie-igcse-biology-23",
+  "cie-igcse-chemistry-23",
+  "cie-igcse-computer-science-23",
+  "cie-igcse-ict-21",
+  "cie-igcse-maths-25-core",
+  "cie-igcse-maths-25-extended",
+  "cie-igcse-maths-international-maths-23-core",
+  "cie-igcse-maths-international-maths-23-extended",
+  "cie-igcse-physics-23",
+  "cie-igcse-science-co-ordinated-sciences-double-award-23-biology",
+  "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry",
+  "cie-igcse-science-co-ordinated-sciences-double-award-23-physics",
+];
+
 // ── the fill-where-served law (HUB-REGISTRY, ADR-030 — the run-009 onGreen
 //    fill, trace 1a15dbaad30a6cc1) ────────────────────────────────────────
 // A CIE row carries curriculumCode iff an ACTIVE curriculum_versions row with
@@ -47,8 +81,9 @@ function check(name: string, ok: boolean, detail = ""): void {
 // ingest", zero nodes, zero question sets, NO cv row). The EXACT of-record
 // code is the seed's cv law — bundle.code + "-" + syllabusVersion
 // (apps/api/src/services/curriculum/bundle-seed.ts:347) — read here straight
-// from the committed bundle manifest. coreBridge stays ABSENT everywhere
-// (operator-keyed, the T-MIG-136 maths-b law).
+// from the committed bundle manifest. coreBridge carries the T-SM-BRIDGE-WIDEN
+// r0 law (operator order trace 1a163786bda7a699): TRUE on the 21 bridged CIE
+// rows above, absent everywhere else (Wave-3 stays blocked pending the ADR).
 function cvOfRecord(slug: string): string | undefined {
   if (slug === "cie-a-level-maths-20-pure-2") return undefined; // the D1 skeleton — fleet-skipped, the honest gate
   const m = JSON.parse(readFileSync(path.join(CONTENT, slug, "manifest.json"), "utf8")) as {
@@ -96,9 +131,10 @@ for (const exp of EXPECT) {
   check(`registry ${exp.slug}`, row.code === exp.code && row.level === exp.level
     && row.subject === exp.subject && row.status === (exp.slug === D1_SKELETON ? "registered" : "full") && row.board === BOARD,
     `${row.code}/${row.level}/${row.status}/board=${row.board}`);
-  check(`registry ${exp.slug} fill-where-served pins (curriculumCode = seed cv law, coreBridge absent)`,
-    row.coreBridge === undefined && row.curriculumCode === cvOfRecord(exp.slug),
-    `cv=${String(row.curriculumCode)}`);
+  check(`registry ${exp.slug} fill-where-served pins (curriculumCode = seed cv law, coreBridge per T-SM-BRIDGE-WIDEN r0)`,
+    row.coreBridge === (BRIDGED_CIE_SLUGS.includes(exp.slug) ? true : undefined)
+    && row.curriculumCode === cvOfRecord(exp.slug),
+    `cv=${String(row.curriculumCode)} bridge=${String(row.coreBridge)}`);
 }
 
 // ── 2. bundle shape: D1 skeleton (pure-2) + real official-spine bundles ─────
@@ -225,9 +261,10 @@ for (const exp of PHASE3_ROSTER) {
     row.code === exp.code && row.level === exp.level && row.subject === exp.subject
     && row.status === (exp.slug === D1_SKELETON ? "registered" : "full") && row.board === BOARD,
     `${row.code}/${row.level}/${row.status}/board=${row.board}`);
-  check(`registry ${exp.slug} fill-where-served pins (curriculumCode = seed cv law, coreBridge absent)`,
-    row.coreBridge === undefined && row.curriculumCode === cvOfRecord(exp.slug),
-    `cv=${String(row.curriculumCode)}`);
+  check(`registry ${exp.slug} fill-where-served pins (curriculumCode = seed cv law, coreBridge per T-SM-BRIDGE-WIDEN r0)`,
+    row.coreBridge === (BRIDGED_CIE_SLUGS.includes(exp.slug) ? true : undefined)
+    && row.curriculumCode === cvOfRecord(exp.slug),
+    `cv=${String(row.curriculumCode)} bridge=${String(row.coreBridge)}`);
   checkRealBundle(exp.slug, exp.code);
 }
 const cieRowCount = reg.courses.filter((c) => c.board === BOARD).length;
@@ -235,11 +272,29 @@ check("registry carries 45 CIE rows (44-slug roster + D1 pure-2)", cieRowCount =
 const cieFilled = reg.courses.filter((c) => c.board === BOARD && c.curriculumCode !== undefined).length;
 check("registry CIE fill of record: 44/45 mapped (the run-009 onGreen fill; pure-2 the honest gate)",
   cieFilled === 44, String(cieFilled));
-check("registry coreBridge absent on ALL CIE rows (operator-keyed, the T-MIG-136 law)",
-  reg.courses.filter((c) => c.board === BOARD).every((c) => c.coreBridge === undefined));
-check("registry coreBridge of record unchanged: only the two 4MA1 maths-a rows carry it (true)",
-  JSON.stringify(reg.courses.filter((c) => c.coreBridge !== undefined).map((c) => [c.slug, c.coreBridge]))
-    === JSON.stringify([["igcse-maths-a-18-foundation", true], ["igcse-maths-a-18-higher", true]]));
+check("registry coreBridge CIE law of record: exactly the 21 T-SM-BRIDGE-WIDEN r0 rows carry true; every other CIE row stays absent (Wave-3 band-scheme rows remain blocked pending the levels-of-response ADR)",
+  reg.courses
+    .filter((c) => c.board === BOARD)
+    .every((c) =>
+      BRIDGED_CIE_SLUGS.includes(c.slug) ? c.coreBridge === true : c.coreBridge === undefined,
+    )
+  && reg.courses.filter((c) => c.board === BOARD && c.coreBridge === true).length
+    === BRIDGED_CIE_SLUGS.length);
+check("registry coreBridge of record: exactly the T-SM-BRIDGE-WIDEN r0 set — the two 4MA1 maths-a rows (T-MIG-135d) + igcse-maths-b-16 (this lane) + the 21 CIE rows (this lane), every flagged row true",
+  (() => {
+    const expected = new Set<string>([
+      "igcse-maths-a-18-foundation",
+      "igcse-maths-a-18-higher",
+      "igcse-maths-b-16",
+      ...BRIDGED_CIE_SLUGS,
+    ]);
+    const flagged = reg.courses.filter((c) => c.coreBridge !== undefined);
+    return (
+      flagged.length === expected.size
+      && flagged.every((c) => c.coreBridge === true && expected.has(c.slug))
+    );
+  })(),
+  `${reg.courses.filter((c) => c.coreBridge !== undefined).length} rows flagged`);
 
 // ── 3. THE CARD'S PAPER-COUNT ASSERTIONS ─────────────────────────────────────
 let strictTotal = 0;

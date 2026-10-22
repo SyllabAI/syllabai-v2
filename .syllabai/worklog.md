@@ -12475,3 +12475,18 @@ Stage Summary:
 - Button now reachable (signed-in learners, structured questions, post-submit) in 25 courses total (3 prior + 22 new) once the hub build lands.
 - Authoritative flags on new courses ride the existing ALL-scope kappa pass (2026-10-09) — per-subject certification remains deferred of record (operator); T-SM-KAPPA-SUBJECT teacher queue unchanged.
 - Receipt: .syllabai/receipts/T-SM-BRIDGE-WIDEN/bridge-widen-r0.json (flip table, exclusions, disclosures).
+
+---
+Task ID: T-SM-BRIDGE-WIDEN-R1
+Agent: Z.ai (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2, trace 1a163786bda7a699)
+Task: r0 follow-up — the hub prebuild honestly refused the r0 registry flip (validate_cie_bundles.ts 23/23 red: the CIE coreBridge pin still carried the T-MIG-136 'absent everywhere' law). Update the validator pin to the new law of record (the designed two-file change), gate locally, re-deploy.
+
+Work Log:
+- Fetched the failed build log (dpl_21ravgpxXqQga7mz5xjwjpkN5V48): 21 per-row fill-where-served FAILs (exactly the 21 flipped CIE rows) + 2 global pin FAILs; production surface never served the flipped registry.
+- Updated validate_cie_bundles.ts: BRIDGED_CIE_SLUGS (21 rows, operator-order citation), per-roster pins now bridge-aware, global CIE pin asserts exactly-the-21-true + Wave-3 enforced-absent, global set pin asserts the exact 24-row flagged set; cvOfRecord comment law updated. No paper-count/bundle/G1/G2/G4 semantics weakened.
+- Local gate: validate_cie_bundles.ts 393 PASS / 0 FAIL exit 0; verify_flashcard_sync_courses.ts exit 0; verify_corpus_23a.ts PASSED — full prebuild chain green on the flipped tree.
+- Receipt .syllabai/receipts/T-SM-BRIDGE-WIDEN/bridge-widen-r1-validator-pin.json; push re-deploys the hub.
+
+Stage Summary:
+- The coreBridge law of record is now enforced BOTH ways: registry carries the 24-row flip, validator refuses drift from it (including Wave-3 re-introduction attempts).
+- Hub rebuild expected READY; post-deploy verification proceeds per r0's verification_plan.
