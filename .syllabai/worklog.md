@@ -12287,3 +12287,49 @@ Stage Summary:
 - Findings carried: CIE validator allow-list drift class (first strike, system change = receipt-cited allow-list + tightened assertion); chapter-key two-format join class (first strike, system change = the normalizer + tests). Both fixed at root in-band.
 - Residuals disclosed: tracker.yaml phases.pilot-gate.status still 'not-started' (collective c01-c05, predates the flip — next authoring lane's housekeeping); lesson.yaml stage field left as-found (not named by the order, not a serving input).
 - Security: SYLLABAI_PAT inline env-only per invocation, never persisted (verified by post-run sweep); PR lane everywhere, no direct content commits, fetch-first, no force.
+
+---
+Task ID: T-TEACH-013/014 (wave teach-toolkit-B, run-001)
+Agent: main agent (Z.ai CLI session, zai-web web-528c0352, trace 1a162e84603bdf11)
+Task: Implement the Teaching Toolkit hub surface — the Toolkit tab, class
+picker + history (013), and the 4 tool pages + class-workspace cards (014).
+
+Work Log:
+- T-TEACH-013 (commit 92d71cee): teacher-nav TABS + Sparkles + the
+  startsWith-active rule for /teacher/toolkit detail routes;
+  api.teacherToolkit{Context,Generate,Resources,Resource} + the toolkit wire
+  types in lib/types.ts (mirroring @syllabai/contracts — the hub speaks
+  JSON); /teacher/toolkit page.tsx (server, force-dynamic) +
+  toolkit-client.tsx: class picker from live rosters (V51 fail-honest),
+  ContextChips = the SERVER-RESOLVED Subject·Board·Level·Curriculum badges
+  (the operator directive made visible — no subject picker exists), 4 tool
+  cards, per-class history with ?resourceId deep-link routing into the
+  owning tool page; quota surfaced "n / 25 today".
+- T-TEACH-014 (commit f3c81085): components/teaching-toolkit/{presets,
+  forms,renderers} + [tool]/page.tsx + [tool]/client.tsx. Forms ported from
+  the recreation MINUS every subject/board/level input; TopicPicker = the
+  class's book-chapter lane + freehand fallback; lesson-plan objectives
+  auto-attach verbatim (read-only checklist, deselect allowed, TAUGHT
+  badges from teaching_coverage) with a free-text fallback; rubric 16
+  assignment types / 10 assessment types / 16 criteria ≤4 / marks 4..25
+  with computed level scores; sow 1..5 lessons, 30..180 step-15 durations,
+  20 emphasis areas; coach clarify|challenge × 5 audiences, 2000-char
+  passage. Staged progress strings (10–25s sync law), renderers ported
+  byte-close from the recreation (ZNotes tab structures, dark-mode
+  hardened), JSON export (Phase D), history strip + stored-document
+  restore. Teaching Toolkit card GROUPS added to BOTH class workspaces
+  (class-detail-client + class-workspace-local) — the plan §4.1 shape:
+  separate group, existing TOOLS untouched, deep links carry class id AND
+  course slug.
+- Gates: hub `tsc --noEmit` 0 errors; `bun run build` green with
+  /teacher/toolkit + /teacher/toolkit/[tool] in the route manifest; api
+  suite untouched (2552/0 at wave A).
+
+Stage Summary:
+- Wave teach-toolkit-B COMPLETE of record; cards 013/014 DONE. The full
+  T-TEACH-010..014 implementation band is now on main; 015 (grounding
+  depth) + 016 (exports/SSE) remain OPEN as planned Phase C/D.
+- Disclosed adaptation of record: the class-workspace deep links carry
+  ?class=&course= via a DISTINCT Toolkit card group (module-level TOOLS
+  href signatures take only the course slug — the existing render law was
+  not touched).
