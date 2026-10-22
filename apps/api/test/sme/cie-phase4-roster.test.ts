@@ -234,6 +234,23 @@ describe("cie-phase4 roster law", () => {
     expect(mapLaw.sharedCodes.some((s) => s.dbCode === "9709-S1")).toBe(false);
   });
 
+  test("the history-18 TS4 sub-split UNIT identities of record (the e024c11c audit-repair family, the ci-repair admission)", () => {
+    // the T-SPECS-TS4-REPAIR-1 sub-split: the glued TS4 run's Core B members
+    // carry their own TOPICs TS4L (League, S4.012-028) / TS4H (Hitler FP,
+    // S4.029-042) — the trailing-variant tail law lands each on its own
+    // version-scoped UNIT while the civil-war core keeps SS4
+    const bundle = JSON.parse(
+      readFileSync(join(import.meta.dir, "../../../hub/content/cie-igcse-history-18/curriculum.json"), "utf8"),
+    ) as BundleCurriculum;
+    const units = [...mapBundleNodes(bundle, "p").values()]
+      .filter((m) => m.nodeType === "UNIT").map((m) => m.dbCode);
+    expect(units).toContain("0470-2024-2026-SS4");
+    expect(units).toContain("0470-2024-2026-SS4L");
+    expect(units).toContain("0470-2024-2026-SS4H");
+    // pairwise distinct across the whole bundle (no graft, no collision)
+    expect(new Set(units).size).toBe(units.length);
+  });
+
   test("the only cross-slug joins are agreeing-identity shares (title+type equal) — the census' own law, re-proven", () => {
     for (const s of mapLaw.sharedCodes) {
       expect(s.slugs.length).toBeGreaterThan(1);

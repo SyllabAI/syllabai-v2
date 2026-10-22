@@ -425,9 +425,16 @@ describe("withClassFeatureGate (the composition-root wire)", () => {
       body: JSON.stringify({ courseRef: "igcse-chemistry-19", question: "why?" }),
     });
     expect(res.status).toBe(403);
-    expect(await res.json()).toEqual(
-      apiError(403, FEATURE_DISABLED_CODE, featureDisabledMessage("tutor")),
-    );
+    // the volatile-timestamp law (errors.ts: golden tolerance treats the
+    // timestamp as volatile): the WHOLE-body comparison must not pin the
+    // millisecond — the response's isoNow() and this expectation's isoNow()
+    // straddle a wall-clock ms boundary ~1% of runs (the CI flake of record,
+    // run1 2026-10-22T00:47:39.004Z vs .003Z). The house pattern
+    // (questions/routes.test.ts:200) pins the deterministic fields only.
+    expect(await res.json()).toEqual({
+      ...apiError(403, FEATURE_DISABLED_CODE, featureDisabledMessage("tutor")),
+      timestamp: expect.any(String),
+    });
     expect(innerHits).toEqual([]); // the frozen handler NEVER ran
   });
 

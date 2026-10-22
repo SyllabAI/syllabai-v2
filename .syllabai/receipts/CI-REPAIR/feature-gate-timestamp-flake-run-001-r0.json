@@ -1,0 +1,10 @@
+{
+  "receipt": "CI-REPAIR/feature-gate-timestamp-flake-run-001-r0.json",
+  "class": "ci-repair (flake class)",
+  "verdict": "REPAIRED AND VERIFIED (caught live during the repair lane's verification)",
+  "discovery": "during the ci-repair branch's post-rebase full verify lane: run1 1 fail / runs 2-3 green — the first flake observed live on this lane; 2 earlier pre-rebase runs green (the same run that showed 1 fail on the FIRST post-rebase pass and 0 on the immediate re-run)",
+  "defect": "apps/api/test/classroom/features.test.ts:428 compared the WHOLE 403 body with toEqual(apiError(...)) — apiError embeds isoNow() (identity/errors.ts; the file's own header notes 'golden tolerance treats timestamp as volatile'), so the response's construction instant and the expectation's construction instant straddle a wall-clock millisecond boundary occasionally and the bodies differ by 1ms. Live capture of record: expected timestamp 2026-10-22T00:47:39.004Z vs received .003Z (run1, /tmp-run of the lane). NOT a product defect — the wire law (ms-precision ISO Instant) is correct; a test-side whole-body pin violation of the volatile-timestamp law.",
+  "risk": "an intermittent verify-lane RED generator on main — the same red-main class as the tail-law break, at low per-run probability (2 Date constructions microseconds apart; historically masked by 13 consecutive REDs of the tail-law break)",
+  "repair": "the house volatile-timestamp pattern (questions/routes.test.ts:200, exam-papers/routes.test.ts:157): pin the deterministic fields, timestamp: expect.any(String). Single comparison in the whole suite carried the racy shape (repo-wide scan for toEqual(apiError(...)) — this file only). Test-only change; zero production files.",
+  "verification": "features.test.ts green across repeated runs post-fix; the deterministic fields still pinned (status/error/message + the innerHits never-ran law)"
+}
