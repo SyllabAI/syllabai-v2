@@ -12797,6 +12797,83 @@ Stage Summary:
 - T-RULE-T2-APPLY-2 DONE of record: the durability loop is CLOSED — the 23 tranche-2 operator sid-anchors (46 codes) now live in BOTH planes: v2 registry @ a9bd2488 (consume engine) and resources chem25 spec-links sidecar @ resources main 3838a26 (full-rebuild substrate), byte-pinned vs each other via the stage receipt. Consume-engine law adoption still pending: syllabai-v2 branch t-rule-t2-consume-anchors/r0 awaits the consume lane's next pin advance (per the stage receipt's disclosure). Residual menu unchanged: 10 mis-tag re-points (T-RULE-T2-COND-1 flags), holds 9Dxx/pYmR + split Cdtk evidence, tranche-3 (1,203 sid-less), the 7 V8-corrected sids (retraction operator-gated, relationToV8 per record), PAT rotation, hung resources sync job. LANE: IDLE.
 
 ---
+Task ID: trace 1a164940c29a2b85 (MB4-MS-RATTACH run-001 — union-resolve)
+Agent: r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- UNION-RESOLVE of record: first push rejected — origin advanced 0a8c8c81 -> fc38e127 (UIUX-REPAIR-1: same file igcse-maths-b-16). Local commit abandoned; reset to fc38e127; the sibling filled ZERO of the 117 targets (02R re-sync touched already-solved parts only) so the 60-target plan applied intact on their tree.
+- SIBLING COMPLIANCE derived from their own diff corpus: en-dash law = 653 convert / 224 keep with class behavior (binary/prose -> '-'; negative-number + tight-binding keep); applied to my candidates: 9/13 converted, 4 KEEP-class retained (2x '–2' negatives, 'y–axis', '–-3'). Their 781 meta-line strips verified to never touch solutionMd (zero pure-removal fields).
+- VERIFICATION on the union tree: semantic diff vs HEAD = EXACTLY 60 solutionMd additions, ZERO other changes; prebuild gates ALL GREEN (corpus + flashcard + cie).
+- Receipt amended with union_resolve_of_record.
+
+Stage Summary:
+- MB4-MS-RATTACH run-001 complete on the union tree: 60/117 recovered (41 TIER-A + 19 TIER-B per the sibling-tree tier census), 57 honest gaps of record, sibling normalization complied with. Push pending PAT one-shot.
+
+---
+Task ID: trace 1a164940c29a2b85 (MB4-MS-RATTACH run-001)
+Agent: r0 (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Operator order: fire the maths-b MS re-parse lane (MCQ-AUDIT run-001 residual: 117 igcse-maths-b-16 structured parts with no solutionMd -> no answer input rendered).
+- RECON: no PDF re-parse needed — the original parse intermediates ARE committed upstream (SyllabAI/syllabai-pastpapers .../4mb1/past-papers/{session}/{paper}/parsed/{ms.md,qp.md,questions.json}); 65/65 fetched 0-fail. Root cause isolated: the original import's section<->part attribution failed where ms.md section paths are merged/mis-ordered/duplicated.
+- FORMATTER RECONSTRUCTED OF RECORD by byte-identity round-trip against all 2,251 existing hub solutions: head transform, '; '-join law for consecutive same-kind non-Note bullets, EMPIRICAL glyph fate table (43 codes map incl. shifted greek set F06C->mu/F06D->nu/F067->eta/F061->maps-to/F084->leq/F085->geq/F0B7->middot; other PUA strip; ornament-only lines drop), provenance banner inherited verbatim from solved siblings. CORE GATE 1,972/2,019 = 97.67% byte-identity pre-union; 47 residual diffs inspected = pre-existing hub-side attribution artifacts.
+- APPLY (fail-closed two-tier on the UNION tree fc38e127): 60/117 solutionMd attached (41 TIER-A + 19 TIER-B); 57 left honest BY DESIGN (ms section count != hub part count — no provable attribution; forcing risks mis-attributed answers; + 2 unpaired-question targets).
+- UNION-RESOLVE: first push rejected (origin advanced 0a8c8c81 -> fc38e127 UIUX-REPAIR-1, same file); local commit abandoned; reset to fc38e127; sibling filled ZERO of the 117 targets; SIBLING COMPLIANCE: en-dash law derived from their 386-field corpus (653/224 class behavior) — 9/13 candidate occurrences converted, 4 KEEP-class kept; their meta-strip lane verified to never touch solutionMd.
+- VERIFICATION on union tree: semantic diff vs HEAD = EXACTLY 60 solutionMd additions, ZERO other changes; no-solution 117->57; prebuild gates ALL GREEN.
+- Receipt .syllabai/receipts/MB4-MS-RATTACH/run-001-solutions-rattach-r0.json; scripts persisted under sandbox scripts/ (pp_fetch_all_4mb1.py, mb4_transform.py, mb4_learn_glyphs.py, mb4_repair_apply.py).
+
+Stage Summary:
+- 60/117 recovered with provable fidelity; 57 honest gaps documented of-record (fail-closed). Durable reconstruction artifacts for any future past-paper re-import. Register: PAT rotation (overdue), multi-select player lane (3 geography), maths-b 57-residual optional deep lane.
+
+---
+Task ID: DC-7 run-001 (operator launch trace 1a1649ff76417ae9, "Launch")
+Agent: r0 (Super Z, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)
+
+Work Log:
+- Sandbox reset #8 at lane open (clone + recovered-spec staging wiped; local operator worklog rolled back to the T-C83 snapshot again): re-cloned (main tip 568f6024 — R0-AUTO had merged wave-19 PR #306 post-DC-4; fence anchors still 3c2ceb01/db4573c7), re-located the spec of record via the DC-3 receipt's provenance row (github.com/nawaf-al-hussain/FileUpload/tree/main/SME-Research), re-downloaded + re-verified sha256 0da8044a0667…287a EXACT, re-staged operator-side.
+- Roadmap adjudication first-hand: Table 3's cell order is Phase | Item | Surface | Gate (header precedes items) → DC-7's phase cell reads P1 (consistent with the exec summary + the worklog's P1 order DC-3 → DC-4 → DC-7). An earlier misalignment read (phase column trailing) was corrected before launch; disclosed in the prereg header.
+- DC-7 law of record (§3.7 "Progress Attribution"): every progress-bearing act publishes an evidence event; every display is a projection of those events — never a local counter; three display levels × SEPARATE notes|questions dimensions; the plan subscribes with per-task-type thresholds (Revise flips on the note check; Practise at five marked parts, the proposed default); acceptance (a) event pins (b) threshold pin (c) consistency pin.
+- Grounding first-hand at 568f6024: the event facts exist (ai_mark_events per marked part, attempts with the once-only evidence claim, revision_note_viewed unique per user+note); the identity bridge is knowledge_nodes (uuid↔code↔node_type) + PART_OF edges (child→parent); note→node rides spec_point_codes (comma-parse law); questions filter = active; the hub's rings self-disclose "browser-local SIMULATED progress overlay only" — exactly the law's target; the variant system IS the observed two trees; no plan tables (builder = P2 row).
+- Prereg: docs/DC7-PROGRESS-ATTRIBUTION-PLAN.md (committed WITH the implementation per the #216/#225/#229/#232/DC-4 pattern).
+- Mechanism (additive-only): services/learner/progress-rollup.ts (buildProgressProjection + buildPlanProjection, PROGRESS_PLAN_THRESHOLD_PRACTISE=5, UTC day on the injected clock; pure read-time projection — NO migration, writes nothing); routes/learner/progress.ts (GET /progress + GET /plan-projection, the authz-shell posture verbatim) + one additive mount line in index.ts; hub lib/progress-server.ts (signed-in → server projection; signed-out/failure → the SIMULATED overlay fallback posture); progress-ring + topic-tree consume it (variant→dimension mapping: notes tree→notes, questions tree→questions); dashboard measured-fact today card (separate from the NBA card's recommendation law). The marked-part unit is the ai_mark_events ROW (a first-run distinct-question reading was corrected to the part counter — the spec's "five marked parts" / "across three parts" units).
+- Battery: api pins 11/11 + hub pins 5/5; hub tsc 0; eslint (touched) 0; root typecheck ×4 0; full suite 2587/13/0 (the T-MIG-135b standing red did NOT recur — reconciled by the W17/ingest waves, as first seen at the DC-4 merge); build:hub 0; fence anchors diff-0; contracts/db/prompt.ts = 0 files — identity stays tutor-grounded/v15. Environment note: the fresh re-clone carried no node_modules; bun install --frozen-lockfile (952 pkgs) before the battery — sandbox-side, not a tree change.
+- Receipt: .syllabai/receipts/DC7/dc7-progress-attribution-run-001-r0.json (full grounding, mechanism, battery, residuals).
+
+Stage Summary:
+- DC-7 (progress attribution) is PREREGISTERED + IMPLEMENTED + PINNED + PR'D on branch dc7-progress-attribution (base 568f6024); the lane STOPS at the merge gate — the operator's merge word is the product sign-off. Rings on the two trees now read the server projection of the persisted event rows for signed-in learners (the local counter retires to the signed-out demo posture), the plan projection carries the Revise/Practise threshold law the P2 builder will render, and the dashboard's today counts share the one projection. Residuals disclosed in the prereg §5 (plan page = P2 builder; flashcards dimension; signed-out overlay posture; per-note read marker; UTC day boundary).
+
+---
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-22T18:00Z)
+Agent: R0-auto (merge desk)
+Task: PR #307 merge (dc7-progress-attribution — the progress-attribution law, spec §3.7)
+
+Work Log:
+- 5 open PRs on entry: #285/#296/#300/#303 (heads unchanged, stale red runs) + #307 fedef8a (new 01:52+08). Main on entry cc5bfc3 (two lane pushes since last sweep: 0cefc43 T-TEACH-014 r1 hotfix, cc5bfc3) CI 2/2 success — green, no escalation.
+- gate (b): #285 verify+hub FAILURE, #296 hub FAILURE, #300 verify FAILURE, #303 verify FAILURE (all stale, SHAs unchanged) → skip; #307 verify+hub 2/2 success → candidate.
+- gates (c)(d): mergeable=true mergeable_state=clean (base=cc5bfc3=current tip, no intake); 0 reviews, 0 comments — no blocking signals.
+- gate (e): 13 files +1252/-5 — .syllabai receipt+worklog append (17 additions, 0 deletions, append-only ok), apps/api (index.ts route wiring, learner/progress.ts, progress-rollup.ts +280-line test), apps/hub (dashboard-client, progress-attribution-card, progress-ring, topic-tree, progress-server + test), docs/DC7-PROGRESS-ATTRIBUTION-PLAN.md. No *.java, no core/hub-repo content, no Neon/prod surfaces; suspect-string scan clean.
+- merged: PUT /pulls/307/merge (merge_method=merge) -> merge sha c3dcd96; new main tip CI verify+hub 2/2 success (green on first poll).
+
+Stage Summary:
+- main @ c3dcd96 green; dc7 progress-attribution law of record (api learner/progress route + rollup service, hub dashboard attribution card, topic-tree/progress-ring attribution hooks).
+- Red backlog unchanged: #285/#296/#300/#303 need author rebase/new head.
+- Standing escalations unchanged: PAT rotation overdue (CRITICAL, operator ledger); neon-replay advisory red / ESC-2 untriaged. No new escalations.
+
+---
+Task ID: F182-OPENING (trace 1a164deaaf1847ed)
+Agent: Z.ai (main agent, operator IM lane)
+Task: Operator word "Proceed" — open the F-182 per-spec-point drill surface (the first Kognity-line build item, dossier Deep Dive D §8.5 row 1): the read-only foundation PR (per-spec-point census + 5-part draw policy + pin battery).
+
+Work Log:
+- Grounding first-hand at main: bundle of record apps/hub/content/igcse-chemistry-19/questions.json = 82 sets (54 official + 28 topic) / 1001 Q / 4011 P at file level, reconciling with the wave-17 serving census (999/4007 built) by exactly the 2 terminal unmapped questions; anchor hygiene corpus-wide 0 outside-spine / 0 malformed codes; spine = 182 SPEC_POINT nodes of 215.
+- Mechanism (additive-only, read-only over the served plane): services/drill/census.ts (collectParts anchor law + computeCensus per-address anchorings with fail-closed spine validation); services/drill/draw.ts (mulberry32 + Fisher-Yates over a part-id-sorted copy; naive recency dedupe with a disclosed thin-pool fallback; DrillDrawError below the 5-part floor; zero-stakes by construction — writes nothing, no clock); scripts/f182_drill_census.ts + the committed census-of-record.json (deterministic, anti-drift-pinned); test/drill/draw.test.ts (15 pins: anchor/plane/multi-code laws, P3 fail-closed, P5 determinism, P4 dedupe + fallback disclosure, RNG stability, artifact-equals-recomputation, wave-17 reconciliation, coverage of record, strongest-address draw, drillable-count match).
+- Census of record at open: 3928 eligible parts (2537 official + 1391 topic) across 171/182 spine addresses — 157 drillable (>=5 pool, 86.3% of the spine), 14 thin, 11 uncovered; strongest address 4CH1-1.25 (155 parts). Unit note disclosed: the tracker gate receipt counted label decisions (2526); the census counts part x code anchorings — the file of record governs.
+- Policy decisions P1..P6 preregistered in docs/F182-DRILL-SURFACE-PLAN.md §4 (part unit; single-code address; fail-closed floor; recency dedupe with retakability override; determinism; zero-stakes by construction). No endpoint, no contracts churn, no DB, no UI in this PR — the build PR adds zod contracts + the drill route + the F-055-shaped evidence seam + the hub UI against these pinned shapes.
+- Battery: root typecheck 0; full suite 2602 pass / 13 skip / 0 fail (the 15 drill pins included); golden selftest OK; retrieval-eval 22 tests 0 fail + 19/19 vectors; zero-core census gate GREEN; census regeneration byte-identical. Receipt: .syllabai/receipts/F182-OPENING/f182-drill-opening-run-001-r0.json.
+
+Stage Summary:
+
+---
 Task ID: T-UGM-HUB-CONSUME-1 (operator instruction: "review + merge PR #58 (and #55 — trivial ledger conflict), (2) I can wire hub consumption in syllabai-v2")
 Agent: Super Z (zai-web session web-6e44932a-9395-44ac-a2c0-2065fd87c4bf)
 Task: (1) review + merge syllabai-resources PRs #55 (UGM-Enrichment facts) and #58 (UGM-Resources text, quadratics lane); (2) wire hub consumption of the UGM corpus in syllabai-v2 — the successor of the dropped #305 link module
@@ -12817,4 +12894,3 @@ Work Log:
 Stage Summary:
 - syllabai-resources main @ 91eed732 now carries the quadratics lane of record: facts (#55) + text (#58) + ordered LEDGER + license amendment — the operator's direct-import directive (ADR-UGM-0001 as amended 2026-10-23, attestation 2026-10-23) is fully landed of record.
 - This commit wires the consumption side flag-gated for cie-a-level-maths-20-pure-1; it supersedes the dropped #305 module shape (content-in instead of links-out).
-- Residuals: spec-tree sidebar integration (UGM counts inside the lane tree) = named follow-up; further UGM lanes = add a station mapping + re-run scripts/import_ugm.py at the new pin + extend flags.json; S1 census run still pending.

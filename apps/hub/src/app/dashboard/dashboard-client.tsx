@@ -64,6 +64,7 @@ import { daysAgo, subtopicSetFor } from "@/lib/next-best-actions";
 import { NextBestActionsCard } from "./next-best-actions-card";
 import { ReviewDueStrip } from "./review-due-strip";
 import { SetWorkCard } from "./set-work-card";
+import { ProgressAttributionCard } from "./progress-attribution-card";
 import { ExamSeriesPicker } from "./exam-series-picker";
 import { AddCourseOverlay } from "./add-course-overlay";
 import type { CourseMeta } from "@/lib/courses";
@@ -624,6 +625,13 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
           advice in the NBA card below. Signed out, it renders nothing. ---- */}
       <section aria-label="Set work">
         <SetWorkCard />
+      </section>
+
+      {/* ---- DC-7 progress attribution (measured facts — the SAME projection
+          the trees' rings read; never advice, never a local counter; renders
+          nothing signed out) ---- */}
+      <section aria-label="Today's progress">
+        <ProgressAttributionCard courses={mySubjects} />
       </section>
 
       {/* ---- Next best actions (recommendation output — advice, not facts) ---- */}
