@@ -14,6 +14,11 @@ import { ArrowRight } from "lucide-react";
 import { ChevronGlyph, NumberedLabel } from "@/components/hub/chrome";
 import { ProgressRing } from "@/components/hub/progress-ring";
 import { topicRing, useCourseProgress, type Course } from "@/lib/progress";
+import {
+  projectionPercentFor,
+  useCourseProjection,
+  type ProgressDimension,
+} from "@/lib/progress-server";
 import { formatPercent } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import {
@@ -69,6 +74,15 @@ export function TopicTree({
   const course = data.course.slug as Course;
   const progress = useCourseProgress(course);
   const pathname = usePathname();
+  // DC-7: signed-in learners' rings read the server projection of the
+  // persisted event rows — the observed product's two trees map onto the
+  // projection's two dimensions by variant (notes tree → notes dimension,
+  // questions tree → questions dimension; the flashcards variant stays the
+  // overlay fact, disclosed residual §5 of the prereg). null = signed out
+  // / fetch failed → the SIMULATED overlay fallback (the of-record posture).
+  const projection = useCourseProjection(data.course.slug);
+  const dimension: ProgressDimension | null =
+    variant === "notes" ? "notes" : variant === "questions" ? "questions" : null;
 
   // active topic auto-expansion (render-phase adjustment, React-endorsed)
   const activeTopic = useMemo(() => {
@@ -131,6 +145,12 @@ export function TopicTree({
       {data.tree.topics.map((topic) => {
         const isOpen = expanded.has(topic.code);
         const ring = topicRing(progress, topic.subtopics.map((s) => s.code), new Map(Object.entries(data.counts)));
+        // DC-7: the topic-level percent reads the same projection when it
+        // carries a fact for this node (present — including 0 — wins; null
+        // falls back to the overlay topic ring)
+        const projectedTopicPercent =
+          projection && dimension ? projectionPercentFor(projection, topic.code, dimension) : null;
+        const shownTopicPercent = projectedTopicPercent ?? (ring.percent > 0 ? ring.percent : 0);
         const subCount = topic.subtopics.length;
         const metaRight =
           variant === "notes"
@@ -156,7 +176,7 @@ export function TopicTree({
                 <NumberedLabel number={topic.number} title={topic.title} />
                 <span className="block text-[11px] text-foreground/70">
                   {subCount} Topics · {metaRight}
-                  {ring.percent > 0 ? ` · ${formatPercent(ring.percent)}` : ""}
+                  {shownTopicPercent > 0 ? ` · ${formatPercent(shownTopicPercent)}` : ""}
                 </span>
               </span>
               <ChevronGlyph open={isOpen} />
@@ -182,7 +202,17 @@ export function TopicTree({
                         : `${k.notes} note${k.notes === 1 ? "" : "s"}`;
                   const row = (
                     <>
-                      <ProgressRing course={course} subtopic={sub.code} counts={k} size={16} />
+                      <ProgressRing
+                        course={course}
+                        subtopic={sub.code}
+                        counts={k}
+                        size={16}
+                        projectionPercent={
+                          projection && dimension
+                            ? projectionPercentFor(projection, sub.code, dimension)
+                            : null
+                        }
+                      />
                       <span className="min-w-0 flex-1 truncate">{sub.title}</span>
                       {hasAny && (
                         <span className="shrink-0 whitespace-nowrap text-[10.5px] tabular-nums text-foreground/70">

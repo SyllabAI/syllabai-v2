@@ -2,8 +2,10 @@
 
 /**
  * Per-sub-topic progress ring — the demo analogue of the SME circular
- * indicator that appears on every sidebar tree row (research §8). Driven by
- * the browser-local SIMULATED progress overlay only.
+ * indicator that appears on every sidebar tree row (research §8). DC-7:
+ * signed-in learners read the server projection of the persisted event
+ * rows (lib/progress-server.ts — the projection-of-events law); the
+ * browser-local SIMULATED overlay remains the signed-out fallback.
  */
 import { useCourseProgress, type Course } from "@/lib/progress";
 import { formatPercent, roundPercent } from "@/lib/format";
@@ -15,6 +17,7 @@ export function ProgressRing({
   counts,
   size = 18,
   className,
+  projectionPercent,
 }: {
   course: Course;
   /** sub-topic code the ring is computed for */
@@ -22,13 +25,20 @@ export function ProgressRing({
   counts: { notes: number; questions: number; flashcards: number };
   size?: number;
   className?: string;
+  /** DC-7: the server projection's percent for this node on the active
+   * tree's dimension — present (including 0) WINS over the local overlay
+   * (the projection-of-events law, never a local counter); null/undefined
+   * falls back to the SIMULATED overlay posture (signed-out demo). */
+  projectionPercent?: number | null;
 }) {
   const progress = useCourseProgress(course);
   const radius = (size - 3) / 2;
   const c = 2 * Math.PI * radius;
 
   let percent = 0;
-  if (subtopic) {
+  if (projectionPercent !== undefined && projectionPercent !== null) {
+    percent = projectionPercent;
+  } else if (subtopic) {
     const k = counts;
     const total = k.notes + k.questions + k.flashcards;
     if (total > 0) {

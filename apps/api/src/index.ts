@@ -55,6 +55,7 @@ import { buildTeacherMarkingRouters } from "./routes/teachermarking";
 import { buildSmeRouters } from "./routes/sme";
 import { buildInterventionRouters } from "./routes/intervention";
 import { buildLearnerRouters } from "./routes/learner";
+import { buildLearnerProgressRouters } from "./routes/learner/progress";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildTeacherAssignmentsRouters } from "./routes/assignments";
 import { buildTeachingToolkitRouters } from "./routes/teaching-toolkit";
@@ -95,6 +96,7 @@ const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const learnerKg = buildLearnerKgRouters();
+const learnerProgress = buildLearnerProgressRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
@@ -292,6 +294,19 @@ app.route("/api/v1/learners/me", learner.learnerRoute);
 // minimal app-level wiring per the 010/020/021/030/032/041/062 precedent
 // so R0 can ratify or lift them out at review.
 app.route("/api/v1/learners/me", learnerKg.learnerKgRoute);
+
+// DC-7 progress attribution routers (spec §3.7; prereg
+// docs/DC7-PROGRESS-ATTRIBUTION-PLAN.md). DC-7-SPEC-NATIVE paths, not a
+// frozen-port band: GET /api/v1/learners/me/progress and
+// GET /api/v1/learners/me/plan-projection — the event→projection rollup
+// (three display levels, separate notes|questions dimensions) and the
+// study plan's subscription to the SAME projection (per-task-type
+// thresholds). The router owns its authz internally (the
+// createLearnerStateRouter shell posture); both handlers are pure
+// read-time projections — the rollup writes nothing, so the tree, the
+// plan and the dashboard can never disagree. Additive mount per the
+// minimal app-level wiring precedent.
+app.route("/api/v1/learners/me", learnerProgress.learnerProgressRoute);
 
 // Marking routers (T-MIG-032 — Wave 3). Path parity with the frozen core:
 // LearnerSelfMarkController + StudentSmartMarkController share the
