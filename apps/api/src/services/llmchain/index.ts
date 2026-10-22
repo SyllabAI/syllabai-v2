@@ -111,7 +111,10 @@ export {
   completionBudget,
   batchCompletionBudget,
   resolveMarks,
+  chainAsToolkitGenerator,
+  ToolkitGenerationError,
 } from "./bridges";
+export type { ToolkitGenerator, ToolkitGeneration, ToolkitGenerationErrorReason } from "./bridges";
 
 // ── DormantChainMember — the fail-closed member (TEST mode + zero-key) ──────
 

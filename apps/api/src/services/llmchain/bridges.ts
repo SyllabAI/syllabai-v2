@@ -454,3 +454,114 @@ export function chainAsCandidateGenerator(chain: FailoverLlmChain): MarkingCandi
     },
   };
 }
+
+// ── teaching toolkit document generation (T-TEACH-010) ──────────────────────
+
+/**
+ * The toolkit generation port: one system+user call → the RAW JSON root.
+ * Deliberately shape-agnostic — the four output schemas (and the zod wall +
+ * one self-heal retry that feeds a parse failure back to the model) are
+ * ROUTE law (routes/teaching-toolkit.ts); this bridge only owns the chain
+ * posture, the truncation refusal and the fence-tolerant JSON extraction.
+ * Provenance: the recreation's proven loop (4/4 tools, 100% structural
+ * fidelity — znotes/research/2026-10-22-recreation.md), ported to the
+ * §26.1 chain.
+ */
+
+export type ToolkitGenerationErrorReason =
+  | "PROVIDER_UNAVAILABLE"
+  | "TRUNCATED_OUTPUT"
+  | "UNPARSEABLE_OUTPUT";
+
+/** A generation refusal — never an HTTP shape, the route maps these. */
+export class ToolkitGenerationError extends Error {
+  readonly reason: ToolkitGenerationErrorReason;
+  readonly raw: string | null;
+
+  constructor(reason: ToolkitGenerationErrorReason, raw?: string) {
+    super(reason);
+    this.name = "ToolkitGenerationError";
+    this.reason = reason;
+    this.raw = raw ?? null;
+  }
+}
+
+export interface ToolkitGeneration {
+  root: Record<string, unknown>;
+  model: string;
+  providerName: string;
+  /** the full raw text — the FAILED row's self-forensic payload */
+  raw: string;
+}
+
+export interface ToolkitGenerator {
+  available(): boolean;
+  generate(system: string, user: string): Promise<ToolkitGeneration>;
+}
+
+/** The toolkit JSON budget: the SOW document is the largest observed
+ *  contract (4–6k tokens across 5 lesson cards) — 8000 covers every tool
+ *  with headroom (plan §8 risk table). */
+const TOOLKIT_MAX_TOKENS = 8_000;
+/** Generation is open-ended structured writing, not rubric-shaped
+ *  extraction — 0.5 is the recreation's calibrated value (proven 4/4). */
+const TOOLKIT_TEMPERATURE = 0.5;
+
+function toolkitExtractJsonBody(raw: string): string {
+  const start = raw.indexOf("{");
+  const end = raw.lastIndexOf("}");
+  if (start < 0 || end <= start) {
+    throw new ToolkitGenerationError("UNPARSEABLE_OUTPUT", raw);
+  }
+  return raw.slice(start, end + 1);
+}
+
+function toolkitReadRoot(raw: string): Record<string, unknown> {
+  try {
+    const parsed = JSON.parse(toolkitExtractJsonBody(raw)) as unknown;
+    if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) {
+      throw new Error("not an object");
+    }
+    return parsed as Record<string, unknown>;
+  } catch (e) {
+    if (e instanceof ToolkitGenerationError) throw e;
+    throw new ToolkitGenerationError("UNPARSEABLE_OUTPUT", raw);
+  }
+}
+
+export function chainAsToolkitGenerator(chain: FailoverLlmChain): ToolkitGenerator {
+  return {
+    available: () => chain.available(),
+    async generate(system: string, user: string): Promise<ToolkitGeneration> {
+      if (!chain.available()) {
+        throw new ToolkitGenerationError("PROVIDER_UNAVAILABLE");
+      }
+      let response: LlmChainResponse;
+      try {
+        response = await chain.generate({
+          system,
+          user,
+          temperature: TOOLKIT_TEMPERATURE,
+          maxTokens: TOOLKIT_MAX_TOKENS,
+          // structured document writing — LOW keeps the thinking budget
+          // (and the 12–22 s wall clock) bounded, the candidate-generator law
+          reasoningEffort: "low" as const,
+        });
+      } catch {
+        // chain exhaustion/transport: the honest provider-unavailable refusal
+        throw new ToolkitGenerationError("PROVIDER_UNAVAILABLE");
+      }
+      if (isTruncationFinish(response.finishReason)) {
+        // the document hit the token cap mid-flight: the payload is
+        // incomplete — refuse with the raw text attached (self-forensic)
+        throw new ToolkitGenerationError("TRUNCATED_OUTPUT", response.text);
+      }
+      return {
+        root: toolkitReadRoot(response.text),
+        model: response.model,
+        providerName: response.providerName,
+        raw: response.text,
+      };
+    },
+  };
+}
