@@ -12671,3 +12671,35 @@ Work Log:
 Stage Summary:
 - F52 hub normalization LANDED of record: the pilot bundle's served text is glyph-honest (U+01FB absent corpus-wide), pin = the consumed cut main@4f2eb1a2ee5561438b68d503cda82809ae6afe62, a 3-part disclosed census, counts byte-stable. HUB-SYNC-W16's filed open item CLOSED.
 - Residuals: R-VARIANT spec-label hub-sync lane (resources PR #50 consume — 1059 parts gain spec codes, count-bearing, own disclosure); CIE tranche2 consume + maths-b Stage-2 regen operator-keyed; PAT rotation overdue.
+
+---
+Task ID: T-SM-BRIDGE-WIDEN-42LIST-R0
+Agent: Z.ai (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2)
+Task: Operator (a) ruled 4MB1 needs no Smart Mark work now (bank was sourced from past papers by another agent), (b) asked for the enumerated list of the 42 registry rows whose question banks were never imported.
+
+Work Log:
+- Re-ran bridge_widen_plan.py fresh (registry @ d878217; DB read-only): registry 94 rows, already-eligible 25, zero-bank-refs 42, low-coverage 4, wave3 22, flip-candidate 1 (cie-igcse-accounting-21 held on the 0452 duplicate-code tie-break).
+- Enumerated the 42 for the operator (39 Edexcel + 3 CIE); CSV delivered operator-side.
+- Recorded operator decision: 4MB1 needs no further Smart Mark work (bank exists via past-paper intake); no revert of its widen-lane flip.
+
+Stage Summary:
+- The 42 = registry rows with zero sme-eq questions; remedy for 39 Edexcel rows = bundle ingest; 2 CIE accounting rows need a CIE corpus import; Pure-2 stays the honest skeleton. Read-only census; no writes.
+
+---
+Task ID: T-SM-EDX-INGEST-R0
+Agent: Z.ai (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2, trace 1a163bc5c7ebebf5)
+Task: Operator order "kick off an Edexcel bundle ingest for a priority subset (e.g. the linear IGCSE sciences 4BI1/4PH1/4SD0 first)".
+
+Work Log:
+- Sandbox rollback #4 at lane start (deep pre-widen restore); nothing of record affected; creds re-supplied by operator; DSN verified by DATA census gate (string fingerprint mismatch under 5 renderings, disclosed — bank counts matched the of-record exactly; foreign deltas noted: validated schemes +11, ALL-scope kappa passed evals 1→11).
+- Seeds: igcse-biology-19 APPLIED (subject 8b2c0ac9, root ed25a7be, cv 4BI1-2017, 204 nodes/203 edges/176 specPoints); igcse-physics-19 seed SKIPPED BY LAW (existing 4PH1 tree provenance src@75755855 vs bundle pin src@08447ba9 — seeder refuses cross-provenance re-seed; existing tree left untouched and PROVEN to serve: ingest resolved all spec codes fail-closed).
+- SD0 STRAND DEFECT found before apply: the three 4SD0 bundles derive colliding node codes (bio T1 vs chem T1 both → 4SD0-S1; spec codes collide: 4SD0-1.1 bio vs chem). CIE 0973 is the proven pattern (strand-lettered codes, 782 nodes, zero collisions). The lane's biology SD0 seed (applied 14:03:43Z) was surgically UNDONE (161 nodes/160 edge endpoints/1 subject/1 cv, provenance-scoped, 8 in-tx abort assertions, zero questions/learner/teacher data). All three SD0 rows PARKED pending a strand-coded bundle re-export.
+- Ingest (DISCLOSED atomicity deviation: sandbox kills tool calls at ~10 min and reaps background children — verified twice; slice runner apps/api/scripts/slice-ingest-bundle-questions.ts runs the same shim + frozen service + flattenTx seam with ONE TX PER QUESTION-SET, resume-ledgered, per-slice dry-run proof GREEN first): igcse-biology-19 21/21 sets (322 refs/322 VALIDATED/858 spec joins; raw 324 → 2 anchor-law exclusions named); igcse-physics-19 24/24 sets (489/489, zero exclusions). Bank 22,906→23,717 (+811 exact); STRUCTURED 14,708→15,519.
+- Flips: coreBridge:true on igcse-biology-19 (+curriculumCode 4BI1-2017 fill-where-served) and igcse-physics-19 (cv already of record) — coreBridge law of record now 26 rows; validate_cie_bundles.ts global pin advanced 24→26; prebuild 393 PASS/0 FAIL; full local hub build GREEN 1m47s.
+- Rebase over parallel HUB-SYNC-W17 (origin 322b32f→e589a43, PR #301) — no overlap on touched files; worklog union-resolved.
+- Receipt: .syllabai/receipts/T-SM-EDX-INGEST/ingest-r0.json (full preflight, deviations, censuses, SD0 ruling, followup).
+
+Stage Summary:
+- Smart Mark surface widened to 27 courses pending hub build (bio-19 + physics-19 bank-backed and flipped; 811 new bridgable validated questions).
+- SD0 ×3 parked of record on an upstream bundle defect with the fix law named (strand-coded re-export mirroring CIE 0973) — the seeder's honest-red did its job.
+- Post-merge: hub auto-build; depth-1 probes with a fresh disclosed learner; negative control = SD0 row must stay not_pilot; PAT rotation CRITICAL overdue (also flagged by other lanes' transit rows).
