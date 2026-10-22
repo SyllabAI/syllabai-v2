@@ -9,9 +9,12 @@
    "syllabai.sme-revision-notes-course/1.0",
    "syllabai.sme-exam-questions/1.1",
    "syllabai.sme-spec-point-index/1.0",
-   "syllabai.sme-flashcard-deck/1.0"
+   "syllabai.sme-flashcard-deck/1.0",
+   "syllabai.ugm-spec-enrichment/1.0",
+   "syllabai.ugm-resource-text/1.0"
   ],
-  "note": "CIE-REFRESH-1 pin-vintage convergence (2026-10-22): importSource.ref re-pinned to the refresh-time tip main@c5f20c52 per the operator dispatch (trace 1a1608dfdd3007d1). Content is NOT re-derived at this pin: the CIE corpus content inputs (Official-Specifications/parsed/cie-*, SME-RevisionNotes, SME-Flashcards, CIE SME-ExamQuestion paths) are tree-identical 0fe5f772..c5f20c52 (zero-delta proof of record in the run receipt) — content byte-untouched by this lane; linkage re-verified fleet-wide by the T-SPECS-CIE-CONSUME-1 engine re-run (staging hash e89eff6f12e7b47b25f5fda8b0ab3caec11d85eddc1b8758d326f920b46751c5, post-apply idempotence changed=0/44)."
+  "note": "CIE-REFRESH-1 pin-vintage convergence (2026-10-22): importSource.ref re-pinned to the refresh-time tip main@c5f20c52 per the operator dispatch (trace 1a1608dfdd3007d1). Content is NOT re-derived at this pin: the CIE corpus content inputs (Official-Specifications/parsed/cie-*, SME-RevisionNotes, SME-Flashcards, CIE SME-ExamQuestion paths) are tree-identical 0fe5f772..c5f20c52 (zero-delta proof of record in the run receipt) — content byte-untouched by this lane; linkage re-verified fleet-wide by the T-SPECS-CIE-CONSUME-1 engine re-run (staging hash e89eff6f12e7b47b25f5fda8b0ab3caec11d85eddc1b8758d326f920b46751c5, post-apply idempotence changed=0/44).",
+  "ugmNote": "UGM lane addendum (2026-10-23): ugm-resources.json imported separately by scripts/import_ugm.py from SyllabAI/syllabai-resources main@91eed732ae69b3cb9eede0529b07a8630651433a (UGM-Enrichment #55 + UGM-Resources #58, ADR-UGM-0001 as amended 2026-10-23 + operator attestation). The ref above still pins the original SME/official import vintage for the other files."
  },
  "curriculum": {
   "board": "Cambridge International",
@@ -30,7 +33,8 @@
   "questions": 725,
   "parts": 1206,
   "marks": 3700,
-  "flashcards": 448
+  "flashcards": 448,
+  "ugmResources": 59
  },
  "treeKind": "official-spine",
  "officialSpine": {
