@@ -12524,3 +12524,18 @@ Work Log:
 Stage Summary:
 - Wave-15 hub sync LANDED of record: the pilot bundle serves 71 sets (28 SME + 43 official, 398q/2184p/4090m official), pin = the consumed cut main@1e69c5d2, note/counts/provenance all wave-15-honest. EXPORTER-LAW-1's filed open item CLOSED.
 - Residuals: wave-16 hub sync (2CR @ 329fe1f4) awaits its operator order; 1CR spec-label waves are the resources-side next step; CIE tranche2 consume + maths-b Stage-2 regen operator-keyed; PAT rotation overdue.
+
+---
+Task ID: 4MB1-QUALITY ms-answerkey-02r FILING (trace 1a163c1da224c3ed, operator order "file this receipt into the repo")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Order discharges the open filing from ms-answerkey-02r-run-001-r0 (trace 1a163a2b87f689d5): repo-filing of the answer-key receipt. The lane itself executed 2026-10-22 12:41-13:05Z (11 mark_schemes + 40 mark_points COMMITTED in one tx, advisory lock + in-tx re-prove, deltas 22,873->22,884 schemes / 40,250->40,290 points, extraction_method official-ms-native-text-v1, VALIDATED 11/11, idempotency verify-only NO-OP) and its statecheck (ms-statecheck-live.json) CONFIRMED LIVE IN PROD: per-question schemeMarks == questionMarks 11/11, refs == labels 40/40, family 2,463 schemes.
+- Fetch-first at open: local clone FF d8782172 -> 322b32ff (one incoming commit, HUB-SYNC-W15 wave-15 1CR chemistry sync + receipt + 19 worklog lines) — touches neither the 4MB1-QUALITY receipts dir nor the answer-key plane; FETCH_HEAD scrubbed post-fetch.
+- Pre-filing verification battery (all green): receipt JSON-valid; scrub-assert = only the prose pattern-list mention (napi_/ghp_/vcp_/postgresql://neon.tech), zero actual credentials; apply artifact re-read (pre 22,873/40,250 -> post 22,884/40,290, +11/+40); statecheck re-read (11/11 VALIDATED, per-question schemeMarks == questionMarks, refs == labels 40/40).
+- SHA RECONCILIATION of record: whole-file sha256 of disk ms-dataset.json (4aa652bb...) DIFFERS from the of-record dataset sha (f385fc5b...); forensics: the builder law (r0_02r_msdataset.mjs:211) hashes JSON.stringify(out.dataset) — the 11-entry dataset sub-object, compact — and the wrapper embeds the sha field itself, so whole-file hashing can never match by construction. Reproduced EXACTLY (f385fc5b...) from the disk file's dataset member; mtimes prove the file predates dry-run/apply/verify-only/receipt (12:54:46 < 12:56:38 -> 12:57:17 -> 12:57:35 -> 12:58:40) and was never touched after. ZERO content discrepancy — the of-record sha verifies against the disk artifact.
+- FILING (this commit): .syllabai/receipts/4MB1-QUALITY/ms-answerkey-02r-run-001-r0.json (byte-identical to the lane copy scripts/run-ocr-recapture-02r/receipt-ms-answerkey-02r-run-001-r0.json, cmp-proven, json-valid, scrub-assert re-passed) + this worklog entry; .syllabai-only commit on 322b32ff, plain push NO force, PAT inline one-time via explicit URL (no remote configured in the sandbox clone, nothing to scrub).
+- Operator-designated post-filing queue (trace 1a163c1da224c3ed): 57 badSum restore-vs-ratify ruling; commandWord 45%; the content-plane bundle set; the dup-copy cleanup.
+
+Stage Summary:
+- 2019-06 4MB1/02R is complete end-to-end of record: captured (ocr-sandwich QP + native-text MS) -> ingested (11 questions / 11 versions / 40 parts) -> cataloged (blueprint row) -> receipted (ocr-recapture filing, fcccda63) -> answer-keyed (11 VALIDATED mark_schemes / 40 whole-block mark_points, per-question sums exact, LIVE IN PROD) -> answer-key receipt FILED + worklog (this commit). Queue handed to the operator's four designated lanes: 57 badSum restore-vs-ratify ruling, commandWord 45%, content-plane bundle set, dup-copy cleanup.

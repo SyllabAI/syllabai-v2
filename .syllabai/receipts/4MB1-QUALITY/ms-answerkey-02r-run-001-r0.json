@@ -1,0 +1,49 @@
+{
+ "lane": "4MB1-QUALITY ms-answerkey-02r-run-001-r0",
+ "operator_order": "the answer-key lane (11 mark_schemes rows for 02R — the last missing piece for that paper)",
+ "trace_id": "1a163a2b87f689d5",
+ "started_utc": "2026-10-22T12:41:00Z",
+ "finished_utc": "2026-10-22T13:05:00Z",
+ "scope": "the 2019-06 4MB1/02R answer-key plane: 11 mark_schemes + 40 mark_points bound to the parts of record from ocr-recapture-02r-reingest-run-001-r0",
+ "law_of_record": [
+  "family shape (msprobe-001 over 2,452 family schemes): validation_state VALIDATED, version_label '1', source_document_id sme-eq-igcse-maths-b-16, general_guidance NULL — content rides mark_points",
+  "family point shape (4,485 rows): whole-block law — ONE row per part, bare-label ref (a..f), marks = part marks, acceptance_criteria '[]', zero general points; per-scheme point sums == question marks 2,452/2,452",
+  "reveal surface (apps/api/src/services/questions/reveal.ts) serves mark_points grouped per part; schemeMarks derived = sum of point marks; VALIDATED reveals under both policies",
+  "extraction_method honesty: MS channel is NATIVE text (ms.pdf sha 2da23c778b14e0aa, Publications Code 4MB1_02R_2019_MS) — stamped 'official-ms-native-text-v1' (distinct from the QP's ocr-sandwich-recapture-v1 capture channel)"
+ ],
+ "guards": [
+  "fetch-first: family conventions probed SELECT-only (msprobe-001.json) before any build; 02R absence proven (0 schemes)",
+  "dataset fail-closed (r0_02r_msdataset.mjs -> ms-dataset.json sha256 f385fc5ba2af087f...): labels+marks+ordering EXACT vs prod parts of record 40/40, per-question part sums == question marks 11/11, total 100",
+  "DRY-RUN first: full statement sequence executed clean, sentinel rollback, zero persistence (ms-apply-dry-run.json)",
+  "APPLY: ONE transaction, pg_advisory_xact_lock hashtext('sme-eq-igcse-maths-b-16-2019-06-4mb1-02r:mark_schemes'), in-tx re-prove (11 versions, 0 schemes, 40 parts labels/marks/ordering match), parameterized inserts, in-tx post-verify",
+  "idempotency: VERIFY-ONLY re-run = NO-OP (already applied); uq_mark_scheme (question_version_id, version_label) backstop",
+  "NEON key inline env-only, never persisted; artifacts scrub-asserted (napi_/ghp_/vcp_/postgresql://neon.tech zero hits)"
+ ],
+ "committed": {
+  "mark_schemes": 11,
+  "mark_points": 40,
+  "deltas": { "schemes_total": "22,873 -> 22,884", "points_total": "40,250 -> 40,290", "paper_points": "0 -> 40" },
+  "validation_state": "VALIDATED (11/11)",
+  "extraction_method": "official-ms-native-text-v1 (11/11)"
+ },
+ "statecheck": {
+  "artifact": "ms-statecheck-live.json",
+  "verdict": "CONFIRMED LIVE IN PROD: 11 VALIDATED mark_schemes / 40 whole-block mark_points, per-question schemeMarks == questionMarks 11/11, refs == labels 40/40, family 2,463 schemes"
+ },
+ "content_provenance": [
+  "blocks transcribed from the official MS text layer (ms-text.txt, native extraction) into the family's markdown mark-point style (**M1**/**A1**/**B1** + notes)",
+  "Q8 functions cross-verified against the QP text (f: x -> 3x-5, g: x -> 1/(2x-3), h: x -> 2x/(x-3)): gf(4)=1/11, fh(x)=7 -> x=6, g(x)+h(x)=1 -> x = -1 +/- sqrt(7) — all MS tokens consistent",
+  "raw ms-parts.json over-count artifacts (Q3 13 vs 8, Q8 31 vs 14) diagnosed as flattened-fraction debris; parts of record unaffected (already exact)",
+  "Q11 (q10): the six self-consistent P-vector forms + fraction anchors (k = 1/12, mu = 2/11) + answer 2:9 transcribed; intermediate OQ/PQ/AQ coefficients left structural rather than reconstructed from ambiguous flattened tokens (no-guess law; the MS itself notes 'there are other correct methods')"
+ ],
+ "disclosures": [
+  "mark_points text is a faithful structured transcription of the official MS blocks (mark types, answers, ft/dep notes), not a verbatim layout copy — column-flattened tokens were re-assembled and, where ambiguous, kept structural (Q11 intermediates)",
+  "alternatives/oe method mentions inside blocks are preserved as guidance text; row marks are the part marks of record (sums exact), so alternative-method rows do not double-count (unlike raw MS annotations)",
+  "zero writes outside the 02R answer-key plane; questions/versions/parts untouched; no LLM in the write path"
+ ],
+ "residuals_after": [
+  "content-plane bundle set for the 11 rows (open, separate plane)",
+  "9 recovered rows' anchor round, dup-copy cleanup, 57 badSum restore-vs-ratify ruling, commandWord 45%, MS notation cleanup — queue unchanged"
+ ],
+ "scrub_assert": "PASS"
+}
