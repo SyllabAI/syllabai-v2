@@ -247,21 +247,29 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // 17 columns, 1 index, 3 fks, 2 checks → 72/684/99/65/117;
   // DC-3 (0009_dc3-mark-entitlement) adds 3 tables, 18 columns, 3 indexes,
   // 5 fks, 3 checks → 75/702/102/70/120 (measured: verifyBaseline VERIFY
-  // PASS, 0 drifts, on the union end-state; renumber receipt in the plan).
-  test("77/730/105/73/126 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // PASS, 0 drifts, on the union end-state; renumber receipts: F-182 in the
+  // F182 plan, DC-5 in the lane's merge receipt (0010_dc5-... renumbered to
+  // 0011_dc5-... — main's F-182 lane took the 0010 slot with drill_surface and
+  // the landed F-182 journal repair of record supersedes the DC-5 sandbox copy).
+  // DC-5 (0011_dc5-mark-point-alternatives) adds 1 table, 9 columns,
+  // 2 indexes, 2 fks, 1 check (uq_mpa_row rides uniqueConstraints, not the
+  // index count) on top of the F-182 re-baseline (was 75/702/102/70/120 ->
+  // 77/730/105/73/126) -> 78/739/107/75/127
+  // (docs/DC5-CONFORMANCE-LINT-PLAN.md + docs/F182-DRILL-BUILD-PLAN.md).
+  test("78/739/107/75/127 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 77/77");
-    expect(v.inventory).toContain("columns 730");
-    expect(v.inventory).toContain("indexes 105");
-    expect(v.inventory).toContain("fks 73");
-    expect(v.inventory).toContain("checks 126");
+    expect(v.inventory).toContain("tables 78/78");
+    expect(v.inventory).toContain("columns 739");
+    expect(v.inventory).toContain("indexes 107");
+    expect(v.inventory).toContain("fks 75");
+    expect(v.inventory).toContain("checks 127");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(77);
+    expect(run.size).toBe(78);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);
@@ -282,6 +290,8 @@ describe("verifyBaseline (checked-in baseline)", () => {
     // F-182 build — the drill surface's own lane (zero-stakes by construction)
     expect(run.has("public.drill_draws")).toBe(true);
     expect(run.has("public.drill_part_evidence")).toBe(true);
+    // DC-5 — the materialised acceptable-answer surface (additive, v2-owned)
+    expect(run.has("public.mark_point_alternatives")).toBe(true);
   });
 });
 

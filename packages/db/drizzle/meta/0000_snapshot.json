@@ -9601,6 +9601,148 @@
         }
       },
       "isRLSEnabled": false
+    },
+    "public.mark_point_alternatives": {
+      "name": "mark_point_alternatives",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "mark_point_id": {
+          "name": "mark_point_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mark_scheme_id": {
+          "name": "mark_scheme_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kind": {
+          "name": "kind",
+          "type": "varchar(16)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "normalised": {
+          "name": "normalised",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_span": {
+          "name": "source_span",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "extraction_method": {
+          "name": "extraction_method",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ix_mpa_scheme": {
+          "name": "ix_mpa_scheme",
+          "columns": [
+            {
+              "expression": "mark_scheme_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ix_mpa_point": {
+          "name": "ix_mpa_point",
+          "columns": [
+            {
+              "expression": "mark_point_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "mpa_mark_point_fk": {
+          "name": "mpa_mark_point_fk",
+          "tableFrom": "mark_point_alternatives",
+          "tableTo": "mark_points",
+          "columnsFrom": [
+            "mark_point_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "mpa_mark_scheme_fk": {
+          "name": "mpa_mark_scheme_fk",
+          "tableFrom": "mark_point_alternatives",
+          "tableTo": "mark_schemes",
+          "columnsFrom": [
+            "mark_scheme_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "uq_mpa_row": {
+          "name": "uq_mpa_row",
+          "nullsNotDistinct": false,
+          "columns": [
+            "mark_point_id",
+            "kind",
+            "normalised"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "ck_mpa_kind": {
+          "name": "ck_mpa_kind",
+          "value": "(kind)::text = ANY ((ARRAY['ALTERNATIVE'::character varying, 'NUMERIC'::character varying])::text[])"
+        }
+      },
+      "isRLSEnabled": false
     }
   },
   "enums": {},

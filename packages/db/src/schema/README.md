@@ -141,6 +141,7 @@ Every migration after the 0000 baseline is a v2-owned additive structure per
 | `0007_t-sm-kappa-subject.sql` | T-MIG-102 lane | `smart_mark_agreement_evaluations.subject_id` |
 | `0008_teaching_toolkit.sql` | T-TEACH-011 | `teaching_toolkit_resources` + `teaching_toolkit_usage` + `class_features.ai_toolkit` + the `prompt_versions` teaching-toolkit/* v1.0 seed rows |
 | `0009_dc3-mark-entitlement.sql` | DC-3 re-attempt entitlement (docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md) | `ai_mark_events` (APPEND-ONLY ordinal ledger, (learner, part, ordinal) UNIQUE fail-closed) + `mark_entitlement_policies` (seeded free/paid; trial unshipped — spec open question (a) operator-gated) + `mark_entitlements` (row-absent = free) |
+| `0011_dc5-mark-point-alternatives.sql` | DC-5 cross-tool conformance (docs/DC5-CONFORMANCE-LINT-PLAN.md) | `mark_point_alternatives` (the materialised acceptable-answer surface — the spec's "MarkingPoint rows gain acceptable_alternatives + numeric_values columns" translated to the BASELINE_DB §4.2 new-v2-table form: mark_points is Flyway-owned, alter-structure-never, prereg R-DC5-1; mark_scheme_id is the scheme-revision carrier, uq_mpa_row makes materialisation idempotent) |
 
 DC-3 substrate notes: `ai_mark_events` is APPEND-ONLY (the markAttempt
 ordinal ledger — counted in the marking path, never inferred); entitlement

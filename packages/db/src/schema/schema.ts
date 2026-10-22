@@ -1814,3 +1814,42 @@ export const drillPartEvidence = pgTable("drill_part_evidence", {
         check("ck_drill_evidence_response_kind", sql`(response_kind)::text = ANY ((ARRAY['choice'::character varying, 'text'::character varying])::text[])`),
         check("ck_drill_evidence_marks", sql`marks_awarded IS NULL OR (marks_awarded >= 0 AND marks_awarded <= marks_possible)`),
 ]);
+
+// ── DC-5 cross-tool marking conformance (docs/DC5-CONFORMANCE-LINT-PLAN.md) ──
+// v2-only table (BASELINE_DB.md §4.2): CREATE-only, zero bytes touched on
+// any Flyway-era table. The spec's "MarkingPoint rows gain
+// acceptable_alternatives and numeric_values columns" is translated here to
+// the baseline-legal sibling-table form (prereg R-DC5-1: §4.1 forbids
+// altering Flyway-owned mark_points while the Java core is live). The
+// materialised acceptable-answer surface is populated ONCE at ingestion and
+// consumed by both generations; mark_scheme_id is the scheme-revision
+// carrier (a scheme bump is a NEW mark_schemes row, so a bump re-keys the
+// set atomically — the drift pin's mechanism). uq_mpa_row makes the
+// materialisation idempotent (ON CONFLICT DO NOTHING backfill law).
+
+export const markPointAlternatives = pgTable("mark_point_alternatives", {
+        id: uuid().primaryKey().notNull(),
+        markPointId: uuid("mark_point_id").notNull(),
+        markSchemeId: uuid("mark_scheme_id").notNull(),
+        kind: varchar({ length: 16 }).notNull(),
+        value: text().notNull(),
+        normalised: text("normalised").notNull(),
+        sourceSpan: text("source_span"),
+        extractionMethod: varchar("extraction_method", { length: 120 }),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        unique("uq_mpa_row").on(table.markPointId, table.kind, table.normalised),
+        index("ix_mpa_scheme").using("btree", table.markSchemeId.asc().nullsLast().op("uuid_ops")),
+        index("ix_mpa_point").using("btree", table.markPointId.asc().nullsLast().op("uuid_ops")),
+        foreignKey({
+                        columns: [table.markPointId],
+                        foreignColumns: [markPoints.id],
+                        name: "mpa_mark_point_fk"
+                }).onDelete("cascade"),
+        foreignKey({
+                        columns: [table.markSchemeId],
+                        foreignColumns: [markSchemes.id],
+                        name: "mpa_mark_scheme_fk"
+                }).onDelete("cascade"),
+        check("ck_mpa_kind", sql`(kind)::text = ANY ((ARRAY['ALTERNATIVE'::character varying, 'NUMERIC'::character varying])::text[])`),
+]);

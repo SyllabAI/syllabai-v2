@@ -3,14 +3,14 @@
  "generatedUtc": "2026-10-22T14:25:00Z",
  "importSource": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@9f1b9d293f4e639fb47c7c9a06564e5c67309ca8",
+  "ref": "main@78db2e891e3ccbf19594a25308a1a3e84c14275f",
   "upstreamSchemas": [
    "syllabai.sme-revision-note/1.0",
    "syllabai.sme-revision-notes-course/1.0",
    "syllabai.sme-exam-questions/1.1",
    "syllabai.sme-flashcard-deck/1.0"
   ],
-  "note": "ADR-037 converter v0.13.1 corpus (merged main main@9f1b9d293f4e): the R-VARIANT spec-label waves (F-178 protocol, trace 1a163a753e3bd999) — 1059/1059 R-tranche parts resolved (948 content-labeled + 111 verbatim/near-verbatim inherited from the labeled 1C/2C corpus + 44 terminal no-spec-point with reasons per the F38 precedent classes); zero pending-llm corpus-wide; the harness census line moves 197 -> 1 unmapped questions. Lands as a pure content wave against the previously-synced R copies: wave-17 disclosure changed=1015 / new=0 / gone=0 (specPointCodes + the F52 italic-Delta fix on the 2020-01 R slices); exporter v4 gates G-E1 census exact + G-E1b identity-clean on all 54 common sets + G-E3 (54 slices / 4860 marks) + G-E4 (SME prefix 2605414 B) green. Data-cut proof: all 54 consumed staging topics content-identical to main@9f1b9d293f4e modulo the converter header (the F51 G-E5 data-plane proof, executed via the API in lieu of git show)."
+  "note": "ADR-037 converter v0.14.0 corpus (wave-20): the stem-figure tranche closes the wave-15 backlog - all 48 figures/tables the restored question stems reference are now eyeballed crops (chromatograms, apparatus, structure diagrams, mini periodic table, pie chart, displayed-formula letter runs, interleaved property tables; the rasterized 2019-06 p12 structures via pixel profiling), rendered deterministically through the F45 manual-crop branch from STEM-RESTORE.json stemFigures specs (F57). Exporter v6 (F-W20-1): stem figures inline INSIDE the stem block (prose -> figure -> part text); part-targeted figures (2019-06 2C bond-energy tables for 5(a)(i)) render on the part that reads them; stemFigureRef inlines 2 already-served figures; F-W20-2 cuts the flattened figure-label soup from the served stems (dropSpan x2, dropTail x44, anchors verbatim fail-closed). 1 tranche flag retired with evidence (2023-11 1C Q7 has no displayed formulae). Part C (F60): 124 authored worked answers (all of 2019-06 1C + 2020-01 1C) served as solutionMd from SOLUTION-ENRICH.json with the build-time value-fidelity review pass - the MS cells and mark points stay verbatim. Corpus: 30/54 slices changed, 48 crop assets, every other extraction field byte-identical; 68 canaries (C66 corpus-wide bidirectional ledger check + C67-C70 pins). Wave-15 UX doctrine governs: best learner experience, values never invented. Group-stem restore and the solution-enrichment wave are the next tranches. 54 official sets (16x1C + 16x2C + R-variants), 477 questions, 2607 parts, all spec-tagged."
  },
  "curriculum": {
   "board": "Pearson Edexcel",
