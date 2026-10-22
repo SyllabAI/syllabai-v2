@@ -12095,3 +12095,19 @@ Stage Summary:
 - Band B DISCHARGED END-TO-END of record: geo-25 notes coded 5/117 -> 86/117; the 30 pendings stay uncoded by the leave-unjoined law with evidence-cited class reasons (the hub's unmapped card is their honest surface); band A byte-preserved throughout.
 - Receipt: .syllabai/receipts/CONTENT-AUDIT/semantic-lane-band-b-run-001-r0.json
 - NEXT per the same order: band C (EL-25+20 + fleet leave-unjoined codification, ~244 rows, this band's 9-class taxonomy as template), then the two parse/spine repair lanes (9709 P3 3.1 glue; 0606 topics 3/9/12 + statement/example split policy).
+
+Task ID: T-SPECS-CIE-TRANCHE2-B02 run-001 (operator trace 1a1614f00e3596dd - the operator's second ruling batch)
+Agent: R0-integrator (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: encode + consume the operator's 26-row chem25 ruling batch; census re-pin; receipt
+
+Work Log:
+- Pre-flight first-hand, all green: 26/26 instrument rows resolved (25 exact + spcpt_gXGMxJcrhrnxtZD prefix-resolved to the unique sheet row spcpt_gXGMxJcrhrnxtZD6, trailing 6 dropped in transit); operator evidence readings match rows EXACTLY; 26/26 anchored code-slots registry-paired CIE_A_LEVEL_CHEMISTRY_2025_2027; 67/67 anchor part_refs sidecar-pending with ZERO overlap vs the b01-coded parts.
+- Vocabulary mapping law (b01 precedent, disclosed): plain anchors -> anchor(codes); conditional/split/hold rows -> defer (reasons verbatim, candidates NEVER encoded); the explicit quarantine row -> quarantine. spcpt_HmMgqHYYJMyF6nVN re-affirms the b01 anchor (22/22 parts already coded -> EXCLUDED from rulings[], G3/G4 would abort) and its 'do not add 2.3.1 without direct evidence' CLOSES the b01 2.3.1 conditional.
+- Fleet sheet regen of record first (encoder staleness guard, commit fceeefb): sidecar pins refreshed for the 7 moved banks, map pins re-pinned to the live v2 content-maps (pool cross-foots EXACT unchanged fleet-wide), SPI zero drift; cls shifts 61+37 rows in maths-pure-3/further-maths-25 from the COMPLETE-1-BAND-A coded notes.
+- chem25-b02: encoder --check green then APPLIED EXACT (predicted==actual 67 parts / 147 operator_verdict entries, skipped 0; G1-G5 pass; pending[] preserved; coded qp 362 -> 429; 12 anchors / 12 defers / 1 quarantine).
+- CONSUME of record: rebased onto 08447ba (main had moved: wave-14/YPH11/CourseLessons — disjointness verified file-level before rebase); PR #42 -> corpus-gates SUCCESS + sync SUCCESS (sync ~31min vs 21.2 baseline, disclosed) -> merged 85e0d13.
+- CENSUS RE-PIN first-hand @ v2 372a2b76 (incl. T-BOOK-033 Lesson renderer + EDBUMP-1): bun census_per_slug.ts -> 6,715 / 5,696 / 9,276, raw 19,097 / 25,663 EXACT UNCHANGED; tree clean. 134c STAYS PARKED.
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-tranche2-r2-batches-run-002-r0.json.
+
+Stage Summary:
+- The operator's second ruling batch IS of record: 12 anchors (67 parts / 147 operator_verdict entries), 12 defers + 1 quarantine (reasons verbatim, candidates never encoded), 1 idempotent re-affirmation closing the b01 2.3.1 conditional, zero invention. Program now 2-for-2 end-to-end: verdict -> pre-flight -> encode -> consume -> census re-pin -> receipt. chem25 pending pool 1314 -> 1247; ~3,480 chem25+fleet sids still unruled. Returns queue: the 12 defer rows + 1 quarantine + the 14.1.6 and 19.2.1/19.2.3 conditional adds + the electron-flow verification act (nextAct: stage part-level verbatim evidence). PAT rotation REMAINS CRITICAL-OVERDUE (fp a8ccee736aa8c75b). LANE R0: IDLE.
