@@ -13037,3 +13037,20 @@ Work Log:
 Stage Summary:
 - The study-plan builder is PREREGISTERED + IMPLEMENTED + PINNED + PR'D on branch study-plan-builder (base edd5a91d); the lane STOPS at the merge gate — the operator's merge word is the product sign-off. The plan surface now exists end to end: three cheap defaulted builder steps -> the deterministic generated week from the tree -> paired Revise/Practise tasks whose completion states are the DC-7 projection's verdict, with the dashboard rail reading the same payload. Roadmap position: P2 = DC-5 (landed ed04074a) -> study-plan builder (at the gate) -> teacher/persona surfaces.
 - Rebase receipt (post-pr append): TWO Gate-4 rounds — main f757c643 (UGM-3, PR #321; worklog tail union splice main-bytes-first, byte-verified) and main 344743c4 (F-183 MS-reveal, PR #322; ONE index.ts conflict resolved by union — the drill build const F-183 relocated, my learnerStudyPlan const kept, main's bytes byte-preserved); battery re-run ALL first-hand on each head and GREEN on the FINAL head 3fd73df9 (full suite 2716/13/0 at 145 files, hub 313/1 pre-existing pin, CI verify+hub SUCCESS); PR #323 mergeable True at the gate; no merge executed.
+
+---
+Task ID: R0-AUTO (Job 438940, sweep 2026-10-22T22:30Z)
+Agent: R0-auto (merge desk)
+Task: PR #323 merge (study-plan-builder — the study-plan builder law, spec §5.3 + roadmap Table 3 P2)
+
+Work Log:
+- 5 open PRs on entry: #285/#296/#303 (heads unchanged, stale red runs) + #316 (head unchanged, ZERO registered check-runs ~134min — CI-trigger anomaly, skipped) + NEW #323 e13b94e (created 22:16Z). Main on entry 344743c (two lane merges since last sweep: 9db50a8 wave-20, 41fb011 #318 V8 retraction, ff6a39f #320 T-BOOK-037, 344743c) CI 2/2 success.
+- gate (b): #323 verify+hub 2/2 success → candidate; all others fail (b).
+- gates (c)(d): mergeable=true mergeable_state=clean (base=344743c=current tip, no intake); 0 reviews, 0 comments — no blocking signals.
+- gate (e): 20 files +12359/-6 — .syllabai receipt+worklog (append-only +15/-0), api learner/study-plan route+service+454-line test, hub plan page/client/libs/tests, docs/STUDY-PLAN-BUILDER-PLAN.md, drizzle 0012_study_plans.sql + 0012 snapshot + journal + schema.ts. Ordinal 0012 clean (0010=#315, 0011=#313 renumber — no collision). Migration CREATE-only per header (the one ALTER is ADD CONSTRAINT); suspect-string scan clean; no *.java, no core/hub-repo content, no Neon/prod surfaces.
+- merged: PUT /pulls/323/merge (merge_method=merge) -> merge sha cd58803; new main tip CI verify+hub 2/2 success (hub completed on second bounded poll).
+- ANOMALY carried: #316 T-SENECA-001 CI never registered (0 check-runs 134+ min, two head pushes) — operator should inspect the branch's workflow triggers.
+
+Stage Summary:
+- main @ cd58803 green; study-plan builder of record (3-step config row; generated weeks stay query-time projections over DC-7 events, per the plan law).
+- Open: #285/#296/#303 stale-red; #316 CI-anomaly. Standing escalations unchanged: PAT rotation overdue (CRITICAL), neon-replay advisory / ESC-2 untriaged.
