@@ -130,12 +130,28 @@ describe("cie-phase4 roster law", () => {
     // identity rawQ - questions == unmapped + dupOrder re-proven:
     // 12,317 == 12,298 + 19). Floors re-pinned from the live census
     // (scripts/t2retract_census_probe.ts over loadRoster + mapLawCensus).
-    expect(questions).toBe(6780);
-    expect(parts).toBe(5782);
+    // MIS-TAG RE-POINT RE-BASE (T-RULE-T2-MISTAG-1, operator order '10-mis-tag
+    // re-point batch', trace 1a1658227c0c0365, not a loosening): the mis-tag
+    // residual disclosed at T-RULE-T2-COND-1 misTags[10] + the v8Retraction
+    // disclosures opens — resources PR #69 re-points the 10 mis-tagged parts
+    // to their spine-verified true homes (3 V8-mirror removals + 11 additions
+    // across 8 parts, tier tranche2_mis_tag_repoint; WW34 keep-as-context +
+    // tKhp keep-no-op zero-change; anchors byte-frozen, sidAnchors 0/23/0) and
+    // the consume engine's mis-tag re-point law (surgical drops + the normal
+    // sidecar_rank additions) lands them: FOUR chem25 questions regain
+    // servability as their newly-coded parts admit (h3SZ 28.2.1+28.2.7, 8W7s
+    // 26.2.3, xZch 8.2.3, PPqr 11.2.1 — incl. the retraction's uncoded 8W7s
+    // residual) — questions 6780 -> 6784, parts 5782 -> 5789, pkgParts
+    // 9402 -> 9411, unmapped 12,298 -> 12,294 EXACT (raw 19,097/25,663
+    // UNCHANGED; the identity re-proven: 12,313 == 12,294 + 19). Floors
+    // re-pinned from the live census (scripts/t2retract_census_probe.ts over
+    // loadRoster + mapLawCensus).
+    expect(questions).toBe(6784);
+    expect(parts).toBe(5789);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(9402);
+    expect(pkgParts).toBe(9411);
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -164,7 +180,7 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0 },
     );
-    expect(excl).toEqual({ unmapped: 12298, badSum: 0, dupOrder: 19 });
+    expect(excl).toEqual({ unmapped: 12294, badSum: 0, dupOrder: 19 });
     // the question-level identity: raw - servable = unmapped + dupOrder (each
     // exclusion removes whole questions; badSum is zero of record)
     expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder);

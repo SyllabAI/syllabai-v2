@@ -53,6 +53,25 @@ on v2 branch', trace 1a164dcf6cff9061): the Stage B operator sid-anchor law
 (anchors.operatorSidAnchors -> spcptToOfficial add-if-absent / verify-if-equal /
 conflict-keep+disclose; added sids leave spcptUnmapped; census sidAnchors;
 battery A1) adopted of record at the pin advance to the PR-#49-merged tip.
+
+T-RULE-T2-V8-RETRACT-1 run-003 (2026-10-23, operator order '7-sid V8 retraction
+batch', trace 1a16541e55a06bd1): the operator V8-retraction law — the Stage B
+surgical (item, code) drops from anchors.v8Retraction (L_SIDECAR V8 operator-
+verdict mirrors only, NO-GUESS), the zero-code mirror, the M1 provenance-checked
+exemption, the per-course guard — of record at the pin advance to the PR-#68-
+merged tip e7c7a68.
+
+T-RULE-T2-MISTAG-1 (2026-10-23, operator order '10-mis-tag re-point batch',
+trace 1a1658227c0c0365): the operator mis-tag re-point law — the 10 mis-tagged
+question parts (T-RULE-T2-COND-1 misTags[10]) re-pointed to their spine-verified
+true homes in anchors.misTagRepoints (schema syllabai.operator-mis-tag-repoint/
+1.0): the SAME surgical (item, code) drop semantics as the V8-retraction law
+(L_SIDECAR V8 operator-verdict mirrors only, NO-GUESS) + additions flow through
+the normal sidecar_rank law (tier tranche2_mis_tag_repoint, method
+operator_verdict); the sid-anchor plane stays byte-frozen (sidAnchors 0/23/0
+fixed point); per-course guard: misTagRepointDropped <=
+anchors.misTagRepoints.counts.entriesRemoved — of record at the pin advance to
+the PR-#69-merged tip ea21a72.
 """
 from __future__ import annotations
 
@@ -73,8 +92,8 @@ RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resourc
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "e7c7a68cf4790b951f77876982030413dd4662b7"
-STAMP = "2026-10-23T06:20:00Z"
+PIN = "ea21a721e09e3a7ccfa1f92d6f667bc290412e14"
+STAMP = "2026-10-23T10:30:00Z"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
 RANK = {  # lower wins on the same (item, code) key
@@ -153,7 +172,24 @@ def retraction_pairs(sd):
     return out
 
 
-def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None):
+def mistag_pairs(sd):
+    """T-RULE-T2-MISTAG-1: the operator mis-tag re-point law.
+
+    Returns the exact {(item_id, official_code): part} surface the operator
+    batch re-pointed (anchors.misTagRepoints.parts[*].removed, resources
+    PR #69). Same surgical semantics as retraction_pairs: the sidecar of
+    record no longer carries these V8 mirrors on the re-pointed parts, so
+    their ladder mirrors must drop; any other lineage carrying the same code
+    is preserved verbatim (NO-GUESS)."""
+    out = {}
+    blk = ((sd.get("anchors") or {}).get("misTagRepoints") or {})
+    for k, r in (blk.get("parts") or {}).items():
+        for e in (r.get("removed") or []):
+            out[(e["item"], e["code"])] = k
+    return out
+
+
+def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None, mistag=None):
     """Stage B: sidecar -> map merge. Returns (new_att, stats)."""
     st = defaultdict(int)
     items = att["items"]
@@ -187,6 +223,18 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None)
                         f"non-sidecar entry (lineage {e.get('lineage')!r}, "
                         f"tier {e.get('tier')!r}, method {e.get('method')!r}) — NO-GUESS")
                 st["retractDropped"] += 1
+                continue
+            if mistag and (iid, e.get("officialCode")) in mistag:
+                # the operator mis-tag re-point law (T-RULE-T2-MISTAG-1): drop
+                # the L_SIDECAR V8 mirror the batch re-pointed; same surgical
+                # semantics and NO-GUESS guard as the retraction law.
+                if (e.get("lineage") != L_SIDECAR
+                        or not str(e.get("tier", "")).startswith("V8")
+                        or e.get("method") != "operator_verdict"):
+                    die(f"{slug}: mis-tag re-point {iid}/{e.get('officialCode')} targets a "
+                        f"non-sidecar entry (lineage {e.get('lineage')!r}, "
+                        f"tier {e.get('tier')!r}, method {e.get('method')!r}) — NO-GUESS")
+                st["mistagDropped"] += 1
                 continue
             cand.append((sidecar_rank(e), seq, e, "ladder"))
         accepted = [e for e in (sit.get("codes") or []) if e.get("tier") != "T2_near"]
@@ -359,7 +407,7 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None)
         flashcards=cov("flashcard", pre_cov["flashcards"]["total"]))
     return new_att, dict(tier_census), dict(method_census), sidecar_only, \
         (sheet_added, sheet_upgraded, sheet_conflict), (len(spine_hit), len(uncovered), outside), \
-        st["retractDropped"]
+        st["retractDropped"], st["mistagDropped"]
 
 
 def spcpt_display_map(att, ctx, spine_set):
@@ -466,17 +514,18 @@ def code_key(e):
     return e.get("spineCode") or e.get("officialCode")
 
 
-def battery(slug, old_att, new_att, sd, committed, staged, sheet_rows, sidecar_only, recon, retract=None):
+def battery(slug, old_att, new_att, sd, committed, staged, sheet_rows, sidecar_only, recon, retract=None, mistag=None):
     """Stage D: per-course fail-closed assertions. Returns list of stat rows."""
     problems = []
     spine = load_json(os.path.join(HUB, "spines", f"{slug}.json"))
     spine_codes = {n["code"] for n in spine["curriculum"]["nodes"] if n["family"] == "SPEC_POINT"}
 
     # M1: no loss, no item drift — EXCEPT the operator V8-retraction surface
-    # (T-RULE-T2-V8-RETRACT-1): the ruling retracted exactly these
+    # (T-RULE-T2-V8-RETRACT-1) and the operator mis-tag re-point surface
+    # (T-RULE-T2-MISTAG-1): the rulings retracted/re-pointed exactly these
     # (item, code) pairs, so their disappearance is the ordered outcome, not
     # loss. Any other drop still fails closed.
-    retract_keys = set(retract or ())
+    retract_keys = set(retract or ()) | set(mistag or ())
     if set(old_att["items"]) != set(new_att["items"]):
         problems.append("M1 item-id set changed")
     for iid, old_rec in old_att["items"].items():
@@ -668,12 +717,17 @@ def main() -> int:
         sheet_rows = {k: v for k, v in sheet_resolves.items() if k[0] == slug}
 
         retract = retraction_pairs(sd)
+        mistag = mistag_pairs(sd)
         blk_counts = (((sd.get("anchors") or {}).get("v8Retraction") or {}).get("counts") or {})
-        new_att, tier_census, method_census, sidecar_only, sheet_counts, recon, retract_dropped = \
-            merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows, retract)
+        mt_counts = (((sd.get("anchors") or {}).get("misTagRepoints") or {}).get("counts") or {})
+        new_att, tier_census, method_census, sidecar_only, sheet_counts, recon, retract_dropped, mistag_dropped = \
+            merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows, retract, mistag)
         if retract_dropped > (blk_counts.get("entriesRemoved") or 0):
             die(f"{slug}: retractDropped {retract_dropped} > entriesRemoved "
                 f"{blk_counts.get('entriesRemoved')} — retraction surface mismatch")
+        if mistag_dropped > (mt_counts.get("entriesRemoved") or 0):
+            die(f"{slug}: misTagRepointDropped {mistag_dropped} > entriesRemoved "
+                f"{mt_counts.get('entriesRemoved')} — mis-tag surface mismatch")
 
         if len(sidecar_only) > max(50, 0.10 * len(sd["items"])):
             die(f"{slug}: sidecarOnly {len(sidecar_only)} of {len(sd['items'])} — id-space mismatch, investigate")
@@ -689,15 +743,16 @@ def main() -> int:
             continue
 
         # determinism: merge twice, byte-identical
-        re_att, *_ = merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows, retract)
+        re_att, *_ = merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows, retract, mistag)
         if dumps_map(re_att) != new_bytes:
             die(f"{slug}: merge not deterministic")
 
         staged, rstats = refresh_bundle(slug, new_att)
-        row, problems = battery(slug, att, new_att, sd, None, staged, sheet_rows, sidecar_only, recon, retract)
+        row, problems = battery(slug, att, new_att, sd, None, staged, sheet_rows, sidecar_only, recon, retract, mistag)
         row["changed"] = True
         row["tierCensus"] = dict(sorted(tier_census.items()))
         row["v8RetractDropped"] = retract_dropped
+        row["misTagRepointDropped"] = mistag_dropped
         row["rekey"] = rstats
         row["sheet"] = OrderedDict(added=sheet_counts[0], upgraded=sheet_counts[1], conflictsKept=sheet_counts[2])
         if problems:
@@ -713,6 +768,7 @@ def main() -> int:
             changed.append(slug)
             totals["codesFromSidecar"] += sum(tier_census.values())
             totals["v8RetractDropped"] += retract_dropped
+            totals["misTagRepointDropped"] += mistag_dropped
             totals["t2Hints"] += sum(len(r.get("t2HintCodes") or []) for r in new_att["items"].values())
             totals["sheetAdded"] += sheet_counts[0]
             totals["sheetUpgraded"] += sheet_counts[1]
@@ -743,15 +799,19 @@ def main() -> int:
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
         lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("T-RULE-T2-V8-RETRACT-1 (operator order '7-sid V8 retraction batch', "
-                           "trace 1a16541e55a06bd1) — the operator gate disclosed at run-002 opens: "
-                           "consumed vintage 3838a264 (the PR-#300-merged adoption tip) -> the "
-                           "PR-#68-merged tip e7c7a68 (resources PR #68, the 7-sid V8 retraction "
-                           "batch of record: 42 removals + 12 additions + 1 verify-only group; "
-                           "anchors.operatorSidAnchors byte-frozen, fixed point preserved); the 23 "
-                           "sid-anchors still reproduce (verify-if-equal) and the retracted part "
-                           "plane re-consumes per the sidecar_rank law"),
-        gatewayTrace="1a16541e55a06bd1",
+        operatorDirective=("T-RULE-T2-MISTAG-1 (operator order '10-mis-tag re-point batch', "
+                           "trace 1a1658227c0c0365) — the mis-tag residual disclosed at "
+                           "T-RULE-T2-COND-1 misTags[10] + the v8Retraction disclosures opens: "
+                           "consumed vintage e7c7a68 (the PR-#68-merged retraction tip) -> the "
+                           "PR-#69-merged tip ea21a72 (resources PR #69, the 10-mis-tag re-point "
+                           "batch of record: 3 V8-mirror removals + 11 additions across 8 parts, "
+                           "tier tranche2_mis_tag_repoint; WW34 keep-as-context + tKhp keep-no-op "
+                           "zero-change; anchors.operatorSidAnchors + anchors.v8Retraction byte-frozen, "
+                           "fixed point preserved); the 23 sid-anchors still reproduce "
+                           "(verify-if-equal) and the re-pointed parts re-consume per the "
+                           "sidecar_rank law; the engine learns the operator mis-tag re-point law "
+                           "(surgical drops + M1 exemption + per-course guard)"),
+        gatewayTrace="1a1658227c0c0365",
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),
