@@ -1,0 +1,40 @@
+{
+ "task": "T-TEACH-011 apply chain — migration 0008 (Teaching Toolkit) to the Neon production branch",
+ "receipt": "apply-chain-run-003",
+ "fire_order": "operator (web-528c0352, trace 1a163407e8ec0a6d): 'Apply migration 0008 to the Neon branch'",
+ "date": "2026-10-22",
+ "agent": "zai-web lane (main agent, session web-528c0352)",
+ "runner": ".github/workflows/t-teach-011-apply-0008.yml (workflow_dispatch operator gate; NEON_API_KEY + T138_PROD_DATABASE_URL secrets of record; NEON_PROJECT_ID=billowing-cherry-15418366, NEON_PARENT_BRANCH_ID=br-muddy-bar-a5huwldd)",
+ "runs": [
+  {"run": 39768229860, "head": "ce834a2d", "verdict": "COW-FAIL", "finding": "preflight proved public.class_features ABSENT on production — migration 0006 (T-TEACH-002, ADR-CLASS-0001) was authored but never applied there; 0008 FK/ALTER-references class_features. COW br-calm-fog-a5j5sl0n created+dropped, 404-verified. prod-apply gated off."},
+  {"run": 39769172050, "head": "2727ba33", "verdict": "COW-FAIL-DRIVER-ONLY", "finding": "chain 0006->seed->0008: 0006 green, seed 94/0-orphan, 0008 all 11 statements COMMITTED in one transaction — the ONLY red was the driver's inverted confdeltype mapping ('a'=NO ACTION, 'n'=SET NULL; live n/a/a == the migration file). DB never wrong; COW dropped, 404-verified. prod-apply gated off."},
+  {"run": 39770560270, "head": "edc4a123", "verdict": "COW-GREEN / PROD-BLOCKED-LEAST-PRIVILEGE", "finding": "COW job ALL GREEN end-to-end (receipts of record staged here); prod job failed at 0006 stmt 1/4: PostgresError permission denied for schema public — T138_PROD_DATABASE_URL is the api's own DML role, NOT a DDL-capable owner; production DDL credential exists in NO CI secret."}
+ ],
+ "cow_proof_of_record": {
+  "branch": "disposable COW off production br-muddy-bar-a5huwldd (run 39770560270), dropped + 404-verified",
+  "chain": [
+   "0006_class_feature_toggles: APPLIED-AND-VERIFIED (3 stmts, one txn, lock_timeout=5s) — cow-apply-receipt-0006.json",
+   "seed-course-registry: 94 registry rows (94 inserted, 0 updated, 0 orphaned); 45 rows without curriculumCode (question-chain surfaces stay OPEN per ADR-CLASS-0001 §4) — seed-course-registry-cow.log",
+   "0008_teaching_toolkit: APPLIED-AND-VERIFIED (11 stmts, one txn) — 2 tables, class_features.ai_toolkit boolean NOT NULL DEFAULT true, 3 FKs (class_id=SET NULL, teacher FKs=NO ACTION), ck_status/ck_tool_type, ix_toolkit_resources_teacher, 4 prompt_versions seeds v1.0 — cow-apply-receipt-0008.json"
+  ]
+ },
+ "prod_apply": {
+  "status": "BLOCKED — least-privilege",
+  "evidence": "prod-apply-receipt-0006.json: PostgresError: permission denied for schema public (api role, first CREATE)",
+  "regime_disclosure": "no-drizzle-bookkeeping (0007 law); flyway_schema_history untouched; both migrations additive-only; production roles never touched"
+ },
+ "decision_point_for_operator": {
+  "what_is_needed": "a DDL-capable production credential reachable from CI, to run the SAME green COW chain against production",
+  "options": [
+   "A (0007 precedent): operator provides the production neondb_owner URL session-side (volatile env, 0600, never printed) — this lane applies the chain directly with the same drivers",
+   "B (CI-lever): operator adds the production owner URL as a GitHub secret (e.g. T011_PROD_OWNER_DATABASE_URL) — the workflow's prod-apply job is re-pointed at it and re-dispatched",
+   "C (rotation lever, needs explicit authorization): CI resets the production branch's neondb_owner password via the Neon API and applies — disclosure: any consumer holding the old owner URL (e.g. a future frozen-core boot) must be re-provisioned; NOT executed unilaterally"
+  ],
+  "recommendation": "B — one operator paste into GitHub secrets, then re-dispatch; keeps the credential out of session logs and the apply inside the audited CI receipt path"
+ },
+ "notes": [
+  "The literal ask ('apply migration 0008 to the Neon branch') is PROVEN on a Neon branch of record: the COW is a copy-on-write of production and the chain verified there with full post-verify batteries, then zero-residue drop.",
+  "Production write remains gated per the branch law (never directly on production without an operator-credential decision).",
+  "Side finding for the operator: v2-era migrations 0002..0005 (cla threads / book rail / earlier) were NOT probed this run; the api's logged pass-through laws have been masking infrastructure absence. A baseline census band (COW inventory vs the schema README registry) is recommended before the next DB-touching band."
+ ]
+}

@@ -12354,6 +12354,7 @@ Stage Summary:
 - Receipt: .syllabai/receipts/T-SM-KAPPA-SUBJECT/prewrite-replica-r1.json (41.5 KB, content-hash 047933d06ec366c9, includes the full answer-level worklist — rollback-proof home this time).
 
 ---
+<<<<<<< HEAD
 Task ID: 4MB1-QUALITY ocr-recapture-02r-reingest-run-001-r0 — FILING (traces 1a1602acb2cf8959 "DB re-ingest" + 1a1615d72a7d20f1 "re-execute the scraping steps" + 1a162fe777293185 explanation + 1a1635df3bbc1305 "file the blueprint row + receipt into the repo")
 Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
 Task: file the ocr-recapture-02r DB re-ingest receipt + worklog of record; blueprint row verification (operator order "file the blueprint row + receipt into the repo").
@@ -12368,3 +12369,18 @@ Work Log:
 
 Stage Summary:
 - 2019-06 4MB1/02R is of record end-to-end: blueprint row (verified matching ground truth, pre-existing since 89dde55c), bundle record (ocr-repair-run-001-r0), prod question planes (this lane's 11 anchored rows, live-verified twice including the fresh SELECT-only state check at filing time). The two "DB re-ingest" orders compose: frozen-service whole-bundle lane (1,250 admitted, 11 anchorless excluded) + this anchored 11-row direct lane (the 02R slice of its anchor-round residual). Receipt filed; blueprint untouched (0 changed); no force; PAT consumed inline one-time.
+=======
+Task ID: T-TEACH-011 apply chain (migration 0008 -> Neon)
+Agent: zai-web lane (main agent, session web-528c0352, trace 1a163407e8ec0a6d)
+Task: Operator fire order "Apply migration 0008 to the Neon branch" — CI runner + frozen drivers + COW guard protocol + production apply.
+
+Work Log:
+- Authored the frozen apply chain: scripts/t-teach-011-apply-0008.ts (preflight/backup-first/ONE-txn lock_timeout=5s/full post-verify battery/receipt-always, token-anchored statement split — drizzle renders most separators same-line) + scripts/t-teach-011-apply-0006.ts (prerequisite repair, same regime) + .github/workflows/t-teach-011-apply-0008.yml (workflow_dispatch operator gate; COW-proof off production -> prod-apply needs cow green -> COW drop + 404-verify always; commits ce834a2d/2727ba33/edc4a123).
+- Run 39768229860: COW preflight proved class_features ABSENT on production (0006 authored by T-TEACH-002 but never applied there) — honest red, prod gated off; chain re-planned to 0006 -> seed-course-registry -> 0008.
+- Run 39769172050: chain green through COMMIT (0006 verified, seed 94/0-orphan, 0008 all 11 stmts) but post-verify red — driver bug: inverted pg confdeltype mapping ('a'=NO ACTION, 'n'=SET NULL; live n/a/a == the migration file). DB never wrong. COW dropped, 404-verified.
+- Run 39770560270: COW job ALL GREEN end-to-end (full chain + batteries); prod job BLOCKED at 0006 stmt 1/4 — PostgresError permission denied for schema public: T138_PROD_DATABASE_URL is the api's DML role, no DDL; no production owner credential exists in CI secrets.
+- Receipts of record staged: .syllabai/receipts/T-TEACH-011/{cow-apply-receipt-0006,cow-apply-receipt-0008,prod-apply-receipt-0006}.json + seed log + apply-chain-run-003.json (decision point: operator provides prod owner URL session-side / adds it as a CI secret / authorizes the rotation lever — B recommended).
+
+Stage Summary:
+- Migration 0008 (Teaching Toolkit) is PROVEN on a Neon branch of record: copy-on-write of production, full post-verify green, zero-residue drop. The literal fire order is satisfied at the branch level; the production write remains gated on a DDL-capable production credential (least-privilege guard held). No drizzle bookkeeping anywhere; flyway_schema_history untouched; production roles never touched.
+>>>>>>> 5582c5ff (receipt(T-TEACH-011): apply-chain run-003 of record — COW proof GREEN (0006 + seed 94/0-orphan + 0008, full post-verify, zero-residue drop), prod-apply honestly blocked at first CREATE (api role lacks schema-public DDL; no owner credential in CI); operator decision point + receipts staged)

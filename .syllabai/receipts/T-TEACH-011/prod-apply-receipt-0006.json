@@ -1,0 +1,26 @@
+{
+ "task": "T-TEACH-011 apply chain (step 1) — migration 0006_class_feature_toggles (owner T-TEACH-002)",
+ "mode": "apply",
+ "target_host": "ep-ancient-cake-a52e4kfd.us-east-2.aws.neon.tech",
+ "migration_file": "packages/db/drizzle/0006_class_feature_toggles.sql",
+ "migration_sha256": "cb81307cc957c08130248e9bcb2df08e88f79275bd5fb788eb93b9bdb4e38ab4",
+ "statement_count": 4,
+ "preflight": {
+  "classes_present": true,
+  "class_features_absent": true,
+  "course_registry_absent": true
+ },
+ "applied": [
+  {
+   "i": 0,
+   "head": "-- 0006 — T-TEACH-002 (ADR-CLASS-0001): class-scoped AI-feature toggles ",
+   "ms": 60
+  }
+ ],
+ "postverify": null,
+ "verdict": "FAILED",
+ "errors": [
+  "PostgresError: permission denied for schema public"
+ ],
+ "elapsed_ms": 1267
+}

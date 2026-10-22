@@ -1,0 +1,45 @@
+{
+ "task": "T-TEACH-011 apply chain (step 1) — migration 0006_class_feature_toggles (owner T-TEACH-002)",
+ "mode": "apply",
+ "target_host": "ep-jolly-sea-a56cjqqj.us-east-2.aws.neon.tech",
+ "migration_file": "packages/db/drizzle/0006_class_feature_toggles.sql",
+ "migration_sha256": "cb81307cc957c08130248e9bcb2df08e88f79275bd5fb788eb93b9bdb4e38ab4",
+ "statement_count": 4,
+ "preflight": {
+  "classes_present": true,
+  "class_features_absent": true,
+  "course_registry_absent": true
+ },
+ "applied": [
+  {
+   "i": 0,
+   "head": "-- 0006 — T-TEACH-002 (ADR-CLASS-0001): class-scoped AI-feature toggles ",
+   "ms": 41
+  },
+  {
+   "i": 1,
+   "head": "CREATE TABLE \"class_features\" ( \"class_id\" uuid PRIMARY KEY NOT NULL, \"s",
+   "ms": 138
+  },
+  {
+   "i": 2,
+   "head": "CREATE TABLE \"course_registry\" ( \"course_slug\" varchar(100) PRIMARY KEY ",
+   "ms": 56
+  },
+  {
+   "i": 3,
+   "head": "CREATE INDEX \"ix_course_registry_cc\" ON \"course_registry\" USING \"btree\" ",
+   "ms": 44
+  }
+ ],
+ "postverify": {
+  "class_features_columns_exact": true,
+  "class_features_defaults_true": true,
+  "course_registry_columns_exact": true,
+  "fk_class_features_class_cascade": true,
+  "index_ix_course_registry_cc": true
+ },
+ "verdict": "APPLIED-AND-VERIFIED",
+ "errors": [],
+ "elapsed_ms": 1463
+}
