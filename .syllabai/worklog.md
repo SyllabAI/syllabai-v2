@@ -13071,3 +13071,17 @@ Work Log:
 
 Stage Summary:
 - MB4-MS-FRESHPARSE run-001 COMPLETE: 12/57 provably attached (7 STRUCT + 5 B), 45 left honest; the UIUX-LATEX-1 normalizer of record is byte-exact (729/729) and the italic-fate table solves run-001's y->s mystery; the marks-partition attribution law + layout-generation taxonomy are the durable artifacts for the 45-residual deep lane (needs per-layout spurious-anchor elimination: mid-guidance code words at the notes edge, cross-page row spans, number-token gaps). Corpus: maths-b no-solution 45 (was 57, was 117). Register: PAT rotation (overdue), multi-select player lane, chemistry-19 2 E2 (pre-existing, out of scope). LANE: IDLE.
+## T-MIG-138 run-008 — the Oct 23 window fire BLOCKED by a DB-plane regression: run #12 39919953325 all-4-shard honest red on `PostgresError: relation "document_chunks" does not exist` (row 1, zero embeds, zero key spend) — secret unchanged since Oct 20, repo plane clean (migrations additive + pre-date run #11), table vanished server-side overnight; attribution OPERATOR-KEYED; drain holds at 200/216, 16-pin unchanged
+
+Date: 2026-10-23
+Agent: r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606)
+Scope: .syllabai/** only; read-only evidence (runs census, secret metadata, git archaeology, job logs); fetch-first; no force; zero DB/Neon/prod/LLM writes
+
+Work Log:
+- Operator order 'Continue. finish the work' @ 07:45Z = first re-key past the 07:05Z Oct 23 window; recipe fired of record (fresh pool, dynamic gate CLEAN, 16-pin verified) -> HTTP 204 -> run #12 39919953325 @ 07:45:46Z, head e22e73c.
+- Run #12 completed FAILURE in ~45s: all four shards died on their FIRST row at the backfill-exec opening SELECT — `PostgresError: relation "document_chunks" does not exist`. Zero embeds, zero provider contact (keys NOT exercised — pool-health answer of record unaffected), 152B empty artifacts.
+- Attribution discipline: H1 (secret rotated) ELIMINATED via secret-metadata census (T138_PROD_DATABASE_URL updated_at 2026-10-20T09:52:39Z, predates runs #9/#10/#11; no secret updated after KEY_4 2026-10-21T15:25:38Z). H2 (repo plane) ELIMINATED via git archaeology (schema keeps document_chunks; migrations 0006/0007 additive + pre-date run #11; DEPLOY run-012 receipt records DB legs blocked on absent Neon credential). CONCLUSION: server-side loss at the target between 09:15Z Oct 22 and 07:45Z Oct 23 — operator-keyed surfaces only (Neon console / branch reset / out-of-band migration).
+- The fire path is NOT the blocker; script stays armed. Residual stays 16 (pin still valid).
+
+Stage Summary:
+- Drain BLOCKED on a prod-DB-plane regression outside lane write authority (prod schema surgery = absolute operator gate). Operator asked to (a) identify the overnight DB-plane change and (b) authorize the repair path (table recreation via CI db-plane per the 0000 DDL). Receipt: .syllabai/receipts/T-MIG-138/run-008-window-fire-r1c.json
