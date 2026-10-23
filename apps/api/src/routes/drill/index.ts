@@ -19,7 +19,9 @@
  *
  * Zero-stakes law: the handlers write ONLY the drill tables (services/drill/
  * store.ts) and read NO progress-bearing table — no attempts, no
- * ai_mark_events, no gradebook events, ever.
+ * ai_mark_events, no gradebook events, ever. F-184 adds ONE read-only path
+ * over the drill's own evidence lane (GET /strengths — the decay-driven
+ * strength projection; ADR-031: computed at read, never persisted).
  */
 import { Hono } from "hono";
 import type { ZodError } from "zod";
@@ -28,6 +30,7 @@ import {
   drillAddressesQuerySchema,
   drillDrawRequestSchema,
   drillEvidenceRequestSchema,
+  strengthQuerySchema,
 } from "@syllabai/contracts";
 
 import { createSql } from "../../services/identity/users";
@@ -39,6 +42,7 @@ import {
   drawForLearner,
   recordDrillEvidence,
 } from "../../services/drill/serve";
+import { strengthsForLearner } from "../../services/drill/strength-serve";
 import type { DrillMethodCreditGenerator } from "../../services/drill/reveal";
 import { createDrillStore, type DrillStore } from "../../services/drill/store";
 
@@ -58,6 +62,12 @@ async function readJsonBody(c: { req: { json: () => Promise<unknown> } }): Promi
 export interface DrillRouterDeps {
   bankOf(course: string): DrillBank;
   store: DrillStore;
+  /**
+   * F-184 — the injected clock (ADR-031 posture): the strengths projection
+   * computes decay AT READ against this `now` and stamps it as generatedAt.
+   * Default = the wall clock; tests freeze it.
+   */
+  nowOf?: () => Date;
   /**
    * F-183 — the Smart Mark method-credit seam (structured drill parts).
    * Optional + nullable: the dormant posture (zero-key boots, tests without a
@@ -94,6 +104,28 @@ export function createDrillRouter(deps: DrillRouterDeps): Hono {
       summary: bank.censusSummary,
       addresses: bank.addressRows.filter((a) => a.drillable),
     });
+  });
+
+  // GET /api/v1/learners/me/drill/strengths?course=<slug> — the F-184
+  // decay-driven strength projection: ONE read-only GET over the drill's own
+  // evidence lane, composed by services/drill/strength-serve from THE strength
+  // law of record (laws S1..S6). Every strength number is computed at THIS
+  // read (ADR-031: computed, never persisted — no strength table exists) and
+  // stamped generatedAt; the response carries the SERVER's BAR_SEMANTICS so
+  // the surface renders the law's strings verbatim; the practice-now queue
+  // rides beside the bars it distills (law S5). No write, no gradebook
+  // surface, no progress-bearing read — the zero-stakes law holds verbatim.
+  r.get("/strengths", async (c) => {
+    const parsed = strengthQuerySchema.safeParse({
+      course: c.req.query("course"),
+    });
+    if (!parsed.success) {
+      return c.json({ status: 400, error: "bad_request", message: "malformed request" }, 400);
+    }
+    const auth = getAuth(c)!; // shell invariant: authenticated
+    const bank = deps.bankOf(parsed.data.course); // UnknownCourseError -> 404 via onError
+    const outcome = await strengthsForLearner(bank, deps.store, auth.userId, parsed.data.course, deps.nowOf?.() ?? new Date());
+    return c.json(outcome);
   });
 
   // POST /api/v1/learners/me/drill/draw — one 5-part draw at a spec-point

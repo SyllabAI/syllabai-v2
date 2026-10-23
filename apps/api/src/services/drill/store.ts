@@ -63,6 +63,22 @@ export interface DrillEvidenceInsert {
   readonly selfDoubtFlag: boolean;
 }
 
+/**
+ * F-184 — the evidence projection the strength law reads: the columns of an
+ * immutable drill_part_evidence row the S1 anchor + S2 decay clock need,
+ * keyed by the address the row was recorded at. `marksAwarded` is null for
+ * the ungraded structured rows (the seam refuses to invent marks) — the
+ * strength law treats exactly those as ungraded.
+ */
+export interface DrillEvidenceKeyRow {
+  readonly code: string;
+  readonly partId: string;
+  readonly marksAwarded: number | null;
+  readonly marksPossible: number;
+  /** The immutable row's write time — the graded-at clock of record (build plan Q8). */
+  readonly createdAt: string;
+}
+
 export interface DrillStore {
   recordDraw(row: DrillDrawInsert): Promise<{ id: string; createdAt: string }>;
   /** The union of part ids across the learner's latest draws at one address, newest first. */
@@ -72,6 +88,14 @@ export interface DrillStore {
   /** The immutability pre-check: an existing (draw, part) row refuses a second write. */
   evidenceIdOf(drawId: string, partId: string): Promise<string | null>;
   recordEvidence(row: DrillEvidenceInsert): Promise<{ id: string; createdAt: string }>;
+  /**
+   * F-184 — the read-only evidence projection the strength route serves from:
+   * every evidence row the learner owns in ONE course, oldest first (the
+   * strength law is order-agnostic; asc keeps the read deterministic). A
+   * SELECT on the drill's OWN table — the zero-stakes law is untouched: no
+   * write, no progress-bearing table, no gradebook surface.
+   */
+  evidenceForCourse(learnerId: string, course: string): Promise<DrillEvidenceKeyRow[]>;
 }
 
 interface DrawRowRaw {
@@ -162,6 +186,28 @@ export function createDrillStore(sql: SqlFn): DrillStore {
       const hit = rows[0];
       if (!hit) throw new Error("drill_part_evidence insert returned no row");
       return { id: hit.id, createdAt: hit.created_at };
+    },
+
+    async evidenceForCourse(learnerId: string, course: string) {
+      const rows = (await sql`
+        select code, part_id, marks_awarded, marks_possible, created_at
+        from drill_part_evidence
+        where learner_id = ${learnerId} and course = ${course}
+        order by created_at asc
+      `) as unknown as Array<{
+        code: string;
+        part_id: string;
+        marks_awarded: number | null;
+        marks_possible: number;
+        created_at: string;
+      }>;
+      return rows.map((r) => ({
+        code: r.code,
+        partId: r.part_id,
+        marksAwarded: r.marks_awarded,
+        marksPossible: r.marks_possible,
+        createdAt: r.created_at,
+      }));
     },
   };
 }
