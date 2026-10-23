@@ -141,6 +141,12 @@ function sqlStub() {
     },
     { match: /select id from drill_part_evidence/, rows: [] },
     { match: /insert into drill_part_evidence/, rows: [{ id: EVIDENCE_ID, created_at: "2026-10-23T00:00:01Z" }] },
+    {
+      // F-185 — the draw's reading read (no evidence rows: the sparse law
+      // serves the random draw; the L5 boundary pin is unaffected).
+      match: /select code, part_id, marks_awarded, marks_possible, created_at from drill_part_evidence/,
+      rows: [],
+    },
   ]) as unknown as SqlFn;
 }
 

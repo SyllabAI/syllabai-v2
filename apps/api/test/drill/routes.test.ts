@@ -112,7 +112,17 @@ function sqlStub(rows: Record<string, Array<Record<string, unknown>>> = {}) {
     },
     { match: /select id from drill_part_evidence/, rows: rows.existingEvidence ?? [] },
     { match: /insert into drill_part_evidence/, rows: [{ id: EVIDENCE_ID, created_at: "2026-10-23T00:00:01Z" }] },
-  ]) as unknown as SqlFn;
+    {
+      // F-185 — the draw's reading read: the SAME read-only projection the
+      // F-184 strengths route serves from (the drill's own evidence lane).
+      match: /select code, part_id, marks_awarded, marks_possible, created_at from drill_part_evidence/,
+      rows: rows.evidence ?? [],
+      rowsFor: (p) =>
+        (rows.evidence ?? []).filter((e) => e.learner_id === p[0] && e.course === p[1]) as Array<
+          Record<string, unknown>
+        >,
+    },
+  ]) as unknown as SqlFn & { queries: string[] };
 }
 
 function makeApp(
@@ -198,6 +208,9 @@ describe("POST /draw", () => {
     expect(body.parts).toHaveLength(5);
     expect(body.usedFallback).toBe(false);
     expect(body.freshPoolSize).toBe(7);
+    // F-185 — the stub carries no evidence: the sparse-state law (M4) serves
+    // the random policy of record (P1..P6 verbatim), disclosed on the wire.
+    expect(body.selection).toEqual({ policy: "random", sparseFallback: true, explorationSlots: 0 });
     for (const p of body.parts) {
       expect(p.problemMd).toMatch(/^problem p\d$/);
       if (p.choices) for (const ch of p.choices) expect(Object.keys(ch).sort()).toEqual(["label", "textMd"]);
@@ -289,6 +302,107 @@ describe("POST /draw", () => {
       body: JSON.stringify({ course: "igcse-chemistry-19", code: CODE, seed: 1.5 }),
     });
     expect(badSeed.status).toBe(400);
+  });
+});
+
+// ------------------------------------------------- F-185 the model-driven draw
+
+describe("POST /draw — F-185 the model-driven selection", () => {
+  const W2 = "4CH1-2.10";
+  const S2 = "4CH1-3.30";
+
+  // a model bank: every part rides the address; ga-weak ALSO rides the weak
+  // secondary code, gz-sec ALSO rides the secure one (the M3 discriminators).
+  function modelBank(): DrillBank {
+    const ids = ["ga-weak", "gz-sec", "gb-0", "gc-1", "gd-2", "ge-3", "gf-4"];
+    const codes = (id: string) => (id === "ga-weak" ? [CODE, W2] : id === "gz-sec" ? [CODE, S2] : [CODE]);
+    const parts = ids.map((id, i) => ({
+      partId: id,
+      questionId: `q-${id}`,
+      setId: "official-4ch1-1c-2019-06",
+      plane: "official" as const,
+      order: i,
+      marks: 1,
+      specPointCodes: codes(id),
+    }));
+    const content = new Map(ids.map((id) => [id, {
+      problemMd: `problem ${id}`,
+      questionType: "multiple_choice",
+      commandWord: null,
+      choices: [{ label: "A", textMd: "wrong" }],
+    }]));
+    return {
+      course: "igcse-chemistry-19",
+      parts,
+      addressRows: [{ code: CODE, official: ids.length, topic: 0, combined: ids.length, drillable: true }],
+      censusSummary: { specPointAddresses: 182, covered: 171, drillable: 157, thin: 14, uncovered: 11 },
+      poolOf: (code) => (code === CODE ? parts : []),
+      contentOf: (id) => content.get(id) ?? null,
+      marksOf: (id) => (content.has(id) ? 1 : null),
+      isCorrectChoice: () => null,
+      solutionOf: (id) => (content.has(id) ? `solution ${id}` : null),
+      markSchemeOf: () => null,
+    };
+  }
+
+  // 5 graded rows course-wide (the M4 floor met): 3 weak rows (anchor 0 ->
+  // the floor 0.1 strength) + 2 secure rows graded THIS instant (strength 1).
+  const NOW = "2026-10-23T12:00:00Z";
+  function modelEvidence() {
+    return [
+      { learner_id: LEARNER_ID, course: "igcse-chemistry-19", code: W2, part_id: "w1", marks_awarded: 0, marks_possible: 1, created_at: "2026-09-01T00:00:00Z" },
+      { learner_id: LEARNER_ID, course: "igcse-chemistry-19", code: W2, part_id: "w2", marks_awarded: 0, marks_possible: 1, created_at: "2026-09-02T00:00:00Z" },
+      { learner_id: LEARNER_ID, course: "igcse-chemistry-19", code: W2, part_id: "w3", marks_awarded: 0, marks_possible: 1, created_at: "2026-09-03T00:00:00Z" },
+      { learner_id: LEARNER_ID, course: "igcse-chemistry-19", code: S2, part_id: "s1", marks_awarded: 1, marks_possible: 1, created_at: NOW },
+      { learner_id: LEARNER_ID, course: "igcse-chemistry-19", code: S2, part_id: "s2", marks_awarded: 1, marks_possible: 1, created_at: NOW },
+    ];
+  }
+
+  test("the model policy serves above the sparse floor and discloses itself (never a state number)", async () => {
+    const res = await makeApp(asStudent, modelBank(), sqlStub({ evidence: modelEvidence() })).request(
+      "/api/v1/learners/me/drill/draw",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ course: "igcse-chemistry-19", code: CODE, seed: 20261023 }),
+      },
+    );
+    expect(res.status).toBe(201);
+    const body = drillDrawResponseSchema.parse(await res.json());
+    expect(body.selection).toEqual({ policy: "model", sparseFallback: false, explorationSlots: 1 });
+    // the weak-secondary part always rides the greedy slot 1 (M3 through the wire)
+    expect(body.parts.map((p) => p.partId)).toContain("ga-weak");
+    expect(body.parts).toHaveLength(5);
+    // anti-gaming (M6): the wire carries the POLICY, never the reading's numbers
+    expect(JSON.stringify(body)).not.toContain("strength");
+  });
+
+  test("M6 determinism through the wire: same seed + same evidence -> the same model draw", async () => {
+    const call = async () =>
+      await makeApp(asStudent, modelBank(), sqlStub({ evidence: modelEvidence() })).request(
+        "/api/v1/learners/me/drill/draw",
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ course: "igcse-chemistry-19", code: CODE, seed: 7 }),
+        },
+      );
+    const a = (await (await call()).json()) as { parts: { partId: string }[] };
+    const b = (await (await call()).json()) as { parts: { partId: string }[] };
+    expect(a.parts.map((p) => p.partId)).toEqual(b.parts.map((p) => p.partId));
+  });
+
+  test("the zero-stakes law on the wire: the draw's SQL is SELECTs on the drill's own lane + the draw insert", async () => {
+    const sql = sqlStub({ evidence: modelEvidence() });
+    await makeApp(asStudent, modelBank(), sql).request("/api/v1/learners/me/drill/draw", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ course: "igcse-chemistry-19", code: CODE, seed: 7 }),
+    });
+    expect(sql.queries.length).toBeGreaterThan(0); // the shell is not vacuous: the draw fired its reads
+    for (const q of sql.queries) {
+      expect(q.startsWith("select") || q.startsWith("insert into drill_draws")).toBe(true);
+    }
   });
 });
 

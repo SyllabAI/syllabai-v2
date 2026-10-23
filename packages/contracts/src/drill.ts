@@ -102,6 +102,23 @@ export const drillDrawRequestSchema = z.object({
 });
 export type DrillDrawRequest = z.infer<typeof drillDrawRequestSchema>;
 
+/**
+ * F-185 — the draw's selection disclosure: WHICH policy served this draw —
+ * never a learner-state number (the anti-gaming law M6: the picks cannot be
+ * replayed or farmed from the response, and the model's weights never ride
+ * the wire). `sparseFallback` is true exactly when the sparse-state law (M4)
+ * served the random policy; `explorationSlots` is the model policy's
+ * uniform-random slot count (0 under the random policy — the whole draw is
+ * exploration there). Required key, stable shape (the F-183 additive-field
+ * pattern): every draw response carries it.
+ */
+export const drillDrawSelectionSchema = z.object({
+  policy: z.enum(["model", "random"]),
+  sparseFallback: z.boolean(),
+  explorationSlots: z.number().int().min(0).max(5),
+});
+export type DrillDrawSelection = z.infer<typeof drillDrawSelectionSchema>;
+
 export const drillDrawResponseSchema = z.object({
   drawId: z.string().uuid(),
   course: z.string().min(1),
@@ -113,6 +130,8 @@ export const drillDrawResponseSchema = z.object({
   freshPoolSize: z.number().int().min(0),
   /** True when the thin-pool fallback (P4) drew from the full pool. */
   usedFallback: z.boolean(),
+  /** F-185 — the policy disclosure (policies P1..P6 remain the random law). */
+  selection: drillDrawSelectionSchema,
   parts: z.array(drillPartViewSchema),
 });
 export type DrillDrawResponse = z.infer<typeof drillDrawResponseSchema>;
