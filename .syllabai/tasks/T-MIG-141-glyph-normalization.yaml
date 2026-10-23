@@ -1,44 +1,48 @@
 id: T-MIG-141
-title: "Glyph normalization of the document-chunk corpus (bank patch + intake law)"
+title: Glyph normalization of the document-chunk corpus (bank patch + intake law)
 type: data-integrity
-status: CLAIMED        # run-001 claim 2026-10-23T11:07:29Z, operator order trace 1a1686907a2d0855; DRAFT->CLAIMED (operator ruling subsumes the OPEN step); census re-verified pre-act, receipt run-001
+status: CLAIMED
 priority: P1
-owner: "r7a (Super Z, session web-da4ab8b1, chat 1f3003b6, operator order trace 1a1686907a2d0855)"  # claimed 2026-10-23, repo pin origin/main 8b4172be
+owner: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6, operator order trace 1a1686907a2d0855)
 spec: docs/SPEC-T-MIG-141-GLYPH-NORMALIZATION.md
 deps:
-  - T-MIG-138          # machinery-of-record: mode=backfill-sharded embedder, secrets hygiene, RPD-wall law
+- T-MIG-138
 scope:
   allowed:
-    - docs/SPEC-T-MIG-141-GLYPH-NORMALIZATION.md
-    - ".syllabai/receipts/T-MIG-141/**"
-    - ".syllabai/tasks/T-MIG-141-glyph-normalization.yaml"
-    - "cross-repo: SyllabAI/syllabai-parser tools/glyph-normalization/** + tools/glmocr/** + tools/ocr_batch/** (see spec §7)"
+  - docs/SPEC-T-MIG-141-GLYPH-NORMALIZATION.md
+  - .syllabai/receipts/T-MIG-141/**
+  - .syllabai/tasks/T-MIG-141-glyph-normalization.yaml
+  - 'cross-repo: SyllabAI/syllabai-parser tools/glyph-normalization/** + tools/glmocr/** + tools/ocr_batch/** (see spec §7)'
   forbidden:
-    - "apps/**"        # no hub/api code changes
-    - "packages/**"    # no contract changes
-    - "cross-repo: SyllabAI/syllabai-resources Official-ExamQuestion/** (map DONOR, not an edit surface)"
-    - "any LLM in the patch loop (deterministic substitution only, spec N4)"
+  - apps/**
+  - packages/**
+  - 'cross-repo: SyllabAI/syllabai-resources Official-ExamQuestion/** (map DONOR, not an edit surface)'
+  - any LLM in the patch loop (deterministic substitution only, spec N4)
 acceptance:
-  - "Phase A: every map entry carries rendered-PDF evidence ref + census count + canary pin (F48 standard); arrows F022/F0E0/F083 mandatory-evidence"
-  - "Phase B: zero-PUA post-state on all scoped rows; 200-row protected control group byte-identical; G-A..G-E gates green; before-images archived; census hash pin C9"
-  - "Phase C: re-parse applied ONLY to chunks meeting the beyond-repair criteria; sha256 identity gates vs archive manifests; chunk-count deltas disclosed"
-  - "Phase D: selector (embedding IS NULL OR embed_rev < 2) drained via mode=backfill-sharded; RPD-wall artifacts honest; median self-cosine >= 0.85 (hard gate); embed_rev restored to 2"
-  - "Phase E: table.v1.json + Python/Java conformance green (16/16-class); ocr_batch integrated; intake canary C-intake-zero-pua pinned"
-  - "C5 fidelity probes vs repo parsed/ layer: 6/6-class phrases HIT post-patch"
+- 'Phase A: every map entry carries rendered-PDF evidence ref + census count + canary pin (F48 standard); arrows F022/F0E0/F083 mandatory-evidence'
+- 'Phase B: zero-PUA post-state on all scoped rows; 200-row protected control group byte-identical; G-A..G-E gates green; before-images archived; census hash pin C9'
+- 'Phase C: re-parse applied ONLY to chunks meeting the beyond-repair criteria; sha256 identity gates vs archive manifests; chunk-count deltas disclosed'
+- 'Phase D: selector (embedding IS NULL OR embed_rev < 2) drained via mode=backfill-sharded; RPD-wall artifacts honest; median self-cosine >= 0.85 (hard gate); embed_rev restored to 2'
+- 'Phase E: table.v1.json + Python/Java conformance green (16/16-class); ocr_batch integrated; intake canary C-intake-zero-pua pinned'
+- 'C5 fidelity probes vs repo parsed/ layer: 6/6-class phrases HIT post-patch'
 execution_record:
-  - run: run-001-claim-census-reverify
-    at: "2026-10-23T11:07:29Z"
-    what: "CLAIM (operator order trace 1a1686907a2d0855) + claim-time census re-verify per next_safe_actions law. Fetch-first: origin advanced 28 (edd5a91d->8b4172be), zero lane-file collision, ff-merged. Census of record REPRODUCED EXACT under the spec join law (wired exam-paper plane): 2,765 chunks / 25,399 PUA instances / 85 distinct = spec §4.1 + Appendix A pins; census sha256 pin 5c18c01e15e918cb36a8609a2c2ae6dbdb806ad3a5738822299c3c070c8c63d2 recorded as the C9 precursor. Join-key discoveries of record: chunks FK = documents.document_row_id -> documents.id; exam_papers face documents.document_id (varchar, text-compare only — non-UUID audit ids present). DISCLOSURES: (a) unwired pdftotext-layout plane 1,223 PUA chunks (created 2026-10-20, ingested_by NULL) OUT of spec scope, operator-visibility hygiene candidate; (b) wired ctl pin tightened to 2,000 instances / 26 distinct / 418 rows (spec Appendix B said ~1,900/25 approximation mark). Phase A STARTED: 27/27 evidence locator targets resolved (locator.json). MID-CLAIM EVENT: 8d1c390e (T-OPS-NEONDB-LOSS-1 + ADR-038) documented the overnight drop/recreate of prod neondb; this run's 11:07Z census found the estate PRESENT reproducing the Oct-22 baseline pins EXACTLY (parity corroboration, restore-agent owns closure) — LAW: T-MIG-141 Phase B/C/D DB-writing legs GATED on NEON-DB-LOSS recovery closure; Phase A proceeds (repo-side)."
-    receipt: .syllabai/receipts/T-MIG-141/run-001-claim-census-reverify.json
-  - run: run-002-phase-a-map
-    at: "2026-10-23"
-    what: "Phase A EXECUTED per operator order: OEQ donor base extracted read-only (resources 1ef9d5b8, converter b114f47a; 31-entry PUA_MAP + fail-closed gate + F52 pre-gate); rendered-evidence pass @150dpi over the byte-frozen archive (45 primary jobs + 16/28 fallback + 17/19 OCR-anchored; 278 crop groups; 5 labeled sheets eyeballed); table.v1.json BUILT and LANDED in syllabai-parser 503bdaf: 61 entries touching 93.3% of the 25,399 wired PUA instances (73.1% mapped + 20.3% F0A2 drop class, the latter matching the spec Appendix A pin 5,146 EXACTLY); 12 big-paren/bracket pieces landed via the deterministic positional law (x-column/y-order votes -> U+239B..23A6, converging with OEQ's F8-trio targets); Symbol law confirmed bank-wide (25 new entries); vector-arrow COMPOSED-RUN discovery (F026/F067/F072/F075 = shaft+head runs, 339 inst) + F072 OEQ-Delta conflict -> HELD in the fail-closed pending register (20 CPs / 796 inst never silently served); C-Glyph canaries pinned for all mapped entries; C4 wrong-map disproof scheduled for the Phase-B dry-run"
-    receipt: .syllabai/receipts/T-MIG-141/run-002-phase-a-map.json
+- run: run-001-claim-census-reverify
+  at: '2026-10-23T11:07:29Z'
+  what: 'CLAIM (operator order trace 1a1686907a2d0855) + claim-time census re-verify per next_safe_actions law. Fetch-first: origin advanced 28 (edd5a91d->8b4172be), zero lane-file collision, ff-merged. Census of record REPRODUCED EXACT under the spec join law (wired exam-paper plane): 2,765 chunks / 25,399 PUA instances / 85 distinct = spec §4.1 + Appendix A pins; census sha256 pin 5c18c01e15e918cb36a8609a2c2ae6dbdb806ad3a5738822299c3c070c8c63d2 recorded as the C9 precursor. Join-key discoveries of record: chunks FK = documents.document_row_id -> documents.id; exam_papers face documents.document_id (varchar, text-compare only — non-UUID audit ids present). DISCLOSURES: (a) unwired pdftotext-layout plane 1,223 PUA chunks (created 2026-10-20, ingested_by NULL) OUT of spec scope, operator-visibility hygiene candidate; (b) wired ctl pin tightened to 2,000 instances / 26 distinct / 418 rows (spec Appendix B said ~1,900/25 approximation mark). Phase A STARTED: 27/27 evidence locator targets resolved (locator.json). MID-CLAIM EVENT: 8d1c390e (T-OPS-NEONDB-LOSS-1 + ADR-038) documented the overnight drop/recreate of prod neondb; this run''s 11:07Z census found the estate PRESENT reproducing the Oct-22 baseline pins EXACTLY (parity corroboration, restore-agent owns closure) — LAW: T-MIG-141 Phase B/C/D DB-writing legs GATED on NEON-DB-LOSS recovery closure; Phase A proceeds (repo-side).'
+  receipt: .syllabai/receipts/T-MIG-141/run-001-claim-census-reverify.json
+- run: run-002-phase-a-map
+  at: '2026-10-23'
+  what: 'Phase A EXECUTED per operator order: OEQ donor base extracted read-only (resources 1ef9d5b8, converter b114f47a; 31-entry PUA_MAP + fail-closed gate + F52 pre-gate); rendered-evidence pass @150dpi over the byte-frozen archive (45 primary jobs + 16/28 fallback + 17/19 OCR-anchored; 278 crop groups; 5 labeled sheets eyeballed); table.v1.json BUILT and LANDED in syllabai-parser 503bdaf: 61 entries touching 93.3% of the 25,399 wired PUA instances (73.1% mapped + 20.3% F0A2 drop class, the latter matching the spec Appendix A pin 5,146 EXACTLY); 12 big-paren/bracket pieces landed via the deterministic positional law (x-column/y-order votes -> U+239B..23A6, converging with OEQ''s F8-trio targets); Symbol law confirmed bank-wide (25 new entries); vector-arrow COMPOSED-RUN discovery (F026/F067/F072/F075 = shaft+head runs, 339 inst) + F072 OEQ-Delta conflict -> HELD in the fail-closed pending register (20 CPs / 796 inst never silently served); C-Glyph canaries pinned for all mapped entries; C4 wrong-map disproof scheduled for the Phase-B dry-run'
+  receipt: .syllabai/receipts/T-MIG-141/run-002-phase-a-map.json
+- run: run-002b-register-resolution
+  at: '2026-10-24'
+  what: 'Pending-register evidence pass + adjudication (operator order trace 1a169bc10f7dc5c9): 21 register items resolved; V1 HOLE DISCLOSED — the register listed 774 unmapped instances but the true unmapped set was 1,691; census-match law found 917 instances in 5 CPs (F084 520 / F0B1 392 / F033 2 / F050 1 / F0CF 2) with NO entry AND NO register item. table.v1.json LANDED in syllabai-parser 25e3a39: 83 entries + 5 sequence_rules (composed over-arrow runs via ordering law; sequence consumption EXACT 15/30/1/7/2). Key adjudications: F072 OEQ-Delta conflict RESOLVED by sequence-first font-split (15 run-heads 4MA1 vs 7 standalone U+2206 in 4CH1 ''ΔH/ΔT''); F084 spec-sqrt hypothesis OVERTURNED (<= proven, complementary pair with F085>=); F8EB-F8F8 = tall-paren pieces around column vectors (NOT curly braces); F02F = cancel stroke U+0338; F061 = mapsto; F06C = lambda x160. Post-state wired-bank PUA coverage 25,397/25,399 (99.99%); residual = U+F0CF x2 fail-closed (no-ink glyph, re-carried in register; 2 carrier rows are Phase-B scope-exclusion candidates). oeq-donor corroboration: F0E0/F0E5/F8E7 confirmed, F8EE-F8FB family partial (disclosed). C7 deletion disclosure: 165 chars (55 runs) + drop 5,146. Zero DB writes (t0_readonly); evidence sheetB1-B5 + 75 crops + 6 JSON artifacts.'
+  receipt: .syllabai/receipts/T-MIG-141/run-002b-register-resolution.json
 next_safe_actions:
-  - "claim the card; fetch-first; re-verify the census of record (lane scripts t_neon_quality*.py re-run) before any act"
-  - "Phase A: extract OEQ normalize_pua base table; run the rendered-evidence pass (150 dpi, CROP-REVIEW pattern); build tools/glyph-normalization/table.v1.json"
-  - "Phase B dry-run: scope query + census hash + before-image archive + diff artifact ONLY (zero writes); receipt run-001-dryrun"
+- 'run-003: Phase-B dry-run (zero writes): scope re-derive + id-set hash (C9 precursor) + before-image archive + simulated patch vs table.v1@25e3a39 + G-A..G-E gate evaluation'
+- 'run-003: C4 wrong-map disproof (F52 inverted) + content_tsv GENERATED ALWAYS assertion + 200-row control group pin'
+- Phase B real patch (writes) rides the CI-gate pattern; scope = 2,763 rows + F0CF 2-row exclusion or operator ruling
 notes:
-  - "content_tsv is GENERATED ALWAYS (auto-refreshes on UPDATE) — verified of record, spec §0"
-  - "embed_rev convention: patched rows -> 1 (stale, vector kept serving); restored to 2 at Phase D success"
-  - "2017 specimen stale counters + spec_codes backfill + 67 huge chunks are OUT OF SCOPE (Appendix D, separate cards)"
+- content_tsv is GENERATED ALWAYS (auto-refreshes on UPDATE) — verified of record, spec §0
+- 'embed_rev convention: patched rows -> 1 (stale, vector kept serving); restored to 2 at Phase D success'
+- 2017 specimen stale counters + spec_codes backfill + 67 huge chunks are OUT OF SCOPE (Appendix D, separate cards)
