@@ -1,0 +1,56 @@
+{
+  "run": "run-005",
+  "task": "T-OPS-PLANE-001",
+  "at": "2026-10-24T00:00:00Z",
+  "operator_order": "operator supplied credentials ('Here are all the PATs', trace 1a16a489670c0fe5) against the standing flip-build order (trace 1a16a2331cc7cd45) and the owed Vercel multi-DB question (trace 1a16a1c4e5b6e1b9); this run closes the Vercel question with LIVE API verification and folds the deployment facts into the T1 cut-over sequence",
+  "credentials_note": "three tokens received in-chat (GitHub PAT, Vercel token vcp_..., Neon napi token); ALL volatile-only, rotation list updated (Vercel token ADDED); zero tokens recorded in this receipt or any repo file",
+  "vercel_live_verification": {
+    "egress": "api.vercel.com REACHABLE from this sandbox (unlike api.neon.tech, DNS-fail wall unchanged, curl exit 6 re-tested this run)",
+    "auth": "GET /v2/user HTTP 200; user syllabai-1403; team team_ULL54qkhzKBmnKrpO6BD4mYX; token flag limited:true",
+    "project_inventory": "7 projects in team; serving-relevant: syllabai-v2 (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ) + syllabai-hub-v2 (prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, rootDirectory apps/hub)",
+    "serving_project_facts": {
+      "project": "syllabai-v2",
+      "serverlessFunctionRegion": "iad1 (US East); main DB us-east-2 ~= 10 ms RTT (fine); W1 ap-southeast-1 ~= 200 ms RTT per step (the seam pays it; region consolidation = operator latency lever, correctness unaffected — matches run-004 vercel_note)",
+      "env_count": 9,
+      "marketplace_integration": "NOT IN USE — zero env vars carry a configurationId; DATABASE_URL was set manually (type plain, target production). The env-var-per-warehouse house law needs NO marketplace integration; Vercel scales to N databases as N env vars + N pooler endpoints",
+      "database_url_hazard": "DECRYPT VERIFIED (GET /v9/projects/.../env/{id}?decrypt=true HTTP 200): the deployed DATABASE_URL host is ep-ancient-cake-a52e4kfd.us-east-2.aws.neon.tech = the DIRECT endpoint — NO -pooler suffix, NO pgbouncer param, NO channel_binding. Direct endpoints under serverless burst risk connection exhaustion (the classic outage pattern). House law says pooler mandatory for serverless. REMEDY: swap to ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech at the T1 cut-over deploy (same deploy that adds the flip envs; password NOT recorded here)",
+      "flip_env_state": "SYLLABAI_WAREHOUSE_SERVING absent; SYLLABAI_WAREHOUSE_URL_MATHS_4MA1 absent — correct default-off posture (serving byte-identical to pre-flip law)",
+      "deploy_path_law": "latest 3 production deploys (10-22 09:33, 10-22 09:54, 10-23 10:59, all READY) carry NO git meta — this project deploys via CLI/API, NOT git auto-deploy. CONSEQUENCE: the cut-over MUST include an explicit deploy step; env changes apply to NEW deployments only"
+    },
+    "hub_project_facts": {
+      "project": "syllabai-hub-v2",
+      "deploy_path": "git auto-deploy from main CONFIRMED (19:37:08Z deploy fired 30 s after run-004 merge 19:36:38Z, gitSource sha 3c2982cd0634ff757fd8ac13051d6e0574fbd386)",
+      "build_state": "RED: errorCode BUILD_UTILS_SPAWN_1 'bun run build' exited 1 on sha 3c2982cd AND on the prior sha (deploy 19:08:59Z also ERROR) — pre-existing hub lane red, consistent with the sme lane's disclosed CI triage; hub carries NO database env vars (reads via core API), UNRELATED to the flip",
+      "env_count": 6
+    },
+    "code_deployment_state": "the run-004 flip code is NOT yet deployed to syllabai-v2: latest READY production deploy 2026-10-23 10:59:16Z PREDATES the run-004 merge 2026-10-23 19:36:38Z"
+  },
+  "db_side_readiness_probe": {
+    "method": "flip-readiness.mjs (session-level READ ONLY both planes, max:1 pools, zero writes)",
+    "main": "warehouse_registry table ABSENT — migration 0013 not applied to main (exactly as run-004 declared: T1 step, operator order)",
+    "w1": "warehouse_meta intact: template_version=wh-v1, course_group=maths-4ma1, subject_id=763dfe2d-d2b5-48fb-ba4c-2f708c637b26, source_fingerprint plane:88706faabc86b92c2ef7519736516a5ae63bb19120de8b7dd88b26738d7a957a, migrated_at 2026-10-23T18:44:28.832Z; warehouse_chunks 8,202"
+  },
+  "answer_of_record": {
+    "question": "Will Vercel be able to handle these multiple databases? (trace 1a16a1c4e5b6e1b9)",
+    "answer": "YES — verified live, not from docs: a Vercel project is indifferent to database COUNT. Each warehouse is ONE extra env var (the URL name per the 0013 registry law) + one lazily-built pooler client (run-004 vercel_note, now platform-verified: no marketplace integration exists today, DATABASE_URL is a plain manual env, adding N more is the same mechanism). The ONLY platform-law items are (a) Neon POOLER endpoints for serverless — and the CURRENT DATABASE_URL violates this (hazard filed below), (b) an explicit deploy step at env change (syllabai-v2 does not auto-deploy), (c) function-region iad1 vs W1 ap-southeast-1 pays ~200 ms RTT per seam step (latency lever, correctness unaffected)."
+  },
+  "t1_cut_over_sequence_with_vercel_steps": [
+    "1. COW branch of main (console-side or CI lane; Neon API egress still walled from sandbox, DNS-fail) -> zero-residue DELETE rehearsal via repaired dryrun-4ma1.mjs (BRANCH_DB_URL + WH_DB_URL)",
+    "2. apply 0013 to main + UPDATE warehouse_registry SET status='SERVING' WHERE course_group='maths-4ma1'",
+    "3. Vercel syllabai-v2 env adds: SYLLABAI_WAREHOUSE_SERVING=on + SYLLABAI_WAREHOUSE_URL_MATHS_4MA1=<W1 pooler URL> (env-only, console or API via the vcp token); RECOMMENDED same-deploy remedy: swap DATABASE_URL to the -pooler host (closes the direct-endpoint hazard)",
+    "4. EXPLICIT DEPLOY of the run-004 tip (project is CLI/API-deploy, not git auto-deploy; env changes need a new deployment)",
+    "5. serving verification probe re-run (run-004 rig path) + estate tripwire watch on the main-write window"
+  ],
+  "hazards_filed": [
+    "DATABASE_URL direct-endpoint hazard (serverless burst exhaustion) — remedy folded into T1 step 3",
+    "hub build red (BUILD_UTILS_SPAWN_1, bun run build) — pre-existing, hub lane's, unrelated to flip (no DB envs on hub)",
+    "flip code not yet deployed to syllabai-v2 — cut-over step 4 exists because of this",
+    "PAT rotation CRITICAL-OVERDUE now spans four token families (GitHub, Neon API, Vercel, DB passwords) — all chat-transited"
+  ],
+  "residuals": [
+    "future warehouse region choice (us-east-2 vs ap-southeast-1) = operator latency lever; W1 stays where it is for v1 (proven plane)",
+    "neon marketplace integration deliberately NOT adopted (scoping around one primary DATABASE_URL; env-var-per-warehouse is simpler and now platform-verified)",
+    "no_vec 1,330 backlog unchanged; those rows cannot surface via vector search until drained"
+  ],
+  "push": "pending this run"
+}
