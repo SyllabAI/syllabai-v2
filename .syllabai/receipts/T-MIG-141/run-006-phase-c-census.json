@@ -1,0 +1,993 @@
+{
+ "run": "run-006-phase-c-census",
+ "task": "T-MIG-141",
+ "date": "2026-10-24",
+ "operator_order_trace": "1a16a7de7f5c9771",
+ "lane": "r7a (Super Z, session web-da4ab8b1, chat 1f3003b6, channel zai-web)",
+ "method": "t0_readonly READ ONLY txn, zero writes; criteria per SPEC §5; table of record sha256 1fdd4b4a5ebede2e437473e55a2786dea1a9755d03b68d1eea78a39364e2094a",
+ "introspection": {
+  "document_chunks": [
+   "atom_number",
+   "chunk_index",
+   "content",
+   "content_tsv",
+   "created_at",
+   "document_row_id",
+   "element_ids",
+   "embed_rev",
+   "embedded_at",
+   "embedding",
+   "embedding_model",
+   "id",
+   "kind",
+   "page_end",
+   "page_start",
+   "paper_code",
+   "series",
+   "spec_codes",
+   "subject_id",
+   "token_estimate",
+   "year"
+  ],
+  "documents": [
+   "canonical_json",
+   "checksum",
+   "checksum_algorithm",
+   "chunk_count",
+   "created_at",
+   "doc_version",
+   "document_id",
+   "element_count",
+   "extracted_at",
+   "file_name",
+   "id",
+   "ingested_by",
+   "kind",
+   "mime_type",
+   "page_count",
+   "schema_version",
+   "source_engine",
+   "source_engine_version",
+   "source_uri",
+   "text_element_count",
+   "validation_state"
+  ],
+  "exam_papers": [
+   "board",
+   "created_at",
+   "created_by",
+   "extraction_method",
+   "id",
+   "mark_scheme_document_id",
+   "paper_code",
+   "provenance",
+   "qualification",
+   "question_paper_document_id",
+   "series",
+   "session_label",
+   "subject_id",
+   "title",
+   "unit",
+   "validation_state",
+   "year"
+  ]
+ },
+ "pins_reverified": {
+  "total_chunks": 13765,
+  "wired_regex_hits": 0,
+  "unwired_regex_rows": 1338,
+  "wired_distinct_ids": 8198,
+  "c9_reproduced": true,
+  "scope_rows_present": 2949,
+  "scope_embed_rev_hist": {
+   "1": 2949
+  },
+  "scope_no_vec": 273,
+  "c9_id_set_sha256": "4014404b365f21b49e03997c53903a0145189c66ac58a9de38c56d3843c1c037",
+  "control_group_rows": 200,
+  "control_group_violations": [],
+  "f0cf_carriers": {
+   "e2a2b4c2-ef7b-4756-820a-e7978dba76b5": {
+    "content_has_U2209": true
+   },
+   "9cba1315-c47a-48f4-a0c8-cdd673e5463a": {
+    "content_has_U2209": true
+   }
+  },
+  "phase_d_selector_estate": 4006,
+  "embed_rev_hist_whole_bank": {
+   "1": 2949,
+   "2": 10816
+  },
+  "no_vec_whole_bank": 1330
+ },
+ "estate_size_check": {
+  "rows": 1338,
+  "bytes": 373915
+ },
+ "unwired_pulled": 1338,
+ "criteria_wired_plane": {
+  "note": "wired artifact rows = 0; no rows exist to test"
+ },
+ "criteria_unwired_plane": {
+  "T1_unmapped_ge3": 0,
+  "T2a_bracket_no_pairing_map": 0,
+  "T2b_bracket_all_covered_info": 12,
+  "T3_density_gt2pct": 18,
+  "union_rows_meeting_any": 21
+ },
+ "unwired_cp_histogram": {
+  "U+F0A2": 4756,
+  "U+F084": 45,
+  "U+F0B7": 17,
+  "U+F022": 15,
+  "U+F0E0": 15,
+  "U+F8EB": 14,
+  "U+F8F6": 14,
+  "U+F8EC": 12,
+  "U+F8ED": 12,
+  "U+F8F7": 12,
+  "U+F8F8": 12,
+  "U+F8EF": 8,
+  "U+F061": 8,
+  "U+F083": 7,
+  "U+F02D": 6,
+  "U+F026": 6,
+  "U+F0AE": 5,
+  "U+F085": 5,
+  "U+F0E5": 4,
+  "U+F0FC": 3,
+  "U+F8F0": 2,
+  "U+F8EE": 2,
+  "U+F072": 2,
+  "U+F033": 2,
+  "U+F097": 2
+ },
+ "unwired_cp_mapped_status": {
+  "U+F084": "covered",
+  "U+F0FC": "covered",
+  "U+F0B7": "covered",
+  "U+F8F0": "covered",
+  "U+F8EE": "covered",
+  "U+F8EF": "covered",
+  "U+F022": "covered",
+  "U+F083": "covered",
+  "U+F0A2": "covered",
+  "U+F0E0": "covered",
+  "U+F072": "covered",
+  "U+F8EB": "covered",
+  "U+F8EC": "covered",
+  "U+F8ED": "covered",
+  "U+F8F6": "covered",
+  "U+F8F7": "covered",
+  "U+F8F8": "covered",
+  "U+F02D": "covered",
+  "U+F0AE": "covered",
+  "U+F0E5": "covered",
+  "U+F033": "covered",
+  "U+F097": "covered",
+  "U+F061": "covered",
+  "U+F085": "covered",
+  "U+F026": "covered"
+ },
+ "unwired_uncovered_cps": {},
+ "unwired_ctl_histogram": {
+  "U+001F": 151,
+  "U+001E": 137,
+  "U+0003": 64,
+  "U+001D": 59,
+  "U+0007": 33,
+  "U+001C": 16,
+  "U+001A": 13,
+  "U+0018": 13,
+  "U+0014": 12,
+  "U+0016": 12,
+  "U+001B": 12,
+  "U+0015": 10,
+  "U+0017": 10,
+  "U+0019": 10,
+  "U+0008": 5,
+  "U+0002": 2,
+  "U+000E": 1,
+  "U+0013": 1,
+  "U+0011": 1
+ },
+ "unwired_distinct_docs": 115,
+ "samples": [
+  {
+   "id": "61c2551d-666c-4ed1-90ed-47bdf72bc702",
+   "document_id": "fbdabdde-a9b7-5b55-ab70-04cc0454f539",
+   "criteria": [
+    "T1-info(mapped)",
+    "T2b-info",
+    "T3"
+   ],
+   "density": 0.062992,
+   "pua_instances": 16,
+   "context": "1U+000AQ-Card | 4MA1/2HR | Jan 2023 | Q16 | marks: 2 | type: STRUCTURED | stem: *P72444A01632* U+F0A2U+F0A2U+F0A2U+F0A2 16 Here are two vectors. → U+F8EB −5U+F8F6 → U+F8EB 9U+F8F6 BA = U+F8EC U+F8F7 BC = U+F8EC U+F8F7 U+F8ED 4U+F8F8 U+F8ED 1U+F8F8 → Find AC as a co"
+  },
+  {
+   "id": "e58d2f7b-c0da-4f16-aa4d-34ac820f3674",
+   "document_id": "7063abae-4eca-5b24-8cc8-ec9f2b8fc300",
+   "criteria": [
+    "T1-info(mapped)",
+    "T2b-info",
+    "T3"
+   ],
+   "density": 0.047619,
+   "pua_instances": 12,
+   "context": "-Card | Q23 | p.1U+000AQ-Card | 4MA1/2H | Jun 2022 | Q23 | marks: 2 | type: STRUCTURED | stem: U+F8EB xU+F8F6 ° 23 The diagram shows a sketch of the graph of y = cos U+F8EC U+F8F7 U+F8ED 2U+F8F8 y U+F8EB xU+F8F6 ° y = cos U+F8EC U+F8F7"
+  },
+  {
+   "id": "a5c9d457-c27d-4920-8ea7-d809631f4d42",
+   "document_id": "d5470c60-d49e-5d21-b08a-7b6f73aaa7cb",
+   "criteria": [
+    "T1-info(mapped)",
+    "T2b-info",
+    "T3"
+   ],
+   "density": 0.047244,
+   "pua_instances": 12,
+   "context": "021 | Q13 | marks: 2 | type: STRUCTURED | stem: *P66298A01428* 13 Here are two vectors. → U+F8EB 5U+F8F6 → U+F8EB −2U+F8F6 AB = U+F8EC U+F8F7 CB = U+F8EC U+F8F7 U+F8ED 3U+F8F8 U+F8ED 4U+F8F8 → Find, as a column vector, AC ......."
+  },
+  {
+   "id": "5dab8b18-f155-4c23-9a04-7d2b032a0b78",
+   "document_id": "12960e1c-5800-5f55-85d5-4535c6627293",
+   "criteria": [
+    "T1-info(mapped)",
+    "T2b-info",
+    "T3"
+   ],
+   "density": 0.039683,
+   "pua_instances": 10,
+   "context": "-Card | Q12 | p.1U+000AQ-Card | 4MA1/2H | Nov 2025 | Q12 | marks: 5 | type: STRUCTURED | stem: U+F0A2U+F0A2U+F0A2U+F0A2 *P79789A01128* Turn over 1U+F8EB 4U+F8F6 12 (a) Complete the table of values for y = U+F8ECx + U+F8F7 2U+F8ED "
+  },
+  {
+   "id": "7e2ac30c-b44b-4c74-94ef-9910b2cd186f",
+   "document_id": "b9a24e7b-c4d5-50a1-8ebd-7df6218197bb",
+   "criteria": [
+    "T1-info(mapped)",
+    "T2b-info",
+    "T3"
+   ],
+   "density": 0.03937,
+   "pua_instances": 10,
+   "context": "Card | Q16 | p.1U+000AQ-Card | 4MA1/1HR | Jan 2023 | Q16 | marks: 6 | type: STRUCTURED | stem: U+F0A2U+F0A2U+F0A2U+F0A2 *P72438A01728* Turn over 16 The function f is such that 2 5 f(x) = where x ≠ 3x − 5 3"
+  },
+  {
+   "id": "b38ccc5c-14c9-494f-8011-b4888170f17f",
+   "document_id": "a7cbe006-841a-565a-9fc5-6991cf24b30a",
+   "criteria": [
+    "T3"
+   ],
+   "density": 0.031746,
+   "pua_instances": 8,
+   "context": ".1U+000AQ-Card | 4MA1/1H | Jun 2026 | Q11 | marks: 5 | type: STRUCTURED | stem: *P81062A01028* U+F0A2U+F0A2U+F0A2U+F0A2 Turn over *P81062A01128* TURN OVER FOR QUESTION 11 BLANK PAGE U+F0A2U+F0A2U+F0A2U+F0A2 DO NOT WRITE IN TH"
+  },
+  {
+   "id": "a7528241-e3d3-418c-a422-2322698c5c41",
+   "document_id": "1ec711d7-5ef1-51a4-b84b-d843df031ec5",
+   "criteria": [
+    "T3"
+   ],
+   "density": 0.025,
+   "pua_instances": 6,
+   "context": "1U+000AQ-Card | 4MA1/1HR | Jun 2023 | Q16 | marks: 2 | type: STRUCTURED | stem: *P72792A01628* U+F0A2U+F0A2U+F0A2U+F0A2 .. U+F026 U+F0266 == 35 16 Use algebra to show that 00.17 .176 (Total for Question 16 is 2 mark"
+  },
+  {
+   "id": "5f90b046-dd28-4f55-81c5-7fb1249c220b",
+   "document_id": "78c0d986-4d39-50b1-9036-cd83f2c46214",
+   "criteria": [
+    "T1-info(mapped)",
+    "T3"
+   ],
+   "density": 0.023904,
+   "pua_instances": 6,
+   "context": ".1U+000AQ-Card | 4MA1/2H | Jan 2022 | Q25 | marks: 5 | type: STRUCTURED | stem: *P69203A02628* U+F0A2U+F0A2U+F0A2U+F0A2 25 The function g is defined as g : x U+F061 5 + 6x − x 2 with domain {x : x U+F085 3} (a) Expr"
+  }
+ ],
+ "unwired_doc_meta_distribution": {
+  "kind=EXTERNAL_QUESTIONS engine=pdftotext-layout ingested_by=NULL": 89,
+  "kind=QUESTION_PAPER engine=pdflane-atoms ingested_by=set": 12,
+  "kind=MARK_SCHEME engine=pdflane-atoms ingested_by=set": 10,
+  "kind=EXTERNAL_QUESTIONS engine=tc27-card-bridge ingested_by=set": 4
+ },
+ "unwired_docs_by_kind": {
+  "EXTERNAL_QUESTIONS": 93,
+  "QUESTION_PAPER": 12,
+  "MARK_SCHEME": 10
+ },
+ "unwired_docs_by_source_engine": {
+  "pdftotext-layout": 89,
+  "pdflane-atoms": 22,
+  "tc27-card-bridge": 4
+ },
+ "unwired_docs_by_ingested_by": {
+  "NULL": 89,
+  "8f9839ee-2959-4b49-b104-fef78373aa15": 26
+ },
+ "unwired_doc_rollup_top25": [
+  {
+   "doc_row": "43157abc-1ac1-4dca-abae-6e61e0000d00",
+   "document_id": "78c0d986-4d39-50b1-9036-cd83f2c46214",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2H-JAN-2022.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:27:36.823000+00:00",
+   "rows": 25,
+   "bytes": 6249,
+   "pua": 102,
+   "cps": [
+    "U+F061",
+    "U+F085",
+    "U+F0A2"
+   ],
+   "ctl": 0
+  },
+  {
+   "doc_row": "026e18da-052a-4e39-9881-bdd451cb0e63",
+   "document_id": "dc56447e-226b-589d-aa74-98bb97e686e3",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2HR-JUN-2024.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:31:26.447000+00:00",
+   "rows": 25,
+   "bytes": 6327,
+   "pua": 98,
+   "cps": [
+    "U+F026",
+    "U+F0A2"
+   ],
+   "ctl": 23
+  },
+  {
+   "doc_row": "35928497-9b17-40a4-932f-0601c9110c6b",
+   "document_id": "71335051-74b5-5a55-86fa-a91cf2aaf82f",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2H-JUN-2026.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:33:34.894000+00:00",
+   "rows": 25,
+   "bytes": 6281,
+   "pua": 94,
+   "cps": [
+    "U+F084",
+    "U+F0A2"
+   ],
+   "ctl": 14
+  },
+  {
+   "doc_row": "400a70b2-a39c-47dc-a9fe-91e467907550",
+   "document_id": "9c18fc89-d77d-5f34-9ead-b0fee6886377",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2F-JAN-2022.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:27:23.989000+00:00",
+   "rows": 24,
+   "bytes": 6006,
+   "pua": 96,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 0
+  },
+  {
+   "doc_row": "bde87242-5438-4ea3-b8af-7d1d3eeb9fc4",
+   "document_id": "dadb19bd-cdda-55be-b6e9-e1a3b1556c4b",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2FR-JUN-2024.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:31:13.586000+00:00",
+   "rows": 24,
+   "bytes": 6075,
+   "pua": 92,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 6
+  },
+  {
+   "doc_row": "6b92eda4-219a-438e-b03e-cc6c914cb299",
+   "document_id": "4d3f43ff-4dde-5305-9c28-196a11011bbc",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2F-JUN-2023.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:29:56.123000+00:00",
+   "rows": 24,
+   "bytes": 6005,
+   "pua": 96,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 2
+  },
+  {
+   "doc_row": "29b90b59-055e-4c1a-a73b-f5ac065dc8ed",
+   "document_id": "fbdabdde-a9b7-5b55-ab70-04cc0454f539",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2HR-JAN-2023.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:29:24.099000+00:00",
+   "rows": 24,
+   "bytes": 6074,
+   "pua": 109,
+   "cps": [
+    "U+F084",
+    "U+F0A2",
+    "U+F8EB",
+    "U+F8EC",
+    "U+F8ED",
+    "U+F8F6",
+    "U+F8F7",
+    "U+F8F8"
+   ],
+   "ctl": 0
+  },
+  {
+   "doc_row": "2ba64bc1-dc12-43e2-a1e5-571ac6a5aea5",
+   "document_id": "3a284ff1-bbca-5bca-8844-6c39278dd795",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1F-JUN-2024.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:30:41.720000+00:00",
+   "rows": 24,
+   "bytes": 6026,
+   "pua": 96,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 0
+  },
+  {
+   "doc_row": "41f254a2-a7da-4f01-b849-1f2af2adc92d",
+   "document_id": "20d145f3-83d8-5b7a-9908-962887008d53",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1HR-JUN-2025.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:31:59.629000+00:00",
+   "rows": 24,
+   "bytes": 6020,
+   "pua": 90,
+   "cps": [
+    "U+F026",
+    "U+F0A2"
+   ],
+   "ctl": 17
+  },
+  {
+   "doc_row": "032540b9-85f9-4e2a-bc14-56a3d67e22ac",
+   "document_id": "4f66c2b3-08c8-5f06-b74f-ca98cbe300c6",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2HR-JUN-2025.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:32:20.519000+00:00",
+   "rows": 24,
+   "bytes": 6072,
+   "pua": 86,
+   "cps": [
+    "U+F084",
+    "U+F0A2"
+   ],
+   "ctl": 19
+  },
+  {
+   "doc_row": "c1d920f3-9850-434e-b090-116259052ba8",
+   "document_id": "e5b98a61-7810-5295-b6df-0df7f41d249c",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1F-JUN-2026.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:32:54.718000+00:00",
+   "rows": 24,
+   "bytes": 6028,
+   "pua": 92,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 13
+  },
+  {
+   "doc_row": "a1d12231-e889-47f5-9efd-740f90da40a2",
+   "document_id": "e8925e6b-903c-5ca2-a84e-8b4a51d7ba71",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2HR-JUN-2026.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:33:41.399000+00:00",
+   "rows": 24,
+   "bytes": 6079,
+   "pua": 86,
+   "cps": [
+    "U+F084",
+    "U+F0A2"
+   ],
+   "ctl": 25
+  },
+  {
+   "doc_row": "743fbfd6-cbec-44c8-a9ff-ae5b82e8aa84",
+   "document_id": "a8b2b577-642a-58fc-be1b-4c239f6171f0",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1HR-JAN-2022.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:27:17.764000+00:00",
+   "rows": 24,
+   "bytes": 6071,
+   "pua": 93,
+   "cps": [
+    "U+F084",
+    "U+F0A2"
+   ],
+   "ctl": 9
+  },
+  {
+   "doc_row": "654efcef-1b60-4963-b1a8-dc162c2fc34d",
+   "document_id": "854cae68-aed2-5511-9372-9c8446ad52ea",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1FR-JUN-2023.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:29:36.973000+00:00",
+   "rows": 23,
+   "bytes": 5825,
+   "pua": 92,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 0
+  },
+  {
+   "doc_row": "697601ee-7154-4e6c-a52b-5aa5c7d50fbe",
+   "document_id": "ab371cf3-4965-5285-8f15-ab3f3da2127f",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2FR-JAN-2023.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:29:11.390000+00:00",
+   "rows": 23,
+   "bytes": 5788,
+   "pua": 93,
+   "cps": [
+    "U+F084",
+    "U+F0A2"
+   ],
+   "ctl": 0
+  },
+  {
+   "doc_row": "8d2e71b8-ff6c-41ed-bde1-71e53c49e7e1",
+   "document_id": "9d77e69d-c183-57e7-b56a-89b6a1ad8b6b",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1F-JAN-2023.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:28:40.323000+00:00",
+   "rows": 23,
+   "bytes": 5772,
+   "pua": 92,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 0
+  },
+  {
+   "doc_row": "a6fc4995-1d48-4c7b-8af8-d57fd257edc9",
+   "document_id": "72d89d04-e21f-54b9-91bb-a2d5a340cbdc",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1H-NOV-2023.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:30:22.339000+00:00",
+   "rows": 23,
+   "bytes": 5776,
+   "pua": 93,
+   "cps": [
+    "U+F085",
+    "U+F0A2"
+   ],
+   "ctl": 16
+  },
+  {
+   "doc_row": "d6460d4e-7b0f-43f3-b962-a20e014f70d6",
+   "document_id": "fa49f701-d833-587d-a6d8-c7538f01ef8c",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1FR-JUN-2024.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:30:48.041000+00:00",
+   "rows": 23,
+   "bytes": 5818,
+   "pua": 84,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 5
+  },
+  {
+   "doc_row": "8a775534-67bd-46e3-a615-4e56f2dd6392",
+   "document_id": "21d41008-3940-59a6-b4a2-92273422247f",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2H-JUN-2023.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:30:09.012000+00:00",
+   "rows": 23,
+   "bytes": 5721,
+   "pua": 88,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 6
+  },
+  {
+   "doc_row": "14d27b0b-1190-43da-8a8c-1a2eefa86038",
+   "document_id": "0bc8e93f-3131-538d-a8aa-6adadbefb390",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1F-NOV-2023.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:30:16.151000+00:00",
+   "rows": 23,
+   "bytes": 5772,
+   "pua": 93,
+   "cps": [
+    "U+F085",
+    "U+F0A2"
+   ],
+   "ctl": 8
+  },
+  {
+   "doc_row": "ee4996c1-348d-403f-bd1e-b6ac2e52904c",
+   "document_id": "bd4fd909-9ecd-5d08-b77d-36471db55172",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1H-JUN-2024.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:30:54.311000+00:00",
+   "rows": 23,
+   "bytes": 5775,
+   "pua": 93,
+   "cps": [
+    "U+F061",
+    "U+F0A2"
+   ],
+   "ctl": 4
+  },
+  {
+   "doc_row": "bcc542d9-ba86-4e49-ab09-09ef8e5d246d",
+   "document_id": "76bf0a4d-f444-5ddd-b840-cea6c6f28350",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-2H-NOV-2024.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:31:33.736000+00:00",
+   "rows": 23,
+   "bytes": 5683,
+   "pua": 80,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 41
+  },
+  {
+   "doc_row": "bcade3b3-5138-4dcf-83f3-6b18f80da94e",
+   "document_id": "ffd3cf1c-6d8d-5b29-ae51-aae3e2b8fd35",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1H-JUN-2025.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:31:53.153000+00:00",
+   "rows": 23,
+   "bytes": 5775,
+   "pua": 87,
+   "cps": [
+    "U+F084",
+    "U+F085",
+    "U+F0A2"
+   ],
+   "ctl": 5
+  },
+  {
+   "doc_row": "f2b4565f-e9d9-4312-ad38-21c120344f45",
+   "document_id": "4aaa13a3-489b-5821-9dd9-e1f0ce320a33",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1H-NOV-2025.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:32:34.382000+00:00",
+   "rows": 23,
+   "bytes": 5731,
+   "pua": 84,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 15
+  },
+  {
+   "doc_row": "ec27ac3e-1a17-4e7c-9c60-d04bef182d4f",
+   "document_id": "ec3c6e46-e8b1-5f31-aba0-0e42bb1252f1",
+   "kind": "EXTERNAL_QUESTIONS",
+   "file_name": "qcard-4MA1-1FR-JUN-2026.txt",
+   "source_engine": "pdftotext-layout",
+   "ingested_by": null,
+   "created_at": "2026-10-20 11:33:01.682000+00:00",
+   "rows": 23,
+   "bytes": 5822,
+   "pua": 92,
+   "cps": [
+    "U+F0A2"
+   ],
+   "ctl": 0
+  }
+ ],
+ "unwired_by_paper_code_top30": [
+  {
+   "paper_code": "4MA1/2HR",
+   "year": 2024,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 25,
+   "bytes": 6327
+  },
+  {
+   "paper_code": "4MA1/2H",
+   "year": 2022,
+   "series": "JAN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 25,
+   "bytes": 6249
+  },
+  {
+   "paper_code": "4MA1/2H",
+   "year": 2026,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 25,
+   "bytes": 6281
+  },
+  {
+   "paper_code": "4MA1/1F",
+   "year": 2024,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 24,
+   "bytes": 6026
+  },
+  {
+   "paper_code": "4MA1/2HR",
+   "year": 2026,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 24,
+   "bytes": 6079
+  },
+  {
+   "paper_code": "4MA1/1HR",
+   "year": 2022,
+   "series": "JAN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 24,
+   "bytes": 6071
+  },
+  {
+   "paper_code": "4MA1/2FR",
+   "year": 2024,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 24,
+   "bytes": 6075
+  },
+  {
+   "paper_code": "4MA1/2HR",
+   "year": 2023,
+   "series": "JAN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 24,
+   "bytes": 6074
+  },
+  {
+   "paper_code": "4MA1/2F",
+   "year": 2022,
+   "series": "JAN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 24,
+   "bytes": 6006
+  },
+  {
+   "paper_code": "4MA1/2F",
+   "year": 2023,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 24,
+   "bytes": 6005
+  },
+  {
+   "paper_code": "4MA1/1F",
+   "year": 2026,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 24,
+   "bytes": 6028
+  },
+  {
+   "paper_code": "4MA1/1HR",
+   "year": 2025,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 24,
+   "bytes": 6020
+  },
+  {
+   "paper_code": "4MA1/2HR",
+   "year": 2025,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 24,
+   "bytes": 6072
+  },
+  {
+   "paper_code": "4MA1/1FR",
+   "year": 2026,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5822
+  },
+  {
+   "paper_code": "4MA1/1H",
+   "year": 2025,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5775
+  },
+  {
+   "paper_code": "4MA1/1F",
+   "year": 2023,
+   "series": "NOV",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5772
+  },
+  {
+   "paper_code": "4MA1/2H",
+   "year": 2024,
+   "series": "NOV",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5683
+  },
+  {
+   "paper_code": "4MA1/2FR",
+   "year": 2023,
+   "series": "JAN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5788
+  },
+  {
+   "paper_code": "4MA1/1H",
+   "year": 2025,
+   "series": "NOV",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5731
+  },
+  {
+   "paper_code": "4MA1/1HR",
+   "year": 2026,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5822
+  },
+  {
+   "paper_code": "4MA1/2FR",
+   "year": 2026,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5767
+  },
+  {
+   "paper_code": "4MA1/1H",
+   "year": 2023,
+   "series": "NOV",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5776
+  },
+  {
+   "paper_code": "4MA1/1F",
+   "year": 2023,
+   "series": "JAN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5772
+  },
+  {
+   "paper_code": "4MA1/1FR",
+   "year": 2023,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5825
+  },
+  {
+   "paper_code": "4MA1/2H",
+   "year": 2023,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5721
+  },
+  {
+   "paper_code": "4MA1/2F",
+   "year": 2026,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5777
+  },
+  {
+   "paper_code": "4MA1/1FR",
+   "year": 2024,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5818
+  },
+  {
+   "paper_code": "4MA1/1H",
+   "year": 2024,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 23,
+   "bytes": 5775
+  },
+  {
+   "paper_code": "4MA1/1F",
+   "year": 2025,
+   "series": "JUN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 22,
+   "bytes": 5475
+  },
+  {
+   "paper_code": "4MA1/2HR",
+   "year": 2022,
+   "series": "JAN",
+   "doc_kind": "EXTERNAL_QUESTIONS",
+   "rows": 22,
+   "bytes": 5565
+  }
+ ],
+ "whole_bank_pua_rows_unwired": 1269,
+ "whole_bank_pua_rows_wired": 0,
+ "verdict": {
+  "phase_c_population_wired_plane": 0,
+  "phase_c_disposition": "NO-OP of record — spec §5 trigger criteria have NO wired-plane subject post run-005; hybrid re-parse not required for the bank of record",
+  "born_clean_bank_wide": "zero UNMAPPED PUA codepoints bank-wide (unwired included): every artifact cp in the estate is table.v1-covered — T1=0 and T2a=0 even out of scope",
+  "unwired_plane": "out of spec scope by the join law — quantified above as the hygiene-card candidate"
+ },
+ "disclosures": [
+  "estate reconciliation: bank of record now 13,765 chunks (embed hist {1:2949, 2:10816}); run-001 counted 14,314 pre-restore. The NEON-DB-LOSS-1 restore window (Oct-21 00:43Z estate basis, T-OPS lane of record) sits between run-001 (Oct 23 11:07Z) and run-003; attribution owns T-OPS-NEONDB-LOSS-1. Decisive fact: EVERY T-MIG-141 pin of record reproduces EXACTLY on the current estate — C9 id-set sha, 2,949 scope rows embed_rev=1 byte-exact, G-E control group 200/200, wired regex 0, unwired 1,338, Phase-D selector 4,006 — i.e. the restore did not disturb any pin, and run-005's before-images sha reproduced at write time ('bank undrifted') already proved the same. Independent corroboration: t-ops run-006 tripwire 'corpus byte-flat 13,765 PASS'.",
+  "wired_distinct_ids 8,198 (all-qual wired chunk estate) recorded for context; the W1 maths-4ma1 warehouse plane (8,202 rows, id-set 88706faa, t-ops of record) is selected by the t-ops serving law, not the T-MIG-141 join law — the delta is a selection-law difference, not a contradiction; W1 re-copy post-dates run-005 (parity EXACT vs live main), lane holds no W1 creds — not independently re-verified here, disclosed.",
+  "census operationalization: T2 'bracket-piece classes with no positional-pairing map' is evaluated at cp-class coverage level (bracket family = table targets U+239B..U+23DC incl. seq-rule members + uncovered F8E7..F8FB band per run-002b); per-row positional pairing feasibility is a re-parse-time question and is flagged as such.",
+  "unwired doc identity: 115 distinct documents carry the 1,338 artifact rows (373,915 bytes total — a small, bounded estate); identity fields in the rollup above are the hygiene-card intake material."
+ ],
+ "next_safe_actions": [
+  "Phase D re-embed fold-in via T-MIG-138 machinery (selector embedding IS NULL OR embed_rev < 2 = 4,006 re-verified this run; median self-cosine >= 0.85 hard gate; embed_rev restored to 2 per row; T138_* secrets hygiene-deleted at the last tranche)",
+  "Phase E intake law (syllabai-parser conformance 16/16-class + ocr_batch integration + C-intake-zero-pua canary), then acceptance canaries C1-C9 sweep + close-out (C7 is vacuous-green: zero Phase-C replacement papers exist)",
+  "hygiene-card candidate (OUT of T-MIG-141 scope by the join law): unwired plane 1,338 rows / 115 docs (89 Q-Card pdftotext-layout ingested_by NULL + 22 pdflane-atoms QP/MS + 4 tc27-card-bridge) holds ZERO unmapped cps — fully table.v1-coverable, so the remedy is an in-place patch extension (frozen phase_b_apply.py + scope-query amendment), NOT a Phase-C re-parse"
+ ]
+}
