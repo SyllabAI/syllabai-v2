@@ -20429,6 +20429,25 @@ Work Log:
 
 Stage Summary:
 - T-CONTENT-MB4-PBLOCK-001 is the OPEN run-003 candidate of record for MB4-MS-FRESHPARSE; the 2,411 other parts verified clean player-side; U+FFFD/OCR-sandwich classes explicitly NOT widened into this card (their own filings stand).
+
+---
+Task ID: UIUX-TIER-B run-004 re-transcription (operator order trace 1a16af738f7076c1 "fire Tier-B run-004")
+Agent: R0-integrator (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Fetch-first: origin/main == local 23e59a0c (0 incoming); structure law re-proven 65/1270/2412/6500 at tip before any edit.
+- Census regeneration: q-deg 110 / 10n 2 / spaced-frac-sqrt 0 residual hits (run-003 fixed the filed marquee classes); problemMd strict numeric-token flatten census 627 parts / 63 sets (includes legit figure-label classes — per-part adjudication required).
+- Evidence stack: 76 QP/MS PDFs anonymous-fetched (syllabai-pastpapers raw mirror, 38 papers); 53 part crops + 51 MS page renders + 12 QP page renders visually read; per-fragment worksheets r4a-worksheet.json / r4b-ufffd-worksheet.json.
+- (B) UFFFD sub-lane CLOSED: 58 rules / 11 parts / 2019-06-4mb1-02 — UFFFD 11 -> 0. Matrix pmatrix rebuilds q4 (d)/(e) incl. 2(-1 0; -0.5 -0.5) answer cell; (BE=)sqrt(5^2+8^2-40sqrt3), (k=)sqrt((18.9+"10")/"10"), 1/2(8)(5)sin30 q5; (3/4-3/5) + ALT 1/4=2/5 x q q7 (k->q per MS visual); quadratic formula + completing-square q9p1; y=5-2((3+3sqrt5)/2) q9p2 (s->y); |q|^2=q1^2+q2^2, 119-42sqrt5 or 7(17-6sqrt5) q9p3 (r->x); (f'(x)=)6x^2+2ax+b q10. Same-cell bleed folds + row-prefix meta strips per house law.
+- (C) ANNEX named class executed on 2025-06-4mb1-01 end-to-end: 21 rules / 17 questions problemMd whole-stem rebuilds from QP pages 2-24 ((1.2^2+5)/(7.1-3); 12-7n; 5 2/3-2 4/5; g=5d-4e^2; -4<=x<2; D/E/F prime factors x3; sqrt(675)-sqrt(108); (2x+3)/4+(x-1)/3=7; 10p^2q^4-15p^3q; 2x^2-9x-5; proportionality block; 0.7 g/cm^3 density; A/A-B/C pmatrix x3; 3x^2-(10/3)x+3=2y; inequalities x3).
+- (A) evidenced subset: 29 rules / 9 part-instances — 81y^12; 2563/11 fraction flattens (2020-06+11-01R q1); major-sector (360-76)/360 x pi x 16 + 568/45 pi (q22); quadratic discriminants 20^2-4x3x-175 (2020-06+11-02R q9); 61.8x10^8 + 2x10^7 standard forms (2024-06-01R q5); (39/4)n^2-(39/2)n=10n^2-30n+20 n=40 (2024-06-02 q6).
+- CORRECTION of record: the run-003 receipt's illustrative '2024-06-02 q6 n^4-n^2=10n^3-30n^2+20n' was a misread — MS p12 visual is the fraction-prefixed quadratic (fixed here).
+- GATES: structure 65/1270/2412/6500 unchanged; marks diff-proven identical vs HEAD; KaTeX gate 335 unique segments 0 failures (hub katex throwOnError); raw-$ parity 0 introduced (53 pre-existing currency-class fields byte-identical set vs HEAD); UFFFD 0; scrub-assert clean; single-line compact JSON kept.
+- Receipt .syllabai/lane-artifacts/UIUX-TIER-B/receipt-run004-retranscription-r0.json; evidence pack (scripts + census JSONs + 134 PNGs) mirrored to .syllabai/lane-artifacts/UIUX-TIER-B/run-004-evidence/ per the MB4-MS-FRESHPARSE wipe lesson; manifest note UIUX-TIER-B-RUN-004 appended.
+- DISCLOSED REMAINDER for operator (run-005 candidates, not self-granted): R4-A rebuild-class 35 parts / 30 sets (evidence pack persisted); ANNEX named 2025-11-02 (7 real parts), 2019-01-01R q13, 2018-06-01 q7; fleet strict census 627 parts; italic-misread fleet (q9-2019-06-02 p0 '2r+s=5' class); q10p1 P4 answer cell '2a+b=-14' addition deferred.
+
+Stage Summary:
+- Tier-B run-004 LANDED: 108 verified fixes across 37 parts / 9 sets (UFFFD plane closed; ANNEX named-set 2025-06-01 closed; solutionMd census evidenced subset closed) — learner-visible debris on the flagship flatten papers is now KaTeX-clean of record. Residual quantified and evidence-packed for run-005. Zero DB contact, zero content-plane changes outside igcse-maths-b-16, fetch-first, no force.
 Task ID: T-SENECA-001 (run-001)
 Agent: Super Z (zai-web session web-d0c9a0d3-6cbb-48ca-91b1-54896d1b585e)
 Task: The operator commissioned the teacher assignment creator's "Seneca resources" option on syllabai-hub-v2.vercel.app — resources linked only to courses that exist (pilot: Edexcel IGCSE Chemistry 4CH1), no course filterer, plan first.
