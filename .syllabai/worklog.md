@@ -13119,3 +13119,22 @@ Work Log:
 
 Stage Summary:
 - T-RULE-T2-HOLDSPLIT-1 run-001: the tranche-2 ruling program's hold/split residuals are RESOLVED of record — 9Dxx/pYmR/Cdtk anchored (6 codes), registry unmapped debt now 259. sid-anchor plane: 23 + 3 = 26 operator-anchored sids. DURABILITY RESIDUAL (same shape as T-RULE-T2-APPLY-1): capture the 3 new sid->codes verdicts into the resources spec-links sidecar sidAnchors manifest BEFORE the next consume re-key, else the engine will not reproduce these rows. Residuals unchanged: tranche-3 (1,203 sid-less), PAT rotation CRITICAL-OVERDUE, hung resources sync job. LANE: IDLE.
+
+---
+Task ID: T-OPS-NEONDB-LOSS-1
+Agent: Super Z (zai-web session web-590847c1-cf63-4098-b0c8-a90085355429, chat 986f6715-e92f-43a2-a13a-818c0a1a7d17)
+Task: operator "figure it out" amid a multi-agent fleet — identify the overnight DB change T-MIG-138 run-008 asked for, census the production target, decide the storage architecture (trace 1a16869e9139f859)
+
+Work Log:
+- Fetch-first: origin advanced 0b02f88 -> 8b4172b (fleet active: T-MIG-138 run-008 BLOCKED 'relation document_chunks does not exist', T-BOOK-OPS f-0011 T-C20 battery pins books break to the api->Neon leg, 4MB1 artwork scale run, CIE tranche-2 holdsplit, F-184 strength build, study-plan-builder merged). Local worktree had pre-existing foreign modifications -> all work done in a detached git worktree from FETCH_HEAD; dirty tree untouched.
+- Read-only probes via pooler (neondb_owner role): prod endpoint ep-ancient-cake-a52e4kfd now serves an 18 MB neondb, PostgreSQL 18.6, schemas public+neon_auth ONLY, ZERO syllabai of-record tables. Template app schema (Assignment/Class/Enrollment/Resource/User) + neon_auth (Managed Better Auth) in its place. All-db enumeration: no other database holds the estate.
+- Vercel read-only forensics: carrier syllabai-v2 DATABASE_URL -> same endpoint ep-ancient-cake-a52e4kfd (app role syllabai_v2_app_w2r2). New empty Vercel project my-project created Oct 22 (no envs). Env decrypt exposed 3 plaintext LLM keys to chat transit -> rotation list EXTENDED (disclosed in receipt).
+- THREE-SOURCE ATTRIBUTION converged: this lane's probes + T-MIG-138 run-008 receipt (table vanished 09:15Z Oct 22 -> 07:45Z Oct 23) + T-C20 battery (break inside first DB query) => the production database was dropped/recreated operator-keyed overnight (context: 1 GB Free-plan wall; official Neon at-limit behavior = growing writes FAIL, no platform purge). Receipt: .syllabai/receipts/NEON-DB-LOSS/run-001-census-attribution-r0.json (includes the 2026-10-22 baseline census = restoration acceptance gate + recovery_order of 5 steps).
+- Operator Q&A of record this session: Neon Auth (Managed Better Auth) verified free 60k MAU (auth fork: Path B recommended for the frozen core); storage architecture DECIDED operator-delegated -> ONE account + course-group warehouse fleet + backup law => filed as docs/ADR-038-COURSE_GROUP_VECTOR_WAREHOUSES.md (verified Free inventory: 1 GB/project + 20 GB account cap + 100 projects + 1 snapshot; multi-account REJECTED with rationale; satellite quarantined; sequencing: restore -> trim -> provisioner -> maths group first).
+- Zero Neon writes, zero Vercel mutations, zero LLM calls. Additive repo delta only: receipt + ADR-038 + this entry.
+
+Stage Summary:
+- T-MIG-138's "identify the overnight DB change" is ANSWERED of-record: operator-keyed drop/recreate of neondb during the 1 GB storage incident; 71 tables + content gone server-side; template prototype + neon_auth in their place.
+- Restoration acceptance gate of record = the Oct-22 baseline census inside the receipt (document_chunks ~13.7k, mark_points 40,250, 301 QP/289 MS, 4MA1=110, 4CH1=37+8, migrations 0009). Restoration agent owns the endpoint single-writer until parity.
+- ADR-038 ACCEPTED: one Neon account, ~10-19 course-group warehouses, two-step retrieval seam, nightly dump backup law, Launch plan = documented escape hatch. Trigger already fired; build order gated on restore completion.
+- Residuals: PAT rotation CRITICAL-OVERDUE (fleet-wide, now 8+ secrets in transit including 3 LLM keys via Vercel env decrypt); satellite fold-in decision pending (classroom domain + Path B auth, never dual identity); egress under real student traffic untested. LANE: IDLE (awaiting restore completion for the parity census).
