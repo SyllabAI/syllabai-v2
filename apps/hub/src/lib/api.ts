@@ -54,6 +54,9 @@ import type {
   AssignmentSummaryView,
   AssignmentSubmissionView,
   AssignmentView,
+  AssignmentPackLibraryView,
+  AssignmentPackLearnerView,
+  AssignmentPackCompleteResponse,
   ExamPaperBrowseView,
   ExamPaperDetailView,
   HumanMarkView,
@@ -1469,6 +1472,58 @@ export const api = {
   // Learner: newest-first assignments with my hand-in beside each.
   learnerAssignments: () =>
     request<LearnerAssignmentView[]>("/api/v1/learners/me/assignments"),
+
+  // ── Seneca resource packs (T-SENECA-001) — the assignment creator's
+  // "Seneca resources" option. The pack IS an assignments row + side-table
+  // tasks, so hand-ins stay the submitAssignmentSubmission endpoint above;
+  // these methods carry the pack-specific reads/writes only.
+
+  // Teacher: the course-linked resource library for the picker — scoped by
+  // the page's OWN course (no course filterer anywhere in this surface).
+  teacherPackLibrary: (course: string, opts?: { kind?: string; topic?: string; q?: string; limit?: number }) => {
+    const p = new URLSearchParams({ course });
+    if (opts?.kind) p.set("kind", opts.kind);
+    if (opts?.topic) p.set("topic", opts.topic);
+    if (opts?.q) p.set("q", opts.q);
+    if (opts?.limit) p.set("limit", String(opts.limit));
+    return request<AssignmentPackLibraryView>(
+      `/api/v1/teacher/assignment-packs/resources?${p.toString()}`,
+    );
+  },
+
+  // Teacher: register the pack (fail-closed: every resource id must exist
+  // AND belong to the course).
+  teacherCreateAssignmentPack: (body: {
+    title: string;
+    courseSlug: string;
+    courseLabel: string;
+    dueAt: string;
+    classId?: string | null;
+    resourceIds: string[];
+  }) =>
+    request<import("@/lib/types").AssignmentPackDetailView>(
+      "/api/v1/teacher/assignment-packs",
+      { method: "POST", body: JSON.stringify(body) },
+    ),
+
+  // Teacher: pack preview (tasks with content; owner-gated).
+  teacherAssignmentPack: (id: string) =>
+    request<import("@/lib/types").AssignmentPackDetailView>(
+      `/api/v1/teacher/assignment-packs/${id}`,
+    ),
+
+  // Learner: the pack's tasks + MY per-task states.
+  learnerAssignmentPack: (id: string) =>
+    request<AssignmentPackLearnerView>(`/api/v1/learners/me/assignment-packs/${id}`),
+
+  // Learner: complete one task (server-side scoring: exam questions clamp
+  // marksAwarded into 0..marksTotal; sections/quizzes complete at full
+  // credit). Returns the derived hand-in numbers.
+  learnerCompletePackTask: (assignmentId: string, resourceId: string, marksAwarded?: number | null) =>
+    request<AssignmentPackCompleteResponse>(
+      `/api/v1/learners/me/assignment-packs/${assignmentId}/tasks/${resourceId}/complete`,
+      { method: "POST", body: JSON.stringify({ marksAwarded: marksAwarded ?? null }) },
+    ),
 
   // T-C78: the server-composed agenda read model (Spec §22 route) — the
   // "what is on my plate" view, due-soonest first. Called WITHOUT a rootId

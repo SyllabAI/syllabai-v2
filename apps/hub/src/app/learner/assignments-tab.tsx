@@ -37,7 +37,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { api, ApiError } from "@/lib/api";
-import type { LearnerAssignmentView } from "@/lib/types";
+import type { LearnerAssignmentView, AssignmentPackLearnerView, AssignmentPackTask } from "@/lib/types";
+import { PackPlayer } from "./pack-player";
 import { useAllCourseProgress, type CourseProgress } from "@/lib/progress";
 import { coreEvidenceChanged } from "@/lib/attempt-bridge";
 import { cn } from "@/lib/utils";
@@ -80,6 +81,48 @@ export function AssignmentsTab() {
   const [busyId, setBusyId] = useState<string | null>(null);
   const [handInError, setHandInError] = useState<string | null>(null);
 
+  // ── Seneca resource packs (T-SENECA-001): assignments the teacher built
+  // from the course's Seneca library (specRefs []). Expanded rows lazily
+  // fetch the pack; a 404 means "bank assignment" and the practice flow
+  // renders as before — existence never leaks either way.
+  const [packs, setPacks] = useState<Record<string, AssignmentPackLearnerView | null>>({});
+  const [packBusyTask, setPackBusyTask] = useState<string | null>(null);
+  const [packError, setPackError] = useState<string | null>(null);
+
+  const loadPack = useCallback(async (assignmentId: string) => {
+    setPackError(null);
+    try {
+      const pack = await api.learnerAssignmentPack(assignmentId);
+      setPacks((prev) => ({ ...prev, [assignmentId]: pack }));
+    } catch (err: unknown) {
+      if (err instanceof ApiError && err.status === 404) {
+        setPacks((prev) => ({ ...prev, [assignmentId]: null })); // bank assignment
+      } else {
+        setPackError(err instanceof ApiError ? err.message : "The resource pack is unavailable right now.");
+        setPacks((prev) => ({ ...prev, [assignmentId]: null }));
+      }
+    }
+  }, []);
+
+  const completePackTask = useCallback(
+    async (assignmentId: string, task: AssignmentPackTask, marksAwarded: number | null) => {
+      setPackBusyTask(task.resourceId);
+      setPackError(null);
+      try {
+        await api.learnerCompletePackTask(assignmentId, task.resourceId, marksAwarded);
+        await loadPack(assignmentId); // the refetch carries myStates + derived numbers
+        coreEvidenceChanged();
+      } catch (err: unknown) {
+        setPackError(
+          err instanceof ApiError ? err.message : "The completion could not be recorded — try again in a moment.",
+        );
+      } finally {
+        setPackBusyTask(null);
+      }
+    },
+    [loadPack],
+  );
+
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
@@ -107,12 +150,16 @@ export function AssignmentsTab() {
   const progressByCourse = useAllCourseProgress(slugs);
 
   const handIn = useCallback(
-    async (view: LearnerAssignmentView) => {
+    async (view: LearnerAssignmentView, pack?: AssignmentPackLearnerView | null) => {
       const { assignment } = view;
-      const { questionsCompleted, selfMarked } = deriveWork(
-        progressByCourse[assignment.courseSlug],
-        assignment.specRefs,
-      );
+      // pack work derives from the SERVER-recorded task states (marks the
+      // pack scored); bank work derives from this browser's recorded practice
+      const questionsCompleted = pack
+        ? pack.myStates.filter((s) => s.status === "complete").length
+        : deriveWork(progressByCourse[assignment.courseSlug], assignment.specRefs).questionsCompleted;
+      const selfMarked = pack
+        ? pack.myStates.reduce((a, s) => a + (s.marksAwarded ?? 0), 0)
+        : deriveWork(progressByCourse[assignment.courseSlug], assignment.specRefs).selfMarked;
       const capped = Math.min(questionsCompleted, assignment.questionCount);
       if (capped === 0) return;
       setBusyId(assignment.id);
@@ -199,14 +246,24 @@ export function AssignmentsTab() {
         );
         const capped = Math.min(questionsCompleted, a.questionCount);
         const score = selfMarked > 0 ? Math.min(selfMarked, a.marksTotal) : null;
+        // pack work (specRefs []): the server-recorded states are the facts
+        const pack = packs[a.id];
+        const packDone = pack ? pack.myStates.filter((s) => s.status === "complete").length : 0;
+        const packMarks = pack ? pack.myStates.reduce((x, s) => x + (s.marksAwarded ?? 0), 0) : 0;
+        const isPackRow = a.specRefs.length === 0;
         return (
           <Card key={a.id} className="py-0">
             <CardContent className="p-4">
               <button
                 type="button"
                 onClick={() => {
-                  setOpenId(open ? null : a.id);
+                  const next = open ? null : a.id;
+                  setOpenId(next);
                   setHandInError(null);
+                  // lazily resolve the pack on first expand (404 = bank row)
+                  if (next === a.id && isPackRow && packs[a.id] === undefined) {
+                    void loadPack(a.id);
+                  }
                 }}
                 aria-expanded={open}
                 className="flex w-full items-start justify-between gap-2 text-left"
@@ -265,19 +322,39 @@ export function AssignmentsTab() {
 
               {open && (
                 <div className="mt-3 space-y-3 border-t pt-3">
-                  <div className="flex flex-wrap items-center gap-1.5">
-                    <span className="mr-1 text-xs text-muted-foreground">Practice:</span>
-                    {a.specRefs.map((code) => (
-                      <a
-                        key={code}
-                        href={`/courses/${a.courseSlug}/exam-questions?spec=${encodeURIComponent(code)}`}
-                        className="inline-flex items-center gap-1 rounded-md border px-2 py-1 font-mono text-[10px] hover:bg-muted/60"
-                      >
-                        {code}
-                        <ExternalLink className="size-3" aria-hidden />
-                      </a>
-                    ))}
-                  </div>
+                  {isPackRow ? (
+                    pack === undefined ? (
+                      <p className="flex items-center gap-2 text-xs text-muted-foreground" role="status">
+                        <Loader2 className="size-3.5 animate-spin" aria-hidden /> Loading the resource pack…
+                      </p>
+                    ) : pack ? (
+                      <PackPlayer
+                        pack={pack}
+                        busyTaskId={packBusyTask}
+                        error={packError}
+                        onTaskComplete={(task, marks) => void completePackTask(a.id, task, marks)}
+                      />
+                    ) : (
+                      <p className="text-xs text-muted-foreground">
+                        This assignment carries no subtopic links and no resource pack detail is
+                        available for your account.
+                      </p>
+                    )
+                  ) : (
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="mr-1 text-xs text-muted-foreground">Practice:</span>
+                      {a.specRefs.map((code) => (
+                        <a
+                          key={code}
+                          href={`/courses/${a.courseSlug}/exam-questions?spec=${encodeURIComponent(code)}`}
+                          className="inline-flex items-center gap-1 rounded-md border px-2 py-1 font-mono text-[10px] hover:bg-muted/60"
+                        >
+                          {code}
+                          <ExternalLink className="size-3" aria-hidden />
+                        </a>
+                      ))}
+                    </div>
+                  )}
 
                   {mySubmission !== null && (
                     <p className="text-xs text-muted-foreground">
@@ -294,8 +371,8 @@ export function AssignmentsTab() {
                       <Button
                         size="sm"
                         className="gap-1.5"
-                        disabled={busyId === a.id || capped === 0}
-                        onClick={() => void handIn(view)}
+                        disabled={busyId === a.id || (isPackRow ? packDone === 0 : capped === 0)}
+                        onClick={() => void handIn(view, pack)}
                       >
                         {busyId === a.id ? (
                           <Loader2 className="size-3.5 animate-spin" aria-hidden />
@@ -305,9 +382,13 @@ export function AssignmentsTab() {
                         {mySubmission === null ? "Hand in" : "Update hand-in"}
                       </Button>
                       <span className="max-w-md text-[11px] leading-relaxed text-muted-foreground">
-                        {capped === 0
-                          ? "Practice the target subtopics first — hand-in attaches the work this browser recorded."
-                          : `Will record ${capped}/${a.questionCount} questions practiced${score !== null ? ` with self-marked ${score}/${a.marksTotal}` : " (no self-marked score yet)"}. Re-hand-in after more practice — the latest counts.`}
+                        {isPackRow
+                          ? packDone === 0
+                            ? "Work through the pack tasks first — hand-in records the completions your account already holds."
+                            : `Will record ${packDone}/${a.questionCount} tasks complete${packMarks > 0 ? ` with ${packMarks}/${a.marksTotal} marks` : ""}. Re-hand-in after more tasks — the latest counts.`
+                          : capped === 0
+                            ? "Practice the target subtopics first — hand-in attaches the work this browser recorded."
+                            : `Will record ${capped}/${a.questionCount} questions practiced${score !== null ? ` with self-marked ${score}/${a.marksTotal}` : " (no self-marked score yet)"}. Re-hand-in after more practice — the latest counts.`}
                       </span>
                     </div>
                   ) : (

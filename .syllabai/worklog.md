@@ -20448,3 +20448,52 @@ Work Log:
 
 Stage Summary:
 - Tier-B run-004 LANDED: 108 verified fixes across 37 parts / 9 sets (UFFFD plane closed; ANNEX named-set 2025-06-01 closed; solutionMd census evidenced subset closed) — learner-visible debris on the flagship flatten papers is now KaTeX-clean of record. Residual quantified and evidence-packed for run-005. Zero DB contact, zero content-plane changes outside igcse-maths-b-16, fetch-first, no force.
+Task ID: T-SENECA-001 (run-001)
+Agent: Super Z (zai-web session web-d0c9a0d3-6cbb-48ca-91b1-54896d1b585e)
+Task: The operator commissioned the teacher assignment creator's "Seneca resources" option on syllabai-hub-v2.vercel.app — resources linked only to courses that exist (pilot: Edexcel IGCSE Chemistry 4CH1), no course filterer, plan first.
+
+Work Log:
+- VERIFIED the deployment mapping: syllabai-hub-v2.vercel.app = SyllabAI/syllabai-v2 (apps/hub frontend + apps/api Hono @ syllabai-v2.vercel.app, Neon). The existing assignment creator = /teacher/assignments (assignments-client.tsx): bank assembly by subtopic spec refs → POST /api/v1/teacher/assignments (frozen T-MIG-117 wire, fail-closed curriculum gate); learner side = assignments tab + agenda + append-only assignment_submissions; roster computed. Pilot slug: igcse-chemistry-19 (courses.json, 94 registered).
+- PLAN of record: docs/SENECA_RESOURCE_PACKS_PLAN.md (D1-D8). The frozen assignments family is untouched — the option rides a SELF-CONTAINED v2-native module (the T-TEACH-012 fence): contracts/assignment-packs.ts + routes/assignment-packs.ts (route+service, ONE file) + 2 mount lines (OUT-OF-FENCE flagged) + own tests.
+- DB: 0010_seneca_resource_packs.sql ADDITIVE-ONLY — seneca_resources (course-linked content), assignment_resources (side-table task list FK'd to the core-era assignments row — never ALTERed, the 0006 precedent), assignment_resource_states (per-learner completion + server-side score). meta/0000_snapshot.json extended via scripts/t-seneca-001-snapshot.py (drizzle-kit introspection shapes mirrored from public.assignments/class_members); rebaseline pins advanced 75/702/102/70/120 → 78/725/108/74/126 — VERIFY PASS, 0 drifts.
+- API laws honored: fail-closed library 404 "unknown course target" (course_registry-resolved labels); create = the frozen class-gate ladder verbatim (404/403/409/400) + strict dueAt instant law + first-missing resource 404; marks law (EQ clamp ≥1 + 1 per section/quiz); V51 learner visibility (non-member → the list's own 404, no existence leak); closed window 409 "assignment is closed: {title}" (learner-me wording); server-side scoring with derived (questionsCompleted, score); lowercase SQL templates + ::uuid/::text[] bind discipline (house style).
+- HUB: creator gains a flag-gated content-source toggle ("Question bank" byte-for-byte unchanged | "Seneca resources" picker: kind tabs + topic select + search + ordered tray — course-scoped by the page's OWN context, NO course filterer anywhere). Learner: PackPlayer (notes markdown, exam questions with CLIENT-side $var instantiation + mark-scheme reveal + marks entry, quizzes) + pack-aware hand-in through the EXISTING submissions endpoint. flags.json key senecaCourseResources (igcse-chemistry-19; absent = OFF, one-flip kill).
+- IMPORT: scripts/import_seneca_resources.py (psycopg2, the t139/kappa pattern) — SENECA_TO_HUB map fail-closed vs courses.json AND the live course_registry at write time; per-row PII re-check (fail-closed); upsert idempotent. DRY-RUN of record: 286 courseSection + 1,430 examQuestion + 3,382 quiz = 5,098 rows → igcse-chemistry-19, PII gate clean. Corpus stays in syllabai-experimental (d67bc1e3) — never shipped in-repo.
+- GATES: bun run typecheck 0; bun test apps/api+packages 2,642/0 (27 new); hub tsc 0; eslint 0 on touched files. Frozen families diff-checked byte-untouched.
+- Stage Summary:
+- T-SENECA-001 IN_REVIEW (branch t-seneca-001/r5, base 6bedab6; receipt .syllabai/receipts/T-SENECA-001/run-001.json). The teacher assignment creator now has the Seneca-resources option course-linked to the 4CH1 pilot; learners get the full view→complete→auto-score→hand-in loop; roster/agenda/submissions work unchanged (packs ARE assignments rows).
+- PENDING operator input: DATABASE_URL (Neon) to apply 0010 + run the import; deploy then flips nothing (flag already lists igcse-chemistry-19 — the option appears on the pilot course immediately, kill = delete the slug).
+
+---
+Task ID: T-SENECA-001 run-003 (operator ruling "chemistry-group warehouse", trace 1a16adad843081b1)
+Agent: main (zai-web session web-d0c9a0d3-6cbb-48ca-91b1-54896d1b585e)
+Task: Record the operator placement ruling on this branch; run-004 rework list of record.
+
+Work Log:
+- Operator ruled (trace 1a16adad843081b1): Seneca resource packs -> chemistry-group warehouse (sci-chem), per docs/DATA-PLANE-PLACEMENT.md.
+- run-002's main-side seneca_resources (5,098 rows) moves at T1: wh-v2 template (frozen wh-v1 + pack DDL), parity-verified migration, zero-residue main drop, no dual writes.
+- assignment_resources + assignment_resource_states stay in main; the seneca FK drops (seam law); D5 fail-closed validation already app-side.
+- Receipt of record: .syllabai/receipts/T-SENECA-001/run-003-placement-ruling.json (also filed on origin/main bookkeeping).
+- Code rework lands as run-004 on this branch BEFORE merge; DB steps await the operator's sci-chem warehouse URL + knock.
+
+Stage Summary:
+- Merge of PR #316 held until the run-004 placement rework; bookkeeping-only commit, no code contact, fetch-first, no force.
+
+
+---
+Task ID: T-SENECA-001 run-004 (the placement rework on t-seneca-001/r5)
+Agent: Super Z (zai-web session web-d0c9a0d3-6cbb-48ca-91b1-54896d1b585e)
+Task: Execute the run-004 code rework of record (run-003 receipt consequences): merge main, split 0010, two-client seam, importer retarget, plan D9.
+
+Work Log:
+- origin/main MERGED into t-seneca-001/r5 (373fc69a) — the fork-point chain collision (branch 0010_seneca vs main 0010_drill_surface..0013_warehouse_registry) resolved; worklog concatenated, both barrel lines kept, apps/hub auto-merge clean (no both-side overlaps).
+- 0010 SPLIT: branch 0010 deleted from the chain; 0014_assignment_resource_tables.sql carries ONLY the two side families, WITHOUT fk_assignment_resources_resource (seam law §4.1 — ids are the contract; D5 app-side validation; live-main FK convergence at T1 with the zero-residue drop).
+- seneca_resources OUT of the main schema: schema.ts def removed; DDL of record = scripts/provisioner/wh-v2-fragment-seneca-resources.sql (wh-v2 := frozen wh-v1 + fragment; title text run-002 fix kept) — supplied to the T-OPS-PLANE-001 provisioner lane.
+- META: meta/0000_snapshot.json folded to 82 tables (the verify baseline); meta/0014_snapshot.json chained (prevId=ba4fb815-a075-4349-b5df-5d95f04a1510); _journal.json idx 14; rebaseline pins advanced to 82/768/112/80/133 (+ inventory asserts seneca_resources ABSENT in main).
+- TWO-CLIENT SEAM: buildAssignmentPacksModule(sql, whSql, clock) — whSql = sci-chem pooler client from SYLLABAI_WAREHOUSE_URL_SCI_CHEM (0013 naming law; run-005 pooler law); every seneca_resources read rides the warehouse; loadTasks split (positions on main, content on the warehouse by id, JS stitch — no cross-project join/FK; missing row = fail-closed 404, never a shortened pack); NULL seam = WarehouseNotConfiguredError -> 503 warehouse_unavailable (fail loud, never a silent empty library).
+- IMPORTER retarget: writes the WAREHOUSE (SYLLABAI_WAREHOUSE_URL_SCI_CHEM/--warehouse-url); fail-closed course_registry re-check rides MAIN (MAIN_DATABASE_URL/--main-url); wh-v2 to_regclass preflight (the template owns the DDL); PII gate + census + upsert law unchanged; dry-run stays DB-free.
+- PLAN D9 (docs/SENECA_RESOURCE_PACKS_PLAN.md): the placement decision row + import-pipeline retarget; schema README documents the 0014 families + senecaResources' deliberate absence.
+- GATES: pack tests 30/30 (27 reworked + 3 new: NULL-seam, missing-warehouse-row, 503 wire); rebaseline 82/768/112/80/133 0 drifts; bun run typecheck clean; full suite 2,910 pass / 0 fail / 13 pre-existing skips; eslint 0 on touched files. Receipt: .syllabai/receipts/T-SENECA-001/run-004-placement-rework.json. Zero DB writes, zero platform mutations.
+
+Stage Summary:
+- PR #316 is now placement-law-conformant and mergeable from the chain's perspective; the corpus plane lives in the wh-v2 fragment + the two-client seam, ready for the operator's sci-chem provisioning (T1: provision -> parity-verified 5,098-row migration -> zero-residue main drop -> registry seed sci-chem/wh-v2/ASSIGNED -> Vercel env -> the operator's flip).

@@ -1,11 +1,17 @@
 {
  "schema": "syllabai-demo.hub-content-flags/1.0",
- "note": "Render-time content flags for surfaces whose data is committed but whose launch is gated. Law (ADR-CLASS-0001 practice, adapted to content): a flag key or course slug that is ABSENT means OFF — nothing renders; flipping one key kills the surface without a deploy of code. This file gates rendering only; it never fabricates data (a flagged surface with no committed bundle still renders its honest empty state).",
+ "note": "Render-time content flags for surfaces whose data is committed but whose launch is gated. Law (ADR-CLASS-0001 practice, adapted to content): a flag key or course slug that is ABSENT means OFF \u2014 nothing renders; flipping one key kills the surface without a deploy of code. This file gates rendering only; it never fabricates data (a flagged surface with no committed bundle still renders its honest empty state).",
  "flags": {
   "ugmLaneResources": {
    "surface": "Underground Mathematics resource library on a course hub (corpus: UGM-Enrichment + UGM-Resources in SyllabAI/syllabai-resources; ADR-UGM-0001 as amended 2026-10-23)",
    "courses": [
     "cie-a-level-maths-20-pure-1"
+   ]
+  },
+  "senecaCourseResources": {
+   "surface": "Seneca resource packs in the teacher assignment creator (T-SENECA-001; corpus: the operator-approved Seneca Resource Hub harvest, syllabai-experimental @ d67bc1e3, PII-scrubbed; linked courses only \u2014 pilot: igcse-chemistry-19 = Edexcel IGCSE Chemistry 4CH1)",
+   "courses": [
+    "igcse-chemistry-19"
    ]
   }
  }

@@ -264,21 +264,32 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // T-OPS-PLANE-001 run-004 (0013_warehouse_registry) adds 1 table,
   // 7 columns, 1 index, 1 fk, 1 check on top of the study-plan baseline
   // -> 80/754/108/77/129 (ADR-038 fleet map + the serving flip law).
-  test("80/754/108/77/129 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // T-SENECA-001 run-004 (0014_assignment_resource_tables, the placement
+  // rework) adds 2 tables, 14 columns, 4 indexes, 3 fks, 4 checks (uq pair/
+  // triple ride uniqueConstraints, not the index count) on top of the
+  // warehouse-registry baseline -> 82/768/112/80/133. seneca_resources
+  // itself is a CORPUS plane — it lives in the sci-chem warehouse (template
+  // wh-v2), never in main (docs/DATA-PLANE-PLACEMENT.md).
+  test("82/768/112/80/133 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 80/80");
-    expect(v.inventory).toContain("columns 754");
-    expect(v.inventory).toContain("indexes 108");
-    expect(v.inventory).toContain("fks 77");
-    expect(v.inventory).toContain("checks 129");
+    expect(v.inventory).toContain("tables 82/82");
+    expect(v.inventory).toContain("columns 768");
+    expect(v.inventory).toContain("indexes 112");
+    expect(v.inventory).toContain("fks 80");
+    expect(v.inventory).toContain("checks 133");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(80);
+    expect(run.size).toBe(82);
     expect(run.has("public.warehouse_registry")).toBe(true);
+    // T-SENECA-001 run-004 — the pack side families ride 0014 in MAIN; the
+    // corpus table itself lives in the sci-chem warehouse, never here
+    expect(run.has("public.assignment_resources")).toBe(true);
+    expect(run.has("public.assignment_resource_states")).toBe(true);
+    expect(run.has("public.seneca_resources")).toBe(false);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);

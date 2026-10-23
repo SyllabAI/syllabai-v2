@@ -2182,3 +2182,76 @@ export interface UserCourseView {
 export interface MyCoursesView {
   courses: UserCourseView[];
 }
+
+// ── Seneca resource packs (T-SENECA-001) — the assignment creator's
+// "Seneca resources" option: course-linked harvest rows (pilot:
+// igcse-chemistry-19 = Edexcel IGCSE Chemistry 4CH1), side-table tasks on
+// the SAME assignments row, server-side scoring, hand-in via the existing
+// submissions endpoint. The frozen assignments types above are untouched.
+
+export type AssignmentPackResourceKind = "courseSection" | "examQuestion" | "quiz";
+
+/** one picker row — the picker never ships question bodies */
+export interface AssignmentPackResourceRow {
+  id: string;
+  kind: AssignmentPackResourceKind;
+  title: string | null;
+  topicPath: string | null;
+  marksTotal: number | null;
+  questionType: string | null;
+}
+
+export interface AssignmentPackLibraryView {
+  courseSlug: string;
+  courseLabel: string;
+  total: number;
+  topics: string[];
+  resources: AssignmentPackResourceRow[];
+}
+
+export interface AssignmentPackTask {
+  resourceId: string;
+  position: number;
+  kind: AssignmentPackResourceKind;
+  title: string | null;
+  topicPath: string | null;
+  marksTotal: number | null;
+  questionType: string | null;
+  /** RAW Seneca template — may carry $var placeholders + a generationScript;
+   *  instantiation is CLIENT-side (the API never evals corpus scripts) */
+  questionMd: string | null;
+  markSchemeMd: string | null;
+  notesMd: string | null;
+  quizSummaryMd: string | null;
+  generationScript: string | null;
+}
+
+export interface AssignmentPackDetailView {
+  assignmentId: string;
+  title: string;
+  courseSlug: string;
+  courseLabel: string;
+  marksTotal: number;
+  questionCount: number;
+  dueAt: string;
+  status: string;
+  tasks: AssignmentPackTask[];
+}
+
+export interface AssignmentPackTaskState {
+  resourceId: string;
+  status: "todo" | "complete";
+  marksAwarded: number | null;
+  score: number | null;
+  completedAt: string | null;
+}
+
+export interface AssignmentPackLearnerView extends AssignmentPackDetailView {
+  myStates: AssignmentPackTaskState[];
+}
+
+export interface AssignmentPackCompleteResponse {
+  state: AssignmentPackTaskState;
+  questionsCompleted: number;
+  score: number;
+}

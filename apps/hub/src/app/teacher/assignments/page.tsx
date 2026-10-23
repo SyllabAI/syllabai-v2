@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { listCourses, pilotCourseSlug } from "@/lib/courses";
+import { loadContentJson } from "@/lib/corpus";
 import { AssignmentsClient } from "./assignments-client";
 
 export const dynamic = "force-dynamic";
@@ -9,6 +10,26 @@ export const metadata: Metadata = {
   description:
     "Teacher assignments (core-backed): build from the question bank, assign to your cohort, track real learner hand-ins — completion evidence recorded on core.",
 };
+
+/**
+ * The Seneca resource packs flag (T-SENECA-001) — flags.json law, adapted
+ * from the UGM gating: absent file / key / slug = OFF (one-flip kill,
+ * ADR-CLASS-0001 practice). The option renders only for flagged courses
+ * whose resource library is linked (the picker itself renders the honest
+ * empty state when the API holds no rows).
+ */
+async function senecaPacksEnabled(courseSlug: string | null): Promise<boolean> {
+  if (!courseSlug) return false;
+  try {
+    const raw = await loadContentJson<{ flags?: Record<string, { courses?: string[] }> }>(
+      "flags.json",
+    );
+    const courses = raw?.flags?.senecaCourseResources?.courses;
+    return Array.isArray(courses) && courses.includes(courseSlug);
+  } catch {
+    return false; // a broken flag file never surfaces the option
+  }
+}
 
 export default async function AssignmentsPage({
   searchParams,
@@ -27,6 +48,7 @@ export default async function AssignmentsPage({
     .map((s) => s.trim())
     .filter(Boolean)
     .slice(0, 60);
+  const senecaEnabled = await senecaPacksEnabled(initialCourse);
 
   return (
     <AssignmentsClient
@@ -34,6 +56,7 @@ export default async function AssignmentsPage({
       initialCourse={initialCourse}
       fromTest={params.from ?? null}
       initialSubtopics={initialSubtopics}
+      senecaEnabled={senecaEnabled}
     />
   );
 }

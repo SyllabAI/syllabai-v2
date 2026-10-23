@@ -1,0 +1,64 @@
+{
+  "task": "T-SENECA-001",
+  "run": "run-001",
+  "agent": "Super Z (zai-web session web-d0c9a0d3-6cbb-48ca-91b1-54896d1b585e)",
+  "date": "2026-10-23",
+  "branch": "t-seneca-001/r5",
+  "base": "6bedab6 (origin/main at claim)",
+  "operator_commission": {
+    "trace": "1a1651ae815dc3d5",
+    "quote": "syllabai-hub-v2.vercel.app The teacher dashboard. There might already be an assignment creator, just add the option there. Only for the subject/courses that are in syllabai right now. For example edexcel igcse chemistry, link the resources to that course. So we wont be needing the course filterer. Plan out more. I think you have to make some changes"
+  },
+  "gates": {
+    "bun_run_typecheck": "0 errors (packages/contracts, shared, db, apps/api)",
+    "bun_test": "apps/api + packages: 2642 pass / 13 skip / 0 fail (incl. 27 new assignmentpacks tests)",
+    "hub_tsc_noEmit": "0 errors",
+    "eslint_touched_files": "0 errors / 0 warnings (hub 6 files, api route + tests, contracts)",
+    "rebaseline_verify": "VERIFY PASS — 78/78 tables, 0 drifts; pins advanced to 78/725/108/74/126"
+  },
+  "verification_of_record": {
+    "frozen_families_untouched": [
+      "packages/contracts/src/assignments.ts (byte-untouched — diff-checked)",
+      "apps/api/src/routes/assignments.ts + services/teacher-assignments/** (byte-untouched)",
+      "packages/contracts/src/learner.ts (byte-untouched)"
+    ],
+    "additive_db_law": "0010 creates ONLY new tables/FKs; the core-era assignments row is INSERT-only from the pack path (service test pins 'no update assignments query')",
+    "course_linking": "SENECA_TO_HUB map fail-closed vs apps/hub/content/courses.json AND the live course_registry table at import time; pilot map: Chemistry: Edexcel iGCSE → igcse-chemistry-19",
+    "no_course_filterer": "the picker's course rides the page context; zero course dropdowns in the pack surface",
+    "pii_gate": "import re-checks every row for creatorName/creatorId/schoolId/schoolGroupId; dry-run census 5,098 rows clean",
+    "import_dry_run": "census: 286 courseSection + 1,430 examQuestion + 3,382 quiz = 5,098 rows → igcse-chemistry-19"
+  },
+  "pending_inputs": [
+    "DATABASE_URL (Neon) — apply 0010 migration + run scripts/import_seneca_resources.py --corpus <resource-hub-content dir>",
+    "Vercel deploy of apps/api + apps/hub picks up the feature behind flags.json (one-flip kill stays with the operator)"
+  ],
+  "files": {
+    "new": [
+      "packages/contracts/src/assignment-packs.ts",
+      "packages/db/drizzle/0010_seneca_resource_packs.sql",
+      "apps/api/src/routes/assignment-packs.ts",
+      "apps/api/test/assignmentpacks/service.test.ts",
+      "apps/api/test/assignmentpacks/routes.test.ts",
+      "apps/hub/src/app/learner/pack-player.tsx",
+      "scripts/import_seneca_resources.py",
+      "scripts/t-seneca-001-snapshot.py",
+      "docs/SENECA_RESOURCE_PACKS_PLAN.md",
+      ".syllabai/tasks/T-SENECA-001.yaml"
+    ],
+    "modified": [
+      "packages/contracts/src/index.ts (one export line)",
+      "packages/db/src/schema/schema.ts (3 additive tables)",
+      "packages/db/src/schema/README.md (additive-table note)",
+      "packages/db/drizzle/meta/_journal.json (0010 entry)",
+      "packages/db/drizzle/meta/0000_snapshot.json (3 additive entries)",
+      "packages/db/scripts/rebaseline.test.ts (count pins)",
+      "apps/api/src/index.ts (import + ctor + 2 mount lines, OUT-OF-FENCE flagged)",
+      "apps/hub/src/lib/api.ts (5 client methods)",
+      "apps/hub/src/lib/types.ts (pack view types)",
+      "apps/hub/src/app/teacher/assignments/page.tsx (flag read + prop)",
+      "apps/hub/src/app/teacher/assignments/assignments-client.tsx (source toggle + picker)",
+      "apps/hub/src/app/learner/assignments-tab.tsx (pack rows + player + pack-aware hand-in)",
+      "apps/hub/content/flags.json (senecaCourseResources)"
+    ]
+  }
+}
