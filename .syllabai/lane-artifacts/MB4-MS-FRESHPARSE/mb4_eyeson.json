@@ -1,0 +1,65 @@
+{
+  "spec_version": 1,
+  "lane": "MB4-MS-FRESHPARSE run-002 (45-residual deep lane)",
+  "note": "Eyes-on attachments: mechanical extraction failed on these layouts (cross-page continuation margins 2021-06-02 Q3; alternative-block P-id interaction 2022-01-02r Q8; label+codeless rows 2022-01-02r Q10). Every block below was read first-hand from the ms.pdf page dumps; anchors cite page+top. Raw text is passed through the same glyphs()+latex1() chain at apply time.",
+  "items": [
+    {
+      "topic": "2021-06-4mb1-02", "q": 2, "p": 0, "need": 2,
+      "proof": "page 9 dump: (a)(i) = M1@y88 + A1@y208; hub part (a)(i)=2 marks; 'Total 6 marks' == 2+2+2; sub-labels (i)/(ii) in left margin",
+      "banner": null,
+      "blocks": [
+        {"pid": 1, "mark": 1, "head": "adding all the subsets together and equating to 160. Need not be simplified",
+         "subs": ["(but if all 7 terms not shown explicitly then need to see at least", "4x 2 +18x+24=160 ).", "Must see the 160 e.g. 4x 2 +18x+24\u2212160=0", "4x 2 +18x+24=160 oe", "For reference (if fully un-simplified):", "( ) ( ) ( ) ( ) ( )", "8x+ 5 x+7 + x 2 +9 + 4x\u22121 + 3 x+8 + 2x 2 +4", "2 2", "( )", "+ x 2 +2x\u22123 =160"]},
+        {"pid": 2, "mark": 1, "head": "simplifying to the given 3 term quadratic (at least one intermediate line from",
+         "subs": ["2x 2 +9x\u221268=0 initial line of working to given answer) \u2013 must include = 0", "(allow 0=2x 2 +9x\u221268 ) so all terms on one side equal to zero"]}
+      ]
+    },
+    {
+      "topic": "2021-06-4mb1-02", "q": 2, "p": 1, "need": 2,
+      "proof": "page 9 dump: (a)(ii) = M1@y251 + A1@y396; hub (a)(ii)=2",
+      "banner": null,
+      "blocks": [
+        {"pid": 3, "mark": 1, "head": "correct method for solving the given 3 term quadratic \u2013 either by formula,",
+         "subs": ["completing the square or factorising.", "By factorising: brackets must expand to give 2 out of 3 correct terms", "By formula: correct substitution into fully correct formula (allow 1 sign error)", "( )( ) 2", "2x + 17 x \u2212 4 [ = 0] oe (9)", "x + \u00b1 [ = ]", "By completing the square: must see 2 ... 0", "4", "17", "Either correct value of x x=\u2212 or x= 4 can imply this mark", "2", "NB anything appearing in square brackets [..] is not required", "17"]},
+        {"pid": 4, "mark": 1, "head": "x = 4 4 (A0 if x=\u2212 given as a final answer too)",
+         "subs": ["2"]}
+      ]
+    },
+    {
+      "topic": "2021-06-4mb1-02", "q": 2, "p": 2, "need": 2,
+      "proof": "page 9 dump: (b) = M1@y428 + A1@y485; hub (b)=2",
+      "banner": null,
+      "blocks": [
+        {"pid": 5, "mark": 1, "head": "3\u00d7\"4\" for either 2 oe or for an equivalent",
+         "subs": ["+8 ( ) ( ) ( ) ( )", "3 x+8 + 4x\u22121 + 2x 2 +4 + x 2 +2x\u22123", "2 2", "oe", "3\u00d7\"4\" 2 + \u00d7 + expression with their value of x (which must be a positive integer) \u2013 if value for x", "7.5 \"4\" 8", "substituted then numerator must be less than 160"]},
+        {"pid": 6, "mark": 1, "head": "7 oe exact value (A0 if non-exact answer e.g., 0.163 given and exact answer not",
+         "subs": ["2", "43 seen) \u2013 award M1A0 if 7/43 seen in working (but not given as final answer)"]}
+      ]
+    },
+    {
+      "topic": "2022-01-4mb1-02r", "q": 7, "p": 2, "need": 3,
+      "proof": "page 11 dump: (c) row 'Curve -1 for: A correct curve 3 B3 ft (-1 eeoo)' + guidance subs y359-386; hub (c)=3; question Total 15 == 4+3+3+2+3; main-row P-ids P1-P4=(a), P5=(b), P6=(c)",
+      "banner": null,
+      "blocks": [
+        {"pid": 6, "mark": 3, "head": "Curve \u22121 for: A correct curve ft (\u22121 eeoo)",
+         "subs": ["Straight line segments, Each point missed, NB: accuracy for both plotting and drawing is", "Each missed segment, Very poor curve \u00b10.5 ss", "Each point incorrectly plotted, Tramlines,"]}
+      ]
+    },
+    {
+      "topic": "2022-01-4mb1-02r", "q": 9, "p": 0, "need": 1,
+      "proof": "page 13 dump y115: '10 (a) 102\u00b0 1' — char-level codeless row (no B1 glyph at the code column, same class as 2021-01-01R Q1); hub (a)=1; question Total 7 == 1+1+5",
+      "banner": null,
+      "blocks": [
+        {"pid": 1, "mark": 1, "head": "102\u00b0", "subs": []}
+      ]
+    },
+    {
+      "topic": "2022-01-4mb1-02r", "q": 9, "p": 1, "need": 1,
+      "proof": "page 13 dump y130: '(b) 129\u00b0 1' — codeless row; hub (b)=1",
+      "banner": null,
+      "blocks": [
+        {"pid": 2, "mark": 1, "head": "129\u00b0", "subs": []}
+      ]
+    }
+  ]
+}
