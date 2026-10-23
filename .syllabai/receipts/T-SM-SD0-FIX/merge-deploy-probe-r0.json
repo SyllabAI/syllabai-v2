@@ -1,0 +1,72 @@
+{
+  "lane": "T-SM-SD0-FIX-R0",
+  "run": "merge-deploy-probe-disclose",
+  "operator_order": "Merge #341 -> Hub Auto Deployment -> live probe test set (expected depth 1 x 3 + depth 2 connections + negative control) -> Commit record + #276 End Disclosure",
+  "operator_order_trace": "session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2, chat 371a9d19-b6bb-4173-9696-cee324b265a1, gateway trace 1a16a64342f7fa31",
+  "date": "2026-10-24",
+  "pr_merge": {
+    "pr": 341,
+    "title": "content(4SD0): T-SM-SD0-FIX-R0 PR2 — the three 4SD0 strand rows flipped (26→29) + carried econ-25 KaTeX repair (fleet gate restore)",
+    "branch": "feat/t-sm-sd0-fix-r0-flips",
+    "opened_head": "b1ec11a5",
+    "conflict": "mergeable_state dirty vs main (both sides repaired cie-igcse-economics-25 in parallel: branch whole-file re-serialization repair vs main 353e6c30 corpus-gate standing-instrument output)",
+    "resolution": "econ-25 notes.json/questions.json = THEIRS (main's adjudicated gate-verified output); 4SD0 flips (courses.json coreBridge:true + curriculumCode:4SD0-2017 on igcse-science-double-award-17-{biology,chemistry,physics}), validate_cie_bundles.ts pin 26->29, and sd0_econ25_katex_repair.py evidence carried verbatim; net delta vs main = 3 files +116/-4",
+    "resolution_commit": "7f1e483f",
+    "gates_on_merged_tree": {
+      "bun_install": "952 packages, frozen lockfile",
+      "corpus_23a": "PASS",
+      "flashcard_sync": "OK (core-sync manifest matches the registry)",
+      "cie_validator": "PASS — 29 rows flagged, census in check message",
+      "typecheck": "clean x4 workspaces"
+    },
+    "ci_on_head": { "hub": "success", "verify": "success" },
+    "merged": true,
+    "merge_commit": "564b732f36",
+    "merge_method": "merge"
+  },
+  "hub_auto_deployment": {
+    "project": "syllabai-hub-v2",
+    "deployment": "dpl_4jB5RgnYh6Bgymhv",
+    "commit": "564b732f3",
+    "state": "READY",
+    "note": "git-linked auto-build; prior ERROR deploys (ee795f94, 962e8fea) were the pre-corpus-gate fleet-blocking econ-25 pollution, healed by 353e6c30 (READY at 0fc8d7481) before this merge"
+  },
+  "live_probe_test_set": {
+    "instrument": "GET /api/core/questions (ADR-029 tranche 4 identity bridge) against https://syllabai-hub-v2.vercel.app production",
+    "account": "sd0-probe-20261024@example.com (registered 201 this run; the EDX-R0 probe account creds were not restored post sandbox rollback #5)",
+    "depth1_x3": [
+      { "course": "igcse-science-double-award-17-biology", "available": true, "code": "4SD0", "rootId": "e41fdd36-3191-46da-9ecf-de9eeece422c" },
+      { "course": "igcse-science-double-award-17-chemistry", "available": true, "code": "4SD0", "rootId": "e41fdd36-3191-46da-9ecf-de9eeece422c" },
+      { "course": "igcse-science-double-award-17-physics", "available": true, "code": "4SD0", "rootId": "e41fdd36-3191-46da-9ecf-de9eeece422c" }
+    ],
+    "depth2_x3": [
+      { "course": "igcse-science-double-award-17-biology", "topicSlug": "cycles-within-ecosystems", "joined_core_questions": 5, "skipped": 0, "marks": [7, 8, 10, 9, 11] },
+      { "course": "igcse-science-double-award-17-chemistry", "topicSlug": "acids-alkalis-and-titrations", "joined_core_questions": 6, "skipped": 0 },
+      { "course": "igcse-science-double-award-17-physics", "topicSlug": "motion-in-the-universe", "joined_core_questions": 17, "skipped": 0 }
+    ],
+    "depth2_note": "every join 1:1 corpus family <-> core qstn UUID with mcq/structured members; the bio topic served IS the reseeded topic (marks 7/8/10/9/11 match DB rows exactly) — zero skipped anywhere",
+    "negative_controls": [
+      { "case": "non-bridge course (cie-igcse-economics-25)", "result": "available:false reason:not_pilot" },
+      { "case": "bogus slug (igcse-science-double-award-17-nonexistent)", "result": "available:false reason:not_pilot" },
+      { "case": "unauthenticated depth-1 call", "result": "available:false reason:unauthenticated (HTTP 200 honest-degrade, per route law)" }
+    ],
+    "scorecard": "9/9 GREEN (depth 1 x3 + depth 2 x3 + negative controls x3)"
+  },
+  "db_census_readonly": {
+    "estate": "restored Oct-21 00:43Z Neon estate (NEON-DB-LOSS run-004 basis), post-merge read-only census",
+    "rows": { "biology": 218, "chemistry": 294, "physics": 395, "total": 907 },
+    "active_serving_space": { "rows": 902, "distinct_refs": 902, "schemes_validated": "902/902", "part_linked_mark_points": 1825, "primary_topic_anchored": "902/902" },
+    "dup_disclosure": "5 duplicate external_ref rows = seeder idempotent reseed of topic biology-cycles-within-ecosystem-72191d64 q0-q4 (old rows active=false retired, fresh rows active=true, identical marks 7/8/10/9/11); ZERO duplicates in the active space; the depth-2 probe confirmed the active rows serve clean",
+    "mark_schemes_total_space": "907/907 VALIDATED (including the 5 retired rows)",
+    "spec_joins": { "of_record": 1905, "surface": "question_spec_points (surface of record identified this run)", "active_space": 1893, "node_type": "100% SPEC_POINT" },
+    "strand_tree": { "nodes": 498, "by_type": { "SUBJECT": 1, "UNIT": 17, "TOPIC": 68, "SPEC_POINT": 412 }, "knowledge_edges": 497, "tree_law": "edges = nodes - 1 (pure tree)" },
+    "collision_retired": "zero bare '4SD0-S1' / '4SD0-1.1' codes anywhere in knowledge_nodes — the upstream T-CONSUME-EDX cross-strand collision defect is retired by the strand-coded re-export (CIE 0973 strand-lettered law, operator order trace 1a169ba5c7ed9559)",
+    "anchoring_law": "primary_topic_node_id 907/907 (60 distinct topic nodes); question_topics rows for SD0 = 0 (R2 A2b question-topic-anchored class)"
+  },
+  "smart_mark_totals": { "before": 26, "after": 29, "flipped": ["igcse-science-double-award-17-biology", "igcse-science-double-award-17-chemistry", "igcse-science-double-award-17-physics"] },
+  "environment_events": {
+    "sandbox_rollback_6": "pre-merge: worktree + creds wiped; restored from git objects, gates re-run green, creds re-installed verbatim",
+    "sandbox_rollback_7": "post-typecheck mid-turn: HEAD pointer drifted to a foreign substrate main; lane assets (merge commit, branch, remotes, worktree, creds) survived; no lane action lost",
+    "credential_note": "4 creds files re-installed twice from verbatim session record; rotation recommendation stands"
+  }
+}
