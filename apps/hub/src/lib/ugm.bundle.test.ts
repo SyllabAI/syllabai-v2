@@ -1,5 +1,5 @@
 /**
- * T-UGM-HUB-CONSUME-3/-4/-5 — the committed UGM bundle regression law.
+ * T-UGM-HUB-CONSUME-3/-4/-5/-6 — the committed UGM bundle regression law.
  *
  * The bundle is committed data; the reader (ugm.ts) fail-closes on schema
  * drift. These tests pin BOTH planes against the shipped file, so a bad
@@ -7,25 +7,31 @@
  * fails here before it can reach a flagged surface:
  *
  *   - the committed bundle parses under the exact Zod schema the reader uses
- *   - the lane census of record (lanes 1-5; lane 3 = the first multi-station
+ *   - the lane census of record (lanes 1-6; lane 3 = the first multi-station
  *     lane, lane 4 = the first STRAND lane: Circular measure drawn from four
  *     stations' sweeps, with its circles-strand mappings CROSS-LANE JOINED
  *     against the lane-3 bodies of record; lane 5 = the second two-station
  *     lane: Trigonometry's WHOLE substrate as text of record — 41 mapped +
  *     36 recorded non-overlaps imported unmapped — plus two cross-lane fact
  *     joins against the lane-2 bodies — no new entries, no body duplication,
- *     first-of-record body wins)
+ *     first-of-record body wins; lane 6 = the THIRD two-station lane:
+ *     Series' whole two-station substrate as text of record — Sequences +
+ *     Counting & Binomials, 49 mapped (43 substrate + 6 strays) + 50 recorded
+ *     non-overlaps imported unmapped (the counting station is
+ *     combinatorics/logic-dominated around a binomial core) — plus two
+ *     cross-lane fact joins against the lane-2 bodies)
  *   - the honesty invariants: unique ids, non-overlaps carry reasons and no
  *     spec points, aligned resources carry spec points, primaryPick
  *     membership, per-body delimiter balance (renderer contract)
  *
- * Corpus of record: SyllabAI/syllabai-resources main@cf79ecd2 (PR #79) under
+ * Corpus of record: SyllabAI/syllabai-resources main@bcc36476 (PR #89) under
  * ADR-UGM-0001 as amended 2026-10-23 + the operator attestation of 2026-10-23.
  * Per-lane coverage blocks carry the enrichments-of-record censuses; the
- * FLEET census reflects the merged serve after the lane-4 and lane-5
- * cross-lane joins (12 lane-3 non-overlaps flip to aligned under 1.4.1;
- * lane 5's r9924 flips its lane-2 non-overlap of record under 1.5.4 while
- * r8411 gains a second spec row; 63 non-overlaps remain).
+ * FLEET census reflects the merged serve after the lane-4/5/6 cross-lane
+ * joins (12 lane-3 non-overlaps flip to aligned under 1.4.1; lane 5's r9924
+ * flips its lane-2 non-overlap of record under 1.5.4 while r8411 gains a
+ * second spec row; lane 6's r7553/r9527 — both lane-2 ALIGNED of record —
+ * gain one-to-many 1.6.3 rows; 113 non-overlaps remain).
  */
 import { describe, expect, test, mock } from "bun:test";
 import { readFileSync } from "node:fs";
@@ -61,7 +67,7 @@ describe("the committed UGM bundle parses under the reader schema (fail-closed l
 
   test("the corpus pin of record", () => {
     expect(bundle.source.ref).toBe(
-      "main@cf79ecd2f49aae81b7bb0db9721b79623f3dd5fd",
+      "main@bcc36476c3ee207f8e7ea77904e490f6fdbc0cd6",
     );
     expect(bundle.source.repo).toBe("SyllabAI/syllabai-resources");
     expect(bundle.rights.textOnly).toBe(true);
@@ -69,8 +75,8 @@ describe("the committed UGM bundle parses under the reader schema (fail-closed l
   });
 });
 
-describe("the lane census of record (5 lanes / 12 stations / 18 spec points)", () => {
-  test("stations: the single-station lanes, the multi-station and strand lanes, and the two-station trigonometry lane", () => {
+describe("the lane census of record (6 lanes / 20 stations / 22 spec points)", () => {
+  test("stations: the single-station lanes, the multi-station, strand and two-station lanes, and the eight-station series lane", () => {
     expect(bundle.stations.map((s) => s.slug)).toEqual([
       "quadratics",
       "combining-functions",
@@ -86,20 +92,30 @@ describe("the lane census of record (5 lanes / 12 stations / 18 spec points)", (
       // its strand, lane 5 carries the stray r7912 whose tested skill is 1.5.x
       "introducing-calculus",
       "exp-and-log",
+      // lane 6 (series): the two dedicated stations + six cross-station strays
+      "sequences",
+      "counting-and-binomials",
+      "chain-rule",
+      "thinking-about-algebra",
+      "divisibility-and-induction",
+      "exp-and-log",
+      "introducing-calculus",
+      "product-rule",
     ]);
   });
 
-  test("fleet census (merged serve): 264 bodies, 201 aligned, 63 non-overlaps, 262 rows", () => {
-    expect(bundle.resources.length).toBe(264);
-    expect(bundle.coverage.aligned).toBe(201);
-    expect(bundle.coverage.nonOverlap).toBe(63);
-    expect(bundle.coverage.candidateRows).toBe(262);
-    expect(bundle.coverage.ugmResourcesConsidered).toBe(264);
+  test("fleet census (merged serve): 363 bodies, 250 aligned, 113 non-overlaps, 320 rows", () => {
+    expect(bundle.resources.length).toBe(363);
+    expect(bundle.coverage.aligned).toBe(250);
+    expect(bundle.coverage.nonOverlap).toBe(113);
+    expect(bundle.coverage.candidateRows).toBe(320);
+    expect(bundle.coverage.ugmResourcesConsidered).toBe(363);
     // the cross-lane joins of record: lane 4's 14 circles-strand alignments
-    // + 2 cross-lane non-overlap confirmations against lane-3 bodies, and
-    // lane 5's 2 trigonometry fact joins (r9924/r8411) against lane-2 bodies
+    // + 2 cross-lane non-overlap confirmations against lane-3 bodies, lane
+    // 5's 2 trigonometry fact joins (r9924/r8411) and lane 6's 2 series fact
+    // joins (r7553/r9527) against lane-2 bodies
     expect(bundle.coverage.crossLaneJoined).toEqual({
-      aligned: 16,
+      aligned: 18,
       nonOverlap: 2,
     });
   });
@@ -114,22 +130,28 @@ describe("the lane census of record (5 lanes / 12 stations / 18 spec points)", (
     expect(byStation("circles").length).toBe(47);
     // lane 4 circular measure (PR #74): the strand lane's new-text subset
     expect(byStation("thinking-about-geometry").length).toBe(1);
-    expect(byStation("introducing-calculus").length).toBe(2); // lane-4 strand + lane-5 stray r7912
-    expect(byStation("product-rule").length).toBe(1);
-    expect(byStation("chain-rule").length).toBe(2);
+    expect(byStation("introducing-calculus").length).toBe(3); // lane-4 strand + lane-5 stray r7912 + lane-6 stray r6592
+    expect(byStation("product-rule").length).toBe(2); // lane-4 strand + lane-6 stray r9312
+    expect(byStation("chain-rule").length).toBe(3); // lane-4 strand x2 + lane-6 stray r5640
     // lane 5 trigonometry (PR #79): the whole two-station substrate of record
     expect(byStation("trigonometry-triangles-to-functions").length).toBe(48);
     expect(byStation("trigonometry-compound-angles").length).toBe(27);
-    expect(byStation("exp-and-log").length).toBe(1); // stray r7184
+    expect(byStation("exp-and-log").length).toBe(2); // stray r7184 + lane-6 stray r8260
+    // lane 6 series (PR #89): the whole two-station substrate of record
+    expect(byStation("sequences").length).toBe(42);
+    expect(byStation("counting-and-binomials").length).toBe(51);
+    expect(byStation("thinking-about-algebra").length).toBe(1); // stray r9404
+    expect(byStation("divisibility-and-induction").length).toBe(1); // stray r9916
   });
 
-  test("coverage.lanes carries the five lane keys incl. the two-station trigonometry lane", () => {
+  test("coverage.lanes carries the six lane keys incl. the two-station trigonometry and series lanes", () => {
     expect(bundle.coverage.lanes.map((l) => l.station)).toEqual([
       "quadratics",
       "combining-functions",
       "coordinate-geometry",
       "circular-measure",
       "trigonometry",
+      "series",
     ]);
     const lane3 = bundle.coverage.lanes[2];
     expect(lane3.stationTitle).toBe("Coordinate Geometry");
@@ -155,15 +177,27 @@ describe("the lane census of record (5 lanes / 12 stations / 18 spec points)", (
     expect(lane5.candidateRows).toBe(55);
     expect((lane5 as unknown as { crossLaneAligned?: number }).crossLaneAligned).toBe(2);
     expect((lane5 as unknown as { crossLaneNonOverlap?: number }).crossLaneNonOverlap).toBe(0);
+    const lane6 = bundle.coverage.lanes[5];
+    expect(lane6.stationTitle).toBe("Series");
+    // the enrichment-of-record census is the two-station substrate (93 =
+    // 42 Sequences + 51 Counting & Binomials); the 6 cross-station strays
+    // ride stationBreakdown
+    expect(lane6.ugmResourcesConsidered).toBe(93);
+    expect(lane6.aligned).toBe(43);
+    expect(lane6.nonOverlap).toBe(50);
+    expect(lane6.candidateRows).toBe(56);
+    expect((lane6 as unknown as { crossLaneAligned?: number }).crossLaneAligned).toBe(2);
+    expect((lane6 as unknown as { crossLaneNonOverlap?: number }).crossLaneNonOverlap).toBe(0);
   });
 
-  test("spec points: 18 codes across 1.1.x / 1.2.x / folded 1.3.x / folded 1.4.x / 1.5.x", () => {
+  test("spec points: 22 codes across 1.1.x / 1.2.x / folded 1.3.x / folded 1.4.x / 1.5.x / 1.6.x", () => {
     expect(bundle.coverage.specPointsCovered).toEqual([
       "1.1.1", "1.1.2", "1.1.3", "1.1.4", "1.1.5",
       "1.2.1", "1.2.2", "1.2.3", "1.2.4", "1.2.5",
       "1.3.1", "1.3.2",
       "1.4.1",
       "1.5.1", "1.5.2", "1.5.3", "1.5.4", "1.5.5",
+      "1.6.1", "1.6.2", "1.6.3", "1.6.4",
     ]);
     // the fold law: hub-spine parse fragments 1.3.1a/1.3.2a/1.4.1a stay folded
     // into the parent codes — no .a rows in the bundle
@@ -268,6 +302,60 @@ describe("the lane-5 cross-lane join (trigonometry facts served against lane-2 b
       "1.5.2": "trig-tables",
       "1.5.3": "inverse-or-not",
       "1.5.5": "r6138",
+    };
+    for (const [code, pick] of Object.entries(picks)) {
+      expect(bundle.specPoints.find((s) => s.code === code)?.primaryPick).toBe(pick);
+    }
+  });
+});
+
+describe("the lane-6 cross-lane join (series facts served against lane-2 bodies)", () => {
+  const sp163 = bundle.specPoints.find((s) => s.code === "1.6.3")!;
+
+  test("1.6.3 serves 28 resources (26 new-text + 2 cross-lane) with primaryPick r8907", () => {
+    expect(sp163.ugmIds.length).toBe(28);
+    expect(sp163.resourceCount).toBe(28);
+    expect(sp163.primaryPick).toBe("r8907");
+    const r8907 = bundle.resources.find((r) => r.ugmId === "r8907")!;
+    expect(r8907.station).toBe("sequences");
+    expect(r8907.specPoints.find((s) => s.code === "1.6.3")?.primaryPick).toBe(true);
+  });
+
+  test("every 1.6.x ugmId resolves to a resource body (first-of-record wins)", () => {
+    for (const code of ["1.6.1", "1.6.2", "1.6.3", "1.6.4"]) {
+      const sp = bundle.specPoints.find((s) => s.code === code)!;
+      for (const id of sp.ugmIds) {
+        expect(bundle.resources.some((r) => r.ugmId === id)).toBe(true);
+      }
+    }
+  });
+
+  test("one-to-many extensions: r7553 keeps 1.2.2 and gains 1.6.3; r9527 keeps 1.2.2+1.2.1 and gains 1.6.3", () => {
+    const r7553 = bundle.resources.find((r) => r.ugmId === "r7553")!;
+    expect(r7553.station).toBe("combining-functions");
+    expect(r7553.nonOverlap).toBe(false);
+    expect(r7553.specPoints.map((s) => s.code)).toEqual(["1.2.2", "1.6.3"]);
+    const r9527 = bundle.resources.find((r) => r.ugmId === "r9527")!;
+    expect(r9527.station).toBe("combining-functions");
+    expect(r9527.nonOverlap).toBe(false);
+    expect(r9527.specPoints.map((s) => s.code)).toEqual(["1.2.2", "1.2.1", "1.6.3"]);
+  });
+
+  test("the 50 recorded non-overlaps stay unmapped (39 counting + 11 sequences honesty)", () => {
+    const cb = bundle.resources.filter((r) => r.station === "counting-and-binomials");
+    const sq = bundle.resources.filter((r) => r.station === "sequences");
+    expect(cb.filter((r) => r.nonOverlap).length).toBe(39);
+    expect(sq.filter((r) => r.nonOverlap).length).toBe(11);
+    for (const r of [...cb, ...sq].filter((x) => x.nonOverlap)) {
+      expect(r.specPoints.length).toBe(0);
+    }
+  });
+
+  test("lane-6 primary picks of record (per spec point)", () => {
+    const picks: Record<string, string> = {
+      "1.6.1": "r7078",
+      "1.6.2": "sort-it-out",
+      "1.6.4": "square-spirals",
     };
     for (const [code, pick] of Object.entries(picks)) {
       expect(bundle.specPoints.find((s) => s.code === code)?.primaryPick).toBe(pick);

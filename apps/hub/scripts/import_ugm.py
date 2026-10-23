@@ -6,7 +6,7 @@ Mirrors the import_content.py discipline: reads a LOCAL checkout/snapshot of
 SyllabAI/syllabai-resources at a pinned ref (never GitHub at runtime), and
 emits a versioned, self-describing JSON bundle committed under content/.
 
-Sources of record (course cie-a-level-maths-20-pure-1, five UGM lanes):
+Sources of record (course cie-a-level-maths-20-pure-1, six UGM lanes):
   - lane 1 (quadratics): UGM-Enrichment/...-quadratics.json (#55) +
     UGM-Resources/pure-1-quadratics/ (#58), landed of record main@91eed732
   - lane 2 (functions):  UGM-Enrichment/...-functions.json +
@@ -34,6 +34,17 @@ Sources of record (course cie-a-level-maths-20-pure-1, five UGM lanes):
     plus two cross-lane fact joins against the existing lane-2 bodies
     (r9924/r8411 → 1.5.4; r9924 flips its lane-2 non-overlap of record,
     r8411 gains a second spec row)
+  - lane 6 (series — the THIRD two-station lane, the lanes 1-3 shape):
+    UGM-Enrichment/...-series.json + UGM-Resources/pure-1-series/
+    (PR #89, T-UGM-MODE1-6 / T-UGM-IMPORT-6), landed of record main@bcc36476 —
+    the WHOLE two-station substrate as text of record (99 files: 49 mapped
+    across Sequences + Counting & Binomials — 43 substrate + 6 cross-station
+    strays — and 50 recorded non-overlaps imported unmapped: the counting
+    station is combinatorics/logic-dominated around a binomial core, and the
+    general-index binomial questions carry recorded P3 Series non-overlap
+    verdicts), plus two cross-lane fact joins against the existing lane-2
+    bodies (r7553/r9527 → 1.6.3; both lane-2 aligned of record, one-to-many
+    second rows, text untouched under pure-1-functions)
   all under ADR-UGM-0001 (as amended 2026-10-23) + the operator attestation
   of 2026-10-23 ("downloaded text can ship into SyllabAI. We have permission").
 
@@ -51,7 +62,7 @@ surface anything.
 
 Usage:
   python3 scripts/import_ugm.py --repo <syllabai-resources-snapshot-dir> \
-      [--ref main@cf79ecd2f49aae81b7bb0db9721b79623f3dd5fd] \
+      [--ref main@bcc36476c3ee207f8e7ea77904e490f6fdbc0cd6] \
       [--lane cie-a-level-maths-20-pure-1]
 
 The script audits before writing (fail-closed, PER LANE): enrichment row
@@ -81,7 +92,7 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-DEFAULT_REF = "main@cf79ecd2f49aae81b7bb0db9721b79623f3dd5fd"
+DEFAULT_REF = "main@bcc36476c3ee207f8e7ea77904e490f6fdbc0cd6"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # Per-course UGM lane mapping. Single-station blocks (`station` + `title`)
@@ -151,6 +162,24 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-1-trigonometry",
             "ledger": "LEDGER.md — T-UGM-MODE1-5 and T-UGM-IMPORT-5 (PR #79)",
             "expected": {"resources": 77, "rows": 55, "aligned": 39, "nonOverlap": 36},
+        },
+        {
+            "laneSlug": "series",
+            "laneTitle": "Series",
+            "stations": [
+                {"slug": "sequences", "title": "Sequences"},
+                {"slug": "counting-and-binomials", "title": "Counting & Binomials"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "thinking-about-algebra", "title": "Thinking about Algebra"},
+                {"slug": "divisibility-and-induction", "title": "Divisibility & Induction"},
+                {"slug": "exp-and-log", "title": "Exponentials & Logarithms"},
+                {"slug": "introducing-calculus", "title": "Introducing Calculus"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-1-series.json",
+            "res_dir": "UGM-Resources/pure-1-series",
+            "ledger": "LEDGER.md — T-UGM-MODE1-6 and T-UGM-IMPORT-6 (PR #89)",
+            "expected": {"resources": 99, "rows": 56, "aligned": 43, "nonOverlap": 50},
         },
     ],
 }
