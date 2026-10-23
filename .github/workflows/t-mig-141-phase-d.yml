@@ -1,0 +1,173 @@
+# T-MIG-141 Phase D — the re-embed fold-in runner.
+#
+# The operator's fire order ("Proceed" — trace 1a16aeddae71c715, the run-006
+# next_safe_actions[0] gate), executed behind the 133d/138 guard protocol,
+# Phase-B runner shape (t-mig-141-phase-b.yml is the precedent of record):
+#   job 1 (verify): the FROZEN Phase-D driver's verify mode — READ ONLY pins
+#     (bank 13,765 / embed_hist / selector 4,006 = 2,676 + 273 + 1,057, C9-D
+#     recompute, born-clean subset law, per-row old-vector sha proof =
+#     bank-undrifted, model law, tranche preview). ZERO writes, ZERO
+#     embedding-API calls. Any pin drift fails the run before job 2 exists.
+#   job 2 (apply, needs job 1 green): the same frozen driver's apply mode —
+#     tranche = first N rows of the live selector (ORDER BY document_row_id,
+#     id; the live DB is the resume pointer), embed-validate-EVERYTHING-first
+#     (frozen provider shape verbatim: gemini-embedding-001, plain
+#     embedContent, outputDimensionality 768, no taskType), HARD drift gate
+#     (FULL per-tranche cosine(old, new) census, median >= 0.85 else ZERO
+#     writes + exit 3 = operator ruling), soft neighbor-Jaccard report, ONE
+#     transaction of guarded updates, RPD-wall honesty (skipped-rows
+#     artifact + exit 0; the next dispatch resumes — the wall-hit rows
+#     remain in the selector).
+#
+# NO COW LEG (disclosed deviation from the Phase-B guard shape, same class as
+# the 138 backfill job): the Phase-D write touches ONLY embedding/embed_rev
+# columns per-row with a guarded predicate, the before-images archive is the
+# rollback unit of record (phase_d_rollback.py ships with the receipt), and a
+# COW branch could not prove embedding egress or quota without burning real
+# RPD on fake rows. The verify-job pin wall + the hard drift gate + the
+# before-images are the guards of record.
+#
+# WHY A DEDICATED DRIVER (disclosed): the frozen 133d port embedDocument()
+# selects `embedding IS NULL` only and never writes embed_rev — it cannot
+# re-embed the 2,676 stale-marked rows. mode=backfill-sharded is superseded
+# by T-MIG-138 run-003's empirical finding of record (operator pool keys
+# carry no legacy 1000-RPD embedding class); the sharded RPD-wall LAW is
+# preserved in single-key sequential form in the driver.
+#
+# REGION LAW: the Gemini embedding API is IP-region-gated — apply runs here
+# (GitHub Actions egress of record), never the sandbox.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched (the dispatch = the operator's fire order per the 093/133b law).
+# Repeat dispatches drain further tranches until the selector is empty.
+# Secrets of record: T138_PROD_DATABASE_URL (exists, proven run-005),
+# T138_GEMINI_KEY (operator pool key #1).
+
+name: t-mig-141-phase-d
+
+on:
+  workflow_dispatch:
+    inputs:
+      tranche_size:
+        description: "rows per dispatch (the live selector is the resume pointer)"
+        required: false
+        default: "1000"
+      note:
+        description: "Operator note for this fold-in dispatch"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-mig-141-phase-d
+  cancel-in-progress: false
+
+env:
+  PARSER_SHA: "315b1a8"
+  DRIVER_SHA: "025f77e891597039c0be752fe63bfd63ebc23749e61833d855f0d218087135d4"
+  ROLLBACK_SHA: "26fc4897f1024498e76b1c72e1629e8e79df58dc1e33a786bbce81c4e2229f25"
+  MANIFEST_SHA: "a12b1d418af7c359fa084d458abe07a6b3309c65756980dbdbfb62a03f3b4ee8"
+  SELECTOR_IDS_SHA: "1a1bc83d20891c1a3efe7eb13b64a28408446a0b26c2f526c3f13f8a6e8e201d"
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Fetch the parser toolchain at the pinned sha + verify frozen pins
+        run: |
+          set -euo pipefail
+          curl -sfL "https://codeload.github.com/SyllabAI/syllabai-parser/tar.gz/${PARSER_SHA}" -o /tmp/parser.tgz
+          mkdir -p /tmp/parser && tar -xzf /tmp/parser.tgz -C /tmp/parser --strip-components=1
+          EV=/tmp/parser/evidence/T-MIG-141/run007-phase-d
+          echo "${DRIVER_SHA}  /tmp/parser/tools/glyph-normalization/phase_d_reembed.py" | sha256sum -c -
+          echo "${ROLLBACK_SHA}  /tmp/parser/tools/glyph-normalization/phase_d_rollback.py" | sha256sum -c -
+          echo "${MANIFEST_SHA}  ${EV}/phase-d-before-manifest.jsonl" | sha256sum -c -
+          echo "${SELECTOR_IDS_SHA}  ${EV}/phase-d-selector-ids.txt" | sha256sum -c -
+          echo "frozen pins verified: parser @ ${PARSER_SHA}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install psycopg2
+        run: pip install psycopg2-binary
+      - name: Run the verify mode (READ ONLY — zero writes, zero API calls)
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          EV=/tmp/parser/evidence/T-MIG-141/run007-phase-d
+          printf '%s' "$T138_PROD_DATABASE_URL" > /tmp/t141-prod.uri
+          chmod 600 /tmp/t141-prod.uri
+          python3 /tmp/parser/tools/glyph-normalization/phase_d_reembed.py verify \
+            --db-file /tmp/t141-prod.uri \
+            --manifest ${EV}/phase-d-before-manifest.jsonl \
+            --selector-ids ${EV}/phase-d-selector-ids.txt \
+            --receipt verify-receipt.json
+          cat verify-receipt.json
+      - name: Upload the verify artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t141-phase-d-verify
+          path: verify-receipt.json
+          if-no-files-found: ignore
+
+  apply:
+    needs: verify
+    if: ${{ !failure() && !cancelled() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Fetch the parser toolchain at the pinned sha + verify frozen pins
+        run: |
+          set -euo pipefail
+          curl -sfL "https://codeload.github.com/SyllabAI/syllabai-parser/tar.gz/${PARSER_SHA}" -o /tmp/parser.tgz
+          mkdir -p /tmp/parser && tar -xzf /tmp/parser.tgz -C /tmp/parser --strip-components=1
+          EV=/tmp/parser/evidence/T-MIG-141/run007-phase-d
+          echo "${DRIVER_SHA}  /tmp/parser/tools/glyph-normalization/phase_d_reembed.py" | sha256sum -c -
+          echo "${MANIFEST_SHA}  ${EV}/phase-d-before-manifest.jsonl" | sha256sum -c -
+          echo "${SELECTOR_IDS_SHA}  ${EV}/phase-d-selector-ids.txt" | sha256sum -c -
+          echo "frozen pins verified: parser @ ${PARSER_SHA}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install psycopg2
+        run: pip install psycopg2-binary
+      - name: Run the apply tranche (hard drift gate, RPD-wall honest)
+        env:
+          SYLLABAI_EMBEDDING_GEMINI_API_KEY: ${{ secrets.T138_GEMINI_KEY }}
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          EV=/tmp/parser/evidence/T-MIG-141/run007-phase-d
+          printf '%s' "$T138_PROD_DATABASE_URL" > /tmp/t141-prod.uri
+          chmod 600 /tmp/t141-prod.uri
+          mkdir -p artifacts
+          set +e
+          python3 /tmp/parser/tools/glyph-normalization/phase_d_reembed.py apply \
+            --db-file /tmp/t141-prod.uri \
+            --manifest ${EV}/phase-d-before-manifest.jsonl \
+            --selector-ids ${EV}/phase-d-selector-ids.txt \
+            --tranche-size ${{ inputs.tranche_size || '1000' }} \
+            --receipt artifacts/apply-receipt.json \
+            --artifacts-dir artifacts
+          CODE=$?
+          set -e
+          echo "driver exit code: ${CODE}"
+          cat artifacts/apply-receipt.json || true
+          if [ "${CODE}" = "3" ]; then
+            echo "::error::DRIFT GATE RED — zero writes, operator ruling required"
+          fi
+          exit "${CODE}"
+      - name: Upload the apply artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t141-phase-d-apply
+          path: |
+            artifacts/apply-receipt.json
+            artifacts/skipped-rows.txt
+            artifacts/drift-cosines.json
+          if-no-files-found: ignore
