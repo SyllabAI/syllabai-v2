@@ -467,12 +467,34 @@ export function mapBundleNodes(
           );
         }
       } else {
-        if (n.order == null) {
-          throw new BundleSeedConflictError(
-            "bundle TOPIC " + n.code + " carries neither a self-locating -S<n> code nor an order",
-          );
+        // SEVENTH shape (T-SM-SD0-FIX-R0): the Edexcel STRAND-LETTERED
+        // self-locating T-tail — 'igcse-science-double-award-TB1/-TC1/-TP1'
+        // (the 4SD0 triple-strand re-export of record) — the exact mirror of
+        // the CIE tail law's own vocabulary ("TB/TC/TP -> SB/SC/SP"): dbCode
+        // = {subjectCode}-S{strand}{digits}. The letter BEFORE the digits is
+        // the shape gate: every previously-admitted Edexcel code (-S<n>
+        // self-locating, bare -T<n> order-law, :SUB tails) is disjoint from
+        // it by construction, so all pre-existing UNIT identities are
+        // byte-identical; the CIE branch is consulted first and unaffected.
+        // A present order that disagrees with the tail's own digits refuses
+        // fail-closed (the selfSection mismatch law, mirrored).
+        const strandTail = /^([A-Za-z0-9-]+)-T([A-Z])(\d+)$/.exec(n.code);
+        if (strandTail != null) {
+          unitDbCode = subjectCode + "-S" + strandTail[2] + strandTail[3];
+          if (n.order != null && n.order !== Number(strandTail[3])) {
+            throw new BundleSeedConflictError(
+              "bundle TOPIC " + n.code + " order " + n.order +
+                " disagrees with the code's own S" + strandTail[2] + strandTail[3] + " — refusing the mismatch",
+            );
+          }
+        } else {
+          if (n.order == null) {
+            throw new BundleSeedConflictError(
+              "bundle TOPIC " + n.code + " carries neither a self-locating -S<n> code nor an order",
+            );
+          }
+          unitDbCode = subjectCode + "-S" + n.order;
         }
-        unitDbCode = subjectCode + "-S" + n.order;
       }
       byCode.set(n.code, {
         bundleCode: n.code,
