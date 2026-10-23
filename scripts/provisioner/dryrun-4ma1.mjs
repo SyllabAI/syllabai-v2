@@ -61,6 +61,13 @@ try {
   G('source_present', src.length === 8202, `expected 8,202 (run-001-trim-census-r0), got ${src.length}`);
 
   // 2. COPY in batches (no cross-project extensions needed — plain rows)
+  // REPAIR 2026-10-24 (T-OPS-PLANE-001 T1 cut-over): W1 already holds the run-003
+  // parity-proven copy of this plane, so the former plain INSERT now PK-conflicts on
+  // first batch. Pre-clear the group's rows, then re-copy — this makes the rehearsal
+  // IDEMPOTENT against the live warehouse of record and re-proves the copy path +
+  // parity end-to-end against the branch source. Zero serving impact (the flip is
+  // not active at rehearsal time). Disclosed in the T1 cut-over receipt.
+  await wh`delete from warehouse_chunks where course_group = ${GROUP}`;
   await wh.unsafe('begin');
   // REPAIR 2026-10-24 (T-OPS-PLANE-001 run-003): column list MUST be an array — the
   // postgres-js insert builder does rest.flat(), so the former comma-string was read as
