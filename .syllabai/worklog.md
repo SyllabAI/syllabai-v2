@@ -20152,3 +20152,16 @@ Work Log:
 
 Stage Summary:
 - run-004 LANDED of record: 43/44 CIE lanes re-keyed at the re-harvest tip; the tranche-3 class-B close is CONSUMED of record on the hub for every lane whose serving state can carry it. Open follow-ups: (1) econ-25 serving lane (operator-dispatchable — bundle build + attach + prune + consume; sidecar already re-keyed resources-side); (2) class-A 1,203 + class-B residual 61 dispositions (operator menu, run-001); (3) PAT rotation CRITICAL; (4) hung resources sync job.
+
+---
+
+## T-OPS-PLANE-001 run-002 — W1 warehouse provisioned (console-side path) + tripwire r3 drift-watch (2026-10-24, trace 1a169fa9a95ffb69)
+
+- Operator created Neon project ep-calm-queen-az36lppq (ap-southeast-1, cell c-3, PG 18.6) and handed the pooler URL in chat; ops lane executed the console-side provisioning path of record. Freshness probe READ ONLY: 0 tables, public-only, 7.5 MB, vector 0.8.6 available, no satellite/template residue.
+- Applied scripts/provisioner/template.sql wh-v1 VERBATIM (sha256 b5aed1f8…) via postgres-js sql.unsafe — mirrors provision.mjs steps 3-5 (API path remains egress-blocked). Verified: warehouse_meta + warehouse_chunks, 6/6 ix_* indexes incl. HNSW vector_cosine_ops, vector 0.8.6 installed, canary roundtrip PASS (insert 1 -> delete -> 0), size 7,896 kB. Meta: template_version=wh-v1; course_group/subject_id=PENDING-OPERATOR-ASSIGNMENT (proposal: maths-4ma1 = 763dfe2d-d2b5-48fb-ba4c-2f708c637b26; one lawful UPDATE assigns it).
+- Receipt: .syllabai/receipts/T-OPS-PLANE-001/run-002-warehouse-w1-provision-r0.json.
+- Post-work tripwire r3 (18:25:47Z): 5 pins PASS (chunks 13,765 / docs 1,354 / assets 585/194 / 4MA1 110 — byte-flat), 4 pins DRIFT-ALL-GROWTH (tables 75->79; mark_points 14,141->14,201; mark_schemes 6,733->6,763; users 587->588). New tables = drill_draws / drill_part_evidence / mark_point_alternatives(16) / study_plans — drill/study-plan/draw feature family (F182/F184/F185/F186/STUDY-PLAN docs+receipts); flyway head STILL V63 => DDL outside migrations (2nd occurrence, process note filed). Mark-plane writer not pinned at fetch time; rebuild card DISPATCHED — lane-start tripwire receipts owed. NO LOSS SIGNATURE; oracle 14,141 intact within live count; drain flat (no_vec 1,330); db 231 MB; satellite 0.
+- Receipt: .syllabai/receipts/NEON-DB-LOSS/run-008-estate-tripwire-r3-drift-watch.json.
+- Neon transfer law verified fresh (docs/introduction/plans + faqs): network transfer PER PROJECT (Free 5 GB/mo/project, shared across that project's products only) — fleet multiplies allowance; only storage is account-pooled (20 GB). Recorded in run-002 receipt.
+- Secrets: W1 pooler password transited chat -> rotation list (now 2x ghp_, napi_, npg_ main, npg_ W1 + prior vcp_/LLM keys). Env-only use, never persisted.
+- NEXT GATES: operator rules W1 group; COW branch of main console-side -> BRANCH_DB_URL (dryrun-4ma1.mjs is branch-only by law); dryrun (copy 8,202 chunks + parity + two-step seam + zero-residue rehearsal); T1 cut-over per DATA-PLANE-PLACEMENT.md §5.

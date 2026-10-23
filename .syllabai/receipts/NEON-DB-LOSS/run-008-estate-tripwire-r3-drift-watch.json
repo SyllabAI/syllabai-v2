@@ -1,0 +1,46 @@
+{
+  "receipt": "NEON-DB-LOSS run-008-estate-tripwire-r3-drift-watch",
+  "instrument": "scripts/dbprobe/estate-tripwire.mjs (committed of-record, recipe v2-rederived-post-wipe)",
+  "measured_at_utc": "2026-10-23T18:25:47.027Z",
+  "mode": "READ ONLY session (write attempt would abort the probe)",
+  "trigger": "Post-work assurance gate after W1 warehouse provisioning (T-OPS-PLANE-001 run-002) — work claimed zero main writes; tripwire proves it and watches for fleet drift.",
+  "comparison_basis": "Gate pins vs run-005 r0 baseline (fingerprint VALUES not byte-comparable across recipe gap; pins are the comparable basis). Prior r2: run-006-estate-tripwire-r2-fingerprint.json, 2026-10-23T17:21:50Z, all 9 pins PASS.",
+  "gate_pins": {
+    "PASS_5": {
+      "document_chunks": 13765,
+      "documents": 1354,
+      "question_asset": 585,
+      "revision_note_asset": 194,
+      "exam_papers_4MA1": 110
+    },
+    "DRIFT_4_ALL_GROWTH": {
+      "table_count": { "baseline": 75, "live": 79, "delta": "+4" },
+      "mark_points": { "baseline": 14141, "live": 14201, "delta": "+60" },
+      "mark_schemes": { "baseline": 6733, "live": 6763, "delta": "+30" },
+      "users": { "baseline": 587, "live": 588, "delta": "+1" }
+    },
+    "loss_signature": "NONE — no pin shrank; every delta is growth",
+    "all_stable": false
+  },
+  "attribution": {
+    "new_tables_4": {
+      "drill_draws": { "rows": 0 },
+      "drill_part_evidence": { "rows": 0 },
+      "mark_point_alternatives": { "rows": 16 },
+      "study_plans": { "rows": 0 }
+    },
+    "table_family": "drill / study-plan / model-draw / battle-mode feature family — docs/F182-DRILL-BUILD-PLAN.md, F184-DECAY-STRENGTH-*, F185-MODEL-DRAW-*, F186-BATTLE-MODE-PLAN.md, STUDY-PLAN-BUILDER-PLAN.md + receipts F184/F185 on origin/main",
+    "mark_plane_growth_30_ms_60_mp": "Writer NOT pinned in receipts on origin/main at fetch time 18:25Z (measured window r2->r3 = 17:21Z->18:25Z, ~64 min). T-CONTENT-MP-REBUILD-001 is DISPATCHED (content lane may have begun); T-MIG-141 run-004 (23092d1f) explicitly ZERO DB writes (re-sim only, Phase-B write still operator-gated). Fleet note: lane-start tripwire receipts owed per the rebuild card duty.",
+    "users_plus_1": "organic signup, harmless",
+    "flyway_head": "STILL V63 'exam series seed pearson 2026 2027' success=true -> the 4 new tables were created OUTSIDE flyway migrations (direct DDL by a feature lane) — second occurrence of this pattern (prior: operator-flagged 10:49Z DDL). Process note of record: feature-lane DDL should ride flyway migrations of record."
+  },
+  "estate_snapshot": {
+    "db_size": "231 MB (r2: 229 MB, +2 MB consistent with small writes)",
+    "drain": { "chunks_total": 13765, "no_vec": 1330, "embedded": 12435, "note": "no_vec FLAT vs r2 — T-MIG-138 drain still idle, unchanged basis for rebuild backfill plan" },
+    "satellite_tables_present": 0,
+    "fingerprints_v2": { "ddl": "268880dae519544a01c7736659819569f76843ad8e9042970f3ee58284f7fbc8", "estate_rows": "fdf4cbfe387f38792cde1599d71d8d6df2b78aed50679634ea8e7c5c160ea1b9" }
+  },
+  "verdict": "ESTATE GROWING — NO LOSS SIGNATURE. Identity + corpus core planes byte-flat PASS; growth is feature-lane DDL + early mark-plane additions + 1 organic user. Oracle basis intact: the 14,141 surviving mark_points remain within the live 14,201 (corpus planes unchanged confirms derivation sources untouched). Drift receipted so the next baseline re-anchor is attributable.",
+  "next": "(1) Fleet: whichever lane wrote +30 mark_schemes/+60 mark_points files its run receipt + tripwire-start receipt (duty per T-CONTENT-MP-REBUILD-001). (2) Ops: re-anchor pins at next stable window (r4) once the rebuild wave shape is declared — pins are growth-tolerant only via re-anchor, never by ignoring. (3) W1 next gates per run-002 receipt.",
+  "trace": "1a169fa9a95ffb69"
+}

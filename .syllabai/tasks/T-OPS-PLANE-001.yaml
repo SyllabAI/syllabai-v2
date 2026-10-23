@@ -67,6 +67,23 @@ task:
     closed). Next: content lane rebuild (run-007+ census) in parallel with
     provisioner unblocking; both precede the maths COW dry-run per
     DATA-PLANE-PLACEMENT.md §5.
+    UPDATE 2026-10-24 (2): W1 PROVISIONED — console-side path executed
+    (trace 1a169fa9a95ffb69): operator created project ep-calm-queen-az36lppq
+    (ap-southeast-1, PG 18.6, fresh/empty) and handed back the pooler URL;
+    ops lane applied template wh-v1 VERBATIM (sha256 b5aed1f8…) and verified
+    (tables 2/2, indexes 6/6 incl. HNSW, vector 0.8.6, canary roundtrip
+    PASS) — receipt run-002-warehouse-w1-provision-r0. course_group/
+    subject_id = PENDING-OPERATOR-ASSIGNMENT (proposal: maths-4ma1,
+    763dfe2d-d2b5-48fb-ba4c-2f708c637b26). ZERO main writes; post-work
+    tripwire r3 = GROWTH-ONLY drift from fleet feature lanes (4 new tables
+    outside flyway, mark plane +30/+60) — receipt
+    run-008-estate-tripwire-r3-drift-watch.json, loss signature NONE.
+    Neon transfer law VERIFIED 2026-10-23: network transfer is PER PROJECT
+    (5 GB/mo Free) — fleet multiplies the allowance, storage is the only
+    account-pooled cap (20 GB). NEXT GATES: operator rules W1 group; COW
+    branch of main console-side (BRANCH_DB_URL — dryrun-4ma1.mjs is
+    branch-only by law); dryrun (copy 8,202 + parity + seam + zero-residue
+    rehearsal); T1 cut-over per placement law §5.
 base:
   repo: "syllabai-v2 @ 7144327 (ratification branch basis)"
 basis: >
