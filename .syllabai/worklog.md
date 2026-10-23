@@ -20298,3 +20298,43 @@ Stage Summary:
 - Live proof the seam serves the IDENTICAL top-12 (ids, order, scores) as the main plane on the 4MA1 estate; cross-region cost measured (105 + 430 ms from sandbox; region consolidation is the operator's latency lever, correctness unaffected).
 - Zero main writes; estate untouched; the rebuild lane's in-flight mark-plane writes unaffected.
 - T1 remaining: COW branch + zero-residue rehearsal (dryrun-4ma1 run-ready), operator order, apply 0013 + flip sequence + probe re-run, DROP-AT-CUT-OVER trims.
+
+Task ID: T-OPS-PLANE-001 (run-005, Task 19)
+Agent: R0-ops-plane (Super Z, zai-web session web-590847c1, trace 1a16a489670c0fe5)
+Task: VERCEL SERVING-PLANE READINESS — live API verification of the owed multi-DB question (trace 1a16a1c4e5b6e1b9) against the operator-supplied token, folded into the T1 cut-over sequence.
+
+Work Log:
+- Operator supplied three in-chat tokens (GitHub PAT, Vercel vcp_..., Neon napi_...); ALL logged volatile-only, Vercel token ADDED to the rotation list (four token families now chat-transited, rotation CRITICAL-OVERDUE).
+- Egress map updated: api.vercel.com REACHABLE from this sandbox; api.neon.tech wall unchanged (DNS fail, curl exit 6, re-tested) — console-side/CI provisioning paths of record stand.
+- LIVE VERIFICATION (receipt embeds HTTP codes + ids, zero secrets): GET /v2/user 200 (user syllabai-1403, team team_ULL54qkhzKBmnKrpO6BD4mYX, limited token); /v9/projects 200 (7 projects); both candidate projects fetched in full + env inventories + deployment lists.
+- ANSWER OF RECORD (question 1a16a1c4e5b6e1b9): YES — Vercel handles N databases as N env vars + N pooler endpoints, platform-verified: ZERO configurationId envs on the serving project (Neon marketplace integration NOT in use, DATABASE_URL is a plain manual env) — the env-var-per-warehouse 0013 law needs no integration and multiplies unchanged.
+- Serving project identified: syllabai-v2 (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ), serverlessFunctionRegion iad1 (main us-east-2 ~10 ms; W1 ap-southeast-1 ~200 ms per seam step — latency lever, correctness unaffected, run-004 vercel_note confirmed).
+- HAZARD DECRYPT-VERIFIED: deployed DATABASE_URL = DIRECT endpoint (ep-ancient-cake-a52e4kfd.us-east-2.aws.neon.tech, NO -pooler, NO pgbouncer, NO channel_binding) — serverless burst exhaustion risk, house pooler law violated in prod; remedy folded into T1 step 3 (same-deploy swap to the pooler host). Password NOT recorded anywhere.
+- FLIP ENV STATE: SYLLABAI_WAREHOUSE_SERVING + SYLLABAI_WAREHOUSE_URL_MATHS_4MA1 both ABSENT = correct default-off posture.
+- DEPLOY-PATH LAW: syllabai-v2's last 3 production deploys carry NO git meta (CLI/API deploy, NOT auto-deploy); latest READY deploy 10:59:16Z PREDATES the run-004 merge 19:36:38Z — flip code NOT yet deployed; the cut-over MUST include an explicit deploy step (env changes apply to new deployments only). Contrast: hub auto-deploys from git (fired 30 s after merge).
+- HUB RED FILED: BUILD_UTILS_SPAWN_1 'bun run build' exited 1 on sha 3c2982cd AND on the prior sha — pre-existing hub-lane red (matches sme lane's disclosed CI triage); hub has NO database envs, unrelated to the flip.
+- DB-SIDE READINESS PROBE (flip-readiness.mjs, session READ ONLY, max:1, zero writes): main warehouse_registry ABSENT (0013 unapplied, exactly as run-004 declared); W1 intact (meta wh-v1/maths-4ma1/fingerprint plane:88706faa…/migrated_at 18:44:28Z, 8,202 chunks).
+- Receipt run-005-vercel-serving-plane-readiness-r0.json with the answer of record, the five-step T1 cut-over sequence with Vercel steps folded in, hazards, residuals.
+
+Stage Summary:
+- The owed Vercel question is CLOSED with live evidence: YES, N databases = N env vars + N pooler endpoints; no marketplace integration needed; three platform-law items (pooler endpoints, explicit deploy step, region RTT) now embedded in the T1 sequence.
+- Prod hazard found and filed (DATABASE_URL direct endpoint) with a same-deploy remedy — no action taken by this lane (zero main writes, zero platform writes beyond read-only API GETs).
+- T1 cut-over is now fully specified end-to-end: rehearsal branch -> 0013 + SERVING -> Vercel envs (flip switch + W1 URL + pooler swap) -> explicit deploy -> probe re-run + tripwire watch.
+---
+Task ID: T-RULE-T3-CORPUSGATE-ADJ-1 run-001 (operator order "adjudicate the corpus gate menu", trace 1a16a4005954662d)
+Agent: main (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Adjudicate the corpus-gate operator menu filed at T-RULE-T3-SME-COVERAGE-1 run-007 leg-2 and execute the ruled disposition of record.
+
+Work Log:
+- Evidence first-hand: gate counts reproduced exactly (span 5 / multiline 12 / baretext 7, all 24 occurrences in cie-igcse-economics-25 — 8 flagged strings, 23 distinct values, 9 standard econ formulas); offender census uncapped with JSON paths; provenance re-verified at the substrate (resources calculation-and-determinants-of-ped.md carries the backticked Wiris alt verbatim — the import is faithful; alt-ONLY nodes at source).
+- ADJUDICATION of record: (a) GRANTED (deterministic fail-closed speech->KaTeX transpiler lane, 23a/23b instrument laws); (b) REJECTED (class provably convertible — refreeze would weaken the frozen T-SME-23b zero law without necessity; stays the residual-only fallback); (c) REJECTED (undoes of-record serving, disproportionate); (d) REJECTED as primary (different cost class, not needed). Zero gate-law change; baseline stays ZERO.
+- Instrument landed: apps/hub/scripts/cie/econ25_speech_transpile.ts — gate-exact detection, 23a patch-MARK superset trigger, ladder econPreMap->ciePreMap->speechToTexSafe(KaTeX+residual-grammar)x2->genericChain->ciePlainCollapse, NO-GUESS scope (gate-flagged strings only), dry-run default, byte-exact round-trip assertion, post-write disk re-read + gate rescan.
+- Evidence-derived token additions (per-instance audited): triangle/increment -> \Delta, "thin space" -> space, straight x/X -> \times (all gate-class instances multiplicative), NBSP -> space; bare "x" deliberately left to the of-record ladder (fail-closed restraint).
+- Two special repairs, each uniqueness-verified (1 occurrence corpus-wide): EXACT line override for the mangled "= -2.0" (23b EXACT_FORMULAS precedent; answer -2.0 confirmed by the mark-scheme narrative "-0.4 results from dividing wrongly") + wrapper double-equals dedup ("text X =  end text space equals").
+- 39/39 conversions KaTeX-verified, 0 unfixed; MID-RUN DISCLOSURE: the first --apply wrote a pre-walk parse (byte-identical no-op — caught by git diff + grep audit before any push); instrument corrected (writes the mutated parse) + post-write verification added; re-apply verified on disk.
+- Battery ALL GREEN: verify_corpus_23a PASSED (all counters 0) / validate_cie_bundles ALL PASS (pure-1 bank 67) / verify_flashcard_sync_courses exit 0 / hub tsc exit 0 / hub full build exit 0. Byte scope: notes.json 5 lines + questions.json 3 lines (indent-1 convention preserved); flashcards byte-identical; zero registry/map/manifest contact (tranche-2 anchors + run-007 roster re-pin untouched).
+- Residual disclosed: 6 gate-clean speech spans beyond the gate class in econ-25 (same family, zero CI impact) + the fleet-wide substrate class (30/44 lanes, run-007 of record) — substrate-side harvest fix = separate operator-scoped lane; the standing instrument re-runs per-lane on future serving waves.
+- Receipt .syllabai/receipts/CIE-INTEGRATION/corpusgate-adjudication-transpile-run-001-r0.json; report mirrored at work/econ25_transpile_report.json (39-fix audit trail).
+
+Stage Summary:
+- Corpus-gate menu ADJUDICATED and DISPOSED of record: option (a) executed — the econ-25 speech class converted to KaTeX-verified math, the 23b zero baseline HELD (no refreeze), CI corpus-gate leg GREEN; (b)/(c)/(d) rejected with grounds. Watchlist: the 6-span gate-clean residue (follow-up wave), the substrate-side harvest fix (operator-scoped), the 4-lane serving wave (operator-scoped), class-A 1,203 + recordless 7 (operator menu), PAT rotation CRITICAL-OVERDUE. LANE: IDLE.
