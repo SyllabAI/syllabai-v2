@@ -10,6 +10,8 @@
  *   - the @PathVariable uuid guard (400 "malformed request")
  *   - the service law chain through the router (404/403/409/400 verbatim)
  *   - the learner surface mounted under /api/v1/learners/me
+ *   - run-004 placement: the seneca library plane rides the WAREHOUSE seam
+ *     (second fake); a NULL warehouse seam maps to 503 warehouse_unavailable
  */
 import { describe, expect, test } from "bun:test";
 import { Hono, type Context } from "hono";
@@ -80,14 +82,20 @@ const validBody = {
 
 type AuthRow = Record<string, unknown> | null;
 
-function makeApp(auth: (c: Context) => AuthRow, routes: Route[]) {
+function makeApp(
+  auth: (c: Context) => AuthRow,
+  routes: Route[],
+  whRoutes?: Route[] | null, // null = the NULL warehouse seam (503 posture)
+) {
   const sql = fakeSql(routes) as unknown as Record<string, unknown> & {
     transaction: (body: (tx: unknown) => Promise<unknown>) => Promise<unknown>;
     queries: string[];
   };
   sql.transaction = async (body: (tx: unknown) => Promise<unknown>) => body(sql as unknown as never);
+  const whSql = whRoutes === null ? null : (fakeSql(whRoutes ?? []) as unknown as Parameters<typeof buildAssignmentPacksModule>[1]);
   const mod = buildAssignmentPacksModule(
     sql as unknown as Parameters<typeof buildAssignmentPacksModule>[0],
+    whSql,
     clock,
   );
   const teacherPacksRoute = createAssignmentPacksTeacherRouter(mod);
@@ -169,12 +177,11 @@ describe("authz shells", () => {
 
 describe("teacher wire", () => {
   test("library feed → the course-scoped view (no course filterer: the course rides the query)", async () => {
-    const { app } = makeApp(asTeacher, [
-      registryRoute([{ label: "Chemistry", code: "4CH1", subject: "Chemistry" }]),
-      libraryRoute([eqRow]),
-      topicsRoute(["1. States of Matter"]),
-      countRoute(5699),
-    ]);
+    const { app } = makeApp(
+      asTeacher,
+      [registryRoute([{ label: "Chemistry", code: "4CH1", subject: "Chemistry" }])],
+      [libraryRoute([eqRow]), topicsRoute(["1. States of Matter"]), countRoute(5699)],
+    );
     const res = await app.request(
       `/api/v1/teacher/assignment-packs/resources?course=${COURSE}&kind=examQuestion`,
     );
@@ -199,6 +206,21 @@ describe("teacher wire", () => {
     expect(res.status).toBe(400);
     const body = await res.json();
     expect(body.error).toBe("validation_failed");
+  });
+
+  test("library with the NULL warehouse seam → 503 warehouse_unavailable (fail loud, run-004)", async () => {
+    const { app } = makeApp(
+      asTeacher,
+      [registryRoute([{ label: "Chemistry", code: "4CH1", subject: "Chemistry" }])],
+      null,
+    );
+    const res = await app.request(
+      `/api/v1/teacher/assignment-packs/resources?course=${COURSE}`,
+    );
+    expect(res.status).toBe(503);
+    const body = await res.json();
+    expect(body.error).toBe("warehouse_unavailable");
+    expect(body.message).toContain("SYLLABAI_WAREHOUSE_URL_SCI_CHEM");
   });
 
   test("POST / — bad JSON → malformed_body; duplicate resourceIds → the superRefine message", async () => {
@@ -236,12 +258,15 @@ describe("teacher wire", () => {
   });
 
   test("POST / happy path → 201 with the pack detail (spec_refs [] behind the scenes)", async () => {
-    const { app } = makeApp(asTeacher, [
-      registryRoute([{ label: "Chemistry", code: "4CH1", subject: "Chemistry" }]),
-      validateRoute([eqRow]),
-      insertAssignmentRoute(),
-      insertTaskRoute(),
-    ]);
+    const { app } = makeApp(
+      asTeacher,
+      [
+        registryRoute([{ label: "Chemistry", code: "4CH1", subject: "Chemistry" }]),
+        insertAssignmentRoute(),
+        insertTaskRoute(),
+      ],
+      [validateRoute([eqRow])],
+    );
     const res = await app.request("/api/v1/teacher/assignment-packs", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -273,7 +298,9 @@ describe("teacher wire", () => {
 
 describe("learner wire", () => {
   test("GET pack detail + POST completion — the full loop over the real routers", async () => {
-    const { app } = makeApp(asStudent, [
+    const { app } = makeApp(
+      asStudent,
+      [
       // learnerPack: assignment + tasks + states
       {
         match: /from assignments where id = \? ::uuid$/,
@@ -299,8 +326,8 @@ describe("learner wire", () => {
         },
       },
       {
-        match: /from assignment_resources ar join seneca_resources r on r.id = ar.resource_id/,
-        rows: [{ ...eqRow, position: 1 }],
+        match: /from assignment_resources where assignment_id = \? order by position asc$/,
+        rows: [{ resource_id: RES_EQ, position: 1 }],
       },
       {
         match: /select resource_id, status, marks_awarded, score, completed_at from assignment_resource_states/,
@@ -312,7 +339,10 @@ describe("learner wire", () => {
         match: /select count\(\*\) filter \(where status = 'complete'\)::int as done,/,
         rows: [{ done: 1, score: 2 }],
       },
-    ]);
+      ],
+      // the WAREHOUSE seam: the pack task's content row (run-004)
+      [{ match: /from seneca_resources where id = any\( \? ::text\[\]\)$/, rows: [{ ...eqRow }] }],
+    );
 
     const detail = await app.request(`/api/v1/learners/me/assignment-packs/${ASG_A}`);
     expect(detail.status).toBe(200);

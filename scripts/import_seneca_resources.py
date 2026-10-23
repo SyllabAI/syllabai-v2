@@ -1,7 +1,19 @@
 #!/usr/bin/env python3
 """
 T-SENECA-001 — import the operator-approved Seneca Resource Hub harvest into
-Neon `seneca_resources`, linked ONLY to hub courses that exist.
+`seneca_resources`, linked ONLY to hub courses that exist.
+
+PLACEMENT (run-004 rework, operator ruling trace 1a16adad843081b1):
+`seneca_resources` is a CORPUS plane — the rows live in the sci-chem
+course-group WAREHOUSE (template wh-v2), never in main
+(docs/DATA-PLANE-PLACEMENT.md). Writes therefore go to the WAREHOUSE URL
+(SYLLABAI_WAREHOUSE_URL_SCI_CHEM — the 0013 naming law name the registry row
+stores); the fail-closed course_registry re-check runs against MAIN
+(MAIN_DATABASE_URL) because that anchor stays in main (ids are the contract,
+§4.1 — the importer passes slugs/ids across the seam, never joins). The table
+DDL is owned by the wh-v2 template — this script NEVER creates it (preflight
+fail-closed). No dual writes ever: after the T1 zero-residue main drop this
+is the ONLY write path of the library plane.
 
 Source corpus (read-only; never shipped inside this repo):
   SyllabAI/syllabai-experimental @ d67bc1e3
@@ -21,8 +33,16 @@ row before insert and aborts the run on any leak (fail-closed, the S11 rule).
 Idempotence: upsert by resource id (ON CONFLICT DO UPDATE) — re-runs converge.
 
 Usage:
-  DATABASE_URL=postgres://… python3 scripts/import_seneca_resources.py \
-      --corpus /path/to/resource-hub-content [--dry-run] [--only sections|questions|quizzes]
+  # dry run (no DB contact at all — census + PII gate only):
+  python3 scripts/import_seneca_resources.py \
+      --corpus /path/to/resource-hub-content --dry-run
+
+  # real run: WAREHOUSE receives the rows, MAIN is the registry anchor:
+  SYLLABAI_WAREHOUSE_URL_SCI_CHEM=postgres://…/wh-main \
+  MAIN_DATABASE_URL=postgres://…/main \
+  python3 scripts/import_seneca_resources.py \
+      --corpus /path/to/resource-hub-content [--only sections|questions|quizzes]
+  (CLI overrides: --warehouse-url / --main-url)
 """
 import argparse
 import gzip
@@ -178,6 +198,13 @@ def main():
     ap.add_argument("--corpus", required=True, help="path to resource-hub-content/")
     ap.add_argument("--repo-root", default=os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                     help="syllabai-v2 repo root (for courses.json)")
+    ap.add_argument("--warehouse-url", default=os.environ.get("SYLLABAI_WAREHOUSE_URL_SCI_CHEM"),
+                    help="the sci-chem WAREHOUSE pooler URL (writes land here; "
+                         "default env SYLLABAI_WAREHOUSE_URL_SCI_CHEM — the registry "
+                         "row's name, 0013 naming law)")
+    ap.add_argument("--main-url", default=os.environ.get("MAIN_DATABASE_URL"),
+                    help="MAIN hub URL — the course_registry anchor for the "
+                         "fail-closed slug re-check (default env MAIN_DATABASE_URL)")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--only", choices=["sections", "questions", "quizzes"], default=None)
     args = ap.parse_args()
@@ -217,19 +244,26 @@ def main():
         print("dry-run — no DB writes")
         return
 
-    db_url = os.environ.get("DATABASE_URL")
-    if not db_url:
-        sys.exit("BLOCKED: DATABASE_URL not set")
+    wh_url = args.warehouse_url
+    main_url = args.main_url
+    if not wh_url:
+        sys.exit("BLOCKED: warehouse URL not set (SYLLABAI_WAREHOUSE_URL_SCI_CHEM / --warehouse-url)")
+    if not main_url:
+        sys.exit("BLOCKED: main URL not set (MAIN_DATABASE_URL / --main-url) — the "
+                 "course_registry anchor re-check is fail-closed (placement law)")
     try:
         import psycopg2
         import psycopg2.extras
     except ImportError:
         sys.exit("BLOCKED: psycopg2 not installed (pip install psycopg2-binary)")
 
-    conn = psycopg2.connect(db_url, sslmode="require", connect_timeout=15)
+    # the WAREHOUSE receives the rows (run-004 ruling)
+    wh = psycopg2.connect(wh_url, sslmode="require", connect_timeout=15)
+    main_conn = psycopg2.connect(main_url, sslmode="require", connect_timeout=15)
     try:
-        with conn.cursor() as cur:
-            # the map law, re-checked against the LIVE registry table too
+        with main_conn.cursor() as cur:
+            # the map law, re-checked against the LIVE main registry (the anchor
+            # that stays in main — seam law §4.1)
             cur.execute(
                 "SELECT course_slug FROM course_registry WHERE course_slug = ANY(%s::text[])",
                 ([s for slugs in SENECA_TO_HUB.values() for s in slugs],),
@@ -238,16 +272,25 @@ def main():
             missing = [s for slugs in SENECA_TO_HUB.values() for s in slugs if s not in live]
             if missing:
                 sys.exit(f"BLOCKED: course_registry has no rows for {missing}")
+        # the DDL is the wh-v2 template's — never created by this script
+        with wh.cursor() as cur:
+            cur.execute("SELECT to_regclass('public.seneca_resources')")
+            if cur.fetchone()[0] is None:
+                sys.exit("BLOCKED: seneca_resources does not exist on the warehouse "
+                         "(template wh-v2 owns the DDL — provision sci-chem on wh-v2 first)")
+        with wh.cursor() as cur:
             # psycopg2 cannot adapt bare dicts to jsonb — wrap with Json()
             payload = [
                 {**row, "content_json": psycopg2.extras.Json(row["content_json"])}
                 for row in batches
             ]
             psycopg2.extras.execute_batch(cur, UPSERT, payload, page_size=200)
-        conn.commit()
-        print(f"imported {len(batches)} seneca_resources rows (upsert, idempotent)")
+        wh.commit()
+        print(f"imported {len(batches)} seneca_resources rows into the sci-chem "
+              f"warehouse (upsert, idempotent)")
     finally:
-        conn.close()
+        wh.close()
+        main_conn.close()
 
 
 if __name__ == "__main__":

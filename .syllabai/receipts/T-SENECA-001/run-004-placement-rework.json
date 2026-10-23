@@ -1,0 +1,38 @@
+{
+  "task": "T-SENECA-001",
+  "run": "run-004",
+  "kind": "placement-rework (code-of-record on t-seneca-001/r5; zero DB writes, zero platform mutations)",
+  "date": "2026-10-24",
+  "operator_ruling_executed": {
+    "trace": "1a16adad843081b1",
+    "word": "chemistry-group warehouse",
+    "receipt_of_record": ".syllabai/receipts/T-SENECA-001/run-003-placement-ruling.json"
+  },
+  "merge": {
+    "step": "origin/main merged into t-seneca-001/r5 (373fc69a) — the branch forked at 6bedab62; main had advanced 0010_drill_surface/0011_dc5/0012_study_plans/0013_warehouse_registry (+provisioner, F-182/F-184, serving plane) which the seneca 0010 slot collided with (mergeable=False since run-003)",
+    "conflict_resolutions": "meta/0000_snapshot.json + meta/_journal.json + rebaseline.test.ts + schema.ts took main's side pending the run-004 rework edits; .syllabai/worklog.md concatenated (main's log + the branch's run-001/002/003 entries); both contracts barrel lines kept; apps/hub files: no both-side overlaps (auto-merge clean)"
+  },
+  "rework_of_record": [
+    "0010 SPLIT: the branch's 0010_seneca_resource_packs.sql is GONE from the main chain. The two assignment side families land as 0014_assignment_resource_tables.sql — WITHOUT fk_assignment_resources_resource (seam law §4.1: ids are the contract, no cross-project FKs; resource_id stays a plain varchar(64) reference into the warehouse's seneca_resources; D5 app-side validation is the enforcement point). Live-main convergence: run-002's pre-ruling apply created the tables WITH the FK — the T1 step drops that FK together with the zero-residue seneca_resources drop.",
+    "seneca_resources leaves the main schema: the pgTable def is removed from packages/db/src/schema/schema.ts; the corpus DDL of record is the wh-v2 fragment scripts/provisioner/wh-v2-fragment-seneca-resources.sql (frozen wh-v1 + this fragment; title text per the run-002 fix, kind/marks checks, 2 indexes) — supplied to the T-OPS-PLANE-001 provisioner lane (template owner).",
+    "META: meta/0000_snapshot.json folded to 82 tables (the verify baseline of record, the T-MIG-002-R convention); meta/0014_snapshot.json chained (prevId = 0013's ba4fb815-a075-4349-b5df-5d95f04a1510); _journal.json idx 14. rebaseline.test.ts pins advanced 80/754/108/77/129 -> 82/768/112/80/133 + the inventory test asserts the two side families present and seneca_resources ABSENT from the main schema.",
+    "ROUTE/SERVICE TWO-CLIENT SEAM: buildAssignmentPacksModule(sql, whSql, clock) — MAIN (course_registry, classes, class_members, assignments, assignment_resources, assignment_resource_states) vs the sci-chem WAREHOUSE pooler client built from SYLLABAI_WAREHOUSE_URL_SCI_CHEM (the exact env NAME the warehouse_registry row stores — 0013 naming law; run-005 pooler law). Every seneca_resources read rides whSql (library feed x3, create validation, task hydration). The former main-side JOIN in loadTasks is SPLIT: positions on main (assignment_resources), content on the warehouse by id, stitched in JS — ids are the contract, no cross-project join/FK ever; a task whose warehouse row is missing 404s (fail-closed, verbatim wording), never a silently shortened pack. Absent env = the NULL seam: any seneca touch throws WarehouseNotConfiguredError -> 503 warehouse_unavailable (fail loud, never a silent empty library; D7 flag keeps the UI dark pre-T1). No dual writes ever.",
+    "IMPORTER RETARGET: scripts/import_seneca_resources.py writes the WAREHOUSE (SYLLABAI_WAREHOUSE_URL_SCI_CHEM / --warehouse-url) and re-checks the slug map fail-closed against MAIN course_registry (MAIN_DATABASE_URL / --main-url — the anchor that stays in main); wh-v2 preflight to_regclass guard (the template owns the DDL — the script never creates it); PII gate + census + upsert law unchanged; dry-run remains DB-free.",
+    "PLAN D9: docs/SENECA_RESOURCE_PACKS_PLAN.md gains the placement decision row + the import-pipeline retarget note; packages/db/src/schema/README.md documents the side families on 0014 and senecaResources' deliberate absence (warehouse plane)."
+  ],
+  "t1_order_of_record": "provision sci-chem on wh-v2 (provisioner lane) -> parity-verified row migration of run-002's 5,098 rows (counts by kind 286/1,430/3,382, distinct id set, PII rescan 0, spot-content hashes) -> zero-residue main seneca_resources drop + fk_assignment_resources_resource drop -> registry seed sci-chem/SYLLABAI_WAREHOUSE_URL_SCI_CHEM/wh-v2/ASSIGNED (0013 naming; subject_id read from main subjects at registration) -> hub Vercel env SYLLABAI_WAREHOUSE_URL_SCI_CHEM (pooler) -> the operator's serving flip. Source project of the run-002 rows to confirm at knock.",
+  "gates": {
+    "pack_tests": "30 pass / 0 fail (27 reworked + 3 new: NULL-seam fail-loud service test, missing-warehouse-row fail-closed test, 503 warehouse_unavailable wire test)",
+    "rebaseline": "82/768/112/80/133 — runtime schema is snapshot-faithful, 0 drifts (26/26 in rebaseline.test.ts)",
+    "typecheck": "bun run typecheck clean (contracts, shared, db, api)",
+    "full_suite": "bun test apps/api packages -> 2,910 pass / 0 fail / 13 skip (pre-existing skips)",
+    "eslint": "0 on the touched TS files",
+    "hub": "no hub file touched by run-004; no both-side merge overlaps in apps/hub (wire contract unchanged)"
+  },
+  "open_items": [
+    "Sci-chem warehouse URL awaited from the operator (console-side creation per the W1 precedent — Neon API egress remains blocked from the sandbox).",
+    "Confirm which project currently holds the run-002 5,098 rows (the run-002 pooler DATABASE_URL — main ep-ancient-cake-a52e4kfd or another): the T1 migration source of record.",
+    "T-OPS-PLANE-001 provisioner lane: wire wh-v2 (template.sql + the fragment) into provision.mjs and dry-run it — the fragment is supplied, the template extension is that lane's.",
+    "Registry seed + Vercel env + serving flip per the T1 order above — the flip stays the operator's UPDATE."
+  ]
+}

@@ -1,28 +1,18 @@
--- 0010 — T-SENECA-001: Seneca resource packs. V2-NATIVE, ADDITIVE-ONLY
--- (BASELINE_DB.md §4; the 0006 class_features side-table precedent): zero
--- bytes change on any Flyway-era table — the pack hangs off the core-era
--- `assignments` row by FK, never reshapes it. Resource rows are the
--- operator-approved Seneca Resource Hub harvest (syllabai-experimental
--- @ d67bc1e3, PII-scrubbed), linked ONLY to hub courses that exist
--- (courses.json; pilot: igcse-chemistry-19 = Edexcel IGCSE Chemistry 4CH1).
---> statement-breakpoint
-CREATE TABLE "seneca_resources" (
-	"id" varchar(64) PRIMARY KEY NOT NULL,
-	"course_slug" varchar(64) NOT NULL,
-	"kind" varchar(16) NOT NULL,
-	"title" text,
-	"topic_path" text,
-	"marks_total" integer,
-	"question_type" varchar(60),
-	"content_json" jsonb NOT NULL,
-	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
-	CONSTRAINT "seneca_resources_kind_check" CHECK ("kind"::text = ANY (ARRAY['courseSection'::character varying, 'examQuestion'::character varying, 'quiz'::character varying]::text[])),
-	CONSTRAINT "seneca_resources_marks_check" CHECK ("marks_total" IS NULL OR "marks_total" >= 0)
-);
---> statement-breakpoint
-CREATE INDEX "ix_seneca_resources_course_kind" ON "seneca_resources" USING "btree" ("course_slug", "kind");
---> statement-breakpoint
-CREATE INDEX "ix_seneca_resources_topic" ON "seneca_resources" USING "btree" ("course_slug", "topic_path");
+-- 0014 — T-SENECA-001 run-004 (the placement rework): the two assignment
+-- side tables land on the MAIN chain WITHOUT any seneca FK. Ruling of
+-- record (operator trace 1a16adad843081b1, receipt run-003): seneca_resources
+-- is a CORPUS plane — it lives in the sci-chem course-group warehouse
+-- (template wh-v2 = frozen wh-v1 + the pack DDL fragment), never in main
+-- (docs/DATA-PLANE-PLACEMENT.md; docs/ADR-038-COURSE_GROUP_VECTOR_WAREHOUSES.md).
+-- Seam law §4.1: ids are the contract — assignment_resources.resource_id stays
+-- a plain varchar(64) id reference resolved against the warehouse at serving
+-- time (the registry row seeds SYLLABAI_WAREHOUSE_URL_SCI_CHEM at T1); the
+-- fail-closed existence/course validation lives app-side (plan D5). Live-main
+-- convergence: run-002's pre-ruling apply created these tables WITH
+-- fk_assignment_resources_resource -> seneca_resources — the T1 step drops
+-- that FK together with the zero-residue seneca_resources drop (no dual
+-- writes ever). Additive-only (BASELINE_DB.md §4); the core-era assignments
+-- row is never ALTERed — the pack hangs off it by FK.
 --> statement-breakpoint
 CREATE TABLE "assignment_resources" (
 	"id" uuid PRIMARY KEY NOT NULL,
@@ -32,7 +22,6 @@ CREATE TABLE "assignment_resources" (
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	CONSTRAINT "ux_assignment_resources_pair" UNIQUE ("assignment_id", "resource_id"),
 	CONSTRAINT "fk_assignment_resources_assignment" FOREIGN KEY ("assignment_id") REFERENCES "public"."assignments"("id") ON DELETE CASCADE ON UPDATE NO ACTION,
-	CONSTRAINT "fk_assignment_resources_resource" FOREIGN KEY ("resource_id") REFERENCES "public"."seneca_resources"("id"),
 	CONSTRAINT "assignment_resources_position_check" CHECK ("position" >= 1)
 );
 --> statement-breakpoint

@@ -36,6 +36,29 @@
  *   - Bind-slot discipline: every ${} slot is a bind parameter; column
  *     lists and state-bearing predicates inline as static template text.
  *
+ * PLACEMENT (run-004 rework, the operator ruling of record 2026-10-24,
+ * trace 1a16adad843081b1 — receipt run-003): seneca_resources is a CORPUS
+ * plane — it lives in the sci-chem course-group warehouse (template wh-v2 =
+ * frozen wh-v1 + the pack DDL), NEVER in main (docs/DATA-PLANE-PLACEMENT.md;
+ * docs/ADR-038). The module therefore takes TWO sql seams:
+ *   - `sql`   → MAIN: course_registry, classes, class_members, the
+ *     assignments row + the two side families (0014).
+ *   - `whSql` → the sci-chem WAREHOUSE pooler client: every
+ *     seneca_resources read (library feed, create validation, task
+ *     hydration). Seam law §4.1 — ids are the contract: the former
+ *     main-side JOIN is split (positions on main, resource rows on the
+ *     warehouse by id) and stitched in JS; there is NO cross-project FK
+ *     (0014 drops it) and the fail-closed existence/course validation
+ *     stays app-side (plan D5).
+ *   The warehouse client is built from SYLLABAI_WAREHOUSE_URL_SCI_CHEM —
+ *   the exact env NAME the warehouse_registry row stores (0013 naming law;
+ *   run-005: pooler endpoints for serverless). Absent env = a NULL seam:
+ *   any seneca touch throws WarehouseNotConfiguredError → 503 (fail loud,
+ *   never a silent empty library — the flag D7 keeps the UI dark until T1
+ *   sets the env; the T1 order: provision wh-v2 → parity-verified row
+ *   migration → zero-residue main drop → registry seed → Vercel env →
+ *   operator's serving flip). No dual writes ever.
+ *
  * NO course filterer (the operator directive): the library feed is scoped
  * by the page's own course slug — there is no course dropdown anywhere in
  * this surface.
@@ -59,6 +82,9 @@ import {
 
 export class PackNotFoundError extends Error {}
 export class PackForbiddenError extends Error {}
+/** the warehouse seam is not configured (SYLLABAI_WAREHOUSE_URL_SCI_CHEM
+ *  absent — pre-T1 posture): fail loud 503, never a silent empty feed. */
+export class WarehouseNotConfiguredError extends Error {}
 export { BadRequestError, ConflictError };
 
 const UUID_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
@@ -153,7 +179,18 @@ function taskView(row: TaskRow) {
 
 // ── the service ─────────────────────────────────────────────────────────────
 
-export function buildAssignmentPacksModule(sql: SqlFn, clock: SubmitClock) {
+export function buildAssignmentPacksModule(
+  sql: SqlFn,
+  whSql: SqlFn | null,
+  clock: SubmitClock,
+) {
+  /** the warehouse seam guard: ids are the contract, the client is the
+   *  sci-chem pooler (SYLLABAI_WAREHOUSE_URL_SCI_CHEM); absent = fail loud. */
+  function wh(): SqlFn {
+    if (!whSql) throw new WarehouseNotConfiguredError("assignment packs warehouse is not configured (SYLLABAI_WAREHOUSE_URL_SCI_CHEM absent — pre-T1 posture)");
+    return whSql;
+  }
+
   async function resolveCourseLabel(courseSlug: string): Promise<string> {
     const rows = (await sql`
       select label, code, subject from course_registry where course_slug = ${courseSlug}
@@ -180,7 +217,9 @@ export function buildAssignmentPacksModule(sql: SqlFn, clock: SubmitClock) {
     const q = params.q?.trim() ? `%${params.q.trim()}%` : null;
     const limit = Math.min(500, Math.max(1, params.limit ?? 200));
 
-    const rows = (await sql`
+    // the library plane is the WAREHOUSE's (run-004); the course label
+    // stays main-side (course_registry is the identity-adjacent anchor)
+    const rows = (await wh()`
       select id, kind, title, topic_path, marks_total, question_type
       from seneca_resources
       where course_slug = ${params.courseSlug}
@@ -191,13 +230,13 @@ export function buildAssignmentPacksModule(sql: SqlFn, clock: SubmitClock) {
       limit ${limit}
     `) as unknown as ResourceRow[];
 
-    const topicRows = (await sql`
+    const topicRows = (await wh()`
       select distinct topic_path from seneca_resources
       where course_slug = ${params.courseSlug} and topic_path is not null
       order by topic_path asc limit 400
     `) as unknown as { topic_path: string }[];
 
-    const totalRows = (await sql`
+    const totalRows = (await wh()`
       select count(*)::int as total from seneca_resources where course_slug = ${params.courseSlug}
     `) as unknown as { total: number }[];
 
@@ -257,8 +296,9 @@ export function buildAssignmentPacksModule(sql: SqlFn, clock: SubmitClock) {
     }
 
     // fail-closed resource validation, insertion-ordered dedup already done
-    // by the schema's superRefine; unknown/foreign ids 404 first-missing
-    const found = (await sql`
+    // by the schema's superRefine; unknown/foreign ids 404 first-missing —
+    // validated against the WAREHOUSE library plane (run-004)
+    const found = (await wh()`
       select id, kind, title, topic_path, marks_total, question_type, content_json
       from seneca_resources
       where course_slug = ${req.courseSlug} and id = any(${req.resourceIds}::text[])
@@ -326,16 +366,31 @@ export function buildAssignmentPacksModule(sql: SqlFn, clock: SubmitClock) {
     return row;
   }
 
+  /** the run-004 seam split: positions from MAIN (assignment_resources,
+   *  0014), content from the WAREHOUSE by id (seneca_resources) — ids are
+   *  the contract, no cross-project join/FK ever. A task whose warehouse
+   *  row is missing 404s (fail-closed, verbatim wording) — never a
+   *  silently shortened pack. */
   async function loadTasks(assignmentId: string): Promise<TaskRow[]> {
-    const rows = (await sql`
-      select r.id, r.kind, r.title, r.topic_path, r.marks_total, r.question_type,
-             r.content_json, ar.position
-      from assignment_resources ar
-      join seneca_resources r on r.id = ar.resource_id
-      where ar.assignment_id = ${assignmentId}
-      order by ar.position asc
-    `) as unknown as TaskRow[];
-    return rows;
+    const posRows = (await sql`
+      select resource_id, position
+      from assignment_resources
+      where assignment_id = ${assignmentId}
+      order by position asc
+    `) as unknown as Array<{ resource_id: string; position: number }>;
+    if (posRows.length === 0) return [];
+    const ids = posRows.map((p) => p.resource_id);
+    const resRows = (await wh()`
+      select id, kind, title, topic_path, marks_total, question_type, content_json
+      from seneca_resources
+      where id = any(${ids}::text[])
+    `) as unknown as ResourceRow[];
+    const byId = new Map(resRows.map((r) => [r.id, r]));
+    return posRows.map((p) => {
+      const r = byId.get(p.resource_id);
+      if (!r) throw new PackNotFoundError(`unknown assignment resource: ${p.resource_id}`);
+      return { ...r, position: p.position };
+    });
   }
 
   async function packDetailFor(
@@ -508,6 +563,8 @@ function packsOnError(err: unknown, c: Context): Response {
   if (err instanceof PackForbiddenError) return c.json(apiError(403, "forbidden", err.message), 403);
   if (err instanceof BadRequestError) return c.json(apiError(400, "bad_request", err.message), 400);
   if (err instanceof ConflictError) return c.json(apiError(409, "conflict", err.message), 409);
+  if (err instanceof WarehouseNotConfiguredError)
+    return c.json(apiError(503, "warehouse_unavailable", err.message), 503);
   console.error("[assignment-packs] unhandled error:", err);
   return c.json(apiError(500, "internal_error", "an internal error occurred"), 500);
 }
@@ -603,15 +660,21 @@ export function createAssignmentPacksLearnerRouter(module: AssignmentPacksModule
 }
 
 /** the router factory (the fleet seam shape — buildTeacherAssignmentsRouters
- *  parity): ZERO-KEY law untouched, the db url required at construction. */
+ *  parity): ZERO-KEY law untouched, the main db url required at
+ *  construction; the WAREHOUSE client is built from SYLLABAI_WAREHOUSE_URL_SCI_CHEM
+ *  when present (0013 naming law — the name the registry row stores), else
+ *  the NULL seam (503 on seneca touch, the honest pre-T1 posture). */
 export function buildAssignmentPacksRouters(
   env: Record<string, string | undefined> = process.env,
   seams: { clock?: SubmitClock } = {},
 ) {
   const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
   const sql = createSql(databaseUrl);
+  const warehouseUrl = (env as { SYLLABAI_WAREHOUSE_URL_SCI_CHEM?: string }).SYLLABAI_WAREHOUSE_URL_SCI_CHEM;
+  const whSql = warehouseUrl ? createSql(warehouseUrl) : null;
   const packsModule = buildAssignmentPacksModule(
     sql,
+    whSql,
     seams.clock ?? { newId: () => crypto.randomUUID(), now: () => new Date() },
   );
   return {

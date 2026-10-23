@@ -1913,3 +1913,61 @@ export const warehouseRegistry = pgTable("warehouse_registry", {
                         name: "warehouse_registry_subject_id_fkey"
                 }),
 ]);
+
+// ── assignment_resources + assignment_resource_states (T-SENECA-001 run-004,
+// migration 0014 — the placement rework) ─────────────────────────────────────
+// The pack side families stay in MAIN (assignment domain + learner model
+// plane). seneca_resources itself is a CORPUS plane: it lives in the sci-chem
+// course-group warehouse (template wh-v2) per the operator ruling of record
+// (trace 1a16adad843081b1; docs/DATA-PLANE-PLACEMENT.md). Seam law §4.1 —
+// ids are the contract: resource_id is a plain varchar(64) reference resolved
+// against the warehouse at serving time; NO cross-project FK (the run-002
+// pre-ruling FK is dropped at the T1 step), and the fail-closed
+// existence/course validation lives app-side (plan D5 of the pack plan).
+
+export const assignmentResources = pgTable("assignment_resources", {
+        id: uuid().primaryKey().notNull(),
+        assignmentId: uuid("assignment_id").notNull(),
+        resourceId: varchar("resource_id", { length: 64 }).notNull(),
+        position: integer("position").notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+}, (table) => [
+        unique("ux_assignment_resources_pair").on(table.assignmentId, table.resourceId),
+        index("ix_assignment_resources_assignment").using("btree", table.assignmentId.asc().nullsLast().op("int4_ops"), table.position.asc().nullsLast().op("int4_ops")),
+        index("ix_assignment_resources_resource").using("btree", table.resourceId.asc().nullsLast().op("text_ops")),
+        foreignKey({
+                        columns: [table.assignmentId],
+                        foreignColumns: [assignments.id],
+                        name: "fk_assignment_resources_assignment"
+                }).onDelete("cascade"),
+        check("assignment_resources_position_check", sql`("position" >= 1)`),
+]);
+
+export const assignmentResourceStates = pgTable("assignment_resource_states", {
+        id: uuid().primaryKey().notNull(),
+        assignmentId: uuid("assignment_id").notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        resourceId: varchar("resource_id", { length: 64 }).notNull(),
+        status: varchar("status", { length: 16 }).notNull().default("todo"),
+        marksAwarded: integer("marks_awarded"),
+        score: doublePrecision("score"),
+        completedAt: timestamp("completed_at", { withTimezone: true }),
+        updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+}, (table) => [
+        unique("ux_assignment_resource_states_triple").on(table.assignmentId, table.learnerId, table.resourceId),
+        index("ix_assignment_resource_states_learner").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops")),
+        index("ix_assignment_resource_states_assignment").using("btree", table.assignmentId.asc().nullsLast().op("uuid_ops")),
+        foreignKey({
+                        columns: [table.assignmentId],
+                        foreignColumns: [assignments.id],
+                        name: "fk_assignment_resource_states_assignment"
+                }).onDelete("cascade"),
+        foreignKey({
+                        columns: [table.learnerId],
+                        foreignColumns: [users.id],
+                        name: "fk_assignment_resource_states_learner"
+                }).onDelete("cascade"),
+        check("assignment_resource_states_status_check", sql`("status"::text = ANY ((ARRAY['todo'::character varying, 'complete'::character varying])::text[]))`),
+        check("assignment_resource_states_marks_check", sql`("marks_awarded" IS NULL OR ("marks_awarded" >= 0))`),
+        check("assignment_resource_states_score_check", sql`("score" IS NULL OR (("score" >= 0) AND ("score" <= 1)))`),
+]);

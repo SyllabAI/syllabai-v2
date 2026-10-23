@@ -38,11 +38,14 @@ drizzle-kit pull baseline:
 - `classFeatures`, `courseRegistry` — T-TEACH-002 (0006).
 - `markEntitlementPolicies`, `markEntitlements`, `aiMarkEvents` — DC-3
   re-attempt entitlement (0009).
-- `senecaResources`, `assignmentResources`, `assignmentResourceStates` —
-  T-SENECA-001 (0010): the teacher assignment creator's "Seneca resources"
-  option — course-linked harvest rows, the pack task list hung off the
+- `assignmentResources`, `assignmentResourceStates` — T-SENECA-001
+  (0014, the run-004 placement rework): the pack task list hung off the
   core-era `assignments` row by FK (side-table law), per-learner states
-  with server-side scoring.
+  with server-side scoring. `senecaResources` is deliberately ABSENT — it
+  is a CORPUS plane living in the sci-chem course-group warehouse
+  (template wh-v2, `scripts/provisioner/wh-v2-fragment-seneca-resources.sql`),
+  referenced by the bare `resource_id` text id per the seam law (§4.1:
+  ids are the contract — no cross-project FK).
 
 `flyway_schema_history` is present in the generated schema (62/62 tables are
 modelled — none omitted silently) but is **Flyway-owned forever**:
@@ -159,6 +162,7 @@ Every migration after the 0000 baseline is a v2-owned additive structure per
 | `0009_dc3-mark-entitlement.sql` | DC-3 re-attempt entitlement (docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md) | `ai_mark_events` (APPEND-ONLY ordinal ledger, (learner, part, ordinal) UNIQUE fail-closed) + `mark_entitlement_policies` (seeded free/paid; trial unshipped — spec open question (a) operator-gated) + `mark_entitlements` (row-absent = free) |
 | `0011_dc5-mark-point-alternatives.sql` | DC-5 cross-tool conformance (docs/DC5-CONFORMANCE-LINT-PLAN.md) | `mark_point_alternatives` (the materialised acceptable-answer surface — the spec's "MarkingPoint rows gain acceptable_alternatives + numeric_values columns" translated to the BASELINE_DB §4.2 new-v2-table form: mark_points is Flyway-owned, alter-structure-never, prereg R-DC5-1; mark_scheme_id is the scheme-revision carrier, uq_mpa_row makes materialisation idempotent) |
 | `0012_study_plans.sql` | Study-Plan Builder (docs/STUDY-PLAN-BUILDER-PLAN.md) | `study_plans` (the learner's plan-config row — the three builder steps: courses, per-course exam seasons, per-day minutes; uq_study_plan_learner = ONE active plan, PUT replaces; the ONLY persisted state of the lane — the generated week and every completion state stay query-time projections over the DC-7 event rows, created_at is the immutable day-walk anchor) |
+| `0014_assignment_resource_tables.sql` | T-SENECA-001 run-004 (docs/SENECA_RESOURCE_PACKS_PLAN.md D9) | `assignment_resources` + `assignment_resource_states` — the pack side families in MAIN, WITHOUT the seneca FK (seam law: `resource_id` is a bare varchar(64) reference into the sci-chem warehouse's `seneca_resources`; run-002's pre-ruling FK drops at T1) |
 
 DC-3 substrate notes: `ai_mark_events` is APPEND-ONLY (the markAttempt
 ordinal ledger — counted in the marking path, never inferred); entitlement

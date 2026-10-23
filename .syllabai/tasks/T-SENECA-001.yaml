@@ -60,6 +60,33 @@ task:
     (filed on this branch and on origin/main bookkeeping). Code rework lands as
     run-004 on this branch before merge; DB steps await the operator's sci-chem
     warehouse URL + knock.
+    LANDED (run-004, 2026-10-24): the placement rework on t-seneca-001/r5.
+    origin/main MERGED (373fc69a; the branch forked at 6bedab62 — main's
+    0010_drill_surface/0011/0012/0013_warehouse_registry + provisioner +
+    serving plane aboard; mergeable=False unblocked). 0010 SPLIT: the two
+    assignment side families ride 0014_assignment_resource_tables.sql WITHOUT
+    fk_assignment_resources_resource (seam law: resource_id is a bare
+    varchar(64) id into the warehouse's seneca_resources; D5 app-side
+    validation; run-002's pre-ruling FK drops at T1 with the zero-residue
+    main drop). seneca_resources leaves the main schema (schema.ts def
+    removed; the DDL of record = scripts/provisioner/wh-v2-fragment-
+    seneca-resources.sql, supplied to the T-OPS-PLANE-001 provisioner lane
+    as wh-v2 := frozen wh-v1 + fragment). META: 0000_snapshot folded to 82
+    tables; 0014_snapshot chained; journal idx 14; rebaseline pins
+    80/754/108/77/129 -> 82/768/112/80/133. ROUTE/SERVICE: two-client seam
+    buildAssignmentPacksModule(sql, whSql, clock) — whSql is the sci-chem
+    pooler client from SYLLABAI_WAREHOUSE_URL_SCI_CHEM (0013 naming law);
+    every seneca read rides the warehouse; loadTasks split (positions on
+    main, content on the warehouse by id, JS stitch — ids are the contract);
+    NULL seam -> WarehouseNotConfiguredError -> 503 warehouse_unavailable
+    (fail loud). IMPORTER: writes the warehouse, re-checks course_registry
+    on MAIN (MAIN_DATABASE_URL), wh-v2 to_regclass preflight. PLAN: D9
+    placement row + pipeline note; schema README updated. Gates: pack tests
+    30/30; rebaseline 0 drifts; typecheck clean; full suite 2,910 pass /
+    0 fail; eslint 0 touched. Receipt of record:
+    .syllabai/receipts/T-SENECA-001/run-004-placement-rework.json. Zero DB
+    writes, zero platform mutations; DB steps (T1) await the operator's
+    sci-chem URL + knock.
 base:
   repo: "syllabai-v2 @ 6bedab6 (origin/main at claim)"
 basis: >
@@ -87,6 +114,13 @@ scope:
     - ".syllabai/tasks/T-SENECA-001.yaml (status/execution_record only)"
     - ".syllabai/receipts/T-SENECA-001/**"
     - ".syllabai/worklog.md (append-only)"
+  run004_extension:
+    - "packages/db/drizzle/0014_assignment_resource_tables.sql (replaces the deleted 0010_seneca_resource_packs.sql)"
+    - "packages/db/drizzle/meta/0014_snapshot.json (chained journal artifact)"
+    - "packages/db/src/schema/README.md (0014 row + the seneca placement note)"
+    - "scripts/provisioner/wh-v2-fragment-seneca-resources.sql (the corpus DDL of record, supplied to the T-OPS-PLANE-001 provisioner lane)"
+    - "docs/DATA-PLANE-PLACEMENT.md / ADR-038 / 0013 naming: referenced as laws, not modified"
+    - "merge-commit 373fc69a (origin/main into this branch — the run-004 step 1)"
   forbidden:
     - "packages/contracts/src/assignments.ts + learner.ts (frozen T-MIG-117 wire)"
     - "apps/api/src/services/teacher-assignments/** (frozen port)"
