@@ -20108,3 +20108,9 @@ Work Log:
 Stage Summary:
 - Operator question ANSWERED with measured numbers: never maths-b-only — four subjects in the estate; the lost growth was maths-heavy, the survivors are maths+chemistry+physics.
 - Rebuild dispatch is now subject-scoped; the 117 draft schemes (643 pts) need an owner ruling (re-derive vs re-derivable-drop).
+
+## R0-AUTO receipt — 2026-10-24 02:00 (+08)
+- Task ID: R0-auto-cron-438940 | PR #338 (T-SM-SD0-FIX-R0 strand-code re-export + seeder) → MERGED as ca90f90 (merge_method=merge)
+- head 75edde2: verify ✓ hub ✓ | gates: reviews=0/comments=0 (no holds), diff 24 files all in-repo apps/api+apps/hub content, no *.java, no core/hub-repo content, no Neon/prod writes
+- post-merge main ca90f90 CI: verify ✓ hub ✓ (2/2 green, bounded re-check)
+- notes: 33rd external mirror reset observed pre-sweep (89962a5), fetch-first restored, zero loss; other 4 PRs unchanged/static, still blocked at gate (b)
