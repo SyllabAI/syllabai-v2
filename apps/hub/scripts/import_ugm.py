@@ -6,7 +6,7 @@ Mirrors the import_content.py discipline: reads a LOCAL checkout/snapshot of
 SyllabAI/syllabai-resources at a pinned ref (never GitHub at runtime), and
 emits a versioned, self-describing JSON bundle committed under content/.
 
-Sources of record (course cie-a-level-maths-20-pure-1, four UGM lanes):
+Sources of record (course cie-a-level-maths-20-pure-1, five UGM lanes):
   - lane 1 (quadratics): UGM-Enrichment/...-quadratics.json (#55) +
     UGM-Resources/pure-1-quadratics/ (#58), landed of record main@91eed732
   - lane 2 (functions):  UGM-Enrichment/...-functions.json +
@@ -24,6 +24,16 @@ Sources of record (course cie-a-level-maths-20-pure-1, four UGM lanes):
     (5 resources from four stations' strand sweeps); the circles station's
     strand mappings are cross-lane facts joined against their existing lane-3
     bodies (see the cross-lane join below)
+  - lane 5 (trigonometry — the SECOND two-station lane, the lanes 1-3 shape):
+    UGM-Enrichment/...-trigonometry.json + UGM-Resources/pure-1-trigonometry/
+    (PR #79, T-UGM-MODE1-5 / T-UGM-IMPORT-5), landed of record main@cf79ecd2 —
+    the WHOLE two-station substrate as text of record (77 files: 41 mapped
+    across Trigonometry: Triangles to Functions + Trigonometry: Compound
+    Angles plus two cross-station strays, and 36 recorded non-overlaps
+    imported unmapped — the compound-angles station maps mostly to P3 2.3),
+    plus two cross-lane fact joins against the existing lane-2 bodies
+    (r9924/r8411 → 1.5.4; r9924 flips its lane-2 non-overlap of record,
+    r8411 gains a second spec row)
   all under ADR-UGM-0001 (as amended 2026-10-23) + the operator attestation
   of 2026-10-23 ("downloaded text can ship into SyllabAI. We have permission").
 
@@ -41,7 +51,7 @@ surface anything.
 
 Usage:
   python3 scripts/import_ugm.py --repo <syllabai-resources-snapshot-dir> \
-      [--ref main@1585c4ffc158d4ba6d4bcc692b960a245ad072b1] \
+      [--ref main@cf79ecd2f49aae81b7bb0db9721b79623f3dd5fd] \
       [--lane cie-a-level-maths-20-pure-1]
 
 The script audits before writing (fail-closed, PER LANE): enrichment row
@@ -71,7 +81,7 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-DEFAULT_REF = "main@1585c4ffc158d4ba6d4bcc692b960a245ad072b1"
+DEFAULT_REF = "main@cf79ecd2f49aae81b7bb0db9721b79623f3dd5fd"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # Per-course UGM lane mapping. Single-station blocks (`station` + `title`)
@@ -126,6 +136,21 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-1-circular-measure",
             "ledger": "LEDGER.md — T-UGM-MODE1-4 and T-UGM-IMPORT-4 (PR #74)",
             "expected": {"resources": 5, "rows": 3, "aligned": 3, "nonOverlap": 2},
+        },
+        {
+            "laneSlug": "trigonometry",
+            "laneTitle": "Trigonometry",
+            "stations": [
+                {"slug": "trigonometry-triangles-to-functions",
+                 "title": "Trigonometry: Triangles to Functions"},
+                {"slug": "trigonometry-compound-angles", "title": "Trigonometry: Compound Angles"},
+                {"slug": "introducing-calculus", "title": "Introducing Calculus"},
+                {"slug": "exp-and-log", "title": "Exponentials & Logarithms"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-1-trigonometry.json",
+            "res_dir": "UGM-Resources/pure-1-trigonometry",
+            "ledger": "LEDGER.md — T-UGM-MODE1-5 and T-UGM-IMPORT-5 (PR #79)",
+            "expected": {"resources": 77, "rows": 55, "aligned": 39, "nonOverlap": 36},
         },
     ],
 }
