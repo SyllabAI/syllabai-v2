@@ -1,9 +1,9 @@
 version: 1
 task:
   id: T-CONTENT-MP-REBUILD-001
-  title: "Re-derive the ~26,109 mark_points lost with the drop (Oct-21 00:43Z -> Oct-22 09:15Z post-snapshot growth) — or operator rules the loss accepted (pin amendment)"
-  owner: "unassigned (content/bank lane lineage — T-MIG-107/138)"
-  status: OPEN
+  title: "REBUILD mark_points from scratch — operator ruled the loss accepted in full; full re-derivation of the 40,250-basis estate via the derivation instruments of record (decision 2026-10-24)"
+  owner: "content/bank lane — DISPATCHED, awaiting pickup (lineage T-MIG-107/138)"
+  status: DISPATCHED
   priority: P1
   band: T-CONTENT (corpus / bank marks)
   wave: post-restore
@@ -20,31 +20,51 @@ task:
     (301 QP/289 MS/489 EQ/162 SYL/112 EN), chunks 13,765, exam_papers
     (4MA1=110), assets 585/194; the V60/V61 idempotency history is itself
     restored (flyway through V63 all-success).
+    UPDATE 2026-10-24 — OPERATOR DECISION (trace 1a169beaffefb389, receipt
+    run-006-markpoints-decision-r2): fork RESOLVED — the loss is ACCEPTED IN
+    FULL and the estate is REBUILT FROM SCRATCH: scope is the FULL pre-loss
+    peak basis 40,250 (not just the delta), re-derived by re-running the
+    derivation instruments of record over the surviving inputs. The surviving
+    14,141 are RETAINED as the validation oracle (non-authoritative,
+    tripwire-guarded, pin 14,141): idempotent replay over identical inputs
+    must reproduce them — material divergence = derivation defect, rebuild
+    does not ship. Tripwire r2 (2026-10-23T17:21Z) confirms the oracle intact
+    and the estate byte-quiet. Disclosure: everything the recorded runs
+    produced is machine-re-derivable; rows hand-curated OUTSIDE the
+    instruments of record will NOT re-derive — enumerate any such rows before
+    the census claims completeness (run-003 attributes the growth to recorded
+    runs; none known hand-curated).
   next_safe_actions: >
-    (1) OPERATOR DISPATCH FORK: (a) re-derive — re-run the bank/scheme
-    derivation of record over the surviving input planes, OR (b) accept the
-    loss and amend the standing mark_points pin to 14,141. (2) If (a): scope
-    the re-runs (4MB1 artwork wave + the backfill instruments), take the
-    mark_points plane under single-writer-per-plane discipline, run the
-    derivation instruments of record ONLY (no direct SQL seeding), leaning on
-    the restored V60/V61 idempotency; embeddings/marks backfills keep their
-    CI-egress discipline. (3) Post-run census: target the pre-loss peak
-    40,250 (or the amended pin if (b)) and file a receipt under
-    .syllabai/receipts/NEON-DB-LOSS/ (run-005+). NOTE: the corpus planes are
-    also the subject of the ADR-038 warehouse split — coordinate with
-    T-OPS-PLANE-001 before large corpus writes (T0 law: writes stay lawful
-    in main until per-group cut-over; re-derivation into main is lawful,
-    re-derivating straight into a cut-over'd warehouse would be wasted work).
+    (1) Scope the re-runs: 4MB1 62-paper artwork scale run + T-MIG-138
+    embed/marks backfill discipline + fprod1 V60/V61 idempotent lineage —
+    instruments of record ONLY, no direct SQL seeding (law unchanged).
+    (2) Take the mark_points plane single-writer-per-plane for the rebuild
+    window; run the estate tripwire at lane start and end (usage law (a)).
+    (3) Absorb the 1,330 no_vec chunks into the backfill plan (drain is FLAT
+    since 2026-10-23 — lane idle; r2 receipt).
+    (4) T0 law integration (resolved by run-006): rebuild into MAIN is
+    lawful and CORRECT — the maths cut-over has not happened (provisioner
+    egress-blocked, no warehouse exists), and re-derivating into a
+    cut-over'd warehouse later would be wasted work. Rebuild now, before
+    the maths-group cut-over.
+    (5) Post-run census receipt (run-007+): target the 40,250 peak basis;
+    oracle cross-check — 14,141 must reproduce on shared keys; disclose
+    anything that does not reproduce.
+    (6) After census proof: content lane rules the oracle rows' physical
+    disposition (supersede-in-place vs keep-and-reconcile).
   forbidden:
     - "direct SQL INSERT/UPDATE into mark_points outside the derivation instruments of record"
     - "marking-surface or scheme-contract changes"
-    - "starting the re-derivation without the operator fork decision"
+    - "starting the re-derivation outside the recorded decision scope (full 40,250-basis from-scratch rebuild per run-006-markpoints-decision-r2)"
 base:
   repo: "syllabai-v2 @ b25e14f"
 basis: >
   run-003 adjudication ('re-derivation ... owned by the content/bank lane
   (T-MIG-107/138 lineage), respecting flyway V60/V61 idempotency history
-  which is itself restored') + run-004 decisions_of_record.content_loss.
+  which is itself restored') + run-004 decisions_of_record.content_loss
+  + operator decision trace 1a169beaffefb389 ('assume we lost the mark
+  points ... do all the work from scratch again') recorded in
+  run-006-markpoints-decision-r2.
 scope:
   allowed:
     - "derivation instruments of record (4MB1 artwork wave, backfill scripts)"

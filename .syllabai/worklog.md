@@ -13400,3 +13400,21 @@ Stage Summary:
 - Gates: (a) real head from PR JSON; (b) CI 2/2 success; (c) mergeable clean at base a67bda1 = main tip; (d) 0 reviews / 0 comments, no blocks; (e) 3 files +2316/-41 all under apps/hub/*, zero *.java, zero core/hub-repo content, no path escapes
 - Merge: PUT merge_method=merge -> merge sha cdd7fcf; new main CI verified 2/2 green (verify+hub) at cdd7fcf
 - Notes: bookkeeping-only receipt (.syllabai/** only); fetch-first baseline verified before append; no force; boundaries clean; desk recusal n/a (not author)
+
+---
+Task ID: T-CONTENT-MP-REBUILD-001 r0 (operator decision trace 1a169beaffefb389: "Let us just assume we lost the mark points. And I think we have to do all the work from scratch again")
+Agent: restore-parity / ops lane (Z.ai session web-590847c1, chat 986f6715)
+Task: record the operator's mark_points disposition decision of record + estate tripwire r2 + provisioner blocker re-verification; integrate with T-OPS-PLANE-001.
+
+Work Log:
+- Operator fork RESOLVED of record (receipt run-006-markpoints-decision-r2): loss ACCEPTED IN FULL + FULL FROM-SCRATCH REBUILD of the 40,250-basis estate via the derivation instruments of record; surviving 14,141 retained as tripwire-guarded validation oracle (non-authoritative; material divergence = derivation defect, rebuild does not ship); rebuild execution = content/bank lane, card amended OPEN -> DISPATCHED with honest-scope disclosure (hand-curated-outside-instruments rows would not re-derive; none known).
+- estate-tripwire.mjs rewritten (recipe v2 re-derived post sandbox-wipe) and COMMITTED at its of-record path scripts/dbprobe/estate-tripwire.mjs — wipe-lesson closed: of-record instruments live in the repo, any lane can run it from a fresh clone.
+- Tripwire r2 (session-level READ ONLY, 2026-10-23T17:21:50Z): ESTATE STABLE — 75 tables, 229 MB/1 GB (23%), all 9 gate pins PASS (mark_points 14,141 / mark_schemes 6,733 / document_chunks 13,765 / documents 1,354 / question_asset 585 / revision_note_asset 194 / users 587 / exam_papers 4MA1=110 / table_count 75), satellite 0, flyway V63 all-success. Fingerprints of record (recipe v2): ddl 3732fa54..., estate_rows edc0e4f8.... Drain FLAT: no_vec 1,330 unchanged since the trim-census window (T-MIG-138 lane idle) — flagged for the rebuild backfill plan to absorb.
+- Provisioner egress re-test: api.neon.tech + api.start.neon.tech both HTTP 000 — STILL BLOCKED; template.sql (frozen wh-v1) + provision.mjs + dryrun-4ma1.mjs remain run-ready; unblock paths unchanged (egress / API-capable agent / console-side per template.sql with pooler URLs handed back env-only).
+- T0 integration of record (T-OPS-PLANE-001 execution_record UPDATE): rebuild into MAIN is lawful and correctly ordered — no warehouse exists to receive the plane, and rebuilding before the maths cut-over avoids re-derivating into a warehouse later; mark_points goes single-writer-per-plane for the rebuild window; tripwire duty at lane start and end.
+- Zero DB writes, zero Neon API calls (egress-blocked), zero Vercel mutations, zero LLM calls. Additive delta: run-006 receipt + r2 fingerprint artifact + tripwire instrument + T-CONTENT-MP-REBUILD-001 amendment + T-OPS-PLANE-001 execution_record update + this entry. Fetch-first, no force.
+
+Stage Summary:
+- mark_points disposition DECIDED and DISPATCHED: content/bank lane rebuilds the full estate (target census 40,250 basis + 14,141 oracle cross-check, receipt run-007+); the NEON-DB-LOSS recovery program is now purely forward-looking (rebuild + cut-over), no more forensics.
+- Provisioner unblock remains the cut-over gate; 4MA1 COW dry-run queued behind it unchanged.
+- Standing: credential rotation overdue; tripwire around all rebuild writes; T-OPS-TRIPWIRE-001 duty unchanged.

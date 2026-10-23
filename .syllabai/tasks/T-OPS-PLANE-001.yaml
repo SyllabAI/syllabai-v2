@@ -51,6 +51,22 @@ task:
     dryrun-4ma1.mjs run-ready in scripts/provisioner/ — BLOCKED ON SANDBOX
     EGRESS (api.neon.tech HTTP 000); executable when egress opens, by an
     agent with API access, or console-side per template.sql.
+    UPDATE 2026-10-24: operator DECIDED the mark_points fork (trace
+    1a169beaffefb389; receipt run-006-markpoints-decision-r2) — loss
+    ACCEPTED IN FULL, FULL FROM-SCRATCH REBUILD of the 40,250-basis estate
+    via the derivation instruments of record, dispatched as
+    T-CONTENT-MP-REBUILD-001 (status DISPATCHED). Integration with this
+    card: rebuild into MAIN is lawful and correctly ordered (T0 — the
+    maths cut-over has not happened; rebuilding before cut-over avoids
+    re-derivating into a warehouse later); mark_points goes
+    single-writer-per-plane during the rebuild window; the surviving 14,141
+    stay tripwire-guarded as the validation oracle. Provisioner egress
+    re-test 2026-10-24: STILL BLOCKED (api.neon.tech + api.start.neon.tech
+    HTTP 000). Tripwire r2: estate STABLE, all gate pins PASS; instrument
+    now committed at scripts/dbprobe/estate-tripwire.mjs (wipe-lesson
+    closed). Next: content lane rebuild (run-007+ census) in parallel with
+    provisioner unblocking; both precede the maths COW dry-run per
+    DATA-PLANE-PLACEMENT.md §5.
 base:
   repo: "syllabai-v2 @ 7144327 (ratification branch basis)"
 basis: >
