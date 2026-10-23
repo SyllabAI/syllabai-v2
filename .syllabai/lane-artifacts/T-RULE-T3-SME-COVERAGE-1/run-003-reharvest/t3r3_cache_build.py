@@ -14,7 +14,7 @@ from pathlib import Path
 
 WT = Path("/home/z/my-project/lane-t3r3/resources")
 CACHE = Path("/home/z/my-project/lane-t3r3/cie-corpus-cache")
-PIN = "3dd9bb982834743f0b8c81123c8f15003c74c06a"
+PIN = "dcc67a873c73594fff9e9ce3c9a6c9ea28d7f15d"
 
 
 def git(*args: str, binary: bool = False):

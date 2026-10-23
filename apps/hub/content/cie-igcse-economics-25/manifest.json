@@ -1,17 +1,16 @@
 {
  "schema": "syllabai-demo.content-bundle/2.0",
- "generatedUtc": "2026-10-20T00:00:00Z",
+ "generatedUtc": "2026-10-23T20:30:00Z",
  "importSource": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@c5f20c5278137fb16a427f68b3332f1431eb345b",
+  "ref": "main@dcc67a873c73594fff9e9ce3c9a6c9ea28d7f15d",
   "upstreamSchemas": [
    "syllabai.sme-revision-note/1.0",
    "syllabai.sme-revision-notes-course/1.0",
    "syllabai.sme-exam-questions/1.1",
    "syllabai.sme-spec-point-index/1.0",
    "syllabai.sme-flashcard-deck/1.0"
-  ],
-  "note": "CIE-REFRESH-1 pin-vintage convergence (2026-10-22): importSource.ref re-pinned to the refresh-time tip main@c5f20c52 per the operator dispatch (trace 1a1608dfdd3007d1). Content is NOT re-derived at this pin: the CIE corpus content inputs (Official-Specifications/parsed/cie-*, SME-RevisionNotes, SME-Flashcards, CIE SME-ExamQuestion paths) are tree-identical 0fe5f772..c5f20c52 (zero-delta proof of record in the run receipt) — content byte-untouched by this lane; linkage re-verified fleet-wide by the T-SPECS-CIE-CONSUME-1 engine re-run (staging hash e89eff6f12e7b47b25f5fda8b0ab3caec11d85eddc1b8758d326f920b46751c5, post-apply idempotence changed=0/44)."
+  ]
  },
  "curriculum": {
   "board": "Cambridge International",
@@ -25,7 +24,7 @@
   "sections": 6,
   "topics": 36,
   "specPoints": 113,
-  "notes": 8,
+  "notes": 92,
   "questionSets": 36,
   "questions": 625,
   "parts": 625,
@@ -35,7 +34,7 @@
  "treeKind": "official-spine",
  "officialSpine": {
   "spine": "spines/cie-igcse-economics-25.json",
-  "resourcesSha": "fa664a86d64dd954225e0dee05a8cd742703179c",
+  "resourcesSha": "dcc67a873c73594fff9e9ce3c9a6c9ea28d7f15d",
   "attachmentMap": "content-maps/cie-igcse-economics-25.json"
  }
 }

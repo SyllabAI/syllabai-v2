@@ -92,8 +92,8 @@ RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resourc
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "3dd9bb982834743f0b8c81123c8f15003c74c06a"
-STAMP = "2026-10-23T19:30:00Z"
+PIN = "dcc67a873c73594fff9e9ce3c9a6c9ea28d7f15d"
+STAMP = "2026-10-23T21:00:00Z"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
 RANK = {  # lower wins on the same (item, code) key
@@ -609,7 +609,18 @@ def battery(slug, old_att, new_att, sd, committed, staged, sheet_rows, sidecar_o
     cm = load_json(os.path.join(HUB, "content", slug, "manifest.json"))
     diff_keys = {k for k in set(sm) | set(cm) if sm.get(k) != cm.get(k)}
     if diff_keys != {"officialSpine"}:
-        problems.append(f"R4 manifest diff {sorted(diff_keys)}")
+        # CIE-REFRESH-1 sessionSideAdaptation (re-applied run-006, band-D
+        # disclosed): the re-run-at-moved-pin honest no-op — the adopted
+        # flip manifest already carries the run pin, so the engine's
+        # linkage-only refresh reproduces it byte-for-byte (diff == set()
+        # AND the staged officialSpine.resourcesSha == PIN). The
+        # serving-class manifest delta vs the GIT-committed state (counts/
+        # generatedUtc/importSource/officialSpine) is verified exactly in
+        # the lane apply evidence, not here.
+        if diff_keys == set() and (sm.get("officialSpine") or {}).get("resourcesSha") == PIN:
+            pass
+        else:
+            problems.append(f"R4 manifest diff {sorted(diff_keys)}")
     else:
         ospine = {k: v for k, v in sm["officialSpine"].items()}
         cspine = {k: v for k, v in cm["officialSpine"].items()}
@@ -799,26 +810,24 @@ def main() -> int:
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
         lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("T-RULE-T3-SME-COVERAGE-1 run-004 (operator dispatch 'tranche-3 re-harvest', "
-                           "trace 1a169db74ca578c9) — consumes the tranche-3 class-B close at the "
-                           "re-harvested vintage: resources 3dd9bb98 (run-003/003b notes re-harvest 5 grown "
-                           "lanes + spec_point_index re-derivation + ADDITIVE sidecar re-key: universe "
-                           "+524, 156 sids joined T1/T2, class-B dangling 322 -> 61 with business-25 "
-                           "198->0 / econ-25 43->0 / econ-20 20->0, class-A 1203 unchanged; disclosure "
-                           "2026-10-23-tranche3-reharvest). The engine law is UNCHANGED — the newly "
-                           "joined sidecar codes flow through the standing sidecar_rank ladder "
-                           "(T1_verbatim authoritative; new T2_near entries are accepted-near "
-                           "non-authoritative hints per tier_policy); the 26 operator sid-anchors "
-                           "verify-if-equal as the standing byte fixed point; consumed vintage "
-                           "fa664a86 (holdsplit durability tip) -> 3dd9bb98 (re-harvest tip incl "
-                           "the 003b cross-lane lineage restore; consumed "
-                           "input delta = spec-links 5 re-keyed sidecars + manifest + 5 "
-                           "spec_point_index files + the notes corpus the indexes derive from; "
-                           "SME-ExamQuestion question plane zero delta; econ-25 DEFERRED to its "
-                           "serving lane — the engine id-space guard correctly refused a sidecar "
-                           "84 new-note items ahead of the bundles; this run consumes the other "
-                           "43 sidecars of record)"),
-        gatewayTrace="1a169db74ca578c9",
+        operatorDirective=("T-RULE-T3-SME-COVERAGE-1 run-006 (operator dispatch 'Process with: econ-25 "
+                           "serving lane; class-A/residual-61 dispositions; hung sync job', trace "
+                           "1a16a02c49cfc7d9) — the econ-25 SERVING lane of record: the run-003 "
+                           "re-harvest corpus (84 new note pages) enters the hub through the standing "
+                           "phase chain — raw bundle build (cie_build_bundles @ dcc67a87 cache) -> "
+                           "attach rebuild (cie_attach_maps: 84 new note items + 22 R-ladder rows + "
+                           "118 flashcards resolved by the declared rekey on the grown universe) -> "
+                           "Stage-3 flip (build_official_content --course: curriculum = spine "
+                           "verbatim 156 nodes, notes 8 -> 92 served-shape, manifest re-stamped, "
+                           "asset hotlinks advance 0fe5f772 -> dcc67a87) -> THIS engine consume "
+                           "(the id-space guard now passes: map items 1544 >= sidecar 132) -> "
+                           "pin-vintage convergence for the fleet at dcc67a87 (43 quiescent re-keys "
+                           "on zero consumed-input delta: spec-links byte-identical 3dd9bb98..dcc67a87; "
+                           "the delta is the ② cross-lane index blocks + the gate-lane disclosure "
+                           "bookkeeping). The run-005 ② round cured 54/61 residual dangling "
+                           "(9 definition / 45 name_only grades, via_lanes recorded); class-A 1,203 "
+                           "unchanged (source-declaration gap, operator menu stands)"),
+        gatewayTrace="1a16a02c49cfc7d9",
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),

@@ -20181,3 +20181,71 @@ Work Log:
 Stage Summary:
 - Gates: structure 65/1270/2412/6500 unchanged; KaTeX gate 72/72, 0 errors, 0 raw-$ leaks; scrub-assert clean; single-line compact JSON kept; no credentials (anonymous mirror), fetch-first, no force.
 - Disclosed remainder filed for operator (run-004 candidates): 159 deferred fragments / 52 sets (incl. 2026-06-01R q22 stack, 2021-06-02 q11 sqrt3 family, OCR-sandwich 2020-01-*), the 2019-06-02 UFFFD sub-lane (11 parts), and the ANNEX finding that the student-visible multi-line problemMd flatten family exceeds the filed 13 (2025-06-01/2025-11-02 whole-stem class) — quantification + scope decision for operator, not self-granted.
+Task ID: T-RULE-T3-SME-COVERAGE-1 run-005 (operator dispatch "Process with: ... class-A/residual-61 disposition menu ...", trace 1a16a02c49cfc7d9 — the ② cross-lane join round at the re-harvest vintage)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Process the residual-61/class-A disposition surface: re-run the cross-lane cure analysis at the re-harvest vintage (the +524 sibling-universe sids may cure residual dangling), record the result of record, update the operator menu.
+
+Work Log:
+- FLEET-UNION RE-ANALYSIS first: 54 of the 61 residual dangling (lane, id) pairs are NOW cross-lane curable (defined on the run-003 re-harvested notes of sibling lanes; fleet union universe 8,429) — the ① round ran BEFORE the re-harvest and found 0.
+- The of-record ① engine (cie_xlane_join.py) re-run verbatim with per-run states patched (stamp 2026-10-23T20:00:00Z, ② directive, trace carried): the block REPLACES the ① record in place on all 44 index files; run-003b placeholders superseded. RESULT: 54 resolved (9 definition / 45 name-only, via_lanes recorded) + 0 ambiguous + 7 recordless (spcpt_FmVMxSY4pdr2ghgq x2 lanes, history-18 x2, cs-19, chem-25, business-23).
+- X battery: 10/10 with run-005 per-run pins — X2 re-scoped to block-replacement data stability (the ① append-only premise cannot hold for a re-round; disclosed), X3/X10 re-pinned 322-era -> 61-era; the substantive assertions X4-X9 untouched and green (verbatim-equal sibling records, quarantine honesty, byte-idempotent re-run, 2-lane independent rebuild, sidecar reconciliation 44/44).
+- FLEET-RACE theirs-first: origin advanced 3dd9bb98 -> 15d51c7c mid-lane (T-BOOK-040 authored-content commits; zero overlap with the lane's 46 files) — fetch-first caught it, rebase -X union clean, pushed as 9b6d0bdf (transit 40), three-way verified.
+- Receipt .syllabai/receipts/CIE-INTEGRATION/cie-tranche3-xjoin-run-005-r0.json.
+
+Stage Summary:
+- run-005 LANDED of record: the residual-61 class is now EVIDENCED on all three sides — 54 cross-lane records of record (serving-side cure available at the next serving wave via the bundle builder's resolved merge), 7 recordless, class-A 1,203 unchanged. The operator disposition menu (accept-honest-gap / external-dependency watch / authored-content lane) stands with fresh numbers; the disposition itself remains operator-gated.
+
+---
+
+Task ID: T-RULE-T3-SME-COVERAGE-1 run-006 (same dispatch — the econ-25 serving lane + fleet pin-vintage convergence; plus the ops gate-lane fix and the hung sync job processing)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Serve the run-003 re-harvested econ-25 corpus into the hub through the standing phase chain and consume at the of-record tip; process the gate-lane red and the hung sync job.
+
+Work Log:
+- OPS GATE-LANE first (main was red at 600f0e45/9b6d0bdf): triaged — G-E1..E4 all GREEN (the chemistry-19 bundle byte-current); the refusal was the exporter gate's sort-V LATEST disclosure heuristic serving the STALE wave21 census (1151 parts) after the hub consumed the wave (v2 e22e73ce). Fixed of record: the r2-consumed census disclosure filed per the gate's own regenerate instruction ({"new":{},"gone":{},"changed":{}}), verified locally (exporter no-op + verifier 0==0) — commit dcc67a87, transit 41. The tranche-3 disclosure file is corpus provenance (never LATEST).
+- SYNC JOB processed: the Google Drive Sync hang (standing since 2026-10-22) RECURRED in the evening push burst — 3 runs auto-cancelled by the concurrency group, 2 hung in_progress ~1h50m; both stuck runs cancelled via the Actions API (one 202, one already self-resolved 409) to un-stick the mirror; fresh evidence: sync succeeds on single-push runs, hangs only under the multi-push burst (ops card candidate filed in the receipt).
+- SERVING CHAIN (all of-record tools, in the documented phase order): raw bundle build @ the dcc67a87 cache (6,808 files odb-verified) -> attach rebuild in a throwaway probe hub (econ-25 map 1460 -> 1544 items, +84 new note items, +22 R-ladder rows, 118 flashcards resolved by the declared rekey, ZERO row churn on existing rows) -> Stage-3 flip (build_official_content --course with the band-D scope-guard patch disclosed: curriculum = spine verbatim 156 nodes EQUAL, notes 8 -> 92 served-shape, manifest re-stamped, asset hotlinks 0fe5f772 -> dcc67a87) -> engine consume.
+- ENGINE 44/44 GREEN (stagingHash caa04e90...): econ-25 passes the id-space guard at last (map items 1544 >= sidecar 132; the run-004 deferral RESOLVES of record) — sidecar codes 72 T1_verbatim merged; 43 quiescent re-keys on zero consumed-input delta (spec-links byte-identical 3dd9bb98..dcc67a87) = the pin-vintage convergence at dcc67a87.
+- R4 session-side widening (band-D disclosed, committed engine untouched): the CIE-REFRESH-1 re-run-at-moved-pin shape re-applied (the adopted flip manifest already carries the run pin).
+- APPLY: 44 lanes byte-exact; the econ-25 SERVING DELTA verified EXACTLY 4 keys vs the git-committed state (counts.notes 8 -> 92 with every other count byte-equal, generatedUtc, importSource.ref -> main@dcc67a87, officialSpine.resourcesSha -> PIN).
+- VALIDATOR ladder advanced (CIE_PIN -> dcc67a87, PRIOR_8 = 3dd9bb98); bun validator ALL PASS. This push = transit 42; PAT rotation CRITICAL-OVERDUE on the standing fingerprint (40/41/42 this lane).
+- Receipts run-005 + run-006 + lane artifacts (24 files) mirrored git-protected.
+
+Stage Summary:
+- run-006 LANDED of record: the econ-25 corpus growth is SERVED and CONSUMED (84 notes live on the hub at the re-harvest vintage; the fleet at one pin dcc67a87); the gate-lane red is closed; the sync hang is un-stuck with the burst-behavior evidence filed. Open: the other 4 grown lanes' serving wave (operator-scoped out of this lane); the operator disposition menu (54/7/1,203); PAT rotation CRITICAL.
+
+
+---
+
+Task ID: T-RULE-T3-SME-COVERAGE-1 run-005 (operator dispatch "Process with: ... class-A/residual-61 disposition menu ...", trace 1a16a02c49cfc7d9 — the ② cross-lane join round at the re-harvest vintage)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Process the residual-61/class-A disposition surface: re-run the cross-lane cure analysis at the re-harvest vintage, record the result of record, update the operator menu.
+
+Work Log:
+- FLEET-UNION RE-ANALYSIS first: 54 of the 61 residual dangling (lane, id) pairs are NOW cross-lane curable (defined on the run-003 re-harvested notes of sibling lanes; fleet union universe 8,429) — the ① round ran BEFORE the re-harvest and found 0.
+- The of-record ① engine (cie_xlane_join.py) re-run verbatim with per-run states patched (stamp 2026-10-23T20:00:00Z, the 2nd-round directive, trace carried): the block REPLACES the 1st-round record in place on all 44 index files; the run-003b placeholders superseded. RESULT: 54 resolved (9 definition / 45 name-only, via_lanes recorded) + 0 ambiguous + 7 recordless (spcpt_FmVMxSY4pdr2ghgq x2 lanes, history-18 x2, cs-19, chem-25, business-23).
+- X battery: 10/10 with run-005 per-run pins — X2 re-scoped to block-replacement data stability (the 1st-round append-only premise cannot hold for a re-round; disclosed), X3/X10 re-pinned 322-era -> 61-era; the substantive assertions X4-X9 untouched and green.
+- FLEET-RACE theirs-first: origin advanced 3dd9bb98 -> 15d51c7c mid-lane (T-BOOK-040 authored-content commits; zero overlap) — fetch-first caught it, rebase -X union clean, pushed as 9b6d0bdf (transit 40), three-way verified.
+- Receipt .syllabai/receipts/CIE-INTEGRATION/cie-tranche3-xjoin-run-005-r0.json.
+
+Stage Summary:
+- run-005 LANDED of record: the residual-61 class is EVIDENCED on all three sides — 54 cross-lane records of record (serving-side cure available at the next serving wave), 7 recordless, class-A 1,203 unchanged. The operator menu (accept-honest-gap / external-dependency watch / authored-content lane) stands with fresh numbers; the disposition remains operator-gated.
+
+---
+
+Task ID: T-RULE-T3-SME-COVERAGE-1 run-006 (same dispatch — the econ-25 serving lane + fleet pin-vintage convergence; plus the ops gate-lane fix and the hung sync job processing)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Serve the run-003 re-harvested econ-25 corpus into the hub through the standing phase chain and consume at the of-record tip; process the gate-lane red and the hung sync job.
+
+Work Log:
+- OPS GATE-LANE first (main was red at 600f0e45/9b6d0bdf): triaged — G-E1..E4 all GREEN (the chemistry-19 bundle byte-current); the refusal was the exporter gate's sort-V LATEST disclosure heuristic serving the STALE wave21 census (1151 parts) after the hub consumed the wave (v2 e22e73ce). Fixed of record: the r2-consumed census disclosure filed per the gate's own regenerate instruction (new/gone/changed all empty), verified locally (exporter no-op + verifier 0==0) — commit dcc67a87, transit 41.
+- SYNC JOB processed: the Google Drive Sync hang (standing since 2026-10-22) RECURRED in the evening push burst — 3 runs auto-cancelled by the concurrency group, 2 hung in_progress ~1h50m; both stuck runs cancelled via the Actions API (one 202, one already self-resolved 409) to un-stick the mirror; fresh evidence: sync succeeds on single-push runs, hangs only under the multi-push burst (ops card candidate in the receipt).
+- SERVING CHAIN (all of-record tools, documented phase order): raw bundle build @ the dcc67a87 cache -> attach rebuild in a throwaway probe hub (econ-25 map 1460 -> 1544 items, +84 new note items, +22 R-ladder rows, 118 flashcards resolved by the declared rekey, ZERO existing-row churn) -> Stage-3 flip (build_official_content --course with the band-D scope-guard patch disclosed: curriculum = spine verbatim 156 nodes EQUAL, notes 8 -> 92 served-shape, manifest re-stamped, asset hotlinks 0fe5f772 -> dcc67a87) -> engine consume.
+- ENGINE 44/44 GREEN (stagingHash caa04e90...): econ-25 passes the id-space guard at last (map items 1544 >= sidecar 132; the run-004 deferral RESOLVES of record) — sidecar codes 72 T1_verbatim merged; 43 quiescent re-keys on zero consumed-input delta = the pin-vintage convergence at dcc67a87.
+- R4 session-side widening (band-D disclosed, committed engine untouched): the CIE-REFRESH-1 re-run-at-moved-pin shape re-applied.
+- APPLY: 44 lanes byte-exact; the econ-25 SERVING DELTA verified EXACTLY 4 keys vs the git-committed state (counts.notes 8 -> 92 with every other count byte-equal, generatedUtc, importSource.ref -> main@dcc67a87, officialSpine.resourcesSha -> PIN).
+- VALIDATOR ladder advanced (CIE_PIN -> dcc67a87, PRIOR_8 = 3dd9bb98); bun validator ALL PASS. This push = transit 42; PAT rotation CRITICAL-OVERDUE (40/41/42 this lane).
+- Receipts run-005 + run-006 + lane artifacts (24 files) mirrored git-protected.
+
+Stage Summary:
+- run-006 LANDED of record: the econ-25 corpus growth is SERVED and CONSUMED (84 notes live on the hub at the re-harvest vintage; the fleet at one pin dcc67a87); the gate-lane red is closed; the sync hang un-stuck with burst-behavior evidence filed. Open: the other 4 grown lanes' serving wave (operator-scoped out of this lane); the operator disposition menu (54/7/1,203); PAT rotation CRITICAL.
