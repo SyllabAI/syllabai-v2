@@ -13085,3 +13085,23 @@ Work Log:
 
 Stage Summary:
 - Drain BLOCKED on a prod-DB-plane regression outside lane write authority (prod schema surgery = absolute operator gate). Operator asked to (a) identify the overnight DB-plane change and (b) authorize the repair path (table recreation via CI db-plane per the 0000 DDL). Receipt: .syllabai/receipts/T-MIG-138/run-008-window-fire-r1c.json
+
+---
+Task ID: T-SPEC-STAGE2-MATHSB-1 run-001 (operator dispatch "maths-b Stage-2 regen", trace 1a1680ce02e55b19 — the HUB-NORM-F52 open_items operator-keyed item fired)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Run the Stage-2 machinery of record on the igcse-maths-b-16 spec-attachment map chain; validate against the spine of record; deterministic repair only (no-guess law); refresh downstream chain; honest close of the operator-keyed straggler.
+
+Work Log:
+- Base: resources main advanced e9f78b99 (dispatch-era fetch) -> ea3b3816 (lane clone HEAD); drift audited ZERO chain-path deltas (the PR #78 f-0011 census-of-record amendment bookkeeping only). All reads and re-runs on the clone base ea3b3816.
+- Staging: scratch anonymous partial clone (--depth 1 --filter=blob:none, sparse 7 pathspecs, 1115 files) — shared checkouts untouched (resources checkout still parked @ lane/acct-adj; v2 checkout's durable-ledger dirt untouched). git 2.47 has no blob backfill and git-archive lazy-fetches per-blob (5-min timeout casualty), so the clone checkout's batched promisor fetch is the route of record; tool instances BASE-patched with exactly-one-replacement asserted.
+- Regen (3 tools of record): map_spec_points.py regime B -> mapped=34/215 {S1_name_match: 32, S2_name_ambiguous: 2} unmapped=181 flags=2 pool=98; t_sme_11_apply.apply_lane -> counts 215/32/183 + manifest census 32/183/215; build_learner_spec_links --courses -> sidecar 467 items / 94 coded (notes 33/199, parts 0/0, cards 61/268). _sme_map_report.json byte-identical after the filtered merge.
+- VERDICT: semantic_equal TRUE on all 5 artifacts (map, resolution, manifest census, sidecar, report byte) — the committed chain IS the deterministic output of the current tools of record. Stamp-only churn in the staging clone reverted (byte-stability convention); RESOURCES WRITE SET EMPTY, zero resources pushes.
+- Battery 9/9 PASS: pool law 98=98=98; orphan scan (all 34 mapping official_ids in spine, flagged included); every unflagged mapping resolves in the ledger; flagged mappings unresolved with verbatim flag reason; counts 215/32/183; manifest census coherent; all 94 sidecar codes in spine; sidecar totals==items len; all 181 sidecar-pending ids resolution-unresolved.
+- No-guess disposition of record: the 2 S2_name_ambiguous joins (5G @ 1.00, 6H @ 0.74 — "runner-up within 0.03 — review") stay mapped-but-flagged / ledger-unresolved; the 183-entry tail honest-by-design (SME publishes zero maths-b topic questions — T-SME-12; no question axis => name-join evidence exhausted). Operator supplied no crosswalk — ATTESTED-HONEST-UNRESOLVED accepted as the Stage-2 outcome.
+- Corpus-shape evidence that framed the scope: sibling courses were re-done 2026-09-19 by T-SPEC-9/T-SPEC-10 operator reasoning rounds ("mappings reasoned directly against the committed registries and the official Pearson PDFs") and carry NO flagged-reason rows — maths-b has no question registry to reason against, so a reasoning round would only re-derive the name join; that is why this item was operator-keyed rather than absorbed into T-SPEC-STAGE2-1 (47-map battery, transit 28).
+- Receipt .syllabai/receipts/T-SPEC-STAGE2-MATHSB-1/run-001-stage2-attestation.json (this push, transit 33 -> 34).
+
+Stage Summary:
+- T-SPEC-STAGE2-MATHSB-1 run-001 CLOSED: maths-b spec-attachment chain RE-ATTESTED to builder law — the F52 open_items "maths-b Stage-2 regen (operator-keyed)" item closed of record as ATTESTED-HONEST-UNRESOLVED. Zero content delta => the v2 maths-b attachment-plane disclosure (2e17aab0) stays honest, NO re-pin needed.
+- Future yield operator-gated: an authoritative SME<->4MB1 crosswalk, or a real question axis landing in the SME bank, or an explicitly ordered T-SPEC-9/10-class reasoning round (name-only evidence will not exceed 32 resolved + 2 flagged).
+- Open queue unchanged: CIE tranche2 consume lane (132c4b68/5178b3b6, own dispatch, traces 1a1650ad6256c535 / 1a16523d0188145d); PAT rotation STILL CRITICAL overdue (same fingerprint through this push) — rotation REQUIRED before any re-supply; f-0011 DB-plane escalation is another lane's fire (context only).

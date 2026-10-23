@@ -1,0 +1,82 @@
+{
+ "lane": "T-SPEC-STAGE2-MATHSB-1",
+ "run": "run-001-stage2-attestation",
+ "dispatch": {
+  "operator_trace": "1a1680ce02e55b19",
+  "order": "maths-b Stage-2 regen",
+  "session": "web-64d10b73-530a-4f71-9961-85d0436c7fb5"
+ },
+ "lane_class": "the HUB-NORM-F52 open_items entry 'maths-b Stage-2 regen (operator-keyed)' fired: the Stage-2 machinery of record re-run on the igcse-maths-b-16 spec-attachment map chain — full attestation, ZERO content delta, no resources push",
+ "filed_open_item_closed": {
+  "filed_by": "HUB-NORM-F52 receipt open_items + durable ledger residuals (PINSPLIT-1, EDBUMP-1, NEXTBUMP-2, MB4 eras all restate it)",
+  "text": "maths-b Stage-2 regen (operator-keyed)"
+ },
+ "inputs": {
+  "resources_base": "ea3b3816 (lane clone HEAD; dispatch-era fetch was e9f78b99 — drift e9f78b99..ea3b3816 audited ZERO chain-path deltas, it is the PR #78 f-0011 census-of-record amendment bookkeeping only)",
+  "chain_of_record": [
+   "SME-ExamQuestion/igcse-maths-b-16/spec_point_map.json (vintage 2026-09-17T16:27:26+00:00, T-SME-11 name join)",
+   "SME-ExamQuestion/igcse-maths-b-16/spec_point_resolution.json (2026-09-19T19:15:38Z)",
+   "SME-ExamQuestion/igcse-maths-b-16/manifest.json",
+   "spec-links/igcse-maths-b-16.json (learner sidecar, 2026-09-19T19:16:08Z)",
+   "Official-Specifications/parsed/igcse-maths-b/spec_points.json (spine of record: 98 points, issue 1, qual 4MB1)"
+  ],
+  "tools_of_record": [
+   "scripts/map_spec_points.py (regime B joiner: 0.6 containment + 0.4 SequenceMatcher + 0.05 topic-number boost, threshold 0.62, S2 when top-second <= 0.03)",
+   "scripts/t_sme_11_apply.py apply_lane (resolution ledger + manifest census writer; resolves ONLY unflagged S1 mappings — flagged mappings land ledger-unresolved with verbatim flag reason)",
+   "scripts/build_learner_spec_links.py --courses (learner sidecar builder, merge mode)"
+  ],
+  "staging": "scratch anonymous partial clone (--depth 1 --filter=blob:none, sparse 7 pathspecs, 1115 files) — shared checkouts untouched (the resources checkout remains parked @ lane/acct-adj; the v2 checkout's durable-ledger dirt untouched); git 2.47 has no blob backfill primitive and git-archive lazy-fetches per-blob, so the clone checkout's batched promisor fetch is the route of record; tool instances BASE-patched with exactly-one-replacement asserted"
+ },
+ "regen_result": {
+  "joiner": "mapped=34/215 tiers {S1_name_match: 32, S2_name_ambiguous: 2} unmapped=181 flags=2 pool=98 — IDENTICAL to committed",
+  "resolution": "counts 215 ids / 32 resolved / 183 unresolved — IDENTICAL",
+  "manifest_census": "parts_with_codes 32 / parts_left_uncoded_no_guess_tail 183 / parts_total 215 — IDENTICAL",
+  "sidecar": "467 items, 94 coded (notes 33/199, question_parts 0/0, flashcards 61/268) — IDENTICAL",
+  "sme_map_report": "Official-Specifications/parsed/_sme_map_report.json BYTE-identical after the filtered merge"
+ },
+ "semantic_equal": {
+  "map": true,
+  "resolution": true,
+  "manifest_census": true,
+  "sidecar": true,
+  "sme_map_report_byte": true
+ },
+ "battery": [
+  "X4 pool law: official_pool == spine count == 98 — PASS",
+  "X2/orphan scan: every mapping official_id (34, flagged included) in the 98-point spine — PASS",
+  "X3 law: every unflagged mapping resolves in the ledger — PASS",
+  "no-guess law: flagged mappings unresolved with verbatim flag reason — PASS",
+  "X3 counts: 215/32/183 (tool-law output) — PASS",
+  "manifest census coherent with the resolution (32/183/215) — PASS",
+  "X5 sidecar: all 94 codes in spine — PASS",
+  "X5 sidecar totals == items len — PASS",
+  "no-guess consistency: all 181 sidecar-pending ids are resolution-unresolved — PASS"
+ ],
+ "no_guess_disposition": "the 2 S2_name_ambiguous joins — spcpt_3w7YqY2dN68HMc4k -> IGCSE_MATHS_B:5G (score 1.00) and spcpt_HcBpSfpzpdZqCFXk -> IGCSE_MATHS_B:6H (score 0.74), both flagged 'runner-up within 0.03 — review' — stay mapped-but-flagged in the map and UNRESOLVED in the ledger per the writer-of-record law; the 183-entry no-guess tail is honest-by-design: SME publishes ZERO maths-b topic questions (T-SME-12, re-verified live 2026-09-20) so no question-axis evidence exists for entry-level joins and the name join is the only mechanism; the operator dispatched the regen without supplying a crosswalk — ATTESTED-HONEST-UNRESOLVED accepted as the Stage-2 outcome",
+ "why_this_was_operator_keyed": "the sibling courses were re-done 2026-09-19 by T-SPEC-9/T-SPEC-10 operator reasoning rounds ('mappings reasoned directly against the committed registries and the official Pearson PDFs') — maths-b has no question registry to reason against, so a reasoning round would only re-derive the name join; Stage-2's deterministic machinery yields attestation, not yield",
+ "write_set": [
+  ".syllabai/receipts/T-SPEC-STAGE2-MATHSB-1/run-001-stage2-attestation.json (this file)",
+  ".syllabai/worklog.md (Task T-SPEC-STAGE2-MATHSB-1 run-001 section appended, union-append on the origin version)"
+ ],
+ "untouched_by_design": [
+  "the resources repo: ZERO pushes — the regen output is semantically equal to the committed chain and the staging clone's stamp-only churn was reverted (byte-stability convention: content byte-frozen, inputs proven identical)",
+  "the v2 maths-b manifest attachment-plane disclosure (map cut 2e17aab0): stays honest — the map cut of record is UNCHANGED (zero content delta), no re-pin needed",
+  "all 48 non-pilot Edexcel manifests, all 44 CIE manifests, content-maps/*, the lessons plane, the DB planes"
+ ],
+ "future_yield_requires": [
+  "an authoritative SME<->4MB1 crosswalk supplied by the operator, or",
+  "a real question axis landing in the SME bank (4MB1 topic questions published), or",
+  "an explicitly ordered T-SPEC-9/10-class reasoning round (name-only evidence will not exceed 32 resolved + 2 flagged)"
+ ],
+ "verdict": "T-SPEC-STAGE2-MATHSB-1 run-001 CLOSED: the maths-b spec-attachment map chain RE-ATTESTED to builder law — the straggler of the 47-map Stage-2 corpus is closed of record as ATTESTED-HONEST-UNRESOLVED; no-guess law held end to end",
+ "open_items": [
+  "CIE tranche2 consume lane (132c4b68/5178b3b6 real CIE-side input deltas) — still open, dispatched separately (operator traces 1a1650ad6256c535 / 1a16523d0188145d)",
+  "PAT rotation (operator, CRITICAL overdue — see transit)",
+  "f-0011 DB-plane schema-void escalation — another lane's fire, context only (resources PR #78 commit message)"
+ ],
+ "transit": {
+  "last_recorded": 33,
+  "this_push": 34,
+  "disclosure": "origin advanced through observed tips 71944a30, 6bedab62, 2684a8e4 (PR #327 merge) and a207f4e5 (PR #328 merge, this lane's base) after the last recorded row with no transit rows filed by those lanes; counted by the next-integer-after-last-recorded convention"
+ }
+}
