@@ -13340,3 +13340,18 @@ Stage Summary:
 - T-RULE-T3-SME-COVERAGE-1 run-001 CLOSED: the tranche-3 surface is re-pinned computed-fresh (1,203 EXACT at 4b119e71), the source-declaration-gap verdict is evidenced (2 live probes + code audit + census cross-foot), and the honest disposition menu is filed for the operator. NO corpus content changed; no closure claimed against the gap itself — the attestation IS the work.
 - Residuals: tranche-3 disposition awaits the operator menu; class-B run-002 probe optional; PAT rotation STILL CRITICAL-OVERDUE (same fingerprint through this push, transit 35 -> 36; rotation list per 8d1c390e); hung resources sync job standing.
 - LANE: IDLE.
+
+---
+
+T-OPS-TRIPWIRE (run-005) — restore-parity lane (web-590847c1), 2026-10-23, operator trace 1a169024dcc4baf1 ("There might be more data loss, because many agents are working on many different things")
+
+ESTATE TRIPWIRE ESTABLISHED + R0 BASELINE TAKEN: NO new data loss detected as of 2026-10-23T13:49:06Z.
+
+- New instrument of record: scripts/dbprobe/estate-tripwire.mjs — session-level READ ONLY full-estate fingerprint: exact row counts + bytes for every public table (75), sha256 DDL fingerprint over the table list (catches drops/adds — the satellite-drop failure class), sha256 estate row fingerprint, run-004 gate pins, drain/db-size counters. ~30s, zero deps, env-only creds.
+- r0 pins: table_count 75; ddl_fp 42d5e2ce...; row_fp 9d495471...; DB 229 MB (23% of wall); flyway V63 all-success; gate ALL STABLE vs run-004 (mark_points 14,141 / schemes 6,733 / chunks 13,765 / docs 301-289-489-162-112+1 / assets 585+194 / users 587 / 4MA1=110 / satellite 0). First-time-pinned planes: question_parts 15,128; questions+versions 6,755; telemetry_events 5,658; content_review_audit 2,835; knowledge graph 1,673 nodes / 1,963 edges; attempts 248; smart_mark_results 368.
+- Only deltas in the 69-min window since run-004: LAWFUL (embeddings no_vec 3,629 -> 1,330 — drain working; db_size 210 -> 229 MB — drain writes + WAL).
+- Decision rule of record filed: corpus/identity row DECREASE = INCIDENT; DDL fingerprint change without a claiming worklog line = INCIDENT; flyway backward/false = INCIDENT; activity-plane growth + embeddings decreasing + byte churn = LAWFUL; everything else AMBIGUOUS-until-claimed.
+- Usage law: every lane runs it around its own DB writes; after any operator-keyed console action; daily minimum; immediately on suspicion. Card: T-OPS-TRIPWIRE-001 (no single owner — standing duty).
+- Structural note of record: tripwire DETECTS loss; the 1 GB wall trigger is removed only by the ADR-038 split (T-OPS-PLANE-001 trim -> provisioner -> cut-over). pg_dump unavailable in ops sandbox (no client binaries) — re-derivation instruments remain the backup law.
+- Ops env note: sandbox partially wiped between turns (plane-broadcast worktree + parity-census.mjs lost; worklog + probe scripts survived) — re-cloned of-record at tip 6e9bb855, union driver restored, postgres pkg reinstalled. Another reason the tripwire artifact lives in the REPO, not the sandbox.
+- Zero DB writes (READ ONLY session), zero Vercel mutations, zero LLM calls. Additive delta: run-005 receipt + fingerprint artifact + card + this entry. Fetch-first, no force.
