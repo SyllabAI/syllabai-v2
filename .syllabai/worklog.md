@@ -13355,3 +13355,19 @@ ESTATE TRIPWIRE ESTABLISHED + R0 BASELINE TAKEN: NO new data loss detected as of
 - Structural note of record: tripwire DETECTS loss; the 1 GB wall trigger is removed only by the ADR-038 split (T-OPS-PLANE-001 trim -> provisioner -> cut-over). pg_dump unavailable in ops sandbox (no client binaries) — re-derivation instruments remain the backup law.
 - Ops env note: sandbox partially wiped between turns (plane-broadcast worktree + parity-census.mjs lost; worklog + probe scripts survived) — re-cloned of-record at tip 6e9bb855, union driver restored, postgres pkg reinstalled. Another reason the tripwire artifact lives in the REPO, not the sandbox.
 - Zero DB writes (READ ONLY session), zero Vercel mutations, zero LLM calls. Additive delta: run-005 receipt + fingerprint artifact + card + this entry. Fetch-first, no force.
+
+---
+
+T-OPS-PLANE-001 run-001 (trim census + provisioner staging) — ops lane (web-590847c1), 2026-10-23, operator trace 1a1693ebbced18bd ("Proceed")
+
+TRIM CENSUS COMPLETE + PROVISIONER/DRYRUN STAGED (execution-blocked on sandbox egress).
+
+- Tripwire r1 first: estate byte-quiet vs run-005 (zero row deltas, 75 tables, DDL fp unchanged, no_vec 1,330 stable).
+- Corpus plane map by source_engine (the live signatures): pdftotext-layout 8,202 chunks/10.1 MB = the ENTIRE 4MA1 Maths corpus + its EQ plane; pdflane-atoms 2,908 (4CH1/4CH0/unknown papers); ibm-docling 823 (TEXTBOOK); qcard 758 + tc27 298 (EQ); sme-notes 350 (NOTES); glm-ocr 246; sme-spec 162 (SYLLABUS); ocr 18. ALL 13,765 chunks carry subject_id — only TWO subjects hold data: Maths 8,202 / Chemistry 5,563.
+- Exam-linked relay (text-compare law): 4MA1 110 papers -> 5,468 chunks/9.4 MB; unknown-qualification 59 papers -> 1,485 (data-quality item, rides Chemistry); 4CH1 38 -> 1,014; 4CH0 8 -> 231; IGCSE 3 -> 0 (registry-only). Residual non-exam planes: EQ 3,790 + TEXTBOOK 823 + NOTES 350 + SYLLABUS 162 + pdflane unlinked 442. Zero orphan chunks.
+- TRIM RULINGS: DROP-AT-CUT-OVER = REJECTED-docs chunks (79 rows/6 docs/70 kB) + exact dupes (10 rows/7 kB — dedup is a NON-ISSUE at scale); physical drops ONLY at the T1 zero-residue step; 1,330 null-embedding chunks = in-flight drain, NOT trim. CORRECTION of record: '1,223-chunk unwired pdftotext plane' was a pre-loss session-note paraphrase — NO live signature matches; superseded by this map.
+- SIZING INSIGHT: document_chunks 124 MB total but 19 MB heap — ~105 MB is index mass (HNSW + tsv GIN) that REBUILDS in warehouses; main sheds ~190 MB at full cut-over -> residual ~40-60 MB (~5% of the wall). Placement-law sizing table corrected downward.
+- Template pins: vector(768) gemini-embedding-001, HNSW vector_cosine_ops defaults, partial-index family reproduced; drain-only pending index NOT reproduced. Group map v1: maths-4ma1 (order 1) + sci-chem (order 2).
+- STAGED run-ready in scripts/provisioner/: template.sql (frozen wh-v1, meta table + seam query of record) + provision.mjs (Neon API create + verify + canary roundtrip; env-only) + dryrun-4ma1.mjs (COW-branch rehearsal: copy -> count/bytes/id-sha256 parity -> two-step seam demo incl. live <=> search -> zero-residue DELETE rehearsal ON BRANCH ONLY with rollback -> identity-untouched proof; main prod never addressed).
+- BLOCKER of record: api.neon.tech + api.start.neon.tech HTTP 000 from sandbox (egress wall, token unused). Paths: egress opens / another agent runs them / operator provisions console-side per template.sql and returns pooler URLs env-only.
+- Zero DB writes (READ ONLY sessions throughout; trim = rulings, not deletes), zero Vercel mutations, zero LLM calls. Additive delta: receipt + 3 provisioner artifacts + card update + this entry. Fetch-first, no force.

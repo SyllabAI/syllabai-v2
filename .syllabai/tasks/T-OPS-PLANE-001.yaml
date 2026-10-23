@@ -35,6 +35,22 @@ task:
     null-embedding figure for the trim is now 3,629 (drain progressed from
     5,255) and mark_points re-derivation runs as T-CONTENT-MP-REBUILD-001
     (coordinate before large corpus writes, T0 law).
+    UPDATE 2026-10-23 (2): TRIM CENSUS COMPLETE — receipt
+    .syllabai/receipts/T-OPS-PLANE-001/run-001-trim-census-r0.json. CORRECTION:
+    the 'unwired 1,223-chunk pdftotext-layout plane' figure above was a
+    pre-loss-era session-note paraphrase matching NO live signature — the
+    pdftotext-layout plane is 8,202 chunks and IS the wired 4MA1 corpus. Live
+    trim rulings: DROP-AT-CUT-OVER = 79 REJECTED-doc chunks (70 kB) + 10 exact
+    duplicate rows (7 kB) — physical drop happens ONLY at the T1 zero-residue
+    step, not now. 1,330 null-embedding chunks are in-flight drain, NOT trim.
+    Sizing corrected: main residual after full cut-over ≈ 40-60 MB (105 MB of
+    the chunks table is index mass that rebuilds in warehouses). Group map v1:
+    maths-4ma1 (8,202 chunks, order 1) + sci-chem (5,563, order 2) — only two
+    subject planes hold data today. PROVISIONER STAGED: template.sql wh-v1
+    (frozen; vector(768) gemini-embedding-001 HNSW cosine) + provision.mjs +
+    dryrun-4ma1.mjs run-ready in scripts/provisioner/ — BLOCKED ON SANDBOX
+    EGRESS (api.neon.tech HTTP 000); executable when egress opens, by an
+    agent with API access, or console-side per template.sql.
 base:
   repo: "syllabai-v2 @ 7144327 (ratification branch basis)"
 basis: >
