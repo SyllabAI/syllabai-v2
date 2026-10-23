@@ -20338,3 +20338,23 @@ Work Log:
 
 Stage Summary:
 - Corpus-gate menu ADJUDICATED and DISPOSED of record: option (a) executed — the econ-25 speech class converted to KaTeX-verified math, the 23b zero baseline HELD (no refreeze), CI corpus-gate leg GREEN; (b)/(c)/(d) rejected with grounds. Watchlist: the 6-span gate-clean residue (follow-up wave), the substrate-side harvest fix (operator-scoped), the 4-lane serving wave (operator-scoped), class-A 1,203 + recordless 7 (operator menu), PAT rotation CRITICAL-OVERDUE. LANE: IDLE.
+
+Task ID: T-OPS-PLANE-001 (run-006, Task 20)
+Agent: R0-ops-plane (Super Z, zai-web session web-590847c1, trace 1a16a648c69072d9)
+Task: T1 CUT-OVER EXECUTION — the operator order for the five-step run-005 sequence: rehearsal, 0013, Vercel envs, deploy, flip.
+
+Work Log:
+- Sandbox was RECYCLED between sessions (repos/scripts wiped) — everything re-established from the fleet of record; cloned at tip e87fa6a3, worked at 0fc8d748.
+- PHASE 1 (gate 1): the of-record branch rehearsal was DOUBLE-WALLED — api.neon.tech DNS-blocked from the sandbox AND from the GitHub runners (built + dispatched t-ops-plane-branch-ops.yml; run 40019118989 failed curl exit 6 at the branch-create step; neon-replay failing 4 consecutive runs 10-21..10-23 — run-005's "CI egress proven" was stale doctrine; REGRESSION FILED). Adapted v2 rehearsal executed (rehearsal-t1.mjs): ALL 10 GATES GREEN — source 8,202 EXACT fingerprint 88706faa…, W1 pre-clear+re-copy parity EXACT (count/bytes/id-set), seam W1 HNSW 83 ms + main hydrate 5/5, zero-residue DELETE proven INSIDE a single rollback txn on main (8,202→0 in 4,227 ms, byte-flat restore 13,765/8,202), identity planes untouched. Deviations disclosed (live-main source; rollback-window instead of branch; ~10 MB dead-tuple cost).
+- PHASE 2: 0013 applied to main VERBATIM via guarded migrate-0013.mjs (DRY pass first; REFUSE-guards on registry-present + FK target; raw apply = house pattern — main has no drizzle bookkeeping table). Registry row of record: maths-4ma1 / SYLLABAI_WAREHOUSE_URL_MATHS_4MA1 / ASSIGNED / wh-v1.
+- PHASE 3: Vercel envs SET via API on prj_FN5X (syllabai-v2): SYLLABAI_WAREHOUSE_SERVING=on, SYLLABAI_WAREHOUSE_URL_MATHS_4MA1=<W1 pooler>, DATABASE_URL SWAPPED to ep-ancient-cake-a52e4kfd-pooler… (run-005 direct-endpoint hazard CLOSED; driver verified first: createSql = postgres(url,{max:1,prepare:false}) everywhere). Safety: registry ASSIGNED + coverage law = whole scope stays main until the flip.
+- PHASE 4: T-MIG-093 deploy recipe executed at tip — shim v2 CLEAN, 6 asset SHA pins EXACT, worktree restored pristine, bun bundle 370 mod / 3.47 MB, LOCALGATE 8/8 ALL PASS through the NEW POOLER URL (register-201 INSERT = the swapped env proven end-to-end; net residue ONE probe learner, census class). FIRE LEG REFUSED: api-deployments-free-per-day (>100, Hobby cap; same class as the 10-22 precedent; root cause = hub auto-bakes burn the account cap on every push, 100% ERROR at tip; pause levers paused/buildsEnabled both 400-rejected by the limited token). ZERO deployments created; prod health 200 re-verified.
+- PHASE 5 HELD BY LAW: SERVING flip waits for the deploy (deploy-first); the stage is LINKED + READY — re-fire is one command when the cap window opens (~20:37Z 10-24), hub paused console-side first.
+- Tripwires r5 (pre, 20:29Z) + r6 (post): corpus byte-flat 13,765 PASS throughout — the rollback-window delete + re-copy left ZERO estate residue; drift fully attributed (table_count 80 = +0013 table; users 589 = +localgate probe); mark plane flat in the r6 window (rebuild lane continues elsewhere); NO loss signature.
+- T2 PREREQUISITE FILED: the placement-law main-plane DROP (the ~10 MB 4MA1 corpus reclaim) requires the warehouse-hydrate upgrade FIRST — serving.ts step-2 hydrates document_chunks ON MAIN by id; dropping main rows before that upgrade would empty the evidence path.
+- Fence deviations disclosed: .github/workflows/t-ops-plane-branch-ops.yml (NEW, outside card scope — the lane-executable branch vehicle, necessitated by the DNS wall, untested end-to-end) + scripts/provisioner/dryrun-4ma1.mjs idempotency repair (W1 pre-clear; disclosed in receipt) — same disclosure class as run-004's db/api deviations.
+
+Stage Summary:
+- The cut-over is EXECUTED UP TO THE DEPLOY: rehearsal green, 0013 live, envs live (incl. the pooler remedy), bundle proven 8/8 through the new env — the ONLY missing leg is the vercel CREATE, blocked by the Hobby daily cap.
+- Revert paths stay live at every rung: master switch off (redeploy), registry→ASSIGNED (instant), DATABASE_URL back to direct (redeploy).
+- Operator levers: (a) pause hub console-side or upgrade the plan, (b) order the re-fire when the window opens, (c) the SERVING flip order after the deploy verifies.

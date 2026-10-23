@@ -139,3 +139,29 @@ scope:
     - "packages/db/src/schema/** (no schema changes; corpus planes move, not mutate)"
     - "any Neon prod write outside the T1 cut-over procedure"
     - "satellite project (quarantined per ADR-038)"
+  - UPDATE 2026-10-24 (5): T1 CUT-OVER EXECUTED (operator 'T1 cut-over order',
+    trace 1a16a648c69072d9; receipt run-006-t1-cut-over-r0.json). Gate 1
+    zero-residue rehearsal GREEN via ADAPTATION v2 (both branch paths
+    DNS-walled: sandbox AND GitHub runners — dispatch 40019118989 failed curl
+    exit 6; neon-replay failing 4 consecutive runs = run-005's 'CI egress
+    proven' doctrine STALE, regression filed): source reads on live main READ
+    ONLY, W1 pre-clear+re-copy parity EXACT (8,202 / 10,307,759 B / id-set
+    EQUAL, fingerprint 88706faa…), seam HNSW 83 ms + hydrate 5/5, zero-residue
+    DELETE proven INSIDE a rollback txn on main (8,202->0 in 4.2 s, byte-flat
+    restore). 0013 APPLIED to main (registry row maths-4ma1/ASSIGNED/wh-v1;
+    raw apply = house pattern, no drizzle bookkeeping table). Vercel envs SET
+    (master switch on + SYLLABAI_WAREHOUSE_URL_MATHS_4MA1 + DATABASE_URL
+    swapped to the POOLER host — direct-endpoint hazard closed, driver-verified
+    prepare:false). Bundle built at tip 0fc8d748 (T-MIG-093 recipe, shim CLEAN,
+    6 asset pins EXACT, 370 mod / 3.47 MB) + localgate 8/8 ALL PASS through the
+    POOLER URL (register-201 INSERT proven over the new env). FIRE LEG REFUSED:
+    Vercel Hobby daily cap (api-deployments-free-per-day, >100 — same class as
+    the 10-22 precedent); root cause = hub auto-bakes burn the account cap on
+    every push (100% ERROR at tip); pause levers rejected by the limited
+    token. Prod UNTOUCHED (health 200 re-verified); flip HELD by deploy-first
+    law. Tripwires r5/r6: corpus byte-flat 13,765 PASS throughout; drift
+    fully attributed (table_count 80 = +0013; users 589 = +localgate probe).
+    Stage LINKED and READY — re-fire ONE command when the cap window opens
+    (~20:37Z 10-24), hub paused console-side first. T2 prerequisite filed:
+    main-plane DROP needs the warehouse-hydrate upgrade first (serving.ts
+    hydrates document_chunks on main by id).
