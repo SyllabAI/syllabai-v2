@@ -154,9 +154,22 @@ if (docId) {
       return "FAIL";
     }
   });
-  await probe("B5 unknown-chapter honest-absent", `${API}/api/v1/content/books/${encodeURIComponent(docId)}/chapters?chapter=u9:c99`, "HTTP 400/404 (no state leak)", (s) =>
-    s === 400 || s === 404 ? "PASS" : "FAIL",
-  );
+  // B5 (re-aimed, finding f-0013): the per-chapter honest-absent law lives on
+  // the BLOCKS route (chapterKeyOr400 gate + "known book, no flipped pack =>
+  // 200 []" honest-empty) — the chapters route reads NO chapter query param
+  // (404 only for an unknown/empty BOOK), so the original chapters?chapter
+  // probe could never pass and mechanically blocked the f-0011 close
+  // condition. Blocks for the probe chapter = the route's own documented
+  // honest-empty 200 [].
+  await probe("B5 unknown-chapter honest-absent (blocks route)", `${API}/api/v1/content/books/${encodeURIComponent(docId)}/blocks?chapter=u9:c99`, "HTTP 200 + empty [] (honest-empty, blocks-route law)", (s, b) => {
+    if (s !== 200) return "FAIL";
+    try {
+      const j = JSON.parse(b);
+      return Array.isArray(j) && j.length === 0 ? "PASS" : "FAIL";
+    } catch {
+      return "FAIL";
+    }
+  });
 }
 
 // ── C. READER LEG ────────────────────────────────────────────────────────────
