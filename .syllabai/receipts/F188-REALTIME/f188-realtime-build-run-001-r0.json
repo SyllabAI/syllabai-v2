@@ -1,0 +1,37 @@
+{
+  "receipt": "f188-realtime-build-run-001-r0",
+  "lane": "F-188 build opening — the realtime infrastructure plane of record: a standalone long-lived Bun-native WebSocket transport (outside the Vercel serverless request plane), the identity law reused fail-closed at the upgrade, EPHEMERAL in-memory state (presence + rooms + a dumb FIFO matchmaking-queue + TTL'd store-and-forward ghost-delivery), and primitives that never decide (R4: nothing matchmaking-, bracket-, or leaderboard-shaped ships under this line)",
+  "operator_launch_words": [
+    "initiation: \"Initiate a real-time infrastructure project\" (IM trace 1a169faf8411d2cd, 2026-10-24) — F-188 filed Planned (tracker PR #48, ledger merge 6f20edd164205b8bcc8e657b3e8fb9d777cf40f5)",
+    "build opening: \"Proceed\" (IM trace 1a16a048c1b94319, 2026-10-24) — the next operator word on the F-188 line per the filing receipt (transport choice, state posture, prereg Q-battery, build PR)"
+  ],
+  "prereg": "docs/F188-REALTIME-PLAN.md (committed WITH the implementation per the #216/#225/#229/#232/DC-4/F182/F183/F184/F185/F186 pattern; laws R1..R10 + battery Q1..Q10 fixed before the battery ran)",
+  "spec_of_record": {
+    "tracker_row": "F-188 'Real-time infrastructure project (transport + presence + rooms for live battle play)' (repo syllabai-v2, Wave 6 - Platform & Commercial, Cycle 2+, Complexity High, P2; validation metric: presence/room stability under load; delivery latency p95 within the 60s battle clock; zero gradebook/learner-state leakage on the wire; the descoped consumer line(s) file and ship on the primitives)",
+    "filing_notes": "F-188 Agent Notes of record (ledger main 6f20edd164): INFRASTRUCTURE ONLY — persistent bidirectional transport + presence + room/matchmaking-queue + async-ghost-delivery primitives serving the battle family; nothing matchmaking-, bracket-, or leaderboard-shaped ships under this line; the descoped F-186 territory (descope terms trace 1a169e8c0e52bebd) is this line's downstream consumer and files its own line(s) once the primitives land; design posture carried: battle settlement stays computed-at-read never persisted (ADR-031 posture), zero gradebook surface, ADR-036's accepted on-the-wire k=5 distinct-learner rule governs any class-level surfacing the consumers build",
+    "gates_posture": "the matchmaking/brackets gate (ruling trace 1a1693693b033a2d) reads: ADR-036 arm LIFTED (Accepted, ledger PR #45) + realtime-infra arm BUILT (this plane) — the arm lifts when the primitives SERVE in a deployment of record; the consumer filing remains the descoped territory's own next word"
+  },
+  "transport_choice_of_record": {
+    "decision": "Bun-native WebSocket on a STANDALONE long-lived Bun.serve plane (apps/api/src/realtime/server.ts, path /realtime, REALTIME_PORT default 8081) — deliberately NOT mounted in the Vercel fetch-handler entry",
+    "why": "the api's deployment of record is Vercel serverless (index.ts default export = the fetch handler), which cannot hold a persistent bidirectional connection; a standalone long-lived process is the only posture that serves live battle play without inventing a provider dependency",
+    "disclosed": "the production hosting decision for the long-lived process is the operator's (any Bun-capable box); local run: bun run dev:realtime; the production latency p95 receipt is the deployed plane's own measurement (the CI battery pins the loopback smoke bound only)"
+  },
+  "state_posture_of_record": {
+    "decision": "ALL realtime state ephemeral, in-memory, process-local — presence, rooms, queues, pending ghost envelopes (TTL 600s, 64-per-target cap); ZERO database persistence for realtime state; the plane's ONLY database use is the identity revocation lookup at the upgrade (the identity plane, not realtime state)",
+    "why": "the filed posture verbatim: battle settlement stays computed-at-read never persisted (ADR-031 posture), zero gradebook surface; durability needs are consumer-line territory, disclosed — a restart drops presence/rooms/queues and undelivered envelopes",
+    "import_census": "Q8b pins the file-level law: protocol.ts + state.ts import NOTHING from db/drill/battle/assessment/identity; server.ts imports the identity law ONLY (R2)"
+  },
+  "boundary_of_record": "R4 — primitives that never decide: transport, presence (userId + counts only), rooms (opaque ids, join/leave/broadcast), queue (dumb FIFO: join/leave/take-oldest-n — a data structure, not a pairing verdict), store-and-forward envelopes (opaque payloads, byte-identical relay, server-stamped sender); no pairing, no rating, no eligibility, no scoring, no bracket logic, no leaderboard anywhere in the module; consumer lines wrap authority laws around their own queue/room naming and their own surfacing (any class-level surfacing is ADR-036 k=5 governed)",
+  "files_landed": [
+    "docs/F188-REALTIME-PLAN.md — the prereg of record (laws R1..R10, battery Q1..Q10, the caps table, the disclosures)",
+    "apps/api/src/realtime/protocol.ts — envelope v1 vocabulary, the caps of record (RT), the zod schemas, the error codes of record",
+    "apps/api/src/realtime/state.ts — the RealtimeHub: the ephemeral state machine (injected clock Q10; outcomes-driven, adapter-agnostic)",
+    "apps/api/src/realtime/server.ts — the standalone Bun.serve composition root (fail-closed upgrade via createJwtAuthenticator; ?bearer= browser-compat leg; byte backstop MAX_FRAME_BYTES; sweep interval; import.meta.main boot guard)",
+    "apps/api/test/realtime/state.test.ts — the state battery (Q1..Q6, Q8..Q10 in-process, deterministic under the frozen clock)",
+    "apps/api/test/realtime/wire.test.ts — the wire battery (real loopback Bun WebSocket: fail-closed upgrades, handshake, byte-identity relay, offline store-and-forward, Q7 echo p95, burst close on the wire)",
+    "apps/api/package.json — the ONE existing-file touch: the dev:realtime workspace script"
+  ],
+  "battery_results": "SEE run-001 gates below (filled by the build run of record)",
+  "zero_new_dependencies": "no dependency change (zod already in apps/api; Bun-native WebSocket needs no package) — bun.lock untouched",
+  "index_untouched": "apps/api/src/index.ts is NOT touched (no mount — the plane is standalone by law R1); hub untouched; contracts untouched; db untouched"
+}
