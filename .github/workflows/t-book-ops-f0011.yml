@@ -1,0 +1,242 @@
+# T-BOOK-OPS f-0011 — the serving-lane runner (census + the 0005 apply).
+#
+# f-0011 of record (CourseLessons findings, serving-plane family #3): the
+# production books reader leg is DOWN at the origin of record — the T-C20
+# discriminator receipt (2026-10-23) proved the books route ALIVE at the
+# request-validation layer (400 validation_failed without courseId) while
+# every DB-touching call 500s. Precedent: T-TEACH-011 run-001's COW
+# preflight proved production LAGS migrations (0006 was authored but never
+# applied there). This runner pins the actual prod-DB state FIRST (census,
+# read-only by construction) and only then, on an explicit operator
+# confirm token, applies migration 0005 behind the 133d guard protocol.
+#
+# MODES (workflow_dispatch inputs):
+#   census (default)   — ZERO-WRITE by construction: every statement is
+#     select/with (enforced again by apps/api/scripts/neon-sql.ts query
+#     mode). Probes the production DATABASE_URL with URL-pinned statements,
+#     tolerates honest reds (a missing table IS the finding), uploads the
+#     census receipt artifact. Dispatchable freely — the diagnosis leg.
+#   apply-0005         — the T-TEACH-011 guard protocol verbatim:
+#     job 1 (cow-proof): a disposable Neon COW branch off production
+#       (in-line read_write endpoint, NEON_API_KEY = the CI write-capable
+#       key of record), branch-local owner password reset (PRODUCTION
+#       ROLES NEVER TOUCHED), the FROZEN driver applies 0005 as RAW SQL
+#       (preflight, backup-first, ONE transaction, lock_timeout=5s, full
+#       post-verify), then DROP the COW + 404-verify, even on failure
+#       (if: always(), the T-MIG-035 discipline).
+#     job 2 (prod-apply, needs job 1 ALL GREEN): the same frozen driver
+#       against the production DATABASE_URL of record
+#       (T138_PROD_DATABASE_URL), receipt artifact. NO drizzle
+#       bookkeeping is created (the 0007 disclosure law).
+#     REQUIRES input confirm == "APPLY-0005-F0011" (the explicit operator
+#     green-light token; anything else = honest red precondition, zero
+#     writes). The dispatch of an apply IS the operator's fire order.
+#
+# AFTER-GREEN DATA LAW: 0005 is pure DDL (zero rows). If the census shows
+# book_chapters ABSENT too, the books data leg (books-ingest.ts, the
+# 133f multi-book driver) and the operator validation flip follow — see
+# books/ops/f-0011-serving-lane.md for the decision tree of record.
+#
+# Secrets of record: NEON_API_KEY (exists), T138_PROD_DATABASE_URL (exists).
+# Vars of record: NEON_PROJECT_ID, NEON_PARENT_BRANCH_ID (exist).
+
+name: t-book-ops-f0011
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "census (read-only diagnosis — default) | apply-0005 (COW+prod guard protocol)"
+        required: false
+        default: "census"
+      confirm:
+        description: "Apply confirm token (required ONLY for mode=apply-0005: APPLY-0005-F0011)"
+        required: false
+        default: ""
+      note:
+        description: "Operator note for this run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-book-ops-f0011
+  cancel-in-progress: false
+
+jobs:
+  census:
+    if: ${{ inputs.mode == 'census' || inputs.mode == '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Stage the prod URI (0600 file, never argv, never logged)
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          [ -n "$T138_PROD_DATABASE_URL" ] || { echo "T138_PROD_DATABASE_URL is blank — cannot census"; exit 1; }
+          printf '%s' "$T138_PROD_DATABASE_URL" > /tmp/t-book-ops-prod.uri
+          chmod 600 /tmp/t-book-ops-prod.uri
+      - name: P1 — connectivity + identity (never fails on schema state)
+        run: |
+          bun apps/api/scripts/neon-sql.ts /tmp/t-book-ops-prod.uri query \
+            "select current_user as u, current_database() as db, version() as v" \
+            | tee census-p1-identity.json
+      - name: P2 — the book-rail table battery (a missing table IS a finding, not a runner failure)
+        run: |
+          bun apps/api/scripts/neon-sql.ts /tmp/t-book-ops-prod.uri query \
+            "select to_regclass('public.documents') is not null as documents, to_regclass('public.book_chapters') is not null as book_chapters, to_regclass('public.book_blocks') is not null as book_blocks, to_regclass('public.book_glossary_terms') is not null as book_glossary_terms, to_regclass('public.chapter_progress') is not null as chapter_progress, to_regclass('public.document_chunks') is not null as document_chunks" \
+            | tee census-p2-tables.json
+      - name: P3 — TEXTBOOK documents census (tolerated red when the class is proven elsewhere)
+        continue-on-error: true
+        run: |
+          bun apps/api/scripts/neon-sql.ts /tmp/t-book-ops-prod.uri query \
+            "select kind::text as kind, validation_state::text as state, count(*)::int as n from documents where kind = 'TEXTBOOK' group by 1, 2 order by 1, 2" \
+            | tee census-p3-textbook.json
+      - name: P4 — book_chapters census + course binding
+        continue-on-error: true
+        run: |
+          bun apps/api/scripts/neon-sql.ts /tmp/t-book-ops-prod.uri query \
+            "select count(*)::int as rows, count(distinct document_id)::int as docs from book_chapters" \
+            | tee census-p4-chapters.json
+          bun apps/api/scripts/neon-sql.ts /tmp/t-book-ops-prod.uri query \
+            "select bc.course_id, count(*)::int as rows, count(distinct bc.document_id)::int as docs from book_chapters bc group by 1 order by 1" \
+            | tee census-p4b-courses.json
+      - name: P5 — the serving join the 500ing shelf route runs (VALIDATED gate live)
+        continue-on-error: true
+        run: |
+          bun apps/api/scripts/neon-sql.ts /tmp/t-book-ops-prod.uri query \
+            "select count(*)::int as shelf_rows from documents d join book_chapters bc on bc.document_id = d.document_id and bc.doc_version = d.doc_version where d.kind = 'TEXTBOOK' and d.validation_state = 'VALIDATED'" \
+            | tee census-p5-shelf-join.json
+      - name: P6 — book_blocks rail census (the T-BOOK-003 serving layer)
+        continue-on-error: true
+        run: |
+          bun apps/api/scripts/neon-sql.ts /tmp/t-book-ops-prod.uri query \
+            "select count(*)::int as rows, count(distinct (document_id, doc_version, chapter_key))::int as chapters from book_blocks" \
+            | tee census-p6-blocks.json
+      - name: Upload the census receipt artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-book-ops-census-${{ github.run_id }}
+          path: census-p*.json
+          if-no-files-found: warn
+
+  cow-proof:
+    if: ${{ inputs.mode == 'apply-0005' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Confirm token gate (the explicit operator fire order)
+        run: |
+          set -euo pipefail
+          [ "${{ inputs.confirm }}" = "APPLY-0005-F0011" ] || { echo "confirm token missing/wrong — honest red, zero writes (the 093/133b law)"; exit 1; }
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          NEON_PARENT_BRANCH_ID: ${{ vars.NEON_PARENT_BRANCH_ID }}
+        run: |
+          set -euo pipefail
+          NAME="t-book-ops-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          PW=$(echo "$RESP" | jq -r '.role.password')
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Apply 0005 against the COW (frozen driver — preflight/backup/one-txn/postverify)
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/t-book-ops-cow.uri
+          chmod 600 /tmp/t-book-ops-cow.uri
+          bun scripts/t-book-ops-apply-0005.ts --db file:/tmp/t-book-ops-cow.uri \
+            --mode apply --receipt cow-apply-receipt-0005.json
+      - name: Upload the COW receipt artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-book-ops-cow-receipts
+          path: cow-apply-receipt-0005.json
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-proof
+    if: ${{ !failure() && !cancelled() && inputs.mode == 'apply-0005' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.2.23"
+      - name: Install workspace deps
+        run: bun install --frozen-lockfile
+      - name: Apply 0005 against PRODUCTION (frozen driver — preflight/backup/one-txn/postverify)
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          printf '%s' "$T138_PROD_DATABASE_URL" > /tmp/t-book-ops-prod.uri
+          chmod 600 /tmp/t-book-ops-prod.uri
+          bun scripts/t-book-ops-apply-0005.ts --db file:/tmp/t-book-ops-prod.uri \
+            --mode apply --receipt prod-apply-receipt-0005.json
+      - name: Upload the prod apply receipt artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t-book-ops-prod-receipts
+          path: prod-apply-receipt-0005.json
+          if-no-files-found: ignore
