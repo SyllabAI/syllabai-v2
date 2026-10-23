@@ -31,8 +31,12 @@ const BR = process.env.BRANCH_DB_URL, WH = process.env.WH_DB_URL;
 if (!BR || !WH) { console.error('need BRANCH_DB_URL and WH_DB_URL'); process.exit(1); }
 const GROUP = 'maths-4ma1';
 const SUBJECT = '763dfe2d-d2b5-48fb-ba4c-2f708c637b26'; // Maths (4MA1) — run-001-trim-census-r0
-const br = postgres(BR, { max: 2, prepare: false, connect_timeout: 20 });
-const wh = postgres(WH, { max: 2, prepare: false, connect_timeout: 20 });
+// REPAIR 2026-10-24 (T-OPS-PLANE-001 run-003): max 2 -> 1 — unsafe('begin'/'commit') does
+// NOT pin a pool connection, so with max:2 the transaction blocks could span two pool
+// connections. With max:1 every statement shares the single connection and the explicit
+// txn blocks are safe. (Second latent fix: cols string -> array, see COPY step.)
+const br = postgres(BR, { max: 1, prepare: false, connect_timeout: 20 });
+const wh = postgres(WH, { max: 1, prepare: false, connect_timeout: 20 });
 const gate = [];
 const G = (name, pass, detail) => { gate.push({ name, pass, detail }); console.log(`${pass ? 'PASS' : 'FAIL'}  ${name} — ${detail}`); };
 
@@ -58,9 +62,14 @@ try {
 
   // 2. COPY in batches (no cross-project extensions needed — plain rows)
   await wh.unsafe('begin');
-  const cols = `id, document_id, document_row_id, course_group, subject_id, kind, chunk_index, content,
-                page_start, page_end, series, year, paper_code, atom_number, spec_codes,
-                token_estimate, embedding_model, embedded_at, created_at, embedding`;
+  // REPAIR 2026-10-24 (T-OPS-PLANE-001 run-003): column list MUST be an array — the
+  // postgres-js insert builder does rest.flat(), so the former comma-string was read as
+  // ONE column key (UNDEFINED_VALUE on first real run; proven by the read-only-source
+  // variant wh-dryrun-copy.mjs which hit and fixed this before copy).
+  const cols = ['id', 'document_id', 'document_row_id', 'course_group', 'subject_id', 'kind',
+    'chunk_index', 'content', 'page_start', 'page_end', 'series', 'year', 'paper_code',
+    'atom_number', 'spec_codes', 'token_estimate', 'embedding_model', 'embedded_at',
+    'created_at', 'embedding'];
   let copied = 0;
   for (let i = 0; i < src.length; i += 500) {
     const batch = src.slice(i, i + 500).map(r => ({

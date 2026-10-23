@@ -84,6 +84,23 @@ task:
     branch of main console-side (BRANCH_DB_URL — dryrun-4ma1.mjs is
     branch-only by law); dryrun (copy 8,202 + parity + seam + zero-residue
     rehearsal); T1 cut-over per placement law §5.
+    UPDATE 2026-10-24 (3): W1 ASSIGNED maths-4ma1 (operator 'Proceed', trace
+    1a16a0d456f2fecd ratifies the run-002 proposal) + 4MA1 PLANE COPIED TO
+    W1 with FULL PARITY + seam proven live — receipt
+    run-003-w1-maths-assignment-copyparity-seam-r0. Source read from main
+    under session-level READ ONLY txn (branch not creatable from sandbox:
+    api egress HTTP 000, 4th test). Gates: 8,202/8,202 rows, 10,307,759
+    content bytes EXACT, id-set sha256 88706faa… EQUAL, HNSW top-5 95 ms,
+    5/5 hydration. Kind census: 2,734 x QP/EQ/MS. NULL-embedding 1,330 =
+    ENTIRE estate no_vec backlog lives in the maths plane (drain/backfill
+    must complete before those rows serve). W1 now 71 MB (7% of wall).
+    TWO LATENT BUGS in of-record dryrun-4ma1.mjs found on first real run
+    and REPAIRED (cols string -> array; max:2 pool vs unsafe begin/commit).
+    Zero-residue rehearsal still branch-gated (T1). Tripwire r4: main
+    byte-flat on corpus planes (zero writes proven) while mark plane grows
+    +198/+656 in 19 min = rebuild IN FLIGHT (receipt run-009-r4; writer
+    lane owes receipts). T1 REMAINING: branch rehearsal + operator order +
+    serving flip.
 base:
   repo: "syllabai-v2 @ 7144327 (ratification branch basis)"
 basis: >
