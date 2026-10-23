@@ -20415,3 +20415,17 @@ Work Log:
 
 Stage Summary:
 - Placement ruling of record for T-SENECA-001; main-side pack library relocation to sci-chem wh-v2 is the binding plan; PR #316 merge held until run-004 rework + T1 data move.
+
+---
+Task ID: T-CONTENT-MB4-PBLOCK-001 (file run-003 candidate card, trace 1a16af697e9af2bd)
+Agent: main (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: File the run-003 candidate card discharged from the player-side spot-check r0 (trace 1a16a8b2741dadf5): the one 4MB1 row where the applied marks-header contradicts the plan-of-record and the run-002 receipt claim.
+
+Work Log:
+- Spot-check r0 findings of record carried into the card: live bundle sha fb39a752 == origin/main tip; structure 65/1270/2412 EXACT; blanks 0; formerly-blank-57 all filled; 0 unintended KaTeX prose spans; 743 embeds 5/5 HEAD 200.
+- THE ROW: qstnprt_44ZeXONRp3mA1ojbLLET0U (2021-01-4mb1-02 Q8(d), marks=3) renders "**P7** (2 marks)" with the Method-1 M1 row + A1 row folded as Notes; plan-of-record says "p3 need=3: ATTACH-UNIQUE"; merge law (fold iff predecessor code-mark > 1) forbids M2 folding under M1; run-002 receipt has no per-part disclosure of the shortfall.
+- Card filed: .syllabai/tasks/T-CONTENT-MB4-PBLOCK-001.yaml — status OPEN, P2 (claims-integrity defect, cosmetic player impact), scope fenced to the ONE part's solutionMd + lane artifacts + receipts + this worklog; next_safe_actions = eyes-on MS page -> extractor reconciliation -> re-emit per fold law -> full gate set -> run-003 receipt.
+- Bookkeeping-only: this yaml + this worklog append; zero app-code contact, zero DB writes, bundle untouched (spot-check and filing both read-only against the bundle).
+
+Stage Summary:
+- T-CONTENT-MB4-PBLOCK-001 is the OPEN run-003 candidate of record for MB4-MS-FRESHPARSE; the 2,411 other parts verified clean player-side; U+FFFD/OCR-sandwich classes explicitly NOT widened into this card (their own filings stand).
