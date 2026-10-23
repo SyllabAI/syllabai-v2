@@ -185,9 +185,14 @@ export function StrengthsPanel({ course }: { course: string }) {
               Work a 5-question drill at any spec point and your first strength bar appears here. The drill
               is zero-stakes: it writes only its own practice log, never your gradebook.
             </p>
-            <Button asChild>
-              <Link href="/practice/drill">Start a drill</Link>
-            </Button>
+            <div className="flex flex-wrap justify-center gap-2">
+              <Button asChild>
+                <Link href="/practice/drill">Start a drill</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/practice/battle">Battle the bot</Link>
+              </Button>
+            </div>
           </CardContent>
         </Card>
       ) : (
@@ -200,9 +205,14 @@ export function StrengthsPanel({ course }: { course: string }) {
               which stay ungraded — the server refuses to invent marks. Self-check them against the mark
               scheme in the drill; your first bar appears with your first server-graded part.
             </p>
-            <Button asChild>
-              <Link href="/practice/drill">Practise a graded drill</Link>
-            </Button>
+            <div className="flex flex-wrap justify-center gap-2">
+              <Button asChild>
+                <Link href="/practice/drill">Practise a graded drill</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link href="/practice/battle">Battle the bot</Link>
+              </Button>
+            </div>
           </CardContent>
         </Card>
       )}

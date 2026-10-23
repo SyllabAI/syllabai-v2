@@ -243,3 +243,127 @@ export const drillEvidenceResponseSchema = z.object({
   methodCredit: drillMethodCreditViewSchema.nullable(),
 });
 export type DrillEvidenceResponse = z.infer<typeof drillEvidenceResponseSchema>;
+
+// ── F-186 — the Strength Battle mode (same bank, second mode) ───────────────
+
+/**
+ * The battle opponent disclosure. `law` is the honest opponent law of record
+ * ("seeded-coin-v1" — a seeded coin, not a model; the model bot is the
+ * residual behind the same seam). The opponent shape is a discriminated
+ * union ready to grow a "classmate" kind when the matchmaking lane lands —
+ * no matchmaking ships in this lane. STRICT: the battle wire refuses
+ * undeclared keys — the no-answer-key law is structural (law B7).
+ */
+export const battleOpponentSchema = z
+  .object({
+    kind: z.literal("bot"),
+    law: z.string().min(1),
+  })
+  .strict();
+export type BattleOpponent = z.infer<typeof battleOpponentSchema>;
+
+export const battleStartRequestSchema = z.object({
+  course: z.string().min(1),
+  /** One spine spec-point address (policy P2 verbatim — the battle is at an address). */
+  code: z.string().min(1),
+  /**
+   * Determinism law (P5, battle-flavored): (eligible pool, recency, reading,
+   * seed) -> one battle card. Absent = the server draws one; the response
+   * carries the seed actually used (the bot card is reconstructible from it —
+   * the M6 posture).
+   */
+  seed: z.number().int().min(0).max(0xffffffff).optional(),
+});
+export type BattleStartRequest = z.infer<typeof battleStartRequestSchema>;
+
+/**
+ * The battle start outcome (201). The parts carry NO answer facts (the draw
+ * law verbatim — choices ship without isCorrect; the reveal rides the
+ * evidence ack only). `clockMs` is the server's battle clock of record;
+ * `startedAt` is the draw row's own createdAt stamp — the client countdown
+ * is the affordance, the server clock is the law (B5). STRICT: undeclared
+ * keys cannot ride the battle start.
+ */
+export const battleStartResponseSchema = z
+  .object({
+    drawId: z.string().uuid(),
+    course: z.string().min(1),
+    code: z.string().min(1),
+    seed: z.number().int().min(0).max(0xffffffff),
+    /** The BATTLE-ELIGIBLE pool size (choice-gradable parts at the address). */
+    poolSize: z.number().int().min(0),
+    freshPoolSize: z.number().int().min(0),
+    usedFallback: z.boolean(),
+    /** The F-185 policy disclosure — battles inherit model-drawn sets verbatim (B1). */
+    selection: drillDrawSelectionSchema,
+    opponent: battleOpponentSchema,
+    clockMs: z.number().int().positive(),
+    startedAt: z.string().min(1),
+    parts: z.array(drillPartViewSchema),
+  })
+  .strict();
+export type BattleStartResponse = z.infer<typeof battleStartResponseSchema>;
+
+/**
+ * One settled part. No answer key: the only reveal facts are the learner's
+ * own ack facts (B7) — the shape refuses a label structurally.
+ */
+export const battleSettlementPartSchema = z
+  .object({
+    partId: z.string().min(1),
+    marks: z.number().int().min(0),
+    learner: z
+      .object({
+        answered: z.boolean(),
+        /** False = the answer landed after the server clock (disclosed, scores zero — B5). */
+        inClock: z.boolean(),
+        correct: z.boolean().nullable(),
+        marksAwarded: z.number().int().nullable(),
+      })
+      .strict(),
+    bot: z
+      .object({
+        correct: z.boolean(),
+        latencyMs: z.number().int().min(0),
+      })
+      .strict(),
+    /** "split" = both correct (the no-race law B6 — both sides score the part). */
+    wonBy: z.enum(["learner", "bot", "split", "neither"]),
+  })
+  .strict();
+export type BattleSettlementPart = z.infer<typeof battleSettlementPartSchema>;
+
+/**
+ * The battle settlement — computed AT READ over the immutable draw + evidence
+ * rows + the bot card (ADR-031 posture, law B7): no battle table exists,
+ * none is added, and the response writes nothing back. STRICT end to end.
+ */
+export const battleSettlementResponseSchema = z
+  .object({
+    drawId: z.string().uuid(),
+    course: z.string().min(1),
+    code: z.string().min(1),
+    generatedAt: z.string().min(1),
+    opponent: battleOpponentSchema,
+    clock: z
+      .object({
+        ms: z.number().int().positive(),
+        startedAt: z.string().min(1),
+        deadline: z.string().min(1),
+        /** "all-answered" = every part carried evidence; "clock" = the clock expired (B5). */
+        closedBy: z.enum(["all-answered", "clock"]),
+      })
+      .strict(),
+    parts: z.array(battleSettlementPartSchema),
+    /** Marks are the currency (law B6 — the seam's own grading currency). */
+    score: z
+      .object({
+        learner: z.number().int().min(0),
+        bot: z.number().int().min(0),
+        possible: z.number().int().min(0),
+      })
+      .strict(),
+    verdict: z.enum(["win", "loss", "draw"]),
+  })
+  .strict();
+export type BattleSettlementResponse = z.infer<typeof battleSettlementResponseSchema>;
