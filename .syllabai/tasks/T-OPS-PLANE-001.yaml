@@ -1,0 +1,47 @@
+version: 1
+task:
+  id: T-OPS-PLANE-001
+  title: "Execute the data-plane split per DATA-PLANE-PLACEMENT.md (main = identity+learner; corpus = ADR-038 warehouse fleet)"
+  owner: "unassigned"
+  status: OPEN
+  priority: P1
+  band: T-OPS (operations / data-plane)
+  wave: post-restore
+  deps: ["NEON-DB-LOSS parity closure (step 0)", "ADR-038"]
+  next_safe_actions: >
+    (1) Step 0 — official parity closure: full Oct-22 baseline census
+    (335 MB; document_chunks ~13.7k; mark_points 40,250; question_asset 585;
+    revision_note_asset 194; documents 301 QP/289 MS/489 EQ/162 SYL/112 EN;
+    exam_papers 4MA1=110, 4CH1=37+8; migrations through 0009) + T-C20 battery
+    exit 0, filed under .syllabai/receipts/NEON-DB-LOSS/ — releases the
+    single-writer hold and un-gates T-MIG-141 Phase B/C/D. (2) Trim-pass
+    census: dedup + ruling on the unwired 1,223-chunk pdftotext-layout plane
+    (T-MIG-141 disclosure). (3) Provisioner script: Neon API -> frozen
+    template SQL (vector ext + chunks + HNSW), parity-verified chunk
+    migration, zero-residue drop. (4) Maths group (4MA1) cut-over dry-run on
+    a COW branch before any prod write.
+  execution_record: >
+    Card opened with the ratification commit (see worklog T-OPS-PLANE-001 r0).
+    Law of record: docs/DATA-PLANE-PLACEMENT.md (operator plan statement,
+    trace 1a168885359acda1). Transition rules for in-flight lanes are in
+    §3 of that document; current corpus writes remain lawful in main until
+    each subject group's cut-over (T0), single-writer per plane, no dual
+    writes ever, no new corpus table family in main.
+base:
+  repo: "syllabai-v2 @ 7144327 (ratification branch basis)"
+basis: >
+  Operator plan statement trace 1a168885359acda1 ("user data, auth, course
+  selected, learner model data, everything in the current database; all the
+  corpus related data in other databases") + ADR-038 + NEON-DB-LOSS run-001
+  recovery_order.
+scope:
+  allowed:
+    - "docs/DATA-PLANE-PLACEMENT.md"
+    - "docs/ADR-038-COURSE_GROUP_VECTOR_WAREHOUSES.md (status line only)"
+    - ".syllabai/tasks/T-OPS-PLANE-001.yaml (status/execution_record only)"
+    - ".syllabai/worklog.md (append-only)"
+    - "scripts/ (provisioner + census scripts, future runs)"
+  forbidden:
+    - "packages/db/src/schema/** (no schema changes; corpus planes move, not mutate)"
+    - "any Neon prod write outside the T1 cut-over procedure"
+    - "satellite project (quarantined per ADR-038)"

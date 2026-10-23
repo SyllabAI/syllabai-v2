@@ -1,6 +1,6 @@
 # ADR-038: Course-Group Vector Warehouses on a Single Neon Account
 
-- **Status:** ACCEPTED (operator-delegated decision, trace 1a16869e9139f859 "figure it out"; capacity + account analysis trace 1a168662122cb201)
+- **Status:** ACCEPTED (operator-delegated decision, trace 1a16869e9139f859 "figure it out"; capacity + account analysis trace 1a168662122cb201) — **RATIFIED 2026-10-23 by operator plan statement (trace 1a168885359acda1): main DB = identity + learner model, corpus = other databases. Placement is operationalized and binding in `docs/DATA-PLANE-PLACEMENT.md`.**
 - **Date:** 2026-10-23
 - **Related:** ADR-037 (official papers wiring), T-MIG-138 (4MA1 roll instrument), NEON-DB-LOSS run-001 receipt (the incident that escalated this ADR from "parked design" to "of-record")
 - **Supersedes:** none. **Amends:** the single-project deployment assumption held since the v2 cutover.

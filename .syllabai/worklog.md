@@ -13232,4 +13232,18 @@ Work Log:
 Stage Summary:
 - T-RULE-T2-HOLDSPLIT-DURABILITY-1 CLOSED: the tranche-2 sid-anchor plane is now durable BOTH ways of record — registry -> sidecar (run-001 capture) and sidecar -> registry (run-002 byte-fixed-point re-key); the F52 open_items "CIE tranche2 consume lane" is fully closed of record with the fleet at resources cut fa664a86.
 - Residuals unchanged: tranche-3 (1,203 sid-less, operator-gated); PAT rotation STILL CRITICAL-OVERDUE (same fingerprint through this push; rotation list per 8d1c390e); full-suite 6-fail environment posture pre-existing at base (stash-proven, not this lane's fire).
-- LANE: IDLE.
+- LANE: IDLE.Task ID: T-OPS-PLANE-001 r0 (placement law ratification + fleet broadcast)
+Agent: main (Super Z, zai-web session web-590847c1, chat 986f6715)
+Task: Operator order (trace 1a168885359acda1): "Proceed with the plan such that all agents know about it. Current agents know where to put their data and stuff."
+
+Work Log:
+- Operator plan statement ratified of record: main database = user data, auth, course selection, learner model; ALL corpus data = other databases (the ADR-038 warehouse fleet).
+- Filed docs/DATA-PLANE-PLACEMENT.md (r0): binding placement table (main: identity/auth, course selection, classroom, assignments, learner model, curriculum spine, deterministic anchors; corpus: documents/exam_papers, chunks+vectors, mark_points, bytea assets, books content, SI/syllabus docs), transition law T0/T1/T2 (corpus writes stay in main's existing planes until each subject group's cut-over — single-writer per plane, no dual writes ever, no new corpus table family in main), seam contract (id-only cross-project refs, no cross-project FKs, text-compare for exam_papers doc refs — never ::uuid cast, two-step retrieval, batched hydration), execution order (step 0 = NEON-DB-LOSS parity closure; trim pass; provisioner; maths group first).
+- ADR-038 Status amended: RATIFIED by operator plan statement, placement operationalized in DATA-PLANE-PLACEMENT.md.
+- AGENT_BRIEFING.md bumped to v1.1: new §7 "DATA-PLANE PLACEMENT (RATIFIED, binding)" — every agent's first-read now carries the write-routing table and the law pointer.
+- Opened .syllabai/tasks/T-OPS-PLANE-001.yaml (OPEN, P1, next_safe_actions: parity closure -> trim census -> provisioner -> 4MA1 dry-run on COW branch).
+- Sizes of record in the law: post cut-over main ≈ 100 MB (corpus planes 227 MB of the 335 MB baseline migrate out); fleet total 4.7-14.1 GB inside the 20 GB account cap.
+- No DB writes, no Neon/Vercel mutations; additive repo delta only: 1 new doc + 1 new task yaml + briefing addendum + ADR status line + this entry.
+
+Stage Summary:
+- The split is now LAW and BROADCAST: every current and future agent reading the briefing, the worklog tail, ADR-038, or the board knows exactly where their data goes. T-OPS-PLANE-001 is the claimable execution card. Step 0 remains the NEON-DB-LOSS parity closure (blocked on operator re-pasting the pooler URL; T-MIG-141 Phase B/C/D gates unchanged).
