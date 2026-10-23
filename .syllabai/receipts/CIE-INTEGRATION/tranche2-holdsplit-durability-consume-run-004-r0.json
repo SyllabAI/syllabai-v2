@@ -1,0 +1,87 @@
+{
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T2-HOLDSPLIT-DURABILITY-1",
+ "run": "run-002",
+ "dispatch": {
+  "operator_order": "CIE tranche2 next",
+  "operator_trace": "1a1686d11b430639",
+  "session": "web-64d10b73-530a-4f71-9961-85d0436c7fb5"
+ },
+ "lane_class": "CIE tranche2 durability consume — closes the T-RULE-T2-HOLDSPLIT-1 durability residual: the 3 hold/split sid->codes verdicts captured into the resources spec-links sidecar of record (run-001) and consumed through the engine of record at a fresh pin (run-002), reproducing the 26-anchor registry as a byte fixed point",
+ "filed_open_item_closed": {
+  "filed_by": "T-RULE-T2-HOLDSPLIT-1 receipt residuals + durable ledger tail",
+  "text": "DURABILITY: capture the 3 new sid->codes verdicts into the resources spec-links sidecar sidAnchors manifest before the next consume re-key, else the engine will not reproduce these rows (same residual shape as T-RULE-T2-APPLY-1)"
+ },
+ "run_001_resources_half": {
+  "commit_of_record": "fa664a86d64dd954225e0dee05a8cd742703179c",
+  "sidecar_sha_base": "4802af4e170b6a594057fe34aaf4535b7cdbd06b8da07d7f62754d28333be98a",
+  "sidecar_sha_result": "d3b659268706d053fca8148b97dfcd9a55afd58e092b366981c3192926bac2ed",
+  "rows_added": [
+   "spcpt_9Dxx4xs6KDbb85cJ -> 34.2.2+34.2.4 (tranche2_hold_resolved)",
+   "spcpt_CdtkSssKHMzw5ZTn -> 21.1.2+36.1.2 (tranche2_split_resolved)",
+   "spcpt_pYmRWxPrtMDKj5ym -> 37.4.4+37.4.5 (tranche2_quarantine_resolved)"
+  ],
+  "counts": "sids 23 -> 26; distinctCodes 46 -> 52 (+6 all-new); tier counts holdResolved/splitResolved/quarantineResolved = 1/1/1",
+  "gates": "G0 substrate round-trip byte-exact; G2 3/3 registry field equality; G3 deep-diff exact changed-set; G4 6/6 spine-verified; G5 idempotent; G6 cross-foot 26/52",
+  "machine_record": "graph/reports/tranche2-r2/holdsplit-sidecar-capture-run-001-r0.json (on syllabai-resources @ fa664a86)",
+  "concurrency_event": "first push rejected non-FF (origin advanced 1ef9d5b8 -> cf79ecd2, UGM lane-5 trigonometry PR #79, ZERO spec-links/rejoin/tranche2-r2 overlap audited); rebased -X union clean, sidecar/manifest sha byte-stable through the rebase; FF push landed"
+ },
+ "run_002_v2_half": {
+  "base": "7144327db90529c7cc6a18b3493bac6b425cd3d8",
+  "engine_of_record": "apps/hub/scripts/cie/cie_consume_spec_links.py (constants advanced of record: PIN ea21a72 -> fa664a86, STAMP, operatorDirective/gatewayTrace = this dispatch)",
+  "engine_run": {
+   "sidecars": 44,
+   "changed": 44,
+   "sidAnchors": {
+    "added": 0,
+    "verified": 26,
+    "conflictsKept": 0
+   },
+   "inlineRewrites": 3,
+   "v8RetractDropped": 0,
+   "misTagRepointDropped": 0,
+   "sheet": "634 resolves / 166 carried NO-GUESS quarantines (sheetConflicts 289, unchanged)",
+   "stagingHash": "6ecc8b6ba3485a13c5efce5ddc25488e490f8aec215d2c3ca9e1429de58a221e",
+   "batteries": "M1/R1-R6/A1 + per-course fail-closed battery ALL GREEN in-run (determinism: merge twice byte-identical per course)"
+  },
+  "durability_proof": "the 3 captured rows verify-if-equal against the registry of record (5edff0a8) — sidAnchors 0/26/0: the 26-anchor sid plane is now a BYTE FIXED POINT that reproduces from the sidecar at any consume re-run AND at full rebuild",
+  "item_plane_delta_of_record": "chem25 notes.json: EXACTLY 3 bodyMd inline rewrites (rn_8NdDvsBxGB5kNZJ3 [9Dxx phenylamine-prep note], rn_cv7Z4jVxR6Rwpf3r, rn_yryCr4zmnDxYFRyh [pYmR proton-NMR note]) — the 3 newly-resolved sids' first real-code inline render; specPointIds byte-equal on all 239 notes; flashcards/questions/curriculum byte-equal; every other bank byte-unchanged except manifest pin move",
+  "write_set": [
+   "apps/hub/content-maps/{44 x cie-*.json} (resourcesSha+generatedUtc re-key; chem25 + inputs sidecar sha + census sidAnchors 26)",
+   "apps/hub/content-maps/_report_cie_consume.json (regenerated, directive/trace = this dispatch)",
+   "apps/hub/content/{44 x cie-*/manifest.json} (officialSpine.resourcesSha -> fa664a86, R4-exact)",
+   "apps/hub/content/cie-a-level-chemistry-25/notes.json (3 bodyMd inline rewrites)",
+   "apps/hub/scripts/cie/cie_consume_spec_links.py (PIN/STAMP/directive/trace constants of record)",
+   "apps/hub/scripts/validate_cie_bundles.ts (CIE_PIN -> fa664a86; CIE_PIN_PRIOR_6 = ea21a72; allow-list extended)",
+   ".syllabai/receipts/CIE-INTEGRATION/tranche2-holdsplit-durability-consume-run-004-r0.json (this file)",
+   ".syllabai/worklog.md (Task T-RULE-T2-HOLDSPLIT-DURABILITY-1 section appended, union-merge on the origin version)"
+  ],
+  "untouched_by_design": [
+   "the 43 non-chem25 CIE bundles' content planes (byte-verified via staged copy equality)",
+   "the Edexcel/pilot plane, content-maps/* non-CIE, the SME plane",
+   "roster census floors (questions 6784 / parts 5789 / pkgParts 9411 / unmapped 12,294 — unchanged, roster 15/15)",
+   "the resources repo beyond run-001 (zero additional resources pushes)"
+  ],
+  "gates_local_lane_green": [
+   "verify:cie (validate_cie_bundles) PASSED at CIE_PIN fa664a86 (44 pin-in-allow-list + G1/G2/component/coverage/archive assertions)",
+   "verify:corpus (verify_corpus_23a) CORPUS GATE PASSED",
+   "verify:flashcard-sync exit 0 PASSED",
+   "roster cie-phase4-roster.test.ts 15/15 PASS (floors 6784/5789/9411 + unmapped 12,294 hold EXACT)",
+   "hub tsc --noEmit exit 0",
+   "eslint on touched TS: file ignored by config (out of lint scope), 0 errors — identical posture at base",
+   "full bun test 3112 pass / 13 skip / 6 fail — the 6 (dual-run posture x5, question-cla thread isolation x1) reproduce IDENTICALLY at the base tree (stash-proven: same 6, same 32992 expect calls) = pre-existing environment/suite cross-test pollution, NOT this lane",
+   "POST-APPLY IDEMPOTENCE: engine re-run changed=0/44 (quiescent fixed point), zero .staged stragglers"
+  ]
+ },
+ "transit": {
+  "last_recorded": 34,
+  "this_push": 35,
+  "disclosure": "PAT rotation STILL CRITICAL-OVERDUE (same fingerprint through this push; the rotation list also carries Vercel + Neon + 2 DB passwords + CRON_SECRET + join code + 3 LLM keys per 8d1c390e) — rotation REQUIRED before any re-supply"
+ },
+ "residuals": [
+  "tranche-3 (1,203 sid-less parts) — operator-gated ruling program",
+  "PAT rotation CRITICAL-OVERDUE (operator)",
+  "full-suite 6-fail environment posture (pre-existing at base, stash-proven; not this lane's fire)"
+ ],
+ "stamp": "2026-10-23T11:29:18Z"
+}

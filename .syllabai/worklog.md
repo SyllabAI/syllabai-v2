@@ -13214,3 +13214,22 @@ Work Log:
 
 Stage Summary:
 - MB4-MS-FRESHPARSE run-002 COMPLETE: 45/45 provably attached, maths-b structured-no-solution ZERO (was 45, was 57, was 117) — the pdflane loss class CLOSED corpus-wide. Corpus: 8,783/8,786 MCQ answerable + 0 structured-no-solution in maths-b. Register: multi-select player lane (3 geography) awaiting operator order; PAT rotation OVERDUE (exposure +1 this lane, wipe #2 cost a full rebuild); igcse-chemistry-19 2 pre-existing E2 out of scope.
+
+---
+Task ID: T-RULE-T2-HOLDSPLIT-DURABILITY-1 (operator dispatch "CIE tranche2 next", trace 1a1686d11b430639 — the CIE tranche2 consume lane fired; closes the T-RULE-T2-HOLDSPLIT-1 durability residual)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Consume the CIE tranche-2 durability surface: capture the 3 hold/split sid->codes verdicts into the resources spec-links sidecar of record (run-001), then consume at a fresh pin through the engine of record (run-002) proving the 26-anchor byte fixed point.
+
+Work Log:
+- Recon of record: F52 open_items "CIE tranche2 consume lane (132c4b68/5178b3b6)" was progressively consumed by the CIE-INTEGRATION series of record (adoption run-002 @ 3838a264, v8-retraction run-003 @ e7c7a68, mistag re-key @ ea21a72, holdsplit registry apply 5edff0a8 registry-plane-only) — the open surface at dispatch time was exactly the holdsplit DURABILITY RESIDUAL (capture-before-next-re-key) + the next consume re-key; no re-execution of closed runs (F52 no-re-run law honored).
+- run-001 (resources, commit fa664a86): anchors.operatorSidAnchors 23 -> 26 rows field-equal to the registry of record (via T-SPECS-CIE-TRANCHE2-B02:...@bd2c0b1; tiers tranche2_hold_resolved|tranche2_split_resolved|tranche2_quarantine_resolved); counts 26/52 (+6 all-new); manifest courses+fleet rows; machine record graph/reports/tranche2-r2/holdsplit-sidecar-capture-run-001-r0.json; GATES G0/G2/G3/G4/G5/G6 ALL GREEN (base 4802af4e... -> result d3b65926...). CONCURRENCY EVENT: first push rejected non-FF (origin 1ef9d5b8 -> cf79ecd2, UGM lane-5 PR #79; ZERO spec-links overlap audited); rebased -X union clean, sha byte-stable; FF push landed.
+- run-002 (v2, base 7144327d): engine constants advanced of record (PIN fa664a86, STAMP 2026-10-23T11:29:18Z, directive/trace = this dispatch); FULL-ENGINE RUN 44/44 sidecars ACCEPTED, changed 44, sidAnchors 0/26/0 (the 26-anchor BYTE FIXED POINT reproduces from the sidecar — the durability proof), inlineRewrites 3 (chem25 notes rn_8NdDvsBxGB5kNZJ3/rn_cv7Z4jVxR6Rwpf3r/rn_yryCr4zmnDxYFRyh — the 3 newly-resolved sids' first real-code inline render), retract/mistag dropped 0/0 (idempotent), sheet 634/166 carried; staging hash 6ecc8b6b...; staged tree applied (265 files), .staged maps moved, zero stragglers.
+- ITEM-PLANE DELTA OF RECORD: chem25 notes.json EXACTLY 3 bodyMd rewrites; specPointIds byte-equal all 239 notes; flashcards/questions/curriculum byte-equal; 43 sibling banks byte-unchanged except manifest pin move; registry 72/259 byte-intact (the holdsplit apply of record preserved through the re-key).
+- Validator ladder advanced of record: CIE_PIN ea21a72 -> fa664a86, CIE_PIN_PRIOR_6 = ea21a72, allow-list extended; roster floors 6784/5789/9411 + unmapped 12,294 UNCHANGED (anchors-plane + inline-only wave).
+- FULL LOCAL LANE GREEN: verify:cie PASSED; verify:corpus PASSED; verify:flashcard-sync exit 0; roster 15/15; hub tsc --noEmit 0; eslint touched-TS ignored-by-config (0 errors, base-identical); full bun test 3112/13/6 with the 6 stash-proven PRE-EXISTING at base (same tests, same 32992 expect calls — environment cross-test pollution, not this lane); POST-APPLY IDEMPOTENCE changed=0/44 quiescent.
+- Receipt .syllabai/receipts/CIE-INTEGRATION/tranche2-holdsplit-durability-consume-run-004-r0.json (this push, transit 34 -> 35).
+
+Stage Summary:
+- T-RULE-T2-HOLDSPLIT-DURABILITY-1 CLOSED: the tranche-2 sid-anchor plane is now durable BOTH ways of record — registry -> sidecar (run-001 capture) and sidecar -> registry (run-002 byte-fixed-point re-key); the F52 open_items "CIE tranche2 consume lane" is fully closed of record with the fleet at resources cut fa664a86.
+- Residuals unchanged: tranche-3 (1,203 sid-less, operator-gated); PAT rotation STILL CRITICAL-OVERDUE (same fingerprint through this push; rotation list per 8d1c390e); full-suite 6-fail environment posture pre-existing at base (stash-proven, not this lane's fire).
+- LANE: IDLE.

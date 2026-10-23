@@ -92,8 +92,8 @@ RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resourc
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "ea21a721e09e3a7ccfa1f92d6f667bc290412e14"
-STAMP = "2026-10-23T10:30:00Z"
+PIN = "fa664a86d64dd954225e0dee05a8cd742703179c"
+STAMP = "2026-10-23T11:29:18Z"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
 RANK = {  # lower wins on the same (item, code) key
@@ -799,19 +799,23 @@ def main() -> int:
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
         lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("T-RULE-T2-MISTAG-1 (operator order '10-mis-tag re-point batch', "
-                           "trace 1a1658227c0c0365) — the mis-tag residual disclosed at "
-                           "T-RULE-T2-COND-1 misTags[10] + the v8Retraction disclosures opens: "
-                           "consumed vintage e7c7a68 (the PR-#68-merged retraction tip) -> the "
-                           "PR-#69-merged tip ea21a72 (resources PR #69, the 10-mis-tag re-point "
-                           "batch of record: 3 V8-mirror removals + 11 additions across 8 parts, "
-                           "tier tranche2_mis_tag_repoint; WW34 keep-as-context + tKhp keep-no-op "
-                           "zero-change; anchors.operatorSidAnchors + anchors.v8Retraction byte-frozen, "
-                           "fixed point preserved); the 23 sid-anchors still reproduce "
-                           "(verify-if-equal) and the re-pointed parts re-consume per the "
-                           "sidecar_rank law; the engine learns the operator mis-tag re-point law "
-                           "(surgical drops + M1 exemption + per-course guard)"),
-        gatewayTrace="1a1658227c0c0365",
+        operatorDirective=("T-RULE-T2-HOLDSPLIT-DURABILITY-1 (operator dispatch 'CIE tranche2 next', "
+                           "trace 1a1686d11b430639) — closes the DURABILITY RESIDUAL disclosed at "
+                           "T-RULE-T2-HOLDSPLIT-1 (v2 5edff0a8 registry apply of record): the 3 "
+                           "hold/split sid->codes verdicts (9Dxx -> 34.2.2+34.2.4 hold_resolved; Cdtk "
+                           "-> 21.1.2+36.1.2 split_resolved; pYmR -> 37.4.4+37.4.5 "
+                           "quarantine_resolved) are now captured into the resources spec-links "
+                           "sidecar of record (anchors.operatorSidAnchors 23 -> 26 rows, capture "
+                           "commit fa664a86, base 4802af4e... -> result d3b65926...) so the engine "
+                           "reproduces them at any consume re-run AND at full rebuild — consumed "
+                           "vintage ea21a72 (the mistag re-point tip) -> fa664a86 (the holdsplit "
+                           "durability capture tip; spec-links delta = the capture block only, "
+                           "audited zero-overlap); the 26 sid-anchors verify-if-equal as a BYTE "
+                           "FIXED POINT (A1 census verified 26), the 3 newly-resolved sids render "
+                           "their first real-code inline rewrites in the chem25 notes plane, item "
+                           "plane byte-stable, census floors 6784/5789/9411 + unmapped 12,294 "
+                           "unchanged"),
+        gatewayTrace="1a1686d11b430639",
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),
