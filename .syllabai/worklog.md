@@ -20399,3 +20399,19 @@ Stage Summary:
 - head bdaaf22: verify ✓ hub ✓ | gates: reviews=0/comments=0 (no holds), diff 3 files in-repo apps/hub (ugm-resources.json + import_ugm.py + ugm.bundle.test.ts), no *.java, no core/hub-repo content, no Neon/prod writes
 - pre-merge main 8d0cefb CI: verify ✓ hub ✓ (bounded); post-merge main 1db17c1 CI: verify ✓ hub ✓ (2/2 green, bounded re-check)
 - notes: 40th external mirror reset observed pre-sweep (89962a5), fetch-first restored, zero loss; #341 was lane-merged (564b732) before R0 intake; other 4 PRs static, still blocked at gate (b)
+
+---
+Task ID: T-SENECA-001 run-003 (operator ruling "chemistry-group warehouse", trace 1a16adad843081b1)
+Agent: main (zai-web session web-d0c9a0d3-6cbb-48ca-91b1-54896d1b585e)
+Task: Record the operator's placement ruling for the Seneca resource packs and the required PR #316 rework.
+
+Work Log:
+- Ruling recorded: Seneca resource packs -> CHEMISTRY-GROUP WAREHOUSE (sci-chem, T-OPS-PLANE-001 group map v1, order 2), per docs/DATA-PLANE-PLACEMENT.md (no new corpus plane in main).
+- Consequence for run-002's landed state: main-side seneca_resources (5,098 rows, igcse-chemistry-19) is a corpus plane in main -> moves out at T1: provision sci-chem warehouse on template wh-v2 (frozen wh-v1 + seneca_resources DDL), parity-verified row migration (counts by kind, distinct ids, PII rescan 0), then zero-residue main drop; no dual writes ever.
+- assignment_resources + assignment_resource_states STAY in main (assignment domain + learner model plane); FK fk_assignment_resources_resource is dropped at T1 — resource_id remains a varchar(64) id reference per seam law (no cross-project FKs); fail-closed validation already app-side (plan D5).
+- PR #316 (t-seneca-001/r5) rework = run-004 on that branch: 0010 splits (main chain keeps the two side tables, renumbered past current head-of-chain), route library reads flip to the warehouse pooler client via SYLLABAI_WAREHOUSE_URL_SCI_CHEM (0013 naming law), importer retargets, plan doc placement addendum (D9).
+- Open items: sci-chem warehouse URL awaited from operator (console-side, W1 precedent — Neon API egress still blocked sandbox-side); confirm which project holds the run-002 rows; registry seed sci-chem/wh-v2/ASSIGNED; hub Vercel env pre-flip.
+- Receipt: .syllabai/receipts/T-SENECA-001/run-003-placement-ruling.json. Bookkeeping-only (.syllabai/**), zero DB writes, zero code contact, fetch-first, no force.
+
+Stage Summary:
+- Placement ruling of record for T-SENECA-001; main-side pack library relocation to sci-chem wh-v2 is the binding plan; PR #316 merge held until run-004 rework + T1 data move.
