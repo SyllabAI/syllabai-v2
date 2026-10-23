@@ -20114,3 +20114,41 @@ Stage Summary:
 - head 75edde2: verify ✓ hub ✓ | gates: reviews=0/comments=0 (no holds), diff 24 files all in-repo apps/api+apps/hub content, no *.java, no core/hub-repo content, no Neon/prod writes
 - post-merge main ca90f90 CI: verify ✓ hub ✓ (2/2 green, bounded re-check)
 - notes: 33rd external mirror reset observed pre-sweep (89962a5), fetch-first restored, zero loss; other 4 PRs unchanged/static, still blocked at gate (b)
+
+---
+
+Task ID: T-RULE-T3-SME-COVERAGE-1 run-003 (operator dispatch "tranche-3 re-harvest", trace 1a169db74ca578c9 — the run-002 close-path step_1+step_2 fired: resources notes re-harvest + index re-derivation + sidecar re-key)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Execute the tranche-3 class-B mechanical close path on the resources side: fleet-wide freshness sweep, notes re-harvest for the grown banks, spec_point_index re-derivation, ADDITIVE sidecar re-key; honest close, zero question-plane changes.
+
+Work Log:
+- Fetch-first preflight: resources bcc36476, v2 f55f32ea-era; no sibling re-harvest claim on origin (heads + ledger tail swept). Scratch anonymous partial clone (blob:none + sparse) as the lane worktree; shared checkouts untouched.
+- SWEEP of record: fleet-wide 44-lane notes index-page census (run-002 A2 method, no pagination detected) UNION live sitemap; committed-missing-from-union = 0 on all 44 (fail-closed); sitemap LAGS the notes surface disclosed (econ-25's 84 new leaves absent from the sitemap while live). Grown: business-25 +65, econ-25 +84, econ-20 +17, cs-19 +9, lit-21 +6 = 181 leaves; shrunk 0.
+- RE-HARVEST (tool of record sme_notes_scrape.py, BASE-patched exactly-one-replacement): 5/5 lanes scraped clean (573/573 pages, 0 fetch failures, 0 removals); drift disclosed: lit-21 127 pages live-edited by SME 2026-10-21 (updated_at bumps + heading-level edits, spec_point_ids unchanged) applied per the vintage law; top-level registry patched additively over the merged 93-course dict (the naive write_registry() rebuild would have dropped rows in the sparse checkout — prevented; totals pages 8203 -> 8384).
+- INDEX RE-DERIVATION (tool of record cie_spcpt_index_harvest.py at commit-1 HEAD, FIXED_STAMP -> 2026-10-23T18:00:00Z): 44-lane fail-closed sidecar-reconciliation battery ALL GREEN; only the 5 lanes written. Universes: business-25 51->276, econ-25 16->212, econ-20 126->163, cs-19 244->282, lit-21 686->714 (+524).
+- SIDECAR RE-KEY (ADDITIVE ONLY, join law of record resolve_spcpt T1/T2 on NEW sids exclusively; later-lane blocks preserved field-exact and self-checked): 156 new sids joined, 232 refs moved pending->codes (business-25 190 across 158 parts, econ-25 26, econ-20 16); cs-19/lit-21 joins 0 (no-guess: stay pending).
+- CENSUS AFTER: class-B dangling 322 -> 61 (business-25 198->0, econ-25 43->0, econ-20 20->0; residual 61 all on non-grown lanes, identical to the before-state; cs-19's 1 dangling id not among its new pages — honest); class-A 1,203 UNCHANGED exact.
+- run-003b (same lane): the of-record harvester doc_out predates the \u2460 cross-lane-join round enrichment — the 5 re-derived indexes dropped that lineage block (resolved={} on all 5, semantic loss nil). Restored additively as \u2461 run-003 re-records (same schema, current dangling ids, gateway trace carried) — commit 3dd9bb98.
+- Pushes: transit 37 (bcc36476..600f0e45, corpus + rekey + disclosure 2026-10-23-tranche3-reharvest.json) + transit 38 (600f0e45..3dd9bb98, lineage restore). Pure FF both; three-way verified (ls-remote == GitHub API == fresh fetch, tree-delta zero). PAT rotation CRITICAL-OVERDUE reported to the operator pre-push per the law (same fingerprint through 37+38; rotation list per 8d1c390e).
+- Receipt .syllabai/receipts/CIE-INTEGRATION/cie-tranche3-reharvest-run-003-r0.json; lane scripts + reports mirrored git-protected at .syllabai/lane-artifacts/T-RULE-T3-SME-COVERAGE-1/run-003-reharvest/.
+
+Stage Summary:
+- run-003 + run-003b LANDED of record: the tranche-3 class-B close is COMPLETE on the resources side (corpus, indexes, sidecars of record at the 2026-10-23 vintage; 261/322 dangling refs closed, zero question-plane changes, zero removals). Residuals: v2 consume (run-004, this push); econ-25 serving lane; class-A disposition menu (operator); PAT rotation overdue; hung resources sync job.
+
+---
+
+Task ID: T-RULE-T3-SME-COVERAGE-1 run-004 (same dispatch trace 1a169db74ca578c9 — the step_3 consume half: engine PIN/STAMP advance at the re-harvest vintage, econ-25 deferred by the id-space guard)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Consume the re-keyed sidecars of record through the engine (T-SPECS-CIE-CONSUME-1) at resources 3dd9bb98; honest close of the consume half.
+
+Work Log:
+- FIRST RUN over 44 sidecars ABORTED fail-closed at cie-igcse-economics-25 (sidecarOnly 84 of 132 — id-space mismatch, investigate): the guard correctly refused a sidecar 84 new-note items ahead of the bundles. Investigation of record: the divergence IS the run-003 corpus growth; the committed bundles carry the post-build enrichment lineage (attach specPointIds->official codes + smeSpecPointIds + prune) — a raw rebuild+apply was VERIFIED destructive (all 44 staged raw builds diverge from committed) and is forbidden; the tranche-2 durability chain rekeys EXISTING items only. First-run staging discarded per the firstRunIncident precedent; zero repo contact.
+- RESOLUTION of record: econ-25 DEFERRED to its serving lane (bundle build + attach + prune for its 84 re-harvested notes, then the engine consume advances its pin); this run consumed the other 43 sidecars over an input-scoped shadow (spec-links copies minus the econ-25 sidecar; ZERO engine-method lines touched — the guard stands unmodified; per-run states PIN/STAMP/operatorDirective/gatewayTrace patched in the lane worktree per the standing pattern).
+- ENGINE RUN 43/43 GREEN (sheetGates 634/166 unchanged; codesFromSidecar 10,986; t2Hints 3; sheetConflictsKept 289 standing; inlineRewrites 0; sidAnchors 0/26/0 — the operator sid-anchor byte fixed point preserved; stagingHash 96fe71c5...; in-engine battery fail-closed green).
+- APPLY (CIE-REFRESH-1 mode): 258 files byte-exact across 43 lanes (bundles + content-maps; every copy byte-compared; staged maps resourcesSha/stamp asserted 3dd9bb98 / 2026-10-23T19:30:00Z; bundle-manifest officialSpine spot-asserted). econ-25 zero paths touched.
+- VALIDATOR LADDER advanced (validate_cie_bundles.ts): CIE_PIN fa664a86 -> 3dd9bb98, fa664a86 demoted to PRIOR_7 (econ-25's accepted pin); bun run ALL PASS (strict-11 2,164; archive 2,259; pure-1 bank 67 intact).
+- Pin-vintage convergence note: 39 of the 43 changed lanes carry linkage-neutral pin/stamp moves (the CIE-REFRESH-1 shape); business-25 + econ-20 carry the class-B linkage moves of record (business-25 tier census now T1_verbatim 173 incl the 50 new joins).
+- This push = transit 39 (receipts run-003 + run-004 + lane artifacts + engine per-run states + validator ladder + this entry; fetch-first, no force). PAT rotation CRITICAL-OVERDUE on the same fingerprint — rotation list per 8d1c390e.
+
+Stage Summary:
+- run-004 LANDED of record: 43/44 CIE lanes re-keyed at the re-harvest tip; the tranche-3 class-B close is CONSUMED of record on the hub for every lane whose serving state can carry it. Open follow-ups: (1) econ-25 serving lane (operator-dispatchable — bundle build + attach + prune + consume; sidecar already re-keyed resources-side); (2) class-A 1,203 + class-B residual 61 dispositions (operator menu, run-001); (3) PAT rotation CRITICAL; (4) hung resources sync job.

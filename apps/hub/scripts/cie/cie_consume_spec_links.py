@@ -92,8 +92,8 @@ RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resourc
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "fa664a86d64dd954225e0dee05a8cd742703179c"
-STAMP = "2026-10-23T11:29:18Z"
+PIN = "3dd9bb982834743f0b8c81123c8f15003c74c06a"
+STAMP = "2026-10-23T19:30:00Z"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
 RANK = {  # lower wins on the same (item, code) key
@@ -799,23 +799,26 @@ def main() -> int:
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
         lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("T-RULE-T2-HOLDSPLIT-DURABILITY-1 (operator dispatch 'CIE tranche2 next', "
-                           "trace 1a1686d11b430639) — closes the DURABILITY RESIDUAL disclosed at "
-                           "T-RULE-T2-HOLDSPLIT-1 (v2 5edff0a8 registry apply of record): the 3 "
-                           "hold/split sid->codes verdicts (9Dxx -> 34.2.2+34.2.4 hold_resolved; Cdtk "
-                           "-> 21.1.2+36.1.2 split_resolved; pYmR -> 37.4.4+37.4.5 "
-                           "quarantine_resolved) are now captured into the resources spec-links "
-                           "sidecar of record (anchors.operatorSidAnchors 23 -> 26 rows, capture "
-                           "commit fa664a86, base 4802af4e... -> result d3b65926...) so the engine "
-                           "reproduces them at any consume re-run AND at full rebuild — consumed "
-                           "vintage ea21a72 (the mistag re-point tip) -> fa664a86 (the holdsplit "
-                           "durability capture tip; spec-links delta = the capture block only, "
-                           "audited zero-overlap); the 26 sid-anchors verify-if-equal as a BYTE "
-                           "FIXED POINT (A1 census verified 26), the 3 newly-resolved sids render "
-                           "their first real-code inline rewrites in the chem25 notes plane, item "
-                           "plane byte-stable, census floors 6784/5789/9411 + unmapped 12,294 "
-                           "unchanged"),
-        gatewayTrace="1a1686d11b430639",
+        operatorDirective=("T-RULE-T3-SME-COVERAGE-1 run-004 (operator dispatch 'tranche-3 re-harvest', "
+                           "trace 1a169db74ca578c9) — consumes the tranche-3 class-B close at the "
+                           "re-harvested vintage: resources 3dd9bb98 (run-003/003b notes re-harvest 5 grown "
+                           "lanes + spec_point_index re-derivation + ADDITIVE sidecar re-key: universe "
+                           "+524, 156 sids joined T1/T2, class-B dangling 322 -> 61 with business-25 "
+                           "198->0 / econ-25 43->0 / econ-20 20->0, class-A 1203 unchanged; disclosure "
+                           "2026-10-23-tranche3-reharvest). The engine law is UNCHANGED — the newly "
+                           "joined sidecar codes flow through the standing sidecar_rank ladder "
+                           "(T1_verbatim authoritative; new T2_near entries are accepted-near "
+                           "non-authoritative hints per tier_policy); the 26 operator sid-anchors "
+                           "verify-if-equal as the standing byte fixed point; consumed vintage "
+                           "fa664a86 (holdsplit durability tip) -> 3dd9bb98 (re-harvest tip incl "
+                           "the 003b cross-lane lineage restore; consumed "
+                           "input delta = spec-links 5 re-keyed sidecars + manifest + 5 "
+                           "spec_point_index files + the notes corpus the indexes derive from; "
+                           "SME-ExamQuestion question plane zero delta; econ-25 DEFERRED to its "
+                           "serving lane — the engine id-space guard correctly refused a sidecar "
+                           "84 new-note items ahead of the bundles; this run consumes the other "
+                           "43 sidecars of record)"),
+        gatewayTrace="1a169db74ca578c9",
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),
