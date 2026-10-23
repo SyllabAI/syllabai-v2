@@ -47,6 +47,19 @@ task:
     clean; full-repo bun test proven IDENTICAL with and without run-002 by stash A/B
     (2,983 tests; 6 pre-existing suite-isolation failures in dual-run/cla posture suites,
     not run-002's; the 27 seneca-pack tests green). PR #316 updated by push.
+    PLACEMENT RULING (run-003, 2026-10-24, operator trace 1a16adad843081b1): the
+    operator ruled the Seneca resource packs land in a CHEMISTRY-GROUP WAREHOUSE
+    (sci-chem, T-OPS-PLANE-001 group map v1) per docs/DATA-PLANE-PLACEMENT.md —
+    run-002's main-side seneca_resources (5,098 rows) must move out of main at T1
+    (provision template wh-v2 = frozen wh-v1 + the pack DDL; parity-verified
+    migration; zero-residue main drop; no dual writes ever). assignment_resources
+    and assignment_resource_states stay in MAIN with fk_assignment_resources_resource
+    dropped (seam law: ids are the contract, no cross-project FKs; the fail-closed
+    existence/course validation already lives app-side per D5). Rework list + open
+    items of record: .syllabai/receipts/T-SENECA-001/run-003-placement-ruling.json
+    (filed on this branch and on origin/main bookkeeping). Code rework lands as
+    run-004 on this branch before merge; DB steps await the operator's sci-chem
+    warehouse URL + knock.
 base:
   repo: "syllabai-v2 @ 6bedab6 (origin/main at claim)"
 basis: >

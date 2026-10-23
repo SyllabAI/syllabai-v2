@@ -12957,3 +12957,18 @@ Work Log:
 - Stage Summary:
 - T-SENECA-001 IN_REVIEW (branch t-seneca-001/r5, base 6bedab6; receipt .syllabai/receipts/T-SENECA-001/run-001.json). The teacher assignment creator now has the Seneca-resources option course-linked to the 4CH1 pilot; learners get the full view→complete→auto-score→hand-in loop; roster/agenda/submissions work unchanged (packs ARE assignments rows).
 - PENDING operator input: DATABASE_URL (Neon) to apply 0010 + run the import; deploy then flips nothing (flag already lists igcse-chemistry-19 — the option appears on the pilot course immediately, kill = delete the slug).
+
+---
+Task ID: T-SENECA-001 run-003 (operator ruling "chemistry-group warehouse", trace 1a16adad843081b1)
+Agent: main (zai-web session web-d0c9a0d3-6cbb-48ca-91b1-54896d1b585e)
+Task: Record the operator placement ruling on this branch; run-004 rework list of record.
+
+Work Log:
+- Operator ruled (trace 1a16adad843081b1): Seneca resource packs -> chemistry-group warehouse (sci-chem), per docs/DATA-PLANE-PLACEMENT.md.
+- run-002's main-side seneca_resources (5,098 rows) moves at T1: wh-v2 template (frozen wh-v1 + pack DDL), parity-verified migration, zero-residue main drop, no dual writes.
+- assignment_resources + assignment_resource_states stay in main; the seneca FK drops (seam law); D5 fail-closed validation already app-side.
+- Receipt of record: .syllabai/receipts/T-SENECA-001/run-003-placement-ruling.json (also filed on origin/main bookkeeping).
+- Code rework lands as run-004 on this branch BEFORE merge; DB steps await the operator's sci-chem warehouse URL + knock.
+
+Stage Summary:
+- Merge of PR #316 held until the run-004 placement rework; bookkeeping-only commit, no code contact, fetch-first, no force.
