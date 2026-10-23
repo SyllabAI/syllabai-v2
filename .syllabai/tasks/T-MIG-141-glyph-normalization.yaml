@@ -1,9 +1,9 @@
 id: T-MIG-141
 title: "Glyph normalization of the document-chunk corpus (bank patch + intake law)"
 type: data-integrity
-status: DRAFT          # operator review -> OPEN on claim (flip at claim time, per protocol)
+status: CLAIMED        # run-001 claim 2026-10-23T11:07:29Z, operator order trace 1a1686907a2d0855; DRAFT->CLAIMED (operator ruling subsumes the OPEN step); census re-verified pre-act, receipt run-001
 priority: P1
-owner: null            # claim via board protocol; no self-assign
+owner: "r7a (Super Z, session web-da4ab8b1, chat 1f3003b6, operator order trace 1a1686907a2d0855)"  # claimed 2026-10-23, repo pin origin/main 8b4172be
 spec: docs/SPEC-T-MIG-141-GLYPH-NORMALIZATION.md
 deps:
   - T-MIG-138          # machinery-of-record: mode=backfill-sharded embedder, secrets hygiene, RPD-wall law
@@ -25,7 +25,11 @@ acceptance:
   - "Phase D: selector (embedding IS NULL OR embed_rev < 2) drained via mode=backfill-sharded; RPD-wall artifacts honest; median self-cosine >= 0.85 (hard gate); embed_rev restored to 2"
   - "Phase E: table.v1.json + Python/Java conformance green (16/16-class); ocr_batch integrated; intake canary C-intake-zero-pua pinned"
   - "C5 fidelity probes vs repo parsed/ layer: 6/6-class phrases HIT post-patch"
-execution_record: []
+execution_record:
+  - run: run-001-claim-census-reverify
+    at: "2026-10-23T11:07:29Z"
+    what: "CLAIM (operator order trace 1a1686907a2d0855) + claim-time census re-verify per next_safe_actions law. Fetch-first: origin advanced 28 (edd5a91d->8b4172be), zero lane-file collision, ff-merged. Census of record REPRODUCED EXACT under the spec join law (wired exam-paper plane): 2,765 chunks / 25,399 PUA instances / 85 distinct = spec §4.1 + Appendix A pins; census sha256 pin 5c18c01e15e918cb36a8609a2c2ae6dbdb806ad3a5738822299c3c070c8c63d2 recorded as the C9 precursor. Join-key discoveries of record: chunks FK = documents.document_row_id -> documents.id; exam_papers face documents.document_id (varchar, text-compare only — non-UUID audit ids present). DISCLOSURES: (a) unwired pdftotext-layout plane 1,223 PUA chunks (created 2026-10-20, ingested_by NULL) OUT of spec scope, operator-visibility hygiene candidate; (b) wired ctl pin tightened to 2,000 instances / 26 distinct / 418 rows (spec Appendix B said ~1,900/25 approximation mark). Phase A STARTED: 27/27 evidence locator targets resolved (locator.json). MID-CLAIM EVENT: 8d1c390e (T-OPS-NEONDB-LOSS-1 + ADR-038) documented the overnight drop/recreate of prod neondb; this run's 11:07Z census found the estate PRESENT reproducing the Oct-22 baseline pins EXACTLY (parity corroboration, restore-agent owns closure) — LAW: T-MIG-141 Phase B/C/D DB-writing legs GATED on NEON-DB-LOSS recovery closure; Phase A proceeds (repo-side)."
+    receipt: .syllabai/receipts/T-MIG-141/run-001-claim-census-reverify.json
 next_safe_actions:
   - "claim the card; fetch-first; re-verify the census of record (lane scripts t_neon_quality*.py re-run) before any act"
   - "Phase A: extract OEQ normalize_pua base table; run the rendered-evidence pass (150 dpi, CROP-REVIEW pattern); build tools/glyph-normalization/table.v1.json"
