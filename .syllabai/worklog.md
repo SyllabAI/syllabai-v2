@@ -20165,3 +20165,19 @@ Stage Summary:
 - Neon transfer law verified fresh (docs/introduction/plans + faqs): network transfer PER PROJECT (Free 5 GB/mo/project, shared across that project's products only) — fleet multiplies allowance; only storage is account-pooled (20 GB). Recorded in run-002 receipt.
 - Secrets: W1 pooler password transited chat -> rotation list (now 2x ghp_, napi_, npg_ main, npg_ W1 + prior vcp_/LLM keys). Env-only use, never persisted.
 - NEXT GATES: operator rules W1 group; COW branch of main console-side -> BRANCH_DB_URL (dryrun-4ma1.mjs is branch-only by law); dryrun (copy 8,202 chunks + parity + two-step seam + zero-residue rehearsal); T1 cut-over per DATA-PLANE-PLACEMENT.md §5.
+
+---
+Task ID: UIUX-TIER-B run-003 re-transcription (operator authorization trace 1a169da991badb4d "authorize Tier-B run-003 re-transcription")
+Agent: R0-integrator (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Fetch-first: origin/main == local 2f073e1c; run-002 receipt 32749ea1 residual_census confirmed as the filed run-003 program (~165 fragments, "filed for operator, not self-granted").
+- Regenerated the debris census of record from the served bundle (classes calibrated to the receipt counts: 10n 23/23 exact; roster 7 = 2023-11-02 x3 + 2026-06-01r + 2026-06-02 x3; stdform 3 strings/2 parts; empty-grid axis 1).
+- Built the eyes-on stack: 59 ms.pdf anonymous-fetched from syllabai-pastpapers main (URL law from r0_download_qps.py), pdftotext + PyMuPDF word/bar geometry (fraction-bar reconstruction), focused per-candidate alignment (222 records), then high-zoom visual crops for the marquee stacks + QP stems.
+- QP-of-record verifications: 2025-06-01 q8(b) = (32q^20 r^5)^(3/5); 2025-11-02 q3 = 3p-2>4 / 5(2-q)<30 / y>1, x+y<5, y<2x+3; 2018-06-01 q8 = 4x+(5.2x10^5)=(7.1x10^7)-12x; 2018-06-01R q3 Delhi 1.7x10^7/1.5x10^3; rosters 2023-11-02 (E 6..21/A 7..15/B 12..20), 2026-06-01R (E 1..10/A 1,3,5,7,9/B 3,6,9), 2026-06-02 (E 1..15/A 6..12/B odd/C factors of 30).
+- MS-of-record marquee: 2019-06-01 q18 full re-transcription (P1-P4, 3/9x9/11 + accepts + 1-(3/9x2/11+2/9x4/11) + 85/99) read from the MS render; 2018-06-01 q8 M2 = 4.41/4.405/4.4 x10^6 (superscript symbol-font law identified: superscript digits extract as 'n'/merged); 2020-06-01 q22 = 5x5^(10n+6)/5^(10n+7)/Allow 5^(4n+4).
+- Applied 72 verified fixes across 57 parts / 36 sets (manifest note appended per lane law).
+
+Stage Summary:
+- Gates: structure 65/1270/2412/6500 unchanged; KaTeX gate 72/72, 0 errors, 0 raw-$ leaks; scrub-assert clean; single-line compact JSON kept; no credentials (anonymous mirror), fetch-first, no force.
+- Disclosed remainder filed for operator (run-004 candidates): 159 deferred fragments / 52 sets (incl. 2026-06-01R q22 stack, 2021-06-02 q11 sqrt3 family, OCR-sandwich 2020-01-*), the 2019-06-02 UFFFD sub-lane (11 parts), and the ANNEX finding that the student-visible multi-line problemMd flatten family exceeds the filed 13 (2025-06-01/2025-11-02 whole-stem class) — quantification + scope decision for operator, not self-granted.
