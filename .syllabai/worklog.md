@@ -20358,3 +20358,21 @@ Stage Summary:
 - The cut-over is EXECUTED UP TO THE DEPLOY: rehearsal green, 0013 live, envs live (incl. the pooler remedy), bundle proven 8/8 through the new env — the ONLY missing leg is the vercel CREATE, blocked by the Hobby daily cap.
 - Revert paths stay live at every rung: master switch off (redeploy), registry→ASSIGNED (instant), DATABASE_URL back to direct (redeploy).
 - Operator levers: (a) pause hub console-side or upgrade the plan, (b) order the re-fire when the window opens, (c) the SERVING flip order after the deploy verifies.
+
+---
+Task ID: T-RULE-T3-CORPUSGATE-ADJ-1 run-002 (operator order "extend the instrument to the 6-span residue wave", trace 1a16a8b536bf1b95)
+Agent: main (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Extend the standing speech->KaTeX instrument to the 6-span gate-clean residue wave disclosed at run-001 residualDisclosure.gateCleanSpeechResidue.
+
+Work Log:
+- Race-guard first: origin/main had moved e87fa6a3 -> 7f0c15f3 (14 upstream commits — T-MIG-141 run-006, PR #342 hosting kit, T-OPS run-006 T1 cut-over, PR #341); local main ff-merged fetch-first BEFORE any work; econ-25 verified untouched in between and the 6-span census reproduced exactly on the new tip.
+- Referent established from of-record evidence only: "the instrument" = apps/hub/scripts/cie/econ25_speech_transpile.ts (run-001); "the 6-span residue wave" = the watchlist roster notes [16]x2 / [42] / [51]x2 / [81] (receipt run-001 residualDisclosure; the run-001 'EUR 190' gloss vs the served euro-sign byte disclosed).
+- Evidence probes BEFORE the instrument was touched: KaTeX glyph probe (\pounds OK, \text{€} OK, \texteuro UNDEFINED, all 5 predicted full conversions parse) + untracked ladder probe run in-repo then deleted (canonical copy outside the repo) reproducing census 6 and 11/11 conversions.
+- DEFECT FOUND + REPAIRED: the ladder's \b-word rules (speech-math GREEK loop + PHRASES 'times') re-escape already-built macros — served '\\Delta'/'\\times' PARSE with KaTeX (why all run-001 gates stayed green) but RENDER italic 'Delta'/'times'; 39 served occurrences (codepoint-audited: notes 27 + questions 12; an earlier bash-quoted 41 was escaping noise) collapsed by an idempotent repair leg with per-string $..$ KaTeX re-verification + macroNorm guard on all new conversions.
+- Instrument v2 landed in place: residue-class lane (census-exact, --expect-residue 6 pin, residue-after-zero), macro de-normalization + repair leg, collapse-rung input split (base pre-map — prevents the collapse table mangling pre-built \times into '\*' and keeps currency glyphs literal), 4 evidence-derived KaTeX-probed token additions (en-dash->minus 2 inst / £ -> \pounds 4 inst / € -> \text{€} 1 inst / billion -> \text{billion} 1 inst, per-instance audited).
+- APPLY fail-closed: census 6 -> 0, 11/11 conversions KaTeX-verified (speechToTexSafe 8 + genericChain 3, ladder order untouched; prose definition lines serve as \text-wrapped genericChain math per the of-record rung precedence), 0 unfixed; post-write disk re-read + triple rescan (gate 0 / residue 0 / doubled-macro 0) on all three files.
+- Battery ALL GREEN: verify_corpus_23a CORPUS GATE PASSED (all counters 0) / verify_flashcard_sync_courses exit 0 / validate_cie_bundles PASSED (pure-1 bank 67) / bunx tsc --noEmit exit 0 / bun run build exit 0. Byte scope: notes.json 8 lines + questions.json 3 lines; flashcards byte-identical; zero registry/map/manifest contact (tranche-2 anchors + run-007 roster re-pin untouched).
+- Receipt .syllabai/receipts/CIE-INTEGRATION/corpusgate-adjudication-transpile-run-002-r0.json; report at work/econ25_transpile_report_run2.json (11 fixes + 39 macro repairs + roster; run-001 report preserved untouched).
+
+Stage Summary:
+- The 6-span residue wave EXECUTED of record: watchlist item discharged (residue census 6 -> 0, same-family grammar now KaTeX math), plus a byte-proven of-record rendering defect repaired at its root (39 doubled-macro occurrences -> real \Delta/\times glyphs). Watchlist remaining: substrate-side harvest fix (operator-scoped), 4-lane serving wave (operator-scoped), class-A 1,203 + recordless 7 (operator menu), PAT rotation CRITICAL-OVERDUE. LANE: IDLE.
