@@ -1881,3 +1881,35 @@ export const studyPlans = pgTable("study_plans", {
                 }).onDelete("cascade"),
         check("ck_study_plan_minutes", sql`((weekday_minutes >= 0) AND (weekend_minutes >= 0))`),
 ]);
+
+// ── warehouse_registry (T-OPS-PLANE-001 run-004, migration 0013) ────────────
+// ADR-038 §3.3: "a static course_slug → warehouse map lives in main". One
+// row per course-group warehouse project of the ADR-038 fleet. The URL
+// itself is NEVER stored (credentials env-only, DATA-PLANE-PLACEMENT §4.6) —
+// warehouse_url_env names the env var that carries the pooler URL. The
+// serving flip is a DATA change: status ASSIGNED → SERVING routes covered
+// retrieval scopes to the warehouse plane (revert = back to ASSIGNED);
+// RETIRED = the group moved (a receipted migration, never a silent re-shard
+// per ADR-038 §6). subject_id is the subject of record pinned at
+// assignment (run-003: W1 = maths-4ma1); a future curriculum version that
+// introduces a NEW subject id is deliberately NOT auto-covered — coverage
+// degrades to the main plane until the operator pins it (conservative by
+// construction).
+
+export const warehouseRegistry = pgTable("warehouse_registry", {
+        courseGroup: varchar("course_group", { length: 60 }).primaryKey(),
+        subjectId: uuid("subject_id").notNull(),
+        warehouseUrlEnv: varchar("warehouse_url_env", { length: 80 }).notNull(),
+        status: varchar("status", { length: 20 }).notNull().default("ASSIGNED"),
+        templateVersion: varchar("template_version", { length: 20 }).notNull(),
+        assignedAt: timestamp("assigned_at", { withTimezone: true, mode: 'string' }).notNull(),
+        servingSince: timestamp("serving_since", { withTimezone: true, mode: 'string' }),
+}, (table) => [
+        index("ix_warehouse_registry_subject").using("btree", table.subjectId.asc().nullsLast().op("uuid_ops")),
+        check("ck_warehouse_registry_status", sql`(status)::text = ANY ((ARRAY['ASSIGNED'::character varying, 'SERVING'::character varying, 'RETIRED'::character varying])::text[])`),
+        foreignKey({
+                        columns: [table.subjectId],
+                        foreignColumns: [subjects.id],
+                        name: "warehouse_registry_subject_id_fkey"
+                }),
+]);

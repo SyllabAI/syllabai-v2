@@ -74,6 +74,7 @@ import {
   type LlmProvider,
 } from "../services/tutor";
 import { resolveEmbeddingProvider } from "../services/content/retrieval";
+import { buildWarehouseServingSeam } from "../services/warehouse/serving";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../services/identity/users";
 import { defaultClock } from "../services/selfmark";
@@ -352,7 +353,7 @@ export function buildClaRouters(
     resolver,
     registryDeps: { sql, clock: defaultClock, learnerModel },
     learnerModel,
-    vectorRetriever: buildSqlVectorArm(sql, resolveEmbeddingProvider(env)),
+    vectorRetriever: buildSqlVectorArm(sql, resolveEmbeddingProvider(env), buildWarehouseServingSeam(sql, env)),
     generator: buildGroundedTutorGenerator(chain === null ? dormantClaLlm : chainAsLlmProvider(chain)),
     // T-MIG-124 Phase 2: the frozen ClaInteractionEvent listener — per-topic
     // engagement appends (V25 classifier, the surface identity triple);
