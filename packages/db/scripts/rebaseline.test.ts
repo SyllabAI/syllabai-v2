@@ -261,20 +261,24 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // uniqueConstraints; the PK auto-index is not counted — the mpa precedent)
   // on top of the DC-5 baseline -> 79/747/107/76/128
   // (docs/STUDY-PLAN-BUILDER-PLAN.md).
-  test("79/747/107/76/128 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // T-OPS-PLANE-001 run-004 (0013_warehouse_registry) adds 1 table,
+  // 7 columns, 1 index, 1 fk, 1 check on top of the study-plan baseline
+  // -> 80/754/108/77/129 (ADR-038 fleet map + the serving flip law).
+  test("80/754/108/77/129 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 79/79");
-    expect(v.inventory).toContain("columns 747");
-    expect(v.inventory).toContain("indexes 107");
-    expect(v.inventory).toContain("fks 76");
-    expect(v.inventory).toContain("checks 128");
+    expect(v.inventory).toContain("tables 80/80");
+    expect(v.inventory).toContain("columns 754");
+    expect(v.inventory).toContain("indexes 108");
+    expect(v.inventory).toContain("fks 77");
+    expect(v.inventory).toContain("checks 129");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(79);
+    expect(run.size).toBe(80);
+    expect(run.has("public.warehouse_registry")).toBe(true);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);

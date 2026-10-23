@@ -63,11 +63,13 @@ import {
   diagnoseEmpty,
   embedDocument,
   resolveEmbeddingProvider,
+  toChunkHit,
   type ChunkHit,
   type EmbeddingProvider,
   type EmbeddingResult,
   type SearchEmptyDiagnostics,
 } from "./retrieval";
+import { buildWarehouseServingSeam } from "../warehouse/serving";
 import { documentPageText, toCitationView, paperRefOf } from "./reader";
 import { toDocumentSummary } from "./review";
 import {
@@ -150,6 +152,10 @@ export function buildContentApp(
   const scope = new CurriculumScopeResolver(sql);
   const provider = resolveEmbeddingProvider(env);
   const writes = new ContentReviewWriteService({ sql, clock });
+  // T-OPS-PLANE-001 run-004: the warehouse serving seam (ADR-038 §3.3).
+  // null unless SYLLABAI_WAREHOUSE_SERVING=on — the verbatim main-plane
+  // search below is then the ONLY path, byte-identical to the pre-flip law.
+  const serving = buildWarehouseServingSeam(sql, env);
 
   const app: ContentReadApp = {
     documents,
@@ -187,8 +193,18 @@ export function buildContentApp(
       }
       return provider;
     },
-    searchServingEligible: (vector, kind, s, limit) =>
-      searchServingEligible(sql, vector, kind, s.curriculumVersionId, limit),
+    searchServingEligible: async (vector, kind, s, limit) => {
+      if (serving != null) {
+        const rows = await serving.searchRows({
+          vector,
+          kind: kind ?? null,
+          curriculumVersionId: s.curriculumVersionId,
+          limit,
+        });
+        if (rows != null) return rows.map(toChunkHit);
+      }
+      return searchServingEligible(sql, vector, kind, s.curriculumVersionId, limit);
+    },
     diagnoseEmpty: (kind, s) => diagnoseEmpty(sql, kind, s.curriculumVersionId),
     embedDocument: (id, p) => embedDocument(sql, id, p, (rowId) => documents.findById(rowId)),
     pageText: (doc, page) => documentPageText(doc.canonicalJson, page),

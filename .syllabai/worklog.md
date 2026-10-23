@@ -20279,7 +20279,47 @@ Work Log:
 
 Stage Summary:
 - run-007 LANDED of record: the four-stage re-harvest order closed honestly — stages 1-3 evidenced no-ops at the current vintage (zero growth fleet-wide, discovery complete fail-closed), stage 4 = the quiescent pin-vintage convergence at 6dc1f0a2 with engine idempotence re-proven (every counter byte-equal to run-006); the standing CI red is triaged first-hand: the roster leg FIXED (floors re-pinned, standing law), the corpus-gate leg = operator menu (econ-25 speech-alt class, provenance closed). Open: the corpus-gate disposition (operator), the 4-lane serving wave (operator-scoped), class-A 1,203 + recordless 7 (operator menu), PAT rotation, the hung Drive-sync burst class.
+Task ID: T-OPS-PLANE-001 (run-004, Task 18)
+Agent: R0-ops-plane (Super Z, zai-web session web-590847c1, trace 1a16a2331cc7cd45)
+Task: SERVING FLIP BUILD — the ADR-038 §3.3/§5.5 two-step retrieval seam wired into all three serving surfaces behind a default-off flip law + registry migration 0013 + live evidence.
 
+Work Log:
+- Read the law chain first: DATA-PLANE-PLACEMENT §4 (ids are the contract, batched hydration, env-only credentials), ADR-038 §3.3 (map lives in MAIN; flips warehouse-first per course behind a flag), template.sql (the seam query of record; warehouses receive rows regardless of validation state → eligibility authority stays on main).
+- Built apps/api/src/services/warehouse/serving.ts: master switch SYLLABAI_WAREHOUSE_SERVING (exact 'on' or NULL seam), registry read on main (30s TTL, absent-table = not provisioned = main path), coverage law (EVERY subject SERVING + resolvable URL env, else whole scope stays main — conservative v1, no mixed-scope fan-out), step 1 per covered group (course_group filter, kind folded as TEXT, cosine order, limit×OVERFETCH default 3), step 2 ONE batched main hydrate with the VERBATIM searchServingEligible predicate + ids/cv as BOUND params, cosine order restored, trimmed. Fail-loud: SERVING row with blank URL env THROWS; transport failures PROPAGATE.
+- vector-arm.ts: extracted the rows→evidence pipeline VERBATIM into exported rowsToEvidence (cosine floor, doc_version, spec_codes, 133d page-truth translation — plane-agnostic; book registry stays on main); buildSqlVectorArm gains optional serving param; verbatim main SQL untouched. content/index.ts routes through the seam; toChunkHit exported single-source. tutor/cla routes pass the seam at the composition sites.
+- Migration 0013_warehouse_registry (drizzle-kit generate + descriptive rename + seed INSERT: maths-4ma1/763dfe2d/SYLLABAI_WAREHOUSE_URL_MATHS_4MA1/ASSIGNED/wh-v1 — the URL env NAME only, never the URL), schema.ts hand-add per 0012 convention, 0000 union-baseline fold, journal idx 13, rebaseline pins 79/747/107/76/128 → 80/754/108/77/129 (verify PASS 0 drifts).
+- LATENT BUG REPAIRED + disclosed: retrieval.ts's kind filter rode a ${} bind slot → every kind-filtered content search (route parses ?kind=) rendered $n in SQL text position = guaranteed 500; the header always claimed text-fold. Fixed in retrieval.ts (both searchServingEligible + diagnoseEmpty) and in my own seam step-1 before it ever served; SQL TEXT unchanged, transport only; retrieval-fold.test.ts pins it.
+- Tests: 15 new pins (serving.test.ts 9, vector-arm-serving.test.ts 6) + 3 fold pins; full suite 2879 pass / 13 skip / 1 fail — the 1 (cie-phase4-roster) verified PRE-EXISTING via stash on clean tip (sme lane's, disclosed); typecheck ×4 clean; db:check fine.
+- Live probe (read-only, session-level READ ONLY both planes, zero writes, self-retrieval seed = chunk 87c7fab9's own vector): PATH A main plane 640.7 ms top-12 seed-is-top; PATH B seam = W1 HNSW 105.2 ms (36 candidates, seed rank 1) + main hydrate 429.8 ms (4/36 dropped by the main-side eligibility predicate — the overfetch margin working); AGREEMENT IDENTICAL: 12/12 overlap, 12/12 rank, max score delta 0. Registry state on main = ABSENT (0013 application is a T1 step; probe injected the run-003 assignment in code — the rig path).
+- Receipts run-004-serving-flip-build-r0.json + run-004-serving-flip-probe-r0.json; card execution_record UPDATE (4); fence deviations (db schema + api serving files) disclosed in the receipt with the ADR-038 §3.3 justification.
+
+Stage Summary:
+- The flip is now a DATA change + one env var: UPDATE warehouse_registry SET status='SERVING' + SYLLABAI_WAREHOUSE_SERVING=on + the URL env. Revert = switch off (works without DB access) or status back to ASSIGNED. Default-off everywhere: with no env, every surface serves byte-identical to the pre-flip law.
+- Live proof the seam serves the IDENTICAL top-12 (ids, order, scores) as the main plane on the 4MA1 estate; cross-region cost measured (105 + 430 ms from sandbox; region consolidation is the operator's latency lever, correctness unaffected).
+- Zero main writes; estate untouched; the rebuild lane's in-flight mark-plane writes unaffected.
+- T1 remaining: COW branch + zero-residue rehearsal (dryrun-4ma1 run-ready), operator order, apply 0013 + flip sequence + probe re-run, DROP-AT-CUT-OVER trims.
+
+Task ID: T-OPS-PLANE-001 (run-005, Task 19)
+Agent: R0-ops-plane (Super Z, zai-web session web-590847c1, trace 1a16a489670c0fe5)
+Task: VERCEL SERVING-PLANE READINESS — live API verification of the owed multi-DB question (trace 1a16a1c4e5b6e1b9) against the operator-supplied token, folded into the T1 cut-over sequence.
+
+Work Log:
+- Operator supplied three in-chat tokens (GitHub PAT, Vercel vcp_..., Neon napi_...); ALL logged volatile-only, Vercel token ADDED to the rotation list (four token families now chat-transited, rotation CRITICAL-OVERDUE).
+- Egress map updated: api.vercel.com REACHABLE from this sandbox; api.neon.tech wall unchanged (DNS fail, curl exit 6, re-tested) — console-side/CI provisioning paths of record stand.
+- LIVE VERIFICATION (receipt embeds HTTP codes + ids, zero secrets): GET /v2/user 200 (user syllabai-1403, team team_ULL54qkhzKBmnKrpO6BD4mYX, limited token); /v9/projects 200 (7 projects); both candidate projects fetched in full + env inventories + deployment lists.
+- ANSWER OF RECORD (question 1a16a1c4e5b6e1b9): YES — Vercel handles N databases as N env vars + N pooler endpoints, platform-verified: ZERO configurationId envs on the serving project (Neon marketplace integration NOT in use, DATABASE_URL is a plain manual env) — the env-var-per-warehouse 0013 law needs no integration and multiplies unchanged.
+- Serving project identified: syllabai-v2 (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ), serverlessFunctionRegion iad1 (main us-east-2 ~10 ms; W1 ap-southeast-1 ~200 ms per seam step — latency lever, correctness unaffected, run-004 vercel_note confirmed).
+- HAZARD DECRYPT-VERIFIED: deployed DATABASE_URL = DIRECT endpoint (ep-ancient-cake-a52e4kfd.us-east-2.aws.neon.tech, NO -pooler, NO pgbouncer, NO channel_binding) — serverless burst exhaustion risk, house pooler law violated in prod; remedy folded into T1 step 3 (same-deploy swap to the pooler host). Password NOT recorded anywhere.
+- FLIP ENV STATE: SYLLABAI_WAREHOUSE_SERVING + SYLLABAI_WAREHOUSE_URL_MATHS_4MA1 both ABSENT = correct default-off posture.
+- DEPLOY-PATH LAW: syllabai-v2's last 3 production deploys carry NO git meta (CLI/API deploy, NOT auto-deploy); latest READY deploy 10:59:16Z PREDATES the run-004 merge 19:36:38Z — flip code NOT yet deployed; the cut-over MUST include an explicit deploy step (env changes apply to new deployments only). Contrast: hub auto-deploys from git (fired 30 s after merge).
+- HUB RED FILED: BUILD_UTILS_SPAWN_1 'bun run build' exited 1 on sha 3c2982cd AND on the prior sha — pre-existing hub-lane red (matches sme lane's disclosed CI triage); hub has NO database envs, unrelated to the flip.
+- DB-SIDE READINESS PROBE (flip-readiness.mjs, session READ ONLY, max:1, zero writes): main warehouse_registry ABSENT (0013 unapplied, exactly as run-004 declared); W1 intact (meta wh-v1/maths-4ma1/fingerprint plane:88706faa…/migrated_at 18:44:28Z, 8,202 chunks).
+- Receipt run-005-vercel-serving-plane-readiness-r0.json with the answer of record, the five-step T1 cut-over sequence with Vercel steps folded in, hazards, residuals.
+
+Stage Summary:
+- The owed Vercel question is CLOSED with live evidence: YES, N databases = N env vars + N pooler endpoints; no marketplace integration needed; three platform-law items (pooler endpoints, explicit deploy step, region RTT) now embedded in the T1 sequence.
+- Prod hazard found and filed (DATABASE_URL direct endpoint) with a same-deploy remedy — no action taken by this lane (zero main writes, zero platform writes beyond read-only API GETs).
+- T1 cut-over is now fully specified end-to-end: rehearsal branch -> 0013 + SERVING -> Vercel envs (flip switch + W1 URL + pooler swap) -> explicit deploy -> probe re-run + tripwire watch.
 ---
 Task ID: T-RULE-T3-CORPUSGATE-ADJ-1 run-001 (operator order "adjudicate the corpus gate menu", trace 1a16a4005954662d)
 Agent: main (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)

@@ -101,6 +101,26 @@ task:
     +198/+656 in 19 min = rebuild IN FLIGHT (receipt run-009-r4; writer
     lane owes receipts). T1 REMAINING: branch rehearsal + operator order +
     serving flip.
+    UPDATE 2026-10-24 (4): SERVING FLIP BUILT (operator 'go on the serving
+    flip build', trace 1a16a2331cc7cd45) — receipt
+    run-004-serving-flip-build-r0 + live probe run-004-serving-flip-probe-r0
+    (verdict IDENTICAL: 12/12 overlap, 12/12 rank, score delta 0 vs the main
+    plane; W1 step-1 105 ms + main hydrate 430 ms read-only). The two-step
+    seam (ADR-038 §3.3/§5.5) is wired into ALL THREE serving surfaces
+    (tutor arm, cla arm, content search) behind a default-off flip law:
+    master env SYLLABAI_WAREHOUSE_SERVING (exact 'on') + per-group registry
+    status on main. Migration 0013_warehouse_registry lands the §3.3
+    map-in-main law (ASSIGNED seed for maths-4ma1; URL env NAME only —
+    credentials env-only). NOT APPLIED to main (T1 step); zero main writes
+    from this lane. LATENT BUG REPAIRED + disclosed: the content search's
+    kind filter rode a ${} bind slot -> every kind-filtered search was a
+    guaranteed 500; fold moved to SQL text (retrieval-fold.test.ts pins).
+    Fence deviations (db schema/migration + api serving files) disclosed in
+    the receipt with justification. Full suite 2879 pass / 1 fail
+    PRE-EXISTING on clean tip (cie-phase4-roster, sme lane, verified by
+    stash). T1 REMAINING: COW branch + zero-residue rehearsal (dryrun-4ma1
+    run-ready), operator order, apply 0013 + flip sequence + probe re-run,
+    serving-plane cut, DROP-AT-CUT-OVER trims.
 base:
   repo: "syllabai-v2 @ 7144327 (ratification branch basis)"
 basis: >

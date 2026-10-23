@@ -67,6 +67,7 @@ import {
 } from "../services/tutor";
 import { CurriculumScopeResolver } from "../services/content/scope";
 import { resolveEmbeddingProvider } from "../services/content/retrieval";
+import { buildWarehouseServingSeam } from "../services/warehouse/serving";
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "../services/identity/users";
 import { defaultClock } from "../services/selfmark";
@@ -440,7 +441,7 @@ export function buildTutorRouters(
   const llm = chain === null ? dormantTutorLlm : chainAsLlmProvider(chain);
   const module = buildTutorModule(sql, defaultClock, {
     scopes: new CurriculumScopeResolver(sql),
-    vectorRetriever: buildSqlVectorArm(sql, resolveEmbeddingProvider(env)),
+    vectorRetriever: buildSqlVectorArm(sql, resolveEmbeddingProvider(env), buildWarehouseServingSeam(sql, env)),
     paperQuestionResolver: buildPaperQuestionResolver(sql),
     // run-013: the session paper pin (advisory follow-up anchor) rides the
     // same sql seam — a pin that cannot resolve a VALIDATED in-scope paper

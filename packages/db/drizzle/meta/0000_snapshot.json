@@ -9831,6 +9831,98 @@
         }
       },
       "isRLSEnabled": false
+    },
+    "public.warehouse_registry": {
+      "name": "warehouse_registry",
+      "schema": "",
+      "columns": {
+        "course_group": {
+          "name": "course_group",
+          "type": "varchar(60)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "warehouse_url_env": {
+          "name": "warehouse_url_env",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'ASSIGNED'"
+        },
+        "template_version": {
+          "name": "template_version",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "assigned_at": {
+          "name": "assigned_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "serving_since": {
+          "name": "serving_since",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "ix_warehouse_registry_subject": {
+          "name": "ix_warehouse_registry_subject",
+          "columns": [
+            {
+              "expression": "subject_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "warehouse_registry_subject_id_fkey": {
+          "name": "warehouse_registry_subject_id_fkey",
+          "tableFrom": "warehouse_registry",
+          "tableTo": "subjects",
+          "columnsFrom": [
+            "subject_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ck_warehouse_registry_status": {
+          "name": "ck_warehouse_registry_status",
+          "value": "(status)::text = ANY ((ARRAY['ASSIGNED'::character varying, 'SERVING'::character varying, 'RETIRED'::character varying])::text[])"
+        }
+      },
+      "isRLSEnabled": false
     }
   },
   "enums": {},

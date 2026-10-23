@@ -174,9 +174,23 @@ function toVectorLiteral(vector: number[]): string {
   return `[${vector.join(",")}]`;
 }
 
-/** The kind filter folds into the SQL text (never an untyped NULL bind). */
+/** The kind filter folds into the SQL text — never an untyped NULL bind. */
 function kindFilter(kind: DocumentKind | null | undefined): string {
   return kind == null ? "" : `\n  and d.kind = '${kind}'`;
+}
+
+/**
+ * Tagged-template from hand-built parts (the ${} of a tagged template BINDS
+ * a value — a string in a ${} slot becomes $n in SQL-text position and
+ * Postgres rejects it). LATENT-BUG REPAIR disclosed in T-OPS-PLANE-001
+ * run-004: the kind fold below rode a ${filter} slot, so ANY kind-filtered
+ * content search (GET /documents/search?kind=…) rendered $n between the
+ * scope EXISTS and the ORDER BY — a guaranteed 500. The ported SQL text is
+ * unchanged; only the fold's transport moves from a bound param to the
+ * static text, exactly what this file's own comment always claimed.
+ */
+function tagged(parts: string[]): TemplateStringsArray {
+  return Object.assign([...parts], { raw: [...parts] }) as unknown as TemplateStringsArray;
 }
 
 /**
@@ -254,7 +268,10 @@ export async function embedDocument(
   };
 }
 
-function toChunkHit(r: Row): ChunkHit {
+/** Exported for the warehouse serving seam (run-004): the seam returns the
+ *  superset row shape and the content surface projects ChunkHit from it —
+ *  single-source mapping, zero field drift between planes. */
+export function toChunkHit(r: Row): ChunkHit {
   let elementIds: string[] = [];
   const raw = r.element_ids;
   if (typeof raw === "string" && raw.trim() !== "") {
@@ -302,29 +319,46 @@ export async function searchServingEligible(
   }
   const literal = toVectorLiteral(queryVector);
   const filter = kindFilter(kind);
-  const rows: Row[] = await sql`
-    select c.id, c.document_row_id, d.doc_version, d.document_id, d.kind, c.chunk_index,
+  // bind order of the verbatim port preserved: literal, embed_rev, cv ×2,
+  // literal, limit — the fold is TEXT inside parts[4], never a param
+  const rows: Row[] = await sql(
+    tagged([
+      `select c.id, c.document_row_id, d.doc_version, d.document_id, d.kind, c.chunk_index,
            c.content, c.page_start, c.page_end, c.element_ids,
-           c.embedding_model, 1 - (c.embedding <=> ${literal}::vector) as score
+           c.embedding_model, 1 - (c.embedding <=> `,
+      `::vector) as score
     from document_chunks c
     join documents d on d.id = c.document_row_id
     where c.embedding is not null
-      and c.embed_rev = ${CURRENT_EMBED_REV}
+      and c.embed_rev = `,
+      `
       and (
             exists (
                   select 1 from exam_papers p
                   join subjects s on s.id = p.subject_id
-                  where s.curriculum_version_id = ${curriculumVersionId}
+                  where s.curriculum_version_id = `,
+      `
                     and p.validation_state = 'VALIDATED'
                     and (p.question_paper_document_id = d.document_id
                       or p.mark_scheme_document_id = d.document_id))
          or exists (
                   select 1 from subjects s2
-                  where s2.curriculum_version_id = ${curriculumVersionId}
+                  where s2.curriculum_version_id = `,
+      `
                     and s2.id = c.subject_id
                     and d.validation_state = 'VALIDATED'))${filter}
-    order by c.embedding <=> ${literal}::vector
-    limit ${limit}`;
+    order by c.embedding <=> `,
+      `::vector
+    limit `,
+      "",
+    ]),
+    literal,
+    CURRENT_EMBED_REV,
+    curriculumVersionId,
+    curriculumVersionId,
+    literal,
+    limit,
+  );
   return rows.map(toChunkHit);
 }
 
@@ -345,43 +379,64 @@ export async function diagnoseEmpty(
     );
   }
   const filter = kindFilter(kind);
-  const funnelRows: Row[] = await sql`
-    select count(*) as chunks_in_scope,
+  // fold as TEXT (the tagged() disclosure above applies here too)
+  const funnelRows: Row[] = await sql(
+    tagged([
+      `select count(*) as chunks_in_scope,
            count(*) filter (where c.embedding is not null) as embedded_in_scope,
            count(*) filter (where c.embedding is not null
-                              and c.embed_rev = ${CURRENT_EMBED_REV}) as in_scope_at_rev
+                              and c.embed_rev = `,
+      `) as in_scope_at_rev
     from document_chunks c
     join documents d on d.id = c.document_row_id
     where exists (
               select 1 from exam_papers p
               join subjects s on s.id = p.subject_id
-              where s.curriculum_version_id = ${curriculumVersionId}
+              where s.curriculum_version_id = `,
+      `
                 and (p.question_paper_document_id = d.document_id
                   or p.mark_scheme_document_id = d.document_id))
          or exists (
               select 1 from subjects s2
-              where s2.curriculum_version_id = ${curriculumVersionId}
-                and s2.id = c.subject_id)${filter}`;
+              where s2.curriculum_version_id = `,
+      `
+                and s2.id = c.subject_id)${filter}`,
+      "",
+    ]),
+    CURRENT_EMBED_REV,
+    curriculumVersionId,
+    curriculumVersionId,
+  );
   const funnel = funnelRows[0]!;
-  const eligibleRows: Row[] = await sql`
-    select count(*) as eligible
+  const eligibleRows: Row[] = await sql(
+    tagged([
+      `select count(*) as eligible
     from document_chunks c
     join documents d on d.id = c.document_row_id
     where c.embedding is not null
-      and c.embed_rev = ${CURRENT_EMBED_REV}
+      and c.embed_rev = `,
+      `
       and (
             exists (
                   select 1 from exam_papers p
                   join subjects s on s.id = p.subject_id
-                  where s.curriculum_version_id = ${curriculumVersionId}
+                  where s.curriculum_version_id = `,
+      `
                     and p.validation_state = 'VALIDATED'
                     and (p.question_paper_document_id = d.document_id
                       or p.mark_scheme_document_id = d.document_id))
          or exists (
                   select 1 from subjects s2
-                  where s2.curriculum_version_id = ${curriculumVersionId}
+                  where s2.curriculum_version_id = `,
+      `
                     and s2.id = c.subject_id
-                    and d.validation_state = 'VALIDATED'))${filter}`;
+                    and d.validation_state = 'VALIDATED'))${filter}`,
+      "",
+    ]),
+    CURRENT_EMBED_REV,
+    curriculumVersionId,
+    curriculumVersionId,
+  );
   const diagnostics: SearchEmptyDiagnostics = {
     chunksInScope: Number(funnel.chunks_in_scope ?? 0),
     embeddedInScope: Number(funnel.embedded_in_scope ?? 0),
