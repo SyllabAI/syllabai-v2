@@ -13394,3 +13394,9 @@ Stage Summary:
 - Residuals: the re-harvest order (operator); PAT rotation CRITICAL-OVERDUE (standing); hung resources sync job (standing).
 - LANE: IDLE.
 
+
+## R0-AUTO receipt — sweep 2026-10-24 01:00 +08
+- Task ID: R0-auto-0100 | PR #337 (T-UGM-HUB-CONSUME-6, UGM lane 6 Series) head fa5d6a4
+- Gates: (a) real head from PR JSON; (b) CI 2/2 success; (c) mergeable clean at base a67bda1 = main tip; (d) 0 reviews / 0 comments, no blocks; (e) 3 files +2316/-41 all under apps/hub/*, zero *.java, zero core/hub-repo content, no path escapes
+- Merge: PUT merge_method=merge -> merge sha cdd7fcf; new main CI verified 2/2 green (verify+hub) at cdd7fcf
+- Notes: bookkeeping-only receipt (.syllabai/** only); fetch-first baseline verified before append; no force; boundaries clean; desk recusal n/a (not author)
