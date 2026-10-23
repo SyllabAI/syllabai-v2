@@ -146,12 +146,25 @@ describe("cie-phase4 roster law", () => {
     // UNCHANGED; the identity re-proven: 12,313 == 12,294 + 19). Floors
     // re-pinned from the live census (scripts/t2retract_census_probe.ts over
     // loadRoster + mapLawCensus).
-    expect(questions).toBe(6784);
-    expect(parts).toBe(5789);
+    // Floors re-pinned from the live census (the T-RULE-T3-SME-COVERAGE-1
+    // re-key class, standing law "not a loosening"): the tranche-3 consume
+    // chain (run-004 re-key at 3dd9bb98 + run-006 econ-25 serving + the
+    // run-007 quiescent convergence at 6dc1f0a2) landed the re-keyed sidecar
+    // codes in the maps, so +190 chem25-family questions admit servability
+    // (unmapped 12,294 -> 12,104 EXACTLY -190), parts 5,789 -> 5,947, pkgParts
+    // 9,411 -> 9,603 (probe: scripts/probe_roster_full.py over loadRoster).
+    // econ-25 LEAVES the zero-servable list: its run-006 serving wave gave
+    // the bank 19 questions / 19 package parts (was EQ-axis empty of record).
+    // Raw 19,097/25,663 UNCHANGED; the identity re-proven at the new floors:
+    // 19,097 - 6,974 == 12,104 + 19 (12,123 == 12,123). Per-lane pins
+    // (physics-23 634/1/634, bio-25 859/1,529) verified UNCHANGED at the
+    // live census.
+    expect(questions).toBe(6974);
+    expect(parts).toBe(5947);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(9411);
+    expect(pkgParts).toBe(9603);
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -180,15 +193,16 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0 },
     );
-    expect(excl).toEqual({ unmapped: 12294, badSum: 0, dupOrder: 19 });
+    expect(excl).toEqual({ unmapped: 12104, badSum: 0, dupOrder: 19 });
     // the question-level identity: raw - servable = unmapped + dupOrder (each
     // exclusion removes whole questions; badSum is zero of record)
     expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder);
     // the zero-servable real banks of record: seed-only by the fleet's
-    // ingest-skip law (EQ axis honestly empty of record)
+    // ingest-skip law (EQ axis honestly empty of record) — econ-25 LEFT this
+    // list at the run-006 serving wave (19 questions of record); the
+    // english-language-20/25 pairs remain the only EQ-empty banks
     const zeroServable = real.filter((e) => e.expectedQuestions === 0).map((e) => e.slug).sort();
     expect(zeroServable).toEqual([
-      "cie-igcse-economics-25",
       "cie-igcse-english-language-20",
       "cie-igcse-english-language-25",
     ]);

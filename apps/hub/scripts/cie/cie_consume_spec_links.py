@@ -92,8 +92,8 @@ RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resourc
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "dcc67a873c73594fff9e9ce3c9a6c9ea28d7f15d"
-STAMP = "2026-10-23T21:00:00Z"
+PIN = "6dc1f0a25bdc01cf826076a8680786c9b88a6e8f"
+STAMP = "2026-10-24T00:00:00Z"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
 RANK = {  # lower wins on the same (item, code) key
@@ -810,24 +810,26 @@ def main() -> int:
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
         lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("T-RULE-T3-SME-COVERAGE-1 run-006 (operator dispatch 'Process with: econ-25 "
-                           "serving lane; class-A/residual-61 dispositions; hung sync job', trace "
-                           "1a16a02c49cfc7d9) — the econ-25 SERVING lane of record: the run-003 "
-                           "re-harvest corpus (84 new note pages) enters the hub through the standing "
-                           "phase chain — raw bundle build (cie_build_bundles @ dcc67a87 cache) -> "
-                           "attach rebuild (cie_attach_maps: 84 new note items + 22 R-ladder rows + "
-                           "118 flashcards resolved by the declared rekey on the grown universe) -> "
-                           "Stage-3 flip (build_official_content --course: curriculum = spine "
-                           "verbatim 156 nodes, notes 8 -> 92 served-shape, manifest re-stamped, "
-                           "asset hotlinks advance 0fe5f772 -> dcc67a87) -> THIS engine consume "
-                           "(the id-space guard now passes: map items 1544 >= sidecar 132) -> "
-                           "pin-vintage convergence for the fleet at dcc67a87 (43 quiescent re-keys "
-                           "on zero consumed-input delta: spec-links byte-identical 3dd9bb98..dcc67a87; "
-                           "the delta is the ② cross-lane index blocks + the gate-lane disclosure "
-                           "bookkeeping). The run-005 ② round cured 54/61 residual dangling "
-                           "(9 definition / 45 name_only grades, via_lanes recorded); class-A 1,203 "
-                           "unchanged (source-declaration gap, operator menu stands)"),
-        gatewayTrace="1a16a02c49cfc7d9",
+        operatorDirective=("T-RULE-T3-SME-COVERAGE-1 run-007 (operator dispatch 'Proceed with the "
+                           "re-harvest order is yours — resources-lane notes re-harvest -> index "
+                           "re-derivation -> sidecar re-key -> v2 consume', trace 1a16a0ea83dac56d) — "
+                           "the fresh re-harvest pass at the current vintage: the 44-lane freshness "
+                           "sweep (index-page census UNION live sitemap, rebuilt from live at "
+                           "2026-10-23T18:5xZ) found ZERO growth and ZERO shrink fleet-wide vs the "
+                           "run-003 committed manifests (committed-missing-from-union = 0, "
+                           "discovery complete fail-closed) — stages 1-3 are EVIDENCED no-ops (no "
+                           "re-harvest, no index re-derivation, no sidecar re-key; spec-links "
+                           "byte-identical dcc67a87..6dc1f0a2, 94/94 sidecars sha256-proven; the "
+                           "only resources delta since the pin is the T-C05/T-C06 book-textlayer "
+                           "increment, not an engine input). THIS run is the v2 consume stage: the "
+                           "quiescent pin-vintage convergence of the fleet at 6dc1f0a2 (44/44 "
+                           "re-keys on zero consumed-input delta, the run-006 shape), re-proving "
+                           "engine idempotence at the new pin; the v2 CI red triage rides the "
+                           "receipt (roster floors re-pinned from the live census per the standing "
+                           "law; the corpus-gate econ-25 speech-alt class = operator menu, no "
+                           "gate-law change self-granted). Class-A 1,203 + recordless 7 unchanged "
+                           "(operator menu stands)"),
+        gatewayTrace="1a16a0ea83dac56d",
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),
