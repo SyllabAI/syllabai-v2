@@ -13371,3 +13371,26 @@ TRIM CENSUS COMPLETE + PROVISIONER/DRYRUN STAGED (execution-blocked on sandbox e
 - STAGED run-ready in scripts/provisioner/: template.sql (frozen wh-v1, meta table + seam query of record) + provision.mjs (Neon API create + verify + canary roundtrip; env-only) + dryrun-4ma1.mjs (COW-branch rehearsal: copy -> count/bytes/id-sha256 parity -> two-step seam demo incl. live <=> search -> zero-residue DELETE rehearsal ON BRANCH ONLY with rollback -> identity-untouched proof; main prod never addressed).
 - BLOCKER of record: api.neon.tech + api.start.neon.tech HTTP 000 from sandbox (egress wall, token unused). Paths: egress opens / another agent runs them / operator provisions console-side per template.sql and returns pooler URLs env-only.
 - Zero DB writes (READ ONLY sessions throughout; trim = rulings, not deletes), zero Vercel mutations, zero LLM calls. Additive delta: receipt + 3 provisioner artifacts + card update + this entry. Fetch-first, no force.
+
+---
+Task ID: T-RULE-T3-SME-COVERAGE-1 run-002 (operator dispatch "Proceed: tranche-3", trace 1a1693318b80ab7d — the run-001 decision menu's option_4 fired: the bounded spec-surface probe)
+Agent: main (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: execute operator menu option_4 of cie-tranche3-sme-coverage-census-r0 — enumerate whether SME publishes any spec-point DEFINITION surface for the class-B banks (322 declared-but-dangling refs) before class-B is declared a dead-end; zero corpus writes either way; options 1-3 never self-granted.
+
+Work Log:
+- Recon of record first: ALL SIX prior queued directives already closed of record by sibling desks (consume-anchors adoption run-002 @ 3838a264, V8 retraction run-003 @ e7c7a68, mistag re-key @ ea21a72, holdsplit apply @ 5edff0a8 + durability capture/re-key @ fa664a86 + verify) — zero re-execution; tranche-3 run-001 (census, de81b043, dispatch 1a168b49fbe9806d) is the open program; NO run-002 existed on origin/main (tip 52020986) and no sibling lane branch claims it. Fetch-first preflight: resources 4b119e71 -> e33d4805 (v2 stale local checkout untouched; fresh worktrees only).
+- STEP 1 fresh re-pin (census-is-computed law): class-B dangling sets computed at e33d4805 — 322 = 322 delta 0 across all 14 class-B rows, 321 unique ids (spcpt_FmVMxSY4pdr2ghgq dangles in BOTH maths-25-extended and intl-maths-23-extended).
+- STEP 2 bounded probes (26 public fetches total, fixed lists, no crawl, attested envelope): question-page control for business-25 reproduces run-001's evidence class (dangling ids STILL declared bare on live question parts, zero entity records — zero drift on the question plane); every probed note page carries specPoint entities in the DOM (id="spcpt_*" data-type="specPoint" + h2 name), NOT in __NEXT_DATA__.
+- Q1 (do definition surfaces exist?): YES — note pages embed real (id -> definition) pairs; sampled ids are exact subsets of the harvested universes (harvest fidelity).
+- Q2 (has the surface grown since the 2026-10-17T01:15Z harvest vintage?): YES — business-25 20 -> 85 leaves (+65 NEW content pages), econ-25 8 -> 92 (+84 NEW — run-001's 'no content notes for econ-25' root cause is VINTAGE-STALE), econ-20 62 -> 79 (+17 NEW); maths-25-core 139=139 and ps2 16=16 exact parity. 261/322 = 81.1% of all class-B dangling refs sit on the three grown banks.
+- DECISIVE SAMPLE (4 new-leaf pages): 16 specPoint entity ids observed, ALL 16 outside the harvested universes, and 13 DANGLING IDS DEFINED on the live source (business-25 6+5, econ-25 1, econ-20 1) — ids the corpus cannot resolve ARE defined upstream as of 2026-10-23.
+- A3 cross-lane join: 0/321 unique dangling ids in any class-B universe or on any pre-growth probed surface — the definitions live on the NEW pages only.
+- VERDICT of record: CLASS-B IS NOT A DEAD-END — the corpus index is stale vs the live source (the corpus itself faithful to its vintage, zero question-plane drift); class-A (1,203 no-declaration parts) UNCHANGED (new notes do not change question-page declarations). The standard chain (resources-lane notes re-harvest -> index re-derivation -> sidecar re-key -> v2 consume) is the mechanical close path.
+- Receipt .syllabai/receipts/CIE-INTEGRATION/cie-tranche3-specsurface-probe-run-002-r0.json; lane scripts + JSON evidence mirrored git-protected .syllabai/lane-artifacts/T-RULE-T3-SME-COVERAGE-1/run-002-specsurface-probe/ (MB4-MS-FRESHPARSE wipe lesson); operator next-step menu filed (resources re-harvest -> re-derive -> consume, or accept with drift evidence on record).
+- Zero content changes, zero DB contact, zero LLM calls; read-only on resources (anonymous sparse clone, shared checkouts untouched); fetch-first, no force.
+
+Stage Summary:
+- T-RULE-T3-SME-COVERAGE-1 run-002 CLOSED: the option_4 question is ANSWERED — SME publishes spec-point definition surfaces, the surface expanded within 6 days of the harvest vintage, and sampled new pages define 13 previously-dangling ids; class-B RE-OPENABLE, class-A unchanged; the re-harvest decision is filed for the operator with the drift evidence that makes option_2 (watch) already-fired and option_1 (accept) a freeze of a re-openable class.
+- Residuals: the re-harvest order (operator); PAT rotation CRITICAL-OVERDUE (standing); hung resources sync job (standing).
+- LANE: IDLE.
+
