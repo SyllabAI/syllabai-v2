@@ -20072,3 +20072,19 @@ Work Log:
 
 Stage Summary:
 - run-002b COMPLETE: the canonical map now covers 25,397/25,399 wired PUA instances (99.99%); C7 deletion disclosure 165 chars (55 runs) + drop 5,146; v1 register hole closed and receipted (.syllabai/receipts/T-MIG-141/run-002b-register-resolution.json); card execution_record + next_safe_actions updated (run-003 = Phase-B dry-run zero-writes + C4 wrong-map disproof vs table.v1@25e3a39). Pre-existing worktree dirt in the parser clone left untouched (only the lane's 88 paths staged). Zero DB writes throughout (t0_readonly READ ONLY txns); fetch-first, no force.
+---
+Task ID: T-MIG-141 run-003
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
+Task: operator "run-002b -> run-003 (Phase B dry-run + wrong-map disproof" — run-003 executed.
+
+Work Log:
+- Phase-B DRY-RUN executed per SPEC §4 with ZERO DB writes (t0_readonly + SET TRANSACTION READ ONLY for every touch; the patch simulated in-memory over the read snapshot).
+- Scope of record re-derived: union 2,949 rows = 2,765 PUA rows (spec §4.1 pin EXACT: 4MA1 2,572 + 4CH1 135 + 4CH0 58) + 184 ctl-only rows (the spec's second regex plane). C9 id-set sha256 pinned: 4014404b365f21b49e03997c53903a0145189c66ac58a9de38c56d3843c1c037.
+- Before-images archived per spec §4.2: 2,949 rows (full content + identity fields) -> before-images.jsonl.gz 1.0MB checksummed = the rollback artifact of record for the real run.
+- Simulated patch vs table.v1@25e3a39 — GATES ALL GREEN: G-A identity (snapshot; content-only transform); G-B header integrity 0 violations / 2,949; G-C bounded delta EXACT (substitutions 20,078 + drop 5,146 census-EXACT + 55 sequence runs EXACT A1 15/A2 30/A3 1/B4 7/B5 2 + ctl spaced 2,000 run-001-pin-EXACT; len_delta -5,311 = -(5,146 drop + 165 seq collapse) char-for-char, 0 insertions); G-D 2,947/2,949 rows artifact-free post-run with EXACTLY 2 exceptions = the U+F0CF fail-closed rows; G-E 200-row control group pinned (100 clean + 100 unwired-plane PUA, id+sha256).
+- C4 WRONG-MAP DISPROOF GREEN (F52 inverted): 55-row probe; deliberately-wrong map (x->÷, −->+, π->ω, ≤->√ [the OVERTURNED spec hypothesis, demonstrated wrong], λ->μ, ↦->→) moved 3,996 chars (delta != 0) and differs from the correct output on 49/55 rows (6 identical = CPs outside wrong-map scope, disclosed); the CORRECT map reproduced the expected substitutions BYTE-EXACTLY on 55/55 rows vs an independent per-char expected rebuild.
+- content_tsv GENERATED ALWAYS asserted live: 0 mismatches vs to_tsvector('english', content) on the scoped plane — the §4.2 auto-refresh guarantee holds.
+- Embed pre-state: all 2,949 scoped rows embed_rev=2, 273 embedding IS NULL (Phase D selector precursor).
+
+Stage Summary:
+- run-003 COMPLETE: Phase B is dry-run-proven — the map, gates, rollback artifact, and disproof evidence are all of record (.syllabai/receipts/T-MIG-141/run-003-phase-b-dryrun.json + dryrun-gates.json + control-group.json + before-images.jsonl.gz). The real Phase-B write run is an operator-gated CI-gate-pattern act (2,947 rows + F0CF ruling). Card execution_record + next_safe_actions updated. Zero DB writes throughout; fetch-first, no force.

@@ -1,0 +1,72 @@
+{
+ "task": "T-MIG-141",
+ "run": "run-003-phase-b-dryrun",
+ "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+ "trace": "1a169bc10f7dc5c9",
+ "timestamp_utc": "2026-10-24",
+ "act": "Phase-B DRY-RUN (zero DB writes) + C4 wrong-map disproof, per SPEC §4 + card next_safe_actions; simulation against table.v1.json @ syllabai-parser 25e3a39",
+ "operator_order": "run-002b (pending register) -> run-003 (Phase B dry-run + wrong-map disproof) [trace 1a169bc10f7dc5c9]",
+ "gate_status": {
+  "neon_db_loss": "UN-GATED (afbfcfb4 run-004 closure; run-005 tripwire 52020986 estate ALL STABLE)",
+  "writes": "ZERO — every DB touch via t0_readonly + SET TRANSACTION READ ONLY; the patch itself is simulated in-memory over the read snapshot"
+ },
+ "scope_of_record": {
+  "join_law": "chunks.document_row_id = documents.id; exam_papers wires via documents.document_id::text = question_paper_document_id | mark_scheme_document_id (text-compare, never ::uuid)",
+  "regex": "content ~ '[\\uE000-\\uF8FF]' OR content ~ '[\\u0001-\\u0008\\u000B\\u000C\\u000E-\\u001F]' (NUL excluded by PG storage law)",
+  "union_rows": 2949,
+  "pua_rows": 2765,
+  "ctl_only_rows": 184,
+  "pua_by_prefix": {"4MA1": 2572, "4CH1": 135, "4CH0": 58},
+  "c9_id_set_sha256": "4014404b365f21b49e03997c53903a0145189c66ac58a9de38c56d3843c1c037",
+  "c9_algorithm": "sha256 over newline-joined sorted stringified chunk ids",
+  "note": "spec §4.1 expected 2,765 = the PUA plane EXACT; the scope regex per spec §4.1 ALSO admits ctl-only rows (+184) — the union 2,949 is the write scope of record"
+ },
+ "before_images": {
+  "rows": 2949,
+  "file": "before-images.jsonl.gz",
+  "gz_bytes": 1012183,
+  "fields_per_row": "id, chunk_index, kind, page_start, page_end, atom_number, paper_code, series, year, subject_id, content, embed_rev, embedding_is_null",
+  "use": "rollback artifact of record for the real Phase-B run (restore content AND re-mark embed_rev=1)"
+ },
+ "gates": {
+  "G-A identity": "PASS (simulation): identity fields captured per row in the snapshot; transform touches content only",
+  "G-B header integrity": "PASS — 0 violations across 2,949 rows (canonical header lines byte-identical pre/post)",
+  "G-C bounded delta": "PASS — substitution instances 20,078; drop 5,146 (F0A2, census EXACT); sequence runs 55 = EXACT (A1 15 / A2 30 / A3 1 / B4 7 / B5 2, chars 220); ctl spaced 2,000 (run-001 pin EXACT); len_delta -5,311 = -(5,146 drop + 165 seq collapse) EXACT; insertions 0",
+  "G-D zero-artifact post-state": "PASS with 2 disclosed exceptions — 2,947/2,949 rows match NEITHER regex post-run; the 2 exceptions carry U+F0CF (fail-closed register, no-ink glyph); Phase-B write scope = 2,947 rows + operator ruling on the 2 F0CF rows (map-as-space / Phase-C re-parse / leave)",
+  "G-E control group": "PASS (pins recorded) — 200 out-of-scope rows pinned by id + content sha256 (100 clean + 100 unwired-plane PUA); byte-identity assertable post-real-run"
+ },
+ "c4_wrong_map_disproof": {
+  "method": "F52 inverted (spec §3.3): deliberately wrong map applied to a 55-row probe set must move content (delta != 0) AND differ from the correct map's output; the correct map must reproduce the expected substitutions byte-exactly",
+  "probe_rows": 55,
+  "wrong_map": {"U+F0B4": "U+00F7", "U+F02D": "U+002B", "U+F070": "U+03C9", "U+F084": "U+221A", "U+F06C": "U+03BC", "U+F061": "U+2192"},
+  "wrong_map_note": "includes the poetic case F084->sqrt: the OVERTURNED spec Appendix-A hypothesis is now demonstrably the wrong map",
+  "results": {
+   "wrong_map_delta_chars": 3996,
+   "correct_map_delta_chars": 7029,
+   "wrong_vs_correct_differ": "49/55 rows (the 6 identical rows carry only CPs outside the wrong map's scope — both maps behave identically there; honest disclosure)",
+   "correct_map_byte_exact": "55/55 rows: independent expected-string rebuild == normalize() output EXACTLY (substitutions per map, nothing else)",
+   "wrong_map_target_census": {"U+F0B4": 85, "U+F02D": 264, "U+F070": 27, "U+F084": 30, "U+F06C": 117, "U+F061": 20}
+  },
+  "verdict": "C4 GREEN: wrong map measurably wrong, correct map exactly right"
+ },
+ "content_tsv_assertion": {
+  "GENERATED ALWAYS": "content_tsv IS DISTINCT FROM to_tsvector('english', content) on the scoped plane = 0 rows — the generated column is live-tracked; the spec §4.2 auto-refresh guarantee holds for the real patch"
+ },
+ "embed_pre_state": {
+  "scoped_rows": 2949,
+  "embed_rev": {"2": 2949},
+  "embedding_is_null": 273,
+  "phase_d_selector_precursor": "embedding IS NULL OR embed_rev < 2 currently = 273 rows on this scope (estate-wide 1,330 per run-005 tripwire)"
+ },
+ "table_pin": {"repo": "syllabai-parser", "commit": "25e3a39", "entries": 83, "sequence_rules": 5},
+ "artifacts": ["dryrun-gates.json", "control-group.json", "before-images.jsonl.gz"],
+ "disclosures": [
+  "zero DB writes — every query t0_readonly + SET TRANSACTION READ ONLY",
+  "scope union 2,949 = 2,765 PUA (spec pin EXACT) + 184 ctl-only rows; the spec's two regexes admit both planes",
+  "G-D exceptions = exactly the 2 U+F0CF rows (run-002b fail-closed register) — no other residual anywhere",
+  "len_delta -5,311 reconciles char-for-char: -5,146 drop + -165 sequence collapse; 0 insertions; ctl fallback is 1:1 substitution (no length change)",
+  "before-images archived in-repo (1.0MB gz) per spec §4.2; checksum in dryrun-gates.json",
+  "the real Phase-B write run remains an operator-gated act riding the CI-gate pattern (spec §4.2); this receipt is the go/no-go evidence pack"
+ ],
+ "next": "operator ruling on (a) the 2 F0CF rows, (b) Phase-B write authorization (CI-gate pattern), then Phase C census + Phase D fold-in"
+}
