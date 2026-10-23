@@ -6,7 +6,7 @@ Mirrors the import_content.py discipline: reads a LOCAL checkout/snapshot of
 SyllabAI/syllabai-resources at a pinned ref (never GitHub at runtime), and
 emits a versioned, self-describing JSON bundle committed under content/.
 
-Sources of record (course cie-a-level-maths-20-pure-1, three UGM lanes):
+Sources of record (course cie-a-level-maths-20-pure-1, four UGM lanes):
   - lane 1 (quadratics): UGM-Enrichment/...-quadratics.json (#55) +
     UGM-Resources/pure-1-quadratics/ (#58), landed of record main@91eed732
   - lane 2 (functions):  UGM-Enrichment/...-functions.json +
@@ -17,6 +17,13 @@ Sources of record (course cie-a-level-maths-20-pure-1, three UGM lanes):
     T-UGM-IMPORT-3), landed of record main@7e11a74c — the FIRST multi-station
     lane (Geometry of Equations + Circles under one spine subtopic; the
     enrichment's stationScope block is the of-record station breakdown)
+  - lane 4 (circular measure — the FIRST STRAND lane, no dedicated UGM
+    station): UGM-Enrichment/...-circular-measure.json +
+    UGM-Resources/pure-1-circular-measure/ (PR #74, T-UGM-MODE1-4 /
+    T-UGM-IMPORT-4), landed of record main@1585c4ff — new-text subset only
+    (5 resources from four stations' strand sweeps); the circles station's
+    strand mappings are cross-lane facts joined against their existing lane-3
+    bodies (see the cross-lane join below)
   all under ADR-UGM-0001 (as amended 2026-10-23) + the operator attestation
   of 2026-10-23 ("downloaded text can ship into SyllabAI. We have permission").
 
@@ -34,14 +41,18 @@ surface anything.
 
 Usage:
   python3 scripts/import_ugm.py --repo <syllabai-resources-snapshot-dir> \
-      [--ref main@7e11a74c40eb5667fedea5cd9a3c49e03b302e8b] \
+      [--ref main@1585c4ffc158d4ba6d4bcc692b960a245ad072b1] \
       [--lane cie-a-level-maths-20-pure-1]
 
 The script audits before writing (fail-closed, PER LANE): enrichment row
 census, blob identity (sha256 vs MANIFEST.json v2 lane block), the
 stationScope/stationBreakdown census for multi-station lanes, front-matter ↔
 enrichment spec-point set equality per resource, primaryPick uniqueness,
-delimiter balance per body — ANY failure aborts with no file written.
+delimiter balance per body — ANY failure aborts with no file written. The
+CROSS-LANE JOIN (strand lanes, lane 4+) adds its own fail-closed audits:
+joined ugmIds must exist among earlier lanes' bodies, textOfRecordUnder must
+name the lane_dir that supplies the body, row codes must exist in the lane's
+own perSpecPoint, and no (resource, code) may be double-claimed.
 """
 import argparse
 import datetime
@@ -60,14 +71,17 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-DEFAULT_REF = "main@7e11a74c40eb5667fedea5cd9a3c49e03b302e8b"
+DEFAULT_REF = "main@1585c4ffc158d4ba6d4bcc692b960a245ad072b1"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # Per-course UGM lane mapping. Single-station blocks (`station` + `title`)
 # mirror one UGM station; multi-station blocks (lane 3+) declare `laneSlug` +
 # `laneTitle` + `stations[]` and are audited against the enrichment's
-# stationScope of record. The bundle merges lanes (a course's UGM surface is
-# one index).
+# stationScope of record. STRAND lanes (lane 4+) are multi-station blocks
+# whose res_dir carries only the new-text subset — the strand's cross-lane
+# mappings ride the enrichment's crossLaneAligned/crossLaneNonOverlap blocks
+# and are joined against earlier lanes' bodies. The bundle merges lanes (a
+# course's UGM surface is one index).
 # expected: {resources, rows, aligned, nonOverlap} — the audited census of record.
 LANE_STATIONS = {
     "cie-a-level-maths-20-pure-1": [
@@ -98,6 +112,20 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-1-coordinate-geometry",
             "ledger": "LEDGER.md — T-UGM-MODE1-3 and T-UGM-IMPORT-3 (PR #66)",
             "expected": {"resources": 85, "rows": 77, "aligned": 61, "nonOverlap": 24},
+        },
+        {
+            "laneSlug": "circular-measure",
+            "laneTitle": "Circular Measure",
+            "stations": [
+                {"slug": "thinking-about-geometry", "title": "Thinking about Geometry"},
+                {"slug": "introducing-calculus", "title": "Introducing Calculus"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-1-circular-measure.json",
+            "res_dir": "UGM-Resources/pure-1-circular-measure",
+            "ledger": "LEDGER.md — T-UGM-MODE1-4 and T-UGM-IMPORT-4 (PR #74)",
+            "expected": {"resources": 5, "rows": 3, "aligned": 3, "nonOverlap": 2},
         },
     ],
 }
@@ -347,6 +375,8 @@ def import_lane(repo, lane_block):
         "resources": resources,
         "spec_points": spec_points,
         "coverage": lane_coverage,
+        "enr": enr,
+        "lb": lane_block,
     }
 
 
@@ -378,10 +408,83 @@ def main():
     if len(resources) != sum(lb["expected"]["resources"] for lb in lane_blocks):
         fail("merged resource census mismatch")
 
+    # ── cross-lane join (T-UGM-HUB-CONSUME-4, strand lanes) ─────────────
+    # A strand lane (lane 4+) may carry crossLaneAligned / crossLaneNonOverlap
+    # in its enrichment: mappings for resources whose TEXT of record lives
+    # under an EARLIER lane's res_dir (the corpus forbids duplicate ugmIds
+    # across lanes). The join merges those mappings into the ALREADY-JOINED
+    # resource entries and the spec-point index — no new entries, no body
+    # duplication, first-of-record body wins. Fail-closed audits: ugmId must
+    # exist among the joined resources; textOfRecordUnder must name the
+    # supplier lane_dir; row codes must exist in the lane's own perSpecPoint;
+    # no (resource, code) double-claim; <=1 primaryPick per resource after join.
+    by_id = {}
+    part_of = {}
+    for p in parts:
+        for r in p["resources"]:
+            by_id[r["ugmId"]] = r
+            part_of[r["ugmId"]] = p
+    cross = {"aligned": 0, "nonOverlap": 0}
+    for p in parts:
+        enr = p.get("enr") or {}
+        cla = enr.get("crossLaneAligned") or []
+        cno = enr.get("crossLaneNonOverlap") or []
+        if not cla and not cno:
+            continue
+        own_codes = set(enr["perSpecPoint"].keys())
+        sp_by_code = {sp["code"]: sp for sp in p["spec_points"]}
+        for row in cla:
+            slug = row.get("ugmSlug")
+            target = by_id.get(slug)
+            if target is None:
+                fail(f"[cross-lane] {slug}: not among the joined resources")
+            supplier = os.path.basename((part_of[slug].get("lb") or {}).get("res_dir", ""))
+            if supplier != os.path.basename(row.get("textOfRecordUnder") or ""):
+                fail(f"[cross-lane] {slug}: textOfRecordUnder {row.get('textOfRecordUnder')!r} != supplier {supplier!r}")
+            for code in row.get("codes") or []:
+                if code not in own_codes:
+                    fail(f"[cross-lane] {slug}: code {code} not in this lane's perSpecPoint")
+                if any(sp["code"] == code for sp in target["specPoints"]):
+                    fail(f"[cross-lane] {slug}: double-claim of {code}")
+                target["specPoints"].append({
+                    "code": code,
+                    "confidence": row.get("confidence"),
+                    "primaryPick": bool(row.get("primaryPick")),
+                    "note": row.get("note"),
+                    "modesRecorded": row.get("modesRecorded") or [],
+                })
+                idx = sp_by_code.get(code)
+                if idx is None:
+                    fail(f"[cross-lane] {code}: no spec-point index entry in the strand lane")
+                if slug not in idx["ugmIds"]:
+                    idx["ugmIds"].append(slug)
+                cross["aligned"] += 1
+            if target["nonOverlap"] and target["specPoints"]:
+                target["nonOverlap"] = False  # flip of record: the strand lane mapped it
+        for row in cno:
+            slug = row.get("ugmSlug")
+            if by_id.get(slug) is None:
+                fail(f"[cross-lane] {slug}: not among the joined resources")
+            supplier = os.path.basename((part_of[slug].get("lb") or {}).get("res_dir", ""))
+            if supplier != os.path.basename(row.get("textOfRecordUnder") or ""):
+                fail(f"[cross-lane] {slug}: textOfRecordUnder mismatch")
+            cross["nonOverlap"] += 1
+        for r in p["resources"]:
+            if sum(1 for s in r["specPoints"] if s.get("primaryPick")) > 1:
+                fail(f"[cross-lane] {r['ugmId']}: multiple primaryPick rows after join")
+        p["coverage"]["crossLaneAligned"] = len(cla)
+        p["coverage"]["crossLaneNonOverlap"] = len(cno)
+
+    # spec-index resourceCount is derived (the join may extend ugmIds)
+    for sp in spec_points:
+        sp["resourceCount"] = len(sp["ugmIds"])
+
+    # the fleet census reflects the MERGED SERVE (after the cross-lane join);
+    # per-lane coverage blocks keep the enrichments-of-record censuses
     total_rows = sum(len(sp["ugmIds"]) for sp in spec_points)
-    aligned_total = sum(p["coverage"]["aligned"] for p in parts)
-    considered_total = sum(p["coverage"]["ugmResourcesConsidered"] or 0 for p in parts)
-    nonov_total = sum(p["coverage"]["nonOverlap"] for p in parts)
+    aligned_total = sum(1 for r in resources if r["specPoints"])
+    considered_total = len(resources)  # the served corpus (strand-lane sweeps count once)
+    nonov_total = sum(1 for r in resources if r["nonOverlap"])
 
     bundle = {
         "schema": SCHEMA,
@@ -417,6 +520,7 @@ def main():
             "nonOverlap": nonov_total,
             "alignedShare": round(aligned_total / considered_total, 3) if considered_total else None,
             "candidateRows": total_rows,
+            "crossLaneJoined": cross,
             "specPointsCovered": [sp["code"] for sp in spec_points],
             "lanes": [p["coverage"] for p in parts],
         },

@@ -4,8 +4,11 @@
  * The consumption seam for the UGM corpus landed of record in
  * SyllabAI/syllabai-resources (UGM-Enrichment #55 facts + UGM-Resources #58
  * text, quadratics lane first; Functions second — PR #61; Coordinate geometry
- * third — PR #66, the first multi-station lane) under ADR-UGM-0001 as amended
- * 2026-10-23 and the operator attestation of 2026-10-23. The hub-side import is
+ * third — PR #66, the first multi-station lane; Circular measure fourth —
+ * PR #74, the first STRAND lane: new-text subset plus a cross-lane join that
+ * serves the circles strand against its existing lane-3 bodies) under
+ * ADR-UGM-0001 as amended 2026-10-23 and the operator attestation of
+ * 2026-10-23. The hub-side import is
  * scripts/import_ugm.py → content/<lane>/ugm-resources.json
  * (schema syllabai-demo.ugm-lane-resources/1.1, multi-lane); this module is its only
  * reader. Math stays byte-true in UGM's native \( \) / \[ \] delimiters —
@@ -106,6 +109,12 @@ const UgmLaneBundle = z.object({
     nonOverlap: z.number(),
     alignedShare: z.number().nullish(),
     candidateRows: z.number(),
+    // strand lanes (lane 4+): the cross-lane join of record — cross-lane
+    // mappings served against earlier lanes' bodies (no new entries)
+    crossLaneJoined: z.object({
+      aligned: z.number(),
+      nonOverlap: z.number(),
+    }).optional(),
     specPointsCovered: z.array(z.string()),
     lanes: z.array(z.object({
       station: z.string(),
@@ -115,6 +124,8 @@ const UgmLaneBundle = z.object({
       nonOverlap: z.number(),
       alignedShare: z.number().nullish(),
       candidateRows: z.number(),
+      crossLaneAligned: z.number().optional(),
+      crossLaneNonOverlap: z.number().optional(),
     })),
   }),
   specPoints: z.array(UgmSpecPointIndex),

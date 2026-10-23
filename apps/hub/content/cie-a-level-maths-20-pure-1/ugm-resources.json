@@ -1,6 +1,6 @@
 {
  "schema": "syllabai-demo.ugm-lane-resources/1.1",
- "generatedUtc": "2026-10-22T21:59:06Z",
+ "generatedUtc": "2026-10-23T09:15:46Z",
  "reviewState": {
   "state": "SUGGESTED",
   "note": "Agent-generated alignment per AGENT.md rule 2 — candidates until the review/promotion gate promotes them; no coverage manufactured (rule 3)."
@@ -26,23 +26,45 @@
    "slug": "circles",
    "title": "Circles",
    "url": "https://undergroundmathematics.org/circles"
+  },
+  {
+   "slug": "thinking-about-geometry",
+   "title": "Thinking about Geometry",
+   "url": "https://undergroundmathematics.org/thinking-about-geometry"
+  },
+  {
+   "slug": "introducing-calculus",
+   "title": "Introducing Calculus",
+   "url": "https://undergroundmathematics.org/introducing-calculus"
+  },
+  {
+   "slug": "product-rule",
+   "title": "Product Rule & Integration by Parts",
+   "url": "https://undergroundmathematics.org/product-rule"
+  },
+  {
+   "slug": "chain-rule",
+   "title": "Chain Rule & Integration by Substitution",
+   "url": "https://undergroundmathematics.org/chain-rule"
   }
  ],
  "source": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@7e11a74c40eb5667fedea5cd9a3c49e03b302e8b",
+  "ref": "main@1585c4ffc158d4ba6d4bcc692b960a245ad072b1",
   "enrichment": [
    "UGM-Enrichment/cie-a-level-maths-20-pure-1-quadratics.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-1-functions.json",
-   "UGM-Enrichment/cie-a-level-maths-20-pure-1-coordinate-geometry.json"
+   "UGM-Enrichment/cie-a-level-maths-20-pure-1-coordinate-geometry.json",
+   "UGM-Enrichment/cie-a-level-maths-20-pure-1-circular-measure.json"
   ],
   "enrichmentSchema": "syllabai.ugm-spec-enrichment/1.0",
   "resourcesDir": [
    "UGM-Resources/pure-1-quadratics",
    "UGM-Resources/pure-1-functions",
-   "UGM-Resources/pure-1-coordinate-geometry"
+   "UGM-Resources/pure-1-coordinate-geometry",
+   "UGM-Resources/pure-1-circular-measure"
   ],
-  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-1 (#55) and T-UGM-IMPORT-1 (#58); LEDGER.md — T-UGM-MODE1-2 and T-UGM-IMPORT-2 (PR #61); LEDGER.md — T-UGM-MODE1-3 and T-UGM-IMPORT-3 (PR #66)",
+  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-1 (#55) and T-UGM-IMPORT-1 (#58); LEDGER.md — T-UGM-MODE1-2 and T-UGM-IMPORT-2 (PR #61); LEDGER.md — T-UGM-MODE1-3 and T-UGM-IMPORT-3 (PR #66); LEDGER.md — T-UGM-MODE1-4 and T-UGM-IMPORT-4 (PR #74)",
   "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
   "operatorAttestation": "2026-10-23 — text may ship into SyllabAI; permission declared"
  },
@@ -53,11 +75,15 @@
   "note": "Image/PDF/GeoGebra assets are referenced by the corpus front-matter, never imported."
  },
  "coverage": {
-  "ugmResourcesConsidered": 182,
-  "aligned": 144,
-  "nonOverlap": 38,
-  "alignedShare": 0.791,
-  "candidateRows": 188,
+  "ugmResourcesConsidered": 187,
+  "aligned": 159,
+  "nonOverlap": 28,
+  "alignedShare": 0.85,
+  "candidateRows": 205,
+  "crossLaneJoined": {
+   "aligned": 14,
+   "nonOverlap": 2
+  },
   "specPointsCovered": [
    "1.1.1",
    "1.1.2",
@@ -70,7 +96,8 @@
    "1.2.4",
    "1.2.5",
    "1.3.1",
-   "1.3.2"
+   "1.3.2",
+   "1.4.1"
   ],
   "lanes": [
    {
@@ -99,6 +126,17 @@
     "nonOverlap": 24,
     "alignedShare": 0.718,
     "candidateRows": 77
+   },
+   {
+    "station": "circular-measure",
+    "stationTitle": "Circular Measure",
+    "ugmResourcesConsidered": 39,
+    "aligned": 3,
+    "nonOverlap": 2,
+    "alignedShare": 0.077,
+    "candidateRows": 3,
+    "crossLaneAligned": 14,
+    "crossLaneNonOverlap": 2
    }
   ]
  },
@@ -385,6 +423,31 @@
     "r9768",
     "teddy-bear",
     "teddy-bear-teacher-support"
+   ]
+  },
+  {
+   "code": "1.4.1",
+   "officialText": "understand the definition of a radian, and use the relationship between radians and degrees",
+   "primaryPick": "r5534",
+   "resourceCount": 17,
+   "ugmIds": [
+    "r5534",
+    "problem-areas",
+    "r8936",
+    "belt",
+    "r6164",
+    "r6838",
+    "r7385",
+    "r7495",
+    "r7816",
+    "r7937",
+    "r7979",
+    "r8225",
+    "r9028",
+    "r9423",
+    "sector-spirals",
+    "r8946",
+    "r9386"
    ]
   }
  ],
@@ -4128,6 +4191,15 @@
      "modesRecorded": [
       1
      ]
+    },
+    {
+     "code": "1.4.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "Areas enclosed between a circle and its tangent: segment areas needing the tangent's angle (clause b) — extension recorded here; the lane-3 alignment (1.3.2) is not collapsed.",
+     "modesRecorded": [
+      1
+     ]
     }
    ],
    "bodyMd": "\n# Can we find the areas enclosed between a circle and its tangent?\n\n## Question\n\nIn the diagram below is sketched the circle with centre \\((1,1)\\) and radius \\(1\\) and a line \\(L\\). The line \\(L\\) is tangential to the circle at \\(Q\\). Further, \\(L\\) meets the \\(y\\)-axis at \\(R\\), and the \\(x\\)-axis at \\(P\\) in such a way that the angle \\(OPQ\\) equals \\(\\theta\\) where \\(0<\\theta<\\dfrac{\\pi}{2}\\).\n\n1. Show that the co-ordinates of \\(Q\\) are \\[(1+ \\sin \\theta, 1 + \\cos \\theta),\\] and that the gradient of \\(PQR\\) is \\(- \\tan \\theta\\). Write down the equation of the line \\(PQR\\) and so find the co-ordinates of \\(P\\).\n\n---\n\n1. The region bounded by the circle, the \\(x\\)-axis and \\(PQ\\) has area \\(A(\\theta)\\); the region bounded by the circle, the \\(y\\)-axis and \\(QR\\) has area \\(B(\\theta)\\). (See diagram.) Explain why \\[A(\\theta) = B\\left(\\dfrac{\\pi}{2} - \\theta\\right)\\] for any \\(\\theta\\). Calculate \\(A\\left(\\dfrac{\\pi}{4}\\right)\\).\n\n---\n\n1. Show that \\[A \\left(\\dfrac{\\pi}{3} \\right) = \\sqrt{3} - \\dfrac{\\pi}{3}.\\]\n\n## Suggestion\n\nCould we add the radius of the circle which meets the tangent to the diagram? What angles do we know now?\n\nIf we draw two diagrams, one with angle \\(\\theta\\) at \\(P\\), and the other with angle \\(\\left(\\dfrac{\\pi}{2} - \\theta\\right)\\) at \\(P\\), then what do we notice?\n\nInteractive diagram\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/Dd5JWgdE)\n\nThe angle \\(\\angle OPQ=\\theta\\) can be varied using the slider.\n\nThe values of \\(A(\\theta)\\) and \\(B(\\theta)\\) are indicated by the height of the bars on the right.\n\nCould we sketch a new diagram with \\(\\theta=\\dfrac{\\pi}{4}\\)? Can we calculate the length \\(OP\\)?\n\n1. Show that \\[A \\left(\\frac{\\pi}{3} \\right) = \\sqrt{3} - \\frac{\\pi}{3}.\\]\n\nCould we sketch a new diagram with \\(\\theta=\\dfrac{\\pi}{3}\\)?\n\nMaybe \\(A \\left(\\dfrac{\\pi}{3} \\right)\\) could be found by finding the area of two right-angled triangles and subtracting part of the area of the circle?\n\n## Solution\n\nWe know the centre of the circle is at \\((1,1)\\).\n\nFrom the diagram, we can see that to get from the centre, \\(C\\), to the point \\(Q\\) we must travel “\\(\\sin\\theta\\)” horizontally and “\\(\\cos\\theta\\)” vertically, so\n\n\\[Q= \\quad (1 + \\sin\\theta, 1 + \\cos\\theta).\\]\n\nIf we now let the length of\n\n\\(PQR = \\ell\\)\n\n, then\n\n\\[\\begin{align*} \\text{gradient of } PQR &= \\frac{\\text{change in }y}{\\text{change in }x} \\\\ &= \\frac{-\\ell\\sin\\theta}{\\ell\\cos\\theta} \\\\ &= - \\tan\\theta, \\qquad \\text{as required.} \\end{align*}\\]\n\nAlternatively, we could find the gradient of the radius to \\(Q\\) and (because we know the radius and tangent are perpendicular) we can then find the gradient of the tangent \\(PQR\\).\n\nThe gradient of \\(CQ\\) is \\(\\dfrac{\\cos\\theta}{\\sin\\theta}\\) (the change in \\(y\\) values \\(\\div\\) the change in \\(x\\) values). The product of perpendicular gradients is \\(-1\\).\n\nThe tangent\n\n\\(PQR\\)\n\nis perpendicular to the radius, therefore:\n\n\\[\\begin{align*} \\frac{\\cos\\theta}{\\sin\\theta} \\times m &= -1, \\\\ \\implies m &= -\\frac{\\sin\\theta}{\\cos\\theta} \\\\ &= - \\tan\\theta, \\qquad \\text{as required.} \\end{align*}\\]\n\nThe line \\(PQR\\) has gradient \\(-\\tan\\theta\\) and goes through the point \\((1 + \\sin\\theta, 1 + \\cos\\theta)\\), and so has equation\n\n\\[y - (1 + \\cos\\theta) = -\\tan\\theta (x - (1 + \\sin\\theta)).\\]\n\nWe’re not asked to give the equation of the line in any particular form, so we can leave it as is.\n\nAt the point\n\n\\(P\\)\n\nwe know\n\n\\(y=0\\)\n\n. Substituting this value into the equation of the line we find\n\n\\[\\begin{align*} -(1 + \\cos\\theta) &= -\\tan\\theta (x - (1 + \\sin\\theta)) \\\\ \\implies 1 + \\cos\\theta &= \\tan\\theta (x - (1 + \\sin\\theta)) \\\\ \\implies \\frac{1 + \\cos\\theta}{\\tan\\theta} &= x - (1 + \\sin\\theta) \\\\ \\implies x &= 1 + \\sin\\theta + \\frac{1 + \\cos\\theta}{\\tan\\theta}. \\end{align*}\\]\n\nWe could, if desired, simplify this answer:\n\n\\[\\begin{align*} x &= 1 + \\sin\\theta + \\frac{1}{\\tan\\theta} + \\frac{\\cos\\theta}{\\tan\\theta} \\\\ &= 1 + \\sin\\theta + \\cot\\theta + \\frac{\\cos^2{\\theta}}{\\sin\\theta} \\\\ &= 1 + \\frac{\\sin^2{\\theta}}{\\sin\\theta} + \\cot\\theta + \\frac{\\cos^2{\\theta}}{\\sin\\theta} \\\\ &= 1 + \\frac{\\left(\\sin^2{\\theta} + \\cos^2{\\theta} \\right)}{\\sin\\theta} + \\cot\\theta \\\\ &= 1 + \\frac{1}{\\sin\\theta} + \\cot\\theta \\\\ &= 1 + \\cosec\\theta + \\cot\\theta. \\end{align*}\\]\n\nIf we’d looked at our diagram carefully, we could’ve arrived at the same answer:\n\nUsing \\(\\tan \\theta = \\dfrac{\\text{opposite}}{\\text{adjacent}}\\), we see \\(TP = \\dfrac{1 + \\cos\\theta}{\\tan\\theta}\\), and so\n\n\\[x = 1 + \\sin\\theta + \\frac{1 + \\cos\\theta}{\\tan\\theta}.\\]\n\nTherefore the co-ordinates of \\(P\\) are \\((1 + \\cot \\theta + \\mathrm{cosec \\hspace{1mm}} \\theta, 0)\\).\n\n1. The region bounded by the circle, the \\(x\\)-axis and \\(PQ\\) has area \\(A(\\theta)\\); the region bounded by the circle, the \\(y\\)-axis and \\(QR\\) has area \\(B(\\theta)\\). (See diagram.) Explain why \\[A(\\theta) = B\\left(\\frac{\\pi}{2} - \\theta\\right)\\] for any \\(\\theta\\).\n\nLet’s draw two diagrams - one with angle \\(\\theta\\) at \\(P\\) and the other with angle \\(\\dfrac{\\pi}{2} - \\theta\\) at \\(P\\):\n\nWe can see simply from the symmetry of the diagrams that \\(A(\\theta) = B\\left(\\dfrac{\\pi}{2} - \\theta\\right)\\).\n\nTo calculate \\(A\\left(\\dfrac{\\pi}{4}\\right)\\), let’s draw the diagram and see if it might help us.\n\nBy symmetry, we see that \\[A\\left(\\dfrac{\\pi}{4}\\right) = B\\left(\\dfrac{\\pi}{4}\\right).\\]\n\nNext, we need to know the lengths \\(OP\\) and \\(OR\\) of the triangle \\(OPR\\).\n\nUsing our final answer from (i), we have\n\n\\[\\begin{align*} OP &= 1 + \\frac{1}{\\sin \\dfrac{\\pi}{4}} + \\dfrac{\\cos \\dfrac{\\pi}{4}}{\\sin \\dfrac{\\pi}{4}} \\\\ &= 1 + \\sqrt{2} + 1 \\\\ &= 2 + \\sqrt{2}. \\end{align*}\\]\n\nOur triangle is isosceles, since both the angle at \\(P\\) and the angle at \\(R\\) are \\(\\dfrac{\\pi}{4}\\), so we have \\(OR = OP\\) and \\[OR = 2 + \\sqrt{2} \\qquad \\text{also.}\\]\n\nNow we can calculate the area of the whole triangle \\(OPR\\).\n\nThe area of triangle\n\n\\(OPR\\)\n\nis\n\n\\[\\frac{1}{2}(2 + \\sqrt{2})^2\\]\n\nwhich simplifies to\n\n\\[\\begin{align*} \\frac{1}{2} (4& + 4\\sqrt{2} + 2) \\\\ &= \\frac{1}{2} (6 + 4\\sqrt{2}) \\\\ &= 3 + 2\\sqrt{2}. \\end{align*}\\]\n\nThe shaded area in the diagram below is made up of a square of side length \\(1\\), and \\(\\dfrac{3}{4}\\) of the circle (of radius \\(1\\)).\n\nThe shaded area is therefore: \\[1 \\times 1 + \\frac{3}{4} \\times \\pi \\times (1)^2 \\qquad = \\qquad 1 + \\frac{3}{4} \\pi.\\]\n\nThe area of \\(A\\left(\\dfrac{\\pi}{4}\\right)\\) can now be found. We have\n\n\\[\\begin{align*} A\\left(\\frac{\\pi}{4}\\right) &= \\frac{1}{2} \\left(\\text{area of triangle }OPR - \\text{shaded area} \\right) \\\\ &= \\frac{1}{2} \\left(3 + 2\\sqrt{2} - (1 + \\frac{3\\pi}{4}) \\right) \\\\ &= \\frac{1}{2} \\left(2 + 2\\sqrt{2} - \\frac{3\\pi}{4} \\right) \\\\ &= 1 + \\sqrt{2} - \\frac{3\\pi}{8}. \\end{align*}\\]\n\n1. Show that \\[A \\left(\\frac{\\pi}{3} \\right) = \\sqrt{3} - \\frac{\\pi}{3}.\\]\n\nThe length \\(SP\\) can be found from the triangle \\(CSP\\): we have\n\n\\[\\begin{align*} \\tan {\\frac{\\pi}{6}} &= \\frac{CS}{SP} \\\\ \\frac{1}{\\sqrt{3}} &= \\frac{1}{SP} \\\\ \\text{so } \\quad SP &= \\sqrt{3}. \\end{align*}\\]\n\nTherefore the area of triangle \\(CSP\\) is \\[\\frac{1}{2} \\times 1 \\times \\sqrt{3} \\quad = \\quad \\frac{\\sqrt{3}}{2}.\\]\n\nBy symmetry, the area of triangle \\(CQP\\) is also \\(\\dfrac{\\sqrt{3}}{2}\\).\n\nThe area of the sector \\(CQS\\) is \\[\\frac{1}{3} \\times \\pi \\times (1)^2 \\quad = \\quad \\frac{1}{3} \\pi.\\]\n\nTherefore we can now find the area \\(A\\left(\\dfrac{\\pi}{3}\\right)\\): we have\n\n\\[\\begin{align*} A\\left(\\frac{\\pi}{3}\\right) &= \\text{area of triangle } CSP + \\text{area of triangle } CQP - \\text{area of sector } CQS \\\\ &= \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{3}}{2} - \\frac{\\pi}{3} \\\\ &= \\sqrt{3} - \\frac{\\pi}{3}, \\qquad \\text{as required.} \\end{align*}\\]\n"
@@ -4230,6 +4302,15 @@
      "confidence": "medium",
      "primaryPick": false,
      "note": "Area between y=sqrt(2-x^2) (upper semicircle) and a line — circle-graph reading plus line form; the area evaluation rides 1.4 radians (recorded medium).",
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "1.4.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "Area bounded by an arc of x²+y²=2 and a line = sector − triangle = π/4 − 1/√2 (clause b); the lane-3 alignment (1.3.2) is not collapsed.",
      "modesRecorded": [
       1
      ]
@@ -4595,9 +4676,19 @@
    "resourceTypeLabel": "Food for thought",
    "level": "Developing",
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: wire around two cylinders — common tangent length plus arc pieces in radians; metric circle geometry riding 1.4 mensuration, not coordinate circle equations.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "Common tangents plus the wrapped arc pieces around two cylinders: arc lengths via s = rθ with wrapped angles π/2 ± α (clause b); the tangent-length part rides lane 3.",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# Belt\n\n> Excerpt: This resource brings together a range of geometric and algebraic ideas associated with circles.\n\n## Problem\n\nA piece of thin wire of length \\(L\\) binds together two cylindrical welding rods, of radii \\(R\\) and \\(r\\), by passing all the way around them both.\n\nFind \\(L\\) in terms of \\(R\\) and \\(r\\).\n\n## Suggestion\n\nWhat are the types of shape that the wire takes?\n\nLook at\n\nTwo cylindrical welding rods with part of the wire drawn in\n\nCan you see any way of drawing in an extra line to make a right-angled triangle with two side lengths you know? Does the angle of this triangle help you to work out what the lengths of the other parts will be?\n\n## Solution\n\nWe can see from the picture that the wire is made up of two arcs of circles joined by two straight lines.\n\nLet’s find the lengths of the straight lines first.\n\nThe straight part of the wire runs along two lines that are tangent to both circles. Drawing in radii of the circles that are perpendicular to this tangent line and the straight line joining the centres of the two circles, we have the following picture:\n\nThe two cylindrical welding rods with part of the wire and some other helpful lines drawn in\n\nWe have also drawn in an extra line of the same length of those we want to find, but further down, creating a triangle.\n\nA close-up of the triangle we found\n\nWe can use this to find the length of \\(x\\), as well as the value of \\(\\theta\\). Notice that the bottom triangle is a reflection of the top triangle, so that both line segments have the same length. (And we are assuming that \\(R>r\\).)\n\nUsing [Pythagoras’s Theorem](https://undergroundmathematics.org/glossary/pythagoras-theorem), we find that \\[x=\\sqrt{(R+r)^2-(R-r)^2}=\\sqrt{4Rr}=2\\sqrt{Rr},\\] and using trigonometry we have that \\[\\sin\\theta=\\frac{R-r}{R+r},\\] and so \\[\\theta=\\sin^{-1}\\left(\\frac{R-r}{R+r}\\right).\\]\n\nNow let’s find the lengths of the arcs.\n\nThe two cylindrical welding rods with the arced part of the wire marked\n\nWe know the angles of the arcs from our earlier drawing. The red angle (on the left) is the whole circle without two times the third (unmarked) angle in our triangle (which we know must be \\(\\pi/2-\\theta\\)), and so the red angle must be \\[2\\pi-2\\left(\\frac{\\pi}{2}-\\theta\\right)=\\pi+2\\theta.\\]\n\nThe blue angle (on the right) is the whole circle minus two times \\(\\theta\\) minus two right angles, and so must be \\[2\\pi-2\\theta-2\\frac{\\pi}{2}=\\pi-2\\theta.\\]\n\nSo the length of the red (left) arc is \\[\\frac{\\pi+2\\theta}{2\\pi}2\\pi R=\\pi R+2\\theta R=\\pi R +2 R \\sin^{-1}\\left(\\frac{R-r}{R+r}\\right),\\] and the blue (right) arc has length \\[\\frac{\\pi-2\\theta}{2\\pi}2\\pi r=\\pi r-2\\theta r= \\pi r- 2r \\sin^{-1}\\left(\\frac{R-r}{R+r}\\right).\\]\n\nSo the total length of the wire is \\[2\\{\\text{length of straight line}\\}+\\{\\text{length of blue arc}\\}+\\{\\text{length of red arc}\\},\\] which is \\[4\\sqrt{Rr}+\\pi(R+r)+2(R-r)\\sin^{-1}\\left(\\frac{R-r}{R+r}\\right).\\]\n"
   },
   {
@@ -4670,9 +4761,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: square in a sector — arc length, segment area in radians; 1.4 Circular measure territory.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "Square inscribed symmetrically in a 60° sector: sector/arc geometry constrains the square (clause b); chord-end reasoning rides trigonometry.",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# What's the area of this square if it sits in this sector?\n\n## Question\n\n\\(ABCD\\) is a square lying symmetrically inside a sector of a circle whose radius is \\(\\quantity{1}{in.}\\), the angle of the sector being \\(60^\\circ\\). \\(A\\) and \\(B\\) lie on the straight boundaries, \\(C\\) and \\(D\\) on the curved boundary. Calculate:\n\n1. the length of the arc \\(CD\\),\n\n---\n\n1. the area \\(ABCD\\),\n\n---\n\n1. the area of the minor segment of the circle cut off by the chord \\(CD\\).\n\n[Answers to (i) and (iii) may be left in terms of \\(\\pi\\).]\n\n## Solution\n\nWe have \\(\\angle OAB = \\angle OBA\\), and \\(\\angle AOB = 60^\\circ\\), so the triangle \\(ABO\\) is equilateral. Now consider the triangle \\(ADO\\). It is isosceles, with sides \\(a, a\\) and \\(1\\).\n\nWe have \\(\\angle OAD\\) is \\(150^\\circ\\), so we can say \\(2a \\sin 75 = 1\\), and so \\(a = \\dfrac{1}{2 \\sin 75} (\\approx 0.5176...).\\)\n\nNow\n\n\\(\\angle DOA = 15^\\circ = \\angle COB\\)\n\n, since triangles\n\n\\(DOA\\)\n\nand\n\n\\(COB\\)\n\nare isosceles. Thus\n\n\\(\\angle DOC = 30^\\circ\\)\n\n, and so\n\n\\[\\begin{align*} \\text{length of the arc $CD$} &= \\frac{\\angle DOC}{360^\\circ} \\times \\text{circumference of the circle} \\\\ &= \\frac{30^\\circ}{360^\\circ} \\times 2\\pi \\\\ &= \\quantity{\\frac{\\pi}{6}}{in.} \\end{align*}\\]\n\nThis is simply \\(a^2\\), which is \\(\\left(\\dfrac{1}{2 \\sin 75}\\right)^2 = \\quantity{0.268(3sf)}{sq.in.}\\)\n\nWe are not asked to find this exactly, but this is not hard to do. We have \\(\\sin 75 = \\sin30\\cos45+\\sin45\\cos30 = \\dfrac{\\sqrt{2}+\\sqrt{6}}{4}.\\)\n\nSo \\(\\left(\\dfrac{1}{2 \\sin 75}\\right)^2 = \\left(\\dfrac{2}{\\sqrt{2}+\\sqrt{6}}\\right)^2 = \\dfrac{1}{2+\\sqrt{3}} = 2-\\sqrt{3} = \\quantity{0.268(3sf)}{sq.in.}\\)\n\nWe need the area of the sector \\(DOC\\), and then subtract from this the area of the triangle \\(DOC\\).\n\nThus we have \\(\\pi \\times 1^2 \\times \\dfrac{30}{360} - 0.5 \\times 1 \\times 1 \\times \\sin 30 = \\quantity{\\dfrac{\\pi}{12} - \\dfrac{1}{4}}{sq.in.}\\)\n\nCan you find any other ways of doing this question?\n"
   },
   {
@@ -4700,9 +4801,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: shared area of two circles — segment/sector mensuration in radians; 1.4 territory.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "Shared area of two circles: segment areas via ½r²(θ − sin θ) in radians — canonical clause-b mensuration.",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# What's the shared area for these two circles?\n\n## Question\n\nTwo coplanar circles, each of radius \\(\\quantity{5}{cm}\\), have their centres \\(\\quantity{6}{cm}\\) apart. Calculate the area of the region common to the interiors of both the circles, giving your answer in \\(\\mathrm{cm}^2\\) correct to two significant figures.\n\n## Suggestion\n\nWhat diagram could you draw to represent the problem? Label all the lengths you know.\n\nWhich areas of shapes can you find?\n\n## Solution\n\nTo calculate the shaded area, we’ll compute the area of the circle sector \\(ACE\\), before subtracting the area of the triangle \\(ACD\\), and then multiplying by \\(4\\).\n\nThe length \\(AD\\) must be \\(3\\), and so by Pythagoras, the length of \\(CD\\) must be \\(4\\). Thus \\(\\angle CAD\\) is \\(\\arctan \\dfrac{4}{3}\\).\n\nThus the area of the sector \\(ACE\\) (working in radians) is \\(0.5 \\times 5^2 \\times \\arctan \\dfrac{4}{3}\\), while the area of triangle \\(ACD\\) is \\(0.5 \\times 4 \\times 3 = 6\\).\n\nSo the shaded area is \\(4(12.5 \\arctan \\dfrac{4}{3}-6) = 22.36\\dots\\), which is \\(\\quantity{22}{cm^2}\\) when given to two significant figures.\n"
   },
   {
@@ -4715,9 +4826,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: floating log — arc length, submerged area, percentage volume in radians; 1.4 territory.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "Floating log: submerged cross-section area and arc pieces by sector/segment mensuration in radians (clause b).",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# How much of this log is below the surface?\n\n## Question\n\nThe figure shows the circular cross-section of a uniform log of radius \\(\\quantity{40}{cm}\\) floating in water. The points \\(A\\) and \\(B\\) are on the surface and the highest point \\(X\\) is \\(\\quantity{8}{cm}\\) above the surface.\n\nShow that \\(\\widehat{AOB}\\) is approximately \\(1.29\\) radians.\n\nCalculate\n\n1. the length of the arc \\(AXB\\),\n\n---\n\n1. the area of the cross-section below the surface,\n\n---\n\n1. the percentage of the volume of the log below the surface.\n\n## Solution\n\nLet \\(M\\) be the point on \\(AB\\) vertically below \\(X\\). The length \\(OX\\) is \\(40\\) and \\(MX\\) is \\(8\\), so \\(OM\\) is \\(\\quantity{32}{cm}\\).\n\nWe’ll compute the angle \\(\\alpha\\), shown here, using its cosine.\n\nWe find \\[\\alpha = \\cos^{-1}\\left(\\frac{32}{40}\\right) \\approx 0.6435... \\text{ radians.}\\]\n\nSince the angle \\(\\widehat{AOB}\\) is \\(2 \\alpha\\), we have \\(\\widehat{AOB} \\approx 1.2870... = 1.29\\) radians (3sf).\n\nThe length of the arc is \\(s = r\\theta\\). In our case, \\(s \\approx 40 \\times 1.287 = \\quantity{51.5}{cm}\\) (3sf).\n\nLet’s call the area of the cross-section below the surface \\(S\\). We can calculate it as the sum of the triangle \\(OAB\\) and the major sector \\(OAB\\).\n\nThe area of the triangle is \\(\\frac{1}{2}a b \\sin C = \\frac{1}{2} 40^2\\sin1.287 \\approx 768.0\\).\n\nThe area of the sector is \\(\\frac{1}{2}r^2\\theta = \\frac{1}{2} 40^2(2\\pi-1.287) \\approx 3997.0\\).\n\nSo we have \\(S\\approx768.0+3997.0 = 4765.0 = \\quantity{4770}{cm^2}\\) (3sf). To calculate $S$, we need to compute the area of the circle segment shown in red below. <cm-image url=\"images/shadedarea.png\" alt-text=\"shaded circle segment\" /> This is approximately the area of the sector $OAXB$ minus the area of triangle $OAB$, which is $$\\frac{40^2}{2}(1.287 - \\sin(1.287)) \\approx 261.6.$$ Given that the whole circle has an area of $40^2\\pi \\approx \\quantity{5026.6}{cm^2}$, $S \\approx 5026.6-261.6 = 4765.0=\\quantity{4770}{cm^2}$ (3sf).\n\nThe percentage of the volume of the log below the surface is the same as the percentage of the area of the cross-section below the surface.\n\nThis is \\(\\dfrac{4765.0}{\\pi 40^2}\\times100 \\approx 94.80 = 94.8\\%\\) (3sf).\n"
   },
   {
@@ -4730,9 +4851,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: area inside both circle C and triangle T (MAT Q4) — sector/trig mensuration beyond the lines-and-circles statements.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "Area inside circle C and triangle T (MAT): the circle part is sector/segment mensuration in radians (clause b) at MAT depth.",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# What's the area inside both the circle $C$ and the triangle $T$?\n\n## Question\n\nDiagram when \\(h > 2/\\sqrt{5}\\)\n\nDiagram when \\(h < \\sqrt{3}/2\\)\n\nThe three corners of a triangle \\(T\\) are \\((0,0), (1, 2h), (3,0)\\), where \\(h > 0\\). The circle \\(C\\) has equation \\(x^2 + y^2 = 4\\). The angle of the triangle at the origin is denoted as \\(\\theta\\). The circle and triangle are drawn in the diagram above for different values of \\(h\\).\n\n1. Express \\(\\tan \\theta\\) in terms of \\(h\\).\n\n---\n\n1. Show that the point \\((1, 2h)\\) lies inside \\(C\\) when \\(h < \\sqrt{3}/2\\).\n\n---\n\n1. Find the equation of the line connecting \\((3,0)\\) and \\((1,2h)\\). Show that this line is tangential to the circle \\(C\\) when \\(h = 2/\\sqrt{5}\\).\n\n---\n\n1. Suppose now that \\(h > 2/\\sqrt{5}\\). Find the area of the region inside both \\(C\\) and \\(T\\) in terms of \\(\\theta\\).\n\n---\n\n1. Now let \\(h = 6/7\\). Show that the point \\((8/5,6/5)\\) lies on both the line (from part (iii)) and the circle \\(C\\).\n\nHence show that the area of the region inside both \\(C\\) and \\(T\\) equals\n\n\\[\\dfrac{27}{35}+2\\alpha,\\]\n\nwhere \\(\\alpha\\) is an angle whose tangent, \\(\\tan \\alpha\\), you should determine.\n\n*You may use the fact that the area of a triangle with corners \\((0,0), (a,b), (c,d)\\) is \\(\\dfrac{1}{2}\\vert ad-bc\\vert\\).*\n\n## Suggestion\n\nHow many points do a line and a circle intersect in? If the line touches the circle? How can we find these point(s)?\n\nA related question; when does a quadratic equation have one (repeated) root?\n\nWe will certainly need the right diagram here.\n\nWhich two areas does the area inside both \\(C\\) and \\(T\\) fall neatly into here?\n\nWhich angle on our diagram is \\(\\alpha\\)?\n\n## Solution\n\nIf we construct a triangle at the point \\((1,2h)\\) we can see that \\(\\tan \\theta = 2h\\).\n\nThe critical point, when \\((1,2h)\\) lies on the circle, gives us a right-angled triangle with sides \\(1, 2h\\) and hypotenuse \\(2\\).\n\nUsing Pythagoras here gives \\(h = \\dfrac{\\sqrt{3}}{2}\\), and so the point \\((1,2h)\\) is inside the circle if and only if \\(h < \\dfrac{\\sqrt{3}}{2}\\).\n\nThe equation of the line is \\(\\dfrac{y-0}{x-3}= \\dfrac{2h-0}{1-3}\\), or \\(y = -hx+3h\\).\n\nSubstituting in to \\(x^2 + y^2 = 4\\) gives \\(x^2 + (-hx+3h)^2 = 4\\), and multiplying out gives us \\(x^2(1+h^2) +x(-6h^2) +(9h^2-4)=0\\).\n\nThe [discriminant](https://undergroundmathematics.org/glossary/discriminant) here for this quadratic in \\(x\\) is\n\n\\[36h^4-4(1+h^2)(9h^2-4) = -20h^2+16.\\]\n\nThis is zero if and only if \\(h = \\dfrac{2}{\\sqrt{5}}\\), and so for this value of \\(h\\), our line is tangential to the circle \\(C\\), since it intersects \\(C\\) in one point only.\n\nAlternatively we can substitute \\(h = \\dfrac{2}{\\sqrt{5}}\\) into \\(x^2 + (-hx+3h)^2 = 4\\) and observe we get one possible value for \\(x\\).\n\nSo the line from (iii) touches the curve. The area inside \\(C\\) and \\(T\\) is then simply a sector of the circle, and so its area is \\(\\dfrac{1}{2}r^2\\theta = 2\\theta\\).\n\nWe have that \\(\\left(\\dfrac{8}{5}\\right)^2+\\left(\\dfrac{6}{5}\\right)^2=2\\), and \\(\\dfrac{6}{5} = -\\left(\\dfrac{6}{7}\\right)\\dfrac{8}{5}+3\\left(\\dfrac{6}{7}\\right)\\).\n\nThus when \\(h = \\dfrac{6}{7}, \\left(\\dfrac{8}{5},\\dfrac{6}{5}\\right)\\) lies on both the line and the circle.\n\nThe sector with angle \\(\\alpha\\) has area \\(2\\alpha\\), where \\(\\tan \\alpha = \\dfrac{3}{4}\\).\n\nThe triangular area inside \\(C\\) and \\(T\\) is (using the given formula) \\(\\dfrac{1}{2}\\left\\vert 1\\times \\dfrac{6}{5}-\\dfrac{12}{7}\\times\\dfrac{8}{5}\\right\\vert = \\dfrac{27}{35}\\).\n\nThus the area inside \\(C\\) and \\(T\\) is \\(\\dfrac{27}{35}+2\\arctan\\left(\\dfrac{3}{4}\\right)\\).\n"
   },
   {
@@ -4745,9 +4876,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: touching circles and sector areas via radians — 1.4 territory.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "Ratio of areas of two sectors with π/4 and π/3 angles: A = ½r²θ applied twice (clause b).",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# Can we find the ratio of the areas of these two sectors?\n\n## Question\n\nThe figure shows two circles, centres \\(O\\) and \\(C\\), radii \\(r_1\\) and \\(r_2\\), which touch externally at \\(P\\). Given that \\(A\\hat{O}P=\\dfrac{\\pi}{4}\\) radians, \\(B\\hat{C}P = \\dfrac{\\pi}{3}\\) radians and \\(AB\\) is parallel to \\(OPC\\), show that \\(\\dfrac{r_1}{r_2} = \\dfrac{\\sqrt{6}}{2}\\). Hence find the ratio of the areas of the sectors \\(OAP\\), \\(CBP\\).\n\n## Suggestion\n\nCould we create some right-angled triangles within the figure, and use trigonometric functions here?\n\nWhat’s the formula for the area of a sector?\n\n## Solution\n\nDropping perpendiculars from \\(A\\) and \\(B\\) gives us the above diagram. Thus we have\n\n\\[r_1 \\sin \\dfrac{\\pi}{4} = AD= BE = r_2 \\sin \\frac{\\pi}{3}.\\]\n\nAnd so we have \\[\\dfrac{r_1}{r_2} = \\dfrac{\\sin \\dfrac{\\pi}{3}}{\\sin \\dfrac{\\pi}{4}} = \\dfrac{\\left(\\dfrac{\\sqrt{3}}{2}\\right)}{\\left(\\dfrac{1}{\\sqrt{2}}\\right)} = \\dfrac{\\sqrt{6}}{2}.\\]\n\nThe area of a sector containing an angle\n\n\\(\\theta\\)\n\nand with radius\n\n\\(r\\)\n\nis\n\n\\(\\dfrac{1}{2}r^2 \\theta\\)\n\n. So\n\n\\[\\begin{align*} A_1 &=\\dfrac{1}{2}r_1^2 \\times \\dfrac{\\pi}{4}=\\dfrac{\\pi r_1^2}{8},\\\\ A_2 &=\\dfrac{1}{2}r_2^2 \\times \\dfrac{\\pi}{3}=\\dfrac{\\pi r_2^2}{6}.\\\\ \\end{align*}\\]\n\nHence \\[\\frac{A_1}{A_2} = \\dfrac{6}{8} \\left( \\dfrac{r_1}{r_2} \\right)^2 = \\dfrac{9}{8}.\\]\n"
   },
   {
@@ -4760,9 +4901,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: intersecting circles — angles in radians, sector areas, common area; 1.4 territory.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "Intersecting circles' shared area: the common angle is found, then sector/segment areas in radians (clause b).",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# What area do these intersecting circles share?\n\n## Question\n\nTwo equal circles, each of radius \\(\\quantity{10}{cm}\\), have centres at \\(A\\) and \\(B\\) respectively and the length of \\(AB\\) is \\(\\quantity{17.4}{cm}\\). The circles intersect at \\(C\\) and \\(D\\). Find\n\n1. the angle \\(CBA\\) and express it in radians correct to three significant figures,\n\n---\n\n1. the area of the minor sector \\(BCD\\),\n\n---\n\n1. the area common to both circles.\n\n## Solution\n\nThe line segment \\(CD\\) is the perpendicular bisector of \\(AB\\), and so we have the following right-angled triangle.\n\nThus, \\[\\cos \\theta = \\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{\\quantity{8.7}{cm}}{\\quantity{10}{cm}} = 0.87\\] and so \\[\\theta = \\arccos(0.87) = \\text{$0.51559\\!\\ldots$ radians}\\] which, to three significant figures, is \\(0.516\\) radians.\n\nBy symmetry, \\(\\theta = \\angle CBA = \\angle DBA\\), and so \\[\\angle DBC = \\angle DBA + \\angle CBA = 2\\theta = 2 \\arccos(0.87).\\]\n\nThe area of a sector of radius \\(r\\) and enclosed angle \\(\\theta\\) (in radians) is \\(\\dfrac{1}{2}r^2\\theta\\), so the area of the sector \\(CDB\\) is \\(\\dfrac{1}{2}10^2(2 \\arccos(0.87)) = 51.559...,\\)\n\nwhich to \\(3\\)sf is \\(\\quantity{51.6}{cm^2}.\\)\n\nBy symmetry, the area common to both circles is twice the area of this shaded region, and the area of this shaded region is equal to \\[\\text{area of the minor sector $BCD$} - \\text{area of $\\triangle BCD$}.\\]\n\nThe area of a triangle is \\(\\dfrac{1}{2}ab \\sin C\\), so the triangle \\(BCD\\) has area \\(\\dfrac{1}{2}100 \\sin (2\\arccos(0.87))=42.895...\\)\n\nThus the area of the shaded region is \\(51.559... - 42.895... = 8.664...,\\) and so the area shared between the circles is (\\(3\\)sf) \\(\\quantity{17.3}{cm^2}.\\)\n"
   },
   {
@@ -4775,9 +4926,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: circle resting on the parabola y=x^2 (MAT Q4) — tangency plus sector area with inverse trig, beyond the 1.3 statements.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "Circle resting on a parabola (MAT): tangency plus sector area with inverse-trig angles (clause b) — extension depth recorded.",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# When does a circle touch a parabola twice?\n\n## Question\n\nThe diagram below shows the parabola \\(y=x^2\\) and a circle with centre \\((0,2)\\) just ‘resting’ on the parabola. By ‘resting’ we mean that the circle and parabola are tangential to each other at the points \\(A\\) and \\(B\\).\n\n1. Let \\((x,y)\\) be a point on the parabola such that \\(x \\ne 0\\). Show that the gradient of the line joining this point to the centre of the circle is given by \\[\\frac{x^2-2}{x}.\\]\n\n---\n\n1. With the help of the result from the first part, or otherwise, show that the coordinates of \\(B\\) are given by \\[\\left(\\sqrt{\\frac{3}{2}},\\frac{3}{2} \\right).\\]\n\n---\n\n1. Show that the area of the sector of the circle enclosed by the radius to \\(A\\), the minor arc \\(AB\\) and the radius to \\(B\\) is equal to \\[\\frac{7}{4} \\cos^{-1} \\left( \\frac{1}{\\sqrt{7}} \\right) .\\]\n\n---\n\n1. Suppose now that a circle with centre \\((0,a)\\) is resting on the parabola, where \\(a > 0\\). Find the range of values of \\(a\\) for which the circle and parabola touch at two distinct points.\n\n---\n\n1. Let \\(r\\) be the radius of a circle with centre \\((0,a)\\) that is resting on the parabola. Express \\(a\\) as a function of \\(r\\), distinguishing between the cases in which the circle is, and is not, in contact with the vertex of the parabola.\n\n## Suggestion\n\nWhat is the condition for a circle to be tangent to a line?\n\n## Solution\n\nThe line segment joining the point \\((x,x^2)\\) and the centre of the circle \\(C=(0,2)\\) will have gradient \\[\\frac{x^2 - 2}{x - 0} = \\frac{x^2 - 2}{x}.\\] (Note that \\(x \\ne 0\\), so we are not dividing by zero.)\n\nFor the circle to be tangent to the parabola at \\(B\\), the radius through \\(B\\) and the tangent to the parabola at \\(B\\) must be perpendicular.\n\nSuppose \\(B\\) has coordinates \\((b,b^2)\\). Then the gradient of the parabola (and circle) at \\(B\\) is equal to \\(2b\\) (by differentiating the equation \\(y=x^2\\)).\n\nWe know the gradient of the radius through \\(B\\) from part (i), so we must have \\[\\frac{b^2 - 2}{b} =\\frac{-1}{2b}\\] (as perpendicular gradients multiply to \\(-1\\), which is the same as saying that one is the negative reciprocal of the other).\n\nWe can solve this by multiplying by \\(2b\\) to get \\[2b^2 - 4 = -1,\\] so \\(b=\\pm\\sqrt{\\dfrac{3}{2}}\\). Since we must have \\(b>0\\) (from the diagram), we obtain \\(b=\\sqrt{\\dfrac{3}{2}}\\) and \\(b^2 = \\dfrac{3}{2}\\), as required.\n\nWe draw on a right-angled triangle to help us here:\n\nThe square of the radius \\(CB\\) is \\[r^2=\\left(\\sqrt{\\frac{3}{2}}\\right)^2+\\left(\\frac{3}{2}-2\\right)^2= \\frac{7}{4}\\] and so the area of the circle is \\(\\pi r^2 = \\dfrac{7}{4} \\pi\\).\n\nThe angle \\(\\theta\\) is given by \\[\\cos\\theta=\\frac{2-\\frac{3}{2}}{\\sqrt{\\frac{7}{4}}}=\\frac{\\frac{1}{2}}{\\frac{1}{2}\\sqrt{7}}=\\frac{1}{\\sqrt{7}}\\] so \\(\\theta=\\cos^{-1}(1/\\sqrt{7})\\).\n\nThe area of the sector is given by \\(\\dfrac{1}{2}r^2(2\\theta)\\), as the angle \\(\\angle ACB\\) is \\(2\\theta\\) by symmetry. Using our value of \\(r^2\\), we get \\[\\text{area}=\\frac{1}{2}\\times\\frac{7}{4}\\times2\\cos^{-1}\\left(\\frac{1}{\\sqrt{7}}\\right)=\\frac{7}{4}\\cos^{-1}\\left(\\frac{1}{\\sqrt{7}}\\right)\\] as required.\n\nWe now need to think about a new diagram:\n\nWe consider an equation similar to that in part (ii), except with \\(2\\) replaced with a more general \\(a\\): \\[\\frac{b^2 - a}{b} =\\frac{-1}{2b}.\\] The solutions of this equation will be the intersections of the circle and parabola, and they will have the same gradient at these points, so the two will just touch.\n\nWe multiply by \\(b\\) and rearrange the equation to get \\[b^2=a-\\frac{1}{2},\\] which has two distinct real solutions if and only if \\(a>\\dfrac{1}{2}\\).\n\nIf \\(0<a\\le \\dfrac{1}{2}\\), then we know from part (iv) that the circle is resting on the vertex of the parabola, since it does not touch it in two places. In this case, it is clear that as the circle passes through \\((0,0)\\) and has its centre at \\((0,a)\\), its radius must be \\(a\\), so \\(a=r\\).\n\nIf\n\n\\(a>\\dfrac{1}{2}\\)\n\n, then there are two distinct points of contact, and we have\n\n\\[r^2=b^2+(b^2-a)^2,\\]\n\nwhere\n\n\\(b\\)\n\nis given by the formula in part (iv):\n\n\\[b^2=a-\\frac{1}{2}.\\]\n\nSubstituting this in, we find that\n\n\\[\\begin{align*} r^2&{}=\\left(a-\\frac{1}{2}\\right)+\\left(a-\\frac{1}{2}-a\\right)^2\\\\ &{}=a-\\frac{1}{2}+\\frac{1}{4}\\\\ &{}=a-\\frac{1}{4} \\end{align*}\\]\n\nso that \\[a=r^2+\\frac{1}{4}.\\]\n\nAs a check, when \\(r=\\dfrac{1}{2}\\), which is the boundary between the two cases, the second formula gives \\[a=\\frac{1}{4}+\\frac{1}{4}=\\frac{1}{2}=r,\\] which is the same answer as given by the first formula.\n"
   },
   {
@@ -4820,9 +4981,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: area between three touching circles — equilateral triangle plus sector mensuration; 1.4 territory.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "Area between three touching circles: equilateral triangle plus three 60° sectors (clause b).",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# Can we find the area between three touching circles?\n\n## Question\n\nTwo circles of radius \\(\\quantity{3}{in.}\\) touch each other, and a third circle of radius \\(\\quantity{2}{in.}\\) touches each of them externally. Find the area contained between the three circles.\n\n## Suggestion\n\nIf we draw a picture, can we spot a triangle that might help us find the required area?\n\n## Solution\n\nThe part of the diagram shaded in red is the area we need to find. We’ll find the area of the triangle, and subtract the areas of the sectors of the three circles.\n\nWe need to find the height of the triangle and the angle \\(\\alpha\\). We can see that (working in radians) \\(\\beta= \\pi - 2 \\alpha\\).\n\nUsing Pythagoras’ theorem, we see that \\[h=\\sqrt{5^2-3^2}=\\sqrt{25-9}=\\sqrt{16}=4.\\] So the area of the triangle is \\[\\frac{1}{2}\\times 6\\times 4=\\quantity{12}{in.^2}\\] By trigonometry, it is clear that \\[\\cos\\alpha=\\frac{3}{5}, \\quad \\sin\\alpha=\\frac{4}{5}.\\]\n\nLet’s compute the areas of the sectors. The area of a sector (working in radians) of radius \\(r\\) and enclosing an angle \\(\\theta\\) is \\(\\dfrac{1}{2}r^2\\theta\\).\n\nThus the sectors with radius three each have area\n\n\\[\\frac{1}{2}\\times 3^2 \\times \\alpha =\\frac{9}{2}\\arccos(0.6),\\]\n\nand the sector with radius\n\n\\(2\\)\n\nhas area\n\n\\[\\frac{1}{2}\\times 2^2 \\times (\\pi-2\\arccos(0.6)) = 2\\pi - 4\\arccos(0.6).\\]\n\nThus the red area is\n\n\\[\\begin{align*} \\text{area of triangle}-2\\times \\text{area of big sector}- \\text{area of small sector} \\\\ =\\quantity{12-5\\arccos(0.6)-2\\pi}{in.^2} \\approx \\quantity{1.08}{in.^2} \\end{align*}\\]\n"
   },
   {
@@ -4835,9 +5006,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: chords meeting at angle theta, maximal shaded area (MAT MCQ) — sector/segment mensuration beyond the statements.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "Chords meeting at angle θ: maximal shaded region as sector/segment area in radians (clause b, MAT MCQ).",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# When does this area within a circle have a maximum value?\n\n## Question\n\nIf two chords \\(PQ\\) and \\(PR\\) on a circle of radius \\(1\\) meet in an angle \\(\\theta\\) at \\(P\\), for example as drawn in the diagram below,\n\nthen the largest possible area of the shaded region \\(RPQ\\) is\n\n1. \\(\\theta(1 + \\cos\\dfrac{\\theta}{2})\\); \\(\\quad\\)\\(\\quad\\)(b) \\(\\theta + \\sin\\theta\\); \\(\\quad\\)\\(\\quad\\)(c) \\(\\dfrac{\\pi}{2}(1-\\cos\\theta)\\);\\(\\quad\\)\\(\\quad\\) (d) \\(\\theta\\).\n\n## Suggestion\n\nCan we say anything about how the chords must be aligned to make the shaded area a maximum for a given \\(\\theta\\)?\n\nCan we draw the diagram for this maximal situation and, marking in the angles we know, calculate the required area?\n\n## Solution\n\nThe shaded area will be a maximum when the diagram is symmetrical.\n\nWe can see this as follows; imagine rotating \\(PR\\) through a small angle \\(\\alpha\\) anticlockwise in the diagram above.\n\nTo keep \\(\\theta\\) the same size we need to rotate \\(PQ\\) through \\(\\alpha\\) also, and since \\(PQ\\) is longer than \\(PR\\), this will cut off a greater area than rotating \\(PR\\) did.\n\nThus the symmetrical arrangement maximises the shaded area.\n\nSo we need to find the shaded area for the situation above.\n\nRemember that the area of a sector enclosing an angle \\(\\theta\\) (in radians) and with radius \\(r\\) is \\(\\dfrac{1}{2}r^2 \\theta\\).\n\nThe area of the sector we need is \\(\\dfrac{1}{2}\\times 1^2 \\times 2\\theta = \\theta.\\)\n\nRemember that the area of a triangle with sides \\(a\\) and \\(b\\) enclosing an angle \\(C\\) is \\(\\dfrac{1}{2}ab\\sin C\\).\n\nThe sum of the areas of the two triangles \\(POR\\) and \\(POQ\\) is \\(2\\left[\\dfrac{1}{2}\\times 1^2 \\times \\sin (\\pi - \\theta)\\right] = \\sin (\\pi - \\theta)] = \\sin \\theta.\\)\n\nThus the total shaded area is \\(\\sin \\theta + \\theta\\), and the answer is (b).\n"
   },
   {
@@ -4850,9 +5031,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: concentric sectors, area difference and arc lengths — 1.4 territory.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "Concentric sectors with ¾ radian given: s = rθ and A = ½r²θ used together (clause b, canonical).",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# If we know the difference in their areas, how big are these sectors?\n\n## Question\n\nThe figure shows two sectors in which \\(AB\\), \\(CD\\) are arcs of concentric circles, centre \\(O\\) and radii \\(\\quantity{2k}{cm}\\) and \\(\\quantity{3k}{cm}\\) respectively. \\(A\\hat{O}B\\) is \\(\\frac{3}{4}\\) radian and the area \\(ABDC\\) is \\(\\quantity{30}{cm^2}\\). Find\n\n1. the value of \\(k\\),\n\n---\n\n1. the difference between the lengths of the arcs \\(AB\\) and \\(CD\\).\n\n## Suggestion\n\nWhat are the areas of the two sectors in terms of \\(k\\)? Is there a formula we could use?\n\nIs there a similar formula to help with finding arc lengths?\n\n## Solution\n\nThe figure shows two sectors in which \\(AB\\), \\(CD\\) are arcs of concentric circles, centre \\(O\\) and radii \\(\\quantity{2k}{cm}\\) and \\(\\quantity{3k}{cm}\\) respectively. The angle \\(A\\hat{O}B\\) is \\(\\dfrac{3}{4}\\) radian and the area \\(ABDC\\) is \\(\\quantity{30}{cm^2}\\). Find\n\n1. the value of \\(k\\),\n\nThe area of a sector with radius \\(r\\) containing an angle \\(\\theta\\) is \\(A=\\dfrac{1}{2}r^2\\theta\\). Hence the difference in the sector areas \\(30 = \\dfrac{1}{2}(3k)^2\\dfrac{3}{4} - \\dfrac{1}{2}(2k)^2\\dfrac{3}{4}\\).\n\nSolving this for \\(k\\) gives \\(k=4\\).\n\nFind\n\n1. the difference between the lengths of the arcs \\(AB\\) and \\(CD\\).\n\nThe length of an arc of radius \\(r\\) and given by an angle \\(\\theta\\) is \\(r\\theta\\). Hence the difference between arc \\(AB\\) and arc \\(CD\\) is \\(12\\times\\dfrac{3}{4} - 8\\times\\dfrac{3}{4} = \\quantity{3}{cm}\\).\n"
   },
   {
@@ -4865,9 +5056,19 @@
    "resourceTypeLabel": "Fluency exercise",
    "level": "Introducing",
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "NON-OVERLAP for this lane: arc lengths and sector areas fluency — 1.4 territory.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "Arc length and sector area fluency across similar sectors; carries the 45° = π/4 conversion (clause a) plus canonical clause-b fluency — the lane's purest drill.",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# Sector spirals\n\n> Excerpt: Students are asked to calculate a selection of arc lengths and sector areas in a given diagram. They are also encouraged to think about how adaptations to the diagram affect these values and to think about the special case where arc length is equal to sector area.\n\n## Problem\n\nDescribe this image to someone who cannot see it. What information do you need to provide in order for them to accurately reconstruct it?\n\nAssuming the four sectors are of equal angle, calculate the arc length and area of each sector.\n\nWhat do you notice?\n\nWhat features of the original image are preserved if it is adapted to create each of these?\n\nWhat can you say about the arc length and area of each sector in each case?\n\n## Things you might have noticed\n\nIn order to make our work clear let’s label the sectors 1 - 4 in a clockwise direction (from smallest to largest radius).\n\n**Some things to notice**\n\n- Each sector has a central angle of \\(45^{\\circ}\\) (or \\(\\frac{\\pi}{4}\\) radians) and therefore represents \\(\\frac{1}{8}\\) of its corresponding circle.\n\n- As all circles are mathematically similar, and the radius doubles as we move from sector 1 to sector 2 and so on, each sector is an enlargement of the previous one by length scale factor 2.\n\nHow can these ideas help us to complete the task?\n\nNumerical solutions\n\n| Sector | Arc length | Sector area |\n|---|---|---|\n| 1 | \\(\\frac{\\pi}{4}\\) | \\(\\frac{\\pi}{8}\\) |\n| 2 | \\(\\frac{\\pi}{2}\\) | \\(\\frac{\\pi}{2}\\) |\n| 3 | \\(\\pi\\) | \\(2\\pi\\) |\n| 4 | \\(2\\pi\\) | \\(8\\pi\\) |\n\nWhat features of the original image are preserved if it is adapted to look like this?\n\n**Some things that have stayed the same**\n\n- There are four sectors, centred on the origin, that appear to be of equal angle.\n\n- The four sectors are of radius 1, 2, 4 and 8 respectively.\n\n- Starting with the smallest (light blue) sector, each sector is an enlargement of the previous one by length scale factor 2.\n\n**Some things that have changed**\n\n- The four sectors now make a complete loop and so we can assume that each sector has an angle of \\(90^{\\circ}\\) (or \\(\\frac{\\pi}{2}\\) radians) and therefore represents \\(\\frac{1}{4}\\) of its corresponding circle.\n\n- The values for arc length will be double those of the corresponding sectors in the original problem. What do you expect to happen to the areas of the corresponding sectors?\n\nNumerical solutions\n\n| Sector | Arc length | Sector area |\n|---|---|---|\n| 1 | \\(\\frac{\\pi}{2}\\) | \\(\\frac{\\pi}{4}\\) |\n| 2 | \\(\\pi\\) | \\(\\pi\\) |\n| 3 | \\(2\\pi\\) | \\(4\\pi\\) |\n| 4 | \\(4\\pi\\) | \\(16\\pi\\) |\n\n**Some more things to notice**\n\n- For sector 2 (of radius 2) the values for arc length and sector area are equal. This was also true for sector 2 in the original image.\n\n- For each sector, the ratio of arc length to sector area is preserved from the original image.\n\nDo you expect these things to be true for the second adaptation of the image too?\n\nWhat features of the original image are preserved if it is adapted to look like this?\n\nThis image has been adapted differently. There are still four sectors, centred on the origin, of radius 1, 2, 4 and 8 respectively. However, they no longer appear to be of equal angle. It looks as though the sector angles may be increasing with sector radius but the exact values are unknown and this means that we cannot calculate arc length and sector area accurately for this diagram. So what can we say about the arc length and sector area in this case?\n\nPerhaps if we think about some of the things that we noticed in the other two diagrams we might be able to decide if these still apply.\n\nWhy is it that for sector 2 the values of arc length and sector area are equal in the first two diagrams?\n\n- Will those values be equal for sector 2 in this diagram?\n\nWhat is the ratio of arc length to sector area for each sector in the previous two diagrams?\n\n- Could you have predicted this to be the case?\n\n- Can you say anything about these ratios in this diagram?\n"
   },
   {
@@ -4884,6 +5085,109 @@
    "nonOverlapReason": "NON-OVERLAP for this lane: latitude/longitude position-finding context — spherical vocabulary, not coordinate-plane line/circle equation work.",
    "specPoints": [],
    "bodyMd": "\n# Where are you?\n\n> Excerpt: This resources provides an introduction to finding your position using lines of lattitude and longitude.\n"
+  },
+  {
+   "ugmId": "problem-areas",
+   "slug": "problem-areas",
+   "station": "introducing-calculus",
+   "title": "Problem areas",
+   "url": "https://undergroundmathematics.org/introducing-calculus/problem-areas",
+   "resourceType": "food-for-thought",
+   "resourceTypeLabel": "Food for thought",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "Card (a): the area under (4−x²)^½ between 1 and 2 is a circular segment (sector − triangle) found by circle geometry before any calculus (clause b); the paired calculus card makes this a methods-contrast exemplar (Mode-4: compare-before-compute).",
+     "modesRecorded": [
+      1,
+      4
+     ]
+    }
+   ],
+   "bodyMd": "\n# Problem areas\n\n> Excerpt: Students are asked to decide which of two functions has the greater area between $x = 1$ and $x = 2$ without using calculus. The functions share several key features, but one of the functions is not drawn for them, so students will have to sketch this function before thinking about the similarities and differences between the two.\n\n## Problem\n\nWhat can you say about the area under each function on the two cards below, between \\(x=1\\) and \\(x=2\\)?\n\nWhich is greater?\n\n| (a) \\[f(x)=\\left(4-x^2\\right)^{\\frac{1}{2}}\\] |  | (b) |\n|---|---|---|\n\n- What’s the same and what’s different about these two functions?\n\n- How might this affect your approach if you wanted to calculate the area under each?\n\n## Suggestion\n\nCard (a)\n\nGiven that we have a graphical representation for the other function, it would make sense to think about what this might be before we dive into any calculations.\n\nWe are dealing with the function \\(f(x) = (4 - x^2)^{\\frac{1}{2}}\\). If this were written in the form \\(y=(4 - x^2)^{\\frac{1}{2}}\\) we might be tempted to square both sides of the equation and rearrange to obtain \\(x^2 + y^2 = 4,\\) which should look familiar!\n\nHowever, when we produce a sketch we must not lose sight of the original function.\n\nWhat does it look like?\n\n- Why is the graphical representation on the left correct? Why is the one on the right incorrect?\n\n- Where does the function meet the \\(x\\)-axis?\n\n- Where does the function intercept the \\(y\\)-axis?\n\n- How can we now calculate the area under the function between \\(x=1\\) and \\(x=2\\)?\n\nCard (b)\n\nThis curve looks as though it it symmetrical about \\(x=1.5\\). How can we decide for certain if this is the case?\n\nWe might notice that this function is a horizontal translation of \\(g(x) = \\dfrac{2}{\\sqrt{1 + x^2}}\\).\n\n- Is this an odd or even function?\n\n- What can this tell us about the properties of its graphical representation?\n\n- Why might it be useful for us to know that the original curve is symmetrical about \\(x=1.5\\)?\n\n- Can we establish maximum and minimum values for the shaded area that will enable us to determine whether it is greater than or less than the area on card (a)?\n\nWhat do you notice if you plot the two functions on the same axes?\n\n## Things you might have noticed\n\n**Card (a)**\n\nThe given function represents a semi-circle of radius \\(2\\), centred on the origin. The area we are concerned with is shaded in purple.\n\n**Cards (a) & (b)**\n\nIt makes sense to begin our comparison by plotting the two functions on the same axes. Based on our subsequent observations we can think about accuracy and perhaps consider alternative approaches as a comparison.\n\n- How can you convince someone that the maximum value of each function is the same?\n\n- What can you say about the area under each function on the two cards between \\(x=1\\) and \\(x=2\\)?\n\nSome possible observations\n\n- The maximum value of \\(f(x) = \\dfrac{2}{\\sqrt{1 + (x - 1.5)^2}}\\) will occur when the denominator, \\(\\sqrt{1+(x-1.5)^2}\\), is at a minimum. The expression inside the square root cannot take a value less than \\(1\\) and the minimum value will occur when \\((x - 1.5)^2 = 0\\), corresponding to \\(x = 1.5\\). Substituting this value of \\(x\\) into the function we have \\[f(1.5) = \\frac{2}{\\sqrt{1}} = 2.\\] So the maximum point on the graph of \\(f(x) = \\dfrac{2}{\\sqrt{1 + (x-1.5)^2}}\\) occurs at coordinates \\((1.5, 2)\\) and the functions on the two cards have the same maximum value.\n\n- Looking at the combined graph, it is clear that the area under the function on card (b), \\(f(x) = \\dfrac{2}{\\sqrt{1 + (x-1.5)^2}}\\), is greater than that on card (a), \\(f(x) = (4 - x^2)^{\\frac{1}{2}}\\), between \\(x=1\\) and \\(x=2\\). We can also say that the area on card (b) is less than double that on card (a).  Can we be any more specific about the proportion of the area on card (b) taken up by the area on card (a)?\n\nThinking more about card (a)\n\nWith the function on this card we can calculate the required area exactly.\n\nWe can exploit the fact that we know we are looking at a semi-circle. In the diagram below we can see that the green sector is made up of the purple area that we want plus a right-angled triangle (of base length \\(1\\) and hypotenuse length \\(2\\)).\n\nWe can therefore obtain the required area by first calculating of the green sector and then subtracting the area of the triangle.\n\n**Calculating the area of the sector**\n\nIn order to calculate the area of the sector we need to know what proportion it is of the original semi-circle. We can deduce this from the value of the angle \\(\\theta\\).\n\nBy applying trionometry to the right-angled triangle we find that \\[\\theta = \\arccos\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{3}.\\]\n\nThis means that the green sector is exactly \\(\\dfrac{1}{3}\\) of the area of the semi-circle, and therefore has an area of \\(\\dfrac{2\\pi}{3}\\).\n\nWe have chosen to express the angle \\(\\theta\\) in radians.\n\nWe could just have easily used degrees with the same result:\n\n\\[\\theta = \\arccos{\\left(\\frac{1}{2}\\right)} = \\frac{\\pi}{3} \\textrm { radians} \\ \\textrm {or} \\ 60^{\\circ}.\\]\n\n**Calculating the area of the triangle**\n\nWe know that the base length of the triangle is \\(1\\) and that its hypotenuse is of length \\(2\\). There are now two ways in which we could determine its vertical height: we could directly apply Pythagoras’ Theorem, or we could find the value of \\(f(1)\\).\n\nUsing either approach, the height of the triangle is found to be \\(\\sqrt{3}\\). Therefore the area of the triangle will be \\(\\dfrac{\\sqrt{3}}{2}\\).\n\n**Calculating the original purple area**\n\nThe area under the curve between \\(x=1\\) and \\(x=2\\) can now be calculated as \\[\\frac{2\\pi}{3} - \\frac{\\sqrt{3}}{2} = \\frac{4\\pi - 3\\sqrt{3}}{6} \\approx 1.23.\\]\n\nThe approximate decimal value may useful when we come to compare this area to that on card (b).\n\nThinking more about card (b)\n\nWe do not yet have any techniques for finding an exact value for this area. We can however find an approximation for the area that will allow us to answer the question posed in this problem.\n\nThe function shown on this card is a horizontal translation of the function \\(g(x) = \\dfrac{2}{\\sqrt{1+x^2}}\\) and will therefore have the same area as \\(g(x)\\) between \\(x=-0.5\\) and \\(x=0.5\\).\n\nWe can show that \\(g(x) = g(-x)\\) and hence that \\(g(x)\\) is an even function. This in turn means that \\(g(x)\\) is symmetrical about \\(x=0\\) (and that \\(f(x)\\) is symmetrical about \\(x=1.5\\)).\n\nExploiting the symmetry properties of this function will reduce the amount of work we need to do to obtain an approximate value for the area that is ‘good enough’ for this problem.\n\nIt now doesn’t matter whether we return to the original function, \\(f(x)\\), or follow through our working with the translated function, \\(g(x)\\), (we have already observed that the areas are equivalent as long as we look at the translated region). If we choose to work with \\(g(x)\\), we need to consider a method of approximating the area under \\(g(x)\\) between \\(x=0\\) and \\(x=0.5\\) (doubling this value will then give us an estimate for the whole area between \\(x=-0.5\\) and \\(x=0.5\\)).\n\nWe might choose to use a single trapezium to do this in the first instance, giving us a lower bound for the area.\n\nIn this case we can write \\[\\textrm{Area (b)} \\approx \\frac{1}{2} \\left[g(0) + g\\left(\\frac{1}{2}\\right)\\right] = \\frac{1}{2}\\left[2 + \\frac{4}{\\sqrt{5}}\\right] \\approx 1.89.\\]\n\nNow, we can see that this is an under-estimate of the area and so we can say \\[\\textrm{Area (b)} > 1.89.\\]\n\nWe might have chosen to use the trapezium rule, dividing the area into two trapezia, each of width \\(0.25\\) (or \\(\\tfrac{1}{4}\\)) giving\n\n\\[\\textrm{Area (b)} \\approx \\frac{1}{4}\\left[g(0) + 2 g\\left(\\frac{1}{4}\\right) + g\\left(\\frac{1}{2}\\right)\\right] = \\frac{1}{4} \\left[2 + \\frac{16}{\\sqrt{17}} + \\frac{4}{\\sqrt{5}} \\right] \\approx 1.92.\\]\n\nUsing software such as GeoGebra to compute the area we find that our approximate value is actually correct to two decimal places. This level of accuracy was achieved by completing calculations for just two trapezia, the equivalent of dividing the total area into four trapezia.\n\n- Can this level of accuracy be guaranteed when using the trapezium rule, with four trapezia, to estimate areas under other functions?\n\n- What is it about this function that makes the trapezium rule such a good fit?\n\n- What can we say now about the proportion of the area on card (b) taken up by the area on card(a)?\n"
+  },
+  {
+   "ugmId": "r5534",
+   "slug": "r5534",
+   "station": "thinking-about-geometry",
+   "title": "Can we find a formula for an island's territorial waters?",
+   "url": "https://undergroundmathematics.org/thinking-about-geometry/r5534",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": "Territorial waters around a convex polygon: rectangle strips (pr) plus vertex sectors whose angles sum to a full turn (πr²) — sector-area mensuration is the proof core (clause b).",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we find a formula for an island's territorial waters?\n\n## Question\n\nAn island is in the shape of a convex polygon with perimeter \\(p\\) miles. Its territorial water consists of all points of the sea within \\(r\\) miles of its coast. Assuming that no other land is within \\(r\\) miles of the island and that the earth is flat, prove that the area of the territorial water is \\((pr+\\pi r^2)\\) square miles.\n\nConsider whether the same formula would hold\n\n1. if the island were convex but not polygonal,\n\n---\n\n1. if it were polygonal but not convex.\n\n## Solution\n\nLet’s draw a diagram of a convex polygon, and see if we can draw a boundary around it.\n\nA convex polygon.\n\nWe can begin to draw the points that are \\(r\\) away from the polygon.\n\nIt is harder at the vertices of the polygon, but if we draw part of a circle of radius \\(r\\) at each vertex, we find all points \\(r\\) away from the polygon.\n\nFrom our diagram, we can see that the total area of the rectangles is \\(pr\\) (if we cut them out and laid them next to each other, the length would be the perimeter of the polygon), so we just need to find the area of the circle sectors.\n\nTo do this, we must find the interior angles. We know that the sum of the interior angles of a polygon with \\(n\\) sides is \\(180(n-2)\\).\n\nTherefore, if we cut out all of the circle sectors and put them together, the total angle of the sector we find in degrees would be \\[360n -180n-180(n-2)\\] (that is, the total degrees in the circle at each vertex, minus the two right angles from the rectangles, minus the interior angles of the polygon).\n\nBut this is equal to\n\n\\(360^\\circ\\)\n\n, so the sectors make a circle of radus\n\n\\(r\\)\n\n, which has area\n\n\\(\\pi r^2\\)\n\n. So the formula for the area of the terratorial waters is\n\n\\[ pr+\\pi r^2. \\]\n\nConsider whether the same formula would hold (a) if the island were convex but not polygonal,\n\nLet’s test an example. The circle is an example of a convex shape that isn’t polygonal.\n\nA circle of perimeter \\(p\\) has radius \\(\\dfrac{p}{2\\pi}\\), therefore the territorial waters have area \\[\\pi\\left(\\frac{p}{2\\pi}+r\\right)^2-\\pi\\frac{p^2}{4\\pi^2}=pr+ \\pi r^2,\\] therefore the formula holds for a circle.\n\nLet’s take any convex shape. We can approximate the shape by a convex polygon by taking some points on its edge and joining them with straight lines.\n\nThe more vertices in the convex polygon, the closer the polygon to the convex shape.\n\nThe formula we found in the first part of the question holds for any such approximation. In fact, since the formula does not depend on \\(n\\) (the number of vertices), we can let \\(n\\) tend to infinity and the formula will not change.\n\nAs \\(n\\) tends to infinity the polygon tends to the non-polygonal convex shape, and since the formula we found in the first part holds for each \\(n\\), it will hold in the limit too.\n\nTherefore the formula still holds in this case.\n\nWe require the vertices to be ‘reasonably spread out’ for this to happen.\n\nConsider whether the same formula would hold (b) if it were polygonal but not convex.\n\nLet’s try a simple example to see if there is any hope of the formula holding.\n\nWe can see from this picture that the rectangles here have area \\(pr-r^2\\), and the circle sectors have area \\(\\pi r^2\\dfrac{140+150+160}{360}\\), and so the area of the territiorial waters in this case is \\[pr-r^2+\\pi r^2+\\frac{\\pi r^2}{4}.\\] Therefore the formula does not hold in this case.\n"
+  },
+  {
+   "ugmId": "r8936",
+   "slug": "r8936",
+   "station": "product-rule",
+   "title": "When will the arclength $QR$ take a maximum value?",
+   "url": "https://undergroundmathematics.org/product-rule/r8936",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.4.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "Arc QR of a circle centred at P with radius PQ (itself a chord length of circle X): arc length s = rθ is the modelled object; the maximisation rides 1.7 (clause b; calculus extension recorded).",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# When will the arclength $QR$ take a maximum value?\n\n## Question\n\n\\(P\\) is a point on the circumference of a circle \\(X\\) of diameter \\(\\quantity{3}{in.}\\) An arc of another circle \\(Y\\) is drawn with centre \\(P\\), intersecting \\(X\\) at \\(Q\\) and \\(R\\). Express the lengths of \\(PQ\\) and the minor arc \\(QR\\) of \\(Y\\) in terms of \\(\\theta\\), where \\(\\theta\\) is the angle, in radians, between \\(PQ\\) and the diameter of \\(X\\) through \\(P\\).\n\nProve that the length of the arc \\(QR\\) has a stationary value when \\(\\theta = \\cot \\theta\\), and that this value is a maximum.\n\n## Suggestion\n\nWe ought to begin by drawing the configuration described in the question. How can we find the length of \\(PQ\\)? Could we try adding to the configuration?\n\nA further suggestion\n\nIf we let \\(P'\\) denote the other end of the diameter of \\(X\\) that passes through \\(P\\), what can we say about \\(\\triangle P'QP\\)?\n\nA final suggestion\n\nDo we know anything about \\(\\angle P'QP\\)?\n\nWhen checking that a value is a maximum of a function, do we *have* to calculate the second derivative of the function?\n\n## Solution\n\n\\(P\\) is a point on the circumference of a circle \\(X\\) of diameter \\(\\quantity{3}{in.}\\) . An arc of another circle \\(Y\\) is drawn with centre \\(P\\), intersecting \\(X\\) at \\(Q\\) and \\(R\\). Express the lengths of \\(PQ\\) and the minor arc \\(QR\\) of \\(Y\\) in terms of \\(\\theta\\), where \\(\\theta\\) is the angle, in radians, between \\(PQ\\) and the diameter of \\(X\\) through \\(P\\).\n\nHere’s a diagram of the two circles \\(X\\) and \\(Y\\).\n\nIf you drew your circle \\(Y\\) larger than your circle \\(X\\), your diagram will look quite different to this: there’s no need to worry, the mathematics works just the same.\n\nYou can explore different versions of the diagram with this interactive:\n\nVarying \\(Y\\)\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/NFaPz3AU/width/700/height/450/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/NFaPz3AU)\n\nDrag the point \\(R\\) to change the size of \\(Y\\).\n\nWe’ll calculate the two lengths in turn. Firstly, to find \\(PQ\\), let’s look at the circle \\(X\\).\n\nSince the angle \\(PQP'\\) lies in a semicircle, it must be a right angle. Now, from trigonometry, \\[\\cos \\theta = \\frac{\\text{adjacent}}{\\text{hypotenuse}} = \\frac{\\text{length of $PQ$}}{\\text{length of $PP'$}} \\implies \\text{length of $PQ$} = 3 \\cos \\theta.\\]\n\nSecondly, to find the length of the minor arc \\(QR\\), let’s look at the circle \\(Y\\).\n\nThe length of an arc of a circle is \\(r\\phi\\), where \\(\\phi\\) is the angle subtended at the centre of the circle by the arc.\n\nBy symmetry, \\(\\angle QPR = \\theta + \\theta = 2\\theta\\), and so the length of the minor arc \\(QR\\) is \\(PQ \\times 2\\theta = 6\\theta\\cos\\theta.\\)\n\nWe know that \\[QR = 6 \\theta \\cos \\theta.\\] Using the [product rule](https://undergroundmathematics.org/glossary/product-rule), we have \\[\\dfrac{d(QR)}{d\\theta}= 6\\theta (-\\sin \\theta) + 6\\cos \\theta = 6 (\\cos \\theta - \\theta \\sin \\theta).\\]\n\nSo the stationary points are those values of \\(\\theta\\) for which \\[\\cos \\theta = \\theta \\sin \\theta,\\] which is true if and only if \\[\\theta = \\cot \\theta.\\]\n\nWe can divide through here by \\(\\sin \\theta\\), since \\(\\theta = 0\\) is not going to be a solution to our equation.\n\nWe are only concerned with the interval \\(0 \\le \\theta \\le \\dfrac{\\pi}{2}\\).\n\nSince \\(\\theta\\) increases from zero and \\(\\cot \\theta\\) descends from infinity, as illustrated below, our equation has just one solution.\n\nIs this a maximum? We know that \\(QR > 0\\) when \\(0 < \\theta < \\dfrac{\\pi}{2}\\), that \\(QR = 0\\) when \\(\\theta = 0\\) and \\(\\dfrac{\\pi}{2}\\), and that there’s only one stationary point between \\(0\\) and \\(\\dfrac{\\pi}{2}\\); therefore, this point *has* to be a maximum.\n\nWe can see this in the changing values in the GeoGebra illustration above.\n\nIf we try dragging \\(R\\), what happens to \\(QR\\)? For what value of \\(\\theta\\) is this a maximum? Does \\(\\theta = \\cot \\theta\\) here?\n\nAlternatively, we could calculate the second derivative \\(f''(\\theta)\\) and check that it’s negative on this interval.\n"
+  },
+  {
+   "ugmId": "circular-slice",
+   "slug": "circular-slice",
+   "station": "chain-rule",
+   "title": "Circular slice",
+   "url": "https://undergroundmathematics.org/chain-rule/circular-slice",
+   "resourceType": "rich-example",
+   "resourceTypeLabel": "Rich example",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": true,
+   "nonOverlapReason": "Tested skill is integration by the substitution x = cos θ (a P3 technique): the integral of √(1−x²) evaluates exactly the clause-b sector/segment area, but no radian-mensuration skill is asked — recorded as this lane's calculus boundary.",
+   "specPoints": [],
+   "bodyMd": "\n# Circular slice\n\n> Excerpt: Students are asked to solve $\\int_a^b \\sqrt{1-x^2} \\, dx$ by substitution, before looking at how they can link their answer to a geometric representation of the problem.\n\n## Problem\n\nUse the substitution \\(x = \\cos \\theta\\) to find\n\n\\[\\int_a^b \\sqrt{1-x^2} \\, dx\\]\n\nCheck your solution\n\nIf\n\n\\(x = \\cos \\theta\\)\n\nthen\n\n\\(\\dfrac{dx}{d\\theta} = -\\sin \\theta\\)\n\n, meaning we can write\n\n\\(dx = -\\sin \\theta \\, d\\theta.\\)\n\n\\[\\begin{align*} \\int_a^b \\sqrt{1-x^2} \\, dx &= \\int\\limits_{\\arccos a}^{\\arccos b} \\!\\!\\!\\! \\sqrt{1-\\cos^2 \\theta} \\times -\\sin \\theta \\, d\\theta \\\\ &= \\int\\limits_{\\arccos a}^{\\arccos b} \\!\\!\\!\\! -\\sin^2 \\theta \\, d\\theta \\\\ \\end{align*}\\]\n\nWe can’t integrate \\(\\sin^2 \\theta\\) directly, instead we need to recognise that we can rewrite it in terms of \\(\\cos 2\\theta\\).\n\nYou might have noticed that the limits have changed. Why is this the case?\n\n\\[\\begin{align*} \\int\\limits_{\\arccos a}^{\\arccos b} \\!\\!\\!\\! - \\sin^2 \\theta \\, d\\theta &= \\int\\limits_{\\arccos a}^{\\arccos b} \\!\\!\\!\\! \\left(\\frac{1}{2} \\cos 2\\theta - \\frac{1}{2}\\right) \\, d\\theta \\\\ &= \\left[\\frac{1}{4}\\sin 2\\theta - \\frac{1}{2}\\theta \\right]_{\\arccos a}^{\\arccos b} \\\\ &= \\left[\\frac{1}{2}\\sin\\theta \\cos \\theta - \\frac{1}{2}\\theta \\right]_{\\arccos a}^{\\arccos b} \\end{align*}\\]\n\nFrom here we could substitute in our values of \\(\\theta\\) but we will get expressions like \\(\\sin(\\arccos b)\\) which can be difficult to work with. Instead it will be helpful to rewrite our expression in terms of \\(x\\).\n\nThe functions \\(\\sin \\theta\\), \\(\\cos \\theta\\) and \\(\\theta\\) appear. We know \\(\\cos \\theta = x\\), as this is our original substitution, and therefore \\(\\theta = \\arccos x\\). For \\(\\sin \\theta\\) we can think of \\(\\sin^2\\theta + \\cos^2 \\theta = 1\\), or a right angle triangle with a hypotenuse of \\(1\\) and base of \\(x\\), both of which give us the same result: \\(\\sin \\theta = \\sqrt{1-x^2}.\\)\n\n\\[\\begin{align*} &= \\left[\\frac{1}{2}x\\sqrt{1-x^2} - \\frac{1}{2}\\arccos x \\right]_{x=a}^{x=b} \\\\ &= \\frac{1}{2}b\\sqrt{1-b^2} - \\frac{1}{2}\\arccos b - \\frac{1}{2}a\\sqrt{1-a^2} + \\frac{1}{2}\\arccos a \\end{align*}\\]\n\nHow does your answer to \\(\\displaystyle{\\int_a^b \\sqrt{1-x^2} \\, dx}\\) relate to the following diagram?\n\n## Suggestion\n\nLook carefully at the diagram above.\n\n- Do you know any information that you can add to the diagram?\n\n- Are there lengths and areas that you can work out?\n\nFurther suggestions can be found by working through the questions below:\n\n| Find \\(p\\) in terms of \\(a\\) . Solution As this is a unit circle the hypotenuse of the triangle is \\(1\\) . Therefore \\(p = \\sqrt{1-a^2}\\) . |  |\n|---|---|\n| Find \\(\\theta\\) in terms of \\(a\\) . Solution As we know all three sides of the triangle there are multiple ways we could write the angle, but the simplest way would be to use \\(\\cos\\theta = \\frac{a}{1}\\) which means \\(\\theta = \\arccos{a}.\\) |  |\n| Find \\(\\phi\\) and the shaded area in terms of \\(a\\) and \\(b\\) . It will be helpful to find the area of the sector using radians rather than degrees. Solution We already know one angle marked in the digram below, \\(\\arccos a.\\) The other can be found in the same way and is \\(\\arccos b.\\) Therefore \\(\\phi = \\arccos a - \\arccos b\\) . The area of a sector \\(= \\frac{1}{2}r^2\\theta,\\) and \\(r = 1\\) , so the area is \\(\\frac{1}{2}(\\arccos a - \\arccos b).\\) |  |\n\n## Solution\n\nFirstly we might notice that the diagram has an area shaded between lines which could be \\(x=a\\) and \\(x = b\\), so this could be represented by an integral between \\(a\\) and \\(b\\). The curve appears to be a semicircle with radius \\(1\\). A unit circle has equation \\(x^2 + y^2 = 1\\), but if this is rearranged to find \\(y\\) then we get \\(y = \\pm\\sqrt{1-x^2}\\). The positive root, gives us a semicircle above the \\(x\\)-axis as all the \\(y\\)-values must be positive. Therefore the shaded area is represented by the integral \\[\\displaystyle{\\int_a^b \\sqrt{1-x^2} \\, dx},\\] which we have already worked out using the substitution \\(x = \\cos \\theta\\) to get \\[\\displaystyle{\\int_a^b \\sqrt{1-x^2} \\, dx} = \\frac{1}{2}b\\sqrt{1-b^2} - \\frac{1}{2}\\arccos b - \\frac{1}{2}a\\sqrt{1-a^2} + \\frac{1}{2}\\arccos a.\\]\n\n**Finding the area with geometry**\n\nAs it is part of a semicircle, we can break the area down into more familiar shapes. We can find the area of the triangle and the sector shaded below.\n\nThe green triangle has area \\(\\frac{1}{2}b\\sqrt{1-b^2}\\) and the orange sector has area \\(\\frac{1}{2}(\\arccos a - \\arccos b)\\), (to see why, look at the [suggestion](https://undergroundmathematics.org/chain-rule/circular-slice/suggestion) section). We can also find the area of the triangle with base \\(a\\) which is \\(\\frac{1}{2}a\\sqrt{1-a^2}\\).\n\nThe total area is found by adding the orange sector and the green triangle with base \\(b\\), then subtracting the triangle with base \\(a\\). This gives us \\[\\frac{1}{2}b\\sqrt{1-b^2} + \\frac{1}{2}(\\arccos a - \\arccos b) - \\frac{1}{2}a\\sqrt{1-a^2}.\\]\n\nThe geometric pieces can be thought about in a number of ways. You might have started from the answer of the integral which can be written in the form \\[\\displaystyle{\\int_a^b \\sqrt{1-x^2} \\, dx} = F(b) - F(a),\\] where \\(F(b) = \\frac{1}{2}b\\sqrt{1-b^2} - \\frac{1}{2}\\arccos b\\) and \\(F(a) = \\frac{1}{2}a\\sqrt{1-a^2} - \\frac{1}{2}\\arccos a.\\)\n\nCan you see which areas are represented by \\(F(b)\\) and \\(F(a)\\)?\n"
+  },
+  {
+   "ugmId": "r7115",
+   "slug": "r7115",
+   "station": "chain-rule",
+   "title": "When does this cone have a maximum volume?",
+   "url": "https://undergroundmathematics.org/chain-rule/r7115",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": true,
+   "nonOverlapReason": "Tested skill is constrained optimisation of a cone's volume (1.7): the sheet-metal development is a circle sector whose arc length becomes the base circumference (clause-b vocabulary), but the ask is the maximum — recorded, never forced.",
+   "specPoints": [],
+   "bodyMd": "\n# When does this cone have a maximum volume?\n\n## Question\n\nA hollow container is to be made out of a fixed total area \\(\\pi a^2\\) of sheet metal and its shape is to be that of a right circular cone completed by the circular base on which it stands. Find the radius of the base when the container encloses maximum volume.\n\n## Suggestion\n\nDrawing a diagram will probably help.\n\nCan we write down or work out a formula for the surface area of a cone?\n\nCan we derive formulae for the height and volume of the cone from this?\n\n## Solution\n\nThe surface area \\(A\\) of a cone with radius \\(r\\) and height \\(h\\) is given by \\(A=\\pi r^2 + \\pi s r\\), where \\(s=\\sqrt{h^2 + r^2}\\) is the sloped side of the cone.\n\nThe \\(\\pi r^2\\) part comes from the base of the cone. The other part when laid flat is a sector with radius \\(s\\) and arclength \\(2\\pi r\\).\n\nIf the angle in the sector is \\(\\theta\\), then \\(s\\theta = 2\\pi r\\). The area of the sector is \\(\\dfrac{1}{2}s^2 \\theta\\), which on eliminating \\(\\theta\\) is \\(\\pi s r\\), as above.\n\nWe know that this area is \\(\\pi a^2\\), hence\n\n\\[\\begin{align*} \\pi a^2 &= \\pi r^2 + \\pi s r\\\\ a^2 -r^2 &= \\sqrt{h^2r^2 + r^4}\\\\ \\sqrt{\\frac{a^4}{r^2} - 2a^2} &= h. \\end{align*}\\]\n\nNow the volume of a cone is\n\n\\(V=\\dfrac{\\pi}{3} h r^2\\)\n\n, which gives\n\n\\[\\begin{align*} V=\\frac{\\pi}{3} \\sqrt{a^4r^2 - 2a^2r^4}. \\end{align*}\\]\n\nTo find when the volume is a maximum, we differentiate and set the first derivative equal to zero. We’ll use the substitution\n\n\\(u=a^4r^2 - 2a^2r^4\\)\n\nand the\n\nChain Rule\n\n.\n\n\\[\\begin{align*} V &= \\frac{\\pi}{3}u^{\\frac{1}{2}} \\\\ \\frac{dV}{dr} = \\frac{dV}{du}\\times\\frac{du}{dr} &= \\frac{\\pi}{6}u^{-\\frac{1}{2}}\\left(2a^4r-8a^2r^3\\right) \\\\ &= \\frac{\\pi}{3}\\frac{a^4r-4a^2r^3}{\\sqrt{a^4r^2-2a^2r^4}} \\end{align*}\\]\n\nThis is zero when\n\n\\[\\begin{align*} a^4r-4a^2r^3 &= 0\\\\ a^2r\\left(a^2-4r^2\\right) &= 0\\\\ r=0 \\text{ or } \\frac{a}{2}. \\end{align*}\\]\n\nNote that we can ignore the negative solution, \\(r=-\\frac{a}{2}\\), because of the physical context of the question.\n\nFinding the second derivative of the volume (to show we have a maximum) would be difficult.\n\nInstead we could argue that \\(V=0\\) for \\(r=0\\) and \\(r=\\dfrac{a}{\\sqrt{2}}\\), and is positive for all values of \\(r\\) in between. The turning point at \\(r=\\dfrac{a}{2}\\) must therefore be a maximum.\n"
   }
  ]
 }
