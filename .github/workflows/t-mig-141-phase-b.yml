@@ -7,7 +7,7 @@
 #     read_write endpoint, NEON_API_KEY = the CI write-capable key of record),
 #     branch-local owner password reset (PRODUCTION ROLES NEVER TOUCHED), the
 #     FROZEN Phase-B driver (tools/glyph-normalization/phase_b_apply.py,
-#     sha-pinned below, parser checkout pinned to 5e7beb1 = the run-005 driver
+#     sha-pinned below, parser checkout pinned to dbb723e = the run-005a driver-fix
 #     commit; the table.v1.json it loads is the run-004 ruling table, sha
 #     1fdd4b4a, byte-identical to d9c1511) applies the 2,949-row glyph patch against the
 #     COW — pre-write gates (C9 id-set sha, before-images sha, embed pre-state,
@@ -25,7 +25,7 @@
 #     already-committed batches byte-exact from the before-images.
 #
 # FROZEN PINS of record (hard sha checks below, fail-closed):
-#   parser checkout ......... 5e7beb1 (run-005: the frozen driver of record;
+#   parser checkout ......... dbb723e (run-005a: the frozen driver of record, db-file parser fix;
 #                             table.v1.json = the run-004 ruling table, sha
 #                             1fdd4b4a, byte-identical to d9c1511; ruling
 #                             U+F0CF -> U+2209, operator trace 1a169e3fdeaecd11)
@@ -71,9 +71,9 @@ concurrency:
 env:
   NEON_PROJECT_ID: billowing-cherry-15418366
   NEON_PARENT_BRANCH_ID: br-muddy-bar-a5huwldd
-  PARSER_SHA: 5e7beb1
+  PARSER_SHA: dbb723e
   TABLE_SHA: 1fdd4b4a5ebede2e437473e55a2786dea1a9755d03b68d1eea78a39364e2094a
-  DRIVER_SHA: 6b66bf2f0103ab5a1881a540187f102b172e9036772a04fa0e30b09ef0f37f72
+  DRIVER_SHA: b0697399dbd733afcbc669cb768233e8c88aa1c12cf43c56a39b9809399512f0
 
 jobs:
   cow-proof:
