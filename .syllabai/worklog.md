@@ -13247,3 +13247,20 @@ Work Log:
 
 Stage Summary:
 - The split is now LAW and BROADCAST: every current and future agent reading the briefing, the worklog tail, ADR-038, or the board knows exactly where their data goes. T-OPS-PLANE-001 is the claimable execution card. Step 0 remains the NEON-DB-LOSS parity closure (blocked on operator re-pasting the pooler URL; T-MIG-141 Phase B/C/D gates unchanged).
+
+---
+Task ID: T-OPS-NEONDB-LOSS run-002 (step-0 parity census)
+Agent: main (Super Z, zai-web session web-590847c1, chat 986f6715)
+Task: Operator green-light + creds (trace 1a168961620b5f55) — run the official parity census against the Oct-22 acceptance gate.
+
+Work Log:
+- Census via pooler (neondb_owner, session-level READ ONLY, zero writes): 5/7 gate lines PASS EXACTLY — documents 301 QP/289 MS/489 EQ/162 SYL/112 EN (+1 TEXTBOOK post-baseline growth); exam_papers 4MA1=110 exact, 4CH1=38 (>=37); document_chunks 13,765 (in range); question_asset 585; revision_note_asset 194.
+- GATE-MISMATCH: mark_points 14,141 vs 40,250 (-64.9%); db_size 195 MB vs 335 MB (downstream: mark_points deficit ~25 MB + fresh compact indexes).
+- Forensics: scheme STRUCTURE intact (15,025/15,128 parts = 99.3% have schemes) but mark_points CONTENT thin (avg 2.1 pts/scheme); only 78/289 registry MS docs carry schemes; 6,013 schemes on non-registry source ids (text-compare law, SME namespace); created_at spans Sep-Oct (verbatim/logical restore preserving timestamps, not a re-derivation cluster).
+- Two attributions demand the restore lane's method receipt: (a) drain incomplete vs (b) baseline counted superseded scheme versions (flyway V60/V61 repairs). Re-census to ALL-GATE-PASS after resolution; T-C20 battery deferred until mark_points resolved.
+- Satellite template GONE from main (quarantine physically satisfied); users 587; flyway through V63 all-success; embeddings 5,255/13,765 NULL recorded for trim pass.
+- Secrets: pasted GitHub PAT REJECTED (401 both git+API — new one needed); Neon API token unusable from sandbox (api.neon.tech egress blocked, HTTP 000, token unused); pooler URL functional, read-only use, all three remain on the rotation list.
+- Receipt filed: .syllabai/receipts/NEON-DB-LOSS/run-002-parity-census-GATE-MISMATCH-r0.json. PUSH BLOCKED (PAT invalid) — receipt staged on the broadcast branch with the placement law (both push together on the next valid PAT).
+
+Stage Summary:
+- Restore is REAL (corpus planes faithful, papers/chunks/assets exact, identity alive, satellite gone) but the Oct-22 gate is NOT yet met: mark_points at 35%. Official closure WITHHELD; single-writer hold STANDS; T-MIG-141 Phase B/C/D remain gated. Restore lane owes its method receipt + mark_points completion or an operator ruling on the baseline pin.
