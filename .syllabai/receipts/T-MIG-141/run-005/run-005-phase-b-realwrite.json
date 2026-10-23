@@ -1,0 +1,64 @@
+{
+ "run": "run-005-phase-b-realwrite",
+ "task": "T-MIG-141",
+ "date": "2026-10-24",
+ "operator_gate": "operator go (trace 1a169fc63e946759) = the go/no-go fire order recorded in run-004 next_safe_actions; executed via workflow_dispatch CI gate per spec §4.2",
+ "act": "Phase-B REAL WRITE: in-place glyph normalization of document_chunks over the full 2,949-row wired union (2,765 PUA + 184 ctl-only), patch law per spec §4.2",
+ "runner_of_record": {
+  "workflow": "syllabai-v2 .github/workflows/t-mig-141-phase-b.yml @ commit efc9ccb1 lineage (run-005a pins)",
+  "guard_protocol": "job 1 cow-proof (disposable Neon COW off production br-muddy-bar-a5huwldd, branch-local owner password reset, frozen driver apply + full post-gates, DROP + 404-verify if:always()) -> job 2 prod-apply behind needs:cow-proof GREEN",
+  "frozen_driver": {
+   "file": "syllabai-parser tools/glyph-normalization/phase_b_apply.py @ dbb723e",
+   "sha256": "b0697399dbd733afcbc669cb768233e8c88aa1c12cf43c56a39b9809399512f0",
+   "table_sha256": "1fdd4b4a5ebede2e437473e55a2786dea1a9755d03b68d1eea78a39364e2094a"
+  }
+ },
+ "ci_runs": {
+  "attempt_1_cow_fail_closed": {
+   "run_id": 40003890067,
+   "verdict": "FAIL-CLOSED pre-connect (db-file URL parser misfired on sslmode=require; lane-side blind spot: lane db.uri is KEY=URL form) — zero prod impact, COW dropped + 404-verified, prod-apply correctly SKIPPED by the guard; fixed in parser dbb723e (run-005a), disclosed"
+  },
+  "attempt_2_GREEN": {
+   "run_id": 40004757655,
+   "cow_proof": "SUCCESS (apply + gates + drop verified)",
+   "prod_apply": "SUCCESS (GREEN-APPLY receipt of record: prod-phase-b-receipt.json)"
+  }
+ },
+ "prod_result": {
+  "batches": 176,
+  "restore_ever_attempted": false,
+  "G-C_bounded_delta": "EXACT (subs 20,033 = run-003/004 pin incl. F0CF 2; drop 5,146; seq 15/30/1/7/2 = 220 chars; ctl spaced 2,000; len_delta -5,311; insertions 0)",
+  "G-D_zero_artifact_post_state": "scope regex hits = 0 — the wired exam-paper plane is artifact-FREE (25,399 PUA instances + 2,000 ctl instances eliminated)",
+  "C9_post": "2,949/2,949 rows present, identity+content byte-EXACT vs before-images+expected, embed_rev all = 1 (stale marker)",
+  "embed_post_state": "rev {1: 2949}; no_vec 273 unchanged; 2,676 stale vectors KEPT serving (Phase D restores embed_rev=2 with fresh vectors)",
+  "G-E_control_group": "200/200 byte-identical (zero violations)",
+  "content_tsv": "GENERATED ALWAYS auto-refresh asserted: 0 mismatches",
+  "before_images": "archived in-repo (before-images.jsonl.gz); uncompressed sha 9d9d84c6...84e3b reproduced at write time = bank undrifted"
+ },
+ "lane_side_corroboration": {
+  "method": "independent t0_readonly READ ONLY re-verify AFTER prod-apply (lane-corroboration.json)",
+  "results": {
+   "wired_regex_hits": 0,
+   "f0cf_carriers_serve_U+2209": true,
+   "c9_reproduced": true,
+   "scope_rows_present": 2949,
+   "embed_rev_all_1": true,
+   "no_vec_unchanged": 273,
+   "control_group_violations": 0,
+   "unwired_regex_rows": 1338,
+   "phase_d_selector_estate": 4006
+  }
+ },
+ "disclosures": [
+  "run-1 (CI 40003890067) FAIL-CLOSED pre-connect: driver db-file URL parser misfired on sslmode=require in RAW-URL form (lane db.uri is KEY=URL form — blind spot explained); zero DB impact; COW dropped + 404-verified; prod-apply skipped by the guard protocol as designed; driver fixed + re-pinned (run-005a), lane verify re-run GREEN",
+  "repo VARS NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID found MISSING (GET /actions/vars = [] — hygiene-deleted since the T-MIG-138 era); operator PAT lacks Variables-write (restore attempt HTTP 404); values of record re-carried as workflow env literals (non-secret ids, public in run logs)",
+  "pre-existing stale COW branches on the Neon project of record (r2-diag/db-proof-20261021-004312, t-mig-010/r3, cie-phase4/db-proof-20261020) — NOT this lane property, disclosed for hygiene",
+  "unwired pdftotext-layout plane at 1,338 artifact-regex rows (was ~1,223 at run-001) — OUT of spec scope by the join law; G-E covers 100 sampled; hygiene candidate for a future card",
+  "Phase-D selector precursor: estate 4,006 rows (embedding IS NULL OR embed_rev < 2) = the 934 residual of record + 2,949 freshly stale-marked patched rows + wired no-vec rows; Phase D fold-in queues the whole selector"
+ ],
+ "next_safe_actions": [
+  "Phase C census (beyond-repair trigger criteria per spec §5) — expected near-zero now that the wired plane is artifact-free",
+  "Phase D re-embed fold-in via T-MIG-138 machinery (selector: embedding IS NULL OR embed_rev < 2 — 4,006 estate rows of which the 2,949 patched rows are the fresh leg; median self-cosine >= 0.85 hard gate; embed_rev restored to 2 per row)",
+  "Phase E intake law (syllabai-parser conformance + ocr_batch integration + C-intake-zero-pua canary)"
+ ]
+}
