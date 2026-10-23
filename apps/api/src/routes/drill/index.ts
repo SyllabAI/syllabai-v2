@@ -21,7 +21,10 @@
  * store.ts) and read NO progress-bearing table — no attempts, no
  * ai_mark_events, no gradebook events, ever. F-184 adds ONE read-only path
  * over the drill's own evidence lane (GET /strengths — the decay-driven
- * strength projection; ADR-031: computed at read, never persisted).
+ * strength projection; ADR-031: computed at read, never persisted). F-185
+ * composes that same read into the draw (POST /draw — the model-driven
+ * selection law M1..M8 with the sparse fallback to P1..P6; the draw
+ * response discloses the policy used, never a learner-state number).
  */
 import { Hono } from "hono";
 import type { ZodError } from "zod";
@@ -140,7 +143,11 @@ export function createDrillRouter(deps: DrillRouterDeps): Hono {
     }
     const auth = getAuth(c)!; // shell invariant: authenticated
     const bank = deps.bankOf(parsed.data.course);
-    const outcome = await drawForLearner(bank, deps.store, auth.userId, parsed.data);
+    // F-185 — the reading's decay computes at THIS read against the injected
+    // clock (ADR-031 posture; the strengths route shares the dependency).
+    const outcome = await drawForLearner(bank, deps.store, auth.userId, parsed.data, {
+      now: deps.nowOf?.() ?? new Date(),
+    });
     return c.json(outcome, 201);
   });
 

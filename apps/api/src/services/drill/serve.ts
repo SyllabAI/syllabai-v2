@@ -32,8 +32,16 @@ import {
 } from "../identity/errors";
 import type { DrillMarkSchemeView, DrillMethodCreditView, DrillPartView } from "@syllabai/contracts";
 
+import type { DrillDrawSelection } from "@syllabai/contracts";
+
 import type { DrillBank, DrillPartContent } from "./bank";
 import { drawForAddress, DrillDrawError, DRAW_SIZE } from "./draw";
+import {
+  learnerReading,
+  modelDrawForReading,
+  sparseState,
+  RANDOM_SELECTION,
+} from "./model-draw";
 import { revealForEvidence, type DrillMethodCreditGenerator } from "./reveal";
 import type { DrillPart } from "./census";
 import type { DrillEvidenceInsert, DrillStore } from "./store";
@@ -67,14 +75,27 @@ export interface DrillDrawOutcome {
   poolSize: number;
   freshPoolSize: number;
   usedFallback: boolean;
+  /** F-185 — the policy disclosure (which law served this draw; no learner-state numbers). */
+  selection: DrillDrawSelection;
   parts: DrillPartView[];
 }
 
+/**
+ * F-185 — the draw composition of record: the model-driven selection law
+ * (M1..M8) over the learner's read-only evidence projection, with the
+ * sparse-state fallback to the F-182 random law (P1..P6 verbatim). ADR-031:
+ * every learner number in the reading is computed AT READ from the immutable
+ * evidence rows and never persisted; the zero-stakes law is untouched (the
+ * added read is the strengths projection's own SELECT — the drill's own
+ * table, read-only).
+ */
 export async function drawForLearner(
   bank: DrillBank,
   store: DrillStore,
   learnerId: string,
   input: { course: string; code: string; seed?: number },
+  /** The injected clock for the reading's decay-at-read (ADR-031 posture; tests freeze it). */
+  opts: { now?: Date } = {},
 ): Promise<DrillDrawOutcome> {
   const pool = bank.poolOf(input.code);
   if (pool.length === 0) {
@@ -84,9 +105,21 @@ export async function drawForLearner(
   const seed = input.seed ?? randomSeed();
   const recent = await store.recentDrawnPartIds(learnerId, input.course, input.code);
 
+  // F-185: ONE read-only SELECT over the drill's own evidence lane (the
+  // F-184 strengths projection's read, reused verbatim) feeds the reading;
+  // the sparse law (M4) falls back to the random draw below the floor.
+  const evidenceRows = await store.evidenceForCourse(learnerId, input.course);
+  const reading = learnerReading(evidenceRows, opts.now ?? new Date());
+
   let result;
   try {
-    result = drawForAddress(bank.parts, input.code, recent, seed, DRAW_SIZE);
+    result = sparseState(reading)
+      ? {
+          // The random law of record, verbatim — disclosed as the sparse fallback.
+          ...drawForAddress(bank.parts, input.code, recent, seed, DRAW_SIZE),
+          selection: RANDOM_SELECTION,
+        }
+      : modelDrawForReading(bank.parts, input.code, recent, reading, seed, DRAW_SIZE);
   } catch (err) {
     if (err instanceof DrillDrawError) {
       // Policy P3 verbatim: the address exists but cannot serve a full drill.
@@ -123,6 +156,7 @@ export async function drawForLearner(
     poolSize: result.poolSize,
     freshPoolSize: result.freshPoolSize,
     usedFallback: result.usedFallback,
+    selection: result.selection,
     parts,
   };
 }

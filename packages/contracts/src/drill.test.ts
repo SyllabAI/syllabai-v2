@@ -65,7 +65,7 @@ describe("drill part view — the answer-leakage law", () => {
 });
 
 describe("drill draw response", () => {
-  test("round-trips the full draw envelope", () => {
+  test("round-trips the full draw envelope (F-185: the selection disclosure is a required key)", () => {
     const body = {
       drawId: DRAW_ID,
       course: "igcse-chemistry-19",
@@ -74,6 +74,7 @@ describe("drill draw response", () => {
       poolSize: 155,
       freshPoolSize: 140,
       usedFallback: false,
+      selection: { policy: "model" as const, sparseFallback: false, explorationSlots: 1 },
       parts: [partView],
     };
     expect(drillDrawResponseSchema.parse(body)).toEqual(body);
@@ -81,6 +82,19 @@ describe("drill draw response", () => {
 
   test("drawId must be a uuid", () => {
     expect(drillDrawResponseSchema.safeParse({ drawId: "not-a-uuid", course: "c", code: "x", seed: 1, poolSize: 5, freshPoolSize: 5, usedFallback: false, parts: [] }).success).toBe(false);
+  });
+
+  test("F-185: the selection disclosure binds both policies and refuses invented ones / state numbers", () => {
+    const base = { drawId: DRAW_ID, course: "c", code: "x", seed: 1, poolSize: 5, freshPoolSize: 5, usedFallback: false, parts: [] };
+    expect(drillDrawResponseSchema.parse({ ...base, selection: { policy: "model", sparseFallback: false, explorationSlots: 1 } }).selection.policy).toBe("model");
+    expect(drillDrawResponseSchema.parse({ ...base, selection: { policy: "random", sparseFallback: true, explorationSlots: 0 } }).selection.sparseFallback).toBe(true);
+    // the model policy is the only carrier of exploration slots > 0 by the law,
+    // but the shape pin is the SCHEMA's: the enum + bounds are what bind
+    expect(drillDrawResponseSchema.safeParse({ ...base, selection: { policy: "oracle", sparseFallback: false, explorationSlots: 0 } }).success).toBe(false);
+    expect(drillDrawResponseSchema.safeParse({ ...base, selection: { policy: "model", sparseFallback: false, explorationSlots: 6 } }).success).toBe(false);
+    expect(drillDrawResponseSchema.safeParse({ ...base, selection: { policy: "model", sparseFallback: "no", explorationSlots: 1 } }).success).toBe(false);
+    // required key: a response without the disclosure is not a draw response
+    expect(drillDrawResponseSchema.safeParse(base).success).toBe(false);
   });
 });
 

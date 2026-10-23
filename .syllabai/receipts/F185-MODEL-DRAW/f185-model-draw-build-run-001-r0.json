@@ -1,0 +1,47 @@
+{
+  "receipt": "f185-model-draw-build-run-001-r0",
+  "lane": "F-185 build — the model-driven drill draw goes live (information-maximizing selection over the read-only learner reading, sparse fallback to P1..P6, wire policy disclosure) + the method-credit agreement measurement infrastructure of record (two-rater Cohen's kappa over the F-183 acks)",
+  "operator_launch_word": "Proceed F-185 (model-driven draw + method-credit agreement measurement) (IM trace 1a168845df85bf7d, 2026-10-23); the filed dossier line's named successor per the F-184 build receipt and the F-183 plan §7 handoff verbatim: 'agreement measurement is the F-185 model-driven-draw lane's title, consuming these acks'",
+  "prereg": "docs/F185-MODEL-DRIVEN-DRAW-PLAN.md (committed WITH the implementation per the #216/#225/#229/#232/DC-4/F182/F183/F184 pattern; policy decisions Q1..Q10 disclosed there)",
+  "spec_of_record": {
+    "product_spec": "Kognity Competitive Research Dossier v1.1, Deep Dive D §8.5 row 4 — 'the 5-part draw is BKT/decay-informed — select parts that maximize evidence on the weakest, most-decayed skills at the address (random fallback when the learner state is sparse). Retakes target gaps instead of re-rolling dice; the smallest possible surface on which the adaptivity vacuum gets closed'",
+    "tracker_row": "F-185 'Model-driven drill draw (BKT/decay-informed question selection)' — P2, Wave 3 - Tutor & Diagnostic Intelligence, Cycle 2+, repo syllabai-v2, deps F-182/F-184/F-138/F-139/F-055, Backend + Research, Frontend Impl = No, research-gated",
+    "dependency_posture": "F-138 (BKT Engine) / F-139 (calibration) / F-055 (attempt logger) are Not Started whose SUBSTANCE this lane composes, not re-adjudicates (the F-184 opening's disclosed posture verbatim): the reading of record is the F-184 strength law (S1 anchor + S2 decay) over the F-182 build's drill_part_evidence seam (the F-055 SHAPE); the BKT posterior read swaps in behind the same seam when F-138 lands — the policy is untouched by construction",
+    "scope_law": "the filed spec verbatim: model-driven draw + method-credit agreement measurement consuming the F-183 acks; sparse fallback; latency budget; anti-gaming; no UI (Frontend Impl = No)"
+  },
+  "grounding_first_hand_at_main": [
+    "base of record v2 main 6aa1fe97d1cbb810b9f5970ef04e7d5a7f57cecd at push time (2 receipts-only commits past the F-184 build base 3e3fafef8ae9 — .syllabai/receipts + tasks + worklog only; zero file overlap with this lane; the four open PRs #316/#303/#296/#285 own index.ts, the db journal, smartmark and hub content — this lane touches NONE of them)",
+    "the F-184 build receipt's named successor verbatim: 'F-185 (model-driven draw + method-credit agreement measurement consuming the F-183 acks) is next per the filed dossier line, then F-186 (battle wave, strictly sequenced after F-185); this PR touches nothing the F-185 draw lane owns (draw.ts untouched)' — draw.ts remains untouched here too (the composition is serve.ts; the P1..P6 law is the fallback of record)",
+    "the evidence projection of record verified first-hand: store.evidenceForCourse (the F-184 build's read-only SELECT on drill_part_evidence — code, part_id, marks_awarded, marks_possible, created_at, oldest first) is EXACTLY the reading's substrate; the draw path's only new read is that same SELECT",
+    "the F-183 ack shape verified first-hand: drillMethodCreditViewSchema (engine smart-mark, pipelineVersion, allocations {ref, methodCredited, rationale}, creditsTotal) — the validator-trio law guarantees ack allocations reference known MS-of-record refs with no duplicates, which the kappa law's paired denominator consumes",
+    "the work tree of record rebuilt from the codeload tarball at main (git protocol throttled from this sandbox — the environment caution of record); the full battery ran locally against it"
+  ],
+  "mechanism": [
+    "apps/api/src/services/drill/model-draw.ts (NEW) — the selection law M1..M8 as pure functions: learnerReading (per-code S1/S2 strength at the explicit now; unexplored = strength null), sparseState (below SPARSE_EVIDENCE_FLOOR 5 course-graded rows), informationWeight (1 - strength; UNEXPLORED_WEIGHT 0.5), partInformation (the SECONDARY-code sum — the address cannot discriminate), modelDrawForAddress/modelDrawForReading (P3 floor + P4 recency/fallback + the (score desc, partId asc) total order + EXPLORATION_SLOTS 1 uniform slot + the P5 presentation shuffle, synchronous — M7), RANDOM_SELECTION (the sparse disclosure); ADR-031 verbatim: computed at read, never persisted; no store, no SqlFn, no clock",
+    "apps/api/src/services/drill/method-credit-agreement.ts (NEW) — the measurement law A1..A5 as pure functions: pairedRefs (intersection compared / symmetric difference excluded), methodCreditAgreement (Po, Cohen's Pe from the joint marginals over the SAME paired points, kappa with the degenerate honest null, per-trial breakdown, paired-denominator credit totals); no persistence (A4 — the acks are ephemeral per F-183 law L4)",
+    "apps/api/src/services/drill/serve.ts — drawForLearner composes THE policy of record: the evidence read (the strengths projection's own SELECT) -> learnerReading -> sparse ? drawForAddress verbatim + RANDOM_SELECTION : modelDrawForReading; the injected now (the F-184 nowOf dependency reused); recordDrillEvidence untouched (F-183 byte-identical)",
+    "apps/api/src/routes/drill/index.ts — the draw handler passes the injected clock; one-line composition, zero route-law changes",
+    "packages/contracts/src/drill.ts — drillDrawSelectionSchema {policy model|random, sparseFallback, explorationSlots 0..5} + the REQUIRED selection key on drillDrawResponseSchema (the F-183 additive-field pattern); the no-answer-facts law untouched and re-pinned through the extended schema (the F-183 L5 boundary test green)",
+    "docs/F185-MODEL-DRIVEN-DRAW-PLAN.md — the prereg of record (Q1..Q10 disclosed, incl. Q8: NO DB migration — the policy label persistence for the A/B metric is deferred to the research-run lane because the in-flight Seneca lane owns the db journal; manufacturing a journal conflict would be the real harm)"
+  ],
+  "battery": {
+    "typecheck": "root bun run typecheck (contracts/shared/db/api) — 0 errors; hub tsc --noEmit — 0",
+    "suite": "bun test apps/api packages — 2788 pass / 13 skip / 0 fail (150 files; +36 pins over the F-184 build receipt's 2752: model-draw 22, method-credit-agreement 10, contracts selection 1, route pins 3)",
+    "golden": "golden/retrieval-eval 22 pass / 0 fail + 19/19 selftest vectors (untouched lanes, CI parity)",
+    "zero_core": "scripts/preflight_zero_core_census.py --gate — GREEN (zero live entries, inventory complete)",
+    "census": "no census surface touched — census-of-record.json consumed by the integration pins, never recomputed; the draw.test.ts anti-drift pin green in the suite"
+  },
+  "laws": {
+    "selection": "M1 read-only reading (ADR-031 computed-never-persisted verbatim; now injected); M2 the F-184 strength law composed not re-adjudicated; M3 the secondary-code information PROXY of record (u = 1 - strength; unexplored 0.5); M4 sparse fallback to P1..P6 verbatim below 5 course-graded rows; M5 exploration floor 1 of 5; M6 anti-gaming (P5 extended by the reading; fresh per-draw seed; the wire carries the POLICY, never a state number); M7 synchronous pure selection (no LLM, no extra round-trip); M8 zero stakes (P6 verbatim)",
+    "measurement": "A1 the F-183 ack shape as the trial input; A2 the point-paired denominator (single-rater refs excluded + disclosed); A3 Po / Pe / kappa with the degenerate honest null; A4 no persistence; A5 honest disclosure (population, exclusions, paired credit totals, per-trial breakdown)"
+  },
+  "adr031_law": "computed-never-persisted holds END TO END in the draw lane: no learner-state table, no strength table, no policy-outcome persistence; every strength/weight number is computed at the request's injected now inside the synchronous selection and only the POLICY NAME rides the wire",
+  "residuals": [
+    "the policy label is not persisted (Q8): the A/B metric's per-draw drill_draws column waits for a quiet db journal (the in-flight Seneca lane owns migrations/journal right now); the wire disclosure carries the policy meanwhile",
+    "the reading is a proxy, not BKT (Q2): F-137/F-138/F-139 are the research lanes that replace the anchor derivation; the policy is untouched by construction",
+    "no live agreement number is asserted (Q10): the collection runs (a second generator pass at reveal time = 2x spend, or a teacher-reference replay) are operator-gated research runs; the kappa infrastructure of record is what lands — the F-183 precedent verbatim",
+    "the draw picks WITHIN an address; it does not pick the address (Q1): address-level guidance remains the picker + the F-184 practice-now queue",
+    "F-186 (battle wave) follows per the filed dossier line, strictly sequenced after F-185 per its filed row; battles inherit model-drawn sets through drawForLearner"
+  ],
+  "trace": "1a168845df85bf7d"
+}
