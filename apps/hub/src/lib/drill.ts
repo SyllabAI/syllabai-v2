@@ -166,3 +166,65 @@ export function postDrillEvidence(
     }),
   });
 }
+
+// ── F-184 — the decay-driven strength projection (read-only) ────────────────
+
+/** One address's bar. The band re-bands on the DECAYED value (law S3). */
+export interface StrengthBarView {
+  code: string;
+  anchor: number;
+  lastGradedAt: string;
+  strength: number;
+  band: "LOW" | "DEVELOPING" | "SECURE";
+  gradedCount: number;
+  ungradedCount: number;
+}
+
+/** One practice-now entry (law S5): a decaying address, weakest first. */
+export interface PracticeNowEntryView {
+  code: string;
+  strength: number;
+  band: "LOW" | "DEVELOPING" | "SECURE";
+}
+
+/**
+ * The bar's semantics of record — the SERVER's strings, rendered verbatim
+ * (law S3): the client never re-derives the semantics.
+ */
+export interface StrengthSemantics {
+  formula: string;
+  mastery: string;
+  decay: string;
+  notAGrade: string;
+  bands: string;
+  queue: string;
+}
+
+export interface StrengthSummary {
+  drillableAddresses: number;
+  addressesWithEvidence: number;
+  ungradedOnlyAddresses: number;
+  bars: number;
+  queued: number;
+}
+
+/**
+ * The strengths projection: every strength number was computed AT READ for
+ * THIS response (ADR-031: computed, never persisted) — the generatedAt stamp
+ * discloses the read. No engagement counter exists anywhere in the shape
+ * (the replaced overlay's "% engaged" fill is the named anti-pattern).
+ */
+export interface StrengthResponse {
+  course: string;
+  generatedAt: string;
+  semantics: StrengthSemantics;
+  summary: StrengthSummary;
+  bars: StrengthBarView[];
+  queue: PracticeNowEntryView[];
+}
+
+export function fetchStrengths(course: string): Promise<StrengthResponse | null> {
+  return authedFetch<StrengthResponse>(
+    `/api/v1/learners/me/drill/strengths?course=${encodeURIComponent(course)}`,
+  );
+}

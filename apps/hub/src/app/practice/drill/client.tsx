@@ -188,6 +188,21 @@ export function DrillClient({ course }: { course: string }) {
     return [...byTopic.entries()].sort((x, y) => Number(x[0]) - Number(y[0]) || x[0].localeCompare(y[0]));
   }, [addresses]);
 
+  // F-184 — the practice-now deep link: /practice/drill?code=<address> begins
+  // the draw at that address (build plan Q13 — the strengths tab's queue
+  // "links into drill draws"). Once per mount, never while a draw is active,
+  // and only for an address the fail-closed picker offers; anything else
+  // falls back to the picker — the honest degradation, no invented draw.
+  const deepLinkDrawn = useRef(false);
+  useEffect(() => {
+    if (!addresses || draw || submitting || deepLinkDrawn.current) return;
+    const code = new URLSearchParams(window.location.search).get("code");
+    if (!code) return;
+    if (!addresses.addresses.some((a) => a.code === code)) return;
+    deepLinkDrawn.current = true;
+    void beginDraw(code); // eslint-disable-line react-hooks/exhaustive-deps -- fires once per mount (ref-guarded)
+  }, [addresses, draw, submitting]);
+
   if (!signedIn) {
     return (
       <div className="space-y-4">

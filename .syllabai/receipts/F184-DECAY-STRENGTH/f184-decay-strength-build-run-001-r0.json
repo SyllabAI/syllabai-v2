@@ -1,0 +1,41 @@
+{
+  "receipt": "f184-decay-strength-build-run-001-r0",
+  "lane": "F-184 build — the decay-driven strength surface goes learner-facing: strength route + learner-overview bar (BAR_SEMANTICS verbatim) + practice-now queue linking into drill draws, replacing the engagement-coupled overlay panel",
+  "operator_launch_word": "F-184 build PR (IM trace 1a168294c095a295, 2026-10-23); the opening receipt's named next step and the F-184 tracker BUILD OPEN note's queue verbatim: 'the F-184 build PR (strength route + learner-overview bar rendering BAR_SEMANTICS verbatim + queue UI), then F-185 model-driven draw + method-credit agreement measurement, then F-186 battle wave'",
+  "prereg": "docs/F184-DECAY-STRENGTH-BUILD-PLAN.md (committed WITH the implementation per the #216/#225/#229/#232/DC-4/F182/F183/F184-opening pattern; policy decisions Q7..Q14 disclosed there)",
+  "spec_of_record": {
+    "product_spec": "Kognity Competitive Research Dossier v1.1, Deep Dive D §8.3 (law 3) + §8.5 row 3 — 'Per-spec-point strength display driven by learner state + computed decay (ADR-031: decay computed, never persisted); the bar honestly falls as skills decay and doubles as the practice-now queue at decaying addresses'; requirements: ADR-031 decay engine; spec-point learner overlay; explicit bar-semantics documentation; NO engagement-only component",
+    "tracker_row": "F-184 'Decay-driven strength surface (mastery bar with computed decay)' — P1, Wave 3 - Tutor & Diagnostic Intelligence, Cycle 2+, repo syllabai-v2, Status In Progress (build-open flip of record, syllabai PR #40)",
+    "foundation_of_record": "the F-184 opening (v2 PR #325, merge cbae0f1369357b0): strength.ts laws S1..S6 + the 19-pin battery + the census adjacency — this build touches NONE of the pinned laws; it composes them"
+  },
+  "grounding_first_hand_at_build": [
+    "base of record v2 main 3e3fafef8ae9 at push time (8 content/books/attestation commits past the opening merge; zero file overlap with this lane; the chemistry census substrate questions.json untouched in the range — re-pinned by the draw.test.ts anti-drift pin, green in this battery)",
+    "the engagement-coupled replacement target verified first-hand: apps/hub/src/app/courses/[course]/strengths/strengths-panel.tsx was the localStorage 'SIMULATED overlay' panel whose '% engaged' fill is opening law S3's named anti-pattern — deleted by this build (the tab renders the server's projection only)",
+    "the graded-at clock grounded in the seam: drill_part_evidence rows are immutable, written once post-attempt with the MCQ grading already applied — created_at IS the graded-at clock (build plan Q8); no new column, no backfill, no persisted decay",
+    "the zero-core posture: the new hub wire (fetchStrengths -> /api/v1/learners/me/drill/strengths) rides the v2 drill family, not any core route family — census gate GREEN"
+  ],
+  "mechanism": [
+    "packages/contracts/src/strength.ts (+ barrel one-liner, + 12 schema pins) — the wire of record: strengthQuerySchema, strengthBarViewSchema (band = the learner-model masteryBandSchema), practiceNowEntryViewSchema, strengthSemanticsSchema (the SERVER's BAR_SEMANTICS strings ride the payload — the client renders, never re-derives), strengthSummarySchema (ungradedOnlyAddresses = law S4's visible absence), strengthResponseSchema (generatedAt discloses the read; no engagement counter exists in the shape)",
+    "apps/api/src/services/drill/store.ts (+evidenceForCourse) — ONE read-only SELECT over the drill's OWN drill_part_evidence lane (code, part_id, marks_awarded, marks_possible, created_at, oldest first); the zero-stakes law untouched: no write, no progress-bearing table, no gradebook surface",
+    "apps/api/src/services/drill/strength-serve.ts — the projection: bank census address space (law S6 adjacency: non-drillable/unknown codes never surface), THE strength law of record verbatim (addressStrength + practiceNowQueue; zero new strength/decay math), bars sorted weakest-first (the S5 ordering on the wall, build plan Q11), semantics = BAR_SEMANTICS verbatim, now injected (no clock in the layer)",
+    "apps/api/src/routes/drill/index.ts (+GET /strengths, +nowOf dep) — the drill router's own laws reused: authz shell first (401 never 404), contracts binding (400 bad_request), UnknownCourseError -> 404 via drillErrorResponse; the route stamps generatedAt = the injected now (ADR-031 computed-at-read)",
+    "apps/hub/src/lib/drill.ts (+fetchStrengths + types) — the authedFetch posture verbatim: null on any failure, the caller renders the honest state",
+    "apps/hub/src/app/courses/[course]/strengths/{page,strengths-panel}.tsx — the REPLACEMENT surface: sign-in CTA / honest failure + retry / onboarding empty states (no evidence; ungraded-only) / practice-now queue card linking /practice/drill?code=<address> / bars weakest-first with band chips + exact anchor + last-graded-relative + graded/structured counts / the payload's BAR_SEMANTICS rendered verbatim in the footer with the computed-at-read disclosure",
+    "apps/hub/src/app/practice/drill/client.tsx (+deep-link) — ?code=<address> begins the draw at that address (build plan Q13): once per mount, ref-guarded, never while a draw is active, only for addresses the fail-closed picker offers; anything else falls back to the picker"
+  ],
+  "battery": {
+    "typecheck": "root bun run typecheck (contracts/shared/db/api) — 0 errors",
+    "suite": "bun test apps/api packages — 2752 pass / 13 skip / 0 fail (148 files; suite grew 2735 -> 2752 with this lane's 17 pins)",
+    "new_pins": "packages/contracts/src/strength.test.ts — 12 pass (schema positives/negatives, band vocabulary, the no-engagement-shape law, the honest empty projection); apps/api/test/drill/strength-route.test.ts — 5 pass (authz shell 401; bars+queue+semantics weakest-first with the hand-computed decay conformance THROUGH the wire: 0.8 SECURE anchor -> DEVELOPING 0.7533 at 22 days on tau 365; honest zeros; binding 400 / registry 404; the zero-stakes law on the wire — every SQL fired is a SELECT on drill_part_evidence only)",
+    "golden": "bun golden/runner.ts --selftest — OK; retrieval eval 22 pass / 0 fail + 19/19 selftest vectors (untouched lanes, CI parity)",
+    "zero_core": "scripts/preflight_zero_core_census.py --gate — GREEN (zero live entries, inventory complete)",
+    "hub_build": "bun run build:hub — GREEN (the strengths tab is statically prerendered; the build is the prerender gate)"
+  },
+  "adr031_law": "computed-never-persisted holds END TO END: no strength table exists (this PR adds none), the store gains a read only, every strength number in a response is computed at the request's injected now and stamped generatedAt, and nothing is ever written back — the nightly job, the route, and the bar all re-decay from the stored anchor",
+  "residuals": [
+    "the anchor is a marks-weighted posterior, NOT BKT (opening residual verbatim) — F-137/F-138/F-139 are the research lanes that replace the anchor derivation; the decay law is untouched by construction",
+    "the strengths tab serves the ONE censused course (igcse-chemistry-19); other courses render the drill onboarding posture — the bar exists only where the drill ships (anchor law)",
+    "F-185 (model-driven draw + method-credit agreement measurement consuming the F-183 acks) is next per the filed dossier line, then F-186 (battle wave, strictly sequenced after F-185); this PR touches nothing the F-185 draw lane owns (draw.ts untouched)"
+  ],
+  "trace": "1a168294c095a295"
+}
