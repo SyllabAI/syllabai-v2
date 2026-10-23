@@ -34,6 +34,19 @@ task:
     instruments of record will NOT re-derive — enumerate any such rows before
     the census claims completeness (run-003 attributes the growth to recorded
     runs; none known hand-curated).
+    UPDATE 2026-10-24 (2) — SUBJECT ATTRIBUTION (run-007, operator question
+    trace 1a169e273772bad5): the estate was NEVER maths-b-only. Survivors
+    (14,141, reconciled exact) = paper-relay 3,836 pts (ALL Chemistry, 90
+    papers) + SME EQ bank 9,662 pts / 5,822 schemes (Maths A 3,968 / Maths B
+    2,133 / Chemistry 1,911 / Physics 1,135 / CIE A-Level Maths 515) + 117
+    unresolved-source draft schemes 643 pts (owner ruling needed). Rollup:
+    Maths ~46.8%, Chemistry ~40.6%, Physics ~8.0%, unresolved 4.5%. Lost
+    +26,109 was primarily MATHS A+B (4MB1 artwork run + T-MIG-138 backfill +
+    V60/V61 lineage). REBUILD SCOPE = FOUR SUBJECTS: instruments to enumerate
+    are the SME EQ re-import (ADR-026), the chemistry paper pipeline
+    (ADR-037 lineage), the 4MB1 artwork run, the T-MIG-138 backfill, and the
+    V60/V61 lineage; the oracle is multi-subject and the replay must
+    reproduce ALL of it (not just maths) before the 40,250-basis census.
   next_safe_actions: >
     (1) Scope the re-runs: 4MB1 62-paper artwork scale run + T-MIG-138
     embed/marks backfill discipline + fprod1 V60/V61 idempotent lineage —

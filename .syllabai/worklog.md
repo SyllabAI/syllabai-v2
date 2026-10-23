@@ -20088,3 +20088,23 @@ Work Log:
 
 Stage Summary:
 - run-003 COMPLETE: Phase B is dry-run-proven — the map, gates, rollback artifact, and disproof evidence are all of record (.syllabai/receipts/T-MIG-141/run-003-phase-b-dryrun.json + dryrun-gates.json + control-group.json + before-images.jsonl.gz). The real Phase-B write run is an operator-gated CI-gate-pattern act (2,947 rows + F0CF ruling). Card execution_record + next_safe_actions updated. Zero DB writes throughout; fetch-first, no force.
+- mark_points disposition DECIDED and DISPATCHED: content/bank lane rebuilds the full estate (target census 40,250 basis + 14,141 oracle cross-check, receipt run-007+); the NEON-DB-LOSS recovery program is now purely forward-looking (rebuild + cut-over), no more forensics.
+- Provisioner unblock remains the cut-over gate; 4MA1 COW dry-run queued behind it unchanged.
+- Standing: credential rotation overdue; tripwire around all rebuild writes; T-OPS-TRIPWIRE-001 duty unchanged.
+
+---
+Task ID: T-CONTENT-MP-REBUILD-001 r1 (operator question trace 1a169e273772bad5: "The markpoints, were they of only maths b? Or other subjects as well?")
+Agent: restore-parity / ops lane (Z.ai session web-590847c1, chat 986f6715)
+Task: subject-attribution census of the mark_points estate (survivors + lost growth) — answers the operator and scopes the from-scratch rebuild.
+
+Work Log:
+- Four READ ONLY probe phases (schema discovery -> source_document_id text-compare relays per T-MIG-141 law -> question-bank chain -> id-namespace texture). Two probe defects (ungrouped outer column; chunk-join fan-out) caught by reconciliation checks and fixed.
+- SURVIVING 14,141 reconcile EXACTLY into three planes: paper-relay 3,836 pts / 794 schemes / 90 papers — ALL Chemistry (unknown-qual 2,407 + 4CH1 1,161 + 4CH0 265 + IGCSE 3); SME EQ bank (sme-corpus-import-v1, ADR-026) 9,662 pts / 5,822 schemes — Maths A 3,968 (higher 3,538 + foundation 430), Maths B 2,133, Chemistry 1,911 (IGCSE 1,404 + CIE 507), Physics 1,135, CIE A-Level Maths 515; drafts (pdflane-atoms-draft-v1, source NULL) 643 pts / 117 schemes — subject UNRESOLVED of record.
+- Subject rollup of survivors: Maths ~46.8% / Chemistry ~40.6% / Physics ~8.0% / unresolved 4.5%. Verification: 0 surviving points chain to 4MA1/4MB1 papers (all surviving maths = SME EQ plane); all 14,141 pre-snapshot (newest 2026-10-20T22:28Z).
+- LOST +26,109 (of-record runs): 4MB1 artwork run (Maths B) + T-MIG-138 backfill (Maths A) + fprod1 V60/V61 lineage (java-core flyway, not in this repo) — primarily MATHS A+B.
+- Receipt run-007-markpoints-subject-attribution-r0.json; rebuild card UPDATE (2): scope = FOUR subjects; instrument enumeration added (SME EQ re-import / chemistry paper pipeline / 4MB1 run / T-MIG-138 backfill / V60-V61); oracle is multi-subject — replay must reproduce ALL of it before the 40,250-basis census.
+- Zero DB writes, zero API calls, zero LLM calls; probe scripts stay sandbox-local (trim-census house pattern). Fetch-first, no force.
+
+Stage Summary:
+- Operator question ANSWERED with measured numbers: never maths-b-only — four subjects in the estate; the lost growth was maths-heavy, the survivors are maths+chemistry+physics.
+- Rebuild dispatch is now subject-scoped; the 117 draft schemes (643 pts) need an owner ruling (re-derive vs re-derivable-drop).
