@@ -13153,3 +13153,17 @@ Work Log:
 
 Stage Summary:
 - T-MIG-141 CLAIMED of record; census of record intact under the spec join law; scope hash pinned. Next: OEQ normalize_pua base extraction (donor, read-only) -> rendered-evidence pass @150dpi (CROP-REVIEW pattern) -> syllabai-parser tools/glyph-normalization/table.v1.json. Zero prod writes; fetch-first, no force.
+
+---
+Task ID: T-HUB-FIX-001 toolkit-archived-label r0 (operator order "push the one-line label fix to the hub repo", trace 1a1687fe071d6fd9)
+Agent: restore lane (Z.ai CLI session web-528c0352, chat a7ae5075)
+Task: fix the toolkit class picker labeling every ACTIVE class "(archived)"
+
+Work Log:
+- Defect proven live during the r018 hub-flow acceptance walkthrough (11:13-11:30Z): toolkit picker showed "9B Biology — CIE IGCSE Biology (archived)" while GET /api/v1/teacher/classes (fresh prod bundle) serializes "status":"active" (lowercase) and public.classes.status='ACTIVE' in the DB — the hub-side comparison was the defect.
+- Root cause: apps/hub/src/app/teacher/toolkit/toolkit-client.tsx:228 compared c.status !== "ACTIVE" (uppercase) — the ONLY uppercase class-status comparison in apps/hub/src (git grep '"ACTIVE"' apps/hub/src = this single hit); sibling surfaces (teacher-client.tsx:172, classes-client.tsx:210, knowledge-graph client.tsx:121) all compare lowercase and are correct.
+- Fix: one line, !== "ACTIVE" -> !== "active". No test asserts the label (grep archived over apps/hub/src/app/teacher/toolkit = component only); no schema/type change (line 103 types status: string).
+- Fetch-first via detached worktree from 0d77582c (local main worktree dirty + 133 behind, untouched); dirty-worktree laws respected; no force.
+
+Stage Summary:
+- One-line hub fix ready to push to main (git-connected hub auto-bakes ~90s); live re-verify of the picker label scheduled post-deploy. Scope: 1 component line + this worklog entry; zero API/DB changes; no force.
