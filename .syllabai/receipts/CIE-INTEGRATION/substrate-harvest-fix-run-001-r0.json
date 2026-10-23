@@ -1,0 +1,59 @@
+{
+ "receipt": "substrate-harvest-fix-run-001-r0",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T3-SUBSTRATE-1",
+ "operatorOrder": "substrate-side harvest fix (IM trace 1a16add183a67d55, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — discharges the T-RULE-T3-CORPUSGATE-ADJ-1 run-001 residualDisclosure.substrateClass of record (receipt corpusgate-adjudication-transpile-run-001-r0.json @ 353e6c30: 'the substrate-side harvest fix (render_inline transpile at resources) is a separate operator-scoped lane')",
+ "agent": "main (zai-web)",
+ "generatedUtc": "2026-10-24T02:05:00Z",
+
+ "theFix": {
+  "landedAt": "SyllabAI/syllabai-resources main e2f17bb59397415c474352244e7fed0a698f79f0 (parent 17865971c40a; fetch-first, no force; post-push verify file scope EXACT 4 paths)",
+  "files": [
+   "scripts/sme_speech_transpile.py (NEW) — faithful Python port of the of-record speech-grammar -> KaTeX ladder (speech-math.ts speechToTex + speech-extras genericChain/hasResidualGrammar/wordToSymbol/symbolPreMap/stripSpaceTokens + cie_math_extras ciePreMap/ciePlainCollapse + run-002 macro de-normalization guard and collapse-rung base pre-map split), GENERAL renderer variant; stdlib-only, no runtime KaTeX dependency",
+   "scripts/sme_examq_scrape.py (PATCHED) — the render_inline alt-ONLY fallback (of-record 'backticks the alt when mathml is absent' — the exact emission point of the class, ONE function covering all three carriers: SME-RevisionNotes .md via sme_notes_scrape, SME-ExamQuestion topic.json/mark-schemes.md, SME-Flashcards deck text via blocks_to_md): alt -> transpile_alt -> $tex$ + provenance sidecar record via=alt-transpile (AGENT.md rule 4); no confident conversion -> legacy backticked speech verbatim (fail-closed, never garbage math); MathML path byte-unchanged",
+   "scripts/sme_speech_transpile_test.py (NEW) — the pinned battery (84 byte-exact pairs + 6 fail-closed negatives + 12 guard unit cases + idempotence + residual-grammar sweep)",
+   ".github/workflows/scripts-tests.yml (+1 corpus-gates step wiring the battery)"
+  ],
+  "lawsCarried": [
+   "NO-GUESS: only speech-signature alts convert (trigger gate = of-record patchString semantics: STRONG speech markers OR a literal ' space ' token); plain-text alts (ids, captions) stay untouched",
+   "fail-closed: any residual Chrome speech grammar in the produced TeX -> the alt stays verbatim; the ladder only; unfixed stays speech, never garbage",
+   "run-002 macro de-normalization guard (\\Delta/\\times doubled forms collapsed) + collapse-rung base pre-map split (currency glyphs reach ciePlainCollapse raw)",
+   "the econ-25-scoped straight x/X -> \\times override is DELIBERATELY ABSENT from the general renderer (lane-scoped at the v2 econ-25 layer of record; fleet-wide it would corrupt maths upright letter-x); the run-002 audited general tokens (triangle/increment -> \\Delta, thin-space, NBSP, en-dash minus-position, £ -> \\pounds, € -> \\text{€}, billion -> \\text{billion}) ARE carried"
+  ]
+ },
+
+ "verificationBattery": {
+  "portEquivalence": "84/84 BYTE-EXACT vs the of-record TS ladder itself (bun, katex throwOnError) executed over real substrate specimens harvested across 13 CIE lanes incl. the of-record econ-25 gate-class forms — a port-equivalence proof on live corpus data, not a re-derivation; expectations pinned in the battery and verified GREEN remotely (CI run 40041847184 workflow_dispatch @ e2f17bb: corpus-gates job SUCCESS)",
+  "fleetAudit": {
+   "censusPin": "54c0534 (zero-clone raw scan of 26,699 text carriers across SME-RevisionNotes/SME-ExamQuestion/SME-Flashcards, gate-exact verify_corpus_23a MARK grammar + MARK_STRONG structural subset; census validity disclosed: the harvest-relevant SME-* trees verified UNCHANGED between the census pin and the commit parent 17865971c40a — 0 SME- files in the 54-file compare delta; scripts delta = Official-ExamQuestion exporter family only, zero overlap)",
+   "classCensus": "full-MARK class: 7,351 flagged files / 109,367 hits / 89 lanes fleet-wide (CIE-slug 3,584 files / 47,396 hits / 42 of 44 CIE lanes); STRUCTURAL subset: 5,071 files / 51,220 hits / 76 lanes (CIE-scoped 2,343 files / 21,104 hits / 34 of 44 lanes); the run-007 leg-2 triage figures (30/44 lanes, physics-25 154 files, maths-25-extended 119) were triage-time estimates without a receipted method — this census is the pin-pinned of-record fleet map (method + per-lane table mirrored lane-side)",
+   "units": "56,546 unique triggering alt-units across 40 CIE lanes (the renderer's actual conversion candidates at capture time) -> 13,865 $-conversions + 965 plain-collapse + 0 kept unconverted at span level",
+   "katexAudit": "13,777/13,865 $-outputs parse with katex throwOnError (99.37%); the 88 residual (0.63% of $-outputs, 0.25% of units) = sub-parse-precision classes (& inside brace groups, count-balanced brace inversions) DISCLOSED, NOT hidden — they ride the standing downstream enforcement (the v2 import layer's mandatory 23a extraction + the verify_corpus_23a zero baseline), exactly the of-record posture for anything the ladder cannot verify"
+  },
+  "katexApproxGate": "the port's katexOk rung-gate is approximated by _katex_approx_ok: EIGHT evidence-derived clauses, each = a KaTeX throw class proven on the fleet corpus (bare \\n escaped-blockquote artifact / dangling script base / raw unescaped $ / same-sign double-script nested-brace-aware / combining marks U+0300-U+036F / brace imbalance / env begin-end imbalance / env-less &); every guard validated against the 84 KaTeX-passing fixtures (zero false rejects) and its fleet failure class",
+  "ofRecordCrossCheck": "the ladder's Unemployment-rate output byte-matches the v2 corpus of record (the run-001 repaired bytes) on the formula prefix — the disclosed delta = exactly the excluded econ override (\\times vs \\mathrm{x})",
+  "liveIntegrationProbe": "patched render_inline on synthetic Wiris nodes: MathML path byte-unchanged ($a^{2}$ + standard sidecar record), alt-ONLY PED specimen -> KaTeX $..$ + via=alt-transpile provenance record, non-speech alt -> legacy backtick (no sidecar noise)"
+ },
+
+ "scopeDiscipline": {
+  "committedArtifactsNOTRewritten": "this lane fixes the HARVEST (the renderer); the already-committed substrate corpus carrying the class (structural: 5,071 files fleet-wide / 2,343 CIE-scoped at census pin) is the operator-gated RESIDUE WAVE, exactly matching the run-001 posture ('the standing instrument re-runs per-lane on future serving waves'); the pin-pinned census gives the operator the complete map",
+  "zeroContact": "zero corpus content changes, zero scraper behavior beyond the alt-ONLY branch, zero spec/registry/index/sidecar contact, zero v2 content changes, zero DB/Vercel/LLM contact",
+  "observation": "scripts-tests.yml push trigger reads 'branches: ain]' (corrupted selector, pre-existing) — CI verified via workflow_dispatch instead; flagged for an operator-scoped fix, NOT self-granted"
+ },
+
+ "artifacts": {
+  "resourcesCommit": "e2f17bb59397415c474352244e7fed0a698f79f0",
+  "ciRun": "40041847184 (workflow_dispatch, corpus-gates SUCCESS)",
+  "census": "work/substrate/substrate_census_54c0534.json + structural_census_54c0534.json + scan_progress_54c0534.jsonl (per-file ledger, 26,699 rows)",
+  "fleetAudit": "work/substrate/fleet_audit_transpiled.json + fleet_audit_katex_r0.json",
+  "instruments": "scripts/substrate_census_r0.py, substrate_census_structural_r0.py, fleet_audit_extract_r0.py, check_port_equivalence_r0.py, gen_transpile_battery_r0.py, assemble_resources_commit_r0.py, push_resources_commit_r0.py (session lane-side); speech_ladder_reference_r0.mjs + fleet_audit_katex_r0.mjs (v2 worktree scratch)"
+ },
+
+ "residuals": [
+  "the committed-substrate residue wave (operator-gated): 5,071 files / 51,220 structural hits fleet-wide (2,343 files / 21,104 hits CIE-scoped) — the standing instrument (this port, run per-lane) + the fleet census map are the ready inputs",
+  "the 88 KaTeX-residual $-output classes (0.63% of $-outputs) — downstream enforcement stands (v2 import 23a extraction + corpus gate zero baseline)",
+  "the corrupted scripts-tests.yml push trigger ('branches: ain]') — operator-scoped",
+  "PAT rotation CRITICAL-OVERDUE (standing disclosure)"
+ ],
+ "trace": "1a16add183a67d55"
+}
