@@ -20,6 +20,8 @@ import { describe, expect, test } from "bun:test";
 import { Hono, type Context } from "hono";
 
 import {
+  battleSettlementResponseSchema,
+  battleStartResponseSchema,
   drillAddressesResponseSchema,
   drillDrawResponseSchema,
   drillEvidenceResponseSchema,
@@ -113,6 +115,16 @@ function sqlStub(rows: Record<string, Array<Record<string, unknown>>> = {}) {
     { match: /select id from drill_part_evidence/, rows: rows.existingEvidence ?? [] },
     { match: /insert into drill_part_evidence/, rows: [{ id: EVIDENCE_ID, created_at: "2026-10-23T00:00:01Z" }] },
     {
+      // F-186 — the battle settlement's draw-scoped evidence read (double-
+      // scoped by draw id + learner id; a SELECT on the drill's own lane).
+      match: /from drill_part_evidence where draw_id =/,
+      rows: rows.drawEvidence ?? [],
+      rowsFor: (p) =>
+        (rows.drawEvidence ?? []).filter((e) => e.draw_id === p[0] && e.learner_id === p[1]) as Array<
+          Record<string, unknown>
+        >,
+    },
+    {
       // F-185 — the draw's reading read: the SAME read-only projection the
       // F-184 strengths route serves from (the drill's own evidence lane).
       match: /select code, part_id, marks_awarded, marks_possible, created_at from drill_part_evidence/,
@@ -129,6 +141,8 @@ function makeApp(
   auth: (c: Context) => Record<string, unknown> | null,
   bank: DrillBank = bankStub(),
   sql: SqlFn = sqlStub(),
+  /** F-186 — the injected battle clock (ADR-031 posture; tests freeze it). */
+  nowOf?: () => Date,
 ) {
   const app = new Hono();
   app.use("*", async (c, next) => {
@@ -141,7 +155,7 @@ function makeApp(
     if (course !== bank.course) throw new UnknownCourseError(course);
     return bank;
   };
-  app.route("/api/v1/learners/me/drill", createDrillRouter({ bankOf, store: createDrillStore(sql) }));
+  app.route("/api/v1/learners/me/drill", createDrillRouter({ bankOf, store: createDrillStore(sql), nowOf }));
   app.onError((err, c) => {
     const mapped = drillErrorResponse(err);
     if (mapped) return c.json(mapped.body, mapped.status as 400);
@@ -162,6 +176,8 @@ describe("drill authz shell", () => {
     ["/api/v1/learners/me/drill/addresses?course=igcse-chemistry-19", { method: "GET" }],
     ["/api/v1/learners/me/drill/draw", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" }],
     ["/api/v1/learners/me/drill/evidence", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" }],
+    ["/api/v1/learners/me/drill/battles", { method: "POST", headers: { "content-type": "application/json" }, body: "{}" }],
+    ["/api/v1/learners/me/drill/battles/b1000000-0000-4000-8000-000000000001/settlement", { method: "GET" }],
   ] as const) {
     test(`anonymous ${path.split("?")[0]} -> 401 (never 404)`, async () => {
       const res = await makeApp(anon).request(path, init);
@@ -536,5 +552,275 @@ describe("POST /evidence — the F-055-shaped seam", () => {
     });
     expect(badConfidence.status).toBe(400);
     expect((await badConfidence.json()).error).toBe("malformed_body");
+  });
+});
+
+// ------------------------------------------------- F-186 the Strength Battle
+
+describe("POST /battles + GET /battles/:drawId/settlement — F-186", () => {
+  const BATTLE_CODE = "4CH1-1.16";
+  const THIN_MCQ = "4CH1-8.88"; // drillable but only 2 choice-gradable parts -> the battle refuses
+  const BATTLE_DRAW_ID = "b1000000-0000-4000-8000-000000000001";
+  const BATTLE_START = "2026-10-23T00:00:00Z";
+
+  // A battle bank: every part MCQ-gradable (the eligible pool IS the pool at
+  // BATTLE_CODE), plus a 2-eligible address that must refuse (law B3's floor).
+  function battleBank(): DrillBank {
+    const ids = ["b1", "b2", "b3", "b4", "b5", "b6"];
+    const parts = ids.map((id, i) => ({
+      partId: id,
+      questionId: `q-${id}`,
+      setId: "official-4ch1-1c-2019-06",
+      plane: "official" as const,
+      order: i,
+      marks: 1,
+      specPointCodes: [BATTLE_CODE],
+    }));
+    const thinParts = ["t1", "t2"].map((id, i) => ({
+      partId: id,
+      questionId: `q-${id}`,
+      setId: "official-4ch1-1c-2019-06",
+      plane: "official" as const,
+      order: i,
+      marks: 1,
+      specPointCodes: [THIN_MCQ],
+    }));
+    const all = [...parts, ...thinParts];
+    const content = new Map(
+      all.map((p) => [
+        p.partId,
+        {
+          problemMd: `problem ${p.partId}`,
+          questionType: "multiple_choice",
+          commandWord: null,
+          choices: [
+            { label: "A", textMd: "wrong" },
+            { label: "B", textMd: "right" },
+          ],
+        },
+      ]),
+    );
+    return {
+      course: "igcse-chemistry-19",
+      parts: all,
+      addressRows: [
+        { code: BATTLE_CODE, official: 6, topic: 0, combined: 6, drillable: true },
+        { code: THIN_MCQ, official: 2, topic: 0, combined: 2, drillable: true },
+      ],
+      censusSummary: { specPointAddresses: 182, covered: 171, drillable: 157, thin: 14, uncovered: 11 },
+      poolOf: (code) => (code === BATTLE_CODE ? parts : code === THIN_MCQ ? thinParts : []),
+      contentOf: (id) => content.get(id) ?? null,
+      marksOf: (id) => (content.has(id) ? 1 : null),
+      isCorrectChoice: (id, label) => (content.has(id) ? label === "B" : null),
+      solutionOf: (id) => (content.has(id) ? `solution ${id}` : null),
+      markSchemeOf: () => null,
+    };
+  }
+
+  function battleDrawRow(overrides: Partial<Record<string, unknown>> = {}) {
+    return {
+      id: BATTLE_DRAW_ID,
+      learner_id: LEARNER_ID,
+      course: "igcse-chemistry-19",
+      code: BATTLE_CODE,
+      seed: 20261023,
+      part_ids: ["b1", "b2", "b3"],
+      pool_size: 6,
+      fresh_pool_size: 6,
+      used_fallback: false,
+      created_at: BATTLE_START,
+      ...overrides,
+    };
+  }
+
+  function battleEvidenceRow(partId: string, correct: boolean | null, createdAt = "2026-10-23T00:00:30Z") {
+    return {
+      draw_id: BATTLE_DRAW_ID,
+      learner_id: LEARNER_ID,
+      part_id: partId,
+      correct,
+      marks_awarded: correct === true ? 1 : correct === false ? 0 : null,
+      marks_possible: 1,
+      created_at: createdAt,
+    };
+  }
+
+  test("201: the battle starts over the eligible pool, disclosed with opponent + clock, NO answer facts", async () => {
+    const res = await makeApp(asStudent, battleBank()).request("/api/v1/learners/me/drill/battles", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ course: "igcse-chemistry-19", code: BATTLE_CODE, seed: 20261023 }),
+    });
+    expect(res.status).toBe(201);
+    const body = battleStartResponseSchema.parse(await res.json());
+    expect(body.code).toBe(BATTLE_CODE);
+    expect(body.seed).toBe(20261023);
+    expect(body.poolSize).toBe(6);
+    expect(body.parts).toHaveLength(3); // BATTLE_SIZE, never a short battle
+    expect(body.opponent).toEqual({ kind: "bot", law: "seeded-coin-v1" });
+    expect(body.clockMs).toBe(60_000);
+    expect(body.startedAt).toBe(BATTLE_START); // the draw row's own createdAt stamp (law B5)
+    // sparse posture (no course evidence): the random law serves, disclosed (B1/M4)
+    expect(body.selection).toEqual({ policy: "random", sparseFallback: true, explorationSlots: 0 });
+    // fairness (B3): every battle part is choice-gradable; answer facts never cross the start
+    for (const p of body.parts) {
+      expect(p.choices).not.toBeNull();
+      expect(p.choices!.length).toBeGreaterThan(0);
+    }
+    const flat = JSON.stringify(body);
+    expect(flat).not.toContain("isCorrect");
+    expect(flat).not.toContain("solution");
+  });
+
+  test("201 above the sparse floor: battles inherit the MODEL policy, disclosed (B1)", async () => {
+    const evidence = [1, 2, 3, 4, 5].map((i) => ({
+      learner_id: LEARNER_ID,
+      course: "igcse-chemistry-19",
+      code: BATTLE_CODE,
+      part_id: `e${i}`,
+      marks_awarded: 0,
+      marks_possible: 1,
+      created_at: "2026-09-01T00:00:00Z",
+    }));
+    const res = await makeApp(asStudent, battleBank(), sqlStub({ evidence })).request(
+      "/api/v1/learners/me/drill/battles",
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ course: "igcse-chemistry-19", code: BATTLE_CODE, seed: 20261023 }),
+      },
+    );
+    expect(res.status).toBe(201);
+    const body = battleStartResponseSchema.parse(await res.json());
+    expect(body.selection).toEqual({ policy: "model", sparseFallback: false, explorationSlots: 1 });
+    // anti-gaming: the wire carries the POLICY, never a learner-state number
+    expect(JSON.stringify(body)).not.toContain("strength");
+  });
+
+  test("409 below the battle floor: a 2-eligible-part address refuses (P3 verbatim, never a short battle)", async () => {
+    const res = await makeApp(asStudent, battleBank()).request("/api/v1/learners/me/drill/battles", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ course: "igcse-chemistry-19", code: THIN_MCQ }),
+    });
+    expect(res.status).toBe(409);
+    expect((await res.json()).error).toBe("conflict");
+  });
+
+  test("404 unknown address; 400 malformed body", async () => {
+    const unknown = await makeApp(asStudent, battleBank()).request("/api/v1/learners/me/drill/battles", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ course: "igcse-chemistry-19", code: "4CH1-9.99" }),
+    });
+    expect(unknown.status).toBe(404);
+    expect((await unknown.json()).error).toBe("not_found");
+
+    const malformed = await makeApp(asStudent, battleBank()).request("/api/v1/learners/me/drill/battles", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ code: BATTLE_CODE }), // course missing
+    });
+    expect(malformed.status).toBe(400);
+    expect((await malformed.json()).error).toBe("malformed_body");
+  });
+
+  test("settlement 404: unknown and foreign draws are indistinguishable (ownership-scoped)", async () => {
+    const res = await makeApp(asStudent, battleBank()).request(
+      `/api/v1/learners/me/drill/battles/${BATTLE_DRAW_ID}/settlement`,
+    );
+    expect(res.status).toBe(404);
+    expect((await res.json()).error).toBe("not_found");
+  });
+
+  test("settlement 409: a 5-part draw is not a battle (the discriminator, Q8)", async () => {
+    const fivePart = battleDrawRow({ part_ids: ["p1", "p2", "p3", "p4", "p5"] });
+    const res = await makeApp(asStudent, battleBank(), sqlStub({ draws: [fivePart] })).request(
+      `/api/v1/learners/me/drill/battles/${BATTLE_DRAW_ID}/settlement`,
+    );
+    expect(res.status).toBe(409);
+    expect((await res.json()).message).toContain("not a battle");
+  });
+
+  test("settlement 409 live: before all-answered and before the clock, the battle stays open (Q5)", async () => {
+    const sql = sqlStub({ draws: [battleDrawRow()], drawEvidence: [] });
+    const res = await makeApp(
+      asStudent,
+      battleBank(),
+      sql,
+      () => new Date("2026-10-23T00:00:30Z"), // mid-clock
+    ).request(`/api/v1/learners/me/drill/battles/${BATTLE_DRAW_ID}/settlement`);
+    expect(res.status).toBe(409);
+    expect((await res.json()).message).toContain("still live");
+  });
+
+  test("settlement 200 all-answered: 2-1 win, the coin's b1 hit splits, no answer key on the wire", async () => {
+    // Coin of record (seed 20261023 over b1/b2/b3, 1 mark each): b1 scored, b2/b3 missed.
+    // Learner: b1 correct (splits with the coin), b2 correct (unopposed), b3 wrong.
+    const sql = sqlStub({
+      draws: [battleDrawRow()],
+      drawEvidence: [battleEvidenceRow("b1", true), battleEvidenceRow("b2", true), battleEvidenceRow("b3", false)],
+    });
+    const res = await makeApp(asStudent, battleBank(), sql, () => new Date("2026-10-23T00:02:00Z")).request(
+      `/api/v1/learners/me/drill/battles/${BATTLE_DRAW_ID}/settlement`,
+    );
+    expect(res.status).toBe(200);
+    const body = battleSettlementResponseSchema.parse(await res.json());
+    expect(body.score).toEqual({ learner: 2, bot: 1, possible: 3 });
+    expect(body.verdict).toBe("win");
+    expect(body.parts[0]!.wonBy).toBe("split");
+    expect(body.parts[1]!.wonBy).toBe("learner");
+    expect(body.parts[2]!.wonBy).toBe("neither");
+    expect(body.clock.closedBy).toBe("all-answered");
+    expect(body.opponent).toEqual({ kind: "bot", law: "seeded-coin-v1" });
+    // law B7: no answer key — the only reveal facts are the learner's own ack facts
+    expect(JSON.stringify(body)).not.toContain("label");
+    expect(JSON.stringify(body)).not.toContain("solution");
+  });
+
+  test("settlement 200 on the clock path: over-clock + unanswered disclose honestly; closedBy clock", async () => {
+    const sql = sqlStub({
+      draws: [battleDrawRow()],
+      drawEvidence: [
+        battleEvidenceRow("b1", true), // in-clock, and the coin hit it too -> split
+        battleEvidenceRow("b2", true, "2026-10-23T00:01:30Z"), // over-clock: real evidence, zero battle marks
+        // b3 never answered -> the coin's miss meets no answer ("neither")
+      ],
+    });
+    const res = await makeApp(asStudent, battleBank(), sql, () => new Date("2026-10-23T00:02:00Z")).request(
+      `/api/v1/learners/me/drill/battles/${BATTLE_DRAW_ID}/settlement`,
+    );
+    expect(res.status).toBe(200);
+    const body = battleSettlementResponseSchema.parse(await res.json());
+    expect(body.clock.closedBy).toBe("clock");
+    expect(body.parts[0]!.wonBy).toBe("split");
+    // law B5: the over-clock answer scores zero HERE (it stays real drill evidence)
+    expect(body.parts[1]!.learner.inClock).toBe(false);
+    expect(body.parts[1]!.learner.correct).toBe(true);
+    expect(body.parts[1]!.wonBy).toBe("neither");
+    expect(body.parts[2]!.learner.answered).toBe(false);
+    expect(body.parts[2]!.wonBy).toBe("neither");
+    expect(body.score).toEqual({ learner: 1, bot: 1, possible: 3 });
+    expect(body.verdict).toBe("draw");
+  });
+
+  test("the zero-stakes SQL posture: the whole battle flow stays on the drill lane (non-vacuous)", async () => {
+    const sql = sqlStub({
+      draws: [battleDrawRow()],
+      drawEvidence: [battleEvidenceRow("b1", true), battleEvidenceRow("b2", true), battleEvidenceRow("b3", true)],
+    });
+    const app = makeApp(asStudent, battleBank(), sql, () => new Date("2026-10-23T00:02:00Z"));
+    const start = await app.request("/api/v1/learners/me/drill/battles", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ course: "igcse-chemistry-19", code: BATTLE_CODE, seed: 20261023 }),
+    });
+    expect(start.status).toBe(201);
+    const settled = await app.request(`/api/v1/learners/me/drill/battles/${BATTLE_DRAW_ID}/settlement`);
+    expect(settled.status).toBe(200);
+    expect(sql.queries.length).toBeGreaterThanOrEqual(5);
+    for (const q of sql.queries) {
+      expect(q).toMatch(/drill_draws|drill_part_evidence/);
+    }
   });
 });

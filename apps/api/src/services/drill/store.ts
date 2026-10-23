@@ -79,6 +79,21 @@ export interface DrillEvidenceKeyRow {
   readonly createdAt: string;
 }
 
+/**
+ * F-186 — the draw-scoped projection the battle settlement reads: the same
+ * immutable row, keyed for the head-to-head (no code needed — the draw row
+ * carries the address). `correct` is the seam's grading verdict verbatim
+ * (null for the ungraded text rows) — the battle credits exactly
+ * `correct === true` rows within the clock and never re-derives a grade.
+ */
+export interface DrillEvidenceBattleRow {
+  readonly partId: string;
+  readonly correct: boolean | null;
+  readonly marksAwarded: number | null;
+  readonly marksPossible: number;
+  readonly createdAt: string;
+}
+
 export interface DrillStore {
   recordDraw(row: DrillDrawInsert): Promise<{ id: string; createdAt: string }>;
   /** The union of part ids across the learner's latest draws at one address, newest first. */
@@ -96,6 +111,12 @@ export interface DrillStore {
    * write, no progress-bearing table, no gradebook surface.
    */
   evidenceForCourse(learnerId: string, course: string): Promise<DrillEvidenceKeyRow[]>;
+  /**
+   * F-186 — the battle settlement's read: the learner's OWN evidence rows for
+   * ONE draw (ownership double-scoped by draw id + learner id), oldest first.
+   * A SELECT on the drill's OWN table — the zero-stakes law is untouched.
+   */
+  evidenceForDraw(drawId: string, learnerId: string): Promise<DrillEvidenceBattleRow[]>;
 }
 
 interface DrawRowRaw {
@@ -204,6 +225,28 @@ export function createDrillStore(sql: SqlFn): DrillStore {
       return rows.map((r) => ({
         code: r.code,
         partId: r.part_id,
+        marksAwarded: r.marks_awarded,
+        marksPossible: r.marks_possible,
+        createdAt: r.created_at,
+      }));
+    },
+
+    async evidenceForDraw(drawId: string, learnerId: string) {
+      const rows = (await sql`
+        select part_id, correct, marks_awarded, marks_possible, created_at
+        from drill_part_evidence
+        where draw_id = ${drawId} and learner_id = ${learnerId}
+        order by created_at asc
+      `) as unknown as Array<{
+        part_id: string;
+        correct: boolean | null;
+        marks_awarded: number | null;
+        marks_possible: number;
+        created_at: string;
+      }>;
+      return rows.map((r) => ({
+        partId: r.part_id,
+        correct: r.correct,
         marksAwarded: r.marks_awarded,
         marksPossible: r.marks_possible,
         createdAt: r.created_at,

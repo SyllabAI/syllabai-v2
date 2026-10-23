@@ -5,6 +5,10 @@
 import { describe, expect, test } from "bun:test";
 
 import {
+  battleSettlementPartSchema,
+  battleSettlementResponseSchema,
+  battleStartRequestSchema,
+  battleStartResponseSchema,
   drillAddressesQuerySchema,
   drillAddressesResponseSchema,
   drillDrawRequestSchema,
@@ -201,5 +205,77 @@ describe("drill addresses", () => {
       addresses: [{ code: "4CH1-1.25", official: 103, topic: 52, combined: 155, drillable: true }],
     };
     expect(drillAddressesResponseSchema.parse(body)).toEqual(body);
+  });
+});
+
+// ── F-186 — the Strength Battle wire law ────────────────────────────────────
+
+describe("battle contracts (F-186)", () => {
+  const battlePart = {
+    partId: "qstnprt_abc",
+    questionId: "q1",
+    setId: "official-4ch1-1c-2019-06",
+    plane: "official" as const,
+    order: 0,
+    marks: 1,
+    questionType: "multiple_choice",
+    commandWord: null,
+    problemMd: "problem",
+    choices: [{ label: "A", textMd: "wrong" }],
+    specPointCodes: ["4CH1-1.16"],
+  };
+
+  test("battle start: request binds course/code (+ optional seed); response discloses opponent + clock, no answer facts", () => {
+    expect(battleStartRequestSchema.parse({ course: "igcse-chemistry-19", code: "4CH1-1.16" }).code).toBe("4CH1-1.16");
+    expect(battleStartRequestSchema.safeParse({ code: "4CH1-1.16" }).success).toBe(false);
+
+    const body = {
+      drawId: DRAW_ID,
+      course: "igcse-chemistry-19",
+      code: "4CH1-1.16",
+      seed: 7,
+      poolSize: 14,
+      freshPoolSize: 11,
+      usedFallback: false,
+      selection: { policy: "model" as const, sparseFallback: false, explorationSlots: 1 },
+      opponent: { kind: "bot" as const, law: "seeded-coin-v1" },
+      clockMs: 60_000,
+      startedAt: "2026-10-23T00:00:00Z",
+      parts: [battlePart],
+    };
+    expect(battleStartResponseSchema.parse(body)).toEqual(body);
+    // the opponent kind is closed: no "classmate" kind exists until matchmaking lands
+    expect(
+      battleStartResponseSchema.safeParse({ ...body, opponent: { kind: "classmate", law: "x" } }).success,
+    ).toBe(false);
+  });
+
+  test("battle settlement: wonBy/closedBy enums are closed; the part shape refuses a label (no answer key)", () => {
+    const part = {
+      partId: "qstnprt_abc",
+      marks: 1,
+      learner: { answered: true, inClock: true, correct: true, marksAwarded: 1 },
+      bot: { correct: false, latencyMs: 5385 },
+      wonBy: "learner" as const,
+    };
+    expect(battleSettlementPartSchema.parse(part)).toEqual(part);
+    expect(battleSettlementPartSchema.safeParse({ ...part, wonBy: "tie" }).success).toBe(false);
+    // a label field would be an answer key — the shape must never grow one silently
+    expect(battleSettlementPartSchema.safeParse({ ...part, bot: { ...part.bot, label: "B" } }).success).toBe(false);
+
+    const body = {
+      drawId: DRAW_ID,
+      course: "igcse-chemistry-19",
+      code: "4CH1-1.16",
+      generatedAt: "2026-10-23T00:02:00.000Z",
+      opponent: { kind: "bot" as const, law: "seeded-coin-v1" },
+      clock: { ms: 60_000, startedAt: "2026-10-23T00:00:00Z", deadline: "2026-10-23T00:01:00.000Z", closedBy: "clock" as const },
+      parts: [part],
+      score: { learner: 1, bot: 0, possible: 1 },
+      verdict: "win" as const,
+    };
+    expect(battleSettlementResponseSchema.parse(body)).toEqual(body);
+    expect(battleSettlementResponseSchema.safeParse({ ...body, clock: { ...body.clock, closedBy: "timeout" } }).success).toBe(false);
+    expect(battleSettlementResponseSchema.safeParse({ ...body, verdict: "tie" }).success).toBe(false);
   });
 });

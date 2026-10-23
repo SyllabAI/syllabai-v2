@@ -51,7 +51,7 @@ export function randomSeed(): number {
   return getRandomValues(new Uint32Array(1))[0]! >>> 0;
 }
 
-function partViewOf(part: DrillPart, content: DrillPartContent): DrillPartView {
+export function partViewOf(part: DrillPart, content: DrillPartContent): DrillPartView {
   return {
     partId: part.partId,
     questionId: part.questionId,
