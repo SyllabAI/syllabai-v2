@@ -6,7 +6,9 @@
  * text, quadratics lane first; Functions second — PR #61; Coordinate geometry
  * third — PR #66, the first multi-station lane; Circular measure fourth —
  * PR #74, the first STRAND lane: new-text subset plus a cross-lane join that
- * serves the circles strand against its existing lane-3 bodies) under
+ * serves the circles strand against its existing lane-3 bodies; Trigonometry
+ * fifth — PR #79, the second two-station lane: the whole substrate as text of
+ * record plus two cross-lane fact joins against the lane-2 bodies) under
  * ADR-UGM-0001 as amended 2026-10-23 and the operator attestation of
  * 2026-10-23. The hub-side import is
  * scripts/import_ugm.py → content/<lane>/ugm-resources.json
