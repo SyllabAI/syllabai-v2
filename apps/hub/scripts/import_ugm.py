@@ -6,7 +6,7 @@ Mirrors the import_content.py discipline: reads a LOCAL checkout/snapshot of
 SyllabAI/syllabai-resources at a pinned ref (never GitHub at runtime), and
 emits a versioned, self-describing JSON bundle committed under content/.
 
-Sources of record (course cie-a-level-maths-20-pure-1, six UGM lanes):
+Sources of record (course cie-a-level-maths-20-pure-1, seven UGM lanes):
   - lane 1 (quadratics): UGM-Enrichment/...-quadratics.json (#55) +
     UGM-Resources/pure-1-quadratics/ (#58), landed of record main@91eed732
   - lane 2 (functions):  UGM-Enrichment/...-functions.json +
@@ -45,6 +45,21 @@ Sources of record (course cie-a-level-maths-20-pure-1, six UGM lanes):
     verdicts), plus two cross-lane fact joins against the existing lane-2
     bodies (r7553/r9527 → 1.6.3; both lane-2 aligned of record, one-to-many
     second rows, text untouched under pure-1-functions)
+  - lane 7 (differentiation — the FOURTH two-station lane, the lanes 1-3/5/6
+    shape): UGM-Enrichment/...-differentiation.json +
+    UGM-Resources/pure-1-differentiation/
+    (PR #91, T-UGM-MODE1-7 / T-UGM-IMPORT-7, + the T-UGM-MODE1-7 amendment
+    PR #92), landed of record main@39e1568abb68c4647cf9ec9cc90a20ba236c0207 —
+    the WHOLE two-station calculus substrate as text of record (106 files:
+    72 new-text substrate across Introducing Calculus + Calculus of Powers —
+    40 mapped + 32 recorded non-overlaps imported unmapped, the honest
+    trapezium-rule/kinematics cluster — plus 34 mapped cross-station strays
+    from five further calculus stations whose tested skill is 1.7.x), with
+    three cross-lane fact joins (r5640 → 1.7.2+1.7.4 one-to-many against the
+    lane-6 text; r7115/r8936 → 1.7.4 against the lane-4 text — both lane-4
+    non-overlaps of record FLIP to aligned, reasons retained; 86 further
+    candidates routed to recorded P3 homes), enriched by T-UGM-MODE1-7
+    amendment stationBreakdown alignment (IC nonOverlap 15 of record)
   all under ADR-UGM-0001 (as amended 2026-10-23) + the operator attestation
   of 2026-10-23 ("downloaded text can ship into SyllabAI. We have permission").
 
@@ -92,7 +107,7 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-DEFAULT_REF = "main@bcc36476c3ee207f8e7ea77904e490f6fdbc0cd6"
+DEFAULT_REF = "main@39e1568abb68c4647cf9ec9cc90a20ba236c0207"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # Per-course UGM lane mapping. Single-station blocks (`station` + `title`)
@@ -180,6 +195,23 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-1-series",
             "ledger": "LEDGER.md — T-UGM-MODE1-6 and T-UGM-IMPORT-6 (PR #89)",
             "expected": {"resources": 99, "rows": 56, "aligned": 43, "nonOverlap": 50},
+        },
+        {
+            "laneSlug": "differentiation",
+            "laneTitle": "Differentiation",
+            "stations": [
+                {"slug": "introducing-calculus", "title": "Introducing Calculus"},
+                {"slug": "calculus-of-powers", "title": "Calculus Of Powers"},
+                {"slug": "chain-rule", "title": "Chain Rule"},
+                {"slug": "calculus-meets-functions", "title": "Calculus Meets Functions"},
+                {"slug": "calculus-trig-log", "title": "Calculus Trig Log"},
+                {"slug": "product-rule", "title": "Product Rule"},
+                {"slug": "power-series", "title": "Power Series"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-1-differentiation.json",
+            "res_dir": "UGM-Resources/pure-1-differentiation",
+            "ledger": "LEDGER.md — T-UGM-MODE1-7 and T-UGM-IMPORT-7 (PR #91) + the T-UGM-MODE1-7 amendment (PR #92)",
+            "expected": {"resources": 106, "rows": 107, "aligned": 40, "nonOverlap": 32},
         },
     ],
 }
