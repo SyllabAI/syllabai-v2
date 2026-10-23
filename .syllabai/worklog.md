@@ -20279,3 +20279,22 @@ Work Log:
 
 Stage Summary:
 - run-007 LANDED of record: the four-stage re-harvest order closed honestly — stages 1-3 evidenced no-ops at the current vintage (zero growth fleet-wide, discovery complete fail-closed), stage 4 = the quiescent pin-vintage convergence at 6dc1f0a2 with engine idempotence re-proven (every counter byte-equal to run-006); the standing CI red is triaged first-hand: the roster leg FIXED (floors re-pinned, standing law), the corpus-gate leg = operator menu (econ-25 speech-alt class, provenance closed). Open: the corpus-gate disposition (operator), the 4-lane serving wave (operator-scoped), class-A 1,203 + recordless 7 (operator menu), PAT rotation, the hung Drive-sync burst class.
+
+---
+Task ID: T-RULE-T3-CORPUSGATE-ADJ-1 run-001 (operator order "adjudicate the corpus gate menu", trace 1a16a4005954662d)
+Agent: main (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Adjudicate the corpus-gate operator menu filed at T-RULE-T3-SME-COVERAGE-1 run-007 leg-2 and execute the ruled disposition of record.
+
+Work Log:
+- Evidence first-hand: gate counts reproduced exactly (span 5 / multiline 12 / baretext 7, all 24 occurrences in cie-igcse-economics-25 — 8 flagged strings, 23 distinct values, 9 standard econ formulas); offender census uncapped with JSON paths; provenance re-verified at the substrate (resources calculation-and-determinants-of-ped.md carries the backticked Wiris alt verbatim — the import is faithful; alt-ONLY nodes at source).
+- ADJUDICATION of record: (a) GRANTED (deterministic fail-closed speech->KaTeX transpiler lane, 23a/23b instrument laws); (b) REJECTED (class provably convertible — refreeze would weaken the frozen T-SME-23b zero law without necessity; stays the residual-only fallback); (c) REJECTED (undoes of-record serving, disproportionate); (d) REJECTED as primary (different cost class, not needed). Zero gate-law change; baseline stays ZERO.
+- Instrument landed: apps/hub/scripts/cie/econ25_speech_transpile.ts — gate-exact detection, 23a patch-MARK superset trigger, ladder econPreMap->ciePreMap->speechToTexSafe(KaTeX+residual-grammar)x2->genericChain->ciePlainCollapse, NO-GUESS scope (gate-flagged strings only), dry-run default, byte-exact round-trip assertion, post-write disk re-read + gate rescan.
+- Evidence-derived token additions (per-instance audited): triangle/increment -> \Delta, "thin space" -> space, straight x/X -> \times (all gate-class instances multiplicative), NBSP -> space; bare "x" deliberately left to the of-record ladder (fail-closed restraint).
+- Two special repairs, each uniqueness-verified (1 occurrence corpus-wide): EXACT line override for the mangled "= -2.0" (23b EXACT_FORMULAS precedent; answer -2.0 confirmed by the mark-scheme narrative "-0.4 results from dividing wrongly") + wrapper double-equals dedup ("text X =  end text space equals").
+- 39/39 conversions KaTeX-verified, 0 unfixed; MID-RUN DISCLOSURE: the first --apply wrote a pre-walk parse (byte-identical no-op — caught by git diff + grep audit before any push); instrument corrected (writes the mutated parse) + post-write verification added; re-apply verified on disk.
+- Battery ALL GREEN: verify_corpus_23a PASSED (all counters 0) / validate_cie_bundles ALL PASS (pure-1 bank 67) / verify_flashcard_sync_courses exit 0 / hub tsc exit 0 / hub full build exit 0. Byte scope: notes.json 5 lines + questions.json 3 lines (indent-1 convention preserved); flashcards byte-identical; zero registry/map/manifest contact (tranche-2 anchors + run-007 roster re-pin untouched).
+- Residual disclosed: 6 gate-clean speech spans beyond the gate class in econ-25 (same family, zero CI impact) + the fleet-wide substrate class (30/44 lanes, run-007 of record) — substrate-side harvest fix = separate operator-scoped lane; the standing instrument re-runs per-lane on future serving waves.
+- Receipt .syllabai/receipts/CIE-INTEGRATION/corpusgate-adjudication-transpile-run-001-r0.json; report mirrored at work/econ25_transpile_report.json (39-fix audit trail).
+
+Stage Summary:
+- Corpus-gate menu ADJUDICATED and DISPOSED of record: option (a) executed — the econ-25 speech class converted to KaTeX-verified math, the 23b zero baseline HELD (no refreeze), CI corpus-gate leg GREEN; (b)/(c)/(d) rejected with grounds. Watchlist: the 6-span gate-clean residue (follow-up wave), the substrate-side harvest fix (operator-scoped), the 4-lane serving wave (operator-scoped), class-A 1,203 + recordless 7 (operator menu), PAT rotation CRITICAL-OVERDUE. LANE: IDLE.
