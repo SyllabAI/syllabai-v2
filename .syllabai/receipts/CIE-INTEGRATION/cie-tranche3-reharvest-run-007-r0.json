@@ -1,0 +1,46 @@
+{
+  "receipt": "cie-tranche3-reharvest-run-007-r0",
+  "family": "CIE-INTEGRATION",
+  "lane": "T-RULE-T3-SME-COVERAGE-1 run-007 (the fresh re-harvest pass + quiescent v2 consume)",
+  "operatorOrder": "Proceed with the re-harvest order is yours — resources-lane notes re-harvest -> index re-derivation -> sidecar re-key -> v2 consume (trace 1a16a0ea83dac56d, 2026-10-24 +08, zai-web)",
+  "agent": "main (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-23T19:40:00Z",
+  "preflight": {
+    "v2": "origin/main 69a4d21b fetched and synced (local main 0 ahead; the stale recycled checkout hard-reset to origin, zero of-record work lost — all prior batches verified already landed via remotes)",
+    "resources": "fresh anonymous partial clone (blob:none + sparse: spec-links, SME-RevisionNotes, SME-ExamQuestion via sparse set, scripts, analysis) at origin/main 6dc1f0a2",
+    "noDuplicateActs": "v2 open PRs 4 (316/303/296/285 — none a re-harvest competitor); resources open PRs 1 (#53 wave16, unrelated); both remotes static since 2026-10-23T18:48Z pre-work",
+    "engineInputs": "cie_rejoin_resolutions.yaml blob sha 2bcd4db351f787cac590eb8524d6777014350150 == the engine's pinned sheet (634/166 pins hold)"
+  },
+  "stage1_reharvest": {
+    "verdict": "EVIDENCED NO-OP — zero growth, zero shrink fleet-wide",
+    "method": "the of-record sweep (t3r3_index_sweep.py, run-002 A2 method fleet-wide): per-lane notes index page fetch UNION live sitemap census, diffed against the committed manifests at 6dc1f0a2",
+    "cachesRebuilt": "sme_cambridge_sitemap_census.json (9,968 cambridge urls / 5,236 revision-notes, fetched live 2026-10-23T18:5xZ) + sme_notes_urls.json via the of-record sme_cambridge_courses.py --notes-cache (44 courses)",
+    "census": "44 lanes | grown 0 (+0) | shrunk 0 | committed-missing-from-union 0 (discovery complete, fail-closed)",
+    "smapLagNote": "the sitemap still lags the notes surface on the run-003-grown lanes (econ-25 sm=8, business-25 sm=20, econ-20 sm=62, lit-21 sm=167) — the union law covers it; no committed page missing",
+    "methodBoundary": "existing-page live-edit drift OUTSIDE grown lanes is not covered by the of-record sweep method (same boundary as run-003, which byte-diffed only scraped lanes) — disclosed",
+    "zeroGrowthConsequence": "no scraper run, no registry patch, no resources-side commits (zero corpus churn without substance)"
+  },
+  "stage2_index_rederivation": "EVIDENCED NO-OP — no grown lanes to re-derive; the 44 spec_point_index files stand at the run-005 ② vintage",
+  "stage3_sidecar_rekey": "EVIDENCED NO-OP — no new universe sids; spec-links byte-identical dcc67a87..6dc1f0a2 proven sha256 94/94 sidecars; the only resources delta since the run-006 pin dcc67a87 is the T-C05/T-C06 book-textlayer increment (student-book-textlayer pages, not an engine input)",
+  "stage4_v2_consume": {
+    "engine": "apps/hub/scripts/cie/cie_consume_spec_links.py (T-SPECS-CIE-CONSUME-1), per-run states patched in the v2 worktree (PIN dcc67a87 -> 6dc1f0a2, STAMP -> 2026-10-24T00:00:00Z, operatorDirective run-007, gatewayTrace 1a16a0ea83dac56d), method untouched",
+    "engineRun": "44/44 GREEN — every counter BYTE-EQUAL to run-006 (codesFromSidecar 11,058; t2Hints 51; sheetAdded 0; sheetUpgraded 0; sheetConflictsKept 289; inlineRewrites 0; sidAnchors 0/26/0 byte fixed point — the 26 operator sid-anchors verify-if-equal; v8RetractDropped 0; misTagRepointDropped 0)",
+    "stagingHash": "a2533cfb18baf1d88d0dd81fd734b6174535a09a39f84ff793111a66652c08cb",
+    "deltaShape": "the quiescent pin-vintage convergence (run-006 shape): staged maps differ from committed ONLY in resourcesSha + generatedUtc (items byte-equal, chem25 asserted and representative); bundle manifests differ ONLY in officialSpine (pin/stamp); git-visible delta 88 content files (44 maps + 44 manifests)",
+    "apply": "byte-exact verbatim copy (CIE-REFRESH-1 apply mode): 264 files copied byte-exact across 44 lanes (220 byte-identical bundle files re-written in place + 44 manifests; 44 staged maps moved), every copy byte-compared; staged maps pin/stamp asserted pre-move (6dc1f0a2 / 2026-10-24T00:00:00Z); bundle-manifest officialSpine spot-asserted per lane",
+    "registryInvariants": "chem25 spcptUnmapped 259 / spcptToOfficial 72 UNCHANGED; items byte-equal; class-A 1,203 and recordless 7 unchanged (operator menu stands)"
+  },
+  "validatorLadder": {
+    "file": "apps/hub/scripts/validate_cie_bundles.ts",
+    "advance": "CIE_PIN dcc67a87 -> 6dc1f0a2; dcc67a87 demoted to PRIOR_9; ladder comment carries the run-007 evidence",
+    "run": "bun validate_cie_bundles.ts from apps/hub — ALL PASS (strict-11 coverage 2,164; archive holdings 2,259; pure-1 bank 67; paper-count assertions hold)"
+  },
+  "ciRedTriage": {
+    "finding": "v2 main CI red from 2179161c (the run-004 consume landing, 2026-10-23T18:22Z) through 69a4d21b — TWO legs: (1) verify = cie-phase4 roster floors (questions 6,784 pinned vs 6,974 live; parts 5,789 vs 5,947; pkgParts 9,411 vs 9,603; excl.unmapped 12,294 vs 12,104; zeroServable pinned econ-25 which the run-006 serving wave gave 19 questions) — the EXPECTED consequence of the tranche-3 re-key making +190 questions servable; (2) hub = verify_corpus_23a speech-baseline gate (span 5 / multiline 12 / baretext 7 > baseline 0) — the econ-25 speech-alt class",
+    "leg1Remedy": "LANDED of record this push: floors re-pinned from the live census per the standing law (the V8-retraction and mis-tag precedents, 'not a loosening') — apps/api/test/sme/cie-phase4-roster.test.ts: questions 6,974 / parts 5,947 / pkgParts 9,603 / excl {unmapped 12,104, badSum 0, dupOrder 19} / zeroServable minus econ-25; identity re-proven 19,097 - 6,974 == 12,104 + 19 (12,123 == 12,123); raw 19,097/25,663 UNCHANGED; per-lane pins physics-23 634/1/634 and bio-25 859/1,529 verified UNCHANGED; apps/api battery 2,284 pass / 0 fail locally",
+    "leg2Menu": "NOT self-granted — operator menu for the corpus gate (all in econ-25, provenance chain closed: resources SME-RevisionNotes econ-25 9 note files + SME-ExamQuestion econ-25 topic.json/mark-schemes.md carry Wiris alt-ONLY equation nodes (live page verified: type=equation attrs.alt speech text, zero <math markup); the of-record render_inline fallback backticks the alt when mathml is absent — the corpus faithfully embeds what the source offers; 30/44 CIE lanes carry the class fleet-wide (physics-25 154 files, maths-25-extended 119) but econ-25 is the only SERVED lane): (a) authorize a speech-grammar -> KaTeX transpiler lane (deterministic, fail-closed on unknown tokens, with a no-guess verification battery) then re-serve econ-25; (b) authorize the baseline refreeze to the observed class counts with full disclosure (embeds the speech form as accepted-of-record); (c) revert the econ-25 serving wave (undoes of-record work — last resort); (d) hold the red and route the class into the authored-content lane. The gate's zero baseline is a frozen T-SME-23b law; no gate-law change is self-granted here",
+    "hubGatesOther": "verify_flashcard_sync_courses.ts exit 0; validate_cie_bundles.ts ALL PASS — the corpus gate is the ONLY remaining hub red after this push"
+  },
+  "hygiene": "v2 lane worktree at 69a4d21b (fetch-first, no force); resources anonymous partial clone (blob:none + sparse), zero writes to resources this run (no growth = no commits); zero DB contact; zero Vercel mutations; zero LLM calls; PAT used from the v2 remote embedding for API reads (the standing fingerprint, rotation CRITICAL-OVERDUE — disclosed per the law)",
+  "artifacts": "sweep + engine reports mirrored git-protected at .syllabai/lane-artifacts/T-RULE-T3-SME-COVERAGE-1/run-007-reharvest/ (t3r7_index_sweep.json, _report_cie_consume.json run-007)"
+}

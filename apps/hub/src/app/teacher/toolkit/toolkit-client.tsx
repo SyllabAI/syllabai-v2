@@ -225,7 +225,7 @@ export function ToolkitClient({
                 {classes.rows!.map((c) => (
                   <SelectItem key={c.id} value={c.id}>
                     {c.name} — {c.courseLabel}
-                    {c.status !== "ACTIVE" ? " (archived)" : ""}
+                    {c.status !== "active" ? " (archived)" : ""}
                   </SelectItem>
                 ))}
               </SelectContent>

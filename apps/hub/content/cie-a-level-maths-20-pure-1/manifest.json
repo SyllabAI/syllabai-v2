@@ -1,45 +1,45 @@
 {
-  "schema": "syllabai-demo.content-bundle/2.0",
-  "generatedUtc": "2026-10-20T00:00:00Z",
-  "importSource": {
-    "repo": "SyllabAI/syllabai-resources",
-    "ref": "main@c5f20c5278137fb16a427f68b3332f1431eb345b",
-    "upstreamSchemas": [
-      "syllabai.sme-revision-note/1.0",
-      "syllabai.sme-revision-notes-course/1.0",
-      "syllabai.sme-exam-questions/1.1",
-      "syllabai.sme-spec-point-index/1.0",
-      "syllabai.sme-flashcard-deck/1.0",
-      "syllabai.ugm-spec-enrichment/1.0",
-      "syllabai.ugm-resource-text/1.0"
-    ],
-    "note": "CIE-REFRESH-1 pin-vintage convergence (2026-10-22): importSource.ref re-pinned to the refresh-time tip main@c5f20c52 per the operator dispatch (trace 1a1608dfdd3007d1). Content is NOT re-derived at this pin: the CIE corpus content inputs (Official-Specifications/parsed/cie-*, SME-RevisionNotes, SME-Flashcards, CIE SME-ExamQuestion paths) are tree-identical 0fe5f772..c5f20c52 (zero-delta proof of record in the run receipt) — content byte-untouched by this lane; linkage re-verified fleet-wide by the T-SPECS-CIE-CONSUME-1 engine re-run (staging hash e89eff6f12e7b47b25f5fda8b0ab3caec11d85eddc1b8758d326f920b46751c5, post-apply idempotence changed=0/44).",
-    "ugmNote": "UGM lane addendum (2026-10-23): ugm-resources.json imported by scripts/import_ugm.py from SyllabAI/syllabai-resources — lane 1 quadratics (#55 facts + #58 text) at main@91eed732, lane 2 Combining Functions (T-UGM-MODE1-2 + T-UGM-IMPORT-2, PR #61) merged at main@a32c6c0f3e27941e03e08b3344f276b2010a2f31; multi-lane bundle schema syllabai-demo.ugm-lane-resources/1.1 (stations[]). ADR-UGM-0001 as amended 2026-10-23 + operator attestation. The ref above still pins the original SME/official import vintage for the other files."
-  },
-  "curriculum": {
-    "board": "Cambridge International",
-    "level": "A-LEVEL",
-    "subject": "Maths",
-    "code": "9709",
-    "syllabusVersion": "2023-2025"
-  },
-  "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
-  "counts": {
-    "sections": 1,
-    "topics": 8,
-    "specPoints": 33,
-    "notes": 74,
-    "questionSets": 22,
-    "questions": 725,
-    "parts": 1206,
-    "marks": 3700,
-    "flashcards": 448,
-    "ugmResources": 97
-  },
-  "treeKind": "official-spine",
-  "officialSpine": {
-    "spine": "spines/cie-a-level-maths-20-pure-1.json",
-    "resourcesSha": "3838a264d105e15a7cb8e908fb04d72847f8f94b",
-    "attachmentMap": "content-maps/cie-a-level-maths-20-pure-1.json"
-  }
+ "schema": "syllabai-demo.content-bundle/2.0",
+ "generatedUtc": "2026-10-20T00:00:00Z",
+ "importSource": {
+  "repo": "SyllabAI/syllabai-resources",
+  "ref": "main@c5f20c5278137fb16a427f68b3332f1431eb345b",
+  "upstreamSchemas": [
+   "syllabai.sme-revision-note/1.0",
+   "syllabai.sme-revision-notes-course/1.0",
+   "syllabai.sme-exam-questions/1.1",
+   "syllabai.sme-spec-point-index/1.0",
+   "syllabai.sme-flashcard-deck/1.0",
+   "syllabai.ugm-spec-enrichment/1.0",
+   "syllabai.ugm-resource-text/1.0"
+  ],
+  "note": "CIE-REFRESH-1 pin-vintage convergence (2026-10-22): importSource.ref re-pinned to the refresh-time tip main@c5f20c52 per the operator dispatch (trace 1a1608dfdd3007d1). Content is NOT re-derived at this pin: the CIE corpus content inputs (Official-Specifications/parsed/cie-*, SME-RevisionNotes, SME-Flashcards, CIE SME-ExamQuestion paths) are tree-identical 0fe5f772..c5f20c52 (zero-delta proof of record in the run receipt) — content byte-untouched by this lane; linkage re-verified fleet-wide by the T-SPECS-CIE-CONSUME-1 engine re-run (staging hash e89eff6f12e7b47b25f5fda8b0ab3caec11d85eddc1b8758d326f920b46751c5, post-apply idempotence changed=0/44).",
+  "ugmNote": "UGM lane addendum (2026-10-23): ugm-resources.json imported by scripts/import_ugm.py from SyllabAI/syllabai-resources — lane 1 quadratics (#55 facts + #58 text) at main@91eed732, lane 2 Combining Functions (T-UGM-MODE1-2 + T-UGM-IMPORT-2, PR #61) merged at main@a32c6c0f3e27941e03e08b3344f276b2010a2f31, lane 3 Coordinate geometry (T-UGM-MODE1-3 + T-UGM-IMPORT-3, PR #66 — the first multi-station lane: Geometry of Equations + Circles, stationScope of record) merged at main@7e11a74c40eb5667fedea5cd9a3c49e03b302e8b; multi-lane bundle schema syllabai-demo.ugm-lane-resources/1.1 (stations[], multi-station from lane 3). ADR-UGM-0001 as amended 2026-10-23 + operator attestation. The ref above still pins the original SME/official import vintage for the other files."
+ },
+ "curriculum": {
+  "board": "Cambridge International",
+  "level": "A-LEVEL",
+  "subject": "Maths",
+  "code": "9709",
+  "syllabusVersion": "2023-2025"
+ },
+ "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
+ "counts": {
+  "sections": 1,
+  "topics": 8,
+  "specPoints": 33,
+  "notes": 74,
+  "questionSets": 22,
+  "questions": 725,
+  "parts": 1206,
+  "marks": 3700,
+  "flashcards": 448,
+  "ugmResources": 182
+ },
+ "treeKind": "official-spine",
+ "officialSpine": {
+  "spine": "spines/cie-a-level-maths-20-pure-1.json",
+  "resourcesSha": "6dc1f0a25bdc01cf826076a8680786c9b88a6e8f",
+  "attachmentMap": "content-maps/cie-a-level-maths-20-pure-1.json"
+ }
 }

@@ -1,0 +1,50 @@
+{
+  "receipt": "T-OPS-PLANE-001 run-003-w1-maths-assignment-copyparity-seam-r0",
+  "date_utc": "2026-10-23T18:44:28Z",
+  "lane": "ops (data-plane)",
+  "event": "W1 ASSIGNED TO maths-4ma1 (operator 'Proceed', trace 1a16a0d456f2fecd = ratification of the run-002 proposal) + 4MA1 plane COPIED to W1 with FULL PARITY + two-step retrieval seam PROVEN live.",
+  "w1_assignment": {
+    "course_group": "maths-4ma1",
+    "subject_id": "763dfe2d-d2b5-48fb-ba4c-2f708c637b26",
+    "meta_now": { "template_version": "wh-v1", "course_group": "maths-4ma1", "subject_id": "763dfe2d-d2b5-48fb-ba4c-2f708c637b26", "source_fingerprint": "plane:88706faabc86b92c2ef7519736516a5ae63bb19120de8b7dd88b26738d7a957a", "migrated_at": "2026-10-23T18:44:28.832Z" }
+  },
+  "instrument": {
+    "of_record": "scripts/provisioner/dryrun-4ma1.mjs (branch-based) — BRANCH_DB_URL NOT CREATABLE from this sandbox: api.neon.tech + api.start.neon.tech HTTP 000 (4th re-test this turn)",
+    "executed_variant": "wh-dryrun-copy.mjs (sandbox-local) — read-only-source variant: source read from MAIN PROD under a session-level READ ONLY transaction; copy+parity+seam gates mirrored; zero-residue DELETE rehearsal NOT run (branch-only by law, re-run at T1 on a fresh COW branch)",
+    "latent_bugs_found_and_REPAIRED_in_of_record_instrument": [
+      "cols comma-string -> postgres-js insert builder does rest.flat(): the string was read as ONE column key => UNDEFINED_VALUE on first real run (variant hit it at canary; REPAIRED to array form in dryrun-4ma1.mjs)",
+      "max:2 pool + unsafe('begin'/'commit') does not pin a connection => transaction blocks could span two pool connections (REPAIRED to max:1 on both br and wh)"
+    ]
+  },
+  "source_snapshot_read_only": {
+    "chunks": 8202,
+    "content_bytes": 10307759,
+    "embedded": 6872,
+    "null_embedding": 1330,
+    "null_embedding_note": "EXACTLY the estate no_vec drain figure (r2/r3/r4: 1,330) — the ENTIRE embedding backlog lives in the maths-4ma1 plane; drain/copy interplay: warehouses receive fully-embedded rows per template law, so these 1,330 go to W1 only after the T-MIG-138 drain completes (or via the rebuild backfill plan)",
+    "id_hash_sha256": "88706faabc86b92c2ef7519736516a5ae63bb19120de8b7dd88b26738d7a957a",
+    "kinds": { "QUESTION_PAPER": 2734, "EXTERNAL_QUESTIONS": 2734, "MARK_SCHEME": 2734 }
+  },
+  "gates": {
+    "source_present": "PASS — 8,202 = run-001-trim-census-r0 pin EXACT",
+    "canary_roundtrip": "PASS — helper insert path + embedding text roundtrip identical (type-safety derisk before bulk)",
+    "copy_all_rows": "PASS — 8,202/8,202 in one warehouse transaction, batches of 500",
+    "copy_count_parity": "PASS — src 8,202 vs dst 8,202",
+    "copy_bytes_parity": "PASS — 10,307,759 content bytes EXACT both sides",
+    "copy_id_hash_parity": "PASS — sha256 id-set EQUAL 88706faa…",
+    "seam_vector_search": "PASS — HNSW top-5 (course_group+QUESTION_PAPER filter) 95 ms first-query / 530 ms with probe fetch; nearest dist 0.0743 (self-match class)",
+    "seam_hydrate_by_ids": "PASS — 5/5 ids hydrated from main under READ ONLY (two-step seam of record, placement law §4)"
+  },
+  "w1_state_after": {
+    "size": "71 MB (template 7.9 MB + 8,202 chunks incl. 6,872 vectors + HNSW + secondary indexes)",
+    "headroom": "1 GB/project wall — 71 MB = 7%; full-archive fleet sizing (ADR-038 50-150 MB/group) holds",
+    "transfer_note": "cross-region copy (us-east-2 -> ap-southeast-1) egressed ~est. 50-80 MB from main's OWN 5 GB allowance (per-project transfer law verified run-002); W1 ingress free"
+  },
+  "main_impact": "ZERO main writes — source reads under session-level READ ONLY transaction; proven by estate tripwire r4 (18:44:49Z): document_chunks 13,765 / documents 1,354 / assets byte-flat PASS. See run-009-estate-tripwire-r4-drift-watch.json for the LIVE mark-plane growth observed (other lane, not this work).",
+  "t1_cut_over_gates_remaining": [
+    "zero-residue DELETE rehearsal on a fresh COW branch (of-record dryrun-4ma1.mjs now REPAIRED and run-ready: BRANCH_DB_URL + WH_DB_URL) — branch must be created console-side or via CI/API-capable agent (T-MIG-141 lane proved CI has Neon API egress)",
+    "operator T1 order per DATA-PLANE-PLACEMENT.md §5 (cut-over re-reads source at cut-over moment, re-verifies parity, then zero-residue delete in main + trim rulings DROP-AT-CUT-OVER: 79 REJECTED-doc chunks + 10 dupes)",
+    "serving-plane flip: warehouse vector_search -> main hydrate (app routing change; separate lane)"
+  ],
+  "trace": "1a16a0d456f2fecd"
+}

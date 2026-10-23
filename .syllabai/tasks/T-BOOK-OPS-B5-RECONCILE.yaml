@@ -1,0 +1,48 @@
+version: 1
+task:
+  id: T-BOOK-OPS-B5-RECONCILE
+  title: "Reconcile T-C20 battery B5 with the route-of-record contract (unknown-chapter semantics per endpoint) and restore battery exit 0 as the standing serving gate"
+  owner: "unassigned (books/api serving lane lineage — T-BOOK-OPS / f-0011 executor)"
+  status: OPEN
+  priority: P2
+  band: T-BOOK-OPS (books serving / api plane)
+  wave: post-restore
+  deps: ["run-004-step0-closure-r0 (filed the evidence)", "scripts/tc20-battery.mjs", "apps/api/src/routes/books.ts"]
+  facts_of_record: >
+    run-004 battery 16/17: the sole HARD fail is B5 (GET /:documentId/chapters
+    ?chapter=u9:c99 expected 400/404, got 200 with the full registry,
+    byte-identical size to the unfiltered B4 response). Proven at source: the
+    route of record at tip never reads the chapter param on the registry
+    endpoint — its 404 law is for unknown/unvalidated BOOKS; the chapterKey
+    grammar (400 missing/malformed) and the chapter honest-absent law live on
+    /blocks and /checks via NotFoundException-on-null. Live wire matches the
+    code of record. Live controls: blocks?chapter=garbage -> 400;
+    blocks?chapter=u9:c99 -> 200 []; blocks?chapter=u1:c01 -> 200 [].
+  next_safe_actions: >
+    (1) Rule the intended contract per endpoint: registry — should an unknown
+    well-formed chapter filter (and 404) or be ignored? blocks/checks — is an
+    unknown chapter a 404 (null-resolution law per route comment) or the
+    honest-empty 200 [] the live wire currently serves? Note the route code
+    comment says null -> 404, so the live [] for unknown chapters deserves a
+    look at the service layer too. (2) Fix the battery URL/expectation pair to
+    match the ruled contract. (3) Re-run scripts/tc20-battery.mjs to exit 0 —
+    that becomes the STANDING serving gate (run-004 closed the restore clause
+    on the disclosed-exception basis; the standing gate should be clean).
+  forbidden:
+    - "changing the registry/blocks/checks contracts without the ruling above"
+    - "touching the public-read / T-C20-gated serving posture (no auth changes)"
+    - "marking this as a restore residual (it is not — see run-004)"
+base:
+  repo: "syllabai-v2 @ b25e14f"
+basis: >
+  run-004-step0-closure-r0 leg_2_battery.the_exception + live probes
+  (2026-10-23) + route source read at tip.
+scope:
+  allowed:
+    - "scripts/tc20-battery.mjs (probe URL/expectation fix)"
+    - "apps/api/src/routes/books.ts + services/books.ts (ONLY if the ruling requires a code change)"
+    - ".syllabai/receipts/T-BOOK-OPS/ (append-only)"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "packages/db/src/schema/**"
+    - "auth middleware / public-read posture changes"

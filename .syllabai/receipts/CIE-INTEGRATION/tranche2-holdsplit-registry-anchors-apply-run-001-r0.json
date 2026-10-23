@@ -1,0 +1,105 @@
+{
+ "coClaimantDisclosures": [
+  "34.2.4 co-claimed by spcpt_zSNqTgXKwfMvmXnW (lineage spec_links_sidecar_accepted, tier J4_name_phrase_identity) — sid-plane co-claimant precedent XQ97/Ytmx (19.2.2/19.2.3) and YpKq/fFh7 (24.2.1/24.2.4)",
+  "37.4.3 NOT pulled into pYmR: TMS purpose asked by qstnprt_d4J3bgShGccMG3Xs ii) but TMS is a separate spcpt's scope (spcpt_hS2VJk6cNC2zpynw co-declared on the same part); note rn_yryCr4zmnDxYFRyh official 37.4.3 recorded secondary only",
+  "analyse-flavoured AS parts (qstnprt_WGQgbMRM59sQwxFp, qstnprt_hBdfjF6rnGz6bkCK) corroborate the 21.1.2 route scope but 21.1.3 is NOT anchored (exceeds the operator's ruled candidates)"
+ ],
+ "evidenceExtraction": {
+  "inputs": "apps/hub/content/cie-a-level-chemistry-25/{questions,notes,flashcards}.json + spines + content-maps @ origin/main",
+  "stats": "3 notes / 21 flashcards / 26 question parts across the 3 sids (90 sets / 1,003 questions / 1,682 parts scanned)",
+  "tool": "scripts/holdsplit_extract_evidence.py (session-local)"
+ },
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T2-HOLDSPLIT-1",
+ "operatorDirectiveVerbatim": "Proceed: 9Dxx/pYmR holds + Cdtk split",
+ "operatorRulingsVerbatimSource": "T-SPECS-CIE-TRANCHE2-B02:.syllabai/receipts/CIE-INTEGRATION/cie-tranche2-r2-batches-run-002-r0.json@bd2c0b1",
+ "proofs": {
+  "baseMapSha256": "14bc2fbe8977709b2bca3b45e328c366650e0fbf4737884f6710e30c1fd0eec2",
+  "ofRecordIntegrity": "23/23 tranche-2 operator sid-anchors verified present and untouched (byte fixed point preserved)",
+  "resultMapSha256": "c8b6d06361dcdc100eab82607d47d4f688d50f52e2849d67b77d2478c2288d09",
+  "serializationIdempotence": "green (json.dumps sort_keys indent=1 + trailing newline)",
+  "spcptToOfficial": "69 -> 72 EXACT",
+  "spcptUnmapped": "262 -> 259 EXACT (18 -> 21 total removals vs the 280 pre-tranche2 baseline)",
+  "spineVerification": "6/6 codes are SPEC_POINT nodes in apps/hub/spines/cie-a-level-chemistry-25.json with expected statements",
+  "unchangedPlanes": {
+   "contentCoverage": "fbae98ce0cf1e6b4b99677a8a3f969cd427bdc02b3d0ea467f5a371ec49f1397",
+   "inputs": "15852340d5266f4e7467b0cf7433c0be35dcb43c78637948023c6a92cd2cb1d6",
+   "items": "4d8883d035e358b4a567053a3249fb3452d7264e11dd06ac21f35d4d14affe32",
+   "reconciliation": "c8929033a814d393fdb1364050a3a9f5f6be0b976e00705200ab94c9edefcf43",
+   "spcptSubtopicScope": "7c2856ca8eeb66985713f5009791208fab4ab7ae455fc962b7f6e6e8c180bbb5"
+  }
+ },
+ "receipt": "CIE-INTEGRATION/tranche2-holdsplit-registry-anchors-apply-run-001-r0",
+ "residuals": [
+  "DURABILITY: capture the 3 new sid->codes verdicts into the resources spec-links sidecar sidAnchors manifest before the next consume re-key, else the engine will not reproduce these rows (same residual shape as T-RULE-T2-APPLY-1)",
+  "tranche-3 (1,203 sid-less parts)",
+  "PAT rotation CRITICAL-OVERDUE",
+  "hung resources sync job"
+ ],
+ "resolution": {
+  "spcpt_9Dxx4xs6KDbb85cJ": {
+   "officialCode": "34.2.2",
+   "officialCodes": [
+    "34.2.2",
+    "34.2.4"
+   ],
+   "officialId": "CIE_A_LEVEL_CHEMISTRY_2025_2027:34.2.2",
+   "perCodeEvidence": {
+    "34.2.2": "qstnprt_Vhfn4qKHc5F63sK5 (diazotisation below 10 C rationale; diazonium thermal decomposition to phenol = 34.2.2(b)) + qstnprt_jffmw9C8Ts7dDXc5 ii) (state NaNO2/HCl <=10 C reagents = 34.2.2(b)) + jffmw9 i) compound A 2,4,6-tribromophenylamine (Br2(aq) = 34.2.2(a)) + cards fl_x52MTFbTJSRbCCPQ, fl_WcxfhkYwRXPFvf29, fl_wwPvhqM6QCRtv2Rx, fl_mnH4m95GG4XhPkgq, fl_p58c6fRRTSGQDDvV, fl_Sc6wmnSGy6rw3Z6X",
+    "34.2.4": "qstnprt_jffmw9C8Ts7dDXc5 i) compound B = azo coupling product drawn from the scheme's coupling step (1 of 4 marks; exam-tip: diazonium ion couples with phenoxide to form the azo compound B) = 34.2.4(a)/(b) product-level exercise; single-part evidence, flagged thin (Y6Qj precedent)"
+   },
+   "rejectedOrNotPulled": [
+    "34.2.3 (relative basicities — zero evidence in the spcpt's own items)",
+    "32.2.1 (phenol-production recall — qstnprt_Vhfn4qKHc5F63sK5 asks the <=10 C rationale, not recall of production routes; 32.2.x owned by BsxZ/mVXN of-record rows)"
+   ],
+   "secondaryNotAnchored": [
+    "34.2.1 (note rn_8NdDvsBxGB5kNZJ3 official code — the nitration->reduction prep route is taught by the note only; no part or card exercises it — Ytmx/fFh7 note-official secondary precedent)"
+   ],
+   "tier": "tranche2_hold_resolved"
+  },
+  "spcpt_CdtkSssKHMzw5ZTn": {
+   "officialCode": "21.1.2",
+   "officialCodes": [
+    "21.1.2",
+    "36.1.2"
+   ],
+   "officialId": "CIE_A_LEVEL_CHEMISTRY_2025_2027:21.1.2",
+   "perCodeEvidence": {
+    "21.1.2": "AS-route side: qstnprt_Hf5M3JxBKm9wqH57 (1-bromobutane -> nitrile -> pentanoic acid, select reagents Y/Z = route completion) corroborated by qstnprt_WGQgbMRM59sQwxFp + qstnprt_hBdfjF6rnGz6bkCK (AS multi-step route exercises, 21.1.3-flavoured, corroboration only) + AS-route cards (KCN chain extension fl_xDgSYZXyVpqFWgDD, K2Cr2O7 distillation/reflux fl_gT7rq7SCCrb2Jhsw, dehydration fl_nvxZwW4pdhZyV8rW)",
+    "36.1.2": "A-route side: >=9 direct route-devising parts on topic 36-1: qstnprt_z6xtWRHDkcCHs8y6 (ethane->ethanal 3 steps, 9m), qstnprt_bcjVSSTSvztWkd58 + qstnprt_fzC8mx7kDzdVfsNY + qstnprt_tQtdpbkK6P5M2xYJ (4-step ketone->propan-1-ol), qstnprt_83ChBwsYF6RbRTtD + qstnprt_68cpjvbDxWGmtG6j (benzocaine 5-step), qstnprt_94QsgYs5FrPG5tyH (noradrenaline), qstnprt_hD8yZZ4HjwyG5JHW + qstnprt_w2xhCDdmyftdWM2F + qstnprt_ygcjc6BzPCp97KkH (ethene->1-aminopropane), qstnprt_YZnZMCFtrjFcCV3D + qstnprt_XYPqyyfSCzmngs3M (ester route), qstnprt_ndX3JVqstMjjV5Cb (morphine->heroin), qstnprt_wRWNxgRxfcnFq7HF (propanone 3-step), qstnprt_YPhbwgctDg3f4sTK (Sudan II azo dye route) + A-route cards (Friedel-Crafts fl_bBzJ69crmHrk4gKR, acyl chloride->amide fl_M4ZXqy57Q37Xsb9d, nitrobenzene->phenylamine fl_Qp6gyC49yjXd5jfb, ester hydrolysis fl_599VSxpFBrntnK95, ketone reduction fl_zSHpMzTGRSxm585b)"
+   },
+   "rejectedOrNotPulled": [
+    "21.1.3/36.1.3 (analyse-a-given-route — corroborating parts lean here but exceed the operator's ruled candidates)",
+    "21.1.1/36.1.1 (functional-group identification — zero route-devising evidence gap)"
+   ],
+   "secondaryNotAnchored": [],
+   "tier": "tranche2_split_resolved"
+  },
+  "spcpt_pYmRWxPrtMDKj5ym": {
+   "officialCode": "37.4.4",
+   "officialCodes": [
+    "37.4.4",
+    "37.4.5"
+   ],
+   "officialId": "CIE_A_LEVEL_CHEMISTRY_2025_2027:37.4.4",
+   "perCodeEvidence": {
+    "37.4.4": "quarantine gate MET: qstnprt_d4J3bgShGccMG3Xs i) 'Explain why CDCl3 is used as the solvent instead of CHCl3' (mark scheme: CDCl3 contains no protons / 1H atoms, so it produces no peak) = explicit solvent-choice/role-in-proton-NMR assessment + cards fl_g4XV6q4v5N67Rb4b (CDCl3 preferred), fl_y3WqtHPFKMxgTMr4 (define deuterated solvent), fl_jFC3tz9xMh6ZJqnZ (CCl4 no 1H signals)",
+    "37.4.5": "qstnprt_Fjq2CQJq8Bnk7XSR ii) substance added = D2O; the peak due to the -OH proton will disappear = 37.4.5 direct exercise + cards fl_5CrnDkGdQ6TxSPSv, fl_P63T8cRZbbFgJX7h, fl_9gPRcHFQzVpFtqZ6 (D2O exchange teaching)"
+   },
+   "rejectedOrNotPulled": [
+    "37.4.3 (TMS — separate spcpt's scope, see secondary)",
+    "37.4.1/37.4.2 (spectrum analysis/prediction — zero evidence in this spcpt's own items)"
+   ],
+   "secondaryNotAnchored": [
+    "37.4.3 (note rn_yryCr4zmnDxYFRyh official code — TMS standard; purpose asked by qstnprt_d4J3bgShGccMG3Xs ii) but TMS is a separate spcpt's scope)"
+   ],
+   "tier": "tranche2_quarantine_resolved"
+  }
+ },
+ "rulingsVerbatim": {
+  "spcpt_9Dxx4xs6KDbb85cJ": "hold for evidence; the linked phenylamine parts span several organic-chemistry topics, and the candidate excerpt does not isolate the intended reaction scope.",
+  "spcpt_CdtkSssKHMzw5ZTn": "split by reaction route; candidate anchors 21.1.2 and 36.1.2 require part-level confirmation before assignment.",
+  "spcpt_pYmRWxPrtMDKj5ym": "quarantine: deuterated-solvent preparation is not established as a standalone syllabus point by the supplied candidate evidence. Retain only if the linked parts explicitly assess solvent choice or its role in proton NMR."
+ },
+ "run": "run-001"
+}

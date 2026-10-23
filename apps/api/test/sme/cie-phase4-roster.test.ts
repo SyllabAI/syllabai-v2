@@ -115,12 +115,56 @@ describe("cie-phase4 roster law", () => {
     // 859/1529 bank anchors byte-stable; map-law census green 44/44.
     // Floors re-pinned from the live census of the adopted tree
     // (scripts/t2consume_census_probe.ts over loadRoster + mapLawCensus).
-    expect(questions).toBe(6781);
-    expect(parts).toBe(5786);
+    // TRANCHE-2 RETRACTION RE-BASE (T-RULE-T2-V8-RETRACT-1 run-003, operator
+    // order '7-sid V8 retraction batch', trace 1a16541e55a06bd1, not a
+    // loosening): the operator gate disclosed at run-002 opens — resources
+    // PR #68 retracts the b01/b02 V8 part-level entries the tranche-2 ruling
+    // corrects (42 removals + 12 ruling assignments tier
+    // tranche2_conditional_resolved + 1 verify-only group across 7 sids;
+    // anchors byte-frozen, sidAnchors 0/23/0) and the consume engine's
+    // retraction law (surgical (item, code) drops + the zero-code mirror)
+    // lands them: ONE chem25 question loses its only coded part
+    // (qstnprt_8W7sTFyZCChbbB8q, the of-record 26.1.4 mis-tag residual) —
+    // questions 6781 -> 6780, parts 5786 -> 5782, pkgParts 9406 -> 9402,
+    // unmapped 12,297 -> 12,298 EXACT (raw 19,097/25,663 UNCHANGED; the
+    // identity rawQ - questions == unmapped + dupOrder re-proven:
+    // 12,317 == 12,298 + 19). Floors re-pinned from the live census
+    // (scripts/t2retract_census_probe.ts over loadRoster + mapLawCensus).
+    // MIS-TAG RE-POINT RE-BASE (T-RULE-T2-MISTAG-1, operator order '10-mis-tag
+    // re-point batch', trace 1a1658227c0c0365, not a loosening): the mis-tag
+    // residual disclosed at T-RULE-T2-COND-1 misTags[10] + the v8Retraction
+    // disclosures opens — resources PR #69 re-points the 10 mis-tagged parts
+    // to their spine-verified true homes (3 V8-mirror removals + 11 additions
+    // across 8 parts, tier tranche2_mis_tag_repoint; WW34 keep-as-context +
+    // tKhp keep-no-op zero-change; anchors byte-frozen, sidAnchors 0/23/0) and
+    // the consume engine's mis-tag re-point law (surgical drops + the normal
+    // sidecar_rank additions) lands them: FOUR chem25 questions regain
+    // servability as their newly-coded parts admit (h3SZ 28.2.1+28.2.7, 8W7s
+    // 26.2.3, xZch 8.2.3, PPqr 11.2.1 — incl. the retraction's uncoded 8W7s
+    // residual) — questions 6780 -> 6784, parts 5782 -> 5789, pkgParts
+    // 9402 -> 9411, unmapped 12,298 -> 12,294 EXACT (raw 19,097/25,663
+    // UNCHANGED; the identity re-proven: 12,313 == 12,294 + 19). Floors
+    // re-pinned from the live census (scripts/t2retract_census_probe.ts over
+    // loadRoster + mapLawCensus).
+    // Floors re-pinned from the live census (the T-RULE-T3-SME-COVERAGE-1
+    // re-key class, standing law "not a loosening"): the tranche-3 consume
+    // chain (run-004 re-key at 3dd9bb98 + run-006 econ-25 serving + the
+    // run-007 quiescent convergence at 6dc1f0a2) landed the re-keyed sidecar
+    // codes in the maps, so +190 chem25-family questions admit servability
+    // (unmapped 12,294 -> 12,104 EXACTLY -190), parts 5,789 -> 5,947, pkgParts
+    // 9,411 -> 9,603 (probe: scripts/probe_roster_full.py over loadRoster).
+    // econ-25 LEAVES the zero-servable list: its run-006 serving wave gave
+    // the bank 19 questions / 19 package parts (was EQ-axis empty of record).
+    // Raw 19,097/25,663 UNCHANGED; the identity re-proven at the new floors:
+    // 19,097 - 6,974 == 12,104 + 19 (12,123 == 12,123). Per-lane pins
+    // (physics-23 634/1/634, bio-25 859/1,529) verified UNCHANGED at the
+    // live census.
+    expect(questions).toBe(6974);
+    expect(parts).toBe(5947);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(9406);
+    expect(pkgParts).toBe(9603);
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -149,15 +193,16 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0 },
     );
-    expect(excl).toEqual({ unmapped: 12297, badSum: 0, dupOrder: 19 });
+    expect(excl).toEqual({ unmapped: 12104, badSum: 0, dupOrder: 19 });
     // the question-level identity: raw - servable = unmapped + dupOrder (each
     // exclusion removes whole questions; badSum is zero of record)
     expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder);
     // the zero-servable real banks of record: seed-only by the fleet's
-    // ingest-skip law (EQ axis honestly empty of record)
+    // ingest-skip law (EQ axis honestly empty of record) — econ-25 LEFT this
+    // list at the run-006 serving wave (19 questions of record); the
+    // english-language-20/25 pairs remain the only EQ-empty banks
     const zeroServable = real.filter((e) => e.expectedQuestions === 0).map((e) => e.slug).sort();
     expect(zeroServable).toEqual([
-      "cie-igcse-economics-25",
       "cie-igcse-english-language-20",
       "cie-igcse-english-language-25",
     ]);

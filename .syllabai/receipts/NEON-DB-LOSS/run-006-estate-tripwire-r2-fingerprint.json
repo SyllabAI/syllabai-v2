@@ -1,0 +1,510 @@
+{
+ "instrument": "estate-tripwire",
+ "recipe_version": "v2-rederived-post-wipe",
+ "measured_at_utc": "2026-10-23T17:21:50.497Z",
+ "read_only": true,
+ "table_count": 75,
+ "tables": [
+  {
+   "table": "ai_mark_events",
+   "rows": 0,
+   "bytes": 32768
+  },
+  {
+   "table": "announcement_reads",
+   "rows": 3,
+   "bytes": 24576
+  },
+  {
+   "table": "announcements",
+   "rows": 5,
+   "bytes": 49152
+  },
+  {
+   "table": "answers",
+   "rows": 655,
+   "bytes": 286720
+  },
+  {
+   "table": "archive_tc27_card_wave_20260928",
+   "rows": 0,
+   "bytes": 49152
+  },
+  {
+   "table": "assignment_submissions",
+   "rows": 3,
+   "bytes": 57344
+  },
+  {
+   "table": "assignments",
+   "rows": 3,
+   "bytes": 81920
+  },
+  {
+   "table": "attempts",
+   "rows": 248,
+   "bytes": 106496
+  },
+  {
+   "table": "book_blocks",
+   "rows": 0,
+   "bytes": 32768
+  },
+  {
+   "table": "book_chapters",
+   "rows": 29,
+   "bytes": 131072
+  },
+  {
+   "table": "book_glossary_terms",
+   "rows": 0,
+   "bytes": 24576
+  },
+  {
+   "table": "bootstrap_admin_state",
+   "rows": 1,
+   "bytes": 24576
+  },
+  {
+   "table": "campaign_db_identity",
+   "rows": 1,
+   "bytes": 24576
+  },
+  {
+   "table": "chapter_progress",
+   "rows": 0,
+   "bytes": 16384
+  },
+  {
+   "table": "cla_thread_messages",
+   "rows": 0,
+   "bytes": 32768
+  },
+  {
+   "table": "cla_threads",
+   "rows": 0,
+   "bytes": 24576
+  },
+  {
+   "table": "class_features",
+   "rows": 0,
+   "bytes": 8192
+  },
+  {
+   "table": "class_members",
+   "rows": 5,
+   "bytes": 57344
+  },
+  {
+   "table": "classes",
+   "rows": 10,
+   "bytes": 57344
+  },
+  {
+   "table": "content_review_audit",
+   "rows": 2835,
+   "bytes": 1998848
+  },
+  {
+   "table": "course_registry",
+   "rows": 94,
+   "bytes": 90112
+  },
+  {
+   "table": "curriculum_versions",
+   "rows": 11,
+   "bytes": 24576
+  },
+  {
+   "table": "decay_job_runs",
+   "rows": 37,
+   "bytes": 24576
+  },
+  {
+   "table": "document_chunks",
+   "rows": 13765,
+   "bytes": 130441216
+  },
+  {
+   "table": "documents",
+   "rows": 1354,
+   "bytes": 10420224
+  },
+  {
+   "table": "exam_papers",
+   "rows": 218,
+   "bytes": 155648
+  },
+  {
+   "table": "exam_series",
+   "rows": 5,
+   "bytes": 65536
+  },
+  {
+   "table": "experiments",
+   "rows": 0,
+   "bytes": 24576
+  },
+  {
+   "table": "flashcard_ratings",
+   "rows": 33,
+   "bytes": 57344
+  },
+  {
+   "table": "flyway_schema_history",
+   "rows": 63,
+   "bytes": 57344
+  },
+  {
+   "table": "glm_ocr_bridge_records",
+   "rows": 77,
+   "bytes": 1441792
+  },
+  {
+   "table": "human_marks",
+   "rows": 287,
+   "bytes": 188416
+  },
+  {
+   "table": "intervention_run",
+   "rows": 6,
+   "bytes": 49152
+  },
+  {
+   "table": "intervention_run_evidence",
+   "rows": 3,
+   "bytes": 49152
+  },
+  {
+   "table": "intervention_run_step",
+   "rows": 3,
+   "bytes": 65536
+  },
+  {
+   "table": "knowledge_edges",
+   "rows": 1963,
+   "bytes": 1130496
+  },
+  {
+   "table": "knowledge_nodes",
+   "rows": 1673,
+   "bytes": 1286144
+  },
+  {
+   "table": "learner_course_enrolments",
+   "rows": 8,
+   "bytes": 57344
+  },
+  {
+   "table": "learner_self_marks",
+   "rows": 127,
+   "bytes": 73728
+  },
+  {
+   "table": "mark_entitlement_policies",
+   "rows": 2,
+   "bytes": 24576
+  },
+  {
+   "table": "mark_entitlements",
+   "rows": 0,
+   "bytes": 8192
+  },
+  {
+   "table": "mark_points",
+   "rows": 14141,
+   "bytes": 10371072
+  },
+  {
+   "table": "mark_schemes",
+   "rows": 6733,
+   "bytes": 1548288
+  },
+  {
+   "table": "misconception_states",
+   "rows": 15,
+   "bytes": 40960
+  },
+  {
+   "table": "model_versions",
+   "rows": 13,
+   "bytes": 49152
+  },
+  {
+   "table": "note_votes",
+   "rows": 8,
+   "bytes": 57344
+  },
+  {
+   "table": "prompt_versions",
+   "rows": 13,
+   "bytes": 106496
+  },
+  {
+   "table": "question_asset",
+   "rows": 585,
+   "bytes": 31440896
+  },
+  {
+   "table": "question_options",
+   "rows": 2196,
+   "bytes": 614400
+  },
+  {
+   "table": "question_parts",
+   "rows": 15128,
+   "bytes": 7045120
+  },
+  {
+   "table": "question_spec_points",
+   "rows": 10792,
+   "bytes": 2744320
+  },
+  {
+   "table": "question_topics",
+   "rows": 1717,
+   "bytes": 376832
+  },
+  {
+   "table": "question_versions",
+   "rows": 6755,
+   "bytes": 2375680
+  },
+  {
+   "table": "questions",
+   "rows": 6755,
+   "bytes": 2195456
+  },
+  {
+   "table": "review_schedules",
+   "rows": 202,
+   "bytes": 81920
+  },
+  {
+   "table": "revision_note",
+   "rows": 112,
+   "bytes": 458752
+  },
+  {
+   "table": "revision_note_asset",
+   "rows": 194,
+   "bytes": 15032320
+  },
+  {
+   "table": "revision_note_viewed",
+   "rows": 33,
+   "bytes": 57344
+  },
+  {
+   "table": "roles",
+   "rows": 3,
+   "bytes": 24576
+  },
+  {
+   "table": "skill_states",
+   "rows": 225,
+   "bytes": 114688
+  },
+  {
+   "table": "smart_mark_agreement_evaluations",
+   "rows": 12,
+   "bytes": 24576
+  },
+  {
+   "table": "smart_mark_results",
+   "rows": 368,
+   "bytes": 335872
+  },
+  {
+   "table": "struggle_inferences",
+   "rows": 14,
+   "bytes": 81920
+  },
+  {
+   "table": "subjects",
+   "rows": 10,
+   "bytes": 24576
+  },
+  {
+   "table": "teacher_validation_events",
+   "rows": 0,
+   "bytes": 40960
+  },
+  {
+   "table": "teaching_coverage",
+   "rows": 0,
+   "bytes": 16384
+  },
+  {
+   "table": "teaching_coverage_events",
+   "rows": 0,
+   "bytes": 24576
+  },
+  {
+   "table": "teaching_toolkit_resources",
+   "rows": 1,
+   "bytes": 65536
+  },
+  {
+   "table": "teaching_toolkit_usage",
+   "rows": 1,
+   "bytes": 24576
+  },
+  {
+   "table": "telemetry_events",
+   "rows": 5658,
+   "bytes": 3014656
+  },
+  {
+   "table": "tutor_session_turns",
+   "rows": 192,
+   "bytes": 188416
+  },
+  {
+   "table": "tutor_sessions",
+   "rows": 60,
+   "bytes": 40960
+  },
+  {
+   "table": "tutor_topic_engagements",
+   "rows": 1214,
+   "bytes": 614400
+  },
+  {
+   "table": "user_roles",
+   "rows": 589,
+   "bytes": 73728
+  },
+  {
+   "table": "users",
+   "rows": 587,
+   "bytes": 229376
+  }
+ ],
+ "fingerprints": {
+  "ddl": "3732fa5406680f1687e5133d5ef5a8ba81c97de1c89fa431928acadc9835a92c",
+  "estate_rows": "edc0e4f8a7749fa4bbc2be2640a4669aa462b84bc511c72df0f7fe9c67e0cf00"
+ },
+ "documents_by_kind": [
+  {
+   "kind": "EXTERNAL_NOTES",
+   "n": 112
+  },
+  {
+   "kind": "EXTERNAL_QUESTIONS",
+   "n": 489
+  },
+  {
+   "kind": "MARK_SCHEME",
+   "n": 289
+  },
+  {
+   "kind": "QUESTION_PAPER",
+   "n": 301
+  },
+  {
+   "kind": "SYLLABUS",
+   "n": 162
+  },
+  {
+   "kind": "TEXTBOOK",
+   "n": 1
+  }
+ ],
+ "exam_papers_by_qualification": [
+  {
+   "qualification": "4CH0",
+   "papers": 8
+  },
+  {
+   "qualification": "4CH1",
+   "papers": 38
+  },
+  {
+   "qualification": "4MA1",
+   "papers": 110
+  },
+  {
+   "qualification": "IGCSE",
+   "papers": 3
+  },
+  {
+   "qualification": "unknown",
+   "papers": 59
+  }
+ ],
+ "exam_papers_total": 218,
+ "drain": {
+  "chunks_total": 13765,
+  "no_vec": 1330,
+  "embedded": 12435
+ },
+ "db_size_bytes": 240214016,
+ "db_size_pretty": "229 MB",
+ "flyway_head": {
+  "version": "63",
+  "description": "exam series seed pearson 2026 2027",
+  "success": true
+ },
+ "satellite_tables_present": 0,
+ "gate_pins": {
+  "baseline": "run-005 r0 (2026-10-23T13:49:06Z)",
+  "results": [
+   {
+    "pin": "table_count",
+    "baseline": 75,
+    "live": 75,
+    "state": "PASS"
+   },
+   {
+    "pin": "mark_points",
+    "baseline": 14141,
+    "live": 14141,
+    "state": "PASS"
+   },
+   {
+    "pin": "mark_schemes",
+    "baseline": 6733,
+    "live": 6733,
+    "state": "PASS"
+   },
+   {
+    "pin": "document_chunks",
+    "baseline": 13765,
+    "live": 13765,
+    "state": "PASS"
+   },
+   {
+    "pin": "documents",
+    "baseline": 1354,
+    "live": 1354,
+    "state": "PASS"
+   },
+   {
+    "pin": "question_asset",
+    "baseline": 585,
+    "live": 585,
+    "state": "PASS"
+   },
+   {
+    "pin": "revision_note_asset",
+    "baseline": 194,
+    "live": 194,
+    "state": "PASS"
+   },
+   {
+    "pin": "users",
+    "baseline": 587,
+    "live": 587,
+    "state": "PASS"
+   },
+   {
+    "pin": "exam_papers_4MA1",
+    "baseline": 110,
+    "live": 110,
+    "state": "PASS"
+   }
+  ],
+  "all_stable": true
+ }
+}

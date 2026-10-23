@@ -1,0 +1,35 @@
+{
+  "receipt": "NEON-DB-LOSS run-009-estate-tripwire-r4-drift-watch",
+  "instrument": "scripts/dbprobe/estate-tripwire.mjs (committed of-record, recipe v2)",
+  "measured_at_utc": "2026-10-23T18:44:49.765Z",
+  "mode": "READ ONLY session",
+  "trigger": "Post-work assurance gate after the 4MA1 copy+parity+seam dry-run (T-OPS-PLANE-001 run-003 — source reads on main under READ ONLY session, zero writes claimed).",
+  "comparison_basis": "Gate pins vs run-005 r0 baseline. Prior: r2 (17:21Z all-PASS stable), r3 (18:25Z growth-drift watch, run-008).",
+  "gate_pins": {
+    "PASS_5_byte_flat": { "document_chunks": 13765, "documents": 1354, "question_asset": 585, "revision_note_asset": 194, "exam_papers_4MA1": 110 },
+    "DRIFT": {
+      "table_count": { "baseline": 75, "live": 79, "delta_vs_r3": 0, "note": "no NEW tables since r3" },
+      "mark_points": { "r0": 14141, "r2": 14141, "r3": 14201, "r4": 14857, "delta_vs_r3": "+656 in ~19 min" },
+      "mark_schemes": { "r0": 6733, "r2": 6733, "r3": 6763, "r4": 6961, "delta_vs_r3": "+198 in ~19 min" },
+      "users": { "baseline": 587, "live": 588, "delta_vs_r3": 0 }
+    },
+    "loss_signature": "NONE — monotonic growth only; corpus/identity core planes byte-flat",
+    "all_stable": false
+  },
+  "attribution": {
+    "ddl_fingerprint": "268880da… UNCHANGED vs r3 — zero new DDL since 18:25Z (the 4 feature-family tables from r3 remain the only schema drift)",
+    "mark_plane": "REBUILD IN FLIGHT — +198 schemes/+656 points in the 19-minute window (ratio ~3.3 pts/scheme) is an active writer on the mark plane, consistent with the DISPATCHED T-CONTENT-MP-REBUILD-001 (rebuild into main is the lawful T0 order per run-006 decision). Writer still owes its run receipt + lane-start tripwire receipt on origin/main at fetch time 18:44Z.",
+    "oracle_note": "survivor basis 14,141 remains a subset of live 14,857 (nothing shrank); the lane-end receipt must pin the id-level survivor-set hash so the run-007 oracle reconciliation (3,836 + 9,662 + 643 = 14,141) can be re-proven on shared keys",
+    "users": "588 stable",
+    "db_size": "231 -> 236 MB (+5 MB consistent with mark-plane inserts)",
+    "drain": { "no_vec": 1330, "embedded": 12435, "note": "FLAT — and now PINNED to the maths plane: the run-003 copy census found exactly 1,330 null-embedding chunks in maths-4ma1, i.e. the ENTIRE drain backlog is maths-plane chunks awaiting the T-MIG-138 window or rebuild backfill" }
+  },
+  "verdict": "ESTATE GROWING — NO LOSS SIGNATURE. Main untouched by ops work (corpus planes byte-flat through the copy). Mark plane under active lawful rebuild; growth monitored, attribution receipt owed by the writing lane.",
+  "next": [
+    "content/rebuild lane: file run receipt + lane-start tripwire receipt; pin survivor-set id-hash at lane end for the oracle re-proof",
+    "feature lanes: DDL still outside flyway (head V63 unchanged) — ride migrations of record",
+    "ops: next tripwire at T1 cut-over gates (branch rehearsal + cut-over) and after any main-plane write window",
+    "r4 fingerprint of record: ddl 268880dae519544a01c7736659819569f76843ad8e9042970f3ee58284f7fbc8, estate_rows 05620f0b781e7e1f3b9c2cd2ebfa9907398cf52a1fef4f2adc0dab1bec3cf560 (not byte-comparable to r3 estate_rows by design — rows grew; pins are the basis)"
+  ],
+  "trace": "1a16a0d456f2fecd"
+}

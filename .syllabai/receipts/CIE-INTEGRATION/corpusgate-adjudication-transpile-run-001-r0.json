@@ -1,0 +1,52 @@
+{
+ "receipt": "corpusgate-adjudication-transpile-run-001-r0",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T3-CORPUSGATE-ADJ-1",
+ "operatorOrder": "adjudicate the corpus gate menu (IM trace 1a16a4005954662d, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — discharges the operator menu filed at T-RULE-T3-SME-COVERAGE-1 run-007 leg-2 (receipt cie-tranche3-reharvest-run-007-r0.json)",
+ "agent": "main (zai-web)",
+ "generatedUtc": "2026-10-24T00:00:00Z",
+ "adjudication": {
+  "menuObject": "hub verify_corpus_23a speech-baseline gate red (span 5 / multiline 12 / baretext 7 > baseline 0) — the econ-25 Wiris speech-alt class, provenance chain closed of record at run-007",
+  "optionA": "GRANTED — primary disposition. Deterministic fail-closed speech-grammar -> KaTeX transpiler lane, executed as the 23a/23b instrument family (cie_patch_math_23a.ts laws: KaTeX-verified replacements, unknown/failed -> leave untouched, never garbage). Grounds: the class is deterministically convertible (24 occurrences -> 9 standard CIE IGCSE Economics formulas); the of-record instrument exists in-repo; the 23b zero baseline stays intact (no law change needed).",
+  "optionB": "REJECTED — baseline refreeze would embed speech text as accepted-of-record while the class is provably convertible, weakening the frozen T-SME-23b zero law without necessity. Remains the honest fallback ONLY for a provably-unconvertible residual surfaced by the fail-closed design (none surfaced: 39/39 converted).",
+  "optionC": "REJECTED — reverting the econ-25 serving wave undoes of-record work (19 servable questions + the 92-note lane) and is disproportionate to a fixable class.",
+  "optionD": "REJECTED as primary — authored-content is a different cost class (the manufacturing scoping precedent); not needed when deterministic conversion covers the evidence. Remains the future path if any conversion were shown semantically unsafe.",
+  "executionShape": "Serve-plane repair at the hub content layer (the exact 23a precedent shape: repair wave + gate as standing enforcement). The substrate class (resources SME-RevisionNotes .md + SME-ExamQuestion topic.json/mark-schemes.md carry the alt-ONLY Wiris renders; verified first-hand this run: resources calculation-and-determinants-of-ped.md line 32 carries the backticked speech verbatim) is DISCLOSED, NOT modified — resources-side change control is a separate operator-scoped lane; the v2 corpus is faithful to that substrate and this repair is a post-import corpus wave exactly like T-SME-23a/23b."
+ },
+ "evidence": {
+  "gateBefore": {"span": 5, "dollar": 0, "textwrap": 0, "multiline": 12, "baretext": 7},
+  "gateAfter": {"span": 0, "dollar": 0, "textwrap": 0, "multiline": 0, "baretext": 0},
+  "offenderCensus": "24 occurrences / 23 distinct values / 8 flagged strings — ALL in cie-igcse-economics-25 (notes [15] PED, [18] PES, [43] Revenue, [59] Unemployment, [63] Inflation; questions qset[10] parts of questions 9/13/14) — gate cap sample reproduced first-hand at run-007 counts",
+  "formulaInventory": "9 standard formulas, each semantically audited against its worked example: PED definition, %change formula, PES definition, TR = SP x Q, Unemployment rate, Inflation rate + the PED/PES worked steps (values verified: -60/50 = -1.2; 9.1/61 = 0.15; 600,000/2,400,000 x 100 = 25%; 136.01/108.75 class = 25.07%)",
+  "provenance": "Wiris alt-ONLY equation nodes at the resources substrate (live-page verification of record at run-007); the v2 import faithfully embedded the backticked alt; the 'baretext' class = the same content counted via broken blockquote-span pairing, fixed by the same conversion"
+ },
+ "instrument": {
+  "file": "apps/hub/scripts/cie/econ25_speech_transpile.ts (lands in-repo, standing tool for future serving waves)",
+  "laws": "gate-exact detection regexes (verify_corpus_23a.ts); 23a patch-MARK superset trigger; conversion ladder econPreMap -> ciePreMap -> speechToTexSafe (KaTeX throwOnError + hasResidualGrammar) x2 (stripSpaceTokens variant) -> genericChain -> ciePlainCollapse (guarded code-span fallback); NO-GUESS scope = gate-flagged strings only; dry-run default, --apply gated on zero-unfixed + clean gate-after; byte-exact round-trip assertion pre-write; post-write disk re-read + gate rescan assertion",
+  "tokenAdditions": "evidence-derived, per-instance audited: triangle -> \\Delta, increment -> \\Delta (Wiris change-operator alt spellings; CIE econ convention %ΔQD), 'thin space' -> space (U+2009 token), straight x/X -> \\times (ALL gate-class instances multiplicative: 'x 100', 'P x Q' — audited), NBSP -> space; bare 'x' deliberately NOT remapped (of-record ladder keeps it a math letter — fail-closed restraint)",
+  "specialRepairs": [
+   "EXACT line override (23b EXACT_FORMULAS precedent): 'P E D ... end fraction space minus space minus 2.0' -> 'PED = 40/(-20) = -2.0' — the Wiris alt mangled '= -2.0'; answer -2.0 confirmed by the mark-scheme narrative of record ('A is incorrect as -0.4 results from dividing wrongly'); uniqueness verified (1 occurrence corpus-wide)",
+   "Wrapper double-equals dedup: 'text X =  end text space equals' -> drop the wrapper's trailing '=' (source artifact; uniqueness verified: 1 occurrence corpus-wide)"
+  ],
+  "results": "39 conversions (12 multiline spans + 5 inline spans + 22 span/blockquote lines), 39/39 KaTeX-verified, 0 unfixed, 0 untouched-in-flagged-strings; disclosed mid-run correction: the first --apply wrote a pre-walk parse (byte-identical no-op, caught by git diff + grep audit) — instrument fixed to write the mutated parse + post-write disk verification added; second --apply verified on disk"
+ },
+ "battery": {
+  "verify_corpus_23a": "CORPUS GATE PASSED (all six counters 0)",
+  "validate_cie_bundles": "ALL PASS (incl. pure-1 bank 67 intact)",
+  "verify_flashcard_sync_courses": "exit 0",
+  "hub_tsc": "exit 0",
+  "hub_build": "bun run build exit 0 (prebuild gate chain + build_corpus_static + next build)",
+  "byteScope": "git numstat: notes.json 5 lines / questions.json 3 lines (indent-1 JSON convention preserved, round-trip byte-exact on untouched content); flashcards.json byte-identical (no offenders); maps/registry/manifests untouched — the 23 tranche-2 anchors and the run-007 roster re-pin untouched (verified: zero registry contact)"
+ },
+ "residualDisclosure": {
+  "gateCleanSpeechResidue": "6 gate-clean speech spans beyond the gate class in econ-25 (notes [16] x2 TR formulas 'Sales space Revenue...', [42] '$ 60 space straight x space straight Q', [51] x2 budget-balance, [81] 'equals space EUR 190 comma 000 straight m') — same grammar family, gate-clean by construction (zero CI impact), NOT fixed under this dispatch (scope = the gate class per the menu); watchlist for a follow-up evidence-backed wave",
+  "substrateClass": "the alt-ONLY Wiris class remains fleet-wide at the resources substrate (30/44 CIE lanes, physics-25 154 files — run-007 of record); any future serving wave of a carrier lane re-triggers the gate class -> the standing instrument re-runs scoped to that lane; the substrate-side harvest fix (render_inline transpile at resources) is a separate operator-scoped lane",
+  "gateLaw": "the T-SME-23b zero baseline is UNCHANGED (no refreeze, no law edit) — the gate remains the standing enforcement"
+ },
+ "artifacts": {
+  "report": "/home/z/my-project/work/econ25_transpile_report.json (39 fixes: before/after/via per instance — the no-guess audit trail)",
+  "receipt": ".syllabai/receipts/CIE-INTEGRATION/corpusgate-adjudication-transpile-run-001-r0.json",
+  "instrument": "apps/hub/scripts/cie/econ25_speech_transpile.ts"
+ },
+ "trace": "1a16a4005954662d"
+}

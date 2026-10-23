@@ -1,0 +1,28 @@
+{
+ "receipt": "T-MIG-138/run-008-window-fire-r1c.json",
+ "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, operator order trace 1a167b7b759ad445 'Continue. finish the work')",
+ "operator_order": "'Continue. finish the work' @ 07:45Z Oct 23 = the FIRST operator message past the 07:05Z Oct 23 window — the staged 16-row recipe fired exactly of record (no override needed: fresh RPD day, dynamic no-duplicate gate clean)",
+ "fire_act": {
+  "preflight": "server time (GitHub Date header) 2026-10-23T07:45:29Z >= window; runs census: run #11 the latest (nothing newer, no other lane fired); 16-pin integrity re-verified (16 unique uuid-shaped); gate cutoff computed 2026-10-23T06:00:00Z = CLEAN (run #11 is Oct 22)",
+  "dispatch_http": "204",
+  "run": "#12 id 39919953325, created 2026-10-23T07:45:46Z, head e22e73c, completed FAILURE in ~45s"
+ },
+ "failure_of_record": {
+  "class": "DB-PLANE REGRESSION — PostgresError: relation \"document_chunks\" does not exist",
+  "behavior": "ALL FOUR shards died on their FIRST row at the script's opening dedup/state SELECT (t-mig-133d-backfill-exec.ts lines 95-98/115-121 query document_chunks before any embedding); zero rows embedded, zero key budget spent (no embedContent calls reached the provider); shard artifacts 152B empty",
+  "distinct_from": "403 dead-key / 429 RPD-wall / 503 provider-transient classes of record — this is the FIRST DB-plane failure in the t-mig-138 history (runs #1-#11 all reached the table)",
+  "key_exercise": "NO keys were exercised this run — the failure is upstream of the provider entirely; the 'did you try all keys' answer is unaffected: pool health as of run #11 stands"
+ },
+ "attribution_evidence": {
+  "h1_secret_rotated_ELIMINATED": "secret metadata census: T138_PROD_DATABASE_URL updated_at 2026-10-20T09:52:39Z — UNCHANGED since before runs #9/#10/#11 which all succeeded; no repo secret updated after 2026-10-21T15:25:38Z (KEY_4)",
+  "h2_repo_plane_ELIMINATED": "schema.ts still defines document_chunks (15 refs); migrations 0006_class_feature_toggles + 0007_t-sm-kappa-subject are ADDITIVE, touch no document_chunks SQL, and both pre-date run #11 (commit dates Oct 21 15:47Z / 18:24Z vs run #11 success 09:15Z Oct 22); no commit since run #11 adds/removes document_chunks DDL; the DEPLOY run-012 receipt records DB legs BLOCKED on absent Neon credential (deploy could not have touched the DB)",
+  "conclusion": "the table vanished SERVER-SIDE at the secret's target between run #11 completion (2026-10-22T09:15Z) and run #12 (2026-10-23T07:45Z) — outside the repo plane; per the standing law attribution is OPERATOR-KEYED (Neon console / branch reset / out-of-band migration are the candidate surfaces this lane cannot see)",
+  "neon_context_of_record": "project billowing-cherry-15418366, prod parent branch br-muddy-bar-a5huwldd (non-secret repo vars); T138_PROD_DATABASE_URL is the COW->production apply plane of record per run-003"
+ },
+ "state_after": {
+  "drain": "STILL 200/216 — residual remains 16 rows (run #12 embedded 0; the 16-pin is unchanged and still valid)",
+  "fire_path": "t138-drain-fire.sh remains armed and correct — the blocker is NOT the fire path",
+  "blocked_on": "operator: (a) confirm what happened to the T138/PROD Neon plane overnight (branch reset? out-of-band migration? endpoint repurpose?), and (b) authorize the repair path — table recreation via the CI db-plane (the 0000 DDL carries document_chunks; prod schema surgery is an absolute operator gate, this lane will NOT touch it unordered)"
+ },
+ "write_ledger": "zero DB/Neon/prod/LLM writes; read-only evidence only (runs census, secret METADATA names+dates, repo variables, git archaeology, job logs); lane-side log artifacts persisted tool-results/t138-run12-job-*.log; .syllabai-only receipt + worklog entry; fetch-first (5cad720c -> e22e73c ridden, workflow file diff vs our push EMPTY — other lanes' overnight landings are content/receipt-only); no force; secrets never printed"
+}

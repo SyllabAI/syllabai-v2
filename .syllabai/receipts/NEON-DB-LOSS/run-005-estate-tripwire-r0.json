@@ -1,0 +1,49 @@
+{
+  "task": "neon-db-loss-estate-tripwire",
+  "run": "run-005-estate-tripwire-r0",
+  "agent": "restore-parity lane (Z.ai session web-590847c1, chat 986f6715)",
+  "operator_trace": "1a169024dcc4baf1 (operator: 'There might be more data loss, because many agents are working on many different things')",
+  "date": "2026-10-23",
+
+  "VERDICT": "NO NEW DATA LOSS DETECTED as of 2026-10-23T13:49:06Z. Full-estate fingerprint taken (75 public tables, exact row counts, DDL hash) — every corpus/identity plane matches the run-004 closure census pin-for-pin. The only deltas in the 69-minute window are LAWFUL WRITES (embedding drain progressing, WAL churn). The operator's concern is now answered by an instrument, not an assurance: the tripwire is of-record and repeatable by any lane.",
+
+  "why_this_exists": "Two loss vectors are live in this fleet: (1) concurrent-agent mistakes — already demonstrated once by the unattributed 10:49-11:53Z DDL that dropped the 8 satellite demo tables; (2) infrastructure interventions — the original estate loss was operator-keyed at the 1 GB wall. A repeatable whole-estate fingerprint turns 'might be more loss' into a 30-second checkable question with attribution.",
+
+  "instrument": "scripts/dbprobe/estate-tripwire.mjs (session-level READ ONLY; DB_URL env-only; zero deps beyond postgres driver). Captures: exact row count + bytes for every public BASE TABLE; sha256 DDL fingerprint over the sorted table list; sha256 estate row fingerprint over sorted [table,rows]; the run-004 gate pins; embeddings-drain and db-size informational counters. Full r0 artifact: run-005-estate-tripwire-r0-fingerprint.json (this directory).",
+
+  "baseline_pins_2026_10_23T13_49_06Z": {
+    "table_count": 75,
+    "ddl_fingerprint": "42d5e2ce70c2de0a... (full hash in artifact)",
+    "estate_row_fingerprint": "9d495471fa8e8d87... (full hash in artifact)",
+    "db_size": "229 MB / 1 GB (23%)",
+    "flyway_head": "V63 exam series seed pearson 2026 2027 (all-success)",
+    "gate_all_stable": "mark_points 14,141; mark_schemes 6,733; document_chunks 13,765; documents 301 QP/289 MS/489 EQ/162 SYL/112 EN/+1 TEXTBOOK; question_asset 585; revision_note_asset 194; users 587; exam_papers 4MA1=110; satellite_demo_tables 0",
+    "lawful_drift_observed": "embeddings_no_vec 3,629 -> 1,330 (T-MIG-138 drain; expected direction — vectors filling in); db_size 210 -> 229 MB (drain writes + WAL)"
+  },
+
+  "decision_rule_of_record": {
+    "INCIDENT_class": [
+      "row-count DECREASE on any corpus/identity plane: documents, document_chunks, mark_points, mark_schemes, question_parts, questions, question_versions, question_spec_points, question_options, question_topics, exam_papers, question_asset, revision_note_asset, revision_note, knowledge_nodes, knowledge_edges, users, user_roles, curriculum_versions, course_registry, subjects, book_chapters",
+      "table_count or ddl_fingerprint change WITHOUT a worklog/attribution line from the acting lane (the exact failure mode of the 10:49Z satellite drop)",
+      "flyway head moving BACKWARD or a success=false row appearing"
+    ],
+    "LAWFUL_class": [
+      "growth on activity planes: attempts, answers, telemetry_events, tutor_*, cla_*, flashcard_ratings, review_schedules, smart_mark_*, human_marks, learner_*, intervention_*, announcement*, content_review_audit, decay_job_runs, chapter_progress",
+      "embeddings_no_vec decreasing (the drain)",
+      "bytes churn anywhere (WAL/vacuum)"
+    ],
+    "AMBIGUOUS_class": "anything else — treat as incident until a lane claims it of-record"
+  },
+
+  "usage_law": {
+    "when": "(a) at the start and end of any lane that writes the DB; (b) after any operator-keyed console action (project settings, branch ops, deletes); (c) at least once per day fleet-wide; (d) IMMEDIATELY on any suspicion of loss",
+    "how": "DB_URL env + `node scripts/dbprobe/estate-tripwire.mjs` (read-only, ~30s). Diff against run-005's artifact: table counts, the two fingerprints, gate pins.",
+    "on_delta": "check .syllabai/worklog.md for the claiming lane first (most deltas are lawful writes); only UNCLAIMED deltas on the INCIDENT class get escalated to the operator + a NEON-DB-LOSS receipt",
+    "cadence_owner": "no owner — every lane is responsible for running it around its own writes; T-OPS-TRIPWIRE-001 carries the card"
+  },
+
+  "structural_note": "The tripwire DETECTS loss; it does not prevent the biggest historical trigger — the 1 GB wall (DB now 23%, but the fleet is writing again). The structural fix stays ADR-038: trim census -> provisioner -> per-group cut-over (T-OPS-PLANE-001). The re-derivation instruments (mark_points card T-CONTENT-MP-REBUILD-001, papers-ingest, books chain) remain the real backup law on the free plan — pg_dump is NOT available in the ops sandbox (no client binaries), so dumps are console-side until the client tooling or Object Storage wiring exists.",
+
+  "zero_writes_statement": "Session-level READ ONLY transaction; zero DB writes, zero Vercel mutations, zero LLM calls. Repo additions additive-only: this receipt + fingerprint artifact + T-OPS-TRIPWIRE-001 card + worklog entry.",
+  "secrets_disclosure": "Pooler URL remains chat-transited and on the rotation list; env-only use; scrub verified after push."
+}

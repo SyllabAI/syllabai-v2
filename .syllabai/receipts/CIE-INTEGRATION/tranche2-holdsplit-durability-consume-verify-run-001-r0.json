@@ -1,0 +1,36 @@
+{
+ "schema": "syllabai.cie-integration-receipt/1.0",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T2-HOLDSPLIT-2",
+ "run": "run-002 (independent verification + theirs-first closure of the durability consume re-key)",
+ "generatedUtc": "2026-10-23T12:34:33Z",
+ "operatorDirective": "consume lane re-key (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, gateway trace 1a168ad02ca736e1)",
+ "theirsFirst": {
+  "siblingOfRecord": "T-RULE-T2-HOLDSPLIT-DURABILITY-1 run-002 (session web-64d10b73-530a-4f71-9961-85d0436c7fb5, dispatch trace 1a1686d11b430639) landed the re-key BEFORE this desk fired a single staging write — pure independent-verification posture, zero race, zero contact",
+  "commit": "02b5a762e6280a91aa3218e409b59d0e8e700a88 (v2 origin/main, CI combined status success)",
+  "siblingReceipt": ".syllabai/receipts/CIE-INTEGRATION/tranche2-holdsplit-durability-consume-run-004-r0.json",
+  "pinAdvance": "ea21a721e09e3a7ccfa1f92d6f667bc290412e14 -> fa664a86d64dd954225e0dee05a8cd742703179c",
+  "sidecarOfRecord": "d3b659268706d053fca8148b97dfcd9a55afd58e092b366981c3192926bac2ed (26 anchors, resources capture commit fa664a86)"
+ },
+ "independentVerification": {
+  "tool": "scripts/rekey_verify_theirs.py (this desk, session workspace, read-only) — gates V0-V8 ALL GREEN",
+  "pinIdentity": "engine PIN/STAMP + 44 maps (resourcesSha+generatedUtc) + 44 manifests (officialSpine.resourcesSha) + validator CIE_PIN == fa664a86; CIE_PIN_PRIOR_6 = ea21a72 demoted, allow-list intact",
+  "consumedInputDelta": "ea21a72->fa664a86 engine-input delta = spec-links/cie-a-level-chemistry-25.json + spec-links/manifest.json ONLY (the capture block; rejoin sheet blob-identical; 618 non-engine-input paths from other lanes inside the range disclosed, NOT consumed)",
+  "registryPlane": "chem25 spcptToOfficial 72 / spcptUnmapped 259 intact; 26/26 sidecar anchors verify-if-equal on officialCodes, 0 conflicts; the 3 hold/split rows field-EQUAL incl via (34.2.2+34.2.4 / 21.1.2+36.1.2 / 37.4.4+37.4.5)",
+  "census": "chem25 sidAnchors {added:0, verified:26, conflictsKept:0}; 44-map fleet sum {0,26,0}; chem25 inputs sidecar sha == d3b65926",
+  "itemPlane": "chem25 questions/flashcards/curriculum byte-identical vs parent 6702128f; notes = EXACTLY the 3 disclosed bodyMd inline rewrites (rn_8NdDvsBxGB5kNZJ3 / rn_cv7Z4jVxR6Rwpf3r / rn_yryCr4zmnDxYFRyh), R3-exact vs the current registry display map, specPointIds byte-equal on all 239 notes; 43 banks item planes byte-identical + manifests pin-only; 43 maps diff within {resourcesSha, generatedUtc}",
+  "idempotence": "this desk's OWN post-apply engine re-run at the of-record state (detached worktree @ origin/main bf41299b + resources worktree @ fa664a86, engine UNMODIFIED): changed=0/44, exit 0, sheet 634/166 — quiescent fixed point reproduced independently; staging discarded, zero repo writes",
+  "pinsAndFloors": "roster floors 6784/5789/9411 + unmapped 12,294 unchanged; _report regenerated with the sibling dispatch trace; remote==local byte identity on 5 of-record paths @ tip"
+ },
+ "disclosures": [
+  "the 23 PRIOR sid-anchor rows differ from the sidecar capture ONLY on the via string shape (registry full receipt path vs PR-#49 sidecar short form — pre-existing APPLY-1/PR-#49 generation difference; codes/tier/method/lineage/officialId equal; the engine law verifies officialCodes, census 0/26/0 of record) — NOT a conflict, disclosed",
+  "chem25 notes.json is the INTENDED item-plane delta of this re-key (3 inline rewrites; the 3 newly-resolved sids' first real-code render) — byte-identity asserted instead on questions/flashcards/curriculum + the 43 sibling banks",
+  "full-suite 6-fail environment posture per the sibling receipt (stash-proven pre-existing at base) accepted, not re-run by this desk"
+ ],
+ "residuals": [
+  "tranche-3 (1,203 sid-less parts) — operator-gated ruling program",
+  "PAT rotation CRITICAL-OVERDUE (same fingerprint through every push this lane)",
+  "hung resources sync job (superseded by the f-0011 closure lineage; verify on next resources touch)"
+ ],
+ "stamp": "2026-10-23T12:34:33Z"
+}

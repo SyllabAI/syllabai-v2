@@ -1,0 +1,72 @@
+{
+  "receipt": "study-plan-builder-run-001-r0",
+  "lane": "Study-Plan Builder (P2 second item of the spec roadmap band; spec \u00a75.3 + roadmap Table 3 P2 row)",
+  "operator_launch_word": "\"study-plan builder (P2)\" (IM trace 1a1658959017ed4d, 2026-10-23) \u2014 the launch word the DC-5 merge receipt recorded as pending",
+  "prereg": "docs/STUDY-PLAN-BUILDER-PLAN.md (committed WITH the implementation per the #216/#225/#229/#232/DC-4/DC-7 pattern)",
+  "spec_of_record": {
+    "source": "github.com/nawaf-al-hussain/FileUpload/tree/main/SME-Research (per the DC-3 receipt's provenance row)",
+    "file": "SyllabAI-SmartChat-Mark-Design-Spec.docx",
+    "size_bytes": 824492,
+    "sha256": "0da8044a0667a47c684d4b0486784be02bc4992546eca2ec2946043e9e2b287a",
+    "verdict": "EXACT match, re-verified at this lane's open after the sandbox reset wiped the recovered-spec staging (re-download via raw.githubusercontent, byte-verify EXACT; 265-paragraph extract re-derived, TOC-vs-body verified on the \u00a73.7 body hit before use)",
+    "extractor": "scripts/extract_spec_text.py (operator-side, persisted this run)"
+  },
+  "roadmap_position": "P0 (DC-1/DC-2/DC-6) + P1 (DC-3 751916cf, DC-4 30d8d21c, DC-7 c3dcd96d) + P2 first item (DC-5 PR #313 -> ed04074a) all merged of record; this lane = the P2 band's second item (Table 3: 'Study plan builder (3 steps, pairing rule, thresholds) | web plan | Generated week from tree; Revise auto-complete; Practise threshold'); teacher/persona surfaces follow.",
+  "scheduler_ruling_of_record": "deterministic, spec-ordered (spec open question (c) resolution of record, prereg \u00a70): the Table-3 gate's own words ('Generated week from tree') and the DC-7 projection pattern are deterministic by construction; spaced-repetition scheduling = a disclosed future relaxation under a new dated prereg; nothing in this lane claims learning-science optimality.",
+  "grounding_first_hand_at_main_edd5a91d": [
+    "the DC-7 plan projection named this lane: buildPlanProjection(sql, learnerId, courseSlug, now, tasks?: PlanTaskRef[]) \u2014 'the P2 builder's future input'; REVISE = the note check (revision_note_viewed), PRACTISE = markedParts >= PROGRESS_PLAN_THRESHOLD_PRACTISE (5, the constant of record) over ai_mark_events subtree counts; thresholds consumed byte-for-byte, zero threshold code written here",
+    "no plan tables and no plan surface existed (DC-7 census \u00a71 still true at this lane's open); the frozen learner-me band (routes/learner/index.ts) untouched \u2014 a NEW additive router module in the same /api/v1/learners/me band",
+    "knowledge_nodes carries NO order column -> spec order = natural (numeric-aware) curriculum-code sort, pinned against the S10/S2 lexicographic trap",
+    "pairing unit = SUBTOPIC (the DC-7 plan-projection's own honest-default PRACTISE granularity); a subtopic's Revise note = its first note by note_id ASC (the deterministic single-note law; multi-note subtopics disclosed)",
+    "registry levels of record are IGCSE/A-Level/IAL/AS -> the spec's observed 'May/June' (A Level) vs 'Summer' (GCSE) default maps A-Level/IAL/AS -> May/June, IGCSE -> Summer, two years out",
+    "migration protocol of record: the 0008/0009/0011 drizzle form + the 0000 union-baseline fold (the F-182/DC-5 convention \u2014 verifyBaseline reads 0000_snapshot.json) + the rebaseline pin advance + the schema README owning-task ledger row",
+    "the observed '1 of 4 tasks today' arithmetic = the capacity law: 120 weekday minutes = 2 topic-pairs/day = 4 tasks/day (pair = 15 + 45 = 60 min)"
+  ],
+  "mechanism": {
+    "new_files": [
+      "packages/db/drizzle/0012_study_plans.sql (CREATE-only: study_plans plan-config row \u2014 the THREE builder steps; uq_study_plan_learner = ONE active plan, PUT replaces; fk_study_plans_learner -> users.id ON DELETE cascade; ck_study_plan_minutes >= 0; anchor immutability: created_at never moves on edit \u2014 the day-walk anchor)",
+      "packages/db/drizzle/meta/0012_snapshot.json (prevId = 0011's id e32eeb35-4332-4eec-973b-f5210a8ae20c) + the _journal.json idx-12 entry + the 0000 union-baseline fold (79 tables)",
+      "apps/api/src/services/learner/study-plan.ts (the deterministic week generator: defaultExamSeason, naturalCompareCodes, loadCourseTree, walkSlots, generatePlanWeek, getStudyPlanDefaults, upsertStudyPlan, loadStudyPlan, buildStudyPlanPayload)",
+      "apps/api/src/routes/learner/study-plan.ts (GET/PUT /api/v1/learners/me/study-plan + GET /study-plan/defaults; authz-shell-first + injected-clock posture verbatim)",
+      "apps/api/test/learner/study-plan.test.ts (16 pins over the fakeSql module harness, param-aware fixture emulating the course-LIKE filter)",
+      "apps/hub/src/lib/study-plan-view.ts (api-free pure view mappers + wire types \u2014 the module split keeps the api.v2-surface dual-run posture intact)",
+      "apps/hub/src/lib/study-plan-client.ts (the consumer hooks + the lane's ONLY write: PUT upsert; progress-server posture: signed-out/failure -> null, disclosed)",
+      "apps/hub/src/lib/study-plan-client.test.ts (7 view-mapping pins)",
+      "apps/hub/src/app/plan/page.tsx + plan-client.tsx (the 3-step builder + the Creating-your-Study-Plan interstitial + the weekly page; builder state DERIVED, no effect-body setState)",
+      "docs/STUDY-PLAN-BUILDER-PLAN.md (the prereg of record)"
+    ],
+    "modified_files": [
+      "apps/api/src/index.ts (import + build + ONE additive mount line at the /api/v1/learners/me band)",
+      "apps/hub/src/app/dashboard/dashboard-client.tsx (the additive Study plan rail: Create Study Plan <-> 'You've completed N of M tasks today' + progress bar + View plan; the SAME payload as the plan page)",
+      "packages/db/src/schema/schema.ts (the studyPlans export, drizzle-kit pull style)",
+      "packages/db/src/schema/README.md (the 0012 owning-task ledger row)",
+      "packages/db/scripts/rebaseline.test.ts (the pin advance 78/739/107/75/127 -> 79/747/107/76/128 + the runtime-loader study_plans row)",
+      "packages/db/drizzle/meta/0000_snapshot.json + _journal.json (the fold + the chain)"
+    ],
+    "generation_law": "per course: SUBTOPIC subtopics in natural code order; pairs (REVISE 15 min + PRACTISE 45 min) laid onto a day walk anchored at the plan's created_at UTC date (weekday capacity floor(weekday_minutes/60) pairs, weekend floor(weekend_minutes/60)); pairs round-robin across the plan's courses in stored order; subtopics wrap per cycle \u2014 a wrapped subtopic = a REPEAT PASS of the same task (same taskId, one projection decision); the rendered week = the UTC Mon..Sun week containing the injected now; taskId law byte-identical to the projection's honest-default convention (revise:<noteId> / practise:<nodeCode>); completion via buildPlanProjection per course over THIS week's refs; the goal card's coverage measured from exact slot counts (coversInTime + cyclesNeeded), never asserted",
+    "the_only_write": "PUT persists ONLY the plan-config row (0012_study_plans). Task completion state is never stored \u2014 'the tree wrote the plan, not the learner' is structural."
+  },
+  "battery": {
+    "api_pins": "16/16 (apps/api/test/learner/study-plan.test.ts: generated-week determinism/capacity/order, today slice, natural order, round-robin + cycle ends, goal coverage measured, Revise auto-complete through the builder, the fifth-marked-part threshold (attempts alone never flip), counter consistency, defaults, season mapping, upsert validation, anchor immutability at the SQL level, step-2 fill law, slug dedupe, read side)",
+    "hub_pins": "7/7 (view mappers: rail copy, goal claim, deep links, provenance microcopy, day labels)",
+    "rebaseline": "26/26 (79/747/107/76/128 \u2014 the 0012 bump +1 table/+8 columns/+0 explicit indexes/+1 fk/+1 check, uq rides uniqueConstraints per the mpa precedent; runtime loader sees public.study_plans)",
+    "full_suite": "2716 pass / 13 skip / 0 fail (apps/api + packages, 145 files \u2014 re-proven on the FINAL head after the two Gate-4 rebase rounds; the round-1 run was 2693/13/0 on 144 files at the pre-rebase head)",
+    "typecheck": "root x4 exit 0; packages/db typecheck 0; drizzle-kit check 'Everything's fine'; hub tsc --noEmit 0",
+    "hub_suite": "313 pass / 1 fail \u2014 the 1 fail is the question-cla-threads isolation pin, PROVEN PRE-EXISTING on the faithful base run (origin/main worktree with the real node_modules symlinked: 293 pass / 1 fail, the same pin)",
+    "eslint": "0 problems on the 6 touched hub files",
+    "build": "prebuild trio PASS (CIE validator incl. pure-1 bank 67 intact) + build:hub exit 0 (/plan in the standalone manifest)",
+    "fence_census": "routes/cla.ts blob 3c2ceb018e9b858491d4f1befc72ae13d06e8333 + services/cla/service.ts blob db4573c79e9644500eae0b95137056f1e9050d72 \u2014 HEAD == working tree, byte-identical; prompt.ts / PROMPT_VERSION / packages/contracts: ZERO files in the diff; 18 lane files total (7 modified + 11 new), none outside the learner/hub/planes + the packages/db migration band + docs/receipt/worklog",
+    "ci_on_final_head": "verify SUCCESS + hub SUCCESS (the head 3fd73df9's own check-runs; Gate 2 double-proved: the pre-rebase head 550be36d also went GREEN before the first rebase)"
+  },
+  "disclosed_residuals": [
+    "the observed product's manual complete toggle + Adjust menu are NOT run-001 (a plan-state write path would be a second truth beside the projection \u2014 its own dated decision)",
+    "the feature tour overlay (file 133) is demo chrome \u2014 deferred",
+    "multi-note subtopics render ONE Revise task (first note by note_id ASC)",
+    "the Practise deep link lands on the course's exam-questions surface (its searchParams of record has no subtopic key)",
+    "wrap cycles repeat subtopics (the goal card discloses cyclesNeeded); repeat passes render the same taskId per scheduled day",
+    "flashcards stay outside the projection (the DC-7 residual); signed-out learners get the rail copy + login CTA; the week is recomputed per read (no task rows)",
+    "spaced repetition (spec open question (c)) deliberately undecided-and-unclaimed"
+  ],
+  "stops_at": "the merge gate \u2014 the operator's merge word is the product sign-off (PR #323 open at head 3fd73df9; no merge executed)",
+  "gate4_receipt": "TWO rebase rounds of record (the DC-4/DC-5 recipe, fetch-first, --force-with-lease each time): (1) main f757c643 (Merge PR #321 T-UGM-HUB-CONSUME-3) \u2014 worklog tail union splice (main-side bytes first, byte-verified both directions; scripts/sp_worklog_splice.py), head 550be36d -> c7eac283, battery re-run ALL first-hand GREEN; (2) main 344743c4 (Merge PR #322 F-183 MS-reveal law) \u2014 ONE conflict in apps/api/src/index.ts (the drill build const relocated by F-183; resolved by union: my learnerStudyPlan const kept, main's relocated drill const untouched \u2014 main's bytes byte-preserved), worklog clean (no band change), head c7eac283 -> 3fd73df9, battery re-run ALL first-hand GREEN on the final head. mergeable True / CI SUCCESS on 3fd73df9."
+}

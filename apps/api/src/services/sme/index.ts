@@ -54,6 +54,11 @@ function markPointRowsFor(p: SmePart): number {
   return p.markPoints != null && p.markPoints.length > 0 ? p.markPoints.length : 1;
 }
 import { ArchiveFormatError, readEach, zipLimitsDefaults, type ZipLimits } from "./zip";
+import {
+  buildAlternativeInserts,
+  extractAcceptableAnswers,
+  insertMarkPointAlternatives,
+} from "../ingestion/acceptable-answers";
 
 /** the driver-agnostic sql seam + the adapter's transaction (per-module declared) */
 export type TxSqlFn = SqlFn & {
@@ -436,13 +441,29 @@ export class SmeQuestionIngestService {
         validation_state, extraction_method, created_at)
       values (${schemeId}, ${versionId}, ${"1"}, ${sourceDocId}, ${"VALIDATED"}, ${EXTRACTION_METHOD}, ${this.clock.now().toISOString()})
     `;
+    const mpPointId = this.clock.newId();
+    const mpPointText = solutionMd === null ? stem : solutionMd;
     await tx`
       insert into mark_points (id, mark_scheme_id, question_part_id, ref, ordering, text,
         marks, acceptance_criteria, extraction_confidence, created_at)
-      values (${this.clock.newId()}, ${schemeId}, ${null}, ${"a"}, ${0},
-        ${solutionMd === null ? stem : solutionMd}, ${markPointMarks},
+      values (${mpPointId}, ${schemeId}, ${null}, ${"a"}, ${0},
+        ${mpPointText}, ${markPointMarks},
         ${JSON.stringify([])}, ${null}, ${this.clock.now().toISOString()})
     `;
+    // DC-5 (spec §3.5, prereg docs/DC5-CONFORMANCE-LINT-PLAN.md §4.2): the
+    // acceptable-answer materialisation rides the same transaction,
+    // additive to the ingestion pipeline; empty extraction inserts nothing.
+    await insertMarkPointAlternatives(
+      tx,
+      buildAlternativeInserts(
+        mpPointId,
+        schemeId,
+        extractAcceptableAnswers(mpPointText),
+        "dc5-r1-ingestion",
+        this.clock.now().toISOString(),
+        () => this.clock.newId(),
+      ),
+    );
   }
 
   /** structured body: part rows in order + one mark point per part (per-point rows when the part carries markPoints, ADR-037 v0.7); returns the part count (:379-409) */
@@ -495,22 +516,52 @@ export class SmeQuestionIngestService {
       if (mpSource !== undefined) {
         for (let i = 0; i < mpSource.length; i++) {
           const mp = mpSource[i]!;
+          const mpPointId = this.clock.newId();
+          const mpPointText = mp.text === null ? part.prompt : mp.text;
           await tx`
             insert into mark_points (id, mark_scheme_id, question_part_id, ref, ordering, text,
               marks, acceptance_criteria, extraction_confidence, created_at)
-            values (${this.clock.newId()}, ${schemeId}, ${part.id}, ${part.label + "." + (i + 1)}, ${mpOrder++},
-              ${mp.text === null ? part.prompt : mp.text}, ${mp.marks}, ${JSON.stringify([])}, ${null}, ${this.clock.now().toISOString()})
+            values (${mpPointId}, ${schemeId}, ${part.id}, ${part.label + "." + (i + 1)}, ${mpOrder++},
+              ${mpPointText}, ${mp.marks}, ${JSON.stringify([])}, ${null}, ${this.clock.now().toISOString()})
           `;
+          // DC-5: the acceptable-answer materialisation rides the same tx
+          // (docs/DC5-CONFORMANCE-LINT-PLAN.md §4.2; empty extraction = no rows).
+          await insertMarkPointAlternatives(
+            tx,
+            buildAlternativeInserts(
+              mpPointId,
+              schemeId,
+              extractAcceptableAnswers(mpPointText),
+              "dc5-r1-ingestion",
+              this.clock.now().toISOString(),
+              () => this.clock.newId(),
+            ),
+          );
         }
         continue;
       }
       const sol = solutionOf(q, part.label);
+      const mpPointId2 = this.clock.newId();
+      const mpPointText2 = sol === null ? part.prompt : sol;
       await tx`
         insert into mark_points (id, mark_scheme_id, question_part_id, ref, ordering, text,
           marks, acceptance_criteria, extraction_confidence, created_at)
-        values (${this.clock.newId()}, ${schemeId}, ${part.id}, ${part.label}, ${mpOrder++},
-          ${sol === null ? part.prompt : sol}, ${part.marks}, ${JSON.stringify([])}, ${null}, ${this.clock.now().toISOString()})
+        values (${mpPointId2}, ${schemeId}, ${part.id}, ${part.label}, ${mpOrder++},
+          ${mpPointText2}, ${part.marks}, ${JSON.stringify([])}, ${null}, ${this.clock.now().toISOString()})
       `;
+      // DC-5: the acceptable-answer materialisation rides the same tx
+      // (docs/DC5-CONFORMANCE-LINT-PLAN.md §4.2; empty extraction = no rows).
+      await insertMarkPointAlternatives(
+        tx,
+        buildAlternativeInserts(
+          mpPointId2,
+          schemeId,
+          extractAcceptableAnswers(mpPointText2),
+          "dc5-r1-ingestion",
+          this.clock.now().toISOString(),
+          () => this.clock.newId(),
+        ),
+      );
     }
     return partRows.length;
   }

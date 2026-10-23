@@ -1,0 +1,61 @@
+{
+  "task": "T-MIG-141",
+  "run": "run-002-phase-a-map",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "trace": "1a1686907a2d0855",
+  "timestamp_utc": "2026-10-23",
+  "act": "Phase A executed: OEQ donor base extraction + rendered-evidence pass (F48 transposed) + table.v1.json built and landed in syllabai-parser 503bdaf",
+  "gating_note": "Phase B/C/D remain GATED on NEON-DB-LOSS recovery closure (run-001 law); Phase A is repo-side and unaffected",
+  "donor_extraction": {
+    "source": "syllabai-resources Official-ExamQuestion scripts/official_examq_extract.py @ resources main 1ef9d5b8 (converter file sha b114f47a), read-only fetch",
+    "base_map": "PUA_MAP 31 evidenced entries + normalize_pua fail-closed gate + F52 U+01FB->U+0394 pre-gate + FURNITURE_SUBS (P-marker/Turn over/DO-NOT-WRITE)",
+    "key_divergences_found": [
+      "F0A2: OEQ evidences DROP (dotted answer-line rule); spec Appendix A had hypothesized *-anchor glyph — DROP adopted (OEQ render + our 2 renders + position census)",
+      "F072: OEQ evidences Wingdings3 Delta; OUR renders show the composed over-arrow (vector notation) — CONFLICT held out of v1, pending composed-arrow study"
+    ]
+  },
+  "evidence_pass": {
+    "method": "150 dpi pdftoppm renders of byte-frozen pastpapers PDFs; word boxes via pdftotext -bbox; crops eyeballed on labeled contact sheets (CROP-REVIEW pattern); glm-ocr-origin CPs attempted via neighbor-phrase anchoring",
+    "renders": {"primary_jobs": "45 unique pdf+page, 42 ok / 3 no-bbox (chemistry glm-ocr pages)", "fallback": "16/28 CPs", "ocr_anchor": "17/19 CPs", "crop_groups": 278, "representative_crops_committed": 86, "sheets": 5},
+    "verification": "visual adjudication over sheet1/2/3/4/5/6/7 (this lane); every mapped char named from what the printed page shows"
+  },
+  "results": {
+    "table_v1": {
+      "landed_at": "syllabai-parser 503bdaf tools/glyph-normalization/table.v1.json (+ README.md, evidence/T-MIG-141 sheets + 86 crops)",
+      "entries": 61,
+      "wired_instance_coverage": {"mapped": "18,562 / 25,399 = 73.1%", "drop_class_F0A2": "5,146 = 20.3% (matches spec Appendix A pin EXACTLY)", "touched_total": "93.3%", "pending": "796 = 3.1%"},
+      "classes": {
+        "oeq-base-reverified": 18,
+        "new-evidenced": 25,
+        "positional-law (big-paren/bracket pieces -> U+239B..23A6)": 12,
+        "drop-class": 1,
+        "oeq-donor-pending-our-render": 7,
+        "conflict-held": 1
+      }
+    },
+    "positional_law_votes": {"F0E6": "top x59", "F0E7": "mid x71", "F0E8": "bottom x58", "F0F6": "top x59", "F0F7": "mid x71", "F0F8": "bottom x59", "F0E9": "top x9", "F0EA": "mid x13", "F0EB": "bottom x10", "F0F9": "top x11", "F0FA": "mid x13", "F0FB": "bottom x11"},
+    "vector_arrow_discovery": "F026/F067/F072/F075 words are PURE PUA RUNS (e.g. F075 x3 + F072 x1) = composed long arrows (shaft pieces + head); single-char mapping would produce arrow-glyph runs — needs a sequence-rule design (spec §3.5 longest-first law) before landing; 339 instances held in pending_register",
+    "pending_register": "20 CPs / 796 instances unmapped in v1 (fail-closed): composed arrows 339, big-brace suspects F8EB-F8ED/F8F6-F8F8 (268; exact L/R pairing 46/46, 44/44, 44/44), stragglers F02F/F041/F06C/F0D7/F0B6/F0BC/F061/F06F/F097/F0A6 (189)"
+  },
+  "artifacts": [
+    "syllabai-parser 503bdaf: tools/glyph-normalization/table.v1.json + tools/glyph-normalization/README.md + evidence/T-MIG-141/**",
+    "scratch lane artifacts: census.json, locator.json, evidence_plan.json, render_jobs.json, render_manifest.json, fallback_manifest.json, anchor_manifest.json, cp_crop_index.json, adjudication_pass1.json, coverage_diff.json, sheet*.png, table/table.v1.json",
+    "donor snapshot: scratch/t_mig141/official_examq_extract.py (read-only fetch of resources 1ef9d5b8)"
+  ],
+  "acceptance_progress": {
+    "Phase_A_acceptance": "every landed entry carries rendered evidence ref + census count + canary pin (F48 standard); arrows F022/F0E0/F083: F022/F083 evidenced by our renders, F0E0 donor+context with our render pending run-002",
+    "canaries": "C-Glyph-<CP> pins for all 60 mapped entries embedded in table.v1.json; C4 wrong-map disproof scheduled for the Phase-B dry-run (run-003)",
+    "C9": "census sha256 5c18c01e15e918cb36a8609a2c2ae6dbdb806ad3a5738822299c3c070c8c63d2 (run-001) unchanged; re-derive at every leg"
+  },
+  "next_safe_actions": [
+    "run-002b: complete the pending register (composed-arrow sequence-rule study incl. F072 OEQ-Delta conflict adjudication; big-brace scaffold renders via column-targeted crops; 10 stragglers tight-crops; F0E0/F0E5/F8-family our-render corroboration)",
+    "run-003: Phase B DRY-RUN (zero writes): scope query + census hash re-derive + before-image archive rehearsal + diff artifact + the C4 wrong-map disproof probes",
+    "Phase B/C/D execution remains GATED on NEON-DB-LOSS recovery_order closure (restore-agent parity census)"
+  ],
+  "disclosures": [
+    "zero DB writes this run (t0_readonly probes + read-only raw.github fetches only)",
+    "syllabai-parser received additive files only (tools/glyph-normalization/** + evidence/T-MIG-141/**); no contract surfaces touched",
+    "donor repo syllabai-resources untouched (donor-not-edit-surface rule)",
+    "evidence renders derived from the byte-frozen public archive (syllabai-pastpapers); no Pearson content re-hosted beyond the archive's own existing public artifacts"
+  ]
+}

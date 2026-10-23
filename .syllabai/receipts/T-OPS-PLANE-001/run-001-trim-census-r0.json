@@ -1,0 +1,72 @@
+{
+  "task": "T-OPS-PLANE-001 step 2 — trim census (corpus plane map + trim rulings + warehouse group size map)",
+  "run": "run-001-trim-census-r0",
+  "agent": "restore-parity / ops lane (Z.ai session web-590847c1, chat 986f6715)",
+  "operator_trace": "1a1693ebbced18bd (operator: 'Proceed' — dispatches trim census -> provisioner -> 4MA1 dry-run) after 1a169372161c4b45 (plain-language order explanation, answered in-chat)",
+  "date": "2026-10-23",
+  "method": "READ ONLY SQL sessions (pooler, env-only creds): trim-phase-a.mjs (schema introspection + low-cardinality distributions) + trim-phase-b.mjs (plane map via source_engine/kind/subject/qualification relays, dedup check, byte weights) + targeted pin queries. Tripwire r1 diff taken first: estate byte-quiet vs run-005 r0 (zero row deltas, 75 tables, DDL fingerprint unchanged). Zero DB writes.",
+
+  "VERDICT": "TRIM CENSUS COMPLETE. Corpus planes fully mapped by live signatures; trim rulings made (drop-at-cut-over only, no prod deletes now — placement law: rows MOVE at T1 cut-over, physical trim is part of zero-residue); warehouse group size map produced (today exactly TWO subject planes hold data: Maths 8,202 chunks / Chemistry 5,563); dedup is a non-issue at current scale; the provisioner + 4MA1 dry-run instruments are written and run-ready but BLOCKED ON SANDBOX EGRESS (api.neon.tech HTTP 000 — both API hosts unreachable). CORRECTION of record: the historical '1,223-chunk unwired pdftotext plane' figure (session notes, pre-loss era) matches NO live signature — superseded by this live map.",
+
+  "plane_map_live": {
+    "by_source_engine": {
+      "pdftotext-layout": {"chunks": 8202, "content_bytes": "10,092 kB", "docs": 330, "note": "the ENTIRE 4MA1 papers corpus (Maths subject) + its EQ plane"},
+      "pdflane-atoms": {"chunks": 2908, "content_bytes": "2,544 kB", "note": "4CH1/4CH0/unknown-qualification papers + 442 unlinked QP/MS"},
+      "ibm-docling": {"chunks": 823, "content_bytes": "888 kB", "note": "TEXTBOOK (created 2026-10-18, single bake)"},
+      "qcard-bridge": {"chunks": 758, "content_bytes": "195 kB", "note": "EXTERNAL_QUESTIONS"},
+      "sme-notes-bridge": {"chunks": 350, "content_bytes": "341 kB", "note": "EXTERNAL_NOTES"},
+      "tc27-card-bridge": {"chunks": 298, "content_bytes": "84 kB", "note": "EQ card wave (archive table 0 rows)"},
+      "glm-ocr-markdown": {"chunks": 246, "content_bytes": "240 kB"},
+      "sme-notes-spec-bridge": {"chunks": 162, "content_bytes": "42 kB", "note": "SYLLABUS"},
+      "pdflane-atoms-ocr": {"chunks": 18, "content_bytes": "16 kB"}
+    },
+    "by_subject": {"Maths (4MA1)": {"chunks": 8202, "content_bytes": "10,092 kB"}, "Chemistry (4CH1)": {"chunks": 5563, "content_bytes": "4,350 kB"}, "note": "ALL 13,765 chunks carry subject_id; only 2 subjects hold data today"},
+    "by_kind": {"MARK_SCHEME": 4412, "QUESTION_PAPER": 4228, "EXTERNAL_QUESTIONS": 3790, "TEXTBOOK": 823, "EXTERNAL_NOTES": 350, "SYLLABUS": 162},
+    "exam_linked_by_qualification": {
+      "4MA1": {"papers": 110, "qp_ms_docs": 220, "chunks": 5468, "content_bytes": "9,409 kB"},
+      "unknown-qualification": {"papers": 59, "docs": 108, "chunks": 1485, "content_bytes": "1,336 kB", "note": "data-quality item: qualification metadata missing; rides Chemistry subject plane"},
+      "4CH1": {"papers": 38, "docs": 76, "chunks": 1014, "content_bytes": "894 kB"},
+      "4CH0": {"papers": 8, "docs": 16, "chunks": 231, "content_bytes": "204 kB"},
+      "IGCSE": {"papers": 3, "chunks": 0, "note": "registry-only, no docs linked"}
+    },
+    "residual_not_exam_linked": {"EXTERNAL_QUESTIONS_total": 3790, "TEXTBOOK": 823, "EXTERNAL_NOTES": 350, "SYLLABUS": 162, "pdflane_unlinked_QP_MS": 442},
+    "orphans": 0
+  },
+
+  "sizing_insight": "document_chunks = 124 MB total but only 19 MB HEAP — ~105 MB is index bloat (HNSW ix_document_chunks_embedding + content_tsv GIN + btree family). Content bytes sum ≈ 14.7 MB. At T1 cut-over the indexes are REBUILT in warehouses and the heap+index mass LEAVES MAIN: main sheds ~124 MB (chunks) + 44 MB (assets 30+14) + ~12 MB (mark_points 10.1 + mark_schemes 1.5) + ~10 MB (documents) ≈ 190 MB of its current 229 MB. Main residual ≈ 40-60 MB — permanently ~5% of the 1 GB wall (better than the ~100 MB estimate in the placement law; the law's sizing table stands corrected downward by this census).",
+
+  "trim_rulings_of_record": [
+    {"ruling": "DROP-AT-CUT-OVER", "plane": "REJECTED documents' chunks", "live_signature": "79 chunks / 6 docs / 70 kB (pdflane-atoms QP 49 + MS 30)", "reason": "validation_state=REJECTED — never wired, no serving surface, not restorable to serving"},
+    {"ruling": "DROP-AT-CUT-OVER", "plane": "exact-duplicate chunk rows", "live_signature": "10 dup groups / 10 redundant rows / 7,221 bytes (4CH1 Jun-2019 1C QP card + 1 MS boilerplate)", "reason": "byte-identical duplicates; ADR-038 shared-textbook dedup concern is a NON-ISSUE at current scale"},
+    {"ruling": "KEEP (moves with its group)", "plane": "everything else — 13,676 chunks across both subject planes", "reason": "all live serving or lawfully wired planes; placement law moves corpus, it does not editorialize"},
+    {"ruling": "NOT-TRIM (in-flight work)", "plane": "1,330 null-embedding chunks", "reason": "T-MIG-138 drain actively filling (12,435/13,765 embedded, gemini-embedding-001, dim 768); ix_document_chunks_pending serves the drain; trim pass must NOT delete these"},
+    {"ruling": "CORRECTION", "plane": "historical '1,223-chunk unwired pdftotext plane' (session notes / T-OPS-PLANE-001 card wording)", "reason": "figure exists in NO receipt and matches NO live signature; pre-loss-era paraphrase. Superseded by this map: the pdftotext-layout plane is 8,202 chunks and IS the wired 4MA1 corpus. Card wording corrected in this push."}
+  ],
+
+  "warehouse_group_map_v1": {
+    "law_basis": "docs/DATA-PLANE-PLACEMENT.md + ADR-038 course-GROUP warehouses",
+    "groups_today": [
+      {"group": "maths-4ma1", "subject_id": "763dfe2d-d2b5-48fb-ba4c-2f708c637b26", "chunks": 8202, "content_MB": 10.1, "est_total_with_indexes_MB": "~15", "cut_over_order": 1},
+      {"group": "sci-chem", "subject_id": "e56dc9ee-aa74-426f-94a6-4b72d3dc346b", "chunks": 5563, "content_MB": 4.4, "est_total_with_indexes_MB": "~10", "cut_over_order": 2, "note": "carries 4CH1+4CH0+unknown-qualification papers, EQ, TEXTBOOK, NOTES, SYLLABUS planes"}
+    ],
+    "future": "10-19 group fleet per ADR-038 as new subjects land; group map is data-driven (subject_id), not hardcoded",
+    "also_moves_at_cut_over": {"documents_registry_rows": 1354, "exam_papers_rows": 218, "mark_points": 14141, "mark_schemes": 6733, "question_asset": "585 bytea rows / 30 MB", "revision_note_asset": "194 bytea rows / 14 MB", "note": "mark WRITES stay main (cross-DB read at mark time per placement law §2)"}
+  },
+
+  "template_pins": {
+    "vector": {"dimension": 768, "typmod": 768, "model": "gemini-embedding-001", "opclass": "vector_cosine_ops", "hnsw": "defaults (no m/ef params of record)"},
+    "indexes_to_reproduce": ["uq (document_row_id, chunk_index)", "hnsw embedding vector_cosine_ops", "btree (subject_id, kind) partial", "btree (subject_id, year, series) partial", "gin spec_codes partial", "btree document_row_id"],
+    "drain_only_not_reproduced": ["ix_document_chunks_pending (WHERE embedding IS NULL) — warehouses receive fully-embedded rows"],
+    "template_version": "wh-template v1 (chunks + meta; mark plane template = v2 at its cut-over)"
+  },
+
+  "provisioner_status": {
+    "artifacts_of_record": ["scripts/provisioner/template.sql (frozen v1)", "scripts/provisioner/provision.mjs", "scripts/provisioner/dryrun-4ma1.mjs"],
+    "blocker": "api.neon.tech AND api.start.neon.tech unreachable from ops sandbox (HTTP 000, 0.007s — egress wall, matches Task-10 finding; token unused)",
+    "runnable_when": "egress opens, or another agent with API egress runs them, or operator provisions console-side per template.sql and hands back pooler URLs (env-only)",
+    "dry_run_scope_when_runnable": "COW-branch rehearsal: template into fresh warehouse project -> INSERT SELECT projection via the exam_papers text-compare relay -> count+byte parity vs source -> two-step seam query demo (vector_search by subject -> ids -> hydrate) -> zero-residue DELETE rehearsal ON THE BRANCH ONLY -> tripwire-style residual proof. Main prod: zero writes by construction."
+  },
+
+  "zero_writes_statement": "All census queries under session-level READ ONLY transactions. No prod deletes executed — trim is a ruling, the physical drop happens at T1 cut-over zero-residue step. Zero Vercel mutations, zero LLM calls. Repo additions: this receipt + 3 provisioner artifacts + card update + worklog.",
+  "secrets_disclosure": "Pooler URL env-only; Neon API token probed once (egress-blocked, unused, stays on rotation list); nothing persisted to disk."
+}

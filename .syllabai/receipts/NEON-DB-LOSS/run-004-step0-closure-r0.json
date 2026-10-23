@@ -1,0 +1,74 @@
+{
+  "task": "neon-db-loss-step0-closure",
+  "run": "run-004-step0-closure-r0",
+  "agent": "restore-parity lane (Z.ai session web-590847c1, chat 986f6715) — the lane that owns the Oct-22 baseline gate (run-001) and the parity census (run-002)",
+  "operator_trace": "1a168c1b45fa2545 (operator relayed restore lane's method-receipt report verbatim — 'Their Step-0 closure can now proceed') + 1a168afa14cc0e55 (plain-language explain request, answered in-chat)",
+  "date": "2026-10-23",
+  "supersedes": "run-002 GATE-MISMATCH verdict (this lane) — the mark_points attribution question is adjudicated by run-003 and closed here",
+
+  "VERDICT": "STEP-0 CLOSURE LANDED — the restore of record (r017, restore lane, method receipt run-003) is COMPLETE: it delivered 100% of the best source that exists (the Oct-21 00:43:12Z COW snapshot br-muddy-queen), byte-faithful, proven independently by both lanes. The Oct-22 baseline mark_points pin (40,250) is UNREACHABLE BY RESTORE (post-snapshot growth lost in the drop) — closed on the amended basis of run-002 recovery_order_update step 3, with the ~26,109-row re-derivation spun out as a content-lane card (T-CONTENT-MP-REBUILD-001). T-C20 battery clause closed WITH ONE DISCLOSED EXCEPTION (B5 — proven instrument defect, not a serving defect; reconciliation carded to the books lane). Single-writer hold RELEASED with this receipt per run-002 recovery_order_update step 5. T-MIG-141 Phase B/C/D UN-GATED.",
+
+  "closure_basis": {
+    "leg_1_census": {
+      "status": "PASS on amended basis (run-002 recovery_order_update step 3 — the fork run-003 adjudicated)",
+      "census_run": "parity-census.mjs v2 at 2026-10-23T12:40:26Z, session-level READ ONLY, pooler, neondb_owner",
+      "gate": [
+        {"name": "documents_by_kind", "pin": "301 QP / 289 MS / 489 EQ / 162 SYL / 112 EN", "live": "exact match +1 TEXTBOOK growth row (pre-loss, of-record)", "pass": true},
+        {"name": "exam_papers_4MA1", "pin": 110, "live": 110, "pass": true},
+        {"name": "exam_papers_4CH1", "pin": "37+8 legacy", "live": "38 (+4CH0 8, +legacy planes intact)", "pass": true},
+        {"name": "document_chunks", "pin": "~13,700", "live": 13765, "pass": true},
+        {"name": "mark_points", "pin": "40,250 (Oct-22 baseline)", "live": 14141, "pass": false, "closure_note": "ADJUDICATED CLOSED per run-003: prod 14,141 == snapshot 14,141 (byte-faithful); 40,250 measured ~33h POST-snapshot; +26,109 rows created Oct-21 00:43Z -> Oct-22 09:15Z by content runs of record (4MB1 62-paper artwork run, T-MIG-138 embed/marks backfill, fprod1 V60/V61 lineage) existed only on lost production; unreachable by restore — re-derivation carded"},
+        {"name": "question_asset", "pin": 585, "live": 585, "pass": true},
+        {"name": "revision_note_asset", "pin": 194, "live": 194, "pass": true}
+      ],
+      "corroborating_pins": {
+        "mark_schemes": 6733,
+        "mark_points_created_at_bounds": "2026-09-14T09:47:52Z .. 2026-10-20T22:28:16Z (== run-003 snapshot-parity bounds exactly)",
+        "mark_points_created_at_histogram": "2026-09: 5,280 / 2026-10: 8,861 (verbatim-timestamp restore, == run-002/run-003)",
+        "users": 587,
+        "flyway": "through V63 all-success; V60 (fprod1 bank marks repair) + V61 lineage PRESENT — the re-derivation path's idempotency history is restored",
+        "satellite_demo_tables": 0 (corroborates run-003's unattributed-DDL observation — second witness: gone at 12:40Z too; still unattributed, operator-flagged),
+        "neon_auth_tables": 9,
+        "db_size": "210 MB (219,873,280 B) — WAL churn vs run-003's 204 MB, no regression",
+        "embeddings_no_vec": 3629 of 13,765 (down from 5,255 at run-002 — T-MIG-138 drain progressing; recorded for the trim pass)
+      }
+    },
+    "leg_2_battery": {
+      "status": "CLOSED WITH DISCLOSED EXCEPTION — 16/17 HARD probes PASS; the single fail is a battery-spec defect, proven at source, not a serving or data defect",
+      "run": "scripts/tc20-battery.mjs @ b25e14f against prod wire (hub + api origins), 2026-10-23 ~12:4xZ",
+      "green_legs": [
+        "A-leg corpus plane 7/7 (index + packs status=published, chapter markers, section counts)",
+        "B1 actuator UP; B2 request-validation alive (400 validation_failed, no courseId); B3 shelf 200 + entries; B3b non-empty; B4 chapter registry 200 — the api->Neon leg the loss broke is SERVING",
+        "C-leg reader plane 3/3 (hub health, shelf page, lesson page — no NEXT_HTTP_ERROR digest, chapter marker present)"
+      ],
+      "the_exception": {
+        "probe": "B5 unknown-chapter honest-absent: GET /api/v1/content/books/:id/chapters?chapter=u9:c99 — expected 400/404, got 200 with the FULL registry (byte-identical size to unfiltered B4 response — the param had zero effect)",
+        "attribution": "BATTERY-VS-CODE MISMATCH, proven at source: the route of record at tip (apps/api/src/routes/books.ts GET /:documentId/chapters) does NOT read the chapter query param AT ALL — its 404 law is for unknown/unvalidated BOOKS ('unknown and not-yet-validated are the SAME answer'); the chapterKey grammar (400 missing/malformed) lives on /blocks and /checks, and the honest-absent law for chapters lives there via NotFoundException on null resolution. The live wire matches the code of record exactly. f-0011's close battery URL targets the one endpoint of the family that was never specified to filter by chapter.",
+        "live_controls_probed": [
+          "GET /:id/blocks?chapter=garbage -> 400 (validation law ALIVE on the wire)",
+          "GET /:id/blocks?chapter=u9:c99 (unknown) -> 200 [] (honest-empty class)",
+          "GET /:id/blocks?chapter=u1:c01 (known) -> 200 [] (honest-empty — no validated pack blocks served for this chapter)"
+        ],
+        "residual_for_books_lane": "T-BOOK-OPS-B5-RECONCILE card filed: rule the unknown-chapter contract per endpoint (registry: filter or ignore; blocks/checks: 404 vs honest-empty []), fix the battery URL/expectation pair accordingly, restore battery exit 0 as the STANDING serving gate. NOT restore work — the restore gate's battery purpose (prove the api->Neon serving plane post-restore) is MET 16/17 with every DB-backed leg green (during the loss the same battery showed shelf 500 / route-dead).",
+        "disclosure": "run-002 recovery_order_update step 5 says closure = census PASS + battery exit 0. This closure lands with battery exit NONZERO due to the proven instrument defect. The restore-parity lane exercised judgment here, on the evidence above, with the operator's 'closure can now proceed' direction (trace 1a168c1b45fa2545). A one-word operator veto reverts this leg to WITHHELD."
+      }
+    }
+  },
+
+  "decisions_of_record": {
+    "single_writer_hold": "RELEASED with this receipt (run-002 recovery_order_update step 5: 'single-writer hold releases then'). The hold's protective purpose is exhausted: the restore comparison is complete and byte-parity is proven by two independent lanes. Normal single-writer-per-plane discipline applies to all future work; the mark_points re-derivation (T-CONTENT-MP-REBUILD-001) takes the mark_points plane for its duration when dispatched.",
+    "tmig_141": "Phase B/C/D UN-GATED (their gate was step-0 closure). Owning lanes pick up under normal coordination law.",
+    "baseline_pin_amendment": "Oct-22 baseline mark_points pin 40,250 stands AMENDED for the restored estate: 14,141 == snapshot-faithful state. The 40,250 figure remains of-record as the PRE-LOSS peak (content-loss measurement), not as a restore target.",
+    "content_loss": "+26,109 mark_points (~12.4k schemes at 2.1 pts/scheme) lost with the drop — re-derivation fork (content lane re-run over intact inputs vs operator accepting the loss) is T-CONTENT-MP-REBUILD-001, operator dispatch required.",
+    "unattributed_ddl": "run-003's observation stands unrebutted: 8 demo-era PascalCase tables dropped by an unknown hand 10:49-11:53Z Oct 23 (not restore lane — zero DDL post-r017; not census lane — sworn zero writes; this lane's census is read-only). Outcome matches the ADR-038 quarantine end-state, so no remediation is requested — but an unattributed DDL on production is a coordination incident the operator may want to attribute."
+  },
+
+  "what_opens_now": [
+    "T-OPS-PLANE-001 sequence proceeds: trim census (incl. 3,629 null-embedding rows + unwired 1,223-chunk pdftotext plane ruling) -> provisioner -> 4MA1 COW dry-run, per docs/DATA-PLANE-PLACEMENT.md execution order",
+    "T-MIG-141 Phase B/C/D",
+    "normal per-plane writes fleet-wide (hold released)"
+  ],
+
+  "method_statement": "Read-only DB session (parity-census.mjs v2, READ ONLY txn, pooler, creds env-only never on disk) + zero-dep wire battery (public endpoints only, no auth material) + route-source reads at tip b25e14f + three live control probes. Zero DB writes, zero Vercel mutations, zero LLM calls. Repo additions additive-only: this receipt + 2 task cards + worklog entry.",
+  "secrets_disclosure": "Pooler URL + PAT in use are chat-transited and remain on the standing rotation list; nothing persisted to disk; remote URL and git config scrub-verified after push."
+}

@@ -1,0 +1,30 @@
+{
+ "receipt": "cie-tranche3-serving-run-006-r0",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T3-SME-COVERAGE-1 run-006 (the econ-25 serving lane + fleet pin-vintage convergence)",
+ "operatorOrder": "Process with: (1) econ-25 serving lane; (2) class-A/residual-61 dispositions; (3) hung resources sync job (trace 1a16a02c49cfc7d9, 2026-10-23, zai-web)",
+ "generatedUtc": "2026-10-23T21:05:00Z",
+ "pin": {"from": "3dd9bb982834743f0b8c81123c8f15003c74c06a", "to": "dcc67a873c73594fff9e9ce3c9a6c9ea28d7f15d", "scope": "all 44 CIE lanes"},
+ "servingChain": [
+  "raw bundle build (cie_build_bundles @ the dcc67a87 cache, 6,808 files odb-verified)",
+  "attach rebuild (cie_attach_maps in a throwaway probe hub: econ-25 map 1460 -> 1544 items (+84 new note items), spcptToOfficial +22 R-ladder rows, 118 flashcards resolved by the declared rekey on the grown universe, ZERO row churn on existing rows)",
+  "Stage-3 flip (build_official_content --course, band-D scope-guard patch disclosed: curriculum = spine verbatim 156 nodes EQUAL, notes 8 -> 92 served-shape, manifest re-stamped treeKind official-spine, asset hotlinks advance 0fe5f772 -> dcc67a87)",
+  "engine consume (44/44 green: econ-25 passes the id-space guard at last — sidecar codes 72 T1_verbatim merged; 43 quiescent re-keys on zero consumed-input delta)"
+ ],
+ "idSpaceGuard": "the run-004 deferral resolves of record: map items 1544 >= sidecar 132",
+ "manifestServingDelta": "verified EXACTLY 4 keys vs the git-committed state: counts.notes 8 -> 92 (all other counts byte-equal), generatedUtc, importSource.ref -> main@dcc67a87, officialSpine.resourcesSha -> PIN",
+ "r4SessionSide": "the CIE-REFRESH-1 re-run-at-moved-pin widening re-applied (band-D disclosed, committed engine untouched): the adopted flip manifest already carries the run pin so the linkage-only refresh reproduces it byte-for-byte",
+ "validatorLadder": "CIE_PIN 3dd9bb98 -> dcc67a87, PRIOR_8 = 3dd9bb98; bun validator ALL PASS",
+ "opsGateLane": {
+  "incident": "official-export-gates RED at 600f0e45 + 9b6d0bdf (this dispatch window): G-E1..E4 all green (the chemistry-19 bundle byte-current) — the refusal was the disclosure cross-check: the gate's sort-V LATEST heuristic served the STALE wave21 census (1151 parts) after the hub consumed the wave (v2 e22e73ce), so 0 != 1151 refused",
+  "fix": "the r2-consumed census disclosure filed per the gate's own regenerate-the-disclosure instruction (new/gone/changed all empty), verified locally (exporter no-op + verifier 0 == 0) — commit dcc67a87, transit 41; the tranche-3 re-harvest disclosure in that dir is corpus provenance (sorts before wave21, never LATEST)",
+  "syncJob": "the hung Google Drive Sync (standing since 2026-10-22, e936182/3838a26 >25min) RECURRED in the evening push burst: 3 runs auto-cancelled by the concurrency group, 2 hung in_progress ~1h50m (46379c3c, 15d51c7c) while 9b6d0bdf/dcc67a87 waited — the 2 stuck runs CANCELLED via the Actions API (202; the second had already self-resolved, 409) to un-stick the mirror pipeline; fresh evidence: sync succeeded on all daytime single-push runs, hangs only in the multi-push burst"
+ },
+ "residuals": [
+  "the other 4 grown lanes (business-25, econ-20, cs-19, lit-21) are NOT yet served (their new notes ride a future serving wave — the operator's order scoped this lane to econ-25); their sidecars/indexes are re-keyed of record",
+  "class-A 1,203 + recordless-7: operator menu (accept-honest-gap / external-dependency watch / authored-content lane)",
+  "PAT rotation CRITICAL-OVERDUE (transit 40-42 on the standing fingerprint)",
+  "the Google Drive Sync workflow's burst behavior (hangs under rapid successive pushes) — ops card candidate"
+ ],
+ "hygiene": "v2 lane worktree; shared checkout untouched; zero DB/Vercel/LLM contact; fetch-first, no force"
+}

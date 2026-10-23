@@ -1,0 +1,190 @@
+{
+  "instrument": "probe-serving-flip.mjs",
+  "run": "T-OPS-PLANE-001 run-004 (serving flip build)",
+  "at": "2026-10-23T19:33:37.819Z",
+  "read_only_law": "main: begin read only; warehouse: begin read only; zero writes",
+  "subject_id": "763dfe2d-d2b5-48fb-ba4c-2f708c637b26",
+  "course_group": "maths-4ma1",
+  "limit": 12,
+  "overfetch": 3,
+  "embed_rev": 2,
+  "warehouse": {
+    "database": "neondb",
+    "version": "PostgreSQL 18.6 (fd34222) on aarch64-unknown-linux-gnu",
+    "meta": {
+      "course_group": "maths-4ma1",
+      "migrated_at": "2026-10-23T18:44:28.832Z",
+      "source_fingerprint": "plane:88706faabc86b92c2ef7519736516a5ae63bb19120de8b7dd88b26738d7a957a",
+      "subject_id": "763dfe2d-d2b5-48fb-ba4c-2f708c637b26",
+      "template_version": "wh-v1"
+    },
+    "plane": {
+      "total": 8202,
+      "embedded": 6872,
+      "no_vec": 1330,
+      "kinds": 3
+    }
+  },
+  "registry_state_on_main": "ABSENT",
+  "subject": {
+    "id": "763dfe2d-d2b5-48fb-ba4c-2f708c637b26",
+    "code": "4MA1",
+    "name": "Maths (4MA1)",
+    "curriculum_version_id": "41a6e49a-bb41-459e-ae2b-14bbf77c819a"
+  },
+  "seed": {
+    "chunk_id": "87c7fab9-c3d8-4bfb-abee-00395b8f71d1",
+    "document_row_id": "a1d12231-e889-47f5-9efd-740f90da40a2",
+    "content_head": "IGCSE Maths 4MA1 | Jun 2026 | 4MA1/2HR | Q-Card | Q2 | p.1\nQ-Card | 4MA1/2HR | J"
+  },
+  "path_a_main_plane": {
+    "ms": 640.6595500000003,
+    "rows": 12,
+    "top": [
+      {
+        "id": "87c7fab9-c3d8-4bfb-abee-00395b8f71d1",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 1
+      },
+      {
+        "id": "97de9f3b-f659-423e-879a-6ec1d359fd1e",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.916863454339917
+      },
+      {
+        "id": "78fc5b3c-ac90-4748-b674-52cec19a9e95",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8552598441337775
+      },
+      {
+        "id": "57a0beb5-f4bd-46b0-bb34-e17a1f5b4c32",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8487550264838699
+      },
+      {
+        "id": "74261cc4-657c-45de-8ffd-5d754e48b4e0",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.837809015590893
+      },
+      {
+        "id": "bd123460-2384-4d1f-a754-4ade86f14478",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8375652074248838
+      },
+      {
+        "id": "c66f69ef-c720-4084-8e02-0bd066715f24",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8366384523204172
+      },
+      {
+        "id": "4f7db5b8-bb37-452e-861a-1fd093502ac9",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8354550099055112
+      },
+      {
+        "id": "809bd157-6e9c-4cec-8c50-3abd9fafc2aa",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8342554479892297
+      },
+      {
+        "id": "6fc71cdf-97a9-4e7d-966c-60e990ad3f5a",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8342537785316091
+      },
+      {
+        "id": "737b8bda-9b39-432b-a2fd-5740592585b5",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8250362671220253
+      },
+      {
+        "id": "56c51478-1ad6-45ac-9da5-643a9d6bef2d",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8220216492425578
+      }
+    ],
+    "seed_is_top": true
+  },
+  "path_b_step1_warehouse": {
+    "ms": 105.15210399999978,
+    "candidates": 36,
+    "seed_in_candidates": true,
+    "seed_rank": 1
+  },
+  "path_b_warehouse_seam": {
+    "hydrate_ms": 429.84821699999975,
+    "hydrated": 32,
+    "dropped_by_eligibility": 4,
+    "served": 12,
+    "top": [
+      {
+        "id": "87c7fab9-c3d8-4bfb-abee-00395b8f71d1",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 1
+      },
+      {
+        "id": "97de9f3b-f659-423e-879a-6ec1d359fd1e",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.916863454339917
+      },
+      {
+        "id": "78fc5b3c-ac90-4748-b674-52cec19a9e95",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8552598441337775
+      },
+      {
+        "id": "57a0beb5-f4bd-46b0-bb34-e17a1f5b4c32",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8487550264838699
+      },
+      {
+        "id": "74261cc4-657c-45de-8ffd-5d754e48b4e0",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.837809015590893
+      },
+      {
+        "id": "bd123460-2384-4d1f-a754-4ade86f14478",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8375652074248838
+      },
+      {
+        "id": "c66f69ef-c720-4084-8e02-0bd066715f24",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8366384523204172
+      },
+      {
+        "id": "4f7db5b8-bb37-452e-861a-1fd093502ac9",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8354550099055112
+      },
+      {
+        "id": "809bd157-6e9c-4cec-8c50-3abd9fafc2aa",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8342554479892297
+      },
+      {
+        "id": "6fc71cdf-97a9-4e7d-966c-60e990ad3f5a",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8342537785316091
+      },
+      {
+        "id": "737b8bda-9b39-432b-a2fd-5740592585b5",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8250362671220253
+      },
+      {
+        "id": "56c51478-1ad6-45ac-9da5-643a9d6bef2d",
+        "kind": "EXTERNAL_QUESTIONS",
+        "score": 0.8220216492425578
+      }
+    ],
+    "seed_is_top": true,
+    "total_ms": 535.7649419999998
+  },
+  "agreement": {
+    "overlap_at_limit": "12/12",
+    "rank_identical_positions": 12,
+    "max_score_delta_on_shared": 0,
+    "verdict": "IDENTICAL"
+  },
+  "pass": true
+}

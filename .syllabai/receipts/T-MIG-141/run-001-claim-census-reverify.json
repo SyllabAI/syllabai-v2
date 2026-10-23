@@ -1,0 +1,70 @@
+{
+  "task": "T-MIG-141",
+  "run": "run-001-claim-census-reverify",
+  "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+  "trace": "1a1686907a2d0855",
+  "timestamp_utc": "2026-10-23T11:07:29Z",
+  "act": "CLAIM via board protocol + claim-time census re-verify (card next_safe_actions law: re-census before any act) + Phase A start declaration",
+  "operator_order": "claim T-MIG-141 via the board protocol to start Phase A (trace 1a1686907a2d0855)",
+  "fetch_first": {
+    "at_claim": "origin/main had advanced edd5a91d -> 8b4172be (28 commits)",
+    "collision_check": "lane files (.syllabai/tasks/T-MIG-141-glyph-normalization.yaml, docs/SPEC-T-MIG-141-GLYPH-NORMALIZATION.md) untouched in the range; the only T-MIG-141 mention in the range is a passing disclosure in 4834c91d (zero surface overlap)",
+    "resolution": "ff-merge to 8b4172be before the claim act"
+  },
+  "claim": {
+    "status_flip": "DRAFT -> CLAIMED (operator-ordered; the OPEN intermediate state is subsumed — the operator ruling IS the open+claim act)",
+    "owner": "r7a (Super Z, session web-da4ab8b1, chat 1f3003b6, operator order trace 1a1686907a2d0855)",
+    "claimed_at": "2026-10-23T11:07:29Z",
+    "repo_pin": "syllabai-v2 @ origin/main 8b4172be at claim time",
+    "protocol_notes": "claim recorded in the same trace that starts Phase A per AGENT_COORDINATION §2; direct-main bookkeeping per the established r7a lane precedent (spec landing edd5a91d, operator 'land it')"
+  },
+  "census_reverify": {
+    "discipline": "t0_readonly + SET TRANSACTION READ ONLY; zero writes; script scripts/t_mig141_census.py (this repo's lane scripts dir)",
+    "wired_scope_of_record": {
+      "join_law": "document_chunks.document_row_id = documents.id; exam_papers wires via documents.document_id::text = question_paper_document_id | mark_scheme_document_id",
+      "chunks": 2765,
+      "pua_instances": 25399,
+      "pua_distinct": 85,
+      "by_prefix": { "4MA1": 2572, "4CH1": 135, "4CH0": 58 },
+      "spec_pins_reproduced": "ALL EXACT (SPEC-T-MIG-141 §4.1 scope 2,765; Appendix A 25,399/85) — zero true drift"
+    },
+    "control_chars_wired": {
+      "rows": 418, "instances": 2000, "distinct": 26,
+      "note": "spec Appendix B said ~1,900 / 25 (approximation mark); exact pin now 2,000 / 26 / 418 rows — approximation tightened, not a drift"
+    },
+    "census_sha256_pin": {
+      "algorithm": "sha256 of json array of [U+XXXX, count] pairs sorted by codepoint, compact separators",
+      "value": "5c18c01e15e918cb36a8609a2c2ae6dbdb806ad3a5738822299c3c070c8c63d2",
+      "use": "Phase B pre-write scope drift detector (C9 precursor); re-derive at every leg; mismatch = re-census before patch (spec §3.3)"
+    },
+    "unwired_plane_disclosure": {
+      "finding": "1,223 additional PUA-bearing chunks (created 2026-10-20, source_engine=pdftotext-layout, ingested_by NULL) NOT wired to exam_papers; bank-wide PUA instances incl. this plane = 30,385 / 4,034 chunks",
+      "identity": "audit-class / QA documents (exam_papers doc refs also hold non-UUID ids of the shape 'audit-qp-a16552b2' — the plane's docs)",
+      "ruling": "OUT of Phase B scope per the spec's explicit join law (scope = exam-paper-wired rows); registered here for operator visibility — a separate hygiene card candidate, NOT a T-MIG-141 scope change",
+      "ctl_bank_wide": { "rows": 581, "instances": 2562, "distinct": 26 }
+    },
+    "join_key_discoveries": [
+      "documents carries BOTH id (uuid PK, chunk FK target) and document_id (uuid, exam-paper-facing ref) — the audit join of record",
+      "exam_papers.question_paper_document_id / mark_scheme_document_id are varchar and hold non-UUID strings for audit-class rows — text-compare, never ::uuid cast (cast dies on 'audit-qp-a16552b2')",
+      "document_chunks carries denormalized paper_code/series/year/subject_id — chunk-side prefix census (4,034) overcounts vs wired scope (2,765) by exactly the unwired plane"
+    ]
+  },
+  "neon_db_loss_context": {
+    "event_of_record": "8d1c390e (T-OPS-NEONDB-LOSS-1 run-001 + ADR-038, landed during this claim's composition): production neondb @ ep-ancient-cake-a52e4kfd dropped/recreated operator-keyed overnight Oct 22->23 (1 GB Free-plan wall); T-MIG-138 run-008 saw 'relation document_chunks does not exist' 07:45Z; the T-OPS lane's probes saw an 18 MB template db with ZERO syllabai tables",
+    "this_run_parity_corroboration": "THIS run's census at 2026-10-23T11:07Z (t0_readonly first-hand, AFTER the reported loss window) found the estate of record PRESENT: wired plane reproduces the Oct-22 baseline pins EXACTLY (2,765 / 25,399 / 85; unwired plane created_at histogram intact back to 2026-09-20) = post-loss parity CORROBORATION, not the official parity closure (the restore-agent owns the recovery_order per the T-OPS receipt)",
+    "t_mig_141_impact_law": "Phase B/C/D (all DB-writing legs) are GATED on NEON-DB-LOSS recovery_order closure (restore-agent single-writer until parity). Phase A (repo-side map + evidence pass) proceeds UNAFFECTED and is now more load-bearing: the intake law protects the deterministic re-derivation path ADR-038 calls for.",
+    "caveat": "this lane made zero writes and takes no position on HOW the estate returned (PITR/snapshot/re-derivation); it records only the first-hand 11:07Z observation"
+  },
+  "phase_a_start": {
+    "declaration": "Phase A begins this trace per operator order: OEQ normalize_pua base extraction (donor, read-only) -> rendered-evidence pass (150 dpi, CROP-REVIEW pattern) -> tools/glyph-normalization/table.v1.json in syllabai-parser",
+    "locator": "receipt evidence locator.json: 27/27 target codepoints resolved to sample chunks with paper identity + page anchors + context windows (schema above in census.json)",
+    "targets": "27 = operators (F0A2 F0B4 F02D F03D F02B F070 F084 F0B1 F0B8 F0B7 F09F F8EF) + arrows F022/F0E0/F083 (mandatory-evidence) + ticks F0FC/F033/F050 (OEQ base) + Symbol bracket trio F8F9/F8FA/F8FB (OEQ base) + bracket pieces F0E6-F0F8"
+  },
+  "artifacts": ["census.json", "locator.json"],
+  "disclosures": [
+    "zero DB writes (READ ONLY txn throughout); zero prod mutations",
+    "wired ctl pin tightened 1900->2000 / 25->26 (approximation mark in spec Appendix B; spec text amendment NOT required — pin lives here)",
+    "unwired pdftotext-layout plane (1,223 chunks) registered, out of scope, operator-visibility only",
+    "Phase B scope hash pin recorded above; re-derived identical scope expected at patch time (C9)"
+  ]
+}

@@ -1,0 +1,16 @@
+# Build-context hygiene for the realtime plane image (free-tier build minutes):
+# corpus, captures, tool results, and VCS state are not part of the runtime closure.
+.git
+.gitignore
+node_modules
+**/node_modules
+.syllabai
+tool-results
+golden-captures
+golden/llm-shadow
+golden/retrieval-eval
+books
+apps/hub/content-maps
+docs/golden
+*.log
+*.xlsx

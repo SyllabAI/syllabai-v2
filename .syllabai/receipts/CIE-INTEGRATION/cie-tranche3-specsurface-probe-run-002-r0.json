@@ -1,0 +1,76 @@
+{
+ "agent": "main (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+ "artifacts": {
+  "lane_scripts": [
+   "t3r2_dangling_fresh.py",
+   "t3r2_specsurface_probe.py",
+   "t3r2_specsurface_extension.py",
+   "t3r2_adjudicate.py",
+   "t3r2_decisive_sample.py"
+  ],
+  "raw_html": "26 fetched pages persisted sandbox-side under scripts/tmp/t3r2/html/ (re-derivable: every URL is a public attested page recorded in the results JSON); JSON evidence mirrored git-protected here",
+  "results_json": [
+   "classB_dangling_fresh_e33d4805.json",
+   "specsurface_probe_results.json",
+   "specsurface_extension_results.json",
+   "specsurface_adjudication.json",
+   "specsurface_decisive_sample.json"
+  ]
+ },
+ "family": "CIE-INTEGRATION",
+ "fence": ".syllabai/receipts/CIE-INTEGRATION/** + .syllabai/lane-artifacts/** + .syllabai/worklog.md \u2014 ZERO content changes (no banks, no maps, no bundles, no sidecars, no DB contact, no LLM calls)",
+ "generatedUtc": "2026-10-23T15:04:50Z",
+ "hygiene": "read-only on resources (anonymous sparse clone e33d4805, shared checkouts untouched); zero DB writes; zero LLM calls; no credentials printed or persisted; fetch-first, no force",
+ "lane": "T-RULE-T3-SME-COVERAGE-1 run-002",
+ "operatorNextStepMenu": {
+  "or_accept": "operator may still choose option_1/2 posture with the drift evidence on record",
+  "step_1_resources_reharvest": "ORDER the resources-lane notes re-harvest for the grown banks (business-25, econ-25, econ-20 first; then fleet-wide freshness sweep) \u2014 corpus writes live in the resources lane, OUTSIDE this run's fence",
+  "step_2_index_rederive": "re-derive spec_point_index universes from the new vintage; measure how many of the 322 dangling refs resolve",
+  "step_3_consume_chain": "spec-links sidecar re-key + v2 consume per the established tranche-2 durability chain (PIN/STAMP law)"
+ },
+ "operatorOrder": "Proceed: tranche-3 \u2014 fired as operator decision menu option_4 of cie-tranche3-sme-coverage-census-r0 (the bounded run-002 spec-surface probe: 'enumerating whether SME publishes any spec-point definition surfaces (spec pages / syllabus listings) for the class-B banks before declaring class-B a dead-end; zero corpus writes either way'). Options 1-3 (accept-honest-gap / external-dependency watch / authored-content lane) are operator dispositions and were NOT self-granted; option_4 is the only lane-executable bounded step and this run executes exactly it.",
+ "operatorTrace": "1a1693318b80ab7d ('Proceed: tranche-3', 2026-10-23, zai-web)",
+ "phase": "the bounded spec-surface probe of record \u2014 the class-B dead-end question ANSWERED NEGATIVELY: SME DOES publish spec-point definition surfaces, the surface has EXPANDED since the 2026-10-17 harvest, and sampled new pages DEFINE previously-dangling ids \u2014 class-B is RE-OPENABLE via the standard notes re-harvest chain; ZERO corpus writes (bookkeeping fence)",
+ "pins": {
+  "census_of_record_pin": "4b119e71023b091fa545b400fe8006831f914b2e (run-001)",
+  "live_probe_date": "2026-10-23",
+  "notes_harvest_vintage": "2026-10-17T01:15:29Z..34Z (manifests generated_utc, all 5 probed banks)",
+  "resources_of_record_at_probe": "e33d4805f97af6d18a71f87d8d994e143ab66126 (origin/main tip)"
+ },
+ "receipt": "CIE-INTEGRATION/cie-tranche3-specsurface-probe-run-002-r0",
+ "residuals": [
+  "the re-harvest decision itself (operator menu above)",
+  "PAT rotation CRITICAL-OVERDUE (standing)",
+  "hung resources sync job (standing)",
+  "A2 census is a bounded heuristic (index-page link census, leaf-depth filter, pagination not crawled) \u2014 the re-harvest supersedes it with exact counts"
+ ],
+ "step1_freshRepin": {
+  "classB_total": {
+   "delta": 0,
+   "fresh_e33d4805": 322,
+   "of_record_4b119e71": 322
+  },
+  "cross_bank_id": "spcpt_FmVMxSY4pdr2ghgq dangles in BOTH cie-igcse-maths-25-extended and cie-igcse-maths-international-maths-23-extended (322 refs = 321 unique ids)",
+  "method": "t3r2_dangling_fresh.py \u2014 class-B dangling sets computed fresh at e33d4805, method identical to the of-record census (t3_census_fresh.py)",
+  "per_bank_delta": "0 on all 14 class-B rows \u2014 the class is stable across pins",
+  "unique_dangling_ids": 321
+ },
+ "step2_boundedProbes": {
+  "A3_crossLaneJoin": "321 unique dangling ids: 0 found in any class-B universe, 0 found on any PROBED live surface \u2014 the probed pre-growth pages carry none; the definitions live on the NEW pages",
+  "Q1_entityPairSurface": "CONFIRMED \u2014 note pages embed real (id -> definition) pairs: <div id=\"spcpt_*\" ... data-type=\"specPoint\"><h2>Name</h2>. The two Q1 pages carry 7 and 6 such ids, ALL subsets of their harvested universes (live-surface fidelity vs the index of record; nothing missed by the harvest ON THOSE pages)",
+  "Q2_surfaceGrowth": "CONFIRMED \u2014 the notes surface has GROWN since the 2026-10-17 harvest (live index leaf-link census vs manifest page paths, bounded heuristic, pagination not crawled): business-25 20 -> 85 leaves (+65 NEW), econ-25 8 -> 92 (+84 NEW), econ-20 62 -> 79 (+17 NEW); maths-25-core 139 = 139 and ps2 16 = 16 EXACT parity (no growth). 261/322 = 81.1% of all class-B dangling refs sit on the three growth-observed banks",
+  "decisiveSample": "4 new-leaf pages fetched (2 business-25, 1 econ-25, 1 econ-20): 16 specPoint entity ids observed, ALL 16 outside the harvested universes (new definitions), and 13 DANGLING IDS DEFINED (business-25 6+5, econ-25 1, econ-20 1) \u2014 the gold standard: ids the corpus cannot resolve ARE defined on the live source as of 2026-10-23",
+  "fetch_ledger": "26 public fetches total, all attested surfaces (LICENSE-DATA.md SME attestation 2026-09-17 + Cambridge extension 2026-10-17), no credentials, no cookies, no crawl beyond the fixed lists, 1.5s courtesy delays: pass-1 = 15 (5 notes indexes + 8 note pages + 1 question-page control), extension = 7 (re-fetch of the 5 indexes with HTML persistence + 2 pages), decisive sample = 4 new-leaf pages",
+  "pass1_findings": {
+   "note_pages": "every probed note page (8) carries raw specPoint occurrences (6-21) but ZERO specpoint-shaped keys in __NEXT_DATA__ and ZERO dangling-id hits \u2014 the definitions live in the DOM, not the Next.js payload",
+   "question_page_control_business25": "the live source STILL declares the dangling ids bare on question-page parts (11 dangling ids present, zero entity records) \u2014 byte-consistent with the corpus harvest, ZERO source drift on the question plane; reproduces run-001's evidence class for the bank run-001 did not live-probe"
+  }
+ },
+ "verdictOfRecord": {
+  "chain": "the SME notes harvest of record is vintage 2026-10-17T01:15Z; on 2026-10-23 the live notes surface carries 166+ new leaf pages across the three largest class-B banks (business-25 +65, econ-25 +84, econ-20 +17); those pages embed specPoint entity definitions in the attested DOM pattern; 4 sampled pages define 13 of the 322 dangling ids; the corpus spec_point_index (notes-derived universe) is stale relative to the live source \u2014 the corpus itself is faithful to its vintage (attested, zero drift on the question plane)",
+  "classA_disposition": "UNCHANGED \u2014 the 1,203 no-declaration parts remain a source-declaration gap: the new notes do NOT change what the question pages declare (the atomizer reads question pages; the control shows declarations unchanged). econ-25's class-A root cause ('no content notes published') is stale as a STATEMENT ABOUT NOTES (84 new leaves now exist) but that does not by itself close class-A; the notes DO restore the spec-structure surface the authored-content lane (option_3) would have needed",
+  "classB_disposition": "RE-OPENABLE: the standard chain (resources-lane notes re-harvest -> spec_point_index re-derivation -> spec-links sidecar re-key -> v2 consume) is the mechanical close path for the dangling refs on the grown banks; full resolution counts land with the re-harvest (this probe is a bounded sample, not a harvest)",
+  "headline": "CLASS-B IS NOT A DEAD-END \u2014 the run-001 root cause is VINTAGE-STALE, not wrong",
+  "menuConsequence": "the operator menu of run-001 is now evidenced on all four options: option_1 (accept) would freeze a re-openable class-B; option_2 (watch) has FIRED \u2014 drift was caught within 6 days of vintage; option_3 (authored content) loses urgency for class-B; the re-harvest path needs no new menu option \u2014 it is the standing chain re-run at the current vintage"
+ }
+}

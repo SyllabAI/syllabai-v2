@@ -56,6 +56,8 @@ import { buildSmeRouters } from "./routes/sme";
 import { buildInterventionRouters } from "./routes/intervention";
 import { buildLearnerRouters } from "./routes/learner";
 import { buildLearnerProgressRouters } from "./routes/learner/progress";
+import { buildLearnerStudyPlanRouters } from "./routes/learner/study-plan";
+import { buildDrillRouters, drillErrorResponse } from "./routes/drill";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildTeacherAssignmentsRouters } from "./routes/assignments";
 import { buildAssignmentPacksRouters } from "./routes/assignment-packs"; // T-SENECA-001 (r5) — the Seneca resource packs (v2-native, additive; the T-TEACH-012 one-mount-line precedent)
@@ -77,7 +79,7 @@ import { withClassFeatureGate, resolveTutorAnchor, resolveClaAnchor, resolveSmar
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "./services/identity/users";
 import { buildClaThreadsRouters } from "./routes/cla-threads";
-import { buildLlmChain } from "./services/llmchain";
+import { buildLlmChain, chainAsDrillMethodCreditGenerator } from "./services/llmchain";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -98,6 +100,7 @@ const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const learnerKg = buildLearnerKgRouters();
 const learnerProgress = buildLearnerProgressRouters();
+const learnerStudyPlan = buildLearnerStudyPlanRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
@@ -125,6 +128,12 @@ const ingestion = buildIngestionRouters();
 // honest 503 postures everywhere are byte-identical to the pre-adapter
 // surface; keyed boots generate/mark/transcribe for real with failover.
 const llmChain = buildLlmChain();
+// F-183 — the drill's method-credit seam rides THE ONE CHAIN OF RECORD (the
+// smartmark posture): dormant on zero-key boots (the honest null on the ack,
+// law L6), live method-credit verdicts when the chain is up.
+const drill = buildDrillRouters(process.env, {
+  methodCreditGenerator: chainAsDrillMethodCreditGenerator(llmChain),
+});
 const tutor = buildTutorRouters(process.env, { chain: llmChain });
 const cla = buildClaRouters(process.env, { chain: llmChain });
 const claThreads = buildClaThreadsRouters(process.env);
@@ -309,6 +318,34 @@ app.route("/api/v1/learners/me", learnerKg.learnerKgRoute);
 // plan and the dashboard can never disagree. Additive mount per the
 // minimal app-level wiring precedent.
 app.route("/api/v1/learners/me", learnerProgress.learnerProgressRoute);
+
+// Study-Plan Builder routers (spec §5.3 + roadmap Table 3 P2 row; prereg
+// docs/STUDY-PLAN-BUILDER-PLAN.md). DC-7-SPEC-NATIVE paths under the same
+// band: GET/PUT /api/v1/learners/me/study-plan and GET
+// /api/v1/learners/me/study-plan/defaults — the plan-config upsert (the
+// lane's ONLY write, migration 0012_study_plans) and the deterministic
+// week generator whose task completion states ride the DC-7
+// buildPlanProjection subscription (nothing completion-shaped is stored).
+// The router owns its authz internally (the shell posture). Additive mount
+// per the minimal app-level wiring precedent.
+app.route("/api/v1/learners/me", learnerStudyPlan.learnerStudyPlanRoute);
+
+// F-182 drill surface routers (the per-spec-point drill; prereg
+// docs/F182-DRILL-BUILD-PLAN.md under the opening plan
+// docs/F182-DRILL-SURFACE-PLAN.md §6.1). F-182-SPEC-NATIVE paths, not a
+// frozen-port band: GET /api/v1/learners/me/drill/addresses (the drillable
+// address picker — the census of record's fail-closed floor P3),
+// POST /api/v1/learners/me/drill/draw (the 5-part draw, policies P1..P5
+// untouched from the opening's pure modules) and
+// POST /api/v1/learners/me/drill/evidence (the F-055-shaped attempt-evidence
+// seam over the drill address space — one immutable row per (draw, part),
+// the instant post-attempt reveal riding the ack). The router owns its
+// authz internally (the createLearnerStateRouter shell posture). ZERO-STAKES
+// LAW: the drill writes ONLY its own tables (drill_draws +
+// drill_part_evidence, migration 0010_drill_surface) and reads NO
+// progress-bearing table — no attempts, no ai_mark_events, no gradebook
+// events, ever. Additive mount per the minimal app-level wiring precedent.
+app.route("/api/v1/learners/me/drill", drill.drillRoute);
 
 // Marking routers (T-MIG-032 — Wave 3). Path parity with the frozen core:
 // LearnerSelfMarkController + StudentSmartMarkController share the
@@ -740,6 +777,11 @@ app.all("/api/v1/*", (c) => {
  * serves (:224-230: "internal_error" / "an internal error occurred").
  */
 app.onError((err, c) => {
+  // F-182 lane: UnknownCourseError is the drill's fail-closed course registry
+  // (the anchor law) — 404 not_found, never a 500 (drillErrorResponse also
+  // maps the identity-domain errors; the drill module shares the shape).
+  const drillMapped = drillErrorResponse(err);
+  if (drillMapped) return c.json(drillMapped.body, drillMapped.status as 400 | 401 | 403 | 404 | 409 | 429);
   const mapped = toErrorResponse(err);
   if (mapped) {
     if (mapped.headers) for (const [k, v] of Object.entries(mapped.headers)) c.header(k, v);

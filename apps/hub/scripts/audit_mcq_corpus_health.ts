@@ -7,8 +7,9 @@
  * McqPart whenever `answerable` is false.
  *
  * This script replicates the player's EXACT classification law
- * (question-player.tsx @ ad1e3873) over EVERY part of EVERY question of
- * EVERY course bundle in apps/hub/content/, and reports:
+ * (question-player.tsx; multi-select amendment per operator order
+ * "Multi-select player mode", trace 1a168b3dc7498b5d) over EVERY part of
+ * EVERY question of EVERY course bundle in apps/hub/content/, and reports:
  *
  *  ERROR classes (learner-visible degradation):
  *    E1  mcq_not_answerable           — the reported notice (with sub-reasons)
@@ -18,8 +19,12 @@
  *  INFO classes (designed honest states, counted for the report):
  *    I1  letter_only_artwork_hidden   — letter-keyed, option art in stem
  *                                        image/table not visible
- *    I2  ambiguous_key                — choices present, !=1 isCorrect
- *                                        (honest notice by design)
+ *    I2  ambiguous_key                — choices present with an UNATTESTED
+ *                                        multi-correct key (labels missing);
+ *                                        attested multi keys (every choice
+ *                                        labeled, ≥2 isCorrect) are
+ *                                        ANSWERABLE multiSelect since the
+ *                                        multi-select player lane
  *
  * Zero writes to any content file — read-only census.
  */
@@ -49,10 +54,17 @@ function hasUsableChoices(part: Part): boolean {
   );
 }
 
+/** attested multi-select key (player isMultiSelectKey, lockstep) */
+function isMultiSelectKey(part: Part): boolean {
+  const c = part.choices;
+  if (!c || c.length < 2) return false;
+  return c.every((o) => !!o.label) && c.filter((o) => o.isCorrect).length >= 2;
+}
+
 function hasAnswerKey(part: Part): boolean {
   const c = part.choices;
   if (!c || c.length < 2) return false;
-  return c.every((o) => !!o.label) && c.filter((o) => o.isCorrect).length === 1;
+  return c.every((o) => !!o.label) && c.filter((o) => o.isCorrect).length >= 1;
 }
 
 function parseOptions(problemMd: string): { letter: string; text: string }[] {
@@ -93,6 +105,7 @@ const census = {
   mcq: {
     total: 0, keyedText: 0, letterOnly: 0, legacy: 0, notAnswerable: 0,
     letterOnlyArtworkHidden: 0, ambiguousKey: 0, choiceRows: 0,
+    multiSelect: 0,
   },
   structured: { total: 0, noSolution: 0 },
   emptyProblemParts: 0,
@@ -140,6 +153,8 @@ for (const course of courses.sort()) {
 
           if (hasUsableChoices(p)) {
             census.mcq.keyedText++;
+          } else if (isMultiSelectKey(p)) {
+            census.mcq.multiSelect++;
           } else if (hasAnswerKey(p)) {
             census.mcq.letterOnly++;
             if (!mcqOptionsVisible(q.parts, idx)) census.mcq.letterOnlyArtworkHidden++;
@@ -164,14 +179,12 @@ for (const course of courses.sort()) {
               });
             }
           }
-          // ambiguous keys that are STILL answerable via keyedText? impossible
-          // (keyedText demands exactly-one) — but letterOnly/keyedText with
-          // >1 isCorrect can't exist either; the 4 ambiguous parts of record
-          // are counted only when they fall through to notAnswerable.
-          // Count ambiguous-with-choices separately for the report:
-          if (p.choices && p.choices.length > 0 && nCorr !== 1 && hasUsableChoices(p) === false && hasAnswerKey(p) === false) {
-            // already recorded above
-          } else if (p.choices && p.choices.length > 0 && nCorr !== 1 && (hasUsableChoices(p) || hasAnswerKey(p))) {
+          // ambiguous keys: choices present with a key that is neither
+          // exactly-one nor an ATTESTED multi-select set (labels missing).
+          // Since the multi-select player lane (trace 1a168b3dc7498b5d)
+          // attested multi keys are answerable, this class is structurally
+          // empty — kept as a canary against future unlabeled multi rows.
+          if (p.choices && p.choices.length > 0 && nCorr !== 1 && !isMultiSelectKey(p) && (hasUsableChoices(p) || hasAnswerKey(p))) {
             census.mcq.ambiguousKey++;
             (census.errors as Err[]).push({
               cls: "I2_ambiguous_key_answerable_otherwise", course, topic: tslug,
@@ -209,6 +222,7 @@ console.log(JSON.stringify({ census, wave15_igcse_chemistry_19: w15 }, null, 2))
 const e1 = (census.errors as Err[]).filter((e) => e.cls === "E1_mcq_not_answerable");
 console.error(`\nSUMMARY: courses=${census.courses} parts=${census.parts} mcq=${census.mcq.total} ` +
   `answerable=${census.mcq.total - census.mcq.notAnswerable} NOT_ANSWERABLE=${census.mcq.notAnswerable} ` +
+  `multi_select=${census.mcq.multiSelect} ` +
   `structured_no_solution=${census.structured.noSolution} empty_problem=${census.emptyProblemParts} ` +
   `no_part_questions=${census.questionNoParts} ambiguous=${census.mcq.ambiguousKey}`);
 if (e1.length) { console.error("E1 DETAILS:"); for (const e of e1.slice(0, 50)) console.error(JSON.stringify(e)); }

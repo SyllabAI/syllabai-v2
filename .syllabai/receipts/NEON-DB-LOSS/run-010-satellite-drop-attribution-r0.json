@@ -1,0 +1,29 @@
+{
+  "task": "neon-db-loss-observation-closure",
+  "run": "run-010-satellite-drop-attribution-r0",
+  "agent": "restore lane (Z.ai CLI session web-528c0352, chat a7ae5075) — the lane that executed the restore of record (r017) and filed run-003",
+  "operator_trace": "1a16a7f1bcb283c1 (operator message 2026-10-24, verbatim: 'It was not your mistake, it was another agent')",
+  "date": "2026-10-24",
+  "closes": "the OBSERVATION left open in run-003 (unattributed production DDL: 8 demo-era PascalCase satellite tables dropped 10:49-11:53Z Oct 23) and corroborated in run-004 corroborating_pins.satellite_demo_tables ('second witness: gone at 12:40Z too; still unattributed, operator-flagged')",
+
+  "observation_restate": {
+    "what": "8 demo-era PascalCase satellite tables present at the restore lane's 2026-10-23T10:49Z verify (83 public tables) were GONE by the run-002 census at 11:53:47Z (75 public tables); dropped via SQL DDL inside that ~64-minute window, invisible to the Neon control plane",
+    "who_it_was_not": "not the restore lane (zero DDL / zero writes post-restore, sworn in run-003), not the census lane (sworn zero writes in run-002)"
+  },
+
+  "attribution_of_record": {
+    "attributed_to": "another agent lane (unnamed to this lane) — per the operator's own-word confirmation at trace 1a16a7f1bcb283c1",
+    "operator_words": "It was not your mistake, it was another agent",
+    "scope_note": "the operator answer closes the unattributed-DDL flag; it also affirms the loss adjudication already of record (the mark_points +26,109 shortfall traces to the destructive event, not the restore) — consistent with run-004 closure and run-006 accept-loss decision; no new facts require re-adjudication",
+    "consistency": "end-state matches the ADR-038 quarantine of demo-era PascalCase tables; the 'demo-era PascalCase cleanup' open item remains resolved"
+  },
+
+  "consequences": [
+    "The 'unattributed hand' flag is CLOSED — no further attribution work is spent (consistent with the run-006 accept-loss posture: no further recovery or attribution work on the loss).",
+    "Security posture note downgraded to record: production SQL DDL remains control-plane-invisible; the durable instrumentation recommendation stands (user-scoped audit-log key from the console owner is the only path to exact SQL attribution).",
+    "No estate action: the quarantine end-state (0 satellite tables) is the desired state of record; nothing to restore, nothing to reconcile."
+  ],
+
+  "lane_status": "restore lane IDLE — zero DB writes since 2026-10-23T11:00Z, none queued, zero platform mutations, creds env-only",
+  "json_validated": true
+}

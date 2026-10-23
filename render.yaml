@@ -1,0 +1,16 @@
+# F-188 realtime plane — Render Blueprint (hosting decision of record, trace 1a16a78dc3415ff5).
+# Free web service, Docker runtime, built from the plane's own Dockerfile.
+# The two secrets are operator-set in the dashboard (sync: false) — never committed.
+services:
+  - type: web
+    name: syllabai-realtime-plane
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./apps/api/Dockerfile.realtime
+    dockerContext: .
+    envVars:
+      - key: SYLLABAI_JWT_SECRET
+        sync: false # >=32 bytes; equals the Java core secret (R-JWT wire parity)
+      - key: DATABASE_URL
+        sync: false # Neon Postgres of record; revocation lookup only

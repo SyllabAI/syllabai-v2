@@ -107,6 +107,7 @@ export {
   chainAsFeedbackLlm,
   chainAsTranscriptionProvider,
   chainAsCandidateGenerator,
+  chainAsDrillMethodCreditGenerator,
   isTruncationFinish,
   completionBudget,
   batchCompletionBudget,

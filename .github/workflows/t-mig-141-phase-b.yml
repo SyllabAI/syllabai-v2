@@ -1,0 +1,205 @@
+# T-MIG-141 Phase B — the glyph-normalization real-write runner.
+#
+# The operator's fire order ("Go" — trace 1a169fc63e946759, the go/no-go gate
+# recorded in run-004's next_safe_actions), executed behind the 133d/138 guard
+# protocol of record:
+#   job 1 (cow-proof): a disposable Neon COW branch off production (in-line
+#     read_write endpoint, NEON_API_KEY = the CI write-capable key of record),
+#     branch-local owner password reset (PRODUCTION ROLES NEVER TOUCHED), the
+#     FROZEN Phase-B driver (tools/glyph-normalization/phase_b_apply.py,
+#     sha-pinned below, parser checkout pinned to dbb723e = the run-005a driver-fix
+#     commit; the table.v1.json it loads is the run-004 ruling table, sha
+#     1fdd4b4a, byte-identical to d9c1511) applies the 2,949-row glyph patch against the
+#     COW — pre-write gates (C9 id-set sha, before-images sha, embed pre-state,
+#     200-row control group), ONE transaction per paper-batch with per-batch
+#     post-gates, then full post-gates (G-D zero-artifact headline, G-E
+#     byte-identity, content_tsv GENERATED ALWAYS assertion) — then DROP the
+#     COW + 404-verify, even on failure (if: always(), the T-MIG-035
+#     discipline). Production roles are never touched.
+#   job 2 (prod-apply, needs job 1 ALL GREEN): the same frozen driver against
+#     the production DATABASE_URL of record (T138_PROD_DATABASE_URL), receipt
+#     + before-images artifact. Patch law per spec §4.2: content <- mapped
+#     text; embed_rev <- 1 (stale marker, vectors KEPT serving — Phase D
+#     flips embed_rev back to 2 with fresh vectors); content_tsv is GENERATED
+#     ALWAYS (auto-refreshes). Fail-closed: any gate failure restores the
+#     already-committed batches byte-exact from the before-images.
+#
+# FROZEN PINS of record (hard sha checks below, fail-closed):
+#   parser checkout ......... dbb723e (run-005a: the frozen driver of record, db-file parser fix;
+#                             table.v1.json = the run-004 ruling table, sha
+#                             1fdd4b4a, byte-identical to d9c1511; ruling
+#                             U+F0CF -> U+2209, operator trace 1a169e3fdeaecd11)
+#   table.v1.json sha256 .... 1fdd4b4a5ebede2e437473e55a2786dea1a9755d03b68d1eea78a39364e2094a
+#   phase_b_apply.py sha256 . 6b66bf2f0103ab5a1881a540187f102b172e9036772a04fa0e30b09ef0f37f72
+#   C9 id-set sha256 ........ 4014404b365f21b49e03997c53903a0145189c66ac58a9de38c56d3843c1c037
+#   (the driver also pins the before-images / control-group / G-C accounting
+#    shas internally and fails closed on ANY drift — see the driver header)
+#
+# DISCLOSURE (run-005): the repo VARS NEON_PROJECT_ID / NEON_PARENT_BRANCH_ID
+# went missing (GET /actions/vars returned [] — hygiene-deleted since the
+# T-MIG-138 era; operator PAT lacks the Variables-write permission, restore
+# attempt returned 404). They are carried here as env literals — non-secret
+# ids of record, already public in run logs. The COW is created off the
+# PRODUCTION primary branch br-muddy-bar-a5huwldd.
+#
+# OPERATOR GATE: workflow_dispatch ONLY — this runner is INERT until
+# dispatched (the dispatch = the operator's fire order per the 093/133b law;
+# this run's fire order = "Go", trace 1a169fc63e946759).
+# Secrets of record: NEON_API_KEY (exists), T138_PROD_DATABASE_URL (exists).
+
+name: t-mig-141-phase-b
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "cow+prod (default — full guard protocol) | cow-only (branch proof, no production write)"
+        required: false
+        default: "cow+prod"
+      note:
+        description: "Operator note for this apply run"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-mig-141-phase-b
+  cancel-in-progress: false
+
+env:
+  NEON_PROJECT_ID: billowing-cherry-15418366
+  NEON_PARENT_BRANCH_ID: br-muddy-bar-a5huwldd
+  PARSER_SHA: dbb723e
+  TABLE_SHA: 1fdd4b4a5ebede2e437473e55a2786dea1a9755d03b68d1eea78a39364e2094a
+  DRIVER_SHA: b0697399dbd733afcbc669cb768233e8c88aa1c12cf43c56a39b9809399512f0
+
+jobs:
+  cow-proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch the parser toolchain at the pinned sha + verify frozen pins
+        run: |
+          set -euo pipefail
+          curl -sfL "https://codeload.github.com/SyllabAI/syllabai-parser/tar.gz/${PARSER_SHA}" -o /tmp/parser.tgz
+          mkdir -p /tmp/parser && tar -xzf /tmp/parser.tgz -C /tmp/parser --strip-components=1
+          echo "${TABLE_SHA}  /tmp/parser/tools/glyph-normalization/table.v1.json" | sha256sum -c -
+          echo "${DRIVER_SHA}  /tmp/parser/tools/glyph-normalization/phase_b_apply.py" | sha256sum -c -
+          echo "frozen pins verified: parser @ ${PARSER_SHA}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install psycopg2
+        run: pip install psycopg2-binary
+      - name: Create COW branch (in-line read_write endpoint)
+        id: cow
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+        run: |
+          set -euo pipefail
+          NAME="t-mig-141-cow-${GITHUB_RUN_ID}"
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"parent_id\":\"${NEON_PARENT_BRANCH_ID}\",\"name\":\"${NAME}\"},\"endpoints\":[{\"type\":\"read_write\"}]}")
+          BRANCH_ID=$(echo "$RESP" | jq -r '.branch.id')
+          echo "branch_id=${BRANCH_ID}" >> "$GITHUB_OUTPUT"
+          for i in $(seq 1 60); do
+            EP=$(curl -sf "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}/endpoints" \
+              -H "Authorization: Bearer ${NEON_API_KEY}")
+            HOST=$(echo "$EP" | jq -r '.endpoints[0].host // empty')
+            STATE=$(echo "$EP" | jq -r '.endpoints[0].current_state // empty')
+            if [ -n "$HOST" ] && [ "$STATE" = "ready" ]; then break; fi
+            sleep 3
+          done
+          [ -n "$HOST" ] || { echo "endpoint never ready"; exit 1; }
+          echo "host=${HOST}" >> "$GITHUB_OUTPUT"
+      - name: Reset BRANCH-LOCAL owner password (production roles untouched)
+        id: role
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+        run: |
+          set -euo pipefail
+          RESP=$(curl -sf -X POST "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${{ steps.cow.outputs.branch_id }}/roles/neondb_owner/reset_password" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          PW=$(echo "$RESP" | jq -r '.role.password')
+          [ -n "$PW" ] || { echo "no password in reset response"; exit 1; }
+          ENC=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1], safe=''))" "$PW")
+          echo "cow_url=postgresql://neondb_owner:${ENC}@${{ steps.cow.outputs.host }}/neondb?sslmode=require" >> "$GITHUB_OUTPUT"
+      - name: Phase-B APPLY against the COW (frozen driver — pre-gates / per-batch apply / post-gates)
+        run: |
+          printf '%s' "${{ steps.role.outputs.cow_url }}" > /tmp/t141-cow.uri
+          chmod 600 /tmp/t141-cow.uri
+          python3 /tmp/parser/tools/glyph-normalization/phase_b_apply.py \
+            --mode apply --db-file /tmp/t141-cow.uri \
+            --table /tmp/parser/tools/glyph-normalization/table.v1.json \
+            --v2-repo "$GITHUB_WORKSPACE" --target cow \
+            --artifacts-dir . --receipt cow-phase-b-receipt.json
+      - name: Upload the COW receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t141-cow-receipts
+          path: |
+            cow-phase-b-receipt.json
+            before-images.jsonl.gz
+          if-no-files-found: ignore
+      - name: DROP the COW + 404-verify (zero residue, even on failure)
+        if: always()
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+        run: |
+          set -euo pipefail
+          BRANCH_ID="${{ steps.cow.outputs.branch_id }}"
+          [ -n "$BRANCH_ID" ] || { echo "no branch to drop"; exit 0; }
+          curl -sf -X DELETE "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}" > /dev/null || true
+          sleep 5
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            "https://console.neon.tech/api/v2/projects/${NEON_PROJECT_ID}/branches/${BRANCH_ID}" \
+            -H "Authorization: Bearer ${NEON_API_KEY}")
+          echo "post-delete GET = ${CODE}"
+          [ "$CODE" = "404" ] || { echo "COW residue — 404 verification FAILED"; exit 1; }
+
+  prod-apply:
+    needs: cow-proof
+    if: ${{ !failure() && !cancelled() && (inputs.mode == 'cow+prod' || inputs.mode == '') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch the parser toolchain at the pinned sha + verify frozen pins
+        run: |
+          set -euo pipefail
+          curl -sfL "https://codeload.github.com/SyllabAI/syllabai-parser/tar.gz/${PARSER_SHA}" -o /tmp/parser.tgz
+          mkdir -p /tmp/parser && tar -xzf /tmp/parser.tgz -C /tmp/parser --strip-components=1
+          echo "${TABLE_SHA}  /tmp/parser/tools/glyph-normalization/table.v1.json" | sha256sum -c -
+          echo "${DRIVER_SHA}  /tmp/parser/tools/glyph-normalization/phase_b_apply.py" | sha256sum -c -
+          echo "frozen pins verified: parser @ ${PARSER_SHA}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install psycopg2
+        run: pip install psycopg2-binary
+      - name: Phase-B APPLY against PRODUCTION (frozen driver — pre-gates / per-batch apply / post-gates)
+        env:
+          T138_PROD_DATABASE_URL: ${{ secrets.T138_PROD_DATABASE_URL }}
+        run: |
+          printf '%s' "$T138_PROD_DATABASE_URL" > /tmp/t141-prod.uri
+          chmod 600 /tmp/t141-prod.uri
+          python3 /tmp/parser/tools/glyph-normalization/phase_b_apply.py \
+            --mode apply --db-file /tmp/t141-prod.uri \
+            --table /tmp/parser/tools/glyph-normalization/table.v1.json \
+            --v2-repo "$GITHUB_WORKSPACE" --target prod \
+            --artifacts-dir . --receipt prod-phase-b-receipt.json
+      - name: Upload the prod receipt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t141-prod-receipts
+          path: |
+            prod-phase-b-receipt.json
+            before-images.jsonl.gz
+          if-no-files-found: ignore

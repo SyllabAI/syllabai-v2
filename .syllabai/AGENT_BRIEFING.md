@@ -1,5 +1,5 @@
 ═══════════════════════════════════════════════════════════════════
- SYLLABAI V2 MIGRATION — AGENT BRIEFING (v1 · 2026-10-04)
+ SYLLABAI V2 MIGRATION — AGENT BRIEFING (v1.1 · 2026-10-23; v1 · 2026-10-04)
  You are one of 6–9 agents receiving this exact prompt. Assume peers
  are working concurrently. Read ALL of it before doing anything.
 ═══════════════════════════════════════════════════════════════════
@@ -148,5 +148,28 @@ PR. Record your claim in the task yaml within your first PR.)
 Remember: the migration is fast because 6–9 agents work in parallel
 WITHOUT colliding — the file fences, claim protocol, and receipts are
 the entire trick. Cutting them for speed loses more speed than they cost.
+
+## 7) DATA-PLANE PLACEMENT (v1.1 addendum · 2026-10-23 — RATIFIED, binding)
+
+Operator plan (trace 1a168885359acda1): **user data, auth, course
+selection, learner model data — everything transactional — lives in the
+MAIN database (`ep-ancient-cake-a52e4kfd/neondb`). ALL corpus-related data
+(papers, mark schemes, chunks + vectors, assets, books content, SI docs)
+lives in OTHER databases** — the ADR-038 course-group warehouse fleet.
+
+Full law: `docs/DATA-PLANE-PLACEMENT.md` (read §2 and §3 before any DB
+write). The short form:
+
+| You are writing... | Write it to... |
+|---|---|
+| users / auth / enrollment / classes / assignments / attempts / flashcards / marks / intervention / threads | **MAIN** — always. |
+| corpus rows (documents, exam_papers, chunks, mark_points, assets, book packs) | main's corpus planes **until that subject group's cut-over**, then the owning warehouse — never both (no dual writes). |
+| a NEW corpus table family | nowhere in main — assigned a warehouse home at design time (DATA-PLANE-PLACEMENT §3.5). |
+
+Cross-project references are by id only (no cross-project FKs);
+`exam_papers` doc refs are text-compare, never `::uuid` cast. The
+satellite prototype's `neon_auth` identity is not a write target.
+Execution queue: `.syllabai/tasks/T-OPS-PLANE-001.yaml` (step 0 = the
+NEON-DB-LOSS parity closure — T-MIG-141 Phase B/C/D gates unchanged).
 
 — End of briefing —

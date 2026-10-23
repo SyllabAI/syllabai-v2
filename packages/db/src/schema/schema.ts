@@ -1745,80 +1745,171 @@ export const aiMarkEvents = pgTable("ai_mark_events", {
         check("ai_mark_events_ordinal_check", sql`mark_ordinal >= 1`),
 ]);
 
-// ── Seneca resource packs (T-SENECA-001) — V2-NATIVE, ADDITIVE-ONLY ─────────
-// The teacher assignment creator's "Seneca resources" option (the operator
-// commission of 2026-10-23): content rows linked ONLY to hub courses that
-// exist (courses.json), the pack task list hung off the core-era
-// `assignments` row by FK (side-table law — the assignments row is never
-// ALTERed), and per-learner per-task completion with SERVER-side scoring.
-// Corpus: the operator-approved Seneca Resource Hub harvest
-// (syllabai-experimental @ d67bc1e3), PII-scrubbed.
-
-export const senecaResources = pgTable("seneca_resources", {
-	id: varchar("id", { length: 64 }).primaryKey().notNull(),
-	courseSlug: varchar("course_slug", { length: 64 }).notNull(),
-	kind: varchar("kind", { length: 16 }).notNull(),
-	title: text("title"),
-	topicPath: text("topic_path"),
-	marksTotal: integer("marks_total"),
-	questionType: varchar("question_type", { length: 60 }),
-	contentJson: jsonb("content_json").notNull(),
-	createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+// F-182 build (r0) — the per-spec-point drill surface (docs/F182-DRILL-BUILD-PLAN.md).
+// The drill's OWN address space: bundle part ids (string), never the uuid-keyed
+// questions plane. drill_draws is the recency substrate (policy P4 — naive
+// recently-seen dedupe) + the draw audit trail; drill_part_evidence is the
+// F-055-SHAPED attempt evidence (ADR-016 shape: score, time, confidence, flag),
+// immutable — one row per (draw, part), never updated. ZERO-STAKES LAW: neither
+// table is read by any gradebook/progress projection (DC-7 reads
+// attempts/ai_mark_events/revision_note_viewed only), and the drill surface
+// writes no attempts/ai_mark_events rows.
+export const drillDraws = pgTable("drill_draws", {
+        id: uuid().primaryKey().notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        course: varchar({ length: 64 }).notNull(),
+        code: varchar({ length: 32 }).notNull(),
+        seed: bigint("seed", { mode: "number" }).notNull(),
+        partIds: jsonb("part_ids").notNull(),
+        poolSize: integer("pool_size").notNull(),
+        freshPoolSize: integer("fresh_pool_size").notNull(),
+        usedFallback: boolean("used_fallback").default(false).notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	index("ix_seneca_resources_course_kind").using("btree", table.courseSlug.asc().nullsLast().op("text_ops"), table.kind.asc().nullsLast().op("text_ops")),
-	index("ix_seneca_resources_topic").using("btree", table.courseSlug.asc().nullsLast().op("text_ops"), table.topicPath.asc().nullsLast().op("text_ops")),
-	check("seneca_resources_kind_check", sql`("kind"::text = ANY ((ARRAY['courseSection'::character varying, 'examQuestion'::character varying, 'quiz'::character varying])::text[]))`),
-	check("seneca_resources_marks_check", sql`("marks_total" IS NULL OR ("marks_total" >= 0))`),
+        index("ix_drill_draws_learner_course_code_time").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.course.asc().nullsLast().op("text_ops"), table.code.asc().nullsLast().op("text_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+        foreignKey({
+                        columns: [table.learnerId],
+                        foreignColumns: [users.id],
+                        name: "fk_drill_draws_learner"
+                }).onDelete("cascade"),
+        check("ck_drill_draws_seed", sql`seed >= 0 AND seed <= 4294967295`),
+        check("ck_drill_draws_pool_sizes", sql`pool_size >= 0 AND fresh_pool_size >= 0`),
 ]);
 
-export const assignmentResources = pgTable("assignment_resources", {
-	id: uuid().primaryKey().notNull(),
-	assignmentId: uuid("assignment_id").notNull(),
-	resourceId: varchar("resource_id", { length: 64 }).notNull(),
-	position: integer("position").notNull(),
-	createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+export const drillPartEvidence = pgTable("drill_part_evidence", {
+        id: uuid().primaryKey().notNull(),
+        drawId: uuid("draw_id").notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        course: varchar({ length: 64 }).notNull(),
+        code: varchar({ length: 32 }).notNull(),
+        partId: varchar("part_id", { length: 80 }).notNull(),
+        questionId: varchar("question_id", { length: 80 }).notNull(),
+        setId: varchar("set_id", { length: 120 }).notNull(),
+        responseKind: varchar("response_kind", { length: 8 }).notNull(),
+        response: jsonb().notNull(),
+        correct: boolean(),
+        marksAwarded: integer("marks_awarded"),
+        marksPossible: integer("marks_possible").notNull(),
+        responseTimeMs: bigint("response_time_ms", { mode: "number" }).notNull(),
+        confidenceLevel: integer("confidence_level"),
+        selfDoubtFlag: boolean("self_doubt_flag").default(false).notNull(),
+        provenance: varchar({ length: 40 }).default('DRILL').notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	unique("ux_assignment_resources_pair").on(table.assignmentId, table.resourceId),
-	index("ix_assignment_resources_assignment").using("btree", table.assignmentId.asc().nullsLast().op("uuid_ops"), table.position.asc().nullsLast().op("int4_ops")),
-	index("ix_assignment_resources_resource").using("btree", table.resourceId.asc().nullsLast().op("text_ops")),
-	foreignKey({
-			columns: [table.assignmentId],
-			foreignColumns: [assignments.id],
-			name: "fk_assignment_resources_assignment"
-		}).onDelete("cascade"),
-	foreignKey({
-			columns: [table.resourceId],
-			foreignColumns: [senecaResources.id],
-			name: "fk_assignment_resources_resource"
-		}),
-	check("assignment_resources_position_check", sql`("position" >= 1)`),
+        unique("uq_drill_evidence_draw_part").on(table.drawId, table.partId),
+        index("ix_drill_evidence_learner_time").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.createdAt.desc().nullsFirst().op("timestamptz_ops")),
+        index("ix_drill_evidence_code").using("btree", table.course.asc().nullsLast().op("text_ops"), table.code.asc().nullsLast().op("text_ops")),
+        foreignKey({
+                        columns: [table.drawId],
+                        foreignColumns: [drillDraws.id],
+                        name: "fk_drill_evidence_draw"
+                }).onDelete("cascade"),
+        foreignKey({
+                        columns: [table.learnerId],
+                        foreignColumns: [users.id],
+                        name: "fk_drill_evidence_learner"
+                }).onDelete("cascade"),
+        check("ck_drill_evidence_confidence", sql`confidence_level IS NULL OR (confidence_level >= 1 AND confidence_level <= 5)`),
+        check("ck_drill_evidence_time", sql`response_time_ms >= 0`),
+        check("ck_drill_evidence_response_kind", sql`(response_kind)::text = ANY ((ARRAY['choice'::character varying, 'text'::character varying])::text[])`),
+        check("ck_drill_evidence_marks", sql`marks_awarded IS NULL OR (marks_awarded >= 0 AND marks_awarded <= marks_possible)`),
 ]);
 
-export const assignmentResourceStates = pgTable("assignment_resource_states", {
-	id: uuid().primaryKey().notNull(),
-	assignmentId: uuid("assignment_id").notNull(),
-	learnerId: uuid("learner_id").notNull(),
-	resourceId: varchar("resource_id", { length: 64 }).notNull(),
-	status: varchar("status", { length: 16 }).default('todo').notNull(),
-	marksAwarded: integer("marks_awarded"),
-	score: doublePrecision("score"),
-	completedAt: timestamp("completed_at", { withTimezone: true }),
-	updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+// ── DC-5 cross-tool marking conformance (docs/DC5-CONFORMANCE-LINT-PLAN.md) ──
+// v2-only table (BASELINE_DB.md §4.2): CREATE-only, zero bytes touched on
+// any Flyway-era table. The spec's "MarkingPoint rows gain
+// acceptable_alternatives and numeric_values columns" is translated here to
+// the baseline-legal sibling-table form (prereg R-DC5-1: §4.1 forbids
+// altering Flyway-owned mark_points while the Java core is live). The
+// materialised acceptable-answer surface is populated ONCE at ingestion and
+// consumed by both generations; mark_scheme_id is the scheme-revision
+// carrier (a scheme bump is a NEW mark_schemes row, so a bump re-keys the
+// set atomically — the drift pin's mechanism). uq_mpa_row makes the
+// materialisation idempotent (ON CONFLICT DO NOTHING backfill law).
+
+export const markPointAlternatives = pgTable("mark_point_alternatives", {
+        id: uuid().primaryKey().notNull(),
+        markPointId: uuid("mark_point_id").notNull(),
+        markSchemeId: uuid("mark_scheme_id").notNull(),
+        kind: varchar({ length: 16 }).notNull(),
+        value: text().notNull(),
+        normalised: text("normalised").notNull(),
+        sourceSpan: text("source_span"),
+        extractionMethod: varchar("extraction_method", { length: 120 }),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
 }, (table) => [
-	unique("ux_assignment_resource_states_triple").on(table.assignmentId, table.learnerId, table.resourceId),
-	index("ix_assignment_resource_states_learner").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops")),
-	index("ix_assignment_resource_states_assignment").using("btree", table.assignmentId.asc().nullsLast().op("uuid_ops")),
-	foreignKey({
-			columns: [table.assignmentId],
-			foreignColumns: [assignments.id],
-			name: "fk_assignment_resource_states_assignment"
-		}).onDelete("cascade"),
-	foreignKey({
-			columns: [table.learnerId],
-			foreignColumns: [users.id],
-			name: "fk_assignment_resource_states_learner"
-		}).onDelete("cascade"),
-	check("assignment_resource_states_status_check", sql`("status"::text = ANY ((ARRAY['todo'::character varying, 'complete'::character varying])::text[]))`),
-	check("assignment_resource_states_marks_check", sql`("marks_awarded" IS NULL OR ("marks_awarded" >= 0))`),
-	check("assignment_resource_states_score_check", sql`("score" IS NULL OR (("score" >= 0) AND ("score" <= 1)))`),
+        unique("uq_mpa_row").on(table.markPointId, table.kind, table.normalised),
+        index("ix_mpa_scheme").using("btree", table.markSchemeId.asc().nullsLast().op("uuid_ops")),
+        index("ix_mpa_point").using("btree", table.markPointId.asc().nullsLast().op("uuid_ops")),
+        foreignKey({
+                        columns: [table.markPointId],
+                        foreignColumns: [markPoints.id],
+                        name: "mpa_mark_point_fk"
+                }).onDelete("cascade"),
+        foreignKey({
+                        columns: [table.markSchemeId],
+                        foreignColumns: [markSchemes.id],
+                        name: "mpa_mark_scheme_fk"
+                }).onDelete("cascade"),
+        check("ck_mpa_kind", sql`(kind)::text = ANY ((ARRAY['ALTERNATIVE'::character varying, 'NUMERIC'::character varying])::text[])`),
+]);
+
+// ── Study-Plan Builder (docs/STUDY-PLAN-BUILDER-PLAN.md) ─────────────────
+// v2-only table (BASELINE_DB.md §4): CREATE-only, zero bytes touched on any
+// Flyway-era table. The learner's plan-config row — the three builder steps
+// of record (courses, per-course exam seasons, per-day minutes) — is the
+// ONLY persisted state of the lane; the generated week and every task
+// completion state are query-time projections over the DC-7 event rows
+// (never stored). uq_study_plan_learner = ONE active plan per learner (PUT
+// replaces); created_at is the day-walk anchor and never moves on edit.
+
+export const studyPlans = pgTable("study_plans", {
+        id: uuid().primaryKey().notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        courses: jsonb().notNull(),
+        seasons: jsonb().notNull(),
+        weekdayMinutes: integer("weekday_minutes").notNull(),
+        weekendMinutes: integer("weekend_minutes").notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).notNull(),
+}, (table) => [
+        unique("uq_study_plan_learner").on(table.learnerId),
+        foreignKey({
+                        columns: [table.learnerId],
+                        foreignColumns: [users.id],
+                        name: "fk_study_plans_learner"
+                }).onDelete("cascade"),
+        check("ck_study_plan_minutes", sql`((weekday_minutes >= 0) AND (weekend_minutes >= 0))`),
+]);
+
+// ── warehouse_registry (T-OPS-PLANE-001 run-004, migration 0013) ────────────
+// ADR-038 §3.3: "a static course_slug → warehouse map lives in main". One
+// row per course-group warehouse project of the ADR-038 fleet. The URL
+// itself is NEVER stored (credentials env-only, DATA-PLANE-PLACEMENT §4.6) —
+// warehouse_url_env names the env var that carries the pooler URL. The
+// serving flip is a DATA change: status ASSIGNED → SERVING routes covered
+// retrieval scopes to the warehouse plane (revert = back to ASSIGNED);
+// RETIRED = the group moved (a receipted migration, never a silent re-shard
+// per ADR-038 §6). subject_id is the subject of record pinned at
+// assignment (run-003: W1 = maths-4ma1); a future curriculum version that
+// introduces a NEW subject id is deliberately NOT auto-covered — coverage
+// degrades to the main plane until the operator pins it (conservative by
+// construction).
+
+export const warehouseRegistry = pgTable("warehouse_registry", {
+        courseGroup: varchar("course_group", { length: 60 }).primaryKey(),
+        subjectId: uuid("subject_id").notNull(),
+        warehouseUrlEnv: varchar("warehouse_url_env", { length: 80 }).notNull(),
+        status: varchar("status", { length: 20 }).notNull().default("ASSIGNED"),
+        templateVersion: varchar("template_version", { length: 20 }).notNull(),
+        assignedAt: timestamp("assigned_at", { withTimezone: true, mode: 'string' }).notNull(),
+        servingSince: timestamp("serving_since", { withTimezone: true, mode: 'string' }),
+}, (table) => [
+        index("ix_warehouse_registry_subject").using("btree", table.subjectId.asc().nullsLast().op("uuid_ops")),
+        check("ck_warehouse_registry_status", sql`(status)::text = ANY ((ARRAY['ASSIGNED'::character varying, 'SERVING'::character varying, 'RETIRED'::character varying])::text[])`),
+        foreignKey({
+                        columns: [table.subjectId],
+                        foreignColumns: [subjects.id],
+                        name: "warehouse_registry_subject_id_fkey"
+                }),
 ]);

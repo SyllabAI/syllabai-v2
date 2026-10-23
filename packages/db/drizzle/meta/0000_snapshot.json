@@ -1,6 +1,6 @@
 {
   "id": "4478097e-c710-4a32-b0ac-b9efe42982e3",
-  "prevId": "029496d1-cf58-449f-80f9-b06ed65c06b4",
+  "prevId": "",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -9244,199 +9244,103 @@
       },
       "isRLSEnabled": false
     },
-    "public.seneca_resources": {
-      "name": "seneca_resources",
+    "public.drill_draws": {
+      "name": "drill_draws",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
-          "type": "varchar(64)",
+          "type": "uuid",
           "primaryKey": true,
           "notNull": true
         },
-        "course_slug": {
-          "name": "course_slug",
+        "learner_id": {
+          "name": "learner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "course": {
+          "name": "course",
           "type": "varchar(64)",
           "primaryKey": false,
           "notNull": true
         },
-        "kind": {
-          "name": "kind",
-          "type": "varchar(16)",
+        "code": {
+          "name": "code",
+          "type": "varchar(32)",
           "primaryKey": false,
           "notNull": true
         },
-        "title": {
-          "name": "title",
-          "type": "text",
+        "seed": {
+          "name": "seed",
+          "type": "bigint",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
-        "topic_path": {
-          "name": "topic_path",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "marks_total": {
-          "name": "marks_total",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "question_type": {
-          "name": "question_type",
-          "type": "varchar(60)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "content_json": {
-          "name": "content_json",
+        "part_ids": {
+          "name": "part_ids",
           "type": "jsonb",
           "primaryKey": false,
           "notNull": true
         },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {
-        "ix_seneca_resources_course_kind": {
-          "name": "ix_seneca_resources_course_kind",
-          "columns": [
-            {
-              "expression": "course_slug",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last",
-              "opclass": "text_ops"
-            },
-            {
-              "expression": "kind",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last",
-              "opclass": "text_ops"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "ix_seneca_resources_topic": {
-          "name": "ix_seneca_resources_topic",
-          "columns": [
-            {
-              "expression": "course_slug",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last",
-              "opclass": "text_ops"
-            },
-            {
-              "expression": "topic_path",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last",
-              "opclass": "text_ops"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        }
-      },
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
-      "policies": {},
-      "checkConstraints": {
-        "seneca_resources_kind_check": {
-          "name": "seneca_resources_kind_check",
-          "value": "(kind)::text = ANY ((ARRAY['courseSection'::character varying, 'examQuestion'::character varying, 'quiz'::character varying])::text[])"
-        },
-        "seneca_resources_marks_check": {
-          "name": "seneca_resources_marks_check",
-          "value": "(marks_total IS NULL OR (marks_total >= 0))"
-        }
-      },
-      "isRLSEnabled": false
-    },
-    "public.assignment_resources": {
-      "name": "assignment_resources",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "assignment_id": {
-          "name": "assignment_id",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "resource_id": {
-          "name": "resource_id",
-          "type": "varchar(64)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "position": {
-          "name": "position",
+        "pool_size": {
+          "name": "pool_size",
           "type": "integer",
           "primaryKey": false,
           "notNull": true
         },
+        "fresh_pool_size": {
+          "name": "fresh_pool_size",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "used_fallback": {
+          "name": "used_fallback",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {
-        "ix_assignment_resources_assignment": {
-          "name": "ix_assignment_resources_assignment",
+        "ix_drill_draws_learner_course_code_time": {
+          "name": "ix_drill_draws_learner_course_code_time",
           "columns": [
             {
-              "expression": "assignment_id",
+              "expression": "learner_id",
               "isExpression": false,
               "asc": true,
               "nulls": "last",
               "opclass": "uuid_ops"
             },
             {
-              "expression": "position",
-              "isExpression": false,
-              "asc": true,
-              "nulls": "last",
-              "opclass": "int4_ops"
-            }
-          ],
-          "isUnique": false,
-          "concurrently": false,
-          "method": "btree",
-          "with": {}
-        },
-        "ix_assignment_resources_resource": {
-          "name": "ix_assignment_resources_resource",
-          "columns": [
-            {
-              "expression": "resource_id",
+              "expression": "course",
               "isExpression": false,
               "asc": true,
               "nulls": "last",
               "opclass": "text_ops"
+            },
+            {
+              "expression": "code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": false,
+              "nulls": "first",
+              "opclass": "timestamptz_ops"
             }
           ],
           "isUnique": false,
@@ -9446,55 +9350,37 @@
         }
       },
       "foreignKeys": {
-        "fk_assignment_resources_assignment": {
-          "name": "fk_assignment_resources_assignment",
-          "tableFrom": "assignment_resources",
-          "tableTo": "assignments",
+        "fk_drill_draws_learner": {
+          "name": "fk_drill_draws_learner",
+          "tableFrom": "drill_draws",
+          "tableTo": "users",
           "columnsFrom": [
-            "assignment_id"
+            "learner_id"
           ],
           "columnsTo": [
             "id"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"
-        },
-        "fk_assignment_resources_resource": {
-          "name": "fk_assignment_resources_resource",
-          "tableFrom": "assignment_resources",
-          "tableTo": "seneca_resources",
-          "columnsFrom": [
-            "resource_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {
-        "ux_assignment_resources_pair": {
-          "name": "ux_assignment_resources_pair",
-          "nullsNotDistinct": false,
-          "columns": [
-            "assignment_id",
-            "resource_id"
-          ]
-        }
-      },
+      "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {
-        "assignment_resources_position_check": {
-          "name": "assignment_resources_position_check",
-          "value": "(position >= 1)"
+        "ck_drill_draws_seed": {
+          "name": "ck_drill_draws_seed",
+          "value": "seed >= 0 AND seed <= 4294967295"
+        },
+        "ck_drill_draws_pool_sizes": {
+          "name": "ck_drill_draws_pool_sizes",
+          "value": "pool_size >= 0 AND fresh_pool_size >= 0"
         }
       },
       "isRLSEnabled": false
     },
-    "public.assignment_resource_states": {
-      "name": "assignment_resource_states",
+    "public.drill_part_evidence": {
+      "name": "drill_part_evidence",
       "schema": "",
       "columns": {
         "id": {
@@ -9503,8 +9389,8 @@
           "primaryKey": true,
           "notNull": true
         },
-        "assignment_id": {
-          "name": "assignment_id",
+        "draw_id": {
+          "name": "draw_id",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
@@ -9515,18 +9401,53 @@
           "primaryKey": false,
           "notNull": true
         },
-        "resource_id": {
-          "name": "resource_id",
+        "course": {
+          "name": "course",
           "type": "varchar(64)",
           "primaryKey": false,
           "notNull": true
         },
-        "status": {
-          "name": "status",
-          "type": "varchar(16)",
+        "code": {
+          "name": "code",
+          "type": "varchar(32)",
           "primaryKey": false,
-          "notNull": true,
-          "default": "'todo'"
+          "notNull": true
+        },
+        "part_id": {
+          "name": "part_id",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "question_id": {
+          "name": "question_id",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "set_id": {
+          "name": "set_id",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "response_kind": {
+          "name": "response_kind",
+          "type": "varchar(8)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "response": {
+          "name": "response",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "correct": {
+          "name": "correct",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
         },
         "marks_awarded": {
           "name": "marks_awarded",
@@ -9534,29 +9455,48 @@
           "primaryKey": false,
           "notNull": false
         },
-        "score": {
-          "name": "score",
-          "type": "double precision",
+        "marks_possible": {
+          "name": "marks_possible",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "response_time_ms": {
+          "name": "response_time_ms",
+          "type": "bigint",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "confidence_level": {
+          "name": "confidence_level",
+          "type": "integer",
           "primaryKey": false,
           "notNull": false
         },
-        "completed_at": {
-          "name": "completed_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "updated_at": {
-          "name": "updated_at",
-          "type": "timestamp with time zone",
+        "self_doubt_flag": {
+          "name": "self_doubt_flag",
+          "type": "boolean",
           "primaryKey": false,
           "notNull": true,
-          "default": "now()"
+          "default": false
+        },
+        "provenance": {
+          "name": "provenance",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'DRILL'"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
         }
       },
       "indexes": {
-        "ix_assignment_resource_states_learner": {
-          "name": "ix_assignment_resource_states_learner",
+        "ix_drill_evidence_learner_time": {
+          "name": "ix_drill_evidence_learner_time",
           "columns": [
             {
               "expression": "learner_id",
@@ -9564,6 +9504,13 @@
               "asc": true,
               "nulls": "last",
               "opclass": "uuid_ops"
+            },
+            {
+              "expression": "created_at",
+              "isExpression": false,
+              "asc": false,
+              "nulls": "first",
+              "opclass": "timestamptz_ops"
             }
           ],
           "isUnique": false,
@@ -9571,15 +9518,22 @@
           "method": "btree",
           "with": {}
         },
-        "ix_assignment_resource_states_assignment": {
-          "name": "ix_assignment_resource_states_assignment",
+        "ix_drill_evidence_code": {
+          "name": "ix_drill_evidence_code",
           "columns": [
             {
-              "expression": "assignment_id",
+              "expression": "course",
               "isExpression": false,
               "asc": true,
               "nulls": "last",
-              "opclass": "uuid_ops"
+              "opclass": "text_ops"
+            },
+            {
+              "expression": "code",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "text_ops"
             }
           ],
           "isUnique": false,
@@ -9589,12 +9543,12 @@
         }
       },
       "foreignKeys": {
-        "fk_assignment_resource_states_assignment": {
-          "name": "fk_assignment_resource_states_assignment",
-          "tableFrom": "assignment_resource_states",
-          "tableTo": "assignments",
+        "fk_drill_evidence_draw": {
+          "name": "fk_drill_evidence_draw",
+          "tableFrom": "drill_part_evidence",
+          "tableTo": "drill_draws",
           "columnsFrom": [
-            "assignment_id"
+            "draw_id"
           ],
           "columnsTo": [
             "id"
@@ -9602,9 +9556,9 @@
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
-        "fk_assignment_resource_states_learner": {
-          "name": "fk_assignment_resource_states_learner",
-          "tableFrom": "assignment_resource_states",
+        "fk_drill_evidence_learner": {
+          "name": "fk_drill_evidence_learner",
+          "tableFrom": "drill_part_evidence",
           "tableTo": "users",
           "columnsFrom": [
             "learner_id"
@@ -9618,29 +9572,354 @@
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "ux_assignment_resource_states_triple": {
-          "name": "ux_assignment_resource_states_triple",
+        "uq_drill_evidence_draw_part": {
+          "name": "uq_drill_evidence_draw_part",
           "nullsNotDistinct": false,
           "columns": [
-            "assignment_id",
-            "learner_id",
-            "resource_id"
+            "draw_id",
+            "part_id"
           ]
         }
       },
       "policies": {},
       "checkConstraints": {
-        "assignment_resource_states_status_check": {
-          "name": "assignment_resource_states_status_check",
-          "value": "(status)::text = ANY ((ARRAY['todo'::character varying, 'complete'::character varying])::text[])"
+        "ck_drill_evidence_confidence": {
+          "name": "ck_drill_evidence_confidence",
+          "value": "confidence_level IS NULL OR (confidence_level >= 1 AND confidence_level <= 5)"
         },
-        "assignment_resource_states_marks_check": {
-          "name": "assignment_resource_states_marks_check",
-          "value": "(marks_awarded IS NULL OR (marks_awarded >= 0))"
+        "ck_drill_evidence_time": {
+          "name": "ck_drill_evidence_time",
+          "value": "response_time_ms >= 0"
         },
-        "assignment_resource_states_score_check": {
-          "name": "assignment_resource_states_score_check",
-          "value": "((\"score\" IS NULL) OR ((\"score\" >= 0) AND (\"score\" <= 1)))"
+        "ck_drill_evidence_response_kind": {
+          "name": "ck_drill_evidence_response_kind",
+          "value": "(response_kind)::text = ANY ((ARRAY['choice'::character varying, 'text'::character varying])::text[])"
+        },
+        "ck_drill_evidence_marks": {
+          "name": "ck_drill_evidence_marks",
+          "value": "marks_awarded IS NULL OR (marks_awarded >= 0 AND marks_awarded <= marks_possible)"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.mark_point_alternatives": {
+      "name": "mark_point_alternatives",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "mark_point_id": {
+          "name": "mark_point_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "mark_scheme_id": {
+          "name": "mark_scheme_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "kind": {
+          "name": "kind",
+          "type": "varchar(16)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "normalised": {
+          "name": "normalised",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "source_span": {
+          "name": "source_span",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "extraction_method": {
+          "name": "extraction_method",
+          "type": "varchar(120)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "ix_mpa_scheme": {
+          "name": "ix_mpa_scheme",
+          "columns": [
+            {
+              "expression": "mark_scheme_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ix_mpa_point": {
+          "name": "ix_mpa_point",
+          "columns": [
+            {
+              "expression": "mark_point_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "mpa_mark_point_fk": {
+          "name": "mpa_mark_point_fk",
+          "tableFrom": "mark_point_alternatives",
+          "tableTo": "mark_points",
+          "columnsFrom": [
+            "mark_point_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "mpa_mark_scheme_fk": {
+          "name": "mpa_mark_scheme_fk",
+          "tableFrom": "mark_point_alternatives",
+          "tableTo": "mark_schemes",
+          "columnsFrom": [
+            "mark_scheme_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "uq_mpa_row": {
+          "name": "uq_mpa_row",
+          "nullsNotDistinct": false,
+          "columns": [
+            "mark_point_id",
+            "kind",
+            "normalised"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "ck_mpa_kind": {
+          "name": "ck_mpa_kind",
+          "value": "(kind)::text = ANY ((ARRAY['ALTERNATIVE'::character varying, 'NUMERIC'::character varying])::text[])"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.study_plans": {
+      "name": "study_plans",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "learner_id": {
+          "name": "learner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "courses": {
+          "name": "courses",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "seasons": {
+          "name": "seasons",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "weekday_minutes": {
+          "name": "weekday_minutes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "weekend_minutes": {
+          "name": "weekend_minutes",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "fk_study_plans_learner": {
+          "name": "fk_study_plans_learner",
+          "tableFrom": "study_plans",
+          "tableTo": "users",
+          "columnsFrom": [
+            "learner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "uq_study_plan_learner": {
+          "name": "uq_study_plan_learner",
+          "nullsNotDistinct": false,
+          "columns": [
+            "learner_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {
+        "ck_study_plan_minutes": {
+          "name": "ck_study_plan_minutes",
+          "value": "((weekday_minutes >= 0) AND (weekend_minutes >= 0))"
+        }
+      },
+      "isRLSEnabled": false
+    },
+    "public.warehouse_registry": {
+      "name": "warehouse_registry",
+      "schema": "",
+      "columns": {
+        "course_group": {
+          "name": "course_group",
+          "type": "varchar(60)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "subject_id": {
+          "name": "subject_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "warehouse_url_env": {
+          "name": "warehouse_url_env",
+          "type": "varchar(80)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'ASSIGNED'"
+        },
+        "template_version": {
+          "name": "template_version",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "assigned_at": {
+          "name": "assigned_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "serving_since": {
+          "name": "serving_since",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "ix_warehouse_registry_subject": {
+          "name": "ix_warehouse_registry_subject",
+          "columns": [
+            {
+              "expression": "subject_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "warehouse_registry_subject_id_fkey": {
+          "name": "warehouse_registry_subject_id_fkey",
+          "tableFrom": "warehouse_registry",
+          "tableTo": "subjects",
+          "columnsFrom": [
+            "subject_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {
+        "ck_warehouse_registry_status": {
+          "name": "ck_warehouse_registry_status",
+          "value": "(status)::text = ANY ((ARRAY['ASSIGNED'::character varying, 'SERVING'::character varying, 'RETIRED'::character varying])::text[])"
         }
       },
       "isRLSEnabled": false

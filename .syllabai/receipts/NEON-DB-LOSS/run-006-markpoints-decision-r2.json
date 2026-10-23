@@ -1,0 +1,54 @@
+{
+  "task": "NEON-DB-LOSS — mark_points disposition decision + estate tripwire r2 + provisioner blocker re-verification",
+  "run": "run-006-markpoints-decision-r2",
+  "agent": "restore-parity / ops lane (Z.ai session web-590847c1, chat 986f6715)",
+  "operator_trace": "1a169beaffefb389 (operator: 'Let us just assume we lost the mark points. And I think we have to do all the work from scratch again')",
+  "date": "2026-10-24",
+
+  "VERDICT": "OPERATOR DECISION RECORDED: the mark_points loss is ACCEPTED IN FULL and the estate will be REBUILT FROM SCRATCH via the derivation instruments of record. The open operator fork in T-CONTENT-MP-REBUILD-001 (re-derive the ~26,109 delta vs accept the loss) is RESOLVED — the operator chose both halves: stop treating any mark_points state as recoverable truth, and re-run the whole derivation over the surviving inputs. Estate tripwire r2 confirms the estate byte-quiet and the surviving 14,141 intact to serve as the validation oracle. Provisioner egress re-test: STILL BLOCKED (api.neon.tech + api.start.neon.tech HTTP 000).",
+
+  "decision_of_record": {
+    "what_was_decided": [
+      "ACCEPT-LOSS: the +26,109 post-snapshot mark_points (Oct-21 00:43Z -> Oct-22 09:15Z growth) are permanently unrecoverable; no further recovery or attribution work is spent on them.",
+      "FULL FROM-SCRATCH REBUILD: the ENTIRE mark_points estate is re-derived — scope is the pre-loss peak basis 40,250 (14,141 pre-snapshot + 26,109 post-snapshot), NOT just the delta. The derivation instruments of record are re-run over the surviving gate-PASS inputs: 4MB1 62-paper artwork scale run, T-MIG-138 embed/marks backfill discipline, fprod1 bank-marks repair lineage V60/V61 (idempotency history restored, flyway V63 all-success).",
+      "INSTRUMENTS ONLY: rebuild happens ONLY via the derivation instruments of record — no direct SQL seeding (card law unchanged)."
+    ],
+    "what_it_does_NOT_decide": [
+      "The surviving 14,141 rows are NOT deleted. They are snapshot-verified ground truth for the pre-snapshot portion and are RETAINED as the validation oracle: non-authoritative, tripwire-guarded (pin 14,141), used to cross-check the re-derivation (idempotent V60/V61 replay over identical inputs must reproduce them; material divergence = derivation defect, rebuild does not ship).",
+      "Physical disposition of the oracle rows post-rebuild is decided by the content lane after the rebuild census proves out (supersede-in-place vs keep-and-reconcile)."
+    ],
+    "honest_scope_disclosure": "From-scratch means FROM THE INSTRUMENTS: everything the recorded runs produced is machine-re-derivable from surviving inputs; any mark_points rows that were hand-curated OUTSIDE the instruments of record will NOT re-derive. The content/bank lane owns enumerating any such rows (run-003 adjudication attributed the growth to recorded runs; none known to be hand-curated — disclosed for completeness)."
+  },
+
+  "dispatch_and_sequencing": {
+    "owner": "content/bank lane (T-MIG-107/138 lineage) — card T-CONTENT-MP-REBUILD-001 amended to DISPATCHED; decision recorded by ops lane, execution is the content lane's",
+    "t0_law_integration": "Rebuild into MAIN is lawful under T0 (corpus writes stay lawful in main until per-group cut-over) and the maths-group cut-over has NOT happened (provisioner egress-blocked — no warehouse exists to receive the plane). Per the card's own coordination note: re-derivation into main is lawful; re-derivating into a cut-over'd warehouse later would be wasted work — so REBUILD NOW, before the maths cut-over, is the correct order.",
+    "single_writer": "mark_points plane goes single-writer-per-plane for the rebuild window; the T-MIG-138 embed drain (no_vec) is a different plane and may proceed — but see drain note below.",
+    "coordination": "Tripwire duty applies around all rebuild writes (usage law (a): start and end of any lane that writes the DB)."
+  },
+
+  "tripwire_r2": {
+    "measured_at_utc": "2026-10-23T17:21:50.497Z",
+    "verdict": "ESTATE STABLE — all 9 gate pins PASS vs run-005 r0; 75 tables; 229 MB / 1 GB (23%); satellite quarantine holds (0 tables); flyway V63 all-success.",
+    "gate_pins": "mark_points 14,141 (validation oracle intact); mark_schemes 6,733; document_chunks 13,765; documents 1,354 (301 QP/289 MS/489 EQ/162 SYL/112 EN/+1 TEXTBOOK); question_asset 585; revision_note_asset 194; users 587; exam_papers 4MA1=110; table_count 75.",
+    "drain_status": "no_vec 1,330 / 13,765 (12,435 embedded) — UNCHANGED vs the trim-census window. The T-MIG-138 drain was 'falling' through 2026-10-23 and is now FLAT: the drain lane appears idle. Not an incident (no decrease); flagged for the content lane: 1,330 chunks remain un-embedded and the rebuild's backfill discipline should absorb them into its run plan.",
+    "qualifications_live": "4MA1=110, 4CH1=38, 4CH0=8, IGCSE=3 (registry-only), unknown=59 (data-quality item, unchanged) — total 218, matches trim census.",
+    "fingerprints_recipe_note": "Instrument recipe re-derived post sandbox-wipe (recipe_version v2-rederived-post-wipe); r0/r1 fingerprint VALUES are not byte-comparable across the recipe gap — the gate pins are the comparable basis and they PASS. r2 baseline of record: ddl 3732fa5406680f1687e5133d5ef5a8ba81c97de1c89fa431928acadc9835a92c, estate_rows edc0e4f8a7749fa4bbc2be2640a4669aa462b84bc511c72df0f7fe9c67e0cf00.",
+    "instrument_now_in_repo": "scripts/dbprobe/estate-tripwire.mjs committed this push — the wipe-lesson (of-record instruments must live in the repo, not sandbox scripts/) is closed; any lane can now run the tripwire straight from a fresh clone.",
+    "artifact": "run-006-estate-tripwire-r2-fingerprint.json (this directory)"
+  },
+
+  "provisioner_status_recheck": {
+    "egress_test": "api.neon.tech -> HTTP 000; api.start.neon.tech -> HTTP 000 (curl, 8s timeout, 2026-10-24)",
+    "conclusion": "Provisioner remains BLOCKED ON SANDBOX EGRESS (matches trim-census finding). Artifacts stay run-ready: scripts/provisioner/template.sql (frozen wh-template v1) + provision.mjs + dryrun-4ma1.mjs. Paths that unblock: egress opens / an agent with API egress runs them / operator provisions console-side per template.sql and hands back pooler URLs (env-only)."
+  },
+
+  "order_of_execution_after_this_receipt": [
+    "1. Content/bank lane picks up T-CONTENT-MP-REBUILD-001 (DISPATCHED): scope the re-runs (4MB1 artwork wave + T-MIG-138 backfill + V60/V61 idempotent lineage), take mark_points single-writer, run instruments of record, absorb the 1,330 no_vec chunks into the backfill plan.",
+    "2. Rebuild census: target the 40,250 peak basis + oracle cross-check (14,141 must reproduce on shared keys); file receipt under NEON-DB-LOSS (run-007+).",
+    "3. Provisioner unblocks (egress/console) -> maths-4ma1 warehouse per trim-census group map v1 -> 4MA1 COW dry-run -> T1 cut-over per DATA-PLANE-PLACEMENT.md §5."
+  ],
+
+  "zero_writes_statement": "Tripwire r2 ran under a session-level READ ONLY transaction; zero DB writes, zero Neon API calls (egress-blocked anyway), zero Vercel mutations, zero LLM calls. Repo additions additive-only: this receipt + r2 fingerprint artifact + the tripwire instrument (scripts/dbprobe/estate-tripwire.mjs) + T-CONTENT-MP-REBUILD-001 decision amendment + T-OPS-PLANE-001 execution_record update + worklog entry.",
+  "secrets_disclosure": "Pooler URL env-only for the probe; nothing persisted to disk; rotation list unchanged (all chat-transited credentials remain overdue for rotation)."
+}

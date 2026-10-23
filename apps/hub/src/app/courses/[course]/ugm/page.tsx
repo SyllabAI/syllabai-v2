@@ -9,15 +9,16 @@ import { CourseHeader } from "@/components/hub/course-header";
 
 /**
  * Underground Mathematics index — the per-spec-point resource library for
- * one course (multi-lane: quadratics first, Combining Functions second;
- * ADR-UGM-0001 as amended 2026-10-23). Serves ONLY when the flags.json gate
+ * one course (multi-lane: quadratics, Combining Functions, then Coordinate
+ * geometry — the first two-station lane; ADR-UGM-0001 as amended
+ * 2026-10-23). Serves ONLY when the flags.json gate
  * lists this course AND the committed bundle validates; otherwise
  * notFound() — the flag law is absent=OFF and an unflagged page must not
  * exist, not merely be empty.
  *
  * Honesty surfaces baked in: review_state SUGGESTED with its note, the
  * corpus pin, the rights holder + license line, and the primaryPick marker
- * (the corpus's own curation, not our ranking). The 14 declared
+ * (the corpus's own curation, not our ranking). The declared
  * non-overlaps are listed with their recorded reasons — coverage is never
  * manufactured (AGENT.md rule 3 mirrored hub-side).
  */

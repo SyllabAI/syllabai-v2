@@ -61,6 +61,7 @@ import { inList } from "./session-store";
 import { MIN_COSINE, type VectorRetriever } from "./karag";
 import { evidenceFromChunk, type EvidenceItem } from "./evidence";
 import type { EmbeddingProvider } from "../content/retrieval";
+import type { WarehouseServingSeam } from "../warehouse/serving";
 
 /** CURRENT_EMBED_REV = 2 (ChunkVectorRepository.java:64) — the
  *  corpus-generation read filter; two generations never blend. */
@@ -84,6 +85,7 @@ interface BookChapterCoords {
 export function buildSqlVectorArm(
   sql: SqlFn,
   provider: EmbeddingProvider | null,
+  serving?: WarehouseServingSeam | null,
 ): VectorRetriever {
   return async (query, limit, scope) => {
     if (scope == null) {
@@ -98,8 +100,23 @@ export function buildSqlVectorArm(
     }
     const vector = await provider.embedQuery(query);
     const clamped = Math.min(Math.max(limit, 1), MAX_LIMIT);
-    const literal = `[${vector.join(",")}]`;
-    const rows = (await sql`
+    let rows: Array<Record<string, unknown>> | null = null;
+    if (serving != null) {
+      // T-OPS-PLANE-001 run-004: the warehouse serving seam (ADR-038 §3.3
+      // flip law) resolves the two-step plane for covered scopes. null =
+      // not covered / not provisioned → the verbatim main-plane SQL below
+      // serves, byte-identical to the pre-flip law. Transport or config
+      // failures PROPAGATE — the seam never silently re-routes to main.
+      rows = await serving.searchRows({
+        vector,
+        kind: null, // kind-agnostic by design (the frozen adapter law)
+        curriculumVersionId: scope.curriculumVersionId,
+        limit: clamped,
+      });
+    }
+    if (rows == null) {
+      const literal = `[${vector.join(",")}]`;
+      rows = (await sql`
     select c.id, c.document_row_id, d.doc_version, d.document_id, d.kind, c.chunk_index,
            c.content, c.page_start, c.page_end, c.element_ids, c.spec_codes,
            c.embedding_model, 1 - (c.embedding <=> ${literal}::vector) as score
@@ -122,7 +139,25 @@ export function buildSqlVectorArm(
                     and d.validation_state = 'VALIDATED'))
     order by c.embedding <=> ${literal}::vector
     limit ${clamped}`) as Array<Record<string, unknown>>;
-    const hits = rows
+    }
+    return rowsToEvidence(sql, rows);
+  };
+}
+
+/**
+ * The rows→evidence pipeline SHARED by both serving planes (run-004): the
+ * frozen mapping (cosine-floor filter, doc_version provenance, spec_codes,
+ * the 133d page-truth translation) is plane-agnostic — it reads the same
+ * row shape whether the cosine order came from main's HNSW or from a
+ * course-group warehouse via the two-step seam. The book_chapters registry
+ * read stays on MAIN for both planes (books cut over in a later group
+ * wave, DATA-PLANE-PLACEMENT §2).
+ */
+export async function rowsToEvidence(
+  sql: SqlFn,
+  rows: Array<Record<string, unknown>>,
+): Promise<EvidenceItem[]> {
+  const hits = rows
       .map((r) => ({
         chunkId: String(r.id),
         documentRowId: String(r.document_row_id),
@@ -240,7 +275,6 @@ export function buildSqlVectorArm(
         bookCourseId: coords.course_id,
       });
     });
-  };
 }
 
 function jsonbStringArray(raw: unknown): string[] {

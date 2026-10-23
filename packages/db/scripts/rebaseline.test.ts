@@ -247,24 +247,38 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // 17 columns, 1 index, 3 fks, 2 checks → 72/684/99/65/117;
   // DC-3 (0009_dc3-mark-entitlement) adds 3 tables, 18 columns, 3 indexes,
   // 5 fks, 3 checks → 75/702/102/70/120 (measured: verifyBaseline VERIFY
-  // PASS, 0 drifts, on the union end-state; renumber receipt in the plan);
-  // T-SENECA-001 (0010_seneca_resource_packs) adds 3 tables, 23 columns,
-  // 6 indexes, 4 fks, 6 checks → 78/725/108/74/126 (measured: verifyBaseline
-  // VERIFY PASS, 0 drifts, on the union end-state).
-  test("78/725/108/74/126 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // PASS, 0 drifts, on the union end-state; renumber receipts: F-182 in the
+  // F182 plan, DC-5 in the lane's merge receipt (0010_dc5-... renumbered to
+  // 0011_dc5-... — main's F-182 lane took the 0010 slot with drill_surface and
+  // the landed F-182 journal repair of record supersedes the DC-5 sandbox copy).
+  // DC-5 (0011_dc5-mark-point-alternatives) adds 1 table, 9 columns,
+  // 2 indexes, 2 fks, 1 check (uq_mpa_row rides uniqueConstraints, not the
+  // index count) on top of the F-182 re-baseline (was 75/702/102/70/120 ->
+  // 77/730/105/73/126) -> 78/739/107/75/127
+  // (docs/DC5-CONFORMANCE-LINT-PLAN.md + docs/F182-DRILL-BUILD-PLAN.md).
+  // Study-Plan Builder (0012_study_plans) adds 1 table, 8 columns,
+  // 0 explicit indexes, 1 fk, 1 check (uq_study_plan_learner rides
+  // uniqueConstraints; the PK auto-index is not counted — the mpa precedent)
+  // on top of the DC-5 baseline -> 79/747/107/76/128
+  // (docs/STUDY-PLAN-BUILDER-PLAN.md).
+  // T-OPS-PLANE-001 run-004 (0013_warehouse_registry) adds 1 table,
+  // 7 columns, 1 index, 1 fk, 1 check on top of the study-plan baseline
+  // -> 80/754/108/77/129 (ADR-038 fleet map + the serving flip law).
+  test("80/754/108/77/129 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 78/78");
-    expect(v.inventory).toContain("columns 725");
+    expect(v.inventory).toContain("tables 80/80");
+    expect(v.inventory).toContain("columns 754");
     expect(v.inventory).toContain("indexes 108");
-    expect(v.inventory).toContain("fks 74");
-    expect(v.inventory).toContain("checks 126");
+    expect(v.inventory).toContain("fks 77");
+    expect(v.inventory).toContain("checks 129");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(78);
+    expect(run.size).toBe(80);
+    expect(run.has("public.warehouse_registry")).toBe(true);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);
@@ -282,6 +296,14 @@ describe("verifyBaseline (checked-in baseline)", () => {
     expect(run.has("public.ai_mark_events")).toBe(true);
     expect(run.has("public.mark_entitlement_policies")).toBe(true);
     expect(run.has("public.mark_entitlements")).toBe(true);
+    // F-182 build — the drill surface's own lane (zero-stakes by construction)
+    expect(run.has("public.drill_draws")).toBe(true);
+    expect(run.has("public.drill_part_evidence")).toBe(true);
+    // DC-5 — the materialised acceptable-answer surface (additive, v2-owned)
+    expect(run.has("public.mark_point_alternatives")).toBe(true);
+    // Study-Plan Builder — the learner's plan-config row (additive, v2-owned;
+    // the ONLY persisted state of the lane — the week stays a projection)
+    expect(run.has("public.study_plans")).toBe(true);
   });
 });
 

@@ -3,8 +3,14 @@
  *
  * The consumption seam for the UGM corpus landed of record in
  * SyllabAI/syllabai-resources (UGM-Enrichment #55 facts + UGM-Resources #58
- * text, functions lane second) under ADR-UGM-0001 as amended 2026-10-23 and
- * the operator attestation of 2026-10-23. The hub-side import is
+ * text, quadratics lane first; Functions second — PR #61; Coordinate geometry
+ * third — PR #66, the first multi-station lane; Circular measure fourth —
+ * PR #74, the first STRAND lane: new-text subset plus a cross-lane join that
+ * serves the circles strand against its existing lane-3 bodies; Trigonometry
+ * fifth — PR #79, the second two-station lane: the whole substrate as text of
+ * record plus two cross-lane fact joins against the lane-2 bodies) under
+ * ADR-UGM-0001 as amended 2026-10-23 and the operator attestation of
+ * 2026-10-23. The hub-side import is
  * scripts/import_ugm.py → content/<lane>/ugm-resources.json
  * (schema syllabai-demo.ugm-lane-resources/1.1, multi-lane); this module is its only
  * reader. Math stays byte-true in UGM's native \( \) / \[ \] delimiters —
@@ -35,6 +41,9 @@ export const UGM_FLAG_KEY = "ugmLaneResources";
 // carries its station slug; source.enrichment/resourcesDir are per-lane
 // arrays; coverage gains a per-lane breakdown. 1.0 (single station) is
 // superseded — schema drift degrades to the honest empty state (below).
+// Lane 3+ adds multi-station lanes: one lane may carry SEVERAL UGM stations
+// (the corpus enrichment's stationScope block is the of-record breakdown);
+// a resource's `station` is always its front-matter UGM station.
 
 const UgmSpecPointRef = z.object({
   code: z.string(),
@@ -102,6 +111,12 @@ const UgmLaneBundle = z.object({
     nonOverlap: z.number(),
     alignedShare: z.number().nullish(),
     candidateRows: z.number(),
+    // strand lanes (lane 4+): the cross-lane join of record — cross-lane
+    // mappings served against earlier lanes' bodies (no new entries)
+    crossLaneJoined: z.object({
+      aligned: z.number(),
+      nonOverlap: z.number(),
+    }).optional(),
     specPointsCovered: z.array(z.string()),
     lanes: z.array(z.object({
       station: z.string(),
@@ -111,11 +126,15 @@ const UgmLaneBundle = z.object({
       nonOverlap: z.number(),
       alignedShare: z.number().nullish(),
       candidateRows: z.number(),
+      crossLaneAligned: z.number().optional(),
+      crossLaneNonOverlap: z.number().optional(),
     })),
   }),
   specPoints: z.array(UgmSpecPointIndex),
   resources: z.array(UgmResource),
 });
+
+export { UgmLaneBundle };
 
 export type UgmBundle = z.infer<typeof UgmLaneBundle>;
 export type UgmResource = z.infer<typeof UgmResource>;
@@ -181,7 +200,7 @@ export function ugmResourcesAt(bundle: UgmBundle, code: string): UgmResource[] {
   return bundle.resources.filter((r) => ids.has(r.ugmId));
 }
 
-/** Station titles of the bundle's lanes, e.g. "Quadratics and Combining Functions". */
+/** Station titles of the bundle's lanes, e.g. "Quadratics and Combining Functions" (4 lanes: "…, Geometry of Equations and Circles"). */
 export function ugmStationNames(bundle: UgmBundle): string {
   const titles = bundle.stations.map((s) => s.title);
   if (titles.length <= 1) return titles[0] ?? "Underground Mathematics";
