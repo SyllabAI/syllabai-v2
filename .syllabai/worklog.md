@@ -13293,3 +13293,18 @@ Work Log:
 
 Stage Summary:
 - MCQ-MULTISELECT-PLAYER run-001 COMPLETE: the 3 attested multi-correct keys are now answerable in exam-question player mode (mcq answerability 8811->8814/8814, honest-notice false-advertising class eliminated corpus-wide) — register: books-rail embed single-select law intentionally NOT extended (own data plane, wire never carries isCorrect); partial credit stays boolean exact-set (disclosed); PAT rotation OVERDUE (carried).
+
+---
+Task ID: T-RULE-T2-HOLDSPLIT-2 run-002 (durability consume re-key — theirs-first closure)
+Agent: Super Z (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, trace 1a168ad02ca736e1)
+Task: operator directive "consume lane re-key" — advance the consume pin of record ea21a72 -> fa664a8 (the T-RULE-T2-HOLDSPLIT-1 durability residual's final leg, census verified 26)
+
+Work Log:
+- Recon first: fresh fetch of both repos; located the of-record consume lineage (engine run-001 -> adoption run-002 @ 3838a264 -> V8 run-003 @ e7c7a68 -> mis-tag run-002 @ ea21a72) and the queued re-key directive recorded at resources fa664a8 + session worklog.
+- FLEET-RACE theirs-first (second consecutive on this program): the sibling desk (T-RULE-T2-HOLDSPLIT-DURABILITY-1 run-002, session web-64d10b73, dispatch trace 1a1686d11b430639) had ALREADY landed the full consume re-key @ v2 02b5a762 (engine PIN/STAMP advanced, 44 maps + 44 manifests re-keyed, validator ladder advanced, receipt tranche2-holdsplit-durability-consume-run-004-r0.json) before this desk staged anything — zero race, zero contact; this desk switched to pure independent verification.
+- Independent verification ALL GREEN (scripts/rekey_verify_theirs.py, read-only, V0-V8): pin identity across engine/44 maps/44 manifests/validator == fa664a86; consumed-input delta = the capture block only (sidecar d3b65926 + manifest; sheet blob-identical; 618 non-engine-input paths disclosed); chem25 registry 72/259 intact with 26/26 anchors verify-if-equal on officialCodes (0 conflicts; the 3 hold/split rows field-equal incl via; the 23 prior rows differ only on via string shape — pre-existing generation difference, disclosed); census 0/26/0 fleet-wide; item plane byte-stable except EXACTLY the 3 disclosed inline rewrites (R3-exact, 9Dxx/pYmR/Cdtk tokens rendered to 34.2.x/21.1.2+36.1.2/37.4.x); roster floors 6784/5789/9411/12,294 unchanged; remote==local on 5 of-record paths; CI success on 02b5a762.
+- Post-apply idempotence reproduced independently: own unmodified engine run at the of-record state (detached worktree @ bf41299b + resources @ fa664a86): changed=0/44, exit 0, sheet 634/166 — quiescent fixed point (zero repo writes, staging discarded).
+- Receipt filed: .syllabai/receipts/CIE-INTEGRATION/tranche2-holdsplit-durability-consume-verify-run-001-r0.json; scope: .syllabai-only bookkeeping, exactly 2 files; fetch-first, no force.
+
+Stage Summary:
+- "consume lane re-key" CLOSED of record — the consume pin of record is fa664a86 (26/26 sid anchors byte fixed point incl the 3 hold/split verdicts; registry 72/259; tranche-2 ruling program durability BOTH ways complete). Residuals: tranche-3 (1,203 sid-less, operator-gated), PAT rotation CRITICAL-OVERDUE. LANE: IDLE.
