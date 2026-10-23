@@ -299,7 +299,7 @@ check("registry coreBridge CIE law of record: exactly the 21 T-SM-BRIDGE-WIDEN r
     )
   && reg.courses.filter((c) => c.board === BOARD && c.coreBridge === true).length
     === BRIDGED_CIE_SLUGS.length);
-check("registry coreBridge of record: exactly the T-SM-BRIDGE-WIDEN r0 set — the two 4MA1 maths-a rows (T-MIG-135d) + igcse-maths-b-16 (this lane) + the 21 CIE rows (this lane) + the two T-SM-EDX-INGEST linear science rows (igcse-biology-19, igcse-physics-19; bank-verified 2026-10-22: 322+489 refs, all VALIDATED), every flagged row true",
+check("registry coreBridge of record: the T-SM-BRIDGE-WIDEN r0 set — the two 4MA1 maths-a rows (T-MIG-135d) + igcse-maths-b-16 (this lane) + the 21 CIE rows (this lane) + the two T-SM-EDX-INGEST linear science rows (igcse-biology-19, igcse-physics-19; bank-verified 2026-10-22: 322+489 refs, all VALIDATED) + the three T-SM-SD0-FIX-R0 4SD0 strand rows (igcse-science-double-award-17-{biology,chemistry,physics}; bank-verified 2026-10-24 on the restored estate: 907 refs / 907 VALIDATED schemes / 1,842 part-linked mark_points / 1,905 spec joins; parts==parts_validated_bound 684/492/649 all PASS), every flagged row true",
   (() => {
     const expected = new Set<string>([
       "igcse-maths-a-18-foundation",
@@ -307,6 +307,9 @@ check("registry coreBridge of record: exactly the T-SM-BRIDGE-WIDEN r0 set — t
       "igcse-maths-b-16",
       "igcse-biology-19",
       "igcse-physics-19",
+      "igcse-science-double-award-17-biology",
+      "igcse-science-double-award-17-chemistry",
+      "igcse-science-double-award-17-physics",
       ...BRIDGED_CIE_SLUGS,
     ]);
     const flagged = reg.courses.filter((c) => c.coreBridge !== undefined);
