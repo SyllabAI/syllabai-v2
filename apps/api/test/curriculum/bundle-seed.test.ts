@@ -1265,3 +1265,121 @@ describe("lane C ruling A — the Edexcel bare S-series SUBTOPIC tail (igcse-che
     }
   });
 });
+
+// ── T-SM-SD0-FIX-R0: the Edexcel STRAND-LETTERED T-tail (the 4SD0 mirror) ───
+describe("T-SM-SD0-FIX-R0 — the Edexcel strand-lettered T-tail shape (the 4SD0 triple-strand re-export law)", () => {
+  const sd0node = (family: string, code: string, parents: string[], order: number) => ({
+    family, code, title: code, description: null, parents, provenanceTier: "RULE_DERIVED", order, applicability: null,
+  });
+  // the re-exported 4SD0 shape: one slug SUBJECT, strand-lettered TOPICs
+  // (-TB1/-TC1/-TP1), :SUB SUBTOPICs, letter-prefixed SPEC_POINTs — the
+  // CIE 0973 mirror with the Edexcel namespace (plain {code}, not
+  // version-scoped).
+  const sd0StrandBundle = (slug: string, strand: string) => ({
+    board: "Pearson Edexcel",
+    level: "IGCSE",
+    subject: "Science",
+    code: "4SD0",
+    syllabusVersion: "2017",
+    nodes: [
+      sd0node("SUBJECT", slug, [], 1),
+      sd0node("TOPIC", `igcse-science-double-award-T${strand}1`, [slug], 1),
+      sd0node("SUBTOPIC", `igcse-science-double-award-T${strand}1:SUBa`, [`igcse-science-double-award-T${strand}1`], 1),
+      sd0node("SPEC_POINT", `${strand}1.1`, [`igcse-science-double-award-T${strand}1:SUBa`], 1),
+    ],
+    edges: [
+      { source: slug, target: `igcse-science-double-award-T${strand}1`, relation: "PART_OF", provenanceTier: "RULE_DERIVED" },
+      { source: `igcse-science-double-award-T${strand}1`, target: `igcse-science-double-award-T${strand}1:SUBa`, relation: "PART_OF", provenanceTier: "RULE_DERIVED" },
+      { source: `igcse-science-double-award-T${strand}1:SUBa`, target: `${strand}1.1`, relation: "PART_OF", provenanceTier: "RULE_DERIVED" },
+    ],
+  }) as BundleCurriculum;
+  const sd0Source = (slug: string) => ({
+    slug, importRepo: "SyllabAI/syllabai-resources",
+    importRef: "08447ba9e706d0e503beb8243401b5dbfffe74df",
+    schema: "syllabai-demo.content-bundle/2.0",
+  });
+
+  test("the strand-lettered TOPIC lands {code}-S{L}{n} — the CIE tail mirror (TB/TC/TP -> SB/SC/SP)", () => {
+    for (const [strand, unit] of [["B", "4SD0-SB1"], ["C", "4SD0-SC1"], ["P", "4SD0-SP1"]] as const) {
+      const mapped = mapBundleNodes(sd0StrandBundle("igcse-science-double-award-17-x", strand), "p");
+      const topicCode = `igcse-science-double-award-T${strand}1`;
+      expect(mapped.get(topicCode)!.dbCode).toBe(unit);
+      expect(mapped.get(topicCode)!.nodeType).toBe("UNIT");
+      // the SUBTOPIC tail rides the strand-lettered UNIT verbatim
+      expect(mapped.get(`${topicCode}:SUBa`)!.dbCode).toBe(`${unit}-a`);
+      expect(mapped.get(`${topicCode}:SUBa`)!.nodeType).toBe("TOPIC");
+      // the letter-prefixed SPEC_POINT rides the existing sixth shape verbatim
+      expect(mapped.get(`${strand}1.1`)!.dbCode).toBe(`4SD0-${strand}1.1`);
+      expect(mapped.get(`${strand}1.1`)!.nodeType).toBe("SPEC_POINT");
+    }
+  });
+
+  test("the order mismatch refuses fail-closed (the selfSection mismatch law, mirrored)", () => {
+    const b = sd0StrandBundle("igcse-science-double-award-17-x", "B");
+    (b.nodes[1] as { order: number }).order = 2; // the code says TB1, the order says 2
+    expect(() => mapBundleNodes(b, "p")).toThrow(/disagrees with the code's own SB1/);
+  });
+
+  test("the bare order-law TOPIC is byte-identical (the pre-existing Edexcel generations untouched)", () => {
+    const b = {
+      board: "Pearson Edexcel", level: "IGCSE", subject: "Physics", code: "4PH1", syllabusVersion: "2017",
+      nodes: [
+        sd0node("SUBJECT", "igcse-physics-19", [], 1),
+        sd0node("TOPIC", "igcse-physics-T1", ["igcse-physics-19"], 1),
+        sd0node("TOPIC", "igcse-physics-T2", ["igcse-physics-19"], 2),
+      ],
+      edges: [
+        { source: "igcse-physics-19", target: "igcse-physics-T1", relation: "PART_OF", provenanceTier: "RULE_DERIVED" },
+        { source: "igcse-physics-19", target: "igcse-physics-T2", relation: "PART_OF", provenanceTier: "RULE_DERIVED" },
+      ],
+    } as BundleCurriculum;
+    const mapped = mapBundleNodes(b, "p");
+    expect(mapped.get("igcse-physics-T1")!.dbCode).toBe("4PH1-S1");
+    expect(mapped.get("igcse-physics-T2")!.dbCode).toBe("4PH1-S2");
+  });
+
+  test("the self-locating -S<n> TOPIC is byte-identical (the lane C generation untouched)", () => {
+    const b = {
+      board: "Pearson Edexcel", level: "IGCSE", subject: "Chemistry", code: "4CH1", syllabusVersion: "2017",
+      nodes: [
+        sd0node("SUBJECT", "igcse-chemistry-19", [], 1),
+        sd0node("TOPIC", "4CH1-S3", ["igcse-chemistry-19"], 3),
+      ],
+      edges: [
+        { source: "igcse-chemistry-19", target: "4CH1-S3", relation: "PART_OF", provenanceTier: "RULE_DERIVED" },
+      ],
+    } as BundleCurriculum;
+    const mapped = mapBundleNodes(b, "p");
+    expect(mapped.get("4CH1-S3")!.dbCode).toBe("4CH1-S3");
+  });
+
+  test("three strands seed end-to-end into ONE subject root with zero collisions; strand 2+ reuse via sameSeedExceptBundle", async () => {
+    const store = newStore();
+    const slugs = ["igcse-science-double-award-17-biology", "igcse-science-double-award-17-chemistry", "igcse-science-double-award-17-physics"];
+    const strands = ["B", "C", "P"];
+    for (let i = 0; i < 3; i++) {
+      const summary = await seedBundleCurriculum(seedDeps(store), sd0StrandBundle(slugs[i]!, strands[i]!), sd0Source(slugs[i]!), ACTIVATOR);
+      // strand 1: root + unit + topic + spec point = 4 created; strands 2-3:
+      // the root/cv/subject reuse (the sibling-reuse law — same src ref,
+      // provenance differing only in the bundle: segment) + 3 new nodes
+      if (i === 0) {
+        expect(summary.nodesCreated).toBe(4);
+        expect(summary.alreadyActive).toBe(false);
+      } else {
+        expect(summary.nodesCreated).toBe(3);
+      }
+    }
+    // ONE subject root of record (the 0973 shape)
+    expect(store.nodes.has("4SD0")).toBe(true);
+    // the strand-lettered UNIT identities — pairwise distinct across strands
+    expect(store.nodes.has("4SD0-SB1")).toBe(true);
+    expect(store.nodes.has("4SD0-SC1")).toBe(true);
+    expect(store.nodes.has("4SD0-SP1")).toBe(true);
+    expect(store.nodes.has("4SD0-B1.1")).toBe(true);
+    expect(store.nodes.has("4SD0-C1.1")).toBe(true);
+    expect(store.nodes.has("4SD0-P1.1")).toBe(true);
+    // no bare-code collisions ever landed
+    expect(store.nodes.has("4SD0-S1")).toBe(false);
+    expect(store.nodes.has("4SD0-1.1")).toBe(false);
+  });
+});
