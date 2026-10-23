@@ -1,0 +1,76 @@
+{
+  "task": "neon-db-loss-restore-method",
+  "run": "run-003-restore-method-r0",
+  "agent": "restore lane (Z.ai CLI session web-528c0352, chat a7ae5075) — the lane that executed the restore of record (r017)",
+  "operator_trace": "1a168732f6993a1d (operator 'go' for the restore, then 'verify the hub flow', then the run-002 relay 'Read this.')",
+  "date": "2026-10-23",
+  "answers": "run-002 recovery_order step 1 — the method receipt (WHAT was restored, from what source, with what cuts), required before the mark_points question can be adjudicated between attributions (a) and (b)",
+
+  "method": {
+    "source_of_record": "Neon branch br-muddy-queen 'r2-diag/db-proof-20261021-004312' @ endpoint ep-nameless-grass-a5jsxamr — a Neon copy-on-write branch created 2026-10-21T00:43:12Z from production, i.e. a byte-identical point-in-time image of production at that moment (NOT a selective/applicative dump)",
+    "why_this_source": "Newest accessible image of the lost estate. br-mute-leaf (Oct 20) is owner-password-inaccessible since the Oct 20->21 owner-password rotation; PITR was free-plan 6h retention, expired at incident time; production storage itself was dropped. Sources exhausted — this branch is the best that exists.",
+    "instrument": "pg_dump (PostgreSQL) 18.6-4 -Fc -Z6 --schema=public --no-owner --no-acl from ep-nameless-grass -> recovery/proof_oct21_public.dump; then pg_restore --single-transaction --use-list=<filtered TOC> --no-owner --no-acl --no-tablespaces into ep-ancient-cake-a52e4kfd/neondb",
+    "dump_pin": { "bytes": 96681694, "sha256": "1f0e388d27a6810cdd9e29d188f445e3811a3c5a9a17ac4cf55b83e81e2c7405", "mtime_utc": "2026-10-23T10:43:07Z" },
+    "restore_window_utc": "2026-10-23T10:47Z - 10:49Z (r017_restore.log of record; first attempt rc=1 rolled back cleanly on a colliding surviving function, second attempt OK)",
+    "toc_filter_cuts": "excluded from restore: CREATE SCHEMA public + its COMMENT (pre-existing) and FUNCTION assert_spec_point_anchor (survived the incident on production — forensic proof the incident dropped tables, not standalone functions)",
+    "scope_cuts_what_the_dump_does_not_contain": [
+      "neon_auth schema (9 tables, empty on the snapshot) — app auth is bcrypt over public.users, independent",
+      "demo-era satellite tables (Resource/Assignment/Class/Enrollment/User): NOT PRESENT on the snapshot branch at all — the snapshot's public schema held exactly 65 tables. These tables appeared on production only AFTER 2026-10-21T00:43Z, consistent with the ADR-038 drop/recreate 'template prototype' narrative (they were observed on prod at r016/r017 with demo data and are now gone again — see observations)",
+      "any post-snapshot state whatsoever (by construction)"
+    ],
+    "post_restore_additive_steps_disclosed_writes": [
+      "migrations 0005 book-rail / 0006 class-features / 0008 teaching-toolkit (incl. 4 prompt_versions seeds) / 0009 mark-entitlement (2 policy seeds) — statement-stripped additive replay from repo @71944a30 (the snapshot predates them; its 65 tables == 0000+0002+0004 exactly)",
+      "GRANTs: schema USAGE + full DML on all tables + sequences to syllabai_v2_app_w2r2 and syllabai_v2_app_w2 + ALTER DEFAULT PRIVILEGES (the snapshot is not the grants source of truth; applied as the app-required set, verified via app-role SELECT)",
+      "teacher bcrypt re-reset: exactly 1 row in public.users (hussaina269b@gmail.com) — the restored hash predated the Task-A password reset, so the snapshot hash could not match the current password; bcrypt-verified true after write",
+      "class 17fc07e7-ec70-47f5-aa3d-4f255d7821f6 (9B Biology / cie-igcse-biology-23) recreated THROUGH the product API (POST /api/v1/teacher/classes) — the original class row was created post-snapshot and is unrecoverable (disclosed data gap: old class id 786ef9c1 + members + any generations from the window)",
+      "course_registry seeded 94 rows via the of-record scripts/seed-course-registry.ts (runtime-synced plane, empty in the snapshot)"
+    ]
+  },
+
+  "fidelity": {
+    "claim": "production == source snapshot, row-for-row, on every census plane; measured 2026-10-23 ~13:05Z directly on both endpoints (owner DSN, read-only SELECTs)",
+    "parity_table": {
+      "mark_points": { "prod": 14141, "snapshot": 14141, "equal": true, "bytes_prod": 10371072 },
+      "mark_schemes": { "prod": 6733, "snapshot": 6733, "equal": true },
+      "schemes_with_points": { "prod": 6733, "snapshot_implied": "all", "equal": true },
+      "documents": { "prod": 1354, "snapshot": 1354, "equal": true },
+      "documents_by_kind": { "prod": "301 QP / 289 MS / 489 EQ / 162 SYL / 112 EN / 1 TEXTBOOK", "snapshot": "301 QP / 289 MS / 489 EQ / 162 SYL / 112 EN / 1 TEXTBOOK", "equal": true },
+      "document_chunks": { "prod": 13765, "peer_live_pass": true },
+      "question_assets": { "prod": 585, "peer_live_pass": true },
+      "revision_note_assets": { "prod": 194, "peer_live_pass": true },
+      "users": { "prod": 587, "peer_live_pass": true }
+    },
+    "timestamp_bounds_in_restore": {
+      "mark_points_created_at": "2026-09-14T09:47:52Z .. 2026-10-20T22:28:16Z",
+      "mark_schemes_created_at": "2026-09-14T09:47:52Z .. 2026-10-20T22:28:16Z",
+      "documents_document_chunks_created_at_max": "2026-10-20T11:33:41Z",
+      "reading": "every row predates the snapshot moment 2026-10-21T00:43:12Z; the run-002 histogram observation (Sep 5,280 / Oct 8,861 — verbatim timestamps, not a bulk re-derivation) is corroborated"
+    }
+  },
+
+  "adjudication": {
+    "attribution_a_restore_partial": "RULED OUT. The instrument is a single-transaction logical dump->restore; it cannot partially drain — it either applied the whole 96.7 MB dump or nothing (first-attempt rc=1 proved the rollback path works). Production row counts equal source-snapshot row counts EXACTLY on every plane (parity_table). The restore completed 10:49Z, ~65 minutes before the run-002 census (11:53:47Z) — nothing was still 'draining' during the census.",
+    "attribution_b_baseline_superseded_rows": "REFINED, and as stated it cannot explain the number either. The snapshot contains no repair/prune event after 2026-10-20T22:28:16Z (max created_at on both schemes and points) — nothing was superseded INTO a smaller number before the snapshot was taken; at 2026-10-21T00:43:12Z production verifiably held 14,141 points / 6,733 schemes.",
+    "adjudicated_truth": "POST-SNAPSHOT GROWTH on the live estate. The Oct-22 baseline pin (40,250) was measured ~33h AFTER the snapshot moment. Between 2026-10-21T00:43:12Z and the Oct-22 last-good state (09:15Z), production's mark_points plane grew by +26,109 rows (~12.4k additional schemes at the observed 2.1 pts/scheme ratio) during the Oct-21/22 content runs of record (4MB1 artwork scale run across 62 papers @ Oct 22, T-MIG-138 embed/marks backfill discipline, fprod1 bank-marks repair lineage V60/V61). Those rows existed ONLY on the lost production state — no snapshot (Oct-21 is the newest accessible; Oct-20 branch is password-inaccessible) and no PITR (expired) holds them.",
+    "consequence_for_the_gate": "The 40,250 pin is UNREACHABLE BY RESTORE. The word 'restore' can only ever deliver 14,141 from the best source that exists — and it did, exactly. Closing the mark_points gate line therefore has exactly two paths, both outside the restore lane's remit: (1) RE-DERIVATION — re-run the bank/scheme derivation of record over the surviving input planes (which are all-PASS: documents/chunks/exam_papers/assets intact — the restore preserved every INPUT the derivation consumes), owned by the content/bank lane (T-MIG-107/138 lineage), respecting flyway V60/V61 idempotency history which is itself restored; or (2) PIN AMENDMENT per run-002 recovery_order step 3 — operator + baseline ingest law rule the 40,250 pin obsolete and the gate closes on amended numbers. run-002's own recovery_order anticipated exactly this fork."
+  },
+
+  "observations": [
+    "SATELLITE TABLES: present on production at 10:49Z (this lane's post-restore verify counted 83 public tables incl. the 8 demo-era PascalCase tables with their data), ABSENT at 11:53Z (run-002 census) and now (75 public tables; to_regclass('public.\"User\"')/('public.\"Resource\"') = null). The drop was performed by a hand that is neither this lane (zero DDL after the r017 set) nor the census lane (sworn zero writes) — attribution unknown, operator-keyed or a third agent presumed. It matches the ADR-038 quarantine end-state, so no action is requested; recorded because an unattributed DDL event on production 10:49-11:53Z Oct 23 should not pass unremarked.",
+    "DB size now pg_database_size=204,374,016 bytes (~204 MB), consistent with run-002's 195 MB live measure + WAL churn; the 335 MB Oct-22 baseline included pre-loss bloat and the satellite planes.",
+    "flyway: the restored flyway_schema_history carries the estate's full history (run-002 pinned through V63 all success=true); note for anyone re-reading this lane's earlier quick probe: max(version)='9' is a varchar lexicographic artifact, not a version number.",
+    "embeddings: 5,255/13,765 chunks NULL-embedding confirmed present in the restored estate (run-002 already recorded it for the trim pass; not a gate item)."
+  ],
+
+  "single_writer_status": "This lane's last DB writes are the disclosed r017 set (restore, migrations, grants, 1 teacher hash, 1 class via product API, registry seed), all completed <= 11:00Z Oct 23. ZERO writes since (r018/r019 were read-only verification + a hub repo push). ZERO writes queued. The single-writer hold's release is the census lane's call per run-002 recovery_order; this lane claims no further writes either way.",
+
+  "zero_writes_statement": "This receipt is the product of read-only SQL (owner DSN, SELECT-only) plus repo files. No Neon control-plane or data-plane mutations, no Vercel mutations, no LLM calls. Credentials env-only, never committed.",
+
+  "artifacts_of_record": [
+    "recovery/proof_oct21_public.dump (96,681,694 B, sha256 1f0e388d...c7405) — sandbox-local, re-derivable deterministically via the method above",
+    "recovery/toc_full.list + filtered TOC + recovery/r017_restore.log (restore window + rc evidence)",
+    "recovery/migrations/0005,0006,0008,0009 (statement-stripped replays)",
+    "scripts/r017_restore.sh (guarded method script: pre-checks -> TOC filter -> atomic restore -> migrations -> grants -> verify)",
+    "scripts/r017_prodgate.py (post-deploy 6-leg gate, 6/6 GREEN 11:13Z) + scripts/r018-era hub-flow browser evidence (download/hubflow-*.png)"
+  ]
+}

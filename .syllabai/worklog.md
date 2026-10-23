@@ -13264,3 +13264,18 @@ Work Log:
 
 Stage Summary:
 - Restore is REAL (corpus planes faithful, papers/chunks/assets exact, identity alive, satellite gone) but the Oct-22 gate is NOT yet met: mark_points at 35%. Official closure WITHHELD; single-writer hold STANDS; T-MIG-141 Phase B/C/D remain gated. Restore lane owes its method receipt + mark_points completion or an operator ruling on the baseline pin.
+
+---
+Task ID: NEON-DB-LOSS run-003 (restore method receipt) — answers run-002 recovery_order step 1
+Agent: restore lane (Z.ai CLI session web-528c0352, chat a7ae5075)
+Task: file the method receipt the parity census demanded (operator relay "Read this." trace 1a16885632e77d31) — WHAT was restored, from what source, with what cuts — and adjudicate the mark_points 40,250 vs 14,141 gate line between attributions (a) and (b)
+
+Work Log:
+- Fresh parity measurement (read-only, both endpoints, ~13:05Z): prod == snapshot EXACTLY on every plane — mark_points 14,141==14,141 (10,371,072 B), mark_schemes 6,733==6,733, documents 1,354==1,354 with IDENTICAL kind split (301 QP / 289 MS / 489 EQ / 162 SYL / 112 EN / 1 TEXTBOOK), chunks 13,765, users 587, assets 585/194 (peer-live). All restored created_at bounds predate the snapshot moment (mark_points & mark_schemes max 2026-10-20T22:28:16Z; docs/chunks max 2026-10-20T11:33:41Z).
+- ADJUDICATION: (a) RESTORE PARTIAL RULED OUT — single-transaction dump/restore cannot partially drain; prod==source exactly; restore completed 10:49Z, ~65 min BEFORE the 11:53:47Z census. (b) SUPERSEDED-ROWS REFINED — no prune/repair event exists in the snapshot (nothing was superseded INTO 14,141); at Oct 21 00:43:12Z production verifiably held 14,141. TRUTH: POST-SNAPSHOT GROWTH — the 40,250 Oct-22 baseline was measured ~33h after the snapshot; +26,109 points (~12.4k schemes @ 2.1 pts/scheme) were created by the Oct-21/22 content runs (4MB1 62-paper scale run, T-MIG-138 backfills, V60/V61 repair lineage) and died with the drop; unrecoverable from any snapshot (Oct-21 newest accessible; Oct-20 owner-password-locked) or PITR (expired).
+- CONSEQUENCE of record: the 40,250 pin is unreachable by RESTORE — restore can only deliver 14,141 from the best source that exists, and did, exactly. Gate closure paths: (1) re-derivation of the bank plane by its owning lane over the surviving (all-PASS) input planes, respecting restored V60/V61 idempotency history; or (2) operator pin amendment per run-002 step 3. Either way run-002's fork is answered with evidence.
+- OBSERVATION (unattributed DDL): the 8 satellite PascalCase tables existed at this lane's 10:49Z verify (83 public tables) and are GONE at run-002's 11:53Z census and now (75 tables, to_regclass null) — dropped by a hand that is neither this lane (zero DDL post-restore) nor the census lane (sworn zero writes). Matches ADR-038 quarantine end-state; no action requested; recorded because unattributed production DDL should not pass unremarked. Side effect: the "demo-era PascalCase cleanup" open item is already resolved.
+- Receipt: .syllabai/receipts/NEON-DB-LOSS/run-003-restore-method-r0.json (JSON-validated). Zero DB writes, zero Vercel mutations, zero LLM calls; creds env-only; fetch-first via detached worktree from bf41299b, no force.
+
+Stage Summary:
+- Restore of record declared COMPLETE and VERBATIM (production == Oct-21 00:43Z snapshot, row-for-row, all planes). The mark_points gate line is a RE-DERIVATION or PIN-AMENDMENT decision, not a restoration defect. Single-writer hold: this lane has zero writes since 11:00Z and none queued — release timing is the census lane's call. Closure evidence package for run-004 is complete.
