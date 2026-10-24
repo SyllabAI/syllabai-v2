@@ -20567,3 +20567,34 @@ Work Log:
 
 Stage Summary:
 - THE COMMITTED-SUBSTRATE RESIDUE WAVE IS OF RECORD: the corpus-gate re-trigger class is ~89% discharged at the source (backticked speech spans 80,744 -> 8,603) with the harvest-side fix from run-001 — new contamination dies at the alt-ONLY fallback, legacy residue is now KaTeX. Residuals: 2,240 structural-flagged carriers (baretext class = re-scrape territory, 26 fail-closed keeps, plain-collapse retained grammar), the run-001 hits-semantics disclosure, corrupted scripts-tests.yml push trigger (operator-scoped), PAT rotation CRITICAL-Overdue. The v2 consume lane absorbs the SME tree delta at its next pin advance per the standing consume-law (expected, separate run). LANE: IDLE.
+
+---
+Task ID: T-OPS-PLANE-001 (run-009, re-filed)
+Agent: R0-ops-plane (Super Z, zai-web session web-590847c1, trace 1a16d3121fb7d5dd)
+Task: Re-fire order (token-free continuation) — sandbox/cap-window/hub-pause checks; fire or rebuild.
+
+Work Log:
+- Token-free check at ~09:20-09:35Z: stage then-survived (tip 2aca7c98, T1 bundle intact); creds dead with prior window; public-wire checks executed.
+- Cap window OPEN (hub bake landed); hub NOT paused; T1 warehouse-first STILL LIVE (scoped ask 4MA1-2016 -> 200 / evidenceCount 6 / refused false / groq == run-008 final posture; probe learner r0-t1refirecheck1, disclosed class).
+- Apparent drift settled by re-probe: probe had mis-read evidence[] vs evidenceCount+citations; unscoped session-less asks legitimately retrieve (V53 law binds course-anchored sessions, tutor.ts :241). NO regression.
+- VERDICT: nothing to fire, no rebuild needed.
+- PROVENANCE: original receipt was filed UNCOMMITTED and the sandbox recycled before any push — consumed. Re-filed at run-010 from context with a provenance note. LESSON of record: uncommitted filings die with the sandbox; the incremental-commit law applies to this lane from now on (receipts commit+push same-turn when creds allow).
+
+Stage Summary:
+- run-009 of record (re-filed): prod posture verified on the public wire; lane went credential-blocked, then the re-knock arrived -> run-010.
+
+---
+Task ID: T-OPS-PLANE-001 (run-010)
+Agent: R0-ops-plane (Super Z, zai-web session web-590847c1, trace 1a16db5eaafef09d)
+Task: Re-knock honored — fresh GITHUB_PAT + VERCEL_PAT; fetch-first, push of-record, credentialed Vercel state, deploy-currency ruling.
+
+Work Log:
+- Sandbox recycled again pre-knock (repos/scripts wiped; UNCOMMITTED run-009 filing consumed -> re-filed with provenance). Shallow re-clone, remote scrubbed (0 ghp_ in config), token volatile-only.
+- Fetch-first: 2aca7c98 -> 3af8fdb ff-absorbed (substrate residue wave run-002 under operator authorization; T-BOOK-044 c11 + T-BOOK-045 c12 bakes; 4MB1 pblock 1-byte repair + UIUX-TIER-B re-transcription). API RUNTIME DELTA = EMPTY -> api-of-record deploy CURRENT, no redeploy owed.
+- Vercel (read-only, vcp_): identity syllabai-1403; hub syllabai-hub-v2 paused=false; push->deploy pairing 1:1 READY through the tip (10:17:37Z -> 10:17:41Z READY; lag ZERO); api carrier latest prod = run-008 deploy 2 (08:34:58Z READY). Cap window: 62/100 in 24h = open with active bleed (9 hub auto-bakes today). No WRITE attempted — serving-project pause is operator-gated.
+- Wire currency: u2-c12-halogens.json 200/published/8 sections + lessons-index 12 packs incl. u2:c12 == T-BOOK-045 additive law; hub content CURRENT THROUGH THE FLEET TIP ON THE WIRE. API serving carried from run-009 (unchanged bundle).
+- RULINGS: api current, hub current, NOTHING TO FIRE anywhere in the ladder; pause lever available but operator-side; recommendation stands.
+- Filed: run-009 (re-filed) + run-010 receipts + worklog entries; committed AND PUSHED same-turn (incremental-commit lesson applied); scrub verified post-push.
+
+Stage Summary:
+- Both planes verified CURRENT of record (api: run-008 deploy, zero runtime delta; hub: auto-bake lag zero, wire markers live). Cap 62/100. LANE: IDLE — queue unchanged (pause/upgrade decision, PAT rotation, CI DNS wall, writer receipts, sci-chem wave needs W2+main URLs, T2 hydrate before main-plane DROP).

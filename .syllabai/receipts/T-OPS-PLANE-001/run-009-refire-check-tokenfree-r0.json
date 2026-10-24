@@ -1,0 +1,31 @@
+{
+  "run": "run-009",
+  "task": "T-OPS-PLANE-001",
+  "at": "2026-10-24T09:35:00Z (checked) / re-filed 2026-10-24T11:15:00Z",
+  "refile_provenance": "ORIGINAL FILE: filed uncommitted in a sandbox that RECYCLED before the push (the agent's 'file uncommitted, next credentialed lane pushes' decision — the recycle consumed it before any lane could push). RE-FILED at the re-knock turn (run-010) from the agent's context of record, byte-faithful to the checks performed at the stated times, plus this provenance note. Lesson of record: uncommitted receipts die with the sandbox — the incremental-commit law (already fleet doctrine per T-CONTENT-MB4-PBLOCK-001 'workspace reset #3') now applies to THIS lane too.",
+  "operator_order": "re-fire order (IM session web-590847c1, trace 1a16d3121fb7d5dd; continued session) — check sandbox state, the cap window, and hub's pause status; fire if the stage survives or rebuild of-record first",
+  "context": "Token-free continuation at ~09:20-09:35Z: the PREVIOUS sandbox stage had SURVIVED at that point (repo clean at tip 2aca7c98, T1 bundle stage intact), but ALL volatile credentials were dead with the prior context window (swept env//tmp/~.secrets/git-creds/.env: no VERCEL_PAT, no GITHUB_PAT, no Neon URL) — fire + fetch-first credential-gated; public-wire checks unblocked.",
+  "checks": {
+    "sandbox_state": "SURVIVED at check time — repo clean at of-record tip 2aca7c98 (run-008 receipt tip, remote URL scrubbed, 0 ghp_ in .git/config); deploy stage intact (api/index.js 3,489,267 B @ 08:34Z = repaired-seam T1 bundle); instruments present. (Subsequently recycled — see refile_provenance.)",
+    "cap_window": "OPEN — wire evidence at the time: the hub auto-bake that was cap-blocked earlier had LANDED (voice-r2 marker live). CONFIRMED CREDENTIALED in run-010: 62 deployments in the rolling 24h vs the Hobby 100/day cap.",
+    "hub_pause_status": "NOT PAUSED — hub health 200 {coreConfigured true}; voice-r2 content marker of record LIVE (c05 pack: 'page 26'=0, '(u1:c03)'=2 == PR #348 repo byte state). T-BOOK-043 post-merge live probe PASSES. (Credentialed confirmation in run-010: projects/syllabai-hub-v2 paused=false.)",
+    "t1_serving_state": "STILL LIVE — scoped ask through the DEPLOYED app: POST /api/v1/tutor/ask {question, courseRef:'4MA1-2016'} -> HTTP 200, evidenceCount 6 (4 KNOWLEDGE_NODE + 2 QUESTION_PAPER), refused false, provider groq (openai/gpt-oss-120b), truncated false, spec-topic scope resolution correct (4MA1-2.2A / 4MA1-4.9C / 4MA1-4.10C / 4MA1-1.10B, matchScores 0.333..0.2). Matches the run-008 final posture of record exactly. Probe learner of record: r0-t1refirecheck1@syllabai.probe (disclosed census class).",
+    "probe_honesty_note": "First probe pass mis-parsed the response (read an 'evidence' array key instead of the evidenceCount field + citations array) and produced an apparent drift signal (evidenceCount 0 / unscoped grounded answer vs run-008's deterministic refusal). Re-probe with the contract shape (packages/contracts/src/tutor.ts tutorAskRequestSchema: question/history/sessionId/courseRef/paperId) settled it: NO prod regression, NO drift. The unscoped session-less ask legitimately retrieves (the V53 refusal law binds course-ANCHORED SESSIONS, tutor.ts :241)."
+  },
+  "verdict": {
+    "fire_decision": "NOTHING TO FIRE — the deploy the order targeted had ALREADY LANDED and verified (T1 seam live per run-008; hub auto-bake current). Firing again would only burn cap slots.",
+    "rebuild_decision": "NOT REQUIRED at check time (stage had survived). The stage has since recycled; any future fire uses the of-record rebuild recipe (deploy_bundle_build_t1.py: shim v2, 6 asset SHA pins, bun bundle, localgate 8/8)."
+  },
+  "instruments": [
+    "scripts/t1_refire_check.py (token-free T1 live check, idempotent — recycled, re-creatable)",
+    "scripts/t1_drift_fullbody.py + scripts/t1_scalars.py (full-body/scalar ask probes — recycled, re-creatable)"
+  ],
+  "residuals_unchanged": [
+    "hub NOT paused — cap-bleed lever operator-side (console pause or plan upgrade)",
+    "PAT rotation overdue (token families chat-transited repeatedly)",
+    "CI->Neon DNS wall (4 consecutive neon-replay failures) — org runner policy triage owed",
+    "mark-plane rebuild writer still owes run receipt + survivor id-hash",
+    "sci-chem warehouse (order-2 per census, 5,563 chunks) — next wave repeats the T1 playbook; needs W2 URL + main URL",
+    "T2 prerequisite unchanged: warehouse-hydrate upgrade before the main-plane DROP"
+  ]
+}
