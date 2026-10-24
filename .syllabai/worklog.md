@@ -20520,38 +20520,17 @@ Stage Summary:
 - THE SUBSTRATE-SIDE HARVEST FIX IS OF RECORD: future harvests emit KaTeX at the alt-ONLY fallback (fail-closed) instead of backticked Wiris speech — the corpus-gate re-trigger class dies at the source. Committed substrate corpus NOT rewritten (the operator-gated residue wave: 5,071 files fleet-wide / 2,343 CIE-scoped; census map + per-lane instrument ready as inputs). Residuals: the residue wave (operator-gated), 88 KaTeX-edge classes (downstream-enforced), corrupted scripts-tests.yml push trigger (operator-scoped), PAT rotation CRITICAL-OVERDUE. Receipt: .syllabai/receipts/CIE-INTEGRATION/substrate-harvest-fix-run-001-r0.json. LANE: IDLE.
 
 ---
-Task ID: 25-26 (session web-d0c9a0d3)
-Agent: main (Z.ai)
-Task: W1 knock verification (operator URL knock trace 1a16cccfe17ba159) + bookkeeping re-establishment after sandbox recycle (PAT re-knock trace 1a16cd9e87535909)
+Task ID: UIUX-TIER-B run-005 re-transcription (operator order trace 1a16cda0f70b3ee9 "fire run-005")
+Agent: R0-integrator (zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
 
 Work Log:
-- Sandbox recycle wiped the clone + /tmp tokens mid-lane; re-cloned syllabai-v2 main @ 4a4baec2 from the operator's fresh PAT (volatile-only 0600; rotation list unchanged)
-- W1 pooler URL knock honored READ-ONLY: psycopg2 probes (scripts/wh_probe*.py, sandbox-side), zero writes, zero DDL, zero content text egress, zero main contact
-- Verified of record: identity (project flat-leaf-09845356, PG 18.6, endpoint == W1 of record), wh-v1 template law (pgvector 0.8.6 + HNSW), warehouse_meta (course_group maths-4ma1, subject_id 763dfe2d… == run-006 registry row, source_fingerprint plane:88706faa… == run-003/run-006 id-hash, migrated_at 2026-10-23T18:44:28.832Z), census parity (8,202 == run-001 census exact; 330 docs; QP/MS/EQ 2,734 each; 2,400,494 tokens), embed coverage 6,872/8,202 @ 768 dims with 1,330 NULL (RPD-wall honest-skip class; Phase-D tranche 1 started on main f763cefe — quota contention live), sci-chem discriminator (zero seneca-like tables -> W1 is NOT the 4CH1 import home)
-- Filed receipt .syllabai/receipts/T-OPS-PLANE-001/run-007-w1-knock-verification-r0.json; discrepancy of record: pending 4CH1 seneca pack T1 (T-SENECA-001 run-004 rework, PR #316 MERGED 323d246 gates green) needs the SCI-CHEM warehouse URL (wh-v2 fragment) per run-003 ruling — awaiting sci-chem URL or explicit amendment word
-- Carried residuals unchanged from run-006: Vercel Hobby cap (window ~20:37Z 2026-10-24; deploy stage recycled with old sandbox — re-fire needs T-MIG-093 bundle rebuild), CI->Neon DNS wall (4 neon-replay failures), hub build red, PAT rotation overdue
+- Fetch-first: remote tip 4a4baec2 verified (run-004 content ca6da040 + receipt 660aa17b LANDED of record); local ff-merged, PAT scrubbed (reflog expire + grep 0 hits).
+- Run-005 scope rebuilt from the run-004 receipt disclosed_remainder + r4a evidence pack (worksheet 112 rows / 53 parts / pages.json): 43 outstanding R4-A parts reconciled against current bundle bytes (11 already fixed in run-004, 2025-11-02 q10p0 problemMd hit adjudicated FP figure-label class).
+- Anonymous mirror fetch 66 QP/MS PDFs (scripts/run005/pdf/); ANNEX QP pages rendered 2.4x gray; evidence = run-004 committed mspage PNGs + new renders incl 6x zoom crop of the 2021-06-01 q14 nested radicals; every fix eyes-on transcribed into spec_r4a.py (54 fail-closed line rules) + patch_named.py (17 named rules).
+- ANNEX 2025-11-02 executed end-to-end (q5 system, q8p2 matrix, q9p0 GFM table, q9p3/q9p4, q11p0-p3 shared-stem family incl disclosed scope extension to siblings, q12p0 fraction); 2019-01-01R q13 surds; 2018-06-01 q7 math CORRECTED to 7/8-(1/3x2 1/4) per QP p5 + MS p6 (2 1/4=9/4, answer 1/8) + solutionMd rebuilt with q8-bleed removed; 2019-06-02 q10p1 stem + P4 answer cell 2a+b=-14 + q9p0 italic-misread law (2x+y=5).
+- R4-A rebuild class: all 43 outstanding parts adjudicated, 42 fields rebuilt (one-half restorations, x-glyphs, superscript merges, fraction stacks, prose de-scrambles, furniture strips incl Pearson registration lines).
+- Gates: structure 65/1270/2412/6500 unchanged; marks diff-proven identical; KaTeX 670 segments 0 failures (1 self-caught \dep parse error fixed pre-gate); currency-class 110 fields byte-identical; UFFFD 0; compact single-line JSON; scrub-assert clean.
+- Receipt + evidence pack filed; manifest note UIUX-TIER-B-RUN-005 appended. Fetch-first before push; no force.
 
 Stage Summary:
-- W1 verified LIVE and healthy post-cut-over: wh-v1 law intact, 8,202-row maths plane parity-clean, embed remainder 1,330 disclosed; receipt run-007 of record
-- Lane blockers now precisely: (1) sci-chem URL for the 4CH1 T1, (2) Vercel cap window + lever (pause hub console-side or upgrade) for the W1 deploy re-fire, (3) main URL at sci-chem T1 time; DB posture: W1 knocked, main still stood down
-ops(R0-AUTO): receipt — PR #347 merged 38b7066, gates green (bookkeeping)
-
-Task ID: T-OPS-PLANE-001 (run-008, Task 21)
-Agent: R0-ops-plane (Super Z, zai-web session web-590847c1, trace 1a16cfcdd5d8113d)
-Task: 're fire, check now' — re-fire the cap-blocked deploy and verify the serving flip end to end.
-
-Work Log:
-- Sandbox recycled again; rebuilt from the fleet of record; tip 4008e6ce (4 api commits aboard: Seneca assignment-packs + realtime hosting; seam files untouched); bundle rebuilt, 6 asset pins EXACT, localgate 8/8 through the pooler URL.
-- DEPLOY SUCCEEDED at the freed cap window (iv8bt74ek READY, health 200, 0.69s).
-- FLIP 08:24:50Z (guarded applier) -> scoped ask (courseRef law pinned: resolveForCourse matches curriculum_versions.code exactly, '4MA1-2016') -> HTTP 500 -> prod runtime logs: postgres 42601 'syntax error at end of input' position 216.
-- ROOT CAUSE (LATENT PROD BUG, filed + repaired): run-004's seam step-1 tagged template has FOUR bind slots but THREE params — the order-by rebind of the vector literal was missing, candidateLimit landed in the <=> position, limit left empty = guaranteed 500 on EVERY covered-group ask. Invisible to the run-004 probe (rig path) and to the unit fakes (no arity validation — the at(-1)===cap assertion is blind to the class). Never executed live until the flip.
-- A/B of record: revert to ASSIGNED -> SAME bundle + SAME ask served via MAIN path (evidenceCount 6, groq, pooler DATABASE_URL proven live in prod) = 500 exclusively the seam.
-- REPAIR: restore the missing second literal bind (transport-only, SQL text byte-identical) + run-008 arity pin (toHaveLength(4), params[0]===params[2]); typecheck clean, serving.test.ts 10/10; pushed 92899b49.
-- Deploy 2 (qxxki2a8e) READY; re-flip 08:39:16Z; FINAL CHECK through the deployed app: 200 / evidenceCount 6 / refused false / groq 3.581s — decisive by differential (fail-loud: the seam cannot fall back silently).
-- Tripwire r7: corpus planes ALL PASS byte-flat through the ENTIRE cut-over (13,765/1,354/585/194/110); drift attributed (table 80 = +0013, users 600 = +probe census, mark plane = rebuild writer persisting +7,635 pts over 12h); NO loss signature; db 266 MB.
-- Receipt run-008-t1-refire-flip-live-r0.json; card UPDATE (6).
-
-Stage Summary:
-- T1 CUT-OVER COMPLETE OF RECORD: maths-4ma1 serves warehouse-first in production (registry SERVING + master on + W1 pooler URL + repaired seam, deployed and verified end to end through the live app).
-- Revert paths live at every rung (registry -> ASSIGNED instant). T2 prerequisite unchanged (warehouse-hydrate upgrade before the main-plane DROP).
-- Residuals: hub auto-bake cap bleed (console pause or plan upgrade owed), CI->Neon DNS wall triage, rebuild-writer receipts, PAT rotation.
+- Run-005 LANDED: 56 parts / 32 sets patched (17 named + 54 line rules), the run-004 disclosed remainder closed end-to-end except the disclosed run-006 residuals (fleet census 627/63 stands as map; 5 named unread-evidence rows disclosed). Receipt: .syllabai/lane-artifacts/UIUX-TIER-B/receipt-run005-retranscription-r0.json.
