@@ -20841,3 +20841,33 @@ Work Log:
 
 Stage Summary:
 - BL-001 + BL-002 COMPLETE OF RECORD: EXM evidence real, HIS family unlocked, six-groups check examiner-reports PARTIAL-covered / legacy PRESENT. Next SIB runs unchanged: BL-003 notebook provisioning → CUR-01..CUR-08. Operator-side queue: silver-tier Nov-2025/June-2026 ERs if wanted.
+
+---
+Task ID: T-OEQ-MATHSB-1 run-002 (session web-da4ab8b1, operator order trace 1a16f40bfb141f15 "continue the tranche-2 drain")
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-6cbb-48ca-91b1-54896d1b585e)
+Task: Drain the remaining 65 4MB1 archive paper dirs through the Official-ExamQuestion pipeline.
+
+Work Log:
+- Staged all 66 dirs (150s); background execution impossible in this sandbox (processes die at tool-call boundaries) - foreground chunked sweeps with a JSONL resume log.
+- 9 improvement-loop rounds landed (LEDGER F66-F72): F66 glyph surface (PUA_MAP 89->126, every mapping render-evidenced at 150-600dpi; greek parameter family incl. the F04A script-theta vs F071 upright-theta split in the SAME MS; the FULL brace-piece families; ~25 renders) + _PUA_SEQ sequence-first pre-pass + course-scoped font-split overrides (F061 mapsto/alpha with the 85/46 census, F067 arrow/gamma) + F69 number-set line law (Q-anchored: F0A5->N/F0A2->Z ONLY on lines carrying F0A4=Q; the 5,146-instance drop class untouched elsewhere); F67 missing-question region law (prev_qnum < m < qnum - the 2023-01 02 double-Q11 113/100 class); F68 glued '<qnum>(<letter>)' MS marker law (the 2022-2023 layouts; five G5-collapsed papers fixed); F70 SymbolMT digit embedding (the 2020-01 02R decode reproduces '- 0.47, 0.47, 2.53, 2.36' byte-exact) + the N1 injector marks guard; F71 romans-collapse; F72 romans-fold at SEGMENTATION level after G2-D honestly refused the first concat attempt (the negative control that proves the disclosure machinery).
+- RESULT OF RECORD: 58/66 slices G0-G7 ALL PASS, zero crashes; EXPECT_QUESTIONS populated with 58 footer-verified counts; 8 honest GATE-FAIL residuals disclosed (2018-2021 first-sitting-era tail: 2022-06 01R, 2020-06 01R, 2020-01 01, 2019-06 02R, 2019-01 01, 2019-01 01R, 2021-06 01, 2021-06 02; 2019-01 needs the F41 OCR layer for image-only pages).
+- Regression ALL GREEN: chemistry staged parity (sha 7b411e1db487 + problem_md byte-equal), tranche-1 slice G0-G7 re-verified, canaries 71->72 (C74 drain-state pin: 58 pass / 8 fail) ALL HOLD; battery receipt 6/6 PASS.
+- Commit b59c078c439f (372 files) landed on resources branch t-oeq-mathsb-tranche1 via the Git Data API (the egress stalls git-receive-pack writes; generic api_push_generic.py replicates diff-tree -> blobs -> tree -> ff ref); PR #110 updated with the tranche-2 comment.
+
+Stage Summary:
+- The maths-B conversion corpus stands at 58/66 (88%) with every glyph mapping render-evidenced and the residual disclosed. Next: the 8 residual loop rounds (or the OCR layer for 2019-01), the C0 operator adjudication, then H2 comparison + H3 cutover - after which the SME-style maths-b bundle retirement becomes safe. T-MIG-141 unchanged: Phase D drain still PAUSED on the operator key decision (4,002 rows).
+
+---
+Task ID: T-OEQ-MATHSB-1 run-002 (session web-da4ab8b1, operator order trace 1a16f40bfb141f15 "continue the tranche-2 drain")
+Agent: r7a (Super Z, zai-web session web-da4ab8b1-6cbb-48ca-91b1-54896d1b585e)
+Task: Drain the remaining 65 4MB1 archive paper dirs through the Official-ExamQuestion pipeline.
+
+Work Log:
+- Staged all 66 dirs (150s); background execution impossible in this sandbox (processes die at tool-call boundaries) - foreground chunked sweeps with a JSONL resume log.
+- 9 improvement-loop rounds landed (LEDGER F66-F72): F66 glyph surface (PUA_MAP 89->126, every mapping render-evidenced at 150-600dpi; greek parameter family incl. the F04A script-theta vs F071 upright-theta split in the SAME MS; the FULL brace-piece families) + _PUA_SEQ sequence-first pre-pass + course-scoped font-split overrides (F061 mapsto/alpha with the 85/46 census, F067 arrow/gamma) + F69 number-set line law (Q-anchored: F0A5->N/F0A2->Z ONLY on lines carrying F0A4=Q; the 5,146-instance drop class untouched elsewhere); F67 missing-question region law (prev_qnum < m < qnum - the 2023-01 02 double-Q11 113/100 class); F68 glued '<qnum>(<letter>)' MS marker law (the 2022-2023 layouts; five G5-collapsed papers fixed); F70 SymbolMT digit embedding (the 2020-01 02R decode reproduces '- 0.47, 0.47, 2.53, 2.36' byte-exact) + the N1 injector marks guard; F71 romans-collapse; F72 romans-fold at SEGMENTATION level after G2-D honestly refused the first concat attempt (the negative control that proves the disclosure machinery).
+- RESULT OF RECORD: 58/66 slices G0-G7 ALL PASS, zero crashes; EXPECT_QUESTIONS populated with 58 footer-verified counts; 8 honest GATE-FAIL residuals disclosed (2018-2021 first-sitting-era tail: 2022-06 01R, 2020-06 01R, 2020-01 01, 2019-06 02R, 2019-01 01, 2019-01 01R, 2021-06 01, 2021-06 02; 2019-01 needs the F41 OCR layer for image-only pages).
+- Regression ALL GREEN: chemistry staged parity (sha 7b411e1db487 + problem_md byte-equal), tranche-1 slice G0-G7 re-verified, canaries 71->72 (C74 drain-state pin: 58 pass / 8 fail) ALL HOLD; battery receipt 6/6 PASS.
+- Commit b59c078c439f (372 files) landed on resources branch t-oeq-mathsb-tranche1 via the Git Data API (the egress stalls git-receive-pack writes; generic api_push_generic.py replicates diff-tree -> blobs -> tree -> ff ref); PR #110 updated with the tranche-2 comment.
+
+Stage Summary:
+- The maths-B conversion corpus stands at 58/66 (88%) with every glyph mapping render-evidenced and the residual disclosed. Next: the 8 residual loop rounds (or the OCR layer for 2019-01), the C0 operator adjudication, then H2 comparison + H3 cutover - after which the SME-style maths-b bundle retirement becomes safe. T-MIG-141 unchanged: Phase D drain still PAUSED on the operator key decision (4,002 rows).
