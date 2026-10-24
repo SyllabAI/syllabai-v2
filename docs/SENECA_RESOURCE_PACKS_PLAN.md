@@ -64,3 +64,40 @@ reads the experimental checkout path given on the CLI.
 - `bun run typecheck` + `bun test` (new `apps/api/test/assignmentpacks/**`) + hub `tsc`.
 - Frozen families byte-untouched (diff-checked in the PR).
 - Receipts: `.syllabai/receipts/T-SENECA-001/`.
+
+## 6. Rollout wave — ALL mapped courses (D10; operator rulings trace `1a16fa6c496aa371`)
+
+**Rulings of record (2026-10-25):** (1) PLACEMENT (a) — W1 (ep-calm-queen) stays the
+INTERIM home for every course group's Seneca pack; dedicated course-group warehouses
+later; (2) IAL — Edexcel IAL courses map to Seneca "International A Level" content;
+where a subject has no IAL-tagged rows (Maths), the closest equivalent is the Edexcel
+A Level (UK) family (receipt-documented); (3) VARIANTS — booster/revision/Predicted-
+Papers/HyperLearning families are INCLUDED per course (the whole matching group).
+
+**D10 — multi-course storage (wh-v3):** one Seneca resource genuinely serves SEVERAL
+hub courses (Combined-award chemistry → 4SD0; an Edexcel-iGCSE maths section → 4MA1
+Foundation AND Higher AND the 2024 modular units). Under PK(id) a row can only live in
+one course (last-write-wins; later courses starve). wh-v3 re-shapes `seneca_resources`
+to **PRIMARY KEY (id, course_slug)** — the (resource, course) pair is the unit; each
+hub course gets its own library instance. DDL of record:
+`scripts/provisioner/wh-v3-fragment-seneca-resources-multi-course.sql` (also widens
+`course_slug` to varchar(96) — the longest hub slug is 66 chars). The live swap was the
+established T1 pattern: one transaction (create v3 → carry pilot rows → drop → rename →
+indexes → `warehouse_meta.template_version wh-v2→wh-v3`), parity-verified, zero
+residue. **The API module needs NO change** — `where course_slug = $1` keeps its exact
+semantics on per-course instances.
+
+**Linking of record:** `scripts/rollout_import_seneca_v3.py` carries the full rule
+table (82 mapped courses of 94 registered; honestly unmapped = no Seneca equivalent:
+Accounting ×5, Environmental Management ×2, Further Maths/Additional/Pure ×3, Maths B
+4MB1, IAL Maths Decision 1). Rows match by the harvest's own tag taxonomy (board
+values `Edexcel iGCSE` / `Cambridge International` / `Edexcel`; level values `iGCSE` /
+`A Level` / `AS Level` / `International A Level`; Triple/Combined; Higher/Foundation
+tier gating for 4MA1 and 0580/0607). Edexcel-iGCSE science sections are Triple-tagged
+by Seneca (no Combined sections exist in the harvest slices) — 4SD0 libraries carry
+the Double-Award exam questions (breadcrumb `Science (Double Award) …`) + the Science
+subject slice. Content fidelity: slice rows are byte-identical to the deep course
+files (verified per-field against the pilot import — parity gate receipt).
+
+**Coverage (run-007):** 58,207 (resource, course) instances / 31,233 distinct
+resources / 82 courses; maths plane untouched (8,202 chunks); PII rescan 0; W1 138 MB.
