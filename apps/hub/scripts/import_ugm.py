@@ -111,6 +111,26 @@ Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
     renders exactly once — inline or section-end), the corpus stays
     byte-untouched, and a new fail-closed audit demands ZERO un-localized
     image placeholders across the served bundle.
+  - lane 9 (T-UGM-HUB-CONSUME-9 — the FIRST lane on a SECOND course plane,
+    corpus PR #114): content/cie-a-level-maths-20-pure-3/ugm-resources.json —
+    CIE 9709 Pure 3 subtopic 3.1 Algebra (spec points 3.1.1–3.1.6, the
+    repaired spine rows of record per T-SPECS-CIE-PARSE-REPAIR-1), built on
+    the lane-8 candidate-model shape: no dedicated UGM 'algebra' station
+    exists, so the 35 fresh bodies span 15 corpus stations (polynomials 25 /
+    product-rule 3 / thinking-about-functions 2 / power-series 2 /
+    chain-rule 2 / hyperbolic-functions 1), 16 non-overlaps ride
+    nonOverlapRows with bodyImported=false (by reference, no text), and the
+    9 cross-lane rows are CROSS-COURSE joins: their text of record lives
+    under pure-1 lane dirs (pure-1-functions ×3, pure-1-series ×4,
+    pure-1-differentiation ×1, pure-1-integration ×1), so they join the
+    bundle BY REFERENCE (coverage.crossCourse with servedUnder pointers) —
+    first-of-record body wins under the pure-1 bundle, nothing is duplicated
+    here. Figure plane: the figures-map of record predates lane 9 (no map
+    rows for the 35 fresh bodies and no placeholders in them — the rebuilt
+    converter renders figcaption text only), so the pure-3 serve ships
+    figures=0 honestly pending a T-UGM-ASSETS-2 corpus amendment; the figure
+    audits are therefore RUN-SCOPED (a course run is audited against its own
+    map rows — the pure-1 run's census is unchanged).
 
 Output: content/<lane>/ugm-resources.json, schema
 "syllabai-demo.ugm-lane-resources/1.1" (multi-lane) — per-spec-point resource
@@ -156,12 +176,13 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-# T-UGM-HUB-CONSUME-8b: pin advanced past the T-UGM-ASSETS-1 integrity-manifest
-# fix (0b976cc) so copy_assets() finds UGM-Assets/MANIFEST.json; corpus inputs
-# (UGM-Resources/**, UGM-Enrichment/**) are identical 404b4ed5 → ac1fc90b
-# (verified: base re-import reproduces the #354 bundle byte-for-byte modulo
-# generatedUtc).
-DEFAULT_REF = "main@ac1fc90b09008ee8d2eb1aff6892a9f2cb05f594"
+# T-UGM-HUB-CONSUME-9: pin advanced past lane 9 (T-UGM-MODE1-9 /
+# T-UGM-IMPORT-9, corpus PR #114, merge commit fafd008d) — the pure-3 course
+# plane's first lane. Pure-1 inputs are byte-identical ac1fc90b → fafd008d
+# (the lane-9 PR touches UGM-Resources/pure-3-algebra/** + its enrichment +
+# shared bookkeeping only; the shared MANIFEST.json gains the pure-3 lane
+# block while the pure-1 lane blocks are unchanged).
+DEFAULT_REF = "main@fafd008d4e0b141223cc5b23b67c714f772e403e"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
@@ -299,6 +320,49 @@ LANE_STATIONS = {
             "expected": {"resources": 10, "rows": 28, "aligned": 28, "nonOverlap": 0},
         },
     ],
+    # T-UGM-HUB-CONSUME-9: the pure-3 course plane — CIE 9709 Pure 3, lane 9
+    # (subtopic 3.1 Algebra, spec points 3.1.1–3.1.6). Candidate-model lane
+    # (lane-8 shape): no dedicated UGM 'algebra' station — the substrate is
+    # corpus-wide, so the block declares ALL 15 skill-bearing stations of
+    # record (the enrichment's stationScope); only 6 carry fresh bodies.
+    # The 9 cross-lane rows of record are CROSS-COURSE joins against pure-1
+    # bodies (joined by reference — see the module docstring).
+    "cie-a-level-maths-20-pure-3": [
+        {
+            "laneSlug": "algebra",
+            "laneTitle": "Algebra",
+            "stations": [
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "combining-functions", "title": "Combining Functions"},
+                {"slug": "combining-vectors", "title": "Combining Vectors"},
+                {"slug": "counting-and-binomials", "title": "Counting & Binomials"},
+                {"slug": "divisibility-and-induction", "title": "Divisibility & Induction"},
+                {"slug": "exp-and-log", "title": "Exponentials & Logarithms"},
+                {"slug": "hyperbolic-functions", "title": "Hyperbolic Functions"},
+                {"slug": "polynomials", "title": "Polynomials & Rational Functions"},
+                {"slug": "power-series", "title": "Power Series"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+                {"slug": "thinking-about-algebra", "title": "Thinking about Algebra"},
+                {"slug": "thinking-about-functions", "title": "Thinking about Functions"},
+                {"slug": "thinking-about-geometry", "title": "Thinking about Geometry"},
+                {"slug": "thinking-about-numbers", "title": "Thinking about Numbers"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json",
+            "res_dir": "UGM-Resources/pure-3-algebra",
+            "ledger": "LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114)",
+            "expected": {"resources": 35, "rows": 47, "aligned": 47, "nonOverlap": 16},
+        },
+    ],
+}
+
+# T-UGM-HUB-CONSUME-9: res_dir basename → course key, for the cross-course
+# join law (a crossLaneAligned row whose textOfRecordUnder names another
+# course's lane dir joins BY REFERENCE instead of failing).
+COURSE_OF_DIR = {
+    os.path.basename(lb["res_dir"]): course
+    for course, blocks in LANE_STATIONS.items()
+    for lb in blocks
 }
 
 
@@ -312,7 +376,7 @@ def spec_code_key(code):
     return tuple(int(p) if p.isdigit() else p for p in parts)
 
 
-def import_lane(repo, lane_block):
+def import_lane(repo, lane_block, course):
     """Run the full per-lane audit + join; returns the lane's bundle parts.
 
     Lane blocks come in two shapes: single-station (lanes 1-2: `station` +
@@ -434,6 +498,7 @@ def import_lane(repo, lane_block):
 
     non_overlap_slugs = [r.get("ugmSlug") for r in enr.get("nonOverlapRows", [])]
     resources, seen_ids = [], set()
+    nonoverlap_byref = []  # T-UGM-HUB-CONSUME-9: bodyImported=false rows
     for slug in sorted(parsed):
         p = parsed[slug]
         if slug in non_overlap_slugs:
@@ -456,8 +521,14 @@ def import_lane(repo, lane_block):
                 "modesRecorded": r.get("modesRecorded") or [],
             })
         primaries = [s["code"] for s in sp_rows if s["primaryPick"]]
-        if len(primaries) > 1:
-            fail(f"[{station}] resource claims primaryPick under multiple codes: {slug} {primaries}")
+        # T-UGM-MODE1-9 two-code law (corpus PR #114): a two-code resource may
+        # be the primary pick of BOTH its codes (the of-record enrichment
+        # flags inequalities under 3.1.1+3.1.2 and r6577 under 3.1.3+3.1.4).
+        # Per-code uniqueness is enforced at the spec-point level (one pick
+        # slug per perSpecPoint block) — here only a same-code double flag is
+        # a defect.
+        if len(primaries) != len(set(primaries)):
+            fail(f"[{station}] resource claims primaryPick twice under the same code: {slug} {primaries}")
         seen_ids.add(slug)
         resources.append({
             "ugmId": slug,
@@ -476,6 +547,21 @@ def import_lane(repo, lane_block):
 
     for r in enr.get("nonOverlapRows", []):
         slug = r.get("ugmSlug")
+        # T-UGM-HUB-CONSUME-9 candidate-model law (lane-8/9 shape): rows with
+        # bodyImported=false have NO text of record — they ride the bundle's
+        # coverage plane by reference only (honest disclosure, never served
+        # as bodies).
+        if r.get("bodyImported") is False:
+            if slug in parsed:
+                fail(f"[{station}] non-overlap marked bodyImported=false has a body here: {slug}")
+            nonoverlap_byref.append({
+                "ugmSlug": slug,
+                "station": r.get("station"),
+                "title": r.get("title"),
+                "url": r.get("url"),
+                "reason": r.get("reason"),
+            })
+            continue
         p = parsed.get(slug)
         if p is None:
             fail(f"[{station}] non-overlap slug not in corpus: {slug}")
@@ -504,23 +590,69 @@ def import_lane(repo, lane_block):
     if len(seen_ids) != n or len(resources) != n:
         fail(f"[{station}] join coverage {len(seen_ids)}/{len(resources)} != {n} resources")
 
-    # spec-point index (official code order); bodies stay referenced by id
-    spec_points = []
+    # spec-point index (official code order); bodies stay referenced by id.
+    # T-UGM-HUB-CONSUME-9 cross-course law: perSpecPoint may carry rows whose
+    # text of record lives under ANOTHER course's lane dirs (lane 9's nine
+    # cross-course joins vs pure-1 bodies). Those join BY REFERENCE — they
+    # enter neither the served resources nor the index ugmIds (the body
+    # stays first-of-record under its own course bundle); each must be
+    # reconciled 1:1 against crossLaneAligned (fail-closed both directions).
+    cla_rows = enr.get("crossLaneAligned") or []
+    cla_slugs = {r.get("ugmSlug") for r in cla_rows}
+    cla_codes = {}
+    for r in cla_rows:
+        for c in r.get("codes") or []:
+            cla_codes.setdefault(r.get("ugmSlug"), set()).add(c)
+    spec_points, cross_rows = [], 0
     for code, block in sorted(enr["perSpecPoint"].items()):
-        ugm_ids = [r.get("ugmSlug") for r in block.get("resources", [])]
-        if block.get("primaryPick") not in ugm_ids:
-            fail(f"[{station}] {code}: primaryPick {block.get('primaryPick')!r} not among rows")
+        fresh, cross = [], []
+        for r in block.get("resources", []):
+            slug = r.get("ugmSlug")
+            (fresh if slug in parsed else cross).append(slug)
+        for slug in cross:
+            if slug not in cla_slugs:
+                fail(f"[{station}] {code}: non-body row {slug!r} is not a crossLaneAligned row of record")
+            if code not in cla_codes.get(slug, set()):
+                fail(f"[{station}] {code}: cross row {slug!r} not claimed for this code in crossLaneAligned")
+            cross_rows += 1
+        fresh_ids = sorted(set(fresh))
+        if len(fresh_ids) != len(fresh):
+            fail(f"[{station}] {code}: duplicate slug rows in perSpecPoint")
+        # the pick may ride fresh text (lanes 1-3, 9's fresh picks) or a
+        # cross row (lane-4's r5534, lane-8's all-cross-lane pick set) — both
+        # of record; it must never be absent from both.
+        if block.get("primaryPick") not in fresh_ids and block.get("primaryPick") not in cross:
+            fail(f"[{station}] {code}: primaryPick {block.get('primaryPick')!r} not among the fresh or cross rows")
         spec_points.append({
             "code": code,
             "officialText": block.get("officialText"),
             "primaryPick": block.get("primaryPick"),
-            "resourceCount": block.get("resourceCount"),
-            "ugmIds": ugm_ids,
+            "resourceCount": len(fresh_ids),
+            "ugmIds": fresh_ids,
         })
+    # reverse reconciliation: every crossLaneAligned (slug, code) must be
+    # claimed in perSpecPoint (the lane-8/9 shape) OR name a same-course
+    # lane dir (the lane-4 shape — the in-run join validates the supplier);
+    # and no cross slug may ALSO have a body in this lane
+    own_course_dirs = {os.path.basename(lb["res_dir"]) for lb in LANE_STATIONS[course]}
+    psp_claims = {(code, r.get("ugmSlug"))
+                  for code, block in enr["perSpecPoint"].items()
+                  for r in block.get("resources", [])}
+    for r in cla_rows:
+        for c in r.get("codes") or []:
+            if (c, r.get("ugmSlug")) in psp_claims:
+                continue
+            under = os.path.basename(r.get("textOfRecordUnder") or "")
+            if under in own_course_dirs:
+                continue
+            fail(f"[{station}] cross-course: {r.get('ugmSlug')!r} claims {c} in crossLaneAligned but perSpecPoint does not list it and {under!r} is not a same-course lane dir")
+    for slug in cla_slugs:
+        if slug in parsed:
+            fail(f"[{station}] cross-course: {slug!r} is crossLaneAligned AND has a body in this lane (double-claim)")
 
-    total_rows = sum(len(sp["ugmIds"]) for sp in spec_points)
+    total_rows = sum(len(sp["ugmIds"]) for sp in spec_points) + cross_rows
     if total_rows != exp["rows"]:
-        fail(f"[{station}] row census {total_rows} != {exp['rows']}")
+        fail(f"[{station}] row census {total_rows} (fresh {total_rows - cross_rows} + cross {cross_rows}) != {exp['rows']}")
 
     cov = enr.get("coverage", {})
     lane_coverage = {
@@ -532,6 +664,9 @@ def import_lane(repo, lane_block):
         "alignedShare": cov.get("alignedShare"),
         "candidateRows": total_rows,
     }
+    if enr.get("crossLaneAligned") or enr.get("crossLaneNonOverlap"):
+        lane_coverage["crossLaneAligned"] = len(enr.get("crossLaneAligned") or [])
+        lane_coverage["crossLaneNonOverlap"] = len(enr.get("crossLaneNonOverlap") or [])
 
     if lane_block.get("stations"):
         stations_ref = [{"slug": s["slug"], "title": s["title"],
@@ -548,6 +683,7 @@ def import_lane(repo, lane_block):
         "coverage": lane_coverage,
         "enr": enr,
         "lb": lane_block,
+        "nonoverlap_byref": nonoverlap_byref,
     }
 
 
@@ -583,8 +719,12 @@ def apply_figures(resources, repo, copied_paths):
         every map section must match a `##` heading in the body; every
         placeholder asset must be copied; every placeholder must find an
         unmatched map row; per-resource injected counts must equal the map
-        rows; the fleet census must equal the map's own counts; and ZERO
-        un-localized image placeholders may remain across the served bundle.
+        rows; the RUN-SCOPED fleet census must equal the map's own rows for
+        the run's resources (T-UGM-HUB-CONSUME-9: the map covers the whole
+        corpus while a course run imports one plane — the pure-1 run's
+        census is unchanged since every mapped resource is a pure-1 body);
+        and ZERO un-localized image placeholders may remain across the
+        served bundle.
     """
     fmap_path = os.path.join(repo, FIGURES_MAP)
     if not os.path.exists(fmap_path):
@@ -595,6 +735,12 @@ def apply_figures(resources, repo, copied_paths):
     injected = 0
     res_with = 0
     inline_total = 0
+    # T-UGM-HUB-CONSUME-9: run-scoped census of record — the map covers the
+    # whole corpus; this run is audited against ITS OWN map rows only.
+    run_rows = [row for r in resources for row in (figures.get(r["ugmId"]) or [])]
+    expected_refs = len(run_rows)
+    expected_res = sum(1 for r in resources if figures.get(r["ugmId"]))
+    expected_assets = len({row["path"] for row in run_rows})
     for r in resources:
         rows = figures.get(r["ugmId"])
         if not rows:
@@ -693,30 +839,39 @@ def apply_figures(resources, repo, copied_paths):
                     print(f"    [figures] RESIDUE {r['ugmId']}: {url}")
     if residue:
         fail(f"[figures] {residue} image placeholder(s) left un-localized in served bodies")
-    if injected != fmap.get("counts", {}).get("figureRefs"):
-        fail(f"[figures] injected {injected} != map figureRefs {fmap.get('counts', {}).get('figureRefs')}")
-    if res_with != fmap.get("counts", {}).get("resources"):
-        fail(f"[figures] resources-with-figures {res_with} != map {fmap.get('counts', {}).get('resources')}")
+    if injected != expected_refs:
+        fail(f"[figures] injected {injected} != this run's map rows {expected_refs}")
+    if res_with != expected_res:
+        fail(f"[figures] resources-with-figures {res_with} != this run's map {expected_res}")
     print(f"    figures: {injected} refs localized across {res_with} resources "
-          f"({fmap.get('counts', {}).get('uniqueAssets')} unique assets; "
+          f"({expected_assets} unique assets in this run; "
           f"{inline_total} inline from placeholders, {injected - inline_total} section-anchored)")
     return {"figureRefs": injected, "resources": res_with,
-            "uniqueAssets": fmap.get("counts", {}).get("uniqueAssets"),
+            "uniqueAssets": expected_assets,
             "inlineRewritten": inline_total}
 
 
-def copy_assets(repo, public_dir):
+def copy_assets(repo, public_dir, resource_ids=None):
     """Copy the referenced UGM-Assets binaries into apps/hub/public/ugm-assets/.
 
     Fail-closed: every map path must exist in the snapshot AND match its
     UGM-Assets/MANIFEST.json sha256 before the copy is accepted.
+    T-UGM-HUB-CONSUME-9: the copy set is RUN-SCOPED — the map rows of THIS
+    run's resources only (the pure-1 run's set is unchanged since every
+    mapped resource is a pure-1 body; a plane whose bodies predate the map
+    copies nothing rather than re-shipping the whole corpus binaries).
     """
     am_path = os.path.join(repo, ASSETS_DIR, "MANIFEST.json")
     if not os.path.exists(am_path):
         fail(f"assets manifest missing: {ASSETS_DIR}/MANIFEST.json")
     am = json.load(open(am_path, encoding="utf-8"))
     fmap = json.load(open(os.path.join(repo, FIGURES_MAP), encoding="utf-8"))
-    referenced = {row["path"] for rows in fmap["figures"].values() for row in rows}
+    figures = fmap.get("figures") or {}
+    if resource_ids is None:
+        referenced = {row["path"] for rows in figures.values() for row in rows}
+    else:
+        referenced = {row["path"] for rid in resource_ids
+                      for row in (figures.get(rid) or [])}
     copied = {}
     import hashlib as _h
     for p in referenced:
@@ -752,7 +907,7 @@ def main():
         fail(f"no UGM lane mapping for course {lane} yet")
 
     # ── per-lane audits + joins ─────────────────────────────────────────
-    parts = [import_lane(repo, lb) for lb in lane_blocks]
+    parts = [import_lane(repo, lb, lane) for lb in lane_blocks]
 
     # ── merge into the course bundle (schema 1.1) ───────────────────────
     resources = [r for p in parts for r in p["resources"]]
@@ -775,6 +930,11 @@ def main():
     # exist among the joined resources; textOfRecordUnder must name the
     # supplier lane_dir; row codes must exist in the lane's own perSpecPoint;
     # no (resource, code) double-claim; <=1 primaryPick per resource after join.
+    # T-UGM-HUB-CONSUME-9 adds the CROSS-COURSE law: a row whose
+    # textOfRecordUnder names ANOTHER course's lane dir joins BY REFERENCE —
+    # counted in crossLaneJoined, detailed in coverage.crossCourse with a
+    # servedUnder course pointer; it mutates neither resources nor the index
+    # (the body stays first-of-record under its own course's bundle).
     by_id = {}
     part_of = {}
     for p in parts:
@@ -782,6 +942,7 @@ def main():
             by_id[r["ugmId"]] = r
             part_of[r["ugmId"]] = p
     cross = {"aligned": 0, "nonOverlap": 0}
+    crosscourse = []  # T-UGM-HUB-CONSUME-9: by-reference rows served under another course
     for p in parts:
         enr = p.get("enr") or {}
         cla = enr.get("crossLaneAligned") or []
@@ -794,6 +955,14 @@ def main():
             slug = row.get("ugmSlug")
             target = by_id.get(slug)
             if target is None:
+                supplier_course = COURSE_OF_DIR.get(
+                    os.path.basename(row.get("textOfRecordUnder") or ""))
+                if supplier_course and supplier_course != lane:
+                    if any(c not in own_codes for c in row.get("codes") or []):
+                        fail(f"[cross-course] {slug}: code outside this lane's perSpecPoint")
+                    crosscourse.append(dict(row, servedUnder=supplier_course))
+                    cross["aligned"] += 1
+                    continue
                 fail(f"[cross-lane] {slug}: not among the joined resources")
             supplier = os.path.basename((part_of[slug].get("lb") or {}).get("res_dir", ""))
             if supplier != os.path.basename(row.get("textOfRecordUnder") or ""):
@@ -821,14 +990,22 @@ def main():
         for row in cno:
             slug = row.get("ugmSlug")
             if by_id.get(slug) is None:
+                supplier_course = COURSE_OF_DIR.get(
+                    os.path.basename(row.get("textOfRecordUnder") or ""))
+                if supplier_course and supplier_course != lane:
+                    crosscourse.append(dict(row, servedUnder=supplier_course,
+                                            nonOverlapRef=True))
+                    cross["nonOverlap"] += 1
+                    continue
                 fail(f"[cross-lane] {slug}: not among the joined resources")
             supplier = os.path.basename((part_of[slug].get("lb") or {}).get("res_dir", ""))
             if supplier != os.path.basename(row.get("textOfRecordUnder") or ""):
                 fail(f"[cross-lane] {slug}: textOfRecordUnder mismatch")
             cross["nonOverlap"] += 1
         for r in p["resources"]:
-            if sum(1 for s in r["specPoints"] if s.get("primaryPick")) > 1:
-                fail(f"[cross-lane] {r['ugmId']}: multiple primaryPick rows after join")
+            pk = [s["code"] for s in r["specPoints"] if s.get("primaryPick")]
+            if len(pk) != len(set(pk)):
+                fail(f"[cross-lane] {r['ugmId']}: primaryPick flagged twice under the same code after join")
         p["coverage"]["crossLaneAligned"] = len(cla)
         p["coverage"]["crossLaneNonOverlap"] = len(cno)
 
@@ -837,16 +1014,20 @@ def main():
         sp["resourceCount"] = len(sp["ugmIds"])
 
     # the fleet census reflects the MERGED SERVE (after the cross-lane join);
-    # per-lane coverage blocks keep the enrichments-of-record censuses
-    total_rows = sum(len(sp["ugmIds"]) for sp in spec_points)
+    # per-lane coverage blocks keep the enrichments-of-record censuses.
+    # candidateRows counts the ROWS of record: index rows + the cross-course
+    # by-reference rows (lane-9's 38 + 9 = 47, the lane-8 convention where
+    # the joined rows count too); for a pure-1 run crosscourse is empty and
+    # this equals the index sum (459 of record).
+    total_rows = sum(len(sp["ugmIds"]) for sp in spec_points) + len(crosscourse)
     aligned_total = sum(1 for r in resources if r["specPoints"])
     considered_total = len(resources)  # the served corpus (strand-lane sweeps count once)
     nonov_total = sum(1 for r in resources if r["nonOverlap"])
 
-    # ── T-UGM-HUB-CONSUME-8a: the image plane (fail-closed) ────────────
+    # ── T-UGM-HUB-CONSUME-8a: the image plane (fail-closed, run-scoped) ──
     hub = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     public_ugm = os.path.join(hub, "public", "ugm-assets")
-    copied = copy_assets(repo, public_ugm)
+    copied = copy_assets(repo, public_ugm, resource_ids={r["ugmId"] for r in resources})
     fig_census = apply_figures(resources, repo, copied)
 
     bundle = {
@@ -896,6 +1077,44 @@ def main():
         "specPoints": spec_points,
         "resources": resources,
     }
+
+    # T-UGM-HUB-CONSUME-9 honesty planes (additive; only when present):
+    #   nonOverlapByReference — the candidate-model rows that have NO text of
+    #   record (bodyImported=false); disclosed with their reasons, never
+    #   served as bodies;
+    #   crossCourse — the by-reference cross-course joins (servedUnder
+    #   pointers into the other course's committed bundle).
+    byref = [row for p in parts for row in p.get("nonoverlap_byref", [])]
+    if byref:
+        bundle["coverage"]["nonOverlapByReference"] = {
+            "count": len(byref),
+            "rows": byref,
+        }
+    if crosscourse:
+        by_course = {}
+        for row in crosscourse:
+            by_course[row["servedUnder"]] = by_course.get(row["servedUnder"], 0) + 1
+        clc = (parts[0]["enr"].get("coverage") or {}).get("crossLaneCoverage") or {}
+        if clc and clc.get("crossLaneAligned") not in (None, len(crosscourse)):
+            fail(f"[cross-course] enrichment crossLaneCoverage {clc.get('crossLaneAligned')} != reconciled rows {len(crosscourse)}")
+        bundle["coverage"]["crossCourse"] = {
+            "aligned": len([r for r in crosscourse if not r.get("nonOverlapRef")]),
+            "nonOverlapRef": len([r for r in crosscourse if r.get("nonOverlapRef")]),
+            "flips": clc.get("flips"),
+            "oneToMany": clc.get("oneToMany"),
+            "courses": by_course,
+            "note": (clc.get("note") or
+                     "cross-course fact joins served by reference — the text of "
+                     "record stays first-of-record under the serving course's bundle"),
+            "rows": [
+                {k: row.get(k) for k in ("ugmSlug", "codes", "title", "url", "station",
+                                         "textOfRecordUnder", "servedUnder", "kind",
+                                         "confidence", "note", "primaryPick",
+                                         "priorAlignmentOfRecord", "nonOverlapRef")
+                 if row.get(k) is not None}
+                for row in crosscourse
+            ],
+        }
 
     # ── emit ─────────────────────────────────────────────────────────────
     hub = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
