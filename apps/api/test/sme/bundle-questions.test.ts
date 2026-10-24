@@ -53,7 +53,14 @@ const foundation = {
 // bundle at BUILD — the run-003 of-record blocker.
 const chemistry = {
   slug: "igcse-chemistry-19",
-  sets: JSON.parse(readFileSync(join(HUB, "igcse-chemistry-19/questions.json"), "utf8")) as BundleQuestionSet[],
+  // Bank of record spans both planes post-IA-split: questions.json (28 SME
+  // topic sets) + official-papers.json (54 ADR-037 official sets, optional
+  // file) — the same concat order as the pre-split file, so every frozen
+  // census pin below is byte-stable.
+  sets: [
+    ...JSON.parse(readFileSync(join(HUB, "igcse-chemistry-19/questions.json"), "utf8")),
+    ...JSON.parse(readFileSync(join(HUB, "igcse-chemistry-19/official-papers.json"), "utf8")),
+  ] as BundleQuestionSet[],
   curriculum: JSON.parse(readFileSync(join(HUB, "igcse-chemistry-19/curriculum.json"), "utf8")) as BundleCurriculum,
 };
 

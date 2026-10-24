@@ -2013,6 +2013,29 @@ function MarkSchemeDialog({
                       <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
                     </div>
                   )}
+                  {p.markPoints && p.markPoints.length > 0 && (
+                    <div className="border-t pt-3">
+                      <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                        Official mark scheme points
+                      </p>
+                      <ul className="space-y-1.5">
+                        {p.markPoints.map((mp) => (
+                          <li key={mp.id} className="flex items-start gap-2 text-[13px] leading-relaxed">
+                            <span
+                              className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 text-[10.5px] font-semibold tabular-nums text-muted-foreground"
+                              title={`${mp.marks} mark${mp.marks === 1 ? "" : "s"}`}
+                            >
+                              {mp.id}
+                              {mp.marks > 1 ? ` ×${mp.marks}` : ""}
+                            </span>
+                            <span className="min-w-0 flex-1">
+                              <Markdown>{transformMarkTags(mp.textMd)}</Markdown>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </section>
               );
             })}

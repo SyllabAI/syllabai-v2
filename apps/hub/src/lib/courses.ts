@@ -108,6 +108,10 @@ export interface CourseBundle {
   conceptGraph: ConceptGraphT;
   notes: RevisionNoteT[];
   questionTopics: ExamQuestionTopicT[];
+  /** ADR-037 official past papers, OUT of the exam-questions plane by IA
+   *  decision: they serve the Past Papers interactive view only (the
+   *  "Interactive" button per paper row), never the topic tree/bank. */
+  officialPaperTopics: ExamQuestionTopicT[];
   flashcards: FlashcardT[];
   simLearner: SimLearnerStateT;
 }
@@ -275,7 +279,7 @@ export async function getCourseBundle(slug: string): Promise<CourseBundle | null
 
   const read = (f: string) => loadContentJson(`${slug}/${f}`);
 
-  const [manifest, curriculum, conceptGraph, notes, questions, flashcards, learner] =
+  const [manifest, curriculum, conceptGraph, notes, questions, flashcards, learner, officialPapers] =
     await Promise.all([
       read("manifest.json"),
       read("curriculum.json"),
@@ -284,6 +288,8 @@ export async function getCourseBundle(slug: string): Promise<CourseBundle | null
       read("questions.json"),
       read("flashcards.json"),
       read("learner-sim.json"),
+      // optional plane: courses predating the split have no official-papers.json
+      read("official-papers.json"),
     ]);
 
   if (!manifest || !curriculum || !conceptGraph || !notes || !questions || !flashcards || !learner) {
@@ -301,6 +307,9 @@ export async function getCourseBundle(slug: string): Promise<CourseBundle | null
     conceptGraph: ConceptGraph.parse(conceptGraph) as ConceptGraphT,
     notes: z.array(RevisionNote).parse(notes) as RevisionNoteT[],
     questionTopics: z.array(ExamQuestionTopic).parse(questions) as ExamQuestionTopicT[],
+    officialPaperTopics: officialPapers
+      ? (z.array(ExamQuestionTopic).parse(officialPapers) as ExamQuestionTopicT[])
+      : [],
     flashcards: z.array(Flashcard).parse(flashcards) as FlashcardT[],
     simLearner: SimLearnerState.parse(learner) as SimLearnerStateT,
   };
@@ -338,6 +347,9 @@ export interface HubCourse {
   cardsBySubtopic: Record<string, string[]>;
   notes: RevisionNoteT[];
   questionTopics: ExamQuestionTopicT[];
+  /** official past papers — Past Papers interactive view only (never the
+   *  exam-questions tree/index/counts; IA decision, user directive) */
+  officialPaperTopics: ExamQuestionTopicT[];
   flashcards: FlashcardT[];
   stats: { notes: number; questions: number; questionSets: number; flashcards: number; specPoints: number };
 }
@@ -366,9 +378,10 @@ export const loadHubCourse = cache(
   const bundle = await getCourseBundle(slug);
   const pilot = await pilotCourseSlug();
   let notes, questionTopics, flashcards, curriculum, viaProvider = false;
+  let officialPaperTopics: ExamQuestionTopicT[] = [];
 
   if (bundle) {
-    ({ notes, questionTopics, flashcards, curriculum } = bundle);
+    ({ notes, questionTopics, flashcards, curriculum, officialPaperTopics } = bundle);
   } else if (slug === pilot) {
     // pilot without a committed bundle → provider seam (neon / core-api ladder);
     // the demo provider corpus rides the official 4CH1 tree. Dynamic import:
@@ -399,6 +412,7 @@ export const loadHubCourse = cache(
       cardsBySubtopic: {},
       notes: [],
       questionTopics: [],
+      officialPaperTopics: [],
       flashcards: [],
       stats: { notes: 0, questions: 0, questionSets: 0, flashcards: 0, specPoints: 0 },
     };
@@ -465,6 +479,7 @@ export const loadHubCourse = cache(
     cardsBySubtopic,
     notes,
     questionTopics,
+    officialPaperTopics,
     flashcards,
     stats: {
       notes: notes.length,
