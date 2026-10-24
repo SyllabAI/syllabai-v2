@@ -20534,3 +20534,20 @@ Work Log:
 
 Stage Summary:
 - Run-005 LANDED: 56 parts / 32 sets patched (17 named + 54 line rules), the run-004 disclosed remainder closed end-to-end except the disclosed run-006 residuals (fleet census 627/63 stands as map; 5 named unread-evidence rows disclosed). Receipt: .syllabai/lane-artifacts/UIUX-TIER-B/receipt-run005-retranscription-r0.json.
+
+---
+Task ID: T-CONTENT-MB4-PBLOCK-001 run-003 (operator "Proceed", trace 1a16d32c68567071)
+Agent: main (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: Execute the run-003 candidate card end-to-end — adjudicate and repair the ONE 4MB1 marks-header row.
+
+Work Log:
+- Claimed (commit 96ac5cd2, claim-in-first-commit). Environment note: sandbox workspace reset #3 pre-claim; card + repo worklog of record survived via origin 51c42953 (ff-restored); all run instruments now mirrored into lane-artifacts immediately per the incremental-commit law.
+- MS of record fetched (2021-01/4MB1-02 ms.pdf sha b95e01099522..., 200, %PDF-1.6; parsed/ms.md corroborates printed total 9 but carries NO Q8 part detail — the coarse-parse class that forced run-002's PDF path).
+- EYES-ON (PyMuPDF geometry + 3.2x crops, visually read): Q8(d) = ONE grid row, mark cell "3" at (472.9, 41.6) p13, the part's ONLY mark cell (A1 row's cell EMPTY); "M2 Show either..."/"M1 for showing..."/"A1 dep on M2" strings at x0=515.4 INSIDE the merged Notes cell, their digits at x>=648 inside note text — inline subdivision guidance, NOT code-column rows. Crops committed to lane-artifacts run-003/.
+- Extractor-of-record rerun reproduces the census defect: Q8 = 13 pseudo-rows / code-derived marks 16 vs grid truth 4 rows [2,2,2,3]=9; plan marks_seq == code-derivation EXACT. Root cause two-layer: (1) Notes-cell inline codes promoted to rows on this split-header generation; (2) fold-emission printed the leading pseudo-row's value (2) instead of the group sum (3). Card hypothesis (b) REFUTED — the M1 line must NOT be promoted; it is Notes-of-record.
+- FIX (card option 3 fired): minimal-diff raw-substring surgery "**P7** (2 marks) " -> "**P7** (3 marks) " = 1 BYTE in the whole 2.83MB bundle (offset 948971); zero deletion; P7 id unchanged (no Q9 cascade); M1/M2 subdivision stays verbatim as Notes.
+- GATES ALL GREEN: verify_corpus_23a PASS / verify_flashcard_sync_courses exit 0 (registry match) / validate_cie_bundles PASS (2,259 holdings) / structure law 65/1270/2412 UNCHANGED / touched part P-sum 3 == hub 3, 0 raw-$, 0 U+FFFD/PUA / single-line compact JSON kept.
+- Receipt .syllabai/receipts/MB4-MS-FRESHPARSE/run-003-pblock-header-r0.json; card flipped DONE with execution_record; residual class (Notes-cell inline-code row model — fleet census) FILED for operator, not self-granted.
+
+Stage Summary:
+- T-CONTENT-MB4-PBLOCK-001 DONE: the filed spot-check finding is repaired of record with eyes-on evidence; bundle sha 404de696... -> 3c315125...; the 2,412-part course is now fully mark-consistent (0 P-sum violations). Residual row-model class disclosed for operator decision.
