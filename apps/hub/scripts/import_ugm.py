@@ -6,7 +6,7 @@ Mirrors the import_content.py discipline: reads a LOCAL checkout/snapshot of
 SyllabAI/syllabai-resources at a pinned ref (never GitHub at runtime), and
 emits a versioned, self-describing JSON bundle committed under content/.
 
-Sources of record (course cie-a-level-maths-20-pure-1, seven UGM lanes):
+Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
   - lane 1 (quadratics): UGM-Enrichment/...-quadratics.json (#55) +
     UGM-Resources/pure-1-quadratics/ (#58), landed of record main@91eed732
   - lane 2 (functions):  UGM-Enrichment/...-functions.json +
@@ -60,6 +60,24 @@ Sources of record (course cie-a-level-maths-20-pure-1, seven UGM lanes):
     non-overlaps of record FLIP to aligned, reasons retained; 86 further
     candidates routed to recorded P3 homes), enriched by T-UGM-MODE1-7
     amendment stationBreakdown alignment (IC nonOverlap 15 of record)
+  - lane 8 (integration — the SECOND STRAND lane, the first lane whose pick
+    set is entirely cross-lane joined text): UGM-Enrichment/...-integration.json +
+    UGM-Resources/pure-1-integration/
+    (PR #96, T-UGM-MODE1-8 / T-UGM-IMPORT-8, + the T-UGM-MODE1-8 amendment
+    PR #99), landed of record main@8c6339bd115034d2762e6c142256151f9ded3412 —
+    the strand-lane shape at its honest end: UGM has no integration station
+    and both dedicated calculus stations are already fully of record via
+    lane 7, so the new-text universe is the 10 unrecorded calculus-family
+    resources whose tested skill is 1.8.x (calculus-meets-functions 7 +
+    chain-rule 2 + product-rule 1 — all 10 ship mapped, 0 non-overlaps), and
+    every further 1.8 alignment is a cross-lane fact join against
+    already-of-record lane-7 bodies (18 joins: 13 of lane 7's 17
+    integration-dressed Calculus-of-Powers non-overlaps FLIP to 1.8.x
+    alignments with reasons retained; 5 gain one-to-many rows beside standing
+    1.7 alignments). The four 1.8 picks (r8716/r7734/r6067/r9357) ride the
+    join entirely — the #99 amendment flags them on the crossLaneAligned
+    rows, the per-resource pick-flag parity the hub regression law's
+    primaryPick-resolution invariant requires
   all under ADR-UGM-0001 (as amended 2026-10-23) + the operator attestation
   of 2026-10-23 ("downloaded text can ship into SyllabAI. We have permission").
 
@@ -107,7 +125,7 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-DEFAULT_REF = "main@39e1568abb68c4647cf9ec9cc90a20ba236c0207"
+DEFAULT_REF = "main@8c6339bd115034d2762e6c142256151f9ded3412"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # Per-course UGM lane mapping. Single-station blocks (`station` + `title`)
@@ -212,6 +230,19 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-1-differentiation",
             "ledger": "LEDGER.md — T-UGM-MODE1-7 and T-UGM-IMPORT-7 (PR #91) + the T-UGM-MODE1-7 amendment (PR #92)",
             "expected": {"resources": 106, "rows": 107, "aligned": 40, "nonOverlap": 32},
+        },
+        {
+            "laneSlug": "integration",
+            "laneTitle": "Integration",
+            "stations": [
+                {"slug": "calculus-meets-functions", "title": "Calculus meets Functions"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-1-integration.json",
+            "res_dir": "UGM-Resources/pure-1-integration",
+            "ledger": "LEDGER.md — T-UGM-MODE1-8 and T-UGM-IMPORT-8 (PR #96) + the T-UGM-MODE1-8 amendment (PR #99)",
+            "expected": {"resources": 10, "rows": 28, "aligned": 28, "nonOverlap": 0},
         },
     ],
 }
