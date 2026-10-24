@@ -20761,3 +20761,18 @@ Work Log:
 Stage Summary:
 - Run-006 LANDED of record: the disclosed run-006 remainder executed — 6 named parts (7 with q24(b)) closed eyes-on, fleet 627-row map per-part adjudicated with verdicts + severity flags filed. DISCLOSED run-007 queue: 463 DEBRIS + 150 NEEDS-EYES parts (learner-blocking 11 missing-table + 39 missing-grid first), the 2023-11-02 q6 histogram artwork staging (lane-1 class, not self-granted), and the 2026-06-01R q24(b) MS-internal fraction inconsistency flagged for Pearson-errata awareness. DB plane untouched.
 ops(R0-AUTO): receipt — PR #357 merged 4a72e10, gates green (bookkeeping)
+
+---
+Task ID: 30 (operator pointer trace 1a16f2e3ea1c0f81: "there is something called subject intelligence")
+Agent: main (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: State survey + Subject Intelligence identification (operator prior order: "check the current state of the project, I have added a lot of new things").
+
+Work Log:
+- ff-synced sandbox to origin/main 5c9326af (zero local residue).
+- Identified "Subject Intelligence" of record: (a) syllabai-v2 docs/ADR-038 §1 names SI docs as the tutor plane's 4th per-course vectorization quadrant (revision notes explicitly deferred on books/SI overlap); (b) docs/DATA-PLANE-PLACEMENT.md §2 assigns SI/syllabus docs to the corpus warehouse fleet under "same registry, same law"; (c) ZERO code references in v2 (rg swept apps/packages/scripts).
+- Origin found: SyllabAI/syllabai docs/research/SUBJECT_INTELLIGENCE_BUILD_V1.md — SIB v1 PROPOSED, landed 2026-10-01 (2f8646ec, PR #13) with SIB_ARTIFACT_SCHEMA_V1.md (15-field front matter, filename contract <SUBJECT>_<SPEC>_<ARTIFACT_ID>_<SLUG>.md, lifecycle GENERATED->QA_PASSED->STAGED->PUBLISHED), SIB_NOTEBOOKLM_PROMPTS_V1.md, SIB_VALIDATOR_IMPLEMENTATION_V1.md + tools/sib/ IMPLEMENTED (taxonomy 95-artifact registry, frontmatter parser, artifact_validator SIB-*-error classes, anchors, lifecycle, chunking, ingest CLI, tests).
+- Census probes (READ-ONLY): no SIB artifacts in master repo (no research/sib/), no sib paths in syllabai-resources (39,335-tree sweep), none in pastpapers/experimental/parser; first planned build CHEMISTRY_4CH1 not started. Main DB documents census 1,354 = baseline EXACT (QP 301 / MS 289 / EQ 489 / SYL 162 / EN 112 / TB 1); no new kind (ck_documents_kind 7-value constraint unchanged); zero docs ingested in the survey window.
+- Re-absorption: origin advanced 5c9326af -> b7232535 mid-run (4MB1-QUALITY UIUX-TIER-B run-006 + PR #357 receipt); first rebase attempt mis-resolved the tail conflict (rebase --theirs is commit-under-replay, not upstream — the intermediate commit dropped the run-006 worklog entry and duplicated task-30); repaired by reset --soft + origin worklog verbatim + single task-30 re-append before any push. ZERO records lost.
+
+Stage Summary:
+- SUBJECT INTELLIGENCE IS FULLY DEFINED AND TOOLING-LANDED (protocol PROPOSED, validator IMPLEMENTED, 12 families / 95 artifact types, NotebookLM as authoring instrument, SyllabAI owns ingestion/provenance/retrieval) but has ZERO built artifacts — it is the one tutor-quadrant (of papers/schemes/books/SI) with no corpus yet; serving seam awaits warehouse fleet (ADR-038) + first subject library (CHEMISTRY_4CH1 planned). This survey wrote ZERO non-worklog bytes; bookkeeping-only .syllabai/**, fetch-first, no force.
