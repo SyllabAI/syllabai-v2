@@ -87,6 +87,39 @@ task:
     .syllabai/receipts/T-SENECA-001/run-004-placement-rework.json. Zero DB
     writes, zero platform mutations; DB steps (T1) await the operator's
     sci-chem URL + knock.
+    LANDED (run-005, 2026-10-24): placement amendment of record — operator
+    "Use the same database for chemistry, we will move later on when we
+    create new databases" (trace 1a16f3edcb6df50d): W1 (maths-4ma1
+    warehouse, project flat-leaf-09845356) = INTERIM import home for the
+    4CH1 seneca pack; dedicated sci-chem stays the destination design; W1
+    mutation hold lifted for the T1 legs; T1 execution script staged.
+    Receipt: run-005-placement-amendment-w1-interim-r0.json. Blocked on
+    operator re-knock: W1 URL + MAIN_DATABASE_URL; then Vercel env flip.
+    LANDED (run-006, 2026-10-24): operator re-knock (trace
+    1a16f55d21386791 — two pooler URLs + Vercel PAT, volatile 0600, never
+    committed/echoed). Endpoints pinned by READ-ONLY content probe: W1 =
+    ep-calm-queen-az36lppq (wh-v1 maths-4ma1, chunks 8202 EXACT, no
+    seneca table); MAIN = ep-ancient-cake-a52e4kfd (flyway 63/63,
+    course_registry 94). T1 GREEN via scripts/t1_chem_w1.py: preflight
+    PASS -> wh-v2 fragment VERBATIM + template_version bump same-tx ->
+    importer (MAIN anchor SELECT-only re-check passed) 5,098 rows ->
+    parity EXACT (286/1430/3382, all igcse-chemistry-19) -> postcheck
+    maths plane UNTOUCHED (8202/wh-v2). ZERO main writes. Vercel seam
+    flip: SYLLABAI_WAREHOUSE_URL_SCI_CHEM = W1 pooler URL on
+    prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ (production, encrypted; 201-create
+    script bug + GET value-masking disclosed in receipt). GITSOURCE
+    INCIDENT disclosed: my first redeploy used the FORBIDDEN gitSource
+    lever (empty-build trap law) -> function-less production (404s,
+    ~8 min window 19:26-19:34Z) -> RESTORED by re-firing the T-MIG-093
+    CLI-upload recipe of record: clone @ 572f2bb clean, bun 1.3.14
+    frozen, 6/6 source pins EXACT, bundle 372 modules / 3.49 MB,
+    localgate 8/8 ALL PASS (probe learner census class), fire ->
+    dpl_C2hsDCzEy15JhfE4RNo9SWknhezJ READY + dual-aliased; post-probes
+    health 200 UP / courses 401 / packs route 401 (live behind the auth
+    wall). Verification ceiling: authed happy-path needs an operator
+    token; operator-side check = assignment creator Seneca picker on
+    syllabai-hub-v2. Receipt of record:
+    .syllabai/receipts/T-SENECA-001/run-006-w1-t1-flip-r0.json.
 base:
   repo: "syllabai-v2 @ 6bedab6 (origin/main at claim)"
 basis: >
