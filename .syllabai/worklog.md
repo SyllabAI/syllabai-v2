@@ -20618,3 +20618,19 @@ Work Log:
 Stage Summary:
 - THE REBUILD IS 89% DONE BY AN UNCLAIMED WRITER whose signature IS an instrument of record; the oracle is intact; this lane stood off to preserve single-writer and escalated per T-OPS-TRIPWIRE-001. Register: operator writer-identification ruling -> (a) writer files receipts, or (b) stand-down + this lane claims the remainder. No other plane drift; PAT rotation still standing.
 ops(R0-AUTO): receipt — PR #354 merged f187c10, gates green (bookkeeping)
+
+---
+Task ID: NEON-DB-LOSS run-012 (oracle reproduction check on the in-flight rebuild)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, trace 1a16ec6092bde2b1)
+Task: Operator knows the unclaimed writer; asked whether the re-run reproduces the survivors exactly. Read-only verification of record.
+
+Work Log:
+- Three read-only probe batches (probe scripts mirrored to .syllabai/lane-artifacts/NEON-DB-LOSS/run-012/): shared-key overlap, key resolution, heartbeat/duplication/orphan/sum-law/provenance.
+- FINDING: the writer executes a PARALLEL-HALF rebuild — 15,190 fresh questions (all provenance PAST_PAPER, signature sme-corpus-import-v1/ADR-026), 15,190 schemes, 26,504 points (still writing, newest 16:39:13Z), zero shared keys with the survivors (0 scheme keys, 0 external_refs, 1 accidental part). The strict run-006 oracle law (replay reproduces survivors on shared keys) is structurally disengaged in this run.
+- HEALTH of writer rows: G1 sum-law 21,736/21,736 EXACT; 0 true orphans (4,768 part-less MCQ-direct by design, question_part_id NULL); 0 duplication of surviving content.
+- ORACLE integrity re-proved: 14,141 EXACT (twice this run). Aggregate estate 40,645 vs 40,250 peak basis (+395 disclosed, reconciliation belongs to the writer's census).
+- ENVIRONMENT: sandbox recycle #4 struck MID-RUN (tree rolled back to cc5bfc3a; the first filing of this entry + receipt consumed) — recovered via origin ff (4817848e); re-filed per the incremental-commit law, push same-turn.
+- Receipt run-012-oracle-reproduction-check-r0.json filed; ZERO writes by this lane; escalation run-011 stands (writer owes its own receipts; identity now operator-confirmed).
+
+Stage Summary:
+- Operator's question answered of record: exact reproduction of the survivors is NOT what the in-flight run delivers (and cannot, by construction) — but the survivors are untouched and every checkable law on the new rows holds. OFFERED: (a) post-completion validation battery + basis reconciliation when the writer finishes; (b) the strict survivor-replay dry-run (rollback tx / COW) to honor the run-006 oracle law as evidence. LANE: STANDBY on the mark plane.
