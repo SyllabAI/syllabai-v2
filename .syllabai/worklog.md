@@ -20635,6 +20635,148 @@ Work Log:
 Stage Summary:
 - Operator's question answered of record: exact reproduction of the survivors is NOT what the in-flight run delivers (and cannot, by construction) — but the survivors are untouched and every checkable law on the new rows holds. OFFERED: (a) post-completion validation battery + basis reconciliation when the writer finishes; (b) the strict survivor-replay dry-run (rollback tx / COW) to honor the run-006 oracle law as evidence. LANE: STANDBY on the mark plane.
 
+
+---
+Task ID: 25-26-RESTORED (LEDGER REPAIR, session web-d0c9a0d3)
+Agent: main (Z.ai)
+Task: Restore the run-007 W1 knock-verification log entry dropped from the shared log; file the missing Task-27/28/29 records in the same repair. Operator "Proceed" trace 1a16f061f806ae29.
+
+Work Log:
+- INTEGRITY FINDING of record: pickaxe (git log -S 'Task ID: 25-26') proves the entry was ADDED by 4008e6ce (ancestor of main) and REMOVED by ca7ef93d (UIUX-TIER-B run-005 commit; sole parent 2aca7c98 already CONTAINED the entry; its worklog diff is +10/-31 lines, i.e. an active non-union tail rewrite, not a stale-base race). The of-record receipt .syllabai/receipts/T-OPS-PLANE-001/run-007-w1-knock-verification-r0.json was NEVER lost (verified present on main) — only the shared-log entry vanished. Intent of the removing commit NOT adjudicated from this lane; the byte-level facts stand as stated. Repair follows the LEDGER-REPAIR precedent: append-only restoration, byte-faithful body from 4008e6ce:.syllabai/worklog.md, no re-insertion at the original position.
+- ORIGINAL ENTRY RESTORED (byte-faithful from 4008e6ce):
+
+---
+Task ID: 25-26 (session web-d0c9a0d3)
+Agent: main (Z.ai)
+Task: W1 knock verification (operator URL knock trace 1a16cccfe17ba159) + bookkeeping re-establishment after sandbox recycle (PAT re-knock trace 1a16cd9e87535909)
+
+Work Log:
+- Sandbox recycle wiped the clone + /tmp tokens mid-lane; re-cloned syllabai-v2 main @ 4a4baec2 from the operator's fresh PAT (volatile-only 0600; rotation list unchanged)
+- W1 pooler URL knock honored READ-ONLY: psycopg2 probes (scripts/wh_probe*.py, sandbox-side), zero writes, zero DDL, zero content text egress, zero main contact
+- Verified of record: identity (project flat-leaf-09845356, PG 18.6, endpoint == W1 of record), wh-v1 template law (pgvector 0.8.6 + HNSW), warehouse_meta (course_group maths-4ma1, subject_id 763dfe2d… == run-006 registry row, source_fingerprint plane:88706faa… == run-003/run-006 id-hash, migrated_at 2026-10-23T18:44:28.832Z), census parity (8,202 == run-001 census exact; 330 docs; QP/MS/EQ 2,734 each; 2,400,494 tokens), embed coverage 6,872/8,202 @ 768 dims with 1,330 NULL (RPD-wall honest-skip class; Phase-D tranche 1 started on main f763cefe — quota contention live), sci-chem discriminator (zero seneca-like tables -> W1 is NOT the 4CH1 import home)
+- Filed receipt .syllabai/receipts/T-OPS-PLANE-001/run-007-w1-knock-verification-r0.json; discrepancy of record: pending 4CH1 seneca pack T1 (T-SENECA-001 run-004 rework, PR #316 MERGED 323d246 gates green) needs the SCI-CHEM warehouse URL (wh-v2 fragment) per run-003 ruling — awaiting sci-chem URL or explicit amendment word
+- Carried residuals unchanged from run-006: Vercel Hobby cap (window ~20:37Z 2026-10-24; deploy stage recycled with old sandbox — re-fire needs T-MIG-093 bundle rebuild), CI->Neon DNS wall (4 neon-replay failures), hub build red, PAT rotation overdue
+
+Stage Summary:
+- W1 verified LIVE and healthy post-cut-over: wh-v1 law intact, 8,202-row maths plane parity-clean, embed remainder 1,330 disclosed; receipt run-007 of record
+- Lane blockers now precisely: (1) sci-chem URL for the 4CH1 T1, (2) Vercel cap window + lever (pause hub console-side or upgrade) for the W1 deploy re-fire, (3) main URL at sci-chem T1 time; DB posture: W1 knocked, main still stood down
+
+---
+Task ID: 27-RECONSTRUCTED (session web-d0c9a0d3; filing consumed before push, re-written from the session of record)
+Agent: main (Z.ai)
+Task: Operator re-sent the SAME W1 pooler URL (trace 1a16cfa8b27b5fb9) — ambiguity adjudication.
+
+Work Log:
+- URL verified BYTE-IDENTICAL to the Task-25 knock (the first "DIFFERS" was a trailing-newline artifact of the comparison itself, resolved by appending the newline).
+- W1 re-probed READ-ONLY: state-delta ZERO vs run-007 of record (8,202 chunks unchanged, meta identical, zero seneca/wh-v2 tables, no console-side fragment) — a byte-identical re-send with zero state delta does NOT constitute amendment evidence.
+- MUTATION LAW HELD: no wh-v2 fragment, no import, no registry touch on W1. Fork presented to operator: (A) amendment word ("W1 for chem") -> placement amendment of record citing both knock traces, then 4CH1 T1 on W1; or (B) the sci-chem warehouse URL (a DIFFERENT ep-* prefix, expected) -> run-003 ruling executes unchanged, W1 stays maths-only.
+
+---
+---
+Task ID: 28
+Agent: main (Z.ai)
+Task: Operator "Check current state" (trace 1a16eb9171d7128d) — full status sweep
+
+Work Log:
+- Sandbox recycle #3 hit this turn (creds/venv/clone wiped; worklog + scripts dir survived): rebuilt creds 0600 volatile-only, psycopg2 2.9.13, clone at fresh tip 362c4ea9; compact probe persisted as scripts/wh_state_check.py
+- W1 probe (READ-ONLY): estate UNCHANGED — meta identical (wh-v1/maths-4ma1/plane:88706faa…/migrated_at 10-23T18:44Z), 8,202 chunks / 330 docs, kinds 3x2,734, embeds 6,872 done + 1,330 NULL (max embedded_at 10-23T12:48 = NO embed progress), zero seneca/wh-v2 tables
+- Main movement 4008e6ce..362c4ea9 (~25 commits): T-OPS-PLANE-001 run-008 T1 REFIRE + FLIP LIVE (deploy dpl syllabai-v2-iv8bt74ek READY @ 08:34:58Z, registry maths-4ma1 ASSIGNED->SERVING @ 08:24:50Z per receipt, prod health 200, cap window had passed 08:19Z); run-008 seam step-1 template arity repair (92899b49) landed live; run-009 re-fire check = nothing to fire; run-010 re-knock honored (fresh GITHUB_PAT + VERCEL_PAT to that lane, hub syllabai-hub-v2 paused=false); api runtime delta EMPTY -> deploy CURRENT, no redeploy owed
+- T-SENECA-001 unchanged: receipts end at run-004; PR #316 merged 323d246; pack CODE rode the run-008 prod bundle (seneca reads hit SYLLABAI_WAREHOUSE_URL_SCI_CHEM = NULL seam -> honest 503 warehouse_unavailable until sci-chem lands); data T1 blocked on sci-chem URL (+ main URL at parity leg)
+- Fleet: PRs #347/#348/#351/#352/#353/#354 merged (UGM lanes 8+8a image plane 976 figures, voice-retrofit r2, ADR-039 copy audit, bakes 044/045/046, past-papers IA 54 sets); 4MB1 pblock claim + Tier-B run-005; substrate residue wave run-002 EXECUTED; NEON-DB-LOSS run-011 = UNCLAIMED WRITER escalation on MP-REBUILD (operator adjudication owed)
+
+Stage Summary:
+- W1: T1 COMPLETE, SERVING LIVE IN PRODUCTION (of record via run-008/009/010; my run-007 knock verification preceded it); estate stable; 1,330-row embed remainder still owed
+- 4CH1 pack: code LIVE in prod (fail-loud 503 posture by design), data T1 awaits sci-chem URL — the last un-provisioned ruled plane; W1 is the complete end-to-end precedent
+- Needs queue: (1) sci-chem URL -> 4CH1 T1, (2) MP-REBUILD unclaimed-writer adjudication, (3) embed-completion window (1,330; coordinate with Phase-D tranche), (4) PAT rotation class-wide
+
+- RE-FILE PROVENANCE: the Task-28 sweep above was filed local-only (sandbox side) and never pushed; re-filed here byte-faithful per the incremental-commit law (the run-009 lesson).
+
+---
+Task ID: 29 (session web-d0c9a0d3)
+Agent: main (Z.ai)
+Task: Operator "Proceed" (trace 1a16f061f806ae29) — delta sweep since Task 28 + ledger-integrity repair (this commit).
+
+Work Log:
+- Environment ALIVE this turn (no recycle: /tmp creds 0600 intact, clone intact, venv/psycopg2 2.9.13 intact). gh CLI missing from PATH (recycle artifact) — GitHub REST via curl used instead; stored PAT auth 200.
+- W1 re-probe (scripts/wh_state_check.py, READ-ONLY, zero writes): state-delta ZERO vs Task 28 — warehouse_meta identical (wh-v1 / maths-4ma1 / plane:88706faa… / migrated_at 2026-10-23T18:44:28.832Z), 8,202 chunks / 330 docs, kinds 3x2,734, embeds 6,872 done + 1,330 NULL (max embedded_at 2026-10-23T12:48:28 = NO embed progress), zero seneca/wh-v2 tables. Estate stable under live production serving.
+- Main moved 362c4ea9..b62e66df (4 commits): T-BOOK-047 bake u2:c14 Reactivity series (lessons-index 13->14 additive, G4 x14 GREEN, 4 suites 34/34) + b62e66df A2-loop fix (probe ALL packs; 14/14 serving status=published, 25 probes exit 0); NEON-DB-LOSS run-012 oracle reproduction check on the in-flight rebuild (VERDICT of record: parallel-half rebuild, ZERO shared keys vs survivors = the strict run-006 shared-key oracle law structurally disengaged in that run; survivors 14,141 EXACT re-proved twice; writer rows healthy per G1 sum-law 21,736/21,736 EXACT, 0 true orphans, 0 duplication; +395 aggregate disclosed, writer's census owns reconciliation); ADR-037 update via PR #355.
+- PR #316 re-verified MERGED of record (state closed/merged, 323d246, 2026-10-23T23:31:31Z). Open PRs on main: #352/#303/#296/#285 — none this lane's, none sci-chem-related.
+- LEDGER REPAIR (this commit): run-007 entry restored byte-faithful + Task 27 reconstructed + Task 28 re-filed, provenance in the entries above. ca7ef93d's non-union worklog write disclosed of record.
+- W1 serving state re-affirmed from run-008/009/010 receipts (not re-probed live this turn): registry maths-4ma1 = SERVING since 2026-10-24T08:39:16Z, deploy syllabai-v2-qxxki2a8e READY, final deployed-app ask verified (200 / evidenceCount 6 / groq / 3.58s), revert = registry->ASSIGNED instant. Cap window open per run-010 (62/100); hub syllabai-hub-v2 paused=false.
+
+Stage Summary:
+- W1: LIVE, stable, state-delta zero across two consecutive sweeps (Task 27 reconstruction + this turn's probe). Posture UNCHANGED — lane blockers: (1) 4CH1 data T1 waits on the sci-chem URL OR the amendment word (the Task-27 fork remains open, no movement in the 4 new commits); (2) embed-completion pass (1,330 rows) waits on a quota window coordinated with Phase-D tranche-1 (f763cefe contention live).
+- Mark-plane rebuild work belongs to the NEON-DB-LOSS lane per run-011/012 (writer owes receipts; operator adjudication of record still owed). This lane wrote ZERO rows on any plane this turn.
+- Discipline held: zero writes to W1, zero main contact, zero content-text egress, creds never echoed, fetch-first push, no force. Receipt: .syllabai/receipts/T-OPS-PLANE-001/run-013-ledger-repair-state-sweep-r0.json
+ops(R0-AUTO): receipt — PR #356 merged 1aec820, gates green (bookkeeping)
+Task ID: T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-001 (operator order "v2 consume-lane pin advance", trace 1a16dda5d7cfb325)
+Agent: main (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Fire the v2 consume-lane pin advance absorbing the committed-substrate residue wave SME delta (the T-RULE-T3-SUBSTRATE-1 run-002 standing residual, verbatim); run credentials provisioned same session (trace 1a16ec15fa2526c1, volatile-only).
+
+Work Log:
+- Fetch-first state reconciliation at lane start: resources origin/main 6dc1f0a2 -> 31b0ef4a (48 commits: the wave cc6cca61 + REPAIR 4f76a9e8 + T-BOOK-044/045/046 + wave-22 + UGM pure-1 + 9701/YCH11 parses + converter v0.15.0 + ADR-039 follow-ups); v2 origin/main 362c4ea9 — the of-record pin ladder stands at CIE_PIN 6dc1f0a2 (run-007 quiescent vintage, 7 receipted rungs past the operator brief's c5f20c52-era baseline; disclosed, advance executes from the of-record pin).
+- Input classification 6dc1f0a2..31b0ef4a: consumed-input delta ZERO — spec-links/ tree-sha-identical e6b0b3a9, rejoin sheet 0-delta, SME-ExamQuestion/*/spec_point_index.json 0-file delta fleet-wide, Official-Specifications tree-sha-identical c95ed99f; the ONLY engine-adjacent vintage move is the wave's 2,369+1,681+292 SME carrier transpiles (formatting-only, zero code-plane contact); all 47 other commits are non-engine planes per the standing pinAdvanceLaw classification.
+- Engine of record (apps/hub/scripts/cie/cie_consume_spec_links.py @ 362c4ea9) run session-side in a fresh origin/main worktree (branch t-rule-t3-consume-wave/r0) against the resources checkout detached at 31b0ef4a (sparse spec-links+scripts cone, HEAD==tip rev-parse-proven); session-side patch = the disclosed band-D class ONLY (PIN/STAMP/directive/trace/header run block; zero law or logic edits).
+- Ignition 44/44 sidecars, battery M1/R1-R6/A1 ALL GREEN, exit 0; every consumed counter BYTE-EQUAL to the run-007 floors (codesFromSidecar 11,058; t2Hints 51; sheetAdded/Upgraded 0/0; sheetConflicts 289; sidAnchors 0/26/0; v8Retract 0; misTag 0; inlineRewrites 0 — the code plane froze through the wave exactly as the classification predicted).
+- Determinism: two clean runs staging-hash byte-identical 558d2f54e68218085d885a6781f7933637b9bdf57c6f4c6b939271ce68ddc40c.
+- Independent per-file audit (session-side scripts/pinadvance_audit.py): 44/44 maps diff EXACTLY {resourcesSha, generatedUtc}; 44/44 manifests EXACTLY {officialSpine.resourcesSha}; curriculum/notes/flashcards/questions byte-identical per lane; chem25 floors hold (sidAnchors 0/26/0; distinctCodesAttached 161; uncovered 195; spcptToOfficial 72; spcptUnmapped 259; coverage 69/239 + 432/1682 + 0/2152) — the 23 tranche-2 anchors of record + 3 hold/split captures reproduce as a BYTE FIXED POINT, zero disturbances.
+- Byte-exact apply (88 files: 44 maps + 44 manifests, per-copy sha256 self-verified) + post-apply idempotence changed=0/44 exit 0 (the quiescent fixed point, adoption-run-002 shape).
+- Validator pin ladder advanced (the CIE-REFRESH-1 law): CIE_PIN 6dc1f0a2 -> 31b0ef4a with the full run citation; CIE_PIN_PRIOR_10 = 6dc1f0a2 demoted into the ladder; allow-list extended to 14 pins.
+- Local full lane GREEN: validate_cie_bundles PASSED (2,259 holdings, 44 pin assertions), verify_corpus_23a PASSED, verify_flashcard_sync_courses exit 0, roster floors 15/15 (census byte-stable — floors NOT re-pinned, none moved), typecheck 0, bun test apps/api packages 2,910 pass / 13 skip / 0 fail (38,269 expect()).
+- Landing: fetch-first re-check of both repos immediately pre-commit; L-025 two-way diff-tree gate run as mandatory checklist hygiene (worktree census == committed census == the 92-file declared surface: 44 maps + 44 manifests + engine + validator + receipt + worklog); fast-forward push, no force.
+- Mid-run re-absorption (L-025 gate catch): origin/main moved 362c4ea9 -> 0a7a32a3 while the lane worked (ADR-037 #355 + NEON-DB-LOSS run-012 — non-engine planes, cumulative sibling delta 6 files, overlap with the 92-file run surface = the append-only worklog only); the commit was rebased onto 0a7a32a3 with the worklog union theirs-verbatim-first (zero markers); fast gates re-proven on the rebased tree (engine idempotence changed=0/44, validate_cie_bundles PASSED, roster floors 15/15) before the fetch-first push.
+- Credential lapse at the push leg: the run PAT (trace 1a16ec15fa2526c1) was valid at lane start (API 200, full repo+workflow scopes, 16:35:55Z) and DEAD by push time (401 on /user; git push rejected 'Invalid username or token') — the standing PAT-rotation CRITICAL-Overdue residual materialized mid-run; volatile-only handling meant nothing to re-use. SECOND re-absorption before the freeze: origin/main 0a7a32a3 -> 75038fd6 (T-BOOK-047 bake, cumulative delta 3 files, ZERO overlap with the run surface, clean rebase, fast gates re-proven). The run commit (HEAD of t-rule-t3-consume-wave/r0, re-absorbed onto the of-record tip; sha discoverable via the bundle) is rebase-ready and preserved as a git bundle; a fresh-token re-knock lands it with one fetch-first fast-forward push, no force. Receipt sha256 a9445be1bec6c6821619d9014fba6e6ae0fe954e4cafd6c4125c6dbab71f7972.
+- Receipt: .syllabai/receipts/CIE-INTEGRATION/cie-consume-pin-advance-wave-run-001-r0.json (byte-exact indent-1 sort-keys serialization).
+
+Stage Summary:
+- THE WAVE-VINTAGE PIN ADVANCE IS OF RECORD: the consume lane's SME-delta absorption debt (the T-RULE-T3-SUBSTRATE-1 run-002 standing residual) is discharged as a quiescent pin-vintage convergence at 31b0ef4a — the code plane proven byte-frozen through the wave's 4,342-carrier formatting wave, pin/stamp the only moves, the fleet a quiescent fixed point of the amended law. Disclosed: the learner-surface body refresh (wave KaTeX) rides the SEPARATE corpus-import plane vintage, not this lane. Residuals unchanged: tranche-3 (1,203 sid-less), holds/split Cdtk, PAT rotation (this run's PAT volatile-only), corrupted resources push trigger (operator-scoped). LANE: IDLE.
+
+
+---
+Task ID: T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-001 LANDING (operator re-provisioned the push credential same session, trace 1a16f0c3e8da8b9d)
+Agent: main (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Land the run-001 pin advance (6dc1f0a2 -> 31b0ef4a) — the single unlanded step after the run's mid-run credential death (401 at push time).
+
+Work Log:
+- Token verified execution-time first (GET /user 200, login SyllabAI, full repo+workflow scopes): the run's push-time 401 did not reproduce.
+- L-025 fetch-first re-absorption x2 post-freeze (each caught by the mandatory gate, each resolved union theirs-verbatim-first zero markers, fast gates re-proven on each rebased tree — engine idempotence changed=0/44, validate_cie_bundles PASSED, roster floors 15 pass/0 fail/687 expect(); lineage 985ef27d -> 39596094 -> 9d83f332 -> dca684ef): (a) b62e66df = T-C20 A2 all-packs probe fix (scripts/tc20-battery.mjs, ZERO overlap with the 92-file run surface); (b) 1aec8209 + 99cd5ad4 = PR #356 ADR-040 levels-of-response merge + R0-AUTO receipt (worklog-only overlap).
+- LANDED of record: fetch-first fast-forward push 99cd5ad4..dca684ef HEAD -> main, no force; ls-remote proof origin/main == dca684ef; re-verified immediately pre-push (parent == origin tip).
+- CI bounded-confirmed: v2 verify + hub 2/2 completed success on dca684ef (first poll, stable).
+- Disclosed: resources main moved 31b0ef4a -> ac1fc90b post-freeze (T-BOOK-047 u2:c14 + UGM-Assets image plane + f-0019 filing; spec-links/ plane ZERO delta — consumed inputs unchanged at the landed pin vintage); the advance to ac1fc90b is the next named rung, NOT yet ordered.
+
+Stage Summary:
+- THE WAVE-VINTAGE PIN ADVANCE IS OF RECORD AT dca684ef: the map-engine derivation pin (consume-law resourcesSha clause) now stands at resources 31b0ef4a; the T-RULE-T3-SUBSTRATE-1 run-002 absorption residual ("the v2 consume lane absorbs the SME tree delta at its next pin advance") is CLOSED of record. The escape bundle (985ef27d vintage) is superseded and kept as artifact. LANE: IDLE.
+
+---
+Task ID: 4MB1-QUALITY UIUX-TIER-B run-006 re-transcription + fleet adjudication (operator order "run-006", trace 1a16f0e5082bbf6d)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Fetch-first: clone FF ca7ef93d -> tip; remote advanced twice mid-lane (4817848e ADR-037 #355, then b62e66df T-C20) — maths-b bundle byte-untouched across both, re-verified before write.
+- NAMED PARTS (7 patched, all eyes-on vs 15 page renders from the anonymous mirror): 2024-06-02R q8(c) P10 decoded from MS p15 = (90/145)x((90-1)/(145-1)) with Allow (90/145)^2=324/841~0.385 + Condone 2x variants; P11 answer 89/232 restored (was bare "232" orphan). 2023-11-02 q6(d) P8 = A1cas/45 (D/A/B/C orphans = debris); 'Question 6 continued' furniture stripped. 2023-06-01 q28 FULL solutionMd rebuild P1-P23 across the four schemes of record (MS p25-27 = main + ALT 1 + ALT 2 + ALT 3 Herons): 1/2-angle glyphs restored x3 copies (P2/P8/P14), missing workings restored (P4 a=7/b=13/c=3, P5 tan rows + r/sin alt, P11/P22 '79.2'='23'r, P16 awrt 7.8/13.5/4.6, P17 r=sin products, P20 Heron sqrt), fraction stacks rebuilt (P3 r/a r/b r/c + r/(20-a), P9 1/2-ab-sinC x3, P10/P21 1/2(16r+10r+20r), P15 OA/OB/OC sin-rule x3, P19 semiperimeter), ALT headers restored, header-bleed + Pearson footer stripped. 2025-06-02R q9(a): P1/P2 missing Working lines restored (17x20[=340]/26x20[=520]; 2pi x 5 x 20[=200pi=628.318...] etc), P2 orphan fragment removed, P4's disclosed 'left unchanged' line RESTORED as the MS's first Working line (2x'270'+'314.159'+'78.539'+2x'340'+'520'[=2132.699...]oe), P5 22/7 pi allowance restored. 2026-06-01R q24(a) P1 rebuilt to the three MS forms (chord theorem (18-2r)x18=12^2 was MISSING entirely; Pythagoras (18-r)^2=12^2+r^2 + oe-eg (18-d/2)^2), P2 36r=18^2-12^2, P4 18xPA=12^2; q24(b) P7/P8/P9 rebuilt (P8 = the MS's 2-mark ALT row, transcribed AS PRINTED incl the MS-internal sin^-1(13/12) vs 67.3801 inconsistency, 6x-zoom verified, disclosed). 2026-06-01R q21 problemMd FULL REBUILD after QP p18 proof that the bundle LOST both matrix rows' minus signs (M=(1 1;-3 -4), N=(3 -4;4 -5)) — sign-loss class, first of record on the bundle plane; solutionMd P1-P4 rebuilt with pmatrix per MS p25 (NM=(15 19;19 24), det -1, inverse, answer (-24 19;19 -15)).
+- FLEET ADJUDICATION (the 627/63 disclosed map): r4c-census-003.json columns decoded of record (1-based question number, 0-based part index — 627/627 resolve); per-part verdict map filed: 14 RESOLVED (all cross-check to known run-004/005 problemMd rebuilds), 150 NEEDS-EYES (class priors: axes-embedded 65 / diagram-disclaimer 40 / grid-table-cells 31 / venn-labels 14), 463 DEBRIS. Sample validation eyes-on: DEBRIS class CONFIRMED (2018-06-01 Q6 = 7/12, sqrt27/sqrt3, 2pi, 16^(1/4), 4sqrt2, 0.3; Q11 = 3/(2x-1)-4/(x+2)); NEEDS-EYES sample EXPOSED a missing data table (2018-06-01 Q20: stem references a table that is not in the bundle) — none auto-cleared. Mechanical severity flags: 11 missing-table + 39 missing-grid.
+- GATES ALL GREEN: structure 65/1270/2412 unchanged, marks map identical vs HEAD, KaTeX 738 unique segments 0 failures, currency-class 110 escaped-$ fields byte-identical, UFFFD 0, diff scope exactly 7 parts, single-line compact JSON, scrub-assert clean (anonymous mirror; no credentials in the write path; FETCH_HEAD removed post-fetch).
+- Filed: receipt-run006-retranscription-r0.json + run-006-evidence/ (12 scripts/data + 19 renders incl the 6x zoom) + manifest note UIUX-TIER-B-RUN-006 + this entry.
+
+Stage Summary:
+- Run-006 LANDED of record: the disclosed run-006 remainder executed — 6 named parts (7 with q24(b)) closed eyes-on, fleet 627-row map per-part adjudicated with verdicts + severity flags filed. DISCLOSED run-007 queue: 463 DEBRIS + 150 NEEDS-EYES parts (learner-blocking 11 missing-table + 39 missing-grid first), the 2023-11-02 q6 histogram artwork staging (lane-1 class, not self-granted), and the 2026-06-01R q24(b) MS-internal fraction inconsistency flagged for Pearson-errata awareness. DB plane untouched.
+ops(R0-AUTO): receipt — PR #357 merged 4a72e10, gates green (bookkeeping)
+
+---
+Task ID: 30 (operator pointer trace 1a16f2e3ea1c0f81: "there is something called subject intelligence")
+Agent: main (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Task: State survey + Subject Intelligence identification (operator prior order: "check the current state of the project, I have added a lot of new things").
+
+Work Log:
+- ff-synced sandbox to origin/main 5c9326af (zero local residue).
+- Identified "Subject Intelligence" of record: (a) syllabai-v2 docs/ADR-038 §1 names SI docs as the tutor plane's 4th per-course vectorization quadrant (revision notes explicitly deferred on books/SI overlap); (b) docs/DATA-PLANE-PLACEMENT.md §2 assigns SI/syllabus docs to the corpus warehouse fleet under "same registry, same law"; (c) ZERO code references in v2 (rg swept apps/packages/scripts).
+- Origin found: SyllabAI/syllabai docs/research/SUBJECT_INTELLIGENCE_BUILD_V1.md — SIB v1 PROPOSED, landed 2026-10-01 (2f8646ec, PR #13) with SIB_ARTIFACT_SCHEMA_V1.md (15-field front matter, filename contract <SUBJECT>_<SPEC>_<ARTIFACT_ID>_<SLUG>.md, lifecycle GENERATED->QA_PASSED->STAGED->PUBLISHED), SIB_NOTEBOOKLM_PROMPTS_V1.md, SIB_VALIDATOR_IMPLEMENTATION_V1.md + tools/sib/ IMPLEMENTED (taxonomy 95-artifact registry, frontmatter parser, artifact_validator SIB-*-error classes, anchors, lifecycle, chunking, ingest CLI, tests).
+- Census probes (READ-ONLY): no SIB artifacts in master repo (no research/sib/), no sib paths in syllabai-resources (39,335-tree sweep), none in pastpapers/experimental/parser; first planned build CHEMISTRY_4CH1 not started. Main DB documents census 1,354 = baseline EXACT (QP 301 / MS 289 / EQ 489 / SYL 162 / EN 112 / TB 1); no new kind (ck_documents_kind 7-value constraint unchanged); zero docs ingested in the survey window.
+- Re-absorption: origin advanced 5c9326af -> b7232535 mid-run (4MB1-QUALITY UIUX-TIER-B run-006 + PR #357 receipt); first rebase attempt mis-resolved the tail conflict (rebase --theirs is commit-under-replay, not upstream — the intermediate commit dropped the run-006 worklog entry and duplicated task-30); repaired by reset --soft + origin worklog verbatim + single task-30 re-append before any push. ZERO records lost.
+
+Stage Summary:
+- SUBJECT INTELLIGENCE IS FULLY DEFINED AND TOOLING-LANDED (protocol PROPOSED, validator IMPLEMENTED, 12 families / 95 artifact types, NotebookLM as authoring instrument, SyllabAI owns ingestion/provenance/retrieval) but has ZERO built artifacts — it is the one tutor-quadrant (of papers/schemes/books/SI) with no corpus yet; serving seam awaits warehouse fleet (ADR-038) + first subject library (CHEMISTRY_4CH1 planned). This survey wrote ZERO non-worklog bytes; bookkeeping-only .syllabai/**, fetch-first, no force.
+
 ---
 Task ID: T-OEQ-MATHSB-1 run-001 (session web-da4ab8b1, operator order trace 1a16f0dae0405399)
 Agent: r7a (Super Z, zai-web session web-da4ab8b1-6cbb-48ca-91b1-54896d1b585e)
