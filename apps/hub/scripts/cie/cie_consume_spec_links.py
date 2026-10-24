@@ -72,6 +72,17 @@ operator_verdict); the sid-anchor plane stays byte-frozen (sidAnchors 0/23/0
 fixed point); per-course guard: misTagRepointDropped <=
 anchors.misTagRepoints.counts.entriesRemoved — of record at the pin advance to
 the PR-#69-merged tip ea21a72.
+
+T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-001 (2026-10-25, operator order 'v2
+consume-lane pin advance', trace 1a16dda5d7cfb325): the wave-vintage pin
+advance — the committed-substrate residue wave (T-RULE-T3-SUBSTRATE-1 run-002)
+moved the SME trees 4,342 carriers formatting-only (transpile_alt KaTeX alt);
+consumed-input delta ZERO at 6dc1f0a2..31b0ef4a (spec-links/ tree-identical
+e6b0b3a9, rejoin sheet blob-identical, SME-ExamQuestion/*/spec_point_index.json
+0-file delta fleet-wide, Official-Specifications tree-sha-identical c95ed99f);
+quiescent pin-vintage convergence of the fleet at the resources tip 31b0ef4a
+(the run-006/007 shape on a moved vintage) — of record at the pin advance from
+6dc1f0a2.
 """
 from __future__ import annotations
 
@@ -92,8 +103,8 @@ RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resourc
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "6dc1f0a25bdc01cf826076a8680786c9b88a6e8f"
-STAMP = "2026-10-24T00:00:00Z"
+PIN = "31b0ef4aa995e1fb8024a9c0cce8e1705b193018"
+STAMP = "2026-10-25T00:00:00Z"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
 RANK = {  # lower wins on the same (item, code) key
@@ -810,26 +821,24 @@ def main() -> int:
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
         lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("T-RULE-T3-SME-COVERAGE-1 run-007 (operator dispatch 'Proceed with the "
-                           "re-harvest order is yours — resources-lane notes re-harvest -> index "
-                           "re-derivation -> sidecar re-key -> v2 consume', trace 1a16a0ea83dac56d) — "
-                           "the fresh re-harvest pass at the current vintage: the 44-lane freshness "
-                           "sweep (index-page census UNION live sitemap, rebuilt from live at "
-                           "2026-10-23T18:5xZ) found ZERO growth and ZERO shrink fleet-wide vs the "
-                           "run-003 committed manifests (committed-missing-from-union = 0, "
-                           "discovery complete fail-closed) — stages 1-3 are EVIDENCED no-ops (no "
-                           "re-harvest, no index re-derivation, no sidecar re-key; spec-links "
-                           "byte-identical dcc67a87..6dc1f0a2, 94/94 sidecars sha256-proven; the "
-                           "only resources delta since the pin is the T-C05/T-C06 book-textlayer "
-                           "increment, not an engine input). THIS run is the v2 consume stage: the "
-                           "quiescent pin-vintage convergence of the fleet at 6dc1f0a2 (44/44 "
-                           "re-keys on zero consumed-input delta, the run-006 shape), re-proving "
-                           "engine idempotence at the new pin; the v2 CI red triage rides the "
-                           "receipt (roster floors re-pinned from the live census per the standing "
-                           "law; the corpus-gate econ-25 speech-alt class = operator menu, no "
-                           "gate-law change self-granted). Class-A 1,203 + recordless 7 unchanged "
-                           "(operator menu stands)"),
-        gatewayTrace="1a16a0ea83dac56d",
+        operatorDirective=("T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-001 (operator order 'v2 consume-lane "
+                           "pin advance', trace 1a16dda5d7cfb325; the run's GitHub PAT provisioned "
+                           "same session, trace 1a16ec15fa2526c1) — the wave-vintage pin advance: "
+                           "the committed-substrate residue wave (T-RULE-T3-SUBSTRATE-1 run-002, "
+                           "cc6cca61) moved the SME trees 4,342 carriers formatting-only and the "
+                           "standing consume-law owes the v2 consume lane's absorption at the next "
+                           "pin advance. Input classification at 6dc1f0a2..31b0ef4a (48 commits): "
+                           "consumed-input delta ZERO — spec-links/ tree-identical e6b0b3a9, rejoin "
+                           "sheet blob-identical, SME-ExamQuestion/*/spec_point_index.json 0-file "
+                           "delta fleet-wide, Official-Specifications tree-sha-identical c95ed99f; "
+                           "the ONLY engine-adjacent vintage move is the wave's 2,369+1,681+292 SME "
+                           "carrier transpiles (KaTeX alt), zero code-plane contact. THIS run is the "
+                           "quiescent pin-vintage convergence of the fleet at 31b0ef4a (the "
+                           "run-006/007 shape on a moved vintage): 44/44 re-keys, every consumed "
+                           "counter byte-equal to the run-007 floors, resourcesSha/stamp the only "
+                           "map moves, manifest officialSpine.resourcesSha the only bundle move; "
+                           "the pin moves WITH the of-record (fa7ede6/0c8892d precedent)"),
+        gatewayTrace="1a16dda5d7cfb325",
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),
