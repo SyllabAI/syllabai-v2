@@ -20903,3 +20903,10 @@ Work Log:
 
 Stage Summary:
 - Fleet estate VERIFIED CURRENT end-to-end on the wire: tip-baked hub, restored api carrier, 16-pack content plane, T1 seam baseline-exact, cap open with margin. Lane IDLE pending operator decisions (rotation first; then the run-013 queue).
+
+## R0-AUTO receipt — 2026-10-24 21:15 UTC (Job 438940, sweep 05:00 +08)
+- Task ID: 438940 | PR #358 (T-UGM-HUB-CONSUME-9, UGM lane 9) merged.
+- Head 17b0a89: verify PASS + hub PASS (2/2); mergeable clean; 0 reviews/comments; diff = 5 files all apps/**, zero *.java.
+- Merge sha: 7cf0169 (merge commit, merge_method=merge). Post-merge main CI: verify PASS + hub PASS (2/2 green, ~150s bounded confirm).
+- Notes: main-tip 'apply' check observed in_progress on pre-merge tip 4d57ff3 (new check, main-only, not a head gate; not red) — desk proceeded on head-green + clean mergeable per standing gate (b); new tip gated 2/2 green. Pre-merge main tip 4d57ff3 gated verify/hub PASS throughout.
+- Context this round: mirror reset hit #82 (3rd consecutive, local→89962a5) recovered via reset --hard to 4d57ff3; origin/main advanced +1 (sib-library-003 SubjectIntelligence all-courses registry of record). #352 stall (zero check-runs ~9h) + #285/#296/#303 static red remain skipped. Bookkeeping-only, .syllabai/** exclusively.
