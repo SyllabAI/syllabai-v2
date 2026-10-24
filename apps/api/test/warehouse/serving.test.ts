@@ -181,6 +181,14 @@ describe("warehouse serving seam (ADR-038 §3.3 flip law)", () => {
     expect(step1.params).toContain("maths-4ma1");
     // candidate cap = limit × overfetch (2 × 3)
     expect(step1.params.at(-1)).toBe(6);
+    // run-008 arity pin: FOUR binds — select vector, course group, ORDER-BY
+    // vector (the literal rides TWICE), limit. The shipped 3-param version
+    // put the cap in the order-by position and left `limit` empty -> Postgres
+    // 42601 "syntax error at end of input" on every covered-group ask (first
+    // live execution: the T1 flip check). The at(-1) assertion above could
+    // not see it — the cap was the last param in BOTH arities.
+    expect(step1.params).toHaveLength(4);
+    expect(step1.params[0]).toBe(step1.params[2]);
 
     // step 2 = ONE batched main hydrate with the verbatim predicate
     const hydrates = main.seen.filter((q) => q.text.includes("from document_chunks c"));

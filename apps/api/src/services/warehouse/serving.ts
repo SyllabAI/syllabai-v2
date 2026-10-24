@@ -264,6 +264,18 @@ export function buildWarehouseServingSeam(
           ]),
           literal,
           group.courseGroup,
+          // T-OPS-PLANE-001 run-008 REPAIR (first live execution of this path
+          // during the T1 flip check caught it): the parts array has FOUR
+          // bind slots — select vector, course group, ORDER-BY vector (the
+          // SQL reuses the literal twice), limit. The shipped code passed
+          // only THREE params, so candidateLimit landed in the order-by
+          // position and `limit` was left empty -> Postgres 42601 "syntax
+          // error at end of input" (position 216) = guaranteed 500 on EVERY
+          // covered-group ask. The run-004 live probe never caught it: it
+          // ran the rig path (hand-built query), not this function, and the
+          // unit fakes do not validate template arity. Transport-only fix —
+          // SQL text byte-identical, the missing second literal bind.
+          literal,
           candidateLimit,
         )) as unknown as Array<{ id: string; score: unknown }>;
         for (const row of rows) {
