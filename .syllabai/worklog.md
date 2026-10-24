@@ -20910,3 +20910,18 @@ Stage Summary:
 - Merge sha: 7cf0169 (merge commit, merge_method=merge). Post-merge main CI: verify PASS + hub PASS (2/2 green, ~150s bounded confirm).
 - Notes: main-tip 'apply' check observed in_progress on pre-merge tip 4d57ff3 (new check, main-only, not a head gate; not red) — desk proceeded on head-green + clean mergeable per standing gate (b); new tip gated 2/2 green. Pre-merge main tip 4d57ff3 gated verify/hub PASS throughout.
 - Context this round: mirror reset hit #82 (3rd consecutive, local→89962a5) recovered via reset --hard to 4d57ff3; origin/main advanced +1 (sib-library-003 SubjectIntelligence all-courses registry of record). #352 stall (zero check-runs ~9h) + #285/#296/#303 static red remain skipped. Bookkeeping-only, .syllabai/** exclusively.
+
+---
+Task ID: T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-002 LANDING (operator continuation trace 1a16fb61f3465389)
+Agent: main (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: the run-002 landing record — the post-push CI bounded-confirmation the landing law names ("CI verify+hub watch rides post-push, bounded-confirmed in the worklog"), filed as a follow-up worklog append (the 5c9326af run-001 shape).
+
+Work Log:
+- LANDING of record re-verified first-hand: 200b4c06 (44 maps diff {resourcesSha} only + 44 manifests diff {officialSpine.resourcesSha} only + 2 disclosed band-D scripts + the run-002 receipt + the run-002 worklog entry, 92 files) — CI verify+hub 2/2 completed/success AT THE SHA, re-observed via the check-runs API at 2026-10-24T21:08:13Z (hub=success; verify=success).
+- Receipt integrity re-verified byte-exact this run: the committed blob .syllabai/receipts/CIE-INTEGRATION/cie-consume-pin-advance-rung2-run-002-r0.json hashes ab2fe969bf3083f38bff42a641a42a1957fb4c10804864ab93c9168a54047876 — equal to the commit-message claim.
+- The Fire-order target coverage proven from primary history (not just the receipt): ac1fc90b — the resources tip named at order time — sits at depth 2 of the 09842f9f first-parent chain (the receipt's 10-commit delta classification; API parent-walk re-derived this run) — the ordered rung fully covered its named target.
+- Post-landing sibling movement disclosed (zero consume-plane contact, verified by the range name-census): origin/main 200b4c06 -> 4d57ff31 (T-BOOK-048 u2:c15, T-BOOK-049 u2:c16, seneca run-005/006, sib-library-002/003, the T-C20 A2 under-probe fix) then -> ded8a7cf mid-filing (T-OPS-PLANE-001 run-014 receipt, the T-SENECA-001 rollout wave wh-v3 + PR #358 receipt + seneca run-007 receipt — seneca SQL/scripts only); CI verify+hub success observed at 4d57ff31 during recon; this record re-based on ded8a7cf per the union law (theirs-verbatim, pure append, zero consume-plane contact re-proven).
+- NEXT-RUNG CANDIDATE (not named, not ordered): resources main tip = 0eba055289580e53fd67a542c4c973022bbc8be3 (T-BOOK-050 u2:c17 Salt preparations, PR #118) — 09842f9f -> 0eba0552 is the natural third rung; per the run-002 stage-summary law it fires only on the operator's say-so.
+
+Stage Summary:
+- RUN-002 LANDING NOW FULLY OF RECORD: pin 09842f9f, CI 2/2 bounded-confirmed at 200b4c06, receipt byte-exact (ab2fe969), Fire-order target ac1fc90b proven covered, consume fleet a quiescent fixed point (idempotence changed=0/44). LANE: IDLE — the next rung (09842f9f -> resources tip) awaits the operator order.
