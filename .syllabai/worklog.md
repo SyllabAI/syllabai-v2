@@ -20731,3 +20731,18 @@ Work Log:
 Stage Summary:
 - THE WAVE-VINTAGE PIN ADVANCE IS OF RECORD: the consume lane's SME-delta absorption debt (the T-RULE-T3-SUBSTRATE-1 run-002 standing residual) is discharged as a quiescent pin-vintage convergence at 31b0ef4a — the code plane proven byte-frozen through the wave's 4,342-carrier formatting wave, pin/stamp the only moves, the fleet a quiescent fixed point of the amended law. Disclosed: the learner-surface body refresh (wave KaTeX) rides the SEPARATE corpus-import plane vintage, not this lane. Residuals unchanged: tranche-3 (1,203 sid-less), holds/split Cdtk, PAT rotation (this run's PAT volatile-only), corrupted resources push trigger (operator-scoped). LANE: IDLE.
 
+
+---
+Task ID: T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-001 LANDING (operator re-provisioned the push credential same session, trace 1a16f0c3e8da8b9d)
+Agent: main (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: Land the run-001 pin advance (6dc1f0a2 -> 31b0ef4a) — the single unlanded step after the run's mid-run credential death (401 at push time).
+
+Work Log:
+- Token verified execution-time first (GET /user 200, login SyllabAI, full repo+workflow scopes): the run's push-time 401 did not reproduce.
+- L-025 fetch-first re-absorption x2 post-freeze (each caught by the mandatory gate, each resolved union theirs-verbatim-first zero markers, fast gates re-proven on each rebased tree — engine idempotence changed=0/44, validate_cie_bundles PASSED, roster floors 15 pass/0 fail/687 expect(); lineage 985ef27d -> 39596094 -> 9d83f332 -> dca684ef): (a) b62e66df = T-C20 A2 all-packs probe fix (scripts/tc20-battery.mjs, ZERO overlap with the 92-file run surface); (b) 1aec8209 + 99cd5ad4 = PR #356 ADR-040 levels-of-response merge + R0-AUTO receipt (worklog-only overlap).
+- LANDED of record: fetch-first fast-forward push 99cd5ad4..dca684ef HEAD -> main, no force; ls-remote proof origin/main == dca684ef; re-verified immediately pre-push (parent == origin tip).
+- CI bounded-confirmed: v2 verify + hub 2/2 completed success on dca684ef (first poll, stable).
+- Disclosed: resources main moved 31b0ef4a -> ac1fc90b post-freeze (T-BOOK-047 u2:c14 + UGM-Assets image plane + f-0019 filing; spec-links/ plane ZERO delta — consumed inputs unchanged at the landed pin vintage); the advance to ac1fc90b is the next named rung, NOT yet ordered.
+
+Stage Summary:
+- THE WAVE-VINTAGE PIN ADVANCE IS OF RECORD AT dca684ef: the map-engine derivation pin (consume-law resourcesSha clause) now stands at resources 31b0ef4a; the T-RULE-T3-SUBSTRATE-1 run-002 absorption residual ("the v2 consume lane absorbs the SME tree delta at its next pin advance") is CLOSED of record. The escape bundle (985ef27d vintage) is superseded and kept as artifact. LANE: IDLE.
