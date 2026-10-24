@@ -248,9 +248,12 @@ describe("F-185 M5..M8 — the model-driven draw", () => {
 
 const HUB = join(import.meta.dir, "../../../hub/content");
 const COURSE = "igcse-chemistry-19";
-const sets = JSON.parse(
-  readFileSync(join(HUB, COURSE, "questions.json"), "utf8"),
-) as BundleSet[];
+// Bank of record spans both planes post-IA-split (see draw.test.ts) — the
+// same concat order keeps every pin here byte-stable.
+const sets = [
+  ...JSON.parse(readFileSync(join(HUB, COURSE, "questions.json"), "utf8")),
+  ...JSON.parse(readFileSync(join(HUB, COURSE, "official-papers.json"), "utf8")),
+] as BundleSet[];
 
 describe("F-185 the chemistry bundle of record through the model draw", () => {
   const bank = collectParts(sets);

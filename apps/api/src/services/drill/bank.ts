@@ -22,7 +22,7 @@
  * the evidence seam uses server-side. `solutionMd` never enters a draw view —
  * it rides the evidence response only (the instant post-attempt reveal).
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 import {
@@ -138,12 +138,24 @@ export function bundleBank(course: string): DrillBank {
     throw new UnknownCourseError(course);
   }
   const hub = hubContentDir();
-  const sets = JSON.parse(readFileSync(join(hub, course, "questions.json"), "utf8")) as BundleSet[];
+  // The bank of record spans BOTH bundle planes (IA split, 2026-10): the SME
+  // topic sets stay in questions.json (the exam-questions plane) while the
+  // ADR-037 official paper sets live in official-papers.json (the past-papers
+  // plane). The drill draws from the full anchored pool either way — official
+  // parts are spec-anchored, so concat keeps every census number stable.
+  // official-papers.json is optional: courses predating the split have one file.
+  const officialPath = join(hub, course, "official-papers.json");
+  const sets = [
+    ...(JSON.parse(readFileSync(join(hub, course, "questions.json"), "utf8")) as BundleSet[]),
+    ...(existsSync(officialPath)
+      ? (JSON.parse(readFileSync(officialPath, "utf8")) as BundleSet[])
+      : []),
+  ];
   const curriculum = JSON.parse(readFileSync(join(hub, course, "curriculum.json"), "utf8")) as {
     nodes: CurriculumNode[];
   };
 
-  const source = `apps/hub/content/${course}/questions.json`;
+  const source = `apps/hub/content/${course}/{questions,official-papers}.json`;
   const parts = collectParts(sets);
   const census = computeCensus(course, source, sets, curriculum.nodes);
 

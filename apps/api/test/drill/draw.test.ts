@@ -127,9 +127,16 @@ describe("F-182 draw policies (P3..P5)", () => {
 
 const HUB = join(import.meta.dir, "../../../hub/content");
 const COURSE = "igcse-chemistry-19";
-const sets = JSON.parse(
-  readFileSync(join(HUB, COURSE, "questions.json"), "utf8"),
-) as BundleSet[];
+// The bank of record spans BOTH bundle planes (IA split): the SME topic sets
+// stay in questions.json (the exam-questions plane) while the 54 ADR-037
+// official paper sets live in official-papers.json (the past-papers plane).
+// The drill draws from the full anchored pool either way — concat preserves
+// the pre-split iteration order (topic sets first, official appended), so
+// every census number below is byte-stable vs the pre-split artifact.
+const sets = [
+  ...JSON.parse(readFileSync(join(HUB, COURSE, "questions.json"), "utf8")),
+  ...JSON.parse(readFileSync(join(HUB, COURSE, "official-papers.json"), "utf8")),
+] as BundleSet[];
 const curriculum = JSON.parse(
   readFileSync(join(HUB, COURSE, "curriculum.json"), "utf8"),
 ) as { nodes: { code: string; family: string }[] };
@@ -138,7 +145,12 @@ const censusOfRecord = JSON.parse(
 );
 
 describe("F-182 the chemistry bundle of record through the census", () => {
-  const census = computeCensus(COURSE, `apps/hub/content/${COURSE}/questions.json`, sets, curriculum.nodes);
+  const census = computeCensus(
+    COURSE,
+    `apps/hub/content/${COURSE}/{questions,official-papers}.json`,
+    sets,
+    curriculum.nodes,
+  );
 
   test("the committed census artifact equals a fresh recomputation (anti-drift pin)", () => {
     expect(census).toEqual(censusOfRecord);
@@ -147,7 +159,9 @@ describe("F-182 the chemistry bundle of record through the census", () => {
   test("the bundle reconciles with the ADR-037 wave-17 serving census", () => {
     // file-level: the two terminal unmapped questions (one official, one
     // topic-plane) do not build served refs, hence 82 sets / 999 built Q of
-    // record vs 1001 parsed here; parts 4011 parsed vs 4007 built.
+    // record vs 1001 parsed here; parts 4011 parsed vs 4007 built. The same
+    // 82 sets now live across TWO files (28 topic + 54 official) — the bank
+    // of record is the concat, so every count here is unchanged.
     expect(census.bundle).toEqual({
       sets: 82,
       officialSets: 54,
