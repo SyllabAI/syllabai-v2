@@ -20634,3 +20634,77 @@ Work Log:
 
 Stage Summary:
 - Operator's question answered of record: exact reproduction of the survivors is NOT what the in-flight run delivers (and cannot, by construction) — but the survivors are untouched and every checkable law on the new rows holds. OFFERED: (a) post-completion validation battery + basis reconciliation when the writer finishes; (b) the strict survivor-replay dry-run (rollback tx / COW) to honor the run-006 oracle law as evidence. LANE: STANDBY on the mark plane.
+
+
+---
+Task ID: 25-26-RESTORED (LEDGER REPAIR, session web-d0c9a0d3)
+Agent: main (Z.ai)
+Task: Restore the run-007 W1 knock-verification log entry dropped from the shared log; file the missing Task-27/28/29 records in the same repair. Operator "Proceed" trace 1a16f061f806ae29.
+
+Work Log:
+- INTEGRITY FINDING of record: pickaxe (git log -S 'Task ID: 25-26') proves the entry was ADDED by 4008e6ce (ancestor of main) and REMOVED by ca7ef93d (UIUX-TIER-B run-005 commit; sole parent 2aca7c98 already CONTAINED the entry; its worklog diff is +10/-31 lines, i.e. an active non-union tail rewrite, not a stale-base race). The of-record receipt .syllabai/receipts/T-OPS-PLANE-001/run-007-w1-knock-verification-r0.json was NEVER lost (verified present on main) — only the shared-log entry vanished. Intent of the removing commit NOT adjudicated from this lane; the byte-level facts stand as stated. Repair follows the LEDGER-REPAIR precedent: append-only restoration, byte-faithful body from 4008e6ce:.syllabai/worklog.md, no re-insertion at the original position.
+- ORIGINAL ENTRY RESTORED (byte-faithful from 4008e6ce):
+
+---
+Task ID: 25-26 (session web-d0c9a0d3)
+Agent: main (Z.ai)
+Task: W1 knock verification (operator URL knock trace 1a16cccfe17ba159) + bookkeeping re-establishment after sandbox recycle (PAT re-knock trace 1a16cd9e87535909)
+
+Work Log:
+- Sandbox recycle wiped the clone + /tmp tokens mid-lane; re-cloned syllabai-v2 main @ 4a4baec2 from the operator's fresh PAT (volatile-only 0600; rotation list unchanged)
+- W1 pooler URL knock honored READ-ONLY: psycopg2 probes (scripts/wh_probe*.py, sandbox-side), zero writes, zero DDL, zero content text egress, zero main contact
+- Verified of record: identity (project flat-leaf-09845356, PG 18.6, endpoint == W1 of record), wh-v1 template law (pgvector 0.8.6 + HNSW), warehouse_meta (course_group maths-4ma1, subject_id 763dfe2d… == run-006 registry row, source_fingerprint plane:88706faa… == run-003/run-006 id-hash, migrated_at 2026-10-23T18:44:28.832Z), census parity (8,202 == run-001 census exact; 330 docs; QP/MS/EQ 2,734 each; 2,400,494 tokens), embed coverage 6,872/8,202 @ 768 dims with 1,330 NULL (RPD-wall honest-skip class; Phase-D tranche 1 started on main f763cefe — quota contention live), sci-chem discriminator (zero seneca-like tables -> W1 is NOT the 4CH1 import home)
+- Filed receipt .syllabai/receipts/T-OPS-PLANE-001/run-007-w1-knock-verification-r0.json; discrepancy of record: pending 4CH1 seneca pack T1 (T-SENECA-001 run-004 rework, PR #316 MERGED 323d246 gates green) needs the SCI-CHEM warehouse URL (wh-v2 fragment) per run-003 ruling — awaiting sci-chem URL or explicit amendment word
+- Carried residuals unchanged from run-006: Vercel Hobby cap (window ~20:37Z 2026-10-24; deploy stage recycled with old sandbox — re-fire needs T-MIG-093 bundle rebuild), CI->Neon DNS wall (4 neon-replay failures), hub build red, PAT rotation overdue
+
+Stage Summary:
+- W1 verified LIVE and healthy post-cut-over: wh-v1 law intact, 8,202-row maths plane parity-clean, embed remainder 1,330 disclosed; receipt run-007 of record
+- Lane blockers now precisely: (1) sci-chem URL for the 4CH1 T1, (2) Vercel cap window + lever (pause hub console-side or upgrade) for the W1 deploy re-fire, (3) main URL at sci-chem T1 time; DB posture: W1 knocked, main still stood down
+
+---
+Task ID: 27-RECONSTRUCTED (session web-d0c9a0d3; filing consumed before push, re-written from the session of record)
+Agent: main (Z.ai)
+Task: Operator re-sent the SAME W1 pooler URL (trace 1a16cfa8b27b5fb9) — ambiguity adjudication.
+
+Work Log:
+- URL verified BYTE-IDENTICAL to the Task-25 knock (the first "DIFFERS" was a trailing-newline artifact of the comparison itself, resolved by appending the newline).
+- W1 re-probed READ-ONLY: state-delta ZERO vs run-007 of record (8,202 chunks unchanged, meta identical, zero seneca/wh-v2 tables, no console-side fragment) — a byte-identical re-send with zero state delta does NOT constitute amendment evidence.
+- MUTATION LAW HELD: no wh-v2 fragment, no import, no registry touch on W1. Fork presented to operator: (A) amendment word ("W1 for chem") -> placement amendment of record citing both knock traces, then 4CH1 T1 on W1; or (B) the sci-chem warehouse URL (a DIFFERENT ep-* prefix, expected) -> run-003 ruling executes unchanged, W1 stays maths-only.
+
+---
+---
+Task ID: 28
+Agent: main (Z.ai)
+Task: Operator "Check current state" (trace 1a16eb9171d7128d) — full status sweep
+
+Work Log:
+- Sandbox recycle #3 hit this turn (creds/venv/clone wiped; worklog + scripts dir survived): rebuilt creds 0600 volatile-only, psycopg2 2.9.13, clone at fresh tip 362c4ea9; compact probe persisted as scripts/wh_state_check.py
+- W1 probe (READ-ONLY): estate UNCHANGED — meta identical (wh-v1/maths-4ma1/plane:88706faa…/migrated_at 10-23T18:44Z), 8,202 chunks / 330 docs, kinds 3x2,734, embeds 6,872 done + 1,330 NULL (max embedded_at 10-23T12:48 = NO embed progress), zero seneca/wh-v2 tables
+- Main movement 4008e6ce..362c4ea9 (~25 commits): T-OPS-PLANE-001 run-008 T1 REFIRE + FLIP LIVE (deploy dpl syllabai-v2-iv8bt74ek READY @ 08:34:58Z, registry maths-4ma1 ASSIGNED->SERVING @ 08:24:50Z per receipt, prod health 200, cap window had passed 08:19Z); run-008 seam step-1 template arity repair (92899b49) landed live; run-009 re-fire check = nothing to fire; run-010 re-knock honored (fresh GITHUB_PAT + VERCEL_PAT to that lane, hub syllabai-hub-v2 paused=false); api runtime delta EMPTY -> deploy CURRENT, no redeploy owed
+- T-SENECA-001 unchanged: receipts end at run-004; PR #316 merged 323d246; pack CODE rode the run-008 prod bundle (seneca reads hit SYLLABAI_WAREHOUSE_URL_SCI_CHEM = NULL seam -> honest 503 warehouse_unavailable until sci-chem lands); data T1 blocked on sci-chem URL (+ main URL at parity leg)
+- Fleet: PRs #347/#348/#351/#352/#353/#354 merged (UGM lanes 8+8a image plane 976 figures, voice-retrofit r2, ADR-039 copy audit, bakes 044/045/046, past-papers IA 54 sets); 4MB1 pblock claim + Tier-B run-005; substrate residue wave run-002 EXECUTED; NEON-DB-LOSS run-011 = UNCLAIMED WRITER escalation on MP-REBUILD (operator adjudication owed)
+
+Stage Summary:
+- W1: T1 COMPLETE, SERVING LIVE IN PRODUCTION (of record via run-008/009/010; my run-007 knock verification preceded it); estate stable; 1,330-row embed remainder still owed
+- 4CH1 pack: code LIVE in prod (fail-loud 503 posture by design), data T1 awaits sci-chem URL — the last un-provisioned ruled plane; W1 is the complete end-to-end precedent
+- Needs queue: (1) sci-chem URL -> 4CH1 T1, (2) MP-REBUILD unclaimed-writer adjudication, (3) embed-completion window (1,330; coordinate with Phase-D tranche), (4) PAT rotation class-wide
+
+- RE-FILE PROVENANCE: the Task-28 sweep above was filed local-only (sandbox side) and never pushed; re-filed here byte-faithful per the incremental-commit law (the run-009 lesson).
+
+---
+Task ID: 29 (session web-d0c9a0d3)
+Agent: main (Z.ai)
+Task: Operator "Proceed" (trace 1a16f061f806ae29) — delta sweep since Task 28 + ledger-integrity repair (this commit).
+
+Work Log:
+- Environment ALIVE this turn (no recycle: /tmp creds 0600 intact, clone intact, venv/psycopg2 2.9.13 intact). gh CLI missing from PATH (recycle artifact) — GitHub REST via curl used instead; stored PAT auth 200.
+- W1 re-probe (scripts/wh_state_check.py, READ-ONLY, zero writes): state-delta ZERO vs Task 28 — warehouse_meta identical (wh-v1 / maths-4ma1 / plane:88706faa… / migrated_at 2026-10-23T18:44:28.832Z), 8,202 chunks / 330 docs, kinds 3x2,734, embeds 6,872 done + 1,330 NULL (max embedded_at 2026-10-23T12:48:28 = NO embed progress), zero seneca/wh-v2 tables. Estate stable under live production serving.
+- Main moved 362c4ea9..b62e66df (4 commits): T-BOOK-047 bake u2:c14 Reactivity series (lessons-index 13->14 additive, G4 x14 GREEN, 4 suites 34/34) + b62e66df A2-loop fix (probe ALL packs; 14/14 serving status=published, 25 probes exit 0); NEON-DB-LOSS run-012 oracle reproduction check on the in-flight rebuild (VERDICT of record: parallel-half rebuild, ZERO shared keys vs survivors = the strict run-006 shared-key oracle law structurally disengaged in that run; survivors 14,141 EXACT re-proved twice; writer rows healthy per G1 sum-law 21,736/21,736 EXACT, 0 true orphans, 0 duplication; +395 aggregate disclosed, writer's census owns reconciliation); ADR-037 update via PR #355.
+- PR #316 re-verified MERGED of record (state closed/merged, 323d246, 2026-10-23T23:31:31Z). Open PRs on main: #352/#303/#296/#285 — none this lane's, none sci-chem-related.
+- LEDGER REPAIR (this commit): run-007 entry restored byte-faithful + Task 27 reconstructed + Task 28 re-filed, provenance in the entries above. ca7ef93d's non-union worklog write disclosed of record.
+- W1 serving state re-affirmed from run-008/009/010 receipts (not re-probed live this turn): registry maths-4ma1 = SERVING since 2026-10-24T08:39:16Z, deploy syllabai-v2-qxxki2a8e READY, final deployed-app ask verified (200 / evidenceCount 6 / groq / 3.58s), revert = registry->ASSIGNED instant. Cap window open per run-010 (62/100); hub syllabai-hub-v2 paused=false.
+
+Stage Summary:
+- W1: LIVE, stable, state-delta zero across two consecutive sweeps (Task 27 reconstruction + this turn's probe). Posture UNCHANGED — lane blockers: (1) 4CH1 data T1 waits on the sci-chem URL OR the amendment word (the Task-27 fork remains open, no movement in the 4 new commits); (2) embed-completion pass (1,330 rows) waits on a quota window coordinated with Phase-D tranche-1 (f763cefe contention live).
+- Mark-plane rebuild work belongs to the NEON-DB-LOSS lane per run-011/012 (writer owes receipts; operator adjudication of record still owed). This lane wrote ZERO rows on any plane this turn.
+- Discipline held: zero writes to W1, zero main contact, zero content-text egress, creds never echoed, fetch-first push, no force. Receipt: .syllabai/receipts/T-OPS-PLANE-001/run-013-ledger-repair-state-sweep-r0.json
