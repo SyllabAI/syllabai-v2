@@ -20708,3 +20708,4 @@ Stage Summary:
 - W1: LIVE, stable, state-delta zero across two consecutive sweeps (Task 27 reconstruction + this turn's probe). Posture UNCHANGED — lane blockers: (1) 4CH1 data T1 waits on the sci-chem URL OR the amendment word (the Task-27 fork remains open, no movement in the 4 new commits); (2) embed-completion pass (1,330 rows) waits on a quota window coordinated with Phase-D tranche-1 (f763cefe contention live).
 - Mark-plane rebuild work belongs to the NEON-DB-LOSS lane per run-011/012 (writer owes receipts; operator adjudication of record still owed). This lane wrote ZERO rows on any plane this turn.
 - Discipline held: zero writes to W1, zero main contact, zero content-text egress, creds never echoed, fetch-first push, no force. Receipt: .syllabai/receipts/T-OPS-PLANE-001/run-013-ledger-repair-state-sweep-r0.json
+ops(R0-AUTO): receipt — PR #356 merged 1aec820, gates green (bookkeeping)
