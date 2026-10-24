@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { loadHubCourse } from "@/lib/courses";
 import { Breadcrumbs, ExamCodePill } from "@/components/hub/chrome";
 import { ResourcePanel } from "@/components/hub/resource-panel";
@@ -25,7 +25,18 @@ export default async function QuestionSetPage({
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
   const topic = hub.questionTopics.find((t) => t.slug === topicSlug);
-  if (!topic) notFound();
+  if (!topic) {
+    // ADR-037 official papers left the exam-questions plane (IA decision —
+    // Past Papers carries the interactive view). Legacy deep links to
+    // /exam-questions/official-4ch1-1c-<series> redirect to the paper's
+    // interactive player instead of 404ing.
+    const m = topicSlug.match(/^official-4ch1-1c-(\d{4})-(\d{2})$/);
+    const month = m ? { "01": "january", "06": "june", "11": "november" }[m[2]] : undefined;
+    if (m && month) {
+      redirect(`/courses/${slug}/past-papers/${month}-${m[1]}-4ch1-1c`);
+    }
+    notFound();
+  }
 
   const { meta } = hub;
   const subtopicCode = Object.entries(hub.setsBySubtopic).find(([, slugs]) =>
