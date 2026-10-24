@@ -20871,3 +20871,18 @@ Work Log:
 
 Stage Summary:
 - The maths-B conversion corpus stands at 58/66 (88%) with every glyph mapping render-evidenced and the residual disclosed. Next: the 8 residual loop rounds (or the OCR layer for 2019-01), the C0 operator adjudication, then H2 comparison + H3 cutover - after which the SME-style maths-b bundle retirement becomes safe. T-MIG-141 unchanged: Phase D drain still PAUSED on the operator key decision (4,002 rows).
+
+---
+Task ID: SIB-LIBRARY-003 (operator directive trace 1a16f9049652673d: "SubjectIntelligence will host all courses not just 4ch1")
+Agent: main (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Base commit: 136d56c8 (fetched-first; origin advanced 425752d1 -> 136d56c8 with sibling T-C20 worklog-only entry, rebased clean, zero collision)
+
+Work Log:
+- Cross-repo lane of record (no v2 app code touched): syllabai-resources 075b30a2, ls-remote-verified. Full detail: resources@SubjectIntelligence/WORKLOG.md (SIB-LIBRARY-003).
+- ALL-COURSES GENERALIZATION: SubjectIntelligence is now the library of record for EVERY course, not just 4CH1. COURSES.yaml registry generated programmatically from Official-Specifications/manifest.json of record (56 qualification documents / 93 SME courses, missing none): 1 ONBOARDED + 55 PLANNED (spec codes/issues verbatim; slug-based exclusion — modular/double-award share 4CH1 codes but are distinct spec DOCUMENTS, sha1-verified) + 1 LEGACY declared (CHEMISTRY_4CH0: corpus PRESENT in canonical repos, library NOT scaffolded — no speculative dirs). Library-unit law: one SI library per qualification spec document.
+- PIPELINE: templates/course/ pack + pipeline/new_course.py fail-closed instantiator (name contract, overwrite refusal, optional taxonomy-driven 95-row manifest with HIS=OPTIONAL default + pin commit of record). VALIDATOR-CERTIFIED: test instantiation BIOLOGY_4BI1 @ tools.sib.cli validate-manifest aa32db1413ea = exact validated CHEMISTRY_4CH1 shape (95 rows / 88 REQUIRED / 7 OPTIONAL / 0 shape issues / 88×SIB-MANI-007 truthful-empty-library); negative tests GREEN; test tree deleted after certification (no speculative library of record).
+- DOCS: README all-courses charter (catalog + naming contract + roster 1/1/55), PIPELINE.md generalized per-course, COURSE_ONBOARDING.md NEW (3 laws + 6 steps), SOURCE_REQUIREMENTS_TEMPLATE.md NEW (the operator's 4CH1 requirements generalized to every course, limitation law verbatim). Reorg (git mv, history kept): the three 4CH1-specific docs moved INTO CHEMISTRY_4CH1/ (SOURCE_REQUIREMENTS.md, INVENTORY_2026-10-25.md + ADDENDUM) — course-owns-its-docs; stale references patched + grep-verified.
+- Sources, canonical planes, other quadrants, mark_points: zero contact.
+
+Stage Summary:
+- SubjectIntelligence = ALL-COURSES SI library of record: registry + validator-certified instantiator + generalized docs; onboarding any next course = docs/COURSE_ONBOARDING.md (one instantiator run + inventory sweep + gates). CHEMISTRY_4CH1 remains the validated worked example (BL-003 notebook provisioning → CUR-01..CUR-08 unchanged as the next build run).
