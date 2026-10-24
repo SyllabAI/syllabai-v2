@@ -1,0 +1,47 @@
+{
+ "receipt": "substrate-residue-wave-run-002-r0",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T3-SUBSTRATE-1",
+ "operatorOrder": "authorize the committed-substrate residue wave (IM trace 1a16d32a82bb92e5, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — opens the operator gate recorded at run-001 (substrate-harvest-fix-run-001-r0.json residual: 'the committed-substrate residue wave (operator-gated): 5,071 files / 51,220 structural hits fleet-wide (2,343 files / 21,104 hits CIE-scoped) — the standing instrument (this port, run per-lane) + the fleet census map are the ready inputs')",
+ "agent": "main (zai-web)",
+ "generatedUtc": "2026-10-24T09:30:00Z",
+ "theWave": {
+  "landedAt": "SyllabAI/syllabai-resources main cc6cca61ac0cb9a991b9d0094a6444b9b2e7f99a (base e9a7aeae, fetch-first no force; fast-forward e9a7aeae..cc6cca61; post-push ls-remote verified)",
+  "scope": "4,342 SME content carriers rewritten in place (SME-RevisionNotes 2,369 / SME-ExamQuestion 1,681 / SME-Flashcards 292; 70 of the 76 structural lanes; multi-pass fixpoint includes 5 second-pass files), 78,323 speech units converted: 74,014 $-KaTeX + 4,309 plain-collapse",
+  "instrument": "the standing instrument sme_speech_transpile.py @ e2f17bb (GENERAL variant transpile_alt) — UNTOUCHED this run; per-span invocation with byte-exact span surgery",
+  "laws": "NO-GUESS trigger (STRONG speech markers OR literal ' space ' token); fail-closed (no confident conversion -> legacy backticked speech verbatim); macro de-normalization guard; _katex_approx_ok 8-clause rung gate; the econ-scoped straight x/X -> \\times override deliberately absent (run-001 law)"
+ },
+ "censusValidation": {
+  "carrierDefinition": ".md + .json under the 3 SME trees = 26,699 (13,923 md + 12,776 json) — EXACT vs run-001 receipt",
+  "treeIdentityProof": "the 3 SME trees are tree-sha-identical across census pin 54c0534, the run-001 commit parent 17865971, the pre-apply tip 703adaf5 and the apply base 3e0fba4a (git trees API + local git rev-parse) — the run-001 pin figures bind the wave base byte-for-byte",
+  "structuralIdentitiesReproduced": "5,071 files / 76 lanes / CIE 2,343 files / 34-of-44 CIE lanes — ALL FOUR EXACT vs run-001 aggregates (gate-exact verify_corpus_23a grammar over parsed strings; per-file ledger of record: census_ledger_BEFORE.jsonl, 26,699 rows)",
+  "hitsSemanticsDisclosure": "the run-001 per-class hits aggregates (full-MARK 109,367 / structural 51,220) are NOT byte-reproducible: the run-001 census scripts were session-local (recycled) and their hit-count semantics are unrecoverable; run-002 recomputed file/lanes EXACT and publishes explicit per-class hit semantics in its ledger — the operative wave scope (files/lanes) is pinned either way"
+ },
+ "method": {
+  "jsonCarriers": "indent-1 round-trip-verified re-serialization (2,855 files; per-file original-bytes round-trip gate before any write; ensure_ascii=False; trailing-newline preserved)",
+  "canonicalFamily": "ial-chemistry-17/canonical/*.canonical.json (10 files) use a different serialization convention (2-space, ' : ' separators) — round-trip gate correctly refused; handled by verified escaped-literal surgery: per converted string pair, replace the full JSON literal json.dumps(old) with json.dumps(new) in raw bytes, gated by (a) replacement count == parsed-tree value-occurrence count, (b) re-parse, (c) parse-level idempotence; one file (4-4-1-equilibrium-constant-kc) initially held by the occurrence gate — root cause was duplicate identical values appearing twice in the pair list (the first replace already covered all occurrences); after a duplicate-pair dedupe fix the file landed verified 1/1",
+  "markdownCarriers": "raw span surgery; markdown code fences (```/~~~) skipped (0 encountered in spans); multiline spans attempted under the same gates (2,829 units — the table/gathered class converts with \\\\ row separators; physical-line compression is the intended semantic form, KaTeX-legal)",
+  "kept": "13,188 non-trigger spans (prose-code etc., NO-GUESS law) + 26 fail-closed keeps (instrument refused, legacy speech preserved) + DOLLAR spans / textwrap class / full-MARK-only files (outside the structural scope of record) untouched"
+ },
+ "verification": {
+  "fixedPoint": "pass-5 dry re-scan of the full 5,071-file estate: 0 files changed / 0 conversions / 0 fallback failures — the applied state is a byte fixed point of the instrument (passes 1-4 converged 4,341 -> 4 -> 1 -> 0 additional files as neighbor-span structures re-formed)",
+  "battery": "sme_speech_transpile_test.py ALL GREEN (84 pinned / 6 negatives / 12 guard cases; instrument untouched)",
+  "provenanceChain": "full hop-chain 4,342/4,342 files: HEAD blob sha == first-hop sha_before, hops continuous, worktree bytes == final sha_after (sha256, all four pass ledgers)",
+  "gitScope": "exactly 4,342 SME-* paths modified, zero non-SME contact (git status/diff)",
+  "censusAfter": "structural files 5,071 -> 2,240 (CIE 2,343 -> 1,074), backticked MARK spans 80,744 -> 8,603 (-89%), multiline spans 2,875 -> 234, strong occurrences 246,648 -> 58,162, dollar class 202 -> 30; baretext strings 19,232 -> 18,461 (out of span-surgery scope as run-001 framed)",
+  "remoteVerification": "3 SME tree shas CHANGED at cc6cca61; spec-links/ + Official-Specifications tree shas SAME (zero-contact held); raw.githubusercontent spot-checks byte-equal to the worktree on a converted md and the canonical-family json"
+ },
+ "zeroContact": "zero spec-links/registry/index/sidecar/manifest/graph contact; zero scraper behavior change (scripts/ untouched); zero Official-*/CourseLessons/UGM contact; zero v2 content contact (the v2 consume lane absorbs the SME tree delta at its next pin advance per the standing consume-law — expected, not part of this run); zero DB/Vercel/LLM contact",
+ "residuals": [
+  "2,240 structural-flagged carriers retain speech-class hits: the baretext class (scrape lost formatting — re-scrape territory, ~18.4k strings), the 26 fail-closed keeps, and plain-collapse outputs retaining readable grammar tokens (of-record rung behavior)",
+  "the run-001 hits-aggregate semantics unrecoverable (disclosed above; run-002 ledger is the explicit method of record)",
+  "scripts-tests.yml push trigger still corrupted ('branches: ain]') — operator-scoped, NOT self-granted; CI verified via workflow_dispatch run 40085179154 @ cc6cca61",
+  "PAT rotation CRITICAL-OVERDUE (standing disclosure)"
+ ],
+ "artifacts": {
+  "resourcesCommit": "cc6cca61ac0cb9a991b9d0094a6444b9b2e7f99a",
+  "ciRun": "40085179154 (workflow_dispatch scripts-tests @ cc6cca61)",
+  "laneSide": "census_ledger_BEFORE.jsonl (26,699 rows) + census_ledger.jsonl (after) + census_r0.json + wave_apply_ledger_pass1..4.jsonl (hop-continuous) + wave_plan_summary.json + carrier_paths.txt + sme_tree_inventory.txt + driver scripts substrate_wave_census_r0.py / substrate_wave_apply_r0.py (session workdir)"
+ },
+ "trace": "1a16d32a82bb92e5"
+}
