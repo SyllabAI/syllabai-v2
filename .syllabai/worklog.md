@@ -20886,3 +20886,20 @@ Work Log:
 
 Stage Summary:
 - SubjectIntelligence = ALL-COURSES SI library of record: registry + validator-certified instantiator + generalized docs; onboarding any next course = docs/COURSE_ONBOARDING.md (one instantiator run + inventory sweep + gates). CHEMISTRY_4CH1 remains the validated worked example (BL-003 notebook provisioning → CUR-01..CUR-08 unchanged as the next build run).
+
+---
+Task ID: T-OPS-PLANE-001 run-014 (operator order trace 1a16fad0841d9a6d: "Can you explain the next decisions. And also check the current state")
+Agent: main (Z.ai, zai-web session web-590847c1-cf63-4098-b0c8-a90085355429)
+Base commit: 4d57ff3 (fetch-first from stale 0b02f88 local ref; ff, no divergence)
+
+Work Log:
+- Sandbox recycled again: prior-stage repos/scripts consumed (run-009's original receipt already re-filed by run-010 with provenance — lesson held); surviving v2-ops residue (Oct-23 era, detached 8d1c390) LEFT UNTOUCHED; fresh worktree from origin/main 4d57ff3 for this filing.
+- Fetch-first MATERIAL finding: run-009/run-010/run-013 already of-record — the credentialed re-knock lane was COVERED; this run = post-run-013 re-measure only, zero duplicate filings.
+- Vercel re-measure (vcp_ PAT, read-only): rolling-24h 53/100 OPEN (margin 47; was 62 @ run-010); hub dpl_74NYZvFq READY 20:34:40Z = tip 4d57ff3 auto-bake (lag ~3s); api dpl_C2hsDCz READY 19:33:47Z = seneca run-006 GITSOURCE-incident restore of record (trapped dpl_9fsQxzj READY-but-functionless superseded); both carriers not-paused; pause lever still operator-side.
+- Public wire: hub health 200 coreConfigured; lessons-index 16 packs EXACT (u1:c01-c10 + u2:c11-c16); u2:c16 published 9 sections (wire 33,810B vs receipt 34,506B noted, not drift-flagged); api /actuator/health 200 UP.
+- T1 probe (token-free script, probe learner r0-t1refirecheck2@syllabai.probe disclosed): scoped ask 4MA1-2016 -> 200 / 5.44s / refused false / evidenceCount 6 / citations 6 / groq openai/gpt-oss-120b = BASELINE-EXACT vs run-008/run-009 scalars.
+- VERDICT: nothing to fire / no rebuild. needs_queue: run-013's list minus sci-chem word (RESOLVED by seneca run-006 of-record) + MP-REBUILD adjudication + embed 1,330 rows + T-MIG-141 Phase-D operator key + PAT rotation (URGENT — full-scope GitHub PAT chat-transited this turn).
+- Tokens volatile-only (inline argv/URL, never printed/persisted; scrub-verified post-push). Writes: 1 probe learner + 1 scoped ask + .syllabai/** bookkeeping only. Receipt: .syllabai/receipts/T-OPS-PLANE-001/run-014-credentialed-statecheck-wire-r0.json; incremental-commit same-turn push.
+
+Stage Summary:
+- Fleet estate VERIFIED CURRENT end-to-end on the wire: tip-baked hub, restored api carrier, 16-pack content plane, T1 seam baseline-exact, cap open with margin. Lane IDLE pending operator decisions (rotation first; then the run-013 queue).
