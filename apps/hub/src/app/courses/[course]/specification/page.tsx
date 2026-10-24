@@ -62,7 +62,7 @@ export default async function CourseSpecificationPage({
         meta={meta}
         title={`${meta.subject} ${meta.code} — specification explorer`}
         crumb="Specification"
-        description={`Every ${stats.specPoints} specification statement with its printed assessment home — filter by paper, unit or tier exactly as Pearson assesses them. Statements are the parsed specification text verbatim.`}
+        description={`Every ${stats.specPoints} specification statement with its printed assessment home — filter by paper, unit or tier exactly as Pearson assesses them. Statements are the parsed specification text as printed.`}
       />
       <div className="mt-6">
         <SpecificationExplorer topics={topics} totalPoints={stats.specPoints} />
