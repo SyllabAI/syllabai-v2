@@ -186,7 +186,7 @@ export function SpecificationExplorer({ topics, totalPoints }: Props) {
         <Card>
           <CardContent className="p-6 text-sm text-muted-foreground">
             Paper/unit applicability has not been derived for this course yet — the
-            statements below are the parsed specification, verbatim.
+            statements below are the parsed specification, as printed.
           </CardContent>
         </Card>
       ) : (
