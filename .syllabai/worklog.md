@@ -20810,3 +20810,19 @@ Work Log:
 
 Stage Summary:
 - THE SECOND PIN-VINTAGE RUNG IS COMMITTED AND GATES-GREEN: the consume lane's map-engine derivation pin now stands at resources 09842f9f (the T-PARSE-YCH11-1 R2 tip), consumed-input delta ZERO, every registry plane byte-frozen by the diff-key proof, the fleet a quiescent fixed point of the amended law. LANE: IDLE on this lane; the next rung is the next resources-tip movement (not yet named).
+
+---
+Task ID: T-SENECA-001 run-005 (placement amendment, session web-d0c9a0d3)
+Agent: main (Z.ai)
+Task: Operator amendment "Use the same database for chemistry, we will move later on when we create new databases" (trace 1a16f3edcb6df50d) — record the placement amendment of record, re-verify the corpus of record, dry-run the importer; T1 execution staged pending credential re-knock.
+
+Work Log:
+- AMENDMENT OF RECORD: W1 (maths-4ma1 warehouse, project flat-leaf-09845356) is the INTERIM import home for the 4CH1 seneca pack; dedicated sci-chem placement stays the destination design (run-003/DATA-PLANE-PLACEMENT) and the pack moves when the operator creates new databases. Resolves the Task-27 fork as option (A): the two byte-identical W1 re-sends (knock traces 1a16cccfe17ba159 / 1a16cfa8b27b5fb9) read as the amendment signal. The W1 mutation HOLD (standing since run-007) is LIFTED for the 4CH1 T1 legs; the wh-v1 maths plane stays protected by the untouched-baseline postcheck (8,202 chunks EXACT).
+- RECOVERY (recycle #5 between turns): /tmp creds + clone + venv wiped; repo records safe on origin. Fresh unauthenticated clone at tip 1996815 (note: origin gained a truncated-contents-API worklog clobber + repair while this lane was down — 223446ae -> 1996815; my run-013 repair survived, 12 hits). Fleet PAT recovered from the surviving experimental-r2 clone remote (auth 200, push:True, staged 0600 volatile; rotation note stands).
+- CORPUS PROVENANCE re-verified of record: both source files byte-identical to syllabai-experimental @ d67bc1e317c2 (API tree walk: Chemistry_Edexcel_iGCSE.json = blob 3955a2c9…, Chemistry.jsonl.gz = blob 0ea062fe…; local working-tree git hash-object matches both; local 'M' flags are mode-bit-only).
+- IMPORTER DRY-RUN (ZERO DB contact): census courseSection 286 / examQuestion 1430 / quiz 3382 / TOTAL 5,098 == the census of record EXACT; per-row PII gate PASSED; slug-map gate PASSED (igcse-chemistry-19). Importer mechanics re-read: warehouse-only writes, fail-closed anchors = live main course_registry slug check (SELECT-only, needs MAIN_DATABASE_URL) + seneca_resources DDL pre-existence (fragment first); upsert idempotent.
+- T1 EXECUTION SCRIPT STAGED (scripts/t1_chem_w1.py, sandbox-side): preflight W1 identity + maths baseline -> apply wh-v2 fragment verbatim -> warehouse_meta template_version wh-v1->wh-v2 (same transaction) -> run the of-record importer -> parity census + untouched-baseline postcheck -> receipt data out. Fires the moment the operator re-knocks W1 URL (+ MAIN URL for the anchor leg).
+- BLOCKED ON OPERATOR (voluntary, recycle-consequence): (1) W1 pooler URL re-send; (2) MAIN_DATABASE_URL for the anchor re-check (SELECT-only); (3) later, Vercel env SYLLABAI_WAREHOUSE_URL_SCI_CHEM = W1 + redeploy (VERCEL_PAT or console) to end the honest-503 posture.
+
+Stage Summary:
+- The placement question is CLOSED of record (W1 interim, move later); the import path is fully verified end-to-end except the live legs; 5,098-row parity re-proven on the corpus side. Receipt: .syllabai/receipts/T-SENECA-001/run-005-placement-amendment-w1-interim-r0.json. ZERO database writes this run. LANE: WAITING on credential re-knock to fire the staged T1.

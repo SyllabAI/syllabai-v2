@@ -1,0 +1,28 @@
+{
+ "run": "run-005",
+ "task": "T-SENECA-001",
+ "at": "2026-10-24T18:4xZ (operator order received; filed same turn)",
+ "operator_order": {
+  "trace": "1a16f3edcb6df50d",
+  "verbatim": "Use the same database for chemistry, we will move later on when we create new databases"
+ },
+ "amendment_of_record": {
+  "what": "PLACEMENT AMENDMENT to the run-003 ruling: the 4CH1 seneca pack's interim import home is W1 (the maths-4ma1 course-group warehouse, project flat-leaf-09845356, endpoint ep-calm-queen-az36lppq-pooler.c-3.ap-southeast-1.aws.neon.tech) \u2014 NOT a dedicated sci-chem warehouse",
+  "deferred": "a dedicated sci-chem database (wh-v2-native) remains the destination design per run-003/DATA-PLANE-PLACEMENT; the operator will create new databases later and the pack moves then (re-placement leg of record, owed by operator ordering a future run)",
+  "fork_resolution": "resolves the Task-27 fork in favor of option (A) \u2014 the two byte-identical W1 URL re-sends (knock traces 1a16cccfe17ba159 and 1a16cfa8b27b5fb9) are hereby interpretable as the amendment signal; option (B) (separate sci-chem ep-* URL) is NOT taken",
+  "mutation_law": "the W1 mutation HOLD (wh-v2 fragment / import / registry touch withheld since run-007) is LIFTED for the 4CH1 T1 legs on W1 under this amendment; the wh-v1 maths plane remains protected by the untouched-baseline postcheck (8,202 chunks must remain EXACT after the T1)",
+  "template_law_note": "applying the fragment to W1 makes it wh-v2 by the template law (wh-v2 := frozen wh-v1 + fragment, warehouse_meta template_version bumped in the same transaction; no ALTER beyond the fragment)"
+ },
+ "t1_prep_evidence_this_run": {
+  "sandbox_recovery": "recycle #5 struck between turns (W1 URL + prior PAT + clone lost; repo records safe on origin) \u2014 fresh unauthenticated clone at origin tip 1996815; credential recovered from the surviving experimental-r2 clone remote (fleet PAT of record, auth 200, push:True on syllabai-v2, staged 0600 volatile)",
+  "corpus_provenance": "source corpus re-verified BYTE-IDENTICAL to the of-record commit SyllabAI/syllabai-experimental @ d67bc1e317c2912923e2b021c31b68aadca138ac via API tree walk: Chemistry_Edexcel_iGCSE.json blob 3955a2c9450505e70d27fed8dba84ed165bfab75 and by-subject/Chemistry.jsonl.gz blob 0ea062fef340a805af19d37594af632f9f44c893 both match the local working tree (local 'M' flags are mode-bit-only, 644->755)",
+  "dry_run_census": "importer --dry-run (ZERO DB contact): courseSection 286, examQuestion 1430, quiz 3382, TOTAL 5,098 == the census of record EXACT; per-row PII gate PASSED (0 leaks); slug-map gate PASSED (igcse-chemistry-19 in apps/hub/content/courses.json)",
+  "importer_mechanics_verified": "writes go to the WAREHOUSE only (SYLLABAI_WAREHOUSE_URL_SCI_CHEM); fail-closed anchors: live main course_registry must contain igcse-chemistry-19 (SELECT-only via MAIN_DATABASE_URL), seneca_resources DDL must pre-exist (wh-v2 fragment applied first); upsert idempotent"
+ },
+ "blocked_on_operator": [
+  "W1 pooler URL re-send (lost with recycle #5; the two prior knocks are volatile-only by design)",
+  "MAIN_DATABASE_URL for the fail-closed course_registry anchor re-check (SELECT-only; main remains stand-down otherwise)",
+  "after data lands: Vercel env SYLLABAI_WAREHOUSE_URL_SCI_CHEM = W1 URL + redeploy (VERCEL_PAT or operator console) to end the honest-503 posture"
+ ],
+ "writes": "ZERO database writes this run (bookkeeping-only)"
+}
