@@ -20518,3 +20518,19 @@ Work Log:
 
 Stage Summary:
 - THE SUBSTRATE-SIDE HARVEST FIX IS OF RECORD: future harvests emit KaTeX at the alt-ONLY fallback (fail-closed) instead of backticked Wiris speech — the corpus-gate re-trigger class dies at the source. Committed substrate corpus NOT rewritten (the operator-gated residue wave: 5,071 files fleet-wide / 2,343 CIE-scoped; census map + per-lane instrument ready as inputs). Residuals: the residue wave (operator-gated), 88 KaTeX-edge classes (downstream-enforced), corrupted scripts-tests.yml push trigger (operator-scoped), PAT rotation CRITICAL-OVERDUE. Receipt: .syllabai/receipts/CIE-INTEGRATION/substrate-harvest-fix-run-001-r0.json. LANE: IDLE.
+
+---
+Task ID: 25-26 (session web-d0c9a0d3)
+Agent: main (Z.ai)
+Task: W1 knock verification (operator URL knock trace 1a16cccfe17ba159) + bookkeeping re-establishment after sandbox recycle (PAT re-knock trace 1a16cd9e87535909)
+
+Work Log:
+- Sandbox recycle wiped the clone + /tmp tokens mid-lane; re-cloned syllabai-v2 main @ 4a4baec2 from the operator's fresh PAT (volatile-only 0600; rotation list unchanged)
+- W1 pooler URL knock honored READ-ONLY: psycopg2 probes (scripts/wh_probe*.py, sandbox-side), zero writes, zero DDL, zero content text egress, zero main contact
+- Verified of record: identity (project flat-leaf-09845356, PG 18.6, endpoint == W1 of record), wh-v1 template law (pgvector 0.8.6 + HNSW), warehouse_meta (course_group maths-4ma1, subject_id 763dfe2d… == run-006 registry row, source_fingerprint plane:88706faa… == run-003/run-006 id-hash, migrated_at 2026-10-23T18:44:28.832Z), census parity (8,202 == run-001 census exact; 330 docs; QP/MS/EQ 2,734 each; 2,400,494 tokens), embed coverage 6,872/8,202 @ 768 dims with 1,330 NULL (RPD-wall honest-skip class; Phase-D tranche 1 started on main f763cefe — quota contention live), sci-chem discriminator (zero seneca-like tables -> W1 is NOT the 4CH1 import home)
+- Filed receipt .syllabai/receipts/T-OPS-PLANE-001/run-007-w1-knock-verification-r0.json; discrepancy of record: pending 4CH1 seneca pack T1 (T-SENECA-001 run-004 rework, PR #316 MERGED 323d246 gates green) needs the SCI-CHEM warehouse URL (wh-v2 fragment) per run-003 ruling — awaiting sci-chem URL or explicit amendment word
+- Carried residuals unchanged from run-006: Vercel Hobby cap (window ~20:37Z 2026-10-24; deploy stage recycled with old sandbox — re-fire needs T-MIG-093 bundle rebuild), CI->Neon DNS wall (4 neon-replay failures), hub build red, PAT rotation overdue
+
+Stage Summary:
+- W1 verified LIVE and healthy post-cut-over: wh-v1 law intact, 8,202-row maths plane parity-clean, embed remainder 1,330 disclosed; receipt run-007 of record
+- Lane blockers now precisely: (1) sci-chem URL for the 4CH1 T1, (2) Vercel cap window + lever (pause hub console-side or upgrade) for the W1 deploy re-fire, (3) main URL at sci-chem T1 time; DB posture: W1 knocked, main still stood down
