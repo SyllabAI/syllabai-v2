@@ -20925,3 +20925,18 @@ Work Log:
 
 Stage Summary:
 - RUN-002 LANDING NOW FULLY OF RECORD: pin 09842f9f, CI 2/2 bounded-confirmed at 200b4c06, receipt byte-exact (ab2fe969), Fire-order target ac1fc90b proven covered, consume fleet a quiescent fixed point (idempotence changed=0/44). LANE: IDLE — the next rung (09842f9f -> resources tip) awaits the operator order.
+
+---
+Task ID: SIB-LIBRARY-004 / SIB BL-005 (operator trace 1a16fa5034655795: "There are some documents in official pearson website. (e.g coursematerials Teaching-and-learning-materials) what about these?")
+Agent: main (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Base commit: 73a59412 (fetched-first; 8 sibling commits since 4d57ff3 absorbed clean by rebase — T-UGM-HUB-CONSUME-9, T-SENECA-001, T-OPS-PLANE-001, T-RULE-T3 pin-advance, T-BOOK-050 bake + others; worklog append-only preserved)
+
+Work Log:
+- Cross-repo lane of record (no v2 app code touched): syllabai-resources b27d4a3c, ls-remote-verified (rebased on 4-commit sibling advance c2d6b943 family — zero path overlap). Full detail: resources@SubjectIntelligence/WORKLOG.md (SIB-LIBRARY-004 / BL-005) + CHEMISTRY_4CH1/INVENTORY_ADDENDUM_2026-10-25-TL.md.
+- The operator-pointed Pearson coursematerials Teaching-and-learning-materials category executed: page's own Algolia catalog swept (239 rows: 173 exam / 60 T&L / 4 spec+SAM / 2 page); 30 official files acquired + identity-verified (PDF magic + printed-text / ZIP CRC + OOXML) and placed in resources Official-Specifications/igcse-chemistry/ (teaching-and-learning-materials/ + SAMs + series notice, per-file provenance teaching-materials.json; outside manifest.json scope by the legacy-dir law); 209 rows disclosed-not-taken with per-row dispositions (143 already-of-record in pastpapers, 35 training packs ungated-bulk-class, 25 silver-gated 401, admin).
+- Six-groups scoreboard 5 PRESENT + 1 PARTIAL: group 2 (teaching/support) PRESENT via official scheme of work + guides + course planner; group 6 (practical/reference) PRESENT via 211pp core practicals guide + terminology + lab setup; GAP-SRC-004 RESOLVED, GAP-SRC-003 narrowed to the optional standalone data sheet (LOW). The one PARTIAL is examiner reports — every session with a public ER is already covered; residuals are Pearson publishing gaps, disclosed, never fabricated.
+- Validator gate re-run: tools.sib.cli validate-manifest @ syllabai aa32db1413ea — SHAPE CLEAN (95 rows, 0 shape errors; 88 truthful-empty + designed gap/backlog disclosures).
+- Sources stay canonical (pastpapers untouched this run); canonical planes, other quadrants, mark_points: zero contact.
+
+Stage Summary:
+- 4CH1 REQUIRED-source coverage COMPLETE of record (six-groups 5 PRESENT + 1 PARTIAL, the PARTIAL being publishing-gap residuals). Next build run unchanged: BL-003 notebook provisioning → CUR-01..CUR-08. Operator-side queue: 35 training packs bulk intake, 25 silver-gated rows, Nov-2025/June-2026 ERs, PAT rotation.
