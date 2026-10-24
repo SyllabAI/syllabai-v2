@@ -220,7 +220,10 @@ export function Markdown({
           },
           img: ({ src, alt }) => {
             const s = typeof src === "string" ? src : "";
-            if (s.startsWith("/content-assets/")) {
+            if (s.startsWith("/content-assets/") || s.startsWith("/ugm-assets/")) {
+              // T-UGM-HUB-CONSUME-8a: UGM static figures serve from the
+              // committed public/ugm-assets mirror (same local-image law as
+              // the content-assets corpus plane)
               return (
                 <span className="block overflow-hidden rounded-md border">
                   <Image

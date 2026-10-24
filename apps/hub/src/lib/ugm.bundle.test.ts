@@ -1,5 +1,5 @@
 /**
- * T-UGM-HUB-CONSUME-3/-4/-5/-6/-7/-8 — the committed UGM bundle regression law.
+ * T-UGM-HUB-CONSUME-3/-4/-5/-6/-7/-8/-8a — the committed UGM bundle regression law.
  *
  * The bundle is committed data; the reader (ugm.ts) fail-closes on schema
  * drift. These tests pin BOTH planes against the shipped file, so a bad
@@ -33,9 +33,11 @@
  *     membership, per-body delimiter balance (renderer contract)
  *
  * Corpus of record: SyllabAI/syllabai-resources
- * main@8c6339bd115034d2762e6c142256151f9ded3412 (PR #96 + the T-UGM-MODE1-8
- * amendment PR #99) under ADR-UGM-0001 as amended 2026-10-23 + the operator
- * attestation of 2026-10-23. Per-lane coverage blocks carry the
+ * main@404b4ed5ff922509205c4475aca03a7d6b902128 (PR #96 + the T-UGM-MODE1-8
+ * amendment PR #99 + the T-UGM-ASSETS-1 image-plane PR #107) under
+ * ADR-UGM-0001 as amended 2026-10-23 + the operator attestations of
+ * 2026-10-23 (text) and 2026-10-24 (static figures). Per-lane coverage blocks
+ * carry the
  * enrichments-of-record censuses; the FLEET census reflects the merged serve
  * after the lane-4/5/6/7/8 cross-lane joins (12 lane-3 non-overlaps flip to
  * aligned under 1.4.1; lane 5's r9924 flips its lane-2 non-overlap of record
@@ -49,7 +51,7 @@
  * their standing 1.7 alignments; 131 non-overlaps remain).
  */
 import { describe, expect, test, mock } from "bun:test";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 // ugm.ts is a server module (import "server-only"); the package is a Next.js
@@ -82,10 +84,14 @@ describe("the committed UGM bundle parses under the reader schema (fail-closed l
 
   test("the corpus pin of record", () => {
     expect(bundle.source.ref).toBe(
-      "main@8c6339bd115034d2762e6c142256151f9ded3412",
+      "main@404b4ed5ff922509205c4475aca03a7d6b902128",
     );
     expect(bundle.source.repo).toBe("SyllabAI/syllabai-resources");
-    expect(bundle.rights.textOnly).toBe(true);
+    // T-UGM-HUB-CONSUME-8a: the image plane landed (corpus PR #107) —
+    // textOnly flips to false under the 2026-10-24 attestation
+    expect(bundle.rights.textOnly).toBe(false);
+    expect(bundle.source.operatorAttestation).toMatch(/2026-10-24/);
+    expect(bundle.source.figureMap).toBe("UGM-Resources/figures-map.json");
     expect(bundle.reviewState.state).toBe("SUGGESTED");
   });
 });
@@ -640,5 +646,63 @@ describe("honesty invariants (AGENT.md rules 2-3 mirrored hub-side)", () => {
       expect(openParen).toBe(closeParen);
       expect(openBracket).toBe(closeBracket);
     }
+  });
+});
+
+describe("the image plane (T-UGM-HUB-CONSUME-8a / T-UGM-ASSETS-1, corpus PR #107)", () => {
+  test("fleet figure census matches the corpus map of record", () => {
+    expect(bundle.coverage.figures).toEqual({
+      figureRefs: 1233,
+      resources: 275,
+      uniqueAssets: 976,
+    });
+    const withFigures = bundle.resources.filter((r) => r.figures > 0);
+    expect(withFigures.length).toBe(275);
+    const refs = bundle.resources.reduce((n, r) => n + r.figures, 0);
+    expect(refs).toBe(1233);
+  });
+
+  test("every injected /ugm-assets/ ref resolves to a committed public/ugm-assets file", () => {
+    const pubDir = join(import.meta.dir, "../../public/ugm-assets");
+    const have = new Set<string>();
+    const walk = (d: string) => {
+      for (const e of readdirSync(d, { withFileTypes: true })) {
+        const p = join(d, e.name);
+        if (e.isDirectory()) walk(p);
+        else have.add(p);
+      }
+    };
+    walk(pubDir);
+    const refRe = /\/ugm-assets\/([A-Za-z0-9_\-.\/]+\.(?:png|svg|jpe?g|gif))/g;
+    let checked = 0;
+    for (const r of bundle.resources) {
+      for (const m of r.bodyMd.matchAll(refRe)) {
+        expect(have.has(join(pubDir, m[1]))).toBe(true);
+        checked++;
+      }
+    }
+    expect(checked).toBe(1233);
+  });
+
+  test("injection is section-anchored: walk-sorting carries its 32 figures inside their sections", () => {
+    const r = bundle.resources.find((x) => x.ugmId === "walk-sorting")!;
+    expect(r.figures).toBe(32);
+    const refRe = /\/ugm-assets\//g;
+    expect((r.bodyMd.match(refRe) ?? []).length).toBe(32);
+    // every ref sits AFTER its own section heading and BEFORE the next one:
+    // walk the body, track the current section, refs never precede their sec
+    const lines = r.bodyMd.split("\n");
+    let current = "";
+    for (const line of lines) {
+      const h = line.match(/^## (.+)$/);
+      if (h) current = h[1].trim();
+      if (line.includes("/ugm-assets/")) expect(current.length).toBeGreaterThan(0);
+    }
+  });
+
+  test("resources without figures are byte-shaped as before (figures=0, no injected refs)", () => {
+    const noFigs = bundle.resources.filter((r) => r.figures === 0);
+    expect(noFigs.length).toBe(204);
+    for (const r of noFigs) expect(r.bodyMd).not.toContain("/ugm-assets/");
   });
 });

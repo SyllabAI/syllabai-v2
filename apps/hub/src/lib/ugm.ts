@@ -13,12 +13,17 @@
  * PR #91 + amendment #92, the fourth two-station lane; Integration eighth —
  * PR #96 + the T-UGM-MODE1-8 amendment #99, the second STRAND lane and the
  * first lane whose pick set is entirely cross-lane joined text) under
- * ADR-UGM-0001 as amended 2026-10-23 and the operator attestation of
- * 2026-10-23. The hub-side import is
+ * ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
+ * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
+ * hub-side import is
  * scripts/import_ugm.py → content/<lane>/ugm-resources.json
  * (schema syllabai-demo.ugm-lane-resources/1.1, multi-lane); this module is its only
  * reader. Math stays byte-true in UGM's native \( \) / \[ \] delimiters —
  * the shared Markdown renderer's normalizeCorpusMath already supports them.
+ * The 8a image plane: the importer injects `![alt](/ugm-assets/…)` figure
+ * lines into the served bodyMd at section-anchored positions (the corpus
+ * map of record is UGM-Resources/figures-map.json; binaries ship in
+ * apps/hub/public/ugm-assets/); per-resource `figures` counts ride the rows.
  *
  * Gating law (flags.json, ADR-CLASS-0001 practice adapted to content):
  *   - the flag FILE, the flag KEY or the course slug being ABSENT = OFF —
@@ -71,6 +76,9 @@ const UgmResource = z.object({
   nonOverlapReason: z.string().optional(),
   specPoints: z.array(UgmSpecPointRef),
   bodyMd: z.string(),
+  // T-UGM-HUB-CONSUME-8a: figure references injected into bodyMd (count
+  // mirrors the corpus figures-map.json rows for this resource)
+  figures: z.number().default(0),
 });
 
 const UgmSpecPointIndex = z.object({
@@ -102,6 +110,9 @@ const UgmLaneBundle = z.object({
     ledger: z.string(),
     adr: z.string(),
     operatorAttestation: z.string(),
+    // T-UGM-HUB-CONSUME-8a: the image-plane sources of record
+    figureMap: z.string().optional(),
+    assetsManifest: z.string().optional(),
   }),
   rights: z.object({
     holder: z.string(),
@@ -122,6 +133,12 @@ const UgmLaneBundle = z.object({
       nonOverlap: z.number(),
     }).optional(),
     specPointsCovered: z.array(z.string()),
+    // T-UGM-HUB-CONSUME-8a: the image-plane census (map of record sums)
+    figures: z.object({
+      figureRefs: z.number(),
+      resources: z.number(),
+      uniqueAssets: z.number(),
+    }).optional(),
     lanes: z.array(z.object({
       station: z.string(),
       stationTitle: z.string(),

@@ -80,6 +80,20 @@ Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
     primaryPick-resolution invariant requires
   all under ADR-UGM-0001 (as amended 2026-10-23) + the operator attestation
   of 2026-10-23 ("downloaded text can ship into SyllabAI. We have permission").
+  - lane 8a (T-UGM-HUB-CONSUME-8a — the IMAGE PLANE, corpus PR #107 /
+    T-UGM-ASSETS-1): UGM-Resources/figures-map.json + UGM-Assets/** (976
+    static figures, 37.7 MB, paths mirroring the UGM site) land of record at
+    main@404b4ed5ff922509205c4475aca03a7d6b902128 under the operator
+    attestation of 2026-10-24 ("I want the syllabai frontend to use those
+    images then"). The importer copies the referenced binaries to
+    apps/hub/public/ugm-assets/ and injects figure references into the served
+    bodyMd at deterministic section positions (end of the figure's section,
+    document order, per-section ordinals) — the same index→row transform
+    class as the T-UGM-MODE1-8 pick-flag amendment. The corpus text bodies
+    stay byte-untouched (the map is the of-record figure knowledge); every
+    injected ref must resolve to a copied asset, every map section must
+    match a body heading, per-resource counts must equal the map (all
+    fail-closed). GeoGebra embeds and PDFs stay excluded.
 
 Output: content/<lane>/ugm-resources.json, schema
 "syllabai-demo.ugm-lane-resources/1.1" (multi-lane) — per-spec-point resource
@@ -125,8 +139,13 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-DEFAULT_REF = "main@8c6339bd115034d2762e6c142256151f9ded3412"
+DEFAULT_REF = "main@404b4ed5ff922509205c4475aca03a7d6b902128"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
+
+# T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
+FIGURES_MAP = os.path.join("UGM-Resources", "figures-map.json")
+ASSETS_DIR = "UGM-Assets"
+SERVE_PREFIX = "/ugm-assets/"
 
 # Per-course UGM lane mapping. Single-station blocks (`station` + `title`)
 # mirror one UGM station; multi-station blocks (lane 3+) declare `laneSlug` +
@@ -497,6 +516,117 @@ def import_lane(repo, lane_block):
     }
 
 
+def _fig_alt(caption):
+    """Alt text for the injected image line: the map caption, md-attribute safe."""
+    t = re.sub(r"\s+", " ", caption or "").strip()
+    return t.replace("[", "(").replace("]", ")").replace("\n", " ")
+
+
+def apply_figures(resources, repo, copied_paths):
+    """T-UGM-HUB-CONSUME-8a: inject figure references into the served bodyMd.
+
+    Law of record (T-UGM-ASSETS-1 map + Amendment 2026-10-24):
+      - figures-map.json rows are (sec, ord, path, ref, kind, caption) per
+        resource; the corpus text bodies are byte-untouched — the map is the
+        of-record figure knowledge;
+      - a figure renders as an `![alt](/ugm-assets/<path>)` markdown line at
+        the END of its own section (immediately before the next `## ` heading
+        or EOF), in document order — deterministic, section-anchored;
+      - fail-closed audits: every map path must exist in UGM-Assets/MANIFEST.json
+        (sha256 checked at copy time) and have been copied to the serve dir;
+        every map section must match a `##` heading in the body; per-resource
+        injected counts must equal the map rows; the fleet census must equal
+        the map's own counts.
+    """
+    fmap_path = os.path.join(repo, FIGURES_MAP)
+    if not os.path.exists(fmap_path):
+        fail(f"figure map of record missing: {FIGURES_MAP}")
+    fmap = json.load(open(fmap_path, encoding="utf-8"))
+    figures = fmap.get("figures") or {}
+    heading_re = re.compile(r"^## (.+)$", re.M)
+    injected = 0
+    res_with = 0
+    for r in resources:
+        rows = figures.get(r["ugmId"])
+        if not rows:
+            r["figures"] = 0
+            continue
+        body = r["bodyMd"]
+        heads = [(m.group(1).strip(), m.start(), m.end()) for m in heading_re.finditer(body)]
+        # insertion points: end of each named section (start of next heading or EOF)
+        bounds = []
+        for i, (name, s, e) in enumerate(heads):
+            end = heads[i + 1][1] if i + 1 < len(heads) else len(body)
+            bounds.append((name, end))
+        by_sec = {}
+        for row in rows:
+            if row["sec"] not in {n for n, _ in bounds}:
+                fail(f"[figures] {r['ugmId']}: map section {row['sec']!r} not a body heading")
+            for p in (row.get("path"),):
+                if p not in copied_paths:
+                    fail(f"[figures] {r['ugmId']}: asset {p!r} not copied to the serve dir")
+            by_sec.setdefault(row["sec"], []).append(row)
+        # insert from the LAST section backwards so earlier offsets stay valid
+        sec_end = dict(bounds)
+        inserts = []
+        for name, rows2 in by_sec.items():
+            rows2 = sorted(rows2, key=lambda x: x["ord"])
+            lines = [f"![{_fig_alt(row.get('caption'))}]({row['ref']})" for row in rows2]
+            inserts.append((sec_end[name], "\n\n" + "\n\n".join(lines) + "\n"))
+        for pos, text in sorted(inserts, key=lambda x: -x[0]):
+            body = body[:pos] + text + body[pos:]
+        r["bodyMd"] = body
+        r["figures"] = len(rows)
+        injected += len(rows)
+        res_with += 1
+        # post-audit: every ref appears exactly as often as the map rows use it
+        # (a file may legitimately serve several occurrences within a resource)
+        from collections import Counter as _C
+        for ref, n in _C(row["ref"] for row in rows).items():
+            if body.count(ref) != n:
+                fail(f"[figures] {r['ugmId']}: ref {ref!r} appears {body.count(ref)} != {n} map rows")
+    if injected != fmap.get("counts", {}).get("figureRefs"):
+        fail(f"[figures] injected {injected} != map figureRefs {fmap.get('counts', {}).get('figureRefs')}")
+    if res_with != fmap.get("counts", {}).get("resources"):
+        fail(f"[figures] resources-with-figures {res_with} != map {fmap.get('counts', {}).get('resources')}")
+    print(f"    figures: {injected} refs injected across {res_with} resources "
+          f"({fmap.get('counts', {}).get('uniqueAssets')} unique assets)")
+    return {"figureRefs": injected, "resources": res_with,
+            "uniqueAssets": fmap.get("counts", {}).get("uniqueAssets")}
+
+
+def copy_assets(repo, public_dir):
+    """Copy the referenced UGM-Assets binaries into apps/hub/public/ugm-assets/.
+
+    Fail-closed: every map path must exist in the snapshot AND match its
+    UGM-Assets/MANIFEST.json sha256 before the copy is accepted.
+    """
+    am_path = os.path.join(repo, ASSETS_DIR, "MANIFEST.json")
+    if not os.path.exists(am_path):
+        fail(f"assets manifest missing: {ASSETS_DIR}/MANIFEST.json")
+    am = json.load(open(am_path, encoding="utf-8"))
+    fmap = json.load(open(os.path.join(repo, FIGURES_MAP), encoding="utf-8"))
+    referenced = {row["path"] for rows in fmap["figures"].values() for row in rows}
+    copied = {}
+    import hashlib as _h
+    for p in referenced:
+        meta = (am.get("files") or {}).get(p)
+        if meta is None:
+            fail(f"[assets] {p!r} not in {ASSETS_DIR}/MANIFEST.json")
+        src = os.path.join(repo, ASSETS_DIR, p)
+        if not os.path.exists(src):
+            fail(f"[assets] {p!r} missing from the snapshot")
+        b = open(src, "rb").read()
+        if _h.sha256(b).hexdigest() != meta["sha256"]:
+            fail(f"[assets] {p!r} sha256 mismatch vs manifest")
+        dst = os.path.join(public_dir, p)
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        open(dst, "wb").write(b)
+        copied[p] = meta["sha256"]
+    print(f"    assets: {len(copied)} files copied to {public_dir}")
+    return copied
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--repo", required=True, help="syllabai-resources snapshot dir (pinned)")
@@ -603,6 +733,12 @@ def main():
     considered_total = len(resources)  # the served corpus (strand-lane sweeps count once)
     nonov_total = sum(1 for r in resources if r["nonOverlap"])
 
+    # ── T-UGM-HUB-CONSUME-8a: the image plane (fail-closed) ────────────
+    hub = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    public_ugm = os.path.join(hub, "public", "ugm-assets")
+    copied = copy_assets(repo, public_ugm)
+    fig_census = apply_figures(resources, repo, copied)
+
     bundle = {
         "schema": SCHEMA,
         "generatedUtc": args.generated_utc
@@ -622,14 +758,19 @@ def main():
             "resourcesDir": [lb["res_dir"] for lb in lane_blocks],
             "ledger": "LEDGER.md — " + "; ".join(lb["ledger"] for lb in lane_blocks),
             "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
-            "operatorAttestation": "2026-10-23 — text may ship into SyllabAI; permission declared",
+            "operatorAttestation": "2026-10-24 — text + static figures may ship into SyllabAI; permission declared",
+            "figureMap": FIGURES_MAP.replace(os.sep, "/"),
+            "assetsManifest": ASSETS_DIR + "/MANIFEST.json",
         },
         "rights": {
             "holder": "© University of Cambridge (Underground Mathematics); © UCLES / Oxford MAT / "
                       "NRICH for sourced exam questions",
-            "license": "LICENSE-DATA.md Amendment 2026-10-23 in the corpus repo; takedown/correction law unchanged",
-            "textOnly": True,
-            "note": "Image/PDF/GeoGebra assets are referenced by the corpus front-matter, never imported.",
+            "license": "LICENSE-DATA.md Amendments 2026-10-23 (text) + 2026-10-24 (static figures) in the "
+                       "corpus repo; takedown/correction law unchanged",
+            "textOnly": False,
+            "note": "Static figures (976 files) are imported and served locally from /ugm-assets/ under "
+                    "the operator attestation of 2026-10-24 (T-UGM-ASSETS-1); GeoGebra embeds and PDFs "
+                    "remain excluded.",
         },
         "coverage": {
             "ugmResourcesConsidered": considered_total,
@@ -639,6 +780,7 @@ def main():
             "candidateRows": total_rows,
             "crossLaneJoined": cross,
             "specPointsCovered": [sp["code"] for sp in spec_points],
+            "figures": fig_census,
             "lanes": [p["coverage"] for p in parts],
         },
         "specPoints": spec_points,
