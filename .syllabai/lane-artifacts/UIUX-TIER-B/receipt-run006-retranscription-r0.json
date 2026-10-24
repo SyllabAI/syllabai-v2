@@ -1,0 +1,56 @@
+{
+ "lane": "UIUX-TIER-B run-006 re-transcription + fleet adjudication (r0)",
+ "operator_order": "trace 1a16f0e5082bbf6d 'run-006' (2026-10-25, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)",
+ "program_of_record": [
+  ".syllabai/lane-artifacts/UIUX-TIER-B/receipt-run005-retranscription-r0.json disclosed_remainder_for_operator",
+  "manifest note UIUX-TIER-B-RUN-005 (run-006 fleet + 6 named parts)"
+ ],
+ "method": "no-guess law: every fix eyes-on vs the QP/MS of record — 15 page renders (PyMuPDF 2.4x gray; MS pages 2024-06-02R p14-15, 2023-11-02 p11, 2023-06-01 p25-27, 2025-06-02R p16, 2026-06-01R p25-27+p30-31; QP 2026-06-01R p18 at 3x; 6x zoom crop of the 2026-06-01R p31 sine-rule fractions to transcribe the MS's own fraction order AS PRINTED); PDFs from the anonymous syllabai-pastpapers raw mirror (no credentials in the write path); row-splice patcher (untouched rows byte-identical) + full rebuilds for the 2023-06-01 Q28 four-scheme block and the 2026-06-01R Q21 problemMd+solutionMd",
+ "fixes_applied": {
+  "named_parts": [
+   "2024-06-02R q8(c) P10 rebuilt: (90/145)x((90-1)/(145-1)) product + Allow (90/145)^2=324/841~0.385 + Condone 2x-variants (MS p15); P11 gains the missing answer 89/232",
+   "2023-11-02 q6(d) P8 rebuilt: A1cas / answer 45 (orphan D/A/B/C note lines = debris); problemMd 'Question 6 continued' furniture stripped (run-005 furniture class)",
+   "2023-06-01 q28 P1-P23 full solutionMd rebuild across the four schemes of record (main + ALT 1 + ALT 2 + ALT 3 Herons; MS p25-27): P2/P8/P14 restore the flattened 1/2-angle glyphs (awrt 14.8/26.2/49.0 are HALF-angles); P3 restores a+b=20/a+c=10/b+c=16 + r/a,r/b,r/c tan fractions + r/(20-a); P4 restores missing working a=7 or b=13 or c=3; P5 restores the two missing tan workings + the r/sin(26.2)=7/sin(90-26.2) alternative fraction; P9 area 1/2-ab-sin-C fractions x3; P10/P21 1/2(16r+10r+20r); P11/P22 restore missing '79.2'='23'r; P15 sin-rule OA/OB/OC fractions x3; P16/P17 restore missing awrt 7.8/13.5/4.6 + r='7.8'sin('26.2') workings; P19 semiperimeter (16+10+20)/2[=23]; P20 restores missing Heron sqrt working; ALT 1/2/3 headers restored as note lines (MS Question-column labels of record); 'Que Working Ans M Notes' header bleed (P12) + Pearson footer (P23) stripped",
+   "2025-06-02R q9(a) P1/P2 restore the missing Working lines (17x20[=340] or 26x20[=520]; 2pix5x20[=200pi=628.318...] or pix5x20[=100pi=314.159...]); P2 orphan 25/2-pi fragment removed; P4 restores the missing first product line 2x'270'+'314.159'+'78.539'+2x'340'+'520'[=2132.699...]oe (the disclosed 'left unchanged' line — MS p16 shows it as the Working column's first line); P5 restores the dropped 22/7 pi allowance",
+   "2026-06-01R q24(a) P1 rebuilt to the three MS equation forms incl. the previously-missing (18-2r)x18=12^2 chord-theorem form + (18-r)^2=12^2+r^2 + oe-eg (18-d/2)^2=12^2+(d/2)^2; P2 gains 36r=18^2-12^2[=180] (MS row alignment) + r^2 superscript; P4 gains the missing 18xPA=12^2 form",
+   "2026-06-01R q24(b) P7 fraction rebuild ('5'x18/12, (12+x)^2=18^2+x^2, (12+CQ^2)^2=18^2+CQ^2); P8 rebuilt as the MS's 2-mark ALT row (tan^-1(5/12), BQ/18, sin90/12=sin(POC)/13, sin^-1(13/12), 90-'67.3801', sin-rule pair); P9 gains cas/7.5",
+   "2026-06-01R q21 problemMd FULL REBUILD — QP p18 proof: M=(1 1;-3 -4), N=(3 -4;4 -5) — the bundle had LOST both rows' minus signs (sign-loss class); solutionMd P1-P4 rebuilt with pmatrix NM=(15 19;19 24), det, (NM)^-1=1/-1(24 -19;-19 15), answer (-24 19;19 -15) (MS p25)"
+  ],
+  "fleet_adjudication": {
+   "census_of_record": "r4c-census-003.json 627 rows / 63 sets; columns decoded of record: 1-based question number + 0-based part index (627/627 keys resolve)",
+   "verdicts": {
+    "RESOLVED": 14,
+    "NEEDS-EYES": 150,
+    "DEBRIS": 463,
+    "MISSING": 0
+   },
+   "RESOLVED": "all 14 map to known run-004/005 problemMd rebuilds (2025-11-02 x5 ANNEX, 2019-01-01R q13, 2025-06-01 x8 R4-A) — cross-check clean",
+   "DEBRIS_463": "flatten tokens still standalone; eyes-on samples CONFIRM the class (2018-06-01 Q6 number list = 7/12, sqrt27/sqrt3, 2pi, 16^(1/4), 4sqrt2, 0.3; Q11 = 3/(2x-1) - 4/(x+2)) — this is the run-007 repair queue",
+   "NEEDS-EYES_150": "class priors (axes-embedded 65, diagram-disclaimer 40, grid-table-cells 31, venn-labels 14) — sample validation showed presumed-legit rows can hide MISSING DATA TABLES (2018-06-01 Q20 sample: stem says 'The table shows information' but no table present) so none are auto-cleared",
+   "severityFlags": {
+    "missing-table": 11,
+    "missing-grid": 39
+   },
+   "artifact": "run-006-evidence/fleet-verdicts.json (per-part verdict map)"
+  }
+ },
+ "gates": {
+  "structure": "65/1270/2412 unchanged; choices 0 in-course (global 6500 law unaffected); marks map diff-proven identical vs HEAD",
+  "katex_gate": "738 unique segments, 0 failures (throwOnError)",
+  "currency_class": "110 escaped-$ fields byte-identical vs HEAD; 0 introduced",
+  "ufffd": "0",
+  "diff_scope": "exactly 7 parts changed vs HEAD (6 named + 2026-06-01R q24(b))",
+  "json_law": "single-line compact JSON preserved (ensure_ascii=False separators (',',':'))",
+  "scrub_assert": "clean (no token shapes in artifacts; renders/PDFs anonymous mirror only)"
+ },
+ "disclosed_remainder_for_operator": {
+  "run007_queue": "463 DEBRIS parts + 150 NEEDS-EYES parts (627-row census map, per-part verdicts filed) — evidence-backed re-transcription program at the run-003/004/005 per-episode pace (~50-60 parts); severity order: 11 missing-table + 39 missing-grid first (learner-blocking), then DEBRIS, then NEEDS-EYES",
+  "ms_internal_inconsistency": "2026-06-01R q24(b) ALT: MS p31 prints sin90/12 = sin(POC)/13 and sin^-1(13/12) yet states =67.3801 (which is sin^-1(12/13)) — the printed fractions are internally consistent with each other; transcribed AS PRINTED per no-guess law (6x zoom verified), flagged here for Pearson-errata awareness",
+  "artwork_lane": "2023-11-02 q6 histogram missing from problemMd (p2 carries flattened axis tokens, p3 references it with no embed) — needs the lane-① resources-staging class (no asset exists at pin 7576c78f); NOT self-granted in run-006",
+  "db_plane": "untouched (content-plane lane); DB mark_points sums law unaffected"
+ },
+ "artifacts": [
+  ".syllabai/lane-artifacts/UIUX-TIER-B/receipt-run006-retranscription-r0.json",
+  ".syllabai/lane-artifacts/UIUX-TIER-B/run-006-evidence/ (11 scripts/data + 16 renders)"
+ ]
+}
