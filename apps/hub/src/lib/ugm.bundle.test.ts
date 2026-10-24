@@ -33,8 +33,9 @@
  *     membership, per-body delimiter balance (renderer contract)
  *
  * Corpus of record: SyllabAI/syllabai-resources
- * main@404b4ed5ff922509205c4475aca03a7d6b902128 (PR #96 + the T-UGM-MODE1-8
- * amendment PR #99 + the T-UGM-ASSETS-1 image-plane PR #107) under
+ * main@ac1fc90b09008ee8d2eb1aff6892a9f2cb05f594 (PR #96 + the T-UGM-MODE1-8
+ * amendment PR #99 + the T-UGM-ASSETS-1 image-plane PR #107 + its integrity
+ * manifest 0b976cc) under
  * ADR-UGM-0001 as amended 2026-10-23 + the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures). Per-lane coverage blocks
  * carry the
@@ -84,7 +85,7 @@ describe("the committed UGM bundle parses under the reader schema (fail-closed l
 
   test("the corpus pin of record", () => {
     expect(bundle.source.ref).toBe(
-      "main@404b4ed5ff922509205c4475aca03a7d6b902128",
+      "main@ac1fc90b09008ee8d2eb1aff6892a9f2cb05f594",
     );
     expect(bundle.source.repo).toBe("SyllabAI/syllabai-resources");
     // T-UGM-HUB-CONSUME-8a: the image plane landed (corpus PR #107) —
@@ -655,11 +656,16 @@ describe("the image plane (T-UGM-HUB-CONSUME-8a / T-UGM-ASSETS-1, corpus PR #107
       figureRefs: 1233,
       resources: 275,
       uniqueAssets: 976,
+      inlineRewritten: 282,
     });
     const withFigures = bundle.resources.filter((r) => r.figures > 0);
     expect(withFigures.length).toBe(275);
     const refs = bundle.resources.reduce((n, r) => n + r.figures, 0);
     expect(refs).toBe(1233);
+    // T-UGM-HUB-CONSUME-8b: 282 of them render inline at the converter's
+    // position-accurate placeholder spots, 951 stay section-anchored
+    const inline = bundle.resources.reduce((n, r) => n + (r.figuresInline ?? 0), 0);
+    expect(inline).toBe(282);
   });
 
   test("every injected /ugm-assets/ ref resolves to a committed public/ugm-assets file", () => {
@@ -704,5 +710,57 @@ describe("the image plane (T-UGM-HUB-CONSUME-8a / T-UGM-ASSETS-1, corpus PR #107
     const noFigs = bundle.resources.filter((r) => r.figures === 0);
     expect(noFigs.length).toBe(204);
     for (const r of noFigs) expect(r.bodyMd).not.toContain("/ugm-assets/");
+  });
+});
+
+describe("prose figure localization (T-UGM-HUB-CONSUME-8b, 'Localize them')", () => {
+  const PLACEHOLDER_RE =
+    /(?:>\s*)?\[figure:\s*(.*?)\s*—\s*`([^`]+)`\]\s*\(([^)]*)\)(\.)?/g;
+  const UGM_IMG =
+    /^https?:\/\/(?:www\.)?undergroundmathematics\.org\/.*\.(?:png|jpe?g|gif|svg|webp)$/i;
+
+  test("zero un-localized image placeholders remain in any served body", () => {
+    let residue = 0;
+    for (const r of bundle.resources) {
+      for (const m of r.bodyMd.matchAll(PLACEHOLDER_RE)) {
+        if (UGM_IMG.test(m[2])) residue++;
+      }
+    }
+    expect(residue).toBe(0);
+    // and no /ugm-assets/ ref may still sit inside a blockquote wrapper
+    for (const r of bundle.resources) {
+      expect(/^\s*>[^\n]*\/ugm-assets\//m.test(r.bodyMd)).toBe(false);
+    }
+  });
+
+  test("placeholders render as position-accurate local images (spot checks)", () => {
+    // discriminating: the card-sort table cells became a real image grid
+    const disc = bundle.resources.find((x) => x.ugmId === "discriminating")!;
+    expect(disc.bodyMd).toContain(
+      "| ![graph showing y equals minus x squared plus 1](/ugm-assets/quadratics/discriminating/images/q1a.png)",
+    );
+    expect(disc.figuresInline).toBeGreaterThan(0);
+    // which-parabola: the empty-caption placeholder under '## Question' took
+    // its placeholder caption; the figure is inline, not a link to ugm
+    const wp = bundle.resources.find((x) => x.ugmId === "which-parabola")!;
+    expect(wp.bodyMd).toContain(
+      "![12 parabolas](/ugm-assets/quadratics/which-parabola/images/parabolalabelledthick.png)",
+    );
+    // every placeholder-bearing resource carries figuresInline > 0
+    const withInline = bundle.resources.filter((r) => (r.figuresInline ?? 0) > 0);
+    expect(withInline.length).toBe(54);
+  });
+
+  test("no external ugm image links remain in any served body", () => {
+    // beyond markdown images, no bare external UGM image URL may survive
+    const URL_RE = /https?:\/\/[^\s<>)\]"'`]+/g;
+    let hits = 0;
+    for (const r of bundle.resources) {
+      const stripped = r.bodyMd.replace(/\[[^\]]*\]\([^)]*\)/g, "");
+      for (const m of stripped.matchAll(URL_RE)) {
+        if (/undergroundmathematics\.org/i.test(m[0]) && /\.(png|jpe?g|gif|svg|webp)$/i.test(m[0])) hits++;
+      }
+    }
+    expect(hits).toBe(0);
   });
 });

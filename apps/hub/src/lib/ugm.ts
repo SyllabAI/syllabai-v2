@@ -79,6 +79,9 @@ const UgmResource = z.object({
   // T-UGM-HUB-CONSUME-8a: figure references injected into bodyMd (count
   // mirrors the corpus figures-map.json rows for this resource)
   figures: z.number().default(0),
+  // T-UGM-HUB-CONSUME-8b: of those, how many render INLINE at the converter's
+  // position-accurate placeholder spots (the rest are section-anchored)
+  figuresInline: z.number().default(0),
 });
 
 const UgmSpecPointIndex = z.object({
@@ -138,6 +141,9 @@ const UgmLaneBundle = z.object({
       figureRefs: z.number(),
       resources: z.number(),
       uniqueAssets: z.number(),
+      // T-UGM-HUB-CONSUME-8b: placeholders localized inline (fail-closed:
+      // the importer refuses to ship any un-localized image placeholder)
+      inlineRewritten: z.number().optional(),
     }).optional(),
     lanes: z.array(z.object({
       station: z.string(),
