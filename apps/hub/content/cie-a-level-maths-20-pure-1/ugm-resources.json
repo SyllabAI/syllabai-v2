@@ -1,6 +1,6 @@
 {
  "schema": "syllabai-demo.ugm-lane-resources/1.1",
- "generatedUtc": "2026-10-23T20:59:18Z",
+ "generatedUtc": "2026-10-24T08:05:57Z",
  "reviewState": {
   "state": "SUGGESTED",
   "note": "Agent-generated alignment per AGENT.md rule 2 — candidates until the review/promotion gate promotes them; no coverage manufactured (rule 3)."
@@ -141,11 +141,26 @@
    "slug": "power-series",
    "title": "Power Series",
    "url": "https://undergroundmathematics.org/power-series"
+  },
+  {
+   "slug": "calculus-meets-functions",
+   "title": "Calculus meets Functions",
+   "url": "https://undergroundmathematics.org/calculus-meets-functions"
+  },
+  {
+   "slug": "chain-rule",
+   "title": "Chain Rule & Integration by Substitution",
+   "url": "https://undergroundmathematics.org/chain-rule"
+  },
+  {
+   "slug": "product-rule",
+   "title": "Product Rule & Integration by Parts",
+   "url": "https://undergroundmathematics.org/product-rule"
   }
  ],
  "source": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@39e1568abb68c4647cf9ec9cc90a20ba236c0207",
+  "ref": "main@8c6339bd115034d2762e6c142256151f9ded3412",
   "enrichment": [
    "UGM-Enrichment/cie-a-level-maths-20-pure-1-quadratics.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-1-functions.json",
@@ -153,7 +168,8 @@
    "UGM-Enrichment/cie-a-level-maths-20-pure-1-circular-measure.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-1-trigonometry.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-1-series.json",
-   "UGM-Enrichment/cie-a-level-maths-20-pure-1-differentiation.json"
+   "UGM-Enrichment/cie-a-level-maths-20-pure-1-differentiation.json",
+   "UGM-Enrichment/cie-a-level-maths-20-pure-1-integration.json"
   ],
   "enrichmentSchema": "syllabai.ugm-spec-enrichment/1.0",
   "resourcesDir": [
@@ -163,9 +179,10 @@
    "UGM-Resources/pure-1-circular-measure",
    "UGM-Resources/pure-1-trigonometry",
    "UGM-Resources/pure-1-series",
-   "UGM-Resources/pure-1-differentiation"
+   "UGM-Resources/pure-1-differentiation",
+   "UGM-Resources/pure-1-integration"
   ],
-  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-1 (#55) and T-UGM-IMPORT-1 (#58); LEDGER.md — T-UGM-MODE1-2 and T-UGM-IMPORT-2 (PR #61); LEDGER.md — T-UGM-MODE1-3 and T-UGM-IMPORT-3 (PR #66); LEDGER.md — T-UGM-MODE1-4 and T-UGM-IMPORT-4 (PR #74); LEDGER.md — T-UGM-MODE1-5 and T-UGM-IMPORT-5 (PR #79); LEDGER.md — T-UGM-MODE1-6 and T-UGM-IMPORT-6 (PR #89); LEDGER.md — T-UGM-MODE1-7 and T-UGM-IMPORT-7 (PR #91) + the T-UGM-MODE1-7 amendment (PR #92)",
+  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-1 (#55) and T-UGM-IMPORT-1 (#58); LEDGER.md — T-UGM-MODE1-2 and T-UGM-IMPORT-2 (PR #61); LEDGER.md — T-UGM-MODE1-3 and T-UGM-IMPORT-3 (PR #66); LEDGER.md — T-UGM-MODE1-4 and T-UGM-IMPORT-4 (PR #74); LEDGER.md — T-UGM-MODE1-5 and T-UGM-IMPORT-5 (PR #79); LEDGER.md — T-UGM-MODE1-6 and T-UGM-IMPORT-6 (PR #89); LEDGER.md — T-UGM-MODE1-7 and T-UGM-IMPORT-7 (PR #91) + the T-UGM-MODE1-7 amendment (PR #92); LEDGER.md — T-UGM-MODE1-8 and T-UGM-IMPORT-8 (PR #96) + the T-UGM-MODE1-8 amendment (PR #99)",
   "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
   "operatorAttestation": "2026-10-23 — text may ship into SyllabAI; permission declared"
  },
@@ -176,13 +193,13 @@
   "note": "Image/PDF/GeoGebra assets are referenced by the corpus front-matter, never imported."
  },
  "coverage": {
-  "ugmResourcesConsidered": 469,
-  "aligned": 325,
-  "nonOverlap": 144,
-  "alignedShare": 0.693,
-  "candidateRows": 431,
+  "ugmResourcesConsidered": 479,
+  "aligned": 348,
+  "nonOverlap": 131,
+  "alignedShare": 0.727,
+  "candidateRows": 459,
   "crossLaneJoined": {
-   "aligned": 22,
+   "aligned": 40,
    "nonOverlap": 2
   },
   "specPointsCovered": [
@@ -211,7 +228,11 @@
    "1.7.1",
    "1.7.2",
    "1.7.3",
-   "1.7.4"
+   "1.7.4",
+   "1.8.1",
+   "1.8.2",
+   "1.8.3",
+   "1.8.4"
   ],
   "lanes": [
    {
@@ -283,6 +304,17 @@
     "alignedShare": 0.56,
     "candidateRows": 107,
     "crossLaneAligned": 3,
+    "crossLaneNonOverlap": 0
+   },
+   {
+    "station": "integration",
+    "stationTitle": "Integration",
+    "ugmResourcesConsidered": 10,
+    "aligned": 28,
+    "nonOverlap": 0,
+    "alignedShare": 1.0,
+    "candidateRows": 28,
+    "crossLaneAligned": 18,
     "crossLaneNonOverlap": 0
    }
   ]
@@ -925,6 +957,66 @@
     "r5640",
     "r7115",
     "r8936"
+   ]
+  },
+  {
+   "code": "1.8.1",
+   "officialText": "understand integration as the reverse process of differentiation, and integrate (ax + b)^n for any rational n except -1, together with constant multiples, sums and differences",
+   "primaryPick": "r8716",
+   "resourceCount": 2,
+   "ugmIds": [
+    "r8716",
+    "r9701"
+   ]
+  },
+  {
+   "code": "1.8.2",
+   "officialText": "solve problems involving the evaluation of a constant of integration",
+   "primaryPick": "r7734",
+   "resourceCount": 4,
+   "ugmIds": [
+    "r5768",
+    "r7410",
+    "r7734",
+    "thinking-constantly"
+   ]
+  },
+  {
+   "code": "1.8.3",
+   "officialText": "evaluate definite integrals",
+   "primaryPick": "r6067",
+   "resourceCount": 10,
+   "ugmIds": [
+    "additional-integrals",
+    "integral-chasing",
+    "r5090",
+    "r5549",
+    "r6067",
+    "r7236",
+    "r8105",
+    "slippery-areas",
+    "stretch-the-function",
+    "what-else-do-you-know"
+   ]
+  },
+  {
+   "code": "1.8.4",
+   "officialText": "use definite integration to find lines parallel to the axes, or between a curve and a line or between two curves: the area of a region bounded by a curve and a volume of revolution about one of the axes",
+   "primaryPick": "r9357",
+   "resourceCount": 12,
+   "ugmIds": [
+    "meaningful-areas",
+    "r5007",
+    "r5584",
+    "r6372",
+    "r7386",
+    "r7444",
+    "r7628",
+    "r7861",
+    "r8130",
+    "r8350",
+    "r9138",
+    "r9357"
    ]
   }
  ],
@@ -9888,6 +9980,15 @@
      "modesRecorded": [
       1
      ]
+    },
+    {
+     "code": "1.8.2",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "integrates dy/dx = 4x-3 to y = 2x^2-3x+c and evaluates c from the minimum value -1/8 — the constant-of-integration step is 1.8.2 load-bearing",
+     "modesRecorded": [
+      1
+     ]
     }
    ],
    "bodyMd": "\n# Can we find a curve from its gradient function?\n\n## Question\n\nA function, \\(y\\), of \\(x\\) has gradient \\(4x - 3\\) at the point \\((x,y)\\) and the minimum value of the function is \\(-\\tfrac{1}{8}\\). Express \\(y\\) in terms of \\(x\\) and sketch the graph of \\(y\\) against \\(x\\).\n\n## Solution\n\nA function, \\(y\\), of \\(x\\) has gradient \\(4x - 3\\) at the point \\((x,y)\\) and the minimum value of the function is \\(-\\tfrac{1}{8}\\). Express \\(y\\) in terms of \\(x\\)…\n\nThe first part of the question tells us that\n\n\\[ \\frac{dy}{dx} = 4x - 3. \\]\n\nso we know that\n\n\\[\\begin{equation}\\label{eq:indefinite-eq-for-y} y = \\int \\frac{dy}{dx} \\:dx = 2x^2 - 3x + c \\end{equation}\\]\n\nfor some constant \\(c\\). (This is a consequence of the [fundamental theorem of calculus](https://undergroundmathematics.org/glossary/fundamental-theorem-of-calculus).)\n\nThe curve is a parabola and since the coefficient of \\(x^2\\) is positive we know its single stationary point is a minimum. We are also given that the \\(y\\)-value at the minimum is \\(-\\dfrac{1}{8}\\).\n\nThis minimum occurs where\n\n\\(\\dfrac{dy}{dx} = 0 \\implies x = \\dfrac{3}{4}\\)\n\n. Substituting into equation\n\n\\(\\eqref{eq:indefinite-eq-for-y}\\)\n\n, we have that\n\n\\[\\begin{align*} -\\frac{1}{8} = 2 \\left( \\frac{3}{4} \\right)^2 - 3 \\cdot \\frac{3}{4} + c &\\implies c = -\\frac{1}{8} - \\frac{9}{8} + \\frac{9}{4} \\\\ &\\implies c = 1. \\end{align*}\\]\n\nSo we know that the equation of the curve is \\(y = 2x^2 - 3x + 1\\).\n\n…and sketch the graph of \\(y\\) against \\(x\\).\n\nWe can factorise the expression for \\(y\\) as \\[y = 2x^2 - 3x + 1 = (2x - 1)(x - 1).\\] We thus have that the equation \\(y = 0\\) has two roots, at \\(x = \\dfrac{1}{2}\\) and \\(1\\). The graph has a minimum at the point \\(\\left( \\dfrac{3}{4}, -\\dfrac{1}{8} \\right)\\), and finally, the \\(y\\)-intercept of the function is \\(1\\).\n"
@@ -10329,6 +10430,15 @@
      "modesRecorded": [
       1
      ]
+    },
+    {
+     "code": "1.8.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "part (b) area between the cubic and the tangent/chord PQ as a definite integral of curve minus line — the tangent-revisit area carries the recorded 1.8 bearing",
+     "modesRecorded": [
+      1
+     ]
     }
    ],
    "bodyMd": "\n# What's the area enclosed by $y=x(x-3)^2$ and a tangent?\n\n## Question\n\nShow that the gradient of the curve \\(y=x(x-3)^2\\) is zero at the point \\(P(1,4)\\), and sketch the curve.\n\nThe tangent at \\(P\\) cuts the curve again at \\(Q\\). Calculate the area between the chord \\(PQ\\) and the curve.\n\n## Suggestion\n\nWhen curve sketching, good questions to ask include\n\n- What are the stationary points?\n\n- Where does the curve intercept the axes?\n\n- Are there any asymptotes?\n\n- How does the curve behave for large \\(x\\)?\n\nWhat is the equation of the tangent?\n\nHow does this help us to find \\(Q\\)?\n\nCan we see on our sketch the area we want to find? What techniques do we have for finding areas?\n\n## Solution\n\nOur plan is to differentiate to find the gradient of the curve. We begin by expanding\n\n\\(y=x(x-3)^2\\)\n\n, giving\n\n\\[y=x(x^2-6x+9)=x^3-6x^2+9x\\]\n\nso\n\n\\[\\begin{align*} \\frac{dy}{dx}&{}=3x^2-12x+9\\\\ &{}=3(x^2-4x+3)\\\\ &{}=3(x-3)(x-1). \\end{align*}\\]\n\nIf you know the product and chain rules, you could find the derivative using those instead.\n\n\\[\\begin{align*} \\frac{dy}{dx}&{}=(x-3)^2+2x(x-3) \\\\ &{}= (x-3)(x-3+2x) \\\\ &{}= 3(x-1)(x-3). \\end{align*}\\]\n\nThus \\(\\dfrac{dy}{dx}=0\\) when \\(x=1\\) and when \\(x=3\\). At \\(x=1\\), \\(y=4\\); at \\(x=3\\), \\(y=0\\).\n\nSo the gradient of the curve is zero at \\(P(1,4)\\) and also at \\((3,0)\\).\n\nTo sketch the curve, we note that the roots occur at \\(x=0\\) and \\(x=3\\) (with the latter being a double root, and so the curve touches the \\(x\\)-axis here). The \\(y\\)-intercept is \\(0\\).\n\nThe equation is a cubic with \\(x^3\\) as the leading term. So as \\(x \\to\\infty\\), \\(y\\to\\infty\\), and as \\(x\\to-\\infty\\), \\(y\\to-\\infty\\).\n\nSo the stationary point at \\(P(1,4)\\) must be a maximum, and that at\\((3,0)\\) must be a minimum, giving\n\nThe tangent at \\(P\\) cuts the curve again at \\(Q\\). Calculate the areabetween the chord \\(PQ\\) and the curve.\n\nThe tangent at \\(P\\) has equation \\(y=4\\). This intersects the cubic again when \\[4 = x(x-3)^2.\\] We can expand this and rearrange to get \\[x^3-6x^2+9x-4=0.\\] We already know that \\(x=1\\) is a double root of this equation (as the line \\(y=4\\) touches the curve at \\(x=1\\)), so \\((x-1)^2\\) will be a factor. We can factorise to give \\[(x-1)(x^2-5x+4)=0\\] so \\[(x-1)^2(x-4)=0.\\]\n\nWe could have written this down immediately, since the factorisation must be \\((x-1)^2(x-a)\\) for some \\(a\\), which will expand to \\(x^3+px^2+qx-a\\) for some \\(p\\) and \\(q\\), and so \\(a\\) must be \\(4\\) to match the constant terms.\n\nThus the tangent at \\(P\\) intersects the curve again at \\(Q(4,4)\\). We can now calculate the required area, indicated by \\(R\\) on this sketch.\n\nThe area of\n\n\\(R\\)\n\nis equal to the area of the rectangle between\n\n\\(PQ\\)\n\nand the\n\n\\(x\\)\n\n-axis, which is\n\n\\(3\\times4=12\\)\n\n, minus the area under the curve between\n\n\\(P\\)\n\nand\n\n\\(Q\\)\n\n, which is given by\n\n\\[\\begin{align*} \\int_1^4 x^3-6x^2+9x\\,dx &{}= \\left[\\frac{x^4}{4}-2x^3+\\frac{9x^2}{2}\\right]_1^4 \\\\ &{}= (64-128+72)-\\left(\\frac{1}{4}-2+\\frac{9}{2}\\right) \\\\ &{}= 8-\\frac{11}{4} = \\frac{21}{4}. \\end{align*}\\]\n\nThus the area of \\(R\\) is \\(12-\\dfrac{21}{4}=\\dfrac{27}{4}=6\\dfrac{3}{4}\\).\n"
@@ -10485,6 +10595,16 @@
      "modesRecorded": [
       1
      ]
+    },
+    {
+     "code": "1.8.2",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": "gradient ax+b integrated to y = ax^2/2+bx+c with c evaluated from a point — the constant-of-integration reconstruction is the decisive step",
+     "modesRecorded": [
+      1,
+      4
+     ]
     }
    ],
    "bodyMd": "\n# Given three clues, can we find the equation of the curve?\n\n## Question\n\nThe gradient of a curve is \\(ax + b\\) at all points, where \\(a\\) and \\(b\\) are constants. Find the equation of the curve, given that it passes through the points \\((0,4)\\) and \\((1,3)\\), and that the tangent at \\((1,3)\\) is parallel to the line \\(y = x\\).\n\n## Solution\n\nLet’s say the equation of the curve is \\(y = f(x)\\), so \\(y' = ax + b\\). This means that \\[y= \\int ax + b \\:dx = \\frac{ax^2}{2} + bx + c\\] for some constant of integration, \\(c\\). (This is a consequence of the [fundamental theorem of calculus](https://undergroundmathematics.org/glossary/fundamental-theorem-of-calculus).)\n\nAs the curve passes through the point \\((0,4)\\) we know that \\[\\frac{a \\times 0^2}{2} + b \\times 0 + c = 4 \\implies c = 4,\\] and as it passes through the point \\((1,3)\\), we also have that \\[\\frac{a \\times 1^2}{2} + b \\times 1 + c = 3 \\implies \\frac{a}{2} + b + 4 = 3 \\implies a + 2b = -2.\\] Now the tangent to the curve at \\((1,3)\\) is parallel to the line \\(y = x\\), which has gradient \\(1\\), so \\(a + b = 4\\) (since \\(y' = ax + b\\)).\n\nWe therefore have simultaneous equations in\n\n\\(a\\)\n\nand\n\n\\(b\\)\n\n, which are\n\n\\[\\begin{align*} a + 2b &= -2, \\\\ a + b &= 1. \\end{align*}\\]\n\nSubtracting, we have \\(b = -3\\), and hence \\(a = 4\\). The equation of the curve is therefore \\(y = 2x^2 - 3x + 4\\).\n"
@@ -10596,6 +10716,15 @@
      "confidence": "high",
      "primaryPick": false,
      "note": "cubic with two distinct turning points — the discriminant condition on f'=3x^2+2ax+b is the load-bearing argument",
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "1.8.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "part (iv) area enclosed by the x-axis and the translated cubic g(x) = x^2(x-t) — polynomial definite integration is the load-bearing step",
      "modesRecorded": [
       1
      ]
@@ -10987,6 +11116,15 @@
      "confidence": "medium",
      "primaryPick": false,
      "note": "quadratic through (1,0) and (2,0) with gradient 2 at (2,0) — gradient conditions are the 1.7.3 step; the area computation carries a recorded 1.8 bearing",
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "1.8.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "area between y = 2x^2-6x+4 and the x-axis after gradient-condition reconstruction — the area computation carries the recorded 1.8 bearing",
      "modesRecorded": [
       1
      ]
@@ -11492,9 +11630,19 @@
    "resourceTypeLabel": "Fluency exercise",
    "level": "Developing",
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "Definite-integral fluency — 1.8 bearing, no differentiation tested.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "four chained definite integrals of 10x+3, b*sqrt(x)+a/sqrt(x), 1/x^5-1/x^2 and x^(b/a)(sqrt(x)-1/sqrt(x)) plus an area check — power-rule integration with fractional and negative indices is the tested skill",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# Integral chasing\n\n> Excerpt: Students work out four definite integrals, giving results in terms of unknowns whose values can then be determined. The task offers lots of practice of algebra skills and integration together.\n\n## Problem\n\nBelow is a selection of integrals, some of which you cannot do without performing others first and some that require the use of other mathematical skills.\n\nCan you find the missing positive numbers \\(a\\) to \\(d\\)?\n\n\\[\\text{(1)} \\ \\int_a^5 10x+3 \\, dx = 114\\]\n\n\\[\\text{(2)} \\ \\int_{2a}^9 b\\sqrt{x}+\\dfrac{a}{\\sqrt{x}}\\, dx=42\\]\n\n\\[\\text{(3)} \\ \\int_{\\frac{1}{2}}^1 \\dfrac{1}{x^5}-\\dfrac{1}{x^2} \\, dx=\\dfrac{c+1}{4}\\]\n\n\\[\\text{(4)} \\ \\int^{c+2}_6 x^{\\frac{b}{a}}\\left(\\sqrt{x}-\\dfrac{1}{\\sqrt{x}}\\right) \\, dx=ab^ad^a\\]\n\nTest your solution\n\n*Once you have found the missing positive numbers \\(a\\) to \\(d\\), can you use them in the statement below to test your values?*\n\nThe area formed by the \\(x\\)-axis, the lines \\(x=b\\) and \\(x=d\\), and the curve \\(y=(x-2a)(x+1)\\) is \\(\\dfrac{cd}{a(a+b)}\\).\n\nRemember, when we are looking at *area*, what must we check about the curve between the lines \\(x=b\\) and \\(x=d\\) when it is plotted?\n\n## Solution\n\nWe have four integrals to look at, but only two of them contain just one of the letters—(1) and (3).\n\nWe could start with the first integral,\n\n\\[\\text{(1)} \\ \\int_a^5 10x+3 \\, dx = 114.\\]\n\nWe can see that the value the integral takes is positive, so we have an area formed between \\(10x+3\\) and the \\(x\\)-axis.\n\nThis can only happen when \\(0<a<5\\), since \\(a\\) is also positive. We now have a good feeling for the sort of value for \\(a\\) we are looking for.\n\nIf we perform the integration we get the following,\n\n\\[\\text{(1)} \\ \\int_a^5 10x+3 \\, dx = \\left[5x^2+3x \\right]^5_a = (5\\times 5^2+3\\times 5)-(5a^2+3a) = 114.\\]\n\nSimplifying the above we find that,\n\n\\[\\begin{align*} 140-5a^2-3a &=114\\\\ \\implies 5a^2+3a-26 &=0 \\end{align*}\\]\n\nThe prime factor decomposition of \\(26\\) is \\(2\\times 13\\). Trying the possible combinations leads us to \\((5x+13)(x-2)\\). Given that \\(a\\) is positive, we must have \\(a=2\\).\n\nIs this sensible?\n\nWell, we thought above that \\(0<a<5\\) and we have found a value that fits with this.\n\nWhich integral could we tackle next?\n\nIntegral 2\n\nFor this integral it is a good idea to rewrite the integrand and we can also fill in the value for \\(a\\).\n\n\\[\\int_{2a}^9 b\\sqrt{x}+\\dfrac{a}{\\sqrt{x}}\\, dx= \\int_{4}^9 bx^{\\frac{1}{2}}+2x^{-\\frac{1}{2}} \\, dx.\\]\n\nWhy is it helpful that \\(9\\) and \\(4\\) are the numbers we require to substitute in?\n\nPerforming the integration and solving a linear equation in \\(b\\), we find that \\(b=3\\).\n\nIntegral 3\n\nThis integral does not depend on any of the unknowns. It is again useful to rewrite the integrand.\n\n\\[\\int_{\\frac{1}{2}}^1 \\dfrac{1}{x^5}-\\dfrac{1}{x^2} \\, dx=\\int_{\\frac{1}{2}}^1 x^{-5}-x^{-2} \\, dx.\\]\n\nPerforming the integration and solving a linear equation in \\(c\\), we find that \\(c=10\\).\n\nIntegral 4\n\nThis equation contains all four of the unknowns so is best kept til last. As before, we start by rewriting the integrand and substituting in the values for \\(a\\), \\(b\\) and \\(c\\).\n\n\\[\\int^{c+2}_6 x^{\\frac{b}{a}}\\left(\\sqrt{x}-\\dfrac{1}{\\sqrt{x}}\\right) \\, dx=\\int^{12}_6 x^{\\frac{3}{2}}\\left(x^{\\frac{1}{2}}-x^{-\\frac{1}{2}}\\right) \\, dx=\\int^{12}_6 x^2-x \\, dx.\\]\n\nWe can also substitute our values for \\(a\\), \\(b\\) and \\(c\\) into the right hand side of the original equation to give \\(ab^ad^a=2\\times 3^2\\times d^2\\).\n\n\\[\\int^{12}_6 x^2-x \\, dx=18d^2.\\]\n\nPerforming the integration and solving a quadratic equation in \\(d\\), we find that \\(d=5\\).\n\nTest your solution - explained\n\nThe area formed between the \\(x\\)-axis and the lines \\(x=b\\) and \\(x=d\\), and the curve \\(y=(x-2a)(x+1)\\) is \\(\\dfrac{cd}{a(a+b)}\\).\n\nTo check that we have found the correct values for \\(a\\), \\(b\\), \\(c\\) and \\(d\\) we can evaluate the integral between the given \\(x\\) values,\n\n\\[\\int_b^d (x-2a)(x+1) \\, dx=\\int_3^5 (x-4)(x+1) \\, dx\\]\n\nand check it is equal to \\(\\dfrac{cd}{a(a+b)}=5\\).\n\nBut we are not told about the *integral*, we are told that the *area* formed between the curve and the \\(x\\)-axis is \\(5\\). This means we need to be careful if our curve crosses the \\(x\\)-axis.\n\nSketching the curve \\(y=(x-4)(x+1)=x^2-3x-4\\) reveals that the curve crosses the \\(x\\)-axis at \\(x=4\\). So we must separately calculate the areas between the \\(x\\) values \\(3\\) and \\(4\\), and \\(4\\) and \\(5\\).\n\nSketch of curve\n\nThe curve \\(y=(x-4)(x+1)\\)\n\nWe can thus split our integral up into two\n\n\\[\\int_3^4 x^2-3x-4 \\, dx,\\]\n\nwhich will give the negative value \\(-\\dfrac{13}{6}\\) and\n\n\\[\\int_4^5 x^2-3x-4 \\, dx,\\]\n\nwhich will give the positive value \\(\\dfrac{17}{6}\\).\n\nTherefore, the total area formed between the curve, the lines \\(x=3\\) and \\(x=5\\), and the \\(x\\)-axis is \\(\\dfrac{13}{6} + \\dfrac{17}{6} = 5\\).\n"
   },
   {
@@ -11507,9 +11655,19 @@
    "resourceTypeLabel": "Investigation",
    "level": "Developing",
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "Areas between curves by several routes — 1.8 bearing.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "areas of the regions enclosed by sqrt(x), x^2, x, (x^2+x)/2 and 2*sqrt(x)-x — area between curves by definite integration",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# Meaningful areas\n\n> Excerpt: Students are asked to find the areas of regions between the graphs of a set of functions. This can be done by integration but we explore a variety of other techniques that can be used and make connections with other areas of mathematics.\n\n## Problem\n\nIn [Curve match](https://undergroundmathematics.org/thinking-about-functions/curve-match) we asked you to match the curves on the diagram below with the following functions.\n\n\\[y=\\sqrt{x} \\quad y=x^2 \\quad y=x \\quad y=\\dfrac{x^2+x}{2} \\quad \\text{and } \\quad y=2\\sqrt{x}-x\\]\n\nNow we’d like you to look at the different regions enclosed by the curves.\n\n- Which do you think is the smallest region? How can you check?\n\n- How big are the other regions?\n\n- Try to explain why certain regions are the size they are.\n\nThink about what techniques you can use and how you can reduce the number of calculations you need to do.\n\nYou might find it helpful to start by matching the curves, or you could check this in [Curve match](https://undergroundmathematics.org/thinking-about-functions/curve-match).\n\n## Things you might have noticed\n\nIn [Curve match](https://undergroundmathematics.org/thinking-about-functions/curve-match) we asked you to match the curves on the diagram below with the following functions.\n\n\\[y=\\sqrt{x} \\quad y=x^2 \\quad y=x \\quad y=\\dfrac{x^2+x}{2} \\quad \\text{and } \\quad y=2\\sqrt{x}-x\\]\n\nNow we’d like you to look at the different regions enclosed by the curves.\n\n- Which do you think is the smallest region? How can you check?\n\nThink about what techniques you can use and how you can reduce the number of calculations you need to do.\n\nWhich curve is which?\n\nDetails of how you can work this out can be found in [Curve match](https://undergroundmathematics.org/thinking-about-functions/curve-match), but from top to bottom we have \\(y = 2\\sqrt{x} - x\\), then \\(y = \\sqrt{x}\\), then \\(y = x\\), then \\(y = \\dfrac{x^2 + x}{2}\\), and finally \\(y = x^2\\) at the bottom.\n\nIt looks as if the region between \\(y=\\dfrac{x^2+x}{2}\\) and \\(y=x^2\\) or the region between \\(y=x\\) and \\(y=\\dfrac{x^2+x}{2}\\) could be the smallest, but it’s difficult to tell which is smaller just by looking.\n\nOne way to check which region is smaller is to use integration to find the areas. In order to find the area enclosed by \\(y=\\dfrac{x^2+x}{2}\\) and \\(y=x^2\\) we could first find the area under \\(y=\\dfrac{x^2+x}{2}\\), the upper boundary of the region, and subtract the area under the \\(y=x^2\\), the lower boundary of the region we want. However, because integration is [linear](https://undergroundmathematics.org/glossary/linear-operator), we could instead integrate the difference beween the two functions, as follows.\n\n\\[\\int_{0}^{1} \\dfrac{x^2+x}{2} -x^2\\, dx = \\int_{0}^{1} \\dfrac{x-x^2}{2}\\, dx = \\int_{0}^{1} \\dfrac{x}{2}-\\dfrac{x^2}{2}\\, dx = \\left[ \\dfrac{x^2}{4}-\\dfrac{x^3}{6}\\right]_{0}^{1} = \\left(\\dfrac{1}{4}-\\dfrac{1}{6}\\right) = \\dfrac{1}{12}\\]\n\nSimilarly, the area of the region between \\(y=x\\) and \\(y=\\dfrac{x^2+x}{2}\\) is given by\n\n\\[\\int_{0}^{1} x-\\dfrac{x^2+x}{2}\\, dx = \\int_{0}^{1} \\dfrac{x-x^2}{2}\\, dx\\]\n\nWhat does this tell you? Can you explain it?\n\nYou may have found that the areas of regions in the diagram can be found in several ways. We will illustrate a few of these here.\n\nUsing symmetry\n\nNow that we know the size of the blue and purple regions, we can do some calculations based on symmetry.\n\nFor example, we know that \\(y=\\sqrt{x}\\) and \\(y=x^2\\) (for the section of the graph shown) are reflections of each other in the line \\(y=x\\) because they are the graphs of inverse functions. Therefore the area between \\(y=\\sqrt{x}\\) and \\(y=x\\) is the same as the area between \\(y=x\\) and \\(y=x^2\\), which is the sum of the areas of the blue and purple regions.\n\nUsing composite shapes\n\nFrom the diagram we can see that the area of the region between \\(y=x\\), the \\(x\\)-axis and the line \\(x=1\\) is \\(\\tfrac{1}{2}.\\) Therefore the area between \\(y=x^2\\) and the \\(x\\)-axis is \\(\\tfrac{1}{3}.\\)\n\nUsing means\n\nWe used symmetry about the line \\(y=x\\) to calculate the area of the region between \\(y=\\sqrt{x}\\) and \\(y=x.\\) Even though \\(y=2\\sqrt{x}-x\\) and \\(y=\\sqrt{x}\\) are not the graphs of inverse functions, we can use a symmetry-based argument to explain why the region between \\(y=2\\sqrt{x}-x\\) and \\(y=\\sqrt{x}\\) is the same size as the region between \\(y=\\sqrt{x}\\) and \\(y=x.\\) In this case, we are using symmetry about a mean value, and the following diagram illustrates these two uses of symmetry.\n\nCan you use this idea to explain why the region between \\(y=x\\) and \\(y=\\dfrac{x^2+x}{2}\\) is the same size as the region between \\(y=\\dfrac{x^2+x}{2}\\) and \\(y=x^2\\)?\n\nIt is worth noting that by using symmetry in various forms we have been able to find the areas of all the regions enclosed by the curves by only doing one integral.\n\nWould we still be able to do this if we started by finding a different integral?\n\n**Further things to investigate**\n\n- The area of the region between \\(y=x^2\\), the \\(x\\)-axis and the line \\(x=1\\) is \\(\\tfrac{1}{3}.\\) Can we find a function whose graph splits this region into areas of \\(\\tfrac{1}{6}\\)?\n\n- Can you find other functions whose graphs pass through \\((0,0)\\) and \\((1,1)\\) and bound regions of area \\(\\tfrac{1}{12}\\)?\n\nThe curves in this problem all pass through \\((0,0)\\) and \\((1,1).\\) This made calculating the definite integrals quite simple. How do you think our use of symmetry, means and composite shapes would have been affected if the curves didn’t all meet at these points? What if we only wanted to know about regions from \\(x=0\\) to \\(x=\\tfrac{1}{2}\\)?\n"
   },
   {
@@ -11537,9 +11695,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "Area then volume of revolution for y=ax-x^2 — 1.8 bearings; no differentiation.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "the area under ax-x^2 given as 36 finds a, then the solid of revolution about the x-axis is evaluated as pi*integral((6x-x^2)^2)dx — the canonical P1 area-then-volume-of-revolution question",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# What volume is generated when $y = ax - x^2$ is rotated about the x-axis?\n\n## Question\n\nThe curve \\(y = ax - x^2\\) cuts the \\(x\\)-axis at the points \\((0,0)\\) and \\((a,0)\\). The area enclosed between the curve and the \\(x\\)-axis is \\(36\\) square units. Calculate the value of \\(a\\).\n\nWith this value of \\(a\\) find, as a multiple of \\(\\pi\\), the volume obtained when the above area is rotated through \\(4\\) right angles about the \\(x\\)-axis.\n\n## Solution\n\nFrom what is given in the question, the area enclosed between the curve and the\n\n\\(x\\)\n\n-axis is\n\n\\[\\begin{equation*} 36 = \\int_0^a ax - x^2 \\:dx = \\left[ \\frac{ax^2}{2} - \\frac{x^3}{3} \\right]_0^a = \\frac{a^3}{2} - \\frac{a^3}{3} = \\frac{a^3}{6}. \\end{equation*}\\]\n\nThus, \\(a^3 = 216\\) and so \\(a = 6\\).\n\nIf we have a curve\n\n\\(y = f(x)\\)\n\nwith\n\n\\(p \\le x \\le q\\)\n\nand\n\n\\(f(x) \\ge 0\\)\n\n, then the volume enclosed by the surface of revolution obtained by rotating the curve around the\n\n\\(x\\)\n\n-axis is given by\n\n\\[\\begin{equation*} \\int_{p}^{q} \\pi f(x)^2 \\:dx. \\end{equation*}\\]\n\nHow does this arise? We can approximate the enclosed solid with a series of cylinders of thickness\n\n\\(\\delta x\\)\n\n(corresponding to a small increase in\n\n\\(x\\)\n\n) and radius\n\n\\(f(x)\\)\n\n(corresponding to the height of the function). The volume of the approximation is\n\n\\[\\begin{equation*} \\sum \\pi f(x)^2 \\delta x \\xrightarrow{\\delta x \\to 0} \\int_{p}^{q} \\pi f(x)^2 \\:dx. \\end{equation*}\\]\n\nIn our case, then, the volume required is\n\n\\[\\begin{align*} \\int_0^6 \\pi \\left( 6x - x^2 \\right)^2 \\:dx &= \\pi \\int_0^6 x^2 (6-x)^2 \\:dx \\\\ &= \\pi \\int_0^6 x^2 (36 - 12x + x^2) \\:dx \\\\ &= \\pi \\int_0^6 36x^2 - 12x^3 + x^4 \\:dx \\\\ &= \\pi \\left[ 12x^3 - 3x^4 + \\frac{x^5}{5} \\right]_0^6 \\\\ &= \\pi \\left( 12 \\times 6^3 - 3 \\times 6^4 + \\frac{6^5}{5} \\right) \\\\ &= \\pi \\left( \\left( 2 - 3 + \\frac{6}{5} \\right) 6^4 \\right) \\\\ &= \\frac{6^4}{5} \\pi \\\\ &= \\frac{1296}{5} \\pi. \\end{align*}\\]\n"
   },
   {
@@ -11552,9 +11720,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "Solid of revolution and centre of mass — 1.8 and mechanics bearings.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "volume of revolution of y = b(a^2-x^2)^(1/2)/a about the x-axis evaluated as a polynomial integral; the centre-of-mass parts are Mechanics dressing",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# Can we find the centre of mass of a solid hemisphere?\n\n## Question\n\nThe region in the first quadrant enclosed by the curve \\(y = \\dfrac{b(a^2 - x^2)^{1/2}}{a}\\) and the lines \\(y = 0\\), \\(x = 0\\), \\(x = ka\\) \\((0 < k \\le 1)\\), is rotated through four right angles about the \\(x\\)-axis to form a solid of revolution. Show that the volume of the solid is \\(\\tfrac{1}{3} \\pi ab^2k(3-k^2)\\).\n\nIf this solid is of uniform density find the coordinates of its centre of mass.\n\nBy considering the case \\(b = a\\), \\(k = 1\\), show that the centre of mass of a uniform solid hemisphere of radius \\(a\\) is at a distance \\(\\tfrac{3}{8}a\\) from the centre.\n\n## Solution\n\nThe volume of revolution of a curve around the\n\n\\(x\\)\n\n-axis is given by the expression\n\n\\[\\begin{equation*} \\int \\pi y^2 dx. \\end{equation*}\\]\n\nSo the volume we need is\n\n\\[\\begin{align*} \\int_0^{ka} \\pi b^2 \\frac{a^2 - x^2}{a^2} \\:dx = \\frac{\\pi b^2}{a^2} \\left[ a^2x - \\frac{x^3}{3} \\right]_0^{ka} &= \\frac{\\pi b^2}{a^2} \\left( ka^3 - \\frac{k^3a^3}{3} \\right) \\\\ &= \\pi b^2 ka \\left( 1 - \\frac{k^2}{3} \\right) \\\\ &= \\frac{1}{3} \\pi ab^2k (3-k^2). \\end{align*}\\]\n\nAs this solid has rotational symmetry around the \\(x\\)-axis, the centre of mass lies on the \\(x\\)-axis, let’s say at \\((\\bar{x},0)\\).\n\nThe moment of our solid about an axis through \\(O\\) (setting its density to \\(1\\)) is therefore \\(\\frac{1}{3}\\pi ab^2k (3-k^2) \\times \\bar{x}.\\)\n\nThis must equal the sum of the moments of the infinitesimal cylinders we added in the first part of the question.\n\nThis is (in the limit)\n\n\\[\\begin{align*} \\int_0^{ka} \\pi y^2x \\:dx &= \\int_0^{ka} \\pi b^2 \\frac{a^2x - x^3}{a^2} \\:dx\\\\ &= \\frac{\\pi b^2}{a^2} \\left[ \\dfrac{a^2x^2}{2} - \\frac{x^4}{4} \\right]_0^{ka}\\\\ &= \\frac{\\pi b^2}{a^2} \\left( \\dfrac{a^4k^2}{2} - \\frac{a^4k^4}{4}\\right)\\\\ &= \\frac{\\pi a^2b^2k^2}{4}(2 -k^2). \\end{align*}\\]\n\nThus\n\n\\[\\begin{align*} \\frac{\\pi a^2b^2k^2}{4}(2 -k^2)&=\\frac{1}{3} \\pi ab^2k (3-k^2)\\bar{x}\\\\ \\implies \\frac{ak}{4}(2 -k^2)&=\\frac{1}{3}(3-k^2)\\bar{x}\\\\ \\implies 3ak(2 -k^2)&=4(3-k^2)\\bar{x}\\\\ \\implies \\bar{x} &= \\dfrac{3ak(2 -k^2)}{4(3-k^2)}. \\end{align*}\\]\n\nBy taking\n\n\\(b = a\\)\n\nand\n\n\\(k = 1\\)\n\n, we have that\n\n\\[\\begin{equation*} y = \\sqrt{a^2 - x^2} \\end{equation*}\\]\n\nand so\n\n\\[\\begin{equation*} x^2 + y^2 = a^2. \\end{equation*}\\]\n\nThis is the equation of a circle, centred at the origin and with radius \\(a\\).\n\nOur area will rotate to a perfect hemisphere, since our integral’s limits are\n\n\\(0\\)\n\nand\n\n\\(a\\)\n\n, and so\n\n\\(x=ka\\)\n\nis tangent to the circle. Moreover,\n\n\\[\\begin{equation*} \\bar{x} = \\frac{3ak(2 - k^2)}{4(3-k^2)} = \\frac{3a(2 - 1^2)}{4(3 - 1^2)} = \\frac{3a}{8}, \\end{equation*}\\]\n\nand so the centre of mass of a uniform solid hemisphere of radius \\(a\\) is at a distance \\(\\dfrac{3}{8}a\\) from the centre.\n"
   },
   {
@@ -11567,9 +11745,20 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "I(c) integral with a non-calculus inequality argument — 1.8 bearing.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.3",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": "I(c) = integral over [0,1] of ((x-c)^2+c^2) expanded, integrated and minimised by completing the square — canonical polynomial definite integral",
+     "modesRecorded": [
+      1,
+      4
+     ]
+    }
+   ],
    "bodyMd": "\n# Can we find the area under a parabola?\n\n## Question\n\nLet \\[I(c)=\\int_0^1 ((x-c)^2 +c^2)dx\\] where \\(c\\) is a real number.\n\n1. Sketch \\(y=(x-1)^2+1\\) for the values \\(-1\\le x\\le 3\\) and show on your graph the area represented by the integral \\(I(1)\\).\n\n---\n\n1. Without explicitly calculating \\(I(c)\\), explain why \\(I(c) \\ge 0\\) for any value of \\(c\\).\n\n---\n\n1. Calculate \\(I(c)\\).\n\n---\n\n1. What is the minimum value of \\(I(c)\\) (as \\(c\\) varies)?\n\n---\n\n1. What is the maximum value of \\(I(\\sin \\theta)\\) as \\(\\theta\\) varies?\n\n## Suggestion\n\nLet \\[I(c)=\\int_0^1 ((x-c)^2 +c^2)\\:dx\\] where \\(c\\) is a real number.\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/Q76Rn4yH/width/600/height/300/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/Q76Rn4yH)\n\nThe curve here is \\(y = (x-c)^2 + c^2\\), and the white area is \\(I(c)\\). The size of the white area is given by the height of the red bar at the right.\n\nWhat is always true about \\((x-c)^2\\) and \\(c^2\\)?\n\nCan we complete the square here?\n\nNotice we’re asked for the MAXIMUM value here…\n\n## Solution\n\nWe have \\(y=(x-1)^2+1\\) so since \\((x-1)^2 \\ge 0\\), with equality if and only if \\(x=1\\), the minimum value of \\(y\\) is \\(1\\), which occurs when \\(x=1\\).\n\nRewriting as \\(y=x^2-2x+2\\), we see that the \\(y\\)-intercept is at \\(y=2\\). This gives us enough information to sketch the graph.\n\nHere is the area represented by the integral.\n\nThe integrand \\((x-c)^2+c^2\\) is greater than or equal to zero for any real \\(c\\) since \\((x-c)^2\\) and \\(c^2\\) are both squares of real numbers and so are both greater than or equal to zero. So we must have the integral of their sum greater than or equal to zero.\n\nOr we could say that \\(y=(x-c)^2+c^2\\) is a parabola pointing downwards with vertex \\((c, c^2)\\), which is above the \\(x\\)-axis, and so the integral is positive.\n\nWe have\n\n\\[\\begin{align*} I(c) &= \\int_0^1 ((x-c)^2+c^2)dx\\\\ &=\\left[ \\frac{(x-c)^3}{3} +c^2x \\right]_0^1\\\\ &=\\frac{(1-c)^3}{3} + c^2 + \\frac{c^3}{3}\\\\ &=2c^2-c+\\frac{1}{3}. \\end{align*}\\]\n\nUsing the expression for\n\n\\(I(c)\\)\n\nwe calculated above, and completing the square, we have\n\n\\[\\begin{align*} I(c) &= 2c^2-c+\\frac{1}{3}\\\\ &= 2\\left(c-\\frac{1}{4}\\right)^2 - \\frac{1}{8} + \\frac{1}{3}\\\\ &= 2\\left(c-\\frac{1}{4}\\right)^2 + \\frac{5}{24}. \\end{align*}\\]\n\nSo the minimum value that \\(I(c)\\) can take is \\(5/24\\). (This occurs when \\(c=1/4\\).)\n\nNote that from our work above, the MINIMUM value of \\(I(\\sin\\theta)\\) happens when \\(\\theta = \\arcsin (0.25)\\).\n\nNow \\(c=\\sin \\theta\\) varies between between \\(-1\\) and \\(1\\), so we need to find the maximum value of \\(I\\) over this range.\n\nWe worked out earlier that the overall minimum of \\(I\\) occurs at \\(c=1/4\\), and since \\(I\\) is quadratic, it is symmetric about this point, and increasing for larger and smaller values of \\(c\\).\n\nSo the maximum value of \\(I(c)\\) over the range \\(-1 \\le c \\le 1\\) occurs at \\(c=-1\\), the furthest point from \\(x=1/4\\) in the range.\n\nSo the maximum value of \\(I(\\sin \\theta)\\) is \\(I(-1)=10/3\\).\n"
   },
   {
@@ -11582,9 +11771,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "y^2=x^3 sketch by symmetry then area and volume — 1.8 bearings; the sketch needs no differentiation.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "area enclosed by y^2 = x^3 and x = 4 evaluated as 2*integral(x^(3/2))dx and the volume of revolution as pi*integral(x^3)dx — rational-index powers rotated about an axis",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# Can we sketch the graph of $y^2 = x^3$?\n\n## Question\n\nSketch the graph of \\(y^2 = x^3\\).\n\nCalculate the area enclosed by the curve and the ordinate \\(x = 4\\).\n\nFind also the volume generated by rotating this area about the axis of \\(x\\).\n\n## Solution\n\nSince\n\n\\(y^2 \\ge 0\\)\n\n, the graph only exists for\n\n\\(x^3 \\ge 0\\)\n\n, that is, when\n\n\\(x \\ge 0\\)\n\n. Taking square roots we see that the curve has two symmetrical branches, namely\n\n\\[\\begin{equation*} y = x^{3/2} \\quad\\text{and}\\quad y = -x^{3/2}. \\end{equation*}\\]\n\nIt is clear that the positive branch increases. Its gradient is given by\n\n\\[\\begin{equation*} \\frac{dy}{dx} = \\frac{3}{2}x^{1/2} \\end{equation*}\\]\n\nwhich is zero at \\(x=0\\) and increases with \\(x\\). Thus, we have\n\nAs the half-area above the\n\n\\(x\\)\n\n-axis is a reflection of the half-area below the\n\n\\(x\\)\n\n-axis, the area we want is\n\n\\[\\begin{equation*} 2 \\int_0^4 x^{3/2} \\:dx = 2 \\left[ \\frac{x^{5/2}}{\\frac{5}{2}}\\right]_0^4 = \\frac{4}{5} \\times 4^{5/2} = \\frac{4}{5} \\times 2^5 = \\frac{128}{5}. \\end{equation*}\\]\n\nThe volume of revolution obtained by rotating a curve around the\n\n\\(x\\)\n\n-axis is\n\n\\[\\begin{equation*} \\int_{x_0}^{x_1} \\pi y^2 \\:dx. \\end{equation*}\\]\n\nSo in our case, the volume is\n\n\\[\\begin{align*} \\int_0^4 \\pi x^3 \\:dx = \\pi \\frac{4^4}{4} = 64\\pi. \\end{align*}\\]\n"
   },
   {
@@ -11597,9 +11796,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "I(a)=integral of (x^2-a)^2 — the definite-integral evaluation is load-bearing (1.8); the quadratic-in-a minimisation is a light wrapper.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "I(a) = integral over [0,1] of (x^2-a)^2 evaluated and minimised — polynomial definite integral",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# When does this definite integral have a minimum?\n\n## Question\n\nThe smallest value of \\[I(a) = \\displaystyle\\int_0^1 \\! (x^2 - a)^2 \\, \\mathrm{d}x,\\] as \\(a\\) varies, is\n\n1. \\(\\frac{3}{20}\\),\n\n---\n\n1. \\(\\frac{4}{45}\\),\n\n---\n\n1. \\(\\frac{7}{13}\\),\n\n---\n\n1. \\(1\\).\n\n## Interactive graph\n\nThe smallest value of \\[I(a) = \\displaystyle\\int_0^1 \\! (x^2 - a)^2 \\, \\mathrm{d}x,\\] as \\(a\\) varies, is…\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/ppMqEM5G/width/600/height/400/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/ppMqEM5G)\n\nThe orange curve here is \\(y = (x^2-a)^2\\), while the white region is \\(I(a)\\)\n\n## Solution\n\n\\[\\begin{align*} I(a) \\hspace{2mm} & = \\displaystyle\\int_0^1 \\! (x^2 - a)^2 \\, \\mathrm{d}x\\\\ & = \\displaystyle\\int_0^1 \\! (x^4 - 2a x^2 + a^2) \\, \\mathrm{d}x \\\\ & = \\left[ \\frac{x^5}{5} - \\frac{2ax^3}{3} + a^2 x\\right]_0^1 \\\\ & = \\frac{1}{5} - \\frac{2a}{3} + a^2 \\\\ & = \\frac{1}{5}+ \\left(a - \\frac{1}{3}\\right)^2 -\\frac{1}{9}\\\\ & = \\left(a - \\frac{1}{3}\\right)^2 + \\frac{4}{45}. \\end{align*}\\]\n\nSo the smallest possible value of \\(I(a)\\) is \\(\\frac{4}{45}\\) (which occurs when \\(a=\\frac{1}{3}\\)).\n\nHence the answer is (b).\n\nAlternatively we can differentiate \\[I(a) = \\frac{1}{5} - \\frac{2a}{3} + a^2\\] with respect to \\(a\\), and put this equal to zero to get the same result.\n"
   },
   {
@@ -11612,9 +11821,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "Area between y=x^2 and a line — 1.8 bearing; intersections by quadratics.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": "area of the region bounded by y = x^2, 2x+y=15 and the x-axis split into an integrated region and a triangle",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# Can we find the area inside a straight line, a parabola and the x-axis?\n\n## Question\n\nThe figure shows the curve \\(y = x^2\\) and the straight line \\(2x + y = 15\\). Find\n\n1. the co-ordinates of \\(P\\) and \\(Q\\),\n\n---\n\n1. the area of the shaded region.\n\n## Suggestion\n\nThe figure shows the curve \\(y = x^2\\) and the straight line \\(2x + y = 15\\). Find […] the area of the shaded region.\n\nIs there a way of viewing the region differently?\n\nA further suggestion\n\nCould we, perhaps, view it as the sum of two simpler regions?\n\n## Solution\n\nThe figure given in the question is the following.\n\nThe point \\(P\\) is the point in the first quadrant at which the curve \\(y = x^2\\) and line \\(y = 15 - 2x\\) cross. That is, it is the point whose \\(x\\)-coordinate is positive and such that \\[x^2 = 15 - 2x.\\] This equation can be rearranged to become \\[x^2 + 2x - 15 = 0\\] which, by inspection, factorises: \\[(x + 5)(x - 3) = 0.\\] Thus, the \\(x\\)-coordinate of \\(P\\) is \\(3\\), and so the coordinates of \\(P\\) are \\((3,9)\\) since, in particular, \\(P\\) lies on the curve \\(y = x^2\\).\n\nThe point \\(Q\\) is the \\(x\\)-intercept of the line, so the \\(x\\)-coordinate of \\(Q\\) is the value of \\(x\\) such that \\[15 - 2x = 0.\\] Thus, \\(x = \\tfrac{15}{2}\\), and so the coordinates of \\(Q\\) are \\(\\left( \\tfrac{15}{2}, 0 \\right)\\).\n\nThe key to this question is to break the region into two pieces, as the following diagram shows.\n\nThe shaded area is therefore the sum of the area of region \\(A\\) and the area of region \\(B\\), which are separated by the dotted line segment in the image. This dotted line segment is part of the line \\(x = 3\\), since the \\(x\\)-coordinate of the point \\(P\\) is \\(3\\).\n\nThe area of region \\(A\\) can be calculated by integration: \\[\\text{area of $A$} = \\int_0^3 x^2 \\:dx = \\left[ \\frac{x^3}{3} \\right]_0^3 = \\frac{3^3}{3} - 0 = 9.\\]\n\nOn the other hand, region \\(B\\) is a (right-angled) triangle whose base has length \\[\\frac{15}{2} - 3 = \\frac{9}{2}\\] (which corresponds to the \\(x\\)-coordinate of \\(P\\) being subtracted from the \\(x\\)-coordinate of \\(Q\\)) and whose height has length \\(9\\), which corresponds to the \\(y\\)-coordinate of \\(P\\). Thus, \\[\\text{area of $B$} = \\frac{1}{2} \\times \\text{base} \\times \\text{height} = \\frac{1}{2} \\times \\frac{9}{2} \\times 9 = \\frac{81}{4}.\\]\n\nTherefore, \\[\\text{area of shaded region} = \\text{area of $A$} + \\text{area of $B$} = 9 + \\frac{81}{4} = \\frac{117}{4}.\\]\n"
   },
   {
@@ -11627,9 +11846,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "Sphere-slice volume and centre of gravity — 1.8 and mechanics bearings.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "volume of a spherical cap as pi*integral(a^2-x^2)dx; the centre-of-gravity parts are Mechanics dressing",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# If we take a slice from this sphere, where is its centre of gravity?\n\n## Question\n\nA portion of a solid sphere of radius \\(a\\) is cut off by means of a plane whose distance from the centre of the sphere is \\(\\frac{1}{2}a\\). Find the volume of the portion cut off.\n\nFind also the distance from the circular plane face of the centre of gravity of this portion.\n\n## Solution\n\nHere is a section through the centre of the sphere. With this choice of axes, the equation of the circle is \\(x^2+y^2 = a^2\\), and hence \\(y^2=a^2-x^2\\).  and so the curve in the first quadrant is given by $y = \\sqrt{a^2-x^2}$.\n\nThe portion cut off is shown in grey. Its volume can be found by revolving the circular arc for \\(\\frac{a}{2} < x < a\\) about the \\(x\\)-axis.\n\nWe can view this as a solid of revolution defined by the function \\begin{equation*} y = \\sqrt{a^2 - x^2}, \\quad\\frac{a}{2} < x < a. \\end{equation*} Thus the required volume is\n\n\\[\\begin{align*} \\int_{a/2}^a \\pi y^2 \\:dx &= \\pi \\int_{a/2}^a a^2 - x^2 \\:dx \\\\ &= \\pi \\left[ a^2x - \\frac{x^3}{3} \\right]_{a/2}^a \\\\ &= \\pi \\left( a^3 - \\frac{a^3}{3} - \\frac{a^3}{2} + \\frac{a^3}{24} \\right) \\\\ &= \\pi a^3 \\left( \\frac{24 - 8 - 12 + 1}{24} \\right ) \\\\ &= \\frac{5}{24} \\pi a^3. \\end{align*}\\]\n\nBy symmetry, the centre of gravity (or [centre of mass](https://undergroundmathematics.org/glossary/centre-of-mass)) lies on the \\(x\\)-axis in our diagram. To find out where on the axis, we take [moments](https://undergroundmathematics.org/glossary/moment-of-a-force) about \\(O\\) and treat the sphere as having density of \\(1\\).\n\nWe divide the grey solid into discs, each with its centre \\(x\\) from \\(O\\), with thickness \\(\\delta x\\) and radius \\(y\\). The volume of a disc is \\(\\pi y^2 \\delta x\\).\n\nThe moment of each disc about \\(O\\) is \\(x \\pi y^2 \\delta x\\).\n\nWe now let the thickness of the discs tend to zero, at which point the sum of these moments becomes an integral. Let the centre of mass of the grey portion be at a distance \\(\\bar x\\) from \\(O\\).\n\n\\[\\begin{align*} \\bar x \\frac{5}{24} \\pi a^3 &= \\int_{a/2}^a x \\pi y^2 \\:dx\\\\ &= \\pi\\int_{a/2}^a x(a^2 - x^2) \\:dx \\\\ &= \\pi\\left[ \\frac{a^2x^2}{2} - \\frac{x^4}{4} \\right]_{a/2}^a\\\\ &= \\pi\\left( \\frac{a^4}{2} - \\frac{a^4}{4} - \\frac{a^4}{8} + \\frac{a^4}{64} \\right) \\\\ &= \\pi\\frac{9}{64} a^4, \\end{align*}\\]\n\nand therefore\n\n\\[\\begin{equation*} \\bar x = \\frac{\\frac{9}{64} \\pi a^4}{\\frac{5}{24} \\pi a^3} = \\frac{27}{40} a. \\end{equation*}\\]\n\nThe required distance from the plane is therefore\n\n\\[\\begin{equation*} \\frac{27}{40} a - \\frac{1}{2} a = \\frac{7}{40} a. \\end{equation*}\\]\n\nIt is interesting to note that the centre of mass is not the same as the point which has exactly half the mass of the grey solid on each side of it. This latter point, \\(\\bar X\\), can be found by integration and is such that \\(\\bar X \\approx 0.6571 a\\), whereas the centre of mass, \\(\\bar x = 0.675 a\\).\n\nThis is equivalent to the distinction between the median and the mean of the distribution of mass.\n\nIt is interesting that $X$ is *not* the same as the point $\\dfrac{a}{2} < X' < a$ at which exactly half of the mass is on one side of $X'$. The point $X'$ is such that \\begin{equation*} \\int_{a/2}^{X'} \\pi (a^2 - x^2)\\:dx = \\int_{X'}^a \\pi (a^2 - x^2) \\:dx; \\end{equation*} after cancelling by $\\pi$, we have \\begin{equation*} \\left[ a^2x - \\frac{x^3}{3} \\right]_{a/2}^{X'} = \\left[ a^2x - \\frac{x^3}{3} \\right]_{X'}^a \\end{equation*} which, after expanding both sides and rearranging, becomes the equation \\begin{equation*} \\frac{2}{3} X'^3 - 2a^2X' + \\frac{9}{8} a^3 = 0. \\end{equation*} Since $X'$ lies between $\\dfrac{a}{2}$ and $a$, we can write $X' = \\beta a$ for some $\\beta$ lying between $\\dfrac{1}{2}$ and $1$. The above becomes \\begin{equation*} \\beta^3 - 3\\beta + \\frac{27}{16} = 0. \\end{equation*} It's not too difficult to solve this exactly. The only solution in our region of interest is $\\beta \\approx 0.657055$, so \\begin{equation*} X' \\approx 0.657055 a \\end{equation*} whereas \\begin{equation*} X = \\frac{27}{40} a = 0.675a. \\end{equation*} In statistical terms, we are really saying here that the mean and the median for a given distribution need not coincide.\n"
   },
   {
@@ -11657,9 +11886,19 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "Area comparison f vs g — integration decisive (1.8 bearing).",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "compares the areas bounded by the x-axis and a-x^2 vs x^4-a via definite integrals with irrational limits",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# When is the area of this region bigger than the area of this one?\n\n## Question\n\nConsider two functions \\[f(x) = a - x^2,\\] \\[g(x) = x^4 - a.\\]\n\nFor precisely which values of \\(a > 0\\) is the area of the region bounded by the \\(x\\)-axis and the curve \\(y = f(x)\\) bigger than the area of the region bounded by the \\(x\\)-axis and curve \\(y = g(x)\\)?\n\n1. all values of \\(a\\),\n\n---\n\n1. \\(a > 1\\),\n\n---\n\n1. \\(a > \\dfrac{6}{5}\\),\n\n---\n\n1. \\(a > \\left(\\dfrac{4}{3}\\right)^{3/2}\\),\n\n---\n\n1. \\(a > \\left(\\dfrac{6}{5}\\right)^4\\).\n\n## Suggestion\n\nDrawing a diagram might help to visualise what is happening here.\n\nCan we use calculus to find the areas mentioned?\n\nWhat do we know about areas below the \\(x\\)-axis?\n\n## Solution\n\nThe area of the region bounded by the \\(x\\)-axis and the curve \\(y = f(x)\\) is \\[\\int_{-a^{1/2}}^{a^{1/2}} a - x^2 \\:dx = \\left[ax-\\dfrac{x^3}{3}\\right]_{-a^{1/2}}^{a^{1/2}} = \\dfrac{4a^{3/2}}{3}.\\]\n\nOn the other hand the area of the region bounded by the \\(x\\)-axis and the curve \\(y = g(x)\\) is \\[-\\int_{-a^{1/4}}^{a^{1/4}} x^4 - a \\:dx = -\\left[\\dfrac{x^5}{5}-ax\\right]_{-a^{1/4}}^{a^{1/4}} = \\dfrac{8a^{5/4}}{5}.\\]\n\nSince \\(5/4<3/2\\) it follows that when \\(a\\) is small, \\(\\dfrac{8a^{5/4}}{5} > \\dfrac{4a^{3/2}}{3}\\), but when \\(a\\) is large, \\(\\dfrac{8a^{5/4}}{5} < \\dfrac{4a^{3/2}}{3}\\).\n\nSo when are these two areas equal? When \\[\\dfrac{8a^{5/4}}{5} = \\dfrac{4a^{3/2}}{3} \\iff a^{1/4}=\\dfrac{6}{5} \\iff a = \\left(\\dfrac{6}{5}\\right)^4,\\] and so the answer is (e).\n"
   },
   {
@@ -11672,9 +11911,20 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "dI/da via the fundamental theorem with 2^(x^2) — beyond P1 1.7 (P3 bearings).",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.1",
+     "confidence": "medium",
+     "primaryPick": true,
+     "note": "dI/da for I(a) = integral over [0,a] of (4-2^(x^2)) resolved by the integration-differentiation inverse relation — the reverse-process understanding of 1.8.1 clause one is the tested skill",
+     "modesRecorded": [
+      1,
+      4
+     ]
+    }
+   ],
    "bodyMd": "\n# What happens if we integrate, then differentiate?\n\n## Question\n\nFor a positive number \\(a\\), let \\[I(a) = \\int_0^a \\! \\left(4 - 2^{x^2} \\right) \\, dx.\\]\n\nThen \\(\\dfrac{dI}{da}=0\\) when \\(a\\) equals\n\n1. \\(\\dfrac{1 + \\sqrt{5}}{2}\\),\n\n---\n\n1. \\(\\sqrt{2}\\),\n\n---\n\n1. \\(\\dfrac{\\sqrt{5} - 1}{2}\\),\n\n---\n\n1. \\(1\\).\n\n## Suggestion\n\nWe are looking for the stationary point of \\(I\\). What does this mean geometrically?\n\nAs \\(a\\) increases, for which points does \\(I(a)\\) increase and for which points does it decrease? What does this tell us about where the stationary points have to lie?\n\n## Solution\n\nFor a positive number \\(a\\), let \\[I(a) = \\int_0^a \\! \\left(4 - 2^{x^2} \\right) \\, dx.\\]\n\nThen \\(\\dfrac{dI}{da}=0\\) when \\(a\\) equals\n\n1. \\(\\frac{1 + \\sqrt{5}}{2}\\),\n\n---\n\n1. \\(\\sqrt{2}\\),\n\n---\n\n1. \\(\\frac{\\sqrt{5} - 1}{2}\\),\n\n---\n\n1. \\(1\\).\n\n**Approach 1**\n\nWe want to find a stationary point of \\(I(a)\\), though it may not be clear exactly how to differentiate an expression in this form. As \\(I(a)\\) is the (signed) area of the curve above the \\(x\\)-axis between \\(0\\) and \\(a\\), we want to find a point in which the area is neither increasing nor decreasing.\n\nLet \\(f(x) = 4 - 2^{x^2}\\), so that \\(I(a) = \\int_0^a f(x) \\, dx\\). Then if \\(f(a)>0\\), the area must increase if \\(a\\) increases by a small amount. Similarly if \\(f(a)<0\\), the area must decrease. This is by considering that the new areas added will be entirely above and entirely below the \\(x\\)-axis in each case respectively. This picture also tells us that the rate at which the area changes is smallest when \\(f(a)\\) is smallest. Therefore, the stationary points must occur when \\(f(a)=0\\).\n\nSo \\(\\frac{dI}{da}= 0\\) when \\(4- 2^{a^2} = 0\\). Hence \\(a^2 = 2\\), which gives that \\(a = \\sqrt{2}\\) (as \\(a\\) is positive).\n\nTherefore the answer is (b).\n\n**Approach 2**\n\nWe may recall that, in many ways, integration can be seen as the opposite of differentiation. Therefore we may initially guess that \\(\\frac{dI}{da}= 4- 2^{a^2}\\). To show that this is true, suppose that \\(4-2^{x^2}\\) integrates to the function \\(F(x)\\). That is, \\(F\\) is the function satisfying \\(F'(x)=4-2^{x^2}\\). Then we have that\n\n\\[I(a) = \\int_0^a \\! \\left(4 - 2^{x^2} \\right) \\, dx = \\bigl[ F(x) \\bigr]_0^a = F(a) - F(0)\\]\n\nand so\n\n\\[\\frac{dI}{da}= F'(a) = 4- 2^{a^2}\\]\n\nas \\(F(0)\\) is a constant. Hence the derivative is \\(0\\) when \\(a=\\sqrt{2}\\), similarly to above.\n\nAs before, the answer is (b).\n\nIn the two arguments above, you may not be completely convinced by some of the assertions that have been made. For example, in the first approach, we asserted that if \\(f(a)>0\\), then the area must increase if \\(a\\) increases by a small amount. What if \\(f\\) decreases very quickly? Would there always be some amount by which we can increase \\(a\\) so that the area still increases? In the second approach, if we cannot write down an expression for the integral \\(F(x)\\) explicitly, must it always exist? This result is known as the [fundamental theorem of calculus](https://undergroundmathematics.org/glossary/fundamental-theorem-of-calculus) and is explored when studying mathematics at university.\n"
   },
   {
@@ -11702,9 +11952,20 @@
    "resourceTypeLabel": "Review question",
    "level": null,
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "Area between parabola and line MC — 1.8 bearing.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.4",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": "area between y = x^2 and y = x+2 as the difference of two definite integrals — the canonical curve-line area question",
+     "modesRecorded": [
+      1,
+      4
+     ]
+    }
+   ],
    "bodyMd": "\n# Can we find the area between a parabola and a line?\n\n## Question\n\nThe area of the region bounded by the curves \\(y = x^2\\) and \\(y = x + 2\\) equals\n\n1. \\(\\frac{7}{3}\\),\n\n---\n\n1. \\(\\frac{7}{2}\\),\n\n---\n\n1. \\(\\frac{9}{2}\\),\n\n---\n\n1. \\(\\frac{11}{2}\\).\n\n## Suggestion\n\nDraw a sketch! Where do the curves intersect?\n\n## Solution\n\nThe curves intersect when \\(x^2 = x + 2\\), or \\((x - 2)(x + 1) = 0\\), so the points of intersection are at \\(x = 2\\) and \\(x = -1\\).\n\nFrom our sketch we can see that \\(x + 2 \\geq x^2\\) in the region \\(-1 \\leq x \\leq 2\\), so\n \\[\\text{Area enclosed} = \\left( \\text{Area below } \\; y = x + 2 \\right) - \\left(\\text{Area below } \\; y = x^2 \\right) .\\]\n\nThe area below \\(y=x^2\\) is calculated by integration, and the area below \\(y=x+2\\) can be found using the formula for the area of a trapezium. We have \\[\\text{Area below } \\; y = x + 2 \\; = 3 \\times \\frac{1+4}{2}=\\frac{15}{2}, \\text{while}\\] \\[\\text{Area below } \\; y = x^2 \\; = \\int\\limits_{-1}^2 x^2 \\; dx=\\left[\\frac{1}{3} x^3\\right] _{-1}^2=\\frac{8}{3}-\\frac{-1}{3}=3.\\]\n\nSo the area we seek is \\[\\frac{15}{2}-3=\\frac{9}{2}\\]\n\nand the answer is (c).\n\nYou could also calculate the area under the straight line \\(y=x+2\\) using the integral \\(\\int\\limits_{-1}^2 x+2 \\; dx\\).\n"
   },
   {
@@ -11717,9 +11978,19 @@
    "resourceTypeLabel": "Food for thought",
    "level": "Developing",
    "hasTeacherSupport": false,
-   "nonOverlap": true,
+   "nonOverlap": false,
    "nonOverlapReason": "Definite-integral scaling — 1.8 bearing.",
-   "specPoints": [],
+   "specPoints": [
+    {
+     "code": "1.8.3",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": "scaling functions to satisfy an integral-equals-1 condition over [-1,2] — linearity, signed value and definite evaluation incl. x^(1/2) and x^(-2) (rational n != -1)",
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
    "bodyMd": "\n# Stretch the function\n\n> Excerpt: Students evaluate definite integrals in order to find a scale factor that makes each function satisfy a pair of conditions.\nA connection is made between the definite integral and the area between the graph and the axis.\n\n## Warm-up\n\nEvaluate the definite integral \\[\\int_{-1}^2 (x+1)^2 \\,dx .\\]\n\nFind the value of the constant \\(a\\) so that \\[\\int_{-1}^2 a(x+1)^2 \\,dx = 1 .\\]\n\nSketch graphs to illustrate how these definite integrals are related.\n\nSolution\n\nProbably the easiest way to evaluate this integral is to expand the bracket (later you will learn about other ways to do it). \\[\\int_{-1}^2 x^2+2x+1\\,dx =\\left[\\frac{x^3}{3}+x^2+x\\right]_{-1}^{2}=\\left(\\frac{8}{3}+4+2\\right)-\\left(-\\frac{1}{3}+1-1\\right)=9\\]\n\nIf we want \\[\\int_{-1}^2 a(x+1)^2 \\,dx = 1\\] then we need our integral to be \\(9\\) times smaller. We can do this by scaling (i.e. vertically stretching) our function by a factor of \\(\\dfrac{1}{9}\\). So \\(a=\\dfrac{1}{9}\\).\n\nWe have used the fact that for a function \\(f(x)\\), \\[a\\int f(x)\\,dx = \\int af(x)\\,dx.\\] Is this always true?\n\n## Problem\n\nIn the Warm-up we scaled (or stretched) a function \\(f(x)\\) so that \\[\\int_{-1}^{2} a\\,f(x) \\, dx = 1.\\]\n\n- Which of the following functions could we scale to satisfy this condition and what is the value of \\(a\\) in each case?\n\n- Which ones lead to problems and why?\n\n- How would your answers be different if we changed the condition to \\[\\textit{an area of }\\,1 \\textit{ is enclosed by the curve }y=a\\,f(x) \\textit{, the }x\\textit{-axis and the lines }x=-1\\textit{ and }x=2\\text{ ?}\\]\n\nThe functions\n\n| \\(f(x)=x\\) | \\(f(x)=x(1-x)\\) |\n|---|---|\n| \\(f(x)=\\sqrt x\\) | \\(f(x)=(x+1)(x-1)^2\\) |\n| \\(f(x)=(x-2)(2x-1)(x+1)\\) | \\(f(x)=\\dfrac{1}{x^2}\\) |\n\nCan you think of some other functions which cannot be scaled to satisfy one or both of our conditions?\n\n## Solution\n\n1) \\(f(x)=x\\)\n\nIf we evaluate the integral, we find \\[\\int_{-1}^2 x\\,dx = \\left[\\frac{x^2}{2}\\right]_{-1}^2 = \\frac{3}{2} .\\] So we could scale this function to satisfy the integral condition, \\[\\int_{-1}^2 \\frac{2}{3}x \\,dx = 1\\] and we have \\(a=\\dfrac{2}{3}\\).\n\nTo find the area between the curve \\(y=f(x)\\) and the \\(x\\)-axis, we could either evaluate the integral in two parts or work out the areas of two triangles. \\[\\text{Area} = \\frac{1}{2}\\times1\\times1 + \\frac{1}{2}\\times 2\\times2 = \\frac{5}{2}\\]\n\nSo to satisfy the area condition we need \\(a=\\dfrac{2}{5}\\).\n\nThe answers for the two conditions are different because the curve \\(y=f(x)\\) is below the axis for part of the interval \\(-1\\leq x\\leq2\\).\n\nNote that the definite integral does tell us about the area, but that it *subtracts* the areas below the axis from those above.\n\nThe definite integral tells us something about the average value of the function over the given interval.\n\n2) \\(f(x)=x(1-x)\\)\n\nWe need to evaluate\n\n\\[\\int_{-1}^2 x(1-x)\\,dx = \\int_{-1}^2 x-x^2\\,dx=\\left[\\frac{x^2}{2}-\\frac{x^3}{3}\\right]_{-1}^2 = \\left(\\frac{4}{2}-\\frac{8}{3}\\right)-\\left(\\frac{1}{2}-\\frac{-1}{3}\\right) = -\\frac{3}{2}\\]\n\nand we find that\n\n\\(a=-\\dfrac{2}{3}\\)\n\nsatisfies the integral condition.\n\nWhy does \\(a\\) need to be negative? What does that mean geometrically?\n\nWe notice that \\(f(x)=0\\) at \\(x=0\\) and \\(x=1\\) which are both within our interval, so the curve crosses the \\(x\\)-axis twice. Drawing a sketch will help us to think about the area condition – we will need to work out the integral in several parts.\n\nThe area will be given by\n\n\\[-\\int_{-1}^0 x-x^2\\,dx+ \\int_{0}^1 x-x^2\\,dx-\\int_{1}^2 x-x^2\\,dx=\\frac{11}{6} .\\]\n\nNote how we subtract the integrals for the parts of the curve that lie below the \\(x\\)-axis because these integrals have negative values.\n\nThe symmetry of the curve means that we actually only have to calculate two integrals.\n\nSo we need \\(a=\\dfrac{6}{11}\\) to satisfy the area condition.\n\nWe hit a problem with this function as we can't integrate it directly across the interval. For $x<0$ the function is essentially $f(x)=-x$, whereas for $x \\geq 0$ it is $f(x)=x$. So we can do the integral in two pieces or more simply look at the two triangles. The graph of this function is entirely above the axis so the same scale factor, $\\dfrac {2}{5}$, satisfies both conditions.\n\n3) \\(f(x)=\\sqrt x\\)\n\nThis function is undefined for \\(x<0\\) so we can’t integrate it over the whole interval or find a scale factor for the integral condition.\n\nHowever, we can find the area under the curve by integrating from \\(0\\) to \\(2\\). It is \\[\\int_{0}^2 \\sqrt x\\,dx = \\left[\\frac{2}{3}x^{3/2}\\right]_0^2 = \\frac{4}{3}\\sqrt 2\\]\n\nso \\(a=\\dfrac{3}{4\\sqrt 2} = \\dfrac{3 \\sqrt 2}{8}\\) would scale the area as required.\n\n4) \\(f(x)=(x+1)(x-1)^2\\)\n\nTo integrate this we will need to expand the brackets, giving \\(f(x)=x^3-x^2-x+1\\).\n\n\\[\\int_{-1}^2 f(x)\\,dx= \\left[\\frac{x^4}{4}-\\frac{x^3}{3}-\\frac{x^2}{2}+x\\right]_{-1}^2 = (4-\\frac{8}{3}-2+2)-(\\frac{1}{4}+\\frac{1}{3}-\\frac{1}{2}-1)=\\frac{9}{4}\\] so we find \\(a=\\dfrac{4}{9}\\) for the integral condition.\n\nFor the area condition we need to consider where the integral has a negative value.\n\nHow many times does the curve **cross** the \\(x\\)-axis in the interval from \\(-1\\) to \\(2\\)?\n\nAs the graph is entirely above the axis, the same scale factor will work for the area condition as for the integral condition.\n\nWe see that we only need to split this into two parts. $$\\text{Area} =-\\int_{-1}^{-\\frac{1}{2}} f(x)\\,dx + \\int_{-\\frac{1}{2}}^2 f(x)\\,dx = \\frac{51}{16}$$ and thus for an area of $1$ the scaled function must be $\\frac{16}{51}(2x+1)(x-1)^2$.\n\n5) \\(f(x)=(x-2)(2x-1)(x+1)\\)\n\nThis time when we expand and integrate we find the interesting result that \\(\\int_{-1}^2 2x^3-3x^2-3x+2\\,dx= 0\\). This will always be \\(0\\) whatever scaling we use.\n\nCan you explain why this has happened?\n\nOnce we draw a sketch and think about the areas above and below the axis, we can find the area and hence meet the area condition using \\(a=\\frac{16}{81}\\).\n\nNote that we do not need to evaluate two integrals to find the area. Using the symmetry of the graph we can instead evaluate \\(2\\int_{-1}^{\\frac{1}{2}} f(x)\\,dx\\).\n\nYou may not know how to integrate this yet. If you do, we still have an issue as the function is undefined at $x=0$ where there is a vertical asymptote. There is an infinite area between the curve and the $x$-axis. A definite integral is only properly defined if the function is *continuous* between the two limits, otherwise it is called an\n\n.\n\nIt looks intuitively as though the integral from $-1$ to $0$ would exactly cancel the integral from $0$ to $1$, but that involves subtracting infinities which is not really safe. It can be allowed under some circumstances and we'll explore that in [the next section](disagreement).\n\n6) \\(f(x)=\\dfrac{1}{x^2}\\)\n\nThis function is undefined at \\(x=0\\) where there is a vertical asymptote. There is an infinite area between the curve and the \\(x\\)-axis. A definite integral is only properly defined if the function is *continuous* between the two limits, otherwise it is called an [improper integral](https://undergroundmathematics.org/glossary/improper-integral).\n\nSo although it *looks* as though we can find \\[\\int_{-1}^2 \\dfrac{1}{x^2}\\,dx = \\int_{-1}^2 x^{-2}\\,dx = \\left[\\frac{x^{-1}}{-1}\\right]_{-1}^2 = \\left[\\frac{-1}{x}\\right]_{-1}^2 = \\left(\\frac{-1}{2}\\right)-\\left(\\frac{-1}{-1}\\right) = -\\frac{3}{2} ,\\] this is in fact absurd. We should always check that a function is *continuous* over the interval before evaluating a definite integral.\n\nAny function which is undefined over part of the interval will be a problem for the integral condition.\n\nAny function with a singularity (vertical asymptote) in the interval will be a problem, except in a few special cases.\n\nWhen a function has rotational symmetry about the mid point of the interval, i.e. \\(x=\\frac{1}{2}\\), then the area above and below the axis will be equal. The integral will evaluate to \\(0\\) which cannot be scaled to \\(1\\) however hard we try! So the integral condition cannot be satisfied, but often the area condition can.\n\nThere are other cases with zero integral which are not symmetrical in this way. For instance, starting with a simple function like \\(f(x)=x^2-c\\) we can find \\[\\int_{-1}^2 x^2-c\\,dx= \\left[\\frac{x^3}{3}-cx\\right]_{-1}^2\\] and choose a value of \\(c\\) which gives \\(\\int_{-1}^2f(x)\\,dx=0\\). Can you extend that to find other functions?\n\nAre there any functions without singularities for which an *area* of \\(1\\) cannot be achieved?\n\n## A disagreement\n\nIn the main problem, we were trying to find a function, \\(f(x)\\), such that \\[\\int_{-1}^2 f(x)\\,dx=1\\]\n\nAbi says, \\[\\int_{-1}^2 \\frac{1}{x^2}\\,dx = \\left[\\frac{x^{-1}}{-1}\\right]_{-1}^2 = \\frac{1/2}{-1} - \\frac{-1}{-1} = -\\frac{3}{2}\\] so \\(f(x)=-\\dfrac{2}{3x^2}\\) would satisfy the condition.\n\nBen says, \\[\\int_{-1}^2 \\frac{1}{x^3}\\,dx = \\left[\\frac{x^{-2}}{-2}\\right]_{-1}^2 = \\frac{1/4}{-2} - \\frac{1}{-2} = \\frac{3}{8}\\] so \\(f(x)=\\dfrac{8}{3x^3}\\) would satisfy the condition.\n\nCharlie says, \\[\\int_{-1}^2 \\frac{1}{x^{1/3}}\\,dx = \\left[\\frac{3}{2}x^{2/3}\\right]_{-1}^2 = \\frac{3}{2} (\\sqrt[3]4 -1)\\] so \\(f(x)=\\dfrac{2}{3(\\sqrt[3]4 -1)}\\dfrac{1}{x^{1/3}}\\) would satisfy the condition.\n\nAre any of them right?\n\n## A resolution\n\nIn the main problem, we were trying to find a function, \\(f(x)\\), such that \\[\\int_{-1}^2 f(x)\\,dx=1\\]\n\nAbi says, \\[\\int_{-1}^2 \\frac{1}{x^2}\\,dx = \\left[\\frac{x^{-1}}{-1}\\right]_{-1}^2 = \\frac{1/2}{-1} - \\frac{-1}{-1} = -\\frac{3}{2}\\] so \\(f(x)=-\\dfrac{2}{3x^2}\\) would satisfy the condition.\n\nIf you haven’t already sketched graphs of the suggested functions it would be a good idea to do so now.\n\nThe three functions all have vertical asymptotes at \\(x=0\\). An integral of any of these over \\(x=0\\) must therefore be treated with extreme caution. They are known as [improper integrals](https://undergroundmathematics.org/glossary/improper-integral).\n\nA sketch graph suggests that Abi’s proposal is wrong. The graph is entirely above the \\(x\\)-axis and appears to contain an infinite area between the graph and the axis.\n\nIf we split the region into two we find we cannot evaluate either piece, \\[\\int_{-1}^2 f(x)\\,dx = \\int_{-1}^0 x^{-2}\\,dx + \\int_0^2 x^{-2}\\,dx = \\left[\\frac{-1}{x}\\right]_{-1}^0 + \\left[\\frac{-1}{x}\\right]_0^2 .\\]\n\nThere is no way round this. Abi is wrong.\n\nCharlie says, \\[\\int_{-1}^2 \\frac{1}{x^{1/3}}\\,dx = \\left[\\frac{3}{2}x^{2/3}\\right]_{-1}^2 = \\frac{3}{2} (\\sqrt[3]4 -1)\\] so \\(f(x)=\\dfrac{2}{3(\\sqrt[3]4 -1)}\\dfrac{1}{x^{1/3}}\\) would satisfy the condition.\n\nCharlie’s function has a vertical asymptote so we should see what happens if we try to integrate it in pieces. \\[\\int_{-1}^0 \\frac{1}{x^{1/3}}\\,dx = \\left[\\frac{3}{2}x^{2/3}\\right]_{-1}^0 = 0 - \\frac{3}{2}\\sqrt[3]{(-1)^2} = - \\frac{3}{2}\\] and \\[\\int_0^1 \\frac{1}{x^{1/3}}\\,dx = \\left[\\frac{3}{2}x^{2/3}\\right]_0^1 = \\frac{3}{2}\\sqrt[3]{(1)^2} - 0 = \\frac{3}{2}\\] and \\[\\int_1^2 \\frac{1}{x^{1/3}}\\,dx = \\left[\\frac{3}{2}x^{2/3}\\right]_1^2 = \\frac{3}{2}\\sqrt[3]{(2)^2} - \\frac{3}{2}\\sqrt[3]{(1)^2} = \\frac{3}{2} (\\sqrt[3]4 -1) .\\]\n\nSurprisingly, we can integrate up to the asymptote without a problem. The piece from \\(-1\\) to \\(0\\) exactly cancels the piece from \\(0\\) to \\(1\\) and so integrating from \\(-1\\) to \\(2\\) gives the same result as integrating from \\(1\\) to \\(2\\). Although the function is undefined at \\(x=0\\), the curve encloses a finite area. This is a bit like summing an infinite series and getting a finite result.\n\nCharlie is correct.\n\nBen says, \\[\\int_{-1}^2 \\frac{1}{x^3}\\,dx = \\left[\\frac{x^{-2}}{-2}\\right]_{-1}^2 = \\frac{1/4}{-2} - \\frac{1}{-2} = \\frac{3}{8}\\] so \\(f(x)=\\dfrac{8}{3x^3}\\) would satisfy the condition.\n\nBen’s function \\(\\dfrac{1}{x^3}\\) has a similar shape to Charlie’s. But this time we cannot evaluate the integral \\(\\displaystyle\\int_{0}^2 \\frac{1}{x^3}\\,dx\\) because it involves dividing by zero. So the integral does not have a proper value.\n\nThe geometry of the graph suggests that the pieces either side of \\(x=0\\) should cancel out as they did for Charlie. But this is problematic because it involves subtracting one infinity from another which is not a safe thing to do.\n\nThe mathematics is really beyond this level, but it is possible to construct an argument based on symmetrical limiting cases which allows us to effectively cancel the two areas. This result is known as the Cauchy Principal Value of the ill-defined integral. You may learn about this if you go on to study mathematics at university.\n\nIn this case, the value does work out at \\(\\frac{3}{8}\\) as Ben stated, so we can say that Ben is correct.\n\nSo why does Charlie’s function work properly whereas Ben’s only works improperly?\n\nThe distinction is to do with how quickly the function converges with the vertical asymptote. A function \\(\\dfrac{1}{x^{n}}\\) has a finite area close to the \\(y\\)-axis if \\(0<n<1\\).\n"
   },
   {
@@ -11946,6 +12217,246 @@
    "nonOverlapReason": "Trapezium-rule over/underestimates from concavity — not in the 2023-2025 P1 spec.",
    "specPoints": [],
    "bodyMd": "\n# Underneath the arches\n\n> Excerpt: Students are asked to use geometric features of sketch graphs to decide whether using the trapezium rule would give an underestimate or an overestimate.\n\n## Problem\n\nWe usually think of using the trapezium rule when we know what the function is or have a scale on the axes, but what can you say when you don’t have this information?\n\nFor each of the graphs below, what would happen if you used the trapezium rule to estimate the area between the curve and the \\(x\\)-axis?\n\nYou could start by trying to decide for each graph whether the trapezium rule will give you an underestimate or an overestimate. The graphs are available to print out and you may find it helpful to draw on them. You could also cut them up and sort them if you wish.\n\nThere are many things to notice about these graphs and how the area between the curve and the \\(x\\)-axis could be approximated using the trapezium rule. We’ve suggested trying to decide about under or over estimates because thinking about this may spark other ideas or questions. Keep a note of these so that you can investigate them further.\n\nThings to think about\n\n- Does the trapezium rule ever give you the exact area?\n\n- Do your answers depend on which part of the curve you’re interested in?\n\n- Do your answers depend on how many intervals you use?\n\nGraph 1\n\nGraph 2\n\nGraph 3\n\nGraph 4\n\nGraph 5\n\nGraph 6\n\nGraph 7\n\nGraph 8\n\nGraph 9\n\nGraph 10\n\nGraph 11\n\nGraph 12\n\n- What other ideas did you have?\n\n- What questions could you try to answer next?\n\nPlease note that these graphs are also used in [Gradient match](https://undergroundmathematics.org/introducing-calculus/gradient-match).\n\n## Things you might have noticed\n\nWe usually think of using the trapezium rule when we know what the function is or have a scale on the axes, but what can you say when you don’t have this information?\n\nFor each of the graphs we’ve given, what would happen if you used the trapezium rule to estimate the area between the curve and the \\(x\\)-axis?\n\nYou could start by trying to decide for each graph whether the trapezium rule will give you an underestimate or an overestimate. The graphs are available to print out and you may find it helpful to draw on them. You could also cut them up and sort them if you wish.\n\nThere are many things to notice about these graphs and how the area between the curve and the \\(x\\)-axis could be approximated using the trapezium rule. We’ve suggested trying to decide about under or over estimates because thinking about this may spark other ideas or questions. Keep a note of these so that you can investigate them further.\n\nThings to think about\n\n- Does the trapezium rule ever give you the exact area?\n\n- Do your answers depend on which part of the curve you’re interested in?\n\n- Do your answers depend on how many intervals you use?\n\nHere are some things you might have noticed about some of the graphs.\n\n- One thing to notice is that for the straight line graphs (graphs 12 and 8) the area between the graph and the \\(x\\)-axis is either a rectangle or a triangle, so using the trapezium rule for any section of the \\(x\\)-axis would give us the exact area.\n\n- The shapes of Graphs 11 and 2 mean that the trapezium rule can only give an underestimate for the area between the curve and the \\(x\\)-axis, no matter how many intervals we use. In both cases, the estimate will improve if we use more intervals because the regions between the curve and the trapezia will get smaller. For example,\n\nMore things to think about\n\n- Graph 10 is a similar shape to Graph 11, but does this mean that the trapezium rule will always give an underestimate for the area?\n\n- If you now look at Graph 1 you may see that it has some features in common with Graphs 11 and 2. Does this mean that the trapezium rule will also give us an underestimate for the area between the curve and the \\(x\\)-axis?\n\n- Graph 4 would give an underestimate for certain parts of the \\(x\\)-axis and an overestimate for other parts. Can we determine exactly where on the curve the trapezia change from overestimating to underestimating the area?\n\nYou may have started to look more closely at which way the curves are curving (whether the gradients are getting steeper or shallower). Can you say anything specific about this yet?\n\nHere are a few ways to use the trapezium rule for Graph 3. What can you say about the area given by the trapezium rule in each case?\n\nWhen you’re thinking about these graphs, you may find it helpful to consider which of your ideas are specific to Graph 3 and which could be applied to other graphs. Similarly, you might like to think about which things are specific to the way that the trapezium rule has been used in each case.\n"
+  },
+  {
+   "ugmId": "additional-integrals",
+   "slug": "additional-integrals",
+   "station": "calculus-meets-functions",
+   "title": "Additional integrals",
+   "url": "https://undergroundmathematics.org/calculus-meets-functions/additional-integrals",
+   "resourceType": "package-of-problems",
+   "resourceTypeLabel": "Package of problems",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.8.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Additional integrals\n\n> Excerpt: This problem asks students to think about links between two given integrals and other related integrals.\n\n## Problem\n\nWhich of the integrals below can be evaluated if we know that\n\n\\[\\large{\\int_0^3 f(x) \\ dx = 7 \\ \\text{and} \\ \\int_0^3 g(x)\\ dx =4\\text{?}}\\]\n\n\\[\\int_0^3 (f(x)+2g(x))\\ dx\\]\n\n\\[\\int_0^3 f(x)g(x)\\ dx\\]\n\n\\[\\int_0^6 f(x) \\ dx\\]\n\n\\[\\int_0^3 (g(x)+2) \\ dx\\]\n\n\\[\\int_3^0 \\!f(x) \\ dx \\, \\times \\int^3_0 \\!g(x) \\ dx\\]\n\n\\[\\int^3_{-3} g(x) \\ dx\\]\n\n\\[\\int_{-3}^{3} f(x) \\ dx\\]\n\n\\[\\int^2_{-1} f(x+1) \\ dx\\]\n\nWhich of the integrals can be evaluated if we have the following extra information?\n\n1. \\(f(x)\\) is symmetric about \\(x=3\\)\n\n---\n\n1. \\(g(x)\\) is an odd function\n\n---\n\n1. \\(f(x)\\) is an even function\n\n## Things you might have noticed\n\nWhich of the integrals below can be evaluated if we know that\n\n\\[\\int_0^3 f(x) \\ dx = 7 \\ \\text{and} \\ \\int_0^3 g(x)\\ dx =4\\text{?}\\]\n\nHow are the functions we are being asked to integrate related to \\(f(x)\\) and \\(g(x)\\)?\n\nAre the limits of these new integrals the same as the original integrals, or are they related to the original limits in a way that we can make use of?\n\nAs you read, you may find it helpful to sketch some possible graphs of the functions involved. You could consider some particular examples that you’re comfortable working with, or try to work with more general sketch graphs of \\(f(x)\\) and \\(g(x).\\)\n\nA. \\(\\int_0^3 (f(x)+2g(x))\\ dx\\)\n\nThe limits for this integral coincide with the ones we are given, so now we need to think about the function \\(f(x)+2g(x)\\).\n\nConsider the graph of \\(y=f(x)+2g(x)\\). For any \\(x\\)-value the corresponding \\(y\\)-value is the sum of \\(f(x)\\) and \\(2g(x)\\). We can think of \\(f(x)+2g(x)\\) as a sum of heights where the *height* in this case is the \\(y\\)-coordinate of each of the functions \\(y=f(x)\\) and \\(y=g(x)\\), so we can treat the integral of \\(f(x)+2g(x)\\) as a sum of integrals,\n\n\\[\\begin{align*} \\int_0^3 (f(x)+2g(x))\\ dx&=\\int_0^3 f(x)\\ dx+\\int_0^3 2g(x)\\ dx\\\\ &=\\int_0^3 f(x)\\ dx+\\int_0^3 g(x)\\ dx+\\int_0^3 g(x)\\ dx\\\\ &=7+4+4\\\\ &=15. \\end{align*}\\]\n\nCan we make a statement about what this means for integrating \\(\\int ng(x) \\ dx\\), where \\(n\\) is any real number?\n\nB. \\(\\int_0^3 f(x)g(x)\\ dx\\)\n\nThe limits for this integral coincide with the ones we are given, but since we don’t know anything more about the functions \\(f(x)\\) and \\(g(x)\\), we can’t say anything about the function \\(f(x)g(x)\\) or its integral.\n\nYou may find it interesting to compute some definite integrals of functions you can integrate and compare these with the integral of their product over the same interval. Which functions have products that you know how to integrate?\n\nD. \\(\\int_0^3 (g(x)+2) \\ dx\\)\n\nThe limits for the integral coincide with the ones we are given. If we assume that \\(g(x)\\) is positive between \\(0\\) and \\(3\\) then we can think about this as a calculation of area: we are *adding* \\(2\\) to the height of the curve for each value of \\(x\\) in the interval \\([0,3]\\), so in total we are adding a rectangle of height \\(2\\) and width \\(3\\) to the area \\(\\int_0^3 g(x)\\ dx\\). Therefore,\n\n\\[\\int_0^3 (g(x)+2)\\ dx=\\int_0^3 g(x)\\ dx + 6=4+6=10.\\]\n\nWhat happens if \\(g(x)\\) is negative for some values of \\(x\\) between \\(0\\) and \\(3\\)? Can we still evaluate \\(\\int_0^3 (g(x)+2)\\ dx=\\int_0^3 g(x)\\ dx + 6\\) if that happens?\n\nE. \\(\\int_3^0 f(x) \\ dx \\times \\int^3_0 g(x) \\ dx\\)\n\nWe know \\(\\int_0^3 g(x)\\ dx=4.\\) We also know that \\(\\int_0^3 f(x)\\ dx=7\\), but how is this related to \\(\\int_3^0 f(x)\\ dx\\)?\n\nBy the [Fundamental Theorem of Calculus](https://undergroundmathematics.org/glossary/fundamental-theorem-of-calculus), if the function \\(f(x)\\) is continuous on the interval \\([0,3]\\) and \\(F'(x)=f(x)\\) then\n\n\\[\\int_0^3 f(x) \\ dx=F(3)-F(0).\\]\n\nSo,\n\n\\[\\int_3^0 f(x) \\ dx=F(0)-F(3)=-(F(3)-F(0))=-\\int_0^3 f(x) \\ dx=-7.\\]\n\nTherefore,\n\n\\[\\int_3^0 f(x) \\ dx \\times \\int^3_0 g(x) \\ dx= -7 \\times 4 = -28.\\]\n\nH. \\(\\int^2_{-1} f(x+1) \\ dx\\)\n\nHere we are integrating over an interval of the same length as before, since \\([-1,2]\\) is a translation of \\([0,3]\\) by one unit to the left. This translation of the limits allows us to evaluate the integral \\(\\int^2_{-1} f(x+1) \\ dx\\) because the curve has also been translated by one unit in the negative \\(x\\) direction.\n\nTherefore, \\(\\int^2_{-1} f(x+1) \\ dx = \\int^3_0 f(x) \\ dx = 7.\\)\n\nIf \\(a\\) is any real number and \\(\\int^{q}_{p} f(x-a) \\ dx = 7\\), how could \\(p\\), \\(q\\) and \\(a\\) be related? What assumptions are we making about \\(f\\)?\n\nFor the remaining integrals we need more information, but we could try to use the additional pieces of information to help us.\n\nC. \\(\\int_0^6 f(x) \\ dx\\)\n\nIf \\(f(x)\\) is symmetric about \\(x=3\\) then we know, for example, that \\(f(4)=f(2)\\), \\(f(5)=f(1)\\) and in general, \\(f(3+k)=f(3-k)\\) for any real number \\(k.\\) This means that the line \\(x=3\\) splits the integral \\(\\int_0^6 f(x) \\ dx\\) in half, so \\(\\int_0^6 f(x) \\ dx= 2\\int_0^3 f(x) \\ dx=14.\\)\n\nHow could you use manipulation of the limits of the integrals and functions to show that \\(\\int_0^6 f(x) \\ dx = 14\\)?\n\nF. \\(\\int^3_{-3} g(x) \\ dx\\)\n\nAs \\(g(x)\\) is odd, \\(g(-x)=-g(x).\\) Therefore \\[\\int^0_{-3} g(x) \\ dx = \\int^3_{0} g(-x) \\ dx= -\\int^3_{0} g(x) \\ dx.\\] It follows that \\(\\int^3_{-3} g(x) \\ dx=0.\\)\n\nHow is this argument linked to the symmetry of the graph of \\(g(x)\\)?\n\nG. \\(\\int_{-3}^{3} f(x) \\ dx\\)\n\nAs \\(f(x)\\) is even, \\(f(-x) = f(x)\\) and the \\(y\\)- axis is a line of symmetry. We can use a similar argument to the one we used for \\(\\int_0^6 f(x) \\ dx\\) to show that \\(\\int^{3}_{-3} f(x) \\ dx = 2\\int_0^3 f(x) \\ dx = 14.\\) Can you combine this with our earlier discussion of translations?\n\n## Taking it further\n\nBased on the ideas in this resource, what other related integrals involving \\(f(x)\\) and \\(g(x)\\) can we evaluate if we know that\n\n\\[\\int_0^3 f(x) \\ dx = 7 \\ \\text{and} \\ \\int_0^3 g(x)\\ dx =4\\text{?}\\]\n\nWhat related integrals can we *not* evaluate without knowing more about the functions?\n"
+  },
+  {
+   "ugmId": "r5090",
+   "slug": "r5090",
+   "station": "calculus-meets-functions",
+   "title": "What does it mean if a function $f(x)=f(2\\alpha-x)$?",
+   "url": "https://undergroundmathematics.org/calculus-meets-functions/r5090",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.8.3",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# What does it mean if a function $f(x)=f(2\\alpha-x)$?\n\n## Question\n\nIn this question we fix a real number \\(\\alpha\\) which will be the same throughout. We say that a function \\(f\\) is *bilateral* if \\[f(x) = f(2\\alpha - x)\\] for all \\(x\\).\n\n1. Show that if \\(f(x) = (x-\\alpha)^2\\) for all \\(x\\) then the function \\(f\\) is bilateral.\n\n---\n\n1. On the other hand, if \\(f(x) = x-\\alpha\\) for all \\(x\\) then the function \\(f\\) is not bilateral.\n\n---\n\n1. Show that if \\(n\\) is a non-negative integer and \\(a\\) and \\(b\\) are any real numbers then \\[\\int_a^b x^n \\:dx = -\\int_b^a x^n \\:dx.\\]\n\n---\n\n1. Hence show that if \\(f\\) is a polynomial (and \\(a\\) and \\(b\\) are any reals) then \\[\\int_a^b f(x) \\:dx = -\\int_b^a f(x) \\:dx.\\]\n\n---\n\n1. Suppose that \\(f\\) is any bilateral function. By considering the area under the curve \\(y = f(x)\\) explain why for any \\(t \\geq \\alpha\\) we have \\[\\int_\\alpha^t f(x) \\:dx = \\int_{2\\alpha-t}^\\alpha f(x) \\:dx.\\]\n\nIf \\(f\\) is a function we write \\(G\\) for the function defined by \\[G(t) = \\int_\\alpha^t f(x) \\:dx\\] for all \\(t\\).\n\n1. Suppose now that \\(f\\) is any bilateral function. Show that \\[G(t) = -G(2\\alpha-t)\\] for all \\(t\\).\n\n---\n\n1. Suppose that \\(f\\) is a bilateral polynomial such that \\(G\\) is also bilateral. Show that \\(G(x) = 0\\) for all \\(x\\).\n\n## Solution\n\nWe have \\[f(x) = f(2\\alpha - x) \\iff f((x-\\alpha)+\\alpha)= f(-(x-\\alpha)+\\alpha),\\] and so \\(f(x)\\) is bilateral if and only if \\(x=\\alpha\\) is a line of symmetry for the curve \\(y=f(x)\\).\n\nIn the special case of \\(\\alpha=0\\), this would mean that \\(f\\) is an even function.\n\nIf \\(f(x) = (x-\\alpha)^2\\), then \\[f(2\\alpha - x) = ((2\\alpha - x) -\\alpha)^2 = (\\alpha-x)^2 = (x-\\alpha)^2 = f(x),\\] for all \\(x\\), and so \\(f\\) is bilateral.\n\nIf \\(f(x) = x-\\alpha\\), then \\[f(2\\alpha - x) = ((2\\alpha - x) -\\alpha) = (\\alpha-x) = -f(x),\\] for all \\(x\\), and so \\(f\\) is not bilateral.\n\nThe only solution to \\(f(x) = -f(x)\\) for all \\(x\\) is \\(f(x) = 0\\) for all \\(x\\), which is not the \\(f(x)\\) we have here.\n\nWe know \\(\\displaystyle\\int_a^b x^n \\:dx = \\left[\\dfrac{x^{n+1}}{n+1}\\right]_a^b = \\dfrac{b^{n+1}-a^{n+1}}{n+1}\\).\n\nWe also know that \\(\\displaystyle\\int_b^a x^n \\:dx = \\left[\\dfrac{x^{n+1}}{n+1}\\right]_b^a = \\dfrac{a^{n+1}-b^{n+1}}{n+1}\\).\n\nThus we have that \\(\\displaystyle\\int_a^b x^n \\:dx = -\\displaystyle\\int_b^a x^n \\:dx\\).\n\nLet \\(f(x)\\) be the polynomial \\(\\sum\\limits_{0}^{n} a_nx^n\\). Then\n\n\\[\\begin{align*} \\int_a^b f(x) \\:dx &= \\int_a^b \\sum_0^n a_nx^n \\:dx \\\\ &= \\sum_0^n \\left(a_n\\left(\\int_a^b x^n \\:dx\\right)\\right)\\\\ &= \\sum_0^n \\left(a_n\\left(-\\int_b^a x^n \\:dx\\right)\\right)\\\\ &= -\\int_b^a \\sum_0^n a_nx^n \\:dx\\\\ &= -\\int_b^a f(x) \\:dx. \\end{align*}\\]\n\n1. Suppose that \\(f\\) is any bilateral function. By considering the area under the curve \\(y = f(x)\\) explain why for any \\(t \\geq \\alpha\\) we have \\[\\int_\\alpha^t f(x) dx = \\int_{2\\alpha-t}^\\alpha f(x) dx.\\]\n\nThe symmetry of the bilateral function \\(f(x)\\) about \\(x = \\alpha\\) guarantees that the two areas in the diagram above are equal, and so \\[\\int_\\alpha^t f(x) \\:dx = \\int_{2\\alpha-t}^\\alpha f(x) \\:dx.\\]\n\nUsing the results from above we have\n\n\\[\\begin{align*} -G(2\\alpha-t) &= -\\int_\\alpha^{2\\alpha-t} f(x) \\:dx\\\\ &= \\int_{2\\alpha-t}^\\alpha f(x) \\:dx\\\\ &= \\int_{\\alpha}^t f(x) \\:dx\\\\ &= G(t). \\end{align*}\\]\n\nIf \\(f\\) is bilateral, then \\(G(t) = -G(2\\alpha-t)\\), but if \\(G\\) is bilateral, then \\(G(2\\alpha-t)=G(t)\\).\n\nThus on adding these equations \\(G(t) = 0\\) for all \\(t\\) (or equivalently \\(G(x) = 0\\) for all \\(x\\)).\n"
+  },
+  {
+   "ugmId": "r5549",
+   "slug": "r5549",
+   "station": "calculus-meets-functions",
+   "title": "If we know $f(x)$, can we find $\\int_{-1}^1 f(x^2-1) \\:dx$?",
+   "url": "https://undergroundmathematics.org/calculus-meets-functions/r5549",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.8.3",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# If we know $f(x)$, can we find $\\int_{-1}^1 f(x^2-1) \\:dx$?\n\n## Question\n\nA graph of the function \\(y=f(x)\\) is sketched on the axes below;\n\nThe value of \\(\\displaystyle\\int_{-1}^1 f(x^2-1) \\:dx\\) equals (a) \\(\\dfrac{1}{4}\\qquad\\) (b) \\(\\dfrac{1}{3}\\quad \\quad\\) (c) \\(\\dfrac{3}{5}\\quad \\quad\\) (d) \\(\\dfrac{2}{3}\\).\n\n## Suggestion\n\nCan we write down an equation for \\(f(x)\\) for each distinct interval?\n\nCan we then write down what \\(f(x^2-1)\\) is?\n\nIf the values of \\(x\\) run from \\(-1\\) to \\(1\\), what values does \\(x^2 -1\\) run through?\n\n## Solution\n\nA graph of the function \\(y=f(x)\\) is sketched on the axes below;\n\nThe value of \\(\\displaystyle\\int_{-1}^1 f(x^2-1) \\:dx\\) equals (a) \\(\\dfrac{1}{4}\\qquad\\) (b) \\(\\dfrac{1}{3}\\qquad\\) (c) \\(\\dfrac{3}{5}\\qquad\\) (d) \\(\\dfrac{2}{3}\\).\n\nWe can write the function as \\[f(x) = \\begin{cases} x+1, & -1 \\le x \\le 0; \\\\ 1-x, & 0 \\le x \\le 1; \\\\ 0, & \\text{otherwise.} \\end{cases}\\]\n\nBy substituting we can say, \\[f(x^2-1) = \\begin{cases} x^2-1+1 = x^2, & -1 \\le x^2-1 \\le 0; \\\\ 1-x^2+1 = 2-x^2, & 0 \\le x^2-1 \\le 1; \\\\ \\qquad 0, & \\text{otherwise.} \\end{cases}\\]\n\nThe first of these intervals can be rewritten, \\[-1 \\le x^2-1 \\le 0 \\quad\\implies\\quad 0\\le x^2\\le 1 \\quad\\implies\\quad -1\\le x \\le 1.\\] We only need to integrate over this interval, so we do not need to worry about the second interval.\n\nSo we have \\[\\int_{-1}^1 f(x^2-1) \\:dx = \\int_{-1}^1 x^2 \\:dx = \\left[\\frac{x^3}{3}\\right]_{-1}^1 = \\dfrac{2}{3}\\] and the answer is (d).\n\nThere are two intervals that we are interested in, $-1 \\leq x \\leq 0$, and $0 \\leq x \\leq 1$ (everywhere else the function $f(x)$ is zero). The inequality $-1 \\leq x \\leq 0$ becomes on squaring $1 \\geq x^2 \\geq 0$, and so $0 \\geq x^2 - 1 \\geq -1$. The inequality $0 \\leq x \\leq 1$ becomes on squaring $0 \\leq x^2 \\leq 1$, and so $-1 \\leq x^2 -1 \\leq 0$. These intervals are the same, so we can simply focus on what happens to $f(x^2-1)$ for $x$ on the interval $[-1, 0]$. On this domain, $f(x) = 1+x$, and so $f(x^2-1) = 1+x^2-1 = x^2$. Thus $$\\int_{-1}^1 f(x^2-1) \\:dx = \\int_{-1}^1 x^2 \\:dx = \\left[\\frac{x^3}{3}\\right]_{-1}^1 = \\dfrac{2}{3}$$ and so the answer is (d). <cm-chalk> An alternative approach could be to draw up a table. <cm-table> <cm-tr> <cm-td>$x$</cm-td><cm-td>-2</cm-td><cm-td>-1.5</cm-td><cm-td>-1</cm-td><cm-td>-0.5</cm-td><cm-td>0</cm-td><cm-td>0.5</cm-td><cm-td>1</cm-td><cm-td>1.5</cm-td><cm-td>2</cm-td> </cm-tr> <cm-tr> <cm-td>$x^2-1$</cm-td><cm-td>3</cm-td><cm-td>1.25</cm-td><cm-td>0</cm-td><cm-td>-0.75</cm-td><cm-td>-1</cm-td><cm-td>-0.75</cm-td><cm-td>0</cm-td><cm-td>1.25</cm-td><cm-td>3</cm-td> </cm-tr> <cm-tr> <cm-td>$f(x^2-1)$</cm-td><cm-td>0</cm-td><cm-td>0</cm-td><cm-td>1</cm-td><cm-td>0.25</cm-td><cm-td>0</cm-td><cm-td>0.25</cm-td><cm-td>1</cm-td><cm-td>0</cm-td><cm-td>0</cm-td> </cm-tr> </cm-table> Plotting these points strongly suggests we are interested in the area under $y = x^2$ between $-1$ and $1$. </cm-chalk>\n"
+  },
+  {
+   "ugmId": "r7410",
+   "slug": "r7410",
+   "station": "product-rule",
+   "title": "If $dy/dx$ is inversely proportional to $x^2$, can we find $y$?",
+   "url": "https://undergroundmathematics.org/product-rule/r7410",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.8.2",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# If $dy/dx$ is inversely proportional to $x^2$, can we find $y$?\n\n## Question\n\n1. Show that the curve \\(y=x(5-x)^4\\) has a turning point where \\(x=5\\). Determine whether this turning point is a maximum or a minimum.\n\n---\n\n1. It is given that that \\(\\dfrac{dy}{dx}\\) is inversely proportional to \\(x^2\\) and that \\(y\\) and \\(\\dfrac{dy}{dx}\\) are each equal to \\(1\\) when \\(x=2\\). Express \\(y\\) in terms of \\(x\\).\n\n## Suggestion\n\nHow can we find the turning points of a function?\n\nWhat methods do we know for determining the nature of a turning point?\n\nWhich method works best in this case?\n\nWhat does it mean for \\(a\\) to be inversely proportional to \\(b\\)? Can you write this mathematically?\n\nCan we now replace \\(a\\) with \\(\\dfrac{dy}{dx}\\), and \\(b\\) with \\(x^2\\), and use the information in the question?\n\n## Solution\n\nUsing the Product Rule, we have that\n\n\\[\\begin{align*} \\frac{dy}{dx}&=(5-x)^4-4x(5-x)^3\\\\ &=(5-x)^3[5-x-4x] \\\\ &=5(5-x)^3(1-x). \\end{align*}\\]\n\nWe see that \\(\\dfrac{dy}{dx}\\) vanishes when \\(x=5\\), therefore \\((5,0)\\) is a turning point.\n\nWe can see from the expression for \\(\\dfrac{dy}{dx}\\) that \\(\\dfrac{d^2y}{dx^2}\\) will also vanish at \\((5,0)\\), so calculating this won’t help decide if we have a maximum or a minimum.\n\nLet’s instead look at the expression for \\(y\\).\n\nWe know that when \\(x=5\\), \\(y=0\\).\n\nWhen \\(x\\) is slightly smaller than \\(5\\), \\(y\\) is positive, and the same is true when \\(x\\) is slightly larger than \\(5\\), as \\(x\\) and \\((5-x)^4\\) are both positive.\n\nTherefore \\((5,0)\\) is a local minimum for \\(y\\).\n\nIf \\(\\dfrac{dy}{dx}\\) is inversely proportional to \\(x^2\\), then we can write \\[\\frac{dy}{dx}=\\frac{c}{x^2}.\\] Since \\(\\dfrac{dy}{dx}=1\\) when \\(x=2\\), we see that \\(c=4\\), and so \\[\\frac{dy}{dx}=\\frac{4}{x^2}.\\] We now integrate this, and see that \\[y=-\\frac{4}{x}+d.\\] Using that \\(y=1\\) when \\(x=2\\), we see that \\(d=3\\).\n\nTherefore \\(y=3-\\dfrac{4}{x}\\).\n"
+  },
+  {
+   "ugmId": "r8105",
+   "slug": "r8105",
+   "station": "calculus-meets-functions",
+   "title": "If $f(x)$ always satisfies this equation, what is $\\int_{-1}^1 f(x)\\: dx$?",
+   "url": "https://undergroundmathematics.org/calculus-meets-functions/r8105",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.8.3",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# If $f(x)$ always satisfies this equation, what is $\\int_{-1}^1 f(x)\\: dx$?\n\n## Question\n\nFor all real values of \\(x\\), the function \\(f(x)\\) satisfies\n\n\\[6+f(x)=2f(-x)+3x^2\\left(\\int_{-1}^1 f(t)\\: dt\\right).\\]\n\nIt follows that \\(\\displaystyle\\int_{-1}^1 f(x)\\: dx\\) equals\n\n\\[\\text{(a)}\\quad 4, \\quad\\text{(b)}\\quad 6, \\quad\\text{(c)}\\quad 11, \\quad\\text{(d)}\\quad \\dfrac{17}{2}, \\quad\\text{(e)}\\quad 23.\\]\n\n## Suggestion\n\nThe value of the definite integral in the given equation is a constant. We could call it \\(A\\).\n\nThe equation holds for all values of \\(x\\). What happens if we substitute \\(-x\\) for \\(x\\)?\n\nTo find \\(\\int_{-1}^1 f(x)\\: dx\\), we might try integrating both sides of the equation.\n\n## Solution\n\nLet \\(\\int_{-1}^1 f(x) dx = A\\).\n\nThis means that \\(\\int_{-1}^1 f(t) dt = A\\) also; the choice of variable within the integral is unimportant.\n\nThus for all \\(x, 6+f(x)=2f(-x)+3x^2A\\), and so replacing \\(x\\) with \\(-x\\), we also have \\(6+f(-x)=2f(x)+3x^2A\\).\n\nSubtracting these two equations gives us \\(f(x)-f(-x)= 2f(-x)-2f(x) \\implies f(x) = f(-x)\\) for all \\(x\\), and so \\(f(x)\\) is even.\n\nSo returning to our equation, \\(6=f(x) +3x^2A\\).\n\nNow we can integrate this from \\(-1\\) to \\(1\\), giving us \\(\\bigl[6x\\bigr]_{-1}^1=A + \\bigl[x^3\\bigr]_{-1}^1A\\).\n\nSo we have \\(12=A + 2A\\), so \\(A = 4\\), and the answer is (a).\n\nStrictly speaking we could have found \\(A\\) without establishing the evenness of \\(f(x)\\), but it is a good technique to see.\n"
+  },
+  {
+   "ugmId": "r8130",
+   "slug": "r8130",
+   "station": "calculus-meets-functions",
+   "title": "What's the area between $f_k(x) = x(x-k)(x-2)$ and the $x$-axis?",
+   "url": "https://undergroundmathematics.org/calculus-meets-functions/r8130",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.8.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# What's the area between $f_k(x) = x(x-k)(x-2)$ and the $x$-axis?\n\n## Question\n\nLet \\(0< k <2\\). Below is sketched a graph of \\(y=f_k(x)\\) where \\(f_k(x) = x(x-k)(x-2)\\). Let \\(A(k)\\) denote the area of the shaded region.\n\n1. Without evaluating them, write down an expression for \\(A(k)\\) in terms of two integrals.\n\n---\n\n1. Explain why \\(A(k)\\) is a polynomial in \\(k\\) of degree \\(4\\) or less. [You are not required to calculate \\(A(k)\\) explicitly.]\n\n---\n\n1. Verify that \\(f_k (1+t) = -f_{2-k}(1-t)\\) for any \\(t\\).\n\n---\n\n1. How can the graph of \\(y=f_k(x)\\) be transformed to the graph of \\(y = f_{2-k}(x)\\)? Deduce that \\(A(k)=A(2-k)\\).\n\n---\n\n1. Explain why there are constants \\(a, b, c\\) such that \\[A(k) = a(k-1)^4 + b(k-1)^2 + c.\\] [You are not required to calculate \\(a,b, c\\) explicitly.]\n\n## Suggestion\n\nHow is the value of an integral affected if a function gives negative values (is below the \\(x\\)-axis)?\n\nWhat is the highest of power of \\(k\\) we can get by integrating \\(f\\), with the limits given?\n\nWhat happens if we use part (iii), replacing \\(1+t\\) with \\(x\\)?\n\nCan we compare \\(f_{2-k}(x)\\) to \\(f_k (x)\\)? What do the transformations from part iv) do to the area \\(A(k)\\)?\n\n1. Explain why there are constants \\(a, b, c\\) such that \\[A(k) = a(k-1)^4 + b(k-1)^2 + c.\\] [You are not required to calculate \\(a,b,c\\) explicitly.]\n\nCan we show \\(A(1+k) = A(1-k)\\)? What implications for symmetry does this have?\n\n## Solution\n\nWe need to consider the two shaded regions separately, because one is above the \\(x\\)-axis (giving a positive area), and one is below the \\(x\\)-axis (giving a negative area), so we can’t just take the integral \\(\\displaystyle\\int_0^2 \\! f_k(x) \\, \\mathrm{d}x\\).\n\nInstead, we have\n\n\\[A(k) = \\displaystyle\\int_0^k \\! f_k(x) \\, \\mathrm{d}x - \\displaystyle\\int_k^2 \\! f_k(x) \\, \\mathrm{d}x,\\]\n\nas the negative sign in front of the second integral cancels out the negative sign of the area between \\(x=k\\) and \\(x=2\\).\n\nTherefore,\n\n\\[A(k) = \\displaystyle\\int_0^k \\! x(x-k)(x-2) \\, \\mathrm{d}x - \\displaystyle\\int_k^2 \\! x(x-k)(x-2) \\, \\mathrm{d}x.\\]\n\n\\(A(k)\\) is certainly a polynomial in \\(k\\). Could it include a \\(k^5\\) term?\n\nOnly if you have an \\(x^5\\) term or a \\(kx^4\\) term after integrating, which means having an \\(x^4\\) term or a \\(kx^3\\) term before integrating.\n\nNeither is possible, by looking at \\(x(x-k)(x-2)\\), and the same argument works for powers of \\(k\\) higher than \\(5\\).\n\nHence \\(A(k)\\) is a polynomial in \\(k\\) of degree at most \\(4\\).\n\nLet’s start by thinking about what \\(f_k(1+t)\\) and \\(f_{2-k}(1-t)\\) are, given that \\(f_{k}(x)=x(x-k)(x-2)\\).\n\nTo find \\(f_{k}(1+t)\\), we need to substitute \\(1+t\\) for \\(x\\) in the formula for \\(f_{k}(x).\\) This gives us \\[f_k(1+t) = (1+t)(1+t-k)(1+t-2).\\]\n\nTo find \\(f_{2-k}(1-t)\\), we need to substitute \\(1-t\\) for \\(x\\), but we also need to substitute \\(2-k\\) for \\(k.\\) Therefore \\[f_{2-k}(1-t) = (1-t)(1-t-(2-k))(1-t-2).\\]\n\nNow we can manipulate\n\n\\(-f_{2-k}(1-t)\\)\n\nto try to obtain\n\n\\(f_k(1+t).\\)\n\n\\[\\begin{align*} -f_{2-k}(1-t) \\hspace{2mm} & =-(1-t)(1-t-(2-k))(1-t-2) \\\\ & = -(1-t)(-1-t+k)(-1-t) \\\\ & = (t-1)(1+t-k)(1+t) \\quad \\text{by taking a factor of $-1$ from each bracket} \\\\ & = (1+t)(1+t-k)(t-1) \\quad \\text{by rearranging the order of the brackets.} \\\\ \\end{align*}\\]\n\nIf we think about what we are aiming for, we can see that the first two brackets involve \\(1+t\\), which is a good sign. It would be helpful to rewrite the last bracket in a way that also involves \\(1+t.\\) We can write \\(t-1\\) as \\(1+t-2\\) which means that\n\n\\[\\begin{align*} -f_{2-k}(1-t) \\hspace{2mm} & =(1+t)(1+t-k)(1+t-2) \\\\ & = f_{k}(1+t) \\quad \\text{as required.}\\\\ \\end{align*}\\]\n\nWe started from the RHS because it looks messier and we wanted to get it to a simpler expression. We could have started with the LHS.\n\nFrom part (iii), we have that\n\n\\[f_k(1+t) = -f_{2-k}(1-t).\\]\n\nIf we substitute \\(t\\) with \\(1-x\\), the above equation becomes equivalent to\n\n\\[-f_k(2-x) =f_{2-k}(x).\\]\n\nNow, \\(f_k(2-x)\\) is the reflection of \\(f_k(x)\\) in the line \\(x=1\\).\n\nA second transformation is now required because of the minus sign in front of \\(f_{k}\\). This is a reflection in the \\(x\\)-axis.\n\nTogether these transformations are the same as a rotation \\(180^{\\circ}\\) around the point \\((1,0)\\).\n\nIn fact, combining two reflections always gives you a rotation about the point where the two mirror lines intersect.\n\nAs we can see in the sketch above, since we’re rotating \\(180^\\circ\\) around a point on the x axis, the area between the graph and the \\(x\\)-axis remains the same for \\(f_k\\) and \\(f_{2-k}\\), i.e. \\(A(k) = A(2-k)\\).\n\nOr else we could say that since both of the reflections preserve the shaded area, combining them does too.\n\nWe know that \\(A(k) = A(2-k)\\), so \\(A(1-k) = A(2-(1-k)) = A(1+k)\\), and so \\(y = A(k)\\) is symmetrical about the line \\(k = 1\\).\n\nSo if we translate \\(y = A(k)\\) by \\(1\\) to the left, then it is even, so if we express \\(A(k)\\) as powers of \\((x-1)\\), only even powers are possible.\n\nTherefore we have \\(A(k) = a(k-1)^4 + b(k-1)^2 + c\\) for some constants \\(a, b, c\\).\n"
+  },
+  {
+   "ugmId": "r9701",
+   "slug": "r9701",
+   "station": "chain-rule",
+   "title": "Can we find $\\int 1/(\\sqrt{x+2} - \\sqrt{x+1}) dx$?",
+   "url": "https://undergroundmathematics.org/chain-rule/r9701",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.8.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we find $\\int 1/(\\sqrt{x+2} - \\sqrt{x+1}) dx$?\n\n## Question\n\n1. By using the substitution \\(x = \\cos \\theta\\), or otherwise, evaluate \\[\\begin{equation*} \\int_0^1 \\frac{1}{(1-x)^{1/2}(1+x)^{3/2}} \\:dx. \\end{equation*}\\]\n\n---\n\n1. Find \\[\\begin{align*} \\text{(i)}\\; &\\int \\frac{1}{\\sqrt{x+2} - \\sqrt{x+1}} \\:dx, \\\\ \\text{(ii)}\\; &\\int \\frac{x}{(x+1)(x+2)^2} \\:dx. \\end{align*}\\]\n\n## Solution\n\nIf\n\n\\(x = \\cos \\theta\\)\n\n, then\n\n\\(dx = -\\sin \\theta \\:d\\theta\\)\n\n, and so\n\n\\[\\begin{align*} \\int_0^1 \\frac{1}{(1-x)^{1/2}(1+x)^{3/2}} \\:dx &= \\int_{\\pi/2}^0 \\frac{-\\sin \\theta}{(1 - \\cos \\theta)^{1/2}(1 + \\cos \\theta)^{3/2}} \\:d\\theta \\\\ &= \\int_0^{\\pi/2} \\frac{\\sin \\theta}{(1 - \\cos \\theta)^{1/2}(1 + \\cos \\theta)^{3/2}} \\:d\\theta \\\\ &= \\int_0^{\\pi/2} \\frac{\\sin \\theta}{(1 - \\cos \\theta)^{1/2}(1 + \\cos \\theta)^{1/2}(1 + \\cos \\theta)} \\:d\\theta \\\\ &= \\int_0^{\\pi/2} \\frac{\\sin \\theta}{(1 - \\cos^2 \\theta)^{1/2}(1 + \\cos \\theta)} \\:d\\theta \\\\ &= \\int_0^{\\pi/2} \\frac{d\\theta}{1 + \\cos \\theta}. \\end{align*}\\]\n\nFrom the\n\ndouble angle formula for cosine\n\n, we have that\n\n\\[\\begin{equation*} \\cos \\theta = \\cos^2 \\frac{\\theta}{2} - \\sin^2 \\frac{\\theta}{2} = 2 \\cos^2 \\frac{\\theta}{2} - 1 \\implies 1 + \\cos \\theta = 2 \\cos^2 \\frac{\\theta}{2}. \\end{equation*}\\]\n\nHence,\n\n\\[\\begin{align*} \\int_0^{\\pi/2} \\frac{d\\theta}{1 + \\cos \\theta} &= \\frac{1}{2} \\int_0^{\\pi/2} \\sec^2 \\frac{\\theta}{2} \\:d\\theta\\\\ &=\\left[\\tan \\dfrac{\\theta}{2}\\right]_0^{\\pi/2}\\\\ &= \\tan \\frac{\\pi}{4} - \\tan 0 = 1. \\end{align*}\\]\n\n1. Find \\[\\begin{align*} \\text{(i)}\\; &\\int \\frac{1}{\\sqrt{x+2} - \\sqrt{x+1}} \\:dx, \\\\ \\end{align*}\\]\n\nRationalising the denominator, we have that\n\n\\[\\begin{align*} \\int \\frac{1}{\\sqrt{x+2} - \\sqrt{x+1}} \\:dx &= \\int \\frac{\\sqrt{x+2} + \\sqrt{x+1}}{(\\sqrt{x+2} - \\sqrt{x+1})(\\sqrt{x+2} + \\sqrt{x+1})} \\:dx \\\\ &= \\int \\frac{\\sqrt{x+2} + \\sqrt{x+1}}{(x+2) - (x+1)} \\:dx \\\\ &= \\int \\sqrt{x+2} + \\sqrt{x+1} \\:dx \\\\ &= \\frac{(x+2)^{3/2}}{\\frac{3}{2}} + \\frac{(x+1)^{3/2}}{\\frac{3}{2}} + c \\\\ &= \\frac{2}{3} \\left( (x+2)^{3/2} + (x+1)^{3/2} \\right) + c \\end{align*}\\]\n\nwhere \\(c\\) is a constant of integration.\n\n\\[\\begin{align*} \\text{(ii)}\\; &\\int \\frac{x}{(x+1)(x+2)^2} \\:dx. \\end{align*}\\]\n\nWe can attempt to rewrite the integrand using partial fractions: that is, we would hope that there are constants\n\n\\(A\\)\n\n,\n\n\\(B\\)\n\n, and\n\n\\(C\\)\n\nsuch that\n\n\\[\\begin{equation*} \\frac{x}{(x+1)(x+2)^2} = \\frac{A}{x+1} + \\frac{B}{x+2} +\\frac{C}{(x+2)^2}= \\frac{A(x+2)^2 + B(x+1)(x+2)+C(x+1)}{(x+1)(x+2)^2}. \\end{equation*}\\]\n\nThus \\(x = A(x+2)^2 + B(x+1)(x+2)+C(x+1)\\) for all values of \\(x\\).\n\nPutting \\(x = -1\\), we have \\(A = -1\\), while putting \\(x = -2\\) gives \\(C=2\\) and putting \\(x = 0\\) yields \\(B = 1\\).\n\nAs a result,\n\n\\[\\begin{align*} \\frac{x}{(x+1)(x+2)^2} &= \\frac{1}{x+2} + \\frac{2}{(x+2)^2} - \\frac{1}{x+1} \\end{align*}\\]\n\nand so\n\n\\[\\begin{align*} \\int \\frac{x}{(x+1)(x+2)^2} \\:dx &= \\int \\frac{1}{x+2} + \\frac{2}{(x+2)^2} - \\frac{1}{x+1} \\:dx \\\\ &= \\ln\\big\\vert x+2\\big\\vert - \\frac{2}{x+2} - \\ln\\big\\vert x+1\\big\\vert + c \\end{align*}\\]\n\nwhere \\(c\\) is a constant of integration.\n"
+  },
+  {
+   "ugmId": "slippery-areas",
+   "slug": "slippery-areas",
+   "station": "chain-rule",
+   "title": "Slippery areas",
+   "url": "https://undergroundmathematics.org/chain-rule/slippery-areas",
+   "resourceType": "building-blocks",
+   "resourceTypeLabel": "Building blocks",
+   "level": "Introducing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.8.3",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Slippery areas\n\n> Excerpt: In this problem students are invited to explore what happens to areas under graphs when the graphs are stretched or translated. They are then asked to apply this way of thinking to some concrete examples.\n\n## Problem\n\nTake a look at this diagram.\n\nThe area of the blue region is \\(53\\) and the area of the orange region is \\(125\\).\n\nUse this to explain why \\[\\int_{15}^{30}3f(2x-45)\\,dx=67.\\]\n\nNow try to evaluate each of the following integrals.\n\n1. \\(\\int_{-4}^{-2}\\sqrt{x+5}\\,dx\\)\n\n---\n\n1. \\(\\int_{0.2}^{1.3}e^{2x}\\,dx\\)\n\n3. $\\int_{-\\tfrac{\\pi}{6}}^{\\tfrac{\\pi}{6}}\\sin(3x +\\tfrac{\\pi}{2})dx$\n\nGive some examples of other functions that you can integrate in this way.\n\n## Suggestion\n\nHere are some things to think about while looking at the diagram.\n\n- What transformations of \\(y=f(x)\\) give us the other two graphs?\n\n- What are the \\(x\\)-intercepts of \\(y=f(x)\\)?\n\n- How long are the vertical edges of the orange region?\n\n- How could you express the area of the orange region in terms of areas underneath the untransformed blue graph?\n\nYou may find it helpful to explore what happens when you move the sliders in this GeoGebra file.\n\nCan you make the purple graph line up with the black graph?\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/Qe6WD7UP/width/595/height/397/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/Qe6WD7UP)\n\nWhat could \\(a\\), \\(b\\) and \\(c\\) represent?\n\nThe purple graph is a transformation of \\(y=f(x)\\) and this transformation involves three parameters, \\(a\\), \\(b\\) and \\(c\\). The parameters are related to scaling and translation, but the numerical value of the parameter \\(b\\) is not necessarily the same as the value the graph is translated by along the \\(x\\)-axis.\n\nYou may like to explore what the translation is for the same value of \\(b\\) but different values of \\(a.\\)\n\nWhat if we applied these ideas to the orange curve too?\n\nThink about what is happening in these GeoGebra files as you move the sliders.\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/suaSfYy8/width/596/height/399/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/suaSfYy8)\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/us6tga9e/width/596/height/399/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/us6tga9e)\n\nHow could this help you to evaluate the integrals?\n\n## Solution\n\nTake a look at this diagram.\n\nThe area of the blue region is \\(53\\) and the area of the orange region is \\(125\\).\n\nUse this to explain why \\(\\int_{15}^{30}3f(2x-45)\\,dx=67.\\)\n\nStretching the blue region\n\nWe can view the graph of \\(y=3f(2x-45)\\) as a transformation of the graph \\(y=f(x)\\): thinking of it as a stretch parallel to the \\(x\\)-axis of scale factor \\(\\tfrac{1}{2}\\) (effectively making the graph twice as narrow), then a translation parallel to the \\(x\\)-axis, and also a stretch parallel to the \\(y\\)-axis of scale factor \\(3.\\) Only the stretches will affect the areas of regions under the graph.\n\nSo if the area of the blue region is \\(B\\), we know the area of the dark grey region is \\(\\tfrac{3}{2}\\times B.\\) Therefore \\(\\int_{15}^{25} 3f(2x-45)\\,dx=\\frac{3}{2}\\times 53.\\)\n\nSplitting up the orange region\n\nWe still need to find the area of the region between \\(y=3f(2x-45)\\) and the \\(x\\)-axis from \\(x=25\\) to \\(x=30.\\) By the previous argument, this is \\(\\tfrac{3}{2}\\) times the area of the corresponding region between \\(y=f(x)\\) and the \\(x\\)-axis. We don’t know what the area of this region is yet, but it is related to the area of the orange region in some way.\n\nUsing the transformations in reverse, the \\(x\\)-intercepts of \\(y=f(x)\\) must be twice as far apart as the \\(x\\)-intercepts of \\(y=3f(2x-45)\\), so the width of the orange region must be \\(10.\\)\n\nThe orange curve is a reflection of \\(y=f(x)\\) in the \\(x\\)-axis and a stretch parallel to the \\(y\\)-axis scale factor \\(3\\), followed by a translation of \\(10\\) parallel to the \\(y\\)-axis. Therefore we can split up the orange region as shown here.\n\nWhy does this mean that \\(\\int_{25}^{30}3f(2x-45)\\,dx=-\\tfrac{25}{2}\\)?\n\nCombining these ideas explains why \\(\\int_{15}^{30}3f(2x-45)\\,dx=67.\\)\n\nUsing integrals\n\nFrom our previous observations about graph transformations, we can work out that the remaining \\(x\\)-intercept of \\(f(x)\\) is at \\(x=-15.\\) We can now compute \\(\\int_{-15}^{15}f(x)\\,dx\\) and use this to obtain \\(\\int_{15}^{30}3f(2x-45)\\,dx.\\)\n\nWe know \\(\\int_{5}^{15} 10-3f(x)\\,dx = 125\\), and we can rearrange this to give \\(\\int_{5}^{15} f(x)\\,dx=-\\tfrac{25}{3}.\\)\n\nWe were also told that \\(\\int_{-15}^5 f(x)\\,dx=53\\), so we now know that \\(\\int_{-15}^{15}f(x)\\,dx=53-\\tfrac{25}{3}.\\)\n\nWhy isn’t \\(\\int_{-15}^{15}f(x)\\,dx\\) equal to \\(53+\\tfrac{25}{3}\\)?\n\nHow could you continue this argument to explain why \\(\\int_{15}^{30}3f(2x-45)\\,dx=67\\)?\n\nThinking again about which transformations rescaled the areas of the regions above or below the axes, $$\\int_{15}^{30}3f(2x-45)\\,dx = \\dfrac{3}{2} \\times \\left( 53-\\dfrac{25}{3}\\right) = 67.$$\n\nBy considering relationships between \\(3f(2x-45)\\), \\(10-3f(x)\\) and \\(f(x)\\), we were able to piece together enough information to find the complicated-looking integral \\(\\int_{15}^{30}3f(2x-45)\\,dx.\\)\n\nMore generally, if we can relate a complicated integral to a simpler one, we may be able to use this to evaluate the more complicated one.\n\nNow try to evaluate each of the following integrals.\n\n1. \\(\\int_{-4}^{-2}\\sqrt{x+5}\\,dx\\)\n\n---\n\n1. \\(\\int_{0.2}^{1.3}e^{2x}\\,dx\\)\n\n3. $\\int_{-\\tfrac{\\pi}{6}}^{\\tfrac{\\pi}{6}}\\sin(3x +\\tfrac{\\pi}{2})\\,dx$\n\nGive some examples of other functions that you can integrate in this way.\n\nIn the GeoGebra files below, the blue graphs show the functions we want to integrate and the orange graphs show a related function that we already know how to integrate. (The corresponding regions are shaded in blue and orange respectively.) We’ve also added a red function, which is controlled by the slider. Move the slider to see how the blue graph can be transformed into the orange graph, and back again.\n\nIntegral of \\(\\sqrt{x+5}\\)\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/suaSfYy8/width/596/height/399/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/suaSfYy8)\n\nWe want to find the area of the region under \\(y=\\sqrt{x+5}\\) between \\(x=-4\\) and \\(x=-2\\) (the region shaded in blue), but it looks as if this is the same as the area of the region under \\(y=\\sqrt{x}\\) between \\(x=1\\) and \\(x=3\\) (the region shaded in orange). We can find the orange area because we know how to integrate powers of \\(x\\): \\(\\int_{1}^{3}\\sqrt{x}\\,dx = \\left[\\tfrac{2}{3}x^{3/2}\\right]_1^3=2\\sqrt{3}-\\tfrac{2}{3}.\\)\n\nWe can think of these regions as being made up of lots of narrow strips and we’ve shaded one strip in the GeoGebra file above as an illustration. We’re interested in what happens to this strip as the graph is transformed - anything that happens to this strip will also happen to the whole region. If we move the slider so that the red graph lines up with the orange graph, we can watch what happens to the shaded strip: it doesn’t change width or height as the graph is transformed, but the \\(x\\)-values that the strip lies between have increased by \\(5.\\) Why does this help to explain why \\(\\int_{-4}^{-2}\\sqrt{x+5}\\,dx=\\int_{1}^{3}\\sqrt{x}\\,dx\\)?\n\nIntegral of \\(e^{2x}\\)\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/us6tga9e/width/596/height/399/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/us6tga9e)\n\nThis time we are interested in the area of the region under \\(y=e^{2x}\\) between \\(x=0.2\\) and \\(x=1.3.\\) Our previous work suggests that finding a way to relate this to a region under \\(y=e^x\\) would help, but what would be the appropriate region?\n\nWhat happens to the darker shaded strip this time as we transform the red graph so that it lines up with the orange graph?\n\nThe height of the strip remains the same as we move from the blue graph to the orange graph, but it has doubled in width. In other words, the strip under the blue graph is half as wide as the corresponding strip under the orange graph. What can you say about the values of \\(x\\) that each strip lies between? How does this relate to graph transformations?\n\nComing back to the integral we are trying to compute, this suggests that \\[\\int_{0.2}^{1.3}e^{2x}\\,dx=\\tfrac{1}{2} \\int_{0.4}^{2.6}e^{x}\\,dx.\\] Can you explain the choice of limits and the factor of \\(\\tfrac{1}{2}\\)?\n\nUsing this argument, we are able to evaluate the required integral. \\[\\int_{0.2}^{1.3}e^{2x}\\,dx= \\tfrac{1}{2}\\big[e^{x}\\big]_{0.4}^{2.6}=\\tfrac{1}{2}\\left(e^{2.6}-e^{0.4}\\right)\\approx 6.0\\]\n\n<cm-toggle label=\"$\\int_{-\\pi/6}^{\\pi/6}\\sin\\left(3x+\\dfrac{\\pi}{2}\\right)\\,dx?$\" type=\"success\" alt-content=\"\" output=\"all\" print-style=\"content-only\"> <cm-geogebra target-id=\"tvx7a3B2\" width=\"599\" height=\"399\" alt-text=\"Image from GeoGebra file of the transformation $\\sin(ax+b)$\" alt-image=\"images/slidingsine.png\"/> Now let's look at the third question. Can we find $\\int_{-\\pi/6}^{\\pi/6}\\sin\\left(3x+\\dfrac{\\pi}{2}\\right)\\,dx?$ Let's look at this GeoGebra file. As we vary the $x$ coefficient here (=$a$), we can see that in changing $a$ from $1$ to $3$, the strip shown changes width from $0.3$ to $0.1$. In doing this, we are multiplying the area by $\\frac{1}{3}$. (So the pale red area is one third of the orange area.) We are also moving the point where the curve bounding the shaded area meets the $x$-axis from $\\pi$ to $\\frac{\\pi}{3}$. We can see (and we know) that as we vary $b$, we move this integral in a similar way to question 1. The integral we are interested in had limits $\\pm \\frac {\\pi}{6}$ when we set $b=\\frac{\\pi}{2}$ we can see that we have translated the function to be symmetrical about the $y$-axis so the boundary points have moved from $0$ and $\\frac {\\pi}{3}$ to $\\pm \\frac {\\pi}{6}$. How could we know this without the GeoGebra image? <cm-chalk> We need to remember that we already shrank everything on the $x$-axis to one third of it's original size so our function will have its maximum when $3x+\\frac{\\pi}{2}=\\frac{\\pi}{2}$ and will intersect the $x$-axis when $3x+\\frac{\\pi}{2}=0 \\text{or} \\pi$. </cm-chalk> So we know that the integral we are trying to calculate $\\int_{-\\pi/6}^{\\pi/6}\\sin\\left(3x+\\dfrac{\\pi}{2}\\right)\\,dx$ is one third of the much easier looking $\\int_{0}^{\\pi}\\sin x \\,dx.$ This becomes $\\dfrac{1}{3}[-\\cos x]_{0}^{\\pi} = -\\dfrac{1}{3}\\left[\\left(\\cos \\pi\\right)-\\left(\\cos 0\\right)\\right] = \\dfrac{2}{3}$. Can you generalize this result too? <cm-chalk> You might also have realized that $sin(3x+\\frac{\\pi}{2})=cos 3x$ could you have used this to help evaluate the integral. </cm-chalk> </cm-toggle> Using our results to these questions and our generalizations we could come up with lots of similar functions and we can use our knowledge in other functions we know. E.g. $\\int_{4}^{5} \\dfrac{2}{(x-1)^2} \\,dx= 2\\int_{3}^{4} \\dfrac{1}{x^2}\\,dx$\n"
+  },
+  {
+   "ugmId": "thinking-constantly",
+   "slug": "thinking-constantly",
+   "station": "calculus-meets-functions",
+   "title": "Thinking constantly",
+   "url": "https://undergroundmathematics.org/calculus-meets-functions/thinking-constantly",
+   "resourceType": "building-blocks",
+   "resourceTypeLabel": "Building blocks",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.8.2",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Thinking constantly\n\n> Excerpt: A kinematics problem focusing on integration constants and how altering the initial conditions affects the movement of an object.\n\n## Warm-up\n\nYou are moving along a straight line, with your acceleration given by \\[a(t) = 6t - 2.\\]\n\n- How fast will you be travelling at \\(t=2\\)?\n\n- Where will you be on the line at \\(t=2\\)?\n\n## Warm-up solution\n\nYou are moving along a straight line, with your acceleration given by \\[a(t) = 6t - 2.\\]\n\n- How fast will you be travelling at \\(t=2\\)?\n\nYou can think about the relationship between acceleration, velocity and displacement in two ways.\n\n\\[a(t) = \\dfrac{d}{dt}\\big(v(t)\\big)\\]\n\n\\[v(t) = \\dfrac{d}{dt}\\big(s(t)\\big)\\]\n\n\\[s(t) = \\int{v(t)}\\, dt\\]\n\n\\[v(t) = \\int{a(t)}\\,dt\\]\n\nSo we need to integrate the acceleration function to find your velocity function.\n\n\\[\\begin{align*} v(t) &= \\int{(6t - 2)}\\,dt\\\\ v(t) &= 3t^2 - 2t + c \\end{align*}\\]\n\nWhat does the constant \\(c\\) represent in terms of velocity?\n\nWe know that \\(t=2\\). Do we have enough information to say how fast we are going?\n\nIf we calculate \\(v(2)\\) we get\n\n\\[\\begin{align*} v(2) &= 12 - 4 + c\\\\ &= 8+c, \\end{align*}\\]\n\nso we could say our velocity is \\(8 + c\\) units.\n\nOr we could calculate the integral\n\n\\[\\begin{align*} \\int_{0}^{2}{(6t - 2)}\\,dt &= \\left[3t^2 - 2t +c \\right]^2_0\\\\ &= v(2) - v(0) \\\\ &= 8 \\end{align*}\\]\n\nand say our velocity is \\(8\\) units faster than it was at \\(t = 0\\).\n\nIn both cases we have accounted for the constant of integration which represents our initial velocity. This is important as we weren’t given any information about our velocity at \\(t=0\\), so we cannot assume that it was zero.\n\n- Where will you be on the line at \\(t=2\\)?\n\nTo then find your displacement function we need to integrate the velocity function.\n\n\\[\\begin{align*} s(t) &= \\int{(3t^2 - 2t + c)}\\,dt\\\\ s(t) &= t^3 - t^2 + ct + d \\end{align*}\\]\n\nWhy is it important not to forget the constant of integration from the velocity function?\n\nWhat does the constant \\(d\\) represent in terms of displacement?\n\nWith the displacement function we could calculate\n\n\\[\\begin{align*} s(2) &= 2^{3} - t^{2} + 2c + d \\\\ &=4 + 2c +d \\end{align*}\\]\n\nor\n\n\\[\\begin{align*} \\int_{0}^{2}{(3t^2 - 2t + c)}\\,dt &= \\left[t^3 - t^2 + ct + d \\right]^2_0 \\\\ &= s(2) - s(0) \\\\ &= 4 + 2c. \\end{align*}\\]\n\nOne of these gives us your displacement from your starting point, and one gives us your displacement relative to a fixed origin. Which is which?\n\nUnder what circumstances would the two answers be the same?\n\n## Main problem\n\nThe acceleration function of an object moving in a straight line is given by \\[a(t) = \\sqrt{t} -2.\\]\n\nDetermine the velocity and displacement functions, and if possible draw the graphs on software such as [GeoGebra](https://www.geogebra.org/graphing) or [Desmos](https://www.desmos.com/calculator).\n\nOnce you have drawn the graphs, answer the following questions. (A GeoGebra applet of the graphs is available [here](https://undergroundmathematics.org/calculus-meets-functions/thinking-constantly/problem-geogebra).)\n\n1. If, at time \\(t = 0\\), the velocity and displacement are zero, can you describe, draw or imagine what the journey is like? Which direction are you travelling in? Are you speeding up or slowing down?   Suggestion   To draw or describe the journey, think about a straight line with an origin where the object starts (as the displacement is zero). Things change about the journey at the following times: \\(t = 4\\), \\(t= 9\\) and \\(t = 14\\). What are they?\n\n---\n\n1. Approximately, for what value of \\(c\\) is there no negative velocity? (We are using \\(c\\) to represent the constant in the velocity function and \\(d\\) for the constant in the displacement function.)  What feature of the journey changes when there is no negative velocity? What feature of the displacement graph changes when there is no negative velocity?\n\n---\n\n1. The acceleration function is negative for the first \\(4\\) seconds. What does this mean is happening to the object when  \\(c = 0\\)? \\(c = 3\\)? \\(c = 2\\)?\n\n---\n\n1. Now let’s think about \\(c=0\\) and \\(d=2\\). How would you describe the journey, and how does it differ from the journey in question 1?\n\n## Interactive graph\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/GMxHaPhT/width/797/height/500/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/GMxHaPhT)\n\n## Solution\n\nOur journey is along a straight line (to think about why see [Speed vs velocity](https://undergroundmathematics.org/introducing-calculus/speed-vs-velocity/thinking-about-journeys)). To describe the journey consistently, let us imagine a line with an origin that represents a displacement of zero and let us define the positive direction as being to the right.\n\nIf velocity and displacement are zero at time \\(t = 0\\), this implies that \\(c\\) and \\(d\\) are zero, so we can think of the origin as our starting point.\n\nThe times when something about the journey changes are \\(t = 4\\), \\(t= 9\\), and \\(t = 14\\). Can you see why from the graph?\n\n**From \\(t = 0\\) to \\(4\\)**\n\nThe object starts from rest and travels left, up to a speed of approximately \\(3\\).\n\nThe velocity is negative (to the left) but decreasing, so it means the magnitude (or speed) is actually getting larger.\n\n**From \\(t = 4\\) to \\(9\\)**\n\nThe object is still going left, but the speed is now decreasing, What happens to the object at \\(t = 9\\)?\n\n**From \\(t = 9\\) to \\(14\\)**\n\nThe object is travelling to the right, and the velocity (and speed) is increasing from \\(0\\). It passes the origin at \\(t=14\\).\n\nThink about how changes in the journey are represented on the different graphs. For example, when the acceleration is zero, what key features do the different graphs exhibit?\n\nAt \\(c \\approx 2.7\\), the velocity graph no longer crosses the \\(x\\)-axis.\n\nThere is now no negative velocity, so the object will always be moving to the right.\n\nIf the object is always moving to the right, then the displacement is always increasing. The local maxima and minima of the displacement graph disappear so the displacement function is now an increasing function. Why? What impact does the velocity have on the displacement graph?\n\n1. The acceleration function is negative for the first \\(4\\) seconds. What does this mean is happening to the object when  \\(c = 0\\)? \\(c = 3\\)? \\(c = 2\\)?\n\n**When \\(c =0\\)**\n\nWe often think about negative acceleration meaning deceleration or slowing down. But if we remember how we described the journey in the first part of the question, we said ‘The object starts from rest and travels left, up to a speed of approximately \\(3\\)’.\n\nWhat is happening here?\n\nIf the acceleration is negative the velocity is decreasing. Of course, if the velocity is negative and decreasing, its magnitude is increasing, meaning you are travelling faster. So here, the negative acceleration means travelling to the left and speeding up.\n\n**When \\(c = 3\\)**\n\nThis is similar to the question above. Velocity is no longer negative, so our acceleration behaves as we would normally think. During the first \\(4\\) seconds, the object is slowing down while travelling to the right.\n\n**When \\(c = 2\\)**\n\nThis is a combination of the two cases above. Initially the object slows down as it travels right, but as the velocity reaches zero, the object changes direction, and it starts to speed up as it travels towards the left. At \\(t = 4\\), it starts to slow down again. (From this point the acceleration is positive, meaning the object is slowing down as it travels left.)\n\nFirstly, changing \\(d\\) only affects the displacement graph so the velocity and acceleration descriptions from question \\(1\\) stay the same.\n\nThe object now starts \\(2\\) units to the right of the origin. There are two ways we could think about this. Either the object has changed its starting point by \\(2\\) units or the origin has moved \\(2\\) units to the left.\n\nDoes that second description seem strange? Remember, we can choose the point from which we want to measure displacement as long as we state what this point is. Often, questions will inform us that displacement equals zero at \\(t = 0\\). Why do you think this is so common?\n\nMoving our origin is a translation, and we do it to try to make calculations more straightforward. When we think of translations, we might imagine sliding a graph, but we could also imagine sliding the axes, while the graph stays in the same place. This idea of choosing an origin to suit your question can be applied in many areas, and will become more familiar to you as you work with vectors and think about frames of reference.\n"
+  },
+  {
+   "ugmId": "what-else-do-you-know",
+   "slug": "what-else-do-you-know",
+   "station": "calculus-meets-functions",
+   "title": "What else do you know?",
+   "url": "https://undergroundmathematics.org/calculus-meets-functions/what-else-do-you-know",
+   "resourceType": "food-for-thought",
+   "resourceTypeLabel": "Food for thought",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "1.8.3",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# What else do you know?\n\n> Excerpt: Students are given the area under an unknown curve in a specified region and asked to consider what they can deduce about a selection of integrals involving transformations of the original function.\n\n## Problem\n\nIf you know that the area of the shaded region is 40 square units, which of the following can you evaluate?\n\n- \\(\\int_2^6 (f(x) + 5) \\ dx\\)\n\n- \\(\\int_2^6 (f(x) - 3) \\ dx\\)\n\n- \\(\\int_0^4 f(x + 2) \\ dx\\)\n\n- \\(\\int_2^6 f(x + 2) \\ dx\\)\n\n- \\(\\int_4^8 f(x + 2) \\ dx\\)\n\n- \\(\\int_2^6 -f(x) \\ dx\\)\n\n- \\(\\int_2^6 f(-x) \\ dx\\)\n\nIf there are any that you cannot evaluate, what additional information would you need in order to do so?\n\nCan you find the value of the constant \\(k\\) for which\n\n\\[\\int_2^6 (f(x) + k) \\ dx = 0\\]\n\nHow does your thinking change if instead you start with this image, in which the shaded area is 8 square units?\n\nWhich of the integrals above can you evaluate for the [linear function](https://undergroundmathematics.org/glossary/linear-function) \\(g(x)\\)?\n\n- How does this compare to your answer for \\(f(x)\\)?\n\n- What makes this function different from \\(f(x)\\)?\n\n- What else do you know about \\(g(x)\\)?\n\n## Solution part 1\n\nA summary of the integrals and their values is provided below:\n\n| Integral | Value |\n|---|---|\n| \\(\\int_2^6 (f(x) + 5) \\ dx\\) | \\(60\\) |\n| \\(\\int_2^6 (f(x) - 3) \\ dx\\) | \\(28\\) |\n| \\(\\int_0^4 f(x + 2) \\ dx\\) | \\(40\\) |\n| \\(\\int_2^6 f(x + 2) \\ dx\\) | ? |\n| \\(\\int_4^8 f(x + 2) \\ dx\\) | ? |\n| \\(\\int_2^6 -f(x) \\ dx\\) | \\(-40\\) |\n| \\(\\int_2^6 f(-x) \\ dx\\) | ? |\n\nWe can consider each in turn to understand how these values can be calculated.\n\n\\(\\int_2^6 (f(x) + 5) \\ dx\\)\n\n\\(f(x) + 5\\) represents a vertical translation of the original function by \\(5\\) units ‘upwards’. In the following diagram the light blue ‘portion’ still represents 40 square units. The darker blue rectangle represents the additional area which can be calculated as \\(5 \\times 4\\).\n\nThe sum of these two ‘portions’ gives us the value of the integral \\(\\int_2^6 (f(x) + 5) \\ dx\\).\n\nNotice that if we had thought algebraically we might have considered the integral as a sum of two functions, leading us to re-write it as \\[\\int_2^6 (f(x) + 5) \\ dx = \\int_2^6 f(x) \\ dx + \\int_2^6 5 \\ dx.\\]\n\nThis of course produces the same result: the sum of the original area, \\(\\int_2^6 f(x) \\ dx = 40\\), and the rectangle, \\(\\int_2^6 5 \\ dx = 20\\).\n\n\\(\\int_2^6 (f(x) - 3) \\ dx\\)\n\n\\(f(x) - 3\\) represents a vertical translation of the original function by \\(3\\) units ‘downwards’. However, because we don’t know the ‘height’ of the maximum in this region, a translation ‘downwards’ could result in one of these four images.\n\n|  |  |\n|---|---|\n|  |  |\n\nDoes it matter which of the four images is correct in this scenario?\n\nWill each image give a different result?\n\nWe will consider the first image in more detail.\n\nIn this case the area of the light blue ‘portion’ represents the value of the integral \\(\\int_2^6 f(x) - 3 \\ dx\\).\n\nThe dark blue rectangle has an area of \\(3 \\times 4 = 12\\) square units.\n\nThe area of the light blue ‘portion’ can now be written as \\(40 - \\textrm{dark blue} = 40 - 12 = 28\\) square units.\n\nNow the second image.\n\nIn this case the value of the integral \\(\\int_2^6 f(x) - 3 \\ dx\\) will be equal to the area of ‘portion’ \\(A\\) - the area of ‘portion’ \\(C\\). (From now on we will use \\(A\\) to represent the area of ‘portion’ \\(A\\) and similarly for \\(B\\) and \\(C\\).)\n\nThe area of ‘portion’ \\(B\\) can be written in two ways: \\(40 - A\\) or \\(12 - C\\).\n\nIf we equate these two expressions then we have \\(40 - A = 12 - C\\) which can be rearranged to provide the value of the integral \\[\\int_2^6 f(x) - 3 \\ dx = A - C = 40 - 12 = 28.\\]\n\nCan you apply a similar method to evaluate the integral using the final two diagrams?\n\nWhat do you notice about the result from the final (bottom right) diagram?\n\nCan you explain why this diagram is NOT actually a possible representation of \\(f(x) - 3\\)?\n\nNotice that once again, if we had thought algebraically we might have considered the integral as a sum of two functions, leading us to re-write it as \\[\\int_2^6 (f(x) -3) \\ dx = \\int_2^6 f(x) \\ dx - \\int_2^6 3 \\ dx.\\]\n\nThis of course produces the same result: the sum of the original area, \\(\\int_2^6 f(x) \\ dx = 40\\), and the rectangle, \\(-\\int_2^6 3 \\ dx = -12\\).\n\n\\(\\int_0^4 f(x + 2) \\ dx\\)\n\n\\(f(x + 2)\\) represents a horizontal translation of the original function by \\(2\\) units to the left.\n\nThe shaded region under the curve has also been translated so that it lies between \\(x=0\\) and \\(x=4\\).\n\nThe value of the integral \\(\\int_0^4 f(x + 2) \\ dx\\) is equal to the area of the light blue ‘portion’.\n\n\\(\\int_2^6 f(x + 2) \\ dx\\)\n\nThis is very similar to the previous integral. The function itself has once again been translated horizontally \\(2\\) units to the left. However, the region that we are looking at has not changed. Given that we do not know what the original function \\(f(x)\\) is, we are now looking at a region for which we do not have enough information. We cannot even determine the precise position of the \\(x\\)-intercept in this region.\n\nAll we can say is that the area is likely to be less than the original 40 square units given that we now have a negative component.\n\n\\(\\int_4^8 f(x + 2) \\ dx\\)\n\nThis is very similar to the previous integral. The function itself has once again been translated horizontally \\(2\\) units to the left. In addition to this, the region that we are looking at has changed. Given that we do not know what the original function \\(f(x)\\) is, we are now looking at a region for which we do not have enough information. We cannot even determine the precise position of the \\(x\\)-intercept in this region.\n\nWe now have a much larger negative component to the integral which suggests that this value will be less than 40 square units and less than the integral above in the region \\(x=2\\) to \\(x=6\\). The image suggests that the value will in fact be negative given that the negative portion appears much larger than the positive portion.\n\nIt is worth noting that if the integral had instead been given as \\(\\int_4^8 f(x - 2) \\ dx\\) then we would be able to evaluate it in exactly the same way as for \\(\\int_0^4 f(x + 2) \\ dx\\).\n\n\\(\\int_2^6 -f(x) \\ dx\\)\n\n\\(-f(x)\\) represents a reflection in the \\(x\\)-axis. The area of the region is preserved but the value of the integral is now negative as the region lies below the \\(x\\)-axis.\n\nIf we had taken an algebraic approach here we might have remembered that the integral could be re-written as \\[\\int_2^6 -f(x) \\ dx = -\\int_2^6 f(x) \\ dx.\\]\n\n\\(\\int_2^6 f(-x) \\ dx\\)\n\n\\(f(-x)\\) represents a reflection in the \\(y\\)-axis. The area of the reflected region, between \\(x=-6\\) and \\(x=-2\\), is preserved but the area in the original region is now unknown. If we knew something about the symmetry properties of the original function \\(f(x)\\) then we might be able to deduce something about this area. If \\(f(x)\\) has rotational symmetry about the origin then we could deduce that the integral will take the same value as for the curve \\(-f(x)\\) described above.\n\nWe cannot even meaningfully sketch this transformation because the original image doesn’t show the part of the curve between \\(x=-6\\) and \\(x=-2\\).\n\nNotice that this means that we could evaluate the integral \\(\\int_{-6}^{-2} f(-x) \\ dx\\).\n\nFor the integral to equal \\(0\\), we need to introduce a negative component. In order to do this we need to translate the curve ‘downwards’ such that we achieve a situation like this, in which the area under the curve located ‘above’ the \\(x\\)-axis is equal to that ‘below’ the \\(x\\)-axis. This in turn means that \\(k\\) will be negative.\n\nWe have a maximum of three portions to consider. In the diagram shown, the area of ‘portion’ \\(B\\) must be equal to the sum of the areas of ‘portions’ \\(A\\) and \\(C\\).\n\nFrom now on we will use \\(A\\) to represent the area of ‘portion’ \\(A\\), \\(B\\) to represent the area of ‘portion’ \\(B\\), etc.)\n\nThe value of the integral \\(\\int_2^6 (f(x) + k) \\ dx\\) will be equal to \\(B - (A + C)\\).\n\nThe area of ‘portion’ \\(D\\) can be written in two ways: \\(4 \\vert k \\vert - (A+C)\\) or \\(40 - B\\).\n\nIn this approach we have chosen to think about areas of ‘portions’ of the diagram. This means that even though \\(k\\) must be negative (by our own initial reasoning), we will use the magnitude of \\(k\\) (its positive value) for area calculations.\n\n\\(\\vert k \\vert\\) denotes the magnitude of \\(k\\).\n\nEquating these two expressions we have \\(D = 4 \\vert k \\vert - (A+C) = 40 - B\\) and rearranging we find that \\[B - (A+C) = 40 - 4 \\vert k \\vert.\\]\n\nIn this instance we want the integral to equal \\(0\\) so we can write \\[0 = 40 - 4 \\vert k \\vert\\] and therefore \\[\\vert k \\vert = 10.\\]\n\nWe know that \\(k\\) is in fact negative given the set up of our diagram and therefore \\(\\int_2^6 f(x) - 10 \\ dx = 0\\).\n\nAs in our approach to some of the original integrals, it may be worth noting that an algebraic approach here will also work. Re-writing the integral as \\[\\int_2^6 (f(x) + k) \\ dx = \\int_2^6 f(x) \\ dx + \\int_2^6 k \\ dx = 0\\] enables us to see that \\(\\int_2^6 k \\ dx = -40\\).\n\nProceeding with the integration we then find that \\(4k = -40\\) and therefore \\(k=-10\\) as before.\n\n## Solution part 2\n\nA summary of the integrals and their values is provided below:\n\n| Integral | Value |\n|---|---|\n| \\(\\int_2^6 g(x) + 5 \\ dx\\) | \\(28\\) |\n| \\(\\int_2^6 g(x) - 3 \\ dx\\) | \\(-4\\) |\n| \\(\\int_0^4 g(x + 2) \\ dx\\) | \\(8\\) |\n| \\(\\int_2^6 g(x + 2) \\ dx\\) | \\(12\\) |\n| \\(\\int_4^8 g(x + 2) \\ dx\\) | \\(16\\) |\n| \\(\\int_2^6 -g(x) \\ dx\\) | \\(-8\\) |\n| \\(\\int_2^6 g(-x) \\ dx\\) | \\(-8\\) |\n\nIt is possible to evaluate all of the integrals for \\(g(x)\\) whereas for \\(f(x)\\) it was only possible to evaluate four of them.\n\nWhat other integrals can we evaluate for \\(g(x)\\)?\n\nStarting with the obvious, the graph of \\(y=g(x)\\) is a straight line whereas the graph of \\(y=f(x)\\) is not. What this means is that we actually know a lot more about the behaviour of \\(g(x)\\) compared to \\(f(x)\\).\n\n- \\(g(x)\\) can be written in the form \\(ax + b\\) and from the diagram we can see that \\(b=0\\).\n\n- \\(g(x)\\) has rotational symmetry about the origin.\n\n- \\(g(x)\\) has a constant gradient, \\(a\\). This means that we can write \\[a = \\dfrac{y_{1}}{2} = \\dfrac{y_{2}}{6},\\] where \\(y_{1}\\) and \\(y_{2}\\) are the \\(y\\)-values when \\(x=2\\) and \\(x=6\\) respectively. Rearranging we have that \\[\\begin{equation} 3y_{1} = y_{2}. \\label{eq:1} \\end{equation}\\]\n\n- We know that the shaded area in the diagram is a trapezium so we can therefore write \\[8 = \\frac{1}{2}(y_{1} + y_{2}) \\times 4 = 2(y_{1} + y_{2}).\\] Rearranging we have that \\[\\begin{equation} y_{1} + y_{2} = 4. \\label{eq:2} \\end{equation}\\]\n\nSolving \\(\\eqref{eq:1}\\) and \\(\\eqref{eq:2}\\) simultaneously we find that \\(y_{1}=1\\) and \\(y_{2}=3\\). Substituting this back into the equation for the line we have that \\[y=g(x) = \\dfrac{1}{2}x.\\]\n\nNow that we know the function \\(g(x)\\) we are able to evaluate all of the integrals. We can use this to identify important, previously unknown values such as for \\(\\int_2^6 g(x + 2) \\ dx\\) as shown below.\n\nIdentifying the equation of the straight line allows us evaluate all of the specified integrals, and indeed any other integral that we may choose. However, it is worth noticing that, in comparison to the non-linear function \\(f(x)\\), we can still evaluate many more integrals without this information.\n\nFor instance, consider how you might evaluate the integral \\(\\int_2^6 g(8 - x) \\ dx\\) without knowing the function \\(g(x)\\).\n"
   }
  ]
 }

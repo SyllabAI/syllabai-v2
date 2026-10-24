@@ -8,7 +8,11 @@
  * PR #74, the first STRAND lane: new-text subset plus a cross-lane join that
  * serves the circles strand against its existing lane-3 bodies; Trigonometry
  * fifth — PR #79, the second two-station lane: the whole substrate as text of
- * record plus two cross-lane fact joins against the lane-2 bodies) under
+ * record plus two cross-lane fact joins against the lane-2 bodies; Series
+ * sixth — PR #89, the third two-station lane; Differentiation seventh —
+ * PR #91 + amendment #92, the fourth two-station lane; Integration eighth —
+ * PR #96 + the T-UGM-MODE1-8 amendment #99, the second STRAND lane and the
+ * first lane whose pick set is entirely cross-lane joined text) under
  * ADR-UGM-0001 as amended 2026-10-23 and the operator attestation of
  * 2026-10-23. The hub-side import is
  * scripts/import_ugm.py → content/<lane>/ugm-resources.json

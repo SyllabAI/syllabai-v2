@@ -1,5 +1,5 @@
 /**
- * T-UGM-HUB-CONSUME-3/-4/-5/-6 — the committed UGM bundle regression law.
+ * T-UGM-HUB-CONSUME-3/-4/-5/-6/-7/-8 — the committed UGM bundle regression law.
  *
  * The bundle is committed data; the reader (ugm.ts) fail-closes on schema
  * drift. These tests pin BOTH planes against the shipped file, so a bad
@@ -7,7 +7,7 @@
  * fails here before it can reach a flagged surface:
  *
  *   - the committed bundle parses under the exact Zod schema the reader uses
- *   - the lane census of record (lanes 1-6; lane 3 = the first multi-station
+ *   - the lane census of record (lanes 1-8; lane 3 = the first multi-station
  *     lane, lane 4 = the first STRAND lane: Circular measure drawn from four
  *     stations' sweeps, with its circles-strand mappings CROSS-LANE JOINED
  *     against the lane-3 bodies of record; lane 5 = the second two-station
@@ -19,23 +19,34 @@
  *     Counting & Binomials, 49 mapped (43 substrate + 6 strays) + 50 recorded
  *     non-overlaps imported unmapped (the counting station is
  *     combinatorics/logic-dominated around a binomial core) — plus two
- *     cross-lane fact joins against the lane-2 bodies)
+ *     cross-lane fact joins against the lane-2 bodies; lane 7 = the FOURTH
+ *     two-station lane: Differentiation's whole two-station calculus
+ *     substrate as text of record — 40 mapped + 32 recorded non-overlaps —
+ *     plus five cross-station stray stations and three cross-lane fact
+ *     joins; lane 8 = the SECOND STRAND lane: Integration's 10 unrecorded
+ *     calculus-family resources as new text with every further 1.8 alignment
+ *     CROSS-LANE JOINED against the lane-7 bodies — the first lane whose
+ *     pick set is entirely joined text (r8716/r7734/r6067/r9357, pick-flagged
+ *     on the crossLaneAligned rows by the T-UGM-MODE1-8 amendment #99))
  *   - the honesty invariants: unique ids, non-overlaps carry reasons and no
  *     spec points, aligned resources carry spec points, primaryPick
  *     membership, per-body delimiter balance (renderer contract)
  *
  * Corpus of record: SyllabAI/syllabai-resources
- * main@39e1568abb68c4647cf9ec9cc90a20ba236c0207 (PR #91 + the T-UGM-MODE1-7
- * amendment PR #92) under ADR-UGM-0001 as amended 2026-10-23 + the operator
+ * main@8c6339bd115034d2762e6c142256151f9ded3412 (PR #96 + the T-UGM-MODE1-8
+ * amendment PR #99) under ADR-UGM-0001 as amended 2026-10-23 + the operator
  * attestation of 2026-10-23. Per-lane coverage blocks carry the
  * enrichments-of-record censuses; the FLEET census reflects the merged serve
- * after the lane-4/5/6/7 cross-lane joins (12 lane-3 non-overlaps flip to
+ * after the lane-4/5/6/7/8 cross-lane joins (12 lane-3 non-overlaps flip to
  * aligned under 1.4.1; lane 5's r9924 flips its lane-2 non-overlap of record
  * under 1.5.4 while r8411 gains a second spec row; lane 6's r7553/r9527 —
  * both lane-2 ALIGNED of record — gain one-to-many 1.6.3 rows; lane 7's
  * r7115 flips its lane-4 non-overlap of record under 1.7.4 while r8936
  * (lane-4 aligned) and r5640 (lane-6 aligned) gain one-to-many 1.7.x rows;
- * 144 non-overlaps remain).
+ * lane 8's 18 integration joins flip 13 of lane 7's 17 integration-dressed
+ * Calculus-of-Powers non-overlaps to 1.8.x alignments (reasons retained)
+ * while r5768/r7734/r9138/r7386/r7861 gain one-to-many 1.8.x rows beside
+ * their standing 1.7 alignments; 131 non-overlaps remain).
  */
 import { describe, expect, test, mock } from "bun:test";
 import { readFileSync } from "node:fs";
@@ -71,7 +82,7 @@ describe("the committed UGM bundle parses under the reader schema (fail-closed l
 
   test("the corpus pin of record", () => {
     expect(bundle.source.ref).toBe(
-      "main@39e1568abb68c4647cf9ec9cc90a20ba236c0207",
+      "main@8c6339bd115034d2762e6c142256151f9ded3412",
     );
     expect(bundle.source.repo).toBe("SyllabAI/syllabai-resources");
     expect(bundle.rights.textOnly).toBe(true);
@@ -79,8 +90,8 @@ describe("the committed UGM bundle parses under the reader schema (fail-closed l
   });
 });
 
-describe("the lane census of record (7 lanes / 27 stations / 26 spec points)", () => {
-  test("stations: the single-station lanes, the multi-station, strand and two-station lanes, the eight-station series lane and the seven-station differentiation lane", () => {
+describe("the lane census of record (8 lanes / 30 stations / 30 spec points)", () => {
+  test("stations: the single-station lanes, the multi-station, strand and two-station lanes, the eight-station series lane, the seven-station differentiation lane and the three-station integration strand", () => {
     expect(bundle.stations.map((s) => s.slug)).toEqual([
       "quadratics",
       "combining-functions",
@@ -115,22 +126,30 @@ describe("the lane census of record (7 lanes / 27 stations / 26 spec points)", (
       "calculus-trig-log",
       "product-rule",
       "power-series",
+      // lane 8 (integration): the strand lane's three-station calculus family
+      // (station reuse by design: calculus-meets-functions x2, chain-rule x3,
+      // product-rule x3)
+      "calculus-meets-functions",
+      "chain-rule",
+      "product-rule",
     ]);
   });
 
-  test("fleet census (merged serve): 469 bodies, 325 aligned, 144 non-overlaps, 431 rows", () => {
-    expect(bundle.resources.length).toBe(469);
-    expect(bundle.coverage.aligned).toBe(325);
-    expect(bundle.coverage.nonOverlap).toBe(144);
-    expect(bundle.coverage.candidateRows).toBe(431);
-    expect(bundle.coverage.ugmResourcesConsidered).toBe(469);
+  test("fleet census (merged serve): 479 bodies, 348 aligned, 131 non-overlaps, 459 rows", () => {
+    expect(bundle.resources.length).toBe(479);
+    expect(bundle.coverage.aligned).toBe(348);
+    expect(bundle.coverage.nonOverlap).toBe(131);
+    expect(bundle.coverage.candidateRows).toBe(459);
+    expect(bundle.coverage.ugmResourcesConsidered).toBe(479);
     // the cross-lane joins of record: lane 4's 14 circles-strand alignments
     // + 2 cross-lane non-overlap confirmations against lane-3 bodies, lane
     // 5's 2 trigonometry fact joins (r9924/r8411) and lane 6's 2 series fact
-    // joins (r7553/r9527) against lane-2 bodies, and lane 7's 4 differentiation
-    // code rows (r5640 → 1.7.2+1.7.4; r7115/r8936 → 1.7.4) against lane-4/6 bodies
+    // joins (r7553/r9527) against lane-2 bodies, lane 7's 4 differentiation
+    // code rows (r5640 → 1.7.2+1.7.4; r7115/r8936 → 1.7.4) against lane-4/6
+    // bodies, and lane 8's 18 integration rows against lane-7 bodies
+    // (13 flips + 5 one-to-many)
     expect(bundle.coverage.crossLaneJoined).toEqual({
-      aligned: 22,
+      aligned: 40,
       nonOverlap: 2,
     });
   });
@@ -146,8 +165,6 @@ describe("the lane census of record (7 lanes / 27 stations / 26 spec points)", (
     // lane 4 circular measure (PR #74): the strand lane's new-text subset
     expect(byStation("thinking-about-geometry").length).toBe(1);
     expect(byStation("introducing-calculus").length).toBe(27); // lane-4 strand + lane-5 stray r7912 + lane-6 stray r6592 + lane-7 substrate 24
-    expect(byStation("product-rule").length).toBe(4); // lane-4 strand + lane-6 stray r9312 + lane-7 strays x2
-    expect(byStation("chain-rule").length).toBe(10); // lane-4 strand x2 + lane-6 stray r5640 + lane-7 strays x7
     // lane 5 trigonometry (PR #79): the whole two-station substrate of record
     expect(byStation("trigonometry-triangles-to-functions").length).toBe(48);
     expect(byStation("trigonometry-compound-angles").length).toBe(27);
@@ -160,12 +177,16 @@ describe("the lane census of record (7 lanes / 27 stations / 26 spec points)", (
     // lane 7 differentiation (PR #91): the whole two-station calculus
     // substrate + the five stray stations of record
     expect(byStation("calculus-of-powers").length).toBe(48);
-    expect(byStation("calculus-meets-functions").length).toBe(23); // lane-7 strays
+    expect(byStation("calculus-meets-functions").length).toBe(30); // lane-7 strays + lane-8 strand x7
     expect(byStation("calculus-trig-log").length).toBe(1); // lane-7 stray
     expect(byStation("power-series").length).toBe(1); // lane-7 stray
+    // lane 8 integration (PR #96): the strand lane's new-text subsets ride
+    // the front-matter stations (7 CMF + 2 chain-rule + 1 product-rule)
+    expect(byStation("chain-rule").length).toBe(12); // lane-4 x2 + lane-6 stray + lane-7 strays x7 + lane-8 x2
+    expect(byStation("product-rule").length).toBe(5); // lane-4 + lane-6 stray + lane-7 strays x2 + lane-8 x1
   });
 
-  test("coverage.lanes carries the seven lane keys incl. the two-station trigonometry, series and differentiation lanes", () => {
+  test("coverage.lanes carries the eight lane keys incl. the two-station trigonometry, series and differentiation lanes and the integration strand", () => {
     expect(bundle.coverage.lanes.map((l) => l.station)).toEqual([
       "quadratics",
       "combining-functions",
@@ -174,6 +195,7 @@ describe("the lane census of record (7 lanes / 27 stations / 26 spec points)", (
       "trigonometry",
       "series",
       "differentiation",
+      "integration",
     ]);
     const lane3 = bundle.coverage.lanes[2];
     expect(lane3.stationTitle).toBe("Coordinate Geometry");
@@ -221,9 +243,20 @@ describe("the lane census of record (7 lanes / 27 stations / 26 spec points)", (
     expect(lane7.candidateRows).toBe(107);
     expect((lane7 as unknown as { crossLaneAligned?: number }).crossLaneAligned).toBe(3);
     expect((lane7 as unknown as { crossLaneNonOverlap?: number }).crossLaneNonOverlap).toBe(0);
+    const lane8 = bundle.coverage.lanes[7];
+    expect(lane8.stationTitle).toBe("Integration");
+    // the strand-lane enrichment-of-record census: the 10 new-text
+    // calculus-family resources (7 CMF + 2 chain-rule + 1 product-rule),
+    // 0 new non-overlaps; the 18 cross-lane joins are recorded on the block
+    expect(lane8.ugmResourcesConsidered).toBe(10);
+    expect(lane8.aligned).toBe(28);
+    expect(lane8.nonOverlap).toBe(0);
+    expect(lane8.candidateRows).toBe(28);
+    expect((lane8 as unknown as { crossLaneAligned?: number }).crossLaneAligned).toBe(18);
+    expect((lane8 as unknown as { crossLaneNonOverlap?: number }).crossLaneNonOverlap).toBe(0);
   });
 
-  test("spec points: 26 codes across 1.1.x / 1.2.x / folded 1.3.x / folded 1.4.x / 1.5.x / 1.6.x / 1.7.x", () => {
+  test("spec points: 30 codes across 1.1.x / 1.2.x / folded 1.3.x / folded 1.4.x / 1.5.x / 1.6.x / 1.7.x / 1.8.x", () => {
     expect(bundle.coverage.specPointsCovered).toEqual([
       "1.1.1", "1.1.2", "1.1.3", "1.1.4", "1.1.5",
       "1.2.1", "1.2.2", "1.2.3", "1.2.4", "1.2.5",
@@ -232,6 +265,7 @@ describe("the lane census of record (7 lanes / 27 stations / 26 spec points)", (
       "1.5.1", "1.5.2", "1.5.3", "1.5.4", "1.5.5",
       "1.6.1", "1.6.2", "1.6.3", "1.6.4",
       "1.7.1", "1.7.2", "1.7.3", "1.7.4",
+      "1.8.1", "1.8.2", "1.8.3", "1.8.4",
     ]);
     // the fold law: hub-spine parse fragments 1.3.1a/1.3.2a/1.4.1a stay folded
     // into the parent codes — no .a rows in the bundle
@@ -450,13 +484,109 @@ describe("the lane-7 cross-lane join (differentiation facts served against earli
     expect(r7115.nonOverlapReason).toBeDefined();
   });
 
-  test("the 32 recorded non-overlaps stay unmapped (15 trapezium-rule/kinematics + 17 integration-dressed honesty)", () => {
+  test("the recorded non-overlaps stay unmapped (15 trapezium-rule/kinematics + the 4 integration-dressed survivors)", () => {
     const ic = bundle.resources.filter((r) => r.station === "introducing-calculus");
     const cop = bundle.resources.filter((r) => r.station === "calculus-of-powers");
     expect(ic.filter((r) => r.nonOverlap).length).toBe(15);
-    expect(cop.filter((r) => r.nonOverlap).length).toBe(17);
+    // lane 7 recorded 17 integration-dressed non-overlaps; lane 8's strand
+    // join flipped 13 of them to 1.8.x alignments (reasons retained), so 4
+    // survive unmapped of record (calculus-of-variations, queen-dido,
+    // r7724, r8931)
+    expect(cop.filter((r) => r.nonOverlap).length).toBe(4);
     for (const r of [...ic, ...cop].filter((x) => x.nonOverlap)) {
       expect(r.specPoints.length).toBe(0);
+    }
+  });
+});
+
+describe("the lane-8 cross-lane join (integration facts served against lane-7 bodies)", () => {
+  test("1.8.x serves 28 rows (10 new-text + 18 cross-lane) with the first all-cross-lane pick set", () => {
+    const counts: Record<string, number> = {
+      "1.8.1": 2,
+      "1.8.2": 4,
+      "1.8.3": 10,
+      "1.8.4": 12,
+    };
+    const picks: Record<string, string> = {
+      "1.8.1": "r8716",
+      "1.8.2": "r7734",
+      "1.8.3": "r6067",
+      "1.8.4": "r9357",
+    };
+    for (const [code, n] of Object.entries(counts)) {
+      const sp = bundle.specPoints.find((s) => s.code === code)!;
+      expect(sp.ugmIds.length).toBe(n);
+      expect(sp.resourceCount).toBe(n);
+      expect(sp.primaryPick).toBe(picks[code]);
+    }
+    // the T-UGM-MODE1-8 amendment (#99) law: all four picks ride the
+    // cross-lane join, so the RESOURCE rows must carry the pick flags
+    // themselves — the parity the honesty invariant below requires
+    for (const [code, pick] of Object.entries(picks)) {
+      const r = bundle.resources.find((x) => x.ugmId === pick)!;
+      expect(r.station).toBe("calculus-of-powers");
+      expect(r.specPoints.find((s) => s.code === code)?.primaryPick).toBe(true);
+    }
+  });
+
+  test("every 1.8.x ugmId resolves to a resource body (first-of-record wins)", () => {
+    for (const code of ["1.8.1", "1.8.2", "1.8.3", "1.8.4"]) {
+      const sp = bundle.specPoints.find((s) => s.code === code)!;
+      for (const id of sp.ugmIds) {
+        expect(bundle.resources.some((r) => r.ugmId === id)).toBe(true);
+      }
+    }
+  });
+
+  test("the 13 flips of record: lane-7 integration-dressed non-overlaps align under 1.8.x, reasons retained", () => {
+    for (const id of [
+      "integral-chasing", "meaningful-areas", "r5007", "r5584", "r6067",
+      "r6372", "r7236", "r7444", "r7628", "r8350", "r8716", "r9357",
+      "stretch-the-function",
+    ]) {
+      const r = bundle.resources.find((x) => x.ugmId === id)!;
+      expect(r.station).toBe("calculus-of-powers");
+      expect(r.nonOverlap).toBe(false);
+      expect(r.nonOverlapReason).toBeDefined();
+      expect(r.specPoints.length).toBe(1);
+      expect(r.specPoints[0].code).toMatch(/^1\.8\./);
+    }
+  });
+
+  test("one-to-many extensions of record: the five standing-1.7 alignments gain 1.8.x rows", () => {
+    const expected: Record<string, string[]> = {
+      r5768: ["1.7.4", "1.8.2"],
+      r7734: ["1.7.3", "1.8.2"],
+      r9138: ["1.7.3", "1.8.4"],
+      r7386: ["1.7.2", "1.7.4", "1.8.4"],
+      r7861: ["1.7.4", "1.8.4"],
+    };
+    for (const [id, codes] of Object.entries(expected)) {
+      const r = bundle.resources.find((x) => x.ugmId === id)!;
+      expect(r.specPoints.map((s) => s.code)).toEqual(codes);
+      expect(r.nonOverlap).toBe(false);
+    }
+  });
+
+  test("the lane-8 new-text strand: 10 mapped bodies (7 CMF + 2 chain-rule + 1 product-rule), 0 non-overlaps", () => {
+    const newtext: Record<string, string> = {
+      "additional-integrals": "calculus-meets-functions",
+      r5090: "calculus-meets-functions",
+      r5549: "calculus-meets-functions",
+      r8105: "calculus-meets-functions",
+      r8130: "calculus-meets-functions",
+      "thinking-constantly": "calculus-meets-functions",
+      "what-else-do-you-know": "calculus-meets-functions",
+      r9701: "chain-rule",
+      "slippery-areas": "chain-rule",
+      r7410: "product-rule",
+    };
+    for (const [id, station] of Object.entries(newtext)) {
+      const r = bundle.resources.find((x) => x.ugmId === id)!;
+      expect(r.station).toBe(station);
+      expect(r.nonOverlap).toBe(false);
+      expect(r.specPoints.length).toBe(1);
+      expect(r.specPoints[0].code).toMatch(/^1\.8\./);
     }
   });
 });
