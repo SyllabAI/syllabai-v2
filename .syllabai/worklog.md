@@ -20535,3 +20535,23 @@ Stage Summary:
 - W1 verified LIVE and healthy post-cut-over: wh-v1 law intact, 8,202-row maths plane parity-clean, embed remainder 1,330 disclosed; receipt run-007 of record
 - Lane blockers now precisely: (1) sci-chem URL for the 4CH1 T1, (2) Vercel cap window + lever (pause hub console-side or upgrade) for the W1 deploy re-fire, (3) main URL at sci-chem T1 time; DB posture: W1 knocked, main still stood down
 ops(R0-AUTO): receipt — PR #347 merged 38b7066, gates green (bookkeeping)
+
+Task ID: T-OPS-PLANE-001 (run-008, Task 21)
+Agent: R0-ops-plane (Super Z, zai-web session web-590847c1, trace 1a16cfcdd5d8113d)
+Task: 're fire, check now' — re-fire the cap-blocked deploy and verify the serving flip end to end.
+
+Work Log:
+- Sandbox recycled again; rebuilt from the fleet of record; tip 4008e6ce (4 api commits aboard: Seneca assignment-packs + realtime hosting; seam files untouched); bundle rebuilt, 6 asset pins EXACT, localgate 8/8 through the pooler URL.
+- DEPLOY SUCCEEDED at the freed cap window (iv8bt74ek READY, health 200, 0.69s).
+- FLIP 08:24:50Z (guarded applier) -> scoped ask (courseRef law pinned: resolveForCourse matches curriculum_versions.code exactly, '4MA1-2016') -> HTTP 500 -> prod runtime logs: postgres 42601 'syntax error at end of input' position 216.
+- ROOT CAUSE (LATENT PROD BUG, filed + repaired): run-004's seam step-1 tagged template has FOUR bind slots but THREE params — the order-by rebind of the vector literal was missing, candidateLimit landed in the <=> position, limit left empty = guaranteed 500 on EVERY covered-group ask. Invisible to the run-004 probe (rig path) and to the unit fakes (no arity validation — the at(-1)===cap assertion is blind to the class). Never executed live until the flip.
+- A/B of record: revert to ASSIGNED -> SAME bundle + SAME ask served via MAIN path (evidenceCount 6, groq, pooler DATABASE_URL proven live in prod) = 500 exclusively the seam.
+- REPAIR: restore the missing second literal bind (transport-only, SQL text byte-identical) + run-008 arity pin (toHaveLength(4), params[0]===params[2]); typecheck clean, serving.test.ts 10/10; pushed 92899b49.
+- Deploy 2 (qxxki2a8e) READY; re-flip 08:39:16Z; FINAL CHECK through the deployed app: 200 / evidenceCount 6 / refused false / groq 3.581s — decisive by differential (fail-loud: the seam cannot fall back silently).
+- Tripwire r7: corpus planes ALL PASS byte-flat through the ENTIRE cut-over (13,765/1,354/585/194/110); drift attributed (table 80 = +0013, users 600 = +probe census, mark plane = rebuild writer persisting +7,635 pts over 12h); NO loss signature; db 266 MB.
+- Receipt run-008-t1-refire-flip-live-r0.json; card UPDATE (6).
+
+Stage Summary:
+- T1 CUT-OVER COMPLETE OF RECORD: maths-4ma1 serves warehouse-first in production (registry SERVING + master on + W1 pooler URL + repaired seam, deployed and verified end to end through the live app).
+- Revert paths live at every rung (registry -> ASSIGNED instant). T2 prerequisite unchanged (warehouse-hydrate upgrade before the main-plane DROP).
+- Residuals: hub auto-bake cap bleed (console pause or plan upgrade owed), CI->Neon DNS wall triage, rebuild-writer receipts, PAT rotation.

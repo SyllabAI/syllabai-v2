@@ -165,3 +165,26 @@ scope:
     (~20:37Z 10-24), hub paused console-side first. T2 prerequisite filed:
     main-plane DROP needs the warehouse-hydrate upgrade first (serving.ts
     hydrates document_chunks on main by id).
+  - UPDATE 2026-10-24 (6): T1 COMPLETE — SERVING LIVE IN PRODUCTION (operator
+    're fire, check now', trace 1a16cfcdd5d8113d; receipt
+    run-008-t1-refire-flip-live-r0.json). Deploy re-fired at the freed cap
+    window: bundle rebuilt from tip (4 new api commits aboard, seam untouched),
+    localgate 8/8 through the pooler URL, dpl iv8bt74ek READY. FLIP EXECUTED
+    (registry SERVING 08:24:50Z) -> scoped ask returned HTTP 500 -> prod logs
+    pinned postgres 42601 'syntax error at end of input' — ROOT CAUSE: run-004's
+    shipped seam step-1 passed THREE params to a FOUR-slot template (the
+    order-by rebind of the vector literal was missing; candidateLimit landed
+    in the <=> position, limit left empty) = guaranteed 500 on every
+    covered-group ask; invisible to the run-004 probe (rig path, not this
+    function) and to the unit fakes (no arity validation; the at(-1)===cap
+    assertion is blind to the class). A/B of record: flip reverted -> MAIN
+    path serves through the SAME bundle (evidenceCount 6, groq, pooler URL
+    live) = the 500 was exclusively the seam. REPAIR pushed 92899b49
+    (transport-only, SQL text byte-identical + arity pin), deploy 2
+    (qxxki2a8e) READY, re-flip 08:39:16Z, FINAL CHECK through the deployed
+    app: 200 / evidenceCount 6 / refused false / groq 3.58 s — fail-loud law
+    makes the differential decisive. Tripwire r7: corpus planes ALL PASS
+    byte-flat through the whole cut-over; drift fully attributed (0013 table,
+    probe census users, rebuild-lane mark plane); NO loss signature. T1
+    cut-over COMPLETE OF RECORD. T2 prerequisite unchanged: main-plane DROP
+    needs the warehouse-hydrate upgrade first.
