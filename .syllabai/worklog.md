@@ -20567,3 +20567,14 @@ Work Log:
 
 Stage Summary:
 - THE COMMITTED-SUBSTRATE RESIDUE WAVE IS OF RECORD: the corpus-gate re-trigger class is ~89% discharged at the source (backticked speech spans 80,744 -> 8,603) with the harvest-side fix from run-001 — new contamination dies at the alt-ONLY fallback, legacy residue is now KaTeX. Residuals: 2,240 structural-flagged carriers (baretext class = re-scrape territory, 26 fail-closed keeps, plain-collapse retained grammar), the run-001 hits-semantics disclosure, corrupted scripts-tests.yml push trigger (operator-scoped), PAT rotation CRITICAL-Overdue. The v2 consume lane absorbs the SME tree delta at its next pin advance per the standing consume-law (expected, separate run). LANE: IDLE.
+
+---
+## T-SM-ROLLOUT registry-gap-audit-r0 + 0452-tiebreak-r0 (Z.ai session web-3bd4aa99, trace 1a16db0b84efbe15, 2026-10-24)
+
+Operator order: "I want you to finish smart mark enabling for all courses' 'Exam Questions'".
+
+- Repo-side READ-ONLY audit over main (no DB contact, no flips): 94 registry rows → 30 eligible (29 coreBridge + 1 pilot) / 64 unflipped. Per-course questions.json parsed at the committed pin; part G1-ready iff marks>0 AND solutionMd non-empty at 100%.
+- Disjoint completion funnel of record: **A 33 flip-ready-pending-census (17,319 parts, 100% scheme+marks coverage)** · **B 21 band-scheme (levels-of-response ADR blocker, of record — corpus mostly ready, NOT the blocker)** · **C 9 corpus-authoring (empty questions.json: 9706, 9708, 0452-25, 4XSD1×6)** · **D 1 ghost (9709-pure-2, the D1 skeleton)**.
+- Lane 0452-tiebreak-r0: the T-SM-BRIDGE-WIDEN r0 '0452_duplicate_subject_code_ambiguity' exclusion RETIRED — new pure law apps/hub/src/lib/subject-root.ts (pickSubjectRoot: single-hit resolves; multi-hit resolves by the registry cv pin; ambiguity without a pin refuses deterministically) + rootIdForCourseCode cv pin param (cv-aware memo key, misses never memoized) + the bridge route passes row.curriculumCode. Zero API changes.
+- Gates: subject-root.test.ts 7/7; hub lib suite 285 pass / 5 fail == the pre-existing dual-run-posture block on clean main; validate_cie_bundles.ts PASS; tsc --noEmit exit 0.
+- The flip precondition (r0-style production bank census per row) is named per funnel wave in the receipt — NOT discharged by this repo-side audit. Receipts: .syllabai/receipts/T-SM-ROLLOUT/{registry-gap-audit-r0,0452-tiebreak-r0}.json
