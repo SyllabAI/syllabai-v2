@@ -20950,3 +20950,9 @@ Operator answered PR #352 Ask 1 by pasting pooled credentials in-chat (owner-rol
 Result of record: ALL 17 A-wave subject rows (33 course rows) -> ZERO_BANK_REFS / NO_BANK_PARTS on production main. Positive control green: 4CH1 cv 4CH1-2017 = 105 papers bound / 41 with latest-version parts / 2,513 structured parts / 2,513 validated / 2,059 points-bound; 4MA1 = 110 papers bound, 0 bank questions (T-MIG-138 anchor posture). exam_papers total 218 bound to 3 subjects.
 
 Conclusion: funnel A census leg DISCHARGED; next leg per the T-SM-BRIDGE-WIDEN r0 law = bundle ingest for all 33 rows from the committed corpus (17,319 parts) via a task-owned Neon COW branch (production main stays agent-read-only, no dual-write), then G1 audit -> two-file flip -> deploy -> live probe. Receipt: .syllabai/receipts/T-SM-ROLLOUT/awave-bank-census-r0.json
+
+## R0-AUTO receipt — 2026-10-24 21:45 UTC (Job 438940, sweep 05:30 +08)
+- Task ID: 438940 | PR #359 (receipt t-sm-rollout awave-bank-census-r0, funnel-A bank census) merged.
+- Head b10519c: verify PASS + hub PASS (2/2); mergeable clean; 0 reviews/comments; diff = 2 files .syllabai/** exclusively (receipt-only, zero code, zero *.java).
+- Merge sha: 0edfd59 (merge commit, merge_method=merge). Post-merge main CI: verify PASS + hub PASS (2/2 green, ~155s bounded confirm).
+- Context this round: mirror reset hit #83 (4th consecutive, local→89962a5) recovered to aa04caa; origin/main advanced +4 since 9be98ca5 (seneca run-007 rollout wh-v3 GREEN, T-RULE-T3 pin rung run-002 LANDING, T-BOOK-050 c17 bake, sib-bl-005 Pearson T&L acquisition). #352 zero check-runs ~9.5h + #285/#296/#303 static red skipped. Bookkeeping-only, .syllabai/** exclusively.
