@@ -20826,3 +20826,18 @@ Work Log:
 
 Stage Summary:
 - The placement question is CLOSED of record (W1 interim, move later); the import path is fully verified end-to-end except the live legs; 5,098-row parity re-proven on the corpus side. Receipt: .syllabai/receipts/T-SENECA-001/run-005-placement-amendment-w1-interim-r0.json. ZERO database writes this run. LANE: WAITING on credential re-knock to fire the staged T1.
+---
+
+Task ID: SIB-LIBRARY-002 (operator order trace 1a16f5bd6146b01d: "acquire examiner reports + 4CH0 corpus" — BL-001/BL-002 of the SubjectIntelligence library)
+Agent: main (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+Base commit: 7ae2fa93 (fetched-first; no divergence)
+
+Work Log:
+- Cross-repo lane of record (no v2 app code touched): syllabai-pastpapers 3632b0e6 + syllabai-resources 43fa8a61, both ls-remote-verified. Full detail: resources@SubjectIntelligence/WORKLOG.md (SIB-LIBRARY-002) + pastpapers@docs/ER-ACQUISITION-2026-10-25.md.
+- BL-001: 54 official Pearson examiner reports placed from Pearson's own public CDN (site-index catalog rows of record; printed-PDF-text identity 54/54; per-file sha256 into each paper manifest; surgical insertions 594/0) — 20 × 4CH1 (8/16 sessions with wave-8's 2023-06) + 34 × 4CH0 legacy (13/16 sessions).
+- BL-002: INVENTORY CORRECTION (v1.0's "zero 4CH0 hits" = case-sensitive miss; legacy QP/MS was already complete — 40 dirs / 16 sessions) + legacy spec corpus landed in resources Official-Specifications/igcse-chemistry-legacy-4ch0/ (Issue 3 / Issue 5+SAMs / 2009 SAMs, spec.json provenance, outside the 39-SME-course manifest.json scope by law).
+- SI library manifests: source_manifest.yaml v1.1 (SRC-ER-4CH1 / SRC-ER-4CH0-LEGACY / SRC-LEGACY-SPEC-4CH0; GAP-SRC-001/002 RESOLVED with residuals disclosed — nothing fabricated) + manifest.yaml (EXM/HIS notes, BL-001/002 DONE). GATE: tools.sib.cli validate-manifest @ syllabai aa32db1 — SHAPE CLEAN (95 rows, 0 shape errors; truthful empty-library -007s + surfaced gap/backlog rows only). Pre-existing invalid-YAML source_manifest title repaired of record.
+- Residuals of record: no public ER for 4CH1 2020-01/2020-11/2021-01/2021-11/2022-01/2023-01 + 2021-06 (cancelled) + 4CH0 2014-01/2015-06/2016-01; Nov-2025/June-2026 PEFs behind Pearson silver tier (401 anonymous, operator queue); 4CH0 2018-06 CR ERs verified-but-placed-NOT (no QP/MS dir of record; §21 no-speculative-folders; sha256s in wave report).
+
+Stage Summary:
+- BL-001 + BL-002 COMPLETE OF RECORD: EXM evidence real, HIS family unlocked, six-groups check examiner-reports PARTIAL-covered / legacy PRESENT. Next SIB runs unchanged: BL-003 notebook provisioning → CUR-01..CUR-08. Operator-side queue: silver-tier Nov-2025/June-2026 ERs if wanted.
