@@ -1,0 +1,44 @@
+{
+  "schema": "syllabai.receipt/T-SENECA-001/1.0",
+  "run": "run-007-rollout-whv3-r0",
+  "task": "T-SENECA-001 rollout wave — ALL mapped hub courses get their Seneca libraries (wh-v3)",
+  "operator_rulings": {
+    "trace": "1a16fa6c496aa371",
+    "placement": "(a) W1 (ep-calm-queen) INTERIM home for ALL course groups' packs; dedicated course-group warehouses later",
+    "ial_mapping": "confirmed: Edexcel IAL -> Seneca 'International A Level'; Maths fallback = Edexcel A Level (UK) family (documented); Decision 1 none",
+    "variants": "booster/revision/Predicted-Papers/HyperLearning families INCLUDED per course"
+  },
+  "wh_v3": {
+    "fragment": "scripts/provisioner/wh-v3-fragment-seneca-resources-multi-course.sql",
+    "shape": "seneca_resources PK (id, course_slug) + course_slug varchar(96) (longest hub slug 66 chars); API module UNCHANGED (course-scoped queries keep exact semantics)",
+    "swap": "one transaction: create v3 -> carry 5098 pilot rows -> drop -> rename -> indexes -> warehouse_meta.template_version wh-v2->wh-v3",
+    "carried": 5098
+  },
+  "import": {
+    "script": "scripts/rollout_import_seneca_v3.py",
+    "corpus": "syllabai-experimental @ d67bc1e3 resource-hub-content (by-subject slices; slice-content parity vs deep course files verified per-field before the run)",
+    "instances": 55077,
+    "distinct_resources": 31233,
+    "skipped_no_hub_course": 178792,
+    "post_total": 58207,
+    "mapped_courses": 82,
+    "unmapped_courses": ["igcse-accounting-17-financial-statements", "igcse-accounting-17-introduction-to-bookkeeping-and-accounting", "cie-igcse-accounting-21", "cie-igcse-accounting-25", "cie-a-level-accounting-21", "cie-igcse-environmental-management-25", "cie-as-environmental-management-20", "igcse-further-maths-19", "cie-igcse-further-maths-additional-maths-25", "ial-further-maths-18-further-pure-1", "igcse-maths-b-16", "ial-maths-20-decision-1"],
+    "post_parity": "PASS (UNION semantics: census ∪ carried pilot rows, all 82 courses exact)",
+    "pii_rescan": 0,
+    "maths_plane": "warehouse_chunks 8202 UNTOUCHED; meta keys unchanged"
+  },
+  "flags": {
+    "file": "apps/hub/content/flags.json",
+    "key": "senecaCourseResources",
+    "courses": 82
+  },
+  "warehouse_state": { "size": "138 MB", "cap_law": "0.8 GB course-group cap — comfortable" },
+  "commit": "300f51f (main, CI pending; hub auto-bake dpl_7ACDfXqWgqztW3F64WX5QXW21wGU)",
+  "verification_ceiling": "authed happy-path (teacher picker on any new course -> create -> learner player) still requires a real token; anonymous wire stays 401 by design",
+  "notes": [
+    "Slice-content parity gate: by-subject slices carry byte-identical EQ content (questionTitleMd/markScheme/generationScript/marksTotal) vs the deep course files — no new harvesting needed.",
+    "Edexcel-iGCSE science sections are Triple-tagged in the harvest (no Combined sections exist slice-side); 4SD0 libraries = Double-Award EQs (breadcrumb) + Science slice quizzes.",
+    "Pilot residue of record: the 3,382 subject-wide chemistry quizzes carried under igcse-chemistry-19 (pilot census law); rollout partitions NEW courses correctly.",
+    "run-014 (parallel lane) absorbed: fetch-first rebase 1f84fb1 -> 300f51f, no collisions."
+  ]
+}
