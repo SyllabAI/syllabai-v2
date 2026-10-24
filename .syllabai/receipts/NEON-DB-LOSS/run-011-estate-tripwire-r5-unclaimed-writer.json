@@ -1,0 +1,161 @@
+{
+  "receipt": "NEON-DB-LOSS run-011-estate-tripwire-r5-unclaimed-writer",
+  "run": "run-011",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a16dc86c7ccf1ad (operator 'Proceed')",
+  "date": "2026-10-24",
+  "duty": "T-OPS-TRIPWIRE-001 standing duty (run-around-DB-writing-lanes + attribute-every-delta + escalate-unclaimed); executed as the observation leg of the T-CONTENT-MP-REBUILD-001 pickup attempt",
+  "VERDICT": "THE MARK-PLANE REBUILD (T-CONTENT-MP-REBUILD-001) IS IN FLIGHT BY AN UNCLAIMED WRITER — signature extraction_method='sme-corpus-import-v1 (ADR-026)' (one of the named instruments of record), actively writing as of 2026-10-24T11:37Z (rows landed minutes before this probe). Estate progress 35,791/40,250 target (~89%). The surviving oracle 14,141 is EXACTLY INTACT (zero shrinkage, subset proven). This lane DID NOT touch the mark plane — single-writer window honored by standing down. ESCALATION: the writer still owes its claim + lane-start tripwire + run receipts on origin/main (unclaimed-writer class, first flagged by tripwire r4 at 2026-10-23T18:44Z; now 17+ hours in flight, still unclaimed at fetch 12:10Z).",
+  "tripwire_r5": {
+    "instrument": "scripts/dbprobe/estate-tripwire.mjs (recipe v2-rederived-post-wipe)",
+    "measured_at_utc": "2026-10-24T12:08:18.619Z",
+    "mode": "READ ONLY session",
+    "gate_pins": {
+      "table_count": {
+        "baseline": 75,
+        "live": 80,
+        "state": "DRIFT"
+      },
+      "mark_points": {
+        "baseline": 14141,
+        "live": 35791,
+        "state": "DRIFT"
+      },
+      "mark_schemes": {
+        "baseline": 6733,
+        "live": 19034,
+        "state": "DRIFT"
+      },
+      "document_chunks": {
+        "baseline": 13765,
+        "live": 13765,
+        "state": "PASS"
+      },
+      "documents": {
+        "baseline": 1354,
+        "live": 1354,
+        "state": "PASS"
+      },
+      "question_asset": {
+        "baseline": 585,
+        "live": 585,
+        "state": "PASS"
+      },
+      "revision_note_asset": {
+        "baseline": 194,
+        "live": 194,
+        "state": "PASS"
+      },
+      "users": {
+        "baseline": 587,
+        "live": 601,
+        "state": "DRIFT"
+      },
+      "exam_papers_4MA1": {
+        "baseline": 110,
+        "live": 110,
+        "state": "PASS"
+      }
+    },
+    "table_count": 80,
+    "db_size_pretty": "302 MB",
+    "flyway_head": {
+      "version": "63",
+      "description": "exam series seed pearson 2026 2027",
+      "success": true
+    },
+    "raw_artifact": ".syllabai/receipts/NEON-DB-LOSS/artifacts/run-011-tripwire-r5-raw.json"
+  },
+  "attribution": {
+    "method": "read-only probes (postgres.js max:1 prepare:false) — write recency + signature + oracle boundary count",
+    "writer_signature": {
+      "extraction_method": "sme-corpus-import-v1 (ADR-026)",
+      "schemes_under_signature": 18123,
+      "newest_scheme_utc": "2026-10-24T11:37:02.008Z",
+      "newest_point_utc": "2026-10-24T11:37:07.761Z",
+      "note": "signature is one of the NAMED instruments of record in T-CONTENT-MP-REBUILD-001 (SME EQ re-import) — the writer is executing the dispatched rebuild, not an unrelated mutation"
+    },
+    "write_rate_hourly_mark_points": [
+      {
+        "hour_utc": "2026-10-23T18:00Z",
+        "delta": 1092
+      },
+      {
+        "hour_utc": "2026-10-23T19:00Z",
+        "delta": 1008
+      },
+      {
+        "hour_utc": "2026-10-24T01:00Z",
+        "delta": 239
+      },
+      {
+        "hour_utc": "2026-10-24T02:00Z",
+        "delta": 1025
+      },
+      {
+        "hour_utc": "2026-10-24T03:00Z",
+        "delta": 200
+      },
+      {
+        "hour_utc": "2026-10-24T04:00Z",
+        "delta": 426
+      },
+      {
+        "hour_utc": "2026-10-24T06:00Z",
+        "delta": 949
+      },
+      {
+        "hour_utc": "2026-10-24T07:00Z",
+        "delta": 3252
+      },
+      {
+        "hour_utc": "2026-10-24T08:00Z",
+        "delta": 1314
+      },
+      {
+        "hour_utc": "2026-10-24T09:00Z",
+        "delta": 1625
+      },
+      {
+        "hour_utc": "2026-10-24T10:00Z",
+        "delta": 6898
+      },
+      {
+        "hour_utc": "2026-10-24T11:00Z",
+        "delta": 3028
+      },
+      "note: gaps (00Z/05Z) = zero-write hours observed in the 30h window; the 24h pattern is an active sustained rebuild, not a batch seed"
+    ],
+    "claim_state_on_origin": "NO claim, NO lane-start tripwire, NO run receipt landed on origin/main for this writer (fetch 2026-10-24T12:10Z, tip 997fcc0). r4 (run-009 receipt) already flagged the writer owing receipts at 2026-10-23T18:44Z — the debt is now 17+ hours old."
+  },
+  "oracle_integrity": {
+    "boundary": "2026-10-21T00:43:12Z (the Oct-21 snapshot instant, run-003 of record)",
+    "survivor_rows_pre_boundary": 14141,
+    "expected": 14141,
+    "match": true,
+    "post_boundary_rows": 21650,
+    "total_live": 35791,
+    "shrinkage": "NONE — monotonic growth only; the run-007 reconciliation basis (3,836 + 9,662 + 643 = 14,141) remains re-provable"
+  },
+  "progress_census": {
+    "target_basis": 40250,
+    "live": 35791,
+    "remaining": 4459,
+    "pct": 88.9,
+    "mark_schemes_live": 19034,
+    "mark_schemes_baseline": 6733,
+    "caveat": "the 40,250 target is the pre-loss PEAK basis; the writer's own census receipt is the of-record completion proof — this is an external observation, not the writer's floor"
+  },
+  "decision_by_this_lane": {
+    "T-CONTENT-MP-REBUILD-001": "NOT CLAIMED — the plane's single-writer window is OCCUPIED by the in-flight writer; a second re-derivation would violate the card's own single-writer law and risk duplicate/PK-conflict corruption",
+    "mark_plane_writes": "ZERO by this lane (read-only probes only)",
+    "escalation": "operator: identify/confirm the writer (it owes claim + receipts on origin); if the writer is a recycled-sandbox ghost with no filing path, the operator rules either (a) writer lands its receipts, or (b) stand-down + this lane picks up the remainder after the ruling",
+    "standby_plan": "on operator confirmation that the plane is free, this lane executes the card's next_safe_actions (claim-in-first-commit, tripwire at lane start/end, remainder derivation, census + oracle cross-check receipt)"
+  },
+  "disclosures": [
+    "this receipt is an OPS-PLANE observation of record — it does NOT amend T-CONTENT-MP-REBUILD-001 (status stays DISPATCHED; amendment is the picking lane's prerogative)",
+    "probes rode the CORE_DATABASE_URL staged credential (.core-db-env, session-staged); read-only statements only (three SELECTs + the tripwire's own read-only session)",
+    "table_count 80 vs baseline 75: the +5 feature-family tables were already attributed by r3/r4 (no NEW tables since r3 — re-proven here)",
+    "users 587 -> 601: growth-class drift consistent with organic signups across the 24h window, no loss signature"
+  ]
+}

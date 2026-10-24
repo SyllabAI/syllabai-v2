@@ -20599,3 +20599,21 @@ Work Log:
 Stage Summary:
 - Both planes verified CURRENT of record (api: run-008 deploy, zero runtime delta; hub: auto-bake lag zero, wire markers live). Cap 62/100. LANE: IDLE — queue unchanged (pause/upgrade decision, PAT rotation, CI DNS wall, writer receipts, sci-chem wave needs W2+main URLs, T2 hydrate before main-plane DROP).
 ops(R0-AUTO): receipt — PR #351 merged f4bb497, gates green (bookkeeping)
+
+---
+Task ID: NEON-DB-LOSS run-011 (estate tripwire r5 + unclaimed-writer escalation)
+Agent: R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646, trace 1a16dc86c7ccf1ad)
+Task: Operator "Proceed" — MP-REBUILD-001 pickup attempt converted into the T-OPS-TRIPWIRE-001 standing duty (observe, attribute, stand off, escalate).
+
+Work Log:
+- Pickup attempt recon: T-CONTENT-MP-REBUILD-001 (DISPATCHED, P1) read in full; tripwire r4 (run-009) attribution note re-read — writer flagged owing receipts since 2026-10-23T18:44Z.
+- Tripwire r5 executed of record (scripts/dbprobe/estate-tripwire.mjs, READ ONLY, 12:08:18Z): mark_points 35,791 (baseline 14,141), mark_schemes 19,034 (baseline 6,733), corpus/identity planes byte-flat (chunks 13,765 / documents 1,354 / assets 585/194 / 4MA1 110 ALL PASS), table_count 80 (no NEW tables since r3), users 601 growth-class, NO loss signature.
+- Write-recency probe: newest mark_points 11:37:07Z (minutes before probe) — writer ACTIVE NOW; hourly deltas sustained 24h (peak 6,898 in the 10:00 hour).
+- Writer attribution: extraction_method='sme-corpus-import-v1 (ADR-026)' under 18,123 schemes — a NAMED instrument of record of the dispatched rebuild; writer = the MP-REBUILD in flight, unclaimed on origin (no claim / no lane-start tripwire / no run receipts at fetch 12:10Z, tip 997fcc0).
+- Oracle integrity PROVEN: 14,141 survivor rows (< Oct-21 00:43:12Z boundary) EXACT — zero shrinkage, post-boundary 21,650, run-007 reconciliation basis intact.
+- PROGRESS: 35,791/40,250 (~89%), remaining ~4,459.
+- DECISION of record: card NOT claimed (single-writer window OCCUPIED); ZERO mark-plane writes by this lane (read-only probes only); escalation filed for the operator (writer owes claim + receipts; if recycled-sandbox ghost, operator rules stand-down vs receipt-landing).
+- Receipt run-011-estate-tripwire-r5-unclaimed-writer.json + raw artifact filed; fetch-first push; no force.
+
+Stage Summary:
+- THE REBUILD IS 89% DONE BY AN UNCLAIMED WRITER whose signature IS an instrument of record; the oracle is intact; this lane stood off to preserve single-writer and escalated per T-OPS-TRIPWIRE-001. Register: operator writer-identification ruling -> (a) writer files receipts, or (b) stand-down + this lane claims the remainder. No other plane drift; PAT rotation still standing.
