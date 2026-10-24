@@ -83,6 +83,17 @@ e6b0b3a9, rejoin sheet blob-identical, SME-ExamQuestion/*/spec_point_index.json
 quiescent pin-vintage convergence of the fleet at the resources tip 31b0ef4a
 (the run-006/007 shape on a moved vintage) — of record at the pin advance from
 6dc1f0a2.
+
+T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-002 (2026-10-25, operator order 'Fire',
+trace 1a16f39798b9d6c1 — the named next rung disclosed at the run-001 landing):
+the second pin-vintage rung. Input classification at 31b0ef4a..09842f9f (10
+commits: T-BOOK-047 u2:c14 authoring+flip, the UGM-Assets image plane 976
+figures, the handover-rule docs, the f-0019 filing, T-PARSE-YCH11-1 R2 polish
+harvest, T-PARSE-YCH12-1 SB2 parse — all CourseLessons/UGM-Assets/books/parsed
+planes): consumed-input delta ZERO — spec-links/ tree-identical, rejoin sheet
+blob-identical 2bcd4db3; quiescent pin-vintage convergence of the fleet at the
+resources tip 09842f9f (the run-006/007/001 shape on a moved vintage) — of
+record at the pin advance from 31b0ef4a.
 """
 from __future__ import annotations
 
@@ -103,7 +114,7 @@ RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resourc
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "31b0ef4aa995e1fb8024a9c0cce8e1705b193018"
+PIN = "09842f9f2ae35c8b721a069c34cb04c3fbb3b592"
 STAMP = "2026-10-25T00:00:00Z"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
@@ -821,24 +832,20 @@ def main() -> int:
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
         lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-001 (operator order 'v2 consume-lane "
-                           "pin advance', trace 1a16dda5d7cfb325; the run's GitHub PAT provisioned "
-                           "same session, trace 1a16ec15fa2526c1) — the wave-vintage pin advance: "
-                           "the committed-substrate residue wave (T-RULE-T3-SUBSTRATE-1 run-002, "
-                           "cc6cca61) moved the SME trees 4,342 carriers formatting-only and the "
-                           "standing consume-law owes the v2 consume lane's absorption at the next "
-                           "pin advance. Input classification at 6dc1f0a2..31b0ef4a (48 commits): "
-                           "consumed-input delta ZERO — spec-links/ tree-identical e6b0b3a9, rejoin "
-                           "sheet blob-identical, SME-ExamQuestion/*/spec_point_index.json 0-file "
-                           "delta fleet-wide, Official-Specifications tree-sha-identical c95ed99f; "
-                           "the ONLY engine-adjacent vintage move is the wave's 2,369+1,681+292 SME "
-                           "carrier transpiles (KaTeX alt), zero code-plane contact. THIS run is the "
-                           "quiescent pin-vintage convergence of the fleet at 31b0ef4a (the "
-                           "run-006/007 shape on a moved vintage): 44/44 re-keys, every consumed "
-                           "counter byte-equal to the run-007 floors, resourcesSha/stamp the only "
-                           "map moves, manifest officialSpine.resourcesSha the only bundle move; "
-                           "the pin moves WITH the of-record (fa7ede6/0c8892d precedent)"),
-        gatewayTrace="1a16dda5d7cfb325",
+        operatorDirective=("T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-002 (operator order 'Fire', "
+                           "trace 1a16f39798b9d6c1) — the second pin-vintage rung: the resources "
+                           "tip moved 31b0ef4a -> 09842f9f (10 commits: T-BOOK-047 u2:c14 "
+                           "authoring+flip, the UGM-Assets image plane 976 figures, the "
+                           "handover-rule docs, the f-0019 filing, T-PARSE-YCH11-1 R2 polish "
+                           "harvest, T-PARSE-YCH12-1 SB2 parse) with consumed-input delta ZERO "
+                           "— spec-links/ tree-identical, rejoin sheet blob-identical 2bcd4db3. "
+                           "THIS run is the quiescent pin-vintage convergence of the fleet at "
+                           "09842f9f (the run-006/007/001 shape on a moved vintage): 44/44 "
+                           "re-keys, every consumed counter byte-equal to the run-001 floors, "
+                           "resourcesSha the only map move (stamp unchanged 2026-10-25T00:00:00Z), "
+                           "manifest officialSpine.resourcesSha the only bundle move; the pin "
+                           "moves WITH the of-record (fa7ede6/0c8892d precedent)"),
+        gatewayTrace="1a16f39798b9d6c1",
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),
