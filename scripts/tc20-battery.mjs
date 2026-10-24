@@ -105,7 +105,11 @@ if (EXPECT_PACKS && packs.length !== Number(EXPECT_PACKS)) {
 }
 
 let publishedPacks = 0;
-for (const p of packs.slice(0, 12)) {
+// f-0019 fix: the A2 loop previously hard-capped at packs.slice(0, 12) — a
+// latent under-probe that ran GREEN at c13 (12/13 probed) and surfaced at c14
+// ("14 probed, 12 serving published"). The serving gate of record must probe
+// EVERY pack the index carries.
+for (const p of packs) {
   const u = `${HUB}/corpus/${COURSE}/lessons/${p.packId}.json`;
   const r = await probe(`A2 pack ${p.packId}`, u, "200 + status=published + chapter marker + sections>0", (s, b) => {
     if (s !== 200) return "FAIL";
