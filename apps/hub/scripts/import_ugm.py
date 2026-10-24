@@ -94,6 +94,23 @@ Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
     injected ref must resolve to a copied asset, every map section must
     match a body heading, per-resource counts must equal the map (all
     fail-closed). GeoGebra embeds and PDFs stay excluded.
+  - lane 8b (T-UGM-HUB-CONSUME-8b — PROSE FIGURE LOCALIZATION, operator order
+    "Localize them" trace 1a16f05ae07006a5): the text-only converter left 282
+    inline figure placeholders in the bodies — lines shaped
+    `> [figure: <caption> — `https://undergroundmathematics.org/<path>`]`
+    `(image not included in the text import; path of record).` — every one of
+    them a bare external UGM image link. All 282 resolve to binaries already
+    committed under UGM-Assets/ AND already covered by figures-map rows of the
+    SAME resource (245 unique paths, 54 resources; verified 2026-10-25). The
+    importer now matches each placeholder to its map row (same sec+path first,
+    then same path in document order — fail-closed if any placeholder has no
+    unmatched row) and renders that row INLINE at the placeholder's
+    position-accurate spot (`![alt](/ugm-assets/<path>)`), replacing the
+    placeholder construct; map rows without a placeholder twin keep the
+    section-end injection. The per-ref count law is unchanged (every map row
+    renders exactly once — inline or section-end), the corpus stays
+    byte-untouched, and a new fail-closed audit demands ZERO un-localized
+    image placeholders across the served bundle.
 
 Output: content/<lane>/ugm-resources.json, schema
 "syllabai-demo.ugm-lane-resources/1.1" (multi-lane) — per-spec-point resource
@@ -139,13 +156,31 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-DEFAULT_REF = "main@404b4ed5ff922509205c4475aca03a7d6b902128"
+# T-UGM-HUB-CONSUME-8b: pin advanced past the T-UGM-ASSETS-1 integrity-manifest
+# fix (0b976cc) so copy_assets() finds UGM-Assets/MANIFEST.json; corpus inputs
+# (UGM-Resources/**, UGM-Enrichment/**) are identical 404b4ed5 → ac1fc90b
+# (verified: base re-import reproduces the #354 bundle byte-for-byte modulo
+# generatedUtc).
+DEFAULT_REF = "main@ac1fc90b09008ee8d2eb1aff6892a9f2cb05f594"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
 FIGURES_MAP = os.path.join("UGM-Resources", "figures-map.json")
 ASSETS_DIR = "UGM-Assets"
 SERVE_PREFIX = "/ugm-assets/"
+
+# T-UGM-HUB-CONSUME-8b: the converter's inline figure placeholders (the only
+# remaining external UGM image references in the served bodies). Shape of
+# record (282 occurrences, note text uniform):
+#   `> [figure: <caption> — `<url>`] (image not included in the text import;
+#   path of record).`  — optionally the leading `> ` (blockquote/table cell),
+#   optionally a trailing period.
+UGM_URL_RE = re.compile(r"^https?://(?:www\.)?undergroundmathematics\.org/", re.I)
+IMG_EXT_RE = re.compile(r"\.(png|jpe?g|gif|svg|webp)$", re.I)
+PLACEHOLDER_RE = re.compile(
+    r"(?:>\s*)?\[figure:\s*(?P<cap>.*?)\s*—\s*`(?P<url>[^`]+)`\]"
+    r"\s*\((?P<note>[^)]*)\)(?P<dot>\.)?"
+)
 
 # Per-course UGM lane mapping. Single-station blocks (`station` + `title`)
 # mirror one UGM station; multi-station blocks (lane 3+) declare `laneSlug` +
@@ -523,20 +558,33 @@ def _fig_alt(caption):
 
 
 def apply_figures(resources, repo, copied_paths):
-    """T-UGM-HUB-CONSUME-8a: inject figure references into the served bodyMd.
+    """T-UGM-HUB-CONSUME-8a + 8b: localize every figure of record into the served bodyMd.
 
-    Law of record (T-UGM-ASSETS-1 map + Amendment 2026-10-24):
+    Law of record (T-UGM-ASSETS-1 map + Amendment 2026-10-24; 8b per the
+    operator order "Localize them", trace 1a16f05ae07006a5):
       - figures-map.json rows are (sec, ord, path, ref, kind, caption) per
         resource; the corpus text bodies are byte-untouched — the map is the
         of-record figure knowledge;
-      - a figure renders as an `![alt](/ugm-assets/<path>)` markdown line at
-        the END of its own section (immediately before the next `## ` heading
-        or EOF), in document order — deterministic, section-anchored;
+      - 8a: a map row without a placeholder twin renders as an
+        `![alt](/ugm-assets/<path>)` markdown line at the END of its own
+        section (immediately before the next `## ` heading or EOF), in
+        document order — deterministic, section-anchored;
+      - 8b: the converter's inline placeholder constructs
+        `> [figure: <caption> — `<url>`] (image not included in the text
+        import; path of record).` are the position-accurate occurrence spots.
+        Each placeholder is matched 1:1 to an unmatched map row of the SAME
+        resource (same sec+path preferred, then same path in document order)
+        and that row renders INLINE at the placeholder's spot, replacing the
+        construct (the leading `> ` and trailing period are consumed with it).
+        The image moves from section-end to its true prose position — no
+        double render, the per-ref count law is untouched;
       - fail-closed audits: every map path must exist in UGM-Assets/MANIFEST.json
         (sha256 checked at copy time) and have been copied to the serve dir;
-        every map section must match a `##` heading in the body; per-resource
-        injected counts must equal the map rows; the fleet census must equal
-        the map's own counts.
+        every map section must match a `##` heading in the body; every
+        placeholder asset must be copied; every placeholder must find an
+        unmatched map row; per-resource injected counts must equal the map
+        rows; the fleet census must equal the map's own counts; and ZERO
+        un-localized image placeholders may remain across the served bundle.
     """
     fmap_path = os.path.join(repo, FIGURES_MAP)
     if not os.path.exists(fmap_path):
@@ -546,10 +594,12 @@ def apply_figures(resources, repo, copied_paths):
     heading_re = re.compile(r"^## (.+)$", re.M)
     injected = 0
     res_with = 0
+    inline_total = 0
     for r in resources:
         rows = figures.get(r["ugmId"])
         if not rows:
             r["figures"] = 0
+            r["figuresInline"] = 0
             continue
         body = r["bodyMd"]
         heads = [(m.group(1).strip(), m.start(), m.end()) for m in heading_re.finditer(body)]
@@ -566,17 +616,64 @@ def apply_figures(resources, repo, copied_paths):
                 if p not in copied_paths:
                     fail(f"[figures] {r['ugmId']}: asset {p!r} not copied to the serve dir")
             by_sec.setdefault(row["sec"], []).append(row)
-        # insert from the LAST section backwards so earlier offsets stay valid
-        sec_end = dict(bounds)
-        inserts = []
+
+        # ── 8b: match inline placeholders to map rows ───────────────────
+        def sec_of(pos):
+            cur = None
+            for name, s, _e in heads:
+                if s <= pos:
+                    cur = name
+                else:
+                    break
+            return cur
+
+        placeholders = []  # (start, end, path, caption) in document order
+        for m in PLACEHOLDER_RE.finditer(body):
+            url = m.group("url").split("#")[0].split("?")[0]
+            if not (UGM_URL_RE.match(url) and IMG_EXT_RE.search(url)):
+                continue  # non-image constructs are not this lane's scope
+            placeholders.append((m.start(), m.end(), UGM_URL_RE.sub("", url), m.group("cap")))
+        used = set()
+        inline = []  # (row, span, caption-fallback)
+        for start, end, path, cap in placeholders:
+            if path not in copied_paths:
+                fail(f"[figures] {r['ugmId']}: placeholder asset {path!r} not copied to the serve dir")
+            same_sec = [row for row in by_sec.get(sec_of(start) or "", [])
+                        if row["path"] == path and id(row) not in used]
+            same_path = [row for row in rows
+                         if row["path"] == path and id(row) not in used]
+            cand = same_sec or same_path
+            if not cand:
+                fail(f"[figures] {r['ugmId']}: placeholder {path!r} at offset {start} "
+                     f"has no unmatched map row")
+            row = cand[0]
+            used.add(id(row))
+            inline.append((row, (start, end), cap))
+        inline_total += len(inline)
+
+        # build ALL edits (inline replacements + section-end inserts), then
+        # apply from the LAST position backwards so earlier offsets stay valid
+        edits = []
+        inline_rows = set()
+        for row, (start, end), cap in inline:
+            alt = _fig_alt(row.get("caption") or cap)
+            edits.append((start, end, f"![{alt}]({row['ref']})"))
+            inline_rows.add(id(row))
         for name, rows2 in by_sec.items():
-            rows2 = sorted(rows2, key=lambda x: x["ord"])
+            rows2 = sorted((x for x in rows2 if id(x) not in inline_rows),
+                           key=lambda x: x["ord"])
+            if not rows2:
+                continue
             lines = [f"![{_fig_alt(row.get('caption'))}]({row['ref']})" for row in rows2]
-            inserts.append((sec_end[name], "\n\n" + "\n\n".join(lines) + "\n"))
-        for pos, text in sorted(inserts, key=lambda x: -x[0]):
-            body = body[:pos] + text + body[pos:]
+            edits.append((dict(bounds)[name], None, "\n\n" + "\n\n".join(lines) + "\n"))
+        for pos, end, text in sorted(edits, key=lambda x: -x[0]):
+            if end is None:
+                body = body[:pos] + text + body[pos:]
+            else:
+                body = body[:pos] + text + body[end:]
         r["bodyMd"] = body
         r["figures"] = len(rows)
+        r["figuresInline"] = len(inline)
         injected += len(rows)
         res_with += 1
         # post-audit: every ref appears exactly as often as the map rows use it
@@ -585,14 +682,27 @@ def apply_figures(resources, repo, copied_paths):
         for ref, n in _C(row["ref"] for row in rows).items():
             if body.count(ref) != n:
                 fail(f"[figures] {r['ugmId']}: ref {ref!r} appears {body.count(ref)} != {n} map rows")
+    # 8b fail-closed sweep: ZERO un-localized image placeholders may remain
+    residue = 0
+    for r in resources:
+        for m in PLACEHOLDER_RE.finditer(r.get("bodyMd") or ""):
+            url = m.group("url").split("#")[0].split("?")[0]
+            if UGM_URL_RE.match(url) and IMG_EXT_RE.search(url):
+                residue += 1
+                if residue <= 3:
+                    print(f"    [figures] RESIDUE {r['ugmId']}: {url}")
+    if residue:
+        fail(f"[figures] {residue} image placeholder(s) left un-localized in served bodies")
     if injected != fmap.get("counts", {}).get("figureRefs"):
         fail(f"[figures] injected {injected} != map figureRefs {fmap.get('counts', {}).get('figureRefs')}")
     if res_with != fmap.get("counts", {}).get("resources"):
         fail(f"[figures] resources-with-figures {res_with} != map {fmap.get('counts', {}).get('resources')}")
-    print(f"    figures: {injected} refs injected across {res_with} resources "
-          f"({fmap.get('counts', {}).get('uniqueAssets')} unique assets)")
+    print(f"    figures: {injected} refs localized across {res_with} resources "
+          f"({fmap.get('counts', {}).get('uniqueAssets')} unique assets; "
+          f"{inline_total} inline from placeholders, {injected - inline_total} section-anchored)")
     return {"figureRefs": injected, "resources": res_with,
-            "uniqueAssets": fmap.get("counts", {}).get("uniqueAssets")}
+            "uniqueAssets": fmap.get("counts", {}).get("uniqueAssets"),
+            "inlineRewritten": inline_total}
 
 
 def copy_assets(repo, public_dir):
