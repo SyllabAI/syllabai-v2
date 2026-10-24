@@ -12,8 +12,12 @@
  * sixth — PR #89, the third two-station lane; Differentiation seventh —
  * PR #91 + amendment #92, the fourth two-station lane; Integration eighth —
  * PR #96 + the T-UGM-MODE1-8 amendment #99, the second STRAND lane and the
- * first lane whose pick set is entirely cross-lane joined text) under
- * ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
+ * first lane whose pick set is entirely cross-lane joined text; Algebra
+ * ninth — PR #114, the FIRST lane on a SECOND course plane (cie-a-level-
+ * maths-20-pure-3, CIE 9709 Pure 3 3.1 Algebra) — candidate-model shape:
+ * 35 fresh bodies corpus-wide + 16 non-overlaps by reference (no text) +
+ * 9 CROSS-COURSE fact joins against pure-1 bodies served by reference)
+ * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
  * hub-side import is
  * scripts/import_ugm.py → content/<lane>/ugm-resources.json
@@ -130,13 +134,15 @@ const UgmLaneBundle = z.object({
     alignedShare: z.number().nullish(),
     candidateRows: z.number(),
     // strand lanes (lane 4+): the cross-lane join of record — cross-lane
-    // mappings served against earlier lanes' bodies (no new entries)
+    // mappings served against earlier lanes' bodies (no new entries);
+    // T-UGM-HUB-CONSUME-9: cross-COURSE joins count here too (they serve
+    // by reference against the other course's committed bundle)
     crossLaneJoined: z.object({
       aligned: z.number(),
       nonOverlap: z.number(),
     }).optional(),
     specPointsCovered: z.array(z.string()),
-    // T-UGM-HUB-CONSUME-8a: the image-plane census (map of record sums)
+    // T-UGM-HUB-CONSUME-8a: the image-plane census (run-scoped sums)
     figures: z.object({
       figureRefs: z.number(),
       resources: z.number(),
@@ -144,6 +150,44 @@ const UgmLaneBundle = z.object({
       // T-UGM-HUB-CONSUME-8b: placeholders localized inline (fail-closed:
       // the importer refuses to ship any un-localized image placeholder)
       inlineRewritten: z.number().optional(),
+    }).optional(),
+    // T-UGM-HUB-CONSUME-9 (lane 9, candidate-model law): non-overlap rows
+    // with NO text of record (bodyImported=false) — disclosed with their
+    // reasons, never served as bodies
+    nonOverlapByReference: z.object({
+      count: z.number(),
+      rows: z.array(z.object({
+        ugmSlug: z.string(),
+        station: z.string().nullish(),
+        title: z.string().nullish(),
+        url: z.string().nullish(),
+        reason: z.string().nullish(),
+      })),
+    }).optional(),
+    // T-UGM-HUB-CONSUME-9: the cross-course by-reference joins — the text
+    // of record stays first-of-record under the serving course's bundle
+    crossCourse: z.object({
+      aligned: z.number(),
+      nonOverlapRef: z.number().optional(),
+      flips: z.number().nullish(),
+      oneToMany: z.number().nullish(),
+      courses: z.record(z.string(), z.number()).optional(),
+      note: z.string().optional(),
+      rows: z.array(z.object({
+        ugmSlug: z.string(),
+        codes: z.array(z.string()),
+        title: z.string().nullish(),
+        url: z.string().nullish(),
+        station: z.string().nullish(),
+        textOfRecordUnder: z.string().nullish(),
+        servedUnder: z.string(),
+        kind: z.string().nullish(),
+        confidence: z.string().nullish(),
+        note: z.string().nullish(),
+        primaryPick: z.boolean().optional(),
+        priorAlignmentOfRecord: z.unknown().optional(),
+        nonOverlapRef: z.boolean().optional(),
+      })),
     }).optional(),
     lanes: z.array(z.object({
       station: z.string(),

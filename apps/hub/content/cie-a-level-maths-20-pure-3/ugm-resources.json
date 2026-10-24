@@ -1,0 +1,1423 @@
+{
+ "schema": "syllabai-demo.ugm-lane-resources/1.1",
+ "generatedUtc": "2026-10-24T20:56:34Z",
+ "reviewState": {
+  "state": "SUGGESTED",
+  "note": "Agent-generated alignment per AGENT.md rule 2 — candidates until the review/promotion gate promotes them; no coverage manufactured (rule 3)."
+ },
+ "lane": "cie-a-level-maths-20-pure-3",
+ "stations": [
+  {
+   "slug": "calculus-trig-log",
+   "title": "Calculus of Trigonometry & Logarithms",
+   "url": "https://undergroundmathematics.org/calculus-trig-log"
+  },
+  {
+   "slug": "chain-rule",
+   "title": "Chain Rule & Integration by Substitution",
+   "url": "https://undergroundmathematics.org/chain-rule"
+  },
+  {
+   "slug": "combining-functions",
+   "title": "Combining Functions",
+   "url": "https://undergroundmathematics.org/combining-functions"
+  },
+  {
+   "slug": "combining-vectors",
+   "title": "Combining Vectors",
+   "url": "https://undergroundmathematics.org/combining-vectors"
+  },
+  {
+   "slug": "counting-and-binomials",
+   "title": "Counting & Binomials",
+   "url": "https://undergroundmathematics.org/counting-and-binomials"
+  },
+  {
+   "slug": "divisibility-and-induction",
+   "title": "Divisibility & Induction",
+   "url": "https://undergroundmathematics.org/divisibility-and-induction"
+  },
+  {
+   "slug": "exp-and-log",
+   "title": "Exponentials & Logarithms",
+   "url": "https://undergroundmathematics.org/exp-and-log"
+  },
+  {
+   "slug": "hyperbolic-functions",
+   "title": "Hyperbolic Functions",
+   "url": "https://undergroundmathematics.org/hyperbolic-functions"
+  },
+  {
+   "slug": "polynomials",
+   "title": "Polynomials & Rational Functions",
+   "url": "https://undergroundmathematics.org/polynomials"
+  },
+  {
+   "slug": "power-series",
+   "title": "Power Series",
+   "url": "https://undergroundmathematics.org/power-series"
+  },
+  {
+   "slug": "product-rule",
+   "title": "Product Rule & Integration by Parts",
+   "url": "https://undergroundmathematics.org/product-rule"
+  },
+  {
+   "slug": "thinking-about-algebra",
+   "title": "Thinking about Algebra",
+   "url": "https://undergroundmathematics.org/thinking-about-algebra"
+  },
+  {
+   "slug": "thinking-about-functions",
+   "title": "Thinking about Functions",
+   "url": "https://undergroundmathematics.org/thinking-about-functions"
+  },
+  {
+   "slug": "thinking-about-geometry",
+   "title": "Thinking about Geometry",
+   "url": "https://undergroundmathematics.org/thinking-about-geometry"
+  },
+  {
+   "slug": "thinking-about-numbers",
+   "title": "Thinking about Numbers",
+   "url": "https://undergroundmathematics.org/thinking-about-numbers"
+  }
+ ],
+ "source": {
+  "repo": "SyllabAI/syllabai-resources",
+  "ref": "main@fafd008d4e0b141223cc5b23b67c714f772e403e",
+  "enrichment": [
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json"
+  ],
+  "enrichmentSchema": "syllabai.ugm-spec-enrichment/1.0",
+  "resourcesDir": [
+   "UGM-Resources/pure-3-algebra"
+  ],
+  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114)",
+  "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
+  "operatorAttestation": "2026-10-24 — text + static figures may ship into SyllabAI; permission declared",
+  "figureMap": "UGM-Resources/figures-map.json",
+  "assetsManifest": "UGM-Assets/MANIFEST.json"
+ },
+ "rights": {
+  "holder": "© University of Cambridge (Underground Mathematics); © UCLES / Oxford MAT / NRICH for sourced exam questions",
+  "license": "LICENSE-DATA.md Amendments 2026-10-23 (text) + 2026-10-24 (static figures) in the corpus repo; takedown/correction law unchanged",
+  "textOnly": false,
+  "note": "Static figures (976 files) are imported and served locally from /ugm-assets/ under the operator attestation of 2026-10-24 (T-UGM-ASSETS-1); GeoGebra embeds and PDFs remain excluded."
+ },
+ "coverage": {
+  "ugmResourcesConsidered": 35,
+  "aligned": 35,
+  "nonOverlap": 0,
+  "alignedShare": 1.0,
+  "candidateRows": 47,
+  "crossLaneJoined": {
+   "aligned": 9,
+   "nonOverlap": 0
+  },
+  "specPointsCovered": [
+   "3.1.1",
+   "3.1.2",
+   "3.1.3",
+   "3.1.4",
+   "3.1.5",
+   "3.1.6"
+  ],
+  "figures": {
+   "figureRefs": 0,
+   "resources": 0,
+   "uniqueAssets": 0,
+   "inlineRewritten": 0
+  },
+  "lanes": [
+   {
+    "station": "algebra",
+    "stationTitle": "Algebra",
+    "ugmResourcesConsidered": 35,
+    "aligned": 47,
+    "nonOverlap": 16,
+    "alignedShare": 0.9216,
+    "candidateRows": 47,
+    "crossLaneAligned": 9,
+    "crossLaneNonOverlap": 0
+   }
+  ],
+  "nonOverlapByReference": {
+   "count": 16,
+   "rows": [
+    {
+     "ugmSlug": "absurder",
+     "station": "polynomials",
+     "title": "Ab-surder!",
+     "url": "https://undergroundmathematics.org/polynomials/absurder",
+     "reason": "cube-root denominator rationalisation via difference-of-cubes identities; the factor theorem appears only as an explanatory aside on why a²+b² has no real linear factor — the tested skill (surd rationalisation) is outside 3.1"
+    },
+    {
+     "ugmSlug": "difference-of-two-fractions",
+     "station": "thinking-about-numbers",
+     "title": "A difference of two fractions",
+     "url": "https://undergroundmathematics.org/thinking-about-numbers/difference-of-two-fractions",
+     "reason": "unit-fraction difference census and generalisation — 'is a factor of 2ab' is arithmetic factor language, not the factor theorem; outside 3.1"
+    },
+    {
+     "ugmSlug": "nested-surds",
+     "station": "thinking-about-algebra",
+     "title": "Nested surds",
+     "url": "https://undergroundmathematics.org/thinking-about-algebra/nested-surds",
+     "reason": "surd-law card sort (√a·√b=√(ab) etc.) — no modulus or polynomial-divisibility content"
+    },
+    {
+     "ugmSlug": "r5701",
+     "station": "thinking-about-algebra",
+     "title": "Can we show this surd is less than $6$?",
+     "url": "https://undergroundmathematics.org/thinking-about-algebra/r5701",
+     "reason": "surd inequality √10+2√2<6 by squaring with positivity care — squaring surds, not the modulus relations of 3.1.2"
+    },
+    {
+     "ugmSlug": "r7626",
+     "station": "thinking-about-numbers",
+     "title": "How many grid-points can be inside this circle?",
+     "url": "https://undergroundmathematics.org/thinking-about-numbers/r7626",
+     "reason": "irrationality of a√2+b=c√3 by squaring — surd/number-theory argument; the squaring is not the |a|=|b|⟺a²=b² modulus relation"
+    },
+    {
+     "ugmSlug": "square-root-of-2-is-irrational",
+     "station": "thinking-about-numbers",
+     "title": "$\\sqrt{2}$ is irrational",
+     "url": "https://undergroundmathematics.org/thinking-about-numbers/square-root-of-2-is-irrational",
+     "reason": "√2 irrationality proof sort — number theory, outside 3.1"
+    },
+    {
+     "ugmSlug": "r5365",
+     "station": "thinking-about-geometry",
+     "title": "Can we find $\\alpha$ if one length is twice another?",
+     "url": "https://undergroundmathematics.org/thinking-about-geometry/r5365",
+     "reason": "AB=2BC resolved by Pythagoras and squaring — coordinate-geometry distance work, no modulus-relation skill"
+    },
+    {
+     "ugmSlug": "r6449",
+     "station": "combining-vectors",
+     "title": "Can we find the angle between the planes  $ABC$ and $ABD$?",
+     "url": "https://undergroundmathematics.org/combining-vectors/r6449",
+     "reason": "plane angles via vector cross/dot products — |·| here is the vector norm, not the scalar modulus of 3.1.1"
+    },
+    {
+     "ugmSlug": "r8456",
+     "station": "combining-vectors",
+     "title": "Where do $ST$ and $AB$ cross?",
+     "url": "https://undergroundmathematics.org/combining-vectors/r8456",
+     "reason": "dot-product angle computation — vector norm notation only, outside 3.1"
+    },
+    {
+     "ugmSlug": "picture-this",
+     "station": "divisibility-and-induction",
+     "title": "Picture this!",
+     "url": "https://undergroundmathematics.org/divisibility-and-induction/picture-this",
+     "reason": "Euclidean-algorithm rectangle interactivity — divisibility and number theory, outside 3.1"
+    },
+    {
+     "ugmSlug": "r9919",
+     "station": "divisibility-and-induction",
+     "title": "Can we find a solution to $(n-3)^3+n^3=(n+3)^3$?",
+     "url": "https://undergroundmathematics.org/divisibility-and-induction/r9919",
+     "reason": "(n±3)³ integer-parity descent — number theory; 'n² is a factor of 54' is arithmetic, not the factor theorem"
+    },
+    {
+     "ugmSlug": "r5634",
+     "station": "divisibility-and-induction",
+     "title": "Can we show the sum of this series to $n$ terms is $n/(3n-1)$?",
+     "url": "https://undergroundmathematics.org/divisibility-and-induction/r5634",
+     "reason": "telescoping sum to n/(3n−1) proved by induction (partial fractions only a suggested alternative route, not asked) plus log-series work — the tested skills sit outside 3.1.5"
+    },
+    {
+     "ugmSlug": "two-way-functions-teacher-support",
+     "station": "thinking-about-functions",
+     "title": "Two-way functions - teacher support",
+     "url": "https://undergroundmathematics.org/thinking-about-functions/two-way-functions-teacher-support",
+     "reason": "teacher-support notes for Two-way functions — 3.1.x appear only in prior-knowledge listings; no tested skill of its own"
+    },
+    {
+     "ugmSlug": "two-for-one",
+     "station": "calculus-trig-log",
+     "title": "Two for one",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/two-for-one",
+     "reason": "∫1/x over negative domains and ln(−x) gradients — the absolute value is incidental to the integration work; outside 3.1"
+    },
+    {
+     "ugmSlug": "to-log-or-not-to-log",
+     "station": "exp-and-log",
+     "title": "To log or not to log?",
+     "url": "https://undergroundmathematics.org/exp-and-log/to-log-or-not-to-log",
+     "reason": "equation-solver card sort (indices vs logarithms); the √(2x−3)=5 card is surd work — outside 3.1"
+    },
+    {
+     "ugmSlug": "powerful-derivatives",
+     "station": "chain-rule",
+     "title": "Powerful derivatives",
+     "url": "https://undergroundmathematics.org/chain-rule/powerful-derivatives",
+     "reason": "d/dx x^a via e^{a·ln x} — the general binomial theorem is mentioned as an aside, not carried out; the tested skill is exp/log differentiation"
+    }
+   ]
+  },
+  "crossCourse": {
+   "aligned": 9,
+   "nonOverlapRef": 0,
+   "flips": 5,
+   "oneToMany": 4,
+   "courses": {
+    "cie-a-level-maths-20-pure-1": 9
+   },
+   "note": "5 flips (r8427 lane-2 non-overlap; r5245/r6295/r6340/r7477 lane-6 non-overlaps with P3 bearings of record) + 4 one-to-many (r5362, r9523 lane-2; r9082 lane-7; r9701 lane-8); all ride bodies of record — no new text",
+   "rows": [
+    {
+     "ugmSlug": "r5362",
+     "codes": [
+      "3.1.1"
+     ],
+     "title": "Can we draw the graph of  $\\left| x + [x] \\right|$?",
+     "url": "https://undergroundmathematics.org/combining-functions/r5362",
+     "station": "combining-functions",
+     "textOfRecordUnder": "UGM-Resources/pure-1-functions",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "medium",
+     "priorAlignmentOfRecord": "lane-functions 1.2.1/1.2.2/1.2.3"
+    },
+    {
+     "ugmSlug": "r8427",
+     "codes": [
+      "3.1.1"
+     ],
+     "title": "Can we sketch these four related curves?",
+     "url": "https://undergroundmathematics.org/combining-functions/r8427",
+     "station": "combining-functions",
+     "textOfRecordUnder": "UGM-Resources/pure-1-functions",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "medium"
+    },
+    {
+     "ugmSlug": "r9523",
+     "codes": [
+      "3.1.2"
+     ],
+     "title": "Which of these function statements are true?",
+     "url": "https://undergroundmathematics.org/combining-functions/r9523",
+     "station": "combining-functions",
+     "textOfRecordUnder": "UGM-Resources/pure-1-functions",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "medium",
+     "priorAlignmentOfRecord": "lane-functions 1.2.2"
+    },
+    {
+     "ugmSlug": "r5245",
+     "codes": [
+      "3.1.5"
+     ],
+     "title": "Can we find $\\sum_{r=1}^n 2/(r^2+4r+3)$?",
+     "url": "https://undergroundmathematics.org/counting-and-binomials/r5245",
+     "station": "counting-and-binomials",
+     "textOfRecordUnder": "UGM-Resources/pure-1-series",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high"
+    },
+    {
+     "ugmSlug": "r9701",
+     "codes": [
+      "3.1.5"
+     ],
+     "title": "Can we find $\\int 1/(\\sqrt{x+2} - \\sqrt{x+1}) dx$?",
+     "url": "https://undergroundmathematics.org/chain-rule/r9701",
+     "station": "chain-rule",
+     "textOfRecordUnder": "UGM-Resources/pure-1-integration",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "medium",
+     "priorAlignmentOfRecord": "lane-integration 1.8.1"
+    },
+    {
+     "ugmSlug": "r9082",
+     "codes": [
+      "3.1.4"
+     ],
+     "title": "Can we find the repeated root for  $4x^4+x^2+3x+1=0$?",
+     "url": "https://undergroundmathematics.org/product-rule/r9082",
+     "station": "product-rule",
+     "textOfRecordUnder": "UGM-Resources/pure-1-differentiation",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "medium",
+     "priorAlignmentOfRecord": "lane-differentiation 1.7.2"
+    },
+    {
+     "ugmSlug": "r6295",
+     "codes": [
+      "3.1.6"
+     ],
+     "title": "Given the binomial expansion of $(1+x)^n$, can we find $x$ and $n$?",
+     "url": "https://undergroundmathematics.org/counting-and-binomials/r6295",
+     "station": "counting-and-binomials",
+     "textOfRecordUnder": "UGM-Resources/pure-1-series",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high"
+    },
+    {
+     "ugmSlug": "r6340",
+     "codes": [
+      "3.1.6"
+     ],
+     "title": "Can we find a good rational approximation for $\\sqrt{5}$?",
+     "url": "https://undergroundmathematics.org/counting-and-binomials/r6340",
+     "station": "counting-and-binomials",
+     "textOfRecordUnder": "UGM-Resources/pure-1-series",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high"
+    },
+    {
+     "ugmSlug": "r7477",
+     "codes": [
+      "3.1.6"
+     ],
+     "title": "Can we find an approximation to $\\sqrt{5}+\\sqrt{3}$?",
+     "url": "https://undergroundmathematics.org/counting-and-binomials/r7477",
+     "station": "counting-and-binomials",
+     "textOfRecordUnder": "UGM-Resources/pure-1-series",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high"
+    }
+   ]
+  }
+ },
+ "specPoints": [
+  {
+   "code": "3.1.1",
+   "officialText": "understand the meaning of | x |, sketch the graph of y = | ax + b | and use relations such as",
+   "primaryPick": "absolutely",
+   "resourceCount": 3,
+   "ugmIds": [
+    "absolutely",
+    "inequalities",
+    "piece-it-together"
+   ]
+  },
+  {
+   "code": "3.1.2",
+   "officialText": "| a | = | b | ⇔ a² = b² and | x – a | < b ⇔ a – b < x < a + b when solving equations and inequalities",
+   "primaryPick": "inequalities",
+   "resourceCount": 1,
+   "ugmIds": [
+    "inequalities"
+   ]
+  },
+  {
+   "code": "3.1.3",
+   "officialText": "divide a polynomial, of degree not exceeding 4, by a linear or quadratic polynomial, and identify the quotient and remainder (which may be zero)",
+   "primaryPick": "whats-left",
+   "resourceCount": 5,
+   "ugmIds": [
+    "function-builder-ii",
+    "r5276",
+    "r6317",
+    "r6577",
+    "whats-left"
+   ]
+  },
+  {
+   "code": "3.1.4",
+   "officialText": "use the factor theorem and the remainder theorem",
+   "primaryPick": "r6577",
+   "resourceCount": 21,
+   "ugmIds": [
+    "can-you-find-cubic-edition",
+    "how-not-to-solve-a-cubic",
+    "r5032",
+    "r5196",
+    "r5248",
+    "r5276",
+    "r6299",
+    "r6431",
+    "r6488",
+    "r6546",
+    "r6577",
+    "r6612",
+    "r6790",
+    "r7036",
+    "r7108",
+    "r7243",
+    "r7991",
+    "r8468",
+    "r8701",
+    "r9006",
+    "r9330"
+   ]
+  },
+  {
+   "code": "3.1.5",
+   "officialText": "recall an appropriate form for expressing rational functions in partial fractions, and carry out the decomposition, in cases where the denominator is no more complicated than ( ax + b )( cx + d )( ex + f ), ( ax + b )( cx + d )², ( ax + b )( cx² + d )",
+   "primaryPick": "r7792",
+   "resourceCount": 5,
+   "ugmIds": [
+    "frightening-function",
+    "r5126",
+    "r7792",
+    "r8152",
+    "r8694"
+   ]
+  },
+  {
+   "code": "3.1.6",
+   "officialText": "use the expansion of (1 + x)ⁿ, where n is a rational number and | x | < 1",
+   "primaryPick": "r7436",
+   "resourceCount": 3,
+   "ugmIds": [
+    "from-parabolas-to-catenaries",
+    "r6601",
+    "r7436"
+   ]
+  }
+ ],
+ "resources": [
+  {
+   "ugmId": "absolutely",
+   "slug": "absolutely",
+   "station": "thinking-about-functions",
+   "title": "Absolutely!",
+   "url": "https://undergroundmathematics.org/thinking-about-functions/absolutely",
+   "resourceType": "investigation",
+   "resourceTypeLabel": "Investigation",
+   "level": "Introducing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.1",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Absolutely!\n\n> Excerpt: Students are shown the graph of the modulus function and asked what they can say about it. Questions about various features are suggested to support classroom discussion and prompt thinking about defining the modulus function as a piecewise linear function, transformations of the graph and applications of the function.\n\n## Problem\n\nTake a look at the graph below.\n\nHow would you describe it?\n\nWhat questions might you ask yourself about this graph?\n\n## Possible questions\n\nHere are some questions that you might like to think about, if you have not already considered them.\n\n- Is this a proper function?\n\n- Does it matter that it has two different parts?\n\n- Is there a formula for this?\n\n- Are there other functions that look similar to this?\n\n- How could I move the ‘corner’?\n\n- How would a function like this occur?\n\n- How could it be used?\n\n- What could a function like this model?\n\n## Things you might have noticed\n\n- Is this a proper function?\n\n- Does it matter that it has two different parts?\n\n- Is there a formula for this?\n\nBroadly speaking, a function gives a single output for each input. If you choose any \\(x\\)-value and use the graph to give you the corresponding \\(y\\)-value, you will get only one \\(y\\)-value, so this graph does represent a function.\n\nIt is important not to confuse the fact that every \\(x\\)-value has a single \\(y\\)-value with the fact that there may be more than one value of \\(x\\) that gives the same value of \\(y\\).\n\nThe two different parts of the graph don’t stop it being a function, but they do mean that we may need a different rule for different inputs. In the case of this graph, for positive values of \\(x\\) and \\(0\\) the graph is \\(y=x,\\) i.e. the output is equal to the input. For negative values of \\(x,\\) the graph is \\(y=-x,\\) i.e. the function multiplies the input by \\(-1\\). These rules cover all possibilities for input values, so our function is the rule \\[f(x)=x \\,\\,\\text{if } x \\geq 0 \\,\\, \\text{and } f(x)=-x \\,\\, \\text{if } x<0.\\] This is sometimes written more compactly as \\(f(x) = \\begin{cases}x & \\text{if } x \\geq 0 \\\\ -x & \\text{if } x <0. \\end{cases}\\)\n\nWe could have attached \\(f(0)=0\\) to the left-hand section of the graph instead, but the convention is to include it in the right-hand section.\n\nThis function is known as the modulus function. It is often written as \\(\\vert x \\vert\\) and pronounced ‘mod \\(x\\)’. It is also called the absolute value function. It is worth noting that the name ‘modulus function’ is not universal and modulus has several different meanings in mathematics.\n\n- Are there other functions that look similar to this?\n\n- How could I move the ‘corner’?\n\nWhat would the function \\(f(x)=\\vert x-2\\vert\\) look like? What about \\(f(x)= \\vert 3x\\vert\\)?\n\nThe sections of the original graph meet at \\(x=0\\), which is why there appears to be a ‘corner’ at \\((0,0)\\). What would happen if the sections met somewhere else? What similar functions would have sections meeting at \\((3,0)\\) or at \\((-2,0)\\)? What about sections meeting at \\((3,5)\\)?\n\nThe original function is symmetric about the \\(y\\)-axis. Can you define a function like this which doesn’t have a vertical line of symmetry?\n\nThe original function doesn’t output any negative values, but can you define a function like this that does output negative values?\n\n- How would a function like this occur?\n\n- How could it be used?\n\n- What could a function like this model?\n\nWhat is the difference between \\(3\\) and \\(5\\)? What about \\(5\\) and \\(3\\)? In some situations, you might not be interested in which number is bigger, but in the size of the gap between them. For example, if you are trying to solve an equation using trial and improvement, you might decide to stop once successive answers are closer together than \\(0.01\\).\n\nIf a car is driving at constant speed past you, the graph of the distance of the car from you, plotted against time, would look like the graph of a modulus function.\n\nThe amount of force in a stretched or compressed spring is proportional to how much the spring has been compressed or extended, i.e. the modulus of the difference between the original and new lengths.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "can-you-find-cubic-edition",
+   "slug": "can-you-find-cubic-edition",
+   "station": "polynomials",
+   "title": "Can you find... cubic edition",
+   "url": "https://undergroundmathematics.org/polynomials/can-you-find-cubic-edition",
+   "resourceType": "many-ways-problem",
+   "resourceTypeLabel": "Many ways problem",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can you find... cubic edition\n\n> Excerpt: Students are given constraints on where some cubic curves cross the axes and are asked to come up with possible equations for these curves.\n\n## Problem\n\nCan you find a cubic curve that…\n\n1. … passes through the \\(x\\)-axis at \\(x=1\\) and \\(x=-1\\)?\n\n---\n\n1. … passes through the origin and touches the \\(x\\)-axis at \\(x=-3\\)?\n\n---\n\n1. … touches the \\(x\\)-axis at \\(x=2\\) and crosses the \\(y\\)-axis at \\(12\\)?\n\n---\n\n1. … crosses the \\(y\\)-axis at \\(-6\\) and has three integer roots?\n\n---\n\n1. … crosses the \\(y\\)-axis at \\(y=5\\) and touches the \\(x\\)-axis at \\(x=1\\)?\n\n## Explore\n\nIn this section we have provided some tools to help you explore cubic curves. You should try to get as far as you can with the problem *before* using the tools. For example,\n\n- If you have found examples of cubic curves that satisfy the criteria, can you generalise your examples?\n\n- If you haven’t managed to come up with an equation for an example, have you tried to sketch one or more examples of cubic curves that satisfy the criteria?\n\n- If you have been able to express the criteria in algebra, have you thought about what else you need to know to find an example that meets these criteria?\n\n**Thinking about cubics**\n\n- If you know \\(f(x)\\) is a cubic function of \\(x\\), what can you say algebraically about \\(f(x)\\)?\n\n- What do you know geometrically about the graph of \\(f(x)\\)? Sketch some different shapes that can cubic graphs be.\n\n- How many pieces of information do we need to define a cubic curve? In what form might this information be given?\n\n**Exploring coefficients and graphs**\n\nOne of the standard ways to write a cubic in one variable is \\(ax^3+bx^2+cx+d.\\) Use the sliders for \\(a,b,c\\) and \\(d\\) to explore what happens when you vary the coefficients.\n\n- What different shapes the can the graph of \\(y=ax^3+bx^2+cx+d\\) be?\n\n- How many roots can a cubic have?\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/EQ3MagEq/width/602/height/426/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/EQ3MagEq)\n\nThings to think about\n\n- What happens if \\(a=0\\)?\n\n- Can you convince yourself that the graph of a cubic must cross the \\(x\\)-axis at least once?\n\n- Which of the following shapes did you manage to make using the GeoGebra file?\n\nYou might like to have a look at [Curvy Cubics](https://undergroundmathematics.org/calculus-meets-functions/curvy-cubics) to explore different cubic curves further.\n\nAny cubic can be written in the form \\(ax^3+bx^2+cx+d,\\) so we have four values that we can vary to give us different cubics. You may have noticed from the graphical work above, every cubic must have at least one root. If \\(\\alpha\\) is a root, this means that \\(x-\\alpha\\) is a factor of the cubic, so we can write our cubic as the product of \\(x-\\alpha\\) and a quadratic, i.e. \\(a(x-\\alpha)(x^2+bx+c).\\)\n\n- Why does having a root \\(\\alpha\\) mean that \\((x-\\alpha)\\) is a factor of the cubic?\n\n- What determines whether the cubic has any other roots?\n\nHere is another GeoGebra file. You can use it to explore cubics written in a form with \\(x-\\alpha\\) as a factor. Can you recreate the shape of the curves in the diagram above?\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/ysf5NKZy/width/602/height/437/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/ysf5NKZy)\n\n## Things you might have tried\n\nWe will describe geometric and algebraic approaches to this problem, but you should try to combine these, rather than selecting only one of the approaches.\n\nThe question tells us that the graph passes through the \\(x\\)-axis in two places. Try to sketch a few curves that satisfy these conditions.\n\nPossible curves\n\nWhat other possibilities are there?\n\nHow many times does the graph have to cross the \\(x\\)-axis?\n\nAn algebraic point of view\n\nAlgebraically, we know \\(1\\) and \\(-1\\) are roots, so we know the cubic must have factors \\((x-1)\\) and \\((x+1).\\) Therefore we need a cubic curve of the form \\(y = a(x-1)(x+1)(x-b)\\).\n\n- What are the possibilities for the cubic?\n\n- What is the relationship between features of \\(y = a(x-1)(x+1)(x-b)\\) and features of the sketch graphs?\n\n- How would varying \\(a\\) or \\(b\\) affect the type of curve you get?\n\nTry to sketch some cubic curves that *touch* the \\(x\\)-axis at \\(x=-3.\\) How much flexibility is there if the curve also has to pass through the origin?\n\nPossible curves\n\nHere are two sketches of cubic curves which fit the given criteria. Can you sketch any that are noticeably different from these?\n\nAn algebraic point of view\n\n- If the equations of these curves are written in the form \\(y=a(x-\\alpha)(x^2+bx+c),\\) what can \\(\\alpha\\) be? What about \\(a\\), \\(b\\), or \\(c\\)?\n\n- If instead the equations of these curves are written in the form \\(y=a(x-\\alpha)(x-\\beta)(x-\\gamma)\\), what can you say?\n\nParts (a) and (b) both gave information about two roots, but how did the form of this information affect the range of curves that met the criteria?\n\nNow that we’ve discussed a way of tackling a couple of these questions, we can ask “How is this question different from parts (a) and (b)?” This may help you to anticipate how much choice there will be for the cubic.\n\nWe know there is a repeated root at \\(x=2\\), so this is a bit like part (b). But in part (b), the \\(y\\)-intercept was \\((0,0)\\) whereas in this question the \\(y\\)-intercept is \\((0,12)\\). Which \\(y\\)-intercept do you think gives more flexibility?\n\nIn part \\((a)\\) we could choose where the third root was and whether the coefficient of \\(x^3\\) was positive or negative. Do we have more or less freedom here?\n\nHow would your answer to part (a) have been different if we had asked for a curve that \"touched\" the $x$-axis where, say, $x=1$?\n\nPossible curves\n\nWhat could the equations for these cubics be?\n\nThe distinction between \"touching\" the $x$-axis and \"crossing\" the $x$-axis at particular points may have affected your choice of cubics in this problem, but how different are these cubics?\n\nHow would your cubics for (c) be different if we had asked for a curve that *crosses* the \\(x\\)-axis at \\(2\\)?\n\n- What does the \\(y\\)-intercept tell us about the roots of the equation?\n\n- How much does having to have integer roots limit the possibilities?\n\nRelationship between roots and the \\(y\\)-intercept\n\n- A general equation of a cubic with roots \\(\\alpha\\), \\(\\beta\\) and \\(\\gamma\\), is \\(y = a (x-\\alpha)(x-\\beta)(x-\\gamma)\\). How does this give you information about the \\(y\\)-intercept?\n\n- Could the cubic have a repeated root?\n\nPossible cubics?\n\nWhich of the following satisfy the conditions in the question?\n\n\\[\\begin{align*} y &= -3(x-1)(x+1)(x-2), \\\\ y &= 2(x+1)^2 (x-3), \\\\ y &= \\frac{1}{2} (x-1)(x-2)(x+6) \\end{align*}\\]\n\n\\[\\begin{align*} y &= \\frac{1}{20} (x-8)(x-5)(x-3), \\\\ y &= \\frac{2}{3} (x-1)(x-3)^2 \\end{align*}\\]\n\nWhat are the roots in each case?\n\nOnce again, it is worth asking how this question is similar to or different from the previous parts. Do you think there will be lots of different types of cubic curve that satisfy these conditions or only a few different types?\n\nGiven that there are infinitely many possibilities for the cubics in these questions, it is helpful to talk about different ‘types’ of cubics, so that we can try to classify the possibilities. We can choose how to define the types, depending on what the question is asking. Sometimes it may be easier to see possible groups by looking at sketches and in other cases the algebra may be more helpful.\n\nWe might say that cubics are the same type if their sketch graphs look essentially the same, perhaps in terms of shape, number of roots, or whether the coefficient of \\(x^3\\) is positive or negative. For example, what’s the same and what’s different about these two cubics?\n\nIf you have been told something about some roots, you might also be interested in whether other roots exist, and if they do, are they less than, greater than, between, or the same as, the roots that you know about. These possibilities could all give you different types of cubics, but it would still be possible to write down or sketch examples of all the possible types.\n\nLooking back, the distinction between “touching” the \\(x\\)-axis and “crossing” it at particular points was an important idea in this problem. But if we classify cubics based on the shape of their curve, this distinction may become less important. You can explore cubics with different shaped graphs at [Curvy cubics](https://undergroundmathematics.org/calculus-meets-functions/curvy-cubics).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "frightening-function",
+   "slug": "frightening-function",
+   "station": "polynomials",
+   "title": "Frightening function",
+   "url": "https://undergroundmathematics.org/polynomials/frightening-function",
+   "resourceType": "food-for-thought",
+   "resourceTypeLabel": "Food for thought",
+   "level": "Introducing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.5",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Frightening function\n\n> Excerpt: Students have to decide how to manipulate algebraic fractions in order to simplify a frightening looking function. This can be used as an introduction to partial fractions.\n\n## Problem\n\nSimplify the function\n\n\\[f(x) = \\dfrac{(x-1)-(x-2)}{(x-1)(x-2)} + \\dfrac{(x-2)-(x-3)}{(x-2)(x-3)} + \\dfrac{(x-3)-(x-4)}{(x-3)(x-4)} + \\dfrac{(x-4)-(x-5)}{(x-4)(x-5)}.\\]\n\nTaking it further\n\nIs it possible to split each of the following fractions up into the sum of two fractions?\n\n- \\(\\dfrac{1}{(x-2)(x-3)}\\)\n\n- \\(\\dfrac{7}{(x-1)(x-8)}\\)\n\n- \\(\\dfrac{1}{(x-2)(x-8)}\\)\n\n## Suggestion\n\nThink about the following questions. Some may be more helpful than others.\n\n- Can a common denominator be found?\n\n- What happens if we simplify the numerator? What might the next step be?\n\n- Look at the individual fractions, e.g. \\(\\dfrac{(x-1)-(x-2)}{(x-1)(x-2)}\\). Can it be split into simpler fractions?\n\nHow does the fraction \\(\\dfrac{(x-2)-(x-3)}{(x-2)(x-3)}\\) help?\n\nDo you think all these fractions can be written in the form \\(\\dfrac{A}{(x-p)} + \\dfrac{B}{(x-q)}\\)?\n\n## Solution\n\nWe will explore the possible starting points given in the suggestion:\n\n**Common denominator**\n\nWhen we add fractions we need a common denominator. In this case it would be \\((x-1)(x-2)(x-3)(x-4)(x-5).\\) The first term would become \\[\\dfrac{\\big((x-1)-(x-2)\\big)(x-3)(x-4)(x-5)}{(x-1)(x-2)(x-3)(x-4)(x-5)}.\\]\n\nWriting out the whole function would be very long, so we will introduce notation that will help us write \\(f(x)\\) in a shorter way, and should make it easier to spot any structure or symmetry that occurs. \\[(x - a_1)(x-a_2)...(x-a_n) = [a_1a_2...a_n]\\] So \\((x-1)(x-2)(x-3)\\) would be written \\([123]\\).\n\n\\[f(x) = \\dfrac{([1]-[2])[345] + ([2]-[3])[145] + ([3]-[4])[125] + ([4]-[5])[123]}{[12345]}\\]\n\nPossible next steps\n\nMultiplying out the brackets gives us\n\n\\[f(x) = \\dfrac{[1345]-[2345]+[1245]-[1345]+[1235]-[1245]+[1234]-[1235]}{[12345]},\\]\n\nwhich has terms in the numerator that cancel, leaving us with\n\n\\[f(x) = \\dfrac{[1234]-[2345]}{[12345]}.\\]\n\nDid you spot that the terms were going to cancel before expanding the brackets?\n\nWritten in our ordinary algebraic notation we have \\[\\dfrac{(x-1)(x-2)(x-3)(x-4) - (x-2)(x-3)(x-4)(x-5)}{(x-1)(x-2)(x-3)(x-4)(x-5)},\\] so we can simplify the common factors leaving us with \\[f(x) = \\dfrac{(x-1)-(x-5)}{(x-1)(x-5)} \\text{ or } f(x) = \\dfrac{4}{(x-1)(x-5)}.\\]\n\n**Simplifying the numerator**\n\nIt turns out that the numerator for each fraction simplifies to \\(1\\). This seems helpful but then we are left with \\[f(x) = \\dfrac{1}{(x-1)(x-2)} + \\dfrac{1}{(x-2)(x-3)} + \\dfrac{1}{(x-3)(x-4)} + \\dfrac{1}{(x-4)(x-5)}.\\] Where might we go from here?\n\nPossible next steps\n\nIt seems sensible to think about creating a common denominator for the terms as we did above. Written in our new notation we can write \\[f(x) = \\dfrac{[345]+[145]+[125]+[123]}{[12345]}.\\]\n\nThere don’t seem to be any terms that cancel in the numerator, or any common factors that would allow the fraction to be simplified.\n\nWhat happens if we create a common denominator for a pair of fractions instead? E.g. \\(\\dfrac{1}{(x-1)(x-2)} + \\dfrac{1}{(x-2)(x-3)}.\\)\n\n**Simplifying terms**\n\nEach term can be split into two fractions, e.g. \\[\\dfrac{(x-1) - (x-2)}{(x-1)(x-2)} = \\dfrac{(x-1)}{(x-1)(x-2)} - \\dfrac{(x-2)}{(x-1)(x-2)},\\] which gives us fractions with common factors that can be simplified.\n\n\\[\\begin{align*} f(x) &= \\dfrac{(x-1)}{(x-1)(x-2)} - \\dfrac{(x-2)}{(x-1)(x-2)} + \\cdots + \\dfrac{(x-4)}{(x-4)(x-5)}- \\dfrac{(x-5)}{(x-4)(x-5)} \\\\ &= \\dfrac{1}{(x-2)} - \\dfrac{1}{(x-1)} + \\dfrac{1}{(x-3)} - \\dfrac{1}{(x-2)}+ \\dfrac{1}{(x-4)} - \\dfrac{1}{(x-3)}+ \\dfrac{1}{(x-5)}- \\dfrac{1}{(x-4)} \\end{align*}\\]\n\nWe can see that many of the terms appear twice, in fact most terms have a pair with which they will cancel. We call this a telescoping sum. This leaves us with\n\n\\[f(x) = \\dfrac{1}{x-5} - \\dfrac{1}{x-1}.\\]\n\nThis method is based around the idea of splitting a fraction up into the sum of simpler fractions which is called [partial fraction decomposition](https://undergroundmathematics.org/glossary/partial-fractions).\n\nWe ended up with \\(f(x)\\) written in two different forms, let’s call them \\(f_1\\) and \\(f_2\\): \\[f_1(x) = \\dfrac{1}{x-5} - \\dfrac{1}{x-1} \\text{ and } f_2(x) = \\dfrac{4}{(x-1)(x-5)}.\\]\n\n- How would we show that \\(f_1\\) can be rewritten as \\(f_2\\)?\n\n- Starting with \\(f_2\\), how would we show it can be rewritten as \\(f_1\\)?\n\nDepending on the approach taken to simplify \\(f(x)\\), we may have already noticed that \\(\\dfrac{1}{(x-2)(x-3)} = \\dfrac{(x-2)-(x-3)}{(x-2)(x-3)}.\\)\n\nTherefore we can use the simplifying terms approach from above and split this into two fractions:\n\n\\[\\begin{align*} \\dfrac{1}{(x-2)(x-3)} &= \\dfrac{(x-2)-(x-3)}{(x-2)(x-3)} \\\\ &= \\dfrac{(x-2)}{(x-2)(x-3)} - \\dfrac{(x-3)}{(x-2)(x-3)} \\\\ &= \\dfrac{1}{(x-3)} - \\dfrac{1}{(x-2)} \\end{align*}\\]\n\nHow are the examples below different from this? How are they the same?\n\nThis is the same in that\n\n\\((x-1) - (x-8) = 7\\)\n\nand so the same technique can be applied to split the fraction in two.\n\n\\[\\begin{align*} \\dfrac{7}{(x-1)(x-8)} &= \\dfrac{(x-1)-(x-8)}{(x-1)(x-8)} \\\\ &= \\dfrac{1}{(x-8)} - \\dfrac{1}{(x-1)} \\end{align*}\\]\n\nThis is different in that we can’t just rewrite the numerator in terms of the brackets that appear in the denominator. Or can we? What if we have multiples of each bracket? \\[\\dfrac{1}{(x-2)(x-8)} = \\dfrac{A(x-2) - B(x-8)}{(x-2)(x-8)}\\]\n\nThis would give us \\(Ax - 2A - Bx + 8B = 1\\) and so we can write down two equations, \\(A-B = 0\\) and \\(-2A + 8B = 1\\), which solve to give \\(A = \\frac{1}{6}\\) and \\(B = \\frac{1}{6}\\).\n\n\\[\\dfrac{1}{(x-2)(x-8)}= \\dfrac{1/6}{(x-8)} - \\dfrac{1/6}{(x-2)}\\]\n\nCould we have worked this out in a different way if we thought about what \\(\\dfrac{6}{(x-2)(x-8)}\\) could be rewritten as?\n\nIs it possible to write all fractions in the form \\(\\dfrac{p}{(x-q)(x-r)}\\) as \\(\\dfrac{A}{(x-q)} + \\dfrac{B}{(x-r)},\\) where \\(p, q, r, A\\) and \\(B\\) are constants? What happens if \\(q = r\\)?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "from-parabolas-to-catenaries",
+   "slug": "from-parabolas-to-catenaries",
+   "station": "hyperbolic-functions",
+   "title": "From parabolas to catenaries",
+   "url": "https://undergroundmathematics.org/hyperbolic-functions/from-parabolas-to-catenaries",
+   "resourceType": "package-of-problems",
+   "resourceTypeLabel": "Package of problems",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.6",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# From parabolas to catenaries\n\n## Problem\n\n**Please be aware that this resource is still in a somewhat draft form.**\n\nThe shape a heavy rope or chain hangs in is called a *catenary*. What is the equation of a catenary, and how could we work it out?\n\nThere are multiple ways to solve this problem; we’ll explore two of them.\n\n**Setting up the problem: Tension in a rope**\n\n*(If you have not learnt about tension, you can just use the result from this section in the following sections.)*\n\nThis diagram shows a rope hanging. We have drawn axes so that the rope hangs in the \\((x,y)\\)-plane with the \\(y\\)-axis vertically upwards and the lowest point of the rope on the \\(y\\)-axis.\n\nHere, \\(T_0\\) is the tension at the lowest point of the rope, while \\(T\\) is the tension at a point \\(P\\) which is at a distance of \\(s\\) along the rope from the lowest point. At \\(P\\), the rope makes an angle of \\(\\psi\\) with the horizontal.\n\nThe rope has weight \\(w\\) per unit length.\n\nProve that \\(\\tan\\psi=\\Bigl(\\dfrac{w}{T_0}\\Bigr)s\\).\n\nFrom now on, we’ll make our life easier by assuming that \\(w/T_0=1\\), so that the equation becomes \\(\\tan\\psi=s\\).\n\nThis is a legitimate thing to do since we have not specified a unit for \\(w\\) (which is constant for any particular rope) and \\(T_0\\) is a constant for any particular situation, so we could choose a unit for measuring \\(w\\) which made \\(w/T_0=1\\).\n\nIf you want to be more general, you could still simplify things by writing \\(w/T_0=1/a\\), so that the equation becomes \\(\\tan\\psi=s/a\\). But the remainder of this task is tricky enough without this additional complication, so we will stick to the case \\(a=1\\).\n\nIf the rope has the equation \\(y=f(x)\\), prove that \\(f'(x)=s\\).\n\n**An iterative approach**\n\nWe’ll start by assuming a very simple (wrong) formula for the rope length \\(s\\), use that to work out a first approximation for \\(f(x)\\), and improve it step-by-step.\n\nWe will also assume that the rope has a \\(y\\)-intercept of \\(1\\).\n\n**Step 1**\n\nAssume that \\(s=x\\), that is, assume the weight is evenly distributed horizontally. (This is the case for ropes holding up bridges.)\n\nWhat is \\(f_1(x)\\) in this case, where \\(f'_1(x)=s\\)?\n\n**Step 2**\n\nNow assume that the weight is distributed uniformly along the shape given by the answer to Step 1, that is to say, \\(s\\) is now the arc length of \\(y=f_1(x)\\).\n\nWhat is \\(f_2(x)\\) *approximately* in this case, where \\(f'_2(x)=s\\)? Work out an answer as a *polynomial*, valid for small values of \\(x\\), including one term more than in \\(f_1(x)\\).\n\n(We’re looking for an approximation, so do not try to use any complicated integration techniques here – the most you should have to integrate is a polynomial. See the suggestions if you want one.)\n\n**Step 3**\n\nNow assume that the weight is distributed uniformly along the shape given by the answer to Step 2, that is to say, \\(s\\) is now the arc length of \\(y=f_2(x)\\).\n\nWhat is \\(f_3(x)\\) *approximately* in this case, where \\(f'_3(x)=s\\)? Work out an answer as a *polynomial*, valid for small values of \\(x\\), including one term more than in \\(f_2(x)\\).\n\n**In the limit**\n\n1. Can you predict \\(f_4(x)\\)? What about \\(f_5(x)\\)? And how will the sequence of polynomials \\(f_1(x)\\), \\(f_2(x)\\), \\(f_3(x)\\), … continue further?\n\n---\n\n1. What is the [power series](https://undergroundmathematics.org/glossary/power-series), \\(f(x)\\), that this sequence is tending to? What do we call this function?\n\n---\n\n1. Can you prove that this limit function \\(f(x)\\) satisfies the equation \\(f'(x)=s\\), where \\(s\\) is the arc length of \\(y=f(x)\\)?\n\n---\n\n1. In the above procedure, what would Step \\(n\\) have been? Can you prove that Step \\(n\\) would have given the function \\(f_n(x)\\) which you predicted? (See the suggestions for help on this step if you need it.)\n\n---\n\n1. Why do you think we assumed that the curve has a \\(y\\)-intercept of \\(1\\)?\n\n**A direct approach**\n\nCan you solve the equation \\(f'(x)=s\\) directly?\n\nMore generally, can you solve the equation \\(f'(x)=\\dfrac{s}{a}\\), where \\(f(0)=a\\)?\n\n## Suggestion\n\nWe need to work out the arc length of \\(f_1(x)=1+\\frac{1}{2}x^2\\) to find \\(s\\).\n\nBut we only want an approximate answer as a polynomial, so how can we approximate the integral for arc length so that what we are integrating (the *integrand*) is itself a polynomial?\n\n**In the limit**\n\n1. In the above procedure, what would Step \\(n\\) have been? Can you prove that Step \\(n\\) would have given the function \\(f_n(x)\\) which you predicted?\n\nProving that Step \\(n\\) follows might be tricky to do directly from the polynomial \\(f_{n-1}(x)\\). It might be helpful to consider what you already know about the limit function and its behaviour.\n\nYou may find the substitution \\(p=f'(x)\\) helpful.\n\n## Solution\n\n**Setting up the problem: Tension in a rope**\n\nResolving vertically and horizontally on the portion of rope between the lowest point and\n\n\\(P\\)\n\n, we find:\n\n\\[\\begin{align*} \\mathcal{R}(\\uparrow)&& T\\sin\\psi - ws &= 0\\\\ \\mathcal{R}(\\rightarrow)&& T\\cos\\psi - T_0 &= 0 \\end{align*}\\]\n\n(The weight of the rope is its length \\(s\\) times the weight per unit length \\(w\\).) Rearranging to get \\(T\\sin\\psi=ws\\) and \\(T\\cos\\psi=T_0\\), we can divide to get \\(\\tan\\psi=\\Bigl(\\dfrac{w}{T_0}\\Bigr)s\\) as required.\n\nFrom now on, we’ll make our life easier by assuming that \\(w/T_0=1\\), so that the equation becomes \\(\\tan\\psi=s\\).\n\nIf the rope has the equation \\(y=f(x)\\), prove that \\(f'(x)=s\\).\n\nThe gradient of the curve at \\(P\\) is \\(f'(x)=\\tan\\psi\\), so this follows immediately from \\(\\tan\\psi=s\\).\n\n**An iterative approach**\n\n**Step 1**\n\nUsing \\(s=x\\), we can integrate \\(f'_1(x)=x\\) to get \\(f_1(x)=\\frac{1}{2}x^2+c\\). Using \\(f_1(0)=1\\), we get \\(f_1(x)=1+\\frac{1}{2}x^2\\).\n\n**Step 2**\n\nThe relevant version of the formula for arc length in this context is \\[\\int\\sqrt{1+(f'_1(x))^2}\\,dx=\\int\\sqrt{1+x^2}\\,dx.\\]\n\nWe would like a polynomial approximation to this, so we expand the square root using the binomial theorem:\n\n\\[\\begin{align*} \\sqrt{1+x^2}&=(1+x^2)^{\\frac{1}{2}}\\\\ &=1+\\frac{1}{2}x^2+\\frac{(\\frac{1}{2})(-\\frac{1}{2})}{2!}(x^2)^2+\\cdots\\\\ &=1+\\frac{1}{2}x^2-\\frac{1}{8}x^4+\\cdots \\end{align*}\\]\n\nSo integrating gives us a formula for \\(s\\): \\[s=x+\\frac{1}{6}x^3-\\frac{1}{40}x^5+\\cdots\\] Finally, we can now solve the equation \\(f'_2(x)=s\\), where \\(f_2(0)=1\\), to get \\[f_2(x)=1+\\frac{1}{2}x^2+\\frac{1}{24}x^4-\\frac{1}{240}x^6+\\cdots\\] We only want one term more than \\(f_1(x)\\), though, so we get \\[f_2(x)=1+\\frac{1}{2}x^2+\\frac{1}{24}x^4.\\]\n\n**Step 3**\n\nWe follow the same procedure as in step 2.\n\nWe start by finding\n\n\\(s\\)\n\n, working up to the term in\n\n\\(x^4\\)\n\n:\n\n\\[\\begin{align*} s &= \\int\\sqrt{1+(f'_2(x))^2}\\,dx\\\\ &= \\int\\sqrt{1+(x+\\tfrac{1}{6}x^3)^2}\\,dx\\\\ &= \\int 1+\\frac{1}{2}(x+\\tfrac{1}{6}x^3)^2+ \\frac{(\\frac{1}{2})(-\\frac{1}{2})}{2!}(x+\\tfrac{1}{6}x^3)^4+\\cdots\\\\ &= \\int 1+\\frac{1}{2}(x^2+\\tfrac{2}{6}x^4+\\tfrac{1}{36}x^6)- \\frac{1}{8}(x^4+\\cdots)+\\cdots\\\\ &= \\int 1+\\frac{1}{2}x^2+\\frac{1}{24}x^4+\\cdots\\\\ &= x+\\frac{1}{6}x^3+\\frac{1}{120}x^5+\\cdots \\end{align*}\\]\n\nand since \\(f'_3(x)=s\\), it follows that \\[f_3(x)=1+\\frac{1}{2}x^2+\\frac{1}{24}x^4+\\frac{1}{720}x^6= 1+\\frac{x^2}{2!}+\\frac{x^4}{4!}+\\frac{x^6}{6!},\\] giving one term more than for \\(f_2(x)\\).\n\n**In the limit**\n\n1. Following the pattern, it would seem likely that \\[\\begin{align*} f_4(x)&=1+\\frac{x^2}{2!}+\\frac{x^4}{4!}+\\frac{x^6}{6!}+ \\frac{x^8}{8!}\\\\ f_5(x)&=1+\\frac{x^2}{2!}+\\frac{x^4}{4!}+\\frac{x^6}{6!}+ \\frac{x^8}{8!}+\\frac{x^{10}}{10!}\\\\ \\dots\\\\ f_n(x)&=1+\\frac{x^2}{2!}+\\frac{x^4}{4!}+\\cdots+\\frac{x^{2n}}{(2n)!}\\\\ \\end{align*}\\]\n\n---\n\n1. It appears to be \\[f(x)=1+\\frac{x^2}{2!}+\\frac{x^4}{4!}+\\cdots+\\frac{x^{2n}}{(2n)!}+ \\cdots\\] This function is \\(\\cosh x\\), the hyperbolic cosine. It is defined either by this power series or by the identity \\[\\cosh x=\\frac{e^x+e^{-x}}{2}.\\] Interestingly, this power series is valid for *all* values of \\(x\\), not only values less than \\(1\\).\n\n---\n\n1. The limit function, \\(y=f(x)=\\cosh x\\), has arc length from \\(0\\) to \\(x\\) given by \\[\\begin{align*} s&=\\int_0^x \\sqrt{1+(f'(x))^2}\\,dx\\\\ &=\\int_0^x \\sqrt{1+(\\sinh x)^2}\\,dx\\\\ &=\\int_0^x \\cosh x\\,dx\\\\ &=[\\sinh x]_0^x\\\\ &=\\sinh x \\end{align*}\\] And \\(f'(x)=\\sinh x\\), so \\(f'(x)=s\\).  We have been a bit sloppy with notation here, using \\(x\\) as both one of the limits and also as the variable in the integral. If we were to be more careful, we would have changed the variable in the integral to a different letter such as \\(t\\).\n\n---\n\n1. Step \\(n\\) would read: “Now assume that the weight is distributed uniformly along the shape given by the answer to Step \\(n-1\\), that is to say, \\(s\\) is now the arc length of \\(y=f_{n-1}(x)\\). What is \\(f_n(x)\\) *approximately* in this case, where \\(f'_n(x)=s\\)? Work out an answer as a *polynomial*, valid for small values of \\(x\\), including one term more than in \\(f_{n-1}(x)\\).\" Since the construction is by iteration, the proof is by induction. We assume that the previous step (Step \\(n-1\\)) gave us the expected function, that is, we assume that \\[f_{n-1}(x)=1+\\dfrac{x^2}{2!}+\\cdots+\\dfrac{x^{2(n-1)}}{(2(n-1))!}.\\] Then to find \\(f_n(x)\\), we begin by working out the arc length of \\(y=f_{n-1}(x)\\) from \\(0\\) to \\(x\\): \\[s=\\int_0^x \\sqrt{1+(f'_{n-1}(x))^2}\\,dx.\\] But this integral is going to be very hard to calculate directly: we will need to differentiate \\(f_{n-1}(x)\\), square it, and then use the binomial theorem to expand the square root. However, we can use what we know about \\(f_{n-1}(x)\\) to sidestep many of these difficulties: \\(f_{n-1}(x)\\) is the expansion of \\(\\cosh x\\) up to the term in \\(x^{2n-2}\\). Therefore, \\(f'_{n-1}(x)\\) is the expansion of \\(\\sinh x\\) up to the term in \\(x^{2n-3}\\). (We can work this out directly by differentiating \\(f_{n-1}(x)\\) if we wish.) In fact, it even agrees up to the term in \\(x^{2n-2}\\), which is zero. Therefore \\(1+(f'_{n-1}(x))^2\\) will agree with the expansion of \\(1+\\sinh^2 x=\\cosh^2 x\\) up to at least the term in \\(x^{2n-2}\\). When we then use the binomial theorem to expand \\(\\sqrt{1+(f'_{n-1}(x))^2}\\) as a power series in \\(x\\), it will have to agree with \\(\\cosh x\\) up to at least the term in \\(x^{2n-2}\\), since the expression inside the square root agrees up to at least this term. Thus when we integrate this to get \\(f'_n(x)=s\\), it will agree with \\(\\int\\cosh x\\,dx=\\sinh x\\) up to at least the term in \\(x^{2n-1}\\). (And the constant term in the integral is zero, as the integral is from \\(0\\) to \\(x\\), which agrees with the zero constant term in the expansion of \\(\\sinh x\\).) Then we integrate this final expression to get \\(f_n(x)\\), so this will agree with \\(\\int\\sinh x\\,dx=\\cosh x\\) up to at least the term in \\(x^{2n}\\), and the constant term is also correct as \\(f_n(0)=1\\). Since we let \\(f_n(x)\\) be the polynomial with just one term more than \\(f_{n-1}(x)\\), we find that \\(f_n(x)\\) is the polynomial approximation to \\(\\cosh x\\) with terms up to \\(x^{2n}\\), that is, \\[f_n(x)=1+\\frac{x^2}{2!}+\\frac{x^4}{4!}+\\cdots+\\frac{x^{2n}}{(2n)!}\\] as we wanted.\n\n1. The limiting function is \\(\\cosh x\\), and \\(\\cosh 0=1\\). Had we chosen a different \\(y\\)-intercept, say \\(0\\), the limiting function would have been \\(\\cosh x-1\\), which would have been a little bit less pretty.\n\n**A direct approach**\n\nUsing the formula for arc length, this differential equation becomes \\[f'(x)=\\int_0^x \\sqrt{1+(f'(t))^2}\\,dt.\\] (Here we’re being good and not using \\(x\\) as the variable in the integration, to avoid confusing ourselves.) This equation may seem very hard at first, but we might notice that \\(f(x)\\) itself never appears, just its derivative.\n\nSo let’s write \\(p(x)=f'(x)\\), to get \\[p(x)=\\int_0^x \\sqrt{1+(p(t))^2}\\,dt,\\] which looks marginally simpler as there’s no differentiation involved.\n\nWe still have this pesky integral, but we can get rid of that by differentiating both sides with respect to \\(x\\), and making use of the fundamental theorem of calculus: \\[p'(x)=\\sqrt{1+(p(x))^2}.\\] No integral left!\n\nWe could try squaring both sides to get rid of the square root, but then we’d have \\((p'(x))^2\\), a squared derivative, which is not nice.\n\nIf we write \\(p'(x)\\) as \\(\\frac{dp}{dx}\\) things might look more familiar (and we’ll write \\(p\\) in place of \\(p(x)\\), too): \\[\\frac{dp}{dx}=\\sqrt{1+p^2}.\\] This is a separable differential equation! So separating the variables, we get \\[\\int \\frac{1}{\\sqrt{1+p^2}}\\,dp=\\int 1\\,dx.\\] The right hand side is easy. For the left hand side, we use the substitution \\(p=\\sinh u\\), so \\(\\frac{dp}{du}=\\cosh u\\), giving \\[\\int \\frac{1}{\\sqrt{1+\\sinh^2 u}}\\cosh u\\,du=x,\\] which simplifies to \\[\\int 1\\,du=x,\\] so \\(u=x+c\\), giving \\(\\arsinh p=x+c\\) or \\(p=\\sinh(x+c)\\).\n\nNow we can also work out from our original differential equation that \\(p(0)=0\\), so \\(c=0\\) and \\(p=\\sinh x\\).\n\nBut \\(p=f'(x)\\), so \\(f'(x)=\\sinh x\\), giving \\(f(x)=\\cosh x+C\\).\n\nFinally, using \\(f(0)=1\\) gives \\(C=0\\), so \\(f(x)=\\cosh x\\).\n\nMore generally, can you solve the equation \\(f'(x)=\\dfrac{s}{a}\\)?\n\nThe argument is very similar to the above; one just has to take care with the extra \\(a\\) term. The solution is \\(f(x)=a\\cosh(\\frac{x}{a})\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "function-builder-ii",
+   "slug": "function-builder-ii",
+   "station": "polynomials",
+   "title": "Function builder II",
+   "url": "https://undergroundmathematics.org/polynomials/function-builder-ii",
+   "resourceType": "building-blocks",
+   "resourceTypeLabel": "Building blocks",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.3",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Function builder II\n\n> Excerpt: Students combine functions by taking reciprocals and by dividing and find the sketches of the results to fill the cells of a grid. This task builds understanding of the properties of functions and practises visualisation and sketching of graphs of rational functions.\n\n## Problem\n\nThe function \\[a(x)=x+1\\] can be combined in a number of ways with each of the functions \\[b(x)=2x-1, \\quad b(x)=x^2-5x+8, \\quad b(x)=x^2-5x-6\\] to create a set of new functions. Can you find the correct one of graphs M to X to go in each cell of the grid below?\n\nThe graphs are available as [cards to print out](https://undergroundmathematics.org/polynomials/function-builder-ii/components/cards.pdf), along with a [large format grid](https://undergroundmathematics.org/polynomials/function-builder-ii/components/printable-table.pdf).\n\n| \\(a(x)=\\) \\(x+1\\) | \\(\\dfrac{1}{b(x)}\\) | \\(\\dfrac{a(x)}{b(x)}\\) | \\(\\dfrac{b(x)}{a(x)}\\) |\n|---|---|---|---|\n| \\(b(x)=\\) \\(2x-1\\) |  |  |  |\n| \\(b(x)=\\) \\(x^2-5x+8\\) |  |  |  |\n| \\(b(x)=\\) \\(x^2-5x-6\\) |  |  |  |\n\n## Solution\n\nIn order to match up the graphs with their equations, we need to identify some of the features of each curve, such as\n\n- the location of vertical asymptotes,\n\n- where it crosses the \\(x\\) and \\(y\\)-axes,\n\n- whether the function is positive or negative for ranges of \\(x\\) values,\n\n- its behaviour as \\(x\\) becomes very large in positive and negative directions.\n\nTo find some of these features, it can be helpful to rearrange the algebra or to consider the effect of simple graph transformations. Here are a few examples of things you might have thought of.\n\n**Finding \\(\\frac{a(x)}{b(x)}\\) for \\(b(x)=2x-1\\)**\n\nWe want to identify the graph of \\(y=\\dfrac{x+1}{2x-1}\\).\n\nWe can see that it will have an \\(x\\)-intercept at \\((-1,0)\\) and a \\(y\\)-intercept at \\((0,-1)\\). It will also have a vertical asymptote at \\(x=\\frac{1}{2}\\). As \\(x\\) increases from just less than \\(\\frac{1}{2}\\) to just more than \\(\\frac{1}{2}\\), the denominator goes from negative to positive so our graph will do the same at the asymptote.\n\nWhen \\(x\\) is very large, either positive or negative, we have \\(y\\approx\\dfrac{x}{2x}=\\dfrac{1}{2}\\).\n\nThe shape of the curve is not immediately obvious, but we can do some rearranging of the algebra. \\[y=\\frac{x+1}{2x-1}=\\frac{\\frac{1}{2}(2x-1)+\\frac{3}{2}}{2x-1} = \\frac{1}{2}+\\frac{3}{2}\\frac{1}{2x-1} = \\frac{1}{2} +\\frac{3}{4}\\frac{1}{(x-1/2)}\\] So now we can see that our function is a hyperbola, \\(\\frac{1}{x}\\), that has been translated horizontally by \\(\\frac{1}{2}\\), scaled vertically by \\(\\frac{3}{4}\\) and then translated up by \\(\\frac{1}{2}\\).\n\nThis confirms that as \\(x\\to\\pm\\infty\\), \\(y\\to\\frac{1}{2}\\) and the correct graph is (M).\n\n**Finding \\(\\frac{1}{b(x)}\\) for \\(b(x)=x^2-5x+8\\)**\n\nIt is helpful to first explore the features of the quadratic, \\(b(x)\\). It doesn’t factorise easily, so let’s try completing the square. \\[x^2-5x+8 = \\left(x-\\tfrac{5}{2}\\right)^2 + 8-\\tfrac{25}{4} = \\left(x-\\tfrac{5}{2}\\right)^2 + \\tfrac{7}{4}\\] So we have that\n\n- \\(b(x)\\) is a parabola with a minimum at \\(\\left(\\frac{5}{2},\\frac{7}{4}\\right)\\), so \\(y=\\frac{1}{b(x)}\\) has a maximum at \\(\\left(\\frac{5}{2},\\frac{4}{7}\\right)\\);\n\n- \\(b(x)\\) is always positive, so \\(y=\\frac{1}{b(x)}\\) is also always positive;\n\n- \\(b(x)\\) has no zeros, so \\(y=\\frac{1}{b(x)}\\) has no vertical asymptotes;\n\n- as \\(x\\to\\pm\\infty\\), \\(\\frac{1}{b(x)}\\to 0\\).\n\nThe correct graph is (S).\n\n**Finding \\(\\frac{b(x)}{a(x)}\\) for \\(b(x)=x^2-5x+8\\)**\n\nWe want to find \\(y=\\dfrac{x^2-5x+8}{x+1}\\). We discovered above that the quadratic numerator has no zeros, so this curve does not cross the \\(x\\)-axis.\n\nIt has a \\(y\\)-intercept at \\(8\\), and a vertical asymptote at \\(x=-1\\).\n\nLet’s see what happens if we do an algebraic division.\n\nUsing long division, \\[\\begin{array}{rll} \\phantom{x^2+5}x-6 & \\text{ r }14 \\cmlongdivbr x+1 \\cmlongdiv{x^2-5x+8} \\cmlongdivbr \\underline{x^2+\\phantom{0}x}\\phantom{{}+8} && \\hbox{[$x \\times (x+1)$]} \\cmlongdivbr \\phantom{x^2}{}-6x+8 && \\hbox{[subtract...]} \\cmlongdivbr \\phantom{x^2}\\underline{{}-6x-6} && \\hbox{[$-6(x+1)$]} \\cmlongdivbr \\phantom{x^2-5x+{}}14 && \\hbox{[remainder]} \\cmlongdivbr \\end{array}\\]\n\nor using a grid method, \\[\\begin{array}{r|rr} & \\phantom{0}x\\phantom{x^2}-6 \\\\ \\hline x & x^2-6x & 14 \\\\ +1 & x\\phantom{x^2}-6 \\end{array}\\]\n\nThe remainder of \\(14\\) tells us that \\(x^2-5x+8=(x+1)(x-6)+14\\).\n\nSo we have \\(y=x-6 +\\frac{14}{x+1}\\) and the curve is a hyperbola added to a straight line of gradient \\(1\\). This gives the perhaps surprising result that as \\(x\\to\\pm\\infty\\), \\(y\\to x-6\\).\n\nThe correct graph is (U).\n\n**Finding the third row graphs**\n\nThe quadratic in the third row, \\(b(x)=x^2-5x-6\\), looks very similar to that in the second row. However, this one factorises such that \\(b(x)\\) has zeros at \\(x=-1\\) and \\(x=6\\). This gives rise to some vertical asymptotes, but also allows some cancelling to occur in the algebraic fractions.\n\nHere is a completed grid\n\n| \\(a(x)=x+1\\) | \\(\\dfrac{1}{b(x)}\\) | \\(\\dfrac{a(x)}{b(x)}\\) | \\(\\dfrac{b(x)}{a(x)}\\) |\n|---|---|---|---|\n| \\(b(x)=2x-1\\) | Graph P, \\(y=\\dfrac{1}{2x-1}\\) | Graph M, \\(y=\\dfrac{x+1}{2x-1}\\) | Graph N, \\(y=\\dfrac{2x-1}{x+1}\\) |\n| \\(b(x)=\\) \\(x^2-5x+8\\) | Graph S, \\(y=\\dfrac{1}{x^2-5x+8}\\) | Graph Q, \\(y=\\dfrac{x+1}{x^2-5x+8}\\) | Graph U, \\(y=\\dfrac{x^2-5x+8}{x+1}\\) |\n| \\(b(x)=\\) \\(x^2-5x-6\\) | Graph V, \\(y=\\dfrac{1}{(x+1)(x-6)}\\) | Graph T, \\(y=\\dfrac{1}{x-6}, x\\ne-1\\) | Graph X, \\(y=x-6, x\\ne-1\\) |\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "how-not-to-solve-a-cubic",
+   "slug": "how-not-to-solve-a-cubic",
+   "station": "polynomials",
+   "title": "How not to solve a cubic...",
+   "url": "https://undergroundmathematics.org/polynomials/how-not-to-solve-a-cubic",
+   "resourceType": "food-for-thought",
+   "resourceTypeLabel": "Food for thought",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# How not to solve a cubic...\n\n> Excerpt: Students are invited to find a cubic which can (surprisingly) be partially solved using an obviously incorrect method.\n\n## Warm-up\n\nCan you find a cubic and quadratic graph that both pass through the \\(x\\)-axis at \\(x=3\\)?\n\nAre these curves unique?\n\nYou might find it helpful to use graphing software such as [Desmos](https://www.desmos.com/calculator).\n\n## Problem\n\nA student was trying to solve the cubic \\[x^3-2x-1=0.\\]\n\nUnfortunately, they thought they were dealing with the quadratic \\(x^2-2x-1=0\\) and used the quadratic formula. They got the two solutions \\(x=1\\pm\\sqrt{2}\\), neither of which is a root of the original cubic.\n\nCould this wrong method ever work?\n\nCan you find a cubic equation \\(ax^3+bx+c=0\\) where (at least) one of the roots of the corresponding quadratic \\(ax^2+bx+c=0\\) is also a root of the cubic?\n\n## Suggestion\n\nCan you sketch what a solution to this problem might look like? What are the important features on this sketch?\n\nHow can we use algebra to express the condition that the cubic and quadratic share a root?\n\n## Things you might have noticed\n\nBefore diving into this question we might begin by taking a step back to think about what it is asking us to find.\n\n- Can we represent the problem graphically?\n\n- Do we expect there to be a unique solution?\n\nWe are essentially looking for a quadratic and cubic curve that both pass through a given point (or pair of points) on the \\(x\\)-axis. It feels as though there may be lots of pairs of curves like this, and indeed we may have already found an example of a cubic and quadratic curve that each pass through \\((0,3)\\) in the [Warm-up problem](https://undergroundmathematics.org/polynomials/how-not-to-solve-a-cubic/).\n\nBut are both equations in the form \\(ax^3+bx+c=0\\) and \\(ax^2+bx+c=0\\) as required?\n\nThis constraint narrows down the problem. We might need to consider algebraic representations of the problem to help us make progress.\n\nLet’s label the quadratic and cubic equations\n\n\\(f(x)\\)\n\nand\n\n\\(g(x)\\)\n\nso that\n\n\\[\\begin{align*} f(x)&=ax^2+bx+c\\\\ g(x)&=ax^3+bx+c. \\end{align*}\\]\n\nNow if \\(f(k)=0\\) and \\(g(k)=0\\), so that \\(k\\) is a root of both equations, we can write \\[ak^2 + bk + c = 0\\quad\\text{and}\\quad ak^3 + bk + c =0.\\] We can now equate the left hand sides to get \\(ak^2 + bk + c = ak^3 + bk + c\\). Subtracting \\(bk+c\\) gives \\(ak^2=ak^3\\), and this is only true for \\(k=1\\) or \\(k=0\\). (It is also true if \\(a=0\\), but then we don’t have a cubic equation, so we can ignore this possibility.)\n\nDid you remember to consider the possibility that \\(k=0\\)?\n\nIf\n\n\\(k=0\\)\n\n, there is a common root at\n\n\\(x=0\\)\n\n, so\n\n\\(c=0\\)\n\nand we can rewrite the equations as\n\n\\[\\begin{align*} f(x)&=ax^2+bx=x(ax+b)\\\\ g(x)&=ax^3+bx=x(ax^2+b). \\end{align*}\\]\n\nHow did we know that \\(c=0\\) in this case?\n\nYou might like to use the GeoGebra applet below to convince yourself of our findings so far. You can adjust the sliders to see how the functions change for different values of \\(a\\) and \\(b\\) (but with our common root staying fixed at \\(x=0\\)).\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/nUtPxpV2/width/600/height/400/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/nUtPxpV2)\n\nCan you adjust the sliders to find a case where the functions share two roots?\n\nIs this case unique or can you find another?\n\nWhere do you expect the second shared root to be?\n\nWe began this line of thinking by considering the case where \\(k=0\\). How might we now consider the other possibility that \\(k=1\\), so there is a common root at \\(x=1\\)?\n\nBy the factor theorem we can say that if \\(f(k)=0\\) and \\(g(k)=0\\), so that \\(k\\) is a root of both equations, we also have \\((x-k)\\) as a factor of both \\(f(x)\\) and \\(g(x)\\). So in this case, \\(x-1\\) is a factor of both \\(f(x)\\) and \\(g(x)\\).\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/mZmRVEWX/width/600/height/400/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/mZmRVEWX)\n\nWhat’s the same and what’s different about this GeoGebra applet, when compared to the first one?\n\nCan you suggest a pair of functions for which \\(x=1\\) is a root but \\(x=0\\) is not?\n\nLooking at the graph, it is also interesting to think about the behaviour of the graphs at the points where they meet: how do the behaviours at \\(x=0\\) and \\(x=1\\) compare?\n\n**On reflection…**\n\nWhen we reflected on our approach, we realised that there is an easier way to think about the problem.\n\nWhere do the cubic and quadratic graphs intersect?\n\nThe intersections\n\nThe original question asks when are \\(ax^3+bx+c=0\\) and \\(ax^2+bx+c=0\\) both true. This means in particular that we require the cubic \\(y=ax^3+bx+c\\) and quadratic \\(y=ax^2+bx+c\\) to intersect, so we need \\(ax^3+bx+c=ax^2+bx+c\\).\n\nIf we now subtract \\(bx+c\\) from this, we get \\(ax^3=ax^2\\). Therefore the cubic and quadratic *always* intersect at \\(x=0\\) and \\(x=1\\)!\n\nWe can now finish the problem off by determining whether \\(ax^2+bx+c=0\\) at either of these points. There will be a (shared) root at \\(x=0\\) if and only if \\(c=0\\), and a (shared) root at \\(x=1\\) if and only if \\(a+b+c=0\\). And we are done!\n\n**An alternative algebraic approach**\n\nOne way to approach this problem using algebra is to write the cubic and quadratic in terms of their roots. Let us assume that \\(\\alpha\\) is a common root, let the other roots of the cubic be \\(\\beta\\) and \\(\\gamma\\), and the other root of the quadratic be \\(\\delta\\). Then we can write the cubic as \\(a(x-\\alpha)(x-\\beta)(x-\\gamma)=0\\) and the quadratic as \\(a(x-\\alpha)(x-\\delta)=0\\).\n\nWe could now expand the left hand sides to get \\[ax^3-a(\\alpha+\\beta+\\gamma)x^2+a(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)x-a\\alpha\\beta\\gamma=ax^3+bx+c\\] and \\[ax^2-a(\\alpha+\\delta)x+a\\alpha\\delta=ax^2+bx+c.\\]\n\nEquating coefficients (and noting\n\n\\(a\\ne0\\)\n\nthroughout, as the first equation is a cubic), we obtain:\n\n\\[\\begin{align} \\alpha+\\beta+\\gamma &= 0 \\label{eq:1}\\\\ \\alpha\\beta+\\beta\\gamma+\\gamma\\alpha &= -(\\alpha+\\delta) \\label{eq:2}\\\\ \\alpha\\beta\\gamma &= -\\alpha\\delta. \\label{eq:3} \\end{align}\\]\n\nNow all that is left to do is to solve these equations!\n\nSolving the equations\n\nLooking at equation \\(\\eqref{eq:3}\\), which we can rearrange as \\(\\alpha(\\beta\\gamma+\\delta)=0\\), we see that either \\(\\alpha=0\\) or \\(\\beta\\gamma=-\\delta\\).\n\n**Case 1: \\(\\alpha=0\\)**\n\nThis means that \\(c=0\\), so the equations are \\(ax^3+bx=0\\) and \\(ax^2+bx=0\\).\n\nIs there any choice for \\(a\\) and \\(b\\) which would mean that *both* roots of the quadratic are roots of the cubic?\n\n**Case 2: \\(\\beta\\gamma=-\\delta\\)**\n\nIf we substitute this into \\(\\eqref{eq:2}\\), we get \\[\\alpha\\beta-\\delta+\\gamma\\alpha = -(\\alpha+\\delta),\\] which simplifies to \\(\\alpha(\\beta+\\gamma)=-\\alpha\\), so \\(\\alpha=0\\) (bringing us back to Case 1) or \\(\\beta+\\gamma=-1\\).\n\nIn the latter case, equation \\(\\eqref{eq:1}\\) then gives \\(\\alpha=1\\), so the cubic and quadratic share the root \\(\\alpha=1\\), and they become \\[ax^3-a(\\delta+1)x+a\\delta=0 \\quad\\text{and}\\quad ax^2-a(\\delta+1)x+a\\delta=0.\\] or \\[ax^3+bx+c=0\\quad\\text{and}\\quad ax^2+bx+c=0\\] where \\(a+b+c=0\\).\n\nIs there any choice here which would mean that *both* roots of the quadratic are roots of the cubic?\n\nIs there another way of seeing why \\(a+b+c=0\\) would give a common root of \\(x=1\\)? And is it always the case that if \\(x=1\\) is a root of \\(ax^3+bx+c=0\\), then it is also a root of \\(ax^2+bx+c=0\\)?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "inequalities",
+   "slug": "inequalities",
+   "station": "polynomials",
+   "title": "Inequality sets",
+   "url": "https://undergroundmathematics.org/polynomials/inequalities",
+   "resourceType": "many-ways-problem",
+   "resourceTypeLabel": "Many ways problem",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.1",
+     "confidence": "medium",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.1.2",
+     "confidence": "medium",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Inequality sets\n\n> Excerpt: This resource encourages students to think flexibly about inequalities by providing a table where they are asked to fill in the blank spaces so that each row contains a solution set, a graph and an inequality.\n\n## Problem\n\nFill in the blank spaces so that each row contains:\n\n- an inequality that needs solving\n\n- a graph that can help solve the inequality\n\n- a solution set of the inequality.\n\nExample\n\n| Solution set | Graph | Inequality |\n|---|---|---|\n| \\(\\left\\{x: x≤-4\\right\\} \\cup \\left\\{x: x≥-1\\right\\}\\) |  | \\(x^2 + 5x + 4 ≥0\\) |\n\n| Solution set | Graph | Inequality |\n|---|---|---|\n| \\(\\left\\{x: 2<x<5\\right\\}\\) |  |  |\n| \\(\\left\\{x: 0<x≤1\\right\\}\\) |  |  |\n|  |  | \\(\\dfrac{x^2+5x-6}{x^2+x-6}≥0\\) |\n|  |  | \\(x^2 + 6x > 2x+1\\) |\n| \\(\\left\\{x: x<-5\\right\\} \\cup \\left\\{x:-2<x<2\\right\\}\\) |  |  |\n\nDo any of the blank cells have more than one possible answer?\n\n## Solution\n\nFill in the blank spaces so that each row contains:\n\n- an inequality\n\n- a graph that can help solve the inequality\n\n- a solution set of the inequality.\n\n| Solution set | Graph | Inequality |\n|---|---|---|\n| \\(\\left\\{x: 2<x<5\\right\\}\\) |  |  |\n\nOne way to start might be to think about the solution set on a pair of axes, and then sketching a graph that would fit the constraints.\n\nThe graph sketched above is \\(y = a(x-2)(x-5)\\) where \\(a>0\\). For the inequality we could suggest something specific such as \\((x-2)(x-5) < 0\\), or we could be more general and write \\(a(x-2)(x-5) < 0\\).\n\nWhat would happen if \\(a < 0\\)? How would the graph change? How would the inequality change?\n\n| Solution set | Graph | Inequality |\n|---|---|---|\n| \\(\\left\\{x: 0<x≤1\\right\\}\\) |  |  |\n\nWhy can’t this solution set satisfy a quadratic inequality?\n\nWe want \\(1\\) to be included, but \\(0\\) is not part of the solution. What graphs can we sketch that will satisfy this constraint? Two suggestions are shown here.\n\n| \\(\\dfrac{1}{x}-1≥0\\) | \\(\\ln x ≤ 0\\) |\n|---|---|\n\nBoth graphs have asymptotes at the \\(y\\)-axis, which gives the correct solution set since the two functions don’t exist when \\(x=0\\).\n\n\\(y = \\dfrac{1}{x^2}-1\\) also has an asymptote on the \\(y\\)-axis and a root at \\(x = 1\\). Why isn’t the inequality \\(\\dfrac{1}{x^2}-1≥0\\) a possible answer?\n\n| Solution set | Graph | Inequality |\n|---|---|---|\n|  |  | \\(\\dfrac{x^2+5x-6}{x^2+x-6}≥0\\) |\n\nWe want to know where our graph is greater than or equal to zero. To find these sections we need to know the \\(x\\)-intercepts and the asymptotes.\n\nThe two asymptotes can be found by finding for what values the denominator, \\(x^2 + x - 6\\), equals zero, which is \\(x = -3\\) and \\(x = 2\\).\n\nThe graph will cross the \\(x\\)-axis when \\(y = 0\\), which means when \\(x^2 + 5x - 6 =0\\). The intercepts are at \\(x = -6\\) and \\(x = 1\\).\n\nTherefore the solution set of \\(\\dfrac{x^2+5x-6}{x^2+x-6}≥0\\) is \\(\\left\\{x: x≤-6\\right\\} \\cup \\left\\{x:-3<x≤1\\right\\}\\cup \\left\\{x: x>2\\right\\}\\).\n\n| Solution set | Graph | Inequality |\n|---|---|---|\n|  |  | \\(x^2 + 6x > 2x+1\\) |\n\nThere are several different graphs we could sketch to help us solve \\(x^2 + 6x > 2x+1\\). Two examples are shown below.\n\n|  |  |\n|---|---|\n\nBoth examples can be sketched reasonably accurately without having to do any calculations. They give us a way to approximate solutions and enable us to see what the solution set will look like, i.e. \\(\\left\\{x: a<x<b\\right\\}\\) or \\(\\left\\{x: x<a\\right\\}\\cup \\left\\{x: x>b\\right\\}\\).\n\nWhat other graphs could be sketched? Are they any more or less helpful than those above?\n\nFinding the intersection points by solving \\(x^2 + 6x = 2x+1\\) gives us a solution set of \\(\\left\\{x: x<-2-\\sqrt{5}\\right\\} \\cup \\left\\{x: x> -2 + \\sqrt{5} \\right\\}\\).\n\n| Solution set | Graph | Inequality |\n|---|---|---|\n| \\(\\left\\{x: x<-5\\right\\} \\cup \\left\\{x:-2<x<2\\right\\}\\) |  |  |\n\nThe solution set implies that we have three values where the graph switches from positive to negative. If we interpret these as roots then we could sketch a cubic.\n\nThis is the graph of \\(y = a(x+5)(x+2)(x-2)\\) where \\(a > 0\\), so the inequality will be \\(a(x+5)(x+2)(x-2) ≤ 0\\).\n\nWhat if the three values are not all roots? If one of them is an asymptote can you still find a graph that fits the solution set?\n\n## Taking it further\n\nSolve the inequality \\(|x+1|>2|x-1|\\).\n\nIs it possible to find the solutions without solving any equations?\n\nThings you might have done\n\nThere are several approaches that could be taken to solve \\(|x+1|>2|x-1|\\). If we don’t want to solve any equations we might think about the geometry of the lines. We could start by labelling the graph with any information we know.\n\nAt the first intersection, we can create two similar triangles where the corresponding sides are length \\(1\\) and length \\(2\\).\n\nHow does the ratio of the sides help us to find the \\(x\\)-coordinate of the intersection point?\n\nFor the second intersection we can think about the following triangles.\n\n|  |  |\n|---|---|\n\nWe know the gradients of the lines, and that the triangles are the same height. What can we deduce about their base lengths?\n\nIf we did solve \\(|x+1|>2|x-1|\\) algebraically we could use the graph to look at the two intersection points and think about which branches of the modulus functions are meeting. This would give us the equations \\(x+1 = 2(1-x)\\) and \\(x+1 = 2(x-1)\\) to solve.\n\nAlternatively, we could square both sides to get\n\n\\((x+1)^2 = 4(x-1)^2\\)\n\n. What does this look like graphically? How do the graphs of\n\n\\(y = (x+1)^2\\)\n\nand\n\n\\(y = 4(x-1)^2\\)\n\nrelate to the graphs of\n\n\\(y = |x+1|\\)\n\nand\n\n\\(y = 2|x-1|\\)\n\n?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "piece-it-together",
+   "slug": "piece-it-together",
+   "station": "thinking-about-functions",
+   "title": "Piece it together",
+   "url": "https://undergroundmathematics.org/thinking-about-functions/piece-it-together",
+   "resourceType": "problem-requiring-decisions",
+   "resourceTypeLabel": "Problem requiring decisions",
+   "level": "Introducing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Piece it together\n\n> Excerpt: Students are asked to describe four piecewise graphs for others to sketch. This may encourage informal discussion about the domains of different sections and help students to develop ideas of how we might write equations of piecewise functions. To take the task further, a set of equations that match to some of the graphs is provided.\n\n## Problem\n\nWe often describe graphs using an equation or algebraic property, for example ‘this is the graph of \\(y = x^2\\)’, or ‘this is the graph of a quadratic’.\n\nUnderneath are some unusual looking graphs. Try to describe each graph in words. What features do you notice?\n\nIf you are in a group, one person should try and describe the graph to others, who try to draw it as accurately as possible. You may want to download the printable version so you can cut the cards out.\n\nGraph 1\n\nGraph 3\n\nGraph 2\n\nGraph 4\n\n## Things you might have noticed\n\nHow did you describe the features of the graphs? Did you use mathematical language to help you?\n\nDid you use shapes or equations to describe different sections?\n\nIf you did this in a group, were certain graphs drawn more accurately than others? If so, what was different about the way they were described?\n\nGraph 1\n\nThis function is made up of sections of the form \\(y=a\\). Were equations used in the description?\n\nWhat is the value of the function when \\(x=1\\)? How did you interpret the closed and open circles at the end of the sections? Where have you seen these used before?\n\nGraph 2\n\nThe middle section of this function is interesting. It is made of sections of \\(y=2x\\) and \\(y=−2x\\), but can you think of another way you could describe it?\n\nGraph 3\n\nWhat happens at the points (3,0) and (8,0)? Which line would you define as them being part of?\n\nGraph 4\n\nThere are two features here that have not occured in the other graphs. We have a non-linear section, and our function continues as \\(x\\) gets larger.\n\nThese are all graphs of piecewise functions. The whole function \\(f(x)\\) is made up of differing sections (or pieces).\n\nNow you have described and sketched the functions, can you write their equations? The way they were described might help you with this. You can check your answers in the [taking it further](https://undergroundmathematics.org/thinking-about-functions/piece-it-together/taking-it-further) section.\n\n## Taking it further\n\nNow we have described the graphs in words, we want to see if we can describe the graphs using mathematical notation. How can we write the equations of these graphs?\n\nYou may wish to use the [equation cards](https://undergroundmathematics.org/thinking-about-functions/piece-it-together/components/equation-cards.pdf) to help you. Try to match the graphs to their equations. You may find that you need to draw some extra graphs, and write some more equations to complete the set.\n\n**Graph 1**\n\nEach section of the function is made up of equations in the form \\(y=a\\).\n\nThe open and closed circles should have reminded us of representing inequalities on a number line.\n\nEquation\n\nThe equation of this graph was not given by any of the cards.\n\n\\[f(x) = \\begin{cases}3 & \\text{if } -1 ≤ x ≤ 1 \\\\ 1 & \\text{if } 1 < x < 2 \\\\ -1 & \\text{if } 2≤ x ≤ 4 \\\\ 2 & \\text{if } 4 < x ≤ 7 \\end{cases}\\]\n\nNotice that this function given for this graph is only defined for \\(x\\) between \\(-1\\) and \\(7\\), so the domain of the function is \\(-1≤x≤7\\). You can work more with domains of functions in [Domain and Range dominoes](https://undergroundmathematics.org/combining-functions/domain-and-range-dominoes).\n\nYou may have noticed that\n\n\\[f(x) = \\begin{cases}3 & \\text{if } x ≤ 1 \\\\ 1 & \\text{if } 1 < x < 2 \\\\ -1 & \\text{if } 2≤ x ≤ 4 \\\\ 2 & \\text{if } 4 < x ≤ 7 \\end{cases}\\]\n\nwas similar, but required a different graph to be drawn.\n\nWhat is the difference between the two graphs? What is the domain of this function?\n\n**Graph 2**\n\nThe middle section of the graph might have reminded us of a modulus function, as it could be part of the graph of \\(y=|2x|\\).\n\nBut the modulus (or absolute value) function is a piecewise function itself, and can be written,\n\n\\[f(x) = \\begin{cases}-2x & \\text{if } x<0 \\\\ 2x & \\text{if } x≥0 \\end{cases}.\\]\n\nEquation\n\nTwo of the equations given in the cards are correct for this graph.\n\n\\[f(x) = \\begin{cases}4 & \\text{if } -3 ≤ x < -1 \\\\ -2x & \\text{if } -1 ≤ x < 0 \\\\ 2x & \\text{if } 0≤ x < 2 \\\\ 2 & \\text{if } 2≤x< 6 \\end{cases}\\]\n\nand\n\n\\[f(x) = \\begin{cases}4 & \\text{if } -3 ≤ x < -1 \\\\ -2x & \\text{if } -1 ≤ x ≤ 0 \\\\ 2x & \\text{if } 0 < x < 2 \\\\ 2 & \\text{if } 2≤x< 6 \\end{cases}\\]\n\nBy convention we include \\(x = 0\\) in the right-hand part of the absolute value function, as shown in the first of the equations, but the graphs are the same for both of the functions given above.\n\n**Graph 3**\n\nPoints \\((3,0)\\) and \\((8,0)\\) could be part of two different sections. Have we seen this before?\n\nEquation\n\nOne equation is\n\n\\[f(x) = \\begin{cases}2x & \\text{if } 0 ≤ x < 1 \\\\ 0 & \\text{if } 1 ≤ x < 3 \\\\ 2x-6 & \\text{if } 3≤ x < 5 \\\\ 0 & \\text{if } 5≤x< 8 \\\\ 2x-16 & \\text{if } 8≤x≤10 \\end{cases}\\]\n\nwhich wasn’t included in the equation cards.\n\nThe equation that does appear includes \\(x = 3\\) and \\(x = 8\\) as part of the flat sections, written as\n\n\\[f(x) = \\begin{cases}2x & \\text{if } 0 ≤ x < 1 \\\\ 0 & \\text{if } 1 ≤ x ≤ 3 \\\\ 2x-6 & \\text{if } 3< x < 5 \\\\ 0 & \\text{if } 5≤x≤ 8 \\\\ 2x-16 & \\text{if } 8<x≤10 \\end{cases}\\]\n\nAre both of these correct?\n\nThe equation\n\n\\[f(x) = \\begin{cases}2x & \\text{if } 0 ≤ x < 1 \\\\ 0 & \\text{if } 1 ≤ x ≤ 3 \\\\ 2x-6 & \\text{if } 3 ≤ x < 5 \\\\ 0 & \\text{if } 5≤x≤ 8 \\\\ 2x-16 & \\text{if } 8≤x≤10 \\end{cases}\\]\n\nalso appears. What is the difference between this equation and the other two? Is this still a function?\n\n**Graph 4**\n\nPiecewise functions do not have to be linear, so having a quadratic as one of the sections is not a problem. Note that the final section continues as \\(x\\) increases and doesn’t have an end point.\n\nEquation\n\nThe cards include the equation\n\n\\[f(x) = \\begin{cases}1 & \\text{if }-3≤x≤0 \\\\ x^2 & \\text{if } 0≤x≤2 \\\\ 0 & \\text{if } x≥2 \\end{cases}\\]\n\nWhy is this not correct? How would you write a correct function for graph \\(4\\)?\n\n**Extra equations**\n\nThere are two cards left that we haven’t looked at yet. Can you draw the graphs for them? Are they both functions?\n\nGraphs\n\n\\[f(x) = \\begin{cases}2 & \\text{if } -3 ≤ x < -1 \\\\ -2x & \\text{if } -1 ≤ x < 0 \\\\ 2x & \\text{if } 0≤ x < 2 \\\\ 4 & \\text{if } x≥2 \\end{cases}\\]\n\nThis function is similar to a function given for graph \\(2\\), but what is different about this function compared to any of the others we have looked at here?\n\nThis also has the same property as the function above. There are no jumps between different pieces of the graph.\n\n\\[f(x) = \\begin{cases}x^2 & \\text{if } x ≥ 0 \\\\ -x^2 & \\text{if } x < 0 \\end{cases}\\]\n\nThese two graphs are known as *continuous* piecewise functions, whereas the earlier functions are all *discontinuous* piecewise functions.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r5032",
+   "slug": "r5032",
+   "station": "polynomials",
+   "title": "Can we prove that $26^n$ always ends in the same two digits?",
+   "url": "https://undergroundmathematics.org/polynomials/r5032",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we prove that $26^n$ always ends in the same two digits?\n\n## Question\n\nProve that, for all positive integral values of \\(m\\), \\(x-1\\) is a factor of \\(x^m - 1\\).\n\nProve that, if \\(n\\) is an integer greater than \\(1\\), then \\(26^n - 26\\) is an odd multiple of \\(50\\).\n\nHence, or otherwise, show that, if \\(26^n\\) is evaluated for any integral value of \\(n\\) greater than \\(1\\), then the last two digits of the result are independent of \\(n\\).\n\n[*The phrase ‘integral values’ means the same as ‘integer values’.* ]\n\n## Solution\n\nBy the [factor theorem](https://undergroundmathematics.org/glossary/factor-theorem), a polynomial \\(p(x)\\) has a linear factor \\((x-a)\\) if and only if \\(p(a) = 0\\).\n\nIf we take \\(m\\) to be a positive integer and set \\(p(x) = x^m - 1\\), then \\(p(1) = 1^m - 1 = 0\\) and therefore \\((x-1)\\) is a factor of \\(x^m - 1\\).\n\nMoreover, we can write \\[x^m - 1 = (x-1)(x^{m-1} + \\dotsb + 1).\\]\n\nAs\n\n\\(n > 1\\)\n\nis an integer, we can write (using the first part of the question)\n\n\\[\\begin{align*} 26^n - 26 &= 26 \\times ( 26^{n-1} - 1 ) \\\\ &= 26 \\times (26 - 1) \\times (26^{n-2} + \\dotsb +26^1 +1) \\\\ &= 50 \\times 13 \\times (26^{n-2} + \\dotsb + 26^1 + 1). \\end{align*}\\]\n\nSince \\(26^{n-2} + \\dotsb + 26^1\\) is an even integer, the bracketed factor is odd, and so \\(13\\) times the bracketed factor is also odd. That is, \\(26^n - 26\\) is an odd multiple of \\(50\\).\n\nWe can write \\[26^n = \\left( 26^n - 26 \\right) + 26.\\] By the second part of the question (which applies as \\(n > 1\\) is an integer), as the bracketed term is an odd multiple of \\(50\\), its final two digits will always be \\(50\\).\n\nThus, the final two digits of the right-hand side of the above will be \\(76\\); this is independent of the value of \\(n\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r5126",
+   "slug": "r5126",
+   "station": "product-rule",
+   "title": "Can we find all three integrals?",
+   "url": "https://undergroundmathematics.org/product-rule/r5126",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.5",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we find all three integrals?\n\n## Question\n\n1. Prove that \\[\\begin{equation*} \\int_0^{\\frac{1}{2}\\pi} \\frac{\\cos x}{3 + \\cos^2 x} \\:dx = \\tfrac{1}{4} \\ln 3. \\end{equation*}\\]\n\n---\n\n1. Integrate with respect to \\(x\\) \\[\\begin{equation*} (a)\\; \\frac{x}{(x-1)^3}, \\quad (b)\\;(\\ln x)^2. \\end{equation*}\\]\n\n## Solution\n\nIf the denominator of the integrand were an expression involving \\(\\sin x\\) we might be able to integrate by substitution…\n\nSince\n\n\\(\\cos^2 x = 1 - \\sin^2 x\\)\n\n, we can write\n\n\\[\\begin{equation*} \\int_0^{\\frac{1}{2}\\pi} \\frac{\\cos x}{3 + \\cos^2 x} \\:dx = \\int_0^{\\frac{1}{2}\\pi} \\frac{\\cos x}{4 - \\sin^2 x} \\:dx. \\end{equation*}\\]\n\nNow using\n\npartial fractions\n\nwe can expand,\n\n\\(\\dfrac{1}{4-z^2} = \\dfrac{1}{4}\\left(\\dfrac{1}{2-z}+\\dfrac{1}{2+z}\\right)\\)\n\n. Then we can integrate using the substitutions\n\n\\(u=2\\pm\\sin x\\)\n\n.\n\n\\[\\begin{align*} \\int_0^{\\frac{1}{2}\\pi} \\frac{\\cos x}{4 - \\sin^2 x} \\:dx &= \\dfrac{1}{4}\\int_0^{\\frac{1}{2}\\pi} \\frac{\\cos x}{2 - \\sin x}+\\frac{\\cos x}{2 + \\sin x} \\:dx\\\\ &= \\dfrac{1}{4}\\bigl[-\\ln\\big\\vert 2-\\sin x\\big\\vert +\\ln \\big\\vert 2+\\sin x\\big\\vert\\bigr]_0^{\\frac{1}{2}\\pi}\\\\ &= \\dfrac{1}{4}\\left[\\ln \\bigg\\vert \\dfrac{2+\\sin x}{2-\\sin x}\\bigg\\vert\\right]_0^{\\frac{1}{2}\\pi}\\\\ &= \\dfrac{1}{4}\\ln 3 \\end{align*}\\]\n\n1. Integrate with respect to \\(x\\) \\[\\begin{equation*} (a)\\; \\frac{x}{(x-1)^3} \\end{equation*}\\]\n\nIf the numerator were a constant, this would look much more straight-forward, so let’s try rearranging…\n\nWe can write,\n\n\\[\\begin{equation*} \\int \\frac{x}{(x-1)^3} \\:dx = \\int \\frac{x-1}{(x-1)^3} + \\frac{1}{(x-1)^3} \\:dx = \\int \\frac{1}{(x-1)^2} + \\frac{1}{(x-1)^3} \\:dx. \\end{equation*}\\]\n\nIf\n\n\\(u = x-1\\)\n\n, then\n\n\\[\\begin{equation*} \\int \\frac{1}{(x-1)^2} + \\frac{1}{(x-1)^3} \\:dx = \\int u^{-2} + u^{-3} \\:du = \\frac{u^{-1}}{-1} + \\frac{u^{-2}}{-2} + c = \\frac{1}{1-x} - \\frac{1}{2(x-1)^2} + c \\end{equation*}\\]\n\nwhere \\(c\\) is a constant of integration.\n\n1. Integrate with respect to \\(x\\) \\[\\begin{equation*} (b)\\;(\\ln x)^2. \\end{equation*}\\]\n\nThe general formula for integration by parts is \\[\\int u \\frac{dv}{dx} \\, dx = uv - \\int v\\frac{du}{dx} \\, dx.\\]\n\nIf we let \\(u = (\\ln x)^2\\) and \\(v = x\\) then \\(\\frac{dv}{dx}=1\\) and \\(\\frac{du}{dx}=2\\ln x\\times\\frac{1}{x}\\). Integrating by parts, we see that\n\n\\[\\begin{equation}\\label{eq:ii-b-second-ibp} \\int (\\ln x)^2 \\:dx = x (\\ln x)^2 - 2 \\int \\ln x \\:dx. \\end{equation}\\]\n\nIn order to integrate\n\n\\(\\ln x\\)\n\n, we again integrate by parts using\n\n\\(u = \\ln x\\)\n\nand\n\n\\(v = x\\)\n\n. Then\n\n\\(\\frac{dv}{dx}=1\\)\n\nand\n\n\\(\\frac{du}{dx}=\\frac{1}{x}\\)\n\nand we have\n\n\\[\\begin{equation*} \\int \\ln x \\:dx = x \\ln x - \\int x \\frac{1}{x} \\:dx = x \\ln x - x. \\end{equation*}\\]\n\nAfter substituting this into\n\n\\(\\eqref{eq:ii-b-second-ibp}\\)\n\n, we can conclude that\n\n\\[\\begin{equation*} \\int (\\ln x)^2 \\:dx = x (\\ln x)^2 - 2 \\left( x \\ln x - x \\right) = x (\\ln x)^2 - 2 x \\ln x + 2x + c \\end{equation*}\\]\n\nwhere \\(c\\) is, again, a constant of integration.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r5196",
+   "slug": "r5196",
+   "station": "product-rule",
+   "title": "If this cubic has two equal roots, what can $p$ be?",
+   "url": "https://undergroundmathematics.org/product-rule/r5196",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# If this cubic has two equal roots, what can $p$ be?\n\n## Question\n\nA polynomial \\(f(x)\\) has a factor \\((x-a)^2\\). Show that \\((x-a)\\) is a factor of \\(f'(x)\\).\n\nThe equation \\(x^3 - 4x^2 - 3x + p = 0\\) has two equal roots; find the two possible values of \\(p\\).\n\n## Solution\n\nIf\n\n\\(f(x)\\)\n\nhas a factor\n\n\\((x-a)^2\\)\n\nthen by we can write\n\n\\[\\begin{equation*} f(x) = (x-a)^2g(x) \\end{equation*}\\]\n\nfor a polynomial\n\n\\(g(x)\\)\n\n(which may be constant). Thus, by the\n\nproduct rule\n\n\\[\\begin{align*} f'(x) &= \\frac{d}{dx} \\left( (x-a)^2 \\right) g(x) + (x-a)^2 \\frac{d}{dx} \\left( g(x) \\right) \\\\ &= 2(x-a)g(x) + (x-a)^2g'(x) \\\\ &= (x-a) \\left( 2g(x) + (x-a)g'(x) \\right). \\end{align*}\\]\n\nSince \\(g(x)\\) and \\(g'(x)\\) are polynomials, we have shown that \\(f'(x)\\) has \\((x-a)\\) as a factor.\n\nWe can understand this result graphically as follows. If \\((x-a)^2\\) is a factor, then \\(f(x)=0\\) has a repeated root at \\(x=a\\) and the graph of \\(y=f(x)\\) touches the \\(x\\)-axis here. The gradient of the graph must therefore be zero at this point, \\(f'(a)=0\\) and therefore \\((x-a)\\) is a factor of \\(f'(x)\\).\n\nLet \\(f(x) = x^3 - 4x^2 - 3x + p\\), and let’s assume the repeated root is at \\(x = a\\). Then \\((x-a)^2\\) is a factor of \\(f(x)\\).\n\nFrom the result above,\n\n\\((x-a)\\)\n\nis a factor of\n\n\\[\\begin{equation*} f'(x) = 3x^2 - 8x - 3 = (3x + 1)(x - 3) \\end{equation*}\\]\n\nso that \\(a = 3\\) or \\(a = -\\dfrac{1}{3}\\).\n\nIf \\(a = 3\\), then substituting \\(x=a\\) into \\(x^3-4x^2-3x+p=0\\), we have \\(p = 18\\).\n\nIf \\(a = -\\dfrac{1}{3}\\), then from \\(x^3-4x^2-3x+p=0,\\) we have \\(p = -\\dfrac{14}{27}\\).\n\nThus \\(p = 18\\) and \\(p = -\\dfrac{14}{27}\\) are the two possible values for \\(p\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r5248",
+   "slug": "r5248",
+   "station": "polynomials",
+   "title": "Given three remainders, what is the function?",
+   "url": "https://undergroundmathematics.org/polynomials/r5248",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Given three remainders, what is the function?\n\n## Question\n\nA certain function of \\(x\\) can be expressed in the form \\[a+b(x-1)+c(x-1)(x-2)+2(x-1)(x-2)(x-3),\\] where \\(a\\), \\(b\\), \\(c\\), are numerical. When the function is divided in turn by \\(x-1\\), \\(x-2\\), \\(x-3\\) the remainders are \\(10\\), \\(3\\), \\(4\\). Calculate the values of \\(a\\), \\(b\\), \\(c\\).\n\n## Solution\n\nLet\n\n\\(f(x)\\)\n\ndenote our function of\n\n\\(x\\)\n\n. That is,\n\n\\[\\begin{equation} f(x) = a+b(x-1)+c(x-1)(x-2)+2(x-1)(x-2)(x-3). \\label{eq:1} \\end{equation}\\]\n\nAs \\(f(x)\\) is a polynomial, the [Remainder Theorem](https://undergroundmathematics.org/glossary/remainder-theorem) tells us that the remainder when divided by \\((x-a)\\) is equal to \\(f(a)\\). Substituting \\(1\\), \\(2\\) and \\(3\\) into \\(\\eqref{eq:1}\\) in turn, we get that \\[f(1) = a,\\quad f(2)=a+b \\quad \\text{and} \\quad f(3)=a+2b+2c,\\] and so \\(a=10\\), \\(a+b=3\\) and \\(a+2b+2c=4\\).\n\nSolving these equations then gives that \\(a=10\\), \\(b=-7\\) and \\(c=4\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r5276",
+   "slug": "r5276",
+   "station": "polynomials",
+   "title": "What is the remainder when $p_n (x)$ is divided by $p_{n-1} (x)$?",
+   "url": "https://undergroundmathematics.org/polynomials/r5276",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# What is the remainder when $p_n (x)$ is divided by $p_{n-1} (x)$?\n\n## Question\n\nLet \\(n \\ge 2\\) be an integer and \\(p_n (x)\\) be the polynomial \\[p_n (x) = (x-1) + (x-2) + \\cdots + (x-n).\\] What is the remainder when \\(p_n (x)\\) is divided by \\(p_{n-1} (x)\\)?\n\n1. \\(\\dfrac{n}{2}\\);\n\n---\n\n1. \\(\\dfrac{n+1}{2}\\);\n\n---\n\n1. \\(\\dfrac{n^2+n}{2}\\);\n\n---\n\n1. \\(\\dfrac{-n}{2}\\).\n\n## Suggestion\n\nThe terms in \\(p_n (x)\\) follow a sequence - can we sum this?\n\nWhat value of \\(x\\) makes \\(p_{n-1}(x)\\) zero?\n\n## Solution\n\nWe can use the formula for the sum of an arithmetic progression to calculate \\[p_n(x) = nx - \\frac{n(n+1)}{2}\\] and \\[p_{n-1}(x) = (n-1)x - \\frac{n(n-1)}{2}.\\]\n\n**Approach 1**\n\nWe can carry out long division, by noting that the\n\n\\(x\\)\n\nterm of\n\n\\(p_{n-1}(x)\\)\n\ndivides\n\n\\(\\dfrac{n}{n-1}\\)\n\ntimes into the\n\n\\(x\\)\n\nterm of\n\n\\(p_n(x)\\)\n\n, so that the remainder is\n\n\\[\\begin{align*} p_n(x) - \\dfrac{n}{n-1}p_{n-1}(x) &{}= \\left(nx - \\dfrac{n(n+1)}{2}\\right) - \\dfrac{n}{n-1} \\left((n-1)x - \\dfrac{n(n-1)}{2}\\right)\\\\ &{}= -\\dfrac{n(n+1)}{2} + \\dfrac{n^2}{2}\\\\ &{}= \\dfrac{-n}{2}, \\end{align*}\\]\n\nand the answer is (d).\n\n**Approach 2**\n\nWe can use the Remainder Theorem. We have that \\[p_{n-1}(x)=(n-1)\\bigl(x-\\tfrac{1}{2}n\\bigr),\\] and so \\(p_{n-1}(x) =0\\) when \\(x = \\dfrac{n}{2}\\) (we can ignore the \\(n-1\\) factor as it will not change the remainder).\n\nSo the remainder is equal to \\(p_n\\left(\\dfrac{n}{2}\\right) = -\\dfrac{n}{2}\\), as before.\n\nThe answer is (d).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6299",
+   "slug": "r6299",
+   "station": "polynomials",
+   "title": "Can we sketch the reciprocal of a polynomial?",
+   "url": "https://undergroundmathematics.org/polynomials/r6299",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we sketch the reciprocal of a polynomial?\n\n## Question\n\nExpress \\(x^3 - 3x - 2\\) as the product of three linear factors.\n\nShow that \\(x^3 - 3x - 2\\) may also be expressed in the form \\((x-1)^2(x+p) + q\\), where \\(p\\) and \\(q\\) are constants to be found. Hence, or otherwise, show that the curve whose equation is \\(y = x^3 - 3x - 2\\) has a minimum point where \\(x = 1\\).\n\nSketch the curve whose equation is\n\n\\[\\begin{equation*} y = \\frac{1}{x^3 - 3x - 2}, \\end{equation*}\\]\n\nindicating clearly all its asymptotes. Hence obtain the number of real roots of the equation\n\n\\[\\begin{equation*} (x+1)(x^3 - 3x - 2) = 1. \\end{equation*}\\]\n\n## Solution\n\nBy the [factor theorem](https://undergroundmathematics.org/glossary/factor-theorem), a polynomial \\(f(x)\\) has a linear factor \\((x-a)\\) if and only if \\(f(a) = 0\\).\n\nIf we let \\(f(x) = x^3 - 3x - 2\\), we have\n\n| \\(x\\) | \\(0\\) | \\(1\\) | \\(2\\) |\n|---|---|---|---|\n| \\(f(x)\\) | \\(-2\\) | \\(-4\\) | \\(0\\) |\n\nSo \\((x-2)\\) is a factor of \\(f(x) = x^3 - 3x - 2\\), and \\(f(x) = (x-2)(x^2+ax+1)\\).\n\nSince \\(f(x)\\) has no \\(x^2\\) term, \\(a = 2\\), and \\(f(x)\\) can be factorised completely as \\[f(x) = (x-2)(x+1)^2,\\] which is the product of three linear factors.\n\nBy expanding and collecting powers of\n\n\\(x\\)\n\n, we see that\n\n\\[\\begin{align*} (x-1)^2(x+p) + q &= (x^2 - 2x + 1)(x+p) + q \\\\ &= x^3 + px^2 - 2x^2 - 2px + x + p + q \\\\ &= x^3 + (p-2)x^2 + (1-2p)x + p + q. \\end{align*}\\]\n\nCan we write for all\n\n\\(x\\)\n\n\\[\\begin{equation*} x^3 - 3x - 2 = x^3 + (p-2)x^2 + (1-2p)x + p + q \\end{equation*}\\]\n\nfor some \\(p\\) and \\(q\\)?\n\nBy equating coefficients, we need\n\n\\(p\\)\n\nand\n\n\\(q\\)\n\nthat satisfy\n\n\\[\\begin{align*} 0 &= p - 2, \\\\ -3 &= 1 - 2p, \\\\ -2 &= p + q \\end{align*}\\]\n\nsimultaneously. The first gives us\n\n\\(p = 2\\)\n\n, as does the second, and the third becomes\n\n\\(q = -4\\)\n\n. So we can write down the identity\n\n\\[\\begin{equation*} x^3 - 3x - 2 = (x-1)^2(x+2) - 4. \\end{equation*}\\]\n\nWe know \\(f(x) = (x-1)^2(x+2) - 4\\). When \\(x = 1\\), \\(f(x) = -4\\).\n\nWhen \\(x =1 + \\alpha\\), where \\(\\alpha\\) is small and positive, then \\(f(x) = \\alpha^2(3+\\alpha)-4 > -4\\).\n\nWhen \\(x = 1 - \\alpha\\), then \\(f(x) = \\alpha^2(3-\\alpha)-4 > -4\\). Thus \\(y = f(x)\\) has a minimum at \\(x = 1\\).\n\nOr else we can differentiate. If \\(y = f(x) = x^3 -3x -2\\), then \\(y' = 3x^2-3 = 0\\) when \\(x = 1\\).\n\nWe have \\(y'' = 6x = 6\\) when \\(x = 1\\), which is positive, so we have a minimum.\n\nWe know\n\n\\[\\begin{equation*} y = \\frac{1}{x^3 - 3x - 2} = \\frac{1}{(x-2)(x+1)^2} = \\frac{1}{(x-1)^2(x+2) - 4}. \\end{equation*}\\]\n\nIn sketching the graph, we will ask four questions:\n\n1. what are the intercepts?\n\nWhen \\(x = 0\\), \\(y = -\\dfrac{1}{2}\\). This is the \\(y\\)-intercept of the curve. There are no \\(x\\)-intercepts, since the numerator of \\(y\\) can never equal zero.\n\n1. what is the asymptotic behaviour?\n\nThere are two vertical asymptotes (corresponding to the roots of the denominator) at \\(x = -1\\) and \\(x = 2\\).\n\nSince the denominator of \\(y\\) tends towards \\(\\pm \\infty\\) as \\(x\\) tends towards \\(\\pm \\infty\\), and as the numerator is constant, we can see \\(y \\to 0\\) as \\(x \\to \\pm \\infty\\). Thus there is one horizontal asymptote, \\(y = 0\\).\n\n1. where is \\(y\\) positive and negative?\n\nThe sign of \\(y\\) depends wholly on the sign of \\((x-2)\\), since \\((x+1)^2\\) is never negative, and so \\(y > 0\\) if \\(x > 2\\) and \\(y < 0\\) if \\(x < 2\\) (provided that \\(x \\ne -1\\)).\n\n1. are there any turning points?\n\nFinally, the denominator has a local minimum at \\(x = 1\\), and so its reciprocal \\(y\\) must have a local maximum at \\(x = 1\\).\n\nWe can now sketch \\(y\\):\n\nWe can rewrite this equation as\n\n\\[\\begin{equation*} x+1 = \\frac{1}{x^3 - 3x - 2}. \\end{equation*}\\]\n\n(Clearly \\(x^3 - 3x - 2\\) cannot be zero, since in this case the equation is not satisfied.) A real solution to this equation corresponds precisely to an intersection between the line \\(y = x+1\\) and the curve \\(y = \\dfrac{1}{x^3 - 3x - 2}\\).\n\nThus we have this sketch of the line and the curve. There are two intersections, and hence there are two real roots to the equation.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6317",
+   "slug": "r6317",
+   "station": "polynomials",
+   "title": "Can we sketch the graph of $y = (4x-1)/(x+5)$?",
+   "url": "https://undergroundmathematics.org/polynomials/r6317",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.3",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we sketch the graph of $y = (4x-1)/(x+5)$?\n\n## Question\n\n1. Sketch the graph of \\[y = \\frac{4x-1}{x+5}.\\] Hence, or otherwise, find the set of values of \\(x\\) for which \\[-1 < \\frac{4x-1}{x+5} < 1.\\]\n\n---\n\n1. Find the set of values of \\(x\\) for which \\[3x^3 + 2x^2 + 6 \\ge 19x.\\]\n\n## Solution\n\nIn sketching the graph, we’ll look at four different features of the function:\n\n1. its intercepts with the axes;\n\n---\n\n1. its asymptotic behaviour;\n\n---\n\n1. its signs in various regions; and\n\n---\n\n1. its turning points, if it has any.\n\n**Intercepts**\n\nThe \\(y\\)-intercept is \\[y = y(0) = \\frac{4 \\times 0 - 1}{0+5} = -\\frac{1}{5}.\\]\n\nThe \\(x\\)-intercepts are the values of \\(x\\) such that \\[0 = \\frac{4x-1}{x+5};\\] there’s one such value, \\(x = \\dfrac{1}{4}\\).\n\n**Asymptotic behaviour**\n\nThere’s a single vertical asymptote when the denominator is zero, the line \\(x = -5\\).\n\nIf we rewrite the function as \\[\\frac{4x-1}{x+5}=4-\\frac{21}{x+5}\\] it is easier to see that as \\(x \\to \\infty\\), \\(y \\to 4\\) and that as \\(x \\to -\\infty\\), \\(y \\to 4\\) so there’s a single horizontal asymptote, \\(y = 4\\).\n\n**Signs**\n\nThe sign of \\(y\\) can only change when \\(x\\) moves across a vertical asymptote or an \\(x\\)-intercept.\n\nThe \\(x\\)-axis falls into three regions, \\(x < -5\\), \\(-5 < x < \\dfrac{1}{4}\\), and \\(x > \\dfrac{1}{4}\\), and in each of these regions \\(y\\) has a constant sign.\n\nWe can determine the sign of \\(y\\) in each of these regions by looking at the signs of the numerator and denominator separately.\n\n- In the first region, \\(4x - 1 < 0\\) and \\(x + 5 < 0\\), so \\(y\\) is the quotient of two negative expressions, and is therefore positive.\n\n- In the second region, \\(4x - 1 < 0\\) and \\(x + 5 > 0\\), and so \\(y < 0\\).\n\n- In the third region, \\(4x - 1 > 0\\) and \\(x + 5 > 0\\), and so \\(y > 0\\).\n\n**Turning points**\n\nBy considering the function in the form \\[\\frac{4x-1}{x+5}=4-\\frac{21}{x+5}\\] we see that it is a transformation of \\(y = \\dfrac{1}{x}\\). Therefore there are no turning points.\n\nThe sketch shows that we need the set of \\(x\\)-values from \\(a\\) to \\(b\\), where \\(a\\) is the solution of \\(-1=\\dfrac{4x-1}{x+5}\\), and \\(b\\) is the solution to \\(\\dfrac{4x-1}{x+5}=1\\).\n\nWe have\n\n\\[\\begin{align*} -1&=\\dfrac{4x-1}{x+5}\\\\ &\\implies -x-5=4x-1 \\\\ &\\implies x = -\\dfrac{4}{5}. \\end{align*}\\]\n\nand also\n\n\\[\\begin{align*} \\dfrac{4x-1}{x+5}&=1 \\\\ &\\implies 4x-1=x+5 \\\\ &\\implies x = 2. \\end{align*}\\]\n\nThus \\(a = -\\dfrac{4}{5}\\), and \\(b = 2\\), and the set of values for \\(x\\) that we need is \\(\\left\\{ x \\in \\mathbb{R} : -\\dfrac{4}{5}< x < 2 \\right\\}\\).\n\nNow \\[3x^3 + 2x^2 + 6 \\ge 19x \\iff 3x^3 + 2x^2 - 19x + 6 \\ge 0,\\] so if we let \\(p(x) = 3x^3 + 2x^2 - 19x + 6\\), then we have to find the set of values of \\(x\\) for which \\(p(x) \\ge 0\\).\n\nCan we factor the polynomial \\(p(x)\\)?\n\nBy the [factor theorem](https://undergroundmathematics.org/glossary/factor-theorem), \\((x-a)\\) is a factor of \\(p(x)\\) if and only if \\(p(a) = 0\\).\n\nLet’s try a few different values for \\(x\\): every cubic equation has at least one real root, and if this is an integer, we have a chance of finding it here.\n\n- \\(p(0) = 6\\);\n\n- \\(p(1) = 3 + 2 - 19 + 6 = -8\\);\n\n- \\(p(2) = 3 \\times 8 + 2 \\times 4 - 19 \\times 2 + 6 = 24 + 8 - 38 + 6 = 0\\).\n\nSo our first factor is\n\n\\((x-2)\\)\n\n. There are thus real constants\n\n\\(\\alpha\\)\n\n,\n\n\\(\\beta\\)\n\nand\n\n\\(\\gamma\\)\n\nsuch that\n\n\\[\\begin{align*} 3x^3 + 2x^2 - 19x + 6 = p(x) &= (\\alpha x^2 + \\beta x + \\gamma)(x-2) \\\\ &= \\alpha x^3 - 2\\alpha x^2 + \\beta x^2 - 2\\beta x + \\gamma x - 2\\gamma \\\\ &= \\alpha x^3 + (\\beta - 2\\alpha) x^2 + (\\gamma - 2\\beta) x - 2\\gamma. \\end{align*}\\]\n\nBy equating coefficients, we have that \\(\\alpha = 3\\), \\(\\gamma = -3\\), and \\(\\beta - 2\\alpha = 2\\), i.e. \\(\\beta = 8\\). Thus, \\[p(x) = (x-2)(3x^2 + 8x - 3).\\] Factorising, we have \\[3x^2 + 8x - 3 = (3x-1)(x+3).\\] Therefore \\[p(x) = (x-2)(3x-1)(x+3).\\]\n\nThe sign of \\(p(x)\\) can only change as \\(x\\) passes over a root of \\(p(x)\\); these roots are \\(x = -3\\), \\(x = \\dfrac{1}{3}\\), and \\(x = 2\\).\n\nThis divides the \\(x\\)-axis into four regions.\n\n- In the first region, with \\(x < -3\\), all three factors are negative, so \\(p(x) < 0\\).\n\n- In the second region, with \\(-3 < x < \\dfrac{1}{3}\\), two factors are negative and one is positive, so \\(p(x) > 0\\).\n\n- In the third, with \\(\\dfrac{1}{3} < x < 2\\), one factor is negative and two are positive, and so \\(p(x) < 0\\).\n\n- Finally, with the fourth, with \\(x > 2\\), all three factors are positive and therefore \\(p(x) > 0\\).\n\nWe therefore have that \\[\\{ x \\in \\mathbb{R} : p(x) \\ge 0 \\} = \\{ x \\in \\mathbb{R} : x \\ge 2 \\} \\cup \\left\\{ x \\in \\mathbb{R} : -3 \\le x \\le \\frac{1}{3} \\right\\}.\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6431",
+   "slug": "r6431",
+   "station": "polynomials",
+   "title": "Can we solve  $\\sqrt{4x+13}-\\sqrt{x+1}=\\sqrt{12-x}?$",
+   "url": "https://undergroundmathematics.org/polynomials/r6431",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we solve  $\\sqrt{4x+13}-\\sqrt{x+1}=\\sqrt{12-x}?$\n\n## Question\n\n1. Solve \\[\\sqrt{4x+13}-\\sqrt{x+1}=\\sqrt{12-x}.\\]\n\n---\n\n1. One root of the equation \\[3x^3+14x^2+2x-4=0\\] is rational. Obtain this root and complete the solution of the equation.\n\n## Suggestion\n\nHow could we get rid of the square roots?\n\nSquaring both sides of this will still leave a square root, but could we rearrange and square again?\n\nIf we do this, will our solutions all be valid?\n\nWhat does the question mean by ‘rational’?\n\nWe could write this root as \\(\\dfrac{a}{b}\\), where the fraction is in lowest terms. What happens if we substitute this into the cubic and simplify?\n\nSince \\(a\\) and \\(b\\) have no common factors, what does this tell us?\n\nCan you find any ways to minimise the number of possibilities for \\(a\\) and \\(b\\) that need checking? Can we then check all the possibilities?\n\n## Solution\n\nSquaring both sides of the equation gives us\n\n\\[\\begin{align*} &(4x+13)+(x+1)-2\\sqrt{(4x+13)(x+1)} = 12-x\\\\ \\Longrightarrow\\quad& 5x+14-12+x = 2\\sqrt{(4x+13)(x+1)}\\\\ \\Longrightarrow\\quad& 3x+1 = \\sqrt{(4x+13)(x+1)}. \\end{align*}\\]\n\nSquaring again implies that\n\n\\[\\begin{align*} &9x^2+6x+1 = (4x+13)(x+1)=4x^2+17x+13 \\\\ \\Longrightarrow\\quad& 5x^2-11x-12 = 0 \\\\ \\Longrightarrow\\quad& (5x+4)(x-3) = 0 \\end{align*}\\]\n\nand so \\(x = -\\dfrac{4}{5}\\) or \\(x = 3\\).\n\nWe know now that these are the only two possibilities for a solution. There is a problem, however; squaring may have intrduced false roots.\n\nFor example, if we have \\(x=\\sqrt{x+2}\\), then squaring gives \\(x^2 = x+2\\), and so \\((x-2)(x+1)=0\\), and \\(x = 2\\) or \\(-1\\).\n\nBut \\(2\\) works in our original equation, while \\(-1\\) does not. So \\(-1\\) is a false root, and \\(2\\) is the only true solution.\n\nSo we need to check whether or not the possible solutions above satisfy our original equation.\n\nIf \\(x = -\\dfrac{4}{5}\\), then the left-hand side is \\[\\sqrt{4\\left(-\\dfrac{4}{5}\\right)+13}-\\sqrt{-\\dfrac{4}{5} + 1} = \\sqrt{\\dfrac{49}{5}}-\\sqrt{\\dfrac{1}{5}}=\\dfrac{1}{\\sqrt{5}}(7-1)=\\dfrac{6}{\\sqrt{5}},\\] while the right-hand side is \\[\\sqrt{12+\\dfrac{4}{5}}=\\sqrt{\\dfrac{64}{5}}=\\dfrac{8}{\\sqrt{5}},\\] which are not equal. Thus \\(x=-\\dfrac{4}{5}\\) is not a solution.\n\nIf \\(x=3\\), then the left-hand side is \\[\\sqrt{4\\times 3+13}-\\sqrt{3 + 1}=5-2=3\\] while the right-hand side is \\[\\sqrt{12-3}=\\sqrt{9}=3.\\] Thus \\(x=3\\) is the only solution to the original equation.\n\n1. One root of the equation \\(3x^3+14x^2+2x-4=0\\) is rational. Obtain this root and complete the solution of the equation.\n\nLet \\(f(x)=3x^3+14x^2+2x-4\\). Assume the given rational root is \\(\\dfrac{a}{b}\\), where the highest common factor of \\(a\\) and \\(b\\) is \\(1\\) and, without loss of generality, \\(b>0\\).\n\nSubstituting this solution into \\(f(x)=0\\) and multiplying through by \\(b^3\\) we find \\[3a^3+14a^2b+2ab^2-4b^3=0.\\] Note that this means \\(b\\) divides \\(3a^3\\) (since it divides every other term) and so \\(b\\) is \\(1\\) or \\(3\\) (since it cannot share a factor with \\(a\\)).\n\nNow \\(2\\) divides \\(14a^2b+2ab^2-4b^3\\), and so \\(2\\) divides \\(3a^3\\), and thus \\(2\\) divides \\(a\\), say \\(a = 2c\\). This gives us \\[6c^3 + 14c^2b + cb^3 - b^3 = 0,\\] and so \\(c\\) divides \\(b^3\\). But \\(c\\) and \\(b\\) have no common factor, and so \\(c\\) must be \\(\\pm 1\\), and \\(a\\) must be \\(\\pm 2\\).\n\nSo the only possible rational roots for the equation are \\(\\dfrac{2}{3}, -\\dfrac{2}{3}, 2\\) or \\(-2\\).\n\nIt is easy to check that \\(-\\dfrac{2}{3}\\) is the only one to satisfy the equation. Thus \\(x=-\\dfrac{2}{3}\\) is the rational root. Factorising the cubic we find \\[3x^3 + 14x^2 + 2x - 4 = (3x+2)(x^2+4x-2)=0.\\] So either \\(x = -\\dfrac{2}{3}\\), or \\(x^2+4x-2=0\\) and so \\[x=\\dfrac{-4\\pm\\sqrt{16-4\\times(-2)}}{2}=-2\\pm\\sqrt{6}.\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6488",
+   "slug": "r6488",
+   "station": "polynomials",
+   "title": "If dividing by $x+a$ or $x-2a$ gives the same remainder, what's $a$?",
+   "url": "https://undergroundmathematics.org/polynomials/r6488",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# If dividing by $x+a$ or $x-2a$ gives the same remainder, what's $a$?\n\n## Question\n\n1. The expressions \\(px^4 - 5x + q\\) and \\(x^4 - 2x^3 - px^2 - qx - 8\\) have a common factor \\(x - 2\\). Find the value of \\(p\\) and of \\(q\\).\n\n---\n\n1. The expression \\(x^3 - x^2 - 2x - 3\\) has the same remainder when divided by \\(x + a\\) and by \\(x - 2a\\). Find the non-zero values of \\(a\\) and the corresponding values of the remainder.\n\n## Solution\n\n1. The expressions \\(px^4 - 5x + q\\) and \\(x^4 - 2x^3 - px^2 - qx - 8\\) have a common factor \\(x-2\\). Find the value of \\(p\\) and of \\(q\\).\n\nAs \\(x-2\\) is a factor of both of these polynomials, by the [factor theorem](https://undergroundmathematics.org/glossary/factor-theorem), both expressions are zero when evaluated at \\(x = 2\\) .\n\nWe thus have the simultaneous equations\n\n\\[\\begin{align*} p \\times 2^4 - 5 \\times 2 + q &= 0, \\\\ 2^4 - 2 \\times 2^3 - p \\times 2^2 - q \\times 2 - 8 &= 0. \\end{align*}\\]\n\nThat is,\n\n\\[\\begin{align*} 16p + q &= 10, \\\\ -4p - 2q &= 8. \\end{align*}\\]\n\nThe second equation becomes \\(q = -4-2p\\) when dividing through by \\(2\\). By substituting this into the first equation, we have that \\[16p + (-4-2p) = 10.\\] That is, \\(14p = 14\\) or \\(p = 1\\). Consequently, \\(q = -4-2 = -6\\).\n\n1. The expression \\(x^3 - x^2 - 2x - 3\\) has the same remainder when divided by \\(x+a\\) and by \\(x-2a\\). Find the non-zero values of \\(a\\) and the corresponding values of the remainder.\n\nThe\n\nremainder theorem\n\ntells us that the expression evaluated at\n\n\\(x=-a\\)\n\nis equal to the expression evaluated at\n\n\\(x=2a\\)\n\n. This gives us\n\n\\[\\begin{equation} -a^3 - a^2 + 2a - 3 = 8a^3 - 4a^2 - 4a - 3. \\label{eq:1} \\end{equation}\\]\n\nThat is, \\(a\\) is such that \\[9a^3 - 3a^2 - 6a = 0\\] or \\[3a(3a^2 - a - 2) = 0.\\] Factorising, we see that \\[3a^2 - a - 2 = (3a + 2)(a - 1)\\] and so the non-zero values of \\(a\\) that satisfy \\(\\eqref{eq:1}\\) are \\(a = 1\\) and \\(a = -\\dfrac{2}{3}\\).\n\nBy substituting into either side of \\(\\eqref{eq:1}\\), the remainder in the case when \\(a=1\\) is given by \\[-1^3 - 1^2 + 2 \\times 1 - 3 = -3,\\] and the remainder in the case when \\(a=-\\dfrac{2}{3}\\) is given by \\[-\\left(-\\frac{2}{3}\\right)^3 - \\left(-\\frac{2}{3}\\right)^2 + 2 \\times \\left( -\\frac{2}{3} \\right) - 3 = \\frac{8 - 12 - 36 - 81}{27} = -\\frac{121}{27}.\\]\n\nHow could we check our answers?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6546",
+   "slug": "r6546",
+   "station": "polynomials",
+   "title": "Can we prove the Arithmetic and Geometric Mean Inequality?",
+   "url": "https://undergroundmathematics.org/polynomials/r6546",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we prove the Arithmetic and Geometric Mean Inequality?\n\n## Question\n\n1. Prove that, if \\(a\\) and \\(b\\) are real, \\[\\frac{1}{2}(a^2+b^2)\\geq ab.\\]\n\n---\n\n1. Deduce that, if \\(a\\),\\(b\\) and \\(c\\) are real, \\[a^2+b^2+c^2\\geq ab+bc+ca.\\]\n\n---\n\n1. Show that \\(a+b+c\\) is a factor of \\(a^3+b^3+c^3-3abc\\) and find the other factor of this expression.\n\n---\n\n1. Deduce that, if \\(p\\), \\(q\\) and \\(r\\) are positive, \\[\\frac{1}{3}(p+q+r)\\geq (pqr)^{\\frac{1}{3}}.\\]\n\n## Suggestion\n\nWhat happens if we bring everything to the left-hand side and try to factorise?\n\nCan we use the first part of the question here?\n\nCould we use earlier parts to help? Would putting \\(p = a^3, q = b^3, r = c^3\\) be more convenient?\n\n## Solution\n\nThe inequality holds if and only if \\(a^2+b^2\\geq 2ab\\), which is true if and only if \\(a^2- 2ab +b^2\\geq 0.\\)\n\nThis is true, since \\(a^2-2ab+b^2=(a-b)^2,\\) and any square is either zero or positive. Hence \\[\\frac{1}{2}(a^2+b^2)\\geq ab.\\]\n\nThis is called the *arithmetic mean-geometric mean inequality*, or the *AM-GM inequality*, for two variables.\n\nThe quantity \\(\\frac{1}{2}(x + y)\\) is the *arithmetic mean* of \\(x\\) and \\(y\\), and (if \\(x\\) and \\(y\\) are positive) \\(\\sqrt{xy}\\) is the *geometric mean* of \\(x\\) and \\(y\\).\n\nSo we have established that the arithmetic mean is always greater than or equal to the geometric mean.\n\nThis inequality is extremely useful for solving many mathematics problems.\n\nWe can use the result in (i) three times for\n\n\\(a\\)\n\nand\n\n\\(b\\)\n\n,\n\n\\(b\\)\n\nand\n\n\\(c\\)\n\nand\n\n\\(c\\)\n\nand\n\n\\(a\\)\n\n, namely\n\n\\[\\begin{align*} \\frac{1}{2}(a^2+b^2) &\\geq ab, \\\\ \\frac{1}{2}(b^2+c^2) &\\geq bc, \\\\ \\frac{1}{2}(c^2+a^2) &\\geq ca. \\end{align*}\\]\n\nBy adding them up we get \\[\\frac{1}{2}(a^2+b^2)+\\frac{1}{2}(b^2+c^2)+\\frac{1}{2}(c^2+a^2)\\geq ab+bc+ca,\\] which implies \\[a^2+b^2+c^2\\geq ab+bc+ca.\\]\n\nWe can use the Factor Theorem here.\n\nThe Factor Theorem says that the polynomial \\(f(x)\\) has a factor \\(x-p\\) if and only if \\(f(p)=0\\).\n\nLet’s put \\(f(a) = a^3+b^3+c^3-3abc\\), so \\(f(a)\\) is a degree \\(3\\) polynomial in \\(a\\). Thus \\(a+b+c\\) will be a factor of \\(f(a)\\) if and only if \\(f(-b-c) = 0\\).\n\nNow \\[f(-b-c) = (-b-c)^3+b^3+c^3 -3(-b-c)bc\\] \\[= -b^3-3b^2c-3bc^2-c^3+b^3+c^3+3b^c+3c^2b =0.\\]\n\nSo \\(a+b+c\\) does divide \\(a^3+b^3+c^3-3abc\\).\n\nWe need the other factor, which must include \\(a^2 + b^2 + c^2\\), because we need to create \\(a^3 + b^3 + c^3\\).\n\nLet’s say that \\((a+b+c)(a^2+b^2+c^2+g)=a^3+b^3+c^3-3abc\\), where \\(g\\) is a polynomial in \\(a, b\\) and \\(c\\).\n\nSo \\[a^3+b^3+c^3+ab^2+ac^2+ba^2+ca^2+cb^2 +(a+b+c)g = a^3+b^3+c^3-3abc\\],\n\nwhich is true if and only if\n\n\\[ab^2+ac^2+ba^2+ca^2+cb^2 +3abc +(a+b+c)g =0,\\] or \\[(ab+bc+ca)(a+b+c) + (a+b+c)g=0.\\]\n\nSo \\(g = -(ab+bc+ca)\\), and \\[a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2+-ab-bc-ca).\\]\n\nLet \\(a=p^{\\frac{1}{3}}\\), \\(b=q^{\\frac{1}{3}}\\) and \\(c=r^{\\frac{1}{3}}\\).\n\nThen in terms of \\(a\\), \\(b\\) and \\(c\\), we have to prove that \\[a^3+b^3+c^3\\geq 3abc.\\]\n\nBy (iii) we know that \\[a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)\\] and this is greater or equal to \\(0\\) since, by (ii), \\(a^2+b^2+c^2- ab-bc-ca\\geq 0\\), and \\(a+b+c\\geq 0\\), as \\(a\\), \\(b\\) and \\(c\\) are positive.\n\nTherefore, \\[a^3+b^3+c^3-3abc\\geq 0,\\] which implies \\[a^3+b^3+c^3\\geq 3abc.\\]\n\nHence, \\[\\frac{1}{3}(p+q+r)\\geq (pqr)^{\\frac{1}{3}}.\\]\n\nThis is the arithmetic mean-geometric mean (AM-GM) inequality for three variables: again, the arithmetic mean is always greater than or equal to the geometric mean.\n\nWhat happens if we try to generalise to more variables?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6577",
+   "slug": "r6577",
+   "station": "polynomials",
+   "title": "Can we factorise $6x^3+5x^2-17x-6$ completely?",
+   "url": "https://undergroundmathematics.org/polynomials/r6577",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.3",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we factorise $6x^3+5x^2-17x-6$ completely?\n\n## Question\n\n1. Given that \\(f(x)=6x^3+5x^2-17x-6\\),  find the remainder when \\(f(x)\\) is divided by \\(x-2\\), find the remainder when \\(f(x)\\) is divided by \\(x+2\\), factorise \\(f(x)\\) completely.\n\n---\n\n1. Given that the expression \\(ax^3-x^2+bx+18\\) is exactly divisible by \\(x^2+x-6\\), find the value of \\(a\\) and \\(b\\).\n\n## Suggestion\n\nWould it help us to recall the [remainder theorem](https://undergroundmathematics.org/glossary/remainder-theorem)?\n\n\\(\\qquad\\) iii. factorise \\(f(x)\\) completely.\n\nCan we find a remainder that is zero? What does this tell us about the roots of \\(f(x)\\)?\n\nWould it help to try to factorise \\(x^2+x-6\\)?\n\n## Solution\n\nThe remainder theorem tells us that if \\(f(c)=r\\) for some polynomial \\(f(x)\\), then \\(r\\) is the remainder when \\(f(x)\\) is divided by \\(x-c\\).\n\nIn our case, \\(c\\) is \\(2\\) for the first part, and \\(-2\\) for the second.\n\nWe can now substitute these values into \\(f(x)\\), giving\n\n\\[\\begin{align*} f(+2)&=28,\\\\ f(-2)&=0. \\end{align*}\\]\n\nTherefore the remainder when \\(f(x)\\) is divided by \\(x-2\\) is \\(28\\), and the remainder on dividing by \\(x+2\\) is \\(0\\).\n\n\\(\\qquad\\) (iii) factorise \\(f(x)\\) completely.\n\nSince the remainder of \\(f(x)\\) divided by \\(x+2\\) is zero, we know \\(x+2\\) is a factor of \\(f(x)\\).\n\nCheck the [factor theorem](https://undergroundmathematics.org/glossary/factor-theorem) if you need to…\n\nWe now know that \\(f(x)\\) is of the form \\((x+2)(ax^2+bx+c)\\), where \\(a\\), \\(b\\) and \\(c\\) are constants to be found. This means \\[f(x) = 6x^3 + 5x^2 - 17x - 6 = (x+2)(ax^2+bx+c).\\]\n\nWe can find \\(a\\), \\(b\\) and \\(c\\) by considering the coefficients of the different powers of \\(x\\).\n\nThe only cubic term on the right hand side is \\(ax^3\\), so we can see by comparing it with the left hand side that \\(a = 6\\).\n\nThe constant term is \\(2c\\), which must equal \\(-6\\), and so \\(c = -3\\).\n\nThere’ll be two square terms in the expansion of the right hand side, namely\n\n\\(12x^2\\)\n\nand\n\n\\(bx^2\\)\n\n. Therefore\n\n\\[\\begin{align*} 12 + b &= 5 \\\\ \\implies b &= -7. \\end{align*}\\]\n\nWe can check this by looking at the linear terms; on the right hand side, we get\n\n\\(2bx\\)\n\nand\n\n\\(-3x\\)\n\n, so\n\n\\[\\begin{align*} 2b - 3 &= -17 \\\\ \\implies 2b &= -14 \\\\ \\implies b &= -7, \\quad \\text{as above}. \\end{align*}\\]\n\nTherefore we can write \\(f(x) = (x + 2)(6x^2 - 7x - 3)\\).\n\nThe quadratic bracket here can be factorised by inspection, or by using the quadratic formula if we’re stuck. We find that \\[f(x) = (x + 2)(3x + 1)(2x - 3).\\]\n\nOr we could use polynomial division…\n\nWe could also have found the quadratic \\(6x^2 - 7x - 3\\) by using polynomial division. \\[\\begin{array}{r} 6x^2\\phantom{1}{}-7x-3 \\cmlongdivbr x+2 \\cmlongdiv{6x^3\\phantom{1}{}+5x^2-17x-6} \\cmlongdivbr \\underline{6x^3+12x^2}\\phantom{{}-17x-6} \\cmlongdivbr \\phantom{6x^3}{}-7x^2-17x\\phantom{{}-6} \\cmlongdivbr \\phantom{6x^3}{}\\underline{{}-7x^2-14x}\\phantom{{}-6} \\cmlongdivbr \\phantom{6x^3+5x^2}{}-3x-6 \\cmlongdivbr \\phantom{6x^3+5x^2}\\underline{{}-3x-6} \\cmlongdivbr \\phantom{6x^3+5x^2-17x+{}}0 \\cmlongdivbr \\end{array}\\]\n\nAlthough the question doesn’t ask for this, click below for a plot of \\(y=f(x)\\), with the three roots indicated.\n\nShow Plot\n\nLet’s factorise; \\(x^2 + x - 6 = (x + 3)(x - 2)\\).\n\nSo we know that \\((x-2)\\) and \\((x+3)\\) are factors of the above cubic expression, and so if we substitute in \\(x=2\\) or \\(x=-3\\) to this cubic, the result has to be zero.\n\nThis leads to the following pair of equations:\n\n\\[\\begin{align} 8a+2b+14&=0 \\quad \\implies \\quad 4a + b + 7 = 0 \\label{eq:I}\\\\ -27a-3b+9&=0 \\quad \\implies \\quad -9a - b + 3 = 0. \\label{eq:II} \\end{align}\\]\n\nWe can solve these by adding them together:\n\n\\[\\begin{align*} -5a + 10 &= 0 \\\\ \\implies a &= 2, \\end{align*}\\]\n\nand substituting into\n\n\\(\\eqref{eq:I}\\)\n\n, we find\n\n\\[\\begin{align*} 4 \\times 2 + b + 7 &= 0 \\\\ \\implies b &= -15. \\end{align*}\\]\n\nWe can check this by substituting both \\(a\\) and \\(b\\) into \\(\\eqref{eq:II}\\): \\[-9 \\times 2 - (-15) + 3 = 0.\\]\n\nWe therefore find \\(a= 2\\), \\(b = 15\\), and that the full cubic function is \\(2x^3-x^2-15x+18\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6601",
+   "slug": "r6601",
+   "station": "power-series",
+   "title": "What is this algebraic fraction if its expansion has no $x$ term?",
+   "url": "https://undergroundmathematics.org/power-series/r6601",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.6",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# What is this algebraic fraction if its expansion has no $x$ term?\n\n## Question\n\nIn the expansion of \\[\\frac{1+3x}{(1+ax)^2}\\] in ascending powers of \\(x\\), the coefficient of \\(x\\) is zero. Find the value of the constant \\(a\\), and, when \\(a\\) has this value, obtain the expansion up to and including the term in \\(x^3\\).\n\n## Solution\n\nWe first need to find an expansion for the denominator using the standard binomial expansion.\n\nThe [binomial theorem](https://undergroundmathematics.org/glossary/binomial-theorem) says that, if \\(|x| < 1\\), then \\[(1+x)^r = 1 + rx + \\frac{r(r-1)}{2!} x^2 + \\frac{r(r-1)(r-2)}{3!} x^3 + \\dotsb\\]\n\nIn our case,\n\n\\(r=-2\\)\n\nand we have\n\n\\(ax\\)\n\nin place of\n\n\\(x\\)\n\n, so\n\n\\[\\begin{align*} (1+ax)^{-2} &= 1 -2ax + \\frac{-2(-3)}{2!}(ax)^2 + \\frac{-2(-3)(-4)}{3!} (ax)^3 + \\dotsb \\\\ &=1-2ax+3a^2x^2-4a^3x^3 +\\dotsb \\end{align*}\\]\n\nThe term in \\(x\\) of the expansion of \\(\\dfrac{1+3x}{(1+ax)^2}\\) comes from \\(1 \\times (-2ax) + 3x \\times 1\\). If the coefficient is zero then we know that \\(3-2a=0\\) so \\(a=\\dfrac{3}{2}\\).\n\n…and, when \\(a\\) has this value, obtain the expansion up to and including the term in \\(x^3\\).\n\nMultiplying by the numerator we get \\[\\frac{1+3x}{(1+ax)^2} = 1 + (3-2a)x+(3a^2-6a)x^2+(9a^2-4a^3)x^3+ \\dotsb\\] and substituting for \\(a\\) we get \\[\\frac{1+3x}{(1+\\frac{3}{2}x)^2}=1-\\frac{9}{4}x^2+\\frac{27}{4}x^3 \\quad\\text{ up to and including the term in } x^3.\\]\n\nNote that the condition for the expansion to be valid is \\(\\big|ax\\big|<1\\) which means that \\(\\big|x\\big|<\\frac{2}{3}\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6612",
+   "slug": "r6612",
+   "station": "polynomials",
+   "title": "Can we sketch the graph $y=x^3-x^2-x+1$?",
+   "url": "https://undergroundmathematics.org/polynomials/r6612",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we sketch the graph $y=x^3-x^2-x+1$?\n\n## Question\n\nA sketch of the graph \\(y=x^3-x^2-x+1\\) appears on which of the following axes?\n\n|  |  |\n|---|---|\n|  |  |\n\n## Suggestion\n\nWhat do we know about the shape of the curve from the coefficient of \\(x^3\\)?\n\nWhere does the curve cut the axes?\n\nCan we factorise the polynomial expression?\n\n## Solution\n\nThe coefficient of \\(x^3\\) is positive, so for large \\(x\\) we get a positive \\(y\\), in which case (a) cannot be the graph.\n\nWhen \\(x=0\\), \\(y=1\\), so the \\(y\\)-intercept is \\(+1\\) and therefore (b) cannot be the graph.\n\nWe note that if \\(x=1\\) then \\(y=0\\), so the point \\((1,0)\\) is on the graph, which is not the case for (d).\n\nHence, the correct answer is (c).\n\nAlternatively, we can factorise the graph into \\(y=(x+1)(x-1)^2\\), using the Factor Theorem.\n\nThis curve cuts the \\(x\\)-axis at \\(-1\\), and touches it at \\(1\\). Hence, the correct answer is (c).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6790",
+   "slug": "r6790",
+   "station": "polynomials",
+   "title": "If we divide by $x-1$, the remainder is?",
+   "url": "https://undergroundmathematics.org/polynomials/r6790",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# If we divide by $x-1$, the remainder is?\n\n## Question\n\nWhen \\[1 + 3x + 5x^2 + 7x^3 + \\dots + 99x^{49}\\] is divided by \\(x-1\\) the remainder is\n\n1. \\(2000\\),\n\n---\n\n1. \\(2500\\),\n\n---\n\n1. \\(3000\\),\n\n---\n\n1. \\(3500\\).\n\n## Solution\n\nThe remainder theorem tells us that when a polynomial \\(p(x)\\) is divided by \\(x-1\\) then the remainder is \\(p(1)\\), which in this case is \\[1 + 3 + 5 + 7 + \\dots + 99.\\] This is an arithmetic progression, and so sums to \\[\\frac{1}{2}\\times 50(1+99) = 2500\\] and the answer is (b).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7036",
+   "slug": "r7036",
+   "station": "polynomials",
+   "title": "When is $n^2 x^{2n+3} - 25n x^{n+1} + 150x^7$ divisible by $x^2-1$?",
+   "url": "https://undergroundmathematics.org/polynomials/r7036",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# When is $n^2 x^{2n+3} - 25n x^{n+1} + 150x^7$ divisible by $x^2-1$?\n\n## Question\n\nThe polynomial\n\n\\[n^2 x^{2n+3} - 25n x^{n+1} + 150x^7\\]\n\nhas \\(x^2 - 1\\) as a factor\n\n1. for no values of \\(n\\),\n\n---\n\n1. for \\(n=10\\) only,\n\n---\n\n1. for \\(n=15\\) only,\n\n---\n\n1. for \\(n=10\\) and \\(n=15\\) only.\n\n## Suggestion\n\nGiven that \\(x^2-1\\) is a factor, what linear factors of the polynomial do we know?\n\nCan we now use the factor theorem on the polynomial twice?\n\nWe may need to be more careful with one factor than the other…\n\n## Solution\n\nWe can factorise \\(x^2 -1\\) as\n\n\\[x^2 -1 = (x+1)(x-1),\\]\n\nso for the polynomial\n\n\\[n^2 x^{2n+3} - 25n x^{n+1} + 150x^7\\]\n\nto have \\(x^2-1\\) as a factor, the value of the polynomial when \\(x=\\pm1\\) must be \\(0\\) (from the [factor theorem](https://undergroundmathematics.org/glossary/factor-theorem)).\n\nWhen \\(x=+1\\), we need\n\n\\[n^2 - 25n + 150=0,\\]\n\nwhich can be factorised as\n\n\\[(n-10)(n-15)=0,\\]\n\nso \\(n=10\\) or \\(n=15\\).\n\nWhen \\(x=-1\\), we need\n\n\\[0 = \\begin{cases} -n^2 + 25n - 150 & n \\textrm{ even} \\\\ -n^2 - 25n - 150 & n \\textrm{ odd}, \\\\ \\end{cases}\\]\n\nwhich can be factorised as\n\n\\[0 = \\begin{cases} -(n-10)(n-15) & n \\textrm{ even} \\\\ -(n+10)(n+15) & n \\textrm{ odd}, \\\\ \\end{cases}\\]\n\nwhich gives\n\n\\[\\begin{cases} n=10 & n \\textrm{ even } [n \\neq 15 \\text{ because } n \\text{ must be even]} \\\\ n=-15 & n \\textrm{ odd } [n \\neq -10 \\text{ because } n \\text{ must be odd]}. \\\\ \\end{cases}\\]\n\nSo for both \\(x=+1\\) and \\(x=-1\\) to be solutions of the polynomial, we must have \\(n=10\\).\n\nSo the answer is (b).\n\nAlternatively we could say, when \\(x = -1\\) we have \\(n^2+25n(-1)^{n+1} +150 =0\\).\n\nSubtracting this from \\(n^2 - 25n + 150=0,\\) we get \\(25n((-1)^{n+1}+1)=0\\), and so \\(n\\) must be even.\n\nSo \\(n\\) must be \\(10\\) or \\(15\\), and also even, so the only possibility is \\(n = 10\\). The answer is (b).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7108",
+   "slug": "r7108",
+   "station": "polynomials",
+   "title": "When is  $x^n + 1$ divisible by $x + 1$?",
+   "url": "https://undergroundmathematics.org/polynomials/r7108",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# When is  $x^n + 1$ divisible by $x + 1$?\n\n## Question\n\nShow that \\(x^n + 1\\) is divisible by \\(x + 1\\) when, and only when, \\(n\\) is an odd integer.\n\n## Suggestion\n\nWe are being asked when a polynomial \\(p(x)\\) is divisible by \\(x-a\\).\n\nCould we use the factor theorem here?\n\n## Solution\n\nBy the [factor theorem](https://undergroundmathematics.org/glossary/factor-theorem), given a polynomial \\(p(x)\\) with real coefficients and some real number \\(a\\), we know that \\(x-a\\) is a factor of \\(p(x)\\) if and only if \\(p(a) = 0\\).\n\nIf we let\n\n\\(p(x) = x^n + 1\\)\n\nand\n\n\\(a = -1\\)\n\n, by the factor theorem we have that\n\n\\[\\begin{align*} \\text{$x^n + 1$ is divisible by $x + 1$} &\\iff (-1)^n + 1 = 0 \\\\ &\\iff (-1)^n = -1 \\\\ &\\iff \\text{$n$ is an odd integer}. \\end{align*}\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7243",
+   "slug": "r7243",
+   "station": "polynomials",
+   "title": "When is $x^2 +1$ a factor of  $(3+x^4)^n-(x^2+3)^n(x^2-1)^n$?",
+   "url": "https://undergroundmathematics.org/polynomials/r7243",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# When is $x^2 +1$ a factor of  $(3+x^4)^n-(x^2+3)^n(x^2-1)^n$?\n\n## Question\n\nLet \\(n\\) be a positive integer. Then \\(x^2 +1\\) is a factor of\n\n\\[(3+x^4)^n-(x^2+3)^n(x^2-1)^n\\]\n\nfor\n\n1. all \\(n\\);\n\n---\n\n1. even \\(n\\);\n\n---\n\n1. odd \\(n\\);\n\n---\n\n1. \\(n \\geq 3\\);\n\n---\n\n1. no values of \\(n\\).\n\n## Suggestion\n\nWhat ideas can we use if we know \\(x^2+1\\) is a factor?\n\nWhat is the same and what is different about this question compared to other polynomial factorisation questions?\n\n## Solution\n\nNote that the polynomial is a function of \\(x^2\\).\n\nTherefore, let the polynomial \\((3+x^4)^n-(x^2+3)^n(x^2-1)^n = f(x^2)\\).\n\nFrom the [factor theorem](https://undergroundmathematics.org/glossary/factor-theorem) we know that if \\(x^2+1\\) is a factor of \\(f(x^2)\\), then \\(f(-1) = 0\\).\n\nThis gives:\n\n\\[(3+1)^n-(-1+3)^n(-1-1)^n = 4^n - (-1)^n4^n.\\]\n\nThis is zero if and only if \\(n\\) is even, and so the factor theorem tells us the answer is (b).\n\nIf we know about complex numbers, we can say the solution to \\(x^2 +1 = 0\\) is \\(x = i, -i.\\)\n\nPutting either of these values into \\((3+x^4)^n-(x^2+3)^n(x^2-1)^n\\) for \\(x\\) gives us \\(4^n - (-1)^n4^n\\), as before.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7436",
+   "slug": "r7436",
+   "station": "power-series",
+   "title": "Can we expand $(1+x)^{3/2} + (1-2x)^{3/4}$ as far as the term in $x^3$?",
+   "url": "https://undergroundmathematics.org/power-series/r7436",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.6",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we expand $(1+x)^{3/2} + (1-2x)^{3/4}$ as far as the term in $x^3$?\n\n## Question\n\nUse the binomial theorem to expand\n\n\\[\\begin{equation*} (1+x)^\\frac{3}{2} + (1-2x)^\\frac{3}{4} \\end{equation*}\\]\n\nas far as the term in \\(x^3\\).\n\n## Solution\n\nThe\n\nbinomial theorem\n\nsays that, if\n\n\\(|x| < 1\\)\n\n, then\n\n\\[\\begin{equation*} (1+x)^r = 1 + rx + \\frac{r(r-1)}{2!} x^2 + \\frac{r(r-1)(r-2)}{3!} x^3 + \\dotsb \\end{equation*}\\]\n\nand so to expand\n\n\\[\\begin{equation*} (1+x)^\\frac{3}{2} + (1-2x)^\\frac{3}{4} \\end{equation*}\\]\n\nas far as the term in \\(x^3\\), we can\n\n1. separately expand \\((1+x)^\\frac{3}{2}\\) and \\((1-2x)^\\frac{3}{4}\\) up to \\(x^3\\) and\n\n---\n\n1. collect the terms.\n\nThus\n\n\\[\\begin{align*} (1+x)^\\frac{3}{2} &= 1 + \\frac{3}{2}x + \\frac{\\frac{3}{2} \\times \\frac{1}{2}}{2!} x^2 + \\frac{\\frac{3}{2} \\times \\frac{1}{2} \\times \\left(- \\frac{1}{2} \\right)}{3!} x^3 + \\ldots\\\\ &= 1 + \\frac{3}{2} x + \\frac{3}{8} x^2 - \\frac{3}{48} x^3 + \\ldots, \\end{align*}\\]\n\nand\n\n\\[\\begin{align*} (1-2x)^\\frac{3}{4} &= 1 + \\frac{3}{4} (-2x) + \\frac{\\frac{3}{4} \\times \\left( -\\frac{1}{4} \\right)}{2!} (-2x)^2 + \\frac{\\frac{3}{4} \\times \\left( -\\frac{1}{4} \\right) \\times \\left( -\\frac{5}{4} \\right)}{3!} (-2x)^3 + \\ldots\\\\ &= 1 - \\frac{3}{2} x - \\frac{3}{8} x^2 - \\frac{15}{48} x^3 + \\ldots, \\end{align*}\\]\n\nand therefore\n\n\\[\\begin{align*} (1+x)^\\frac{3}{2} + (1-2x)^\\frac{3}{4} &= \\left( 1 + \\frac{3}{2} x + \\frac{3}{8} x^2 - \\frac{3}{48} x^3 \\right) + \\left( 1 - \\frac{3}{2} x - \\frac{3}{8} x^2 - \\frac{15}{48} x^3 \\right)+ \\ldots \\\\ &= 2 - \\frac{18}{48} x^3 + \\ldots \\\\ &= 2 - \\frac{3}{8} x^3 + \\ldots \\end{align*}\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7792",
+   "slug": "r7792",
+   "station": "chain-rule",
+   "title": "How many real roots does $(x-1)(x+2)(x+3)=3x$ have?",
+   "url": "https://undergroundmathematics.org/chain-rule/r7792",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.5",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# How many real roots does $(x-1)(x+2)(x+3)=3x$ have?\n\n## Question\n\nExpress \\(\\dfrac{3x}{(x-1)(x+2)}\\) in partial fractions.\n\nShow that \\(\\dfrac{dy}{dx}\\) is negative at all points on the graph of \\[y=\\frac{3x}{(x-1)(x+2)}.\\]\n\nSketch this graph, showing the two asymptotes parallel to the \\(y\\)-axis and the asymptote perpendicular to the \\(y\\)-axis.\n\nBy sketching on the same diagram a second graph (the equation of which should be stated), or otherwise, find the number of real roots of the equation \\[(x-1)(x+2)(x+3)=3x.\\]\n\n## Suggestion\n\nHow does using partial fractions help us to differentiate the expression?\n\nThings to look out for when curve sketching:\n\n- asymptotes;\n\n- intercepts;\n\n- stationary points and their nature;\n\n- behaviour as \\(x\\rightarrow \\pm \\infty\\).\n\nCan we make this look something like the graph we’ve just sketched?\n\nCould we make the roots of the equation into the intersections between the original graph and the new graph?\n\n## Solution\n\nLet \\[\\frac{3x}{(x-1)(x+2)} = \\frac{A}{x-1} + \\frac{B}{x+2}\\]\n\nThen by multiplying through by \\((x-1)(x+2)\\), we have \\[3x = A(x+2) + B(x-1).\\]\n\nIf we let\n\n\\(x = 1\\)\n\n, then our equation becomes\n\n\\[\\begin{align*} 3 = 3A, \\\\ \\text{so} \\qquad A = 1. \\end{align*}\\]\n\nIf we now choose to use\n\n\\(x = -2\\)\n\n, then we have\n\n\\[\\begin{align*} -6 = -3B, \\\\ \\text{so} \\qquad B = 2. \\end{align*}\\]\n\nAlternatively, we can compare coefficients.\n\nComparing coefficients\n\nWe first need to expand the terms on the right hand side of the equation:\n\n\\[\\begin{align*} 3x = Ax + 2A + Bx - 1B, \\\\ \\text{so} \\qquad 3x = (A + B)x + (2A - B). \\end{align*}\\]\n\nLooking at the constant terms on each side of the equation, we see that \\(2A - B = 0\\), and looking at the terms in \\(x\\) on each side, we find \\(3 = A + B\\).\n\nAdding these two equations gives \\(A = 1\\), and from there \\(B = 2\\).\n\nSo we have \\[\\frac{3x}{(x-1)(x+2)} = \\frac{1}{x-1} + \\frac{2}{x+2}.\\]\n\nWe differentiate the partial fractions to obtain \\[\\frac{dy}{dx} = -\\frac{1}{(x-1)^2} - \\frac{2}{(x+2)^2}.\\]\n\nWe can see that this must be negative at all points, because each term is negative.\n\nThe gradient is not defined at \\(x = 1, -2\\).\n\nWhen \\(x = 0\\), \\(y = 0\\). There are no other points where the curve crosses the axes.\n\nThe two asymptotes parallel to the \\(y\\)-axis are \\(x=1\\) and \\(x=-2\\).\n\nWe have determined that \\(\\dfrac{dy}{dx}\\) is always negative, and so it cannot equal \\(0\\), and thus there are no stationary points.\n\nWe also observe that as \\(x\\rightarrow \\pm \\infty\\), \\(y\\rightarrow 0\\).\n\nWe can now confidently sketch the graph:\n\nWe observe that the equation can be rearranged to \\[x+3=\\frac{3x}{(x-1)(x+2)},\\] which suggests sketching the graph \\(y=x+3\\) onto the original graph.\n\nThere are three points of intersection for the two graphs, so there are three real roots for the equation \\((x-1)(x+2)(x+3)=3x\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7991",
+   "slug": "r7991",
+   "station": "polynomials",
+   "title": "Can we factorise $a^3(b-c)+b^3(c-a)+c^3(a-b)$?",
+   "url": "https://undergroundmathematics.org/polynomials/r7991",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we factorise $a^3(b-c)+b^3(c-a)+c^3(a-b)$?\n\n## Question\n\n1. Prove that \\[\\frac{1}{(2-\\sqrt{3})^3}+\\frac{1}{(2+\\sqrt{3})^3}=52.\\]\n\n---\n\n1. Show that \\((a-b)\\) is a factor of \\[a^3(b-c)+b^3(c-a)+c^3(a-b)\\] and hence factorise the expression completely.\n\n## Suggestion\n\nCould we write these two fractions as a single fraction?\n\nWhat happens if we expand \\((a+b)^3 + (a-b)^3?\\)\n\n## Solution\n\nWe first write the left hand side as a single fraction, \\[\\frac{1}{(2-\\sqrt{3})^3}+\\frac{1}{(2+\\sqrt{3})^3}=\\frac{(2+\\sqrt{3})^3 +(2-\\sqrt{3})^3}{(2-\\sqrt{3})^3(2+\\sqrt{3})^3},\\] What is the denominator? We have \\[(2-\\sqrt{3})^3(2+\\sqrt{3})^3= \\bigl((2-\\sqrt{3})(2+\\sqrt{3})\\bigr)^3=(4-3)^3=1^3=1.\\]\n\nSo our fraction becomes \\[(2+\\sqrt{3})^3+(2-\\sqrt{3})^3.\\]\n\nWe can use the binomial theorem to write\n\n\\[\\begin{align*} (a+b)^3 &= a^3 + 3a^2b + 3ab^2 + b^3\\\\ (a-b)^3 &= a^3 - 3a^2b + 3ab^2 - b^3, \\end{align*}\\]\n\nso that we have \\((a+b)^3+(a-b)^3 = 2a^3 +6ab^2.\\) Thus \\[(2+\\sqrt{3})^3 +(2-\\sqrt{3})^3 = 2\\times 2^3+6\\times 2 \\times 3 = 52,\\] as required.\n\nLet’s define \\(Q(a,b,c)= a^3(b-c)+b^3(c-a)+c^3(a-b).\\)\n\nWe can show that \\((a-b)\\) is a factor of this expression using the [Factor Theorem](https://undergroundmathematics.org/glossary/factor-theorem).\n\nThis says that \\((x-p)\\) divides the polynomial \\(P(x)\\) if and only if \\(P(p) = 0\\).\n\nSo if we regard \\(Q\\) as a polynomial in \\(a\\), then \\((a-b)\\) will divide \\(Q(a,b,c)\\) if and only if \\(Q(b,b,c)=0\\).\n\nNow \\(Q(b,b,c)=b^3(b-c)+b^3(c-b)+c^3(b-b)=0\\), so \\((a-b)\\) is a factor of \\(Q(a,b,c)\\).\n\n…and hence factorise the expression completely.\n\nNotice that our expression is such that \\(Q(a,b,c)= Q(c,a,b) = Q(b,c,a)\\) (we say that \\(Q(a,b,c)\\) is symmetrical in \\(a\\), \\(b\\) and \\(c\\)).\n\nBecause of this symmetry, we know that if \\((a-b)\\) is a factor of \\(Q(a,b,c)\\), then \\((b-c)\\) and \\((c-a)\\) are also.\n\nSo \\(Q(a,b,c)=(a-b)(b-c)(c-a)R(a,b,c)\\), where \\(R\\) is a symmetrical polynomial in \\(a\\), \\(b\\) and \\(c\\).\n\nNow \\(Q(a,b,c)\\) is of degree \\(4\\), while \\((a-b)(b-c)(c-a)\\) is of degree \\(3\\), so \\(R(a,b,c)\\) must be of degree \\(1\\) in \\(a, b\\) and \\(c\\).\n\nThe only symmetrical polynomial of degree \\(1\\) is of the form \\(R(a,b,c)=k(a+b+c)\\) where \\(k\\) is a constant. So we have \\(Q(a,b,c)=(a-b)(b-c)(c-a)k(a+b+c).\\)\n\nTo find the value of \\(k\\), we compare the coefficients of one of the terms. The coefficient of \\(a^3b\\) in \\(Q(a,b,c)\\) is \\(1\\), so \\(a \\times b \\times (-a) \\times ka = a^3b\\), and so \\(k = -1\\).\n\nThus \\(Q(a,b,c) = -(a-b)(b-c)(c-a)(a+b+c)\\), and this is our factorisation.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r8152",
+   "slug": "r8152",
+   "station": "product-rule",
+   "title": "What is the average density of this spherical planet?",
+   "url": "https://undergroundmathematics.org/product-rule/r8152",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.5",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# What is the average density of this spherical planet?\n\n## Question\n\nA spherical planet of radius \\(a\\) has a variable density \\(f(r)\\) which depends only on the distance \\(r\\) from the planet’s centre. Show that the average density of the planet is \\[3 \\int_0^1 t^2 f(at) \\:dt.\\]\n\nFind the average density correct to two significant figures in each of the three cases:\n\n1. \\(f(r) = \\exp\\left[\\left(-\\dfrac{r}{a}\\right)^3\\right]\\), where \\(\\exp(x)\\) denotes \\(e^x\\),\n\n---\n\n1. \\(f(r) = \\exp\\left(-\\dfrac{r}{a}\\right)\\),\n\n---\n\n1. \\(f(r) = \\dfrac{a^2r}{(a+r)^3}\\).\n\n## Suggestion\n\nThe tricky part is going to be finding the total mass of the planet. Since the density depends only on \\(r\\) we should think about the mass of a thin hollow spherical shell.\n\nWe will need to use the result from the first part.\n\nWe will need to find a tool to help us evaluate the integral we get this time.\n\nThis time the integral involves an awkward looking fraction. Again, we’ll need to find an appropriate tool to help.\n\n## Solution\n\nLet’s consider the hollow sphere of radius \\(r\\), where \\(r < a\\), and thickness \\(\\delta r\\), as shown below.\n\nThe volume of this hollow sphere is \\(\\delta V = \\dfrac{4\\pi}{3}(r + \\delta r)^3 - \\dfrac{4\\pi}{3}r^3= 4\\pi r^2 \\delta r\\) (neglecting higher powers of \\(\\delta r\\)).\n\nAlternatively, \\(\\delta V =\\) surface area of the hollow sphere\\(\\times\\) its thickness.\n\nWe know that the density of this hollow sphere is \\(f(r)\\), so the mass of the hollow sphere is \\(4\\pi r^2 f(r) \\delta r\\).\n\nTaking the limit, the total mass of the whole sphere is therefore\n\n\\[\\int_0^a 4\\pi r^2 f(r) \\:dr.\\]\n\nWe know that the volume of the whole sphere is \\(\\dfrac{4\\pi}{3}a^3\\), so the average density of the whole sphere is \\[\\dfrac{\\int_0^a 4\\pi r^2 f(r) \\:dr}{\\frac{4\\pi}{3}a^3}\\] which is \\[\\int_0^a \\dfrac{3 r^2 f(r)}{a^3} \\:dr.\\]\n\nIf we now put \\(r = at\\), we have \\(dr = a\\: dt\\), and substituting in, we find that the average density is \\[3 \\int_0^1 t^2 f(at) \\:dt,\\] as required.\n\nOur work from the first part tells us that we need to find the following integral, which we can do by inspection or by substitution.\n\n\\[\\begin{align*} \\int_0^1 3t^2 e^{-t^3} \\:dt &=\\left[-e^{-t^3}\\right]_0^1\\\\ &=1-e^{-1}\\\\ &=0.63 \\quad (2\\text{sf}). \\end{align*}\\]\n\nUsing the first part again tells us that we need to find the following. This time we use [integration by parts](https://undergroundmathematics.org/glossary/integration-by-parts) twice.\n\n\\[\\begin{align*} \\int_0^1 3t^2 e^{-t} \\:dt &= 3\\Big[-t^2e^{-t}\\Big]_0^1 - 3\\int_0^1 -e^{-t}2t \\:dt\\\\ &=-3e^{-1} +6\\int_0^1te^{-t}\\:dt \\\\ &=-3e^{-1} +6\\left\\{ \\Big[-te^{-t}\\Big]_0^1 - \\int_0^1-e^{-t}\\:dt \\right\\}\\\\ &=-9e^{-1} -6\\Big[e^{-t}\\Big]_0^1 \\\\ &=-15e^{-1} + 6\\\\ &= 0.48 \\quad (2\\text{sf}). \\end{align*}\\]\n\nOnce again we can use the first part so that we need to find \\[\\int_0^1 \\dfrac{3t^3}{(1+t)^3} \\:dt.\\]\n\nLet’s use\n\npartial fractions\n\nto write\n\n\\(\\dfrac{t^3}{(1+t)^3}\\)\n\nas\n\n\\(A + \\dfrac{B}{1+t} + \\dfrac{C}{(1+t)^2} + \\dfrac{D}{(1+t)^3}\\)\n\n. Putting all this over a common denominator gives\n\n\\[\\begin{align*} \\dfrac{t^3}{(1+t)^3} &= \\dfrac{A(1+t)^3+B(1+t)^2+C(1+t)+D}{(1+t)^3} \\\\ &= \\dfrac{At^3+(3A+B)t^2+(3A+2B+C)t+(A+B+C+D)}{(1+t)^3}, \\end{align*}\\]\n\nwhich gives us on comparing coefficients\n\n\\(A = 1\\)\n\n,\n\n\\(B = -3\\)\n\n,\n\n\\(C = 3\\)\n\n,\n\n\\(D = -1\\)\n\n. So our integral becomes\n\n\\[\\begin{align*} &3\\int_0^1 1 -\\dfrac{3}{1+t} + \\dfrac{3}{(1+t)^2}-\\dfrac{1}{(1+t)^3} \\:dt\\\\ &= 3\\left[t-3\\ln(1+t)-3\\dfrac{1}{1+t} +\\dfrac{1}{2(1+t)^2}\\right]_0^1\\\\ &= 3\\left(1-3\\ln2-\\dfrac{3}{2} + \\dfrac{1}{8}\\right)-3\\left(-3+\\dfrac{1}{2}\\right)\\\\ &= 3(2.125-3\\ln2) \\\\ &= 0.14 \\quad (2\\text{sf}). \\end{align*}\\]\n\nAlternatively, rather than using partial fractions, we could write \\(u=1+t\\) so that our integral becomes \\[3\\int_1^2 \\frac{(u-1)^3}{u^3}\\:du\\] which we can expand, cancel and integrate as powers of \\(u\\) with the same result as above.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r8468",
+   "slug": "r8468",
+   "station": "polynomials",
+   "title": "If two remainders are related can we find $a$?",
+   "url": "https://undergroundmathematics.org/polynomials/r8468",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# If two remainders are related can we find $a$?\n\n## Question\n\nThe remainder when \\(x^4 + 3x^2 - 2x + 2\\) is divided by \\(x + a\\) is the square of the remainder when \\(x^2 - 3\\) is divided by \\(x + a\\). Calculate the possible values of \\(a\\).\n\n## Solution\n\nThe remainder theorem tells us that if a polynomial \\(p(x)\\) is divided by \\(x-a\\), the remainder is \\(p(a)\\).\n\nSo on dividing \\(x^2 - 3\\) by \\(x + a\\), we have a remainder of \\(a^2-3\\).\n\nWe also have that if \\(f(x) = x^4 + 3x^2 - 2x + 2\\) is divided by \\(x + a\\), the remainder is \\(f(-a)=a^4 + 3a^2 + 2a + 2\\).\n\nThus the question tells us that \\((a^2-3)^2 = a^4 + 3a^2 + 2a + 2 \\implies 9a^2+2a-7=0.\\)\n\nFactorising, we have that \\((a+1)(9a-7) = 0\\), and so the possible values for \\(a\\) are \\(-1\\) and \\(\\dfrac{7}{9}\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r8694",
+   "slug": "r8694",
+   "station": "chain-rule",
+   "title": "How could we integrate $\\tan^3 \\theta$?",
+   "url": "https://undergroundmathematics.org/chain-rule/r8694",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.5",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# How could we integrate $\\tan^3 \\theta$?\n\n## Question\n\n1. Evaluate \\[\\begin{equation*} \\int_0^{\\tfrac{1}{4} \\pi} \\tan^3 \\theta \\:d\\theta, \\end{equation*}\\] giving the answer correct to two significant figures.\n\n---\n\n1. By using the substitution \\(x+1 = u^2\\), or otherwise, find \\[\\begin{equation*} \\int \\frac{\\sqrt{x+1}}{x-3} \\:dx. \\end{equation*}\\]\n\n## Solution\n\nWe can use the identity\n\n\\(\\sec^2 \\theta = \\tan^2 \\theta + 1\\)\n\nto help us:\n\n\\[\\begin{align*} \\int_0^{\\tfrac{1}{4} \\pi} \\tan^3 \\theta \\:d\\theta &= \\int_0^{\\tfrac{1}{4} \\pi} (\\tan^2 \\theta) \\tan \\theta \\:d\\theta\\\\ &= \\int_0^{\\tfrac{1}{4} \\pi} (\\sec^2 \\theta-1) \\tan \\theta \\:d\\theta\\\\ &= \\int_0^{\\tfrac{1}{4} \\pi} \\sec^2 \\theta\\tan \\theta - \\tan \\theta \\:d\\theta\\\\ \\end{align*}\\]\n\nSo we have two integrals to calculate; the first is\n\n\\[\\int_0^{\\tfrac{1}{4} \\pi} \\sec^2 \\theta\\tan \\theta \\:d\\theta\\]\n\nWe notice that \\(\\dfrac{d}{d \\theta} \\tan \\theta = \\sec^2 \\theta\\) (this is a standard result). So, letting \\(u = \\tan \\theta\\), our integral becomes\n\n\\[\\int_0^{\\tfrac{1}{4} \\pi} u \\dfrac{du}{d\\theta} \\:d\\theta = \\int_0^{\\tan \\tfrac{\\pi}{4}} u \\:du = \\dfrac{1}{2} \\left[\\dfrac{u^2}{2}\\right]_0^{\\tan \\tfrac{\\pi}{4}} = \\dfrac{1}{2} - 0 = \\dfrac{1}{2}\\]\n\nOur second integral is\n\n\\[\\int_0^{\\tfrac{1}{4} \\pi} tan \\theta \\:d\\theta = \\int_0^{\\tfrac{1}{4} \\pi} \\dfrac{\\sin \\theta}{\\cos \\theta} \\:d\\theta\\]\n\nWe can calculate this by writing \\(\\tan \\theta = \\dfrac{\\sin \\theta}{\\cos \\theta}\\), substituting \\(v = \\cos \\theta\\), and noticing that \\(-\\sin \\theta \\:d\\theta = \\:dv\\), so our integral is in fact\n\n\\[\\int_0^{\\tfrac{1}{4} \\pi} \\dfrac{-1}{v} \\dfrac{\\:d v}{\\:d \\theta} \\:d\\theta = \\int_0^{\\cos \\tfrac{\\pi}{4}} \\dfrac{-1}{v} \\:dv = - \\biggl[ \\ln v \\biggr]_1^{\\cos \\tfrac{\\pi}{4}} = \\biggl[ \\ln \\dfrac{1}{v} \\biggr]_1^{\\tfrac{1}{\\sqrt 2}} = \\ln{\\sqrt 2} - \\ln 1 = \\dfrac{1}{2} \\ln 2\\]\n\nSo our final value for \\(\\int_0^{\\tfrac{1}{4} \\pi} \\tan^3 \\theta \\:d\\theta\\) is\n\n\\[\\dfrac{1}{2} - \\dfrac{1}{2} \\ln 2 = 0.1534...\\]\n\nwhich equals\n\n\\(0.15\\)\n\nto two significant figures.\n\nAlternatively, we can use substitution in a different way. Let\n\n\\(u = \\tan \\theta\\)\n\n, so that\n\n\\[\\begin{equation*} \\frac{du}{d\\theta} = \\sec^2 \\theta = 1 + \\tan^2 \\theta = 1 + u^2 \\end{equation*}\\]\n\nand hence\n\n\\[\\begin{align*} \\int_0^{\\tfrac{1}{4} \\pi} \\tan^3 \\theta \\:d\\theta = \\int_0^1 \\frac{u^3}{1 + u^2} \\:du &= \\int_0^1 \\frac{u(1 + u^2)}{1 + u^2} - \\frac{u}{1 + u^2} \\:du \\\\ &= \\left[ \\frac{u^2}{2} \\right]_0^1 - \\frac{1}{2} \\int_0^1 \\frac{2u}{1 + u^2} \\:du \\\\ &= \\frac{1}{2} - \\frac{1}{2} \\left[ \\log(1 + u^2) \\right]_0^1 \\\\ &= \\frac{1}{2} - \\frac{\\log 2}{2} \\\\ &= 0.1534\\!\\ldots \\end{align*}\\]\n\nwhich equals \\(0.15\\) to two significant figures.\n\nTake \\(x+1 = u^2\\), so that \\(x = u^2 - 1\\), and \\(dx = 2u du\\).\n\nHence,\n\n\\[\\begin{align*} \\int \\frac{\\sqrt{x+1}}{x-3} \\:dx &= \\int \\frac{u}{u^2-4} 2u\\:du \\\\ &= \\int \\frac{2u^2 - 8+8}{u^2 - 4} \\:du\\\\ &= \\int 2 + \\frac{8}{(u-2)(u+2)} \\:du. \\end{align*}\\]\n\nWe can use partial fractions,\n\n\\[\\begin{align*} \\frac{8}{(u-2)(u+2)} &= \\frac{A}{u-2} + \\frac{B}{u+2}\\\\ \\implies\\quad 8 &= A(u+2) + B(u-2) \\end{align*}\\]\n\nand substituting\n\n\\(u=\\pm 2\\)\n\nwe find\n\n\\(A=2\\)\n\nand\n\n\\(B=-2\\)\n\n. Hence,\n\n\\[\\begin{align*} \\int \\frac{\\sqrt{x+1}}{x-3} \\:dx &= 2u + 2 \\int \\frac{1}{(u-2)} - \\frac{1}{(u+2)} \\:du \\\\ &= 2u + 2 \\log(u-2) - 2\\log(u+2) + c \\\\ &= 2\\sqrt{x+1} + 2\\log(\\sqrt{x+1} - 2) - 2\\log(\\sqrt{x+1} + 2) + c. \\end{align*}\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r8701",
+   "slug": "r8701",
+   "station": "polynomials",
+   "title": "What if the remainder when we divide by $x-k$ is $k$?",
+   "url": "https://undergroundmathematics.org/polynomials/r8701",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# What if the remainder when we divide by $x-k$ is $k$?\n\n## Question\n\n1. Given that \\(f(x)=x^3+kx^2-2x+1\\) and that when \\(f(x)\\) is divided by \\((x-k)\\) the remainder is \\(k\\), find the possible values of \\(k\\).\n\n---\n\n1. When the polynomial \\(p(x)\\) is divided by \\((x-1)\\) the remainder is \\(5\\) and when \\(p(x)\\) is divided by \\((x-2)\\) the remainder is \\(7\\). Given that \\(p(x)\\) may be written in the form \\[(x-1)(x-2)q(x)+Ax+B,\\] where \\(q(x)\\) is a polynomial and \\(A\\) and \\(B\\) are numbers, find the remainder when \\(p(x)\\) is divided by \\((x-1)(x-2)\\).\n\n## Suggestion\n\nWhat does the remainder theorem tell us?\n\nDo we need to calculate \\(q(x)\\)?\n\nHow might we use the remainder theorem?\n\n## Solution\n\nUsing the remainder theorem, we know that the remainder when we divide by \\((x-k)\\) is the same as \\(f(k)=2k^3-2k+1\\).\n\nSo we need to find solutions for \\(2k^3-2k+1=k\\), that is \\(2k^3-3k+1=0\\).\n\nIt is easy to guess and check that \\(k=1\\) is a solution, so \\((k-1)\\) is a factor; taking out a factor of \\(k-1\\) gives \\[2k^3-3k+1=(k-1)(2k^2+2k-1).\\] So either \\(k=1\\) or \\(2k^2+2k-1=0\\). Solutions for the latter are, using the quadratic formula, \\[k=\\frac{-2 \\pm \\sqrt{2^2-4\\times 2\\times (-1)}}{2\\times 2} =\\frac{-1 \\pm \\sqrt{3}}{2}\\]\n\nSo the solutions are \\(k=1\\), \\(k=\\dfrac{-1 \\pm \\sqrt{3}}{2}\\).\n\nUsing the remainder theorem again, the remainder when we divide \\(p(x)\\) by \\((x-1)\\) is the same as \\(p(1)=A+B\\), so \\(A+B=5\\).\n\nLikewise, the remainder when we divide \\(p(x)\\) by \\((x-2)\\) is the same as \\(p(2)=2A+B\\), so \\(2A+B=7\\).\n\nThese simultaneous equations in \\(A\\) and \\(B\\) give as solutions \\(A=2\\) and \\(B=3\\).\n\nThe remainder when \\(p(x)\\) is divided by \\((x-1)(x-2)\\) is \\(Ax+B\\), since \\((x-1)(x-2)\\) is a factor of \\((x-1)(x-2)q(x)\\), and \\(Ax+B\\) has a smaller degree than \\((x-1)(x-2)\\). So the remainder is \\(2x+3\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r9006",
+   "slug": "r9006",
+   "station": "polynomials",
+   "title": "What kind of roots does $x^3 - 30x^2 + 108x - 104 = 0$ have?",
+   "url": "https://undergroundmathematics.org/polynomials/r9006",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# What kind of roots does $x^3 - 30x^2 + 108x - 104 = 0$ have?\n\n## Question\n\nThe equation \\(x^3 - 30x^2 + 108x - 104 = 0\\) has\n\n1. no real roots;\n\n---\n\n1. exactly one real root;\n\n---\n\n1. three distinct real roots;\n\n---\n\n1. a repeated root.\n\n## Suggestion\n\nWhat does the Factor Theorem tell us? Could we try using small integers to find one factor?\n\n## Solution\n\nLet \\(f(x) = x^3 - 30x^2 + 108x - 104\\).\n\nBy searching for small integer solutions, we find that \\[f(2) = 8 - 120 + 216 - 104 = 0,\\] so \\((x - 2)\\) is a factor of \\(f(x)\\). Then we can factorise completely to find \\[f(x) = (x - 2)(x^2 - 28x + 52) = (x - 2)(x - 2)(x - 26),\\] so \\(f(x)\\) has a repeated root and the answer is (d).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r9330",
+   "slug": "r9330",
+   "station": "polynomials",
+   "title": "Can we find the coefficients and factorise this quartic?",
+   "url": "https://undergroundmathematics.org/polynomials/r9330",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we find the coefficients and factorise this quartic?\n\n## Question\n\nThe expression \\[2x^4+ax^3+bx^2-4x-4\\] where \\(a\\) and \\(b\\) are constants, is denoted by \\(f(x)\\). Given that \\(f\\left(-\\dfrac{1}{2}\\right)=0\\) and \\(f(2)=0\\), find the values of \\(a\\) and \\(b\\).\n\nWith these values for \\(a\\) and \\(b\\)\n\n1. express \\(f(x)\\) as the product of three algebraic factors, and hence show that the equation \\(f(x)=0\\) has only two real roots;\n\n---\n\n1. find the set of values of \\(x\\) for which \\(f(x)>0\\).\n\n## Suggestion\n\nYou could use this applet to try some values. The green curve is \\(y=f(x)\\).\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/pyUm9gmV/width/600/height/400/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/pyUm9gmV)\n\nCould we find two equations involving \\(a\\) and \\(b\\) that must be simultaneously true?\n\nHow would the [Factor Theorem](https://undergroundmathematics.org/glossary/factor-theorem) help us here?\n\nHow can we find the number of real roots of a quadratic equation?\n\nCould sketching the graph of \\(f(x)\\) help with this?\n\n## Solution\n\nSubstituting\n\n\\(x=-\\frac{1}{2}\\)\n\nwe have\n\n\\[\\begin{align*} f\\left(-\\frac{1}{2}\\right) &= 0\\\\ \\implies\\quad \\frac{2}{16}-\\frac{a}{8}+\\frac{b}{4}+2-4 &= 0\\\\ \\iff\\quad 1 - a + 2b - 16 &= 0\\\\ \\iff\\quad -a+2b &= 15 \\end{align*}\\]\n\nAlso we have that\n\n\\[\\begin{align*} f(2) &= 0\\\\ \\implies\\quad 32+8a+4b-8-4 &= 0\\\\ \\iff\\quad 2a+b &= -5 \\end{align*}\\]\n\nWe now have two simultaneous equations in \\(a\\) and \\(b\\). If we add twice the first to the second, to eliminate \\(a\\), we see that \\(5b = 25\\) and so \\(b = 5\\).\n\nWe can then use either equation to find that \\(a = -5\\).\n\nSince \\(f\\left(-\\frac{1}{2}\\right)=0\\) and \\(f(2)=0\\) we know that \\(2x+1\\) and \\(x-2\\) are two factors of \\(f(x)\\).\n\nSo \\[f(x)=2x^4 - 5x^3 + 5x^2 - 4x - 4 =(2x+1)(x-2)g(x) = (2x^2 - 3x -2)g(x),\\] where \\(g(x)\\) is a quadratic polynomial. By inspection, we can see that \\(g(x)=x^2-x+2\\).\n\nCan you explain, ‘by inspection’?\n\nTo find the expression for \\(g(x)\\), let’s write \\(g(x)=ax^2+bx+c\\) and try to find \\(a\\), \\(b\\) and \\(c\\) such that \\[(2x^2 - 3x -2)(ax^2+bx+c)=2x^4 - 5x^3 + 5x^2 - 4x - 4.\\] We can either multiply out the brackets on the left hand side, group the terms and find what \\(a\\), \\(b\\) and \\(c\\) must be, or we can try to `inspect’ the equation.\n\nFor example, the only terms that contribute to the \\(x^4\\) term will be \\(2x^2\\) from the first bracket and \\(ax^2\\) from the second.\n\nThis tells us that \\(a=1\\). Similarly, the constant term must come from the constant terms in both of the brackets, so we find that \\(-2c=-4\\) and so \\(c=2\\).\n\nTo find \\(b\\), we check the coefficient of \\(x\\), so that \\(-2b-3c=-4\\). We know already that \\(c=2\\), so we see that \\(b=-1\\). So \\(g(x)=x^2-x+2\\).\n\nTherefore we have \\[f(x)=(2x+1)(x-2)(x^2-x+2).\\]\n\nTo show that \\(f(x)\\) only has two real roots we need to show that \\(g(x)=x^2-x+2\\) has no real roots.\n\nThe [discriminant](https://undergroundmathematics.org/glossary/discriminant) of \\(g(x)\\) is \\(1 - 4 \\times 2 = -7\\), and since this is negative, we see that \\(g(x)\\) has no real roots.\n\nSo, we can conclude that \\(f(x)\\) has exactly two real roots, which are \\(x=-\\dfrac{1}{2}\\) and \\(x=2\\).\n\nIf we sketch the graph of \\(f(x)\\), we’ll clearly see the regions for which \\(f(x)>0\\). We know that there are only two real roots, and we observe that the \\(y\\)-intercept is \\(-4\\).\n\nSo the graph is\n\nFrom this, we can see that the values of \\(x\\) for which \\(f(x)>0\\) are \\(x<-\\dfrac{1}{2}\\) and \\(x>2\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "whats-left",
+   "slug": "whats-left",
+   "station": "polynomials",
+   "title": "What's left?",
+   "url": "https://undergroundmathematics.org/polynomials/whats-left",
+   "resourceType": "package-of-problems",
+   "resourceTypeLabel": "Package of problems",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.1.3",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# What's left?\n\n> Excerpt: What's left? provides students with an opportunity to practise algebraic division while being asked to think about what form the remainder and quotient functions will take.\n\n## Problem\n\n\\[\\text{The answer to \"$27$ divided by $4$\" could be written as \"$6$, remainder $3$\"}\\]\n\nwhere \\(4\\) is the divisor, \\(6\\) is the [quotient](https://undergroundmathematics.org/glossary/quotient), and \\(3\\) is the remainder.\n\nWhat other ways can you find to express \\(\\text{\"$27$ divided by $4$\"}\\)?\n\nWhy will the remainder always be less than the divisor? Is a similar idea true in polynomial division? For example when a cubic polynomial is divided by a quadratic, what form will the remainder take?\n\nBelow is a series of expressions in the form \\(\\dfrac{p(x)}{d(x)}\\), where \\(p(x)\\) and \\(d(x)\\) are polynomials.\n\nWhat [degree](https://undergroundmathematics.org/glossary/degree-of-a-polynomial) are the quotient and remainder polynomials when \\(p(x)\\) is divided by \\(d(x)\\)?\n\nA. \\(\\dfrac{3x+1}{x}\\)\n\nB. \\(\\dfrac{5x-2}{2x-1}\\)\n\nC. \\(\\dfrac{3x^2-5x+2}{x+1}\\)\n\nD. \\(\\dfrac{x^3-5x^2+3x+1}{x+1}\\)\n\nE. \\(\\dfrac{5x^2+8x+9}{x^2+x+2}\\)\n\nF. \\(\\dfrac{x^3-x^2-7x+1}{x^2+2x-1}\\)\n\nG. \\(\\dfrac{x^4-3x^3 + x + 1}{x-1}\\)\n\nH. \\(\\dfrac{6x^4 + 5x^3 + x^2 +10 x -3}{2x^2 + 3x - 1}\\)\n\nCan we always know what degree polynomial the quotient and the remainder will be by looking at the question?\n\nWithout any calculations, what can we say about the degree of the quotient and remainder polynomials of the following division?\n\nI. \\(\\dfrac{x^9 - 5x^7 + 3x^2 - 11x + 2}{2x^5 + 4x^4 - x + 7}\\)\n\n## Suggestion\n\nSome of the questions have divisors which are quadratic. Below are suggestions as to how methods used for algebraic division by a linear divisor can be extended to working with a quadratic.\n\nE. \\(\\dfrac{5x^2+8x+9}{x^2+x+2}\\)\n\nWe could rewrite \\(p(x)\\) so multiples of the divisor, \\(d(x)\\), appear.\n\n\\[\\dfrac{5x^2+8x+9}{x^2+x+2} = \\dfrac{5x^2+5x+10+3x-1}{x^2+x+2}\\]\n\nWhy is this helpful? What might the next step be?\n\nF. \\(\\dfrac{x^3-x^2-7x+1}{x^2+2x-1}\\)\n\nWe could use the grid method by extending the number of rows in the grid. For more support with using the grid method you may wish to look at [Divide it up](https://undergroundmathematics.org/polynomials/divide-it-up).\n\n|  | \\(x\\) | \\(\\ldots\\) |\n|---|---|---|\n| \\(x^2\\) | \\(x^3\\) |  |\n| \\(+2x\\) |  |  |\n| \\(-1\\) |  |  |\n\nWhich cells would you fill in next?\n\nWe could also use long division:\n\n\\[\\begin{array}{rll} \\phantom{x^2-x^2-7}x+\\ldots & \\cmlongdivbr x^2+2x-1 \\cmlongdiv{x^3-x^2-7x+1} \\cmlongdivbr \\underline{x^3+\\ldots\\phantom{{}+1x+8}} && [x \\times (x^2+2x-1)] \\cmlongdivbr \\end{array}\\]\n\n## Solution\n\nThere are many different ways we could write \\(\\text{\"$27$ divided by $4$\"}\\). For example, \\(6\\dfrac{3}{4}\\), \\(\\dfrac{24+3}{4}\\) and \\(6 + \\dfrac{3}{4}\\).\n\nWhy will the remainder will always be less than the divisor? Is a similar idea true in polynomial division? For example when a cubic polynomial is divided by a quadratic, what form will the remainder take?\n\nBelow is a series of expressions in the form \\(\\dfrac{p(x)}{d(x)}\\), where \\(p(x)\\) and \\(d(x)\\) are polynomials.\n\nWhat degree are the quotient and remainder polynomials when \\(p(x)\\) is divided by \\(d(x)\\)?\n\nA. \\(\\dfrac{3x+1}{x}\\)\n\nAs the divisor is an individual term, we can split up the fraction.\n\n\\[\\begin{align*} \\dfrac{3x+1}{x} &= \\dfrac{3x}{x}+\\dfrac{1}{x}\\\\ &= 3 + \\dfrac{1}{x} \\end{align*}\\]\n\nThis is a linear expression divided by a linear expression, giving a quotient of \\(3\\) and a remainder of \\(1\\), so both are polynomials of degree \\(0\\).\n\nB. \\(\\dfrac{5x-2}{2x-1}\\)\n\nOne method we could use to divide this expression would be rewriting \\(p(x)\\), in terms of multiples of the divisor, \\(d(x)\\).\n\nThe numerator would become \\(\\frac{5}{2}(2x-1) + \\frac{1}{2}\\), giving us\n\n\\[\\begin{align*} \\dfrac{5x-2}{2x-1} &= \\dfrac{\\frac{5}{2}(2x-1) + \\frac{1}{2}}{2x-1}\\\\ &= \\dfrac{5}{2} + \\dfrac{\\frac{1}{2}}{2x-1} \\end{align*}\\]\n\nThe quotient is\n\n\\(\\frac{5}{2}\\)\n\nand the remainder is\n\n\\(\\frac{1}{2}\\)\n\nwhich are both polynomials of degree\n\n\\(0\\)\n\n.\n\nQuotients and remainders don’t have to be integers, or have integer coefficients.\n\nC. \\(\\dfrac{3x^2-5x+2}{x+1}\\)\n\nWe are still dividing by a linear expression, but it is no longer a single term. We will use the grid method to do the division. For a more in-depth look at this method, see [Divide it up](https://undergroundmathematics.org/polynomials/divide-it-up).\n\nPutting the first term, \\(3x^2\\), in the table allows us to complete the first column.\n\n|  | \\(3x\\) | \\(\\ldots\\) |\n|---|---|---|\n| \\(x\\) | \\(3x^2\\) |  |\n| \\(+1\\) | \\(3x\\) |  |\n\nWe need the \\(x\\) terms to add to \\(-5x\\), so we put \\(-8x\\) in the second column.\n\n|  | \\(3x\\) | \\(-8\\) |\n|---|---|---|\n| \\(x\\) | \\(3x^2\\) | \\(-8x\\) |\n| \\(+1\\) | \\(3x\\) | \\(-8\\) |\n\nThe completed grid tells us that \\[\\dfrac{3x^2 - 5x - 8}{x+1} = 3x-8.\\]\n\nHow does this relate to the original problem \\(\\dfrac{3x^2-5x+2}{x+1}\\)?\n\nWe can write it as\n\n\\[\\begin{align*} \\dfrac{3x^2-5x+2}{x+1} &= \\dfrac{3x^2 - 5x -8 + 10}{x+1}\\\\ &= 3x-8 +\\dfrac{10}{x+1}. \\end{align*}\\]\n\nThe quotient is \\(3x - 8\\) and the remainder is \\(10\\).\n\nAfter three questions we might already have some ideas as to the structure that is appearing. It may help to think about the following questions:\n\n- How do the questions differ? Does this explain the differences in the answers?\n\n- Can we make any conjectures about the outcome of the next question?\n\nD. \\(\\dfrac{x^3-5x^2+3x+1}{x+1}\\)\n\nWe can rewrite the numerator,\n\n\\(p(x)\\)\n\n, as multiples of the divisor\n\n\\(d(x)\\)\n\n.\n\n\\[\\begin{align*} \\dfrac{x^3-5x^2+3x+1}{x+1} &= \\dfrac{x^3+x^2 - 6x^2 - 6x + 9x+9 - 8}{x+1}\\\\ &= \\dfrac{x^3 + x^2}{x+1} + \\dfrac{-6x^2-6x}{x+1} + \\dfrac{9x+9}{x+1} + \\dfrac{-8}{x+1} \\\\ &= x^2-6x+9+\\dfrac{-8}{x+1}. \\end{align*}\\]\n\nThe quotient is \\(x^2-6x+9\\) and the remainder is \\(-8\\).\n\nE. \\(\\dfrac{5x^2+8x+9}{x^2+x+2}\\)\n\nHere we have a quadratic divisor for the first time. One of the methods in the suggestion proposed writing the fraction in this form:\n\n\\[\\dfrac{5x^2+8x+9}{x^2+x+2} = \\dfrac{5x^2+5x+10 +3x - 1}{x^2+x+2}.\\]\n\nWritten like this we can split it into two fractions.\n\n\\[\\begin{align*} \\dfrac{5x^2+5x+10 +3x - 1}{x^2+x+2}&= \\dfrac{5x^2+5x+10}{x^2+x+2}+\\dfrac{3x-1}{x^2+x+2} \\\\ &= 5 + \\dfrac{3x-1}{x^2+x+2} \\end{align*}\\]\n\nThis leaves us with a quotient of \\(5\\) and a remainder of \\(3x-1\\).\n\nWhy is the remainder a linear expression as opposed to a constant like the previous questions?\n\nF. \\(\\dfrac{x^3-x^2-7x+1}{x^2+2x-1}\\)\n\nUsing long division gives us,\n\n\\[\\begin{array}{rll} \\phantom{x^2-x^2-7}x-3 & \\text{ rem }-2 \\cmlongdivbr x^2+2x-1 \\cmlongdiv{x^3-\\phantom{2}x^2-7x+1} \\cmlongdivbr \\underline{x^3+2x^2-\\phantom{0}x}\\phantom{{}+8} && [x \\times (x^2+2x-1)] \\cmlongdivbr \\phantom{x^3}{}-3x^2-6x+1 && \\cmlongdivbr \\phantom{x^3}\\underline{{}-3x^2-6x+3} && [-3 \\times (x^2+2x-1)] \\cmlongdivbr \\phantom{x^3-2x^2-7x}{}-2 && \\text{[remainder]} \\cmlongdivbr \\end{array}\\]\n\nwhich means we can write\n\n\\[\\dfrac{x^3-x^2-7x+1}{x^2+2x-1} = x -3 +\\dfrac{-2}{x^2+2x-1}.\\]\n\nWould we always expect the remainder to be a constant when dividing a cubic by a quadratic?\n\nG. \\(\\dfrac{x^4-3x^3 + x + 1}{x-1}\\)\n\n\\[\\begin{array}{rll} \\phantom{x-1}x^3 - 2x^2 - 2x -1 \\cmlongdivbr x-1 \\cmlongdiv{x^4-3x^3+0x^2 + \\phantom{2}x + 1} \\cmlongdivbr \\underline{x^4- \\phantom{3}x^3}\\phantom{{}+1x^2+ 1x+8} && [x^3 \\times (x-1)] \\cmlongdivbr \\phantom{x^4}{}-2x^3+ 0x^2\\phantom{{}+ 1x+8} && \\cmlongdivbr \\phantom{x^3}\\underline{{}-2x^3+2x^2}\\phantom{{}+ 1x+8} && [-2x^2\\times(x-1)] \\cmlongdivbr \\phantom{x^4}{}-2x^2+ \\phantom{2}x\\phantom{{}+8} && \\cmlongdivbr \\phantom{x^3}\\underline{{}-2x^2+2x}\\phantom{{}+8} && [-2x\\times(x-1)] \\cmlongdivbr \\phantom{x^4}{}-x+1 && \\cmlongdivbr \\phantom{x^3}\\underline{{}-x+1} && [-1\\times(x-1)] \\cmlongdivbr \\phantom{x^3-2x^2-7x}{}0 \\cmlongdivbr \\end{array}\\]\n\nWhat is unusual about the remainder of this problem?\n\nH. \\(\\dfrac{6x^4 + 5x^3 + x^2 + 10 x -3}{2x^2 + 3x - 1}\\)\n\nUsing the grid method to divide this expression gives us a completed grid of\n\n|  | \\(3x^2\\) | \\(-2x\\) | \\(5\\) |\n|---|---|---|---|\n| \\(2x^2\\) | \\(6x^4\\) | \\(-4x^3\\) | \\(10x^2\\) |\n| \\(3x\\) | \\(9x^3\\) | \\(-6x^2\\) | \\(15x\\) |\n| \\(-1\\) | \\(-3x^2\\) | \\(2x\\) | \\(-5\\) |\n\nwhich means we can write\n\n\\[\\begin{align*} \\dfrac{6x^4 + 5x^3 + x^2 + 10 x -3}{2x^2 + 3x - 1} &= \\dfrac{6x^4 +5x^3+ x^2 +17x - 5 - 7x + 2}{2x^2 + 3x - 1}\\\\ &= 3x^2 - 2x+5 +\\dfrac{-7x+2}{2x^2 + 3x - 1}. \\end{align*}\\]\n\nThe answers from above are summarised in the table.\n\n| Question | Degrees of \\(p(x)\\) and \\(d(x)\\) | Degree of \\(q(x)\\) | Degree of \\(r(x)\\) |\n|---|---|---|---|\n| A. | \\(1, 1\\) | \\(0\\) | \\(0\\) |\n| B. | \\(1,1\\) | \\(0\\) | \\(0\\) |\n| C. | \\(2,1\\) | \\(1\\) | \\(0\\) |\n| D. | \\(3,1\\) | \\(2\\) | \\(0\\) |\n| E. | \\(2,2\\) | \\(0\\) | \\(1\\) |\n| F. | \\(3,2\\) | \\(1\\) | \\(0\\) |\n| G. | \\(4,1\\) | \\(3\\) | Remainder of \\(0\\) |\n| H. | \\(4,2\\) | \\(2\\) | \\(1\\) |\n|  | \\(m,n\\) |  |  |\n\nThe final row has a polynomial of degree \\(m\\) being divided by a polynomial of degree \\(n\\). Can you complete this row?\n\nAt the beginning we thought about numerical division and asked ‘Why will the remainder will always be less than the divisor?’ Are there any similarities between the remainder and divisor in algebraic division and the remainder and divisor in numerical division?\n\nFor G. we have written that the remainder is zero, rather than the degree of the polynomial. The zero polynomial has no nonzero terms so it can be said that the degree is undefined. However it is sometimes useful to define it to be \\(-\\infty\\).\n\nThe remainder must have a degree less than the degree of the divisor, otherwise it could be divided further. In this case, the remainder must have a degree of less than 5.\n\nIs it possible to be any more precise about the degree of the remainder?\n\nThe quotient must have degree 4. We have been writing the answers to the above questions in the form \\[\\dfrac{p(x)}{d(x)} = q(x) + \\dfrac{r(x)}{d(x)}\\] where \\(q(x)\\) is the quotient and \\(r(x)\\) is the remainder. This could also be written as \\[p(x) = q(x)d(x) + r(x).\\]\n\nSince the divisor has degree 5, then the quotient must have degree 4 in order to produce a polynomial of degree 9.\n",
+   "figures": 0,
+   "figuresInline": 0
+  }
+ ]
+}
