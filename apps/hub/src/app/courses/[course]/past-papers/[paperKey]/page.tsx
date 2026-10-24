@@ -28,7 +28,12 @@ export default async function PastPaperPage({
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
 
-  const paper = findPastPaper(collectPastPapers(hub.questionTopics), paperKey);
+  // official ADR-037 papers live on the officialPaperTopics plane — the
+  // player must resolve them too (IA decision: Past Papers is their only home)
+  const paper = findPastPaper(
+    collectPastPapers([...hub.officialPaperTopics, ...hub.questionTopics]),
+    paperKey,
+  );
   if (!paper) notFound();
 
   // coverage — find the corpus row this reconstruction matches, then compare

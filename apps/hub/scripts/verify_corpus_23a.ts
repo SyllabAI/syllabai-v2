@@ -108,7 +108,9 @@ function walk(o: any, file: string) {
 
 const files: string[] = [];
 for (const pkg of readdirSync(CONTENT)) {
-  for (const f of ["notes.json", "questions.json", "flashcards.json"]) {
+  // official-papers.json = the ADR-037 past-papers plane (same content
+  // contracts as questions.json, just out of the exam-questions bank)
+  for (const f of ["notes.json", "questions.json", "official-papers.json", "flashcards.json"]) {
     const p = `${CONTENT}/${pkg}/${f}`;
     if (existsSync(p)) files.push(p);
   }

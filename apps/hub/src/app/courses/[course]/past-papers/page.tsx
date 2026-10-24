@@ -83,7 +83,14 @@ export default async function PastPapersPage({
   // The corpus attests papers in FIVE different metadata shapes (verified by
   // walking questions.json across courses); matchReconstruction normalises
   // each into (session ids, unit, variant) to match corpus rows.
-  const reconstructions = collectPastPapers(hub.questionTopics);
+  // Official ADR-037 papers ride the separate officialPaperTopics plane (IA
+  // decision: they never appear in Exam Questions) — official sets first so
+  // the complete paper wins the "first match wins" row pairing over any
+  // partial SME provenance for the same session.
+  const reconstructions = collectPastPapers([
+    ...hub.officialPaperTopics,
+    ...hub.questionTopics,
+  ]);
   const { matchKeys, matchedReconKeys, reconForCorpus } = matchReconstructions(
     papers,
     reconstructions,
