@@ -41,7 +41,10 @@
 # dispatched (the dispatch = the operator's fire order per the 093/133b law).
 # Repeat dispatches drain further tranches until the selector is empty.
 # Secrets of record: T138_PROD_DATABASE_URL (exists, proven run-005),
-# T138_GEMINI_KEY (operator pool key #1).
+# T138_GEMINI_KEY (run-008: ROTATED PER DISPATCH across the operator's 8-key
+# batch — stage key k, dispatch, poll, receipt, rotate; probe-healthy keys
+# first). run-008 loop-1 fix: driver re-pinned with the reconnect law
+# (parser 935bbd0) after the Neon idle-socket loss of CI 40181996047.
 
 name: t-mig-141-phase-d
 
@@ -65,8 +68,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  PARSER_SHA: "315b1a8"
-  DRIVER_SHA: "025f77e891597039c0be752fe63bfd63ebc23749e61833d855f0d218087135d4"
+  PARSER_SHA: "935bbd0"
+  DRIVER_SHA: "2e9867a54fb9058ac4fd5692017db523605d412a9b12b6dba14da8ac75f30d88"
   ROLLBACK_SHA: "26fc4897f1024498e76b1c72e1629e8e79df58dc1e33a786bbce81c4e2229f25"
   MANIFEST_SHA: "a12b1d418af7c359fa084d458abe07a6b3309c65756980dbdbfb62a03f3b4ee8"
   SELECTOR_IDS_SHA: "1a1bc83d20891c1a3efe7eb13b64a28408446a0b26c2f526c3f13f8a6e8e201d"
