@@ -21151,3 +21151,19 @@ Work Log:
 
 Stage Summary:
 - PR #110 cannot desk-merge without a record-level reconciliation (canary renumber + converter feature union + re-emission). Serve card stays OPEN + GATED, P0 language unchanged. Recommended next: T-OEQ-MATHSB-1 run-004 "reconcile onto main" per the receipt's proposed_path, then clean desk-merge with true ancestry.
+
+---
+Task ID: T-RN-HEADER-BOARDFIX-1 run-001 (operator trace 1a1750330694d329 "fix the \" (Edexcel …) \" header")
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: fix the false "(Edexcel …)" byline headers — the R0-NOTES-ORG-AUDIT-1 label bug
+
+Work Log:
+- Root cause at origin/main (fresh worktree @ c190fcb6 after a stale-clone catch: the scratch clone sat 1,276 commits behind; FF silently aborted on leftover dirty state; recovered via git worktree add --detach): the G3 board-aware sweep (ed4fab2c) made every course-LEVEL surface honest via boardOf() + the registry's explicit board field, but the three DETAIL pages kept the hardcoded "(Edexcel {level} {subject})" byline — so all 45 Cambridge International lanes stamped false Edexcel provenance on learner-facing h1 headers (the audit's 221/221 CIE-0620/9701 note-page finding).
+- Fix (3 files, 5 sites, both established board-copy laws reused verbatim): revision-notes/[noteId] h1 byline -> ({boardOf(meta)} …) + trust-meta "Exam board Pearson Edexcel" -> {meta.board ?? "Pearson Edexcel"} (the same law past-papers/page.tsx:177 already prints); practice-papers/[paperId] h1 byline -> boardOf + assembly Badge "not an official {boardOf(meta)} paper"; exam-questions/[topicSlug] h1 byline -> boardOf + doc comment. ZERO delta on the 49 pre-CIE Edexcel rows (boardOf default "Edexcel"; trust-meta founding full name preserved); the 45 CIE rows render "Cambridge International", consistent with the already-swept paperKey h1.
+- Census proof post-fix: zero literal "(Edexcel " render sites remain in apps/hub/src (the one hit left is a chrome.tsx docstring); tutor/chat.tsx's course-conditional "Pearson Edexcel" strings are the tutor chrome's own of-record copy (T-MIG-135d law, non-4CH branch pre-dates the CIE wave) — disclosed residual, untouched, flagged for a follow-up lane.
+- L-025 mid-flight: origin moved c190fcb6 -> c5f53c5a (PR #379 wave-25 official-papers sync) between build and push — rebase absorbed with zero conflicts (range = 2 content JSONs, zero hub-src overlap), cherry-pick recovery of the lane commit after an over-broad reset (commit object intact, reflog-recovered, no law breach), prebuild verifiers re-run at the new tip before push.
+- Gates: hub tsc --noEmit exit 0; eslint exit 0 on the 3 touched files; bun run build:hub success with prebuild trio green (CORPUS GATE PASSED / flashcard sync PASS / CIE VALIDATOR PASSED at both c190fcb6 and c5f53c5a); push race-guard re-verified origin tip unchanged; CI on branch head 7cb487aa = verify + hub 2/2 SUCCESS (bounded poll 2).
+- Filing: branch t-rn-board-header-fix/r0, PR #381 opened with the full fix table + residual disclosure. Merge + prod bake are operator-owned (hub prod moves by deliberate bake — run-006 law; until baked, prod keeps serving the false bylines).
+
+Stage Summary:
+- The "(Edexcel …)" header fix LANED of record: 3 detail pages board-aware, pre-CIE rows byte-identical, CI 2/2 on 7cb487aa, PR #381 awaiting operator merge; residual = tutor chat strings + the audit's other findings (unanchored mapping, zero-note topics, dup course pairs). LANE: IDLE.
