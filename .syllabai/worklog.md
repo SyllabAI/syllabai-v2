@@ -21167,3 +21167,10 @@ Work Log:
 
 Stage Summary:
 - The "(Edexcel …)" header fix LANED of record: 3 detail pages board-aware, pre-CIE rows byte-identical, CI 2/2 on 7cb487aa, PR #381 awaiting operator merge; residual = tutor chat strings + the audit's other findings (unanchored mapping, zero-note topics, dup course pairs). LANE: IDLE.
+
+## R0-AUTO receipt — sweep 2026-10-26 06:00 +08 (Job 438940)
+- Merged #380 (T-UGM-HUB-CONSUME-14 UGM lane 14 Numerical solution of equations): head 4e824ff → merge 85088b5. Gates: verify✓ hub✓ (head), mergeable=clean, 0 reviews/comments, 4 files all apps/hub/** boundary-clean (sixth pure-3 lane).
+- Merged #381 (fix(hub): board-aware headers on the three detail pages the G3 sweep missed): head 31f25eb → merge cc8653e. Gates: verify✓ hub✓ (head), mergeable=clean, 0 reviews/comments, 4 files (3 hub detail-page tsx + .syllabai/worklog.md +16) boundary-clean.
+- Post-merge main @ cc8653e: verify✓ hub✓ (bounded re-check ~75s). 2/2 round budget consumed.
+- Not merged, gate-b fail: #285 verify✗hub✗ · #296 hub✗ · #303 verify✗ · #352 zero check-runs (~50.5h stall).
+- Notes: main pre-advanced 861250a -> c5f53c5 (#378 T-BOOK-058 u4:c25 Alkenes + #379 wave-25/sec4-sync lane merges); mirror reset hit #129 (50th consecutive, 89962a5 signature) — recovered, zero loss. Carried finding: pre-existing conflict-marker block in .syllabai/worklog.md (~L21042, §5.4-era) still awaiting operator worklog-hygiene leg; desk appended end-of-file only, touched no historical bytes. Desk made no Neon/prod writes.
