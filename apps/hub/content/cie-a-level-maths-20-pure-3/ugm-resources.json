@@ -1,6 +1,6 @@
 {
- "schema": "syllabai-demo.ugm-lane-resources/1.1",
- "generatedUtc": "2026-10-25T19:29:56Z",
+ "schema": "syllabai-demo.ugm-lane-resources/1.2",
+ "generatedUtc": "2026-10-25T21:19:48Z",
  "reviewState": {
   "state": "SUGGESTED",
   "note": "Agent-generated alignment per AGENT.md rule 2 — candidates until the review/promotion gate promotes them; no coverage manufactured (rule 3)."
@@ -161,25 +161,102 @@
    "slug": "vector-geometry",
    "title": "Vector Geometry",
    "url": "https://undergroundmathematics.org/vector-geometry"
+  },
+  {
+   "slug": "calculus-meets-functions",
+   "title": "Calculus meets Functions",
+   "url": null
+  },
+  {
+   "slug": "calculus-of-powers",
+   "title": "Calculus of Powers",
+   "url": null
+  },
+  {
+   "slug": "calculus-trig-log",
+   "title": "Calculus of Trigonometry & Logarithms",
+   "url": null
+  },
+  {
+   "slug": "chain-rule",
+   "title": "Chain Rule & Integration by Substitution",
+   "url": null
+  },
+  {
+   "slug": "circles",
+   "title": "Circles",
+   "url": null
+  },
+  {
+   "slug": "combining-functions",
+   "title": "Combining Functions",
+   "url": null
+  },
+  {
+   "slug": "counting-and-binomials",
+   "title": "Counting & Binomials",
+   "url": null
+  },
+  {
+   "slug": "divisibility-and-induction",
+   "title": "Divisibility & Induction",
+   "url": null
+  },
+  {
+   "slug": "geometry-of-equations",
+   "title": "Geometry of Equations",
+   "url": null
+  },
+  {
+   "slug": "hyperbolic-functions",
+   "title": "Hyperbolic Functions",
+   "url": null
+  },
+  {
+   "slug": "introducing-calculus",
+   "title": "Introducing Calculus",
+   "url": null
+  },
+  {
+   "slug": "polynomials",
+   "title": "Polynomials & Rational Functions",
+   "url": null
+  },
+  {
+   "slug": "product-rule",
+   "title": "Product Rule & Integration by Parts",
+   "url": null
+  },
+  {
+   "slug": "sequences",
+   "title": "Sequences",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-functions",
+   "title": "Thinking about Functions",
+   "url": null
   }
  ],
  "source": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@bb78ae371da1a2d0f5c166e82899e828b1208b4d",
+  "ref": "main@41d352212173a2602dc20ccff55ebbb30999a139",
   "enrichment": [
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-logarithmic-and-exponential-functions.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-trigonometry.json",
-   "UGM-Enrichment/cie-a-level-maths-20-pure-3-differentiation.json"
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-differentiation.json",
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-integration.json"
   ],
   "enrichmentSchema": "syllabai.ugm-spec-enrichment/1.0",
   "resourcesDir": [
    "UGM-Resources/pure-3-algebra",
    "UGM-Resources/pure-3-logarithmic-and-exponential-functions",
    "UGM-Resources/pure-3-trigonometry",
-   "UGM-Resources/pure-3-differentiation"
+   "UGM-Resources/pure-3-differentiation",
+   "UGM-Resources/pure-3-integration"
   ],
-  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119); LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126); LEDGER.md — T-UGM-MODE1-12 and T-UGM-IMPORT-12 (PR #134)",
+  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119); LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126); LEDGER.md — T-UGM-MODE1-12 and T-UGM-IMPORT-12 (PR #134); LEDGER.md — T-UGM-MODE1-13 and T-UGM-IMPORT-13 (PR #140) + the T-UGM-MODE1-13 amendment r0 (this PR)",
   "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
   "operatorAttestation": "2026-10-24 — text + static figures may ship into SyllabAI; permission declared",
   "figureMap": "UGM-Resources/figures-map.json",
@@ -192,13 +269,13 @@
   "note": "Static figures (976 files) are imported and served locally from /ugm-assets/ under the operator attestation of 2026-10-24 (T-UGM-ASSETS-1); GeoGebra embeds and PDFs remain excluded."
  },
  "coverage": {
-  "ugmResourcesConsidered": 110,
-  "aligned": 110,
+  "ugmResourcesConsidered": 126,
+  "aligned": 126,
   "nonOverlap": 0,
   "alignedShare": 1.0,
-  "candidateRows": 155,
+  "candidateRows": 188,
   "crossLaneJoined": {
-   "aligned": 42,
+   "aligned": 52,
    "nonOverlap": 0
   },
   "specPointsCovered": [
@@ -216,7 +293,13 @@
    "3.3.2",
    "3.4.1",
    "3.4.2",
-   "3.4.3"
+   "3.4.3",
+   "3.5.1",
+   "3.5.2",
+   "3.5.3",
+   "3.5.4",
+   "3.5.5",
+   "3.5.6"
   ],
   "figures": {
    "figureRefs": 0,
@@ -268,10 +351,21 @@
     "candidateRows": 41,
     "crossLaneAligned": 1,
     "crossLaneNonOverlap": 0
+   },
+   {
+    "station": "integration",
+    "stationTitle": "Integration",
+    "ugmResourcesConsidered": 102,
+    "aligned": 23,
+    "nonOverlap": 11,
+    "alignedShare": 0.2255,
+    "candidateRows": 35,
+    "crossLaneAligned": 7,
+    "crossLaneNonOverlap": 0
    }
   ],
   "nonOverlapByReference": {
-   "count": 95,
+   "count": 89,
    "rows": [
     {
      "ugmSlug": "absurder",
@@ -365,13 +459,6 @@
      "reason": "teacher-support notes for Two-way functions — 3.1.x appear only in prior-knowledge listings; no tested skill of its own"
     },
     {
-     "ugmSlug": "two-for-one",
-     "station": "calculus-trig-log",
-     "title": "Two for one",
-     "url": "https://undergroundmathematics.org/calculus-trig-log/two-for-one",
-     "reason": "∫1/x over negative domains and ln(−x) gradients — the absolute value is incidental to the integration work; outside 3.1"
-    },
-    {
      "ugmSlug": "how-fast-does-it-grow",
      "station": "exp-and-log",
      "title": "How fast does it grow?",
@@ -442,39 +529,11 @@
      "reason": "integral of the floor function [2^x] with log_2((2^n-1)!) answer forms - the tested skill is the floor-function integral; the logarithm appears only in the answer notation"
     },
     {
-     "ugmSlug": "two-for-one",
-     "station": "calculus-trig-log",
-     "title": "Two for one",
-     "url": "https://undergroundmathematics.org/calculus-trig-log/two-for-one",
-     "reason": "integral of 1/x and the ln|x| modulus - P3 Integration (lane-7/8 recorded routings stand)"
-    },
-    {
-     "ugmSlug": "inverse-integrals",
-     "station": "calculus-trig-log",
-     "title": "Inverse integrals",
-     "url": "https://undergroundmathematics.org/calculus-trig-log/inverse-integrals",
-     "reason": "definite integral involving ln x via inverse-function areas - P3 Integration (lane-8 routing stands)"
-    },
-    {
      "ugmSlug": "r7903",
      "station": "introducing-calculus",
      "title": "Can the trapezium rule help us find the area under $y = x\\ln x$?",
      "url": "https://undergroundmathematics.org/introducing-calculus/r7903",
      "reason": "trapezium rule on y=x ln x - the trapezium rule is not in the spine and the integrand is P3-dressed (lane-7/8 routings stand)"
-    },
-    {
-     "ugmSlug": "r8134",
-     "station": "product-rule",
-     "title": "How could we integrate $e^{-x}\\sin^n x$?",
-     "url": "https://undergroundmathematics.org/product-rule/r8134",
-     "reason": "reduction formula for e^{-x} sin^n x - P3 Differentiation/Integration (lanes 7/8 routings stand)"
-    },
-    {
-     "ugmSlug": "r6620",
-     "station": "product-rule",
-     "title": "If the gradient is $x(1-x^2)e^{-x^2}$ can we find the stationary points?",
-     "url": "https://undergroundmathematics.org/product-rule/r6620",
-     "reason": "gradient x(1-x^2)e^{-x^2}, stationary points and parts - P3 Differentiation/Integration (lanes 7/8 routings stand)"
     },
     {
      "ugmSlug": "r8779",
@@ -533,27 +592,6 @@
      "reason": "the integral of sin(sin t) vanishing by symmetry and periodicity of sin - an integration-symmetry argument, not a 3.3 property task"
     },
     {
-     "ugmSlug": "r9184",
-     "station": "calculus-trig-log",
-     "title": "Can we find the area between $\\sin x$ and $\\sin 2x$?",
-     "url": "https://undergroundmathematics.org/calculus-trig-log/r9184",
-     "reason": "intersection of y=sinx and y=sin2x solved via the double angle (a 3.3.2 limb) but the task's centre of mass is the enclosed area - the integration limb dominates (3.3.2∩3.5.2 mix recorded)"
-    },
-    {
-     "ugmSlug": "trigsy-integrals",
-     "station": "calculus-trig-log",
-     "title": "Trigsy integrals",
-     "url": "https://undergroundmathematics.org/calculus-trig-log/trigsy-integrals",
-     "reason": "integrals incl. cos2x and sin^2x (3.5.2 limb) but also arcsin/arccos integrands - inverse trigonometric functions are beyond the pure-3 spine"
-    },
-    {
-     "ugmSlug": "r7074",
-     "station": "calculus-trig-log",
-     "title": "Where do the curves $y=\\sin 2x$ and $y=\\sin x$ cross?",
-     "url": "https://undergroundmathematics.org/calculus-trig-log/r7074",
-     "reason": "intersection of y=sin2x and y=sinx found via sinx=2sinxcosx (a 3.3.2 limb) then the shaded area computed - the integration limb dominates (3.3.2∩3.5.2 mix recorded)"
-    },
-    {
      "ugmSlug": "circular-slice",
      "station": "chain-rule",
      "title": "Circular slice",
@@ -582,25 +620,11 @@
      "reason": "chord of an ellipse: gradient via the sum-to-product identities sinx-siny=2cos((x+y)/2)sin((x-y)/2) - the identities assist a parametric-geometry task (recorded)"
     },
     {
-     "ugmSlug": "r8778",
-     "station": "chain-rule",
-     "title": "Can we carry out these three tricky integrals?",
-     "url": "https://undergroundmathematics.org/chain-rule/r8778",
-     "reason": "∫sec^4x via sec^2=1+tan^2 - the Pythagorean identity inside an integration task (3.5.2 bearing)"
-    },
-    {
      "ugmSlug": "r8836",
      "station": "chain-rule",
      "title": "Where is the centre of mass of half this cylinder?",
      "url": "https://undergroundmathematics.org/chain-rule/r8836",
      "reason": "centre of mass of a half-cylinder with (cos2θ+1)/2 in the integrand - mechanics plus 3.5.2 limb"
-    },
-    {
-     "ugmSlug": "r9297",
-     "station": "chain-rule",
-     "title": "How could we integrate $\\tan^4x$?",
-     "url": "https://undergroundmathematics.org/chain-rule/r9297",
-     "reason": "tan^4x=tan^2xsec^2x-sec^2x+1 then ∫0^{π/4}tan^4x - the Pythagorean identity inside an integration task (3.5.2 bearing)"
     },
     {
      "ugmSlug": "cones",
@@ -671,20 +695,6 @@
      "title": "If these centres lie on a line, why is the triangle isosceles?",
      "url": "https://undergroundmathematics.org/thinking-about-geometry/r8917",
      "reason": "triangle centres collinear forcing isosceles - sine/cosine rule limb (1.5.3-of-record shape)"
-    },
-    {
-     "ugmSlug": "constant-consistency",
-     "station": "product-rule",
-     "title": "Constant consistency",
-     "url": "https://undergroundmathematics.org/product-rule/constant-consistency",
-     "reason": "∫cosx sinx via sin2x=2sinxcosx then by substitution and parts - the identity limb feeds an integration-methods task (3.5.2 bearing)"
-    },
-    {
-     "ugmSlug": "integral-chasing-2",
-     "station": "product-rule",
-     "title": "Integral chasing II",
-     "url": "https://undergroundmathematics.org/product-rule/integral-chasing-2",
-     "reason": "∫x^2 sin2x by parts - integration by parts (3.5 bearing)"
     },
     {
      "ugmSlug": "approximating-areas",
@@ -764,13 +774,6 @@
      "reason": "arc length from first principles for Cartesian and parametric curves - outside the CIE 9709 pure 1-3 scope"
     },
     {
-     "ugmSlug": "integral-sorting",
-     "station": "chain-rule",
-     "title": "Integral sorting",
-     "url": "https://undergroundmathematics.org/chain-rule/integral-sorting",
-     "reason": "pairing integrals with answers and substitutions - the integration-by-substitution fluency is 3.5 substrate"
-    },
-    {
      "ugmSlug": "keep-your-distance",
      "station": "calculus-meets-functions",
      "title": "Keep your distance",
@@ -813,13 +816,6 @@
      "reason": "oblique asymptote shown tangent via the double-root intersection test - algebraic, no differentiation"
     },
     {
-     "ugmSlug": "r6620",
-     "station": "product-rule",
-     "title": "If the gradient is $x(1-x^2)e^{-x^2}$ can we find the stationary points?",
-     "url": "https://undergroundmathematics.org/product-rule/r6620",
-     "reason": "curve analysis from a GIVEN gradient x(1-x^2)e^(-x^2): stationary points and sketch, coordinates recovered by substitution-integration - no differentiation performed; re-routes the lane-10 dual 'P3 3.4/3.5' bearing honestly to 3.5"
-    },
-    {
      "ugmSlug": "r6863",
      "station": "product-rule",
      "title": "If we can sketch $y = f(x)$, can we sketch $y^2 = f(x)$?",
@@ -855,13 +851,6 @@
      "reason": "velocity and acceleration by differentiating polynomial components of a position vector - the power-rule skill of the P1 differentiation lane"
     },
     {
-     "ugmSlug": "r8134",
-     "station": "product-rule",
-     "title": "How could we integrate $e^{-x}\\sin^n x$?",
-     "url": "https://undergroundmathematics.org/product-rule/r8134",
-     "reason": "reduction formula for the integral of e^-x sin^n x - the product-rule identity d/dx (cos x sin^(n-1) x) is the scaffold step; the tested skill is 3.5 integration by parts; re-routes the lane-10 dual 'P3 3.4/3.5' bearing honestly to 3.5"
-    },
-    {
      "ugmSlug": "r8160",
      "station": "polynomials",
      "title": "Which of these quintic equations fit this graph?",
@@ -869,25 +858,11 @@
      "reason": "quintic graph matching by roots and multiplicity - no calculus"
     },
     {
-     "ugmSlug": "r8679",
-     "station": "calculus-trig-log",
-     "title": "What is the area under the curve $y = \\cos x - \\sin x +2$?",
-     "url": "https://undergroundmathematics.org/calculus-trig-log/r8679",
-     "reason": "area under cos x - sin x + 2 and the Newton-Raphson refinement - integration and root-finding substrate"
-    },
-    {
      "ugmSlug": "r8765",
      "station": "product-rule",
      "title": "If $y=(x^2+1)/(x^2-a^2)$, then $y$  cannot take which values?",
      "url": "https://undergroundmathematics.org/product-rule/r8765",
      "reason": "the values taken twice shown by the parity argument and the rearranged x^2 = (a^2 y + 1)/(y - 1) >= 0 of record - algebraic, no differentiation"
-    },
-    {
-     "ugmSlug": "r8890",
-     "station": "chain-rule",
-     "title": "Can we use integration by substitution on these integrals?",
-     "url": "https://undergroundmathematics.org/chain-rule/r8890",
-     "reason": "integration by substitution exercises - 3.5 fluency"
     },
     {
      "ugmSlug": "r8987",
@@ -937,16 +912,93 @@
      "title": "Two-way calculus - teacher support",
      "url": "https://undergroundmathematics.org/calculus-meets-functions/two-way-calculus-teacher-support",
      "reason": "research-project teacher notes for the two-way calculus task - meta content, not a spec embodiment"
+    },
+    {
+     "ugmSlug": "inverse-integrals-teacher-support",
+     "station": "calculus-trig-log",
+     "title": "Inverse integrals - teacher support",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/inverse-integrals-teacher-support",
+     "reason": "classroom video clips and teacher notes for Inverse integrals - no extractable exercise well (the lane-12 differentiating-exponentials law of record)"
+    },
+    {
+     "ugmSlug": "r5324",
+     "station": "calculus-meets-functions",
+     "title": "If the trapezium rule overestimates $\\int^1_0 f(x)\\, dx$, what can we deduce?",
+     "url": "https://undergroundmathematics.org/calculus-meets-functions/r5324",
+     "reason": "trapezium-rule overestimate propagation under linear rescaling of the integrand - the trapezium rule is not in the 9709 spine (the lane-8 law of record)"
+    },
+    {
+     "ugmSlug": "r6076",
+     "station": "calculus-meets-functions",
+     "title": "Can we solve these simultaneous equations with integrals?",
+     "url": "https://undergroundmathematics.org/calculus-meets-functions/r6076",
+     "reason": "simultaneous equations from INT 3f, INT 2f over subintervals - definite-integral linearity and interval-additivity, the P1 1.8 property domain; no 3.5 technique"
+    },
+    {
+     "ugmSlug": "r6622",
+     "station": "calculus-trig-log",
+     "title": "Can the integral of $\\sin(\\sin t)$ be zero?",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/r6622",
+     "reason": "INT_0^x sin(sin t) dt is non-elementary - the of-record solution reasons the sign of the integral from the integrand's shape and symmetry only; no 3.5-listed technique evaluates anything (supersedes the lane-11 non-overlap row of record routed 'P3 3.5 Integration')"
+    },
+    {
+     "ugmSlug": "r7106",
+     "station": "calculus-trig-log",
+     "title": "Can we find this integral involving the floor function?",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/r7106",
+     "reason": "INT_0^n floor(2^x) dx is a piecewise-constant strip summation with factorial-log arithmetic - no 3.5-listed technique; the floor function is outside the CIE scope (supersedes the lane-10 non-overlap row of record routed 'P3 3.5 Integration')"
+    },
+    {
+     "ugmSlug": "r7461",
+     "station": "calculus-meets-functions",
+     "title": "When is $I(c) = \\int^1_0 2^{-(x-c)^2} dx$ largest?",
+     "url": "https://undergroundmathematics.org/calculus-meets-functions/r7461",
+     "reason": "I(c) = INT_0^1 2^-(x-c)^2 dx is a non-elementary Gaussian - the of-record solution maximises it by translation-symmetry reasoning; no 3.5-listed technique (supersedes the lane-12 non-overlap row of record routed 'P3 3.5 Integration')"
+    },
+    {
+     "ugmSlug": "r7903",
+     "station": "introducing-calculus",
+     "title": "Can the trapezium rule help us find the area under $y = x\\ln x$?",
+     "url": "https://undergroundmathematics.org/introducing-calculus/r7903",
+     "reason": "deriving and applying the trapezium rule for the approximate evaluation of INT y dx - the trapezium rule is not in the 9709 pure 1-3 spine (the lane-8 law of record) (supersedes the lane-10 bearing row; the lane-1 differentiation row stands)"
+    },
+    {
+     "ugmSlug": "r8396",
+     "station": "calculus-meets-functions",
+     "title": "When is this integral less than or equal to $1 - A/(n+B)$?",
+     "url": "https://undergroundmathematics.org/calculus-meets-functions/r8396",
+     "reason": "INT_0^1 (x^(2n-1)-1)^2 dx by expansion and the 1 - 1/(2n) bound - the polynomial power-rule domain of P1 1.8; no 3.5 technique"
+    },
+    {
+     "ugmSlug": "r8836",
+     "station": "chain-rule",
+     "title": "Where is the centre of mass of half this cylinder?",
+     "url": "https://undergroundmathematics.org/chain-rule/r8836",
+     "reason": "slice-volume justification and the centre of mass of a plane-cut half-cylinder - mechanics/COM content outside the Pure 3 spine; the integration is the volume-slice setup, not a 3.5 technique (supersedes the lane-11 non-overlap row of record routed 'P3 3.5 Integration')"
+    },
+    {
+     "ugmSlug": "r9099",
+     "station": "calculus-meets-functions",
+     "title": "For the functions $f$ and $g$, is $g(f(A))$ always bigger than $f(g(A))$?",
+     "url": "https://undergroundmathematics.org/calculus-meets-functions/r9099",
+     "reason": "f(x) = INT_0^1 (xt)^2 dt versus g(x) = INT_0^x t^2 dt - elementary polynomial antiderivatives by the FTC then a composition comparison; the P1 1.8 domain, no 3.5 technique"
+    },
+    {
+     "ugmSlug": "sine-on-the-dotted-line",
+     "station": "calculus-trig-log",
+     "title": "Sine on the dotted line",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/sine-on-the-dotted-line",
+     "reason": "which expressions give the shaded area under sin x - the decomposition/transformation/signed-area skill is the P1 1.8 domain; the 3.5.1 sin antiderivative is used inside the expressions but the tested skill is the area reasoning"
     }
    ]
   },
   "crossCourse": {
-   "aligned": 42,
+   "aligned": 45,
    "nonOverlapRef": 0,
-   "flips": 29,
-   "oneToMany": 13,
+   "flips": 30,
+   "oneToMany": 19,
    "courses": {
-    "cie-a-level-maths-20-pure-1": 42
+    "cie-a-level-maths-20-pure-1": 45
    },
    "note": "cross-course fact joins served by reference — the text of record stays first-of-record under the serving course's bundle",
    "rows": [
@@ -1537,6 +1589,53 @@
      "confidence": "medium",
      "primaryPick": false,
      "priorAlignmentOfRecord": "lane-differentiation non-overlap row of record (whole-station body of record under pure-1-differentiation)"
+    },
+    {
+     "ugmSlug": "circular-slice",
+     "codes": [
+      "3.5.6",
+      "3.5.2"
+     ],
+     "title": "Circular slice",
+     "url": "https://undergroundmathematics.org/chain-rule/circular-slice",
+     "station": "chain-rule",
+     "textOfRecordUnder": "UGM-Resources/pure-1-circular-measure",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-circular-measure and lane-trigonometry non-overlap rows of record (the whole-station body of record lives under pure-1-circular-measure)"
+    },
+    {
+     "ugmSlug": "r9312",
+     "codes": [
+      "3.5.5"
+     ],
+     "title": "Can we find the area between $y=e^{-x}$ and $y=e^{-x}\\sin x$?",
+     "url": "https://undergroundmathematics.org/product-rule/r9312",
+     "station": "product-rule",
+     "textOfRecordUnder": "UGM-Resources/pure-1-series",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-series 1.6.4"
+    },
+    {
+     "ugmSlug": "r9701",
+     "codes": [
+      "3.5.3",
+      "3.5.6"
+     ],
+     "title": "Can we find $\\int 1/(\\sqrt{x+2} - \\sqrt{x+1}) dx$?",
+     "url": "https://undergroundmathematics.org/chain-rule/r9701",
+     "station": "chain-rule",
+     "textOfRecordUnder": "UGM-Resources/pure-1-integration",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-integration 1.8.1 and lane-algebra 3.1.5"
     }
    ]
   }
@@ -1772,6 +1871,83 @@
     "r9325",
     "r9413",
     "r9809"
+   ]
+  },
+  {
+   "code": "3.5.1",
+   "officialText": "extend the idea of ‘reverse differentiation’ to Including examples such as ax + b 1 include the integration of e , , ax + b sin( ax + b ) , cos( ax + b ) , sec ( ax + b ) and 2 2 x + a",
+   "primaryPick": "r8679",
+   "resourceCount": 10,
+   "ugmIds": [
+    "integral-chasing-2",
+    "inverse-integrals",
+    "r7074",
+    "r8679",
+    "r9184",
+    "stretching-an-integral",
+    "trigsy-integrals",
+    "two-for-one",
+    "r7616",
+    "r8774"
+   ]
+  },
+  {
+   "code": "3.5.2",
+   "officialText": "use trigonometrical relationships in carrying out integration or",
+   "primaryPick": "r9297",
+   "resourceCount": 6,
+   "ugmIds": [
+    "constant-consistency",
+    "r8134",
+    "r8778",
+    "r9297",
+    "trigsy-integrals",
+    "r8694"
+   ]
+  },
+  {
+   "code": "3.5.3",
+   "officialText": "integrate rational functions by means of Restricted to types of partial fractions as specified in decomposition into partial fractions topic 3.1 above. k f l ^ x h e.g. integration of",
+   "primaryPick": "r5126",
+   "resourceCount": 2,
+   "ugmIds": [
+    "r5126",
+    "r8694"
+   ]
+  },
+  {
+   "code": "3.5.4",
+   "officialText": "recognise an integrand of the form , and integrate such functions",
+   "primaryPick": null,
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.5.5",
+   "officialText": "recognise when an integrand can usefully be e.g. integration of regarded as a product, and use integration by parts",
+   "primaryPick": "r8134",
+   "resourceCount": 5,
+   "ugmIds": [
+    "constant-consistency",
+    "integral-chasing-2",
+    "r6620",
+    "r8134",
+    "r5126"
+   ]
+  },
+  {
+   "code": "3.5.6",
+   "officialText": "use a given substitution to simplify and evaluate e.g. to integrate either a definite or an indefinite integral.",
+   "primaryPick": "r8890",
+   "resourceCount": 7,
+   "ugmIds": [
+    "constant-consistency",
+    "integral-chasing-2",
+    "integral-sorting",
+    "r8778",
+    "r8890",
+    "which-substitution",
+    "r8694"
    ]
   }
  ],
@@ -2035,6 +2211,24 @@
      "code": "3.1.5",
      "confidence": "medium",
      "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.3",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.5",
+     "confidence": "high",
+     "primaryPick": true,
      "note": null,
      "modesRecorded": [
       1
@@ -2598,6 +2792,33 @@
     {
      "code": "3.1.5",
      "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.6",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.2",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.3",
+     "confidence": "high",
      "primaryPick": false,
      "note": null,
      "modesRecorded": [
@@ -3617,6 +3838,15 @@
      "modesRecorded": [
       1
      ]
+    },
+    {
+     "code": "3.5.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
     }
    ],
    "bodyMd": "\n# Is this product of integrals positive or negative?\n\n## Question\n\nLet \\[T=\\left( \\int _{-\\pi/2}^{\\pi/2}\\cos x\\,dx\\right)\\times \\left(\\int_\\pi ^{2\\pi} \\sin x\\,dx\\right) \\times \\left(\\int_0^{\\pi/8}\\frac{dx}{\\cos 3x}\\right).\\] Which of the following is true?\n\n1. \\(T=0\\);\n\n---\n\n1. \\(T<0\\);\n\n---\n\n1. \\(T>0\\);\n\n---\n\n1. \\(T\\) is not defined.\n\n## Suggestion\n\nNote that the third integral, \\(\\displaystyle \\int_0^{\\pi/8}\\frac{dx}{\\cos 3x}\\), means the same as \\[\\int_0^{\\pi/8}\\frac{1}{\\cos 3x}\\,dx.\\]\n\nDo we need to work out the exact values of each of the integrals? What is the important thing to know?\n\n## Solution\n\nLet \\[T=\\left( \\int _{-\\pi/2}^{\\pi/2}\\cos x\\,dx\\right)\\times\\left(\\int_\\pi ^{2\\pi} \\sin x\\,dx\\right) \\times\\left(\\int_0^{\\pi/8}\\frac{dx}{\\cos 3x}\\right).\\] Which of the following is true?\n\n1. \\(T=0\\);\n\n---\n\n1. \\(T<0\\);\n\n---\n\n1. \\(T>0\\);\n\n---\n\n1. \\(T\\) is not defined.\n\nWe are not asked to work out the exact value of \\(T\\), only to determine whether it is positive, negative or zero (if it is defined).\n\n*It might not be defined if there is a vertical asymptote in the region where we are integrating. We note that \\(\\dfrac{1}{\\cos 3x}\\) can be infinite for some values of \\(x\\).*\n\nSo we only need to determine the sign for each of the three integrals involved in the product.\n\nConsider the first integral, \\[\\int_{-\\pi/2}^{\\pi/2}\\cos x\\,dx.\\] The graph of \\(y=\\cos x\\) looks like this:\n\nSo the integral from \\(x=-\\pi/2\\) to \\(x=\\pi/2\\) is positive, as the graph all lies above the \\(x\\)-axis in this range.\n\nThen for the second, \\[\\int_\\pi^{2\\pi}\\sin x\\,dx.\\] The graph of \\(y=\\sin x\\) looks like this:\n\nBetween \\(x=\\pi\\) and \\(x=2\\pi\\), this graph lies entirely below the \\(x\\)-axis, so this integral is negative.\n\nFor the third integral, \\[\\int_0^{\\pi/8}\\frac{dx}{\\cos 3x}\\] we will need to consider the graph of \\(y=\\cos 3x\\), which is the graph of \\(y=\\cos x\\) stretched by a scale factor of \\(\\frac{1}{3}\\) in the \\(x\\)-direction.\n\n*Now \\(\\frac{1}{\\cos 3x}\\) is infinite at \\(x=\\pi/6\\), but \\(x=\\pi/8<\\pi/6\\), and so there are no vertical asymptotes in the region where we are integrating.*\n\nThis graph is positive between \\(x=0\\) and \\(x=\\pi/8\\), so between \\(x=0\\) and \\(x=\\pi/8<\\pi/6\\), we see that \\(\\dfrac{1}{\\cos 3x}\\) is positive. Thus this third integral is positive.\n\nFinally, we can combine the three integrals. Since two of them are positive and one is negative, their product must be negative.\n\nThe answer is therefore (b), \\(T<0\\).\n",
@@ -4293,6 +4523,15 @@
      "modesRecorded": [
       1
      ]
+    },
+    {
+     "code": "3.5.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
     }
    ],
    "bodyMd": "\n# Can we find this body's displacement from $O$ when its velocity is $0$?\n\n## Question\n\nA body moves in a straight line so that at time \\(\\quantity{t}{sec.}\\) its velocity \\(\\quantity{v}{ft./sec.}\\) is given by the formula\\[v= \\frac{2t-1}{4(2t+1)}.\\]\n\nFind:\n\n1. the displacement of the body, measured from its position when \\(t=0\\), at the instant when its velocity is zero;\n\n---\n\n1. the acceleration of the body at this instant.\n\n[The numerical answer to (i) is required correct to two significant figures.]\n\n## Suggestion\n\nFind:\n\n1. the displacement of the body, measured from its position when \\(t=0\\), at the instant when its velocity is zero;\n\n[The numerical answer to (i) is required correct to two significant figures.]\n\nCould we find the displacement by integrating the velocity?\n\nFind:\n\n1. the acceleration of the body at this instant.\n\nCould we find the acceleration by differentiating the velocity?\n\n## Solution\n\nA body moves in a straight line so that at time \\(\\quantity{t}{sec.}\\) its velocity \\(\\quantity{v}{ft./sec.}\\) is given by the formula\\[v= \\frac{2t-1}{4(2t+1)}.\\]\n\nFind:\n\n1. the displacement of the body, measured from its position when \\(t=0\\), at the instant when its velocity is zero;\n\n[The numerical answer to (i) is required correct to two significant figures.]\n\nThe velocity is the rate of change of displacement. So to calculate the displacement away from its initial position at a given time, we need to integrate the velocity as a function of time.\n\nClearly if \\(v = 0\\), then \\(t = 0.5\\). We have \\[v = \\dfrac{1}{4}\\left( \\dfrac{2t-1}{2t+1} \\right) = \\dfrac{1}{4}\\left( \\dfrac{(2t+1)-2}{2t+1} \\right) = \\dfrac{1}{4}\\left( 1 -\\dfrac{2}{2t+1} \\right).\\]\n\nThus \\[d = \\dfrac{1}{4} \\int v \\:d t = \\dfrac{1}{4}\\left( t - \\ln{\\big\\vert 2t+1\\big\\vert} + c \\right) = \\dfrac{t}{4} - \\dfrac{\\ln{\\big\\vert 2t+1\\big\\vert}}{4} + c'.\\]\n\nIf \\(d = 0\\) when \\(t = 0\\), then \\(c' = 0\\), so at \\(t = 0.5,\\)\n\n\\[d = \\dfrac{1}{8} - \\dfrac{\\ln{2}}{4} \\approx \\quantity{-0.048}{ft}.\\]\n\nFind: (ii) the acceleration of the body at this instant.\n\nThe acceleration \\(a\\) of a body at time \\(t\\) is found by differentiating the expression for its the velocity.\n\nSo here we have \\(a = \\dfrac{d}{dt} \\dfrac{2t-1}{4(2t+1)}\\). Using the [quotient rule](https://undergroundmathematics.org/glossary/quotient-rule), we have\n\n\\[\\begin{align*} a &= \\dfrac{4(2t+1)\\times 2 -(2t-1)\\times 8 }{16(2t+2)^2}\\\\ &=\\dfrac{16t+8 -16t+8}{16(2t+2)^2}\\\\ &=\\dfrac{1}{(2t+2)^2} \\end{align*}\\]\n\nPutting \\(t = 0.5\\) gives us \\[a= \\quantity{0.25}{ft./sec.^2}\\]\n",
@@ -4660,6 +4899,485 @@
     }
    ],
    "bodyMd": "\n# Trig gradient match\n\n> Excerpt: Students are asked to pair up graphs of certain trig functions and their gradient functions and sketch some missing graphs.  The graphs are not labelled, so students will have to focus on the shapes of the graphs.\n\n## Problem\n\nTake a look at these graphs. The numbered graphs show the gradient functions of ones with letters, but some are missing…\n\n- Try to pair up a function with its gradient function. Which features of the graphs will you use to justify your reasoning?\n\n- If a graph can’t be paired up with anything, try to sketch a graph that would complete its pair.\n\nThe graphs are available as [cards](https://undergroundmathematics.org/calculus-trig-log/trig-gradient-match/components/cards.pdf) to cut out and sort, including some blank cards for the missing graphs.\n\nOnce you have sorted the graphs into pairs of functions \\(f(x)\\) and \\(f'(x)\\) and sketched any missing graphs, try to sketch the graphs of the second derivatives.\n\nAlso try to sketch graphs of functions whose derivative is \\(f(x).\\) What do you notice?\n\n## Suggestion\n\nTake a look at these [graphs](https://undergroundmathematics.org/calculus-trig-log/trig-gradient-match/). The numbered graphs show the gradient functions of ones with letters, but some are missing…\n\n- Try to pair up a function with its gradient function. Which features of the graphs will you use to justify your reasoning?\n\n- If a graph can’t be paired up with anything, try to sketch a graph that would complete its pair.\n\nOne way to approach this is to group the graphs with letters into different “families” and match these groups with gradient function graphs with appropriate features. Can you explain why this approach could lead to the following groups?\n\nWhy these groups?\n\n- Graphs A and E are both continuous and their gradients appear to vary smoothly.\n\n- Graphs D and F have turning points so their gradient function graphs must meet the \\(x\\)-axis. Or we could say that \\(D\\) and \\(F\\) have both positive and negative gradients.\n\n- Graphs B and C have no turning points. Their gradients are either always positive or always negative.\n\nNow think about how to pair these cards up within the groups.\n\nIdeas for matching and sketching\n\nAligning cards vertically can help with spotting related features. What feature of a gradient function will need to be aligned with\n\n- … a stationary point?\n\n- … an asymptote?\n\nWhat feature will a function exhibit if the gradient function\n\n- … is above the horizontal axis?\n\n- … cuts the horizontal axis?\n\n- … has a stationary point?\n\n## Things you might have noticed\n\nTake a look at these [graphs](https://undergroundmathematics.org/calculus-trig-log/trig-gradient-match/). The numbered graphs show the gradient functions of ones with letters, but some are missing…\n\n- Try to pair up a function with its gradient function. Which features of the graphs will you use to justify your reasoning?\n\n- If a graph can’t be paired up with anything, try to sketch a graph that would complete its pair.\n\nFollowing on from the groups of cards in the [Suggestion](https://undergroundmathematics.org/calculus-trig-log/trig-gradient-match/suggestion), I now need to consider how these cards can be paired up.\n\n**First group**\n\nI notice graph A has a stationary point at \\(x=0\\) and its gradient is positive before and negative afterwards. Graph E has stationary points to the right and left of the origin.\n\n- Does graph 5 match A or E? How can I tell?\n\n- How could I use transformations to sketch the missing graph?\n\n- How could I use features to sketch the missing graph?\n\nFirst group graph pairs\n\n**Second group**\n\nGraph D has an asymptote along the vertical axis whereas graph F has a turning point at \\(x=0\\).\n\n- What do I look for in the gradient function for each of these features?\n\n- What transformation can I use to sketch the missing graph easily?\n\nSecond group graph pairs\n\n**Third group**\n\nI can use the asymptotes to help find a first pair, and I can also think about transformations, since some of these graphs are transformations of each other.  <cm-cards include-source=\"components/colouredcards-content\" display=\"B|1\" markers=\"B,1\" card-padding=\"5\" card-spacing=\"5 0\" card-width=\"180\" />\n\n- What feature can I use to choose between graphs 3 and 4 to match with graph C?\n\n- How can I use transformations again to sketch the missing graph?\n\n- Can I be certain what the missing graph should look like?\n\nThird group graph pairs\n\nSince graph 3 is a vertical reflection of graph 4, my missing graph could be a vertical reflection of graph C, but it could also show the gradient function of any vertical translation of this, so I sketch a family of curves.\n\n(The black graph is the one that was obtained by reflecting graph C in the \\(y\\)-axis.)\n\nI could continue to base my reasoning on transformations. Alternatively, I could consider the behaviour of the graphs. How does this affect the second derivative, \\(f''(x)\\), or the antiderivatives (the family of functions whose derivatives are \\(f(x)\\))? I’ll take the second approach and consider a few examples.\n\nI’ll say graph A is \\(y=f(x)\\), so graph 5 is \\(y=f'(x)\\) and I can consider the gradient of graph 5 to help me sketch \\(y=f''(x).\\) The gradient of graph 5 is negative as it passes through the origin, so \\(f''(0)\\) must be negative. Graph 5 has alternating maxima and minima with sections of either positive or negative gradient in between, so \\(y=f''(x)\\) crosses the \\(x\\)-axis whenever graph 5 has a stationary point and alternates between being positive and negative. I notice that the \\(x\\)-intercepts of \\(y=f''(x)\\) correspond to [points of inflection](https://undergroundmathematics.org/glossary/point-of-inflection) in graph A.\n\nThis type of thinking also helps me to sketch the antiderivatives of the function shown in graph A. What will these functions look like when graph A crosses the \\(x\\)-axis? What about when graph 5 crosses the \\(x\\)-axis?\n\nIn graphs F and 2, I notice that graph 2 also alternates between positive and negative gradient, but this time there are no stationary points. How must my approach to sketching the second derivative of graph F differ from how I sketched the second derivative of graph A? How does this reflect the differences between graphs F and A or graphs 2 and 5?\n\nIf I apply the same type of thinking to graphs B and 1, how could I use the other graphs to confirm my ideas?\n\nThinking about transformations helps with the pair A and 5. Graph 5 is a reflection in the horizontal axis of graph E and I have already sketched the gradient function of E. Therefore the second derivative of A is actually a reflection of A in the horizontal axis. I also noticed that the gradient function of E was in fact A, so I already know what the antiderivatives of graph A will look like. Graph 2 isn't a transformation of a graph whose derivative I have a sketch for, so I'll need to think about what its behaviour tells me about its gradient function, which will be the second derivative of the function on card F. The gradient of the section passing through the origin is always positive, but is least steep when $x=0$, so I would expect its gradient function to have a minimum at a point with coordinates $(0,k)$ for some $k>0.$ The graph gets steeper and steeper as it approaches its asymptotes, so I expect the graph of the gradient function also to have these asymptotes. The section of the graph to the right of this central section behaves in a similar way, but always has negative gradient, so I'd expect the gradient function of this section to have a local maximum. Then I can use the periodicity of the graph to complete my sketch. This type of thinking also helps me to sketch the antiderivatives of the function shown in graph F - each section of this graph is either positive or negative, and if its Thinking about my second group I could try to sketch what is happening from the gradient function using features and symmetry, but in matching my final group of graphs I have already seen what the gradient functions of shapes like this look like. I will therefore look at how individual sections of B and C behaved and alternate them in my sketch. In this way I seem to have redrawn something similar to the original function graphs F and D.\n\nMy sketches of some second derivatives look very similar to the original functions. How could I tell if these are actually the same?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "constant-consistency",
+   "slug": "constant-consistency",
+   "station": "product-rule",
+   "title": "Constant consistency",
+   "url": "https://undergroundmathematics.org/product-rule/constant-consistency",
+   "resourceType": "many-ways-problem",
+   "resourceTypeLabel": "Many ways problem",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.2",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.5",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.6",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Constant consistency\n\n> Excerpt: Three different ways to work out an integral give results that appear to be very different. What is going on?\n\n## Problem\n\nIn how many different ways can you find this? \\[\\displaystyle{\\int {\\cos (x) \\sin (x)} \\, dx}\\]\n\nSome suggested approaches\n\nCould you use a trigonometric identity?\n\nCould you use a substitution?\n\nCould you integrate by parts?\n\nAnything else?\n\n## Some solutions\n\nUsing a trigonometric identity\n\nThe integrand is familiar from the identity \\(\\sin(2x) \\equiv 2\\sin(x) \\cos(x)\\) so we could use this to help us.\n\n\\[\\displaystyle{\\int {\\cos (x) \\sin (x)} \\, dx} = \\displaystyle{\\int \\dfrac{1}{2} {\\sin (2x)} \\, dx} = -\\dfrac{1}{4} \\cos(2x) + C\\]\n\nUsing a substitution\n\nIf we use the substitution \\(u=\\cos(x)\\), then \\(\\dfrac{du}{dx} = -\\sin(x)\\).\n\nTherefore, \\[\\displaystyle{\\int {\\cos (x) \\sin (x)} \\, dx} = \\displaystyle{\\int {-u} \\, du} = -\\dfrac{1}{2} \\cos^2 (x) + C\\]\n\nIs this the only possible substitution we could use?\n\nIntegration by parts\n\nWe have a product of two different functions, so integration by parts may be useful. \\[\\int uv' \\, dx = uv - \\int u'v \\, dx\\]\n\nWe let \\(u=\\sin(x)\\) and \\(v'=\\cos(x)\\), so that \\(u'=\\cos x\\) and \\(v=\\sin x\\).\n\n\\[\\displaystyle{\\int {\\cos (x) \\sin (x)} \\, dx}= \\sin^2(x) - \\displaystyle{\\int {\\cos (x) \\sin (x)} \\, dx}\\]\n\nThe integral on the right hand side is the same as our original. Has this helped?\n\nLet’s define \\[\\displaystyle{\\int {\\cos (x) \\sin (x)} \\ dx} = I.\\]\n\nThen we have \\[I = \\sin^2(x) -I +c.\\]\n\nMaking\n\n\\(I\\)\n\nthe subject, we have\n\n\\[\\begin{align*} 2I &= sin^2(x) +c\\\\ \\implies\\quad I&= \\dfrac{1}{2} \\sin^2(x) + C. \\end{align*}\\]\n\nWould the answer have been different if we had swapped the \\(u\\) and \\(v'\\)?\n\nWe’ve integrated the function in three different ways and seem to have three different answers. What has happened?\n\n- Would thinking about these solutions graphically help?\n\n- Can we make sense of it algebraically?\n\n## Are these the same?\n\n**Graphical Approach**\n\nFrom the graphs we can see that each is a translation parallel to the \\(y\\)-axis of the same curve. Therefore we can add a constant value to each function and get the other solutions.\n\nWe used the same symbol, \\(C\\) for the constant of integration in each case, but in fact they must be different constants.\n\n**Algebraic Approach**\n\nIf the constants are different, let’s call them \\(P\\), \\(Q\\) and \\(R\\) rather than \\(C\\).\n\nSo we have the three answers as:\n\n| \\(-\\dfrac{1}{4} \\cos(2x) + P\\) | \\(-\\dfrac{1}{2} \\cos^2 (x) + Q\\) | \\(\\dfrac{1}{2} \\sin^2(x) + R\\) |\n|---|---|---|\n\nAre there any trigonometric identities that connect the trigonometric functions?\n\nWe know that \\(\\cos(2x) \\equiv 2\\cos^2(x)-1 \\equiv 1-2\\sin^2(x)\\) and \\(\\cos^2(x) \\equiv 1-\\sin^2(x)\\).\n\nTherefore, \\[-\\dfrac{1}{4} \\cos(2x) + P = -\\dfrac{1}{4} (2\\cos^2(x)-1) +P = -\\dfrac{1}{2} \\cos^2(x) + \\dfrac{1}{4} + P.\\]\n\nComparing \\(-\\dfrac{1}{2} \\cos^2(x) + \\dfrac{1}{4} + P\\) to \\(-\\dfrac{1}{2} \\cos^2 (x) + Q\\) we can see they are the same except for the constants. If we equate them then \\(Q=\\dfrac{1}{4} +P\\).\n\nSimilarly, \\[-\\dfrac{1}{4} \\cos(2x) + P = -\\dfrac{1}{4} (1-2\\sin^2(x)) +P = \\dfrac{1}{2} \\sin^2(x) - \\dfrac{1}{4} + P.\\]\n\nComparing again, we can see \\(R=-\\dfrac{1}{4} +P\\)\n\nSo we can see the constant is not the same but the functions are equivalent.\n\nHow are the differences in the constants related to the translations of the graphs?\n\nWe worked out the integral in three different ways and got what at first seemed to be different answers. What would happen if we used the different methods to evaluate a definite integral such as \\[\\displaystyle{\\int_0^{\\pi/2} {\\cos (x) \\sin (x)} \\, dx}\\text{ ?}\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "integral-chasing-2",
+   "slug": "integral-chasing-2",
+   "station": "product-rule",
+   "title": "Integral chasing II",
+   "url": "https://undergroundmathematics.org/product-rule/integral-chasing-2",
+   "resourceType": "fluency-exercise",
+   "resourceTypeLabel": "Fluency exercise",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.5",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.6",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Integral chasing II\n\n> Excerpt: This resource is made up of four integrals that require the use of a variety of techniques. Students will have to decide which integration technique to use for each integral and solve them to find the unknowns $a, b, c$ and $d$.\n\n## Problem\n\nCan you find the missing positive numbers \\(a\\) to \\(d\\)?\n\n1. \\(\\displaystyle{\\int_1^a \\dfrac{1}{3x} \\,dx = \\ln 2}\\)\n\n---\n\n1. \\(\\displaystyle{\\int_0^3 ax e^{2x} \\,dx = be^6 + 2}\\)\n\n---\n\n1. \\(\\displaystyle{\\int_{1}^{3} \\dfrac{cx}{\\sqrt{25-x^2}} \\,dx = 4\\sqrt{6} - 4c}\\)\n\n---\n\n1. \\(\\displaystyle{\\int_{\\frac{\\pi}{2}}^{\\frac{b}{a}\\pi} x^2\\sin cx \\,dx = \\dfrac{\\pi d - \\pi^2 + c}{a}}\\)\n\n## Solution\n\nWe will work through the integrals in order, but they can be tackled in a variety of ways.\n\n\\[\\begin{align*} \\int_1^a \\dfrac{1}{3x} \\,dx &= \\left[\\frac{1}{3}\\ln(3x)\\right]_{1}^{a} \\\\ &= \\frac{1}{3}\\big(\\ln3a - \\ln3\\big) \\\\ &= \\frac{1}{3}\\ln\\left(\\frac{3a}{3}\\right) \\\\ &= \\ln{a^{\\frac{1}{3}}} \\end{align*}\\]\n\nSo \\(\\ln{a^{\\frac{1}{3}}} = \\ln2\\) which gives us \\(a = 8\\).\n\nWe have treated this integral as \\(\\displaystyle{\\int_1^a \\dfrac{1}{(3x)} \\,dx}\\), but what happens if we think of it as \\(\\displaystyle{\\dfrac{1}{3}\\int_1^a \\dfrac{1}{x} \\,dx}\\)? Do both approaches give the same answer?\n\nWhat method will we use for integrating this? We have a product of two different functions so it looks like integration by parts will be useful. \\[\\int uv' \\, dx = uv - \\int u'v \\, dx\\] Which function will we integrate and which will we differentiate?\n\nSince we know that \\(a = 8\\), we have two functions, \\(8x\\) and \\(e^{2x}\\). We can differentiate both these functions, but \\(8x\\) will become a constant so let’s take \\(u = 8x\\) and \\(v' = e^{2x}\\). That gives us \\(u'=8\\) and \\(v = \\frac{1}{2}e^{2x}\\). Therefore the integral can be written as:\n\n\\[\\begin{align*} \\int_0^3 8x e^{2x} \\,dx &= \\left[4xe^{2x}\\right]_0^3 - \\int_0^3 4e^{2x} \\, dx \\\\ &= \\left[4xe^{2x} - 2e^{2x} \\right]_0^3 \\\\ &= (12e^6 - 2e^6) - (0 - 2e^0) \\\\ &= 10e^6 + 2. \\end{align*}\\]\n\nComparing the answers we have \\(10e^6+2 = be^6 + 2\\), so \\(b = 10\\).\n\nThe function in the numerator is a multiple of the derivative of the function in the square root, so it seems reasonable to think that we should try integration by substitution.\n\nLet \\(u = 25-x^2\\), then \\(du = -2x \\ dx\\). Some manipulation is required to get the integral in the form we need.\n\n\\[\\int_{1}^{3} \\dfrac{cx}{\\sqrt{25-x^2}} \\,dx = -\\dfrac{c}{2} \\int_{1}^{3} \\dfrac{-2x}{\\sqrt{25-x^2}} \\, dx\\]\n\nNow we can make the substitution.\n\n\\[\\begin{align*} -\\dfrac{c}{2} \\int_{1}^{3} \\dfrac{-2x}{\\sqrt{25-x^2}} \\, dx &= -\\dfrac{c}{2} \\int_{u = 24}^{u=16} \\dfrac{1}{\\sqrt{u}} \\, du \\\\ &= -\\dfrac{c}{2} \\left[2u^{\\frac{1}{2}}\\right]_{u=24}^{u=16} \\\\ &= -c \\big(\\sqrt{16} - \\sqrt{24} \\big) \\\\ &= 2c\\sqrt{6} - 4c \\end{align*}\\]\n\nIf we compare this to the answer given we have \\(4\\sqrt{6} - 4c = 2c\\sqrt{6} - 4c\\), so \\(c = 2\\).\n\nWhen using integration by substitution there is likely to be more than one possible substitution that could be used. What other substitutions could be used here?\n\nAs in the second integral we have the product of two unrelated functions so it makes sense to try integration by parts. Which way round should the choices for \\(u\\) and \\(v'\\) be?\n\nWe start by substituting in the values of \\(a, b\\) and \\(c\\).\n\n\\[\\int_{\\frac{\\pi}{2}}^{\\frac{5}{4}\\pi} x^2\\sin 2x \\,dx\\]\n\nIf \\(u = x^2\\) and \\(v' = \\sin2x\\) then we have \\(u' = 2x\\) and \\(v = -\\frac{1}{2}\\cos2x\\).\n\n\\[\\begin{align*} \\int_{\\frac{\\pi}{2}}^{\\frac{5}{4}\\pi} x^2\\sin 2x \\,dx &= \\left[-\\frac{1}{2}x^2\\cos2x\\right]_{\\frac{\\pi}{2}}^{\\frac{5}{4}\\pi} - \\int_{\\frac{\\pi}{2}}^{\\frac{5}{4}\\pi} -x\\cos2x \\, dx \\end{align*}\\]\n\nUsing integration by parts hasn’t reduced this to an integral that we can now solve but it has reduced the polynomial term from \\(x^2\\) to \\(x\\).\n\nWhile we can’t solve this directly, it has got us one step closer. It is now similar to the second integral and we can use integration by parts for a second time where \\(u = x\\) and \\(v'= \\cos2x\\), and \\(u'=1\\) and \\(v = \\frac{1}{2}\\sin2x\\).\n\n\\[\\begin{align*} \\left[-\\frac{1}{2}x^2\\cos2x\\right]_{\\frac{\\pi}{2}}^{\\frac{5}{4}\\pi} + \\int_{\\frac{\\pi}{2}}^{\\frac{5}{4}\\pi} x\\cos2x \\, dx &= \\left[-\\frac{1}{2}x^2\\cos2x + \\frac{1}{2}x\\sin2x\\right]_{\\frac{\\pi}{2}}^{\\frac{5}{4}\\pi} - \\int_{\\frac{\\pi}{2}}^{\\frac{5}{4}\\pi} \\frac{1}{2}\\sin2x \\, dx \\\\ &= \\left[-\\frac{1}{2}x^2\\cos2x + \\frac{1}{2}x\\sin2x\\ + \\frac{1}{4}\\cos2x\\right]_{\\frac{\\pi}{2}}^{\\frac{5}{4}\\pi} \\end{align*}\\]\n\nBefore we substitute in the limits it is worth noticing that all our trigonometric functions have an argument of \\(2x\\). When substituting \\(x =\\frac{5\\pi}{4}\\) or \\(x = \\frac{\\pi}{2}\\) into the trigonometric functions we will get the following values.\n\n\\(\\cos(\\frac{5\\pi}{2}) = 0\\)\n\n\\(\\sin(\\frac{5\\pi}{2}) = 1\\)\n\n\\(\\sin\\pi = 0\\)\n\n\\(\\cos\\pi = -1\\)\n\nTherefore when we evaluate the expression we get\n\n\\[\\left(0+\\frac{1}{2}\\times\\dfrac{5\\pi}{4}\\times1 + 0\\right) - \\left(-\\dfrac{1}{2}\\times(\\dfrac{\\pi}{2})^2\\times-1 + 0 + \\dfrac{1}{4}\\times1\\right) = \\dfrac{5\\pi}{8} - \\dfrac{\\pi^2}{8} + \\dfrac{1}{4}.\\]\n\nWe can use the answer given in the question to check our values for \\(a, b\\) and \\(c\\) and to find the value for \\(d\\).\n\n\\[\\begin{align*} \\dfrac{\\pi d - \\pi^2 + c}{a} &= \\dfrac{5\\pi}{8} - \\dfrac{\\pi^2}{8} + \\dfrac{1}{4} \\\\ &= \\dfrac{5\\pi - \\pi^2 +2}{8} \\end{align*}\\]\n\nWe can be confident that \\(d = 5\\) since our values for \\(a\\) and \\(c\\) match what we have already found.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "integral-sorting",
+   "slug": "integral-sorting",
+   "station": "chain-rule",
+   "title": "Integral sorting",
+   "url": "https://undergroundmathematics.org/chain-rule/integral-sorting",
+   "resourceType": "fluency-exercise",
+   "resourceTypeLabel": "Fluency exercise",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.6",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Integral sorting\n\n> Excerpt: Students are asked to pair up cards containing integrals and their answers, as well as find a suitable substitution that could be used to solve the integral.\n\n## Problem\n\nBelow are 8 integrals and their solutions. Can you:\n\n- match up the [cards](https://undergroundmathematics.org/chain-rule/integral-sorting/components/cards.pdf) and fill in the blanks?\n\n- write down a substitution that could have been used to solve each integral?\n\n- sort the pairs into groups. What features could be used to define the groups?\n\n\\(\\displaystyle{\\int 9x\\sqrt{1-9x^2} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{x^2-1}{(x^3 - 3x)^2} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{1}{\\sqrt{1-9x^2}} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{9x}{\\sqrt{1-9x^2}} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{6-6x^2}{x^3 - 3x} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{\\cos x}{\\sin^3 x} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{\\cos x}{\\sin x} \\, dx}\\)\n\n\\(\\dfrac{-1}{2\\sin^2x}+c\\)\n\n\\(\\frac{2}{9} (x^3 - 3x)^{3/2} +c\\)\n\n\\(\\ln{|\\sin x|}+c\\)\n\n\\(\\frac{1}{3}\\arcsin 3x +c\\)\n\n\\(\\dfrac{-1}{3(x^3-3x)}+c\\)\n\n\\(-\\frac{1}{3}\\left(1-9x^2\\right)^{\\frac{3}{2}} +c\\)\n\n\\(-2\\ln{|x^3-3x|}+c\\)\n\n## Solution\n\nIn some of the integrals there are similar expressions we could use for sorting. B and F both contain \\(x^3 - 3x\\), as do the solutions 2, 6 and 8. To match them we could try to integrate B and F, or differentiate 2, 6 and 8. We find that we can pair them up, and that card 2 differentiates to \\(\\frac{1}{3}(x^3-3x)^{1/2}(3x^2-3)\\) which must match the blank card C.\n\n\\(\\displaystyle{\\int \\dfrac{x^2-1}{(x^3 - 3x)^2} \\, dx}\\)\n\n\\(\\dfrac{-1}{3(x^3-3x)}+c\\)\n\n\\(\\displaystyle{\\int \\dfrac{6-6x^2}{x^3 - 3x} \\, dx}\\)\n\n\\(-2\\ln{|x^3-3x|}+c\\)\n\n\\(\\displaystyle{\\int {(x^2-1)}\\sqrt{x^3 - 3x} \\, dx}\\)\n\n\\(\\frac{2}{9} (x^3 - 3x)^{3/2} +c\\)\n\nTo help us find the correct substitutions let us think about the chain rule. We should be familiar with how we differentiate a composite function.\n\n\\[\\dfrac{d}{dx} \\Big(g(f(x))\\Big) = g'(f(x))\\times f'(x)\\]\n\nIf we integrate both sides we can write\n\n\\[g(f(x)) = \\int g'(f(x))\\times f'(x) \\, dx.\\]\n\nThis integral is made up of a composite function multiplied by the differential of the inner function.\n\nIf you spot this pattern in an integral, you may be able to integrate it by inspection without needing to substitute. However, as integrals get more complex, it will help to find a substitution that will reduce the integral to \\[g(u) = \\int g'(u) \\, du.\\]\n\nTaking a closer look at the integrals above, we find that B, C and F all include a function of \\(x^3 - 3x\\), as well as a multiple of \\(3x^2 - 3\\), which is the derivative of \\(x^3 - 3x\\). This suggests that the substitution \\(u = x^3 - 3x\\) will work for all three integrals.\n\nTry using this substitution to check that it works. Are there any other options for the substitution?\n\nNow let’s look at the integrals which involve trigonometric functions.\n\n\\(\\displaystyle{\\int \\dfrac{\\cos x}{\\sin^3 x} \\, dx}\\)\n\n\\(\\dfrac{-1}{2\\sin^2x}+c\\)\n\n\\(\\displaystyle{\\int \\dfrac{\\cos x}{\\sin x} \\, dx}\\)\n\n\\(\\ln{|\\sin x|}+c\\)\n\nFor G we see that \\(\\dfrac{1}{\\sin^3 x}\\) is the composite function. As \\(\\sin^3 x\\) is more clearly written as \\((\\sin x)^3\\) we see that \\(\\sin x\\) is the inner function and so \\(u = \\sin x\\) is a suitable substitution.\n\nFor H it is less obvious, but remember \\(\\dfrac{1}{\\sin x}\\) is a composite function of \\(\\dfrac{1}{x}\\) and \\(\\sin x\\), so we can use the same substitution of \\(u = \\sin x\\).\n\nWhy can’t we use the substitution \\(u = \\cos x\\)? What happens if we do?\n\nOur final three cards match up like this:\n\n\\(\\displaystyle{\\int 9x\\sqrt{1-9x^2} \\, dx}\\)\n\n\\(-\\frac{1}{3}\\left(1-9x^2\\right)^{\\frac{3}{2}} +c\\)\n\n\\(\\displaystyle{\\int \\dfrac{1}{\\sqrt{1-9x^2}} \\, dx}\\)\n\n\\(\\frac{1}{3}\\arcsin 3x +c\\)\n\n\\(\\displaystyle{\\int \\dfrac{9x}{\\sqrt{1-9x^2}} \\, dx}\\)\n\n\\(-\\sqrt{1-9x^2} +c\\)\n\nA and E are similar problems with composite functions \\(\\sqrt{1-9x^2}\\) and \\(\\dfrac{1}{\\sqrt{1-9x^2}}\\). For both, a suitable substitution is \\(u = 1-9x^2\\). This allows us to complete the blank card 5 to match with E.\n\nD also includes \\(\\dfrac{1}{\\sqrt{1-9x^2}}\\), but not the derivative of \\(1-9x^2\\). What happens if you try the substitution \\(u = 1-9x^2\\)?\n\nFor this type of integral a trigonometric substitution is useful since \\(\\sin^2 x + \\cos^2 x =1\\). One possible substitution is \\(3x = \\sin u.\\)\n\n- How is this different from the other substitutions that have been used?\n\n- Would it matter if you used \\(x = \\sin u\\) or \\(3x = \\cos u\\) instead?\n\nRather than focusing on the expressions the integrals contained we could think about the structure of each integral.\n\n\\(\\displaystyle{\\int \\dfrac{6-6x^2}{x^3 - 3x} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{\\cos x}{\\sin x} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{x^2-1}{(x^3 - 3x)^2} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{9x}{\\sqrt{1-9x^2}} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{\\cos x}{\\sin^3 x} \\, dx}\\)\n\n\\(\\displaystyle{\\int 9x\\sqrt{1-9x^2} \\, dx}\\)\n\n\\(\\displaystyle{\\int {(x^2-1)}\\sqrt{x^3 - 3x} \\, dx}\\)\n\n\\(\\displaystyle{\\int \\dfrac{1}{\\sqrt{1-9x^2}} \\, dx}\\)\n\nWhat are the features of each group?\n\nCan you write down a different integral that would fit into each group?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "inverse-integrals",
+   "slug": "inverse-integrals",
+   "station": "calculus-trig-log",
+   "title": "Inverse integrals",
+   "url": "https://undergroundmathematics.org/calculus-trig-log/inverse-integrals",
+   "resourceType": "food-for-thought",
+   "resourceTypeLabel": "Food for thought",
+   "level": "Developing",
+   "hasTeacherSupport": true,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Inverse integrals\n\n> Excerpt: Students are asked to think about inverse functions in order to find a definite integral involving $\\ln x$. Can they find a method to calculate certain integrals without knowing how to integrate the function directly?\n\n## Warm-up\n\nTake a look at these graphs.\n\nSay what you see…\n\n|  |  |\n|---|---|\n\nThings to think about\n\n- Is there any information you can add to the graphs?\n\n- What links are there between the two diagrams?\n\n- What shapes can you see in the diagrams? Can you work out their areas?\n\n## Warm-up ideas\n\nTake a look at these graphs.\n\nSay what you see…\n\n|  |  |\n|---|---|\n\nHere are some things you might have noticed.\n\n- There are two different graphs: each has a function and two \\(x\\)-coordinates given. There is an area shaded on each graph but they are in different places. One is between the curve and the \\(y\\)-axis and the other between the curve and the \\(x\\)-axis.\n\n- Neither curve has any \\(y\\)-coordinates labelled so we can add these to the diagram. For \\(y = e^x\\), the \\(y\\)-coordinates are \\(2\\) and \\(3\\). For \\(y = \\ln x\\) they are \\(\\ln 2\\) and \\(\\ln 3\\). So the same numbers appear in both graphs except the \\(x\\) and \\(y\\)-coordinates have swapped over.\n\n- The swapping of coordinates might remind us that there is a relationship between \\(e^x\\) and \\(\\ln x\\). They are inverse functions of each other, which we can think about graphically as a reflection in \\(y = x\\).\n\nThis symmetry around \\(y = x\\) is not immediately obvious from the diagrams, as the scaling in the \\(x\\) and \\(y\\) directions is different on each sketch. It is important not to make assumptions about shape or symmetry based on sketch graphs.\n\n- There are two rectangles on each graph with areas of \\(2 \\times \\ln 2\\) and \\(3 \\times \\ln 3\\) respectively. These areas are the same on both graphs as the \\(x\\) and \\(y\\) coordinates are reflected in \\(y=x\\).\n\nWhat can we say about the curved regions in the diagrams?\n\n- The symmetry of the graphs implies that the two shaded areas are actually identical as they are reflected across \\(y=x\\). They could be represented by the integral \\(\\displaystyle{\\int_2^{3} \\ln x \\, dx}\\) or the integral \\(\\displaystyle{\\int_2^{3} \\ln y \\, dy}.\\)\n\nCan you see which area is represented by which integral?\n\n- We can also find the area of other regions bounded by the curves. For example, the area A can be represented by the integral\n \n \\(\\displaystyle{\\int_{\\ln 2}^{\\ln 3} e^x \\, dx}.\\)\n\nAs inverse functions have symmetry around \\(y = x\\), we know that area A is the same as area B, shaded in the diagram below.\n\nHow would we represent B as an integral?\n\n## Problem\n\n|  |  |\n|---|---|\n\nUse the diagrams to help you find \\(\\displaystyle{\\int_2^3 \\ln x \\, dx}\\).\n\nUse a similar method to find \\(\\displaystyle{\\int_{\\frac{1}{2}}^{\\frac{\\sqrt3}{2}} \\arcsin x \\, dx}\\).\n\n## Solution\n\nThis solution will be based on ideas from the warm-up, so you may wish to look at the [Warm-up ideas](https://undergroundmathematics.org/calculus-trig-log/inverse-integrals/ideas) section if you haven’t already done so.\n\nThe integral represents the area of the shaded region under the curve \\(y = \\ln x\\). However, we also know that because these graphs are inverse functions, the shaded region between \\(e^x\\) and the \\(y\\)-axis has the same area.\n\nIf we don’t know how to integrate \\(\\ln x\\) directly, then we need to use other areas that we do know how to find. We have already calculated the areas of the large rectangle, \\(3\\ln 3\\), and the smaller rectangle, \\(2\\ln 2\\).\n\nTherefore the L-shaped shaded region has area \\(3\\ln 3 - 2\\ln 2\\).\n\nThe area between the curve, the\n\n\\(y\\)\n\n-axis,\n\n\\(\\ln 2\\)\n\nand\n\n\\(\\ln 3\\)\n\nis given by the integral\n\n\\[\\begin{align*} \\displaystyle{\\int_{\\ln 2}^{\\ln 3} e^y \\, dy} &= \\left[e^y \\right]_{\\ln 2}^{\\ln 3} \\\\ &= 3 - 2 \\\\ &= 1. \\end{align*}\\]\n\nPutting all these together means the area represented by\n\n\\(\\displaystyle{\\int_2^3 \\ln x \\, dx}\\)\n\ncan be found by\n\n\\[\\begin{align*} \\int_2^3 \\ln x \\, dx &= 3\\ln 3 - 2\\ln 2 - \\int_{\\ln 2}^{\\ln 3} e^y \\, dy \\\\ &= 3\\ln 3 - 2\\ln 2 - 1 \\end{align*}\\]\n\nThe answer can be written in several different forms. If you combined the logarithms you might have ended up with \\(\\ln \\left(\\frac{27}{4}\\right) - 1\\) or \\(\\ln \\left(\\frac{27}{4e}\\right)\\).\n\nRemember [\\(\\arcsin x\\)](https://undergroundmathematics.org/glossary/inverse-trigonometric-function) is the same as \\(\\sin^{-1} x\\).\n\nWe could have sketched the graph of \\(y= \\sin x\\) instead and thought about the area between the curve and the \\(y\\)-axis.\n\nIn this case we find\n\n\\[\\begin{align*} \\int_{\\frac{1}{2}}^{\\frac{\\sqrt{3}}{2}} \\arcsin x \\, dx &= \\frac{\\pi}{3}\\cdot\\frac{\\sqrt{3}}{2} - \\frac{\\pi}{6}\\cdot\\frac{1}{2} - \\int_{\\frac{\\pi}{6}}^{\\frac{\\pi}{3}} \\sin y \\, dy \\\\ &= \\frac{\\sqrt{3}\\pi}{6} - \\frac{\\pi}{12} + \\frac{1-\\sqrt{3}}{2} \\end{align*}\\]\n\nWe have seen that we can find the definite integral of any function if it has an inverse function that is easy to integrate.\n\nIs it also possible to work out the indefinite integral? What happens if you think about the integral \\[\\displaystyle{\\int_a^x \\ln t \\, dt}?\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6620",
+   "slug": "r6620",
+   "station": "product-rule",
+   "title": "If the gradient is $x(1-x^2)e^{-x^2}$ can we find the stationary points?",
+   "url": "https://undergroundmathematics.org/product-rule/r6620",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.5",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# If the gradient is $x(1-x^2)e^{-x^2}$ can we find the stationary points?\n\n## Question\n\nThe curve \\(C_1\\) passes through the origin in the \\(x\\text{-}y\\) plane and its gradient is given by \\[\\frac{dy}{dx}=x(1-x^2)e^{-x^2}.\\] Show that \\(C_1\\) has a minimum point at the origin and a maximum point at \\((1,\\frac{1}{2}e^{-1})\\). Find the coordinates of the other stationary point. Give a rough sketch of \\(C_1\\).\n\nThe curve \\(C_2\\) passes through the origin in the \\(x\\text{-}y\\) plane and its gradient is given by \\[\\frac{dy}{dx}=x(1-x^2)e^{-x^3}.\\] Show that \\(C_2\\) has a minimum point at the origin and a maximum point at \\((1,k)\\), where \\(k>\\frac{1}{2}e^{-1}\\). (You need not find \\(k\\).)\n\n## Suggestion\n\nWhat condition is required for a stationary point, and how do we classify them?\n\nTo find the coordinates of the maxima, we need to know \\(y\\) as a function of \\(x\\). What form do you think the function will take?\n\nOther things to consider when sketching this function:\n\n1. what happens as \\(x \\rightarrow \\pm\\infty\\)?\n\n---\n\n1. is this function even or odd (or neither)?\n\nCan we find the \\(x\\) coordinates of the stationary points? Can we classify them?\n\nCan we prove the inequality involving \\(k\\) by comparing with the function \\(C_1\\)?\n\n## Solution\n\n\\[\\frac{dy}{dx}=x(1-x^2)e^{-x^2}.\\]\n\nThis is zero when\n\n\\(x=0,\\pm 1\\)\n\n. To classify these stationary points we need the second derivative:\n\n\\[\\begin{align*} \\frac{d^2y}{dx^2} &= (1-x^2)e^{-x^2}+x(-2x)e^{-x^2}-2x^2(1-x^2)e^{-x^2}\\\\ &= (1-5x^2+2x^4)e^{-x^2}. \\end{align*}\\]\n\nThus\n\n\\[\\begin{align*} y''(0) &= 1 > 0 \\quad \\Longrightarrow \\quad \\text{this is a minimum point,} \\\\ y''(-1)=y''(1) &= (1-5+2)e^{-1} = -\\frac{2}{e} < 0 \\quad \\Longrightarrow \\quad \\text{these are maximum points.} \\end{align*}\\]\n\nSince we know the curve passes through the origin, \\((0,0)\\) must be a minimum point.\n\nTo find the coordinates of the other stationary points we need to know the values of \\(y(\\pm1)\\) which requires us to integrate the given expression. There are (at least) two different ways of doing this.\n\nMethod 1: integration by parts\n\nLet’s try to integrate\n\n\\(x(1-x^2)e^{-x^2}\\)\n\nby parts.\n\nRemember that the formula for integration by parts is \\[\\int u\\frac{dv}{dx}\\:dx=uv-\\int v\\frac{du}{dx}\\:dx\\]\n\nNotice that \\(xe^{-x^2}\\) is the derivative of \\(-\\frac{1}{2}e^{-x^2}\\). So let’s set \\[\\frac{dv}{dx}=xe^{-x^2}, \\implies v=-\\frac{1}{2}e^{-x^2},\\] and \\[u=1-x^2, \\implies \\frac{du}{dx}=-2x.\\]\n\nSo we have that\n\n\\[\\begin{align*} y=\\int x(1-x^2)e^{-x^2}\\:dx &= -\\frac{1}{2}(1-x^2)e^{-x^2}-\\int x e^{-x^2}\\:dx\\\\ &=-\\frac{1}{2}(1-x^2)e^{-x^2}+\\frac{1}{2}e^{-x^2}=\\frac{1}{2}x^2e^{-x^2}. \\end{align*}\\]\n\nNotice that we don’t need to add a constant because the curve passes though the origin (or we could say the constant of integration is 0).\n\nMethod 2: trial solution\n\nWe’ll guess at a solution of the form\n\n\\(y=(ax^2+bx+c)e^{-x^2}\\)\n\n.\n\nFrom the work above finding \\(\\frac{d^2y}{dx^2}\\) we can see that differentiating an expression of this form tends to increase the degree of the leading polynomial by one. So when integrating, we expect the leading cubic to become a quadratic.\n\n\\[\\begin{align*} \\frac{dy}{dx} &= (2ax+b)e^{-x^2}-2x\\left(ax^2+bx+c\\right)e^{-x^2} \\\\ &= \\left(-2ax^3-2bx^2+2(a-c)x+b\\right)e^{-x^2} \\end{align*}\\]\n\nComparing coefficients with \\(\\dfrac{dy}{dx}=x(1-x^2)e^{-x^2}\\), we find that\n\n\\[\\begin{align*} b &= 0,\\\\ -2a &= -1 ,\\quad \\Longrightarrow \\quad a=\\frac{1}{2},\\\\ 2\\left(\\frac{1}{2}-c\\right) &= 1\\quad \\Longrightarrow \\quad c=0 \\end{align*}\\]\n\nThus \\[y=\\frac{1}{2}x^2e^{-x^2},\\] which we can see satisfies the boundary condition \\(x=0,\\,y=0.\\)\n\nOur maxima are therefore found at \\(\\left(\\pm 1,\\dfrac{1}{2e}\\right)\\). Furthermore, the function is [even](https://undergroundmathematics.org/glossary/even-function), that is \\(f(-x)=f(x)\\) for all \\(x\\); and as \\(x \\rightarrow \\pm\\infty\\), \\(y \\rightarrow 0\\).\n\nSo now \\[\\frac{dy}{dx}=x(1-x^2)e^{-x^3}.\\]\n\nNote the change from \\(-x^2\\) to \\(-x^3\\) in the power of \\(e\\) means this becomes a really hard differential equation to solve.\n\nThe methods we used above both fail. Fortunately we can complete the question without directly solving this equation.\n\nThe stationary points are again at\n\n\\(x=0,\\,\\pm 1\\)\n\n. Classifying these:\n\n\\[\\begin{align*} \\frac{d^2y}{dx^2} &= \\left(1-x^2\\right)e^{-x^3} -2x^2e^{-x^3} -3x^3\\left(1-x^2\\right)e^{-x^3} \\\\ &= \\left(1-3x^2-3x^3+3x^5\\right)e^{-x^3}. \\end{align*}\\]\n\nThus\n\n\\[\\begin{align*} y''(0) &= 1 > 0 \\quad \\Longrightarrow \\quad \\text{this is a minimum point,} \\\\ y''(\\pm1) &= (1-3\\mp3\\pm3)e^{-1} = -\\frac{2}{e} < 0 \\quad \\Longrightarrow \\quad \\text{these are maximum points.} \\end{align*}\\]\n\nNow we need to show the maximum point at \\((1,k)\\) satisfies \\(k>\\frac{1}{2}e^{-1}\\). We cannot evaluate the function directly, but we know that the curve passes through the origin, like \\(C_1\\), and that \\(C_1\\) has a maximum at \\((1,\\frac{1}{2}e^{-1})\\). So we know \\(C_1\\) reaches this point, and we want to show \\(C_2\\) goes above it. For \\(0<x<1\\), we have:\n\n\\[\\begin{align*} x^2 &> x^3 \\\\ \\Longrightarrow \\quad -x^2 &< -x^3 \\\\ \\Longrightarrow x(1-x^2)e^{-x^2} &< x(1-x^2)e^{-x^3}. \\end{align*}\\]\n\nSo the derivative of \\(C_2\\) is greater than that of \\(C_1\\) in this range. That means that \\(C_2\\)’s \\(y\\) value is “growing” faster than \\(C_1\\)’s between the origin and the maximum point at \\(x=1\\), so its maximum point will have greater \\(y\\)-coordinate, that is to say, the maximum occurs at \\((1,k)\\), where\n\n\\[k>\\frac{1}{2}e^{-1}\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7074",
+   "slug": "r7074",
+   "station": "calculus-trig-log",
+   "title": "Where do the curves $y=\\sin 2x$ and $y=\\sin x$ cross?",
+   "url": "https://undergroundmathematics.org/calculus-trig-log/r7074",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Where do the curves $y=\\sin 2x$ and $y=\\sin x$ cross?\n\n## Question\n\nThe diagram shows part of the graphs of the curves \\(y=\\sin 2x\\) and \\(y=\\sin x\\).\n\n\\(A\\) is a maximum point of the curve \\(y=\\sin 2x\\). \\(B\\) is a maximum point of the curve \\(y=\\sin x\\).\n\n\\(C\\) is the point of intersection of the curves shown. Find\n\n1. the \\(x\\) co-ordinate of \\(C\\),\n\n---\n\n1. the shaded area.\n\n## Solution\n\nTo find the \\(x\\)-coordinate of \\(C\\), we need to solve the equation \\(\\sin x = \\sin 2x\\) in the region \\(0 \\le x \\le \\frac{1}{2}\\pi\\).\n\nNow \\(\\sin x = \\sin 2x \\iff \\sin x = 2 \\sin x \\cos x\\). We can see that \\(\\sin x\\) is not zero at \\(C\\), so the solution we seek is \\(\\cos x = \\dfrac{1}{2}\\), and so \\(x = \\dfrac{\\pi}{3}\\).\n\nLet’s call the shaded area \\(R\\). To find \\(R\\), we start with the area of the rectangle spanned by the line \\(AB\\) and the \\(x\\)-axis, which is clearly \\(\\dfrac{\\pi}{4}\\).\n\nWe then subtract the area below the curves \\(y=\\sin x\\) and \\(y=\\sin 2x\\) as shown by the red area and blue area respectively in the diagram. Thus\n\n\\[R=\\frac{\\pi}{4}-\\int_{\\pi/4}^{\\pi/3} \\sin 2x\\:dx -\\int_{\\pi/3}^{\\pi/2} \\sin x\\:dx.\\]\n\nNow \\[\\int_{\\pi/3}^{\\pi/2} \\sin x\\:dx = \\bigl[-\\cos x\\bigr]_{\\pi/3}^{\\pi/2} = \\dfrac{1}{2}.\\]\n\nAnd thinking about stretching horizontally \\[\\int_{\\pi/4}^{\\pi/3}\\sin 2x\\:dx = \\frac{1}{2}\\int_{\\pi/2}^{2\\pi/3}\\sin x\\:dx = \\frac{1}{2}\\bigl[-\\cos x\\bigr]_{\\pi/2}^{2\\pi/3} = \\dfrac{1}{4}.\\]\n\nThus \\[R = \\dfrac{\\pi}{4}-\\dfrac{3}{4}.\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r8134",
+   "slug": "r8134",
+   "station": "product-rule",
+   "title": "How could we integrate $e^{-x}\\sin^n x$?",
+   "url": "https://undergroundmathematics.org/product-rule/r8134",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.5",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.2",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# How could we integrate $e^{-x}\\sin^n x$?\n\n## Question\n\n1. Show that \\(\\dfrac{d}{dx} (\\cos x \\sin^{n-1}x) = (n-1) \\sin^{n-2}x - n \\sin^{n}x\\).\n\n---\n\n1. Given that \\(I_n = \\displaystyle\\int_0^{\\frac{1}{2}\\pi} e^{-x} \\sin^n x \\, dx\\), show that \\[I_n = -e^{-\\frac{1}{2}\\pi} + n \\int_0^{\\frac{1}{2}\\pi} e^{-x} \\cos x \\sin^{n-1}x \\, dx, \\quad (n \\ge 1).\\]\n\n---\n\n1. By using the results of (i) and (ii), or otherwise, show that \\[(n^2 + 1) I_n = -e^{-\\frac{1}{2}\\pi} + n(n-1) I_{n-2}, \\quad (n \\ge 2).\\]\n\n---\n\n1. Show that \\(I_4 = \\frac{1}{85} (24 - 41 e^{-\\frac{1}{2}\\pi})\\).\n\n## Suggestion\n\nWould it help us to use \\(s\\) for \\(\\sin x\\) and \\(c\\) for \\(\\cos x\\)?\n\nHow can we differentiate a product?\n\nHow could we convert any \\(\\cos x\\) terms into \\(\\sin x\\) terms?\n\nDo we know a ‘product rule’ for integration?\n\nCould we use our ‘product rule’ for integration a second time?\n\nHow would the earlier parts help us here?\n\n## Solution\n\nHow can we differentiate a product?\n\nWhat techniques could we use to remove any occurrence of \\(\\cos x\\) from the resulting expression?\n\nDifferentiating using the product rule gives\n\n\\[\\frac{d}{dx} (\\cos x \\sin^{n-1}x) = -\\sin x\\sin^{n-1}x +(n-1)\\cos^2x \\sin^{n-2}x,\\]\n\nand then by using the identity\n\n\\(\\cos^2x = 1 - \\sin^2x\\)\n\nwe get\n\n\\[\\begin{align*} \\frac{d}{dx} (\\cos x \\sin^{n-1}x) &{}= -\\sin^n x + (n-1)(1-\\sin^2x)\\sin^{n-2}x\\\\ &{}=(n-1)\\sin^{n-2}x - n\\sin^nx, \\end{align*}\\]\n\nas required.\n\nWriting\n\n\\(s = \\sin x\\)\n\nand\n\n\\(c = \\cos x\\)\n\ncan be helpful. We have\n\n\\[\\frac{d}{dx} (cs^{n-1}) = -ss^{n-1} +(n-1)c^2s^{n-2}.\\]\n\nUsing\n\n\\(c^2 = 1 - s^2\\)\n\nwe get\n\n\\[\\begin{align*} \\frac{d}{dx} (cs^{n-1}) &{}=-s^n + (n-1)(1-s^2)s^{n-2}\\\\ &{}=(n-1)s^{n-2} - ns^n\\\\ &{}=(n-1)\\sin^{n-2}x - n\\sin^nx \\end{align*}\\]\n\nas required.\n\nHere we want to integrate by parts (our ‘product rule’ for integration).\n\nThe general formula for integration by parts is \\[\\int_a^b u \\frac{dv}{dx} \\, dx = \\bigl[uv\\bigr]_a^b - \\int_a^b v\\frac{du}{dx} \\, dx.\\]\n\nWe know how to integrate\n\n\\(e^{-x}\\)\n\nand differentiate\n\n\\(\\sin^n x\\)\n\n, so we take\n\n\\(u=\\sin^nx\\)\n\nand\n\n\\(\\dfrac{dv}{dx} = e^{-x}\\)\n\n, giving\n\n\\(v=-e^{-x}\\)\n\n. Then integration by parts yields\n\n\\[I_n = \\bigl[ -e^{-x} \\sin^nx \\bigr]_0^{\\frac{1}{2}\\pi} -\\int_0^{\\frac{1}{2}\\pi} -e^{-x} n \\sin^{n-1}x \\cos x \\, dx,\\]\n\nwhich, after evaluating the limits, becomes\n\n\\[\\begin{equation} I_n = -e^{-\\frac{1}{2}\\pi} + n\\int_0^{\\frac{1}{2}\\pi} e^{-x} \\cos x \\sin^{n-1}x \\, dx. \\label{eq:1} \\end{equation}\\]\n\nIntegrating the integral in\n\n\\(\\eqref{eq:1}\\)\n\nby parts, taking\n\n\\(u = \\cos x\\sin^{n-1}x\\)\n\nand\n\n\\(\\dfrac{dv}{dx} = e^{-x}\\)\n\n(and noticing that we’ve already worked out\n\n\\(\\dfrac{du}{dx}\\)\n\nin part (i)) gives\n\n\\[\\begin{align*} \\int_0^{\\frac{1}{2}\\pi} &e^{-x} \\cos x \\sin^{n-1}x \\, dx\\\\ &\\quad{}= \\bigl[-e^{-x}\\cos x \\sin^{n-1}x \\bigr]_0^{\\frac{1}{2}\\pi} + \\int_0^{\\frac{1}{2}\\pi} e^{-x} \\bigl((n-1) \\sin^{n-2}x - n \\sin^n x\\bigr) \\, dx\\\\ &\\quad{}= (n-1)\\int_0^{\\frac{1}{2}\\pi} e^{-x} \\sin^{n-2}x \\, dx -n \\int_0^{\\frac{1}{2}\\pi} e^{-x} \\sin^n x \\, dx\\\\ &\\quad{}= (n-1)I_{n-2} - nI_n \\end{align*}\\]\n\n(The third line follows by evaluating the limits, which are both zero as long as \\(n>1\\); we are specifically told \\(n\\ge2\\) here.)\n\nSubstituting this into \\(\\eqref{eq:1}\\) now gives \\[I_n = -e^{-\\frac{1}{2}\\pi} + n(n-1) I_{n-2} - n^2 I_n.\\]\n\nRearranging gives\n\n\\[\\begin{equation} (n^2 + 1) I_n = -e^{-\\frac{1}{2}\\pi} + n(n-1) I_{n-2} \\label{eq:2} \\end{equation}\\]\n\nas required.\n\nRearranging \\(\\eqref{eq:2}\\) gives \\[I_n = \\frac{1}{n^2 + 1} \\bigl( -e^{-\\frac{1}{2}\\pi} + n(n-1) I_{n-2}\\bigr).\\]\n\nSo by setting \\(n=4\\) we get \\[I_4 = \\frac{1}{17} \\bigl( -e^{-\\frac{1}{2}\\pi} + 12 I_2\\bigr),\\] and similarly, setting \\(n=2\\) gives \\[I_2 = \\frac{1}{5} \\bigl( -e^{-\\frac{1}{2}\\pi} + 2 I_0\\bigr).\\]\n\nBy substituting the expression for \\(I_2\\) into that for \\(I_4\\) we get \\[I_4 = \\frac{1}{17} \\left( -e^{-\\frac{1}{2}\\pi} + 12 \\left(\\frac{1}{5} \\bigl( -e^{-\\frac{1}{2}\\pi} + 2 I_0\\bigr)\\right)\\right),\\] which rearranges to give \\[I_4 = \\frac{1}{85} \\bigl(24 I_0 - 17e^{-\\frac{1}{2}\\pi}\\bigr).\\]\n\nNow, by the definition of\n\n\\(I_n\\)\n\n,\n\n\\[\\begin{align*} I_0 &{}=\\int_0^{\\frac{1}{2}\\pi} e^{-x} \\, dx \\\\ &{}= \\bigl[-e^{-x}\\bigr]_0^{\\frac{1}{2}\\pi} \\\\ &{}= 1 - e^{-\\frac{1}{2}\\pi}, \\end{align*}\\]\n\nso the expression for \\(I_{4}\\) becomes \\[I_4 = \\frac{1}{85} \\bigl(24 - 41 e^{-\\frac{1}{2}\\pi}\\bigr).\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r8679",
+   "slug": "r8679",
+   "station": "calculus-trig-log",
+   "title": "What is the area under the curve $y = \\cos x - \\sin x +2$?",
+   "url": "https://undergroundmathematics.org/calculus-trig-log/r8679",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.1",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# What is the area under the curve $y = \\cos x - \\sin x +2$?\n\n## Question\n\nGiven the curve \\[y = \\cos x - \\sin x +2\\] find in terms of \\(a\\) an expression for the area \\(A\\) enclosed between the axes, the ordinate \\(a \\; (> 0)\\) and this curve. Verify that when \\(a = 1.5\\), \\(A = 3.07\\) approximately.\n\nIt is required to find the value of \\(a\\) for which \\(A = 3\\). Taking \\(1.5\\) as a first approximation to \\(a\\), find a second approximation, giving three significant figures in your answer.\n\n## Solution\n\nThe ordinate \\(a\\) means the line \\(x=a\\). Our curve lies entirely above the \\(x\\)-axis. It is something like this.\n\nTo calculate the area, we integrate:\n\n\\[\\begin{align*} A &= \\int_0^a \\cos x- \\sin x+2 \\:dx \\\\ &= \\big[\\sin x + \\cos x + 2x\\big]_0^a \\\\ &= \\sin a + \\cos a + 2a -1. \\end{align*}\\]\n\nSubstituting \\(a = 1.5\\) gives \\(A = 3.0682... \\approx 3.07\\) as required.\n\nSo we need to find an approximate solution to \\(3 = \\sin a + \\cos a + 2a -1\\) that is better than \\(a=1.5\\).\n\nThere are a number of methods we could use here; decimal search, binary search, linear interpolation, the rearrangement method or simply zooming in with graphing software.\n\nWe will use the Newton-Raphson method. This says that given a guess \\(x_0\\) at the root \\(\\alpha\\) (a solution to \\(f(x) = 0\\)), then as long as \\(x_0\\) is reasonably close to \\(\\alpha\\), a better approximation to \\(\\alpha\\) is \\(x_1\\) where\n\n\\[x_1 = x_0 - \\dfrac{f(x_0)}{f'(x_0)}.\\]\n\nSo our equation is \\(f(x) = 0\\) where \\(f(x) = \\sin x + \\cos x + 2x - 4\\), which gives \\(f'(x) = \\cos x -\\sin x + 2\\).\n\nThus \\(x_1 = 1.5 - \\dfrac{\\sin 1.5 + \\cos 1.5 + 3 - 4}{\\cos 1.5 -\\sin 1.5 + 2} = 1.4264...\\)\n\nSo we have a better approximation to \\(a\\) than \\(1.5\\), namely \\(1.43\\) (\\(3\\)sf).\n\nCheck – \\(\\sin 1.43 + \\cos 1.43 + 2\\times 1.43 -1 = 2.99\\) (\\(3\\)sf).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r8778",
+   "slug": "r8778",
+   "station": "chain-rule",
+   "title": "Can we carry out these three tricky integrals?",
+   "url": "https://undergroundmathematics.org/chain-rule/r8778",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.6",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.2",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we carry out these three tricky integrals?\n\n## Question\n\n1. Find\n\n1. \\(\\displaystyle \\int x \\sqrt{2x-1} \\:dx\\),\n\n---\n\n1. \\(\\displaystyle \\int \\frac{1}{\\sqrt{2x - x^2}} \\:dx\\).\n\n1. Evaluate \\(\\displaystyle \\int_0^{\\pi/4} \\sec^4 x \\:dx\\).\n\n## Suggestion\n\n(a)(ii) Find \\(\\displaystyle \\int \\frac{1}{\\sqrt{2x - x^2}} \\:dx\\).\n\nCould we try completing the square on the denominator?\n\nWhat do we get if we differentiate \\(\\tan x\\)?\n\n## Solution\n\nLet\n\n\\(u = 2x - 1\\)\n\n, so that\n\n\\(du = 2 \\: dx\\)\n\n. Then\n\n\\[\\begin{align*} \\int x \\sqrt{2x-1} \\:dx = \\int \\frac{u+1}{2} \\sqrt{u} \\:\\frac{du}{2} &= \\frac{1}{4} \\int u^{3/2} + u^{1/2} \\:du \\\\ &= \\frac{1}{4} \\left( \\frac{u^{5/2}}{\\frac{5}{2}} + \\frac{u^{3/2}}{\\frac{3}{2}} + C \\right) \\\\ &= \\frac{1}{10} u^{5/2} + \\frac{1}{6} u^{3/2} + C\\\\ &= \\frac{1}{10} (2x-1)^{5/2} + \\frac{1}{6} (2x-1)^{3/2} + C,\\\\ \\end{align*}\\]\n\nwhere \\(C\\) is a constant of integration.\n\nWe can write\n\n\\[\\begin{equation*} 2x - x^2 = -(x^2 - 2x) = -\\left( (x-1)^2 - 1 \\right) = 1 - (x-1)^2 \\end{equation*}\\]\n\nso that\n\n\\[\\begin{equation*} \\int \\frac{1}{\\sqrt{2x - x^2}} \\:dx = \\int \\frac{1}{\\sqrt{1 - (x-1)^2}} \\:dx. \\end{equation*}\\]\n\nTake\n\n\\(\\sin \\theta = x - 1\\)\n\n, so that\n\n\\(\\cos \\theta \\: d\\theta = dx\\)\n\nand\n\n\\[\\begin{align*} \\int \\frac{1}{\\sqrt{1 - (x-1)^2}} \\:dx = \\int \\frac{\\cos \\theta}{\\sqrt{1 - \\sin^2 \\theta}} \\:d\\theta &= \\int \\frac{\\cos \\theta}{\\cos \\theta} \\:d\\theta \\\\ &= \\theta + C \\\\ &= \\sin^{-1} (x-1) + C, \\end{align*}\\]\n\nwhere \\(C\\) is a constant of integration.\n\nWe have that\n\n\\[\\begin{equation*} \\tan^2 x + 1 = \\sec^2 x. \\end{equation*}\\]\n\nBy the standard result (which can be proved using the\n\nquotient rule\n\n), we have that\n\n\\[\\begin{equation*} \\frac{d}{dx} \\tan x = \\sec^2 x. \\end{equation*}\\]\n\nand therefore\n\n\\[\\begin{equation*} \\int \\sec^4 x \\:dx = \\int \\sec^2 x \\sec^2 x\\:dx = \\int \\sec^2 x\\tan^2 x + \\sec^2 x \\:dx. \\end{equation*}\\]\n\nThe second term we can integrate by the standard result above. For the first term, we substitute \\(u=\\tan x\\) and get \\[\\int \\sec^2 x\\tan^2 x\\:dx = \\int u^2\\:du = \\frac{\\tan^3 x}{3}+C.\\] Thus we have \\[\\int_0^{\\pi/4} \\sec^4 x \\:dx = \\left[\\frac{\\tan^3 x}{3}+\\tan x\\right]_0^{\\pi/4} = \\frac{4}{3}.\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r8890",
+   "slug": "r8890",
+   "station": "chain-rule",
+   "title": "Can we use integration by substitution on these integrals?",
+   "url": "https://undergroundmathematics.org/chain-rule/r8890",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.6",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we use integration by substitution on these integrals?\n\n## Question\n\n1. By using the substitution \\(u = 1 - x^2\\), or otherwise, evaluate \\[\\begin{equation*} \\int_0^{\\frac{1}{2}} \\frac{x}{(1-x^2)^2} \\:dx. \\end{equation*}\\]\n\n---\n\n1. Evaluate \\[\\begin{equation*} \\int_0^{\\pi/6} \\frac{\\sin \\theta \\:d\\theta}{\\cos^3 \\theta}. \\end{equation*}\\]\n\n## Solution\n\nIf we take\n\n\\(u = 1 - x^2\\)\n\n, then\n\n\\[\\begin{equation*} \\frac{du}{dx} = -2x \\implies du = -2x \\:dx \\end{equation*}\\]\n\nand therefore, by substitution,\n\n\\[\\begin{align*} \\int_0^{\\frac{1}{2}} \\frac{x}{(1-x^2)^2} \\:dx = \\int_{1-0}^{1-\\left(\\frac{1}{2}\\right)^2} \\frac{du}{-2u^2} &= \\frac{1}{2} \\int_{\\frac{3}{4}}^1 \\frac{du}{u^2} \\\\ &= \\frac{1}{2} \\left[ \\frac{u^{-1}}{-1} \\right]_{\\frac{3}{4}}^1 \\\\ &= -\\frac{1}{2} \\left( 1 - \\frac{4}{3} \\right) \\\\ &= \\frac{1}{6}. \\end{align*}\\]\n\nNote how we can make an integral look simpler by factoring out constants, including negatives which we can take care of by swapping the limits over.\n\nIn part (i) the \\(x^2\\) in the substitution dealt with the \\(x\\) in the numerator. In the same way here we don’t need to worry about the \\(\\sin \\theta\\) if we have \\(\\cos \\theta\\) in the substitution—we can be confident it will get sorted out along the way.\n\nTake\n\n\\(u = \\cos \\theta\\)\n\n, so that\n\n\\[\\begin{equation*} \\frac{du}{d\\theta} = -\\sin \\theta \\implies du = - \\sin \\theta \\:d\\theta. \\end{equation*}\\]\n\nBy substitution, then,\n\n\\[\\begin{align*} \\int_0^{\\pi/6} \\frac{\\sin \\theta \\:d\\theta}{\\cos^3 \\theta} = \\int_{\\cos 0}^{\\cos \\frac{\\pi}{6}} \\frac{-du}{u^3} &= - \\left[ \\frac{u^{-2}}{-2} \\right]_1^{\\sqrt{3}/2} \\\\ &= \\frac{1}{2} \\left( \\left( \\frac{2}{\\sqrt{3}} \\right)^2 - 1 \\right) \\\\ &= \\frac{1}{6}. \\end{align*}\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r9184",
+   "slug": "r9184",
+   "station": "calculus-trig-log",
+   "title": "Can we find the area between $\\sin x$ and $\\sin 2x$?",
+   "url": "https://undergroundmathematics.org/calculus-trig-log/r9184",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we find the area between $\\sin x$ and $\\sin 2x$?\n\n## Question\n\nUsing the same axes, *sketch* the curves \\(y = \\sin x\\) and \\(y = \\sin 2x\\) from \\(x = 0\\) to \\(\\tfrac{1}{2}\\pi\\), where \\(x\\) is in radians.\n\nProve that the curves intersect at the points \\[(0,0) \\quad\\text{and}\\quad \\left(\\frac{\\pi}{3}, \\frac{\\sqrt{3}}{2} \\right).\\]\n\nCalculate the area of the region bounded by the parts of the curves between these two points.\n\n## Solution\n\nThe curve \\(y = \\sin 2x\\) has the same shape as \\(y = \\sin x\\), but twice the frequency; we thus have the following sketch.\n\nThe curves intersect exactly when \\(\\sin x = \\sin 2x\\), or \\(\\sin x = 2 \\sin x \\cos x\\).\n\nThis gives us that either \\(\\sin x = 0\\) or \\(\\cos x = \\dfrac{1}{2}\\). Within our region this means \\(x = 0\\) or \\(x=\\dfrac{\\pi}{3}\\).\n\nSo the curves intersect at \\((0,0)\\) and at \\(\\left(\\dfrac{\\pi}{3}, \\dfrac{\\sqrt{3}}{2}\\right)\\).\n\nThe area we are to calculate is the yellow area indicated in the following diagram.\n\n**Thinking about scaling**\n\nWe are looking for the area\n\n\\[\\begin{align*} A &= \\int_0^{\\dfrac{\\pi}{3}} \\sin 2x\\:dx - \\int_0^{\\dfrac{\\pi}{3}}\\sin x\\:dx\\\\ &= \\frac{1}{2}\\int_0^{\\dfrac{2\\pi}{3}} \\sin x\\:dx - \\int_0^{\\dfrac{\\pi}{3}}\\sin x\\:dx\\\\ &= \\frac{1}{2}\\biggl[-\\cos x\\biggr]_0^{\\dfrac{2\\pi}{3}} - \\biggl[-\\cos x\\biggr]_0^{\\dfrac{\\pi}{3}}\\\\ &= \\frac{1}{2}\\left(\\frac{1}{2}+1\\right) - \\left(-\\frac{1}{2}+1\\right)\\\\ &= \\frac{1}{4}. \\end{align*}\\]\n\n**Using an implicit substitution**\n\nWe are looking for the area\n\n\\[\\begin{align*} A &= \\int_0^{\\dfrac{\\pi}{3}} \\sin 2x -\\sin x\\:dx \\\\ &= \\biggl[ -\\frac{\\cos 2x}{2}+\\cos x \\biggr]_0^{\\dfrac{\\pi}{3}} \\\\ &= \\frac{1}{4} + \\frac{1}{2} + \\frac{1}{2}-1\\\\ &= \\frac{1}{4}. \\end{align*}\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r9297",
+   "slug": "r9297",
+   "station": "chain-rule",
+   "title": "How could we integrate $\\tan^4x$?",
+   "url": "https://undergroundmathematics.org/chain-rule/r9297",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.2",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# How could we integrate $\\tan^4x$?\n\n## Question\n\nGiven that \\(\\dfrac{d}{dx}(\\tan x)=\\sec^2 x,\\) differentiate \\(\\tan^3x\\) with respect to \\(x\\).\n\nShow that \\[\\tan^4x=\\tan^2x \\sec^2x- \\sec^2x+1\\] and hence evaluate \\[\\int_0^{\\pi/4}\\tan^4x \\, dx.\\]\n\n## Solution\n\nUsing the chain rule, we have that \\[\\frac{d}{dx}\\tan^3 x = 3 \\tan^2 x \\times \\frac{d}{dx}\\tan x= 3\\tan^2 x \\sec^2x.\\]\n\nWe can write\n\n\\[\\begin{align*} \\tan^4x&=\\tan^2x\\tan^2x\\\\ &=\\tan^2x(\\sec^2x-1)\\\\ &=\\tan^2x\\sec^2x-\\tan^2 x\\\\ &=\\tan^2x\\sec^2x-(\\sec^2x-1)\\\\ &=\\tan^2x\\sec^2x-\\sec^2x+1. \\end{align*}\\]\n\n…and hence evaluate \\[\\int_0^{\\pi/4}\\tan^4x \\, dx.\\]\n\nUsing the previous parts,\n\n\\[\\begin{align*} \\int_0^{\\pi/4} \\tan^4x \\, dx&= \\int_0^{\\pi/4}\\tan^2x\\sec^2x-\\sec^2x+1 \\, dx \\\\ &=\\left[\\frac{1}{3}\\tan^3x-\\tan x+x\\right]^{\\pi/4}_0 \\\\ &=\\frac{1}{3}-1+\\frac{\\pi}{4} \\\\ &=\\frac{\\pi}{4}-\\frac{2}{3}. \\end{align*}\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "stretching-an-integral",
+   "slug": "stretching-an-integral",
+   "station": "calculus-trig-log",
+   "title": "Stretching an integral",
+   "url": "https://undergroundmathematics.org/calculus-trig-log/stretching-an-integral",
+   "resourceType": "scaffolded-task",
+   "resourceTypeLabel": "Scaffolded task",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Stretching an integral\n\n> Excerpt: How can we integrate $\\frac{1}{x}$?  Students are asked what happens to areas under the graph of $y=\\frac{1}{x}$ when it is stretched, leading to a formula for the integral without requiring calculus tools.\n\n## Warm-up\n\nThe graph of the function \\(y=\\dfrac{1}{x^2}\\) is stretched as shown in this diagram.\n\nIf the graph is stretched by a factor of \\(b\\) in the \\(x\\)-direction (as shown), what is the equation of the resulting graph?\n\nAnd if, instead, the original graph is stretched by a factor of \\(c\\) in the \\(y\\)-direction, what is the equation of the resulting graph?\n\n## Warm-up solution\n\nThe graph of the function \\(y=\\dfrac{1}{x^2}\\) is stretched as shown in this diagram.\n\nIf the graph is stretched by a factor of \\(b\\) in the \\(x\\)-direction (as shown), what is the equation of the resulting graph?\n\nOne way to think about this problem is to use the language of functions.\n\nThe original graph has equation \\(y=f(x)\\), where \\(f(x)=\\dfrac{1}{x^2}\\).\n\nWhen we stretch the graph by a factor of \\(b\\) in the \\(x\\)-direction, a point with coordinates \\((x,f(x))\\) is stretched to the point with coordinates \\((bx,f(x))\\), as shown in the following diagram. If we write \\(X=bx\\) for the new \\(x\\)-coordinate, then the new point has coordinates \\((X,Y)=(X,f(X/b))\\), so the new graph has equation \\(Y=f(X/b)\\), or \\(y=f(x/b)\\) using lower-case letters.\n\nSo the equation of the stretched graph is \\(y=f(x/b)=\\dfrac{1}{(x/b)^2}\\). Multiplying the numerator and denominator by \\(b^2\\) gives the simpler form \\(y=\\dfrac{b^2}{x^2}\\).\n\nAnd if, instead, the original graph is stretched by a factor of \\(c\\) in the \\(y\\)-direction, what is the equation of the resulting graph?\n\nThis time, the point \\((x,f(x))\\) is stretched to the point with coordinates \\((x,cf(x))\\), as shown in the following diagram. Writing the coordinates of the new point again as \\((X,Y)=(x,cf(x))\\), we find the new graph has equation \\(Y=cf(X)\\), as \\(X=x\\), or \\(y=cf(x)\\) using lower-case letters.\n\nTherefore the equation of the stretched graph is \\(y=\\dfrac{c}{x^2}\\).\n\n## Problem\n\nTake a look at these diagrams. (There is a [printable version](https://undergroundmathematics.org/calculus-trig-log/stretching-an-integral/components/diagrams.pdf) of them available.)\n\nDiagram 1 shows the graph of \\(y=\\dfrac1x\\). \\(I(a)\\) is the shaded region under the graph between \\(x=1\\) and \\(x=a\\), where \\(a>1\\), so \\(I(a)=\\displaystyle{\\int_1^a \\dfrac{1}{x}\\,dx}\\).\n\n**Step 1:** The shaded region in Diagram 4 has the same area as the shaded region in Diagram 1 (\\(I(a)\\)) after undergoing two stretches (either via Diagram 2 or via Diagram 3). Fill in the following information on each diagram where it is missing:\n\n- the scale factor that was used in the stretch;\n\n- the \\(x\\)-coordinate at each end of the shaded region;\n\n- the area of the shaded region in terms of \\(I(a)\\), and\n\n- the equation of the graph.\n\nInteractive applet\n\nIn the following applet, you can:\n\n- choose the value of \\(a\\)\n\n- stretch the graph (and the shaded region with it) in the \\(x\\)-direction by a scale factor of \\(b\\)\n\n- stretch the graph (and the shaded region with it) in the \\(y\\)-direction by a scale factor of \\(c\\)\n\nThe original area \\(I(a)\\) is shown, and the area of the stretched shaded region is also shown.\n\nThe original (unstretched) graph of \\(y=\\dfrac{1}{x}\\) is shown as a dashed red line.\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/xa8hvBNg/width/584/height/398/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/xa8hvBNg)\n\n**Step 2:** Investigating the function \\(I(x)\\).\n\nRecall from above that \\(I(x)\\) is the function that gives the area of the shaded region between \\(1\\) and \\(x\\) under the graph of \\(y = \\dfrac1x\\), so \\(I(x)=\\displaystyle{\\int_1^x \\frac{1}{t}\\,dt}\\). (To avoid confusion, we have used \\(t\\) when writing this integral instead of \\(x\\), since \\(x\\) appears in the limits.)\n\n- Looking now at Diagram 4, can you identify the area \\(I(b)\\) on the diagram?\n\n- Are there any other \\(I(x)\\) values which you can easily identify on the diagram?\n\n- How are \\(I(a)\\) and \\(I(b)\\) related?\n\nWhat do these answers suggest about the function \\(I(x)\\)? Have you seen anything with these properties before?\n\n**Some further questions**\n\n- Using this applet or some graphing software, investigate values of \\(I(x)\\). Which value of \\(a\\) gives \\(I(a)=1\\)? What does this tell you?  > [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/RTkHVBpq/width/577/height/396/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.   [Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/RTkHVBpq)\n\n- What happens if one or both of \\(a\\) and \\(b\\) are less than \\(1\\)?\n\n## Solution\n\nTake a look at these diagrams.\n\nDiagram 1 shows the graph of \\(y=\\dfrac1x\\). \\(I(a)\\) is the shaded region under the graph between \\(x=1\\) and \\(x=a\\), where \\(a>1\\), so \\(I(a)=\\displaystyle{\\int_1^a \\dfrac{1}{x}\\,dx}\\).\n\n**Step 1:** The shaded region in Diagram 4 has the same area as the shaded region in Diagram 1 (\\(I(a)\\)) after undergoing two stretches (either via Diagram 2 or via Diagram 3). Fill in the following information on each diagram where it is missing:\n\n- the scale factor that was used in the stretch;\n\n- the \\(x\\)-coordinate at each end of the shaded region;\n\n- the area of the shaded region in terms of \\(I(a)\\), and\n\n- the equation of the graph.\n\nUsing the ideas from the Warm-up problem, we can complete the diagrams as follows:\n\n**Step 2:** Investigating the function \\(I(x)\\).\n\n- Looking now at Diagram 4, can you identify the area \\(I(b)\\) on the diagram?\n\n- Are there any other \\(I(x)\\) values which you can easily identify on the diagram?\n\n- How are \\(I(a)\\) and \\(I(b)\\) related?\n\nRecall that \\(I(b)\\) is the area under the graph between \\(x=1\\) and \\(x=b\\), which we can see fits on the diagram very easily, giving the following:\n\nThe other \\(I(x)\\) value which is now easy to identify on the diagram is the whole shaded area from \\(x=1\\) to \\(x=ab\\), which is \\(I(ab)\\).\n\nPutting these together, we see that \\[I(ab) = I(a)+I(b).\\]\n\nIn terms of integrals, this says that \\[\\int_1^{ab} \\frac{1}{x}\\,dx=\\int_1^a \\frac{1}{x}\\,dx+\\int_1^b \\frac{1}{x}\\,dx,\\] which is far from obvious from the above sketch.\n\nThis suggests that \\(I(x)\\) may be a logarithm, because logarithms also have the property that \\[\\log ab=\\log a + \\log b.\\]\n\n**Some further questions**\n\nExperiment shows that \\(I(a)=1\\) when \\(a\\approx 2.72\\). Therefore if \\(I(x)\\) really is a logarithm, the base of the logarithm is approximately \\(2.72\\).\n\nWe can actually use this result to **define** logarithms: we define the **natural logarithm** of \\(x\\), usually written \\(\\ln x\\), to be \\(I(x)\\), so \\[\\ln x=\\int_1^x \\frac{1}{t}\\,dt.\\]\n\nThe base of these logarithms is called “\\(e\\)”, so we have discovered that \\(e\\approx 2.72\\). Therefore, the natural logarithm can also be written as \\(\\log_e x\\).\n\nIf you have already met the natural logarithm function, how can you check that the definition given here and your existing definition agree?\n\n- What happens if \\(a\\) and/or \\(b\\) is less than \\(1\\)?\n\nThe relationship we have discovered, \\(I(ab)=I(a)+I(b)\\) does still work, but we have to require that if \\(a<1\\), then \\(I(a)\\) is considered to be negative. This fits with the integral definition of \\(I(a)\\), that is \\(I(a)=\\displaystyle{\\int_1^a \\frac{1}{x}\\,dx}\\). Then if \\(a<1\\), the limits of the integral are in the “wrong order”, so we take the value of the integral to be \\(\\displaystyle{-\\int_a^1 \\frac{1}{x}\\,dx}\\) (with the limits in the “right order”), and this is negative. This is because we always require \\[\\int_b^a f(x)\\,dx=-\\int_a^b f(x)\\,dx.\\]\n\nWhy might we require integrals to behave in this way?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "trigsy-integrals",
+   "slug": "trigsy-integrals",
+   "station": "calculus-trig-log",
+   "title": "Trigsy integrals",
+   "url": "https://undergroundmathematics.org/calculus-trig-log/trigsy-integrals",
+   "resourceType": "many-ways-problem",
+   "resourceTypeLabel": "Many ways problem",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.2",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.5.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Trigsy integrals\n\n> Excerpt: Students are asked to think about the different ways they can integrate trigonometric functions such as $\\sin ^2 x$ and $\\arccos x$ using their knowledge of these functions and basic ideas from calculus. They do not need to have met any trigonometric integration before.\n\n## Problem\n\nIn how many different ways can you find answers to the following integrals?\n\n\\(\\displaystyle {\\int_{0}^{\\pi} \\cos 2x \\, dx}\\)\n\n\\(\\displaystyle {\\int_{0}}^{\\frac{\\pi}{2}} \\sin^2 x \\, dx\\)\n\n\\(\\displaystyle {\\int_{-1}^{1}} \\arcsin x \\, dx\\)\n\n\\(\\displaystyle {\\int_{-1}^{1}} \\arccos x \\, dx\\)\n\n## Suggestion\n\nIt might be useful to sketch the graphs of the functions to be integrated. You may wish to use graphing software such as [Desmos](https://www.desmos.com/calculator) or [GeoGebra](https://www.geogebra.org/graphing).\n\nDo the functions have any symmetry that can help?\n\nAre there any trigonometric identities you know that involve these functions?\n\n## Things you might have done\n\nBelow are some suggested methods for each of the integrals. Did you use any of these ideas? Did you come up with different approaches?\n\nSketching\n\nWhen looking at the graph of \\(y = \\cos 2x\\) we see that \\(\\displaystyle {\\int_{0}^{\\pi} \\cos 2x \\, dx} = 0,\\) as the shaded areas above and below the \\(x\\)-axis cancel each other out.\n\nWould your answer differ if the question had asked for the *area* bounded by the curve and the \\(x\\)-axis between \\(0\\) and \\(\\pi\\)?\n\nTransforming\n\nIf we know how to find \\(\\int\\cos x \\, dx\\) then we might consider transforming \\(\\cos 2x\\) into \\(\\cos x\\).\n\nThe transformation is a stretch, scale factor 2, parallel to the \\(x\\)-axis. If we think about the integral \\(\\int_{0}^{\\pi} \\cos 2x \\, dx\\) being stretched by a scale factor of 2, then we see that the shaded area will double and the limits of the integral will change. Therefore we can write\n\n\\[\\displaystyle {\\int_{0}^{\\pi} \\cos 2x \\, dx} = \\frac{1}{2}\\displaystyle {\\int_{0}^{2\\pi} \\cos x \\, dx}.\\]\n\nOf course in this case the answer is still zero, but would this approach would work no matter what the limits were?\n\nThis is a simple example of integration by substitution. Have a look at [Slippery areas](https://undergroundmathematics.org/chain-rule/slippery-areas) for a resource based on these ideas.\n\nRotational symmetry\n\nSketching the graph of \\(y = \\sin^2 x\\) helps us to see the symmetry in the function. It is an even function and it also has rotational symmetry around points such as \\((\\frac{\\pi}{4}, \\frac{1}{2})\\). If we consider the rectangle drawn above, which has an area of \\(\\frac{\\pi}{2} \\times 1\\) we can say that the area beneath the function is half this value. Therefore \\[\\displaystyle{\\int_{0}^{\\frac{\\pi}{2}} \\sin^2 x \\, dx = \\frac{\\pi}{4}}.\\]\n\nHow can we convince ourselves that \\(y = \\sin^2 x\\) has rotational symmetry?\n\nIdentities\n\nTrigonometric identities give us a way to transform certain functions into others more easily. Identities that involve \\(\\sin^2 x\\) include \\(\\sin ^2 x + \\cos ^2 x = 1\\) and \\(\\cos 2x = 1 - 2\\sin ^2 x.\\) Since we already know how to integrate \\(\\cos 2x\\) from above, we can write:\n\n\\[\\displaystyle {\\int_{0}}^{\\frac{\\pi}{2}} \\sin^2 x \\, dx = \\int_{0}^{\\frac{\\pi}{2}} \\frac{1}{2} - \\frac{1}{2}\\cos 2x \\, dx.\\]\n\nSince \\(\\displaystyle {\\int_{0}^{\\frac{\\pi}{2}} \\cos 2x \\, dx = 0}\\), we are left with \\(\\displaystyle \\int_{0}^{\\frac{\\pi}{2}} \\frac{1}{2} \\, dx = \\frac{\\pi}{4}.\\)\n\nSketching\n\nDrawing the graph reminds us that \\(\\arcsin x\\) is an odd function and so \\(\\displaystyle {\\int_{-1}^{1}} \\arcsin x \\, dx =0.\\)\n\nYou might also think about the inverse function of \\(\\arcsin x\\) and how that could help you. To explore this idea further, have a look at [Inverse integrals](https://undergroundmathematics.org/calculus-trig-log/inverse-integrals).\n\nTransforming\n\nBy drawing \\(y = \\arcsin x\\) and \\(y = \\arccos x\\) on the same graph, we can see that one can be transformed into the other.\n\nFrom the graph we can write down\n\n\\(\\arccos x = -\\arcsin x + \\dfrac{\\pi}{2},\\)\n\nso\n\n\\[\\begin{align*} \\displaystyle {\\int_{-1}^{1}} \\arccos x \\, dx &= \\displaystyle {\\int_{-1}^{1}} -\\arcsin x + \\dfrac{\\pi}{2} \\, dx \\\\ &= -\\displaystyle {\\int_{-1}^{1}} \\arcsin x \\, dx + \\displaystyle{\\int_{-1}^{1}} \\dfrac{\\pi}{2} \\, dx \\\\ &= 0 + \\pi \\\\ &= \\pi. \\end{align*}\\]\n\nRotational symmetry\n\nThe rectangle drawn in diagram above has an area of \\(\\pi \\times 2.\\) Since the shaded area is half of the rectangle, we can say that \\[\\displaystyle {\\int_{-1}^{1}} \\arccos x \\, dx = \\pi.\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "two-for-one",
+   "slug": "two-for-one",
+   "station": "calculus-trig-log",
+   "title": "Two for one",
+   "url": "https://undergroundmathematics.org/calculus-trig-log/two-for-one",
+   "resourceType": "food-for-thought",
+   "resourceTypeLabel": "Food for thought",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Two for one\n\n> Excerpt: What do we get when we integrate $\\frac{1}{x}$? $\\ln x$ or $\\ln |x|$? In this task, students are asked to think about when and why we use the modulus sign.\n\n## Problem\n\nSolve the following integrals:\n\n- \\(\\displaystyle{\\int_{2}^{3} \\dfrac{1}{x} \\, dx}\\)\n\n- \\(\\displaystyle{\\int_{-3}^{-2} \\dfrac{1}{x} \\, dx}\\)\n\nWhat’s the same and what’s different about your solutions?\n\nDid you make any assumptions, and if so, what were they?\n\nSketch the following functions along with their gradient functions on the same set of axes.\n\n- \\(f(x) = \\ln (x)\\)\n\n- \\(g(x) = \\ln (-x)\\)\n\nWhat are the domains of \\(f(x)\\) and \\(g(x)\\)?\n\nUsing your sketch to help you, write down the derivatives of \\(f(x)\\) and \\(g(x)\\).\n\nWhat do you notice about the derivatives \\(f'(x)\\) and \\(g'(x)\\)?\n\n## Suggestion\n\nUse the applet to check your sketches of \\(f(x)\\), \\(g(x)\\) and their gradient functions.\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/uJbx2Du6/width/614/height/400/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/uJbx2Du6)\n\n## Solution\n\nA good starting point is to draw a diagram.\n\nAs \\(\\tfrac{1}{x}\\) is an odd function, the two shaded areas that represent the integrals should be the same. However, one of the areas is below the \\(x\\)-axis which suggests that \\[\\displaystyle{\\int_{-3}^{-2} \\dfrac{1}{x} \\, dx} = - \\displaystyle{\\int_{2}^{3} \\dfrac{1}{x} \\, dx}.\\]\n\nIf we solve the first integral we get\n\n\\[\\begin{align*} \\displaystyle{\\int_{2}^{3} \\dfrac{1}{x} \\, dx} &= \\big[\\ln x \\big]_{2}^{3} \\\\ &= \\ln (3) - \\ln (2) \\\\ &= \\ln \\frac{3}{2}. \\end{align*}\\]\n\nWhat are the problems with this calculation to find the second integral?\n\n\\[\\begin{align*} \\displaystyle{\\int_{-3}^{-2} \\dfrac{1}{x} \\, dx} &= \\big[\\ln x \\big]_{-3}^{-2} \\\\ &= \\ln (-2) - \\ln (-3) \\\\ &= \\ln \\frac{2}{3} \\end{align*}\\]\n\nThe function\n\n\\(\\ln x\\)\n\nis only defined for\n\n\\(x >0\\)\n\nso\n\n\\(\\ln (-2)\\)\n\nand\n\n\\(\\ln (-3)\\)\n\ndo not exist. For\n\n\\(x < 0\\)\n\nwe can write\n\n\\[\\displaystyle{\\int \\dfrac{1}{x} \\, dx} = \\ln |x| +c, \\]\n\nwhich means that we could solve the second integral like this:\n\n\\[\\begin{align*} \\displaystyle{\\int_{-3}^{-2} \\dfrac{1}{x} \\, dx} &= \\big[\\ln |x| \\big]_{-3}^{-2} \\\\ &= \\ln |-2| - \\ln |-3| \\\\ &= \\ln 2 - \\ln 3 \\\\ &= \\ln \\frac{2}{3}. \\end{align*}\\]\n\nDoes this match with our geometrical reasoning at the beginning? We thought that \\[\\displaystyle{\\int_{-3}^{-2} \\dfrac{1}{x} \\, dx} = - \\displaystyle{\\int_{2}^{3} \\dfrac{1}{x} \\, dx},\\]\n\nand using the laws of logarithms we can show that \\(\\ln \\frac{2}{3} = -\\ln \\frac{3}{2}\\), which is as expected.\n\nTaking the absolute value of \\(x\\) means that we aren’t trying to take the logarithm of a negative number. Why is it possible to do this? We explore below why the integral can be written in this form.\n\nThe domain of \\(f(x) = \\ln x\\) is \\(x > 0\\) and the domain of \\(g(x) = \\ln(-x)\\) is \\(x < 0\\).\n\nThe gradient function of \\(f(x)\\) is \\(f'(x) = \\tfrac{1}{x}, x >0\\).\n\nAs \\(\\ln(-x)\\) is a reflection of \\(\\ln x\\) in the \\(y\\)-axis, the gradient of \\(\\ln(-x)\\) will be the negative of the gradient of \\(\\ln x\\) at symmetrical points. By also looking at the sketch of the gradient function of \\(g(x)\\), it seems reasonable to conclude that \\(g'(x) = \\tfrac{1}{x}\\), when \\(x <0\\).\n\nIf you already know the chain rule, you may have calculated the gradient of\n\n\\(g(x)\\)\n\nthis way:\n\n\\[\\begin{align*} g'(x) &= \\dfrac{1}{-x} \\times -1 \\\\ &= \\dfrac{1}{x}. \\end{align*}\\]\n\nInterestingly, the two functions \\(f\\) and \\(g\\), differentiate to different sections of the same function, \\(\\tfrac{1}{x}\\). It seems that the function \\(\\tfrac{1}{x}\\) has two different antiderivatives, depending on the domain. This means we can write the integral of \\(\\tfrac{1}{x}\\) as a piecewise function.\n\n\\[\\int \\dfrac{1}{x} \\, dx = \\begin{cases} \\ln x + c & \\text{if } x > 0 \\\\ \\ln(-x) + d & \\text{if } x < 0 \\end{cases}\\]\n\nBut \\(\\ln |x|\\) can also be written as a piecewise function\n\n\\[\\ln |x| = \\begin{cases} \\ln x & \\text{if } x > 0 \\\\ \\ln(-x) & \\text{if } x < 0 \\end{cases}\\]\n\nand so the integral is sometimes written as\n\n\\[\\int \\dfrac{1}{x} \\, dx = \\ln |x| + c.\\]\n\nThe absolute value sign isn’t there to let us take logarithms of negative numbers, but because we are actually combining two different antiderivative functions. While writing \\(\\ln |x|\\) is a way to encompass both functions, we need to be careful that we remember that it is two separate functions, one for \\(x > 0\\) and one for \\(x < 0\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "which-substitution",
+   "slug": "which-substitution",
+   "station": "chain-rule",
+   "title": "Which substitution?",
+   "url": "https://undergroundmathematics.org/chain-rule/which-substitution",
+   "resourceType": "rich-example",
+   "resourceTypeLabel": "Rich example",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.5.6",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Which substitution?\n\n> Excerpt: Students are asked to do the same integral twice, using a different substitution each time. The problem highlights that you can arrive at different answers because of this, and asks students to think about how the two answers are related.\n\n## Problem\n\n\\(\\displaystyle{\\int \\dfrac{1}{\\sqrt{1-x^2}} \\, dx}\\) can be integrated by using a substitution. What answer do you get if you use\n\n1. \\(x = \\sin \\theta\\)?\n\n---\n\n1. \\(x = \\cos \\theta\\)?\n\nDo they both give the correct answer? If so, why?\n\n## Solution\n\n1. If \\(x = \\sin \\theta\\), then \\(\\dfrac{dx}{d\\theta} = \\cos \\theta\\), meaning we can write \\(dx = \\cos \\theta \\ d\\theta\\). Substituting this into the integral we get\n\n\\[\\begin{align*} \\int \\dfrac{1}{\\sqrt{1-x^2}} \\, dx &= \\int \\dfrac{1}{\\sqrt{1-\\sin^2 \\theta}} \\ \\cos \\theta \\, d\\theta\\\\ &= \\int \\dfrac{1}{\\cos \\theta} \\ \\cos \\theta \\, d\\theta \\\\ &= \\int 1 \\, d\\theta \\\\ &= \\theta + c. \\end{align*}\\]\n\nAs \\(x = \\sin \\theta\\), then \\(\\theta = \\arcsin x\\), so the answer in terms of \\(x\\) is \\[\\displaystyle{\\int \\dfrac{1}{\\sqrt{1-x^2}} \\, dx = \\arcsin x + c}.\\]\n\nRemember that [inverse trigonometric functions](https://undergroundmathematics.org/glossary/inverse-trigonometric-function) can be written in two different ways. For example \\(\\arcsin\\) and \\(\\sin^{-1}\\).\n\n1. This time \\(x = \\cos \\theta\\), so \\(\\dfrac{dx}{d\\theta} = -\\sin \\theta\\). Writing \\(dx = -\\sin \\theta \\ d\\theta\\) gives us\n\n\\[\\begin{align*} \\int \\dfrac{1}{\\sqrt{1-x^2}} \\, dx &= \\int \\dfrac{1}{\\sqrt{1-\\cos^2 \\theta}} \\cdot (-\\sin \\theta) \\, d\\theta\\\\ &= \\int -1 \\, d\\theta \\\\ &= -\\theta + c. \\end{align*}\\]\n\nAs \\(x = \\cos \\theta\\), \\(\\theta = \\arccos x\\), so this time we get the answer \\[\\displaystyle{\\int \\dfrac{1}{\\sqrt{1-x^2}} \\, dx = -\\arccos x + c}.\\]\n\n| The fact that the answers are both inverse trigonometric functions suggests there is a relationship between them. The easiest way to think about their differences and similarities is to sketch the graphs of both functions. We see that \\(y = -\\arccos x\\) is the same shape as \\(y = \\arcsin x\\) , the only difference being a translation of \\(\\frac{π}{2}\\) along the \\(y\\) axis. This difference can be accounted for by the constants of integration. |  |\n|---|---|\n\nWe could also think about this algebraically. If we let \\(y = \\arcsin x\\), then \\(\\sin y = x.\\) As \\(\\sin y = \\cos(\\frac{\\pi}{2} - y)\\) we can write\n\n\\[\\begin{align*} &&\\cos\\left(\\frac{\\pi}{2} - y\\right) &= x \\\\ \\iff&& \\frac{\\pi}{2} - y &= \\arccos x \\\\ \\iff&& \\frac{\\pi}{2} - \\arcsin x &= \\arccos x. \\end{align*}\\]\n\nThe second line of this argument will not always follow on from the first, as it depends on the range of values for \\(y\\). Can you see why it is valid in this case?\n\nThis method also shows that the values of \\(\\arcsin x\\) and \\(-\\arccos x\\) differ by \\(\\frac{\\pi}{2},\\) or in fact, that \\(\\arcsin x + \\arccos x = \\frac{\\pi}{2}.\\)\n\n**Reflection**\n\nDoes having a different antiderivative function affect the solution to a definite integral? Remember, \\[\\int_a^b f(x) \\, dx = F(b) - F(a).\\]\n\nIt is useful to realise that there can be more than one form of answer to an integral. This happens particularly when using trigonometric substitutions as there are so many ways that different functions can be written in terms of each other.\n",
    "figures": 0,
    "figuresInline": 0
   }

@@ -193,6 +193,36 @@ Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
     Picks r6938/r6530/r8620 — all fresh. Figure plane unchanged: figures=0
     honestly (the map of record predates the lane; the rebuilt converter
     renders figcaption text only).
+  - lane 13 (T-UGM-HUB-CONSUME-13 — the FIFTH lane on the pure-3 course
+    plane, corpus PR #140 + the T-UGM-MODE1-13 amendment r0 of record caught
+    by the operator eyeball pre-merge: the MANIFEST version_note now carries
+    its v14 prepend per the lane-10+ convention and the LEDGER restore join
+    byte sits exactly in the e75ba613 of-record sequence): content/
+    cie-a-level-maths-20-pure-3/ugm-resources.json — CIE 9709 Pure 3
+    subtopic 3.5 Integration (spec points 3.5.1–3.5.6, the verbatim spine
+    rows of record; parse artifacts carried), the FIRST LANE OF RECORD WITH
+    AN HONEST EMPTY SPEC POINT: 3.5.4 (the f'(x)/f(x) integration row)
+    carries ZERO rows corpus-wide — no such resource exists in the
+    25-station corpus (rule 3, no coverage manufactured). The integration
+    substrate concentrates on the calculus-trig-log (7 fresh), chain-rule
+    (5) and product-rule (4) stations — 16 fresh bodies land (10×3.5.1 /
+    7×3.5.2 / 3×3.5.3 / 0×3.5.4 / 6×3.5.5 / 9×3.5.6 rows across the fifteen
+    scoped stations) — and lane 13 INVERTS lane 12: the lane-10/11/12
+    pre-baked 'P3 3.5 Integration' bearing pool is PROMOTED with fresh text
+    (15) rather than re-routed. 23 aligned rows = 16 fresh + 1 cross-course
+    flip (circular-slice → 3.5.6/3.5.2, its lane-4 body under
+    pure-1-circular-measure, by reference) + 6 one-to-many joins beside
+    standing alignments (r7616 → its lane-11 3.3.1 body, r8774 → lane-12
+    3.4.2, r9312 → lane-6 1.6.4, r9701/r8694/r5126 → lane-8/9 bodies — the
+    partial-fraction INTEGRATION rows). The 11 non-overlaps ride
+    nonOverlapRows with bodyImported=false (5 superseding stale lane-10/11/
+    12 bearings, 5 P1-1.8-domain routes, 1 no-text teacher-support page);
+    68 candidates stand rejected on prior alignments of record.
+    Picks r8679 / r9297 / r5126 (rides its lane-9 body — the lane-11 r6018
+    convention, disclosed) / NONE at 3.5.4 (the honest gap) / r8134 /
+    r8890. Figure plane unchanged: figures=0 honestly (the map of record
+    predates the lane; the fresh bodies carry no map rows and no
+    placeholders).
 
 Output: content/<lane>/ugm-resources.json, schema
 "syllabai-demo.ugm-lane-resources/1.1" (multi-lane) — per-spec-point resource
@@ -236,30 +266,29 @@ except ImportError:
 
 FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
-SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
+# 1.2 (T-UGM-HUB-CONSUME-13): primaryPick is nullable — the honest-gap
+# law. A spec point whose corpus-wide sweep closed with ZERO rows (rule 3 —
+# no coverage manufactured; lane 13's 3.5.4 the first of record) carries
+# primaryPick=null with an empty ugmIds list while still carrying its
+# verbatim spine row. 1.1 bundles never carry null picks and still parse.
+SCHEMA = "syllabai-demo.ugm-lane-resources/1.2"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-# T-UGM-HUB-CONSUME-12: pin advanced past lane 12 (T-UGM-MODE1-12 /
-# T-UGM-IMPORT-12, corpus PR #134, merge commit e3c3b058 — the
-# pure-3-differentiation corpus: 40 fresh bodies, MANIFEST v13, fleet 589)
-# AND past the two T-UGM-MODE1-12 amendments of record, both caught by this
-# importer's fail-closed audits on the first pure-3 course run — r0 7a5c1c5f
-# (the lane-12 enrichment's stationScope.resources was left absent for all
-# ten scoped stations; the amendment fills the ten mechanical numbers from
-# the same file's stationBreakdown of record — the 2f31fcad law) and r1
-# bb78ae37 (the cross-course flip r8931 was claimed in crossLaneAligned but
-# omitted from its perSpecPoint 3.4.2 resources row — the lane-11 r6018
-# law: a flip row rides BOTH structures). Lineage note: the #136 merge
-# (e70a7140, T-BOOK-056, branch cut pre-#134) clobbered the lane-12 corpus
-# (the 4e746a89 failure mode); the restore of record bfd9a8f2 returned main
-# to byte-identical corpus state, and r1 sits on top of it. Pure-1 inputs
-# AND the lane-9/10/11 pure-3 inputs are byte-identical 3c2ecfa4 → bb78ae37
-# (the lane-12 PR + amendments touch UGM-Resources/pure-3-differentiation/**
-# + its enrichment + shared bookkeeping only — verified pin-to-pin; the
-# interleaved commits are parallel-agent traffic (converter/Official-
-# ExamQuestion/chemistry lanes) that touches no importer inputs; the shared
-# MANIFEST.json gains the strictly-additive lane-12 block while the earlier
-# lane blocks are byte-identical).
-DEFAULT_REF = "main@bb78ae371da1a2d0f5c166e82899e828b1208b4d"
+# T-UGM-HUB-CONSUME-13: pin advanced past lane 13 (T-UGM-MODE1-13 /
+# T-UGM-IMPORT-13, corpus PR #140, head 2300d6c9 + amendment r0
+# 41d35221 — the pure-3-integration corpus: 16 fresh bodies,
+# MANIFEST v14, fleet 605). The amendment r0 of record (caught by the
+# operator eyeball pre-merge, trace 1a174d39784fd841): the MANIFEST
+# version_note now carries its v14 prepend per the lane-10+ convention
+# (the artifact had carried the v13 note forward verbatim), and the
+# LEDGER.md lane-12 restore join gained its one missing LF so the restored
+# block sits byte-identically in the e75ba613 of-record sequence. Pure-1
+# inputs AND the lane-9/10/11/12 pure-3 inputs are byte-identical
+# bb78ae37 → 41d35221 (the lane-13 PR touches
+# UGM-Resources/pure-3-integration/** + its enrichment + the shared
+# MANIFEST lane-13 block + both READMEs + LEDGER only — verified
+# pin-to-pin; the strictly-additive law holds, lanes 1–12 blocks and the
+# v9 assets block byte-identical).
+DEFAULT_REF = "main@41d352212173a2602dc20ccff55ebbb30999a139"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
@@ -506,6 +535,47 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-3-differentiation",
             "ledger": "LEDGER.md — T-UGM-MODE1-12 and T-UGM-IMPORT-12 (PR #134)",
             "expected": {"resources": 40, "rows": 41, "aligned": 41, "nonOverlap": 29},
+        },
+        {
+            # T-UGM-HUB-CONSUME-13: the pure-3 plane's fifth lane — CIE 9709
+            # Pure 3 subtopic 3.5 Integration (spec points 3.5.1–3.5.6, the
+            # verbatim spine rows of record; parse artifacts carried), the
+            # FIRST LANE OF RECORD WITH AN HONEST EMPTY SPEC POINT (3.5.4,
+            # the f'(x)/f(x) row — zero rows corpus-wide, rule 3). The
+            # substrate concentrates on the calculus-trig-log / chain-rule /
+            # product-rule stations (10 of 16 fresh) with calculus-meets-
+            # functions and calculus-of-powers strays; the lane-10/11/12
+            # pre-baked bearing pool is PROMOTED with fresh text (15) rather
+            # than re-routed — the inverse of the lane-12 shape. 23 aligned
+            # rows = 16 fresh + 1 cross-course flip (circular-slice, its
+            # lane-4 body) + 6 one-to-many joins by reference; the 11
+            # non-overlaps ride nonOverlapByReference (5 superseding stale
+            # lane-10/11/12 bearings, 5 P1-1.8-domain routes, 1 no-text).
+            # Picks r8679/r9297/r5126(lane-9 body, r6018 convention)/
+            # none(3.5.4)/r8134/r8890.
+            "laneSlug": "integration",
+            "laneTitle": "Integration",
+            "stations": [
+                {"slug": "calculus-meets-functions", "title": "Calculus meets Functions"},
+                {"slug": "calculus-of-powers", "title": "Calculus of Powers"},
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "circles", "title": "Circles"},
+                {"slug": "combining-functions", "title": "Combining Functions"},
+                {"slug": "counting-and-binomials", "title": "Counting & Binomials"},
+                {"slug": "divisibility-and-induction", "title": "Divisibility & Induction"},
+                {"slug": "geometry-of-equations", "title": "Geometry of Equations"},
+                {"slug": "hyperbolic-functions", "title": "Hyperbolic Functions"},
+                {"slug": "introducing-calculus", "title": "Introducing Calculus"},
+                {"slug": "polynomials", "title": "Polynomials & Rational Functions"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+                {"slug": "sequences", "title": "Sequences"},
+                {"slug": "thinking-about-functions", "title": "Thinking about Functions"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-3-integration.json",
+            "res_dir": "UGM-Resources/pure-3-integration",
+            "ledger": "LEDGER.md — T-UGM-MODE1-13 and T-UGM-IMPORT-13 (PR #140) + the T-UGM-MODE1-13 amendment r0 (this PR)",
+            "expected": {"resources": 16, "rows": 35, "aligned": 23, "nonOverlap": 11},
         },
     ],
 }
@@ -775,7 +845,20 @@ def import_lane(repo, lane_block, course):
         # the pick may ride fresh text (lanes 1-3, 9's fresh picks) or a
         # cross row (lane-4's r5534, lane-8's all-cross-lane pick set) — both
         # of record; it must never be absent from both.
-        if block.get("primaryPick") not in fresh_ids and block.get("primaryPick") not in cross:
+        # T-UGM-HUB-CONSUME-13 honest-gap law (first of record): a spec
+        # point whose corpus-wide sweep closed with ZERO rows (rule 3 — no
+        # coverage manufactured) carries primaryPick=None with an empty
+        # resources list while still carrying its verbatim spine row. The
+        # auditor accepts EXACTLY that shape, loudly; rows present with
+        # primaryPick=None still fail.
+        if block.get("primaryPick") is None:
+            if block.get("resources") or cross:
+                fail(f"[{station}] {code}: primaryPick None but rows present — "
+                     f"the honest-gap law covers only EMPTY spec points")
+            if not block.get("officialText"):
+                fail(f"[{station}] {code}: honest-gap spec point must still carry its verbatim spine row")
+            print(f"    [honest gap] {code}: zero rows of record (rule 3) — spine row carried, no pick")
+        elif block.get("primaryPick") not in fresh_ids and block.get("primaryPick") not in cross:
             fail(f"[{station}] {code}: primaryPick {block.get('primaryPick')!r} not among the fresh or cross rows")
         spec_points.append({
             "code": code,
