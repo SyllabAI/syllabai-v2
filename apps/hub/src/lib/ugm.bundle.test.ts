@@ -808,18 +808,37 @@ describe("prose figure localization (T-UGM-HUB-CONSUME-8b, 'Localize them')", ()
 // predates all four lanes and the rebuilt converter emits no placeholders,
 // so the pure-3 serve ships figures=0 honestly pending a T-UGM-ASSETS-2
 // corpus amendment.
-describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)", () => {
+// Lane 15 (T-UGM-HUB-CONSUME-15, corpus PR #149, merge b151f65a) is the
+// SEVENTH pure-3 lane — 3.7 Vectors, spec points 3.7.1–3.7.7 — the FIRST
+// ZERO-JOIN/ZERO-FLIP lane of record:
+// 20 aligned rows ALL fresh bodies (vector-geometry 15 + combining-vectors
+// 5 — the stations the spec names are the stations the corpus serves from;
+// CIE pure-1 carries no vectors, so 3.7 is their first claimant), zero
+// cross-lane joins, zero flips, zero cross-course traffic. THE DESIGNED
+// HONEST GAP: 3.7.7 is the spec's own exclusion row ('Knowledge of the
+// vector product is not required.') and carries zero rows by rule — the
+// second honest gap of record after 3.5.4, this time by design. 6
+// non-overlap companion disclosures ride nonOverlapByReference (the plane
+// class is-it-a-plane/r6006/r9794/r7187 — P3 3.7 is lines-only; r5089
+// rejected BY the 3.7.7 exclusion note; r8828 vs the 3.7.5
+// common-perpendicular exclusion); the r8456 PROMOTION retires its stale
+// lane-3-algebra byref row (the r8013 supersede precedent). The lane's
+// stations list is the FULL 21-station sweep closure (the lane-13
+// convention) — all 21 already declared, so the unique-station count stays
+// 25 while the declared-row count grows 66 → 87. Figure plane unchanged:
+// figures=0 honestly.
+describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12/-13/-14/-15, lanes 9-15)", () => {
   const B3_PATH = join(
     import.meta.dir,
     "../../content/cie-a-level-maths-20-pure-3/ugm-resources.json",
   );
   const b3 = UgmLaneBundle.parse(JSON.parse(readFileSync(B3_PATH, "utf8")));
 
-  test("schema + the corpus pin of record (post-#145 merge, T-UGM-HUB-CONSUME-14)", () => {
+  test("schema + the corpus pin of record (post-#149 merge, T-UGM-HUB-CONSUME-15)", () => {
     expect(b3.schema).toBe("syllabai-demo.ugm-lane-resources/1.2"); // 1.2 = the honest-gap law (primaryPick nullable); the pure-1 bundle stays 1.1 — both reader-accepted
     expect(b3.lane).toBe("cie-a-level-maths-20-pure-3");
     expect(b3.source.ref).toBe(
-      "main@8b3e57b917d773eb9dff8c5802b30ae9b98a8b45",
+      "main@b151f65ae5f2f963476548cbae92cc1f138b380f",
     );
     expect(b3.source.enrichment).toEqual([
       "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json",
@@ -828,6 +847,7 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
       "UGM-Enrichment/cie-a-level-maths-20-pure-3-differentiation.json",
       "UGM-Enrichment/cie-a-level-maths-20-pure-3-integration.json",
       "UGM-Enrichment/cie-a-level-maths-20-pure-3-iteration.json",
+      "UGM-Enrichment/cie-a-level-maths-20-pure-3-vectors.json",
     ]);
     expect(b3.source.resourcesDir).toEqual([
       "UGM-Resources/pure-3-algebra",
@@ -836,26 +856,28 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
       "UGM-Resources/pure-3-differentiation",
       "UGM-Resources/pure-3-integration",
       "UGM-Resources/pure-3-iteration",
+      "UGM-Resources/pure-3-vectors",
     ]);
     expect(b3.reviewState.state).toBe("SUGGESTED");
   });
 
-  test("the lanes 9-14 fleet census of record: 129 bodies / 201 rows / 24 spec points / 66 station rows", () => {
-    expect(b3.resources.length).toBe(129);
-    expect(b3.coverage.aligned).toBe(129); // the served corpus — all 129 bodies aligned
+  test("the lanes 9-15 fleet census of record: 149 bodies / 230 rows / 31 spec points / 87 station rows", () => {
+    expect(b3.resources.length).toBe(149);
+    expect(b3.coverage.aligned).toBe(149); // the served corpus — all 149 bodies aligned
     expect(b3.coverage.nonOverlap).toBe(0); // served non-overlap bodies: none (by-reference law)
-    expect(b3.coverage.candidateRows).toBe(201); // 151 memberships over 129 bodies (143 prior + 4 lane-14 fresh + 4 same-course join codes) + 50 cross-course rows (45 prior + 5 lane-14 riders)
-    expect(b3.coverage.ugmResourcesConsidered).toBe(129);
+    expect(b3.coverage.candidateRows).toBe(230); // 180 memberships over 149 bodies (151 prior + 29 lane-15 fresh — the zero-join lane adds no join codes) + 50 cross-course rows (lane-15 adds none)
+    expect(b3.coverage.ugmResourcesConsidered).toBe(149);
     expect(b3.coverage.specPointsCovered).toEqual([
       "3.1.1", "3.1.2", "3.1.3", "3.1.4", "3.1.5", "3.1.6",
       "3.2.1", "3.2.2", "3.2.3", "3.2.4", "3.3.1", "3.3.2",
       "3.4.1", "3.4.2", "3.4.3",
       "3.5.1", "3.5.2", "3.5.3", "3.5.4", "3.5.5", "3.5.6",
       "3.6.1", "3.6.2", "3.6.3",
+      "3.7.1", "3.7.2", "3.7.3", "3.7.4", "3.7.5", "3.7.6", "3.7.7",
     ]);
-    expect(b3.stations.length).toBe(66); // 15 + 3 + 3 + 10 + 15 + 20 declared rows; exp-and-log/calculus-trig-log/chain-rule/product-rule/thinking-about-* are shared declared rows (twice/thrice-by-design house shape)
-    expect(new Set(b3.stations.map((s) => s.slug)).size).toBe(25); // lane 14 adds thinking-about-numbers as a declared row (its 20-station stationScope rides the sweep's strays law; the other 19 are already declared)
-    expect(b3.coverage.lanes.length).toBe(6);
+    expect(b3.stations.length).toBe(87); // 15 + 3 + 3 + 10 + 15 + 20 + 21 declared rows; exp-and-log/calculus-trig-log/chain-rule/product-rule/thinking-about-* are shared declared rows (twice/thrice-by-design house shape)
+    expect(new Set(b3.stations.map((s) => s.slug)).size).toBe(25); // lane 15's 21-station sweep closure adds NO new slug (the lane-13 convention: every sweep station was already declared by lanes 9–14)
+    expect(b3.coverage.lanes.length).toBe(7);
     expect(b3.coverage.lanes[0]).toMatchObject({
       station: "algebra",
       stationTitle: "Algebra",
@@ -916,6 +938,15 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
       crossLaneAligned: 8, // 1 flip (r8404 → 3.6.2/3.6.3) + 7 one-to-many joins beside standing alignments
       crossLaneNonOverlap: 0,
     });
+    expect(b3.coverage.lanes[6]).toMatchObject({
+      station: "vectors",
+      stationTitle: "Vectors",
+      ugmResourcesConsidered: 136, // the lane-15 enrichment's sweep universe of record (136 candidates)
+      aligned: 20,
+      nonOverlap: 6,
+      candidateRows: 29, // 2/11/5/3/4/4 over 3.7.1–3.7.6 — the zero-join lane: no join codes, no cross-course pairs (the lane-14 shape inverted)
+      // no crossLaneAligned key: the FIRST lane of record whose enrichment carries none (zero joins, zero flips)
+    });
     // the 35 fresh lane-9 bodies by station of record
     const byStation = (slug: string) => b3.resources.filter((r) => r.station === slug);
     expect(byStation("polynomials").length).toBe(26); // lane-9's strays + lane-14's r8711 (the purest sign-change search in the corpus)
@@ -939,6 +970,12 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     // r8931 flip, which rides the lane-7 body under pure-1-differentiation)
     expect(byStation("calculus-of-powers").length).toBe(0);
     expect(byStation("calculus-meets-functions").length).toBe(0);
+    // lane 15's 20 fresh bodies land ONLY on the two vector stations (the
+    // zero-join law — the stations the spec names are the stations the
+    // corpus serves from): vector-geometry 15 + combining-vectors 5; the
+    // other 19 sweep-closure stations carry zero fresh bodies by design
+    expect(byStation("vector-geometry").length).toBe(15); // lane-15's vector-geometry fresh bodies — the station's FIRST served bodies (the zero-join lane)
+    expect(byStation("combining-vectors").length).toBe(5); // lane-15's combining-vectors fresh bodies
     // lane 13's 16 fresh bodies land ONLY on the three calculus stations
     // (calculus-trig-log 7 + chain-rule 5 + product-rule 4 — the
     // three-station-plus-strays law): the 12 further scoped stations carry
@@ -966,6 +1003,35 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     const it63 = b3.specPoints.find((sp) => sp.code === "3.6.3")!;
     expect(it63.resourceCount).toBe(2);
     expect(it63.primaryPick).toBe("r8231"); // rides its lane-3 body — disclosed
+    // lane 15's 3.7 blocks of record: THE DESIGNED HONEST GAP — 3.7.7 is
+    // the spec's own exclusion row and carries zero rows by rule (the
+    // second honest gap of record after 3.5.4, this time by design);
+    // 3.7.1–3.7.6 carry 2/11/5/3/4/4 all-fresh rows with fresh picks
+    const vec71 = b3.specPoints.find((sp) => sp.code === "3.7.1")!;
+    expect(vec71.resourceCount).toBe(2);
+    expect(vec71.ugmIds).toEqual(["hit-the-spot", "r9629"]);
+    expect(vec71.primaryPick).toBe("hit-the-spot");
+    const vec72 = b3.specPoints.find((sp) => sp.code === "3.7.2")!;
+    expect(vec72.resourceCount).toBe(11);
+    expect(vec72.primaryPick).toBe("r8215");
+    const vec73 = b3.specPoints.find((sp) => sp.code === "3.7.3")!;
+    expect(vec73.resourceCount).toBe(5);
+    expect(vec73.primaryPick).toBe("r9575");
+    const vec74 = b3.specPoints.find((sp) => sp.code === "3.7.4")!;
+    expect(vec74.resourceCount).toBe(3);
+    expect(vec74.primaryPick).toBe("lots-of-vector-lines");
+    const vec75 = b3.specPoints.find((sp) => sp.code === "3.7.5")!;
+    expect(vec75.resourceCount).toBe(4);
+    expect(vec75.primaryPick).toBe("three-lines");
+    const vec76 = b3.specPoints.find((sp) => sp.code === "3.7.6")!;
+    expect(vec76.resourceCount).toBe(4);
+    expect(vec76.ugmIds).toEqual(["r5813", "r6493", "r7272", "r8456"]); // the PROMOTED r8456 rides its fresh lane-15 body
+    expect(vec76.primaryPick).toBe("r6493");
+    const gap377 = b3.specPoints.find((sp) => sp.code === "3.7.7")!;
+    expect(gap377.resourceCount).toBe(0);
+    expect(gap377.ugmIds).toEqual([]);
+    expect(gap377.primaryPick).toBeNull();
+    expect(gap377.officialText).toContain("vector product is not required"); // the spec's own exclusion row — the designed honest gap of record
     const r7616 = b3.resources.find((r) => r.ugmId === "r7616");
     expect(r7616).toBeDefined();
     expect(r7616!.specPoints.map((s) => s.code)).toEqual(["3.3.1", "3.5.1"]); // lane-13's one-to-many join rides the served lane-11 body beside its standing 3.3.1 pick
@@ -1025,10 +1091,10 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     }
   });
 
-  test("non-overlaps by reference: 89 rows with bodyImported=false — reasons disclosed, zero bodies", () => {
+  test("non-overlaps by reference: 94 rows with bodyImported=false — reasons disclosed, zero bodies", () => {
     const nbr = b3.coverage.nonOverlapByReference!;
-    expect(nbr.count).toBe(89); // 89 prior − r8013's stale bearing row (retired by r8013's own lane-14 fresh body) + lane-14's 1 newly-disclosed row (staircase-sequences-revisited — the companion disclosure: convergents ARE approximations, representation is the aim)
-    expect(nbr.rows.length).toBe(89);
+    expect(nbr.count).toBe(94); // 89 prior − r8456's stale lane-3-algebra row (retired by the PROMOTION — its fresh lane-15 body serves it now, the r8013 supersede precedent) + lane-15's 6 newly-disclosed rows (the plane class is-it-a-plane/r6006/r7187/r9794 + r5089 rejected BY the 3.7.7 exclusion note + r8828 vs the 3.7.5 common-perpendicular exclusion — all six ride combining-vectors)
+    expect(nbr.rows.length).toBe(94);
     for (const row of nbr.rows) {
       expect(row.reason).toBeDefined();
       expect((row.reason ?? "").length).toBeGreaterThan(0);
@@ -1042,6 +1108,14 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     // 3.6.1 body serves it now; and the companion disclosure is IN
     expect(nbr.rows.find((r) => r.ugmSlug === "r8013")).toBeUndefined();
     expect(nbr.rows.find((r) => r.ugmSlug === "staircase-sequences-revisited")).toBeDefined();
+    // lane-15 supersede law: r8456's stale lane-3-algebra row is GONE — the
+    // PROMOTION of record; its fresh body serves 3.7.2/3.7.6 now. The 6
+    // companion disclosures are IN (4 under combining-vectors, 2 under
+    // vector-geometry sweep stations — the plane class, r5089, r8828)
+    expect(nbr.rows.find((r) => r.ugmSlug === "r8456")).toBeUndefined();
+    for (const s of ["is-it-a-plane", "r6006", "r9794", "r7187", "r5089", "r8828"]) {
+      expect(nbr.rows.find((r) => r.ugmSlug === s)).toBeDefined();
+    }
     const flipped = b3.resources.find((r) => r.ugmId === "to-log-or-not-to-log");
     expect(flipped).toBeDefined();
     expect(flipped!.specPoints.map((s) => s.code)).toEqual(["3.2.3", "3.6.1"]); // the lane-14 one-to-many join rides the lane-9/10 body beside its standing 3.2.3 pick
@@ -1055,9 +1129,16 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     const bySt = (s: string) => nbr.rows.filter((r) => r.station === s).length;
     expect(bySt("trigonometry-compound-angles")).toBe(1);
     expect(bySt("trigonometry-triangles-to-functions")).toBe(2);
+    // lane-15's 6 by-reference rows ALL ride combining-vectors (the plane
+    // class is-it-a-plane/r6006/r7187/r9794 + r5089 + r8828) beside the
+    // standing r6449; vector-geometry's 4 rows are the standing prior rows
+    // (make-it-stop/r6009/one-windy-day/r7678 — the lane-15 sweep adds none
+    // there: every vector-geometry candidate was aligned or rejected)
+    expect(bySt("combining-vectors")).toBe(7);
+    expect(bySt("vector-geometry")).toBe(4);
   });
 
-  test("the twenty-four picks of record (r6018 rides its reference row — the lane-11 pick law, joined by r8404 and r8231 in lane 14; 3.5.4 keeps the honest gap — no rows, no pick; the multi-code law: 16 bodies flag twice-or-more)", () => {
+  test("the thirty picks of record (r6018 rides its reference row — the lane-11 pick law, joined by r8404 and r8231 in lane 14; 3.5.4 and 3.7.7 keep the honest gaps — no rows, no picks; the multi-code law: 25 bodies flag twice-or-more)", () => {
     const picks = Object.fromEntries(b3.specPoints.map((sp) => [sp.code, sp.primaryPick]));
     expect(picks).toEqual({
       "3.1.1": "absolutely",
@@ -1084,6 +1165,13 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
       "3.6.1": "r8711",
       "3.6.2": "r8404", // rides its lane-6 body — the r6018 convention
       "3.6.3": "r8231", // rides its lane-3 body — disclosed
+      "3.7.1": "hit-the-spot",
+      "3.7.2": "r8215",
+      "3.7.3": "r9575",
+      "3.7.4": "lots-of-vector-lines",
+      "3.7.5": "three-lines",
+      "3.7.6": "r6493",
+      "3.7.7": null, // the DESIGNED honest gap of record — the spec's own exclusion row (the second gap after 3.5.4, by design)
     });
     const flags = new Map<string, string[]>();
     for (const r of b3.resources) {
@@ -1101,20 +1189,29 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     expect(flags.get("r5126")!.sort()).toEqual(["3.5.3", "3.5.5"]); // rides its lane-9 body — the lane-11 r6018 convention, one course on
     expect(flags.get("r8134")!.sort()).toEqual(["3.5.2", "3.5.5"]); // the dual-bearing heritage (lane-10 + lane-12 both bore r8134 at 3.5)
     expect(flags.get("r8890")).toEqual(["3.5.6"]);
-    expect(flags.size).toBe(20); // 19 prior + r8711 — r8404/r8231 still ride reference rows (no served body to flag)
-    // 151 memberships over 129 bodies: 143 prior + 4 lane-14 fresh (r8013/r8711
-    // single-code, staircase-sequences twice) + 4 same-course join codes
-    // (r8679 ×2, see-the-power, to-log-or-not-to-log — the cross-course
-    // riders' memberships live in the pure-1 bundle)
+    // lane-15's picks ALL ride fresh bodies — the r6018 reference-pick law does not recur (the zero-join lane);
+    // the corpus carries the dual row-level flags of record (hit-the-spot 3.7.1+3.7.2, r8215 3.7.2+3.7.3,
+    // lots-of-vector-lines/three-lines 3.7.4+3.7.5) beside the index-level picks
+    expect(flags.get("hit-the-spot")!.sort()).toEqual(["3.7.1", "3.7.2"]); // the dual-bearing 3.7.1/3.7.2 pick
+    expect(flags.get("r8215")!.sort()).toEqual(["3.7.2", "3.7.3"]); // the corpus's dual row-level flag (3.7.2 level-pick; 3.7.3 rides beside level-pick r9575)
+    expect(flags.get("r9575")).toEqual(["3.7.3"]);
+    expect(flags.get("lots-of-vector-lines")!.sort()).toEqual(["3.7.4", "3.7.5"]); // the dual flag pair with three-lines
+    expect(flags.get("three-lines")!.sort()).toEqual(["3.7.4", "3.7.5"]); // 3.7.5's level pick rides both flags
+    expect(flags.get("r6493")).toEqual(["3.7.6"]);
+    expect(flags.size).toBe(26); // 20 prior + 6 lane-15 fresh picks — the FIRST lane whose every pick rides a fresh body on this plane
+    // 180 memberships over 149 bodies: 151 prior + 29 lane-15 fresh (2/11/5/
+    // 3/4/4 — all fresh, no join codes; the cross-course riders' memberships
+    // live in the pure-1 bundle)
     const memberships = b3.resources.reduce((n, r) => n + r.specPoints.length, 0);
-    expect(memberships).toBe(151);
+    expect(memberships).toBe(180);
     const multiCode = b3.resources.filter((r) => r.specPoints.length >= 2).map((r) => r.ugmId).sort();
     expect(multiCode).toEqual([
-      "constant-consistency", "inequalities", "integral-chasing-2", "r5126",
-      "r5276", "r6577", "r7616", "r8134", "r8679", "r8694", "r8774", "r8778",
-      "see-the-power", "staircase-sequences", "to-log-or-not-to-log",
-      "trigsy-integrals",
-    ]); // 11 two-code + 4 three-code (r5126, integral-chasing-2, constant-consistency, r8679) + r8694 four-code
+      "constant-consistency", "hit-the-spot", "inequalities", "integral-chasing-2",
+      "lots-of-vector-lines", "r5126", "r5276", "r6007", "r6577", "r7285",
+      "r7616", "r8134", "r8215", "r8456", "r8679", "r8694", "r8774", "r8778",
+      "r9629", "see-the-power", "staircase-sequences", "three-lines",
+      "to-log-or-not-to-log", "trigsy-integrals", "vector-squares",
+    ]); // 11 two-code + 4 three-code (r5126, integral-chasing-2, constant-consistency, r8679) + r8694 four-code + lane-15's 9 dual-code bodies (hit-the-spot/r8215/r9629/r6007/r7285 share 3.7.2; lots-of-vector-lines/three-lines/vector-squares share 3.7.4+3.7.5; r8456 rides 3.7.2+3.7.6)
   });
 
   test("figure plane honesty: the map of record predates lanes 9-12 — figures=0, zero /ugm-assets/ refs, zero external ugm image links, zero placeholders", () => {
@@ -1142,7 +1239,7 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
   test("pure-3 honesty invariants: unique ids, declared stations, delimiter balance, SUGGESTED provenance", () => {
     const ids = b3.resources.map((r) => r.ugmId);
     expect(new Set(ids).size).toBe(ids.length);
-    expect(ids.length).toBe(129);
+    expect(ids.length).toBe(149);
     const slugs = new Set(b3.stations.map((s) => s.slug));
     for (const r of b3.resources) expect(slugs.has(r.station)).toBe(true);
     for (const r of b3.resources) {

@@ -74,7 +74,26 @@
  * lane-9/10/13 bodies) + 1 non-overlap by reference (staircase-sequences-
  * revisited, the companion disclosure); the supersede law retires r8013's
  * stale bearing row; picks r8711/r8404(lane-6 body — the r6018
- * convention)/r8231(lane-3 body — disclosed)
+ * convention)/r8231(lane-3 body — disclosed); Vectors fifteenth — PR #149
+ * (the SEVENTH pure-3 lane, THE FIRST ZERO-JOIN/ZERO-FLIP LANE of record,
+ * THE DESIGNED HONEST GAP): 20 fresh bodies ALL under the two vector
+ * stations (vector-geometry 15 + combining-vectors 5 — the stations the
+ * spec names are the stations the corpus serves from; CIE pure-1 carries
+ * no vectors, so 3.7 is their first claimant) + 20 aligned rows all fresh
+ * (psp rows 29 = 2/11/5/3/4/4; no cross-lane joins, no flips, no
+ * cross-course traffic, no pre-baked bearing pool) + 6 non-overlaps by
+ * reference (the plane class is-it-a-plane/r6006/r9794/r7187 — P3 3.7 is
+ * lines-only; r5089 rejected BY the 3.7.7 exclusion note — the first
+ * candidate of record rejected by an exclusion row; r8828 vs the 3.7.5
+ * common-perpendicular exclusion); the supersede law retires r8456's
+ * stale lane-3-algebra row (the r8013 PROMOTION precedent — the λ/μ
+ * position-vector intersection + OM·ON angle exam question now rides its
+ * fresh body at 3.7.2/3.7.6); 3.7.7 is the spec's own exclusion row
+ * ('Knowledge of the vector product is not required.') and carries zero
+ * rows by rule — the second honest gap of record after 3.5.4, this time
+ * by design; picks hit-the-spot/r8215/r9575/lots-of-vector-lines/
+ * three-lines/r6493 — ALL riding fresh bodies (the first lane on this
+ * plane whose every pick has a served body)
  * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
  * hub-side import is
