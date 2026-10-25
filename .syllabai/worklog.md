@@ -21219,3 +21219,11 @@ Work Log:
 
 Stage Summary:
 - THE THIRD PIN-VINTAGE RUNG IS COMMITTED AND GATES-GREEN: the consume lane's map-engine derivation pin now stands at resources e481cb47 (the BL-008 pass-4 merge tip, absorbing the in-run 22543473 and 64f45861 vintages), consumed-input delta ZERO across the full ~27-commit range at every observed vintage, every registry plane byte-frozen by the diff-key proof, the fleet a quiescent fixed point of the amended law. LANE: IDLE on this lane; the next rung is the next resources-tip movement (not yet named).
+
+## R0-AUTO receipt — sweep 2026-10-26 04:00 +08 (Job 438940)
+- Merged #373 (T-UGM-HUB-CONSUME-12 UGM lane 12 Differentiation): head 3d6b6aa → merge bf3a7fb. Gates: verify✓ hub✓ (head), mergeable=clean, 0 reviews/comments, 4 files all apps/hub/** boundary-clean (fourth pure-3 lane).
+- Merged #374 (t-sm-rollout ADR-040 §5.5 r0: eval lane QWK + D5-β floors): head 4db7765 (dirty) → merge-intake per protocol: git merge origin/main, worklog-only conflict resolved via python append-only chronological union resolver (85 ours + 1 main = 86 sections, byte checks passed, zero code conflicts), gates GREEN (bun install frozen ✓, typecheck 0, bun test apps/api+packages 3031/0/13skip, golden selftest OK), pushed ac9441c6 (no force), head CI verify✓ hub✓ → merge 2adc640.
+- FINDING OF RECORD: .syllabai/worklog.md on main and the PR branch both contained a PRE-EXISTING unresolved conflict-marker block (<<<<<<< HEAD / ======= / >>>>>>> 47224dc0 at line ~21042, inherited from an earlier §5.4-era intake). Preserved byte-verbatim per append-only fidelity (union may not introduce NEW markers — count-checked); flagged for the next operator worklog-hygiene leg. Desk did not edit historical bytes.
+- Post-merge main @ 2adc640: verify✓ hub✓ (bounded re-check ~110s). 2/2 round budget consumed.
+- Not merged, gate-b fail: #285 verify✗hub✗ · #296 hub✗ · #303 verify✗ · #352 zero check-runs (~49h stall).
+- Notes: main pre-advanced ed79128->e9779cd (#375 lane self-merge T-BOOK-056 u4:c23 + T-RULE-T3 pin-advance run-003); mirror reset hit #125 (46th consecutive, 89962a5 signature) — recovered, zero loss. Desk made no Neon/prod writes.
