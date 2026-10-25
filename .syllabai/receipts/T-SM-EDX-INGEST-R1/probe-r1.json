@@ -1,0 +1,78 @@
+{
+  "lane": "T-SM-EDX-INGEST-R1",
+  "task": "run-001 live probe test set (operator-delegated)",
+  "operator_order": {
+    "verbatim": "run your live probe test set",
+    "channel": "zai-web",
+    "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+    "chat": "371a9d19-b6bb-4173-9696-cee324b265a1",
+    "trace_id": "1a17260d191fd391",
+    "date": "2026-10-25"
+  },
+  "target_of_record": {
+    "lane_disclosure": "issue 276 comment 6391398535 (T-SM-EDX-INGEST-R1 END disclosure)",
+    "probe_spec": "expected depth 1 x3 + depth 2 connections + negative control over any flipped course - e.g. 4EC1 / YMA01 pure-1 / 4AC1 - from an authenticated teacher session",
+    "hub_deploy": "dpl_AqwUa5CDj3VbUJWYkSU4JA1KcL3F (production, syllabai-hub-v2, build of 30c28049, git-linked)",
+    "registry_state": "63 Smart-Mark-eligible rows / 94 at probe time (33 R1 flips included)"
+  },
+  "instrument": {
+    "route": "GET https://syllabai-hub-v2.vercel.app/api/core/questions (ADR-029 tranche 4 identity bridge)",
+    "auth": "fresh probe account r1-probe-20261025@example.com registered this run (STUDENT default role); POST /api/v1/auth/register 201 -> login 200 accessToken; creds at .creds/probe-r1.env (600)",
+    "precedent": "T-SM-SD0-FIX-R0 merge-deploy-probe-r0 (issue 276 comment 6374631835, 9/9 GREEN)"
+  },
+  "probe_set": {
+    "depth1_x3": [
+      {"course": "igcse-economics-17", "expected_code": "4EC1", "result": "available:true code:4EC1 rootId:f0c713ce-1a78-4b97-a0cf-263307a3a9e5", "pass": true},
+      {"course": "ial-maths-20-pure-1", "expected_code": "YMA01", "result": "available:true code:YMA01 rootId:7449cd99-2e0a-4fa9-9433-c0ef29585907", "pass": true},
+      {"course": "igcse-accounting-17-financial-statements", "expected_code": "4AC1", "result": "available:true code:4AC1 rootId:a7138168-deea-4092-96ba-56de71ecb933", "pass": true}
+    ],
+    "depth2_x3": [
+      {"course": "igcse-economics-17", "topic": "business-costs-revenues-and-profit--exam-questions", "joined": "38/38", "skipped": 0, "part_joins": 44, "marks_multiset": "EXACT (corpus == joined, minus-skipped law)", "pass": true},
+      {"course": "ial-maths-20-pure-1", "topic": "graphs-of-functions--exam-questions", "joined": "29/30", "skipped": 1, "part_joins": 29, "marks_multiset": "EXACT under the minus-skipped law", "pass": true},
+      {"course": "igcse-accounting-17-financial-statements", "topic": "financial-statements-of-a-manufacturer--exam-questions", "joined": "7/7", "skipped": 0, "part_joins": 7, "marks_multiset": "EXACT", "pass": true}
+    ],
+    "negative_x3": [
+      {"case": "unauthenticated depth-1 on igcse-economics-17", "result": "HTTP 200 {available:false, reason:'unauthenticated'} (honest-degrade per route law)", "pass": true},
+      {"case": "bogus slug not-a-real-course-xyz (authenticated)", "result": "HTTP 200 {available:false, reason:'not_pilot'}", "pass": true},
+      {"case": "non-bridge cie-igcse-economics-25 (authenticated)", "result": "HTTP 200 {available:false, reason:'not_pilot'}", "pass": true}
+    ]
+  },
+  "extended_reconciliation": {
+    "scope": "ALL 31 question topics of the 3 probe courses, corpus vs served families vs DB, join law emulated byte-faithfully from packages/shared/src/smeRef.ts @30c28049",
+    "totals": {"corpus_questions": 962, "joined": 958, "skipped_family_absent": 4, "dup_order_skips": 0, "join_mismatch_skips": 0, "option_label_failures": 0},
+    "per_course": [
+      {"course": "igcse-economics-17", "corpus": 468, "joined": 466, "family_absent": 2},
+      {"course": "ial-maths-20-pure-1", "corpus": 462, "joined": 460, "family_absent": 2},
+      {"course": "igcse-accounting-17-financial-statements", "corpus": 32, "joined": 32, "family_absent": 0}
+    ],
+    "family_absent_refs": [
+      "sme-eq-igcse-economics-17-government-policies-q35",
+      "sme-eq-igcse-economics-17-the-macroeconomic-objectives-q14",
+      "sme-eq-ial-maths-20-pure-1-graphs-of-functions-q0",
+      "sme-eq-ial-maths-20-pure-1-laws-of-indices-and-surds-q11"
+    ],
+    "absence_class": "complete family absence (read-only DB verified: NO base row AND NO member rows under any of the 4 bases; NOT the inactive/ghost class)",
+    "serving_behavior": "route honest-skip law held exactly: the 4 questions stay fully usable locally and submit NOTHING to core - zero fabricated evidence paths"
+  },
+  "db_crosscheck_readonly": {
+    "bank_active_sme_eq_rows": {"igcse-economics-17": 523, "ial-maths-20-pure-1": 460, "igcse-accounting-17": 254},
+    "validated_schemes": "100% of active rows carry a VALIDATED mark scheme on the latest question_version (523/523, 460/460, 254/254)",
+    "member_only_families_note": "MCQ-only questions bank under member refs (-p1..) with the family assembler keying the base ref - e.g. business-costs-revenues-and-profit-q0 serves solely from its -q0-p1 member row; the hub join resolves these correctly",
+    "bank_churn_note": "20,926 active sme-eq rows this run vs ~22,097 at R1 lane end - churn disclosed as outside this probe's scope"
+  },
+  "verdict": {
+    "score": "10/10 GREEN",
+    "statement": "The R1 flipped fleet serves LIVE at depth 1 and depth 2 with correct negatives; the join law held with zero fabricated-evidence paths; 4 bank-absent refs (0.4% of the probed corpus) disclosed as R1 ingest residue for a bounded fix lane."
+  },
+  "environment_events": [
+    "sandbox reset detected at lane start (worklog truncated to Oct-21 state, .creds/ absent, gh CLI absent) - 4 creds files reinstalled verbatim from the session record (9th install of record)",
+    "psql/gh absent in fresh substrate - DB via psycopg2 read-only, GitHub via REST"
+  ],
+  "tools": [
+    "scripts/probe_r1.py (canonical instrument, strict + lawful-skip accounting)",
+    "scripts/reconcile_r1.py (full corpus-vs-bank join emulation)",
+    "scripts/db_check_missing.py (read-only absence classification)"
+  ],
+  "recorded_at": "2026-10-25T00:00:00Z+",
+  "recorded_by": "Z.ai main agent (SyllabAI ops lane)"
+}
