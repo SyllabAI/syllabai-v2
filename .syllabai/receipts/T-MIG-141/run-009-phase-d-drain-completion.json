@@ -1,0 +1,95 @@
+{
+ "run": "run-009-phase-d-drain-completion",
+ "task": "T-MIG-141",
+ "driver": "phase_d_reembed.py @ parser 315b1a8 (frozen, sha 025f77e8) -> RE-PINNED mid-run to parser 935bbd0 (sha 2e9867a5) — reconnect law, see loop 1 forensics",
+ "runner": "t-mig-141-phase-d.yml @ v2 dc69c339 -> e407e0cb (PARSER_SHA/DRIVER_SHA pin bump)",
+ "operator_gate": "operator key batch staged (8 keys via chat, trace 1a172687e3ed2ab5) + 'Proceed' — resumption of the run-008 wall-paused drain; keys rotated per dispatch by REPLACING the T138_GEMINI_KEY secret (sealed PUT via the Actions secrets API, values never printed/logged)",
+ "pre_state": {"selector": 3012, "stale_with_vec": 2010, "stale_no_vec": 213, "nullvec_rev2": 789, "embed_hist": {"1": 2223, "2": 11542}, "no_vec": 1002},
+ "verdict": "PHASE D DRAIN COMPLETE — selector 0, embed_hist {2: 13765} bank-wide uniform, 3,012 rows re-embedded this run",
+ "key_batch": {
+   "count": 8,
+   "sandbox_probe": "1 benign embedContent per key from the sandbox (region-gated, disclosed): 5 LIKELY-VALID (269a, 81, 666, 425next, 81next — auth passes, blocked only by the sandbox IP region; empirically confirms the region law that apply runs on GitHub Actions egress), 3 PROJECT-DENIED (001, 002, 666next — HTTP 403 'Your project has been denied access')",
+   "rotation_order_of_record": "probe-healthy first (user relative order preserved): 269a, 81, 666, 425next, 81next; dead tail: 666next, 001, 002 (last two untested-in-CI, probe sufficient)",
+   "staging": ".creds/t141-key-pool.env (0600); stage = seal+PUT T138_GEMINI_KEY; the runner workflow reads the single secret",
+   "misstage_incident": "loop-4 first dispatch staged raw index 4 (001, probe-dead) instead of rotation slot 4 (425next) — lane-side staging-script bug, disclosed; run 40188584221 failed FAIL-CLOSED at the first embed call (RuntimeError status 403 — no failover by design), ZERO writes, probe verdict empirically confirmed in CI; correct key staged + re-dispatched"
+ },
+ "loops": [
+  {
+   "loop": 1,
+   "ci_run_id": 40181996047,
+   "key_label": "269a",
+   "tranche_size": 1000,
+   "verdict": "FAIL-CLOSED (infra loss, zero writes) — 981/1000 embedded (wall at row 982, 19 skipped honestly), drift gate GREEN (n=600, median 0.998297, min 0.965718), then the post-embed phases died: the embed phase is DB-silent 1,576s > the Neon serverless TLS idle cutoff (~25-30 min) — psycopg2.OperationalError 'SSL connection has been closed unexpectedly' -> generic FAIL exit 1; the 981 embedded vectors were LOST with the socket (rows remain in the selector). Root cause class: frozen-driver defect, NOT a key/gate failure. Runs #2/#3 of run-008 (500-row tranches) survived only under the cutoff.",
+   "fix": "run-005-precedent driver patch: ensure_conn() liveness gate (SELECT 1 + rollback, reconnect once on OperationalError) before EVERY post-embed DB touch (neighbor-Jaccard, guarded write txn, post-txn verify — the last prevents a dishonest red AFTER a durable commit). Parser 315b1a8..935bbd0 pushed (33 insertions, mode-preserving); local verify-mode GREEN (t0_readonly, 2010/2676 shas); v2 pins bumped e407e0cb (PARSER_SHA 935bbd0, DRIVER_SHA 2e9867a5...; rollback/manifest/selector pins UNCHANGED).",
+   "write": {"written": 0, "selector_after": 3012}
+  },
+  {
+   "loop": 2,
+   "ci_run_id": 40184266946,
+   "key_label": "81",
+   "tranche_size": 1000,
+   "verdict": "GREEN on the re-pinned driver (reconnect law exercised, no visible reconnect needed)",
+   "embed": {"embedded": 999, "skipped": 1, "wall": true, "secs": 1360.1},
+   "drift_gate": {"n": 610, "median": 0.998297, "min": 0.965718, "p10": 0.994793, "gate": "GREEN"},
+   "neighbor_jaccard_mean": 0.9147,
+   "write": {"written": 999, "post_bad_rows": 0, "selector_after": 2013}
+  },
+  {
+   "loop": 3,
+   "ci_run_id": 40186586706,
+   "key_label": "666",
+   "tranche_size": 1000,
+   "verdict": "GREEN",
+   "embed": {"embedded": 992, "skipped": 8, "wall": true, "secs": 1369.4},
+   "drift_gate": {"n": 712, "median": 0.998169, "min": 0.967072, "p10": 0.995319, "gate": "GREEN"},
+   "neighbor_jaccard_mean": 0.9217,
+   "write": {"written": 992, "post_bad_rows": 0, "selector_after": 1021}
+  },
+  {
+   "loop": 4,
+   "ci_run_id": 40188584221,
+   "key_label": "001 (MISSTAGE — probe-dead key)",
+   "tranche_size": 1000,
+   "verdict": "FAIL-CLOSED at first embed (403 project-denied) — ZERO writes; cancelled-by-completion before apply could matter; probe verdict confirmed in CI",
+   "write": {"written": 0, "selector_after": 1021}
+  },
+  {
+   "loop": 5,
+   "ci_run_id": 40188644031,
+   "key_label": "425next",
+   "tranche_size": 1000,
+   "verdict": "GREEN",
+   "embed": {"embedded": 999, "skipped": 1, "wall": true, "secs": null},
+   "drift_gate": {"median": 0.998307, "min": 0.964777, "gate": "GREEN"},
+   "neighbor_jaccard_mean": 0.9289,
+   "write": {"written": 999, "post_bad_rows": 0, "selector_after": 22}
+  },
+  {
+   "loop": 6,
+   "ci_run_id": 40190681624,
+   "key_label": "81next",
+   "tranche_size": 1000,
+   "verdict": "GREEN (tail tranche, 22 rows)",
+   "embed": {"embedded": 22, "skipped": 0, "wall": false},
+   "drift_gate": {"n": 8, "median": 0.994548, "min": 0.991191, "gate": "GREEN"},
+   "write": {"written": 22, "post_bad_rows": 0, "selector_after": 0}
+  }
+ ],
+ "post_state": {
+   "closing_census": "download mirror: run-008-drain/closing-census.json (lane t0_readonly)",
+   "bank": {"total": 13765, "embed_hist": {"2": 13765}, "no_vec": 0, "selector": 0, "foreign_model_rows": 0, "bad_dim_rows": 0},
+   "run009_write_window_utc": ["2026-10-25T10:42:55Z", "2026-10-25T11:53:01Z"],
+   "rows_written_run009": 3012,
+   "bank_wide_pua_rows": 1269,
+   "bank_wide_pua_note": "out-of-scope unwired plane residual (run-006 of record: 1,338 rows/115 docs, zero UNMAPPED cps, table.v1-coverable, hygiene-card candidate) — Phase D re-embeds content as-is; NOT a Phase-D defect; wired plane remains artifact-free per run-005 G-D"
+ },
+ "drift_gate_series": "consumed on every stale-row tranche across run-008 + run-009: n=364/302/600/610/712/999-class/8 — median 0.998154..0.998307, min 0.964777 — an order of magnitude above the 0.85 gate; the glyph normalization is embedding-neutral of record",
+ "rollback_unit": "unchanged of record: before-images gz 2e021ce6 (8,348,334 B) + per-row manifest a12b1d41 + phase_d_rollback.py (guarded WHERE embed_rev=2)",
+ "disclosures": [
+   "run-009 reuses the driver's internal receipt label run-007-phase-d-fold-in (frozen constant) — CI artifacts of record: t141-phase-d-verify / t141-phase-d-apply per loop run id",
+   "loop-1 lost 981 embedded vectors to the Neon idle cutoff (zero writes, fail-closed) — re-embedded by loops 2-5 against fresh key RPD; the loss is quota-only, no state damage",
+   "keys 666next and 002 remain probe-denied and untested in CI (no dispatch needed — drain completed with 5 healthy keys)",
+   "the driver re-pin (935bbd0/e407e0cb) is a mid-run frozen-pin rotation per the run-005 attempt-1 precedent; verify pins (manifest a12b1d41, selector anchor 1a1bc83d, rollback 26fc4897) UNCHANGED",
+   "key values never printed to logs/receipts/argv; secrets API sealed PUT only"
+ ]
+}
