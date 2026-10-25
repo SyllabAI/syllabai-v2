@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CircleHelp, FileQuestion } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { loadHubCourse } from "@/lib/courses";
+import { boardOf, loadHubCourse } from "@/lib/courses";
 import { sanitizeNoteBody } from "@/lib/note-body-fix";
 import { Markdown } from "@/components/markdown";
 import { Breadcrumbs } from "@/components/hub/chrome";
@@ -74,13 +74,16 @@ export default async function NoteReaderPage({
             <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-[28px]">
               {note.title}{" "}
               <span className="text-muted-foreground">
-                (Edexcel {meta.level} {meta.subject})
+                ({boardOf(meta)} {meta.level} {meta.subject})
               </span>
             </h1>
-            {/* trust meta — the SyllabAI analogue of SME's authorship block */}
+            {/* trust meta — the SyllabAI analogue of SME's authorship block.
+                Board-aware (CIE wave): registry-explicit board, else the
+                founding "Pearson Edexcel" — pre-CIE rows render byte-identical. */}
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-muted-foreground">
               <span>
-                Exam board <span className="font-medium text-foreground">Pearson Edexcel</span> ·{" "}
+                Exam board{" "}
+                <span className="font-medium text-foreground">{meta.board ?? "Pearson Edexcel"}</span> ·{" "}
                 {meta.level}
               </span>
               <span aria-hidden>·</span>
