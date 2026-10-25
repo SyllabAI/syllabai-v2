@@ -20956,3 +20956,19 @@ Conclusion: funnel A census leg DISCHARGED; next leg per the T-SM-BRIDGE-WIDEN r
 - Head b10519c: verify PASS + hub PASS (2/2); mergeable clean; 0 reviews/comments; diff = 2 files .syllabai/** exclusively (receipt-only, zero code, zero *.java).
 - Merge sha: 0edfd59 (merge commit, merge_method=merge). Post-merge main CI: verify PASS + hub PASS (2/2 green, ~155s bounded confirm).
 - Context this round: mirror reset hit #83 (4th consecutive, local→89962a5) recovered to aa04caa; origin/main advanced +4 since 9be98ca5 (seneca run-007 rollout wh-v3 GREEN, T-RULE-T3 pin rung run-002 LANDING, T-BOOK-050 c17 bake, sib-bl-005 Pearson T&L acquisition). #352 zero check-runs ~9.5h + #285/#296/#303 static red skipped. Bookkeeping-only, .syllabai/** exclusively.
+
+---
+Task ID: T-SM-EDX-INGEST-R1 (run-001)
+Agent: Z.ai (main agent, session web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2, trace 1a16ece951b064c9)
+Task: Operator order "Proceed with the remaining 42 unlisted subjects" — ingest questions+ms for the unlisted subjects and re-enable Smart Mark where the family gate passes.
+
+Work Log:
+- Ingest vintage of record: the frozen shim + frozen ADR-026 service composed in SET-CHUNK transactions (ingest-bundle-chunked.ts; targeted completion via ingest-targeted-sets.ts; the pilot via ingest-pilot-legacy.ts under the LEGACY ref law with positional byte-equality rewrite); curriculum seeds via seed-bundle-chunked.ts (the reuse law's structural no-op passes).
+- Fleet ingests ran 2026-10-24 (Edexcel point-scheme + CIE point-scheme + 18 SM ghost-repair rows). 2026-10-25 completion: 9701 9/9 chunks (319/319), 9618 seed 7 passes + 11/11 chunks (264/264), 4CH1 pilot legacy-law (serving-plane 523/523), 4MB1 chunks 1-6 + targeted 22 gap sets (1261/1261).
+- Instrument of record: census_gate_families.ts (the family-aware gate census — shim inclusion law + member ref families + hub join law; pilot legacy-law exception). It corrected the base-ref census's member-emission undercount and the pilot ref-law misread.
+- Sandbox rollback #9 (2026-10-24 ~22:35Z) mid-lane: clone/working-tree//tmp lost; all DB applies durable; recovered by reconstruction + idempotent re-verification.
+- Gate end state: 60 FULL rows (33 non-SM flip set + 27 SM ghost-repair rows); registry flips 33 -> 62 coreBridge rows of 94; band-scheme 16 rows stay flip-blocked pending ADR (phase-0 law); skeletons excluded.
+- Receipt: .syllabai/receipts/T-SM-EDX-INGEST-R1/ingest-r1.json.
+
+Stage Summary:
+- Flip PR t-sm-edx-ingest-r1/r0: courses.json 33x coreBridge=true + the four lane tools + this worklog + receipt. Bookkeeping+registry-only; zero app code; zero schema contact; no assets.
