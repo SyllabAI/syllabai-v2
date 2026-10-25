@@ -21225,3 +21225,11 @@ Work Log:
 
 Stage Summary:
 - The maths-B conversion of record now lives on resources main (66/66 sets under the union converter v0.20.0). T-OEQ-MATHSB-SERVE-1's P0 gate is SATISFIED (pin main@3000e439 at claim time) — the serve card is the next actionable card (hub-plane sync G-S1..S6).
+
+## 2026-10-26 — T-SM-ROLLOUT adr040-g1-msfetch-r0 (trace 1a1753386b042f7d)
+
+Operator order "fetch them" executed the G-1 fetch leg of adr040-bandwave1-r2probe-r0:
+- 62/62 wave-1 Edexcel MS documents (4GE1 24, 4BS1 38) fetched from SyllabAI/syllabai-pastpapers, every sha256 verified against the manifests of record, zero mismatches.
+- First extraction tranche: deterministic text-layer parse of the printed levels tables -> 62 GlmMarkSchemeDraft-shaped JSONs (entries[].bands[] verbatim), 437 band entries / 1,275 band rows, 0 §2.1 coverage findings; top-marks distribution {6:149, 8:138, 9:76, 12:74} matches the corpus band-bearing shapes exactly.
+- Gap ledger (honest): 4GE1 sessions 2017/2018 (legacy 4GE0) + June 2019 + Nov 2021 and 4BS1 Nov 2020 not in the repo of record; CIE 9609/0455 external fetch blocked (JS-gated PDFs, 0/78) — wave proceeds 4GE1/4BS1-first per G-3.
+- Artifacts: .syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/ (fetch manifests + 62 drafts). Band-shape design and G-4 LEVELS birth are now unblocked for the repo-covered corpus papers.
