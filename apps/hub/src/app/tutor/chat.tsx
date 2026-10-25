@@ -237,6 +237,7 @@ export function TutorChat({
   courseSlug = null,
   courseLabel = null,
   courseRef = null,
+  courseBoard = null,
 }: {
   /** V53 (ADR-030): the course this tutor instance is scoped to, resolved
    *  by the server page from the registry. null = the legacy course-less
@@ -244,6 +245,13 @@ export function TutorChat({
   courseSlug?: string | null;
   courseLabel?: string | null;
   courseRef?: string | null;
+  /** Registry awarding board (CourseMeta.board) driving the chrome's
+   *  provenance copy — "Cambridge International" for CIE rows, null =
+   *  board-unset (Edexcel) row. Each render site applies its own of-record
+   *  fallback so every non-CIE path renders byte-identical (the two
+   *  board-copy laws: full-name `?? "Pearson Edexcel"`, short-name
+   *  `?? "Edexcel"`). */
+  courseBoard?: string | null;
 } = {}) {
   const { threads, activeId } = useThreadsSnapshot();
   const identity = useIdentity();
@@ -858,7 +866,7 @@ export function TutorChat({
                 <li>
                   <strong className="text-foreground">Coverage.</strong>{" "}
                   {courseRef != null && !/^4CH/.test(courseRef)
-                    ? "This course's Pearson Edexcel specification."
+                    ? `This course's ${courseBoard ?? "Pearson Edexcel"} specification.`
                     : "Pearson Edexcel International GCSE Chemistry (4CH1)."}{" "}
                   {identity
                     ? "Conversations sync to your SyllabAI account — resume them on any device."
@@ -905,6 +913,7 @@ export function TutorChat({
                 }
                 onPick={(p) => send(p)}
                 courseRef={courseRef}
+                courseBoard={courseBoard}
               />
             ) : (
               <div className="mx-auto w-full max-w-3xl space-y-5 px-3 py-5 sm:px-4">
@@ -1060,12 +1069,17 @@ function Welcome({
   firstName,
   onPick,
   courseRef = null,
+  courseBoard = null,
 }: {
   firstName: string | null;
   onPick: (prompt: string) => void;
   /** T-MIG-135d: the active course scope — null keeps the chemistry legacy
    *  chrome (the no-course entry resolves to the chemistry pilot) */
   courseRef?: string | null;
+  /** Registry awarding board for the welcome provenance line (the
+   *  short-name register: `?? "Edexcel"` keeps every board-unset row
+   *  byte-identical; CIE rows render "Cambridge International"). */
+  courseBoard?: string | null;
 }) {
   return (
     <div className="mx-auto flex min-h-full w-full max-w-3xl flex-col justify-center px-4 py-8">
@@ -1085,7 +1099,7 @@ function Welcome({
           </h1>
           <p className="mx-auto max-w-md text-sm leading-relaxed text-muted-foreground">
             {courseRef != null && !/^4CH/.test(courseRef)
-              ? "Your grounded study companion for this course's Edexcel specification. Every answer cites the spec points and notes it draws on — and tells you honestly when the evidence runs thin."
+              ? `Your grounded study companion for this course's ${courseBoard ?? "Edexcel"} specification. Every answer cites the spec points and notes it draws on — and tells you honestly when the evidence runs thin.`
               : "Your grounded study companion for Pearson Edexcel IGCSE Chemistry. Every answer cites the spec points and notes it draws on — and tells you honestly when the evidence runs thin."}
           </p>
         </div>
