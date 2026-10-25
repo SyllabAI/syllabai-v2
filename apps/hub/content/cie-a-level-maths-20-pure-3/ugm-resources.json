@@ -1,6 +1,6 @@
 {
  "schema": "syllabai-demo.ugm-lane-resources/1.1",
- "generatedUtc": "2026-10-24T20:56:34Z",
+ "generatedUtc": "2026-10-25T09:57:06Z",
  "reviewState": {
   "state": "SUGGESTED",
   "note": "Agent-generated alignment per AGENT.md rule 2 — candidates until the review/promotion gate promotes them; no coverage manufactured (rule 3)."
@@ -81,19 +81,36 @@
    "slug": "thinking-about-numbers",
    "title": "Thinking about Numbers",
    "url": "https://undergroundmathematics.org/thinking-about-numbers"
+  },
+  {
+   "slug": "exp-and-log",
+   "title": "Exponentials & Logarithms",
+   "url": "https://undergroundmathematics.org/exp-and-log"
+  },
+  {
+   "slug": "calculus-trig-log",
+   "title": "Calculus of Trigonometry & Logarithms",
+   "url": "https://undergroundmathematics.org/calculus-trig-log"
+  },
+  {
+   "slug": "thinking-about-algebra",
+   "title": "Thinking about Algebra",
+   "url": "https://undergroundmathematics.org/thinking-about-algebra"
   }
  ],
  "source": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@fafd008d4e0b141223cc5b23b67c714f772e403e",
+  "ref": "main@2f31fcadf94bfb9bfb5c836530e942d5762aaac4",
   "enrichment": [
-   "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json"
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json",
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-logarithmic-and-exponential-functions.json"
   ],
   "enrichmentSchema": "syllabai.ugm-spec-enrichment/1.0",
   "resourcesDir": [
-   "UGM-Resources/pure-3-algebra"
+   "UGM-Resources/pure-3-algebra",
+   "UGM-Resources/pure-3-logarithmic-and-exponential-functions"
   ],
-  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114)",
+  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119)",
   "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
   "operatorAttestation": "2026-10-24 — text + static figures may ship into SyllabAI; permission declared",
   "figureMap": "UGM-Resources/figures-map.json",
@@ -106,13 +123,13 @@
   "note": "Static figures (976 files) are imported and served locally from /ugm-assets/ under the operator attestation of 2026-10-24 (T-UGM-ASSETS-1); GeoGebra embeds and PDFs remain excluded."
  },
  "coverage": {
-  "ugmResourcesConsidered": 35,
-  "aligned": 35,
+  "ugmResourcesConsidered": 69,
+  "aligned": 69,
   "nonOverlap": 0,
   "alignedShare": 1.0,
-  "candidateRows": 47,
+  "candidateRows": 86,
   "crossLaneJoined": {
-   "aligned": 9,
+   "aligned": 14,
    "nonOverlap": 0
   },
   "specPointsCovered": [
@@ -121,7 +138,11 @@
    "3.1.3",
    "3.1.4",
    "3.1.5",
-   "3.1.6"
+   "3.1.6",
+   "3.2.1",
+   "3.2.2",
+   "3.2.3",
+   "3.2.4"
   ],
   "figures": {
    "figureRefs": 0,
@@ -140,10 +161,21 @@
     "candidateRows": 47,
     "crossLaneAligned": 9,
     "crossLaneNonOverlap": 0
+   },
+   {
+    "station": "logarithmic-and-exponential-functions",
+    "stationTitle": "Logarithmic and exponential functions",
+    "ugmResourcesConsidered": 71,
+    "aligned": 39,
+    "nonOverlap": 26,
+    "alignedShare": 0.5493,
+    "candidateRows": 39,
+    "crossLaneAligned": 5,
+    "crossLaneNonOverlap": 0
    }
   ],
   "nonOverlapByReference": {
-   "count": 16,
+   "count": 41,
    "rows": [
     {
      "ugmSlug": "absurder",
@@ -244,30 +276,205 @@
      "reason": "∫1/x over negative domains and ln(−x) gradients — the absolute value is incidental to the integration work; outside 3.1"
     },
     {
-     "ugmSlug": "to-log-or-not-to-log",
+     "ugmSlug": "powerful-derivatives",
+     "station": "chain-rule",
+     "title": "Powerful derivatives",
+     "url": "https://undergroundmathematics.org/chain-rule/powerful-derivatives",
+     "reason": "d/dx x^a via e^{a·ln x} — the general binomial theorem is mentioned as an aside, not carried out; the tested skill is exp/log differentiation"
+    },
+    {
+     "ugmSlug": "how-fast-does-it-grow",
      "station": "exp-and-log",
-     "title": "To log or not to log?",
-     "url": "https://undergroundmathematics.org/exp-and-log/to-log-or-not-to-log",
-     "reason": "equation-solver card sort (indices vs logarithms); the √(2x−3)=5 card is surd work — outside 3.1"
+     "title": "How fast does it grow?",
+     "url": "https://undergroundmathematics.org/exp-and-log/how-fast-does-it-grow",
+     "reason": "2^x vs x^2 and a^x vs x^a compared by values and graphs - no e or ln anywhere in the text (0 mentions); the 3.2.2 graph limb is y=e^x / ln x specific. Honest 3.2.2 prerequisite, not a 3.2 row"
+    },
+    {
+     "ugmSlug": "r5156",
+     "station": "exp-and-log",
+     "title": "If we arrange $2^x, 2x$ and $x^2$ by size, what orders are possible?",
+     "url": "https://undergroundmathematics.org/exp-and-log/r5156",
+     "reason": "ordering 2^x, 2x, x^2 by sketching - exponential-vs-power comparison without e/ln; outside the 3.2.2 e/ln graph limb"
+    },
+    {
+     "ugmSlug": "reach-for-the-stars",
+     "station": "exp-and-log",
+     "title": "Reach for the stars",
+     "url": "https://undergroundmathematics.org/exp-and-log/reach-for-the-stars",
+     "reason": "y=2^x drawn at 1cm:1 against paper sizes - exponential growth intuition; no e or ln in the text"
+    },
+    {
+     "ugmSlug": "r8013",
+     "station": "exp-and-log",
+     "title": "When does this exponential function equal this linear one?",
+     "url": "https://undergroundmathematics.org/exp-and-log/r8013",
+     "reason": "3^x drawn and 3^x=3x+2 solved graphically - the row's named method is logarithms and no logs or e/ln appear; graphical solving of exponentials is not a 3.2 row"
+    },
+    {
+     "ugmSlug": "changing-bases-teacher-support",
+     "station": "exp-and-log",
+     "title": "Changing bases - teacher support",
+     "url": "https://undergroundmathematics.org/exp-and-log/changing-bases-teacher-support",
+     "reason": "teacher-support page for the lane pick family; no extractable sections in the crawl of record (video/interactive-only) - recorded by reference, no body"
+    },
+    {
+     "ugmSlug": "to-log-or-not-to-log-teacher-support",
+     "station": "exp-and-log",
+     "title": "To log or not to log - teacher support",
+     "url": "https://undergroundmathematics.org/exp-and-log/to-log-or-not-to-log-teacher-support",
+     "reason": "teacher-support page; no extractable sections in the crawl of record - recorded by reference, no body"
+    },
+    {
+     "ugmSlug": "rediscovering-log-mercator",
+     "station": "exp-and-log",
+     "title": "Re-discovering the logarithm—Mercator",
+     "url": "https://undergroundmathematics.org/exp-and-log/rediscovering-log-mercator",
+     "reason": "historical note on the seventeenth-century Mercator series for ln; no extractable sections in the crawl of record and the series itself is beyond 3.2"
+    },
+    {
+     "ugmSlug": "differentiating-exponentials",
+     "station": "chain-rule",
+     "title": "Differentiating exponentials",
+     "url": "https://undergroundmathematics.org/chain-rule/differentiating-exponentials",
+     "reason": "derives the general form of d/dx a^x - the tested skill is differentiation (P3 3.4 bearing); no extractable sections in the crawl of record either, so no body could be imported regardless"
     },
     {
      "ugmSlug": "powerful-derivatives",
      "station": "chain-rule",
      "title": "Powerful derivatives",
      "url": "https://undergroundmathematics.org/chain-rule/powerful-derivatives",
-     "reason": "d/dx x^a via e^{a·ln x} — the general binomial theorem is mentioned as an aside, not carried out; the tested skill is exp/log differentiation"
+     "reason": "d/dx x^a via e^{a ln x} - P3 Differentiation bearings (the lane-7 sweepRouting and the lane-9 non_overlap reason of record stand); the tested skill is the general power rule, not a 3.2 row"
+    },
+    {
+     "ugmSlug": "odd-one-out",
+     "station": "chain-rule",
+     "title": "Odd one out",
+     "url": "https://undergroundmathematics.org/chain-rule/odd-one-out",
+     "reason": "function-property card sort with ln x^2, ln 3x, e^{5x}, e^{x+4} rows - the derivatives are chain-rule work (dy/dx of ln x^2 = 2/x etc.); P3 3.4"
+    },
+    {
+     "ugmSlug": "can-you-find-chain-rule-edition",
+     "station": "chain-rule",
+     "title": "Can you find... chain rule edition",
+     "url": "https://undergroundmathematics.org/chain-rule/can-you-find-chain-rule-edition",
+     "reason": "'a function g(x) so that ln g(x) has a local minimum' - chain-rule construction; P3 3.4"
+    },
+    {
+     "ugmSlug": "r7106",
+     "station": "calculus-trig-log",
+     "title": "Can we find this integral involving the floor function?",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/r7106",
+     "reason": "integral of the floor function [2^x] with log_2((2^n-1)!) answer forms - the tested skill is the floor-function integral; the logarithm appears only in the answer notation"
+    },
+    {
+     "ugmSlug": "two-for-one",
+     "station": "calculus-trig-log",
+     "title": "Two for one",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/two-for-one",
+     "reason": "integral of 1/x and the ln|x| modulus - P3 Integration (lane-7/8 recorded routings stand)"
+    },
+    {
+     "ugmSlug": "inverse-integrals",
+     "station": "calculus-trig-log",
+     "title": "Inverse integrals",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/inverse-integrals",
+     "reason": "definite integral involving ln x via inverse-function areas - P3 Integration (lane-8 routing stands)"
+    },
+    {
+     "ugmSlug": "r7431",
+     "station": "chain-rule",
+     "title": "Can we show $x>\\ln(1+x^2)$ for all $x>0$?",
+     "url": "https://undergroundmathematics.org/chain-rule/r7431",
+     "reason": "x > ln(1+x^2) for x>0 - inequality deduction via differentiation; P3 Differentiation (lane-7 routing stands)"
+    },
+    {
+     "ugmSlug": "r7903",
+     "station": "introducing-calculus",
+     "title": "Can the trapezium rule help us find the area under $y = x\\ln x$?",
+     "url": "https://undergroundmathematics.org/introducing-calculus/r7903",
+     "reason": "trapezium rule on y=x ln x - the trapezium rule is not in the spine and the integrand is P3-dressed (lane-7/8 routings stand)"
+    },
+    {
+     "ugmSlug": "r6530",
+     "station": "product-rule",
+     "title": "Can we differentiate $e^{2x}( 2 \\cos (3x) + 3 \\sin (3x))$?",
+     "url": "https://undergroundmathematics.org/product-rule/r6530",
+     "reason": "d/dx e^{2x}(2cos3x+3sin3x) - P3 Differentiation (lane-7 routing stands)"
+    },
+    {
+     "ugmSlug": "r9898",
+     "station": "product-rule",
+     "title": "Can we sketch the curve $y=(x-a)e^x/(x-b)$?",
+     "url": "https://undergroundmathematics.org/product-rule/r9898",
+     "reason": "stationary points of (x-a)e^x/(x-b) - P3 Differentiation (lane-7 routing stands)"
+    },
+    {
+     "ugmSlug": "r9484",
+     "station": "product-rule",
+     "title": "Can we sketch the curve $y=e^{-x}/(1+x^2)$?",
+     "url": "https://undergroundmathematics.org/product-rule/r9484",
+     "reason": "curve sketching y=e^{-x}/(1+x^2) - P3 Differentiation bearings (lane-6/7 routings stand)"
+    },
+    {
+     "ugmSlug": "r8134",
+     "station": "product-rule",
+     "title": "How could we integrate $e^{-x}\\sin^n x$?",
+     "url": "https://undergroundmathematics.org/product-rule/r8134",
+     "reason": "reduction formula for e^{-x} sin^n x - P3 Differentiation/Integration (lanes 7/8 routings stand)"
+    },
+    {
+     "ugmSlug": "r6620",
+     "station": "product-rule",
+     "title": "If the gradient is $x(1-x^2)e^{-x^2}$ can we find the stationary points?",
+     "url": "https://undergroundmathematics.org/product-rule/r6620",
+     "reason": "gradient x(1-x^2)e^{-x^2}, stationary points and parts - P3 Differentiation/Integration (lanes 7/8 routings stand)"
+    },
+    {
+     "ugmSlug": "r8671",
+     "station": "product-rule",
+     "title": "Which is the greater of $e^{\\pi}$ and $\\pi^e$?",
+     "url": "https://undergroundmathematics.org/product-rule/r8671",
+     "reason": "e^pi vs pi^e via logarithmic differentiation - P3 Differentiation (lane-7 routing stands); the scaffolded sibling an-irrational-inequality carries the 3.2.2 limb this lane"
+    },
+    {
+     "ugmSlug": "r8779",
+     "station": "thinking-about-algebra",
+     "title": "Can we simplify  these expressions involving indices?",
+     "url": "https://undergroundmathematics.org/thinking-about-algebra/r8779",
+     "reason": "simplify expressions involving indices - index-law manipulation (assumed knowledge feeding 1.1/3.1); no logarithm content (lane-5 routing '1.1/Algebra' stands)"
+    },
+    {
+     "ugmSlug": "index-issues",
+     "station": "thinking-about-algebra",
+     "title": "Index issues",
+     "url": "https://undergroundmathematics.org/thinking-about-algebra/index-issues",
+     "reason": "fractional and negative indices - meaning and definedness; index laws, not logarithms"
+    },
+    {
+     "ugmSlug": "weight-pulling",
+     "station": "hyperbolic-functions",
+     "title": "Weight pulling",
+     "url": "https://undergroundmathematics.org/hyperbolic-functions/weight-pulling",
+     "reason": "tractrix applet (draft resource) - catenary/hyperbolic content beyond CIE 9709 P3"
+    },
+    {
+     "ugmSlug": "r7385",
+     "station": "circles",
+     "title": "How much of this log is below the surface?",
+     "url": "https://undergroundmathematics.org/circles/r7385",
+     "reason": "sweep false positive: 'how much of this log is below the surface?' is a floating timber log (buoyancy), not the logarithm"
     }
    ]
   },
   "crossCourse": {
-   "aligned": 9,
+   "aligned": 14,
    "nonOverlapRef": 0,
    "flips": 5,
-   "oneToMany": 4,
+   "oneToMany": 9,
    "courses": {
-    "cie-a-level-maths-20-pure-1": 9
+    "cie-a-level-maths-20-pure-1": 14
    },
-   "note": "5 flips (r8427 lane-2 non-overlap; r5245/r6295/r6340/r7477 lane-6 non-overlaps with P3 bearings of record) + 4 one-to-many (r5362, r9523 lane-2; r9082 lane-7; r9701 lane-8); all ride bodies of record — no new text",
+   "note": "cross-course fact joins served by reference — the text of record stays first-of-record under the serving course's bundle",
    "rows": [
     {
      "ugmSlug": "r5362",
@@ -389,6 +596,76 @@
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "flip",
      "confidence": "high"
+    },
+    {
+     "ugmSlug": "r9824",
+     "codes": [
+      "3.2.2"
+     ],
+     "title": "Can we sketch the inverse of this composite function?",
+     "url": "https://undergroundmathematics.org/combining-functions/r9824",
+     "station": "combining-functions",
+     "textOfRecordUnder": "UGM-Resources/pure-1-functions",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "priorAlignmentOfRecord": "lane-functions 1.2.2/1.2.3/1.2.4"
+    },
+    {
+     "ugmSlug": "r7607",
+     "codes": [
+      "3.2.1"
+     ],
+     "title": "Can we find the ranges of $f$ and $g$, and the function $f \\circ g$?",
+     "url": "https://undergroundmathematics.org/combining-functions/r7607",
+     "station": "combining-functions",
+     "textOfRecordUnder": "UGM-Resources/pure-1-functions",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "medium",
+     "priorAlignmentOfRecord": "lane-functions 1.2.1/1.2.2/1.2.3"
+    },
+    {
+     "ugmSlug": "r6137",
+     "codes": [
+      "3.2.1"
+     ],
+     "title": "How are the $p$th, $q$th and $r$th terms of an AP related?",
+     "url": "https://undergroundmathematics.org/sequences/r6137",
+     "station": "sequences",
+     "textOfRecordUnder": "UGM-Resources/pure-1-series",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "medium",
+     "priorAlignmentOfRecord": "lane-series 1.6 (GP limb)"
+    },
+    {
+     "ugmSlug": "r8260",
+     "codes": [
+      "3.2.3"
+     ],
+     "title": "Can we solve the equation $\\log_2 x + \\log_3 x = 1 + \\log_4 x$?",
+     "url": "https://undergroundmathematics.org/exp-and-log/r8260",
+     "station": "exp-and-log",
+     "textOfRecordUnder": "UGM-Resources/pure-1-series",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "priorAlignmentOfRecord": "lane-series 1.6.3 (GP limb)"
+    },
+    {
+     "ugmSlug": "r7184",
+     "codes": [
+      "3.2.1"
+     ],
+     "title": "Which of these log and trig expressions is the largest?",
+     "url": "https://undergroundmathematics.org/exp-and-log/r7184",
+     "station": "exp-and-log",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "medium",
+     "priorAlignmentOfRecord": "lane-trigonometry 1.5 (stray of record)"
     }
    ]
   }
@@ -478,6 +755,72 @@
     "from-parabolas-to-catenaries",
     "r6601",
     "r7436"
+   ]
+  },
+  {
+   "code": "3.2.1",
+   "officialText": "understand the relationship between logarithms and indices, and use the laws of logarithms (excluding change of base)",
+   "primaryPick": "proving-laws-of-logs",
+   "resourceCount": 16,
+   "ugmIds": [
+    "calculators1950",
+    "changing-bases",
+    "factorial-fragments",
+    "log-lattice",
+    "log-lineup",
+    "proving-laws-of-logs",
+    "r5080",
+    "r6806",
+    "r7231",
+    "r7298",
+    "r7471",
+    "r9381",
+    "r9680",
+    "r9976",
+    "see-the-power",
+    "summing-to-one"
+   ]
+  },
+  {
+   "code": "3.2.2",
+   "officialText": "understand the definition and properties of e Including knowledge of the graph of and ln x , including their relationship as inverse functions and their graphs",
+   "primaryPick": "an-irrational-inequality",
+   "resourceCount": 2,
+   "ugmIds": [
+    "an-irrational-inequality",
+    "to-the-limit"
+   ]
+  },
+  {
+   "code": "3.2.3",
+   "officialText": "use logarithms to solve equations and e.g. inequalities in which the unknown appears in indices",
+   "primaryPick": "to-log-or-not-to-log",
+   "resourceCount": 14,
+   "ugmIds": [
+    "powerful-fractions",
+    "r5103",
+    "r5462",
+    "r5940",
+    "r6045",
+    "r6414",
+    "r7015",
+    "r7077",
+    "r7384",
+    "r7606",
+    "r7845",
+    "r9366",
+    "r9747",
+    "to-log-or-not-to-log"
+   ]
+  },
+  {
+   "code": "3.2.4",
+   "officialText": "use logarithms to transform a given relationship e.g. to linear form, and hence determine unknown constants by considering the gradient and/or intercept.",
+   "primaryPick": "how-far-did-the-earth-move",
+   "resourceCount": 2,
+   "ugmIds": [
+    "how-far-did-the-earth-move",
+    "plotting-planets"
    ]
   }
  ],
@@ -1416,6 +1759,890 @@
     }
    ],
    "bodyMd": "\n# What's left?\n\n> Excerpt: What's left? provides students with an opportunity to practise algebraic division while being asked to think about what form the remainder and quotient functions will take.\n\n## Problem\n\n\\[\\text{The answer to \"$27$ divided by $4$\" could be written as \"$6$, remainder $3$\"}\\]\n\nwhere \\(4\\) is the divisor, \\(6\\) is the [quotient](https://undergroundmathematics.org/glossary/quotient), and \\(3\\) is the remainder.\n\nWhat other ways can you find to express \\(\\text{\"$27$ divided by $4$\"}\\)?\n\nWhy will the remainder always be less than the divisor? Is a similar idea true in polynomial division? For example when a cubic polynomial is divided by a quadratic, what form will the remainder take?\n\nBelow is a series of expressions in the form \\(\\dfrac{p(x)}{d(x)}\\), where \\(p(x)\\) and \\(d(x)\\) are polynomials.\n\nWhat [degree](https://undergroundmathematics.org/glossary/degree-of-a-polynomial) are the quotient and remainder polynomials when \\(p(x)\\) is divided by \\(d(x)\\)?\n\nA. \\(\\dfrac{3x+1}{x}\\)\n\nB. \\(\\dfrac{5x-2}{2x-1}\\)\n\nC. \\(\\dfrac{3x^2-5x+2}{x+1}\\)\n\nD. \\(\\dfrac{x^3-5x^2+3x+1}{x+1}\\)\n\nE. \\(\\dfrac{5x^2+8x+9}{x^2+x+2}\\)\n\nF. \\(\\dfrac{x^3-x^2-7x+1}{x^2+2x-1}\\)\n\nG. \\(\\dfrac{x^4-3x^3 + x + 1}{x-1}\\)\n\nH. \\(\\dfrac{6x^4 + 5x^3 + x^2 +10 x -3}{2x^2 + 3x - 1}\\)\n\nCan we always know what degree polynomial the quotient and the remainder will be by looking at the question?\n\nWithout any calculations, what can we say about the degree of the quotient and remainder polynomials of the following division?\n\nI. \\(\\dfrac{x^9 - 5x^7 + 3x^2 - 11x + 2}{2x^5 + 4x^4 - x + 7}\\)\n\n## Suggestion\n\nSome of the questions have divisors which are quadratic. Below are suggestions as to how methods used for algebraic division by a linear divisor can be extended to working with a quadratic.\n\nE. \\(\\dfrac{5x^2+8x+9}{x^2+x+2}\\)\n\nWe could rewrite \\(p(x)\\) so multiples of the divisor, \\(d(x)\\), appear.\n\n\\[\\dfrac{5x^2+8x+9}{x^2+x+2} = \\dfrac{5x^2+5x+10+3x-1}{x^2+x+2}\\]\n\nWhy is this helpful? What might the next step be?\n\nF. \\(\\dfrac{x^3-x^2-7x+1}{x^2+2x-1}\\)\n\nWe could use the grid method by extending the number of rows in the grid. For more support with using the grid method you may wish to look at [Divide it up](https://undergroundmathematics.org/polynomials/divide-it-up).\n\n|  | \\(x\\) | \\(\\ldots\\) |\n|---|---|---|\n| \\(x^2\\) | \\(x^3\\) |  |\n| \\(+2x\\) |  |  |\n| \\(-1\\) |  |  |\n\nWhich cells would you fill in next?\n\nWe could also use long division:\n\n\\[\\begin{array}{rll} \\phantom{x^2-x^2-7}x+\\ldots & \\cmlongdivbr x^2+2x-1 \\cmlongdiv{x^3-x^2-7x+1} \\cmlongdivbr \\underline{x^3+\\ldots\\phantom{{}+1x+8}} && [x \\times (x^2+2x-1)] \\cmlongdivbr \\end{array}\\]\n\n## Solution\n\nThere are many different ways we could write \\(\\text{\"$27$ divided by $4$\"}\\). For example, \\(6\\dfrac{3}{4}\\), \\(\\dfrac{24+3}{4}\\) and \\(6 + \\dfrac{3}{4}\\).\n\nWhy will the remainder will always be less than the divisor? Is a similar idea true in polynomial division? For example when a cubic polynomial is divided by a quadratic, what form will the remainder take?\n\nBelow is a series of expressions in the form \\(\\dfrac{p(x)}{d(x)}\\), where \\(p(x)\\) and \\(d(x)\\) are polynomials.\n\nWhat degree are the quotient and remainder polynomials when \\(p(x)\\) is divided by \\(d(x)\\)?\n\nA. \\(\\dfrac{3x+1}{x}\\)\n\nAs the divisor is an individual term, we can split up the fraction.\n\n\\[\\begin{align*} \\dfrac{3x+1}{x} &= \\dfrac{3x}{x}+\\dfrac{1}{x}\\\\ &= 3 + \\dfrac{1}{x} \\end{align*}\\]\n\nThis is a linear expression divided by a linear expression, giving a quotient of \\(3\\) and a remainder of \\(1\\), so both are polynomials of degree \\(0\\).\n\nB. \\(\\dfrac{5x-2}{2x-1}\\)\n\nOne method we could use to divide this expression would be rewriting \\(p(x)\\), in terms of multiples of the divisor, \\(d(x)\\).\n\nThe numerator would become \\(\\frac{5}{2}(2x-1) + \\frac{1}{2}\\), giving us\n\n\\[\\begin{align*} \\dfrac{5x-2}{2x-1} &= \\dfrac{\\frac{5}{2}(2x-1) + \\frac{1}{2}}{2x-1}\\\\ &= \\dfrac{5}{2} + \\dfrac{\\frac{1}{2}}{2x-1} \\end{align*}\\]\n\nThe quotient is\n\n\\(\\frac{5}{2}\\)\n\nand the remainder is\n\n\\(\\frac{1}{2}\\)\n\nwhich are both polynomials of degree\n\n\\(0\\)\n\n.\n\nQuotients and remainders don’t have to be integers, or have integer coefficients.\n\nC. \\(\\dfrac{3x^2-5x+2}{x+1}\\)\n\nWe are still dividing by a linear expression, but it is no longer a single term. We will use the grid method to do the division. For a more in-depth look at this method, see [Divide it up](https://undergroundmathematics.org/polynomials/divide-it-up).\n\nPutting the first term, \\(3x^2\\), in the table allows us to complete the first column.\n\n|  | \\(3x\\) | \\(\\ldots\\) |\n|---|---|---|\n| \\(x\\) | \\(3x^2\\) |  |\n| \\(+1\\) | \\(3x\\) |  |\n\nWe need the \\(x\\) terms to add to \\(-5x\\), so we put \\(-8x\\) in the second column.\n\n|  | \\(3x\\) | \\(-8\\) |\n|---|---|---|\n| \\(x\\) | \\(3x^2\\) | \\(-8x\\) |\n| \\(+1\\) | \\(3x\\) | \\(-8\\) |\n\nThe completed grid tells us that \\[\\dfrac{3x^2 - 5x - 8}{x+1} = 3x-8.\\]\n\nHow does this relate to the original problem \\(\\dfrac{3x^2-5x+2}{x+1}\\)?\n\nWe can write it as\n\n\\[\\begin{align*} \\dfrac{3x^2-5x+2}{x+1} &= \\dfrac{3x^2 - 5x -8 + 10}{x+1}\\\\ &= 3x-8 +\\dfrac{10}{x+1}. \\end{align*}\\]\n\nThe quotient is \\(3x - 8\\) and the remainder is \\(10\\).\n\nAfter three questions we might already have some ideas as to the structure that is appearing. It may help to think about the following questions:\n\n- How do the questions differ? Does this explain the differences in the answers?\n\n- Can we make any conjectures about the outcome of the next question?\n\nD. \\(\\dfrac{x^3-5x^2+3x+1}{x+1}\\)\n\nWe can rewrite the numerator,\n\n\\(p(x)\\)\n\n, as multiples of the divisor\n\n\\(d(x)\\)\n\n.\n\n\\[\\begin{align*} \\dfrac{x^3-5x^2+3x+1}{x+1} &= \\dfrac{x^3+x^2 - 6x^2 - 6x + 9x+9 - 8}{x+1}\\\\ &= \\dfrac{x^3 + x^2}{x+1} + \\dfrac{-6x^2-6x}{x+1} + \\dfrac{9x+9}{x+1} + \\dfrac{-8}{x+1} \\\\ &= x^2-6x+9+\\dfrac{-8}{x+1}. \\end{align*}\\]\n\nThe quotient is \\(x^2-6x+9\\) and the remainder is \\(-8\\).\n\nE. \\(\\dfrac{5x^2+8x+9}{x^2+x+2}\\)\n\nHere we have a quadratic divisor for the first time. One of the methods in the suggestion proposed writing the fraction in this form:\n\n\\[\\dfrac{5x^2+8x+9}{x^2+x+2} = \\dfrac{5x^2+5x+10 +3x - 1}{x^2+x+2}.\\]\n\nWritten like this we can split it into two fractions.\n\n\\[\\begin{align*} \\dfrac{5x^2+5x+10 +3x - 1}{x^2+x+2}&= \\dfrac{5x^2+5x+10}{x^2+x+2}+\\dfrac{3x-1}{x^2+x+2} \\\\ &= 5 + \\dfrac{3x-1}{x^2+x+2} \\end{align*}\\]\n\nThis leaves us with a quotient of \\(5\\) and a remainder of \\(3x-1\\).\n\nWhy is the remainder a linear expression as opposed to a constant like the previous questions?\n\nF. \\(\\dfrac{x^3-x^2-7x+1}{x^2+2x-1}\\)\n\nUsing long division gives us,\n\n\\[\\begin{array}{rll} \\phantom{x^2-x^2-7}x-3 & \\text{ rem }-2 \\cmlongdivbr x^2+2x-1 \\cmlongdiv{x^3-\\phantom{2}x^2-7x+1} \\cmlongdivbr \\underline{x^3+2x^2-\\phantom{0}x}\\phantom{{}+8} && [x \\times (x^2+2x-1)] \\cmlongdivbr \\phantom{x^3}{}-3x^2-6x+1 && \\cmlongdivbr \\phantom{x^3}\\underline{{}-3x^2-6x+3} && [-3 \\times (x^2+2x-1)] \\cmlongdivbr \\phantom{x^3-2x^2-7x}{}-2 && \\text{[remainder]} \\cmlongdivbr \\end{array}\\]\n\nwhich means we can write\n\n\\[\\dfrac{x^3-x^2-7x+1}{x^2+2x-1} = x -3 +\\dfrac{-2}{x^2+2x-1}.\\]\n\nWould we always expect the remainder to be a constant when dividing a cubic by a quadratic?\n\nG. \\(\\dfrac{x^4-3x^3 + x + 1}{x-1}\\)\n\n\\[\\begin{array}{rll} \\phantom{x-1}x^3 - 2x^2 - 2x -1 \\cmlongdivbr x-1 \\cmlongdiv{x^4-3x^3+0x^2 + \\phantom{2}x + 1} \\cmlongdivbr \\underline{x^4- \\phantom{3}x^3}\\phantom{{}+1x^2+ 1x+8} && [x^3 \\times (x-1)] \\cmlongdivbr \\phantom{x^4}{}-2x^3+ 0x^2\\phantom{{}+ 1x+8} && \\cmlongdivbr \\phantom{x^3}\\underline{{}-2x^3+2x^2}\\phantom{{}+ 1x+8} && [-2x^2\\times(x-1)] \\cmlongdivbr \\phantom{x^4}{}-2x^2+ \\phantom{2}x\\phantom{{}+8} && \\cmlongdivbr \\phantom{x^3}\\underline{{}-2x^2+2x}\\phantom{{}+8} && [-2x\\times(x-1)] \\cmlongdivbr \\phantom{x^4}{}-x+1 && \\cmlongdivbr \\phantom{x^3}\\underline{{}-x+1} && [-1\\times(x-1)] \\cmlongdivbr \\phantom{x^3-2x^2-7x}{}0 \\cmlongdivbr \\end{array}\\]\n\nWhat is unusual about the remainder of this problem?\n\nH. \\(\\dfrac{6x^4 + 5x^3 + x^2 + 10 x -3}{2x^2 + 3x - 1}\\)\n\nUsing the grid method to divide this expression gives us a completed grid of\n\n|  | \\(3x^2\\) | \\(-2x\\) | \\(5\\) |\n|---|---|---|---|\n| \\(2x^2\\) | \\(6x^4\\) | \\(-4x^3\\) | \\(10x^2\\) |\n| \\(3x\\) | \\(9x^3\\) | \\(-6x^2\\) | \\(15x\\) |\n| \\(-1\\) | \\(-3x^2\\) | \\(2x\\) | \\(-5\\) |\n\nwhich means we can write\n\n\\[\\begin{align*} \\dfrac{6x^4 + 5x^3 + x^2 + 10 x -3}{2x^2 + 3x - 1} &= \\dfrac{6x^4 +5x^3+ x^2 +17x - 5 - 7x + 2}{2x^2 + 3x - 1}\\\\ &= 3x^2 - 2x+5 +\\dfrac{-7x+2}{2x^2 + 3x - 1}. \\end{align*}\\]\n\nThe answers from above are summarised in the table.\n\n| Question | Degrees of \\(p(x)\\) and \\(d(x)\\) | Degree of \\(q(x)\\) | Degree of \\(r(x)\\) |\n|---|---|---|---|\n| A. | \\(1, 1\\) | \\(0\\) | \\(0\\) |\n| B. | \\(1,1\\) | \\(0\\) | \\(0\\) |\n| C. | \\(2,1\\) | \\(1\\) | \\(0\\) |\n| D. | \\(3,1\\) | \\(2\\) | \\(0\\) |\n| E. | \\(2,2\\) | \\(0\\) | \\(1\\) |\n| F. | \\(3,2\\) | \\(1\\) | \\(0\\) |\n| G. | \\(4,1\\) | \\(3\\) | Remainder of \\(0\\) |\n| H. | \\(4,2\\) | \\(2\\) | \\(1\\) |\n|  | \\(m,n\\) |  |  |\n\nThe final row has a polynomial of degree \\(m\\) being divided by a polynomial of degree \\(n\\). Can you complete this row?\n\nAt the beginning we thought about numerical division and asked ‘Why will the remainder will always be less than the divisor?’ Are there any similarities between the remainder and divisor in algebraic division and the remainder and divisor in numerical division?\n\nFor G. we have written that the remainder is zero, rather than the degree of the polynomial. The zero polynomial has no nonzero terms so it can be said that the degree is undefined. However it is sometimes useful to define it to be \\(-\\infty\\).\n\nThe remainder must have a degree less than the degree of the divisor, otherwise it could be divided further. In this case, the remainder must have a degree of less than 5.\n\nIs it possible to be any more precise about the degree of the remainder?\n\nThe quotient must have degree 4. We have been writing the answers to the above questions in the form \\[\\dfrac{p(x)}{d(x)} = q(x) + \\dfrac{r(x)}{d(x)}\\] where \\(q(x)\\) is the quotient and \\(r(x)\\) is the remainder. This could also be written as \\[p(x) = q(x)d(x) + r(x).\\]\n\nSince the divisor has degree 5, then the quotient must have degree 4 in order to produce a polynomial of degree 9.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "an-irrational-inequality",
+   "slug": "an-irrational-inequality",
+   "station": "exp-and-log",
+   "title": "An irrational inequality",
+   "url": "https://undergroundmathematics.org/exp-and-log/an-irrational-inequality",
+   "resourceType": "go-and-think-about-it...",
+   "resourceTypeLabel": "Go and think about it...",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.2",
+     "confidence": "medium",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# An irrational inequality\n\n> Excerpt: Students are asked to think about how we can prove that $e^\\pi> \\pi^e$. How do we even define those quantities given that $e$ and $\\pi$ are irrational?\n\n## Problem\n\nIt is astonishing that \\(e^\\pi\\) and \\(\\pi^e\\) are defined. It is even more amazing that we can prove \\[e^\\pi> \\pi^e.\\]\n\nHow would we go about convincing someone that this amazing inequality is true?\n\n## Suggestion\n\nThere are several ways to get a feel for this inequality, here are some suggestions:\n\n1. what do the functions \\(e^x\\) and \\(x^e\\) look like?\n\n---\n\n1. how could we approximate \\(e\\) and \\(\\pi\\)?\n\n---\n\n1. do we know any functions that change a question about indices into a question about something else?\n\nHow do we define \\(e^\\pi\\) and \\(\\pi^e\\) given that both numbers are transcendental?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "calculators1950",
+   "slug": "calculators1950",
+   "station": "exp-and-log",
+   "title": "1950s calculators",
+   "url": "https://undergroundmathematics.org/exp-and-log/calculators1950",
+   "resourceType": "building-blocks",
+   "resourceTypeLabel": "Building blocks",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# 1950s calculators\n\n> Excerpt: This resource is designed to develop a sense of what logarithms are, how they can be used and the sort of values they take. A set of short video clips demonstrate the use of 'log tables' to perform a selection of multiplications and other calculations.\n\n## Log tables\n\nHere is a question from a 1952 O-level exam paper:\n\nCalculate, correct to three significant figures, \\[\\frac{1{\\cdot}152\\times(3{\\cdot}902)^3}{(5{\\cdot}463)^2} .\\]\n\nThis is relatively straightforward to do using a calculator.\n\nBut electronic calculators only became commonly available from the late 1970s, so how did students of the 1950s answer a question like this?\n\nThey used **logarithm tables** (usually called “log tables”) where we would now use calculators, and in this resource we will explore how logarithms can help us to do calculations.\n\nWe’ll start with something simpler, and look at the exam question in a later section.\n\nUse logarithm tables to evaluate, correct to three significant figures, \\[336\\times6290 .\\]\n\nWe will do this in a series of steps.\n\nStep 1\n\nCan you write the numbers in this calculation (\\(336\\) and \\(6290\\)) in standard form?\n\nAnswer\n\n\\[336=3{\\cdot}36\\times10^2\\quad\\text{and}\\quad6290=6{\\cdot}29\\times10^3\\]\n\nStep 2 (video)\n\nIn this video, you can see someone working out \\(\\log 336\\) using [log tables](https://undergroundmathematics.org/exp-and-log/calculators1950/assets/logtables.pdf).\n\nCan you describe what they are doing and explain how it relates to standard form?\n\nExplanation\n\nThe logarithm is found in two parts.\n\n1. The table gives the digits of \\(\\log{3{\\cdot}36}\\) (namely \\(5263\\)) and these go after the decimal point.\n\n---\n\n1. To get from \\(3{\\cdot}36\\) to \\(336\\) we have to multiply by \\(10^2\\), so the whole number part of the logarithm is \\(2\\).\n\nYou can think of it as\n\n\\[\\begin{align*} 336&=3{\\cdot}36\\times10^2\\\\ \\log336&=\\log{(3{\\cdot}36\\times10^2)}\\\\ &=\\log{3{\\cdot}36}+2\\\\ &=2+0{\\cdot}5263 \\end{align*}\\]\n\nStep 3 (video)\n\nCan you work out \\(\\log 6290\\) using the [log tables](https://undergroundmathematics.org/exp-and-log/calculators1950/assets/logtables.pdf)?\n\nCheck your answer in the following video:\n\nStep 4 (video)\n\nThis clip shows how we can combine the two logs to work out the log of the answer.\n\n(If you have already learnt about the laws of logarithms, you might like to try to do this step yourself before watching the video clip.)\n\nExplanation\n\nOne of the laws of logarithms states that \\[\\log ab = \\log a + \\log b\\] so by adding the two logarithms we have found the logarithm of the answer.\n\nFor more on the laws of logarithms, you might like to look at the resource [Proving the laws of logarithms](https://undergroundmathematics.org/exp-and-log/proving-laws-of-logs).\n\nStep 5 (video)\n\nFinally, we convert from the logarithm to the final answer.\n\nCan you explain the steps that they are doing? (The antilogarithm tables are on the second page of the\n\nlog tables\n\n.)\n\nend of html only section\n\nSome examples for you to try\n\nWork these out to three significant figures using the log tables and check your answers using a calculator.\n\n1. \\(4620\\times318\\)\n\n---\n\n1. \\(76{\\cdot}4\\times4{\\cdot}12\\)\n\n---\n\n1. \\(197\\div5{\\cdot}63\\)\n\nHow have these logarithm tables made the calculations easier than they would be using other pencil-and-paper methods?\n\n## Add the difference\n\nIn the previous section we used [log tables](https://undergroundmathematics.org/exp-and-log/calculators1950/assets/logtables.pdf) to find the logarithms of numbers given to three significant figures. You may have noticed that the tables have extra columns at the right. These are called “difference columns” and allow us to look up the logarithms of numbers given to **four** significant figures.\n\nThe following video shows someone calculating \\(28{\\cdot}27{\\times}185{\\cdot}7\\).\n\nPractise using the [log tables](https://undergroundmathematics.org/exp-and-log/calculators1950/assets/logtables.pdf) to calculate \\[173{\\cdot}5{\\times}6{\\cdot}384\\] and check your answer using an electronic calculator.\n\nCan you apply the other laws of logarithms to calculate the following using [log tables](https://undergroundmathematics.org/exp-and-log/calculators1950/assets/logtables.pdf)?\n\n1. \\(\\dfrac{4866}{343{\\cdot}9}\\)\n\n---\n\n1. \\(1{\\cdot}046^8\\)\n\n---\n\n1. \\(\\sqrt[3]{399500}\\)\n\nYou can check your working and your solutions here.\n\nSolution 1\n\n\\(\\dfrac{4866}{343{\\cdot}9}\\)\n\nSolution 2\n\n\\(1{\\cdot}046^8\\)\n\nSolution 3\n\n\\(\\sqrt[3]{399500}\\)\n\nWhy would it be inappropriate to give the final answers to 4 significant figures?\n\n## 1952 exam question\n\nNow here is the full version of the 1952 exam question we started with earlier.\n\n1. Use logarithms to calculate, correct to three significant figures, \\[\\frac{1{\\cdot}152\\times(3{\\cdot}902)^3}{(5{\\cdot}463)^2} .\\]\n\n---\n\n1. The area of a square field is \\(5{\\cdot}355\\) hectares. Find, correct to the nearest metre, the length of a diagonal of the field. [1 hectare = 100 ares; 1 are = 1 square dekametre.] [*Editorial note: 1 dekametre = 10 metres.*]\n\n*UCLES O level Elementary Mathematics Alternative A: Arithmetic, Question 7, 14 July 1952 (slightly amended)*\n\nSolution ( i )\n\nSolution ( ii )\n\n**One final twist**\n\nIn this resource we have dealt only with the logarithms of numbers greater than \\(1\\). Can you see the difficulty with using log tables to do calculations with numbers such as \\(0{\\cdot}0283\\) ?\n\nBar notation\n\nFirst, we write the number in standard form: \\[0{\\cdot}0283=2{\\cdot}83\\times10^{-2}\\] so \\[\\log 0{\\cdot}0283=-2+\\log 2{\\cdot}83=-2+0{\\cdot}4518 .\\]\n\nIf we were to work this out as \\(-2+0{\\cdot}4518=-1{\\cdot}5482\\), we would lose the clarity that the power of \\(10\\) is \\(-2\\). So instead we write the number as \\(\\bar2{\\cdot}4518\\) (called *bar notation*). Arithmetic with such quantities is carried out separately on the whole number part (called the [characteristic](https://undergroundmathematics.org/glossary/characteristic)) and the decimal part (called the [mantissa](https://undergroundmathematics.org/glossary/mantissa)) as illustrated here. Use of bar notation usually makes calculations easier.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "changing-bases",
+   "slug": "changing-bases",
+   "station": "exp-and-log",
+   "title": "Changing bases",
+   "url": "https://undergroundmathematics.org/exp-and-log/changing-bases",
+   "resourceType": "package-of-problems",
+   "resourceTypeLabel": "Package of problems",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Changing bases\n\n> Excerpt: In this resource students explore how logarithms of different bases are related. A set of graphical problems are presented, based on a graph of $\\log_5 x$, and a set of algebraic problems.\n\n## Warm-up\n\nFor any positive number \\(x\\), can you *explain* why this result is true?\n\n\\[2\\log_4 x=\\log_2 x\\]\n\nCan you describe what \\(\\log_4 x\\) and \\(\\log_2 x\\) are in words?\n\nSuggestion\n\n\\(\\log_4 x\\) is the power that we’d need to raise \\(4\\) to if we wanted to get \\(x\\), and \\(\\log_2 x\\) is the power that we’d need to raise \\(2\\) to if we wanted to get \\(x\\).\n\nWhich of the following is correct?\n\n\\[2\\log_6 x=\\log_3 x \\quad 3\\log_9 x=\\log_3 x \\quad 2\\log_9 x=\\log_3 x\\]\n\nTest your answer\n\nThinking about how logarithms are defined, the equation \\(2\\log_4 x=\\log_2 x\\) seems to hold because \\(4\\) is \\(2^2\\), rather than because \\(4\\) is \\(2\\) ‘doubled’. Therefore of the three alternatives, \\(2\\log_9 x=\\log_3 x\\) is likely to be the equivalent result, but for base \\(3\\) and \\(9\\). To check this, let \\(\\log_{9} x = k.\\) Then \\(x=9^{k}\\), so \\[\\log_{3}x= \\log_{3}9^{k}=\\log_{3}3^{2k}=2k= 2\\log_9 x.\\]\n\nWhat is a general statement of this result?\n\nSuggestion\n\nThere are various relationships here that we can start to generalise.\n\n- How is \\(\\log_{a}x\\) related to \\(\\log_{a^{2}}x\\) ?\n\n- How is \\(\\log_{a}x\\) related to \\(\\log_{a^{n}}x\\)?\n\n- How is \\(\\log_{a}x\\) related to \\(\\log_{b}x\\)? How can we express the relationship between \\(a\\) and \\(b\\)?\n\nTest your answer\n\nFrom the examples above, we can see that \\[\\log_{a}x= 2\\log_{a^{2}}x,\\] which we could generalise to \\[\\log_{a}x= n\\log_{a^{n}}x.\\] Thinking about \\(n\\)’s role in this equation brings us to\n\n\\[\\log_a x=(\\log_a b)(\\log_b x)\\] or equivalently \\[\\log_{b}x=\\frac{\\log_{a}x}{\\log_{a}b}.\\]\n\nWhat conditions must \\(x,a,b\\) satisfy here? Could the second of these ever risk division by \\(0\\)?\n\n## Some graphical problems\n\nHere is a graph of \\(y=\\log_{5} x\\)\n\nUse this graph of \\(y=\\log_{5} x\\) to help you to draw graphs of\n\n1. \\(\\log_{25}x\\)\n\n---\n\n1. \\(\\log_{\\sqrt{5}}x\\)\n\n---\n\n1. \\(\\log_{\\frac{1}{5}}x\\)\n\n---\n\n1. \\(\\log_{10} x\\)\n\n---\n\n1. \\(\\log_{x} 5\\)\n\nTry to make your graphs as accurate as you can, but use the graph of \\(y=\\log_{5}x\\) to help you, rather than a calculator.\n\nYou could try to sketch the graphs first, thinking about which points the graphs go through and which graphs will give larger or smaller values for the same value of \\(x\\). You may find it helpful to look back at the warm-up.\n\nYou can draw your graphs on the [printable larger version](https://undergroundmathematics.org/exp-and-log/changing-bases/components/graph.pdf) of the \\(y=\\log_{5}x\\) graph.\n\n## Graph solutions\n\nHere are graphs 1 and 2 drawn using values from the \\(y=\\log_{5}x\\). The relationships between each graph and the graph of \\(y=\\log_{5}x\\) are described below.\n\n1. \\(\\log_{25} x = (\\log_{25} 5)(\\log_{5} x) = \\frac{1}{2}\\log_{5} x\\), so the graph of \\(y = \\log_{25} x\\) is a stretch of the graph \\(y=\\log_{5}x\\) parallel to the \\(y\\)-axis and scale factor \\(\\frac{1}{2}\\).\n\n---\n\n1. \\(\\log_{\\sqrt{5}}x= (\\log_{\\sqrt{5}} 5)(\\log_{5} x)=2\\log_{5} x\\), so the graph of \\(y=\\log_{\\sqrt{5}}x\\) is a stretch of the graph \\(y=\\log_{5}x\\) parallel to the \\(y\\)-axis and scale factor \\(2\\).\n\nThinking about the definition of logarithms, as we did in the warm-up, these results make sense. For example, we’d expect the power that we’d raise \\(5\\) to in order to get a given value of \\(x\\) to be twice as much as the power we’d need to raise \\(25\\) to.\n\n1. As \\(\\dfrac{1}{5} = 5^{-1}\\), the power that we’d raise \\(\\dfrac{1}{5}\\) to in order to get a given value of \\(x\\) is \\(-1\\) times the power we’d need to raise \\(5\\) to. Alternatively, using the idea from the warm-up, \\[\\log_{\\frac{1}{5}}x=(\\log_{\\frac{1}{5}} 5)(\\log_{5}x)=-\\log_{5}x\\] and so the graph of \\(y = \\log_{\\frac{1}{5}}x\\) is a reflection in the \\(x\\)-axis of the graph of \\(y=\\log_{5}x\\).\n\n1. More work is needed for the graph of \\(y=\\log_{10} x\\). We know that \\(\\log_{10}x= \\dfrac{\\log_{5} x}{\\log_{5} 10}\\), so we need to divide by \\(\\log_{5}10\\) to get the graph of \\(y=\\log_{10}x\\). The given graph doesn’t go up as far as \\(x=10\\), but \\(\\log_{5}10 = \\log_{5}5+ \\log_{5}2 = 1+ \\log_{5}2\\). From the graph, \\(\\log_{5} 2 \\approx 0.42\\). Now, \\(1 \\div 1.42 = \\frac{100}{142}=\\frac{50}{71}\\approx\\frac{49}{70} = 0.7\\) so the graph of \\(y=\\log_{10}x\\) is a stretch of \\(y=\\log_{5}x\\) parallel to the \\(y\\)-axis, scale factor \\(0.7\\).\n\n1. For \\(x>0\\) with \\(x\\neq 1\\), (\\(\\log_{5}x)(\\log_{x}5)= \\log_{5}5=1\\), so \\(\\log_{x}5\\) is the reciprocal of \\(y=\\log_{5}x\\). We can use this to plot particular points to get an idea of the shape of the graph \\(y=\\log_{x}5\\).\n\nAlternatively, we can use the behaviour of the function \\(\\log_{5} x\\) to sketch the behaviour. For \\(x>1\\), as \\(x\\) increases, \\(\\log_{5}x\\) increases and is positive, so \\(\\log_{x}5\\) decreases and is positive. For \\(x\\) close to \\(1\\), \\(\\log_{5} x\\) is close to \\(0\\), and the graph of \\(y=\\log_{x}5\\) has an asymptote at \\(x=1\\). For \\(0< x <1\\), \\(\\log_{5}x\\) is negative. It increases to \\(0\\) as \\(x\\) increases to \\(1\\), and tends to \\(-\\infty\\) as \\(x\\) decreases to \\(0\\). The graph of \\(y=\\log_{x}5\\) gets steeper and closer to the \\(y\\)-axis as \\(x\\) decreases to \\(0\\), but it doesn’t actually meet the \\(y\\)-axis because \\(\\log_{x}5\\) isn’t defined for \\(x=0\\).\n\n## Some algebraic problems\n\n1. Evaluate the following. Can you do this without calculating each factor separately?  \\((\\log_3 9)(\\log_9 81)\\) \\((\\log_3 81)(\\log_{81} 9)\\)\n\n---\n\n1. Write the following as a single logarithm. What conditions must \\(x\\) and \\(y\\) satisfy?  \\((\\log_{10} 5)(\\log_{5} x)\\) \\((\\log_{10} x)(\\log_{x} y)(\\log_{y} 3)\\)\n\n---\n\n1. Simplify the following. What conditions must \\(x\\) and \\(y\\) satisfy?  \\((\\log_{x} y)(\\log_{y} 10)(\\log_{8} x)\\) \\((\\log_{x} y)(\\log_{8} x)(\\log_{y} 8)\\)\n\n---\n\n1. The value of \\(\\log_2 3\\) is approximately \\(1.6\\). Can you use this to approximate \\(\\log_4 27\\)? What about \\(\\log_8 27?\\) Can you generalise this result?\n\n---\n\n1. Evaluate  \\(\\dfrac{\\log_{2} 5}{\\log_{2} 25}\\) \\(\\dfrac{\\log_{10} 5}{\\log_{10} 3}\\)\n\n---\n\n1. Given that \\(\\log_x y=4\\) and \\(\\log_y 2 = 9\\), evaluate  \\((\\log_x 2)(\\log_y x)\\) \\(\\dfrac{\\log_x 2}{\\log_y x}\\)\n\n---\n\n1. What is \\((\\log_a b^3)(\\log_b a^3)\\)?\n\n---\n\n1. What is the relationship between \\(\\log_a b\\) and \\(\\log_b a\\)?\n\n---\n\n1. Solve \\(\\log_{x} 7 = \\log_{7} x\\).\n\n## Algebra solutions\n\n1. Evaluate the following. Can you do this without calculating each factor separately?  \\((\\log_3 9)(\\log_9 81)\\) \\((\\log_3 81)(\\log_{81} 9)\\)\n\nUsing the generalised version of the result in the warm-up,\n\n1. \\((\\log_3 9)(\\log_9 81)=\\log_{3}81=4\\)\n\n---\n\n1. \\((\\log_3 81)(\\log_{81} 9)= \\log_{3}9=2\\).\n\n1. Write the following as a single logarithm. What conditions must \\(x\\) and \\(y\\) satisfy?  \\((\\log_{10} 5)(\\log_{5} x)\\) \\((\\log_{10} x)(\\log_{x} y)(\\log_{y} 3)\\)\n\nUsing the same idea as in question 1, (a) \\((\\log_{10} 5)(\\log_{5} x)=\\log_{10} x\\).\n\nFor part (b), one approach is\n\n\\[(\\log_{10} x)(\\log_{x} y)(\\log_{y} 3) = (\\log_{10} y)(\\log_{y} 3) = \\log_{10}3\\]\n\nSince \\(x\\) and \\(y\\) both occur as bases of logarithms in these expressions, \\(x\\) and \\(y\\) must both be positive, but can’t be \\(1\\).\n\n1. Simplify the following. What conditions must \\(x\\) and \\(y\\) satisfy?  \\((\\log_{x} y)(\\log_{y} 10)(\\log_{8} x)\\) \\((\\log_{x} y)(\\log_{8} x)(\\log_{y} 8)\\)\n\n1. \\((\\log_{x} y)(\\log_{y} 10)(\\log_{8} x)=(\\log_{x} 10)(\\log_{8} x)= (\\log_{8} x)(\\log_{x} 10)= \\log_{8}10\\).\n\n---\n\n1. \\((\\log_{x} y)(\\log_{8} x)(\\log_{y} 8)= (\\log_{8} x)(\\log_{x} y)(\\log_{y} 8)= (\\log_{8} y)(\\log_{y} 8) = \\log_{8}8=1\\).\n\nAgain, since \\(x\\) and \\(y\\) both occur as bases of logarithms in these expressions, \\(x\\) and \\(y\\) must both be positive, but can’t be \\(1\\).\n\n1. The value of \\(\\log_2 3\\) is approximately \\(1.6\\). Can you use this to approximate \\(\\log_4 27\\)? What about \\(\\log_8 27?\\)\n\nIf we start by using the law for manipulating logs of powers, we get \\(\\log_{4} 27 = 3 \\log_{4} 3\\).\n\nFrom the definition of logarithms, we know that \\(\\log_{4}3\\) is smaller than \\(\\log_{2} 3\\), so we can expect the answer to be less than \\(4.8\\). In fact, we can say more than this, because \\(\\log_{4} 3< 1 < \\log_{2} 3\\), so we should expect the answer to be less than \\(3\\).\n\nFrom the warm-up we know that \\(\\log_{4} 3 = \\frac{1}{2}\\log_{2} 3\\). Therefore \\(\\log_{4} 27 = 3 (\\log_{4} 2)(\\log_{2}3) \\approx 3 \\times \\frac{1}{2}\\times 1.6 = 2.4\\).\n\nWe know that \\(\\log_{8} 27\\) will be smaller than \\(\\log_4 27\\). By manipulating powers and changing the base, we get \\(\\log_{8} 27 = 3(\\log_{8}2)(\\log_{2}3)= \\log_{2}3 \\approx 1.6\\).\n\nNote that from the second part we have \\(\\log_{2^{3}}3^{3}= \\log_{2} 3\\). In general, \\(\\log_{a^{k}}b^{k}= \\log_{a} b\\) for any positive \\(a\\), \\(b\\) with \\(a\\neq 1\\) and any power \\(k\\). How could you prove this?\n\n1. Evaluate  \\(\\dfrac{\\log_{2} 5}{\\log_{2} 25}\\) \\(\\dfrac{\\log_{10} 5}{\\log_{10} 3}\\)\n\n1. \\(\\dfrac{\\log_{2} 5}{\\log_{2} 25}= \\dfrac{\\log_{2} 5}{(\\log_{2}5)(\\log_{5}25)}= \\dfrac{1}{2}\\)\n\n---\n\n1. \\(\\dfrac{\\log_{10} 5}{\\log_{10} 3}=\\dfrac{(\\log_{10} 3)(\\log_{3}5)}{\\log_{10} 3}=\\log_{3}5\\)\n\nAlternatively, we could use the fraction form of the general result in the warm-up.\n\n1. Given that \\(\\log_x y=4\\) and \\(\\log_y 2 = 9\\), evaluate  \\((\\log_x 2)(\\log_y x)\\) \\(\\dfrac{\\log_x 2}{\\log_y x}\\)\n\n1. \\((\\log_x 2)(\\log_y x)= (\\log_y x)(\\log_x 2)= \\log_{y} 2 = 9\\).\n\n---\n\n1. Using ideas from question 5, or the two forms for changing base given in the warm-up, the numerator can be rewritten as \\((\\log_x y)(\\log_{y}2)\\) and the denominator as \\(\\dfrac{\\log_{x}x}{\\log_x y}\\).\n\nTherefore\n\n\\[\\begin{align*} \\frac{\\log_x 2}{\\log_y x} &{}= \\frac{(\\log_x y)(\\log_{y}2)}{\\dfrac{\\log_{x}x}{\\log_x y}}\\\\ &{}= (\\log_{x}y)^{2}\\log_{y}2\\\\ &{}= 16 \\times 9\\\\ &{}= 144 \\end{align*}\\]\n\n1. What is \\((\\log_a b^3)(\\log_b a^3)\\)?\n\nUsing laws for manipulating logs of powers, \\[(\\log_a b^3)(\\log_b a^3)=9(\\log_a b)(\\log_b a) = 9 \\log_{a} a = 9.\\]\n\n1. What is the relationship between \\(\\log_a b\\) and \\(\\log_b a\\)?\n\nIn questions 3 and 7 we had something of the form \\((\\log_{a} b)(\\log_{b} a) = \\log_{a} a\\), so \\((\\log_{a} b)(\\log_{b} a)=1\\), or equivalently \\(\\log_{a} b = \\dfrac{1}{\\log_{b}a}\\). Is there any danger of dividing by \\(0\\) here?\n\n1. Solve \\(\\log_{x} 7 = \\log_{7} x\\).\n\nUsing the relationship in question 8, solving \\(\\log_{x} 7 = \\log_{7} x\\) is equivalent to solving \\((\\log_{7}x)^{2} = 1\\). Therefore we need to solve \\(\\log_{7} x = 1\\) and \\(\\log_{7} x = -1\\), which give us \\(x=7\\) and \\(x=\\dfrac{1}{7}\\) as solutions.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "factorial-fragments",
+   "slug": "factorial-fragments",
+   "station": "exp-and-log",
+   "title": "Factorial fragments",
+   "url": "https://undergroundmathematics.org/exp-and-log/factorial-fragments",
+   "resourceType": "fluency-exercise",
+   "resourceTypeLabel": "Fluency exercise",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Factorial fragments\n\n> Excerpt: In this open task, students explore the expression $\\log n!$ for different values of $n$ and thereby gain fluency in manipulation and understanding of logarithms.\n\n## Problem\n\nThink about this expression\n\n\\[\\large{\\log n!}\\]\n\nWhat can you say about it?\n\nTry some values of \\(n\\).\n\nChoose a base or work generally. What happens if you change the base?\n\nWhat do you notice?\n\n## Some things to think about\n\nThink about this expression \\[\\log n!\\]\n\nWhat can you say about it?\n\nTry some values of \\(n\\).\n\nChoose a base or work generally. What happens if you change the base?\n\nWhat do you notice?\n\nFor example, do you agree with these\n\n\\[\\begin{align*} \\log_2 3! \\, &= \\log_2 (1\\times 2\\times 3) \\\\ &= \\log_2 1 + \\log_2 2 + \\log_2 3 \\\\ &= 1+\\log_2 3 \\end{align*}\\]\n\nand\n\n\\[\\begin{align*} \\log_3 6!\\, &= \\log_3 (1\\times2\\times3\\times4\\times5\\times6) \\\\ &= \\log_3 1 + \\log_3 2 + \\log_3 3 + \\log_3 4 +\\log_3 5 + \\log_3 6 \\\\ &= 4\\log_3 2 + 2 + \\log_3 5 \\end{align*}\\]\n\n- What do you notice about the coefficients?\n\n- Do you always get an integer term, whatever base you use?\n\n- If you knew \\(\\log_2 12!\\) could you write down what \\(\\log_4 12!\\) is?\n\n- What could \\(n\\) be if \\(\\log_5 n!\\) has integer term \\(3\\) when expanded as far as possible?\n\n- What can you say about \\(n\\) if \\(\\log_6 n!\\) has integer term \\(4\\)?\n\n- If you know that \\(p\\) and \\(q\\) are primes larger than \\(7\\) and \\(a\\) is not prime, can you fill in the boxes in the equation below? \\[\\log \\square! = a\\log 2 + \\square \\log 3 + 3 \\log 5 +\\square \\log 7 + \\log p +\\log q\\] Note that the numbers in the boxes may or may not be the same. Can you make up a similar question?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "how-far-did-the-earth-move",
+   "slug": "how-far-did-the-earth-move",
+   "station": "exp-and-log",
+   "title": "How far did the earth move?",
+   "url": "https://undergroundmathematics.org/exp-and-log/how-far-did-the-earth-move",
+   "resourceType": "food-for-thought",
+   "resourceTypeLabel": "Food for thought",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.4",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# How far did the earth move?\n\n> Excerpt: This resource explores the use of the logarithmic magnitude scale to describe the severity of earthquakes. Students are then asked to do some graph linearisation to establish a power law relationship from experimental data.\n\n## Magnitudes\n\nThe severity of an earthquake is measured and recorded as its local magnitude, \\(M_L\\), often referred to as its position on the Richter Scale. For instance the New Zealand earthquake of 2011 was of magnitude \\(6.1\\) (according to [USGS](http://earthquake.usgs.gov/earthquakes/eventpage/usp000huvq)).\n\nThe magnitude is defined as a function of \\(A\\), the maximum amplitude of horizontal displacement of the earth’s surface at a distance of \\(\\quantity{100}{km}\\) from the epicentre, \\[M_L=\\log_{10}\\left(\\frac{A}{A_0}\\right)\\]\n\nwhere \\(A_0\\) is a constant displacement chosen as a reference value by Charles Richter in 1935. \\[A_0=\\quantity{1}{\\mu m}=\\quantity{10^{-6}}{m}\\]\n\nTypical output from a seismometer\n\nWhat is the magnitude of an earthquake causing a displacement, \\(A\\), equal to\n\n- \\(\\quantity{1.0}{\\mu m}\\)?\n\n- \\(\\quantity{1.0}{cm}\\)?\n\n- \\(\\quantity{30}{cm}\\)?\n\nWhat was the surface displacement for the following earthquakes? What might that have looked or felt like?\n\n- New Zealand, 2011, \\(M_L=6.1\\)\n\n- Lincolnshire, 2008, \\(M_L=5.2\\)\n\n- Chile, 1960, \\(M_L=9.5\\)\n\nWhat makes a logarithmic scale useful for describing phenomena like this? Do you know of any other commonly used logarithmic scales?\n\n## Solution\n\nThe magnitude is defined as a function of \\(A\\), the maximum amplitude of horizontal displacement of the earth’s surface at a distance of \\(\\quantity{100}{km}\\) from the epicentre, \\[M_L=\\log_{10}\\left(\\frac{A}{A_0}\\right)\\] where \\[A_0=\\quantity{1}{\\mu m}=\\quantity{10^{-6}}{m}\\]\n\nWhat is the magnitude of an earthquake causing a displacement, \\(A\\), equal to\n\n- \\(\\quantity{1.0}{\\mu m}\\)?\n\nIn this case, \\(A=A_0\\), so \\[M_L=\\log_{10}1=0 .\\]\n\nCharles Richter chose this as the reference because no equipment existed at the time that could detect displacements this small.\n\nModern seismometers can detect movements smaller than this. How would they appear on the magnitude scale?\n\n- \\(\\quantity{1.0}{cm}\\)?\n\n\\(\\quantity{1.0}{cm}=\\quantity{10^{-2}}{m}=\\quantity{10^{4}}{\\mu m}\\), so \\[M_L=\\log_{10}{10^4}=4.0 .\\]\n\nThis would be described as a minor or light earthquake, easily felt but causing minimal damage.\n\n- \\(\\quantity{30}{cm}\\)?\n\n\\(\\quantity{30}{cm}=\\quantity{0.3}{m}=\\quantity{3\\times10^{5}}{\\mu m}\\), so \\[M_L=\\log_{10}{(3\\times10^5)}\\approx5.5 .\\]\n\nThis would be a moderate earthquake, causing significant damage to poorly constructed buildings.\n\nWhat was the surface displacement for the following earthquakes? What might that have looked or felt like?\n\n- New Zealand, 2011, \\(M_L=6.1\\)\n\nTo find\n\n\\(A\\)\n\nwe can rearrange the formula and substitute in the\n\n\\(M_L\\)\n\nvalue.\n\n\\[\\begin{align*} M_L &= \\log_{10}\\left(\\frac{A}{A_0}\\right)\\\\ \\frac{A}{A_0} &= 10^{M_L}\\\\ A &= \\quantity{10^{6.1}\\times 1.0}{\\mu m}\\\\ &\\approx \\quantity{1.3}{m} \\end{align*}\\]\n\nIf the earth’s surface moved\n\n\\(\\quantity{1.3}{m}\\)\n\nyou would expect it to cause severe damage to buildings, which is what happened in Christchurch in 2011.\n\n- Lincolnshire, 2008, \\(M_L=5.2\\)\n\n\\[\\begin{align*} \\frac{A}{A_0} &= 10^{M_L}\\\\ A &= \\quantity{10^{5.2}}{\\mu m}\\\\ &\\approx \\quantity{16}{cm} \\end{align*}\\]\n\nThis caused minor damage to buildings.\n\n- Chile, 1960, \\(M_L=9.5\\)\n\nThis was the strongest earthquake ever recorded on earth.\n\n\\[\\begin{align*} A&=\\quantity{10^{9.5}}{\\mu m}\\\\ &\\approx\\quantity{3.2}{km} \\end{align*}\\]\n\nDo you find this surprising? How realistic do you think it is?\n\nWhat factors may effect the reliability of this result?\n\n## Energy\n\nThe magnitude scale is based on horizontal displacement, \\[M_L=\\log_{10}\\left(\\frac{A}{A_0}\\right) \\text{, where } A_0=\\quantity{1}{\\mu m} .\\]\n\nBut the destructive power of an earthquake is better indicated by the amount of energy dissipated. It has been suggested that the energy, \\(E\\), is related to the displacement, \\(A\\), by a simple power law, \\[E=E_0 \\left(\\frac{A}{A_0}\\right)^p\\] where \\(E_0\\) and \\(p\\) are constants.\n\nCan you use the following data from the [British Geological Survey](http://www.earthquakes.bgs.ac.uk/earthquakes/UKsignificant/index.html) and the [US Geological Survey](http://earthquake.usgs.gov/earthquakes/world/historical.php) to verify this suggestion and find values for \\(E_0\\) and \\(p\\)?\n\n| Earthquake | Magnitude, \\(M_L\\) | Energy, \\(\\quantity{E}{(GJ)}\\) |\n|---|---|---|\n| San Francisco, USA, 1906 | \\(7.8\\) | \\(6\\times10^7\\) |\n| Chile, 1960 | \\(9.5\\) | \\(1\\times10^{10}\\) |\n| Kobe, Japan, 1995 | \\(6.9\\) | \\(1\\times10^6\\) |\n| Kent, 2007 | \\(4.3\\) | \\(200\\) |\n| Lincolnshire, 2008 | \\(5.2\\) | \\(3000\\) |\n\nEstimate the energy dissipation of the 2011 New Zealand earthquake, magnitude \\(6.1\\).\n\n## Energy solution\n\nThe given data shows how\n\n\\(E\\)\n\nchanges with\n\n\\(M_L\\)\n\n, so first we need to use the formulae above to find a relationship between these two. Using logarithms on the suggested power law, then combining with the definition of\n\n\\(M_L\\)\n\n,\n\n\\[\\begin{align*} \\log_{10}E&=\\log_{10}\\left[ E_0 \\left(\\frac{A}{A_0}\\right)^p \\right]\\\\ &=\\log_{10}{E_0}+p\\log_{10}{\\left(\\frac{A}{A_0}\\right)}\\\\ &=\\log_{10}{E_0}+p M_L . \\end{align*}\\]\n\nIf we plot a graph of \\(\\log_{10}E\\) against \\(M_L\\), this should give a straight line with gradient \\(p\\) and intercept \\(\\log_{10}{E_0}\\).\n\nIndeed the points do lie roughly on a straight line, so we can confirm the suggested relationship. Reading the gradient and intercept from the graph, we find\n\n\\[\\begin{align*} p&=1.5\\\\ \\log_{10}{E_0}&=-4.2\\\\ E_0&=10^{-4.2}\\approx \\quantity{6.3\\times10^{-5}}{GJ}\\\\ &=\\quantity{63}{kJ} . \\end{align*}\\]\n\nThis value of \\(p\\) agrees with Charles Richter’s empirical model that states \\(E\\propto A^{\\frac{3}{2}}\\). A consequence of this is that an increase of \\(2\\) in magnitude corresponds to an increase of energy by a factor of \\(1000\\).\n\nEstimate the energy dissipation of the 2011 New Zealand earthquake, magnitude \\(6.1\\).\n\nThis can either be read from the graph, or calculated using the formula which can now be rewritten as\n\n\\[\\begin{align*} E&=E_0\\times10^{\\tfrac{3M_L}{2}}\\\\ &=63\\times10^{\\tfrac{3\\times6.1}{2}}\\\\ &\\approx\\quantity{8.9\\times10^{10}}{kJ}\\\\ &=\\quantity{8.9\\times10^{4}}{GJ} . \\end{align*}\\]\n\nThis is a little more than the energy released by the atomic bomb that was dropped on Hiroshima in 1945.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "log-lattice",
+   "slug": "log-lattice",
+   "station": "exp-and-log",
+   "title": "Logarithm lattice",
+   "url": "https://undergroundmathematics.org/exp-and-log/log-lattice",
+   "resourceType": "fluency-exercise",
+   "resourceTypeLabel": "Fluency exercise",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Logarithm lattice\n\n> Excerpt: This resource asks students to arrange some logarithms in size order and complete a grid. Students have to think about different bases as well as logarithms of different numbers. The task starts with specific numbers but can be generalised to thinking about increasing and decreasing logarithmic functions.\n\n## Problem\n\nCan you arrange some of these logarithms to complete the grid below? The values of the logarithms need to increase along the rows and down the columns. Try to do this without using a calculator.\n\n\\(\\log_{3} 2\\)\n\n\\(\\log_{4} 5\\)\n\n\\(\\log_{2} 5\\)\n\n\\(\\log_{3} 4\\)\n\n\\(\\log_{3} 5\\)\n\n\\(\\log_{5} 3\\)\n\n\\(\\log_{2} 3\\)\n\n\\(\\log_{5} 2\\)\n\n\\(\\log_{5} 4\\)\n\n\\(\\log_{4} 3\\)\n\n\\(\\log_{4} 2\\)\n\n\\(\\log_{2} 4\\)\n\nYou might find it helpful to think about the following questions:\n\n- Can you put pairs of logarithms from the list in order of size?\n\n- Which logarithms are bigger than \\(1\\) and which ones are smaller?\n\nSuggestion 1\n\nWhich is bigger:\n\n- \\(\\log_{2} 5\\) or \\(\\log_{2} 3\\)?\n\n- \\(\\log_{2} 5\\) or \\(\\log_{3} 5\\)?\n\nSuggestion 2\n\nCan you explain why this inequality is true?\n\n\\[\\log_{5} 2 < 1 < \\log_{2} 5\\]\n\nYou could do this by thinking about what \\(\\log_{5} 2\\) means or by thinking about how you could write \\(1\\) as a logarithm.\n\nCan you use the same logarithms to complete this grid too?\n\n\\(\\log_{3} 2\\)\n\n\\(\\log_{4} 5\\)\n\n\\(\\log_{2} 5\\)\n\n\\(\\log_{3} 4\\)\n\n\\(\\log_{3} 5\\)\n\n\\(\\log_{5} 3\\)\n\n\\(\\log_{2} 3\\)\n\n\\(\\log_{5} 2\\)\n\n\\(\\log_{5} 4\\)\n\n\\(\\log_{4} 3\\)\n\n## Solution\n\nCan you arrange some of these logarithms to complete the grid below? The values of the logarithms need to increase along the rows and down the columns. Try to do this without using a calculator.\n\n\\[\\log_{3} 2 \\quad \\log_{4} 5 \\quad \\log_{2} 5 \\quad \\log_{3} 4 \\quad \\log_{3} 5 \\quad \\log_{5} 3\\] \\[\\log_{2} 3 \\quad \\log_{5} 2 \\quad \\log_{5} 4 \\quad \\log_{4} 3 \\quad \\log_{4} 2 \\quad \\log_{2} 4\\]\n\n|  | Increasing size \\(\\longrightarrow\\) |  |  |\n|---|---|---|---|\n| Increasing size \\(\\downarrow\\) | \\(\\log_{\\square} \\square\\) | \\(\\log_{\\square} \\square\\) | \\(\\log_{\\square} \\square\\) |\n| \\(\\log_{\\square} \\square\\) | \\(1\\) | \\(\\log_{\\square} \\square\\) |  |\n| \\(\\log_{\\square} \\square\\) | \\(\\log_{\\square} \\square\\) | \\(\\log_{\\square} \\square\\) |  |\n\nIf we think about putting some of these logarithms in order, perhaps by visualising the graph of a logarithmic function or remembering that \\(\\log_2 x\\) is an increasing function, we can form inequalities such as \\[\\log_{2} 3 < \\log_{2} 4 < \\log_{2} 5\\] and \\[\\log_{3} 2 < \\log_{3} 4 < \\log_{3} 5 .\\]\n\nNext, we can form inequalities such as \\[\\log_{5} 3 < \\log_{4} 3 < \\log_{2} 3\\] either by\n\n- thinking about what the base of a logarithm means (we require a smaller power of \\(5\\) than of \\(4\\) to make \\(3\\)), or by\n\n- changing the base (\\(\\log_{4} 3=\\log_{4} 5\\times\\log_{5} 3\\) and \\(\\log_{4} 5>1\\)), or by\n\n- noting that \\(\\log_x 3\\) is a decreasing function.\n\nFinally, there are a number of ways to obtain an inequality such as \\[\\log_{5} 2 < 1 < \\log_{2} 5 .\\] For instance,\n\n- remember that \\(\\log_{2} 5\\) is the power to which we need to raise \\(2\\) in order to get \\(5\\), so it must be greater than \\(1\\). Similarly, \\(\\log_{5} 2\\) must be less than \\(1\\). Or,\n\n- write \\(1\\) as \\(\\log_{5} 5\\) and use the ideas above to obtain the inequality \\(\\log_{5} 2 < \\log_{5} 5 =1\\). Similarly, \\(\\log_2 5>\\log_{2} 2=1\\). Or,\n\n- use the rule for changing the base: \\(\\log_{5} 2\\times\\log_{2} 5=\\log_{5} 5=1\\) so the two logarithms are reciprocals.\n\nWe have referred to a lot of different ideas here. Make sure you can convince yourself that the reasoning is all correct.\n\nUsing all these ideas, can you summarise what we know about the order of the logarithms in some kind of a diagram?\n\nHere is a network in order of increasing value\n\nHere is one possible way to complete the first grid\n\n|  | Increasing size \\(\\longrightarrow\\) |  |  |\n|---|---|---|---|\n| Increasing size \\(\\downarrow\\) | \\(\\log_{5} 2\\) | \\(\\log_{4} 2\\) | \\(\\log_{3} 2\\) |\n| \\(\\log_{5} 3\\) | \\(1\\) | \\(\\log_{2} 4\\) |  |\n| \\(\\log_{2} 3\\) | \\(\\log_{3} 5\\) | \\(\\log_{2} 5\\) |  |\n\nFor the second grid, our network of inequalities doesn’t give quite enough information to complete the bottom-left and top-right cells. However, we know that \\(\\log_{2}4 = 2\\), and if we let \\(\\log_{3} 5=x\\) then \\(3^{x}=5\\), so \\(x\\) must be less than \\(2\\). Therefore \\[\\log_{3} 5 < \\log_{2}4 .\\]\n\nWe can use a similar argument starting with \\(\\log_{4}2\\) to give us a solution. Or we could think about reciprocals: \\[\\log_{5} 3=\\frac{1}{\\log_{3} 5} \\quad\\text{ and }\\quad \\log_{4}2=\\frac{1}{\\log_{2}4}\\] and use that to write another inequality based on the one above.\n\nHere is one possible way to complete the second grid\n\n|  | Increasing size \\(\\longrightarrow\\) |  |  |\n|---|---|---|---|\n| Increasing size \\(\\downarrow\\) | \\(\\log_{4} 2\\) | \\(\\log_{4} 3\\) | \\(\\log_{4} 5\\) |\n| \\(\\log_{5} 3\\) | \\(1\\) | \\(\\log_{3} 5\\) |  |\n| \\(\\log_{5} 4\\) | \\(\\log_{3} 4\\) | \\(\\log_{2} 4\\) |  |\n\nSee the resource [Changing bases](https://undergroundmathematics.org/exp-and-log/changing-bases) for an exploration of the rule for changing bases and the behaviour of logarithmic functions.\n\n## Taking it further\n\nWe have extended one possible solution grid. Can you use other logarithms to complete the four blank cells of this grid or one based on your own solution grid?\n\n|  | Increasing size \\(\\longrightarrow\\) |  |  |  |  |\n|---|---|---|---|---|---|\n| Increasing size \\(\\downarrow\\) |  |  | \\(\\log_{\\square} \\square\\) |  |  |\n|  | \\(\\log_{4} 2\\) | \\(\\log_4 3\\) | \\(\\log_{4} 5\\) |  |  |\n| \\(\\log_{\\square} \\square\\) | \\(\\log_{5} 3\\) | \\(1\\) | \\(\\log_{3} 5\\) | \\(\\log_{\\square} \\square\\) |  |\n|  | \\(\\log_{5} 4\\) | \\(\\log_3 4\\) | \\(\\log_{2} 4\\) |  |  |\n|  |  | \\(\\log_{\\square} \\square\\) |  |  |  |\n\nSome things to think about:\n\n- Try to make your extra logarithms as general as possible. For instance if you want \\(\\log_{a} 3\\) to be less than \\(\\log_{5} 3\\), what conditions must \\(a\\) satisfy?\n\n- How could you include fractions or irrational numbers in your logarithms?\n\n## Further solution\n\nWe have extended one possible solution grid. Can you use other logarithms to complete the four blank cells of this grid or one based on your own solution grid?\n\n|  | Increasing size \\(\\longrightarrow\\) |  |  |  |  |\n|---|---|---|---|---|---|\n| Increasing size \\(\\downarrow\\) |  |  | \\(\\log_{\\square} \\square\\) |  |  |\n|  | \\(\\log_{4} 2\\) | \\(\\log_4 3\\) | \\(\\log_{4} 5\\) |  |  |\n| \\(\\log_{\\square} \\square\\) | \\(\\log_{5} 3\\) | \\(1\\) | \\(\\log_{3} 5\\) | \\(\\log_{\\square} \\square\\) |  |\n|  | \\(\\log_{5} 4\\) | \\(\\log_3 4\\) | \\(\\log_{2} 4\\) |  |  |\n|  |  | \\(\\log_{\\square} \\square\\) |  |  |  |\n\nSome things to think about\n\n- Try to make your extra logarithms as general as possible. For instance if you want \\(\\log_{a} 3\\) to be less than \\(\\log_{5} 3\\) what conditions must \\(a\\) satisfy?\n\n- How could you include fractions or irrational numbers in your logarithms?\n\nIn order to fill in the box at the left of the grid, we require a logarithm that is smaller than \\(\\log_{5} 3\\). Two possible solutions are \\(\\log_{6} 3\\) and \\(\\log_{5} 2\\). Both of these are less than \\(\\log_{5} 3\\).\n\nIn order to give a more general logarithm for this cell, let’s think about when \\(\\log_{5} a < \\log_{5} 3\\). We know \\(a\\) cannot be zero or negative because then it would not be possible to calculate its logarithm. In addition to this, \\(\\log_{5} a\\) will only be smaller than \\(\\log_{5} 3\\) when \\(a < 3\\). So we need \\(0 < a < 3\\).\n\nNotice that \\(a\\) does not have to be a whole number—it could be a fraction or an irrational number. Note too that the value of the logarithm can be negative.\n\nAlternatively, still thinking about the same cell, we could try a logarithm of the form \\(\\log_{b} 3\\). This would be smaller than \\(\\log_{5} 3\\) if \\(b > 5\\). Is it possible for the base of the logarithm, \\(b\\), to be a fraction or an irrational number? If so, are there any other values of \\(b\\) that would make \\(\\log_{b} 3\\) smaller than \\(\\log_{5} 3\\)?\n\nNow suppose we wrote \\(\\log_{b} 4\\) in the box at the bottom of the grid. This must be greater than \\(\\log_{3} 4\\) so we need \\(b < 3\\), but this time there are other constraints on \\(b\\) because you cannot use \\(1\\), \\(0\\) or any negative number as the base of a logarithm. Also, if the base, \\(b\\) is between \\(0\\) and \\(1\\), then \\(\\log_b 4\\) will be negative, so the correct constraint would be \\(1 < b < 3\\).\n\nTo understand fractional bases of logarithms, it might help to think about \\(\\log_{\\frac{1}{2}} 4\\). \\[\\big(\\frac{1}{2}\\big)^{-2}=(2)^2=4 \\quad\\text{ so }\\quad \\log_{\\frac{1}{2}} 4=-2\\]\n\nCan you sketch the graph of \\(y=\\log_x 4\\)? Try using graphing software such as [Desmos](https://www.desmos.com/calculator) (find \\(\\log_a\\) on its functions menu). You might also find the resource [Changing bases](https://undergroundmathematics.org/exp-and-log/changing-bases) helpful for thinking about the behaviour of logarithmic functions with different bases.\n\nHere is one possible way to complete the grid\n\n|  | Increasing size \\(\\longrightarrow\\) |  |  |  |  |\n|---|---|---|---|---|---|\n| Increasing size \\(\\downarrow\\) |  |  | \\(\\log_{4} a\\) \\(0 < a < 3\\) |  |  |\n|  | \\(\\log_{4} 2\\) | \\(\\log_4 3\\) | \\(\\log_{4} 5\\) |  |  |\n| \\(\\log_{b} 3\\) \\(b > 5\\) or \\(0 < b < 1\\) | \\(\\log_{5} 3\\) | \\(1\\) | \\(\\log_{3} 5\\) | \\(\\log_{3} a\\) \\(a > 5\\) |  |\n|  | \\(\\log_{5} 4\\) | \\(\\log_3 4\\) | \\(\\log_{2} 4\\) |  |  |\n|  |  | \\(\\log_{b} 4\\) \\(1 < b < 3\\) |  |  |  |\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "log-lineup",
+   "slug": "log-lineup",
+   "station": "exp-and-log",
+   "title": "Logarithm lineup",
+   "url": "https://undergroundmathematics.org/exp-and-log/log-lineup",
+   "resourceType": "fluency-exercise",
+   "resourceTypeLabel": "Fluency exercise",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Logarithm lineup\n\n> Excerpt: This can be used as a follow-up to 'Logarithm lattice' or can be used on its own. Students are challenged to arrange a set of log expressions in ascending order.\n\n## Problem\n\nCan you, without using a calculator, arrange these logarithms into order of increasing value?\n\n\\[\\log_{4} 5 \\quad \\log_{2} 5 \\quad \\log_{3} 4 \\quad \\log_{3} 3 \\quad \\log_{3} 5 \\quad \\log_{2} 4 \\quad \\log_{2} 3\\]\n\nThings to think about\n\n- Do you know exact values for any of them?\n\n- Can you find upper and lower bounds for them by comparing with known values?\n\n- Can you compare some of them by thinking about increasing and decreasing functions?\n\n- How might changing the base of logarithms help?\n\nIf you have completed [Logarithm lattice](https://undergroundmathematics.org/exp-and-log/log-lattice), you will have put some of these logarithms in order already, but here we explore some different methods.\n\nYou might find it helpful to have the logarithms written or [printed on cards](https://undergroundmathematics.org/exp-and-log/log-lineup/components/cards.pdf) that you can rearrange as you sort them.\n\n## Interactive card sorter\n\n\\(\\log_{4} 5\\)\n\n\\(\\log_{2} 5\\)\n\n\\(\\log_{3} 4\\)\n\n\\(\\log_{3} 3\\)\n\n\\(\\log_{3} 5\\)\n\n\\(\\log_{2} 4\\)\n\n\\(\\log_{2} 3\\)\n\n## Things you might have thought about\n\n**Initial observations**\n\n- We can write down exact values for two of these logarithms.\n\n- Since \\(\\log_3 5\\) is the power of \\(3\\) that would give us \\(5\\) and \\(3^1<5<3^2\\) we know the value of \\(\\log_3 5\\) must lie between \\(1\\) and \\(2\\). Can you do the same for other logarithms in the list and use the results to put some of them in order?\n\nLogarithms in ascending order so far\n\n**Increasing or decreasing?**\n\nIf we take a series of logarithms all with the same base, we might assume that \\(\\log\\) of a bigger number will have a bigger value. In other words, the function \\(\\log x\\) is increasing.\n\nIs this always true, or only for some values of \\(x\\)? Does it depend on the base of the logarithm?\n\nIf it is true for the logarithms in our list, we can use this fact to put some of them in order.\n\nSolution\n\nIt is true that the function \\(\\log x\\) is increasing for all values of \\(x\\) where it is defined, i.e. \\(x>0\\), as long as the base is greater than \\(1\\).\n\nWhat if the base is between \\(0\\) and \\(1\\)? For instance, the function \\(\\log_\\frac{1}{2} x\\)? Draw the graph or work out some values if you’re unsure.\n\nThe logarithms in our list all have bases greater than \\(1\\), so \\[\\log_2 3<\\log_2 4<\\log_2 5\\] and \\[\\log_3 3<\\log_3 4<\\log_3 5\\text{ .}\\]\n\n**Changing bases**\n\nIf instead, we take a series of logarithms of the same number but to different bases, would these increase or decrease? Think about \\(\\log_2 8\\) and \\(\\log_4 8\\). Can we use this idea to order some of our logarithms?\n\nMore generally, we are asking whether the function \\(\\log_x a\\) is increasing or decreasing - does it depend on the value of \\(a\\)? You could try using graphing software such as [Desmos](https://www.desmos.com/calculator) (find \\(\\log_a\\) on its *functions* menu).\n\nAnother way to compare these logarithms of the same number would be to use the rule for changing the base: \\[\\log_a b=\\log_a c \\times \\log_c b\\text{ .}\\]\n\nFor instance, to compare \\(\\log_3 5\\) and \\(\\log_4 5\\), we could write \\(\\log_3 5 = \\log_3 4\\times\\log_4 5\\) and then note that \\(\\log_3 4 > 1\\), and so \\(\\log_3 5 > \\log_4 5\\).\n\nAscending order diagram\n\nOur network of orderings now looks like this.\n\n**Estimating values**\n\nIt is possible to find some other upper and lower bounds within our list of logarithms by using approximations for the square roots of \\(2\\) and \\(3\\):\n\nWe know that \\(2^\\frac{1}{2}\\approx1.4\\), so \\(2^\\frac{3}{2}=2\\times2^\\frac{1}{2}\\approx2.8\\).\n\nTherefore \\(\\frac{3}{2}\\approx\\log_2{2.8}\\), and hence \\(\\log_2{3}>\\frac{3}{2}\\).\n\nCan you use an approximate value of \\(\\sqrt 3\\) to find an upper bound for \\(\\log_3 5\\)?\n\nSolution\n\nWe could use the following argument.\n\n\\[\\begin{align*} 3^\\frac{3}{2}&=3\\times3^\\frac{1}{2}\\approx3\\times1.7 = 5.1\\\\ \\frac{3}{2}&\\approx\\log_3{5.1}\\\\ \\log_3{5}&<\\frac{3}{2} \\end{align*}\\]\n\nFrom this it follows that \\(\\log_3{5}<\\log_2{3}\\) which straightens out one more part of our lineup.\n\n**Increasing or decreasing again**\n\nWe shall now look at two possible ways of comparing \\(\\log_3 4\\) and \\(\\log_4 5\\) which is the last unknown pairing in our lineup.\n\nFirstly, notice that in each of these remaining logarithms, the base is one less than the number whose logarithm we are taking. We could think of them as values of the function \\(\\log_x{(x+1)}\\). Is this an increasing or decreasing function? Think about its value when \\(x=2\\) and when \\(x\\) is very large. You could use [Desmos](https://www.desmos.com/calculator) to explore it.\n\nSolution\n\nThis appears to be a decreasing function for \\(x>1\\) which is the domain we are interested in. When \\(x\\) gets very large, the value of this function will be very close to \\(\\log_x {(x)}=1\\) and when \\(x=2\\) its value is \\(\\log_2 3\\) which is certainly bigger than \\(1\\).\n\n**Different differences**\n\nAnother way to compare \\(\\log_4 5\\) and \\(\\log_3 4\\) would be to work out the difference between them, \\[d=\\log_3 4 - \\log_4 5 \\text{ .}\\] If we can show that the difference is positive then we can put the two logarithms in order.\n\nWe can’t work out the difference directly, but we could try the following.\n\n\\[\\begin{align*} \\log_3 4 > \\log_4 4 = 1\\\\ \\text{so, } d>1-\\log_4 5\\\\ \\text{but, } \\log_4 5>1 \\end{align*}\\]\n\nThis looked promising but it has only told us that \\(d\\) is greater than some negative number, so it is not helpful in this case.\n\nWe can rewrite the expression without changing its value:\n\n\\[\\begin{align*} d&=(\\log_3 4 -1)-(\\log_4 5 -1)\\\\ &=(\\log_3 4 - \\log_3 3)-(\\log_4 5 -\\log_4 4) \\end{align*}\\]\n\nCan you use the subtraction law of logarithms to rearrange this and show that \\(d>0\\)?\n\nSolution\n\nWe can complete the argument like this:\n\n\\[\\begin{align*} d&=(\\log_3 4 - \\log_3 3)-(\\log_4 5 -\\log_4 4)\\\\ &=\\log_3 {\\frac{4}{3}}-\\log_4 {\\frac{5}{4}} \\end{align*}\\]\n\nNow,\n\n\\(\\log_4 {\\frac{5}{4}} < \\log_3 {\\frac{5}{4}}\\)\n\nbecause\n\n\\(\\log_x {\\frac{5}{4}}\\)\n\nis a decreasing function for\n\n\\(x>1\\)\n\n. Therefore,\n\n\\[\\begin{align*} d&>\\log_3 {\\frac{4}{3}}-\\log_3 {\\frac{5}{4}}\\\\ &=\\log_3 {\\Big(\\frac{\\big(\\frac{4}{3}\\big)}{\\big(\\frac{5}{4}\\big)}\\Big)}\\\\ &=\\log_3 {\\big(\\frac{16}{15}\\big)}\\\\ &>0 \\end{align*}\\]\n\nSo now we *have* shown that \\(d\\) is positive, so we can put the two original logarithms in order.\n\nSometimes, adding zero can help you solve a problem! You may wonder how we knew that subtracting one from each side would help. The answer is that we didn’t know, but…\n\nLooking at this numberline fragment, we already knew the two logarithms were between \\(1\\) and \\(2\\). By subtracting the ones, we have effectively compared the two red dotted lengths rather than the two blue dashed lengths. What is it that makes that feel like a worthwhile thing to do?\n\nWe have shown alternative methods for some steps of the argument. What are the advantages and disadvantages of the different methods?\n\nFinal solution\n\nFinally we have a complete lineup of logarithms.\n\nCan you add some more logarithms to the list and use similar techniques to insert them in the lineup?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "plotting-planets",
+   "slug": "plotting-planets",
+   "station": "exp-and-log",
+   "title": "Plotting the planets",
+   "url": "https://undergroundmathematics.org/exp-and-log/plotting-planets",
+   "resourceType": "rich-example",
+   "resourceTypeLabel": "Rich example",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.4",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Plotting the planets\n\n> Excerpt: Students are asked to plot graphs of data about the Solar System to find lines of best fit. Logarithms are required to linearise the data and the modelled relationships are linked back to theoretical models used in astronomy.\n\n## Problem\n\nThe following data is an extract from a [planetary fact sheet](https://nssdc.gsfc.nasa.gov/planetary/factsheet/) published by NASA.\n\n|  | Distance from sun, \\(r\\) \\((\\quantity{10^6}{km})\\) | Orbital period, \\(P\\) \\((\\mathrm{days})\\) | Orbital speed, \\(v\\) \\((\\mathrm{km\\,s^{-1}})\\) | Mean surface temperature, \\(T\\) \\((\\mathrm{^\\circ C})\\) |\n|---|---|---|---|---|\n| Mercury | \\(57.9\\) | \\(88\\) | \\(47.4\\) | \\(167\\) |\n| Venus | \\(108.2\\) | \\(224.7\\) | \\(35\\) | \\(464\\) |\n| Earth | \\(149.6\\) | \\(365.2\\) | \\(29.8\\) | \\(15\\) |\n| Mars | \\(227.9\\) | \\(687\\) | \\(24.1\\) | \\(-65\\) |\n| Jupiter | \\(778.6\\) | \\(4331\\) | \\(13.1\\) | \\(-110\\) |\n| Saturn | \\(1433.5\\) | \\(10\\,747\\) | \\(9.7\\) | \\(-140\\) |\n| Uranus | \\(2872.5\\) | \\(30\\,589\\) | \\(6.8\\) | \\(-195\\) |\n| Neptune | \\(4495.1\\) | \\(59\\,800\\) | \\(5.4\\) | \\(-200\\) |\n| Pluto | \\(5906.4\\) | \\(90\\,560\\) | \\(4.7\\) | \\(-225\\) |\n\nPhysics suggests that the orbital period, \\(P\\), and distance from the sun, \\(r\\), are related by a formula of the form \\[P=A \\,r^k\\] where \\(A\\) and \\(k\\) are constants. By plotting a suitable graph, estimate the values of \\(A\\) and \\(k\\).\n\nThings to think about\n\n- A straight-forward graph of \\(P\\) against \\(r\\) will probably show a curve from which it is hard to estimate values.\n\n- Can you transform the data to give a straight line graph?\n\n- You will probably find it helpful to use either graph paper or graphing software to obtain accurate values.\n\nUse your results to predict the orbital period of Ceres, a dwarf planet in the asteroid belt with \\(r=414.0\\).\n\nNow try this: temperature\n\nThe surface temperature is generally lower for planets further away from the sun. Use the data to find an exponential law (\\(T=Ae^{-kr}\\)) or a power law (\\(T=Ar^k\\)) to model this.\n\n- You might need to use the absolute temperature, measured in Kelvin. A difference of \\(\\quantity{1}{K}\\) is the same as a difference of \\(\\quantity{1}{^\\circ C}\\) but \\(\\quantity{0}{^\\circ C}\\approx\\quantity{273}{K}\\).\n\nUse your results to predict the surface temperature of Ceres.\n\n## Solution\n\nA graph of \\(P\\) against \\(r\\) looks like this.\n\nThere is a nice smooth curve that fits the data, but unless you are using graphing software with polynomial regression it does not help us to find values for \\(A\\) and \\(k\\). However, if we take the logarithm of each side of the formula and then use the laws of logarithms, we get \\[\\log P = \\log A + k\\,\\log r.\\] So if we plot \\(\\log P\\) against \\(\\log r\\) we should get a straight line with gradient \\(k\\) and axis intercept at \\(\\log P=\\log A\\).\n\nNote that we could use logarithms to any base, but here we have chosen to use natural logarithms (base \\(e\\)).\n\n| \\(\\ln P\\) | \\(4.477\\) | \\(5.415\\) | \\(5.900\\) | \\(6.532\\) | \\(8.374\\) | \\(9.282\\) | \\(10.328\\) | \\(10.999\\) | \\(11.414\\) |\n|---|---|---|---|---|---|---|---|---|---|\n| \\(\\ln r\\) | \\(4.059\\) | \\(4.684\\) | \\(5.008\\) | \\(5.429\\) | \\(6.657\\) | \\(7.268\\) | \\(7.963\\) | \\(8.411\\) | \\(8.684\\) |\n\nThis straight line has gradient \\(1.5\\) and axis intercept \\(-1.6\\). So we have \\(k=1.5\\) and \\(\\ln A=-1.6\\) which means that \\(A=0.20\\). We can write the formula as \\[P=0.2 \\,r^{1.5}.\\]\n\nThe \\(1.5\\) power might seem surprising, but the Physics of gravity and planetary motion does in fact predict this. It is summed up in Kepler’s Third Law which states that \\(P^2\\propto r^3\\). Note that orbits are actually elliptical and \\(r\\) is the [semi-major axis](https://undergroundmathematics.org/glossary/semi-major-axis) which is what NASA quote in their table. Kepler also tells us that our constant \\(A\\) is a function of the mass of the sun, \\(M_\\odot\\). \\[A=\\frac{2\\pi}{\\sqrt{GM_\\odot}},\\] where \\(G\\) is the Gravitational Constant, \\(\\quantity{6.67\\times10^{-11}}{m^3\\,kg^{-1}\\,s^{-2}}\\). After sorting out the units, our value of \\(A=0.20\\) allows us to estimate the mass of the sun at \\(M_\\odot=\\quantity{1.98\\times10^{30}}{kg}\\).\n\nSubstituting into our formula gives \\[P=0.2\\times 414^{1.5} \\approx 1685.\\] So we can predict that Ceres has an orbital period of \\(\\quantity{1685}{days}\\). Astronomical tables give the actual value as \\(\\quantity{1682}{days}\\).\n\n**Temperature**\n\nThe surface temperature is generally lower for planets further away from the sun. Use the data to find an exponential law (\\(T=Ae^{-kr}\\)) or a power law (\\(T=Ar^k\\)) to model this.\n\n- You might need to use the absolute temperature, measured in Kelvin. A difference of \\(\\quantity{1}{K}\\) is the same as a difference of \\(\\quantity{1}{^\\circ C}\\) but \\(\\quantity{0}{^\\circ C}\\approx\\quantity{273}{K}\\).\n\nThe first thing to notice is that the general rule is not always true – the surface temperature of Venus seems to be exceptionally high. We’ll treat this as some kind of outlier.\n\nThe question suggests an exponential or power law, so one or other of the following.\n\n| If we suppose that \\[T=T_0\\,e^{-ar}\\] then this would mean that \\[\\ln T = \\ln T_0-ar\\] so a graph of \\(\\ln T\\) against \\(r\\) would be a straight line. | If we suppose that \\[T=T_1\\,r^p\\] then this would mean that \\[\\ln T = \\ln T_1+p\\ln r\\] so a graph of \\(\\ln T\\) against \\(\\ln r\\) would be a straight line. |\n|---|---|\n\nSo we’ll work out \\(\\ln T\\) and \\(\\ln r\\) and plot the graphs. The hint suggests using absolute temperature, so we’ll add that to our table and evaluate the logarithm of that rather than of the Celsius temperature.\n\n| \\(r\\) | \\(57.9\\) | \\(108.2\\) | \\(149.6\\) | \\(227.9\\) | \\(778.6\\) | \\(1433.5\\) | \\(2872.5\\) | \\(4495.1\\) | \\(5906.4\\) |\n|---|---|---|---|---|---|---|---|---|---|\n| \\(\\ln r\\) | \\(4.059\\) | \\(4.684\\) | \\(5.008\\) | \\(5.429\\) | \\(6.657\\) | \\(7.268\\) | \\(7.963\\) | \\(8.411\\) | \\(8.684\\) |\n| \\(T_a\\) \\((\\mathrm{K})\\) | \\(440\\) | \\(737\\) | \\(288\\) | \\(208\\) | \\(163\\) | \\(133\\) | \\(78\\) | \\(73\\) | \\(48\\) |\n| \\(\\ln T_a\\) | \\(6.087\\) | \\(6.603\\) | \\(5.663\\) | \\(5.338\\) | \\(5.094\\) | \\(4.890\\) | \\(4.357\\) | \\(4.290\\) | \\(3.871\\) |\n\nCan you see why using absolute rather than Celsius temperature is important?\n\n|  |  |\n|---|---|\n\nThe graph against \\(\\ln r\\) is a much better approximation to a straight line. We decided that Venus was an outlier and so we have drawn a line of best fit ignoring its data point. This line has gradient close to \\(-0.43\\) and intercept at \\(7.8\\). So in our formula \\[T_a=T_1\\,r^p\\] we have \\(p=-0.43\\) and \\(T_1\\approx e^{7.8}\\approx 2400\\). Turning the temperature back into \\(\\mathrm{^\\circ C}\\), we can write the formula as \\[T=\\frac{2400}{r^{0.43}}-273.\\]\n\nAs a check, substitute in a few values from the original table. It’s likely that none of them will match exactly, since the data points are scattered around our line of best fit.\n\nThere is a theoretical model that predicts that planetary equilibrium temperature varies as \\(\\dfrac{1}{\\sqrt{r}}\\) and our result is not far off from that. You could add a line to your graph corresponding to this theoretical result and compare it with the data points. You might also think about what factors other than \\(r\\) could affect the surface temperature and lead to the scattering of the data.\n\nSubstituting \\(r=414.0\\) into our formula gives \\[T=\\frac{2400}{414^{0.43}}-273 \\approx -93.\\] So we can predict the temperature to be \\(\\quantity{-93}{^\\circ C}\\) or \\(\\quantity{180}{K}\\). Astronomical tables give the actual value as \\(\\quantity{168}{K}\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "powerful-fractions",
+   "slug": "powerful-fractions",
+   "station": "thinking-about-algebra",
+   "title": "Powerful fractions",
+   "url": "https://undergroundmathematics.org/thinking-about-algebra/powerful-fractions",
+   "resourceType": "food-for-thought",
+   "resourceTypeLabel": "Food for thought",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Powerful fractions\n\n> Excerpt: Students are asked to compare algebraic fractions involving indices. Alongside practising their manipulation skills there are different approaches to the problem that can give students an opportunity to develop different ways of thinking.\n\n## Problem\n\nTwo fractions are shown below.\n\n\\[\\textrm{Fraction} \\ A: \\frac{10^a +1}{10^a +2} \\qquad \\textrm{Fraction} \\ B: \\frac{10^b + 1}{10^b + 2}\\]\n\nFor what values of \\(a\\) and \\(b\\) will fraction A be greater than fraction B?\n\nHow might your thinking change if instead we had these two fractions?\n\n\\[\\textrm{Fraction} \\ C: \\frac{10^c +1}{10^c -1} \\qquad \\textrm{Fraction} \\ D: \\frac{10^d + 1}{10^d -1}\\]\n\nFor what values of \\(c\\) and \\(d\\) will fraction C be greater than fraction D?\n\n## Suggestion\n\nWhat happens when you substitute values in place of \\(a\\) and \\(b\\)?\n\nThink about \\(a=0\\) and \\(b=1\\), giving the fractions \\[A: \\frac{10^0 +1}{10^0 +2} \\qquad B: \\frac{10^1 +1}{10^1 +2}.\\]\n\nWhich fraction has the bigger result in this situation?\n\nWhat happens when you substitute different values in place of \\(a\\) and \\(b\\)?\n\n- Which fraction has the bigger result in each case?\n\nHow do the numerators and denominators of the two fractions compare?\n\n- What is the same and what’s different?\n\n- How could you use any similarities to help you to simplify the problem?\n\nCould you take an approach based on inequalities?\n\n## Solution part 1\n\nIn order to compare two fractions, they need to have the same denominator. In this case we could multiply the two denominators together to give a common denominator of \\((10^a + 2)(10^b +2)\\).\n\nWriting each fraction with this common denominator we get \\[\\textrm{Fraction} \\ A: \\frac{10^a +1}{10^a + 2}=\\frac{(10^a + 1)(10^b + 2)}{(10^a+2)(10^b + 2)}\\] and \\[\\textrm{Fraction} \\ B: \\frac{10^b + 1}{10^b + 2}=\\frac{(10^b+1)(10^a+2)}{(10^b+2)(10^a+2)}.\\]\n\nIs this common denominator, \\((10^a+2)(10^b+2)\\), a positive or negative quantity?\n\n- Does it depend on the values of \\(a\\) and \\(b\\)?\n\n- Does it make a difference to our next steps when we come to compare the two fractions?\n\nWe can now compare \\[\\textrm{Numerator} \\ A: (10^a + 1)(10^b + 2) \\quad \\textrm{and} \\quad \\textrm{Numerator} \\ B: (10^b +1)(10^a+2).\\]\n\nThere are several ways in which we could do this. One strategy might be to expand the brackets and compare the terms \\[\\textrm{Numerator} \\ A: (10^a+1)(10^b+2)=10^{a+b}+2\\times10^a + 10^b + 2\\] and \\[\\textrm{Numerator} \\ B: (10^b+1)(10^a+2)=10^{a+b}+2\\times10^b+10^a+2.\\]\n\nOnly the middle terms differ so if we consider this part of the numerator of \\(A\\): \\[C: 2\\times10^a+10^b\\] and the equivalent part of the numerator of \\(B\\): \\[D: 2\\times10^b+10^a.\\]\n\nIf \\(a>b\\) then in expression C the first term will dominate and in expression D the second term will dominate. Since the first term of C is double the second term in D, expression C must be greater.\n\nSimilarly, if \\(b>a\\) then in expression C the second term will dominate and in expression D the first term will dominate. Since the first term of D is double the second term of C expression D must be greater.\n\nThis means that overall if \\(a>b\\) then \\[\\textrm{Fraction} \\ A > \\textrm{Fraction} \\ B\\] and if \\(b>a\\) then \\[\\textrm{Fraction} \\ B > \\textrm{Fraction} \\ A.\\]\n\nWe could have reached this solution more quickly if we had noticed at the above expressions (showing the differing middle terms) can be reduced to \\[C: 10^a \\quad D: 10^b.\\]\n\nThinking about this graphically we see that \\(10^x\\) is an increasing function and so fraction A will be greater than fraction B when \\(a>b\\).\n\nWe should check that this makes sense when we substitute values in place of \\(a\\) and \\(b\\). Substituting \\(a=1\\) and \\(b=0\\) into fractions A and B gives \\[A: \\frac{10^1+1}{10^1+2} = \\frac{11}{12}\\] and \\[B: \\frac{10^0+1}{10^0+2} = \\frac{2}{3}.\\]\n\nThen we can show that \\(\\frac{11}{12}>\\frac{2}{3}\\) and our solution holds.\n\nAn inequalities approach\n\nWe could have approached this question slightly differently if we had started from the initial requirement that fraction A is greater than fraction B.\n\nWriting this as an inequality we have \\[\\frac{10^a + 1}{10^a + 2} > \\frac{10^b + 1}{10^b + 2}.\\]\n\nMultiplying through by each denominator in turn we obtain the inequality \\[(10^a + 1)(10^b + 2) > (10^b + 1)(10^a + 2).\\]\n\nWe seem to have assumed that both denominators are positive here.\n\n- Is this always the case?\n\n- What would change if one or both of the denominators were in fact negative?\n\nExpanding the brackets on either side of the inequality gives us \\[10^{a+b} + 2 \\times 10^a + 10^b > 10^{a+b} + 10^a + 2 \\times 10^b\\] which can be simplified to \\[10^a > 10^b.\\]\n\nIf we remember that \\(10^x\\) is an increasing function then we know that for fraction A to be greater than fraction B we require that \\(a>b\\).\n\n## Solution part 2\n\nIf we take a step back and compare this pair of fractions to the first pair we will hopefully notice that it is only the denominators that have changed.\n\n- The second term in each denominator has changed from \\(+2\\) to \\(-1\\).\n\nHow does this affect the value of the denominator?\n\nIn the first example the denominator was always positive. Is this still the case?\n\nWe might try to substitute values in place of \\(c\\) and \\(d\\) in order to get a sense of what is happening. There are four scenarios that we will need to consider:\n\n1. What happens if both \\(c\\) and \\(d\\) are positive?\n\n---\n\n1. What happens if both \\(c\\) and \\(d\\) are negative?\n\n---\n\n1. What happens if just one of \\(c\\) or \\(d\\) is positive?\n\n---\n\n1. What happens if \\(c\\) or \\(d\\) is zero?\n\nNow we might choose to take a similar approach as for the first pair of fractions. Re-writing this pair of fractions with a common denominator we have \\[\\textrm{Fraction} \\ C: \\frac{(10^c +1)(10^d - 1)}{(10^c -1)(10^d -1)} \\qquad \\textrm{Fraction} \\ D: \\frac{(10^d + 1)(10^c - 1)}{(10^d -1)(10^c - 1)}.\\]\n\nIf either \\(c\\) or \\(d\\) is zero then the fractions are undefined (the denominator will be zero). For each of the other scenarios we might first consider whether or not the resulting fraction is positive or negative:\n\n| Scenario | Sign of fraction \\(C\\) | Sign of fraction \\(D\\) | Conclusion |\n|---|---|---|---|\n| \\(c>0\\) , \\(d>0\\) | \\(\\dfrac{(+)(+)}{(+)(+)}=+\\) | \\(\\dfrac{(+)(+)}{(+)(+)}=+\\) | Inconclusive |\n| \\(c<0\\) , \\(d<0\\) | \\(\\dfrac{(+)(-)}{(-)(-)}=-\\) | \\(\\dfrac{(+)(-)}{(-)(-)}=-\\) | Inconclusive |\n| \\(c>0\\) , \\(d<0\\) | \\(\\dfrac{(+)(-)}{(+)(-)}=+\\) | \\(\\dfrac{(+)(+)}{(+)(-)}=-\\) | Fraction \\(C\\) > Fraction \\(D\\) |\n| \\(c<0\\) , \\(d>0\\) | \\(\\dfrac{(+)(+)}{(-)(+)}=-\\) | \\(\\dfrac{(+)(-)}{(-)(+)}=+\\) | Fraction \\(C\\) < Fraction \\(D\\) |\n\nThis means that we only need to investigate the first two scenarios. In both cases the denominators will be positive and so we can consider the numerators alone: \\[\\textrm{Numerator} \\ C: (10^c + 1)(10^d - 1) = 10^{c+d} - 10^c + 10^d - 1\\] and \\[\\textrm{Numerator} \\ D: (10^d + 1)(10^c - 1) = 10^{c+d} + 10^c - 10^d - 1.\\]\n\nAs before, it is only the middle terms which differ so we consider this part of the numerator of \\(C\\): \\[10^d - 10^c\\] and the equivalent part of the numerator of \\(D\\): \\[10^c - 10^d.\\]\n\nNow, if \\(c>0\\) and \\(d>0\\) then fraction \\(C\\) will be greater than fraction \\(D\\) when \\(d>c\\).\n\nWe should check this makes sense. If we take \\(c=1\\) and \\(d=2\\) then we get \\[\\textrm{Fraction} \\ C: \\frac{10^1 + 1}{10^1 - 1} = \\frac{11}{9}\\] and \\[\\textrm{Fraction} \\ D: \\frac{10^2 + 1}{10^2 - 1} = \\frac{101}{99}.\\]\n\nWe can use equivalent fractions to show that \\(\\dfrac{11}{9} > \\dfrac{101}{99}\\) and our solution holds.\n\nIf \\(c<0\\) and \\(d<0\\) then fraction \\(C\\) will again be greater than fraction \\(D\\) when \\(d>c\\).\n\nOnce again, we should check that this makes sense. If we take \\(c=-2\\) and \\(d=-1\\) then we get \\[\\textrm{Fraction} \\ C: \\frac{10^{-2} + 1}{10^{-2} - 1} = -\\frac{101}{99}\\] and \\[\\textrm{Fraction} \\ D: \\frac{10^{-1} + 1}{10^{-1} - 1} = -\\frac{11}{9}.\\]\n\nWe can show that \\(-\\dfrac{101}{99} > -\\dfrac{11}{9}\\) and our solution holds.\n\nA summary of our conclusions is below, relating the original scenarios proposed.\n\n| Question | Answer |\n|---|---|\n| What happens if both \\(c\\) and \\(d\\) are positive? | Fraction \\(C\\) > Fraction \\(D\\) when \\(d>c\\) |\n| What happens if both \\(c\\) and \\(d\\) are negative? | Fraction \\(C\\) > Fraction \\(D\\) when \\(d>c\\) |\n| What happens if just one of \\(c\\) or \\(d\\) is negative? | Fraction \\(C\\) > Fraction \\(D\\) when \\(c>0\\) and \\(d<0\\) |\n| What happens if \\(c\\) or \\(d\\) is zero? | Fraction \\(C\\) or Fraction \\(D\\) respectively will be undefined. |\n\nWe might like to think of this problem graphically.\n\nWe can see that \\(y=\\dfrac{10^x + 1}{10^x - 1}\\) is decreasing on the interval \\((-\\infty, 0)\\) and also on \\((0, \\infty)\\) (this is in contrast to the first problem in which the function was increasing).\n\nThink about how each of the four questions posed above relates to regions of the graph.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "proving-laws-of-logs",
+   "slug": "proving-laws-of-logs",
+   "station": "exp-and-log",
+   "title": "Proving the laws of logarithms",
+   "url": "https://undergroundmathematics.org/exp-and-log/proving-laws-of-logs",
+   "resourceType": "scaffolded-task",
+   "resourceTypeLabel": "Scaffolded task",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Proving the laws of logarithms\n\n> Excerpt: Starting with some numeric examples of log laws, students are asked to generalise and then arrange and complete a set of cards to form a proof of one of the laws. This can be extended to cover the other log laws hence encouraging students to understand why they are true.\n\n## Warm-up\n\nTake a look at these results\n\n\\[\\log_3 2 + \\log_3 5 = \\log_3 10\\] \\[\\log_2 15 - \\log_2 3 = \\log_2 5\\] \\[2\\log_5 7 = \\log_5 49\\] \\[\\frac{1}{3} \\log_5 64 = \\log_5 4\\] \\[(\\log_5 7) \\times (\\log_7 11)=\\log_5 11\\]\n\nHow can you change the input values so that the equations still hold?\n\nWhat happens if you change the base of the logarithms?\n\nCan you state generalised versions of these results? What conditions must the base and the inputs satisfy?\n\n## Proof sort\n\nThe cards below can be arranged to give a proof of the statement\n\n\\(\\log_c a + \\log_c b = \\log_c ab\\) for any \\(a,b > 0\\) and \\(c>0\\), but \\(c \\neq 1\\).\n\nCan you arrange the cards to give a convincing proof? You may need to include some extra algebraic steps or explanations if you think they would help to make the argument clearer or more convincing.\n\nYou might want to print out [the cards](https://undergroundmathematics.org/exp-and-log/proving-laws-of-logs/components/cards.pdf) and rearrange them.\n\nSome blank cards have been included in the cards for printing in case you would like to use them to fill in some details.\n\nOne challenge we face when trying to prove something is making it clear what our proof is building on. Our starting point here is that we know how to manipulate indices or powers and we know a relationship between indices and logarithms. We will use results about manipulating indices to prove a result about manipulating logarithms.\n\nTherefore \\(ab = c^{x+y}\\).\n\nWe can rewrite these equations to give us two equations involving powers.\n\nLet \\(\\log_c a =x\\) and \\(\\log_c b =y\\).\n\nTherefore \\(\\log_c ab = \\log_c a + \\log_c b\\), as required.\n\n\\(c^x = a\\) and \\(c^y = b\\)\n\nWe will prove that \\(\\log_c a + \\log_c b = \\log_c ab\\) for any \\(a,b > 0\\) and \\(c>0\\), but \\(c \\neq 1\\).\n\n*We would like to express \\(\\log_c ab\\) in terms of \\(\\log_c a\\) and \\(\\log_c b\\). If we try to express \\(ab\\) in terms of \\(c\\), we might be able to say more about \\(\\log_c ab\\).*\n\n## Solution\n\nHere is one possible way of proving the result (with some extra statements added).\n\nWe will prove that \\(\\log_c a + \\log_c b = \\log_c ab\\) for any \\(a,b > 0\\) and \\(c>0\\), but \\(c \\neq 1\\).\n\n*We know how to manipulate powers, so we could try to turn expressions involving logarithms into expressions involving powers. To do this, it might be helpful to name \\(\\log_c a\\) and \\(\\log_c b\\).*\n\nLet \\(\\log_c a =x\\) and \\(\\log_c b =y\\).\n\nWe can rewrite these equations to give us two equations involving powers.\n\n\\(c^x = a\\) and \\(c^y = b\\)\n\n*We would like to express \\(\\log_c ab\\) in terms of \\(\\log_c a\\) and \\(\\log_c b\\). If we try to express \\(ab\\) in terms of \\(c\\), we might be able to say more about \\(\\log_c ab\\).*\n\n\\(ab = c^{x}c^{y}\\)\n\nTherefore \\(ab = c^{x+y}\\).\n\nTherefore \\(\\log_c ab = \\log_c a + \\log_c b\\), as required.\n\n## Adapting the ideas\n\nCan you adapt the ideas in the proof to produce convincing proofs of the following results?\n\n\\[\\log_c a - \\log_c b = \\log_c \\frac{a}{b}\\]\n\n\\[n\\log_c a = \\log_c a^n\\]\n\n\\[\\dfrac{1}{n}\\log_c a = \\log_c a^{\\frac{1}{n}}\\]\n\n\\[(\\log_a b) \\times (\\log_b c)=\\log_a c\\]\n\nWhat conditions must \\(a,b,c,n\\) satisfy?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r5080",
+   "slug": "r5080",
+   "station": "exp-and-log",
+   "title": "Which is the smallest of these surd, log and trig expressions?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r5080",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Which is the smallest of these surd, log and trig expressions?\n\n## Question\n\nWhich is the *smallest* of the following numbers?\n\n1. \\(\\left(\\sqrt{3}\\right)^3\\),\n\n---\n\n1. \\(\\log_3 \\left(9^2\\right)\\),\n\n---\n\n1. \\(\\left( 3\\sin{\\dfrac{\\pi}{3}}\\right) ^2\\),\n\n---\n\n1. \\(\\log_2 \\left(\\log_2 \\left(8^5\\right)\\right)\\).\n\n## Suggestion\n\nCan we evaluate any of the expressions exactly?\n\nIf so, how do the other expressions compare with the exact value(s)?\n\n## Solution\n\nFirst we note that the value for b. is \\(\\log_3 (9^2) = 2\\log_3 9 = 2\\times2 = 4\\).\n\nIn comparison with this,\n\na: \\(\\quad(\\sqrt{3})^3 = 3 \\sqrt{3} > 4\\), since \\(\\sqrt{3} > 1.5\\).\n\nc: \\(\\quad\\left(3\\sin{\\dfrac{\\pi}{3}}\\right)^2 = \\left(\\dfrac{3 \\sqrt{3}}{2} \\right)^2 = \\frac{27}{4} > 4\\).\n\nd: \\(\\quad\\log_2 (\\log_2 (8^5)) = \\log_2 (5\\log_2 8) = \\log_2 15 < \\log_2 16 = 4\\).\n\nHence the answer is d.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r5103",
+   "slug": "r5103",
+   "station": "exp-and-log",
+   "title": "How many roots are there to $x=8^{\\log_2x} -9^{\\log_3x}-4^{\\log_2x}+\\log_{0.5}{0.25}$?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r5103",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# How many roots are there to $x=8^{\\log_2x} -9^{\\log_3x}-4^{\\log_2x}+\\log_{0.5}{0.25}$?\n\n## Question\n\nThe number of *positive* values \\(x\\) which satisfy the equation \\[x=8^{\\log_2x} -9^{\\log_3x}-4^{\\log_2x}+\\log_{0.5}{0.25}\\] is\n\n1. 0;\n\n---\n\n1. 1;\n\n---\n\n1. 2;\n\n---\n\n1. 3.\n\n## Suggestion\n\nCan we evaluate \\(\\log_{0.5}{0.25}\\) ?\n\nWe know that \\(8\\) is a power of \\(2\\) – could use this fact to rewrite \\(8^{\\log_2x}\\)?\n\n## Solution\n\nWe note that \\(\\log_{0.5}0.25=\\log_{0.5}(0.5)^2=2\\).\n\nIf \\(x>0\\) then \\[8^{\\log_2x}=(2^3)^{\\log_2x}=(2^{\\log_2x})^3=x^3.\\]\n\nSimilarly, \\[9^{\\log_3x}=(3^2)^{\\log_3x}=(3^{\\log_3x})^2=x^2\\] and \\[4^{\\log_2x}=(2^2)^{\\log_2x}=(2^{\\log_2x})^2=x^2.\\]\n\nSo the equation becomes \\[x=x^3-x^2-x^2+2,\\] that is, \\[x^3-2x^2-x+2=0.\\]\n\nWe can see that \\(x=2\\) is a solution, so \\((x-2)\\) is a factor. By inspection, we find \\[(x-2)(x^2-1)=0\\] and so \\[(x-2)(x-1)(x+1)=0.\\]\n\nSo the roots are \\(x=-1\\), \\(1\\) and \\(2\\).\n\nThere are two positive values of \\(x\\) satisfying the equation so the answer is c.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r5462",
+   "slug": "r5462",
+   "station": "exp-and-log",
+   "title": "Can we solve these three simultaneous log equations?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r5462",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we solve these three simultaneous log equations?\n\n## Question\n\nThree *positive* numbers \\(a\\), \\(b\\), \\(c\\) satisfy \\[\\log_b a = 2, \\qquad \\log_b (c-3) = 3, \\qquad \\log_a (c+5) = 2.\\] This information\n\n1. specifies \\(a\\) uniquely.\n\n---\n\n1. is satisfied by two values of \\(a\\).\n\n---\n\n1. is satisfied by infinitely many values of \\(a\\).\n\n---\n\n1. is contradictory.\n\n## Suggestion\n\nCould we rewrite the equations using powers rather than logarithms?\n\n## Solution\n\nIf we write the three equations in exponential form, we get \\[a=b^2, \\qquad c-3 = b^3, \\qquad c+5 = a^2.\\] We can then eliminate \\(a\\) and \\(c\\) by substituting the first and second equations into the third, to get \\[b^3 + 3 + 5 = b^4,\\] which rearranges to \\[b^3(b-1)=8.\\]\n\nWe require \\(b\\) to be positive, so we are only interested in positive solutions of this equation.\n\nWe note that \\(b^3(b-1)\\) is negative for \\(0<b<1\\), and then for \\(b>1\\), both \\(b^3\\) and \\(b-1\\) are positive and increasing (without bound).\n\nSo there is only one positive solution to this equation (in fact by looking at it we can easily spot that \\(b=2\\)), so there is only one possible value for \\(a\\) and for \\(c\\) (namely \\(a=4\\) and \\(c=11\\)).\n\nThe answer is (a).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r5940",
+   "slug": "r5940",
+   "station": "exp-and-log",
+   "title": "Can we solve these simultaneous exponential equations?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r5940",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we solve these simultaneous exponential equations?\n\n## Question\n\nGiven that \\[3(4^p) = 7(6^q)\\] and \\[3(8^{p+1}) = 25(6^q),\\] prove that \\[2^p = \\frac{25}{56},\\] and express \\(6^q\\) also as the quotient of two integers.\n\nDetermine, to two significant figures, the value of \\(p\\).\n\n## Solution\n\nWe can rewrite the second equation as \\[3 \\times 8 \\times 8^p = 25 \\times 6^q\\] and then rewrite \\(8^p\\) as \\(4^p \\times 2^p\\), which gives us \\[3 \\times 8 \\times 4^p \\times 2^p= 25 \\times 6^q.\\]\n\nDividing this by the first equation gives \\[8 \\times 2^p = \\frac{25}{7}.\\] Therefore \\(2^p = \\dfrac{25}{56}\\), as required.\n\nTo find an expression for \\(6^q\\), we can start by rewriting the \\(4^p\\) in the first equation in terms of \\(2^p\\) and substitute the value we’ve just found for \\(2^p\\), so \\(4^p = 2^{2p} = (2^p)^2\\).\n\nTherefore the first equation can be rewritten as \\[3 \\times (2^p)^2 = 7 \\times 6^q.\\] Substituting the value \\(\\frac{25}{56}\\) for \\(2^p\\) gives \\[7 \\times 6^q = 3 \\times \\Bigl(\\frac{25}{56}\\Bigr)^2\\] and therefore \\[6^q = \\frac{3 \\times 25^2}{7 \\times 56^2} = \\frac{1875}{21952}.\\]\n\nFinally, calculating\n\n\\(p\\)\n\n:\n\n\\[\\begin{equation} \\label{eq:log} 2^p = \\frac{25}{56} \\end{equation}\\]\n\nso we can take logs to any base and rearrange to find \\(p\\). \\[p\\log 2 = \\log\\frac{25}{56}\\] and therefore, dividing both sides by \\(\\log 2\\), \\[p = -1.2 \\quad \\text{to 2 s.f.}\\]\n\nHere we can use log to any base, say base 10. We also need a calculator to work out the numerical value of \\(p\\).\n\nIf your calculator can calculate logs to any base of your choosing, then you can solve equation \\(\\eqref{eq:log}\\) immediately by calculating \\(\\log_2 \\left(\\dfrac{25}{56}\\right)\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6045",
+   "slug": "r6045",
+   "station": "exp-and-log",
+   "title": "How large is $2^{100}$, and what is its starting digit?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r6045",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# How large is $2^{100}$, and what is its starting digit?\n\n## Question\n\nGiven that \\[\\log_{10} 2 = 0.3010 \\; \\text{ (to }4\\text{ d.p.)}\\] and that \\[10^{0.2} < 2\\] it is possible to deduce that\n\n1. \\(2^{100}\\) begins in a \\(1\\) and is \\(30\\) digits long;\n\n---\n\n1. \\(2^{100}\\) begins in a \\(2\\) and is \\(30\\) digits long;\n\n---\n\n1. \\(2^{100}\\) begins in a \\(1\\) and is \\(31\\) digits long;\n\n---\n\n1. \\(2^{100}\\) begins in a \\(2\\) and is \\(31\\) digits long.\n\n## Solution\n\nFrom the first given property, we have that \\[\\log_{10} 2^{100} = 100\\log_{10} 2 = 30.10\\dotsc\\] so \\[2^{100} = 10^{30.10 \\dotsc} = 10^{0.10\\dotsc} \\times 10^{30}\\] and so \\(2^{100}\\) is \\(31\\) digits long, with the first digit being the first digit of \\(10^{0.10\\dotsc}\\).\n\nNow we use the second given property: \\[1 < 10^{0.10\\dotsc} < 10^{0.2} < 2.\\] The first digit is less than \\(2\\) and so must be a \\(1\\), and the answer is (c).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6414",
+   "slug": "r6414",
+   "station": "exp-and-log",
+   "title": "When does this inequality have a finite number of integer solutions?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r6414",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# When does this inequality have a finite number of integer solutions?\n\n## Question\n\n*[Choose the one correct answer and explain your reasoning.]*\n\nLet \\(a\\), \\(b\\), \\(c\\) be positive numbers. There are *finitely* many *positive whole* numbers \\(x\\), \\(y\\) which satisfy the inequality \\[a^x > cb^y\\] if\n\n1. \\(a>1\\) or \\(b<1\\).\n\n---\n\n1. \\(a<1\\) or \\(b<1\\).\n\n---\n\n1. \\(a<1\\) and \\(b<1\\).\n\n---\n\n1. \\(a<1\\) and \\(b>1\\).\n\n## Suggestion\n\nIt’s important to notice that the question refers to a *finite* number of solutions…\n\nCan we use logarithms to rewrite the inequality?\n\n## Solution\n\nTaking logarithms of both sides we have \\[a^x > cb^y \\quad\\iff\\quad \\log(a^x)> \\log(cb^y)\\] (so long as the base of the logarithm is greater than one, as \\(\\log x\\) is then an increasing function).\n\nThis can be rewritten as\n\n\\[\\begin{align*} x\\log a &> \\log c+y\\log b\\\\ \\iff\\quad y\\log b &< x\\log a - \\log c \\end{align*}\\]\n\nThe corresponding equation is of a straight line in the \\(x-y\\) plane. To find the gradient of this line we want to divide through by \\(\\log b\\) but we must be careful as this could be negative.\n\nWe have either \\[\\text{Case 1: }\\quad y < x\\frac{\\log a}{\\log b} - \\frac{\\log c}{\\log b},\\quad\\text{if } \\log b > 0\\] or \\[\\text{Case 2: }\\quad y > x\\frac{\\log a}{\\log b} - \\frac{\\log c}{\\log b},\\quad\\text{if } \\log b < 0.\\]\n\nTo have a finite number of positive solutions the inequality must correspond to the region *below* a straight line with negative gradient.\n\nCase 2 is a region *above* a line, so we need only consider case 1, \\(\\log b > 0\\). We also require the gradient of the line, \\(\\dfrac{\\log a}{\\log b}\\), to be negative.\n\nHence, \\(\\log b > 0\\) and \\(\\log a < 0\\). In other words, \\(b > 1\\) and \\(a < 1\\).\n\nSo the answer is (d).\n\nWhy does it not matter whether the \\(y\\)-intercept of the straight line is positive or negative?\n\nThree possible straight lines\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r6806",
+   "slug": "r6806",
+   "station": "exp-and-log",
+   "title": "If $yz=a^2$, can we prove that $1/(a+y) + 1/(a+z) = 1/a$?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r6806",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# If $yz=a^2$, can we prove that $1/(a+y) + 1/(a+z) = 1/a$?\n\n## Question\n\nIf \\(yz=a^2\\) prove that \\[\\frac{1}{a+y} + \\frac{1}{a+z} = \\frac{1}{a}.\\]\n\nBy using this result, or otherwise, find the numerical values of\n\n1. \\(\\dfrac{1}{1+x^k} + \\dfrac{1}{1+x^{-k}}\\);\n\n---\n\n1. \\(\\dfrac{1}{7+\\sqrt{62}-\\sqrt{13}} + \\dfrac{1}{7+\\sqrt{62}+\\sqrt{13}}\\);\n\n---\n\n1. \\(\\dfrac{2}{5(2+5\\log_b c)} + \\dfrac{1}{5+2\\log_c b}\\);\n\n## Solution\n\nSolving \\(yz=a^2\\) for \\(y\\), we obtain\n\n\\[y=\\dfrac{a^2}{z},\\]\n\nwhich we can substitute into the left-hand side of the given expression. This leads us to\n\n\\[\\begin{align*} \\frac{1}{a+y} + \\frac{1}{a+z} &= \\frac{1}{a+\\dfrac{a^2}{z}} + \\frac{1}{a+z}\\\\ &=\\dfrac{z}{az+a^2} + \\dfrac{a}{a(a+z)}\\\\ &=\\dfrac{a+z}{a(a+z)}=\\dfrac{1}{a}, \\end{align*}\\]\n\nas required.\n\nComparing this expression with the one above leads to setting \\(a=1\\), \\(x^k=y\\) and \\(x^{-k}=z\\). These values clearly fulfil \\(yz=a^2\\), and hence give us\n\n\\[\\frac{1}{1+x^k} + \\frac{1}{1+x^{-k}} = 1.\\]\n\nWe have \\((\\sqrt{62}-\\sqrt{13})(\\sqrt{62}+\\sqrt{13})=62-13=49=7^2\\), which means we can we take \\(a=7\\), \\(y=\\sqrt{62}-\\sqrt{13}\\) and \\(z=\\sqrt{62}+\\sqrt{13}\\).\n\nThus \\[\\frac{1}{7+\\sqrt{62}-\\sqrt{13}} + \\frac{1}{7+\\sqrt{62}+\\sqrt{13}}=\\frac{1}{7}.\\]\n\nWe can write this as\n\n\\[\\frac{1}{5+\\dfrac{25}{2}\\log_b c} + \\frac{1}{5+2\\log_c b}.\\]\n\nThis looks rather like the expression at the start of the question, so let us try \\(a=5\\), \\(y=\\dfrac{25}{2}\\log_b c\\) and \\(z=2\\log_c b\\). Then \\[yz=\\dfrac{25}{2}\\log_b c\\times2\\log_c b = 25\\log_b c\\times\\log_c b = 25 = a^2 .\\]\n\nWe have used the law of logarithms for changing bases which states that \\[\\log_a b=\\log_a c\\times \\log_c b .\\]\n\nSo we can state that \\[\\frac{2}{5(2+5\\log_b c)} + \\frac{1}{5+2\\log_c b}=\\frac{1}{5}.\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7015",
+   "slug": "r7015",
+   "station": "exp-and-log",
+   "title": "Given this log equation, when can $a$ be largest?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r7015",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Given this log equation, when can $a$ be largest?\n\n## Question\n\nGiven that \\(a\\) and \\(b\\) are positive and \\[4(\\log_{10}a)^2+(\\log_{10}b)^2=1\\] then the greatest possible value of \\(a\\) is\n\n1. \\(\\frac{1}{10}\\),\n\n---\n\n1. \\(1\\),\n\n---\n\n1. \\(\\sqrt{10}\\),\n\n---\n\n1. \\(10^{\\sqrt{2}}\\).\n\n## Solution\n\n**Approach 1**\n\nNote first that \\(a\\) is largest when \\(\\log_{10}a\\) is largest, since \\(\\log\\) is an increasing function. So \\(a\\) is largest when \\((\\log_{10}b)^2\\) is smallest.\n\nFor positive \\(b\\), the minimum value that \\((\\log_{10}b)^2\\) can take is \\(0\\) (when \\(b=1\\)). Then we have \\[4(\\log_{10}a)^2=1,\\] which is equivalent to \\[\\log_{10}a =\\pm \\frac{1}{2}.\\]\n\nSo the largest value this takes is \\(\\log_{10}a = \\frac{1}{2}\\), which is when \\(a=\\sqrt{10}\\).\n\nTherefore the answer is (c).\n\nIn fact, this also shows that the minimum value for \\(\\log_{10}a\\) happens when \\(b = 1\\) and \\(\\log_{10}a = -1/2\\). That is, when \\(a = 1/\\sqrt{10}\\).\n\nThe ellipse \\(4x^2 + y^2 = 1\\)\n\n**Approach 2**\n\nAlternatively, we could take a geometrical approach. Let \\(x = \\log_{10}a\\), \\(y = \\log_{10}b\\). The maximum value for \\(x=\\log_{10}a\\) is achieved when \\(a\\) takes its maximum value, since \\(\\log\\) is an increasing function.\n\nOur equation now becomes \\(4x^2 + y^2 = 1\\), which is an ellipse.\n\nFrom the sketch, we can see that \\(x\\) has maximum \\(\\frac{1}{2}\\) and so \\(a\\) has maximum \\(\\sqrt{10}\\), by the same calculation as above.\n\nAs before, the answer must be (c).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7077",
+   "slug": "r7077",
+   "station": "thinking-about-algebra",
+   "title": "Can we prove these bounds for this fraction involving surds?",
+   "url": "https://undergroundmathematics.org/thinking-about-algebra/r7077",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we prove these bounds for this fraction involving surds?\n\n## Question\n\n1. The variables \\(x\\) and \\(y\\) are connected by the relation \\(y = ax^n\\), where \\(a\\) and \\(n\\) are constants; \\(y = 3\\) when \\(x = 4\\) and \\(y = 2\\) when \\(x = 9\\). Find the exact values of \\(n\\) and \\(a\\).\n\n---\n\n1. Express \\[\\frac{\\sqrt{a}+\\sqrt{b}}{\\sqrt{a}-\\sqrt{b}}\\] as a fraction having a rational denominator. Show that, if \\(n\\) is a positive integer, then \\(n(n+2)\\) lies between \\(n^2\\) and \\((n+1)^2\\). If \\(n\\) is a positive integer, use the results in (i) and (ii) to find in terms of \\(n\\) two consecutive integers between which \\[\\frac{\\sqrt{n+2}+\\sqrt{n}}{\\sqrt{n+2}-\\sqrt{n}}\\] must lie.\n\n## Suggestion\n\nThe question asks us to get rid of the square roots in the denominator; what method might we use?\n\nCan we multiply \\(\\sqrt{a}-\\sqrt{b}\\) by something so that we lose the square roots?\n\nWhat is \\(n(n+2) - (n+1)^2\\)?\n\nThe question tells us to use results we’ve already proved… like many exam questions!\n\n## Solution\n\nBy substituting the information we’re given in the question, we obtain the equations\n\n\\[\\begin{equation} 3 = 4^n a \\qquad \\label{eq:1} \\end{equation}\\]\n\nand\n\n\\[\\begin{equation} 2 = 9^n a. \\qquad \\label{eq:2} \\end{equation}\\]\n\nDividing the second by the first to eliminate \\(a\\) gives \\[\\frac{2}{3} = \\left(\\frac{9}{4}\\right)^n.\\]\n\nTo work with this, it will be more convenient to write everything as powers of \\(2\\) and \\(3\\).\n\nThat is, \\(2^{2n+1}=3^{2n+1}\\), which can only be the case when \\(2n+1=0\\) (as \\(2\\) and \\(3\\) have highest common factor \\(1\\)).\n\nTherefore, \\(n=-\\frac{1}{2}\\).\n\nNow we can go back to equation \\(\\eqref{eq:1}\\) or equation \\(\\eqref{eq:2}\\) to find that \\(a=6\\).\n\nAlternatively, if you know about logarithms…\n\nTaking logs to base \\(10\\) with our starting equations (any base will do, in fact) we get \\[\\log3 = \\log a + 2n\\log2, \\log2 = \\log a + 2n \\log3.\\]\n\nSubtracting these gives \\(\\log3 - \\log2 = 2n(\\log2-\\log3)\\), and so \\(n = -\\dfrac{1}{2}\\).\n\nSubstituting back into one of our starting equations gives \\(a = 6\\).\n\nIf we multiply both the numerator and the denominator by \\(\\sqrt{a} + \\sqrt{b}\\), then the fraction becomes \\[\\dfrac{(\\sqrt{a}+\\sqrt{b})(\\sqrt{a}+\\sqrt{b})}{(\\sqrt{a}-\\sqrt{b})(\\sqrt{a}+\\sqrt{b})}=\\frac{(\\sqrt{a}+\\sqrt{b})^2}{a-b}=\\dfrac{a+b+2\\sqrt{ab}}{a-b}.\\] This has a rational denominator.\n\nNote \\(n(n+2)-n^2 = 2n > 0\\), so \\(n(n+2)>n^2\\).\n\nWe also have \\[n(n+2)-(n+1)^2=n^2 + 2n - n^2 - 2n -1=-1 < 0,\\] so \\(n(n+2)<(n+1)^2\\).\n\nSo \\(n(n+2)\\) lies between \\(n^2\\) and \\((n+1)^2\\).\n\n1. If \\(n\\) is a positive integer, use the results in (i) and (ii) to find in terms of \\(n\\) two consecutive integers between which \\[\\dfrac{\\sqrt{n+2}+\\sqrt{n}}{\\sqrt{n+2}-\\sqrt{n}}\\] must lie.\n\nBy using (i) we get \\[\\dfrac{\\sqrt{n+2}+\\sqrt{n}}{\\sqrt{n+2}-\\sqrt{n}}=\\dfrac{2n+2+2\\sqrt{n(n+2)}}{2}=n+1+\\sqrt{(n+2)n}.\\]\n\nNow we know \\((n+1)^2>n(n+2)>n^2\\), which implies \\(n+1>\\sqrt{n(n+2)}>n\\).\n\nSo adding \\(n+1\\) to each part of the inequality, we get \\[2n+2>n+1+\\sqrt{(n+2)n}>2n+1,\\]\n\nand so \\(\\dfrac{\\sqrt{n+2}+\\sqrt{n}}{\\sqrt{n+2}-\\sqrt{n}}\\) lies between \\(2n+1\\) and \\(2n+2\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7231",
+   "slug": "r7231",
+   "station": "exp-and-log",
+   "title": "Which is the largest of these four logarithms?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r7231",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Which is the largest of these four logarithms?\n\n## Question\n\nWhich is the largest of the following four numbers?\n\n1. \\(\\log_2 3\\),\n\n---\n\n1. \\(\\log_4 8\\),\n\n---\n\n1. \\(\\log_3 2\\),\n\n---\n\n1. \\(\\log_5 10\\).\n\n## Suggestion\n\nCan we evaluate any of the logarithms exactly?\n\nWhat do we know about \\(\\log_a b\\) when \\(0 < b < a\\)?\n\n## Solution\n\nUseful fact; if \\(0 < b < a\\) then \\(\\log_ab < 1\\), since \\(b < a^1\\).\n\nFirstly, we notice that \\(\\log_3 2 <1\\), while the other logarithms are greater than one, so (c) cannot be the answer.\n\nSecondly, we might want to calculate some of the logarithms.\n\nUseful fact; suppose we know logs to base \\(j\\) and want to know logs to base \\(k\\).\n\nThen if \\(\\log_kx = y\\), we have \\(x = k^y\\), and taking logs to base \\(j, \\log_jx = y\\log_jk\\), so \\(y = \\log_kx = \\dfrac{\\log_jx}{\\log_jk}\\) .\n\nSince both \\(4\\) and \\(8\\) are powers of \\(2\\), \\(\\log_4 8\\) can be easily calculated. \\[\\log_4 8= \\frac{\\log_2 8}{\\log_2 4}= \\frac{3}{2}\\]\n\nAt this point we will compare \\(\\log_2 3\\) and \\(\\log_5 10\\) with \\(\\frac{3}{2}\\).\n\nThe \\(\\iff\\) symbol is really useful. \\(A \\iff B\\) means that \\(A\\) is true if, and only if, \\(B\\) is true. Another way to say this is that \\(A\\) implies \\(B\\), and \\(B\\) implies \\(A\\); \\(A\\) and \\(B\\) are always true together, or false together.\n\nWe start by supposing \\(\\log_2 3> \\frac{3}{2}\\) and follow through the logical implications to see if it is true. \\[\\log_2 3> \\frac{3}{2} \\iff 2\\log_2 3>3 \\iff \\log_2 9>3 \\iff 9>2^3 \\text{, which is true.}\\] Therefore, \\(\\log_2 3>\\log_4 8\\). Similarly, \\[\\log_5 10< \\frac{3}{2} \\iff \\log_5 100 < 3\\iff 100<5^3\\text{, which is true.}\\] Hence, \\(\\log_5 10<\\log_4 8\\). From the results above, we can conclude that the biggest number is \\(\\log_2 3\\), so the answer is (a).\n\nAlternatively, we could argue we know the biggest is either \\(\\log_23=x\\), or \\(\\log_510 = y\\).\n\nSo \\(2^x =3\\), and since \\(2\\sqrt2 = 2(1.414...) < 3\\), \\(x > 1.5\\).\n\nBut \\(5^y = 10\\), so \\(5^{y-1} = 2\\), and since \\(\\sqrt5 > 2, y-1 < 0.5\\), so \\(y < 1.5\\). So \\(x\\) is the biggest.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7298",
+   "slug": "r7298",
+   "station": "exp-and-log",
+   "title": "Can we find these log expressions in terms of $\\log_9 x$?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r7298",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we find these log expressions in terms of $\\log_9 x$?\n\n## Question\n\nGiven that \\(u=\\log_9 x\\), find, in terms of \\(u\\):\n\n1. \\(x\\),\n\n---\n\n1. \\(\\log_9(3x)\\),\n\n---\n\n1. \\(\\log_x 81\\).\n\n(Answers may not contain the word \\(\\log\\).)\n\n## Solution\n\nGiven that \\(u=\\log_9 x\\), find, in terms of \\(u\\)\n\n1. \\(x\\)\n\nBy definition, we have that \\(x=9^u\\).\n\nUsing what we know about the logarithm of a product, we get that \\[\\log_9(3x)=\\log_9 3+\\log_9 x=\\frac{1}{2}+u.\\]\n\nLet’s start by writing \\(v=\\log_x 81\\).\n\nBy definition, we see that \\(81=x^v\\) and so using part (a), \\(81=(9^u)^v\\).\n\nSince \\(9^2=81\\), we must have that \\(uv=2\\), or \\(v=2/u\\). Therefore, \\(\\log_x 81=2/u\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7384",
+   "slug": "r7384",
+   "station": "exp-and-log",
+   "title": "When does $9^x - 3^{x+1} = k$ have one or more real solutions?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r7384",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# When does $9^x - 3^{x+1} = k$ have one or more real solutions?\n\n## Question\n\nThe equation \\[9^x - 3^{x+1} = k\\] has one or more real solutions precisely when\n\n1. \\(k \\geq -9/4\\),\n\n---\n\n1. \\(k > 0\\),\n\n---\n\n1. \\(k \\leq -1\\),\n\n---\n\n1. \\(k \\geq 5/8\\).\n\n## Suggestion\n\nMaybe we can change variable so that we are working with an equation of a more familiar form? Would the substitution \\(y = 3^x\\) help?\n\n## Solution\n\nIf we write \\(y = 3^x\\) and use the fact that \\(9^x = (3^2)^x = (3^x)^2\\), the equation can be written as \\[y^2 -3y - k = 0.\\]\n\nThis has solutions \\[y = \\frac{3 \\pm \\sqrt{9 + 4k}}{2}\\] which are real when \\(k \\geq -9/4\\). Since \\(y = 3^x\\), we need at least one of these solutions to be positive for \\(x\\) to be real, but the larger root is clearly always positive, so this is not a problem. Hence the answer is (a).\n\nInteractive check\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/TDQ9jTyn/width/600/height/400/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/TDQ9jTyn)\n\nThe green curve is \\(y=9^x - 3^{x+1} -k\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7471",
+   "slug": "r7471",
+   "station": "exp-and-log",
+   "title": "Can we use the laws of logs to find $x$ and $y$?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r7471",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we use the laws of logs to find $x$ and $y$?\n\n## Question\n\nIf \\[\\log{x} = 2 + \\log{y} = \\log{\\frac{4}{9}} - \\log{\\frac{9}{125}} + 2\\log{\\frac{9}{5}},\\] where all logarithms are to base \\(10\\), find \\(x\\) and \\(y\\) without using tables.\n\n## Suggestion\n\nWhich rules do you know to simplify expressions with logarithms? Can you use them to simplify the above equation?\n\n## Solution\n\nWe will simplify the right hand side of the above equation as far as possible. By using the logarithm quotient rule we get\n\n\\[\\begin{align*} \\log{\\frac{4}{9}} - \\log{\\frac{9}{125}} + 2\\log{\\frac{9}{5}} & = \\log{4} - \\log{9} - \\log{9} + \\log{125} + 2\\log{9} - 2\\log{5} \\\\ & = \\log{4} + \\log{125} - 2\\log{5}. \\end{align*}\\]\n\nNow as \\(125 = 5^3\\) we can use the logarithm power rule to get \\[\\log{4} + \\log{5^3} - 2\\log{5} = \\log{4} + 3\\log{5} - 2\\log{5} = \\log{4}+\\log{5}=\\log{20}.\\] Therefore, we get \\(\\log{x} = \\log{20}\\) and thus \\(x = 20\\).\n\nNow for\n\n\\(y\\)\n\nwe get the equation\n\n\\(2 + \\log{y} = \\log{20}\\)\n\n. As all logarithms are to base\n\n\\(10\\)\n\nwe can write\n\n\\(2 = \\log{100}\\)\n\nand therefore\n\n\\[\\begin{align*} \\log{y} & = \\log{20} - \\log{100} \\\\ & = \\log{\\frac{20}{100}} \\\\ & = \\log{\\frac{1}{5}}. \\end{align*}\\]\n\nHence \\(y = \\frac{1}{5}\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7606",
+   "slug": "r7606",
+   "station": "exp-and-log",
+   "title": "How many real roots does $8^x+4=4^x+2^{x+2}$ have?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r7606",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# How many real roots does $8^x+4=4^x+2^{x+2}$ have?\n\n## Question\n\nThe equation \\[8^x+4=4^x+2^{x+2}\\] has\n\n1. no real solutions;\n\n---\n\n1. one real solution;\n\n---\n\n1. two real solutions;\n\n---\n\n1. three real solutions.\n\n[A real solution is one that lies on the number line.]\n\n## Suggestion\n\nThis equation looks difficult because the unknown \\(x\\) is in the exponents. Could we make a substitution to make it look more like a familiar type of equation?\n\n## Solution\n\nFirst set\n\n\\(y=2^x\\)\n\n. Then the equation can be rewritten as\n\n\\[\\begin{align*} &y^3+4=y^2+4y\\\\ \\iff &y^3-y^2-4y+4=0. \\end{align*}\\]\n\nThe left hand side can be factorised (by noticing that if we substitute\n\n\\(y=1\\)\n\nthen we have a solution).\n\n\\[\\begin{align*} &(y-1)(y^2-4)=0\\\\ \\iff &(y-1)(y-2)(y+2)=0 \\end{align*}\\]\n\nSo the possible solutions are \\(y=1\\), \\(y=2\\), \\(y=-2\\). But \\(y=2^x>0\\) for real \\(x\\), so valid solutions occur when \\(y=1\\) or \\(y=2\\).\n\nThis gives the solutions \\(x=0\\) and \\(x=1\\) respectively, but since we’re only asked how many solutions there are, we don’t actually need to find them (provided we can be sure they exist!)\n\nSo the equation has two real solutions. The answer is (c).\n\nThe curve \\(y=8^x+4-4^x-2^{x+2}\\)\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7845",
+   "slug": "r7845",
+   "station": "exp-and-log",
+   "title": "Can we solve $ \\log_3 x + 2 \\log_x 3 = -3$?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r7845",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we solve $ \\log_3 x + 2 \\log_x 3 = -3$?\n\n## Question\n\n1. If \\(a\\), \\(b\\) and \\(c\\) are any positive numbers not equal to unity, show that \\[\\begin{equation*} \\log_b a \\log_c b \\log_a c = 1. \\end{equation*}\\]\n\n---\n\n1. Find the values of \\(x\\) which satisfy the equation \\[\\begin{equation*} \\log_3 x + 2 \\log_x 3 = -3. \\end{equation*}\\]\n\n## Suggestion\n\nHow can we rewrite the equation \\(\\log_a b = c\\) in a way that does not include logarithms?\n\n## Solution\n\n**Approach 1: Rewriting logarithms as exponentials**\n\nLet \\(\\log_b a = x\\), \\(\\log_c b = y\\), and \\(\\log_a c = z\\) so that, by definition, \\(b^x = a\\), \\(c^y = b\\), and \\(a^z = c.\\)\n\nThus \\(a = b^x = (c^y)^x =c^{xy} = (a^z)^{xy} = a^{xyz}\\), which implies that \\(xyz = 1\\), that is, \\(\\log_b a \\log_c b \\log_a c = 1.\\)\n\n**Approach 2: Changing the base of logarithms**\n\nIf \\(\\log_ab=c\\), then \\(a^c=b\\). If we now take logs to base \\(d \\ne 1\\), then \\[\\log_d(a^c) = \\log_d b \\implies c\\log_d a = \\log_d b.\\]\n\nSo we have \\[c = \\log_a b = \\frac{\\log_db}{\\log_da},\\] and thus we can find logs to base \\(a\\) if we know logs to base \\(d \\ne 1\\).\n\nThis means \\[\\log_ab\\log_bc\\log_ca = \\dfrac{\\log_db}{\\log_da}\\dfrac{\\log_dc}{\\log_db}\\dfrac{\\log_da}{\\log_dc}=1,\\] as required.\n\nThe numbers \\(a\\), \\(b\\) and \\(c\\) cannot be 1 since `logs to base 1’ makes no sense.\n\nCan this result be generalised beyond three variables?\n\n**Approach 1: Rewriting logarithms as exponentials**\n\nLet \\(\\log_3 x = y\\) and \\(\\log_x 3 = z\\), so that \\(3^y = x\\) and \\(x^z = 3\\). Thus \\(3 = x^z = (3^y)^z = 3^{yz}\\), which implies that \\(yz = 1\\).\n\nWe also have \\(y + 2z = -3\\). Solving these two equations simultaneously gives \\[(-2z-3)z = 1 \\implies 2z^2 + 3z + 1 = 0 \\implies (2z+1)(z+1) = 0.\\]\n\nThus \\(z = -\\dfrac{1}{2}\\) or \\(-1\\), and hence \\(x = \\dfrac{1}{3}\\) or \\(\\dfrac{1}{9}\\).\n\n**Approach 2: Changing the base of logarithms**\n\nFrom our work on changing bases above, we have \\(\\log_ab=\\dfrac{\\log_bb}{\\log_ba} = \\dfrac{1}{\\log_ba}\\).\n\nThus we have\n\n\\[\\begin{equation*} \\log_3 x + 2 \\log_x 3 = -3 \\iff \\log_3 x + \\frac{2}{\\log_3 x} = -3. \\end{equation*}\\]\n\nIf we take\n\n\\(u = \\log_3 x \\ne 0\\)\n\n, this equation is equivalent to\n\n\\[\\begin{align*} u + \\frac{2}{u} = -3 &\\iff u^2 + 3u + 2 = 0 \\\\ &\\iff (u+2)(u+1) = 0 \\\\ &\\iff u = -1 \\quad\\text{or}\\quad u = -2 \\\\ &\\iff \\log_3 x = -1 \\quad\\text{or}\\quad \\log_3 x = -2 \\\\ &\\iff x = \\frac{1}{3} \\quad\\text{or}\\quad x = \\frac{1}{9}. \\end{align*}\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r9366",
+   "slug": "r9366",
+   "station": "exp-and-log",
+   "title": "Can we find $a$ and $b$ as powers of $10$?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r9366",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we find $a$ and $b$ as powers of $10$?\n\n## Question\n\n## Solution\n\n**Approach 1:**\n\nWe have that \\(10a^2 = b^3\\). Taking logs to base \\(10\\) gives \\(\\log_{10}10 + 2\\log_{10}a=3\\log_{10}b.\\)\n\nBut we know that \\(\\log_{10} a = \\log_{10}b + 1\\), and so \\(1+2(\\log_{10}b + 1)=3\\log_{10}b.\\)\n\nThis gives \\(\\log_{10}b = 3\\), and so \\(b = 10^3\\), and \\(a = 10^4\\).\n\n**Approach 2:**\n\nWe have\n\n\\[\\begin{align*} \\log_{10} a &= \\log_{10} b+1\\\\ \\implies \\log_{10} a &= \\log_{10} b + \\log_{10} 10\\\\ \\implies \\log_{10} a &= \\log_{10} (10b)\\\\ \\implies a &= 10b. \\end{align*}\\]\n\nUsing the other equation, we find \\[100b^2 = \\frac{b^3}{10},\\] and so \\(b=0\\) or \\(b=1000\\).\n\nHowever \\(\\log_{10} 0\\) is not defined, and hence \\(b=0\\) is not a solution.\n\nThus \\(b=10^3\\), which leads to \\(a=\\pm 10^4\\). Again, \\(\\log_{10}a\\) appears in the question so \\(a\\) cannot be negative.\n\nSo we have \\(b=10^3\\) and \\(a=10^4\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r9381",
+   "slug": "r9381",
+   "station": "exp-and-log",
+   "title": "Can we find bounds for $\\log_2 3$?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r9381",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we find bounds for $\\log_2 3$?\n\n## Question\n\nObserve that \\(2^3 = 8\\), \\(2^5 = 32\\), \\(3^2 = 9\\) and \\(3^3 = 27\\). From these facts, we can deduce that \\(\\log_{2}3\\), the logarithm of \\(3\\) to base \\(2\\), is\n\n1. between \\(1\\frac{1}{3}\\) and \\(1\\frac{1}{2}\\);\n\n---\n\n1. between \\(1\\frac{1}{2}\\) and \\(1\\frac{2}{3}\\);\n\n---\n\n1. between \\(1\\frac{2}{3}\\) and \\(2\\);\n\n---\n\n1. between \\(2\\) and \\(3\\).\n\n## Suggestion\n\nCan we create any inequalities from the information we’re given in the question?\n\nIs it helpful to note that \\(\\log_{2}x\\) is an increasing function?\n\n## Solution\n\nWe are told that \\[2^3 < 3^2 < 3^3 < 2^5.\\]\n\nAs \\(\\log_{2}x\\) is an increasing function (which means that \\(\\log_2x < \\log_2y\\) if and only if \\(x < y\\), or the gradient of the graph \\(y = \\log_2x\\) is always positive), we can take logarithms to base \\(2\\) of these inequalities. This gives \\[3 < 2\\log_{2}3 < 3\\log_{2}3 < 5.\\]\n\nFrom the first inequality we get \\[\\frac{3}{2} < \\log_{2}3,\\] and from the last inequality we get \\[\\log_{2}3 < \\frac{5}{3}.\\]\n\nCombining these gives \\[\\frac{3}{2} < \\log_{2}3 < \\frac{5}{3},\\] so the answer is (b).\n\nAn alternative approach might say, let \\(\\log_23 = k\\), so \\(3 = 2^k\\). Now \\(9 = 2^{2k} > 8\\), so \\(2k > 3\\).\n\nWe also have \\(27 = 2^{3k} < 32 = 2^5\\), so \\(3k < 5\\).\n\nWe use here that \\(y = 2^x\\) is an increasing function.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r9680",
+   "slug": "r9680",
+   "station": "exp-and-log",
+   "title": "Which of these four log expressions is the smallest?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r9680",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Which of these four log expressions is the smallest?\n\n## Question\n\nWhich is the smallest of these values?\n\n1. \\(\\log_{10}\\pi\\),\n\n---\n\n1. \\(\\sqrt{\\log_{10}(\\pi^2)}\\),\n\n---\n\n1. \\(\\left(\\dfrac{1}{\\log_{10}\\pi}\\right)^3\\),\n\n---\n\n1. \\(\\dfrac{1}{\\log_{10}\\sqrt{\\pi}}\\).\n\n## Suggestion\n\nCan we rewrite the expressions using the laws of logs and indices? Is the substitution \\(L = \\log_{10}\\pi\\) helpful to us?\n\n## Solution\n\nLet \\(L = \\log_{10}\\pi\\). Since \\(\\pi < 10\\), we have \\(L < 1\\). Then\n\n1. \\(\\log_{10}\\pi = L\\);\n\n---\n\n1. \\(\\sqrt{\\log_{10}(\\pi^2)}= \\sqrt{2\\log_{10}\\pi} = \\sqrt{2L} > \\sqrt{L \\times L} = L\\);\n\n---\n\n1. \\(\\left(\\dfrac{1}{\\log_{10}\\pi}\\right)^3 = L^{-3} > 1\\);\n\n---\n\n1. \\(\\dfrac{1}{\\log_{10}\\sqrt{\\pi}} = \\dfrac{1}{\\dfrac{1}{2}\\log_{10}\\pi} = \\dfrac{2}{L} > 2\\).\n\nSo the smallest value is \\(L\\), and the answer is (a).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r9747",
+   "slug": "r9747",
+   "station": "exp-and-log",
+   "title": "Can we use $\\log_{10}$ to find the first digit of $3^{100}$?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r9747",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we use $\\log_{10}$ to find the first digit of $3^{100}$?\n\n## Question\n\nTo nine decimal places, \\(\\log_{10}2=0.301029996\\) and \\(\\log_{10}3=0.477121255\\).\n\n1. Calculate \\(\\log_{10}5\\) and \\(\\log_{10}6\\) to three decimal places. By taking logs, or otherwise, show that \\[5\\times 10^{47}<3^{100}<6\\times 10^{47}.\\]\n\nHence write down the first digit of \\(3^{100}\\).\n\n1. Find the first digit of each of the following numbers: \\(2^{1000}\\); \\(2^{10\\,000}\\); and \\(2^{100\\, 000}\\).\n\n## Solution\n\nThe laws of logs tell us that\n\n\\[\\begin{align*} \\log_{10}(ab)&=\\log_{10}a+\\log_{10}b, \\\\ \\log_{10}(a^b)&=b\\log_{10}a, \\end{align*}\\]\n\nand combining the two we have that \\[\\log_{10}\\left(\\frac{a}{b}\\right)=\\log_{10}(ab^{-1})=\\log_{10}a+\\log_{10}b^{-1}=\\log_{10}a-\\log_{10}b.\\]\n\nRecall that \\(\\log_{10}10=1\\), by definition. We have that \\[\\log_{10}5=\\log_{10}\\left(\\frac{10}{2}\\right)=\\log_{10}10-\\log_{10}2=1-0.301029996=0.699\\] to three decimal places.\n\nSimilarly, we have that \\[\\log_{10}6=\\log_{10}(3\\times 2)=\\log_{10}3+\\log_{10}2=0.477121255+0.301029996=0.778\\] to three decimal places.\n\nNow we wish to show that \\[5\\times 10^{47}<3^{100}<6\\times 10^{47}.\\] We can calculate that \\[\\log_{10}(5\\times 10^{47})=\\log_{10}5+47\\log_{10}10=0.699+47=47.699.\\] Further, we have \\[\\log_{10}3^{100}=100\\log_{10}3=47.712,\\] to three decimal places. Finally, we find that \\[\\log_{10}(6\\times 10^{47})=\\log_{10}6+47\\log_{10}10=0.778+47=47.778.\\] Combining these, we have that \\[\\log_{10}(5\\times 10^{47})<\\log_{10}3^{100}<\\log_{10}(6\\times 10^{47}).\\] Therefore \\[10^{\\log_{10}(5\\times 10^{47})}<10^{\\log_{10}3^{100}}<10^{\\log_{10}(6\\times 10^{47})},\\] which is the same as \\[5\\times 10^{47}<3^{100}<6\\times 10^{47}.\\] From this we can see that \\(5\\) with \\(47\\) zeroes \\(<3^{100}<\\) \\(6\\) with \\(47\\) zeroes. This means that the first digit of \\(3^{100}\\) must be \\(5\\).\n\nTo nine decimal places, \\(\\log_{10}2=0.301029996\\) and \\(\\log_{10}3=0.477121255\\).\n\n1. Find the first digit of each of the following numbers: \\(2^{1000}\\); \\(2^{10\\,000}\\); and \\(2^{100\\, 000}\\).\n\nTo answer this part we mimic the technique of the last part of part (i). That is, we find an integer \\(n\\) which satisfies \\[n\\times10^{m}<2^{1000}<(n+1)\\times 10^m\\] or \\[\\log_{10}(n\\times10^{m})<\\log_{10}2^{1000}<\\log_{10}((n+1)\\times 10^m),\\] which tells us that the first digit of \\(2^{1000}\\) is \\(n\\). We have that \\[\\log_{10} 2^{1000}=1000\\log_{10}2=301.29996.\\] We know that \\[\\log_{10}10^{301}=301,\\] so we need to check \\[\\log_{10}(2\\times 10^{301})=\\log_{10}2+301=301.301.\\] Therefore \\[1\\times10^{301}<2^{1000}<2\\times10^{301}.\\] So the first digit of \\(2^{1000}\\) is \\(1\\).\n\nAgain, we study \\[\\log_{10}2^{10\\,000}=10\\,000\\log_{10}2=3010.29996.\\] This is again close to \\(\\log_{10}10^{3010}\\), so we check \\[\\log_{10}(2\\times 10^{3010})=\\log_{10}2+3010=3010.301.\\] So \\[10^{3010}<2^{10\\,000}<2\\times10^{3010},\\] which tells us that the first digit of \\(2^{10\\, 000}\\) is \\(1\\).\n\nFinally, we have that \\[\\log_{10}2^{100\\,000}=100\\,000\\log_{10}2=30102.9996.\\] This is very close to \\(30103\\), so let’s check \\[\\log_{10}(9\\times 10^{30102})=\\log_{10}3^2+30102=2\\log_{10}3+30102=30102.9542.\\] So we have that \\[9\\times 10^{30102}<2^{100\\,000}<10^{30103},\\] and so the first digit of \\(2^{100\\,000}\\) is \\(9\\).\n\nThis is related to Benford’s Law, which states that the fractional part of the logarithm of random data is uniformly distributed between 0 and 1.\n\nSo, for instance, in a set of figures taken from real life, 1 is by far the most common first digit.\n\nThis has a neat application in fraud detection, in that most people ignore Benford’s Law when making up figures, and create their first digits in equal numbers.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r9976",
+   "slug": "r9976",
+   "station": "exp-and-log",
+   "title": "Can we evaluate  these log expressions without using a calculator?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r9976",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Can we evaluate  these log expressions without using a calculator?\n\n## Question\n\n1. Without using tables [or calculators], find the value of \\[\\begin{align*} 2 \\lg 5 - \\frac{1}{2} &\\lg 9 + \\lg 0.12.\\\\ [\\lg x &= \\log_{10} x] \\end{align*}\\]\n\n---\n\n1. If \\(\\lg 2 = 0.30103\\) and \\(\\lg 3 = 0.47712\\), find, without using tables [or calculators], the values of \\(\\lg 6\\) and \\(\\lg 15\\).\n\n## Suggestion\n\nIf we can’t use calculators, we have to simplify this expression. So what rules and identities do we know for [logarithms](https://undergroundmathematics.org/glossary/logarithm-laws)?\n\nHow could we rewrite the required logarithms in terms of the logarithms we are given? Remember that all logarithms are to base 10!\n\n## Solution\n\nUsing the [logarithm laws](https://undergroundmathematics.org/glossary/logarithm-laws), we can rewrite the first two terms as\n\n\\[\\begin{align*} 2 \\lg 5 &= \\lg 5^2 = \\lg 25\\\\ - \\frac{1}{2}\\lg 9 &= \\lg 9^{-\\frac{1}{2}} = \\lg \\frac{1}{\\sqrt{9}} = \\lg \\frac{1}{3}. \\end{align*}\\]\n\nNow we can evaluate the original expression\n\n\\[\\begin{align*} \\lg 25+\\lg \\frac{1}{3}+\\lg \\frac{12}{10} &= \\lg \\left( \\frac{25\\times12}{3\\times10}\\right)\\\\ &=\\lg \\left( 10\\right)\\\\ &=1. \\end{align*}\\]\n\nFollowing the logarithm laws we can rewrite the logarithm of six as \\[\\lg 6 = \\lg 2\\times3 = \\left(\\lg 2\\right)+\\left(\\lg 3\\right).\\]\n\nInserting the given values for \\(\\lg 2\\) and \\(\\lg 3\\) we therefore obtain \\[\\lg 6 = 0.30103 + 0.47712 \\approx 0.7782.\\]\n\nSince both given values have a precision of 5 decimal places, we can approximate the solution to 4 decimal places.\n\nFifteen can be expressed as \\[15=\\frac{10\\times3}{2}.\\]\n\nSince we know the base-10 logarithm of 2, 3 and 10 we can write\n\n\\[\\begin{align*} \\lg 15 &= \\lg \\frac{10\\times3}{2}\\\\ &= \\left( \\lg 10 \\right) + \\left( \\lg 3 \\right) - \\left( \\lg 2 \\right)\\\\ &\\approx 1 + 0.47712 - 0.30103\\\\ &= 1.1761. \\end{align*}\\]\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "see-the-power",
+   "slug": "see-the-power",
+   "station": "exp-and-log",
+   "title": "See the power",
+   "url": "https://undergroundmathematics.org/exp-and-log/see-the-power",
+   "resourceType": "building-blocks",
+   "resourceTypeLabel": "Building blocks",
+   "level": "Introducing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# See the power\n\n> Excerpt: This problem is an introduction to logarithms, without formally defining them or even using the word.\nStudents are asked to estimate the power of ten needed to achieve a given value and hence solve an equation.\n\n## Warm-up\n\nSome equations involving powers or indices can be solved “by inspection” if we are familiar with the powers of common numbers. Try these\n\n1. \\(2^x = 16\\)\n\n---\n\n1. \\(10^x = 0.001\\)\n\n---\n\n1. \\(5^x = 125\\)\n\n---\n\n1. \\(\\big(\\frac{1}{3}\\big)^x = 81\\)\n\nCheck your answers\n\n1. \\(x = 4\\) because \\(16 = 2^4\\)\n\n---\n\n1. \\(x = -3\\) because \\(0.001 = \\frac{1}{1000} = \\frac{1}{10^3}\\)\n\n---\n\n1. \\(x = 3\\)\n\n---\n\n1. \\(x = -4\\) because \\(\\big(\\frac{1}{3}\\big)^{-1} = 3\\)\n\nSome other equations look very similar but are not so easy to solve. Think about this one \\[10^x = 562\\] What could you do to find an approximate answer? How accurate could you make your estimate?\n\nSuggestion\n\nWhat are \\(10^2\\) and \\(10^3\\)? Can you state upper and lower bounds for the value of \\(x\\)?\n\nHow can you narrow down the range of possible values?\n\n## Problem\n\nThink about the function \\(y=10^x\\). Every time we increase \\(x\\) by one, we multiply \\(y\\) by \\(10\\).\n\nBy how much do we multiply \\(y\\) when we increase \\(x\\) by \\(0.5\\)?\n\nGiven that \\(\\sqrt{10}\\approx 3.16\\) and \\(\\sqrt[4]{10}\\approx 1.78\\), complete the table below.\n\n| \\(10^0=\\) | \\(10^{0.25}\\approx\\) | \\(10^{0.5}\\approx\\) | \\(10^{0.75}\\approx\\) |\n|---|---|---|---|\n| \\(10^1=\\) | \\(10^{1.25}\\approx\\) | \\(10^{1.5}\\approx\\) | \\(10^{1.75}\\approx\\) |\n| \\(10^2=\\) | \\(10^{2.25}\\approx\\) | \\(10^{2.5}\\approx\\) | \\(10^{2.75}\\approx\\) |\n| \\(10^3=\\) | \\(10^{3.25}\\approx\\) | \\(10^{3.5}\\approx\\) | \\(10^{3.75}\\approx\\) |\n\nWhat does the whole number part of the power of ten tell us about the value of \\(y\\)?\n\nHow is this connected with standard form?\n\nCan you now find approximate solutions to the following equations?\n\n1. \\(10^x = 21\\)\n\n---\n\n1. \\(10^x = 5\\,000\\)\n\n---\n\n1. \\(10^x = 562\\,000\\)\n\n---\n\n1. \\(10^x = 0.00178\\)\n\nSee the resource [1950s calculators](https://undergroundmathematics.org/exp-and-log/calculators1950) for a further exploration of this.\n\n## Solution\n\nTo go from \\(10^1\\) to \\(10^2\\) we multiply by \\(10\\). When we add to the power we multiply the expression, so to go from \\(10^1\\) to \\(10^2\\) in two equal steps we would add \\(0.5\\) to the power twice and multiply the expression by the same number twice. The number by which we multiply must therefore be the square root of \\(10\\), such that \\(10^{1+0.5+0.5}=10^1\\times\\sqrt{10}\\times\\sqrt{10}=10^2\\).\n\nSimilarly, to do it in four steps we would have to multiply by the fourth root of \\(10\\) each time.\n\nThe first column of the table is easy to fill in with whole number powers of \\(10\\), remembering that \\(a^0=1\\) for any value of \\(a\\) (with the possible exception of \\(a=0\\)).\n\nWhat is \\(0^0\\)?\n\nLooking at the second row, when we move from \\(10^1\\) to \\(10^{1.25}\\) we are increasing the power of \\(10\\) by \\(0.25\\), so we multiply by \\(\\sqrt[4]{10}\\approx1.78\\). Moving from the first to the third column we are increasing the power by \\(0.5\\), which means we multiply by \\(\\sqrt{10}\\approx3.16\\). Moving from the third to the fourth column we are increasing the power of \\(10\\) by another \\(0.25\\), and so we multiply by \\(1.78\\).\n\nHere is a completed table.\n\n| \\(10^0=1\\) | \\(10^{0.25}\\approx1.78\\) | \\(10^{0.5}\\approx3.16\\) | \\(10^{0.75}\\approx5.62\\) |\n|---|---|---|---|\n| \\(10^1=10\\) | \\(10^{1.25}\\approx17.8\\) | \\(10^{1.5}\\approx31.6\\) | \\(10^{1.75}\\approx56.2\\) |\n| \\(10^2=100\\) | \\(10^{2.25}\\approx178\\) | \\(10^{2.5}\\approx316\\) | \\(10^{2.75}\\approx562\\) |\n| \\(10^3=1\\,000\\) | \\(10^{3.25}\\approx1\\,780\\) | \\(10^{3.5}\\approx3\\,160\\) | \\(10^{3.75}\\approx5\\,620\\) |\n\nIt is clear from the table that the whole number part of the power tells us how many digits will be in the whole number part of the value of the expression. For instance, \\(10^{2.\\text{anything}}\\) will have three digits before the decimal point. This is a feature of powers of ten, which works because our counting system uses base-\\(10\\) numbers.\n\n[Hexadecimal](https://undergroundmathematics.org/glossary/hexadecimal) is a counting system that uses base-\\(16\\) numbers and is especially useful in computer science. Here, the whole number part of \\(x\\) would tell us the number of digits in the hexadecimal representation of \\(16^x\\).\n\nWe could write \\(5\\,620\\) in standard form as \\(5.62\\times10^3\\). This \\(3\\) tells us the number has four digits, which is also what the \\(3\\)s in the last row of our table tell us.\n\nApproximate solutions to the first two can be found by looking in the table above. Since \\(21\\) is between \\(17.8\\) and \\(31.6\\), \\(x\\) must be between \\(1.25\\) and \\(1.5\\). We could narrow this range by trial and improvement or by plotting a graph.\n\n\\(562\\,000\\) has six digits, so \\(x\\) must be \\(5.\\)something. From the right hand column of the table, the decimal part must be \\(.75\\). This separation of the whole number and decimal parts of the number is what we do when we write the number in standard form: \\(562\\,000=5.62\\times10^5\\).\n\nTo solve the final equation, it helps to first write the number in standard form: \\(0.00178=1.78\\times10^{-3}\\) so we want \\(-3+0.25\\).\n\nThis gives us a set of approximate solutions as follows:\n\n1. \\(x \\approx 1.3\\)\n\n---\n\n1. \\(x \\approx 3.7\\)\n\n---\n\n1. \\(x \\approx 5.75\\)\n\n---\n\n1. \\(x \\approx -2.75\\)\n\nIn each case, the value of \\(x\\) is the *power to which we have to raise \\(10\\) in order to get the target number*. This is known as the [logarithm](https://undergroundmathematics.org/glossary/logarithm) of the target number. Specifically it is the “logarithm to base \\(10\\)”, since we are working with powers of \\(10\\). You can check your answers using the \\(\\log\\) or \\(\\log_{10}\\) key on your calculator.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "summing-to-one",
+   "slug": "summing-to-one",
+   "station": "exp-and-log",
+   "title": "Summing to one",
+   "url": "https://undergroundmathematics.org/exp-and-log/summing-to-one",
+   "resourceType": "building-blocks",
+   "resourceTypeLabel": "Building blocks",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Summing to one\n\n> Excerpt: This task explores the behaviour of logarithms to different bases, by asking for solutions to equations in which sums of logarithms are equal to one.\n\n## Problem 1\n\n\\[\\log_3 3=1\\]\n\n\\[\\log_9 3+ \\log_9 3 =1\\]\n\n\\[\\log_{27} 3 + \\dots +\\log_{27} 3= 1\\]\n\nHow many \\(\\log_{81} 3\\) do you need to add together to make one?\n\n## Solution 1\n\n\\[\\log_3 3=1\\]\n\n\\[\\log_9 3+ \\log_9 3 =1\\]\n\n\\[\\log_{27} 3 + \\dots +\\log_{27} 3= 1\\]\n\nPerhaps some logical first thoughts would be that the second equation, \\[\\log_9 3+\\log_9 3=1,\\] can be rewritten as \\[2\\log_9 3 = 1,\\] and so \\[\\log_9 3 = \\frac{1}{2}.\\]\n\nWe now have that \\(\\log_3 3=1\\) and that \\(\\log_9 3=\\frac{1}{2}\\) but what is \\(\\log_{27}3\\)?\n\nRemember that we also know that \\(\\log_3 3=1\\) because \\(3^1=3\\), and that \\(\\log_9 3=\\frac{1}{2}\\) because \\(9^{\\frac{1}{2}}=3\\).\n\nThis is because of one of the defining statements about logarithms: \\(\\log_a x = y\\) means \\(x=a^y\\) for real numbers \\(x>0\\) and \\(y\\).\n\nWe can now ask the question, to what power do we raise \\(27\\) to get the result \\(3\\)? If we think about powers of \\(3\\) then we can quickly confirm that \\(27 = 3^3\\) and so \\(27^{\\frac{1}{3}}=3\\).\n\nNow we have that \\(\\log_{27} 3 = \\frac{1}{3}\\) and therefore \\[\\log_{27} 3 + \\log_{27} 3 +\\log_{27} 3= 1,\\] or equivalently, \\[\\log_{27} 3 + 2\\log_{27} 3 = 1,\\] or \\[\\log_{27} 3 + \\log_{27} 9 = 1.\\]\n\nAn alternative approach would be to use the statement \\[\\log_x ab = \\log_x a + \\log_x b.\\] We can use this to rewrite the second equation, \\[\\log_9 3+\\log_9 3=1,\\] as \\[\\log_9 (3 \\times 3) = \\log_9 9 = 1.\\]\n\nKnowing that \\[\\log_x x = 1\\] we can now think of the third equation as\n\n\\[\\log_{27} (3a)=1\\] where \\(3a = 27\\) and therefore \\(a=9\\) as before, \\[\\log_{27} 3 + \\log_{27} 9 = 1.\\]\n\nHow many \\(\\log_{81} 3\\) do you need to add together to make one?\n\nWe can use exactly the same thinking to address this problem. We could consider \\(81^n=3\\) and recognise that \\(81 = 3^4\\) so \\(n=\\frac{1}{4}\\).\n\nThis tells us that we will need four lots of \\(\\log_{81} 3\\) to make one, \\[4\\log_{81}3=1.\\]\n\nThis thinking relies on us recognising, or quickly deducing that \\(81\\) is the fourth power of \\(3\\). If the base of the logarithm were something less familiar, for instance \\(2187\\) (the seventh power of \\(3\\)), then this method is less convenient.\n\nAlternatively we could have used the laws of logs to conclude that \\[\\log_{81} 3+\\log_{81} b = \\log_{81} (3b) = 1\\] and so \\(3b = 81\\) and hence \\(b = 27\\).\n\nThen we have \\[\\log_{81} 3 + \\log_{81} 27 = 1.\\] But, remember that the question asks how many lots of \\(\\log_{81} 3\\) we need so we need to make one. This means that we need to write \\(\\log_{81} 27\\) in terms of \\(\\log_{81}3\\).\n\nTo do this we should first recognise that \\(27 = 3^3\\) so we can write that \\[\\log_{81}27 = \\log_{81}3^3 = 3\\log_{81}3.\\]\n\nWe have used the statement \\[\\log_a x^y = y\\log_a x.\\]\n\nNow we have \\[\\log_{81}3 + \\log_{81}27 = \\log_{81}3 + 3\\log_{81}3,\\] and therefore \\[4\\log_{81}3= 1.\\]\n\n## Problem 2\n\nCan we choose integers \\(x\\) and \\(y\\) so that:\n\n\\[\\log_6 x +\\log_6 y =1?\\]\n\nHow many different ways are there to do this?\n\nHow about using \\(\\log_{12}\\)?\n\nHow about using \\(\\log_{24}\\)?\n\nHow might your answers change if the equations were instead of the form \\[\\log_n x - \\log_n y = 1?\\]\n\n## Solution 2\n\nIf we use the statement \\[\\log_x ab = \\log_x a + \\log_x b\\] we can rewrite the equation, \\[\\log_6 x+\\log_6 y=1,\\] as \\[\\log_6 (x \\times y)= 1.\\]\n\nKnowing that \\(\\log_x x = 1\\) we can see that in the equation above \\(x \\times y = 6\\).\n\nSix has two pairs of factors: \\(1 \\times 6\\) and \\(2 \\times 3\\), so there are two possible ways to choose integers \\(x\\) and \\(y\\) so that \\(\\log_6 x + \\log_6 y = 1\\):\n\n\\[\\log_6 1 + \\log_6 6 = 1\\] and \\[\\log_6 2 + \\log_6 3 = 1.\\]\n\nWhy did we not consider pairs of integers \\(x\\) and \\(y\\) such as \\(-1 \\times -6\\)?\n\nIn theory, if we thought about evaluating each term in the equation we might try to choose a value of \\(x\\) that is a power of \\(6\\). We might choose something like \\(x=36\\) so that \\(\\log_6 36 = 2\\).\n\nWhat is the problem that we would encounter if we tried this approach?\n\nWhat further information does this give us about the values of \\(x\\) and \\(y\\)?\n\nHow about using \\(\\log_{12}\\)?\n\nTaking the same approach as above we have that \\[\\log_{12} x + \\log_{12} y = \\log_{12} (x \\times y) = 1.\\]\n\nBy the same reasoning as the previous example we can conclude that \\(x \\times y = 12\\) and as \\(12\\) has three pairs of factors there will be three possible ways to choose integers \\(x\\) and \\(y\\) so that \\(\\log_{12} x + \\log_{12} y = 1\\):\n\n\\[\\log_{12} 1 + \\log_{12} 12 = 1,\\]\n\nor\n\n\\[\\log_{12} 2 + \\log_{12} 6 = 1,\\]\n\nor\n\n\\[\\log_{12} 3 + \\log_{12} 4 = 1.\\]\n\nHow about using \\(\\log_{24}\\)?\n\n\\(24\\) has four pairs of factors so there will be four possible ways to choose integers \\(x\\) and \\(y\\) so that \\(\\log_{24} x + \\log_{24} y = 1\\):\n\n\\[\\log_{24} 1 + \\log_{24} 24 = 1,\\] \\[\\log_{24} 2 + \\log_{24} 12 = 1,\\] \\[\\log_{24} 3 + \\log_{24} 8 = 1,\\]\n\nand\n\n\\[\\log_{24} 4 + \\log_{24} 6 = 1.\\]\n\nIn all of the examples above we have only considered positive values of \\(x\\) and \\(y\\). Why?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "to-log-or-not-to-log",
+   "slug": "to-log-or-not-to-log",
+   "station": "exp-and-log",
+   "title": "To log or not to log?",
+   "url": "https://undergroundmathematics.org/exp-and-log/to-log-or-not-to-log",
+   "resourceType": "problem-requiring-decisions",
+   "resourceTypeLabel": "Problem requiring decisions",
+   "level": "Developing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.3",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# To log or not to log?\n\n> Excerpt: Students are asked to sort a collection of equations (involving exponentials) according to the tools and methods required to solve them. Just because there is an exponential, you don't always have to use logarithms...\n\n## Problem\n\nSome equations involving powers or indices can be solved using logarithms… but not all.\n\nThink about how you could go about solving the following equations. Sort them according to the tools or methods you would use.\n\n\\(3^x=81\\)\n\n\\(x^5=50\\)\n\n\\(3^x=43\\)\n\n\\(5^{2x}-5^x-6=0\\)\n\n\\(5^x+4^x=8\\)\n\n\\(5^x+2\\times5^{1-x}=7\\)\n\n\\(3^{2x}-3=24\\)\n\n\\(2^{2x}-9\\times2^x+8=0\\)\n\n\\(\\sqrt{2x-3}=5\\)\n\n\\(5^x-x^5=3\\)\n\n\\(16^{\\frac{3}{x}}=8\\)\n\n\\(\\left(\\dfrac{13}{16}\\right)^{3x}=\\dfrac{3}{4}\\)\n\nYou might find it helpful to have the equations [printed on cards](https://undergroundmathematics.org/exp-and-log/to-log-or-not-to-log/components/cards.pdf) that you can rearrange as you sort them.\n\nCan you write some other equations to go in each of your sorting categories?\n\nPossible categories\n\nYou could use the following headings to categorise your equations\n\n- Solve using indices\n\n- Solve using logarithms\n\n- Rewrite or rearrange first\n\n- Can’t solve exactly\n\nAlternatively, since some equations may come under more than one heading, you could draw this as a Venn diagram.\n\n## Interactive card sorter\n\nUse this interactive sorter to group the cards according to the tools or methods you would use to solve them. You could use the suggested headings or make your own.\n\nPossible categories\n\nYou could use the following headings to categorise your equations\n\n- Solve using indices\n\n- Solve using logarithms\n\n- Rewrite or rearrange first\n\n- Can’t solve exactly\n\nAlternatively, since some equations may come under more than one heading, you could draw this as a Venn diagram.\n\n\\(3^x=81\\)\n\n\\(x^5=50\\)\n\n\\(3^x=43\\)\n\n\\(5^{2x}-5^x-6=0\\)\n\n\\(5^x+4^x=8\\)\n\n\\(5^x+2\\times5^{1-x}=7\\)\n\n\\(3^{2x}-3=24\\)\n\n\\(2^{2x}-9\\times2^x+8=0\\)\n\n\\(\\sqrt{2x-3}=5\\)\n\n\\(5^x-x^5=3\\)\n\n\\(16^{\\frac{3}{x}}=8\\)\n\n\\(\\left(\\dfrac{13}{16}\\right)^{3x}=\\dfrac{3}{4}\\)\n\nCan you write some other equations to go in each of your sorting categories?\n\n## Solution\n\nSome equations involving powers or indices can be solved using logarithms… but not all.\n\nThink about how you could go about solving the following equations. Sort them according to the tools or methods you would use.\n\n(A) \\(3^x=81\\)\n\nWe know that\n\n\\[81=9\\times9=3^4\\]\n\nso we can say that\n\n\\(x=4\\)\n\nusing only our knowledge of powers of\n\n\\(3\\)\n\n. Note that we could instead use logarithms to solve this equation,\n\n\\[\\begin{align*} \\log_3{3^x}&=\\log_3{81}\\\\ x&=\\log_3{81} \\end{align*}\\]\n\nso we could classify this equation as “either indices or logarithms”.\n\n(B) \\(x^5=50\\)\n\nTo solve this equation, remember that the inverse of raising to a power is a root or a fractional power. So we can solve it using indices, \\[x=50^\\frac{1}{5}=\\sqrt[5]{50} \\text{ .}\\]\n\n(C) \\(3^x=43\\)\n\nThis looks very similar to the first equation, but since \\(43\\) is not an exact power of \\(3\\) we have to use logarithms if we want an exact solution.\n\nHave a go at estimating the solution.\n\n(D) \\(5^{2x}-5^x-6=0\\)\n\nThe laws of indices tell us that\n\n\\(5^{2x}=(5^x)^2\\)\n\nso this is a quadratic equation which we can factorise\n\n\\[\\begin{align*} (5^x)^2-(5^x)-6&=0\\\\ (5^x-3)(5^x+2)&=0\\\\ 5^x&=3 \\text{ or } -2 \\text{ .} \\end{align*}\\]\n\nNow, \\(5^x\\) cannot be negative so we have only one solution, for which we shall need logarithms. \\[x=\\log_5 3\\] So we could classify this equation as requiring rearrangement and logarithms.\n\n(E) \\(5^x+4^x=8\\)\n\nWe don’t know a way to solve this exactly. How could we find an approximate solution?\n\nWhat’s wrong with this?\n\n\\[\\begin{align*} \\log{(5^x+4^x)}&=\\log{8}\\\\ \\log{5^x}+\\log{4^x}&=\\log{8}\\\\ x\\log5+x\\log4&=\\log8\\\\ x&=\\frac{\\log8}{\\log5+\\log4} \\end{align*}\\]\n\n(F) \\(5^x+2\\times5^{1-x}=7\\)\n\nIt may not be immediately obvious what kind of equation this is, so we want to manipulate it into a more useful form. What can we do to the equation so there is no \\(-x\\) in the index of the second term?\n\nSolution\n\nWe can split the second term,\n\n\\[5^{1-x}=5\\times5^{-x}\\]\n\nand then multiply the equation through by\n\n\\(5^x\\)\n\n,\n\n\\[\\begin{align*} (5^x)^2+2\\times5\\times5^{-x}\\times5^x&=7\\times5^x\\\\ (5^x)^2+10&=7\\times5^x \\end{align*}\\]\n\nwhich is a quadratic in\n\n\\(5^x\\)\n\nthat we can factorise,\n\n\\[\\begin{align*} (5^x)^2-7(5^x)+10&=0\\\\ (5^x-2)(5^x-5)&=0\\\\ 5^x&=2 \\text{ or } 5 \\text{ .} \\end{align*}\\]\n\nOne of the solutions can now be written down using indices while the other requires logarithms. So we can classify this equation as requiring rearrangement, indices *and* logarithms.\n\n(G) \\(3^{2x}-3=24\\)\n\nThis could be treated as a quadratic in\n\n\\(3^x\\)\n\n, but a bit of rearrangement reveals a simpler method to solve it.\n\n\\[\\begin{align*} 3^{2x}&=27\\\\ 2x&=3 \\end{align*}\\]\n\nIt’s always worth looking for simpler methods before embarking on complicated ones. In this case, gathering the constant terms together was the inviting first step.\n\n(H) \\(2^{2x}-9\\times2^x+8=0\\)\n\nThis is another quadratic, this time in \\(2^x\\).\n\nSolution\n\n\\[2^{2x}=(2^x)^2\\] so \\[(2^x-8)(2^x-1)=0 \\text{ .}\\]\n\nThis can be solved using only rearrangement and indices.\n\n(I) \\(\\sqrt{2x-3}=5\\)\n\nLogarithms are not going to help, but squaring both sides will.\n\n(J) \\(5^x-x^5=3\\)\n\nThis is another example of an equation we don’t know how to solve exactly. We could use a numerical method such as trial and improvement to find an approximate solution.\n\nHow many solutions are there? Most numerical methods work best if you know roughly where the solution is. A sketch of \\(y=5^x\\) and \\(y=x^5\\) might help.\n\n(K) \\(16^{\\frac{3}{x}}=8\\)\n\nWhat’s gone wrong here?\n\n\\[\\begin{align*} 16^{\\frac{3}{x}}&=8\\\\ 2^{\\frac{3}{x}}&=1\\\\ \\frac{2^3}{2^x}&=1\\\\ 2^3&=2^x\\\\ x&=3 \\end{align*}\\]\n\nA solution using logarithms\n\nTake the logarithm of both sides and rearrange…\n\n\\[\\begin{align*} \\frac{3}{x}\\log16&=\\log8\\\\ x&=\\frac{3\\log16}{\\log8} \\text{ .} \\end{align*}\\]\n\nA solution using indices\n\nCube root of both sides…\n\n\\[16^{\\frac{1}{x}}=\\sqrt[3]8=2\\]\n\nthen raise both sides to the power\n\n\\(x\\)\n\n,\n\n\\[\\begin{align*} 16^1&=2^x\\\\ x&=4 \\text{ .} \\end{align*}\\]\n\nHave the two methods given the same answer? Which method do you prefer?\n\n(L) \\(\\big(\\frac{13}{16}\\big)^{3x}=\\frac{3}{4}\\)\n\nWe are going to have to use logarithms on this one.\n\nWhy would indices not give us a solution?\n\nThere is a fundamental difference between equations involving the unknown, \\(x\\), raised to a fixed power (such as \\(x^5\\)) and equations involving a constant raised to an unknown power (such as \\(5^x\\)). How is this difference reflected in the methods required to solve the equations?\n\nHere is a possible arrangement of the equations\n\nNote that we have been a bit imprecise about the meanings of the overlapping regions and about what we mean by rearrangement, so your solution may look quite different.\n\nThere are a few equations that look similar but appear on opposite sides of the above diagram. Can you explain why?\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "to-the-limit",
+   "slug": "to-the-limit",
+   "station": "calculus-trig-log",
+   "title": "To the limit",
+   "url": "https://undergroundmathematics.org/calculus-trig-log/to-the-limit",
+   "resourceType": "scaffolded-task",
+   "resourceTypeLabel": "Scaffolded task",
+   "level": "Introducing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.2.2",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# To the limit\n\n> Excerpt: Using a series of statements, students are asked to put together a chain of reasoning to find the derivative of $a^x$. This leads on to looking at a special case of this derivative.\n\n## Warm-up\n\nWhat is the gradient of the chord \\(AB\\)?\n\nSolution\n\n\\[\\begin{align*} \\text{gradient of } AB &= \\dfrac{f(x+h) - f(x)}{x+h - x} \\\\ &=\\dfrac{a^{x+h} - a^x}{h} \\end{align*}\\]\n\nThis expression gives us the gradient of \\(AB.\\) If \\(h\\) is small enough, then this also gives us an estimation of the gradient of \\(f(x)\\) at \\(A.\\)\n\nHow could we find the exact gradient at \\(A\\)? See the [gradient of \\(a^x\\)](https://undergroundmathematics.org/calculus-trig-log/to-the-limit/gradient-a-to-x) to find out.\n\n## Gradient of $a^x$\n\nWe can find the gradient of a function by taking the limit of the gradient of a chord between \\(x\\) and \\(x+h\\) as \\(h\\) tends to \\(0\\).\n\n\\[f'(x) = \\lim_{h \\to 0} \\dfrac{f(x+h)-f(x)}{h}\\]\n\nThese statements and explanations can be used to create a chain of reasoning to find the gradient function of \\(f(x) = a^x\\). Sort the statements into a logical argument, either writing your own explanations of the steps, or turning over the hidden cards to use the explanations provided.\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(a^x \\left(\\dfrac{a^{h} - 1}{h} \\right) \\right)}\\)\n\nThe expression is factorised as \\(a^x\\) is a common factor.\n\n\\(\\displaystyle{f'(x) = a^x \\, \\lim_{h \\to 0} \\left(\\dfrac{a^{h} - a^0}{h} \\right)}\\)\n\nAs \\(h \\to 0\\) the limit will give the gradient function at \\(x = 0\\).\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(\\dfrac{a^{x+h} - a^x}{h} \\right)}\\)\n\nThe expression in the limit gives the gradient of a chord between \\(x = 0\\) and \\(x = h\\) on \\(f(x) = a^x\\).\n\n\\(\\displaystyle{f'(x) = a^x \\, \\lim_{h \\to 0} \\left(\\dfrac{a^{h} - 1}{h} \\right)}\\)\n\nThis is the general formula for differentiating from first principles.\n\n\\(f'(x) = a^x \\times f'(0)\\)\n\nThis is an expression for the gradient of \\(f(x) = a^x.\\)\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(\\dfrac{f(x+h)-f(x)}{h} \\right)}\\)\n\nAs \\(a^x\\) is not affected by \\(h\\) it can be taken outside of the limit.\n\nWhat does the final statement tell you about the gradient function of \\(f(x)\\)?\n\n- What does the graph of \\(f'(x)\\) look like?\n\n- How will the gradient function change as \\(a\\) changes?\n\n- There is a special case of the gradient function of \\(a^x\\). What could it be? To find out more look at [A special case](https://undergroundmathematics.org/calculus-trig-log/to-the-limit/special-case).\n\n## Solution\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(\\dfrac{f(x+h)-f(x)}{h} \\right)}\\)\n\nThis is the general formula for differentiating from first principles.\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(\\dfrac{a^{x+h} - a^x}{h} \\right)}\\)\n\nThis is an expression for the gradient of \\(f(x) = a^x.\\)\n\nRemember the expression in the brackets gives the gradient of the chord between \\(x\\) and \\(x+h\\). Taking the limit as \\(h \\to 0\\) gives us the gradient of the function at \\(x\\).\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(a^x \\left(\\dfrac{a^{h} - 1}{h} \\right) \\right)}\\)\n\nThe expression is factorised as \\(a^x\\) is a common factor.\n\n\\(\\displaystyle{f'(x) = a^x \\, \\lim_{h \\to 0} \\left(\\dfrac{a^{h} - 1}{h} \\right)}\\)\n\nAs \\(a^x\\) is not affected by \\(h\\) it can be taken outside of the limit.\n\nThe value of \\(h\\) is tending to \\(0\\), so any expressions not involving \\(h\\) are unaffected by this limiting process.\n\n\\(\\displaystyle{f'(x) = a^x \\, \\lim_{h \\to 0} \\left(\\dfrac{a^{h} - a^0}{h} \\right)}\\)\n\nThe expression in the limit gives the gradient of a chord between \\(x = 0\\) and \\(x = h\\) on \\(f(x) = a^x\\).\n\nThink about how the expression \\(\\dfrac{a^h - a^0}{h}\\) could be represented on the graph of \\(f(x) = a^x\\). What does it show?\n\n\\(f'(x) = a^x \\times f'(0)\\)\n\nAs \\(h \\to 0\\) the limit will give the gradient function at \\(x = 0\\).\n\nThe final step implies that \\(\\displaystyle{\\lim_{h \\to 0} \\dfrac{a^h - a^0}{h} = f'(0)}\\).\n\nThis is not a simple limit to find as both the numerator and denominator tend to zero as \\(h \\to 0\\). However, if we look at how we find \\(f'(x)\\) from first principles we should see some similarities. \\[f'(x) = \\lim_{h \\to 0} \\dfrac{f(x+h) - f(x)}{h} \\text{ and } \\lim_{h \\to 0} \\dfrac{a^h - a^0}{h}\\] Instead of finding the gradient for a generic point \\(x\\), the limit on the right gives us the gradient for the specific point \\(x = 0\\), i.e. \\(f'(0)\\).\n\nWhat does your final answer tell you about the gradient function of \\(f(x)\\)?\n\n- What does the graph of \\(f'(x)\\) look like?\n\n\\[f'(x) = a^x \\times f'(0)\\]\n\nThe gradient function is the original function multiplied by a constant. This tells us the graph of\n\n\\(f'(x)\\)\n\nwill look very similar to\n\n\\(f(x).\\)\n\n|  |  |\n|---|---|\n\nIn fact it will be a transformation of the original function; a stretch in the \\(y\\) direction, scale factor \\(f'(0).\\) (Or a stretch in the \\(x\\) direction, scale factor \\(\\frac{1}{f'(0)}.\\))\n\nWhat do the graphs tell you about \\(f'(0)\\) when \\(a = 2\\) and when \\(a = 4\\)?\n\n- How will the gradient function change as \\(a\\) changes?\n\nWe can see from the graphs above that as \\(a\\) gets bigger, \\(f(x) = a^x\\) gets steeper more quickly and so the gradient at zero will be larger. Therefore, as \\(a\\) gets bigger, \\(f'(x)\\) will also get steeper more quickly. What will happen as \\(a\\) gets smaller?\n\n- There is a special case of the gradient function of \\(a^x\\). Can you think what it might be? To find out more look at [A special case](https://undergroundmathematics.org/calculus-trig-log/to-the-limit/special-case).\n\nThe gradient function itself could be steeper than the original function. This will happen if the stretch factor is bigger than one, i.e. \\(f'(0) >1\\). It could also be less steep, i.e. when \\(f'(0) <1.\\) This implies there will be a special case in the middle when \\(f'(0) = 1\\) and the gradient function and original function will be exactly the same!\n\n## A special case\n\nWe have found that the gradient function of \\(a^x\\) can be written as \\[f'(x) = a^x\\times f'(0),\\]\n\ni.e. the gradient function is the function itself multiplied by a constant, and this constant is the gradient of\n\n\\(a^x\\)\n\nat\n\n\\(x = 0\\)\n\n. There will be a special case when\n\n\\(f'(0) = 1\\)\n\nas then the gradient function of\n\n\\(a^x\\)\n\nwould be itself,\n\n\\(a^x\\)\n\n.\n\nBefore using the applet, look at the values given. Approximately what value do you think \\(a\\) will take to give \\(f'(0) \\approx 1?\\)\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/UqaKEFMd/width/600/height/400/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/UqaKEFMd)\n\nUse the slider to find the value of \\(a\\) when \\(f'(0) \\approx 1\\).\n\nDoes the gradient function look as you expected?\n\nSolution\n\nWe find that \\(f'(0) \\approx 1\\) when \\(a = 2.72\\). This means that the gradient function becomes \\(f'(x) = a^x\\), so \\(a^x\\) and its gradient function are identical.\n\nOf course this value of \\(a\\) is an approximation, but does it look familiar?\n\nIt turns out that the exact value of \\(a\\) for which the gradient function is the same as the original function is \\(a = 2.7181...\\), in fact it is \\(a = e\\). You have probably met \\(e\\) before as the exponential function \\(e^x\\) and as the base of natural logarithms. Here we have found that if \\(f(x) = e^x\\), then \\(f'(x) = e^x\\).\n\nWhat about other values of \\(a\\)? To think about what \\(f'(0)\\) is for any value, you can look at [Differentiating exponentials](https://undergroundmathematics.org/chain-rule/differentiating-exponentials).\n",
    "figures": 0,
    "figuresInline": 0
   }
