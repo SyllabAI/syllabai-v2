@@ -21038,7 +21038,6 @@ Work Log:
 
 Stage Summary:
 - SIB generation is now provider-neutral of record; the 4CH1 library holds its first two GENERATED artifacts with full receipts. BL-008 (batch orchestration) unlocked on operator order only; staging/publication remain operator gates. Register: registry-pin anchor repair (operator), PAT rotation (exposure +1 this session), master PR #54 merge order.
-<<<<<<< HEAD
 Task ID: 6
 Agent: Z.ai main agent (IM session web-3bd4aa99)
 Task: ADR-040 §5.3 — converter LEVELS mode + validator rules (verbatim/contiguity/tiling) in the corpus lane (trace 1a172ea7a9d226c9, operator 'proceed with §5.3').
@@ -21207,6 +21206,21 @@ Work Log:
 - Verification: chemistry 2020-11 1C byte-identical (port chemistry-inert); physics 2023-06 1P byte-identical to the physics wave's new G5-closed corpus; 66/66 maths re-emission ALL gates PASS, parity modulo SIX disclosed classes (proven zero non-class residuals over 80 file comparisons); assets byte-identical; canaries 86/86 pre- and post-merge.
 - Defects found+fixed of record: the branch-commit F73a ctx corruption (ln2ax); course_id header defect; allowed_gaps inheritance; the F033/F0EE duplicate-dict-key silent-override class (lane-scoped to pua_overrides); the parse_ms office-skip branch initially lost in reconstruction (caught by the chemistry gate, restored).
 - Incident disclosed: a chained push fired mid-rebase and moved the branch to the bare main tip, auto-closing PR #110 unmerged — recovered (resolve, re-push, reopen); the final landing was a clean fast-forward.
+- LANDED: PR #110 merged at 3000e439d1464c2927d082696f5bb19313af3172 (branch tip 986f9ad2, true ancestry); post-merge checker on the fresh merged main: 86/86 hold. Receipt of record: .syllabai/receipts/T-OEQ-MATHSB-1/run-004-reconciliation.json.
+
+Stage Summary:
+- The maths-B conversion of record now lives on resources main (66/66 sets under the union converter v0.20.0). T-OEQ-MATHSB-SERVE-1's P0 gate is SATISFIED (pin main@3000e439 at claim time) — the serve card is the next actionable card (hub-plane sync G-S1..S6).
+
+---
+Task ID: T-OEQ-MATHSB-1 run-004 — the reconciliation LANDED (trace 1a174f587f822f61)
+Agent: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)
+Task: operator "approve run-004" — reconcile the maths-B line onto resources main and land PR #110.
+
+Work Log:
+- Full loop executed: three-way merge (base 09842f9f / ours main / theirs branch 139ee931) -> SPECS-unified converter (v0.19.0 then v0.20.0 after TWO mid-run namespace collisions from parallel lanes: wave-25 hygiene claimed v0.18.0+C72-C76, the physics-MS wave claimed v0.19.0+F72+C83-C85) -> union checker/CANARIES (C86/C87/C88; C87 body adapted to SPECS) -> tracker unions (LEDGER F85 + renumbered maths entries; CHANGELOG 0.20.0) -> gates -> land.
+- Verification: chemistry 2020-11 1C byte-identical (port chemistry-inert); physics 2023-06 1P byte-identical to the physics wave's new G5-closed corpus; 66/66 maths re-emission ALL gates PASS, parity modulo SIX disclosed classes (proven zero non-class residuals over 80 file comparisons); assets byte-identical; canaries 86/86 pre- and post-merge.
+- Defects found+fixed of record: the branch-commit F73a ctx corruption (ln2ax); course_id header defect; allowed_gaps inheritance; the F033/F0EE duplicate-dict-key silent-override class (lane-scoped to pua_overrides); the parse_ms office-skip branch initially lost in reconstruction (caught by the chemistry gate, restored).
+- Incident disclosed: a chained push fired mid-rebase and moved the branch to the bare main tip, auto-closing PR #110 unmerged — recovered (resolve, re-push, reopen); the final landing was a clean fast-forward. A worklog union mishap in the receipt commit dropped this entry (fixed by this follow-up).
 - LANDED: PR #110 merged at 3000e439d1464c2927d082696f5bb19313af3172 (branch tip 986f9ad2, true ancestry); post-merge checker on the fresh merged main: 86/86 hold. Receipt of record: .syllabai/receipts/T-OEQ-MATHSB-1/run-004-reconciliation.json.
 
 Stage Summary:
