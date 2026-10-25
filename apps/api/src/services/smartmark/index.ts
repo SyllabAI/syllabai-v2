@@ -839,6 +839,14 @@ export const PIPELINE_VERSION = "1.3.0";
  *  point set keeps 1.3.0 byte-identically (provenance, never a shared bump). */
 export const BAND_PIPELINE_VERSION = "1.4.0";
 
+/** ADR-040 §5.5 — the smart_mark_agreement_evaluations.metric discriminator
+ *  (migration 0015's CHECK law): point rows carry POINT_UNWEIGHTED (the
+ *  column default — every pre-existing row reads it), band rows carry
+ *  BAND_QWK. The gate reads and the eval inserts are metric-kind-hard:
+ *  one kind's rows can never release or calibrate the other's parts. */
+export const METRIC_POINT_UNWEIGHTED = "POINT_UNWEIGHTED";
+export const METRIC_BAND_QWK = "BAND_QWK";
+
 /**
  * SmartMarkService — the ONE engine (teacher queue + student surface share
  * it; T-MIG-033's teacher marking imports this module).
@@ -872,6 +880,15 @@ export class SmartMarkService {
    * one for the question's subject, must have passed. Absence of any
    * evaluation = gated (fail-closed, unchanged).
    *
+   * ADR-040 §5.5 — the gate is METRIC-KIND-AWARE: `metric` (default
+   * POINT_UNWEIGHTED, every pre-existing point caller byte-unchanged) is a
+   * hard filter on ALL three reads — a BAND_QWK row can never release a
+   * point part and a POINT_UNWEIGHTED row can never release a band part.
+   * The band dispatch (markAttemptBands → applyAttemptDecisions) passes
+   * METRIC_BAND_QWK; the mixed-course flip law (green on every metric kind
+   * present) holds because each kind's rows only ever release their own
+   * kind's attempts.
+   *
    * Subject derivation (R2-audit-verified shape, #29 comment 2 addendum):
    * paper-bound questions resolve through exam_papers.subject_id;
    * topic-anchored questions walk the knowledge tree via question_topics ∪
@@ -884,17 +901,21 @@ export class SmartMarkService {
    * no eval row can match) and the gate stays fail-closed on ALL/PAPER.
    * teachermarking's evaluateAgreementForSubject mirrors this derivation —
    * full-literal SQL per the no-.raw() fleet convention. */
-  async kappaGatePassed(examPaperId: string | null, questionId: string): Promise<boolean> {
+  async kappaGatePassed(
+    examPaperId: string | null,
+    questionId: string,
+    metric: string = METRIC_POINT_UNWEIGHTED,
+  ): Promise<boolean> {
     const globalRows = (await this.sql`
       select passed from smart_mark_agreement_evaluations
-      where scope = ${"ALL"} order by computed_at desc
+      where scope = ${"ALL"} and metric = ${metric} order by computed_at desc
     `) as unknown as AgreementRow[];
     const global = globalRows.length > 0 ? globalRows[0]!.passed : false;
     const paper =
       examPaperId !== null
         ? ((await this.sql`
             select passed from smart_mark_agreement_evaluations
-            where scope = ${"PAPER"} and exam_paper_id = ${examPaperId}
+            where scope = ${"PAPER"} and exam_paper_id = ${examPaperId} and metric = ${metric}
             order by computed_at desc
           `) as unknown as AgreementRow[])
         : [];
@@ -930,6 +951,7 @@ export class SmartMarkService {
       )
       select e2.passed from smart_mark_agreement_evaluations e2
       where e2.scope = ${"SUBJECT"}
+        and e2.metric = ${metric}
         and e2.subject_id = (select subject_id from qsub
                              where question_id = ${questionId}
                              order by subject_id limit 1)
@@ -1095,7 +1117,7 @@ export class SmartMarkService {
 
     const bandPipeline = new BandMarkingPipeline(bandGen);
     const bandDecisions = await bandPipeline.runBatch(contexts);
-    return await this.applyAttemptDecisions(db, attempt, answers, scheme, bandDecisions, BAND_PIPELINE_VERSION);
+    return await this.applyAttemptDecisions(db, attempt, answers, scheme, bandDecisions, BAND_PIPELINE_VERSION, METRIC_BAND_QWK);
   }
 
   /** Per-part NO_SCHEME_BANDS refusals (append-only rows, no state change) —
@@ -1125,11 +1147,15 @@ export class SmartMarkService {
     scheme: { id: string; validation_state: string },
     decisions: ProvisionalDecision[],
     pipelineVersion: string,
+    /** ADR-040 §5.5: the κ gate's metric kind — POINT_UNWEIGHTED for the
+     *  point dispatch (the historical default), BAND_QWK for the band
+     *  dispatch; a band row can never release on point evidence. */
+    metric: string = METRIC_POINT_UNWEIGHTED,
   ): Promise<Map<string, SmartMarkResultRow>> {
     const attemptId = attempt.id;
     const anyAccepted = decisions.some((d) => d.accepted);
     // κ gate evaluated ONCE per pass
-    const authoritative = anyAccepted && (await this.kappaGatePassed(attempt.exam_paper_id, attempt.question_id));
+    const authoritative = anyAccepted && (await this.kappaGatePassed(attempt.exam_paper_id, attempt.question_id, metric));
 
     const results = new Map<string, SmartMarkResultRow>();
     for (let i = 0; i < answers.length; i++) {

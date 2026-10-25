@@ -264,8 +264,8 @@ const NEWEST_SCHEME = /select id, validation_state from mark_schemes where quest
 const SCHEME_FULL = /select validation_state, scheme_kind, general_guidance from mark_schemes where id = \?$/;
 const BANDS_MATCH = /select id, level_index, marks_min, marks_max, descriptor_md, guidance_md from mark_bands where mark_scheme_id = \? order by level_index/;
 const PROMPTS_MATCH = /select id, prompt from question_parts where question_version_id = \?$/;
-const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? order by computed_at desc/;
-const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? order by computed_at desc/;
+const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? and metric = \? order by computed_at desc/;
+const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? and metric = \? order by computed_at desc/;
 const KAPPA_SUBJECT = /select e2\.passed from smart_mark_agreement_evaluations e2/;
 const RESULT_INSERT = /insert into smart_mark_results/;
 const ANSWER_SMART_UPDATE = /update answers set marks_awarded = \? , marking_state = \? where id = \?/;

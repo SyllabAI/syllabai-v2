@@ -21145,3 +21145,19 @@ Stage Summary:
 - The band-wave-1 ingest leg is STARTED and receipted at its honest maximum: the first live R2 band probe (the conv53-named deliverable) is on the estate of record with the band baseline (0/0) pinned; the wave-1 grounding (QP side corpus-derivable, KG spines located, ref birth shape proven) and the four gap findings are on record.
 - The ONLY missing input to the first LEVELS birth is the real printed levels tables — operator-gated (supply the wave-1 MS documents or order the extraction lane). Everything downstream is already live code on main (§5.3 converter + validator, §5.4 dispatch, 0015 estate).
 - Receipt: .syllabai/receipts/T-SM-ROLLOUT/adr040-bandwave1-r2probe-r0.json; disclosure into #276 follows.
+
+---
+
+## t-sm-rollout adr040-eval-lane-r0 (2026-10-26, session web-3bd4aa99, trace 1a17475762a6b919)
+
+Operator order "proceed with eval lane" — ADR-040 §5 sequencing leg 5, the eval lane (QWK + D5-β floors + the metric discriminator + SUBJECT-scope band evals on the 0007 infrastructure) plus the human_marks.band_placement capture side the §5.4 receipt deferred here.
+
+- QWK: quadraticWeightedKappa (the cohenKappa sibling, pure + total) — QWK over paired ordinal placements drops into the kappa column; observedAgreement carries the unweighted exact-placement agreement; degenerate conventions documented (K=1, zero weighted-chance denominator) and fenced upstream by the D5-β level-span floor. Verified against hand-computed vectors (1 / 0 / 0.5 / −0.2857 / 0-vs−1 distance test).
+- D5-β floors IN CODE (pre-registered, ADR-040 §2.3): n_pairs ≥ 25, scored ≥ 50%, capture ≥ 80%, level-span ≥ 2, ≥ 10 boundary-straddling pairs (smart run's mark_scheme_id anchors band ranges via ONE batched any() read — no N+1). Unmet → ONE ConflictError naming every shortfall, NO row (absence stays gated).
+- metric discriminator hard: band rows insert metric='BAND_QWK'; kappaGatePassed + latestEvaluation + latestSubjectEvaluation metric-threaded (default POINT_UNWEIGHTED — point callers byte-unchanged); both dispatches (markAttemptBands / teacher markAnswerBand) gate on BAND_QWK. The mixed-course law holds structurally; R5 audit-tooling substitution stays band-wave-side.
+- Band evals: evaluateBandAgreement (PAPER/ALL) + evaluateBandAgreementForSubject (SUBJECT, recursive qsub sample verbatim + h.band_placement) — 0007 infra untouched. KappaEvaluationView + metric/withinBandMae/withinBandExactRate (disclosed-not-gated within-band leg).
+- Capture side (the §5.4 deferral closed): contracts humanMarkRequestSchema + optional bandPlacement; recordHumanMark validates BEFORE any state write against the newest-version newest scheme's bound bands — unknown level / out-of-range / ≠marksAwarded are honest 409s, NEVER clamps; stored pinned band_decision_v1 (snake, shape tag, empty descriptor_hits); view echoes bandPlacement only on band captures (point-path bodies byte-identical).
+- Routes: /kappa/evaluate + ?metric= (unknown → binding failure per R-1); /kappa/latest?metric=; human-mark passthrough.
+- Tests +32 (band-eval.test.ts 29 + routes 3): the QWK law, the pairing skips, every floor's named refusal + no-row pin, both dispatches' gate params pinned, every capture refusal, the point-path null-column pin, the route wiring. §5.2/§5.4 refusal + dispatch tests updated for the metric-filtered gate SQL shape ONLY (assertions unchanged; smartmark kappa route regexes + the SUBJECT rowsFor param index).
+- Gates: typecheck 0 (api + contracts); db:check green; suite 3433 tests — 3414 pass / 13 skip / 6 residual hub dual-run/cla-thread order-dependent flakes that reproduce ON CLEAN MAIN (7 fail + 1 error there; file-isolated green both sides) — disclosed, not introduced.
+- Scope boundary: leg 6 band waves next (band-wave-1 = 0455×2 / 4GE1 / 4BS1 / 9609 per OQ-2). Zero corpus/migration/flipped-point changes. Receipt: receipts/T-SM-ROLLOUT/adr040-eval-lane-r0.json. Fetch-first, no force.

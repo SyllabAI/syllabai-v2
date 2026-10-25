@@ -45,8 +45,8 @@ const VERSION = /select id from question_versions where question_id = \? order b
 const VALIDATED_SCHEME = /select id, validation_state, scheme_kind from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
 const NEWEST_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? order by created_at desc/;
 const POINTS = /select id, ref, ordering, text, marks, question_part_id from mark_points where mark_scheme_id = \? order by ordering/;
-const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? order by computed_at desc/;
-const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? order by computed_at desc/;
+const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? and metric = \? order by computed_at desc/;
+const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? and metric = \? order by computed_at desc/;
 const RESULT_INSERT = /insert into smart_mark_results/;
 const RESULT_LATEST = /select id, answer_id, model_id, marks_awarded, confidence, validation_passed, breakdown, failure_reason from smart_mark_results where answer_id = \? order by created_at desc/;
 const ATTEMPT_SMART_UPDATE = /update attempts set marking_state = \? where id = \?/;
