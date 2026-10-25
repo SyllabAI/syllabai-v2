@@ -131,6 +131,25 @@ Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
     figures=0 honestly pending a T-UGM-ASSETS-2 corpus amendment; the figure
     audits are therefore RUN-SCOPED (a course run is audited against its own
     map rows — the pure-1 run's census is unchanged).
+  - lane 10 (T-UGM-HUB-CONSUME-10 — the SECOND lane on the pure-3 course
+    plane, corpus PR #119): content/cie-a-level-maths-20-pure-3/
+    ugm-resources.json — CIE 9709 Pure 3 subtopic 3.2 Logarithmic and
+    exponential functions (spec points 3.2.1–3.2.4, the verbatim spine rows
+    of record; no fold fragments), the dedicated-station-plus-strays shape:
+    the substrate is UGM's dedicated Exponentials & Logarithms station (31
+    fresh of 34 — it held only 2 of-record resources before this lane, both
+    now cross-course joins), plus 3 strays whose tested skill is 3.2.x
+    (to-the-limit from calculus-trig-log — the e-defining special case — and
+    r7077 + powerful-fractions from thinking-about-algebra, both lane-5
+    pre-baked "2.2 Logarithmic and exponential functions" routings landing),
+    26 non-overlaps ride nonOverlapRows with bodyImported=false (by
+    reference, no text), and the 5 cross-lane rows are CROSS-COURSE joins
+    against pure-1 bodies (r9824/r7607 pure-1-functions, r6137/r8260
+    pure-1-series, r7184 pure-1-trigonometry — all one-to-many additions to
+    bodies already of record, no flips; the lane-9 nonOverlapByReference row
+    to-log-or-not-to-log flips to aligned WITH a fresh body under 3.2.3).
+    Figure plane unchanged: figures=0 honestly (the map of record predates
+    the lane; the rebuilt converter renders figcaption text only).
 
 Output: content/<lane>/ugm-resources.json, schema
 "syllabai-demo.ugm-lane-resources/1.1" (multi-lane) — per-spec-point resource
@@ -176,13 +195,18 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-# T-UGM-HUB-CONSUME-9: pin advanced past lane 9 (T-UGM-MODE1-9 /
-# T-UGM-IMPORT-9, corpus PR #114, merge commit fafd008d) — the pure-3 course
-# plane's first lane. Pure-1 inputs are byte-identical ac1fc90b → fafd008d
-# (the lane-9 PR touches UGM-Resources/pure-3-algebra/** + its enrichment +
-# shared bookkeeping only; the shared MANIFEST.json gains the pure-3 lane
-# block while the pure-1 lane blocks are unchanged).
-DEFAULT_REF = "main@fafd008d4e0b141223cc5b23b67c714f772e403e"
+# T-UGM-HUB-CONSUME-10: pin advanced past lane 10 (T-UGM-MODE1-10 /
+# T-UGM-IMPORT-10, corpus PR #119, merge commit 3176953c) AND past the
+# T-UGM-MODE1-10 amendment (2f31fcad — the lane-10 enrichment's
+# stationScope.resources was left unfilled; the amendment fills the three
+# numbers from the same file's stationBreakdown of record, caught by this
+# importer's fail-closed stationScope/stationBreakdown census audit on the
+# first pure-3 course run). Pure-1 inputs AND the lane-9 pure-3-algebra
+# inputs are byte-identical fafd008d → 2f31fcad (the lane-10 PR + amendment
+# touch UGM-Resources/pure-3-logarithmic-and-exponential-functions/** + its
+# enrichment + shared bookkeeping only; the shared MANIFEST.json gains the
+# lane-10 block while the earlier lane blocks are unchanged).
+DEFAULT_REF = "main@2f31fcadf94bfb9bfb5c836530e942d5762aaac4"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
@@ -352,6 +376,27 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-3-algebra",
             "ledger": "LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114)",
             "expected": {"resources": 35, "rows": 47, "aligned": 47, "nonOverlap": 16},
+        },
+        {
+            # T-UGM-HUB-CONSUME-10: the pure-3 plane's second lane — CIE 9709
+            # Pure 3 subtopic 3.2 Logarithmic and exponential functions (spec
+            # points 3.2.1–3.2.4), the dedicated-station-plus-strays shape
+            # (lanes 1-3 shape on the pure-3 plane): the dedicated
+            # Exponentials & Logarithms station + two stray stations. The 5
+            # cross-lane rows of record are CROSS-COURSE joins against pure-1
+            # bodies (joined by reference — see the module docstring); the
+            # 26 non-overlaps ride nonOverlapByReference (bodyImported=false).
+            "laneSlug": "logarithmic-and-exponential-functions",
+            "laneTitle": "Logarithmic and exponential functions",
+            "stations": [
+                {"slug": "exp-and-log", "title": "Exponentials & Logarithms"},
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "thinking-about-algebra", "title": "Thinking about Algebra"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-3-logarithmic-and-exponential-functions.json",
+            "res_dir": "UGM-Resources/pure-3-logarithmic-and-exponential-functions",
+            "ledger": "LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119)",
+            "expected": {"resources": 34, "rows": 39, "aligned": 39, "nonOverlap": 26},
         },
     ],
 }
@@ -947,6 +992,11 @@ def main():
         enr = p.get("enr") or {}
         cla = enr.get("crossLaneAligned") or []
         cno = enr.get("crossLaneNonOverlap") or []
+        # T-UGM-HUB-CONSUME-10 multi-lane law: per-part reconciliation counters
+        # (the declared crossLaneCoverage is audited against THIS part's
+        # in-run + by-reference rows — a course run may span several lanes).
+        p["_cc_inrun"] = 0
+        p["_cc_cross"] = 0
         if not cla and not cno:
             continue
         own_codes = set(enr["perSpecPoint"].keys())
@@ -962,6 +1012,7 @@ def main():
                         fail(f"[cross-course] {slug}: code outside this lane's perSpecPoint")
                     crosscourse.append(dict(row, servedUnder=supplier_course))
                     cross["aligned"] += 1
+                    p["_cc_cross"] += 1
                     continue
                 fail(f"[cross-lane] {slug}: not among the joined resources")
             supplier = os.path.basename((part_of[slug].get("lb") or {}).get("res_dir", ""))
@@ -987,6 +1038,7 @@ def main():
                 cross["aligned"] += 1
             if target["nonOverlap"] and target["specPoints"]:
                 target["nonOverlap"] = False  # flip of record: the strand lane mapped it
+            p["_cc_inrun"] += 1
         for row in cno:
             slug = row.get("ugmSlug")
             if by_id.get(slug) is None:
@@ -1084,7 +1136,25 @@ def main():
     #   served as bodies;
     #   crossCourse — the by-reference cross-course joins (servedUnder
     #   pointers into the other course's committed bundle).
-    byref = [row for p in parts for row in p.get("nonoverlap_byref", [])]
+    # T-UGM-HUB-CONSUME-10 supersede law: a byref row whose ugmSlug IS served
+    # by a body in THIS run is stale (the lane-9 of-record example:
+    # to-log-or-not-to-log rides lane-9's nonOverlapRows of record, but lane
+    # 10 flips it to aligned WITH a fresh body) — the bundle must never
+    # declare a resource body-less while serving its body. Dropped rows are
+    # counted and printed; the flip itself is of record in the flipping
+    # lane's enrichment (its perSpecPoint row + crossLaneCoverage note).
+    served_ids = {r["ugmId"] for r in resources}
+    stale_byref = [row for row in (r for p in parts for r in p.get("nonoverlap_byref", []))
+                   if row.get("ugmSlug") in served_ids]
+    byref = [row for p in parts for row in p.get("nonoverlap_byref", [])
+             if row.get("ugmSlug") not in served_ids]
+    if stale_byref:
+        print(f"    byref supersede: {len(stale_byref)} row(s) dropped — slug now served by a "
+              f"fresh body in this run: {sorted({r['ugmSlug'] for r in stale_byref})}")
+        for row in stale_byref:
+            tgt = by_id.get(row["ugmSlug"])
+            if tgt is None or not tgt.get("specPoints"):
+                fail(f"[byref] stale row {row['ugmSlug']!r} superseded but its served body is not aligned")
     if byref:
         bundle["coverage"]["nonOverlapByReference"] = {
             "count": len(byref),
@@ -1094,14 +1164,29 @@ def main():
         by_course = {}
         for row in crosscourse:
             by_course[row["servedUnder"]] = by_course.get(row["servedUnder"], 0) + 1
-        clc = (parts[0]["enr"].get("coverage") or {}).get("crossLaneCoverage") or {}
-        if clc and clc.get("crossLaneAligned") not in (None, len(crosscourse)):
-            fail(f"[cross-course] enrichment crossLaneCoverage {clc.get('crossLaneAligned')} != reconciled rows {len(crosscourse)}")
+        # T-UGM-HUB-CONSUME-10 multi-lane law: the declared cross-lane coverage
+        # is reconciled PER PART (a course run may span several lanes since
+        # lane 10) — each part's declared crossLaneAligned must equal its own
+        # in-run reconciled rows plus its cross-course by-reference rows. The
+        # #358 single-lane check (parts[0] vs the run-wide total) is the
+        # one-lane special case of this law.
+        for p in parts:
+            clc_p = ((p.get("enr") or {}).get("coverage") or {}).get("crossLaneCoverage") or {}
+            declared = clc_p.get("crossLaneAligned")
+            if declared is None:
+                continue
+            accounted = p["_cc_inrun"] + p["_cc_cross"]
+            if declared != accounted:
+                fail(f"[cross-course] {p['lb'].get('laneSlug')}: enrichment crossLaneCoverage {declared} != reconciled rows {accounted} (in-run {p['_cc_inrun']} + by-reference {p['_cc_cross']})")
+        clcs = [((p.get("enr") or {}).get("coverage") or {}).get("crossLaneCoverage") or {} for p in parts]
+        clc = clcs[0] if len(clcs) == 1 else {}
+        flips = sum(c.get("flips") or 0 for c in clcs)
+        one_to_many = sum(c.get("oneToMany") or 0 for c in clcs)
         bundle["coverage"]["crossCourse"] = {
             "aligned": len([r for r in crosscourse if not r.get("nonOverlapRef")]),
             "nonOverlapRef": len([r for r in crosscourse if r.get("nonOverlapRef")]),
-            "flips": clc.get("flips"),
-            "oneToMany": clc.get("oneToMany"),
+            "flips": flips,
+            "oneToMany": one_to_many,
             "courses": by_course,
             "note": (clc.get("note") or
                      "cross-course fact joins served by reference — the text of "

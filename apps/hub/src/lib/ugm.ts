@@ -16,7 +16,14 @@
  * ninth — PR #114, the FIRST lane on a SECOND course plane (cie-a-level-
  * maths-20-pure-3, CIE 9709 Pure 3 3.1 Algebra) — candidate-model shape:
  * 35 fresh bodies corpus-wide + 16 non-overlaps by reference (no text) +
- * 9 CROSS-COURSE fact joins against pure-1 bodies served by reference)
+ * 9 CROSS-COURSE fact joins against pure-1 bodies served by reference;
+ * Logarithmic and exponential functions tenth — PR #119 + the T-UGM-MODE1-10
+ * stationScope amendment, the SECOND pure-3 lane — dedicated-station-plus-
+ * strays shape (exp-and-log 31 of 34 fresh + 3 strays): 34 fresh bodies +
+ * 26 non-overlaps by reference + 5 CROSS-COURSE one-to-many joins against
+ * pure-1 bodies; the lane-9 byref row to-log-or-not-to-log flips to aligned
+ * WITH a fresh body under 3.2.3 (the CONSUME-10 supersede law drops the
+ * stale byref row))
  * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
  * hub-side import is
