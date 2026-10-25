@@ -580,12 +580,14 @@ export class SmartMarkService {
     if (versionRows.length === 0) throw new NotFoundError("question version", attempt.question_id);
     const versionId = versionRows[0]!.id;
 
-    // newest VALIDATED scheme backs marking; none → honest per-part refusal
+    // newest VALIDATED scheme backs marking; none → honest per-part refusal.
+    // ADR-040: the scheme's kind rides along so the dispatch below can hold
+    // the point/LEVELS boundary.
     const validatedRows = (await db`
-      select id, validation_state from mark_schemes
+      select id, validation_state, scheme_kind from mark_schemes
       where question_version_id = ${versionId} and validation_state = ${"VALIDATED"}
       order by created_at desc
-    `) as unknown as Array<{ id: string; validation_state: string }>;
+    `) as unknown as Array<{ id: string; validation_state: string; scheme_kind: string | null }>;
     if (validatedRows.length === 0) {
       const refusals = new Map<string, SmartMarkResultRow>();
       for (const answer of answers) {
@@ -594,6 +596,19 @@ export class SmartMarkService {
       return refusals;
     }
     const scheme = validatedRows[0]!;
+    if ((scheme.scheme_kind ?? "POINTS") === "LEVELS") {
+      // ADR-040 (levels-of-response): a VALIDATED LEVELS scheme is never
+      // marked by the point path — until the band dispatch leg routes it to
+      // the band marker, every part refuses honestly (NO_SCHEME_BANDS,
+      // append-only result row, no state change). Refusing here (not falling
+      // through to NO_SCHEME_POINTS) keeps the telemetry truthful: the scheme
+      // exists and is validated; it is simply not points-markable.
+      const refusals = new Map<string, SmartMarkResultRow>();
+      for (const answer of answers) {
+        refusals.set(answer.id, await this.refuseBandScheme(answer, scheme, tx));
+      }
+      return refusals;
+    }
     const pointRows = (await db`
       select id, ref, ordering, text, marks, question_part_id
       from mark_points where mark_scheme_id = ${scheme.id} order by ordering
@@ -736,6 +751,38 @@ export class SmartMarkService {
       validation_passed: false,
       breakdown: [],
       failure_reason: "SCHEME_NOT_VALIDATED",
+    };
+  }
+
+  /** Honest band refusal (ADR-040 §2.2): the LEVELS analog of
+   * NO_SCHEME_POINTS / SCHEME_NOT_VALIDATED — append-only result row stamped
+   * with the validated LEVELS scheme it refused; nothing is marked, no state
+   * changes, no evidence. Retires when the band dispatch leg routes LEVELS
+   * schemes to the band marker instead. */
+  private async refuseBandScheme(
+    answer: AnswerPartRow,
+    scheme: { id: string; validation_state: string },
+    tx?: SqlFn,
+  ): Promise<SmartMarkResultRow> {
+    const db = tx ?? this.sql;
+    const resultId = this.clock.newId();
+    await db`
+      insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
+        marks_awarded, confidence, validation_passed, breakdown, failure_reason,
+        mark_scheme_id, scheme_validation_state, raw_output, created_at)
+      values (${resultId}, ${answer.id}, ${PIPELINE_VERSION}, ${null}, ${0}, ${null}, ${false},
+        ${JSON.stringify([])}, ${"NO_SCHEME_BANDS"}, ${scheme.id},
+        ${scheme.validation_state}, ${null}, ${this.clock.now().toISOString()})
+    `;
+    return {
+      id: resultId,
+      answer_id: answer.id,
+      model_id: null,
+      marks_awarded: 0,
+      confidence: null,
+      validation_passed: false,
+      breakdown: [],
+      failure_reason: "NO_SCHEME_BANDS",
     };
   }
 }

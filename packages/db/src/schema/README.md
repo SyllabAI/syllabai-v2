@@ -6,14 +6,21 @@ live Neon end-state of the frozen Java core's Flyway migrations (V1..V61+,
 against the task branch, never hand-authored. Re-baselining procedure is at
 the bottom of this file.
 
-- Baseline captured: 2026-10-04T18:27Z (task T-MIG-002, branch `t-mig-002/r2`)
+- Baseline captured: 2026-10-25T10:13Z (ADR-040 §5.2 re-baseline, task
+  T-SM-ROLLOUT adr040-mig-r0, branch `t-sm-adr040-mig/r0-0015`)
 - Neon project: `billowing-cherry-15418366` ("SyllabAI", pg 18)
-  - source branch: `t-mig-002/r2` (`br-dry-sun-a5wsx9n1`, copy-on-write of
-    production `br-muddy-bar-a5huwldd`) — production itself was only ever
-    the parent of the copy; zero reads/writes against production compute.
-- Introspected: 62 tables · 579 columns · 87 indexes · 54 foreign keys ·
-  98 check constraints · 0 views · 0 enums (live==snapshot==runtime verified,
-  see `.syllabai/receipts/T-MIG-002/`)
+  - source branch: `t-sm-adr040-mig/r0-0015` (`br-old-grass-a5p6ey1o`,
+    copy-on-write of production `br-muddy-bar-a5huwldd`) — production itself
+    was only ever the parent of the copy; zero reads/writes against
+    production compute. The branch carried the re-applied restore-lost
+    0007+0014 artifacts (see `.syllabai/receipts/T-SM-ROLLOUT/adr040-mig-r0.json`
+    FINDING) so the pull reflects the of-record end-state + 0015.
+- Introspected: 83 tables · 780 columns · 109 indexes (+2 unique
+  constraint-classified) · 81 foreign keys · 139 check constraints · 0 views
+  · 0 enums (live==snapshot==runtime verified, see
+  `.syllabai/receipts/T-MIG-002-R/` + `.syllabai/receipts/T-SM-ROLLOUT/`)
+- Prior baseline: 2026-10-04T18:27Z (task T-MIG-002, branch `t-mig-002/r2`)
+  — 62 tables · 579 columns · 87 indexes · 54 fks · 98 checks.
 
 ## Files
 

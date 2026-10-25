@@ -1,0 +1,28 @@
+{
+  "lane": "T-MIG-002-R",
+  "run": "adr040-mig-r0-rebaseline",
+  "date": "2026-10-25",
+  "session": "web-3bd4aa99-51b0-4bec-a362-f94adc40f19d",
+  "trace_id": "1a17265611d9fd6d",
+  "parent_receipt": ".syllabai/receipts/T-SM-ROLLOUT/adr040-mig-r0.json",
+  "what": "live re-baseline of drizzle/meta/0000_snapshot.json after the ADR-040 §5.2 additive migration (0015), per the documented procedure (schema/README.md §Re-baseline procedure)",
+  "pull_target": {
+    "branch": "t-sm-adr040-mig/r0-0015 (br-old-grass-a5p6ey1o, endpoint ep-hidden-base-a5b6zecz)",
+    "project": "billowing-cherry-15418366",
+    "guardrails": "pullGuards green — non-production URL (denylist clean), --on-cow-branch declared, introspection-only"
+  },
+  "inventory": "83 tables · 780 columns · 111 tool-counted indexes · 81 fks · 139 checks — VERIFY PASS, 0 drifts (runtime==snapshot)",
+  "delta_vs_prior_baseline": [
+    "+ table mark_bands (9 cols, 1 idx, 1 fk, 4 checks)",
+    "+ mark_schemes.scheme_kind varchar(10) DEFAULT 'POINTS' + ck_mark_scheme_kind",
+    "+ human_marks.band_placement jsonb (nullable)",
+    "+ smart_mark_agreement_evaluations.metric varchar(20) DEFAULT 'POINT_UNWEIGHTED' + ck_agreement_metric"
+  ],
+  "procedure_deviations_disclosed": [
+    "the pull's introspection run left two stray drizzle-kit dump files (0000_*.sql) in drizzle/ — deleted, not of-record",
+    "the pull truncated meta/_journal.json to a single capture entry — restored from git and the idx-15 entry re-appended (db:check green); tool hazard flagged for the rebaseline owners",
+    "relations.ts left at its pre-0015 of-record state (query-time-only; the 0011 markPointAlternatives precedent — mark_bands gains relations entries only when a query path needs one); the pull's regenerated relations.ts was discarded",
+    "uq_book_chapters_identity / uq_documents_canonical_id: physically present on the restored estate but undeclared by the of-record runtime model (schema.ts); the re-baselined 0000 follows the runtime model — folded into the restore-drift operator leg (parent receipt FINDING)"
+  ],
+  "verification": "rebaseline verify 0 drifts; db:check green (0000→0015 chain); rebaseline.test.ts 26/26 after band-advance to 83/780/111/81/139; full suite 2912/0"
+}
