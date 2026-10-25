@@ -16,6 +16,10 @@
  *                            κ-gated evidence at completion) +
  *                            kappaGatePassed (fail-closed: absence of any
  *                            evaluation = gated).
+ *   BandMarkingPipeline    — the ADR-040 §5.4 band dispatch leg: the LEVELS
+ *                            analog of the point pipeline (blank →
+ *                            deterministic zero, band validators trio, ONE
+ *                            provider call + the §2.2 hard-range ONE retry).
  *   StudentSmartMarkService— the learner half of F-047: ownership re-verify
  *                            (no existence leak), structured-only,
  *                            pre-settlement only, reveal-policy mirror
@@ -129,6 +133,101 @@ export class CandidateGenerationError extends Error {
   ) {
     super(reason);
   }
+}
+
+// ── band marking types (ADR-040 §2.2 — the LEVELS analogs) ──────────────────
+
+export interface MarkingBand {
+  id: string;
+  levelIndex: number;
+  marksMin: number;
+  marksMax: number;
+  descriptorMd: string;
+  guidanceMd: string | null;
+}
+
+/** Raw mark_bands row (snake columns) → the camel projection. */
+export function toMarkingBand(r: Record<string, unknown>): MarkingBand {
+  return {
+    id: String(r.id),
+    levelIndex: Number(r.level_index),
+    marksMin: Number(r.marks_min),
+    marksMax: Number(r.marks_max),
+    descriptorMd: String(r.descriptor_md),
+    guidanceMd: r.guidance_md === null || r.guidance_md === undefined ? null : String(r.guidance_md),
+  };
+}
+
+export interface BandMarkingContext {
+  answer: MarkingAnswerRef;
+  schemeId: string;
+  schemeValidationState: string;
+  /** the scheme's levels, ordered by level_index ascending */
+  bands: MarkingBand[];
+  /** question_parts.prompt — the LEVELS prompt sends the question text (§2.2) */
+  partPrompt: string | null;
+  /** mark_schemes.general_guidance — SENT for LEVELS from day one (§2.2;
+   *  the point path discloses it as unsent, issue #276 §4.8) */
+  generalGuidance: string | null;
+}
+
+export interface DescriptorHit {
+  levelIndex: number;
+  hit: boolean;
+  rationale: string;
+}
+
+/** The generator's proposal: one ordinal placement + a within-band mark +
+ *  the descriptor transparency. */
+export interface BandPlacementCandidate {
+  modelId: string | null;
+  levelPlacement: number | null;
+  awardedMarks: number;
+  descriptorHits: DescriptorHit[];
+  confidence: number | null;
+  rawOutput: string | null;
+}
+
+/** The pinned breakdown shape of record for band rows (ADR-040 §2.2):
+ *  smart_mark_results.breakdown carries this object (the point path stores
+ *  the per-point array). */
+export interface BandDecisionV1 {
+  shape: "band_decision_v1";
+  level_placement: number | null;
+  awarded_marks: number;
+  descriptor_hits: Array<{ level_index: number; hit: boolean; rationale: string }>;
+  /** deterministic zero (R7 analog): no placement, no LLM call */
+  blank?: boolean;
+}
+
+const BAND_DECISION_SHAPE = "band_decision_v1";
+
+export function isBandDecisionV1(value: unknown): value is BandDecisionV1 {
+  if (value === null || typeof value !== "object" || Array.isArray(value)) return false;
+  const rec = value as Record<string, unknown>;
+  return rec.shape === BAND_DECISION_SHAPE && typeof rec.awarded_marks === "number";
+}
+
+export interface BandDecision {
+  accepted: boolean;
+  marksAwarded: number;
+  breakdown: BandDecisionV1;
+  failureReason: string | null;
+  candidate: BandPlacementCandidate | null;
+}
+
+/** The deterministic correction envelope for the §2.2 hard-range retry:
+ *  the violations are stated back verbatim — never a fresh prompt, never a
+ *  silent clamp. */
+export interface BandCorrection {
+  violations: string[];
+}
+
+/** BandMarkingCandidateGenerator — the injected LLM seam for LEVELS parts
+ *  (lifecycle-gated surface, the band analog of MarkingCandidateGenerator). */
+export interface BandMarkingCandidateGenerator {
+  proposeBand(context: BandMarkingContext, correction?: BandCorrection): Promise<BandPlacementCandidate>;
+  proposeBandsAll(contexts: BandMarkingContext[]): Promise<BandPlacementCandidate[]>;
 }
 
 /** MarkingCandidateGenerator — the injected LLM seam (lifecycle-gated surface). */
@@ -350,6 +449,274 @@ function blankBreakdown(points: MarkingPoint[]): DecisionBreakdownEntry[] {
   }));
 }
 
+// ── the band validators trio (ADR-040 §2.2 — pure, deterministic) ───────────
+
+export interface BandValidator {
+  name(): string;
+  validate(candidate: BandPlacementCandidate, context: BandMarkingContext): string[];
+}
+
+/** BandScopeMarkingValidator — the bounds analog: the placement and every
+ *  descriptor hit reference an in-scope level of the bound scheme. */
+export const bandScopeValidator: BandValidator = {
+  name: () => "band-scope",
+  validate(candidate, context) {
+    const violations: string[] = [];
+    const inScope = new Set(context.bands.map((b) => b.levelIndex));
+    if (candidate.levelPlacement !== null && !inScope.has(candidate.levelPlacement)) {
+      violations.push(`placement references unknown level ${candidate.levelPlacement}`);
+    }
+    for (const hit of candidate.descriptorHits) {
+      if (!inScope.has(hit.levelIndex)) {
+        violations.push(`descriptor hit references unknown level ${hit.levelIndex}`);
+      }
+    }
+    return violations;
+  },
+};
+
+/** BandPlacementMarkingValidator — the coverage analog: exactly ONE level
+ *  placement decided (no placement = no decision of record). */
+export const bandPlacementValidator: BandValidator = {
+  name: () => "band-placement",
+  validate(candidate) {
+    return candidate.levelPlacement === null ? ["no level placement decided"] : [];
+  },
+};
+
+/** The range validator's message prefix — the pipeline classifies on it for
+ *  the §2.2 hard-range retry law (only range violations are retryable). */
+export const BAND_RANGE_PREFIX = "band-range: ";
+
+/** BandRangeMarkingValidator — the HARD RANGE LAW (ADR-040 §2.2): awarded
+ *  marks must sit inside the placed band's [marks_min, marks_max]. Outside
+ *  is a violation, never a clamp target — silent clamping is forbidden. */
+export const bandRangeValidator: BandValidator = {
+  name: () => "band-range",
+  validate(candidate, context) {
+    const violations: string[] = [];
+    if (candidate.levelPlacement === null) return violations;
+    const placed = context.bands.find((b) => b.levelIndex === candidate.levelPlacement);
+    if (placed === undefined) return violations; // the scope validator names it
+    if (candidate.awardedMarks < placed.marksMin || candidate.awardedMarks > placed.marksMax) {
+      violations.push(
+        `${BAND_RANGE_PREFIX}awarded marks ${candidate.awardedMarks} fall outside the placed level ${placed.levelIndex} range ${placed.marksMin}..${placed.marksMax}`,
+      );
+    }
+    return violations;
+  },
+};
+
+export const DEFAULT_BAND_VALIDATORS: BandValidator[] = [
+  bandScopeValidator,
+  bandPlacementValidator,
+  bandRangeValidator,
+];
+
+export function isBandRangeViolation(violation: string): boolean {
+  return violation.startsWith(BAND_RANGE_PREFIX);
+}
+
+export function bandDecisionRejected(
+  reason: string,
+  candidate: BandPlacementCandidate | null,
+): BandDecision {
+  return {
+    accepted: false,
+    marksAwarded: 0,
+    breakdown: { shape: BAND_DECISION_SHAPE, level_placement: null, awarded_marks: 0, descriptor_hits: [] },
+    failureReason: reason,
+    candidate,
+  };
+}
+
+/** deterministic zero for a blank answer: no placement, no LLM call (R7). */
+export function blankBandBreakdown(): BandDecisionV1 {
+  return {
+    shape: BAND_DECISION_SHAPE,
+    level_placement: null,
+    awarded_marks: 0,
+    descriptor_hits: [],
+    blank: true,
+  };
+}
+
+function candidateToBreakdown(candidate: BandPlacementCandidate): BandDecisionV1 {
+  return {
+    shape: BAND_DECISION_SHAPE,
+    level_placement: candidate.levelPlacement,
+    awarded_marks: candidate.awardedMarks,
+    descriptor_hits: candidate.descriptorHits.map((h) => ({
+      level_index: h.levelIndex,
+      hit: h.hit,
+      rationale: h.rationale,
+    })),
+  };
+}
+
+function emptyBandCandidate(): BandPlacementCandidate {
+  return {
+    modelId: null,
+    levelPlacement: null,
+    awardedMarks: 0,
+    descriptorHits: [],
+    confidence: null,
+    rawOutput: null,
+  };
+}
+
+function runBandValidators(
+  candidate: BandPlacementCandidate,
+  context: BandMarkingContext,
+  validators: BandValidator[],
+): string[] {
+  const violations: string[] = [];
+  for (const validator of validators) {
+    violations.push(...validator.validate(candidate, context));
+  }
+  return violations;
+}
+
+function trimViolations(violations: string[]): string {
+  const joined = violations.join("; ");
+  return joined.length > 190 ? joined.slice(0, 190) : joined;
+}
+
+/** BandMarkingPipeline — the LEVELS analog of SmartMarkPipeline: pure
+ *  orchestration, never mutates, never invents marks. Blank answers
+ *  short-circuit to the deterministic zero; everything else rides ONE
+ *  proposeBand call — plus, when the candidate violates ONLY the hard range
+ *  law, exactly ONE deterministic retry with the violations stated back
+ *  (ADR-040 §2.2), then the honest refusal. Batch topology mirrors the v4
+ *  point envelope with the per-part fallback ladder. */
+export class BandMarkingPipeline {
+  constructor(
+    private readonly generator: BandMarkingCandidateGenerator,
+    private readonly validators: BandValidator[] = DEFAULT_BAND_VALIDATORS,
+  ) {}
+
+  async run(context: BandMarkingContext): Promise<BandDecision> {
+    if (context.bands.length === 0) {
+      return bandDecisionRejected("NO_SCHEME_BANDS", null);
+    }
+    const answerText = context.answer.answerText;
+    if (answerText === null || answerText.trim() === "") {
+      // deterministic short-circuit: no evidence → no placement, no LLM call
+      return {
+        accepted: true,
+        marksAwarded: 0,
+        breakdown: blankBandBreakdown(),
+        failureReason: null,
+        candidate: null,
+      };
+    }
+    let candidate: BandPlacementCandidate;
+    try {
+      candidate = await this.generator.proposeBand(context);
+    } catch (e) {
+      if (e instanceof CandidateGenerationError) {
+        // self-forensic refusals: raw provider output persists for audit
+        return e.rawOutput === null
+          ? bandDecisionRejected(e.reason, null)
+          : bandDecisionRejected(e.reason, { ...emptyBandCandidate(), rawOutput: e.rawOutput });
+      }
+      throw e;
+    }
+    return this.resolve(candidate, context);
+  }
+
+  /**
+   * One BandDecision per context, index-aligned. Deterministic short-circuits
+   * never reach the generator; the rest goes through proposeBandsAll — ONE
+   * provider call for the attempt. A batch failure (or a non-index-aligned
+   * result) degrades to exactly the per-part topology through run — never
+   * guess. Per-part range retries stay bounded inside resolve.
+   */
+  async runBatch(contexts: BandMarkingContext[]): Promise<BandDecision[]> {
+    const decisions: BandDecision[] = new Array(contexts.length);
+    const markable: number[] = [];
+    for (let i = 0; i < contexts.length; i++) {
+      const context = contexts[i]!;
+      if (context.bands.length === 0) {
+        decisions[i] = bandDecisionRejected("NO_SCHEME_BANDS", null);
+      } else if (context.answer.answerText === null || context.answer.answerText.trim() === "") {
+        decisions[i] = {
+          accepted: true,
+          marksAwarded: 0,
+          breakdown: blankBandBreakdown(),
+          failureReason: null,
+          candidate: null,
+        };
+      } else {
+        markable.push(i);
+      }
+    }
+    if (markable.length > 0) {
+      const markableContexts = markable.map((i) => contexts[i]!);
+      let batch: BandPlacementCandidate[] | null = null;
+      try {
+        const proposed = await this.generator.proposeBandsAll(markableContexts);
+        batch = Array.isArray(proposed) && proposed.length === markableContexts.length ? proposed : null;
+      } catch {
+        batch = null; // provider unavailable / truncated / unparseable — refuse as a whole
+      }
+      for (let j = 0; j < markable.length; j++) {
+        const context = markableContexts[j]!;
+        decisions[markable[j]!] =
+          batch !== null ? await this.resolve(batch[j]!, context) : await this.run(context);
+      }
+    }
+    return decisions;
+  }
+
+  /** The §2.2 hard range law: violations that are EXCLUSIVELY band-range
+   *  violations get ONE deterministic retry; structural violations (unknown
+   *  level, missing placement) refuse immediately. Still outside after the
+   *  retry → the honest BAND_RANGE_VIOLATION refusal, raw output attached. */
+  private async resolve(
+    candidate: BandPlacementCandidate,
+    context: BandMarkingContext,
+  ): Promise<BandDecision> {
+    let violations = runBandValidators(candidate, context, this.validators);
+    if (violations.length > 0 && violations.every(isBandRangeViolation)) {
+      try {
+        candidate = await this.generator.proposeBand(context, { violations });
+      } catch (e) {
+        if (e instanceof CandidateGenerationError) {
+          return e.rawOutput === null
+            ? bandDecisionRejected(e.reason, null)
+            : bandDecisionRejected(e.reason, { ...emptyBandCandidate(), rawOutput: e.rawOutput });
+        }
+        throw e;
+      }
+      violations = runBandValidators(candidate, context, this.validators);
+      if (violations.length > 0) {
+        return bandDecisionRejected(
+          violations.every(isBandRangeViolation)
+            ? "BAND_RANGE_VIOLATION"
+            : `VALIDATION_FAILED: ${trimViolations(violations)}`,
+          candidate,
+        );
+      }
+      return this.accept(candidate);
+    }
+    if (violations.length > 0) {
+      return bandDecisionRejected(`VALIDATION_FAILED: ${trimViolations(violations)}`, candidate);
+    }
+    return this.accept(candidate);
+  }
+
+  private accept(candidate: BandPlacementCandidate): BandDecision {
+    return {
+      accepted: true,
+      marksAwarded: candidate.awardedMarks,
+      breakdown: candidateToBreakdown(candidate),
+      failureReason: null,
+      candidate,
+    };
+  }
+}
+
 // ── views (StudentSmartMarkViews.java verbatim) ─────────────────────────────
 
 export interface PointDecisionView {
@@ -375,6 +742,20 @@ export interface PartSmartMarkView {
   validationPassed: boolean;
   failureReason: string | null;
   breakdown: PointDecisionView[];
+  /** ADR-040 §5.4: present ONLY for band-marked parts (the breakdown shape
+   *  of record is band_decision_v1); breakdown stays empty for them. */
+  bandDecision?: BandDecisionView;
+}
+
+/** The student-view projection of a band decision — the descriptor label is
+ *  the compact first meaningful line (the full scheme text never leaks
+ *  through the breakdown, mirroring pointLabel's law). */
+export interface BandDecisionView {
+  levelPlacement: number | null;
+  awardedMarks: number;
+  marksPossible: number;
+  descriptorHits: Array<{ levelIndex: number; descriptorLabel: string; hit: boolean; rationale: string }>;
+  blank: boolean;
 }
 
 export interface AttemptSmartMarkView {
@@ -399,7 +780,9 @@ export interface ImprovementPlanView {
   generatedAt: string;
 }
 
-/** SmartMarkResult row as the service selects it back for projection. */
+/** SmartMarkResult row as the service selects it back for projection.
+ *  ADR-040 §5.4: breakdown is the per-point array for POINTS rows and the
+ *  pinned band_decision_v1 object for LEVELS rows. */
 export interface SmartMarkResultRow {
   id: string;
   answer_id: string;
@@ -407,7 +790,7 @@ export interface SmartMarkResultRow {
   marks_awarded: number;
   confidence: number | null;
   validation_passed: boolean;
-  breakdown: DecisionBreakdownEntry[] | null;
+  breakdown: DecisionBreakdownEntry[] | BandDecisionV1 | null;
   failure_reason: string | null;
 }
 
@@ -452,17 +835,36 @@ interface AttemptLockRow {
 
 const SETTABLE_STATES = new Set(["PENDING", "SMART_MARKED"]);
 export const PIPELINE_VERSION = "1.3.0";
+/** ADR-040 §5.4: band rows stamp their own pipeline version — the flipped
+ *  point set keeps 1.3.0 byte-identically (provenance, never a shared bump). */
+export const BAND_PIPELINE_VERSION = "1.4.0";
 
 /**
  * SmartMarkService — the ONE engine (teacher queue + student surface share
  * it; T-MIG-033's teacher marking imports this module).
  */
+
+/** The structural shape applyAttemptDecisions consumes — Decision and
+ *  BandDecision both satisfy it (the breakdown payload is kind-specific:
+ *  per-point array vs the pinned band_decision_v1 object). */
+interface ProvisionalDecision {
+  accepted: boolean;
+  marksAwarded: number;
+  breakdown: unknown;
+  failureReason: string | null;
+  candidate: { modelId: string | null; confidence: number | null; rawOutput: string | null } | null;
+}
+
 export class SmartMarkService {
   constructor(
     private readonly sql: SqlFn,
     private readonly generator: MarkingCandidateGenerator,
     private readonly publisher: GradedEvidencePublisher,
     private readonly clock: SubmitClock,
+    /** ADR-040 §5.4: the band dispatch seam. Absent (unwired legacy
+     *  construction) → VALIDATED LEVELS schemes keep the §5.2 posture:
+     *  per-part NO_SCHEME_BANDS refusals, no state change. */
+    private readonly bandGenerator?: BandMarkingCandidateGenerator,
   ) {}
 
   /** κ release gate (:333-344 + T-SM-KAPPA-SUBJECT / D2, #29 comment 3):
@@ -597,17 +999,11 @@ export class SmartMarkService {
     }
     const scheme = validatedRows[0]!;
     if ((scheme.scheme_kind ?? "POINTS") === "LEVELS") {
-      // ADR-040 (levels-of-response): a VALIDATED LEVELS scheme is never
-      // marked by the point path — until the band dispatch leg routes it to
-      // the band marker, every part refuses honestly (NO_SCHEME_BANDS,
-      // append-only result row, no state change). Refusing here (not falling
-      // through to NO_SCHEME_POINTS) keeps the telemetry truthful: the scheme
-      // exists and is validated; it is simply not points-markable.
-      const refusals = new Map<string, SmartMarkResultRow>();
-      for (const answer of answers) {
-        refusals.set(answer.id, await this.refuseBandScheme(answer, scheme, tx));
-      }
-      return refusals;
+      // ADR-040 §5.4 — the band dispatch leg: the bound scheme's kind selects
+      // the marker path. ONE dispatch, no guessing; the band path rides the
+      // same eligibility line (markAttempt ran it above), and band parts
+      // still refuse honestly until their scheme is VALIDATED.
+      return await this.markAttemptBands(db, attempt, answers, versionId, scheme, tx);
     }
     const pointRows = (await db`
       select id, ref, ordering, text, marks, question_part_id
@@ -632,6 +1028,105 @@ export class SmartMarkService {
     const pipeline = new SmartMarkPipeline(this.generator);
     const decisions = await pipeline.runBatch(contexts);
 
+    return await this.applyAttemptDecisions(db, attempt, answers, scheme, decisions, PIPELINE_VERSION);
+  }
+
+  /** ADR-040 §5.4 — the band marking path for a VALIDATED LEVELS scheme
+   *  (markAttempt topology). Unwired band seam → the §5.2 posture (per-part
+   *  NO_SCHEME_BANDS refusals, append-only, no state change); empty bands on
+   *  a wired seam → the same honest refusal (the LEVELS analog of
+   *  NO_SCHEME_POINTS). Otherwise: bands + general guidance + part prompts
+   *  load in three bounded reads (two-step retrieval, no N+1), the band
+   *  pipeline decides, and the SHARED tail applies — append-only rows, state
+   *  writes, κ gate, evidence — exactly like the point path. */
+  private async markAttemptBands(
+    db: SqlFn,
+    attempt: AttemptLockRow,
+    answers: AnswerPartRow[],
+    versionId: string,
+    scheme: { id: string; validation_state: string; scheme_kind: string | null },
+    tx?: SqlFn,
+  ): Promise<Map<string, SmartMarkResultRow>> {
+    const bandGen = this.bandGenerator;
+    if (bandGen === undefined) {
+      return await this.refuseBandParts(db, answers, scheme, tx);
+    }
+    // internal guard + general guidance in ONE re-read: a kind mismatch
+    // between dispatch and the bound scheme refuses loudly — never silently
+    // re-routes (ADR-040 §2.2).
+    const schemeFullRows = (await db`
+      select validation_state, scheme_kind, general_guidance from mark_schemes where id = ${scheme.id}
+    `) as unknown as Array<{ validation_state: string; scheme_kind: string | null; general_guidance: string | null }>;
+    if (schemeFullRows.length === 0) throw new NotFoundError("mark scheme", scheme.id);
+    const schemeFull = schemeFullRows[0]!;
+    if ((schemeFull.scheme_kind ?? "POINTS") !== "LEVELS") {
+      throw new ConflictError("mark scheme kind changed between dispatch and read -- refusing loudly");
+    }
+    const bandRows = (await db`
+      select id, level_index, marks_min, marks_max, descriptor_md, guidance_md
+      from mark_bands where mark_scheme_id = ${scheme.id} order by level_index
+    `) as unknown as Array<Record<string, unknown>>;
+    const bands = bandRows.map(toMarkingBand);
+    if (bands.length === 0) {
+      // NO_SCHEME_BANDS: a validated LEVELS scheme with no levels rows is
+      // not band-markable — the honest refusal keeps telemetry truthful.
+      return await this.refuseBandParts(db, answers, scheme, tx);
+    }
+    const promptRows = (await db`
+      select id, prompt from question_parts where question_version_id = ${versionId}
+    `) as unknown as Array<Record<string, unknown>>;
+    const promptById = new Map(promptRows.map((r) => [String(r.id), String(r.prompt)]));
+
+    const contexts: BandMarkingContext[] = answers.map((answer) => ({
+      answer: {
+        id: answer.id,
+        attemptId: attempt.id,
+        questionPartId: answer.question_part_id,
+        answerText: answer.answer_text,
+        label: answer.label,
+        partMarks: answer.marks,
+      },
+      schemeId: scheme.id,
+      schemeValidationState: scheme.validation_state,
+      bands,
+      partPrompt: promptById.get(answer.question_part_id) ?? null,
+      generalGuidance: schemeFull.general_guidance,
+    }));
+
+    const bandPipeline = new BandMarkingPipeline(bandGen);
+    const bandDecisions = await bandPipeline.runBatch(contexts);
+    return await this.applyAttemptDecisions(db, attempt, answers, scheme, bandDecisions, BAND_PIPELINE_VERSION);
+  }
+
+  /** Per-part NO_SCHEME_BANDS refusals (append-only rows, no state change) —
+   *  the §5.2 posture, retired to the unwired-seam / empty-bands guard. */
+  private async refuseBandParts(
+    db: SqlFn,
+    answers: AnswerPartRow[],
+    scheme: { id: string; validation_state: string },
+    tx?: SqlFn,
+  ): Promise<Map<string, SmartMarkResultRow>> {
+    const refusals = new Map<string, SmartMarkResultRow>();
+    for (const answer of answers) {
+      refusals.set(answer.id, await this.refuseBandScheme(answer, scheme, tx));
+    }
+    return refusals;
+  }
+
+  /** The shared tail of markAttempt (point + band dispatches): append-only
+   *  result rows stamped with the scheme of record, provisional state
+   *  writes, the ONE attempt-total recompute, and the κ-gated graded
+   *  evidence. decisions are index-aligned with answers. The pipeline
+   *  version stamps provenance per kind (1.3.0 points / 1.4.0 bands). */
+  private async applyAttemptDecisions(
+    db: SqlFn,
+    attempt: AttemptLockRow,
+    answers: AnswerPartRow[],
+    scheme: { id: string; validation_state: string },
+    decisions: ProvisionalDecision[],
+    pipelineVersion: string,
+  ): Promise<Map<string, SmartMarkResultRow>> {
+    const attemptId = attempt.id;
     const anyAccepted = decisions.some((d) => d.accepted);
     // κ gate evaluated ONCE per pass
     const authoritative = anyAccepted && (await this.kappaGatePassed(attempt.exam_paper_id, attempt.question_id));
@@ -645,7 +1140,7 @@ export class SmartMarkService {
         insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
           marks_awarded, confidence, validation_passed, breakdown, failure_reason,
           mark_scheme_id, scheme_validation_state, raw_output, created_at)
-        values (${resultId}, ${answer.id}, ${PIPELINE_VERSION}, ${decision.candidate?.modelId ?? null},
+        values (${resultId}, ${answer.id}, ${pipelineVersion}, ${decision.candidate?.modelId ?? null},
           ${decision.marksAwarded}, ${decision.candidate?.confidence ?? null}, ${decision.accepted},
           ${JSON.stringify(decision.breakdown)}, ${decision.failureReason}, ${scheme.id},
           ${scheme.validation_state}, ${decision.candidate?.rawOutput ?? null}, ${this.clock.now().toISOString()})
@@ -657,7 +1152,7 @@ export class SmartMarkService {
         marks_awarded: decision.marksAwarded,
         confidence: decision.candidate?.confidence ?? null,
         validation_passed: decision.accepted,
-        breakdown: decision.breakdown,
+        breakdown: decision.breakdown as DecisionBreakdownEntry[] | BandDecisionV1,
         failure_reason: decision.failureReason,
       };
       if (decision.accepted) {
@@ -755,10 +1250,11 @@ export class SmartMarkService {
   }
 
   /** Honest band refusal (ADR-040 §2.2): the LEVELS analog of
-   * NO_SCHEME_POINTS / SCHEME_NOT_VALIDATED — append-only result row stamped
-   * with the validated LEVELS scheme it refused; nothing is marked, no state
-   * changes, no evidence. Retires when the band dispatch leg routes LEVELS
-   * schemes to the band marker instead. */
+   *  NO_SCHEME_POINTS / SCHEME_NOT_VALIDATED — append-only result row stamped
+   *  with the validated LEVELS scheme it refused; nothing is marked, no state
+   *  changes, no evidence. §5.4 retired this as the ROUTE for validated
+   *  LEVELS schemes; it remains the guard of record for the unwired band
+   *  seam and for a validated scheme whose mark_bands rows are empty. */
   private async refuseBandScheme(
     answer: AnswerPartRow,
     scheme: { id: string; validation_state: string },
@@ -1142,6 +1638,15 @@ export class StudentSmartMarkService {
         "no accepted Smart Mark result for this part yet -- run Smart mark first",
       );
     }
+    // ADR-040 §5.4 cycle-1 boundary: a band-marked part's breakdown is the
+    // pinned band_decision_v1 object — the per-point feedback prompts have no
+    // honest reading of it. Named refusal, never a degenerate
+    // empty-decisions prose run; band-native prose is a band-wave follow-up.
+    if (result.breakdown !== null && !Array.isArray(result.breakdown)) {
+      throw new ConflictError(
+        "this part is band-marked (levels-of-response) -- per-point feedback prose is not available for it",
+      );
+    }
     const scheme = await this.resolveScheme(attempt.question_id);
     const pointRows = (await this.sql`
       select id, ref, ordering, text, marks, question_part_id
@@ -1162,6 +1667,13 @@ export class StudentSmartMarkService {
     schemeId: string,
     authoritative: boolean,
   ): Promise<PartSmartMarkView> {
+    // ADR-040 §5.4: a band row's breakdown is the pinned band_decision_v1
+    // OBJECT — project it through the band view (the per-point loop below
+    // would misread it; the shapes never mix within one result row).
+    const rawBreakdown: unknown = result.breakdown;
+    if (rawBreakdown !== null && !Array.isArray(rawBreakdown)) {
+      return this.projectBand(answer, result, schemeId, authoritative, rawBreakdown);
+    }
     const pointRows = (await this.sql`
       select id, ref, ordering, text, marks, question_part_id
       from mark_points where mark_scheme_id = ${schemeId} order by ordering
@@ -1170,8 +1682,9 @@ export class StudentSmartMarkService {
     const inScope = points.filter((p) => p.questionPartId === answer.question_part_id);
     const byId = new Map(inScope.map((p) => [p.id, p]));
     const breakdown: PointDecisionView[] = [];
-    if (result.breakdown !== null) {
-      for (const entry of result.breakdown) {
+    const pointEntries = result.breakdown as DecisionBreakdownEntry[] | null;
+    if (pointEntries !== null) {
+      for (const entry of pointEntries) {
         const point = byId.get(entry.markPointId);
         breakdown.push({
           ref: String(entry.ref),
@@ -1199,6 +1712,55 @@ export class StudentSmartMarkService {
     };
   }
 
+  /** ADR-040 §5.4 — the band projection: the placement, the within-band
+   *  marks, and the descriptor hits (labels compacted per the pointLabel
+   *  privacy law). marksPossible is the part's printed marks — the §2.1
+   *  tiling law guarantees the top band reaches it. An unparseable breakdown
+   *  object projects honestly empty — never a guess. */
+  private async projectBand(
+    answer: AnswerPartRow,
+    result: SmartMarkResultRow,
+    schemeId: string,
+    authoritative: boolean,
+    raw: unknown,
+  ): Promise<PartSmartMarkView> {
+    const base = {
+      partId: answer.question_part_id,
+      label: answer.label,
+      marksAwarded: result.marks_awarded,
+      marksPossible: answer.marks,
+      markingState: result.validation_passed ? "SMART_MARKED" : answer.marking_state,
+      authoritative: authoritative && result.validation_passed,
+      confidence: result.confidence,
+      modelId: result.model_id,
+      validationPassed: result.validation_passed,
+      failureReason: result.failure_reason,
+      breakdown: [] as PointDecisionView[],
+    };
+    if (!isBandDecisionV1(raw)) return base;
+    const bandRows = (await this.sql`
+      select level_index, descriptor_md from mark_bands where mark_scheme_id = ${schemeId} order by level_index
+    `) as unknown as Array<Record<string, unknown>>;
+    const descriptorLabelByIndex = new Map(
+      bandRows.map((r) => [Number(r.level_index), bandDescriptorLabel(String(r.descriptor_md))]),
+    );
+    return {
+      ...base,
+      bandDecision: {
+        levelPlacement: raw.level_placement,
+        awardedMarks: raw.awarded_marks,
+        marksPossible: answer.marks,
+        descriptorHits: raw.descriptor_hits.map((h) => ({
+          levelIndex: h.level_index,
+          descriptorLabel: descriptorLabelByIndex.get(h.level_index) ?? `level ${h.level_index}`,
+          hit: h.hit === true,
+          rationale: String(h.rationale ?? ""),
+        })),
+        blank: raw.blank === true,
+      },
+    };
+  }
+
   /** generate(:372-392): availability gate, empty-response guard, provider
    * errors → honest 503-shaped text (the route layer maps the error type). */
   private async generate(systemPrompt: string, userPrompt: string, temperature: number): Promise<string> {
@@ -1223,6 +1785,17 @@ function pointLabel(point: MarkingPoint): string {
     .map((l) => l.trim())
     .find((l) => l.length > 0);
   return line ?? point.ref;
+}
+
+/** bandDescriptorLabel: pointLabel's privacy law for level descriptors —
+ * the student view shows the compact first line, never the full verbatim
+ * descriptor (ADR-040 §5.4). */
+export function bandDescriptorLabel(descriptorMd: string): string {
+  const line = descriptorMd
+    .split("\n")
+    .map((l) => l.trim())
+    .find((l) => l.length > 0);
+  return line ?? "";
 }
 
 // ── feedback prompts (verbatim law) ─────────────────────────────────────────
@@ -1294,7 +1867,10 @@ function appendContext(source: FeedbackSource): string {
   lines.push(source.answer.answer_text ?? "");
   lines.push("");
   lines.push("MARKING DECISIONS:");
-  for (const entry of source.result.breakdown ?? []) {
+  // band rows never reach here (loadFeedbackSource refuses them upstream —
+  // ADR-040 §5.4); the cast names the per-point array law for the reader.
+  const entries = (source.result.breakdown ?? []) as DecisionBreakdownEntry[];
+  for (const entry of entries) {
     const point = byId.get(entry.markPointId);
     const text = point === undefined ? entry.ref : point.text;
     lines.push(
@@ -1312,8 +1888,9 @@ export function buildSmartMarkModule(
   llm: FeedbackLlm,
   revealPolicy: RevealPolicy = "VALIDATED_ONLY",
   txRunner?: TxRunner,
+  bandGenerator?: BandMarkingCandidateGenerator,
 ) {
-  const smartMark = new SmartMarkService(sql, generator, publisher, clock);
+  const smartMark = new SmartMarkService(sql, generator, publisher, clock, bandGenerator);
   return {
     smartMark,
     student: new StudentSmartMarkService(sql, smartMark, llm, clock, revealPolicy, txRunner),

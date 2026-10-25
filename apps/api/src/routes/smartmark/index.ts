@@ -30,6 +30,7 @@ import {
   EntitlementError,
   SmartFeedbackGenerationError,
   type MarkingCandidateGenerator,
+  type BandMarkingCandidateGenerator,
   type FeedbackLlm,
 } from "../../services/smartmark";
 import {
@@ -45,7 +46,13 @@ import { createSql } from "../../services/identity/users";
 import { createGradedEvidencePublisher } from "../assessment";
 import { apiError } from "../../services/identity/errors";
 import { requireAuth, getAuth } from "../../middleware/auth";
-import { buildLlmChain, chainAsCandidateGenerator, chainAsFeedbackLlm, type FailoverLlmChain } from "../../services/llmchain";
+import {
+  buildLlmChain,
+  chainAsCandidateGenerator,
+  chainAsBandCandidateGenerator,
+  chainAsFeedbackLlm,
+  type FailoverLlmChain,
+} from "../../services/llmchain";
 
 const UUID_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 
@@ -168,6 +175,7 @@ export function buildSmartMarkRouters(
   env: Record<string, string | undefined> = process.env,
   seams: {
     generator?: MarkingCandidateGenerator;
+    bandGenerator?: BandMarkingCandidateGenerator;
     llm?: FeedbackLlm;
     publisher?: GradedEvidencePublisher;
     clock?: SubmitClock;
@@ -195,6 +203,10 @@ export function buildSmartMarkRouters(
     // DC-3: the entitlement envelope's transaction runner — the production
     // adapter's own begin/commit/rollback (single serialized session)
     sql.transaction,
+    // ADR-040 §5.4: the band dispatch seam rides the ONE chain (the same
+    // seam law as the point generator — keyed boots mark bands for real,
+    // zero-key/TEST refuse fail-closed PROVIDER_UNAVAILABLE per part).
+    seams.bandGenerator ?? chainAsBandCandidateGenerator(chain),
   );
   return { module, selfMarkModule, studentRoute: createStudentSmartMarkRouter(module) };
 }
