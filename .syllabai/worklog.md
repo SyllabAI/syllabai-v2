@@ -21017,3 +21017,10 @@ Stage Summary:
 - ADR-040 §5.2 leg complete and receipted: additive migration 0015 + NO_SCHEME_BANDS guard + re-baselined chain, all gates green, zero behavior change for POINTS rows.
 - Open: PR merge; production re-apply of restore-lost 0007+0014 (operator leg); §5.3 converter LEVELS mode (first band wave 0455×2/4GE1/4BS1/9609); §5.4 dispatch; §5.5 QWK lane.
 - Security: fourth rotation reminder (PAT + owner creds + API key); secrets env-only throughout.
+
+## R0-AUTO receipt — sweep 2026-10-25 18:30 +08 (Job 438940)
+- Merged #363 (T-UGM-HUB-CONSUME-10 UGM lane 10): head b2a1891 → merge 2d3e082. Gates: verify✓ hub✓ (head), mergeable=clean, 0 reviews/comments, 4 files all apps/hub/** boundary-clean.
+- Merged #364 (t-sm-rollout ADR-040 §5.2 r0 levels-of-response 0015 + smartmark): head ddbdb69 → merge 340ec64. Gates: verify✓ hub✓ (head), mergeable=clean, 0 reviews/comments, 14 files in-repo boundary-clean (drizzle 0015 + rebaseline + smartmark NO_SCHEME_BANDS).
+- Post-merge main @ 340ec64: verify✓ hub✓ (bounded re-check ~105s). Max 2/round budget consumed.
+- Not merged, gate-b fail: #285 verify✗hub✗ · #296 hub✗ · #303 verify✗ · #352 zero check-runs (stall ~37h, sustained skip).
+- Watch notes: main e407e0c (t-mig-141 Phase-D re-pin, lane direct-push); mirror reset hit #107 (89962a5 signature, 28th consecutive, fetch-first recovered, zero loss). Desk made no Neon/prod writes; the 0007/0014 production re-apply noted in #364 is an operator-ordered receipted leg, not a desk action.
