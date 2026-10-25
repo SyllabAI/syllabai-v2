@@ -1,6 +1,6 @@
 {
  "schema": "syllabai-demo.ugm-lane-resources/1.1",
- "generatedUtc": "2026-10-25T09:57:06Z",
+ "generatedUtc": "2026-10-25T13:46:45Z",
  "reviewState": {
   "state": "SUGGESTED",
   "note": "Agent-generated alignment per AGENT.md rule 2 — candidates until the review/promotion gate promotes them; no coverage manufactured (rule 3)."
@@ -96,21 +96,38 @@
    "slug": "thinking-about-algebra",
    "title": "Thinking about Algebra",
    "url": "https://undergroundmathematics.org/thinking-about-algebra"
+  },
+  {
+   "slug": "trigonometry-compound-angles",
+   "title": "Trigonometry: Compound Angles",
+   "url": "https://undergroundmathematics.org/trigonometry-compound-angles"
+  },
+  {
+   "slug": "trigonometry-triangles-to-functions",
+   "title": "Trigonometry: Triangles to Functions",
+   "url": "https://undergroundmathematics.org/trigonometry-triangles-to-functions"
+  },
+  {
+   "slug": "calculus-trig-log",
+   "title": "Calculus of Trigonometry & Logarithms",
+   "url": "https://undergroundmathematics.org/calculus-trig-log"
   }
  ],
  "source": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@2f31fcadf94bfb9bfb5c836530e942d5762aaac4",
+  "ref": "main@3c2ecfa4dc5e106d72d5a8db67bc72a26dc529b6",
   "enrichment": [
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json",
-   "UGM-Enrichment/cie-a-level-maths-20-pure-3-logarithmic-and-exponential-functions.json"
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-logarithmic-and-exponential-functions.json",
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-trigonometry.json"
   ],
   "enrichmentSchema": "syllabai.ugm-spec-enrichment/1.0",
   "resourcesDir": [
    "UGM-Resources/pure-3-algebra",
-   "UGM-Resources/pure-3-logarithmic-and-exponential-functions"
+   "UGM-Resources/pure-3-logarithmic-and-exponential-functions",
+   "UGM-Resources/pure-3-trigonometry"
   ],
-  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119)",
+  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119); LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126)",
   "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
   "operatorAttestation": "2026-10-24 — text + static figures may ship into SyllabAI; permission declared",
   "figureMap": "UGM-Resources/figures-map.json",
@@ -123,13 +140,13 @@
   "note": "Static figures (976 files) are imported and served locally from /ugm-assets/ under the operator attestation of 2026-10-24 (T-UGM-ASSETS-1); GeoGebra embeds and PDFs remain excluded."
  },
  "coverage": {
-  "ugmResourcesConsidered": 69,
-  "aligned": 69,
+  "ugmResourcesConsidered": 70,
+  "aligned": 70,
   "nonOverlap": 0,
   "alignedShare": 1.0,
-  "candidateRows": 86,
+  "candidateRows": 114,
   "crossLaneJoined": {
-   "aligned": 14,
+   "aligned": 41,
    "nonOverlap": 0
   },
   "specPointsCovered": [
@@ -142,7 +159,9 @@
    "3.2.1",
    "3.2.2",
    "3.2.3",
-   "3.2.4"
+   "3.2.4",
+   "3.3.1",
+   "3.3.2"
   ],
   "figures": {
    "figureRefs": 0,
@@ -172,10 +191,21 @@
     "candidateRows": 39,
     "crossLaneAligned": 5,
     "crossLaneNonOverlap": 0
+   },
+   {
+    "station": "trigonometry",
+    "stationTitle": "Trigonometry",
+    "ugmResourcesConsidered": 103,
+    "aligned": 28,
+    "nonOverlap": 42,
+    "alignedShare": 0.2718,
+    "candidateRows": 28,
+    "crossLaneAligned": 27,
+    "crossLaneNonOverlap": 0
    }
   ],
   "nonOverlapByReference": {
-   "count": 41,
+   "count": 83,
    "rows": [
     {
      "ugmSlug": "absurder",
@@ -463,16 +493,310 @@
      "title": "How much of this log is below the surface?",
      "url": "https://undergroundmathematics.org/circles/r7385",
      "reason": "sweep false positive: 'how much of this log is below the surface?' is a floating timber log (buoyancy), not the logarithm"
+    },
+    {
+     "ugmSlug": "r5988",
+     "station": "trigonometry-compound-angles",
+     "title": "If $R$ is the circumradius of triangle $ABC$, can we show $a\\:/\\sin A = 2R$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r5988",
+     "reason": "proves a/sinA=2R for the circumradius via sin2x=2sinxcosx and the sum-to-product identity - the tested skill is the extended sine rule; the lane-5 IGCSE/0606 bearing of record stands"
+    },
+    {
+     "ugmSlug": "r6589",
+     "station": "trigonometry-triangles-to-functions",
+     "title": "Can we find the lengths and angles in this pyramid?",
+     "url": "https://undergroundmathematics.org/trigonometry-triangles-to-functions/r6589",
+     "reason": "pyramid lengths and the exact cos ARB via the cosine rule - the lane-5 recorded bearing (triangle solution, IGCSE/0606) stands; no compound-angle limb"
+    },
+    {
+     "ugmSlug": "r7756",
+     "station": "trigonometry-triangles-to-functions",
+     "title": "What's this angle of elevation given two others?",
+     "url": "https://undergroundmathematics.org/trigonometry-triangles-to-functions/r7756",
+     "reason": "mountain elevation from three road points: tanθ=tanαcotβ and tan^2γ=tan^2α+tan^2β proved as a triangle solution - the lane-5 IGCSE/0606 bearing of record stands"
+    },
+    {
+     "ugmSlug": "r6622",
+     "station": "calculus-trig-log",
+     "title": "Can the integral of $\\sin(\\sin t)$ be zero?",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/r6622",
+     "reason": "the integral of sin(sin t) vanishing by symmetry and periodicity of sin - an integration-symmetry argument, not a 3.3 property task"
+    },
+    {
+     "ugmSlug": "r9184",
+     "station": "calculus-trig-log",
+     "title": "Can we find the area between $\\sin x$ and $\\sin 2x$?",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/r9184",
+     "reason": "intersection of y=sinx and y=sin2x solved via the double angle (a 3.3.2 limb) but the task's centre of mass is the enclosed area - the integration limb dominates (3.3.2∩3.5.2 mix recorded)"
+    },
+    {
+     "ugmSlug": "r6938",
+     "station": "calculus-trig-log",
+     "title": "Can we find the turning points on the curve $y = \\sin x + \\cos x$?",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/r6938",
+     "reason": "turning points of y=sinx+cosx by calculus; the recorded R-form route (R sin(x+α)) is an alternative method note, not the tested skill"
+    },
+    {
+     "ugmSlug": "rotating-derivatives",
+     "station": "calculus-trig-log",
+     "title": "Rotating derivatives",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/rotating-derivatives",
+     "reason": "derivatives of sin t and cos t from the unit-circle diagram - 3.4.1 bearings of record"
+    },
+    {
+     "ugmSlug": "similar-derivatives",
+     "station": "calculus-trig-log",
+     "title": "Similar derivatives",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/similar-derivatives",
+     "reason": "d(tanθ)/dθ via similar triangles with (1,tanθ) and (cotθ,1) - the reciprocal geometry feeds derivative work (3.4.1 bearing); the cot=1/tan relationship is auxiliary here"
+    },
+    {
+     "ugmSlug": "sine-stretching",
+     "station": "calculus-trig-log",
+     "title": "Sine stretching",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/sine-stretching",
+     "reason": "gradients of sinx vs sin2x tangents - chain-rule/stretch skill (1.7/3.4 bearing)"
+    },
+    {
+     "ugmSlug": "trigsy-integrals",
+     "station": "calculus-trig-log",
+     "title": "Trigsy integrals",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/trigsy-integrals",
+     "reason": "integrals incl. cos2x and sin^2x (3.5.2 limb) but also arcsin/arccos integrands - inverse trigonometric functions are beyond the pure-3 spine"
+    },
+    {
+     "ugmSlug": "r7074",
+     "station": "calculus-trig-log",
+     "title": "Where do the curves $y=\\sin 2x$ and $y=\\sin x$ cross?",
+     "url": "https://undergroundmathematics.org/calculus-trig-log/r7074",
+     "reason": "intersection of y=sin2x and y=sinx found via sinx=2sinxcosx (a 3.3.2 limb) then the shaded area computed - the integration limb dominates (3.3.2∩3.5.2 mix recorded)"
+    },
+    {
+     "ugmSlug": "circular-slice",
+     "station": "chain-rule",
+     "title": "Circular slice",
+     "url": "https://undergroundmathematics.org/chain-rule/circular-slice",
+     "reason": "the integrand rewritten via cos2θ for the substitution working - double angle inside an integration task (3.5.2 bearing)"
+    },
+    {
+     "ugmSlug": "odd-one-out",
+     "station": "chain-rule",
+     "title": "Odd one out",
+     "url": "https://undergroundmathematics.org/chain-rule/odd-one-out",
+     "reason": "odd-one-out on functions and derivatives incl. tanx(sec^2x-1) - the chain-rule skill of record; sec^2 appears as inventory, not as an identity task"
+    },
+    {
+     "ugmSlug": "parametric-points",
+     "station": "chain-rule",
+     "title": "Parametric points",
+     "url": "https://undergroundmathematics.org/chain-rule/parametric-points",
+     "reason": "parametric curve matching and stationary points - parametric differentiation skill (1.7/3.4 bearing); sin2t enters as inventory"
+    },
+    {
+     "ugmSlug": "r5251",
+     "station": "chain-rule",
+     "title": "Can we sketch $y=3 \\cos x - \\cos 3x$?",
+     "url": "https://undergroundmathematics.org/chain-rule/r5251",
+     "reason": "d/dx(3cosx-cos3x)=6sinxcos2x proved via the compound-angle expansion of sin3x, but the task is the increasing ranges and sketch (1.7/3.4 bearing; the identity step recorded)"
+    },
+    {
+     "ugmSlug": "r5739",
+     "station": "chain-rule",
+     "title": "What is implied if these two parabolas touch exactly once?",
+     "url": "https://undergroundmathematics.org/chain-rule/r5739",
+     "reason": "parabolas touching exactly once - algebraic tangency work; the 'exact' sweep trigger is incidental"
+    },
+    {
+     "ugmSlug": "r6843",
+     "station": "chain-rule",
+     "title": "Where does this chord of an ellipse cut the $x$-axis?",
+     "url": "https://undergroundmathematics.org/chain-rule/r6843",
+     "reason": "chord of an ellipse: gradient via the sum-to-product identities sinx-siny=2cos((x+y)/2)sin((x-y)/2) - the identities assist a parametric-geometry task (recorded)"
+    },
+    {
+     "ugmSlug": "r8778",
+     "station": "chain-rule",
+     "title": "Can we carry out these three tricky integrals?",
+     "url": "https://undergroundmathematics.org/chain-rule/r8778",
+     "reason": "∫sec^4x via sec^2=1+tan^2 - the Pythagorean identity inside an integration task (3.5.2 bearing)"
+    },
+    {
+     "ugmSlug": "r8836",
+     "station": "chain-rule",
+     "title": "Where is the centre of mass of half this cylinder?",
+     "url": "https://undergroundmathematics.org/chain-rule/r8836",
+     "reason": "centre of mass of a half-cylinder with (cos2θ+1)/2 in the integrand - mechanics plus 3.5.2 limb"
+    },
+    {
+     "ugmSlug": "r8939",
+     "station": "chain-rule",
+     "title": "Can we find where the normal is parallel to $y=x$?",
+     "url": "https://undergroundmathematics.org/chain-rule/r8939",
+     "reason": "normal parallel to y=x on x=5asecθ, y=3atanθ - parametric differentiation skill; the sec/tan parametrisation is inventory"
+    },
+    {
+     "ugmSlug": "r9297",
+     "station": "chain-rule",
+     "title": "How could we integrate $\\tan^4x$?",
+     "url": "https://undergroundmathematics.org/chain-rule/r9297",
+     "reason": "tan^4x=tan^2xsec^2x-sec^2x+1 then ∫0^{π/4}tan^4x - the Pythagorean identity inside an integration task (3.5.2 bearing)"
+    },
+    {
+     "ugmSlug": "r9413",
+     "station": "chain-rule",
+     "title": "Can we show that these normals intersect on this circle?",
+     "url": "https://undergroundmathematics.org/chain-rule/r9413",
+     "reason": "normals intersecting on a circle: sum-to-product and product-to-sum identities assist a parametric task (recorded; 1.7/3.4 bearing)"
+    },
+    {
+     "ugmSlug": "cones",
+     "station": "circles",
+     "title": "Cones",
+     "url": "https://undergroundmathematics.org/circles/cones",
+     "reason": "cone measurement investigation; the appendix rewrites πrh secθ=πr^2 cosecθ - reciprocal vocabulary as inventory, not the tested skill"
+    },
+    {
+     "ugmSlug": "r9072",
+     "station": "hyperbolic-functions",
+     "title": "Can we find this circle's integer and non-integer rational points?",
+     "url": "https://undergroundmathematics.org/hyperbolic-functions/r9072",
+     "reason": "integer and non-integer rational points via the sec^2-tan^2 parametrisation - number theory beyond the pure-3 spine"
+    },
+    {
+     "ugmSlug": "rolling-parabolas",
+     "station": "hyperbolic-functions",
+     "title": "Rolling parabolas",
+     "url": "https://undergroundmathematics.org/hyperbolic-functions/rolling-parabolas",
+     "reason": "catenary rolling construction with cosh/sinh double-angle work - hyperbolic functions are beyond the pure-3 spine"
+    },
+    {
+     "ugmSlug": "square-wheels",
+     "station": "hyperbolic-functions",
+     "title": "Square wheels",
+     "url": "https://undergroundmathematics.org/hyperbolic-functions/square-wheels",
+     "reason": "square wheels on a catenary - hyperbolic functions beyond the spine"
+    },
+    {
+     "ugmSlug": "weight-pulling",
+     "station": "hyperbolic-functions",
+     "title": "Weight pulling",
+     "url": "https://undergroundmathematics.org/hyperbolic-functions/weight-pulling",
+     "reason": "weight pulled over a pulley: ∫cosecθ dθ via the (cosec+cot) trick appears, but the task is a catenary comparison beyond the spine (recorded)"
+    },
+    {
+     "ugmSlug": "finding-triangles",
+     "station": "thinking-about-geometry",
+     "title": "Finding triangles",
+     "url": "https://undergroundmathematics.org/thinking-about-geometry/finding-triangles",
+     "reason": "constructing triangles to order by area/perimeter scaling - geometry problem-solving"
+    },
+    {
+     "ugmSlug": "look-before-you-leap",
+     "station": "thinking-about-geometry",
+     "title": "Look before you leap",
+     "url": "https://undergroundmathematics.org/thinking-about-geometry/look-before-you-leap",
+     "reason": "square-diagonal geometry bookmarked for multiple approaches; the tan(22.5°) double-angle route is one recorded approach among several (similar triangles primary)"
+    },
+    {
+     "ugmSlug": "r5386",
+     "station": "thinking-about-geometry",
+     "title": "Can we show we have three corners of a rectangle?",
+     "url": "https://undergroundmathematics.org/thinking-about-geometry/r5386",
+     "reason": "three corners of a rectangle - coordinate/geometry reasoning"
+    },
+    {
+     "ugmSlug": "r8022",
+     "station": "thinking-about-geometry",
+     "title": "How far does this pool ball travel to reach the pocket?",
+     "url": "https://undergroundmathematics.org/thinking-about-geometry/r8022",
+     "reason": "pool-ball path by similar triangles - geometry"
+    },
+    {
+     "ugmSlug": "r8917",
+     "station": "thinking-about-geometry",
+     "title": "If these centres lie on a line, why is the triangle isosceles?",
+     "url": "https://undergroundmathematics.org/thinking-about-geometry/r8917",
+     "reason": "triangle centres collinear forcing isosceles - sine/cosine rule limb (1.5.3-of-record shape)"
+    },
+    {
+     "ugmSlug": "constant-consistency",
+     "station": "product-rule",
+     "title": "Constant consistency",
+     "url": "https://undergroundmathematics.org/product-rule/constant-consistency",
+     "reason": "∫cosx sinx via sin2x=2sinxcosx then by substitution and parts - the identity limb feeds an integration-methods task (3.5.2 bearing)"
+    },
+    {
+     "ugmSlug": "integral-chasing-2",
+     "station": "product-rule",
+     "title": "Integral chasing II",
+     "url": "https://undergroundmathematics.org/product-rule/integral-chasing-2",
+     "reason": "∫x^2 sin2x by parts - integration by parts (3.5 bearing)"
+    },
+    {
+     "ugmSlug": "r6549",
+     "station": "product-rule",
+     "title": "Where are the stationary points on $\\cot x-8\\cos x$?",
+     "url": "https://undergroundmathematics.org/product-rule/r6549",
+     "reason": "stationary points of cotx-8cosx: differentiating cot is beyond the P3 3.4.1 list; the cot=1/tan vs cos/sin domain discussion is recorded (3.3.1-adjacent note)"
+    },
+    {
+     "ugmSlug": "approximating-areas",
+     "station": "introducing-calculus",
+     "title": "Approximating areas",
+     "url": "https://undergroundmathematics.org/introducing-calculus/approximating-areas",
+     "reason": "area estimates under lines and polynomials - the 'exact' trigger is incidental"
+    },
+    {
+     "ugmSlug": "r5642",
+     "station": "introducing-calculus",
+     "title": "When does the trapezium rule give the exact answer here?",
+     "url": "https://undergroundmathematics.org/introducing-calculus/r5642",
+     "reason": "when the trapezium rule is exact - the trapezium rule is not in the spine"
+    },
+    {
+     "ugmSlug": "r9798",
+     "station": "combining-functions",
+     "title": "When does $f$ satisfy the identity $f(t)-f(1-t)=g(t)$?",
+     "url": "https://undergroundmathematics.org/combining-functions/r9798",
+     "reason": "functional identity f(t)-kf(1-t)=t - the 'identity' trigger is a functional equation, not a trigonometric one"
+    },
+    {
+     "ugmSlug": "sum-estimating",
+     "station": "sequences",
+     "title": "Sum estimating",
+     "url": "https://undergroundmathematics.org/sequences/sum-estimating",
+     "reason": "sum estimates for Σr^2 - the 'exact value' trigger is incidental"
+    },
+    {
+     "ugmSlug": "make-it-stop",
+     "station": "vector-geometry",
+     "title": "Make it stop!",
+     "url": "https://undergroundmathematics.org/vector-geometry/make-it-stop",
+     "reason": "stopping a particle under a force - vector dynamics (7.x bearing)"
+    },
+    {
+     "ugmSlug": "r6009",
+     "station": "vector-geometry",
+     "title": "In a $\\quantity{60}{km/h}$ wind, what bearing should this plane take?",
+     "url": "https://undergroundmathematics.org/vector-geometry/r6009",
+     "reason": "plane bearing in a crosswind - vector navigation with sine-rule component work (1.5.3/7.3 bearings)"
+    },
+    {
+     "ugmSlug": "r8079",
+     "station": "thinking-about-functions",
+     "title": "Where does the graph of this modulus function cross $y = 1/x$?",
+     "url": "https://undergroundmathematics.org/thinking-about-functions/r8079",
+     "reason": "modulus graph vs 1/x - the 'exact values' trigger is incidental (functions/1.2 bearing)"
     }
    ]
   },
   "crossCourse": {
-   "aligned": 14,
+   "aligned": 41,
    "nonOverlapRef": 0,
-   "flips": 5,
-   "oneToMany": 9,
+   "flips": 28,
+   "oneToMany": 13,
    "courses": {
-    "cie-a-level-maths-20-pure-1": 14
+    "cie-a-level-maths-20-pure-1": 41
    },
    "note": "cross-course fact joins served by reference — the text of record stays first-of-record under the serving course's bundle",
    "rows": [
@@ -666,6 +990,388 @@
      "kind": "one_to_many",
      "confidence": "medium",
      "priorAlignmentOfRecord": "lane-trigonometry 1.5 (stray of record)"
+    },
+    {
+     "ugmSlug": "going-round-in-circles",
+     "codes": [
+      "3.3.1"
+     ],
+     "title": "Going round in circles",
+     "url": "https://undergroundmathematics.org/trigonometry-triangles-to-functions/going-round-in-circles",
+     "station": "trigonometry-triangles-to-functions",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-trigonometry 1.5.1"
+    },
+    {
+     "ugmSlug": "muddled-trig",
+     "codes": [
+      "3.3.1"
+     ],
+     "title": "Muddled trig",
+     "url": "https://undergroundmathematics.org/trigonometry-triangles-to-functions/muddled-trig",
+     "station": "trigonometry-triangles-to-functions",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-trigonometry 1.5.1/1.5.3"
+    },
+    {
+     "ugmSlug": "trig-tables",
+     "codes": [
+      "3.3.1"
+     ],
+     "title": "Trig tables",
+     "url": "https://undergroundmathematics.org/trigonometry-triangles-to-functions/trig-tables",
+     "station": "trigonometry-triangles-to-functions",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "medium",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-trigonometry 1.5.1/1.5.2"
+    },
+    {
+     "ugmSlug": "equation-or-identity-ii",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Equation or identity? (II)",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/equation-or-identity-ii",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "inspecting-identities",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Inspecting identities",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/inspecting-identities",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "proving-half-angle-formulae",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Proving half-angle formulae",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/proving-half-angle-formulae",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r5113",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we solve the equation $3\\cos x + 1 = 2\\sin x$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r5113",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r5129",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "If $bc=a^2+1$,  what is $\\arctan[(a+b)^{-1}]+\\arctan[(a+c)^{-1}]$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r5129",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r5723",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we solve these trig equations for $x, y$ and $z$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r5723",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r6018",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we find the value of $\\sin 18^\\circ$ as a surd?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r6018",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r6039",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we solve $\\tan\\theta\\tan(\\theta+\\pi/3)=2$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r6039",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r6120",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we write $\\cos \\theta - 2 \\cos 3 \\theta + \\cos 5\\theta$ using $\\sin$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r6120",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r6696",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we write $\\sin\\theta$ and $\\cos\\theta$ in terms of $\\tan(\\theta/2)$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r6696",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r6807",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we simplify $\\cos 3\\theta \\sin 2\\theta - \\cos 4\\theta \\sin \\theta$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r6807",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r7050",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "An exact value for $\\sin 15^{\\circ}$...",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r7050",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r7581",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we sketch the curve $y = \\cos x - \\sin x +2$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r7581",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r7604",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we solve these simultaneous trigonometric equations?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r7604",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r7021",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Using angles in a pentagon...",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r7021",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-trigonometry 1.5.2"
+    },
+    {
+     "ugmSlug": "r8525",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we prove $\\sin a \\sin b \\leq \\sin^2\\frac{1}{2}(a+b)$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r8525",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r8557",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we find the height of a tower using its reflection?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r8557",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r8648",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Can we solve $\\cos\\theta - \\sin (2\\theta) + \\cos (3\\theta) - \\sin (4\\theta) = 0$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r8648",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r8709",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "For which $0^\\circ < \\theta < 500^\\circ$ is $3\\cos \\theta + 4\\sin \\theta > 2$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r8709",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r9740",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "If $\\sin \\alpha = 3/5, \\cos \\beta = 12/13$, what's $\\cos(\\alpha + \\beta)$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r9740",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "r9782",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Why is $\\cos \\theta + \\cos (\\theta + 2\\pi/3) + \\cos(\\theta + 4\\pi/3)=0$?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/r9782",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "t-for-tan",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "$t$ for $\\tan$",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/t-for-tan",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "transformation-or-not",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Transformation... or not?",
+     "url": "https://undergroundmathematics.org/trigonometry-compound-angles/transformation-or-not",
+     "station": "trigonometry-compound-angles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
+    },
+    {
+     "ugmSlug": "lost-but-lovely-the-haversine",
+     "codes": [
+      "3.3.2"
+     ],
+     "title": "Lost but lovely: the haversine",
+     "url": "https://undergroundmathematics.org/trigonometry-triangles-to-functions/lost-but-lovely-the-haversine",
+     "station": "trigonometry-triangles-to-functions",
+     "textOfRecordUnder": "UGM-Resources/pure-1-trigonometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": false
     }
    ]
   }
@@ -822,6 +1528,22 @@
     "how-far-did-the-earth-move",
     "plotting-planets"
    ]
+  },
+  {
+   "code": "3.3.1",
+   "officialText": "understand the relationship of the secant, cosecant and cotangent functions to cosine, sine and tangent, and use properties and graphs of all six trigonometric functions for angles of any magnitude",
+   "primaryPick": "r7616",
+   "resourceCount": 1,
+   "ugmIds": [
+    "r7616"
+   ]
+  },
+  {
+   "code": "3.3.2",
+   "officialText": "use trigonometrical identities for the simplification and exact evaluation of expressions, and in the course of solving equations, and select an identity or identities appropriate to the context, showing familiarity in particular with the use of tan( A ± B ) forms R sin ^ i ! a h and R cos ^ i ! a h .: • sec i / 1 + tan i and cosec i / 1 + cot i • the expansions of sin( A ± B ) , cos( A ± B ) and • the formulae for sin 2 A , cos 2 A and tan 2 A • the expression of a sin i + b cos i in the",
+   "primaryPick": "r6018",
+   "resourceCount": 0,
+   "ugmIds": []
   }
  ],
  "resources": [
@@ -2643,6 +3365,32 @@
     }
    ],
    "bodyMd": "\n# To the limit\n\n> Excerpt: Using a series of statements, students are asked to put together a chain of reasoning to find the derivative of $a^x$. This leads on to looking at a special case of this derivative.\n\n## Warm-up\n\nWhat is the gradient of the chord \\(AB\\)?\n\nSolution\n\n\\[\\begin{align*} \\text{gradient of } AB &= \\dfrac{f(x+h) - f(x)}{x+h - x} \\\\ &=\\dfrac{a^{x+h} - a^x}{h} \\end{align*}\\]\n\nThis expression gives us the gradient of \\(AB.\\) If \\(h\\) is small enough, then this also gives us an estimation of the gradient of \\(f(x)\\) at \\(A.\\)\n\nHow could we find the exact gradient at \\(A\\)? See the [gradient of \\(a^x\\)](https://undergroundmathematics.org/calculus-trig-log/to-the-limit/gradient-a-to-x) to find out.\n\n## Gradient of $a^x$\n\nWe can find the gradient of a function by taking the limit of the gradient of a chord between \\(x\\) and \\(x+h\\) as \\(h\\) tends to \\(0\\).\n\n\\[f'(x) = \\lim_{h \\to 0} \\dfrac{f(x+h)-f(x)}{h}\\]\n\nThese statements and explanations can be used to create a chain of reasoning to find the gradient function of \\(f(x) = a^x\\). Sort the statements into a logical argument, either writing your own explanations of the steps, or turning over the hidden cards to use the explanations provided.\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(a^x \\left(\\dfrac{a^{h} - 1}{h} \\right) \\right)}\\)\n\nThe expression is factorised as \\(a^x\\) is a common factor.\n\n\\(\\displaystyle{f'(x) = a^x \\, \\lim_{h \\to 0} \\left(\\dfrac{a^{h} - a^0}{h} \\right)}\\)\n\nAs \\(h \\to 0\\) the limit will give the gradient function at \\(x = 0\\).\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(\\dfrac{a^{x+h} - a^x}{h} \\right)}\\)\n\nThe expression in the limit gives the gradient of a chord between \\(x = 0\\) and \\(x = h\\) on \\(f(x) = a^x\\).\n\n\\(\\displaystyle{f'(x) = a^x \\, \\lim_{h \\to 0} \\left(\\dfrac{a^{h} - 1}{h} \\right)}\\)\n\nThis is the general formula for differentiating from first principles.\n\n\\(f'(x) = a^x \\times f'(0)\\)\n\nThis is an expression for the gradient of \\(f(x) = a^x.\\)\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(\\dfrac{f(x+h)-f(x)}{h} \\right)}\\)\n\nAs \\(a^x\\) is not affected by \\(h\\) it can be taken outside of the limit.\n\nWhat does the final statement tell you about the gradient function of \\(f(x)\\)?\n\n- What does the graph of \\(f'(x)\\) look like?\n\n- How will the gradient function change as \\(a\\) changes?\n\n- There is a special case of the gradient function of \\(a^x\\). What could it be? To find out more look at [A special case](https://undergroundmathematics.org/calculus-trig-log/to-the-limit/special-case).\n\n## Solution\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(\\dfrac{f(x+h)-f(x)}{h} \\right)}\\)\n\nThis is the general formula for differentiating from first principles.\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(\\dfrac{a^{x+h} - a^x}{h} \\right)}\\)\n\nThis is an expression for the gradient of \\(f(x) = a^x.\\)\n\nRemember the expression in the brackets gives the gradient of the chord between \\(x\\) and \\(x+h\\). Taking the limit as \\(h \\to 0\\) gives us the gradient of the function at \\(x\\).\n\n\\(\\displaystyle{f'(x) = \\lim_{h \\to 0} \\left(a^x \\left(\\dfrac{a^{h} - 1}{h} \\right) \\right)}\\)\n\nThe expression is factorised as \\(a^x\\) is a common factor.\n\n\\(\\displaystyle{f'(x) = a^x \\, \\lim_{h \\to 0} \\left(\\dfrac{a^{h} - 1}{h} \\right)}\\)\n\nAs \\(a^x\\) is not affected by \\(h\\) it can be taken outside of the limit.\n\nThe value of \\(h\\) is tending to \\(0\\), so any expressions not involving \\(h\\) are unaffected by this limiting process.\n\n\\(\\displaystyle{f'(x) = a^x \\, \\lim_{h \\to 0} \\left(\\dfrac{a^{h} - a^0}{h} \\right)}\\)\n\nThe expression in the limit gives the gradient of a chord between \\(x = 0\\) and \\(x = h\\) on \\(f(x) = a^x\\).\n\nThink about how the expression \\(\\dfrac{a^h - a^0}{h}\\) could be represented on the graph of \\(f(x) = a^x\\). What does it show?\n\n\\(f'(x) = a^x \\times f'(0)\\)\n\nAs \\(h \\to 0\\) the limit will give the gradient function at \\(x = 0\\).\n\nThe final step implies that \\(\\displaystyle{\\lim_{h \\to 0} \\dfrac{a^h - a^0}{h} = f'(0)}\\).\n\nThis is not a simple limit to find as both the numerator and denominator tend to zero as \\(h \\to 0\\). However, if we look at how we find \\(f'(x)\\) from first principles we should see some similarities. \\[f'(x) = \\lim_{h \\to 0} \\dfrac{f(x+h) - f(x)}{h} \\text{ and } \\lim_{h \\to 0} \\dfrac{a^h - a^0}{h}\\] Instead of finding the gradient for a generic point \\(x\\), the limit on the right gives us the gradient for the specific point \\(x = 0\\), i.e. \\(f'(0)\\).\n\nWhat does your final answer tell you about the gradient function of \\(f(x)\\)?\n\n- What does the graph of \\(f'(x)\\) look like?\n\n\\[f'(x) = a^x \\times f'(0)\\]\n\nThe gradient function is the original function multiplied by a constant. This tells us the graph of\n\n\\(f'(x)\\)\n\nwill look very similar to\n\n\\(f(x).\\)\n\n|  |  |\n|---|---|\n\nIn fact it will be a transformation of the original function; a stretch in the \\(y\\) direction, scale factor \\(f'(0).\\) (Or a stretch in the \\(x\\) direction, scale factor \\(\\frac{1}{f'(0)}.\\))\n\nWhat do the graphs tell you about \\(f'(0)\\) when \\(a = 2\\) and when \\(a = 4\\)?\n\n- How will the gradient function change as \\(a\\) changes?\n\nWe can see from the graphs above that as \\(a\\) gets bigger, \\(f(x) = a^x\\) gets steeper more quickly and so the gradient at zero will be larger. Therefore, as \\(a\\) gets bigger, \\(f'(x)\\) will also get steeper more quickly. What will happen as \\(a\\) gets smaller?\n\n- There is a special case of the gradient function of \\(a^x\\). Can you think what it might be? To find out more look at [A special case](https://undergroundmathematics.org/calculus-trig-log/to-the-limit/special-case).\n\nThe gradient function itself could be steeper than the original function. This will happen if the stretch factor is bigger than one, i.e. \\(f'(0) >1\\). It could also be less steep, i.e. when \\(f'(0) <1.\\) This implies there will be a special case in the middle when \\(f'(0) = 1\\) and the gradient function and original function will be exactly the same!\n\n## A special case\n\nWe have found that the gradient function of \\(a^x\\) can be written as \\[f'(x) = a^x\\times f'(0),\\]\n\ni.e. the gradient function is the function itself multiplied by a constant, and this constant is the gradient of\n\n\\(a^x\\)\n\nat\n\n\\(x = 0\\)\n\n. There will be a special case when\n\n\\(f'(0) = 1\\)\n\nas then the gradient function of\n\n\\(a^x\\)\n\nwould be itself,\n\n\\(a^x\\)\n\n.\n\nBefore using the applet, look at the values given. Approximately what value do you think \\(a\\) will take to give \\(f'(0) \\approx 1?\\)\n\n> [interactive embed (geogebra-iframe): //www.geogebratube.org/material/iframe/id/UqaKEFMd/width/600/height/400/border/888888/rc/false/ai/false/sdz/false/smb/false/stb/false/stbh/false/ld/false/sri/true/asb/false/at/html5] — not part of the text import; see the source page.\n\n[Download GeoGebra file](https://www.geogebratube.org/material/download/format/file/id/UqaKEFMd)\n\nUse the slider to find the value of \\(a\\) when \\(f'(0) \\approx 1\\).\n\nDoes the gradient function look as you expected?\n\nSolution\n\nWe find that \\(f'(0) \\approx 1\\) when \\(a = 2.72\\). This means that the gradient function becomes \\(f'(x) = a^x\\), so \\(a^x\\) and its gradient function are identical.\n\nOf course this value of \\(a\\) is an approximation, but does it look familiar?\n\nIt turns out that the exact value of \\(a\\) for which the gradient function is the same as the original function is \\(a = 2.7181...\\), in fact it is \\(a = e\\). You have probably met \\(e\\) before as the exponential function \\(e^x\\) and as the base of natural logarithms. Here we have found that if \\(f(x) = e^x\\), then \\(f'(x) = e^x\\).\n\nWhat about other values of \\(a\\)? To think about what \\(f'(0)\\) is for any value, you can look at [Differentiating exponentials](https://undergroundmathematics.org/chain-rule/differentiating-exponentials).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r7616",
+   "slug": "r7616",
+   "station": "calculus-trig-log",
+   "title": "Is this product of integrals positive or negative?",
+   "url": "https://undergroundmathematics.org/calculus-trig-log/r7616",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": true,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.3.1",
+     "confidence": "medium",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Is this product of integrals positive or negative?\n\n## Question\n\nLet \\[T=\\left( \\int _{-\\pi/2}^{\\pi/2}\\cos x\\,dx\\right)\\times \\left(\\int_\\pi ^{2\\pi} \\sin x\\,dx\\right) \\times \\left(\\int_0^{\\pi/8}\\frac{dx}{\\cos 3x}\\right).\\] Which of the following is true?\n\n1. \\(T=0\\);\n\n---\n\n1. \\(T<0\\);\n\n---\n\n1. \\(T>0\\);\n\n---\n\n1. \\(T\\) is not defined.\n\n## Suggestion\n\nNote that the third integral, \\(\\displaystyle \\int_0^{\\pi/8}\\frac{dx}{\\cos 3x}\\), means the same as \\[\\int_0^{\\pi/8}\\frac{1}{\\cos 3x}\\,dx.\\]\n\nDo we need to work out the exact values of each of the integrals? What is the important thing to know?\n\n## Solution\n\nLet \\[T=\\left( \\int _{-\\pi/2}^{\\pi/2}\\cos x\\,dx\\right)\\times\\left(\\int_\\pi ^{2\\pi} \\sin x\\,dx\\right) \\times\\left(\\int_0^{\\pi/8}\\frac{dx}{\\cos 3x}\\right).\\] Which of the following is true?\n\n1. \\(T=0\\);\n\n---\n\n1. \\(T<0\\);\n\n---\n\n1. \\(T>0\\);\n\n---\n\n1. \\(T\\) is not defined.\n\nWe are not asked to work out the exact value of \\(T\\), only to determine whether it is positive, negative or zero (if it is defined).\n\n*It might not be defined if there is a vertical asymptote in the region where we are integrating. We note that \\(\\dfrac{1}{\\cos 3x}\\) can be infinite for some values of \\(x\\).*\n\nSo we only need to determine the sign for each of the three integrals involved in the product.\n\nConsider the first integral, \\[\\int_{-\\pi/2}^{\\pi/2}\\cos x\\,dx.\\] The graph of \\(y=\\cos x\\) looks like this:\n\nSo the integral from \\(x=-\\pi/2\\) to \\(x=\\pi/2\\) is positive, as the graph all lies above the \\(x\\)-axis in this range.\n\nThen for the second, \\[\\int_\\pi^{2\\pi}\\sin x\\,dx.\\] The graph of \\(y=\\sin x\\) looks like this:\n\nBetween \\(x=\\pi\\) and \\(x=2\\pi\\), this graph lies entirely below the \\(x\\)-axis, so this integral is negative.\n\nFor the third integral, \\[\\int_0^{\\pi/8}\\frac{dx}{\\cos 3x}\\] we will need to consider the graph of \\(y=\\cos 3x\\), which is the graph of \\(y=\\cos x\\) stretched by a scale factor of \\(\\frac{1}{3}\\) in the \\(x\\)-direction.\n\n*Now \\(\\frac{1}{\\cos 3x}\\) is infinite at \\(x=\\pi/6\\), but \\(x=\\pi/8<\\pi/6\\), and so there are no vertical asymptotes in the region where we are integrating.*\n\nThis graph is positive between \\(x=0\\) and \\(x=\\pi/8\\), so between \\(x=0\\) and \\(x=\\pi/8<\\pi/6\\), we see that \\(\\dfrac{1}{\\cos 3x}\\) is positive. Thus this third integral is positive.\n\nFinally, we can combine the three integrals. Since two of them are positive and one is negative, their product must be negative.\n\nThe answer is therefore (b), \\(T<0\\).\n",
    "figures": 0,
    "figuresInline": 0
   }
