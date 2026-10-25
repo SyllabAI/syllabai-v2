@@ -1,0 +1,354 @@
+{
+  "run": "run-011-c1-c9-sweep-closeout",
+  "task": "T-MIG-141",
+  "spec": "docs/SPEC-T-MIG-141-GLYPH-NORMALIZATION.md §8",
+  "discipline": "t0_readonly everywhere (SET TRANSACTION READ ONLY); zero writes",
+  "canaries": {
+    "C9": {
+      "pin": "4014404b365f21b49e03997c53903a0145189c66ac58a9de38c56d3843c1c037",
+      "recomputed": "4014404b365f21b49e03997c53903a0145189c66ac58a9de38c56d3843c1c037",
+      "scope_rows": 2949,
+      "verdict": "GREEN",
+      "byte_exact_replay": "2949/2949"
+    },
+    "C1": {
+      "scoped_rows": 2949,
+      "scoped_pua_rows": 0,
+      "scoped_ctl_rows": 0,
+      "wired_plane_rows": 8198,
+      "wired_artifact_regex_rows": 0,
+      "unwired_pua_rows_disclosed": 1269,
+      "verdict": "GREEN"
+    },
+    "C2": {
+      "pinned": 200,
+      "missing": 0,
+      "byte_mismatch": 0,
+      "verdict": "GREEN"
+    },
+    "C3": {
+      "rows": 2949,
+      "header_lines_unchanged": 2949,
+      "verdict": "GREEN"
+    },
+    "C7": {
+      "phase_c_replacement_papers": 0,
+      "g_c_accounting": {
+        "subs": 20033,
+        "f0cf_subs": 2,
+        "drop": 5146,
+        "seq_runs": {
+          "SEQ-A2": 30,
+          "SEQ-A3": 1,
+          "SEQ-B4": 7,
+          "SEQ-B5": 2,
+          "SEQ-A1": 15
+        },
+        "seq_chars": 220,
+        "ctl_spaced": 2000,
+        "len_delta": -5311,
+        "expected": {
+          "union_rows": 2949,
+          "subs": 20033,
+          "drop": 5146,
+          "ctl_spaced": 2000,
+          "seq_runs": {
+            "SEQ-A1": 15,
+            "SEQ-A2": 30,
+            "SEQ-A3": 1,
+            "SEQ-B4": 7,
+            "SEQ-B5": 2
+          },
+          "len_delta": -5311
+        }
+      },
+      "verdict": "GREEN"
+    },
+    "C4": {
+      "artifact": ".syllabai/receipts/T-MIG-141/run-003/dryrun-gates.json",
+      "summary": {
+        "probe_rows": 55,
+        "wrong_map": {
+          "U+F0B4": "U+00F7",
+          "U+F02D": "U+002B",
+          "U+F070": "U+03C9",
+          "U+F084": "U+221A",
+          "U+F06C": "U+03BC",
+          "U+F061": "U+2192"
+        },
+        "wrong_map_delta_chars": 3996,
+        "correct_map_delta_chars": 7029,
+        "wrong_vs_correct_differ": 49,
+        "correct_exact_spots": 55,
+        "wrong_map_produces_wrong_targets": {
+          "U+F0B4": 85,
+          "U+F02D": 264,
+          "U+F070": 27,
+          "U+F084": 30,
+          "U+F06C": 117,
+          "U+F061": 20
+        }
+      },
+      "verdict": "GREEN"
+    },
+    "C5": {
+      "probe_source": "https://raw.githubusercontent.com/SyllabAI/syllabai-pastpapers/main/past-papers/pearson-edexcel/international-gcse/chemistry/4ch1/past-papers/2024-06/4CH1-1C/parsed",
+      "path_note": "the archive tree was restructured since the audit probe (igcse/.../1c -> international-gcse/.../4CH1-1C); the current of-record path is probed",
+      "qp_phrases": [
+        [
+          "bromine chlorine diamond ethene",
+          1
+        ],
+        [
+          "iodine lithium methane water",
+          1
+        ],
+        [
+          "Each substance may be used once, more than once or not at all.",
+          1
+        ],
+        [
+          "The letters are not the symbols of the elements.",
+          1
+        ],
+        [
+          "When the magnesium fuse is lit, a very exothermic reaction occurs.",
+          1
+        ],
+        [
+          "Calculate the number of electrons in one mole of atoms of element Z.",
+          1
+        ]
+      ],
+      "qp_hits": "6/6",
+      "ms_phrases": [],
+      "ms_hits": "0/0",
+      "repaired_class_probes": [
+        {
+          "class": [
+            "U+00D7"
+          ],
+          "hit": 0,
+          "probe": "(b) One mole of Z contains 6.0 × 1023 atoms."
+        },
+        {
+          "class": [
+            "U+00B0"
+          ],
+          "hit": 0,
+          "probe": "| Name | Formula | Melting point in °C |"
+        },
+        {
+          "class": [
+            "U+2192"
+          ],
+          "hit": 1,
+          "probe": "alkane + xO2 → yCO2 + zH2O"
+        },
+        {
+          "class": [
+            "U+2192"
+          ],
+          "hit": 1,
+          "probe": "CaCO3 + 2HCl → CaCl2 + H2O + CO2"
+        },
+        {
+          "class": [
+            "U+00B0"
+          ],
+          "hit": 1,
+          "probe": "Complete the table by giving the temperatures to the nearest 0.1°C"
+        },
+        {
+          "class": [
+            "U+00B0"
+          ],
+          "hit": 0,
+          "probe": "| starting temperature of the acid in °C | |"
+        },
+        {
+          "class": [
+            "U+00B0"
+          ],
+          "hit": 0,
+          "probe": "| highest temperature reached in °C | |"
+        },
+        {
+          "class": [
+            "U+00B0"
+          ],
+          "hit": 0,
+          "probe": "| temperature rise in °C | 16.4 |"
+        },
+        {
+          "class": [
+            "U+00B0"
+          ],
+          "hit": 0,
+          "probe": "[for the solution, c = 4.2 J/g/°C]"
+        },
+        {
+          "class": [
+            "U+0394"
+          ],
+          "hit": 1,
+          "probe": "Calculate the value of the enthalpy change (ΔH), in kJ/mol, for the magnesium"
+        },
+        {
+          "class": [
+            "U+0394"
+          ],
+          "hit": 1,
+          "probe": "ΔH = ....................................................................................."
+        },
+        {
+          "class": [
+            "U+2192"
+          ],
+          "hit": 0,
+          "probe": "- **a-iii** (1 mark) — aluminium + hydrochloric acid → aluminium chloride + hydrogen"
+        },
+        {
+          "class": [
+            "U+2192"
+          ],
+          "hit": 0,
+          "probe": "- Allow: 2Al + 6HCl → 2AlCl3 + 3H2 or multiples or fractions"
+        },
+        {
+          "class": [
+            "U+2212"
+          ],
+          "hit": 0,
+          "probe": "- **M2** (1 mark) — (because) OH− ions/hydroxide ions are present"
+        },
+        {
+          "class": [
+            "U+2212"
+          ],
+          "hit": 0,
+          "probe": "- **M1** (1 mark) — (mass of water =) 23.7 − 12.9 OR 10.8"
+        },
+        {
+          "class": [
+            "U+2192"
+          ],
+          "hit": 0,
+          "probe": "- **M1** (1 mark) — 4NO2 + 2H2O + O2 → 4HNO3 all formulae correct"
+        },
+        {
+          "class": [
+            "U+2212"
+          ],
+          "hit": 0,
+          "probe": "- **c-i** (1 mark) — H CH3 C−C H H"
+        },
+        {
+          "class": [
+            "U+2192"
+          ],
+          "hit": 0,
+          "probe": "- **M1** (1 mark) — C8H18(l) + 7O2(g) → 5CO(g) + 3C(s) + 9H2O(l) correct balancing"
+        },
+        {
+          "class": [
+            "U+2192"
+          ],
+          "hit": 0,
+          "probe": "*Guidance: C8H18(l) + 7O2(g) → 5CO(g) + 3C(s) + 9H2O(l)*"
+        },
+        {
+          "class": [
+            "U+2212"
+          ],
+          "hit": 0,
+          "probe": "- **M2** (1 mark) — curve levels off at 0.27 g + or − half a small square"
+        },
+        {
+          "class": [
+            "U+2192"
+          ],
+          "hit": 0,
+          "probe": "- **a** (1 mark) — Mg + 2HNO3 → Mg(NO3)2 + H2"
+        },
+        {
+          "class": [
+            "U+00F7"
+          ],
+          "hit": 0,
+          "probe": "- **M1** (1 mark) — n(Mg) = 0.12 ÷ 24 OR 0.005"
+        },
+        {
+          "class": [
+            "U+00F7"
+          ],
+          "hit": 0,
+          "probe": "- **M2** (1 mark) — Q ÷ n OR 2755 ÷ 0.005 OR 551 000 (J/mol)"
+        },
+        {
+          "class": [
+            "U+00F7"
+          ],
+          "hit": 0,
+          "probe": "- **M3** (1 mark) — 551 000 ÷ 1000 OR 551 (kJ/mol)"
+        },
+        {
+          "class": [
+            "U+2212"
+          ],
+          "hit": 0,
+          "probe": "- **M4** (1 mark) — − 550 (kJ/mol)"
+        },
+        {
+          "class": [
+            "U+2212"
+          ],
+          "hit": 0,
+          "probe": "*Guidance: Use of 2800 gives an answer of − 560 (kJ/mol)*"
+        }
+      ],
+      "repaired_hit": 5,
+      "repaired_miss": 21,
+      "ma1_parsed_layer": "NONE exists in the archive (disclosed; the 4MA1 repair evidence lives in the render crops)",
+      "verdict": "GREEN"
+    },
+    "C6": {
+      "gate": "median >= 0.85 (hard, spec §6)",
+      "n": 2676,
+      "median": 0.9982482070189114,
+      "min": 0.9647768071437077,
+      "p10": 0.9954809600219929,
+      "p90": 0.9992346670401483,
+      "docs": 277,
+      "receipts_of_record": {
+        "run-008": "loop1 n=364 median 0.998154 min 0.981874; loop2 wall",
+        "run-009": "loops n=600/610/712/999/8, medians 0.998297/0.998297/0.998169/0.998307/0.994548 — consumed on EVERY tranche"
+      },
+      "verdict": "GREEN"
+    },
+    "C8": {
+      "parser_commit": "cc9e4c0b",
+      "conformance_exit": 0,
+      "conformance_tail": "GLYPH CONFORMANCE: 16/16 glyph fixture classes green (py/java byte-exact + manifest pins + born-clean law; canary C-intake-zero-pua)",
+      "reference_tests_exit": 0,
+      "reference_tests_tail": null,
+      "canary": "C-intake-zero-pua pinned (ocr_batch v1.2.0 batch gate + conformance manifest law + named constant)",
+      "verdict": "GREEN"
+    }
+  },
+  "disclosures": [
+    "unwired plane PUA rows remain OUT of T-MIG-141 scope by the join law (hygiene-card candidate; fully table-coverable, zero unmapped cps)",
+    "the 4MA1 maths plane has no parsed/ layer in the archive — the C5 fidelity probes of record are the chemistry 2024-06 4CH1-1C probes",
+    "Phase E Java build method of record: sandbox javac (Temurin 21) + Maven-Central Jackson jars (no maven binary in the sandbox); CI's own mvn path unchanged and the harness's m2 classpath discovery still applies",
+    "run-008/run-009 executed in the prior session without shared-worklog appends (receipts + card of record); back-fill appended at close-out",
+    "Phase-D driver carries the run-009 reconnect law (parser 2e9867a5…)"
+  ],
+  "verdict": "ALL CANARIES GREEN — card may close",
+  "pins": {
+    "table": "1fdd4b4a5ebede2e437473e55a2786dea1a9755d03b68d1eea78a39364e2094a",
+    "c9": "4014404b365f21b49e03997c53903a0145189c66ac58a9de38c56d3843c1c037",
+    "run003_before_images_gz": "a542c75ef9c9995a6e78c7439af5f80b7dc2b3a670601e81fd83ac9d33c4aafb",
+    "control_group": "a05652a91aedb540726798eba56173537ec7f1df054dca5c5930b561ae62300d",
+    "phase_d_before_images_gz": "2e021ce651e20b057289d79c10ebc54ac09c24ce0d8bf55ad8e24a11276b83c5"
+  }
+}
