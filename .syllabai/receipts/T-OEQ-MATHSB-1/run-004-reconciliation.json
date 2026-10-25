@@ -1,0 +1,55 @@
+{
+  "id": "T-OEQ-MATHSB-1/run-004-reconciliation",
+  "type": "lane-run-of-record",
+  "date": "2026-10-26",
+  "trace": "1a174f587f822f61",
+  "operator_instruction": "approve run-004 (the reconciliation proposed in T-OEQ-MATHSB-SERVE-1/desk-merge-check-pr110.json)",
+  "landing": {
+    "pr": "SyllabAI/syllabai-resources#110",
+    "branch_tip": "986f9ad2 (true ancestry: parent chain on main; the orphan snapshot 139ee931 retired)",
+    "merge_commit": "3000e439d1464c2927d082696f5bb19313af3172",
+    "merged_at": "2026-10-25T22:44:40Z",
+    "converter": "v0.20.0 — SPECS[\"4mb1\"] carries the maths-B lane; CLI axis --course -> --spec 4mb1",
+    "post_merge_checker": "86/86 canaries hold on the fresh merged main (exit 0)"
+  },
+  "renumber_maps_of_record": {
+    "note": "three retargets were forced by parallel-lane namespace claims inside the run window (T-BOOK-058/059, wave-25 hygiene v0.18.0+C72-C76, physics-MS wave v0.19.0+F72+C83-C85); the landing-time map is authoritative",
+    "F": "branch F64-F75 -> F73-F84 (F73a/b -> F82a/b); the union entry itself = F85 (LEDGER)",
+    "C": "branch C72/C73/C74 -> C86/C87/C88 (maths-tranche1-gates / course-registry-chemistry-default / maths-drain-state); C87 body adapted from COURSES to the SPECS registry"
+  },
+  "verification_cascade": [
+    "chemistry 2020-11 1C: byte-identical to main's committed corpus modulo generated_utc/generator (the port is chemistry-inert)",
+    "physics 2023-06 1P: byte-identical to the physics-MS wave's new corpus at main (G5-closed linked state reproduced exactly — 0 diff lines vs origin/main@5246e175)",
+    "maths 66/66 re-emission: fresh deterministic staging (poppler 25.03.0 re-verified byte-identical on staged txt), ALL sets G0-G7 ALL PASS, negative controls detected",
+    "parity vs the branch corpus of record (139ee931): 26 sets disclosed-class-only; 40 sets carry the wave-25 text-hygiene class (Pearson copyright/office block + MS furniture strips + BEL source-drop reaching the maths lane for the first time) — proven 80/80 file comparisons with ZERO non-class residuals",
+    "assets byte-identical; the 2019-01 OCR-spliced papers reproduce via prep_ocr_layer_2019mb.py + the sha-pinned ocr staging",
+    "union canary battery 86/86 pre-merge and post-merge on the merged main"
+  ],
+  "disclosed_classes": [
+    "D1 generated_utc timestamps",
+    "D2 generator version string (v0.20.0)",
+    "D3 F-renumber citations (edits[].tool F82a/F82b; review-queue F82 reasons)",
+    "D4 course_id defect-fix (the branch's maths topic headers carried igcse-chemistry-19 — the COURSES rebind missed it)",
+    "D5 allowed_gaps defect-fix (the branch inherited chemistry's {4CH1-3.15C} gap into maths reports)",
+    "D6 wave-25 text-hygiene reaching the maths lane (copyright/furniture/BEL classes; main's own C77-ms-furniture-free law)"
+  ],
+  "defects_found_and_fixed": [
+    "BRANCH-COMMIT CORRUPTION: 139ee931's scripts/official_examq_extract.py F73a ctx line lost '[m' (ln2[max(0,..) -> ln2ax(0,..)); the committed file parses only via accidental bracket rebalance and cannot be the script that produced the corpus of record — fixed to the evident intent, disclosed at the fill site",
+    "course_id header defect (D4) + allowed_gaps inheritance defect (D5)",
+    "F033/F0EE DUPLICATE-DICT-KEY CLASS: the maths static-map additions silently overrode main's physics-era evidence (F033 tick U+2713 vs maths digit 3; F0EE drop vs curly-hook BOTTOM) via Python last-wins semantics — lane-scoped to SPECS pua_overrides (physics/chemistry bytes preserved, maths evidence wins on 4mb1)",
+    "office-skip preservation: the parse_ms PEARSON_OFFICE_RE skip branch was initially lost in the block-8 reconstruction and caught by the chemistry gate — restored"
+  ],
+  "incidents": [
+    "PREMATURE PUSH: during the first rebase attempt a chained push fired mid-conflict and moved the branch to the bare main tip (11205d6c), which auto-closed PR #110 unmerged — recovered by resolving the rebase against the then-current main, re-pushing, and reopening the PR; the final landing pushed as a clean fast-forward",
+    "G6 ENVIRONMENTAL NOTE: the physics 2023-06 1P validation-report G6 summary cites the staged legacy registry count (184 codes) of record; the staged UPLOAD/spc-resolution.json no longer exists in the sandbox, so fresh runs report 0 codes — environmental (the landing does not re-run chem/phys slices; the corpus files are byte-exact)"
+  ],
+  "card_impact": {
+    "T-OEQ-MATHSB-1": "run-004 closes the reconciliation; the conversion of record now lives on resources main at merge commit 3000e439 (66/66 sets, v0.20.0 emission)",
+    "T-OEQ-MATHSB-SERVE-1": "P0 gate ('PR #110 merged to resources main; sync pins main@<merge-sha>') is SATISFIED — pin main@3000e439d1464c2927d082696f5bb19313af3172 at claim time"
+  },
+  "carried_items": [
+    "restore/relax the staged legacy spec registry if physics G6 summaries are ever regenerated in-sandbox",
+    "the lane-side sweep driver (scripts/r4_sweep66.py + resolver scripts under /home/z/my-project/scripts/) stays lane-side; the repo carries the branch's sweep_maths_b_66.py of record",
+    "serve card T-OEQ-MATHSB-SERVE-1 remains OPEN for the hub-plane sync (G-S1..G-S6)"
+  ]
+}
