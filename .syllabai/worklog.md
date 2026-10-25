@@ -21039,3 +21039,23 @@ Work Log:
 
 Stage Summary:
 - SIB generation is now provider-neutral of record; the 4CH1 library holds its first two GENERATED artifacts with full receipts. BL-008 (batch orchestration) unlocked on operator order only; staging/publication remain operator gates. Register: registry-pin anchor repair (operator), PAT rotation (exposure +1 this session), master PR #54 merge order.
+Task ID: 6
+Agent: Z.ai main agent (IM session web-3bd4aa99)
+Task: ADR-040 §5.3 — converter LEVELS mode + validator rules (verbatim/contiguity/tiling) in the corpus lane (trace 1a172ea7a9d226c9, operator 'proceed with §5.3').
+
+Work Log:
+- Grounded the leg: PR #364 (§5.2) closed the migration + dispatch guard; the converter chain is contracts → toPastPaperDraft (glm-ocr.ts) → ingestPastPaperDraft (past-paper.ts) → R4 flips (review-writes.ts validateMarkScheme / validateAllForPaper).
+- Contracts additive: pastPaperMarkBandDraftSchema + markScheme.bands (points compactor convention) in content-writes.ts; glmMarkBandSchema + entry.bands default([]) in ingestion.ts — pre-ADR-040 drafts bind byte-identically, schemaVersion stays 1.0.
+- Mapper LEVELS mode: band entries map VERBATIM (descriptor/guidance untouched; hygienicStem is a QUESTION-text law, never scheme-text); the whole-entry point fallback never fires for levels entries; unknown level/range/descriptor refuses loudly (never a guess — marksCellSource rowspan-deferral is a range the band law cannot bind).
+- Store LEVELS mode: bandsForQuestion (exact points prefix law); bands-only question births scheme_kind='LEVELS' + verbatim mark_bands, SUGGESTED as the point mode births; NO mark_points for LEVELS schemes (no fabricated per-point decisions); both-kinds question refuses loudly (409-class, whole-draft rollback); legacy point path BYTE-IDENTICAL (no scheme_kind in the insert column list); IngestionSummary.markBands additive (the 201 view builds its frozen body explicitly — golden t-mig-107 byte-stable).
+- Validator rules: NEW band-coverage.ts bandCoverageViolations() — contiguity (gaps AND overlaps named), bottom 0-or-1, top-band tiling, ordinal set exactly 1..n, index ascending with marks, descriptor machine floor, zero-mark bands refused, deterministic order.
+- R4 gates: assertBandsTileForFlip on both SUGGESTED→VALIDATED surfaces (validateMarkScheme + validateAllForPaper pre-mutation fail-fast); NOT force-bypassable (force = human-review semantics, never malformed-data acceptance); awarded-range resolution of record: single part → its marks, multi-part → the sum (the only shape UNIQUE(scheme_id, level_index) admits), zero/unknown → tiling skipped, never fabricated.
+- SCOPE BOUNDARY OF RECORD: the SME zip lane (schemes birth VALIDATED, frozen ADR-026) is NOT band-wired — §5.3's converter births SUGGESTED (the T-011 lane); the hub-bundle band shape must be designed against the REAL first-wave levels tables at the band-wave-1 ingest leg; estate coherence holds regardless (R4 gate + §5.2 NO_SCHEME_BANDS guard).
+- Tests +34 (band-coverage 14, band-converter 8, R4 gate block 9, contracts 3) — harness pattern: captureSql params, fakeSql routes; the kind discriminator rides the INSERT TEXT (SQL literals are not bound params).
+- Verification: typecheck 0; suite 2946 pass / 0 fail / 13 skip (2912 + 34); drizzle-kit check green; golden selftest 19/19; retrieval-eval 22/0; hub corpus census GREEN (94 courses, NOT_ANSWERABLE=0).
+- Receipt: .syllabai/receipts/T-SM-ROLLOUT/adr040-conv53-r0.json (scope boundary, R2 SQL of record with parts_with_bands_bound beside parts_with_points_bound, next legs).
+
+Stage Summary:
+- ADR-040 §5.3 leg complete and receipted: the corpus lane now carries LEVELS mark schemes verbatim from parser draft to SUGGESTED scheme birth, gated fail-closed at R4 by the coverage law of record; zero behavior change for the 30-row flipped point-scheme set (guardrail §3.7 pinned by byte-identical tests).
+- Next: §5.4 hub band dispatch → band-wave-1 ingest (0455×2/4GE1/4BS1/9609, SME/bundle band shape against real tables + first live R2 band probe) → §5.5 QWK eval lane → two-file flips, receipts per wave into #276.
+- Security: no credentials, no DB contact (code lane); rotation reminders stand.

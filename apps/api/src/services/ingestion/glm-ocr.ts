@@ -24,6 +24,12 @@
  *     entries with no markers → ONE whole-entry point (every question keeps
  *     its marking evidence); unknown marks (null) materialize as 0 — never
  *     a guess;
+ *   - ADR-040 §5.3 LEVELS mode: entries with a bands table ("Level / Marks
+ *     / Descriptor" rows) map to draft bands VERBATIM (level, printed
+ *     range, descriptor, guidance; unknown level/range/descriptor refuses
+ *     loudly — never a guess) and never fall through to the whole-entry
+ *     point; a question carrying BOTH kinds for one ref is refused at
+ *     ingestion (the kind is the scheme's — ADR-040 §2.2);
  *   - part refs: MS labels "13(b)(i)" → refs "13-b-i" (mechanical
  *     re-formatting of the printed structure);
  *   - command words are NOT guessed from stems;
@@ -149,8 +155,44 @@ export function toPastPaperDraft(
   }
 
   const points: NonNullable<PastPaperDraft["markScheme"]>["points"] = [];
+  const bands: NonNullable<PastPaperDraft["markScheme"]>["bands"] = [];
   for (const entry of msDraft.entries) {
     const ref = markPointRef({ label: entry.label, number: entry.number });
+    if (entry.bands.length > 0) {
+      // ADR-040 §5.3 LEVELS mode: the entry printed a "Level / Marks /
+      // Descriptor" table — one draft band row per level, VERBATIM
+      // (descriptor/guidance pass through untouched — the R4 "descriptors
+      // verbatim" check pins the converter never trims or paraphrases;
+      // hygienicStem is a QUESTION-text law, never a scheme-text law).
+      // The whole-entry point fallback below must NOT fire for levels
+      // entries — that would manufacture a fake mark point next to the
+      // bands. Unknown level/range refuses loudly: bands materialize only
+      // with the printed ordinal and printed range (never a guess — the
+      // marksCellSource rowspan-deferral that marks tolerate is a range
+      // the band law cannot bind).
+      for (const band of entry.bands) {
+        if (band.level == null || band.marksMin == null || band.marksMax == null) {
+          throw new ConflictException(
+            `mark scheme entry ${ref} carries a level band with an unknown level or mark range (level=${band.level}, marks ${band.marksMin === null ? "?" : band.marksMin}-${band.marksMax === null ? "?" : band.marksMax}) — bands materialize only with the printed ordinal and printed range (ADR-040 §2.1; never a guess)`,
+          );
+        }
+        if (band.descriptor == null) {
+          throw new ConflictException(
+            `mark scheme entry ${ref} level ${band.level} carries no descriptor — bands materialize verbatim only (a descriptor-less level row cannot mark; complete the row in the draft)`,
+          );
+        }
+        bands.push({
+          questionRef: ref,
+          levelIndex: band.level,
+          marksMin: band.marksMin,
+          marksMax: band.marksMax,
+          descriptor: band.descriptor,
+          guidance: band.guidance,
+          confidence: entry.confidence,
+        });
+      }
+      continue;
+    }
     if (entry.markPoints.length === 0) {
       // no "(N)" markers in the cell: the whole entry is the marking
       // statement (MCQ rationale rows, unsplit cells) — one point keeps it
@@ -180,6 +222,7 @@ export function toPastPaperDraft(
     version: "1",
     sourceDocumentId: msMeta === null ? null : msMeta.canonicalDocumentId,
     points,
+    bands,
     generalGuidance: null,
   };
 
