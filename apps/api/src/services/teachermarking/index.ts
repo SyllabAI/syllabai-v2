@@ -73,10 +73,16 @@ import {
   assembleGradedEvidenceEvent,
 } from "../selfmark";
 import {
+  BAND_PIPELINE_VERSION,
+  BandMarkingPipeline,
   PIPELINE_VERSION,
   SmartMarkPipeline,
   SmartMarkService,
+  toMarkingBand,
   toMarkingPoint,
+  type BandDecision,
+  type BandMarkingCandidateGenerator,
+  type BandMarkingContext,
   type Decision,
   type MarkingCandidateGenerator,
   type MarkingContext,
@@ -571,6 +577,7 @@ function chainNext(items: MarkingQueueItem[]): MarkingQueueItem[] {
 
 export class TeacherSmartMarkService {
   private readonly pipeline: SmartMarkPipeline;
+  private readonly bandPipeline: BandMarkingPipeline | null;
 
   constructor(
     private readonly sql: SqlFn,
@@ -583,8 +590,13 @@ export class TeacherSmartMarkService {
     private readonly shared: SmartMarkService,
     private readonly publisher: GradedEvidencePublisher,
     private readonly clock: SubmitClock,
+    /** ADR-040 §5.4: the band dispatch seam for the per-answer topology.
+     *  Absent (unwired legacy construction) → VALIDATED LEVELS schemes
+     *  refuse per-answer with the honest NO_SCHEME_BANDS row. */
+    bandGenerator?: BandMarkingCandidateGenerator,
   ) {
     this.pipeline = new SmartMarkPipeline(generator);
+    this.bandPipeline = bandGenerator === undefined ? null : new BandMarkingPipeline(bandGenerator);
   }
 
   /**
@@ -644,16 +656,25 @@ export class TeacherSmartMarkService {
     }
     const versionId = versionRows[0]!.id;
 
-    // newest VALIDATED scheme backs marking (V34); none → honest refusal
+    // newest VALIDATED scheme backs marking (V34); none → honest refusal.
+    // ADR-040 §5.4: the scheme's kind rides along so the dispatch below can
+    // hold the point/LEVELS boundary in this topology too.
     const validatedRows = (await this.sql`
-      select id, validation_state from mark_schemes
+      select id, validation_state, scheme_kind from mark_schemes
       where question_version_id = ${versionId} and validation_state = ${"VALIDATED"}
       order by created_at desc
-    `) as unknown as Array<{ id: string; validation_state: string }>;
+    `) as unknown as Array<{ id: string; validation_state: string; scheme_kind: string | null }>;
     if (validatedRows.length === 0) {
       return this.refuseUnvalidatedScheme(answer, versionId);
     }
     const scheme = validatedRows[0]!;
+    if ((scheme.scheme_kind ?? "POINTS") === "LEVELS") {
+      // ADR-040 §5.4 — the band dispatch leg, per-answer topology: the bound
+      // scheme's kind selects the marker path. ONE dispatch, no guessing;
+      // band parts refuse honestly until their scheme is VALIDATED (the
+      // refusal below stamps the newest scheme per the V34 law).
+      return this.markAnswerBand(attemptId, attempt, answer, scheme);
+    }
 
     const pointRows = (await this.sql`
       select id, ref, ordering, text, marks, question_part_id
@@ -698,32 +719,151 @@ export class TeacherSmartMarkService {
     };
 
     if (decision.accepted) {
-      // provisional mark application (:135-138)
-      await this.sql`
-        update answers set marks_awarded = ${decision.marksAwarded}, marking_state = ${"SMART_MARKED"}
-        where id = ${answer.id}
-      `;
-      await this.sql`
-        update attempts set marking_state = ${"SMART_MARKED"} where id = ${attemptId}
-      `;
-      const total = await this.recomputeAttemptTotal(attemptId, answer.question_marks);
-      const authoritative = await this.shared.kappaGatePassed(answer.exam_paper_id, answer.question_id);
-      if (authoritative) {
-        // evidence only when the attempt's marking is COMPLETE (:145-157);
-        // re-read mirrors findByAttemptIdOrderByQuestionPartId (the frozen
-        // completeness check re-reads the attempt's answers after the write)
-        const stillPending = (await this.sql`
-          select id, marks_awarded, marking_state from answers
-          where attempt_id = ${attemptId} order by question_part_id
-        `) as unknown as AttemptAnswerStateRow[];
-        if (!stillPending.some((a) => a.marking_state === "PENDING")) {
-          // publishGraded receives the ATTEMPT — its payload carries the
-          // recomputed total, not the single answer's marks (:150)
-          await this.fireEvidence(attempt, answer, total);
-        }
-      }
+      await this.applyProvisionalMark(attemptId, attempt, answer, decision.marksAwarded);
     }
     return resultRow;
+  }
+
+  /** ADR-040 §5.4 — the band marking path for a VALIDATED LEVELS scheme
+   *  (per-answer topology). Unwired band seam → the honest NO_SCHEME_BANDS
+   *  refusal row (append-only, no state change); empty bands on a wired seam
+   *  → the same refusal. Otherwise: kind re-assert + general guidance in ONE
+   *  read (the internal guard refuses a dispatch/read kind mismatch loudly —
+   *  never silently re-routes), the bands read, and the band pipeline decides;
+   *  the accepted tail is the SHARED provisional-mark law (same writes, same
+   *  κ gate, same evidence) with the band pipeline version stamped. */
+  private async markAnswerBand(
+    attemptId: string,
+    attempt: AttemptLockRow,
+    answer: MarkingAnswerRow,
+    scheme: { id: string; validation_state: string; scheme_kind: string | null },
+  ): Promise<SmartMarkResultRow> {
+    if (this.bandPipeline === null) {
+      return this.refuseBandScheme(answer, scheme);
+    }
+    const schemeFullRows = (await this.sql`
+      select validation_state, scheme_kind, general_guidance from mark_schemes where id = ${scheme.id}
+    `) as unknown as Array<{ validation_state: string; scheme_kind: string | null; general_guidance: string | null }>;
+    if (schemeFullRows.length === 0) throw new NotFoundError("mark scheme", scheme.id);
+    const schemeFull = schemeFullRows[0]!;
+    if ((schemeFull.scheme_kind ?? "POINTS") !== "LEVELS") {
+      throw new ConflictError("mark scheme kind changed between dispatch and read -- refusing loudly");
+    }
+    const bandRows = (await this.sql`
+      select id, level_index, marks_min, marks_max, descriptor_md, guidance_md
+      from mark_bands where mark_scheme_id = ${scheme.id} order by level_index
+    `) as unknown as Array<Record<string, unknown>>;
+    const bands = bandRows.map(toMarkingBand);
+    if (bands.length === 0) {
+      return this.refuseBandScheme(answer, scheme);
+    }
+    const context: BandMarkingContext = {
+      answer: {
+        id: answer.id,
+        attemptId,
+        questionPartId: answer.question_part_id,
+        answerText: answer.answer_text,
+        label: answer.label,
+        partMarks: answer.part_marks,
+      },
+      schemeId: scheme.id,
+      schemeValidationState: scheme.validation_state,
+      bands,
+      // the per-answer row already carries the part's prompt (:626 select)
+      partPrompt: answer.prompt,
+      generalGuidance: schemeFull.general_guidance,
+    };
+    const decision: BandDecision = await this.bandPipeline.run(context);
+
+    const resultId = this.clock.newId();
+    await this.sql`
+      insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
+        marks_awarded, confidence, validation_passed, breakdown, failure_reason,
+        mark_scheme_id, scheme_validation_state, raw_output, created_at)
+      values (${resultId}, ${answer.id}, ${BAND_PIPELINE_VERSION}, ${decision.candidate?.modelId ?? null},
+        ${decision.marksAwarded}, ${decision.candidate?.confidence ?? null}, ${decision.accepted},
+        ${JSON.stringify(decision.breakdown)}, ${decision.failureReason}, ${scheme.id},
+        ${scheme.validation_state}, ${decision.candidate?.rawOutput ?? null}, ${this.clock.now().toISOString()})
+    `;
+    const resultRow: SmartMarkResultRow = {
+      id: resultId,
+      answer_id: answer.id,
+      model_id: decision.candidate?.modelId ?? null,
+      marks_awarded: decision.marksAwarded,
+      confidence: decision.candidate?.confidence ?? null,
+      validation_passed: decision.accepted,
+      breakdown: decision.breakdown,
+      failure_reason: decision.failureReason,
+    };
+    if (decision.accepted) {
+      await this.applyProvisionalMark(attemptId, attempt, answer, decision.marksAwarded);
+    }
+    return resultRow;
+  }
+
+  /** Honest band refusal (ADR-040 §2.2), per-answer topology — the mirror of
+   *  SmartMarkService.refuseBandScheme: append-only row stamped with the
+   *  validated LEVELS scheme it refused; nothing is marked, no state
+   *  changes, no evidence. */
+  private async refuseBandScheme(
+    answer: MarkingAnswerRow,
+    scheme: { id: string; validation_state: string },
+  ): Promise<SmartMarkResultRow> {
+    const resultId = this.clock.newId();
+    await this.sql`
+      insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
+        marks_awarded, confidence, validation_passed, breakdown, failure_reason,
+        mark_scheme_id, scheme_validation_state, raw_output, created_at)
+      values (${resultId}, ${answer.id}, ${BAND_PIPELINE_VERSION}, ${null}, ${0}, ${null}, ${false},
+        ${JSON.stringify([])}, ${"NO_SCHEME_BANDS"}, ${scheme.id},
+        ${scheme.validation_state}, ${null}, ${this.clock.now().toISOString()})
+    `;
+    return {
+      id: resultId,
+      answer_id: answer.id,
+      model_id: null,
+      marks_awarded: 0,
+      confidence: null,
+      validation_passed: false,
+      breakdown: [],
+      failure_reason: "NO_SCHEME_BANDS",
+    };
+  }
+
+  /** The shared accepted tail of markAnswer (point + band dispatches),
+   *  verbatim from the frozen inline block: provisional mark application
+   *  (:135-138), the recomputed total, and the κ-gated evidence only when
+   *  the attempt's marking is COMPLETE (:145-157). */
+  private async applyProvisionalMark(
+    attemptId: string,
+    attempt: AttemptLockRow,
+    answer: MarkingAnswerRow,
+    marksAwarded: number,
+  ): Promise<void> {
+    // provisional mark application (:135-138)
+    await this.sql`
+      update answers set marks_awarded = ${marksAwarded}, marking_state = ${"SMART_MARKED"}
+      where id = ${answer.id}
+    `;
+    await this.sql`
+      update attempts set marking_state = ${"SMART_MARKED"} where id = ${attemptId}
+    `;
+    const total = await this.recomputeAttemptTotal(attemptId, answer.question_marks);
+    const authoritative = await this.shared.kappaGatePassed(answer.exam_paper_id, answer.question_id);
+    if (authoritative) {
+      // evidence only when the attempt's marking is COMPLETE (:145-157);
+      // re-read mirrors findByAttemptIdOrderByQuestionPartId (the frozen
+      // completeness check re-reads the attempt's answers after the write)
+      const stillPending = (await this.sql`
+        select id, marks_awarded, marking_state from answers
+        where attempt_id = ${attemptId} order by question_part_id
+      `) as unknown as AttemptAnswerStateRow[];
+      if (!stillPending.some((a) => a.marking_state === "PENDING")) {
+        // publishGraded receives the ATTEMPT — its payload carries the
+        // recomputed total, not the single answer's marks (:150)
+        await this.fireEvidence(attempt, answer, total);
+      }
+    }
   }
 
   /** V34 honest refusal (:106-127): newest scheme stamped, nothing marked. */
@@ -1923,10 +2063,11 @@ export function buildTeacherMarkingModule(
   generator: MarkingCandidateGenerator,
   publisher: GradedEvidencePublisher,
   clock: SubmitClock,
+  bandGenerator?: BandMarkingCandidateGenerator,
 ): TeacherMarkingModule {
   // the 032 shared engine: composed for the kappa gate law (lives once)
-  const shared = new SmartMarkService(sql, generator, publisher, clock);
-  const teacherSmartMark = new TeacherSmartMarkService(sql, generator, shared, publisher, clock);
+  const shared = new SmartMarkService(sql, generator, publisher, clock, bandGenerator);
+  const teacherSmartMark = new TeacherSmartMarkService(sql, generator, shared, publisher, clock, bandGenerator);
   const marking = new TeacherMarkingService(sql, publisher, clock);
   const queue = new TeacherMarkingQueueService(sql, teacherSmartMark, clock);
   return { teacherSmartMark, marking, queue };

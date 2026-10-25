@@ -207,7 +207,9 @@ marks than a point is worth.
 }
 
 /** appendLearnerAnswer — the answer-format-v2 reading law, verbatim. */
-function appendLearnerAnswer(sb: string, answerText: string | null): string {
+/** Exported for the ADR-040 §5.4 band generator (llmchain/bands.ts) — the
+ * answer-format-v2 reading law lives once. */
+export function appendLearnerAnswer(sb: string, answerText: string | null): string {
   return (
     sb +
     `\nLEARNER ANSWER (answer format v2 — Markdown text that may embed\n` +

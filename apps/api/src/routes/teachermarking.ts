@@ -66,7 +66,7 @@ import {
   smartMarkResultView,
   type TeacherMarkingModule,
 } from "../services/teachermarking";
-import type { MarkingCandidateGenerator } from "../services/smartmark";
+import type { MarkingCandidateGenerator, BandMarkingCandidateGenerator } from "../services/smartmark";
 import {
   BadRequestError,
   NotFoundError,
@@ -87,6 +87,7 @@ import {
 import {
   buildLlmChain,
   chainAsCandidateGenerator,
+  chainAsBandCandidateGenerator,
   type FailoverLlmChain,
 } from "../services/llmchain";
 
@@ -440,6 +441,7 @@ export function buildTeacherMarkingRouters(
   env: Record<string, string | undefined> = process.env,
   seams: {
     generator?: MarkingCandidateGenerator;
+    bandGenerator?: BandMarkingCandidateGenerator;
     publisher?: GradedEvidencePublisher;
     clock?: SubmitClock;
     chain?: FailoverLlmChain;
@@ -456,6 +458,10 @@ export function buildTeacherMarkingRouters(
     seams.generator ?? chainAsCandidateGenerator(chain),
     seams.publisher ?? createGradedEvidencePublisher(sql),
     seams.clock ?? { newId: () => crypto.randomUUID(), now: () => new Date() },
+    // ADR-040 §5.4: the band dispatch seam rides the ONE chain — both
+    // marking topologies (the shared engine + the per-answer queue path)
+    // dispatch by scheme_kind; zero-key/TEST boots refuse fail-closed.
+    seams.bandGenerator ?? chainAsBandCandidateGenerator(chain),
   );
   // kappa/latest read (:282-293) — newest evaluation per scope, straight read
   const latestKappa = async (paperId: string | null): Promise<KappaEvaluationView | null> =>

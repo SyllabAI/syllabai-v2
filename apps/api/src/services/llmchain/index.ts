@@ -116,6 +116,15 @@ export {
   ToolkitGenerationError,
 } from "./bridges";
 export type { ToolkitGenerator, ToolkitGeneration, ToolkitGenerationErrorReason } from "./bridges";
+// ADR-040 §5.4: the band generator rides the ONE chain — its seam adapter,
+// prompt builders and parse laws export from bands.ts.
+export {
+  chainAsBandCandidateGenerator,
+  bandUserPrompt,
+  bandBatchUserPrompt,
+  bandCompletionBudget,
+  parseBandPlacement,
+} from "./bands";
 
 // ── DormantChainMember — the fail-closed member (TEST mode + zero-key) ──────
 
