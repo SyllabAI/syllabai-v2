@@ -119,6 +119,26 @@ task:
     operator approval (run-010 scope). Receipts:
     run-009-fleet-family-sweep.json, run-009-offsubject-decision-matrix.md,
     run-009-offsubject-ids.json.
+    PURGE (run-010, 2026-10-25, operator approval trace 1a174b072aa2a29d "remove
+    those 1,662 wrong attachments"): the run-009 OFF-SUBJECT manifest (1,662
+    (id, course_slug) pairings / 13 groups / 11 slugs / 558 distinct ids;
+    recovered from origin e52a3b5 after sandbox recycle #8) executed as a gated
+    single-transaction purge: G0-G3 preflight (PK shape; baselines
+    58,205/82/5,695/8,202/300; per-group live cross-check by family-prefix AND
+    exact id-set) -> in-tx re-verify -> pair-scoped DELETE x13 (rowcounts exact,
+    total 1,662) -> in-tx post (fleet 56,543 / 82 slugs / groups 0 /
+    pilot-chunks-IAL untouched) -> COMMIT (G4); fresh-session post-parity GREEN
+    after strata correction. Classifier strata clarification:
+    run-010-receipt-addendum-classifier-strata.json — the phase-3 checker's 18
+    flags are S3-legal umbrella-science pairings (Applied Science: BTEC /
+    Biology: AQA GCSE Fnd inside combined- & double-award science slugs;
+    allowed by the run-009 rules, never deletion candidates); 0 unresolved
+    off-subject groups remain fleet-wide. SURVIVOR REALITY: only 7/558 distinct
+    resources still serve other courses — 551 existed solely under the misfiled
+    pairing and are no longer served anywhere (content preserved in the
+    syllabai-experimental harvest corpus; optional future re-import to proper
+    subject courses). Receipts: run-010-offsubject-purge.json,
+    run-010-receipt-addendum-classifier-strata.json.
 base:
   repo: "syllabai-v2 @ 6bedab6 (origin/main at claim)"
 basis: >

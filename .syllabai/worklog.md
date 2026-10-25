@@ -20511,3 +20511,17 @@ Work Log:
 
 Stage Summary:
 - run-008 CLOSED (verified post-hoc). run-009 sweep COMPLETE — deletion candidates PENDING operator approval (run-010 scope); rule-table patch for the lost rollout_import_seneca_v3.py still deferred (script not in repo; died with sandbox recycle #6).
+
+---
+Task ID: T-SENECA-001 run-010
+Agent: main (Z.ai)
+Task: Operator approval (trace 1a174b072aa2a29d) "remove those 1,662 wrong attachments" — execute the off-subject pairing purge.
+
+Work Log:
+- Sandbox recycle #8 pre-turn: manifest + receipts recovered from origin e52a3b5; .t1.env re-staged 0600; manifest re-verified (1,662 / 13 / 11 / 558 distinct ids).
+- Gated single-tx purge executed: G0-G3 preflight exact (baselines 58,205/82; per-group cross-check by family AND ids) -> 13 pair-scoped DELETEs, rowcounts exact, total 1,662 -> in-tx post (fleet 56,543 / 82 slugs / groups 0 / pilot-chunks-IAL untouched) -> COMMIT -> fresh-session post-parity.
+- Phase-3 checker issue documented honestly: 18 flags = S3-legal umbrella-science pairings (combined-/double-award slugs; allowed by the run-009 classifier, never candidates) — strata addendum verifies all_s3_legal=true, residual_unresolved=[]. Corrected verdict GREEN.
+- Survivor reality: 7/558 distinct ids still cross-served; 551 resources existed solely under the misfiled pairing and are no longer served anywhere (content preserved in the harvest corpus; optional future re-import to proper subject courses).
+
+Stage Summary:
+- run-010 EXECUTED AND COMMITTED: 1,662 off-subject pairings removed, zero collateral (58,205 -> 56,543 rows, 82 slugs intact, pilot 5,695 / chunks 8,202 / ial-chemistry-17 300 untouched). Fleet is clean under the classifier of record. Receipts: run-010-offsubject-purge.json, run-010-receipt-addendum-classifier-strata.json.

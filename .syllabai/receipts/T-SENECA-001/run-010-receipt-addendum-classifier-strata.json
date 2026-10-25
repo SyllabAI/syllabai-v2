@@ -1,0 +1,145 @@
+{
+ "addendum": "run-010 classifier strata verification (read-only)",
+ "started": "2026-10-25T20:17:16.793970+00:00",
+ "stratum3_pairs_18": {
+  "all_s3_legal": true,
+  "detail": [
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-2",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-chemistry-unit-1",
+    "family": "Biology: AQA GCSE Foundation",
+    "rows": 1,
+    "fam_subject": "Biology",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-chemistry-unit-1",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-chemistry-unit-2",
+    "family": "Biology: AQA GCSE Foundation",
+    "rows": 1,
+    "fam_subject": "Biology",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-chemistry-unit-2",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-2",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "cie-igcse-science-combined-science-23-chemistry",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-17-physics",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-17-biology",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "cie-igcse-science-combined-science-23-physics",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-17-chemistry",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-17-chemistry",
+    "family": "Biology: AQA GCSE Foundation",
+    "rows": 1,
+    "fam_subject": "Biology",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-1",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "cie-igcse-science-combined-science-23-biology",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-biology",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   },
+   {
+    "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "rows": 1,
+    "fam_subject": "Applied Science",
+    "in_allowed_set": true
+   }
+  ]
+ },
+ "residual_unresolved_after_strata": [],
+ "fleet_state": {
+  "fleet_rows": 56543,
+  "fleet_slugs": 82,
+  "pilot": 5695,
+  "chunks": 8202
+ },
+ "verdict": "GREEN (corrected) \u2014 purge exact and committed; the 18 phase-3 flags are S3-legal umbrella-science pairings (pre-existing, never deletion candidates); 0 unresolved off-subject groups remain under the classifier of record",
+ "survivor_note": "551/558 distinct deleted resources had ONLY their misfiled pairing (content preserved in the syllabai-experimental harvest corpus; re-import to proper subject courses is an optional future run",
+ "finished": "2026-10-25T20:17:17.398322+00:00"
+}
