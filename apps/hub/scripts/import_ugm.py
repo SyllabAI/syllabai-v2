@@ -169,6 +169,30 @@ Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
     (fresh-pick convention impossible — disclosed of record). Figure plane
     unchanged: figures=0 honestly (the map of record predates the lane; the
     fresh body carries no map rows and no placeholders).
+  - lane 12 (T-UGM-HUB-CONSUME-12 — the FOURTH lane on the pure-3 course
+    plane, corpus PR #134 + the two T-UGM-MODE1-12 amendments of record:
+    r0 7a5c1c5f the stationScope.resources numbers, r1 bb78ae37 the r8931
+    cross-course row completion; the #136 merge clobbered the lane-12
+    corpus mid-flow and the restore of record bfd9a8f2 returned main to
+    byte-identical state): content/cie-a-level-maths-20-pure-3/ugm-resources.json —
+    CIE 9709 Pure 3 subtopic 3.4 Differentiation (spec points 3.4.1–3.4.3,
+    the verbatim spine rows of record; parse artifacts carried), the
+    LARGEST FRESH-TEXT LANE SINCE LANE 9 and the inverse of the lane-11
+    shape: the differentiation substrate concentrates on the chain-rule and
+    product-rule stations, NEITHER whole-imported of record (only 7
+    chain-rule + 2 product-rule resources carry lane-7 alignments), so 40
+    fresh bodies land (13×3.4.1 / 12×3.4.2 / 15×3.4.3) across the ten
+    scoped stations (chain-rule 21 aligned + product-rule 13 +
+    calculus-trig-log 6 strays + calculus-of-powers 1; six further stations
+    carry non-overlaps only), with the single cross-course flip r8931
+    riding its lane-7 body under pure-1-differentiation (3.4.2, by
+    reference — the lane-9 flip law). The 29 non-overlaps ride
+    nonOverlapRows with bodyImported=false (by reference, no text; 3 of
+    them are honest re-routings of lane-10 bearings: r6620 and r8134 → 3.5
+    Integration, differentiating-exponentials → no extractable text).
+    Picks r6938/r6530/r8620 — all fresh. Figure plane unchanged: figures=0
+    honestly (the map of record predates the lane; the rebuilt converter
+    renders figcaption text only).
 
 Output: content/<lane>/ugm-resources.json, schema
 "syllabai-demo.ugm-lane-resources/1.1" (multi-lane) — per-spec-point resource
@@ -214,17 +238,28 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-# T-UGM-HUB-CONSUME-11: pin advanced past lane 11 (T-UGM-MODE1-11 /
-# T-UGM-IMPORT-11, corpus PR #126, merge commit 3c2ecfa4 — the
-# pure-3-trigonometry corpus: 1 fresh body, MANIFEST v12, fleet 549).
-# Pure-1 inputs AND the lane-9/10 pure-3 inputs are byte-identical
-# 2f31fcad → 3c2ecfa4 (the lane-11 PR touches
-# UGM-Resources/pure-3-trigonometry/** + its enrichment + shared
-# bookkeeping only — verified pin-to-pin: the enrichment README + the
-# trigonometry enrichment + MANIFEST.json (strictly additive lane-11
-# block) + the resources README + the r7616 body; the earlier lane
-# blocks are unchanged).
-DEFAULT_REF = "main@3c2ecfa4dc5e106d72d5a8db67bc72a26dc529b6"
+# T-UGM-HUB-CONSUME-12: pin advanced past lane 12 (T-UGM-MODE1-12 /
+# T-UGM-IMPORT-12, corpus PR #134, merge commit e3c3b058 — the
+# pure-3-differentiation corpus: 40 fresh bodies, MANIFEST v13, fleet 589)
+# AND past the two T-UGM-MODE1-12 amendments of record, both caught by this
+# importer's fail-closed audits on the first pure-3 course run — r0 7a5c1c5f
+# (the lane-12 enrichment's stationScope.resources was left absent for all
+# ten scoped stations; the amendment fills the ten mechanical numbers from
+# the same file's stationBreakdown of record — the 2f31fcad law) and r1
+# bb78ae37 (the cross-course flip r8931 was claimed in crossLaneAligned but
+# omitted from its perSpecPoint 3.4.2 resources row — the lane-11 r6018
+# law: a flip row rides BOTH structures). Lineage note: the #136 merge
+# (e70a7140, T-BOOK-056, branch cut pre-#134) clobbered the lane-12 corpus
+# (the 4e746a89 failure mode); the restore of record bfd9a8f2 returned main
+# to byte-identical corpus state, and r1 sits on top of it. Pure-1 inputs
+# AND the lane-9/10/11 pure-3 inputs are byte-identical 3c2ecfa4 → bb78ae37
+# (the lane-12 PR + amendments touch UGM-Resources/pure-3-differentiation/**
+# + its enrichment + shared bookkeeping only — verified pin-to-pin; the
+# interleaved commits are parallel-agent traffic (converter/Official-
+# ExamQuestion/chemistry lanes) that touches no importer inputs; the shared
+# MANIFEST.json gains the strictly-additive lane-12 block while the earlier
+# lane blocks are byte-identical).
+DEFAULT_REF = "main@bb78ae371da1a2d0f5c166e82899e828b1208b4d"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
@@ -439,6 +474,38 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-3-trigonometry",
             "ledger": "LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126)",
             "expected": {"resources": 1, "rows": 28, "aligned": 28, "nonOverlap": 42},
+        },
+        {
+            # T-UGM-HUB-CONSUME-12: the pure-3 plane's fourth lane — CIE 9709
+            # Pure 3 subtopic 3.4 Differentiation (spec points 3.4.1–3.4.3,
+            # the verbatim spine rows of record; parse artifacts carried),
+            # the LARGEST FRESH-TEXT LANE SINCE LANE 9 and the inverse of the
+            # lane-11 shape: neither chain-rule nor product-rule is
+            # whole-imported of record, so 40 fresh bodies land (13×3.4.1 /
+            # 12×3.4.2 / 15×3.4.3) across the ten scoped stations; the single
+            # cross-course flip r8931 rides its lane-7 body under
+            # pure-1-differentiation (by reference); the 29 non-overlaps ride
+            # nonOverlapByReference (3 honest re-routings of lane-10
+            # bearings: r6620, r8134 → 3.5; differentiating-exponentials →
+            # no extractable text). Picks r6938/r6530/r8620 — all fresh.
+            "laneSlug": "differentiation",
+            "laneTitle": "Differentiation",
+            "stations": [
+                {"slug": "calculus-meets-functions", "title": "Calculus meets Functions"},
+                {"slug": "calculus-of-powers", "title": "Calculus of Powers"},
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "hyperbolic-functions", "title": "Hyperbolic Functions"},
+                {"slug": "polynomials", "title": "Polynomials & Rational Functions"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+                {"slug": "thinking-about-functions", "title": "Thinking about Functions"},
+                {"slug": "thinking-about-geometry", "title": "Thinking about Geometry"},
+                {"slug": "vector-geometry", "title": "Vector Geometry"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-3-differentiation.json",
+            "res_dir": "UGM-Resources/pure-3-differentiation",
+            "ledger": "LEDGER.md — T-UGM-MODE1-12 and T-UGM-IMPORT-12 (PR #134)",
+            "expected": {"resources": 40, "rows": 41, "aligned": 41, "nonOverlap": 29},
         },
     ],
 }

@@ -94,6 +94,21 @@ planes): consumed-input delta ZERO — spec-links/ tree-identical, rejoin sheet
 blob-identical 2bcd4db3; quiescent pin-vintage convergence of the fleet at the
 resources tip 09842f9f (the run-006/007/001 shape on a moved vintage) — of
 record at the pin advance from 31b0ef4a.
+
+T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-003 (2026-10-25, operator order 'Ok proceed',
+trace 1a17484361a63449 — the named next rung disclosed at the run-002 landing):
+the third pin-vintage rung. Input classification at 09842f9f..e481cb47 (~26
+commits: T-BOOK-054 u3:c21 and T-BOOK-055 u4:c22 authoring+flips, UGM lanes 11/12
+corpora + enrichments, converter v0.17.0-v0.17.3, the wave-24 G8 fixes, BL-008
+waves, SIB v1.2.2, the physics PUA tranche — all
+SME-GuidedLessons/CourseLessons/Official-ExamQuestion/UGM-Resources/
+SubjectIntelligence/books/Official-Specifications planes): consumed-input delta
+ZERO — spec-links/ tree-identical (95 files at both pins), rejoin sheet
+blob-identical 2bcd4db3; quiescent pin-vintage convergence of the fleet at the
+resources tip 22543473 (the run-006/007/001/002 shape on a moved vintage) — of
+record at the pin advance from 09842f9f (the tip moved twice in-run —
+22543473 -> 64f45861 -> e481cb47, consumed-input delta ZERO at every sub-range
+— the rung re-targeted to the commit-time tip per the run-002 discipline).
 """
 from __future__ import annotations
 
@@ -114,7 +129,7 @@ RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resourc
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "09842f9f2ae35c8b721a069c34cb04c3fbb3b592"
+PIN = "e481cb47ab6188310abe396cc3011bc5f9e67864"
 STAMP = "2026-10-25T00:00:00Z"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
@@ -832,20 +847,25 @@ def main() -> int:
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
         lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-002 (operator order 'Fire', "
-                           "trace 1a16f39798b9d6c1) — the second pin-vintage rung: the resources "
-                           "tip moved 31b0ef4a -> 09842f9f (10 commits: T-BOOK-047 u2:c14 "
-                           "authoring+flip, the UGM-Assets image plane 976 figures, the "
-                           "handover-rule docs, the f-0019 filing, T-PARSE-YCH11-1 R2 polish "
-                           "harvest, T-PARSE-YCH12-1 SB2 parse) with consumed-input delta ZERO "
-                           "— spec-links/ tree-identical, rejoin sheet blob-identical 2bcd4db3. "
+        operatorDirective=("T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-003 (operator order 'Ok proceed', "
+                           "trace 1a17484361a63449) — the third pin-vintage rung: the resources "
+                           "tip moved 09842f9f -> e481cb47 (~26 commits across three observed "
+                           "vintages: T-BOOK-054 u3:c21 and T-BOOK-055 u4:c22 authoring+flips, "
+                           "UGM lanes 11/12 corpora "
+                           "+ enrichments, converter v0.17.0-v0.17.3, the wave-24 G8 fixes, "
+                           "BL-008 waves, SIB v1.2.2, the physics PUA tranche, then in-run the "
+                           "T-BOOK-056 u4:c23 wave + the UGM lane-12 amendments/restore "
+                           "(22543473..64f45861), then BL-008 pass 4 "
+                           "(64f45861..e481cb47)) with "
+                           "consumed-input delta ZERO — spec-links/ tree-identical (95 "
+                           "files at both pins), rejoin sheet blob-identical 2bcd4db3. "
                            "THIS run is the quiescent pin-vintage convergence of the fleet at "
-                           "09842f9f (the run-006/007/001 shape on a moved vintage): 44/44 "
-                           "re-keys, every consumed counter byte-equal to the run-001 floors, "
+                           "e481cb47 (the run-006/007/001/002 shape on a moved vintage): 44/44 "
+                           "re-keys, every consumed counter byte-equal to the run-002 floors, "
                            "resourcesSha the only map move (stamp unchanged 2026-10-25T00:00:00Z), "
                            "manifest officialSpine.resourcesSha the only bundle move; the pin "
                            "moves WITH the of-record (fa7ede6/0c8892d precedent)"),
-        gatewayTrace="1a16f39798b9d6c1",
+        gatewayTrace="1a17484361a63449",
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),
