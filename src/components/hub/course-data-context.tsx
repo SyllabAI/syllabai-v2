@@ -32,6 +32,8 @@ export interface SidebarData {
   hasPastPapers?: boolean;
   /** does the syllabai-pastpapers archive hold PDFs mapped to this course? */
   hasCorpusPapers?: boolean;
+  /** Seneca harvest bundles registered for this course (T-SENECA-001 Task 42) */
+  seneca?: { total: number };
 }
 
 const CourseDataContext = createContext<SidebarData | null>(null);

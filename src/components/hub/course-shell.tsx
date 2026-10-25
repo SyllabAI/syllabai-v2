@@ -25,6 +25,7 @@ import {
   PanelLeftClose,
   PanelLeftOpen,
   ScrollText,
+  Sparkles,
   Target,
   X,
 } from "lucide-react";
@@ -153,6 +154,12 @@ export function CourseShell({
       items: [
         { href: `${base}/revision-notes`, label: "Revision Notes", icon: BookOpen },
         { href: `${base}/flashcards`, label: "Flashcards", icon: CircleHelp },
+        // T-SENECA-001 Task 42: harvested Seneca course content — the row only
+        // renders for courses with a registered Seneca bundle (courses without
+        // a mapping show nothing rather than a disabled placeholder).
+        ...(data.seneca
+          ? [{ href: `${base}/seneca`, label: "Seneca Resources", icon: Sparkles, badge: data.seneca.total.toLocaleString() }]
+          : []),
       ],
     },
     {

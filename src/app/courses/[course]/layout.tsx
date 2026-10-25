@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { listCourses, loadHubCourse } from "@/lib/courses";
 import { hasPastPapers } from "@/lib/past-papers";
 import { courseHasCorpusPapers } from "@/lib/pastpapers-corpus";
+import { getSenecaForCourse } from "@/lib/seneca-hub";
 import { CourseShell, type SidebarData } from "@/components/hub/course-shell";
 import { LastOpenedTracker } from "@/components/hub/last-opened-tracker";
 
@@ -60,6 +61,8 @@ export default async function CourseLayout({
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
 
+  const seneca = await getSenecaForCourse(slug);
+
   const data: SidebarData = {
     course: {
       slug: hub.meta.slug,
@@ -76,6 +79,7 @@ export default async function CourseLayout({
     setsBySubtopic: hub.setListsBySubtopic,
     hasPastPapers: hasPastPapers(hub.questionTopics),
     hasCorpusPapers: courseHasCorpusPapers(slug),
+    seneca: seneca ? { total: seneca.total } : undefined,
   };
 
   return (

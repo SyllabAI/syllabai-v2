@@ -234,6 +234,22 @@ export function Markdown({
                 </span>
               );
             }
+            // T-SENECA-001 Task 42: harvested Seneca images are committed to
+            // the repo mirror (public/seneca-images) and rewritten into the
+            // content at bundle-generation time — same reserved-ratio box as
+            // the hotlinked corpus images so nothing reflows on load.
+            if (s.startsWith("/seneca-images/")) {
+              return (
+                <span className="mx-auto my-1 block aspect-video w-full max-w-[448px] overflow-hidden rounded-md border bg-muted/40 md:max-w-md">
+                  <img
+                    src={s}
+                    alt={alt ?? ""}
+                    loading="lazy"
+                    className="size-full object-contain"
+                  />
+                </span>
+              );
+            }
             // corpus images are hotlinked from the public resources repo
             if (s.startsWith("https")) {
               // UX audit 2026-10-02 #21: bare <img> without dimensions — every
