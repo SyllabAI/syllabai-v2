@@ -21105,3 +21105,9 @@ Work Log:
 Stage Summary:
 - ADR-040 §5.4 complete: VALIDATED LEVELS schemes mark for real through the band decision of record (placement + within-band marks + descriptor hits, breakdown band_decision_v1, rows stamped 1.4.0) in BOTH marking topologies, fail-closed on every missing input, zero behavior change for the flipped point-scheme set (2912-baseline suites byte-green).
 - Remaining to the 84/94 finish line: §5.5 eval lane (QWK + D5-β + metric discriminator + the teacher band_placement capture side), then band-wave-1 (0455×2/4GE1/4BS1/9609 ingest through the §5.3 converter → R4 → deploy → probes → two-file flips).
+
+## R0-AUTO receipt — sweep 2026-10-25 22:00 +08 (Job 438940; pushed 22:30 after tool-outage recovery)
+- Merged #370 (t-sm-rollout ADR-040 §5.4 r0: hub band dispatch — band_decision_v1 + LEVELS prompt): head f67fdb7 → merge 7792ae0. Gates: verify✓ hub✓ (head), mergeable=clean, 0 reviews/comments, 12 files boundary-clean (llmchain/bands.ts + smartmark/teachermarking band dispatch + 3 test suites).
+- Merged #371 (T-UGM-HUB-CONSUME-11 UGM lane 11 Trigonometry): head 63ab1ac → merge 07b37c0. Gates: verify✓ hub✓ (head), mergeable=clean, 0 reviews/comments, 4 files all apps/hub/** boundary-clean (third pure-3 lane, first mostly-mapping lane; strictly additive vs #363 bundle).
+- Post-merge main @ 07b37c0: verify✓ hub✓ (bounded re-check ~110s, confirmed pre-outage; re-confirmed GREEN at 22:30 before this push). 2/2 round budget consumed.
+- Notes: run hit a 3x tool-call outage after the merges (receipt push, local worklog, lock removal deferred to this sweep); lock found absent at 22:30 (environment refresh) — no orphan, no concurrency. Mirror reset hit #114 (35th) pre-outage and #115 (36th) at 22:30, both 89962a5 signature, fetch-first recovered, zero loss. Desk made no Neon/prod writes.
