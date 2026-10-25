@@ -43,7 +43,23 @@
  * reference (3 honest re-routings of lane-10 bearings: r6620, r8134 → 3.5
  * Integration, differentiating-exponentials → no extractable text); its 18
  * supersede drops retire the stale lane-9/10/11 byref rows whose slugs now
- * carry fresh text; picks r6938/r6530/r8620 — all fresh)
+ * carry fresh text; picks r6938/r6530/r8620 — all fresh); Integration
+ * thirteenth — PR #140 + the T-UGM-MODE1-13 amendment r0 (the MANIFEST
+ * version_note v14 prepend + the LEDGER restore join byte, both caught by
+ * the operator eyeball pre-merge), the FIFTH pure-3 lane and the FIRST LANE
+ * OF RECORD WITH AN HONEST EMPTY SPEC POINT (3.5.4, the f'(x)/f(x) row:
+ * ZERO rows corpus-wide, rule 3 — no coverage manufactured): 16 fresh
+ * bodies (10×3.5.1 / 6×3.5.2 / 2×3.5.3 / 0×3.5.4 / 5×3.5.5 / 7×3.5.6
+ * memberships) across the fifteen scoped stations (calculus-trig-log 7 +
+ * chain-rule 5 + product-rule 4 — the three-station-plus-strays law; the
+ * lane-10/11/12 bearing pool PROMOTED with fresh text, the inverse of the
+ * lane-12 shape) + 23 aligned rows (16 fresh + the circular-slice
+ * cross-course flip → 3.5.6/3.5.2 riding its lane-4 body + 6 one-to-many
+ * joins beside standing alignments incl. r5126's pick riding its lane-9
+ * body — the lane-11 r6018 convention one course on) + 11 non-overlaps by
+ * reference (5 superseding stale bearings, 5 P1-1.8-domain routes, 1
+ * no-text teacher-support page); the supersede law drops 17 stale bearing
+ * rows; picks r8679/r9297/r5126/none(3.5.4 the honest gap)/r8134/r8890
  * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
  * hub-side import is
@@ -76,10 +92,14 @@ import { loadContentJson } from "@/lib/corpus";
 
 export const UGM_FLAG_KEY = "ugmLaneResources";
 
-// ── bundle schema (syllabai-demo.ugm-lane-resources/1.1) ──────────────
-// 1.1 (multi-lane): singular station/stationUrl → stations[]; each resource
-// carries its station slug; source.enrichment/resourcesDir are per-lane
-// arrays; coverage gains a per-lane breakdown. 1.0 (single station) is
+// ── bundle schema (syllabai-demo.ugm-lane-resources/1.x) ──────────────
+// 1.2 (T-UGM-HUB-CONSUME-13): primaryPick on the spec-point index is
+// nullable — the honest-gap law (a swept-to-zero spec point keeps its
+// verbatim spine row with a null pick and zero rows; lane 13's 3.5.4 the
+// first of record). 1.1 (multi-lane): singular station/stationUrl →
+// stations[]; each resource carries its station slug;
+// source.enrichment/resourcesDir are per-lane arrays; coverage gains a
+// per-lane breakdown. 1.0 (single station) is
 // superseded — schema drift degrades to the honest empty state (below).
 // Lane 3+ adds multi-station lanes: one lane may carry SEVERAL UGM stations
 // (the corpus enrichment's stationScope block is the of-record breakdown);
@@ -118,7 +138,11 @@ const UgmResource = z.object({
 const UgmSpecPointIndex = z.object({
   code: z.string(),
   officialText: z.string().nullish(),
-  primaryPick: z.string(),
+  // schema 1.2 (T-UGM-HUB-CONSUME-13 honest-gap law): a spec point with
+  // zero rows of record (rule 3 — no coverage manufactured) carries a null
+  // pick beside its verbatim spine row; callers must null-check before
+  // serving a pick (1.1 bundles never carry null).
+  primaryPick: z.string().nullable(),
   resourceCount: z.number(),
   ugmIds: z.array(z.string()),
 });
