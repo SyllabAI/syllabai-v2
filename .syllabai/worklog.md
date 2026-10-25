@@ -21259,3 +21259,10 @@ Work Log:
 
 Stage Summary:
 - The tutor chrome's last hardcoded-board render path is board-aware: CIE users get "Cambridge International" provenance in the about-coverage and welcome lines, every Edexcel/legacy path byte-identical, 4CH1 strings preserved per the 135d law. PR of record + CI pending at filing time. Residuals unchanged: login blurb "Pearson Edexcel" (out of lane), audit findings, rung-3 pin advance + pastpapers recon, credential rotation (both operator tokens). LANE: PR-open.
+
+## R0-AUTO receipt — sweep 2026-10-26 07:30 +08 (Job 438940)
+- Merged #384 (fix(hub): tutor chat provenance copy goes board-aware — CIE courses no longer mislabeled): head 480bc61 → lane re-pushed 9ae9b7f (intake included by lane) → merge 2598c42. Gates: verify✓ hub✓ (head), mergeable=clean, 0 reviews/comments, 3 files (hub tutor chat.tsx/page.tsx + .syllabai/worklog.md) boundary-clean. 1/2 round budget.
+- Context: #386 (ADR-040 band-wave-1 G-2 KG seed) and #383 (UGM lane 15) were lane-self-merged between sweeps (standing-auth pattern, desk skips on pending CI were overtaken); no desk action needed.
+- Post-merge main @ 2598c42: verify✓ hub✓ (bounded re-check ~90s).
+- Not merged, gate-b fail: #285 verify✗hub✗ · #296 hub✗ · #303 verify✗ · #352 zero check-runs (~52h stall).
+- Notes: mirror reset hit #132 (53rd consecutive, 89962a5 signature) — recovered, zero loss. Desk made no Neon/prod writes.
