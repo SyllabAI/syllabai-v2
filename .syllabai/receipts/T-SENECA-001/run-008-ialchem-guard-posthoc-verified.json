@@ -1,0 +1,46 @@
+{
+ "run": "T-SENECA-001 run-008 post-hoc verification r1 (read-only)",
+ "started": "2026-10-25T19:40:50.082600+00:00",
+ "checks": {
+  "pk_shape": {
+   "pk": [
+    "course_slug",
+    "id"
+   ],
+   "pass": true
+  },
+  "end_state": {
+   "actual": {
+    "ial_total": 300,
+    "ial_by_kind": {
+     "courseSection": 204,
+     "examQuestion": 78,
+     "quiz": 18
+    },
+    "ial_families": {
+     "Chemistry: Cambridge International A Level": 22,
+     "Chemistry: AQA A Level": 55,
+     "Chemistry: AQA GCSE Foundation": 1
+    },
+    "fleet_rows": 58205,
+    "fleet_slugs": 82,
+    "pilot_total": 5695,
+    "chunks": 8202
+   },
+   "drifts": {},
+   "pass": true
+  },
+  "off_family_rows_remaining": 0,
+  "delete_forensics": [
+   {
+    "rel": "seneca_resources",
+    "n_tup_ins": 58207,
+    "n_tup_del": 2,
+    "n_live_tup": 58205
+   }
+  ]
+ },
+ "verdict": "VERIFIED \u2014 run-008 end-state matches numbers of record exactly (lost-turn execution committed; delete forensics n_tup_del=2). No further writes required.",
+ "survivor_analysis": "deferred: ids not recoverable post-hoc (import rule table lost; corpus rows carry no slug field); deletion was pair-scoped by design",
+ "finished": "2026-10-25T19:40:50.719105+00:00"
+}

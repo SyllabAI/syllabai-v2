@@ -87,6 +87,38 @@ task:
     .syllabai/receipts/T-SENECA-001/run-004-placement-rework.json. Zero DB
     writes, zero platform mutations; DB steps (T1) await the operator's
     sci-chem URL + knock.
+    VERIFIED POST-HOC (run-008, 2026-10-25, operator run-#1 approval trace
+    1a1732c7073a3229; execution trace 1a1739bceebd7d21): the approved
+    ial-chemistry-17 breadcrumb guard deleted exactly the 2 off-subject
+    examQuestion pairings (Biology: AQA A Level chromosomes EQ; Applied
+    Science: BTEC EQ) — single tx, COMMITTED in a lost-turn execution whose
+    output was lost to context compaction. The 2026-10-25 re-run aborted
+    fail-closed at G1 (transient empty-catalog glitch at Neon compute wake;
+    verbatim re-query returns the PK) and wrote nothing. End-state verified
+    read-only against the numbers of record: ial-chemistry-17 300 = 204/78/18,
+    families 55/22/1, fleet 58,205/82, pilot 5,695, chunks 8,202; pg_stat
+    forensics n_tup_ins 58,207 / n_tup_del 2. Survivor analysis deferred
+    (pair-scoped deletion by design; import rule table lost in recycle #6).
+    Receipts: run-008-ialchem-guard-rerun-abort.json,
+    run-008-ialchem-guard-posthoc-verified.json.
+    SWEEP (run-009, 2026-10-25, operator trace 1a17489e1fb093a9 "fleet-wide
+    family sweep"): read-only fleet-wide extension of the run-008 subject-level
+    criterion across 58,205 rows / 82 slugs / 24,628 topic-carrying rows (all
+    examQuestion). Verdict: 1,662 OFF-SUBJECT pairings in 13 (slug, family)
+    groups / 11 slugs — dominated by 3 x 550-row "Chemistry: Cambridge
+    International GCSE Supplement" blocks paired into igcse-biology-19 and
+    igcse-biology-modular-24-unit-1/2 (identical ids across all three — one
+    systematic pairing bug); the run-008 pattern recurring as singletons
+    (Biology: AQA A Level in cie-igcse-geography-20/25 + igcse-geography-19 —
+    same resource id cross-served; Biology + BTEC Applied Science in
+    cie-a-level-chemistry-25; Chem-Supplement + BTEC in cie-igcse-physics-23;
+    Combined-Science-Chemistry in physics slugs x3). 1,225 further rows are
+    naming variants (Business Management->Business, English Lit->English
+    Literature, Co-ordinated/Combined/Double-Award science family names) —
+    benign, NOT deletion candidates. ZERO writes; deletion candidates PENDING
+    operator approval (run-010 scope). Receipts:
+    run-009-fleet-family-sweep.json, run-009-offsubject-decision-matrix.md,
+    run-009-offsubject-ids.json.
 base:
   repo: "syllabai-v2 @ 6bedab6 (origin/main at claim)"
 basis: >

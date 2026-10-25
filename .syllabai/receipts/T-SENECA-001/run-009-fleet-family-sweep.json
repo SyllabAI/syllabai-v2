@@ -1,0 +1,3750 @@
+{
+ "run": "T-SENECA-001 run-009 fleet-family-sweep (read-only, trace 1a17489e1fb093a9)",
+ "started": "2026-10-25T19:40:50.761698+00:00",
+ "gates": {
+  "G0_env": "PASS",
+  "G1_pk_shape": {
+   "pk": [
+    "course_slug",
+    "id"
+   ],
+   "pass": true
+  },
+  "G2_baselines": {
+   "actual": {
+    "fleet_rows": 58205,
+    "fleet_slugs": 82,
+    "pilot_total": 5695,
+    "chunks": 8202,
+    "ial_total": 300
+   },
+   "drifts": {},
+   "pass": true
+  }
+ },
+ "c1_topic_coverage": {
+  "by_kind": [
+   {
+    "kind": "courseSection",
+    "with_topic": 0,
+    "without_topic": 22727
+   },
+   {
+    "kind": "examQuestion",
+    "with_topic": 24628,
+    "without_topic": 1482
+   },
+   {
+    "kind": "quiz",
+    "with_topic": 0,
+    "without_topic": 9368
+   }
+  ],
+  "total_with_topic": 24628
+ },
+ "c2_family_taxonomy": [
+  {
+   "family": "Biology: Edexcel iGCSE",
+   "rows": 4371
+  },
+  {
+   "family": "Chemistry: Edexcel iGCSE",
+   "rows": 4273
+  },
+  {
+   "family": "Physics: Edexcel iGCSE",
+   "rows": 3462
+  },
+  {
+   "family": "Chemistry: Cambridge International GCSE Supplement",
+   "rows": 2890
+  },
+  {
+   "family": "Biology: Cambridge International GCSE Supplement",
+   "rows": 1607
+  },
+  {
+   "family": "History: Cambridge International GCSE The Twentieth Century (Option B)",
+   "rows": 1318
+  },
+  {
+   "family": "Biology: AQA A Level",
+   "rows": 984
+  },
+  {
+   "family": "History: Cambridge International GCSE Russia, 1905-41 (Depth Study C)",
+   "rows": 566
+  },
+  {
+   "family": "Biology: AQA GCSE Foundation",
+   "rows": 565
+  },
+  {
+   "family": "Biology: Edexcel GCSE Foundation",
+   "rows": 533
+  },
+  {
+   "family": "Physics: Cambridge International GCSE Supplement",
+   "rows": 502
+  },
+  {
+   "family": "History: Cambridge International GCSE The First World War, 1914-18 (Depth Study A)",
+   "rows": 415
+  },
+  {
+   "family": "Co-ordinated Science Physics: Cambridge International GCSE Supplement",
+   "rows": 412
+  },
+  {
+   "family": "History: Cambridge International GCSE Germany, 1918-45 (Depth Study B)",
+   "rows": 361
+  },
+  {
+   "family": "Biology: Cambridge International A Level",
+   "rows": 300
+  },
+  {
+   "family": "English Lit: Edexcel iGCSE Romeo & Juliet",
+   "rows": 218
+  },
+  {
+   "family": "Geography: AQA GCSE",
+   "rows": 172
+  },
+  {
+   "family": "English Lit: Edexcel iGCSE An Inspector Calls",
+   "rows": 142
+  },
+  {
+   "family": "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement",
+   "rows": 135
+  },
+  {
+   "family": "Business: AQA GCSE",
+   "rows": 132
+  },
+  {
+   "family": "Physics: AQA A Level",
+   "rows": 112
+  },
+  {
+   "family": "Business: Edexcel iGCSE",
+   "rows": 111
+  },
+  {
+   "family": "Chemistry: AQA A Level",
+   "rows": 110
+  },
+  {
+   "family": "Physics: Cambridge International A Level",
+   "rows": 96
+  },
+  {
+   "family": "Combined Science Physics: AQA GCSE Foundation",
+   "rows": 92
+  },
+  {
+   "family": "Co-ordinated Science Biology: Cambridge International GCSE Supplement",
+   "rows": 83
+  },
+  {
+   "family": "English Lit: Edexcel iGCSE Macbeth",
+   "rows": 72
+  },
+  {
+   "family": "Computer Science: AQA GCSE",
+   "rows": 61
+  },
+  {
+   "family": "Geography: Cambridge International GCSE (2027 Exams)",
+   "rows": 54
+  },
+  {
+   "family": "Chemistry: AQA GCSE Foundation",
+   "rows": 53
+  },
+  {
+   "family": "Geography: Edexcel iGCSE",
+   "rows": 53
+  },
+  {
+   "family": "Biology: AQA GCSE Higher",
+   "rows": 46
+  },
+  {
+   "family": "Combined Science Physics: Edexcel GCSE Foundation",
+   "rows": 46
+  },
+  {
+   "family": "Chemistry: Cambridge International A Level",
+   "rows": 41
+  },
+  {
+   "family": "Maths: AQA A Level Mechanics",
+   "rows": 38
+  },
+  {
+   "family": "Computer Science: Cambridge International GCSE",
+   "rows": 29
+  },
+  {
+   "family": "Geography: Edexcel A GCSE",
+   "rows": 24
+  },
+  {
+   "family": "Business: Cambridge International GCSE (2027 Exams)",
+   "rows": 20
+  },
+  {
+   "family": "Chemistry: AQA GCSE Higher",
+   "rows": 18
+  },
+  {
+   "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+   "rows": 17
+  },
+  {
+   "family": "Biology: Edexcel GCSE Higher",
+   "rows": 9
+  },
+  {
+   "family": "Biology: WJEC GCSE Foundation",
+   "rows": 9
+  },
+  {
+   "family": "Geography: AQA A Level",
+   "rows": 9
+  },
+  {
+   "family": "Geography: Edexcel B GCSE",
+   "rows": 9
+  },
+  {
+   "family": "Physics: Edexcel GCSE Foundation",
+   "rows": 9
+  },
+  {
+   "family": "Science (Double Award) Physics: Edexcel iGCSE",
+   "rows": 9
+  },
+  {
+   "family": "Combined Science Chemistry: Edexcel GCSE Higher",
+   "rows": 6
+  },
+  {
+   "family": "Science (Double Award) Biology: Edexcel iGCSE",
+   "rows": 6
+  },
+  {
+   "family": "Biology: Cambridge International GCSE Core",
+   "rows": 5
+  },
+  {
+   "family": "Business Management: IB Diploma",
+   "rows": 4
+  },
+  {
+   "family": "Business: AQA A Level (2023 Specification)",
+   "rows": 4
+  },
+  {
+   "family": "Physics: AQA GCSE Foundation",
+   "rows": 4
+  },
+  {
+   "family": "Biology: OCR Gateway (A) GCSE Foundation",
+   "rows": 3
+  },
+  {
+   "family": "Science (Double Award) Chemistry: Edexcel iGCSE",
+   "rows": 3
+  },
+  {
+   "family": "Geography: Eduqas A GCSE",
+   "rows": 2
+  },
+  {
+   "family": "Geography: OCR A GCSE",
+   "rows": 2
+  },
+  {
+   "family": "Business: Edexcel GCSE",
+   "rows": 1
+  }
+ ],
+ "a2_tier1_off_subject": {
+  "total": 2887,
+  "groups": 51,
+  "detail": [
+   {
+    "slug": "cie-a-level-business-23",
+    "family": "Business Management: IB Diploma",
+    "family_subject": "Business Management",
+    "count": 1,
+    "samples": [
+     {
+      "id": "291b1a93-ee4d-4191-9fc7-c56adca58dfc",
+      "kind": "examQuestion",
+      "title": "Netflix experienced positive net cash flow in 2020 for the first time since 2011. Business",
+      "topic_path": "Business Management: IB Diploma > Finance & Accounts > Cash Flow > Cash Flow"
+     }
+    ]
+   },
+   {
+    "slug": "cie-a-level-chemistry-25",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "family_subject": "Applied Science",
+    "count": 1,
+    "samples": [
+     {
+      "id": "fdd9e1ed-632a-496b-b794-52568075c18d",
+      "kind": "examQuestion",
+      "title": "Describe TWO similarities and TWO differences between Mendeleev\u2019s periodic table and the p",
+      "topic_path": "Applied Science: BTEC Level 3 National Extended Diploma > Principles of Science I > Properties of Substances > The Perio"
+     }
+    ]
+   },
+   {
+    "slug": "cie-a-level-chemistry-25",
+    "family": "Biology: AQA A Level",
+    "family_subject": "Biology",
+    "count": 1,
+    "samples": [
+     {
+      "id": "da94ff86-d818-465a-8d32-754d71e988d5",
+      "kind": "examQuestion",
+      "title": "Figure 1 shows a picture of two chromosomes.\nName the letter that identifies the locus of ",
+      "topic_path": "Biology: AQA A Level > Genetic Information & Variation > DNA, Genes & Chromosomes > Genes"
+     }
+    ]
+   },
+   {
+    "slug": "cie-a-level-physics-25",
+    "family": "Combined Science Physics: Edexcel GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 1,
+    "samples": [
+     {
+      "id": "cb5d0607-75bd-4eb1-9475-124e797e2918",
+      "kind": "examQuestion",
+      "title": "Electricity generated in a power station needs to be transported over long distances throu",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Magnetism > Transformers > Transformers"
+     }
+    ]
+   },
+   {
+    "slug": "cie-a-level-physics-25",
+    "family": "Combined Science Physics: AQA GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 1,
+    "samples": [
+     {
+      "id": "fdab674f-a449-4231-b0e1-5ed8c7cef58d",
+      "kind": "examQuestion",
+      "title": "State why microwaves are useful for communication to the International Space Station (ISS)",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Waves > Electromagnetic Waves > Microwaves"
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-biology-23",
+    "family": "Co-ordinated Science Biology: Cambridge International GCSE Supplement",
+    "family_subject": "Co-ordinated Science Biology",
+    "count": 83,
+    "samples": [
+     {
+      "id": "011cc43b-ef84-441d-84b7-060238735835",
+      "kind": "examQuestion",
+      "title": "Many plants have broad, flat leaves that absorb sunlight and carry out photosynthesis. How",
+      "topic_path": "Co-ordinated Science Biology: Cambridge International GCSE Supplement > Plant Nutrition > Leaf Structure > Leaves"
+     },
+     {
+      "id": "025f9807-2cf5-4f10-ab58-5a477665ed8d",
+      "kind": "examQuestion",
+      "title": "Some species show differences in characteristics within their populations. These differenc",
+      "topic_path": "Co-ordinated Science Biology: Cambridge International GCSE Supplement > Variation & Selection > Selection > Natural Sele"
+     },
+     {
+      "id": "0442d557-fafe-4a97-ba05-ce11863feb79",
+      "kind": "examQuestion",
+      "title": "The nervous system is responsible for coordinating different functions in the body and all",
+      "topic_path": "Co-ordinated Science Biology: Cambridge International GCSE Supplement > Coordination & Response > Coordination & Respons"
+     },
+     {
+      "id": "0a7e9e46-f120-46a8-9936-4269d2b6d42a",
+      "kind": "examQuestion",
+      "title": "In areas where the temperature has increased, certain species of plants have developed thi",
+      "topic_path": "Co-ordinated Science Biology: Cambridge International GCSE Supplement > Variation & Selection > Selection > Natural Sele"
+     },
+     {
+      "id": "0eb017b0-564f-4924-95ef-77635e958cb4",
+      "kind": "examQuestion",
+      "title": "In warm-blooded animals, the process of maintaining a constant internal body temperature, ",
+      "topic_path": "Co-ordinated Science Biology: Cambridge International GCSE Supplement > Coordination & Response > Homeostasis > Thermore"
+     },
+     {
+      "id": "0febc013-b6e9-4429-a222-eacd3ec210fb",
+      "kind": "examQuestion",
+      "title": "Certain mutations in DNA can lead to changes in an organism's characteristics. State a pos",
+      "topic_path": "Co-ordinated Science Biology: Cambridge International GCSE Supplement > Variation & Selection > Variation > Mutations"
+     },
+     {
+      "id": "1082d871-e2c0-499f-a0b4-f3e66fbec99d",
+      "kind": "examQuestion",
+      "title": "Leaves are essential for plants, as they are the primary site of photosynthesis. State the",
+      "topic_path": "Co-ordinated Science Biology: Cambridge International GCSE Supplement > Plant Nutrition > Leaf Structure > Leaves"
+     },
+     {
+      "id": "16c4e5e9-374e-41da-a276-cb34c84ab47c",
+      "kind": "examQuestion",
+      "title": "The nervous system relies on different types of neurons to transmit signals between the bo",
+      "topic_path": "Co-ordinated Science Biology: Cambridge International GCSE Supplement > Coordination & Response > Coordination & Respons"
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-business-23",
+    "family": "Business Management: IB Diploma",
+    "family_subject": "Business Management",
+    "count": 1,
+    "samples": [
+     {
+      "id": "291b1a93-ee4d-4191-9fc7-c56adca58dfc",
+      "kind": "examQuestion",
+      "title": "Netflix experienced positive net cash flow in 2020 for the first time since 2011. Business",
+      "topic_path": "Business Management: IB Diploma > Finance & Accounts > Cash Flow > Cash Flow"
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-business-25",
+    "family": "Business Management: IB Diploma",
+    "family_subject": "Business Management",
+    "count": 1,
+    "samples": [
+     {
+      "id": "291b1a93-ee4d-4191-9fc7-c56adca58dfc",
+      "kind": "examQuestion",
+      "title": "Netflix experienced positive net cash flow in 2020 for the first time since 2011. Business",
+      "topic_path": "Business Management: IB Diploma > Finance & Accounts > Cash Flow > Cash Flow"
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-chemistry-23",
+    "family": "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement",
+    "family_subject": "Co-ordinated Science Chemistry",
+    "count": 135,
+    "samples": [
+     {
+      "id": "01fb5a7d-a472-4f9d-a754-3f85960e71ab",
+      "kind": "examQuestion",
+      "title": "Many small molecules, such as water and carbon dioxide, have specific properties that defi",
+      "topic_path": "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement > Atoms, Elements & Compounds > Simple Molecules"
+     },
+     {
+      "id": "02517fa1-26d7-4294-8a90-76d3d49488a7",
+      "kind": "examQuestion",
+      "title": "Copper chloride is a green solution that can react with a more reactive metal like zinc. W",
+      "topic_path": "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement > Metals > Properties of Metals > Displacement R"
+     },
+     {
+      "id": "047c1d1c-bc94-4c51-b75e-741bd7e83487",
+      "kind": "examQuestion",
+      "title": "When substances react, the rate of reaction can be influenced by various factors according",
+      "topic_path": "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement > Chemical Reactions > Rate of Reaction > Collis"
+     },
+     {
+      "id": "06b56f61-76af-4ac9-8a55-907fc1edd8f5",
+      "kind": "examQuestion",
+      "title": "Oxygen and hydrogen atoms can form water (H2O) through a chemical process.  Explain how co",
+      "topic_path": "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement > Atoms, Elements & Compounds > Simple Molecules"
+     },
+     {
+      "id": "06eaa8e0-dc2e-474b-adf0-aab9142b101a",
+      "kind": "examQuestion",
+      "title": "The reaction profile for an exothermic reaction shows a decrease in energy as reactants ar",
+      "topic_path": "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement > Chemical Energetics > Exothermic & Endothermic"
+     },
+     {
+      "id": "08351294-a500-4af1-9a76-b2763c40c8a7",
+      "kind": "examQuestion",
+      "title": "Iron is a metal known for its strength and is often used in construction. However, when ex",
+      "topic_path": "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement > Atoms, Elements & Compounds > Elements, Compou"
+     },
+     {
+      "id": "09900577-4547-46a5-adfa-71f38f378639",
+      "kind": "examQuestion",
+      "title": "When cooking, temperature affects how quickly food heats up. A higher temperature increase",
+      "topic_path": "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement > Chemical Reactions > Rate of Reaction > Collis"
+     },
+     {
+      "id": "0e5ba189-d3ef-4aff-88fd-af9a5de805f8",
+      "kind": "examQuestion",
+      "title": "Oil is a hydrocarbon that is commonly used in cooking and fuel. It is made up of long chai",
+      "topic_path": "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement > Organic Chemistry > Fuels > Properties of Hydr"
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-geography-20",
+    "family": "Biology: AQA A Level",
+    "family_subject": "Biology",
+    "count": 1,
+    "samples": [
+     {
+      "id": "45a55977-97ad-4f7c-82ba-428f07995ca2",
+      "kind": "examQuestion",
+      "title": "Give THREE examples of the ways in which modern farming has negatively impacted the biodiv",
+      "topic_path": "Biology: AQA A Level > Energy Transfers (A2 only) > Energy & Ecosystems"
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-geography-25",
+    "family": "Biology: AQA A Level",
+    "family_subject": "Biology",
+    "count": 1,
+    "samples": [
+     {
+      "id": "45a55977-97ad-4f7c-82ba-428f07995ca2",
+      "kind": "examQuestion",
+      "title": "Give THREE examples of the ways in which modern farming has negatively impacted the biodiv",
+      "topic_path": "Biology: AQA A Level > Energy Transfers (A2 only) > Energy & Ecosystems"
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-physics-23",
+    "family": "Co-ordinated Science Physics: Cambridge International GCSE Supplement",
+    "family_subject": "Co-ordinated Science Physics",
+    "count": 405,
+    "samples": [
+     {
+      "id": "001985c0-61a9-4d7b-867e-34b775609e0d",
+      "kind": "examQuestion",
+      "title": "Wind and water energy sources are used to generate electricity in many parts of the world.",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Motion, Forces & Energy > Energy, Work & Power: "
+     },
+     {
+      "id": "010937ba-8801-49a2-8407-c3e22a44101d",
+      "kind": "examQuestion",
+      "title": "A tightrope walker performs on a thin cable stretched tightly between two high points. The",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Motion, Forces & Energy > Forces: Turning Effect"
+     },
+     {
+      "id": "01f12480-a44b-478a-8dde-d5856e7bd081",
+      "kind": "examQuestion",
+      "title": "A cyclist is travelling at a constant speed of 15 metres per second along a straight road.",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Motion, Forces & Energy > Motion > Speed & Veloc"
+     },
+     {
+      "id": "02a95fa6-daea-4530-a70d-1bf14ebda159",
+      "kind": "examQuestion",
+      "title": "Nuclear fusion is a process that creates elements in stars, including our sun. It occurs w",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Space Physics > Stars & the Universe > Creation "
+     },
+     {
+      "id": "02ed26ea-6f7c-4c22-9bba-c46c5e5ff0c7",
+      "kind": "examQuestion",
+      "title": "A hospital uses radiation to treat certain types of cancer because it can penetrate tissue",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Nuclear Physics > Radioactivity: Applications & "
+     },
+     {
+      "id": "03036900-8be0-4f97-b68a-d3dd06765af2",
+      "kind": "examQuestion",
+      "title": "When musicians play instruments, sound waves are produced by vibrations. Different instrum",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Waves > Sound > Sound Waves"
+     },
+     {
+      "id": "03672809-5b5f-43ac-a454-3e69a133f29b",
+      "kind": "examQuestion",
+      "title": "A battery provides power to a circuit, creating a flow of electricity through the wires. T",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Electricity & Magnetism > Electrical Quantities:"
+     },
+     {
+      "id": "0375b08d-e50b-484a-9752-f4260a3ec70d",
+      "kind": "examQuestion",
+      "title": "Radiation therapy is a medical treatment that uses high-energy radiation to shrink tumours",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Nuclear Physics > Radioactivity: Applications & "
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-physics-23",
+    "family": "Combined Science Physics: AQA GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 39,
+    "samples": [
+     {
+      "id": "0e20afab-ecab-411d-a5f3-c1cc600b1a45",
+      "kind": "examQuestion",
+      "title": "Describe how a student can investigate the latent heat of fusion.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > The Particle Model > Heat > Latent Heat Experiments"
+     },
+     {
+      "id": "0f049dce-3a9d-4c8b-b2d4-a22977043d78",
+      "kind": "examQuestion",
+      "title": "Explain some of the changes of the atom that have changed our understanding of its structu",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Atoms & Radiation > Atoms > The Model of the Atom"
+     },
+     {
+      "id": "14385e9e-e2c1-49d1-8629-59626b6b2202",
+      "kind": "examQuestion",
+      "title": "Explain FOUR features of using nuclear fuels to generate electricity.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Energy > Energy Resources > Nuclear Energy"
+     },
+     {
+      "id": "17cec0ae-8b19-4328-9297-f0b9f4807a16",
+      "kind": "examQuestion",
+      "title": "Explain why a person in an aluminium suit is not protected by gamma radiation.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Atoms & Radiation > Radiation > Types of Radioactive Emissions"
+     },
+     {
+      "id": "19677dc1-7d52-41fc-bd4a-19f48035d142",
+      "kind": "examQuestion",
+      "title": "State the term used to describe the spreading out of waves when they go through a gap.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Waves > Electromagnetic Waves"
+     },
+     {
+      "id": "1b31654d-bf38-4ba9-9c77-90451a7380a8",
+      "kind": "examQuestion",
+      "title": "Explain the advantages and disadvantages of the usage of renewable and non-renewable energ",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Energy > Energy Resources > Non-Renewable & Renewable Resources"
+     },
+     {
+      "id": "21aaa267-69bb-477e-92dd-96248894371b",
+      "kind": "examQuestion",
+      "title": "Explain how waves and tides generate electricity and evaluate the advantages and disadvant",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Energy > Energy Resources > Tidal Energy"
+     },
+     {
+      "id": "274cfd35-e226-4732-beb4-00ddbe79a35c",
+      "kind": "examQuestion",
+      "title": "The climate crisis is affecting the environment on a drastic scale today.\nExplain FOUR con",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Energy > Energy Resources"
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-physics-23",
+    "family": "Combined Science Physics: Edexcel GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 5,
+    "samples": [
+     {
+      "id": "39b1b178-c151-4d1b-bd11-fc8a080c487d",
+      "kind": "examQuestion",
+      "title": "State two planets that have rings.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Energy > Energy Resources > Nuclear & Solar Energy"
+     },
+     {
+      "id": "59415ebc-40b0-401e-91b3-3d729d5c9dc3",
+      "kind": "examQuestion",
+      "title": "State one reason why this graph demonstrates that the component being tested obeys Ohm\u2019s L",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Electricity & Circuits > Electric Circuits > Circuit Diagrams"
+     },
+     {
+      "id": "88723ed0-6228-4b04-a3d1-53b80ce07c73",
+      "kind": "examQuestion",
+      "title": "State which particles make up the atom's mass number.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Radioactivity > Atoms > Atomic Model 2"
+     },
+     {
+      "id": "a7323c8a-bca1-40d7-b22b-f79cdc42e248",
+      "kind": "examQuestion",
+      "title": "State what is meant by a renewable energy source.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Energy > Energy Resources > Renewable Energy"
+     },
+     {
+      "id": "e08023c0-cd31-4eec-be1f-47ea31ec6bea",
+      "kind": "examQuestion",
+      "title": "Ahmed\u2019s teacher has set up a Geiger-Mueller tube to detect nuclear radiation. She has not ",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Energy > Energy Resources > Nuclear & Solar Energy"
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-physics-23",
+    "family": "Chemistry: Cambridge International GCSE Supplement",
+    "family_subject": "Chemistry",
+    "count": 3,
+    "samples": [
+     {
+      "id": "4fbffe6c-2f51-4767-860c-52166ba5c316",
+      "kind": "examQuestion",
+      "title": "Fossil fuels are a major source of energy used in homes and industries. These fuels are fo",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Organic Chemistry > Fuels > Fossil Fuels"
+     },
+     {
+      "id": "b7694daa-5249-4c66-951b-13fde69588f3",
+      "kind": "examQuestion",
+      "title": "Fossil fuels are widely used for generating energy. They release carbon dioxide when burne",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Organic Chemistry > Fuels > Fossil Fuels"
+     },
+     {
+      "id": "c5cf5e30-b652-4b7b-9a05-c5d9ab5b021d",
+      "kind": "examQuestion",
+      "title": "Fossil fuels, such as coal and oil, are energy resources that form over millions of years ",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Organic Chemistry > Fuels > Fossil Fuels"
+     }
+    ]
+   },
+   {
+    "slug": "cie-igcse-physics-23",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "family_subject": "Applied Science",
+    "count": 1,
+    "samples": [
+     {
+      "id": "a887203f-c13b-4579-887e-d63f9cc2e1e4",
+      "kind": "examQuestion",
+      "title": "An electrician is checking a simple electrical circuit to ensure it works correctly. The c",
+      "topic_path": "Applied Science: BTEC Level 3 National Extended Diploma > Science Investigation Skills > Electrical Circuits > Ohm's Law"
+     }
+    ]
+   },
+   {
+    "slug": "ial-physics-19",
+    "family": "Combined Science Physics: AQA GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 1,
+    "samples": [
+     {
+      "id": "fdab674f-a449-4231-b0e1-5ed8c7cef58d",
+      "kind": "examQuestion",
+      "title": "State why microwaves are useful for communication to the International Space Station (ISS)",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Waves > Electromagnetic Waves > Microwaves"
+     }
+    ]
+   },
+   {
+    "slug": "ial-physics-19",
+    "family": "Co-ordinated Science Physics: Cambridge International GCSE Supplement",
+    "family_subject": "Co-ordinated Science Physics",
+    "count": 1,
+    "samples": [
+     {
+      "id": "eeb82675-8bfa-4622-b591-24fea0582011",
+      "kind": "examQuestion",
+      "title": "Certain radioactive materials decay over time, releasing particles and energy. Give the te",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Nuclear Physics > Radioactive: Half-Life > Half-"
+     }
+    ]
+   },
+   {
+    "slug": "ial-physics-19",
+    "family": "Combined Science Physics: Edexcel GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 1,
+    "samples": [
+     {
+      "id": "cb5d0607-75bd-4eb1-9475-124e797e2918",
+      "kind": "examQuestion",
+      "title": "Electricity generated in a power station needs to be transported over long distances throu",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Magnetism > Transformers > Transformers"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-biology-19",
+    "family": "Chemistry: Cambridge International GCSE Supplement",
+    "family_subject": "Chemistry",
+    "count": 550,
+    "samples": [
+     {
+      "id": "005388b2-8532-416f-aa85-e784350329a7",
+      "kind": "examQuestion",
+      "title": "A student uses a syringe to compare different substances.Suggest one reason why liquids ar",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > States of Matter > Solids, Liquids, & Gases > States of Matter - So"
+     },
+     {
+      "id": "00b251a5-a075-4353-a1da-239c3ac69e43",
+      "kind": "examQuestion",
+      "title": "Rusting and metal extraction are processes studied in redox chemistry.Describe what is mea",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Chemical Reactions > Redox > Examples of Redox Reactions"
+     },
+     {
+      "id": "00b77b41-969e-4f58-a0af-0c3719fff776",
+      "kind": "examQuestion",
+      "title": "Many compounds show different properties from the elements that form them.Describe what is",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Atoms, Elements & Compounds > Ions & Ionic Bonds > Formation of Ion"
+     },
+     {
+      "id": "00beb57b-fc24-4327-a520-07d65317c707",
+      "kind": "examQuestion",
+      "title": "Different organic compounds often show similar chemical behaviour.Describe what is meant b",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Organic Chemistry > Formulae, Functional Groups & Terminology > Fun"
+     },
+     {
+      "id": "01a4f859-9478-42e1-a443-120b66aaa109",
+      "kind": "examQuestion",
+      "title": "Proteins have specific shapes that relate to their functions. State the name of the bond f",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Organic Chemistry > Polymers > Natural Polyamides - Proteins & Amin"
+     },
+     {
+      "id": "01b11ad7-ccd9-4521-8992-e61300aa92c5",
+      "kind": "examQuestion",
+      "title": "Covalent bonding is an important way that atoms form substances. State what is shared in a",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Atoms, Elements & Compounds > Simple Molecules & Covalent Bonds > C"
+     },
+     {
+      "id": "01d98eec-ee54-4b74-a57d-782c1ce903cc",
+      "kind": "examQuestion",
+      "title": "You record measurements at regular time intervals to investigate how fast a chemical react",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Chemical Reactions > Rate of Reaction > Investigating Rate of React"
+     },
+     {
+      "id": "02844524-208a-4c21-a9dd-d5f2c28d4cf7",
+      "kind": "examQuestion",
+      "title": "Indicators change colour when acids or bases are present.State one ion released by an acid",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Acids, Bases & Salts > The Characteristic Properties of Acids & Bas"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-1",
+    "family": "Chemistry: Cambridge International GCSE Supplement",
+    "family_subject": "Chemistry",
+    "count": 550,
+    "samples": [
+     {
+      "id": "005388b2-8532-416f-aa85-e784350329a7",
+      "kind": "examQuestion",
+      "title": "A student uses a syringe to compare different substances.Suggest one reason why liquids ar",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > States of Matter > Solids, Liquids, & Gases > States of Matter - So"
+     },
+     {
+      "id": "00b251a5-a075-4353-a1da-239c3ac69e43",
+      "kind": "examQuestion",
+      "title": "Rusting and metal extraction are processes studied in redox chemistry.Describe what is mea",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Chemical Reactions > Redox > Examples of Redox Reactions"
+     },
+     {
+      "id": "00b77b41-969e-4f58-a0af-0c3719fff776",
+      "kind": "examQuestion",
+      "title": "Many compounds show different properties from the elements that form them.Describe what is",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Atoms, Elements & Compounds > Ions & Ionic Bonds > Formation of Ion"
+     },
+     {
+      "id": "00beb57b-fc24-4327-a520-07d65317c707",
+      "kind": "examQuestion",
+      "title": "Different organic compounds often show similar chemical behaviour.Describe what is meant b",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Organic Chemistry > Formulae, Functional Groups & Terminology > Fun"
+     },
+     {
+      "id": "01a4f859-9478-42e1-a443-120b66aaa109",
+      "kind": "examQuestion",
+      "title": "Proteins have specific shapes that relate to their functions. State the name of the bond f",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Organic Chemistry > Polymers > Natural Polyamides - Proteins & Amin"
+     },
+     {
+      "id": "01b11ad7-ccd9-4521-8992-e61300aa92c5",
+      "kind": "examQuestion",
+      "title": "Covalent bonding is an important way that atoms form substances. State what is shared in a",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Atoms, Elements & Compounds > Simple Molecules & Covalent Bonds > C"
+     },
+     {
+      "id": "01d98eec-ee54-4b74-a57d-782c1ce903cc",
+      "kind": "examQuestion",
+      "title": "You record measurements at regular time intervals to investigate how fast a chemical react",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Chemical Reactions > Rate of Reaction > Investigating Rate of React"
+     },
+     {
+      "id": "02844524-208a-4c21-a9dd-d5f2c28d4cf7",
+      "kind": "examQuestion",
+      "title": "Indicators change colour when acids or bases are present.State one ion released by an acid",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Acids, Bases & Salts > The Characteristic Properties of Acids & Bas"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-2",
+    "family": "Chemistry: Cambridge International GCSE Supplement",
+    "family_subject": "Chemistry",
+    "count": 550,
+    "samples": [
+     {
+      "id": "005388b2-8532-416f-aa85-e784350329a7",
+      "kind": "examQuestion",
+      "title": "A student uses a syringe to compare different substances.Suggest one reason why liquids ar",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > States of Matter > Solids, Liquids, & Gases > States of Matter - So"
+     },
+     {
+      "id": "00b251a5-a075-4353-a1da-239c3ac69e43",
+      "kind": "examQuestion",
+      "title": "Rusting and metal extraction are processes studied in redox chemistry.Describe what is mea",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Chemical Reactions > Redox > Examples of Redox Reactions"
+     },
+     {
+      "id": "00b77b41-969e-4f58-a0af-0c3719fff776",
+      "kind": "examQuestion",
+      "title": "Many compounds show different properties from the elements that form them.Describe what is",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Atoms, Elements & Compounds > Ions & Ionic Bonds > Formation of Ion"
+     },
+     {
+      "id": "00beb57b-fc24-4327-a520-07d65317c707",
+      "kind": "examQuestion",
+      "title": "Different organic compounds often show similar chemical behaviour.Describe what is meant b",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Organic Chemistry > Formulae, Functional Groups & Terminology > Fun"
+     },
+     {
+      "id": "01a4f859-9478-42e1-a443-120b66aaa109",
+      "kind": "examQuestion",
+      "title": "Proteins have specific shapes that relate to their functions. State the name of the bond f",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Organic Chemistry > Polymers > Natural Polyamides - Proteins & Amin"
+     },
+     {
+      "id": "01b11ad7-ccd9-4521-8992-e61300aa92c5",
+      "kind": "examQuestion",
+      "title": "Covalent bonding is an important way that atoms form substances. State what is shared in a",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Atoms, Elements & Compounds > Simple Molecules & Covalent Bonds > C"
+     },
+     {
+      "id": "01d98eec-ee54-4b74-a57d-782c1ce903cc",
+      "kind": "examQuestion",
+      "title": "You record measurements at regular time intervals to investigate how fast a chemical react",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Chemical Reactions > Rate of Reaction > Investigating Rate of React"
+     },
+     {
+      "id": "02844524-208a-4c21-a9dd-d5f2c28d4cf7",
+      "kind": "examQuestion",
+      "title": "Indicators change colour when acids or bases are present.State one ion released by an acid",
+      "topic_path": "Chemistry: Cambridge International GCSE Supplement > Acids, Bases & Salts > The Characteristic Properties of Acids & Bas"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-business-19",
+    "family": "Business Management: IB Diploma",
+    "family_subject": "Business Management",
+    "count": 1,
+    "samples": [
+     {
+      "id": "291b1a93-ee4d-4191-9fc7-c56adca58dfc",
+      "kind": "examQuestion",
+      "title": "Netflix experienced positive net cash flow in 2020 for the first time since 2011. Business",
+      "topic_path": "Business Management: IB Diploma > Finance & Accounts > Cash Flow > Cash Flow"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-english-literature-16",
+    "family": "English Lit: Edexcel iGCSE Romeo & Juliet",
+    "family_subject": "English Lit",
+    "count": 218,
+    "samples": [
+     {
+      "id": "00cc2fe8-58a7-4205-a55e-6d10c47aac90",
+      "kind": "examQuestion",
+      "title": "Discuss how far the theme of family expectations is presented in the play.\nYou must consid",
+      "topic_path": "English Lit: Edexcel iGCSE Romeo & Juliet > Plot Summary > Act 1 > Act 1, Scene 3"
+     },
+     {
+      "id": "039a4eea-ac90-4cbf-9603-f0b68e6e6a7e",
+      "kind": "examQuestion",
+      "title": "How far is Friar Lawrence\u2019s role as a wise but cautious character presented in the play?\nY",
+      "topic_path": "English Lit: Edexcel iGCSE Romeo & Juliet > Plot Summary > Act 2 > Act 2, Scene 3"
+     },
+     {
+      "id": "04b4ecb8-50db-41b8-b05d-afe454d589e8",
+      "kind": "examQuestion",
+      "title": "Explore how far Juliet is presented as a determined character in the play.\nYou must consid",
+      "topic_path": "English Lit: Edexcel iGCSE Romeo & Juliet > Plot Summary > Act 3 > Act 3, Scene 5"
+     },
+     {
+      "id": "0661acaf-3bcf-40d2-b481-0103524c40bc",
+      "kind": "examQuestion",
+      "title": "'ROMEO Now, Tybalt, take the \u201cvillain\u201d back again\nThat late thou gavest me, for Mercutio\u2019s",
+      "topic_path": "English Lit: Edexcel iGCSE Romeo & Juliet > Plot Summary > Act 3 > Act 3, Scene 1"
+     },
+     {
+      "id": "074e0012-cbc5-45f6-9f15-289c20a97ba8",
+      "kind": "examQuestion",
+      "title": "Discuss how far the character of the Nurse is presented in the play.\nYou must consider lan",
+      "topic_path": "English Lit: Edexcel iGCSE Romeo & Juliet > Plot Summary > Act 1 > Act 1, Scene 5"
+     },
+     {
+      "id": "0752d196-9ccb-46a6-ace5-31ccea2028f6",
+      "kind": "examQuestion",
+      "title": "Explore how far Friar Lawrence is presented as a wise and experienced character in the pla",
+      "topic_path": "English Lit: Edexcel iGCSE Romeo & Juliet > Plot Summary > Act 2 > Act 2, Scene 3"
+     },
+     {
+      "id": "085ad89a-6bd0-439c-9a0b-9ab0e120650f",
+      "kind": "examQuestion",
+      "title": "Explore how far the contrast between youth and age is presented in the play.\nYou must cons",
+      "topic_path": "English Lit: Edexcel iGCSE Romeo & Juliet > Plot Summary > Act 1 > Act 1, Scene 5"
+     },
+     {
+      "id": "08d8e21c-d4cb-4812-bd95-bbb569f3910d",
+      "kind": "examQuestion",
+      "title": "'JULIET Thou knowest the mask of night is on my face,\nElse would a maiden blush bepaint my",
+      "topic_path": "English Lit: Edexcel iGCSE Romeo & Juliet > Plot Summary > Act 2 > Act 2, Scenes 1-2"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-english-literature-16",
+    "family": "English Lit: Edexcel iGCSE An Inspector Calls",
+    "family_subject": "English Lit",
+    "count": 142,
+    "samples": [
+     {
+      "id": "0268e9ef-17e7-407a-b3ff-ec41194ce616",
+      "kind": "examQuestion",
+      "title": "Explore how the character of Mrs Birling is used to explore ideas about social responsibil",
+      "topic_path": "English Lit: Edexcel iGCSE An Inspector Calls > Context & Key Themes > Context & Key Themes > Dramatic Function of Chara"
+     },
+     {
+      "id": "0539ef26-1821-41f7-b6a8-039ef61cf3d6",
+      "kind": "examQuestion",
+      "title": "Explore how Sheila\u2019s engagement and her role as a young woman are presented in the play.\nY",
+      "topic_path": "English Lit: Edexcel iGCSE An Inspector Calls > Context & Key Themes > Context & Key Themes > Characterisation of Women"
+     },
+     {
+      "id": "05abfcec-1e22-4132-a471-1432cbdc77f9",
+      "kind": "examQuestion",
+      "title": "Discuss how the character of Sheila is used to challenge traditional female roles in the p",
+      "topic_path": "English Lit: Edexcel iGCSE An Inspector Calls > Context & Key Themes > Context & Key Themes > Characterisation of Women"
+     },
+     {
+      "id": "06b0a2cc-4521-441b-a260-4b07127c7a07",
+      "kind": "examQuestion",
+      "title": "Explore how the character of Eric is used to explore ideas about guilt and responsibility ",
+      "topic_path": "English Lit: Edexcel iGCSE An Inspector Calls > Context & Key Themes > Context & Key Themes > Blame & Responsibility"
+     },
+     {
+      "id": "06fb1c2b-0d30-4ea0-b2db-bb7d33be1d81",
+      "kind": "examQuestion",
+      "title": "In what way is social inequality significant in Mrs Birling\u2019s treatment of Eva Smith in th",
+      "topic_path": "English Lit: Edexcel iGCSE An Inspector Calls > Key Characters > Mrs Birling > Mrs Birling - Analysis 2"
+     },
+     {
+      "id": "078258c8-4eaa-4556-ae97-798362e33d1e",
+      "kind": "examQuestion",
+      "title": "Discuss how the character of Mr Birling uses language and dramatic techniques to influence",
+      "topic_path": "English Lit: Edexcel iGCSE An Inspector Calls > Key Characters > Mr Birling > Mr Birling - Analysis"
+     },
+     {
+      "id": "085452fc-f8ed-4992-a509-546b2cd97ca5",
+      "kind": "examQuestion",
+      "title": "In what way is the role of social class significant in Gerald and Sheila's relationship?\nY",
+      "topic_path": "English Lit: Edexcel iGCSE An Inspector Calls > Context & Key Themes > Context & Key Themes > Class Tension"
+     },
+     {
+      "id": "091d60dd-eefc-4efe-a3c5-f76e11aa1bc4",
+      "kind": "examQuestion",
+      "title": "How are ideas about the role of women presented through Sheila in the play?\nYou must consi",
+      "topic_path": "English Lit: Edexcel iGCSE An Inspector Calls > Key Characters > Sheila > Sheila - Analysis 2"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-english-literature-16",
+    "family": "English Lit: Edexcel iGCSE Macbeth",
+    "family_subject": "English Lit",
+    "count": 72,
+    "samples": [
+     {
+      "id": "004ca5fc-6731-4b45-af06-db795653cd11",
+      "kind": "examQuestion",
+      "title": "How is Macbeth presented as a troubled man in the play?You must consider language, form an",
+      "topic_path": "English Lit: Edexcel iGCSE Macbeth > Plot Summary > Act 3 > Act 3, Scenes 3-4"
+     },
+     {
+      "id": "050c2f15-5ec6-4fde-a59d-029ff70b28f9",
+      "kind": "examQuestion",
+      "title": "Explore loyalty and betrayal in the play. You must consider language, form and structure a",
+      "topic_path": "English Lit: Edexcel iGCSE Macbeth > Plot Summary > Act 4 > Act 4, Scenes 2-3"
+     },
+     {
+      "id": "0bf4b590-a585-40c7-a181-a3768e7bf82c",
+      "kind": "examQuestion",
+      "title": "Explore the theme of loyalty and betrayal in the play.You must consider language, form and",
+      "topic_path": "English Lit: Edexcel iGCSE Macbeth > Plot Summary > Act 1 > Act 1, Scene 2"
+     },
+     {
+      "id": "1066408a-6b50-44e4-b3cf-2c3796608df2",
+      "kind": "examQuestion",
+      "title": "Discuss how loyalty and betrayal are presented in the play.You must consider language, for",
+      "topic_path": "English Lit: Edexcel iGCSE Macbeth > Plot Summary > Act 3 > Act 3, Scenes 3-4"
+     },
+     {
+      "id": "171cd77e-0f76-46cd-ab3d-cf52287d459e",
+      "kind": "examQuestion",
+      "title": "Explore the theme of horror in the play.You must consider language, form and structure and",
+      "topic_path": "English Lit: Edexcel iGCSE Macbeth > Plot Summary > Act 2 > Act 2, Scenes 3-4"
+     },
+     {
+      "id": "18968d80-c36e-43ed-8d82-34c4e94521cc",
+      "kind": "examQuestion",
+      "title": "How are innocence and cruelty presented in the play?You must consider language, form and s",
+      "topic_path": "English Lit: Edexcel iGCSE Macbeth > Plot Summary > Act 4 > Act 4, Scenes 2-3"
+     },
+     {
+      "id": "1926b7ec-e17d-4875-b430-66ff81c2f093",
+      "kind": "examQuestion",
+      "title": "Explore how far King Duncan is presented as a good king in the play.You must consider lang",
+      "topic_path": "English Lit: Edexcel iGCSE Macbeth > Plot Summary > Act 1 > Act 1, Scene 2"
+     },
+     {
+      "id": "1d30421e-21e0-442f-9129-d2ab3001e1ff",
+      "kind": "examQuestion",
+      "title": "Explore the theme of the supernatural in the play. You must consider language, form and st",
+      "topic_path": "English Lit: Edexcel iGCSE Macbeth > Plot Summary > Act 1 > Act 1, Scene 5"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-geography-19",
+    "family": "Biology: AQA A Level",
+    "family_subject": "Biology",
+    "count": 1,
+    "samples": [
+     {
+      "id": "45a55977-97ad-4f7c-82ba-428f07995ca2",
+      "kind": "examQuestion",
+      "title": "Give THREE examples of the ways in which modern farming has negatively impacted the biodiv",
+      "topic_path": "Biology: AQA A Level > Energy Transfers (A2 only) > Energy & Ecosystems"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-17-biology",
+    "family": "Science (Double Award) Biology: Edexcel iGCSE",
+    "family_subject": "Science (Double Award) Biology",
+    "count": 2,
+    "samples": [
+     {
+      "id": "2b5ad216-4d06-4d2b-89bc-29624e3d86b2",
+      "kind": "examQuestion",
+      "title": "Give ONE example of an effector.",
+      "topic_path": "Science (Double Award) Biology: Edexcel iGCSE > Structures & Functions in Living Organisms > Levels of Organisation > Le"
+     },
+     {
+      "id": "e3e8ebf3-8f7f-4697-aac0-8f7a753d2183",
+      "kind": "examQuestion",
+      "title": "State the collective name given to the stages of cell division.",
+      "topic_path": "Science (Double Award) Biology: Edexcel iGCSE > Reproduction & Inheritance > Inheritance > Cell Division"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-17-chemistry",
+    "family": "Combined Science Chemistry: Edexcel GCSE Higher",
+    "family_subject": "Combined Science Chemistry",
+    "count": 1,
+    "samples": [
+     {
+      "id": "e00e933d-1467-43fe-9a86-93abe865d38d",
+      "kind": "examQuestion",
+      "title": "Electrons, protons, and neutrons are fundamental components of atoms.Give the charge of a ",
+      "topic_path": "Combined Science Chemistry: Edexcel GCSE Higher > Key Concepts in Chemistry > Atomic Structure > The Charges and Masses "
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-17-chemistry",
+    "family": "Science (Double Award) Chemistry: Edexcel iGCSE",
+    "family_subject": "Science (Double Award) Chemistry",
+    "count": 1,
+    "samples": [
+     {
+      "id": "eea8a9c8-e539-4026-8309-7d08c100719d",
+      "kind": "examQuestion",
+      "title": "Suggest what happens when group 6 elements ionically bond.",
+      "topic_path": "Science (Double Award) Chemistry: Edexcel iGCSE > Principles of Chemistry > Ionic Bonding > Ionic Bonds"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-17-physics",
+    "family": "Combined Science Physics: AQA GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 17,
+    "samples": [
+     {
+      "id": "0e20afab-ecab-411d-a5f3-c1cc600b1a45",
+      "kind": "examQuestion",
+      "title": "Describe how a student can investigate the latent heat of fusion.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > The Particle Model > Heat > Latent Heat Experiments"
+     },
+     {
+      "id": "1133369b-79fe-4644-8014-c7bdd7e2ec08",
+      "kind": "examQuestion",
+      "title": "Describe how an extended Yo-yo in circular motion is still accelerating despite travelling",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Forces > Effects of Forces"
+     },
+     {
+      "id": "19677dc1-7d52-41fc-bd4a-19f48035d142",
+      "kind": "examQuestion",
+      "title": "State the term used to describe the spreading out of waves when they go through a gap.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Waves > Electromagnetic Waves"
+     },
+     {
+      "id": "37a393a3-dae4-4de5-8105-3242eb40d1a6",
+      "kind": "examQuestion",
+      "title": "A student is studying energy changes in different systems during chemical reactions and ph",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Energy > Energy Changes > Internal Store of Energy"
+     },
+     {
+      "id": "3817fd74-57ab-4907-8615-14384c1a5819",
+      "kind": "examQuestion",
+      "title": "Describe what is meant by the term \u2018gas pressure\u2019 and describe how gas pressure can be inc",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > The Particle Model > Particle Motion in Gases > Properties of Gases"
+     },
+     {
+      "id": "3d5faae3-0494-4080-95f0-d2c53bc2a832",
+      "kind": "examQuestion",
+      "title": "James gets an electric shock when he touches a live wire. \nExplain why this happens.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Electricity > Electric Circuits"
+     },
+     {
+      "id": "4ad7cf16-c545-408f-86de-b3d448e464b6",
+      "kind": "examQuestion",
+      "title": "A piece of iron is placed near a permanent magnet. The iron is not initially magnetic.\nExp",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Magnetism > Magnetism Basics > Induced Magnetism"
+     },
+     {
+      "id": "4caff5f3-9b95-47e9-8509-9a02a5110501",
+      "kind": "examQuestion",
+      "title": "A sheet of aluminium foil is held in front of a radioactive source. Two types of radiation",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Atoms & Radiation > Radiation > Ionising vs Penetration"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-17-physics",
+    "family": "Combined Science Physics: Edexcel GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 13,
+    "samples": [
+     {
+      "id": "342ef125-9b70-4956-931d-465d44d582eb",
+      "kind": "examQuestion",
+      "title": "In a dark room, Frank shines red light onto a blue card. The card looks black. State why t",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > The Electromagnetic Spectrum > Electromagnetic Waves > Visible Light"
+     },
+     {
+      "id": "39b1b178-c151-4d1b-bd11-fc8a080c487d",
+      "kind": "examQuestion",
+      "title": "State two planets that have rings.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Energy > Energy Resources > Nuclear & Solar Energy"
+     },
+     {
+      "id": "47576c06-14a6-4c53-a35b-7bfbac913f2e",
+      "kind": "examQuestion",
+      "title": "State the names of TWO of the four pathways from which energy can be transferred.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Energy > Energy Changes > Energy Transfers"
+     },
+     {
+      "id": "580aeb12-bdd5-4bd0-be6b-c8489d558856",
+      "kind": "examQuestion",
+      "title": "A balloon is filled with air and tied so that the air cannot escape. The balloon is left o",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Particle Model > Density & Pressure > Pressure"
+     },
+     {
+      "id": "59415ebc-40b0-401e-91b3-3d729d5c9dc3",
+      "kind": "examQuestion",
+      "title": "State one reason why this graph demonstrates that the component being tested obeys Ohm\u2019s L",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Electricity & Circuits > Electric Circuits > Circuit Diagrams"
+     },
+     {
+      "id": "88723ed0-6228-4b04-a3d1-53b80ce07c73",
+      "kind": "examQuestion",
+      "title": "State which particles make up the atom's mass number.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Radioactivity > Atoms > Atomic Model 2"
+     },
+     {
+      "id": "99540c2e-1012-483c-948c-7cea32c3fd33",
+      "kind": "examQuestion",
+      "title": "State what is meant by the mass number of an atom.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Radioactivity > Atoms > Atomic Model 2"
+     },
+     {
+      "id": "a01a08cd-a4de-4828-bca3-8581da5f5635",
+      "kind": "examQuestion",
+      "title": "In a dark room, Frank shines red light onto a blue card. The card looks black. State why t",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > The Electromagnetic Spectrum > Electromagnetic Waves > Visible Light"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-17-physics",
+    "family": "Science (Double Award) Physics: Edexcel iGCSE",
+    "family_subject": "Science (Double Award) Physics",
+    "count": 3,
+    "samples": [
+     {
+      "id": "359f47e4-05de-410a-81e6-bc26cfc8d9af",
+      "kind": "examQuestion",
+      "title": "A magnetic field is created around a current-carrying wire. The direction of the magnetic ",
+      "topic_path": "Science (Double Award) Physics: Edexcel iGCSE > Magnetism & Electromagnetism > Magnetism > Magnetic Forces"
+     },
+     {
+      "id": "63b1dca7-a463-4da6-a919-9d484535e8fa",
+      "kind": "examQuestion",
+      "title": "A runner completes a 500 metre race in 100 seconds.  Give the equation needed to calculate",
+      "topic_path": "Science (Double Award) Physics: Edexcel iGCSE > Forces & Motion > Movement & Position > Average Speed"
+     },
+     {
+      "id": "c2a743c0-b3cd-4f4e-b71d-949d6263418e",
+      "kind": "examQuestion",
+      "title": "A cyclist travels a distance of 15 kilometres in 1 hour. State the average speed of the cy",
+      "topic_path": "Science (Double Award) Physics: Edexcel iGCSE > Forces & Motion > Movement & Position > Average Speed"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-17-physics",
+    "family": "Co-ordinated Science Physics: Cambridge International GCSE Supplement",
+    "family_subject": "Co-ordinated Science Physics",
+    "count": 2,
+    "samples": [
+     {
+      "id": "1245bc23-6d0a-4019-812e-a8631e4f2b6b",
+      "kind": "examQuestion",
+      "title": "A student wants to measure how powerful his fellow students are by measuring the time it t",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Motion, Forces & Energy > Mass & Weight > Mass &"
+     },
+     {
+      "id": "6942f831-0463-4c62-9579-fe0f365968b2",
+      "kind": "examQuestion",
+      "title": "Describe what happens to the mass and weight of an astronaut on the moon, compared with th",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Motion, Forces & Energy > Mass & Weight > Mass &"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-17-physics",
+    "family": "Combined Science Chemistry: Edexcel GCSE Higher",
+    "family_subject": "Combined Science Chemistry",
+    "count": 1,
+    "samples": [
+     {
+      "id": "e00e933d-1467-43fe-9a86-93abe865d38d",
+      "kind": "examQuestion",
+      "title": "Electrons, protons, and neutrons are fundamental components of atoms.Give the charge of a ",
+      "topic_path": "Combined Science Chemistry: Edexcel GCSE Higher > Key Concepts in Chemistry > Atomic Structure > The Charges and Masses "
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-1",
+    "family": "Science (Double Award) Biology: Edexcel iGCSE",
+    "family_subject": "Science (Double Award) Biology",
+    "count": 2,
+    "samples": [
+     {
+      "id": "2b5ad216-4d06-4d2b-89bc-29624e3d86b2",
+      "kind": "examQuestion",
+      "title": "Give ONE example of an effector.",
+      "topic_path": "Science (Double Award) Biology: Edexcel iGCSE > Structures & Functions in Living Organisms > Levels of Organisation > Le"
+     },
+     {
+      "id": "e3e8ebf3-8f7f-4697-aac0-8f7a753d2183",
+      "kind": "examQuestion",
+      "title": "State the collective name given to the stages of cell division.",
+      "topic_path": "Science (Double Award) Biology: Edexcel iGCSE > Reproduction & Inheritance > Inheritance > Cell Division"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-2",
+    "family": "Science (Double Award) Biology: Edexcel iGCSE",
+    "family_subject": "Science (Double Award) Biology",
+    "count": 2,
+    "samples": [
+     {
+      "id": "2b5ad216-4d06-4d2b-89bc-29624e3d86b2",
+      "kind": "examQuestion",
+      "title": "Give ONE example of an effector.",
+      "topic_path": "Science (Double Award) Biology: Edexcel iGCSE > Structures & Functions in Living Organisms > Levels of Organisation > Le"
+     },
+     {
+      "id": "e3e8ebf3-8f7f-4697-aac0-8f7a753d2183",
+      "kind": "examQuestion",
+      "title": "State the collective name given to the stages of cell division.",
+      "topic_path": "Science (Double Award) Biology: Edexcel iGCSE > Reproduction & Inheritance > Inheritance > Cell Division"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-chemistry-unit-1",
+    "family": "Combined Science Chemistry: Edexcel GCSE Higher",
+    "family_subject": "Combined Science Chemistry",
+    "count": 1,
+    "samples": [
+     {
+      "id": "e00e933d-1467-43fe-9a86-93abe865d38d",
+      "kind": "examQuestion",
+      "title": "Electrons, protons, and neutrons are fundamental components of atoms.Give the charge of a ",
+      "topic_path": "Combined Science Chemistry: Edexcel GCSE Higher > Key Concepts in Chemistry > Atomic Structure > The Charges and Masses "
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-chemistry-unit-1",
+    "family": "Science (Double Award) Chemistry: Edexcel iGCSE",
+    "family_subject": "Science (Double Award) Chemistry",
+    "count": 1,
+    "samples": [
+     {
+      "id": "eea8a9c8-e539-4026-8309-7d08c100719d",
+      "kind": "examQuestion",
+      "title": "Suggest what happens when group 6 elements ionically bond.",
+      "topic_path": "Science (Double Award) Chemistry: Edexcel iGCSE > Principles of Chemistry > Ionic Bonding > Ionic Bonds"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-chemistry-unit-2",
+    "family": "Science (Double Award) Chemistry: Edexcel iGCSE",
+    "family_subject": "Science (Double Award) Chemistry",
+    "count": 1,
+    "samples": [
+     {
+      "id": "eea8a9c8-e539-4026-8309-7d08c100719d",
+      "kind": "examQuestion",
+      "title": "Suggest what happens when group 6 elements ionically bond.",
+      "topic_path": "Science (Double Award) Chemistry: Edexcel iGCSE > Principles of Chemistry > Ionic Bonding > Ionic Bonds"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-chemistry-unit-2",
+    "family": "Combined Science Chemistry: Edexcel GCSE Higher",
+    "family_subject": "Combined Science Chemistry",
+    "count": 1,
+    "samples": [
+     {
+      "id": "e00e933d-1467-43fe-9a86-93abe865d38d",
+      "kind": "examQuestion",
+      "title": "Electrons, protons, and neutrons are fundamental components of atoms.Give the charge of a ",
+      "topic_path": "Combined Science Chemistry: Edexcel GCSE Higher > Key Concepts in Chemistry > Atomic Structure > The Charges and Masses "
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+    "family": "Combined Science Physics: AQA GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 17,
+    "samples": [
+     {
+      "id": "0e20afab-ecab-411d-a5f3-c1cc600b1a45",
+      "kind": "examQuestion",
+      "title": "Describe how a student can investigate the latent heat of fusion.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > The Particle Model > Heat > Latent Heat Experiments"
+     },
+     {
+      "id": "1133369b-79fe-4644-8014-c7bdd7e2ec08",
+      "kind": "examQuestion",
+      "title": "Describe how an extended Yo-yo in circular motion is still accelerating despite travelling",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Forces > Effects of Forces"
+     },
+     {
+      "id": "19677dc1-7d52-41fc-bd4a-19f48035d142",
+      "kind": "examQuestion",
+      "title": "State the term used to describe the spreading out of waves when they go through a gap.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Waves > Electromagnetic Waves"
+     },
+     {
+      "id": "37a393a3-dae4-4de5-8105-3242eb40d1a6",
+      "kind": "examQuestion",
+      "title": "A student is studying energy changes in different systems during chemical reactions and ph",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Energy > Energy Changes > Internal Store of Energy"
+     },
+     {
+      "id": "3817fd74-57ab-4907-8615-14384c1a5819",
+      "kind": "examQuestion",
+      "title": "Describe what is meant by the term \u2018gas pressure\u2019 and describe how gas pressure can be inc",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > The Particle Model > Particle Motion in Gases > Properties of Gases"
+     },
+     {
+      "id": "3d5faae3-0494-4080-95f0-d2c53bc2a832",
+      "kind": "examQuestion",
+      "title": "James gets an electric shock when he touches a live wire. \nExplain why this happens.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Electricity > Electric Circuits"
+     },
+     {
+      "id": "4ad7cf16-c545-408f-86de-b3d448e464b6",
+      "kind": "examQuestion",
+      "title": "A piece of iron is placed near a permanent magnet. The iron is not initially magnetic.\nExp",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Magnetism > Magnetism Basics > Induced Magnetism"
+     },
+     {
+      "id": "4caff5f3-9b95-47e9-8509-9a02a5110501",
+      "kind": "examQuestion",
+      "title": "A sheet of aluminium foil is held in front of a radioactive source. Two types of radiation",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Atoms & Radiation > Radiation > Ionising vs Penetration"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+    "family": "Combined Science Physics: Edexcel GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 13,
+    "samples": [
+     {
+      "id": "342ef125-9b70-4956-931d-465d44d582eb",
+      "kind": "examQuestion",
+      "title": "In a dark room, Frank shines red light onto a blue card. The card looks black. State why t",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > The Electromagnetic Spectrum > Electromagnetic Waves > Visible Light"
+     },
+     {
+      "id": "39b1b178-c151-4d1b-bd11-fc8a080c487d",
+      "kind": "examQuestion",
+      "title": "State two planets that have rings.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Energy > Energy Resources > Nuclear & Solar Energy"
+     },
+     {
+      "id": "47576c06-14a6-4c53-a35b-7bfbac913f2e",
+      "kind": "examQuestion",
+      "title": "State the names of TWO of the four pathways from which energy can be transferred.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Energy > Energy Changes > Energy Transfers"
+     },
+     {
+      "id": "580aeb12-bdd5-4bd0-be6b-c8489d558856",
+      "kind": "examQuestion",
+      "title": "A balloon is filled with air and tied so that the air cannot escape. The balloon is left o",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Particle Model > Density & Pressure > Pressure"
+     },
+     {
+      "id": "59415ebc-40b0-401e-91b3-3d729d5c9dc3",
+      "kind": "examQuestion",
+      "title": "State one reason why this graph demonstrates that the component being tested obeys Ohm\u2019s L",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Electricity & Circuits > Electric Circuits > Circuit Diagrams"
+     },
+     {
+      "id": "88723ed0-6228-4b04-a3d1-53b80ce07c73",
+      "kind": "examQuestion",
+      "title": "State which particles make up the atom's mass number.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Radioactivity > Atoms > Atomic Model 2"
+     },
+     {
+      "id": "99540c2e-1012-483c-948c-7cea32c3fd33",
+      "kind": "examQuestion",
+      "title": "State what is meant by the mass number of an atom.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Radioactivity > Atoms > Atomic Model 2"
+     },
+     {
+      "id": "a01a08cd-a4de-4828-bca3-8581da5f5635",
+      "kind": "examQuestion",
+      "title": "In a dark room, Frank shines red light onto a blue card. The card looks black. State why t",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > The Electromagnetic Spectrum > Electromagnetic Waves > Visible Light"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+    "family": "Science (Double Award) Physics: Edexcel iGCSE",
+    "family_subject": "Science (Double Award) Physics",
+    "count": 3,
+    "samples": [
+     {
+      "id": "359f47e4-05de-410a-81e6-bc26cfc8d9af",
+      "kind": "examQuestion",
+      "title": "A magnetic field is created around a current-carrying wire. The direction of the magnetic ",
+      "topic_path": "Science (Double Award) Physics: Edexcel iGCSE > Magnetism & Electromagnetism > Magnetism > Magnetic Forces"
+     },
+     {
+      "id": "63b1dca7-a463-4da6-a919-9d484535e8fa",
+      "kind": "examQuestion",
+      "title": "A runner completes a 500 metre race in 100 seconds.  Give the equation needed to calculate",
+      "topic_path": "Science (Double Award) Physics: Edexcel iGCSE > Forces & Motion > Movement & Position > Average Speed"
+     },
+     {
+      "id": "c2a743c0-b3cd-4f4e-b71d-949d6263418e",
+      "kind": "examQuestion",
+      "title": "A cyclist travels a distance of 15 kilometres in 1 hour. State the average speed of the cy",
+      "topic_path": "Science (Double Award) Physics: Edexcel iGCSE > Forces & Motion > Movement & Position > Average Speed"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+    "family": "Co-ordinated Science Physics: Cambridge International GCSE Supplement",
+    "family_subject": "Co-ordinated Science Physics",
+    "count": 2,
+    "samples": [
+     {
+      "id": "1245bc23-6d0a-4019-812e-a8631e4f2b6b",
+      "kind": "examQuestion",
+      "title": "A student wants to measure how powerful his fellow students are by measuring the time it t",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Motion, Forces & Energy > Mass & Weight > Mass &"
+     },
+     {
+      "id": "6942f831-0463-4c62-9579-fe0f365968b2",
+      "kind": "examQuestion",
+      "title": "Describe what happens to the mass and weight of an astronaut on the moon, compared with th",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Motion, Forces & Energy > Mass & Weight > Mass &"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+    "family": "Combined Science Chemistry: Edexcel GCSE Higher",
+    "family_subject": "Combined Science Chemistry",
+    "count": 1,
+    "samples": [
+     {
+      "id": "e00e933d-1467-43fe-9a86-93abe865d38d",
+      "kind": "examQuestion",
+      "title": "Electrons, protons, and neutrons are fundamental components of atoms.Give the charge of a ",
+      "topic_path": "Combined Science Chemistry: Edexcel GCSE Higher > Key Concepts in Chemistry > Atomic Structure > The Charges and Masses "
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-2",
+    "family": "Combined Science Physics: AQA GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 17,
+    "samples": [
+     {
+      "id": "0e20afab-ecab-411d-a5f3-c1cc600b1a45",
+      "kind": "examQuestion",
+      "title": "Describe how a student can investigate the latent heat of fusion.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > The Particle Model > Heat > Latent Heat Experiments"
+     },
+     {
+      "id": "1133369b-79fe-4644-8014-c7bdd7e2ec08",
+      "kind": "examQuestion",
+      "title": "Describe how an extended Yo-yo in circular motion is still accelerating despite travelling",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Forces > Effects of Forces"
+     },
+     {
+      "id": "19677dc1-7d52-41fc-bd4a-19f48035d142",
+      "kind": "examQuestion",
+      "title": "State the term used to describe the spreading out of waves when they go through a gap.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Waves > Electromagnetic Waves"
+     },
+     {
+      "id": "37a393a3-dae4-4de5-8105-3242eb40d1a6",
+      "kind": "examQuestion",
+      "title": "A student is studying energy changes in different systems during chemical reactions and ph",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Energy > Energy Changes > Internal Store of Energy"
+     },
+     {
+      "id": "3817fd74-57ab-4907-8615-14384c1a5819",
+      "kind": "examQuestion",
+      "title": "Describe what is meant by the term \u2018gas pressure\u2019 and describe how gas pressure can be inc",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > The Particle Model > Particle Motion in Gases > Properties of Gases"
+     },
+     {
+      "id": "3d5faae3-0494-4080-95f0-d2c53bc2a832",
+      "kind": "examQuestion",
+      "title": "James gets an electric shock when he touches a live wire. \nExplain why this happens.",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Electricity > Electric Circuits"
+     },
+     {
+      "id": "4ad7cf16-c545-408f-86de-b3d448e464b6",
+      "kind": "examQuestion",
+      "title": "A piece of iron is placed near a permanent magnet. The iron is not initially magnetic.\nExp",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Magnetism > Magnetism Basics > Induced Magnetism"
+     },
+     {
+      "id": "4caff5f3-9b95-47e9-8509-9a02a5110501",
+      "kind": "examQuestion",
+      "title": "A sheet of aluminium foil is held in front of a radioactive source. Two types of radiation",
+      "topic_path": "Combined Science Physics: AQA GCSE Foundation > Atoms & Radiation > Radiation > Ionising vs Penetration"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-2",
+    "family": "Combined Science Physics: Edexcel GCSE Foundation",
+    "family_subject": "Combined Science Physics",
+    "count": 13,
+    "samples": [
+     {
+      "id": "342ef125-9b70-4956-931d-465d44d582eb",
+      "kind": "examQuestion",
+      "title": "In a dark room, Frank shines red light onto a blue card. The card looks black. State why t",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > The Electromagnetic Spectrum > Electromagnetic Waves > Visible Light"
+     },
+     {
+      "id": "39b1b178-c151-4d1b-bd11-fc8a080c487d",
+      "kind": "examQuestion",
+      "title": "State two planets that have rings.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Energy > Energy Resources > Nuclear & Solar Energy"
+     },
+     {
+      "id": "47576c06-14a6-4c53-a35b-7bfbac913f2e",
+      "kind": "examQuestion",
+      "title": "State the names of TWO of the four pathways from which energy can be transferred.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Energy > Energy Changes > Energy Transfers"
+     },
+     {
+      "id": "580aeb12-bdd5-4bd0-be6b-c8489d558856",
+      "kind": "examQuestion",
+      "title": "A balloon is filled with air and tied so that the air cannot escape. The balloon is left o",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Particle Model > Density & Pressure > Pressure"
+     },
+     {
+      "id": "59415ebc-40b0-401e-91b3-3d729d5c9dc3",
+      "kind": "examQuestion",
+      "title": "State one reason why this graph demonstrates that the component being tested obeys Ohm\u2019s L",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Electricity & Circuits > Electric Circuits > Circuit Diagrams"
+     },
+     {
+      "id": "88723ed0-6228-4b04-a3d1-53b80ce07c73",
+      "kind": "examQuestion",
+      "title": "State which particles make up the atom's mass number.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Radioactivity > Atoms > Atomic Model 2"
+     },
+     {
+      "id": "99540c2e-1012-483c-948c-7cea32c3fd33",
+      "kind": "examQuestion",
+      "title": "State what is meant by the mass number of an atom.",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > Radioactivity > Atoms > Atomic Model 2"
+     },
+     {
+      "id": "a01a08cd-a4de-4828-bca3-8581da5f5635",
+      "kind": "examQuestion",
+      "title": "In a dark room, Frank shines red light onto a blue card. The card looks black. State why t",
+      "topic_path": "Combined Science Physics: Edexcel GCSE Foundation > The Electromagnetic Spectrum > Electromagnetic Waves > Visible Light"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-2",
+    "family": "Science (Double Award) Physics: Edexcel iGCSE",
+    "family_subject": "Science (Double Award) Physics",
+    "count": 3,
+    "samples": [
+     {
+      "id": "359f47e4-05de-410a-81e6-bc26cfc8d9af",
+      "kind": "examQuestion",
+      "title": "A magnetic field is created around a current-carrying wire. The direction of the magnetic ",
+      "topic_path": "Science (Double Award) Physics: Edexcel iGCSE > Magnetism & Electromagnetism > Magnetism > Magnetic Forces"
+     },
+     {
+      "id": "63b1dca7-a463-4da6-a919-9d484535e8fa",
+      "kind": "examQuestion",
+      "title": "A runner completes a 500 metre race in 100 seconds.  Give the equation needed to calculate",
+      "topic_path": "Science (Double Award) Physics: Edexcel iGCSE > Forces & Motion > Movement & Position > Average Speed"
+     },
+     {
+      "id": "c2a743c0-b3cd-4f4e-b71d-949d6263418e",
+      "kind": "examQuestion",
+      "title": "A cyclist travels a distance of 15 kilometres in 1 hour. State the average speed of the cy",
+      "topic_path": "Science (Double Award) Physics: Edexcel iGCSE > Forces & Motion > Movement & Position > Average Speed"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-2",
+    "family": "Co-ordinated Science Physics: Cambridge International GCSE Supplement",
+    "family_subject": "Co-ordinated Science Physics",
+    "count": 2,
+    "samples": [
+     {
+      "id": "1245bc23-6d0a-4019-812e-a8631e4f2b6b",
+      "kind": "examQuestion",
+      "title": "A student wants to measure how powerful his fellow students are by measuring the time it t",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Motion, Forces & Energy > Mass & Weight > Mass &"
+     },
+     {
+      "id": "6942f831-0463-4c62-9579-fe0f365968b2",
+      "kind": "examQuestion",
+      "title": "Describe what happens to the mass and weight of an astronaut on the moon, compared with th",
+      "topic_path": "Co-ordinated Science Physics: Cambridge International GCSE Supplement > Motion, Forces & Energy > Mass & Weight > Mass &"
+     }
+    ]
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-2",
+    "family": "Combined Science Chemistry: Edexcel GCSE Higher",
+    "family_subject": "Combined Science Chemistry",
+    "count": 1,
+    "samples": [
+     {
+      "id": "e00e933d-1467-43fe-9a86-93abe865d38d",
+      "kind": "examQuestion",
+      "title": "Electrons, protons, and neutrons are fundamental components of atoms.Give the charge of a ",
+      "topic_path": "Combined Science Chemistry: Edexcel GCSE Higher > Key Concepts in Chemistry > Atomic Structure > The Charges and Masses "
+     }
+    ]
+   }
+  ],
+  "detail_capped": false
+ },
+ "a3_tier2_unmapped_minority": {
+  "total": 0,
+  "groups": 0,
+  "detail": [],
+  "detail_capped": false
+ },
+ "a3_minority_same_subject": {
+  "groups": 92,
+  "detail": [
+   {
+    "slug": "cie-a-level-biology-25",
+    "family": "Biology: Cambridge International A Level",
+    "rows": 97
+   },
+   {
+    "slug": "cie-a-level-chemistry-25",
+    "family": "Chemistry: Cambridge International A Level",
+    "rows": 19
+   },
+   {
+    "slug": "cie-a-level-chemistry-25",
+    "family": "Chemistry: AQA GCSE Foundation",
+    "rows": 1
+   },
+   {
+    "slug": "cie-a-level-computer-science-19",
+    "family": "Computer Science: Cambridge International GCSE",
+    "rows": 11
+   },
+   {
+    "slug": "cie-a-level-physics-25",
+    "family": "Physics: Cambridge International A Level",
+    "rows": 43
+   },
+   {
+    "slug": "cie-igcse-biology-23",
+    "family": "Biology: Cambridge International GCSE Core",
+    "rows": 5
+   },
+   {
+    "slug": "cie-igcse-biology-23",
+    "family": "Biology: AQA GCSE Foundation",
+    "rows": 4
+   },
+   {
+    "slug": "cie-igcse-biology-23",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "rows": 2
+   },
+   {
+    "slug": "cie-igcse-biology-23",
+    "family": "Biology: AQA A Level",
+    "rows": 1
+   },
+   {
+    "slug": "cie-igcse-business-23",
+    "family": "Business: Cambridge International GCSE (2027 Exams)",
+    "rows": 9
+   },
+   {
+    "slug": "cie-igcse-business-23",
+    "family": "Business: AQA A Level (2023 Specification)",
+    "rows": 1
+   },
+   {
+    "slug": "cie-igcse-business-25",
+    "family": "Business: Cambridge International GCSE (2027 Exams)",
+    "rows": 9
+   },
+   {
+    "slug": "cie-igcse-business-25",
+    "family": "Business: AQA A Level (2023 Specification)",
+    "rows": 1
+   },
+   {
+    "slug": "cie-igcse-chemistry-23",
+    "family": "Chemistry: AQA GCSE Foundation",
+    "rows": 9
+   },
+   {
+    "slug": "cie-igcse-chemistry-23",
+    "family": "Chemistry: AQA GCSE Higher",
+    "rows": 3
+   },
+   {
+    "slug": "cie-igcse-computer-science-23",
+    "family": "Computer Science: Cambridge International GCSE",
+    "rows": 18
+   },
+   {
+    "slug": "cie-igcse-geography-20",
+    "family": "Geography: Cambridge International GCSE (2027 Exams)",
+    "rows": 27
+   },
+   {
+    "slug": "cie-igcse-geography-20",
+    "family": "Geography: Edexcel A GCSE",
+    "rows": 8
+   },
+   {
+    "slug": "cie-igcse-geography-20",
+    "family": "Geography: AQA A Level",
+    "rows": 3
+   },
+   {
+    "slug": "cie-igcse-geography-20",
+    "family": "Geography: Edexcel B GCSE",
+    "rows": 3
+   },
+   {
+    "slug": "cie-igcse-geography-20",
+    "family": "Geography: Eduqas A GCSE",
+    "rows": 1
+   },
+   {
+    "slug": "cie-igcse-geography-20",
+    "family": "Geography: OCR A GCSE",
+    "rows": 1
+   },
+   {
+    "slug": "cie-igcse-geography-25",
+    "family": "Geography: Cambridge International GCSE (2027 Exams)",
+    "rows": 27
+   },
+   {
+    "slug": "cie-igcse-geography-25",
+    "family": "Geography: Edexcel A GCSE",
+    "rows": 8
+   },
+   {
+    "slug": "cie-igcse-geography-25",
+    "family": "Geography: AQA A Level",
+    "rows": 3
+   },
+   {
+    "slug": "cie-igcse-geography-25",
+    "family": "Geography: Edexcel B GCSE",
+    "rows": 3
+   },
+   {
+    "slug": "cie-igcse-geography-25",
+    "family": "Geography: Eduqas A GCSE",
+    "rows": 1
+   },
+   {
+    "slug": "cie-igcse-geography-25",
+    "family": "Geography: OCR A GCSE",
+    "rows": 1
+   },
+   {
+    "slug": "cie-igcse-history-18",
+    "family": "History: Cambridge International GCSE Russia, 1905-41 (Depth Study C)",
+    "rows": 566
+   },
+   {
+    "slug": "cie-igcse-history-18",
+    "family": "History: Cambridge International GCSE The First World War, 1914-18 (Depth Study A)",
+    "rows": 415
+   },
+   {
+    "slug": "cie-igcse-history-18",
+    "family": "History: Cambridge International GCSE Germany, 1918-45 (Depth Study B)",
+    "rows": 361
+   },
+   {
+    "slug": "cie-igcse-physics-23",
+    "family": "Physics: AQA GCSE Foundation",
+    "rows": 1
+   },
+   {
+    "slug": "ial-biology-18",
+    "family": "Biology: Cambridge International A Level",
+    "rows": 203
+   },
+   {
+    "slug": "ial-biology-18",
+    "family": "Biology: AQA GCSE Higher",
+    "rows": 1
+   },
+   {
+    "slug": "ial-chemistry-17",
+    "family": "Chemistry: Cambridge International A Level",
+    "rows": 22
+   },
+   {
+    "slug": "ial-chemistry-17",
+    "family": "Chemistry: AQA GCSE Foundation",
+    "rows": 1
+   },
+   {
+    "slug": "ial-physics-19",
+    "family": "Physics: Cambridge International A Level",
+    "rows": 53
+   },
+   {
+    "slug": "igcse-biology-19",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "rows": 31
+   },
+   {
+    "slug": "igcse-biology-19",
+    "family": "Biology: AQA GCSE Foundation",
+    "rows": 14
+   },
+   {
+    "slug": "igcse-biology-19",
+    "family": "Biology: WJEC GCSE Foundation",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-biology-19",
+    "family": "Biology: AQA GCSE Higher",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-biology-19",
+    "family": "Biology: AQA A Level",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-1",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "rows": 31
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-1",
+    "family": "Biology: AQA GCSE Foundation",
+    "rows": 14
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-1",
+    "family": "Biology: WJEC GCSE Foundation",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-1",
+    "family": "Biology: AQA A Level",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-1",
+    "family": "Biology: AQA GCSE Higher",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-2",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "rows": 31
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-2",
+    "family": "Biology: AQA GCSE Foundation",
+    "rows": 14
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-2",
+    "family": "Biology: WJEC GCSE Foundation",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-2",
+    "family": "Biology: AQA A Level",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-biology-modular-24-unit-2",
+    "family": "Biology: AQA GCSE Higher",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-business-19",
+    "family": "Business: AQA GCSE",
+    "rows": 20
+   },
+   {
+    "slug": "igcse-business-19",
+    "family": "Business: Cambridge International GCSE (2027 Exams)",
+    "rows": 2
+   },
+   {
+    "slug": "igcse-business-19",
+    "family": "Business: AQA A Level (2023 Specification)",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-business-19",
+    "family": "Business: Edexcel GCSE",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-chemistry-19",
+    "family": "Chemistry: AQA GCSE Foundation",
+    "rows": 2
+   },
+   {
+    "slug": "igcse-chemistry-19",
+    "family": "Chemistry: AQA GCSE Higher",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-chemistry-modular-24-unit-1",
+    "family": "Chemistry: AQA GCSE Foundation",
+    "rows": 2
+   },
+   {
+    "slug": "igcse-chemistry-modular-24-unit-1",
+    "family": "Chemistry: AQA GCSE Higher",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-chemistry-modular-24-unit-2",
+    "family": "Chemistry: AQA GCSE Foundation",
+    "rows": 2
+   },
+   {
+    "slug": "igcse-chemistry-modular-24-unit-2",
+    "family": "Chemistry: AQA GCSE Higher",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-english-literature-16",
+    "family": "English Lit: Edexcel iGCSE An Inspector Calls",
+    "rows": 142
+   },
+   {
+    "slug": "igcse-english-literature-16",
+    "family": "English Lit: Edexcel iGCSE Macbeth",
+    "rows": 72
+   },
+   {
+    "slug": "igcse-geography-19",
+    "family": "Geography: AQA GCSE",
+    "rows": 46
+   },
+   {
+    "slug": "igcse-geography-19",
+    "family": "Geography: Edexcel A GCSE",
+    "rows": 8
+   },
+   {
+    "slug": "igcse-geography-19",
+    "family": "Geography: AQA A Level",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-geography-19",
+    "family": "Geography: Edexcel B GCSE",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-physics-19",
+    "family": "Physics: Edexcel GCSE Foundation",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-physics-19",
+    "family": "Physics: AQA GCSE Foundation",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-physics-modular-24-unit-1",
+    "family": "Physics: Edexcel GCSE Foundation",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-physics-modular-24-unit-1",
+    "family": "Physics: AQA GCSE Foundation",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-physics-modular-24-unit-2",
+    "family": "Physics: Edexcel GCSE Foundation",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-physics-modular-24-unit-2",
+    "family": "Physics: AQA GCSE Foundation",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-science-double-award-17-biology",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "rows": 146
+   },
+   {
+    "slug": "igcse-science-double-award-17-biology",
+    "family": "Biology: AQA GCSE Higher",
+    "rows": 14
+   },
+   {
+    "slug": "igcse-science-double-award-17-biology",
+    "family": "Biology: Edexcel GCSE Higher",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-science-double-award-17-biology",
+    "family": "Biology: OCR Gateway (A) GCSE Foundation",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-science-double-award-17-chemistry",
+    "family": "Chemistry: AQA GCSE Higher",
+    "rows": 4
+   },
+   {
+    "slug": "igcse-science-double-award-17-physics",
+    "family": "Combined Science Physics: Edexcel GCSE Foundation",
+    "rows": 13
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-1",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "rows": 146
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-1",
+    "family": "Biology: AQA GCSE Higher",
+    "rows": 14
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-1",
+    "family": "Biology: Edexcel GCSE Higher",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-1",
+    "family": "Biology: OCR Gateway (A) GCSE Foundation",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-2",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "rows": 146
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-2",
+    "family": "Biology: AQA GCSE Higher",
+    "rows": 14
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-2",
+    "family": "Biology: Edexcel GCSE Higher",
+    "rows": 3
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-biology-unit-2",
+    "family": "Biology: OCR Gateway (A) GCSE Foundation",
+    "rows": 1
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-chemistry-unit-1",
+    "family": "Chemistry: AQA GCSE Higher",
+    "rows": 4
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-chemistry-unit-2",
+    "family": "Chemistry: AQA GCSE Higher",
+    "rows": 4
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+    "family": "Combined Science Physics: Edexcel GCSE Foundation",
+    "rows": 13
+   },
+   {
+    "slug": "igcse-science-double-award-modular-24-physics-unit-2",
+    "family": "Combined Science Physics: Edexcel GCSE Foundation",
+    "rows": 13
+   }
+  ]
+ },
+ "a1_per_slug": [
+  {
+   "slug": "cie-a-level-biology-25",
+   "total": 615,
+   "with_topic": 585,
+   "families": {
+    "Biology: AQA A Level": 488,
+    "Biology: Cambridge International A Level": 97
+   },
+   "dominant_family": "Biology: AQA A Level",
+   "dominant_subject": "Biology",
+   "slug_rule_tokens": [
+    "biology"
+   ],
+   "allowed_subjects": [
+    "Biology"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-a-level-business-23",
+   "total": 14,
+   "with_topic": 2,
+   "families": {
+    "Business Management: IB Diploma": 1,
+    "Business: AQA A Level (2023 Specification)": 1
+   },
+   "dominant_family": "Business Management: IB Diploma",
+   "dominant_subject": "Business Management",
+   "slug_rule_tokens": [
+    "business"
+   ],
+   "allowed_subjects": [
+    "Business",
+    "Business Studies"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MISMATCH"
+  },
+  {
+   "slug": "cie-a-level-chemistry-25",
+   "total": 94,
+   "with_topic": 77,
+   "families": {
+    "Chemistry: AQA A Level": 55,
+    "Chemistry: Cambridge International A Level": 19,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1,
+    "Biology: AQA A Level": 1,
+    "Chemistry: AQA GCSE Foundation": 1
+   },
+   "dominant_family": "Chemistry: AQA A Level",
+   "dominant_subject": "Chemistry",
+   "slug_rule_tokens": [
+    "chemistry"
+   ],
+   "allowed_subjects": [
+    "Chemistry"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-a-level-computer-science-19",
+   "total": 43,
+   "with_topic": 23,
+   "families": {
+    "Computer Science: AQA GCSE": 12,
+    "Computer Science: Cambridge International GCSE": 11
+   },
+   "dominant_family": "Computer Science: AQA GCSE",
+   "dominant_subject": "Computer Science",
+   "slug_rule_tokens": [
+    "computer",
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Computer Science",
+    "Computing",
+    "Double Award",
+    "ICT",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-a-level-maths-20-mechanics",
+   "total": 10,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-a-level-maths-20-probability-and-statistics-1",
+   "total": 10,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-a-level-maths-20-probability-and-statistics-2",
+   "total": 10,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-a-level-maths-20-pure-1",
+   "total": 10,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-a-level-maths-20-pure-2",
+   "total": 10,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-a-level-maths-20-pure-3",
+   "total": 10,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-a-level-physics-25",
+   "total": 125,
+   "with_topic": 101,
+   "families": {
+    "Physics: AQA A Level": 56,
+    "Physics: Cambridge International A Level": 43,
+    "Combined Science Physics: Edexcel GCSE Foundation": 1,
+    "Combined Science Physics: AQA GCSE Foundation": 1
+   },
+   "dominant_family": "Physics: AQA A Level",
+   "dominant_subject": "Physics",
+   "slug_rule_tokens": [
+    "physics"
+   ],
+   "allowed_subjects": [
+    "Physics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-biology-23",
+   "total": 3039,
+   "with_topic": 1702,
+   "families": {
+    "Biology: Cambridge International GCSE Supplement": 1607,
+    "Co-ordinated Science Biology: Cambridge International GCSE Supplement": 83,
+    "Biology: Cambridge International GCSE Core": 5,
+    "Biology: AQA GCSE Foundation": 4,
+    "Biology: Edexcel GCSE Foundation": 2,
+    "Biology: AQA A Level": 1
+   },
+   "dominant_family": "Biology: Cambridge International GCSE Supplement",
+   "dominant_subject": "Biology",
+   "slug_rule_tokens": [
+    "biology"
+   ],
+   "allowed_subjects": [
+    "Biology"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-business-23",
+   "total": 365,
+   "with_topic": 67,
+   "families": {
+    "Business: AQA GCSE": 56,
+    "Business: Cambridge International GCSE (2027 Exams)": 9,
+    "Business Management: IB Diploma": 1,
+    "Business: AQA A Level (2023 Specification)": 1
+   },
+   "dominant_family": "Business: AQA GCSE",
+   "dominant_subject": "Business",
+   "slug_rule_tokens": [
+    "business"
+   ],
+   "allowed_subjects": [
+    "Business",
+    "Business Studies"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-business-25",
+   "total": 365,
+   "with_topic": 67,
+   "families": {
+    "Business: AQA GCSE": 56,
+    "Business: Cambridge International GCSE (2027 Exams)": 9,
+    "Business Management: IB Diploma": 1,
+    "Business: AQA A Level (2023 Specification)": 1
+   },
+   "dominant_family": "Business: AQA GCSE",
+   "dominant_subject": "Business",
+   "slug_rule_tokens": [
+    "business"
+   ],
+   "allowed_subjects": [
+    "Business",
+    "Business Studies"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-chemistry-23",
+   "total": 2544,
+   "with_topic": 1384,
+   "families": {
+    "Chemistry: Cambridge International GCSE Supplement": 1237,
+    "Co-ordinated Science Chemistry: Cambridge International GCSE Supplement": 135,
+    "Chemistry: AQA GCSE Foundation": 9,
+    "Chemistry: AQA GCSE Higher": 3
+   },
+   "dominant_family": "Chemistry: Cambridge International GCSE Supplement",
+   "dominant_subject": "Chemistry",
+   "slug_rule_tokens": [
+    "chemistry"
+   ],
+   "allowed_subjects": [
+    "Chemistry"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-computer-science-23",
+   "total": 266,
+   "with_topic": 67,
+   "families": {
+    "Computer Science: AQA GCSE": 49,
+    "Computer Science: Cambridge International GCSE": 18
+   },
+   "dominant_family": "Computer Science: AQA GCSE",
+   "dominant_subject": "Computer Science",
+   "slug_rule_tokens": [
+    "computer",
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Computer Science",
+    "Computing",
+    "Double Award",
+    "ICT",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-geography-20",
+   "total": 1109,
+   "with_topic": 107,
+   "families": {
+    "Geography: AQA GCSE": 63,
+    "Geography: Cambridge International GCSE (2027 Exams)": 27,
+    "Geography: Edexcel A GCSE": 8,
+    "Geography: AQA A Level": 3,
+    "Geography: Edexcel B GCSE": 3,
+    "Biology: AQA A Level": 1,
+    "Geography: Eduqas A GCSE": 1,
+    "Geography: OCR A GCSE": 1
+   },
+   "dominant_family": "Geography: AQA GCSE",
+   "dominant_subject": "Geography",
+   "slug_rule_tokens": [
+    "geography"
+   ],
+   "allowed_subjects": [
+    "Geography"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-geography-25",
+   "total": 1109,
+   "with_topic": 107,
+   "families": {
+    "Geography: AQA GCSE": 63,
+    "Geography: Cambridge International GCSE (2027 Exams)": 27,
+    "Geography: Edexcel A GCSE": 8,
+    "Geography: AQA A Level": 3,
+    "Geography: Edexcel B GCSE": 3,
+    "Geography: Eduqas A GCSE": 1,
+    "Geography: OCR A GCSE": 1,
+    "Biology: AQA A Level": 1
+   },
+   "dominant_family": "Geography: AQA GCSE",
+   "dominant_subject": "Geography",
+   "slug_rule_tokens": [
+    "geography"
+   ],
+   "allowed_subjects": [
+    "Geography"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-history-18",
+   "total": 3180,
+   "with_topic": 2660,
+   "families": {
+    "History: Cambridge International GCSE The Twentieth Century (Option B)": 1318,
+    "History: Cambridge International GCSE Russia, 1905-41 (Depth Study C)": 566,
+    "History: Cambridge International GCSE The First World War, 1914-18 (Depth Study A)": 415,
+    "History: Cambridge International GCSE Germany, 1918-45 (Depth Study B)": 361
+   },
+   "dominant_family": "History: Cambridge International GCSE The Twentieth Century (Option B)",
+   "dominant_subject": "History",
+   "slug_rule_tokens": [
+    "history"
+   ],
+   "allowed_subjects": [
+    "History"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-maths-25-extended",
+   "total": 494,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-maths-international-maths-23-extended",
+   "total": 494,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths",
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-physics-23",
+   "total": 2555,
+   "with_topic": 956,
+   "families": {
+    "Physics: Cambridge International GCSE Supplement": 502,
+    "Co-ordinated Science Physics: Cambridge International GCSE Supplement": 405,
+    "Combined Science Physics: AQA GCSE Foundation": 39,
+    "Combined Science Physics: Edexcel GCSE Foundation": 5,
+    "Chemistry: Cambridge International GCSE Supplement": 3,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1,
+    "Physics: AQA GCSE Foundation": 1
+   },
+   "dominant_family": "Physics: Cambridge International GCSE Supplement",
+   "dominant_subject": "Physics",
+   "slug_rule_tokens": [
+    "physics"
+   ],
+   "allowed_subjects": [
+    "Physics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-biology",
+   "total": 11,
+   "with_topic": 1,
+   "families": {
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1
+   },
+   "dominant_family": "Applied Science: BTEC Level 3 National Extended Diploma",
+   "dominant_subject": "Applied Science",
+   "slug_rule_tokens": [
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry",
+   "total": 11,
+   "with_topic": 1,
+   "families": {
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1
+   },
+   "dominant_family": "Applied Science: BTEC Level 3 National Extended Diploma",
+   "dominant_subject": "Applied Science",
+   "slug_rule_tokens": [
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics",
+   "total": 11,
+   "with_topic": 1,
+   "families": {
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1
+   },
+   "dominant_family": "Applied Science: BTEC Level 3 National Extended Diploma",
+   "dominant_subject": "Applied Science",
+   "slug_rule_tokens": [
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-science-combined-science-23-biology",
+   "total": 11,
+   "with_topic": 1,
+   "families": {
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1
+   },
+   "dominant_family": "Applied Science: BTEC Level 3 National Extended Diploma",
+   "dominant_subject": "Applied Science",
+   "slug_rule_tokens": [
+    "science",
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-science-combined-science-23-chemistry",
+   "total": 11,
+   "with_topic": 1,
+   "families": {
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1
+   },
+   "dominant_family": "Applied Science: BTEC Level 3 National Extended Diploma",
+   "dominant_subject": "Applied Science",
+   "slug_rule_tokens": [
+    "science",
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "cie-igcse-science-combined-science-23-physics",
+   "total": 11,
+   "with_topic": 1,
+   "families": {
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1
+   },
+   "dominant_family": "Applied Science: BTEC Level 3 National Extended Diploma",
+   "dominant_subject": "Applied Science",
+   "slug_rule_tokens": [
+    "science",
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-biology-18",
+   "total": 968,
+   "with_topic": 692,
+   "families": {
+    "Biology: AQA A Level": 488,
+    "Biology: Cambridge International A Level": 203,
+    "Biology: AQA GCSE Higher": 1
+   },
+   "dominant_family": "Biology: AQA A Level",
+   "dominant_subject": "Biology",
+   "slug_rule_tokens": [
+    "biology"
+   ],
+   "allowed_subjects": [
+    "Biology"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-chemistry-17",
+   "total": 300,
+   "with_topic": 78,
+   "families": {
+    "Chemistry: AQA A Level": 55,
+    "Chemistry: Cambridge International A Level": 22,
+    "Chemistry: AQA GCSE Foundation": 1
+   },
+   "dominant_family": "Chemistry: AQA A Level",
+   "dominant_subject": "Chemistry",
+   "slug_rule_tokens": [
+    "chemistry"
+   ],
+   "allowed_subjects": [
+    "Chemistry"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-maths-20-mechanics-1",
+   "total": 409,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-maths-20-mechanics-2",
+   "total": 409,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-maths-20-pure-1",
+   "total": 409,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-maths-20-pure-2",
+   "total": 409,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-maths-20-pure-3",
+   "total": 409,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-maths-20-pure-4",
+   "total": 409,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-maths-20-statistics-1",
+   "total": 409,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-maths-20-statistics-2",
+   "total": 409,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "ial-physics-19",
+   "total": 326,
+   "with_topic": 112,
+   "families": {
+    "Physics: AQA A Level": 56,
+    "Physics: Cambridge International A Level": 53,
+    "Combined Science Physics: AQA GCSE Foundation": 1,
+    "Co-ordinated Science Physics: Cambridge International GCSE Supplement": 1,
+    "Combined Science Physics: Edexcel GCSE Foundation": 1
+   },
+   "dominant_family": "Physics: AQA A Level",
+   "dominant_subject": "Physics",
+   "slug_rule_tokens": [
+    "physics"
+   ],
+   "allowed_subjects": [
+    "Physics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-biology-19",
+   "total": 3151,
+   "with_topic": 2057,
+   "families": {
+    "Biology: Edexcel iGCSE": 1457,
+    "Chemistry: Cambridge International GCSE Supplement": 550,
+    "Biology: Edexcel GCSE Foundation": 31,
+    "Biology: AQA GCSE Foundation": 14,
+    "Biology: WJEC GCSE Foundation": 3,
+    "Biology: AQA GCSE Higher": 1,
+    "Biology: AQA A Level": 1
+   },
+   "dominant_family": "Biology: Edexcel iGCSE",
+   "dominant_subject": "Biology",
+   "slug_rule_tokens": [
+    "biology"
+   ],
+   "allowed_subjects": [
+    "Biology"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-biology-modular-24-unit-1",
+   "total": 3151,
+   "with_topic": 2057,
+   "families": {
+    "Biology: Edexcel iGCSE": 1457,
+    "Chemistry: Cambridge International GCSE Supplement": 550,
+    "Biology: Edexcel GCSE Foundation": 31,
+    "Biology: AQA GCSE Foundation": 14,
+    "Biology: WJEC GCSE Foundation": 3,
+    "Biology: AQA A Level": 1,
+    "Biology: AQA GCSE Higher": 1
+   },
+   "dominant_family": "Biology: Edexcel iGCSE",
+   "dominant_subject": "Biology",
+   "slug_rule_tokens": [
+    "biology"
+   ],
+   "allowed_subjects": [
+    "Biology"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-biology-modular-24-unit-2",
+   "total": 3151,
+   "with_topic": 2057,
+   "families": {
+    "Biology: Edexcel iGCSE": 1457,
+    "Chemistry: Cambridge International GCSE Supplement": 550,
+    "Biology: Edexcel GCSE Foundation": 31,
+    "Biology: AQA GCSE Foundation": 14,
+    "Biology: WJEC GCSE Foundation": 3,
+    "Biology: AQA A Level": 1,
+    "Biology: AQA GCSE Higher": 1
+   },
+   "dominant_family": "Biology: Edexcel iGCSE",
+   "dominant_subject": "Biology",
+   "slug_rule_tokens": [
+    "biology"
+   ],
+   "allowed_subjects": [
+    "Biology"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-business-19",
+   "total": 385,
+   "with_topic": 136,
+   "families": {
+    "Business: Edexcel iGCSE": 111,
+    "Business: AQA GCSE": 20,
+    "Business: Cambridge International GCSE (2027 Exams)": 2,
+    "Business: AQA A Level (2023 Specification)": 1,
+    "Business: Edexcel GCSE": 1,
+    "Business Management: IB Diploma": 1
+   },
+   "dominant_family": "Business: Edexcel iGCSE",
+   "dominant_subject": "Business",
+   "slug_rule_tokens": [
+    "business"
+   ],
+   "allowed_subjects": [
+    "Business",
+    "Business Studies"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-chemistry-19",
+   "total": 5695,
+   "with_topic": 1432,
+   "families": {
+    "Chemistry: Edexcel iGCSE": 1429,
+    "Chemistry: AQA GCSE Foundation": 2,
+    "Chemistry: AQA GCSE Higher": 1
+   },
+   "dominant_family": "Chemistry: Edexcel iGCSE",
+   "dominant_subject": "Chemistry",
+   "slug_rule_tokens": [
+    "chemistry"
+   ],
+   "allowed_subjects": [
+    "Chemistry"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-chemistry-modular-24-unit-1",
+   "total": 2565,
+   "with_topic": 1425,
+   "families": {
+    "Chemistry: Edexcel iGCSE": 1422,
+    "Chemistry: AQA GCSE Foundation": 2,
+    "Chemistry: AQA GCSE Higher": 1
+   },
+   "dominant_family": "Chemistry: Edexcel iGCSE",
+   "dominant_subject": "Chemistry",
+   "slug_rule_tokens": [
+    "chemistry"
+   ],
+   "allowed_subjects": [
+    "Chemistry"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-chemistry-modular-24-unit-2",
+   "total": 2565,
+   "with_topic": 1425,
+   "families": {
+    "Chemistry: Edexcel iGCSE": 1422,
+    "Chemistry: AQA GCSE Foundation": 2,
+    "Chemistry: AQA GCSE Higher": 1
+   },
+   "dominant_family": "Chemistry: Edexcel iGCSE",
+   "dominant_subject": "Chemistry",
+   "slug_rule_tokens": [
+    "chemistry"
+   ],
+   "allowed_subjects": [
+    "Chemistry"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-english-literature-16",
+   "total": 1320,
+   "with_topic": 432,
+   "families": {
+    "English Lit: Edexcel iGCSE Romeo & Juliet": 218,
+    "English Lit: Edexcel iGCSE An Inspector Calls": 142,
+    "English Lit: Edexcel iGCSE Macbeth": 72
+   },
+   "dominant_family": "English Lit: Edexcel iGCSE Romeo & Juliet",
+   "dominant_subject": "English Lit",
+   "slug_rule_tokens": [
+    "english"
+   ],
+   "allowed_subjects": [
+    "English",
+    "English Language",
+    "English Literature"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MISMATCH"
+  },
+  {
+   "slug": "igcse-geography-19",
+   "total": 405,
+   "with_topic": 114,
+   "families": {
+    "Geography: Edexcel iGCSE": 53,
+    "Geography: AQA GCSE": 46,
+    "Geography: Edexcel A GCSE": 8,
+    "Geography: AQA A Level": 3,
+    "Geography: Edexcel B GCSE": 3,
+    "Biology: AQA A Level": 1
+   },
+   "dominant_family": "Geography: Edexcel iGCSE",
+   "dominant_subject": "Geography",
+   "slug_rule_tokens": [
+    "geography"
+   ],
+   "allowed_subjects": [
+    "Geography"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-maths-a-18-higher",
+   "total": 374,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-1",
+   "total": 374,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-maths-a-modular-24-higher-unit-2",
+   "total": 374,
+   "with_topic": 2,
+   "families": {
+    "Maths: AQA A Level Mechanics": 2
+   },
+   "dominant_family": "Maths: AQA A Level Mechanics",
+   "dominant_subject": "Maths",
+   "slug_rule_tokens": [
+    "maths"
+   ],
+   "allowed_subjects": [
+    "Core Maths",
+    "Further Maths",
+    "Mathematics",
+    "Maths",
+    "Statistics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-physics-19",
+   "total": 2342,
+   "with_topic": 1158,
+   "families": {
+    "Physics: Edexcel iGCSE": 1154,
+    "Physics: Edexcel GCSE Foundation": 3,
+    "Physics: AQA GCSE Foundation": 1
+   },
+   "dominant_family": "Physics: Edexcel iGCSE",
+   "dominant_subject": "Physics",
+   "slug_rule_tokens": [
+    "physics"
+   ],
+   "allowed_subjects": [
+    "Physics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-physics-modular-24-unit-1",
+   "total": 2342,
+   "with_topic": 1158,
+   "families": {
+    "Physics: Edexcel iGCSE": 1154,
+    "Physics: Edexcel GCSE Foundation": 3,
+    "Physics: AQA GCSE Foundation": 1
+   },
+   "dominant_family": "Physics: Edexcel iGCSE",
+   "dominant_subject": "Physics",
+   "slug_rule_tokens": [
+    "physics"
+   ],
+   "allowed_subjects": [
+    "Physics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-physics-modular-24-unit-2",
+   "total": 2342,
+   "with_topic": 1158,
+   "families": {
+    "Physics: Edexcel iGCSE": 1154,
+    "Physics: Edexcel GCSE Foundation": 3,
+    "Physics: AQA GCSE Foundation": 1
+   },
+   "dominant_family": "Physics: Edexcel iGCSE",
+   "dominant_subject": "Physics",
+   "slug_rule_tokens": [
+    "physics"
+   ],
+   "allowed_subjects": [
+    "Physics"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-science-double-award-17-biology",
+   "total": 437,
+   "with_topic": 339,
+   "families": {
+    "Biology: AQA GCSE Foundation": 172,
+    "Biology: Edexcel GCSE Foundation": 146,
+    "Biology: AQA GCSE Higher": 14,
+    "Biology: Edexcel GCSE Higher": 3,
+    "Science (Double Award) Biology: Edexcel iGCSE": 2,
+    "Biology: OCR Gateway (A) GCSE Foundation": 1,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1
+   },
+   "dominant_family": "Biology: AQA GCSE Foundation",
+   "dominant_subject": "Biology",
+   "slug_rule_tokens": [
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-science-double-award-17-chemistry",
+   "total": 118,
+   "with_topic": 20,
+   "families": {
+    "Chemistry: AQA GCSE Foundation": 12,
+    "Chemistry: AQA GCSE Higher": 4,
+    "Combined Science Chemistry: Edexcel GCSE Higher": 1,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1,
+    "Biology: AQA GCSE Foundation": 1,
+    "Science (Double Award) Chemistry: Edexcel iGCSE": 1
+   },
+   "dominant_family": "Chemistry: AQA GCSE Foundation",
+   "dominant_subject": "Chemistry",
+   "slug_rule_tokens": [
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-science-double-award-17-physics",
+   "total": 138,
+   "with_topic": 37,
+   "families": {
+    "Combined Science Physics: AQA GCSE Foundation": 17,
+    "Combined Science Physics: Edexcel GCSE Foundation": 13,
+    "Science (Double Award) Physics: Edexcel iGCSE": 3,
+    "Co-ordinated Science Physics: Cambridge International GCSE Supplement": 2,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1,
+    "Combined Science Chemistry: Edexcel GCSE Higher": 1
+   },
+   "dominant_family": "Combined Science Physics: AQA GCSE Foundation",
+   "dominant_subject": "Combined Science Physics",
+   "slug_rule_tokens": [
+    "science"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MISMATCH"
+  },
+  {
+   "slug": "igcse-science-double-award-modular-24-biology-unit-1",
+   "total": 437,
+   "with_topic": 339,
+   "families": {
+    "Biology: AQA GCSE Foundation": 172,
+    "Biology: Edexcel GCSE Foundation": 146,
+    "Biology: AQA GCSE Higher": 14,
+    "Biology: Edexcel GCSE Higher": 3,
+    "Science (Double Award) Biology: Edexcel iGCSE": 2,
+    "Biology: OCR Gateway (A) GCSE Foundation": 1,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1
+   },
+   "dominant_family": "Biology: AQA GCSE Foundation",
+   "dominant_subject": "Biology",
+   "slug_rule_tokens": [
+    "science",
+    "biology"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-science-double-award-modular-24-biology-unit-2",
+   "total": 437,
+   "with_topic": 339,
+   "families": {
+    "Biology: AQA GCSE Foundation": 172,
+    "Biology: Edexcel GCSE Foundation": 146,
+    "Biology: AQA GCSE Higher": 14,
+    "Biology: Edexcel GCSE Higher": 3,
+    "Science (Double Award) Biology: Edexcel iGCSE": 2,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1,
+    "Biology: OCR Gateway (A) GCSE Foundation": 1
+   },
+   "dominant_family": "Biology: AQA GCSE Foundation",
+   "dominant_subject": "Biology",
+   "slug_rule_tokens": [
+    "science",
+    "biology"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-science-double-award-modular-24-chemistry-unit-1",
+   "total": 118,
+   "with_topic": 20,
+   "families": {
+    "Chemistry: AQA GCSE Foundation": 12,
+    "Chemistry: AQA GCSE Higher": 4,
+    "Combined Science Chemistry: Edexcel GCSE Higher": 1,
+    "Science (Double Award) Chemistry: Edexcel iGCSE": 1,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1,
+    "Biology: AQA GCSE Foundation": 1
+   },
+   "dominant_family": "Chemistry: AQA GCSE Foundation",
+   "dominant_subject": "Chemistry",
+   "slug_rule_tokens": [
+    "science",
+    "chemistry"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-science-double-award-modular-24-chemistry-unit-2",
+   "total": 118,
+   "with_topic": 20,
+   "families": {
+    "Chemistry: AQA GCSE Foundation": 12,
+    "Chemistry: AQA GCSE Higher": 4,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1,
+    "Science (Double Award) Chemistry: Edexcel iGCSE": 1,
+    "Combined Science Chemistry: Edexcel GCSE Higher": 1,
+    "Biology: AQA GCSE Foundation": 1
+   },
+   "dominant_family": "Chemistry: AQA GCSE Foundation",
+   "dominant_subject": "Chemistry",
+   "slug_rule_tokens": [
+    "science",
+    "chemistry"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MATCH"
+  },
+  {
+   "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+   "total": 138,
+   "with_topic": 37,
+   "families": {
+    "Combined Science Physics: AQA GCSE Foundation": 17,
+    "Combined Science Physics: Edexcel GCSE Foundation": 13,
+    "Science (Double Award) Physics: Edexcel iGCSE": 3,
+    "Co-ordinated Science Physics: Cambridge International GCSE Supplement": 2,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1,
+    "Combined Science Chemistry: Edexcel GCSE Higher": 1
+   },
+   "dominant_family": "Combined Science Physics: AQA GCSE Foundation",
+   "dominant_subject": "Combined Science Physics",
+   "slug_rule_tokens": [
+    "science",
+    "physics"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MISMATCH"
+  },
+  {
+   "slug": "igcse-science-double-award-modular-24-physics-unit-2",
+   "total": 138,
+   "with_topic": 37,
+   "families": {
+    "Combined Science Physics: AQA GCSE Foundation": 17,
+    "Combined Science Physics: Edexcel GCSE Foundation": 13,
+    "Science (Double Award) Physics: Edexcel iGCSE": 3,
+    "Co-ordinated Science Physics: Cambridge International GCSE Supplement": 2,
+    "Applied Science: BTEC Level 3 National Extended Diploma": 1,
+    "Combined Science Chemistry: Edexcel GCSE Higher": 1
+   },
+   "dominant_family": "Combined Science Physics: AQA GCSE Foundation",
+   "dominant_subject": "Combined Science Physics",
+   "slug_rule_tokens": [
+    "science",
+    "physics"
+   ],
+   "allowed_subjects": [
+    "Applied Science",
+    "Biology",
+    "Chemistry",
+    "Combined Science",
+    "Double Award",
+    "Physics",
+    "Science",
+    "Triple Award"
+   ],
+   "mapped": true,
+   "dominant_vs_slug": "MISMATCH"
+  }
+ ],
+ "verdict": "SWEEP COMPLETE \u2014 2887 off-subject pairings across 26 slug(s): cie-a-level-business-23, cie-a-level-chemistry-25, cie-a-level-physics-25, cie-igcse-biology-23, cie-igcse-business-23, cie-igcse-business-25, cie-igcse-chemistry-23, cie-igcse-geography-20, cie-igcse-geography-25, cie-igcse-physics-23, ial-physics-19, igcse-biology-19, igcse-biology-modular-24-unit-1, igcse-biology-modular-24-unit-2, igcse-business-19, igcse-english-literature-16, igcse-geography-19, igcse-science-double-award-17-biology, igcse-science-double-award-17-chemistry, igcse-science-double-award-17-physics, igcse-science-double-award-modular-24-biology-unit-1, igcse-science-double-award-modular-24-biology-unit-2, igcse-science-double-award-modular-24-chemistry-unit-1, igcse-science-double-award-modular-24-chemistry-unit-2, igcse-science-double-award-modular-24-physics-unit-1, igcse-science-double-award-modular-24-physics-unit-2",
+ "finished": "2026-10-25T19:40:54.214214+00:00"
+}

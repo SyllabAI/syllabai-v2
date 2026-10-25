@@ -20497,3 +20497,17 @@ Work Log:
 
 Stage Summary:
 - PR #316 is now placement-law-conformant and mergeable from the chain's perspective; the corpus plane lives in the wh-v2 fragment + the two-client seam, ready for the operator's sci-chem provisioning (T1: provision -> parity-verified 5,098-row migration -> zero-residue main drop -> registry seed sci-chem/wh-v2/ASSIGNED -> Vercel env -> the operator's flip).
+
+---
+Task ID: T-SENECA-001 run-008 (post-hoc) + run-009
+Agent: main (Z.ai)
+Task: Operator "run #1" completion + "fleet-wide family sweep" (traces 1a1739bceebd7d21, 1a17489e1fb093a9).
+
+Work Log:
+- run-008 effect VERIFIED as applied & committed (lost-turn execution): ial-chemistry-17 300=204/78/18, families 55/22/1, fleet 58,205/82, pilot 5,695, chunks 8,202; pg_stat forensics n_tup_ins 58,207 / n_tup_del 2. The 2026-10-25 re-run aborted fail-closed at G1 (transient empty-catalog glitch at Neon compute wake; verbatim re-query returns the PK; zero writes).
+- run-009 fleet-wide family sweep (READ-ONLY): 24,628 topic-carrying rows (all examQuestion) across 82 slugs; subject-level criterion (family prefix vs slug subject, run-008 rule + naming-variant normalization).
+- Verdict: 1,662 OFF-SUBJECT pairings / 13 (slug, family) groups / 11 slugs. Headline: 3 x 550-row "Chemistry: Cambridge International GCSE Supplement" blocks paired into igcse-biology-19 + igcse-biology-modular-24-unit-1/2 (identical ids across all three — one systematic import bug). Run-008 pattern singletons: Biology: AQA A Level in cie-igcse-geography-20/25 + igcse-geography-19 (same resource id cross-served), Biology + BTEC in cie-a-level-chemistry-25, Chem-Supplement + BTEC in cie-igcse-physics-23, Combined-Science-Chemistry in physics slugs x3. 1,225 further rows are benign naming variants (Business Management, English Lit, Co-ordinated/Combined/Double-Award families) — NOT deletion candidates.
+- ZERO writes to W1 this run; full id manifest captured for a future run-010 cleanup.
+
+Stage Summary:
+- run-008 CLOSED (verified post-hoc). run-009 sweep COMPLETE — deletion candidates PENDING operator approval (run-010 scope); rule-table patch for the lost rollout_import_seneca_v3.py still deferred (script not in repo; died with sandbox recycle #6).
