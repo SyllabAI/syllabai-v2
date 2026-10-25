@@ -72,14 +72,19 @@ PRED = {
 ICT_SLICES = ["ICT", "Information Technology", "Information and Communication Technology"]
 LIT_SLICES = ["English Literature", "English Literature - Quotations"]
 
-def R(subject_files, pred, tier=None, combined=None, bc_exclude=None, bc_require=None):
+def R(subject_files, pred, tier=None, combined=None, bc_exclude=None, bc_require=None,
+      bc_require_if_present=None):
     """One rule: subject slices + board/level predicate + refinements.
     tier: None | 'Foundation' | 'Higher' | 'BOTH'  (row tier tag gating)
     combined: None | True | False  (Triple/Combined tag gating)
-    bc_exclude/bc_require: EQ breadcrumb-root prefix lists."""
+    bc_exclude/bc_require: EQ breadcrumb-root prefix lists.
+    bc_require_if_present: breadcrumb-root prefixes required ONLY when the row
+    HAS a breadcrumb root — NULL-breadcrumb rows pass (run-008 guard law:
+    off-family rows with breadcrumbs are excluded, unverifiable rows kept)."""
     return {"subject_files": subject_files, "pred": pred, "tier": tier,
             "combined": combined, "bc_exclude": bc_exclude or [],
-            "bc_require": bc_require or []}
+            "bc_require": bc_require or [],
+            "bc_require_if_present": bc_require_if_present or []}
 
 # ── the rule table of record (hub slug → matching rules) ────────────────────
 # Unmapped hub courses (honest empty state, receipt-documented): all
@@ -206,8 +211,15 @@ RULES = {
     "cie-as-english-general-paper-21": [R(["English", "English Language"], "CIE_ALEVEL"),
                                         R(["English", "English Language"], "CIE_IGCSE")],
     # ── Edexcel IAL (ruling 2: Seneca "International A Level") ─────────────
+    # ial-chemistry-17 carries the run-008 breadcrumb guard (operator-approved
+    # cosmetic re-slice, trace 1a1732c7073a3229): a present breadcrumb root
+    # must be a Chemistry family — drops cross-family rows (the Biology
+    # chromosomes EQ + the BTEC periodic-table EQ) while keeping the
+    # NULL-breadcrumb rows the of-record census includes. ial-biology-18 /
+    # ial-physics-19 keep the unguarded law (their live state predates the
+    # guard; a data-validated sweep is receipt-disclosed, not silently applied).
     "ial-biology-18": [R(["Biology"], "IAL")],
-    "ial-chemistry-17": [R(["Chemistry"], "IAL")],
+    "ial-chemistry-17": [R(["Chemistry"], "IAL", bc_require_if_present=["Chemistry:"])],
     "ial-physics-19": [R(["Physics"], "IAL")],
     # Maths: no IAL-tagged rows exist in the harvest → closest equivalent is
     # the Edexcel A Level (UK) family (receipt-documented). Decision 1: none.
@@ -306,6 +318,9 @@ def match_row(d, subject_file, boards, levels, tier_set, combined_set, bc_root):
             if r["bc_require"] and not any(bc_root and bc_root.startswith(p) for p in r["bc_require"]):
                 continue
             if r["bc_exclude"] and bc_root and any(bc_root.startswith(p) for p in r["bc_exclude"]):
+                continue
+            if (r["bc_require_if_present"] and bc_root
+                    and not any(bc_root.startswith(p) for p in r["bc_require_if_present"])):
                 continue
             hits.append(slug)
             break  # one matching rule per course is enough
