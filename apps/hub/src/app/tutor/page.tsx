@@ -49,6 +49,7 @@ export default async function TutorPage({
             courseSlug={meta.slug}
             courseLabel={meta.label}
             courseRef={meta.curriculumCode}
+            courseBoard={meta.board ?? null}
           />
         </RequireAuth>
       </Suspense>
