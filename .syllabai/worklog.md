@@ -21187,3 +21187,17 @@ Work Log:
 
 Stage Summary:
 - Half of the order done of record (merge landed via intake, cc8653e6 = main); the production bake is BLOCKED on a Vercel credential — operator console bake or inline token requested. LANE: IDLE pending credential.
+
+---
+Task ID: T-RN-HEADER-BOARDFIX-1 run-003 (operator trace 1a1751b124d120ad — inline credential handoff, two tokens)
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: the production bake of main (completes the "merge PR #381, then a production bake" order)
+
+Work Log:
+- CREDENTIAL DISCLOSURE: operator handed BOTH a fresh GitHub PAT (ghp_…, canary login=SyllabAI, repo access 200 — fine-grained, no classic scope header) and a Vercel token (vcp_…) inline. Tokens used ONLY inside single combined invocations (fresh-shell law), never persisted to disk (scripts read env), never printed. Rotation recommended for BOTH now that the bake is done (both transited chat once).
+- BAKE (run-006 playbook verbatim): live main tip read via API and pinned per-bake — first attempt fail-closed on my own inverted compare predicate (ahead/behind semantics; fixed in the persisted script, no repo contact), second attempt 415 (missing Content-Type on the POST; fixed), then POST /v13/deployments {name: syllabai-hub-v2, gitSource github SyllabAI/syllabai-v2 @ d94cfe3e, target production} → dpl_GJQ6hWJKTzf8GjKamWYAMuzY6RhN, INITIALIZING → BUILDING → READY in ~2 min (4 x 30s polls). cc8653e6 (the fix merge) verified in the baked tip's ancestry BEFORE firing.
+- POST-BAKE PROBE (read-only, no-cache): 9701 note rn_BJPBnHps6rrPftXS (the exact URL that served the bug) now H1 "Relative Masses (Cambridge International A-Level Chemistry)", trust-meta "Cambridge International", zero "(Edexcel" in the page; 0620 index H1 "Cambridge International IGCSE Chemistry Revision Notes"; 4CH1 note-detail CONTROL rn_2VnK66PqbvFKdKYt H1 "The Three States of Matter (Edexcel IGCSE Chemistry)" + trust-meta "Pearson Edexcel" — byte-identical to pre-fix (the zero-delta law holds on prod). VERDICT: the false "(Edexcel …)" headers are GONE from production; the fix merge is LIVE at epoch d94cfe3e.
+- Residual: prod epoch = d94cfe3e (4 commits past the fix merge); later sibling merges ride the NEXT deliberate bake. Credential rotation (both tokens) = operator act. Tutor-chat "Pearson Edexcel" strings still the disclosed residual for a follow-up lane.
+
+Stage Summary:
+- THE ORDER IS COMPLETE OF RECORD: PR #381 merged (cc8653e6) AND the fix is LIVE ON PRODUCTION (dpl_GJQ6hWJKTzf8GjKamWYAMuzY6RhN @ d94cfe3e, probe-verified both directions: CIE honest, Edexcel byte-identical). T-RN-HEADER-BOARDFIX-1 closes DONE. Residuals: rotate both credentials, tutor-chat strings follow-up, the audit's other findings (unanchored tranche-3, zero-note topics, dup course pairs), rung-3 pin advance + pastpapers recon (trace 1a17484361a63449) still PENDING. LANE: IDLE.
