@@ -1,6 +1,6 @@
 {
  "schema": "syllabai-demo.ugm-lane-resources/1.2",
- "generatedUtc": "2026-10-25T21:19:48Z",
+ "generatedUtc": "2026-10-25T21:50:38Z",
  "reviewState": {
   "state": "SUGGESTED",
   "note": "Agent-generated alignment per AGENT.md rule 2 — candidates until the review/promotion gate promotes them; no coverage manufactured (rule 3)."
@@ -236,17 +236,118 @@
    "slug": "thinking-about-functions",
    "title": "Thinking about Functions",
    "url": null
+  },
+  {
+   "slug": "calculus-meets-functions",
+   "title": "Calculus meets Functions",
+   "url": null
+  },
+  {
+   "slug": "calculus-of-powers",
+   "title": "Calculus of Powers",
+   "url": null
+  },
+  {
+   "slug": "calculus-trig-log",
+   "title": "Calculus of Trigonometry & Logarithms",
+   "url": null
+  },
+  {
+   "slug": "chain-rule",
+   "title": "Chain Rule & Integration by Substitution",
+   "url": null
+  },
+  {
+   "slug": "circles",
+   "title": "Circles",
+   "url": null
+  },
+  {
+   "slug": "combining-functions",
+   "title": "Combining Functions",
+   "url": null
+  },
+  {
+   "slug": "counting-and-binomials",
+   "title": "Counting & Binomials",
+   "url": null
+  },
+  {
+   "slug": "exp-and-log",
+   "title": "Exponentials & Logarithms",
+   "url": null
+  },
+  {
+   "slug": "geometry-of-equations",
+   "title": "Geometry of Equations",
+   "url": null
+  },
+  {
+   "slug": "hyperbolic-functions",
+   "title": "Hyperbolic Functions",
+   "url": null
+  },
+  {
+   "slug": "introducing-calculus",
+   "title": "Introducing Calculus",
+   "url": null
+  },
+  {
+   "slug": "polynomials",
+   "title": "Polynomials & Rational Functions",
+   "url": null
+  },
+  {
+   "slug": "product-rule",
+   "title": "Product Rule & Integration by Parts",
+   "url": null
+  },
+  {
+   "slug": "quadratics",
+   "title": "Quadratics",
+   "url": null
+  },
+  {
+   "slug": "sequences",
+   "title": "Sequences",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-algebra",
+   "title": "Thinking about Algebra",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-functions",
+   "title": "Thinking about Functions",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-numbers",
+   "title": "Thinking about Numbers",
+   "url": null
+  },
+  {
+   "slug": "trigonometry-compound-angles",
+   "title": "Trigonometry: Compound Angles",
+   "url": null
+  },
+  {
+   "slug": "vector-geometry",
+   "title": "Vector Geometry",
+   "url": null
   }
  ],
  "source": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@41d352212173a2602dc20ccff55ebbb30999a139",
+  "ref": "main@8b3e57b917d773eb9dff8c5802b30ae9b98a8b45",
   "enrichment": [
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-logarithmic-and-exponential-functions.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-trigonometry.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-differentiation.json",
-   "UGM-Enrichment/cie-a-level-maths-20-pure-3-integration.json"
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-integration.json",
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-iteration.json"
   ],
   "enrichmentSchema": "syllabai.ugm-spec-enrichment/1.0",
   "resourcesDir": [
@@ -254,9 +355,10 @@
    "UGM-Resources/pure-3-logarithmic-and-exponential-functions",
    "UGM-Resources/pure-3-trigonometry",
    "UGM-Resources/pure-3-differentiation",
-   "UGM-Resources/pure-3-integration"
+   "UGM-Resources/pure-3-integration",
+   "UGM-Resources/pure-3-iteration"
   ],
-  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119); LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126); LEDGER.md — T-UGM-MODE1-12 and T-UGM-IMPORT-12 (PR #134); LEDGER.md — T-UGM-MODE1-13 and T-UGM-IMPORT-13 (PR #140) + the T-UGM-MODE1-13 amendment r0 (this PR)",
+  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119); LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126); LEDGER.md — T-UGM-MODE1-12 and T-UGM-IMPORT-12 (PR #134); LEDGER.md — T-UGM-MODE1-13 and T-UGM-IMPORT-13 (PR #140) + the T-UGM-MODE1-13 amendment r0 (this PR); LEDGER.md — T-UGM-MODE1-14 and T-UGM-IMPORT-14 (PR #145)",
   "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
   "operatorAttestation": "2026-10-24 — text + static figures may ship into SyllabAI; permission declared",
   "figureMap": "UGM-Resources/figures-map.json",
@@ -269,13 +371,13 @@
   "note": "Static figures (976 files) are imported and served locally from /ugm-assets/ under the operator attestation of 2026-10-24 (T-UGM-ASSETS-1); GeoGebra embeds and PDFs remain excluded."
  },
  "coverage": {
-  "ugmResourcesConsidered": 126,
-  "aligned": 126,
+  "ugmResourcesConsidered": 129,
+  "aligned": 129,
   "nonOverlap": 0,
   "alignedShare": 1.0,
-  "candidateRows": 188,
+  "candidateRows": 201,
   "crossLaneJoined": {
-   "aligned": 52,
+   "aligned": 61,
    "nonOverlap": 0
   },
   "specPointsCovered": [
@@ -299,7 +401,10 @@
    "3.5.3",
    "3.5.4",
    "3.5.5",
-   "3.5.6"
+   "3.5.6",
+   "3.6.1",
+   "3.6.2",
+   "3.6.3"
   ],
   "figures": {
    "figureRefs": 0,
@@ -361,6 +466,17 @@
     "alignedShare": 0.2255,
     "candidateRows": 35,
     "crossLaneAligned": 7,
+    "crossLaneNonOverlap": 0
+   },
+   {
+    "station": "iteration",
+    "stationTitle": "Numerical solution of equations",
+    "ugmResourcesConsidered": 48,
+    "aligned": 11,
+    "nonOverlap": 1,
+    "alignedShare": 0.2292,
+    "candidateRows": 15,
+    "crossLaneAligned": 8,
     "crossLaneNonOverlap": 0
    }
   ],
@@ -478,13 +594,6 @@
      "title": "Reach for the stars",
      "url": "https://undergroundmathematics.org/exp-and-log/reach-for-the-stars",
      "reason": "y=2^x drawn at 1cm:1 against paper sizes - exponential growth intuition; no e or ln in the text"
-    },
-    {
-     "ugmSlug": "r8013",
-     "station": "exp-and-log",
-     "title": "When does this exponential function equal this linear one?",
-     "url": "https://undergroundmathematics.org/exp-and-log/r8013",
-     "reason": "3^x drawn and 3^x=3x+2 solved graphically - the row's named method is logarithms and no logs or e/ln appear; graphical solving of exponentials is not a 3.2 row"
     },
     {
      "ugmSlug": "changing-bases-teacher-support",
@@ -989,16 +1098,23 @@
      "title": "Sine on the dotted line",
      "url": "https://undergroundmathematics.org/calculus-trig-log/sine-on-the-dotted-line",
      "reason": "which expressions give the shaded area under sin x - the decomposition/transformation/signed-area skill is the P1 1.8 domain; the 3.5.1 sin antiderivative is used inside the expressions but the tested skill is the area reasoning"
+    },
+    {
+     "ugmSlug": "staircase-sequences-revisited",
+     "station": "thinking-about-numbers",
+     "title": "Staircase sequences revisited",
+     "url": "https://undergroundmathematics.org/thinking-about-numbers/staircase-sequences-revisited",
+     "reason": "The resource's centre of gravity is continued-fraction REPRESENTATION (which numbers admit which expansions), not iteration toward a root to prescribed accuracy; the approximation-sequence idea appears as prose inherited from its companion Staircase sequences (aligned here at 3.6.2/3.6.3) and the solutions never iterate numerically nor use x_n notation - the 3.6.2 content of record is carried by the companion; no fresh alignment manufactured"
     }
    ]
   },
   "crossCourse": {
-   "aligned": 45,
+   "aligned": 50,
    "nonOverlapRef": 0,
-   "flips": 30,
-   "oneToMany": 19,
+   "flips": 31,
+   "oneToMany": 26,
    "courses": {
-    "cie-a-level-maths-20-pure-1": 45
+    "cie-a-level-maths-20-pure-1": 50
    },
    "note": "cross-course fact joins served by reference — the text of record stays first-of-record under the serving course's bundle",
    "rows": [
@@ -1014,6 +1130,7 @@
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "one_to_many",
      "confidence": "medium",
+     "primaryPick": false,
      "priorAlignmentOfRecord": "lane-functions 1.2.1/1.2.2/1.2.3"
     },
     {
@@ -1027,7 +1144,8 @@
      "textOfRecordUnder": "UGM-Resources/pure-1-functions",
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "flip",
-     "confidence": "medium"
+     "confidence": "medium",
+     "primaryPick": false
     },
     {
      "ugmSlug": "r9523",
@@ -1041,6 +1159,7 @@
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "one_to_many",
      "confidence": "medium",
+     "primaryPick": false,
      "priorAlignmentOfRecord": "lane-functions 1.2.2"
     },
     {
@@ -1054,7 +1173,8 @@
      "textOfRecordUnder": "UGM-Resources/pure-1-series",
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "flip",
-     "confidence": "high"
+     "confidence": "high",
+     "primaryPick": false
     },
     {
      "ugmSlug": "r9701",
@@ -1068,6 +1188,7 @@
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "one_to_many",
      "confidence": "medium",
+     "primaryPick": false,
      "priorAlignmentOfRecord": "lane-integration 1.8.1"
     },
     {
@@ -1082,6 +1203,7 @@
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "one_to_many",
      "confidence": "medium",
+     "primaryPick": false,
      "priorAlignmentOfRecord": "lane-differentiation 1.7.2"
     },
     {
@@ -1095,7 +1217,8 @@
      "textOfRecordUnder": "UGM-Resources/pure-1-series",
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "flip",
-     "confidence": "high"
+     "confidence": "high",
+     "primaryPick": false
     },
     {
      "ugmSlug": "r6340",
@@ -1108,7 +1231,8 @@
      "textOfRecordUnder": "UGM-Resources/pure-1-series",
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "flip",
-     "confidence": "high"
+     "confidence": "high",
+     "primaryPick": false
     },
     {
      "ugmSlug": "r7477",
@@ -1121,7 +1245,8 @@
      "textOfRecordUnder": "UGM-Resources/pure-1-series",
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "flip",
-     "confidence": "high"
+     "confidence": "high",
+     "primaryPick": false
     },
     {
      "ugmSlug": "r9824",
@@ -1135,6 +1260,7 @@
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "one_to_many",
      "confidence": "high",
+     "primaryPick": false,
      "priorAlignmentOfRecord": "lane-functions 1.2.2/1.2.3/1.2.4"
     },
     {
@@ -1149,6 +1275,7 @@
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "one_to_many",
      "confidence": "medium",
+     "primaryPick": false,
      "priorAlignmentOfRecord": "lane-functions 1.2.1/1.2.2/1.2.3"
     },
     {
@@ -1163,6 +1290,7 @@
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "one_to_many",
      "confidence": "medium",
+     "primaryPick": false,
      "priorAlignmentOfRecord": "lane-series 1.6 (GP limb)"
     },
     {
@@ -1177,6 +1305,7 @@
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "one_to_many",
      "confidence": "high",
+     "primaryPick": false,
      "priorAlignmentOfRecord": "lane-series 1.6.3 (GP limb)"
     },
     {
@@ -1191,6 +1320,7 @@
      "servedUnder": "cie-a-level-maths-20-pure-1",
      "kind": "one_to_many",
      "confidence": "medium",
+     "primaryPick": false,
      "priorAlignmentOfRecord": "lane-trigonometry 1.5 (stray of record)"
     },
     {
@@ -1636,6 +1766,83 @@
      "confidence": "high",
      "primaryPick": false,
      "priorAlignmentOfRecord": "lane-integration 1.8.1 and lane-algebra 3.1.5"
+    },
+    {
+     "ugmSlug": "r8404",
+     "codes": [
+      "3.6.2",
+      "3.6.3"
+     ],
+     "title": "If $x_1 = (x_0 + 2)/(x_0 + 1)$, can we show $\\sqrt{2}$ lies between $x_0$ and $x_1$?",
+     "url": "https://undergroundmathematics.org/sequences/r8404",
+     "station": "sequences",
+     "textOfRecordUnder": "UGM-Resources/pure-1-series",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "flip",
+     "confidence": "high",
+     "primaryPick": true,
+     "priorAlignmentOfRecord": "lane-1-series non-overlap row of record (the whole-station body of record lives under pure-1-series with spec_points [] — unmapped-by-design under rule 3)"
+    },
+    {
+     "ugmSlug": "r5948",
+     "codes": [
+      "3.6.1"
+     ],
+     "title": "Can we calculate an approximation to the root of this function?",
+     "url": "https://undergroundmathematics.org/geometry-of-equations/r5948",
+     "station": "geometry-of-equations",
+     "textOfRecordUnder": "UGM-Resources/pure-1-coordinate-geometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-coordinate-geometry alignments 1.3.1/1.3.2 of record (the line-geometry derivation)"
+    },
+    {
+     "ugmSlug": "r7549",
+     "codes": [
+      "3.6.1"
+     ],
+     "title": "Can we show this quartic equation has exactly two real roots?",
+     "url": "https://undergroundmathematics.org/circles/r7549",
+     "station": "circles",
+     "textOfRecordUnder": "UGM-Resources/pure-1-coordinate-geometry",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-coordinate-geometry alignment 1.3.2 of record"
+    },
+    {
+     "ugmSlug": "r8231",
+     "codes": [
+      "3.6.1",
+      "3.6.3"
+     ],
+     "title": "A cubic has one real root—can we find an approximation to it?",
+     "url": "https://undergroundmathematics.org/calculus-of-powers/r8231",
+     "station": "calculus-of-powers",
+     "textOfRecordUnder": "UGM-Resources/pure-1-differentiation",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-pure-1-differentiation alignment 1.7.3 of record (the cubic root-approximation body)"
+    },
+    {
+     "ugmSlug": "r9082",
+     "codes": [
+      "3.6.1"
+     ],
+     "title": "Can we find the repeated root for  $4x^4+x^2+3x+1=0$?",
+     "url": "https://undergroundmathematics.org/product-rule/r9082",
+     "station": "product-rule",
+     "textOfRecordUnder": "UGM-Resources/pure-1-differentiation",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "medium",
+     "primaryPick": false,
+     "priorAlignmentOfRecord": "lane-algebra alignment 3.1.4 of record (the repeated-root row; the 1.7.2 alignment of the same body stands beside it)"
     }
    ]
   }
@@ -1948,6 +2155,38 @@
     "r8890",
     "which-substitution",
     "r8694"
+   ]
+  },
+  {
+   "code": "3.6.1",
+   "officialText": "locate approximately a root of an equation, by means of graphical considerations and/or searching for a sign change",
+   "primaryPick": "r8711",
+   "resourceCount": 4,
+   "ugmIds": [
+    "r8013",
+    "r8711",
+    "see-the-power",
+    "to-log-or-not-to-log"
+   ]
+  },
+  {
+   "code": "3.6.2",
+   "officialText": "understand the idea of, and use the notation for, a sequence of approximations which converges to a root of an equation",
+   "primaryPick": "r8404",
+   "resourceCount": 2,
+   "ugmIds": [
+    "staircase-sequences",
+    "r8679"
+   ]
+  },
+  {
+   "code": "3.6.3",
+   "officialText": "understand how a given simple iterative formula of the form x = F( x ) relates to the equation being solved, and use a given iteration, or an iteration based on a given rearrangement of an equation, to determine a root to a prescribed degree of accuracy.",
+   "primaryPick": "r8231",
+   "resourceCount": 2,
+   "ugmIds": [
+    "staircase-sequences",
+    "r8679"
    ]
   }
  ],
@@ -3734,6 +3973,15 @@
      "modesRecorded": [
       1
      ]
+    },
+    {
+     "code": "3.6.1",
+     "confidence": "medium",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
     }
    ],
    "bodyMd": "\n# See the power\n\n> Excerpt: This problem is an introduction to logarithms, without formally defining them or even using the word.\nStudents are asked to estimate the power of ten needed to achieve a given value and hence solve an equation.\n\n## Warm-up\n\nSome equations involving powers or indices can be solved “by inspection” if we are familiar with the powers of common numbers. Try these\n\n1. \\(2^x = 16\\)\n\n---\n\n1. \\(10^x = 0.001\\)\n\n---\n\n1. \\(5^x = 125\\)\n\n---\n\n1. \\(\\big(\\frac{1}{3}\\big)^x = 81\\)\n\nCheck your answers\n\n1. \\(x = 4\\) because \\(16 = 2^4\\)\n\n---\n\n1. \\(x = -3\\) because \\(0.001 = \\frac{1}{1000} = \\frac{1}{10^3}\\)\n\n---\n\n1. \\(x = 3\\)\n\n---\n\n1. \\(x = -4\\) because \\(\\big(\\frac{1}{3}\\big)^{-1} = 3\\)\n\nSome other equations look very similar but are not so easy to solve. Think about this one \\[10^x = 562\\] What could you do to find an approximate answer? How accurate could you make your estimate?\n\nSuggestion\n\nWhat are \\(10^2\\) and \\(10^3\\)? Can you state upper and lower bounds for the value of \\(x\\)?\n\nHow can you narrow down the range of possible values?\n\n## Problem\n\nThink about the function \\(y=10^x\\). Every time we increase \\(x\\) by one, we multiply \\(y\\) by \\(10\\).\n\nBy how much do we multiply \\(y\\) when we increase \\(x\\) by \\(0.5\\)?\n\nGiven that \\(\\sqrt{10}\\approx 3.16\\) and \\(\\sqrt[4]{10}\\approx 1.78\\), complete the table below.\n\n| \\(10^0=\\) | \\(10^{0.25}\\approx\\) | \\(10^{0.5}\\approx\\) | \\(10^{0.75}\\approx\\) |\n|---|---|---|---|\n| \\(10^1=\\) | \\(10^{1.25}\\approx\\) | \\(10^{1.5}\\approx\\) | \\(10^{1.75}\\approx\\) |\n| \\(10^2=\\) | \\(10^{2.25}\\approx\\) | \\(10^{2.5}\\approx\\) | \\(10^{2.75}\\approx\\) |\n| \\(10^3=\\) | \\(10^{3.25}\\approx\\) | \\(10^{3.5}\\approx\\) | \\(10^{3.75}\\approx\\) |\n\nWhat does the whole number part of the power of ten tell us about the value of \\(y\\)?\n\nHow is this connected with standard form?\n\nCan you now find approximate solutions to the following equations?\n\n1. \\(10^x = 21\\)\n\n---\n\n1. \\(10^x = 5\\,000\\)\n\n---\n\n1. \\(10^x = 562\\,000\\)\n\n---\n\n1. \\(10^x = 0.00178\\)\n\nSee the resource [1950s calculators](https://undergroundmathematics.org/exp-and-log/calculators1950) for a further exploration of this.\n\n## Solution\n\nTo go from \\(10^1\\) to \\(10^2\\) we multiply by \\(10\\). When we add to the power we multiply the expression, so to go from \\(10^1\\) to \\(10^2\\) in two equal steps we would add \\(0.5\\) to the power twice and multiply the expression by the same number twice. The number by which we multiply must therefore be the square root of \\(10\\), such that \\(10^{1+0.5+0.5}=10^1\\times\\sqrt{10}\\times\\sqrt{10}=10^2\\).\n\nSimilarly, to do it in four steps we would have to multiply by the fourth root of \\(10\\) each time.\n\nThe first column of the table is easy to fill in with whole number powers of \\(10\\), remembering that \\(a^0=1\\) for any value of \\(a\\) (with the possible exception of \\(a=0\\)).\n\nWhat is \\(0^0\\)?\n\nLooking at the second row, when we move from \\(10^1\\) to \\(10^{1.25}\\) we are increasing the power of \\(10\\) by \\(0.25\\), so we multiply by \\(\\sqrt[4]{10}\\approx1.78\\). Moving from the first to the third column we are increasing the power by \\(0.5\\), which means we multiply by \\(\\sqrt{10}\\approx3.16\\). Moving from the third to the fourth column we are increasing the power of \\(10\\) by another \\(0.25\\), and so we multiply by \\(1.78\\).\n\nHere is a completed table.\n\n| \\(10^0=1\\) | \\(10^{0.25}\\approx1.78\\) | \\(10^{0.5}\\approx3.16\\) | \\(10^{0.75}\\approx5.62\\) |\n|---|---|---|---|\n| \\(10^1=10\\) | \\(10^{1.25}\\approx17.8\\) | \\(10^{1.5}\\approx31.6\\) | \\(10^{1.75}\\approx56.2\\) |\n| \\(10^2=100\\) | \\(10^{2.25}\\approx178\\) | \\(10^{2.5}\\approx316\\) | \\(10^{2.75}\\approx562\\) |\n| \\(10^3=1\\,000\\) | \\(10^{3.25}\\approx1\\,780\\) | \\(10^{3.5}\\approx3\\,160\\) | \\(10^{3.75}\\approx5\\,620\\) |\n\nIt is clear from the table that the whole number part of the power tells us how many digits will be in the whole number part of the value of the expression. For instance, \\(10^{2.\\text{anything}}\\) will have three digits before the decimal point. This is a feature of powers of ten, which works because our counting system uses base-\\(10\\) numbers.\n\n[Hexadecimal](https://undergroundmathematics.org/glossary/hexadecimal) is a counting system that uses base-\\(16\\) numbers and is especially useful in computer science. Here, the whole number part of \\(x\\) would tell us the number of digits in the hexadecimal representation of \\(16^x\\).\n\nWe could write \\(5\\,620\\) in standard form as \\(5.62\\times10^3\\). This \\(3\\) tells us the number has four digits, which is also what the \\(3\\)s in the last row of our table tell us.\n\nApproximate solutions to the first two can be found by looking in the table above. Since \\(21\\) is between \\(17.8\\) and \\(31.6\\), \\(x\\) must be between \\(1.25\\) and \\(1.5\\). We could narrow this range by trial and improvement or by plotting a graph.\n\n\\(562\\,000\\) has six digits, so \\(x\\) must be \\(5.\\)something. From the right hand column of the table, the decimal part must be \\(.75\\). This separation of the whole number and decimal parts of the number is what we do when we write the number in standard form: \\(562\\,000=5.62\\times10^5\\).\n\nTo solve the final equation, it helps to first write the number in standard form: \\(0.00178=1.78\\times10^{-3}\\) so we want \\(-3+0.25\\).\n\nThis gives us a set of approximate solutions as follows:\n\n1. \\(x \\approx 1.3\\)\n\n---\n\n1. \\(x \\approx 3.7\\)\n\n---\n\n1. \\(x \\approx 5.75\\)\n\n---\n\n1. \\(x \\approx -2.75\\)\n\nIn each case, the value of \\(x\\) is the *power to which we have to raise \\(10\\) in order to get the target number*. This is known as the [logarithm](https://undergroundmathematics.org/glossary/logarithm) of the target number. Specifically it is the “logarithm to base \\(10\\)”, since we are working with powers of \\(10\\). You can check your answers using the \\(\\log\\) or \\(\\log_{10}\\) key on your calculator.\n",
@@ -3782,6 +4030,15 @@
      "code": "3.2.3",
      "confidence": "high",
      "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.6.1",
+     "confidence": "medium",
+     "primaryPick": false,
      "note": null,
      "modesRecorded": [
       1
@@ -5149,6 +5406,24 @@
      "modesRecorded": [
       1
      ]
+    },
+    {
+     "code": "3.6.2",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.6.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
     }
    ],
    "bodyMd": "\n# What is the area under the curve $y = \\cos x - \\sin x +2$?\n\n## Question\n\nGiven the curve \\[y = \\cos x - \\sin x +2\\] find in terms of \\(a\\) an expression for the area \\(A\\) enclosed between the axes, the ordinate \\(a \\; (> 0)\\) and this curve. Verify that when \\(a = 1.5\\), \\(A = 3.07\\) approximately.\n\nIt is required to find the value of \\(a\\) for which \\(A = 3\\). Taking \\(1.5\\) as a first approximation to \\(a\\), find a second approximation, giving three significant figures in your answer.\n\n## Solution\n\nThe ordinate \\(a\\) means the line \\(x=a\\). Our curve lies entirely above the \\(x\\)-axis. It is something like this.\n\nTo calculate the area, we integrate:\n\n\\[\\begin{align*} A &= \\int_0^a \\cos x- \\sin x+2 \\:dx \\\\ &= \\big[\\sin x + \\cos x + 2x\\big]_0^a \\\\ &= \\sin a + \\cos a + 2a -1. \\end{align*}\\]\n\nSubstituting \\(a = 1.5\\) gives \\(A = 3.0682... \\approx 3.07\\) as required.\n\nSo we need to find an approximate solution to \\(3 = \\sin a + \\cos a + 2a -1\\) that is better than \\(a=1.5\\).\n\nThere are a number of methods we could use here; decimal search, binary search, linear interpolation, the rearrangement method or simply zooming in with graphing software.\n\nWe will use the Newton-Raphson method. This says that given a guess \\(x_0\\) at the root \\(\\alpha\\) (a solution to \\(f(x) = 0\\)), then as long as \\(x_0\\) is reasonably close to \\(\\alpha\\), a better approximation to \\(\\alpha\\) is \\(x_1\\) where\n\n\\[x_1 = x_0 - \\dfrac{f(x_0)}{f'(x_0)}.\\]\n\nSo our equation is \\(f(x) = 0\\) where \\(f(x) = \\sin x + \\cos x + 2x - 4\\), which gives \\(f'(x) = \\cos x -\\sin x + 2\\).\n\nThus \\(x_1 = 1.5 - \\dfrac{\\sin 1.5 + \\cos 1.5 + 3 - 4}{\\cos 1.5 -\\sin 1.5 + 2} = 1.4264...\\)\n\nSo we have a better approximation to \\(a\\) than \\(1.5\\), namely \\(1.43\\) (\\(3\\)sf).\n\nCheck – \\(\\sin 1.43 + \\cos 1.43 + 2\\times 1.43 -1 = 2.99\\) (\\(3\\)sf).\n",
@@ -5378,6 +5653,93 @@
     }
    ],
    "bodyMd": "\n# Which substitution?\n\n> Excerpt: Students are asked to do the same integral twice, using a different substitution each time. The problem highlights that you can arrive at different answers because of this, and asks students to think about how the two answers are related.\n\n## Problem\n\n\\(\\displaystyle{\\int \\dfrac{1}{\\sqrt{1-x^2}} \\, dx}\\) can be integrated by using a substitution. What answer do you get if you use\n\n1. \\(x = \\sin \\theta\\)?\n\n---\n\n1. \\(x = \\cos \\theta\\)?\n\nDo they both give the correct answer? If so, why?\n\n## Solution\n\n1. If \\(x = \\sin \\theta\\), then \\(\\dfrac{dx}{d\\theta} = \\cos \\theta\\), meaning we can write \\(dx = \\cos \\theta \\ d\\theta\\). Substituting this into the integral we get\n\n\\[\\begin{align*} \\int \\dfrac{1}{\\sqrt{1-x^2}} \\, dx &= \\int \\dfrac{1}{\\sqrt{1-\\sin^2 \\theta}} \\ \\cos \\theta \\, d\\theta\\\\ &= \\int \\dfrac{1}{\\cos \\theta} \\ \\cos \\theta \\, d\\theta \\\\ &= \\int 1 \\, d\\theta \\\\ &= \\theta + c. \\end{align*}\\]\n\nAs \\(x = \\sin \\theta\\), then \\(\\theta = \\arcsin x\\), so the answer in terms of \\(x\\) is \\[\\displaystyle{\\int \\dfrac{1}{\\sqrt{1-x^2}} \\, dx = \\arcsin x + c}.\\]\n\nRemember that [inverse trigonometric functions](https://undergroundmathematics.org/glossary/inverse-trigonometric-function) can be written in two different ways. For example \\(\\arcsin\\) and \\(\\sin^{-1}\\).\n\n1. This time \\(x = \\cos \\theta\\), so \\(\\dfrac{dx}{d\\theta} = -\\sin \\theta\\). Writing \\(dx = -\\sin \\theta \\ d\\theta\\) gives us\n\n\\[\\begin{align*} \\int \\dfrac{1}{\\sqrt{1-x^2}} \\, dx &= \\int \\dfrac{1}{\\sqrt{1-\\cos^2 \\theta}} \\cdot (-\\sin \\theta) \\, d\\theta\\\\ &= \\int -1 \\, d\\theta \\\\ &= -\\theta + c. \\end{align*}\\]\n\nAs \\(x = \\cos \\theta\\), \\(\\theta = \\arccos x\\), so this time we get the answer \\[\\displaystyle{\\int \\dfrac{1}{\\sqrt{1-x^2}} \\, dx = -\\arccos x + c}.\\]\n\n| The fact that the answers are both inverse trigonometric functions suggests there is a relationship between them. The easiest way to think about their differences and similarities is to sketch the graphs of both functions. We see that \\(y = -\\arccos x\\) is the same shape as \\(y = \\arcsin x\\) , the only difference being a translation of \\(\\frac{π}{2}\\) along the \\(y\\) axis. This difference can be accounted for by the constants of integration. |  |\n|---|---|\n\nWe could also think about this algebraically. If we let \\(y = \\arcsin x\\), then \\(\\sin y = x.\\) As \\(\\sin y = \\cos(\\frac{\\pi}{2} - y)\\) we can write\n\n\\[\\begin{align*} &&\\cos\\left(\\frac{\\pi}{2} - y\\right) &= x \\\\ \\iff&& \\frac{\\pi}{2} - y &= \\arccos x \\\\ \\iff&& \\frac{\\pi}{2} - \\arcsin x &= \\arccos x. \\end{align*}\\]\n\nThe second line of this argument will not always follow on from the first, as it depends on the range of values for \\(y\\). Can you see why it is valid in this case?\n\nThis method also shows that the values of \\(\\arcsin x\\) and \\(-\\arccos x\\) differ by \\(\\frac{\\pi}{2},\\) or in fact, that \\(\\arcsin x + \\arccos x = \\frac{\\pi}{2}.\\)\n\n**Reflection**\n\nDoes having a different antiderivative function affect the solution to a definite integral? Remember, \\[\\int_a^b f(x) \\, dx = F(b) - F(a).\\]\n\nIt is useful to realise that there can be more than one form of answer to an integral. This happens particularly when using trigonometric substitutions as there are so many ways that different functions can be written in terms of each other.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r8013",
+   "slug": "r8013",
+   "station": "exp-and-log",
+   "title": "When does this exponential function equal this linear one?",
+   "url": "https://undergroundmathematics.org/exp-and-log/r8013",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.6.1",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# When does this exponential function equal this linear one?\n\n## Question\n\nDraw the graph of \\(y=3^x\\) for values of \\(x\\) from \\(-2\\) to \\(+2\\), plotting at least nine points. [Take \\(\\quantity{2}{cm}\\) as unit on the axis of \\(x\\), and \\(\\quantity{1}{cm}\\) as unit on the axis of \\(y\\).]\n\nUse your graph to find\n\n1. the roots of the equation \\(3^x=3x+2\\),\n\n---\n\n1. the range of values of \\(k\\) for which the equation \\(3^x=kx\\) has no real roots.\n\n[*The instructions suggested that squared paper should be used and that for us, the use of calculators is allowed.*]\n\n## Suggestion\n\nCan you think of a way to consider the equation \\(3^x=3x+2\\) in terms of two intersecting curves?\n\nCan you use the graphs you sketch to help solve this equation?\n\n## Solution\n\nWe first draw our axes as instructed. Use graph paper or squared paper and make sure that \\(1\\) on the \\(x\\)-axis is twice the length of \\(1\\) on the \\(y\\)-axis as in the picture:\n\nThe question asks us to plot at least nine points. We will plot \\(-2\\), \\(-3/2\\), \\(-1\\), …, \\(3/2\\), \\(2\\). We first compute the values of \\(y\\) at these points.\n\n| \\(x\\) | \\(y\\) | Approximate value |\n|---|---|---|\n| \\(-2\\) | \\(\\frac{1}{9}\\) | \\(0.111\\) |\n| \\(-\\frac{3}{2}\\) | \\(\\frac{1}{\\sqrt{3^3}}\\) | \\(0.192\\) |\n| \\(-1\\) | \\(\\frac{1}{3}\\) | \\(0.333\\) |\n| \\(-\\frac{1}{2}\\) | \\(\\frac{1}{\\sqrt{3}}\\) | \\(0.577\\) |\n| \\(0\\) | \\(1\\) | \\(1\\) |\n| \\(\\frac{1}{2}\\) | \\(\\sqrt{3}\\) | \\(1.732\\) |\n| \\(1\\) | \\(3\\) | \\(3\\) |\n| \\(\\frac{3}{2}\\) | \\(\\sqrt{3^3}\\) | \\(5.196\\) |\n| \\(2\\) | \\(9\\) | \\(9\\) |\n\nWe will now plot these points on our graph, using a ruler to plot the decimal numbers as best as we can. We end up with something that looks like this:\n\nNine points of \\(y=3^x\\) plotted on the axes\n\nWe have plotted enough points to give us an idea of what the graph should look like. Joining up these points with as smooth a curve as possible, we get something like this:\n\nOur graph of \\(y=3^x\\)\n\nUse your graph to find\n\n1. the roots of the equation \\(3^x=3x+2\\)…\n\nWe can solve this using our sketch by drawing on the line \\(y=3x+2\\) and seeing where it intersects our sketch of \\(y=3^x\\). We choose two points on \\(y=3x+2\\) that are easy to plot and are far enough away from each other so that it doesn’t exaggerate any inaccuracies in our graph, and one between them just to be safe, \\((-1,-1)\\), \\((0,2)\\) and \\((2,8)\\). Drawing this line on top of our original sketch yields the following picture:\n\nThe graphs of \\(y=3^x\\) and \\(y=3x+2\\)\n\nWe can now see where these two graphs intersect, and reading off the appropriate values of \\(x\\) gives us the approximate solutions to \\(3^x=3x+2\\):\n\nThe approximate solutions to \\(3^x=3x+2\\) are given by the orange lines meeting the \\(x\\)-axis\n\nFrom the picture we have drawn here, it looks like we have \\(x = -0.48\\) and \\(x = 1.83\\) to two decimal places.\n\nIt turns out that the actual solutions are \\(x=-0.4673...\\) and \\(x=1.8344...\\), so we were close! How precise should we be with our answers?\n\nUse your graph to find\n\n1. the range of values of \\(k\\) for which the equation \\(3^x=kx\\) has no real roots.\n\nBy drawing lines of the form \\(y=kx\\) on top of our original graph, that is, lines through the origin with any slope, we can see that if \\(k\\) is small enough then the line won’t intersect the graph of \\(y=3^x\\) at all, and so \\(3^x=kx\\) will have no real roots. Put your ruler on top of your sketch and pretend that the edge is a line through the origin. Start where it intersects \\(y=3^x\\) in two places and rotate it down, making sure it still passes through the origin. You should notice that just before the line stops intersecting \\(y=3^x\\), it touches the curve at just one point, as in the following picture:\n\nThe last line of the form \\(y=kx\\) that intersects \\(y=3^x\\)\n\nFrom the picture we can see that this line passes through \\((0,0)\\) and \\((1,3)\\) (approximately) and so has equation \\(y=3x\\) (approximately). So we have that \\(3^x=kx\\) has no real roots for any \\(0\\le k<3.0\\) to one decimal place.\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "r8711",
+   "slug": "r8711",
+   "station": "polynomials",
+   "title": "How many real roots does this cubic polynomial have?",
+   "url": "https://undergroundmathematics.org/polynomials/r8711",
+   "resourceType": "review-question",
+   "resourceTypeLabel": "Review question",
+   "level": null,
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.6.1",
+     "confidence": "high",
+     "primaryPick": true,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# How many real roots does this cubic polynomial have?\n\n## Question\n\nShow that the equation \\(x^3 - 6x^2 + 12 = 0\\) has two positive roots and one negative root. Show that the negative root lies between \\(-1\\) and \\(-1.5\\) and find it correct to one decimal place.\n\n## Suggestion\n\nIf we cannot deduce directly how to factorise a polynomial, do we know a way of honing in on the location of (any) roots?\n\n## Solution\n\nLet \\(f(x) = x^3 - 6x^2 + 12\\), which is a cubic, and thus has at most three real roots. We can tabulate various values for \\(f(x)\\).\n\n| \\(x\\) | \\(f(x)\\) |\n|---|---|\n| -2 | -20 |\n| -1 | 5 |\n| 0 | 12 |\n| 1 | 7 |\n| 2 | -4 |\n| 3 | -15 |\n| 4 | -20 |\n| 5 | -13 |\n| 6 | 12 |\n\nThe function \\(f(x)\\) changes sign three times in the table, so that \\(f(x)\\) has three real roots, one between \\(x = -2\\) and \\(x = -1\\); one between \\(x = 1\\) and \\(x = 2\\); and a third between \\(x = 5\\) and \\(x = 6\\).\n\nSo \\(f(x)\\) has two positive roots and one negative root.\n\nShow that the negative root lies between \\(-1\\) and \\(-1.5\\)…\n\nWe saw above that \\(f(-1) = 5\\). As \\(f(-1.5) = -\\dfrac{39}{8} < 0\\), the negative root must lie between \\(x = -1\\) and \\(x = -1.5\\).\n\n…and find it correct to one decimal place.\n\nWe can tabulate more values for \\(f(x)\\).\n\n| \\(x\\) | \\(f(x)\\) |\n|---|---|\n| -1.5 | -4.875 |\n| -1.4 | -2.504 |\n| -1.3 | -0.337 |\n| -1.2 | 1.632 |\n| -1.1 | 3.409 |\n| -1 | 5.0 |\n\nThus the negative root lies between \\(x = -1.3\\) and \\(x = -1.2\\).\n\nWe have \\(f(-1.25) = 0.671875 > 0\\), and so the root falls between \\(x = -1.3\\) and \\(x = -1.25\\), so that, to one decimal place, the negative root is \\(x = -1.3\\).\n",
+   "figures": 0,
+   "figuresInline": 0
+  },
+  {
+   "ugmId": "staircase-sequences",
+   "slug": "staircase-sequences",
+   "station": "thinking-about-numbers",
+   "title": "Staircase sequences",
+   "url": "https://undergroundmathematics.org/thinking-about-numbers/staircase-sequences",
+   "resourceType": "investigation",
+   "resourceTypeLabel": "Investigation",
+   "level": "Introducing",
+   "hasTeacherSupport": false,
+   "nonOverlap": false,
+   "specPoints": [
+    {
+     "code": "3.6.2",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    },
+    {
+     "code": "3.6.3",
+     "confidence": "high",
+     "primaryPick": false,
+     "note": null,
+     "modesRecorded": [
+      1
+     ]
+    }
+   ],
+   "bodyMd": "\n# Staircase sequences\n\n> Excerpt: Given two sequences involving continued fractions, students are asked to pose questions and explore. The resource offers practice at manipulating fractions and offers an opportunity to introduce the idea of limits.\n\n## Problem\n\nConsider the sequence \\[1, \\quad 1 + \\cfrac{1}{1}, \\quad 1 + \\cfrac{1}{1 + \\cfrac{1}{1}}, \\quad 1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1}}}, \\quad \\dotsc\\]\n\nWhat do you make of it?\n\nWhat about this sequence? \\[1, \\quad 1 + \\cfrac{1}{2}, \\quad 1 + \\cfrac{1}{2 + \\cfrac{1}{2}}, \\quad 1 + \\cfrac{1}{2 + \\cfrac{1}{2 + \\cfrac{1}{2}}}, \\quad \\dotsc\\]\n\nWhat other sequences might you try?\n\nWhat questions would you ask about these sequences?\n\n## Possible questions\n\nConsider the sequence \\[1, \\quad 1 + \\cfrac{1}{1}, \\quad 1 + \\cfrac{1}{1 + \\cfrac{1}{1}}, \\quad 1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1}}}, \\quad \\dotsc .\\]\n\nWhat do you make of it?\n\nIn playing around with the sequence you may well have asked some questions.\n\nHere are some questions we asked about these sequences that you might like to think about, if you have not already considered them.\n\n- What might this notation mean?\n\n- Can I write these as more conventional fractions? In other words, what do they equal?\n\n- How do I expect the sequence to continue?\n\n- Does the sequence have a last term?\n\n- Can I predict what happens to the terms of the sequence a long way down the line?\n\n- Are the terms in the sequence getting larger or smaller?\n\n- Can I efficiently work out the value of each term of the sequence?\n\n- Do I notice anything interesting about the numbers in the fractions?\n\n## Things you might have noticed\n\nConsider the sequence \\[1, \\quad 1 + \\cfrac{1}{1}, \\quad 1 + \\cfrac{1}{1 + \\cfrac{1}{1}}, \\quad 1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1}}}, \\quad \\dotsc .\\]\n\nWhat do you make of it?\n\nWhat might this notation mean?\n\nCan I write these as more conventional fractions? In other words, what do they equal?\n\nThe first term in the sequence is just \\(1\\).\n\nThe next is \\(1 + \\cfrac{1}{1} = 2\\) in a familiar way.\n\nThen we have a less familiar expression, but we can work through it ‘from the bottom up’ to make sense of it. We have \\[1 + \\cfrac{1}{1 + \\cfrac{1}{1}} = 1 + \\cfrac{1}{2} = \\frac{3}{2}.\\]\n\nAnd then, similarly, \\[1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1}}} = 1 + \\cfrac{1}{1 + \\cfrac{1}{2}} = 1 + \\cfrac{2}{3} = \\frac{5}{3}.\\]\n\nHow do I expect the sequence to continue?\n\nDoes the sequence have a last term?\n\nIf I look at the original form of the sequence, I can imagine it going on forever, with more and more layers. I might need to think a bit more about what the conventional fractions look like as the sequence continues.\n\nCan I predict what happens to the terms of the sequence a long way down the line?\n\nAre the terms in the sequence getting larger or smaller?\n\nIt might be helpful to study a few more terms of the sequence, and then to collect the information in a way that helps us to make sense of it.\n\n| Term of sequence | Fraction | Decimal |\n|---|---|---|\n| \\(1\\) | \\(\\dfrac{1}{1}\\) | \\(1\\) |\n| \\(1 + \\cfrac{1}{1}\\) | \\(\\dfrac{2}{1}\\) | \\(2\\) |\n| \\(1 + \\cfrac{1}{1 + \\cfrac{1}{1}}\\) | \\(\\dfrac{3}{2}\\) | \\(1.5\\) |\n| \\(1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1}}}\\) | \\(\\dfrac{5}{3}\\) | \\(1.666\\dots\\) |\n| \\(1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1}}}}\\) | \\(\\dfrac{8}{5}\\) | \\(1.6\\) |\n| \\(1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1}}}}}\\) | \\(\\dfrac{13}{8}\\) | \\(1.625\\) |\n| \\(1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1}}}}}}\\) | \\(\\dfrac{21}{13}\\) | \\(1.615\\dots\\) |\n| \\(1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1}}}}}}}\\) | \\(\\dfrac{34}{21}\\) | \\(1.619\\dots\\) |\n\nIt looks as though the terms alternately get larger and smaller, and it looks as though they might be tending to a limit that’s \\(1.61...\\) (not sure what the other decimal places might be yet).\n\nWe could try to think carefully about whether the terms will continue to alternately get larger and smaller. You could explore this further in [Comparing continued fractions](https://undergroundmathematics.org/thinking-about-algebra/comparing-continued-fractions).\n\nI’d like to know whether the sequence really does tend to a limit. If it does, then it ought to be represented by \\[1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\cfrac{1}{1 + \\dots}}}}}.\\] If I call that \\(x\\), then I could notice that \\(x\\) seems to reappear inside itself: \\[x = 1 + \\frac{1}{x}.\\] And now I can rearrange to get a quadratic: it’s the same as the equation \\[x^2 - x - 1 = 0.\\] I can solve that using the quadratic formula. I find that \\[x = \\frac{1 \\pm \\sqrt{5}}{2},\\] and since clearly \\(x\\) is positive I know that \\[x = \\frac{1 + \\sqrt{5}}{2}.\\] So it seems that the sequence really does tend to a limit, and that limit is \\(\\frac{1 + \\sqrt{5}}{2} = 1.618...\\) (which fits with my observations from the table above). In fact, it looks as though the sequence is alternately larger and smaller than this limit.\n\nCan I efficiently work out the value of each term of the sequence?\n\nI got bored while working out the table, so I found myself looking for shortcuts. I noticed that rather than working from the bottom up each time, I could use the previous term in the sequence: roughly speaking, \\[\\textrm{new term } = 1 + \\frac{1}{\\textrm{last term}}.\\]\n\nI can be a bit more formal if I use some symbols. If I know that one term of the sequence is \\(\\frac{a}{b}\\), then the next is \\[1 + \\frac{1}{\\bigl(\\frac{a}{b}\\bigr)} = 1 + \\frac{b}{a} = \\frac{a + b}{a}.\\]\n\nI wrote brackets around the \\(\\frac{a}{b}\\) in the first fraction, so that I know what the numerator and denominator are. If I’d written \\(\\dfrac{1}{\\frac{a}{b}}\\) without brackets, I might have got confused and thought it meant \\(\\dfrac{\\bigl(\\frac{1}{a}\\bigr)}{b}\\).\n\nSo to find the numerator of the next term, I add the numerator and denominator of the last term, and to find the denominator of the next term, I simply take the numerator of the last term. And I can check that fits with the terms I found in my table.\n\nDo I notice anything interesting about the numbers in the fractions?\n\nI happen to recognise that each term in the sequence is the ratio of consecutive [Fibonacci numbers](https://undergroundmathematics.org/glossary/fibonacci-sequence). I can see why that is true using the reasoning above, that tells me how to find one term from the next.\n\nSo I’ve learned that the ratio of one consecutive Fibonacci number to the previous one converges to the golden ratio, \\(\\frac{1 + \\sqrt{5}}{2}\\).\n\nThe second sequence was: \\[1, \\quad 1 + \\cfrac{1}{2}, \\quad 1 + \\cfrac{1}{2 + \\cfrac{1}{2}}, \\quad 1 + \\cfrac{1}{2 + \\cfrac{1}{2 + \\cfrac{1}{2}}}, \\quad \\dotsc .\\]\n\nUsing similar ideas, can you find what the sequence converges to?\n",
    "figures": 0,
    "figuresInline": 0
   }

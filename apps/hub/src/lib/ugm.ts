@@ -59,7 +59,22 @@
  * body — the lane-11 r6018 convention one course on) + 11 non-overlaps by
  * reference (5 superseding stale bearings, 5 P1-1.8-domain routes, 1
  * no-text teacher-support page); the supersede law drops 17 stale bearing
- * rows; picks r8679/r9297/r5126/none(3.5.4 the honest gap)/r8134/r8890
+ * rows; picks r8679/r9297/r5126/none(3.5.4 the honest gap)/r8134/r8890);
+ * Iteration fourteenth — PR #145 (the SIXTH pure-3 lane, NO honest gap —
+ * every spec point carries rows 8/3/4): 3 fresh bodies (r8711 polynomials
+ * — the purest sign-change search in the corpus; r8013 exp-and-log — the
+ * graphical 3^x=3x+2 read to 2 d.p.; staircase-sequences thinking-about-
+ * numbers — the x = 1 + 1/x fixed point of x²−x−1=0) across the
+ * twenty-station stationScope (the SCATTERED-SUBSTRATE law; NO pre-baked
+ * bearing pool — the inverse of the lane-13 shape) + 11 aligned rows (3
+ * fresh + the r8404 cross-course flip → 3.6.2/3.6.3 riding its lane-6
+ * body under pure-1-series whose spec_points were [] — the FIRST flip of
+ * record whose prior body carried no spec assertion, the circular-slice
+ * precedent + 7 one-to-many joins incl. three same-course riders on
+ * lane-9/10/13 bodies) + 1 non-overlap by reference (staircase-sequences-
+ * revisited, the companion disclosure); the supersede law retires r8013's
+ * stale bearing row; picks r8711/r8404(lane-6 body — the r6018
+ * convention)/r8231(lane-3 body — disclosed)
  * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
  * hub-side import is

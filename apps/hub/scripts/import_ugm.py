@@ -223,6 +223,43 @@ Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
     r8890. Figure plane unchanged: figures=0 honestly (the map of record
     predates the lane; the fresh bodies carry no map rows and no
     placeholders).
+  - lane 14 (T-UGM-HUB-CONSUME-14 — the SIXTH lane on the pure-3 course
+    plane, corpus PR #145 of record, trace 1a17502182be9d05): content/
+    cie-a-level-maths-20-pure-3/ugm-resources.json — CIE 9709 Pure 3
+    subtopic 3.6 Numerical solution of equations (spec points 3.6.1–3.6.3,
+    the verbatim spine rows of record; parse artifacts carried). NO honest
+    gap this lane — every spec point carries rows (8/3/4). The iteration
+    substrate is scattered by design: 3 fresh bodies (r8711 under
+    polynomials — the purest sign-change search in the corpus; r8013 under
+    exp-and-log — graphical solution of 3^x=3x+2 read to 2 d.p.;
+    staircase-sequences under thinking-about-numbers — the x = 1 + 1/x
+    fixed point of x²−x−1=0) and NO pre-baked bearing pool (no prior lane
+    ever routed rows to 'P3 3.6' — the lane INVERTS lane 13's bearing-pool
+    promotion the way lane 13 inverted lane 12). 11 aligned rows = 3 fresh
+    + 1 cross-course flip (r8404 → 3.6.2/3.6.3 — the corpus's
+    rearrangement-method showcase, 'the x = g(x) iteration, or the
+    rearrangement method' verbatim, riding its unmapped-by-design lane-6
+    body under pure-1-series whose spec_points were []: the circular-slice
+    precedent and the FIRST flip of record whose prior body carried no
+    spec assertion) + 7 one-to-many joins beside standing alignments
+    (r8231 → 3.6.1/3.6.3 Newton-Raphson + trial-and-improvement riding
+    pure-1-differentiation; r8679 → 3.6.2/3.6.3 the numerical-canon
+    survey on the lane-13 pick body; r7549/r5948 → 3.6.1
+    pure-1-coordinate-geometry; to-log-or-not-to-log + see-the-power →
+    3.6.1 riding pure-3-log-and-exp; r9082 → 3.6.1 riding
+    pure-1-differentiation — the body-of-record map corrected a
+    pure-3-algebra guess). The 1 non-overlap rides nonOverlapRows with
+    bodyImported=false (staircase-sequences-revisited — the companion
+    disclosure: convergents ARE approximations, representation is the
+    aim). 48 candidates closed exactly (36 rejected with reasons — the
+    Newton's-LAWS noise class disposed by name and the counting-vs-
+    locating line: r6653/r9754 count solutions then solve exactly, while
+    3.6.1 requires locating approximately).
+    Picks r8711 (3.6.1, fresh) / r8404 (3.6.2, rides its lane-6 body —
+    the r6018 fresh-pick-impossible convention, disclosed) / r8231
+    (3.6.3, rides its lane-3 body — disclosed). Figure plane unchanged:
+    figures=0 honestly (the map of record predates the lane; the fresh
+    bodies carry no map rows and no placeholders).
 
 Output: content/<lane>/ugm-resources.json, schema
 "syllabai-demo.ugm-lane-resources/1.1" (multi-lane) — per-spec-point resource
@@ -273,22 +310,24 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 # verbatim spine row. 1.1 bundles never carry null picks and still parse.
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.2"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-# T-UGM-HUB-CONSUME-13: pin advanced past lane 13 (T-UGM-MODE1-13 /
-# T-UGM-IMPORT-13, corpus PR #140, head 2300d6c9 + amendment r0
-# 41d35221 — the pure-3-integration corpus: 16 fresh bodies,
-# MANIFEST v14, fleet 605). The amendment r0 of record (caught by the
-# operator eyeball pre-merge, trace 1a174d39784fd841): the MANIFEST
-# version_note now carries its v14 prepend per the lane-10+ convention
-# (the artifact had carried the v13 note forward verbatim), and the
-# LEDGER.md lane-12 restore join gained its one missing LF so the restored
-# block sits byte-identically in the e75ba613 of-record sequence. Pure-1
-# inputs AND the lane-9/10/11/12 pure-3 inputs are byte-identical
-# bb78ae37 → 41d35221 (the lane-13 PR touches
-# UGM-Resources/pure-3-integration/** + its enrichment + the shared
-# MANIFEST lane-13 block + both READMEs + LEDGER only — verified
-# pin-to-pin; the strictly-additive law holds, lanes 1–12 blocks and the
+# T-UGM-HUB-CONSUME-14: pin advanced past lane 14 (T-UGM-MODE1-14 /
+# T-UGM-IMPORT-14, corpus PR #145, merge 8b3e57b9 — the
+# pure-3-iteration corpus: 3 fresh bodies, MANIFEST v15, fleet 608; NO
+# honest gap this lane, psp rows 8/3/4). The corpus of record was
+# eyeballed ALL GREEN at head 6d0719e9 before merge (trace
+# 1a17502182be9d05): blob identity remote==local==staged x8, census
+# recount 48 = 11+1+36 exact, MANIFEST strictly additive with lanes 1-13
+# byte-identical, drift law verified (base 4d857c47 stayed an ancestor
+# with zero net UGM/LEDGER traffic — the wave-25 + #143 parallel commits
+# touch Official-ExamQuestion/ and scripts/ only; the wedged sync
+# advisory covered by the #137-#140 precedent). Pure-1 inputs AND the
+# lane-9/10/11/12/13 pure-3 inputs are byte-identical 41d35221 →
+# 8b3e57b9 (the lane-14 PR touches
+# UGM-Resources/pure-3-iteration/** + its enrichment + the shared
+# MANIFEST lane-14 block + both READMEs + LEDGER only — verified
+# pin-to-pin; the strictly-additive law holds, lanes 1–13 blocks and the
 # v9 assets block byte-identical).
-DEFAULT_REF = "main@41d352212173a2602dc20ccff55ebbb30999a139"
+DEFAULT_REF = "main@8b3e57b917d773eb9dff8c5802b30ae9b98a8b45"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
@@ -576,6 +615,50 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-3-integration",
             "ledger": "LEDGER.md — T-UGM-MODE1-13 and T-UGM-IMPORT-13 (PR #140) + the T-UGM-MODE1-13 amendment r0 (this PR)",
             "expected": {"resources": 16, "rows": 35, "aligned": 23, "nonOverlap": 11},
+        },
+        {
+            # T-UGM-HUB-CONSUME-14: the pure-3 plane's sixth lane — CIE 9709
+            # Pure 3 subtopic 3.6 Numerical solution of equations (spec
+            # points 3.6.1–3.6.3, the verbatim spine rows of record; parse
+            # artifacts carried). NO honest gap this lane (8/3/4 rows). The
+            # iteration substrate is scattered by design — 3 fresh bodies
+            # (r8711 polynomials / r8013 exp-and-log / staircase-sequences
+            # thinking-about-numbers) with NO pre-baked bearing pool (the
+            # inverse of the lane-13 shape). 11 aligned rows = 3 fresh + 1
+            # cross-course flip (r8404, its unmapped-by-design lane-6 body,
+            # the circular-slice precedent) + 7 one-to-many joins by
+            # reference; the 1 non-overlap rides nonOverlapByReference
+            # (staircase-sequences-revisited, the companion disclosure).
+            # Picks r8711/r8404(lane-6 body, the r6018 convention)/r8231
+            # (lane-3 body, disclosed).
+            "laneSlug": "iteration",
+            "laneTitle": "Numerical solution of equations",
+            "stations": [
+                {"slug": "calculus-meets-functions", "title": "Calculus meets Functions"},
+                {"slug": "calculus-of-powers", "title": "Calculus of Powers"},
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "circles", "title": "Circles"},
+                {"slug": "combining-functions", "title": "Combining Functions"},
+                {"slug": "counting-and-binomials", "title": "Counting & Binomials"},
+                {"slug": "exp-and-log", "title": "Exponentials & Logarithms"},
+                {"slug": "geometry-of-equations", "title": "Geometry of Equations"},
+                {"slug": "hyperbolic-functions", "title": "Hyperbolic Functions"},
+                {"slug": "introducing-calculus", "title": "Introducing Calculus"},
+                {"slug": "polynomials", "title": "Polynomials & Rational Functions"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+                {"slug": "quadratics", "title": "Quadratics"},
+                {"slug": "sequences", "title": "Sequences"},
+                {"slug": "thinking-about-algebra", "title": "Thinking about Algebra"},
+                {"slug": "thinking-about-functions", "title": "Thinking about Functions"},
+                {"slug": "thinking-about-numbers", "title": "Thinking about Numbers"},
+                {"slug": "trigonometry-compound-angles", "title": "Trigonometry: Compound Angles"},
+                {"slug": "vector-geometry", "title": "Vector Geometry"}
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-3-iteration.json",
+            "res_dir": "UGM-Resources/pure-3-iteration",
+            "ledger": "LEDGER.md — T-UGM-MODE1-14 and T-UGM-IMPORT-14 (PR #145)",
+            "expected": {"resources": 3, "rows": 15, "aligned": 11, "nonOverlap": 1},
         },
     ],
 }
@@ -1202,7 +1285,17 @@ def main():
                 if supplier_course and supplier_course != lane:
                     if any(c not in own_codes for c in row.get("codes") or []):
                         fail(f"[cross-course] {slug}: code outside this lane's perSpecPoint")
-                    crosscourse.append(dict(row, servedUnder=supplier_course))
+                    # T-UGM-HUB-CONSUME-14 normalization law: the corpus CLA row
+                    # may NAME the pick that rides the reference row
+                    # (primaryPick: "r8404" — the lane-14 flip of record, the
+                    # first corpus row to carry the string form; lanes 9-13 used
+                    # booleans). The bundle's crossCourse row schema types the
+                    # field BOOLEAN (the "pick rides here" flag — the reader zod
+                    # fails a string, by design). Coerce the named-pick fact to
+                    # the flag, same as the same-course join path's bool().
+                    row2 = dict(row, servedUnder=supplier_course)
+                    row2["primaryPick"] = bool(row2.get("primaryPick"))
+                    crosscourse.append(row2)
                     cross["aligned"] += 1
                     p["_cc_cross"] += 1
                     continue
@@ -1237,8 +1330,11 @@ def main():
                 supplier_course = COURSE_OF_DIR.get(
                     os.path.basename(row.get("textOfRecordUnder") or ""))
                 if supplier_course and supplier_course != lane:
-                    crosscourse.append(dict(row, servedUnder=supplier_course,
-                                            nonOverlapRef=True))
+                    row2 = dict(row, servedUnder=supplier_course,
+                                nonOverlapRef=True)
+                    if "primaryPick" in row2:  # the same normalization law
+                        row2["primaryPick"] = bool(row2.get("primaryPick"))
+                    crosscourse.append(row2)
                     cross["nonOverlap"] += 1
                     continue
                 fail(f"[cross-lane] {slug}: not among the joined resources")
