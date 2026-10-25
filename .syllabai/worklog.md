@@ -21024,3 +21024,18 @@ Stage Summary:
 - Post-merge main @ 340ec64: verify✓ hub✓ (bounded re-check ~105s). Max 2/round budget consumed.
 - Not merged, gate-b fail: #285 verify✗hub✗ · #296 hub✗ · #303 verify✗ · #352 zero check-runs (stall ~37h, sustained skip).
 - Watch notes: main e407e0c (t-mig-141 Phase-D re-pin, lane direct-push); mirror reset hit #107 (89962a5 signature, 28th consecutive, fetch-first recovered, zero loss). Desk made no Neon/prod writes; the 0007/0014 production re-apply noted in #364 is an operator-ordered receipted leg, not a desk action.
+
+---
+Task ID: SIB-GEN r0 / BL-006 + BL-007 (operator orders "Execute SIB-GEN" trace 1a1726b6684c4055 + "run BL-007" trace 1a172e0138191add)
+Agent: main (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)
+
+Work Log:
+- Cross-repo lane of record (no v2 app code touched): syllabai-resources branch sib/sib-gen-r0 @ 0d9a67e (3 commits: 59f1ba1 infra / 10043d1 registry repair / 0d9a67e pilot receipts) + SyllabAI/syllabai branch sib-schema-v2-provenance @ 3872bec. PRs: resources #124, master #54. Full detail: resources@SubjectIntelligence/WORKLOG.md (SIB-GEN r0 entry) + runs/SIB-CHEMISTRY_4CH1-RUN-001/ receipts.
+- BL-006: provider-neutral SIB-GEN infrastructure landed of record — schema V2 (provenance one-of, zai_agent vocabulary), PIPELINE.md r0, five pipeline modules + evidence_policy, BL-003 SUPERSEDED.
+- BL-007 PILOT EXECUTED: run SIB-CHEMISTRY_4CH1-RUN-001 generated CUR-01 + MIS-01 through preflight -> evidence packs (24 official ERs, bounded) -> authoring -> v2 stamping -> validator QA (0 errors both) -> evidence-claim QA (22 citations resolve) -> run receipts. Educational review PASS on all five acceptance criteria.
+- PREFLIGHT CAUGHT A REAL REGISTRY DEFECT on first run: v1.2 TL/SAMS identifiers digest-corrupted (20-hex-prefix transcription class); repaired v1.2.1 first-hand vs teaching-materials.json ledger; files intact.
+- MASTER VALIDATOR DEFECT FIXED: anchors.py 'report or ...' falsiness silently discarded all anchor findings for clean artifacts; identity-check fix + regression tests; suite 139/139.
+- Disclosed, not patched: 4CH1 curriculum_registry pin key/prefix mismatch vs validator anchor law (23 honest ANCHOR warnings on MIS-01); 2024-06 1C ER extraction garble (not cited).
+
+Stage Summary:
+- SIB generation is now provider-neutral of record; the 4CH1 library holds its first two GENERATED artifacts with full receipts. BL-008 (batch orchestration) unlocked on operator order only; staging/publication remain operator gates. Register: registry-pin anchor repair (operator), PAT rotation (exposure +1 this session), master PR #54 merge order.
