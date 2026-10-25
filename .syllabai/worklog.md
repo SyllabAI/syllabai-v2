@@ -21059,3 +21059,8 @@ Stage Summary:
 - ADR-040 §5.3 leg complete and receipted: the corpus lane now carries LEVELS mark schemes verbatim from parser draft to SUGGESTED scheme birth, gated fail-closed at R4 by the coverage law of record; zero behavior change for the 30-row flipped point-scheme set (guardrail §3.7 pinned by byte-identical tests).
 - Next: §5.4 hub band dispatch → band-wave-1 ingest (0455×2/4GE1/4BS1/9609, SME/bundle band shape against real tables + first live R2 band probe) → §5.5 QWK eval lane → two-file flips, receipts per wave into #276.
 - Security: no credentials, no DB contact (code lane); rotation reminders stand.
+
+## R0-AUTO receipt — sweep 2026-10-25 21:00 +08 (Job 438940)
+- Merged #366 (t-sm-rollout ADR-040 §5.3 r0: converter LEVELS mode + validator rules): head 00fca1b → merge 4f45f8a. Gates: verify✓ hub✓ (head), mergeable=clean, 0 reviews/comments, 12 files boundary-clean (ingestion band-converter + coverage law + contracts additive + 34 tests).
+- Post-merge main @ 4f45f8a: verify✓ hub✓ (bounded re-check ~110s). 1 merge this round (only eligible PR; #285/#296/#303 red, #352 zero check-runs sustained skip).
+- Mirror reset hit #112 (33rd consecutive, 89962a5 signature) — fetch-first recovered, zero loss. Desk made no Neon/prod writes.
