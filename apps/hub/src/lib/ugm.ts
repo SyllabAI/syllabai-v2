@@ -32,7 +32,18 @@
  * pick r7616 (a calculus-trig-log stray); 42 non-overlaps by reference (9
  * with textOfRecordUnder disclosures per the supersede disclosure law);
  * the 3.3.2 pick r6018 rides its reference row — the pick lives on the
- * spec-point index, the body stays first-of-record under pure-1)
+ * spec-point index, the body stays first-of-record under pure-1);
+ * Differentiation twelfth — PR #134 + the two T-UGM-MODE1-12 amendments of
+ * record, the FOURTH pure-3 lane and the LARGEST FRESH-TEXT LANE SINCE
+ * LANE 9 (the inverse of the lane-11 shape: neither chain-rule nor
+ * product-rule is whole-imported of record): 40 fresh bodies (13×3.4.1 /
+ * 12×3.4.2 / 15×3.4.3) across the ten scoped stations + the single
+ * CROSS-COURSE flip r8931 riding its lane-7 body under
+ * pure-1-differentiation (3.4.2, by reference) + 29 non-overlaps by
+ * reference (3 honest re-routings of lane-10 bearings: r6620, r8134 → 3.5
+ * Integration, differentiating-exponentials → no extractable text); its 18
+ * supersede drops retire the stale lane-9/10/11 byref rows whose slugs now
+ * carry fresh text; picks r6938/r6530/r8620 — all fresh)
  * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
  * hub-side import is
