@@ -1,0 +1,256 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-bandwave1-g2kgseed-r0",
+ "date": "2026-10-26",
+ "session": "web-3bd4aa99-51b0-4bec-a362-f94adc40f19d",
+ "trace_id": "1a1750c39b3a4359",
+ "operator_order": "\"proceed with band waves\" (trace 1a1750c39b3a4359) — ADR-040 §5 leg 6, band-wave-1, executed at the probe's ordered gate G-2 (KG spine seeding) — the gate the r2probe receipt (ed79128) pinned as the G0 prerequisite for primary-topic binding and serving resolution",
+ "adr_of_record": "docs/ADR-040-LEVELS_OF_RESPONSE_MARKING.md (ACCEPTED via #356, merge 1aec820)",
+ "ledger_state_on_start": "ADR-040 §5 legs 1–5 closed of record: leg 1 acceptance #356 (1aec820) · leg 2 additive migration #364 (340ec64) + production apply ceremony GREEN adr040-prod-apply-r0 (0007+0014+0015 live) · leg 3 converter LEVELS mode #366 (4f45f8a, adr040-conv53-r0) · leg 4 hub band dispatch #370 (7792ae0, adr040-hub-dispatch-r0) · leg 5 eval lane #374 (2adc640, adr040-eval-lane-r0 — QWK + D5-β floors + metric-kind-hard gates + human_marks.band_placement capture). Leg 6 open; band-wave-1 grounded by the r2 probe (ed79128, adr040-bandwave1-r2probe-r0: F1 KG spines absent, F2 zero core presence, F3 printed levels tables on no reachable estate, F4 0455×2 are 100% paper-1 MCQ).",
+ "mode": "PRODUCTION KG-plane seed ceremony on the main of-record project (ep-ancient-cake-a52e4kfd/neondb, pooled endpoint) via the of-record reproducible apply path apps/api/scripts/seed-bundle-curriculum.ts (T-MIG-134; frozen services/curriculum/bundle-seed.ts law): pre-flight census (read-only) → per-bundle --dry-run (the exact statement sequence inside a transaction, rolled back by the sentinel — zero persistence) → per-bundle --apply (ONE transaction; mid-seed failure rolls the whole dimension back) → post-verify census → idempotence re-apply. Credential law: SEED_DATABASE_URL inline env only (the pooled owner uri, never printed, never persisted — same posture as the census receipt). Zero corpus writes, zero registry edits, zero flips, zero schema contact, zero app-code changes; the KG plane only (knowledge_nodes + knowledge_edges + curriculum_versions + subjects binding).",
+ "seed_inputs_of_record": {
+  "law": "the bundle is the operator-authorized hub content bundle apps/hub/content/<slug>/curriculum.json + manifest.json (schema syllabai-demo.content-bundle/2.0, importSource SyllabAI/syllabai-resources @ pinned ref); created_by lands bundle-seed-v1; board/level vocabulary fail-closed (BUNDLE_BOARD_BY_UPSTREAM + CIE widening); PART_OF store-direction normalization cross-checked against the parent chain",
+  "bundles": [
+   {
+    "slug": "cie-igcse-economics-20",
+    "board": "Cambridge International",
+    "level": "IGCSE",
+    "code": "0455",
+    "syllabusVersion": "2023-2025",
+    "nodes": 175,
+    "edges": 174
+   },
+   {
+    "slug": "cie-igcse-economics-25",
+    "board": "Cambridge International",
+    "level": "IGCSE",
+    "code": "0455",
+    "syllabusVersion": "2027-2029",
+    "nodes": 156,
+    "edges": 155
+   },
+   {
+    "slug": "igcse-geography-19",
+    "board": "Pearson Edexcel",
+    "level": "IGCSE",
+    "code": "4GE1",
+    "syllabusVersion": "2017",
+    "nodes": 243,
+    "edges": 242
+   },
+   {
+    "slug": "igcse-business-19",
+    "board": "Pearson Edexcel",
+    "level": "IGCSE",
+    "code": "4BS1",
+    "syllabusVersion": "2017",
+    "nodes": 110,
+    "edges": 109
+   },
+   {
+    "slug": "cie-a-level-business-23",
+    "board": "Cambridge International",
+    "level": "A-LEVEL",
+    "code": "9609",
+    "syllabusVersion": "2023-2025",
+    "nodes": 161,
+    "edges": 160
+   }
+  ]
+ },
+ "preflight_census": {
+  "knowledge_nodes": 10003,
+  "knowledge_edges": 10263,
+  "curriculum_versions": 41,
+  "wave1_family_nodes": {
+   "0455": 0,
+   "4GE1": 0,
+   "4BS1": 0,
+   "9609": 0
+  },
+  "tripwires": {
+   "questions_total": 24846,
+   "mark_schemes_total": 24824,
+   "mark_schemes_LEVELS": 0,
+   "mark_bands": 0,
+   "agreement_evals": 12
+  },
+  "subject_roots_before": 37
+ },
+ "dry_runs": {
+  "law": "the T-MIG-134 documented dry-run mode: the EXACT statement sequence inside a transaction, sentinel-rolled-back; counters discarded by design (-1)",
+  "results": [
+   {
+    "slug": "cie-igcse-economics-20",
+    "result": "CLEAN",
+    "wall": "5m08s"
+   },
+   {
+    "slug": "cie-igcse-economics-25",
+    "result": "CLEAN",
+    "wall": "4m39s"
+   },
+   {
+    "slug": "igcse-geography-19",
+    "result": "FAIL-CLOSED REFUSAL (of record)",
+    "wall": "3.9s",
+    "refusal": "BundleSeedConflictError: bundle SPEC_POINT IGCSE_GEOGRAPHY:SX.039 does not carry a numeric or letter-prefixed spec code (bundle-seed.ts mapBundleNodes, exit 1, zero writes)",
+    "cause": "all 202 geography SPEC_POINT codes are namespaced synthetic identities (IGCSE_GEOGRAPHY:SX.nnn / IGCSE_GEOGRAPHY:S1.nnn) — outside every pinned spec-code shape (numeric / ALNUM / letter-prefixed / CIE unit.seq / variant-suffixed); the frozen law refuses rather than re-deriving official numbers"
+   },
+   {
+    "slug": "igcse-business-19",
+    "result": "CLEAN",
+    "wall": "3m19s"
+   },
+   {
+    "slug": "cie-a-level-business-23",
+    "result": "CLEAN",
+    "wall": "4m24s"
+   }
+  ]
+ },
+ "applies": [
+  {
+   "slug": "cie-igcse-economics-20",
+   "version_of_record": "0455-2023-2025 (Cambridge IGCSE, ACTIVE)",
+   "nodesCreated": 175,
+   "edgesCreated": 174,
+   "specPoints": 129,
+   "applicabilityWrites": 0,
+   "alreadyActive": false,
+   "wall": "5m02s"
+  },
+  {
+   "slug": "cie-igcse-economics-25",
+   "version_of_record": "0455-2027-2029 (Cambridge IGCSE, ACTIVE)",
+   "nodesCreated": 156,
+   "edgesCreated": 155,
+   "specPoints": 113,
+   "applicabilityWrites": 0,
+   "alreadyActive": false,
+   "wall": "4m26s"
+  },
+  {
+   "slug": "igcse-business-19",
+   "version_of_record": "4BS1-2017 (International GCSE (9-1), ACTIVE)",
+   "nodesCreated": 110,
+   "edgesCreated": 109,
+   "specPoints": 59,
+   "applicabilityWrites": 59,
+   "alreadyActive": false,
+   "wall": "3m21s"
+  },
+  {
+   "slug": "cie-a-level-business-23",
+   "version_of_record": "9609-2023-2025 (Cambridge International AS & A Level, ACTIVE)",
+   "nodesCreated": 161,
+   "edgesCreated": 160,
+   "specPoints": 116,
+   "applicabilityWrites": 0,
+   "alreadyActive": false,
+   "wall": "4m37s"
+  }
+ ],
+ "postverify_census": {
+  "knowledge_nodes": 10605,
+  "knowledge_edges": 10861,
+  "curriculum_versions": 45,
+  "deltas_of_record": {
+   "knowledge_nodes": "+602",
+   "knowledge_edges": "+598",
+   "curriculum_versions": "+4"
+  },
+  "wave1_family_nodes": {
+   "0455": {
+    "total": 331,
+    "by_type": {
+     "SUBJECT": 2,
+     "UNIT": 12,
+     "TOPIC": 75,
+     "SPEC_POINT": 242
+    }
+   },
+   "4BS1": {
+    "total": 110,
+    "by_type": {
+     "SUBJECT": 1,
+     "UNIT": 25,
+     "TOPIC": 25,
+     "SPEC_POINT": 59
+    }
+   },
+   "9609": {
+    "total": 161,
+    "by_type": {
+     "SUBJECT": 1,
+     "UNIT": 10,
+     "TOPIC": 34,
+     "SPEC_POINT": 116
+    }
+   },
+   "4GE1": {
+    "total": 0,
+    "note": "refused bundle — correctly absent"
+   }
+  },
+  "subjects_rows_bound": [
+   {
+    "spec": "0455",
+    "version": "0455-2023-2025",
+    "root": "0455-2023-2025"
+   },
+   {
+    "spec": "0455",
+    "version": "0455-2027-2029",
+    "root": "0455-2027-2029"
+   },
+   {
+    "spec": "4BS1",
+    "version": "4BS1-2017",
+    "root": "4BS1"
+   },
+   {
+    "spec": "9609",
+    "version": "9609-2023-2025",
+    "root": "9609-2023-2025"
+   }
+  ],
+  "edge_integrity": "every non-root wave-1 node carries exactly one PART_OF parent — 0 violations across all four families",
+  "provenance_of_record": "bundle:<slug>|src:SyllabAI/syllabai-resources@<pinned ref>|schema:syllabai-demo.content-bundle/2.0|tier:RULE_DERIVED|gate:operator-git-PR",
+  "tripwires_unchanged": {
+   "questions_total": 24846,
+   "mark_schemes_total": 24824,
+   "mark_schemes_LEVELS": 0,
+   "mark_bands": 0,
+   "agreement_evals": 12
+  }
+ },
+ "idempotence_of_record": {
+  "probe": "igcse-business-19 re-apply (the 134a structural no-op law, verified live)",
+  "result": {
+   "nodesCreated": 0,
+   "nodesReused": 110,
+   "edgesCreated": 0,
+   "edgesReused": 109,
+   "applicabilityWrites": 0,
+   "alreadyActive": true,
+   "wall": "1m31s"
+  }
+ },
+ "gates_status": {
+  "G-1_ms_extraction": "FIRST TRANCHE LANDED (adr040-g1-msfetch-r0 @ 9a085fe): 62 docs sha-verified (4GE1 2022-06..2026-06, 4BS1 2019-06..2026-06), 437 entries / 1,275 verbatim band rows staged in .syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/ — the conv53 band-shape design and the G-4 LEVELS birth for the repo-covered papers are UNBLOCKED. Gap ledger (honest, from that receipt): 4GE1 pre-2022 sessions are legacy-4GE0 / not in the repo of record; 4BS1 Nov 2020 missing; CIE 9609/0455 external fetch BLOCKED 0/78 (JS-gated sources) — headless-browser pass or operator-supplied CIE PDFs next; per G-3 the wave proceeds 4GE1/4BS1-first.",
+  "G-2_kg_spine_seeding": "CLOSED for 4 of 5 wave-1 courses (0455×2 / 4BS1 / 9609: 602 nodes / 598 edges / 4 ACTIVE versions; idempotence verified). 4GE1 enters on the BUNDLE-REPAIR PATH: the hub bundle's spec-point codes must be re-exported to the official Edexcel identity upstream (syllabai-resources SME spec-point index) before the frozen seed law can bind them — a corpus-lane fix, never a seed relaxation.",
+  "G-3_0455_corpus_extension": "unchanged (paper-2 QP corpus extension path per F4/G-3)",
+  "G-4_ingest_levels_mode": "code live on main (conv53) — unblocked per-course by G-1 slices",
+  "G-5_r4_band_validation": "code live on main (conv53: bandCoverageViolations + assertBandsTileForFlip) — fails closed",
+  "G-6_api_deploy": "pending (serving-time gate)",
+  "G-7_eval_lane_flips": "eval lane CLOSED (#374); flips gated on R5 κ calibration (human placements) + R6 operator sign-off"
+ },
+ "next_lane": "band-shape design against the REAL printed tables (437 staged band rows) -> G-4 LEVELS birth for the repo-covered 4GE1/4BS1 corpus-bearing papers (ingestPastPaperDraft LEVELS mode, schemes birth SUGGESTED, bands verbatim) -> R4 band validation fail-closed -> receipt; 4GE1 KG tree rides the hub bundle re-export to official Edexcel spec identities (this receipt's fail-closed refusal is 4GE1's critical-path item — its MS drafts are already staged); CIE 9609/0455 MS fetch follows the g1-msfetch gap plan",
+ "security": "production-main write plane used: pooled owner credential via inline env (SEED_DATABASE_URL), never printed, never persisted, never committed; session statements are the frozen seed's own parameterized inserts only; no flyway_schema_history contact; the pre-flight/post-verify censuses ran session-readonly",
+ "files_touched": [
+  ".syllabai/receipts/T-SM-ROLLOUT/adr040-bandwave1-g2kgseed-r0.json",
+  ".syllabai/worklog.md"
+ ],
+ "concurrent_lane_of_record": "G-1 executed CONCURRENTLY by the operator-ordered lane \"fetch them\" (adr040-g1-msfetch-r0, trace 1a1753386b042f7d, direct-to-main 9a085fe @ 2026-10-25T22:56:06Z): 62 wave-1 MS PDFs sha-verified from SyllabAI/syllabai-pastpapers + deterministic PyMuPDF parse -> 437 band entries / 1,275 verbatim band rows (reviewRequired=true). This leg's applies ran 22:33-22:46Z (curriculum_versions.created_at of record) — genuinely concurrent lanes with ZERO plane overlap (this leg: DB KG plane; that leg: repo lane-artifacts). Receipt reconciled before merge."
+}
