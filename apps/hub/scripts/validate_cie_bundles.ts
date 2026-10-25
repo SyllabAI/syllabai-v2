@@ -58,18 +58,63 @@ const BRIDGED_CIE_SLUGS: readonly string[] = [
   "cie-a-level-maths-20-pure-1",
   "cie-a-level-maths-20-pure-3",
   "cie-a-level-physics-25",
+  "cie-igcse-accounting-21",
   "cie-igcse-biology-23",
   "cie-igcse-chemistry-23",
   "cie-igcse-computer-science-23",
+  "cie-igcse-further-maths-additional-maths-25",
   "cie-igcse-ict-21",
   "cie-igcse-maths-25-core",
   "cie-igcse-maths-25-extended",
   "cie-igcse-maths-international-maths-23-core",
   "cie-igcse-maths-international-maths-23-extended",
   "cie-igcse-physics-23",
+  "cie-igcse-science-combined-science-23-biology",
+  "cie-igcse-science-combined-science-23-chemistry",
+  "cie-igcse-science-combined-science-23-physics",
   "cie-igcse-science-co-ordinated-sciences-double-award-23-biology",
   "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry",
   "cie-igcse-science-co-ordinated-sciences-double-award-23-physics",
+];
+
+/**
+ * T-SM-EDX-INGEST-R1 run-001 (operator order trace 1a16ece951b064c9,
+ * 2026-10-25): the 28 Edexcel point-scheme rows that passed the FAMILY gate
+ * (census_gate_families.ts: included == banked == validated over the member
+ * ref families of the hub join law) and join the coreBridge law of record.
+ * The Wave-3 band-scheme rows (9609, 8291, 0450, 0264, 0455x2, 0475, 0680,
+ * 0460x2, 0470, 0490, 4BS1, 4EA1, 4ET1, 4GE1) STAY coreBridge-absent pending
+ * the levels-of-response ADR — this pin continues to enforce that exclusion.
+ */
+const BRIDGED_R1_EDX_SLUGS: readonly string[] = [
+  "ial-biology-18",
+  "ial-chemistry-17",
+  "ial-further-maths-18-further-pure-1",
+  "ial-maths-20-decision-1",
+  "ial-maths-20-mechanics-1",
+  "ial-maths-20-mechanics-2",
+  "ial-maths-20-pure-1",
+  "ial-maths-20-pure-2",
+  "ial-maths-20-pure-3",
+  "ial-maths-20-pure-4",
+  "ial-maths-20-statistics-1",
+  "ial-maths-20-statistics-2",
+  "ial-physics-19",
+  "igcse-accounting-17-financial-statements",
+  "igcse-accounting-17-introduction-to-bookkeeping-and-accounting",
+  "igcse-biology-modular-24-unit-1",
+  "igcse-biology-modular-24-unit-2",
+  "igcse-chemistry-modular-24-unit-1",
+  "igcse-chemistry-modular-24-unit-2",
+  "igcse-economics-17",
+  "igcse-further-maths-19",
+  "igcse-ict-17",
+  "igcse-maths-a-modular-24-foundation-unit-1",
+  "igcse-maths-a-modular-24-foundation-unit-2",
+  "igcse-maths-a-modular-24-higher-unit-1",
+  "igcse-maths-a-modular-24-higher-unit-2",
+  "igcse-physics-modular-24-unit-1",
+  "igcse-physics-modular-24-unit-2",
 ];
 
 // ── the fill-where-served law (HUB-REGISTRY, ADR-030 — the run-009 onGreen
@@ -293,7 +338,7 @@ check("registry carries 45 CIE rows (44-slug roster + D1 pure-2)", cieRowCount =
 const cieFilled = reg.courses.filter((c) => c.board === BOARD && c.curriculumCode !== undefined).length;
 check("registry CIE fill of record: 44/45 mapped (the run-009 onGreen fill; pure-2 the honest gate)",
   cieFilled === 44, String(cieFilled));
-check("registry coreBridge CIE law of record: exactly the 21 T-SM-BRIDGE-WIDEN r0 rows carry true; every other CIE row stays absent (Wave-3 band-scheme rows remain blocked pending the levels-of-response ADR)",
+check("registry coreBridge CIE law of record: exactly the 26 T-SM-BRIDGE-WIDEN r0 + T-SM-EDX-INGEST-R1 rows carry true; every other CIE row stays absent (Wave-3 band-scheme rows remain blocked pending the levels-of-response ADR)",
   reg.courses
     .filter((c) => c.board === BOARD)
     .every((c) =>
@@ -301,7 +346,7 @@ check("registry coreBridge CIE law of record: exactly the 21 T-SM-BRIDGE-WIDEN r
     )
   && reg.courses.filter((c) => c.board === BOARD && c.coreBridge === true).length
     === BRIDGED_CIE_SLUGS.length);
-check("registry coreBridge of record: the T-SM-BRIDGE-WIDEN r0 set — the two 4MA1 maths-a rows (T-MIG-135d) + igcse-maths-b-16 (this lane) + the 21 CIE rows (this lane) + the two T-SM-EDX-INGEST linear science rows (igcse-biology-19, igcse-physics-19; bank-verified 2026-10-22: 322+489 refs, all VALIDATED) + the three T-SM-SD0-FIX-R0 4SD0 strand rows (igcse-science-double-award-17-{biology,chemistry,physics}; bank-verified 2026-10-24 on the restored estate: 907 refs / 907 VALIDATED schemes / 1,842 part-linked mark_points / 1,905 spec joins; parts==parts_validated_bound 684/492/649 all PASS), every flagged row true",
+check("registry coreBridge of record: the T-SM-BRIDGE-WIDEN r0 set + the T-SM-EDX-INGEST-R1 r0 set — the two 4MA1 maths-a rows (T-MIG-135d) + igcse-maths-b-16 + the two T-SM-EDX-INGEST linear science rows (igcse-biology-19, igcse-physics-19; bank-verified 2026-10-22: 322+489 refs, all VALIDATED) + the three T-SM-SD0-FIX-R0 4SD0 strand rows (bank-verified 2026-10-24) + the 26 CIE rows (21 T-SM-BRIDGE-WIDEN + 0452/0606/0653x3 bank-verified 2026-10-25: family-gate FULL) + the 28 T-SM-EDX-INGEST-R1 Edexcel point-scheme rows (bank-verified 2026-10-25: the family census of record — 60 FULL rows incl. YMA01x9 3,411 families, YBI11/YCH11/YPH11/YFM01, 4XBI1/4XCH1/4XPH1/4XMAF/4XMAH modular units, 4AC1x2, 4EC1, 4PM1, 4IT1; receipt .syllabai/receipts/T-SM-EDX-INGEST-R1/ingest-r1.json), every flagged row true",
   (() => {
     const expected = new Set<string>([
       "igcse-maths-a-18-foundation",
@@ -313,6 +358,7 @@ check("registry coreBridge of record: the T-SM-BRIDGE-WIDEN r0 set — the two 4
       "igcse-science-double-award-17-chemistry",
       "igcse-science-double-award-17-physics",
       ...BRIDGED_CIE_SLUGS,
+      ...BRIDGED_R1_EDX_SLUGS,
     ]);
     const flagged = reg.courses.filter((c) => c.coreBridge !== undefined);
     return (
