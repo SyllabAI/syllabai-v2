@@ -1,0 +1,59 @@
+{
+ "lane": "T-SM-EDX-INGEST-R1",
+ "task": "residue-fix-reverify — post-rollback independent re-verification of the closed residue-fix-r0",
+ "operator_order": {
+  "verbatim": "fire",
+  "channel": "zai-web",
+  "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+  "chat": "371a9d19-b6bb-4173-9696-cee324b265a1",
+  "trace_id": "1a172ead2fbac8f1",
+  "date": "2026-10-25",
+  "context": "re-confirmation of the standing order 'fire the 4-ref residue fix lane' (trace 1a1726a399902f45) after a sandbox substrate rollback"
+ },
+ "state_on_entry": {
+  "rollback": "the sandbox substrate reset again: .creds/, the probe instruments (probe_r1.py, reconcile_r1.py, db_check_missing.py), corpus snapshots and the later worklog entries were gone; origin main and the production DB (the estate of record) were untouched",
+  "recovery": "the 4 credential files reinstalled from the session record (10th install of record, chmod 600)",
+  "lane_found_closed_of_record": "r1fix-residue-package.ts committed 3fe6f96d (09:53:38Z); receipt residue-fix-r0.json committed 4d9aac53d (09:53:58Z); #276 END disclosure 6396187267 (09:54:17Z); PR #361 anchor repair merged 52ddc7e74"
+ },
+ "no_reinsert_proof": {
+  "method": "read-only DB pre-flight (scripts/db_preflight_fix4.py)",
+  "result": "4/4 family rows PRESENT (3 base + 1 MCQ member -p1), active sme-eq rows 20,930 = 20,926 (R1 probe) + 4 exactly; pure-insert precondition therefore consumed — zero writes issued by this run"
+ },
+ "reverification": {
+  "db_leg": {
+   "instrument": "scripts/db_verify_fix4.py (read-only, psycopg2)",
+   "results": [
+    "4/4 families: active, provenance PAST_PAPER, marks == corpus totalMarks (3/1/3/4), latest version VALIDATED, 1 VALIDATED scheme each",
+    "part shapes per law: q35 (a:3), q11 (a:2 + b:2), q0 (a:3), q14-p1 MCQ member zero-parts with options A-D, exactly 1 correct",
+    "spec joins PRIMARY AI_VALIDATED: 4EC1-2.1.2b / 4EC1-1.1.1e / YMA01-P1.11 / YMA01-P1.1",
+    "primary topics via questions.primary_topic_node_id: 4EC1-S3-2 / 4EC1-S1-1 / YMA01-SP1-_ x2 (question_topics empty for sme-eq rows — the curriculum-side join, not the SME store)",
+    "zero duplicate active refs in the sme-eq space",
+    "bank census (active rows, the R1 metric): econ-17 525 · pure-1 462 · accounting-17 254 — 100% VALIDATED schemes on the latest version (525/525, 462/462, 254/254)"
+   ],
+   "verdict": "ALL GREEN"
+  },
+  "live_probe_leg": {
+   "instrument": "scripts/probe_r1.py (canonical 10-check probe; fresh account r1-reverify-20261025@example.com)",
+   "results": [
+    "auth register 201 + accessToken (STUDENT)",
+    "depth1 x3: 4EC1 / YMA01 / 4AC1 all available:true",
+    "depth2 x3: business-costs 38/38, graphs-of-functions 30/30 skipped=[] (was 29/30 + 1 skip pre-fix), financial-statements 7/7 — marks multisets exact",
+    "negatives x3: unauthenticated / not_pilot x2 honest"
+   ],
+   "verdict": "10/10 GREEN"
+  },
+  "reconcile_leg": {
+   "instrument": "scripts/reconcile_full.py (corpus vs the live serving route across all 31 topics, minus-skipped marks law)",
+   "results": "econ 468/468 · pure-1 462/462 · accounting-financial-statements 32/32 — TOTAL 962/962 joined, zero skips (was 958/962 + 4 family absences)",
+   "verdict": "GREEN"
+  }
+ },
+ "drift_note": "the re-verification lands AFTER merges #363 (2d3e082cd) and #364 (340ec643a) and the subsequent main receipts commit d48e5b442 — the residue fix holds across them with zero serving drift",
+ "instruments_persisted": [
+  "scripts/db_preflight_fix4.py",
+  "scripts/db_verify_fix4.py",
+  "scripts/probe_r1.py",
+  "scripts/reconcile_full.py"
+ ],
+ "outcome": "residue-fix-r0 re-verified end-to-end on the live estate — CLOSED, remains closed; no writes, no re-inserts, no deactivations"
+}
