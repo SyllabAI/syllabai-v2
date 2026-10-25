@@ -815,11 +815,11 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
   );
   const b3 = UgmLaneBundle.parse(JSON.parse(readFileSync(B3_PATH, "utf8")));
 
-  test("schema + the corpus pin of record (post-#140 merge + the T-UGM-MODE1-13 amendment r0, T-UGM-HUB-CONSUME-13)", () => {
+  test("schema + the corpus pin of record (post-#145 merge, T-UGM-HUB-CONSUME-14)", () => {
     expect(b3.schema).toBe("syllabai-demo.ugm-lane-resources/1.2"); // 1.2 = the honest-gap law (primaryPick nullable); the pure-1 bundle stays 1.1 — both reader-accepted
     expect(b3.lane).toBe("cie-a-level-maths-20-pure-3");
     expect(b3.source.ref).toBe(
-      "main@41d352212173a2602dc20ccff55ebbb30999a139",
+      "main@8b3e57b917d773eb9dff8c5802b30ae9b98a8b45",
     );
     expect(b3.source.enrichment).toEqual([
       "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json",
@@ -827,6 +827,7 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
       "UGM-Enrichment/cie-a-level-maths-20-pure-3-trigonometry.json",
       "UGM-Enrichment/cie-a-level-maths-20-pure-3-differentiation.json",
       "UGM-Enrichment/cie-a-level-maths-20-pure-3-integration.json",
+      "UGM-Enrichment/cie-a-level-maths-20-pure-3-iteration.json",
     ]);
     expect(b3.source.resourcesDir).toEqual([
       "UGM-Resources/pure-3-algebra",
@@ -834,25 +835,27 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
       "UGM-Resources/pure-3-trigonometry",
       "UGM-Resources/pure-3-differentiation",
       "UGM-Resources/pure-3-integration",
+      "UGM-Resources/pure-3-iteration",
     ]);
     expect(b3.reviewState.state).toBe("SUGGESTED");
   });
 
-  test("the lanes 9-13 fleet census of record: 126 bodies / 188 rows / 21 spec points / 46 station rows", () => {
-    expect(b3.resources.length).toBe(126);
-    expect(b3.coverage.aligned).toBe(126); // the served corpus — all 126 bodies aligned
+  test("the lanes 9-14 fleet census of record: 129 bodies / 201 rows / 24 spec points / 66 station rows", () => {
+    expect(b3.resources.length).toBe(129);
+    expect(b3.coverage.aligned).toBe(129); // the served corpus — all 129 bodies aligned
     expect(b3.coverage.nonOverlap).toBe(0); // served non-overlap bodies: none (by-reference law)
-    expect(b3.coverage.candidateRows).toBe(188); // 38+34+1+40+16 fresh memberships (143 over 126 bodies) + 9+5+27+1+3 cross-course rows
-    expect(b3.coverage.ugmResourcesConsidered).toBe(126);
+    expect(b3.coverage.candidateRows).toBe(201); // 151 memberships over 129 bodies (143 prior + 4 lane-14 fresh + 4 same-course join codes) + 50 cross-course rows (45 prior + 5 lane-14 riders)
+    expect(b3.coverage.ugmResourcesConsidered).toBe(129);
     expect(b3.coverage.specPointsCovered).toEqual([
       "3.1.1", "3.1.2", "3.1.3", "3.1.4", "3.1.5", "3.1.6",
       "3.2.1", "3.2.2", "3.2.3", "3.2.4", "3.3.1", "3.3.2",
       "3.4.1", "3.4.2", "3.4.3",
       "3.5.1", "3.5.2", "3.5.3", "3.5.4", "3.5.5", "3.5.6",
+      "3.6.1", "3.6.2", "3.6.3",
     ]);
-    expect(b3.stations.length).toBe(46); // 15 + 3 + 3 + 10 + 15 declared rows; exp-and-log/calculus-trig-log/chain-rule/product-rule/thinking-about-* are shared declared rows (twice/thrice-by-design house shape)
-    expect(new Set(b3.stations.map((s) => s.slug)).size).toBe(24); // lane 13 adds circles, geometry-of-equations, introducing-calculus and sequences as declared rows (its 15-station stationScope rides the sweep's strays law)
-    expect(b3.coverage.lanes.length).toBe(5);
+    expect(b3.stations.length).toBe(66); // 15 + 3 + 3 + 10 + 15 + 20 declared rows; exp-and-log/calculus-trig-log/chain-rule/product-rule/thinking-about-* are shared declared rows (twice/thrice-by-design house shape)
+    expect(new Set(b3.stations.map((s) => s.slug)).size).toBe(25); // lane 14 adds thinking-about-numbers as a declared row (its 20-station stationScope rides the sweep's strays law; the other 19 are already declared)
+    expect(b3.coverage.lanes.length).toBe(6);
     expect(b3.coverage.lanes[0]).toMatchObject({
       station: "algebra",
       stationTitle: "Algebra",
@@ -903,16 +906,26 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
       crossLaneAligned: 7, // 1 flip (circular-slice → 3.5.6/3.5.2) + 6 one-to-many joins beside standing alignments
       crossLaneNonOverlap: 0,
     });
+    expect(b3.coverage.lanes[5]).toMatchObject({
+      station: "iteration",
+      stationTitle: "Numerical solution of equations",
+      ugmResourcesConsidered: 48, // the lane-14 enrichment's sweep universe of record (48 candidates)
+      aligned: 11,
+      nonOverlap: 1,
+      candidateRows: 15, // 4 fresh memberships over 3 bodies (staircase-sequences flags twice) + 7 cross-course pairs (5 rider slugs) + 4 same-course pairs (3 rider bodies)
+      crossLaneAligned: 8, // 1 flip (r8404 → 3.6.2/3.6.3) + 7 one-to-many joins beside standing alignments
+      crossLaneNonOverlap: 0,
+    });
     // the 35 fresh lane-9 bodies by station of record
     const byStation = (slug: string) => b3.resources.filter((r) => r.station === slug);
-    expect(byStation("polynomials").length).toBe(25);
+    expect(byStation("polynomials").length).toBe(26); // lane-9's strays + lane-14's r8711 (the purest sign-change search in the corpus)
     expect(byStation("product-rule").length).toBe(20); // lane-9's 3 + lane-12's 13 + lane-13's 4 fresh
     expect(byStation("thinking-about-functions").length).toBe(2);
     expect(byStation("power-series").length).toBe(2);
     expect(byStation("chain-rule").length).toBe(28); // lane-9's 2 + lane-12's 21 + lane-13's 5 fresh
     expect(byStation("hyperbolic-functions").length).toBe(1);
     // the 34 fresh lane-10 bodies by station of record (dedicated station + strays)
-    expect(byStation("exp-and-log").length).toBe(31);
+    expect(byStation("exp-and-log").length).toBe(32); // + lane-14's r8013 (the graphical 3^x=3x+2)
     expect(byStation("thinking-about-algebra").length).toBe(2);
     // lane 11's single fresh body: the 3.3.1 pick r7616, a calculus-trig-log
     // stray (the dedicated trigonometry stations ride by-reference rows — the
@@ -937,21 +950,37 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     expect(gap354.ugmIds).toEqual([]);
     expect(gap354.primaryPick).toBeNull();
     expect(gap354.officialText).toContain("integrand");
+    // lane 14's 3 fresh bodies land on three scattered stations (the
+    // scattered-substrate law — polynomials r8711, exp-and-log r8013,
+    // thinking-about-numbers staircase-sequences). NO honest gap this lane:
+    // 3.6.1/3.6.2/3.6.3 all carry rows (4/2/2 served; the pure-1 riders
+    // r5948/r7549/r8231/r9082 ride by reference and stay out of ugmIds).
+    expect(byStation("thinking-about-numbers").length).toBe(1); // staircase-sequences, the lane's third fresh body
+    const it61 = b3.specPoints.find((sp) => sp.code === "3.6.1")!;
+    expect(it61.resourceCount).toBe(4);
+    expect(it61.ugmIds).toEqual(["r8013", "r8711", "see-the-power", "to-log-or-not-to-log"]);
+    expect(it61.primaryPick).toBe("r8711");
+    const it62 = b3.specPoints.find((sp) => sp.code === "3.6.2")!;
+    expect(it62.resourceCount).toBe(2);
+    expect(it62.primaryPick).toBe("r8404"); // rides its lane-6 body — the r6018 convention, disclosed
+    const it63 = b3.specPoints.find((sp) => sp.code === "3.6.3")!;
+    expect(it63.resourceCount).toBe(2);
+    expect(it63.primaryPick).toBe("r8231"); // rides its lane-3 body — disclosed
     const r7616 = b3.resources.find((r) => r.ugmId === "r7616");
     expect(r7616).toBeDefined();
     expect(r7616!.specPoints.map((s) => s.code)).toEqual(["3.3.1", "3.5.1"]); // lane-13's one-to-many join rides the served lane-11 body beside its standing 3.3.1 pick
     expect(r7616!.specPoints[0].primaryPick).toBe(true);
   });
 
-  test("cross-course joins of record: 45 by-reference rows served under pure-1 (30 flips + 19 one-to-many events)", () => {
-    expect(b3.coverage.crossLaneJoined).toEqual({ aligned: 52, nonOverlap: 0 }); // 45 cross-course + 7 same-course joins (lane-13's r7616/r8774 joins ride lane-11/12 bodies)
+  test("cross-course joins of record: 50 by-reference rows served under pure-1 (31 flips + 26 one-to-many events)", () => {
+    expect(b3.coverage.crossLaneJoined).toEqual({ aligned: 61, nonOverlap: 0 }); // 50 cross-course + 11 same-course joins (lane-13's r7616/r8774 + lane-14's r8679/to-log-or-not-to-log/see-the-power joins ride same-course bodies)
     const cc = b3.coverage.crossCourse!;
-    expect(cc.aligned).toBe(45);
+    expect(cc.aligned).toBe(50);
     expect(cc.nonOverlapRef).toBe(0);
-    expect(cc.flips).toBe(30); // lane-9's 5 + lane-11's 23 (the lane-5 pre-baked pool) + lane-12's r8931 + lane-13's circular-slice; lane-10 adds none
-    expect(cc.oneToMany).toBe(19); // lane-9's 4 + lane-10's 5 + lane-11's 4 + lane-13's 6 join events (all six counted; three ride pure-1 bodies — r9312, r9701's second row; the other four ride same-course lane-11/12/9 bodies and surface in crossLaneJoined only)
-    expect(cc.courses).toEqual({ "cie-a-level-maths-20-pure-1": 45 });
-    expect(cc.rows.length).toBe(45);
+    expect(cc.flips).toBe(31); // lane-9's 5 + lane-11's 23 (the lane-5 pre-baked pool) + lane-12's r8931 + lane-13's circular-slice + lane-14's r8404; lane-10 adds none
+    expect(cc.oneToMany).toBe(26); // lane-9's 4 + lane-10's 5 + lane-11's 4 + lane-13's 6 + lane-14's 7 join events (all counted; r8231/r7549/r5948/r9082's second row ride pure-1 bodies, r8679/to-log-or-not-to-log/see-the-power ride same-course bodies and surface in crossLaneJoined only)
+    expect(cc.courses).toEqual({ "cie-a-level-maths-20-pure-1": 50 });
+    expect(cc.rows.length).toBe(50);
     for (const row of cc.rows) {
       expect(row.servedUnder).toBe("cie-a-level-maths-20-pure-1");
       expect(row.textOfRecordUnder).toMatch(/^UGM-Resources\/pure-1-/);
@@ -961,12 +990,13 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
       "circular-slice", "equation-or-identity-ii", "going-round-in-circles",
       "inspecting-identities", "lost-but-lovely-the-haversine", "muddled-trig",
       "proving-half-angle-formulae", "r5113", "r5129", "r5245", "r5362",
-      "r5723", "r6018", "r6039", "r6120", "r6137", "r6295", "r6340", "r6696",
-      "r6807", "r7021", "r7050", "r7184", "r7477", "r7581", "r7604", "r7607",
-      "r8260", "r8427", "r8525", "r8557", "r8648", "r8709", "r8931", "r9082",
-      "r9312", "r9523", "r9701", "r9701", "r9740", "r9782", "r9824",
-      "t-for-tan", "transformation-or-not", "trig-tables",
-    ]); // 45 rows over 44 distinct slugs — r9701 rides twice (lane-9's 3.1.5 + lane-13's 3.5 join), circular-slice's one row carries both its 3.5.6/3.5.2 codes
+      "r5723", "r5948", "r6018", "r6039", "r6120", "r6137", "r6295", "r6340",
+      "r6696", "r6807", "r7021", "r7050", "r7184", "r7477", "r7549", "r7581",
+      "r7604", "r7607", "r8231", "r8260", "r8404", "r8427", "r8525", "r8557",
+      "r8648", "r8709", "r8931", "r9082", "r9082", "r9312", "r9523", "r9701",
+      "r9701", "r9740", "r9782", "r9824", "t-for-tan", "transformation-or-not",
+      "trig-tables",
+    ]); // 50 rows over 48 distinct slugs — r9701 rides twice (lane-9's 3.1.5 + lane-13's 3.5 join) AND r9082 rides twice (lane-9's 3.1.4 + lane-14's 3.6.1 join); r8404's one row carries both its 3.6.2/3.6.3 codes, r8231's one row carries both its 3.6.1/3.6.3 codes
     // the lane-11 additions: the 23 flips of the lane-5 pre-baked 'P3 2.3'
     // pool + the 4 one-to-many (going-round-in-circles, muddled-trig,
     // trig-tables under 3.3.1; r7021 under 3.3.2) — all riding
@@ -981,6 +1011,11 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     // lane-4 body under pure-1-circular-measure, the lane-9 flip law two
     // courses on) + the r9312/r9701 one-to-many joins (the twice-by-parts
     // envelope integral and the partial-fraction INTEGRATION row)
+    // the lane-14 additions: the r8404 flip (3.6.2/3.6.3 — its lane-6 body
+    // under pure-1-series carries spec_points [] UNMAPPED-BY-DESIGN under
+    // rule 3: the FIRST flip of record whose prior body carried no spec
+    // assertion, the circular-slice precedent one step further) + the
+    // r8231/r7549/r5948/r9082(one-to-many) cross-course riders
     // first-of-record body law: NO cross-course slug may carry a body here
     const ids = new Set(b3.resources.map((r) => r.ugmId));
     for (const s of slugs) expect(ids.has(s)).toBe(false);
@@ -992,7 +1027,7 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
 
   test("non-overlaps by reference: 89 rows with bodyImported=false — reasons disclosed, zero bodies", () => {
     const nbr = b3.coverage.nonOverlapByReference!;
-    expect(nbr.count).toBe(89); // 95 prior − 17 stale bearing rows retired by the 14 fresh lane-13 bodies (several carried dual code rows) + lane-13's 11 newly-disclosed rows (5 superseding stale bearings re-disclosed under lane-13 + 5 P1-1.8-domain routes + the no-text teacher-support page)
+    expect(nbr.count).toBe(89); // 89 prior − r8013's stale bearing row (retired by r8013's own lane-14 fresh body) + lane-14's 1 newly-disclosed row (staircase-sequences-revisited — the companion disclosure: convergents ARE approximations, representation is the aim)
     expect(nbr.rows.length).toBe(89);
     for (const row of nbr.rows) {
       expect(row.reason).toBeDefined();
@@ -1003,9 +1038,13 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     // GONE — lane 10 flips it to aligned WITH a fresh body (3.2.3), and the
     // bundle never declares a resource body-less while serving its body
     expect(nbr.rows.find((r) => r.ugmSlug === "to-log-or-not-to-log")).toBeUndefined();
+    // lane-14 supersede law: r8013's stale bearing row is GONE — its fresh
+    // 3.6.1 body serves it now; and the companion disclosure is IN
+    expect(nbr.rows.find((r) => r.ugmSlug === "r8013")).toBeUndefined();
+    expect(nbr.rows.find((r) => r.ugmSlug === "staircase-sequences-revisited")).toBeDefined();
     const flipped = b3.resources.find((r) => r.ugmId === "to-log-or-not-to-log");
     expect(flipped).toBeDefined();
-    expect(flipped!.specPoints.map((s) => s.code)).toEqual(["3.2.3"]);
+    expect(flipped!.specPoints.map((s) => s.code)).toEqual(["3.2.3", "3.6.1"]); // the lane-14 one-to-many join rides the lane-9/10 body beside its standing 3.2.3 pick
     // and no served resource is a non-overlap (they are all aligned)
     expect(b3.resources.every((r) => !r.nonOverlap)).toBe(true);
     // lane-11's 42 by-reference rows ride the sweep's stations of record —
@@ -1018,7 +1057,7 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     expect(bySt("trigonometry-triangles-to-functions")).toBe(2);
   });
 
-  test("the twenty-one picks of record (r6018 rides its reference row — the lane-11 pick law; 3.5.4 carries the honest gap — no rows, no pick; the multi-code law: 12 bodies flag twice-or-more)", () => {
+  test("the twenty-four picks of record (r6018 rides its reference row — the lane-11 pick law, joined by r8404 and r8231 in lane 14; 3.5.4 keeps the honest gap — no rows, no pick; the multi-code law: 16 bodies flag twice-or-more)", () => {
     const picks = Object.fromEntries(b3.specPoints.map((sp) => [sp.code, sp.primaryPick]));
     expect(picks).toEqual({
       "3.1.1": "absolutely",
@@ -1042,6 +1081,9 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
       "3.5.4": null, // the honest gap of record — no f'(x)/f(x) resource exists corpus-wide (rule 3)
       "3.5.5": "r8134",
       "3.5.6": "r8890",
+      "3.6.1": "r8711",
+      "3.6.2": "r8404", // rides its lane-6 body — the r6018 convention
+      "3.6.3": "r8231", // rides its lane-3 body — disclosed
     });
     const flags = new Map<string, string[]>();
     for (const r of b3.resources) {
@@ -1053,24 +1095,26 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
     expect(flags.get("r6577")?.sort()).toEqual(["3.1.3", "3.1.4"]);
     expect(flags.get("r7616")).toEqual(["3.3.1"]);
     expect(flags.get("r6938")).toEqual(["3.4.1"]); // lane-12's picks are all fresh bodies — the lane-11 reference-pick law does not recur
-    expect(flags.get("r8679")).toEqual(["3.5.1"]);
+    expect(flags.get("r8679")).toEqual(["3.5.1"]); // unchanged — the lane-14 join codes ride pick-less (3.6.2's pick r8404 and 3.6.3's pick r8231 ride reference rows)
+    expect(flags.get("r8711")).toEqual(["3.6.1"]); // lane-14's only pick with a served body — r8404/r8231 ride reference rows like r6018 (the pick lives on the index only)
     expect(flags.get("r9297")).toEqual(["3.5.2"]);
     expect(flags.get("r5126")!.sort()).toEqual(["3.5.3", "3.5.5"]); // rides its lane-9 body — the lane-11 r6018 convention, one course on
     expect(flags.get("r8134")!.sort()).toEqual(["3.5.2", "3.5.5"]); // the dual-bearing heritage (lane-10 + lane-12 both bore r8134 at 3.5)
     expect(flags.get("r8890")).toEqual(["3.5.6"]);
-    expect(flags.size).toBe(19); // 14 prior + r8679/r9297/r5126/r8134/r8890 — r6018 still rides a reference row, so its pick lives on the index only (no served body to flag)
-    // 143 fresh memberships over 126 bodies: 38 lane-9 (inequalities/r5276/r6577
-    // carry two codes each) + 34 lane-10 (all single-code) + 1 lane-11 +
-    // 40 lane-12 (all single-code) + 30 lane-13 over 16 bodies (12 bodies
-    // flag twice-or-more — the lane-11/12 joins and the dual-bearing rows)
+    expect(flags.size).toBe(20); // 19 prior + r8711 — r8404/r8231 still ride reference rows (no served body to flag)
+    // 151 memberships over 129 bodies: 143 prior + 4 lane-14 fresh (r8013/r8711
+    // single-code, staircase-sequences twice) + 4 same-course join codes
+    // (r8679 ×2, see-the-power, to-log-or-not-to-log — the cross-course
+    // riders' memberships live in the pure-1 bundle)
     const memberships = b3.resources.reduce((n, r) => n + r.specPoints.length, 0);
-    expect(memberships).toBe(143);
+    expect(memberships).toBe(151);
     const multiCode = b3.resources.filter((r) => r.specPoints.length >= 2).map((r) => r.ugmId).sort();
     expect(multiCode).toEqual([
       "constant-consistency", "inequalities", "integral-chasing-2", "r5126",
-      "r5276", "r6577", "r7616", "r8134", "r8694", "r8774", "r8778",
+      "r5276", "r6577", "r7616", "r8134", "r8679", "r8694", "r8774", "r8778",
+      "see-the-power", "staircase-sequences", "to-log-or-not-to-log",
       "trigsy-integrals",
-    ]); // 8 two-code + 3 three-code (r5126, integral-chasing-2, constant-consistency) + r8694 four-code
+    ]); // 11 two-code + 4 three-code (r5126, integral-chasing-2, constant-consistency, r8679) + r8694 four-code
   });
 
   test("figure plane honesty: the map of record predates lanes 9-12 — figures=0, zero /ugm-assets/ refs, zero external ugm image links, zero placeholders", () => {
@@ -1098,7 +1142,7 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12, lanes 9-12)"
   test("pure-3 honesty invariants: unique ids, declared stations, delimiter balance, SUGGESTED provenance", () => {
     const ids = b3.resources.map((r) => r.ugmId);
     expect(new Set(ids).size).toBe(ids.length);
-    expect(ids.length).toBe(126);
+    expect(ids.length).toBe(129);
     const slugs = new Set(b3.stations.map((s) => s.slug));
     for (const r of b3.resources) expect(slugs.has(r.station)).toBe(true);
     for (const r of b3.resources) {
