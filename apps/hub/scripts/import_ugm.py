@@ -260,6 +260,37 @@ Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
     (3.6.3, rides its lane-3 body — disclosed). Figure plane unchanged:
     figures=0 honestly (the map of record predates the lane; the fresh
     bodies carry no map rows and no placeholders).
+  - lane 15 (T-UGM-HUB-CONSUME-15 — the SEVENTH lane on the pure-3
+    course plane, corpus PR #149 of record, trace 1a17527331af8cdd):
+    content/cie-a-level-maths-20-pure-3/ugm-resources.json — CIE 9709
+    Pure 3 subtopic 3.7 Vectors (spec points 3.7.1–3.7.7, the verbatim
+    spine rows of record; parse artifacts carried). THE DESIGNED HONEST
+    GAP: 3.7.7 is the spec's own exclusion row ('Knowledge of the vector
+    product is not required.') and carries zero rows by rule — the
+    second honest gap of record after 3.5.4, this time by design. THE
+    FIRST ZERO-JOIN/ZERO-FLIP LANE of record: 20 aligned rows ALL FRESH
+    BODIES (vector-geometry 15 + combining-vectors 5 — the stations the
+    spec names are the stations the corpus serves from; CIE pure-1
+    carries no vectors, so 3.7 is their first claimant) with NO
+    pre-baked bearing pool (no prior lane ever routed rows to 'P3 3.7').
+    psp rows 29 = 2/11/5/3/4/4. 6 non-overlap companion disclosures ride
+    nonOverlapRows with bodyImported=false (the plane class
+    is-it-a-plane/r6006/r9794/r7187 — P3 3.7 is a lines-only syllabus;
+    r5089, the corpus's vector-product showcase, rejected BY the 3.7.7
+    exclusion note — first candidate of record rejected by an exclusion
+    row; r8828, the common perpendicular the 3.7.5 row excludes). 110
+    candidates rejected with reasons (the coordinate-method line
+    r5202/r9702/r8449 — the example words match, the scalar-product
+    METHOD is the served skill; the mechanics class make-it-equal/
+    where-did-it-land/r7982 + the four prior-row stands; Euclidean/trig
+    noise). PROMOTION of record: r8456 (the λ/μ position-vector
+    intersection + OM·ON angle exam question) supersedes its stale
+    lane-3-algebra non-overlap row (the r8013 precedent). Picks
+    hit-the-spot (3.7.1) / r8215 (3.7.2) / r9575 (3.7.3) /
+    lots-of-vector-lines (3.7.4) / three-lines (3.7.5) / r6493 (3.7.6) —
+    all riding fresh bodies. Figure plane unchanged: figures=0 honestly
+    (the map of record predates the lane; the fresh bodies carry no map
+    rows and no placeholders).
 
 Output: content/<lane>/ugm-resources.json, schema
 "syllabai-demo.ugm-lane-resources/1.1" (multi-lane) — per-spec-point resource
@@ -310,24 +341,24 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 # verbatim spine row. 1.1 bundles never carry null picks and still parse.
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.2"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-# T-UGM-HUB-CONSUME-14: pin advanced past lane 14 (T-UGM-MODE1-14 /
-# T-UGM-IMPORT-14, corpus PR #145, merge 8b3e57b9 — the
-# pure-3-iteration corpus: 3 fresh bodies, MANIFEST v15, fleet 608; NO
-# honest gap this lane, psp rows 8/3/4). The corpus of record was
-# eyeballed ALL GREEN at head 6d0719e9 before merge (trace
-# 1a17502182be9d05): blob identity remote==local==staged x8, census
-# recount 48 = 11+1+36 exact, MANIFEST strictly additive with lanes 1-13
-# byte-identical, drift law verified (base 4d857c47 stayed an ancestor
-# with zero net UGM/LEDGER traffic — the wave-25 + #143 parallel commits
-# touch Official-ExamQuestion/ and scripts/ only; the wedged sync
-# advisory covered by the #137-#140 precedent). Pure-1 inputs AND the
-# lane-9/10/11/12/13 pure-3 inputs are byte-identical 41d35221 →
-# 8b3e57b9 (the lane-14 PR touches
-# UGM-Resources/pure-3-iteration/** + its enrichment + the shared
-# MANIFEST lane-14 block + both READMEs + LEDGER only — verified
-# pin-to-pin; the strictly-additive law holds, lanes 1–13 blocks and the
+# T-UGM-HUB-CONSUME-15: pin advanced past lane 15 (T-UGM-MODE1-15 /
+# T-UGM-IMPORT-15, corpus PR #149, merge b151f65a — the
+# pure-3-vectors corpus: 20 fresh bodies, MANIFEST v16, fleet 628; the
+# DESIGNED honest gap 3.7.7, psp rows 29 = 2/11/5/3/4/4 + gap 0). The
+# corpus of record was reviewed ALL GREEN at head a597936f before merge
+# (trace 1a17527331af8cdd): blob identity remote==local==staged x25,
+# census recount 136 = 20+6+110 exact (the FIRST zero-join/zero-flip
+# lane of record), MANIFEST strictly additive with lanes 1-14
+# byte-identical, drift law verified (base 11205d6c stayed the live
+# main tip at review time with zero net UGM/LEDGER traffic; the wedged
+# sync advisory covered by the #137-#140/#145 precedent). Pure-1 inputs
+# AND the lane-9/10/11/12/13/14 pure-3 inputs are byte-identical
+# 8b3e57b9 → b151f65a (the lane-15 PR touches
+# UGM-Resources/pure-3-vectors/** + its enrichment + the shared
+# MANIFEST lane-15 block + both READMEs + LEDGER only — verified
+# pin-to-pin; the strictly-additive law holds, lanes 1–14 blocks and the
 # v9 assets block byte-identical).
-DEFAULT_REF = "main@8b3e57b917d773eb9dff8c5802b30ae9b98a8b45"
+DEFAULT_REF = "main@b151f65ae5f2f963476548cbae92cc1f138b380f"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
@@ -659,6 +690,72 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-3-iteration",
             "ledger": "LEDGER.md — T-UGM-MODE1-14 and T-UGM-IMPORT-14 (PR #145)",
             "expected": {"resources": 3, "rows": 15, "aligned": 11, "nonOverlap": 1},
+        },
+        {
+            # T-UGM-HUB-CONSUME-15: the pure-3 plane's seventh lane — CIE
+            # 9709 Pure 3 subtopic 3.7 Vectors (spec points 3.7.1–3.7.7,
+            # the verbatim spine rows of record; parse artifacts carried).
+            # THE DESIGNED HONEST GAP: 3.7.7 is the spec's own exclusion
+            # row ('Knowledge of the vector product is not required.') and
+            # carries zero rows by rule — the second honest gap of record
+            # after 3.5.4, this time by design. THE FIRST ZERO-JOIN LANE
+            # of record: 20 aligned rows ALL FRESH BODIES (the vector
+            # stations were never mapped by lanes 1–14 — CIE pure-1
+            # carries no vectors; vector-geometry 15 + combining-vectors
+            # 5) — zero cross-lane joins, zero flips, no pre-baked
+            # bearing pool (no prior lane ever routed rows to 'P3 3.7').
+            # The stations list is the FULL 21-station sweep closure of
+            # record (the lane-13 convention: every station the candidate
+            # sweep touched is declared; the 19 non-vector stations carry
+            # zero rows — all their candidates were rejected with
+            # reasons). 6 non-overlap companion disclosures
+            # (bodyImported=false): the plane class (is-it-a-plane,
+            # r6006, r9794, r7187 — P3 3.7 is a lines-only syllabus),
+            # r5089 (the corpus's vector-product showcase, rejected BY
+            # the 3.7.7 exclusion note — first candidate of record
+            # rejected by an exclusion row), r8828 (the common
+            # perpendicular the 3.7.5 row excludes). 110 candidates
+            # rejected with reasons (the coordinate-method line
+            # r5202/r9702/r8449 — the words match, the scalar-product
+            # method is the served skill; the mechanics class;
+            # Euclidean/trig noise). PROMOTION of record: r8456
+            # supersedes its stale lane-3-algebra non-overlap row (the
+            # r8013 precedent). Picks hit-the-spot (3.7.1) / r8215
+            # (3.7.2) / r9575 (3.7.3) / lots-of-vector-lines (3.7.4) /
+            # three-lines (3.7.5) / r6493 (3.7.6) — all riding fresh
+            # bodies (no r6018 disclosure needed). Figure plane
+            # unchanged: figures=0 honestly (the map of record predates
+            # the lane; the fresh bodies carry no map rows and no
+            # placeholders).
+            "laneSlug": "vectors",
+            "laneTitle": "Vectors",
+            "stations": [
+                {"slug": "calculus-meets-functions", "title": "Calculus meets Functions"},
+                {"slug": "calculus-of-powers", "title": "Calculus of Powers"},
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "circles", "title": "Circles"},
+                {"slug": "combining-functions", "title": "Combining Functions"},
+                {"slug": "combining-vectors", "title": "Combining Vectors"},
+                {"slug": "divisibility-and-induction", "title": "Divisibility & Induction"},
+                {"slug": "exp-and-log", "title": "Exponentials & Logarithms"},
+                {"slug": "geometry-of-equations", "title": "Geometry of Equations"},
+                {"slug": "hyperbolic-functions", "title": "Hyperbolic Functions"},
+                {"slug": "introducing-calculus", "title": "Introducing Calculus"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+                {"slug": "quadratics", "title": "Quadratics"},
+                {"slug": "thinking-about-algebra", "title": "Thinking about Algebra"},
+                {"slug": "thinking-about-functions", "title": "Thinking about Functions"},
+                {"slug": "thinking-about-geometry", "title": "Thinking about Geometry"},
+                {"slug": "thinking-about-numbers", "title": "Thinking about Numbers"},
+                {"slug": "trigonometry-compound-angles", "title": "Trigonometry: Compound Angles"},
+                {"slug": "trigonometry-triangles-to-functions", "title": "Trigonometry: Triangles to Functions"},
+                {"slug": "vector-geometry", "title": "Vector Geometry"}
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-3-vectors.json",
+            "res_dir": "UGM-Resources/pure-3-vectors",
+            "ledger": "LEDGER.md — T-UGM-MODE1-15 and T-UGM-IMPORT-15 (PR #149)",
+            "expected": {"resources": 20, "rows": 29, "aligned": 20, "nonOverlap": 6},
         },
     ],
 }
