@@ -1,0 +1,48 @@
+{
+ "run": "run-008-phase-d-drain",
+ "task": "T-MIG-141",
+ "driver": "phase_d_reembed.py @ parser 315b1a8 (sha 025f77e8, unchanged frozen)",
+ "runner": "t-mig-141-phase-d.yml @ v2 dc69c339 (workflow_dispatch, tranche input)",
+ "operator_gate": "workflow_dispatch fire order = operator go (resumption of the run-007 paused drain; the T138_GEMINI_KEY secret carried a live real-quota key at dispatch)",
+ "verdict": "GREEN — 2 of the 8 planned dispatch loops executed, wall-paused honestly on the daily RPD cap",
+ "loops": [
+  {
+   "loop": 1,
+   "run_number": 2,
+   "ci_run_id": 40130655072,
+   "tranche_size": 500,
+   "verdict": "GREEN",
+   "embed": {"embedded": 500, "skipped": 0, "wall": false, "secs": 421.3},
+   "drift_gate": {"n": 364, "median": 0.998154, "min": 0.981874, "p10": 0.995081, "gate": "GREEN — HARD GATE CONSUMED FOR THE FIRST TIME (median >= 0.85)"},
+   "neighbor_jaccard_mean": 0.9208,
+   "write": {"written": 500, "post_bad_rows": 0, "selector_after": 3502},
+   "corroboration": "lane t0_readonly post-loop census EXACT: hist {1:2563, 2:11202}, no_vec 1190, models 12575 all gemini-embedding-001 (500 = 364 stale_with_vec + 22 stale_no_vec + 114 nullvec)"
+  },
+  {
+   "loop": 2,
+   "run_number": 3,
+   "ci_run_id": 40131420234,
+   "tranche_size": 500,
+   "verdict": "GREEN-BUT-WALL",
+   "embed": {"embedded": 490, "skipped": 10, "wall": true, "secs": 1404.6},
+   "drift_gate": {"n": 302, "median": 0.998372, "min": 0.978724, "p10": 0.996297, "gate": "GREEN"},
+   "neighbor_jaccard_mean": 0.9208,
+   "write": {"written": 490, "post_bad_rows": 0, "selector_after": 3012},
+   "corroboration": "lane t0_readonly post-loop census EXACT: hist {1:2223, 2:11542}, no_vec 1002, models 12763 (490 = 302 + 38 + 150); skipped-rows.txt = the 10 walled ids"
+  }
+ ],
+ "cumulative": {
+  "reembedded": 990,
+  "selector_before": 4002,
+  "selector_after": 3012,
+  "drift_gate": "consumed twice, GREEN decisively (median ~0.998 vs the 0.85 hard gate) — the glyph patch left the embedding space essentially intact",
+  "remaining": "3012 rows = ~6 more tranche-500 dispatches"
+ },
+ "pause_ruling": {
+  "cause": "RPD wall at loop 2 row 490: the last 10 rows failed all 4 retries incl the 240s backoff after ~990 successful requests across loops 1-2 — the daily-cap signature (the staged key is the 1000-RPD class the run-007 escalation predicted: ~2 x 500-row loops per Pacific day)",
+  "why_stop": "further dispatches today embed zero rows (honest skip); the lane discipline forbids burning CI runs for no progress",
+  "resume": "the DB is the resume pointer: re-dispatch t-mig-141-phase-d.yml (tranche 500) after the Pacific-midnight reset — 6 more loops OR a paid-class key drains in 1-2 windows; rollback unit of record unchanged (before-images gz 2e021ce6 + phase_d_rollback.py); the HARD drift gate stays armed on every stale-row tranche"
+ },
+ "interpretation_disclosure": "the operator's '8 residual loops' order (trace of this session) matched BOTH the Phase-D drain arithmetic (4002 ~ 8 x 500) and the T-OEQ-MATHSB-1 tranche-2 residual list (8 gate-FAIL papers). The first two dispatches were the standing next_safe_actions[0] resumption (the key had been staged — dispatch was the only honest probe of the key decision); the true referent was the maths-B residual, which the session then executed in full (see the T-OEQ-MATHSB-1 run-003 worklog entry). Both readings are of record.",
+ "zero_direct_lane_writes": true
+}
