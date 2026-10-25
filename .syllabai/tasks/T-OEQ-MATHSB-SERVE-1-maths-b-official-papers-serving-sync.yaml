@@ -1,0 +1,39 @@
+id: T-OEQ-MATHSB-SERVE-1
+title: Maths-B official-papers serving sync (wave-25-class) — OEQ 4MB1 corpus to the hub plane + SME past-paper retirement per the handover rule
+type: content-serving
+status: OPEN
+priority: P1
+owner: unassigned
+deps:
+- T-OEQ-MATHSB-1 (the conversion of record: 66/66 sets G0-G7 ALL PASS @ resources branch t-oeq-mathsb-tranche1 139ee931, converter v0.17.0, 72 canaries hold)
+- 'PR #110 (SyllabAI/syllabai-resources) — OPEN, UNMERGED at filing; merge is the R0/desk act (authors-never-self-merge), this card is GATED on it'
+spec: 'Official-ExamQuestion/AGENTS.md "The handover rule" + Official-ExamQuestion/README.md serving law (dedicated hub plane official-papers.json, never the Exam Questions tree; SME sets retire from past-paper matching, recorded in LEDGER.md); ADR-039'
+scope:
+  allowed:
+  - apps/hub/content/igcse-maths-b-16/official-papers.json (NEW — the served plane)
+  - apps/hub/content/igcse-maths-b-16/manifest.json (officialSpine pin + handover note ONLY; the mixed-vintage disclosure and the attachment-map pin 2e17aab0 stay byte-untouched)
+  - .syllabai/receipts/T-OEQ-MATHSB-SERVE-1/**
+  - .syllabai/tasks/T-OEQ-MATHSB-SERVE-1-maths-b-official-papers-serving-sync.yaml
+  - 'cross-repo READ-ONLY donor: SyllabAI/syllabai-resources Official-ExamQuestion/igcse-maths-b-16/** + LEDGER.md retirement record is resources-side (propose via desk, not self-landed)'
+  forbidden:
+  - apps/hub/src/** (the optional official-papers plane is ALREADY wired in apps/hub/src/lib/courses.ts — zero route delta, the wave-24 precedent touched exactly 2 content files)
+  - apps/api/**, packages/**, any DB writes (bundle-plane serves directly; wave-24 had no DB leg)
+  - 'cross-repo: Official-ExamQuestion/** edits (donor, read-only), converter changes, no LLM anywhere (ADR-037/039 law)'
+acceptance:
+- 'P0 gate: PR #110 merged to resources main; sync pins main@<merge-sha> (officialSpine.resourcesSha), never the branch'
+- 'G-S1 census EXACT: 66 sets / 20 series (2018-06..2026-06) / 1,270 questions / 2,412 parts / 6,500 marks vs the branch-of-record emission at 139ee931; per-set dirs mirror Official-ExamQuestion/igcse-maths-b-16/'
+- 'G-S2 content byte-parity: marks, solutions, mark points, spec codes byte-identical to the OEQ emission (the wave-24 law); every deviation is a fail-closed disclosure, never a silent fix'
+- 'G-S3 asset fleet sweep: every referenced figure-crop URL anonymous-200 (the 402/402 fleet law); honest stubs carried as stubs (chemistry of record: 7 honest stubs), nothing invented'
+- 'G-S4 intake hygiene: 0 PUA, 0 control chars, 0 U+FFFD, KaTeX segments 0 failures (born-clean law; the converter canaries of record cover the glyph classes — maths exercises the heavy SymbolMT set chemistry does not, so the sweep is MANDATORY here, not vacuous)'
+- 'G-S5 hub gates: build:hub exit 0; courses.ts loader resolves official-papers.json for igcse-maths-b-16 (the optional-plane branch); corpus census GREEN (94 courses); question-player classification parity spot-probes on sampled parts (MCQ choices incl. the F64-restored scripts, figure embeds, marks totals)'
+- 'G-S6 handover rule executed: SME sets retirement from past-paper matching recorded (resources LEDGER.md via desk proposal + hub manifest handover note); the two planes (questions.json SME practice vs official-papers.json) coexist exactly as chemistry; no SME row is deleted or edited in v2'
+execution_record: []
+next_safe_actions:
+- 'desk/R0: merge PR #110 (conversion of record sits at head 139ee931, base main@09842f9f — main has advanced to c8ac0275, so a rebase/conflict check is the merge-time duty)'
+- 'claim this card -> pre-flight census re-verify against the post-merge main sha -> exporter run -> gates G-S1..G-S6 -> receipt + worklog + close'
+- 'open items carried, NOT this card: (a) wiring syllabai-parser table.v1.json into the OEQ converter as intake law (the T-MIG-141 recon recommendation; maths will exercise it first), (b) DB-plane ingest decision for official-paper questions if retrieval needs them (chemistry precedent: bundle-plane only so far)'
+notes:
+- 'Serving surface (operator question of record): hub course igcse-maths-b-16 -> past-papers rail (apps/hub/src/app/courses/[course]/past-papers) + question player, fed by apps/hub/src/lib/courses.ts reading the NEW official-papers.json — the identical surface where chemistry serves its 54 official sets today (bundle files: official-papers.json + manifest pin).'
+- 'Frontend connection law honored: no frontend deploy is performed by the lane; the hub renders the committed bundle (Vercel deploy is the product pipeline, outside lane scope).'
+- 'Chemistry pilot precedent: wave-24 sync (v2 PR #369, commit 269e84be) touched exactly manifest.json + official-papers.json; serving delta receipts under scripts/exporter-disclosures/.'
+- 'Filed from the T-MIG-141 close-out session (trace 1a174dc08dce590d) after PR #110 state verification (open, unmerged) + branch census (66 set dirs / 20 series verified via blobless clone of t-oeq-mathsb-tranche1).'
