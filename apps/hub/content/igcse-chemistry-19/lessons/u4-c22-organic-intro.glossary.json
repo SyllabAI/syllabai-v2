@@ -1,0 +1,242 @@
+[
+ {
+  "slug": "organic-compound",
+  "term": "organic compound",
+  "definition": "Any carbon compound except the very simplest ones — carbon dioxide, carbon monoxide, the carbonates and the hydrogencarbonates. Originally named for a supposed link to living things, now a structural definition.",
+  "msAccepts": [
+   "a compound containing carbon",
+   "carbon compound apart from CO/CO2/carbonates",
+   "not restricted to compounds from living things"
+  ],
+  "msAvoids": [
+   "saying organic means natural or living-made",
+   "omitting the excluded simplest carbon compounds",
+   "excluding all compounds with other elements"
+  ],
+  "source": "chem_v3_u4_c22_pdf264_0994"
+ },
+ {
+  "slug": "hydrocarbon",
+  "term": "hydrocarbon",
+  "definition": "A compound made up of hydrogen and carbon only. The word only is the definition's load-bearing part: any third element, such as the oxygen in alcohols, disqualifies the compound.",
+  "msAccepts": [
+   "contains hydrogen and carbon only",
+   "no other elements present",
+   "carbon and hydrogen are the only elements"
+  ],
+  "msAvoids": [
+   "saying contains hydrogen and carbon without 'only'",
+   "calling ethanol a hydrocarbon",
+   "omitting the exclusivity condition"
+  ],
+  "source": "chem_v3_u4_c22_pdf265_0997"
+ },
+ {
+  "slug": "saturated",
+  "term": "saturated",
+  "definition": "Describes an organic compound containing only single carbon-carbon bonds. Alkanes are the saturated hydrocarbon family; no further atoms can be added without first breaking a bond.",
+  "msAccepts": [
+   "only single C-C bonds",
+   "no double or triple bonds",
+   "all carbon-carbon bonds are single"
+  ],
+  "msAvoids": [
+   "confusing saturated with unreactive in general",
+   "omitting the carbon-carbon bond scope",
+   "saying it contains maximum hydrogen without the bond logic"
+  ],
+  "source": "chem_v3_u4_c22_pdf265_0996"
+ },
+ {
+  "slug": "unsaturated",
+  "term": "unsaturated",
+  "definition": "Describes an organic compound containing at least one double or triple carbon-carbon bond. The spare bonding capacity of the multiple bond is where addition reactions occur.",
+  "msAccepts": [
+   "contains double or triple C-C bonds",
+   "at least one multiple carbon-carbon bond",
+   "not all carbon-carbon bonds are single"
+  ],
+  "msAvoids": [
+   "saying it must contain a triple bond",
+   "omitting the multiple-bond requirement",
+   "confusing unsaturated with unstable"
+  ],
+  "source": "chem_v3_u4_c22_pdf265_0996"
+ },
+ {
+  "slug": "empirical-formula",
+  "term": "empirical formula",
+  "definition": "The simplest whole-number ratio of the atoms of each element in a compound. Calculable from experimental data; on its own it cannot identify the true molecular formula.",
+  "msAccepts": [
+   "simplest ratio of atoms",
+   "whole-number ratio in smallest terms",
+   "ratio found from experiment"
+  ],
+  "msAvoids": [
+   "calling it the actual atom count",
+   "omitting the simplest-ratio wording",
+   "claiming it identifies the molecule alone"
+  ],
+  "source": "chem_v3_u4_c22_pdf265_1000"
+ },
+ {
+  "slug": "molecular-formula",
+  "term": "molecular formula",
+  "definition": "The actual number of atoms of each element in one molecule of a compound — always a whole-number multiple of the empirical formula. It carries no information about how the atoms are joined.",
+  "msAccepts": [
+   "actual number of each atom in a molecule",
+   "a multiple of the empirical formula",
+   "gives counts not bonding"
+  ],
+  "msAvoids": [
+   "saying it shows how atoms are joined",
+   "confusing it with the empirical formula always",
+   "omitting the multiple relationship"
+  ],
+  "source": "chem_v3_u4_c22_pdf265_1000"
+ },
+ {
+  "slug": "general-formula",
+  "term": "general formula",
+  "definition": "A formula written with n standing for the carbon count that describes every member of a homologous series at once: CnH2n+2 for alkanes, CnH2n for alkenes, CnH2n+2O for alcohols.",
+  "msAccepts": [
+   "formula for the whole series using n",
+   "one formula generates every member",
+   "substituting n gives a member"
+  ],
+  "msAvoids": [
+   "confusing it with a single molecule's formula",
+   "omitting the series scope",
+   "saying it applies across different families"
+  ],
+  "source": "chem_v3_u4_c22_pdf266_1005"
+ },
+ {
+  "slug": "homologous-series",
+  "term": "homologous series",
+  "definition": "A series of compounds with similar chemical properties because they share the same functional group, consecutive members differing by one CH2 unit. Alkanes, alkenes, alcohols, carboxylic acids and esters are examples.",
+  "msAccepts": [
+   "similar chemical properties",
+   "same functional group",
+   "differ by CH2 between neighbours"
+  ],
+  "msAvoids": [
+   "omitting the functional-group cause",
+   "omitting the CH2 step",
+   "saying members are identical compounds"
+  ],
+  "source": "chem_v3_u4_c22_pdf266_1005"
+ },
+ {
+  "slug": "functional-group",
+  "term": "functional group",
+  "definition": "An atom or group of atoms that determines the chemical properties of a compound. All members of the same homologous series carry the same one — −OH for alcohols, C=C for alkenes.",
+  "msAccepts": [
+   "group determining chemical properties",
+   "same group across the series",
+   "the reactive part of the molecule"
+  ],
+  "msAvoids": [
+   "saying it only affects physical properties",
+   "omitting the property-determining role",
+   "listing groups without the defining role"
+  ],
+  "source": "chem_v3_u4_c22_pdf266_1006"
+ },
+ {
+  "slug": "structural-formula",
+  "term": "structural formula",
+  "definition": "A formula showing how the atoms in a molecule are joined together. Drawn condensed (bond lines omitted, e.g. CH3CH2CH3) or displayed (every bond shown as a line).",
+  "msAccepts": [
+   "shows which atoms join to which",
+   "condensed form without all bond lines",
+   "unambiguous about connectivity"
+  ],
+  "msAvoids": [
+   "confusing it with the molecular formula",
+   "saying it never shows bonds at all",
+   "omitting the joining information"
+  ],
+  "source": "chem_v3_u4_c22_pdf267_1009"
+ },
+ {
+  "slug": "displayed-formula",
+  "term": "displayed formula",
+  "definition": "A structural formula in which every bond is drawn as an individual line, each line representing a shared pair of electrons. Also called the full structural formula.",
+  "msAccepts": [
+   "all bonds shown as lines",
+   "each line is a shared electron pair",
+   "full structural formula"
+  ],
+  "msAvoids": [
+   "omitting bonds while calling it displayed",
+   "saying lines are just decoration",
+   "confusing it with the condensed form"
+  ],
+  "source": "chem_v3_u4_c22_pdf266_1006"
+ },
+ {
+  "slug": "iupac-nomenclature",
+  "term": "IUPAC nomenclature",
+  "definition": "The naming rules of the International Union of Pure and Applied Chemistry. Names are codes: chain-length code letters, bond-type endings, branch names and position numbers.",
+  "msAccepts": [
+   "systematic naming rules",
+   "names encode structure",
+   "chain code plus endings plus positions"
+  ],
+  "msAvoids": [
+   "saying names are arbitrary labels",
+   "omitting the code structure",
+   "claiming names cannot be decoded"
+  ],
+  "source": "chem_v3_u4_c22_pdf267_1012"
+ },
+ {
+  "slug": "isomerism",
+  "term": "isomerism",
+  "definition": "The existence of compounds with the same molecular formula but different structural formulae — different compounds because their atoms are joined in a different order. Rotation never converts one isomer into another.",
+  "msAccepts": [
+   "same molecular formula different structures",
+   "different arrangements with bonds broken to convert",
+   "same formula different compounds"
+  ],
+  "msAvoids": [
+   "confusing isomers with isotopes",
+   "saying rotation creates an isomer",
+   "omitting the same-formula condition"
+  ],
+  "source": "chem_v3_u4_c22_pdf270_1029"
+ },
+ {
+  "slug": "substitution-reaction",
+  "term": "substitution reaction",
+  "definition": "A reaction in which an atom or group of atoms is replaced by a different atom or group. Example: a hydrogen atom of an alkane replaced by a halogen atom, forming a haloalkane and a hydrogen halide.",
+  "msAccepts": [
+   "an atom or group is replaced",
+   "something swaps in and something out",
+   "alkane hydrogen replaced by halogen"
+  ],
+  "msAvoids": [
+   "calling addition reactions substitutions",
+   "omitting the replacement wording",
+   "saying two molecules merely combine"
+  ],
+  "source": "chem_v3_u4_c22_pdf274_1044"
+ },
+ {
+  "slug": "addition-reaction",
+  "term": "addition reaction",
+  "definition": "A reaction in which something is added to a molecule without taking anything away, using the spare bonding capacity of a double bond. Alkenes undergo them, e.g. ethene plus bromine giving one product.",
+  "msAccepts": [
+   "something added without anything removed",
+   "uses the C=C double bond",
+   "one product from the reactants"
+  ],
+  "msAvoids": [
+   "saying atoms are replaced",
+   "claiming alkanes add across single bonds",
+   "omitting the nothing-removed condition"
+  ],
+  "source": "chem_v3_u4_c22_pdf274_1045"
+ }
+]
