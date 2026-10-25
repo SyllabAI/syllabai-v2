@@ -21174,3 +21174,16 @@ Stage Summary:
 - Post-merge main @ cc8653e: verify✓ hub✓ (bounded re-check ~75s). 2/2 round budget consumed.
 - Not merged, gate-b fail: #285 verify✗hub✗ · #296 hub✗ · #303 verify✗ · #352 zero check-runs (~50.5h stall).
 - Notes: main pre-advanced 861250a -> c5f53c5 (#378 T-BOOK-058 u4:c25 Alkenes + #379 wave-25/sec4-sync lane merges); mirror reset hit #129 (50th consecutive, 89962a5 signature) — recovered, zero loss. Carried finding: pre-existing conflict-marker block in .syllabai/worklog.md (~L21042, §5.4-era) still awaiting operator worklog-hygiene leg; desk appended end-of-file only, touched no historical bytes. Desk made no Neon/prod writes.
+
+---
+Task ID: T-RN-HEADER-BOARDFIX-1 run-002 (operator trace 1a17514d9311d45d "merge PR #381, then a production bake")
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: merge PR #381 and carry the fix to production
+
+Work Log:
+- MERGE already discharged by intake on arrival: PR #381 merged_at 2026-10-25T22:01:54Z, merge commit cc8653e6 (parents 85088b51 #380 + 31f25ebd), merged_by SyllabAI; API parent-walk + compare confirm cc8653e6 = origin/main tip of record with BOTH lane commits (7cb487aa fix + 31f25ebd worklog) in ancestry; hub src unchanged cc8653e6..fa4a4d89 (r0-auto receipts). No re-merge attempted (nothing to do).
+- PROD PROBE (read-only, syllabai-hub-v2.vercel.app): CIE 9701 note page /courses/cie-a-level-chemistry-25/revision-notes/rn_BJPBnHps6rrPftXS serves H1 "Relative Masses (Edexcel A-Level Chemistry)" + trust-meta "Pearson Edexcel" — the fix is NOT on prod; no auto-deploy fired on the merge (project not git-connected per T-MIG-127 run-006 discovery; vercel.json git.deploymentEnabled is inert without the link).
+- BAKE BLOCKED, fail-closed: no Vercel credential exists in this session (env/file probe names-only, zero hits; the run-006 vcp_ token was never persisted per the fresh-shell law and rotation was recommended). A manual bake needs the operator: inline Vercel token for the lane-driven API bake (run-006 playbook: POST /v13/deployments gitSource github SyllabAI/syllabai-v2 @ main, name syllabai-hub-v2 = prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl, target production), OR a console bake of main @ cc8653e6. Post-bake lane re-probe: expect "Cambridge International" in the served CIE note H1 and zero "(Edexcel" on CIE pages.
+
+Stage Summary:
+- Half of the order done of record (merge landed via intake, cc8653e6 = main); the production bake is BLOCKED on a Vercel credential — operator console bake or inline token requested. LANE: IDLE pending credential.
