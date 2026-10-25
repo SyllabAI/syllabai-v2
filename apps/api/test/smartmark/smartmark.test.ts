@@ -159,7 +159,7 @@ const ATTEMPT_READ = /select a\.id, a\.learner_id, a\.question_id, a\.marking_st
 const QUESTIONS_MATCH = /select id, question_type, marks from questions where id = \?/;
 const ANSWERS_MATCH = /select ans\.id, ans\.question_part_id, ans\.answer_text, ans\.marks_awarded, ans\.marking_state, qp\.label, qp\.marks from answers ans join question_parts qp on qp\.id = ans\.question_part_id where ans\.attempt_id = \? order by ans\.question_part_id/;
 const VERSION_MATCH = /select id from question_versions where question_id = \? order by version desc/;
-const VALIDATED_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+const VALIDATED_SCHEME = /select id, validation_state, scheme_kind from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
 const NEWEST_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? order by created_at desc/;
 const POINTS_MATCH = /select id, ref, ordering, text, marks, question_part_id from mark_points where mark_scheme_id = \? order by ordering/;
 const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? order by computed_at desc/;
@@ -291,6 +291,30 @@ describe("SmartMarkService.markAttempt — the ONE engine", () => {
     expect(sql.queries.some((q) => ANSWER_SMART_UPDATE.test(q))).toBe(false);
     expect(sql.queries.some((q) => ATTEMPT_TOTAL_UPDATE.test(q))).toBe(false);
     expect(sql.queries.some((q) => NEWEST_SCHEME.test(q))).toBe(true); // the refusal stamps the newest scheme
+  });
+
+  test("VALIDATED LEVELS scheme (ADR-040) → per-part NO_SCHEME_BANDS refusal; the point path never guesses at bands", async () => {
+    const levelRows = [{ id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS" }];
+    const sql = fakeSql(markRoutes({ validatedSchemes: levelRows, newestScheme: levelRows }));
+    const results = await new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK).markAttempt(ATTEMPT_ID);
+    const row = results.get(ANSWER_A)!;
+    expect(row.failure_reason).toBe("NO_SCHEME_BANDS");
+    expect(row.validation_passed).toBe(false);
+    expect(row.marks_awarded).toBe(0);
+    expect(row.breakdown).toEqual([]);
+    expect(sql.queries.some((q) => RESULT_INSERT.test(q))).toBe(true); // append-only refusal row persisted
+    expect(sql.queries.some((q) => ANSWER_SMART_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => ATTEMPT_SMART_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => ATTEMPT_TOTAL_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => POINTS_MATCH.test(q))).toBe(false); // point fetch never reached
+  });
+
+  test("scheme_kind absent (legacy row, default law) → POINTS path unchanged", async () => {
+    const sql = fakeSql(markRoutes({ validatedSchemes: [{ id: SCHEME_ID, validation_state: "VALIDATED" }] }));
+    const results = await new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK).markAttempt(ATTEMPT_ID);
+    const row = results.get(ANSWER_A)!;
+    expect(row.validation_passed).toBe(true);
+    expect(row.failure_reason).toBeNull();
   });
 
   test("κ gate fail-closed: no evaluations → authoritative false → NO evidence even when complete", async () => {

@@ -20993,3 +20993,27 @@ Stage Summary:
 - T-OEQ-MATHSB-1: the maths-B conversion corpus is 66/66 G0-G7 ALL PASS with every glyph mapping render-evidenced and every marks fill disclosed. Next on that lane: the C0 operator adjudication (the 156-instance/10-cp control-char classes), then H2 comparison + H3 cutover — after which the SME-style maths-b bundle retirement the operator is contemplating becomes safe.
 - T-MIG-141: Phase-D drain 990/4,002 done, wall-paused at 3,012 (resume law on the card); drift gate GREEN-consumed twice; Phase E intake law remains parallel-eligible; zero direct lane DB writes throughout (prod writes rode the CI gate).
 - Open operator items unchanged: the maths-b deletion scope ruling (bundle vs DB plane vs spec trees) still awaits the H2/H3 sequence; the W1 backfill (1,330) still competes for embedding quota with the Phase-D resume.
+
+
+---
+Task ID: 5
+Agent: Z.ai main agent (IM session web-3bd4aa99)
+Task: ADR-040 §5.2 — the ONE additive levels-of-response migration (0015) + the NO_SCHEME_BANDS fail-closed dispatch guard; A-wave closure verified (trace 1a17265611d9fd6d, operator 'ok proceed').
+
+Work Log:
+- Verified the A-wave closed of record by the parallel lane T-SM-EDX-INGEST-R1: PR #360 merged 2026-10-25T00:20Z (merge 30c28049, registry 62/94 coreBridge), hub deploy dpl_AqwUa5CDj… live, live probe 10/10 GREEN (#276 comment 6396007135); 4-ref residue = targeted re-ingest lane on that lane's operator order.
+- Pivoted to the unstarted critical path: repo had ZERO mark_bands/scheme_kind traces (migrations stopped at 0014) — ADR-040 §5 leg 2 is the gate for every band row.
+- Edited packages/db/src/schema/schema.ts (schemeKind + markBands + bandPlacement + metric + 3 CHECKs); drizzle-kit generated 0015; hand-trimmed identity churn on assignment_* (0011_dc5 precedent) to keep the migration purely additive.
+- Applied 0015 to the task-owned COW branch br-old-grass-a5p6ey1o (t-sm-adr040-mig/r0-0015, ep-hidden-base-a5b6zecz) — pre-flight 3/3, apply 8/8, post-verify 9/9, COMMITTED.
+- FINDING OF RECORD: the live production schema lacks migration 0007 (smae.subject_id family — the κ SUBJECT lane's own column!) and 0014 (assignment pack tables) — the NEON-DB-LOSS restore r017 (Oct-21 00:43 snapshot) predates both applies and neither was re-applied. Re-applied both to the COW branch to restore the of-record end-state; production re-apply flagged for an operator-ordered receipted leg.
+- Re-baselined 0000_snapshot.json from the COW branch per T-MIG-002-R (pullGuards green, VERIFY PASS 0 drifts @ 83/780/111/81/139); the pull truncated _journal.json to one entry — restored from git + re-appended idx-15; db:check green.
+- SmartMarkService: scheme_kind rides the validated-scheme fetch; VALIDATED LEVELS schemes refuse per-part with NO_SCHEME_BANDS (append-only row, no state change) until the band dispatch leg; legacy rows byte-identical.
+- Tests: +2 LEVELS/refusal cases; VALIDATED_SCHEME fake regex updated in smartmark.test.ts + routes.test.ts + dc3-entitlement.test.ts; rebaseline.test.ts band-advanced to 83/780/111/81/139.
+- Verification: typecheck 0; suite 2912 pass / 0 fail; golden selftest OK; retrieval-eval 22/0; zero-core census gate GREEN; db:check green; rebaseline verify 0 drifts.
+- Receipt: .syllabai/receipts/T-SM-ROLLOUT/adr040-mig-r0.json (branch of record, finding, verification matrix, next legs).
+- Environment notes: IM transport strips literal '[m' byte pairs from tool output (false corruption alarm on decisions[markable — verified via bun parse + byte counts; use rg/od for bracket-heavy forensics); api.neon.tech DNS is dead from this sandbox — the Neon API answers at https://console.neon.tech/api/v2.
+
+Stage Summary:
+- ADR-040 §5.2 leg complete and receipted: additive migration 0015 + NO_SCHEME_BANDS guard + re-baselined chain, all gates green, zero behavior change for POINTS rows.
+- Open: PR merge; production re-apply of restore-lost 0007+0014 (operator leg); §5.3 converter LEVELS mode (first band wave 0455×2/4GE1/4BS1/9609); §5.4 dispatch; §5.5 QWK lane.
+- Security: fourth rotation reminder (PAT + owner creds + API key); secrets env-only throughout.

@@ -270,20 +270,30 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // warehouse-registry baseline -> 82/768/112/80/133. seneca_resources
   // itself is a CORPUS plane — it lives in the sci-chem warehouse (template
   // wh-v2), never in main (docs/DATA-PLANE-PLACEMENT.md).
-  test("82/768/112/80/133 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // ADR-040 (0015_adr040-levels-of-response, re-baselined on the task-owned
+  // COW branch t-sm-adr040-mig/r0-0015 after the restore-lost 0007+0014
+  // artifacts were re-applied to it — see the PR receipt): mark_bands adds
+  // 1 table, 9 columns, 1 index, 1 fk, 4 checks; scheme_kind + metric +
+  // band_placement add 3 columns and 2 checks -> 83/780/111/81/139. The
+  // index count reads 111 (not 112+1): the restored estate registers
+  // uq_book_chapters_identity / uq_documents_canonical_id as unique
+  // CONSTRAINTS, which the parity law normalizes against the of-record
+  // runtime schema (0 drifts, verified).
+  test("83/780/111/81/139 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 82/82");
-    expect(v.inventory).toContain("columns 768");
-    expect(v.inventory).toContain("indexes 112");
-    expect(v.inventory).toContain("fks 80");
-    expect(v.inventory).toContain("checks 133");
+    expect(v.inventory).toContain("tables 83/83");
+    expect(v.inventory).toContain("columns 780");
+    expect(v.inventory).toContain("indexes 111");
+    expect(v.inventory).toContain("fks 81");
+    expect(v.inventory).toContain("checks 139");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(82);
+    expect(run.size).toBe(83);
+    expect(run.has("public.mark_bands")).toBe(true); // ADR-040 — the levels analog of mark_points
     expect(run.has("public.warehouse_registry")).toBe(true);
     // T-SENECA-001 run-004 — the pack side families ride 0014 in MAIN; the
     // corpus table itself lives in the sci-chem warehouse, never here
