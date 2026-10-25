@@ -103,8 +103,8 @@ const VERSION_MATCH = /select id from question_versions where question_id = \? o
 const VALIDATED_SCHEME = /select id, validation_state, scheme_kind from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
 const NEWEST_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? order by created_at desc/;
 const POINTS_MATCH = /select id, ref, ordering, text, marks, question_part_id from mark_points where mark_scheme_id = \? order by ordering/;
-const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? order by computed_at desc/;
-const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? order by computed_at desc/;
+const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? and metric = \? order by computed_at desc/;
+const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? and metric = \? order by computed_at desc/;
 const KAPPA_SUBJECT = /select e2\.passed from smart_mark_agreement_evaluations e2/;
 const TOPICS_MATCH = /select node_id from question_topics where question_id = \?/;
 const RESULT_INSERT = /insert into smart_mark_results/;

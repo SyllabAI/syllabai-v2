@@ -150,6 +150,25 @@ export const paperGroupsPageParamsSchema = z
  *                     service's reading, not a binding constraint).
  *   comments          @Size(max=4000) String — absent/null bind null.
  */
+/**
+ * ADR-040 §5.5 — the band capture DTO (the teacher-packet analog of the
+ * smart side's BandPlacementCandidate): the placed level's index and the
+ * within-band mark. Binding truth is 1..99 / 0..99; the SERVICE adds the
+ * LEVELS laws (a LEVELS scheme with bound bands must exist, the placement
+ * must reference a bound level, awardedMarks must sit inside that band's
+ * printed range — honest refusal, never a clamp — and equal marksAwarded,
+ * the row's grade of record).
+ */
+export const bandPlacementCaptureSchema = z.object({
+  levelPlacement: javaJsonInt.refine((v) => v >= 1, {
+    message: "levelPlacement must be greater than or equal to 1",
+  }),
+  awardedMarks: javaJsonInt.refine((v) => v >= 0 && v <= 99, {
+    message: "awardedMarks must be between 0 and 99",
+  }),
+});
+export type BandPlacementCapture = z.infer<typeof bandPlacementCaptureSchema>;
+
 export const humanMarkRequestSchema = z.object({
   marksAwarded: javaJsonInt.refine((v) => v >= 0 && v <= 99, {
     message: "marksAwarded must be between 0 and 99",
@@ -162,6 +181,9 @@ export const humanMarkRequestSchema = z.object({
       message: "perPointDecisions must have at most 50 entries",
     }),
   comments: z.string().max(4000).nullable().default(null),
+  /** ADR-040 §5.5: present ONLY for band-part captures (the PartSmartMarkView
+   *  bandDecision pattern — optional key, point-path bodies unchanged). */
+  bandPlacement: bandPlacementCaptureSchema.nullable().default(null),
 });
 export type HumanMarkRequest = z.infer<typeof humanMarkRequestSchema>;
 
@@ -188,10 +210,21 @@ export type SmartMarkBatchRequest = z.infer<typeof smartMarkBatchRequestSchema>;
  * law: every schema failure on a PRESENT body is malformed_body, never a
  * silent scope-ALL write).
  */
+/**
+ * ADR-040 §5.5 — the metric discriminator on the eval lane: absent/null →
+ * the point lane (POINT_UNWEIGHTED, every pre-existing caller unchanged);
+ * "BAND_QWK" dispatches the band calibration packet (QWK over the ordinal
+ * level_placement, the D5-β floors pre-registered in ADR-040 §2.3). Any
+ * other value is a binding failure → malformed_body (the R-1 law).
+ */
+export const kappaMetricSchema = z.enum(["POINT_UNWEIGHTED", "BAND_QWK"]);
+export type KappaMetric = z.infer<typeof kappaMetricSchema>;
+
 export const kappaScopeRequestSchema = z
   .object({
     paperId: z.string().uuid().nullable().default(null),
     subjectId: z.string().uuid().nullable().default(null),
+    metric: kappaMetricSchema.nullable().default(null),
   })
   .nullable()
   .default(null)
@@ -207,6 +240,7 @@ export const kappaLatestParamsSchema = z
   .object({
     paperId: z.string().uuid().optional(),
     subjectId: z.string().uuid().optional(),
+    metric: kappaMetricSchema.optional(),
   })
   .refine(
     (v) => !(v.paperId != null && v.subjectId != null),

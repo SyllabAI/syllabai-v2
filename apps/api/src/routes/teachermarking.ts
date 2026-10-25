@@ -83,6 +83,7 @@ import {
   humanMarkRequestSchema,
   smartMarkBatchRequestSchema,
   kappaScopeRequestSchema,
+  kappaMetricSchema,
 } from "@syllabai/contracts";
 import {
   buildLlmChain,
@@ -227,15 +228,23 @@ export type KappaEvaluationView = {
   threshold: number;
   passed: boolean;
   computedAt: string;
+  /** ADR-040 §5.5: the metric discriminator (additive DTO law). */
+  metric: string;
+  /** ADR-040 §5.5: the disclosed-not-gated within-band leg (band rows;
+   *  null otherwise). */
+  withinBandMae: number | null;
+  withinBandExactRate: number | null;
 };
 
 export function createTeacherMarkingRouter(
   module: TeacherMarkingModule,
-  latestKappa: (paperId: string | null) => Promise<KappaEvaluationView | null>,
+  latestKappa: (paperId: string | null, metric?: string | null) => Promise<KappaEvaluationView | null>,
   // T-SM-KAPPA-SUBJECT (D2, #29 comment 3): the SUBJECT-lane latest read —
   // additive third seam, existing callers unaffected (default provided).
-  latestSubjectKappa: (subjectId: string) => Promise<KappaEvaluationView | null> =
-    (subjectId) => module.marking.latestSubjectEvaluation(subjectId),
+  // ADR-040 §5.5: both read seams are metric-threaded (null → point lane).
+  latestSubjectKappa:
+    (subjectId: string, metric?: string | null) => Promise<KappaEvaluationView | null> =
+    (subjectId, metric) => module.marking.latestSubjectEvaluation(subjectId, metric ?? undefined),
 ): Hono {
   const r = new Hono();
 
@@ -338,7 +347,10 @@ export function createTeacherMarkingRouter(
   });
 
   // POST /answers/{id}/human-mark (:261-270) — 201, @CurrentUserId from the
-  // JWT identity. Body errors follow the two-envelope law (R-1).
+  // JWT identity. Body errors follow the two-envelope law (R-1). ADR-040
+  // §5.5: bandPlacement rides the SAME endpoint (additive optional — the
+  // part-bound law + the LEVELS validation live in the service; a refused
+  // capture writes nothing).
   r.post("/answers/:id/human-mark", async (c) => {
     const auth = getAuth(c)!; // shell invariant
     const id = parseUuid(c.req.param("id"));
@@ -352,6 +364,7 @@ export function createTeacherMarkingRouter(
       parsed.data.marksAwarded,
       parsed.data.perPointDecisions ?? null,
       parsed.data.comments ?? null,
+      parsed.data.bandPlacement ?? null,
     );
     return c.json(view, 201);
   });
@@ -361,6 +374,8 @@ export function createTeacherMarkingRouter(
   // A PRESENT-but-unreadable body is HttpMessageNotReadable → 400, NEVER a
   // silent scope-ALL write (R-1: the required=false flag excuses an ABSENT
   // body only — Spring still parses a present body and 400s on failure).
+  // ADR-040 §5.5: metric "BAND_QWK" dispatches the band calibration packet
+  // (QWK + the D5-β floors) — absent/null keeps the point lane byte-identical.
   r.post("/kappa/evaluate", async (c) => {
     const auth = getAuth(c)!; // shell invariant
     const rawText = await c.req.text();
@@ -381,9 +396,16 @@ export function createTeacherMarkingRouter(
       // the WHOLE BODY is nullable in the contract (absent binds null → ALL)
       const paperId = (parsed.data && parsed.data.paperId) || null;
       const subjectId = (parsed.data && parsed.data.subjectId) || null;
+      const metric = (parsed.data && parsed.data.metric) || null;
       // T-SM-KAPPA-SUBJECT (D2, #29 comment 3): {"subjectId": …} scopes the
       // subject's calibration packet (paper lane ∪ topic-anchored corpus);
       // both keys present never reaches here (refine → 400 above).
+      if (metric === "BAND_QWK") {
+        const evaluation = subjectId !== null
+          ? await module.marking.evaluateBandAgreementForSubject(subjectId, auth.userId)
+          : await module.marking.evaluateBandAgreement(paperId, auth.userId);
+        return c.json(evaluation satisfies KappaEvaluationView, 201);
+      }
       if (subjectId !== null) {
         const evaluation = await module.marking.evaluateAgreementForSubject(
           subjectId, auth.userId);
@@ -396,12 +418,15 @@ export function createTeacherMarkingRouter(
     return c.json(evaluation satisfies KappaEvaluationView, 201);
   });
 
-  // GET /kappa/latest?paperId=|subjectId= (:282-293) — newest by scope; 404
-  // when none. T-SM-KAPPA-SUBJECT: ?subjectId= resolves the SUBJECT lane;
+  // GET /kappa/latest?paperId=|subjectId=|metric= (:282-293) — newest by scope;
+  // 404 when none. T-SM-KAPPA-SUBJECT: ?subjectId= resolves the SUBJECT lane;
   // both keys present → 400 (mutual exclusion, same binding law as POST).
+  // ADR-040 §5.5: ?metric=BAND_QWK reads the band rows (absent → the point
+  // lane, byte-identical); an unknown metric value is a 400.
   r.get("/kappa/latest", async (c) => {
     const rawPaper = c.req.query("paperId");
     const rawSubject = c.req.query("subjectId");
+    const rawMetric = c.req.query("metric");
     let paperId: string | null = null;
     if (rawPaper !== undefined) {
       if (!UUID_RE.test(rawPaper)) throw new BadRequestError("malformed request");
@@ -415,9 +440,15 @@ export function createTeacherMarkingRouter(
     if (paperId !== null && subjectId !== null) {
       throw new BadRequestError("malformed request");
     }
+    let metric: string | null = null;
+    if (rawMetric !== undefined) {
+      const parsedMetric = kappaMetricSchema.safeParse(rawMetric);
+      if (!parsedMetric.success) throw new BadRequestError("malformed request");
+      metric = parsedMetric.data;
+    }
     const evaluation = subjectId !== null
-      ? await latestSubjectKappa(subjectId)
-      : await latestKappa(paperId);
+      ? await latestSubjectKappa(subjectId, metric)
+      : await latestKappa(paperId, metric);
     if (evaluation === null) {
       // NotFoundException("kappa evaluation", paperId ?? "ALL") parity :289-291
       throw new NotFoundError("kappa evaluation", paperId ?? subjectId ?? "ALL");
@@ -464,10 +495,17 @@ export function buildTeacherMarkingRouters(
     seams.bandGenerator ?? chainAsBandCandidateGenerator(chain),
   );
   // kappa/latest read (:282-293) — newest evaluation per scope, straight read
-  const latestKappa = async (paperId: string | null): Promise<KappaEvaluationView | null> =>
-    module.marking.latestEvaluation(paperId);
+  // ADR-040 §5.5: metric-threaded (null/undefined → the point lane default).
+  const latestKappa = async (
+    paperId: string | null,
+    metric?: string | null,
+  ): Promise<KappaEvaluationView | null> =>
+    module.marking.latestEvaluation(paperId, metric ?? undefined);
   // T-SM-KAPPA-SUBJECT: newest SUBJECT-scope evaluation per subject
-  const latestSubjectKappa = async (subjectId: string): Promise<KappaEvaluationView | null> =>
-    module.marking.latestSubjectEvaluation(subjectId);
+  const latestSubjectKappa = async (
+    subjectId: string,
+    metric?: string | null,
+  ): Promise<KappaEvaluationView | null> =>
+    module.marking.latestSubjectEvaluation(subjectId, metric ?? undefined);
   return { module, teacherRoute: createTeacherMarkingRouter(module, latestKappa, latestSubjectKappa) };
 }
