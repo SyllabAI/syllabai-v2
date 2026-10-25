@@ -114,6 +114,60 @@ describe("pastPaperDraftSchema — PastPaperDraftDto.java binding", () => {
     expect(pastPaperDraftSchema.parse({ markScheme: {} }).markScheme?.points).toEqual([]);
   });
 
+  test("ADR-040 §5.3: bands absent/null → [] — pre-ADR-040 drafts bind byte-identically", () => {
+    const legacy = pastPaperDraftSchema.parse({
+      markScheme: { points: [{ questionRef: "6", text: "x", marks: 1 }] },
+    });
+    expect(legacy.markScheme?.bands).toEqual([]);
+    expect(legacy.markScheme?.points).toHaveLength(1);
+    expect(pastPaperDraftSchema.parse({ markScheme: { bands: null } }).markScheme?.bands).toEqual([]);
+  });
+
+  test("ADR-040 §5.3: band rows bind verbatim (level ordinal, printed range, descriptor untouched)", () => {
+    const r = pastPaperDraftSchema.parse({
+      markScheme: {
+        bands: [
+          {
+            questionRef: "7-a",
+            levelIndex: 2,
+            marksMin: 3,
+            marksMax: 4,
+            descriptor:
+              "  Level 2 (3-4 marks): Answers use some precise scientific terminology.  ",
+            guidance: null,
+            confidence: 0.9,
+          },
+        ],
+      },
+    });
+    const band = r.markScheme?.bands[0]!;
+    // VERBATIM: no trim, no paraphrase — the converter stores what the draft carried
+    expect(band.descriptor).toBe(
+      "  Level 2 (3-4 marks): Answers use some precise scientific terminology.  ",
+    );
+    expect(band.levelIndex).toBe(2);
+    expect(band.marksMin).toBe(3);
+    expect(band.marksMax).toBe(4);
+    expect(band.guidance).toBeNull();
+    expect(band.confidence).toBe(0.9);
+  });
+
+  test("ADR-040 §5.3: band primitives coerce (string marks → int, Jackson law) and unknown keys strip", () => {
+    const r = pastPaperDraftSchema.parse({
+      markScheme: {
+        bands: [{ levelIndex: "1", marksMin: "0", marksMax: "2", descriptor: "d", mystery: true }],
+      },
+    });
+    const band = r.markScheme?.bands[0]!;
+    expect(band.levelIndex).toBe(1);
+    expect(band.marksMin).toBe(0);
+    expect(band.marksMax).toBe(2);
+    expect((band as unknown as { mystery?: unknown }).mystery).toBeUndefined();
+    expect(pastPaperDraftSchema.safeParse({ markScheme: { bands: [{ marksMax: null }] } }).success).toBe(
+      false,
+    );
+  });
+
   test("questionType is a FREE STRING on the draft (service-side enum resolution)", () => {
     const r = pastPaperDraftSchema.safeParse({ questions: [{ questionType: "mcq_single" }] });
     expect(r.success).toBe(true);

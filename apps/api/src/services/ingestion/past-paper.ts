@@ -46,7 +46,11 @@
  *     surfaced as review findings by the mapper, never silently dropped);
  *   - mark points split by the questionRef prefix law ("N" or "N-x"),
  *     part resolved by the label after the first dash, question-level
- *     points attach to the scheme directly.
+ *     points attach to the scheme directly;
+ *   - ADR-040 §5.3: bands split by the SAME questionRef prefix law; a
+ *     bands-only question births a scheme_kind='LEVELS' scheme + verbatim
+ *     mark_bands rows (SUGGESTED, like points); a question carrying both
+ *     kinds refuses loudly — the kind is the scheme's (ADR-040 §2.2).
  */
 import type { SqlFn } from "../identity/users";
 import { ConflictException } from "../identity/errors";
@@ -65,6 +69,8 @@ export interface IngestionSummary {
   questions: number;
   parts: number;
   markPoints: number;
+  /** ADR-040 §5.3 — mark_bands rows written (LEVELS schemes); additive, never serialized to the frozen 201 view. */
+  markBands: number;
 }
 
 /** Java String.hashCode — the anchor-code cap's hash (bit-exact, 32-bit signed). */
@@ -116,6 +122,17 @@ function pointsForQuestion(
   const prefix = `${questionNumber}-`;
   return points.filter(
     (p) => p.questionRef !== null && (p.questionRef === questionNumber || p.questionRef.startsWith(prefix)),
+  );
+}
+
+/** ADR-040 §5.3 — the bands filter, the exact pointsForQuestion prefix law. */
+function bandsForQuestion(
+  bands: NonNullable<PastPaperDraft["markScheme"]>["bands"],
+  questionNumber: string,
+): NonNullable<PastPaperDraft["markScheme"]>["bands"] {
+  const prefix = `${questionNumber}-`;
+  return bands.filter(
+    (b) => b.questionRef !== null && (b.questionRef === questionNumber || b.questionRef.startsWith(prefix)),
   );
 }
 
@@ -465,73 +482,129 @@ export async function ingestPastPaperDraft(
   }
 
   let pointCount = 0;
-  if (draft.markScheme !== null && draft.markScheme.points !== null) {
+  let bandCount = 0;
+  if (draft.markScheme !== null) {
     const scheme = draft.markScheme;
     for (const [questionNumber, versionId] of versionsByNumber) {
       const mine = pointsForQuestion(scheme.points, questionNumber);
-      if (mine.length === 0) continue;
-      const schemeId = crypto.randomUUID();
-      await sql`
-        insert into mark_schemes (
-          id, question_version_id, version_label, source_document_id,
-          validation_state, extraction_method, created_at, general_guidance
-        ) values (
-          ${schemeId}::uuid,
-          ${versionId}::uuid,
-          ${nullSafe(scheme.version, "1")},
-          ${scheme.sourceDocumentId},
-          'SUGGESTED',
-          ${draft.extractionMethod},
-          ${new Date().toISOString()},
-          ${scheme.generalGuidance ?? null}
-        )`;
-      let order = 0;
-      for (const mp of mine) {
-        // resolve the part a mark point targets: "3-a" → part "a"
-        const partRef = resolvePartRef(mp.questionRef!);
-        let partId: string | null = null;
-        if (partRef !== null) {
-          const partRows: Row[] = await sql`
-            select id from question_parts
-            where question_version_id = ${versionId}::uuid and label = ${partRef}
-            limit 1`;
-          if (partRows.length > 0 && partRows[0]) partId = String(partRows[0].id);
-        }
-        const mpPointId = crypto.randomUUID();
-        await sql`
-          insert into mark_points (
-            id, mark_scheme_id, question_part_id, ref, ordering, text,
-            marks, acceptance_criteria, extraction_confidence, created_at
-          ) values (
-            ${mpPointId}::uuid,
-            ${schemeId}::uuid,
-            ${partId}::uuid,
-            ${mp.questionRef},
-            ${order++},
-            ${mp.text},
-            ${Math.max(mp.marks, 1)},
-            ${JSON.stringify(mp.acceptance)}::jsonb,
-            ${mp.confidence},
-            ${new Date().toISOString()}
-          )`;
-        // DC-5 (spec §3.5, prereg docs/DC5-CONFORMANCE-LINT-PLAN.md §4.2): the
-        // acceptable-answer materialisation rides the same write path,
-        // additive to the ingestion pipeline; empty extraction = no rows.
-        await insertMarkPointAlternatives(
-          sql,
-          buildAlternativeInserts(
-            mpPointId,
-            schemeId,
-            extractAcceptableAnswers(mp.text ?? ""),
-            "dc5-r1-ingestion",
-            new Date().toISOString(),
-            () => crypto.randomUUID(),
-          ),
+      const myBands = bandsForQuestion(scheme.bands, questionNumber);
+      if (mine.length > 0 && myBands.length > 0) {
+        // ADR-040 §2.2: the marking kind is the scheme's, and one scheme
+        // exists per question version — a question whose draft carries BOTH
+        // point rows and band rows has no honest kind. Refusing loudly (the
+        // whole-draft transaction rolls back) over silently picking one kind
+        // that would mis-mark the other half.
+        throw new ConflictException(
+          `question ${questionNumber} carries both mark points (${mine.length}) and level bands (${myBands.length}) — the marking kind is per-scheme (ADR-040 §2.2); split the question or correct the draft`,
         );
-        pointCount++;
+      }
+      if (mine.length === 0 && myBands.length === 0) continue;
+      const schemeId = crypto.randomUUID();
+      if (myBands.length > 0) {
+        // ADR-040 §5.3 LEVELS mode: the scheme births SUGGESTED exactly as
+        // the point mode does, with scheme_kind='LEVELS' and the bands
+        // VERBATIM (level ordinal, printed range, descriptor/guidance as
+        // printed — the converter never trims, paraphrases, or re-derives;
+        // the coverage/tiling law gates at R4 validation, not at the draft
+        // write). No mark_points rows exist for a LEVELS scheme — the
+        // per-point decisions humans never made are never fabricated.
+        await sql`
+          insert into mark_schemes (
+            id, question_version_id, version_label, source_document_id,
+            validation_state, extraction_method, created_at, general_guidance,
+            scheme_kind
+          ) values (
+            ${schemeId}::uuid,
+            ${versionId}::uuid,
+            ${nullSafe(scheme.version, "1")},
+            ${scheme.sourceDocumentId},
+            'SUGGESTED',
+            ${draft.extractionMethod},
+            ${new Date().toISOString()},
+            ${scheme.generalGuidance ?? null},
+            'LEVELS'
+          )`;
+        for (const band of myBands) {
+          await sql`
+            insert into mark_bands (
+              id, mark_scheme_id, level_index, marks_min, marks_max,
+              descriptor_md, guidance_md, extraction_confidence, created_at
+            ) values (
+              ${crypto.randomUUID()}::uuid,
+              ${schemeId}::uuid,
+              ${band.levelIndex},
+              ${band.marksMin},
+              ${band.marksMax},
+              ${band.descriptor},
+              ${band.guidance ?? null},
+              ${band.confidence},
+              ${new Date().toISOString()}
+            )`;
+          bandCount++;
+        }
+      } else {
+        await sql`
+          insert into mark_schemes (
+            id, question_version_id, version_label, source_document_id,
+            validation_state, extraction_method, created_at, general_guidance
+          ) values (
+            ${schemeId}::uuid,
+            ${versionId}::uuid,
+            ${nullSafe(scheme.version, "1")},
+            ${scheme.sourceDocumentId},
+            'SUGGESTED',
+            ${draft.extractionMethod},
+            ${new Date().toISOString()},
+            ${scheme.generalGuidance ?? null}
+          )`;
+        let order = 0;
+        for (const mp of mine) {
+          // resolve the part a mark point targets: "3-a" → part "a"
+          const partRef = resolvePartRef(mp.questionRef!);
+          let partId: string | null = null;
+          if (partRef !== null) {
+            const partRows: Row[] = await sql`
+              select id from question_parts
+              where question_version_id = ${versionId}::uuid and label = ${partRef}
+              limit 1`;
+            if (partRows.length > 0 && partRows[0]) partId = String(partRows[0].id);
+          }
+          const mpPointId = crypto.randomUUID();
+          await sql`
+            insert into mark_points (
+              id, mark_scheme_id, question_part_id, ref, ordering, text,
+              marks, acceptance_criteria, extraction_confidence, created_at
+            ) values (
+              ${mpPointId}::uuid,
+              ${schemeId}::uuid,
+              ${partId}::uuid,
+              ${mp.questionRef},
+              ${order++},
+              ${mp.text},
+              ${Math.max(mp.marks, 1)},
+              ${JSON.stringify(mp.acceptance)}::jsonb,
+              ${mp.confidence},
+              ${new Date().toISOString()}
+            )`;
+          // DC-5 (spec §3.5, prereg docs/DC5-CONFORMANCE-LINT-PLAN.md §4.2): the
+          // acceptable-answer materialisation rides the same write path,
+          // additive to the ingestion pipeline; empty extraction = no rows.
+          await insertMarkPointAlternatives(
+            sql,
+            buildAlternativeInserts(
+              mpPointId,
+              schemeId,
+              extractAcceptableAnswers(mp.text ?? ""),
+              "dc5-r1-ingestion",
+              new Date().toISOString(),
+              () => crypto.randomUUID(),
+            ),
+          );
+          pointCount++;
+        }
       }
     }
   }
 
-  return { paperId, questions: questionCount, parts: partCount, markPoints: pointCount };
+  return { paperId, questions: questionCount, parts: partCount, markPoints: pointCount, markBands: bandCount };
 }
