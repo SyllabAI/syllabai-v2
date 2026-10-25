@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation";
-import { loadHubCourse } from "@/lib/courses";
+import { boardOf, loadHubCourse } from "@/lib/courses";
 import { Breadcrumbs, ExamCodePill } from "@/components/hub/chrome";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import { QuestionPlayer } from "./question-player";
@@ -7,7 +7,7 @@ import { pilotTopicSetParams } from "@/lib/static-params";
 
 /**
  * Question set page (SME, research §6.2 + flow crawl fig. 14): breadcrumb
- * trail, two-tone title "{Set} (Edexcel {level} {subject}): Exam Questions",
+ * trail, two-tone title "{Set} ({board} {level} {subject}): Exam Questions",
  * exam-code pill, slim meta line (questions · marks · estimated time), then
  * the player. The resource topic panel (SME's second column) mounts left.
  */
@@ -69,7 +69,7 @@ export default async function QuestionSetPage({
                 {topic.name}
                 {topic.setName ? ` — ${topic.setName}` : ""}{" "}
                 <span className="text-muted-foreground">
-                  (Edexcel {meta.level} {meta.subject}): Exam Questions
+                  ({boardOf(meta)} {meta.level} {meta.subject}): Exam Questions
                 </span>
               </h1>
               <ExamCodePill code={meta.code} />
