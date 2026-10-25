@@ -36,9 +36,9 @@
  * main@ac1fc90b09008ee8d2eb1aff6892a9f2cb05f594 (PR #96 + the T-UGM-MODE1-8
  * amendment PR #99 + the T-UGM-ASSETS-1 image-plane PR #107 + its integrity
  * manifest 0b976cc) for the pure-1 bundle; the PURE-3 bundle (below) pins
- * main@2f31fcadf94bfb9bfb5c836530e942d5762aaac4 (lane 9, corpus PR #114 +
+ * main@3c2ecfa4dc5e106d72d5a8db67bc72a26dc529b6 (lane 9, corpus PR #114 +
  * lane 10, corpus PR #119 + the T-UGM-MODE1-10 stationScope amendment
- * 2f31fcad). Under
+ * 2f31fcad + lane 11, corpus PR #126). Under
  * ADR-UGM-0001 as amended 2026-10-23 + the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures). Per-lane coverage blocks
  * carry the
@@ -792,43 +792,45 @@ describe("prose figure localization (T-UGM-HUB-CONSUME-8b, 'Localize them')", ()
 // here). Figure plane: the figures-map of record predates both lanes and the
 // rebuilt converter emits no placeholders, so the pure-3 serve ships
 // figures=0 honestly pending a T-UGM-ASSETS-2 corpus amendment.
-describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10, lanes 9-10)", () => {
+describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11, lanes 9-11)", () => {
   const B3_PATH = join(
     import.meta.dir,
     "../../content/cie-a-level-maths-20-pure-3/ugm-resources.json",
   );
   const b3 = UgmLaneBundle.parse(JSON.parse(readFileSync(B3_PATH, "utf8")));
 
-  test("schema + the corpus pin of record (post-#119 merge + the stationScope amendment)", () => {
+  test("schema + the corpus pin of record (post-#126 merge, T-UGM-HUB-CONSUME-11)", () => {
     expect(b3.schema).toBe("syllabai-demo.ugm-lane-resources/1.1");
     expect(b3.lane).toBe("cie-a-level-maths-20-pure-3");
     expect(b3.source.ref).toBe(
-      "main@2f31fcadf94bfb9bfb5c836530e942d5762aaac4",
+      "main@3c2ecfa4dc5e106d72d5a8db67bc72a26dc529b6",
     );
     expect(b3.source.enrichment).toEqual([
       "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json",
       "UGM-Enrichment/cie-a-level-maths-20-pure-3-logarithmic-and-exponential-functions.json",
+      "UGM-Enrichment/cie-a-level-maths-20-pure-3-trigonometry.json",
     ]);
     expect(b3.source.resourcesDir).toEqual([
       "UGM-Resources/pure-3-algebra",
       "UGM-Resources/pure-3-logarithmic-and-exponential-functions",
+      "UGM-Resources/pure-3-trigonometry",
     ]);
     expect(b3.reviewState.state).toBe("SUGGESTED");
   });
 
-  test("the lanes 9-10 fleet census of record: 69 bodies / 86 rows / 10 spec points / 18 station rows", () => {
-    expect(b3.resources.length).toBe(69);
-    expect(b3.coverage.aligned).toBe(69); // the served corpus — all 69 bodies aligned
+  test("the lanes 9-11 fleet census of record: 70 bodies / 114 rows / 12 spec points / 21 station rows", () => {
+    expect(b3.resources.length).toBe(70);
+    expect(b3.coverage.aligned).toBe(70); // the served corpus — all 70 bodies aligned
     expect(b3.coverage.nonOverlap).toBe(0); // served non-overlap bodies: none (by-reference law)
-    expect(b3.coverage.candidateRows).toBe(86); // 38+34 fresh memberships + 9+5 cross-course rows
-    expect(b3.coverage.ugmResourcesConsidered).toBe(69);
+    expect(b3.coverage.candidateRows).toBe(114); // 38+34+1 fresh memberships + 9+5+27 cross-course rows
+    expect(b3.coverage.ugmResourcesConsidered).toBe(70);
     expect(b3.coverage.specPointsCovered).toEqual([
       "3.1.1", "3.1.2", "3.1.3", "3.1.4", "3.1.5", "3.1.6",
-      "3.2.1", "3.2.2", "3.2.3", "3.2.4",
+      "3.2.1", "3.2.2", "3.2.3", "3.2.4", "3.3.1", "3.3.2",
     ]);
-    expect(b3.stations.length).toBe(18); // 15 + 3 declared rows; exp-and-log/calculus-trig-log/thinking-about-algebra are shared with lane-9's declared list (twice-by-design house shape)
-    expect(new Set(b3.stations.map((s) => s.slug)).size).toBe(15);
-    expect(b3.coverage.lanes.length).toBe(2);
+    expect(b3.stations.length).toBe(21); // 15 + 3 + 3 declared rows; exp-and-log/calculus-trig-log/thinking-about-algebra are shared declared rows (twice/thrice-by-design house shape)
+    expect(new Set(b3.stations.map((s) => s.slug)).size).toBe(17); // lane 11 adds only the two dedicated trigonometry stations
+    expect(b3.coverage.lanes.length).toBe(3);
     expect(b3.coverage.lanes[0]).toMatchObject({
       station: "algebra",
       stationTitle: "Algebra",
@@ -849,6 +851,16 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10, lanes 9-10)", () => 
       crossLaneAligned: 5,
       crossLaneNonOverlap: 0,
     });
+    expect(b3.coverage.lanes[2]).toMatchObject({
+      station: "trigonometry",
+      stationTitle: "Trigonometry",
+      ugmResourcesConsidered: 103, // the lane-11 enrichment's sweep universe of record (103 candidates)
+      aligned: 28,
+      nonOverlap: 42,
+      candidateRows: 28,
+      crossLaneAligned: 27,
+      crossLaneNonOverlap: 0,
+    });
     // the 35 fresh lane-9 bodies by station of record
     const byStation = (slug: string) => b3.resources.filter((r) => r.station === slug);
     expect(byStation("polynomials").length).toBe(25);
@@ -859,28 +871,49 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10, lanes 9-10)", () => 
     expect(byStation("hyperbolic-functions").length).toBe(1);
     // the 34 fresh lane-10 bodies by station of record (dedicated station + strays)
     expect(byStation("exp-and-log").length).toBe(31);
-    expect(byStation("calculus-trig-log").length).toBe(1);
     expect(byStation("thinking-about-algebra").length).toBe(2);
+    // lane 11's single fresh body: the 3.3.1 pick r7616, a calculus-trig-log
+    // stray (the dedicated trigonometry stations ride by-reference rows — the
+    // whole-imported lane-5 law)
+    expect(byStation("calculus-trig-log").length).toBe(2); // lane-10's to-the-limit + r7616
+    expect(byStation("trigonometry-compound-angles").length).toBe(0);
+    expect(byStation("trigonometry-triangles-to-functions").length).toBe(0);
+    const r7616 = b3.resources.find((r) => r.ugmId === "r7616");
+    expect(r7616).toBeDefined();
+    expect(r7616!.specPoints.map((s) => s.code)).toEqual(["3.3.1"]);
+    expect(r7616!.specPoints[0].primaryPick).toBe(true);
   });
 
-  test("cross-course joins of record: 14 by-reference rows served under pure-1 (5 flips + 9 one-to-many)", () => {
-    expect(b3.coverage.crossLaneJoined).toEqual({ aligned: 14, nonOverlap: 0 });
+  test("cross-course joins of record: 41 by-reference rows served under pure-1 (28 flips + 13 one-to-many)", () => {
+    expect(b3.coverage.crossLaneJoined).toEqual({ aligned: 41, nonOverlap: 0 });
     const cc = b3.coverage.crossCourse!;
-    expect(cc.aligned).toBe(14);
+    expect(cc.aligned).toBe(41);
     expect(cc.nonOverlapRef).toBe(0);
-    expect(cc.flips).toBe(5); // lane-9's 5; lane-10 adds none
-    expect(cc.oneToMany).toBe(9); // lane-9's 4 + lane-10's 5
-    expect(cc.courses).toEqual({ "cie-a-level-maths-20-pure-1": 14 });
-    expect(cc.rows.length).toBe(14);
+    expect(cc.flips).toBe(28); // lane-9's 5 + lane-11's 23 (the lane-5 pre-baked pool); lane-10 adds none
+    expect(cc.oneToMany).toBe(13); // lane-9's 4 + lane-10's 5 + lane-11's 4
+    expect(cc.courses).toEqual({ "cie-a-level-maths-20-pure-1": 41 });
+    expect(cc.rows.length).toBe(41);
     for (const row of cc.rows) {
       expect(row.servedUnder).toBe("cie-a-level-maths-20-pure-1");
       expect(row.textOfRecordUnder).toMatch(/^UGM-Resources\/pure-1-/);
     }
     const slugs = cc.rows.map((r) => r.ugmSlug).sort();
     expect(slugs).toEqual([
-      "r5245", "r5362", "r6137", "r6295", "r6340", "r7184", "r7477",
-      "r7607", "r8260", "r8427", "r9082", "r9523", "r9701", "r9824",
+      "equation-or-identity-ii", "going-round-in-circles", "inspecting-identities",
+      "lost-but-lovely-the-haversine", "muddled-trig", "proving-half-angle-formulae",
+      "r5113", "r5129", "r5245", "r5362", "r5723", "r6018", "r6039", "r6120",
+      "r6137", "r6295", "r6340", "r6696", "r6807", "r7021", "r7050", "r7184",
+      "r7477", "r7581", "r7604", "r7607", "r8260", "r8427", "r8525", "r8557",
+      "r8648", "r8709", "r9082", "r9523", "r9701", "r9740", "r9782", "r9824",
+      "t-for-tan", "transformation-or-not", "trig-tables",
     ]);
+    // the lane-11 additions: the 23 flips of the lane-5 pre-baked 'P3 2.3'
+    // pool + the 4 one-to-many (going-round-in-circles, muddled-trig,
+    // trig-tables under 3.3.1; r7021 under 3.3.2) — all riding
+    // pure-1-trigonometry bodies of record (the lane-9 flip law)
+    for (const s of ["equation-or-identity-ii", "r6018", "r9740", "t-for-tan"] as const) {
+      expect(slugs).toContain(s);
+    }
     // first-of-record body law: NO cross-course slug may carry a body here
     const ids = new Set(b3.resources.map((r) => r.ugmId));
     for (const s of slugs) expect(ids.has(s)).toBe(false);
@@ -890,10 +923,10 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10, lanes 9-10)", () => 
     }
   });
 
-  test("non-overlaps by reference: 41 rows with bodyImported=false — reasons disclosed, zero bodies", () => {
+  test("non-overlaps by reference: 83 rows with bodyImported=false — reasons disclosed, zero bodies", () => {
     const nbr = b3.coverage.nonOverlapByReference!;
-    expect(nbr.count).toBe(41); // lane-9's 16 minus the flipped to-log-or-not-to-log + lane-10's 26
-    expect(nbr.rows.length).toBe(41);
+    expect(nbr.count).toBe(83); // lane-9's 16 minus the flipped to-log-or-not-to-log + lane-10's 26 + lane-11's 42
+    expect(nbr.rows.length).toBe(83);
     for (const row of nbr.rows) {
       expect(row.reason).toBeDefined();
       expect((row.reason ?? "").length).toBeGreaterThan(0);
@@ -908,9 +941,17 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10, lanes 9-10)", () => 
     expect(flipped!.specPoints.map((s) => s.code)).toEqual(["3.2.3"]);
     // and no served resource is a non-overlap (they are all aligned)
     expect(b3.resources.every((r) => !r.nonOverlap)).toBe(true);
+    // lane-11's 42 by-reference rows ride the sweep's stations of record —
+    // the two dedicated trigonometry stations contribute their stationScope
+    // non-overlap counts (compound-angles 1, TTF 2; the other 39 ride the
+    // sweep's other stations incl. calculus-trig-log, whose byref rows mix
+    // with the earlier lanes' rows)
+    const bySt = (s: string) => nbr.rows.filter((r) => r.station === s).length;
+    expect(bySt("trigonometry-compound-angles")).toBe(1);
+    expect(bySt("trigonometry-triangles-to-functions")).toBe(2);
   });
 
-  test("the ten picks of record ride fresh bodies (the two-code law: inequalities and r6577 flag twice)", () => {
+  test("the twelve picks of record (r6018 rides its reference row — the lane-11 pick law; the two-code law: inequalities and r6577 flag twice)", () => {
     const picks = Object.fromEntries(b3.specPoints.map((sp) => [sp.code, sp.primaryPick]));
     expect(picks).toEqual({
       "3.1.1": "absolutely",
@@ -923,6 +964,8 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10, lanes 9-10)", () => 
       "3.2.2": "an-irrational-inequality",
       "3.2.3": "to-log-or-not-to-log",
       "3.2.4": "how-far-did-the-earth-move",
+      "3.3.1": "r7616",
+      "3.3.2": "r6018",
     });
     const flags = new Map<string, string[]>();
     for (const r of b3.resources) {
@@ -932,16 +975,17 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10, lanes 9-10)", () => 
     }
     expect(flags.get("inequalities")?.sort()).toEqual(["3.1.1", "3.1.2"]);
     expect(flags.get("r6577")?.sort()).toEqual(["3.1.3", "3.1.4"]);
-    expect(flags.size).toBe(10); // 6 lane-9 picks + the 4 lane-10 picks (all single-code)
-    // 72 fresh memberships over 69 bodies: 38 lane-9 (inequalities/r5276/r6577
-    // carry two codes each) + 34 lane-10 (all single-code)
+    expect(flags.get("r7616")).toEqual(["3.3.1"]);
+    expect(flags.size).toBe(11); // 6 lane-9 + 4 lane-10 + r7616 — r6018 rides a reference row, so its pick lives on the index only (no served body to flag)
+    // 73 fresh memberships over 70 bodies: 38 lane-9 (inequalities/r5276/r6577
+    // carry two codes each) + 34 lane-10 (all single-code) + 1 lane-11
     const memberships = b3.resources.reduce((n, r) => n + r.specPoints.length, 0);
-    expect(memberships).toBe(72);
+    expect(memberships).toBe(73);
     const twoCode = b3.resources.filter((r) => r.specPoints.length === 2).map((r) => r.ugmId).sort();
     expect(twoCode).toEqual(["inequalities", "r5276", "r6577"]);
   });
 
-  test("figure plane honesty: the map of record predates lanes 9-10 — figures=0, zero /ugm-assets/ refs, zero external ugm image links, zero placeholders", () => {
+  test("figure plane honesty: the map of record predates lanes 9-11 — figures=0, zero /ugm-assets/ refs, zero external ugm image links, zero placeholders", () => {
     expect(b3.coverage.figures).toEqual({
       figureRefs: 0,
       resources: 0,
@@ -966,7 +1010,7 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10, lanes 9-10)", () => 
   test("pure-3 honesty invariants: unique ids, declared stations, delimiter balance, SUGGESTED provenance", () => {
     const ids = b3.resources.map((r) => r.ugmId);
     expect(new Set(ids).size).toBe(ids.length);
-    expect(ids.length).toBe(69);
+    expect(ids.length).toBe(70);
     const slugs = new Set(b3.stations.map((s) => s.slug));
     for (const r of b3.resources) expect(slugs.has(r.station)).toBe(true);
     for (const r of b3.resources) {

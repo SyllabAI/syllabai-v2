@@ -23,7 +23,16 @@
  * 26 non-overlaps by reference + 5 CROSS-COURSE one-to-many joins against
  * pure-1 bodies; the lane-9 byref row to-log-or-not-to-log flips to aligned
  * WITH a fresh body under 3.2.3 (the CONSUME-10 supersede law drops the
- * stale byref row))
+ * stale byref row); Trigonometry eleventh — PR #126, the THIRD pure-3 lane
+ * and the FIRST MOSTLY-MAPPING lane: the dedicated trigonometry-compound-
+ * angles station is whole-imported of record under lane 5, so 27 of the 28
+ * aligned rows are CROSS-COURSE joins against pure-1-trigonometry bodies
+ * (23 flips of the lane-5 pre-baked 'P3 2.3' pool + 4 one-to-many beside
+ * standing 1.5.x alignments) and the lane's only fresh body is the 3.3.1
+ * pick r7616 (a calculus-trig-log stray); 42 non-overlaps by reference (9
+ * with textOfRecordUnder disclosures per the supersede disclosure law);
+ * the 3.3.2 pick r6018 rides its reference row — the pick lives on the
+ * spec-point index, the body stays first-of-record under pure-1)
  * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
  * hub-side import is

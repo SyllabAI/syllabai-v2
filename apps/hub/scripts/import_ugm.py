@@ -150,6 +150,25 @@ Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
     to-log-or-not-to-log flips to aligned WITH a fresh body under 3.2.3).
     Figure plane unchanged: figures=0 honestly (the map of record predates
     the lane; the rebuilt converter renders figcaption text only).
+  - lane 11 (T-UGM-HUB-CONSUME-11 — the THIRD lane on the pure-3 course
+    plane, corpus PR #126): content/cie-a-level-maths-20-pure-3/
+    ugm-resources.json — CIE 9709 Pure 3 subtopic 3.3 Trigonometry (spec
+    points 3.3.1–3.3.2, the verbatim spine rows of record; no fold
+    fragments), the FIRST MOSTLY-MAPPING lane: the dedicated
+    trigonometry-compound-angles station is WHOLE-IMPORTED of record under
+    lane 5 (the two-station lane law predating the candidate model), so the
+    lane-5 pre-baked 'P3 2.3' pool maps BY REFERENCE — 27 of the 28 aligned
+    rows are CROSS-COURSE joins against pure-1-trigonometry bodies (23 flips
+    of the lane-5 pool + 4 one-to-many beside standing 1.5.x alignments; the
+    lane-9 flip law, no new text), and the lane's only fresh body is the
+    3.3.1 pick r7616 (a calculus-trig-log stray — the lane's single new text
+    of record). The 42 non-overlaps ride nonOverlapRows with
+    bodyImported=false (by reference, no text; 9 disclose textOfRecordUnder
+    per the supersede disclosure law — their bodies of record live under
+    pure-1-trigonometry); the 3.3.2 pick r6018 rides its reference row
+    (fresh-pick convention impossible — disclosed of record). Figure plane
+    unchanged: figures=0 honestly (the map of record predates the lane; the
+    fresh body carries no map rows and no placeholders).
 
 Output: content/<lane>/ugm-resources.json, schema
 "syllabai-demo.ugm-lane-resources/1.1" (multi-lane) — per-spec-point resource
@@ -195,18 +214,17 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.1"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-# T-UGM-HUB-CONSUME-10: pin advanced past lane 10 (T-UGM-MODE1-10 /
-# T-UGM-IMPORT-10, corpus PR #119, merge commit 3176953c) AND past the
-# T-UGM-MODE1-10 amendment (2f31fcad — the lane-10 enrichment's
-# stationScope.resources was left unfilled; the amendment fills the three
-# numbers from the same file's stationBreakdown of record, caught by this
-# importer's fail-closed stationScope/stationBreakdown census audit on the
-# first pure-3 course run). Pure-1 inputs AND the lane-9 pure-3-algebra
-# inputs are byte-identical fafd008d → 2f31fcad (the lane-10 PR + amendment
-# touch UGM-Resources/pure-3-logarithmic-and-exponential-functions/** + its
-# enrichment + shared bookkeeping only; the shared MANIFEST.json gains the
-# lane-10 block while the earlier lane blocks are unchanged).
-DEFAULT_REF = "main@2f31fcadf94bfb9bfb5c836530e942d5762aaac4"
+# T-UGM-HUB-CONSUME-11: pin advanced past lane 11 (T-UGM-MODE1-11 /
+# T-UGM-IMPORT-11, corpus PR #126, merge commit 3c2ecfa4 — the
+# pure-3-trigonometry corpus: 1 fresh body, MANIFEST v12, fleet 549).
+# Pure-1 inputs AND the lane-9/10 pure-3 inputs are byte-identical
+# 2f31fcad → 3c2ecfa4 (the lane-11 PR touches
+# UGM-Resources/pure-3-trigonometry/** + its enrichment + shared
+# bookkeeping only — verified pin-to-pin: the enrichment README + the
+# trigonometry enrichment + MANIFEST.json (strictly additive lane-11
+# block) + the resources README + the r7616 body; the earlier lane
+# blocks are unchanged).
+DEFAULT_REF = "main@3c2ecfa4dc5e106d72d5a8db67bc72a26dc529b6"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
@@ -397,6 +415,30 @@ LANE_STATIONS = {
             "res_dir": "UGM-Resources/pure-3-logarithmic-and-exponential-functions",
             "ledger": "LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119)",
             "expected": {"resources": 34, "rows": 39, "aligned": 39, "nonOverlap": 26},
+        },
+        {
+            # T-UGM-HUB-CONSUME-11: the pure-3 plane's third lane — CIE 9709
+            # Pure 3 subtopic 3.3 Trigonometry (spec points 3.3.1–3.3.2), the
+            # FIRST MOSTLY-MAPPING lane: the dedicated
+            # trigonometry-compound-angles station is whole-imported of
+            # record under lane 5, so 27 of the 28 aligned rows are
+            # CROSS-COURSE joins against pure-1-trigonometry bodies (23
+            # flips + 4 one-to-many; joined by reference — see the module
+            # docstring) and the only fresh body is the 3.3.1 pick r7616.
+            # The 42 non-overlaps ride nonOverlapByReference
+            # (bodyImported=false, 9 with textOfRecordUnder disclosures);
+            # the 3.3.2 pick r6018 rides its reference row.
+            "laneSlug": "trigonometry",
+            "laneTitle": "Trigonometry",
+            "stations": [
+                {"slug": "trigonometry-compound-angles", "title": "Trigonometry: Compound Angles"},
+                {"slug": "trigonometry-triangles-to-functions", "title": "Trigonometry: Triangles to Functions"},
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-3-trigonometry.json",
+            "res_dir": "UGM-Resources/pure-3-trigonometry",
+            "ledger": "LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126)",
+            "expected": {"resources": 1, "rows": 28, "aligned": 28, "nonOverlap": 42},
         },
     ],
 }
