@@ -21135,3 +21135,19 @@ Stage Summary:
 
 - Card FILED (OPEN, unassigned): Maths-B official-papers serving sync (wave-25-class). Verification of record at filing: PR #110 OPEN/UNMERGED (head 139ee931 = the full 66/66 drain tip on branch t-oeq-mathsb-tranche1; base main@09842f9f vs current main c8ac0275 — rebase check is merge-time duty); branch census via blobless clone: Official-ExamQuestion/igcse-maths-b-16/ = 20 series dirs / 66 set dirs (2018-06..2026-06); hub loader law verified: official-papers.json is the already-wired optional plane in apps/hub/src/lib/courses.ts (chemistry precedent: wave-24 sync = manifest + official-papers.json only, zero app-code, zero DB); handover rule of record (Official-ExamQuestion/README.md L59-61): SME sets RETIRE from past-paper matching for the course at handover, LEDGER-recorded — scoped into G-S6. Card gates G-S1..G-S6 pinned (census EXACT / byte-parity / asset 200-sweep / born-clean hygiene / hub build+census / handover+retirement). Gated on the desk merge of PR #110 (authors-never-self-merge). .syllabai-only, fetch-first, no force.
 - LANDING NOTE: filed from the T-MIG-141 close-out session; push BLOCKED at the sandbox (no PAT provisioned this session — volatile-only credential law; https push cannot authenticate). Commit re-based onto origin/main@f52070b8 with the worklog union resolved theirs-verbatim-first; commit is push-ready for the next credentialed window.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1/desk-merge-check-pr110 (trace 1a174ec1255522d9)
+Agent: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)
+Task: operator instruction "desk-merge PR #110" (PAT window) — merge-time rebase/conflict check, then merge if clean.
+
+Work Log:
+- Fetch-first: PR #110 fresh state (OPEN, unmerged, head 139ee9315cb3 unchanged); resources main advanced 09842f9f -> c8ac0275 -> 41d35221 since the base pin.
+- Branch anatomy: t-oeq-mathsb-tranche1 head = SINGLE PARENTLESS commit (Git Data API snapshot-rebuild; rev-list count 1; merge-base vs main = none). Recent merged PR branches all carry full ancestry (653-656) — this PR is structurally unique.
+- Three-way classification (base 09842f9f / branch 139ee931 / main 41d35221): 475 branch-changed, 1,810 main-changed, intersection 77 — ALL 77 both-changed with zero trivial resolutions (identical 0 / one-side-clean 0).
+- Semantic fork evidence: converter v0.17.0-maths-lane (branch; F65 = maths-B furniture) vs v0.17.4-spec-lane (main; F67 + no maths-B F65; F65 name-collision with main's figure-queue F65); canary ID COLLISION C72/C73/C74 with different content on each side (72 vs 74 canaries); CHANGELOG/LEDGER both appended independently.
+- Safe core quantified: 392 branch-new paths (390 igcse-maths-b-16 corpus + prep_ocr_layer_2019mb.py + sweep_maths_b_66.py), zero overlap.
+- VERDICT: DESK MERGE BLOCKED, fail-closed — any as-is merge regresses main's converter line + drops C72-C76. Zero writes against resources. Receipt of record: .syllabai/receipts/T-OEQ-MATHSB-SERVE-1/desk-merge-check-pr110.json (findings F1-F6, verdict, proposed reconciliation run-004, operator alternatives).
+
+Stage Summary:
+- PR #110 cannot desk-merge without a record-level reconciliation (canary renumber + converter feature union + re-emission). Serve card stays OPEN + GATED, P0 language unchanged. Recommended next: T-OEQ-MATHSB-1 run-004 "reconcile onto main" per the receipt's proposed_path, then clean desk-merge with true ancestry.
