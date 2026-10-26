@@ -67,6 +67,7 @@ import { AnswerTextarea, answerPlaceholder } from "@/components/answer-textarea"
 import { QuestionHelpPanel } from "@/components/question-help-panel";
 import { Markdown } from "@/components/markdown";
 import { PartProblem } from "@/components/part-problem";
+import { MarkScheme, hasMarkCodes } from "@/components/mark-scheme";
 import {
   recordMcqAnswer,
   recordSelfScore,
@@ -1519,11 +1520,15 @@ function McqPart({
                 aria-expanded={showWhy}
               >
                 {showWhy ? <ChevronUp className="size-3.5" aria-hidden /> : <ChevronDown className="size-3.5" aria-hidden />}
-                Why this is the answer
+                {hasMarkCodes(part.solutionMd) ? "Answer and mark scheme" : "Why this is the answer"}
               </button>
               {showWhy && (
                 <div className="border-t px-3 py-2">
-                  <Markdown>{part.solutionMd}</Markdown>
+                  {hasMarkCodes(part.solutionMd) ? (
+                    <MarkScheme md={part.solutionMd} />
+                  ) : (
+                    <Markdown>{part.solutionMd}</Markdown>
+                  )}
                 </div>
               )}
             </div>
@@ -2010,10 +2015,15 @@ function MarkSchemeDialog({
                       <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                         The completed answer should show:
                       </p>
-                      <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
+                      {hasMarkCodes(p.solutionMd) ? (
+                        <MarkScheme md={p.solutionMd} />
+                      ) : (
+                        <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
+                      )}
                     </div>
                   )}
-                  {p.markPoints && p.markPoints.length > 0 && (
+                  {p.markPoints && p.markPoints.length > 0 &&
+                    p.solutionMd?.trim() !== p.markPoints[0]?.textMd?.trim() && (
                     <div className="border-t pt-3">
                       <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                         Official mark scheme points
