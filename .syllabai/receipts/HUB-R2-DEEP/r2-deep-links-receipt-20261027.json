@@ -1,0 +1,53 @@
+{
+  "record": "R-2 per-topic deep links — lesson-end handoffs upgraded from course-level to per-topic targets via the hub.hrefs slug-existence seam, implemented and verified",
+  "format": "hub-implementation-receipt/1.0",
+  "operator_decision": {
+    "verbatim": "per-topic deep links for R-2",
+    "operator_trace": "1a179e73fc75e881",
+    "channel": "zai-web",
+    "session": "web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd",
+    "decides": "The disclosed R-2 follow-up from PR #399 (its receipt: 'per-topic deep links deferred until a slug-existence seam lands upstream') — the lesson-end handoffs now target the note's own topic surfaces instead of the course-level pages."
+  },
+  "parent_of_record": {
+    "branch_base": "origin/main bb9e7bf2b697fc30437b31119cd45e783ed687d6",
+    "upstream_context": "includes PR #399 (R-1+R-5+R-2+R-3, merge b21b3135) and later co-tenant landings (T-BOOK-066 bake, T-SM-ROLLOUT receipts)",
+    "worktree": "sv2-r1235 (surviving worktree re-branched: git switch -c w0a/r2-topic-deep-links origin/main)"
+  },
+  "the_seam": {
+    "discovery": "The slug-existence seam ALREADY EXISTS of record — hub.hrefs (lib/courses.ts), built for the course page/tree expander: noteSubtopic[noteId] -> subtopicCode; hrefs.questions[code] = the exam-questions set anchored there (first in corpus order, the established default-target law); hrefs.flashcards[code] = the subtopic's deck, set ONLY when a card resolves to it (cardsBySubtopic parity). Both maps derive from the SAME inventory the receiving pages resolve (questionTopics[].slug / index.subtopicByCode), so a resolved href cannot 404.",
+    "safety_properties": [
+      "no slug synthesis anywhere — the flow renders hrefs handed to it, resolved server-side from the committed corpus inventory",
+      "fail-closed fallback: a note without the subtopic binding, or with no set/deck anchored there, gets the course-level pages (the #399 always-live behavior, byte-for-byte)",
+      "no dynamicParams=false on either receiving page (verified) — non-pilot params SSR on demand",
+      "colon-bearing subtopic codes: receiving page decodes tolerantly (both raw and percent-encoded hit) — hrefs passed verbatim, same strings the tree expander ships"
+    ]
+  },
+  "implementation": {
+    "files_changed": [
+      "apps/hub/src/app/courses/[course]/guided-lessons/[noteId]/page.tsx — server side: subtopicCode = hub.noteSubtopic[noteId]; examQuestionsHref/flashcardsHref resolve from hub.hrefs with the course-level ||-fallback; both passed to GuidedLessonFlow",
+      "apps/hub/src/app/courses/[course]/guided-lessons/[noteId]/guided-flow.tsx — Props gain required examQuestionsHref/flashcardsHref (fail-loud at the call site); threaded GuidedLessonFlow -> FinishedView; the 'Keep going' anchors render the resolved hrefs; disclosure comment updated (the 'deferred until a seam lands' note is now the resolution description)"
+    ],
+    "diff": "2 files, +46/-7",
+    "learner_visible_change": "After the lesson set completes, 'Exam questions' lands on the note's own topic set and 'Flashcards' on the note's own subtopic deck (SME lesson-end behavior); visible labels unchanged."
+  },
+  "verification": {
+    "gates": {
+      "eslint_touched_files": "exit 0 (targeted bunx eslint on the two files; repo-wide `bun run lint` at bb9e7bf2 carries 9 pre-existing co-tenant problems in OTHER files — deck-player/strengths-panel/drill/toolkit/seneca-browser/exports — none ours; CI's verify/hub gates do not include repo lint)",
+      "build_hub_ci_parity": "exit 0 (prebuild corpus-verify trio — verify_corpus_23a + flashcard-sync + cie-bundles — then next build)"
+    },
+    "surface_walk": {
+      "surface": "production standalone (bun apps/hub/.next/standalone/apps/hub/server.js, PORT 3200, HUB_CORPUS_STATIC_ORIGIN self-fetch — the documented fetch-plane law)",
+      "method": "FlowState seeded browser-local (finished:true) per note — render-only shortcut for FinishedView; no corpus or progress writes",
+      "steps": [
+        "rn_7Q8M9nVkr2FxCzxd (Group 7 Halogens): FinishedView 'Keep going' anchors = /exam-questions/2-2-group-7-halogens--exam-questions + /flashcards/4CH1-S2-b (both PER-TOPIC; the course-level /flashcards hit also present on the page is the sidebar nav, untouched)",
+        "click Exam questions -> lands on the SET page 'Group 7 (Halogens) (Edexcel IGCSE Chemistry): Exam Questions' — not the index, not a 404",
+        "click Flashcards (scoped to the handoff anchor) -> lands on the deck 'Group 7 (halogens) – chlorine, bromine and iodine: Flashcards'",
+        "breadth: rn_2VnK66PqbvFKdKYt and rn_QVmDs8X4szpds3cP resolve /exam-questions/1-1-states-of-matter--exam-questions + /flashcards/4CH1-S1-a — a DIFFERENT pair for a different subtopic (and the same pair for two same-subtopic notes): resolution is per-note via the seam, nothing hardcoded"
+      ],
+      "screenshots": "lane evidence at download/r2-deep-evidence-20261027/ (01 exam-set landing, 02 deck landing, 03 FinishedView deep handoffs)"
+    }
+  },
+  "discipline": "no direct-main push (AGENT_BRIEFING §4.7 — branch + PR); branch cut fetch-first from origin/main bb9e7bf2; PAT env-only one-shot via credential helper, never echoed; zero DB; zero Vercel; no corpus or schema writes (apps/hub/src UI only); FlowState seeding was browser-local render setup, not a surface write",
+  "residual": "fallback branch (no subtopic binding / empty maps) is the unchanged #399 expression, verified by construction + code review; deep path verified live on three notes. Optional future: course pages without any question sets/decks render course-level targets as today.",
+  "recorded_at_utc": "2026-10-27T00:00:00Z"
+}
