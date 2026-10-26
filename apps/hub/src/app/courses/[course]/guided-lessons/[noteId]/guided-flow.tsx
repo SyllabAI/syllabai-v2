@@ -39,18 +39,23 @@ import { useMemo, useState, useSyncExternalStore } from "react";
 import {
   ArrowRight,
   BookOpenCheck,
+  Calculator,
   Check,
   ChevronDown,
   ChevronRight,
   Lightbulb,
   ListChecks,
+  MessageCircleQuestion,
+  PenLine,
   RotateCcw,
+  Sparkles,
   ThumbsUp,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import type {
   GuidedDepthLayer,
@@ -737,7 +742,7 @@ function ExampleStage(p: StageProps) {
 }
 
 function CheckStage(p: StageProps) {
-  const { module: m, questionsById, state, onAnswer, onNext } = p;
+  const { module: m, lesson, moduleOrdinal, questionsById, state, onAnswer, onNext } = p;
   const questions = m.checkRefs
     .map((ref) => questionsById.get(ref))
     .filter((q): q is GuidedQuestion => q !== undefined);
@@ -791,6 +796,17 @@ function CheckStage(p: StageProps) {
               Continue
               <ArrowRight className="size-4" aria-hidden />
             </Button>
+            {/* R-3 (operator trace 1a179c6b53bff529): optional mixed-type
+                practice — derived from the same pinned artifact, never
+                scored, never persisted; the authored MCQ checks above stay
+                the only record (moduleDone untouched). */}
+            <MixedPractice
+              lesson={lesson}
+              module={m}
+              moduleOrdinal={moduleOrdinal}
+              questions={questions}
+              answers={state.answers}
+            />
           </div>
         )}
       </CardContent>
@@ -1018,6 +1034,24 @@ function FinishedView({
             );
           })}
         </ol>
+        {/* R-2 lesson-end handoffs (SME parity, operator trace
+            1a179c6b53bff529): the set ends into the course's live practice
+            surfaces — exam questions and flashcards — course-level targets
+            that always exist (never a 404 handoff). Deep links per topic can
+            follow once a slug-existence seam lands upstream. */}
+        <div className="space-y-1.5 border-t pt-4">
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Keep going
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <Button asChild variant="outline">
+              <a href={`${base}/exam-questions`}>Exam questions</a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href={`${base}/flashcards`}>Flashcards</a>
+            </Button>
+          </div>
+        </div>
         <div className="flex flex-wrap gap-2">
           <Button asChild>
             <a href={noteHref}>Back to the revision note</a>
@@ -1032,5 +1066,269 @@ function FinishedView({
         </div>
       </CardContent>
     </Card>
+  );
+}
+
+/* ─────────── R-3 mixed-type practice (derived · not scored) ─────────── */
+
+type PracticeKind = "recall" | "explain" | "apply";
+
+interface PracticeItem {
+  kind: PracticeKind;
+  kindLabel: string;
+  prompt: string;
+  model: string;
+  /** recall items get the honest keyword auto-check hint on reveal */
+  autoCheckModel?: string;
+}
+
+/** Content words for the recall auto-check — stopword-stripped, plural-trimmed. */
+const PRACTICE_STOP_WORDS = new Set([
+  "the", "and", "for", "are", "but", "not", "you", "all", "any", "can", "was", "one",
+  "our", "out", "get", "has", "him", "his", "how", "its", "new", "now", "old", "see",
+  "two", "way", "who", "did", "that", "this", "with", "from", "they", "have", "will",
+  "your", "what", "when", "where", "which", "into", "than", "then", "them", "these",
+  "those", "there", "their", "been", "were", "also", "such", "each", "other", "more",
+  "most", "some", "only", "same", "very", "just", "because", "about", "over", "under",
+  "between", "both", "must", "like", "made", "make", "makes", "called", "call", "uses",
+  "used", "use", "using",
+]);
+
+function practiceTokens(text: string): string[] {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w.length > 2 && !PRACTICE_STOP_WORDS.has(w))
+    .map((w) => (w.length > 3 && w.endsWith("s") ? w.slice(0, -1) : w));
+}
+
+/**
+ * Honest keyword auto-check for recall items: the share of the model
+ * answer's content words present in the learner's answer. A hint, never a
+ * verdict — the self-confirm buttons make the final call (SME keyword
+ * auto-grade parity without pretending to understand the sentence).
+ */
+function keywordAutoCheck(answer: string, model: string): boolean {
+  const modelWords = practiceTokens(model);
+  if (modelWords.length === 0) return false;
+  const answerSet = new Set(practiceTokens(answer));
+  const hits = modelWords.filter((w) => answerSet.has(w)).length;
+  return hits / modelWords.length >= 0.4;
+}
+
+/**
+ * Derives the practice items from the SAME pinned artifact the lesson rides
+ * on — nothing is synthesised beyond recombination: authored glossary
+ * placement, authored key points, authored misconceptions/explanations, the
+ * authored worked example (first-module placement law, same as the example
+ * stage). Explain-why is remediation-first: a misconception the learner
+ * actually hit this session outranks the generic own-words prompt.
+ */
+function buildPracticeItems(
+  lesson: GuidedLessonImport,
+  module: GuidedModule,
+  moduleOrdinal: number,
+  questions: GuidedQuestion[],
+  answers: FlowState["answers"],
+): PracticeItem[] {
+  const items: PracticeItem[] = [];
+  const terms = glossaryFor(lesson, moduleOrdinal);
+  if (terms.length > 0) {
+    items.push({
+      kind: "recall",
+      kindLabel: "Quick recall",
+      prompt: `Define: ${terms[0].term}`,
+      model: terms[0].definition,
+      autoCheckModel: terms[0].definition,
+    });
+  }
+  let explained = false;
+  for (const q of questions) {
+    const a = answers[q.id];
+    if (!a || a.correct) continue;
+    const wrong = q.options.find((o) => o.key === a.picked);
+    const misc =
+      wrong?.misconception ??
+      q.options.find((o) => !o.correct && o.misconception)?.misconception ??
+      null;
+    const correct = q.options.find((o) => o.correct);
+    if (misc && correct) {
+      items.push({
+        kind: "explain",
+        kindLabel: "Explain why",
+        prompt: `Many learners think: ${misc} In your own words, explain why that's not right.`,
+        model: correct.explanation,
+      });
+      explained = true;
+      break;
+    }
+  }
+  if (!explained && module.keyPoints.length > 0) {
+    items.push({
+      kind: "explain",
+      kindLabel: "Explain why",
+      prompt: `Put it into your own words: ${module.keyPoints[0]}`,
+      model: `A strong explanation covers: ${module.keyPoints[0]}`,
+    });
+  }
+  if (moduleOrdinal === 0 && lesson.lesson.assets.workedExample) {
+    const we = lesson.lesson.assets.workedExample;
+    items.push({
+      kind: "apply",
+      kindLabel: "Apply it",
+      prompt: `Try this yourself before revealing the steps: ${we.prompt}`,
+      model: `${we.steps
+        .map((s, i) => `${i + 1}. ${s}`)
+        .join(" ")} — Final answer: ${we.finalAnswer}`,
+    });
+  }
+  return items;
+}
+
+const PRACTICE_ICON: Record<PracticeKind, typeof PenLine> = {
+  recall: PenLine,
+  explain: MessageCircleQuestion,
+  apply: Calculator,
+};
+
+/**
+ * R-3 mixed-type practice block (SME check-mix parity, operator trace
+ * 1a179c6b53bff529): quick recall (keyword auto-check hint + self-confirm),
+ * explain-why (self-grade against the model answer) and apply-it (the
+ * authored worked example). Ephemeral by design — component state only,
+ * never written to FlowState or localStorage, never counted in moduleDone;
+ * the authored MCQ checks remain the only scored record, and the on-screen
+ * copy says so.
+ */
+function MixedPractice({
+  lesson,
+  module,
+  moduleOrdinal,
+  questions,
+  answers,
+}: {
+  lesson: GuidedLessonImport;
+  module: GuidedModule;
+  moduleOrdinal: number;
+  questions: GuidedQuestion[];
+  answers: FlowState["answers"];
+}) {
+  const items = useMemo(
+    () => buildPracticeItems(lesson, module, moduleOrdinal, questions, answers),
+    [lesson, module, moduleOrdinal, questions, answers],
+  );
+  const [pi, setPi] = useState(0);
+  const [draft, setDraft] = useState("");
+  const [revealed, setRevealed] = useState(false);
+  const [marked, setMarked] = useState<null | "hit" | "miss">(null);
+
+  if (items.length === 0) return null;
+  const item = items[Math.min(pi, items.length - 1)];
+  const Icon = PRACTICE_ICON[item.kind];
+  const auto =
+    item.autoCheckModel && revealed ? keywordAutoCheck(draft, item.autoCheckModel) : null;
+
+  const reveal = () => setRevealed(true);
+  const advance = () => {
+    setPi((n) => n + 1);
+    setDraft("");
+    setRevealed(false);
+    setMarked(null);
+  };
+
+  return (
+    <div className="space-y-3 rounded-md border bg-background p-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="flex items-center gap-2 text-sm font-semibold">
+          <Sparkles className="size-4 text-primary" aria-hidden />
+          Go further — mixed practice
+        </p>
+        <Badge variant="secondary" className="text-[11px]">
+          Item {Math.min(pi + 1, items.length)} of {items.length}
+        </Badge>
+      </div>
+      <p className="text-xs text-muted-foreground">
+        Extra practice in the mixed format — not scored, and not recorded on your lesson
+        progress. The check above stays as your record.
+      </p>
+
+      {marked ? (
+        <div className="space-y-3" role="status">
+          <p className="text-[13px] font-medium">
+            {marked === "hit" ? "Nice — noted for you." : "Fair enough — the model answer is above."}
+          </p>
+          {pi < items.length - 1 ? (
+            <Button size="sm" onClick={advance}>
+              Next practice item
+              <ArrowRight className="size-4" aria-hidden />
+            </Button>
+          ) : (
+            <p className="text-[13px] font-medium text-emerald-700 dark:text-emerald-400">
+              Mixed practice done — nice work.
+            </p>
+          )}
+        </div>
+      ) : (
+        <fieldset className="space-y-2.5">
+          <legend className="text-sm font-medium leading-snug">
+            <span className="mr-2 inline-flex items-center gap-1.5 text-muted-foreground">
+              <Icon className="size-4" aria-hidden />
+              {item.kindLabel}
+            </span>
+            {item.prompt}
+          </legend>
+          {item.kind !== "apply" && (
+            <Textarea
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              rows={3}
+              placeholder={
+                item.kind === "recall" ? "Type your definition…" : "Type your explanation…"
+              }
+              aria-label={`Your answer for the ${item.kindLabel} practice item`}
+            />
+          )}
+          {!revealed ? (
+            <Button size="sm" variant="outline" onClick={reveal}>
+              Reveal model answer
+            </Button>
+          ) : (
+            <div className="space-y-2" role="status">
+              {auto !== null && (
+                <p
+                  className={cn(
+                    "text-[13px] font-medium",
+                    auto
+                      ? "text-emerald-700 dark:text-emerald-400"
+                      : "text-amber-700 dark:text-amber-400",
+                  )}
+                >
+                  {auto
+                    ? "Auto-check: key words from the model answer spotted in yours."
+                    : "Auto-check: few of the model answer's key words appeared — compare them below."}
+                  <span className="ml-1 font-normal text-muted-foreground">
+                    A hint, not a verdict — you make the final call.
+                  </span>
+                </p>
+              )}
+              <p className="text-[13px] leading-relaxed text-muted-foreground">
+                <span className="font-semibold text-foreground">Model answer: </span>
+                {item.model}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Button size="sm" variant="outline" onClick={() => setMarked("hit")}>
+                  <ThumbsUp className="size-3.5" aria-hidden />
+                  I had it
+                </Button>
+                <Button size="sm" variant="ghost" onClick={() => setMarked("miss")}>
+                  Not yet
+                </Button>
+              </div>
+            </div>
+          )}
+        </fieldset>
+      )}
+    </div>
   );
 }
