@@ -1,0 +1,44 @@
+{
+  "schema": "syllabai.serve-dup-fix-receipt/0.1",
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-009 — post-close defect fix: doubled questions on the past-paper player (operator dup report, trace 1a179a0d85fa2739)",
+  "generated_utc": "2026-10-27T19:55:00+08:00 (Asia/Dhaka)",
+  "operator_report": "Every maths-B question repeats twice on the paper player. The older SME-parsed bundle (another agent's, slated for deletion) appears merged with the official plane.",
+  "root_cause": "collectPastPapers groups strictly by (dateSlug-numberSlug). Both past-paper pages passed the raw concatenation [...officialPaperTopics, ...questionTopics]; for the 63 paper keys the maths-B SME bundle and the official plane both attest, the SME copy of every question piled on top of the official copy (june-2018-4mb1-01: 28+28=56 items, each question twice; interleaved by (questionNumber, corpus idx)). The SME bundle itself was NOT merged or modified — the double-render happened at read time in the hub. Chemistry (igcse-chemistry-19, the 'two planes coexist' precedent) never hit this because its SME sourcePaper refs (WCH11-style) have ZERO key collisions with its official keys — the overlap class was never exercised.",
+  "fix": {
+    "pr": 397,
+    "branch": "r7a-pp-official-precedence",
+    "merge_commit": "846de60e",
+    "files": [
+      "apps/hub/src/lib/past-papers.ts — officialCoveredKeys + dropOfficialCoveredSme + collectPastPapersTwoPlane (official = source of record per paper key; exporter already passes SME content through byte-identically)",
+      "apps/hub/src/app/courses/[course]/past-papers/page.tsx — rail reconstruction via collectPastPapersTwoPlane",
+      "apps/hub/src/app/courses/[course]/past-papers/[paperKey]/page.tsx — player reconstruction via collectPastPapersTwoPlane",
+      "apps/hub/src/lib/past-papers.planes.test.ts — 7-test regression guard incl. the documented trap (raw concat really doubles)"
+    ],
+    "semantics": "SME questions dropped ONLY for paper keys the official plane covers; SME-only keys (maths-B May 2020) survive untouched; zero-overlap courses unchanged; Exam-Questions tree/index/counts untouched (bundle untouched on disk)."
+  },
+  "gates": {
+    "bun_test": "src/lib/past-papers.planes.test.ts — 7 pass / 0 fail",
+    "tsc": "bunx tsc --noEmit (apps/hub) exit 0 after bun install",
+    "real_data_proof": "actual lib via bun on committed bundles: maths-B raw concat 68 papers / 2,551 questions -> two-plane 68 papers / 1,336 questions (= 1,281 official + 55 May-2020 SME-only); per-key official counts ALL GREEN; chemistry 104 papers / 719 questions identical before/after"
+  },
+  "deploy": {
+    "pipeline": "syllabai-hub-v2 (Vercel, prodBranch main)",
+    "landing_merge": "846de60e (PR #397 merged 19:24:55Z)",
+    "serving_deploy": "f869ffaf READY 19:38Z — descendant of the landing (Vercel built newest; carries the fix)",
+    "note": "other lanes landed on main in the same window (receipts, T-BOOK-064 r2, docs) — normal co-tenancy"
+  },
+  "live_verification": {
+    "june-2018-4mb1-01": "meta line now '28 questions · 100 marks · ≈ 2 hours' (was 56); bytes 713,110 -> 372,936; DOM articles 56 -> 28; ∠ count 40 -> 20 (each was double-rendered); exactly ONE article contains ∠COB; adjacent questions are distinct (Q12 circle ∠COB/∠OCA vs Q13 (4n+3)^2-(4n-3)^2 proof)",
+    "january-2019-4mb1-02r": "11 questions · 100 marks — UNCHANGED (official-only set, never doubled)",
+    "may-2020-4mb1-01": "29 questions · 100 marks, serves 200 — SME-only set survives the precedence rule",
+    "rail": "200, ~1.43 MB — unchanged shape",
+    "screenshots": "download/t-oeq-mathsb/shots/07-08 (fixed player)"
+  },
+  "honest_disclosures": [
+    "The 'Interactive 26/26' coverage chip vs 28 held items is a PRE-EXISTING coverage-vs-blueprint semantic (UI already discloses 'parsed marks differ slightly from the official paper'); not introduced or changed by this fix.",
+    "The SME bundle (questions.json) was slated-for-deletion per the operator, but deleting it has cross-surface blast radius (Exam-Questions tree source, DB-ingest repo source-of-record for 1,250 questions). This fix makes the past-papers surface single-source (official) without that deletion; bundle retirement remains the open carry-forward item (ledger SME-retirement record + DB-plane ingest decision).",
+    "Both PATs (GitHub + Vercel) appeared in chat plaintext across this lane and MUST be rotated by the operator."
+  ],
+  "verdict": "PASS — the doubled-question defect is fixed on production: official plane is the single source per covered paper key, SME-only content survives, chemistry unchanged, regression guard landed."
+}
