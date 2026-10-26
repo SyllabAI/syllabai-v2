@@ -341,26 +341,29 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 # verbatim spine row. 1.1 bundles never carry null picks and still parse.
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.2"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-# T-UGM-HUB-CONSUME-16: pin advanced past lane 16 (T-UGM-MODE1-16 /
-# T-UGM-IMPORT-16, corpus PR #155, merge 5163051774f98f9a05e6c3a1c4c1d009a242c3c8 —
-# the ZERO-FRESH-BODY corpus: ZERO new body files, MANIFEST v17, fleet 628
-# UNCHANGED; 53 candidates of record closed exactly = 2 aligned (BOTH
-# cross-course joins riding of-record pure-1 bodies) + 4 non-overlap
-# companion disclosures + 47 rejections; the empty-DE-station
-# corpus-boundary disclosure of record — the site's own
-# differential-equations station has ZERO resources (id 11, created
-# 2015-11-04, never populated; verified live with a populated-station
-# control), raw-parity 855/855). The corpus of record was reviewed ALL
-# GREEN at head b09be085 before merge (trace 1a17798149c39e91): blob
-# identity remote==local x5, CI sync success, mergeable=True, closure
-# exact 53 = 2+4+47, MANIFEST strictly additive with lanes 1-15
-# byte-identical. Pure-1 inputs AND the lanes 9-15 pure-3 inputs are
-# byte-identical b151f65a → 51630517 (the lane-16 PR touches the new
-# enrichment + the shared MANIFEST lane-16 block + both READMEs + LEDGER
-# only — verified pin-to-pin; the strictly-additive law holds).
-# the pin rides the T-UGM-MODE1-16 amendment (PR #157, merge c8b80c6a — the
-# lane-9 cross-course join shape; the enrichment consumed by THIS import)
-DEFAULT_REF = "main@c8b80c6a09af2526d05eb808512081d191dd8e03"
+# T-UGM-HUB-CONSUME-17: pin advanced past lane 17 (T-UGM-MODE1-17 /
+# T-UGM-IMPORT-17, corpus PR #168, merge c0d12159325de18c549a32842ebd72e13f057f53 —
+# the CORPUS-BOUNDARY lane and the FIRST ZERO-ALIGNED LANE of record: the UGM
+# site never published its complex-numbers substrate — the dedicated stations
+# complex-numbers-faces (id 8) / complex-numbers-plane (id 9) are post-freeze
+# AcademicReview shells with ZERO public resources, re-verified live this lane
+# with the populated-station control (vector-geometry id 27 → 27) and the
+# never-captured controls (matrices id 17 / differential-equations id 11 → 0);
+# the 855-resource / 25-station corpus of record is FINAL, raw-parity 855/855).
+# 43 candidates of record closed exactly = 0 aligned + 1 non-overlap companion
+# disclosure (absurder, bodyImported=false — the lane-9 row stands) + 37
+# prior-home/row closures + 5 fresh rejections; all eight spec points
+# 3.9.1-3.9.8 are honest-empty blocks (the lane-13 honest-gap law applied
+# lane-wide for the first time); MANIFEST v18, ZERO fresh bodies, file_count
+# 628 UNCHANGED. The corpus of record was reviewed ALL GREEN before merge
+# (trace 1a178f86724ff209): merge-base file set exactly 5, CI sync success,
+# mergeable=True, lanes 1-16 byte-identical, pure-3 spine export complete of
+# record (43 rows, 3.1-3.9) at syllabai-experimental 9c3cf084. Pure-1 inputs
+# AND the lanes 9-16 pure-3 inputs are byte-identical c8b80c6a → c0d12159 (the
+# lane-17 PR touches the new enrichment + the shared MANIFEST lane-17 block +
+# both READMEs + LEDGER only — verified pin-to-pin; the strictly-additive law
+# holds; the prior lane-16 pin 51630517 → c8b80c6a is superseded).
+DEFAULT_REF = "main@c0d12159325de18c549a32842ebd72e13f057f53"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
@@ -827,6 +830,63 @@ LANE_STATIONS = {
             "ledger": "LEDGER.md — T-UGM-MODE1-16 and T-UGM-IMPORT-16 (PR #155)",
             "expected": {"resources": 0, "rows": 7, "aligned": 2, "nonOverlap": 4},
         },
+        {
+            # T-UGM-HUB-CONSUME-17 — lane 17, CIE 9709 Pure 3 3.9 Complex
+            # numbers (the NINTH and FINAL pure-3 lane — the course plane
+            # closes): THE CORPUS-BOUNDARY LANE OF RECORD and the FIRST
+            # ZERO-ALIGNED LANE of record. The UGM site never published its
+            # complex-numbers substrate: both dedicated stations are
+            # post-freeze AcademicReview shells with ZERO public resources
+            # (complex-numbers-faces id 8 / complex-numbers-plane id 9,
+            # verified live with a populated-station control; the four
+            # never-captured stations are all empty shells) — the corpus is
+            # FINAL at 855 resources / 25 stations. The lane serves ZERO
+            # fresh bodies (res_dir is NOT created; the MANIFEST v18 lane
+            # block carries file_count 0 / files [] — the lane-16 byref-only
+            # law) and ZERO aligned rows of any kind (no joins, no flips, no
+            # one-to-many — the pure-1 plane carries no complex numbers
+            # either): every perSpecPoint block 3.9.1-3.9.8 is an
+            # HONEST-EMPTY block (the lane-13 honest-gap law applied
+            # lane-wide for the first time — primaryPick=null, ugmIds=[],
+            # the verbatim spine rows carried). The ONE non-overlap
+            # companion disclosure rides bodyImported=false (absurder — the
+            # conjugate-pair factorisation aside a^2+b^2=(a+ib)(a-ib)
+            # derived from i^2=-1; the lane-9 non-overlap row of record
+            # stands). 43 candidates of record closed exactly = 0 + 1 + 42
+            # (37 prior-home/row closures + 5 fresh rejections). The
+            # stations list is the FULL 18-station sweep closure of record
+            # (the lane-13/15/16 convention). Row census 0/0 — the first
+            # zero-row lane the importer serves; the lane exists in the
+            # bundle as its eight honest-empty spec points + its coverage
+            # block + the byref disclosure, and NOTHING else. Figure plane
+            # unchanged: figures=0 honestly (no fresh bodies, no map rows).
+            "laneSlug": "complex-numbers",
+            "laneTitle": "Complex numbers",
+            "stations": [
+                {"slug": "polynomials", "title": "Polynomials & Rational Functions"},
+                {"slug": "quadratics", "title": "Quadratics"},
+                {"slug": "thinking-about-algebra", "title": "Thinking about Algebra"},
+                {"slug": "exp-and-log", "title": "Exponentials & Logarithms"},
+                {"slug": "counting-and-binomials", "title": "Counting & Binomials"},
+                {"slug": "calculus-meets-functions", "title": "Calculus meets Functions"},
+                {"slug": "combining-functions", "title": "Combining Functions"},
+                {"slug": "circles", "title": "Circles"},
+                {"slug": "vector-geometry", "title": "Vector Geometry"},
+                {"slug": "combining-vectors", "title": "Combining Vectors"},
+                {"slug": "trigonometry-compound-angles", "title": "Trigonometry: Compound Angles"},
+                {"slug": "thinking-about-numbers", "title": "Thinking about Numbers"},
+                {"slug": "calculus-of-powers", "title": "Calculus of Powers"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "trigonometry-triangles-to-functions", "title": "Trigonometry: Triangles to Functions"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+                {"slug": "geometry-of-equations", "title": "Geometry of Equations"},
+                {"slug": "thinking-about-functions", "title": "Thinking about Functions"}
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-3-complex-numbers.json",
+            "res_dir": "UGM-Resources/pure-3-complex-numbers",
+            "ledger": "LEDGER.md — T-UGM-MODE1-17 and T-UGM-IMPORT-17 (PR #168)",
+            "expected": {"resources": 0, "rows": 0, "aligned": 0, "nonOverlap": 1},
+        },
     ],
 }
 
@@ -884,6 +944,21 @@ def import_lane(repo, lane_block, course):
         if sorted(ss_by_slug) != sorted(st_slugs):
             fail(f"[{station}] stationScope slugs {sorted(ss_by_slug)} != lane block {sorted(st_slugs)}")
         breakdown = enr.get("coverage", {}).get("stationBreakdown") or {}
+        # T-UGM-HUB-CONSUME-17 normalization law (the lane-14 named-pick
+        # precedent): the lane-17 corpus enrichment of record (PR #168)
+        # carries coverage.stationBreakdown as a LIST of per-station rows
+        # (slug inside the row) where lanes 9-16 use the slug-keyed dict —
+        # same fields, same facts. Coerce the list shape to the dict shape
+        # at the hub boundary; fail-closed on a row without a slug or a
+        # slug collision (no silent reshaping).
+        if isinstance(breakdown, list):
+            norm = {}
+            for row in breakdown:
+                bslug = (row or {}).get("slug")
+                if not bslug or bslug in norm:
+                    fail(f"[{station}] stationBreakdown list row without a unique slug: {str(row)[:160]}")
+                norm[bslug] = row
+            breakdown = norm
         for s in lane_block["stations"]:
             sc = ss_by_slug.get(s["slug"], {})
             if sc.get("title") != s["title"]:

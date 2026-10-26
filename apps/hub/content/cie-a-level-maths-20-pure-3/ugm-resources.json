@@ -1,6 +1,6 @@
 {
  "schema": "syllabai-demo.ugm-lane-resources/1.2",
- "generatedUtc": "2026-10-26T10:09:37Z",
+ "generatedUtc": "2026-10-26T16:30:13Z",
  "reviewState": {
   "state": "SUGGESTED",
   "note": "Agent-generated alignment per AGENT.md rule 2 — candidates until the review/promotion gate promotes them; no coverage manufactured (rule 3)."
@@ -536,11 +536,101 @@
    "slug": "vector-geometry",
    "title": "Vector Geometry",
    "url": null
+  },
+  {
+   "slug": "polynomials",
+   "title": "Polynomials & Rational Functions",
+   "url": null
+  },
+  {
+   "slug": "quadratics",
+   "title": "Quadratics",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-algebra",
+   "title": "Thinking about Algebra",
+   "url": null
+  },
+  {
+   "slug": "exp-and-log",
+   "title": "Exponentials & Logarithms",
+   "url": null
+  },
+  {
+   "slug": "counting-and-binomials",
+   "title": "Counting & Binomials",
+   "url": null
+  },
+  {
+   "slug": "calculus-meets-functions",
+   "title": "Calculus meets Functions",
+   "url": null
+  },
+  {
+   "slug": "combining-functions",
+   "title": "Combining Functions",
+   "url": null
+  },
+  {
+   "slug": "circles",
+   "title": "Circles",
+   "url": null
+  },
+  {
+   "slug": "vector-geometry",
+   "title": "Vector Geometry",
+   "url": null
+  },
+  {
+   "slug": "combining-vectors",
+   "title": "Combining Vectors",
+   "url": null
+  },
+  {
+   "slug": "trigonometry-compound-angles",
+   "title": "Trigonometry: Compound Angles",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-numbers",
+   "title": "Thinking about Numbers",
+   "url": null
+  },
+  {
+   "slug": "calculus-of-powers",
+   "title": "Calculus of Powers",
+   "url": null
+  },
+  {
+   "slug": "chain-rule",
+   "title": "Chain Rule & Integration by Substitution",
+   "url": null
+  },
+  {
+   "slug": "trigonometry-triangles-to-functions",
+   "title": "Trigonometry: Triangles to Functions",
+   "url": null
+  },
+  {
+   "slug": "product-rule",
+   "title": "Product Rule & Integration by Parts",
+   "url": null
+  },
+  {
+   "slug": "geometry-of-equations",
+   "title": "Geometry of Equations",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-functions",
+   "title": "Thinking about Functions",
+   "url": null
   }
  ],
  "source": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@c8b80c6a09af2526d05eb808512081d191dd8e03",
+  "ref": "main@c0d12159325de18c549a32842ebd72e13f057f53",
   "enrichment": [
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-logarithmic-and-exponential-functions.json",
@@ -549,7 +639,8 @@
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-integration.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-iteration.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-vectors.json",
-   "UGM-Enrichment/cie-a-level-maths-20-pure-3-differential-equations.json"
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-differential-equations.json",
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-complex-numbers.json"
   ],
   "enrichmentSchema": "syllabai.ugm-spec-enrichment/1.0",
   "resourcesDir": [
@@ -560,9 +651,10 @@
    "UGM-Resources/pure-3-integration",
    "UGM-Resources/pure-3-iteration",
    "UGM-Resources/pure-3-vectors",
-   "UGM-Resources/pure-3-differential-equations"
+   "UGM-Resources/pure-3-differential-equations",
+   "UGM-Resources/pure-3-complex-numbers"
   ],
-  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119); LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126); LEDGER.md — T-UGM-MODE1-12 and T-UGM-IMPORT-12 (PR #134); LEDGER.md — T-UGM-MODE1-13 and T-UGM-IMPORT-13 (PR #140) + the T-UGM-MODE1-13 amendment r0 (this PR); LEDGER.md — T-UGM-MODE1-14 and T-UGM-IMPORT-14 (PR #145); LEDGER.md — T-UGM-MODE1-15 and T-UGM-IMPORT-15 (PR #149); LEDGER.md — T-UGM-MODE1-16 and T-UGM-IMPORT-16 (PR #155)",
+  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119); LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126); LEDGER.md — T-UGM-MODE1-12 and T-UGM-IMPORT-12 (PR #134); LEDGER.md — T-UGM-MODE1-13 and T-UGM-IMPORT-13 (PR #140) + the T-UGM-MODE1-13 amendment r0 (this PR); LEDGER.md — T-UGM-MODE1-14 and T-UGM-IMPORT-14 (PR #145); LEDGER.md — T-UGM-MODE1-15 and T-UGM-IMPORT-15 (PR #149); LEDGER.md — T-UGM-MODE1-16 and T-UGM-IMPORT-16 (PR #155); LEDGER.md — T-UGM-MODE1-17 and T-UGM-IMPORT-17 (PR #168)",
   "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
   "operatorAttestation": "2026-10-24 — text + static figures may ship into SyllabAI; permission declared",
   "figureMap": "UGM-Resources/figures-map.json",
@@ -619,7 +711,15 @@
    "3.8.1",
    "3.8.2",
    "3.8.3",
-   "3.8.4"
+   "3.8.4",
+   "3.9.1",
+   "3.9.2",
+   "3.9.3",
+   "3.9.4",
+   "3.9.5",
+   "3.9.6",
+   "3.9.7",
+   "3.9.8"
   ],
   "figures": {
    "figureRefs": 0,
@@ -713,10 +813,19 @@
     "candidateRows": 7,
     "crossLaneAligned": 2,
     "crossLaneNonOverlap": 0
+   },
+   {
+    "station": "complex-numbers",
+    "stationTitle": "Complex numbers",
+    "ugmResourcesConsidered": 43,
+    "aligned": 0,
+    "nonOverlap": 1,
+    "alignedShare": 0.0,
+    "candidateRows": 0
    }
   ],
   "nonOverlapByReference": {
-   "count": 97,
+   "count": 98,
    "rows": [
     {
      "ugmSlug": "absurder",
@@ -1396,6 +1505,13 @@
      "title": "Weight pulling",
      "url": "https://undergroundmathematics.org/hyperbolic-functions/weight-pulling",
      "reason": "Approach 1 formulates the tractrix DE dy/dx = -y/sqrt(a^2-y^2) from the string geometry and separates the variables ('This is a separable differential equation, so we get integral(sqrt(a^2-y^2)/y) dy = -x+c') with an initial condition (x=0, y=a) — the 3.8.1-3.8.3 pipeline verbatim — but the evaluation requires the substitution y = a sin(theta) and the cosecant integral, both beyond the 9709 function set, and Approach 2 leans on cosh/arcosh catenary machinery; the resource's centre of gravity is the tractrix/catenary geometry. The genuine separable-DE skeleton is disclosed by reference (the prior log/exp and trig non-overlap rows stand)."
+    },
+    {
+     "ugmSlug": "absurder",
+     "station": "polynomials",
+     "title": "Ab-surder!",
+     "url": "https://undergroundmathematics.org/polynomials/absurder",
+     "reason": "The cube-root rationalisation task's Approach-2 aside asks 'What about a²+b²?' and derives a²+b²=(a+ib)(a−ib) from i²=−1 — the conjugate-pair factorisation of a real polynomial displayed in a single embodiment — but the tested skill is surd rationalisation and the aside is never invoked by the question; the lane-9 non-overlap row of record stands (its reason already discloses this aside)."
     }
    ]
   },
@@ -2626,6 +2742,62 @@
    "code": "3.8.4",
    "officialText": "interpret the solution of a differential equation in the context of a problem being modelled by the equation.",
    "primaryPick": "r6959",
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.9.1",
+   "officialText": "understand the idea of a complex number, recall the meaning of the terms real part, imaginary The argument of a complex number will usually part, modulus, argument, conjugate, and use the refer to an angle fact that two complex numbers are equal if and only if both real and imaginary parts are equal",
+   "primaryPick": null,
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.9.2",
+   "officialText": "carry out operations of addition, subtraction, multiplication and division of two complex numbers expressed in Cartesian form x + i y",
+   "primaryPick": null,
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.9.3",
+   "officialText": "use the result that, for a polynomial equation with real coefficients, any non-real roots occur in conjugate pairs",
+   "primaryPick": null,
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.9.4",
+   "officialText": "represent complex numbers geometrically by means of an Argand diagram",
+   "primaryPick": null,
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.9.5",
+   "officialText": "carry out operations of multiplication and division of two complex numbers expressed in i i polar form r ^ cos i + i sin i h / r e",
+   "primaryPick": null,
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.9.6",
+   "officialText": "find the two square roots of a complex number",
+   "primaryPick": null,
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.9.7",
+   "officialText": "understand in simple terms the geometrical effects of conjugating a complex number and of adding, subtracting, multiplying and dividing two complex numbers",
+   "primaryPick": null,
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.9.8",
+   "officialText": "illustrate simple equations and inequalities involving complex numbers by means of loci in an Argand diagram",
+   "primaryPick": null,
    "resourceCount": 0,
    "ugmIds": []
   }

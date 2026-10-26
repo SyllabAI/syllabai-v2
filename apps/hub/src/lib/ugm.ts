@@ -111,7 +111,25 @@
  * its honest end); 3 non-overlap disclosures ride byref (PTP-I/II +
  * weight-pulling; from-parabolas-to-catenaries superseded — served by
  * its 3.1.6 body); THE CORPUS-BOUNDARY DISCLOSURE: the site's own
- * differential-equations station is EMPTY (0 resources, verified live)
+ * differential-equations station is EMPTY (0 resources, verified live);
+ * Complex Numbers seventeenth — PR #168 (the NINTH and FINAL pure-3 lane —
+ * the course plane closes; THE CORPUS-BOUNDARY LANE OF RECORD and the FIRST
+ * ZERO-ALIGNED LANE of record): the UGM site never published its complex-
+ * numbers substrate — both dedicated stations (complex-numbers-faces id 8 /
+ * complex-numbers-plane id 9) are post-freeze AcademicReview shells with
+ * ZERO public resources (re-verified live with a populated-station control;
+ * all four never-captured stations are empty shells), so the corpus is FINAL
+ * at 855 resources / 25 stations; the lane serves ZERO fresh bodies and ZERO
+ * aligned rows of any kind (no joins, no flips, no one-to-many — the pure-1
+ * plane carries no complex numbers either) while every spec point 3.9.1-3.9.8
+ * is an HONEST-EMPTY block (the lane-13 honest-gap law applied lane-wide for
+ * the first time — primaryPick null, ugmIds [], the verbatim spine rows
+ * carried); the ONE companion disclosure rides byref (absurder — the
+ * conjugate-pair factorisation aside a²+b²=(a+ib)(a−ib) derived from
+ * i² = −1; the lane-9 row stands); 43 candidates closed exactly = 0 + 1 + 42;
+ * the stations list is the FULL 18-station sweep closure — all 18 already
+ * declared, so the unique-station count stays 25 while the declared-row
+ * count grows 106 → 124
  * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
  * hub-side import is
