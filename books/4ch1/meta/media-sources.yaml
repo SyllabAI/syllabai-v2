@@ -1,0 +1,46 @@
+# media-sources.yaml — the curated external-media manifest of record (ADR-BOOK-0002).
+#
+# APPEND-ONLY rows: one row per external asset; the pilot lane (T-BOOK-066)
+# opens the ledger. BOOK-PACK-SPEC lint law 4 ("media-embed requires a
+# licensing row in `meta` or fails") is mechanically enforced against THIS
+# file by scripts/books/lint.mjs (G4):
+#   - every media-embed.sourceId must resolve to a row here (unresolved = FAIL)
+#   - row.status must be `curated` (retired rows hide; serving goes honest-empty)
+#   - row.licensing_row with reviewed_date present (absent = FAIL)
+#   - row.checked_date fresh within recheck_days (stale = WARN, exit 0)
+#   - row.specRefs must sit in the hosting chapter's canonical subsection
+#   - row.hosting_pack chapter token must exist in the spine and equal the
+#     block's own chapter
+#   - payload drift (url / youtubeId ≠ row) = FAIL
+#
+# Embed law (ADR-BOOK-0002 decision 3): youtube-nocookie embeds only, rel=0,
+# no autoplay, no playlists; title + attribution rendered in-card, never in
+# lesson prose (lesson-prose@2.0.0 untouched); fallback = plain link card.
+#
+# Licensing basis of record (decision 4): public YouTube embeds only — no
+# re-host, no download, no subtitle extraction; Kognity content is legally
+# closed (f-0039). Rollback (decision 7): flip status to `retired` — zero pack
+# bytes; no orphan sourceId may remain (lint enforces).
+#
+# Curation protocol (decision 6): per-URL fetch-verify BEFORE a row lands —
+# provider page of record live (HTTP 200), oembed 200 (embeddable),
+# youtube-nocookie probe 200, spec-match against the hosting chapter's join
+# set. checked_date below carries the verification date of record.
+
+- id: cog-1-1-states-of-matter-changing-state
+  provider: cognito
+  kind: video
+  title: "GCSE Chemistry - States of Matter & Changing State"
+  url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/UFJRRHluWEk/1.1-states-of-matter-changing-state"
+  youtube_id: hkBrw2fG75U
+  specRefs: ["1.1", "1.2"]
+  hosting_pack: "u1-c01-states-of-matter"
+  attribution: "Video © Cognito (cognito.org) — embedded via YouTube"
+  licensing_row:
+    basis: "public-embed"
+    ref: "YouTube ToS embed; no re-host, no download, no subtitle extraction"
+    reviewed_by: "operator (endorsement trace 1a179adedb4682cd; acceptance/implementation order trace 1a179c0ba4ff04ed)"
+    reviewed_date: "2026-10-27"
+  checked_date: "2026-10-27"
+  recheck_days: 90
+  status: curated

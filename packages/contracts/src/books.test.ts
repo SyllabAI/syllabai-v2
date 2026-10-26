@@ -377,6 +377,38 @@ describe("books — the interactive rail grammar (T-BOOK-002, book.block/1)", ()
     ).toThrow();
   });
 
+  test("media-embed payload law — sourceId required (ADR-BOOK-0002 decision 1)", () => {
+    // no sourceId — resolve law requires it even with a licensing row present
+    expect(() =>
+      bookBlockSchema.parse({
+        ...base,
+        id: "c01/b08",
+        ord: 8,
+        type: "media-embed",
+        content: {
+          title: "States of Matter & Changing State",
+          url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/UFJRRHluWEk/1.1-states-of-matter-changing-state",
+          licenseRef: "media-sources.yaml#cog-1-1-states-of-matter-changing-state",
+        },
+      }),
+    ).toThrow();
+    // with sourceId + licenseRef the payload parses (youtubeId rides passthrough)
+    const r = bookBlockSchema.safeParse({
+      ...base,
+      id: "c01/b08",
+      ord: 8,
+      type: "media-embed",
+      content: {
+        title: "States of Matter & Changing State",
+        url: "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/UFJRRHluWEk/1.1-states-of-matter-changing-state",
+        sourceId: "cog-1-1-states-of-matter-changing-state",
+        youtubeId: "hkBrw2fG75U",
+        licenseRef: "media-sources.yaml#cog-1-1-states-of-matter-changing-state",
+      },
+    });
+    expect(r.success).toBe(true);
+  });
+
   test("eq-builder payload law — missing target fails superRefine on content", () => {
     const r = bookBlockSchema.safeParse({
       ...base,

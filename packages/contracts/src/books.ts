@@ -280,7 +280,8 @@ export type BookCitationTarget = z.infer<typeof bookCitationTargetSchema>;
 //   - mcq-embed carries checkRefs ONLY (bank law: checks come from the bank,
 //     never authored question text).
 //   - sim-embed = PhET CC-BY-4.0 only, fallback link mandatory; media-embed
-//     requires an explicit licenseRef (licensing-as-serving-law).
+//     requires an explicit licenseRef AND a required sourceId resolving to a
+//     curated media-sources row (ADR-BOOK-0002; licensing-as-serving-law).
 // The attempts discriminator for rail checks is APP-LEVEL on the existing
 // free-varchar attempts.provenance (constant below) — attempts is Flyway-owned:
 // zero DDL (ADR-BOOK-0001 §12, F-BOOK-0002).
@@ -359,9 +360,21 @@ export const bookBlockPayloadLaws = {
       fallbackUrl: z.string().url(),
     })
     .passthrough(),
-  /** poster + link card; no licensing row, no card (honest-empty) */
+  /** poster + link card; no licensing row, no card (honest-empty).
+   *  ADR-BOOK-0002 decision 1: the payload gains a REQUIRED sourceId
+   *  resolving to a curated row in books/<qual>/meta/media-sources.yaml
+   *  (lint G4 enforces the resolve + licensing_row + freshness laws);
+   *  youtubeId rides passthrough (lint-required for kind=video rows, mirrored
+   *  from the manifest row — drift is a G4 fail). The renderer embeds via
+   *  youtube-nocookie with a link-card fallback (decision 3); url stays the
+   *  provider page of record (the fallback target). */
   "media-embed": z
-    .object({ title: z.string().min(1), url: z.string().url(), licenseRef: z.string().min(1) })
+    .object({
+      title: z.string().min(1),
+      url: z.string().url(),
+      sourceId: z.string().min(1),
+      licenseRef: z.string().min(1),
+    })
     .passthrough(),
 } as const;
 

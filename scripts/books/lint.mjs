@@ -20,12 +20,21 @@
  *                  OCR-residue class; adding a ban = normal PR; removing
  *                  one needs a finding reference (SELF-IMPROVEMENT).
  *   G4 licensing — sim-embed simId ∈ the PhET allowlist of record; media-
- *                  embed licenseRef present (schema law re-asserted); no
- *                  image files in packs (figures are page-true pointers);
+ *                  embed licenseRef present (schema law re-asserted) AND
+ *                  sourceId resolving to a curated row in
+ *                  meta/media-sources.yaml (ADR-BOOK-0002: status curated,
+ *                  licensing_row.reviewed_date present, checked_date fresh
+ *                  within recheck_days — stale = WARN, absent = FAIL —,
+ *                  specRefs in the hosting chapter's canonical subsection,
+ *                  hosting_pack chapter in the spine and equal to the
+ *                  block's chapter, payload url/youtubeId == row values);
+ *                  no image files in packs (figures are page-true pointers);
  *                  honest-empty: a pack with zero blocks FAILS (delete it).
  *
- * Exit 0 = all packs green; exit 1 = any finding. Findings print with the
- * pack/block anchor so the authoring pass can cite them in findings.jsonl.
+ * Exit 0 = no error-class findings (warns print but never fail — the
+ * ADR-BOOK-0002 freshness gate is a warn class); exit 1 = any error finding.
+ * Findings print with the pack/block anchor so the authoring pass can cite
+ * them in findings.jsonl.
  */
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { basename, join } from "node:path";
@@ -96,6 +105,24 @@ for (const f of readdirSync(join(booksDir, "glossary"))) {
   for (const t of doc?.terms ?? []) if (t.slug) glossarySlugs.add(t.slug);
 }
 
+// ── ADR-BOOK-0002: the curated external-media manifest (media-embed rows) ───
+// Append-only ledger at books/<qual>/meta/media-sources.yaml; lint law 4 of
+// BOOK-PACK-SPEC made mechanically checkable against it. The file is
+// OPTIONAL at lint time only in the sense that an absent manifest fails any
+// media-embed block (honest-empty law: no manifest row, no card).
+let mediaRows = [];
+try {
+  mediaRows = yaml.load(readFileSync(join(booksDir, "meta", "media-sources.yaml"), "utf8")) ?? [];
+} catch {
+  mediaRows = []; // absent manifest — every media-embed fails the resolve law below
+}
+const mediaById = new Map((Array.isArray(mediaRows) ? mediaRows : []).map((r) => [r.id, r]));
+// duplicate ids would make the resolve law ambiguous — counted here, failed per-block below
+const idCounts = new Map();
+for (const r of Array.isArray(mediaRows) ? mediaRows : []) {
+  idCounts.set(r.id, (idCounts.get(r.id) ?? 0) + 1);
+}
+
 // PhET allowlist of record (real, loadable sims only)
 const PHET_ALLOWLIST = new Set([
   "states-of-matter-basics", "states-of-matter", "build-an-atom", "isotopes-and-atomic-mass",
@@ -111,7 +138,9 @@ const BANNED = [
 ];
 
 const findings = [];
+const warnFindings = [];
 const fail = (pack, block, gate, msg) => findings.push({ pack, block, gate, msg });
+const warn = (pack, block, gate, msg) => warnFindings.push({ pack, block, gate, msg });
 
 function walkBlocks(dir) {
   const out = [];
@@ -240,8 +269,67 @@ for (const packEnt of packDirs) {
         fail(packName, rel, "G4", `simId ${authored.content?.simId} not on the PhET allowlist of record`);
       }
     }
-    if (authored.type === "media-embed" && !authored.content?.licenseRef) {
-      fail(packName, rel, "G4", "media-embed without licenseRef (honest-empty law: no card)");
+    if (authored.type === "media-embed") {
+      if (!authored.content?.licenseRef) {
+        fail(packName, rel, "G4", "media-embed without licenseRef (honest-empty law: no card)");
+      }
+      const sid = authored.content?.sourceId;
+      if (sid == null || sid === "") {
+        fail(packName, rel, "G4", "media-embed without sourceId (ADR-BOOK-0002 decision 1: resolve law — no manifest row, no card)");
+      } else {
+        const row = mediaById.get(sid);
+        if (row == null) {
+          fail(packName, rel, "G4", `sourceId ${sid} does not resolve in meta/media-sources.yaml (ADR-BOOK-0002: no row, no card)`);
+        } else {
+          if ((idCounts.get(sid) ?? 0) > 1) fail(packName, rel, "G4", `manifest row ${sid} is duplicated (resolve law requires unique ids)`);
+          if (row.status !== "curated") {
+            fail(packName, rel, "G4", `manifest row ${sid} status=${row.status ?? "(absent)"} — only curated rows serve (retired = honest-empty)`);
+          }
+          const lr = row.licensing_row;
+          if (lr == null || typeof lr !== "object" || !lr.reviewed_date) {
+            fail(packName, rel, "G4", `manifest row ${sid} missing licensing_row.reviewed_date (BOOK-PACK-SPEC lint law 4)`);
+          }
+          const checked = row.checked_date ? Date.parse(row.checked_date) : NaN;
+          const recheck = Number.isFinite(Number(row.recheck_days)) ? Number(row.recheck_days) : 90;
+          if (Number.isNaN(checked)) {
+            fail(packName, rel, "G4", `manifest row ${sid} missing checked_date (curation protocol law: unverified URLs never serve)`);
+          } else {
+            const ageDays = (Date.now() - checked) / 86400000;
+            if (ageDays > recheck) {
+              warn(packName, rel, "G4", `manifest row ${sid} checked_date ${row.checked_date} is stale (> recheck_days=${recheck}) — re-verify embeddability and re-stamp`);
+            }
+          }
+          // spec join set: row.specRefs sit in the block chapter's canonical
+          // subsection (the same binding law the pack's own specPointRefs run)
+          for (const code of row.specRefs ?? []) {
+            const sub = subsectionByCode.get(code);
+            if (sub == null) fail(packName, rel, "G4", `manifest row ${sid} specRef ${code} not in the canonical graph`);
+            else if (sub !== CHAPTER_SUBSECTION[chapter]) {
+              fail(packName, rel, "G4", `manifest row ${sid} specRef ${code} lives in ${sub}, chapter bound to ${CHAPTER_SUBSECTION[chapter]}`);
+            }
+          }
+          // hosting_pack: chapter token must exist in the spine and be the
+          // block's own chapter (the ADR's one-pack-of-record law)
+          const m = /(?:^|-)c(\d{2})(?:-|$)/.exec(String(row.hosting_pack ?? ""));
+          const rowChapter = m ? `c${m[1]}` : null;
+          if (rowChapter == null || !spineKeys.has(rowChapter)) {
+            fail(packName, rel, "G4", `manifest row ${sid} hosting_pack ${row.hosting_pack ?? "(absent)"} does not name a spine chapter`);
+          } else if (rowChapter !== chapter) {
+            fail(packName, rel, "G4", `manifest row ${sid} hosts in ${rowChapter} but the block binds to ${chapter}`);
+          }
+          // payload drift guards: the card serves the row of record, never a fork
+          if (row.url != null && authored.content?.url !== row.url) {
+            fail(packName, rel, "G4", `payload url drifts from manifest row ${sid}`);
+          }
+          if (row.kind === "video") {
+            if (typeof authored.content?.youtubeId !== "string" || authored.content.youtubeId === "") {
+              fail(packName, rel, "G4", `video row ${sid} needs payload youtubeId mirrored from the manifest (renderer embed law)`);
+            } else if (row.youtube_id != null && authored.content.youtubeId !== row.youtube_id) {
+              fail(packName, rel, "G4", `payload youtubeId drifts from manifest row ${sid}`);
+            }
+          }
+        }
+      }
     }
   }
 
@@ -252,8 +340,13 @@ for (const packEnt of packDirs) {
   }
 }
 
-console.log(`lint: ${packDirs.length} packs, ${blockCount} blocks, ${findings.length} findings`);
+console.log(
+  `lint: ${packDirs.length} packs, ${blockCount} blocks, ${findings.length} finding(s), ${warnFindings.length} warn(s)`,
+);
 for (const f of findings) {
   console.log(`  [${f.gate}] ${f.pack}${f.block ? `/${f.block}` : ""} — ${f.msg}`);
+}
+for (const f of warnFindings) {
+  console.log(`  [${f.gate} WARN] ${f.pack}${f.block ? `/${f.block}` : ""} — ${f.msg}`);
 }
 process.exit(findings.length === 0 ? 0 : 1);
