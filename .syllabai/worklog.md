@@ -21266,3 +21266,17 @@ Stage Summary:
 - Post-merge main @ 2598c42: verify✓ hub✓ (bounded re-check ~90s).
 - Not merged, gate-b fail: #285 verify✗hub✗ · #296 hub✗ · #303 verify✗ · #352 zero check-runs (~52h stall).
 - Notes: mirror reset hit #132 (53rd consecutive, 89962a5 signature) — recovered, zero loss. Desk made no Neon/prod writes.
+
+---
+Task ID: T-MIG-135d follow-up run-002 (operator trace 1a1774ca4cfe57e1 "merge PR #384")
+Agent: r0 (Super Z, zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Task: discharge the merge order for the tutor board-aware copy PR
+
+Work Log:
+- SANDBOX ROLLBACK between lanes (the of-record rollback class, T-MIG-121 precedent): work/.tokens, the t5_* scripts, probe artifacts AND this lane's local worklog run-001 entry were wiped; the syllabai-v2 clone survived. ZERO of-record impact — PR #384, its branch commits (b8c8b91d fix + 9ae9b7f4 worklog) and the repo worklog run-001 entry all lived on origin. Tokens re-created from the operator's of-record message; canary login=SyllabAI ok; local trail reconstructed disclosed.
+- MERGE ORDER FOUND ALREADY DISCHARGED OF RECORD (first-hand verified): PR #384 merged=True at 2026-10-25T23:32:18Z by the intake desk (r0-auto sweep, standing-auth pattern — the receipt at d5fcdef8 discloses "#383/#386 lane-self-merged between sweeps" in the same breath) — merge commit 2598c421 with EXACT parents (6b8e7f6e + 9ae9b7f4 = this lane's head); r0-auto receipt d5fcdef8 records post-merge main @ 2598c42 gates green (verify+hub, bounded re-check ~90s); CI on head 9ae9b7f4: verify success + hub success (the run-001 bounded poll of record). Worklog run-001 entry confirmed present on main post-merge.
+- This filing: run-002 closing entry, pure append on main. NO bake fired (run-006 law — prod moves only on deliberate bake; the tutor board-aware copy reaches production on the NEXT deliberate bake).
+- Residuals unchanged: login blurb "Pearson Edexcel" (out of lane scope), audit findings (unanchored tranche-3, zero-note topics, dup course pairs), rung-3 pin advance + pastpapers recon (trace 1a17484361a63449), rotate BOTH operator tokens (both transited chat once more in the reconstruction).
+
+Stage Summary:
+- T-MIG-135d follow-up lane CLOSED of record: PR #384 merged (2598c421 @ main, receipt d5fcdef8). The tutor chrome's last hardcoded-board render path is board-aware on main — CIE courses get "Cambridge International" provenance in the about-coverage + welcome lines; every Edexcel/legacy path byte-identical; 4CH1 strings preserved per the 135d law. Prod pickup = next deliberate bake. LANE: IDLE.
