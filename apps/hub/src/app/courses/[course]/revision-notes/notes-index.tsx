@@ -151,7 +151,11 @@ export function NotesIndex({
                                 ))}
                                 {n.guidedStudy && (
                                   <Badge variant="secondary" className="text-[10.5px]">
-                                    guided study
+                                    {/* R-5 naming unification (trace 1a179c6b53bff529):
+                                        canonical learner-facing name is "Guided lesson(s)"
+                                        — the notes-index badge was the last "guided study"
+                                        sighting; the data field keeps its internal name. */}
+                                    guided lesson
                                   </Badge>
                                 )}
                               </span>

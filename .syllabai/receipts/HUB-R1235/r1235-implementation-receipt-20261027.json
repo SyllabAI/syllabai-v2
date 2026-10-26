@@ -1,0 +1,51 @@
+{
+  "record": "R-1+R-5 course-page guided entry (stale card flip + naming unification) + R-2 lesson-end handoffs + R-3 mixed-type practice — implemented and verified",
+  "format": "hub-implementation-receipt/1.0",
+  "operator_decision": {
+    "verbatim": "Proceed with R-2 + R-3 and R-1 + R-5",
+    "operator_trace": "1a179c6b53bff529",
+    "channel": "zai-web",
+    "session": "web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd",
+    "decides": "Four items from the SME-vs-hub comparison register of record (ROUND-SME-FLOW-RECHECK-COMPARE-20261026): R-1 stale ROADMAP card flip, R-5 naming unification, R-2 lesson-end handoffs, R-3 mixed check types. R-7c (picker hybrid) already landed via PR #396."
+  },
+  "parent_of_record": {
+    "branch_base": "origin/main 70ffa43db948f868767545b771fe471914e2ddfa",
+    "worktree": "sv2-r1235 (fresh worktree off fetched origin/main; the recycled sandbox's stale clone at 2f9b0e82 was fetch-first updated, untouched dirty workflow files left alone)",
+    "upstream_context": "includes PR #396 (R-7c picker hybrid, merge 10802d99) and PR #397 (r7a past-papers official-plane precedence, merge 846de60e)"
+  },
+  "implementation": {
+    "files_changed": [
+      "apps/hub/src/app/courses/[course]/page.tsx — R-1+R-5: the stale 'Smart Lesson — Phase C of the build plan' roadmap ghost card flipped to the live 'Guided lessons' card; readiness keys on the committed guided-import.json via loadGuidedIndex (fail-closed, same seam as the per-note banner); counts come from index.counts (never hardcoded): 'Live for 112 notes · 239 lessons'; CTA 'Pick a note' -> the notes index where every guided entry lives; gap-first desc mirrors the R-7c picker copy; courses without a committed index keep an honest roadmap card",
+      "apps/hub/src/app/courses/[course]/revision-notes/notes-index.tsx — R-5: the last learner-facing 'guided study' sighting renamed to 'guided lesson' (112 badges live); the internal data field name guidedStudy is untouched",
+      "apps/hub/src/app/courses/[course]/guided-lessons/[noteId]/guided-flow.tsx — R-2: FinishedView gains a 'Keep going' handoff row (Exam questions + Flashcards) with course-level hrefs that always exist (never a 404 handoff); R-3: a MixedPractice block renders in the check-complete panel — up to three derived items: Quick recall (module's authored glossary term, keyword auto-check hint at >=40% content-word overlap, self-confirm makes the final call), Explain why (remediation-first: the misconception of a question the learner got WRONG this session, else the first key point in own words; model answer = the authored explanation), Apply it (the authored worked example, first-module placement law — same gate as the example stage)"
+    ],
+    "behavior_contract": [
+      "R-1: the course page's only guided-flow affordance is now honest and live — no 'Smart Lesson' string remains learner-facing anywhere in apps/hub/src; other 'roadmap' badges (books/past-papers/target-test/practice-papers) are honest states for genuinely unbuilt features and stay",
+      "R-5: canonical learner-facing name = 'Guided lessons' (feature/collective) and 'Guided lesson' (per-note CTA + index badge); 'guided study' is gone from learner surfaces; lib/types 'Smart Lesson MVP' comments are an unrelated internal recommendation feature and stay",
+      "R-2: handoffs are course-level (guaranteed-live targets); per-topic deep links deferred until a slug-existence seam lands upstream (disclosed)",
+      "R-3: the authored MCQ checks remain the only scored record — moduleDone math untouched (R-7c honesty law preserved); practice items are ephemeral component state, never written to FlowState/localStorage, and the on-screen copy says so; explain-why is remediation-first; items derive ONLY from the same pinned artifact (glossary placement, key points, misconceptions/explanations, worked example) — nothing synthesised"
+    ]
+  },
+  "verification": {
+    "gates": {
+      "eslint_guided_flow_and_touched_files": "exit 0 (guided-flow.tsx + page.tsx + notes-index.tsx)",
+      "build_hub_ci_parity": "exit 0 (prebuild corpus-verify trio — verify_corpus_23a + flashcard-sync + cie-bundles — then next build; bun run build:hub at worktree root)"
+    },
+    "surface_walk": {
+      "surface": "production standalone build (bun .next/standalone/apps/hub/server.js, PORT 3200, HUB_CORPUS_STATIC_ORIGIN self-fetch) — the CI-baked artifact shape, not dev mode",
+      "note": "rn_7Q8M9nVkr2FxCzxd (Group 7 Halogens, 3 lessons / 15 checks) — the same corpus counterpart note as the R-7c delta-record walk",
+      "steps": [
+        "S1 course page SSR+browser: 'Guided lessons' card live with 'Live for 112 notes · 239 lessons' + 'Pick a note' + gap-first desc; 'Smart Lesson' GONE; stale Phase-C desc GONE from the guided card (the remaining 'Phase C' string belongs to the honest practice-papers roadmap card — different feature, untouched)",
+        "S2 notes index: 112 'guided lesson' badges (exact corpus count), 'guided study' GONE",
+        "S3 flow lesson 1 (high band): check 4/5 with one deliberate wrong -> check-complete panel renders 'Go further — mixed practice' (Item 1 of 2, 'not scored, and not recorded on your lesson progress')",
+        "S4 recall item: 'Define: halogen' (authored glossary placement) -> typed answer -> reveal -> keyword auto-check hint honestly reports few key words + 'A hint, not a verdict' -> self-mark 'I had it'",
+        "S5 explain item: REMEDIATION-FIRST fired — 'Many learners think: covalent bonds thought to break on melting' is the misconception of the question answered wrong this session -> reveal model answer -> self-mark -> 'Mixed practice done — nice work'",
+        "S6 modules 2-3 walked (5/5, 5/5 with practice blocks present incl. the own-words fallback variant) -> FinishedView 'Lesson set complete — 14 of 15 across the set' with 'Exam questions' -> /courses/igcse-chemistry-19/exam-questions and 'Flashcards' -> /courses/igcse-chemistry-19/flashcards; clicking Exam questions lands on 'Edexcel IGCSE Chemistry Exam Questions By Topic'",
+        "S7 persistence audit: localStorage FlowState keys exactly [v, moduleIndex, stage, ratings, recalibrated, answers, finished] — no practice fields, 15 corpus answers only — the not-recorded copy is honest"
+      ],
+      "screenshots": "lane evidence archived at download/r1235-evidence-20261027/ (01 notes-index badge, 02 check-complete+practice, 03 recall reveal+auto-check, 04 explain-why remediation, 05 practice done, 06 set-complete handoffs, 07 exam-questions landing, 08 course-page guided card)"
+    }
+  },
+  "discipline": "no direct-main push (AGENT_BRIEFING §4.7 — branch + PR, integrator merges); fetch-first before branch cut (stale clone 2100e410 -> 70ffa43d); PAT env-only one-shot via credential helper, never persisted or echoed; zero DB access; zero Vercel calls; no corpus or schema writes (apps/hub/src UI only); all copy derived from the of-record comparison register and the R-7c copy conventions",
+  "recorded_at_utc": "2026-10-27T00:00:00Z"
+}
