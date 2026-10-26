@@ -1,0 +1,62 @@
+{
+  "task": "T-BOOK-066",
+  "lane": "media-embed sources manifest + Cognito video pilot (ADR-BOOK-0002 implementation)",
+  "operator_trace": "1a179c0ba4ff04ed",
+  "date": "2026-10-27",
+  "agent": "main agent (zai-web session web-c414c074, chat 08b3170a)",
+  "adr": "docs/adr/ADR-BOOK-0002-media-embed-sources-manifest-video-pilot.md (ACCEPTED this trace; ops tx f32aea04)",
+  "curation_of_record": {
+    "protocol": "ADR-BOOK-0002 decision 6 — per-URL fetch-verify before any row lands",
+    "enumeration": "Cognito Edexcel-IGCSE-Triple chemistry TOC (cognito.org/courses/gcse/chemistry-triple/iedexcel/notes, fetched 2026-10-27); c01 spec band = 1.1-1.4 + 1.5C-1.7C",
+    "candidates": [
+      {
+        "provider_page": "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/UFJRRHluWEk/1.1-states-of-matter-changing-state",
+        "http": 200,
+        "embeds": ["youtube hkBrw2fG75U (GCSE Chemistry - States of Matter & Changing State, @Cognitoedu)"],
+        "oembed": 200,
+        "youtube_nocookie_probe": 200,
+        "specRefs": ["1.1", "1.2"],
+        "join_set": "4CH1-S1-a = 1.1,1.2,1.3,1.4,1.5C,1.6C,1.7C (specification_points.yaml + live chapters registry specCodes)",
+        "verdict": "CURATED — manifest row cog-1-1-states-of-matter-changing-state"
+      },
+      {
+        "provider_page": "https://cognito.org/courses/gcse/chemistry-triple/iedexcel/notes/QlBlUktYcnk/1.3-solubility-solubility-curves",
+        "http": 200,
+        "embeds": [],
+        "verdict": "NO VIDEO on the provider page (census 2026-10-27) — nothing to curate; NOT a density decision"
+      }
+    ],
+    "pilot_density": "1 media-embed block (<=2 guard respected; the second slot stays empty because the provider has no second fetch-verified video in the band — no padding, honest-empty law)"
+  },
+  "changes": {
+    "packages_contracts": "media-embed payload grows REQUIRED sourceId (ADR-BOOK-0002 decision 1); books.test.ts pins the law (30 pass)",
+    "lint_mjs": "G4 media-embed rule: sourceId resolve + status curated + licensing_row.reviewed_date + checked_date freshness (stale = WARN/exit 0) + specRefs join set + hosting_pack spine check + payload url/youtubeId drift guards; warn class added to the exit law (exit = errors only)",
+    "manifest": "books/4ch1/meta/media-sources.yaml (new, append-only, 1 curated row)",
+    "rail_block": "books/4ch1/packs/c01-states-and-solutions/blocks/b08-media-embed.json (ord 8, anchor 18, specPointRefs 1.1+1.2) + pack.yaml planned_blocks 7->8",
+    "renderer": "apps/hub/src/components/books/rail/widgets/media-embed-block.tsx — decision-3 embed law: youtube-nocookie iframe (rel=0, no autoplay, lazy, title attr), attribution in-card, link fallback for non-video/blocked; safeYouTubeId guard"
+  },
+  "gates": {
+    "lint_mjs": "29 packs, 178 blocks, 0 finding(s), 0 warn(s), exit 0 (manifest rebuilt session-side from DB truth via the LIVE chapters registry — T-BOOK-011 rebuild precedent; doc e6c0db50, 29 slices, u1:c1 range 11-22)",
+    "failure_mode_demos": [
+      "missing sourceId -> [G2] payload law + [G4] resolve law, exit 1",
+      "unresolved sourceId -> [G4], exit 1",
+      "youtubeId drift -> [G4] drift guard, exit 1",
+      "stale checked_date (2026-05-01) -> [G4 WARN], exit 0",
+      "status retired -> [G4], exit 1"
+    ],
+    "contracts_test": "30 pass / 0 fail (74 expect)",
+    "books_suites": "4 suites: 78 pass / 0 fail / 7954 expect()",
+    "typecheck": "contracts tsc clean; hub tsc clean"
+  },
+  "scope_disclosures": [
+    "packages/** + apps/hub renderer ride the lane per the ACCEPTED ADR (the task-yaml forbidden items were pre-acceptance guardrails; decision 1 = contracts first, decision 3 = the embed law)",
+    "b08 + pack.yaml plan row ride this authoring PR (pack bytes are not ops tx)",
+    "manifest title uses the oembed title of record (YouTube title, not the Cognito page H1) — the renderer shows it in-card; the Cognito page of record stays the url field"
+  ],
+  "residual_operator_levers": [
+    "push + PR + merge of this branch (no SYLLABAI_PAT in session env — fetch-first read worked, remote writes pending)",
+    "resources authoring PR: c01 s02 blocks frontmatter fill + emit + law-7 flip (+N exactly-1) + tracker tx",
+    "v2 bake (import_lesson_packs.py, fetch-first, PAT env-only) + G4 x29 + suites + T-C20 post-deploy + live poll",
+    "books-ingest-rail.ts apply + VALIDATED flip = the operator's S4 lever (rail serves honest-empty live until then)"
+  ]
+}
