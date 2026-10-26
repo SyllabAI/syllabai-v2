@@ -21314,3 +21314,15 @@ Stage Summary:
 - G-1 CIE gap CLOSED of record (68 verified docs of-record in the corpus repo via PR #5; 10 targets corrected as non-published).
 - Band-shape design lane unblocked for CIE: B-grammar verbatim staged; C-grammar AO matrices flagged cell-perfect-parse-pending.
 - Next: QP pairing wave for the 68 CIE dirs (qp.pdf not yet collected); 4GE1 bundle re-export; G-4 LEVELS birth for repo-covered papers.
+
+
+---
+
+## 2026-10-26 — adr040-g1-qppair-cie-r0 (T-SM-ROLLOUT, QP-pairing wave)
+
+- Operator order (trace `1a1777809ac63a89`): "review/merge PR #5, then QP-pairing wave".
+- PR #5 reviewed + merged: 68/68 ms.pdf blob-sha byte-match vs identity-verified fetch set; merge commit `1b5d952c` with review-of-record message. ('sync' check = background automation, not a gate — all three prior PRs merged with it in_progress.)
+- QP-pairing wave: 68/68 qp.pdf fetched (0 failures; incl. June-2020 COVID series + Feb/March variant-2), pairing evidence = printed code+component+session+year equality p1 of both docs, 68/68 pass; 0455 m19/m20 session print variance (Feb/March vs March cover convention) disclosed per manifest (rule 2).
+- Landed SyllabAI/syllabai-pastpapers PR #6 (commit `dd8a21b49`): 68 qp.pdf + 68 manifests (canonical question-paper entries) + 2 specification.yaml + wave doc.
+- Receipt: `.syllabai/receipts/T-SM-ROLLOUT/adr040-g1-qppair-cie-r0.json`; lane artifacts `cie_qp_fetch_results.json` + `cie_qp_pair_checks.json`.
+- Next: band-shape design on staged CIE tables (B-grammar verbatim; AO matrices parser pass); 4GE1 bundle re-export.
