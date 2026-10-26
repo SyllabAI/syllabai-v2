@@ -21368,3 +21368,15 @@ Stage Summary:
 - Delta vs the 18 Task-43 bundles: generationScript is now KEPT on examQuestions (browser + instantiate support it; Task 43 dropped it, degrading templated titles to "___").
 - Validation: prebuild validators PASS; next build GREEN; prerender manifest = 62 seneca routes; standalone smoke: 26/26 new /seneca routes 200, sidebar badge verified (history 1,483), bundle 200, mirror image 200 image/webp, pilot igcse-chemistry-19 unchanged (1,716), unmapped courses show no Seneca entry (sidebar count 0; /seneca serves the shared not-found page — same 200-status behavior as production pre-Task-45, pre-existing, not a regression).
 - Known content caveats (per Task 44 report to operator): supplement/core bundles are partial spec coverage; geography/business bundles are 2027-spec variants; maths-extended carries only 2 exam questions.
+
+
+---
+
+## 2026-10-26 — adr040-g2-4ge1-reexport-r0 (T-SM-ROLLOUT, 4GE1 bundle re-export + G-2 completion)
+
+- Operator order (trace `1a177aaf6b9e86c1`): "pick up that re-export lane next".
+- Identity analysis of record: the S<n>.<mmm> regime is the operator-validated official identity (T-SPEC-7/10 artifacts); the namespace was presentation. Re-namespaced to the Edexcel self-namespace law of record (4CH1-1.1 precedent, lane-C leg 4): IGCSE_GEOGRAPHY:X -> 4GE1-X.
+- PR #392 (branch t-sm-rollout/4ge1-bundle-reexport-r0, commit 4bd966acb, merge 1fb88efa): 4,504 rewrites across 4 files; tree byte-stable (243/242); corpus join verified; checks verify=success hub=success; SX bucket retained + disclosed.
+- Seed ceremony per the frozen G-2 law: preflight census (tripwires byte-match, 4GE1 absent) -> dry-run CLEAN -> apply ONE transaction (4GE1-2017 ACTIVE, +243 nodes / +242 edges / 199 applicability) -> post-verify (deltas exact, edge integrity 0 violations under the store direction law, subjects row bound to root 974077bc) -> idempotence re-apply (0 created / 243+242 reused / alreadyActive).
+- G-2 CLOSED 5/5 wave-1 courses; band-shape design + G-4 LEVELS birth unblocked for the full wave-1 set.
+- Known defects disclosed, not repaired (non-gating): truncated SUBTOPIC display titles; coarse corpus anchor granularity.
