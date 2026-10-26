@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight, FileText, Puzzle, ScrollText } from "lucide-react";
 import { boardOf, loadHubCourse } from "@/lib/courses";
-import { collectPastPapers, paperEstTime, type PastPaper } from "@/lib/past-papers";
+import { collectPastPapersTwoPlane, paperEstTime, type PastPaper } from "@/lib/past-papers";
 import { corpusViewerUrl } from "@/lib/pastpapers-shared";
 import { CorpusPdfLink } from "@/components/pastpapers/corpus-pdf-link";
 import {
@@ -84,13 +84,15 @@ export default async function PastPapersPage({
   // walking questions.json across courses); matchReconstruction normalises
   // each into (session ids, unit, variant) to match corpus rows.
   // Official ADR-037 papers ride the separate officialPaperTopics plane (IA
-  // decision: they never appear in Exam Questions) — official sets first so
-  // the complete paper wins the "first match wins" row pairing over any
-  // partial SME provenance for the same session.
-  const reconstructions = collectPastPapers([
-    ...hub.officialPaperTopics,
-    ...hub.questionTopics,
-  ]);
+  // decision: they never appear in Exam Questions). Two-plane merge with
+  // official precedence: SME questions are dropped for any paper KEY the
+  // official plane reconstructs — collectPastPapers groups strictly by
+  // (date, number), so a raw concatenation piled the SME copy on top of the
+  // official one and every question rendered twice (maths-B dup report).
+  const reconstructions = collectPastPapersTwoPlane(
+    hub.officialPaperTopics,
+    hub.questionTopics,
+  );
   const { matchKeys, matchedReconKeys, reconForCorpus } = matchReconstructions(
     papers,
     reconstructions,
