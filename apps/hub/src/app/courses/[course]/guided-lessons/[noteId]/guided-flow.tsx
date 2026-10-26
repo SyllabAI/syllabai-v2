@@ -40,6 +40,7 @@ import {
   ArrowRight,
   BookOpenCheck,
   Check,
+  ChevronDown,
   ChevronRight,
   Lightbulb,
   ListChecks,
@@ -229,8 +230,22 @@ export function GuidedLessonFlow({ lesson, pkg, noteTitle, noteHref, base }: Pro
 
   const stage = Math.min(state.stage, allStages.length - 1);
 
-  const moduleDone = (mi: number) =>
-    mi < moduleIndex || (state.finished && mi === moduleIndex);
+  /**
+   * R-7c honesty fix (any-order companion): "complete" means the module was
+   * actually walked — gate rated AND all its checks answered — not merely
+   * positioned before the active module. For sequential walkers this yields
+   * the same numbers as the old `mi < moduleIndex` rule (advancing past a
+   * module implies its checks were answered); for any-order entry (the
+   * R-7c "pick any lesson" affordance) skipped modules stay honestly
+   * uncounted and show Start/Continue, never a false Review/complete.
+   */
+  const moduleDone = (mi: number) => {
+    const mod = modules[mi];
+    return (
+      state.ratings[mod.id] !== undefined &&
+      mod.checkRefs.every((r) => state.answers[r] !== undefined)
+    );
+  };
 
   /** Advance one stage; past the last stage of the module, advance module. */
   const handleNext = () => {
@@ -262,7 +277,11 @@ export function GuidedLessonFlow({ lesson, pkg, noteTitle, noteHref, base }: Pro
 
   const gotoModule = (mi: number) => store.set((s) => ({ ...s, moduleIndex: mi, stage: 0 }));
 
-  const reset = () => store.set(() => freshState());
+  const reset = () => {
+    setPicked(false);
+    setListOpen(null);
+    store.set(() => freshState());
+  };
 
   const totalChecks = modules.reduce((a, x) => a + x.checkRefs.length, 0);
   const totalCorrect = modules.reduce(
@@ -272,6 +291,28 @@ export function GuidedLessonFlow({ lesson, pkg, noteTitle, noteHref, base }: Pro
   const doneCount = modules.filter((_, i) => moduleDone(i)).length;
   const prevRecalibrated =
     moduleIndex > 0 ? state.recalibrated[modules[moduleIndex - 1].id] : undefined;
+
+  // R-7c hybrid (SME concept-picker delta of record 2026-10-27): the set
+  // card leads with gap-first copy on entry ("which concept don't you
+  // understand yet?") and collapses to a slim header once a lesson is
+  // being walked — SME's selection-first feel without giving up the
+  // persistent progress anchor; the full list stays one click away (the
+  // "Back to concepts" hop, hub pattern). Engagement is anything past the
+  // pristine entry state — picking a concept, rating a gate, or resuming.
+  // `picked` makes selection itself the trigger (SME parity: the picker
+  // is replaced the moment a concept is chosen — even a first pick of
+  // lesson 1, which leaves no progress footprint), so a jump back to the
+  // first lesson from the expanded list still collapses the card.
+  const [picked, setPicked] = useState(false);
+  const engaged =
+    picked ||
+    state.moduleIndex !== 0 ||
+    state.stage !== 0 ||
+    Object.keys(state.ratings).length > 0 ||
+    Object.keys(state.answers).length > 0 ||
+    Object.keys(state.recalibrated).length > 0;
+  const [listOpen, setListOpen] = useState<boolean | null>(null);
+  const listExpanded = listOpen ?? !engaged;
 
   if (state.finished) {
     return (
@@ -291,65 +332,129 @@ export function GuidedLessonFlow({ lesson, pkg, noteTitle, noteHref, base }: Pro
 
   return (
     <div className="space-y-5">
-      {/* lesson-set stepper — the numbered micro-lesson picker */}
+      {/* lesson-set stepper — the numbered micro-lesson picker. R-7c hybrid
+          (SME concept-picker delta of record): gap-first copy on entry, and
+          once a lesson is being walked the card collapses to a slim header
+          so the content leads — the full list stays one click away, and
+          picking a concept from the expanded list re-collapses it. */}
       <Card>
-        <CardContent className="space-y-3 p-4 sm:p-5">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <p className="text-sm font-semibold">Guided lessons for this note</p>
-            <p className="text-xs text-muted-foreground" aria-live="polite">
-              {doneCount} of {modules.length} complete
-            </p>
-          </div>
-          <Progress value={(doneCount / modules.length) * 100} aria-label="Lesson set progress" />
-          <ol className="space-y-2">
-            {modules.map((mod, mi) => {
-              const done = moduleDone(mi);
-              const active = mi === moduleIndex;
-              const started = state.ratings[mod.id] !== undefined;
-              return (
-                <li key={mod.id}>
-                  <button
-                    type="button"
-                    onClick={() => gotoModule(mi)}
-                    className={cn(
-                      "flex w-full items-center gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
-                      active ? "border-primary/50 bg-primary/5" : "hover:border-primary/40",
-                    )}
-                    aria-current={active ? "step" : undefined}
-                  >
-                    <span
-                      className={cn(
-                        "flex size-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold",
-                        done && "border-emerald-600/50 bg-emerald-600/10 text-emerald-700 dark:border-emerald-500/40 dark:text-emerald-400",
-                        !done && active && "border-primary/60 text-primary",
-                        !done && !active && "text-muted-foreground",
-                      )}
-                      aria-hidden
-                    >
-                      {done ? <Check className="size-3.5" /> : mi + 1}
+        <CardContent className="p-4 sm:p-5">
+          {listExpanded ? (
+            <div id="lesson-set-list" className="space-y-3">
+              {engaged ? (
+                <button
+                  type="button"
+                  onClick={() => setListOpen(false)}
+                  aria-expanded="true"
+                  aria-controls="lesson-set-list"
+                  className="flex w-full flex-wrap items-center justify-between gap-2 rounded-md text-left transition-colors hover:text-foreground"
+                >
+                  <span className="text-sm font-semibold">Guided lessons for this note</span>
+                  <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <span aria-live="polite">
+                      {doneCount} of {modules.length} complete
                     </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="block text-[13px] font-medium">{mod.title}</span>
-                      <span className="block truncate text-xs text-muted-foreground">{mod.opening}</span>
-                    </span>
-                    <span className="shrink-0 text-xs font-medium text-muted-foreground">
-                      {done ? "Review" : started ? "Continue" : "Start"}
-                    </span>
-                    <ChevronRight className="size-4 shrink-0 text-muted-foreground" aria-hidden />
-                  </button>
-                </li>
-              );
-            })}
-          </ol>
-          <div className="flex items-center justify-between border-t pt-3">
-            <p className="text-xs text-muted-foreground">
-              {totalCorrect} of {totalChecks} checks correct so far
-            </p>
-            <Button variant="ghost" size="sm" onClick={reset}>
-              <RotateCcw className="size-3.5" aria-hidden />
-              Restart lesson set
-            </Button>
-          </div>
+                    <ChevronDown className="size-4" aria-hidden />
+                    <span className="sr-only">Hide the lesson list</span>
+                  </span>
+                </button>
+              ) : (
+                <div className="space-y-1">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Guided lessons for this note
+                  </p>
+                  <p className="text-sm font-semibold">Which concept don&apos;t you understand yet?</p>
+                  <p className="text-xs text-muted-foreground">
+                    We&apos;ll explain it simply and check your understanding. Pick any lesson —
+                    any order works.
+                  </p>
+                </div>
+              )}
+              <Progress value={(doneCount / modules.length) * 100} aria-label="Lesson set progress" />
+              <ol className="space-y-2">
+                {modules.map((mod, mi) => {
+                  const done = moduleDone(mi);
+                  const active = mi === moduleIndex;
+                  const started = state.ratings[mod.id] !== undefined;
+                  return (
+                    <li key={mod.id}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setPicked(true);
+                          setListOpen(null);
+                          gotoModule(mi);
+                        }}
+                        className={cn(
+                          "flex w-full items-center gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
+                          active ? "border-primary/50 bg-primary/5" : "hover:border-primary/40",
+                        )}
+                        aria-current={active ? "step" : undefined}
+                      >
+                        <span
+                          className={cn(
+                            "flex size-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold",
+                            done && "border-emerald-600/50 bg-emerald-600/10 text-emerald-700 dark:border-emerald-500/40 dark:text-emerald-400",
+                            !done && active && "border-primary/60 text-primary",
+                            !done && !active && "text-muted-foreground",
+                          )}
+                          aria-hidden
+                        >
+                          {done ? <Check className="size-3.5" /> : mi + 1}
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block text-[13px] font-medium">{mod.title}</span>
+                          <span className="block truncate text-xs text-muted-foreground">{mod.opening}</span>
+                        </span>
+                        <span className="shrink-0 text-xs font-medium text-muted-foreground">
+                          {done ? "Review" : started ? "Continue" : "Start"}
+                        </span>
+                        <ChevronRight className="size-4 shrink-0 text-muted-foreground" aria-hidden />
+                      </button>
+                    </li>
+                  );
+                })}
+              </ol>
+              <div className="flex items-center justify-between border-t pt-3">
+                <p className="text-xs text-muted-foreground">
+                  {totalCorrect} of {totalChecks} checks correct so far
+                </p>
+                <Button variant="ghost" size="sm" onClick={reset}>
+                  <RotateCcw className="size-3.5" aria-hidden />
+                  Restart lesson set
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              <button
+                type="button"
+                onClick={() => setListOpen(true)}
+                aria-expanded="false"
+                aria-controls="lesson-set-list"
+                className="flex w-full flex-wrap items-center justify-between gap-2 rounded-md text-left transition-colors hover:text-foreground"
+              >
+                <span className="min-w-0">
+                  <span className="block text-[13px] font-semibold">Guided lessons for this note</span>
+                  <span className="block truncate text-xs text-muted-foreground">
+                    Lesson {moduleIndex + 1} of {modules.length} — {m.title}
+                  </span>
+                </span>
+                <span className="flex shrink-0 items-center gap-1.5 text-xs text-muted-foreground">
+                  <span aria-live="polite">
+                    {doneCount} of {modules.length} complete
+                  </span>
+                  <ChevronRight className="size-4" aria-hidden />
+                  <span className="sr-only">Show the lesson list</span>
+                </span>
+              </button>
+              <Progress
+                value={(doneCount / modules.length) * 100}
+                aria-label="Lesson set progress"
+                className="h-1"
+              />
+            </div>
+          )}
         </CardContent>
       </Card>
 
