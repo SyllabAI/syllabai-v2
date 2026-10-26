@@ -21449,3 +21449,12 @@ Stage Summary:
 - Gates: eslint on the two touched files exit 0 (repo-wide lint at bb9e7bf2 carries 9 pre-existing co-tenant problems in other files — none ours; CI gates are verify/hub, not lint); bun run build:hub exit 0.
 - Surface walk (production standalone, PORT 3200, self-fetch): rn_7Q8M9nVkr2FxCzxd → anchors /exam-questions/2-2-group-7-halogens--exam-questions + /flashcards/4CH1-S2-b; Exam questions lands on "Group 7 (Halogens) (Edexcel IGCSE Chemistry): Exam Questions" (the set, not the index); Flashcards lands on the "Group 7 (halogens) – chlorine, bromine and iodine" deck. Breadth: rn_2VnK66PqbvFKdKYt / rn_QVmDs8X4szpds3cP resolve 1-1-states-of-matter + 4CH1-S1-a — per-note resolution, nothing hardcoded. FlowState seeding was browser-local render setup only. Screenshots: lane download/r2-deep-evidence-20261027/ (3).
 - Discipline: branch + PR (no direct-main push); fetch-first branch cut off origin/main bb9e7bf2; PAT env-only one-shot; zero DB; zero Vercel; no corpus/schema writes. Receipt: .syllabai/receipts/HUB-R2-DEEP/r2-deep-links-receipt-20261027.json.
+
+---
+
+## R0-AUTO receipt — sweep 2026-10-27 05:30 +08 (Job 438940)
+
+- Task ID: 24 | PR #401 (R-2 per-topic deep links: lesson-end handoffs via the hub.hrefs seam) | head 2cfe87bd -> merge sha be9077d9 | gates: head hub+verify GREEN pre-merge; 4 files (guided-flow.tsx +29/-7, noteId/page.tsx +17/-0, .syllabai receipts/worklog); no reviews/comments; mergeable clean; zero java/scope violations
+- skipped gate-b: #285 1c2dd54 (verify+hub failure), #296 bd2c0b1 (hub failure), #303 cce0230 (verify failure), #352 13bfea9 (no check-runs, ~94h static)
+- post-merge main be9077d9: hub+verify GREEN (bounded re-check ~175s)
+- notes: sandbox outage skipped the 05:00 round entirely (no state touched, zero lock residue); mirror external reset #174 this run (restored from origin e3b26132 fetch-first, zero loss); main had advanced lane-side bb9e7bf2 -> e3b26132 (G-5 band validation r0 CLOSED, 431/431 flips); receipt commit bookkeeping-only .syllabai/**
