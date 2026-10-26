@@ -21280,3 +21280,18 @@ Work Log:
 
 Stage Summary:
 - T-MIG-135d follow-up lane CLOSED of record: PR #384 merged (2598c421 @ main, receipt d5fcdef8). The tutor chrome's last hardcoded-board render path is board-aware on main — CIE courses get "Cambridge International" provenance in the about-coverage + welcome lines; every Edexcel/legacy path byte-identical; 4CH1 strings preserved per the 135d law. Prod pickup = next deliberate bake. LANE: IDLE.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-001 — CLAIM (operator order "claim the serve card", trace 1a1774f9a88ee549)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)
+Task: claim the wave-25-class serve card T-OEQ-MATHSB-SERVE-1 now that its P0 gate is satisfiable.
+
+Work Log:
+- Fetch-first: v2 ff-merged to 39a967c2 (local clone was behind; card commit fd7daae7 + desk-merge receipt 683a59d5 confirmed in ancestry); card of record re-read at filing state (status OPEN, execution_record [], owner unassigned).
+- P0 VERIFIED FIRST-HAND (GitHub API, PAT env-only): PR #110 state=closed merged=true, merge_commit_sha 3000e439d1464c2927d082696f5bb19313af3172, merged_at 2026-10-25T22:44:40Z, merged_by SyllabAI. Corpus verified AT the pin: Official-ExamQuestion/igcse-maths-b-16 = 20 series dirs (2018-06..2026-06) via API tree at ref 3000e439. Receipt of record present: .syllabai/receipts/T-OEQ-MATHSB-1/run-004-reconciliation.json (on v2 main, from the run-004 reconciliation landing — branch tip 986f9ad2 true ancestry, union converter v0.20.0, 86/86 canaries pre+post-merge, 66/66 maths re-emission ALL gates PASS).
+- Advancement disclosure: resources main has advanced 3000e439 -> 8b5a64f1 (6 commits / 151 files: CourseLessons 4CH1 u4-c27, SubjectIntelligence CHEMISTRY_4CH1 run-005, books ych11/ych12, scripts/cross_diff_parsed.py; OEQ-plane contact = Official-ExamQuestion/AGENTS.md + Official-ExamQuestion/run_all.sh only) — ZERO paths under Official-ExamQuestion/igcse-maths-b-16/** and zero LEDGER.md contact, so the pinned corpus is byte-stable on the current tip; the serve pin of record stays 3000e439 per the P0 law (sync pins main@<merge-sha>, never the branch).
+- Card edited in place (flat filed schema preserved): status OPEN -> CLAIMED (evidence inline), owner -> r7a, execution_record += run-001 CLAIM block (p0_gate / pin_of_record / advancement_disclosure / next), next_safe_actions rewritten to the serve execution sequence (run-002 pre-flight census at the pin -> run-003 exporter + G-S1..G-S6 -> close), claim note appended to notes. deps lines untouched (as-filed historical statements).
+- Push discipline: PAT env-only inline credential helper (never persisted), fetch-first, race-guard re-verify of origin tip before push, no force. A YAML self-check on the edited card passed (safe_load green) before commit.
+
+Stage Summary:
+- T-OEQ-MATHSB-SERVE-1 CLAIMED of record: P0 gate SATISFIED + pinned (main@3000e439), owner r7a, serve sequence armed (run-002 pre-flight census re-verify -> run-003 exporter + gates G-S1..G-S6 -> receipt + close). Zero corpus/content writes in this act (card + worklog only, .syllabai-only, fetch-first, no force).

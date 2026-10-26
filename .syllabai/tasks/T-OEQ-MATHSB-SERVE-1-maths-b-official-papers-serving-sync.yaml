@@ -1,9 +1,9 @@
 id: T-OEQ-MATHSB-SERVE-1
 title: Maths-B official-papers serving sync (wave-25-class) — OEQ 4MB1 corpus to the hub plane + SME past-paper retirement per the handover rule
 type: content-serving
-status: OPEN
+status: CLAIMED # run-001 claim 2026-10-26T08:34:01Z (trace 1a1774f9a88ee549): P0 gate SATISFIED of record — PR #110 merged=true, merge_commit_sha 3000e439d1464c2927d082696f5bb19313af3172, merged_at 2026-10-25T22:44:40Z (GitHub API first-hand at claim); serve pin of record = main@3000e439
 priority: P1
-owner: unassigned
+owner: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6, operator claim order trace 1a1774f9a88ee549)
 deps:
 - T-OEQ-MATHSB-1 (the conversion of record: 66/66 sets G0-G7 ALL PASS @ resources branch t-oeq-mathsb-tranche1 139ee931, converter v0.17.0, 72 canaries hold)
 - 'PR #110 (SyllabAI/syllabai-resources) — OPEN, UNMERGED at filing; merge is the R0/desk act (authors-never-self-merge), this card is GATED on it'
@@ -27,13 +27,19 @@ acceptance:
 - 'G-S4 intake hygiene: 0 PUA, 0 control chars, 0 U+FFFD, KaTeX segments 0 failures (born-clean law; the converter canaries of record cover the glyph classes — maths exercises the heavy SymbolMT set chemistry does not, so the sweep is MANDATORY here, not vacuous)'
 - 'G-S5 hub gates: build:hub exit 0; courses.ts loader resolves official-papers.json for igcse-maths-b-16 (the optional-plane branch); corpus census GREEN (94 courses); question-player classification parity spot-probes on sampled parts (MCQ choices incl. the F64-restored scripts, figure embeds, marks totals)'
 - 'G-S6 handover rule executed: SME sets retirement from past-paper matching recorded (resources LEDGER.md via desk proposal + hub manifest handover note); the two planes (questions.json SME practice vs official-papers.json) coexist exactly as chemistry; no SME row is deleted or edited in v2'
-execution_record: []
+execution_record:
+- run-001 CLAIM (2026-10-26T08:34:01Z, agent r7a, operator order "claim the serve card" trace 1a1774f9a88ee549; zero writes beyond this card + worklog):
+    p0_gate: 'SATISFIED — PR #110 state=closed merged=true, merge_commit_sha 3000e439d1464c2927d082696f5bb19313af3172, merged_at 2026-10-25T22:44:40Z, merged_by SyllabAI (GitHub API first-hand at claim); corroborated by the of-record T-OEQ-MATHSB-1 run-004 reconciliation (branch tip 986f9ad2 true ancestry, union converter v0.20.0, 86/86 canaries pre+post-merge, 66/66 maths re-emission ALL gates PASS; receipt .syllabai/receipts/T-OEQ-MATHSB-1/run-004-reconciliation.json, present on v2 main)'
+    pin_of_record: 'officialSpine.resourcesSha = 3000e439d1464c2927d082696f5bb19313af3172 (P0 law: sync pins main@<merge-sha>, never the branch); corpus verified AT the pin via API tree — Official-ExamQuestion/igcse-maths-b-16 = 20 series dirs (2018-06..2026-06)'
+    advancement_disclosure: 'resources main has advanced 3000e439 -> 8b5a64f1 (6 commits / 151 files: CourseLessons 4CH1 u4-c27, SubjectIntelligence CHEMISTRY_4CH1 run-005, books ych11/ych12, scripts/cross_diff_parsed.py; OEQ-plane contact = Official-ExamQuestion/AGENTS.md + Official-ExamQuestion/run_all.sh only) — ZERO paths under Official-ExamQuestion/igcse-maths-b-16/** and zero LEDGER.md contact, so the pinned corpus is byte-stable on the current tip; the sync still pins 3000e439'
+    next: 'run-002 pre-flight census re-verify at the pin (66 sets / 20 series / 1,270 questions / 2,412 parts / 6,500 marks) -> exporter run -> gates G-S1..G-S6 -> receipt + worklog + close'
 next_safe_actions:
-- 'desk/R0: merge PR #110 (conversion of record sits at head 139ee931, base main@09842f9f — main has advanced to c8ac0275, so a rebase/conflict check is the merge-time duty)'
-- 'claim this card -> pre-flight census re-verify against the post-merge main sha -> exporter run -> gates G-S1..G-S6 -> receipt + worklog + close'
+- 'run-002 pre-flight: fetch-first resources @ pin 3000e439; census re-verify 66 sets / 20 series (2018-06..2026-06) / 1,270 questions / 2,412 parts / 6,500 marks vs the emission of record (branch tip 986f9ad2 == merge 3000e439 corpus)'
+- 'run-003 serve sync: exporter run -> apps/hub/content/igcse-maths-b-16/official-papers.json + manifest officialSpine pin (resourcesSha 3000e439) -> gates G-S1..G-S6 -> receipt + worklog + close'
 - 'open items carried, NOT this card: (a) wiring syllabai-parser table.v1.json into the OEQ converter as intake law (the T-MIG-141 recon recommendation; maths will exercise it first), (b) DB-plane ingest decision for official-paper questions if retrieval needs them (chemistry precedent: bundle-plane only so far)'
 notes:
 - 'Serving surface (operator question of record): hub course igcse-maths-b-16 -> past-papers rail (apps/hub/src/app/courses/[course]/past-papers) + question player, fed by apps/hub/src/lib/courses.ts reading the NEW official-papers.json — the identical surface where chemistry serves its 54 official sets today (bundle files: official-papers.json + manifest pin).'
 - 'Frontend connection law honored: no frontend deploy is performed by the lane; the hub renders the committed bundle (Vercel deploy is the product pipeline, outside lane scope).'
 - 'Chemistry pilot precedent: wave-24 sync (v2 PR #369, commit 269e84be) touched exactly manifest.json + official-papers.json; serving delta receipts under scripts/exporter-disclosures/.'
 - 'Filed from the T-MIG-141 close-out session (trace 1a174dc08dce590d) after PR #110 state verification (open, unmerged) + branch census (66 set dirs / 20 series verified via blobless clone of t-oeq-mathsb-tranche1).'
+- 'Claimed 2026-10-26 (trace 1a1774f9a88ee549) after first-hand P0 verification; the deps lines above remain as-filed historical statements (PR #110 state AT FILING time) — the live P0 evidence lives in execution_record run-001; push = PAT env-only inline helper, fetch-first, race-guarded, no force.'
