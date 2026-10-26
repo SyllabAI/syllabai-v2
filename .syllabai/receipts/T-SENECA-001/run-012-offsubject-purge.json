@@ -1,0 +1,512 @@
+{
+ "run": "T-SENECA-001 run-012 off-subject pairing purge (single-tx, trace 1a178336c0685d05)",
+ "manifest": {
+  "file": "run011_offsubject_ids.json",
+  "groups": 76,
+  "rows": 650,
+  "distinct_ids": 574,
+  "kind_dist": {
+   "examQuestion": 650
+  },
+  "slugs": 39
+ },
+ "started": "2026-10-26T12:37:04.230522+00:00",
+ "gates": {
+  "G0_env": "PASS",
+  "G1_pk_shape": {
+   "pk": [
+    "course_slug",
+    "id"
+   ],
+   "pass": true
+  },
+  "G2_preflight": {
+   "actual": {
+    "fleet_rows": 162271,
+    "fleet_slugs": 262
+   },
+   "kinds": {
+    "courseSection": 54933,
+    "examQuestion": 74978,
+    "quiz": 32360
+   },
+   "pass": true
+  },
+  "G3_targets": {
+   "groups": 76,
+   "all_ok": true,
+   "failure": null,
+   "survivor_census_pre": {
+    "rows": 767,
+    "distinct_ids": 574
+   },
+   "control_pre": {
+    "chemistry-cambridge-international-gcse-supplement": 1528,
+    "applied-science-btec-level-3-national-extended-diploma": 248,
+    "religious-studies-b-edexcel-gcse": 595
+   },
+   "emptied_slugs": [],
+   "pass": true
+  }
+ },
+ "tx": {
+  "deleted_total": 650,
+  "per_group": [
+   {
+    "slug": "biology-edexcel-igcse",
+    "family": "Chemistry: Cambridge International GCSE Supplement",
+    "deleted": 550
+   },
+   {
+    "slug": "chemistry-aqa-gcse-higher",
+    "family": "Biology: AQA GCSE Foundation",
+    "deleted": 4
+   },
+   {
+    "slug": "physics-cambridge-international-gcse-supplement",
+    "family": "Chemistry: Cambridge International GCSE Supplement",
+    "deleted": 3
+   },
+   {
+    "slug": "physics-edexcel-gcse-foundation",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 3
+   },
+   {
+    "slug": "physics-edexcel-gcse-higher",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 3
+   },
+   {
+    "slug": "physics-ocr-21st-century-b-gcse-foundation",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 3
+   },
+   {
+    "slug": "physics-ocr-21st-century-b-gcse-higher",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 3
+   },
+   {
+    "slug": "physics-ocr-gateway-a-gcse-foundation",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 3
+   },
+   {
+    "slug": "physics-ocr-gateway-a-gcse-higher",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 3
+   },
+   {
+    "slug": "physics-wjec-gcse-foundation",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 3
+   },
+   {
+    "slug": "physics-wjec-gcse-higher",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 3
+   },
+   {
+    "slug": "physics-aqa-a-level",
+    "family": "Maths: AQA A Level Mechanics",
+    "deleted": 2
+   },
+   {
+    "slug": "physics-aqa-gcse-foundation",
+    "family": "Maths: AQA A Level Mechanics",
+    "deleted": 2
+   },
+   {
+    "slug": "physics-aqa-gcse-higher",
+    "family": "Maths: AQA A Level Mechanics",
+    "deleted": 2
+   },
+   {
+    "slug": "physics-aqa-gcse-higher",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 2
+   },
+   {
+    "slug": "chemistry-aqa-a-level",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-aqa-gcse-foundation",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-aqa-gcse-foundation",
+    "family": "Biology: AQA GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-aqa-gcse-higher",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-cambridge-international-a-level",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-cambridge-international-a-level",
+    "family": "Biology: AQA A Level",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-edexcel-gcse-foundation",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-edexcel-gcse-higher",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-ib-diploma-higher-level",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-ocr-21st-century-b-gcse-foundation",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-ocr-21st-century-b-gcse-foundation",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-ocr-21st-century-b-gcse-higher",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-ocr-21st-century-b-gcse-higher",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-ocr-a-a-level",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-ocr-gateway-a-gcse-foundation",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-ocr-gateway-a-gcse-foundation",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-ocr-gateway-a-gcse-higher",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-wjec-gcse-higher",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "chemistry-wjec-gcse-higher",
+    "family": "Biology: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "combined-science-physics-aqa-gcse-foundation",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "combined-science-physics-aqa-gcse-higher",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "combined-science-physics-edexcel-gcse-foundation",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "combined-science-physics-edexcel-gcse-higher",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "combined-science-physics-ocr-21st-century-b-gcse-foundation",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "combined-science-physics-ocr-21st-century-b-gcse-higher",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "combined-science-physics-ocr-gateway-a-gcse-foundation",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "design-and-technology-aqa-gcse",
+    "family": "Chemistry: AQA GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "geography-cambridge-international-gcse-2027-exams",
+    "family": "Biology: AQA A Level",
+    "deleted": 1
+   },
+   {
+    "slug": "geography-edexcel-a-gcse",
+    "family": "Biology: AQA GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "geography-ocr-b-gcse",
+    "family": "Biology: AQA GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-aqa-gcse-foundation",
+    "family": "Applied Science: BTEC Level 3 National Extended Diploma",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-aqa-gcse-foundation",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-aqa-gcse-foundation",
+    "family": "Chemistry: OCR Gateway (A) GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-aqa-gcse-higher",
+    "family": "Chemistry: OCR Gateway (A) GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-aqa-gcse-higher",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-edexcel-gcse-foundation",
+    "family": "Chemistry: AQA GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-edexcel-gcse-foundation",
+    "family": "Biology: WJEC GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-edexcel-gcse-foundation",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-edexcel-gcse-foundation",
+    "family": "Chemistry: OCR Gateway (A) GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-edexcel-gcse-higher",
+    "family": "Chemistry: AQA GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-edexcel-gcse-higher",
+    "family": "Chemistry: OCR Gateway (A) GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-edexcel-gcse-higher",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-edexcel-gcse-higher",
+    "family": "Biology: WJEC GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-edexcel-igcse",
+    "family": "Combined Science Chemistry: Edexcel GCSE Higher",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-21st-century-b-gcse-foundation",
+    "family": "Chemistry: OCR Gateway (A) GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-21st-century-b-gcse-foundation",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-21st-century-b-gcse-foundation",
+    "family": "Biology: WJEC GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-21st-century-b-gcse-higher",
+    "family": "Chemistry: OCR Gateway (A) GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-21st-century-b-gcse-higher",
+    "family": "Biology: WJEC GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-21st-century-b-gcse-higher",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-gateway-a-gcse-foundation",
+    "family": "Biology: WJEC GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-gateway-a-gcse-foundation",
+    "family": "Chemistry: OCR Gateway (A) GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-gateway-a-gcse-foundation",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-gateway-a-gcse-higher",
+    "family": "Chemistry: OCR Gateway (A) GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-gateway-a-gcse-higher",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-ocr-gateway-a-gcse-higher",
+    "family": "Biology: WJEC GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-wjec-gcse-foundation",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-wjec-gcse-foundation",
+    "family": "Biology: WJEC GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-wjec-gcse-higher",
+    "family": "Biology: WJEC GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "physics-wjec-gcse-higher",
+    "family": "Combined Science Chemistry: Edexcel GCSE Foundation",
+    "deleted": 1
+   },
+   {
+    "slug": "science-ks3",
+    "family": "Geography: AQA GCSE",
+    "deleted": 1
+   }
+  ],
+  "rowcount_pass": true,
+  "in_tx_post": {
+   "fleet": {
+    "fleet_rows": 161621,
+    "fleet_slugs": 262
+   },
+   "expected": {
+    "fleet_rows": 161621,
+    "fleet_slugs": 262
+   },
+   "kinds": {
+    "courseSection": 54933,
+    "examQuestion": 74328,
+    "quiz": 32360
+   },
+   "expected_kinds": {
+    "courseSection": 54933,
+    "examQuestion": 74328,
+    "quiz": 32360
+   },
+   "family_residual": 0,
+   "pass": true
+  }
+ },
+ "post_parity": {
+  "session": "fresh, read-only",
+  "fleet": {
+   "fleet_rows": 161621,
+   "fleet_slugs": 262
+  },
+  "expected": {
+   "fleet_rows": 161621,
+   "fleet_slugs": 262
+  },
+  "kinds": {
+   "courseSection": 54933,
+   "examQuestion": 74328,
+   "quiz": 32360
+  },
+  "expected_kinds": {
+   "courseSection": 54933,
+   "examQuestion": 74328,
+   "quiz": 32360
+  },
+  "family_residual": 0,
+  "survivors": {
+   "rows_still_serving": 117,
+   "distinct_ids_still_serving": 22,
+   "fully_removed_ids": 552,
+   "note": "fully-removed ids had NO subject-correct home in the 262-bundle scheme"
+  },
+  "controls_unchanged": {
+   "pre": {
+    "chemistry-cambridge-international-gcse-supplement": 1528,
+    "applied-science-btec-level-3-national-extended-diploma": 248,
+    "religious-studies-b-edexcel-gcse": 595
+   },
+   "post": {
+    "chemistry-cambridge-international-gcse-supplement": 1528,
+    "applied-science-btec-level-3-national-extended-diploma": 248,
+    "religious-studies-b-edexcel-gcse": 595
+   },
+   "pass": true
+  },
+  "pg_stat": [
+   {
+    "rel": "seneca_resources",
+    "n_live": 161621,
+    "ins": 162271,
+    "del": 650
+   }
+  ],
+  "pass": true
+ },
+ "verdict": "PURGE COMMITTED \u2014 650 pair-scoped deletes verified in-tx and post-parity (fleet 161621 rows / 262 slugs, 0 residual off-subject families, controls unchanged, 552 ids fully removed (no correct home)",
+ "finished": "2026-10-26T12:37:26.578734+00:00"
+}

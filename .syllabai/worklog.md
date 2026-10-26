@@ -21380,3 +21380,11 @@ Stage Summary:
 - Seed ceremony per the frozen G-2 law: preflight census (tripwires byte-match, 4GE1 absent) -> dry-run CLEAN -> apply ONE transaction (4GE1-2017 ACTIVE, +243 nodes / +242 edges / 199 applicability) -> post-verify (deltas exact, edge integrity 0 violations under the store direction law, subjects row bound to root 974077bc) -> idempotence re-apply (0 created / 243+242 reused / alreadyActive).
 - G-2 CLOSED 5/5 wave-1 courses; band-shape design + G-4 LEVELS birth unblocked for the full wave-1 set.
 - Known defects disclosed, not repaired (non-gating): truncated SUBTOPIC display titles; coarse corpus anchor granularity.
+
+## 2026-10-26 — task-45-widen-cie-r1 post-purge reconciliation (T-SENECA-001)
+
+- Context: the r0 widening (parallel lane, a7aad8e0, 10:31Z) exported the 22 target bundles from PRE-purge W1 (fleet 162,271). run-011 (family sweep on the 262-slug rebuild, operator trace 1a1781ee14e26d7d) + run-012 (operator-approved pair-scoped purge, trace 1a178336c0685d05) then cleaned the fleet to 161,621 rows; 6 purged rows lived in 3 target bundles.
+- Generator re-run (scripts/seneca_widen_cie_r0.py, baselines patched r0->r1) against the clean fleet: G2 exact 161,621/262 + 22/22 targets, PII clean across 15,548 resources, images untouched (1,885 needed / 0 copied / blob-missing 0).
+- Verified delta vs r0 = EXACTLY the 6 purged resources (2 chemistry-a-level / 1 geography-2027 / 3 physics-supplement), 0 added, 0 modified-in-place, 6/6 id-pair match to the run-012 purge manifest; registry questions counts updated (80->78, 386->385 x2, 919->916); flags idempotent 62/62.
+- Ported the run-011/012 receipts from t-seneca-001/r5 so main carries the full audit record; T-SENECA-001.yaml execution_record extended (REBUILD-ERA SWEEP + PURGE + TASK-45 r1 RECONCILIATION).
+- Receipt: .syllabai/receipts/T-SENECA-001/task-45-widen-cie-r1-postpurge-reconcile.json. Zero DB writes.

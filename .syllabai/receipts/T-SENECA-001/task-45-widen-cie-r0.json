@@ -1,10 +1,10 @@
 {
  "task": "T-SENECA-001 Task 45 widen-cie-r0",
- "generatedUtc": "2026-10-26T10:31:16Z",
+ "generatedUtc": "2026-10-26T12:58:19Z",
  "gates": {
   "G0_dsn": "staged",
   "G1_pk": "(id,course_slug)",
-  "G2_fleet": "162271/262",
+  "G2_fleet": "161621/262",
   "G2_targets": "exact",
   "G3_pii": "clean (phone law v3 + mirror-filename strip; email law + RFC-2606 reserved-domain carve-out; adjudication log: v1 12 curriculum numerics, v2 10 decimals/standard-form, v3 5 self-mirror hex names + 1 example.com ICT lesson \u2014 zero personal data)"
  },
@@ -37,9 +37,9 @@
   },
   "chemistry-cambridge-international-a-level": {
    "sections": 204,
-   "examQuestions": 80,
+   "examQuestions": 78,
    "quizzes": 0,
-   "resources": 284
+   "resources": 282
   },
   "chemistry-cambridge-international-gcse-core": {
    "sections": 208,
@@ -103,9 +103,9 @@
   },
   "geography-cambridge-international-gcse-2027-exams": {
    "sections": 255,
-   "examQuestions": 386,
+   "examQuestions": 385,
    "quizzes": 0,
-   "resources": 641
+   "resources": 640
   },
   "history-cambridge-international-gcse-the-twentieth-century-option-b": {
    "sections": 165,
@@ -139,14 +139,14 @@
   },
   "physics-cambridge-international-gcse-supplement": {
    "sections": 302,
-   "examQuestions": 919,
+   "examQuestions": 916,
    "quizzes": 0,
-   "resources": 1221
+   "resources": 1218
   }
  },
  "imageRewrite": {
   "needed_files": 1885,
-  "copied": 1178,
+  "copied": 0,
   "blob_missing": 0,
   "rewritten_refs": 3198,
   "missing_refs": 509

@@ -35,7 +35,13 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent          # repo root (scripts/..)
 HUB = REPO / "apps" / "hub"
 HARVEST_COMMIT = "fe6c04d"                              # Task 40 image harvest commit
-FLEET_ROWS, FLEET_SLUGS = 162_271, 262
+# r1 re-run (post run-012 off-subject purge, operator trace 1a178336c0685d05):
+# W1 fleet is now 161,621 rows / 262 slugs — run-012 removed 650 off-subject
+# examQuestion pairings, of which 6 lived in 3 of the 22 target bundles
+# (chemistry-cambridge-international-a-level -2, geography-...-2027-exams -1,
+# physics-...-gcse-supplement -3). r0's 162,271 and the 3 stale totals would
+# fail-closed here; this re-run re-exports the bundles from the CLEAN fleet.
+FLEET_ROWS, FLEET_SLUGS = 161_621, 262
 
 MAPPING = {                                             # hub course -> [seneca bundle slugs]
     "cie-a-level-biology-25":  ["biology-cambridge-international-a-level"],
@@ -67,11 +73,11 @@ MAPPING = {                                             # hub course -> [seneca 
     "igcse-english-language-a-16-paper-3-coursework": ["english-gcse-groundwork"],
 }
 EXPECTED_TOTALS = {  # G2 per-slug totals, from Task 44 probes (fail if W1 drifts)
-    "biology-cambridge-international-a-level": 954, "chemistry-cambridge-international-a-level": 284,
+    "biology-cambridge-international-a-level": 954, "chemistry-cambridge-international-a-level": 282,   # r0: 284; run-012 purged 2 off-subject
     "physics-cambridge-international-a-level": 316,
     "biology-cambridge-international-gcse-supplement": 2066, "biology-cambridge-international-gcse-core": 270,
     "chemistry-cambridge-international-gcse-supplement": 1528, "chemistry-cambridge-international-gcse-core": 208,
-    "physics-cambridge-international-gcse-supplement": 1221, "physics-cambridge-international-gcse-core": 454,
+    "physics-cambridge-international-gcse-supplement": 1218, "physics-cambridge-international-gcse-core": 454,   # r0: supplement 1221, run-012 purged 3 off-subject
     "co-ordinated-science-biology-cambridge-international-gcse-supplement": 523,
     "co-ordinated-science-biology-cambridge-international-gcse-core": 179,
     "co-ordinated-science-chemistry-cambridge-international-gcse-supplement": 638,
@@ -79,7 +85,7 @@ EXPECTED_TOTALS = {  # G2 per-slug totals, from Task 44 probes (fail if W1 drift
     "co-ordinated-science-physics-cambridge-international-gcse-supplement": 733,
     "co-ordinated-science-physics-cambridge-international-gcse-core": 184,
     "maths-cambridge-international-gcse-extended": 489,
-    "geography-cambridge-international-gcse-2027-exams": 641,
+    "geography-cambridge-international-gcse-2027-exams": 640,   # r0: 641; run-012 purged 1 off-subject
     "business-cambridge-international-gcse-2027-exams": 281,
     "history-cambridge-international-gcse-the-twentieth-century-option-b": 2180,
     "computer-science-cambridge-international-gcse": 233,

@@ -120,6 +120,37 @@ task:
     token; operator-side check = assignment creator Seneca picker on
     syllabai-hub-v2. Receipt of record:
     .syllabai/receipts/T-SENECA-001/run-006-w1-t1-flip-r0.json.
+    REBUILD-ERA SWEEP + PURGE (run-011/012, 2026-10-26, executed on branch
+    t-seneca-001/r5 by the feature-workbench lane; operator trace
+    1a1781ee14e26d7d "a family sweep on the 262-slug W1 rebuild" + approval
+    trace 1a178336c0685d05 "Approve run-012"): the Task-41 rebuild (262 bundle
+    slugs / 162,271 rows re-derived from the r2 corpus) re-audited at subject
+    level — raw Tier-1 2,165 rows settled after classifier correction into
+    VARIANT 1,351 (English Lit abbreviation), SPEC-VARIANT 164 (Religious
+    Studies A in RS-B slugs, KEPT), TRUE OFF-SUBJECT 650 rows / 76 groups /
+    39 slugs; headline the 550-row Chemistry Cambridge International GCSE
+    Supplement block inside biology-edexcel-igcse with 550/550 id overlap to
+    the run-010 purge list — the cross-attachment lives in Seneca's own
+    source courseIds[]. run-012 executed the operator-approved pair-scoped
+    purge in one transaction: fleet 162,271 -> 161,621 rows / 262 slugs,
+    family residual 0, pg_stat n_tup_del 650 exactly, zero collateral;
+    552 of 574 purged ids had no subject-correct home and left the warehouse
+    (content preserved in the r2 corpus). Receipts ported to main with this
+    commit: run-011-family-sweep-262.json, run-011-offsubject-decision-matrix.md,
+    run-011-offsubject-ids.json, run-012-offsubject-purge.json.
+    TASK-45 r1 RECONCILIATION (2026-10-26, this commit): the r0 widening
+    (a7aad8e0, parallel lane, 10:31Z) exported the 22 bundles from PRE-purge
+    W1 (fleet 162,271). Six purged rows lived in 3 target bundles
+    (chemistry-cambridge-international-a-level -2, geography-...-2027-exams
+    -1, physics-...-gcse-supplement -3). Generator re-run (scripts/
+    seneca_widen_cie_r0.py, baselines patched r0->r1) against the CLEAN
+    fleet: G2 exact 161,621/262 + 22/22 target slugs, PII clean across
+    15,548 resources, export delta vs r0 = EXACTLY the 6 purged resources
+    (0 added, 0 modified-in-place; 6/6 id-pair match to the run-012 purge
+    manifest), registry questions counts updated (80->78; 386->385 x2;
+    919->916), flags idempotent 62/62, images untouched (1,885 needed, 0
+    copied, blob-missing 0). Receipt of record:
+    .syllabai/receipts/T-SENECA-001/task-45-widen-cie-r1-postpurge-reconcile.json.
 base:
   repo: "syllabai-v2 @ 6bedab6 (origin/main at claim)"
 basis: >
