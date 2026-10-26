@@ -21295,3 +21295,22 @@ Work Log:
 
 Stage Summary:
 - T-OEQ-MATHSB-SERVE-1 CLAIMED of record: P0 gate SATISFIED + pinned (main@3000e439), owner r7a, serve sequence armed (run-002 pre-flight census re-verify -> run-003 exporter + gates G-S1..G-S6 -> receipt + close). Zero corpus/content writes in this act (card + worklog only, .syllabai-only, fetch-first, no force).
+
+
+---
+
+Task: T-SM-ROLLOUT adr040-g1-msfetch-cie-r0 — band-wave-1 CIE MS fetch leg (G-1 gap closure, CIE side) + cross-lane verification (session web-3bd4aa99-51b0-4bec-a362-f94adc40f19d, trace 1a1774b2fece545d, operator order: "CIE 9609/0455 MS fetch, also coordinate with other agents, check their work").
+
+Work Log:
+- Audited the concurrent wave-1 lanes of record: leg 5 eval lane #374 MERGED 2026-10-25T20:07:07Z (QWK + D5-beta floors in code + metric-kind-hard gate + human_marks.band_placement capture) — leg 5 CLOSED; G-2 KG seed #386 MERGED 2026-10-25T23:03:38Z (4/5 wave-1 trees, 4GE1 fail-closed -> bundle-repair path); G-1 Edexcel tranche 9a085fe cross-verified 3/3 sha256+bytes+magic against wave1_fetch_manifest.json.
+- Fetched the CIE half of the G-1 gap ledger: 68/78 targets fetched from XtremePapers CAIE section (the archive already cited by the repo's existing Cambridge manifests; pastpapers.co JS-gated 0/78 per adr040-g1-msfetch-r0), PDF magic + page count + printed page-1 identity checks 68/68 (syllabus code, component ref, year, Mark Scheme wording).
+- Honest gap: the 10 unfetched targets (9609_m22_ms_{11,13,21,23,31,33}, 0455_{m19,m20}_ms_{21,23}) are NON-PUBLISHED documents — CIE Feb/March series publishes variant 2 only per component (two independent mirror 404s on exactly those + verified variant-2 twins + public March listings). Recorded, not substituted (AGENT.md rule 2).
+- Landed SyllabAI/syllabai-pastpapers branch t-sm-rollout/cie-wave1-msfetch-r0 (commit 2564034b, PR #5): 68 paper dirs (ms.pdf + canonical manifest.yaml each, XtremePapers provenance) + 2 specification.yaml + wave doc; 139 files additions-only; MS-only wave (qp.pdf follow-up disclosed per manifest).
+- Extraction tranche (detection-grade + verbatim-where-confident, reviewRequired=true x68): 0455 Level|Descriptors|Mark Discuss tables parsed verbatim via bbox coordinates (w20 trio: 12 entries/36 bands — L3 6-8/L2 3-5/L1 1-2); 9609/1 inline range groups (11 entries/17 bands); AO matrices (9609/2+/3) DETECTION-ONLY (vertically-centered level digits + wrapped cells — full parser pass remains of record for ingest); 9609 s23 'Eval N' rows detected-not-parsed. Negative evidence: 0455 s18/s19 text layers are fully point-marked.
+- Landed v2 lane artifacts: glm-ms-drafts/{0455,9609}/... x68 + cie_fetch_manifest_r1.json + cie_drafts_summary.json + receipt adr040-g1-msfetch-cie-r0.json (this file's run of record).
+- Flagged to operator: v2 main neon-replay daily audit red since 2026-10-22 across pre-wave heads (findings-filed-never-auto-fixed posture; not a wave regression).
+
+Stage Summary:
+- G-1 CIE gap CLOSED of record (68 verified docs of-record in the corpus repo via PR #5; 10 targets corrected as non-published).
+- Band-shape design lane unblocked for CIE: B-grammar verbatim staged; C-grammar AO matrices flagged cell-perfect-parse-pending.
+- Next: QP pairing wave for the 68 CIE dirs (qp.pdf not yet collected); 4GE1 bundle re-export; G-4 LEVELS birth for repo-covered papers.
