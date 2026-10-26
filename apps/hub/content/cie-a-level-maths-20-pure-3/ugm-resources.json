@@ -1,6 +1,6 @@
 {
  "schema": "syllabai-demo.ugm-lane-resources/1.2",
- "generatedUtc": "2026-10-25T22:27:34Z",
+ "generatedUtc": "2026-10-26T10:09:37Z",
  "reviewState": {
   "state": "SUGGESTED",
   "note": "Agent-generated alignment per AGENT.md rule 2 — candidates until the review/promotion gate promotes them; no coverage manufactured (rule 3)."
@@ -441,11 +441,106 @@
    "slug": "vector-geometry",
    "title": "Vector Geometry",
    "url": null
+  },
+  {
+   "slug": "calculus-meets-functions",
+   "title": "Calculus meets Functions",
+   "url": null
+  },
+  {
+   "slug": "calculus-of-powers",
+   "title": "Calculus of Powers",
+   "url": null
+  },
+  {
+   "slug": "calculus-trig-log",
+   "title": "Calculus of Trigonometry & Logarithms",
+   "url": null
+  },
+  {
+   "slug": "chain-rule",
+   "title": "Chain Rule & Integration by Substitution",
+   "url": null
+  },
+  {
+   "slug": "combining-functions",
+   "title": "Combining Functions",
+   "url": null
+  },
+  {
+   "slug": "counting-and-binomials",
+   "title": "Counting & Binomials",
+   "url": null
+  },
+  {
+   "slug": "divisibility-and-induction",
+   "title": "Divisibility & Induction",
+   "url": null
+  },
+  {
+   "slug": "exp-and-log",
+   "title": "Exponentials & Logarithms",
+   "url": null
+  },
+  {
+   "slug": "hyperbolic-functions",
+   "title": "Hyperbolic Functions",
+   "url": null
+  },
+  {
+   "slug": "introducing-calculus",
+   "title": "Introducing Calculus",
+   "url": null
+  },
+  {
+   "slug": "product-rule",
+   "title": "Product Rule & Integration by Parts",
+   "url": null
+  },
+  {
+   "slug": "quadratics",
+   "title": "Quadratics",
+   "url": null
+  },
+  {
+   "slug": "sequences",
+   "title": "Sequences",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-algebra",
+   "title": "Thinking about Algebra",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-functions",
+   "title": "Thinking about Functions",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-geometry",
+   "title": "Thinking about Geometry",
+   "url": null
+  },
+  {
+   "slug": "thinking-about-numbers",
+   "title": "Thinking about Numbers",
+   "url": null
+  },
+  {
+   "slug": "trigonometry-triangles-to-functions",
+   "title": "Trigonometry: Triangles to Functions",
+   "url": null
+  },
+  {
+   "slug": "vector-geometry",
+   "title": "Vector Geometry",
+   "url": null
   }
  ],
  "source": {
   "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@b151f65ae5f2f963476548cbae92cc1f138b380f",
+  "ref": "main@c8b80c6a09af2526d05eb808512081d191dd8e03",
   "enrichment": [
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-algebra.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-logarithmic-and-exponential-functions.json",
@@ -453,7 +548,8 @@
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-differentiation.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-integration.json",
    "UGM-Enrichment/cie-a-level-maths-20-pure-3-iteration.json",
-   "UGM-Enrichment/cie-a-level-maths-20-pure-3-vectors.json"
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-vectors.json",
+   "UGM-Enrichment/cie-a-level-maths-20-pure-3-differential-equations.json"
   ],
   "enrichmentSchema": "syllabai.ugm-spec-enrichment/1.0",
   "resourcesDir": [
@@ -463,9 +559,10 @@
    "UGM-Resources/pure-3-differentiation",
    "UGM-Resources/pure-3-integration",
    "UGM-Resources/pure-3-iteration",
-   "UGM-Resources/pure-3-vectors"
+   "UGM-Resources/pure-3-vectors",
+   "UGM-Resources/pure-3-differential-equations"
   ],
-  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119); LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126); LEDGER.md — T-UGM-MODE1-12 and T-UGM-IMPORT-12 (PR #134); LEDGER.md — T-UGM-MODE1-13 and T-UGM-IMPORT-13 (PR #140) + the T-UGM-MODE1-13 amendment r0 (this PR); LEDGER.md — T-UGM-MODE1-14 and T-UGM-IMPORT-14 (PR #145); LEDGER.md — T-UGM-MODE1-15 and T-UGM-IMPORT-15 (PR #149)",
+  "ledger": "LEDGER.md — LEDGER.md — T-UGM-MODE1-9 and T-UGM-IMPORT-9 (PR #114); LEDGER.md — T-UGM-MODE1-10 and T-UGM-IMPORT-10 (PR #119); LEDGER.md — T-UGM-MODE1-11 and T-UGM-IMPORT-11 (PR #126); LEDGER.md — T-UGM-MODE1-12 and T-UGM-IMPORT-12 (PR #134); LEDGER.md — T-UGM-MODE1-13 and T-UGM-IMPORT-13 (PR #140) + the T-UGM-MODE1-13 amendment r0 (this PR); LEDGER.md — T-UGM-MODE1-14 and T-UGM-IMPORT-14 (PR #145); LEDGER.md — T-UGM-MODE1-15 and T-UGM-IMPORT-15 (PR #149); LEDGER.md — T-UGM-MODE1-16 and T-UGM-IMPORT-16 (PR #155)",
   "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
   "operatorAttestation": "2026-10-24 — text + static figures may ship into SyllabAI; permission declared",
   "figureMap": "UGM-Resources/figures-map.json",
@@ -482,9 +579,9 @@
   "aligned": 149,
   "nonOverlap": 0,
   "alignedShare": 1.0,
-  "candidateRows": 230,
+  "candidateRows": 232,
   "crossLaneJoined": {
-   "aligned": 61,
+   "aligned": 63,
    "nonOverlap": 0
   },
   "specPointsCovered": [
@@ -518,7 +615,11 @@
    "3.7.4",
    "3.7.5",
    "3.7.6",
-   "3.7.7"
+   "3.7.7",
+   "3.8.1",
+   "3.8.2",
+   "3.8.3",
+   "3.8.4"
   ],
   "figures": {
    "figureRefs": 0,
@@ -601,10 +702,21 @@
     "nonOverlap": 6,
     "alignedShare": 0.1471,
     "candidateRows": 29
+   },
+   {
+    "station": "differential-equations",
+    "stationTitle": "Differential equations",
+    "ugmResourcesConsidered": 53,
+    "aligned": 2,
+    "nonOverlap": 4,
+    "alignedShare": 0.0377,
+    "candidateRows": 7,
+    "crossLaneAligned": 2,
+    "crossLaneNonOverlap": 0
    }
   ],
   "nonOverlapByReference": {
-   "count": 94,
+   "count": 97,
    "rows": [
     {
      "ugmSlug": "absurder",
@@ -1263,16 +1375,37 @@
      "title": "What's the position vector of the reflection of $O$ in the plane $ABC$?",
      "url": "https://undergroundmathematics.org/combining-vectors/r9794",
      "reason": "The well demands 'the position vector of the reflection of O in the plane ABC', reached via the foot of the perpendicular from O to that plane; planes are beyond P3 3.7 (lines only). The position-vector arithmetic on the way is genuine 3.7.3 material, but the served object — a reflection in a plane — is not a P3 demand; disclosed by reference."
+    },
+    {
+     "ugmSlug": "picture-the-process-i",
+     "station": "thinking-about-functions",
+     "title": "Picture the process I",
+     "url": "https://undergroundmathematics.org/thinking-about-functions/picture-the-process-i",
+     "reason": "Eight real-world processes are sketched and matched to graphs, then to equations; the tea-cooling row states Newton's law of cooling in the SOLUTION ('the rate of cooling is proportional to the difference between the temperature of the object and the ambient temperature') and matches y = 20 + 80e^{-0.05x} — the DE is narrated and its solution is matched, but no student work formulates a DE, separates variables, or uses an initial condition. The register is representation-matching, not the 3.8 pipeline; disclosed by reference (the lane-14 iteration rejection stood for its own reasons)."
+    },
+    {
+     "ugmSlug": "picture-the-process-ii",
+     "station": "combining-functions",
+     "title": "Picture the process II",
+     "url": "https://undergroundmathematics.org/combining-functions/picture-the-process-ii",
+     "reason": "Nine processes matched to graphs and equations: the drug-concentration row is exponential decay (y = 500 x 2^{-0.6667x}), the food-limited bacteria row is a LOGISTIC curve (y = 1000000/(10 + (100000-10)2^{-4x})), the pendulum row is damped oscillation — the DE-model family 3.8 serves, present only as equations to be matched and explained ('Can you explain the numbers in these equations?'), never formulated or solved. The logistic and damped-oscillation objects are beyond the spec's first-order separable register in any case; disclosed by reference."
+    },
+    {
+     "ugmSlug": "weight-pulling",
+     "station": "hyperbolic-functions",
+     "title": "Weight pulling",
+     "url": "https://undergroundmathematics.org/hyperbolic-functions/weight-pulling",
+     "reason": "Approach 1 formulates the tractrix DE dy/dx = -y/sqrt(a^2-y^2) from the string geometry and separates the variables ('This is a separable differential equation, so we get integral(sqrt(a^2-y^2)/y) dy = -x+c') with an initial condition (x=0, y=a) — the 3.8.1-3.8.3 pipeline verbatim — but the evaluation requires the substitution y = a sin(theta) and the cosecant integral, both beyond the 9709 function set, and Approach 2 leans on cosh/arcosh catenary machinery; the resource's centre of gravity is the tractrix/catenary geometry. The genuine separable-DE skeleton is disclosed by reference (the prior log/exp and trig non-overlap rows stand)."
     }
    ]
   },
   "crossCourse": {
-   "aligned": 50,
+   "aligned": 52,
    "nonOverlapRef": 0,
    "flips": 31,
-   "oneToMany": 26,
+   "oneToMany": 28,
    "courses": {
-    "cie-a-level-maths-20-pure-1": 50
+    "cie-a-level-maths-20-pure-1": 52
    },
    "note": "cross-course fact joins served by reference — the text of record stays first-of-record under the serving course's bundle",
    "rows": [
@@ -2001,6 +2134,43 @@
      "confidence": "medium",
      "primaryPick": false,
      "priorAlignmentOfRecord": "lane-algebra alignment 3.1.4 of record (the repeated-root row; the 1.7.2 alignment of the same body stands beside it)"
+    },
+    {
+     "ugmSlug": "r6959",
+     "codes": [
+      "3.8.1",
+      "3.8.2",
+      "3.8.3",
+      "3.8.4"
+     ],
+     "title": "Can we track this constantly growing patch of fluid?",
+     "url": "https://undergroundmathematics.org/calculus-of-powers/r6959",
+     "station": "calculus-of-powers",
+     "textOfRecordUnder": "UGM-Resources/pure-1-differentiation",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "note": "the 1.7.3 alignment of record stands (pure-1-differentiation); the part-question DE pipeline is the 3.8 embodiment — one-to-many extension (the lane-6 r7553/r9527 law)",
+     "primaryPick": true,
+     "priorAlignmentOfRecord": "pure-1-differentiation 1.7.3 (cross-map lane 7)"
+    },
+    {
+     "ugmSlug": "r7410",
+     "codes": [
+      "3.8.1",
+      "3.8.2",
+      "3.8.3"
+     ],
+     "title": "If $dy/dx$ is inversely proportional to $x^2$, can we find $y$?",
+     "url": "https://undergroundmathematics.org/product-rule/r7410",
+     "station": "product-rule",
+     "textOfRecordUnder": "UGM-Resources/pure-1-integration",
+     "servedUnder": "cie-a-level-maths-20-pure-1",
+     "kind": "one_to_many",
+     "confidence": "high",
+     "note": "the 1.8.2 alignment of record stands (pure-1-integration); the part-question DE pipeline is the 3.8 embodiment — one-to-many extension (the lane-6 r7553/r9527 law)",
+     "primaryPick": true,
+     "priorAlignmentOfRecord": "pure-1-integration 1.8.2 (cross-map lane 8)"
     }
    ]
   }
@@ -2428,6 +2598,34 @@
    "code": "3.7.7",
    "officialText": "Knowledge of the vector product is not required.",
    "primaryPick": null,
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.8.1",
+   "officialText": "formulate a simple statement involving a rate of change as a differential equation",
+   "primaryPick": "r6959",
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.8.2",
+   "officialText": "find by integration a general form of solution for a first order differential equation in which the variables are separable",
+   "primaryPick": "r7410",
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.8.3",
+   "officialText": "use an initial condition to find a particular solution",
+   "primaryPick": "r7410",
+   "resourceCount": 0,
+   "ugmIds": []
+  },
+  {
+   "code": "3.8.4",
+   "officialText": "interpret the solution of a differential equation in the context of a problem being modelled by the equation.",
+   "primaryPick": "r6959",
    "resourceCount": 0,
    "ugmIds": []
   }
