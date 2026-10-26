@@ -1,0 +1,47 @@
+version: 1
+task:
+  id: T-BOOK-066
+  title: "media-embed sources manifest + Cognito video pilot (ADR-BOOK-0002 implementation): manifest schema + G4 lint rule, pilot pack u1-c01 curation, authoring flip + bake + gates"
+  owner: "main-agent (zai-web session web-c414c074, chat 08b3170a, trace 1a179b7708279ae1)"
+  status: IN_PROGRESS
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: media-embed-video-pilot
+  deps: [T-BOOK-006, T-BOOK-010]
+  execution_record: >
+    Operator "Go" (2026-10-27, trace 1a179b7708279ae1) to draft the video-pilot
+    ADR offered at trace 1a179adedb4682cd (f-0039 candidate 1, operator-endorsed:
+    "we can use Cognito's videos"). DELIVERED THIS TRACE: ADR-BOOK-0002 PROPOSED
+    (docs/adr/ADR-BOOK-0002-media-embed-sources-manifest-video-pilot.md) —
+    existing media-embed block grows a required sourceId (no 12th type);
+    append-only manifest at books/4ch1/meta/media-sources.yaml (licensing_row +
+    checked_date + recheck_days + status per row, lint law 4 made checkable);
+    youtube-nocookie embed law (rel=0, no autoplay, attribution in-card, never
+    in prose); pilot u1-c01-states-of-matter <=2 blocks; curation protocol with
+    per-URL fetch-verify (no URLs pinned in the ADR — none verified yet);
+    rollback = retire row -> honest-empty. NEXT (after operator flips ADR to
+    ACCEPTED): renderer wiring re-verify (T-BOOK-006 lane) -> curation ->
+    manifest rows (v2) -> media-embed block in pilot pack (resources: authoring
+    PR + law-7 flip receipt) -> v2 bake (fetch-first, PAT env-only) -> gates
+    (G4 29/29 + 4 books suites + T-C20 post-deploy) -> live poll -> f-0039
+    candidate 1 superseding entry.
+base:
+  repo: "syllabai-v2 @ f869ffaf (main, post research-doc commit)"
+basis: >
+  Operator "Go" trace 1a179b7708279ae1; operator endorsement trace
+  1a179adedb4682cd; f-0039 (feature-gap census, open);
+  docs/books/research/COGNITO-LESSON-ANALYSIS-2026-10-27.md; BOOK-PACK-SPEC
+  section 4 (media-embed payload, ADR-first clause, lint law 4); ADR-BOOK-0001
+  decisions 9/11; ADR-BOOK-0001 yaml format precedent (T-BOOK-015).
+scope:
+  allowed:
+    - "docs/adr/ADR-BOOK-0002-media-embed-sources-manifest-video-pilot.md"
+    - "books/4ch1/meta/media-sources.yaml (new, post-ACCEPTED)"
+    - "books/** lint/validator additions (G4 media-embed rule)"
+    - ".syllabai/tasks/T-BOOK-066-media-embed-video-pilot.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "packages/** (contracts payload amendment rides the T-BOOK-066 lane AFTER ACCEPTED, contracts first)"
+    - "apps/** renderer changes beyond verification (T-BOOK-006 built the cards lane)"
+    - "syllabai-resources/** pack bytes from THIS task yaml (authoring flips run as their own PRs under the standing authoring law)"
+    - "Kognity content of any kind (proprietary — f-0039 closes that reading)"
