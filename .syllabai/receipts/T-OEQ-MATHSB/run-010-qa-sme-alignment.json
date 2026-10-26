@@ -1,0 +1,99 @@
+{
+  "lane": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-010-qa-sme-alignment",
+  "date": "2026-10-27",
+  "operator_trace": "1a179bfab336f6d1",
+  "operator_order": "Now check all the papers you created. Do they have any missing diagrams. Do they have text errors. Furniture texts. Are they showing formulas correctly? Remember we dont have to be verbatim. You can always make things better. And also check each mark scheme, again, we dont have to be verbatim. Check out how savemyexams handles maths mark schemes. (SME-Exam Questions -> Maths A questions - because Maths B Exam Question were not created by SME)",
+  "scope": "official-papers.json (66 sets / 1,281 q / 2,443 parts / 6,600 marks) + past-paper player + question-player mark-scheme rendering",
+
+  "census_findings": {
+    "diagrams": {
+      "crop_parts": 317,
+      "crop_required_missing": 259,
+      "sets_affected": "62/66",
+      "fallback_note_coverage": "259/259 had a note; 91 had OCR label junk in the stem",
+      "resolution": "cannot crop without PDFs locally — MIRROR NOW CONFIRMED (syllabai-pastpapers, QP/MS PDFs anonymous-raw) => deep lane is machinery-ready; stems cleaned deterministically + rich figure notes (labels/figure values) added to 150 parts"
+    },
+    "text_artifacts_repaired": {
+      "total_changes": 1571,
+      "rules": {
+        "R1-pmt": "PMT watermark stripped (11 parts)",
+        "R2-continues-strip": "'Question N continues on the next/page-34 page' paper furniture stripped (4)",
+        "R3-deg-q": "32q->32° class in figure-junk context only (4; algebra variables q preserved)",
+        "R4-sci-q": "5.2 q 105 -> 5.2 × 10⁵ (2)",
+        "R5-triangle": "'ABC -> △ABC (1, hand-targeted)",
+        "R6-unit-sup": "cm2/mm2/m2/cm3 -> cm²/mm²/m²/cm³ (204)",
+        "R7-var-sup": "attached x2/x3/y2/y3 -> superscripts (270)",
+        "R8-bracket-noise": "tall-paren glyph junk clusters stripped, content-bearing structures PRESERVED (476)",
+        "R9a-d": "answer-box furniture -> dotted answer lines: ', ,' runs, '( , )', orphan units, dot runs (174)",
+        "R10-label-junk": "figure-label junk prefix restructured into a figure note (155)",
+        "R11-note-upgrade": "fallback note rewording (259)",
+        "R12-power-katex": "6 q 5(3k+4) -> $5^{3k+4}$ (1)",
+        "R13-hand": "prime-factor superscripts + standard-form division repairs (4)",
+        "R14-dup-text": "duplicated question/answer-line blocks deduped (4)",
+        "R15-eth": "Ð (Eth OCR) -> ∠ (17 part-fields)"
+      }
+    },
+    "furniture_marks_consistency": "PERFECT at all three levels (set totalMarks vs question sums vs part sums vs markPoints sums: 0 mismatches) — census 66/1,281/2,443/6,600 byte-stable across the whole wave",
+    "formulas": {
+      "encoding": "plain-Unicode math dominant (808 problemMd / 1,771 solutionMd parts), KaTeX $...$ for 52+14 parts + new additions",
+      "systematic_repairs": "superscript classes + standard-form + degree glyphs (see rules)",
+      "deep_remainder": "flattened fraction/matrix content class (fleet census 627 parts / 63 sets per UIUX-TIER-B-RUN-006 receipt) — needs eyes-on vs QP/MS of record; MIRROR CONFIRMED for the evidence chain; flagship proof executed (2020-01 Q10 matrices rebuilt eyes-on)"
+    },
+    "mark_schemes": {
+      "style_problem": "solutionMd was raw MS text (M1×3,695 / A1×1,983 / B1×949 tokens), 1,294 parts with raw oe/ft/cao jargon, 2,364 parts solutionMd == markPoints[0] (double-render)",
+      "sme_research": "SaveMyExams Edexcel IGCSE Maths A (4MA1) exam-questions: per-part combined model answer with right-aligned mark chips, abbreviations humanised in prose, no raw jargon; verified live (3 URLs) 2026-10-27",
+      "player_changes": [
+        "new MarkScheme component: trailing/bare mark codes -> right-aligned chips, oe/ft/cao/isw/awrt/soi expanded inline in italics, legend line",
+        "wired into 'Why this is the answer' panel (retitled 'Answer and mark scheme' when scheme vocabulary present) + review panel",
+        "double-render fixed: markPoints block suppressed when identical to solutionMd",
+        "6-test regression suite (mark-scheme.test.ts)"
+      ],
+      "missing_ms": {
+        "before": "57 parts with no solutionMd and no markPoints",
+        "authored": "18 parts (self-contained, derivation-verified, markPoints sum == part marks gated): LCM/HCF 12600/60 x2 sets, right-triangle 27.9°, geometric sequence 16/−4, combined mean 10.4, inequality x=6, polygon n=8, ratio 4.2 m, standard form 5×10¹⁹⁸ x2 sets, circle theorem 18° (5-row), graph intersection (3,3), table values B2, polygon 45 sides, factor theorem a=8 b=−16, locus circle",
+        "honest_note": "33 parts (graph-drawing, constructions, context-dependent) now carry an explicit 'mark scheme not captured' note instead of silence",
+        "residual": "6 parts are marks==0 plot-instruction sub-parts — no MS required"
+      }
+    },
+    "deep_lane_flagship": {
+      "part": "offp_2020-01_01_10-a/b (matrices OCR-lost at SOURCE level)",
+      "evidence": "syllabai-pastpapers@main 4mb1/past-papers/2020-01/4MB1-01/qp.pdf p6 — eyes-on crop download/t-oeq-mathsb/qa/qp-2020-01-q10.png",
+      "law": "no-guess: visual read A=(2 −3 / 4 1), B=(5 0 / 4 −2); answers cross-checked vs derivation AND the source's glued MS text (A+B=(7 −3 / 8 −1) B1; 2A−4B=(−16 −6 / −8 10) B2)",
+      "significance": "PROVES the deep-lane machinery end-to-end (mirror fetch -> PyMuPDF render -> eyes-on -> evidence-checked repair); fleet scale remains queued"
+    }
+  },
+
+  "player_furniture": {
+    "header_line_added": "4MB1 papers only: 'Calculator (not) allowed · Answer all questions · Show all your working' — gated on paper.number.startsWith('4MB1') so chemistry/physics players are unaffected"
+  },
+
+  "gates": {
+    "structure_law": "66/1,281/2,443/6,600 UNCHANGED (assert-verified after every apply)",
+    "marks_law": "zero mark changes; every markPoints sum == part.marks",
+    "ids_law": "zero id changes",
+    "tsc": "exit 0",
+    "bun_test": "past-papers.planes 7 pass + mark-scheme 6 pass",
+    "build_hub": "next build exit 0",
+    "g_s4_glyphs": "0 C1 / 0 U+FFFD / 0 PUA preserved (census re-run)",
+    "provenance_disclosure": "official-papers.json is now the resources@a7a34cd9 converter base + v2 editorial layer (this wave) — deterministic repairs only + 18 authored MS + 1 eyes-on flagship repair, all logged"
+  },
+
+  "security": "BOTH PATs (GitHub ghp_…JU4, Vercel vcp_…aoT3) remain unrotated since the chat-plaintext exposure — push/deploy of this wave REQUIRES a fresh (rotated) token; old token was never written to disk (env-only law held).",
+
+  "artifacts": [
+    "download/t-oeq-mathsb/qa/census-findings.json",
+    "download/t-oeq-mathsb/qa/repair-changelog.json (1,571 before/after rows)",
+    "download/t-oeq-mathsb/qa/ms-authored.json",
+    "download/t-oeq-mathsb/qa/deep-lane-2020-01-q10.json",
+    "download/t-oeq-mathsb/qa/qp-2020-01-q10.png (eyes-on evidence crop)",
+    "download/t-oeq-mathsb/qa/official-papers.post-repair.json (post-wave snapshot)"
+  ],
+
+  "next_safe_actions": [
+    "push + PR + deploy this wave (needs rotated PAT)",
+    "deep lane session: fleet flatten census (627 parts / 63 sets) + 259 missing diagram crops via the confirmed syllabai-pastpapers mirror, Tier-B no-guess law",
+    "operator decision: port UIUX-TIER-B repairs from the retired-visibility questions.json plane into the official plane (the 6-run repair investment is currently hidden by official-precedence)",
+    "PAT rotation (STILL OPEN — both tokens)"
+  ]
+}

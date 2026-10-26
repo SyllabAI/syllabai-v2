@@ -81,6 +81,21 @@ export default async function PastPaperPage({
             {paper.questions.length} questions · {paper.totalMarks} marks ·{" "}
             {paperEstTime(paper.totalMarks)}
           </p>
+          {/* paper furniture (SME-style header facts): calculator rule +
+              "answer all" instruction. Maths-B-only: 4MB1/01 is the
+              non-calculator paper, /02 allows calculators — other
+              qualifications (e.g. chemistry WCH) have different rules and
+              must not inherit this line. */}
+          {paper.number.startsWith("4MB1") && /\/01/.test(paper.number) && (
+            <p className="text-xs text-muted-foreground">
+              Calculator not allowed · Answer <strong>all</strong> questions · Show all your working
+            </p>
+          )}
+          {paper.number.startsWith("4MB1") && /\/02/.test(paper.number) && (
+            <p className="text-xs text-muted-foreground">
+              Calculator allowed · Answer <strong>all</strong> questions · Show all your working
+            </p>
+          )}
           <div className="flex flex-wrap items-center gap-2">
             {/* long sentence, not a chip — the Badge base's whitespace-nowrap
                 blew the row past 375px (s133); wrap it like text instead */}
