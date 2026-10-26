@@ -11,20 +11,32 @@ task:
   execution_record: >
     Operator "Go" (2026-10-27, trace 1a179b7708279ae1) to draft the video-pilot
     ADR offered at trace 1a179adedb4682cd (f-0039 candidate 1, operator-endorsed:
-    "we can use Cognito's videos"). DELIVERED THIS TRACE: ADR-BOOK-0002 PROPOSED
-    (docs/adr/ADR-BOOK-0002-media-embed-sources-manifest-video-pilot.md) —
-    existing media-embed block grows a required sourceId (no 12th type);
-    append-only manifest at books/4ch1/meta/media-sources.yaml (licensing_row +
-    checked_date + recheck_days + status per row, lint law 4 made checkable);
-    youtube-nocookie embed law (rel=0, no autoplay, attribution in-card, never
-    in prose); pilot u1-c01-states-of-matter <=2 blocks; curation protocol with
-    per-URL fetch-verify (no URLs pinned in the ADR — none verified yet);
-    rollback = retire row -> honest-empty. NEXT (after operator flips ADR to
-    ACCEPTED): renderer wiring re-verify (T-BOOK-006 lane) -> curation ->
-    manifest rows (v2) -> media-embed block in pilot pack (resources: authoring
-    PR + law-7 flip receipt) -> v2 bake (fetch-first, PAT env-only) -> gates
-    (G4 29/29 + 4 books suites + T-C20 post-deploy) -> live poll -> f-0039
-    candidate 1 superseding entry.
+    "we can use Cognito's videos"). DELIVERED THAT TRACE: ADR-BOOK-0002 PROPOSED
+    (docs/adr/ADR-BOOK-0002-media-embed-sources-manifest-video-pilot.md).
+    ACCEPTED + IMPLEMENTATION RUN (2026-10-27, trace 1a179c0ba4ff04ed): the
+    operator order "run the T-BOOK-066 chain" is recorded as the ADR acceptance
+    of record (status flipped PROPOSED -> ACCEPTED in the same ops tx as this
+    yaml update). Curation of record (per-URL fetch-verify, all 200): Cognito
+    Edexcel-IGCSE-Triple 1.1 lesson page (UFJRRHluWEk) embeds exactly one video
+    in the c01 spec band — youtube hkBrw2fG75U "GCSE Chemistry - States of
+    Matter & Changing State" (@Cognitoedu), oembed 200 (embeddable),
+    youtube-nocookie probe 200, specRefs 1.1+1.2 both in the 4CH1-S1-a join
+    set; the 1.3 solubility lesson page carries NO video (census 2026-10-27),
+    so the pilot ships ONE media-embed block (<=2 density guard respected,
+    no padding). Scope ride-alongs disclosed per the ACCEPTED ADR (the yaml
+    forbidden items were pre-acceptance guardrails): packages/contracts
+    media-embed payload gains required sourceId (ADR decision 1, "contracts
+    first"); apps/hub media-embed-block.tsx grows the decision-3 embed law
+    (youtube-nocookie iframe, rel=0, no autoplay, attribution in-card, link
+    fallback) — T-BOOK-006's link card stays as the fallback shape; the rail
+    block b08 + pack.yaml plan row ride the authoring PR (pack bytes are not
+    ops tx). Lint manifest rebuilt session-side from DB truth via the LIVE
+    chapters registry (documentId e6c0db50 + pdfPageStart/End; the T-BOOK-011
+    rebuild precedent — no Neon string in this session, the api edge serves
+    the same rows). Residual operator lever (recorded, NOT executed): the
+    books-ingest-rail.ts apply + VALIDATED flip is the operator's S4 lever;
+    without it the rail serves honest-empty live while the authoring planes
+    and gates land.
 base:
   repo: "syllabai-v2 @ f869ffaf (main, post research-doc commit)"
 basis: >

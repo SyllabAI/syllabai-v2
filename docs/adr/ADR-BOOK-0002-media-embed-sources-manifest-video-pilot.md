@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | **PROPOSED** — drafted under operator "Go" (trace 1a179b7708279ae1); direction previously endorsed by operator ("we can use Cognito's videos", trace 1a179adedb4682cd). Flips to **ACCEPTED** on operator review of this document; implementation (T-BOOK-066) starts only after ACCEPTED. |
+| **Status** | **ACCEPTED** (2026-10-27) — drafted under operator "Go" (trace 1a179b7708279ae1); direction previously endorsed by operator ("we can use Cognito's videos", trace 1a179adedb4682cd); acceptance = the operator's implementation order **"run the T-BOOK-066 chain"** (trace 1a179c0ba4ff04ed), which is the review outcome of record for this document. Implementation = T-BOOK-066 (this trace). |
 | **Band** | `T-BOOK-xxx` (interactive books) |
 | **Task** | T-BOOK-066 |
 | **Date** | 2026-10-27 |
