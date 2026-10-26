@@ -1,0 +1,60 @@
+{
+  "schema": "syllabai.serve-receipt/0.1",
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-003 exporter + gates — VERDICT: BLOCKED fail-closed at G-S4 (trace 1a1777580eb2a10d)",
+  "generated_utc": "2026-10-26T09:40:00Z",
+  "exporter_port": {
+    "file": "official_examq_export_hub_mb.py (archived beside this receipt, sha256 a0cd0bf1e0b2675d74e24b8a6ceeede831760d6b2d7f01aa12750f37221ea273)",
+    "provenance": "faithful port of scripts/official_examq_export_hub.py (chemistry exporter of record, v6 law) @ resources 3000e439; course lane parameters swapped; deterministic, no LLM (ADR-037/039)",
+    "disclosed_deviations": [
+      "D1 course constants: igcse-maths-b-16 / 4MB1 / official-4mb1- / papers 01,01R,02,02R / October added to series labels (2025-10 session exists) / curriculum mirrors the maths-B bundle (subject 'Maths', syllabusVersion '2016')",
+      "D2 set topicId := sha1('<series>-<paper>')[:12] PER-SET (chemistry scopes per series: 54 sets / 16 colliding ids live of record; the F44 identity law + the card's open DB-plane item motivate per-set here; NEW file, no bundle-of-record to break)",
+      "D3 no STEM-RESTORE / SOLUTION-ENRICH ledgers exist for maths-B (chemistry UX ledgers): stems take the unledgered path (mechanical cleaning + splice-guard kept), every part serves its MS-derived solution; zero authored content anywhere",
+      "D4 bundle file law: single-line compact JSON (separators=(',',':'), ensure_ascii=False) — byte-proven against the maths-B questions.json/manifest.json of record; chemistry's indent=1 is chemistry's bundle law"
+    ]
+  },
+  "exporter_gates": {
+    "G-E5_pin_proof": "66/66 consumed topics content-identical to the declared data cut main@3000e439d1464c2927d082696f5bb19313af3172 (modulo the converter header)",
+    "G-E3_census": "66 slices match the frozen corpus constants; grand 66 sets / 20 series / 1281q / 2443p / 6600m (66 x printed 100 = 6600)",
+    "G-E2_mark_laws": "part-sum == totalMarks, markPoints sum-law, spec-code shapes: hold on all official sets",
+    "G-E1_reproducibility": "pass 1: first-run census emitted (2,443 part ids / 66 new slugs, 0 gone, 0 changed — first-run-census.json archived); pass 2: census matched exactly; pass 3: 'regeneration is a byte-level no-op against the bundle of record' + staged vs regenerated official-papers.json BYTE-IDENTICAL (cmp clean)",
+    "G-E1b_identity": "set-level identity fields byte-equal on all 66 sets (pass 3)",
+    "G-E4_sme_passthrough": "staged questions.json byte-identical to the SME bundle of record (2,845,915 bytes, 65 sets, single-line compact law)"
+  },
+  "card_gates": {
+    "G-S1": "PASS with the filed-census amendment (see run-002 receipt): 66/20/1,281/2,443/6,600 vs the emission of record; per-set dirs mirror 66/66",
+    "G-S2": "PASS — regeneration byte-identical + 2,443/2,443 parts field-traceable to the corpus of record with ZERO mismatches (marks, specPointCodes, solutionMd, markPoints id/marks/textMd, sourcePaper); transformation classes counted: stems spliced 1,176 (splice-guard skips 0, empty 105), furniture strips 385 solutionMd + 385 markPoint lines, figure embeds 363, honest stub copy 263",
+    "G-S3": "PASS — 194/194 unique figure-crop URLs anonymous-200 (363 crop asset records, shared-figure dedupe; 5,990,657 bytes served; gs3-fleet-sweep.json archived); 263 crop-required stubs carried as honest stubs (F-W15-4 learner-facing copy)",
+    "G-S4": "FAIL-CLOSED — see g_s4_finding",
+    "G-S5": "PASS — build:hub exit 0 (prebuild trio green: CORPUS GATE PASSED / flashcard sync OK / registry 94 rows = 49 Edexcel + 45 CIE PASS); zod: all 66 staged sets parse against the hub's ExamQuestionTopic schema (parts 2,443 / marks 6,600); question-player classification parity: questionType 'structured' on all 2,443 parts, ZERO MCQ parts (the F64-restored-choice probe is vacuous for maths-B — the converter canaries cover the class corpus-side; disclosed), marks totals == printed per set",
+    "G-S6": "BLOCKED by the G-S4/H2 finding (see run-003-h2-handover.json) — the handover rule's blocker clause requires a human verdict before the cutover"
+  },
+  "g_s4_finding": {
+    "verdict": "FAIL-CLOSED BLOCKER",
+    "as_filed": "0 PUA, 0 control chars, 0 U+FFFD, KaTeX 0 failures (born-clean law; sweep mandatory for maths)",
+    "measured": {"pua": 0, "kaTeX_parse_failures": "0/81 under the hub's own law (math-fix.ts/remark-math currency guards; all 81 raw-$ segments are currency prose, not math)", "control_chars": 35, "u_fffd": 107, "strings_scanned": 27594},
+    "control_char_classes": {
+      "decomposition": {"0x91": 19, "0x88": 5, "0x89": 4, "0x83": 3, "0x8f": 1, "0x87": 1, "0x8d": 1, "0x90": 1},
+      "reading": "C1 bytes are mis-mapped SymbolMT math glyphs (0x91 = angle ∠ as in '\\x91CAB = 32°'; apostrophe = congruent-triangle △; 0x88/0x89 = set membership glyphs, one RTL-region paper). The T-MIG-141 table.v1.json law covers the PUA plane (F0xx) for the DB plane; the maths-B converter emission carries the C1 variant instead — a converter glyph-map gap for the maths SymbolMT set",
+      "hits_by_set_all_classes": {"official-4mb1-02-2019-06": 106, "official-4mb1-02-2018-06": 12, "official-4mb1-01-2018-06": 8, "official-4mb1-01r-2019-06": 7, "official-4mb1-01r-2018-06": 6, "official-4mb1-01-2019-06": 2, "official-4mb1-01r-2025-06": 1},
+      "exact_split": {"u_fffd": {"official-4mb1-02-2019-06": 106, "official-4mb1-01r-2025-06": 1}, "ctrl": {"official-4mb1-02-2018-06": 12, "official-4mb1-01-2018-06": 8, "official-4mb1-01r-2019-06": 7, "official-4mb1-01r-2018-06": 6, "official-4mb1-01-2019-06": 2}},
+      "hits_by_set_note": "all 142 hits = 107 U+FFFD + 35 ctrl; the U+FFFD mass is 2019-06/02 (106) + one 2025-06/01R instance; the 35 C1 ctrl sit in five 2018-06/2019-06 sets only"
+    },
+    "u_fffd_mass": {
+      "total": 107, "in_2019_06_02_alone": 106,
+      "reading": "the 2019-06 4MB1/02 mark scheme is the OCR-sandwich paper of record; the converter emitted U+FFFD (its honest unresolvable-glyph marker) across its MS cells. The SME twin of this exact set was hand-repaired under UIUX-TIER-B-RUN-004 (58 line rules, eyes-on vs the MS of record; SME-plane UFFFD 0) — so the official plane would serve this set STRICTLY WORSE than the plane it replaces",
+      "by_field": {"problemMd": 36, "solutionMd": 53, "markPoints": 53}
+    },
+    "corpus_own_accounting": "the corpus's validation reports record control_char_fallback policy ('spec §3.4 single-space fallback, logged per-instance') on 48/66 sets and 481 review_queue entries corpus-wide — the class is known to the corpus of record, not introduced by the exporter",
+    "why_fail_closed": "G-S4 as filed demands 0/0/0; the emission of record carries 35+107; a source-side fix is out of this card's scope (cross-repo donor read-only, converter changes forbidden); exporter-side masking would be invention (forbidden) and would break G-S2 byte-parity to the emission. The gate did exactly its job — it caught a real corpus hygiene debt before it reached learners."
+  },
+  "staged_artifacts_held": {
+    "law": "the plane files are READY and GATED — they are NOT landed in this PR; they stay in the lane stage pinned here until the operator rules on G-S4",
+    "files": {
+      "official-papers.json": {"bytes": 3752711, "sha256": "6a54b03cd897dadfea8e42ec462c2bab971454fcdff44ac6a1e73ec3977b3765"},
+      "questions.json_staged_passthrough": {"bytes": 2845915, "sha256": "deb53511f81c200a7bae225f3632096ea10a20d90f29c47a829ad16a0477151a", "note": "byte-identical to the v2 bundle of record — landing it is a provable no-op"},
+      "first-run-census.json": {"sha256": "57bcd5662f8243c0de11502e457f0d16b9bd79fc909964dab3bd6938347cc3d0"}
+    },
+    "reproduce": "python3 official_examq_export_hub_mb.py <out_stage> <v2>/apps/hub/content/igcse-maths-b-16/questions.json --current-official-papers <empty []> --allow-new-official --expected-deltas first-run-census.json --source-cut main@3000e439d1464c2927d082696f5bb19313af3172"
+  }
+}
