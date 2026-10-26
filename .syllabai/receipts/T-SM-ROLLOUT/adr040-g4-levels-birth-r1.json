@@ -1,0 +1,103 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-g4-levels-birth-r1",
+ "date": "2026-10-26",
+ "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+ "trace_id": "1a179b2baf31494d",
+ "operator_order": "\"G-4 LEVELS birth\" (trace 1a179b2baf31494d), executing the operator ruling \"A\" (part-binding, trace 1a1776dff15bb991, landed as PR #388 merge 7ab06ecb + prod apply ceremony adr040-scheme-part-binding-r0)",
+ "gate": "G-4 of ADR-040 §5 — the LEVELS ingest: staged wave-1 mark-scheme drafts birthed as scheme_kind='LEVELS' mark_schemes + verbatim mark_bands, SUGGESTED, under the ruled part-binding law",
+
+ "state_found_read_only": {
+  "note": "the r0 birth run had ALREADY executed in prod WITHOUT a receipt — discovered and verified by this lane before any write",
+  "r0_evidence": {
+   "provenance_application": "T-SM-ROLLOUT adr040-g4-levels-birth-r0 (documents.provenance, all 118 r0 canonical docs)",
+   "engine": "textlayer-qp-adr040-g4-r0 / textlayer-ms-adr040-g4-r0 (engineVersion 1.0.0, deterministic per-page text-layer canonicals; SHA-256 of the syllabai-pastpapers pdf bytes as source.checksum)",
+   "window": "2026-10-26 11:49:28Z .. 12:02:51Z",
+   "shape": "bridge rows glm-ocr-v1 / glm-ocr-qp-v1+glm-ocr-ms-v1, created_by NULL (lane birth, not a user action)",
+   "papers": 59,
+   "levels_schemes": 419,
+   "mark_bands": 1221
+  },
+  "verification_of_r0": "all 59 birthed papers fingerprint-match the staged G-1 drafts of record (grid refs + band ordinals/ranges + verbatim descriptors): 0 mismatches, 0 extras — the r0 birth content is the staged wave-1 content",
+  "shortfall_analysis": "staged 62 files / 437 grids / 1,275 rows; unique grid contents 61 / 431 / 1,257 (one R-variant collapse, see findings[3]); birthed 59 / 419 / 1,221 — the gap was exactly 2 papers (4BS1-01 2021-06, 4BS1-02R 2026-06) = 12 grids / 36 rows",
+  "why_r0_skipped_those_2": "4BS1-01 2021-06: the r0 duplicate guard — the session label fell back to the source-catalog note '(not printed on cover; session from source catalog \"MayJune 2021\")', which bound(sessionLabel,60) truncates to the SAME 60-char key as 2022-06 (r0 had already ingested 2022-06 4BS1-01 under that key; fingerprint-proven). 4BS1-02R 2026-06: not attempted/skipped by the r0 lane (no residue either way — canonical docs and bridge rows are one-transaction, and the documents census showed exactly 118 rows = 59 pairs, 0 orphans)"
+ },
+
+ "r1_method": {
+  "seam_faithfulness": "the REAL shipped seam code, exercised locally against prod in ONE transaction per pair: ingestCanonicalDocument (T-013 canonical store) -> toPastPaperDraft (the converter law: bands verbatim, no fabricated points) -> ingestPastPaperDraft (the T-011 birth incl. ruling-A part-binding: ONE LEVELS scheme per printed grid, part-granular refs bind question_parts, fail-closed on absent parts/orphan refs) -> the bridge-record insert (the r0 row shape, same constants)",
+  "one_disclosed_deviation_mirroring_r0": "after toPastPaperDraft, PastPaperDraft.paper.subject = '4BS1' (the printed subject code) so resolveSubject takes the FIND path to the seeded, KG-linked subject — r0's own of-record behavior (its papers hang off subjects '4BS1'/'4GE1', created by the G-2 seeding lanes). The vanilla converter nulls subject ('never inferred') which resolves to code 'GEN' — unseeded, and whose find-or-create branch crashes on the shipped interpolation bug (findings[2])",
+  "qp_parse": "deterministic PyMuPDF text-layer grammar (engine textlayer-qp-adr040-g4-r1): questions/parts/marks/stems/totals from the printed layout, session from the printed cover (day-date month-year), honest warnings for every ambiguity; committed as adr040-g4-levels-birth-r1.parse.py (the identity of the documentId derivation P-6 mirror proven against an r0 row of record before any parse)",
+  "ms_side": "the STAGED G-1 tranche drafts of record (textlayer-tables-adr040-g1-r0 output) — entries carried VERBATIM, only the paper envelope remapped; canonical docs built from the pdf bytes (SHA-256 identity)",
+  "pre_ingest_oracle_fail_closed": [
+   "every staged band grid must bind a QP part with the SAME printed marks (ruling-A tiling law): 12/12 OK (1(g)6 2(f)9 3(d)6 3(e)9 4(b)6 4(c)12 on both papers)",
+   "QP part marks must tile each printed question total (20 x4) and the printed paper total (80, also cover-printed): OK",
+   "band ordinals exactly 1..n, bottom marksMin 0-or-1, top-band marksMax == grid top, descriptors non-blank: OK",
+   "session law: QP cover printed date first; MS-cover printed series fallback with an explicit draft warning ('Summer 2021' for the catalog_fallback 2021-06 sitting; 'May 2026' printed on the 2026-06 02R cover)"
+  ]
+ },
+
+ "births": [
+  {
+   "paper": "4BS1-01 2021-06",
+   "paper_id": "3cfedf36-55c3-4cfc-a954-5586d4672c23",
+   "session_label": "Summer 2021 (MS cover printed series; QP cover carries no printed session — manifest catalog_fallback)",
+   "title": "4BS1 4BS1/01 Summer 2021",
+   "questions": 4, "parts": 26, "levels_schemes": 6, "mark_bands": 18, "reconciliation": "OK",
+   "qp_document_id": "f1f87462-63c5-5899-b1d6-3b06117726b6 (duplicate:true — reused the probe row by checksum idempotency)",
+   "ms_document_id": "a5d1fb32-2645-5d6f-ac16-19ad674db200"
+  },
+  {
+   "paper": "4BS1-02R 2026-06",
+   "paper_id": "69e5422d-436b-4208-b6e3-33f406fc53af",
+   "session_label": "May 2026 (QP cover printed date 'Thursday 21 May 2026')",
+   "title": "4BS1 4BS1/02R May 2026",
+   "questions": 4, "parts": 26, "levels_schemes": 6, "mark_bands": 18, "reconciliation": "OK",
+   "qp_document_id": "f63ea7dd-e377-5fba-ba26-4463d01881c0",
+   "ms_document_id": "f85d6d42-a430-58b8-94ac-de03add858af"
+   }
+ ],
+
+ "verification_post_birth": {
+  "tripwires": {
+   "mark_schemes": 25255,
+   "levels": 431,
+   "points": 24824,
+   "mark_bands": 1257,
+   "evals": 12,
+   "expected": "25,255 / 431 / 24,824 / 1,257 / 12 — EXACT"
+  },
+  "points_byte_identical": "POINTS scheme count 24,824 unchanged by the whole G-4 birth (r0 + r1): zero POINTS rows touched",
+  "binding": "431/431 LEVELS schemes bound to a question_part (0 unbound), all SUGGESTED — the ruling-A shape, whole-draft",
+  "fingerprint_closure": "staged unique 61 = birthed unique 61; TRUE MISSING 0; EXTRAS 0 — the staged wave-1 of record is FULLY birthed",
+  "verbatim_law": "all 12 r1 schemes verified against the staged drafts of record: level ordinals, marksMin/marksMax, descriptor text byte-equal",
+  "bridge_records": "138 total (136 of r0 era incl. the September 4CH0/4CH1 lanes + 2 r1)"
+ },
+
+ "findings_of_record": [
+  "DUPLICATE-GUARD TRUNCATION COLLISION: bound(sessionLabel, 60) makes distinct catalog_fallback sittings share one (paper_code, session_label) key — '(not printed on cover; session from source catalog \"MayJune ' matches 2020/2021/2022 alike. This is why r0 skipped 4BS1-01 2021-06. r1 sidestepped with the MS-cover printed series as the session label (printed-on-document identity, disclosed in the draft warnings); a real fix is a seam change (session-source disambiguation before the guard), filed for the follow-up lane, NOT patched here",
+  "SHIPPED SEAM BUG (500-class): resolveSubject's find-or-create branch interpolates the curriculum-version code as `${code}-INGEST` where ${code} is a BIND PARAMETER — the SQL text becomes '$n-INGEST' which Postgres parses as (param n) minus (column INGEST) -> 'column \"ingest\" does not exist'. The vanilla POST /glm-ocr/pairs route therefore 500s for ANY paper whose subject code is not already seeded. Present at the r0 merge commit (7ab06ecb line ~289). r0 and r1 both avoid it via the seeded-subject find path. Filed here as a finding of record — the fix (inline the suffix into the parameter value) is a separate reviewed PR, never a silent lane patch",
+  "STAGED FINGERPRINT COLLAPSE: the 62 staged files carry 61 unique grid contents — 4BS1-02 2022-06 and 4BS1-02R 2022-06 print IDENTICAL levels grids (labels, ranges, descriptors). Both are birthed as SEPARATE papers (one paper row per sitting/variant is the identity law; the shared content is the physical reality of the R-variant printing)",
+  "SESSION-LABEL PROVENANCE VARIANCE (disclosed, no normalization): the wave-1 exam_papers rows carry three honest label classes — printed QP-cover dates ('May 2019', 'June 2026', 'October 2025'), truncated catalog_fallback notes (6 rows, the bound() 60-char law), and one MS-cover printed series ('Summer 2021', r1). All are printed-or-catalog-verbatim; none inferred"
+ ],
+
+ "unchanged": "evals 12; active sme-eq estate untouched; no writes issued outside the two r1 pair transactions (each one-transaction, all-or-nothing); no repo code changed in this run — the seam bugs above are receipt findings, not lane patches",
+
+ "artifacts": {
+  "committed": [
+   ".syllabai/receipts/T-SM-ROLLOUT/adr040-g4-levels-birth-r1.json (this receipt)",
+   ".syllabai/receipts/T-SM-ROLLOUT/adr040-g4-levels-birth-r1.parse.py (the deterministic pair builder: canonical shape, QP grammar, session law, fail-closed oracle; documentId derivation proven against an r0 row of record)"
+  ],
+  "untracked_lane_tooling": "apps/api/g4r1-birth.ts (the runner: subtree parsing, validateBundle law, one-transaction ceremony) — disclosed here, never committed, contains no credentials",
+  "lane_side": "pair-*.json / birth-*.json under the lane tmp (canonicals, drafts, oracle reports, birth results)"
+ },
+
+ "gates_now": {
+  "G-1": "CLOSED (62/62 Edexcel of record + CIE 68/78 leg)",
+  "G-2": "CLOSED 5/5",
+  "G-3": "CIE 0455 P2 corpus — pending the CIE drafts lane (detection-grade reviewRequired tranche)",
+  "G-4": "CLOSED THIS RECEIPT — 431 LEVELS schemes / 1,257 verbatim band rows born SUGGESTED, part-bound under ruling A",
+  "G-5": "NEXT — band validation (R4): validateMarkScheme / validateAllForPaper pre-mutation gates over the 431 SUGGESTED LEVELS schemes",
+  "G-6": "API deploy (CLI-only) — required before any live band_decision_v1 serve",
+  "G-7": "QWK eval + the 16 registry-row flips behind the D5-beta floors"
+ }
+}
