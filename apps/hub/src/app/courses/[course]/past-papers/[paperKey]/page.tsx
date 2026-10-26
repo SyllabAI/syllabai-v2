@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { boardOf, loadHubCourse } from "@/lib/courses";
-import { collectPastPapers, findPastPaper, paperEstTime } from "@/lib/past-papers";
+import { collectPastPapersTwoPlane, findPastPaper, paperEstTime } from "@/lib/past-papers";
 import {
   matchReconstructions,
   computeCoverage,
@@ -29,9 +29,12 @@ export default async function PastPaperPage({
   if (!hub) notFound();
 
   // official ADR-037 papers live on the officialPaperTopics plane — the
-  // player must resolve them too (IA decision: Past Papers is their only home)
+  // player must resolve them too (IA decision: Past Papers is their only
+  // home). Two-plane merge with official precedence: for paper keys the
+  // official plane covers, the SME copy is dropped — the raw concatenation
+  // rendered both planes' questions and every question appeared twice.
   const paper = findPastPaper(
-    collectPastPapers([...hub.officialPaperTopics, ...hub.questionTopics]),
+    collectPastPapersTwoPlane(hub.officialPaperTopics, hub.questionTopics),
     paperKey,
   );
   if (!paper) notFound();
