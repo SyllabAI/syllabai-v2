@@ -89,6 +89,11 @@ interface Props {
   noteTitle: string;
   noteHref: string;
   base: string;
+  /** R-2 deep links (resolved server-side, see the flow's call site): the
+   *  exam-questions set / flashcard deck anchored to this note's subtopic,
+   *  or the course-level page when no per-topic target resolves. */
+  examQuestionsHref: string;
+  flashcardsHref: string;
 }
 
 const STORAGE_PREFIX = "syllabai.guided-flow.v1.";
@@ -203,7 +208,15 @@ function glossaryFor(lesson: GuidedLessonImport, moduleOrdinal: number) {
   return [];
 }
 
-export function GuidedLessonFlow({ lesson, pkg, noteTitle, noteHref, base }: Props) {
+export function GuidedLessonFlow({
+  lesson,
+  pkg,
+  noteTitle,
+  noteHref,
+  base,
+  examQuestionsHref,
+  flashcardsHref,
+}: Props) {
   const lessonId = lesson.lesson.id;
   const store = useMemo(() => getFlowStore(lessonId), [lessonId]);
   const state = useSyncExternalStore(store.subscribe, store.get, () => SERVER_STATE);
@@ -329,6 +342,8 @@ export function GuidedLessonFlow({ lesson, pkg, noteTitle, noteHref, base }: Pro
         noteTitle={noteTitle}
         noteHref={noteHref}
         base={base}
+        examQuestionsHref={examQuestionsHref}
+        flashcardsHref={flashcardsHref}
         onReview={(mi) => store.set((s) => ({ ...s, moduleIndex: mi, stage: 0, finished: false }))}
         onReset={reset}
       />
@@ -990,6 +1005,8 @@ function FinishedView({
   noteTitle,
   noteHref,
   base,
+  examQuestionsHref,
+  flashcardsHref,
   onReview,
   onReset,
 }: {
@@ -1000,6 +1017,8 @@ function FinishedView({
   noteTitle: string;
   noteHref: string;
   base: string;
+  examQuestionsHref: string;
+  flashcardsHref: string;
   onReview: (mi: number) => void;
   onReset: () => void;
 }) {
@@ -1035,20 +1054,23 @@ function FinishedView({
           })}
         </ol>
         {/* R-2 lesson-end handoffs (SME parity, operator trace
-            1a179c6b53bff529): the set ends into the course's live practice
-            surfaces — exam questions and flashcards — course-level targets
-            that always exist (never a 404 handoff). Deep links per topic can
-            follow once a slug-existence seam lands upstream. */}
+            1a179c6b53bff529; per-topic deep links per operator trace
+            1a179e73fc75e881): the set ends into the course's live practice
+            surfaces. Hrefs resolve SERVER-SIDE from the hub.hrefs seam —
+            the exam-questions set anchored to this note's subtopic (first
+            in corpus order) and the subtopic's flashcard deck — with the
+            course-level pages as the always-live fallback (never a 404
+            handoff). */}
         <div className="space-y-1.5 border-t pt-4">
           <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Keep going
           </p>
           <div className="flex flex-wrap gap-2">
             <Button asChild variant="outline">
-              <a href={`${base}/exam-questions`}>Exam questions</a>
+              <a href={examQuestionsHref}>Exam questions</a>
             </Button>
             <Button asChild variant="outline">
-              <a href={`${base}/flashcards`}>Flashcards</a>
+              <a href={flashcardsHref}>Flashcards</a>
             </Button>
           </div>
         </div>
