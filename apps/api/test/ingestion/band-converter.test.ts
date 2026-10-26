@@ -36,21 +36,31 @@ function captureSql() {
     "insert into mark_bands": [],
     "insert into mark_points": [],
   };
+  // ruling A (trace 1a1776dff15bb991): part-granular grids bind the part —
+  // the part lookup resolves by the draft's printed labels (paren-less).
+  const PART_A_ID = "60000000-0000-4000-8000-00000000000a";
+  const PART_B_ID = "60000000-0000-4000-8000-00000000000b";
   const fn = (async (strings: TemplateStringsArray, ...params: unknown[]) => {
     const text = strings
       .join("?")
       .replace(/\s+/g, " ")
       .trim();
+    if (text.startsWith("select id from question_parts")) {
+      const label = params[1];
+      if (label === "a") return [{ id: PART_A_ID }];
+      if (label === "b") return [{ id: PART_B_ID }];
+      return [];
+    }
     for (const key of Object.keys(captured)) {
       if (text.includes(key)) {
         captured[key]!.push({ text, params });
         break;
       }
     }
-    // every SELECT resolves empty (fresh-ingest posture); inserts ride through
+    // every other SELECT resolves empty (fresh-ingest posture); inserts ride through
     return [];
   }) as unknown as SqlFn;
-  return { sql: fn, captured };
+  return { sql: fn, captured, PART_A_ID, PART_B_ID };
 }
 
 // ── fixtures ────────────────────────────────────────────────────────────────
@@ -218,29 +228,35 @@ const bandsOnlyDraft = (): PastPaperDraft => {
 
 /**
  * The REAL mixed-question shape (part a point-marked + part b levels-marked
- * in ONE question) — exactly what the kind guard refuses: the scheme (one
- * per question version) has no honest kind. The band-wave corpora must
- * split such questions (a receipt finding if the real 0455/4GE1/4BS1/9609
- * papers print them this way — never a silent guess).
+ * in ONE question) — the exact shape that motivated ruling A (trace
+ * 1a1776dff15bb991, receipt adr040-bandshape-fit-r0): the wave-1 printed
+ * tables are PART-granular (437/437 staged grids), so the kind guard moved
+ * to the printed grid's own ref and BOTH schemes birth — the point scheme
+ * for the version, a part-bound LEVELS scheme for the grid's part.
  */
 const mixedQuestionDraft = (): PastPaperDraft => toPastPaperDraft(qpDraft(), msDraft());
 
 describe("ADR-040 §5.3 store — LEVELS schemes birth SUGGESTED with verbatim bands", () => {
-  test("a bands-only question births scheme_kind='LEVELS' + verbatim mark_bands, no mark_points", async () => {
-    const { sql, captured } = captureSql();
+  test("a bands-only question births ONE part-bound LEVELS scheme + verbatim mark_bands, no mark_points (ruling A)", async () => {
+    const { sql, captured, PART_B_ID } = captureSql();
     const summary = await ingestPastPaperDraft(sql, bandsOnlyDraft(), null);
-    // ONE scheme (question 7 carries the bands via its 7-b ref)
+    // ONE scheme — the printed grid is its own binding unit (ref 7-b)
     expect(captured["insert into mark_schemes"]).toHaveLength(1);
     const schemeInsert = captured["insert into mark_schemes"]![0]!;
-    // the LEVELS discriminator rides the TEXT: the column list names
-    // scheme_kind and the values row carries the 'LEVELS' literal
+    // the LEVELS discriminator + the part binding ride the TEXT: the column
+    // list names scheme_kind AND question_part_id, the values row carries
+    // the 'LEVELS' literal and the bound part id
     expect(schemeInsert.text).toContain("scheme_kind");
     expect(schemeInsert.text).toContain("'LEVELS'");
+    expect(schemeInsert.text).toContain("question_part_id");
+    // params: [0] id, [1] version, [2] version_label(=ref), [3] source_doc,
+    // [4] method, [5] created_at, [6] guidance, [7] part id ('SUGGESTED'/'LEVELS'
+    // ride the TEXT as literals, not binds)
+    expect(schemeInsert.params[7]).toBe(PART_B_ID);
+    expect(schemeInsert.params[2]).toBe("7-b");
     // three verbatim band rows; descriptor/guidance ride untouched
     expect(captured["insert into mark_bands"]).toHaveLength(3);
     const first = captured["insert into mark_bands"]![0]!.params;
-    // params: [0] id, [1] scheme_id, [2] level_index, [3] marks_min, [4] marks_max,
-    // [5] descriptor_md, [6] guidance_md, [7] extraction_confidence, [8] created_at
     expect(first[2]).toBe(1);
     expect(first[3]).toBe(0);
     expect(first[4]).toBe(2);
@@ -255,12 +271,42 @@ describe("ADR-040 §5.3 store — LEVELS schemes birth SUGGESTED with verbatim b
     expect(summary.markBands).toBe(3);
   });
 
-  test("a question carrying BOTH kinds (point part + levels part, the real mixed shape) refuses loudly — ADR-040 §2.2", async () => {
+  test("the REAL mixed shape (7-a points + 7-b levels) births BOTH schemes under ruling A — per-kind, per-binding", async () => {
+    const { sql, captured, PART_B_ID } = captureSql();
+    const summary = await ingestPastPaperDraft(sql, mixedQuestionDraft(), null);
+    // TWO schemes: the version's point scheme (legacy column list) + the
+    // part-bound LEVELS scheme for the 7-b grid
+    expect(captured["insert into mark_schemes"]).toHaveLength(2);
+    const pointScheme = captured["insert into mark_schemes"]![0]!;
+    const levelsScheme = captured["insert into mark_schemes"]![1]!;
+    expect(pointScheme.text).not.toContain("scheme_kind");
+    expect(levelsScheme.text).toContain("'LEVELS'");
+    expect(levelsScheme.text).toContain("question_part_id");
+    expect(levelsScheme.params[7]).toBe(PART_B_ID);
+    // the point row rides the point scheme; the three bands ride the levels scheme
+    expect(captured["insert into mark_points"]).toHaveLength(1);
+    expect(captured["insert into mark_bands"]).toHaveLength(3);
+    expect(summary.markPoints).toBe(1);
+    expect(summary.markBands).toBe(3);
+  });
+
+  test("both kinds under the SAME printed ref refuses loudly — one binding, two kinds (ruling A kind guard)", async () => {
     const { sql, captured } = captureSql();
-    expect(ingestPastPaperDraft(sql, mixedQuestionDraft(), null)).rejects.toThrow(
-      "question 7 carries both mark points (1) and level bands (3) — the marking kind is per-scheme (ADR-040 §2.2); split the question or correct the draft",
+    const draft = mixedQuestionDraft();
+    draft.markScheme!.points[0]!.questionRef = "7-b"; // the point row lands ON the grid's ref
+    expect(ingestPastPaperDraft(sql, draft, null)).rejects.toThrow(
+      /mark scheme entry 7-b carries both mark points \(1\) and level bands \(3\) — the marking kind is per-scheme at the printed grid's granularity/,
     );
-    // the whole-draft transaction rolls back — no scheme rows captured
+    expect(captured["insert into mark_schemes"]).toHaveLength(0);
+  });
+
+  test("a question-granular grid cannot coexist with the version's point scheme (the unbound shape)", async () => {
+    const { sql, captured } = captureSql();
+    const draft = mixedQuestionDraft();
+    for (const b of draft.markScheme!.bands) b.questionRef = "7"; // question-level grid
+    expect(ingestPastPaperDraft(sql, draft, null)).rejects.toThrow(
+      /question 7 carries a question-level levels grid and 1 mark points — an unbound LEVELS scheme cannot coexist/,
+    );
     expect(captured["insert into mark_schemes"]).toHaveLength(0);
   });
 
@@ -290,12 +336,23 @@ describe("ADR-040 §5.3 store — LEVELS schemes birth SUGGESTED with verbatim b
     expect(summary.questions).toBe(1);
   });
 
-  test("a bands ref that matches no question rides through silently (the points posture mirrored)", async () => {
+  test("a bands ref that matches no question refuses loudly — printed band law never drops silently (ruling A)", async () => {
     const { sql, captured } = captureSql();
     const draft = bandsOnlyDraft();
     for (const b of draft.markScheme!.bands) b.questionRef = "99-b";
-    const summary = await ingestPastPaperDraft(sql, draft, null);
+    expect(ingestPastPaperDraft(sql, draft, null)).rejects.toThrow(
+      /band grids 99-b match no question in the paper draft/,
+    );
     expect(captured["insert into mark_bands"]).toHaveLength(0);
-    expect(summary.markBands).toBe(0);
+  });
+
+  test("a part-granular grid whose part is absent from the paper draft refuses — bands bind the part they mark, never a guess", async () => {
+    const { sql, captured } = captureSql();
+    const draft = bandsOnlyDraft();
+    for (const b of draft.markScheme!.bands) b.questionRef = "7-z"; // part z exists nowhere
+    expect(ingestPastPaperDraft(sql, draft, null)).rejects.toThrow(
+      /band grid 7-z targets part "z" but the paper draft carries no such part under question 7/,
+    );
+    expect(captured["insert into mark_schemes"]).toHaveLength(0);
   });
 });

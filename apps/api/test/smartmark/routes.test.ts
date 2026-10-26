@@ -42,7 +42,10 @@ const ATTEMPT_UPDATE = /update attempts set marking_state = \? , marks_awarded =
 const TOPICS = /select node_id from question_topics where question_id = \?/;
 const FLIP = /update attempts set evidence_emitted = true where id = \? and evidence_emitted = false/;
 const VERSION = /select id from question_versions where question_id = \? order by version desc/;
-const VALIDATED_SCHEME = /select id, validation_state, scheme_kind from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+const VALIDATED_SCHEME = /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+// ruling A (trace 1a1776dff15bb991): the shared tail's fresh attempt reads
+const ATTEMPT_TOTAL_READ = /select coalesce\(sum\(marks_awarded\), 0\) as total from answers where attempt_id = \?/;
+const PENDING_READ = /select 1 from answers where attempt_id = \? and marking_state = \? limit 1/;
 const NEWEST_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? order by created_at desc/;
 const POINTS = /select id, ref, ordering, text, marks, question_part_id from mark_points where mark_scheme_id = \? order by ordering/;
 const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? and metric = \? order by computed_at desc/;
@@ -101,6 +104,8 @@ function baseRoutes(): Route[] {
     { match: RESULT_LATEST, rows: [{ id: "bb000000-0000-4000-8000-000000000001", answer_id: ANSWER_A, model_id: "glm-4.6", marks_awarded: 2, confidence: 0.9, validation_passed: true, breakdown: [], failure_reason: null }] },
     { match: ATTEMPT_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_TOTAL_UPDATE, rows: [] },
+    { match: ATTEMPT_TOTAL_READ, rows: [{ total: 0 }] },
+    { match: PENDING_READ, rows: [] },
   ];
 }
 

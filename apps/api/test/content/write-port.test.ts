@@ -155,9 +155,15 @@ const auditRows = (): Route => ({
 });
 
 /** ADR-040 §5.3: the R4 gate's kind lookup (legacy rows read POINTS byte-identically). */
-const schemeKindById = (kind: string | null = "POINTS"): Route => ({
-  match: /select scheme_kind from mark_schemes where id/,
-  rows: [{ scheme_kind: kind }],
+const schemeKindById = (kind: string | null = "POINTS", partId: string | null = null): Route => ({
+  match: /select scheme_kind, question_part_id from mark_schemes where id/,
+  rows: [{ scheme_kind: kind, question_part_id: partId }],
+});
+
+/** ADR-040 §2.2 as amended (ruling A): the bound-part awarded-range read. */
+const boundPartMarks = (marks: number | null): Route => ({
+  match: /select marks from question_parts where id = \?\s*::uuid/,
+  rows: marks === null ? [] : [{ marks }],
 });
 
 /** ADR-040 §5.3: the R4 gate's band read (empty = the zero-band LEVELS scheme). */
@@ -490,6 +496,42 @@ describe("ContentReviewWriteService — ADR-040 §5.3 the R4 band-coverage gate"
     const svc = new ContentReviewWriteService({ sql: tx, clock });
     const out = await svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER);
     expect(out.validationState).toBe("VALIDATED");
+  });
+
+  test("ruling A: a part-bound LEVELS scheme tiles THAT part's marks, not the version sum", async () => {
+    // a 4-level 0-12 grid bound to a 12-mark part inside a 20-mark multi-part
+    // version — the wave-1 printed reality (437/437 part-granular grids):
+    // the bound-part read wins, the version part-sum never fires
+    const routes = [
+      schemeById("SUGGESTED"),
+      schemeKindById("LEVELS", "60000000-0000-4000-8000-000000000012"),
+      schemeBands(TILED_BANDS),
+      { match: /select marks from question_parts where id = \?\s*::uuid/, rows: [{ marks: 12 }] },
+      schemePoints(),
+      { match: /update mark_schemes set validation_state = 'VALIDATED' where id/, rows: [] },
+      auditRows(),
+    ];
+    const tx = txFakeSql(routes);
+    const svc = new ContentReviewWriteService({ sql: tx, clock });
+    const out = await svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER);
+    expect(out.validationState).toBe("VALIDATED");
+    // the version part-sum read must never fire for a bound scheme
+    expect(tx.calls.some((c) => /question_parts where question_version_id/.test(c.text))).toBe(false);
+  });
+
+  test("ruling A: a part-bound LEVELS scheme short of ITS part's marks → 409 (tiling stays hard)", async () => {
+    const routes = [
+      schemeById("SUGGESTED"),
+      schemeKindById("LEVELS", "60000000-0000-4000-8000-000000000012"),
+      schemeBands(TILED_BANDS),
+      { match: /select marks from question_parts where id = \?\s*::uuid/, rows: [{ marks: 15 }] },
+      schemePoints(),
+      auditRows(),
+    ];
+    const svc = new ContentReviewWriteService({ sql: txFakeSql(routes), clock });
+    expect(svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER)).rejects.toThrow(
+      "LEVELS scheme band coverage invalid — the top band ends at 12 but the awarded range reaches 15 — bands must tile the awarded range (ADR-040 §2.1)",
+    );
   });
 
   test("LEVELS scheme with zero bands → 409 (absence = gated, the NO_SCHEME_BANDS precondition)", async () => {

@@ -1004,14 +1004,17 @@ export class SmartMarkService {
     if (versionRows.length === 0) throw new NotFoundError("question version", attempt.question_id);
     const versionId = versionRows[0]!.id;
 
-    // newest VALIDATED scheme backs marking; none → honest per-part refusal.
-    // ADR-040: the scheme's kind rides along so the dispatch below can hold
-    // the point/LEVELS boundary.
+    // ADR-040 §2.2 as amended (operator ruling A, trace 1a1776dff15bb991,
+    // receipt adr040-bandshape-fit-r0): VALIDATED schemes resolve per PART —
+    // a part-bound LEVELS scheme backs its part, the version-level unbound
+    // scheme (the historical single scheme) backs the rest. Newest-first
+    // scan keeps the newest law within each binding slot. None at all → the
+    // honest per-part refusal (unchanged).
     const validatedRows = (await db`
-      select id, validation_state, scheme_kind from mark_schemes
+      select id, validation_state, scheme_kind, question_part_id from mark_schemes
       where question_version_id = ${versionId} and validation_state = ${"VALIDATED"}
       order by created_at desc
-    `) as unknown as Array<{ id: string; validation_state: string; scheme_kind: string | null }>;
+    `) as unknown as Array<{ id: string; validation_state: string; scheme_kind: string | null; question_part_id: string | null }>;
     if (validatedRows.length === 0) {
       const refusals = new Map<string, SmartMarkResultRow>();
       for (const answer of answers) {
@@ -1019,14 +1022,57 @@ export class SmartMarkService {
       }
       return refusals;
     }
-    const scheme = validatedRows[0]!;
-    if ((scheme.scheme_kind ?? "POINTS") === "LEVELS") {
-      // ADR-040 §5.4 — the band dispatch leg: the bound scheme's kind selects
-      // the marker path. ONE dispatch, no guessing; the band path rides the
-      // same eligibility line (markAttempt ran it above), and band parts
-      // still refuse honestly until their scheme is VALIDATED.
-      return await this.markAttemptBands(db, attempt, answers, versionId, scheme, tx);
+    const byPart = new Map<string, { id: string; validation_state: string; scheme_kind: string | null }>();
+    let unbound: { id: string; validation_state: string; scheme_kind: string | null } | null = null;
+    for (const r of validatedRows) {
+      const pid = r.question_part_id == null ? null : String(r.question_part_id);
+      if (pid === null) {
+        if (unbound === null) unbound = r;
+      } else if (!byPart.has(pid)) {
+        byPart.set(pid, r);
+      }
     }
+
+    // group the attempt's answers per resolved scheme; a part with no
+    // resolvable scheme refuses honestly (V34 — the newest scheme stamps it)
+    const groups = new Map<string, { scheme: { id: string; validation_state: string; scheme_kind: string | null }; answers: AnswerPartRow[] }>();
+    const results = new Map<string, SmartMarkResultRow>();
+    for (const answer of answers) {
+      const scheme = byPart.get(String(answer.question_part_id)) ?? unbound;
+      if (scheme === null) {
+        results.set(answer.id, await this.refuseUnvalidatedScheme(answer, versionId, tx));
+        continue;
+      }
+      const group = groups.get(scheme.id);
+      if (group) group.answers.push(answer);
+      else groups.set(scheme.id, { scheme, answers: [answer] });
+    }
+
+    // ONE dispatch per resolved scheme — no guessing; each kind rides the
+    // same eligibility line (markAttempt ran it above), and band parts
+    // still refuse honestly until their scheme is VALIDATED.
+    for (const group of groups.values()) {
+      if ((group.scheme.scheme_kind ?? "POINTS") === "LEVELS") {
+        const bandResults = await this.markAttemptBands(db, attempt, group.answers, versionId, group.scheme, tx);
+        for (const [k, v] of bandResults) results.set(k, v);
+      } else {
+        const pointResults = await this.markAttemptPoints(db, attempt, group.answers, group.scheme, tx);
+        for (const [k, v] of pointResults) results.set(k, v);
+      }
+    }
+    return results;
+  }
+
+  /** The point marking path for ONE resolved scheme's answer group (the
+   *  historical markAttempt point leg, unchanged byte-for-byte except that
+   *  `answers` may now be the part-bound group subset under ruling A). */
+  private async markAttemptPoints(
+    db: SqlFn,
+    attempt: AttemptLockRow,
+    answers: AnswerPartRow[],
+    scheme: { id: string; validation_state: string; scheme_kind: string | null },
+    tx?: SqlFn,
+  ): Promise<Map<string, SmartMarkResultRow>> {
     const pointRows = (await db`
       select id, ref, ordering, text, marks, question_part_id
       from mark_points where mark_scheme_id = ${scheme.id} order by ordering
@@ -1036,7 +1082,7 @@ export class SmartMarkService {
     const contexts: MarkingContext[] = answers.map((answer) => ({
       answer: {
         id: answer.id,
-        attemptId,
+        attemptId: attempt.id,
         questionPartId: answer.question_part_id,
         answerText: answer.answer_text,
         label: answer.label,
@@ -1194,24 +1240,28 @@ export class SmartMarkService {
     }
 
     if (anyAccepted) {
-      // one recompute after every part is applied
-      const total = answers
-        .map((a) => {
-          const r = results.get(a.id)!;
-          return r.validation_passed ? r.marks_awarded : a.marks_awarded ?? 0;
-        })
-        .filter((m) => m !== null)
-        .reduce((s, m) => s + (m ?? 0), 0);
+      // one recompute after every part is applied — read FRESH from the
+      // answers table: under the part-bound multi-scheme dispatch (ruling A,
+      // trace 1a1776dff15bb991) a pass covers a GROUP of the attempt's parts
+      // and earlier groups' awards are already persisted; the historical
+      // in-memory sum over the pass's rows would under-count them. For the
+      // single-group historical shape the fresh read is value-identical
+      // (accepted rows were just written; non-accepted rows unchanged).
+      const totalRows = (await db`
+        select coalesce(sum(marks_awarded), 0) as total from answers where attempt_id = ${attemptId}
+      `) as unknown as Array<{ total: string | number }>;
+      const total = Number(totalRows[0]!.total);
       await db`
         update attempts set marks_awarded = ${total} where id = ${attemptId}
       `;
       if (authoritative) {
         // evidence, exactly like the serial path's completing-part check:
-        // fires only when NO part is still PENDING
-        const stillPending = answers.some((a) => {
-          const r = results.get(a.id)!;
-          return !r.validation_passed && a.marking_state === "PENDING";
-        });
+        // fires only when NO part of the ATTEMPT is still PENDING (fresh
+        // read — the group pass may not cover every part under ruling A)
+        const pendingRows = (await db`
+          select 1 from answers where attempt_id = ${attemptId} and marking_state = ${"PENDING"} limit 1
+        `) as unknown as Array<Record<string, unknown>>;
+        const stillPending = pendingRows.length > 0;
         if (!stillPending) {
           // T-MIG-137a: the assembly is the shared assembler's (the frozen
           // publisher's own laws — EvidencePublisher.java:51-120). This also
