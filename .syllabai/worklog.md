@@ -21359,3 +21359,12 @@ Stage Summary:
 - skipped gate-b: #285 1c2dd54 (verify+hub failure), #296 bd2c0b1 (hub failure), #303 cce0230 (verify failure), #352 13bfea9 (no check-runs, ~67h static)
 - post-merge main 59562cd8: hub+verify GREEN (bounded re-check ~165s)
 - notes: mirror external reset hit #153 this run (local main -> 89962a5, restored from origin 5d59fac fetch-first, zero loss); receipt commit bookkeeping-only .syllabai/** 
+## T-SENECA-001 Task 45 — widen registry 35 -> 62 (CIE), honest absence intact (2026-10-26)
+
+- Operator-approved (trace 1a177b4ad96cf531): map the 27 defensible CIE hub courses to 22 spare W1 bundles (subject+board+level verified in the Task 44 read-only cross-reference); the remaining 32 unmapped courses keep honest absence.
+- Generator committed at scripts/seneca_widen_cie_r0.py — gated read-only W1 export (G0 DSN staged / G1 PK (id,course_slug) / G2 fleet 162,271/262 + per-slug exact / G3 PII fail-closed), bundles per schema seneca-bundle/1.0, images via the fe6c04d Task-40 manifest into public/seneca-images, registry + flags updated.
+- PII adjudication log (all false-positive classes, zero personal data): v1 12 = HDI indices / year ranges / population tables; v2 10 = recurring decimals + standard-form numerics; v3 5 = our own /seneca-images 16-hex mirror filenames + 1 = name@example.com in an ICT hyperlinks lesson (RFC 2606 reserved domain).
+- Totals: 15,554 resources exported (10,384 sections + 4,301 examQuestions + 871 quizzes... per-bundle detail in receipt), 3,198 image refs rewritten to the mirror, 509 dead upstream refs nulled per Task-43 law, 1,885 mirror files needed / 1,178 newly copied / 0 blob-missing.
+- Delta vs the 18 Task-43 bundles: generationScript is now KEPT on examQuestions (browser + instantiate support it; Task 43 dropped it, degrading templated titles to "___").
+- Validation: prebuild validators PASS; next build GREEN; prerender manifest = 62 seneca routes; standalone smoke: 26/26 new /seneca routes 200, sidebar badge verified (history 1,483), bundle 200, mirror image 200 image/webp, pilot igcse-chemistry-19 unchanged (1,716), unmapped courses show no Seneca entry (sidebar count 0; /seneca serves the shared not-found page — same 200-status behavior as production pre-Task-45, pre-existing, not a regression).
+- Known content caveats (per Task 44 report to operator): supplement/core bundles are partial spec coverage; geography/business bundles are 2027-spec variants; maths-extended carries only 2 exam questions.
