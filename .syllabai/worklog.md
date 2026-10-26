@@ -21350,3 +21350,12 @@ Stage Summary:
 - Post-merge main @ a088bda: verify✓ hub✓ (bounded re-check ~105s).
 - Not merged, gate-b fail: #285 verify✗hub✗ · #296 hub✗ · #303 verify✗ · #352 zero check-runs (~62.5h stall).
 - Notes: mirror reset hit #153 (74th consecutive, 89962a5 signature) — recovered, zero loss. Desk made no Neon/prod writes.
+
+---
+
+## R0-AUTO receipt — sweep 2026-10-26 18:30 +08 (Job 438940)
+
+- Task ID: 3 | PR #391 (T-UGM-HUB-CONSUME-16 UGM lane 16 Differential equations) | head 9d78b7d -> merge sha 59562cd8 | gates: head hub+verify GREEN pre-merge; 4 files all apps/hub/** (ugm-resources.json +210/-12, import_ugm.py, ugm.bundle.test.ts, ugm.ts); no reviews/comments; mergeable clean; zero java/scope violations
+- skipped gate-b: #285 1c2dd54 (verify+hub failure), #296 bd2c0b1 (hub failure), #303 cce0230 (verify failure), #352 13bfea9 (no check-runs, ~67h static)
+- post-merge main 59562cd8: hub+verify GREEN (bounded re-check ~165s)
+- notes: mirror external reset hit #153 this run (local main -> 89962a5, restored from origin 5d59fac fetch-first, zero loss); receipt commit bookkeeping-only .syllabai/** 
