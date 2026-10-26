@@ -1,0 +1,24 @@
+{
+  "schema": "syllabai.serve-receipt/0.1",
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-006 — the plane lands; the card closes (trace 1a178b5404843941)",
+  "generated_utc": "2026-10-26T17:30:00Z",
+  "landed": {
+    "apps/hub/content/igcse-maths-b-16/official-papers.json": "NEW — the served official plane (66 sets, sha256 3a83e99c…, 3,752,631 B, single-line compact law)",
+    "apps/hub/content/igcse-maths-b-16/manifest.json": "officialSpine.resourcesSha -> a7a34cd97cdff29ee698a86b171c7148bc5e29ed + the officialSpine.handover note; importSource (incl. the mixed-vintage disclosure and the attachment-map pin 2e17aab0 mention) byte-untouched (proven by HEAD roundtrip compare); single-line compact law preserved",
+    "questions.json": "UNTOUCHED — the SME passthrough of record (G-E4 byte-identical; the wave-25 hygiene-v2 mirror state)"
+  },
+  "h2_final": {
+    "coverage": {"only_official": ["2019-01/02R"], "only_sme": [], "common": 65},
+    "regression_class": "CLOSED — the 7 sets-where-official-served-worse are repaired at source (the resources F91 wave): 2019-06/02 (106 U+FFFD) now serves the printed MS; the C1 sets serve ∠/∩/∪/∈/∅/⊂/∉/° as printed; the custom-encoding eaten-constant class is likewise closed. G-S4 census 0/0/0/0/0 on the served plane. The learner surface improves on every set and discloses nothing inferior.",
+    "planes": "the two planes coexist exactly as chemistry: questions.json (SME practice, 65 sets) vs official-papers.json (official, 66 sets); the past-papers rail takes the official plane per the handover note"
+  },
+  "carry_forward_open_items": [
+    "the resources-side LEDGER SME-retirement record (ledger-desk-proposal.md) — the desk act",
+    "wiring syllabai-parser table.v1.json into the OEQ converter as intake law (the T-MIG-141 recon recommendation — strengthened by the C1-vs-PUA glyph gap this wave found)",
+    "the DB-plane ingest decision for official-paper questions",
+    "the next all-66 maths re-run folds the F87 CONTINUES strip into the corpus (3 parts / 3 papers queued; the hub serve layer already strips the class)",
+    "the 2023-2026 generation slot class (~900 lines / ~25 files) follow-up census filed by the resources wave"
+  ],
+  "discipline": "fetch-first, race-guarded push, no force, PAT env-only throughout (never written to disk); zero DB writes; zero app-code changes (apps/hub/src untouched — the optional-plane branch already wired); no frontend deploy (the hub renders the committed bundle; Vercel deploy is the product pipeline)"
+}

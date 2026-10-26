@@ -1,0 +1,25 @@
+{
+  "schema": "syllabai.serve-receipt/0.1",
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-005 — the exporter of record re-run at the new pin + the full gate suite (trace 1a178b5404843941)",
+  "generated_utc": "2026-10-26T17:20:00Z",
+  "exporter": "official_examq_export_hub_mb.py (the run-003 archived port, byte-unmodified — sha a0cd0bf1... in the receipts) executed from the resources checkout @ a7a34cd9 with --source-cut main@a7a34cd97cdff29ee698a86b171c7148bc5e29ed",
+  "exporter_gates": {
+    "G-E5_pin_proof": "66/66 consumed topics content-identical to the declared data cut main@a7a34cd97cdff29ee698a86b171c7148bc5e29ed (modulo the converter header)",
+    "G-E3_census": "66 slices match the frozen corpus constants; grand 66 sets / 20 series / 1281q / 2443p / 6600m (66 x printed 100 = 6600)",
+    "G-E2_mark_laws": "part-sum == totalMarks, markPoints sum-law, spec-code shapes: hold on all official sets",
+    "G-E1_reproducibility": "fresh first-run census emitted at the new pin is BYTE-IDENTICAL to the run-003 archived first-run-census.json (sha256 57bcd5662f8243c0de11502e457f0d16b9bd79fc909964dab3bd6938347cc3d0 both sides) — the id plane is bit-stable across the hygiene wave; pass 2: 2443 delta part ids match the disclosure exactly (66 new official sets, 0 gone, 0 changed)",
+    "G-E1b_identity": "set-level identity fields ok (0 common official sets — first-run)",
+    "G-E4_sme_passthrough": "questions.json byte-identical passthrough (2,845,915 bytes, 65 SME sets, single-line compact law)"
+  },
+  "staged_plane": {
+    "official_papers_json": {"bytes": 3752631, "sha256_prefix": "3a83e99cec46db01", "note": "differs from the run-003 held plane (6a54b03c…, 3,752,711 B) exactly by the F91 repair class (−80 bytes net)"},
+    "G-S1": "PASS — census EXACT 66/20/1,281/2,443/6,600 vs the emission of record at the new pin; per-set dirs mirror 66/66",
+    "G-S2": "PASS — exporter field-trace to the corpus of record (G-E5 pin-proof) + the id plane byte-stable; the content delta vs the run-003 staged plane = exactly the disclosed repair class (the G-S4 classes), zero non-class residuals (the resources-side leaf-diff census of record)",
+    "G-S3": "PASS — 194/194 unique figure-crop URLs anonymous-200 (one transient 503 on asset_9_b_diagram.png re-probed 200; 263 crop-required honest stubs carried as honest stubs)",
+    "G-S4": "PASS — BORN-CLEAN HOLDS AT THE NEW PIN: PUA=0, C1=0, U+FFFD=0, ү=0, U+FFFC=0 across every served problemMd/solutionMd/markPoint string of the 66-set staged plane; raw-$ census unchanged from the corpus of record ($ chars 780 at BOTH pins 3000e439 and a7a34cd9 — zero class change; all raw-$ = guarded currency prose per the hub law)",
+    "G-S5": "PASS — build:hub exit 0 (prebuild trio green: CORPUS GATE PASSED / flashcard sync OK / CIE VALIDATOR PASSED); zod: all 66 staged sets parse against the hub's ExamQuestionTopic schema (sets 66 / questions 1,281 / parts 2,443 / marks 6,600); question-player classification parity: questionType 'structured' on all 2,443 parts, ZERO MCQ parts (the F64 probe vacuous for maths-B, disclosed); marks totals == printed per set",
+    "G-S6": "PASS — the handover rule executed: the hub manifest carries the officialSpine pin (resourcesSha a7a34cd9…) + the handover note (the SME plane retires from past-paper matching, remains as practice content, no SME row deleted or edited, coverage ADD 2019-01/02R); the resources-side LEDGER retirement record rides the desk proposal of record (.syllabai/receipts/T-OEQ-MATHSB-SERVE-1/ledger-desk-proposal.md — desk act, not lane-landed)"
+  },
+  "classification": {"structured": 2443, "mcq": 0}
+}
