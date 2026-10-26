@@ -139,6 +139,43 @@ task:
     syllabai-experimental harvest corpus; optional future re-import to proper
     subject courses). Receipts: run-010-offsubject-purge.json,
     run-010-receipt-addendum-classifier-strata.json.
+    REBUILD-ERA SWEEP (run-011, 2026-10-26, operator trace 1a1781ee14e26d7d "a
+    family sweep on the 262-slug W1 rebuild"): after the Task-41 warehouse
+    rebuild (262 bundle slugs / 162,271 rows re-derived from the r2 corpus —
+    sections via contentUrl, examQ via courseIds[], quizzes via subject+level
+    bucket inference) the run-009 audit no longer described the fleet.
+    Read-only re-sweep: gates exact (162,271 / 262 / kind vocab {courseSection
+    54,933, examQuestion 74,978, quiz 32,360}, 0 NULLs, slug hygiene clean;
+    topic signals examQuestion-only, 71,893/74,978). Raw Tier-1 2,165 rows /
+    95 groups / 54 slugs settled after classifier correction into: VARIANT
+    1,351 (English Lit abbreviation false positive — run-009 lesson
+    re-applied), SPEC-VARIANT 164 (Religious Studies A families inside
+    religious-studies-b slugs — same subject, KEPT; operator may prune for
+    spec accuracy later), TRUE OFF-SUBJECT 650 rows / 76 groups / 39 slugs.
+    Headline: the 550-row "Chemistry: Cambridge International GCSE Supplement"
+    block inside biology-edexcel-igcse with 550/550 id overlap to the run-010
+    purge list — provenance closed: the cross-attachment lives in Seneca's own
+    source courseIds[] and re-entered with the rebuild. Cross-slug sharing
+    otherwise healthy (22,073 multi-slug ids; 16 subject-conflict ids / 12
+    disjoint-host pairs). ZERO writes. Receipts: run-011-family-sweep-262.json,
+    run-011-offsubject-decision-matrix.md, run-011-offsubject-ids.json.
+    REBUILD-ERA PURGE (run-012, 2026-10-26, operator approval trace
+    1a178336c0685d05 "Approve run-012"): the run-011 OFF-SUBJECT manifest (650
+    (course_slug, id) pairs / 76 groups / 39 slugs / 574 distinct ids, all
+    examQuestion) executed as a gated single-transaction pair-scoped purge:
+    G0-G3 preflight (PK; baselines 162,271/262/kind-vocab exact; per-group
+    family-prefix AND id-set cross-check all 76 green; emptied-slug
+    pre-computation = none; survivor census pre 767 rows / 574 ids) -> 76
+    pair-scoped DELETEs, rowcounts exact, total 650 -> in-tx post (fleet
+    161,621 / 262 / kinds 54,933/74,328/32,360 / family residual 0) -> COMMIT;
+    fresh-session post-parity GREEN (controls incl. the kept RS-B spec-variant
+    bundle unchanged; pg_stat n_tup_del = 650 exactly, zero collateral).
+    SURVIVOR REALITY: 22/574 distinct resources still serve 117 rows in their
+    subject-correct homes; 552 existed solely under misfiled pairings and are
+    no longer served anywhere (content preserved in the r2 harvest corpus;
+    optional future re-import under a mapping-side subject guard — family
+    prefix must belong to the target bundle's subject — before any re-import).
+    Receipt: run-012-offsubject-purge.json.
 base:
   repo: "syllabai-v2 @ 6bedab6 (origin/main at claim)"
 basis: >
