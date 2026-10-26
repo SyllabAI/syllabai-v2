@@ -1,0 +1,172 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_vXPcH3vS8wv7BFkK",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "da34daf2305f86bb852c24146aa7e28819ecc6bf597734675d40ad531bf69d56",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_vXPcH3vS8wv7BFkK",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Chemical Formulae, Equations, Calculations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-5-calculate-percentage-yield",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.30",
+        "text": "calculate percentage yield"
+      }
+    ],
+    "primer": {
+      "text": "The earlier notes in this subtopic showed how to turn a balanced equation and a starting mass into the mass of product a reaction could theoretically deliver. This note asks how much of that promised product a real experiment actually delivers, names the reasons real reactions fall short, and gives you the comparison sum chemists use to score the difference.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_vXPcH3vS8wv7BFkK::L1",
+        "title": "Actual and Theoretical Yield",
+        "sourceHeadings": [
+          "Calculate Percentage Yield",
+          "Actual and theoretical yield"
+        ],
+        "specRefs": [
+          "4CH1-1.30"
+        ],
+        "opening": "The yield of a reaction is the amount of product you actually obtain. In practice no chemical process ever reaches a complete conversion, because some reactant stays stuck to equipment, some products are lost while being cleaned up, and some reactions run backwards. This lesson names each of those losses and separates what was measured from what was promised.",
+        "keyPoints": [
+          "Yield describes the amount of product obtained from a reaction.",
+          "Real reactions never deliver the full predicted amount, for several distinct reasons.",
+          "Some reactants stay behind in the equipment and some product is lost during separation, purification and transfer between containers.",
+          "In reversible reactions the products keep turning back into reactants, so a high yield is never possible.",
+          "Side reactions happen when something extra reacts, such as a gas from the air or an impurity mixed into a reactant."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The actual yield is what the experiment records; the theoretical yield is what perfect conditions would give, worked out from the balanced equation and the reacting masses. Percentage yield puts the two side by side.",
+            "analogy": "Think of a recipe that promises twelve cupcakes: what actually reaches the plate is the actual yield, and the promised dozen is the theoretical yield.",
+            "examPointer": "Only the actual and percentage yields can be measured in the lab; the theoretical yield always comes from arithmetic on the balanced equation."
+          },
+          "medium": {
+            "restatement": "Every loss has a name: material wedged in apparatus, reversible products undoing themselves, side reactions eating reactants, and goods spilled while being filtered, distilled or poured. Each one drags the actual yield below the theoretical figure.",
+            "analogy": "It is like moving house: some belongings never leave the old cupboard, some get damaged on the way, and some you simply drop on the pavement - what arrives is always less than what you packed.",
+            "examPointer": "If a question lists possible reasons for a low yield, match each reason to its loss point in the process rather than quoting the list blindly."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vXPcH3vS8wv7BFkK::L1::Q1",
+          "rn_vXPcH3vS8wv7BFkK::L1::Q2",
+          "rn_vXPcH3vS8wv7BFkK::L1::Q3",
+          "rn_vXPcH3vS8wv7BFkK::L1::Q4",
+          "rn_vXPcH3vS8wv7BFkK::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_vXPcH3vS8wv7BFkK::L2",
+        "title": "Calculating Percentage Yield",
+        "sourceHeadings": [
+          "Calculating percentage yield"
+        ],
+        "specRefs": [
+          "4CH1-1.30"
+        ],
+        "opening": "Companies compare different routes to the same product, and each route - one reaction pathway - is judged partly on the yield it delivers. The comparison sum is simple: divide the actual yield by the theoretical yield and multiply by one hundred. This lesson runs that sum, then turns it around to catch the classic inversion error.",
+        "keyPoints": [
+          "Percentage yield measures how successful a chemical process is.",
+          "Divide the actual yield by the theoretical yield, then multiply by one hundred.",
+          "Each method of making a compound is a reaction pathway, built from a sequence of reactions.",
+          "A yield above one hundred percent signals an error, usually dividing the theoretical yield by the actual yield.",
+          "Yield figures for rival pathways are weighed up before a manufacturing route is chosen."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Take the mass you actually made, divide it by the mass the equation promised, and scale by one hundred. The answer says what fraction of the promise was kept.",
+            "analogy": "It is a scoreboard for chemistry: the theoretical yield is the target score, the actual yield is the final whistle score, and the percentage is how close you came.",
+            "examPointer": "Memorise the equation - examiners expect it unprompted - and sanity-check the answer: any result over one hundred percent means the two numbers were swapped."
+          },
+          "medium": {
+            "restatement": "The sum only makes sense when both yields use the same substance and the same units: actual over theoretical, times one hundred. Reversing the division silently inflates every answer above one hundred, which is the tell.",
+            "analogy": "Compare it to a fuel gauge: put the smaller true amount on top and the reading stays under full; flip it and the gauge absurdly reads over one hundred percent full.",
+            "examPointer": "Pathway questions often hide the decision: state each route's percentage yield, then name the route with the higher figure as the better manufacturing choice."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vXPcH3vS8wv7BFkK::L2::Q1",
+          "rn_vXPcH3vS8wv7BFkK::L2::Q2",
+          "rn_vXPcH3vS8wv7BFkK::L2::Q3",
+          "rn_vXPcH3vS8wv7BFkK::L2::Q4",
+          "rn_vXPcH3vS8wv7BFkK::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "yield",
+          "definition": "The amount of product obtained from a reaction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "actual yield",
+          "definition": "The recorded amount of product a real experiment delivers.",
+          "firstLesson": 1
+        },
+        {
+          "term": "theoretical yield",
+          "definition": "The amount perfect practical and chemical conditions would deliver, calculated from the balanced equation and the reacting masses.",
+          "firstLesson": 1
+        },
+        {
+          "term": "percentage yield",
+          "definition": "The actual yield divided by the theoretical yield, multiplied by one hundred.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reversible reaction",
+          "definition": "A reaction whose products continually turn back into reactants, capping the achievable yield.",
+          "firstLesson": 1
+        },
+        {
+          "term": "side reaction",
+          "definition": "An unwanted reaction in which a substance combines with a gas in the air or an impurity, consuming material.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reaction pathway",
+          "definition": "One possible route, made of a sequence of reactions, for manufacturing a required product.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Copper(II) sulfate may be prepared by reacting dilute sulfuric acid with copper(II) oxide. A student prepared 1.6 g of dry copper(II) sulfate crystals. Calculate the percentage yield if the theoretical yield is 2.0 g.",
+        "steps": [
+          "Actual yield of copper(II) sulfate: 1.6 g.",
+          "Theoretical yield: 2.0 g.",
+          "Percentage yield: 1.6 / 2.0 x 100 = 80."
+        ],
+        "finalAnswer": "The percentage yield of copper(II) sulfate is 80 percent."
+      }
+    }
+  }
+}

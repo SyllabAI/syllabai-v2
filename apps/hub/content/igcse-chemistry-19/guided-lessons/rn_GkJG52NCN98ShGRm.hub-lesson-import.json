@@ -1,0 +1,157 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_GkJG52NCN98ShGRm",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "abeb1aac86bde0bf418ca510b538beddd76d62920efbfedf3bda9596cbf0a69a",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_GkJG52NCN98ShGRm",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Covalent Bonding",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-7-covalent-bonding/1-7-4-giant-covalent-structures",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.49",
+        "text": "explain why substances with giant covalent structures are solids with high melting and boiling points"
+      },
+      {
+        "code": "4CH1-1.50",
+        "text": "explain how the structures of diamond, graphite and C60 fullerene influence their physical properties, including electrical conductivity and hardness"
+      }
+    ],
+    "primer": {
+      "text": "From the earlier Covalent Bonding notes you know that shared electron pairs make strong covalent bonds. This note scales that idea up: what happens when covalent bonding runs through an entire solid, why the melting points then soar, and how two allotropes of carbon, diamond and graphite, turn the same bonding into opposite properties.",
+      "prerequisiteSubtopic": "Covalent Bonding"
+    },
+    "modules": [
+      {
+        "id": "rn_GkJG52NCN98ShGRm::L1",
+        "title": "Giant covalent structures",
+        "sourceHeadings": [
+          "Giant covalent structures"
+        ],
+        "specRefs": [
+          "4CH1-1.49"
+        ],
+        "opening": "A giant covalent structure repeats covalent bonds through a whole solid: huge numbers of non-metal atoms are bonded to other non-metal atoms in a fixed, repeating arrangement, sometimes called a giant lattice. Diamond and graphite are the standard examples. Melting such a solid means breaking into that network of strong covalent bonds, so the melting points are very high.",
+        "keyPoints": [
+          "Substances with giant covalent structures are solids that melt at high temperatures, built from huge numbers of bonded non-metal atoms.",
+          "The atoms are joined by strong covalent bonds throughout the whole structure.",
+          "The structures can also be called giant lattices, with a fixed ratio of atoms overall.",
+          "Diamond and graphite are the two standard examples of giant covalent structures.",
+          "High melting points follow because the strong covalent bonds need lots of energy to overcome."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Every atom in the solid is bonded to its neighbours by strong covalent bonds, and the network stretches through the whole sample. Melting it means attacking all of those bonds at once, so enormous energy is needed and the solid stays solid until a very high temperature.",
+            "analogy": "Compare a single stitched patch with a whole sewn sheet: one thread is easy to snap, but pulling apart a sheet stitched edge to edge means fighting every seam.",
+            "examPointer": "The explanation of record has three parts: giant covalent structure, many strong covalent bonds, and lots of energy needed to break them; include all three."
+          },
+          "medium": {
+            "restatement": "The structural fact is continuity: covalent bonds do not stop at small molecules but extend across the entire lattice in a fixed atomic ratio. Because melting disrupts the bonded network itself rather than a force between separate particles, the energy demand is enormous, and the substances remain solids with high melting and boiling points.",
+            "analogy": "Picture a bridge whose every beam is welded to every neighbour: no single weld can fail without load transferring across the whole frame, so dismantling it is a project, not a tug.",
+            "examPointer": "Remember the alias macromolecule as another accepted name for a giant covalent structure, and use the fixed-ratio wording if the question probes the composition."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_GkJG52NCN98ShGRm::L1::Q1",
+          "rn_GkJG52NCN98ShGRm::L1::Q2",
+          "rn_GkJG52NCN98ShGRm::L1::Q3",
+          "rn_GkJG52NCN98ShGRm::L1::Q4",
+          "rn_GkJG52NCN98ShGRm::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_GkJG52NCN98ShGRm::L2",
+        "title": "Diamond & graphite",
+        "sourceHeadings": [
+          "Diamond and graphite"
+        ],
+        "specRefs": [
+          "4CH1-1.50"
+        ],
+        "opening": "Diamond and graphite are allotropes: both contain only carbon atoms, yet their different bonding arrangements make them physically completely different. In diamond each carbon bonds to four others in a rigid tetrahedral network, giving extreme hardness. In graphite each carbon bonds to only three, building layers of hexagons whose sliding planes and free electrons explain its softness and its conductivity.",
+        "keyPoints": [
+          "Diamond and graphite are allotropes: the same carbon atoms arranged in different bonding patterns.",
+          "Each carbon in diamond bonds to four others, forming a tetrahedral arrangement with very strong bonds.",
+          "Diamond is very hard, and its hardness makes it useful for cutting tools.",
+          "Each carbon in graphite bonds to three others, forming layers of hexagons with one free electron per atom.",
+          "Graphite is soft and slippery because its layers slide, and it conducts because its delocalised electrons move."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Same element, different arrangement. Diamond locks every carbon to four neighbours, so nothing can shift and the crystal is hard. Graphite lets each carbon hold just three bonds, leaving sheets that slide and one electron per atom free to move and carry current.",
+            "analogy": "Think of a four-legged stool welded at every joint versus a stack of paper sheets: the stool cannot deform, while the sheets slide over one another even though the paper itself is strong.",
+            "examPointer": "Link every property to a structural sentence: four bonds for hardness and high melting point, three bonds with layers and delocalised electrons for slipperiness and conduction."
+          },
+          "medium": {
+            "restatement": "The property contrast traces to bond counts: four covalent bonds per atom make diamond a continuous rigid tetrahedron with no free electrons and great hardness, while three bonds per atom leave graphite with planar hexagonal layers, weak inter-layer forces and one delocalised electron per carbon that conducts along the planes.",
+            "analogy": "Picture a scaffold of welded joints against a ream of bonded paper: one is rigid in every direction, the other is strong in the sheet but slides sheet over sheet, with loose threads running along each sheet.",
+            "examPointer": "Hard and strong are different words of record here: diamond is hard but brittle, so avoid writing that hardness and strength are the same property."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_GkJG52NCN98ShGRm::L2::Q1",
+          "rn_GkJG52NCN98ShGRm::L2::Q2",
+          "rn_GkJG52NCN98ShGRm::L2::Q3",
+          "rn_GkJG52NCN98ShGRm::L2::Q4",
+          "rn_GkJG52NCN98ShGRm::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "allotrope",
+          "definition": "One of two or more forms of the same element, differing in how the atoms are bonded or arranged.",
+          "firstLesson": 2
+        },
+        {
+          "term": "macromolecule",
+          "definition": "Another accepted name for a giant covalent structure.",
+          "firstLesson": 1
+        },
+        {
+          "term": "tetrahedral",
+          "definition": "Describing an arrangement in which each atom bonds towards four corners of a tetrahedron, as in diamond.",
+          "firstLesson": 2
+        },
+        {
+          "term": "delocalised electron",
+          "definition": "An electron not tied to one bond or atom, free to move through the structure and carry charge.",
+          "firstLesson": 2
+        },
+        {
+          "term": "giant lattice",
+          "definition": "A structure whose bonding pattern repeats throughout the whole solid rather than stopping at small molecules.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

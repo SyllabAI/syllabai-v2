@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_yj4y972FxCWnDnSg",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "9e009e830e0e26206efc0c7fd2f6263517272ac5effdbefb5b91585fe45ed5fc",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_yj4y972FxCWnDnSg",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L1::Q1",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L1",
+      "stem": "Why is the crucible lid lifted frequently during heating?",
+      "misconceptionClass": "procedure-reasoning error",
+      "options": [
+        {
+          "key": "A",
+          "text": "To let enough air in for the magnesium to fully oxidise while keeping oxide smoke inside",
+          "correct": true,
+          "explanation": "The magnesium needs oxygen from the air, but every wisp of escaping product would steal mass from the result.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To let the magnesium oxide smoke escape",
+          "correct": false,
+          "explanation": "Escaping smoke is product leaving the balance; the lid lift admits air without losing oxide.",
+          "misconception": "product loss treated as desirable"
+        },
+        {
+          "key": "C",
+          "text": "To cool the crucible down between flames",
+          "correct": false,
+          "explanation": "The magnesium must stay hot; the lid lift is about air and smoke, not cooling.",
+          "misconception": "temperature-control purpose invented"
+        },
+        {
+          "key": "D",
+          "text": "To check the magnesium's colour",
+          "correct": false,
+          "explanation": "Colour is not the reason; the lift manages the air supply while containing the product.",
+          "misconception": "observation confused with purpose"
+        }
+      ]
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L1::Q2",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L1",
+      "stem": "What signals that the reaction is complete?",
+      "misconceptionClass": "endpoint judgement error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The crucible's mass stays constant on further heating",
+          "correct": true,
+          "explanation": "A constant mass means no more oxygen is being gained; the reaction has gone to completion.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The magnesium stops glowing",
+          "correct": false,
+          "explanation": "Glow is temperature, not extent of reaction; the balance, not the eye, gives the endpoint.",
+          "misconception": "light emission treated as endpoint"
+        },
+        {
+          "key": "C",
+          "text": "The lid becomes impossible to lift",
+          "correct": false,
+          "explanation": "Nothing seizes up; completion is defined by an unchanging mass.",
+          "misconception": "physical change imagined"
+        },
+        {
+          "key": "D",
+          "text": "The oxide turns back to shiny metal",
+          "correct": false,
+          "explanation": "That would be reduction running backwards; combustion ends with all metal turned to oxide.",
+          "misconception": "change direction reversed"
+        }
+      ]
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L1::Q3",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L1",
+      "stem": "The oxide collected weighs 0.40 g and the magnesium used weighed 0.24 g. What mass of oxygen combined with the metal?",
+      "misconceptionClass": "mass-bookkeeping error",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.16 g",
+          "correct": true,
+          "explanation": "The oxygen's mass is the oxide's mass minus the metal's mass: 0.40 - 0.24 = 0.16.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.40 g",
+          "correct": false,
+          "explanation": "0.40 g is the whole oxide, metal included; the oxygen is only the gain over the metal.",
+          "misconception": "oxide mass mistaken for oxygen mass"
+        },
+        {
+          "key": "C",
+          "text": "0.24 g",
+          "correct": false,
+          "explanation": "0.24 g is the magnesium itself; the oxygen is the difference between the two weighings.",
+          "misconception": "metal mass reused"
+        },
+        {
+          "key": "D",
+          "text": "0.64 g",
+          "correct": false,
+          "explanation": "Adding the two masses double-counts the metal; subtraction, not addition, isolates the oxygen.",
+          "misconception": "masses added"
+        }
+      ]
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L1::Q4",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L1",
+      "stem": "Using 0.24 g of magnesium (Ar 24) and 0.16 g of oxygen (Ar 16), what is the empirical formula?",
+      "misconceptionClass": "mole-ratio error",
+      "options": [
+        {
+          "key": "A",
+          "text": "MgO, since both give 0.01 mol",
+          "correct": true,
+          "explanation": "0.24 / 24 = 0.01 and 0.16 / 16 = 0.01, a one-to-one ratio.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "MgO2, from dividing 0.24 by 0.16",
+          "correct": false,
+          "explanation": "0.24 / 0.16 is 1.5, but that compares grams; only moles set the formula.",
+          "misconception": "mass ratio used as mole ratio"
+        },
+        {
+          "key": "C",
+          "text": "Mg2O, from inverting the mole division",
+          "correct": false,
+          "explanation": "Swapping the divisions swaps which element appears richer; equal moles mean equal counts.",
+          "misconception": "division direction flipped"
+        },
+        {
+          "key": "D",
+          "text": "Mg24O16, from copying the table numbers",
+          "correct": false,
+          "explanation": "The relative atomic masses divide the masses; they are never the values that become subscripts.",
+          "misconception": "relative atomic masses copied into the formula"
+        }
+      ]
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L1::Q5",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L1",
+      "stem": "Which formula shape does the ratio step produce for a metal oxide?",
+      "misconceptionClass": "formula-form error",
+      "options": [
+        {
+          "key": "A",
+          "text": "MxOy, with x and y the simplified mole numbers",
+          "correct": true,
+          "explanation": "The metal's count and the oxygen's count come straight from the simplified ratio, then a known example such as MgO or CuO checks the shape.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "MO2 whatever the ratio shows",
+          "correct": false,
+          "explanation": "The subscripts come from the data, not from a fixed template; oxygen's count is not always two.",
+          "misconception": "template imposed on data"
+        },
+        {
+          "key": "C",
+          "text": "M2O3, the commonest oxide shape",
+          "correct": false,
+          "explanation": "Frequency elsewhere is irrelevant here; only this experiment's moles count.",
+          "misconception": "popularity substituted for evidence"
+        },
+        {
+          "key": "D",
+          "text": "MO only, since oxides are simple",
+          "correct": false,
+          "explanation": "Many oxides are not MO; the ratio decides, not hope.",
+          "misconception": "simplification assumed"
+        }
+      ]
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L2::Q1",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L2",
+      "stem": "What is the role of the methane in this practical?",
+      "misconceptionClass": "reagent-role error",
+      "options": [
+        {
+          "key": "A",
+          "text": "It removes the oxygen from the copper oxide, reducing it to copper",
+          "correct": true,
+          "explanation": "Reduction is oxygen removal; methane carries the oxide's oxygen away as the metal is left behind.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It burns the copper to make copper oxide",
+          "correct": false,
+          "explanation": "That is the other practical's job; here oxygen is subtracted, not added.",
+          "misconception": "combustion confused with reduction"
+        },
+        {
+          "key": "C",
+          "text": "It heats the tube directly",
+          "correct": false,
+          "explanation": "The Bunsen burner heats; methane flows over the solid as the chemical actor.",
+          "misconception": "heat source confused with reagent"
+        },
+        {
+          "key": "D",
+          "text": "It cools the powder after heating",
+          "correct": false,
+          "explanation": "Cooling is not methane's role; it is the reducing agent during heating.",
+          "misconception": "purpose invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L2::Q2",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L2",
+      "stem": "Why is the excess methane burned off?",
+      "misconceptionClass": "safety-reasoning error",
+      "options": [
+        {
+          "key": "A",
+          "text": "So the flammable gas is not released into the lab",
+          "correct": true,
+          "explanation": "Excess methane must not vent into the room; burning it turns a hazard into a controlled flame.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To make the copper react faster",
+          "correct": false,
+          "explanation": "The stream's flow is what matters for reaction; burning the excess is a safety step, not a speed control.",
+          "misconception": "rate purpose invented"
+        },
+        {
+          "key": "C",
+          "text": "To dry the boiling tube",
+          "correct": false,
+          "explanation": "Drying plays no part; the burn-off exists because methane must not escape unburned.",
+          "misconception": "irrelevant purpose"
+        },
+        {
+          "key": "D",
+          "text": "To signal when the reaction is complete",
+          "correct": false,
+          "explanation": "The colour change signals completion; the flame is waste-gas disposal.",
+          "misconception": "endpoint confused with safety step"
+        }
+      ]
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L2::Q3",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L2",
+      "stem": "A boiling tube holds 2.00 g of copper(II) oxide. After reduction, 1.60 g of copper remains. What mass of oxygen did the methane remove?",
+      "misconceptionClass": "mass-bookkeeping error",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.40 g",
+          "correct": true,
+          "explanation": "The oxygen's mass is the oxide's mass minus the metal left: 2.00 - 1.60 = 0.40.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "1.60 g",
+          "correct": false,
+          "explanation": "1.60 g is the copper that stayed; the oxygen is what left, the difference between the masses.",
+          "misconception": "metal mass mistaken for oxygen mass"
+        },
+        {
+          "key": "C",
+          "text": "2.00 g",
+          "correct": false,
+          "explanation": "2.00 g was the whole compound; only part of it was oxygen.",
+          "misconception": "oxide mass treated as oxygen mass"
+        },
+        {
+          "key": "D",
+          "text": "3.60 g",
+          "correct": false,
+          "explanation": "2.00 plus 1.60 adds metal and compound; subtraction isolates the lost oxygen.",
+          "misconception": "masses added"
+        }
+      ]
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L2::Q4",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L2",
+      "stem": "With 1.60 g of copper (Ar 63.5) and 0.40 g of oxygen (Ar 16), what is the formula?",
+      "misconceptionClass": "mole-ratio error",
+      "options": [
+        {
+          "key": "A",
+          "text": "CuO, since the moles are both about 0.025",
+          "correct": true,
+          "explanation": "1.60 / 63.5 and 0.40 / 16 both give roughly 0.025 mol, a one-to-one ratio.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "CuO2, from using the mass ratio directly",
+          "correct": false,
+          "explanation": "1.60 to 0.40 is four to one in grams, but the different Ar values collapse it to equal moles.",
+          "misconception": "mass ratio used as mole ratio"
+        },
+        {
+          "key": "C",
+          "text": "Cu2O, from halving the oxygen count",
+          "correct": false,
+          "explanation": "Nothing in the data halves anything; the simplified moles are equal.",
+          "misconception": "ratio adjusted without evidence"
+        },
+        {
+          "key": "D",
+          "text": "Cu4O, from the raw mass ratio",
+          "correct": false,
+          "explanation": "The four-to-one mass ratio is not the atom ratio; both masses must pass through the Ar division first.",
+          "misconception": "grams copied into subscripts"
+        }
+      ]
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L2::Q5",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L2",
+      "stem": "Which change would corrupt the deduced formula in the reduction practical?",
+      "misconceptionClass": "error-propagation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Stopping when only part of the colour change has happened, leaving oxygen in the solid",
+          "correct": true,
+          "explanation": "Residual oxygen inflates the oxygen mass and skews the ratio; heating continues until the change is complete.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Passing methane for longer after the colour change",
+          "correct": false,
+          "explanation": "Once all the oxygen is gone there is nothing left to remove; extra gas changes no masses.",
+          "misconception": "harmless step treated as corrupting"
+        },
+        {
+          "key": "C",
+          "text": "Subtracting the empty tube's mass from both readings",
+          "correct": false,
+          "explanation": "That subtraction is exactly right; it isolates the solid's mass in both weighings.",
+          "misconception": "correct step misidentified as error"
+        },
+        {
+          "key": "D",
+          "text": "Using a Bunsen flame to heat the tube",
+          "correct": false,
+          "explanation": "Strong Bunsen heating is the method's own instruction; the flame adds no mass inside the tube.",
+          "misconception": "standard equipment treated as contamination"
+        }
+      ]
+    }
+  ]
+}

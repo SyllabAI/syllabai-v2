@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_vXPcH3vS8wv7BFkK",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "da34daf2305f86bb852c24146aa7e28819ecc6bf597734675d40ad531bf69d56",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_vXPcH3vS8wv7BFkK",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L1::Q1",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L1",
+      "stem": "A student records 3.2 g of dry product from an experiment. What is this value called?",
+      "misconceptionClass": "yield-term confusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "The actual yield",
+          "correct": true,
+          "explanation": "The actual yield is the recorded amount of product obtained from the experiment.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The theoretical yield",
+          "correct": false,
+          "explanation": "The theoretical yield is calculated, never recorded; it belongs to perfect conditions.",
+          "misconception": "actual confused with calculated ideal"
+        },
+        {
+          "key": "C",
+          "text": "The percentage yield",
+          "correct": false,
+          "explanation": "Percentage yield is a comparison of two yields and carries no units of mass.",
+          "misconception": "absolute mass mistaken for a comparison"
+        },
+        {
+          "key": "D",
+          "text": "The reacting mass",
+          "correct": false,
+          "explanation": "The reacting mass is a starting substance, not the product collected.",
+          "misconception": "product mass mistaken for input mass"
+        }
+      ]
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L1::Q2",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L1",
+      "stem": "Which yield is calculated from the balanced equation and the reacting masses?",
+      "misconceptionClass": "source-of-yield error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The theoretical yield",
+          "correct": true,
+          "explanation": "The theoretical yield assumes complete conversion, so it is worked out from the equation rather than measured.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The actual yield",
+          "correct": false,
+          "explanation": "The actual yield can only be found by doing the experiment and weighing the product.",
+          "misconception": "measured value thought to be derivable"
+        },
+        {
+          "key": "C",
+          "text": "The percentage yield",
+          "correct": false,
+          "explanation": "Percentage yield is computed afterwards, from the actual and theoretical yields together.",
+          "misconception": "derived quantity treated as primary"
+        },
+        {
+          "key": "D",
+          "text": "Neither yield uses the equation",
+          "correct": false,
+          "explanation": "The balanced equation is exactly what the theoretical yield is built from.",
+          "misconception": "equation avoided entirely"
+        }
+      ]
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L1::Q3",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L1",
+      "stem": "A reaction is reversible and no reactant escapes. Why can its yield still never reach 100 percent?",
+      "misconceptionClass": "reversibility misunderstanding",
+      "options": [
+        {
+          "key": "A",
+          "text": "Products keep turning back into reactants, so the forward reaction never completes",
+          "correct": true,
+          "explanation": "In reversible reactions the products are continually converting back, which caps the yield however careful the technique.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The equipment absorbs some of the product",
+          "correct": false,
+          "explanation": "Equipment losses can be reduced by careful technique; reversibility caps the yield even with perfect apparatus.",
+          "misconception": "avoidable losses blamed for a fundamental cap"
+        },
+        {
+          "key": "C",
+          "text": "Side reactions with the air consume product",
+          "correct": false,
+          "explanation": "Side reactions are a separate loss route; the question states the reaction itself runs both ways.",
+          "misconception": "side reactions blamed where reversibility is the cap"
+        },
+        {
+          "key": "D",
+          "text": "Weighing the product introduces error",
+          "correct": false,
+          "explanation": "Measurement error affects the recorded figure, not the chemical ceiling a reversible reaction imposes.",
+          "misconception": "measurement error confused with chemical ceiling"
+        }
+      ]
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L1::Q4",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L1",
+      "stem": "During which stage is product most likely lost when a solution is filtered and then distilled?",
+      "misconceptionClass": "loss-route recognition",
+      "options": [
+        {
+          "key": "A",
+          "text": "During the separation and purification stages",
+          "correct": true,
+          "explanation": "Filtration and distillation are separation and purification steps, and products can be lost during both.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "While the reactants are being weighed",
+          "correct": false,
+          "explanation": "Nothing has been made yet at the weighing stage, so no product can be lost there.",
+          "misconception": "loss located before any product exists"
+        },
+        {
+          "key": "C",
+          "text": "During transfer between containers",
+          "correct": false,
+          "explanation": "Transfer losses are real but separate; the named operations are filtration and distillation themselves.",
+          "misconception": "plausible generic loss misapplied to the named steps"
+        },
+        {
+          "key": "D",
+          "text": "No loss is possible once the reaction ends",
+          "correct": false,
+          "explanation": "Products remain vulnerable after the reaction; cleaning steps are a classic loss point.",
+          "misconception": "completion assumed to freeze losses"
+        }
+      ]
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L1::Q5",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L1",
+      "stem": "Why does a chemical company aim for the highest possible percentage yield?",
+      "misconceptionClass": "purpose-of-yield error",
+      "options": [
+        {
+          "key": "A",
+          "text": "To increase profits and reduce costs and waste",
+          "correct": true,
+          "explanation": "Higher yields convert more of each batch into sellable product, cutting waste and cost.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To make the reaction reach completion faster",
+          "correct": false,
+          "explanation": "Percentage yield measures how much is made, not how quickly; speed is a separate concern.",
+          "misconception": "yield conflated with rate"
+        },
+        {
+          "key": "C",
+          "text": "To raise the theoretical yield of the process",
+          "correct": false,
+          "explanation": "The theoretical yield is fixed by the equation and masses; the company improves how much of it is actually achieved.",
+          "misconception": "target quantity adjusted instead of attainment"
+        },
+        {
+          "key": "D",
+          "text": "To avoid having to balance the equation",
+          "correct": false,
+          "explanation": "Balancing the equation is still required; yield performance never removes that step.",
+          "misconception": "bookkeeping shortcut imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L2::Q1",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L2",
+      "stem": "Which expression gives the percentage yield?",
+      "misconceptionClass": "formula-structure error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Actual yield divided by theoretical yield, times one hundred",
+          "correct": true,
+          "explanation": "The comparison always puts the real amount over the promised amount, scaled to one hundred.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Theoretical yield divided by actual yield, times one hundred",
+          "correct": false,
+          "explanation": "That inverts the comparison; the result would exceed one hundred whenever some product is lost.",
+          "misconception": "division inverted"
+        },
+        {
+          "key": "C",
+          "text": "Actual yield minus theoretical yield",
+          "correct": false,
+          "explanation": "The difference shows grams lost but is not the percentage the specification asks for.",
+          "misconception": "difference mistaken for a ratio"
+        },
+        {
+          "key": "D",
+          "text": "Actual yield plus theoretical yield",
+          "correct": false,
+          "explanation": "Adding the two yields has no meaning; they measure the same quantity under different conditions.",
+          "misconception": "combination confused with comparison"
+        }
+      ]
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L2::Q2",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L2",
+      "stem": "A student obtains 1.6 g of copper(II) sulfate crystals; the theoretical yield is 2.0 g. What is the percentage yield?",
+      "misconceptionClass": "formula-structure error",
+      "options": [
+        {
+          "key": "A",
+          "text": "80 percent",
+          "correct": true,
+          "explanation": "1.6 divided by 2.0 is 0.8, and 0.8 times one hundred is 80.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "125 percent",
+          "correct": false,
+          "explanation": "2.0 divided by 1.6 is 1.25, so this answer comes from dividing the larger promised amount by the smaller real one.",
+          "misconception": "division inverted"
+        },
+        {
+          "key": "C",
+          "text": "1.25",
+          "correct": false,
+          "explanation": "The ratio was computed but never scaled by one hundred.",
+          "misconception": "unmultiplied ratio reported as a percentage"
+        },
+        {
+          "key": "D",
+          "text": "8 percent",
+          "correct": false,
+          "explanation": "0.8 was scaled wrongly by a factor of ten; one hundred, not ten, is the multiplier.",
+          "misconception": "decimal point misplaced"
+        }
+      ]
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L2::Q3",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L2",
+      "stem": "A calculated percentage yield comes out at 140 percent. What does this tell you?",
+      "misconceptionClass": "implausible-result response",
+      "options": [
+        {
+          "key": "A",
+          "text": "An error was made, most likely dividing the theoretical yield by the actual yield",
+          "correct": true,
+          "explanation": "No reaction can make more than the equation promises; the classic cause is dividing the promised amount by the real one.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The reaction was unusually efficient",
+          "correct": false,
+          "explanation": "Even complete conversion reaches only one hundred percent; above that the arithmetic is wrong, not the chemistry impressive.",
+          "misconception": "impossible value praised as excellence"
+        },
+        {
+          "key": "C",
+          "text": "The actual yield was measured carelessly",
+          "correct": false,
+          "explanation": "A figure above one hundred points at the formula first; no measurement can beat the theoretical ceiling.",
+          "misconception": "measurement blamed before formula checked"
+        },
+        {
+          "key": "D",
+          "text": "The theoretical yield was too low",
+          "correct": false,
+          "explanation": "The theoretical yield is fixed by the balanced equation; the calculation, not the ceiling, must be redone.",
+          "misconception": "ceiling renegotiated to fit the number"
+        }
+      ]
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L2::Q4",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L2",
+      "stem": "A factory can make aspirin by two routes. Route P gives 62 percent yield; route Q gives 78 percent. Which pathway should it choose, and why?",
+      "misconceptionClass": "pathway-decision error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Route Q, because the higher percentage yield means less material wasted per batch",
+          "correct": true,
+          "explanation": "Yield is a significant factor in choosing between pathways, and the route converting more of its inputs wins on waste and cost.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Route P, because the smaller figure shows simpler chemistry",
+          "correct": false,
+          "explanation": "A lower yield means more of each batch is lost; simplicity is not what the figure reports.",
+          "misconception": "yield magnitude misread"
+        },
+        {
+          "key": "C",
+          "text": "Either route, because both yields exceed half",
+          "correct": false,
+          "explanation": "There is no pass mark at fifty percent; the comparison is between the two figures themselves.",
+          "misconception": "threshold invented"
+        },
+        {
+          "key": "D",
+          "text": "Route P, because its yield is closer to a round number",
+          "correct": false,
+          "explanation": "Roundness carries no chemical meaning; the decision follows the higher yield.",
+          "misconception": "numerology substituting for chemistry"
+        }
+      ]
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L2::Q5",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L2",
+      "stem": "Theoretical yield: 5.0 g. Actual yield: 4.2 g. Calculate the percentage yield.",
+      "misconceptionClass": "formula-structure error",
+      "options": [
+        {
+          "key": "A",
+          "text": "84 percent",
+          "correct": true,
+          "explanation": "4.2 divided by 5.0 is 0.84, and scaling by one hundred gives 84 percent.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "119 percent",
+          "correct": false,
+          "explanation": "5.0 divided by 4.2 is about 1.19; the inversion pushes the answer past the impossible ceiling.",
+          "misconception": "division inverted"
+        },
+        {
+          "key": "C",
+          "text": "0.84 percent",
+          "correct": false,
+          "explanation": "The division was done but the one-hundred scaling was skipped.",
+          "misconception": "ratio unscaled"
+        },
+        {
+          "key": "D",
+          "text": "9.2 percent",
+          "correct": false,
+          "explanation": "4.2 plus 5.0 is 9.2; addition never appears in a yield sum.",
+          "misconception": "values added"
+        }
+      ]
+    }
+  ]
+}

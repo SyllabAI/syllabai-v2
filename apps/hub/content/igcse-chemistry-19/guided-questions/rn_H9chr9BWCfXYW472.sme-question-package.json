@@ -1,0 +1,555 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_H9chr9BWCfXYW472",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "ae50f45521727e1d1e1ce45275420f37f26b9d40db2217d07b2939c03c1c38df",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_H9chr9BWCfXYW472",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_H9chr9BWCfXYW472::L1::Q1",
+      "moduleId": "rn_H9chr9BWCfXYW472::L1",
+      "stem": "What is crude oil?",
+      "misconceptionClass": "crude oil definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "A mixture of hydrocarbons",
+          "correct": true,
+          "explanation": "The crude is many hydrocarbon molecules jumbled together, which is why it must be separated before use.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A single pure compound",
+          "correct": false,
+          "explanation": "A pure compound would need no separation; the whole point is the mixture of many chains.",
+          "misconception": "purity assumed"
+        },
+        {
+          "key": "C",
+          "text": "A mixture of elements",
+          "correct": false,
+          "explanation": "The components are compounds of hydrogen and carbon, not free elements.",
+          "misconception": "element mixture claimed"
+        },
+        {
+          "key": "D",
+          "text": "A solution of salts in water",
+          "correct": false,
+          "explanation": "Crude oil contains no water or salts; it is hydrocarbons throughout.",
+          "misconception": "aqueous confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L1::Q2",
+      "moduleId": "rn_H9chr9BWCfXYW472::L1",
+      "stem": "Why do molecules of a fraction have similar boiling points?",
+      "misconceptionClass": "fraction property link",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because their hydrocarbon chains have similar lengths",
+          "correct": true,
+          "explanation": "Chain length sets the boiling point, so similar chains condense together as one fraction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because they were distilled at the same temperature",
+          "correct": false,
+          "explanation": "The condensation temperature is a consequence of chain length, not a rule imposed by the apparatus.",
+          "misconception": "cause reversed"
+        },
+        {
+          "key": "C",
+          "text": "Because they all contain the same number of hydrogen atoms",
+          "correct": false,
+          "explanation": "Hydrogen count varies within a fraction; chain length is the organising feature.",
+          "misconception": "hydrogen count blamed"
+        },
+        {
+          "key": "D",
+          "text": "Because fractions are chemically bonded to each other",
+          "correct": false,
+          "explanation": "Fractions are physical groups of molecules, joined by nothing stronger than mixing.",
+          "misconception": "bonding imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L1::Q3",
+      "moduleId": "rn_H9chr9BWCfXYW472::L1",
+      "stem": "In the fractionating column, where do vapours with high boiling points condense?",
+      "misconceptionClass": "column geography",
+      "options": [
+        {
+          "key": "A",
+          "text": "Near the bottom of the column, where it is hottest",
+          "correct": true,
+          "explanation": "High boiling points need the hot lower region before the vapour turns back to liquid.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Near the top of the column, where it is coolest",
+          "correct": false,
+          "explanation": "The cool top collects low-boiling vapours; high boilers never make the climb.",
+          "misconception": "height inverted"
+        },
+        {
+          "key": "C",
+          "text": "They never condense inside the column at all",
+          "correct": false,
+          "explanation": "Every fraction condenses somewhere on the column; height just depends on boiling point.",
+          "misconception": "condensation denied"
+        },
+        {
+          "key": "D",
+          "text": "Halfway up, regardless of boiling point",
+          "correct": false,
+          "explanation": "Height tracks boiling point continuously; there is no single fixed floor.",
+          "misconception": "uniform height claimed"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L1::Q4",
+      "moduleId": "rn_H9chr9BWCfXYW472::L1",
+      "stem": "What happens to the crude oil before the vapours enter the column?",
+      "misconceptionClass": "process order",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is heated so that it vaporises",
+          "correct": true,
+          "explanation": "Vaporising first lets the hydrocarbon vapours rise and separate on the gradient.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It is cooled until it solidifies",
+          "correct": false,
+          "explanation": "Freezing would stop the separation; heat is what mobilises the molecules.",
+          "misconception": "temperature inverted"
+        },
+        {
+          "key": "C",
+          "text": "It is mixed with water to dilute it",
+          "correct": false,
+          "explanation": "No dilution happens; the oil is heated directly before the column.",
+          "misconception": "dilution invented"
+        },
+        {
+          "key": "D",
+          "text": "It is filtered to remove the alkanes",
+          "correct": false,
+          "explanation": "Alkanes are exactly what is being separated, not removed as debris.",
+          "misconception": "alkanes mislabeled"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L1::Q5",
+      "moduleId": "rn_H9chr9BWCfXYW472::L1",
+      "stem": "As you move up a fractionating column, what happens to the temperature?",
+      "misconceptionClass": "gradient direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "It decreases, so high-boiling compounds leave lower down",
+          "correct": true,
+          "explanation": "The exam hint of the note: temperature falls with height, sorting fractions by boiling point.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It increases, pushing heavy molecules upward",
+          "correct": false,
+          "explanation": "The gradient runs the other way: hot at the base, cool at the top.",
+          "misconception": "gradient inverted"
+        },
+        {
+          "key": "C",
+          "text": "It stays constant from bottom to top",
+          "correct": false,
+          "explanation": "A constant temperature would give no separation at all.",
+          "misconception": "flat gradient claimed"
+        },
+        {
+          "key": "D",
+          "text": "It alternates hot and cold in bands",
+          "correct": false,
+          "explanation": "The column has one smooth gradient, not alternating zones.",
+          "misconception": "striped gradient imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L2::Q1",
+      "moduleId": "rn_H9chr9BWCfXYW472::L2",
+      "stem": "Which fraction is used for surfacing roads and roofs?",
+      "misconceptionClass": "fraction uses recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bitumen",
+          "correct": true,
+          "explanation": "The thickest, darkest fraction is the one applied to roads and roofs.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Fuel oil",
+          "correct": false,
+          "explanation": "Fuel oil powers ships and power stations; it never surfaces roads.",
+          "misconception": "uses shuffled"
+        },
+        {
+          "key": "C",
+          "text": "Diesel",
+          "correct": false,
+          "explanation": "Diesel runs engines; surfacing is bitumen work.",
+          "misconception": "heavy fractions confused"
+        },
+        {
+          "key": "D",
+          "text": "Kerosene",
+          "correct": false,
+          "explanation": "Kerosene is jet fuel, far too runny for road surfacing.",
+          "misconception": "light fraction misplaced"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L2::Q2",
+      "moduleId": "rn_H9chr9BWCfXYW472::L2",
+      "stem": "Why does viscosity increase along the fraction ladder?",
+      "misconceptionClass": "viscosity reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Longer chains attract each other more, so the liquid flows less easily",
+          "correct": true,
+          "explanation": "Greater intermolecular attraction between bigger molecules thickens the liquid.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Longer chains are lighter, so they sink and thicken",
+          "correct": false,
+          "explanation": "Longer chains are heavier, not lighter, and sinking is not how viscosity works.",
+          "misconception": "mass direction flipped"
+        },
+        {
+          "key": "C",
+          "text": "Because fractions are cooled before collection",
+          "correct": false,
+          "explanation": "Cooling is part of the column process, not the cause of the viscosity trend.",
+          "misconception": "process step blamed"
+        },
+        {
+          "key": "D",
+          "text": "Viscosity does not change along the ladder",
+          "correct": false,
+          "explanation": "The trend is explicit: flow gets harder as chains grow.",
+          "misconception": "trend denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L2::Q3",
+      "moduleId": "rn_H9chr9BWCfXYW472::L2",
+      "stem": "A fraction boils between 150 and 240 degrees Celsius. Which fraction is it?",
+      "misconceptionClass": "boiling point table",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kerosene",
+          "correct": true,
+          "explanation": "Kerosene sits at 12-16 carbons and boils across 150-240 degrees in the table.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Gasoline",
+          "correct": false,
+          "explanation": "Gasoline boils at 40-100 degrees, below the stated window.",
+          "misconception": "table row misplaced"
+        },
+        {
+          "key": "C",
+          "text": "Diesel",
+          "correct": false,
+          "explanation": "Diesel boils at 220-300 degrees, only touching the top of that window.",
+          "misconception": "neighbour row chosen"
+        },
+        {
+          "key": "D",
+          "text": "Refinery gas",
+          "correct": false,
+          "explanation": "Refinery gas boils below 25 degrees, far under the stated range.",
+          "misconception": "light end confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L2::Q4",
+      "moduleId": "rn_H9chr9BWCfXYW472::L2",
+      "stem": "What happens to volatility as molecular size increases?",
+      "misconceptionClass": "volatility trend",
+      "options": [
+        {
+          "key": "A",
+          "text": "Liquids become less volatile because molecules are held more tightly",
+          "correct": true,
+          "explanation": "Stronger attraction between larger molecules makes vaporising harder, lowering volatility.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Liquids become more volatile as they get thicker",
+          "correct": false,
+          "explanation": "Thicker liquids are the opposite of eager evaporators; the two trends run contrary.",
+          "misconception": "trend inverted"
+        },
+        {
+          "key": "C",
+          "text": "Volatility stays fixed across the fractions",
+          "correct": false,
+          "explanation": "Volatility falls steadily with size, matching the rising boiling points.",
+          "misconception": "trend denied"
+        },
+        {
+          "key": "D",
+          "text": "Volatility depends only on the colour of the fraction",
+          "correct": false,
+          "explanation": "Colour tracks the same ladder but does not cause volatility.",
+          "misconception": "colour causation"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L2::Q5",
+      "moduleId": "rn_H9chr9BWCfXYW472::L2",
+      "stem": "Which pairing of fraction and use is correct?",
+      "misconceptionClass": "use pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "Kerosene for jet fuel and refinery gas for domestic heating",
+          "correct": true,
+          "explanation": "The use table pairs kerosene with aircraft and refinery gas with heating and cooking.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Gasoline for ships and fuel oil for cars",
+          "correct": false,
+          "explanation": "The pairing is reversed: gasoline fuels cars and fuel oil powers ships.",
+          "misconception": "pairing crossed"
+        },
+        {
+          "key": "C",
+          "text": "Diesel for cooking and refinery gas for trucks",
+          "correct": false,
+          "explanation": "Both halves are wrong; diesel engines burn diesel and cooking uses refinery gas.",
+          "misconception": "both mispaired"
+        },
+        {
+          "key": "D",
+          "text": "Bitumen for jet fuel and kerosene for roads",
+          "correct": false,
+          "explanation": "This swaps the extreme ends of the ladder, where the properties could not differ more.",
+          "misconception": "extremes swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L3::Q1",
+      "moduleId": "rn_H9chr9BWCfXYW472::L3",
+      "stem": "Which of these is obtained from crude oil?",
+      "misconceptionClass": "petrochemical products",
+      "options": [
+        {
+          "key": "A",
+          "text": "Detergents and solvents",
+          "correct": true,
+          "explanation": "The note lists polymers, lubricants, solvents, detergents and adhesives as oil-derived products.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Natural gas",
+          "correct": false,
+          "explanation": "Natural gas is a separate fossil fuel, not a product distilled from crude oil.",
+          "misconception": "fossil fuels merged"
+        },
+        {
+          "key": "C",
+          "text": "Iron ore",
+          "correct": false,
+          "explanation": "Iron ore is mined rock with no connection to oil refining.",
+          "misconception": "mining confused"
+        },
+        {
+          "key": "D",
+          "text": "Limestone",
+          "correct": false,
+          "explanation": "Limestone is a carbonate rock, unrelated to the fractions of crude oil.",
+          "misconception": "rocks confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L3::Q2",
+      "moduleId": "rn_H9chr9BWCfXYW472::L3",
+      "stem": "What allows carbon to form such a huge number of organic compounds?",
+      "misconceptionClass": "carbon versatility",
+      "options": [
+        {
+          "key": "A",
+          "text": "Its ability to form multiple strong covalent bonds with itself",
+          "correct": true,
+          "explanation": "Carbon chaining to itself builds skeletons of any length, which multiplies the possible compounds.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Its unusually low boiling point",
+          "correct": false,
+          "explanation": "Carbon itself is not a liquid here; bonding versatility is the point.",
+          "misconception": "boiling point blamed"
+        },
+        {
+          "key": "C",
+          "text": "Its radioactive behaviour in fuels",
+          "correct": false,
+          "explanation": "Radioactivity plays no part in organic chemistry bonding.",
+          "misconception": "nuclear confused with chemical"
+        },
+        {
+          "key": "D",
+          "text": "Its refusal to react with hydrogen",
+          "correct": false,
+          "explanation": "Hydrocarbons are defined by carbon-hydrogen bonding, so refusal is the opposite of reality.",
+          "misconception": "reactivity inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L3::Q3",
+      "moduleId": "rn_H9chr9BWCfXYW472::L3",
+      "stem": "Which transport uses are based on oil products?",
+      "misconceptionClass": "transport fuels",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cars, trains and aircraft",
+          "correct": true,
+          "explanation": "The note lists modern methods of transport from cars to trains to planes as oil-based.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Only cars",
+          "correct": false,
+          "explanation": "The reach is far wider than cars; aircraft and trains appear in the same sentence.",
+          "misconception": "scope deflated"
+        },
+        {
+          "key": "C",
+          "text": "Only electric trains",
+          "correct": false,
+          "explanation": "Electric traction is precisely the case that does not run on oil products here.",
+          "misconception": "electrification confused"
+        },
+        {
+          "key": "D",
+          "text": "No transport, because oil is too viscous",
+          "correct": false,
+          "explanation": "Refining solves viscosity by sorting fractions to each engine type.",
+          "misconception": "viscosity objection"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L3::Q4",
+      "moduleId": "rn_H9chr9BWCfXYW472::L3",
+      "stem": "Why is the petrochemical industry described as hugely important?",
+      "misconceptionClass": "industry importance",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because modern society runs on its fuels and manufactured products",
+          "correct": true,
+          "explanation": "Transport fuels plus polymer and solvent manufacture give the industry its central role.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because it supplies drinking water",
+          "correct": false,
+          "explanation": "Water supply is not a petrochemical product in this account.",
+          "misconception": "sector misplaced"
+        },
+        {
+          "key": "C",
+          "text": "Because crude oil is useful exactly as it comes out of the ground",
+          "correct": false,
+          "explanation": "The crude itself is not useful; the separated fractions and their products are.",
+          "misconception": "crude usefulness claimed"
+        },
+        {
+          "key": "D",
+          "text": "Because fractions cannot be modified once separated",
+          "correct": false,
+          "explanation": "Fractions are routinely cracked and modified, which is the next note topic.",
+          "misconception": "static fractions claimed"
+        }
+      ]
+    },
+    {
+      "id": "rn_H9chr9BWCfXYW472::L3::Q5",
+      "moduleId": "rn_H9chr9BWCfXYW472::L3",
+      "stem": "Refinery gas is also known by which other name in the exam hint?",
+      "misconceptionClass": "fraction aliases",
+      "options": [
+        {
+          "key": "A",
+          "text": "Liquid petroleum gases",
+          "correct": true,
+          "explanation": "The exam hint gives liquid petroleum gases as the alias for refinery gases.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Paraffin",
+          "correct": false,
+          "explanation": "Paraffin is the alias of kerosene, one rung down the ladder.",
+          "misconception": "alias misassigned"
+        },
+        {
+          "key": "C",
+          "text": "Petrol",
+          "correct": false,
+          "explanation": "Petrol is the everyday name for gasoline, not refinery gas.",
+          "misconception": "alias misassigned"
+        },
+        {
+          "key": "D",
+          "text": "Gas oil",
+          "correct": false,
+          "explanation": "Gas oil is the alias of diesel, further up the ladder than refinery gas.",
+          "misconception": "alias misassigned"
+        }
+      ]
+    }
+  ]
+}

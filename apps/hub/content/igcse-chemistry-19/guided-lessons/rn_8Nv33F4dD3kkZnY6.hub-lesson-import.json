@@ -1,0 +1,168 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_8Nv33F4dD3kkZnY6",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "7c1c9b348c0ecbb17cbda47472fdc21f54d091d99e731b4761cc3e9067958ae8",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_8Nv33F4dD3kkZnY6",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Ionic Bonding",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-6-ionic-bonding/1-6-2-common-ions",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.37",
+        "text": "understand how ions are formed by electron loss or gain"
+      },
+      {
+        "code": "4CH1-1.38",
+        "text": "know the charges of these ions: • metals in Groups 1, 2 and 3 • non-metals in Groups 5, 6 and 7 • Ag+, Cu2+, Fe2+, Fe3+, Pb2+, Zn2+ • hydrogen (H+), hydroxide (OH–), ammonium (NH4+), carbonate (CO3 2–), nitrate (NO3-), sulfate (SO4 2–)."
+      }
+    ],
+    "primer": {
+      "text": "Ions are already explained: electrons lost or gained to reach a full outer shell, metals losing for positive, non-metals gaining for negative. This note turns that idea into a memorised toolkit - which charges each group gives, and the compound ions that keep appearing in equations.",
+      "prerequisiteSubtopic": "Formation of Ions"
+    },
+    "modules": [
+      {
+        "id": "rn_8Nv33F4dD3kkZnY6::L1",
+        "title": "How to Deduce the Charge of an Ion",
+        "sourceHeadings": [
+          "How to deduce the charge of an ion"
+        ],
+        "specRefs": [
+          "4CH1-1.37"
+        ],
+        "opening": "A group number plus one look at the outer shell settles most charges: count the outer electrons, then decide whether giving them away or topping up is easier. Fewer than four outer electrons points to donating and a positive ion; more than four points to receiving and a negative one.",
+        "keyPoints": [
+          "Deducing a charge starts from the outer electron shell: count the electrons sitting there.",
+          "Atoms with fewer than four outer electrons donate them and form positive ions.",
+          "Atoms with more than four outer electrons receive electrons and form negative ions.",
+          "Group 1, 2 and 3 metals give 1+, 2+ and 3+ ions; group 5, 6 and 7 non-metals take 3-, 2- and 1-.",
+          "Compound ions are ions made from more than one element, and their formulae must be learned as given."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "To deduce a charge, count the outer-shell electrons and ask which is easier: handing extras over or filling the gap. Under four means donate and go positive; over four means receive and go negative.",
+            "analogy": "Think of hands of cards: a player holding only a couple of cards deals them away to leave the table, while a player with an almost-complete set picks up the one card that finishes it.",
+            "examPointer": "Group numbers make this quick: group 2 means 2+, group 7 means 1- - the charge follows the group without any working."
+          },
+          "medium": {
+            "restatement": "The method is count, then judge: outer-shell electrons first, then the donate-or-receive call, with four as the hinge. Group position shortcuts the whole judgement, which is why the group 1 to 3 and group 5 to 7 patterns are quoted directly.",
+            "analogy": "A nearly-empty coach with few passengers drops everyone off and travels light - the donor side. A coach one seat short of full keeps collecting passengers until it is complete - the receiving side.",
+            "examPointer": "Compound ions break the single-element habit: ammonium, hydroxide, carbonate, nitrate and sulfate arrive as ready-made chunks whose formulae and charges ride together."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8Nv33F4dD3kkZnY6::L1::Q1",
+          "rn_8Nv33F4dD3kkZnY6::L1::Q2",
+          "rn_8Nv33F4dD3kkZnY6::L1::Q3",
+          "rn_8Nv33F4dD3kkZnY6::L1::Q4",
+          "rn_8Nv33F4dD3kkZnY6::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_8Nv33F4dD3kkZnY6::L2",
+        "title": "Common Positive and Negative Ions",
+        "sourceHeadings": [
+          "Common ions with a positive charge",
+          "Common ions with a negative charge"
+        ],
+        "specRefs": [
+          "4CH1-1.38"
+        ],
+        "opening": "The exam expects a memorised table: groups 1 to 3 give their metal ions at 1+, 2+ and 3+, the named metals carry set charges such as Fe2+ and Fe3+, and the compound ions - hydroxide, ammonium, carbonate, nitrate, sulfate - ride their own fixed charges. Group 5, 6 and 7 non-metals take 3-, 2- and 1-.",
+        "keyPoints": [
+          "Metals in groups 1, 2 and 3 form ions of 1+, 2+ and 3+ respectively.",
+          "Non-metals in groups 5, 6 and 7 form ions of 3-, 2- and 1- respectively.",
+          "Silver carries 1+, copper(II), lead(II) and zinc carry 2+, and iron appears as both 2+ and 3+.",
+          "Hydrogen rides as H+ alongside the metal ions.",
+          "The compound ions to know are hydroxide OH-, ammonium NH4+, carbonate CO3 2-, nitrate NO3- and sulfate SO4 2-."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Two tables carry this note: the positive side, where group metals and named metals sit with their set charges, and the negative side, where group non-metals and the compound ions do the same. All of it is recall material for the exam.",
+            "analogy": "Treat the compound ions like pre-assembled tool kits: nobody rebuilds a hammer mid-job, they reach for it whole. NH4+ and SO4 2- arrive complete, charge included, ready to slot into any formula.",
+            "examPointer": "The note's exam hint is blunt: every charge in both tables is assumed knowledge, so drill them until the recall is instant."
+          },
+          "medium": {
+            "restatement": "The positive table splits into group patterns and named metals: Ag+ stands alone while copper, iron and lead carry their set charges under Roman numerals. The negative table pairs group charges with the five compound ions whose subscripts and charges must be written together.",
+            "analogy": "Named-metal charges work like surnames that never change: silver is always Ag+, just as a shop sign stays fixed. Compound ions work like postcodes - digits and letters travel as one bundle, never split.",
+            "examPointer": "Writing ionic formulae later leans on exactly these charges: the crossing-over method only works when NH4+, OH- and CO3 2- are recalled without hesitation."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8Nv33F4dD3kkZnY6::L2::Q1",
+          "rn_8Nv33F4dD3kkZnY6::L2::Q2",
+          "rn_8Nv33F4dD3kkZnY6::L2::Q3",
+          "rn_8Nv33F4dD3kkZnY6::L2::Q4",
+          "rn_8Nv33F4dD3kkZnY6::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "compound ion",
+          "definition": "An ion built from more than one element, carrying one overall charge.",
+          "firstLesson": 1
+        },
+        {
+          "term": "outer electron shell",
+          "definition": "The outermost shell of electrons, whose count decides the charge an atom adopts.",
+          "firstLesson": 1
+        },
+        {
+          "term": "hydroxide",
+          "definition": "The negative compound ion OH-, charge 1-.",
+          "firstLesson": 2
+        },
+        {
+          "term": "ammonium",
+          "definition": "The positive compound ion NH4+, charge 1+.",
+          "firstLesson": 2
+        },
+        {
+          "term": "carbonate",
+          "definition": "The negative compound ion CO3 2-, charge 2-.",
+          "firstLesson": 2
+        },
+        {
+          "term": "nitrate",
+          "definition": "The negative compound ion NO3-, charge 1-.",
+          "firstLesson": 2
+        },
+        {
+          "term": "sulfate",
+          "definition": "The negative compound ion SO4 2-, charge 2-.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

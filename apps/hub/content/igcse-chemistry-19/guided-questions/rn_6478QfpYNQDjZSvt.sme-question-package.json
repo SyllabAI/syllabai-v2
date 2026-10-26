@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_6478QfpYNQDjZSvt",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "0c4b50f3b8e9049b1a1dacfc10663c3f6f125a53f09ad25bfb3630c2614dc497",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_6478QfpYNQDjZSvt",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L1::Q1",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L1",
+      "stem": "Why must the calorimeter have a lid during this practical?",
+      "misconceptionClass": "apparatus reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "To prevent heat loss so the temperature readings stay reliable",
+          "correct": true,
+          "explanation": "A lid keeps the released heat inside the cup where the thermometer can register it.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To stop the acid and alkali from reacting",
+          "correct": false,
+          "explanation": "Reacting is the point of the practical; the lid only manages heat.",
+          "misconception": "purpose inverted"
+        },
+        {
+          "key": "C",
+          "text": "To keep the volume of alkali constant",
+          "correct": false,
+          "explanation": "The measuring cylinder controls volume, not the lid.",
+          "misconception": "apparatus role swap"
+        },
+        {
+          "key": "D",
+          "text": "To make the reaction finish faster",
+          "correct": false,
+          "explanation": "The lid changes heat flow, not reaction speed.",
+          "misconception": "rate conflated"
+        }
+      ]
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L1::Q2",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L1",
+      "stem": "What happens to the volume of acid added at each repeat of the method?",
+      "misconceptionClass": "procedure recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It increases by 5 cm3 each time, from 5 cm3 up to 25 cm3",
+          "correct": true,
+          "explanation": "The method repeats steps 1 to 4 with the acid portion growing by 5 cm3 per run.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It stays fixed while the alkali volume changes",
+          "correct": false,
+          "explanation": "The alkali volume is the fixed one; the acid varies.",
+          "misconception": "variables swapped"
+        },
+        {
+          "key": "C",
+          "text": "It halves with each repeat",
+          "correct": false,
+          "explanation": "The step is an increase of 5 cm3, not a halving.",
+          "misconception": "pattern invented"
+        },
+        {
+          "key": "D",
+          "text": "It is chosen at random for each run",
+          "correct": false,
+          "explanation": "The method is systematic, with a fixed step size.",
+          "misconception": "randomness myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L1::Q3",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L1",
+      "stem": "Which temperature is recorded after each acid addition?",
+      "misconceptionClass": "measurement choice",
+      "options": [
+        {
+          "key": "A",
+          "text": "The highest temperature reached by the mixture",
+          "correct": true,
+          "explanation": "The maximum reading captures the full effect of that portion of acid.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The temperature after exactly one minute",
+          "correct": false,
+          "explanation": "Timing is not the criterion; the peak value is.",
+          "misconception": "timing substituted"
+        },
+        {
+          "key": "C",
+          "text": "The temperature of the acid before mixing",
+          "correct": false,
+          "explanation": "The starting temperatures matter once; the peak matters every run.",
+          "misconception": "wrong datum"
+        },
+        {
+          "key": "D",
+          "text": "The room temperature",
+          "correct": false,
+          "explanation": "Room temperature is not the measured quantity.",
+          "misconception": "irrelevant datum"
+        }
+      ]
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L1::Q4",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L1",
+      "stem": "Which piece of apparatus measures out the sodium hydroxide solution?",
+      "misconceptionClass": "apparatus selection",
+      "options": [
+        {
+          "key": "A",
+          "text": "A 25 cm3 measuring cylinder",
+          "correct": true,
+          "explanation": "The method names the measuring cylinder for placing the alkali in the calorimeter.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A balance",
+          "correct": false,
+          "explanation": "This practical measures volumes, not masses of solution.",
+          "misconception": "quantity type confused"
+        },
+        {
+          "key": "C",
+          "text": "A thermometer",
+          "correct": false,
+          "explanation": "The thermometer reads temperature, not volume.",
+          "misconception": "apparatus role swap"
+        },
+        {
+          "key": "D",
+          "text": "A spirit burner",
+          "correct": false,
+          "explanation": "A burner belongs to combustion experiments, not this neutralisation.",
+          "misconception": "methods merged"
+        }
+      ]
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L1::Q5",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L1",
+      "stem": "The reaction studied here belongs to which family of temperature-change types?",
+      "misconceptionClass": "classification link",
+      "options": [
+        {
+          "key": "A",
+          "text": "Neutralisation reactions, which always give energy out",
+          "correct": true,
+          "explanation": "Acid plus alkali is neutralisation, one of the four named change types.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Displacement reactions, which can run either way",
+          "correct": false,
+          "explanation": "No element displaces another here; acid meets alkali.",
+          "misconception": "family misassigned"
+        },
+        {
+          "key": "C",
+          "text": "Combustion reactions, which need a fuel and flame",
+          "correct": false,
+          "explanation": "Nothing burns in this practical.",
+          "misconception": "family misassigned"
+        },
+        {
+          "key": "D",
+          "text": "Salts dissolving in water, which involve no second solution",
+          "correct": false,
+          "explanation": "Two solutions are mixed, so dissolving is not the family.",
+          "misconception": "family misassigned"
+        }
+      ]
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L2::Q1",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L2",
+      "stem": "What goes on the two axes of the graph plotted from this practical?",
+      "misconceptionClass": "graph construction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Volume of acid against the temperature of the mixture",
+          "correct": true,
+          "explanation": "Those are the two recorded quantities from the results table.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Time against temperature",
+          "correct": false,
+          "explanation": "Time is not recorded in this practical.",
+          "misconception": "variable invented"
+        },
+        {
+          "key": "C",
+          "text": "Volume of acid against volume of alkali",
+          "correct": false,
+          "explanation": "The alkali volume never varies.",
+          "misconception": "variable duplicated"
+        },
+        {
+          "key": "D",
+          "text": "Temperature against the number of stirs",
+          "correct": false,
+          "explanation": "Stirring is technique, not a recorded variable.",
+          "misconception": "procedure confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L2::Q2",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L2",
+      "stem": "Why draw a line of best fit through the plotted points?",
+      "misconceptionClass": "graph reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "To smooth out reading scatter and reveal the trend in the temperature change",
+          "correct": true,
+          "explanation": "The best-fit line shows the overall pattern despite small errors in individual readings.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To connect every point exactly",
+          "correct": false,
+          "explanation": "Best-fit lines pass near points, not through all of them.",
+          "misconception": "join-the-dots myth"
+        },
+        {
+          "key": "C",
+          "text": "To make the graph look full",
+          "correct": false,
+          "explanation": "The line has an analytical purpose, not decoration.",
+          "misconception": "purpose myth"
+        },
+        {
+          "key": "D",
+          "text": "To convert temperatures to volumes",
+          "correct": false,
+          "explanation": "No conversion happens; the line locates the trend.",
+          "misconception": "function myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L2::Q3",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L2",
+      "stem": "The graph shows the biggest temperature change at 20 cm3 of acid. What does that volume mark?",
+      "misconceptionClass": "graph interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "The mixture that released the greatest amount of energy",
+          "correct": true,
+          "explanation": "The largest temperature difference corresponds to the largest energy change.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The weakest reaction tested",
+          "correct": false,
+          "explanation": "A big temperature change signals a strong energy release, not weakness.",
+          "misconception": "reading inverted"
+        },
+        {
+          "key": "C",
+          "text": "The point where the acid ran out",
+          "correct": false,
+          "explanation": "Acid supply is controlled by the experimenter, not by the chemistry.",
+          "misconception": "supply myth"
+        },
+        {
+          "key": "D",
+          "text": "The boiling point of the mixture",
+          "correct": false,
+          "explanation": "Boiling is not part of this practical.",
+          "misconception": "invented phenomenon"
+        }
+      ]
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L2::Q4",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L2",
+      "stem": "How does the conclusion link temperature change to energy?",
+      "misconceptionClass": "conclusion logic",
+      "options": [
+        {
+          "key": "A",
+          "text": "A larger temperature difference means more energy was absorbed or released",
+          "correct": true,
+          "explanation": "Temperature change is the proxy for the energy change in this calorimetry study.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Temperature and energy are unrelated in this experiment",
+          "correct": false,
+          "explanation": "The whole practical rests on that link.",
+          "misconception": "link denied"
+        },
+        {
+          "key": "C",
+          "text": "Energy only appears once the acid is in excess",
+          "correct": false,
+          "explanation": "Every portion releases some energy; the amount varies.",
+          "misconception": "threshold myth"
+        },
+        {
+          "key": "D",
+          "text": "The link holds only for endothermic reactions",
+          "correct": false,
+          "explanation": "Neutralisation here is exothermic; the link is general.",
+          "misconception": "scope narrowed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6478QfpYNQDjZSvt::L2::Q5",
+      "moduleId": "rn_6478QfpYNQDjZSvt::L2",
+      "stem": "Which description places this practical in the calorimetry family?",
+      "misconceptionClass": "method classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "A reaction in solution is mixed in an insulated container and its temperature change measured",
+          "correct": true,
+          "explanation": "That is exactly the solution calorimetry described for neutralisation.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A fuel is burned under a copper can of water",
+          "correct": false,
+          "explanation": "That is the combustion variant, not this practical.",
+          "misconception": "variant swapped"
+        },
+        {
+          "key": "C",
+          "text": "A gas is collected over water to measure volume",
+          "correct": false,
+          "explanation": "Gas collection belongs to rate experiments.",
+          "misconception": "topic intrusion"
+        },
+        {
+          "key": "D",
+          "text": "A salt is heated to drive off its water",
+          "correct": false,
+          "explanation": "That is the dehydration of hydrated salts.",
+          "misconception": "topic intrusion"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_pWzTTBv3B4yGFfj3",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "6e29ef056558a4fe0e4860aa84c8f79219fb8b4c5c022a60d7572f6ef31fcd6f",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_pWzTTBv3B4yGFfj3",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L1::Q1",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L1",
+      "stem": "What is the principle behind finding a formula by experiment?",
+      "misconceptionClass": "method-principle error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Measure masses before and after the reaction, convert them into moles, and deduce the molar ratio",
+          "correct": true,
+          "explanation": "Masses are what balances give; moles are what formulae count, so the ratio of moles is the formula evidence.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Heat every compound until it changes colour",
+          "correct": false,
+          "explanation": "Colour change belongs to the hydrated-salt case; the principle is mass measurement, not colour.",
+          "misconception": "one experiment's detail overgeneralised"
+        },
+        {
+          "key": "C",
+          "text": "Read the formula from the balanced equation",
+          "correct": false,
+          "explanation": "The aim is to find the formula; assuming an equation that already contains it goes in circles.",
+          "misconception": "circular reasoning"
+        },
+        {
+          "key": "D",
+          "text": "Titrate the compound against a standard solution",
+          "correct": false,
+          "explanation": "Titration measures reacting volumes of solutions; this method rests on mass changes.",
+          "misconception": "different technique confused with mass analysis"
+        }
+      ]
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L1::Q2",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L1",
+      "stem": "Why do experiments where gases are lost or gained suit this method best?",
+      "misconceptionClass": "method-selection error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The gas loss or gain shows up directly as a mass change",
+          "correct": true,
+          "explanation": "A mass change is the method's raw signal, and escaping or absorbed gas produces one on its own.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Gases have smaller relative formula masses",
+          "correct": false,
+          "explanation": "The size of the relative formula mass is irrelevant; what matters is that the total mass changes.",
+          "misconception": "irrelevant property invoked"
+        },
+        {
+          "key": "C",
+          "text": "Gases cannot be weighed",
+          "correct": false,
+          "explanation": "The gas itself need not be weighed; its effect on the total mass is what is recorded.",
+          "misconception": "balance limitation imagined"
+        },
+        {
+          "key": "D",
+          "text": "Other experiments give no useful data",
+          "correct": false,
+          "explanation": "Other routes exist, but mass-change experiments are the straightforward case for this technique.",
+          "misconception": "false exclusivity"
+        }
+      ]
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L1::Q3",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L1",
+      "stem": "A metal is heated in open air and gains mass. What has happened?",
+      "misconceptionClass": "mass-change direction error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The metal combined with oxygen from the air, so the extra mass is the oxygen now in the oxide",
+          "correct": true,
+          "explanation": "Gains are meaningful too: the metal oxide's mass minus the metal's mass is the oxygen that joined it.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The balance drifted during the heating",
+          "correct": false,
+          "explanation": "A reproducible gain in open air has a chemical cause before an instrumental one.",
+          "misconception": "instrument error blamed by default"
+        },
+        {
+          "key": "C",
+          "text": "The metal evaporated slightly",
+          "correct": false,
+          "explanation": "Evaporation would lose mass; the recorded change here is a gain.",
+          "misconception": "mass change direction confused"
+        },
+        {
+          "key": "D",
+          "text": "The metal expanded, so it weighs more",
+          "correct": false,
+          "explanation": "Expansion changes volume, not mass; only bonded oxygen adds grams.",
+          "misconception": "expansion mistaken for mass gain"
+        }
+      ]
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L1::Q4",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L1",
+      "stem": "Which set of data is enough to deduce the formula of a metal oxide?",
+      "misconceptionClass": "data-sufficiency error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The mass of the metal and the mass of oxygen that combined with it",
+          "correct": true,
+          "explanation": "Two masses give two mole amounts, and their ratio is the formula.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The volume of the dish used",
+          "correct": false,
+          "explanation": "The dish holds the sample; its size enters no mole sum.",
+          "misconception": "irrelevant apparatus detail"
+        },
+        {
+          "key": "C",
+          "text": "The metal's melting point",
+          "correct": false,
+          "explanation": "Melting points identify substances but say nothing about how many atoms combine.",
+          "misconception": "physical property substituted for composition"
+        },
+        {
+          "key": "D",
+          "text": "The time taken for the reaction",
+          "correct": false,
+          "explanation": "Reaction time concerns speed; the formula needs amounts.",
+          "misconception": "rate data mistaken for composition data"
+        }
+      ]
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L1::Q5",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L1",
+      "stem": "0.72 g of magnesium combines with 0.48 g of oxygen. Which ratio should you deduce? (Mg: 24, O: 16)",
+      "misconceptionClass": "mole-ratio error",
+      "options": [
+        {
+          "key": "A",
+          "text": "1 : 1, giving MgO",
+          "correct": true,
+          "explanation": "0.72 / 24 = 0.03 mol of magnesium and 0.48 / 16 = 0.03 mol of oxygen, a one-to-one ratio.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2 : 3, from dividing the masses directly",
+          "correct": false,
+          "explanation": "0.72 / 0.48 is 1.5, and mass ratios are not mole ratios; the relative formula mass division must come first.",
+          "misconception": "masses ratioed without mole conversion"
+        },
+        {
+          "key": "C",
+          "text": "1 : 2, giving MO2",
+          "correct": false,
+          "explanation": "Flipping the divisions swaps which substance has the larger mole count; the masses here give equal moles.",
+          "misconception": "division direction flipped"
+        },
+        {
+          "key": "D",
+          "text": "3 : 2, by rounding the masses",
+          "correct": false,
+          "explanation": "Rounding happens at the very end, after the moles are found; the raw masses are not rounded first.",
+          "misconception": "numbers rounded before converting"
+        }
+      ]
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L2::Q1",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L2",
+      "stem": "Why must the hydrated salt be heated until the blue colour completely disappears?",
+      "misconceptionClass": "endpoint judgement error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The colour change shows all the water of crystallisation has been driven off",
+          "correct": true,
+          "explanation": "Blue means water is still held; only the fully white solid has a trustworthy anhydrous mass.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To melt the salt for accurate weighing",
+          "correct": false,
+          "explanation": "The salt is never melted; melting is not part of the method and would risk loss by spitting.",
+          "misconception": "melting imagined as necessary"
+        },
+        {
+          "key": "C",
+          "text": "To speed up the reaction rate",
+          "correct": false,
+          "explanation": "Heating to completion is about removing every trace of water, not about going faster.",
+          "misconception": "rate confused with completeness"
+        },
+        {
+          "key": "D",
+          "text": "White is the balance's calibration colour",
+          "correct": false,
+          "explanation": "The colour is chemical evidence about water content, not anything to do with the balance.",
+          "misconception": "apparatus misassociation"
+        }
+      ]
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L2::Q2",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L2",
+      "stem": "In the experiment, what does the mass of water equal?",
+      "misconceptionClass": "mass-bookkeeping error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The hydrated salt's mass minus the white anhydrous salt's mass",
+          "correct": true,
+          "explanation": "Everything that vanished between the two weighings was water driven off as vapour.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The anhydrous salt's mass minus the dish's mass",
+          "correct": false,
+          "explanation": "That combination leaves part of the salt's own mass, not the water.",
+          "misconception": "quantities subtracted in the wrong pairing"
+        },
+        {
+          "key": "C",
+          "text": "The hydrated mass plus the anhydrous mass",
+          "correct": false,
+          "explanation": "Adding double-counts the salt; the water is what the sample lost.",
+          "misconception": "addition where subtraction belongs"
+        },
+        {
+          "key": "D",
+          "text": "The dish's mass before and after",
+          "correct": false,
+          "explanation": "The dish's mass never changes; the contents are what lose water.",
+          "misconception": "container confused with contents"
+        }
+      ]
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L2::Q3",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L2",
+      "stem": "A student heats too strongly and some salt decomposes. How does the deduced value of x compare with the true value?",
+      "misconceptionClass": "error-propagation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Too high, because the extra mass loss is counted as water",
+          "correct": true,
+          "explanation": "Decomposed salt leaves as gas too, so the water mass is inflated and the ratio hands water the larger share.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Too low, because decomposed salt weighs less",
+          "correct": false,
+          "explanation": "The salt's own mole count uses the remaining mass, while the inflated loss lands entirely on the water side.",
+          "misconception": "direction of bias flipped"
+        },
+        {
+          "key": "C",
+          "text": "Unchanged, because decomposition does not involve water",
+          "correct": false,
+          "explanation": "The method cannot tell which gas left; every lost gram is billed to water.",
+          "misconception": "assumed independence of errors"
+        },
+        {
+          "key": "D",
+          "text": "Unreliable in an unpredictable direction",
+          "correct": false,
+          "explanation": "The bias has a firm direction here: extra loss always inflates the water count.",
+          "misconception": "unfalsifiable hedge"
+        }
+      ]
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L2::Q4",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L2",
+      "stem": "The data gives 0.025 mol of anhydrous salt and 0.049 mol of water. What is the formula?",
+      "misconceptionClass": "ratio-rounding error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Salt.2H2O, since 0.049 / 0.025 is about 2",
+          "correct": true,
+          "explanation": "The water-to-salt ratio is roughly 1.96, and the exam hint says round to the nearest whole number.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Salt.1.96H2O, kept unrounded",
+          "correct": false,
+          "explanation": "Formulae need whole numbers of waters; 1.96 is the raw ratio, not the answer.",
+          "misconception": "rounding step skipped"
+        },
+        {
+          "key": "C",
+          "text": "Salt.0.5H2O, from inverting the ratio",
+          "correct": false,
+          "explanation": "0.025 / 0.049 is about 0.51, but the convention puts one salt unit first and counts waters against it.",
+          "misconception": "division inverted"
+        },
+        {
+          "key": "D",
+          "text": "SaltH2O, because the values are nearly equal",
+          "correct": false,
+          "explanation": "0.049 is nearly double 0.025, not equal to it; the waters number two.",
+          "misconception": "ratio read as one-to-one"
+        }
+      ]
+    },
+    {
+      "id": "rn_pWzTTBv3B4yGFfj3::L2::Q5",
+      "moduleId": "rn_pWzTTBv3B4yGFfj3::L2",
+      "stem": "After recording both masses, what is the correct order of steps?",
+      "misconceptionClass": "procedural-order error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Divide each mass by its relative formula mass, simplify the water-to-salt ratio, then write salt.xH2O",
+          "correct": true,
+          "explanation": "Moles first, ratio second, formula last - the table's three steps in order.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Write salt.xH2O, then check it against the masses",
+          "correct": false,
+          "explanation": "The formula is the output; writing it first reverses the evidence chain.",
+          "misconception": "answer-first working"
+        },
+        {
+          "key": "C",
+          "text": "Simplify the masses directly, without converting to moles",
+          "correct": false,
+          "explanation": "Mass ratios and mole ratios differ unless the relative formula masses happen to match; the conversion is not optional.",
+          "misconception": "mass ratio mistaken for mole ratio"
+        },
+        {
+          "key": "D",
+          "text": "Multiply each mass by its relative formula mass",
+          "correct": false,
+          "explanation": "Moles come from dividing by the relative formula mass; multiplying would invent a meaningless quantity.",
+          "misconception": "multiplication and division swapped"
+        }
+      ]
+    }
+  ]
+}

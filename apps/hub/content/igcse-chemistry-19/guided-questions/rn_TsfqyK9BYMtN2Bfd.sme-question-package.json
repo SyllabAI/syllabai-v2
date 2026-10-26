@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_TsfqyK9BYMtN2Bfd",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "eb583c9a1caa62421301af43745d559987b19ea1cb0db20995466af4f0697e95",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_TsfqyK9BYMtN2Bfd",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L1::Q1",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L1",
+      "stem": "How far from the bottom of the paper does the pencil start line go?",
+      "misconceptionClass": "start line placement",
+      "options": [
+        {
+          "key": "A",
+          "text": "2 cm from the bottom edge",
+          "correct": true,
+          "explanation": "The line sits 2 cm up so the paper below can dip into the solvent without the samples touching it.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2 cm from the top edge",
+          "correct": false,
+          "explanation": "The start line is at the bottom; the solvent climbs from it toward the top.",
+          "misconception": "start line placed at the solvent end"
+        },
+        {
+          "key": "C",
+          "text": "Anywhere on the paper, as long as it is straight",
+          "correct": false,
+          "explanation": "Placement is fixed 2 cm from the bottom; a line elsewhere puts samples in or above the solvent.",
+          "misconception": "measuring position treated as optional"
+        },
+        {
+          "key": "D",
+          "text": "On the dry upper half, above the water",
+          "correct": false,
+          "explanation": "That confuses the start line with the solvent front, which is only drawn after the run.",
+          "misconception": "start line confused with solvent front"
+        }
+      ]
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L1::Q2",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L1",
+      "stem": "Why must each food colouring be spotted with a different capillary tube?",
+      "misconceptionClass": "cross-contamination between samples",
+      "options": [
+        {
+          "key": "A",
+          "text": "A used tube would carry traces of the previous dye into the next sample",
+          "correct": true,
+          "explanation": "Cross-contamination would plant foreign spots on the chromatogram and fake a match.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The tubes soften when reused, so spots would be too large",
+          "correct": false,
+          "explanation": "Tube softness is not the issue; the risk is dye traces, not tube shape.",
+          "misconception": "material wear blamed instead of contamination"
+        },
+        {
+          "key": "C",
+          "text": "Five tubes are supplied, so all five must be used",
+          "correct": false,
+          "explanation": "The count of tubes is beside the point; each sample needs its own clean tube.",
+          "misconception": "procedural compliance mistaken for the reason"
+        },
+        {
+          "key": "D",
+          "text": "Different tubes hold different volumes of solvent",
+          "correct": false,
+          "explanation": "Spot size is controlled by how the tube is used, and the concern is mixing samples, not volume.",
+          "misconception": "solvent volume confused with sample purity"
+        }
+      ]
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L1::Q3",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L1",
+      "stem": "What is the largest diameter a sample spot may have?",
+      "misconceptionClass": "spot size limit",
+      "options": [
+        {
+          "key": "A",
+          "text": "2-3 mm, so the separated dyes stay distinct",
+          "correct": true,
+          "explanation": "Tiny, concentrated spots separate into distinct marks that are easy to measure.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "5 mm, which keeps the pencil line safe",
+          "correct": false,
+          "explanation": "The limit is 2-3 mm and it guards spot separation, not the line.",
+          "misconception": "invented limit attached to the wrong risk"
+        },
+        {
+          "key": "C",
+          "text": "1 cm, which keeps the solvent from escaping",
+          "correct": false,
+          "explanation": "Solvent loss is controlled by a lid on the beaker, not by spot size.",
+          "misconception": "evaporation control confused with spot size"
+        },
+        {
+          "key": "D",
+          "text": "There is no limit; bigger spots give stronger colour",
+          "correct": false,
+          "explanation": "Oversized spots smear and merge, which spoils the measurements.",
+          "misconception": "more sample assumed to mean better data"
+        }
+      ]
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L1::Q4",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L1",
+      "stem": "How deep should the water be poured into the beaker?",
+      "misconceptionClass": "solvent depth control",
+      "options": [
+        {
+          "key": "A",
+          "text": "No more than 1 cm, so the start line stays above the solvent",
+          "correct": true,
+          "explanation": "Samples must start above the solvent, or they dissolve straight into it instead of climbing.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "About half the beaker, so the paper gets plenty of solvent",
+          "correct": false,
+          "explanation": "Deep solvent would cover the start line and end the run before it begins.",
+          "misconception": "more solvent assumed to mean a better run"
+        },
+        {
+          "key": "C",
+          "text": "Exactly level with the pencil line",
+          "correct": false,
+          "explanation": "Level with the line means the samples sit in the solvent, which dissolves them away.",
+          "misconception": "touching the line treated as safe"
+        },
+        {
+          "key": "D",
+          "text": "The depth does not matter as long as spots are small",
+          "correct": false,
+          "explanation": "Depth is the one factor that decides whether samples start above or below the solvent.",
+          "misconception": "spot size mistaken for solvent control"
+        }
+      ]
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L1::Q5",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L1",
+      "stem": "When should the paper be lifted out of the beaker?",
+      "misconceptionClass": "endpoint of the run",
+      "options": [
+        {
+          "key": "A",
+          "text": "After the solvent has travelled at least three quarters of the way up",
+          "correct": true,
+          "explanation": "That gives the dyes room to separate while leaving the front distance measurable.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "As soon as the spots start to move",
+          "correct": false,
+          "explanation": "Lifting that early stops the run before the dyes have spread apart.",
+          "misconception": "first movement mistaken for completion"
+        },
+        {
+          "key": "C",
+          "text": "When the solvent reaches the very top of the paper",
+          "correct": false,
+          "explanation": "By then the front has run off, and its travel distance can no longer be measured.",
+          "misconception": "maximum run assumed to be best"
+        },
+        {
+          "key": "D",
+          "text": "After exactly five minutes, whatever the solvent has done",
+          "correct": false,
+          "explanation": "The endpoint is set by how far the solvent front has climbed, not by the clock.",
+          "misconception": "fixed time mistaken for the endpoint"
+        }
+      ]
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q1",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
+      "stem": "A student draws the start line with ballpoint ink. What happens to the chromatogram?",
+      "misconceptionClass": "ink start line error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The ink's own dyes climb the paper and interfere with the dye spots",
+          "correct": true,
+          "explanation": "Ink is a dye mixture, so it produces extra marks that make the result hard to read.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Nothing, because ink and pencil mark the paper the same way",
+          "correct": false,
+          "explanation": "Pencil is insoluble; ink dyes dissolve and travel, so the two are not equivalent.",
+          "misconception": "writing tools assumed interchangeable"
+        },
+        {
+          "key": "C",
+          "text": "The paper dissolves where the ink sits",
+          "correct": false,
+          "explanation": "Paper stays intact; it is the ink that moves, not the paper that breaks down.",
+          "misconception": "solvent damage blamed on the paper"
+        },
+        {
+          "key": "D",
+          "text": "The sample spots become larger than 2-3 mm",
+          "correct": false,
+          "explanation": "Spot size was fixed when sampling; the ink adds stray marks instead.",
+          "misconception": "two separate errors merged into one"
+        }
+      ]
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q2",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
+      "stem": "Spots were made about 5 mm across. What is the most likely outcome?",
+      "misconceptionClass": "oversized spot error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Neighbouring dyes merge or smear, so distances cannot be measured cleanly",
+          "correct": true,
+          "explanation": "Oversized spots spread into each other and blur the positions of their centres.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The dyes separate faster because more sample is moving",
+          "correct": false,
+          "explanation": "Extra sample does not speed the solvent; it widens the marks and muddies them.",
+          "misconception": "more sample assumed to speed the run"
+        },
+        {
+          "key": "C",
+          "text": "The start line dissolves because bigger spots hold more water",
+          "correct": false,
+          "explanation": "The line's safety depends on being drawn in pencil, not on spot diameter.",
+          "misconception": "unrelated cause attached to spot size"
+        },
+        {
+          "key": "D",
+          "text": "The Rf values come out above 1",
+          "correct": false,
+          "explanation": "Spot size cannot push a spot past the solvent front, so Rf stays below 1.",
+          "misconception": "measurement error blamed on the ratio bound"
+        }
+      ]
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q3",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
+      "stem": "The water was poured to 3 cm, well above the pencil line. What follows?",
+      "misconceptionClass": "solvent above start line error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The samples dissolve straight into the solvent and no separation happens",
+          "correct": true,
+          "explanation": "Samples must start above the liquid; underwater, they never climb the paper at all.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The run works normally but takes longer",
+          "correct": false,
+          "explanation": "Submerged samples never begin a climb; time is not the issue.",
+          "misconception": "submersion mistaken for a slow start"
+        },
+        {
+          "key": "C",
+          "text": "The spots travel further and give bigger Rf values",
+          "correct": false,
+          "explanation": "There is no travel at all, so there is nothing to measure.",
+          "misconception": "distance inflated by extra solvent"
+        },
+        {
+          "key": "D",
+          "text": "Only the unknown mixture U is affected",
+          "correct": false,
+          "explanation": "Every sample on the line is underwater and every one is lost.",
+          "misconception": "error confined to one sample"
+        }
+      ]
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q4",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
+      "stem": "Why does a watch glass lid on the beaker improve the run?",
+      "misconceptionClass": "uncovered beaker error",
+      "options": [
+        {
+          "key": "A",
+          "text": "It keeps solvent vapour in, so the paper does not dry out and slow the climb",
+          "correct": true,
+          "explanation": "A saturated atmosphere stops solvent leaving the wet paper, keeping the run steady.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It stops the solvent spilling if the beaker is knocked",
+          "correct": false,
+          "explanation": "Spill protection is incidental; the lid's job is controlling vapour.",
+          "misconception": "safety role invented for the lid"
+        },
+        {
+          "key": "C",
+          "text": "It raises the temperature so dyes move faster",
+          "correct": false,
+          "explanation": "The lid does not heat anything; it fills the air above with solvent vapour.",
+          "misconception": "heating effect assumed"
+        },
+        {
+          "key": "D",
+          "text": "It keeps the dyes from evaporating off the paper",
+          "correct": false,
+          "explanation": "Dyes are not volatile; what escapes is solvent from the paper's surface.",
+          "misconception": "dye loss confused with solvent loss"
+        }
+      ]
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q5",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
+      "stem": "Spot U lands level with colouring B, and their Rf values match. What is concluded?",
+      "misconceptionClass": "identification by Rf match",
+      "options": [
+        {
+          "key": "A",
+          "text": "The unknown mixture contains dye B",
+          "correct": true,
+          "explanation": "Same height and same Rf identify the same substance, and the visual comparison agrees.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "U is pure dye B and nothing else",
+          "correct": false,
+          "explanation": "One matching spot shows B is present; other spots in U would mean more components.",
+          "misconception": "one match taken as the whole composition"
+        },
+        {
+          "key": "C",
+          "text": "Colouring B must be a mixture of four dyes",
+          "correct": false,
+          "explanation": "B is a known single colouring; it is U whose composition is being probed.",
+          "misconception": "direction of identification reversed"
+        },
+        {
+          "key": "D",
+          "text": "The result is void because U moved the same distance as B",
+          "correct": false,
+          "explanation": "Matching travel is exactly the evidence the practical is designed to produce.",
+          "misconception": "agreement mistaken for a fault"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_TM4QVMgXVxs4vbfY",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "eab2f6f2851f4ac47f1a47707cae3d704d0b3175f44f25a4cb6c28c8ea1df8d3",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_TM4QVMgXVxs4vbfY",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Electrolysis",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-9-electrolysis/1-9-3-writing-half-equations",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.59C",
+        "text": "write ionic half-equations representing the reactions at the electrodes during electrolysis and understand why these reactions are classified as oxidation or reduction"
+      }
+    ],
+    "primer": {
+      "text": "You already know from Ionic Bonding that ionic substances contain charged particles: positive cations and negative anions, held together in a lattice. Electrolysis puts those charges to work. This note shows how a half equation tracks the electrons at one electrode, and how each electrode's change earns the name oxidation or reduction.",
+      "prerequisiteSubtopic": "Ionic Bonding"
+    },
+    "modules": [
+      {
+        "id": "rn_TM4QVMgXVxs4vbfY::L1",
+        "title": "Electrolysis half equations",
+        "sourceHeadings": [
+          "Writing Half-Equations",
+          "Electrolysis half equations"
+        ],
+        "specRefs": [
+          "4CH1-1.59C"
+        ],
+        "opening": "During electrolysis the ions reaching each electrode either lose or gain electrons, and the products leave as neutral substances. A half equation records just that electron movement at one electrode. Oxidation is electron loss and reduction is electron gain, so the label follows directly from the equation you write.",
+        "keyPoints": [
+          "Oxidation is electron loss and reduction is electron gain, defined by electrons rather than oxygen.",
+          "Ions reaching an electrode lose or gain electrons and form neutral substances, which are discharged as products.",
+          "At the anode, negative ions lose electrons and are oxidised; at the cathode, positive ions gain electrons and are reduced.",
+          "A half equation describes the movement of electrons at one electrode.",
+          "The charges on each side of a half equation should always balance."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "OIL RIG: Oxidation Is Loss, Reduction Is Gain — of electrons. Negative ions lose their extra electrons at the anode; positive ions pick up electrons at the cathode.",
+            "analogy": "A cloakroom: some visitors drop off a coat as they arrive, others collect one on the way out. The attendant never keeps the coats — electrons are handed over, never stored.",
+            "examPointer": "When asked to justify the label oxidation or reduction, name the electron loss or gain at that electrode; mentioning oxygen earns nothing here."
+          },
+          "medium": {
+            "restatement": "In electrolysis the electron bookkeeping runs both ways: oxidation is electron loss at the positive anode, where negative ions are discharged as neutral products, and reduction is electron gain at the negative cathode, where positive ions are discharged in their turn.",
+            "analogy": "Two till windows at a bureau de change: one only buys electrons from ions arriving with a negative balance, the other sells them to positive customers — every transaction written on its own receipt.",
+            "examPointer": "Charge balance is the built-in checker: total charge on the left must equal total charge on the right, so a mismatch exposes a slipped electron count or coefficient immediately."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TM4QVMgXVxs4vbfY::L1::Q1",
+          "rn_TM4QVMgXVxs4vbfY::L1::Q2",
+          "rn_TM4QVMgXVxs4vbfY::L1::Q3",
+          "rn_TM4QVMgXVxs4vbfY::L1::Q4",
+          "rn_TM4QVMgXVxs4vbfY::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_TM4QVMgXVxs4vbfY::L2",
+        "title": "Electrolysis of molten lead(II) bromide",
+        "sourceHeadings": [
+          "Electrolysis of molten lead(II) bromide",
+          "Electrolysis of aqueous sodium chloride"
+        ],
+        "specRefs": [
+          "4CH1-1.59C"
+        ],
+        "opening": "Molten lead(II) bromide and aqueous sodium chloride share one anode story: a halide ion reaches the positive electrode, loses its spare electron, and pairs up into a diatomic gas. At the cathode the story reverses — lead ions become lead atoms, while in solution it is hydrogen ions that gain electrons to make hydrogen.",
+        "keyPoints": [
+          "At the cathode of molten lead(II) bromide, Pb2+ gains two electrons: Pb2+ + 2e- → Pb, reduction.",
+          "Bromide ions lose electrons two at a time: 2Br- → Br2 + 2e-, oxidation at the anode.",
+          "The same form writes chloride discharge: 2Cl- → Cl2 + 2e-, so chlorine gas forms at the anode.",
+          "In aqueous sodium chloride the cathode half equation is 2H+ + 2e- → H2, hydrogen gas from hydrogen ions."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Lead ions take two electrons each to become lead atoms; halide ions leave one electron each, but the gas comes as a two-atom molecule, so the equation needs two halide ions and two electrons.",
+            "analogy": "Pairing socks to leave the house: two single halide ions must each drop an electron before they can walk out together as one molecule.",
+            "examPointer": "Both correct forms are accepted for the anode — electrons shown leaving on the left, or added as products on the right — provided the atom and charge tallies balance."
+          },
+          "medium": {
+            "restatement": "In molten lead(II) bromide the cathode half equation is Pb2+ + 2e- → Pb and the anode half equation is 2Br- → Br2 + 2e-; in aqueous sodium chloride the same halide pattern gives chlorine, while the cathode reduces hydrogen ions to hydrogen gas instead of depositing sodium.",
+            "analogy": "Think of the halide pattern as one mask with the element's name swapped in: bromine and chlorine fit the same template, two ions in, one molecule out, two electrons released.",
+            "examPointer": "The aqueous sodium chloride cathode catches out candidates who deposit sodium; in solution it is the hydrogen ions that are discharged, so the product is hydrogen gas."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TM4QVMgXVxs4vbfY::L2::Q1",
+          "rn_TM4QVMgXVxs4vbfY::L2::Q2",
+          "rn_TM4QVMgXVxs4vbfY::L2::Q3",
+          "rn_TM4QVMgXVxs4vbfY::L2::Q4",
+          "rn_TM4QVMgXVxs4vbfY::L2::Q5"
+        ]
+      },
+      {
+        "id": "rn_TM4QVMgXVxs4vbfY::L3",
+        "title": "Electrolysis of dilute sulfuric acid",
+        "sourceHeadings": [
+          "Electrolysis of dilute sulfuric acid",
+          "Electrolysis of aqueous copper(II) sulfate"
+        ],
+        "specRefs": [
+          "4CH1-1.59C"
+        ],
+        "opening": "Dilute sulfuric acid and aqueous copper(II) sulfate share their electrode chemistry: hydrogen ions or copper ions are reduced at the cathode, while water molecules themselves give up electrons at the anode and release oxygen gas. Because these solutions are acidic, no hydroxide ions are present, so water does the discharging.",
+        "keyPoints": [
+          "The cathode half equation in dilute sulfuric acid is 2H+ + 2e- → H2, hydrogen gas.",
+          "The cathode half equation in aqueous copper(II) sulfate is Cu2+ + 2e- → Cu, copper metal.",
+          "The anode half equation in both cases is 2H2O → O2 + 4H+ + 4e-, the oxidation of water molecules.",
+          "Acidic solutions do not contain OH- ions, so water rather than hydroxide is discharged.",
+          "Alkaline solutions contain OH- ions, so hydroxide appears in the oxidation half equation instead."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "In both solutions the cathode simply delivers electrons to the positive ions present, while the anode takes electrons from water molecules themselves, releasing oxygen and hydrogen ions.",
+            "analogy": "Water here is the unpaid volunteer: the solution's own negative ions are unsuitable, so the water molecules step up to the anode and give away four electrons between them.",
+            "examPointer": "Check the solution's nature first: acidic means water is discharged at the anode, alkaline means hydroxide ions take that job — the exam states which one you are in."
+          },
+          "medium": {
+            "restatement": "The cathode half equation is 2H+ + 2e- → H2 for dilute sulfuric acid and Cu2+ + 2e- → Cu for aqueous copper(II) sulfate; both share the water anode 2H2O → O2 + 4H+ + 4e- because neither acidic solution contains hydroxide ions.",
+            "analogy": "One anode script, two cathode cameos: the water-to-oxygen scene plays identically in both electrolyses, while the cathode casts whichever positive ion the solution supplies.",
+            "examPointer": "Copper(II) sulfate solution is slightly acidic, so its anode involves water; the conditions in a question always tell you whether water or hydroxide applies."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TM4QVMgXVxs4vbfY::L3::Q1",
+          "rn_TM4QVMgXVxs4vbfY::L3::Q2",
+          "rn_TM4QVMgXVxs4vbfY::L3::Q3",
+          "rn_TM4QVMgXVxs4vbfY::L3::Q4",
+          "rn_TM4QVMgXVxs4vbfY::L3::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "oxidation",
+          "definition": "The loss of electrons by a species; during electrolysis it happens at the anode.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reduction",
+          "definition": "The gain of electrons by a species; during electrolysis it happens at the cathode.",
+          "firstLesson": 1
+        },
+        {
+          "term": "half equation",
+          "definition": "An equation for a single electrode that shows the electrons lost or gained during discharge.",
+          "firstLesson": 1
+        },
+        {
+          "term": "discharge",
+          "definition": "The conversion of an ion into a neutral substance at an electrode, so it leaves as a product.",
+          "firstLesson": 1
+        },
+        {
+          "term": "anode",
+          "definition": "The positive electrode; negative ions lose electrons here and are oxidised.",
+          "firstLesson": 1
+        },
+        {
+          "term": "cathode",
+          "definition": "The negative electrode; positive ions gain electrons here and are reduced.",
+          "firstLesson": 1
+        },
+        {
+          "term": "hydroxide ion",
+          "definition": "The OH- ion, present in alkaline solutions and absent from acidic ones.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": {
+        "prompt": "The note's first electrode case, written out in full: write the half equations for both electrodes in the electrolysis of molten lead(II) bromide and classify each as oxidation or reduction.",
+        "steps": [
+          "Cathode (negative electrode): lead ions each need two electrons, so the reduction is Pb2+ + 2e- → Pb.",
+          "Charge check: the 2+ charge of the lead ion is cancelled by the two negative charges carried by the electrons, a bookkeeping of 2 - 2 = 0, leaving a neutral lead atom on the right.",
+          "Anode (positive electrode): bromide ions are discharged in pairs, so the oxidation is 2Br- → Br2 + 2e-, written equally as 2Br- - 2e- → Br2.",
+          "Charge check: the two negative charges of the two bromide ions are accounted for by the two electrons released, so both sides again carry the same overall charge."
+        ],
+        "finalAnswer": "Pb2+ + 2e- → Pb (reduction at the cathode); 2Br- → Br2 + 2e- (oxidation at the anode)"
+      }
+    }
+  }
+}

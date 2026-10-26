@@ -1,0 +1,158 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_6M5JB7CjvwdDykMS",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "12ac238bfd47f80b9969aee04bcaddd2e369136daef71e5f82813b340dba0530",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_6M5JB7CjvwdDykMS",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Gases in the Atmosphere",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-3-gases-in-the-atmosphere/2-3-1-composition-of-air",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.10",
+        "text": "understand how to determine the percentage by volume of oxygen in air using experiments involving the reactions of metals (e.g. iron) and non-metals (e.g. phosphorus) with air"
+      },
+      {
+        "code": "4CH1-2.9",
+        "text": "know the approximate percentages by volume of the four most abundant gases in dry air"
+      }
+    ],
+    "primer": {
+      "text": "From Group 7 (Halogens) you have just seen how gases such as chlorine behave and how their colours identify them. This note turns to the mixture above your head: what dry air is made of, the approximate percentages of its four most abundant gases, and how a simple reaction with a metal or non-metal measures the oxygen fraction.",
+      "prerequisiteSubtopic": "Group 7 (Halogens)"
+    },
+    "modules": [
+      {
+        "id": "rn_6M5JB7CjvwdDykMS::L1",
+        "title": "Composition of the atmosphere",
+        "sourceHeadings": [
+          "Composition of air",
+          "Composition of the atmosphere"
+        ],
+        "specRefs": [
+          "4CH1-2.9"
+        ],
+        "opening": "Dry air is a mixture whose proportions have barely changed in 200 million years. About four-fifths of it by volume is nitrogen and about one-fifth is oxygen, with carbon dioxide, water vapour and the noble gases making up the small remainder. Knowing these approximate percentages is the baseline for every experiment that measures the oxygen fraction.",
+        "keyPoints": [
+          "About 80 percent of dry air by volume is nitrogen, roughly four-fifths of the total.",
+          "About 20 percent of dry air by volume is oxygen, roughly one-fifth of the total.",
+          "Small proportions of carbon dioxide, water vapour and noble gases make up the remainder.",
+          "The proportion of gases in the air has changed little in 200 million years.",
+          "Carbon dioxide is present only in a very small amount yet it has a large warming role."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Air is roughly four-fifths nitrogen and one-fifth oxygen by volume, with tiny amounts of carbon dioxide, water vapour and the noble gases behind them. Those two percentages are the ones every exam question on air expects you to quote, and they have held steady over an immense span of time.",
+            "analogy": "Think of air as a five-part drink: four parts nitrogen to one part oxygen, with just a sprinkle of everything else shaken in at the end.",
+            "examPointer": "Quote the two approximate percentages to the nearest fifth and name the trace gases as well; that is the whole of this recall mark, and it repays practice until it is automatic."
+          },
+          "medium": {
+            "restatement": "By volume, dry air is approximately 80 percent nitrogen and 20 percent oxygen, and those four-fifths and one-fifth shares are remarkably stable over geological time. The remaining fraction holds carbon dioxide, water vapour and the noble gases in small proportions, which is why any measurement experiment targets the oxygen fifth alone.",
+            "analogy": "Picture a stadium of 100 spectators where 80 wear one colour and 20 another: spotting the handful of others takes a deliberate search, just as measuring the trace gases takes special experiments.",
+            "examPointer": "When a question asks for the four most abundant gases in dry air, give nitrogen and oxygen with their percentages, then carbon dioxide and the noble gases as the small shares."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6M5JB7CjvwdDykMS::L1::Q1",
+          "rn_6M5JB7CjvwdDykMS::L1::Q2",
+          "rn_6M5JB7CjvwdDykMS::L1::Q3",
+          "rn_6M5JB7CjvwdDykMS::L1::Q4",
+          "rn_6M5JB7CjvwdDykMS::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_6M5JB7CjvwdDykMS::L2",
+        "title": "Finding the percentage of oxygen",
+        "sourceHeadings": [
+          "Finding the percentage of oxygen"
+        ],
+        "specRefs": [
+          "4CH1-2.10"
+        ],
+        "opening": "The oxygen fraction of air can be measured by letting a chosen reactant consume the oxygen inside a fixed, sealed volume. Burning a little phosphorus in a bell jar standing over water does the job: the flame uses up the oxygen, and the rising water shows the volume lost. Reading the water levels before and after the burn gives the percentage directly.",
+        "keyPoints": [
+          "A chosen reactant consumes the oxygen from a measured, sealed sample of air.",
+          "One method burns phosphorus inside a bell jar that stands in a trough of water.",
+          "The burning consumes the oxygen inside the jar, so the water level climbs upward.",
+          "Phosphorus fits the task because it keeps burning until no oxygen is left.",
+          "Phosphorus is toxic, so the experiment must be handled with great care."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Burn something that grabs oxygen, such as phosphorus, inside a sealed jar of air standing over water. The oxygen is consumed, water rises to fill its place, and comparing water levels before and after gives the oxygen percentage.",
+            "analogy": "It works like drinking through a straw: as the gas above is used up, the liquid climbs to replace what has gone.",
+            "examPointer": "Name the reactant, the rise of water and the before-and-after measurements; those three points carry the method mark."
+          },
+          "medium": {
+            "restatement": "The experiment converts gaseous oxygen into a solid oxide inside a closed, fixed volume of air, so the gas volume falls by exactly the oxygen share. Water rises to occupy that volume, and the measured change divided by the starting air volume yields the percentage of oxygen, about one-fifth.",
+            "analogy": "Picture removing one chair in five from a full row and letting people slide along: the empty gap that closes up is the fraction you removed.",
+            "examPointer": "Explain why the choice of reactant matters: it must react readily with oxygen alone and leave no new gas behind, as phosphorus does."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6M5JB7CjvwdDykMS::L2::Q1",
+          "rn_6M5JB7CjvwdDykMS::L2::Q2",
+          "rn_6M5JB7CjvwdDykMS::L2::Q3",
+          "rn_6M5JB7CjvwdDykMS::L2::Q4",
+          "rn_6M5JB7CjvwdDykMS::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "dry air",
+          "definition": "Air considered without its variable water vapour content, so the gas percentages refer to the fixed components.",
+          "firstLesson": 1
+        },
+        {
+          "term": "bell jar",
+          "definition": "A sealed glass vessel used in this experiment to hold the fixed volume of air over water.",
+          "firstLesson": 2
+        },
+        {
+          "term": "oxide",
+          "definition": "The compound formed when an element reacts with oxygen.",
+          "firstLesson": 2
+        },
+        {
+          "term": "percentage by volume",
+          "definition": "The share of a gas's volume in a mixture, expressed as a percentage of the whole.",
+          "firstLesson": 1
+        },
+        {
+          "term": "noble gases",
+          "definition": "The unreactive Group 0 gases, present in air only in trace quantities.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

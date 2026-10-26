@@ -1,0 +1,158 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_b3XCzdtfQddbJjVf",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "824406048187423327988ec44c0578ed7d464485dc36747823934f50e19faf6e",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_b3XCzdtfQddbJjVf",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "The Periodic Table",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-4-the-periodic-table/1-4-1-periodic-table-basics",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.18",
+        "text": "understand how elements are arranged in the Periodic Table: in order of atomic number, in groups and periods"
+      }
+    ],
+    "primer": {
+      "text": "The atomic number you met in Atomic Structure is the key that unlocks the periodic table: it counts an atom's protons and labels every element uniquely. This note shows how the table orders elements by that number, and how its rows and columns encode electron shells and outer electrons. If atomic number still feels new, revisit Atomic Structure before starting.",
+      "prerequisiteSubtopic": "Atomic Structure"
+    },
+    "modules": [
+      {
+        "id": "rn_b3XCzdtfQddbJjVf::L1",
+        "title": "In Order of Atomic Number",
+        "sourceHeadings": [
+          "Arrangement of the Periodic Table"
+        ],
+        "specRefs": [
+          "4CH1-1.18"
+        ],
+        "opening": "The periodic table lists every element in order of increasing atomic number, so each element takes one step up in protons from its neighbour. That single ordering rule quietly does clever work: elements with similar properties land in the same column. The atomic number is also each element's fingerprint - electrons shift during reactions, but that number never does.",
+        "keyPoints": [
+          "Over 100 elements have been isolated and identified so far.",
+          "Elements are arranged in order of increasing atomic number.",
+          "Each element carries one proton more than the element before it.",
+          "Ordering by atomic number places elements with similar properties in the same columns.",
+          "An element's atomic number is its fingerprint: it never changes, even in reactions."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Read the table left to right and the proton count climbs by one at every step; that ordering is what gathers elements with similar properties into the same column.",
+            "analogy": "It is like a numbered queue: everyone joins exactly one place further along, and the numbering is arranged so that people with the same interests end up standing together in the same line.",
+            "examPointer": "The fingerprint line earns easy marks: electrons come and go in reactions, but the atomic number of an element never changes."
+          },
+          "medium": {
+            "restatement": "Over 100 identified elements are laid out in order of increasing atomic number, each one proton more than the element before. The ordering is chosen so that elements with similar properties finish up in the same vertical column - and the atomic number is unique to each element, never altered by chemical reactions.",
+            "analogy": "Think of a stadium where every seat number increases by exactly one along the row: the strict numbering is what lets supporters of the same team find each other.",
+            "examPointer": "Two facts travel together in exam answers: the order is by atomic number, and that number is the element's fingerprint which no reaction can rewrite."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_b3XCzdtfQddbJjVf::L1::Q1",
+          "rn_b3XCzdtfQddbJjVf::L1::Q2",
+          "rn_b3XCzdtfQddbJjVf::L1::Q3",
+          "rn_b3XCzdtfQddbJjVf::L1::Q4",
+          "rn_b3XCzdtfQddbJjVf::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_b3XCzdtfQddbJjVf::L2",
+        "title": "Groups and Periods",
+        "sourceHeadings": [
+          "The periodic table"
+        ],
+        "specRefs": [
+          "4CH1-1.18"
+        ],
+        "opening": "Every line on the periodic table carries meaning. Periods count electron shells and groups count outer-shell electrons, with the last column named Group 0. Read an element's position and you can state both counts at a glance.",
+        "keyPoints": [
+          "Vertical columns are groups; horizontal rows are periods.",
+          "The period number gives the number of electron shells an atom holds.",
+          "The group number gives the number of electrons in the outermost shell.",
+          "Groups run 1 to 7, with the final column named Group 0 instead of 8.",
+          "A Period 2 element has two shells; a Group 6 element has six outer electrons."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Rows are periods and count an atom's electron shells; columns are groups and count its outer-shell electrons, so the two numbers together place any atom exactly. Groups run 1 to 7, then a final column called Group 0.",
+            "analogy": "The table works like a hotel: the floor number tells how many storeys of electrons the atom has, and the room number along the corridor tells who is at the door - the outer electrons.",
+            "examPointer": "Read the two numbers straight off the element's position: period 3, group 5 means three shells and five outer electrons."
+          },
+          "medium": {
+            "restatement": "Periods are the horizontal rows, numbered 1 to 7, and a period number is the count of electron shells - Period 2 atoms have two shells. Groups are the vertical columns, numbered 1 to 7 with a final Group 0, and a group number is the count of outer-shell electrons - Group 6 atoms hold six electrons in their outermost shell.",
+            "analogy": "Think of the table as a block of flats: the period is the floor plan (how many storeys of electrons), while the group is the street-facing room number (how many electrons stand at the outer door, ready to react).",
+            "examPointer": "Position questions want both numbers read and translated: shells from the period, outer electrons from the group - and Group 0 is the given name of the last column, not a count of nothing."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_b3XCzdtfQddbJjVf::L2::Q1",
+          "rn_b3XCzdtfQddbJjVf::L2::Q2",
+          "rn_b3XCzdtfQddbJjVf::L2::Q3",
+          "rn_b3XCzdtfQddbJjVf::L2::Q4",
+          "rn_b3XCzdtfQddbJjVf::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "atomic number",
+          "definition": "The number of protons in the nucleus of an atom.",
+          "firstLesson": 1
+        },
+        {
+          "term": "group",
+          "definition": "A vertical column of the periodic table, numbering the electrons in the outermost shell.",
+          "firstLesson": 2
+        },
+        {
+          "term": "period",
+          "definition": "A horizontal row of the periodic table, numbering the shells of electrons an atom holds.",
+          "firstLesson": 2
+        },
+        {
+          "term": "electron shell",
+          "definition": "One of the layers, or orbital paths, around the nucleus where electrons are found.",
+          "firstLesson": 2
+        },
+        {
+          "term": "outer electrons",
+          "definition": "The electrons in the outermost shell, counted by the group number.",
+          "firstLesson": 2
+        },
+        {
+          "term": "Group 0",
+          "definition": "The final column of the table, named 0 instead of 8.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

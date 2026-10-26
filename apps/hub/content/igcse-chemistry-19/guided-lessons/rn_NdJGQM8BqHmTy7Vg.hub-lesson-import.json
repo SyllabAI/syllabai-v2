@@ -1,0 +1,155 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_NdJGQM8BqHmTy7Vg",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "f0d92cd1c3760ac1ed3b34fa660927875a32ed69c10a763bf9d86bcf3306904d",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_NdJGQM8BqHmTy7Vg",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Introduction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-1-introduction/4-1-2-naming-organic-compounds",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.4",
+        "text": "understand how to name compounds relevant to this specification using the rules of International Union of Pure and Applied Chemistry (IUPAC) nomenclature students will be expected to name compounds containing up to six carbon atoms"
+      }
+    ],
+    "primer": {
+      "text": "From Organic Compounds you already know that molecules are drawn five ways and that families share a functional group. This note turns drawings into names: the two-part naming system, the number prefixes that count carbon atoms, and the position numbers that say exactly where the reactive part sits.",
+      "prerequisiteSubtopic": "Introduction"
+    },
+    "modules": [
+      {
+        "id": "rn_NdJGQM8BqHmTy7Vg::L1",
+        "title": "The two-part name: stem and suffix",
+        "sourceHeadings": [
+          "Names of compounds",
+          "Examples of naming organic molecules"
+        ],
+        "specRefs": [
+          "4CH1-4.4"
+        ],
+        "opening": "Every organic name in this course splits into two useful halves. The first half counts the carbon atoms in the longest chain, and the second half names the functional group carried by that chain.",
+        "keyPoints": [
+          "An organic name splits into the stem or prefix, which counts the carbon atoms, and the suffix.",
+          "The stem counts the carbon atoms: meth is 1, eth is 2, prop is 3, but is 4, pent is 5 and hex is 6.",
+          "The suffix names the functional group: ane for none, ene for a C=C bond, anol for an OH group.",
+          "So methanol is a 1-carbon molecule carrying the alcohol group, and butene has 4 carbons with a double bond.",
+          "The rules come from IUPAC, and compounds with up to six carbon atoms are expected in exams."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Names are built in two blocks: the stem counts carbons and the suffix gives the reactive group. Meth means one carbon, eth two, prop three, but four, pent five and hex six.",
+            "analogy": "It works like a vehicle badge: the first word tells you the engine size and the second tells you the body style, so a name like propene reads as three carbons wearing a double bond.",
+            "examPointer": "Learn the six stems as a chant; every naming question starts by counting the longest chain."
+          },
+          "medium": {
+            "restatement": "IUPAC names combine a stem, which records how many carbon atoms sit in the longest continuous chain, with a suffix, which records the functional group present. The suffixes ane, ene and anol flag no special group, a C=C double bond and an alcohol group respectively, up to hex for six carbons.",
+            "analogy": "Think of the name as a postcode: the stem is the street of carbons and the suffix is the house number of reactivity, and together they locate the molecule unambiguously.",
+            "examPointer": "Count the longest continuous chain before choosing a stem, and check the suffix against the functional group you can actually see drawn."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NdJGQM8BqHmTy7Vg::L1::Q1",
+          "rn_NdJGQM8BqHmTy7Vg::L1::Q2",
+          "rn_NdJGQM8BqHmTy7Vg::L1::Q3",
+          "rn_NdJGQM8BqHmTy7Vg::L1::Q4",
+          "rn_NdJGQM8BqHmTy7Vg::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_NdJGQM8BqHmTy7Vg::L2",
+        "title": "Position numbers and naming isomers",
+        "sourceHeadings": [
+          "Further rules for naming compounds",
+          "Naming isomers"
+        ],
+        "specRefs": [
+          "4CH1-4.4"
+        ],
+        "opening": "When a chain grows longer, the functional group could sit in several places, so the name needs an address. This lesson adds the numbering rules, the di- prefix, and how the same rules separate isomers.",
+        "keyPoints": [
+          "Carbon atoms in the chain are numbered so the name can say exactly which carbon carries the functional group.",
+          "Numbering distinguishes positions when a functional group could sit on more than one carbon atom.",
+          "The prefix di- is attached to the second part of the name when two identical functional groups are present.",
+          "Isomers are told apart by applying the same naming rules to their different structures.",
+          "For this course you mainly name straight-chain compounds and unbranched isomers, with numbers read as side-chain positions."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Longer chains need addresses: the carbons are numbered, and the name quotes the number where the functional group sits. Two identical groups earn the prefix di-. The same rules applied carefully give isomers their separate, correct names.",
+            "analogy": "It is like flats in a block: the stem names the building, the number picks the floor, and di- says you occupy two floors at once.",
+            "examPointer": "Use the position number whenever the group could sit elsewhere; a bare name is only unambiguous for the shortest chains."
+          },
+          "medium": {
+            "restatement": "When a functional group could attach to more than one carbon, each carbon is numbered and the numbers are written into the name to locate the group exactly. Two identical groups take the prefix di- before the second part of the name, and the same rules distinguish isomers by describing their different arrangements.",
+            "analogy": "A street with identical houses needs house numbers to deliver post correctly; numbering carbons plays that role, and di- is the note that says two deliveries at the same address type.",
+            "examPointer": "Expect to name unbranched chains fluently and to interpret branched numbers even if you need not invent branched names yourself."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_NdJGQM8BqHmTy7Vg::L2::Q1",
+          "rn_NdJGQM8BqHmTy7Vg::L2::Q2",
+          "rn_NdJGQM8BqHmTy7Vg::L2::Q3",
+          "rn_NdJGQM8BqHmTy7Vg::L2::Q4",
+          "rn_NdJGQM8BqHmTy7Vg::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "prefix",
+          "definition": "The front part of an organic name, carrying the stem that counts the carbon atoms.",
+          "firstLesson": 1
+        },
+        {
+          "term": "suffix",
+          "definition": "The end part of an organic name, identifying the functional group the compound carries.",
+          "firstLesson": 1
+        },
+        {
+          "term": "IUPAC",
+          "definition": "The International Union of Pure and Applied Chemistry, whose rules define compound names worldwide.",
+          "firstLesson": 1
+        },
+        {
+          "term": "stem",
+          "definition": "The name fragment that records the number of carbon atoms in the longest continuous chain.",
+          "firstLesson": 1
+        },
+        {
+          "term": "di- prefix",
+          "definition": "The marker added before the second part of a name when two identical functional groups are present.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

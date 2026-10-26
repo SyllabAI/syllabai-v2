@@ -1,0 +1,214 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_KTZjJ7sPdDt4tkTH",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "4649fc86a02ba5fd71d61db6b3ecb3c53e5d1675724c656c51816c93f16a4935",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_KTZjJ7sPdDt4tkTH",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Energetics",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-1-energetics/3-1-5-bond-energy",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.6C",
+        "text": "know that bond-breaking is an endothermic process and that bond-making is an exothermic process"
+      },
+      {
+        "code": "4CH1-3.7C",
+        "text": "use bond energies to calculate the enthalpy change during a chemical reaction"
+      }
+    ],
+    "primer": {
+      "text": "From Energy Level Diagrams you already know how the product level sits below or above the reactant level. This note explains those levels with bonds: breaking costs energy and making pays it back. It finishes by pricing every bond in a reaction to calculate the enthalpy change from scratch.",
+      "prerequisiteSubtopic": "Energetics"
+    },
+    "modules": [
+      {
+        "id": "rn_KTZjJ7sPdDt4tkTH::L1",
+        "title": "Breaking costs, making pays",
+        "sourceHeadings": [
+          "Bond energies"
+        ],
+        "specRefs": [
+          "4CH1-3.6C"
+        ],
+        "opening": "Every bond is a spring with a price tag: pulling it apart costs energy, snapping it shut pays energy back. This lesson fixes which half of the reaction spends and which one earns.",
+        "keyPoints": [
+          "Bond-breaking is an endothermic process because energy must be taken in to break bonds.",
+          "Bond-making is an exothermic process because energy is released when new bonds are formed.",
+          "Whether a reaction is exothermic or endothermic overall depends on the balance between breaking and making.",
+          "Each chemical bond has a specific bond energy for breaking it or forming it.",
+          "Bond energies are usually quoted in kilojoules per mole of bonds."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Pulling a bond apart soaks up energy, and letting a bond click together gives energy out. The winner of that tug of war decides whether the whole reaction warms or cools its surroundings.",
+            "analogy": "It is like dismantling and rebuilding scaffolding: taking it down costs effort, and clicking new poles together releases a satisfying snap.",
+            "examPointer": "Quote the pairing in the right order: breaking endothermic, making exothermic."
+          },
+          "medium": {
+            "restatement": "Energy must be taken in to break the existing bonds of the reactants, so bond-breaking is endothermic. Energy is released when the new bonds of the products form, so bond-making is exothermic, and the overall sign depends on the difference between the two.",
+            "analogy": "A demolition crew is paid to pull a wall down, while the builders of the new wall hand energy back as each brick locks in; the site balance is the enthalpy change.",
+            "examPointer": "Explain the sign of ΔH by comparing energy in to break bonds with energy out making them."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_KTZjJ7sPdDt4tkTH::L1::Q1",
+          "rn_KTZjJ7sPdDt4tkTH::L1::Q2",
+          "rn_KTZjJ7sPdDt4tkTH::L1::Q3",
+          "rn_KTZjJ7sPdDt4tkTH::L1::Q4",
+          "rn_KTZjJ7sPdDt4tkTH::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_KTZjJ7sPdDt4tkTH::L2",
+        "title": "The overall sign from the bond balance",
+        "sourceHeadings": [
+          "Exothermic reactions",
+          "Endothermic reactions"
+        ],
+        "specRefs": [
+          "4CH1-3.6C"
+        ],
+        "opening": "Add up the energy spent breaking bonds, add up the energy earned making them, and the difference carries the sign of the reaction. This lesson reads that difference in both directions.",
+        "keyPoints": [
+          "In an exothermic reaction the energy released making bonds is greater than the energy taken in breaking them.",
+          "Exothermic reactions have a negative enthalpy change because the reactants hold more energy than the products.",
+          "In an endothermic reaction the energy needed to break bonds exceeds the energy released forming them.",
+          "Endothermic reactions have a positive enthalpy change because the products hold more energy than the reactants.",
+          "The overall enthalpy change equals the energy in minus the energy out."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "If making bonds refunds more than breaking spent, the reaction pays heat out and its enthalpy change is negative. If the breaking bill is bigger, heat is soaked up and the change is positive.",
+            "analogy": "A car trip costs fuel to undo parking and earns nothing for re-parking; whether the day cost or earned money is the sign of the journey.",
+            "examPointer": "Compare the two sums explicitly and let the bigger one decide the sign of ΔH."
+          },
+          "medium": {
+            "restatement": "When the energy released forming new bonds is greater than the energy taken in breaking old ones, the reaction is exothermic with a negative enthalpy change. When the breaking cost is greater, the reaction is endothermic with a positive enthalpy change.",
+            "analogy": "Renovating a kitchen: if the resale value of the new fittings beats the demolition bill you profit, just as bond-making beating bond-breaking releases energy.",
+            "examPointer": "State which sum is larger and then assign the sign; never quote a sign without the comparison behind it."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_KTZjJ7sPdDt4tkTH::L2::Q1",
+          "rn_KTZjJ7sPdDt4tkTH::L2::Q2",
+          "rn_KTZjJ7sPdDt4tkTH::L2::Q3",
+          "rn_KTZjJ7sPdDt4tkTH::L2::Q4",
+          "rn_KTZjJ7sPdDt4tkTH::L2::Q5"
+        ]
+      },
+      {
+        "id": "rn_KTZjJ7sPdDt4tkTH::L3",
+        "title": "Pricing a reaction with bond energies",
+        "sourceHeadings": [
+          "Bond energy calculations"
+        ],
+        "specRefs": [
+          "4CH1-3.7C"
+        ],
+        "opening": "With a table of bond energies, every reaction can be priced like a shopping list: add the breaking costs, add the making refunds, subtract. This lesson runs that arithmetic on one full reaction.",
+        "keyPoints": [
+          "Add together the bond energies of all bonds in the reactants to find the energy in.",
+          "Add together the bond energies of all bonds in the products to find the energy out.",
+          "The enthalpy change equals the energy in minus the energy out.",
+          "Balancing numbers matter, so count how many of each bond are broken or made.",
+          "A displayed formula equation helps you spot every bond before counting."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "List every bond the reactants own and total their energies, then do the same for the products. Taking the first total away from the second leaves the enthalpy change, with a minus meaning heat was released.",
+            "analogy": "It is like trading in an old bicycle for a new one: add up the parts you give, add up the parts you get, and the difference tells you if you were paid.",
+            "examPointer": "Show the two totals separately before subtracting, and double-check the balancing numbers."
+          },
+          "medium": {
+            "restatement": "The energy in is the sum of bond energies for every reactant bond, and the energy out is the same sum for every product bond. Subtracting energy out from energy in gives the enthalpy change, which is negative when more energy is released than consumed.",
+            "analogy": "Balancing a shop till: everything customers hand over is the energy in, everything handed back in change is the energy out, and the till difference is the enthalpy change.",
+            "examPointer": "Write the displayed formula equation first, count each bond type with its balancing number, then run the two sums."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_KTZjJ7sPdDt4tkTH::L3::Q1",
+          "rn_KTZjJ7sPdDt4tkTH::L3::Q2",
+          "rn_KTZjJ7sPdDt4tkTH::L3::Q3",
+          "rn_KTZjJ7sPdDt4tkTH::L3::Q4",
+          "rn_KTZjJ7sPdDt4tkTH::L3::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "bond energy",
+          "definition": "The energy required to break a specific bond or given out when that bond forms, quoted per mole of bonds.",
+          "firstLesson": 1
+        },
+        {
+          "term": "endothermic process",
+          "definition": "A change that takes energy in, such as the breaking of chemical bonds.",
+          "firstLesson": 1
+        },
+        {
+          "term": "exothermic process",
+          "definition": "A change that gives energy out, such as the making of chemical bonds.",
+          "firstLesson": 1
+        },
+        {
+          "term": "energy in",
+          "definition": "The total bond energy of all bonds broken in the reactants during a reaction.",
+          "firstLesson": 3
+        },
+        {
+          "term": "energy out",
+          "definition": "The total bond energy of all bonds formed in the products during a reaction.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": {
+        "prompt": "Hydrogen reacts with chlorine to form hydrogen chloride gas: H-H + Cl-Cl → 2H-Cl. Bond energies: H-H 436 kJ, Cl-Cl 242 kJ, H-Cl 431 kJ. Calculate the overall energy change and use the value to explain whether the reaction is exothermic or endothermic.",
+        "steps": [
+          "Energy in to break the reactant bonds: 436 + 242 = 678 kJ",
+          "Energy out from forming two H-Cl bonds: 2 x 431 = 862 kJ",
+          "Overall energy change: 678 - 862 = -184 kJ",
+          "The negative value shows energy is being released to the surroundings."
+        ],
+        "finalAnswer": "The overall energy change is -184 kJ, so the reaction is exothermic."
+      }
+    }
+  }
+}

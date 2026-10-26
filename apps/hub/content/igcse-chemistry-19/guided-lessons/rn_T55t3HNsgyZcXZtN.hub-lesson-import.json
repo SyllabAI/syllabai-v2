@@ -1,0 +1,172 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_T55t3HNsgyZcXZtN",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "7768f0edf8b433bb3357100a1780c26ca461f47a610f0d2d2ca2ff6494a9ae9e",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_T55t3HNsgyZcXZtN",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Chemical Formulae, Equations, Calculations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-10-calculate-volumes-of-gases",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.35C",
+        "text": "understand how to carry out calculations involving gas volumes and the molar volume of a gas (24 dm3 and 24 000 cm3 at room temperature and pressure (rtp))"
+      }
+    ],
+    "primer": {
+      "text": "Moles from mass and moles from solution working are both in hand; gases now take the same treatment. At room conditions every mole of gas fills the same 24 dm3, so a weighed mass of gas converts straight into a volume.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_T55t3HNsgyZcXZtN::L1",
+        "title": "Avogadro's Law and the Molar Gas Volume",
+        "sourceHeadings": [
+          "Avogadro's Law",
+          "To find the volume"
+        ],
+        "specRefs": [
+          "4CH1-1.35C"
+        ],
+        "opening": "One mole of any gas fills the same space at room temperature and pressure: 24 dm3, or 24,000 cm3. That molar gas volume turns any gas volume into moles and back again, whatever the gas is.",
+        "keyPoints": [
+          "At room temperature and pressure one mole of any gas occupies 24 dm3, or 24,000 cm3.",
+          "RTP means 20 degrees Celsius and one atmosphere of pressure.",
+          "Avogadro's law: equal amounts of gases at the same conditions occupy the same volume.",
+          "Moles of gas equal volume divided by molar volume; volume equals moles times molar volume.",
+          "Divide by 24,000 instead of 24 whenever the volume is given in cm3."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "At 20 degrees and one atmosphere, every mole of gas occupies 24 dm3 whatever its identity; 24,000 cm3 is the same figure in smaller units. Moles = volume / 24; volume = moles x 24.",
+            "analogy": "Identical suitcases hold identical clothes counts regardless of brand: one mole fills 24 dm3 whether hydrogen or carbon dioxide, so the gas's name never enters the sum.",
+            "examPointer": "Table style: 3 mol of hydrogen gives (3 x 24) = 72 dm3; 1,200 cm3 of oxygen gives (1,200 / 24,000) = 0.05 mol - match the divisor to the unit."
+          },
+          "medium": {
+            "restatement": "The molar gas volume is a property of the conditions, not the gas: RTP fixes 24 dm3 per mole, so amounts of any gases compare by volume alone. The triangle hides nothing deeper - cover moles, volume or 24 and read the step.",
+            "analogy": "A standard pallet always holds the same box count whatever the goods; counting pallets counts boxes. Counting 24 dm3 units counts moles, whichever gas stacks them.",
+            "examPointer": "Quoting RTP as 20 degrees Celsius and 1 atmosphere earns the mark; 0 degrees belongs to a different temperature's version of the value."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_T55t3HNsgyZcXZtN::L1::Q1",
+          "rn_T55t3HNsgyZcXZtN::L1::Q2",
+          "rn_T55t3HNsgyZcXZtN::L1::Q3",
+          "rn_T55t3HNsgyZcXZtN::L1::Q4",
+          "rn_T55t3HNsgyZcXZtN::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_T55t3HNsgyZcXZtN::L2",
+        "title": "Finding Gas Volumes from Mass and Equations",
+        "sourceHeadings": [
+          "Using mass to calculate the volume of a gas"
+        ],
+        "specRefs": [
+          "4CH1-1.35C"
+        ],
+        "opening": "Gas volumes do the reacting-mass trick without any Mr at all: under Avogadro's law the coefficients of the equation already are the volume ratio. Masses still convert through moles first, and the units the question names decide whether 24 or 24,000 does the dividing.",
+        "keyPoints": [
+          "Convert a gas mass to moles with Mr, then multiply moles by 24 for the volume.",
+          "Coefficients in the balanced equation give the ratio of gas volumes directly under Avogadro's law.",
+          "One volume of propane needs five volumes of oxygen when the coefficient ratio is 1 : 5.",
+          "Total product volume adds the product coefficients first, then scales the given volume.",
+          "Use the units the question asks for; 24 pairs with dm3 and 24,000 with cm3."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A mass of gas crosses to moles through Mr, then multiplies by 24 for its volume; 154 g of nitrogen does 154 / 28 = 5.5 moles and 5.5 x 24 = 132 dm3.",
+            "analogy": "Posting parcels: weigh a box, divide by the weight of one standard box to count boxes, multiply by the space each pallet slot takes. Grams to moles to volume is the same three-beat rhythm.",
+            "examPointer": "The 154 g nitrogen question is two marks per step: Mr first, moles second, and only then does 24 appear."
+          },
+          "medium": {
+            "restatement": "Reacting gas volumes skip Mr entirely: under Avogadro's law the coefficient ratio is the volume ratio, so 150 cm3 of propane demands five times its volume of oxygen. Total product volume adds the product coefficients first, then scales.",
+            "analogy": "Dance partners: the equation pairs one propane with five oxygen molecules, and volumes pair identically - 150 cm3 of one needs 750 cm3 of the other, no weighing needed.",
+            "examPointer": "Reacting-volume answers must quote the units the question used: 750 cm3 and 1,050 cm3 in cm3, not a surprise switch to dm3."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_T55t3HNsgyZcXZtN::L2::Q1",
+          "rn_T55t3HNsgyZcXZtN::L2::Q2",
+          "rn_T55t3HNsgyZcXZtN::L2::Q3",
+          "rn_T55t3HNsgyZcXZtN::L2::Q4",
+          "rn_T55t3HNsgyZcXZtN::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "mole",
+          "definition": "The counting unit for amount of substance; one mole of any gas fills 24 dm3 at RTP.",
+          "firstLesson": 1
+        },
+        {
+          "term": "Avogadro's law",
+          "definition": "Equal amounts of gases at the same temperature and pressure occupy the same volume.",
+          "firstLesson": 1
+        },
+        {
+          "term": "molar gas volume",
+          "definition": "The volume occupied by one mole of any gas: 24 dm3 or 24,000 cm3 at RTP.",
+          "firstLesson": 1
+        },
+        {
+          "term": "RTP",
+          "definition": "Room temperature and pressure: 20 degrees Celsius and 1 atmosphere.",
+          "firstLesson": 1
+        },
+        {
+          "term": "coefficient",
+          "definition": "The balancing number in front of a formula in an equation.",
+          "firstLesson": 2
+        },
+        {
+          "term": "balanced equation",
+          "definition": "A symbol equation whose atom counts match on both sides; its coefficients set gas-volume ratios.",
+          "firstLesson": 2
+        },
+        {
+          "term": "combustion",
+          "definition": "Burning a fuel in oxygen, as in the propane example of this note.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "What is the volume of 154 g of nitrogen gas at RTP? (N 14)",
+        "steps": [
+          "Mr of nitrogen: 2 x 14 = 28.",
+          "Moles of nitrogen: 154 / 28 = 5.5.",
+          "Volume: 5.5 x 24 = 132."
+        ],
+        "finalAnswer": "The volume is 132 cubic decimetres."
+      }
+    }
+  }
+}

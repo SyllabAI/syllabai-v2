@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_nzW5ppBTV3ZnfSYY",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "1be2b411b13c597fbf71dbed0a488febaa06fd9774402ea93fac4a7e4b9ad2c4",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_nzW5ppBTV3ZnfSYY",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L1::Q1",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L1",
+      "stem": "Why must aluminium be extracted by electrolysis rather than by heating with carbon?",
+      "misconceptionClass": "method-position reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Aluminium is above carbon, so carbon cannot reduce its oxide",
+          "correct": true,
+          "explanation": "Only metals below carbon can be reduced by coke; aluminium sits higher, so electrolysis is the only route.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because aluminium oxide is insoluble in water",
+          "correct": false,
+          "explanation": "Solubility in water is irrelevant; the deciding factor is the metal's position relative to carbon.",
+          "misconception": "unrelated property used as the reason"
+        },
+        {
+          "key": "C",
+          "text": "Because aluminium is too expensive to heat",
+          "correct": false,
+          "explanation": "Cost follows from the method, not the other way round; the reactivity position forces electrolysis first.",
+          "misconception": "cost and cause reversed"
+        },
+        {
+          "key": "D",
+          "text": "Because carbon reacts dangerously with aluminium oxide",
+          "correct": false,
+          "explanation": "Carbon simply cannot remove oxygen from a more reactive metal's oxide; no danger is involved.",
+          "misconception": "invented hazard as the reason"
+        }
+      ]
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L1::Q2",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L1",
+      "stem": "Which raw material supplies the carbon inside the blast furnace?",
+      "misconceptionClass": "raw-material recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Coke, an impure form of carbon",
+          "correct": true,
+          "explanation": "Coke is charged into the furnace specifically to provide carbon for burning and reduction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Limestone, which burns to give carbon dioxide",
+          "correct": false,
+          "explanation": "Limestone's job is neutralising acidic impurities; the carbon comes from the coke.",
+          "misconception": "raw-material roles swapped"
+        },
+        {
+          "key": "C",
+          "text": "Hematite, the iron ore itself",
+          "correct": false,
+          "explanation": "Hematite supplies the iron(III) oxide, not the carbon needed for reduction.",
+          "misconception": "ore confused with fuel"
+        },
+        {
+          "key": "D",
+          "text": "The hot air blown in at the bottom",
+          "correct": false,
+          "explanation": "Hot air supplies oxygen for burning the coke but contains no carbon.",
+          "misconception": "air mistaken for a carbon source"
+        }
+      ]
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L1::Q3",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L1",
+      "stem": "What happens in Zone 2 of the blast furnace?",
+      "misconceptionClass": "zone chemistry",
+      "options": [
+        {
+          "key": "A",
+          "text": "Coke reduces carbon dioxide to carbon monoxide",
+          "correct": true,
+          "explanation": "At the furnace's high temperature, more coke reacts with carbon dioxide, and the carbon dioxide is reduced to carbon monoxide.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Iron(III) oxide is reduced to iron",
+          "correct": false,
+          "explanation": "That is Zone 3, where carbon monoxide does the reducing of the ore itself.",
+          "misconception": "zone 3 chemistry placed in zone 2"
+        },
+        {
+          "key": "C",
+          "text": "Limestone decomposes to calcium oxide",
+          "correct": false,
+          "explanation": "Thermal decomposition of limestone belongs to the removal of impurities, not to Zone 2.",
+          "misconception": "impurity step misplaced"
+        },
+        {
+          "key": "D",
+          "text": "Coke burns in hot air to heat the furnace",
+          "correct": false,
+          "explanation": "That is Zone 1; Zone 2 consumes the carbon dioxide made there.",
+          "misconception": "zone 1 chemistry misplaced"
+        }
+      ]
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L1::Q4",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L1",
+      "stem": "What is the purpose of adding limestone to the blast furnace?",
+      "misconceptionClass": "impurity removal",
+      "options": [
+        {
+          "key": "A",
+          "text": "To remove acidic impurities from the ore as molten slag",
+          "correct": true,
+          "explanation": "Limestone decomposes to calcium oxide, which reacts with silicon dioxide to form calcium silicate slag that floats on the iron.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To provide extra carbon for the reduction",
+          "correct": false,
+          "explanation": "Coke, not limestone, provides carbon; limestone handles the acidic impurities.",
+          "misconception": "fuel role given to limestone"
+        },
+        {
+          "key": "C",
+          "text": "To make the iron more pure by dissolving it",
+          "correct": false,
+          "explanation": "The limestone never touches the reduction chemistry; it deals with the sandy impurity in the ore.",
+          "misconception": "purification route misdescribed"
+        },
+        {
+          "key": "D",
+          "text": "To speed up the burning of the coke",
+          "correct": false,
+          "explanation": "The burn rate in Zone 1 is set by the hot air blast, not by limestone.",
+          "misconception": "rate role invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L1::Q5",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L1",
+      "stem": "Why do modern blast furnaces run continuously rather than being started and stopped?",
+      "misconceptionClass": "process economics",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because of the time and cost of getting the furnace back up to temperature",
+          "correct": true,
+          "explanation": "Restarting wastes enormous energy, so raw materials go in and products come out without interruption.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because the reactions inside are too fast to control in batches",
+          "correct": false,
+          "explanation": "Speed is not the reason; the economics of reheating a giant furnace drive the continuous running.",
+          "misconception": "kinetic reasoning substituted for economics"
+        },
+        {
+          "key": "C",
+          "text": "Because the iron would solidify if production paused",
+          "correct": false,
+          "explanation": "Solidified iron could be remelted in principle; the decisive cost is reheating the whole furnace.",
+          "misconception": "plausible but wrong reason chosen"
+        },
+        {
+          "key": "D",
+          "text": "Because the slag must be removed every few minutes",
+          "correct": false,
+          "explanation": "Slag is tapped off as part of normal running; it is not why the furnace never stops.",
+          "misconception": "by-product handling mistaken for the reason"
+        }
+      ]
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L2::Q1",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L2",
+      "stem": "Why is aluminium oxide dissolved in molten cryolite?",
+      "misconceptionClass": "cryolite reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "To lower the melting point of the mixture and save energy",
+          "correct": true,
+          "explanation": "Pure aluminium oxide melts above 2000 degrees Celsius, which would be very expensive; the cryolite mixture melts far lower without interfering with the reaction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To make the aluminium ions more positive",
+          "correct": false,
+          "explanation": "The ion charges never change; cryolite's role is purely to lower the operating temperature.",
+          "misconception": "chemistry invented for the additive"
+        },
+        {
+          "key": "C",
+          "text": "To act as the positive electrode",
+          "correct": false,
+          "explanation": "The electrodes are graphite; cryolite is the molten solvent holding the oxide.",
+          "misconception": "solvent and electrode roles confused"
+        },
+        {
+          "key": "D",
+          "text": "To remove impurities from the bauxite",
+          "correct": false,
+          "explanation": "The bauxite is purified before electrolysis; cryolite dissolves the clean oxide.",
+          "misconception": "purification step misplaced"
+        }
+      ]
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L2::Q2",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L2",
+      "stem": "Which half-equation shows what happens at the cathode during aluminium extraction?",
+      "misconceptionClass": "half-equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Al3+ + 3e- gives Al",
+          "correct": true,
+          "explanation": "Aluminium ions gain three electrons each at the cathode, which is reduction to the metal.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Al gives Al3+ + 3e-",
+          "correct": false,
+          "explanation": "That is oxidation of aluminium metal; extraction needs the reverse, reduction of the ion.",
+          "misconception": "oxidation and reduction swapped"
+        },
+        {
+          "key": "C",
+          "text": "2O2- gives O2 + 4e-",
+          "correct": false,
+          "explanation": "This is the anode half-equation for oxide ions, not the cathode reaction.",
+          "misconception": "electrodes confused"
+        },
+        {
+          "key": "D",
+          "text": "Al3+ + 2e- gives Al",
+          "correct": false,
+          "explanation": "The charge does not balance: a 3+ ion needs three electrons to become the neutral metal.",
+          "misconception": "electron count misbalanced"
+        }
+      ]
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L2::Q3",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L2",
+      "stem": "What is produced at the anode, and from which ions?",
+      "misconceptionClass": "anode chemistry",
+      "options": [
+        {
+          "key": "A",
+          "text": "Oxygen, from oxide ions losing electrons",
+          "correct": true,
+          "explanation": "Oxide ions are oxidised at the anode, pairing up to form oxygen gas.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Aluminium, from aluminium ions gaining electrons",
+          "correct": false,
+          "explanation": "That is the cathode product; the anode handles the oxide ions.",
+          "misconception": "electrode products swapped"
+        },
+        {
+          "key": "C",
+          "text": "Carbon dioxide, directly from the cryolite",
+          "correct": false,
+          "explanation": "Carbon dioxide forms when the oxygen made at the anode attacks the graphite; it does not come from the cryolite.",
+          "misconception": "secondary reaction mistaken for the primary one"
+        },
+        {
+          "key": "D",
+          "text": "Hydrogen, from the molten mixture",
+          "correct": false,
+          "explanation": "There is no water in the cell, so no hydrogen forms; oxide ions supply the anode chemistry.",
+          "misconception": "aqueous electrolysis habits transferred"
+        }
+      ]
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L2::Q4",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L2",
+      "stem": "Why do the graphite anodes need regular replacement?",
+      "misconceptionClass": "anode wear reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The hot carbon anodes burn away with the oxygen produced, forming carbon dioxide",
+          "correct": true,
+          "explanation": "Oxygen released at the anode reacts with the hot graphite, consuming the electrodes, so they are replaced regularly.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They dissolve in the molten cryolite",
+          "correct": false,
+          "explanation": "Cryolite does not dissolve the graphite; it is the oxygen attack that wears the anodes.",
+          "misconception": "solvent attack invented"
+        },
+        {
+          "key": "C",
+          "text": "They are used up supplying aluminium ions",
+          "correct": false,
+          "explanation": "Aluminium ions come from the dissolved oxide, not from the anodes.",
+          "misconception": "ion source misattributed"
+        },
+        {
+          "key": "D",
+          "text": "They melt at the operating temperature",
+          "correct": false,
+          "explanation": "Graphite survives the lowered temperature easily; chemical burning, not melting, consumes them.",
+          "misconception": "melting mistaken for consumption"
+        }
+      ]
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L2::Q5",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L2",
+      "stem": "Which single factor is named as the major expense of aluminium extraction?",
+      "misconceptionClass": "cost identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "The large amount of electricity the process requires",
+          "correct": true,
+          "explanation": "Electrolysis of molten compounds draws huge current, and the note names electricity as the major expense.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The price of cryolite",
+          "correct": false,
+          "explanation": "Cryolite is recycled in the cell; the named expense is the electricity.",
+          "misconception": "minor input inflated"
+        },
+        {
+          "key": "C",
+          "text": "The replacement of steel cell linings",
+          "correct": false,
+          "explanation": "The steel shell lined with graphite is long-lasting; the anodes are replaced, but the expense named is electricity.",
+          "misconception": "maintenance cost inflated"
+        },
+        {
+          "key": "D",
+          "text": "Transporting bauxite from the mine",
+          "correct": false,
+          "explanation": "Ore transport is not the named cost; the electrolysis current dominates.",
+          "misconception": "logistics cost invented"
+        }
+      ]
+    }
+  ]
+}

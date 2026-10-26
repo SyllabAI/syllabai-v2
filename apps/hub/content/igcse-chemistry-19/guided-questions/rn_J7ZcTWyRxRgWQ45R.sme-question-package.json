@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_J7ZcTWyRxRgWQ45R",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "b91db0192d4628baf3afd9993c5b6f32e0324a6ab0ac6469630f03c5dfa96e5e",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_J7ZcTWyRxRgWQ45R",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L1::Q1",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L1",
+      "stem": "An ionic compound such as potassium oxide contains K+ and O2- ions. What overall charge does the compound carry?",
+      "misconceptionClass": "compound-neutrality confusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "No overall charge, because the two 1+ charges cancel the single 2- charge",
+          "correct": true,
+          "explanation": "The compound is neutral because two potassium ions supply exactly the two positive charges that one oxide ion balances.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A 1- charge, because oxide has the larger charge",
+          "correct": false,
+          "explanation": "The compound as a whole cannot inherit one ion's leftover charge; the ion counts adjust until the charges cancel.",
+          "misconception": "ion charge carried through to the whole compound"
+        },
+        {
+          "key": "C",
+          "text": "A 1+ charge, because there are two potassium ions",
+          "correct": false,
+          "explanation": "Counting ions instead of comparing charge sizes misreads the balance; the two 1+ charges together cancel the 2-.",
+          "misconception": "ion count mistaken for net charge"
+        },
+        {
+          "key": "D",
+          "text": "It depends on the size of the crystals",
+          "correct": false,
+          "explanation": "Neutrality is fixed by the ion charges and their ratio, not by how much compound is present.",
+          "misconception": "macroscopic quantity thought to affect charge balance"
+        }
+      ]
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L1::Q2",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L1",
+      "stem": "Using direct comparison, what is the formula of calcium chloride, formed from Ca2+ and Cl- ions?",
+      "misconceptionClass": "charge-ratio error",
+      "options": [
+        {
+          "key": "A",
+          "text": "CaCl2",
+          "correct": true,
+          "explanation": "The single 2+ charge needs two 1- chloride ions to cancel, so the formula carries two chlorides.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "CaCl",
+          "correct": false,
+          "explanation": "Matching one of each ion leaves a net 1+ charge, so the compound would not be neutral.",
+          "misconception": "one-of-each assumption ignoring unequal charges"
+        },
+        {
+          "key": "C",
+          "text": "Ca2Cl",
+          "correct": false,
+          "explanation": "Doubling the calcium gives a net 2+ and leaves the charges even further from cancelling.",
+          "misconception": "counts swapped between the ions"
+        },
+        {
+          "key": "D",
+          "text": "Ca2Cl2",
+          "correct": false,
+          "explanation": "Although these counts do cancel the charges, the formula must be given as the simplest whole-number ratio, which is CaCl2.",
+          "misconception": "unsimplified ratio accepted"
+        }
+      ]
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L1::Q3",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L1",
+      "stem": "The sulfate ion carries a 2- charge. Why does iron(II) sulfate need no brackets in its formula?",
+      "misconceptionClass": "bracket-usage error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because only one sulfate ion pairs with each iron(II) ion",
+          "correct": true,
+          "explanation": "Brackets are needed only when more than one of a complex ion appears; the one-to-one match here makes brackets unnecessary.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because sulfate is a simple ion, not a complex one",
+          "correct": false,
+          "explanation": "Sulfate is a complex ion with several atoms; it is its count of one, not its structure, that removes the need for brackets.",
+          "misconception": "complex-ion structure confused with the bracket rule"
+        },
+        {
+          "key": "C",
+          "text": "Because iron and sulfate carry opposite charges",
+          "correct": false,
+          "explanation": "Opposite charges are true of every ionic compound and never by themselves decide whether brackets appear.",
+          "misconception": "charge difference read as the bracket trigger"
+        },
+        {
+          "key": "D",
+          "text": "Because the metal is always written first in the formula",
+          "correct": false,
+          "explanation": "Element order governs writing order, not bracket use; brackets track multi-ion counts.",
+          "misconception": "ordering rule misapplied to brackets"
+        }
+      ]
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L1::Q4",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L1",
+      "stem": "A student writes the formula of sodium oxide, formed from Na+ and O2-, as NaO. What is wrong with this?",
+      "misconceptionClass": "cancellation check skipped",
+      "options": [
+        {
+          "key": "A",
+          "text": "The charges do not cancel: two sodium ions are needed for each oxide ion, so the formula is Na2O",
+          "correct": true,
+          "explanation": "One 1+ charge cannot balance one 2- charge; the direct comparison shows the 2- remains, so the sodium count must double.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Nothing: one of each ion is always the correct ratio",
+          "correct": false,
+          "explanation": "A one-of-each ratio only works when the charges are equal and opposite; here a 1- charge would remain.",
+          "misconception": "one-of-each rule overgeneralised"
+        },
+        {
+          "key": "C",
+          "text": "The metal should be written second, giving ONa",
+          "correct": false,
+          "explanation": "Convention writes the metal first, but reordering the symbols would not fix the unbalanced charge.",
+          "misconception": "cosmetic rule treated as the error"
+        },
+        {
+          "key": "D",
+          "text": "Sodium oxide is covalent, so ionic formula rules do not apply",
+          "correct": false,
+          "explanation": "Sodium oxide is ionic, formed between a metal and a non-metal, so the charge-cancellation method applies fully.",
+          "misconception": "bonding type misclassified"
+        }
+      ]
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L1::Q5",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L1",
+      "stem": "Why must an ionic formula describe a ratio of ions rather than a single molecule?",
+      "misconceptionClass": "molecule-model confusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because the lattice repeats the ion pattern throughout, so the formula gives the simplest repeating ratio",
+          "correct": true,
+          "explanation": "The giant lattice continues in every direction, and the formula states the fixed ratio of ions within that repeating structure.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because ions are too small to count individually",
+          "correct": false,
+          "explanation": "The ratio form reflects the structure of the lattice, not the difficulty of counting particles.",
+          "misconception": "size-based reasoning about formula style"
+        },
+        {
+          "key": "C",
+          "text": "Because ionic compounds always contain exactly two types of ion",
+          "correct": false,
+          "explanation": "Some ionic compounds contain more than two ion types; the ratio form exists because of the lattice, not the variety of ions.",
+          "misconception": "ion variety mistaken for the reason"
+        },
+        {
+          "key": "D",
+          "text": "Because the charges would double if a molecule were written",
+          "correct": false,
+          "explanation": "Charge balance is unchanged by how the formula is written; the ratio form reflects the repeating lattice.",
+          "misconception": "formula style thought to alter charges"
+        }
+      ]
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L2::Q1",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L2",
+      "stem": "Aluminium oxide forms from Al3+ and O2- ions. Which formula do the swapped counts give?",
+      "misconceptionClass": "swap direction error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Al2O3",
+          "correct": true,
+          "explanation": "The 3 on aluminium becomes the count of oxide ions, and the 2 on oxide becomes the count of aluminium ions, giving Al2O3.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Al3O2",
+          "correct": false,
+          "explanation": "Dropping each number onto its own ion skips the swap; the 3 belongs to the oxide count.",
+          "misconception": "counts dropped straight down without swapping"
+        },
+        {
+          "key": "C",
+          "text": "AlO",
+          "correct": false,
+          "explanation": "Treating the charges as equal assumes one of each cancels, but a net 1+ charge would remain.",
+          "misconception": "unequal charges assumed equal"
+        },
+        {
+          "key": "D",
+          "text": "Al3O3",
+          "correct": false,
+          "explanation": "Copying the 3 onto both ions ignores the 2 on oxide; the counts exchange rather than repeat.",
+          "misconception": "count copied instead of swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L2::Q2",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L2",
+      "stem": "A student applies swap-and-drop to calcium sulfide, from Ca2+ and S2-, and writes Ca2S2. What correction is required?",
+      "misconceptionClass": "unsimplified ratio",
+      "options": [
+        {
+          "key": "A",
+          "text": "Reduce the ratio to its simplest whole numbers, giving CaS",
+          "correct": true,
+          "explanation": "Equal charges cancel one-to-one, so the dropped counts both divide by two and the formula is CaS.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Keep Ca2S2, since it shows both charges",
+          "correct": false,
+          "explanation": "The formula must state the simplest ratio; Ca2S2 carries the same ratio twice over.",
+          "misconception": "explicit counts preferred over simplest form"
+        },
+        {
+          "key": "C",
+          "text": "Swap again to give S2Ca2",
+          "correct": false,
+          "explanation": "A second swap only reorders the same unsimplified counts and still needs reducing.",
+          "misconception": "method reapplied instead of simplifying"
+        },
+        {
+          "key": "D",
+          "text": "Change the charges to 1+ and 1- before swapping",
+          "correct": false,
+          "explanation": "The ions genuinely carry 2+ and 2-; it is the written counts, not the charges, that get reduced.",
+          "misconception": "charges edited to fit the answer"
+        }
+      ]
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L2::Q3",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L2",
+      "stem": "Calcium hydroxide forms from Ca2+ and OH- ions. Which formula is correct?",
+      "misconceptionClass": "bracket omission",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ca(OH)2",
+          "correct": true,
+          "explanation": "The 2+ calcium needs two hydroxide ions, and the whole OH group is bracketed before the 2 is applied.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "CaOH2",
+          "correct": false,
+          "explanation": "Without brackets the 2 appears to multiply only the hydrogen, distorting the group count.",
+          "misconception": "brackets omitted around a doubled complex ion"
+        },
+        {
+          "key": "C",
+          "text": "Ca2OH",
+          "correct": false,
+          "explanation": "The counts have been swapped the wrong way; calcium's 2 belongs to the hydroxide count.",
+          "misconception": "swap direction reversed"
+        },
+        {
+          "key": "D",
+          "text": "CaOH",
+          "correct": false,
+          "explanation": "One hydroxide ion cancels only one of calcium's two positive charges, leaving a net 1+.",
+          "misconception": "unequal charges treated as equal"
+        }
+      ]
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L2::Q4",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L2",
+      "stem": "Which pair of steps correctly builds the formula of copper(II) chloride?",
+      "misconceptionClass": "method assembly",
+      "options": [
+        {
+          "key": "A",
+          "text": "Identify Cu2+ and Cl-, then swap so two chloride ions pair with one copper ion, giving CuCl2",
+          "correct": true,
+          "explanation": "The copper ion's 2 sets the chloride count, and the chloride ion's 1 sets the copper count, which is never written.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Identify Cu2+ and Cl-, then give each ion a count of 1, giving CuCl",
+          "correct": false,
+          "explanation": "Equal counts leave the 2+ uncancelled; the charge numbers must cross over between the ions.",
+          "misconception": "uniform count applied to both ions"
+        },
+        {
+          "key": "C",
+          "text": "Combine the charge numbers into 3 and attach it to copper, giving Cu3Cl",
+          "correct": false,
+          "explanation": "The magnitudes swap rather than combine; the 2 and the 1 become each other's ion counts.",
+          "misconception": "charges merged instead of swapped"
+        },
+        {
+          "key": "D",
+          "text": "Write CuCl2 because chloride always doubles",
+          "correct": false,
+          "explanation": "The two chlorides follow from copper's 2+ charge, not from a fixed rule about chlorine.",
+          "misconception": "element habit substituted for the method"
+        }
+      ]
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L2::Q5",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L2",
+      "stem": "Iron wool burns in chlorine to form a compound containing Fe3+ and Cl- ions. Which name and formula result?",
+      "misconceptionClass": "naming and formula assembly",
+      "options": [
+        {
+          "key": "A",
+          "text": "Iron chloride, FeCl3",
+          "correct": true,
+          "explanation": "Three 1- chloride ions cancel the 3+ charge, and the metal keeps its name while chlorine becomes chloride.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Iron(III) chlorine, FeCl3",
+          "correct": false,
+          "explanation": "The non-metal takes the -ide ending in an ionic name; chlorine as a name fragment is reserved for the element itself.",
+          "misconception": "naming rule misapplied to the non-metal"
+        },
+        {
+          "key": "C",
+          "text": "Iron chloride, FeCl",
+          "correct": false,
+          "explanation": "One chloride leaves two of iron's three charges uncancelled; the counts must come from the charge sizes.",
+          "misconception": "one-of-each ratio reused"
+        },
+        {
+          "key": "D",
+          "text": "Iron trichloride, Fe3Cl",
+          "correct": false,
+          "explanation": "Prefix naming is not used for ionic compounds, and the counts sit on the wrong ions.",
+          "misconception": "covalent naming transferred to ionic compounds"
+        }
+      ]
+    }
+  ]
+}

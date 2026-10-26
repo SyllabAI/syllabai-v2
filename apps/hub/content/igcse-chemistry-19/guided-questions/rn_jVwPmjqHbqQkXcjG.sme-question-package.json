@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_jVwPmjqHbqQkXcjG",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a8fd590884218fdf9a6a0f56687b51a4088276d368e25c78561f51f8631ebe9a",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_jVwPmjqHbqQkXcjG",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L1::Q1",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L1",
+      "stem": "What holds an ionic compound together?",
+      "misconceptionClass": "bonding agent",
+      "options": [
+        {
+          "key": "A",
+          "text": "Electrostatic attraction between positive and negative ions, acting in all directions",
+          "correct": true,
+          "explanation": "The attractions run between every oppositely charged pair throughout the lattice, not along one line.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Covalent bonds between the ions' outer shells",
+          "correct": false,
+          "explanation": "The ions are already charged particles; sharing electron pairs belongs to covalent bonding between atoms.",
+          "misconception": "covalent model applied to ions"
+        },
+        {
+          "key": "C",
+          "text": "Gravity between the heavy ions",
+          "correct": false,
+          "explanation": "Electrostatic attraction vastly outweighs gravitational effects at atomic scale; charges, not masses, do the gripping.",
+          "misconception": "gravity substituted for electrostatics"
+        },
+        {
+          "key": "D",
+          "text": "A sea of delocalised electrons around the ions",
+          "correct": false,
+          "explanation": "Delocalised electrons belong to metallic bonding; an ionic solid has no free electrons between its ions.",
+          "misconception": "metallic model transferred"
+        }
+      ]
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L1::Q2",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L1",
+      "stem": "Why does magnesium oxide have a higher melting point than sodium chloride?",
+      "misconceptionClass": "charge-magnitude link",
+      "options": [
+        {
+          "key": "A",
+          "text": "Its ions carry 2+ and 2- charges, so the electrostatic forces are stronger and need more energy to overcome",
+          "correct": true,
+          "explanation": "Force strength rises with charge size, and magnesium oxide's doubly charged ions attract more strongly than sodium chloride's singly charged pair.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Its ions are heavier",
+          "correct": false,
+          "explanation": "Melting depends on the strength of the attractions, not on the mass of the ions.",
+          "misconception": "mass linked to melting point"
+        },
+        {
+          "key": "C",
+          "text": "Its lattice contains fewer ions",
+          "correct": false,
+          "explanation": "Both compounds form giant lattices; ion counts per unit do not explain the melting order.",
+          "misconception": "lattice size invented"
+        },
+        {
+          "key": "D",
+          "text": "Oxygen ions are smaller than chloride ions",
+          "correct": false,
+          "explanation": "The decisive difference is the size of the charges; ion radius is not the factor the explanation turns on.",
+          "misconception": "size factor chosen over charge"
+        }
+      ]
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L1::Q3",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L1",
+      "stem": "Which statement about the forces in an ionic lattice is correct?",
+      "misconceptionClass": "force geometry",
+      "options": [
+        {
+          "key": "A",
+          "text": "They act between oppositely charged ions in every direction throughout the structure",
+          "correct": true,
+          "explanation": "Each ion is surrounded by ions of the opposite charge on all sides, so the attractions fill the whole lattice.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They act only between nearest-neighbour rows",
+          "correct": false,
+          "explanation": "The forces are not confined to rows or planes; every opposite pair in reach attracts.",
+          "misconception": "directional restriction invented"
+        },
+        {
+          "key": "C",
+          "text": "They act only while the solid stays cold",
+          "correct": false,
+          "explanation": "The attractions persist until melting; heat supplies energy against them rather than switching them off.",
+          "misconception": "temperature-dependent forces"
+        },
+        {
+          "key": "D",
+          "text": "They are weak because many ionic compounds dissolve easily",
+          "correct": false,
+          "explanation": "The forces are strong; solubility depends on how water interacts with the ions, not on weak bonding.",
+          "misconception": "solubility read as weak bonding"
+        }
+      ]
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L1::Q4",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L1",
+      "stem": "What must be supplied to melt an ionic solid, in terms of its structure?",
+      "misconceptionClass": "melting mechanism",
+      "options": [
+        {
+          "key": "A",
+          "text": "Enough thermal energy to overcome the strong electrostatic forces across the giant lattice",
+          "correct": true,
+          "explanation": "Melting frees the ions from their fixed positions by paying the energy cost of the attractions.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Enough energy to break the covalent bonds inside each ion",
+          "correct": false,
+          "explanation": "No covalent bonds join the ions; even polyatomic ions keep their internal bonds intact on melting.",
+          "misconception": "bonds inside ions broken"
+        },
+        {
+          "key": "C",
+          "text": "Enough energy to split the ions into atoms",
+          "correct": false,
+          "explanation": "The ions survive melting unchanged; only their positions become mobile.",
+          "misconception": "ions decomposed on melting"
+        },
+        {
+          "key": "D",
+          "text": "Only a small amount of energy, because ionic lattices are fragile",
+          "correct": false,
+          "explanation": "The forces are strong and the energy demand is large, which is exactly why the melting points are high.",
+          "misconception": "fragility confused with low melting point"
+        }
+      ]
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L1::Q5",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L1",
+      "stem": "The ions in a lattice are described as alternating. What does that mean?",
+      "misconceptionClass": "lattice arrangement",
+      "options": [
+        {
+          "key": "A",
+          "text": "Each positive ion is surrounded by negative ions, and each negative ion by positive ones",
+          "correct": true,
+          "explanation": "Alternation places opposite charges side by side everywhere, which is what lets the attractions hold the structure.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The ions alternate between being positive and negative over time",
+          "correct": false,
+          "explanation": "Charges are fixed on each ion; only their positions are regular.",
+          "misconception": "charges imagined to flip"
+        },
+        {
+          "key": "C",
+          "text": "Positive and negative ions occupy separate layers",
+          "correct": false,
+          "explanation": "The pattern mixes the charges within the structure rather than segregating them into layers.",
+          "misconception": "charge layers imagined"
+        },
+        {
+          "key": "D",
+          "text": "The ions alternate in size across the lattice",
+          "correct": false,
+          "explanation": "Alternation refers to charge signs; ion sizes follow the elements involved.",
+          "misconception": "size pattern read as charge pattern"
+        }
+      ]
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L2::Q1",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L2",
+      "stem": "Why does solid sodium chloride not conduct electricity?",
+      "misconceptionClass": "solid-state non-conduction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Its ions are held in fixed positions in the lattice, so no charged particles can move",
+          "correct": true,
+          "explanation": "The charges exist but cannot travel; mobility, not charge presence, is what the solid lacks.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Its ions carry no charge while solid",
+          "correct": false,
+          "explanation": "The ions keep their charges in every state; only their movement is restricted.",
+          "misconception": "charge lost in the solid state"
+        },
+        {
+          "key": "C",
+          "text": "It has no electrons at all",
+          "correct": false,
+          "explanation": "Electrons are present inside the ions; they simply cannot move through the lattice to carry a current.",
+          "misconception": "electrons assumed absent"
+        },
+        {
+          "key": "D",
+          "text": "Its lattice reflects the current away",
+          "correct": false,
+          "explanation": "Conduction is about mobile carriers, not reflection; the solid simply lacks them.",
+          "misconception": "optical model applied to conduction"
+        }
+      ]
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L2::Q2",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L2",
+      "stem": "A beaker contains molten potassium bromide. Why does it conduct?",
+      "misconceptionClass": "molten conduction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Melting has freed the potassium and bromide ions to move and carry the charge",
+          "correct": true,
+          "explanation": "The molten state releases the ions from their lattice positions, and the mobile ions are the current carriers.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Melting has freed electrons to move",
+          "correct": false,
+          "explanation": "The mobile particles are ions, not electrons, in an ionic liquid.",
+          "misconception": "electron carriers assumed"
+        },
+        {
+          "key": "C",
+          "text": "Molten compounds always conduct through their covalent bonds",
+          "correct": false,
+          "explanation": "Potassium bromide is ionic; its conduction rides on the freed ions, not on bonds.",
+          "misconception": "bond-based conduction invented"
+        },
+        {
+          "key": "D",
+          "text": "The heat pushes ions from the anode to the cathode",
+          "correct": false,
+          "explanation": "The ions move in response to an applied electric field; heat alone only freed them.",
+          "misconception": "heat mistaken for the driving field"
+        }
+      ]
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L2::Q3",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L2",
+      "stem": "What changes when sodium chloride dissolves in water, compared with the solid?",
+      "misconceptionClass": "aqueous conduction",
+      "options": [
+        {
+          "key": "A",
+          "text": "The lattice breaks up and the ions move freely through the solution",
+          "correct": true,
+          "explanation": "Dissolving separates the ions from the lattice, so they can migrate and carry charge.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The ions gain extra charge from the water",
+          "correct": false,
+          "explanation": "Charges are unchanged by dissolving; only mobility improves.",
+          "misconception": "water adds charge"
+        },
+        {
+          "key": "C",
+          "text": "Electrons flow through the water between the ions",
+          "correct": false,
+          "explanation": "The charge carriers in solution are the moving ions themselves.",
+          "misconception": "electron pathway imagined in solution"
+        },
+        {
+          "key": "D",
+          "text": "The ions become molecules and stop carrying charge",
+          "correct": false,
+          "explanation": "The ions stay charged; that is precisely why the solution conducts.",
+          "misconception": "ions demoted to molecules"
+        }
+      ]
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L2::Q4",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L2",
+      "stem": "Which row correctly matches each state of an ionic compound to its conductivity?",
+      "misconceptionClass": "state-conductivity mapping",
+      "options": [
+        {
+          "key": "A",
+          "text": "Solid: does not conduct; molten: conducts; aqueous solution: conducts",
+          "correct": true,
+          "explanation": "Only states with mobile ions conduct, and both the melt and the solution have them.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Solid: conducts; molten: does not; aqueous solution: conducts",
+          "correct": false,
+          "explanation": "The solid has fixed ions and cannot conduct, while the molten state can.",
+          "misconception": "solid and molten swapped"
+        },
+        {
+          "key": "C",
+          "text": "Solid: does not conduct; molten: does not; aqueous solution: conducts",
+          "correct": false,
+          "explanation": "The melt frees the ions just as dissolving does, so it conducts too.",
+          "misconception": "molten state underrated"
+        },
+        {
+          "key": "D",
+          "text": "Solid: conducts; molten: conducts; aqueous solution: does not",
+          "correct": false,
+          "explanation": "The solution conducts through its dissolved ions, while the solid does not.",
+          "misconception": "solution underrated and solid overrated"
+        }
+      ]
+    },
+    {
+      "id": "rn_jVwPmjqHbqQkXcjG::L2::Q5",
+      "moduleId": "rn_jVwPmjqHbqQkXcjG::L2",
+      "stem": "In a conducting solution of copper(II) sulfate, which particles carry the current?",
+      "misconceptionClass": "carrier identity",
+      "options": [
+        {
+          "key": "A",
+          "text": "The Cu2+ and SO4 2- ions moving through the solution",
+          "correct": true,
+          "explanation": "The dissolved ions are mobile and charged, which is exactly what conduction requires.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Electrons travelling through the water",
+          "correct": false,
+          "explanation": "Electrons move along wires and electrodes; inside the solution the ions carry the current.",
+          "misconception": "electron flow imagined through the liquid"
+        },
+        {
+          "key": "C",
+          "text": "Water molecules carrying the charge",
+          "correct": false,
+          "explanation": "Water molecules are neutral overall and are not the charge carriers here.",
+          "misconception": "solvent credited with conduction"
+        },
+        {
+          "key": "D",
+          "text": "Copper atoms drifting between the electrodes",
+          "correct": false,
+          "explanation": "Copper atoms form only where ions gain electrons at an electrode; the solution carries ions, not atoms.",
+          "misconception": "atom flow confused with ion flow"
+        }
+      ]
+    }
+  ]
+}

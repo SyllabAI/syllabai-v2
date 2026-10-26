@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_6ZCysv9GnNQmc3w2",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "7fa9c7a29b9c95e3ec980a4191b469d1a5a26e206d3a82509aaeba979f9293ca",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_6ZCysv9GnNQmc3w2",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L1::Q1",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L1",
+      "stem": "Why is the insoluble base added in excess?",
+      "misconceptionClass": "excess purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "So that all of the acid reacts",
+          "correct": true,
+          "explanation": "Surplus base guarantees no acid survives into the evaporation stage.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To make the salt more soluble",
+          "correct": false,
+          "explanation": "Solubility is a property of the salt itself and does not change with extra base.",
+          "misconception": "solubility fiction"
+        },
+        {
+          "key": "C",
+          "text": "To speed up the filtering step",
+          "correct": false,
+          "explanation": "Extra solid gives the filter more work, not less; the reason is about the acid, not the filtering.",
+          "misconception": "purpose misassigned to filtration"
+        },
+        {
+          "key": "D",
+          "text": "So the crystals grow larger",
+          "correct": false,
+          "explanation": "Crystal size depends on evaporation speed, not on leftover solid.",
+          "misconception": "crystal-size purpose invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L1::Q2",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L1",
+      "stem": "What would happen if unreacted acid were left in the solution during evaporation?",
+      "misconceptionClass": "acid residue consequence",
+      "options": [
+        {
+          "key": "A",
+          "text": "It would become dangerously concentrated",
+          "correct": true,
+          "explanation": "As water leaves, any surviving acid grows stronger and more hazardous in the dish.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It would evaporate away harmlessly first",
+          "correct": false,
+          "explanation": "Acids do not simply fly off ahead of the water; they concentrate instead.",
+          "misconception": "acid volatility assumed"
+        },
+        {
+          "key": "C",
+          "text": "It would turn into more salt",
+          "correct": false,
+          "explanation": "There is nothing left for the acid to react with, so it stays as acid.",
+          "misconception": "acid-to-salt conversion imagined"
+        },
+        {
+          "key": "D",
+          "text": "It would neutralise the excess base",
+          "correct": false,
+          "explanation": "Whatever base remains has already done its neutralising; the residue is acid on its own.",
+          "misconception": "reaction timing reversed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L1::Q3",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L1",
+      "stem": "How is the excess solid removed once the acid has all reacted?",
+      "misconceptionClass": "separation method selection",
+      "options": [
+        {
+          "key": "A",
+          "text": "By filtration",
+          "correct": true,
+          "explanation": "The undissolved base is caught by the filter paper while the solution passes through.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "By evaporation",
+          "correct": false,
+          "explanation": "Evaporation removes water later; it cannot separate a solid from a solution.",
+          "misconception": "separation methods swapped"
+        },
+        {
+          "key": "C",
+          "text": "By decanting into a burette",
+          "correct": false,
+          "explanation": "A burette measures volumes in titrations and plays no part in this method.",
+          "misconception": "titration equipment misplaced"
+        },
+        {
+          "key": "D",
+          "text": "By adding more acid",
+          "correct": false,
+          "explanation": "Adding acid would undo the excess-base strategy rather than clean it up.",
+          "misconception": "dissolving the solid imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L1::Q4",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L1",
+      "stem": "When should heating stop during the evaporation stage?",
+      "misconceptionClass": "evaporation endpoint",
+      "options": [
+        {
+          "key": "A",
+          "text": "When small crystals begin to appear",
+          "correct": true,
+          "explanation": "The first crystals mark the point where the solution is concentrated enough to crystallise.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "When the solution starts boiling vigorously",
+          "correct": false,
+          "explanation": "Vigorous boiling is about temperature, not about the crystallisation point.",
+          "misconception": "boiling mistaken for the endpoint"
+        },
+        {
+          "key": "C",
+          "text": "Only when every drop of water has gone",
+          "correct": false,
+          "explanation": "Heating to dryness risks decomposition of the salt and is not the method.",
+          "misconception": "overheating to dryness"
+        },
+        {
+          "key": "D",
+          "text": "Before the solution is warm",
+          "correct": false,
+          "explanation": "Little water would have left, so no crystals could form at all.",
+          "misconception": "premature stop"
+        }
+      ]
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L1::Q5",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L1",
+      "stem": "How can larger crystals be obtained?",
+      "misconceptionClass": "crystal growth control",
+      "options": [
+        {
+          "key": "A",
+          "text": "By letting the solution evaporate slowly over several days",
+          "correct": true,
+          "explanation": "Slow water loss gives dissolved particles the time to build big, ordered crystals.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "By heating the solution as fast as possible",
+          "correct": false,
+          "explanation": "Fast evaporation gives many small crystals, not large ones.",
+          "misconception": "speed-size confusion"
+        },
+        {
+          "key": "C",
+          "text": "By adding extra acid at the end",
+          "correct": false,
+          "explanation": "Extra acid contaminates the product instead of improving it.",
+          "misconception": "purity corrupted"
+        },
+        {
+          "key": "D",
+          "text": "By filtering more than once",
+          "correct": false,
+          "explanation": "Repeat filtering changes nothing about how the crystals grow.",
+          "misconception": "ritual repetition"
+        }
+      ]
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L2::Q1",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L2",
+      "stem": "Which reagents make copper(II) sulfate by this method?",
+      "misconceptionClass": "reagent selection",
+      "options": [
+        {
+          "key": "A",
+          "text": "Copper(II) oxide and dilute sulfuric acid",
+          "correct": true,
+          "explanation": "Insoluble oxide plus acid is exactly the method, and sulfate comes from sulfuric acid.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Copper metal and dilute sulfuric acid",
+          "correct": false,
+          "explanation": "Copper sits below hydrogen, so it does not displace hydrogen from the acid.",
+          "misconception": "reactivity order ignored"
+        },
+        {
+          "key": "C",
+          "text": "Copper(II) carbonate and dilute hydrochloric acid",
+          "correct": false,
+          "explanation": "Hydrochloric acid would give the chloride, not the sulfate.",
+          "misconception": "wrong acid chosen"
+        },
+        {
+          "key": "D",
+          "text": "Copper(II) sulfate and water",
+          "correct": false,
+          "explanation": "The product cannot be its own starting material.",
+          "misconception": "product named as reagent"
+        }
+      ]
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L2::Q2",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L2",
+      "stem": "What is observed when a carbonate base reacts with the acid?",
+      "misconceptionClass": "carbonate observation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Effervescence as carbon dioxide is released",
+          "correct": true,
+          "explanation": "Carbonates release carbon dioxide gas, which is seen as fizzing.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A colour change from blue to white",
+          "correct": false,
+          "explanation": "That is the anhydrous copper(II) sulfate water test, not this reaction.",
+          "misconception": "water-test colours misplaced"
+        },
+        {
+          "key": "C",
+          "text": "The mixture turns alkaline",
+          "correct": false,
+          "explanation": "The acid is being neutralised, so the mixture does not turn alkaline.",
+          "misconception": "product misidentified"
+        },
+        {
+          "key": "D",
+          "text": "Nothing, because carbonates are insoluble",
+          "correct": false,
+          "explanation": "Insoluble bases still react with acids; insolubility does not mean inertness.",
+          "misconception": "solubility confused with reactivity"
+        }
+      ]
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L2::Q3",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L2",
+      "stem": "Which metal could safely be used instead of a base to make a salt from acid?",
+      "misconceptionClass": "metal selection window",
+      "options": [
+        {
+          "key": "A",
+          "text": "Magnesium, which sits above hydrogen but is not dangerously reactive",
+          "correct": true,
+          "explanation": "The safe window is above hydrogen yet below the metals that react explosively.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Copper, which is below hydrogen",
+          "correct": false,
+          "explanation": "Metals below hydrogen do not react with dilute acids to make salts.",
+          "misconception": "reactivity order error"
+        },
+        {
+          "key": "C",
+          "text": "Sodium, which reacts explosively",
+          "correct": false,
+          "explanation": "Too-reactive metals make the reaction dangerous rather than useful.",
+          "misconception": "too-reactive hazard ignored"
+        },
+        {
+          "key": "D",
+          "text": "Gold, which is unreactive but above hydrogen",
+          "correct": false,
+          "explanation": "Gold sits below hydrogen and would do nothing in the acid.",
+          "misconception": "false position in the series"
+        }
+      ]
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L2::Q4",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L2",
+      "stem": "What are the products when copper(II) oxide reacts with dilute sulfuric acid?",
+      "misconceptionClass": "product identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Copper(II) sulfate and water",
+          "correct": true,
+          "explanation": "Acid plus metal oxide always gives salt plus water.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Copper(II) sulfite and hydrogen",
+          "correct": false,
+          "explanation": "Sulfuric acid makes sulfates, and no hydrogen is released with an oxide.",
+          "misconception": "wrong salt family and invented gas"
+        },
+        {
+          "key": "C",
+          "text": "Copper and sulfuric acid",
+          "correct": false,
+          "explanation": "That reverses the reaction; the oxide is consumed, not produced.",
+          "misconception": "reverse reaction imagined"
+        },
+        {
+          "key": "D",
+          "text": "Copper(II) hydroxide and sulfate",
+          "correct": false,
+          "explanation": "Those are fragments of the reactants, not the products.",
+          "misconception": "ions named as products"
+        }
+      ]
+    },
+    {
+      "id": "rn_6ZCysv9GnNQmc3w2::L2::Q5",
+      "moduleId": "rn_6ZCysv9GnNQmc3w2::L2",
+      "stem": "Why is the leftover solid filtered off before evaporation?",
+      "misconceptionClass": "purification purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "So only the salt and water remain in the solution",
+          "correct": true,
+          "explanation": "Removing the surplus base leaves a solution with nothing but the product in it.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To remove the blue colour",
+          "correct": false,
+          "explanation": "The blue colour belongs to the wanted salt, not to an impurity.",
+          "misconception": "cosmetic purpose invented"
+        },
+        {
+          "key": "C",
+          "text": "To add water of crystallisation",
+          "correct": false,
+          "explanation": "Filtration removes solid; it adds nothing to the solution.",
+          "misconception": "concept misplaced"
+        },
+        {
+          "key": "D",
+          "text": "To concentrate the acid further",
+          "correct": false,
+          "explanation": "All the acid has already reacted; there is no free acid to concentrate.",
+          "misconception": "contradicts the method"
+        }
+      ]
+    }
+  ]
+}

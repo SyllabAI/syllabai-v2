@@ -1,0 +1,178 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_vzGMZxqQtWYVWB7h",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a62a39c656a8aa5ca809ecac4f6454bf7e2634d7d324402a2e8f71823858e903",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_vzGMZxqQtWYVWB7h",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Atomic Structure",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-3-atomic-structure/1-3-2-calculate-relative-atomic-mass",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.16",
+        "text": "know what is meant by the terms atomic number, mass number, isotopes and relative atomic mass (Ar)"
+      },
+      {
+        "code": "4CH1-1.17",
+        "text": "be able to calculate the relative atomic mass of an element (Ar) from isotopic abundances"
+      }
+    ],
+    "primer": {
+      "text": "You already know what isotopes are, and how atomic number and mass number describe an atom - both met in the Atoms: Definitions & Structure note of this subtopic. This note turns those terms into a calculation: blending isotope masses by abundance to reach a relative atomic mass. If isotope notation still feels shaky, revisit that note first.",
+      "prerequisiteSubtopic": "Atomic Structure"
+    },
+    "modules": [
+      {
+        "id": "rn_vzGMZxqQtWYVWB7h::L1",
+        "title": "Calculating Relative Atomic Mass",
+        "sourceHeadings": [
+          "Calculating relative atomic mass"
+        ],
+        "specRefs": [
+          "4CH1-1.16",
+          "4CH1-1.17"
+        ],
+        "opening": "An element's relative atomic mass is not the mass of any one atom; it is an average blended from all the element's isotopes. Each isotope contributes in proportion to how common it is. This lesson sets up that weighting idea and the equation that carries it out.",
+        "keyPoints": [
+          "Relative atomic mass blends every isotope's mass number with its percentage abundance.",
+          "Each isotope contributes one term: percentage abundance times mass number.",
+          "The summed terms are divided by 100 because abundances are percentages.",
+          "The result is a weighted average, so Ar sits between the isotope mass numbers.",
+          "Isotopes share an element's symbol but carry different mass numbers, like the two stable isotopes of copper.",
+          "With three isotopes the top line simply extends to a third percentage-times-mass term."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "To find an element's relative atomic mass, multiply each isotope's percentage by its mass number, add the answers, and divide by 100; the answer is an average weighted by abundance.",
+            "analogy": "It is like a class test average where some scores count more: each isotope's mass is weighted by how common it is before the final average is taken.",
+            "examPointer": "The word weighted earns the marks: say the answer is pulled towards the isotope that is most abundant."
+          },
+          "medium": {
+            "restatement": "The equation takes each isotope's percentage abundance times its mass number, adds one term per isotope, and divides the total by 100. The result is a weighted average: an element's Ar sits between its isotope mass numbers, closer to whichever isotope is more abundant, which is why most Ar values are not whole numbers.",
+            "analogy": "Think of blending two juices in a 72-to-28 mix: the flavour lands near the dominant juice, not at a plain halfway point.",
+            "examPointer": "Quote the equation in words if symbols fail you: sum of percentage times mass, all over 100 - and note the top line extends for every extra isotope."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vzGMZxqQtWYVWB7h::L1::Q1",
+          "rn_vzGMZxqQtWYVWB7h::L1::Q2",
+          "rn_vzGMZxqQtWYVWB7h::L1::Q3",
+          "rn_vzGMZxqQtWYVWB7h::L1::Q4",
+          "rn_vzGMZxqQtWYVWB7h::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_vzGMZxqQtWYVWB7h::L2",
+        "title": "Worked Example: Rubidium",
+        "sourceHeadings": [
+          "Calculating relative atomic mass"
+        ],
+        "specRefs": [
+          "4CH1-1.17"
+        ],
+        "opening": "The rubidium example puts the equation to work: two isotopes, two multiplications, one division, one rounding step. Follow the numbers through and note where the question's wording sets the final format. The same pattern extends to any number of isotopes.",
+        "keyPoints": [
+          "First multiply each percentage abundance by its own mass number, then add the products.",
+          "For the rubidium sample, (72 x 85) + (28 x 87) gives 8556.",
+          "Dividing 8556 by 100 gives 85.56 before any rounding.",
+          "To one decimal place the sample's relative atomic mass is 85.6.",
+          "Equal 50-50 abundances would land the answer midway, at 86.0.",
+          "Keep full precision through the working and round only in the final line."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Work through the rubidium example in three moves: multiply each percentage by its mass number, add the two products, then divide by 100 and round as the question asks.",
+            "analogy": "The two multiplications are like two shopping bills; adding them gives the total, and dividing by 100 splits it fairly across the whole sample.",
+            "examPointer": "Round only at the end: 85.56 becomes 85.6 at one decimal place, and the question's wording tells you which place to use."
+          },
+          "medium": {
+            "restatement": "For 72% of rubidium-85 and 28% of rubidium-87, the numerator is (72 x 85) + (28 x 87) = 8556, and 8556 / 100 gives 85.56. Reported to one decimal place the Ar is 85.6. A 50-50 split of the same isotopes would average to 86.0, showing how the abundances pull the answer.",
+            "analogy": "Equal abundances behave like a fair coin toss landing at the midpoint of the two masses; unequal abundances bias the coin, dragging Ar towards the more plentiful isotope.",
+            "examPointer": "Recognise isotopes from their labels: the same element symbol with different mass numbers, like the two copper isotopes, always signals an Ar calculation."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vzGMZxqQtWYVWB7h::L2::Q1",
+          "rn_vzGMZxqQtWYVWB7h::L2::Q2",
+          "rn_vzGMZxqQtWYVWB7h::L2::Q3",
+          "rn_vzGMZxqQtWYVWB7h::L2::Q4",
+          "rn_vzGMZxqQtWYVWB7h::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "isotope",
+          "definition": "Atoms of the same element with equal proton counts but different neutron counts.",
+          "firstLesson": 1
+        },
+        {
+          "term": "mass number",
+          "definition": "The number of protons and neutrons in the nucleus of an atom.",
+          "firstLesson": 1
+        },
+        {
+          "term": "relative atomic mass",
+          "definition": "The weighted average mass of one atom of an element, built from isotope abundances.",
+          "firstLesson": 1
+        },
+        {
+          "term": "percentage abundance",
+          "definition": "How common an isotope is in a sample, expressed as a percentage.",
+          "firstLesson": 1
+        },
+        {
+          "term": "weighted average",
+          "definition": "An average in which each value counts in proportion to how common it is.",
+          "firstLesson": 1
+        },
+        {
+          "term": "numerator",
+          "definition": "The top line of the fraction, holding the summed percentage-times-mass terms.",
+          "firstLesson": 1
+        },
+        {
+          "term": "calculation",
+          "definition": "Step-by-step working that produces a number from given values, as in this note's Ar method.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A sample of rubidium contains 72% of the isotope with mass number 85 and 28% of the isotope with mass number 87. Calculate the relative atomic mass of the sample, giving your answer to one decimal place.",
+        "steps": [
+          "The numerator sums each isotope's percentage abundance times its mass number: (72 x 85) + (28 x 87) = 8556.",
+          "Divide the numerator by 100: 8556 / 100 = 85.56.",
+          "Reported to one decimal place, the relative atomic mass of this sample of rubidium is 85.6."
+        ],
+        "finalAnswer": "The relative atomic mass of the rubidium sample is 85.6 (to one decimal place)."
+      }
+    }
+  }
+}

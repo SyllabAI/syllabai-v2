@@ -1,0 +1,159 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_DBGf3WVffDBNDp4R",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "122a3148f328fc3a02d2f87e5047352d9885d4cee5678997ada1aec06084e54d",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_DBGf3WVffDBNDp4R",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Alkenes",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-4-alkenes/4-4-2-bromine-and-alkenes",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.27",
+        "text": "describe the reactions of alkenes with bromine to produce dibromoalkanes"
+      },
+      {
+        "code": "4CH1-4.28",
+        "text": "describe how bromine water can be used to distinguish between an alkane and an alkene"
+      }
+    ],
+    "primer": {
+      "text": "From Alkenes you already know the C=C double bond opens to add new atoms. This note runs the classic classroom reaction: bromine adding across that bond to give dibromoalkanes, and the same chemistry in water form as the orange bromine water test that tells alkenes from alkanes in one shake.",
+      "prerequisiteSubtopic": "Alkenes"
+    },
+    "modules": [
+      {
+        "id": "rn_DBGf3WVffDBNDp4R::L1",
+        "title": "Bromine adds across the double bond",
+        "sourceHeadings": [
+          "Bromination of alkenes",
+          "Addition of bromine to ethene"
+        ],
+        "specRefs": [
+          "4CH1-4.27"
+        ],
+        "opening": "Alkenes take simple molecules onto their double bond, and bromine is the textbook partner. This lesson watches bromine add across C=C and generalises the move to every halogen and alkene pair.",
+        "keyPoints": [
+          "Alkenes undergo addition reactions in which atoms add across the C=C double bond.",
+          "When bromine reacts with an alkene, a dibromoalkane is formed.",
+          "Bromine plus ethene gives dibromoethane, with one bromine on each of the two carbons.",
+          "The same addition works for any halogen with any alkene, atoms always adding across the C=C.",
+          "No other products form: both bromine atoms end up bonded, one to each carbon of the old double bond."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Bromine does not need UV light with an alkene: the double bond simply opens and one bromine atom attaches to each carbon. The single product is a dibromoalkane. The alkene offers the open bond, so the halogen needs no light at all.",
+            "analogy": "The double bond is a two-seat bench that is reserved; bromine arrives and both seats fill at once, one bromine per carbon, no queue left over.",
+            "examPointer": "Say addition across the C=C, and remember no UV condition and no second product apply here."
+          },
+          "medium": {
+            "restatement": "In an addition reaction the atoms of a simple molecule add across the C=C double bond of an alkene, so bromine and ethene form dibromoethane with each carbon gaining one bromine. The move generalises to any halogen with any alkene, always yielding one product where both halogen atoms bond across the former double bond.",
+            "analogy": "Picture a drawbridge that lowers to let two riders cross side by side: the double bond opens, each carbon hosts one halogen rider, and the bridge closes as single bonds again.",
+            "examPointer": "Write the dibromoalkane product with a bromine on each carbon, and state the reaction type as addition with no other products."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_DBGf3WVffDBNDp4R::L1::Q1",
+          "rn_DBGf3WVffDBNDp4R::L1::Q2",
+          "rn_DBGf3WVffDBNDp4R::L1::Q3",
+          "rn_DBGf3WVffDBNDp4R::L1::Q4",
+          "rn_DBGf3WVffDBNDp4R::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_DBGf3WVffDBNDp4R::L2",
+        "title": "The bromine water test",
+        "sourceHeadings": [
+          "Testing for alkenes",
+          "Bromine water test"
+        ],
+        "specRefs": [
+          "4CH1-4.28"
+        ],
+        "opening": "The same addition chemistry becomes a laboratory test when the bromine is dissolved in water. This lesson follows the orange colour through both outcomes and explains why the difference appears.",
+        "keyPoints": [
+          "Bromine water is an orange solution used to test for alkenes, being safer than bromine itself.",
+          "Added to an alkane, bromine water stays orange because there is no C=C bond for the bromine to add across.",
+          "With an alkene, the bromine joins onto the double bond and the orange colour fades away.",
+          "The decolourising happens because free bromine no longer remains in the solution.",
+          "The test works because alkanes are saturated and alkenes are unsaturated, so only the alkene reacts."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Shake bromine water with the unknown liquid. Orange staying means an alkane; orange vanishing means an alkene whose double bond swallowed the bromine. One shake of the tube settles the question of which family the liquid belongs to.",
+            "analogy": "The orange colour is a queue of bromine molecules waiting for work; an alkene gives them a job and the queue empties, while an alkane leaves them standing around.",
+            "examPointer": "Record both outcomes in full: stays orange for the alkane, decolourises for the alkene."
+          },
+          "medium": {
+            "restatement": "Bromine water, an orange solution safer to handle than bromine, distinguishes saturated from unsaturated hydrocarbons. With an alkane it remains orange because no double bond exists to accept bromine; with an alkene the bromine adds across the C=C, free bromine is used up, and the solution decolourises.",
+            "analogy": "Bromine water is an orange-clothed inspector: with an alkane it finds no door to enter and stays visibly dressed, but at a double bond it enters the building and comes out in plain clothes.",
+            "examPointer": "Explain the colour loss mechanistically, bromine atoms adding across C=C leaving no free bromine, rather than just naming the colours."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_DBGf3WVffDBNDp4R::L2::Q1",
+          "rn_DBGf3WVffDBNDp4R::L2::Q2",
+          "rn_DBGf3WVffDBNDp4R::L2::Q3",
+          "rn_DBGf3WVffDBNDp4R::L2::Q4",
+          "rn_DBGf3WVffDBNDp4R::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "addition reaction",
+          "definition": "A reaction in which atoms add across the C=C double bond of an alkene, forming one product.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dibromoalkane",
+          "definition": "The product of adding bromine across an alkene double bond, with one bromine on each carbon.",
+          "firstLesson": 1
+        },
+        {
+          "term": "bromine water",
+          "definition": "The orange aqueous solution of bromine used to test for unsaturation, safer than bromine itself.",
+          "firstLesson": 2
+        },
+        {
+          "term": "decolourise",
+          "definition": "To lose colour; bromine water decolourises when its bromine adds across a C=C bond.",
+          "firstLesson": 2
+        },
+        {
+          "term": "electron density",
+          "definition": "The concentration of electrons in a bond; the C=C bond is electron-rich and open to attack.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

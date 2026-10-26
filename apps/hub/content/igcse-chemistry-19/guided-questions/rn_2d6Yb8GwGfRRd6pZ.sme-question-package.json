@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_2d6Yb8GwGfRRd6pZ",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "39e6fceb916466bc94800f8893208e8a9208d06e69435c0b85cbb621a3b15d75",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_2d6Yb8GwGfRRd6pZ",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L1::Q1",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L1",
+      "stem": "What does it mean for a reaction to be reversible?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It occurs in both directions, with the products able to reform the reactants",
+          "correct": true,
+          "explanation": "Both directions run; nothing about the reaction is one-way.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It can be undone only by changing the temperature",
+          "correct": false,
+          "explanation": "Reversibility is built into the reaction itself, not a switching condition.",
+          "misconception": "condition confused with direction"
+        },
+        {
+          "key": "C",
+          "text": "It runs halfway and stops there permanently",
+          "correct": false,
+          "explanation": "Reversible reactions do not stop; equilibrium is a balance of ongoing reactions.",
+          "misconception": "stopping confused with balancing"
+        },
+        {
+          "key": "D",
+          "text": "It produces the same amount of products as reactants",
+          "correct": false,
+          "explanation": "Amounts at equilibrium need not match; rates, not quantities, are equal.",
+          "misconception": "amounts equated with rates"
+        }
+      ]
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L1::Q2",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L1",
+      "stem": "Why must equilibrium be reached in a closed container?",
+      "misconceptionClass": "closed-system purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "So none of the participating species can escape and nothing else can enter",
+          "correct": true,
+          "explanation": "The closed vessel keeps every participant present so the two reactions can balance.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To keep the pressure high enough for the reaction to start",
+          "correct": false,
+          "explanation": "Starting the reaction is not the issue; keeping every species in the vessel is.",
+          "misconception": "pressure requirement invented"
+        },
+        {
+          "key": "C",
+          "text": "To stop the products decomposing",
+          "correct": false,
+          "explanation": "Products decomposing is part of the reverse reaction, not something prevented.",
+          "misconception": "reverse reaction mistaken for loss"
+        },
+        {
+          "key": "D",
+          "text": "To keep the temperature constant",
+          "correct": false,
+          "explanation": "The container blocks matter transfer; temperature control is a separate matter.",
+          "misconception": "condition swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L1::Q3",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L1",
+      "stem": "The concentrations at equilibrium are constant. What does that mean?",
+      "misconceptionClass": "constant-vs-equal confusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "Each concentration stays the same over time, though the two sides' amounts need not match",
+          "correct": true,
+          "explanation": "Constant means unchanging, not identical between reactants and products.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Reactant and product concentrations are equal to each other",
+          "correct": false,
+          "explanation": "Equality of concentrations is not required; only the rates are equal.",
+          "misconception": "equal amounts claimed"
+        },
+        {
+          "key": "C",
+          "text": "Both concentrations are zero because the reaction finished",
+          "correct": false,
+          "explanation": "The reaction has not stopped; both sides remain present.",
+          "misconception": "completion assumed"
+        },
+        {
+          "key": "D",
+          "text": "The concentrations keep rising steadily",
+          "correct": false,
+          "explanation": "Rising is change; constant means no net change over time.",
+          "misconception": "steady change misread as constant"
+        }
+      ]
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L1::Q4",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L1",
+      "stem": "Why is the equilibrium described as dynamic?",
+      "misconceptionClass": "dynamic meaning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because both reactions keep running constantly, converting molecules into each other at the same rate",
+          "correct": true,
+          "explanation": "Dynamic names the ongoing change that balances out.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because the concentrations change slowly over time",
+          "correct": false,
+          "explanation": "Concentrations stay constant at equilibrium.",
+          "misconception": "contradiction unnoted"
+        },
+        {
+          "key": "C",
+          "text": "Because the reaction needs constant stirring or heating",
+          "correct": false,
+          "explanation": "No input is required; the balance maintains itself.",
+          "misconception": "external input imagined"
+        },
+        {
+          "key": "D",
+          "text": "Because the molecules move faster once equilibrium is reached",
+          "correct": false,
+          "explanation": "Molecular speed is not the claim; the ongoing two-way reactions are.",
+          "misconception": "kinetic misreading"
+        }
+      ]
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L1::Q5",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L1",
+      "stem": "A leak develops in the reaction vessel and gas escapes. What happens to the equilibrium?",
+      "misconceptionClass": "open-system consequence",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is disturbed: escaping material means the system is no longer closed, so the balance cannot hold",
+          "correct": true,
+          "explanation": "The closed-system requirement is exactly about keeping everything in the vessel.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Nothing; equilibrium survives leaks because the rates stay equal anyway",
+          "correct": false,
+          "explanation": "With material leaving, the two rates can no longer stay matched.",
+          "misconception": "balance assumed indestructible"
+        },
+        {
+          "key": "C",
+          "text": "The reaction immediately runs to completion",
+          "correct": false,
+          "explanation": "Loss of material unbalances the rates; it does not force completion.",
+          "misconception": "completion assumed"
+        },
+        {
+          "key": "D",
+          "text": "The reaction reverses completely, leaving only reactants",
+          "correct": false,
+          "explanation": "Nothing forces total reversal; the balance is simply lost.",
+          "misconception": "total reversal imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L2::Q1",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L2",
+      "stem": "At the start of the Haber process, why is the forward rate at its highest?",
+      "misconceptionClass": "rate-concentration link",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because the nitrogen and hydrogen concentrations are at their highest, and rate tracks concentration",
+          "correct": true,
+          "explanation": "The note's own reasoning: the most reactant present means the fastest forward reaction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because the ammonia is pushing the reaction forward",
+          "correct": false,
+          "explanation": "There is no ammonia at the start; only nitrogen and hydrogen are present.",
+          "misconception": "product presence invented"
+        },
+        {
+          "key": "C",
+          "text": "Because the temperature is highest at the start",
+          "correct": false,
+          "explanation": "Temperature is held steady; the start's speed comes from abundant reactants.",
+          "misconception": "condition miscredited"
+        },
+        {
+          "key": "D",
+          "text": "Because the vessel is newest and cleanest",
+          "correct": false,
+          "explanation": "The rate is set by concentrations, not by vessel condition.",
+          "misconception": "physical condition blamed"
+        }
+      ]
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L2::Q2",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L2",
+      "stem": "Why does the forward rate fall as the reaction proceeds?",
+      "misconceptionClass": "rate tracking",
+      "options": [
+        {
+          "key": "A",
+          "text": "The nitrogen and hydrogen concentrations gradually decrease as they are consumed",
+          "correct": true,
+          "explanation": "Less reactant means fewer collisions, so the forward rate drops.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The nitrogen and hydrogen particles slow down over time",
+          "correct": false,
+          "explanation": "Particle speed is not the mechanism; concentration is.",
+          "misconception": "kinetic misattribution"
+        },
+        {
+          "key": "C",
+          "text": "The ammonia blocks the forward reaction from outside the vessel",
+          "correct": false,
+          "explanation": "Ammonia rises within the mixture; it does not act from outside.",
+          "misconception": "blocking picture invented"
+        },
+        {
+          "key": "D",
+          "text": "The vessel walls absorb the gases",
+          "correct": false,
+          "explanation": "Nothing leaves a closed vessel; the fall is internal consumption.",
+          "misconception": "material loss imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L2::Q3",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L2",
+      "stem": "What happens to the backward reaction as ammonia accumulates?",
+      "misconceptionClass": "reverse-rate growth",
+      "options": [
+        {
+          "key": "A",
+          "text": "It speeds up, because its reactant, ammonia, keeps increasing",
+          "correct": true,
+          "explanation": "The reverse reaction consumes ammonia, so more ammonia means a faster reverse rate.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It stays at zero until equilibrium is reached",
+          "correct": false,
+          "explanation": "The backward reaction begins as soon as ammonia exists.",
+          "misconception": "delayed start assumed"
+        },
+        {
+          "key": "C",
+          "text": "It slows down, because the ammonia blocks it",
+          "correct": false,
+          "explanation": "More ammonia speeds the decomposition, it does not slow it.",
+          "misconception": "direction of change inverted"
+        },
+        {
+          "key": "D",
+          "text": "It runs faster than the forward reaction until equilibrium",
+          "correct": false,
+          "explanation": "The backward rate rises to meet the forward one; the note has them becoming equal.",
+          "misconception": "overshoot claimed"
+        }
+      ]
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L2::Q4",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L2",
+      "stem": "Why do the two rates eventually become equal?",
+      "misconceptionClass": "convergence reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the closed system the two reactions are interlinked and no gas can escape, so the rates settle at equality",
+          "correct": true,
+          "explanation": "The note's own account: interlinked reactions in a closed system converge.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because the reaction runs out of energy and stops",
+          "correct": false,
+          "explanation": "Nothing stops; the rates match while both reactions continue.",
+          "misconception": "stopping confused with balancing"
+        },
+        {
+          "key": "C",
+          "text": "Because the nitrogen and hydrogen have completely run out",
+          "correct": false,
+          "explanation": "Reactants are still present at equilibrium; their concentrations are constant, not zero.",
+          "misconception": "exhaustion claimed"
+        },
+        {
+          "key": "D",
+          "text": "Because the ammonia fills the vessel and forces a stop",
+          "correct": false,
+          "explanation": "Filling the vessel is not what balances the rates.",
+          "misconception": "space-limit picture invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_2d6Yb8GwGfRRd6pZ::L2::Q5",
+      "moduleId": "rn_2d6Yb8GwGfRRd6pZ::L2",
+      "stem": "At equilibrium in the Haber process, which statement is true?",
+      "misconceptionClass": "equilibrium features",
+      "options": [
+        {
+          "key": "A",
+          "text": "The forward and reverse rates are equal, and the concentrations have stopped changing",
+          "correct": true,
+          "explanation": "That is exactly the pair of features the exam hint lists.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Both reactions have stopped, so the amounts are fixed",
+          "correct": false,
+          "explanation": "The reactions continue; the amounts are fixed by the equal rates.",
+          "misconception": "stopping confused with balancing"
+        },
+        {
+          "key": "C",
+          "text": "The rate of making ammonia equals the total amount made",
+          "correct": false,
+          "explanation": "Rate compares with rate; it is not compared with an amount.",
+          "misconception": "rate-amount conflation"
+        },
+        {
+          "key": "D",
+          "text": "The concentrations of nitrogen, hydrogen and ammonia are all equal",
+          "correct": false,
+          "explanation": "Equal rates, not equal concentrations, is the equilibrium condition.",
+          "misconception": "equal amounts claimed"
+        }
+      ]
+    }
+  ]
+}

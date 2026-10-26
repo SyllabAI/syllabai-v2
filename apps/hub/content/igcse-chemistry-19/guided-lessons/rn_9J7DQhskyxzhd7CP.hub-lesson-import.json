@@ -1,0 +1,164 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_9J7DQhskyxzhd7CP",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "b075b4e01e8408c1de84dcb1b2a9aad53f709cf542435a8c1992e53ac9fcec5c",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_9J7DQhskyxzhd7CP",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Crude Oil",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-2-crude-oil/4-2-3-nitrogen-oxides-and-sulfur-dioxide",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.14",
+        "text": "know that, in car engines, the temperature reached is high enough to allow nitrogen and oxygen from air to react, forming oxides of nitrogen"
+      },
+      {
+        "code": "4CH1-4.15",
+        "text": "explain how the combustion of some impurities in hydrocarbon fuels results in the formation of sulfur dioxide"
+      },
+      {
+        "code": "4CH1-4.16",
+        "text": "understand how sulfur dioxide and oxides of nitrogen contribute to acid rain"
+      }
+    ],
+    "primer": {
+      "text": "From Combustion you already know that fuels burn with products decided by their ingredients. This note adds the two pollutant families: nitrogen oxides born in hot engines, and sulfur dioxide from impurities in the fuel, then follows both into the rain that turns acidic.",
+      "prerequisiteSubtopic": "Crude Oil"
+    },
+    "modules": [
+      {
+        "id": "rn_9J7DQhskyxzhd7CP::L1",
+        "title": "Hot engines and dirty fuels",
+        "sourceHeadings": [
+          "Nitrogen Oxides",
+          "Sulfur dioxide"
+        ],
+        "specRefs": [
+          "4CH1-4.14",
+          "4CH1-4.15"
+        ],
+        "opening": "Two very different sources feed the same pollution story. In the engine, sheer heat welds air nitrogen to oxygen; in the fuel, sulfur impurities burn along with the hydrocarbons.",
+        "keyPoints": [
+          "Nitrogen and oxygen from air react in the high temperature and pressure inside internal combustion engines.",
+          "The products are the oxides of nitrogen, NO and NO2, also formed in blast furnaces.",
+          "Exhaust gases also carry unburned hydrocarbons and carbon monoxide, so cars fit catalytic converters to render them harmless.",
+          "Fossil fuels are contaminated with small amounts of sulfur impurities, which burn to sulfur dioxide.",
+          "The burning of the impurity follows S + O2 -> SO2, and nitrogen oxides also add to smog and asthma difficulties."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Engines run so hot that the nitrogen in air joins with oxygen, making NO and NO2. Fuels also carry a little sulfur, which burns to the choking gas sulfur dioxide. One pollutant is born of heat, the other rides in with the fuel.",
+            "analogy": "One pollutant is forged by heat alone, like sparks off a grinder; the other was hiding in the fuel all along, like grit in the coal scuttle.",
+            "examPointer": "Keep the two origins separate in answers: air nitrogen plus engine heat for NOx, fuel impurity for SO2."
+          },
+          "medium": {
+            "restatement": "Inside internal combustion engines the temperature is high enough for nitrogen and oxygen from air to combine, giving the oxides NO and NO2, a route also found in blast furnaces. Separately, fossil fuels carry sulfur impurities that burn with the fuel, so the sulfur is oxidised to sulfur dioxide in the reaction S plus O2 giving SO2.",
+            "analogy": "The engine is a forge that welds the two air gases into new pollutants, while the fuel smuggles its own extra element into the fire like a stowaway revealed only at burning.",
+            "examPointer": "Quote the equation S + O2 -> SO2 for the impurity route and state the high-temperature condition for the engine route."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_9J7DQhskyxzhd7CP::L1::Q1",
+          "rn_9J7DQhskyxzhd7CP::L1::Q2",
+          "rn_9J7DQhskyxzhd7CP::L1::Q3",
+          "rn_9J7DQhskyxzhd7CP::L1::Q4",
+          "rn_9J7DQhskyxzhd7CP::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_9J7DQhskyxzhd7CP::L2",
+        "title": "The road to acid rain",
+        "sourceHeadings": [
+          "How is acid rain formed?",
+          "From nitrogen dioxide"
+        ],
+        "specRefs": [
+          "4CH1-4.16"
+        ],
+        "opening": "Both pollutant families end in the same place: dissolved in raindrops, falling as acid. This lesson writes the two routes to acid rain and lists the damage the droplets do on landing.",
+        "keyPoints": [
+          "Sulfur dioxide from burned fuels dissolves into raindrops and makes sulfuric acid.",
+          "The route is 2SO2 + O2 + 2H2O -> 2H2SO4, one component of acid rain.",
+          "Nitrogen dioxide from car engines reacts with rain water to give a mixture of nitrous and nitric acids.",
+          "The nitrogen route is 2NO2 + H2O -> HNO2 + HNO3, and lightning can also trigger NOx formation.",
+          "Acid rain corrodes metals and carbonate statues, harms aquatic life, pollutes crops and water, and irritates lungs."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Sulfur dioxide and nitrogen dioxide both dissolve in raindrops and turn the water acidic. The falling rain then attacks buildings, metalwork, lakes and lungs. Both routes end the same way, with acid carried down by falling rain.",
+            "analogy": "The sky becomes a slow rinse cycle: pollutant gases wash into every droplet, and the whole cloud wrings out a weak acid bath over everything below.",
+            "examPointer": "Name both acid products, sulfuric from SO2 and nitric plus nitrous from NO2, when explaining how acid rain forms."
+          },
+          "medium": {
+            "restatement": "Sulfur dioxide dissolves in rainwater and, with more oxygen, forms sulfuric acid by 2SO2 + O2 + 2H2O giving 2H2SO4. Nitrogen dioxide reacts with rain water to give nitrous and nitric acids in the ratio 2NO2 + H2O giving HNO2 + HNO3, and the acid droplets fall when clouds grow heavy, corroding structures and ecosystems.",
+            "analogy": "Two rivers feed one polluted lake: the sulfur river runs from impure fuel, the nitrogen river from hot engines, and where they merge in the clouds the rain arrives already acidic.",
+            "examPointer": "Balance each route equation, then attach at least two damages, such as corrosion of carbonate rock and harm to aquatic organisms."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_9J7DQhskyxzhd7CP::L2::Q1",
+          "rn_9J7DQhskyxzhd7CP::L2::Q2",
+          "rn_9J7DQhskyxzhd7CP::L2::Q3",
+          "rn_9J7DQhskyxzhd7CP::L2::Q4",
+          "rn_9J7DQhskyxzhd7CP::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "oxides of nitrogen",
+          "definition": "The gases NO and NO2 formed when nitrogen and oxygen from air react at engine-level heat and pressure.",
+          "firstLesson": 1
+        },
+        {
+          "term": "sulfur dioxide",
+          "definition": "The gas SO2 formed when sulfur impurities in fossil fuels burn in oxygen.",
+          "firstLesson": 1
+        },
+        {
+          "term": "catalytic converter",
+          "definition": "A part of a car exhaust system that renders harmful exhaust gases harmless.",
+          "firstLesson": 1
+        },
+        {
+          "term": "acid rain",
+          "definition": "Rain made acidic by dissolved sulfur dioxide and oxides of nitrogen forming sulfuric, nitrous and nitric acids.",
+          "firstLesson": 2
+        },
+        {
+          "term": "photochemical smog",
+          "definition": "Haze formed in air through the action of light on pollutant gases such as nitrogen oxides.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

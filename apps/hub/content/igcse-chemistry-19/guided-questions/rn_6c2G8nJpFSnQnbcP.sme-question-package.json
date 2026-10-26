@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_6c2G8nJpFSnQnbcP",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "36736f64ede332f077cd938bc4e738e9d59d940e072355bb0b3428588c2c20ee",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_6c2G8nJpFSnQnbcP",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L1::Q1",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L1",
+      "stem": "What does saturated mean for an alkane?",
+      "misconceptionClass": "saturation meaning",
+      "options": [
+        {
+          "key": "A",
+          "text": "It has only single carbon-carbon bonds and no double bonds",
+          "correct": true,
+          "explanation": "Single bonds only is the exact sense in which alkanes are called saturated.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It is dissolved in water to full concentration",
+          "correct": false,
+          "explanation": "Saturation here describes bonding, not solutions.",
+          "misconception": "solution meaning imported"
+        },
+        {
+          "key": "C",
+          "text": "It contains the maximum possible oxygen",
+          "correct": false,
+          "explanation": "Alkanes contain no oxygen at all.",
+          "misconception": "oxygen misassigned"
+        },
+        {
+          "key": "D",
+          "text": "It cannot undergo any reaction whatsoever",
+          "correct": false,
+          "explanation": "Alkanes burn, crack and react with halogens; they are just generally unreactive.",
+          "misconception": "inertness overstated"
+        }
+      ]
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L1::Q2",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L1",
+      "stem": "An alkane has n = 3. What is its molecular formula?",
+      "misconceptionClass": "general formula use",
+      "options": [
+        {
+          "key": "A",
+          "text": "C3H8",
+          "correct": true,
+          "explanation": "Substituting gives H = 2(3) + 2 = 8, so propane is C3H8.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "C3H6",
+          "correct": false,
+          "explanation": "That is CnH2n, the alkene recipe, not the alkane one.",
+          "misconception": "alkene formula used"
+        },
+        {
+          "key": "C",
+          "text": "C3H10",
+          "correct": false,
+          "explanation": "Two extra hydrogens break both the formula and the bonding rules.",
+          "misconception": "arithmetic slipped"
+        },
+        {
+          "key": "D",
+          "text": "C2H8",
+          "correct": false,
+          "explanation": "The carbon count must match n, which is three here.",
+          "misconception": "subscript misplaced"
+        }
+      ]
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L1::Q3",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L1",
+      "stem": "Why are alkanes classified as hydrocarbons?",
+      "misconceptionClass": "hydrocarbon check",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because they contain only hydrogen and carbon atoms",
+          "correct": true,
+          "explanation": "The CnH2n+2 recipe uses exactly those two elements and no others.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because they were first found in living things",
+          "correct": false,
+          "explanation": "Origin plays no part in the hydrocarbon definition.",
+          "misconception": "history misused"
+        },
+        {
+          "key": "C",
+          "text": "Because they always contain a C=C bond",
+          "correct": false,
+          "explanation": "A C=C bond would make them alkenes and unsaturated.",
+          "misconception": "family confused"
+        },
+        {
+          "key": "D",
+          "text": "Because they burn to give carbon dioxide",
+          "correct": false,
+          "explanation": "Burning behaviour is a consequence, not the classification test.",
+          "misconception": "test misapplied"
+        }
+      ]
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L1::Q4",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L1",
+      "stem": "Which reactions can alkanes undergo?",
+      "misconceptionClass": "reactivity profile",
+      "options": [
+        {
+          "key": "A",
+          "text": "Combustion, cracking, and reaction with halogens in light",
+          "correct": true,
+          "explanation": "The note lists exactly these three as the chemistry of this generally unreactive family.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They react readily with most reagents at room temperature",
+          "correct": false,
+          "explanation": "Alkanes are described as generally unreactive; their chemistry is a short list.",
+          "misconception": "reactivity inflated"
+        },
+        {
+          "key": "C",
+          "text": "None at all, because they are fully saturated",
+          "correct": false,
+          "explanation": "Saturation limits but does not abolish reactivity.",
+          "misconception": "inertness absolute"
+        },
+        {
+          "key": "D",
+          "text": "Only addition reactions across their double bonds",
+          "correct": false,
+          "explanation": "Alkanes have no double bonds to add across; that is alkene chemistry.",
+          "misconception": "family crossed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L1::Q5",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L1",
+      "stem": "Why is methane described as the major component of natural gas?",
+      "misconceptionClass": "composition link",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because natural gas consists mainly of CH4 molecules",
+          "correct": true,
+          "explanation": "The note identifies methane as the principal ingredient of natural gas.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because natural gas is pure liquid methane",
+          "correct": false,
+          "explanation": "Natural gas is gaseous and mainly, not purely, methane.",
+          "misconception": "purity overstated"
+        },
+        {
+          "key": "C",
+          "text": "Because methane is the largest alkane molecule",
+          "correct": false,
+          "explanation": "Methane is the smallest alkane; its role comes from abundance.",
+          "misconception": "size claim wrong"
+        },
+        {
+          "key": "D",
+          "text": "Because natural gas contains no other elements",
+          "correct": false,
+          "explanation": "The statement is about which molecule dominates, not element purity.",
+          "misconception": "claim distorted"
+        }
+      ]
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L2::Q1",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L2",
+      "stem": "Which molecular formula belongs to pentane?",
+      "misconceptionClass": "formula recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "C5H12",
+          "correct": true,
+          "explanation": "With n = 5 the alkane recipe gives H = 2(5) + 2 = 12.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "C5H10",
+          "correct": false,
+          "explanation": "That is the alkene count for five carbons; the alkane needs two more hydrogens.",
+          "misconception": "alkene formula used"
+        },
+        {
+          "key": "C",
+          "text": "C4H10",
+          "correct": false,
+          "explanation": "Four carbons is butane, one rung below pentane.",
+          "misconception": "rung miscounted"
+        },
+        {
+          "key": "D",
+          "text": "C5H8",
+          "correct": false,
+          "explanation": "That formula fits no unbranched alkane or alkene of five carbons.",
+          "misconception": "formula invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L2::Q2",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L2",
+      "stem": "How many hydrogen atoms appear in the displayed formula of ethane?",
+      "misconceptionClass": "displayed formula counting",
+      "options": [
+        {
+          "key": "A",
+          "text": "6",
+          "correct": true,
+          "explanation": "Ethane is C2H6: two carbons joined to each other, each carrying three hydrogens.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "4",
+          "correct": false,
+          "explanation": "Four hydrogens would leave two carbon bonds unfilled.",
+          "misconception": "bonds unfilled"
+        },
+        {
+          "key": "C",
+          "text": "8",
+          "correct": false,
+          "explanation": "Eight hydrogens is propane count territory, not ethane.",
+          "misconception": "rung miscounted"
+        },
+        {
+          "key": "D",
+          "text": "2",
+          "correct": false,
+          "explanation": "Two hydrogens would suit no saturated two-carbon skeleton.",
+          "misconception": "formula misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L2::Q3",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L2",
+      "stem": "Which name follows propane in the alkane series?",
+      "misconceptionClass": "series order",
+      "options": [
+        {
+          "key": "A",
+          "text": "Butane",
+          "correct": true,
+          "explanation": "The stems run meth, eth, prop, but, pent; so butane follows propane.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Pentane",
+          "correct": false,
+          "explanation": "Pentane comes after butane, two rungs above propane.",
+          "misconception": "rung skipped"
+        },
+        {
+          "key": "C",
+          "text": "Ethane",
+          "correct": false,
+          "explanation": "Ethane is below propane in the series.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "D",
+          "text": "Propene",
+          "correct": false,
+          "explanation": "That is the three-carbon alkene, a different family.",
+          "misconception": "family crossed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L2::Q4",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L2",
+      "stem": "In the displayed formula of propane, what bonds does the middle carbon carry?",
+      "misconceptionClass": "bond counting",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two bonds to carbon neighbours and two to hydrogen atoms",
+          "correct": true,
+          "explanation": "Four bonds fill the middle carbon: one to each chain neighbour plus two hydrogens.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Four bonds to hydrogen atoms",
+          "correct": false,
+          "explanation": "That describes the end carbons of methane or an isolated carbon, not a middle carbon.",
+          "misconception": "position confused"
+        },
+        {
+          "key": "C",
+          "text": "A double bond to one neighbour",
+          "correct": false,
+          "explanation": "Alkanes carry single bonds only; a double bond would break the family rule.",
+          "misconception": "double bond inserted"
+        },
+        {
+          "key": "D",
+          "text": "Three bonds, with one spare",
+          "correct": false,
+          "explanation": "Carbon always shows four bonds in these displayed structures.",
+          "misconception": "bond count short"
+        }
+      ]
+    },
+    {
+      "id": "rn_6c2G8nJpFSnQnbcP::L2::Q5",
+      "moduleId": "rn_6c2G8nJpFSnQnbcP::L2",
+      "stem": "What must a full displayed formula of butane show that a molecular formula does not?",
+      "misconceptionClass": "representation contrast",
+      "options": [
+        {
+          "key": "A",
+          "text": "Every individual bond between the atoms",
+          "correct": true,
+          "explanation": "C4H10 counts atoms; the displayed formula draws all thirteen bonds in place.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The boiling point of the compound",
+          "correct": false,
+          "explanation": "Physical data belongs to tables, not drawings.",
+          "misconception": "data in drawing"
+        },
+        {
+          "key": "C",
+          "text": "The colour of the liquid",
+          "correct": false,
+          "explanation": "Colour is irrelevant to a structural drawing.",
+          "misconception": "property imported"
+        },
+        {
+          "key": "D",
+          "text": "The simplest ratio of atoms",
+          "correct": false,
+          "explanation": "Ratios are the empirical formula job; displayed means every bond drawn.",
+          "misconception": "representation swapped"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_DRQXrcSrmgQ7jcbZ",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "b9f4ec2a87b2a45590d78a759d8fbd9f8b3caca02ead07ecfa44a7c1a8eae21b",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_DRQXrcSrmgQ7jcbZ",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Reversible Reactions & Equilibria",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-3-reversible-reactions-and-equilibria/3-3-3-the-position-of-equilibrium",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.21C",
+        "text": "understand why a catalyst does not affect the position of equilibrium in a reversible reaction"
+      },
+      {
+        "code": "4CH1-3.22C",
+        "text": "know the effect of changing either temperature or pressure on the position of equilibrium in a reversible reaction: an increase (or decrease) in temperature shifts the position of equilibrium in the direction of the endothermic (or exothermic) reaction; an increase (or decrease) in pressure shifts the position of equilibrium in the direction that produces fewer (or more) moles of gas References to Le Chatelier's principle are not required"
+      }
+    ],
+    "primer": {
+      "text": "From Reversible Reactions you already know that changes can run both ways at once. This note asks where the balance point sits, how temperature and pressure shove it, and why a catalyst cannot move it at all. Colour-change equilibria make the shifting balance visible to the eye.",
+      "prerequisiteSubtopic": "Reversible Reactions & Equilibria"
+    },
+    "modules": [
+      {
+        "id": "rn_DRQXrcSrmgQ7jcbZ::L1",
+        "title": "Equilibrium position and temperature",
+        "sourceHeadings": [
+          "The position of equilibrium",
+          "Temperature"
+        ],
+        "specRefs": [
+          "4CH1-3.22C"
+        ],
+        "opening": "How much of each chemical survives at equilibrium depends on the conditions around the flask. This lesson introduces the principle chemists use to predict the shift and applies it to temperature changes.",
+        "keyPoints": [
+          "The balance of reactants and products at equilibrium answers to the conditions.",
+          "A shift to the right means the forward reaction is favoured and more products form.",
+          "A shift to the left means the reverse reaction is favoured and more reactants form.",
+          "Raising the temperature shifts the equilibrium in the direction of the endothermic reaction.",
+          "Lowering the temperature shifts the equilibrium in the direction of the exothermic reaction."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The balance point between the two directions is not fixed: heat it and the balance leans towards the heat-using direction, cool it and it leans towards the heat-releasing one. Leaning right means more products; leaning left means more reactants.",
+            "analogy": "It is like a see-saw with people swapping sides when the rules change: the balance always tips towards whichever side the new rules favour.",
+            "examPointer": "Name the direction of the shift and tie it to the endothermic or exothermic side."
+          },
+          "medium": {
+            "restatement": "Changing the conditions moves the position of equilibrium, so temperature shifts favour one direction: hotter conditions favour the endothermic direction and cooler conditions the exothermic one. A right shift raises the amount of products and a left shift raises the amount of reactants.",
+            "analogy": "A thermostat in disguise: heat the room and the equilibrium does the opposite of what you did, absorbing the extra heat by running the cooling direction.",
+            "examPointer": "Answer temperature questions by first asking which direction absorbs the change, then name the shift."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_DRQXrcSrmgQ7jcbZ::L1::Q1",
+          "rn_DRQXrcSrmgQ7jcbZ::L1::Q2",
+          "rn_DRQXrcSrmgQ7jcbZ::L1::Q3",
+          "rn_DRQXrcSrmgQ7jcbZ::L1::Q4",
+          "rn_DRQXrcSrmgQ7jcbZ::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_DRQXrcSrmgQ7jcbZ::L2",
+        "title": "Pressure and the molecule count",
+        "sourceHeadings": [
+          "Pressure"
+        ],
+        "specRefs": [
+          "4CH1-3.22C"
+        ],
+        "opening": "Squeezing a gaseous equilibrium changes the balance too, but only gases feel the squeeze. This lesson counts molecules on each side of the equation and predicts the shift from the count alone.",
+        "keyPoints": [
+          "Changes in pressure only affect gases in an equilibrium mixture.",
+          "Increasing the pressure favours the reaction producing the fewest gas molecules.",
+          "Decreasing the pressure favours the reaction producing the most gas molecules.",
+          "Equal numbers of gas molecules on both sides mean pressure has no effect on the position.",
+          "Pressure changes affect only the position of equilibrium, never the rates equally matched by a catalyst."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Push on a gaseous equilibrium and the balance slides towards whichever side packs fewer gas molecules. If both sides hold the same count, squeezing changes nothing about the balance.",
+            "analogy": "It is like a crowded train: squeeze the carriage and people move to whichever end has fewer passengers standing.",
+            "examPointer": "Count the gas molecules on each side before predicting any pressure shift."
+          },
+          "medium": {
+            "restatement": "Raising the pressure of a gaseous equilibrium favours the direction that produces the fewest gas molecules, while lowering the pressure favours the direction producing more. When the gas counts match on both sides, pressure changes leave the position of equilibrium unchanged.",
+            "analogy": "A lift preferentially fills with the smallest group first; if both floors hold equal groups, squeezing the lobby sends no signal.",
+            "examPointer": "Write the molecule counts over each side, then quote the direction that the pressure change favours."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_DRQXrcSrmgQ7jcbZ::L2::Q1",
+          "rn_DRQXrcSrmgQ7jcbZ::L2::Q2",
+          "rn_DRQXrcSrmgQ7jcbZ::L2::Q3",
+          "rn_DRQXrcSrmgQ7jcbZ::L2::Q4",
+          "rn_DRQXrcSrmgQ7jcbZ::L2::Q5"
+        ]
+      },
+      {
+        "id": "rn_DRQXrcSrmgQ7jcbZ::L3",
+        "title": "Catalysts and dynamic equilibrium",
+        "sourceHeadings": [
+          "The effect of catalysts on equilibrium"
+        ],
+        "specRefs": [
+          "4CH1-3.21C"
+        ],
+        "opening": "A catalyst speeds reactions, so surely it should push the balance towards products. It does not, and the reason is elegant: it speeds both directions equally. This lesson proves that on the rate graph.",
+        "keyPoints": [
+          "Catalysts leave the equilibrium position exactly where it was.",
+          "A catalyst increases the rate at which equilibrium is reached.",
+          "Forward and backward rates rise together, each sped up equally.",
+          "The concentrations of reactants and products at equilibrium are the same with or without a catalyst.",
+          "On a rate graph the catalysed run flattens sooner but at the identical final level."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A catalyst helps both directions equally, so the balance point never moves; it is simply reached sooner. The final mixture is exactly the same, only faster in arriving.",
+            "analogy": "It is like two escalators running at double speed in opposite directions: everyone moves faster, but the crowds on each floor end up the same.",
+            "examPointer": "Say faster equilibrium, same position, whenever a question pairs catalysts with equilibrium."
+          },
+          "medium": {
+            "restatement": "Because the catalyst lowers the barrier for both directions by the same amount, the forward and backward rates rise together and the position of equilibrium is unchanged. The equilibrium concentrations therefore match the uncatalysed case, with equilibrium simply arriving earlier.",
+            "analogy": "Two queues served by faster tills shorten at the same pace, so the split of shoppers between them never changes.",
+            "examPointer": "Explain the unchanged position through equal speeding of both directions, then read the flattening graph."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_DRQXrcSrmgQ7jcbZ::L3::Q1",
+          "rn_DRQXrcSrmgQ7jcbZ::L3::Q2",
+          "rn_DRQXrcSrmgQ7jcbZ::L3::Q3",
+          "rn_DRQXrcSrmgQ7jcbZ::L3::Q4",
+          "rn_DRQXrcSrmgQ7jcbZ::L3::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "position of equilibrium",
+          "definition": "The balance between reactants and products in a reversible reaction under given conditions.",
+          "firstLesson": 1
+        },
+        {
+          "term": "shift to the right",
+          "definition": "A change that favours the forward reaction and increases the amount of products.",
+          "firstLesson": 1
+        },
+        {
+          "term": "shift to the left",
+          "definition": "A change that favours the reverse reaction and increases the amount of reactants.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dynamic equilibrium",
+          "definition": "The state in which forward and reverse reactions continue at equal rates with no net change.",
+          "firstLesson": 3
+        },
+        {
+          "term": "concentration",
+          "definition": "The amount of a substance in a given volume, whose equilibrium value a catalyst cannot alter.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

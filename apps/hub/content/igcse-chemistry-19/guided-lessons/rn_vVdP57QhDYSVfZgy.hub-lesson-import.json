@@ -1,0 +1,157 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_vVdP57QhDYSVfZgy",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "4327a83a516d75321b84d492da0a5239c1fd0b12f3c90ed1854610ede5291b10",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_vVdP57QhDYSVfZgy",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Chemical Tests",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-8-chemical-tests/2-8-2-flame-tests",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.45",
+        "text": "describe how to carry out a flame test"
+      },
+      {
+        "code": "4CH1-2.46",
+        "text": "know the colours formed in flame tests for these cations: Li+ is red; Na+ is yellow; K+ is lilac; Ca2+ is orange-red; Cu2+ is blue-green"
+      }
+    ],
+    "primer": {
+      "text": "From Tests for Gases you already know that gases betray themselves with splints and litmus paper. This note moves from gases to solids, where the metal ion paints the Bunsen flame itself in a colour that names it.",
+      "prerequisiteSubtopic": "Tests for Gases"
+    },
+    "modules": [
+      {
+        "id": "rn_vVdP57QhDYSVfZgy::L1",
+        "title": "How to carry out a flame test",
+        "sourceHeadings": [
+          "Flame tests"
+        ],
+        "specRefs": [
+          "4CH1-2.45"
+        ],
+        "opening": "A flame test identifies which metal cation is present by the colour the sample paints onto a Bunsen flame. The wire loop is cleaned in dilute acid and burned clean in the blue flame first, because any leftover ions would add their own colours and mask the one you need to see. Only then is the loop dipped into the sample and held at the flame's edge.",
+        "keyPoints": [
+          "The flame test identifies positive metal ions by flame colour.",
+          "The loop is made of unreactive wire, commonly nichrome or platinum.",
+          "The wire is dipped in dilute acid and held in the blue flame until no colour shows.",
+          "The sample is picked up on the loop and placed at the edge of the blue flame.",
+          "Cleaning in acid first prevents contamination from ions already on the wire."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Clean a wire loop in dilute acid, heat it in the blue flame until it glows with no colour, dip it in the sample, then hold it at the edge of the blue flame and read the colour.",
+            "analogy": "Cleaning the loop first is like wiping a paintbrush clean before dipping it: any old colour left on the bristles would muddy the new one.",
+            "examPointer": "Method marks sit in the order clean, heat clean, dip, test, so write the sequence as separate steps."
+          },
+          "medium": {
+            "restatement": "The acid wash dissolves ionic leftovers off the wire, and the flame check proves the loop is clean before anything is sampled. Two or more ions on the wire together would each add their colour, and one colour could mask another, so the test would fail at the very step it is meant to succeed.",
+            "analogy": "It is the same reason a chef tastes from a clean spoon every time: a spoon that has met one dish already carries its flavour into the next judgement.",
+            "examPointer": "If asked why the acid cleaning matters, answer in terms of mixed or masked colours, not in terms of hygiene or safety."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vVdP57QhDYSVfZgy::L1::Q1",
+          "rn_vVdP57QhDYSVfZgy::L1::Q2",
+          "rn_vVdP57QhDYSVfZgy::L1::Q3",
+          "rn_vVdP57QhDYSVfZgy::L1::Q4",
+          "rn_vVdP57QhDYSVfZgy::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_vVdP57QhDYSVfZgy::L2",
+        "title": "The five cation colours",
+        "sourceHeadings": [
+          "Flame tests"
+        ],
+        "specRefs": [
+          "4CH1-2.46"
+        ],
+        "opening": "Five cations and their flame colours make up the table to learn: lithium burns red, sodium yellow, potassium lilac, calcium orange-red and copper(II) blue-green. The colours only show properly on a hot blue flame, so the Bunsen air hole is opened before testing. Mixing up yellow and orange-red, or lilac and blue-green, costs the mark.",
+        "keyPoints": [
+          "Lithium ions colour the flame red.",
+          "Sodium ions colour the flame yellow.",
+          "Potassium ions colour the flame lilac.",
+          "Calcium ions colour the flame orange-red.",
+          "Copper(II) ions colour the flame blue-green."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The colour table is short and fixed: Li+ red, Na+ yellow, K+ lilac, Ca2+ orange-red, Cu2+ blue-green. Heat the sample strongly on a blue flame, then match the colour you see to the table without second-guessing.",
+            "analogy": "The five colours are like five uniforms on a sports field: once the shirts are learned, a single glance tells you which team, which ion, is playing.",
+            "examPointer": "Spell lilac correctly and write orange-red and blue-green as the two-word colours, because vague answers such as reddish lose marks."
+          },
+          "medium": {
+            "restatement": "Each cation has a fixed colour because its electrons release a characteristic set of wavelengths when the flame heats them. The pairs most often confused are the two reds, lithium versus calcium's orange-red, and the two cools, potassium's lilac versus copper(II)'s blue-green, so anchoring one member of each pair first makes the table stick.",
+            "analogy": "Think of the colours as signatures on cheques: lithium signs in plain red while calcium adds orange to its red, and potassium signs in soft lilac while copper(II) adds green to its blue.",
+            "examPointer": "If a description says brick-red or orange, decide between Li+ and Ca2+ by the orange component; blue-green always points to Cu2+."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vVdP57QhDYSVfZgy::L2::Q1",
+          "rn_vVdP57QhDYSVfZgy::L2::Q2",
+          "rn_vVdP57QhDYSVfZgy::L2::Q3",
+          "rn_vVdP57QhDYSVfZgy::L2::Q4",
+          "rn_vVdP57QhDYSVfZgy::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "flame test",
+          "definition": "A test that identifies a metal cation from the colour its sample gives a Bunsen flame.",
+          "firstLesson": 1
+        },
+        {
+          "term": "cation",
+          "definition": "A positive ion, here the metal ion whose colour identifies it.",
+          "firstLesson": 1
+        },
+        {
+          "term": "nichrome",
+          "definition": "An unreactive nickel-chromium alloy used for the flame-test wire loop.",
+          "firstLesson": 1
+        },
+        {
+          "term": "platinum",
+          "definition": "An unreactive metal that can also be used for the flame-test loop.",
+          "firstLesson": 1
+        },
+        {
+          "term": "contamination",
+          "definition": "Leftover ions on the wire that add or mask colours during the test.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

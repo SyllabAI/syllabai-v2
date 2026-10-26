@@ -1,0 +1,160 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_6478QfpYNQDjZSvt",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "0c4b50f3b8e9049b1a1dacfc10663c3f6f125a53f09ad25bfb3630c2614dc497",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_6478QfpYNQDjZSvt",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Energetics",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-1-energetics/3-1-6-practical-investigating-temperature-changes",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.2",
+        "text": "describe simple calorimetry experiments for reactions such as combustion, displacement, dissolving and neutralisation"
+      },
+      {
+        "code": "4CH1-3.8",
+        "text": "practical: investigate temperature changes accompanying some of the following types of change: salts dissolving in water; neutralisation reactions; displacement reactions; combustion reactions"
+      }
+    ],
+    "primer": {
+      "text": "From Calorimetry you already know how an insulated cup turns a reaction into a temperature reading. This practical applies that apparatus to a neutralisation between acid and alkali, adding acid in steps to map how the energy change grows. The graph you plot at the end identifies the mixture that releases the most heat.",
+      "prerequisiteSubtopic": "Energetics"
+    },
+    "modules": [
+      {
+        "id": "rn_6478QfpYNQDjZSvt::L1",
+        "title": "Setting up and running the temperature-change practical",
+        "sourceHeadings": [
+          "Aim:",
+          "Method:"
+        ],
+        "specRefs": [
+          "4CH1-3.8"
+        ],
+        "opening": "The practical performs a calorimetry study of hydrochloric acid reacting with sodium hydroxide solution. This lesson lists the apparatus, then walks the five steps that build the results table.",
+        "keyPoints": [
+          "The aim is a calorimetry study of the reaction between hydrochloric acid and sodium hydroxide.",
+          "Apparatus includes dilute acid, dilute alkali, a polystyrene calorimeter with lid, a measuring cylinder, thermometer and stirrer.",
+          "A lid is required on the calorimeter to prevent heat loss during the experiment.",
+          "The method places sodium hydroxide solution in the calorimeter, records its temperature, then adds acid in 5 cm3 portions.",
+          "After each addition the highest temperature reached by the mixture is measured and recorded."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Put a measured portion of alkali in an insulated cup, read the starting temperature, then stir in acid a little at a time. After every addition, note the highest temperature the mixture reaches.",
+            "analogy": "It is like adding chilli to a soup spoonful by spoonful, rating the heat after each stir until you find the strongest mix.",
+            "examPointer": "Name the insulated cup with its lid and the fixed starting volume when describing the set-up."
+          },
+          "medium": {
+            "restatement": "A fixed volume of sodium hydroxide solution is placed in the calorimeter and its temperature taken, then dilute hydrochloric acid is added in 5 cm3 portions with stirring. The highest temperature reached after each addition is recorded, and the whole run is repeated with the acid volume increasing each time.",
+            "analogy": "Each acid portion is one rung on a ladder: climb one rung at a time and record how hot the run gets before stepping up again.",
+            "examPointer": "Quote the fixed alkali volume, the 5 cm3 acid step and the maximum-temperature reading as the core of the method."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6478QfpYNQDjZSvt::L1::Q1",
+          "rn_6478QfpYNQDjZSvt::L1::Q2",
+          "rn_6478QfpYNQDjZSvt::L1::Q3",
+          "rn_6478QfpYNQDjZSvt::L1::Q4",
+          "rn_6478QfpYNQDjZSvt::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_6478QfpYNQDjZSvt::L2",
+        "title": "Results, graph and conclusion",
+        "sourceHeadings": [
+          "Results:",
+          "Conclusion:"
+        ],
+        "specRefs": [
+          "4CH1-3.2",
+          "4CH1-3.8"
+        ],
+        "opening": "The numbers only become an answer once they are graphed. This lesson tables the results, draws the line of best fit and reads off the volume of acid that releases the most heat.",
+        "keyPoints": [
+          "Results are recorded in a table of acid volume against the temperature reached.",
+          "A graph of the results is plotted with a line of best fit drawn through the points.",
+          "The graph identifies the volume of acid that causes the biggest temperature change.",
+          "The larger the temperature difference, the more energy is absorbed or released by the reaction.",
+          "This practical is one example of the simple calorimetry experiments described for neutralisation."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Each run gives one pairing of acid volume and peak temperature, collected into a table with two columns. Plotting the pairs and drawing a best-fit line shows which acid volume warmed the mixture most.",
+            "analogy": "It is like marking your best javelin throws on a chart to spot the distance that worked best.",
+            "examPointer": "Sketch the table headings and the axes, then point to the peak of the line as the answer."
+          },
+          "medium": {
+            "restatement": "The results table pairs each acid volume with the maximum temperature reached, and the plotted line of best fit locates the volume causing the biggest temperature change. Since a larger temperature difference means more energy absorbed or released, that volume marks the mixture releasing the most heat.",
+            "analogy": "A tasting chart of soup samples: each row is a recipe strength, and the tallest bar on the graph names the winner.",
+            "examPointer": "Link the biggest temperature change to the greatest energy change, and name the practical as solution calorimetry."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_6478QfpYNQDjZSvt::L2::Q1",
+          "rn_6478QfpYNQDjZSvt::L2::Q2",
+          "rn_6478QfpYNQDjZSvt::L2::Q3",
+          "rn_6478QfpYNQDjZSvt::L2::Q4",
+          "rn_6478QfpYNQDjZSvt::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "calorimetry",
+          "definition": "The measurement of heat changes in reactions, using an insulated container and a thermometer.",
+          "firstLesson": 1
+        },
+        {
+          "term": "neutralisation",
+          "definition": "The reaction between an acid and an alkali, which always gives energy out to the surroundings.",
+          "firstLesson": 1
+        },
+        {
+          "term": "line of best fit",
+          "definition": "A straight line drawn through scattered points to show the overall trend of a graph.",
+          "firstLesson": 2
+        },
+        {
+          "term": "maximum temperature",
+          "definition": "The highest reading reached by the mixture after each addition of acid.",
+          "firstLesson": 1
+        },
+        {
+          "term": "temperature change",
+          "definition": "The difference between the starting and finishing temperatures, used as the measure of energy transferred.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

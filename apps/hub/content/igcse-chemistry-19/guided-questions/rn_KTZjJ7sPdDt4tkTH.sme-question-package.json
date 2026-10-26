@@ -1,0 +1,555 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_KTZjJ7sPdDt4tkTH",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "4649fc86a02ba5fd71d61db6b3ecb3c53e5d1675724c656c51816c93f16a4935",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_KTZjJ7sPdDt4tkTH",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L1::Q1",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L1",
+      "stem": "Why is bond-breaking classified as endothermic?",
+      "misconceptionClass": "process classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because energy must be taken in to pull the bond apart",
+          "correct": true,
+          "explanation": "Separating bonded atoms requires supplied energy, which is the endothermic signature.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because bonds store heat that escapes",
+          "correct": false,
+          "explanation": "Nothing escapes during breaking; energy is consumed, not released.",
+          "misconception": "storage myth"
+        },
+        {
+          "key": "C",
+          "text": "Because broken bonds are unstable",
+          "correct": false,
+          "explanation": "Stability language does not decide the energy direction here.",
+          "misconception": "stability confused"
+        },
+        {
+          "key": "D",
+          "text": "Because breaking happens only in cold conditions",
+          "correct": false,
+          "explanation": "Breaking happens whenever energy is supplied, warm or cold.",
+          "misconception": "condition myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L1::Q2",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L1",
+      "stem": "What happens to energy when new bonds form?",
+      "misconceptionClass": "process classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Energy is released, so bond-making is exothermic",
+          "correct": true,
+          "explanation": "Formation of bonds hands energy out to the surroundings.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Energy is absorbed, so bond-making is endothermic",
+          "correct": false,
+          "explanation": "Absorption belongs to bond-breaking; making pays energy back.",
+          "misconception": "processes swapped"
+        },
+        {
+          "key": "C",
+          "text": "Energy is unchanged because atoms stay the same",
+          "correct": false,
+          "explanation": "The bonding changes, so the energy changes too.",
+          "misconception": "no-change myth"
+        },
+        {
+          "key": "D",
+          "text": "Energy becomes light instead of heat",
+          "correct": false,
+          "explanation": "The released energy here is treated as heat given to the surroundings.",
+          "misconception": "form confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L1::Q3",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L1",
+      "stem": "A reaction overall takes in energy. What does that reveal about its bonds?",
+      "misconceptionClass": "balance reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "More energy was needed to break bonds than was released making them",
+          "correct": true,
+          "explanation": "An endothermic total means the breaking bill exceeded the making refund.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "More energy was released making bonds than was used breaking them",
+          "correct": false,
+          "explanation": "That balance gives an exothermic total, the opposite of the observation.",
+          "misconception": "balance inverted"
+        },
+        {
+          "key": "C",
+          "text": "No bonds were broken at all",
+          "correct": false,
+          "explanation": "Some bonds must break for any reaction to happen.",
+          "misconception": "impossible claim"
+        },
+        {
+          "key": "D",
+          "text": "The bonds were all identical",
+          "correct": false,
+          "explanation": "Bond identity does not force the overall sign.",
+          "misconception": "irrelevant claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L1::Q4",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L1",
+      "stem": "What does the bond energy of a specific bond tell you?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The energy required to break the bond or given out when it is formed",
+          "correct": true,
+          "explanation": "The two directions carry the same size of energy for that bond.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The speed at which the bond reacts",
+          "correct": false,
+          "explanation": "Rate is a separate concept from bond energy.",
+          "misconception": "rate conflated"
+        },
+        {
+          "key": "C",
+          "text": "The temperature needed to start the reaction",
+          "correct": false,
+          "explanation": "That describes activation energy, not the bond energy itself.",
+          "misconception": "concepts merged"
+        },
+        {
+          "key": "D",
+          "text": "The length of the bond in nanometres",
+          "correct": false,
+          "explanation": "Bond length is a structural property, not an energy.",
+          "misconception": "property swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L1::Q5",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L1",
+      "stem": "In the phrase ENDothermic, what memory trick does the exam hint attach to bond breaking?",
+      "misconceptionClass": "mnemonic reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "Bond breaking is endothermic and results in the end of the bond",
+          "correct": true,
+          "explanation": "The hint links the END of the word to the END of the bond.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Bond breaking happens at the end of a reaction",
+          "correct": false,
+          "explanation": "The trick concerns the word END, not the reaction timeline.",
+          "misconception": "mnemonic misapplied"
+        },
+        {
+          "key": "C",
+          "text": "Endothermic bonds never reform",
+          "correct": false,
+          "explanation": "Bonds can reform; the trick is about breaking.",
+          "misconception": "over-reading"
+        },
+        {
+          "key": "D",
+          "text": "Endothermic reactions cannot be reversed",
+          "correct": false,
+          "explanation": "Reversibility is a separate topic.",
+          "misconception": "topic intrusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L2::Q1",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L2",
+      "stem": "Why does an exothermic reaction carry a negative enthalpy change?",
+      "misconceptionClass": "sign reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The reactants hold more energy than the products, so energy left the system",
+          "correct": true,
+          "explanation": "A fall in the energy of the chemicals is written as a negative change.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because bond energies are always negative numbers",
+          "correct": false,
+          "explanation": "Bond energies are quoted positive; the sign comes from the balance.",
+          "misconception": "bond sign myth"
+        },
+        {
+          "key": "C",
+          "text": "Because the reaction happened quickly",
+          "correct": false,
+          "explanation": "Rate has no bearing on the sign.",
+          "misconception": "rate conflated"
+        },
+        {
+          "key": "D",
+          "text": "Because the products are gases",
+          "correct": false,
+          "explanation": "State of the products does not fix the sign.",
+          "misconception": "state conflated"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L2::Q2",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L2",
+      "stem": "A reaction has a positive enthalpy change. Which bond statement matches it?",
+      "misconceptionClass": "bond-energy matching",
+      "options": [
+        {
+          "key": "A",
+          "text": "The energy needed to break existing bonds was greater than the energy released forming new ones",
+          "correct": true,
+          "explanation": "A breaking bill larger than the making refund leaves the chemicals richer in energy.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The energy released forming new bonds was greater than the breaking cost",
+          "correct": false,
+          "explanation": "That describes an exothermic, negative change.",
+          "misconception": "balance inverted"
+        },
+        {
+          "key": "C",
+          "text": "No bonds were made, only broken",
+          "correct": false,
+          "explanation": "Reactions both break and make bonds.",
+          "misconception": "half-reaction myth"
+        },
+        {
+          "key": "D",
+          "text": "All bonds involved had equal energies",
+          "correct": false,
+          "explanation": "Equal energies would give a change near zero, not positive.",
+          "misconception": "equality myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L2::Q3",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L2",
+      "stem": "Two reactions break the same bonds, but reaction 2 forms stronger new bonds. What follows?",
+      "misconceptionClass": "comparative reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Reaction 2 is more exothermic because forming stronger bonds releases more energy",
+          "correct": true,
+          "explanation": "Bigger making refunds push the balance further negative.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Reaction 2 is more endothermic",
+          "correct": false,
+          "explanation": "Stronger new bonds make the change more negative, not more positive.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "C",
+          "text": "Both reactions must have the same enthalpy change",
+          "correct": false,
+          "explanation": "The forming side differs, so the totals differ.",
+          "misconception": "cancellation myth"
+        },
+        {
+          "key": "D",
+          "text": "Neither reaction releases energy",
+          "correct": false,
+          "explanation": "At least one could still be exothermic overall.",
+          "misconception": "blanket denial"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L2::Q4",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L2",
+      "stem": "A student says breaking bonds releases energy because sparks fly. What is the correction?",
+      "misconceptionClass": "misconception repair",
+      "options": [
+        {
+          "key": "A",
+          "text": "Breaking bonds takes energy in; any sparks come from energy released elsewhere in the change",
+          "correct": true,
+          "explanation": "The breaking half always absorbs; visible effects belong to the overall process.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Sparks prove breaking is exothermic",
+          "correct": false,
+          "explanation": "The overall effect and the bond-breaking half are different things.",
+          "misconception": "levels conflated"
+        },
+        {
+          "key": "C",
+          "text": "Sparks mean the bonds were weak",
+          "correct": false,
+          "explanation": "Bond strength is an energy quantity, not a visibility judgement.",
+          "misconception": "weakness myth"
+        },
+        {
+          "key": "D",
+          "text": "Sparks only appear in endothermic changes",
+          "correct": false,
+          "explanation": "No such rule exists.",
+          "misconception": "invented rule"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L2::Q5",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L2",
+      "stem": "Which expression computes the enthalpy change from bond energies?",
+      "misconceptionClass": "expression recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Energy taken in to break bonds minus energy given out making bonds",
+          "correct": true,
+          "explanation": "That difference is the overall enthalpy change of the reaction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Energy given out making bonds minus energy taken in breaking them",
+          "correct": false,
+          "explanation": "That reverses the sign convention.",
+          "misconception": "expression inverted"
+        },
+        {
+          "key": "C",
+          "text": "The two energies added together",
+          "correct": false,
+          "explanation": "Adding would double-count rather than compare.",
+          "misconception": "sum used"
+        },
+        {
+          "key": "D",
+          "text": "The two energies multiplied together",
+          "correct": false,
+          "explanation": "Multiplication has no meaning in this balance.",
+          "misconception": "product used"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L3::Q1",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L3",
+      "stem": "Why write a displayed formula equation before counting bonds?",
+      "misconceptionClass": "method reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "It shows every bond clearly so none are missed when counting",
+          "correct": true,
+          "explanation": "Displayed formulas expose each bond, preventing miscounts before the arithmetic.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It makes the reaction faster",
+          "correct": false,
+          "explanation": "Writing equations never changes reaction speed.",
+          "misconception": "rate myth"
+        },
+        {
+          "key": "C",
+          "text": "It converts the answer to kilojoules",
+          "correct": false,
+          "explanation": "Units come from the bond energy table, not the equation style.",
+          "misconception": "unit myth"
+        },
+        {
+          "key": "D",
+          "text": "It proves the reaction is exothermic",
+          "correct": false,
+          "explanation": "The sign comes from the sums, not the drawing.",
+          "misconception": "sign myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L3::Q2",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L3",
+      "stem": "Hydrogen burns: 2H2 + O2 → 2H2O. How many H-H bonds are broken?",
+      "misconceptionClass": "bond counting",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two, one in each hydrogen molecule",
+          "correct": true,
+          "explanation": "The balancing 2 before H2 means two H-H bonds are broken.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One, because H-H appears once in the formula",
+          "correct": false,
+          "explanation": "The balancing number doubles the count.",
+          "misconception": "balancing ignored"
+        },
+        {
+          "key": "C",
+          "text": "Four, because water has four hydrogens",
+          "correct": false,
+          "explanation": "Water hydrogens belong to O-H bonds being made, not H-H bonds broken.",
+          "misconception": "sides mixed"
+        },
+        {
+          "key": "D",
+          "text": "Zero, because hydrogen is an element",
+          "correct": false,
+          "explanation": "Element molecules still contain bonds that must break.",
+          "misconception": "element myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L3::Q3",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L3",
+      "stem": "Energy in is 678 kJ and energy out is 862 kJ. What is the enthalpy change and its meaning?",
+      "misconceptionClass": "calculation interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "-184 kJ, exothermic because more energy was released making bonds than spent breaking them",
+          "correct": true,
+          "explanation": "678 - 862 gives -184, and the negative value marks an exothermic reaction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "+184 kJ, endothermic because energy out is bigger",
+          "correct": false,
+          "explanation": "Subtracting in the stated order gives a negative value; the bigger out-sum means release.",
+          "misconception": "sign flipped"
+        },
+        {
+          "key": "C",
+          "text": "1540 kJ, because the sums add",
+          "correct": false,
+          "explanation": "The energies are subtracted, never added.",
+          "misconception": "sum used"
+        },
+        {
+          "key": "D",
+          "text": "-862 kJ, ignoring the breaking cost",
+          "correct": false,
+          "explanation": "Both sums enter the subtraction.",
+          "misconception": "half calculation"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L3::Q4",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L3",
+      "stem": "A bond energy table lists H-Br as 366 kJ. What energy is needed to break all bonds in 2HBr?",
+      "misconceptionClass": "scaling",
+      "options": [
+        {
+          "key": "A",
+          "text": "732 kJ, because two H-Br bonds are broken",
+          "correct": true,
+          "explanation": "The balancing 2 doubles the single-bond energy.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "366 kJ, because the bond energy applies to the whole equation",
+          "correct": false,
+          "explanation": "Bond energies apply per mole of bonds, so the count matters.",
+          "misconception": "per-equation myth"
+        },
+        {
+          "key": "C",
+          "text": "183 kJ, because the energy is shared",
+          "correct": false,
+          "explanation": "Energies are not shared between bonds.",
+          "misconception": "sharing myth"
+        },
+        {
+          "key": "D",
+          "text": "It cannot be found from the table",
+          "correct": false,
+          "explanation": "One multiplication gives it directly.",
+          "misconception": "defeatism"
+        }
+      ]
+    },
+    {
+      "id": "rn_KTZjJ7sPdDt4tkTH::L3::Q5",
+      "moduleId": "rn_KTZjJ7sPdDt4tkTH::L3",
+      "stem": "A calculation gives a positive enthalpy change for a reaction run in a burner. What is the most likely slip?",
+      "misconceptionClass": "error diagnosis",
+      "options": [
+        {
+          "key": "A",
+          "text": "The subtraction was reversed, taking energy out from energy in the wrong way round",
+          "correct": true,
+          "explanation": "Reversing the subtraction flips the sign; burning should give a negative change.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The bond energies were read from the wrong row",
+          "correct": false,
+          "explanation": "Possible, but the described flip of sign is the classic subtraction slip.",
+          "misconception": "wrong diagnosis"
+        },
+        {
+          "key": "C",
+          "text": "The reaction cannot have a positive change",
+          "correct": false,
+          "explanation": "Some reactions do; the burner context makes it unlikely here.",
+          "misconception": "overgeneralisation"
+        },
+        {
+          "key": "D",
+          "text": "The table units were joules not kilojoules",
+          "correct": false,
+          "explanation": "Unit errors change size, not sign.",
+          "misconception": "unit confusion"
+        }
+      ]
+    }
+  ]
+}

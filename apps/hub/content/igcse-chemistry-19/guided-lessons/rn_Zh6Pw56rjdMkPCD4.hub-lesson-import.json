@@ -1,0 +1,160 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_Zh6Pw56rjdMkPCD4",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "e5b79e26f0d8b938c04f07c07cac4d4002316ed6eb948afa98caad225674aef7",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_Zh6Pw56rjdMkPCD4",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Rates of Reaction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-2-rates-of-reaction/3-2-2-explaining-rates",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.10",
+        "text": "describe the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas, temperature and the use of a catalyst on the rate of a reaction"
+      },
+      {
+        "code": "4CH1-3.11",
+        "text": "explain the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas and temperature on the rate of a reaction in terms of particle collision theory"
+      }
+    ],
+    "primer": {
+      "text": "From Measuring Rates you already know the four levers that speed reactions up. This note goes underneath the lever names to particle collision theory, explaining each effect through the number and energy of collisions. One small temperature step turns out to matter far more than its size suggests.",
+      "prerequisiteSubtopic": "Rates of Reaction"
+    },
+    "modules": [
+      {
+        "id": "rn_Zh6Pw56rjdMkPCD4::L1",
+        "title": "Collision theory for concentration and pressure",
+        "sourceHeadings": [
+          "Explaining rates of reaction",
+          "How increasing concentration affects rate"
+        ],
+        "specRefs": [
+          "4CH1-3.11"
+        ],
+        "opening": "Reactions happen when particles collide, and only some collisions succeed. This lesson uses that rule to explain why crowding particles together, in solution or in gas, makes chemistry run faster.",
+        "keyPoints": [
+          "Increasing the number of successful collisions means a greater proportion of particles form products.",
+          "A higher concentration puts more reactant particles into the same volume.",
+          "More particles in a given volume cause more collisions per second, so the rate increases.",
+          "Raising the pressure squeezes the same number of gas particles into a smaller volume.",
+          "Doubling the number of particles doubles the collisions per second, so collisions are proportional to particle count."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Crowd more particles into the same space and they bump into each other more often, so more reactions happen every second. The same trick works for gases by squeezing them into less room.",
+            "analogy": "It is like shoppers in a busy market: pack more of them into one street and bumping into friends becomes far more likely.",
+            "examPointer": "Answer with the chain: more particles in the same volume, more collisions, faster rate."
+          },
+          "medium": {
+            "restatement": "Higher concentration means more reactant particles in a given volume, causing more collisions per second and therefore more frequent successful collisions. Higher pressure does the same for gases by holding the same number of particles in a smaller volume.",
+            "analogy": "A crowded commuter train produces far more shoulder bumps per minute than a nearly empty one, even though the passengers are identical.",
+            "examPointer": "Include the phrase more frequent and successful collisions per second when explaining the faster rate."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Zh6Pw56rjdMkPCD4::L1::Q1",
+          "rn_Zh6Pw56rjdMkPCD4::L1::Q2",
+          "rn_Zh6Pw56rjdMkPCD4::L1::Q3",
+          "rn_Zh6Pw56rjdMkPCD4::L1::Q4",
+          "rn_Zh6Pw56rjdMkPCD4::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_Zh6Pw56rjdMkPCD4::L2",
+        "title": "Collision theory for temperature and surface area",
+        "sourceHeadings": [
+          "How increasing temperature affects rate",
+          "How increasing the surface area affects rate"
+        ],
+        "specRefs": [
+          "4CH1-3.10",
+          "4CH1-3.11"
+        ],
+        "opening": "Heat does two jobs at once: particles move faster and collide more often, and each collision arrives with more energy. This lesson separates those jobs and adds the exposure effect of powdered solids.",
+        "keyPoints": [
+          "Increasing the temperature gives particles more kinetic energy, so collisions become more frequent and successful.",
+          "A small rise in temperature causes a large increase in rate.",
+          "For aqueous and gaseous systems, every 10 °C rise roughly doubles the rate of reaction.",
+          "Increasing the surface area exposes more particles of a solid to the other reactant.",
+          "Doubling the surface area doubles the number of collisions per second."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Warmer particles dash about faster, so they meet more often and hit harder, which lifts the rate steeply. Chopping a solid into smaller pieces uncovers more of its particles for the other reactant to strike.",
+            "analogy": "Heating a crowd makes everyone jog instead of stroll, so shoulders bump far more; powdering a sugar cube spreads its grains through the tea for faster dissolving.",
+            "examPointer": "For temperature, mention both collision frequency and collision energy; for surface area, mention exposed particles."
+          },
+          "medium": {
+            "restatement": "Higher temperature raises the kinetic energy of particles, causing more collisions per second and more frequent successful collisions, so a 10 °C rise can roughly double the rate. Greater surface area places more solid particles where the other reactant can reach them, again raising the collision count.",
+            "analogy": "A hotter dance floor has dancers moving faster and colliding with more force, while a broken-up dance card lets twice as many partners meet.",
+            "examPointer": "Quote the 10 °C doubling rule as a rule of thumb, and credit temperature as the more powerful of the two effects."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Zh6Pw56rjdMkPCD4::L2::Q1",
+          "rn_Zh6Pw56rjdMkPCD4::L2::Q2",
+          "rn_Zh6Pw56rjdMkPCD4::L2::Q3",
+          "rn_Zh6Pw56rjdMkPCD4::L2::Q4",
+          "rn_Zh6Pw56rjdMkPCD4::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "collision theory",
+          "definition": "The explanation of reaction rates in terms of the frequency and energy of particle collisions.",
+          "firstLesson": 1
+        },
+        {
+          "term": "concentration",
+          "definition": "The amount of dissolved reactant in a given volume of solution.",
+          "firstLesson": 1
+        },
+        {
+          "term": "successful collision",
+          "definition": "A collision between reactant particles that forms product molecules.",
+          "firstLesson": 1
+        },
+        {
+          "term": "kinetic energy",
+          "definition": "The energy of moving particles, which rises with temperature.",
+          "firstLesson": 2
+        },
+        {
+          "term": "surface area",
+          "definition": "The amount of solid surface available for collisions, increased by powdering a solid.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

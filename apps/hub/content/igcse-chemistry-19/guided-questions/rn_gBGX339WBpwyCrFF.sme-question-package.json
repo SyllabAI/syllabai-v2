@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_gBGX339WBpwyCrFF",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "cf81b5b5c6b0fe28a64f970f0cae75bba001b98205ece23ae2be73abd1bec2dc",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_gBGX339WBpwyCrFF",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L1::Q1",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L1",
+      "stem": "When zinc is heated with copper(II) oxide, which metal ends up as the oxide?",
+      "misconceptionClass": "displacement direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zinc, because it is the more reactive metal and takes the oxygen",
+          "correct": true,
+          "explanation": "Zinc outranks copper, so it pulls the oxygen away and leaves copper metal behind.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Copper, because the oxide never changes",
+          "correct": false,
+          "explanation": "The whole point of the displacement is that the oxide transfers to the more reactive metal.",
+          "misconception": "oxide assumed fixed"
+        },
+        {
+          "key": "C",
+          "text": "Neither, both metals stay as they started",
+          "correct": false,
+          "explanation": "The reaction visibly proceeds: zinc becomes zinc oxide and copper appears as metal.",
+          "misconception": "reaction denied"
+        },
+        {
+          "key": "D",
+          "text": "Both share the oxygen equally",
+          "correct": false,
+          "explanation": "Displacement is a clean takeover; the oxygen ends with the more reactive metal alone.",
+          "misconception": "sharing model invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L1::Q2",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L1",
+      "stem": "In the reaction Zn + CuO → ZnO + Cu, what is the role of the zinc?",
+      "misconceptionClass": "reducing agent recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is the reducing agent, removing oxygen from the copper(II) oxide",
+          "correct": true,
+          "explanation": "The zinc takes the oxygen for itself, which reduces the copper compound and oxidises the zinc.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It is the catalyst, speeding the reaction without changing",
+          "correct": false,
+          "explanation": "The zinc is consumed, becoming zinc oxide; a catalyst would emerge unchanged.",
+          "misconception": "catalyst role misassigned"
+        },
+        {
+          "key": "C",
+          "text": "It is the oxidising agent, giving oxygen away",
+          "correct": false,
+          "explanation": "Zinc receives oxygen rather than giving it; the oxide is what supplies the oxygen.",
+          "misconception": "agent roles swapped"
+        },
+        {
+          "key": "D",
+          "text": "It has no special role beyond filling space",
+          "correct": false,
+          "explanation": "The zinc is the active partner; its reactivity is what drives the whole displacement.",
+          "misconception": "reactant role denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L1::Q3",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L1",
+      "stem": "Why does a mixture of sodium oxide and magnesium show no reaction on heating?",
+      "misconceptionClass": "no-reaction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because sodium is above magnesium in the series, so magnesium cannot displace it",
+          "correct": true,
+          "explanation": "Displacement runs only downhill; magnesium is the less reactive metal and cannot take sodium's oxygen.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because the temperature is never high enough for any displacement",
+          "correct": false,
+          "explanation": "Heat is sufficient for reactive pairs; the block here is the order of reactivity, not the temperature.",
+          "misconception": "temperature blamed"
+        },
+        {
+          "key": "C",
+          "text": "Because sodium oxide is insoluble",
+          "correct": false,
+          "explanation": "Solubility is irrelevant to the oxide route; the series order alone decides the outcome.",
+          "misconception": "solubility excuse invented"
+        },
+        {
+          "key": "D",
+          "text": "Because both metals are unreactive",
+          "correct": false,
+          "explanation": "Sodium is among the most reactive metals; the mixture is quiet precisely because magnesium is the weaker partner.",
+          "misconception": "both partners misjudged"
+        }
+      ]
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L1::Q4",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L1",
+      "stem": "The thermite reaction uses iron(III) oxide and aluminium. Which statement about it is correct?",
+      "misconceptionClass": "thermite recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Aluminium displaces iron, giving iron metal and aluminium oxide",
+          "correct": true,
+          "explanation": "Aluminium sits above iron, so it takes the oxygen and the iron is freed, matching Fe2O3 + 2Al giving 2Fe + Al2O3.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Iron displaces aluminium, giving aluminium metal and iron oxide",
+          "correct": false,
+          "explanation": "That runs uphill; iron sits below aluminium and cannot take its oxygen.",
+          "misconception": "displacement direction reversed"
+        },
+        {
+          "key": "C",
+          "text": "No reaction occurs because both are metals",
+          "correct": false,
+          "explanation": "Metal-versus-metal-oxide is exactly the setup where the more reactive metal wins the oxygen.",
+          "misconception": "reaction denied"
+        },
+        {
+          "key": "D",
+          "text": "The products are iron sulfide and aluminium",
+          "correct": false,
+          "explanation": "No sulfur is present; the products are iron and aluminium oxide.",
+          "misconception": "product invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L1::Q5",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L1",
+      "stem": "Lead(II) oxide is heated with silver. What happens, given lead is more reactive than silver?",
+      "misconceptionClass": "table row application",
+      "options": [
+        {
+          "key": "A",
+          "text": "No reaction, because silver cannot displace the more reactive lead from its oxide",
+          "correct": true,
+          "explanation": "The mixture runs uphill, so the silver stays silver and the lead(II) oxide stays intact.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Silver takes the oxygen, giving silver oxide and lead",
+          "correct": false,
+          "explanation": "That requires silver to outrank lead, which is the reverse of the truth.",
+          "misconception": "series order inverted"
+        },
+        {
+          "key": "C",
+          "text": "The two metals swap places halfway",
+          "correct": false,
+          "explanation": "Displacement is all-or-nothing by the series order; there is no partial swap.",
+          "misconception": "partial reaction invented"
+        },
+        {
+          "key": "D",
+          "text": "The lead metal appears and the oxide vanishes",
+          "correct": false,
+          "explanation": "That would need silver to be the reducing agent, which it cannot be here.",
+          "misconception": "wrong winner declared"
+        }
+      ]
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L2::Q1",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L2",
+      "stem": "What is seen when a piece of magnesium is left in blue copper(II) sulfate solution?",
+      "misconceptionClass": "observation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The blue colour fades and copper coats the magnesium",
+          "correct": true,
+          "explanation": "Magnesium displaces copper, forming colourless magnesium sulfate while copper deposits on the strip and at the bottom.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The blue colour deepens as more copper forms",
+          "correct": false,
+          "explanation": "The blue belongs to dissolved copper(II); as it leaves the solution the colour fades, not deepens.",
+          "misconception": "colour direction reversed"
+        },
+        {
+          "key": "C",
+          "text": "Nothing happens, because magnesium is unreactive",
+          "correct": false,
+          "explanation": "Magnesium is well above copper, so the displacement proceeds readily.",
+          "misconception": "magnesium's reactivity misjudged"
+        },
+        {
+          "key": "D",
+          "text": "The solution turns orange as bromine forms",
+          "correct": false,
+          "explanation": "No halogen is present; orange belongs to bromine chemistry, not to this metal displacement.",
+          "misconception": "halogen colours imported wrongly"
+        }
+      ]
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L2::Q2",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L2",
+      "stem": "Which equation represents magnesium displacing copper from copper(II) sulfate?",
+      "misconceptionClass": "equation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Mg + CuSO4 gives MgSO4 + Cu",
+          "correct": true,
+          "explanation": "The metals simply swap partners with the sulfate, and every atom count balances one-for-one.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Mg + CuSO4 gives MgCu + SO4",
+          "correct": false,
+          "explanation": "The sulfate stays with a metal; it does not float free, and no MgCu compound exists here.",
+          "misconception": "salt structure misunderstood"
+        },
+        {
+          "key": "C",
+          "text": "Mg + CuSO4 gives MgO + CuS",
+          "correct": false,
+          "explanation": "Neither oxygen nor sulfur is freed in this swap; the sulfate group stays intact with the magnesium.",
+          "misconception": "salt broken into fragments"
+        },
+        {
+          "key": "D",
+          "text": "2Mg + CuSO4 gives 2MgSO4 + Cu",
+          "correct": false,
+          "explanation": "The magnesiums do not balance: two in, but only one sulfate to pair with each.",
+          "misconception": "coefficients added unnecessarily"
+        }
+      ]
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L2::Q3",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L2",
+      "stem": "Why does zinc show no reaction in sodium chloride solution?",
+      "misconceptionClass": "no-reaction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because sodium is above zinc in the reactivity series",
+          "correct": true,
+          "explanation": "Zinc cannot displace a metal that outranks it, so the solution stays unchanged.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because sodium chloride is not a salt",
+          "correct": false,
+          "explanation": "Sodium chloride is a perfectly ordinary salt; the quiet comes from the series order.",
+          "misconception": "salt status questioned"
+        },
+        {
+          "key": "C",
+          "text": "Because zinc is too reactive to enter the solution",
+          "correct": false,
+          "explanation": "Reactivity is what drives displacement, not what blocks it; zinc simply lacks the rank here.",
+          "misconception": "reactivity blamed in reverse"
+        },
+        {
+          "key": "D",
+          "text": "Because chlorine gas forms a protective layer",
+          "correct": false,
+          "explanation": "No chlorine gas is involved; the salt's chloride stays dissolved throughout.",
+          "misconception": "layer excuse invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L2::Q4",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L2",
+      "stem": "Lead is placed in silver nitrate solution. What are the products, given lead outranks silver?",
+      "misconceptionClass": "product prediction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lead(II) nitrate and silver metal",
+          "correct": true,
+          "explanation": "Lead takes the nitrate's company and silver is displaced as solid, matching Pb + 2AgNO3 giving Pb(NO3)2 + 2Ag.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Silver nitrate and lead metal",
+          "correct": false,
+          "explanation": "That is the starting set; the displacement moves lead into the solution and brings silver out.",
+          "misconception": "no change assumed"
+        },
+        {
+          "key": "C",
+          "text": "Lead oxide and silver nitrate",
+          "correct": false,
+          "explanation": "No oxygen is freed in salt-solution displacement; the nitrate stays whole.",
+          "misconception": "oxide invented"
+        },
+        {
+          "key": "D",
+          "text": "No reaction occurs",
+          "correct": false,
+          "explanation": "Lead sits above silver, so the displacement runs downhill and does proceed.",
+          "misconception": "reactive pair marked as quiet"
+        }
+      ]
+    },
+    {
+      "id": "rn_gBGX339WBpwyCrFF::L2::Q5",
+      "moduleId": "rn_gBGX339WBpwyCrFF::L2",
+      "stem": "How do displacement reactions arrange metals in a reactivity series?",
+      "misconceptionClass": "method summary",
+      "options": [
+        {
+          "key": "A",
+          "text": "Each successful displacement shows the added metal is more reactive, so the outcomes order any pair tested",
+          "correct": true,
+          "explanation": "Downhill displacements succeed and uphill ones fail, which is exactly the evidence the series is built from.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "By weighing how much of each metal dissolves",
+          "correct": false,
+          "explanation": "The ranking comes from which displacements succeed, not from measured masses.",
+          "misconception": "quantity substituted for outcome"
+        },
+        {
+          "key": "C",
+          "text": "By the colours of the salts alone",
+          "correct": false,
+          "explanation": "Colours help identify products, but the ranking evidence is which swaps happen.",
+          "misconception": "colour substituted for outcome"
+        },
+        {
+          "key": "D",
+          "text": "Displacement reactions cannot order metals at all",
+          "correct": false,
+          "explanation": "Both displacement routes, oxides and salt solutions, are precisely the tools the specification names for this ranking.",
+          "misconception": "method denied"
+        }
+      ]
+    }
+  ]
+}

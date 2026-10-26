@@ -1,0 +1,154 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_MmqCNJfWbtYzRVqT",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a44c20c6291ca3f8a2d9a8451df50a3024db120035219653b451df1079520f4d",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_MmqCNJfWbtYzRVqT",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Alkanes",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-3-alkanes/4-3-2-halogens-and-alkanes",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.22",
+        "text": "describe the reactions of alkanes with halogens in the presence of ultraviolet radiation, limited to mono-substitution knowledge of reaction mechanisms is not required"
+      }
+    ],
+    "primer": {
+      "text": "From Alkanes you already know this family is generally unreactive, with halogen chemistry listed as one of its few moves. This note runs that move in detail: what ultraviolet light unlocks, the equations for methane with bromine and chlorine, and the halogenoalkane products that follow.",
+      "prerequisiteSubtopic": "Alkanes"
+    },
+    "modules": [
+      {
+        "id": "rn_MmqCNJfWbtYzRVqT::L1",
+        "title": "Swapping atoms under UV light",
+        "sourceHeadings": [
+          "Halogens & alkanes",
+          "The reaction between methane and bromine in the presence of ultraviolet radiation"
+        ],
+        "specRefs": [
+          "4CH1-4.22"
+        ],
+        "opening": "Left alone, an alkane ignores a halogen. Switch on ultraviolet light and a hydrogen atom is swapped for a halogen atom in a reaction whose shape this lesson maps out.",
+        "keyPoints": [
+          "A substitution reaction swaps one atom in a molecule for another atom.",
+          "Alkanes react with halogens only in the presence of ultraviolet radiation.",
+          "Methane plus bromine under UV gives bromomethane and hydrogen bromide: CH4 + Br2 -> CH3Br + HBr.",
+          "The same pattern with chlorine gives chloromethane and hydrogen chloride: CH4 + Cl2 -> CH3Cl + HCl.",
+          "The substitution here is limited to mono-substitution, one halogen atom per methane molecule."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "With UV light on, a halogen atom trades places with a hydrogen on the alkane. Methane gives bromomethane plus HBr with bromine, or chloromethane plus HCl with chlorine. Only one swap happens per molecule at this level, and the light supplies the trigger that makes it possible.",
+            "analogy": "Ultraviolet light is the referee who lets the substitution match begin; without the whistle, both teams stand still.",
+            "examPointer": "Always state the UV condition; the reaction does not proceed appreciably without it."
+          },
+          "medium": {
+            "restatement": "Alkanes undergo substitution with halogens under ultraviolet light, one atom at a time as far as mono-substitution. Methane and bromine yield bromomethane and hydrogen bromide, while chlorine under the same conditions yields chloromethane and hydrogen chloride, each equation pairing the haloalkane with the hydrogen halide.",
+            "analogy": "Picture a dance floor where UV is the music: only when it plays does one hydrogen dancer leave the floor and a halogen take the vacant place, one swap per song.",
+            "examPointer": "Write both products, the haloalkane and the hydrogen halide, and mark the reaction as mono-substitution if asked to limit it."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_MmqCNJfWbtYzRVqT::L1::Q1",
+          "rn_MmqCNJfWbtYzRVqT::L1::Q2",
+          "rn_MmqCNJfWbtYzRVqT::L1::Q3",
+          "rn_MmqCNJfWbtYzRVqT::L1::Q4",
+          "rn_MmqCNJfWbtYzRVqT::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_MmqCNJfWbtYzRVqT::L2",
+        "title": "Haloalkanes and their uses",
+        "sourceHeadings": [
+          "Halogens & alkanes"
+        ],
+        "specRefs": [
+          "4CH1-4.22"
+        ],
+        "opening": "The products of alkane substitution are not laboratory curiosities; they run freezers, inhalers and solvents. This lesson follows the chlorine example and the CFC story behind the product family.",
+        "keyPoints": [
+          "Chlorine reacts with alkanes under the same UV conditions to form chloromethane.",
+          "Methane plus chlorine gives CH3Cl and HCl by the same substitution pattern as bromine.",
+          "Both products sit in a family the note names halogenoalkanes, or haloalkanes for short.",
+          "Halogenoalkanes see use as solvents, refrigerants, propellants and pharmaceuticals.",
+          "CFCs are chlorofluorocarbons, family members now phased out because they harm the ozone layer."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Chlorine does the same job as bromine, swapping onto methane to give chloromethane and HCl. The products form a useful family called halogenoalkanes, seen in solvents and old fridges.",
+            "analogy": "Swap the halogen and you swap the flavour of the product, like the same recipe baked with different spice; the family name just records which halogen came to visit.",
+            "examPointer": "Quote one use of halogenoalkanes and the CFC-ozone story if the question stretches to applications."
+          },
+          "medium": {
+            "restatement": "Under ultraviolet light chlorine substitutes onto methane exactly as bromine does, giving chloromethane and hydrogen chloride. Both products sit in the halogenoalkane family, valued as solvents, refrigerants, propellants and pharmaceuticals, though the chlorofluorocarbon members were phased out for ozone damage.",
+            "analogy": "The haloalkane family is a toolbox where the halogen is the handle: swap bromine for chlorine and the tool changes job, from solvent to refrigerant, while the carbon skeleton stays the same.",
+            "examPointer": "Link the UV condition to both halogens, then answer use questions with the four listed roles or the CFC ozone story."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_MmqCNJfWbtYzRVqT::L2::Q1",
+          "rn_MmqCNJfWbtYzRVqT::L2::Q2",
+          "rn_MmqCNJfWbtYzRVqT::L2::Q3",
+          "rn_MmqCNJfWbtYzRVqT::L2::Q4",
+          "rn_MmqCNJfWbtYzRVqT::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "substitution reaction",
+          "definition": "A reaction in which one atom in a molecule is swapped for another atom.",
+          "firstLesson": 1
+        },
+        {
+          "term": "halogen",
+          "definition": "A Group 7 element such as bromine or chlorine that can substitute onto alkanes under UV light.",
+          "firstLesson": 1
+        },
+        {
+          "term": "halogenoalkane",
+          "definition": "An alkane derivative carrying one or more halogen atoms, also called a haloalkane.",
+          "firstLesson": 1
+        },
+        {
+          "term": "mono-substitution",
+          "definition": "The limit in which only one halogen atom replaces a hydrogen on each alkane molecule.",
+          "firstLesson": 1
+        },
+        {
+          "term": "chlorofluorocarbon",
+          "definition": "A halogenoalkane containing chlorine and fluorine, formerly used in fridges and now phased out for ozone damage.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

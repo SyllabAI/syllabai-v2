@@ -1,0 +1,155 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_8T5GfPn2q7sY2YCh",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "58fc5d55f2ae780ff8d79d54b40bcb3deb1bd9244558cdad7a52fa077773a054",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_8T5GfPn2q7sY2YCh",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Alcohols",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-5-alcohols/4-5-2-oxidation-of-ethanol",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.31C",
+        "text": "know that ethanol can be oxidised by: burning in air or oxygen (complete combustion); reaction with oxygen in the air to form ethanoic acid (microbial oxidation); heating with potassium dichromate(VI) in dilute sulfuric acid to form ethanoic acid"
+      }
+    ],
+    "primer": {
+      "text": "From Alcohols you already know ethanol as the two-carbon member of the organic family, with its reactive -OH group sitting at the end of the chain. This note tracks what happens when that molecule meets oxygen: three separate routes that all carry ethanol towards the same acid.",
+      "prerequisiteSubtopic": "Alcohols"
+    },
+    "modules": [
+      {
+        "id": "rn_8T5GfPn2q7sY2YCh::L1",
+        "title": "Three routes that oxidise ethanol",
+        "sourceHeadings": [
+          "Combustion",
+          "Aerobic Oxidation"
+        ],
+        "specRefs": [
+          "4CH1-4.31C"
+        ],
+        "opening": "Ethanol does not survive contact with oxygen untouched. This lesson walks the three routes that oxidise it: burning it as a fuel, letting airborne bacteria sour it, and handing it to a chemical oxidising agent. Each route ends at a different product, and telling them apart is exactly what the exam asks.",
+        "keyPoints": [
+          "Alcohols burn in air to form carbon dioxide and water.",
+          "Ethanol burns with an almost invisible blue flame, so laboratories use it in spirit burners.",
+          "Airborne acetobacter bacteria use oxygen to turn the ethanol in open wine into ethanoic acid.",
+          "Wine left open for days tastes acidic and vinegary because microbial action makes ethanoic acid.",
+          "The microbial route is the same chemistry that produces the acid used in vinegar."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Ethanol can be changed by oxygen in three ways. Burning gives carbon dioxide and water. Bacteria in the air also attack open wine and leave sour ethanoic acid behind.",
+            "analogy": "Think of ethanol as a loaf of bread and airborne bacteria as mould spores: one route burns the loaf up at once, the other slowly spoils it, and both change it for good.",
+            "examPointer": "Learn all three oxidation routes as a list; questions ask you to name the product or the agent for a named route."
+          },
+          "medium": {
+            "restatement": "Complete burning turns ethanol into carbon dioxide and water with a pale, almost invisible flame. Airborne acetobacter bacteria instead convert exposed ethanol into a weak ethanoic acid mixture, which is why abandoned wine tastes vinegary.",
+            "analogy": "One molecule, two easy doors: the fire door burns ethanol straight to carbon dioxide and water, while the airy door lets bacteria sour it towards vinegar over several days.",
+            "examPointer": "Only the burning route produces carbon dioxide; both microbial action and dichromate treatment deliver ethanoic acid instead."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8T5GfPn2q7sY2YCh::L1::Q1",
+          "rn_8T5GfPn2q7sY2YCh::L1::Q2",
+          "rn_8T5GfPn2q7sY2YCh::L1::Q3",
+          "rn_8T5GfPn2q7sY2YCh::L1::Q4",
+          "rn_8T5GfPn2q7sY2YCh::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_8T5GfPn2q7sY2YCh::L2",
+        "title": "Oxidising agents and the reflux method",
+        "sourceHeadings": [
+          "Treatment with an oxidising agent",
+          "The oxidation of ethanol"
+        ],
+        "specRefs": [
+          "4CH1-4.31C"
+        ],
+        "opening": "The laboratory route to ethanoic acid heats ethanol under reflux with acidified potassium dichromate(VI). The equation hides the oxidiser behind the bracket symbol [O], and the flask itself tells the story as orange drains to green. This lesson unpacks the equation, the apparatus and the colour change.",
+        "keyPoints": [
+          "Heating ethanol with potassium dichromate(VI) in dilute sulfuric acid produces ethanoic acid.",
+          "The equation is written CH3CH2OH + [O] giving CH3COOH + H2O.",
+          "The symbol [O] stands for oxygen supplied by the oxidising agent.",
+          "A condenser above the flask stops volatile liquids escaping during the hour-long boil.",
+          "The dichromate mixture turns from orange to green as the reaction proceeds."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Heating ethanol with potassium dichromate(VI) in dilute sulfuric acid makes ethanoic acid. The bracket [O] stands for the oxygen delivered, and the mixture changes from orange to green.",
+            "analogy": "The dichromate behaves like a courier carrying oxygen atoms: it drops one off at the ethanol and fades from orange to green as payment for the delivery.",
+            "examPointer": "Quote the colour change from orange to green; it is the classic observation mark for this reaction."
+          },
+          "medium": {
+            "restatement": "Refluxing ethanol with acidified potassium dichromate(VI) converts CH3CH2OH into CH3COOH, with [O] standing for the oxygen supplied. A condenser returns escaping vapours so the long boil loses no volatile liquid, and the orange mixture ends up green.",
+            "analogy": "A condenser above the flask works like a lid that drips escaping steam back into the pot: everything volatile returns, so only the chemistry changes while the ingredients stay.",
+            "examPointer": "When balancing the burning equation, remember ethanol already carries an oxygen atom of its own; forgetting it is the named examiner trap."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_8T5GfPn2q7sY2YCh::L2::Q1",
+          "rn_8T5GfPn2q7sY2YCh::L2::Q2",
+          "rn_8T5GfPn2q7sY2YCh::L2::Q3",
+          "rn_8T5GfPn2q7sY2YCh::L2::Q4",
+          "rn_8T5GfPn2q7sY2YCh::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "oxidation",
+          "definition": "A change that adds oxygen or removes hydrogen from a substance; ethanol undergoes it by burning, by microbial action or by dichromate treatment.",
+          "firstLesson": 1
+        },
+        {
+          "term": "complete combustion",
+          "definition": "Burning a fuel in plenty of oxygen so that the only products are carbon dioxide and water.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ethanoic acid",
+          "definition": "The carboxylic acid CH3COOH made when ethanol is oxidised; it is the acid that gives vinegar its sour taste.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reflux",
+          "definition": "Heating a boiling mixture beneath a condenser so that volatile liquids return to the flask instead of escaping.",
+          "firstLesson": 2
+        },
+        {
+          "term": "dichromate",
+          "definition": "Potassium dichromate(VI), the orange oxidising agent that turns green as it delivers oxygen to ethanol in dilute sulfuric acid.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

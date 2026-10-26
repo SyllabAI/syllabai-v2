@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, CircleHelp, FileQuestion } from "lucide-react";
+import { ArrowLeft, ArrowRight, CircleHelp, FileQuestion, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { boardOf, loadHubCourse } from "@/lib/courses";
+import { findGuidedEntry, loadGuidedIndex } from "@/lib/guided-lessons";
 import { sanitizeNoteBody } from "@/lib/note-body-fix";
 import { Markdown } from "@/components/markdown";
 import { Breadcrumbs } from "@/components/hub/chrome";
@@ -54,6 +55,12 @@ export default async function NoteReaderPage({
   // text" chips keep their readable text — and collapses the duplicated
   // section headings the importer left around anchor chips (Task 19 audit).
   const bodyMd = sanitizeNoteBody(note.bodyMd, note.title);
+
+  // Guided-lesson integration (SME guided corpus): courses without a
+  // guided-import.json get one cheap exists-probe and render nothing;
+  // notes in the index get the banner below. Fail-closed — no synthetic
+  // entries, the index is the only source.
+  const guidedEntry = findGuidedEntry(await loadGuidedIndex(meta.slug), note.noteId);
 
   return (
     <div className="flex w-full">
@@ -109,6 +116,31 @@ export default async function NoteReaderPage({
             subtopicTitle={subtopic?.title ?? null}
             guidedStudy={note.guidedStudy}
           />
+
+          {/* Guided-lesson banner — the integration surface for notes that
+              have a guided lesson set (112-note IGCSE chemistry corpus).
+              Renders NOTHING for courses/notes without one (fail-closed). */}
+          {guidedEntry && (
+            <Card className="border-primary/30 bg-primary/[0.04]">
+              <CardContent className="flex flex-wrap items-center gap-4 p-4">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                  <GraduationCap className="size-5" aria-hidden />
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-semibold">Guided lessons are live for this note</p>
+                  <p className="text-xs text-muted-foreground">
+                    Work through it step by step — key points, depth layers, a worked example and self-checks.
+                  </p>
+                </div>
+                <Button asChild size="sm">
+                  <Link href={`${base}/guided-lessons/${note.noteId}`}>
+                    Start guided lesson
+                    <ArrowRight className="size-4" aria-hidden />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          )}
 
           <Markdown>{bodyMd}</Markdown>
 

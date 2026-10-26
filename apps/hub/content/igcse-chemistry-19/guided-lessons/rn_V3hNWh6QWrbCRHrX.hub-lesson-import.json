@@ -1,0 +1,212 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_V3hNWh6QWrbCRHrX",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "f3a99affe9a616a939f76eef17443357dd3cd341b79a84e133304575013c0937",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_V3hNWh6QWrbCRHrX",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Crude Oil",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-2-crude-oil/4-2-2-combustion",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.11",
+        "text": "know that a fuel is a substance that, when burned, releases heat energy"
+      },
+      {
+        "code": "4CH1-4.12",
+        "text": "know the possible products of complete and incomplete combustion of hydrocarbons with oxygen in the air"
+      },
+      {
+        "code": "4CH1-4.13",
+        "text": "understand why carbon monoxide is poisonous, in terms of its effect on the capacity of blood to transport oxygen references to haemoglobin are not required"
+      }
+    ],
+    "primer": {
+      "text": "From Crude Oil you already know where fuels come from and which engines burn them. This note follows the burning itself: what a fuel is, the products when oxygen is plentiful or scarce, and the quiet danger carbon monoxide poses to the blood that carries oxygen.",
+      "prerequisiteSubtopic": "Crude Oil"
+    },
+    "modules": [
+      {
+        "id": "rn_V3hNWh6QWrbCRHrX::L1",
+        "title": "Fuels and complete combustion",
+        "sourceHeadings": [
+          "The combustion of fossil fuels",
+          "Complete combustion"
+        ],
+        "specRefs": [
+          "4CH1-4.11",
+          "4CH1-4.12"
+        ],
+        "opening": "A fuel is any substance that gives out heat when it burns, and fossil fuels power most of modern life. This lesson defines fuels, lists the fossil ones, and writes the complete-burning equation for propane.",
+        "keyPoints": [
+          "A fuel is a substance that releases heat energy when it burns, an exothermic change.",
+          "The fossil fuels are coal, oil and natural gas, with oil shales and tar sands also listed, all finite.",
+          "Petrol fuels cars, kerosene fuels aircraft, diesel fuels heavy vehicles, and coal runs power stations.",
+          "Natural gas consists mainly of methane, and all fossil fuels contain carbon, hydrogen and some sulfur.",
+          "With excess oxygen, hydrocarbons burn completely: C3H8 + 5O2 gives 3CO2 + 4H2O."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A fuel gives out heat as it burns. Burn a hydrocarbon with plenty of oxygen and the only products are carbon dioxide and water. Both products are oxides, fully combined with the oxygen supplied by the air.",
+            "analogy": "A well-fed fire is a tidy accountant: every carbon atom leaves as carbon dioxide and every hydrogen leaves as water, with nothing left unaccounted.",
+            "examPointer": "Define a fuel through heat released on burning, then attach the excess-oxygen condition to the products list."
+          },
+          "medium": {
+            "restatement": "Fuels release heat energy on burning because burning is exothermic, and the fossil fuels from crude oil include coal, oil and natural gas. In excess oxygen a hydrocarbon burns completely, so propane yields carbon dioxide and water in the ratio its formula dictates: three CO2 and four H2O per molecule.",
+            "analogy": "Complete burning is a full-refund exchange: the oxygen-rich shop takes every carbon and hydrogen and returns them as their fully oxidised products, nothing partial, nothing owed.",
+            "examPointer": "Predict products from the fuel formula and the oxygen supply, and balance the equation before quoting it in an answer."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_V3hNWh6QWrbCRHrX::L1::Q1",
+          "rn_V3hNWh6QWrbCRHrX::L1::Q2",
+          "rn_V3hNWh6QWrbCRHrX::L1::Q3",
+          "rn_V3hNWh6QWrbCRHrX::L1::Q4",
+          "rn_V3hNWh6QWrbCRHrX::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_V3hNWh6QWrbCRHrX::L2",
+        "title": "Incomplete combustion",
+        "sourceHeadings": [
+          "Combustion products",
+          "Incomplete combustion"
+        ],
+        "specRefs": [
+          "4CH1-4.12"
+        ],
+        "opening": "When oxygen runs short, the same hydrocarbons burn messily and dangerously. This lesson follows the fuel into boilers, stoves and engines where oxygen is scarce, and tracks the carbon into monoxide and soot.",
+        "keyPoints": [
+          "Incomplete combustion happens when there is insufficient oxygen to burn the fuel fully.",
+          "It occurs in appliances such as boilers and stoves, and inside internal combustion engines.",
+          "The products are unburnt fuel as soot, carbon monoxide and water.",
+          "Methane with limited oxygen gives 2CH4 + 3O2 -> 2CO + 4H2O.",
+          "In even poorer oxygen supply, methane gives carbon soot: CH4 + O2 -> C + 2H2O."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Shortage of oxygen stops the carbon reaching dioxide. It leaves the flame as carbon monoxide or as black soot, while the hydrogen still escapes as water. Boilers, stoves and car engines are the everyday places where this shortage happens.",
+            "analogy": "It is a queue at a door that is too narrow: only some carbons get the full oxygen service, and the rest leave half-served or not served at all.",
+            "examPointer": "Name soot, carbon monoxide and water together when asked for incomplete products, and tie them to limited oxygen."
+          },
+          "medium": {
+            "restatement": "In insufficient oxygen the hydrocarbon burns incompletely: the hydrogen still forms water, but carbon emerges as carbon monoxide or as soot of unburnt fuel. The two methane equations show the ladder, from 2CO with moderate shortage down to plain carbon when oxygen is scarcest, and boilers, stoves and engines are the everyday stages for it.",
+            "analogy": "Think of oxygen as budget: with a cut budget the carbon buys the cheap monoxide ticket, and with the budget almost gone it cannot travel at all and stays as soot.",
+            "examPointer": "Predict which carbon product forms by judging how severe the oxygen shortage is, and quote the matching balanced equation."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_V3hNWh6QWrbCRHrX::L2::Q1",
+          "rn_V3hNWh6QWrbCRHrX::L2::Q2",
+          "rn_V3hNWh6QWrbCRHrX::L2::Q3",
+          "rn_V3hNWh6QWrbCRHrX::L2::Q4",
+          "rn_V3hNWh6QWrbCRHrX::L2::Q5"
+        ]
+      },
+      {
+        "id": "rn_V3hNWh6QWrbCRHrX::L3",
+        "title": "Why carbon monoxide is poisonous",
+        "sourceHeadings": [
+          "Why is carbon monoxide dangerous?",
+          "How carbon monoxide affects the body"
+        ],
+        "specRefs": [
+          "4CH1-4.13"
+        ],
+        "opening": "Carbon monoxide is invisible, odourless and tasteless, which makes it a silent hazard. This lesson explains how inhaled CO steals the blood oxygen-carrying capacity that tissues depend on.",
+        "keyPoints": [
+          "Carbon monoxide is a highly poisonous gas from incomplete burning of carbon-containing fuels.",
+          "It is odourless, colourless and tasteless, so it can be inhaled without being noticed.",
+          "Inhaled CO is absorbed into red blood cells and binds tightly to the molecules that normally carry oxygen.",
+          "This binding cuts the capacity of the blood to transport oxygen round the body.",
+          "Haemoglobin binds CO around 200 to 250 times more strongly than oxygen, forming stable carboxyhaemoglobin."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Breathed in, carbon monoxide hops into red blood cells and grips the oxygen-carrying molecules tightly. The blood then carries less oxygen, so tissues go short. The victim never smells or tastes anything wrong.",
+            "analogy": "CO is a squatter with the strongest grip in the building: it occupies the seats meant for oxygen and refuses to leave, so fewer oxygen passengers get a ride.",
+            "examPointer": "The key marking point is reduced oxygen-carrying capacity of the blood; the exam hint confirms haemoglobin detail is optional."
+          },
+          "medium": {
+            "restatement": "Inhaled carbon monoxide passes from the lungs into red blood cells and binds to the oxygen-transport molecules there. Because haemoglobin grips CO about 200 to 250 times more strongly than oxygen, the binding is preferential and effectively irreversible, forming carboxyhaemoglobin and cutting the capacity of blood to transport oxygen to tissues.",
+            "analogy": "Picture a taxi rank where one passenger monopolises every cab two hundred times more firmly than the real customers: the fleet keeps driving, but almost nobody who needs a ride gets one.",
+            "examPointer": "If you use haemoglobin, state both halves: CO binds irreversibly, and less oxygen is carried round the body."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_V3hNWh6QWrbCRHrX::L3::Q1",
+          "rn_V3hNWh6QWrbCRHrX::L3::Q2",
+          "rn_V3hNWh6QWrbCRHrX::L3::Q3",
+          "rn_V3hNWh6QWrbCRHrX::L3::Q4",
+          "rn_V3hNWh6QWrbCRHrX::L3::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "fuel",
+          "definition": "A substance that releases heat energy when it burns, in an exothermic reaction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "complete combustion",
+          "definition": "Burning in excess oxygen, producing carbon dioxide and water.",
+          "firstLesson": 1
+        },
+        {
+          "term": "incomplete combustion",
+          "definition": "Burning in insufficient oxygen, producing carbon monoxide or soot as well as water.",
+          "firstLesson": 2
+        },
+        {
+          "term": "carbon monoxide",
+          "definition": "A colourless, odourless, tasteless and highly poisonous gas made when fuels burn in poor oxygen supply.",
+          "firstLesson": 2
+        },
+        {
+          "term": "haemoglobin",
+          "definition": "The molecule in red blood cells that binds oxygen; carbon monoxide binds it far more strongly, blocking oxygen transport.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

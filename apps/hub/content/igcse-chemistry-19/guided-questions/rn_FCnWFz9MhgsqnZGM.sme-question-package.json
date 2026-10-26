@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_FCnWFz9MhgsqnZGM",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "ee6038060f98c01303dcff9e31adb889f8ab10f3e21475ec9dd3a9817eb18559",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_FCnWFz9MhgsqnZGM",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L1::Q1",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L1",
+      "stem": "In the sodium chloride dot-and-cross diagram, how many electrons are transferred from the sodium atom to the chlorine atom?",
+      "misconceptionClass": "transfer-count error",
+      "options": [
+        {
+          "key": "A",
+          "text": "One",
+          "correct": true,
+          "explanation": "Sodium is in Group 1 with a single outer electron, and one electron completes chlorine's outer shell.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Two",
+          "correct": false,
+          "explanation": "Two transfers would suit a Group 2 metal such as magnesium; sodium carries only one outer electron.",
+          "misconception": "magnesium pattern transferred to sodium"
+        },
+        {
+          "key": "C",
+          "text": "Seven",
+          "correct": false,
+          "explanation": "Seven is the count chlorine already has; it receives one electron rather than giving seven away.",
+          "misconception": "outer-electron count confused with transfer count"
+        },
+        {
+          "key": "D",
+          "text": "None, the electrons are shared",
+          "correct": false,
+          "explanation": "Sharing belongs to covalent bonding; sodium chloride forms by full transfer between a metal and a non-metal.",
+          "misconception": "covalent sharing model applied to ionic bonding"
+        }
+      ]
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L1::Q2",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L1",
+      "stem": "Where is the charge written on each ion in a finished dot-and-cross diagram?",
+      "misconceptionClass": "diagram convention",
+      "options": [
+        {
+          "key": "A",
+          "text": "Outside the square brackets, at the top right, as a superscript",
+          "correct": true,
+          "explanation": "The brackets enclose the ion and its electrons, and the charge sits outside them at the top right.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Inside the square brackets, next to the nucleus",
+          "correct": false,
+          "explanation": "Charges describe the whole ion, not the nucleus alone, so they sit outside the brackets.",
+          "misconception": "charge attached to the nucleus"
+        },
+        {
+          "key": "C",
+          "text": "Underneath the ion, on a separate line",
+          "correct": false,
+          "explanation": "Convention places the charge at the top right; a separate line is not the accepted layout.",
+          "misconception": "layout invented"
+        },
+        {
+          "key": "D",
+          "text": "Charges are not written on dot-and-cross diagrams",
+          "correct": false,
+          "explanation": "The charge is essential information on an ionic diagram; omitting it loses the mark.",
+          "misconception": "charge omitted entirely"
+        }
+      ]
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L1::Q3",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L1",
+      "stem": "Why does the chlorine atom in the diagram end with a 1- charge?",
+      "misconceptionClass": "charge origin",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because it has gained one electron, giving it one more electron than protons",
+          "correct": true,
+          "explanation": "The extra transferred electron tips the balance from neutral to 1-.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because it has lost one electron",
+          "correct": false,
+          "explanation": "Losing electrons gives positive charges; chlorine gains the transferred electron.",
+          "misconception": "gain and loss reversed"
+        },
+        {
+          "key": "C",
+          "text": "Because it shares an electron with sodium",
+          "correct": false,
+          "explanation": "No sharing happens in ionic bonding; the electron transfers completely to the chlorine.",
+          "misconception": "shared-pair model applied"
+        },
+        {
+          "key": "D",
+          "text": "Because chlorine atoms always carry a charge",
+          "correct": false,
+          "explanation": "A chlorine atom starts neutral; the charge appears only after the transfer.",
+          "misconception": "atoms assumed permanently charged"
+        }
+      ]
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L1::Q4",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L1",
+      "stem": "Magnesium oxide forms from magnesium and oxygen. How many electrons move in total?",
+      "misconceptionClass": "transfer-count comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two, both from magnesium to oxygen",
+          "correct": true,
+          "explanation": "Magnesium is in Group 2 and oxygen in Group 6, so two electrons transfer and both ions reach full outer shells.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One",
+          "correct": false,
+          "explanation": "One electron would leave magnesium at 1+ and oxygen at 1-, charges that do not match their groups.",
+          "misconception": "sodium chloride count reused"
+        },
+        {
+          "key": "C",
+          "text": "Two, one travelling in each direction",
+          "correct": false,
+          "explanation": "Both transferred electrons come from magnesium; oxygen gains rather than trades electrons.",
+          "misconception": "exchange model imagined"
+        },
+        {
+          "key": "D",
+          "text": "Four",
+          "correct": false,
+          "explanation": "Four electrons would mean two complete transfers twice over; the group numbers fix the count at two.",
+          "misconception": "count doubled"
+        }
+      ]
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L1::Q5",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L1",
+      "stem": "Which combinations must you be able to draw ionic dot-and-cross diagrams for in this course?",
+      "misconceptionClass": "scope of the spec",
+      "options": [
+        {
+          "key": "A",
+          "text": "Combinations of elements from Groups 1, 2 and 3 with elements from Groups 5, 6 and 7",
+          "correct": true,
+          "explanation": "The spec limits ionic dot-and-cross diagrams to those group pairings, with only outer electrons shown.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Every element in the Periodic Table paired with every other",
+          "correct": false,
+          "explanation": "The requirement is limited to the listed groups; wider pairings are beyond the spec.",
+          "misconception": "scope overestimated"
+        },
+        {
+          "key": "C",
+          "text": "Only sodium chloride and magnesium oxide",
+          "correct": false,
+          "explanation": "These are the worked examples, not the limit; any pairing from the listed groups can be asked.",
+          "misconception": "examples mistaken for the full scope"
+        },
+        {
+          "key": "D",
+          "text": "Transition metals paired with halogens",
+          "correct": false,
+          "explanation": "Transition metals sit outside the listed groups for this diagram type.",
+          "misconception": "wrong family selected"
+        }
+      ]
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L2::Q1",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L2",
+      "stem": "What charge does the oxide ion carry in the magnesium oxide diagram, and why?",
+      "misconceptionClass": "charge deduction",
+      "options": [
+        {
+          "key": "A",
+          "text": "2-, because it gains two electrons",
+          "correct": true,
+          "explanation": "Two extra electrons give the oxide ion two more negatives than positives.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "1-, because only one shell is involved",
+          "correct": false,
+          "explanation": "Shell count sets nothing here; the charge follows the two electrons gained.",
+          "misconception": "shell count linked to charge size"
+        },
+        {
+          "key": "C",
+          "text": "2+, because it lost two protons",
+          "correct": false,
+          "explanation": "Protons never transfer during bonding; oxygen gains electrons, so its charge is negative.",
+          "misconception": "protons thought to move"
+        },
+        {
+          "key": "D",
+          "text": "6-, because oxygen is in Group 6",
+          "correct": false,
+          "explanation": "The group number counts outer electrons, not the charge; oxygen gains only two.",
+          "misconception": "group number read as the charge"
+        }
+      ]
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L2::Q2",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L2",
+      "stem": "In the diagram, how are the two transferred electrons shown?",
+      "misconceptionClass": "symbol convention",
+      "options": [
+        {
+          "key": "A",
+          "text": "They keep the magnesium atom's symbol and appear inside the oxide ion's brackets",
+          "correct": true,
+          "explanation": "Each electron keeps the symbol of the atom it came from, so the transferred pair shows the donor inside the acceptor's shell.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They are redrawn with the oxygen atom's symbol",
+          "correct": false,
+          "explanation": "Changing the symbol would hide where the electrons came from; the donor's marking travels with them.",
+          "misconception": "symbols reassigned after transfer"
+        },
+        {
+          "key": "C",
+          "text": "They are left out, since transferred electrons cannot be drawn",
+          "correct": false,
+          "explanation": "The transferred electrons are exactly what the diagram must show; leaving them out would hide the transfer.",
+          "misconception": "transfer left undrawn"
+        },
+        {
+          "key": "D",
+          "text": "They sit between the two ions as a shared pair",
+          "correct": false,
+          "explanation": "A shared pair would depict covalent bonding; here the electrons belong wholly to the oxide ion.",
+          "misconception": "shared-pair drawing used"
+        }
+      ]
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L2::Q3",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L2",
+      "stem": "Why is the formula of magnesium oxide MgO rather than Mg2O2?",
+      "misconceptionClass": "ratio simplification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because the 2+ and 2- charges cancel one-to-one, so the simplest ratio needs one of each ion",
+          "correct": true,
+          "explanation": "The charges are equal and opposite, and formulas give the simplest whole-number ratio.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because magnesium oxide is a molecular compound",
+          "correct": false,
+          "explanation": "Magnesium oxide is ionic with a giant lattice; the ratio reflects the lattice's repeating unit.",
+          "misconception": "molecular model applied"
+        },
+        {
+          "key": "C",
+          "text": "Because the number 2 is never written in a formula",
+          "correct": false,
+          "explanation": "Counts of 2 appear whenever the charges demand them, as in CaCl2; the one-to-one ratio here needs no 2.",
+          "misconception": "rule about the digit 2 overgeneralised"
+        },
+        {
+          "key": "D",
+          "text": "Because oxygen cannot sit next to two magnesium ions",
+          "correct": false,
+          "explanation": "In the lattice each oxide ion does sit among several magnesium ions; the formula simply reports the simplest ratio.",
+          "misconception": "lattice geometry confused with the formula ratio"
+        }
+      ]
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L2::Q4",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L2",
+      "stem": "Which detail of a correct ionic dot-and-cross diagram does the exam expect?",
+      "misconceptionClass": "diagram completeness",
+      "options": [
+        {
+          "key": "A",
+          "text": "Square brackets around both ions with the charges written outside",
+          "correct": true,
+          "explanation": "The brackets and external charges show that the products are separate ions, not one shared structure.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Arrows showing the electrons orbiting between the ions",
+          "correct": false,
+          "explanation": "Once transferred, the electrons belong to one ion; orbiting arrows are not part of the convention.",
+          "misconception": "motion arrows added"
+        },
+        {
+          "key": "C",
+          "text": "All electron shells, inner and outer, fully drawn",
+          "correct": false,
+          "explanation": "Only the outer electrons need be shown, as the spec states.",
+          "misconception": "inner shells included unnecessarily"
+        },
+        {
+          "key": "D",
+          "text": "A shared box around both ions instead of separate brackets",
+          "correct": false,
+          "explanation": "The ions are distinct charged particles, each with its own brackets and charge.",
+          "misconception": "single-box convention invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L2::Q5",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L2",
+      "stem": "How does the magnesium oxide transfer differ from the sodium chloride transfer?",
+      "misconceptionClass": "cross-example comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two electrons transfer instead of one, giving charges of 2+ and 2- rather than 1+ and 1-",
+          "correct": true,
+          "explanation": "The group positions of the two metals set the transfer counts: Group 2 loses two, Group 1 loses one.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Electrons move from the non-metal to the metal",
+          "correct": false,
+          "explanation": "In both compounds the metal provides the electrons and the non-metal receives them.",
+          "misconception": "transfer direction reversed"
+        },
+        {
+          "key": "C",
+          "text": "The electrons are shared in pairs rather than transferred",
+          "correct": false,
+          "explanation": "Both compounds are ionic; sharing belongs to the covalent notes that follow.",
+          "misconception": "bonding type confused"
+        },
+        {
+          "key": "D",
+          "text": "Nothing differs, as both diagrams show one electron moving",
+          "correct": false,
+          "explanation": "The chloride diagram shows one electron transferring, while the oxide diagram shows two.",
+          "misconception": "diagrams conflated"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_qV5R2cKB59bSKD33",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "820cc88fe0cbbd6da9ff94ea780d39c13d6ff96f301f0d6113507356b11571ec",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_qV5R2cKB59bSKD33",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Acids, Alkalis & Titrations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-6-acids-alkalis-and-titrations/2-6-3-acid-alkali-titrations",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.33C",
+        "text": "describe how to carry out an acid-alkali titration"
+      }
+    ],
+    "primer": {
+      "text": "From Acids, Alkalis & Titrations you know that acids supply hydrogen ions and alkalis supply hydroxide ions. A titration puts that chemistry to work: measured volumes are run together until neutralisation is complete, and the readings reveal how much of each is needed. This note walks through the apparatus, the method and the handling of results.",
+      "prerequisiteSubtopic": "Acids, Alkalis & Titrations"
+    },
+    "modules": [
+      {
+        "id": "rn_qV5R2cKB59bSKD33::L1",
+        "title": "What is a titration?",
+        "sourceHeadings": [
+          "What is a titration?"
+        ],
+        "specRefs": [
+          "4CH1-2.33C"
+        ],
+        "opening": "A titration is a method of analysing the concentration of solutions, most importantly in acid-base work. Running one solution from a burette into another, with an indicator watching, tells you exactly how much alkali neutralises a quantity of acid. Titrations also let you calculate moles, concentration or volume, and can be used to prepare salts.",
+        "keyPoints": [
+          "Titrations analyse the concentration of solutions.",
+          "Acid-base titrations find exactly how much alkali neutralises a quantity of acid.",
+          "You may be asked for the moles, the concentration or the volume needed.",
+          "Salt preparation is another use, with the neutralisation done under controlled volumes.",
+          "The apparatus centres on a burette, a pipette and a conical flask."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A titration measures how much of one solution exactly reacts with another. The burette delivers measured volumes, the pipette fixes a starting amount, and the indicator shows when neutralisation is done.",
+            "analogy": "It is like filling a glass from a tap until a float inside just lifts: the tap reading tells you exactly what was needed.",
+            "examPointer": "Know what each piece of apparatus contributes: pipette for the fixed volume, burette for the variable one, flask for the reaction."
+          },
+          "medium": {
+            "restatement": "Acid-base titrations answer quantitative questions: how much alkali neutralises a measured quantity of acid, and by extension the moles, concentration or volume behind that result. The method pairs a fixed pipetted volume with a variable burette volume, an indicator marks the endpoint, and repeated runs with concordant results make the answer trustworthy.",
+            "analogy": "Think of a set of scales: one pan holds a fixed, known mass, and you add measured amounts to the other pan until the beam exactly balances.",
+            "examPointer": "Why-questions reward purpose: state that titrations quantify neutralisation, then link concordant repeats to confidence in the answer."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_qV5R2cKB59bSKD33::L1::Q1",
+          "rn_qV5R2cKB59bSKD33::L1::Q2",
+          "rn_qV5R2cKB59bSKD33::L1::Q3",
+          "rn_qV5R2cKB59bSKD33::L1::Q4",
+          "rn_qV5R2cKB59bSKD33::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_qV5R2cKB59bSKD33::L2",
+        "title": "How to carry out a titration",
+        "sourceHeadings": [
+          "How to carry out a titration",
+          "Results"
+        ],
+        "specRefs": [
+          "4CH1-2.33C"
+        ],
+        "opening": "Good technique is a chain of small disciplines: flush the burette's jet space clear of bubbles, record readings to the nearest 0.05 cm3 at eye level, and set the flask on a white tile so the colour change shows. A rough titration finds the endpoint, then careful repeats add acid drop by drop until two results agree within 0.1 cm3.",
+        "keyPoints": [
+          "Run some acid through first to remove air bubbles from the jet space.",
+          "Read the burette at eye level, to the nearest 0.05 cm3.",
+          "The white tile makes the colour changes more obvious.",
+          "Near the endpoint, add the acid one drop at a time.",
+          "Repeat until two results within 0.1 cm3 of each other are achieved."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "First a rough run finds the endpoint quickly; then careful repeats drop by drop give precise volumes. Two results agreeing within 0.1 cm3 are called concordant, and their mean is the answer.",
+            "analogy": "It is like parking in a tight space: the first attempt is quick and rough, then small corrections bring you perfectly into line.",
+            "examPointer": "Technique marks come from the details: jet-space bubbles, eye-level meniscus readings, white tile, dropwise approach and the funnel removed."
+          },
+          "medium": {
+            "restatement": "The disciplined sequence matters: flush the jet space, record both readings to 0.05 cm3, swirl during the rough run, then approach the endpoint dropwise on repeats until two concordant titres within 0.1 cm3 are achieved. The mean of the concordant pair, with the rough discarded, is the reported result, and the funnel must be out before you start.",
+            "analogy": "Treat the rough run as a rehearsal and the repeats as the performance: the rehearsal finds the cues, and the performance executes them precisely.",
+            "examPointer": "Explain questions contrast the rough with the repeats: rough for speed, dropwise repeats for accuracy, concordance as the quality gate."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_qV5R2cKB59bSKD33::L2::Q1",
+          "rn_qV5R2cKB59bSKD33::L2::Q2",
+          "rn_qV5R2cKB59bSKD33::L2::Q3",
+          "rn_qV5R2cKB59bSKD33::L2::Q4",
+          "rn_qV5R2cKB59bSKD33::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "titration",
+          "definition": "A method in which one solution is run into another until neutralisation is just complete.",
+          "firstLesson": 1
+        },
+        {
+          "term": "concentration",
+          "definition": "The amount of dissolved substance in a given volume of solution.",
+          "firstLesson": 1
+        },
+        {
+          "term": "burette",
+          "definition": "The long graduated tube with a tap that delivers the variable, recorded volume.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pipette",
+          "definition": "The device that transfers one fixed volume, here 25 cm3, into the flask.",
+          "firstLesson": 1
+        },
+        {
+          "term": "titre",
+          "definition": "The volume delivered by the burette between the starting and final readings.",
+          "firstLesson": 2
+        },
+        {
+          "term": "concordant",
+          "definition": "Describes two results lying within 0.1 cm3 of each other, so both are trusted.",
+          "firstLesson": 2
+        },
+        {
+          "term": "neutralisation",
+          "definition": "The reaction in which an acid and an alkali react completely, leaving the indicator's endpoint passed.",
+          "firstLesson": 1
+        },
+        {
+          "term": "endpoint",
+          "definition": "The moment the indicator changes colour sharply, showing neutralisation is complete.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A titration gives a rough titre of 15.50 cm³ and two further titres of 14.90 cm³ and 15.00 cm³. Calculate the mean titre using the concordant results.",
+        "steps": [
+          "The rough titre is discarded, leaving the two concordant results: 14.90 cm³ and 15.00 cm³.",
+          "The two results agree within 0.1 cm³, so they are concordant and both are used.",
+          "Mean titre: (14.90 + 15.00) / 2 = 14.95"
+        ],
+        "finalAnswer": "The mean titre is 14.95 cm³."
+      }
+    }
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_DrqzYWZMScqGrbWT",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "32066412e889ad3e1359d52a2db5cbfafd2323aef7cd74f0f6d6f1e0286f5529",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_DrqzYWZMScqGrbWT",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Crude Oil",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-2-crude-oil/4-2-4-cracking",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.17",
+        "text": "describe how long-chain alkanes are converted to alkenes and shorter-chain alkanes by catalytic cracking (using silica or alumina as the catalyst and a temperature in the range of 600–700 ºC)"
+      },
+      {
+        "code": "4CH1-4.18",
+        "text": "explain why cracking is necessary, in terms of the balance between supply and demand for different fractions"
+      }
+    ],
+    "primer": {
+      "text": "From Crude Oil you already know how the column sorts molecules by chain length, and Combustion showed what happens when they burn. This note explains the industrial fix for the wrong-sized fractions: cracking long chains apart over a hot catalyst to make the short ones the market wants.",
+      "prerequisiteSubtopic": "Crude Oil"
+    },
+    "modules": [
+      {
+        "id": "rn_DrqzYWZMScqGrbWT::L1",
+        "title": "Breaking long chains on purpose",
+        "sourceHeadings": [
+          "What is cracking?",
+          "Conditions for catalytic cracking"
+        ],
+        "specRefs": [
+          "4CH1-4.17"
+        ],
+        "opening": "Cracking is the deliberate breaking of long hydrocarbon chains into shorter, more useful ones. This lesson covers what the process is, the hot conditions it needs, and the mixture of products it always delivers.",
+        "keyPoints": [
+          "Cracking breaks low-demand long-chain hydrocarbons into more useful short-chain molecules.",
+          "Kerosene and diesel are the usual feedstocks, cracked to give petrol, alkenes and hydrogen.",
+          "Catalytic cracking heats hydrocarbons to around 600 to 700 degrees Celsius to vaporise them.",
+          "The vapours pass over a hot powdered catalyst such as alumina or silica, whose surface breaks the covalent bonds.",
+          "The bond-breaking causes thermal decomposition reactions, producing a mixture of shorter alkanes and alkenes."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Cracking cuts long, unpopular hydrocarbon chains into short, wanted ones. The oil is vaporised at 600 to 700 degrees, passed over a hot catalyst, and the chains snap into shorter alkanes and alkenes. The catalyst surface is where the long chains actually snap.",
+            "analogy": "It is like cutting a long rope into shorter pieces at a hot workbench: same rope, but now the lengths people actually want to buy.",
+            "examPointer": "Quote both conditions, the temperature range and the hot powdered catalyst, whenever a question asks how cracking is done."
+          },
+          "medium": {
+            "restatement": "In catalytic cracking, long-chain hydrocarbons are heated to around 600 to 700 degrees Celsius until they vaporise, then the vapours pass over a hot powdered catalyst such as alumina or silica. Contact with the catalyst surface breaks covalent bonds, so thermal decomposition reactions split each long chain randomly into a mixture of shorter alkanes and alkenes.",
+            "analogy": "Think of a hot metal comb dragged through tangled string: wherever the strands touch the hot teeth they snap, and one long string leaves as a bundle of assorted shorter lengths.",
+            "examPointer": "Name the catalyst material from the spec wording, silica or alumina, and describe the random split into both alkane and alkene products."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_DrqzYWZMScqGrbWT::L1::Q1",
+          "rn_DrqzYWZMScqGrbWT::L1::Q2",
+          "rn_DrqzYWZMScqGrbWT::L1::Q3",
+          "rn_DrqzYWZMScqGrbWT::L1::Q4",
+          "rn_DrqzYWZMScqGrbWT::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_DrqzYWZMScqGrbWT::L2",
+        "title": "Supply, demand and the reason for cracking",
+        "sourceHeadings": [
+          "Fraction supply & demand",
+          "Supply & demand of crude oil fractions"
+        ],
+        "specRefs": [
+          "4CH1-4.18"
+        ],
+        "opening": "The column delivers fractions in proportions geology chose, not proportions customers ordered. This lesson explains how the gap between supply and demand makes cracking necessary, with fuel oil as the classic example.",
+        "keyPoints": [
+          "Supply is how much of a fraction refining the crude oil can produce.",
+          "Demand is how much of that fraction customers want to buy.",
+          "Demand for some fractions outstrips supply, so cracking converts excess fractions into more useful ones.",
+          "Fuel oil and bitumen sit in surplus, so they are cracked into the wanted petrol, kerosene and diesel.",
+          "Short-chain molecules such as petrol, kerosene and diesel are demanded more than their supply allows."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Refining makes too much of the long-chain fractions and not enough of the short ones people want. Cracking turns the surplus long chains into the missing short products.",
+            "analogy": "It is a bakery with too many plain loaves and not enough sliced bread: the oven work called cracking converts the unpopular loaves into the style customers queue for.",
+            "examPointer": "Answer why-is-cracking-necessary questions with both words: supply of long chains exceeds demand, demand for short chains exceeds supply."
+          },
+          "medium": {
+            "restatement": "Each fraction has its own supply, fixed by what refining yields, and its own demand, set by what customers buy. Where demand for short-chain fractions outruns their supply, the surplus long-chain fractions such as fuel oil and bitumen are cracked into petrol, kerosene and diesel, rebalancing the ledger the column cannot fix by itself.",
+            "analogy": "The refinery runs a currency exchange between chain lengths: geology pays out heavy fractions nobody wants, and cracking is the exchange desk that converts them into the short-chain currency the market spends.",
+            "examPointer": "Name fuel oil and bitumen as the surplus examples, and quote the trio of wanted products, petrol, kerosene and diesel."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_DrqzYWZMScqGrbWT::L2::Q1",
+          "rn_DrqzYWZMScqGrbWT::L2::Q2",
+          "rn_DrqzYWZMScqGrbWT::L2::Q3",
+          "rn_DrqzYWZMScqGrbWT::L2::Q4",
+          "rn_DrqzYWZMScqGrbWT::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "cracking",
+          "definition": "An industrial process that breaks long-chain hydrocarbons into shorter, more useful alkane and alkene molecules.",
+          "firstLesson": 1
+        },
+        {
+          "term": "catalyst",
+          "definition": "A substance that speeds a reaction without being used up; cracking uses hot powdered alumina or silica.",
+          "firstLesson": 1
+        },
+        {
+          "term": "thermal decomposition",
+          "definition": "Breaking a substance into simpler molecules using heat, as happens to hydrocarbons on the hot catalyst surface.",
+          "firstLesson": 1
+        },
+        {
+          "term": "supply",
+          "definition": "How much of a particular fraction can be produced from refining the crude oil.",
+          "firstLesson": 2
+        },
+        {
+          "term": "demand",
+          "definition": "How much of a fraction customers want to buy; short-chain fractions are demanded beyond their supply.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_YBWYstSRgM2QPzQq",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "52a0af6293df107468d5c8f26a13f1974da18f8888c34ca73e64160970a87ac8",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_YBWYstSRgM2QPzQq",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Elements, Compounds & Mixtures",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-2-elements-compounds-and-mixtures/1-2-3-separation-techniques",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.10",
+        "text": "describe these experimental techniques for the separation of mixtures: simple distillation, fractional distillation, filtration, crystallisation, paper chromatography"
+      }
+    ],
+    "primer": {
+      "text": "You already know from Element, Compound or Mixture that mixtures come apart by physical means. This note tours the five techniques the syllabus names — simple distillation, fractional distillation, filtration, crystallisation and paper chromatography — and matches each one to the kind of mixture it separates best.",
+      "prerequisiteSubtopic": "Element, Compound or Mixture"
+    },
+    "modules": [
+      {
+        "id": "rn_YBWYstSRgM2QPzQq::L1",
+        "title": "Distillation: Simple and Fractional",
+        "sourceHeadings": [
+          "Simple distillation",
+          "Fractional distillation"
+        ],
+        "specRefs": [
+          "4CH1-1.10"
+        ],
+        "opening": "Distillation separates the part of a solution that boils off: heat the flask, the vapour rises into the condenser, and the liquid drips out pure while the dissolved solid stays behind. Simple distillation handles one liquid from a solution, or a pure liquid from a blend; fractional distillation handles two or more miscible liquids by boiling out the more volatile one first.",
+        "keyPoints": [
+          "Simple distillation separates the liquid from a solution, leaving the dissolved solid behind in the flask.",
+          "In the condenser, vapour cools and condenses into the pure liquid, which collects in a beaker.",
+          "Condenser water enters at the bottom, near the collecting beaker, and leaves at the top.",
+          "Fractional distillation separates a pair of miscible liquids, or several, by their boiling points.",
+          "Heat the mixture to the lowest boiling point present; that substance boils first and distils out.",
+          "With ethanol and water, collect the ethanol at 78 °C and stop heating when the thermometer reaches 100 °C."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Simple distillation: heat a solution, catch the vapour in a condenser, and the pure liquid drips into the beaker while the solid stays. Fractional distillation: same idea, but for two miscible liquids — boil off the one with the lower boiling point first.",
+            "analogy": "Simple distillation is like catching steam from a kettle on a cold lid: the water escapes as vapour and returns as clean drops, leaving anything dissolved in the kettle.",
+            "examPointer": "Diagram marks live in the details: water in at the condenser bottom near the beaker, out at the top near the column."
+          },
+          "medium": {
+            "restatement": "Simple distillation recovers the liquid from a solution — the solvent evaporates, travels through the condenser, condenses and is collected, and only the solid solute remains in the flask. Fractional distillation applies the same condenser trick to two or more miscible liquids: hold the temperature at the lowest boiling point present, collect that substance completely, and stop heating when the thermometer climbs towards the next one.",
+            "analogy": "Think of a relay where the lightest runner goes first: heat to the fastest-boiling substance's temperature, let it finish its leg, then pull the baton before the next one starts.",
+            "examPointer": "Ethanol boils at 78 °C and water at 100 °C; collect ethanol first and stop at 100 °C."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_YBWYstSRgM2QPzQq::L1::Q1",
+          "rn_YBWYstSRgM2QPzQq::L1::Q2",
+          "rn_YBWYstSRgM2QPzQq::L1::Q3",
+          "rn_YBWYstSRgM2QPzQq::L1::Q4",
+          "rn_YBWYstSRgM2QPzQq::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_YBWYstSRgM2QPzQq::L2",
+        "title": "Filtration, Crystallisation and Chromatography",
+        "sourceHeadings": [
+          "Filtration",
+          "Paper chromatography"
+        ],
+        "specRefs": [
+          "4CH1-1.10"
+        ],
+        "opening": "Filtration, crystallisation and paper chromatography complete the physical toolkit. Filtration catches an undissolved solid on filter paper; crystallisation grows pure crystals out of a cooling, saturating solution; and chromatography lets dissolved substances race up paper at different speeds so the components show up as separate spots.",
+        "keyPoints": [
+          "Filtration separates an undissolved solid from its liquid using filter paper in a funnel.",
+          "The liquid that passes through is the filtrate; the solid left on the paper is the residue.",
+          "Crystallisation recovers a dissolved solid whose solubility falls as the hot solution cools.",
+          "Dip a cold, clean glass rod in; crystals forming on it show the solution is saturated.",
+          "Paper chromatography separates dissolved substances by the different distances they travel with a solvent.",
+          "More soluble substances travel further up the paper; the pencil line stays above the solvent level."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Filtration sieves an undissolved solid out of its liquid: filtrate through, residue on the paper. Crystallisation evaporates some solvent, tests with a cold rod whether the solution is saturated, then cools it so crystals grow, and the crystals are washed and dried.",
+            "analogy": "Crystallisation is like making rock candy on a string: as the sugary water cools, the sugar can no longer stay dissolved and builds solid crystals.",
+            "examPointer": "Paper chromatography: pencil line above the solvent, higher solubility travels further."
+          },
+          "medium": {
+            "restatement": "Filtration works because only particles small enough to slip through the paper join the filtrate, while the large solid particles stay behind as residue. Crystallisation suits a solid far more soluble in hot solvent than in cold: evaporate the solvent until a cold rod test shows the solution is saturated, cool slowly so crystals grow as solubility falls, then filter, wash with cold distilled water and dry.",
+            "analogy": "A sieve sorts pasta from water on size alone; chromatography is a race where each runner's grip on the track — their solubility — sets how far they get.",
+            "examPointer": "Name the parts: filtrate passes, residue stays; crystals come from cooling a saturated solution."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_YBWYstSRgM2QPzQq::L2::Q1",
+          "rn_YBWYstSRgM2QPzQq::L2::Q2",
+          "rn_YBWYstSRgM2QPzQq::L2::Q3",
+          "rn_YBWYstSRgM2QPzQq::L2::Q4",
+          "rn_YBWYstSRgM2QPzQq::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "distillation",
+          "definition": "Separating a liquid from a solution by boiling it off and condensing the vapour.",
+          "firstLesson": 1
+        },
+        {
+          "term": "condenser",
+          "definition": "The glass tube that cools vapour back into liquid during distillation.",
+          "firstLesson": 1
+        },
+        {
+          "term": "miscible",
+          "definition": "Describes liquids that mix into each other completely, with no boundary between them.",
+          "firstLesson": 1
+        },
+        {
+          "term": "filtration",
+          "definition": "Separating an undissolved solid from a liquid by pouring the mixture through filter paper.",
+          "firstLesson": 2
+        },
+        {
+          "term": "filtrate",
+          "definition": "The liquid that passes through the filter paper.",
+          "firstLesson": 2
+        },
+        {
+          "term": "residue",
+          "definition": "The solid left behind on the filter paper.",
+          "firstLesson": 2
+        },
+        {
+          "term": "crystallisation",
+          "definition": "Recovering a dissolved solid by evaporating solvent and cooling the solution so crystals grow.",
+          "firstLesson": 2
+        },
+        {
+          "term": "saturated solution",
+          "definition": "A solution holding all the dissolved solid it can at that temperature.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Sodium chloride is a soluble solid. Which technique separates a soluble solid from a solution: filtration, simple distillation, crystallisation, or chromatography?",
+        "steps": [
+          "The question asks for the solid from the solution, not the liquid.",
+          "A soluble solid is recovered by gently heating the solution until the solvent evaporates and the solid crystallises out.",
+          "Simple distillation would instead collect the liquid, and filtration only works on an undissolved solid."
+        ],
+        "finalAnswer": "Crystallisation."
+      }
+    }
+  }
+}

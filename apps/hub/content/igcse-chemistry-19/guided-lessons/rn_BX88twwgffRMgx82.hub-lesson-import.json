@@ -1,0 +1,160 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_BX88twwgffRMgx82",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "5bf7f8eb26937aace4ac41deb52f24864dd5f9f3dccfae69f047d61bf0d699f4",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_BX88twwgffRMgx82",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Reactivity Series",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-4-reactivity-series/2-4-6-practical-investigate-metals-reacting-with-acids",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.15",
+        "text": "understand how metals can be arranged in a reactivity series based on their reactions with: water; dilute hydrochloric or sulfuric acid"
+      },
+      {
+        "code": "4CH1-2.21",
+        "text": "practical: investigate reactions between dilute hydrochloric and sulfuric acids and metals (e.g. magnesium, zinc and iron)"
+      }
+    ],
+    "primer": {
+      "text": "From Reactivity Series you know that some metals attack dilute acids to give hydrogen while others barely respond. This note turns that idea into a laboratory method: three metals are dropped into two acids, the gas is tested with a lighted splint, and the speed of each reaction ranks the metals in order.",
+      "prerequisiteSubtopic": "Reactivity Series"
+    },
+    "modules": [
+      {
+        "id": "rn_BX88twwgffRMgx82::L1",
+        "title": "Practical: Investigate Metals reacting with acids",
+        "sourceHeadings": [
+          "Practical: Investigate Metals reacting with acids",
+          "Method"
+        ],
+        "specRefs": [
+          "4CH1-2.21"
+        ],
+        "opening": "This practical investigates the reactions between dilute hydrochloric and sulfuric acids and the metals magnesium, iron and zinc. Equal volumes of acid go into three test tubes, a small piece of each metal is added, and any gas given off is tested with a lighted splint. Safety glasses are worn throughout because the acids are being handled directly.",
+        "keyPoints": [
+          "Five cm3 of dilute acid is measured into each of three test tubes.",
+          "A length of magnesium ribbon, iron filings and zinc turnings go into separate tubes.",
+          "Any gas given off is tested with a lighted splint.",
+          "The whole experiment is repeated using dilute sulfuric acid.",
+          "Safety glasses are put on before any acid is handled."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Equal volumes of two dilute acids are placed in test tubes and a different metal goes into each. Fizzing means a gas is forming, and a lighted splint confirms which gas it is.",
+            "analogy": "It is like timing three runners over the same track: the track is the same, so any difference in speed belongs to the runners.",
+            "examPointer": "Method questions reward order: name the volumes, the metals, the gas test and the repeat with the second acid."
+          },
+          "medium": {
+            "restatement": "The controlled volume of acid and the similar amount of metal keep the comparison fair, so any difference in bubbling reflects the metal alone. A lighted splint that gives a pop identifies hydrogen, and the vigour of each reaction orders the three metals.",
+            "analogy": "Think of a fair taste test: same cups and same drink volume, so the only thing that can change the verdict is what you add to each cup.",
+            "examPointer": "Fair-test language earns marks: state what is kept the same, what is changed and what is recorded before quoting the pop test."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_BX88twwgffRMgx82::L1::Q1",
+          "rn_BX88twwgffRMgx82::L1::Q2",
+          "rn_BX88twwgffRMgx82::L1::Q3",
+          "rn_BX88twwgffRMgx82::L1::Q4",
+          "rn_BX88twwgffRMgx82::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_BX88twwgffRMgx82::L2",
+        "title": "Results and conclusion",
+        "sourceHeadings": [
+          "Results",
+          "Conclusion"
+        ],
+        "specRefs": [
+          "4CH1-2.15",
+          "4CH1-2.21"
+        ],
+        "opening": "The results show magnesium dissolving quickly with rapid bubbling and heat, zinc reacting steadily, and iron giving only slow bubbles, with the same story in both acids. Ranking the vigour of the reactions places the metals as Mg > Zn > Fe. In every positive reaction the products are hydrogen gas and a solution of the metal salt.",
+        "keyPoints": [
+          "Magnesium reacts fastest: it dissolves quickly, gets hot and gives a gas that pops with a lighted splint.",
+          "Iron is the slowest of the three, showing only very slow bubbling.",
+          "Ranking the vigour of their reactions places the metals as Mg > Zn > Fe.",
+          "Each metal behaves the same towards both acids, so the pattern does not depend on the acid.",
+          "The reactions produce hydrogen gas together with a metal salt in solution."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Faster fizzing means a more reactive metal, so the results order the metals as magnesium, then zinc, then iron. Every positive test gives hydrogen plus a salt dissolved in the solution.",
+            "analogy": "Like ranking sprinters from race times: nobody argues with the stopwatch, and here the bubbles act as the stopwatch.",
+            "examPointer": "Learn the pattern acid + metal gives salt + hydrogen, and be ready to rank metals straight from a results table."
+          },
+          "medium": {
+            "restatement": "The vigour of each reaction is the evidence: magnesium reacts with rapid bubbling and heat, zinc responds steadily, and iron is barely visible in its slowness. Both acids give the same ordering, and each reaction yields hydrogen gas with the metal salt left in solution.",
+            "analogy": "Treat each metal as a runner on the same acid track; the differing speeds, not the track, set the finishing order.",
+            "examPointer": "The equations in the table are exam staples: magnesium plus sulfuric acid gives magnesium sulfate and hydrogen, so link each observation to its equation."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_BX88twwgffRMgx82::L2::Q1",
+          "rn_BX88twwgffRMgx82::L2::Q2",
+          "rn_BX88twwgffRMgx82::L2::Q3",
+          "rn_BX88twwgffRMgx82::L2::Q4",
+          "rn_BX88twwgffRMgx82::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "reactivity series",
+          "definition": "The ranking of metals in order of how readily they react, worked out from reactions with water and dilute acids.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dilute acid",
+          "definition": "An acid mixed with a large amount of water, used here as hydrochloric or sulfuric acid.",
+          "firstLesson": 1
+        },
+        {
+          "term": "lighted splint",
+          "definition": "A burning wooden splint used to test for hydrogen, which makes it give a pop sound.",
+          "firstLesson": 1
+        },
+        {
+          "term": "hydrogen",
+          "definition": "The gas released when a reactive metal reacts with a dilute acid.",
+          "firstLesson": 2
+        },
+        {
+          "term": "salt",
+          "definition": "The compound formed when the metal replaces the hydrogen of the acid, left dissolved in the solution.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

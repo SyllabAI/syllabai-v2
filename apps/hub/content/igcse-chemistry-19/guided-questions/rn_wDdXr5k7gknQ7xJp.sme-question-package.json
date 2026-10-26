@@ -1,0 +1,555 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_wDdXr5k7gknQ7xJp",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "39a46352f2836e88e752ac6eb4ab4c967a6b431b9d48eb3507d5a1967e1adcfa",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_wDdXr5k7gknQ7xJp",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L1::Q1",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L1",
+      "stem": "Which substance is a hydrocarbon?",
+      "misconceptionClass": "hydrocarbon definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "A compound containing carbon and hydrogen only",
+          "correct": true,
+          "explanation": "Both elements present and no third element is exactly what the hydrocarbon rule requires.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Carbon dioxide, because it contains carbon",
+          "correct": false,
+          "explanation": "Carbon dioxide contains oxygen as well, so it breaks the only-two-elements rule and is excluded by convention too.",
+          "misconception": "any carbon compound counts"
+        },
+        {
+          "key": "C",
+          "text": "A compound of carbon, hydrogen and oxygen",
+          "correct": false,
+          "explanation": "The extra oxygen disqualifies it; a hydrocarbon may not carry any third element.",
+          "misconception": "third element tolerated"
+        },
+        {
+          "key": "D",
+          "text": "Calcium carbonate, because carbon is in the name",
+          "correct": false,
+          "explanation": "Metal carbonates are conventionally excluded from organic chemistry, and oxygen is present as well.",
+          "misconception": "name contains carbon"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L1::Q2",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L1",
+      "stem": "Why are carbon dioxide and carbon monoxide left out of organic chemistry?",
+      "misconceptionClass": "convention recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are excluded by convention, like metal carbonates",
+          "correct": true,
+          "explanation": "The syllabus convention simply lists these small oxides as outside organic chemistry despite their carbon.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They contain no carbon atoms at all",
+          "correct": false,
+          "explanation": "Both are oxides of carbon; the exclusion is by convention, not by their formula.",
+          "misconception": "composition denied"
+        },
+        {
+          "key": "C",
+          "text": "They are too reactive to study in a laboratory",
+          "correct": false,
+          "explanation": "Reactivity is irrelevant; the split is a naming convention of the subject.",
+          "misconception": "reactivity excuse"
+        },
+        {
+          "key": "D",
+          "text": "They only exist as gases at room temperature",
+          "correct": false,
+          "explanation": "Physical state does not decide the boundary; the convention does.",
+          "misconception": "state-based split"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L1::Q3",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L1",
+      "stem": "A molecule contains 4 carbon atoms, 10 hydrogen atoms and 1 oxygen atom. How is it classified?",
+      "misconceptionClass": "classification by elements present",
+      "options": [
+        {
+          "key": "A",
+          "text": "An organic compound, but not a hydrocarbon",
+          "correct": true,
+          "explanation": "It is carbon-based so organic, but the oxygen atom breaks the hydrocarbon rule.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A hydrocarbon, because it is mostly hydrogen and carbon",
+          "correct": false,
+          "explanation": "Mostly is not enough; the single oxygen atom still breaks the only-two-elements rule.",
+          "misconception": "majority elements rule"
+        },
+        {
+          "key": "C",
+          "text": "Not organic, because oxygen is present",
+          "correct": false,
+          "explanation": "Oxygen-containing carbon compounds can be organic; only the hydrocarbon label is lost.",
+          "misconception": "organic means no oxygen"
+        },
+        {
+          "key": "D",
+          "text": "A metal carbonate, because oxygen is bonded to carbon",
+          "correct": false,
+          "explanation": "There is no metal present, so the carbonate category does not apply.",
+          "misconception": "category confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L1::Q4",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L1",
+      "stem": "Which statement about organic chemistry is correct?",
+      "misconceptionClass": "subject scope",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is the study of the structure, properties and reactions of carbon compounds",
+          "correct": true,
+          "explanation": "That trio of interests is exactly how the subject is defined in the note.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It studies every compound that contains hydrogen",
+          "correct": false,
+          "explanation": "Hydrogen alone never qualifies a compound; carbon is the organising element.",
+          "misconception": "hydrogen-centred scope"
+        },
+        {
+          "key": "C",
+          "text": "It only studies compounds extracted from living things",
+          "correct": false,
+          "explanation": "The historical origin of the name does not restrict the modern subject.",
+          "misconception": "vital-force leftover"
+        },
+        {
+          "key": "D",
+          "text": "It excludes compounds that burn in air",
+          "correct": false,
+          "explanation": "Burning behaviour is irrelevant; combustion is itself an organic reaction type studied in the topic.",
+          "misconception": "combustion exclusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L1::Q5",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L1",
+      "stem": "Methane burns in oxygen to give carbon dioxide and water. Is methane a hydrocarbon?",
+      "misconceptionClass": "definition applied to a reaction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, because methane itself contains hydrogen and carbon only",
+          "correct": true,
+          "explanation": "The molecule CH4 carries just those two elements, whatever reactions it later undergoes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "No, because burning it produces oxygen-containing products",
+          "correct": false,
+          "explanation": "The classification depends on the molecule itself, not on the products of one reaction.",
+          "misconception": "products redefine the molecule"
+        },
+        {
+          "key": "C",
+          "text": "No, because oxygen took part in the reaction",
+          "correct": false,
+          "explanation": "Reacting with oxygen does not change what methane is made of before the reaction.",
+          "misconception": "reactant identity lost"
+        },
+        {
+          "key": "D",
+          "text": "Yes, because carbon dioxide is also organic",
+          "correct": false,
+          "explanation": "Carbon dioxide is not organic; the yes answer rests on methane alone.",
+          "misconception": "wrong justification accepted"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L2::Q1",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L2",
+      "stem": "Hydrogen peroxide has the molecular formula H2O2. What is its empirical formula?",
+      "misconceptionClass": "empirical vs molecular",
+      "options": [
+        {
+          "key": "A",
+          "text": "HO",
+          "correct": true,
+          "explanation": "Dividing both subscripts by two gives the simplest ratio, one hydrogen to one oxygen.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "H2O2, because the molecular formula is already simplest",
+          "correct": false,
+          "explanation": "The subscripts share a factor of two, so the ratio is not yet in its simplest form.",
+          "misconception": "molecular accepted as empirical"
+        },
+        {
+          "key": "C",
+          "text": "H2O",
+          "correct": false,
+          "explanation": "That is water, a different substance; ratios are reduced, not rewritten as a known compound.",
+          "misconception": "recognisable formula substituted"
+        },
+        {
+          "key": "D",
+          "text": "HO2",
+          "correct": false,
+          "explanation": "The ratio must keep one oxygen per one hydrogen after cancelling, not redistribute the atoms.",
+          "misconception": "subscripts shuffled"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L2::Q2",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L2",
+      "stem": "Which representation shows every bond and atom in their spatial arrangement?",
+      "misconceptionClass": "representation identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "The displayed formula",
+          "correct": true,
+          "explanation": "Displayed formulae draw all atoms and all bonds, which is why they are also called graphical formulae.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The empirical formula",
+          "correct": false,
+          "explanation": "An empirical formula is just a ratio of element counts, with no bonds drawn at all.",
+          "misconception": "ratio confused with drawing"
+        },
+        {
+          "key": "C",
+          "text": "The structural formula",
+          "correct": false,
+          "explanation": "Structural formulae deliberately omit most bonds and only highlight key ones.",
+          "misconception": "structural treated as complete"
+        },
+        {
+          "key": "D",
+          "text": "The general formula",
+          "correct": false,
+          "explanation": "A general formula describes a whole family with the letter n, not one drawn molecule.",
+          "misconception": "family template misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L2::Q3",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L2",
+      "stem": "A molecule has the molecular formula C4H10. Which statement follows?",
+      "misconceptionClass": "formula interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Its displayed formula would show 4 carbon and 10 hydrogen atoms with all bonds drawn",
+          "correct": true,
+          "explanation": "Displayed formulae reproduce the molecular count and draw every bond joining the atoms.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Its empirical formula must also be C4H10",
+          "correct": false,
+          "explanation": "The ratio 4:10 simplifies to 2:5, so the empirical formula is C2H5.",
+          "misconception": "empirical equals molecular"
+        },
+        {
+          "key": "C",
+          "text": "It must be a straight chain with no branches",
+          "correct": false,
+          "explanation": "The molecular formula fixes atom counts but says nothing about branching arrangements.",
+          "misconception": "formula fixes shape"
+        },
+        {
+          "key": "D",
+          "text": "It cannot be drawn as a displayed formula because it is too large",
+          "correct": false,
+          "explanation": "Size is no barrier; displayed formulae exist precisely to draw the full bonding picture.",
+          "misconception": "drawing refused"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L2::Q4",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L2",
+      "stem": "What does the n do in the general formula CnH2n+2?",
+      "misconceptionClass": "general formula reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "It stands for a varying whole number, one value per family member",
+          "correct": true,
+          "explanation": "Substituting successive whole numbers generates each member of the alkane family in turn.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It is the charge on the molecule",
+          "correct": false,
+          "explanation": "The letter n counts carbon atoms; it has nothing to do with charge.",
+          "misconception": "charge misread"
+        },
+        {
+          "key": "C",
+          "text": "It is fixed at 6 for every organic compound",
+          "correct": false,
+          "explanation": "The whole point of n is that it varies as you move along the family.",
+          "misconception": "constant n"
+        },
+        {
+          "key": "D",
+          "text": "It counts only the hydrogen atoms",
+          "correct": false,
+          "explanation": "The subscript on carbon is n, so n counts carbon atoms and the hydrogen count follows.",
+          "misconception": "n misassigned"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L2::Q5",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L2",
+      "stem": "Why does a structural formula place CH3 groups in brackets?",
+      "misconceptionClass": "structural formula convention",
+      "options": [
+        {
+          "key": "A",
+          "text": "To gather identical repeated groups so the chain stays clear without drawing every bond",
+          "correct": true,
+          "explanation": "Brackets with a subscript compress repeats, which is exactly how structural formulae stay compact.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To show the group carries a negative charge",
+          "correct": false,
+          "explanation": "Brackets in structural formulae are a notation for repeats, not a charge symbol.",
+          "misconception": "charge misread"
+        },
+        {
+          "key": "C",
+          "text": "Because bracketed groups are unreactive",
+          "correct": false,
+          "explanation": "Reactivity is unrelated to the bracket notation used in structural formulae.",
+          "misconception": "reactivity imagined"
+        },
+        {
+          "key": "D",
+          "text": "Because brackets convert it into a displayed formula",
+          "correct": false,
+          "explanation": "A displayed formula needs every bond drawn; brackets are the shortcut that defines a structural formula.",
+          "misconception": "representation swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L3::Q1",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L3",
+      "stem": "What makes two compounds members of the same homologous series?",
+      "misconceptionClass": "series membership",
+      "options": [
+        {
+          "key": "A",
+          "text": "They share the same functional group and so react similarly",
+          "correct": true,
+          "explanation": "The shared functional group is what hands the whole family its similar chemical properties.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They have identical molecular formulae",
+          "correct": false,
+          "explanation": "Identical molecular formulae would make them isomers or the same compound, not series neighbours.",
+          "misconception": "series confused with isomers"
+        },
+        {
+          "key": "C",
+          "text": "They dissolve in the same solvents",
+          "correct": false,
+          "explanation": "Solvent behaviour is not the defining test; the functional group is.",
+          "misconception": "physical property test"
+        },
+        {
+          "key": "D",
+          "text": "They were discovered in the same decade",
+          "correct": false,
+          "explanation": "History of discovery plays no part in the definition.",
+          "misconception": "trivia criterion"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L3::Q2",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L3",
+      "stem": "How do neighbouring members of a homologous series differ?",
+      "misconceptionClass": "series progression",
+      "options": [
+        {
+          "key": "A",
+          "text": "Their molecular formulae differ by one CH2 unit",
+          "correct": true,
+          "explanation": "Each step along the series adds one carbon and two hydrogens.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Their molecular formulae differ by one CH4 unit",
+          "correct": false,
+          "explanation": "The step is CH2; adding CH4 would skip the count the series actually follows.",
+          "misconception": "step size wrong"
+        },
+        {
+          "key": "C",
+          "text": "They change functional group at every step",
+          "correct": false,
+          "explanation": "The functional group stays fixed; changing it would leave the series.",
+          "misconception": "group rotates"
+        },
+        {
+          "key": "D",
+          "text": "They differ only in physical state at room temperature",
+          "correct": false,
+          "explanation": "State changes do occur gradually, but the formula difference is the defining step.",
+          "misconception": "state-only difference"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L3::Q3",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L3",
+      "stem": "What is a functional group?",
+      "misconceptionClass": "functional group definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "A bonded arrangement of atoms that governs the reactions of its family",
+          "correct": true,
+          "explanation": "The specific arrangement of atoms is what steers the characteristic chemistry of the series.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Any atom at the end of a chain",
+          "correct": false,
+          "explanation": "Position at a chain end is irrelevant; the specific bonded arrangement defines the group.",
+          "misconception": "position mistaken for group"
+        },
+        {
+          "key": "C",
+          "text": "The largest atom in the molecule",
+          "correct": false,
+          "explanation": "Atomic size has nothing to do with the functional group concept.",
+          "misconception": "size mistaken for role"
+        },
+        {
+          "key": "D",
+          "text": "The bonds that a molecule has broken",
+          "correct": false,
+          "explanation": "Functional groups describe intact bonding arrangements, not broken ones.",
+          "misconception": "bond-breaking confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L3::Q4",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L3",
+      "stem": "Propene and cyclopropane both have the molecular formula C3H6. What are they?",
+      "misconceptionClass": "isomer recognition",
+      "options": [
+        {
+          "key": "A",
+          "text": "Isomers, because the same formula is arranged in different displayed structures",
+          "correct": true,
+          "explanation": "Same molecular formula with different bonding arrangements is exactly the isomer definition.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The same compound drawn twice",
+          "correct": false,
+          "explanation": "The ring versus chain arrangements are genuinely different compounds with different properties.",
+          "misconception": "same compound claim"
+        },
+        {
+          "key": "C",
+          "text": "Members of different homologous series with different formulae",
+          "correct": false,
+          "explanation": "Their formulae are identical; the series differ, but the shared formula is the point.",
+          "misconception": "formula difference invented"
+        },
+        {
+          "key": "D",
+          "text": "Unrelated because one is cyclic",
+          "correct": false,
+          "explanation": "A ring shape does not break the isomer relationship; it is precisely what makes the structures differ.",
+          "misconception": "ring excludes isomerism"
+        }
+      ]
+    },
+    {
+      "id": "rn_wDdXr5k7gknQ7xJp::L3::Q5",
+      "moduleId": "rn_wDdXr5k7gknQ7xJp::L3",
+      "stem": "What does gradation mean for a homologous series?",
+      "misconceptionClass": "gradation meaning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Physical properties change step by step along the series",
+          "correct": true,
+          "explanation": "Boiling point and viscosity drift smoothly as the chain grows one CH2 at a time.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Every member has identical physical properties",
+          "correct": false,
+          "explanation": "Chemical properties are similar across the series, but physical ones shift gradually.",
+          "misconception": "all properties frozen"
+        },
+        {
+          "key": "C",
+          "text": "Properties change randomly with no pattern",
+          "correct": false,
+          "explanation": "The pattern is exactly the point: gradual, predictable change along the family.",
+          "misconception": "no pattern claimed"
+        },
+        {
+          "key": "D",
+          "text": "Each member reacts faster than the last without exception",
+          "correct": false,
+          "explanation": "Gradation describes the trend in physical properties, not a universal rate speed-up.",
+          "misconception": "rate trend overstated"
+        }
+      ]
+    }
+  ]
+}

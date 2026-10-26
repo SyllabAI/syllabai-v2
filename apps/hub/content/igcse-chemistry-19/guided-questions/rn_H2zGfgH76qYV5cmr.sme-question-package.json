@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_H2zGfgH76qYV5cmr",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "e5724f0ed4e299e3cdc8943dc0b4e1a4b2aeeb990393236365fe86d39bad0b6a",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_H2zGfgH76qYV5cmr",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L1::Q1",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L1",
+      "stem": "What is the functional group of the alkenes?",
+      "misconceptionClass": "functional group recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The C=C double bond",
+          "correct": true,
+          "explanation": "The carbon-carbon double bond defines the alkene family and its chemistry.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The OH group",
+          "correct": false,
+          "explanation": "OH defines the alcohols, a family met later in the topic.",
+          "misconception": "group crossed"
+        },
+        {
+          "key": "C",
+          "text": "A carbon-halogen bond",
+          "correct": false,
+          "explanation": "That belongs to the halogenoalkanes from the previous note.",
+          "misconception": "family crossed"
+        },
+        {
+          "key": "D",
+          "text": "A carbon-oxygen double bond",
+          "correct": false,
+          "explanation": "No oxygen appears in the alkene functional group.",
+          "misconception": "element invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L1::Q2",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L1",
+      "stem": "An alkene has n = 4. What is its molecular formula?",
+      "misconceptionClass": "general formula use",
+      "options": [
+        {
+          "key": "A",
+          "text": "C4H8",
+          "correct": true,
+          "explanation": "Substituting into CnH2n gives eight hydrogens for four carbons, matching but-1-ene.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "C4H10",
+          "correct": false,
+          "explanation": "That is the alkane count; the double bond costs two hydrogens.",
+          "misconception": "alkane formula used"
+        },
+        {
+          "key": "C",
+          "text": "C4H6",
+          "correct": false,
+          "explanation": "Two double bonds would be needed for six; an alkene carries one.",
+          "misconception": "over-unsaturated"
+        },
+        {
+          "key": "D",
+          "text": "C3H8",
+          "correct": false,
+          "explanation": "The carbon count must equal n, which is four here.",
+          "misconception": "subscript misplaced"
+        }
+      ]
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L1::Q3",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L1",
+      "stem": "Why are alkenes classified as unsaturated hydrocarbons?",
+      "misconceptionClass": "unsaturation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because their C=C double bond can open to add more atoms",
+          "correct": true,
+          "explanation": "Spare bonding capacity at the double bond is exactly what unsaturated records.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because they contain fewer carbon atoms than alkanes",
+          "correct": false,
+          "explanation": "Chain length is not the test; bonding capacity is.",
+          "misconception": "count confused"
+        },
+        {
+          "key": "C",
+          "text": "Because they are diluted with water in storage",
+          "correct": false,
+          "explanation": "Nothing about solutions enters the definition.",
+          "misconception": "solution meaning imported"
+        },
+        {
+          "key": "D",
+          "text": "Because they cannot react with anything",
+          "correct": false,
+          "explanation": "The opposite holds: the openable bond makes them more reactive.",
+          "misconception": "reactivity inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L1::Q4",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L1",
+      "stem": "What happens to the bonding at each carbon when a double bond opens?",
+      "misconceptionClass": "bond conversion",
+      "options": [
+        {
+          "key": "A",
+          "text": "Each carbon ends with four single bonds instead of one double and two singles",
+          "correct": true,
+          "explanation": "Opening the double bond converts the spare capacity into two new single bonds.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Each carbon keeps the double bond and adds new bonds anyway",
+          "correct": false,
+          "explanation": "Opening means the double bond is gone; it cannot persist and add too.",
+          "misconception": "bond conserved wrongly"
+        },
+        {
+          "key": "C",
+          "text": "Each carbon loses one bond entirely",
+          "correct": false,
+          "explanation": "Bonds are replaced, not destroyed; four remain at each carbon.",
+          "misconception": "bond loss claimed"
+        },
+        {
+          "key": "D",
+          "text": "The carbons separate into free atoms",
+          "correct": false,
+          "explanation": "The chain stays intact; only the bond type changes.",
+          "misconception": "fragmentation imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L1::Q5",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L1",
+      "stem": "How does the reactivity of alkenes compare with alkanes, and why?",
+      "misconceptionClass": "reactivity comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "Alkenes are much more reactive because their double bond can open",
+          "correct": true,
+          "explanation": "The available bonding capacity at C=C gives alkenes routes alkanes lack.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Alkenes are less reactive because they are lighter",
+          "correct": false,
+          "explanation": "Mass is irrelevant; the openable bond drives the difference.",
+          "misconception": "mass blamed"
+        },
+        {
+          "key": "C",
+          "text": "They are equally reactive since both are hydrocarbons",
+          "correct": false,
+          "explanation": "The functional group difference is precisely why they differ.",
+          "misconception": "equality claimed"
+        },
+        {
+          "key": "D",
+          "text": "Alkanes are more reactive because they are saturated",
+          "correct": false,
+          "explanation": "Saturation closes off reactions; unsaturation opens them.",
+          "misconception": "direction inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L2::Q1",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
+      "stem": "Which molecular formula belongs to propene?",
+      "misconceptionClass": "formula recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "C3H6",
+          "correct": true,
+          "explanation": "With n = 3 the alkene recipe gives six hydrogens, and the table lists propene as C3H6.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "C3H8",
+          "correct": false,
+          "explanation": "That is propane, the three-carbon alkane with no double bond.",
+          "misconception": "alkane formula used"
+        },
+        {
+          "key": "C",
+          "text": "C2H4",
+          "correct": false,
+          "explanation": "Two carbons is ethene, one rung below propene.",
+          "misconception": "rung miscounted"
+        },
+        {
+          "key": "D",
+          "text": "C4H8",
+          "correct": false,
+          "explanation": "Four carbons belongs to but-1-ene, not propene.",
+          "misconception": "rung skipped"
+        }
+      ]
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L2::Q2",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
+      "stem": "Where is the C=C bond in pent-2-ene?",
+      "misconceptionClass": "position number reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "Between the second and third carbon atoms",
+          "correct": true,
+          "explanation": "The 2 in pent-2-ene marks the first carbon of the double bond, counting from the nearer end.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Between the first and second carbon atoms",
+          "correct": false,
+          "explanation": "That position would be pent-1-ene, one number lower.",
+          "misconception": "number misread"
+        },
+        {
+          "key": "C",
+          "text": "Between the fourth and fifth carbon atoms",
+          "correct": false,
+          "explanation": "Counting from the nearer end would name that bond pent-1-ene as well.",
+          "misconception": "counting direction wrong"
+        },
+        {
+          "key": "D",
+          "text": "Pentene has no double bond",
+          "correct": false,
+          "explanation": "Every alkene by definition carries the C=C bond.",
+          "misconception": "definition missed"
+        }
+      ]
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L2::Q3",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
+      "stem": "Why does ethene have the formula C2H4 rather than C2H6?",
+      "misconceptionClass": "formula difference reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The double bond uses two bonding capacities that hydrogens would otherwise fill",
+          "correct": true,
+          "explanation": "The C=C bond consumes one bond from each carbon, leaving room for two fewer hydrogens.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Ethene has lost two hydrogen atoms over time",
+          "correct": false,
+          "explanation": "Formulae are structural facts, not decay records.",
+          "misconception": "history imagined"
+        },
+        {
+          "key": "C",
+          "text": "Because ethene carries two oxygen atoms",
+          "correct": false,
+          "explanation": "No oxygen exists in any alkene formula.",
+          "misconception": "element invented"
+        },
+        {
+          "key": "D",
+          "text": "Because ethene is an alkane in disguise",
+          "correct": false,
+          "explanation": "The double bond places it firmly in the alkene family.",
+          "misconception": "family misnamed"
+        }
+      ]
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L2::Q4",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
+      "stem": "What does a displayed formula of but-1-ene show that its molecular formula C4H8 does not?",
+      "misconceptionClass": "representation contrast",
+      "options": [
+        {
+          "key": "A",
+          "text": "The exact position of the double bond and every single bond drawn",
+          "correct": true,
+          "explanation": "The drawing fixes the double bond location and shows all bonds, which the bare formula cannot.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The number of carbon atoms",
+          "correct": false,
+          "explanation": "The molecular formula already gives that count.",
+          "misconception": "information duplicated"
+        },
+        {
+          "key": "C",
+          "text": "The mass of the molecule",
+          "correct": false,
+          "explanation": "Mass is calculable from the formula and never drawn.",
+          "misconception": "data misassigned"
+        },
+        {
+          "key": "D",
+          "text": "The state of the compound at room temperature",
+          "correct": false,
+          "explanation": "Physical state is not part of any structural representation.",
+          "misconception": "property imported"
+        }
+      ]
+    },
+    {
+      "id": "rn_H2zGfgH76qYV5cmr::L2::Q5",
+      "moduleId": "rn_H2zGfgH76qYV5cmr::L2",
+      "stem": "Which notation is explicitly not required for alkenes in this specification?",
+      "misconceptionClass": "scope exclusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cis/trans or E/Z notation",
+          "correct": true,
+          "explanation": "The spec wording excludes cis/trans and E/Z labels from the requirement.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The stem-suffix naming system",
+          "correct": false,
+          "explanation": "The naming system is required and examined.",
+          "misconception": "requirement inverted"
+        },
+        {
+          "key": "C",
+          "text": "The general formula CnH2n",
+          "correct": false,
+          "explanation": "The general formula is a required know item for alkenes.",
+          "misconception": "requirement inverted"
+        },
+        {
+          "key": "D",
+          "text": "Drawing displayed formulae",
+          "correct": false,
+          "explanation": "Drawing up to four carbons is explicitly required.",
+          "misconception": "requirement inverted"
+        }
+      ]
+    }
+  ]
+}

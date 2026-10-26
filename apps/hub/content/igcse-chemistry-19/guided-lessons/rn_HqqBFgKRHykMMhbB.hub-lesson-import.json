@@ -1,0 +1,155 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_HqqBFgKRHykMMhbB",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "e0b57847940c0e3543370127f33c4310a75d0f84e0feefd50c65e1cac3a75789",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_HqqBFgKRHykMMhbB",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Introduction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-1-introduction/4-1-3-classifying-organic-reactions",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.6",
+        "text": "understand how to classify reactions of organic compounds as substitution, addition and combustion knowledge of reaction mechanisms is not required"
+      }
+    ],
+    "primer": {
+      "text": "From Naming Organic Compounds you already know how stems and suffixes label every molecule in this topic. This note sorts the reactions those molecules undergo into three named types, each with an equation you can already balance, and sets the sorting habit the rest of the topic uses.",
+      "prerequisiteSubtopic": "Introduction"
+    },
+    "modules": [
+      {
+        "id": "rn_HqqBFgKRHykMMhbB::L1",
+        "title": "Substitution and addition",
+        "sourceHeadings": [
+          "Substitution",
+          "Addition"
+        ],
+        "specRefs": [
+          "4CH1-4.6"
+        ],
+        "opening": "Organic reactions fall into three named types, and the first two differ by what joins and what leaves. This lesson contrasts a swap of one group for another with molecules combining into a single larger product.",
+        "keyPoints": [
+          "Substitution happens when one functional group or atom in a molecule is replaced by another.",
+          "Methane reacting with bromine in ultraviolet light substitutes one hydrogen for bromine, giving bromomethane and HBr.",
+          "Addition happens when two or more molecules combine into one larger molecule with no other products.",
+          "Bromine adds across the C=C double bond of ethene to give dibromoethane, C2H4Br2.",
+          "No mechanisms are needed at this level, only the classification of each reaction by type."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Substitution swaps something out: one atom or group leaves and another takes its place. Addition combines: two molecules become one bigger molecule and nothing else is made. Count the products after the change: one merged product means addition, two products mean a swap has happened.",
+            "analogy": "Substitution is swapping a seat on a bus; addition is two puzzle pieces clicking into one picture with no leftover pieces anywhere.",
+            "examPointer": "Look for the giveaway signs: two products beside an arrow suggests substitution, one product only suggests addition."
+          },
+          "medium": {
+            "restatement": "A substitution reaction replaces one functional group or atom with another, as when methane and bromine form bromomethane and hydrogen bromide under ultraviolet light. An addition reaction merges two or more molecules into a single larger molecule with no other products, as when bromine adds across the double bond of ethene to form dibromoethane.",
+            "analogy": "Substitution is a like-for-like player swap mid-match, while addition is two teams merging into one squad roster with nobody released: count the players after the change and the difference is obvious.",
+            "examPointer": "Name the type, then justify it from the equation: replacement with two products is substitution, one merged product is addition."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_HqqBFgKRHykMMhbB::L1::Q1",
+          "rn_HqqBFgKRHykMMhbB::L1::Q2",
+          "rn_HqqBFgKRHykMMhbB::L1::Q3",
+          "rn_HqqBFgKRHykMMhbB::L1::Q4",
+          "rn_HqqBFgKRHykMMhbB::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_HqqBFgKRHykMMhbB::L2",
+        "title": "Combustion: complete and incomplete",
+        "sourceHeadings": [
+          "Combustion",
+          "Complete combustion"
+        ],
+        "specRefs": [
+          "4CH1-4.6"
+        ],
+        "opening": "The third reaction type is burning, and its products depend entirely on how much oxygen is available. This lesson separates the complete and incomplete versions and shows the balancing on methane and propane.",
+        "keyPoints": [
+          "Combustion is the scientific term for burning an organic substance in oxygen.",
+          "Complete combustion happens with an unlimited supply of air or oxygen, giving carbon dioxide and water.",
+          "Methane burns completely as CH4 + 2O2 -> CO2 + 2H2O, and propane as C3H8 + 5O2 -> 3CO2 + 4H2O.",
+          "Incomplete combustion happens in a limited oxygen supply, giving carbon monoxide or carbon plus water.",
+          "Methane in short oxygen supply gives CO + H2O, or even carbon soot, instead of carbon dioxide."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Burning with plenty of oxygen gives carbon dioxide and water. Burning with little oxygen gives carbon monoxide or carbon soot as well as water. The oxygen supply in the appliance decides which of the two outcomes you get.",
+            "analogy": "A well-ventilated campfire leaves white ash, while a smothered one leaves black soot; oxygen supply decides what the fuel turns into.",
+            "examPointer": "State the oxygen supply and the products together; naming one without the other loses the marking point."
+          },
+          "medium": {
+            "restatement": "In unlimited air or oxygen an organic substance burns completely, forming carbon dioxide and water, as the methane and propane equations show. When oxygen is limited the same fuels burn incompletely, producing carbon monoxide or carbon alongside water, which is why the methane equation can yield CO instead of CO2.",
+            "analogy": "Oxygen is the currency that pays for full oxidation: with a rich wallet every carbon buys a full dioxide, but a poor wallet forces carbon to settle for monoxide or plain soot.",
+            "examPointer": "Balance the combustion equation from the fuel formula, then check the oxygen supply described before choosing CO2 or CO as the carbon product."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_HqqBFgKRHykMMhbB::L2::Q1",
+          "rn_HqqBFgKRHykMMhbB::L2::Q2",
+          "rn_HqqBFgKRHykMMhbB::L2::Q3",
+          "rn_HqqBFgKRHykMMhbB::L2::Q4",
+          "rn_HqqBFgKRHykMMhbB::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "substitution reaction",
+          "definition": "A reaction in which one atom or functional group in a molecule is replaced by another.",
+          "firstLesson": 1
+        },
+        {
+          "term": "addition reaction",
+          "definition": "A reaction in which two or more molecules combine into one larger molecule with no other products.",
+          "firstLesson": 1
+        },
+        {
+          "term": "combustion",
+          "definition": "The scientific term for burning, in which a substance reacts with oxygen giving out heat.",
+          "firstLesson": 2
+        },
+        {
+          "term": "complete combustion",
+          "definition": "Burning with unlimited oxygen, producing carbon dioxide and water only.",
+          "firstLesson": 2
+        },
+        {
+          "term": "incomplete combustion",
+          "definition": "Burning with limited oxygen, producing carbon monoxide or carbon soot as well as water.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

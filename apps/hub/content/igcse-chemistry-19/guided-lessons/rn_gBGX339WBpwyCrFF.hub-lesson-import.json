@@ -1,0 +1,155 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_gBGX339WBpwyCrFF",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "cf81b5b5c6b0fe28a64f970f0cae75bba001b98205ece23ae2be73abd1bec2dc",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_gBGX339WBpwyCrFF",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Reactivity Series",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-4-reactivity-series/2-4-2-metal-displacement-reactions",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.16",
+        "text": "understand how metals can be arranged in a reactivity series based on their displacement reactions between: metals and metal oxides; metals and aqueous solutions of metal salts"
+      }
+    ],
+    "primer": {
+      "text": "From Metals Reacting with Water & Acids you have seen how vigour with water and acids ranks the metals. This note adds the second ranking tool: displacement. A more reactive metal takes a less reactive metal's place in its oxide or in its salt solution, and deciding which displacements succeed orders any pair of metals without needing water at all.",
+      "prerequisiteSubtopic": "Reactivity Series"
+    },
+    "modules": [
+      {
+        "id": "rn_gBGX339WBpwyCrFF::L1",
+        "title": "Metal displacement reactions",
+        "sourceHeadings": [
+          "Metal displacement reactions",
+          "Metal oxide displacement table"
+        ],
+        "specRefs": [
+          "4CH1-2.16"
+        ],
+        "opening": "Reactivity falls going down the series, so the stronger metal pushes a weaker one out of its compounds. Two routes show this: heating a metal together with a metal oxide, and standing a metal in the watery solution of another metal's compound. Heating copper(II) oxide with zinc, for example, leaves the zinc holding the oxygen, and the zinc is the reducing agent in the reaction.",
+        "keyPoints": [
+          "A more reactive metal displaces a less reactive metal from its compounds.",
+          "One route heats a metal together with a metal oxide.",
+          "Zinc reduces copper(II) oxide on heating: Zn + CuO gives ZnO + Cu.",
+          "The reducing agent in that reaction is the zinc, which takes the oxygen for itself.",
+          "Sodium oxide and magnesium show no reaction, because sodium already outranks magnesium."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Put a hungrier metal next to a compound of a calmer one and the hungry metal takes its place. Heat zinc with copper(II) oxide and the zinc grabs the oxygen, leaving copper metal behind, because zinc sits above copper on the ladder.",
+            "analogy": "Like a stronger player taking a seat at a board game: the swap only works when the newcomer outranks the one sitting down, and the loser leaves empty-handed.",
+            "examPointer": "Name which metal ends up as the oxide and which as the metal, and point out the reducing agent; the displacement direction is where the mark sits."
+          },
+          "medium": {
+            "restatement": "In oxide displacement the more reactive metal removes the oxygen from the less reactive metal's oxide, acting as the reducing agent while the oxide is reduced. The thermite reaction of iron(III) oxide with aluminium is the extreme case, and pairings that run the wrong way, like sodium oxide with magnesium, show no reaction.",
+            "analogy": "Think of oxygen as a prize that only the more eager metal can snatch: whoever grips it harder walks away with the oxide, and the loser walks away as the bare metal.",
+            "examPointer": "Practise reading the oxide table both ways: predicting products for a reactive pair and predicting no reaction for an uphill pair."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_gBGX339WBpwyCrFF::L1::Q1",
+          "rn_gBGX339WBpwyCrFF::L1::Q2",
+          "rn_gBGX339WBpwyCrFF::L1::Q3",
+          "rn_gBGX339WBpwyCrFF::L1::Q4",
+          "rn_gBGX339WBpwyCrFF::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_gBGX339WBpwyCrFF::L2",
+        "title": "Displacement reactions between metals & aqueous solutions of metal salts",
+        "sourceHeadings": [
+          "Displacement reactions between metals & aqueous solutions of metal salts",
+          "Metal solutions displacement table"
+        ],
+        "specRefs": [
+          "4CH1-2.16"
+        ],
+        "opening": "The second displacement route compares two metals in salt solutions: a strip of one metal goes into an aqueous solution of another metal's salt. If the strip's metal is the more reactive, it slowly disappears into the solution, displacing the less reactive metal, which appears as solid. Magnesium in copper(II) sulfate shows it beautifully, as the blue colour fades while copper coats the magnesium.",
+        "keyPoints": [
+          "A metal strip placed in an aqueous solution of another metal's salt can displace it.",
+          "The stronger metal gradually fades into the solution while the weaker one appears as solid.",
+          "Magnesium in copper(II) sulfate gives MgSO4 and copper: Mg + CuSO4 gives MgSO4 + Cu.",
+          "The blue colour of the copper(II) sulfate fades as colourless magnesium sulfate forms.",
+          "Copper coats the magnesium surface and also falls to the bottom as solid metal."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Stand one metal in a solution of another metal's salt: if the standing metal is more reactive, it swaps places with the dissolved one. The blue copper(II) sulfate fades as magnesium takes copper's seat and copper metal appears.",
+            "analogy": "Like a queue where someone further forward can send someone behind them back: the swap happens one way only, and you can see the colour change as it does.",
+            "examPointer": "Describe the fading blue colour and the copper deposit together; both are the standard observations for this reaction."
+          },
+          "medium": {
+            "restatement": "In salt-solution displacement the more reactive metal's atoms enter the solution as ions while the dissolved metal's ions leave as solid, so the strip visibly corrodes as the other metal deposits. The colour change tracks the swap: copper(II) sulfate's blue fades as magnesium sulfate forms, and pairings that run uphill, such as zinc in sodium chloride, show no reaction.",
+            "analogy": "Picture a musical-chairs game between atoms and ions: the more reactive atom always wins the seat in solution, and the loser is left standing as solid metal.",
+            "examPointer": "Use the solutions table to predict outcomes quickly: downhill pairings react with a colour change, uphill pairings show nothing."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_gBGX339WBpwyCrFF::L2::Q1",
+          "rn_gBGX339WBpwyCrFF::L2::Q2",
+          "rn_gBGX339WBpwyCrFF::L2::Q3",
+          "rn_gBGX339WBpwyCrFF::L2::Q4",
+          "rn_gBGX339WBpwyCrFF::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "displacement reaction",
+          "definition": "A reaction in which a more reactive metal takes the place of a less reactive one in its compound.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reducing agent",
+          "definition": "The substance that removes oxygen from another in a reaction, here the more reactive metal.",
+          "firstLesson": 1
+        },
+        {
+          "term": "aqueous solution",
+          "definition": "A substance dissolved in water, such as the metal salt solutions used in displacement tests.",
+          "firstLesson": 2
+        },
+        {
+          "term": "thermite reaction",
+          "definition": "The highly exothermic displacement in which aluminium takes oxygen from iron(III) oxide.",
+          "firstLesson": 1
+        },
+        {
+          "term": "metal salt",
+          "definition": "An ionic compound of a metal with a non-metal group, such as copper(II) sulfate or sodium chloride.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

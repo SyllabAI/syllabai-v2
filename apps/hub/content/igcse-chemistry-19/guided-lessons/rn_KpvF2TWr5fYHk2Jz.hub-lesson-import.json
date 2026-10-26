@@ -1,0 +1,169 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_KpvF2TWr5fYHk2Jz",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "5c530727a009f4d8c27932c9445efd0675e10265d3b39d360bcb0707ec5bcf6b",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_KpvF2TWr5fYHk2Jz",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Covalent Bonding",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-7-covalent-bonding/1-7-3-simple-molecular-structures",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.47",
+        "text": "explain why substances with a simple molecular structures are gases or liquids, or solids with low melting and boiling points the term intermolecular forces of attraction can be used to represent all forces between molecules"
+      },
+      {
+        "code": "4CH1-1.48",
+        "text": "explain why the melting and boiling points of substances with simple molecular structures increase, in general, with increasing relative molecular mass"
+      },
+      {
+        "code": "4CH1-1.50",
+        "text": "explain how the structures of diamond, graphite and C60 fullerene influence their physical properties, including electrical conductivity and hardness"
+      },
+      {
+        "code": "4CH1-1.51",
+        "text": "know that covalent compounds do not usually conduct electricity"
+      }
+    ],
+    "primer": {
+      "text": "From the earlier Covalent Bonding notes you know that non-metal atoms share pairs of electrons in strong covalent bonds. This note looks at what happens between whole molecules: why the forces there are weak, why that makes melting points low, how bigger molecules push the boiling point up, and why covalent substances rarely conduct.",
+      "prerequisiteSubtopic": "Covalent Bonding"
+    },
+    "modules": [
+      {
+        "id": "rn_KpvF2TWr5fYHk2Jz::L1",
+        "title": "Simple molecular structures & C60 fullerene",
+        "sourceHeadings": [
+          "Simple molecular structures",
+          "C60 fullerene"
+        ],
+        "specRefs": [
+          "4CH1-1.47",
+          "4CH1-1.50"
+        ],
+        "opening": "Simple molecular substances hold their atoms together with strong covalent bonds, but the forces acting between neighbouring molecules are weak. That split explains their behaviour: little energy is needed to pull separate molecules apart, so most are gases or liquids at room temperature, or solids that melt easily. C60 fullerene belongs here too, as a simple molecular structure built from sixty carbon atoms.",
+        "keyPoints": [
+          "Simple molecular structures have strong covalent bonds inside each molecule but weak forces between neighbouring molecules.",
+          "The weak intermolecular forces need only a little energy to overcome, so melting and boiling points are low.",
+          "Most simple molecular substances are gases or liquids at room temperature; solids with low melting points are less common.",
+          "C60 fullerene is a hollow sphere of 60 carbon atoms, joining 20 hexagons and 12 pentagons like a football.",
+          "C60 cannot conduct, because its spare electrons move only within each buckyball and cannot migrate between them."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Inside each molecule the covalent bonds are strong, but between one molecule and the next the pull is weak. Heating shakes molecules apart from each other long before any covalent bond breaks, which is why these substances melt and boil easily. C60 fullerene fits the same story as a molecular sphere of carbon.",
+            "analogy": "Imagine Velcro strips holding marbles together in small clusters: the marbles inside a cluster are firmly glued, but the clusters themselves pull apart with only a light tug.",
+            "examPointer": "The classic exam line: when a simple molecular substance melts, the weak intermolecular forces break, not the covalent bonds; write that distinction explicitly."
+          },
+          "medium": {
+            "restatement": "The two force scales must be kept apart: covalent bonds within molecules are strong, while the intermolecular forces between molecules are weak, so state changes cost little energy and the substances are gases, liquids, or low-melting solids. C60 fullerene extends the pattern: a molecular cage of 60 carbons whose unbonded fourth electron stays inside each cage, so no charge migrates between cages.",
+            "analogy": "Picture a bowl of oranges, each one wrapped tightly in string but only resting against its neighbours: the string is the covalent bonding, and the light contact between oranges is the intermolecular force.",
+            "examPointer": "For C60, quote both halves of the conductivity story: electrons do exist inside each buckyball, but they cannot migrate from one buckyball to another, so the substance does not conduct."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_KpvF2TWr5fYHk2Jz::L1::Q1",
+          "rn_KpvF2TWr5fYHk2Jz::L1::Q2",
+          "rn_KpvF2TWr5fYHk2Jz::L1::Q3",
+          "rn_KpvF2TWr5fYHk2Jz::L1::Q4",
+          "rn_KpvF2TWr5fYHk2Jz::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_KpvF2TWr5fYHk2Jz::L2",
+        "title": "Melting point patterns & conductivity",
+        "sourceHeadings": [
+          "Melting and boiling point patterns",
+          "Conductivity of simple molecular structures"
+        ],
+        "specRefs": [
+          "4CH1-1.48",
+          "4CH1-1.51"
+        ],
+        "opening": "As the relative molecular mass of a simple molecular substance rises, its melting and boiling points generally rise with it. A bigger molecule contains more electrons, so there are more intermolecular forces of attraction to overcome when the substance changes state. The same molecular picture explains conduction: with no free ions or electrons to move, covalent compounds are poor conductors and common insulators.",
+        "keyPoints": [
+          "Melting and boiling points of simple molecular substances rise as the relative molecular mass increases.",
+          "Bigger molecules contain more electrons, so more intermolecular forces of attraction must be overcome.",
+          "More intermolecular forces mean more heat energy is needed to change state, raising the melting and boiling points.",
+          "Covalent compounds are poor conductors because no free ions or mobile electrons exist to carry the charge.",
+          "Common insulators include the plastic coating on household wiring, rubber and wood."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A heavier molecule is an electron-richer molecule, and more electrons mean more intermolecular attractions, so more heat is needed to boil the liquid and the boiling point climbs. Without mobile charged particles, these substances cannot carry a current, which is why plastics and rubber insulate wires.",
+            "analogy": "Think of two hook-and-loop sheets with more and more hooks sewn on: the larger sheet grips harder, and pulling it apart takes visibly more effort.",
+            "examPointer": "Link the trend to electrons, not just size: stating more electrons, hence more intermolecular forces, is what earns the explanation mark."
+          },
+          "medium": {
+            "restatement": "The trend rests on electron count: relative molecular mass rises with the number of electrons, and the intermolecular attractions grow with that count, so state changes demand progressively more energy. Conductivity fails for the complementary reason: the structures offer no free ions or mobile electrons, so charge cannot flow, making covalent compounds the everyday insulators.",
+            "analogy": "Picture ever-larger magnets scattered through two neighbouring sheets: each extra magnet adds to the total grip, and separating the sheets takes more force each time.",
+            "examPointer": "Expect a graph-style question on alkane boiling points: quote the increasing-mass trend and attach the electron-count reason rather than restating the trend alone."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_KpvF2TWr5fYHk2Jz::L2::Q1",
+          "rn_KpvF2TWr5fYHk2Jz::L2::Q2",
+          "rn_KpvF2TWr5fYHk2Jz::L2::Q3",
+          "rn_KpvF2TWr5fYHk2Jz::L2::Q4",
+          "rn_KpvF2TWr5fYHk2Jz::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "intermolecular",
+          "definition": "Describing the forces that act between neighbouring molecules, as opposed to the bonds inside them.",
+          "firstLesson": 1
+        },
+        {
+          "term": "fullerene",
+          "definition": "A molecular form of carbon built as hollow spheres or tubes; C60 is the football-shaped first example.",
+          "firstLesson": 1
+        },
+        {
+          "term": "relative molecular mass",
+          "definition": "The total of the relative atomic masses in a molecule, which tracks its number of electrons.",
+          "firstLesson": 2
+        },
+        {
+          "term": "insulator",
+          "definition": "A material that does not conduct electricity, because it has no mobile charged particles.",
+          "firstLesson": 2
+        },
+        {
+          "term": "catalyst",
+          "definition": "A substance that speeds a reaction while being unchanged itself; fullerenes can hold catalysts on their surfaces.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_HqqBFgKRHykMMhbB",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "e0b57847940c0e3543370127f33c4310a75d0f84e0feefd50c65e1cac3a75789",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_HqqBFgKRHykMMhbB",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L1::Q1",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L1",
+      "stem": "Methane reacts with bromine under ultraviolet light to give bromomethane and hydrogen bromide. Which type of reaction is this?",
+      "misconceptionClass": "reaction classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Substitution, because a hydrogen atom is replaced by bromine",
+          "correct": true,
+          "explanation": "One atom in the methane is swapped for another, which is the defining move of a substitution reaction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Addition, because the molecules combine",
+          "correct": false,
+          "explanation": "Two products form here; addition would leave one merged product and nothing else.",
+          "misconception": "combining mistaken for addition"
+        },
+        {
+          "key": "C",
+          "text": "Combustion, because bromine is reactive",
+          "correct": false,
+          "explanation": "Combustion means burning in oxygen; no oxygen takes part in this reaction.",
+          "misconception": "any reaction is combustion"
+        },
+        {
+          "key": "D",
+          "text": "No classification applies without a mechanism",
+          "correct": false,
+          "explanation": "Mechanisms are not required; the type follows from what the equation shows.",
+          "misconception": "mechanism demanded"
+        }
+      ]
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L1::Q2",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L1",
+      "stem": "What is the defining feature of an addition reaction?",
+      "misconceptionClass": "addition definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two or more molecules form one larger molecule with no other products",
+          "correct": true,
+          "explanation": "Everything that enters the reaction leaves inside the single merged product.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One atom swaps places with another inside the molecule",
+          "correct": false,
+          "explanation": "That describes substitution, which produces two products rather than one.",
+          "misconception": "types swapped"
+        },
+        {
+          "key": "C",
+          "text": "The molecule burns in a plentiful oxygen supply",
+          "correct": false,
+          "explanation": "Burning in oxygen is combustion, the third type, not addition.",
+          "misconception": "combustion confusion"
+        },
+        {
+          "key": "D",
+          "text": "A catalyst is always required for the reaction to proceed",
+          "correct": false,
+          "explanation": "Addition needs no catalyst in general; the definition is about merging molecules.",
+          "misconception": "catalyst assumed"
+        }
+      ]
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L1::Q3",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L1",
+      "stem": "Ethene reacts with bromine to give C2H4Br2. Why is this an addition reaction?",
+      "misconceptionClass": "addition evidence",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both bromine atoms add across the double bond, leaving one product",
+          "correct": true,
+          "explanation": "The two reactant molecules merge into dibromoethane alone, which is the addition signature.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because ethene is an alkane with strong bonds",
+          "correct": false,
+          "explanation": "Ethene is an alkene, and the classification rests on the single merged product.",
+          "misconception": "family mislabelled"
+        },
+        {
+          "key": "C",
+          "text": "Because a hydrogen atom was replaced by bromine",
+          "correct": false,
+          "explanation": "No hydrogen leaves the molecule here; the bromine joins on across the double bond.",
+          "misconception": "substitution misapplied"
+        },
+        {
+          "key": "D",
+          "text": "Because the reaction needs ultraviolet light to start",
+          "correct": false,
+          "explanation": "Ultraviolet light belongs to the alkane-halogen substitution story, not this addition.",
+          "misconception": "conditions borrowed"
+        }
+      ]
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L1::Q4",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L1",
+      "stem": "How many products does a substitution reaction produce from one organic molecule and one attacking molecule?",
+      "misconceptionClass": "product count reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two products: the substituted molecule and the displaced fragment",
+          "correct": true,
+          "explanation": "What leaves the organic molecule pairs with the incoming atom to form the second product, as in HBr.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One product only, because everything merges",
+          "correct": false,
+          "explanation": "One merged product describes addition; substitution always has something displaced.",
+          "misconception": "addition count reused"
+        },
+        {
+          "key": "C",
+          "text": "Three products in every case",
+          "correct": false,
+          "explanation": "The standard substitution makes exactly two products at this level.",
+          "misconception": "count inflated"
+        },
+        {
+          "key": "D",
+          "text": "It depends on the temperature used",
+          "correct": false,
+          "explanation": "The product count follows from the reaction type, not the temperature.",
+          "misconception": "conditions decide type"
+        }
+      ]
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L1::Q5",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L1",
+      "stem": "Do you need to know reaction mechanisms for this classification work?",
+      "misconceptionClass": "scope of mechanisms",
+      "options": [
+        {
+          "key": "A",
+          "text": "No, classifying as substitution, addition or combustion is enough",
+          "correct": true,
+          "explanation": "The specification explicitly excludes mechanisms; naming the type is the required skill.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Yes, every classification needs the full mechanism quoted",
+          "correct": false,
+          "explanation": "Mechanisms are beyond the requirement; the type label alone is the marking point.",
+          "misconception": "mechanism required"
+        },
+        {
+          "key": "C",
+          "text": "Only for addition reactions",
+          "correct": false,
+          "explanation": "No reaction type at this level demands a mechanism for classification.",
+          "misconception": "partial requirement"
+        },
+        {
+          "key": "D",
+          "text": "Only when the reaction happens in sunlight",
+          "correct": false,
+          "explanation": "Light conditions help identify substitution, but mechanisms stay excluded everywhere.",
+          "misconception": "condition triggers requirement"
+        }
+      ]
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L2::Q1",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L2",
+      "stem": "What are the products when methane burns completely in air?",
+      "misconceptionClass": "complete combustion products",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carbon dioxide and water",
+          "correct": true,
+          "explanation": "Unlimited oxygen oxidises every carbon fully to CO2, with hydrogen ending as water.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Carbon monoxide and water",
+          "correct": false,
+          "explanation": "Carbon monoxide belongs to incomplete burning in a limited oxygen supply.",
+          "misconception": "incomplete products used"
+        },
+        {
+          "key": "C",
+          "text": "Carbon and hydrogen only",
+          "correct": false,
+          "explanation": "With oxygen present the products are oxides, not the bare elements.",
+          "misconception": "elements released"
+        },
+        {
+          "key": "D",
+          "text": "Carbon dioxide and hydrogen gas",
+          "correct": false,
+          "explanation": "Hydrogen from the fuel joins oxygen to make water, not hydrogen gas.",
+          "misconception": "hydrogen gas misassigned"
+        }
+      ]
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L2::Q2",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L2",
+      "stem": "Which condition produces carbon monoxide during the burning of a hydrocarbon?",
+      "misconceptionClass": "incomplete combustion condition",
+      "options": [
+        {
+          "key": "A",
+          "text": "A limited supply of air or oxygen",
+          "correct": true,
+          "explanation": "Starved of oxygen, the carbon cannot fully oxidise and settles for monoxide.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "An unlimited supply of oxygen",
+          "correct": false,
+          "explanation": "Plentiful oxygen drives complete burning to carbon dioxide instead.",
+          "misconception": "oxygen supply inverted"
+        },
+        {
+          "key": "C",
+          "text": "The presence of nitrogen in the air",
+          "correct": false,
+          "explanation": "Nitrogen is already in air during complete burning too; only the oxygen shortage matters.",
+          "misconception": "nitrogen blamed"
+        },
+        {
+          "key": "D",
+          "text": "Any temperature below 100 degrees Celsius",
+          "correct": false,
+          "explanation": "Temperature alone does not decide the products; the oxygen supply does.",
+          "misconception": "temperature blamed"
+        }
+      ]
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L2::Q3",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L2",
+      "stem": "Balance the complete equation: CH4 + ? O2 -> CO2 + ? H2O",
+      "misconceptionClass": "equation balancing",
+      "options": [
+        {
+          "key": "A",
+          "text": "2 before O2 and 2 before H2O",
+          "correct": true,
+          "explanation": "Four hydrogens need two waters, and those two waters plus CO2 need four oxygens, so 2O2 supplies them.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "1 before O2 and 2 before H2O",
+          "correct": false,
+          "explanation": "One O2 gives only two oxygens, but CO2 and 2H2O together need four.",
+          "misconception": "oxygen undercounted"
+        },
+        {
+          "key": "C",
+          "text": "2 before O2 and 1 before H2O",
+          "correct": false,
+          "explanation": "One water leaves two hydrogens stranded from the four that methane carries.",
+          "misconception": "hydrogen miscounted"
+        },
+        {
+          "key": "D",
+          "text": "4 before O2 and 4 before H2O",
+          "correct": false,
+          "explanation": "That over-supplies oxygen and breaks the atom balance the equation must keep.",
+          "misconception": "overscaled balancing"
+        }
+      ]
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L2::Q4",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L2",
+      "stem": "In an oxygen-poor appliance, what can form from methane instead of carbon dioxide?",
+      "misconceptionClass": "incomplete products range",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carbon monoxide, or carbon soot in very poor supply",
+          "correct": true,
+          "explanation": "The note shows both routes: 2CH4 + 3O2 to CO, and CH4 + O2 all the way down to carbon.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Sulfur dioxide, from the methane itself",
+          "correct": false,
+          "explanation": "Methane carries no sulfur; SO2 arises from impurities in other fuels.",
+          "misconception": "pollutant misattached"
+        },
+        {
+          "key": "C",
+          "text": "Nothing, because methane cannot burn without full oxygen",
+          "correct": false,
+          "explanation": "Incomplete burning is still burning; it simply stops at CO or carbon.",
+          "misconception": "reaction refused"
+        },
+        {
+          "key": "D",
+          "text": "Only water, with the carbon vanishing",
+          "correct": false,
+          "explanation": "Atoms are conserved; the carbon must appear as CO, soot or CO2, never vanish.",
+          "misconception": "atom loss imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_HqqBFgKRHykMMhbB::L2::Q5",
+      "moduleId": "rn_HqqBFgKRHykMMhbB::L2",
+      "stem": "Why is combustion classified alongside substitution and addition?",
+      "misconceptionClass": "classification framework",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because it is one of the three named types of organic reaction",
+          "correct": true,
+          "explanation": "The classification scheme of the topic lists exactly these three reaction families.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because it only happens to alkanes",
+          "correct": false,
+          "explanation": "The note records alkenes burning too, so the type is not alkane-only.",
+          "misconception": "family restricted"
+        },
+        {
+          "key": "C",
+          "text": "Because it needs ultraviolet light like substitution",
+          "correct": false,
+          "explanation": "Combustion needs oxygen and a flame or spark, not ultraviolet radiation.",
+          "misconception": "conditions crossed"
+        },
+        {
+          "key": "D",
+          "text": "Because it produces one merged product",
+          "correct": false,
+          "explanation": "Two products, CO2 and water, form in complete burning, so it is not an addition case.",
+          "misconception": "addition confused"
+        }
+      ]
+    }
+  ]
+}

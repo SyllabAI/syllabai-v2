@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_kdRjZHjHcpVZsD3h",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "17ba1dbb6e548a8266fd37f5a315ada901690114045aea1e6c0ba8d3fa192f9d",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_kdRjZHjHcpVZsD3h",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L1::Q1",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L1",
+      "stem": "Why are two small test tubes inverted over the electrodes?",
+      "misconceptionClass": "apparatus purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "To collect the gaseous products so they can be tested",
+          "correct": true,
+          "explanation": "Gases rise into the tubes and accumulate, which is what makes the identification tests possible.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To keep the solution from evaporating",
+          "correct": false,
+          "explanation": "The tubes sit over the electrodes to trap gas; evaporation is not their purpose.",
+          "misconception": "purpose misassigned"
+        },
+        {
+          "key": "C",
+          "text": "To stop the current leaking away",
+          "correct": false,
+          "explanation": "The current flows through the solution between the electrodes; the tubes do not touch the circuit.",
+          "misconception": "circuit role invented"
+        },
+        {
+          "key": "D",
+          "text": "To warm the solution evenly",
+          "correct": false,
+          "explanation": "No heating is intended here; the tubes are collection vessels.",
+          "misconception": "function imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L1::Q2",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L1",
+      "stem": "Which sequence describes the method correctly?",
+      "misconceptionClass": "method order",
+      "options": [
+        {
+          "key": "A",
+          "text": "Add the solution, cover the electrodes, invert the test tubes, connect the power, then observe and test",
+          "correct": true,
+          "explanation": "The method runs from set-up through powering the cell to the testing step at the end.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Test the gases first, then start the current",
+          "correct": false,
+          "explanation": "Nothing can be tested before the current has produced it; testing comes last.",
+          "misconception": "order reversed"
+        },
+        {
+          "key": "C",
+          "text": "Connect the power before adding any solution",
+          "correct": false,
+          "explanation": "The electrodes must be covered by the solution before the current flows.",
+          "misconception": "dry running imagined"
+        },
+        {
+          "key": "D",
+          "text": "Remove the tubes before switching off the power",
+          "correct": false,
+          "explanation": "The tubes stay in place to collect gas throughout the electrolysis.",
+          "misconception": "collection interrupted"
+        }
+      ]
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L1::Q3",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L1",
+      "stem": "A gas collected at the cathode burns with a pop when lit. What is it?",
+      "misconceptionClass": "gas identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hydrogen",
+          "correct": true,
+          "explanation": "The pop with a lighted splint is the standard test for hydrogen, collected at the cathode.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Oxygen",
+          "correct": false,
+          "explanation": "Oxygen is the anode gas and relights a glowing splint rather than popping.",
+          "misconception": "gas and test mismatched"
+        },
+        {
+          "key": "C",
+          "text": "Chlorine",
+          "correct": false,
+          "explanation": "Chlorine bleaches litmus; it does not burn with a pop.",
+          "misconception": "test misapplied"
+        },
+        {
+          "key": "D",
+          "text": "Bromine",
+          "correct": false,
+          "explanation": "Bromine has no pop test here; it belongs to molten-compound anodes as brown fumes.",
+          "misconception": "halogen confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L1::Q4",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L1",
+      "stem": "A gas collected at the anode relights a glowing splint. What is it?",
+      "misconceptionClass": "gas identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Oxygen",
+          "correct": true,
+          "explanation": "Relighting a glowing splint is the classic test for oxygen, which forms at the anode from OH- ions.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Hydrogen",
+          "correct": false,
+          "explanation": "Hydrogen pops with a lighted splint and forms at the cathode.",
+          "misconception": "electrode and gas swapped"
+        },
+        {
+          "key": "C",
+          "text": "Chlorine",
+          "correct": false,
+          "explanation": "Chlorine bleaches litmus paper; a glowing-splint relight points to oxygen.",
+          "misconception": "test misapplied"
+        },
+        {
+          "key": "D",
+          "text": "Water vapour",
+          "correct": false,
+          "explanation": "Water vapour neither pops nor relights; the relight is oxygen's signature.",
+          "misconception": "default gas guessed"
+        }
+      ]
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L1::Q5",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L1",
+      "stem": "What does a solid forming around an electrode tell you?",
+      "misconceptionClass": "solid product reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "That the metal has been formed there, with the colour indicating which metal",
+          "correct": true,
+          "explanation": "Metal deposition shows as a solid coating, and its colour names the metal.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "That the electrode has melted",
+          "correct": false,
+          "explanation": "The electrodes are inert and stay intact; the coating is the product metal.",
+          "misconception": "electrode failure imagined"
+        },
+        {
+          "key": "C",
+          "text": "That the solution has become saturated",
+          "correct": false,
+          "explanation": "A coating on an electrode is the deposited metal, not crystallised solute.",
+          "misconception": "crystallisation confused"
+        },
+        {
+          "key": "D",
+          "text": "That the current has stopped",
+          "correct": false,
+          "explanation": "Deposition happens while the current flows; stopping the current would halt it.",
+          "misconception": "effect misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L2::Q1",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L2",
+      "stem": "Which products form when sodium chloride solution is electrolysed?",
+      "misconceptionClass": "product recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hydrogen at the cathode and chlorine at the anode",
+          "correct": true,
+          "explanation": "The solution matches the rules: hydrogen wins the cathode and the halide chlorine reaches the anode.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Hydrogen at both electrodes",
+          "correct": false,
+          "explanation": "The anode follows the halide rule; chlorine, not hydrogen, forms there.",
+          "misconception": "cathode product generalised"
+        },
+        {
+          "key": "C",
+          "text": "Sodium and chlorine",
+          "correct": false,
+          "explanation": "Sodium is more reactive than hydrogen, so it stays in solution while hydrogen is discharged.",
+          "misconception": "metal ion assumed discharged"
+        },
+        {
+          "key": "D",
+          "text": "Oxygen at the anode",
+          "correct": false,
+          "explanation": "Oxygen forms only when no halide is present; chloride ions are present here.",
+          "misconception": "rule misapplied"
+        }
+      ]
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L2::Q2",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L2",
+      "stem": "What does the sodium chloride anode gas do to litmus paper?",
+      "misconceptionClass": "test recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It bleaches the litmus, identifying the gas as chlorine",
+          "correct": true,
+          "explanation": "Bleaching is chlorine's signature test, recorded in the results table.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It turns the litmus red permanently",
+          "correct": false,
+          "explanation": "The recorded effect is bleaching, not a permanent red stain.",
+          "misconception": "effect misremembered"
+        },
+        {
+          "key": "C",
+          "text": "Nothing, the paper is unaffected",
+          "correct": false,
+          "explanation": "Chlorine's bleaching action is exactly what the paper shows.",
+          "misconception": "effect denied"
+        },
+        {
+          "key": "D",
+          "text": "It dissolves the paper",
+          "correct": false,
+          "explanation": "The gas bleaches the litmus; it does not dissolve it.",
+          "misconception": "effect invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L2::Q3",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L2",
+      "stem": "Which row correctly completes the results table for dilute sulfuric acid?",
+      "misconceptionClass": "product recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cathode: colourless gas that pops with a lighted splint; anode: colourless gas that relights a glowing splint",
+          "correct": true,
+          "explanation": "The acid gives hydrogen at the cathode and oxygen at the anode, both colourless gases.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Cathode: gas that pops; anode: gas that bleaches litmus",
+          "correct": false,
+          "explanation": "Bleaching belongs to the sodium chloride row; the acid gives oxygen at the anode.",
+          "misconception": "rows conflated"
+        },
+        {
+          "key": "C",
+          "text": "Cathode: pink-brown deposit; anode: gas that relights",
+          "correct": false,
+          "explanation": "The pink-brown deposit is the copper(II) sulfate row; the acid gives hydrogen gas at the cathode.",
+          "misconception": "rows conflated"
+        },
+        {
+          "key": "D",
+          "text": "Cathode: no change; anode: no change",
+          "correct": false,
+          "explanation": "Both electrodes show gas evolution in this cell.",
+          "misconception": "activity denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L2::Q4",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L2",
+      "stem": "What is observed at the cathode when copper(II) sulfate solution is electrolysed?",
+      "misconceptionClass": "observation recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "A pink-brown deposit of copper on the electrode",
+          "correct": true,
+          "explanation": "Copper is less reactive than hydrogen, so it deposits, and its colour is pink-brown.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A colourless gas that pops",
+          "correct": false,
+          "explanation": "Hydrogen pops at the cathode only when the metal is more reactive than hydrogen; copper's ion is discharged instead.",
+          "misconception": "hydrogen rule misapplied"
+        },
+        {
+          "key": "C",
+          "text": "A grey metal coating of zinc",
+          "correct": false,
+          "explanation": "The deposited metal is copper, not zinc; the solution contains copper ions.",
+          "misconception": "metal misidentified"
+        },
+        {
+          "key": "D",
+          "text": "Bubbles of chlorine",
+          "correct": false,
+          "explanation": "Chlorine needs chloride ions, which copper(II) sulfate does not contain.",
+          "misconception": "halogen invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L2::Q5",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L2",
+      "stem": "Which conclusion pairs each solution with its two products correctly?",
+      "misconceptionClass": "conclusion assembly",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sodium chloride: hydrogen and chlorine; sulfuric acid: hydrogen and oxygen; copper(II) sulfate: copper and oxygen",
+          "correct": true,
+          "explanation": "The three conclusions read straight off the results table.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Sodium chloride: sodium and chlorine; sulfuric acid: hydrogen and oxygen; copper(II) sulfate: copper and oxygen",
+          "correct": false,
+          "explanation": "Sodium is not discharged; hydrogen forms at the cathode of the sodium chloride cell.",
+          "misconception": "reactive metal assumed deposited"
+        },
+        {
+          "key": "C",
+          "text": "Sodium chloride: hydrogen and oxygen; sulfuric acid: hydrogen and chlorine; copper(II) sulfate: hydrogen and copper",
+          "correct": false,
+          "explanation": "The anode products of the first two rows have been swapped.",
+          "misconception": "rows swapped"
+        },
+        {
+          "key": "D",
+          "text": "All three give hydrogen at the anode",
+          "correct": false,
+          "explanation": "Hydrogen is a cathode product in every row; the anodes give chlorine or oxygen.",
+          "misconception": "electrode products swapped"
+        }
+      ]
+    }
+  ]
+}

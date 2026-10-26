@@ -1,0 +1,167 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_3YZNCXSQQqXTT6HR",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "c948f2c80310f9bb0d03b94c23646630b924f746b9589bc7be0cdc85505db16a",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_3YZNCXSQQqXTT6HR",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Electrolysis",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-9-electrolysis/1-9-2-electrolysis-experiments",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.56C",
+        "text": "understand why ionic compounds conduct electricity only when molten or in aqueous solution"
+      },
+      {
+        "code": "4CH1-1.58C",
+        "text": "describe experiments to investigate electrolysis, using inert electrodes, of molten compounds (including lead(II) bromide) and aqueous solutions (including sodium chloride, dilute sulfuric acid and copper(II) sulfate) and to predict the products"
+      }
+    ],
+    "primer": {
+      "text": "From Explaining Conductivity you know that ionic compounds conduct only when molten or dissolved, and that their ions then migrate to the electrodes. This note turns that knowledge into laboratory experiments: electrolysis of molten compounds such as lead(II) bromide, electrolysis of aqueous solutions, and the rules that predict which product appears at each electrode.",
+      "prerequisiteSubtopic": "Electrolysis"
+    },
+    "modules": [
+      {
+        "id": "rn_3YZNCXSQQqXTT6HR::L1",
+        "title": "Electrolysis of molten compounds",
+        "sourceHeadings": [
+          "Electrolysis of molten compounds"
+        ],
+        "specRefs": [
+          "4CH1-1.56C",
+          "4CH1-1.58C"
+        ],
+        "opening": "A binary ionic compound contains just two elements joined by ionic bonding, lead(II) bromide being the classic example. Heated past its melting point it becomes molten, its ions can move freely, and it conducts, which allows electrolysis to split it into its two elements. The positive ion always travels to the cathode and the negative ion to the anode, so the cathode product is the metal and the anode product the non-metal.",
+        "keyPoints": [
+          "A binary ionic compound consists of just two elements joined by ionic bonding, such as lead(II) bromide.",
+          "Heated beyond its melting point, the compound becomes molten and can conduct because its ions move freely.",
+          "The positive ion migrates to the cathode and the negative ion to the anode.",
+          "The cathode product is always the metal, and the anode product is always the non-metal.",
+          "In molten lead(II) bromide, brown bromine gas bubbles at the anode and grey lead deposits at the cathode."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Melt the compound and its two ions become mobile, so a current can pass. Opposite charges steer them: the metal ion reaches the cathode and turns into metal, the non-metal ion reaches the anode and turns into the non-metal, as lead(II) bromide shows with grey lead and brown bromine.",
+            "analogy": "Think of a sorting gate at a recycling plant: metal pieces roll one way, non-metal pieces the other, and the two collection bins fill with pure, separate products.",
+            "examPointer": "Describe the method with its equipment words: crucible, heat until molten, two graphite rod electrodes, and a power pack; the observation words are bubbling brown gas and grey deposit."
+          },
+          "medium": {
+            "restatement": "The experiment works because the molten state removes the lattice constraint: freed ions carry the current, so the melt undergoes electrolysis and decomposes into its elements. Charge decides where each ion ends up, with positive ions gaining electrons at the cathode to form the metal and negative ions losing electrons at the anode to form the non-metal.",
+            "analogy": "Picture two exits from a crowded hall, one marked plus and one marked minus: everyone walks to the exit opposite to their ticket, and each exit turns its crowd into a single pure product.",
+            "examPointer": "Product questions reduce to one move: identify the two ions, send the positive one to the cathode and the negative one to the anode, then name the element each becomes."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_3YZNCXSQQqXTT6HR::L1::Q1",
+          "rn_3YZNCXSQQqXTT6HR::L1::Q2",
+          "rn_3YZNCXSQQqXTT6HR::L1::Q3",
+          "rn_3YZNCXSQQqXTT6HR::L1::Q4",
+          "rn_3YZNCXSQQqXTT6HR::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_3YZNCXSQQqXTT6HR::L2",
+        "title": "Electrolysis of aqueous solutions",
+        "sourceHeadings": [
+          "Electrolysis of aqueous solutions"
+        ],
+        "specRefs": [
+          "4CH1-1.58C"
+        ],
+        "opening": "Aqueous solutions bring extra players to electrolysis, because water molecules split into H+ and OH- ions alongside the ions of the dissolved compound. Which ions are discharged depends on their relative reactivity. At the anode a halide ion, if present, is discharged to give a halogen; otherwise OH- is discharged to give oxygen. At the cathode hydrogen emerges unless the metal ion is less reactive than hydrogen itself, in which case the metal deposits instead.",
+        "keyPoints": [
+          "Water molecules in the solution split into H+ and OH- ions, which join the ions from the dissolved compound.",
+          "Which ions are discharged is decided by how reactive the elements involved are.",
+          "At the anode, a halide ion is discharged to form a halogen; with no halide present, OH- forms oxygen.",
+          "At the cathode, hydrogen forms if the metal is more reactive than hydrogen; otherwise the metal deposits.",
+          "The electrodes are inert graphite rods, and inverted test tubes over them can collect the gases."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The water itself donates H+ and OH- ions, so the electrolyte holds two rival sets of ions. Reactivity picks the winners: at the anode the halide wins if there is one, otherwise oxygen forms, and at the cathode hydrogen wins unless the metal is less reactive than hydrogen.",
+            "analogy": "Think of two queues for one ride: the queue that gets priority is decided by a fixed rule, and the losing queue simply waits in the solution for another turn.",
+            "examPointer": "Write down every ion present before predicting anything; the exam hint says listing the ions first is the reliable route to the products."
+          },
+          "medium": {
+            "restatement": "The aqueous electrolyte is a mixture of compound ions and the ions from water's own split into H+ and OH-. Discharge follows relative reactivity: halide ions outrank hydroxide at the anode, producing the halogen, while at the cathode the less reactive candidate is discharged, so hydrogen emerges unless a metal less reactive than hydrogen is present.",
+            "analogy": "Picture a dispatch office sending the least stubborn claimant first: reactivity is stubbornness, and the particle that gives up most easily is the one released at the electrode.",
+            "examPointer": "Practise the three named solutions to the point of instant recall: sodium chloride, dilute sulfuric acid and copper(II) sulfate, each with its own cathode and anode products."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_3YZNCXSQQqXTT6HR::L2::Q1",
+          "rn_3YZNCXSQQqXTT6HR::L2::Q2",
+          "rn_3YZNCXSQQqXTT6HR::L2::Q3",
+          "rn_3YZNCXSQQqXTT6HR::L2::Q4",
+          "rn_3YZNCXSQQqXTT6HR::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "electrolysis",
+          "definition": "The splitting of a molten or dissolved compound by an electric current, with ions moving to the electrodes.",
+          "firstLesson": 1
+        },
+        {
+          "term": "binary",
+          "definition": "Describing a compound made of just two elements joined together.",
+          "firstLesson": 1
+        },
+        {
+          "term": "electrolyte",
+          "definition": "The molten compound or solution that carries the current through its moving ions.",
+          "firstLesson": 1
+        },
+        {
+          "term": "inert",
+          "definition": "Describing an electrode material that conducts but does not react during the electrolysis.",
+          "firstLesson": 1
+        },
+        {
+          "term": "discharged",
+          "definition": "Describing an ion that has reached an electrode and turned into an element by gaining or losing electrons.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Identify the product formed during electrolysis at the anode and cathode for the following binary ionic compounds: 1. Molten copper chloride. 2. Molten magnesium oxide.",
+        "steps": [
+          "Molten copper chloride: copper ions have a positive charge so are attracted to the cathode and form copper metal.",
+          "Chloride ions have a negative charge so are attracted to the anode and form chlorine.",
+          "Molten magnesium oxide: magnesium ions have a positive charge so are attracted to the cathode and form magnesium metal.",
+          "Oxide ions have a negative charge so are attracted to the anode and form oxygen."
+        ],
+        "finalAnswer": "Molten copper chloride gives copper at the cathode and chlorine at the anode; molten magnesium oxide gives magnesium at the cathode and oxygen at the anode."
+      }
+    }
+  }
+}

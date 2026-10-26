@@ -1,0 +1,185 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_Hkwmd9GSp3gdxxR5",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "ac3c01fe9c7f4f21ecd4afc4ec026b597763ca9480a3d72ff81abb07e9458127",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_Hkwmd9GSp3gdxxR5",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Chemical Formulae, Equations, Calculations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-8-empirical-molecular-formulae",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.32",
+        "text": "know what is meant by the terms empirical formula and molecular formula"
+      },
+      {
+        "code": "4CH1-1.33",
+        "text": "calculate empirical and molecular formulae from experimental data"
+      },
+      {
+        "code": "4CH1-1.31",
+        "text": "understand how the formulae of simple compounds can be obtained experimentally, including metal oxides, water and salts containing water of crystallisation"
+      }
+    ],
+    "primer": {
+      "text": "Masses have already been turned into formulae at the bench; this note does the same job on paper from raw numbers. Two names matter: the empirical formula, the simplest whole-number ratio, and the molecular formula, the true atom count in a molecule. The same six-step table then stretches to cover salts with water locked in their crystals.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_Hkwmd9GSp3gdxxR5::L1",
+        "title": "Empirical Formulae",
+        "sourceHeadings": [
+          "Empirical & Molecular Formulae",
+          "How to calculate empirical formulae"
+        ],
+        "specRefs": [
+          "4CH1-1.32",
+          "4CH1-1.33"
+        ],
+        "opening": "Two formulae describe the same compound at two levels of detail: the molecular formula counts every atom, while the empirical formula compresses that count to its simplest whole-number ratio. Organic molecules often differ between the two, and ionic compounds are always written in empirical form.",
+        "keyPoints": [
+          "The molecular formula gives how many atoms of each type sit in one molecule.",
+          "The empirical formula is the simplest whole-number ratio of the atoms of each element present.",
+          "Ethanoic acid shows the gap: molecular C2H4O2 against empirical CH2O.",
+          "Ionic compounds are always written as empirical formulae; organic molecules often differ between the two forms.",
+          "Empirical working is methodical: element, value, relative atomic mass, moles, then ratio."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Divide each element's mass by its relative atomic mass, then divide every result by the smallest. Whole numbers rarely arrive on their own, so multiply all values by the same small number when halves or thirds appear.",
+            "analogy": "Simplifying a fraction to lowest terms is the whole game: 4/6 and 2/3 describe the same amount, and C2H4O2 and CH2O describe the same molecule's proportions.",
+            "examPointer": "Percentages are treated as grams: assume a 100 g sample and the numbers drop straight into the table."
+          },
+          "medium": {
+            "restatement": "The table method enforces order - element, value, relative atomic mass, moles, ratio, formula - and the ratio step is where judgement lives: divide by the smallest, then scale every column by one shared multiplier until all values are whole.",
+            "analogy": "Picture six drains emptying at different speeds; dividing every speed by the slowest leaves a whole-number picture of how each compares without any absolute value surviving.",
+            "examPointer": "When a ratio lands on .5, .33 or .25, multiply by two, three or four respectively - the exam hint expects exactly this rescue."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Hkwmd9GSp3gdxxR5::L1::Q1",
+          "rn_Hkwmd9GSp3gdxxR5::L1::Q2",
+          "rn_Hkwmd9GSp3gdxxR5::L1::Q3",
+          "rn_Hkwmd9GSp3gdxxR5::L1::Q4",
+          "rn_Hkwmd9GSp3gdxxR5::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_Hkwmd9GSp3gdxxR5::L2",
+        "title": "Molecular Formulae & Hydrated Salts",
+        "sourceHeadings": [
+          "How to calculate molecular formula",
+          "Deducing formulae of hydrated salts"
+        ],
+        "specRefs": [
+          "4CH1-1.33",
+          "4CH1-1.31"
+        ],
+        "opening": "The molecular formula asks one question: how many empirical units fit inside the real molecule? Divide the compound's relative formula mass by the empirical formula's own mass and the answer is the multiplier. The same table, fed salt and water instead of elements, then extends to hydrated salts.",
+        "keyPoints": [
+          "The empirical formula's own mass comes from adding the relative atomic masses of its atoms.",
+          "Divide the molecular formula's mass by the empirical formula's mass; the result is the multiplier.",
+          "Multiply every subscript in the empirical formula by that multiplier to reach the molecular formula.",
+          "A hydrated salt carries water molecules in its crystal structure, written after a dot such as CuSO4.5H2O.",
+          "Heat the salt until constant mass, re-weigh, and the mass lost is the water of crystallisation.",
+          "The empirical table adapts: salt and water replace the elements, relative formula masses replace the atomic ones."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Empirical mass first, then the compound's real mass divided by it, gives how many copies of the empirical unit the molecule truly holds. Hydrated salts run the identical table with salt and water as the two columns.",
+            "analogy": "If the empirical formula is a building instruction for one small block, the molecular mass tells you how many of those blocks were actually snapped together.",
+            "examPointer": "The dot matters: CuSO4.5H2O is one formula unit with five waters, not a mixture - quote it complete or lose the mark."
+          },
+          "medium": {
+            "restatement": "The multiplier is always a whole number: real molecules hold whole copies of their simplest ratio. For hydrated salts the two columns become the anhydrous salt and water, their relative formula masses replace atomic ones, and the ratio lands as one salt to x waters.",
+            "analogy": "Think of bulk packaging: the empirical formula is the item, the multiplier is how many items per box, and the molecular formula is the box's full contents list.",
+            "examPointer": "The specification is quiet on hydrated-salt working, but it is empirical-formula method rebadged - learn it once and both questions are covered."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Hkwmd9GSp3gdxxR5::L2::Q1",
+          "rn_Hkwmd9GSp3gdxxR5::L2::Q2",
+          "rn_Hkwmd9GSp3gdxxR5::L2::Q3",
+          "rn_Hkwmd9GSp3gdxxR5::L2::Q4",
+          "rn_Hkwmd9GSp3gdxxR5::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "molecular formula",
+          "definition": "The formula showing how many atoms of each type are present in one molecule.",
+          "firstLesson": 1
+        },
+        {
+          "term": "empirical formula",
+          "definition": "The simplest whole-number ratio of the atoms of each element in a compound.",
+          "firstLesson": 1
+        },
+        {
+          "term": "relative atomic mass",
+          "definition": "The table value each mass is divided by to reach moles.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ionic compound",
+          "definition": "A compound of ions whose written formula is always the empirical form.",
+          "firstLesson": 1
+        },
+        {
+          "term": "relative formula mass",
+          "definition": "The total of the relative atomic masses in a formula.",
+          "firstLesson": 2
+        },
+        {
+          "term": "hydrated salt",
+          "definition": "A crystallised salt containing water molecules as part of its structure.",
+          "firstLesson": 2
+        },
+        {
+          "term": "water of crystallisation",
+          "definition": "Water molecules built into a hydrated salt, written after the dot.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A sample of a compound was found to contain 10 g of hydrogen and 80 g of oxygen. Calculate the empirical formula of this compound. Relative atomic masses: H 1, O 16.",
+        "steps": [
+          "Moles of hydrogen: 10 / 1 = 10.",
+          "Moles of oxygen: 80 / 16 = 5.",
+          "Hydrogen ratio: 10 / 5 = 2.",
+          "Oxygen ratio: 5 / 5 = 1."
+        ],
+        "finalAnswer": "The empirical formula is H2O."
+      }
+    }
+  }
+}

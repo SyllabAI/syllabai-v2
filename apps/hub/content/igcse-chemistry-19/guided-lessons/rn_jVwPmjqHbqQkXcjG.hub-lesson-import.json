@@ -1,0 +1,163 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_jVwPmjqHbqQkXcjG",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a8fd590884218fdf9a6a0f56687b51a4088276d368e25c78561f51f8631ebe9a",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_jVwPmjqHbqQkXcjG",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Ionic Bonding",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-6-ionic-bonding/1-6-5-ionic-compounds-bonds-structure-and-properties",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.41",
+        "text": "understand ionic bonding in terms of electrostatic attractions"
+      },
+      {
+        "code": "4CH1-1.42",
+        "text": "understand why compounds with giant ionic lattices have high melting and boiling points"
+      },
+      {
+        "code": "4CH1-1.43",
+        "text": "know that ionic compounds do not conduct electricity when solid, but do conduct electricity when molten and in aqueous solution"
+      }
+    ],
+    "primer": {
+      "text": "From Ionic Bonding you already know how metal atoms hand electrons to non-metal atoms, leaving positive and negative ions. This note follows those ions into the solid they build: the forces that hold the structure together, why so much heat is needed to melt it, and why the same solid refuses to conduct until it is melted or dissolved.",
+      "prerequisiteSubtopic": "Ionic Bonding"
+    },
+    "modules": [
+      {
+        "id": "rn_jVwPmjqHbqQkXcjG::L1",
+        "title": "Ionic bonding & giant ionic lattices",
+        "sourceHeadings": [
+          "Ionic bonding",
+          "Ionic lattices"
+        ],
+        "specRefs": [
+          "4CH1-1.41",
+          "4CH1-1.42"
+        ],
+        "opening": "An ionic solid is a tightly packed arrangement of alternating positive and negative ions, held in place by strong electrostatic forces that act in every direction. Those forces are the ionic bonds. Because the ions build a giant lattice with a fixed alternating pattern, melting the solid means overcoming attractions that run through the whole structure, which is why the melting points are high.",
+        "keyPoints": [
+          "An ionic compound packs positive and negative ions alternately into a regular giant lattice.",
+          "Strong electrostatic forces of attraction between opposite charges hold the lattice together in all directions.",
+          "High melting and boiling points follow, because the forces need a large amount of thermal energy to overcome.",
+          "The larger the charges on the ions, the stronger the forces and the higher the melting point.",
+          "Magnesium oxide, with 2+ and 2- ions, melts at a higher temperature than sodium chloride with its single charges."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Positive and negative ions stack in a regular pattern with strong attractions between every opposite pair. Those attractions grip the whole structure, so a lot of heat is needed to shake it apart, and doubly charged ions grip harder than singly charged ones.",
+            "analogy": "Think of a wall built from alternating magnets: every magnet grips its neighbours on all sides, and pulling the wall apart means fighting every grip at once.",
+            "examPointer": "When explaining a high melting point, name three things: the giant lattice, the strong electrostatic forces, and the large amount of energy needed to overcome them."
+          },
+          "medium": {
+            "restatement": "The lattice owes its stability to electrostatic attraction acting between every oppositely charged pair, in every direction, so no single link can be singled out as the one to break. Melting or boiling requires enough thermal energy to loosen the entire array, and the ion charge magnitudes set the force strength, which is why magnesium oxide outranks sodium chloride.",
+            "analogy": "Picture a velcro sheet where every hook catches every loop it meets: the bigger the hooks, the tighter the sheet, and separating it means peeling the whole surface at once.",
+            "examPointer": "Comparison questions expect the charge link made explicit: state that a 2+/2- pair attracts more strongly than a 1+/1- pair, then attach the consequence to the melting point order."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_jVwPmjqHbqQkXcjG::L1::Q1",
+          "rn_jVwPmjqHbqQkXcjG::L1::Q2",
+          "rn_jVwPmjqHbqQkXcjG::L1::Q3",
+          "rn_jVwPmjqHbqQkXcjG::L1::Q4",
+          "rn_jVwPmjqHbqQkXcjG::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_jVwPmjqHbqQkXcjG::L2",
+        "title": "Conductivity of ionic compounds",
+        "sourceHeadings": [
+          "Conductivity of ionic compounds"
+        ],
+        "specRefs": [
+          "4CH1-1.43"
+        ],
+        "opening": "For a current to flow, freely moving charged particles must be present to carry it. In solid sodium chloride the ions are locked in their lattice positions, so the solid does not conduct. Melt the compound or dissolve it in water and the ions break free to move, which is why the molten liquid and the solution both conduct well.",
+        "keyPoints": [
+          "Electrical conduction needs mobile charged particles, such as electrons or ions, to carry the current.",
+          "Solid ionic compounds are poor conductors because their ions are fixed in the lattice and cannot move.",
+          "Molten ionic compounds conduct well, because melting frees the ions to travel through the liquid.",
+          "Aqueous ionic compounds also conduct, because dissolving in water releases the ions from the lattice.",
+          "It is the ions that move and carry the charge, never electrons, when an ionic compound conducts."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Ions locked in place cannot carry a current, so the solid does not conduct. Melting or dissolving unlocks them, and the mobile ions then carry the charge through the liquid, which is why the molten state and solutions both conduct.",
+            "analogy": "Think of a car park where every car sits tightly in its bay: no traffic moves until the barriers open, and once released the cars can flow out in every direction.",
+            "examPointer": "The classic trap is writing that electrons carry the charge in a salt solution; the moving particles are the ions, so name them explicitly in answers."
+          },
+          "medium": {
+            "restatement": "Conduction demands mobile charge carriers. The lattice satisfies everything except mobility: the ions are charged but fixed. Melting or dissolving removes the positional constraint, letting ions migrate through the liquid under an applied field, so the molten compound and its aqueous solution both conduct, while the solid remains an insulator.",
+            "analogy": "Picture a flooded car park after the barriers fail: every car is free to drift with the water, and the crowd of moving cars is the current that the locked car park could never supply.",
+            "examPointer": "Contrast the three states explicitly when asked: solid non-conductor, molten conductor, solution conductor, and credit the freed ions as the carriers in the last two."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_jVwPmjqHbqQkXcjG::L2::Q1",
+          "rn_jVwPmjqHbqQkXcjG::L2::Q2",
+          "rn_jVwPmjqHbqQkXcjG::L2::Q3",
+          "rn_jVwPmjqHbqQkXcjG::L2::Q4",
+          "rn_jVwPmjqHbqQkXcjG::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "electrostatic",
+          "definition": "Describing the forces of attraction or repulsion that act between electric charges.",
+          "firstLesson": 1
+        },
+        {
+          "term": "lattice",
+          "definition": "The regular, repeating three-dimensional arrangement of ions in an ionic solid.",
+          "firstLesson": 1
+        },
+        {
+          "term": "molten",
+          "definition": "Describing a solid that has been heated past its melting point into a liquid.",
+          "firstLesson": 2
+        },
+        {
+          "term": "aqueous",
+          "definition": "Describing a substance dissolved in water.",
+          "firstLesson": 2
+        },
+        {
+          "term": "current",
+          "definition": "A flow of charged particles, such as electrons or ions.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

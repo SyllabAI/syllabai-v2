@@ -1,0 +1,178 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_xT8XsdJtDX5gNFXj",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "258fe48f8e5280118d65ccab879398482310160143d23a5d976701d2acbef08f",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_xT8XsdJtDX5gNFXj",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Chemical Formulae, Equations, Calculations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-3-moles-mass-and-rfm",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.27",
+        "text": "know that the mole(mol) is the unit for the amount of a substance"
+      },
+      {
+        "code": "4CH1-1.28",
+        "text": "understand how to carry out calculations involving amount of substance, relative atomic mass $ (A_{r}) $ and relative formula mass $ (M_{r}) $"
+      }
+    ],
+    "primer": {
+      "text": "You already met relative atomic mass (Ar) in Atomic Structure, where it compares the mass of an atom with the carbon-12 scale. You can also write formulae such as H2O and NaCl and add atomic masses to find a compound's relative formula mass. This note adds the mole, the bridge between the masses you can weigh and the numbers of particles that react.",
+      "prerequisiteSubtopic": "Atomic Structure"
+    },
+    "modules": [
+      {
+        "id": "rn_xT8XsdJtDX5gNFXj::L1",
+        "title": "The Mole",
+        "sourceHeadings": [
+          "The Mole",
+          "The mole"
+        ],
+        "specRefs": [
+          "4CH1-1.27"
+        ],
+        "opening": "Bundles make counting practical. Paper is sold in reams and eggs in dozens, and chemists bundle particles in the same spirit: one mole is a fixed count of particles, 6.02 × 10^23 of them. Because every mole holds the same count, one mole of different substances generally has a different mass — a value called the molar mass.",
+        "keyPoints": [
+          "Chemical amounts are counted in moles, and the mole (mol) is the accepted unit of amount of substance.",
+          "Equal amounts in moles contain equal numbers of particles, whatever the substance.",
+          "The number of particles in one mole is the Avogadro constant, 6.02 × 10^23 per mole.",
+          "The mass of one mole is the molar mass: for an element it matches the relative atomic mass in grams.",
+          "For a compound, the molar mass matches the relative formula mass in grams, found by adding the atomic masses together."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A mole is simply a fixed number of particles: 6.02 × 10^23 of them, the same count for every substance. The mass of that count is the molar mass, and for an element it equals the relative atomic mass written in grams.",
+            "analogy": "Think of a dozen. A dozen eggs and a dozen oranges hold the same count but weigh differently; a mole of carbon and a mole of helium also hold the same count but weigh 12 g and 4 g.",
+            "examPointer": "Questions may ask how many particles sit in a mole of atoms, molecules, ions or electrons — the count is identical, so always name the particle type in the answer."
+          },
+          "medium": {
+            "restatement": "The mole (mol) is the unit of amount of substance: one mole of any species contains 6.02 × 10^23 of the particles stated, whether atoms, molecules, ions or formula units. Molar mass links that count to grams, matching Ar for elements and Mr for compounds.",
+            "analogy": "A bank counting notes in bundles still cares which currency it holds; a chemist counting particles in moles still cares whether the bundle contains sodium atoms or hydrogen molecules.",
+            "examPointer": "Expect a comparison item such as: one mole of carbon holds as many atoms as there are molecules in one mole of carbon dioxide — state the particle type, then apply the Avogadro constant."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_xT8XsdJtDX5gNFXj::L1::Q1",
+          "rn_xT8XsdJtDX5gNFXj::L1::Q2",
+          "rn_xT8XsdJtDX5gNFXj::L1::Q3",
+          "rn_xT8XsdJtDX5gNFXj::L1::Q4",
+          "rn_xT8XsdJtDX5gNFXj::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_xT8XsdJtDX5gNFXj::L2",
+        "title": "Moles-Mass Calculations",
+        "sourceHeadings": [
+          "Moles-Mass Calculations",
+          "Calculating moles and masses"
+        ],
+        "specRefs": [
+          "4CH1-1.28"
+        ],
+        "opening": "Balances cannot weigh out one mole directly, yet reactions happen particle by particle in fixed molar ratios. The way through is arithmetic: one relationship links moles, mass in grams and molar mass, and it works in both directions. Master the rearrangement once and every moles-mass question becomes two lines of working.",
+        "keyPoints": [
+          "Reactions happen in molar ratios, but laboratory balances read grams, so converting between the two units is unavoidable.",
+          "One relationship links the quantities: moles = mass ÷ molar mass.",
+          "Rearranged the same way, mass = moles × molar mass.",
+          "Molar mass carries the unit g mol^-1 and is numerically equal to Ar for an element or Mr for a compound.",
+          "Standard form keeps very small or large answers readable, such as 7.71 × 10^-3 mol for 2.64 g of sucrose."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "To find moles, divide the mass by the molar mass; to find mass, multiply the moles by the molar mass. Watch the units as a direction check: g mol^-1 cancels grams to leave moles.",
+            "analogy": "Coins come in rolls of a fixed mass. Weighing a bag of rolls and dividing by the mass of one roll tells you how many rolls you have — the same move as grams divided by g mol^-1.",
+            "examPointer": "Write the relationship before substituting numbers and show every step; method marks survive an arithmetic slip, while a bare answer does not."
+          },
+          "medium": {
+            "restatement": "Amount in moles = mass in grams ÷ molar mass in g mol^-1, where molar mass equals Ar for an element and Mr for a compound; rearranging gives mass = moles × molar mass. Quote very small or very large answers in standard form to three significant figures.",
+            "analogy": "A currency converter uses one exchange rate in two directions, pounds to euros or the reverse; the moles-mass relationship is that single rate, and molar mass is the published figure on the board.",
+            "examPointer": "Stems often supply Mr directly, as with 2.64 g of sucrose at Mr 342.3; divide, then present the answer in standard form with the unit mol still visible."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_xT8XsdJtDX5gNFXj::L2::Q1",
+          "rn_xT8XsdJtDX5gNFXj::L2::Q2",
+          "rn_xT8XsdJtDX5gNFXj::L2::Q3",
+          "rn_xT8XsdJtDX5gNFXj::L2::Q4",
+          "rn_xT8XsdJtDX5gNFXj::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "mole (mol)",
+          "definition": "The unit of amount of substance in chemistry; one mole contains 6.02 × 10^23 of the stated particles.",
+          "firstLesson": 1
+        },
+        {
+          "term": "Avogadro constant",
+          "definition": "The number of particles in one mole of any substance, equal to 6.02 × 10^23 per mole.",
+          "firstLesson": 1
+        },
+        {
+          "term": "molar mass",
+          "definition": "The mass of one mole of a substance in grams per mole; numerically the Ar of an element or the Mr of a compound.",
+          "firstLesson": 1
+        },
+        {
+          "term": "relative atomic mass (Ar)",
+          "definition": "The mass of one atom of an element measured against the carbon-12 scale.",
+          "firstLesson": 1
+        },
+        {
+          "term": "formula unit",
+          "definition": "The particle counted for an ionic compound, matching the ratio of ions shown in its formula.",
+          "firstLesson": 1
+        },
+        {
+          "term": "relative formula mass (Mr)",
+          "definition": "The total of the relative atomic masses added across a compound's formula.",
+          "firstLesson": 2
+        },
+        {
+          "term": "standard form",
+          "definition": "A way of writing very large or very small numbers as a multiplier and a power of ten.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Both worked examples from the note body, one per direction of the moles-mass relationship: (1) What is the mass of 0.250 moles of zinc? (2) How many moles are in 2.64 g of sucrose, C12H22O11 (Mr = 342.3)?",
+        "steps": [
+          "Example 1 — mass from moles: the molar mass of zinc equals its relative atomic mass, 65.38 g mol^-1.",
+          "Example 1 — mass is found by multiplying moles by molar mass: 0.250 × 65.38 = 16.3 (3 s.f.).",
+          "Example 2 — moles from mass: the molar mass of sucrose is 342.3 g mol^-1.",
+          "Example 2 — moles are found by dividing mass by molar mass: 2.64 ÷ 342.3 = 7.71 × 10^-3 mol (3 s.f.)."
+        ],
+        "finalAnswer": "16.3 g of zinc (3 s.f.); 7.71 × 10^-3 mol of sucrose (3 s.f.)"
+      }
+    }
+  }
+}

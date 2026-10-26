@@ -1,0 +1,158 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_t68QRDhwR6r5gxYX",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "896e336e57952664ec4a8d47feebc4c299140f152eb6e00cccf7f53f2cb84479",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_t68QRDhwR6r5gxYX",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Reversible Reactions & Equilibria",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-3-reversible-reactions-and-equilibria/3-3-1-reversible-reactions",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.17",
+        "text": "know that some reactions are reversible and this is indicated by the symbol ⇌ in equations"
+      },
+      {
+        "code": "4CH1-3.18",
+        "text": "describe reversible reactions such as the dehydration of hydrated copper(II) sulfate and the effect of heat on ammonium chloride"
+      }
+    ],
+    "primer": {
+      "text": "From Rates of Reaction you already know that changing conditions changes how fast reactions run. This note shows that conditions can even change the direction a reaction takes, using the two-arrow symbol that marks a reversible change. Two classic examples, heated ammonium chloride and blue copper sulfate, carry the whole idea.",
+      "prerequisiteSubtopic": "Rates of Reaction"
+    },
+    "modules": [
+      {
+        "id": "rn_t68QRDhwR6r5gxYX::L1",
+        "title": "Reactions that run both ways",
+        "sourceHeadings": [
+          "Reversible reactions"
+        ],
+        "specRefs": [
+          "4CH1-3.17"
+        ],
+        "opening": "Most equations you have met end when the reactants run out, but some reactions can be undone by their own products. This lesson introduces the double arrow that marks chemistry able to travel in both directions.",
+        "keyPoints": [
+          "In reversible reactions the product molecules can react again or decompose to reform the reactants.",
+          "A reversible reaction can occur in both directions at the same time.",
+          "The forward reaction forms the products while the reverse reaction forms the reactants.",
+          "The symbol with two half arrowheads, one pointing each way, indicates a reversible reaction.",
+          "Changing the reaction conditions can change the direction a reversible reaction takes."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Some reactions can be undone: the products can turn back into the reactants, so the change runs both ways. Chemists show this with two arrows, one for each direction of travel.",
+            "analogy": "It is like a two-way street: the same road carries traffic into town and back out, and a diversion can send more cars either way.",
+            "examPointer": "Use the two-way arrow in equations for reversible changes and name the forward and reverse reactions."
+          },
+          "medium": {
+            "restatement": "In a reversible reaction the products can react with each other or decompose, reforming the original reactants, so the change proceeds in both directions. The forward reaction builds products, the reverse reaction rebuilds reactants, and the double half-arrow symbol records the two-way traffic.",
+            "analogy": "A revolving door lets people pass both ways through the same opening; the crowd on each side is the forward and reverse traffic.",
+            "examPointer": "Draw the two half arrowheads correctly, top to the right and bottom to the left, and label both directions."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_t68QRDhwR6r5gxYX::L1::Q1",
+          "rn_t68QRDhwR6r5gxYX::L1::Q2",
+          "rn_t68QRDhwR6r5gxYX::L1::Q3",
+          "rn_t68QRDhwR6r5gxYX::L1::Q4",
+          "rn_t68QRDhwR6r5gxYX::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_t68QRDhwR6r5gxYX::L2",
+        "title": "Two flagship reversible reactions",
+        "sourceHeadings": [
+          "Thermal decomposition of ammonium chloride",
+          "Dehydration of hydrated copper(II) sulfate"
+        ],
+        "specRefs": [
+          "4CH1-3.18"
+        ],
+        "opening": "Two reactions carry the reversibility flag in exams: a white solid that fizzes apart when heated and re-forms on cooling, and a blue crystal that loses its water and regains it. This lesson writes both equations and their colour stories.",
+        "keyPoints": [
+          "Warm ammonium chloride splits into ammonia and hydrogen chloride gases, which rejoin on cooling.",
+          "The reversible equation shows solid ammonium chloride between the two gases with a double arrow.",
+          "Hydrated copper(II) sulfate is blue and holds water inside its crystal structure.",
+          "Heating drives off the water to leave white anhydrous copper(II) sulfate in an endothermic change.",
+          "Adding water to the white powder turns it blue again and gives out a large amount of heat."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Heating ammonium chloride splits it into two gases, and cooling lets the gases rejoin into the white solid. Blue copper sulfate loses its stored water when warmed and turns white, then drinks water back in and turns blue once more.",
+            "analogy": "It is like a sponge: squeeze the water out with effort, and it drinks it back up the moment water is offered.",
+            "examPointer": "Quote the colour changes, blue to white and back, and the direction of each energy change."
+          },
+          "medium": {
+            "restatement": "Ammonium chloride decomposes on heating into ammonia and hydrogen chloride, which recombine to the solid as the hot gases cool. Hydrated copper(II) sulfate gives up its stored water on heating to form white anhydrous copper(II) sulfate, and adding water reforms the blue hydrated salt while releasing heat.",
+            "analogy": "The copper salt is a colour-coded water meter: blue says water is stored, white says the store is empty, and each refill or emptying runs by heat moving one way or the other.",
+            "examPointer": "Give both equations with the double arrow and attach endothermic to the heating and exothermic to the rehydration."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_t68QRDhwR6r5gxYX::L2::Q1",
+          "rn_t68QRDhwR6r5gxYX::L2::Q2",
+          "rn_t68QRDhwR6r5gxYX::L2::Q3",
+          "rn_t68QRDhwR6r5gxYX::L2::Q4",
+          "rn_t68QRDhwR6r5gxYX::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "reversible reaction",
+          "definition": "A reaction whose products can react or decompose to reform the reactants, shown with a double arrow.",
+          "firstLesson": 1
+        },
+        {
+          "term": "forward reaction",
+          "definition": "The direction of a reversible change that forms the products.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reverse reaction",
+          "definition": "The direction of a reversible change that reforms the reactants.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dehydration",
+          "definition": "The removal of water from a substance, as when hydrated copper sulfate is heated.",
+          "firstLesson": 2
+        },
+        {
+          "term": "water of crystallisation",
+          "definition": "Water included in the structure of some salts during crystallisation, affecting their shape and colour.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

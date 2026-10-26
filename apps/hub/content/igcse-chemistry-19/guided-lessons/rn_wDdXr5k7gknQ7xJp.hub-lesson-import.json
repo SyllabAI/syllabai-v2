@@ -1,0 +1,216 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_wDdXr5k7gknQ7xJp",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "39a46352f2836e88e752ac6eb4ab4c967a6b431b9d48eb3507d5a1967e1adcfa",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_wDdXr5k7gknQ7xJp",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Introduction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-1-introduction/4-1-1-organic-compounds",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.1",
+        "text": "know that a hydrocarbon is a compound of hydrogen and carbon only"
+      },
+      {
+        "code": "4CH1-4.2",
+        "text": "understand how to represent organic molecules using empirical formulae, molecular formulae, general formulae, structural formulae and displayed formulae"
+      },
+      {
+        "code": "4CH1-4.3",
+        "text": "know what is meant by the terms homologous series, functional group and isomerism"
+      },
+      {
+        "code": "4CH1-4.5",
+        "text": "understand how to write the possible structural and displayed formulae of an organic molecule given its molecular formula"
+      }
+    ],
+    "primer": {
+      "text": "From covalent bonding you already know that non-metal atoms share pairs of electrons, and carbon is famous for chaining with itself. This note opens organic chemistry: what counts as an organic compound, the hydrocarbon rule, five ways of drawing the same molecule, and the family language chemists use for it all.",
+      "prerequisiteSubtopic": "Reversible Reactions & Equilibria"
+    },
+    "modules": [
+      {
+        "id": "rn_wDdXr5k7gknQ7xJp::L1",
+        "title": "Organic chemistry and the hydrocarbon rule",
+        "sourceHeadings": [
+          "What is organic chemistry",
+          "What is a hydrocarbon?"
+        ],
+        "specRefs": [
+          "4CH1-4.1"
+        ],
+        "opening": "Organic chemistry studies the compounds built around carbon, from fuels to plastics. Its simplest members contain just two elements, and that two-element rule is what this lesson pins down first.",
+        "keyPoints": [
+          "Organic chemistry studies carbon-containing compounds, their structures, their properties and their reactions.",
+          "Metal carbonates, carbon dioxide and carbon monoxide are excluded from organic chemistry by convention.",
+          "A hydrocarbon is a compound whose molecules contain hydrogen and carbon atoms and no other element.",
+          "The word only matters in the definition, so a molecule with oxygen present is not a hydrocarbon.",
+          "Hydrocarbons matter because fuels such as petrol and natural gas are built from them."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Organic chemistry is the study of carbon compounds. A hydrocarbon is the simplest kind: its molecules hold hydrogen and carbon atoms and nothing else.",
+            "analogy": "Think of carbon as the frame of a bicycle and hydrogen as everything bolted on; a hydrocarbon is a bike built from exactly those two parts and no extras.",
+            "examPointer": "When defining a hydrocarbon, state that hydrogen and carbon are the only elements present, or the marking point is lost."
+          },
+          "medium": {
+            "restatement": "Organic chemistry is the study of the structure, properties and reactions of carbon compounds, with metal carbonates, carbon dioxide and carbon monoxide left out by convention. A hydrocarbon is a compound of hydrogen and carbon with no third element allowed.",
+            "analogy": "A hydrocarbon molecule is like a lego model built from exactly two brick colours; the moment a third colour appears, the model has left the hydrocarbon family for good.",
+            "examPointer": "Quote the only-elements rule when defining a hydrocarbon, and expect a follow-up asking why carbon dioxide does not qualify."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_wDdXr5k7gknQ7xJp::L1::Q1",
+          "rn_wDdXr5k7gknQ7xJp::L1::Q2",
+          "rn_wDdXr5k7gknQ7xJp::L1::Q3",
+          "rn_wDdXr5k7gknQ7xJp::L1::Q4",
+          "rn_wDdXr5k7gknQ7xJp::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_wDdXr5k7gknQ7xJp::L2",
+        "title": "Five ways to represent the same molecule",
+        "sourceHeadings": [
+          "Representing Organic Molecules",
+          "Structural formulae"
+        ],
+        "specRefs": [
+          "4CH1-4.2",
+          "4CH1-4.5"
+        ],
+        "opening": "One molecule can be written five different ways, and each way trades detail for convenience. This lesson walks through empirical, molecular, general, displayed and structural representations so you can pick the right one on demand.",
+        "keyPoints": [
+          "An empirical formula shows the simplest whole-number ratio of the atoms in a molecule.",
+          "A molecular formula counts the actual number of each type of atom in one molecule.",
+          "A general formula describes a whole family of compounds using the letter n, such as CnH2n+2 for alkanes.",
+          "A displayed formula shows every atom and every bond, including their spatial arrangement.",
+          "A structural formula leaves most bonds out, keeping only the key ones plus bracketed side groups."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The five representations are a ladder of detail. Empirical gives ratios, molecular gives counts, general covers a family, displayed draws every bond, and structural sketches the important parts only. Pick the one the question asks for, and check which bonds it must show.",
+            "analogy": "It is like describing a house five ways: a pie-chart of materials, an inventory of rooms, a blueprint template for estates, a full photo, and a quick sketch of the walls that matter.",
+            "examPointer": "Match the representation to the command word: count atoms for molecular, draw every bond for displayed."
+          },
+          "medium": {
+            "restatement": "Empirical formulae compress a molecule to its simplest atom ratio, while molecular formulae state the true atom counts. General formulae use n to describe a homologous family; displayed formulae draw all bonds and atoms in their spatial arrangement, and structural formulae omit most bonds, showing key multiple bonds and bracketed groups.",
+            "analogy": "A crowd photo, a head-count, a family portrait template, a zoomed portrait showing every face, and a group photo with only the leaders in focus tell the same people story at five zoom levels, just like the five formulae tell one molecule story.",
+            "examPointer": "When asked for a displayed formula, draw every bond explicitly; brackets and missing C-H bonds belong to structural formulae and lose the mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_wDdXr5k7gknQ7xJp::L2::Q1",
+          "rn_wDdXr5k7gknQ7xJp::L2::Q2",
+          "rn_wDdXr5k7gknQ7xJp::L2::Q3",
+          "rn_wDdXr5k7gknQ7xJp::L2::Q4",
+          "rn_wDdXr5k7gknQ7xJp::L2::Q5"
+        ]
+      },
+      {
+        "id": "rn_wDdXr5k7gknQ7xJp::L3",
+        "title": "Families, functional groups and isomers",
+        "sourceHeadings": [
+          "Homologous Series",
+          "Isomerism"
+        ],
+        "specRefs": [
+          "4CH1-4.3"
+        ],
+        "opening": "Chemists sort the thousands of organic compounds into families that behave alike. This lesson defines the three sorting words the exam rewards: homologous series, functional group and isomerism.",
+        "keyPoints": [
+          "A homologous series is a family of compounds with the same functional group and similar chemical properties.",
+          "Members of a homologous series share one general formula and differ by a CH2 unit between neighbours.",
+          "Physical properties change gradually across a homologous series, a pattern called gradation.",
+          "A functional group is the bonded arrangement of atoms that decides how the family reacts.",
+          "Isomers share one molecular formula but differ in their displayed formulae, like propene and cyclopropane."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A homologous series is a chemical family whose members share a functional group, a general formula and step-by-step properties. Isomers are different compounds that happen to share one molecular formula.",
+            "analogy": "A homologous series is like a boy-band lineup where each new member adds exactly one fixed costume piece; isomers are two bands wearing identical costumes but arranged differently on stage.",
+            "examPointer": "Name all three shared features when describing a homologous series: same functional group, same general formula, gradation in properties."
+          },
+          "medium": {
+            "restatement": "A homologous series is a family of organic compounds with the same functional group, the same general formula and similar chemistry, whose physical properties grade gradually and whose formulae rise by CH2 per member. Isomers carry the same molecular formula but differ in displayed formulae, which can give them different properties.",
+            "analogy": "Think of a staircase where each step adds one CH2 block and shifts boiling point slightly: same design, gradual change. Isomers are two buildings from the identical brick count assembled on different footprints.",
+            "examPointer": "For isomer questions, count atoms first and then compare how the bonds are arranged; identical counts with different arrangements is the whole claim."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_wDdXr5k7gknQ7xJp::L3::Q1",
+          "rn_wDdXr5k7gknQ7xJp::L3::Q2",
+          "rn_wDdXr5k7gknQ7xJp::L3::Q3",
+          "rn_wDdXr5k7gknQ7xJp::L3::Q4",
+          "rn_wDdXr5k7gknQ7xJp::L3::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "hydrocarbon",
+          "definition": "A compound whose molecules contain hydrogen and carbon atoms only, with no other element present.",
+          "firstLesson": 1
+        },
+        {
+          "term": "empirical formula",
+          "definition": "A formula showing the simplest possible whole-number ratio of the atoms in a molecule.",
+          "firstLesson": 2
+        },
+        {
+          "term": "displayed formula",
+          "definition": "A drawing that shows every atom and every bond in a molecule, also called the graphical formula.",
+          "firstLesson": 2
+        },
+        {
+          "term": "homologous series",
+          "definition": "A family of organic compounds with the same functional group, similar properties and formulae differing by CH2.",
+          "firstLesson": 3
+        },
+        {
+          "term": "isomerism",
+          "definition": "The existence of compounds that share one molecular formula but have different displayed formulae.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

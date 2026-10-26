@@ -1,0 +1,154 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_MVnFKDMVkswzpmpw",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "63b6cfb545bbe59acd58b6e025e739beb72e515e59b0ee572665c1de28225eda",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_MVnFKDMVkswzpmpw",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Covalent Bonding",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-7-covalent-bonding/1-7-2-covalent-bonds-dot-and-cross-diagrams",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.46",
+        "text": "understand how to use dot-and-cross diagrams to represent covalent bonds in: diatomic molecules, including hydrogen, oxygen, nitrogen, halogens and hydrogen halides; inorganic molecules including water, ammonia and carbon dioxide; organic molecules containing up to two carbon atoms, including methane, ethane, ethene and those containing halogen atoms."
+      }
+    ],
+    "primer": {
+      "text": "From the earlier note in Covalent Bonding you know that a covalent bond is a shared pair of electrons between two non-metal atoms. This note puts that idea on paper: dot-and-cross drawings for the small molecules the exam names, from hydrogen and the halogens through water, ammonia and carbon dioxide, up to methane and its two-carbon relatives.",
+      "prerequisiteSubtopic": "Covalent Bonding"
+    },
+    "modules": [
+      {
+        "id": "rn_MVnFKDMVkswzpmpw::L1",
+        "title": "Diatomic molecules",
+        "sourceHeadings": [
+          "Diatomic Molecules"
+        ],
+        "specRefs": [
+          "4CH1-1.46"
+        ],
+        "opening": "Diatomic molecules contain exactly two atoms, and their dot-and-cross diagrams are the simplest covalent drawings. Hydrogen shares one pair, chlorine shares one pair, oxygen shares two pairs and nitrogen shares three. Hydrogen chloride follows the hydrogen pattern, with one pair shared between a hydrogen atom and a halogen atom.",
+        "keyPoints": [
+          "A diatomic molecule contains exactly two atoms, such as H2, Cl2, O2, N2 or HCl.",
+          "Hydrogen and the halogens form single covalent bonds, so one pair is shared in each of H2 and Cl2.",
+          "Oxygen shares two pairs, giving a double bond, and nitrogen shares three pairs, giving a triple bond.",
+          "Hydrogen chloride shares one pair between the hydrogen atom and the halogen atom.",
+          "Each shared pair in the drawing uses one electron from each atom, keeping the donor symbols visible."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Draw each atom's outer electrons with its own symbol, then overlap the shells where the sharing happens. Hydrogen and chlorine overlap once for a single bond, oxygen twice, and nitrogen three times; every overlap is one shared pair, which is one covalent bond.",
+            "analogy": "Think of two lockers sharing a shelf: the shelf holds books from both owners at once, and the more shelves the two lockers share, the stronger the connection between them.",
+            "examPointer": "Count pairs carefully in the exam: one overlap for single bonds, two for oxygen, three for nitrogen, and state the number of shared pairs if asked."
+          },
+          "medium": {
+            "restatement": "The diagrams encode bond order visually: one overlapping shared pair for hydrogen, the halogens and the hydrogen halides; two for oxygen's double bond; three for nitrogen's triple bond. Each atom contributes one electron per shared pair, so the donor symbols remain traceable inside every overlap.",
+            "analogy": "Picture brackets holding two shelves together: one bracket for a light load, two for a heavier one, three for the heaviest, mirroring single, double and triple bonds.",
+            "examPointer": "If a question asks how many electrons are shared in O2, multiply the two bonds by the two electrons in each pair to reach four."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_MVnFKDMVkswzpmpw::L1::Q1",
+          "rn_MVnFKDMVkswzpmpw::L1::Q2",
+          "rn_MVnFKDMVkswzpmpw::L1::Q3",
+          "rn_MVnFKDMVkswzpmpw::L1::Q4",
+          "rn_MVnFKDMVkswzpmpw::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_MVnFKDMVkswzpmpw::L2",
+        "title": "Inorganic & organic molecules",
+        "sourceHeadings": [
+          "Inorganic Molecules",
+          "Organic Molecules"
+        ],
+        "specRefs": [
+          "4CH1-1.46"
+        ],
+        "opening": "The inorganic molecules on the list share pairs between unlike atoms: water has two single bonds, ammonia has three, and carbon dioxide has two double bonds. The organic drawings extend the same skill to carbon skeletons of up to two carbon atoms, covering methane, ethane, ethene and the halogen-substituted versions.",
+        "keyPoints": [
+          "Water shares one pair in each of its two O-H bonds, and ammonia shares one pair in each of its three N-H bonds.",
+          "Carbon dioxide shares two pairs with each oxygen atom, making two double bonds in the molecule.",
+          "Methane has four single C-H bonds, and ethane adds a C-C single bond between its two carbon atoms.",
+          "Ethene contains a C=C double bond, two shared pairs between its two carbon atoms.",
+          "Organic molecules in scope contain up to two carbon atoms, including versions with halogen atoms attached."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Water joins one oxygen to two hydrogens with one pair each; ammonia joins one nitrogen to three hydrogens; carbon dioxide joins one carbon to two oxygens with two pairs each. The organic set repeats the pattern around carbon chains of one or two atoms.",
+            "analogy": "It is like assembling toy molecules with two-peg joints and four-peg hubs: hydrogen offers one peg, oxygen two, nitrogen three, and carbon four, so the shared pegs show exactly which bonds form.",
+            "examPointer": "Draw every outer electron, then mark the shared overlaps; examiners check that both the bonding pairs and the non-bonding electrons are visible."
+          },
+          "medium": {
+            "restatement": "Each central atom donates as many shared pairs as its bonding pattern demands: oxygen two, nitrogen three, carbon four. The inorganic set exercises unlike-atom sharing, while the organic set, capped at two carbon atoms, adds carbon-carbon single and double bonds and halogen substitution without changing the pair-sharing principle.",
+            "analogy": "Think of carbon as a four-socket adapter, oxygen a two-socket one and nitrogen a three-socket one; the molecule is complete when every socket of every atom is filled by a shared pair.",
+            "examPointer": "Ethene is the classic double-bond check: two pairs between the carbons, two hydrogens per carbon, and four shared pairs across the whole molecule."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_MVnFKDMVkswzpmpw::L2::Q1",
+          "rn_MVnFKDMVkswzpmpw::L2::Q2",
+          "rn_MVnFKDMVkswzpmpw::L2::Q3",
+          "rn_MVnFKDMVkswzpmpw::L2::Q4",
+          "rn_MVnFKDMVkswzpmpw::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "diatomic",
+          "definition": "Describing a molecule made of exactly two atoms.",
+          "firstLesson": 1
+        },
+        {
+          "term": "covalent bond",
+          "definition": "A bond formed when two atoms share a pair of electrons.",
+          "firstLesson": 1
+        },
+        {
+          "term": "double bond",
+          "definition": "Two shared pairs of electrons between the same two atoms.",
+          "firstLesson": 1
+        },
+        {
+          "term": "triple bond",
+          "definition": "Three shared pairs of electrons between the same two atoms.",
+          "firstLesson": 1
+        },
+        {
+          "term": "molecule",
+          "definition": "A group of atoms joined by covalent bonds, acting as a single unit.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

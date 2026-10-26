@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_4tzwS4GZjPybwtkS",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "6aebcfd15b0060a9de86c028fa4b2ec3e849e0314b8f254ec953b392318becb8",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_4tzwS4GZjPybwtkS",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L1::Q1",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L1",
+      "stem": "A spoonful of sugar dissolves into a cup of tea. What is the sugar called?",
+      "misconceptionClass": "role-confusion error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The solute",
+          "correct": true,
+          "explanation": "The dissolved substance is the solute; the tea is the solvent doing the dissolving.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The solvent",
+          "correct": false,
+          "explanation": "The solvent is the liquid that does the dissolving - the tea, not the sugar.",
+          "misconception": "solute and solvent swapped"
+        },
+        {
+          "key": "C",
+          "text": "The solution",
+          "correct": false,
+          "explanation": "Solution names the sugar-plus-tea mixture as a whole, not the sugar alone.",
+          "misconception": "whole mixture named for one part"
+        },
+        {
+          "key": "D",
+          "text": "A saturated solute",
+          "correct": false,
+          "explanation": "Saturation is a separate idea about the maximum that can dissolve; nothing here says maximum.",
+          "misconception": "extra property invoked"
+        }
+      ]
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L1::Q2",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L1",
+      "stem": "What does concentration describe?",
+      "misconceptionClass": "definition error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The amount of solute in a specific volume of solvent",
+          "correct": true,
+          "explanation": "Both the solute amount and the volume matter; one without the other is not concentration.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The volume of solvent alone",
+          "correct": false,
+          "explanation": "Volume alone says nothing about how much solute sits in it.",
+          "misconception": "volume-only reading"
+        },
+        {
+          "key": "C",
+          "text": "The mass of solute alone",
+          "correct": false,
+          "explanation": "Mass alone ignores the volume it is spread through.",
+          "misconception": "amount-only reading"
+        },
+        {
+          "key": "D",
+          "text": "The strength of the solvent",
+          "correct": false,
+          "explanation": "Strength is a loose name for the solute-in-volume pairing; the solvent by itself has no strength here.",
+          "misconception": "property misassigned"
+        }
+      ]
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L1::Q3",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L1",
+      "stem": "Which pair of units can concentration be expressed in?",
+      "misconceptionClass": "unit error",
+      "options": [
+        {
+          "key": "A",
+          "text": "g / dm3 or mol / dm3",
+          "correct": true,
+          "explanation": "The volume stays in dm3 whether the solute amount is counted in grams or in moles.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "g / cm3 or mol / cm3",
+          "correct": false,
+          "explanation": "The specification quotes dm3, not cm3; cm3 values must be converted before concentration working.",
+          "misconception": "volume unit downshifted"
+        },
+        {
+          "key": "C",
+          "text": "mol / g or g / mol",
+          "correct": false,
+          "explanation": "Concentration divides by volume, never by mass.",
+          "misconception": "per-mass unit invented"
+        },
+        {
+          "key": "D",
+          "text": "dm3 / mol",
+          "correct": false,
+          "explanation": "That flips the fraction; solute amount sits on top with volume underneath.",
+          "misconception": "division inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L1::Q4",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L1",
+      "stem": "500 cm3 of solution must be converted to dm3. Which conversion is correct?",
+      "misconceptionClass": "conversion-direction error",
+      "options": [
+        {
+          "key": "A",
+          "text": "500 / 1000 = 0.5 dm3",
+          "correct": true,
+          "explanation": "Going from cm3 to dm3 means dividing by 1000, so 500 cm3 is 0.5 dm3.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "500 x 1000 = 500,000 dm3",
+          "correct": false,
+          "explanation": "Multiplying by 1000 travels the wrong way and inflates the volume hugely.",
+          "misconception": "multiplied where division was needed"
+        },
+        {
+          "key": "C",
+          "text": "500 / 100 = 5 dm3",
+          "correct": false,
+          "explanation": "The conversion factor is 1000, not 100.",
+          "misconception": "wrong divisor"
+        },
+        {
+          "key": "D",
+          "text": "500 x 10 = 5,000 dm3",
+          "correct": false,
+          "explanation": "Neither the factor nor the direction matches the cm3-to-dm3 rule.",
+          "misconception": "factor and direction both wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L1::Q5",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L1",
+      "stem": "What is the amount, in moles, of solute in 2.5 dm3 of a 0.2 mol / dm3 solution?",
+      "misconceptionClass": "triangle-operation error",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.5 mol",
+          "correct": true,
+          "explanation": "Moles = concentration x volume, so 0.2 x 2.5 = 0.5.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.08 mol",
+          "correct": false,
+          "explanation": "0.2 / 2.5 treats the triangle backwards; moles come from multiplying.",
+          "misconception": "division used where multiplication was needed"
+        },
+        {
+          "key": "C",
+          "text": "12.5 mol",
+          "correct": false,
+          "explanation": "2.5 / 0.2 flips the operation; the concentration divides the moles, not the other way round.",
+          "misconception": "division inverted"
+        },
+        {
+          "key": "D",
+          "text": "2.7 mol",
+          "correct": false,
+          "explanation": "Adding has no place in the triangle; the operation is multiplication.",
+          "misconception": "values added"
+        }
+      ]
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L2::Q1",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L2",
+      "stem": "What is the Mr of NaOH? (Na 23, H 1, O 16)",
+      "misconceptionClass": "formula-mass error",
+      "options": [
+        {
+          "key": "A",
+          "text": "40",
+          "correct": true,
+          "explanation": "23 + 16 + 1 = 40; every atom in the formula counts once.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "39",
+          "correct": false,
+          "explanation": "Leaving out hydrogen loses 1; the formula has three elements in it.",
+          "misconception": "hydrogen dropped"
+        },
+        {
+          "key": "C",
+          "text": "57",
+          "correct": false,
+          "explanation": "Adding 16 twice double-counts the single oxygen atom.",
+          "misconception": "oxygen counted twice"
+        },
+        {
+          "key": "D",
+          "text": "23",
+          "correct": false,
+          "explanation": "Sodium alone is not the formula total; Na, H and O all contribute.",
+          "misconception": "metal-only tally"
+        }
+      ]
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L2::Q2",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L2",
+      "stem": "How many moles are in 80 g of NaOH (Mr 40)?",
+      "misconceptionClass": "mole-division error",
+      "options": [
+        {
+          "key": "A",
+          "text": "2 mol",
+          "correct": true,
+          "explanation": "80 / 40 = 2; grams divide by Mr to give moles.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.5 mol",
+          "correct": false,
+          "explanation": "40 / 80 answers a different question; the mass divides by the Mr.",
+          "misconception": "division inverted"
+        },
+        {
+          "key": "C",
+          "text": "3200 mol",
+          "correct": false,
+          "explanation": "80 x 40 inflates; the Mr divides the mass.",
+          "misconception": "multiplied instead of divided"
+        },
+        {
+          "key": "D",
+          "text": "40 mol",
+          "correct": false,
+          "explanation": "40 is the per-mole mass, not the mole count held by 80 g.",
+          "misconception": "Mr read as the answer"
+        }
+      ]
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L2::Q3",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L2",
+      "stem": "2 mol of NaOH dissolves in 0.5 dm3 of solution. What is the concentration?",
+      "misconceptionClass": "final-division error",
+      "options": [
+        {
+          "key": "A",
+          "text": "4 mol / dm3",
+          "correct": true,
+          "explanation": "Concentration = moles / volume, so 2 / 0.5 = 4.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.25 mol / dm3",
+          "correct": false,
+          "explanation": "0.5 / 2 puts the volume on top; moles divide by volume.",
+          "misconception": "division inverted"
+        },
+        {
+          "key": "C",
+          "text": "1 mol / dm3",
+          "correct": false,
+          "explanation": "2 x 0.5 ignores that the figure is per dm3.",
+          "misconception": "multiplied instead of divided"
+        },
+        {
+          "key": "D",
+          "text": "2.5 mol / dm3",
+          "correct": false,
+          "explanation": "Adding moles to volume has no triangle meaning.",
+          "misconception": "values added"
+        }
+      ]
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L2::Q4",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L2",
+      "stem": "25.0 cm3 of 0.050 mol / dm3 sodium carbonate is neutralised by hydrochloric acid. Which is the correct first step toward the acid's concentration?",
+      "misconceptionClass": "sequence error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Find the moles of sodium carbonate: 0.05 x 25 / 1000 = 0.00125",
+          "correct": true,
+          "explanation": "The known solution's moles come first: concentration x volume, with 25.0 cm3 converted to 0.025 dm3.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Convert the acid volume: 20 / 1000 = 0.02 dm3",
+          "correct": false,
+          "explanation": "The acid's volume matters, but without the carbonate's moles there is nothing to scale yet.",
+          "misconception": "second-solution data processed first"
+        },
+        {
+          "key": "C",
+          "text": "Write the ratio as 1 : 2 straight away",
+          "correct": false,
+          "explanation": "The ratio needs a mole amount to act on; the equation alone gives proportions.",
+          "misconception": "ratio applied before moles known"
+        },
+        {
+          "key": "D",
+          "text": "Divide 0.05 by 0.025",
+          "correct": false,
+          "explanation": "That mixes a concentration with a raw volume; moles must come first.",
+          "misconception": "concentration divided by volume with no moles step"
+        }
+      ]
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L2::Q5",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L2",
+      "stem": "In Na2CO3 + 2HCl -> 2NaCl + H2O + CO2, 0.00125 mol of sodium carbonate reacts. How many moles of HCl react?",
+      "misconceptionClass": "ratio error",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.0025 mol",
+          "correct": true,
+          "explanation": "The equation pairs 1 carbonate with 2 acid molecules, so 0.00125 x 2 = 0.0025.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.00125 mol",
+          "correct": false,
+          "explanation": "Ignoring the balancing 2 treats the acid as if it matched the carbonate one-to-one.",
+          "misconception": "1 : 1 ratio assumed"
+        },
+        {
+          "key": "C",
+          "text": "0.000625 mol",
+          "correct": false,
+          "explanation": "Halving puts the carbonate's coefficient on the acid; the acid is the doubled side.",
+          "misconception": "ratio inverted"
+        },
+        {
+          "key": "D",
+          "text": "0.00375 mol",
+          "correct": false,
+          "explanation": "0.00125 x 3 has no source; the coefficient is 2, so the moles double.",
+          "misconception": "coefficient added not multiplied"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_mBqgkpZ3hbSBmWCC",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a4d4bd23e14205b0d6ea4709e9906368a0a509d61b7e440c2cd98cf2c99f068d",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_mBqgkpZ3hbSBmWCC",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "The Periodic Table",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-4-the-periodic-table/1-4-4-electronic-configuration-and-reactivity",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.22",
+        "text": "understand how the electronic configuration of a main group element is related to its position in the Periodic Table"
+      },
+      {
+        "code": "4CH1-1.23",
+        "text": "understand why elements in the same group of the Periodic Table have similar chemical properties"
+      },
+      {
+        "code": "4CH1-1.24",
+        "text": "understand why the noble gases (Group 0) do not readily react"
+      }
+    ],
+    "primer": {
+      "text": "The Periodic Table gave you the layout of the elements: groups as columns and periods as rows, with the electronic configuration reading straight off both. This note explains why that layout predicts chemistry — atoms in the same column react alike, reactivity climbs or falls as you walk down a column, and one column, the noble gases, barely reacts at all.",
+      "prerequisiteSubtopic": "The Periodic Table"
+    },
+    "modules": [
+      {
+        "id": "rn_mBqgkpZ3hbSBmWCC::L1",
+        "title": "Similar Chemical Properties",
+        "sourceHeadings": [
+          "Similar Chemical Properties",
+          "Chemical properties"
+        ],
+        "specRefs": [
+          "4CH1-1.22",
+          "4CH1-1.23"
+        ],
+        "opening": "Walk down any column of the Periodic Table and the elements react in similar ways, because every atom in that column carries the same count of outer electrons. The group number printed on the table is itself that outer count, so the layout works as a shorthand for how each atom will react and bond.",
+        "keyPoints": [
+          "The group number equals the outer-shell electron count, which is why one column shares its chemistry.",
+          "The rule holds for every element except helium, which sits in Group 0 with just two electrons in its only shell.",
+          "Group 1 metals turn more reactive further down, while Group 7 elements turn less reactive further down.",
+          "Observing one member of a group lets you predict how its partners react, including trend-finding from two or more members.",
+          "Lithium, sodium and potassium are Group 1 metals that each react with Group 7 elements to form an ionic compound."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Same column, same chemistry: every atom in a group carries the same outer-electron count, and that count is what the group number prints. Helium alone bends the rule, holding two electrons in its single shell.",
+            "analogy": "It is like a street of houses that all have the same number of front doors: whatever happens at one door tends to happen at every other door along the street.",
+            "examPointer": "Use the group number to predict reactions: one observed reaction pins down the whole column, such as the Group 1 metals all forming ionic compounds with Group 7 elements."
+          },
+          "medium": {
+            "restatement": "The link runs from configuration to position to reaction: the group number counts outer electrons, a shared outer count means similar bonding, and reactivity then shifts steadily down each column, rising for Group 1 metals and falling for Group 7 non-metals.",
+            "analogy": "Picture households that share a recipe book: every kitchen on the column cooks the same style of meal, but the further down the street you go, the more eagerly some kitchens cook, which is the reactivity trend.",
+            "examPointer": "Expect questions that hand you one reaction and ask for a prediction elsewhere in the group: quote the shared outer-electron count first, then apply the down-column trend for Group 1 or Group 7."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_mBqgkpZ3hbSBmWCC::L1::Q1",
+          "rn_mBqgkpZ3hbSBmWCC::L1::Q2",
+          "rn_mBqgkpZ3hbSBmWCC::L1::Q3",
+          "rn_mBqgkpZ3hbSBmWCC::L1::Q4",
+          "rn_mBqgkpZ3hbSBmWCC::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_mBqgkpZ3hbSBmWCC::L2",
+        "title": "Why Noble Gases are Unreactive",
+        "sourceHeadings": [
+          "Why Noble Gases are Unreactive",
+          "Why are noble gases unreactive?"
+        ],
+        "specRefs": [
+          "4CH1-1.24"
+        ],
+        "opening": "Group 0 holds the noble gases: non-metal elements that exist as single atoms and stay colourless gases at room temperature. Most atoms react to top up their outer shells, handing over, taking on or sharing electrons as the reaction needs, but the noble gases need none of that, because their outer shells are already full — so they stay unreactive and rarely form molecules.",
+        "keyPoints": [
+          "Noble gases are non-metal, monatomic, colourless gases that do not catch fire at room temperature.",
+          "They stay unreactive because their outer shells are already full, so they need not lose, gain or share electrons.",
+          "Most noble gases carry eight outer electrons; helium is the exception with two.",
+          "Argon's configuration 2,8,8 shows a full third shell in this model, which is why argon sits inert in Group 0.",
+          "Because their outer shells are already complete, noble gases do not form molecules easily."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Noble gases sit in Group 0 as monatomic, colourless gases that neither burn nor readily react, because every one already owns a full outer shell and so needs no trading of electrons.",
+            "analogy": "They are the guests whose plate is already full at dinner: everyone else trades food to complete their meal, while the noble gases simply sit the exchange out.",
+            "examPointer": "Learn the property list (non-metal, monatomic, colourless non-flammable gas) together with the full-outer-shell reason; questions usually want both halves."
+          },
+          "medium": {
+            "restatement": "Full outer shells remove the motive for bonding: most atoms react to complete their outer shell by losing, gaining or sharing electrons, while the Group 0 patterns (2, 2,8, 2,8,8 and onward) already end in a complete shell, so the atoms stay single and inert.",
+            "analogy": "Think of a shelf already holding its full set of books: neighbouring shelves swap volumes constantly, but a complete shelf has nothing to gain, so it never joins the trade.",
+            "examPointer": "Helium is the favourite exception: quote 2 against 2,8 for neon and 2,8,8 for argon when asked why Group 0 is unreactive yet helium differs from the rest."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_mBqgkpZ3hbSBmWCC::L2::Q1",
+          "rn_mBqgkpZ3hbSBmWCC::L2::Q2",
+          "rn_mBqgkpZ3hbSBmWCC::L2::Q3",
+          "rn_mBqgkpZ3hbSBmWCC::L2::Q4",
+          "rn_mBqgkpZ3hbSBmWCC::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "outer electron",
+          "definition": "An electron in the outermost occupied shell; the group number counts it, and reactions happen there.",
+          "firstLesson": 1
+        },
+        {
+          "term": "chemical property",
+          "definition": "A way an element reacts or bonds; atoms in one group share theirs because the outer count matches.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ionic compound",
+          "definition": "A compound formed by electron transfer between a metal and a non-metal, as Group 1 metals form with Group 7 elements.",
+          "firstLesson": 1
+        },
+        {
+          "term": "configuration",
+          "definition": "Short for electronic configuration: the list of electron counts per shell, written with commas, such as 2,8 for neon.",
+          "firstLesson": 1
+        },
+        {
+          "term": "noble gas",
+          "definition": "A Group 0 element: a non-metal, monatomic, colourless gas whose outer shell is already full.",
+          "firstLesson": 2
+        },
+        {
+          "term": "monatomic",
+          "definition": "Existing as single atoms rather than molecules.",
+          "firstLesson": 2
+        },
+        {
+          "term": "inert",
+          "definition": "Unreactive; the word describes the noble gases because their outer shells are complete.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

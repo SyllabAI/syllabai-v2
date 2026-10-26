@@ -1,0 +1,169 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_sX8yyBxHn8bS7t46",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "cb6d0c93b8836b5f9bea14b3fbcb9671e799a56199ebb3b03e164a215251492d",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_sX8yyBxHn8bS7t46",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Reactivity Series",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-4-reactivity-series/2-4-5-oxidation-and-reduction",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.20",
+        "text": "understand the terms: oxidation; reduction; redox; oxidising agent"
+      }
+    ],
+    "primer": {
+      "text": "From Reactivity Series you already know that metals can be ranked by how readily they react, and that iron rusts by combining with oxygen. This note names the two halves of that kind of change: oxidation and reduction. It then shows the same reactions through electron transfer, using ionic and half equations.",
+      "prerequisiteSubtopic": "Reactivity Series"
+    },
+    "modules": [
+      {
+        "id": "rn_sX8yyBxHn8bS7t46::L1",
+        "title": "Oxidation & reduction in terms of oxygen",
+        "sourceHeadings": [
+          "Oxidation & reduction in terms of oxygen",
+          "Oxidising agents in terms of electrons"
+        ],
+        "specRefs": [
+          "4CH1-2.20"
+        ],
+        "opening": "When metals react with oxygen, the change can be given a name: oxidation covers any reaction in which a substance gains oxygen, and reduction is the reverse, in which oxygen is lost. In the displacement of copper from copper(II) oxide by zinc, zinc takes the oxygen, so the oxide is reduced while zinc is oxidised. Because one change cannot happen without the other, the pair is called a redox reaction.",
+        "keyPoints": [
+          "Oxidation covers every reaction in which a substance gains oxygen.",
+          "Reduction is the opposite change, in which a substance loses oxygen.",
+          "Oxidation and reduction always occur together, so the overall change is called a redox reaction.",
+          "Copper(II) oxide is the oxidising agent because it supplies the oxygen for the change.",
+          "Zinc acts as the reducing agent, removing that oxygen from copper(II) oxide."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Oxidation means gaining oxygen and reduction means losing it; the two changes always happen together in a redox reaction. The substance giving oxygen away is the oxidising agent and the one taking it is the reducing agent.",
+            "analogy": "Think of a relay race with one baton called oxygen: one runner must hand it over while another takes it, so both events happen as one.",
+            "examPointer": "Define oxidation and reduction in one line each, then name the oxidising and reducing agents for whatever equation the question gives."
+          },
+          "medium": {
+            "restatement": "In oxygen language, a species is oxidised when it gains oxygen and reduced when it loses it. In zinc plus copper(II) oxide, the oxide hands oxygen to zinc, so zinc is oxidised, the oxide is reduced, and copper metal is left behind.",
+            "analogy": "A tug-of-war rope with a single knot standing for the oxygen: the knot slides from one team to the other, so one side only loses grip as the other gains it.",
+            "examPointer": "Two-mark answers usually pair the changes: state which species gains oxygen and which loses it, then label the oxidising and reducing agents."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_sX8yyBxHn8bS7t46::L1::Q1",
+          "rn_sX8yyBxHn8bS7t46::L1::Q2",
+          "rn_sX8yyBxHn8bS7t46::L1::Q3",
+          "rn_sX8yyBxHn8bS7t46::L1::Q4",
+          "rn_sX8yyBxHn8bS7t46::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_sX8yyBxHn8bS7t46::L2",
+        "title": "Oxidation & Reduction in terms of electrons",
+        "sourceHeadings": [
+          "Oxidation & Reduction in terms of electrons"
+        ],
+        "specRefs": [
+          "4CH1-2.20"
+        ],
+        "opening": "The same displacement reactions can be read through electron transfer. When magnesium displaces copper from solution, the balanced ionic equation shows magnesium losing two electrons to form Mg2+ while Cu2+ gains them to become copper atoms. The sulfate ions appear unchanged on both sides, so they are spectator ions and are left out of the ionic equation.",
+        "keyPoints": [
+          "Displacement reactions can be analysed as redox reactions by tracking the transfer of electrons.",
+          "Spectator ions appear unchanged on both sides of the equation, so they can be omitted.",
+          "Oxidation is the loss of electrons and reduction is the gain of electrons.",
+          "The ionic equation splits into two half equations that show oxidation and reduction separately.",
+          "Cu2+ is reduced because it gains electrons, while Mg is oxidised because it loses them."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "In electron language, oxidation is electron loss and reduction is electron gain. Writing half equations for each side makes the transfers visible, and ions that never change, the spectator ions, are dropped.",
+            "analogy": "Picture a relay handover: one runner drops the baton, the electrons, and the next runner picks it up, so nothing is lost overall.",
+            "examPointer": "Half equations must balance for both atoms and charge, so practise writing them from the full ionic equation."
+          },
+          "medium": {
+            "restatement": "An ionic equation strips out the spectator ions to show the real chemistry: magnesium loses two electrons to form Mg2+ while Cu2+ gains those electrons to form copper. Splitting it gives one half equation for oxidation and one for reduction.",
+            "analogy": "Treat electrons like tokens at a fair: one stall hands tokens out while the other collects exactly the same number, so no token is created or destroyed.",
+            "examPointer": "Examiners look for the pairing: the metal loses electrons and is oxidised while the metal ion gains them and is reduced, with OIL RIG as the check."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_sX8yyBxHn8bS7t46::L2::Q1",
+          "rn_sX8yyBxHn8bS7t46::L2::Q2",
+          "rn_sX8yyBxHn8bS7t46::L2::Q3",
+          "rn_sX8yyBxHn8bS7t46::L2::Q4",
+          "rn_sX8yyBxHn8bS7t46::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "oxidation",
+          "definition": "The change in which a species gains oxygen, or equivalently loses electrons.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reduction",
+          "definition": "The change in which a species loses oxygen, or equivalently gains electrons.",
+          "firstLesson": 1
+        },
+        {
+          "term": "redox reaction",
+          "definition": "A reaction in which oxidation and reduction take place at the same time.",
+          "firstLesson": 1
+        },
+        {
+          "term": "oxidising agent",
+          "definition": "The substance that gives oxygen, or takes electrons, and is itself reduced.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reducing agent",
+          "definition": "The substance that removes oxygen, or gives electrons, and is itself oxidised.",
+          "firstLesson": 1
+        },
+        {
+          "term": "spectator ion",
+          "definition": "An ion present on both sides of an ionic equation that takes no part in the reaction.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Which change in the following equation is oxidation? V3+ + Fe3+ gives V4+ + Fe2+",
+        "steps": [
+          "Step 1 - Identify the change for each species.",
+          "V3+ changes to V4+: the vanadium ion has lost 1 electron.",
+          "Fe3+ changes to Fe2+: the iron ion has gained 1 electron.",
+          "Step 2 - Label each change as oxidation or reduction.",
+          "Loss of electrons is oxidation, so V3+ has been oxidised; gain of electrons is reduction, so Fe3+ has been reduced."
+        ],
+        "finalAnswer": "V3+ has been oxidised (it loses 1 electron to become V4+)."
+      }
+    }
+  }
+}

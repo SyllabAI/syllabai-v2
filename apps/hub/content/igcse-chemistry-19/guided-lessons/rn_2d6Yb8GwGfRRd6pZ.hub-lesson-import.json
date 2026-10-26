@@ -1,0 +1,165 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_2d6Yb8GwGfRRd6pZ",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "39e6fceb916466bc94800f8893208e8a9208d06e69435c0b85cbb621a3b15d75",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_2d6Yb8GwGfRRd6pZ",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Reversible Reactions & Equilibria",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-3-reversible-reactions-and-equilibria/3-3-2-dynamic-equilibrium",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.19C",
+        "text": "know that a reversible reaction can reach dynamic equilibrium in a sealed container"
+      },
+      {
+        "code": "4CH1-3.20C",
+        "text": "know that the characteristics of a reaction at dynamic equilibrium are: the forward and reverse reactions occur at the same rate; the concentrations of reactants and products remain constant"
+      }
+    ],
+    "primer": {
+      "text": "You already know from Rates of Reaction how fast a reaction proceeds and what speeds it up or slows it down. That idea is the engine of this note, because equilibrium is not about reactions stopping but about two rates meeting. Here you will meet reversible reactions and the balanced, dynamic state they settle into inside a sealed container.",
+      "prerequisiteSubtopic": "Rates of Reaction"
+    },
+    "modules": [
+      {
+        "id": "rn_2d6Yb8GwGfRRd6pZ::L1",
+        "title": "Dynamic equilibrium",
+        "sourceHeadings": [
+          "Dynamic Equilibrium",
+          "Dynamic equilibrium"
+        ],
+        "specRefs": [
+          "4CH1-3.19C",
+          "4CH1-3.20C"
+        ],
+        "opening": "Some reactions can undo themselves: the products re-form the reactants as readily as the reactants form the products. This lesson defines the special state such a reaction settles into, called dynamic equilibrium, and the one condition it demands — a closed container. Two features mark that state, and they are the ones the exam asks for.",
+        "keyPoints": [
+          "A reversible reaction is one that can run in both the forward and reverse directions.",
+          "Equilibrium is reached when the rates of the forward and reverse reactions become equal.",
+          "At equilibrium the molecules keep changing into each other, which is why it is called dynamic.",
+          "The concentrations of reactants and products stay constant while nothing else changes.",
+          "A closed system is required, so no species can leave the vessel and nothing can enter."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "In a sealed container, a reversible reaction settles at the point where both directions run at the same speed, with steady concentrations.",
+            "analogy": "Imagine a shop where customers enter and leave at the same pace: the queue never changes even though people are always moving through.",
+            "examPointer": "Learn the two equilibrium features as a pair — equal rates and constant concentrations — because questions ask for both."
+          },
+          "medium": {
+            "restatement": "Dynamic means nothing stops: forward and reverse reactions keep converting the molecules into each other at equal rates, so the composition holds steady unless temperature or pressure changes.",
+            "analogy": "It is like two escalators running against each other at equal speed: anyone riding stays level, yet nobody stands still.",
+            "examPointer": "Quote both features precisely; saying the concentrations are equal between the two sides is a different claim and is wrong."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_2d6Yb8GwGfRRd6pZ::L1::Q1",
+          "rn_2d6Yb8GwGfRRd6pZ::L1::Q2",
+          "rn_2d6Yb8GwGfRRd6pZ::L1::Q3",
+          "rn_2d6Yb8GwGfRRd6pZ::L1::Q4",
+          "rn_2d6Yb8GwGfRRd6pZ::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_2d6Yb8GwGfRRd6pZ::L2",
+        "title": "Reaching equilibrium: the Haber process",
+        "sourceHeadings": [
+          "Dynamic equilibrium",
+          "The rate of the forward and reverse reaction during the progress of a reaction"
+        ],
+        "specRefs": [
+          "4CH1-3.19C"
+        ],
+        "opening": "Definitions become clearer when watched in motion, and the Haber process is the note's chosen showcase. It makes ammonia from nitrogen and hydrogen, and its rate story ends exactly at equilibrium. Follow the two rates from the start of the reaction and you can see the state assemble itself.",
+        "keyPoints": [
+          "At the beginning, only nitrogen and hydrogen are present, so the forward rate is at its highest.",
+          "As the reaction proceeds, the nitrogen and hydrogen concentrations fall, and the forward rate falls with them.",
+          "The ammonia concentration rises, so the backward reaction speeds up, decomposing ammonia back into the reactants.",
+          "In the closed system the two rates eventually become equal, and equilibrium is reached.",
+          "The Haber process is the note's example of a reaction reaching equilibrium in a sealed container."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The forward rate starts highest and falls as nitrogen and hydrogen are used up, while the backward rate rises with the growing ammonia, until the two meet.",
+            "analogy": "Picture two cars approaching from opposite ends of a road, one slowing and one speeding up, until they draw level and stay there.",
+            "examPointer": "Sketching the two rate curves meeting is a classic mark; label the meeting point equilibrium."
+          },
+          "medium": {
+            "restatement": "Rate tracks concentration: abundant nitrogen and hydrogen make the forward reaction fastest at the start, while rising ammonia strengthens the reverse reaction; in the closed vessel neither gas can escape, so the rates converge to equality.",
+            "analogy": "Think of two rival shops sharing one street: as one runs out of stock, its custom slows while the other's grows, until trade balances.",
+            "examPointer": "Explain why the curves flatten: equal rates mean each substance is made as fast as it is destroyed, not that the reaction has stopped."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_2d6Yb8GwGfRRd6pZ::L2::Q1",
+          "rn_2d6Yb8GwGfRRd6pZ::L2::Q2",
+          "rn_2d6Yb8GwGfRRd6pZ::L2::Q3",
+          "rn_2d6Yb8GwGfRRd6pZ::L2::Q4",
+          "rn_2d6Yb8GwGfRRd6pZ::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "reversible reaction",
+          "definition": "A reaction that occurs in both directions, with the products able to reform the reactants.",
+          "firstLesson": 1
+        },
+        {
+          "term": "equilibrium",
+          "definition": "The state reached when the forward and reverse reactions run at the same rate.",
+          "firstLesson": 1
+        },
+        {
+          "term": "dynamic",
+          "definition": "Actively changing; at equilibrium the molecules keep converting into each other at equal rates.",
+          "firstLesson": 1
+        },
+        {
+          "term": "closed system",
+          "definition": "A setup where no substances can enter or leave the reaction vessel.",
+          "firstLesson": 1
+        },
+        {
+          "term": "concentration",
+          "definition": "The amount of a substance held in a given volume of mixture.",
+          "firstLesson": 1
+        },
+        {
+          "term": "Haber process",
+          "definition": "The industrial reaction making ammonia from nitrogen and hydrogen; the note's equilibrium example.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

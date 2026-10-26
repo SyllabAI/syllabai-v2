@@ -1,0 +1,159 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_3wZh9qRT7qFJn9QW",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "4a37664fe469f254eb1b7f3651894901212d59719976e284d3467e00dbe6e3a0",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_3wZh9qRT7qFJn9QW",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Rates of Reaction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-2-rates-of-reaction/3-2-6-practical-effect-of-catalysts-on-rate-of-reaction",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.16",
+        "text": "practical: investigate the effect of different solids on the catalytic decomposition of hydrogen peroxide solution"
+      },
+      {
+        "code": "4CH1-3.9",
+        "text": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a reaction"
+      }
+    ],
+    "primer": {
+      "text": "From Catalysts you already know that helpers speed reactions without being consumed. This practical races several solid candidates against hydrogen peroxide, collecting the oxygen each one liberates. The graph at the end ranks the catalysts by how fast they worked.",
+      "prerequisiteSubtopic": "Rates of Reaction"
+    },
+    "modules": [
+      {
+        "id": "rn_3wZh9qRT7qFJn9QW::L1",
+        "title": "Testing solids on hydrogen peroxide",
+        "sourceHeadings": [
+          "Aim:",
+          "Method:"
+        ],
+        "specRefs": [
+          "4CH1-3.16",
+          "4CH1-3.9"
+        ],
+        "opening": "Hydrogen peroxide decomposes quietly on its own, but the right solid makes it fizz. This lesson sets out the aim, the collection apparatus and the six-step method that tests one candidate at a time.",
+        "keyPoints": [
+          "The practical tests how several solid candidates change the speed of peroxide breaking down.",
+          "Hydrogen peroxide is added to a conical flask connected by a delivery tube to an inverted measuring cylinder.",
+          "The chosen catalyst is added, the bung is closed, and the gas volume in a fixed time is measured.",
+          "The experiment is repeated with different catalysts so their results can be compared.",
+          "Candidate solids include the oxides of manganese(IV), lead(II), iron(III) and copper(II)."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Pour peroxide into a flask, tip in one candidate powder and catch the gas in an upside-down cylinder for a set time. Swap powders and repeat, then see which powder made the gas appear fastest.",
+            "analogy": "It is like timing several starters in the same race: same track, same distance, only the runner changes.",
+            "examPointer": "Name the fixed time, the collected gas and the one thing changed between runs, the solid."
+          },
+          "medium": {
+            "restatement": "Hydrogen peroxide sits in a sealed flask linked to an inverted measuring cylinder, a chosen solid catalyst is added, and the gas collected in a fixed time is recorded. Repeating with manganese(IV) oxide, lead(II) oxide, iron(III) oxide and copper(II) oxide lets the relative speeds be compared.",
+            "analogy": "Each powder gets the same stopwatch and the same cylinder, so the only difference at the whistle is which helper joined the flask.",
+            "examPointer": "Describe the collection set-up, the fixed-time reading and the list of candidate solids."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_3wZh9qRT7qFJn9QW::L1::Q1",
+          "rn_3wZh9qRT7qFJn9QW::L1::Q2",
+          "rn_3wZh9qRT7qFJn9QW::L1::Q3",
+          "rn_3wZh9qRT7qFJn9QW::L1::Q4",
+          "rn_3wZh9qRT7qFJn9QW::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_3wZh9qRT7qFJn9QW::L2",
+        "title": "Comparing the catalysts on one graph",
+        "sourceHeadings": [
+          "Result:"
+        ],
+        "specRefs": [
+          "4CH1-3.16"
+        ],
+        "opening": "One graph can hold every candidate's performance side by side. This lesson plots the fixed-time gas volumes and reads the relative catalytic speeds straight off the bars.",
+        "keyPoints": [
+          "All the catalyst results share one graph so their speeds can be ranked.",
+          "Plotting the results together allows the relative rates to be compared.",
+          "The tallest reading marks the fastest catalytic decomposition tested.",
+          "Every reading shares the same time window, so the comparison is fair.",
+          "A solid that gives a negligible reading is acting as a poor catalyst for this reaction."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Draw one chart with a bar for each powder, showing the gas each collected in the same window. The tallest bar belongs to the quickest catalyst and the shortest to the weakest.",
+            "analogy": "It is a medals table for powders: same event, same timing, and the standings sort themselves out visually.",
+            "examPointer": "Sketch the shared-axis bar chart and read the ranking from the bar heights."
+          },
+          "medium": {
+            "restatement": "Plotting every catalyst's fixed-time gas volume on one shared graph turns the raw readings into a ranking of relative rates. Because each bar shares the same window and the same peroxide, differences in height measure differences in catalytic effect alone.",
+            "analogy": "A shared podium photo says more than four separate ones: identical conditions make the height differences meaningful.",
+            "examPointer": "State why shared conditions make the graph fair, then name the fastest solid from the data."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_3wZh9qRT7qFJn9QW::L2::Q1",
+          "rn_3wZh9qRT7qFJn9QW::L2::Q2",
+          "rn_3wZh9qRT7qFJn9QW::L2::Q3",
+          "rn_3wZh9qRT7qFJn9QW::L2::Q4",
+          "rn_3wZh9qRT7qFJn9QW::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "catalytic decomposition",
+          "definition": "The breakdown of a substance, helped by a catalyst, into simpler products.",
+          "firstLesson": 1
+        },
+        {
+          "term": "hydrogen peroxide",
+          "definition": "A solution that decomposes into water and oxygen, used as the reaction in this practical.",
+          "firstLesson": 1
+        },
+        {
+          "term": "relative rate",
+          "definition": "How fast one reaction runs compared with another, read from the shared graph.",
+          "firstLesson": 2
+        },
+        {
+          "term": "manganese(IV) oxide",
+          "definition": "A black solid commonly used as the catalyst for peroxide decomposition.",
+          "firstLesson": 1
+        },
+        {
+          "term": "delivery tube",
+          "definition": "The tube carrying gas from the reaction flask to the collecting cylinder.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

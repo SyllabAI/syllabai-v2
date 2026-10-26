@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_mBqgkpZ3hbSBmWCC",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a4d4bd23e14205b0d6ea4709e9906368a0a509d61b7e440c2cd98cf2c99f068d",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_mBqgkpZ3hbSBmWCC",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L1::Q1",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L1",
+      "stem": "Elements in the same group of the Periodic Table react similarly. What feature of their atoms causes this?",
+      "misconceptionClass": "cause-of-similarity error",
+      "options": [
+        {
+          "key": "A",
+          "text": "They have the same number of outer electrons",
+          "correct": true,
+          "explanation": "Reactions happen at the outer shell, so an identical outer count produces identical reacting behaviour.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They have the same number of occupied shells",
+          "correct": false,
+          "explanation": "Shell count is the period, which changes as you descend a group; it is not the cause of shared reactions.",
+          "misconception": "period feature credited for group behaviour"
+        },
+        {
+          "key": "C",
+          "text": "They have similar atomic masses",
+          "correct": false,
+          "explanation": "Masses rise steadily down a group and have no bearing on why the reactions match.",
+          "misconception": "mass mistaken for the chemical cause"
+        },
+        {
+          "key": "D",
+          "text": "They have the same total number of electrons",
+          "correct": false,
+          "explanation": "Electron totals differ at every step down the group; only the outer count is shared.",
+          "misconception": "total electron count assumed equal"
+        }
+      ]
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L1::Q2",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L1",
+      "stem": "What does the group number tell you about an atom's electrons?",
+      "misconceptionClass": "group-number misreading",
+      "options": [
+        {
+          "key": "A",
+          "text": "How many electrons sit in the outer shell",
+          "correct": true,
+          "explanation": "For main-group elements the printed group number is the outer-shell electron count, helium aside.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "How many shells the atom fills in total",
+          "correct": false,
+          "explanation": "Shell count is read from the configuration's number-groups and gives the period instead.",
+          "misconception": "period property misread from the group"
+        },
+        {
+          "key": "C",
+          "text": "The atom's total electron count",
+          "correct": false,
+          "explanation": "The group counts only the outer shell, not every electron the atom owns.",
+          "misconception": "total count confused with outer count"
+        },
+        {
+          "key": "D",
+          "text": "How many electrons the atom loses in every reaction",
+          "correct": false,
+          "explanation": "Atoms may lose, gain or share depending on the reaction; the group number is not a fixed loss count.",
+          "misconception": "fixed-loss assumption"
+        }
+      ]
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L1::Q3",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L1",
+      "stem": "Helium sits in Group 0 yet breaks the group-number rule. Why?",
+      "misconceptionClass": "helium-exception error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Its single shell holds only 2 electrons",
+          "correct": true,
+          "explanation": "Helium has one shell alone, and that innermost shell is complete at two, so the outer count is 2 and not 8.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It has eight outer electrons like every other noble gas",
+          "correct": false,
+          "explanation": "Only most noble gases carry eight; helium's lone shell closes at two.",
+          "misconception": "exception denied"
+        },
+        {
+          "key": "C",
+          "text": "It is not actually a noble gas",
+          "correct": false,
+          "explanation": "Helium does belong to Group 0; it is the rule's exception, not a misclassification.",
+          "misconception": "classification denied"
+        },
+        {
+          "key": "D",
+          "text": "Its outer shell holds eight electrons and its inner shell two",
+          "correct": false,
+          "explanation": "Helium has only one shell; no second shell exists to hold extra electrons.",
+          "misconception": "extra shell invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L1::Q4",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L1",
+      "stem": "How does reactivity change as you go down Group 1?",
+      "misconceptionClass": "trend-direction error",
+      "options": [
+        {
+          "key": "A",
+          "text": "It increases",
+          "correct": true,
+          "explanation": "The Group 1 metals react more and more vigorously with each step down the group.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It decreases",
+          "correct": false,
+          "explanation": "That is the Group 7 direction; Group 1 reactivity rises down the column.",
+          "misconception": "Group 7 trend copied onto Group 1"
+        },
+        {
+          "key": "C",
+          "text": "It stays the same",
+          "correct": false,
+          "explanation": "The source states a clear change down the column, not a flat pattern.",
+          "misconception": "no-trend assumption"
+        },
+        {
+          "key": "D",
+          "text": "It rises to the middle of the group, then falls",
+          "correct": false,
+          "explanation": "No mid-group turning point exists in the trend as taught.",
+          "misconception": "invented mid-group peak"
+        }
+      ]
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L1::Q5",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L1",
+      "stem": "Lithium reacts with chlorine to form an ionic compound. What does that let you predict about sodium, also in Group 1?",
+      "misconceptionClass": "prediction-transfer error",
+      "options": [
+        {
+          "key": "A",
+          "text": "It reacts similarly with chlorine to form an ionic compound",
+          "correct": true,
+          "explanation": "Shared outer-electron counts mean shared reactions, so sodium behaves towards chlorine as lithium does.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It does not react with chlorine at all",
+          "correct": false,
+          "explanation": "Sodium is an active Group 1 metal, not an inert Group 0 gas; the reaction goes ahead.",
+          "misconception": "noble-gas behaviour misapplied"
+        },
+        {
+          "key": "C",
+          "text": "It reacts with chlorine to form a covalent compound",
+          "correct": false,
+          "explanation": "The Group 1 with Group 7 reaction forms ionic compounds, as lithium's does.",
+          "misconception": "bond type swapped"
+        },
+        {
+          "key": "D",
+          "text": "It reacts only with other Group 1 metals",
+          "correct": false,
+          "explanation": "The observed chemistry pairs Group 1 metals with Group 7 elements, not with each other.",
+          "misconception": "reaction partners misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L2::Q1",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L2",
+      "stem": "Why do the noble gases not readily react?",
+      "misconceptionClass": "inertness-cause error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Their outer shells are already full",
+          "correct": true,
+          "explanation": "With a complete outer shell there is no electron to lose, gain or share, so no reaction is needed.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Their nuclei are unstable",
+          "correct": false,
+          "explanation": "Noble gas nuclei are stable; the inertness comes from the electron shells, not the nucleus.",
+          "misconception": "instability confused with inertness"
+        },
+        {
+          "key": "C",
+          "text": "They have too few electrons to react",
+          "correct": false,
+          "explanation": "They are not short of electrons; they have exactly the full set their outer shell can hold.",
+          "misconception": "electron poverty assumed"
+        },
+        {
+          "key": "D",
+          "text": "They are metals that resist reaction",
+          "correct": false,
+          "explanation": "Noble gases are non-metals, listed first among their properties.",
+          "misconception": "metal classification error"
+        }
+      ]
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L2::Q2",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L2",
+      "stem": "What does it mean to say the noble gases are monatomic?",
+      "misconceptionClass": "monatomic-meaning error",
+      "options": [
+        {
+          "key": "A",
+          "text": "They exist as single atoms",
+          "correct": true,
+          "explanation": "Monatomic means one-atom units; noble gases do not pair up into molecules.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They exist as two-atom molecules",
+          "correct": false,
+          "explanation": "Two-atom units are diatomic molecules, the opposite of monatomic.",
+          "misconception": "diatomic assumption"
+        },
+        {
+          "key": "C",
+          "text": "They carry an electric charge",
+          "correct": false,
+          "explanation": "Noble gas atoms are neutral; carrying a charge would make them ions.",
+          "misconception": "charged particles confused with monatomic"
+        },
+        {
+          "key": "D",
+          "text": "They are all radioactive",
+          "correct": false,
+          "explanation": "Radioactivity is unrelated to being monatomic and is not a listed property here.",
+          "misconception": "radioactivity confused with monatomic"
+        }
+      ]
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L2::Q3",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L2",
+      "stem": "Which is the electronic configuration of an argon atom?",
+      "misconceptionClass": "configuration-recall error",
+      "options": [
+        {
+          "key": "A",
+          "text": "2,8,8",
+          "correct": true,
+          "explanation": "Argon fills two, then eight, then eight, completing its outer shell in the simplified model.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2,8",
+          "correct": false,
+          "explanation": "That is neon's pattern with ten electrons; argon carries eighteen.",
+          "misconception": "neon's configuration recalled instead"
+        },
+        {
+          "key": "C",
+          "text": "2,8,1",
+          "correct": false,
+          "explanation": "That is sodium's pattern; its outer shell is one short of full, unlike argon's.",
+          "misconception": "sodium's configuration recalled instead"
+        },
+        {
+          "key": "D",
+          "text": "2,8,8,8",
+          "correct": false,
+          "explanation": "An extra full shell has been appended; argon occupies only three shells.",
+          "misconception": "extra full shell appended"
+        }
+      ]
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L2::Q4",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L2",
+      "stem": "Most noble gases have eight outer electrons. Which one differs, and by how many?",
+      "misconceptionClass": "exception-count error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Helium, with two outer electrons",
+          "correct": true,
+          "explanation": "Helium's single shell is complete at two, so it is the one noble gas without an outer count of eight.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Neon, with seven outer electrons",
+          "correct": false,
+          "explanation": "Neon follows the rule with a full count of eight (2,8); neither the element nor the count is right.",
+          "misconception": "wrong element and count"
+        },
+        {
+          "key": "C",
+          "text": "Helium, with eight like the others",
+          "correct": false,
+          "explanation": "Helium is indeed the exception, but its outer count is two, not eight.",
+          "misconception": "exception denied"
+        },
+        {
+          "key": "D",
+          "text": "Krypton, with eighteen outer electrons",
+          "correct": false,
+          "explanation": "Eighteen appears inside krypton's inner shells (2,8,18,8); the outer count is still eight.",
+          "misconception": "inner-shell total misread as the outer count"
+        }
+      ]
+    },
+    {
+      "id": "rn_mBqgkpZ3hbSBmWCC::L2::Q5",
+      "moduleId": "rn_mBqgkpZ3hbSBmWCC::L2",
+      "stem": "Which set of properties describes the noble gases at room temperature?",
+      "misconceptionClass": "property-list error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Colourless, non-flammable gases",
+          "correct": true,
+          "explanation": "The group's property list runs non-metal, monatomic, and colourless non-flammable gases at room temperature.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Flammable, coloured gases",
+          "correct": false,
+          "explanation": "Both properties are inverted: the gases are colourless and specifically non-flammable.",
+          "misconception": "property list inverted"
+        },
+        {
+          "key": "C",
+          "text": "Reactive liquid non-metals",
+          "correct": false,
+          "explanation": "They are gases, and their defining trait is not reacting readily.",
+          "misconception": "state and reactivity misstated"
+        },
+        {
+          "key": "D",
+          "text": "Shiny, conducting metals",
+          "correct": false,
+          "explanation": "Noble gases are non-metals; shine and conduction belong to metals.",
+          "misconception": "metallic properties misapplied"
+        }
+      ]
+    }
+  ]
+}

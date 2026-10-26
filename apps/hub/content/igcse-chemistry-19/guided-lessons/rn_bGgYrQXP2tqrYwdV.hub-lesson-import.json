@@ -1,0 +1,215 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_bGgYrQXP2tqrYwdV",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "ca03118023476f31e847cae6985ac6cfc2ceaa62390f46105eb103de89f3e786",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_bGgYrQXP2tqrYwdV",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Synthetic polymers",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-8-synthetic-polymers/4-8-3-condensation-polymers",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.48C",
+        "text": "know that condensation polymerisation, in which a dicarboxylic acid reacts with a diol, produces a polyester and water"
+      },
+      {
+        "code": "4CH1-4.49C",
+        "text": "understand how to write the structural and displayed formula of a polyester, showing the repeat unit, given the formulae of the monomers from which it is formed including the reaction of ethanedioic acid and ethanediol:"
+      },
+      {
+        "code": "4CH1-4.50C",
+        "text": "know that some polyesters, known as biopolyesters, are biodegradable"
+      }
+    ],
+    "primer": {
+      "text": "From Esters you already know the -COO- link that forms when an acid meets an alcohol. This note scales that single link up to industrial size: two-ended monomers joining into polyesters, water leaving at every bond, and a green branch of the family that the soil can reclaim.",
+      "prerequisiteSubtopic": "Esters"
+    },
+    "modules": [
+      {
+        "id": "rn_bGgYrQXP2tqrYwdV::L1",
+        "title": "Condensation versus addition",
+        "sourceHeadings": [
+          "Condensation polymers"
+        ],
+        "specRefs": [
+          "4CH1-4.48C"
+        ],
+        "opening": "Addition polymers form from one monomer alone; condensation polymers are built by two different monomers that release a small molecule, usually water, every time they link. This lesson sets the two mechanisms side by side and shows where the water comes from.",
+        "keyPoints": [
+          "Condensation polymers form when two different monomers link with the removal of a small molecule.",
+          "The small molecule released is usually water.",
+          "Each monomer carries two functional groups, one at each end.",
+          "One water molecule forms for every ester linkage made.",
+          "Addition polymerisation forms the polymer molecule only, with no other product."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Two different monomers join to build a condensation polymer, releasing a small molecule, usually water, at every link. Addition polymers make the chain alone, with no second product.",
+            "analogy": "Addition polymer formation is a solo handshake; the condensation kind is two people shaking hands while dropping a water bottle each time their hands meet.",
+            "examPointer": "State the difference as products: polymer only versus polymer plus water."
+          },
+          "medium": {
+            "restatement": "Condensation polymers arise when two different monomers, each carrying functional groups at both ends, link in long alternating chains and release one small molecule per bond, usually water. Addition polymers instead consume one monomer type and leave no second product.",
+            "analogy": "Watch a zip closing: addition is one tape zipping onto itself, while condensation is two different tapes zipping together and shedding a droplet at every tooth.",
+            "examPointer": "Quote the per-linkage water count: one molecule of water for every ester linkage formed."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_bGgYrQXP2tqrYwdV::L1::Q1",
+          "rn_bGgYrQXP2tqrYwdV::L1::Q2",
+          "rn_bGgYrQXP2tqrYwdV::L1::Q3",
+          "rn_bGgYrQXP2tqrYwdV::L1::Q4",
+          "rn_bGgYrQXP2tqrYwdV::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_bGgYrQXP2tqrYwdV::L2",
+        "title": "Polyesters: terylene and deducing the monomers",
+        "sourceHeadings": [
+          "Condensation polymers",
+          "Deducing the monomers from a polyester"
+        ],
+        "specRefs": [
+          "4CH1-4.48C",
+          "4CH1-4.49C"
+        ],
+        "opening": "A dicarboxylic acid with -COOH at both ends meets a diol with -OH at both ends, and the chain that results is a polyester such as terylene. This lesson also runs the film backwards: adding water across the ester links, known as hydrolysis, recovers the monomers.",
+        "keyPoints": [
+          "A dicarboxylic acid carries a -COOH group at either end.",
+          "A diol carries an -OH group at either end.",
+          "Terylene is a polyester made from a dicarboxylic acid and a diol.",
+          "Each -COOH group reacts with an -OH group, forming an ester link and losing one water molecule.",
+          "Hydrolysis adds water back to break the polyester into its monomers."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A dicarboxylic acid has -COOH at both ends and a diol has -OH at both ends; joined together they make a polyester such as terylene. Adding water back across the ester links, called hydrolysis, recovers the monomers.",
+            "analogy": "The ester link is a staple joining two sheets; hydrolysis is a staple remover that returns each sheet to its original desk.",
+            "examPointer": "Remember which monomer loses what: the acid loses OH, the diol loses H, and reversing that rebuilds them."
+          },
+          "medium": {
+            "restatement": "Terylene forms as each -COOH of the dicarboxylic acid meets an -OH of the diol, creating an ester link with one water lost per link, its chain drawn with boxes for the carbon sections. Hydrolysis reverses the process: water is added, the C-O single bond of each ester link breaks, OH returns to the acid end and H returns to the alcohol end.",
+            "analogy": "Deducing monomers is unwrapping a parcel you once taped shut: cut the tape, the C-O bond, and the two original sheets fall apart, ready to be re-wetted into their old shapes.",
+            "examPointer": "Break the C-O single bond only, never the C=O; the added water then completes both halves."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_bGgYrQXP2tqrYwdV::L2::Q1",
+          "rn_bGgYrQXP2tqrYwdV::L2::Q2",
+          "rn_bGgYrQXP2tqrYwdV::L2::Q3",
+          "rn_bGgYrQXP2tqrYwdV::L2::Q4",
+          "rn_bGgYrQXP2tqrYwdV::L2::Q5"
+        ]
+      },
+      {
+        "id": "rn_bGgYrQXP2tqrYwdV::L3",
+        "title": "Biopolyesters",
+        "sourceHeadings": [
+          "Biopolyesters"
+        ],
+        "specRefs": [
+          "4CH1-4.50C"
+        ],
+        "opening": "Not every polyester outlives the planet that made it. Biopolyesters are synthesised from sugars and plant oils with the help of micro-organisms, and their ester, amide and ether groups let them biodegrade once their job is done. This lesson closes the corpus with the greenest member of the family.",
+        "keyPoints": [
+          "Biopolyesters are synthesised from sugars and plant oils using micro-organisms.",
+          "They biodegrade naturally in the environment once their job is done.",
+          "Their chains contain ester, amide and ether functional groups.",
+          "Those groups give the polymers their biodegradable character.",
+          "Biopolyesters are still synthetically made, not harvested directly from nature."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Biopolyesters are made from sugars and plant oils with the help of micro-organisms. Their ester, amide and ether groups let them biodegrade naturally once their purpose is served.",
+            "analogy": "Where ordinary plastic is a stone, a biopolyester is a leaf: engineered by people, yet built to be reclaimed by the soil.",
+            "examPointer": "Name the green closing point of the topic: some polyesters, the biopolyesters, are biodegradable."
+          },
+          "medium": {
+            "restatement": "These polymers are synthesised industrially from sugars and plant oils using micro-organisms, and their chains mix ester, amide and ether functional groups. That mix of groups is what grants their biodegradable character, letting them break down naturally after their intended purpose ends.",
+            "analogy": "A biopolyester bottle is written in two languages at once: synthetic enough to be manufactured, natural enough for microbes to read and dismantle it.",
+            "examPointer": "Contrast with the previous note: addition polymers resist biodegrading, while biopolyesters are the designed exception."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_bGgYrQXP2tqrYwdV::L3::Q1",
+          "rn_bGgYrQXP2tqrYwdV::L3::Q2",
+          "rn_bGgYrQXP2tqrYwdV::L3::Q3",
+          "rn_bGgYrQXP2tqrYwdV::L3::Q4",
+          "rn_bGgYrQXP2tqrYwdV::L3::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "condensation",
+          "definition": "Joining molecules with the removal of a small molecule, usually water; the mechanism that builds these polymers.",
+          "firstLesson": 1
+        },
+        {
+          "term": "polyester",
+          "definition": "A condensation polymer whose monomers are linked through ester groups, terylene being the named example.",
+          "firstLesson": 2
+        },
+        {
+          "term": "dicarboxylic acid",
+          "definition": "An acid carrying a -COOH group at either end of its molecule.",
+          "firstLesson": 2
+        },
+        {
+          "term": "diol",
+          "definition": "An alcohol carrying an -OH group at either end of its molecule.",
+          "firstLesson": 2
+        },
+        {
+          "term": "hydrolysis",
+          "definition": "Adding water to break a polyester back down into its two monomers.",
+          "firstLesson": 2
+        },
+        {
+          "term": "biopolyester",
+          "definition": "A polyester synthesised from sugars and plant oils by micro-organisms, able to biodegrade after use.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

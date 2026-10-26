@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_p2FmkrXqZSzFngpg",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "63477f8ae865b5f800329fa1e4445f0629dfb4b4df9b36092fa781c21745caa3",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_p2FmkrXqZSzFngpg",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_p2FmkrXqZSzFngpg::L1::Q1",
+      "moduleId": "rn_p2FmkrXqZSzFngpg::L1",
+      "stem": "Which trio of metals gives salts that are always soluble?",
+      "misconceptionClass": "always-soluble recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sodium, potassium and ammonium",
+          "correct": true,
+          "explanation": "Common compounds of these three are soluble with no exceptions listed.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Silver, lead and barium",
+          "correct": false,
+          "explanation": "These are exactly the exception names, appearing on the insoluble side of the table.",
+          "misconception": "exception metals mistaken for the soluble trio"
+        },
+        {
+          "key": "C",
+          "text": "Calcium, magnesium and iron",
+          "correct": false,
+          "explanation": "Calcium appears only as the slightly soluble hydroxide; none of the three belongs to the always-soluble trio.",
+          "misconception": "mid-series metals guessed"
+        },
+        {
+          "key": "D",
+          "text": "Copper, zinc and nickel",
+          "correct": false,
+          "explanation": "These metals are not part of the always-soluble rule.",
+          "misconception": "unrelated metals guessed"
+        }
+      ]
+    },
+    {
+      "id": "rn_p2FmkrXqZSzFngpg::L1::Q2",
+      "moduleId": "rn_p2FmkrXqZSzFngpg::L1",
+      "stem": "How many nitrates are insoluble?",
+      "misconceptionClass": "nitrate rule",
+      "options": [
+        {
+          "key": "A",
+          "text": "None; all nitrates are soluble",
+          "correct": true,
+          "explanation": "The nitrate row lists every salt as soluble with no insoluble members.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One; silver nitrate is insoluble",
+          "correct": false,
+          "explanation": "Silver chloride is the insoluble one; silver nitrate dissolves like every nitrate.",
+          "misconception": "chloride exception copied across"
+        },
+        {
+          "key": "C",
+          "text": "Three; the heavy-metal nitrates are insoluble",
+          "correct": false,
+          "explanation": "No nitrate exceptions exist in the table of record.",
+          "misconception": "invented exceptions"
+        },
+        {
+          "key": "D",
+          "text": "It depends on the temperature",
+          "correct": false,
+          "explanation": "The rules of record are stated without temperature conditions.",
+          "misconception": "condition invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_p2FmkrXqZSzFngpg::L1::Q3",
+      "moduleId": "rn_p2FmkrXqZSzFngpg::L1",
+      "stem": "Which two chlorides are the insoluble exceptions?",
+      "misconceptionClass": "chloride exceptions",
+      "options": [
+        {
+          "key": "A",
+          "text": "Silver chloride and lead(II) chloride",
+          "correct": true,
+          "explanation": "These are the two named exceptions in the chloride row.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Sodium chloride and potassium chloride",
+          "correct": false,
+          "explanation": "Both are soluble, belonging to the always-soluble trio.",
+          "misconception": "soluble members mislabelled"
+        },
+        {
+          "key": "C",
+          "text": "Barium chloride and calcium chloride",
+          "correct": false,
+          "explanation": "Barium and calcium are sulfate exceptions, not chloride exceptions.",
+          "misconception": "sulfate exceptions copied across"
+        },
+        {
+          "key": "D",
+          "text": "Ammonium chloride and copper chloride",
+          "correct": false,
+          "explanation": "Ammonium salts are always soluble, and copper chloride is not a listed exception.",
+          "misconception": "families confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_p2FmkrXqZSzFngpg::L1::Q4",
+      "moduleId": "rn_p2FmkrXqZSzFngpg::L1",
+      "stem": "Which sulfates are named as insoluble?",
+      "misconceptionClass": "sulfate exceptions",
+      "options": [
+        {
+          "key": "A",
+          "text": "Barium sulfate, calcium sulfate and lead(II) sulfate",
+          "correct": true,
+          "explanation": "These three are the sulfate exceptions of record.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Sodium sulfate and potassium sulfate",
+          "correct": false,
+          "explanation": "Both dissolve; their metals are in the always-soluble trio.",
+          "misconception": "soluble members mislabelled"
+        },
+        {
+          "key": "C",
+          "text": "Silver sulfate only",
+          "correct": false,
+          "explanation": "Silver is the chloride exception; the sulfate list names barium, calcium and lead(II).",
+          "misconception": "exception lists swapped"
+        },
+        {
+          "key": "D",
+          "text": "All sulfates are insoluble",
+          "correct": false,
+          "explanation": "Most sulfates are soluble; only the three named ones are not.",
+          "misconception": "rule inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_p2FmkrXqZSzFngpg::L1::Q5",
+      "moduleId": "rn_p2FmkrXqZSzFngpg::L1",
+      "stem": "Why does a chemist learn these solubility rules?",
+      "misconceptionClass": "purpose reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "To choose the most appropriate preparation method for a required salt",
+          "correct": true,
+          "explanation": "Whether the target salt dissolves decides how it can be made and collected.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To decide the colour of the salt",
+          "correct": false,
+          "explanation": "Colour is unrelated to the solubility rules.",
+          "misconception": "unrelated property linked"
+        },
+        {
+          "key": "C",
+          "text": "To work out the formula of the salt",
+          "correct": false,
+          "explanation": "Formulae come from ion charges; solubility is about dissolving.",
+          "misconception": "different chemistry linked"
+        },
+        {
+          "key": "D",
+          "text": "To measure the strength of the acid used",
+          "correct": false,
+          "explanation": "Acid strength is a separate idea from salt solubility.",
+          "misconception": "topics merged"
+        }
+      ]
+    },
+    {
+      "id": "rn_p2FmkrXqZSzFngpg::L2::Q1",
+      "moduleId": "rn_p2FmkrXqZSzFngpg::L2",
+      "stem": "A white precipitate forms when silver nitrate meets a chloride. Why?",
+      "misconceptionClass": "exception application",
+      "options": [
+        {
+          "key": "A",
+          "text": "Silver chloride is one of the insoluble chlorides",
+          "correct": true,
+          "explanation": "The solid appearing is silver chloride, the named chloride exception that will not dissolve.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Silver nitrate is insoluble",
+          "correct": false,
+          "explanation": "All nitrates are soluble; the solid is the chloride formed.",
+          "misconception": "nitrate rule misapplied"
+        },
+        {
+          "key": "C",
+          "text": "The nitrate ions turn solid in water",
+          "correct": false,
+          "explanation": "Nitrate ions never form solids on their own here.",
+          "misconception": "ion behaviour invented"
+        },
+        {
+          "key": "D",
+          "text": "All chlorides are insoluble",
+          "correct": false,
+          "explanation": "Most chlorides dissolve; only silver and lead(II) do not.",
+          "misconception": "rule overgeneralised"
+        }
+      ]
+    },
+    {
+      "id": "rn_p2FmkrXqZSzFngpg::L2::Q2",
+      "moduleId": "rn_p2FmkrXqZSzFngpg::L2",
+      "stem": "Which of these sulfates dissolves in water?",
+      "misconceptionClass": "soluble member identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sodium sulfate",
+          "correct": true,
+          "explanation": "Sodium is in the always-soluble trio, so its sulfate dissolves.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Barium sulfate",
+          "correct": false,
+          "explanation": "Barium sulfate is a named insoluble exception.",
+          "misconception": "exception misclassified"
+        },
+        {
+          "key": "C",
+          "text": "Lead(II) sulfate",
+          "correct": false,
+          "explanation": "Lead(II) sulfate is on the insoluble list.",
+          "misconception": "exception misclassified"
+        },
+        {
+          "key": "D",
+          "text": "Calcium sulfate",
+          "correct": false,
+          "explanation": "Calcium sulfate is the third named sulfate exception.",
+          "misconception": "exception misclassified"
+        }
+      ]
+    },
+    {
+      "id": "rn_p2FmkrXqZSzFngpg::L2::Q3",
+      "moduleId": "rn_p2FmkrXqZSzFngpg::L2",
+      "stem": "Which carbonate will dissolve in water?",
+      "misconceptionClass": "carbonate rule application",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ammonium carbonate",
+          "correct": true,
+          "explanation": "Ammonium is one of the three whose carbonates dissolve.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Copper(II) carbonate",
+          "correct": false,
+          "explanation": "Copper is not in the soluble trio, so its carbonate is insoluble.",
+          "misconception": "unlisted metal assumed soluble"
+        },
+        {
+          "key": "C",
+          "text": "Calcium carbonate",
+          "correct": false,
+          "explanation": "Calcium carbonate, as in limestone and marble, is insoluble.",
+          "misconception": "everyday rock mistaken as soluble"
+        },
+        {
+          "key": "D",
+          "text": "Iron(II) carbonate",
+          "correct": false,
+          "explanation": "Iron is not in the soluble trio either.",
+          "misconception": "unlisted metal assumed soluble"
+        }
+      ]
+    },
+    {
+      "id": "rn_p2FmkrXqZSzFngpg::L2::Q4",
+      "moduleId": "rn_p2FmkrXqZSzFngpg::L2",
+      "stem": "What is limewater, chemically?",
+      "misconceptionClass": "identity recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "A solution of calcium hydroxide, which is only slightly soluble",
+          "correct": true,
+          "explanation": "Limewater is the common name for calcium hydroxide solution, the sparingly soluble hydroxide.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A solution of sodium hydroxide",
+          "correct": false,
+          "explanation": "Sodium hydroxide is fully soluble and has its own name; limewater is calcium hydroxide.",
+          "misconception": "alkalis confused"
+        },
+        {
+          "key": "C",
+          "text": "A solution of calcium carbonate",
+          "correct": false,
+          "explanation": "Calcium carbonate is insoluble, so it cannot make limewater.",
+          "misconception": "carbonate and hydroxide swapped"
+        },
+        {
+          "key": "D",
+          "text": "Any alkaline solution at all",
+          "correct": false,
+          "explanation": "Limewater is a specific substance, not a general term for alkalis.",
+          "misconception": "specific name generalised"
+        }
+      ]
+    },
+    {
+      "id": "rn_p2FmkrXqZSzFngpg::L2::Q5",
+      "moduleId": "rn_p2FmkrXqZSzFngpg::L2",
+      "stem": "Calcium hydroxide is listed as slightly soluble, while sodium hydroxide is fully soluble. What does this tell you about the hydroxide row?",
+      "misconceptionClass": "borderline-case reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The hydroxide family has a borderline member between the soluble trio and the insoluble rest",
+          "correct": true,
+          "explanation": "The row's shape is exactly that: a soluble trio, one sparingly soluble member, and mostly insoluble otherwise.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "All hydroxides are equally soluble",
+          "correct": false,
+          "explanation": "The contrast in the question itself shows they are not.",
+          "misconception": "uniformity assumed"
+        },
+        {
+          "key": "C",
+          "text": "Calcium hydroxide is insoluble in every amount",
+          "correct": false,
+          "explanation": "Slightly soluble means a little dissolves, which is why limewater exists.",
+          "misconception": "borderline erased"
+        },
+        {
+          "key": "D",
+          "text": "Sodium hydroxide is the only soluble hydroxide",
+          "correct": false,
+          "explanation": "Potassium and ammonium hydroxides dissolve too; calcium is the borderline case.",
+          "misconception": "trio reduced to one"
+        }
+      ]
+    }
+  ]
+}

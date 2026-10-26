@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_dTP52nzhYb96XrJx",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "5511252f72c5067391c6e76a5af5691596c84cb6265a68ef71f31c1b908b9428",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_dTP52nzhYb96XrJx",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L1::Q1",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L1",
+      "stem": "Which colours does litmus show in acid and in alkali?",
+      "misconceptionClass": "indicator-colour recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Red in acid and blue in alkali",
+          "correct": true,
+          "explanation": "This is the litmus row of the table, and the reason litmus paper comes in two versions.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Colourless in acid and pink in alkali",
+          "correct": false,
+          "explanation": "That is phenolphthalein's pattern, not litmus's.",
+          "misconception": "indicator colours crossed"
+        },
+        {
+          "key": "C",
+          "text": "Red in acid and yellow in alkali",
+          "correct": false,
+          "explanation": "Red then yellow belongs to methyl orange.",
+          "misconception": "methyl orange colours copied"
+        },
+        {
+          "key": "D",
+          "text": "Purple in both acid and alkali",
+          "correct": false,
+          "explanation": "Purple is only the mid-transition colour that makes litmus unsuitable for titrations.",
+          "misconception": "transition colour treated as the result"
+        }
+      ]
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L1::Q2",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L1",
+      "stem": "What colours does phenolphthalein show?",
+      "misconceptionClass": "indicator-colour recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Colourless in acid and pink in alkali",
+          "correct": true,
+          "explanation": "The sharp colourless-to-pink flip is why phenolphthalein is popular for titrations.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Red in acid and blue in alkali",
+          "correct": false,
+          "explanation": "That is litmus.",
+          "misconception": "litmus colours copied"
+        },
+        {
+          "key": "C",
+          "text": "Yellow in acid and red in alkali",
+          "correct": false,
+          "explanation": "No indicator in the table shows that pair; methyl orange is red then yellow.",
+          "misconception": "invented colour pair"
+        },
+        {
+          "key": "D",
+          "text": "Green in acid and purple in alkali",
+          "correct": false,
+          "explanation": "These belong to universal indicator's range, not to phenolphthalein.",
+          "misconception": "universal indicator colours copied"
+        }
+      ]
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L1::Q3",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L1",
+      "stem": "Why is litmus not used to identify the endpoint of a titration?",
+      "misconceptionClass": "suitability reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Its colour change is not sharp and it drifts through purple",
+          "correct": true,
+          "explanation": "The gradual purple transition makes the endpoint hard to judge, so litmus is passed over for titrations.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Litmus is too expensive to use in school titrations",
+          "correct": false,
+          "explanation": "Cost is not the issue; the gradual colour change is.",
+          "misconception": "economic reason invented"
+        },
+        {
+          "key": "C",
+          "text": "Litmus reacts chemically with the acid and destroys it",
+          "correct": false,
+          "explanation": "Indicators are used in tiny amounts and do not consume the reactants.",
+          "misconception": "invented side reaction"
+        },
+        {
+          "key": "D",
+          "text": "Litmus only works for gases, never for solutions",
+          "correct": false,
+          "explanation": "Litmus paper works in solutions too; the titration problem is the unsharp change.",
+          "misconception": "use range overstated"
+        }
+      ]
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L1::Q4",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L1",
+      "stem": "Why do synthetic indicators suit titrations so well?",
+      "misconceptionClass": "endpoint reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "They have a very sharp colour change when the acid has been neutralised",
+          "correct": true,
+          "explanation": "A sharp flip makes the endpoint unmistakable, which is exactly what a titration needs.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They change colour gradually, giving warnings along the way",
+          "correct": false,
+          "explanation": "Gradual change is the weakness of litmus; titrations want the opposite.",
+          "misconception": "litmus weakness attributed to synthetics"
+        },
+        {
+          "key": "C",
+          "text": "They are plant extracts with pleasant colours",
+          "correct": false,
+          "explanation": "Synthetic indicators are organic compounds made industrially, not plant extracts.",
+          "misconception": "origin confused"
+        },
+        {
+          "key": "D",
+          "text": "They measure the pH value numerically",
+          "correct": false,
+          "explanation": "No indicator measures pH; universal indicator only estimates it roughly.",
+          "misconception": "estimation confused with measurement"
+        }
+      ]
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L1::Q5",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L1",
+      "stem": "Where does litmus, the most familiar indicator, come from?",
+      "misconceptionClass": "origin recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is extracted from lichens",
+          "correct": true,
+          "explanation": "Many plants carry indicator substances, and litmus is the common one, taken from lichens.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It is made from universal indicator",
+          "correct": false,
+          "explanation": "Universal indicator is itself a mixture of plant indicators; litmus comes from lichens directly.",
+          "misconception": "relationship between indicators reversed"
+        },
+        {
+          "key": "C",
+          "text": "It is synthesised from methyl orange",
+          "correct": false,
+          "explanation": "Methyl orange is a separate synthetic indicator; litmus is natural.",
+          "misconception": "synthetics treated as precursors"
+        },
+        {
+          "key": "D",
+          "text": "It is mined as a mineral salt",
+          "correct": false,
+          "explanation": "Litmus is biological in origin, not mineral.",
+          "misconception": "origin invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L2::Q1",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L2",
+      "stem": "A solution has pH 2. How is it classified?",
+      "misconceptionClass": "band classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Strongly acidic, because 0 to 3 is the strong acid band",
+          "correct": true,
+          "explanation": "pH 2 falls inside the 0 to 3 band, so the solution is strongly acidic.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Weakly acidic, because it is below 7",
+          "correct": false,
+          "explanation": "Anything below 7 is acidic, but the 0 to 3 band marks it as strong rather than weak.",
+          "misconception": "acid band boundaries blurred"
+        },
+        {
+          "key": "C",
+          "text": "Neutral, because 2 is a small number",
+          "correct": false,
+          "explanation": "Only pH 7 is neutral; 2 is far down the acidic side.",
+          "misconception": "small number misread as neutral"
+        },
+        {
+          "key": "D",
+          "text": "Strongly alkaline, because the scale runs the other way",
+          "correct": false,
+          "explanation": "The scale is fixed: alkalis sit above 7, and pH 2 is acidic.",
+          "misconception": "scale direction reversed"
+        }
+      ]
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L2::Q2",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L2",
+      "stem": "A solution has pH 9. How is it classified?",
+      "misconceptionClass": "band classification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Weakly alkaline, in the 8 to 10 band",
+          "correct": true,
+          "explanation": "pH 9 sits in the 8 to 10 band above neutral, so it is a weak alkali.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Strongly alkaline, because it is above 7",
+          "correct": false,
+          "explanation": "Strong alkalis need pH 11 to 14; 9 is only weakly alkaline.",
+          "misconception": "band boundary misplaced"
+        },
+        {
+          "key": "C",
+          "text": "Weakly acidic, because it is close to 7",
+          "correct": false,
+          "explanation": "Anything above 7 is alkaline; closeness to 7 makes it weak, not acidic.",
+          "misconception": "side of neutral misjudged"
+        },
+        {
+          "key": "D",
+          "text": "Neutral, because 9 rounds to 7",
+          "correct": false,
+          "explanation": "No rounding applies to the classification; only pH 7 is neutral.",
+          "misconception": "rounding invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L2::Q3",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L2",
+      "stem": "Which pH value marks a neutral solution?",
+      "misconceptionClass": "neutral-point recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "pH 7",
+          "correct": true,
+          "explanation": "Seven is the fixed neutral point between the acidic and alkaline bands.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "pH 0",
+          "correct": false,
+          "explanation": "pH 0 is the strongest acid on the scale, the opposite of neutral.",
+          "misconception": "scale end mistaken for the middle"
+        },
+        {
+          "key": "C",
+          "text": "pH 14",
+          "correct": false,
+          "explanation": "Fourteen is the strongest alkali, not neutral.",
+          "misconception": "scale end mistaken for the middle"
+        },
+        {
+          "key": "D",
+          "text": "It depends on the temperature of the solution",
+          "correct": false,
+          "explanation": "For this classification scheme the neutral point is stated as 7 on the scale of record.",
+          "misconception": "complication introduced beyond the scheme"
+        }
+      ]
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L2::Q4",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L2",
+      "stem": "Why is universal indicator a poor choice for a titration?",
+      "misconceptionClass": "titration-indicator reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "It gives a gradual blend of colours instead of one sharp endpoint change",
+          "correct": true,
+          "explanation": "A titration needs a sharp colour flip to define the endpoint, which universal indicator cannot supply.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It is too expensive to put in a conical flask",
+          "correct": false,
+          "explanation": "Cost is irrelevant; the problem is the absence of a sharp change.",
+          "misconception": "cost reasoning invented"
+        },
+        {
+          "key": "C",
+          "text": "It only works in acidic solutions",
+          "correct": false,
+          "explanation": "Universal indicator spans the whole range; that breadth is exactly why it lacks sharpness.",
+          "misconception": "range misdescribed"
+        },
+        {
+          "key": "D",
+          "text": "It cannot be added drop by drop",
+          "correct": false,
+          "explanation": "Drops are added exactly as with any indicator; the flaw is the gradual colour response.",
+          "misconception": "procedure blamed"
+        }
+      ]
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L2::Q5",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L2",
+      "stem": "How is universal indicator used to estimate the pH of an unknown solution?",
+      "misconceptionClass": "method recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Add a few drops, then match the colour against a colour chart",
+          "correct": true,
+          "explanation": "This is exactly the stated method, with charts provided because formulations vary slightly between makers.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Read the pH directly from the bottle label",
+          "correct": false,
+          "explanation": "The bottle holds the indicator, not information about the unknown solution.",
+          "misconception": "source of reading confused"
+        },
+        {
+          "key": "C",
+          "text": "Boil the solution first, then test the steam",
+          "correct": false,
+          "explanation": "No heating is involved; the estimate comes from the colour in the solution.",
+          "misconception": "invented step"
+        },
+        {
+          "key": "D",
+          "text": "Titrate it against litmus paper until the purple vanishes",
+          "correct": false,
+          "explanation": "That mixes up two different tools; universal indicator is matched to a chart, and litmus is not part of the method.",
+          "misconception": "methods blended"
+        }
+      ]
+    }
+  ]
+}

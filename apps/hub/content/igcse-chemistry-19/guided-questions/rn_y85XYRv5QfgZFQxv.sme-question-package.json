@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_y85XYRv5QfgZFQxv",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "1e04311b112db053c21725c33ec74847a63008b594b0b1f169e4d3f9c63a4dac",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_y85XYRv5QfgZFQxv",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L1::Q1",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L1",
+      "stem": "What extra feature does a reaction profile show that a simple energy level diagram does not?",
+      "misconceptionClass": "diagram comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "How the energy changes during the course of the reaction",
+          "correct": true,
+          "explanation": "The curve between the levels is the added information a profile carries.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The temperature of the reaction mixture",
+          "correct": false,
+          "explanation": "Temperature never appears on energy diagrams.",
+          "misconception": "invented feature"
+        },
+        {
+          "key": "C",
+          "text": "The concentration of the reactants",
+          "correct": false,
+          "explanation": "Concentration belongs to rate experiments, not profiles.",
+          "misconception": "topic intrusion"
+        },
+        {
+          "key": "D",
+          "text": "The time taken for the reaction",
+          "correct": false,
+          "explanation": "Profiles show energy against progress, not time.",
+          "misconception": "axis confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L1::Q2",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L1",
+      "stem": "What does the rise from reactants to the peak of the curve represent?",
+      "misconceptionClass": "feature identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "The activation energy required to start the reaction",
+          "correct": true,
+          "explanation": "That initial climb is the minimum energy particles need to react.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The overall enthalpy change",
+          "correct": false,
+          "explanation": "The enthalpy change is reactants to products, not to the peak.",
+          "misconception": "features swapped"
+        },
+        {
+          "key": "C",
+          "text": "The energy released by the products",
+          "correct": false,
+          "explanation": "Release happens on the way down, not on the initial climb.",
+          "misconception": "direction confused"
+        },
+        {
+          "key": "D",
+          "text": "The activation energy of the reverse reaction only",
+          "correct": false,
+          "explanation": "The forward barrier is the one drawn from the reactant level.",
+          "misconception": "direction misassigned"
+        }
+      ]
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L1::Q3",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L1",
+      "stem": "On an exothermic profile, which way does the enthalpy arrow point and what sign carries?",
+      "misconceptionClass": "sign and direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "Downwards with a negative value",
+          "correct": true,
+          "explanation": "Products sit lower, so the overall arrow descends and ΔH is negative.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Upwards with a positive value",
+          "correct": false,
+          "explanation": "That is the endothermic profile.",
+          "misconception": "type swapped"
+        },
+        {
+          "key": "C",
+          "text": "Downwards with a positive value",
+          "correct": false,
+          "explanation": "A downward arrow with a positive sign contradicts itself.",
+          "misconception": "sign mismatched"
+        },
+        {
+          "key": "D",
+          "text": "Upwards with a negative value",
+          "correct": false,
+          "explanation": "Neither half matches exothermic behaviour.",
+          "misconception": "both wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L1::Q4",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L1",
+      "stem": "Two reactions share the same enthalpy change but reaction X has a higher peak. What follows?",
+      "misconceptionClass": "profile comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "X needs more energy to get going, so more heat is needed to start it",
+          "correct": true,
+          "explanation": "A taller barrier means a harder start even when the overall change matches.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "X releases more energy overall",
+          "correct": false,
+          "explanation": "The overall change is stated to be the same.",
+          "misconception": "conflation"
+        },
+        {
+          "key": "C",
+          "text": "X must be endothermic and the other exothermic",
+          "correct": false,
+          "explanation": "Equal enthalpy changes mean both point the same way.",
+          "misconception": "type invented"
+        },
+        {
+          "key": "D",
+          "text": "X has no activation energy",
+          "correct": false,
+          "explanation": "Every reaction has some barrier; X's is simply taller.",
+          "misconception": "absurd claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L1::Q5",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L1",
+      "stem": "What is the definition of activation energy?",
+      "misconceptionClass": "definition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The minimum energy that reacting particles must have for a reaction to occur",
+          "correct": true,
+          "explanation": "That threshold is exactly what the profile peak measures.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The total energy stored in all the bonds of the reactants",
+          "correct": false,
+          "explanation": "Stored energy is not the threshold concept.",
+          "misconception": "concept swapped"
+        },
+        {
+          "key": "C",
+          "text": "The energy released when products form",
+          "correct": false,
+          "explanation": "Release belongs to the product side of the profile.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "D",
+          "text": "The energy needed to raise the temperature by one degree",
+          "correct": false,
+          "explanation": "That is specific heat capacity.",
+          "misconception": "term confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L2::Q1",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
+      "stem": "How does a catalyst appear on a reaction profile?",
+      "misconceptionClass": "profile reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "As a second curve with a lower peak between the same reactant and product levels",
+          "correct": true,
+          "explanation": "The alternative pathway is drawn lower while the endpoints stay fixed.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "As a deeper valley below the reactant level",
+          "correct": false,
+          "explanation": "The route still climbs to a peak; it is just a smaller one.",
+          "misconception": "shape misread"
+        },
+        {
+          "key": "C",
+          "text": "As a new product level lower than before",
+          "correct": false,
+          "explanation": "Product levels are unchanged by catalysis.",
+          "misconception": "levels shifted"
+        },
+        {
+          "key": "D",
+          "text": "As a vertical line at the start",
+          "correct": false,
+          "explanation": "Catalysts change the pathway shape, not the axes.",
+          "misconception": "absurd shape"
+        }
+      ]
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L2::Q2",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
+      "stem": "Why does lowering the peak increase the rate?",
+      "misconceptionClass": "mechanism link",
+      "options": [
+        {
+          "key": "A",
+          "text": "A greater proportion of molecules now have sufficient energy for an effective collision",
+          "correct": true,
+          "explanation": "The smaller hurdle converts average collisions into successful ones.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because the molecules themselves become more energetic",
+          "correct": false,
+          "explanation": "Molecule energies are unchanged; the requirement drops.",
+          "misconception": "energy myth"
+        },
+        {
+          "key": "C",
+          "text": "Because the products are more stable",
+          "correct": false,
+          "explanation": "Product stability is identical with or without the catalyst.",
+          "misconception": "stability myth"
+        },
+        {
+          "key": "D",
+          "text": "Because the reactant level falls",
+          "correct": false,
+          "explanation": "The reactant level never moves.",
+          "misconception": "level myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L2::Q3",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
+      "stem": "What happens to the overall enthalpy change when a catalyst is added?",
+      "misconceptionClass": "invariance reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is unchanged, because the start and finish levels are the same",
+          "correct": true,
+          "explanation": "Catalysts alter the route, never the endpoints.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It becomes more negative",
+          "correct": false,
+          "explanation": "The drop between levels is fixed.",
+          "misconception": "sign drift"
+        },
+        {
+          "key": "C",
+          "text": "It becomes positive",
+          "correct": false,
+          "explanation": "The direction of the overall change is untouched.",
+          "misconception": "sign flip"
+        },
+        {
+          "key": "D",
+          "text": "It halves, because the barrier fell",
+          "correct": false,
+          "explanation": "Barrier and overall change are different quantities.",
+          "misconception": "conflation"
+        }
+      ]
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L2::Q4",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
+      "stem": "A reaction occurs readily at room temperature. What does its profile look like?",
+      "misconceptionClass": "profile inference",
+      "options": [
+        {
+          "key": "A",
+          "text": "It has a low activation peak, so little energy is needed to begin",
+          "correct": true,
+          "explanation": "Ready reactions correspond to small barriers.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It has no peak at all",
+          "correct": false,
+          "explanation": "Every reaction has some barrier to clear.",
+          "misconception": "zero-barrier myth"
+        },
+        {
+          "key": "C",
+          "text": "It has a very high peak",
+          "correct": false,
+          "explanation": "A high peak would make the reaction reluctant, not ready.",
+          "misconception": "inversion"
+        },
+        {
+          "key": "D",
+          "text": "Its product level sits above its reactant level",
+          "correct": false,
+          "explanation": "Readiness says nothing about the sign of the change.",
+          "misconception": "type conflated"
+        }
+      ]
+    },
+    {
+      "id": "rn_y85XYRv5QfgZFQxv::L2::Q5",
+      "moduleId": "rn_y85XYRv5QfgZFQxv::L2",
+      "stem": "The activation energy for a particular reaction is described as what kind of quantity?",
+      "misconceptionClass": "property reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "A fixed value for that reaction, unchanged by how fast the reaction is run",
+          "correct": true,
+          "explanation": "The barrier is a property of the reaction and its pathway.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A value that grows as the reaction proceeds",
+          "correct": false,
+          "explanation": "The barrier is set by the pathway, not by progress.",
+          "misconception": "growth myth"
+        },
+        {
+          "key": "C",
+          "text": "A value that depends on the amount of product formed",
+          "correct": false,
+          "explanation": "Yield does not set the barrier.",
+          "misconception": "yield conflated"
+        },
+        {
+          "key": "D",
+          "text": "A value that changes with the colour of the mixture",
+          "correct": false,
+          "explanation": "Colour has no bearing on the barrier.",
+          "misconception": "absurd link"
+        }
+      ]
+    }
+  ]
+}

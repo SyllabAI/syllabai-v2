@@ -1,0 +1,164 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_J7ZcTWyRxRgWQ45R",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "b91db0192d4628baf3afd9993c5b6f32e0324a6ab0ac6469630f03c5dfa96e5e",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_J7ZcTWyRxRgWQ45R",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Ionic Bonding",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-6-ionic-bonding/1-6-3-formulae-for-ionic-compounds",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.39",
+        "text": "write formulae for compounds formed between the ions listed above"
+      }
+    ],
+    "primer": {
+      "text": "From Ionic Bonding you already know the common ions and the charges they carry, from Group 1 metals giving 1+ ions to the sulfate and nitrate groups. This note turns that charge table into a working method: combining any positive and negative ion so the charges cancel exactly, giving the formula of the ionic compound they form.",
+      "prerequisiteSubtopic": "Ionic Bonding"
+    },
+    "modules": [
+      {
+        "id": "rn_J7ZcTWyRxRgWQ45R::L1",
+        "title": "Direct comparison",
+        "sourceHeadings": [
+          "Direct comparison"
+        ],
+        "specRefs": [
+          "4CH1-1.39"
+        ],
+        "opening": "Every ionic compound is electrically neutral overall: the total positive charge carried by its metal ions exactly balances the total negative charge carried by its non-metal ions. Reading the two charges side by side is therefore enough to work out how many of each ion the formula needs. This direct comparison method starts from the charges alone and finishes with the formula.",
+        "keyPoints": [
+          "Ionic compounds carry no overall charge: the positive and negative charges on their ions cancel exactly.",
+          "This neutrality belongs to the compound as a whole and is not the same statement as a neutral atom.",
+          "In the direct comparison method, the two ion charges are written side by side and checked for cancellation.",
+          "One sulfate ion, carrying 2-, exactly cancels the 2+ charge on the iron(II) ion, so the formula is FeSO4.",
+          "When the charges are equal in size but opposite in sign, the formula needs one of each ion."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "An ionic compound is neutral overall, so the charges on its ions must cancel. Write both charges, compare them, and the counts that cancel them give the formula: equal and opposite charges mean one of each ion, as in FeSO4.",
+            "analogy": "Think of two children trading marbles in fixed values: a 2-valued token exactly pays off a 2-valued debt, so one swap settles the account with nothing left over.",
+            "examPointer": "Questions usually hand you the ion charges; the marks are for showing the cancellation step and then writing the formula, so always show the comparison."
+          },
+          "medium": {
+            "restatement": "Neutrality is a charge-balance condition: the sum of all positive ion charges plus all negative ion charges is zero. Direct comparison finds the smallest whole-number counts that satisfy it, which for matched charges such as Fe2+ and SO4 2- is the one-to-one ratio FeSO4.",
+            "analogy": "Picture an account that must close at exactly zero: a 2+ deposit needs a 2- withdrawal of equal size, and the receipt that shows both entries cancelling is the formula itself.",
+            "examPointer": "If asked why a formula such as FeSO4 needs no brackets, point out that the charges already match one-to-one; brackets only appear when a complex ion count exceeds one."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_J7ZcTWyRxRgWQ45R::L1::Q1",
+          "rn_J7ZcTWyRxRgWQ45R::L1::Q2",
+          "rn_J7ZcTWyRxRgWQ45R::L1::Q3",
+          "rn_J7ZcTWyRxRgWQ45R::L1::Q4",
+          "rn_J7ZcTWyRxRgWQ45R::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_J7ZcTWyRxRgWQ45R::L2",
+        "title": "The swap-and-drop method",
+        "sourceHeadings": [
+          "The swap-and-drop method"
+        ],
+        "specRefs": [
+          "4CH1-1.39"
+        ],
+        "opening": "When the two ions carry different-sized charges, a quick crosswise trick finds the formula: each charge number swaps over to become the count of the other ion, then drops into place. Copper(II) chloride, from Cu2+ and Cl-, becomes CuCl2 this way. The signs are dropped, the number 1 is never written, and complex ions are wrapped in brackets whenever their count is above one.",
+        "keyPoints": [
+          "Swap-and-drop turns each ion's charge number into the other ion's count, as Cu2+ with Cl- gives CuCl2.",
+          "Positive and negative signs are dropped during the method, and a count of 1 is never written.",
+          "With same-charge ions the method overcounts, so the resulting ratio must be reduced to its simplest whole numbers.",
+          "Magnesium hydroxide ends as Mg(OH)2 because the 2+ charge doubles the whole hydroxide group inside brackets.",
+          "The method is a shortcut for the same cancellation rule that the direct comparison method applies."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Write both charges, cross them over so each number becomes the other ion's count, and drop them into the formula. Signs vanish, ones are left out, and brackets collect any multi-atom ion whose count is above one, as in Mg(OH)2.",
+            "analogy": "It works like exchanging fixed-value vouchers: a 3-voucher pays for three 1-items, so the numbers simply swap sides and become the other side's quantity.",
+            "examPointer": "Examiners look for correct brackets on complex ions such as hydroxide and sulfate; a missing pair of brackets around OH when doubled is a classic lost mark."
+          },
+          "medium": {
+            "restatement": "The method encodes charge balance: a charge of size m on one ion demands m partners of the opposite charge, so the magnitudes exchange places. Where the magnitudes share a common factor the counts must still be reduced, and complex ions take brackets before any count above one is applied.",
+            "analogy": "Think of a currency exchange where each banknote's value sets how many of the opposite currency you receive; repeated notes are bundled inside brackets before the bundle is multiplied.",
+            "examPointer": "Practise the method on pairs with unequal charges and on complex-ion cases together, since exam questions frequently combine both demands in a single formula."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_J7ZcTWyRxRgWQ45R::L2::Q1",
+          "rn_J7ZcTWyRxRgWQ45R::L2::Q2",
+          "rn_J7ZcTWyRxRgWQ45R::L2::Q3",
+          "rn_J7ZcTWyRxRgWQ45R::L2::Q4",
+          "rn_J7ZcTWyRxRgWQ45R::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "formula",
+          "definition": "The statement of which ions, and how many of each, make up one repeating unit of an ionic compound.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ion",
+          "definition": "A charged particle formed when an atom loses or gains electrons; positive ions are cations and negative ions are anions.",
+          "firstLesson": 1
+        },
+        {
+          "term": "charge",
+          "definition": "The electric imbalance on an ion, written as a number with a sign, such as 2+ or 1-.",
+          "firstLesson": 1
+        },
+        {
+          "term": "sulfate",
+          "definition": "A complex negative ion made of one sulfur atom and four oxygen atoms, carrying a 2- charge.",
+          "firstLesson": 1
+        },
+        {
+          "term": "swap-and-drop",
+          "definition": "The crosswise shortcut that turns each ion's charge number into the other ion's count before writing the formula.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "The compound produced in the reaction between iron wool and chlorine contains the ions Fe3+ and Cl-. a) Give the formula of this compound. b) State the name of this compound.",
+        "steps": [
+          "The iron ion is Fe3+, which means that it has a 3+ or +3 charge.",
+          "The chloride ion is Cl-, which means that it has a 1- or -1 charge.",
+          "The charges do not cancel each other out: mathematically, (+3) + (-1) is not zero.",
+          "Three Cl- ions are needed to cancel the +3 charge on Fe3+.",
+          "Direct comparison therefore gives FeCl3, and the swap-and-drop method gives the same result: the charges swap from element to element and drop down.",
+          "The metal is iron and the chlorine changes to chloride, so the name is iron chloride."
+        ],
+        "finalAnswer": "The formula is FeCl3 and the name is iron chloride."
+      }
+    }
+  }
+}

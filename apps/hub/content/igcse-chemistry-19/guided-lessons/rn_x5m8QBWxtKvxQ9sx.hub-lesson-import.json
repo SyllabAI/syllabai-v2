@@ -1,0 +1,155 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_x5m8QBWxtKvxQ9sx",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "650f80d1c68a835f748f7e166fdeda8219b136360b96d1ef73b9f21d2d8a932b",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_x5m8QBWxtKvxQ9sx",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Energetics",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-1-energetics/3-1-1-exothermic-and-endothermic",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.1",
+        "text": "know that chemical reactions in which heat energy is given out are described as exothermic, and those in which heat energy is taken in are described as endothermic"
+      }
+    ],
+    "primer": {
+      "text": "From Gases in the Atmosphere you already know that burning fuels pours heat into the air. This note sorts chemical reactions into those that give heat out and those that take heat in, and shows how a thermometer tells them apart. It closes with the energy bookkeeping rule that makes every temperature reading meaningful.",
+      "prerequisiteSubtopic": "Gases in the Atmosphere"
+    },
+    "modules": [
+      {
+        "id": "rn_x5m8QBWxtKvxQ9sx::L1",
+        "title": "Spotting exothermic and endothermic changes",
+        "sourceHeadings": [
+          "Exothermic and endothermic reactions",
+          "Exothermic reactions"
+        ],
+        "specRefs": [
+          "4CH1-3.1"
+        ],
+        "opening": "Every reaction either warms or cools its surroundings, and a thermometer reveals which of the two is happening. This lesson builds the two labels chemists use and ties each label to the temperature direction you observe.",
+        "keyPoints": [
+          "Exothermic reactions give heat energy out to the surroundings, raising the temperature of the reaction mixture.",
+          "Endothermic reactions take heat in from the surroundings, so the temperature of the reaction mixture falls.",
+          "Neutralisation and combustion always give energy out, while displacement reactions can transfer energy either way.",
+          "A thermometer measures the heat change, so it reveals whether a reaction is exothermic or endothermic.",
+          "Energy is conserved in reactions, so the products end up with less energy than the reactants when heat is released."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Some reactions warm things up and some cool them down. A reaction that hands heat to the surroundings is exothermic; one that takes heat from the surroundings is endothermic.",
+            "analogy": "A bonfire warms everyone standing near it, while an ice pack soaks up heat from a bruised knee; the fire behaves like the first kind of reaction and the pack like the second.",
+            "examPointer": "If asked to identify a reaction type, quote the thermometer direction: temperature up means exothermic, temperature down means endothermic."
+          },
+          "medium": {
+            "restatement": "Exothermic reactions transfer heat to the surroundings, so the reaction mixture and everything around it grow warmer. Endothermic reactions draw heat in from the surroundings, leaving the mixture and its surroundings cooler.",
+            "analogy": "A bonfire warms the crowd gathered round it, while a cold pack draws heat out of a sports injury; one hands energy over and the other soaks it up.",
+            "examPointer": "Quote the temperature direction from the data, then name the reaction type and justify it by the heat taken in or given out."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_x5m8QBWxtKvxQ9sx::L1::Q1",
+          "rn_x5m8QBWxtKvxQ9sx::L1::Q2",
+          "rn_x5m8QBWxtKvxQ9sx::L1::Q3",
+          "rn_x5m8QBWxtKvxQ9sx::L1::Q4",
+          "rn_x5m8QBWxtKvxQ9sx::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_x5m8QBWxtKvxQ9sx::L2",
+        "title": "The energy account behind each reaction type",
+        "sourceHeadings": [
+          "Endothermic reactions",
+          "Exothermic & Endothermic"
+        ],
+        "specRefs": [
+          "4CH1-3.1"
+        ],
+        "opening": "Because energy cannot be created or destroyed, every heating or cooling you measure has to come from somewhere or go somewhere. This lesson follows the energy account that sits behind each reaction type.",
+        "keyPoints": [
+          "The law of conservation of energy says energy cannot be created or destroyed, only transferred.",
+          "When energy moves to the surroundings, the products must hold less energy than the reactants by that amount.",
+          "Examples of exothermic reactions include neutralisation and combustion, which always give energy out.",
+          "The heat content of the system falls in exothermic reactions and rises in endothermic ones.",
+          "Temperature changes recorded in a table of results classify each reaction as exothermic or endothermic."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Energy keeps a fixed total, so heat that appears or disappears must come from the chemicals or go to them. Warming reactions empty energy into the surroundings; cooling ones pull it in.",
+            "analogy": "Picture a bank account: money handed to the street lowers your balance, and money collected raises it, just as heat leaves or fills the chemicals.",
+            "examPointer": "Explain reaction types by tracking energy: released means the products end lower, absorbed means they end higher."
+          },
+          "medium": {
+            "restatement": "Energy is conserved in every reaction, so any heat you measure must equal the energy change of the chemicals themselves. Exothermic reactions leave the system holding less energy; endothermic reactions leave it holding more.",
+            "analogy": "A bank transfer moves money without creating it; the two balances change by matching amounts, like the chemicals and the surroundings exchanging heat.",
+            "examPointer": "Link the thermometer direction to the energy ledger: temperature rise means the system lost energy, temperature fall means it gained."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_x5m8QBWxtKvxQ9sx::L2::Q1",
+          "rn_x5m8QBWxtKvxQ9sx::L2::Q2",
+          "rn_x5m8QBWxtKvxQ9sx::L2::Q3",
+          "rn_x5m8QBWxtKvxQ9sx::L2::Q4",
+          "rn_x5m8QBWxtKvxQ9sx::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "exothermic reaction",
+          "definition": "A reaction that releases heat energy into the surroundings, raising the temperature of the reaction mixture.",
+          "firstLesson": 1
+        },
+        {
+          "term": "endothermic reaction",
+          "definition": "A reaction that takes heat energy in from the surroundings, lowering the temperature of the reaction mixture.",
+          "firstLesson": 1
+        },
+        {
+          "term": "surroundings",
+          "definition": "Everything outside the chemicals that are reacting, including the air, the container and the thermometer.",
+          "firstLesson": 1
+        },
+        {
+          "term": "law of conservation of energy",
+          "definition": "The rule that energy cannot be created or destroyed, only transferred between the system and its surroundings.",
+          "firstLesson": 2
+        },
+        {
+          "term": "displacement reaction",
+          "definition": "A reaction in which one element takes the place of another in a compound; it can give energy out or take it in.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

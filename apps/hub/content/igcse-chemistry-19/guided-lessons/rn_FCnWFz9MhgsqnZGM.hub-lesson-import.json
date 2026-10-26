@@ -1,0 +1,154 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_FCnWFz9MhgsqnZGM",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "ee6038060f98c01303dcff9e31adb889f8ab10f3e21475ec9dd3a9817eb18559",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_FCnWFz9MhgsqnZGM",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Ionic Bonding",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-6-ionic-bonding/1-6-4-ionic-bonds-dot-and-cross-diagrams",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.37",
+        "text": "understand how ions are formed by electron loss or gain"
+      },
+      {
+        "code": "4CH1-1.40",
+        "text": "draw dot-and-cross diagrams to show the formation of ionic compounds by electron transfer, limited to combinations of elements from Groups 1, 2, 3 and 5, 6, 7 only outer electrons need be shown"
+      }
+    ],
+    "primer": {
+      "text": "From Ionic Bonding you already know that metal atoms lose their outer electrons and non-metal atoms gain them, forming ions with full outer shells. This note shows how that electron transfer is drawn: dot-and-cross diagrams that make the movement of electrons, and the charges left behind, visible on the page.",
+      "prerequisiteSubtopic": "Ionic Bonding"
+    },
+    "modules": [
+      {
+        "id": "rn_FCnWFz9MhgsqnZGM::L1",
+        "title": "Sodium chloride dot and cross diagram",
+        "sourceHeadings": [
+          "Dot and cross diagrams for ionic compounds",
+          "Sodium chloride dot and cross diagram"
+        ],
+        "specRefs": [
+          "4CH1-1.37",
+          "4CH1-1.40"
+        ],
+        "opening": "A dot-and-cross diagram draws the outer electrons of each atom, using a different symbol for each atom involved. When a metal reacts with a non-metal, electrons move across from the metal to the non-metal, and square brackets around each ion carry its charge. Sodium chloride is the standard example: one electron passes from sodium to chlorine.",
+        "keyPoints": [
+          "In a dot-and-cross diagram each atom's outer electrons get their own symbol, dots for one atom and crosses for the other.",
+          "Sodium is a Group 1 metal, so it loses its single outer electron to reach a full outer shell.",
+          "Chlorine is a Group 7 non-metal, so it gains that electron to complete its own outer shell.",
+          "The transfer produces a 1+ sodium ion and a 1- chloride ion, giving the formula NaCl.",
+          "Large square brackets enclose each ion, with the charge written outside at the top right in superscript."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Draw one atom's outer electrons as dots and the other atom's as crosses. Sodium hands its one outer electron over to chlorine, both end with full outer shells, and the finished picture shows a 1+ and a 1- ion inside brackets as NaCl.",
+            "analogy": "Picture two students keeping record cards: one card marks each electron with a dot, the other with a cross, so after the handover you can see exactly which electron came from whom.",
+            "examPointer": "Only the outer shells are drawn; inner shells earn no credit, so keep the diagram to the outermost electrons and label both ion charges."
+          },
+          "medium": {
+            "restatement": "The diagram is a bookkeeping device for electron transfer: dots mark the metal's outer electrons and crosses the non-metal's, so the moved electrons stay identifiable. After the handover both ions show full outer shells, sodium has lost one electron to sit at 1+, and chlorine has gained one to sit at 1-.",
+            "analogy": "Think of labelled coins in two jars: each coin keeps its marking when it moves jar, so anyone can audit later which coins migrated and how many each jar now holds.",
+            "examPointer": "Marks sit on three details: different symbols per atom, outer shells only, and charges outside the brackets; omit any one and the diagram scores partially."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_FCnWFz9MhgsqnZGM::L1::Q1",
+          "rn_FCnWFz9MhgsqnZGM::L1::Q2",
+          "rn_FCnWFz9MhgsqnZGM::L1::Q3",
+          "rn_FCnWFz9MhgsqnZGM::L1::Q4",
+          "rn_FCnWFz9MhgsqnZGM::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_FCnWFz9MhgsqnZGM::L2",
+        "title": "Magnesium oxide dot and cross diagram",
+        "sourceHeadings": [
+          "Magnesium oxide dot and cross diagram"
+        ],
+        "specRefs": [
+          "4CH1-1.40"
+        ],
+        "opening": "The magnesium oxide diagram repeats the sodium chloride story with two electrons instead of one. Magnesium, in Group 2, gives away both of its outer electrons; oxygen, in Group 6, receives both and completes its outer shell. The finished diagram shows a 2+ ion and a 2- ion in brackets, and the charges cancel to give the formula MgO.",
+        "keyPoints": [
+          "Magnesium sits in Group 2, so a magnesium atom has two outer electrons to give away.",
+          "Oxygen sits in Group 6, so an oxygen atom needs two more electrons to complete its outer shell.",
+          "Both transferred electrons come from the magnesium atom, and both are received by the oxygen atom.",
+          "The ions formed are Mg2+ and O2-, and the formula of magnesium oxide is MgO.",
+          "The diagram needs only the outer shells drawn, with dots and crosses distinguishing the two atoms."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Magnesium's two outer electrons transfer to one oxygen atom. Draw the two dots crossing over as crosses, bracket both ions, and mark them 2+ and 2-; the charges cancel one-to-one, which is why the formula reads MgO.",
+            "analogy": "It is like paying a two-coin fare in one transaction: the buyer hands over both coins together, the payment completes exactly, and the receipt shows a single two-coin handover.",
+            "examPointer": "State the group numbers when you explain the diagram; the marks reward linking Group 2 and Group 6 to the two-electron transfer."
+          },
+          "medium": {
+            "restatement": "The 2+ and 2- charges arise directly from the group positions: a Group 2 atom empties its outer shell while a Group 6 atom tops up by the same count. Because the two electrons move together to a single oxygen atom, the ion ratio stays one-to-one and the formula is MgO.",
+            "analogy": "Picture a shop that only accepts exact payment in two coins: the buyer hands over both at once, the seller's account completes, and the record shows a single two-coin transfer.",
+            "examPointer": "For any Group 2 with Group 6 pairing the same two-electron transfer applies, so practise spotting the pattern rather than relearning each case."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_FCnWFz9MhgsqnZGM::L2::Q1",
+          "rn_FCnWFz9MhgsqnZGM::L2::Q2",
+          "rn_FCnWFz9MhgsqnZGM::L2::Q3",
+          "rn_FCnWFz9MhgsqnZGM::L2::Q4",
+          "rn_FCnWFz9MhgsqnZGM::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "dot-and-cross diagram",
+          "definition": "A drawing that uses a different symbol for each atom's outer electrons to show how they are transferred or shared.",
+          "firstLesson": 1
+        },
+        {
+          "term": "outer electron",
+          "definition": "An electron in the outermost occupied shell of an atom; only these are drawn in the diagrams of this note.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ion",
+          "definition": "A charged particle formed when an atom loses or gains electrons.",
+          "firstLesson": 1
+        },
+        {
+          "term": "shell",
+          "definition": "One of the fixed positions around the nucleus that electrons occupy; the outermost one is completed by transfer here.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

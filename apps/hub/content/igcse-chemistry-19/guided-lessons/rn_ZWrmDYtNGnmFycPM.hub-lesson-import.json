@@ -1,0 +1,167 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_ZWrmDYtNGnmFycPM",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a7fb598c603a3b59c0fac8c066f2441d74527a87783b036363cfe803c5564554",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_ZWrmDYtNGnmFycPM",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Acids, Alkalis & Titrations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-6-acids-alkalis-and-titrations/2-6-2-acids-alkalis-and-neutralisation",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.29",
+        "text": "understand how to use the pH scale, from 0–14, can be used to classify solutions as strongly acidic (0–3), weakly acidic (4–6), neutral (7), weakly alkaline (8–10) and strongly alkaline (11–14)"
+      },
+      {
+        "code": "4CH1-2.31",
+        "text": "know that acids in aqueous solution are a source of hydrogen ions and alkalis in a aqueous solution are a source of hydroxide ions"
+      },
+      {
+        "code": "4CH1-2.32",
+        "text": "know that alkalis can neutralise acids"
+      }
+    ],
+    "primer": {
+      "text": "From Acids, Alkalis & Titrations you know the pH bands from strongly acidic to strongly alkaline. This note explains what creates those values in water: acids release hydrogen ions and alkalis release hydroxide ions. It then shows how the two ions meet and cancel to make water, the reaction called neutralisation.",
+      "prerequisiteSubtopic": "Acids, Alkalis & Titrations"
+    },
+    "modules": [
+      {
+        "id": "rn_ZWrmDYtNGnmFycPM::L1",
+        "title": "Acids & alkalis",
+        "sourceHeadings": [
+          "Acids & alkalis"
+        ],
+        "specRefs": [
+          "4CH1-2.31",
+          "4CH1-2.29"
+        ],
+        "opening": "Dissolve an acid in water and it releases hydrogen ions, H+, and it is these ions that make the solution acidic. Alkalis dissolved in water release hydroxide ions, OH-, which make the solution alkaline. The pH scale is a measure of how much hydrogen ion is present, which is why stronger acids sit lower on the scale.",
+        "keyPoints": [
+          "Acids added to water form positively charged hydrogen ions, H+.",
+          "It is the hydrogen ions that give the solution its acidity.",
+          "Alkalis in water release hydroxide ions, OH-, which make the solution alkaline.",
+          "The pH scale measures the amount of hydrogen ions present in solution.",
+          "pH below 7 means acidic, above 7 means alkaline, and 7 is neutral."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Acids put hydrogen ions into water and alkalis put hydroxide ions in, and whichever ion is in charge decides the behaviour of the mixture. The pH reading simply reports how many hydrogen ions are swimming about, so more hydrogen ions means a lower pH, while plentiful hydroxide pushes the reading high instead.",
+            "analogy": "Think of H+ ions as sourness tokens and OH- ions as smoothness tokens: the more sour tokens in the glass, the more sour the drink tastes and the lower the pH goes.",
+            "examPointer": "Link ion to property in every answer: H+ gives acidity, OH- gives alkalinity, and pH reports the balance between them."
+          },
+          "medium": {
+            "restatement": "In aqueous solution the acid's molecules have released hydrogen ions while the alkali has released hydroxide ions, and each ion type defines the acidity or alkalinity of the mixture. Because the pH scale measures the hydrogen ion amount, a concentrated strong acid reads low while an alkaline solution with plentiful hydroxide reads high.",
+            "analogy": "Picture a scoreboard where hydrogen ions score for the acid side and hydroxide ions score for the alkali side; pH is simply the running total displayed.",
+            "examPointer": "Definition questions often quote the spec wording: acids are a source of hydrogen ions and alkalis a source of hydroxide ions, both in aqueous solution."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ZWrmDYtNGnmFycPM::L1::Q1",
+          "rn_ZWrmDYtNGnmFycPM::L1::Q2",
+          "rn_ZWrmDYtNGnmFycPM::L1::Q3",
+          "rn_ZWrmDYtNGnmFycPM::L1::Q4",
+          "rn_ZWrmDYtNGnmFycPM::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_ZWrmDYtNGnmFycPM::L2",
+        "title": "Neutralisation",
+        "sourceHeadings": [
+          "Neutralisation"
+        ],
+        "specRefs": [
+          "4CH1-2.32"
+        ],
+        "opening": "Neutralisation happens when an acid reacts with an alkali: the hydrogen ions meet the hydroxide ions and combine to form water, H+ + OH- giving H2O. Not every reaction of an acid counts, though; a metal reacting with an acid makes a salt but no water, so it is not a neutralisation. Bases such as limestone and quicklime are added to soils to raise a low pH for crops.",
+        "keyPoints": [
+          "Neutralisation is the name for an acid meeting an alkali in reaction.",
+          "Hydrogen ions and hydroxide ions combine, and the product is water.",
+          "The net ionic equation for all acid-base neutralisations is H+ + OH- giving H2O.",
+          "Metal plus acid makes a salt but no water, so it is not a neutralisation.",
+          "Soils are treated with bases such as limestone and quicklime to raise the pH."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "In neutralisation the acid's hydrogen ions join the alkali's hydroxide ions and water forms, leaving the mixture close to pH 7 instead of acidic or alkaline. Metal-plus-acid reactions make salts but no water, so they are not neutralisations, and bases such as limestone are used to lift acidic soils toward neutral for the crops.",
+            "analogy": "It is like one plus and one minus cancelling to zero: the two opposite ions meet, and a calm, neutral water molecule is what remains after they snap together.",
+            "examPointer": "Quote the net ionic equation H+ + OH- giving H2O, keep the metal-plus-acid exception ready for trick questions, and name limestone as the field example."
+          },
+          "medium": {
+            "restatement": "Neutralisation is the pairing of hydrogen ions with hydroxide ions to form water, expressed once and for all by the net ionic equation H+ + OH- giving H2O, which is why the product solution can end at pH 7. The definition needs water: a salt forming without water, as when a metal dissolves in acid, does not qualify, and farmers use base additions such as limestone to lift acidic soils toward neutral.",
+            "analogy": "Think of the ions as opposite puzzle pieces snapping together; once every plus finds a minus, only calm water molecules remain on the table.",
+            "examPointer": "Exams reward the boundary: state the equation, then explain why the metal reaction misses the definition because water never forms."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ZWrmDYtNGnmFycPM::L2::Q1",
+          "rn_ZWrmDYtNGnmFycPM::L2::Q2",
+          "rn_ZWrmDYtNGnmFycPM::L2::Q3",
+          "rn_ZWrmDYtNGnmFycPM::L2::Q4",
+          "rn_ZWrmDYtNGnmFycPM::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "hydrogen ion",
+          "definition": "The positively charged ion, H+, released by acids in water and responsible for acidity.",
+          "firstLesson": 1
+        },
+        {
+          "term": "hydroxide ion",
+          "definition": "The negatively charged ion, OH-, released by alkalis in water and responsible for alkalinity.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pH scale",
+          "definition": "The scale from 0 to 14 that reports the hydrogen ion amount in a solution.",
+          "firstLesson": 1
+        },
+        {
+          "term": "aqueous solution",
+          "definition": "A solution in which the solvent is water.",
+          "firstLesson": 1
+        },
+        {
+          "term": "neutralisation",
+          "definition": "The reaction in which an acid's hydrogen ions meet an alkali's hydroxide ions to form water.",
+          "firstLesson": 2
+        },
+        {
+          "term": "base",
+          "definition": "A substance that neutralises an acid, such as a metal oxide, hydroxide or carbonate.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

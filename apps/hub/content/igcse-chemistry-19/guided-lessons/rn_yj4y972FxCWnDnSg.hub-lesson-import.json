@@ -1,0 +1,174 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_yj4y972FxCWnDnSg",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "9e009e830e0e26206efc0c7fd2f6263517272ac5effdbefb5b91585fe45ed5fc",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_yj4y972FxCWnDnSg",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Chemical Formulae, Equations, Calculations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-7-practical-determine-the-formula-of-a-metal-oxide",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.31",
+        "text": "understand how the formulae of simple compounds can be obtained experimentally, including metal oxides, water and salts containing water of crystallisation"
+      },
+      {
+        "code": "4CH1-1.33",
+        "text": "calculate empirical and molecular formulae from experimental data"
+      },
+      {
+        "code": "4CH1-1.36",
+        "text": "practical: know how to determine the formula of a metal oxide by combustion (e.g. magnesium oxide) or by reduction (e.g. copper(II) oxide)"
+      }
+    ],
+    "primer": {
+      "text": "The previous note showed how a formula falls out of mass measurements taken before and after a reaction. This note runs that method twice at the bench: burning magnesium in air to catch the oxygen it gains, and stripping oxygen back out of copper oxide with methane, then converting both sets of masses into the mole ratio that writes the formula.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_yj4y972FxCWnDnSg::L1",
+        "title": "Determine the Formula of Magnesium Oxide",
+        "sourceHeadings": [
+          "Practical: Determine the Formula of Magnesium Oxide"
+        ],
+        "specRefs": [
+          "4CH1-1.31",
+          "4CH1-1.33",
+          "4CH1-1.36"
+        ],
+        "opening": "Magnesium ribbon burns in air inside a crucible, and the ribbon gains every gram of oxygen it bonds with. Weigh the crucible before and after, subtract carefully, and the masses of magnesium and oxygen fall out. Divide each by its relative atomic mass and the mole ratio writes the empirical formula.",
+        "keyPoints": [
+          "The aim is the empirical formula of magnesium oxide, determined by combustion of magnesium in a crucible.",
+          "Weigh the crucible with its lid first, then again with the magnesium inside, and subtract for the metal's mass.",
+          "Lift the lid frequently: enough air enters for full oxidation, but magnesium oxide smoke must not escape.",
+          "Keep heating until the mass stays constant - the maximum mass shows the reaction is complete.",
+          "Divide each mass by its relative atomic mass, simplify the mole ratio, and write it as MxOy, for example MgO."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Two weighings give two masses: the magnesium that went in and the oxide that came out. The oxygen's mass is the difference, and both masses become moles by dividing by relative atomic masses.",
+            "analogy": "It is like weighing a barbecue before and after a kebab: whatever the smoke took away, and whatever the flames added, the scales report honestly.",
+            "examPointer": "The classic mark-scorer is explaining why the lid is lifted: air must reach the magnesium, yet smoke loss must be prevented."
+          },
+          "medium": {
+            "restatement": "A constant mass is the experimental definition of done: once more heating changes nothing, every bit of metal has reacted. The two mole values then simplify to small whole numbers, and the ratio stamps itself onto the formula.",
+            "analogy": "Think of filling in a form with two honest numbers: grams in, grams out; the arithmetic routine then fixes every remaining box for you.",
+            "examPointer": "Questions love asking what a second, unchanged reading proves - answer that the reaction has gone to completion, not that the balance is broken."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_yj4y972FxCWnDnSg::L1::Q1",
+          "rn_yj4y972FxCWnDnSg::L1::Q2",
+          "rn_yj4y972FxCWnDnSg::L1::Q3",
+          "rn_yj4y972FxCWnDnSg::L1::Q4",
+          "rn_yj4y972FxCWnDnSg::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_yj4y972FxCWnDnSg::L2",
+        "title": "Determine the Formula of Copper(II) Oxide",
+        "sourceHeadings": [
+          "Practical: Determine the Formula of Copper(II)Oxide"
+        ],
+        "specRefs": [
+          "4CH1-1.36",
+          "4CH1-1.33"
+        ],
+        "opening": "Copper oxide loses its oxygen to methane in a horizontal boiling tube: the gas strips oxygen away while the excess burns off safely. Weighing the tube before and after leaves two masses - oxide and leftover metal - and their mole ratio is the formula.",
+        "keyPoints": [
+          "The aim is the formula of copper(II) oxide, found by reduction with methane.",
+          "The oxide sits in a horizontal boiling tube while a steady methane stream passes over it.",
+          "Excess methane is burned off, and strong heating continues until the colour change shows all the oxygen is gone.",
+          "The remaining metal powder is weighed, and the oxygen's mass is the oxide's mass minus the metal's.",
+          "Divide both masses by their relative atomic masses, simplify, and the ratio gives MxOy - for copper(II) oxide, CuO."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Methane takes over as the reacting partner: it chemically removes oxygen from the oxide. Two tube weighings sandwich the reaction, and the lost mass is the oxygen the gas carried away.",
+            "analogy": "Like sending a tow truck to remove a broken car: the methane arrives, hooks the oxygen, and hauls it off, leaving the bare metal behind on the weighbridge.",
+            "examPointer": "Reduction here means oxygen removal; if asked what methane does, say it removes the oxide's oxygen rather than vague 'reacts with' phrasing."
+          },
+          "medium": {
+            "restatement": "Combustion adds oxygen; reduction subtracts it. Either way the bookkeeping is identical - mass of metal, mass of oxygen, two divisions by relative atomic masses, one simplified ratio - and both routes must land on the same formula for the same compound.",
+            "analogy": "The two practicals are a two-way street: one drives oxygen onto the metal, the other drives it off, and the weighing station logs the traffic either way.",
+            "examPointer": "Know both apparatus sets: crucible with lid for combustion, horizontal boiling tube with methane for reduction - questions show diagrams and expect the right one."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_yj4y972FxCWnDnSg::L2::Q1",
+          "rn_yj4y972FxCWnDnSg::L2::Q2",
+          "rn_yj4y972FxCWnDnSg::L2::Q3",
+          "rn_yj4y972FxCWnDnSg::L2::Q4",
+          "rn_yj4y972FxCWnDnSg::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "combustion",
+          "definition": "Burning a substance in oxygen; here, the route that adds oxygen to magnesium to build its oxide.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reduction",
+          "definition": "The removal of oxygen from a compound; here, methane strips oxygen out of copper oxide.",
+          "firstLesson": 2
+        },
+        {
+          "term": "crucible",
+          "definition": "The small lidded dish in which the magnesium is heated during combustion.",
+          "firstLesson": 1
+        },
+        {
+          "term": "empirical formula",
+          "definition": "The simplest whole-number ratio of the atoms of each element in a compound.",
+          "firstLesson": 1
+        },
+        {
+          "term": "mole",
+          "definition": "The counting unit for amounts of substance; a mass divided by the substance's relative atomic mass gives the number of moles.",
+          "firstLesson": 1
+        },
+        {
+          "term": "constant mass",
+          "definition": "An unchanged reading on further heating, showing the reaction has gone to completion.",
+          "firstLesson": 1
+        },
+        {
+          "term": "boiling tube",
+          "definition": "The tube held horizontally through which methane flows over the copper oxide.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

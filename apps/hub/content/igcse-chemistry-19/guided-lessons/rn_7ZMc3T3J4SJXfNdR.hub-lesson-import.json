@@ -1,0 +1,159 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_7ZMc3T3J4SJXfNdR",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "db7ae4a76dd1bcf1382ec4efbe08d72e5fbd77e5f482e06f5e7f00cb0c726404",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_7ZMc3T3J4SJXfNdR",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Esters",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-7-esters/4-7-2-practical-preparation-of-ethyl-ethanoate",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.39C",
+        "text": "know that ethyl ethanoate is the ester produced when ethanol and ethanoic acid react in the presence of an acid catalyst"
+      },
+      {
+        "code": "4CH1-4.43C",
+        "text": "practical: prepare a sample of an ester such as ethyl ethanoate"
+      }
+    ],
+    "primer": {
+      "text": "From Esters you already know ethyl ethanoate as the ester of ethanol and ethanoic acid. This note turns the recipe into a real experiment: gentle heating with the acid catalyst, distilling the ester out as it forms, and washing the sample clean of everything that travelled with it.",
+      "prerequisiteSubtopic": "Esters"
+    },
+    "modules": [
+      {
+        "id": "rn_7ZMc3T3J4SJXfNdR::L1",
+        "title": "Aim and method: gentle heat and a quick exit",
+        "sourceHeadings": [
+          "Practical: Preparation of ethyl ethanoate",
+          "Method:"
+        ],
+        "specRefs": [
+          "4CH1-4.43C",
+          "4CH1-4.39C"
+        ],
+        "opening": "The practical makes a small sample of ethyl ethanoate from its two parents and the acid catalyst. Ethanol is flammable, so the heating stays gentle: a water bath or electric heater instead of a flame, and the ester is distilled off the moment it forms.",
+        "keyPoints": [
+          "The aim is to make a small sample of ethyl ethanoate.",
+          "Ethanoic acid, ethanol and concentrated sulfuric acid are heated gently together.",
+          "A water bath or electric heater replaces a Bunsen flame because ethanol is flammable.",
+          "The ester is distilled off as soon as it forms and collected by condensation.",
+          "Distilling the ester away stops the reverse reaction re-forming the reactants."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Ethanoic acid, ethanol and concentrated sulfuric acid are warmed gently together, with no naked flame because ethanol is flammable. The ester boils off first and is collected as it condenses in a separate beaker.",
+            "analogy": "The setup is a gentle spa rather than a furnace: warm water does the heating, and the ester is ushered out the moment it appears.",
+            "examPointer": "Name the safety reason for the water bath; the flammability of ethanol is the expected answer."
+          },
+          "medium": {
+            "restatement": "A gentle heat from a water bath or electric heater warms ethanoic acid, ethanol and concentrated sulfuric acid together. The ester, being volatile with a low boiling point, leaves the mixture first and is distilled off at once, so the reverse reaction cannot push it back into reactants.",
+            "analogy": "Distilling the ester away is like serving food the second it is plated: nothing sits around long enough to be sent back to the kitchen.",
+            "examPointer": "Link low boiling points to leaving first, and removal to preventing the reverse reaction; both ideas carry marks."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_7ZMc3T3J4SJXfNdR::L1::Q1",
+          "rn_7ZMc3T3J4SJXfNdR::L1::Q2",
+          "rn_7ZMc3T3J4SJXfNdR::L1::Q3",
+          "rn_7ZMc3T3J4SJXfNdR::L1::Q4",
+          "rn_7ZMc3T3J4SJXfNdR::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_7ZMc3T3J4SJXfNdR::L2",
+        "title": "Result: washing the sample clean",
+        "sourceHeadings": [
+          "Result:"
+        ],
+        "specRefs": [
+          "4CH1-4.43C"
+        ],
+        "opening": "The collected distillate is more than ester: acids and ethanol travel over with it. Washing follows, first with sodium carbonate solution until the fizzing stops, then with calcium chloride solution to catch the ethanol, leaving the sweet ester behind.",
+        "keyPoints": [
+          "Smelling the distillate confirms whether an ester has formed.",
+          "Small amounts of ethanoic acid, sulfuric acid and ethanol come over with the ester.",
+          "Sodium carbonate solution removes the acidic impurities until the mixture stops fizzing.",
+          "The fizzing ends when no further carbon dioxide escapes.",
+          "Calcium chloride solution removes the leftover ethanol from the sample."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Smell the distillate for the sweet ester. Sodium carbonate washing removes the acids until fizzing stops, and calcium chloride washing removes the leftover ethanol.",
+            "analogy": "The washes are a bouncer pair: the carbonate escorts out the acids, the chloride escorts out the ethanol, and only the ester stays at the party.",
+            "examPointer": "Match each wash to what it removes; the pairing is a standard practical question."
+          },
+          "medium": {
+            "restatement": "The raw distillate carries small quantities of ethanoic acid, sulfuric acid and ethanol alongside the ester. Sodium carbonate is added until no further carbon dioxide escapes, showing the acids are gone, and calcium chloride solution then strips out the ethanol.",
+            "analogy": "Purifying runs like a two-question quiz: does it still fizz, and has the ethanol gone; each wash answers one question before the sample is clean.",
+            "examPointer": "Quote the fizzing test as evidence the acidic impurities have gone; the observation carries the mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_7ZMc3T3J4SJXfNdR::L2::Q1",
+          "rn_7ZMc3T3J4SJXfNdR::L2::Q2",
+          "rn_7ZMc3T3J4SJXfNdR::L2::Q3",
+          "rn_7ZMc3T3J4SJXfNdR::L2::Q4",
+          "rn_7ZMc3T3J4SJXfNdR::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "distillation",
+          "definition": "Boiling off and collecting a component; the ester is distilled off as soon as it forms.",
+          "firstLesson": 1
+        },
+        {
+          "term": "condensation",
+          "definition": "Vapour turning back to liquid as it cools; the distillate is collected this way in a beaker.",
+          "firstLesson": 1
+        },
+        {
+          "term": "volatile",
+          "definition": "Boiling or evaporating readily; esters are volatile, so they leave the reaction mixture first.",
+          "firstLesson": 1
+        },
+        {
+          "term": "flammable",
+          "definition": "Catches fire easily; ethanol is flammable, so no Bunsen flame is used for heating.",
+          "firstLesson": 1
+        },
+        {
+          "term": "impurity",
+          "definition": "An unwanted substance mixed with the product, here the two acids and leftover ethanol.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

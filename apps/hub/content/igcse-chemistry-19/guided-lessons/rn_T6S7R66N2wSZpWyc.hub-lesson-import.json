@@ -1,0 +1,207 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_T6S7R66N2wSZpWyc",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "497bbd1b9f8bf4a7242cab6dc0f4ecb0d51a90cff67ec6ebc7aae279ad23c759",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_T6S7R66N2wSZpWyc",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Chemical Tests",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-8-chemical-tests/2-8-1-tests-for-gases",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.44",
+        "text": "describe tests for these gases: hydrogen; oxygen; carbon dioxide; ammonia; chlorine"
+      }
+    ],
+    "primer": {
+      "text": "From Reactions of Acids you already know that some reactions fizz, releasing gases such as carbon dioxide. This note completes the picture with the official test for each of the five syllabus gases, so a released gas can be named with evidence rather than guessed.",
+      "prerequisiteSubtopic": "Reactions of Acids"
+    },
+    "modules": [
+      {
+        "id": "rn_T6S7R66N2wSZpWyc::L1",
+        "title": "Test for ammonia",
+        "sourceHeadings": [
+          "Test for ammonia",
+          "Test for chlorine gas"
+        ],
+        "specRefs": [
+          "4CH1-2.44"
+        ],
+        "opening": "Two of the five syllabus gases betray themselves with litmus paper, and they must never be confused. Ammonia turns damp red litmus paper blue, while chlorine turns damp blue litmus paper red and then bleaches it white. Both gases carry a sharp choking smell, but smell alone identifies nothing, and chlorine is toxic enough to demand a fume cupboard.",
+        "keyPoints": [
+          "Ammonia turns damp red litmus paper blue.",
+          "Hold the paper near the tube mouth, avoiding contact with the glass sides.",
+          "Sodium hydroxide traces from the ammonium-ion test would also turn red litmus blue.",
+          "Chlorine turns damp blue litmus paper red and then bleaches it white.",
+          "The red flash comes from acids formed when chlorine meets the water."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Ammonia is the gas that turns damp red litmus paper blue, and chlorine is the one that turns damp blue litmus paper red before bleaching it white. Both smell sharp and choking, but the paper, not the nose, is the test.",
+            "analogy": "The two gases are like two visitors who both wear strong aftershave but leave different signatures: one signs in blue ink, the other bleaches the page white.",
+            "examPointer": "Always write damp before the litmus paper and quote the starting colour, because the colour sequence is the mark."
+          },
+          "medium": {
+            "restatement": "Ammonia's alkalinity turns red litmus blue, so the paper must start red for the change to show. Chlorine works the other way round: it dissolves in the paper's moisture to make acids, which turn blue litmus red, and its bleaching action then takes the colour out entirely, ending at white.",
+            "analogy": "Chlorine's two-step result is like spilling ink on a shirt and then putting bleach on it: the first event makes a red stain, and the second event removes colour altogether, so watching only the ending misses the story.",
+            "examPointer": "For chlorine, quote the full sequence red then white; for ammonia, quote red to blue, and note that sodium hydroxide traces give a false ammonia positive."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_T6S7R66N2wSZpWyc::L1::Q1",
+          "rn_T6S7R66N2wSZpWyc::L1::Q2",
+          "rn_T6S7R66N2wSZpWyc::L1::Q3",
+          "rn_T6S7R66N2wSZpWyc::L1::Q4",
+          "rn_T6S7R66N2wSZpWyc::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_T6S7R66N2wSZpWyc::L2",
+        "title": "Test for carbon dioxide",
+        "sourceHeadings": [
+          "Test for carbon dioxide"
+        ],
+        "specRefs": [
+          "4CH1-2.44"
+        ],
+        "opening": "Carbon dioxide is identified by bubbling the gas through limewater, the common name for calcium hydroxide solution. A positive test turns the limewater cloudy white. The burning-splint test is sometimes offered as a shortcut, but any gas that snuffs a flame passes it, so it can never be written as an answer.",
+        "keyPoints": [
+          "The test bubbles the gas through limewater.",
+          "Limewater is calcium hydroxide dissolved in water.",
+          "A positive result turns the limewater cloudy white.",
+          "An extinguished splint does not prove carbon dioxide, because nitrogen behaves the same way.",
+          "The splint result is a property of the gas, not a definitive test."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Bubble the gas through limewater, the calcium hydroxide solution, and carbon dioxide turns the clear liquid cloudy white. A splint going out is not good enough, because other gases put flames out just the same.",
+            "analogy": "Limewater is a dedicated detector while the splint is a smoke alarm that any gas can trigger; only one of the two tells you who is in the room.",
+            "examPointer": "Write limewater turns cloudy white in full; cloudy on its own or white on its own can lose the mark."
+          },
+          "medium": {
+            "restatement": "The cloudiness appears because carbon dioxide reacts with the dissolved calcium hydroxide to form insoluble calcium carbonate, which hangs in the liquid as tiny white particles. The splint test fails as a naming test precisely because extinguishing is shared behaviour, shown equally by nitrogen and other unreactive gases.",
+            "analogy": "The cloud is the product itself made visible, like chalk dust stirred into water: you are literally seeing the new solid before it settles.",
+            "examPointer": "If a question offers an extinguished splint as evidence of carbon dioxide, reject it and cite limewater as the test that names the gas."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_T6S7R66N2wSZpWyc::L2::Q1",
+          "rn_T6S7R66N2wSZpWyc::L2::Q2",
+          "rn_T6S7R66N2wSZpWyc::L2::Q3",
+          "rn_T6S7R66N2wSZpWyc::L2::Q4",
+          "rn_T6S7R66N2wSZpWyc::L2::Q5"
+        ]
+      },
+      {
+        "id": "rn_T6S7R66N2wSZpWyc::L3",
+        "title": "Test for hydrogen gas",
+        "sourceHeadings": [
+          "Test for hydrogen gas",
+          "Test for oxygen"
+        ],
+        "specRefs": [
+          "4CH1-2.44"
+        ],
+        "opening": "The last two tests both use a splint, and the distinction lies in whether the splint is burning or only glowing. A lit splint held at the mouth of a tube of hydrogen gives the famous squeaky pop, while a glowing splint lowered into oxygen relights. One memory hook carries both: the ligHted splint hides an H for hydrogen, and the glOwing splint hides an O for oxygen.",
+        "keyPoints": [
+          "A burning splint held at the tube mouth makes hydrogen burn with a squeaky pop.",
+          "The pop comes from hydrogen burning rapidly in oxygen to give water.",
+          "The splint stays at the mouth, because the gas needs air to burn.",
+          "A glowing splint placed in oxygen relights.",
+          "A brightly glowing splint without relighting is still a positive oxygen result."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Hold a burning splint at the mouth of the tube for hydrogen and listen for the squeaky pop. Lower a glowing splint into the tube for oxygen and watch it relight.",
+            "analogy": "The pair is like two knock-knock jokes that differ only in the punchline: same doorway, same stick, but pop versus relight tells you who is inside.",
+            "examPointer": "Keep the ligHted and glOwing hook in mind, and always say where the splint sits: at the mouth for hydrogen, inside for oxygen."
+          },
+          "medium": {
+            "restatement": "The pop is hydrogen burning with oxygen from the air at the tube mouth, which is why the splint must stay at the opening where air can reach. Oxygen's own test needs no flame, only the embers of one, because a glowing splint carries enough heat to catch fire again in pure oxygen even though it is no longer burning.",
+            "analogy": "A glowing splint entering oxygen is like a dying campfire fanned back to life by one strong breath: the ember was never out, it only needed the right atmosphere.",
+            "examPointer": "If the splint glows brightly but does not fully relight, the source still calls it positive, but exam answers should state that it relights."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_T6S7R66N2wSZpWyc::L3::Q1",
+          "rn_T6S7R66N2wSZpWyc::L3::Q2",
+          "rn_T6S7R66N2wSZpWyc::L3::Q3",
+          "rn_T6S7R66N2wSZpWyc::L3::Q4",
+          "rn_T6S7R66N2wSZpWyc::L3::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "damp",
+          "definition": "Slightly wet, the state litmus paper must be in for a gas test to work.",
+          "firstLesson": 1
+        },
+        {
+          "term": "litmus paper",
+          "definition": "Paper treated with litmus dye, red in acid and blue in alkali, used here for gas tests.",
+          "firstLesson": 1
+        },
+        {
+          "term": "bleached",
+          "definition": "Having its colour removed, the final effect of chlorine on damp blue litmus paper.",
+          "firstLesson": 1
+        },
+        {
+          "term": "limewater",
+          "definition": "Calcium hydroxide solution, the reagent that turns cloudy white with carbon dioxide.",
+          "firstLesson": 2
+        },
+        {
+          "term": "fume cupboard",
+          "definition": "A ventilated enclosure used for handling toxic gases such as chlorine.",
+          "firstLesson": 1
+        },
+        {
+          "term": "splint",
+          "definition": "A thin wooden stick, lit or glowing, used to test for hydrogen and oxygen.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": null
+    }
+  }
+}

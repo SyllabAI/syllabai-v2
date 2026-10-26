@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_vzGMZxqQtWYVWB7h",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a62a39c656a8aa5ca809ecac4f6454bf7e2634d7d324402a2e8f71823858e903",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_vzGMZxqQtWYVWB7h",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L1::Q1",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L1",
+      "stem": "Which two quantities does the Ar equation combine for each isotope?",
+      "misconceptionClass": "equation ingredients",
+      "options": [
+        {
+          "key": "A",
+          "text": "Percentage abundance and mass number",
+          "correct": true,
+          "explanation": "Each isotope contributes its abundance times its mass, and the terms are then summed.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Atomic number and charge",
+          "correct": false,
+          "explanation": "Neither appears in the equation; it works purely from masses and abundances.",
+          "misconception": "wrong quantities drafted into the equation"
+        },
+        {
+          "key": "C",
+          "text": "Electron count and shell number",
+          "correct": false,
+          "explanation": "Electrons are irrelevant here; only the nuclei's masses are being averaged.",
+          "misconception": "electrons assumed to affect mass"
+        },
+        {
+          "key": "D",
+          "text": "Percentage abundance and atomic number",
+          "correct": false,
+          "explanation": "Abundance pairs with mass number; atomic number never enters the average.",
+          "misconception": "mass number swapped for atomic number"
+        }
+      ]
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L1::Q2",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L1",
+      "stem": "Why is the summed total divided by 100?",
+      "misconceptionClass": "role of the divisor",
+      "options": [
+        {
+          "key": "A",
+          "text": "Abundances are percentages, so dividing by 100 turns the weighted sum into the per-atom average",
+          "correct": true,
+          "explanation": "The 100 undoes the percentage scaling so the answer sits on the mass-number scale.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because every element has exactly 100 isotopes",
+          "correct": false,
+          "explanation": "Element isotope counts vary; the 100 comes from percentages, not from isotope tallies.",
+          "misconception": "divisor tied to isotope count"
+        },
+        {
+          "key": "C",
+          "text": "To cancel the units of mass",
+          "correct": false,
+          "explanation": "Relative masses are unitless comparisons; the division is about percentage scaling.",
+          "misconception": "unit cancellation invented as the reason"
+        },
+        {
+          "key": "D",
+          "text": "To round the answer to one decimal place",
+          "correct": false,
+          "explanation": "Rounding happens at the end if the question asks; the division computes the true average.",
+          "misconception": "rounding confused with dividing"
+        }
+      ]
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L1::Q3",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L1",
+      "stem": "An element turns out to have three isotopes. How does the equation change?",
+      "misconceptionClass": "extending the equation",
+      "options": [
+        {
+          "key": "A",
+          "text": "The top line gains a third term - percentage times mass - while the divisor stays 100",
+          "correct": true,
+          "explanation": "Each extra isotope extends the numerator; the percentage scaling is unchanged.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The divisor becomes 300",
+          "correct": false,
+          "explanation": "The 100 belongs to the percentage scale, whatever the isotope count.",
+          "misconception": "divisor multiplied by isotope count"
+        },
+        {
+          "key": "C",
+          "text": "The two lightest isotopes are averaged first",
+          "correct": false,
+          "explanation": "All isotopes enter one sum; no stepwise pairing happens.",
+          "misconception": "invented staged averaging"
+        },
+        {
+          "key": "D",
+          "text": "The equation cannot cope and Ar is left unknown",
+          "correct": false,
+          "explanation": "The top line is explicitly extendable to any number of isotopes.",
+          "misconception": "equation assumed fixed at two terms"
+        }
+      ]
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L1::Q4",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L1",
+      "stem": "Why is an element's Ar so rarely a whole number?",
+      "misconceptionClass": "weighted average outcome",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is a weighted average of isotope mass numbers, so it usually lands between them",
+          "correct": true,
+          "explanation": "Unless one isotope dominates almost completely, the blend falls between whole masses.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because electron masses add odd fractions",
+          "correct": false,
+          "explanation": "Electron mass is negligible; the blending of isotope masses is the real cause.",
+          "misconception": "electrons blamed for the fraction"
+        },
+        {
+          "key": "C",
+          "text": "Because instruments cannot measure mass precisely",
+          "correct": false,
+          "explanation": "The non-whole value is mathematical, not a measurement limitation.",
+          "misconception": "instrument error imagined"
+        },
+        {
+          "key": "D",
+          "text": "Because mass numbers themselves are averages",
+          "correct": false,
+          "explanation": "Each isotope's mass number is a whole count; the averaging happens across isotopes.",
+          "misconception": "averaging misplaced inside the isotope"
+        }
+      ]
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L1::Q5",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L1",
+      "stem": "Copper's two stable isotopes are written with 63 and 65 over its symbol. What do those numbers mean?",
+      "misconceptionClass": "isotope notation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Their mass numbers - same element, different neutron counts",
+          "correct": true,
+          "explanation": "The shared symbol fixes the element; the differing top number distinguishes the isotopes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Their atomic numbers",
+          "correct": false,
+          "explanation": "Atomic number is fixed for the element; it could not differ between two atoms of copper.",
+          "misconception": "mass number read as atomic number"
+        },
+        {
+          "key": "C",
+          "text": "Their charges",
+          "correct": false,
+          "explanation": "Charge is written separately and depends on electrons, not on these labels.",
+          "misconception": "notation read as charge"
+        },
+        {
+          "key": "D",
+          "text": "The years they were discovered",
+          "correct": false,
+          "explanation": "Isotope labels are nuclear counts, not dates.",
+          "misconception": "notation read as a date"
+        }
+      ]
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L2::Q1",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L2",
+      "stem": "Rubidium: 72% of mass 85, 28% of mass 87. What is the first working step?",
+      "misconceptionClass": "opening move of the calculation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Multiply each percentage by its own mass number",
+          "correct": true,
+          "explanation": "The two products 72 x 85 and 28 x 87 form the terms that get summed next.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Add the two percentages together",
+          "correct": false,
+          "explanation": "The percentages already total 100; adding them again is meaningless here.",
+          "misconception": "percentages treated as addends"
+        },
+        {
+          "key": "C",
+          "text": "Divide both masses by 100",
+          "correct": false,
+          "explanation": "The division by 100 comes once, after the weighted sum, not to each mass.",
+          "misconception": "division applied too early"
+        },
+        {
+          "key": "D",
+          "text": "Subtract the smaller percentage from the larger",
+          "correct": false,
+          "explanation": "Nothing in the method subtracts; every isotope contributes positively.",
+          "misconception": "subtraction invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L2::Q2",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L2",
+      "stem": "What is (72 x 85) + (28 x 87)?",
+      "misconceptionClass": "numerator arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "8556",
+          "correct": true,
+          "explanation": "6120 plus 2436 lands on 8556, the weighted sum before scaling.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "172",
+          "correct": false,
+          "explanation": "That adds the mass numbers and percentages in a tangle instead of multiplying within each term.",
+          "misconception": "mixed-up operation order"
+        },
+        {
+          "key": "C",
+          "text": "6120",
+          "correct": false,
+          "explanation": "That is only the first product; the second isotope still has to be added in.",
+          "misconception": "half the numerator forgotten"
+        },
+        {
+          "key": "D",
+          "text": "243600",
+          "correct": false,
+          "explanation": "That multiplies the two products together rather than adding them.",
+          "misconception": "products multiplied instead of added"
+        }
+      ]
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L2::Q3",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L2",
+      "stem": "What does dividing 8556 by 100 give, before rounding?",
+      "misconceptionClass": "average before rounding",
+      "options": [
+        {
+          "key": "A",
+          "text": "85.56",
+          "correct": true,
+          "explanation": "The full-precision average keeps the digits needed for a correct final round.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "85.6",
+          "correct": false,
+          "explanation": "85.6 is the rounded answer; the division itself yields 85.56.",
+          "misconception": "rounding applied before it is asked"
+        },
+        {
+          "key": "C",
+          "text": "8.556",
+          "correct": false,
+          "explanation": "That shifts a decimal place too far; the divisor is 100, not 1000.",
+          "misconception": "decimal place slipped"
+        },
+        {
+          "key": "D",
+          "text": "855.6",
+          "correct": false,
+          "explanation": "That looks like dividing by 10; the percentage scale divides by 100.",
+          "misconception": "wrong divisor scale"
+        }
+      ]
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L2::Q4",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L2",
+      "stem": "How should 85.56 be reported when the question says one decimal place?",
+      "misconceptionClass": "rounding to stated precision",
+      "options": [
+        {
+          "key": "A",
+          "text": "85.6, rounding the second decimal up",
+          "correct": true,
+          "explanation": "The .06 remainder pushes the first decimal from 5 to 6.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "85.5, dropping everything after the first decimal",
+          "correct": false,
+          "explanation": "Truncation is not rounding; the .06 part still moves the digit.",
+          "misconception": "truncation used instead of rounding"
+        },
+        {
+          "key": "C",
+          "text": "86, rounding to the nearest whole number",
+          "correct": false,
+          "explanation": "That answers to zero decimal places; the question asked for one.",
+          "misconception": "precision ignored"
+        },
+        {
+          "key": "D",
+          "text": "85.56, decimals kept as they are",
+          "correct": false,
+          "explanation": "The full value is correct working but ignores the requested format.",
+          "misconception": "format instruction overlooked"
+        }
+      ]
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L2::Q5",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L2",
+      "stem": "A different rubidium sample held 50% of each isotope. What Ar would it have?",
+      "misconceptionClass": "equal weighting case",
+      "options": [
+        {
+          "key": "A",
+          "text": "86.0, the plain midpoint of 85 and 87",
+          "correct": true,
+          "explanation": "Equal weights cancel the bias, so the average lands exactly between the masses.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "85.6, the same as before",
+          "correct": false,
+          "explanation": "That value belongs to the 72-28 split; equal shares shift the average.",
+          "misconception": "abundances assumed irrelevant"
+        },
+        {
+          "key": "C",
+          "text": "85, the lighter isotope winning",
+          "correct": false,
+          "explanation": "With equal shares no isotope can dominate the average.",
+          "misconception": "lighter isotope assumed default"
+        },
+        {
+          "key": "D",
+          "text": "172, the mass numbers added",
+          "correct": false,
+          "explanation": "Mass numbers are never simply added; the average stays on their scale.",
+          "misconception": "sum used instead of average"
+        }
+      ]
+    }
+  ]
+}

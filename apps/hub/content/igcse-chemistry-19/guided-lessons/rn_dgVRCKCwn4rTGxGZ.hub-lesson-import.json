@@ -1,0 +1,214 @@
+{
+  "format": "hub/lesson-import/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_dgVRCKCwn4rTGxGZ",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "afb5501298f58057dd4d5bfd63b28ea2de6b588d94003edd93c9f4dd36620336",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_dgVRCKCwn4rTGxGZ",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Energetics",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-1-energetics/3-1-3-energetics-calculations",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.3",
+        "text": "calculate the heat energy change from a measured temperature change using the expression Q = m c Δ T"
+      },
+      {
+        "code": "4CH1-3.4",
+        "text": "calculate the molar enthalpy change (ΔH) from the heat energy change, Q"
+      }
+    ],
+    "primer": {
+      "text": "From Calorimetry you already know how a temperature change is captured in an insulated vessel. This note turns that reading into heat energy with one expression, then into an energy per mole so different fuels can be compared fairly. Along the way it fixes the sign convention that examiners look for.",
+      "prerequisiteSubtopic": "Energetics"
+    },
+    "modules": [
+      {
+        "id": "rn_dgVRCKCwn4rTGxGZ::L1",
+        "title": "Calculating heat energy change",
+        "sourceHeadings": [
+          "Calculating heat energy change"
+        ],
+        "specRefs": [
+          "4CH1-3.3"
+        ],
+        "opening": "Three ingredients feed the heat working: the mass warmed, the size of the temperature rise and the specific heat capacity of the substance. This lesson assembles them into the expression that every calorimetry answer starts from.",
+        "keyPoints": [
+          "The heat energy change is found from the mass heated, the temperature change and the specific heat capacity.",
+          "Specific heat capacity tells you the energy needed for a 1 °C rise in 1 g of the substance.",
+          "Water's specific heat capacity is 4.18 J/g/°C, and solutions are assumed to share it.",
+          "Q is the heat energy change in joules, m the mass in grams and ΔT the temperature change in °C.",
+          "A temperature change in degrees Celsius is the same size as the change in kelvin."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Multiply how much stuff was warmed by how much warmer it got and by how hungry for heat the material is. The answer is the heat energy change in joules.",
+            "analogy": "It is like filling a bath: more water, a bigger rise in the water level and a wider tub all mean more work done.",
+            "examPointer": "Write the expression, list the three values with units, then substitute in one line."
+          },
+          "medium": {
+            "restatement": "The heat energy change Q equals the mass m multiplied by the specific heat capacity c and by the temperature change ΔT. For solutions the mass is taken as the volume in grams because the density is assumed to match water.",
+            "analogy": "Heating a heavy pan of soup by ten degrees costs far more energy than warming a spoonful by the same amount; mass and rise both multiply the bill.",
+            "examPointer": "Convert volumes to masses with the 1 g/cm3 assumption before substituting, and keep units in every line."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_dgVRCKCwn4rTGxGZ::L1::Q1",
+          "rn_dgVRCKCwn4rTGxGZ::L1::Q2",
+          "rn_dgVRCKCwn4rTGxGZ::L1::Q3",
+          "rn_dgVRCKCwn4rTGxGZ::L1::Q4",
+          "rn_dgVRCKCwn4rTGxGZ::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_dgVRCKCwn4rTGxGZ::L2",
+        "title": "Signs, conversions and the worked route",
+        "sourceHeadings": [
+          "Calculating heat energy change"
+        ],
+        "specRefs": [
+          "4CH1-3.3"
+        ],
+        "opening": "A raw product gives a positive number, but chemistry demands a sign that tells the energy story. This lesson applies the exothermic sign, converts joules to kilojoules and walks one full worked route from data to answer.",
+        "keyPoints": [
+          "A temperature rise shows an exothermic reaction, so the heat energy change must be given as negative.",
+          "Combustion reactions are always exothermic, so their calculated answers must carry a negative sign.",
+          "Q from the expression is in joules, and dividing by 1000 converts it to kilojoules.",
+          "The worked route runs: state the expression, list known values, substitute, solve, apply the sign.",
+          "An answer given without its negative sign loses the chemistry, even when the arithmetic is perfect."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "If the mixture warmed up, energy left the chemicals, so write a minus sign in front of the answer. Joules become kilojoules by dividing by one thousand.",
+            "analogy": "It is like reporting money spent as a negative on a bank statement; the size says how much, the sign says which way it flowed.",
+            "examPointer": "Finish every calculation with the sign justified by the temperature direction and the unit converted if asked."
+          },
+          "medium": {
+            "restatement": "Multiplying gives the size of the heat energy change, and the temperature direction fixes the sign: rises mean exothermic and negative. Converting to kilojoules by dividing by 1000 matches the unit examiners expect for enthalpy work.",
+            "analogy": "A bank statement shows spending with a minus even though the receipt shows a plain number; the thermometer rise is the receipt, the sign is the statement.",
+            "examPointer": "Show the sign step explicitly: state that the temperature increased, name the reaction exothermic, then write the negative value."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_dgVRCKCwn4rTGxGZ::L2::Q1",
+          "rn_dgVRCKCwn4rTGxGZ::L2::Q2",
+          "rn_dgVRCKCwn4rTGxGZ::L2::Q3",
+          "rn_dgVRCKCwn4rTGxGZ::L2::Q4",
+          "rn_dgVRCKCwn4rTGxGZ::L2::Q5"
+        ]
+      },
+      {
+        "id": "rn_dgVRCKCwn4rTGxGZ::L3",
+        "title": "From heat energy to molar enthalpy change",
+        "sourceHeadings": [
+          "Calculating molar enthalpy change"
+        ],
+        "specRefs": [
+          "4CH1-3.4"
+        ],
+        "opening": "Two fuels can release the same heat while burning different amounts, so fair comparison needs an energy per gram and an energy per mole. This lesson divides the heat energy change by mass and by moles to build both scales.",
+        "keyPoints": [
+          "Energy released per gram is the heat energy change divided by the mass of fuel burned.",
+          "Energy released per mole is the heat energy change divided by the number of moles burned.",
+          "The molar enthalpy change is the energy released per mole and carries the unit kJ/mol.",
+          "The moles of fuel are found from its mass using the relative formula mass.",
+          "Comparing fuels fairly needs the energy scaled per gram or per mole, not per experiment."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Work out the heat released first, then share it out: dividing by grams gives energy per gram and dividing by moles gives the molar enthalpy change. The molar answer carries the unit kJ/mol.",
+            "analogy": "It is like splitting a restaurant bill: the total is the heat released, and dividing by diners or by tables gives two fair ways to compare.",
+            "examPointer": "Quote the unit kJ/mol for the molar enthalpy change and keep the sign consistent with the heat energy change."
+          },
+          "medium": {
+            "restatement": "The molar enthalpy change divides the heat energy change by the moles of fuel burned, converting joules to kilojoules on the way. Dividing the same heat by the mass burned gives the energy per gram, the second comparison scale.",
+            "analogy": "Two cars can burn the same litre of petrol on different journeys; only dividing by distance makes the comparison fair, just as dividing by moles makes fuel energies comparable.",
+            "examPointer": "Find moles from mass and relative formula mass before dividing, and carry the negative sign through to the final answer."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_dgVRCKCwn4rTGxGZ::L3::Q1",
+          "rn_dgVRCKCwn4rTGxGZ::L3::Q2",
+          "rn_dgVRCKCwn4rTGxGZ::L3::Q3",
+          "rn_dgVRCKCwn4rTGxGZ::L3::Q4",
+          "rn_dgVRCKCwn4rTGxGZ::L3::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "specific heat capacity",
+          "definition": "The energy needed to raise the temperature of 1 g of a substance by 1 °C; for water it is 4.18 J/g/°C.",
+          "firstLesson": 1
+        },
+        {
+          "term": "heat energy change",
+          "definition": "The quantity Q, in joules, calculated from mass, specific heat capacity and temperature change.",
+          "firstLesson": 1
+        },
+        {
+          "term": "molar enthalpy change",
+          "definition": "The heat energy change divided by the number of moles of fuel burned, quoted in kJ/mol.",
+          "firstLesson": 3
+        },
+        {
+          "term": "exothermic sign convention",
+          "definition": "The rule that energy released to the surroundings is written as a negative enthalpy change.",
+          "firstLesson": 2
+        },
+        {
+          "term": "kilojoule",
+          "definition": "One thousand joules; enthalpy changes are quoted in kilojoules, so joules are divided by 1000.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Excess iron powder was added to 100.0 cm3 of 0.200 mol/dm3 copper(II) sulfate solution in a calorimeter. The maximum temperature rise was 7.5 °C. Determine the heat energy change of the reaction, in kJ.",
+        "steps": [
+          "The solution is assumed to have the same density as water, so 100.0 cm3 of solution has a mass of 100 g.",
+          "Substituting into the expression: 100 x 4.18 x 7.5 = 3135 J",
+          "The temperature increased, so the reaction is exothermic and the heat energy change is -3135 J.",
+          "Converting to kilojoules: -3135 ÷ 1000 = -3.135 kJ",
+          "Rounded to three significant figures, the heat energy change is -3.14 kJ."
+        ],
+        "finalAnswer": "The heat energy change of the reaction is -3.14 kJ (3 s.f.)."
+      }
+    }
+  }
+}

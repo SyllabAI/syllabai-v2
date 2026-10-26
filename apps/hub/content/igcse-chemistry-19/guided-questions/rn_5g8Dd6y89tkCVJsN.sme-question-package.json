@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_5g8Dd6y89tkCVJsN",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "da2b18a753f5afc394e34a779b3e4ed61a12a5dd5f8afb7c00413e013b572479",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_5g8Dd6y89tkCVJsN",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L1::Q1",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L1",
+      "stem": "Why can the method of adding insoluble base in excess not be used here?",
+      "misconceptionClass": "method selection logic",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because both reactants are soluble, so no excess solid could be filtered off",
+          "correct": true,
+          "explanation": "With an alkali there is no undissolved solid to remove, so the excess-and-filter trick has nothing to work on.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because acids cannot react with alkalis",
+          "correct": false,
+          "explanation": "Acids and alkalis neutralise each other readily; that is the reaction being used.",
+          "misconception": "reaction denied"
+        },
+        {
+          "key": "C",
+          "text": "Because alkalis are too dangerous to handle",
+          "correct": false,
+          "explanation": "Dilute alkalis are handled routinely in titrations with normal care.",
+          "misconception": "hazard invented"
+        },
+        {
+          "key": "D",
+          "text": "Because the salt formed would be insoluble",
+          "correct": false,
+          "explanation": "The salt from an acid and alkali is soluble by design of this method.",
+          "misconception": "product nature wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L1::Q2",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L1",
+      "stem": "Which pieces of apparatus measure the two reactants?",
+      "misconceptionClass": "apparatus roles",
+      "options": [
+        {
+          "key": "A",
+          "text": "A pipette for the alkali and a burette for the acid",
+          "correct": true,
+          "explanation": "That is the standard allocation in the source method.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A burette for the alkali and a pipette for the acid",
+          "correct": false,
+          "explanation": "The roles can be swapped in principle, but the method of record puts the alkali in the flask by pipette and the acid in the burette.",
+          "misconception": "apparatus roles swapped"
+        },
+        {
+          "key": "C",
+          "text": "A measuring cylinder for both",
+          "correct": false,
+          "explanation": "A cylinder is too imprecise for the exact ratio this preparation needs.",
+          "misconception": "precision loss accepted"
+        },
+        {
+          "key": "D",
+          "text": "A conical flask for both",
+          "correct": false,
+          "explanation": "The flask holds the reaction; it does not measure anything.",
+          "misconception": "container confused with measuring device"
+        }
+      ]
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L1::Q3",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L1",
+      "stem": "What is the purpose of the indicator in the first run?",
+      "misconceptionClass": "indicator role",
+      "options": [
+        {
+          "key": "A",
+          "text": "To show when the acid and alkali have exactly reacted",
+          "correct": true,
+          "explanation": "The colour change marks the neutral point of the titration.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To colour the final crystals",
+          "correct": false,
+          "explanation": "The indicator is deliberately absent from the real batch, so it colours nothing.",
+          "misconception": "cosmetic role invented"
+        },
+        {
+          "key": "C",
+          "text": "To speed up the reaction",
+          "correct": false,
+          "explanation": "Indicators do not change reaction speeds; they report pH.",
+          "misconception": "catalyst fiction"
+        },
+        {
+          "key": "D",
+          "text": "To keep the solution alkaline",
+          "correct": false,
+          "explanation": "The indicator is a reporter, not a reactant, and keeps nothing alkaline.",
+          "misconception": "chemistry role invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L1::Q4",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L1",
+      "stem": "Name an indicator suitable for this titration.",
+      "misconceptionClass": "indicator recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Phenolphthalein",
+          "correct": true,
+          "explanation": "The source names phenolphthalein or methyl orange as the choices.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Anhydrous copper(II) sulfate",
+          "correct": false,
+          "explanation": "That powder tests for water; it is not an acid-alkali indicator.",
+          "misconception": "another chemical test borrowed"
+        },
+        {
+          "key": "C",
+          "text": "Sodium hydroxide solution",
+          "correct": false,
+          "explanation": "Sodium hydroxide is the alkali reactant itself, not an indicator.",
+          "misconception": "reagent named as indicator"
+        },
+        {
+          "key": "D",
+          "text": "Limewater",
+          "correct": false,
+          "explanation": "Limewater is the carbon dioxide test reagent, not an indicator here.",
+          "misconception": "reagent named as indicator"
+        }
+      ]
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L1::Q5",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L1",
+      "stem": "How is the volume of acid added found from the burette readings?",
+      "misconceptionClass": "burette arithmetic",
+      "options": [
+        {
+          "key": "A",
+          "text": "Final reading minus initial reading",
+          "correct": true,
+          "explanation": "The difference between the two readings is the delivered volume.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Initial reading minus final reading",
+          "correct": false,
+          "explanation": "That gives a negative number, since the burette reading falls as liquid leaves.",
+          "misconception": "subtraction reversed"
+        },
+        {
+          "key": "C",
+          "text": "The two readings added together",
+          "correct": false,
+          "explanation": "Adding readings double-counts the liquid instead of finding the difference.",
+          "misconception": "operation error"
+        },
+        {
+          "key": "D",
+          "text": "The final reading halved",
+          "correct": false,
+          "explanation": "Nothing in the method involves halving; the difference is what matters.",
+          "misconception": "invented arithmetic"
+        }
+      ]
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L2::Q1",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
+      "stem": "Why is the second mixture made without indicator?",
+      "misconceptionClass": "indicator exclusion reason",
+      "options": [
+        {
+          "key": "A",
+          "text": "So the salt is not contaminated with indicator dye",
+          "correct": true,
+          "explanation": "Any indicator left in would colour the product and count as an impurity.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because the indicator stops crystals forming",
+          "correct": false,
+          "explanation": "Indicators do not block crystallisation; the reason is purity, not mechanics.",
+          "misconception": "crystallisation interference fiction"
+        },
+        {
+          "key": "C",
+          "text": "Because the indicator is expensive",
+          "correct": false,
+          "explanation": "Costs are irrelevant; only a few drops are used anyway.",
+          "misconception": "cost reasoning invented"
+        },
+        {
+          "key": "D",
+          "text": "So the volumes can be measured again",
+          "correct": false,
+          "explanation": "The volumes are already known from the first run.",
+          "misconception": "purpose misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L2::Q2",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
+      "stem": "What state is the solution in when heating stops?",
+      "misconceptionClass": "evaporation endpoint state",
+      "options": [
+        {
+          "key": "A",
+          "text": "Saturated, with some water still present",
+          "correct": true,
+          "explanation": "Heating stops at the saturated stage so crystals can form on standing.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Completely dry, with all water gone",
+          "correct": false,
+          "explanation": "Heating to dryness would overheat the salt and spoil the water of crystallisation.",
+          "misconception": "overheating to dryness"
+        },
+        {
+          "key": "C",
+          "text": "Still dilute, with all the original water",
+          "correct": false,
+          "explanation": "No crystals could form from a solution that never concentrated.",
+          "misconception": "no evaporation claimed"
+        },
+        {
+          "key": "D",
+          "text": "Frozen, because crystals need cold",
+          "correct": false,
+          "explanation": "Crystals grow from solution on cooling, not from a frozen block.",
+          "misconception": "temperature confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L2::Q3",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
+      "stem": "Why must some water remain when heating stops?",
+      "misconceptionClass": "water of crystallisation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Some salts need water of crystallisation, and full dryness risks decomposition",
+          "correct": true,
+          "explanation": "Both halves are the source's stated reasons for the partial evaporation.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Water makes the crystals heavier to sell",
+          "correct": false,
+          "explanation": "Commercial reasoning plays no part in the chemistry.",
+          "misconception": "nonsense economics"
+        },
+        {
+          "key": "C",
+          "text": "Water is needed to dissolve the burette",
+          "correct": false,
+          "explanation": "The burette is not part of the crystallisation stage at all.",
+          "misconception": "apparatus reasoning misplaced"
+        },
+        {
+          "key": "D",
+          "text": "Dry salts are always dangerous",
+          "correct": false,
+          "explanation": "Dryness is not itself a hazard here; decomposition is the stated risk.",
+          "misconception": "hazard invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L2::Q4",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
+      "stem": "What is done after crystallisation to isolate the solid?",
+      "misconceptionClass": "isolation step",
+      "options": [
+        {
+          "key": "A",
+          "text": "The excess solution is decanted and the crystals left to dry",
+          "correct": true,
+          "explanation": "That is the closing sequence of the method of record.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The crystals are redissolved in fresh acid",
+          "correct": false,
+          "explanation": "Redissolving would restart the preparation instead of finishing it.",
+          "misconception": "cycle restarted"
+        },
+        {
+          "key": "C",
+          "text": "The crystals are heated until they melt",
+          "correct": false,
+          "explanation": "Melting would decompose the salt rather than purify it.",
+          "misconception": "decomposition"
+        },
+        {
+          "key": "D",
+          "text": "The crystals are washed in indicator",
+          "correct": false,
+          "explanation": "Indicator was deliberately excluded and must not return.",
+          "misconception": "contamination reintroduced"
+        }
+      ]
+    },
+    {
+      "id": "rn_5g8Dd6y89tkCVJsN::L2::Q5",
+      "moduleId": "rn_5g8Dd6y89tkCVJsN::L2",
+      "stem": "Which method does this whole preparation rely on?",
+      "misconceptionClass": "method family",
+      "options": [
+        {
+          "key": "A",
+          "text": "Titration between an acid and an alkali",
+          "correct": true,
+          "explanation": "The measured reacting volumes come from the titration technique.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Filtration of an insoluble base",
+          "correct": false,
+          "explanation": "No insoluble solid exists in this method to filter.",
+          "misconception": "wrong method family"
+        },
+        {
+          "key": "C",
+          "text": "Precipitation from two soluble salts",
+          "correct": false,
+          "explanation": "That is the insoluble-salt preparation, a different method.",
+          "misconception": "insoluble-salt method borrowed"
+        },
+        {
+          "key": "D",
+          "text": "Heating a metal with sulfur directly",
+          "correct": false,
+          "explanation": "No direct element-plus-element synthesis appears here.",
+          "misconception": "unrelated synthesis imagined"
+        }
+      ]
+    }
+  ]
+}
