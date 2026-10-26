@@ -21343,3 +21343,10 @@ Work Log:
 
 Stage Summary:
 - The serve sync is EXECUTED OF RECORD and BLOCKED at the last hygiene gate: the exporter of record reproduces the 66-set emission byte-perfectly (reproducibility no-op proven) and 5 of 6 card gates pass — but G-S4 caught a real corpus hygiene debt (35 C1 ctrl + 107 U+FFFD, the 2019-06/02 OCR-sandwich mass) that a source-side wave must fix before the plane can serve. The operator verdict menu is on the card; the staged plane is sha-pinned and reproducible in one command. Zero serving-plane change; zero corpus writes; fetch-first, no force.
+
+## R0-AUTO receipt — sweep 2026-10-26 18:00 +08 (Job 438940)
+- Merged #389 (receipt(t-oeq-mathsb-serve-1) run-002+003: serve sync BLOCKED FAIL-CLOSED at G-S4 — receipts-only, staged plane held, operator menu A-D): head 152736f → merge a088bda. Gates: verify✓ hub✓ (head), mergeable=clean, 0 reviews/comments (BLOCKED wording describes the disclosed run outcome, not a merge hold), 9 files all .syllabai/** boundary-clean. 1/2 round budget.
+- Context: #388 (ADR-040 §2.2 operator ruling A part-binding) lane-self-merged between sweeps; no desk action needed.
+- Post-merge main @ a088bda: verify✓ hub✓ (bounded re-check ~105s).
+- Not merged, gate-b fail: #285 verify✗hub✗ · #296 hub✗ · #303 verify✗ · #352 zero check-runs (~62.5h stall).
+- Notes: mirror reset hit #153 (74th consecutive, 89962a5 signature) — recovered, zero loss. Desk made no Neon/prod writes.
