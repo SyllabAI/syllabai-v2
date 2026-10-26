@@ -93,7 +93,25 @@
  * rows by rule — the second honest gap of record after 3.5.4, this time
  * by design; picks hit-the-spot/r8215/r9575/lots-of-vector-lines/
  * three-lines/r6493 — ALL riding fresh bodies (the first lane on this
- * plane whose every pick has a served body)
+ * plane whose every pick has a served body); Differential Equations
+ * sixteenth — PRs #155 + the #157 amendment (the EIGHTH pure-3 lane, THE
+ * ZERO-FRESH-BODY LANE OF RECORD, the exact mirror of lane 15): the
+ * corpus's entire student-facing 3.8 pipeline is TWO part-questions, both
+ * ALREADY of record under pure-1 lanes, so the lane serves ZERO fresh
+ * bodies and BOTH aligned rows are cross-course joins by reference —
+ * r6959 rides its pure-1-differentiation 1.7.3 body (the 1979 UCLES
+ * patch-of-fluid exam question: dA/dt = 5 formulated from the rate
+ * statement, integrated with A(0)=0, radius + dr/dt interpreted via the
+ * chain rule, 3.8.1-3.8.4) and r7410 rides its pure-1-integration 1.8.2
+ * body (the 1969 UCLES question: dy/dx = c/x^2 written from the
+ * proportionality statement, integrated to the general form, constant
+ * evaluated from y(2)=1, 3.8.1-3.8.3); the index stays fresh-only with
+ * resourceCount 0/ugmIds [] while the picks ride the reference rows
+ * (r6959 at 3.8.1+3.8.4, r7410 at 3.8.2+3.8.3 — the r6018 law taken to
+ * its honest end); 3 non-overlap disclosures ride byref (PTP-I/II +
+ * weight-pulling; from-parabolas-to-catenaries superseded — served by
+ * its 3.1.6 body); THE CORPUS-BOUNDARY DISCLOSURE: the site's own
+ * differential-equations station is EMPTY (0 resources, verified live)
  * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
  * hub-side import is

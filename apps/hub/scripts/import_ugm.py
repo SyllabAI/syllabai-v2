@@ -341,24 +341,26 @@ FM_RE = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 # verbatim spine row. 1.1 bundles never carry null picks and still parse.
 SCHEMA = "syllabai-demo.ugm-lane-resources/1.2"
 ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
-# T-UGM-HUB-CONSUME-15: pin advanced past lane 15 (T-UGM-MODE1-15 /
-# T-UGM-IMPORT-15, corpus PR #149, merge b151f65a — the
-# pure-3-vectors corpus: 20 fresh bodies, MANIFEST v16, fleet 628; the
-# DESIGNED honest gap 3.7.7, psp rows 29 = 2/11/5/3/4/4 + gap 0). The
-# corpus of record was reviewed ALL GREEN at head a597936f before merge
-# (trace 1a17527331af8cdd): blob identity remote==local==staged x25,
-# census recount 136 = 20+6+110 exact (the FIRST zero-join/zero-flip
-# lane of record), MANIFEST strictly additive with lanes 1-14
-# byte-identical, drift law verified (base 11205d6c stayed the live
-# main tip at review time with zero net UGM/LEDGER traffic; the wedged
-# sync advisory covered by the #137-#140/#145 precedent). Pure-1 inputs
-# AND the lane-9/10/11/12/13/14 pure-3 inputs are byte-identical
-# 8b3e57b9 → b151f65a (the lane-15 PR touches
-# UGM-Resources/pure-3-vectors/** + its enrichment + the shared
-# MANIFEST lane-15 block + both READMEs + LEDGER only — verified
-# pin-to-pin; the strictly-additive law holds, lanes 1–14 blocks and the
-# v9 assets block byte-identical).
-DEFAULT_REF = "main@b151f65ae5f2f963476548cbae92cc1f138b380f"
+# T-UGM-HUB-CONSUME-16: pin advanced past lane 16 (T-UGM-MODE1-16 /
+# T-UGM-IMPORT-16, corpus PR #155, merge 5163051774f98f9a05e6c3a1c4c1d009a242c3c8 —
+# the ZERO-FRESH-BODY corpus: ZERO new body files, MANIFEST v17, fleet 628
+# UNCHANGED; 53 candidates of record closed exactly = 2 aligned (BOTH
+# cross-course joins riding of-record pure-1 bodies) + 4 non-overlap
+# companion disclosures + 47 rejections; the empty-DE-station
+# corpus-boundary disclosure of record — the site's own
+# differential-equations station has ZERO resources (id 11, created
+# 2015-11-04, never populated; verified live with a populated-station
+# control), raw-parity 855/855). The corpus of record was reviewed ALL
+# GREEN at head b09be085 before merge (trace 1a17798149c39e91): blob
+# identity remote==local x5, CI sync success, mergeable=True, closure
+# exact 53 = 2+4+47, MANIFEST strictly additive with lanes 1-15
+# byte-identical. Pure-1 inputs AND the lanes 9-15 pure-3 inputs are
+# byte-identical b151f65a → 51630517 (the lane-16 PR touches the new
+# enrichment + the shared MANIFEST lane-16 block + both READMEs + LEDGER
+# only — verified pin-to-pin; the strictly-additive law holds).
+# the pin rides the T-UGM-MODE1-16 amendment (PR #157, merge c8b80c6a — the
+# lane-9 cross-course join shape; the enrichment consumed by THIS import)
+DEFAULT_REF = "main@c8b80c6a09af2526d05eb808512081d191dd8e03"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
@@ -757,6 +759,74 @@ LANE_STATIONS = {
             "ledger": "LEDGER.md — T-UGM-MODE1-15 and T-UGM-IMPORT-15 (PR #149)",
             "expected": {"resources": 20, "rows": 29, "aligned": 20, "nonOverlap": 6},
         },
+        {
+            # T-UGM-HUB-CONSUME-16 — lane 16, CIE 9709 Pure 3 3.8
+            # Differential equations (the EIGHTH pure-3 lane): THE
+            # ZERO-FRESH-BODY LANE OF RECORD, the exact mirror of lane
+            # 15's zero-join lane. The corpus's entire student-facing 3.8
+            # pipeline is TWO part-questions, both ALREADY of record under
+            # pure-1 lanes — so the lane serves ZERO fresh bodies (res_dir
+            # is NOT created; the MANIFEST v17 lane block carries
+            # file_count 0 / files []) and BOTH aligned rows are
+            # CROSS-COURSE joins by reference (the lane-9 law): r6959
+            # rides its pure-1-differentiation 1.7.3 body (the 1979 UCLES
+            # patch-of-fluid exam question — part (i) formulates dA/dt = 5
+            # from the rate statement, integrates with A(0)=0, interprets
+            # the radius and dr/dt via the chain rule → 3.8.1-3.8.4) and
+            # r7410 rides its pure-1-integration 1.8.2 body (the 1969
+            # UCLES question — part (ii) writes dy/dx = c/x^2 from the
+            # proportionality statement, integrates to the general form,
+            # evaluates the constant from y(2)=1 → 3.8.1-3.8.3). The psp
+            # rows CARRY the join claims per the lane-9 cross-course
+            # shape; the index stays fresh-only (resourceCount 0, ugmIds
+            # []) with the picks riding the reference rows (the r6018
+            # law, the lane-8 all-cross-pick precedent). 4 non-overlap
+            # companion disclosures by reference (the modelling-
+            # recognition class picture-the-process-i/ii — cooling/
+            # decay/logistic narrated or matched, never formulated; the
+            # beyond-spec separable-DE class weight-pulling +
+            # from-parabolas-to-catenaries — genuine separable skeletons,
+            # cosec/arcosh/cosh execution outside the 9709 function set).
+            # 47 candidates rejected with reasons. THE CORPUS-BOUNDARY
+            # DISCLOSURE: the site's own differential-equations station
+            # is EMPTY (0 resources, id 11, created 2015-11-04, never
+            # populated — verified live with a populated-station control;
+            # one of the four never-captured stations) and the raw-parity
+            # audit (855/855) closes the boundary fail-closed. The
+            # stations list is the FULL 19-station sweep closure of
+            # record (the lane-13/15 convention). Picks r6959 (3.8.1,
+            # 3.8.4) / r7410 (3.8.2, 3.8.3) — BOTH riding reference rows
+            # (the r6018-style disclosure lane-wide). Figure plane
+            # unchanged: figures=0 honestly (no fresh bodies, no map
+            # rows).
+            "laneSlug": "differential-equations",
+            "laneTitle": "Differential equations",
+            "stations": [
+                {"slug": "calculus-meets-functions", "title": "Calculus meets Functions"},
+                {"slug": "calculus-of-powers", "title": "Calculus of Powers"},
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "combining-functions", "title": "Combining Functions"},
+                {"slug": "counting-and-binomials", "title": "Counting & Binomials"},
+                {"slug": "divisibility-and-induction", "title": "Divisibility & Induction"},
+                {"slug": "exp-and-log", "title": "Exponentials & Logarithms"},
+                {"slug": "hyperbolic-functions", "title": "Hyperbolic Functions"},
+                {"slug": "introducing-calculus", "title": "Introducing Calculus"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+                {"slug": "quadratics", "title": "Quadratics"},
+                {"slug": "sequences", "title": "Sequences"},
+                {"slug": "thinking-about-algebra", "title": "Thinking about Algebra"},
+                {"slug": "thinking-about-functions", "title": "Thinking about Functions"},
+                {"slug": "thinking-about-geometry", "title": "Thinking about Geometry"},
+                {"slug": "thinking-about-numbers", "title": "Thinking about Numbers"},
+                {"slug": "trigonometry-triangles-to-functions", "title": "Trigonometry: Triangles to Functions"},
+                {"slug": "vector-geometry", "title": "Vector Geometry"}
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-3-differential-equations.json",
+            "res_dir": "UGM-Resources/pure-3-differential-equations",
+            "ledger": "LEDGER.md — T-UGM-MODE1-16 and T-UGM-IMPORT-16 (PR #155)",
+            "expected": {"resources": 0, "rows": 7, "aligned": 2, "nonOverlap": 4},
+        },
     ],
 }
 
@@ -841,14 +911,26 @@ def import_lane(repo, lane_block, course):
         p = e.get("path") or e.get("file") or e.get("name")
         by_rel[p] = e
     n_expected = exp["resources"]
-    files = sorted(f for f in os.listdir(res_dir) if f.endswith(".md"))
-    if len(files) != n_expected or len(by_rel) != n_expected:
-        fail(f"[{station}] file census {len(files)} md / {len(by_rel)} manifest entries != {n_expected}")
-    for f in files:
-        rel = f"{os.path.basename(lane_block['res_dir'])}/{f}"
-        h = hashlib.sha256(open(os.path.join(res_dir, f), "rb").read()).hexdigest()
-        if by_rel.get(rel, {}).get("sha256") != h:
-            fail(f"[{station}] sha256 mismatch vs MANIFEST.json: {rel}")
+    # T-UGM-HUB-CONSUME-16 zero-fresh law: a MANIFEST v2 lane block with
+    # file_count 0 / files [] and NO lane dir on disk declares a BYREF-ONLY
+    # lane (every aligned row is a crossLane join by reference — the lane-16
+    # shape). The file census is 0/0 and expected.resources MUST be 0; the
+    # aligned rows resolve through the cross-course path of the join phase.
+    if (manifest.get("manifest_version") == 2
+            and not entries and not os.path.isdir(res_dir)):
+        if n_expected != 0:
+            fail(f"[{station}] zero-fresh lane block (file_count 0, no dir) but expected "
+                 f"{n_expected} resources — the byref-only law requires expected.resources == 0")
+        files = []
+    else:
+        files = sorted(f for f in os.listdir(res_dir) if f.endswith(".md"))
+        if len(files) != n_expected or len(by_rel) != n_expected:
+            fail(f"[{station}] file census {len(files)} md / {len(by_rel)} manifest entries != {n_expected}")
+        for f in files:
+            rel = f"{os.path.basename(lane_block['res_dir'])}/{f}"
+            h = hashlib.sha256(open(os.path.join(res_dir, f), "rb").read()).hexdigest()
+            if by_rel.get(rel, {}).get("sha256") != h:
+                fail(f"[{station}] sha256 mismatch vs MANIFEST.json: {rel}")
 
     # ── 3. parse every resource: front-matter + byte-true body ─────────
     parsed = {}
