@@ -1,0 +1,931 @@
+"use client";
+
+/**
+ * GuidedLessonFlow — the adaptive confidence-gate engine, replicating the
+ * SaveMyExams guided-study mechanic as dissected in the of-record research
+ * (SME-Guided-Study-and-Guided-Practice-Analysis §3, adoption law §8.2) and
+ * governed by the adapter spec §6 gate semantics:
+ *
+ *   ┌ gate ──────────────────────────────────────────────────────────┐
+ *   │ "Tell us your confidence level against the key points"         │
+ *   │ "What you know already" primer (lesson primer / module opening)│
+ *   │ "Key points of understanding" bullets                          │
+ *   │ Low / Medium / High radio — Continue DISABLED until a choice   │
+ *   │ (gatePolicy.continueDisabledUntilChoice — import-blocking)     │
+ *   └────────────────────────────────────────────────────────────────┘
+ *   → authored depth layers revealed ONE Continue at a time; the rating
+ *     selects the band (low → low.*, medium → medium.*, high → none) —
+ *     the self-rating is a cheap adaptivity proxy: it changes pacing,
+ *     never content (§3.3 branch uniformity). High keeps every layer
+ *     reachable as an optional refresher.
+ *   → "Helpful terms" glossary (authored firstLesson places each term)
+ *   → "An example" worked example (first module; one per note of record)
+ *   → the check: per-question Submit answer → verdict + explanation →
+ *     Next question (§3.4 presentation grammar)
+ *   → post-check recalibration (§6.4 + §8.2 deliberate extension): offer
+ *     exactly one "re-rate for next time" that pre-selects the NEXT
+ *     module's gate default — never a re-rate of the current module
+ *     (resumeWithoutReRate law).
+ *
+ * WRITE-ONCE LAW: a rating is chosen once per module; a resumed session
+ * restores it and must not re-prompt (the gate radio locks once written;
+ * completed modules reopen as a re-walk with the rating locked).
+ *
+ * PERSISTENCE: browser-local only (hub progress law — no accounts; and the
+ * integration channel's zero-DB law), localStorage keyed per lesson id,
+ * refresh-safe. Progress never writes to canonical content.
+ */
+import { useMemo, useState, useSyncExternalStore } from "react";
+import {
+  ArrowRight,
+  BookOpenCheck,
+  Check,
+  ChevronRight,
+  Lightbulb,
+  ListChecks,
+  RotateCcw,
+  ThumbsUp,
+} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { cn } from "@/lib/utils";
+import type {
+  GuidedDepthLayer,
+  GuidedLessonImport,
+  GuidedModule,
+  GuidedQuestion,
+  GuidedQuestionPackage,
+} from "@/lib/guided-lessons";
+
+type Rating = "low" | "medium" | "high";
+
+interface FlowState {
+  v: 1;
+  /** module currently being walked */
+  moduleIndex: number;
+  /** index into the module's computed stage list */
+  stage: number;
+  /** write-once gate rating per module id */
+  ratings: Record<string, Rating>;
+  /** post-check recalibration ("re-rate for next time") per module id */
+  recalibrated: Record<string, Rating>;
+  /** answers keyed by question id */
+  answers: Record<string, { picked: string; correct: boolean }>;
+  /** the whole lesson set is finished */
+  finished: boolean;
+}
+
+interface Props {
+  lesson: GuidedLessonImport;
+  pkg: GuidedQuestionPackage;
+  noteTitle: string;
+  noteHref: string;
+  base: string;
+}
+
+const STORAGE_PREFIX = "syllabai.guided-flow.v1.";
+
+const RATING_LABEL: Record<Rating, string> = {
+  low: "Low",
+  medium: "Medium",
+  high: "High",
+};
+
+const RATING_HELP: Record<Rating, string> = {
+  low: "New to this — walk me through it from the start.",
+  medium: "I've seen this — remind me how it fits together.",
+  high: "Solid on this — take me straight to the checks.",
+};
+
+function freshState(): FlowState {
+  return { v: 1, moduleIndex: 0, stage: 0, ratings: {}, recalibrated: {}, answers: {}, finished: false };
+}
+
+/** The server snapshot: SSR/prerender always renders the fresh gate. */
+const SERVER_STATE = freshState();
+
+/** Restore from localStorage; client-only, tolerant of bad records. */
+function loadState(lessonId: string): FlowState {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_PREFIX + lessonId);
+    if (!raw) return freshState();
+    const parsed = JSON.parse(raw) as FlowState;
+    if (parsed?.v !== 1) return freshState();
+    return parsed;
+  } catch {
+    return freshState();
+  }
+}
+
+interface FlowStore {
+  subscribe: (fn: () => void) => () => void;
+  get: () => FlowState;
+  set: (updater: (s: FlowState) => FlowState) => void;
+}
+
+/**
+ * One browser-local store per lesson id (module-level cache). Mutations are
+ * plain store updates that persist synchronously — no setState-in-effect;
+ * hydration renders the server snapshot and re-renders to the restored
+ * state after mount (the hub progress.ts useSyncExternalStore pattern).
+ */
+const flowStores = new Map<string, FlowStore>();
+
+function getFlowStore(lessonId: string): FlowStore {
+  const existing = flowStores.get(lessonId);
+  if (existing) return existing;
+  let current = loadState(lessonId);
+  const listeners = new Set<() => void>();
+  const store: FlowStore = {
+    subscribe(fn) {
+      listeners.add(fn);
+      return () => {
+        listeners.delete(fn);
+      };
+    },
+    get() {
+      return current;
+    },
+    set(updater) {
+      const next = updater(current);
+      if (next === current) return;
+      current = next;
+      try {
+        window.localStorage.setItem(STORAGE_PREFIX + lessonId, JSON.stringify(current));
+      } catch {
+        // storage unavailable — the flow still works, it just won't resume
+      }
+      listeners.forEach((fn) => fn());
+    },
+  };
+  flowStores.set(lessonId, store);
+  return store;
+}
+
+type Stage =
+  | { kind: "gate" }
+  | { kind: "layer"; band: "low" | "medium"; field: keyof GuidedDepthLayer; label: string; i: number; n: number }
+  | { kind: "refresher" }
+  | { kind: "glossary" }
+  | { kind: "example" }
+  | { kind: "check" }
+  | { kind: "recalibrate" };
+
+/** The authored layers of one band, served one Continue at a time. */
+function layerStages(band: "low" | "medium"): Stage[] {
+  return (["restatement", "analogy", "examPointer"] as const).map((field, i) => ({
+    kind: "layer" as const,
+    band,
+    field,
+    label: field === "restatement" ? "In plain words" : field === "analogy" ? "Think of it like this" : "Exam pointer",
+    i,
+    n: 3,
+  }));
+}
+
+/** Glossary terms authored for a given 0-based module ordinal. */
+function glossaryFor(lesson: GuidedLessonImport, moduleOrdinal: number) {
+  const all = lesson.lesson.assets.glossary ?? [];
+  const own = all.filter((g) => g.firstLesson === moduleOrdinal + 1);
+  if (own.length > 0) return own;
+  // defensive: terms pointing past the last module clamp onto it
+  if (moduleOrdinal === lesson.lesson.modules.length - 1) {
+    return all.filter((g) => g.firstLesson > lesson.lesson.modules.length);
+  }
+  return [];
+}
+
+export function GuidedLessonFlow({ lesson, pkg, noteTitle, noteHref, base }: Props) {
+  const lessonId = lesson.lesson.id;
+  const store = useMemo(() => getFlowStore(lessonId), [lessonId]);
+  const state = useSyncExternalStore(store.subscribe, store.get, () => SERVER_STATE);
+  const [recalChoice, setRecalChoice] = useState<Record<string, Rating>>({});
+
+  const questionsById = useMemo(
+    () => new Map(pkg.questions.map((q) => [q.id, q])),
+    [pkg],
+  );
+
+  const modules = lesson.lesson.modules;
+  const moduleIndex = Math.min(state.moduleIndex, modules.length - 1);
+  const m = modules[moduleIndex];
+  const rating = state.ratings[m.id];
+
+  // The module's stage list after the gate depends on the chosen band.
+  const allStages: Stage[] = useMemo(() => {
+    const stages: Stage[] = [{ kind: "gate" }];
+    if (!rating) return stages;
+    if (rating === "low") stages.push(...layerStages("low"));
+    if (rating === "medium") stages.push(...layerStages("medium"));
+    if (rating === "high") stages.push({ kind: "refresher" });
+    if (glossaryFor(lesson, moduleIndex).length > 0) stages.push({ kind: "glossary" });
+    if (moduleIndex === 0 && lesson.lesson.assets.workedExample) stages.push({ kind: "example" });
+    stages.push({ kind: "check" });
+    if (m.gatePolicy.postCheckRecalibration) stages.push({ kind: "recalibrate" });
+    return stages;
+  }, [rating, lesson, moduleIndex, m]);
+
+  const stage = Math.min(state.stage, allStages.length - 1);
+
+  const moduleDone = (mi: number) =>
+    mi < moduleIndex || (state.finished && mi === moduleIndex);
+
+  /** Advance one stage; past the last stage of the module, advance module. */
+  const handleNext = () => {
+    if (stage + 1 < allStages.length) {
+      store.set((s) => ({ ...s, stage: s.stage + 1 }));
+      return;
+    }
+    if (moduleIndex + 1 >= modules.length) {
+      store.set((s) => ({ ...s, finished: true }));
+    } else {
+      store.set((s) => ({ ...s, moduleIndex: s.moduleIndex + 1, stage: 0 }));
+    }
+  };
+
+  /** Write-once: choosing a rating (re)computes the band tail from stage 0. */
+  const chooseRating = (r: Rating) => {
+    store.set((s) =>
+      s.ratings[m.id] === r ? s : { ...s, ratings: { ...s.ratings, [m.id]: r }, stage: 0 },
+    );
+  };
+
+  const recalibrate = (r: Rating) => {
+    store.set((s) => ({ ...s, recalibrated: { ...s.recalibrated, [m.id]: r } }));
+  };
+
+  const answer = (qid: string, picked: string, correct: boolean) => {
+    store.set((s) => ({ ...s, answers: { ...s.answers, [qid]: { picked, correct } } }));
+  };
+
+  const gotoModule = (mi: number) => store.set((s) => ({ ...s, moduleIndex: mi, stage: 0 }));
+
+  const reset = () => store.set(() => freshState());
+
+  const totalChecks = modules.reduce((a, x) => a + x.checkRefs.length, 0);
+  const totalCorrect = modules.reduce(
+    (a, x) => a + x.checkRefs.filter((r) => state.answers[r]?.correct).length,
+    0,
+  );
+  const doneCount = modules.filter((_, i) => moduleDone(i)).length;
+  const prevRecalibrated =
+    moduleIndex > 0 ? state.recalibrated[modules[moduleIndex - 1].id] : undefined;
+
+  if (state.finished) {
+    return (
+      <FinishedView
+        modules={modules}
+        state={state}
+        totalChecks={totalChecks}
+        totalCorrect={totalCorrect}
+        noteTitle={noteTitle}
+        noteHref={noteHref}
+        base={base}
+        onReview={(mi) => store.set((s) => ({ ...s, moduleIndex: mi, stage: 0, finished: false }))}
+        onReset={reset}
+      />
+    );
+  }
+
+  return (
+    <div className="space-y-5">
+      {/* lesson-set stepper — the numbered micro-lesson picker */}
+      <Card>
+        <CardContent className="space-y-3 p-4 sm:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <p className="text-sm font-semibold">Guided lessons for this note</p>
+            <p className="text-xs text-muted-foreground" aria-live="polite">
+              {doneCount} of {modules.length} complete
+            </p>
+          </div>
+          <Progress value={(doneCount / modules.length) * 100} aria-label="Lesson set progress" />
+          <ol className="space-y-2">
+            {modules.map((mod, mi) => {
+              const done = moduleDone(mi);
+              const active = mi === moduleIndex;
+              const started = state.ratings[mod.id] !== undefined;
+              return (
+                <li key={mod.id}>
+                  <button
+                    type="button"
+                    onClick={() => gotoModule(mi)}
+                    className={cn(
+                      "flex w-full items-center gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
+                      active ? "border-primary/50 bg-primary/5" : "hover:border-primary/40",
+                    )}
+                    aria-current={active ? "step" : undefined}
+                  >
+                    <span
+                      className={cn(
+                        "flex size-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold",
+                        done && "border-emerald-600/50 bg-emerald-600/10 text-emerald-700 dark:border-emerald-500/40 dark:text-emerald-400",
+                        !done && active && "border-primary/60 text-primary",
+                        !done && !active && "text-muted-foreground",
+                      )}
+                      aria-hidden
+                    >
+                      {done ? <Check className="size-3.5" /> : mi + 1}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-[13px] font-medium">{mod.title}</span>
+                      <span className="block truncate text-xs text-muted-foreground">{mod.opening}</span>
+                    </span>
+                    <span className="shrink-0 text-xs font-medium text-muted-foreground">
+                      {done ? "Review" : started ? "Continue" : "Start"}
+                    </span>
+                    <ChevronRight className="size-4 shrink-0 text-muted-foreground" aria-hidden />
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+          <div className="flex items-center justify-between border-t pt-3">
+            <p className="text-xs text-muted-foreground">
+              {totalCorrect} of {totalChecks} checks correct so far
+            </p>
+            <Button variant="ghost" size="sm" onClick={reset}>
+              <RotateCcw className="size-3.5" aria-hidden />
+              Restart lesson set
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* the active module's current stage */}
+      <StageView
+        stage={allStages[stage]}
+        module={m}
+        moduleOrdinal={moduleIndex}
+        moduleCount={modules.length}
+        lesson={lesson}
+        questionsById={questionsById}
+        state={state}
+        rating={rating}
+        prevRecalibrated={prevRecalibrated}
+        recalChoice={recalChoice[m.id]}
+        onRecalChoice={(r) => setRecalChoice((c) => ({ ...c, [m.id]: r }))}
+        onChooseRating={chooseRating}
+        onRecalibrate={recalibrate}
+        onAnswer={answer}
+        onNext={handleNext}
+      />
+    </div>
+  );
+}
+
+/* ───────────────────────────── stage views ───────────────────────────── */
+
+interface StageProps {
+  stage: Stage;
+  module: GuidedModule;
+  moduleOrdinal: number;
+  moduleCount: number;
+  lesson: GuidedLessonImport;
+  questionsById: Map<string, GuidedQuestion>;
+  state: FlowState;
+  rating: Rating | undefined;
+  /** the previous module's "re-rate for next time" — pre-selects this gate */
+  prevRecalibrated: Rating | undefined;
+  /** the current module's post-check recalibration choice, pre-continue */
+  recalChoice: Rating | undefined;
+  onRecalChoice: (r: Rating) => void;
+  onChooseRating: (r: Rating) => void;
+  onRecalibrate: (r: Rating) => void;
+  onAnswer: (qid: string, picked: string, correct: boolean) => void;
+  onNext: () => void;
+}
+
+function StageView(p: StageProps) {
+  switch (p.stage.kind) {
+    case "gate":
+      return <GateStage {...p} />;
+    case "layer":
+      return <LayerStage {...p} stage={p.stage} />;
+    case "refresher":
+      return <RefresherStage {...p} />;
+    case "glossary":
+      return <GlossaryStage {...p} />;
+    case "example":
+      return <ExampleStage {...p} />;
+    case "check":
+      return <CheckStage {...p} />;
+    case "recalibrate":
+      return <RecalibrateStage {...p} />;
+  }
+}
+
+function GateStage(p: StageProps) {
+  const { module: m, lesson, moduleOrdinal, state, rating, prevRecalibrated, onChooseRating, onNext } = p;
+  // pre-selection from the previous module's recalibration is visual only —
+  // the write-once rating happens on the learner's explicit radio click
+  const selected = rating ?? prevRecalibrated ?? null;
+  const written = rating !== undefined;
+  const disabled = m.gatePolicy.continueDisabledUntilChoice && rating === undefined;
+  // SME primer derivation: module 1 uses the lesson primer; later modules
+  // chain from the authored opening (research §3.2)
+  const primer = moduleOrdinal === 0 ? lesson.lesson.primer.text : m.opening;
+  const resumed = Object.keys(state.answers).length > 0;
+  return (
+    <Card>
+      <CardContent className="space-y-4 p-4 sm:p-5">
+        <div className="space-y-1">
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            Lesson {moduleOrdinal + 1} of {p.moduleCount}
+          </p>
+          <h2 className="text-lg font-semibold tracking-tight">{m.title}</h2>
+        </div>
+
+        <div className="space-y-1.5">
+          <p className="text-sm font-medium">What you know already</p>
+          <p className="text-[13px] leading-relaxed text-muted-foreground">{primer}</p>
+        </div>
+
+        <div className="space-y-2">
+          <p className="text-sm font-medium">Key points of understanding</p>
+          <ul className="space-y-1.5">
+            {m.keyPoints.map((kp, i) => (
+              <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed">
+                <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
+                <span>{kp}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <fieldset className="space-y-2">
+          <legend className="text-sm font-semibold">Tell us your confidence level against the key points</legend>
+          {(["low", "medium", "high"] as const).map((r) => {
+            const isSelected = selected === r;
+            return (
+              <button
+                key={r}
+                type="button"
+                role="radio"
+                aria-checked={isSelected}
+                disabled={written}
+                onClick={() => onChooseRating(r)}
+                className={cn(
+                  "flex w-full items-start gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
+                  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
+                  isSelected ? "border-primary/60 bg-primary/5" : "hover:border-primary/40",
+                  written && "cursor-default",
+                )}
+              >
+                <span
+                  className={cn(
+                    "mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full border",
+                    isSelected ? "border-primary" : "border-muted-foreground/40",
+                  )}
+                  aria-hidden
+                >
+                  {isSelected && <span className="size-2 rounded-full bg-primary" />}
+                </span>
+                <span>
+                  <span className="block text-[13px] font-medium">
+                    {RATING_LABEL[r]}
+                    {written && isSelected && (
+                      <span className="ml-2 text-xs font-normal text-muted-foreground">
+                        ({resumed ? "your saved rating — resumed" : "your rating — locked for this lesson"})
+                      </span>
+                    )}
+                  </span>
+                  <span className="block text-xs text-muted-foreground">{RATING_HELP[r]}</span>
+                </span>
+              </button>
+            );
+          })}
+        </fieldset>
+
+        <Button onClick={onNext} disabled={disabled} className="w-full sm:w-auto">
+          Continue
+          <ArrowRight className="size-4" aria-hidden />
+        </Button>
+        {disabled && (
+          <p className="text-xs text-muted-foreground">Choose a confidence level to continue.</p>
+        )}
+        {!written && prevRecalibrated !== undefined && (
+          <p className="text-xs text-muted-foreground">
+            Pre-selected from your last check — change it here if that no longer feels right.
+          </p>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+function LayerStage(p: StageProps & { stage: Extract<Stage, { kind: "layer" }> }) {
+  const { module: m, stage, onNext } = p;
+  const layer = m.depthLayers[stage.band][stage.field];
+  const isLast = stage.i === stage.n - 1;
+  return (
+    <Card>
+      <CardContent className="space-y-4 p-4 sm:p-5">
+        <div className="flex items-center justify-between">
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{stage.label}</p>
+          <Badge variant="secondary" className="text-[11px]">
+            Layer {stage.i + 1} of {stage.n}
+          </Badge>
+        </div>
+        <p className="text-[15px] leading-relaxed">{layer}</p>
+        <Button onClick={onNext} className="w-full sm:w-auto">
+          {isLast ? "Continue" : "Continue — reveal the next layer"}
+          <ArrowRight className="size-4" aria-hidden />
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+function RefresherStage(p: StageProps) {
+  const { module: m, onNext } = p;
+  return (
+    <Card>
+      <CardContent className="space-y-4 p-4 sm:p-5">
+        <div className="space-y-1">
+          <p className="text-sm font-semibold">Straight to the checks</p>
+          <p className="text-[13px] text-muted-foreground">
+            You rated yourself confident — so no walkthrough layers. If anything feels shaky, the
+            refresher below unpacks it in plain words first.
+          </p>
+        </div>
+        <details className="rounded-md border px-3 py-2.5">
+          <summary className="cursor-pointer text-[13px] font-medium">Refresher — the plain-words layers</summary>
+          <div className="mt-3 space-y-3">
+            <LayerBlock label="In plain words" text={m.depthLayers.low.restatement} />
+            <LayerBlock label="Think of it like this" text={m.depthLayers.low.analogy} />
+            <LayerBlock label="Exam pointer" text={m.depthLayers.low.examPointer} />
+            <LayerBlock label="Going deeper" text={m.depthLayers.medium.restatement} />
+          </div>
+        </details>
+        <Button onClick={onNext} className="w-full sm:w-auto">
+          Continue
+          <ArrowRight className="size-4" aria-hidden />
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+function LayerBlock({ label, text }: { label: string; text: string }) {
+  return (
+    <div>
+      <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{label}</p>
+      <p className="mt-1 text-[13px] leading-relaxed">{text}</p>
+    </div>
+  );
+}
+
+function GlossaryStage(p: StageProps) {
+  const { lesson, moduleOrdinal, onNext } = p;
+  const terms = glossaryFor(lesson, moduleOrdinal);
+  return (
+    <Card>
+      <CardContent className="space-y-4 p-4 sm:p-5">
+        <div className="space-y-1">
+          <p className="text-sm font-semibold">Helpful terms</p>
+          <p className="text-[13px] text-muted-foreground">The vocabulary this lesson leans on.</p>
+        </div>
+        <dl className="grid gap-3 sm:grid-cols-2">
+          {terms.map((g) => (
+            <div key={g.term} className="rounded-md border p-3">
+              <dt className="text-[13px] font-semibold">{g.term}</dt>
+              <dd className="mt-1 text-xs leading-relaxed text-muted-foreground">{g.definition}</dd>
+            </div>
+          ))}
+        </dl>
+        <Button onClick={onNext} className="w-full sm:w-auto">
+          Continue
+          <ArrowRight className="size-4" aria-hidden />
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+function ExampleStage(p: StageProps) {
+  const { lesson, onNext } = p;
+  const we = lesson.lesson.assets.workedExample;
+  if (!we) return null;
+  return (
+    <Card>
+      <CardContent className="space-y-3 p-4 sm:p-5">
+        <p className="flex items-center gap-2 text-sm font-semibold">
+          <Lightbulb className="size-4 text-primary" aria-hidden />
+          An example
+        </p>
+        <p className="text-[13px] font-medium leading-relaxed">{we.prompt}</p>
+        <ol className="list-decimal space-y-1.5 pl-5 text-[13px] leading-relaxed text-muted-foreground">
+          {we.steps.map((s, i) => (
+            <li key={i}>{s}</li>
+          ))}
+        </ol>
+        <p className="rounded-md bg-muted px-3 py-2 text-[13px] font-medium">{we.finalAnswer}</p>
+        <Button onClick={onNext} className="w-full sm:w-auto">
+          Continue to the checks
+          <ArrowRight className="size-4" aria-hidden />
+        </Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+function CheckStage(p: StageProps) {
+  const { module: m, questionsById, state, onAnswer, onNext } = p;
+  const questions = m.checkRefs
+    .map((ref) => questionsById.get(ref))
+    .filter((q): q is GuidedQuestion => q !== undefined);
+  // resume at the first unanswered question of this module
+  const firstUnanswered = Math.max(
+    questions.findIndex((q) => state.answers[q.id] === undefined),
+    0,
+  );
+  const [qi, setQi] = useState(firstUnanswered);
+  const clampedQi = Math.min(qi, questions.length - 1);
+  const q = questions[clampedQi];
+  const answered = state.answers[q.id] ?? null;
+  const score = questions.filter((x) => state.answers[x.id]?.correct).length;
+
+  return (
+    <Card>
+      <CardContent className="space-y-4 p-4 sm:p-5">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="flex items-center gap-2 text-sm font-semibold">
+            <ListChecks className="size-4 text-primary" aria-hidden />
+            Understanding check
+          </p>
+          <Badge variant="secondary" className="text-[11px]">
+            Question {clampedQi + 1} of {questions.length}
+          </Badge>
+        </div>
+        <Progress
+          value={((clampedQi + (answered ? 1 : 0)) / questions.length) * 100}
+          aria-label="Check progress"
+        />
+        <CheckQuestion
+          key={q.id}
+          question={q}
+          index={clampedQi + 1}
+          answered={answered}
+          onAnswer={onAnswer}
+        />
+
+        {answered && clampedQi < questions.length - 1 && (
+          <Button onClick={() => setQi(clampedQi + 1)} className="w-full sm:w-auto">
+            Next question
+            <ArrowRight className="size-4" aria-hidden />
+          </Button>
+        )}
+        {answered && clampedQi === questions.length - 1 && (
+          <div className="space-y-3 rounded-md border bg-muted/40 p-3">
+            <p className="text-sm font-semibold">
+              Check complete — {score} of {questions.length} correct.
+            </p>
+            <Button onClick={onNext} className="w-full sm:w-auto">
+              Continue
+              <ArrowRight className="size-4" aria-hidden />
+            </Button>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+function RecalibrateStage(p: StageProps) {
+  const { module: m, rating, recalChoice, onRecalChoice, onRecalibrate, onNext } = p;
+  const choice = recalChoice ?? rating ?? "medium";
+  const answered = m.checkRefs.filter((r) => p.state.answers[r]?.correct).length;
+  return (
+    <Card>
+      <CardContent className="space-y-4 p-4 sm:p-5">
+        <div className="space-y-1">
+          <p className="text-sm font-semibold">How confident do you feel now?</p>
+          <p className="text-[13px] text-muted-foreground">
+            You got {answered} of {m.checkRefs.length} checks correct. Re-rate for next time —
+            we&apos;ll pre-select this as your starting confidence for the next lesson. You can
+            always change it there.
+          </p>
+        </div>
+        <fieldset className="space-y-2">
+          <legend className="sr-only">Re-rate your confidence for next time</legend>
+          {(["low", "medium", "high"] as const).map((r) => (
+            <button
+              key={r}
+              type="button"
+              role="radio"
+              aria-checked={choice === r}
+              onClick={() => {
+                onRecalChoice(r);
+                onRecalibrate(r);
+              }}
+              className={cn(
+                "flex w-full items-center gap-3 rounded-md border px-3 py-2.5 text-left transition-colors",
+                choice === r ? "border-primary/60 bg-primary/5" : "hover:border-primary/40",
+              )}
+            >
+              <span
+                className={cn(
+                  "flex size-4 shrink-0 items-center justify-center rounded-full border",
+                  choice === r ? "border-primary" : "border-muted-foreground/40",
+                )}
+                aria-hidden
+              >
+                {choice === r && <span className="size-2 rounded-full bg-primary" />}
+              </span>
+              <span className="text-[13px] font-medium">{RATING_LABEL[r]}</span>
+            </button>
+          ))}
+        </fieldset>
+        <div className="flex flex-wrap items-center gap-2">
+          <Button onClick={onNext} className="w-full sm:w-auto">
+            Continue
+            <ArrowRight className="size-4" aria-hidden />
+          </Button>
+          <p className="text-xs text-muted-foreground">
+            Your rating for this lesson stays as it was — recalibration only sets the default for
+            next time.
+          </p>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+/* ─────────────────────────── check question ─────────────────────────── */
+
+function CheckQuestion({
+  question,
+  index,
+  answered,
+  onAnswer,
+}: {
+  question: GuidedQuestion;
+  index: number;
+  answered: { picked: string; correct: boolean } | null;
+  onAnswer: (qid: string, picked: string, correct: boolean) => void;
+}) {
+  const [picked, setPicked] = useState<string | null>(answered?.picked ?? null);
+  const correctOption = question.options.find((o) => o.correct);
+  const pickedOption = question.options.find((o) => o.key === picked);
+  const settled = answered !== null;
+
+  return (
+    <fieldset className="space-y-2.5">
+      <legend className="text-sm font-medium leading-snug">
+        <span className="mr-2 text-muted-foreground">{index}.</span>
+        {question.stem}
+      </legend>
+      <div className="grid gap-2" role="radiogroup" aria-label={`Options for question ${index}`}>
+        {question.options.map((o) => {
+          const isPicked = picked === o.key;
+          const state = !settled
+            ? isPicked
+              ? "picked"
+              : "idle"
+            : o.correct
+              ? "correct"
+              : isPicked
+                ? "wrong"
+                : "idle";
+          return (
+            <button
+              key={o.key}
+              type="button"
+              role="radio"
+              aria-checked={isPicked}
+              disabled={settled}
+              onClick={() => setPicked(o.key)}
+              className={cn(
+                "flex items-start gap-3 rounded-md border px-3 py-2.5 text-left text-[13px] transition-colors",
+                "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
+                state === "idle" && "hover:border-primary/40",
+                state === "picked" && "border-primary/60 bg-primary/5",
+                state === "correct" && "border-emerald-600/50 bg-emerald-600/10 dark:border-emerald-500/40 dark:bg-emerald-500/10",
+                state === "wrong" && "border-red-600/50 bg-red-600/10 dark:border-red-500/40 dark:bg-red-500/10",
+                settled && "cursor-default",
+              )}
+            >
+              <span
+                className={cn(
+                  "mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border text-[11px] font-semibold",
+                  state === "correct" && "border-emerald-600/60 text-emerald-700 dark:text-emerald-400",
+                  state === "wrong" && "border-red-600/60 text-red-700 dark:text-red-400",
+                  (state === "idle" || state === "picked") && "text-muted-foreground",
+                )}
+                aria-hidden
+              >
+                {state === "correct" ? <Check className="size-3" /> : state === "wrong" ? <Check className="size-3" /> : o.key}
+              </span>
+              <span className="min-w-0">{o.text}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      {!settled && (
+        <Button
+          size="sm"
+          disabled={picked === null}
+          onClick={() => {
+            if (picked === null || !pickedOption || !correctOption) return;
+            onAnswer(question.id, picked, pickedOption.correct);
+          }}
+        >
+          Submit answer
+        </Button>
+      )}
+
+      {settled && answered && (
+        <div className="space-y-2" role="status">
+          {answered.correct ? (
+            <p className="flex items-center gap-2 text-[13px] font-semibold text-emerald-700 dark:text-emerald-400">
+              <ThumbsUp className="size-4" aria-hidden />
+              Great job!
+            </p>
+          ) : (
+            <p className="text-[13px] font-semibold text-red-700 dark:text-red-400">
+              Not quite — the answer is {correctOption?.key}.
+            </p>
+          )}
+          <p className="text-[13px] leading-relaxed text-muted-foreground">{correctOption?.explanation}</p>
+          {!answered.correct && pickedOption?.misconception && (
+            <p className="text-xs text-muted-foreground">Misconception flagged: {pickedOption.misconception}</p>
+          )}
+        </div>
+      )}
+    </fieldset>
+  );
+}
+
+/* ─────────────────────────── finished summary ─────────────────────────── */
+
+function FinishedView({
+  modules,
+  state,
+  totalChecks,
+  totalCorrect,
+  noteTitle,
+  noteHref,
+  base,
+  onReview,
+  onReset,
+}: {
+  modules: GuidedModule[];
+  state: FlowState;
+  totalChecks: number;
+  totalCorrect: number;
+  noteTitle: string;
+  noteHref: string;
+  base: string;
+  onReview: (mi: number) => void;
+  onReset: () => void;
+}) {
+  return (
+    <Card>
+      <CardContent className="space-y-4 p-5 sm:p-6">
+        <div className="space-y-1">
+          <p className="flex items-center gap-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400">
+            <BookOpenCheck className="size-4" aria-hidden />
+            Lesson set complete
+          </p>
+          <h2 className="text-lg font-semibold tracking-tight">{noteTitle}</h2>
+          <p className="text-[13px] text-muted-foreground">
+            You worked through all {modules.length} lessons — {totalCorrect} of {totalChecks} checks
+            correct across the set.
+          </p>
+        </div>
+        <ol className="space-y-2">
+          {modules.map((mod, mi) => {
+            const correct = mod.checkRefs.filter((r) => state.answers[r]?.correct).length;
+            return (
+              <li key={mod.id} className="flex items-center gap-3 rounded-md border px-3 py-2.5">
+                <Check className="size-4 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
+                <span className="min-w-0 flex-1 text-[13px] font-medium">{mod.title}</span>
+                <span className="shrink-0 text-xs text-muted-foreground">
+                  {correct}/{mod.checkRefs.length} checks
+                </span>
+                <Button variant="ghost" size="sm" onClick={() => onReview(mi)}>
+                  Review
+                </Button>
+              </li>
+            );
+          })}
+        </ol>
+        <div className="flex flex-wrap gap-2">
+          <Button asChild>
+            <a href={noteHref}>Back to the revision note</a>
+          </Button>
+          <Button asChild variant="outline">
+            <a href={`${base}/revision-notes`}>All revision notes</a>
+          </Button>
+          <Button variant="ghost" onClick={onReset}>
+            <RotateCcw className="size-4" aria-hidden />
+            Restart
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}

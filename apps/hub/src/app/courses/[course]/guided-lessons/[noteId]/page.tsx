@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ArrowLeft, BookOpenCheck, GraduationCap, Lightbulb, ListChecks, Pin } from "lucide-react";
+import { ArrowLeft, BookOpenCheck, GraduationCap, Pin } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -17,24 +17,26 @@ import {
   type GuidedModule,
   type GuidedQuestion,
 } from "@/lib/guided-lessons";
+import { GuidedLessonFlow } from "./guided-flow";
 import { GuidedCheckList } from "./guided-check";
 
 /**
  * Guided-lesson reader — the hub surface of the SME guided-lesson
- * integration (route law from the import receipt's next_operator_gated:
- * "surface the guided lessons on a hub route via loadContentJson +
- * guided-import.json").
+ * integration, now carrying the ADAPTIVE confidence-gate flow (replicating
+ * the SaveMyExams guided-study mechanic of record: research §3, adoption
+ * law §8.2, adapter spec §6). The client flow (guided-flow.tsx) owns the
+ * gate → layers → terms → example → checks → recalibration walk; this
+ * server component owns data integrity, chrome and provenance, and keeps
+ * the full authored lesson server-rendered in a collapsed "read as a page"
+ * fallback so every authored string stays reachable without JS.
  *
  * One route per revision note (the canonical rn_* noteId, mirroring the
  * revision-notes reader URL grammar). Fail-closed: course without a
  * guided-import.json, note absent from the index, or unreadable lesson /
  * package artifact → notFound(). Data is render-only here — the artifacts
  * are sha256-anchored upstream (pinned provenance block in each file) and
- * nothing on this page mutates them.
- *
- * The confidence-gate runtime policy rides with the data (gatePolicy per
- * module) but the adaptive gate engine is the practice-engine follow-up;
- * the checks below are the self-paced reveal layer (see guided-check.tsx).
+ * nothing on this page mutates them. Flow state persists browser-local
+ * only (hub progress law; the integration channel's zero-DB law).
  */
 export async function generateMetadata({
   params,
@@ -75,8 +77,6 @@ export default async function GuidedLessonPage({
     pkg.questions.map((q) => [q.id, q]),
   );
   const totalChecks = lesson.modules.reduce((acc, m) => acc + m.checkRefs.length, 0);
-  const glossary = lesson.assets.glossary ?? [];
-  const workedExample = lesson.assets.workedExample;
 
   return (
     <div className="flex w-full">
@@ -113,71 +113,40 @@ export default async function GuidedLessonPage({
               ))}
             </div>
             <p className="text-[13px] text-muted-foreground">
-              {lesson.modules.length} guided {lesson.modules.length === 1 ? "step" : "steps"} ·{" "}
+              {lesson.modules.length} guided {lesson.modules.length === 1 ? "lesson" : "lessons"} ·{" "}
               {totalChecks} checks · {lesson.topicTitle} → {lesson.subtopicTitle}
             </p>
           </header>
 
-          <Card>
-            <CardContent className="space-y-2 p-4 sm:p-5">
-              <p className="text-sm font-semibold">Where this fits</p>
-              <p className="text-[13px] leading-relaxed text-muted-foreground">{lesson.primer.text}</p>
-              {lesson.primer.prerequisiteSubtopic && (
-                <p className="text-xs text-muted-foreground">
-                  Builds on: {lesson.primer.prerequisiteSubtopic}
-                </p>
-              )}
-            </CardContent>
-          </Card>
+          {/* the adaptive flow — confidence gate → layers → terms → example
+              → checks → recalibration, state browser-local per lesson */}
+          <GuidedLessonFlow
+            lesson={imported}
+            pkg={pkg}
+            noteTitle={note.title}
+            noteHref={`${base}/revision-notes/${note.noteId}`}
+            base={base}
+          />
 
-          {workedExample && (
-            <Card>
-              <CardContent className="space-y-3 p-4 sm:p-5">
-                <p className="flex items-center gap-2 text-sm font-semibold">
-                  <Lightbulb className="size-4 text-primary" aria-hidden />
-                  Worked example
-                </p>
-                <p className="text-[13px] font-medium leading-relaxed">{workedExample.prompt}</p>
-                <ol className="list-decimal space-y-1.5 pl-5 text-[13px] leading-relaxed text-muted-foreground">
-                  {workedExample.steps.map((s, i) => (
-                    <li key={i}>{s}</li>
-                  ))}
-                </ol>
-                <p className="rounded-md bg-muted px-3 py-2 text-[13px] font-medium">
-                  {workedExample.finalAnswer}
-                </p>
-              </CardContent>
-            </Card>
-          )}
-
-          {lesson.modules.map((m, mi) => (
-            <GuidedModuleSection
-              key={m.id}
-              module={m}
-              ordinal={mi + 1}
-              questions={m.checkRefs
-                .map((ref) => questionsById.get(ref))
-                .filter((q): q is GuidedQuestion => q !== undefined)}
-            />
-          ))}
-
-          {glossary.length > 0 && (
-            <Card>
-              <CardContent className="space-y-3 p-4 sm:p-5">
-                <p className="text-sm font-semibold">Key terms</p>
-                <dl className="grid gap-3 sm:grid-cols-2">
-                  {glossary.map((g) => (
-                    <div key={g.term} className="rounded-md border p-3">
-                      <dt className="text-[13px] font-semibold">{g.term}</dt>
-                      <dd className="mt-1 text-xs leading-relaxed text-muted-foreground">
-                        {g.definition}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </CardContent>
-            </Card>
-          )}
+          {/* no-JS / prefer-scroll fallback — the full authored lesson as a
+              plain page (every authored string stays server-rendered) */}
+          <details className="rounded-lg border">
+            <summary className="cursor-pointer px-4 py-3 text-[13px] font-medium">
+              Prefer to read it all at once? Show the full lesson as a page
+            </summary>
+            <div className="space-y-5 border-t px-4 py-4">
+              {lesson.modules.map((m, mi) => (
+                <StaticModuleSection
+                  key={m.id}
+                  module={m}
+                  ordinal={mi + 1}
+                  questions={m.checkRefs
+                    .map((ref) => questionsById.get(ref))
+                    .filter((q): q is GuidedQuestion => q !== undefined)}
+                />
+              ))}
+            </div>
+          </details>
 
           {/* provenance — the pinned upstream, verbatim from the artifacts */}
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 border-t pt-4 text-xs text-muted-foreground">
@@ -209,7 +178,7 @@ export default async function GuidedLessonPage({
   );
 }
 
-function GuidedModuleSection({
+function StaticModuleSection({
   module: m,
   ordinal,
   questions,
@@ -219,9 +188,9 @@ function GuidedModuleSection({
   questions: GuidedQuestion[];
 }) {
   return (
-    <section className="space-y-4" aria-labelledby={`${m.id}-title`}>
+    <section className="space-y-4" aria-labelledby={`static-${m.id}`}>
       <div className="space-y-2">
-        <h2 id={`${m.id}-title`} className="flex flex-wrap items-baseline gap-x-3 text-lg font-semibold tracking-tight">
+        <h2 id={`static-${m.id}`} className="flex flex-wrap items-baseline gap-x-3 text-lg font-semibold tracking-tight">
           <span className="text-muted-foreground">{ordinal}.</span>
           {m.title}
         </h2>
@@ -239,10 +208,7 @@ function GuidedModuleSection({
 
       <Card>
         <CardContent className="p-4 sm:p-5">
-          <p className="mb-3 flex items-center gap-2 text-sm font-semibold">
-            <ListChecks className="size-4 text-primary" aria-hidden />
-            Key points
-          </p>
+          <p className="mb-3 text-sm font-semibold">Key points</p>
           <ul className="space-y-2">
             {m.keyPoints.map((kp, i) => (
               <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed">
@@ -254,12 +220,12 @@ function GuidedModuleSection({
         </CardContent>
       </Card>
 
-      <DepthLayers layers={m.depthLayers} />
+      <StaticDepthLayers layers={m.depthLayers} />
 
       {questions.length > 0 && (
         <Card>
           <CardContent className="space-y-4 p-4 sm:p-5">
-            <p className="text-sm font-semibold">Checks — try each one before you reveal</p>
+            <p className="text-sm font-semibold">Checks</p>
             <GuidedCheckList questions={questions} />
           </CardContent>
         </Card>
@@ -268,7 +234,11 @@ function GuidedModuleSection({
   );
 }
 
-function DepthLayers({ layers }: { layers: { low: GuidedDepthLayer; medium: GuidedDepthLayer } }) {
+function StaticDepthLayers({
+  layers,
+}: {
+  layers: { low: GuidedDepthLayer; medium: GuidedDepthLayer };
+}) {
   const rows: { label: string; layer: GuidedDepthLayer }[] = [
     { label: "First pass", layer: layers.low },
     { label: "Going deeper", layer: layers.medium },
