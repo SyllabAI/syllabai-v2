@@ -73,6 +73,21 @@ export default async function GuidedLessonPage({
   const lesson = imported.lesson;
   const { meta } = hub;
   const base = `/courses/${meta.slug}`;
+  // R-2 per-topic deep links (operator trace 1a179e73fc75e881): resolve the
+  // note's subtopic through the hub index seam and hand the flow the SAME
+  // hrefs the course page and tree expander ship (hub.hrefs): the
+  // exam-questions set anchored to this subtopic (first in corpus order —
+  // the established default-target law) and the subtopic's flashcard deck.
+  // Both map entries exist only when the receiving page resolves the target
+  // (same inventory: questionTopics[].slug / cardsBySubtopic), so a resolved
+  // href can never 404; a note without the subtopic binding, or with no set
+  // or deck anchored there, falls back to the course-level pages (the #399
+  // always-live behavior).
+  const subtopicCode = hub.noteSubtopic[noteId] ?? null;
+  const examQuestionsHref =
+    (subtopicCode && hub.hrefs.questions[subtopicCode]) || `${base}/exam-questions`;
+  const flashcardsHref =
+    (subtopicCode && hub.hrefs.flashcards[subtopicCode]) || `${base}/flashcards`;
   const questionsById = new Map<string, GuidedQuestion>(
     pkg.questions.map((q) => [q.id, q]),
   );
@@ -126,6 +141,8 @@ export default async function GuidedLessonPage({
             noteTitle={note.title}
             noteHref={`${base}/revision-notes/${note.noteId}`}
             base={base}
+            examQuestionsHref={examQuestionsHref}
+            flashcardsHref={flashcardsHref}
           />
 
           {/* no-JS / prefer-scroll fallback — the full authored lesson as a
