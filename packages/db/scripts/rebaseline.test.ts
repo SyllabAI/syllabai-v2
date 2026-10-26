@@ -279,14 +279,14 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // uq_book_chapters_identity / uq_documents_canonical_id as unique
   // CONSTRAINTS, which the parity law normalizes against the of-record
   // runtime schema (0 drifts, verified).
-  test("83/780/111/81/139 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  test("83/781/112/82/139 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
     expect(v.inventory).toContain("tables 83/83");
-    expect(v.inventory).toContain("columns 780");
-    expect(v.inventory).toContain("indexes 111");
-    expect(v.inventory).toContain("fks 81");
+    expect(v.inventory).toContain("columns 781");
+    expect(v.inventory).toContain("indexes 112");
+    expect(v.inventory).toContain("fks 82");
     expect(v.inventory).toContain("checks 139");
   });
 

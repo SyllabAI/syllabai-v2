@@ -845,12 +845,16 @@ export class TeacherSmartMarkService {
     const versionId = versionRows[0]!.id;
 
     // newest VALIDATED scheme backs marking (V34); none → honest refusal.
-    // ADR-040 §5.4: the scheme's kind rides along so the dispatch below can
-    // hold the point/LEVELS boundary in this topology too.
+    // ADR-040 §5.4 as amended (ruling A, trace 1a1776dff15bb991): the
+    // resolution is PART-aware — a scheme bound to THIS answer's part wins,
+    // then the version-level unbound scheme, then (never silently taken)
+    // a different part's scheme; newest-first within each slot.
     const validatedRows = (await this.sql`
       select id, validation_state, scheme_kind from mark_schemes
       where question_version_id = ${versionId} and validation_state = ${"VALIDATED"}
-      order by created_at desc
+      order by case when question_part_id = ${answer.question_part_id} then 0
+                    when question_part_id is null then 1 else 2 end,
+               created_at desc
     `) as unknown as Array<{ id: string; validation_state: string; scheme_kind: string | null }>;
     if (validatedRows.length === 0) {
       return this.refuseUnvalidatedScheme(answer, versionId);

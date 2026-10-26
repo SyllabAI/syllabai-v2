@@ -784,29 +784,46 @@ export class ContentReviewWriteService {
    * — the NO_SCHEME_BANDS precondition). POINTS schemes ride through
    * untouched (zero behavior change — guardrail §3.7).
    *
-   * Awarded-range resolution of record: single-part version → that part's
-   * marks; multi-part version → the sum (the one printed levels table must
-   * reach the question total — the only shape UNIQUE(scheme_id,
-   * level_index) admits); zero parts or non-positive total (marks unknown
+   * Awarded-range resolution of record (ADR-040 §2.2 as amended, ruling A
+   * trace 1a1776dff15bb991 / receipt adr040-bandshape-fit-r0): a scheme
+   * bound to a question part (question_part_id set — the wave-1 printed
+   * tables are part-granular, 437/437 staged grids) tiles THAT part's marks;
+   * a version-level scheme → single-part version → that part's marks,
+   * multi-part version → the sum (the one printed levels table must reach
+   * the question total); zero parts or non-positive total (marks unknown
    * at parse time) → the tiling check is skipped, never fabricated.
    */
   private async assertBandsTileForFlip(tx: SqlFn, schemeId: string, versionId: string): Promise<void> {
     const kindRows: Row[] = await tx`
-      select scheme_kind from mark_schemes where id = ${schemeId}::uuid`;
+      select scheme_kind, question_part_id from mark_schemes where id = ${schemeId}::uuid`;
     const kind = kindRows[0] == null ? "POINTS" : String(kindRows[0].scheme_kind ?? "POINTS");
     if (kind !== "LEVELS") return;
     const bandRows: Row[] = await tx`
       select level_index, marks_min, marks_max, descriptor_md
       from mark_bands where mark_scheme_id = ${schemeId}::uuid order by level_index`;
-    const partRows: Row[] = await tx`
-      select marks from question_parts where question_version_id = ${versionId}::uuid`;
-    const marks = partRows.map((r) => Number(r.marks ?? 0));
-    const partMarks =
-      marks.length === 1
-        ? marks[0]!
-        : marks.length > 1
-          ? marks.reduce((a, b) => a + b, 0)
-          : null;
+    const boundPartId =
+      kindRows[0] == null || kindRows[0]!.question_part_id == null
+        ? null
+        : String(kindRows[0]!.question_part_id);
+    let partMarks: number | null = null;
+    if (boundPartId !== null) {
+      // ruling A: the bound part IS the awarded range
+      const boundRows: Row[] = await tx`
+        select marks from question_parts where id = ${boundPartId}::uuid`;
+      if (boundRows.length > 0 && boundRows[0]!.marks != null && Number(boundRows[0]!.marks) > 0) {
+        partMarks = Number(boundRows[0]!.marks);
+      }
+    } else {
+      const partRows: Row[] = await tx`
+        select marks from question_parts where question_version_id = ${versionId}::uuid`;
+      const marks = partRows.map((r) => Number(r.marks ?? 0));
+      partMarks =
+        marks.length === 1
+          ? marks[0]!
+          : marks.length > 1
+            ? marks.reduce((a, b) => a + b, 0)
+            : null;
+    }
     const violations = bandCoverageViolations(
       bandRows.map((r) => ({
         levelIndex: Number(r.level_index),

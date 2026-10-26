@@ -9634,9 +9634,32 @@
           "primaryKey": false,
           "notNull": true,
           "default": "'POINTS'"
+        },
+        "question_part_id": {
+          "name": "question_part_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "ix_mark_schemes_part": {
+          "name": "ix_mark_schemes_part",
+          "columns": [
+            {
+              "expression": "question_part_id",
+              "asc": true,
+              "nulls": "last",
+              "opclass": "uuid_ops",
+              "isExpression": false
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
       "foreignKeys": {
         "mark_schemes_question_version_id_fkey": {
           "name": "mark_schemes_question_version_id_fkey",
@@ -9645,6 +9668,20 @@
           "schemaTo": "public",
           "columnsFrom": [
             "question_version_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "mark_schemes_question_part_id_fkey": {
+          "name": "mark_schemes_question_part_id_fkey",
+          "tableFrom": "mark_schemes",
+          "tableTo": "question_parts",
+          "schemaTo": "public",
+          "columnsFrom": [
+            "question_part_id"
           ],
           "columnsTo": [
             "id"

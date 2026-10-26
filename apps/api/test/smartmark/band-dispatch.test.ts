@@ -22,6 +22,7 @@ import {
   type BandCorrection,
   type BandMarkingCandidateGenerator,
   type BandMarkingContext,
+  type MarkingCandidate,
   type BandPlacementCandidate,
 } from "../../src/services/smartmark";
 import { fakeSql, FIXED_CLOCK, gradedEvidenceRoutes, type Route } from "../assessment/helpers";
@@ -259,7 +260,10 @@ describe("band validators — the trio", () => {
 const LOCK_MATCH = /select a\.id, a\.learner_id, a\.question_id, a\.marking_state, a\.evidence_emitted, q\.exam_paper_id from attempts a join questions q on q\.id = a\.question_id where a\.id = \? for update of a$/;
 const ANSWERS_MATCH = /select ans\.id, ans\.question_part_id, ans\.answer_text, ans\.marks_awarded, ans\.marking_state, qp\.label, qp\.marks from answers ans join question_parts qp on qp\.id = ans\.question_part_id where ans\.attempt_id = \? order by ans\.question_part_id/;
 const VERSION_MATCH = /select id from question_versions where question_id = \? order by version desc/;
-const VALIDATED_SCHEME = /select id, validation_state, scheme_kind from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+const VALIDATED_SCHEME = /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+// ruling A (trace 1a1776dff15bb991): the shared tail's fresh attempt reads
+const ATTEMPT_TOTAL_READ = /select coalesce\(sum\(marks_awarded\), 0\) as total from answers where attempt_id = \?/;
+const PENDING_READ = /select 1 from answers where attempt_id = \? and marking_state = \? limit 1/;
 const NEWEST_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? order by created_at desc/;
 const SCHEME_FULL = /select validation_state, scheme_kind, general_guidance from mark_schemes where id = \?$/;
 const BANDS_MATCH = /select id, level_index, marks_min, marks_max, descriptor_md, guidance_md from mark_bands where mark_scheme_id = \? order by level_index/;
@@ -324,6 +328,8 @@ function bandRoutes(opts: {
     { match: ANSWER_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_TOTAL_UPDATE, rows: [] },
+    { match: ATTEMPT_TOTAL_READ, rows: [{ total: 0 }] },
+    { match: PENDING_READ, rows: [] },
     { match: /select node_id from question_topics where question_id = \?/, rows: [{ node_id: "20000000-0000-0000-0000-000000000012" }] },
     { match: FLIP_MATCH, rows: [], rowsFor: () => { opts.onFlip?.(); return []; } },
     { match: /select pg_advisory_xact_lock/, rows: [] },
@@ -454,6 +460,88 @@ describe("SmartMarkService.markAttempt — the ADR-040 §5.4 band dispatch leg",
     expect(row.marks_awarded).toBe(0);
     expect(sql.queries.some((q) => ANSWER_SMART_UPDATE.test(q))).toBe(false);
     expect(sql.queries.some((q) => ATTEMPT_TOTAL_UPDATE.test(q))).toBe(false);
+  });
+});
+
+// ── ruling A (adr040-bandshape-fit-r0): part-bound dispatch in ONE pass ─────
+
+const POINTS_MATCH = /select id, ref, ordering, text, marks, question_part_id from mark_points where mark_scheme_id = \? order by ordering/;
+
+describe("SmartMarkService.markAttempt — ruling A part-bound dispatch", () => {
+  test("part-bound LEVELS scheme + version point scheme → per-part dispatch, per-kind provenance", async () => {
+    const PART_B = "60000000-0000-0000-0000-000000000002";
+    const ANSWER_B = "aa000000-0000-4000-8000-000000000002";
+    const POINT_SCHEME = "70000000-0000-0000-0000-000000000008";
+    const gen = bandGenerator();
+    const pointGen = {
+      proposeAll: async (ctxs: unknown[]) =>
+        ctxs.map(() =>
+          ({
+            modelId: "glm-4.6",
+            confidence: 0.9,
+            rawOutput: "raw",
+            allocations: [
+              { markPointId: "p1", ref: "b(i)", awarded: true, marksAwarded: 2, evidence: "quote", rationale: "why" },
+            ],
+          }) as unknown as MarkingCandidate,
+        ),
+      propose: async () => {
+        throw new Error("batch must cover the point group");
+      },
+    };
+    const inserts: unknown[][] = [];
+    const routes = bandRoutes({
+      answers: [
+        answerRow(), // PART_A → the part-bound LEVELS scheme
+        answerRow({ id: ANSWER_B, question_part_id: PART_B, label: "(b)" }), // → the version point scheme
+      ],
+      validatedSchemes: [
+        { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A },
+        { id: POINT_SCHEME, validation_state: "VALIDATED", scheme_kind: "POINTS", question_part_id: null },
+      ],
+    });
+    const insertRoute = routes.find((r) => RESULT_INSERT.test(String(r.match.source)));
+    if (insertRoute) insertRoute.rowsFor = (p) => { inserts.push(p as unknown[]); return []; };
+    routes.push({
+      match: POINTS_MATCH,
+      rows: [],
+      rowsFor: (p) => (p[0] === POINT_SCHEME
+        ? [{ id: "p1", ref: "b(i)", ordering: 1, text: "defines the term", marks: 2, question_part_id: PART_B }]
+        : []),
+    });
+    const sql = fakeSql(routes);
+    const results = await new SmartMarkService(sql, pointGen, publisherSpy(), FIXED_CLOCK, gen).markAttempt(ATTEMPT_ID);
+    expect(results.size).toBe(2);
+    // PART_A rode the band path against ITS scheme
+    expect(isBandDecisionV1(results.get(ANSWER_A)!.breakdown)).toBe(true);
+    // PART_B rode the point path against the version scheme
+    expect(Array.isArray(results.get(ANSWER_B)!.breakdown)).toBe(true);
+    // the point read was scoped to the unbound scheme, never the band scheme
+    expect(sql.queries.some((q) => /from mark_points where mark_scheme_id/.test(q))).toBe(true);
+    // per-kind provenance stamps rode the shared tail: 1.4.0 band + 1.3.0 point
+    const versions = inserts.map((row) => row[2]);
+    expect(versions).toContain("1.4.0");
+    expect(versions).toContain("1.3.0");
+  });
+
+  test("part-bound-only version: a part without a bound scheme refuses honestly (V34)", async () => {
+    const PART_B = "60000000-0000-0000-0000-000000000002";
+    const ANSWER_B = "aa000000-0000-4000-8000-000000000002";
+    const routes = bandRoutes({
+      answers: [
+        answerRow(),
+        answerRow({ id: ANSWER_B, question_part_id: PART_B, label: "(b)" }),
+      ],
+      validatedSchemes: [
+        { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS", question_part_id: PART_A },
+      ],
+    });
+    const sql = fakeSql(routes);
+    const results = await new SmartMarkService(sql, neverPointGenerator, publisherSpy(), FIXED_CLOCK, bandGenerator()).markAttempt(ATTEMPT_ID);
+    expect(results.size).toBe(2);
+    expect(isBandDecisionV1(results.get(ANSWER_A)!.breakdown)).toBe(true);
+    expect(results.get(ANSWER_B)!.validation_passed).toBe(false);
+    expect(results.get(ANSWER_B)!.failure_reason).toBe("SCHEME_NOT_VALIDATED");
   });
 });
 

@@ -159,7 +159,10 @@ const ATTEMPT_READ = /select a\.id, a\.learner_id, a\.question_id, a\.marking_st
 const QUESTIONS_MATCH = /select id, question_type, marks from questions where id = \?/;
 const ANSWERS_MATCH = /select ans\.id, ans\.question_part_id, ans\.answer_text, ans\.marks_awarded, ans\.marking_state, qp\.label, qp\.marks from answers ans join question_parts qp on qp\.id = ans\.question_part_id where ans\.attempt_id = \? order by ans\.question_part_id/;
 const VERSION_MATCH = /select id from question_versions where question_id = \? order by version desc/;
-const VALIDATED_SCHEME = /select id, validation_state, scheme_kind from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+const VALIDATED_SCHEME = /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+// ruling A (trace 1a1776dff15bb991): the shared tail's fresh attempt reads
+const ATTEMPT_TOTAL_READ = /select coalesce\(sum\(marks_awarded\), 0\) as total from answers where attempt_id = \?/;
+const PENDING_READ = /select 1 from answers where attempt_id = \? and marking_state = \? limit 1/;
 const NEWEST_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? order by created_at desc/;
 const POINTS_MATCH = /select id, ref, ordering, text, marks, question_part_id from mark_points where mark_scheme_id = \? order by ordering/;
 const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? and metric = \? order by computed_at desc/;
@@ -233,6 +236,8 @@ function markRoutes(opts: {
     { match: ANSWER_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_TOTAL_UPDATE, rows: [] },
+    { match: ATTEMPT_TOTAL_READ, rows: [{ total: 0 }] },
+    { match: PENDING_READ, rows: [] },
     { match: TOPICS_MATCH, rows: [{ node_id: "20000000-0000-0000-0000-000000000012" }] },
     { match: FLIP_MATCH, rows: [], rowsFor: () => { opts.onFlip?.(); return []; } },
     { match: DC3_ADVISORY, rows: [] },

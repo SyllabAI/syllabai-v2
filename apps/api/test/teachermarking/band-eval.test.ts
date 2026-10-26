@@ -438,7 +438,7 @@ const BAND_MARKING_ROUTES: Route[] = [
   },
   { match: /select id from question_versions/, rows: [{ id: VERSION_ID }] },
   {
-    match: /select id, validation_state, scheme_kind from mark_schemes where question_version_id = \? and validation_state = \?/,
+    match: /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \?/,
     rows: [{ id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS" }],
   },
   {
@@ -459,6 +459,9 @@ const BAND_MARKING_ROUTES: Route[] = [
     rows: [{ id: ANSWER_A, marks_awarded: 3, marking_state: "PENDING" }], // still PENDING → no evidence
   },
   { match: /update attempts set marks_awarded/, rows: [] },
+  // ruling A (trace 1a1776dff15bb991): the shared tail's fresh attempt reads
+  { match: /select coalesce\(sum\(marks_awarded\), 0\) as total from answers/, rows: [{ total: 0 }] },
+  { match: /select 1 from answers where attempt_id = \? and marking_state = \? limit 1/, rows: [] },
   { match: /select passed from smart_mark_agreement_evaluations/, rows: [] },
   { match: /select e2\.passed from smart_mark_agreement_evaluations/, rows: [] },
 ];
@@ -503,7 +506,7 @@ describe("the κ gate is metric-kind-hard (SmartMarkService.markAttempt)", () =>
     const pointRoutes: Route[] = [
       ...BAND_MARKING_ROUTES.filter((r) => !r.match.source.includes("mark_schemes")),
       {
-        match: /select id, validation_state, scheme_kind from mark_schemes where question_version_id = \? and validation_state = \?/,
+        match: /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \?/,
         rows: [{ id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "POINTS" }],
       },
       {
@@ -580,6 +583,9 @@ function captureRoutes(overrides: {
       rows: [{ id: BA_ID, marks_awarded: null, marking_state: "PENDING" }], // still PENDING → no evidence
     },
     { match: /update attempts set marks_awarded/, rows: [] },
+  // ruling A (trace 1a1776dff15bb991): the shared tail's fresh attempt reads
+  { match: /select coalesce\(sum\(marks_awarded\), 0\) as total from answers/, rows: [{ total: 0 }] },
+  { match: /select 1 from answers where attempt_id = \? and marking_state = \? limit 1/, rows: [] },
     { match: /insert into human_marks/, rows: [] },
   ];
 }

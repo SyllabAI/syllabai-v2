@@ -30,15 +30,19 @@
  * binds the SCHEME, and mark_schemes bind the question version —
  * UNIQUE(scheme_id, level_index) admits exactly ONE level set per
  * scheme):
- *   - a single-part version → that part's marks;
- *   - a multi-part version → the SUM of the version's part marks (the
- *     question total the one printed levels table must reach — the only
- *     representable shape under the additive schema);
+ *   - a scheme bound to a question part (mark_schemes.question_part_id, the
+ *     ruled A-law of adr040-bandshape-fit-r0, trace 1a1776dff15bb991) →
+ *     THAT part's marks — the wave-1 printed tables are part-granular
+ *     (437/437 staged grids), so the part-bound grid tiles the part;
+ *   - a version-level scheme (question_part_id null) → a single-part
+ *     version → that part's marks; a multi-part version → the SUM of the
+ *     version's part marks (the question total the one printed levels table
+ *     must reach);
  *   - zero parts or a non-positive total (marks unknown at parse time) →
  *     null → the tiling check is skipped (not fabricated), disclosed to
  *     the reviewer in the gate's audit note.
- * This reading meets the real corpora at band-wave 1; any mismatch is a
- * receipt finding of record, never a silent guess.
+ * This reading meets the real corpora at band-wave 1 under the ruled law;
+ * any further mismatch is a receipt finding of record, never a silent guess.
  */
 
 /** The validator's band projection — snake/bridge row or draft row both map onto it. */
