@@ -27,6 +27,7 @@ import { TagChip } from "@/components/hub/chrome";
 import { allCourseParams } from "@/lib/static-params";
 import { courseHasBookArchive } from "@/lib/books-registry";
 import { getUgmBundle, ugmStationNames } from "@/lib/ugm";
+import { loadGuidedIndex } from "@/lib/guided-lessons";
 
 type FrameworkTag = "Study" | "Practice" | "Diagnose";
 
@@ -87,6 +88,11 @@ export default async function CourseHubPage({
   // exists when the flags.json gate lists this course AND the committed
   // bundle validates (lib/ugm.ts absent=OFF law) — no roadmap ghost card.
   const ugm = await getUgmBundle(meta.slug);
+  // R-1 (operator trace 1a179c6b53bff529): the guided-lesson card keys on the
+  // committed guided-import.json of record (same fail-closed seam the per-note
+  // banner uses) — live courses get real counts from the index, never
+  // hardcoded; courses without one keep an honest roadmap card.
+  const guided = await loadGuidedIndex(meta.slug);
 
   const bands: { id: string; title: string; tagline: string; items: ResourceItem[] }[] = [
     {
@@ -227,11 +233,26 @@ export default async function CourseHubPage({
             ]
           : []),
         {
+          // R-1 + R-5 (operator trace 1a179c6b53bff529): this card was the
+          // stale "Smart Lesson — Phase C of the build plan" roadmap ghost
+          // while the guided-lesson corpus is already live (112/112 notes on
+          // the promoted integration). It now leads with the canonical name
+          // ("Guided lessons" — R-5 unification) and, when the committed
+          // guided-import.json exists, flips to the live state with index
+          // counts and a path into the per-note guided entries. The gap-first
+          // desc mirrors the R-7c picker copy on the lesson surface itself.
           icon: Lightbulb,
-          title: "Smart Lesson",
-          desc: "Adaptive study path that adjusts based on your performance — Phase C of the build plan.",
+          title: "Guided lessons",
+          desc: guided
+            ? "Pick the concept you don't understand yet — we'll explain it simply, then check your understanding. Any order works."
+            : "Step-by-step guided lessons for every revision note — rolling out course by course.",
           tags: ["Study", "Practice", "Diagnose"],
-          ready: false,
+          href: guided ? `${base}/revision-notes` : undefined,
+          ctaLabel: guided ? "Pick a note" : undefined,
+          countLabel: guided
+            ? `Live for ${guided.counts.notes} notes · ${guided.counts.lessons} lessons`
+            : undefined,
+          ready: Boolean(guided),
         },
       ],
     },
