@@ -1,0 +1,36 @@
+{
+ "schema": "syllabai.receipts.t-seneca-001/1.0",
+ "task": 43,
+ "date": "2026-10-26",
+ "operatorTrace": "1a1752e359d78245 (original report) / 1a1774e26eaa9f89 (retired-repo correction)",
+ "title": "Production hub Seneca integration — ported to syllabai-v2 apps/hub and landed on main",
+ "context": "Task 42 built the student-facing Seneca course integration against SyllabAI/syllabai-hub, which is RETIRED (archived). Operator correction: syllabai-hub was retired and the system of record is syllabai-v2; the live site syllabai-hub-v2.vercel.app deploys THIS monorepo (apps/hub, vercel.json deploymentEnabled main:true). Task 42's 'deploy blocked' finding was a misidentification — the work was never blocked, it was built against the wrong repo.",
+ "source": {
+  "code": "origin/hub-integration/seneca-t42 @ 1735c7d1 (Task 42 backup branch; seneca-hub.ts, seneca-instantiate.ts, seneca-browser.tsx, seneca page, sidebar/markdown wiring)",
+  "assets": "18 bundles (12MB, generated 2026-10-25T22:43:43Z from post-run-010 W1) + 1,353 images (94MB, Task 40 harvest mirror)"
+ },
+ "changes": [
+  "apps/hub/src/lib/seneca-hub.ts — registry reader + flags.json gating law (senecaStudentResourceHub; absent file/key/slug = OFF, same shape as ugm.ts)",
+  "apps/hub/src/lib/seneca-instantiate.ts — $var sandbox, verbatim",
+  "apps/hub/src/components/hub/seneca-browser.tsx — lessons/exam-questions/quizzes browser, verbatim",
+  "apps/hub/src/app/courses/[course]/seneca/page.tsx — SSG (registry ∩ allCourseParams), board-aware header",
+  "apps/hub/src/app/courses/[course]/layout.tsx — SidebarData.seneca wiring",
+  "apps/hub/src/components/hub/course-data-context.tsx — seneca field",
+  "apps/hub/src/components/hub/course-shell.tsx — conditional 'Seneca Resources' sidebar row (Sparkles, count badge; honest absence)",
+  "apps/hub/src/components/markdown.tsx — /seneca-images/ local-image branch (same law as ugm-assets)",
+  "apps/hub/content/seneca/registry.json — 35 hub courses → 18 bundles (igcse-chemistry-19 → chemistry-edexcel-igcse: 286 lessons + 1,430 exam questions)",
+  "apps/hub/content/flags.json — senecaStudentResourceHub (35 courses, mirrors registry exactly; one-flip kill)",
+  "apps/hub/public/seneca-bundles/ + public/seneca-images/ — committed content plane (ADR-029 posture; 140 image refs verified 0 missing on disk)"
+ ],
+ "verification": [
+  "prebuild validators PASS (corpus 2,232 coverage, CIE 6 specs / 2,259 archive holdings)",
+  "next build GREEN; prerender-manifest: 35 /courses/<slug>/seneca routes incl. igcse-chemistry-19",
+  "standalone smoke: sidebar row 'Seneca Resources' + 1,716 badge on igcse-chemistry-19; /seneca 200; bundle 200; /seneca-images/b1e5aa45bb3d2bd3.png 200; honest absence on cie-igcse-accounting-21"
+ ],
+ "w1State": "W1 (wh-v3) read-only probe 2026-10-26: post-rebuild state 162,271 rows / 262 slugs (Task 41 rebuild); igcse-chemistry-19 = 0 rows under the rebuilt slug scheme — NOT a blocker: the serving surface is committed static bundles, W1-independent at render time. warehouse_chunks absent (Task 41 incident loss); Prisma prototype tables coexist.",
+ "openItems": [
+  "Vercel auto-deploys main (deploymentEnabled main:true); operator should hard-refresh /courses/igcse-chemistry-19 after the build completes",
+  "Widening beyond the 35 registry courses = one bundle-generation re-run (t42 generator) + flags/registry update — no code change",
+  "W1 restore to the audited 56,543-row state remains an operator option (Task 41 open item); bundles are unaffected either way"
+ ]
+}

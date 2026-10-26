@@ -237,6 +237,23 @@ export function Markdown({
                 </span>
               );
             }
+            // T-SENECA-001 Task 43: harvested Seneca images are committed to
+            // the public/seneca-images mirror and rewritten into the content
+            // at bundle-generation time — same local-image law as ugm-assets.
+            if (s.startsWith("/seneca-images/")) {
+              return (
+                <span className="block overflow-hidden rounded-md border">
+                  <Image
+                    src={s}
+                    alt={alt ?? ""}
+                    width={640}
+                    height={400}
+                    unoptimized
+                    className="h-auto w-full max-w-md"
+                  />
+                </span>
+              );
+            }
             // corpus images are hotlinked from the public resources repo
             if (s.startsWith("https")) {
               // UX audit 2026-10-02 #21: bare <img> without dimensions — every
