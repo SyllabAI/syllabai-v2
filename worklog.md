@@ -327,3 +327,20 @@ Work Log:
 
 Stage Summary:
 - 262-slug rebuild audited and cleaned: fleet 161,621 rows / 262 slugs, 0 off-subject families residual, 0 collateral. Student Resource hub no longer serves misfiled content. Task-45 registry widening (27 defensible matches) unblocked; wiring must cross-check candidate bundles against run-011-offsubject-ids.json history (post-purge the fleet is clean, so registry consumption proceeds on clean data).
+
+---
+Task ID: 45-c
+Agent: main
+Task: Operator trace 1a178f995382cccd "Fire production deploy, if not fired and then spot check a new course page" — deploy-state verification + production spot checks of the widened registry.
+
+Work Log:
+- Survival audit post-recycle: venv rebuilt (psycopg2-binary 2.9.13); .t1.env re-staged 0600 (never echoed); syllabai-v2 clone fast-forwarded e52a3b5 -> b5a1138 (origin/t-seneca-001/r5 verified); sparse checkout widened to apps/hub + seneca-hub + .github + packages; core.filemode false re-applied.
+- DISCOVERY: the Task-45 widening is ALREADY ON MAIN, executed in the lost turns as the r0/r1 pair — a7aad8e0 (registry 35->62: 27 CIE courses, 22 bundles from the W1 spare inventory, PII-gated, images per the fe6c04d manifest) + 671e14da r1 (generator re-run vs the post-run-012 fleet 161,621; exports drop exactly the 6 purged resources; registry counts reconciled; run-011/012 receipts ported to main). The production hub port itself is d0704684 (Task 43: apps/hub seneca-bundles/images + seneca-browser + /courses/[course]/seneca + sidebar).
+- DEPLOY STATE VERIFIED — ALREADY FIRED: vercel.json fires production on main pushes only (deploymentEnabled main:true, *:false); origin/main tip = 671e14da. Decisive discriminator: LIVE /courses/cie-a-level-chemistry-25/seneca serves 204 lessons / 78 exam questions = the r1 post-purge reconciled counts (r0 would be 204/80, totals 282 vs 284). The deployed build IS 671e14da. No fire action taken — a re-fire would rebuild identical content.
+- SPOT CHECKS 8/8 GREEN on syllabai-hub-v2.vercel.app: (1) /courses/cie-igcse-history-18/seneca NEW — 165 lessons / 1,318 exam questions / 697 quizzes = registry option-b 1,483; (2) /courses/cie-igcse-history-18 — sidebar row "Seneca Resources 1,483"; (3) /courses/cie-igcse-biology-23/seneca NEW — 661/1,675 = 2,336 with Core+Supplement chips (0610); (4) /courses/cie-a-level-chemistry-25/seneca — 204/78 r1; (5) /courses/igcse-english-language-a-16-paper-1-.../seneca NEW — 336 lessons / 1,248 quizzes (english-gcse-groundwork, 4EA1); (6) /seneca-images/2d7d3714568d4e1d.webp — 200, real content; (7) honest absence /courses/cie-igcse-accounting-21/seneca — 404; (8) honest absence /courses/cie-a-level-computer-science-19/seneca — 404 (not among the 27; the CS harvest bundle is IGCSE-level and serves cie-igcse-computer-science-23).
+- Registry math: 94 hub courses = 62 mapped + 32 honest absence (matches courses.json count exactly); 40 bundles (18+22); 2,531 images. ZERO writes this run: no DB, no code, no main push (receipt rides t-seneca-001/r5; main untouched so no pointless production rebuild).
+
+Stage Summary:
+- Production is LIVE with the widened, post-purge-reconciled Task 45 r1 build; the 27-course widening renders correctly on newly-mapped course pages with images, and the 32 unmapped courses keep honest absence. Deploy question closed with build-level evidence (r1 discriminator), not assumed.
+- Receipt: .syllabai/receipts/T-SENECA-001/task-45-deploy-verify-spotcheck-r0.json; yaml execution_record extended (WIDENING + DEPLOY-VERIFY).
+- Method note: WebFetch HTML read-back of SSG pages (counts quoted verbatim); full-browser screenshot pass optional if the operator wants pixel evidence.

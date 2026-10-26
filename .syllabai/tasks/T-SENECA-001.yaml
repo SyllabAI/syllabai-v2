@@ -176,6 +176,28 @@ task:
     optional future re-import under a mapping-side subject guard — family
     prefix must belong to the target bundle's subject — before any re-import).
     Receipt: run-012-offsubject-purge.json.
+    WIDENING (Task 45, 2026-10-26, operator approval "widen the registry to
+    the 27 defensible matches … the remaining 32 keep honest absence"):
+    executed on main in the r0/r1 pair — a7aad8e0 (registry 35->62 mapped hub
+    courses; 22 new bundles exported from the W1 spare inventory, PII-gated;
+    images per the fe6c04d manifest) then 671e14da r1 (generator re-run
+    against the post-run-012 clean fleet 161,621; exports drop exactly the 6
+    purged resources; registry counts reconciled; run-011/012 receipts ported
+    to main). Production hub state @ 671e14da: 94 hub courses = 62 mapped +
+    32 honest absence; 40 bundles; 2,531 images. DEPLOY-VERIFY (2026-10-27,
+    operator trace 1a178f995382cccd "Fire production deploy, if not fired and
+    then spot check a new course page"): deploy state VERIFIED ALREADY FIRED —
+    no fire action taken (vercel.json fires production on main pushes only;
+    the live build discriminates as r1: /courses/cie-a-level-chemistry-25/
+    seneca serves 204/78 = the post-purge reconciled counts, r0 would be
+    204/80). Spot checks 8/8 GREEN on syllabai-hub-v2.vercel.app: new pages
+    cie-igcse-history-18 (165/1,318/697 = 1,483), cie-igcse-biology-23
+    (661/1,675 = 2,336, Core+Supplement chips), igcse-english-language-a-16-
+    paper-1 (336/0/1,248, groundwork); sidebar badge "Seneca Resources 1,483"
+    on the history-18 course page; /seneca-images/2d7d3714568d4e1d.webp 200;
+    honest absence holds (accounting-21 and a-level-computer-science-19
+    /seneca 404). ZERO writes this run (no DB, no code, no main push).
+    Receipt: task-45-deploy-verify-spotcheck-r0.json.
 base:
   repo: "syllabai-v2 @ 6bedab6 (origin/main at claim)"
 basis: >

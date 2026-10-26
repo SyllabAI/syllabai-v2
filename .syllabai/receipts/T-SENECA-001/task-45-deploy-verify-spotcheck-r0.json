@@ -1,0 +1,45 @@
+{
+  "schema": "syllabai.t-seneca-001.receipt/1.0",
+  "task": "T-SENECA-001",
+  "run": "task-45-deploy-verify-spotcheck-r0",
+  "operatorTrace": "1a178f995382cccd",
+  "operatorOrder": "Fire production deploy, if not fired, and then spot check a new course page",
+  "executedUtc": "2026-10-27T00:00:00Z",
+  "writes": { "database": 0, "mainBranch": 0, "code": 0 },
+  "survivalAudit": {
+    "recycle": "sandbox re-provisioned since last turn",
+    "venv": "rebuilt (psycopg2-binary 2.9.13)",
+    "t1env": "re-staged 0600, value never echoed",
+    "clone": "syllabai-v2 fast-forwarded e52a3b5 -> b5a1138 (origin/t-seneca-001/r5 verified); core.filemode false re-applied",
+    "localWorklog": "entries 38-45b remain lost to recycle; repo worklog.md is the record"
+  },
+  "deployState": {
+    "question": "has the Task-45 production deploy fired?",
+    "answer": "YES - no fire needed",
+    "evidence": [
+      "origin/main tip = 671e14da (Task 45 r1, post-run-012 reconcile); registry 62 courses / 40 bundles / 2,531 images",
+      "vercel.json law: production deploys fire on push to main only (deploymentEnabled main:true, *:false)",
+      "LIVE /courses/cie-a-level-chemistry-25/seneca shows 204 lessons / 78 exam questions = r1 reconciled counts; the pre-reconcile r0 build would show 204/80 (total 284 vs 282)",
+      "r1-sensitive discriminator is decisive: the deployed build IS 671e14da"
+    ],
+    "action": "none - re-firing would rebuild identical content"
+  },
+  "provenance": {
+    "portCommit": "d0704684 (Task 43 - production hub Seneca integration ported into apps/hub)",
+    "wideningCommit": "a7aad8e0 (Task 45 - registry 35->62, 27 CIE courses, 22 bundles, PII-gated)",
+    "reconcileCommit": "671e14da (Task 45 r1 - re-run vs post-run-012 fleet 161,621; exports drop exactly the 6 purged resources)"
+  },
+  "spotChecks": [
+    { "url": "/courses/cie-igcse-history-18/seneca", "kind": "NEW (widening)", "result": "PASS", "detail": "165 lessons / 1,318 exam questions / 697 quizzes; topic chips render; = registry option-b total 1,483" },
+    { "url": "/courses/cie-igcse-history-18", "kind": "sidebar badge", "result": "PASS", "detail": "sidebar row 'Seneca Resources 1,483' present on the course page" },
+    { "url": "/courses/cie-igcse-biology-23/seneca", "kind": "NEW (widening)", "result": "PASS", "detail": "661 lessons / 1,675 exam questions = registry total 2,336; Core + Supplement bundle chips both render (0610)" },
+    { "url": "/courses/cie-a-level-chemistry-25/seneca", "kind": "r1 discriminator", "result": "PASS", "detail": "204 lessons / 78 exam questions / 0 quizzes = post-run-012 reconciled counts" },
+    { "url": "/courses/igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing/seneca", "kind": "NEW (widening)", "result": "PASS", "detail": "336 lessons / 0 exam questions / 1,248 quizzes; english-gcse-groundwork bundle (4EA1)" },
+    { "url": "/seneca-images/2d7d3714568d4e1d.webp", "kind": "image serving", "result": "PASS", "detail": "HTTP 200, real content (history lesson illustration); bundle image refs are repo-local /seneca-images/ paths" },
+    { "url": "/courses/cie-igcse-accounting-21/seneca", "kind": "honest absence", "result": "PASS", "detail": "404 - unmapped course serves no fabricated Seneca surface" },
+    { "url": "/courses/cie-a-level-computer-science-19/seneca", "kind": "honest absence", "result": "PASS", "detail": "404 - A-level CS is not among the 27 defensible matches (the CS harvest bundle is IGCSE-level and serves cie-igcse-computer-science-23)" }
+  ],
+  "registryMath": { "hubCourses": 94, "mapped": 62, "honestAbsence": 32, "bundles": 40, "images": 2531 },
+  "method": "WebFetch HTML read-back of SSG'd pages (not full browser screenshot); counts quoted from rendered page and cross-checked against apps/hub/content/seneca/registry.json @ 671e14da and bundle files on origin/main",
+  "verdict": "GREEN - production is live with the widened, post-purge-reconciled Task 45 r1 build; all 8 spot checks pass; zero writes this run"
+}
