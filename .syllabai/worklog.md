@@ -21399,3 +21399,12 @@ Stage Summary:
 - LANDED: apps/hub/content/igcse-maths-b-16/official-papers.json (NEW, 66 sets, 3a83e99c…, 3,752,631 B, single-line compact) + manifest.json (officialSpine.resourcesSha -> a7a34cd9… + the handover note; importSource incl. the mixed-vintage disclosure + the 2e17aab0 attachment-pin mention byte-untouched, HEAD-roundtrip-proven); questions.json UNTOUCHED (G-E4). The two planes coexist exactly as chemistry; coverage ADD 2019-01/02R.
 - Receipts run-004/005/006 filed; card -> DONE (runs in historical order); C13/C71 red on resources = the LEDGER's own queued F90 class (pre-existing, pristine-main-proven). Carry-forward: the desk LEDGER act + table.v1.json intake law + the DB-plane ingest decision + the F87 fold-in on the next all-66 re-run.
 - Discipline: fetch-first, race-guarded push, no force, PAT env-only (never on disk), zero DB writes, zero apps/hub/src changes, no frontend deploy.
+
+---
+
+## R0-AUTO receipt — sweep 2026-10-27 01:00 +08 (Job 438940)
+
+- Task ID: 16 | PR #395 (T-UGM-HUB-CONSUME-17 UGM lane 17 Complex numbers) | head 5b8ce62a -> merge sha c165a92a | gates: head hub+verify GREEN pre-merge; 4 files all apps/hub/** (ugm-resources.json +179/-7, import_ugm.py, ugm.bundle.test.ts, ugm.ts); no reviews/comments; mergeable clean; zero java/scope violations
+- skipped gate-b: #285 1c2dd54 (verify+hub failure), #296 bd2c0b1 (hub failure), #303 cce0230 (verify failure), #352 13bfea9 (no check-runs, ~87h static)
+- post-merge main c165a92a: hub+verify GREEN (bounded re-check ~180s)
+- notes: mirror external reset #166 this run (restored from origin 33776232 fetch-first, zero loss); main had advanced lane-side 671e14d -> 33776232 (T-OEQ-MATHSB-SERVE-1 verdict A); receipt commit bookkeeping-only .syllabai/**
