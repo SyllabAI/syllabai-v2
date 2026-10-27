@@ -1,0 +1,77 @@
+{
+  "receipt": "hub-r4-r6-implementation/1.0",
+  "round": "ROUND-R4-R6-20261027",
+  "operator_trace": "1a17c31b18dcd8ad",
+  "operator_instruction_verbatim": "R-4 and R-6 proceed",
+  "generated_at_utc": "2026-10-27T00:00:00Z",
+  "lane": "w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b)",
+  "register_context": {
+    "source_of_record": "ROUND-SME-FLOW-RECHECK-COMPARE-20261026 (trace 1a1784607afb872d) Table 4 + R-1..R-6 register",
+    "register_state_at_round_start": {
+      "R-7c": "DONE (#396, merged 10802d99)",
+      "R-1/R-5/R-2/R-3": "DONE (#399, merged b21b3135)",
+      "R-2-deep-links": "DONE+DEPLOYED (#401, merged be9077d6, prod deploy 7344300874 @ 1ab008b55769 success)",
+      "R-4": "open (primer bridge)",
+      "R-6": "open (trajectory chip + thumbs)"
+    },
+    "recycle_note": "local sandbox recycled before this round: worklog restored to the 20261026 snapshot and this session's download/ receipts truncated; re-anchor entry ROUND-RECYCLE-RECOVERY-20261027 appended; remote repos remain arbitration of record"
+  },
+  "scope": {
+    "R-4_prerequisite_bridge": {
+      "sme_mechanic": "lesson 2+ gate shows 'What you know already' bridging from the PREVIOUS lesson (L1-bridge primer), not a restatement of the current lesson",
+      "implementation": "GateStage for moduleOrdinal>0 renders the previous module's authored key points (verbatim, capped at 3 with an honest '+N more' line) under 'From Lesson N: <prev title>'; the module's own authored opening moves to the intro slot under the lesson title (module 0 now ALSO shows its opening — strictly more authored-string reachability in the adaptive flow); module 0 keeps the authored lesson primer unchanged",
+      "honesty_law": "connective line is conditional on prevDone (gate rated AND checks answered — same moduleDone semantics as the R-7c honesty fix): walked -> 'You covered this in the last lesson — <title> builds on it.'; any-order entry -> 'This lesson builds on Lesson N — if any of that feels unfamiliar, it is a quick fill-in first.'",
+      "zero_synthesis": "bridge re-renders authored strings from the same pinned artifact; no content invented; no corpus/artifact writes"
+    },
+    "R-6_trajectory_chip_and_thumbs": {
+      "sme_mechanic": "'Review your progress' shows the confidence trajectory; feature-level helpfulness ask at lesson end",
+      "trajectory_chip": "TrajectoryChip renders 'Started <rating>' +, when recalibrated, 'Next time <rating>' — honest by construction: the recalibration-only law means the walked-in rating never changes, so the chip narrates started->next-time, never before->after; shown (a) inline in RecalibrateStage once a choice is written and (b) per-module on the FinishedView recap rows",
+      "helpfulness_ask": "FinishedView block 'Was this guided lesson helpful?' with Yes, helpful / Not really (ThumbsUp/ThumbsDown); answer persists as FlowState.feedback ('up'|'down') in the existing browser-local store (same STORAGE_PREFIX, v:1 unchanged — old persisted records load fine, field optional); acknowledgment copy discloses device-local storage",
+      "never_scored": "feedback is NOT part of moduleDone, engaged, or any count; zero-DB law held — no network call, no DB, no Vercel, no export path"
+    }
+  },
+  "files_changed": [
+    {
+      "path": "apps/hub/src/app/courses/[course]/guided-lessons/[noteId]/guided-flow.tsx",
+      "additions": 133,
+      "deletions": 9,
+      "summary": "R-4 GateStage bridge + prevDone prop; R-6 TrajectoryChip + RecalibrateStage chip + FinishedView per-module chips + feedback ask; FlowState.feedback optional; ThumbsDown import; header docstring updated"
+    }
+  ],
+  "untouched": ["page.tsx (R-2 deep links of record unchanged)", "guided-check.tsx", "corpus artifacts", "schemas", "DB (zero-DB law)"],
+  "gates": {
+    "eslint_targeted": "bunx eslint 'src/app/courses/[course]/guided-lessons/[noteId]/guided-flow.tsx' -> exit 0",
+    "build_hub": "bun run build:hub (verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles + next build) -> exit 0",
+    "ci_expected": "verify + hub (same lanes as #399/#401)"
+  },
+  "surface_walk_of_record": {
+    "surface": "production standalone, PORT 3200, HUB_CORPUS_STATIC_ORIGIN=http://127.0.0.1:3200 (self-fetch of /corpus/* — standalone ships public/ but not the content/ tree, the documented self-host gap the fetch plane exists for)",
+    "note": "rn_7Q8M9nVkr2FxCzxd 'Group 7 (Halogens)' — 3 lessons x 5 checks",
+    "script": "scripts/r4r6-surface-walk.sh (v2; v1 discarded after stage-machine mis-steps, corrected script is of record)",
+    "verified": [
+      "module-0 gate unchanged in structure: authored lesson primer under 'What you know already' + authored opening NOW also shown under the title",
+      "R-4 any-order honesty (fresh jump to L2, prevDone=false): bridge shows 'From Lesson 1: Physical properties of Group 7 elements' + 3 verbatim key points + '…and 2 more key points from that lesson.' + 'This lesson builds on Lesson 1 — if any of that feels unfamiliar, it is a quick fill-in first.'",
+      "R-4 walked path (seeded L1-complete, prevDone=true): same bridge, connective flips to 'You covered this in the last lesson — Predicting properties in Group 7 builds on it.'",
+      "R-6 recalibrate chip (L2, walked in Medium, recalibrated High): 'Your trajectory for this lesson: Started Medium → Next time High'",
+      "R-6 L3 gate bridge from L2 renders (3 verbatim key points + honest connective)",
+      "FinishedView: 'Lesson set complete'; per-module chips 'Started Medium | Started Medium | Started High' (L1 no recal -> started-only, L2 Medium→High, L3 High→Medium); helpfulness ask 'Was this guided lesson helpful?' with Yes/Not really",
+      "thumbs: 'Yes, helpful' -> 'Thanks — glad it helped. Your answer stays on this device.'; localStorage FlowState.feedback === 'up' (browser-local, zero-DB)",
+      "R-2 'Keep going' handoffs intact on the finished view (Exam questions / Flashcards)"
+    ],
+    "evidence": [
+      "download/r4-r6-evidence-20261027/01-module0-gate-with-opening.png",
+      "download/r4-r6-evidence-20261027/02-r4-bridge-anystore-honest.png",
+      "download/r4-r6-evidence-20261027/03-r4-bridge-prevdone-true.png",
+      "download/r4-r6-evidence-20261027/04-r6-trajectory-chip-recalibrate.png",
+      "download/r4-r6-evidence-20261027/05-r4-bridge-l3-from-l2.png",
+      "download/r4-r6-evidence-20261027/06-r6-finished-chips-and-thumbs.png",
+      "download/r4-r6-evidence-20261027/07-r6-thumbs-acknowledged.png"
+    ]
+  },
+  "lane_discipline": "zero-DB, zero Vercel calls, no corpus/schema writes (apps/hub/src UI only), additive-only, token env-only and never echoed, fetch-first branch cut off origin/main d829a526, lane does not self-merge (AGENT_BRIEFING §4.7) — awaiting integrator/operator merge",
+  "register_state_after": {
+    "R-4": "DONE (this PR)",
+    "R-6": "DONE (this PR)",
+    "register": "R-1..R-7c ALL DONE — the SME comparison register is fully executed"
+  }
+}

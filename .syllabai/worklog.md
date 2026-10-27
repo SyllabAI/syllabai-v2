@@ -21474,3 +21474,19 @@ Work Log:
 
 Stage Summary:
 - Deep-water wave landed on branch r7a-pp-deepwater-011: currency fake-math class KILLED fleet-wide, furniture class KILLED, the worst set (2019-06 02R) rebuilt eyes-on end-to-end, figure coverage 363->562 assets (+199, of which 71 verified-reuse), marks law and structure untouched (6600==6600), all gates green. Open queue: matrixish/unit-sup slices + 64 no-crop parts + 213 review:true crops awaiting fleet verdicts (fleet-health check first). SECURITY: both PATs still unrotated.
+
+---
+Task ID: ROUND-R4-R6-20261027
+Agent: w0a (Super Z, zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b)
+Task: Operator trace 1a17c31b18dcd8ad verbatim "R-4 and R-6 proceed" — implement the last two open items of the SME-flow comparison register (R-4 prerequisite-bridge primer; R-6 trajectory chip + helpfulness ask) on the hub guided-lesson flow.
+
+Work Log:
+- RE-GROUND fetch-first off origin/main d829a526 (post-#401/#402/#403/#404) into worktree branch w0a/r4-r6-primer-trajectory; local sandbox had recycled (worklog + download receipts truncated to the 20261026 snapshot) — remote arbitration of record used; main-lane re-anchor logged as ROUND-RECYCLE-RECOVERY-20261027.
+- R-4: GateStage for lessons 2+ now bridges from the PREVIOUS module's authored key points (verbatim, cap 3 + honest "+N more" line) under "From Lesson N: <prev title>"; module's own authored opening moves to the intro slot under the title; module 0 keeps the authored primer (and also gains its opening — strictly more authored-string reachability). Connective line conditional on prevDone (R-7c moduleDone semantics): walked -> "You covered this in the last lesson…"; any-order -> "This lesson builds on Lesson N…". Zero synthesis — same pinned artifact only.
+- R-6: TrajectoryChip ("Started X" +, when recalibrated, "Next time Y" — recalibration-only law keeps it honest, never "before → after") rendered inline in RecalibrateStage and per-module on FinishedView recap rows; helpfulness ask on FinishedView ("Was this guided lesson helpful?" Yes, helpful / Not really) persisted as FlowState.feedback ('up'|'down') in the existing browser-local store (STORAGE_PREFIX + v:1 unchanged; old records load fine — optional field); never scored, never exported (moduleDone/engaged untouched; zero-DB law).
+- GATES: targeted eslint on guided-flow.tsx exit 0; bun run build:hub exit 0 (corpus-verify trio + next build). +133/−9, guided-flow.tsx only; page.tsx / guided-check.tsx / corpus / schemas untouched.
+- SURFACE WALK (production standalone, PORT 3200, HUB_CORPUS_STATIC_ORIGIN self-fetch; rn_7Q8M9nVkr2FxCzxd, 3 lessons): module-0 gate primer + opening verified; R-4 bridge verified on BOTH honesty branches (fresh any-order jump → "quick fill-in" line; seeded walked-in state → "You covered this in the last lesson"); trajectory chip verified live ("Your trajectory for this lesson: Started Medium → Next time High"); FinishedView per-module chips "Started Medium | Started Medium | Started High"; thumbs ask → acknowledgment → localStorage feedback 'up'; R-2 handoffs intact. 7 screenshots -> download/r4-r6-evidence-20261027/. Walk script v1 discarded (stage-machine mis-steps), corrected scripts/r4r6-surface-walk.sh is of record.
+- Lane discipline: zero DB, zero Vercel calls, no corpus/schema writes, token env-only never echoed; lane does not self-merge — branch pushed, PR opened, awaiting integrator/operator merge.
+
+Stage Summary:
+- R-4 + R-6 IMPLEMENTED AND PR'd OF RECORD: the SME-flow comparison register (R-1..R-6 + R-7c) is now fully executed pending merge. Receipt .syllabai/receipts/HUB-R4-R6/r4-r6-implementation-receipt-20261027.json (+ local mirror). Evidence download/r4-r6-evidence-20261027/ (7 PNGs).
