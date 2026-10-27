@@ -47,6 +47,8 @@ import type { ChapterLesson, LessonGlossaryEntry, LessonSectionServed } from "@/
 import { parseLessonSegments, rewriteGlossaryChips } from "@/lib/lesson-markdown";
 import { Markdown } from "@/components/markdown";
 import { LessonInteractive } from "@/components/books/lesson/lesson-interactive";
+import { LessonProgressTracker } from "@/components/books/lesson/lesson-progress";
+import { maxOrdOf } from "@/lib/books-progress-shared";
 
 const BOX_STYLES: Record<
   string,
@@ -173,6 +175,7 @@ function SectionBlock({
   blocks,
   docId,
   railChapterKey,
+  progressIdx,
 }: {
   section: LessonSectionServed;
   glossary: LessonGlossaryEntry[];
@@ -186,11 +189,17 @@ function SectionBlock({
   blocks?: RailBlock[];
   docId: string;
   railChapterKey: string | null;
+  /** T-BOOK-067 — this section's index in the progress tracker's stream. */
+  progressIdx: number;
 }) {
   const md = section.markdown ?? "";
   const segments = md ? parseLessonSegments(md) : [];
   return (
-    <section id={section.id.replace(/:/g, "-")} className="scroll-mt-16 border-t py-6 first:border-t-0">
+    <section
+      id={section.id.replace(/:/g, "-")}
+      data-progress-idx={progressIdx}
+      className="scroll-mt-16 border-t py-6 first:border-t-0"
+    >
       <div className="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <h2 className="text-xl font-semibold tracking-tight">{section.title}</h2>
         {section.bookPage != null && (
@@ -259,6 +268,15 @@ export function LessonView({
   railChapterKey?: string | null;
 }) {
   const { pack, glossary } = lesson;
+  // T-BOOK-067 — the progress tracker's section stream: DOM ids (dash-form)
+  // plus each section's max joined block ord; the honest extras stream joins
+  // as a final anchored section when present.
+  const progressSections = [
+    ...pack.sections.map((s) => ({ id: s.id.replace(/:/g, "-"), ord: maxOrdOf(blocksBySection?.[s.id]) })),
+    ...(extraBlocks != null && extraBlocks.length > 0
+      ? [{ id: "lesson-extras", ord: maxOrdOf(extraBlocks) }]
+      : []),
+  ];
   return (
     <div className="mx-auto flex max-w-6xl gap-8 px-4 pb-16 pt-4">
       <aside className="sticky top-14 hidden h-[calc(100dvh-5rem)] w-56 shrink-0 overflow-y-auto lg:block">
@@ -276,6 +294,13 @@ export function LessonView({
             </a>
           ))}
         </nav>
+        {railChapterKey != null && (
+          <LessonProgressTracker
+            documentId={docId}
+            railChapterKey={railChapterKey}
+            sections={progressSections}
+          />
+        )}
       </aside>
       <article className="min-w-0 flex-1">
         <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm">
@@ -307,7 +332,7 @@ export function LessonView({
           </div>
         )}
         <div className="mt-2">
-          {pack.sections.map((s) => (
+          {pack.sections.map((s, i) => (
             <SectionBlock
               key={s.id}
               section={s}
@@ -320,11 +345,12 @@ export function LessonView({
               blocks={blocksBySection?.[s.id]}
               docId={docId}
               railChapterKey={railChapterKey ?? null}
+              progressIdx={i}
             />
           ))}
         </div>
         {extraBlocks != null && extraBlocks.length > 0 && railChapterKey != null && (
-          <section className="mt-2 border-t py-6">
+          <section id="lesson-extras" data-progress-idx={pack.sections.length} className="mt-2 scroll-mt-16 border-t py-6">
             <h2 className="mb-1 text-xl font-semibold tracking-tight">Interactive extras</h2>
             <p className="mb-3 text-[13px] text-muted-foreground">
               Interactive elements for this chapter without a spec-anchored section — honest placement, never dropped.

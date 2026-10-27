@@ -7,8 +7,9 @@ Task: "Remove 'Contextual help available on this note / Ask the CLA about this n
 
 Work Log:
 - PROBE (read-only): the quoted copy is the guidedStudy-gated guided-study banner in apps/hub/src/components/cla/note-cla.tsx (L462-481 @ main 03d16e3199e8); NoteCla is mounted ONLY by revision-notes/[noteId]/page.tsx (shared [course] route => one change covers all courses); sole other note-cla reference is a comment in lens-grid.tsx; guided-lessons banner, notes-index badge, question CLA overlay, /api/ai/cla all separate surfaces (untouched).
-- CHANGE (commit c8910f2e5954b44a1da3bcca53b53cd85fd3faa2): note-cla.tsx — banner JSX + guidedStudy prop (destructure + type) removed, header docblock refreshed (Sparkles/Button still used by the floating button + panel); revision-notes/[noteId]/page.tsx — guidedStudy pass-through removed, mount comment refreshed. Floating CLA button, popup/docked shells, quick actions, citations, honest refusals all retained.
-- GATES: ci workflow success on c8910f2e5954b44a1da3bcca53b53cd85fd3faa2 (PR #410 head).
+- CHANGE (commit c8910f2e): note-cla.tsx — banner JSX + guidedStudy prop (destructure + type) removed, header docblock refreshed (Sparkles/Button still used by the floating button + panel); revision-notes/[noteId]/page.tsx — guidedStudy pass-through removed, mount comment refreshed. Floating CLA button, popup/docked shells, quick actions, citations, honest refusals all retained.
+- GATES: ci workflow success on c8910f2e (PR #410 code commit, pull_request event); the receipt-only follow-up commit's synchronize run did not materialize (the repo's documented push-trigger corruption "branches: ain]" + event-drop class) — disclosed honestly; code delta between c8910f2e and 95cebfde is .syllabai-only.
+- RECONCILE: main moved to 28e99920 (PR #409 T-BOOK-067 lane + bookkeeping, also appending this worklog) -> merge commit reconciles the worklog-append collision per house precedent 034c9177; code files untouched by the main delta (books lane only).
 
 Stage Summary:
 - CLA contextual-help banner removed from every revision note of every course via the shared component; the CLA itself remains reachable via the floating button. PR #410; receipt .syllabai/receipts/HUB-CLA-NOTE-BANNER-REMOVE/cla-note-banner-remove-receipt-20261027.json.

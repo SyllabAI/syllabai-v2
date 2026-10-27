@@ -1,0 +1,17 @@
+{
+  "receipt": "T-BOOK-068/reflip-r4-rebuild-r1",
+  "date": "2026-10-27",
+  "trace": "1a17e0f21845ef89",
+  "task": "T-BOOK-068 glossary re-flip (112 terms SUGGESTED → VALIDATED)",
+  "state": "BLOCKED_ON_CREDENTIAL — tool rebuilt and authored-verified; DB execution requires the Neon MAIN pooler of record (env-only hand, per law)",
+  "tool": {
+    "path": "apps/api/scripts/session/glossary-reflip-r4.mts (rebuilt r4; the pre-rollback r4 was destroyed with commit 5c60f5bb)",
+    "modes": ["--check", "--commit", "--idempotence"],
+    "authored_check_today": "112 terms / 0 V-law problems (kebab slugs, ms layer bilateral, definitions >= 40, no duplicate slugs)",
+    "credential_refusal": "the script refuses to run against a non-Neon DATABASE_URL (local placeholder detected) — honest block, no writes attempted"
+  },
+  "root_cause_of_record": "r3 flipped 112/112 at 2026-10-21T20:02Z; NEON-DB-LOSS restore (dump predating the flip) regressed the rows; ingest upsert never resets validation_state → restore is the only self-consistent vector (carried from the r0 receipt of record)",
+  "serve_impact_today": "students see ZERO glossary terms for 4ch1 until the flip lands (VALIDATED-only serving law, ADR-BOOK-0001 §5)",
+  "execution_recipe": "DATABASE_URL=<Neon MAIN pooler> bun apps/api/scripts/session/glossary-reflip-r4.mts --check → --commit → --idempotence (guards: census {SUGGESTED:112,VALIDATED:0} exact; blocks total 178; rowcount 112; post census {SUGGESTED:0,VALIDATED:112})",
+  "system_change_candidate": "PR the flip car into apps/api/scripts/books/ (tracked) — twice lost to rollbacks session-side; operator ruling requested"
+}
