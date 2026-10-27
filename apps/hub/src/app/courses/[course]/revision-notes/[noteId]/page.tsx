@@ -104,17 +104,17 @@ export default async function NoteReaderPage({
             </div>
           </header>
 
-          {/* contextual help (CLA) — the note-anchored assistant. The guided-
-              study banner (SME anatomy) and the floating CLA button both open
-              the SAME overlay: asking about THIS note is the CLA's job now;
-              the free Tutor stays in the nav for whole-corpus questions */}
+          {/* contextual help (CLA) — the note-anchored assistant. The floating
+              CLA button opens the overlay (the guided-study banner was removed
+              by operator order, trace 1a17e7377a2d447d): asking about THIS
+              note is the CLA's job now; the free Tutor stays in the nav for
+              whole-corpus questions */}
           <NoteCla
             course={meta.slug}
             noteId={note.noteId}
             noteTitle={note.title}
             specPointCodes={note.specPointCodes}
             subtopicTitle={subtopic?.title ?? null}
-            guidedStudy={note.guidedStudy}
           />
 
           {/* Guided-lesson banner — the integration surface for notes that
