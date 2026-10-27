@@ -1,0 +1,113 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-g3-cie0455-corpus-r0",
+ "date": "2026-10-27",
+ "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+ "trace_id": "1a17e8adb7ce8275",
+ "operator_order": "\"proceed with G-3 (CIE corpus) meanwhile\" (trace 1a17e8adb7ce8275), on the G-7 fail-closed exit of record 4842fdb9",
+ "gate": "G-3 of the adr040-g4-levels-birth-r1 gates table — the CIE 0455 P2 corpus: fetch the missing 2021-2026 sessions, resolve the s20/m20 0-entry anomaly, run the full parser pass the wave-1 receipt deferred, close the detection-grade reviewRequired tranche",
+ "state_found_read_only": {
+  "pastpapers_0455_holdings": "20 dirs, sessions 2018-06..2020-11 only (PRs #5/#6); no sessions after 2020-11 anywhere on main (tree-walked at tip 1e61bb8e post-ER-wave)",
+  "v2_staged_tranche": "20 detection-grade drafts, reviewRequired=true, w20 trio only band-bearing (12 entries/36 bands), s20/m20 0 entries (anomaly)",
+  "kg_trees": "0455-2023-2025 + 0455-2027-2029 seeded (G-2) — the corpus must cover the 2023-2025 tree"
+ },
+ "fetch_of_record": {
+  "targets_probed": 84,
+  "fetched_and_verified": 66,
+  "complete_paper_dirs": 33,
+  "sessions": "2021-03..2026-06 (13 session dirs; every dir complete QP+MS)",
+  "source": "XtremePapers CAIE direct file URLs (papers.xtremepape.rs) — directory listings bot-blocked 403, file GETs clean; the wave-1 source of record",
+  "parity_anchors": "0455_s20_ms_21 be1ee4f5..., 0455_w20_ms_21 af6fdee1..., 0455_w20_ms_22 81b4a829... — ALL byte-identical to the wave-1 of-record bytes",
+  "identity_checks": "66/66 PDF magic + page count + printed page-1 identity (code, P2 component, year, MARK SCHEME / QUESTION PAPER-Paper 2-Structured Questions wording) + full-text third-party-watermark scan clean",
+  "pairing": "33/33 printed code+component+year equality on both page 1s; one disclosed series variance (2021-03 MS 'March 2021' vs QP 'February/March 2021' — the of-record CIE March-cover convention)",
+  "gap_ledger": "6 dirs (w22 trio, m23/m24/m25 variant-22) exist publicly (mirror-probed 200/pdf on dynamicpapers) but the primary 404s exactly them and the alternates are watermarked (dynamicpapers) or WAF-blocked (bestexamhelp) — NOT fetched, no substitution (AGENT.md rule 2), follow-up wave of record; w26 not sat; s26 fetched complete (6 files)",
+  "landing": "SyllabAI/syllabai-pastpapers PR #7 @ b11c4834 (33 dirs + specification.yaml papers_present 20->53 + wave doc)"
+ },
+ "anomaly_resolution": "s20/m20 0-entry anomaly RESOLVED of record: their MS DO carry level tables — the header grammar is 'Level|Description|Marks' (B) vs the w20 trio's 'Level|Descriptors|Mark' (A); the wave-1 detection-grade grammar keyed only A. The G-3 parse handles both (+ grammar C) and s20 trio + m20 now parse 4/4 grids verbatim",
+ "parse_of_record": {
+  "engine": "textlayer-tables-adr040-g3-cie-r2 (deterministic PyMuPDF word-box parse; committed as adr040-g3-cie0455-corpus-r0.parse.py)",
+  "grammars": "A 'Level|Descriptors|Mark' side-table (w20 trio); B 'Level|Description|Marks' (2020+); C end-of-MS 'Guidance table for Question 2(d), 3(d), 4(d), 5(d)' bound via the printed per-part 'See Guidance table at the end' pointers (s24_ms_21)",
+  "mechanics": "marks read from the page-header Marks/Mark column x (2021+ layouts wrap guidance around the marks digit); label binding incl. same-row headers; cross-page continuation merge; headerless grid starts + headerless continuations (candidate digit columns, oracle-gated); trailing zero-row fragments (note, not error); marks_from_grid_tiling disclosed fallback (w24_22 5(d), w24_23 4(d) — label cell carries non-numeric guidance text, no marks digit printed); en-dash + U+F02D private-use dash normalization (2022-era embeds)",
+  "oracle": "fail-closed per grid: levels {3,2,1} exactly; L3max == printed part marks; L3min == L2max+1; L2min == L1max+1; non-blank descriptors",
+  "result": "53 papers parsed, 0 oracle failures: 159 verbatim band entries / 477 band rows (39 papers x 4 grids + 2022-06/0455-S22-QP-21 x 3 — its printed 4(d) is a 4-mark Explain part, variant-to-variant structural variance NOT a gap); 13 sessions 2018-06..2019-11 point-marked 0 band tables (negative evidence of record, now verbatim grade)",
+  "band_shape_audit": {
+   "papers": 53,
+   "band_bearing": 40,
+   "point_marked": [
+    "0455-S18-QP-21",
+    "0455-S18-QP-22",
+    "0455-S18-QP-23",
+    "0455-W18-QP-21",
+    "0455-W18-QP-22",
+    "0455-W18-QP-23",
+    "0455-M19-QP-22",
+    "0455-S19-QP-21",
+    "0455-S19-QP-22",
+    "0455-S19-QP-23",
+    "0455-W19-QP-21",
+    "0455-W19-QP-22",
+    "0455-W19-QP-23"
+   ],
+   "entries": 159,
+   "bands": 477,
+   "marks": [
+    8
+   ],
+   "levels": {
+    "(3, 2, 1)": 159
+   },
+   "spans": {
+    "8": 159
+   },
+   "tops": {
+    "8": 159
+   },
+   "bottoms": [
+    1
+   ],
+   "range_shapes": {
+    "6-8": 159,
+    "3-5": 159,
+    "1-2": 159
+   },
+   "desc_min": 43,
+   "desc_median": 298,
+   "desc_max": 548,
+   "tiling_violations": 0
+  },
+  "review_closure": "reviewRequired=false on all 53 drafts with reviewEvidence notes; verbatim cross-check vs the wave-1 staged w20 trio: ranges 12/12 equal, descriptors now row-exact (the staged tranche's L3 descriptors carried parse-bleed artifacts — next row's opening text appended; superseded)"
+ },
+ "sources_rejected_of_record": {
+  "dynamicpapers": "watermarked derivatives — 62/70 files stamped 'www.dynamicpapers.com'; parity anchor sha 7ebb39d3... != of-record be1ee4f5...; 0 landed bytes",
+  "bestexamhelp": "serves clean bytes (verified) but WAF-blocked the agent (403 + JS challenges); 0 files",
+  "pastpapers_co": "Cloudflare Turnstile rejected the headless pass; 0 files"
+ },
+ "landing": {
+  "pastpapers_pr": "SyllabAI/syllabai-pastpapers#7 @ b11c4834",
+  "v2_artifacts": "glm-ms-drafts/0455 replaced with the 53 verbatim-grade drafts (reviewRequired=false + reviewEvidence); cie_drafts_summary_g3.json (full-corpus state + audit + cross-checks); this receipt + the parser",
+  "worklog": ".syllabai/worklog.md appended (multi-agent law)"
+ },
+ "gates_now": {
+  "G-1": "CLOSED (Edexcel 62/62 + CIE 68/78 wave-1 + G-3 extension 66 files; 53 0455 dirs total)",
+  "G-2": "CLOSED 5/5",
+  "G-3": "CLOSED THIS RECEIPT — the CIE 0455 P2 corpus is fetch-complete for all available sessions (gap ledger w22/m23/m24/m25 follow-up wave), band tables verbatim-grade, review tranche closed; NOTE: 9609 C-grammar AO-matrix parse + its corpus remain the G-3 tail for the 9609 registry row (detection-only tranche stands)",
+  "G-4": "CLOSED (431 LEVELS schemes born part-bound) — CIE LEVELS birth (the G-4 mirror over this corpus) is the NEXT lane, unblocked",
+  "G-5": "CLOSED (431/431 VALIDATED)",
+  "G-6": "CLOSED (part-aware dispatch serving)",
+  "G-7": "CLOSED FAIL-CLOSED"
+ },
+ "findings_of_record": [
+  "F1 THE WAVE-1 ANOMALY WAS A GRAMMAR GAP, NOT ABSENCE: s20/m20 '0 entries' were Level|Description|Marks tables the detection-grade grammar did not key; the band story exists on every 2020+ session (and NOT on 2018-2019, which are genuinely point-marked)",
+  "F2 WATERMARK DERIVATIVE SOURCES ARE A LIVE CORPUS HAZARD: dynamicpapers serves re-written PDFs (stamped, sha-divergent); any future wave must run the full-text watermark scan + parity anchors before acceptance (the checks of record now include both)",
+  "F3 CIE MS TEMPLATE DRIFT IS REAL AND MULTI-AXIS: header wording (Descriptors/Mark vs Description/Marks), table placement (side vs below vs end-of-MS), marks-cell position (line-final vs column-x vs wrapped), dash encoding (U+2013 vs U+F02D private-use), split-table and headerless continuation styles — the parser of record handles all observed shapes; a new session may need a new grammar (fail-closed, never guessed)",
+  "F4 VARIANT-TO-VARIANT STRUCTURAL VARIANCE: 0455-S22-QP-21 prints a 4-mark Explain 4(d) where its siblings print an 8-mark Discuss — band coverage is per-printed-document, never per-variant-assumption",
+  "F5 THE 9609 TAIL REMAINS: this receipt closes the 0455 corpus; the 9609 C-grammar AO-matrix full parse (detection-only tranche stands) + any 9609 session extension are the remaining G-3 scope for the 9609 registry row"
+ ],
+ "unchanged": "core DB untouched (0 writes); evals stay 12; the 16-row census unchanged; no serving behavior changed",
+ "cross_refs": [
+  "SyllabAI/syllabai-pastpapers#7",
+  "SyllabAI/syllabai-pastpapers#5",
+  "SyllabAI/syllabai-pastpapers#6",
+  "SyllabAI/syllabai-v2#276"
+ ]
+}
