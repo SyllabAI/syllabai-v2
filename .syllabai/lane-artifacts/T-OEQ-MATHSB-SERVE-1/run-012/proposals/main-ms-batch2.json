@@ -1,0 +1,20 @@
+[
+ {
+  "pid": "offp_2020-01_01_18",
+  "field": "solutionMd",
+  "op": "full",
+  "replacement": "|p|² = x² + (2x−1)² and |q|² = (−9)² + 5² M1 Attempt at both moduli or both moduli squared (or equivalent)\n|p|=|q|⇒5x² − 4x − 105 (=0) M1 dep. Forming three term quadratic in x allow a maximum of 1 arithmetic or sign error\n(5x+21)(x-5)(=0) M1 dep. Factorising trinomial quadratic expression must expand to give 2 of 3 terms correct or completely correct substitution into a completely correct formula.\nx = −21/5 (oe) A1 Do not allow if x = 5 given and not rejected allow −4.2",
+  "verdict": "DEFECT",
+  "evidence": "202001_01_q18_p9_ms.png",
+  "note": "print: |p|²=x²+(2x−1)², |q|²=(−9)²+5², x=−21/5 (oe); \"(or 2 2 2 equivalent)\" was flattened \"(or equivalent)\"; MS-table furniture tail stripped; codes M1/M1/M1/A1 preserved"
+ },
+ {
+  "pid": "offp_2021-01_01r_26",
+  "field": "solutionMd",
+  "op": "full",
+  "replacement": "B1 for stating or working out that h = AC\nor AC = HC (may be seen in later working) [eg h = √(20a²)]\n[(AC)²] = (2a)² + (4a)² oe or\n(AC) = √(20a²) (= 2a√5) oe M1 for a correct statement for AC² or AC in terms of a\n[(BH)²] = (2a)² + h² oe or [BH] = √(4a² + h²) or M1 for a correct statement for BH² or BH in terms of a\n[BH] = (√(20a²)) ÷ (2√a) (= √5a) and/or h (ft their value for h) - may be seen in later working [must have correct brackets or correct expansions eg (2a)² or 4a²]\n[BH] = √(24a²) oe\neg (2√a)(√(h² + 4a²)) = √(20a²) or M1dep for a correct equation equating two expressions for AC using a correct expression for BH eg\n√(24a²) × (2√a) = 2a√5 oe (2√a)(√(h² + 4a²)) = √(20a²) or 4h² + 16a² = 20a or\n5a = 4a² + h² oe\nor Or a correct equation equating two expressions for BH eg\n√(24a²) = √5a\neg 96a² = 20a or 5a = 24a² oe or M1 for a correct two-term quadratic or linear equation in a\n24a = 5 oe\na = 5/24 A1 (0.208…)",
+  "verdict": "DEFECT",
+  "evidence": "202101_01R_q26_p18_ms.png",
+  "note": "print q26: √(20a²)=2a√5, √(4a²+h²), √(24a²), answer a=5/24; all radicals+superscripts restored per print; codes B1/M1/M1/M1dep/M1/A1 preserved"
+ }
+]

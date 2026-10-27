@@ -1,0 +1,74 @@
+[
+ {
+  "pid": "offp_2020-06_01r_17-a",
+  "field": "solutionMd",
+  "match": "2.34 ×10−2 B1",
+  "replacement": "2.34×10⁻² B1",
+  "verdict": "DEFECT",
+  "evidence": "202006_01R_q17_p9_ms.png + p13_qp.png (COVID resit identical)",
+  "note": "print shows 2.34×10^-2 superscript (MS p9 row 17a)"
+ },
+ {
+  "pid": "offp_2020-06_01r_17-b",
+  "field": "solutionMd",
+  "match": " © 0.5 ×10 199 or 5 ×10 n = 198 or 200 n M1 5 ×10198 A1",
+  "replacement": "",
+  "verdict": "DEFECT",
+  "evidence": "202006_01R_q17_p9_ms.png + p13_qp.png (COVID resit identical)",
+  "note": "© = printed part-label (c); rows are 17-c MS content leaked into 17-b; moved to 17-c proposal"
+ },
+ {
+  "pid": "offp_2020-06_01r_17-b",
+  "field": "problemMd",
+  "match": "Write 2.40 × 105 as an ordinary number.",
+  "replacement": "Write 2.40 × 10⁵ as an ordinary number.",
+  "verdict": "DEFECT",
+  "evidence": "202006_01R_q17_p9_ms.png + p13_qp.png (COVID resit identical)",
+  "note": "print shows 2.40×10^5 (QP p13 17b)"
+ },
+ {
+  "op": "append",
+  "pid": "offp_2020-06_01r_17-c",
+  "field": "solutionMd",
+  "text": "\n0.5×10¹⁹⁹ or 5×10ⁿ n = 198 or 200 M1\n5×10¹⁹⁸ A1",
+  "verdict": "DEFECT",
+  "evidence": "202006_01R_q17_p9_ms.png + p13_qp.png (COVID resit identical)",
+  "note": "restore of-record 17-c MS rows with codes moved from the 17-b leak (mark-code union preserved at question level)"
+ },
+ {
+  "pid": "offp_2020-11_01r_17-a",
+  "field": "solutionMd",
+  "match": "2.34 ×10−2 B1",
+  "replacement": "2.34×10⁻² B1",
+  "verdict": "DEFECT",
+  "evidence": "202011_01R_q17_p9_ms.png + p13_qp.png (COVID resit identical)",
+  "note": "print shows 2.34×10^-2 superscript (MS p9 row 17a)"
+ },
+ {
+  "pid": "offp_2020-11_01r_17-b",
+  "field": "solutionMd",
+  "match": " © 0.5 ×10 199 or 5 ×10 n = 198 or 200 n M1 5 ×10198 A1",
+  "replacement": "",
+  "verdict": "DEFECT",
+  "evidence": "202011_01R_q17_p9_ms.png + p13_qp.png (COVID resit identical)",
+  "note": "© = printed part-label (c); rows are 17-c MS content leaked into 17-b; moved to 17-c proposal"
+ },
+ {
+  "pid": "offp_2020-11_01r_17-b",
+  "field": "problemMd",
+  "match": "Write 2.40 × 105 as an ordinary number.",
+  "replacement": "Write 2.40 × 10⁵ as an ordinary number.",
+  "verdict": "DEFECT",
+  "evidence": "202011_01R_q17_p9_ms.png + p13_qp.png (COVID resit identical)",
+  "note": "print shows 2.40×10^5 (QP p13 17b)"
+ },
+ {
+  "op": "append",
+  "pid": "offp_2020-11_01r_17-c",
+  "field": "solutionMd",
+  "text": "\n0.5×10¹⁹⁹ or 5×10ⁿ n = 198 or 200 M1\n5×10¹⁹⁸ A1",
+  "verdict": "DEFECT",
+  "evidence": "202011_01R_q17_p9_ms.png + p13_qp.png (COVID resit identical)",
+  "note": "restore of-record 17-c MS rows with codes moved from the 17-b leak (mark-code union preserved at question level)"
+ }
+]
