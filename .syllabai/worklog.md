@@ -21582,3 +21582,20 @@ Work Log:
 Stage Summary:
 - Students currently see ZERO 4ch1 glossary terms (VALIDATED-only serving, ADR-BOOK-0001 §5) until the flip lands — one credential hand away: DATABASE_URL=<MAIN pooler> bun apps/api/scripts/session/glossary-reflip-r4.mts --check → --commit → --idempotence.
 - SYSTEM-CHANGE CANDIDATE (ruling requested): the flip car has been lost to rollbacks TWICE because it lives session-side — PR it into apps/api/scripts/books/ so it becomes tracked of-record.
+Task ID: T-BOOK-067/068 (continuation)
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a17e7169e166db5)
+Task: Credential hand landed (GitHub PAT + Vercel token + Neon API key + MAIN/W1 poolers, env-only) — push T-BOOK-067, execute the T-BOOK-068 flip.
+
+Work Log:
+- PAT verified first-hand (login SyllabAI). fetch-first: origin/main tip == 03d16e31 == the branch base (zero drift). Branch t-book-067/lesson-reading-progress PUSHED (7355159d feature + e378b23a + 34acf483 bookkeeping); PR of record #409 opened 2026-10-28; NOT self-merged (integrator lane — merge on operator order).
+- Credential inventory of the hand: vcp_ = Vercel API token (account syllabai-1403; identified, NOT used for any write); napi_ = Neon API key (UNUSABLE from this sandbox: api.neon.tech DNS fails — pooler direct connections do work); ghp_ + the two poolers used as described.
+- T-BOOK-068 --check on MAIN: REFUSED at the Neon proxy — "Your account or project has exceeded the quota. Upgrade your plan to increase limits." Flip NOT attempted; ZERO writes executed; all guards intact.
+- W1 negative probe: connected; relation "book_glossary_terms" does not exist → books tables live on MAIN only; the recipe's MAIN target is CONFIRMED; W1 correctly untouched.
+- Authored layer re-verified first-hand 2026-10-28: 112 terms / 0 V-law problems.
+- PRODUCTION IMPACT (first-hand probes): api-of-record books plane 500s — shelf (with courseId), glossary?subject=4ch1, document e6c0db50 all 500 while the api PROCESS is alive (400 validation on missing courseId; 401 health guard) → the platform DB plane is down while the quota refusal holds. Identity/learner-model share MAIN → auth/progress degradation expected (not probed; no junk logins against production auth).
+- Receipts of record: reflip-r4-check-r1.json (this commit, main); 068 yaml status → BLOCKED_ON_PLATFORM_QUOTA rides PR #409.
+
+Stage Summary:
+- T-BOOK-067: PR #409 of record — implementation-complete, walk-proven, gates green; awaiting operator merge.
+- T-BOOK-068: blocked on Neon MAIN quota (NOT on credentials anymore). Unblock = raise the Neon plan/compute limit (Neon console; control-plane api unreachable from sandbox) or wait for the monthly reset, then re-run the recipe --check → --commit → --idempotence. Students see ZERO 4ch1 glossary terms (and the books plane is down) until the quota is resolved.
+- Rotation list unchanged and still overdue: all chat-exposed secrets (PAT, Vercel token, Neon API key, pooler passwords).
