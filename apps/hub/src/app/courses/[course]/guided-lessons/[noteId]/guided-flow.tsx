@@ -8,7 +8,9 @@
  *
  *   ┌ gate ──────────────────────────────────────────────────────────┐
  *   │ "Tell us your confidence level against the key points"         │
- *   │ "What you know already" primer (lesson primer / module opening)│
+ *   │ "What you know already" primer — module 1: the authored lesson │
+ *   │ primer; later modules: the R-4 prerequisite bridge from the    │
+ *   │ PREVIOUS lesson's authored key points (SME L1-bridge parity)   │
  *   │ "Key points of understanding" bullets                          │
  *   │ Low / Medium / High radio — Continue DISABLED until a choice   │
  *   │ (gatePolicy.continueDisabledUntilChoice — import-blocking)     │
@@ -25,7 +27,10 @@
  *   → post-check recalibration (§6.4 + §8.2 deliberate extension): offer
  *     exactly one "re-rate for next time" that pre-selects the NEXT
  *     module's gate default — never a re-rate of the current module
- *     (resumeWithoutReRate law).
+ *     (resumeWithoutReRate law). The recalibration writes an R-6
+ *     trajectory chip ("started X → next time Y") echoed on the
+ *     set-complete recap, next to a browser-local helpfulness ask
+ *     (thumbs) — never scored, never exported (zero-DB law).
  *
  * WRITE-ONCE LAW: a rating is chosen once per module; a resumed session
  * restores it and must not re-prompt (the gate radio locks once written;
@@ -49,6 +54,7 @@ import {
   PenLine,
   RotateCcw,
   Sparkles,
+  ThumbsDown,
   ThumbsUp,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -77,6 +83,8 @@ interface FlowState {
   ratings: Record<string, Rating>;
   /** post-check recalibration ("re-rate for next time") per module id */
   recalibrated: Record<string, Rating>;
+  /** R-6 helpfulness ask at set end — browser-local only, never scored */
+  feedback?: "up" | "down";
   /** answers keyed by question id */
   answers: Record<string, { picked: string; correct: boolean }>;
   /** the whole lesson set is finished */
@@ -309,6 +317,11 @@ export function GuidedLessonFlow({
   const doneCount = modules.filter((_, i) => moduleDone(i)).length;
   const prevRecalibrated =
     moduleIndex > 0 ? state.recalibrated[modules[moduleIndex - 1].id] : undefined;
+  /** R-4 honesty input: did the learner actually walk the previous lesson?
+   *  The bridge always shows the previous lesson's key points (they are the
+   *  prerequisite), but the connective line only says "you covered this"
+   *  when that is true — same honesty law as the R-7c moduleDone fix. */
+  const prevDone = moduleIndex > 0 ? moduleDone(moduleIndex - 1) : false;
 
   // R-7c hybrid (SME concept-picker delta of record 2026-10-27): the set
   // card leads with gap-first copy on entry ("which concept don't you
@@ -345,6 +358,9 @@ export function GuidedLessonFlow({
         examQuestionsHref={examQuestionsHref}
         flashcardsHref={flashcardsHref}
         onReview={(mi) => store.set((s) => ({ ...s, moduleIndex: mi, stage: 0, finished: false }))}
+        onFeedback={(fb) =>
+          store.set((s) => (s.feedback === fb ? s : { ...s, feedback: fb }))
+        }
         onReset={reset}
       />
     );
@@ -489,6 +505,7 @@ export function GuidedLessonFlow({
         state={state}
         rating={rating}
         prevRecalibrated={prevRecalibrated}
+        prevDone={prevDone}
         recalChoice={recalChoice[m.id]}
         onRecalChoice={(r) => setRecalChoice((c) => ({ ...c, [m.id]: r }))}
         onChooseRating={chooseRating}
@@ -513,6 +530,8 @@ interface StageProps {
   rating: Rating | undefined;
   /** the previous module's "re-rate for next time" — pre-selects this gate */
   prevRecalibrated: Rating | undefined;
+  /** R-4: whether the learner actually walked the previous lesson */
+  prevDone: boolean;
   /** the current module's post-check recalibration choice, pre-continue */
   recalChoice: Rating | undefined;
   onRecalChoice: (r: Rating) => void;
@@ -542,15 +561,23 @@ function StageView(p: StageProps) {
 }
 
 function GateStage(p: StageProps) {
-  const { module: m, lesson, moduleOrdinal, state, rating, prevRecalibrated, onChooseRating, onNext } = p;
+  const { module: m, lesson, moduleOrdinal, state, rating, prevRecalibrated, prevDone, onChooseRating, onNext } = p;
   // pre-selection from the previous module's recalibration is visual only —
   // the write-once rating happens on the learner's explicit radio click
   const selected = rating ?? prevRecalibrated ?? null;
   const written = rating !== undefined;
   const disabled = m.gatePolicy.continueDisabledUntilChoice && rating === undefined;
-  // SME primer derivation: module 1 uses the lesson primer; later modules
-  // chain from the authored opening (research §3.2)
-  const primer = moduleOrdinal === 0 ? lesson.lesson.primer.text : m.opening;
+  // R-4 prerequisite bridge (operator trace 1a17c31b18dcd8ad, SME L1-bridge
+  // parity): module 1 keeps the authored lesson primer; later modules bridge
+  // from the PREVIOUS lesson's authored key points — the prerequisite the
+  // learner "knows already" — instead of announcing this lesson's own
+  // opening twice. Nothing is synthesised: the bridge re-renders authored
+  // strings from the same pinned artifact (capped at 3 to keep the gate
+  // light), and the connective line stays honest about whether the learner
+  // actually walked that lesson (any-order entry, R-7c honesty law).
+  const prev = moduleOrdinal > 0 ? lesson.lesson.modules[moduleOrdinal - 1] : null;
+  const prevKeyPoints = prev ? prev.keyPoints.slice(0, 3) : [];
+  const prevRest = prev ? prev.keyPoints.length - prevKeyPoints.length : 0;
   const resumed = Object.keys(state.answers).length > 0;
   return (
     <Card>
@@ -560,11 +587,42 @@ function GateStage(p: StageProps) {
             Lesson {moduleOrdinal + 1} of {p.moduleCount}
           </p>
           <h2 className="text-lg font-semibold tracking-tight">{m.title}</h2>
+          <p className="text-[13px] leading-relaxed text-muted-foreground">{m.opening}</p>
         </div>
 
-        <div className="space-y-1.5">
+        <div className="space-y-2">
           <p className="text-sm font-medium">What you know already</p>
-          <p className="text-[13px] leading-relaxed text-muted-foreground">{primer}</p>
+          {moduleOrdinal === 0 ? (
+            <p className="text-[13px] leading-relaxed text-muted-foreground">
+              {lesson.lesson.primer.text}
+            </p>
+          ) : (
+            prev && (
+              <div className="space-y-2 rounded-md border bg-muted/30 px-3 py-2.5">
+                <p className="text-xs font-semibold text-muted-foreground">
+                  From Lesson {moduleOrdinal}: {prev.title}
+                </p>
+                <ul className="space-y-1.5">
+                  {prevKeyPoints.map((kp, i) => (
+                    <li key={i} className="flex gap-2.5 text-[13px] leading-relaxed">
+                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary/60" aria-hidden />
+                      <span>{kp}</span>
+                    </li>
+                  ))}
+                </ul>
+                {prevRest > 0 && (
+                  <p className="text-xs text-muted-foreground">
+                    …and {prevRest} more key point{prevRest === 1 ? "" : "s"} from that lesson.
+                  </p>
+                )}
+                <p className="text-xs text-muted-foreground">
+                  {prevDone
+                    ? `You covered this in the last lesson — ${m.title} builds on it.`
+                    : `This lesson builds on Lesson ${moduleOrdinal} — if any of that feels unfamiliar, it is a quick fill-in first.`}
+                </p>
+              </div>
+            )
+          )}
         </div>
 
         <div className="space-y-2">
@@ -884,8 +942,36 @@ function RecalibrateStage(p: StageProps) {
             next time.
           </p>
         </div>
+        {p.state.recalibrated[m.id] && rating && (
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="text-xs text-muted-foreground">Your trajectory for this lesson:</p>
+            <TrajectoryChip from={rating} to={p.state.recalibrated[m.id]} />
+          </div>
+        )}
       </CardContent>
     </Card>
+  );
+}
+
+/**
+ * R-6 confidence-trajectory chip (operator trace 1a17c31b18dcd8ad, SME
+ * "Review your progress" trajectory parity): the rating the learner walked
+ * in with, and — when they recalibrated — the default they set for next
+ * time. Honest by construction: the recalibration-only law means the
+ * walked-in rating never changes, so the chip narrates "started → next
+ * time", never "before → after".
+ */
+function TrajectoryChip({ from, to }: { from: Rating; to?: Rating }) {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-full border bg-muted/40 px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+      Started {RATING_LABEL[from]}
+      {to && (
+        <>
+          <ArrowRight className="size-3" aria-hidden />
+          Next time {RATING_LABEL[to]}
+        </>
+      )}
+    </span>
   );
 }
 
@@ -1008,6 +1094,7 @@ function FinishedView({
   examQuestionsHref,
   flashcardsHref,
   onReview,
+  onFeedback,
   onReset,
 }: {
   modules: GuidedModule[];
@@ -1020,6 +1107,7 @@ function FinishedView({
   examQuestionsHref: string;
   flashcardsHref: string;
   onReview: (mi: number) => void;
+  onFeedback: (fb: "up" | "down") => void;
   onReset: () => void;
 }) {
   return (
@@ -1039,10 +1127,20 @@ function FinishedView({
         <ol className="space-y-2">
           {modules.map((mod, mi) => {
             const correct = mod.checkRefs.filter((r) => state.answers[r]?.correct).length;
+            const walkedIn = state.ratings[mod.id];
+            const recal = state.recalibrated[mod.id];
             return (
               <li key={mod.id} className="flex items-center gap-3 rounded-md border px-3 py-2.5">
                 <Check className="size-4 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
-                <span className="min-w-0 flex-1 text-[13px] font-medium">{mod.title}</span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-[13px] font-medium">{mod.title}</span>
+                  {/* R-6: the confidence trajectory this lesson actually had */}
+                  {walkedIn && (
+                    <span className="mt-1 block">
+                      <TrajectoryChip from={walkedIn} to={recal} />
+                    </span>
+                  )}
+                </span>
                 <span className="shrink-0 text-xs text-muted-foreground">
                   {correct}/{mod.checkRefs.length} checks
                 </span>
@@ -1053,6 +1151,32 @@ function FinishedView({
             );
           })}
         </ol>
+        {/* R-6 helpfulness ask (SME parity, operator trace 1a17c31b18dcd8ad):
+            browser-local only — the zero-DB law means there is no server to
+            receive it; the answer persists with the lesson's local flow
+            state, is never scored (moduleDone untouched) and never leaves
+            the device. */}
+        <div className="space-y-2 border-t pt-4">
+          <p className="text-sm font-semibold">Was this guided lesson helpful?</p>
+          {state.feedback ? (
+            <p className="text-[13px] text-muted-foreground" role="status">
+              {state.feedback === "up"
+                ? "Thanks — glad it helped. Your answer stays on this device."
+                : "Thanks — noted. Your answer stays on this device."}
+            </p>
+          ) : (
+            <div className="flex flex-wrap gap-2">
+              <Button variant="outline" size="sm" onClick={() => onFeedback("up")}>
+                <ThumbsUp className="size-3.5" aria-hidden />
+                Yes, helpful
+              </Button>
+              <Button variant="ghost" size="sm" onClick={() => onFeedback("down")}>
+                <ThumbsDown className="size-3.5" aria-hidden />
+                Not really
+              </Button>
+            </div>
+          )}
+        </div>
         {/* R-2 lesson-end handoffs (SME parity, operator trace
             1a179c6b53bff529; per-topic deep links per operator trace
             1a179e73fc75e881): the set ends into the course's live practice
