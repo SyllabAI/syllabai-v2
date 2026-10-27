@@ -21632,3 +21632,16 @@ Stage Summary:
 - T-BOOK-067 MERGED (28e99920) — merge receipt .syllabai/receipts/T-BOOK-067/merge-of-record.json.
 - T-BOOK-068 flip car becomes TRACKED of-record (rollback-proof); execution still awaits the Neon MAIN quota fix, recipe unchanged.
 - Rotation list unchanged: all chat-exposed secrets still overdue for rotation.
+
+---
+Task ID: PASTPAPERS pp-interactive-gate liveverify-r1 (operator order "verify it live", trace 1a17e8c682dfbaf5)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Verify the OFFICIAL-PLANE-ONLY Interactive gate live on production after the transit-44 deploy.
+
+Work Log:
+- Deploy currency: Vercel status on 5d75cdd7 = success (deployment 9CBjZMVY…), CI hub + verify check-runs both success. First two page fetches served stale CDN copies; cache-busted URLs (?cb=20261028gate) proved the new build is serving — method note for future live checks.
+- SIX LEGS, ALL PASS: (1) econ-25 past-papers — Interactive reconstructions section ABSENT, honest empty state, zero 0455 rows; (2) 4CH1 past-papers — badge "96 papers · 33 sessions · 54 interactive" (official-only count; pre-gate ~103 mixed), coverage chips 9/9 10/10 on official papers, PDF archive intact incl Specimen; (3) econ-25 pseudo key nov-2020-0455-12 -> 404; (4) 4CH1 official key january-2020-4ch1-1c -> live player rendering questions; (5) econ-25 course-home card — the false "15 papers · 372 questions held" promise GONE, honest archive/roadmap copy, no count label; (6) Exam Questions surface UNTOUCHED — 625 questions / 36 sets byte-matching the pre-gate bank census.
+- Receipt .syllabai/receipts/PASTPAPERS/pp-interactive-gate-liveverify-r1.json. Bookkeeping-only .syllabai/**; fetch-first (rebased onto 7b0073e5 — fleet kept moving: PR #411 4MB1 run merge); no force.
+
+Stage Summary:
+- The gate is LIVE and truthful: playable = officially parsed (4CH1/4MB1/4PH1), unparsed courses show the PDF archive + honest roadmap states, direct pseudo-paper URLs are dead, Exam Questions stands alone unchanged. PAT rotation CRITICAL-OVERDUE (fingerprint through 44 + this bookkeeping push).
