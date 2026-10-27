@@ -21533,3 +21533,17 @@ Stage Summary:
 - The Lesson is now the integrated surface: read + watch + practice in one flow, fleet-wide (178/178 VALIDATED blocks) without waiting on pack authoring; authored placement stays the override of record.
 - Branch t-book-026/lesson-flow-integration; PR pending (not self-merged — integrator lane).
 - Follow-ups disclosed: lesson-side chapter_progress (deliberate non-goal); finer authored placement via blockIds is a pack-bytes task, no code needed.
+
+---
+Task ID: T-BOOK-026-merge (run-0 merge of record)
+Agent: main agent (zai-web session web-c414c074, chat 08b3170a; operator trace 1a17cd91ee63244d "merge #408")
+
+Work Log:
+- Pre-merge admission gates ALL GREEN: PR #408 mergeable=true / mergeable_state=clean; head c56b4083 CI hub:success + verify:success; 0 reviews (no REQUEST_CHANGES/HOLD/BLOCKING).
+- MERGED on operator order: PUT merge_method=merge -> merge commit 74fc7da0 ("fe6ae6d6..74fc7da0 main -> origin/main").
+- Post-merge verification: main tip 74fc7da0 CI hub:success + verify:success (checked first-hand ~100s after merge); local main synced to tip.
+
+Stage Summary:
+- T-BOOK-026 (lesson-flow integration + video-first media-embed, ADR-BOOK-0003) is now ON MAIN of record: the Lesson surface renders ALL rail blocks inline (authored blockIds win, derived spec-fill fleet-wide, honest extras) and the youtube-nocookie player plays inside the lesson with the Watch-on-YouTube link (provider CTA removed).
+- GO-LIVE NOTE: the merge lands the CODE on main; the student-visible rollout completes when the hub serving plane next deploys (hub bake lane / deploy lever — watch the next hub bake for the BUILD_UTILS_SPAWN_1 failure class historically seen on auto-bake).
+- Bookkeeping-only .syllabai/**, fetch-first, no force.
