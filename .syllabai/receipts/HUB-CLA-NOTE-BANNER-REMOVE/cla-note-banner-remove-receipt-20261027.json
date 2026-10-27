@@ -1,0 +1,46 @@
+{
+  "receipt": "cla-note-banner-remove-receipt-20261027",
+  "round": "ROUND-CLA-BLOCK-REMOVE-20261027",
+  "operator_trace": "1a17e7377a2d447d",
+  "operator_instruction_verbatim": "Remove \"Contextual help available on this note\n\nAsk the CLA about this note — answers are grounded in this note with citations, and it says so when the note doesn't cover your question.\" from all revision notes of all courses",
+  "generated_at_utc": "2026-10-27T17:52:33.553Z",
+  "lane": "HUB-CLA-NOTE-BANNER-REMOVE",
+  "base_head": "03d16e3199e89822f80e5b93611d187131e70d29",
+  "pr": {
+    "number": 410,
+    "url": "https://github.com/SyllabAI/syllabai-v2/pull/410",
+    "code_commit": "c8910f2e5954b44a1da3bcca53b53cd85fd3faa2"
+  },
+  "scope": {
+    "interpretation": "the quoted copy is the guidedStudy-gated guided-study banner card in components/cla/note-cla.tsx (icon + title + body + \"Ask about this\" CTA); the ENTIRE banner card is removed; the CLA product (floating button, popup/docked shells, quick actions, citations, honest refusals, /api/ai/cla) is retained",
+    "files_changed": [
+      "apps/hub/src/components/cla/note-cla.tsx (banner JSX + guidedStudy prop removed; docblock refreshed)",
+      "apps/hub/src/app/courses/[course]/revision-notes/[noteId]/page.tsx (guidedStudy pass-through removed; mount comment refreshed)"
+    ],
+    "mount_audit": "NoteCla referenced only by revision-notes/[noteId]/page.tsx (mount) and lens-grid.tsx (comment); shared [course] route => all courses at once",
+    "residual_check": "zero occurrences of \"Contextual help available\" / \"Ask the CLA about this note\" / guidedStudy in both changed files"
+  },
+  "untouched": [
+    "guided-lessons banner (\"Guided lessons are live for this note\" / \"Start guided lesson\")",
+    "notes-index \"guided lesson\" badge + R-1/R-5 course card + R-4 primer + R-6 trajectory chip",
+    "question CLA overlay (question-cla-overlay) and its threads",
+    "/api/ai/cla route (server-side scope gate)",
+    "lens registry + lens-grid cards"
+  ],
+  "gates": {
+    "ci_on_code_commit": [
+      {
+        "name": "ci",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/SyllabAI/syllabai-v2/actions/runs/40554084274"
+      }
+    ],
+    "gates_green": true
+  },
+  "artifacts": [
+    "download/CLA-block-probe-20261027.json",
+    "download/CLA-banner-remove-PR-20261027.json",
+    "download/CLA-banner-remove-landing-20261027.json"
+  ]
+}
