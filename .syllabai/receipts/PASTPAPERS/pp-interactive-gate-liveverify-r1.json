@@ -1,0 +1,58 @@
+{
+  "receipt": "pp-interactive-gate-liveverify-r1",
+  "lane": "PASTPAPERS",
+  "task": "Live verification of the OFFICIAL-PLANE-ONLY Interactive gate on production (post-deploy)",
+  "deployment": {
+    "commit": "5d75cdd7",
+    "vercelStatus": "success (context Vercel, deployment 9CBjZMVY8CgPpFmBxrkFiZQJHhvK)",
+    "ci": "hub success + verify success (check-runs on 5d75cdd7)",
+    "note": "first two page fetches served stale CDN copies; cache-busted URLs (?cb=20261028gate) proved the new build is serving"
+  },
+  "legs": [
+    {
+      "leg": "unparsed course — econ-25 past-papers page",
+      "url": "/courses/cie-igcse-economics-25/past-papers",
+      "expected": "no Interactive reconstructions section, no 0455 rows, no chips",
+      "observed": "section ABSENT; honest empty state 'No past papers mapped for this course yet'; zero paper rows",
+      "verdict": "PASS"
+    },
+    {
+      "leg": "parsed course — 4CH1 past-papers page",
+      "url": "/courses/igcse-chemistry-19/past-papers",
+      "expected": "badge shows official-only interactive count (54), chips with coverage on official papers, no pseudo archive section",
+      "observed": "badge '96 papers · 33 sessions · 54 interactive' (pre-gate this read ~103-104 mixed); chips 'Interactive9/9', 'Interactive10/10' etc on official papers; no archive section; 33 sessions incl Specimen intact (PDF archive unharmed)",
+      "verdict": "PASS"
+    },
+    {
+      "leg": "pseudo-paper direct URL must 404",
+      "url": "/courses/cie-igcse-economics-25/past-papers/nov-2020-0455-12",
+      "observed": "404 'This page doesn't exist'",
+      "verdict": "PASS"
+    },
+    {
+      "leg": "official player direct URL must serve",
+      "url": "/courses/igcse-chemistry-19/past-papers/january-2020-4ch1-1c",
+      "observed": "player live: '4CH1/1C — January 2020 (Edexcel IGCSE Chemistry): Past Paper', questions rendering ('This question is about gases in the atmosphere. Identify a noble gas.')",
+      "verdict": "PASS"
+    },
+    {
+      "leg": "course-home card honesty (econ-25)",
+      "url": "/courses/cie-igcse-economics-25",
+      "observed": "old false promise '15 papers · 372 questions held' GONE; card now carries the honest archive/roadmap copy ('Interactive playback lands as papers are parsed') with no count label",
+      "verdict": "PASS",
+      "note": "desc shows the archive-flavored text on the not-ready card (ready=false rendering since corpusArchivePapers=0) — cosmetic, consistent with existing roadmap-card pattern (Target Test); no false count anywhere"
+    },
+    {
+      "leg": "Exam Questions surface untouched (zero-contact law)",
+      "url": "/courses/cie-igcse-economics-25/exam-questions",
+      "observed": "'625 questions across 36 sets' — byte-matches the pre-gate bank census (625q/36 topics); topic rows render ('1.1 The Nature of the Basic Economic Problem · 17 questions')",
+      "verdict": "PASS"
+    }
+  ],
+  "verdict": "ALL 6 LEGS PASS — the gate is live and truthful: playable = officially parsed (3 courses), everything else honest; Exam Questions stands alone unchanged",
+  "provenance": {
+    "verifiedFrom": "web session web-64d10b73-530a-4f71-9961-85d0436c7fb5, trace 1a17e8c682dfbaf5",
+    "runReceipt": "pp-interactive-gate-run-001-r0.json",
+    "landedAs": "transit 44 (5d75cdd7)"
+  }
+}

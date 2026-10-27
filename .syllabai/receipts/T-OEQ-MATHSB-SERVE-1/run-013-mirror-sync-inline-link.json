@@ -1,0 +1,57 @@
+{
+ "card": "T-OEQ-MATHSB-SERVE-1",
+ "run": "run-013 (mirror-sync + inline-link)",
+ "date": "2026-10-28",
+ "operatorOrder": "run the mirror-sync + inline-link (trace 1a17e7858b7ea40d) — the two follow-up waves queued by run-012-spotcheck (F1/F2)",
+ "planeOfRecord": {
+  "pre_sha16": "d56a2fb95a1e617f",
+  "post_sha16": "3bf89d920d1b6bb0",
+  "path": "apps/hub/content/igcse-maths-b-16/official-papers.json",
+  "fieldDiffScope": "79 EXACT = 23 x markPoints[0].textMd + 56 x problemMd, zero other deltas",
+  "censusPins": "66 sets / 1281 q / 2443 parts / marks 6600==6600 EXACT (G1)"
+ },
+ "waveA_mirror_sync": {
+  "law": "playbook §7 law 8 — markPoints mirror",
+  "population": "23 parts (16 byte-exact stale mirrors + 7 pre-existing divergences re-exposed by run-012 solutionMd edits; run-012 never mirrored into textMd)",
+  "fix": "markPoints[0].textMd := solutionMd byte-exact (17-c twins: slot [0] only, mp[1] untouched)",
+  "censusReconciliation": "the spot-check's '25' = probe HITS across 10 probed pids (page-wide absence probes over-collect, §7 law 9); the 23-part diff census (solutionMd changed in run-012 AND textMd untouched) is the rigorous fix population — all 10 probed pids are inside it; disclosed in receipt + playbook",
+  "renderEffect": "guard (question-player.tsx:2025 solutionMd.trim() !== markPoints[0].textMd.trim()) goes quiet => MP block re-hides: the 17-b (c) leak row, 2024-06 q19 furniture+Q20 rows, Tier-D stale flattened rows no longer render; render-visible stale mirrors fleet-wide 29 -> 1"
+ },
+ "waveB_inline_link": {
+  "law": "playbook §7 law 7 (b)+(c) — attach render-completeness",
+  "population": "58 run-012 crops across 56 parts (the 6 already-linked exemplars render a shared-stem figure inline and stay untouched; legacy asset_7_diagram / asset_24_diagram twins stay metadata-only)",
+  "fix": "inline ![mention — official paper figure (qp.pdf p.N)](rawUrl) injected where the Figure-not-shown note was; note removed; 2 parts keeping an extra '> Labels in the original figure' line keep that line",
+  "urlGate": "58/58 HEAD-200 BEFORE any attach (law 7d)",
+  "dedupe": "2023-11 8-d + 2025-11 9-b twin crops sha256-identical (two candidates, one figure) -> one link each, twins metadata-only; eyes-on verified (grid renders clean)"
+ },
+ "gates": "G1-G10 ALL GREEN, fail-closed (no write until every gate passed): census EXACT / diff scope 79 EXACT / mirror parity 23/23 (solution+marks+nMP untouched) / inline structure 56/56 note-free URLs exact / 58 gated URLs inline / PUA+FFFD+(c) 0 / escaped-$ parity / no new furniture / no NEW render-visible stale mirrors (net -28) / 23/23 guard-quiet / compact-JSON serialization byte-law / 6 exemplar controls untouched",
+ "landing": {
+  "branch": "r7a-pp-inline-mirror-013 (0de06457 + main-merge 5dc0e0fe after origin moved to bb629a40 — zero path contact, history-preserving, no force)",
+  "pr": "PR #411",
+  "CI": "hub+verify SUCCESS on head 5dc0e0fe pre-merge and on merge commit 7b0073e5 post-merge (first-hand)",
+  "merge": "7b0073e5 (PUT merge_method=merge); main now carries the wave"
+ },
+ "liveVerification": {
+  "deploymentCurrency": "live /corpus/igcse-maths-b-16/official-papers.json sha16 == 3bf89d920d1b6bb0 (~90s post-merge, cache-busted)",
+  "payloadBattery": "39 pages ALL GREEN (scripts/run013_live_probes.py): 56/56 inline markdown links present in payloads; per-page Figure-not-shown counts == 4x plane counts (flight-duplication law); 23/23 stale windows ABSENT (staleHit=False everywhere); solution-presence corroborated by newline-safe needles + corpus byte-match for chunk-split long strings",
+  "browserEvidence": [
+   "download/t-oeq-mathsb/run013/q7_figure_renders_live.png — january-2019 4MB1-01 q7: the curve-on-grid figure renders inline 590x728 (naturalWidth 590), the Figure-not-shown callout GONE from the card (F1 closed visually)",
+   "download/t-oeq-mathsb/run013/q17-b_answer_dialog_no_stale_mp.png — june-2020 4MB1-01R mark-scheme modal: 17-a renders 2.34x10^-2 with proper superscript; 17-b shows clean 240 000 B1 row — the (c) 0.5 x10 199 leak row GONE (F2 closed visually); whole-document scans: staleC=false, furniture=false"
+  ]
+ },
+ "disclosures": [
+  "F5-class furniture pre-existing in solutionMd of 4 wave-A parts (offp_2021-06_02_1-c, offp_2022-01_01_25, offp_2023-06_02_3, offp_2024-06_01_19) — unchanged by this wave, stays in the F5 eyes-on queue",
+  "1 render-visible stale mirror survives fleet-wide (offp_2019-06_02r_5-d 'Question Working Answer Mark Notes' in markPoints) — pre-existing (solution unchanged in run-012), outside the 23-part census, queued",
+  "the 6 already-linked exemplar parts keep their Figure-not-shown notes (pre-run-012 convention, out of wave scope)",
+  "SME plane (questions.json) staleness by-design (F3) — separate lane",
+  "flight payload duplication (4x) is a probe-law constant, not a leak (constant multiplier on every page, 0/0 pages consistent)"
+ ],
+ "artifacts": {
+  "applyLog": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-013/run013_apply_log.json",
+  "pins": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-013/run013_pins.json",
+  "livePayloadResults": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-013/run013_live_payload_results.json",
+  "scripts": ["/home/z/my-project/scripts/run013_census.py", "/home/z/my-project/scripts/run013_urlgate.py", "/home/z/my-project/scripts/run013_apply.py", "/home/z/my-project/scripts/run013_live_probes.py"],
+  "screenshots": "download/t-oeq-mathsb/run013/"
+ },
+ "nextQueue": ["F4/F5 eyes-on leads (furniture variants, 2024-06 02R q2 foreign rows)", "213 run-011 machine-staged crops review:true verdict passes", "PAT rotation still pending (both exposed tokens)"]
+}

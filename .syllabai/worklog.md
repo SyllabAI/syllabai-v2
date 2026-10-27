@@ -21649,3 +21649,61 @@ Work Log:
 Stage Summary:
 - The flip car is rollback-proof of-record. Execution status UNCHANGED: Neon MAIN quota refusal (re-probed 2026-10-28 first-hand) — zero writes ever; recipe --check → --commit → --idempotence ready the moment the quota clears.
 - PR opened on branch t-book-068/flip-car-tracked; NOT self-merged (integrator lane — merge on operator order).
+
+---
+Task ID: PASTPAPERS pp-interactive-gate liveverify-r1 (operator order "verify it live", trace 1a17e8c682dfbaf5)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Verify the OFFICIAL-PLANE-ONLY Interactive gate live on production after the transit-44 deploy.
+
+Work Log:
+- Deploy currency: Vercel status on 5d75cdd7 = success (deployment 9CBjZMVY…), CI hub + verify check-runs both success. First two page fetches served stale CDN copies; cache-busted URLs (?cb=20261028gate) proved the new build is serving — method note for future live checks.
+- SIX LEGS, ALL PASS: (1) econ-25 past-papers — Interactive reconstructions section ABSENT, honest empty state, zero 0455 rows; (2) 4CH1 past-papers — badge "96 papers · 33 sessions · 54 interactive" (official-only count; pre-gate ~103 mixed), coverage chips 9/9 10/10 on official papers, PDF archive intact incl Specimen; (3) econ-25 pseudo key nov-2020-0455-12 -> 404; (4) 4CH1 official key january-2020-4ch1-1c -> live player rendering questions; (5) econ-25 course-home card — the false "15 papers · 372 questions held" promise GONE, honest archive/roadmap copy, no count label; (6) Exam Questions surface UNTOUCHED — 625 questions / 36 sets byte-matching the pre-gate bank census.
+- Receipt .syllabai/receipts/PASTPAPERS/pp-interactive-gate-liveverify-r1.json. Bookkeeping-only .syllabai/**; fetch-first (rebased onto 7b0073e5 — fleet kept moving: PR #411 4MB1 run merge); no force.
+
+Stage Summary:
+- The gate is LIVE and truthful: playable = officially parsed (4CH1/4MB1/4PH1), unparsed courses show the PDF archive + honest roadmap states, direct pseudo-paper URLs are dead, Exam Questions stands alone unchanged. PAT rotation CRITICAL-OVERDUE (fingerprint through 44 + this bookkeeping push).
+
+---
+Task ID: NEON-PAUSE-001 run-001 (operator order trace 1a17e89fc9727039: "main database project is paused, because of full storage I guess. What to do?" + napi_ token + MAIN/W1 pooler URLs)
+Agent: main (Z.ai, zai-web session web-590847c1)
+Task: Triage the MAIN Neon suspension; deliver the unblock plan of-record.
+
+Work Log:
+- MAIN (ep-ancient-cake): HARD-SUSPENDED — every query incl. bare SELECTs refused at proxy ('account or project has exceeded the quota. Upgrade your plan to increase limits.'); == T-BOOK-068 first-hand refusal of-record, this run adds reads-also-refused. Carrier health UP (DB-less readiness) but register/login 500 first-hand; books plane 500 per of-record -> platform DB plane DOWN for learners; hub static plane unaffected (16 packs intact).
+- W1 (ep-calm-queen): ALIVE, 241 MB, write-accepting (self-cleaning probe); shape == the of-record rebuild census (seneca_resources 161,621 rows all-subjects, Task-40 data loss Oct-25 superseded the lost warehouse; wh-v1 warehouse_chunks ABSENT) — no new drift; maths-4ma1 chunks plane no longer here.
+- Discriminator: project-level 1 GB breach most likely (account-wide implausible at these sizes); definitive split needs the console Storage page; api.neon.tech DNS-walled from sandbox (5th consecutive of-record) -> napi_ unusable from here.
+- Pricing of record (neon.com/pricing): Launch = NO minimum, $0.35/GB-mo, typical ~$15/mo; storage caps do NOT monthly-reset -> console UPGRADE is the certain unblock (the T-BOOK-068 'wait for reset' hedge applies to CU-hours only).
+- Receipt .syllabai/receipts/NEON-PAUSE-001/run-001-census-unblock-plan-r0.json carries the operator console steps + the full post-resume lane plan (parity census vs NEON-DB-LOSS gate; resume T-BOOK-068 flip / embed 1,330 / Phase-D 3,012; ADR-038 relief package; backup-law implementation; maths serving reconciliation).
+- Secrets: napi_ + both npg_ chat-transited again — rotation list grows. Zero credentials persisted; scrub-verified. Writes: one W1 probe table create+drop (net zero); MAIN zero-writes-possible; zero Vercel mutations.
+- ENVIRONMENT: sandbox recycled MID-TURN (v2-run014 worktree consumed pre-push; receipt re-landed from context into fresh shallow clone @ 4eb4158) — incremental-commit law now reads: file+push the SAME turn, never batch receipts across tool-call boundaries.
+
+Stage Summary:
+- NEON MAIN suspension CONFIRMED + plan of-record: operator console upgrade (Launch, ~$15/mo typical, no minimum) = immediate resume; lane executes parity census + unblocks the tracked quota cars on green-light; ADR-038 relief + nightly pg_dump law now MANDATORY (three loss/pause events in six days). LANE: BLOCKED_ON_PLATFORM_QUOTA (with the fleet).
+
+
+---
+Task ID: ROUND-CLA-BLOCK-REMOVE-20261027 (operator trace 1a17e7377a2d447d)
+Agent: w0a (zai-web session web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd, chat 1148fa2b)
+Task: "Remove 'Contextual help available on this note / Ask the CLA about this note — answers are grounded in this note with citations, and it says so when the note doesn\'t cover your question.' from all revision notes of all courses"
+
+Work Log:
+- PROBE (read-only): the quoted copy is the guidedStudy-gated guided-study banner in apps/hub/src/components/cla/note-cla.tsx (L462-481 @ main 03d16e3199e8); NoteCla is mounted ONLY by revision-notes/[noteId]/page.tsx (shared [course] route => one change covers all courses); sole other note-cla reference is a comment in lens-grid.tsx; guided-lessons banner, notes-index badge, question CLA overlay, /api/ai/cla all separate surfaces (untouched).
+- CHANGE (code commit c8910f2e): note-cla.tsx — banner JSX + guidedStudy prop (destructure + type) removed, header docblock refreshed (Sparkles/Button still used by the floating button + panel); revision-notes/[noteId]/page.tsx — guidedStudy pass-through removed, mount comment refreshed. Floating CLA button, popup/docked shells, quick actions, citations, honest refusals all retained.
+- GATES: ci workflow success on c8910f2e (PR #410 code commit, pull_request event) and on the reconciled PR heads; receipt-only push-trigger drop is the documented "branches: ain]" corruption class — disclosed.
+- RECONCILE x2: main deltas also appending this worklog (PR #409 bookkeeping, then PASTPAPERS/T-BOOK-067/run-013 batch) -> per house precedent 034c9177 the lane re-merged origin/main each time; code surfaces byte-identical to c8910f2e throughout; operator merge order trace 1a17e93bc4fee41d "merge #410".
+
+Stage Summary:
+- CLA contextual-help banner removed from every revision note of every course via the shared component; the CLA itself remains reachable via the floating button. PR #410; receipt .syllabai/receipts/HUB-CLA-NOTE-BANNER-REMOVE/cla-note-banner-remove-receipt-20261027.json.
+
+---
+Task ID: PASTPAPERS pp-interactive-gate liveverify-r1 (operator order "verify it live", trace 1a17e8c682dfbaf5)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Verify the OFFICIAL-PLANE-ONLY Interactive gate live on production after the transit-44 deploy.
+
+Work Log:
+- Deploy currency: Vercel status on 5d75cdd7 = success (deployment 9CBjZMVY…), CI hub + verify check-runs both success. First two page fetches served stale CDN copies; cache-busted URLs (?cb=20261028gate) proved the new build is serving — method note for future live checks.
+- SIX LEGS, ALL PASS: (1) econ-25 past-papers — Interactive reconstructions section ABSENT, honest empty state, zero 0455 rows; (2) 4CH1 past-papers — badge "96 papers · 33 sessions · 54 interactive" (official-only count; pre-gate ~103 mixed), coverage chips 9/9 10/10 on official papers, PDF archive intact incl Specimen; (3) econ-25 pseudo key nov-2020-0455-12 -> 404; (4) 4CH1 official key january-2020-4ch1-1c -> live player rendering questions; (5) econ-25 course-home card — the false "15 papers · 372 questions held" promise GONE, honest archive/roadmap copy, no count label; (6) Exam Questions surface UNTOUCHED — 625 questions / 36 sets byte-matching the pre-gate bank census.
+- Receipt .syllabai/receipts/PASTPAPERS/pp-interactive-gate-liveverify-r1.json. Bookkeeping-only .syllabai/**; fetch-first (rebased onto 7b0073e5 — fleet kept moving: PR #411 4MB1 run merge); no force.
+
+Stage Summary:
+- The gate is LIVE and truthful: playable = officially parsed (4CH1/4MB1/4PH1), unparsed courses show the PDF archive + honest roadmap states, direct pseudo-paper URLs are dead, Exam Questions stands alone unchanged. PAT rotation CRITICAL-OVERDUE (fingerprint through 44 + this bookkeeping push).

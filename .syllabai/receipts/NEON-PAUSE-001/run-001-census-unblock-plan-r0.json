@@ -1,0 +1,30 @@
+{
+  "run": "run-001",
+  "task": "NEON-PAUSE-001",
+  "at": "2026-10-27T18:08-18:45Z (wire-observed UTC) sweep / filed same turn",
+  "operator_order": "\"Currently the main database project is paused, because of full storage I guess. What to do?\" (IM session web-590847c1, trace 1a17e89fc9727039) with napi_ Neon API token + MAIN pooler (ep-ancient-cake-a52e4kfd, us-east-2) + W1 pooler (ep-calm-queen-az36lppq, ap-southeast-1) re-knocked in-chat",
+  "independent_confirmation": {
+    "main_suspended": "ALL queries on ep-ancient-cake — including bare SELECT current_database() — refused at the Neon proxy: 'Your account or project has exceeded the quota. Upgrade your plan to increase limits.' Reads AND writes; the compute/proxy plane is hard-suspended. == the T-BOOK-068 reflip-r4-check-r1 first-hand refusal (3c217e70) + quota re-probe (bb629a40) of-record; this run adds the reads-also-refused datum (prior lanes probed write/--check paths).",
+    "carrier_impact": "/actuator/health 200 UP (DB-less readiness) while register 500 'an internal error occurred' + login 500 first-hand (real-path probes) and books plane 500s per T-BOOK-068 of-record -> the platform DB plane is DOWN for learners (auth/progress/books/tutor); hub static content plane UNAFFECTED (health 200 coreConfigured, lessons-index 16 packs intact).",
+    "w1_alive_and_current": "ep-calm-queen: LIVE, PG 18.6, DB 253,124,608 B (~241 MB), write-accepting (self-cleaning create+drop probe, net zero); shape == the of-record census: seneca_resources 161,621 rows / 226 MB / 262 course_slugs all subjects (examQuestion 74,328 / courseSection 54,933 / quiz 32,360; chemistry 19,208), warehouse_meta single 'rebuild' row (Task-40 data loss ~2026-10-25T13:57Z, rebuilt from r2 corpus, supersedes lost warehouse), wh-v1 warehouse_chunks ABSENT (superseded), template app tables co-located, honest delta 650 dead tuples vs meta. NO NEW DRIFT vs of-record; the maths-4ma1 chunks plane does NOT live here anymore.",
+    "quota_discriminator": "W1 alive at 241 MB + satellite-scale other projects -> account-wide 20 GB breach implausible unless history-retention bloat; PROJECT-level 1 GB breach on MAIN is the likely trigger. DEFINITIVE split needs the console Storage page (data vs history). api.neon.tech UNREACHABLE from this sandbox (HTTP 000 — 5th consecutive failure of-record) -> the napi_ token is unusable from here; console is the source of truth."
+  },
+  "pricing_of_record": "neon.com/pricing fetched this turn: Free = 1 GB storage per project; Launch = usage-based, NO minimum monthly spend, DB storage $0.35/GB-mo, history $0.20/GB-mo, typical spend ~$15/mo; Scale typical ~$701/mo (irrelevant). NOTE: storage caps do NOT monthly-reset (unlike CU-hours) — the 'wait for reset' hedge in the T-BOOK-068 of-record applies to CU-hours only; UPGRADE is the certain, immediate unblock.",
+  "verdict": "PLATFORM DB PLANE DOWN — Neon MAIN project suspended at quota; unblock is an OPERATOR console action (billing-gated; control-plane unreachable from sandbox). Nothing further executable from this lane until the project resumes.",
+  "operator_actions": [
+    "1. Neon console -> main project (ep-ancient-cake) -> Storage: note the data-vs-history split (one screenshot = the discriminator of record).",
+    "2. Upgrade the plan to Launch (no minimum; $0.35/GB-mo; typical ~$15/mo at this size) -> project auto-resumes.",
+    "3. (If console offers any free-tier 'reduce then resume' path and data is genuinely ~<=1 GB with history bloat: setting history retention to 0 is the documented lever — but ONLY viable if the console permits it while suspended; upgrade remains the certain path.)"
+  ],
+  "post_resume_plan_lane": [
+    "0. On green-light: parity census vs the NEON-DB-LOSS run-001 acceptance gate (documents 590 / document_chunks ~13.7k / mark_points 40,250 / exam_papers 4MA1=110 4CH1=37+8 / users) + resume-verify books plane + real-path T1 probe.",
+    "1. Resume BLOCKED_ON_PLATFORM_QUOTA cars of-record: T-BOOK-068 flip (tracked, rollback-proof), embed-completion (1,330 NULL rows), T-MIG-141 Phase-D drain resume (3,012 remaining, wall-paused).",
+    "2. ADR-038 relief package (trigger now fired TWICE: Oct-22 restore context + this suspension): bytea offload (question_asset 585 + revision_note_asset 194 ~59 MB) -> Neon Object Storage; chunks-plane warehouse split via the provisioner lane (wh-v2 template); template/neon_auth remnant audit on main.",
+    "3. Backup law IMPLEMENTATION (nightly pg_dump -> Object Storage 7-gen + quarterly restore drill): three loss/pause events in six days (Oct-22 main drop, Oct-25 W1 data loss, Oct-27/28 main suspension) — the law exists of-record, the mechanism still does not.",
+    "4. Maths tutor serving reconciliation: registry flip lives in MAIN (suspended); W1 no longer hosts the maths chunks plane -> serving state must be re-derived post-resume (warehouse split decision)."
+  ],
+  "secrets": "napi_ + MAIN npg_ + W1 npg_ chat-transited AGAIN this turn (rotation list grows; napi_ was already of-record; the two npg_ fresh to the list). Volatile-only inline handling honored; zero credentials persisted; scrub-verified.",
+  "writes": "W1: one self-cleaning probe table create+drop (net zero, disclosed). MAIN: zero writes possible (refused). Vercel: zero mutations. One T1 probe register attempt (500-failed, no row created).",
+  "environment": "sandbox recycled MID-TURN between tool calls (v2-run014 worktree consumed pre-push; receipt re-landed from context of record into a fresh shallow clone v2-np at tip 4eb4158 — the incremental-commit law now also means: file+push the SAME turn, never batch receipts across tool-call boundaries)",
+  "receipt_culture": "fetch-first (3-day history absorbed: T-BOOK-067/068 quota lane, 4MB1 run-012/013, W1 rebuild census, PASTPAPERS interactive gate); incremental-commit same-turn push; no force"
+}
