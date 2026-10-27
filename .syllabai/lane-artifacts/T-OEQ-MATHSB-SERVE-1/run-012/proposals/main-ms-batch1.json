@@ -1,0 +1,56 @@
+[
+ {
+  "pid": "offp_2019-01_02_12-b",
+  "field": "solutionMd",
+  "match": "π 6 5 or π 6 5 b M1\nπ ( 6 5 ) + π ( 6 5 ) b = 60π 15\nM1\n60π 15 − π ( 6 5 )\nb= M1\nπ (6 5 )\n60π 15 − π ( 6 5 )\nb= × or\nπ (6 5 )\nM1\n60 15 ( 6 5 )\n60 75 − 180 5\nb= − or b =\n6 5 6 5\nb = 10 3 − 6 5 5 A1 cso",
+  "replacement": "π(6√5)² or π(6√5)b M1\nπ(6√5)² + π(6√5)b = 60π√15 M1\nb = (60π√15 − π(6√5)²)/(π(6√5)) M1\nb = (60π√15 − π(6√5)²)/(π(6√5)) × √5/√5 or M1\nb = 60√15/(6√5) − (6√5)²/(6√5) or b = (60√75 − 180√5)/30\nb = 10√3 − 6√5 A1 cso",
+  "verdict": "DEFECT",
+  "evidence": "201901_02_q12_p15_ms.png + p16_ms.png",
+  "note": "print 12(b): (6√5) surds and 60π√15; every √ lost in OCR; mark codes M1×4 + A1 cso preserved"
+ },
+ {
+  "pid": "offp_2019-01_02_12-b",
+  "field": "markPoints",
+  "match": "π 6 5 or π 6 5 b M1\nπ ( 6 5 ) + π ( 6 5 ) b = 60π 15\nM1\n60π 15 − π ( 6 5 )\nb= M1\nπ (6 5 )\n60π 15 − π ( 6 5 )\nb= × or\nπ (6 5 )\nM1\n60 15 ( 6 5 )\n60 75 − 180 5\nb= − or b =\n6 5 6 5\nb = 10 3 − 6 5 5 A1 cso",
+  "replacement": "π(6√5)² or π(6√5)b M1\nπ(6√5)² + π(6√5)b = 60π√15 M1\nb = (60π√15 − π(6√5)²)/(π(6√5)) M1\nb = (60π√15 − π(6√5)²)/(π(6√5)) × √5/√5 or M1\nb = 60√15/(6√5) − (6√5)²/(6√5) or b = (60√75 − 180√5)/30\nb = 10√3 − 6√5 A1 cso",
+  "verdict": "DEFECT",
+  "evidence": "201901_02_q12_p15_ms.png + p16_ms.png",
+  "note": "same rebuild in markPoints textMd"
+ },
+ {
+  "pid": "offp_2019-01_02_12-c",
+  "field": "solutionMd",
+  "match": "1\n2abh = \"2ab 2 + π a 2b \" M1\n⎛ 1 h = b+ πa 4 ⎠\nh = 10 3 − 6 5 + π × 6 5 or awrt 14.4 M1\n(10 3 − 6 5 ) + (12 5 ) or awrt\n2\nAC =\nM1\n27.1\n\"14.4\"\n[ ∠GAC ] = tan −1 M1\n\"27.1\"\nawrt 28 5 A1\ny\n(-1.03,3.02)\n-2 -1 0 1 2 3 x\n-1.5\n-6 -5\n-10\n-15\n(1.04,-15)",
+  "replacement": "2abh = \"2ab² + (1/2)πa²b\" M1\n(h = b + (1/4)πa)\nh = 10√3 − 6√5 + (1/4)π × 6√5 or awrt 14.4 M1\nAC = √((10√3 − 6√5)² + (12√5)²) or awrt 27.1 M1\n[∠GAC] = tan⁻¹(\"14.4\"/\"27.1\") M1\nawrt 28 A1",
+  "verdict": "DEFECT",
+  "evidence": "201901_02_q12_p15_ms.png + p16_ms.png",
+  "note": "print 12(c) p15 + AC row p16: sqrt((10√3−6√5)²+(12√5)²); graph-label OCR tail stripped (furniture); markPoints MP1 carries the same string - apply same rebuild"
+ },
+ {
+  "pid": "offp_2019-06_02_4-d",
+  "field": "solutionMd",
+  "match": "(−0.5 0) (2 6 2) = 3 M2 for a matrix solution or list of coordinates containing\n( 0.5 −1) (4 −4 8) at least 4 correct values seen or for 2 correct coordinates\n(−1 −3 −1)\n(−3 7 −7)\ncalculate the coordinates of triangle D\nTriangle D drawn A1 cao",
+  "replacement": "$\\begin{pmatrix} -0.5 & 0 \\\\ 0.5 & -1 \\end{pmatrix}$ $\\begin{pmatrix} 2 & 6 & 2 \\\\ 4 & -4 & 8 \\end{pmatrix}$ = $\\begin{pmatrix} -1 & -3 & -1 \\\\ -3 & 7 & -7 \\end{pmatrix}$ M2 for a matrix solution or list of coordinates containing at least 4 correct values seen or for 2 correct coordinates plotted\nOtherwise M1 for a correctly stated matrix product to calculate the coordinates of triangle D\nTriangle D drawn A1 cao",
+  "verdict": "DEFECT",
+  "evidence": "201906_02_q4_p7_ms.png + p8_ms.png",
+  "note": "print 4(d): 2x2 × 2x3 = 2x3 product matrix; mark codes M2/M1/A1 preserved"
+ },
+ {
+  "pid": "offp_2019-06_02_4-e",
+  "field": "solutionMd",
+  "match": "Recognising that N = M −1 3\nM1 Either state N = M −1 or NM=I or −1×−0.5−0×0.5 seen\nor (−1 0 / −0.5 −0.5) seen.\nA2\n2 (−1 0 / −0.5 −0.5)\nAny A marks imply M1 if not already awarded.\nALT (𝑃𝑃 𝑄𝑄) (−1 −3 −1) =\n(𝑅𝑅 𝑆𝑆) (−3 7 −7)\n(2 6 2)\n(4 −4 8)\nand states at least 2 linear equations\nin 2 variables derived from this.\n−2\n(−2 0 / −1 −1) A1 for one correct row or column or for 3 of the variables\nlisted correctly 𝑃𝑃 = −2, 𝑄𝑄 = 0, 𝑅𝑅 = −1, 𝑆𝑆 = −1\nTotal 12 marks\nC\nB\nD\nQuestion Working Answer Mark Notes",
+  "replacement": "Recognising that N = M⁻¹\nM1 Either state N = M⁻¹ or NM=I or 1/(−1×−0.5−0×0.5) seen or $\\begin{pmatrix} -1 & 0 \\\\ -0.5 & -0.5 \\end{pmatrix}$ seen.\nA2\n2$\\begin{pmatrix} -1 & 0 \\\\ -0.5 & -0.5 \\end{pmatrix}$\nAny A marks imply M1 if not already awarded.\nALT $\\begin{pmatrix} P & Q \\\\ R & S \\end{pmatrix}$ $\\begin{pmatrix} -1 & -3 & -1 \\\\ -3 & 7 & -7 \\end{pmatrix}$ = $\\begin{pmatrix} 2 & 6 & 2 \\\\ 4 & -4 & 8 \\end{pmatrix}$\nand states at least 2 linear equations in 2 variables derived from this.\n$\\begin{pmatrix} -2 & 0 \\\\ -1 & -1 \\end{pmatrix}$ A1 for one correct row or column or for 3 of the variables listed correctly P = −2, Q = 0, R = −1, S = −1",
+  "verdict": "DEFECT",
+  "evidence": "201906_02_q4_p7_ms.png + p8_ms.png",
+  "note": "print 4(e): N=M⁻¹, 2x2 inverse matrices, ALT product; table-furniture tail stripped; codes M1/A2/A1 preserved"
+ },
+ {
+  "pid": "offp_2019-06_02_4-e",
+  "field": "markPoints",
+  "match": "Recognising that N = M −1 3\nM1 Either state N = M −1 or NM=I or −1×−0.5−0×0.5 seen\nor (−1 0 / −0.5 −0.5) seen.\nA2\n2 (−1 0 / −0.5 −0.5)\nAny A marks imply M1 if not already awarded.\nALT (𝑃𝑃 𝑄𝑄) (−1 −3 −1) =\n(𝑅𝑅 𝑆𝑆) (−3 7 −7)\n(2 6 2)\n(4 −4 8)\nand states at least 2 linear equations\nin 2 variables derived from this.\n−2\n(−2 0 / −1 −1) A1 for one correct row or column or for 3 of the variables\nlisted correctly 𝑃𝑃 = −2, 𝑄𝑄 = 0, 𝑅𝑅 = −1, 𝑆𝑆 = −1\nTotal 12 marks\nC\nB\nD\nQuestion Working Answer Mark Notes",
+  "replacement": "Recognising that N = M⁻¹\nM1 Either state N = M⁻¹ or NM=I or 1/(−1×−0.5−0×0.5) seen or $\\begin{pmatrix} -1 & 0 \\\\ -0.5 & -0.5 \\end{pmatrix}$ seen.\nA2\n2$\\begin{pmatrix} -1 & 0 \\\\ -0.5 & -0.5 \\end{pmatrix}$\nAny A marks imply M1 if not already awarded.\nALT $\\begin{pmatrix} P & Q \\\\ R & S \\end{pmatrix}$ $\\begin{pmatrix} -1 & -3 & -1 \\\\ -3 & 7 & -7 \\end{pmatrix}$ = $\\begin{pmatrix} 2 & 6 & 2 \\\\ 4 & -4 & 8 \\end{pmatrix}$\nand states at least 2 linear equations in 2 variables derived from this.\n$\\begin{pmatrix} -2 & 0 \\\\ -1 & -1 \\end{pmatrix}$ A1 for one correct row or column or for 3 of the variables listed correctly P = −2, Q = 0, R = −1, S = −1",
+  "verdict": "DEFECT",
+  "evidence": "201906_02_q4_p7_ms.png + p8_ms.png",
+  "note": "same rebuild in markPoints textMd"
+ }
+]

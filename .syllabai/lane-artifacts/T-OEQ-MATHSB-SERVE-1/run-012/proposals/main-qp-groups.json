@@ -1,0 +1,101 @@
+[
+ {
+  "pid": "offp_2018-06_01_27",
+  "field": "problemMd",
+  "match": "Other figure text: 3) 2x (3x 1).",
+  "replacement": "Other figure text: (x + 3) cm, 2x cm, (3x + 1) cm.",
+  "verdict": "DEFECT",
+  "evidence": "201806_01_q27_p21_qp.png",
+  "note": "figure labels per print: (x+3)cm, 2x cm, (3x+1)cm, angle 120°"
+ },
+ {
+  "pid": "offp_2018-06_01r_26-a",
+  "field": "problemMd",
+  "match": "A = B= C = (5 2) −2 1 1 4 Find",
+  "replacement": "A = $\\begin{pmatrix} 4 & 3 \\\\ -2 & 1 \\end{pmatrix}$ B = $\\begin{pmatrix} 2 & -3 \\\\ 1 & 4 \\end{pmatrix}$ C = $\\begin{pmatrix} 5 & 2 \\end{pmatrix}$ Find",
+  "verdict": "DEFECT",
+  "evidence": "201806_01R_q26_p20_qp.png",
+  "note": "print: A=(4 3;-2 1), B=(2 -3;1 4), C=(5 2) row matrix; OCR lost both top rows"
+ },
+ {
+  "pid": "offp_2019-01_01_20",
+  "field": "problemMd",
+  "match": "4(x 2 – 4) cm",
+  "replacement": "4(x² – 4) cm",
+  "verdict": "DEFECT",
+  "evidence": "201901_01_q20_p14_qp.png",
+  "note": "print: PS = 4(x² − 4) cm superscript 2"
+ },
+ {
+  "pid": "offp_2019-01_01_20",
+  "field": "problemMd",
+  "match": "Other figure text: (2x 4) 4(x 4).",
+  "replacement": "Other figure text: (2x + 4) cm, 4(x² – 4) cm.",
+  "verdict": "DEFECT",
+  "evidence": "201901_01_q20_p14_qp.png",
+  "note": "figure labels per print: (2x+4)cm, 4(x²−4)cm"
+ },
+ {
+  "pid": "offp_2019-01_01r_27",
+  "field": "problemMd",
+  "match": "Other figure text: (2x 5) 5).",
+  "replacement": "Other figure text: (2x − 5) cm, (x + 5) cm.",
+  "verdict": "DEFECT",
+  "evidence": "201901_01R_q27_p19_qp.png",
+  "note": "figure labels per print: (2x−5)cm, 30°, (x+5)cm"
+ },
+ {
+  "pid": "offp_2020-06_01_13-b",
+  "field": "problemMd",
+  "match": "Simplify fully (125p 9w )",
+  "replacement": "Simplify fully (125p⁹w³)^(2/3)",
+  "verdict": "DEFECT",
+  "evidence": "202006_01_q13_p7_qp.png",
+  "note": "print: (125p⁹w³)^(2/3) stacked-fraction exponent; Nov 2020 = same printed paper (P61906A)"
+ },
+ {
+  "pid": "offp_2020-11_01_13-b",
+  "field": "problemMd",
+  "match": "Simplify fully (125p 9w )",
+  "replacement": "Simplify fully (125p⁹w³)^(2/3)",
+  "verdict": "DEFECT",
+  "evidence": "202011_01_q13_p7_qp.png",
+  "note": "print: (125p⁹w³)^(2/3) stacked-fraction exponent; Nov 2020 = same printed paper (P61906A)"
+ },
+ {
+  "pid": "offp_2021-06_01_16-a",
+  "field": "problemMd",
+  "match": "Simplify fully (5a 2b3 )",
+  "replacement": "Simplify fully (5a²b³)²",
+  "verdict": "DEFECT",
+  "evidence": "202106_01_q16_p11_qp.png",
+  "note": "print: (5a²b³)²"
+ },
+ {
+  "pid": "offp_2021-11_01_16-b",
+  "field": "problemMd",
+  "match": "Simplify fully (2a5 b3)4",
+  "replacement": "Simplify fully (2a⁵b³)⁴",
+  "verdict": "DEFECT",
+  "evidence": "202111_01_q16_p12_qp.png",
+  "note": "print: (2a⁵b³)⁴"
+ },
+ {
+  "pid": "offp_2022-06_02r_11",
+  "field": "problemMd",
+  "match": "Other figure text: (4x 8).",
+  "replacement": "Other figure text: (4x − 8) cm, (2x + 3) cm, (4x + 2) cm, θ°.",
+  "verdict": "DEFECT",
+  "evidence": "202206_02R_q11_p29_qp.png",
+  "note": "figure labels per print; main text already correct"
+ },
+ {
+  "pid": "offp_2024-06_02r_2-b",
+  "field": "problemMd",
+  "match": "[Sum of interior angles of polygon (2n 4) right angles]",
+  "replacement": "[Sum of interior angles of polygon = (2n − 4) right angles]",
+  "verdict": "DEFECT",
+  "evidence": "202406_02R_q2_p3_qp.png",
+  "note": "print footer: [Sum of interior angles of polygon = (2n − 4) right angles]"
+ }
+]

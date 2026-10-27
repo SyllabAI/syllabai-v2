@@ -77,3 +77,28 @@
 - 64 crop-required parts without a figure yet (list in `worklists/w3-crops.json`, entries with `crop: null`) — auto-crop returned None (figure on adjacent page or raster-only); needs manual region or page-adjacent re-run.
 - 213 crop assets carry `review: true` (machine-staged) — consume via fleet verdict passes (`slices/w3-{1..5}.json` pattern: verdict PASS/FAIL + pageHint).
 - SME-bundle retirement decision still queued (operator card).
+
+## 7. run-012 additions (fleet-retry wave, October 2026)
+
+### New defect classes
+
+| Class | Signature | Remedy |
+|---|---|---|
+| part-label leak | `©` starting an MS row; whole foreign MS rows in a part tail ("Total N marks" + "Question Working Answer Mark Notes" + rows of another question) | circled part labels (Ⓒ) OCR to ©; strip leaked rows per printed page; when the rows belong to a sibling part, MOVE them home — mark codes preserved at QUESTION-level union |
+| sqrt-loss | bare digit pairs `( 6 5 )`, `( 3 81)`, `60π 15`, `10 3 − 6 5` — the radical/index glyph is what OCR lost, not the layout | rebuild from print: `(6√5)`, `(∛81)⁴`, `60π√15`, `10√3 − 6√5`; ∛ = U+221B, fractional indices in caret form `81^(4/3)` |
+| glued-exponent ambiguity | `×102`, `× 107` — reads as ×10² OR integer ×102 | NEVER deterministic; eyes-on only. Tier-D is SPACED exponents only (`× 10 8` has exactly one coherent reading) |
+
+### New laws / lessons (append-only)
+
+1. **Lost-census law**: never re-derive a dead census regex exactly. Recalibrate SLIGHTLY BROADER from the taxonomy, publish your law, let fleet verdicts disposition. Receipt numbers are anchors, not laws.
+2. **Tier law**: deterministic lanes require syntactically unambiguous signatures only. A `\s*` where `\s+` belongs turned run-012's first Tier-D pass into an overreach (glued exponents converted) — caught by re-census diff, plane rebuilt from backup. When in doubt: eyes-on.
+3. **In-repo persistence law** (upgrades §4 lesson): scripts/slices/manifests live in `.syllabai/lane-artifacts/<card>/<run>/` INSIDE the repo. `/home/z/my-project/scripts/` dies with workspace wipes (run-010 AND run-011 losses).
+4. **MS page-find recipe**: distinctive-word voting on solutionMd mis-lands (q17 → p3, q12 → p16). Reliable recipe: (a) direct search for a unique string from the part text; (b) token+qnum scoring (2pts/token hit, +1 qnum present), render TOP-2 candidates; (c) always verify the question number row is on the rendered page before reading fixes off it.
+5. **Adjacent-page crop law** (extends §3): when the voted page yields no vector seed, scan p+1, p+2, p−1, p−2 (whole-page vector census when the margin block find fails); sliver guard: grown union < 50×25pt ⇒ block-raster fallback of the question block; occurrence-indexed asset names for multi-asset parts.
+6. **URL-gate-before-attach**: crops produced without the resources push in the same run stay UNATTACHED — stage PNGs + push script, attach at the PAT-gated landing so §3.7's gate passes before the plane references them.
+
+### run-012 open queue (supersedes §6 partially)
+
+- matrixish remainder (~33 raw hits: 2022-06 01 q18/q23/q24/q26-a, 2023-01 01 q26-a/b, 2023-01 02 q2/q3, 2023-06 02R q11-a, 2025-06 02 q4-b, 2025-10 01 q15, 2025-11 02 q10) — slices persisted in-repo `lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-012/slices/`
+- glued-×10N unit-sup 16 parts — eyes-on queue
+- 64 run-012 crops staged (push+attach pending); 213 run-011 machine-staged crops review:true — verdict passes still queued

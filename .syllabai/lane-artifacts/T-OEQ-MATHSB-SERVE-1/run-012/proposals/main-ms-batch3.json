@@ -1,0 +1,38 @@
+[
+ {
+  "pid": "offp_2022-01_01_25",
+  "field": "solutionMd",
+  "match": "Total 6 marks\nQuestion Working Answer Mark Notes\n7 M1 Method to find AM allow trigonometric methods eg\n[ AM =] (8 3 ) − ( 4 3 ) [ = 12]",
+  "replacement": "",
+  "verdict": "DEFECT",
+  "evidence": "202201_01_q25_p16_ms.png",
+  "note": "print q25 row ends at \"decimal if correct answer seen\"; tail = MS furniture + foreign leaked row (\"7 M1 ... AM\"); foreign row home unknown, noted in worklog; no mark codes lost (q25 codes end earlier)"
+ },
+ {
+  "pid": "offp_2022-01_01r_15",
+  "field": "solutionMd",
+  "op": "full",
+  "replacement": "(4 + √20)/(√5 − 2) × (√5 + 2)/(√5 + 2) oe M1 multiply numerator and denominator by √5 + 2\n(4√5 + 8 + √100 + 2√20)/(5 − 4) oe M1dep on first M1 expand numerator with three terms correct – allow (√5 − 2)(√5 + 2) = 1\n18 + 8√5 A1 dep on first M1",
+  "verdict": "DEFECT",
+  "evidence": "202201_01R_q15_p8_ms.png",
+  "note": "print q15: rationalising working with √20, √5+2, √100, 2√20, answer 18+8√5; \"( 5 2)( 5 2)\" was (√5−2)(√5+2); codes M1/M1dep/A1 preserved"
+ },
+ {
+  "pid": "offp_2024-06_01_19",
+  "field": "solutionMd",
+  "match": "Total 3 marks\nQuestion Working Answer Mark Notes\n( 4 3 ) or 27 + 3 + 2 × 81 4 M1 for squaring out the brackets on the numerator",
+  "replacement": "Total 3 marks",
+  "verdict": "DEFECT",
+  "evidence": "202406_01_q19_p17_ms.png",
+  "note": "print p17: q19 (y=k/∛x) row ends at Total 3 marks; the \"( 4 3 ) or 27+3+2×81\" rows are Q20 content ((4√3)² etc.) leaked into q19 tail; Q20 part carries its own rows; no q19 codes in tail"
+ },
+ {
+  "pid": "offp_2023-01_02r_10-b",
+  "field": "solutionMd",
+  "op": "full",
+  "replacement": "∛27 = 3² or ∛27 × ∛3 = 9 = 3² or\n∛27 = 3√3 and 3√3 × ∛3 = 3² or\n∛27 × ∛3 = ∛81 and √81/81^(4/3) = 81^(−5/6) oe M1 dealing with the ∛27\n(∛81)⁴ = 3^(16/3) M1 dealing with 81^(1/3) allow for 81^a = 3^(4a) where a ≠ 1\n−10/3 A1 condone 3^(−10/3) dep on M2\nisw if the correct answer is then given as a decimal\nWorking required",
+  "verdict": "DEFECT",
+  "evidence": "202301_02R_q10_p16_ms.png",
+  "note": "print q10(b): ∛27/∛81 fractional-index working, answer −10/3; \"( 3 81) 4 = 3 3\" was (∛81)⁴ = 3^(16/3); codes M1/M1/A1 preserved"
+ }
+]
