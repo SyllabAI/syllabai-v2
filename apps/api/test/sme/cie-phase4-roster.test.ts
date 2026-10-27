@@ -32,8 +32,25 @@ const STUBS_OF_RECORD = [
   "cie-igcse-accounting-25",
 ];
 
-// the single catalog-lane skeleton of record (0 nodes + 0 sets, no spine)
-const SKELETON_OF_RECORD = ["cie-a-level-maths-20-pure-2"];
+// the skeleton class of record (0 nodes + 0 sets, no spine): the D1 pure-2
+// catalog-lane skeleton + the 11 wave-2 registered skeletons (SME-WAVE2 r0,
+// trace 1a17e97cb4e3ae95, resources PR #194 — identity page-sourced from the
+// Official-Specifications covers; teaching content arrives with the follow-up
+// build_bundles import run)
+const SKELETON_OF_RECORD = [
+  "cie-a-level-maths-20-pure-2",
+  "cie-a-level-geography-21",
+  "cie-as-accounting-21",
+  "cie-as-biology-25",
+  "cie-as-business-23",
+  "cie-as-chemistry-25",
+  "cie-as-computer-science-19",
+  "cie-as-maths-20-mechanics",
+  "cie-as-maths-20-probability-and-statistics-1",
+  "cie-as-maths-20-pure-1",
+  "cie-as-maths-20-pure-2",
+  "cie-as-physics-25",
+];
 
 // the shared-subject-code join matrix of record (this census): the component
 // banks that seed into ONE subject tree via the seed's resolve-or-create
@@ -43,13 +60,15 @@ const SHARED_CODES_OF_RECORD: Record<string, number> = {
 
 describe("cie-phase4 roster law", () => {
   test("registry carries the 45 " + CIE_BOARD + " rows of record", () => {
-    expect(roster.cieRows).toBe(45);
+// WAVE-2 r0: 45 + 11 wave-2 registered rows = 56
+    expect(roster.cieRows).toBe(56);
   });
 
-  test("classification of record: 40 real banks / 4 stubs / 1 skeleton", () => {
+  test("classification of record: 40 real banks / 4 stubs / 12 skeletons", () => {
     expect(roster.real).toBe(40);
     expect(roster.stubs).toBe(4);
-    expect(roster.skeletons).toBe(1);
+    // WAVE-2 r0: pure-2 + the 11 wave-2 registered skeletons
+    expect(roster.skeletons).toBe(12);
   });
 
   test("stubs are exactly the of-record four", () => {
@@ -228,8 +247,9 @@ describe("cie-phase4 roster law", () => {
   });
 
   test("slug filter law: 'all' selects everything; unknown slugs are refused (never invented)", () => {
-    expect(resolveSlugFilter(roster, "all").length).toBe(45);
-    expect(resolveSlugFilter(roster, undefined).length).toBe(45);
+    // WAVE-2 r0: 45 + 11 wave-2 registered rows = 56
+    expect(resolveSlugFilter(roster, "all").length).toBe(56);
+    expect(resolveSlugFilter(roster, undefined).length).toBe(56);
     const one = resolveSlugFilter(roster, "cie-igcse-chemistry-23");
     expect(one.length).toBe(1);
     expect(one[0]?.code).toBe("0620");
@@ -256,7 +276,8 @@ describe("cie-phase4 roster law", () => {
   test("the map-law census is GREEN over the whole fleet (identity-clean before any COW)", () => {
     expect(mapLaw.green).toBe(true);
     expect(mapLaw.reds).toEqual([]);
-    expect(mapLaw.bundlesMapped).toBe(44); // 45 rows minus the pure-2 skeleton
+    // 56 rows minus the 12 skeletons (pure-2 + the 11 wave-2) = 44 mapped
+    expect(mapLaw.bundlesMapped).toBe(44);
   });
 
   test("the varchar(40) store law holds at the census maximum of record", () => {
