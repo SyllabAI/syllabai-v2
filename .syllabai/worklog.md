@@ -21707,3 +21707,22 @@ Work Log:
 
 Stage Summary:
 - The gate is LIVE and truthful: playable = officially parsed (4CH1/4MB1/4PH1), unparsed courses show the PDF archive + honest roadmap states, direct pseudo-paper URLs are dead, Exam Questions stands alone unchanged. PAT rotation CRITICAL-OVERDUE (fingerprint through 44 + this bookkeeping push).
+
+---
+Task ID: R0-AUTO-412-20261028 (Job 438940; sweep 01:30+08 sandbox-failed, executed 02:30+08)
+Agent: R0-auto (scheduled merge desk, Z.ai)
+Task: Periodic sweep — PR #412 intake; worklog append-only union + restoration of clobbered history.
+
+Work Log:
+- PR #412 (T-BOOK-068 flip car tracked of-record, head 86282ae6) CI eligible (verify+hub success); mergeable poll clean but PUT refused (worklog append collision) -> established merge-intake per procedure (c).
+- Intake found a SINGLE conflict: .syllabai/worklog.md. Root cause INCIDENT of record: 63b9b65b (w0a reconcile #2, undisclosed) replaced the worklog with a 15-line fresh file, clobbering 21,648 append-only lines; b4904813 then resolved the same file in favor of the truncated side, additionally dropping 2e65fc27's intact 21,647-line version. No operator order or disclosure found (w0a receipt json + playbook diff reviewed). Pattern consistent with the documented sandbox-recycling failure class.
+- Restored via append-only chronological union resolver with byte checks (house precedent 034c9177): base bb629a40 (21,634 lines, sha16 66fe284cec8511c4) + 17 (86282ae6 T-BOOK-068 entry @18:09Z, 7e50244064a9cba8) + 30 (a0bee607 PASTPAPERS+NEON-PAUSE @18:18Z, be7a292b4c2a2506) + 15 (63b9b65b w0a receipt preserved as-is, 87ce2bdc1417776c) + 13 (2e65fc27 run-013 entry @18:27Z, 8f2a396db5defbc0) = 21,709 lines, sha16 ba912819f4f25ae5; zero content lost; every lineage delta byte-verified present exactly once; a0bee607 superset-of-4eb4158f containment verified.
+- Intake merge commit cbd91027; GATES ALL GREEN: bun install --frozen-lockfile (952 pkgs), bun run typecheck (4x tsc clean), bun test apps/api packages (3033 pass / 13 skip / 0 fail), bun golden/runner.ts --selftest OK. Intake head CI verify+hub success -> merged.
+- MERGE OF RECORD: PR #412 -> main 7044a22f; post-merge main CI verify+hub BOTH success (bounded re-check, 2 polls).
+- Scope audit: 3 files (task yaml, worklog append, apps/api/scripts/books/glossary-reflip-r4.mts +183); 0 Java, 0 core/hub; script is the fail-closed tracked flip car, execution BLOCKED on Neon MAIN quota (zero writes ever; creds env-only; no secrets in patch).
+
+Stage Summary:
+- PR #412 merged of-record; T-BOOK-068 flip car now rollback-proof tracked (execution status UNCHANGED: BLOCKED_ON_PLATFORM_QUOTA; recipe --check -> --commit -> --idempotence; zero writes ever).
+- Worklog history RESTORED on main (21,709 lines); all referenced receipts intact as files; escalation to operator stands for the 63b9b65b/b4904813 clobber review.
+- Static four unchanged red this round: #285 1c2dd54d, #296 bd2c0b1e, #303 cce02304 (CI failure), #352 13bfea93 (zero CI ~100h+).
+- fetch-first, no force-push, Neon/prod zero-write, merge desk only (R0 authored nothing in this PR).
