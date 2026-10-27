@@ -21490,3 +21490,13 @@ Work Log:
 
 Stage Summary:
 - R-4 + R-6 IMPLEMENTED AND PR'd OF RECORD: the SME-flow comparison register (R-1..R-6 + R-7c) is now fully executed pending merge. Receipt .syllabai/receipts/HUB-R4-R6/r4-r6-implementation-receipt-20261027.json (+ local mirror). Evidence download/r4-r6-evidence-20261027/ (7 PNGs).
+
+## R0-AUTO receipt — PR #405 merge (2026-10-27T07:55Z)
+
+- Task ID: 42 (cron Job 438940, sweep 15:30+08)
+- PR: #405 R-4 prerequisite-bridge primer + R-6 trajectory chip & helpfulness ask
+- head: 9fa747d3 (real SHA 9fa747d310010760506e49e4582e6efbce39cdc2) — CI verify+hub success at gate time
+- gates: mergeable=clean, 0 reviews / 0 comments (no REQUEST_CHANGES/HOLD/BLOCKING), diff 3 files all in-scope (apps/hub guided-flow.tsx +133/-9, .syllabai receipts+worklog), no *.java, no core/hub-repo content, no Neon/prod writes
+- merge: PUT merge_method=merge -> merge commit d56bb4c3
+- post-merge main tip d56bb4c3 CI: verify:success + hub:success (GREEN, checked first-hand ~100s after merge)
+- notes: bookkeeping-only receipt commit to follow; no force-push; author not self-merged (desk role)
