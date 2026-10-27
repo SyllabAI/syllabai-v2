@@ -102,3 +102,14 @@
 - matrixish remainder (~33 raw hits: 2022-06 01 q18/q23/q24/q26-a, 2023-01 01 q26-a/b, 2023-01 02 q2/q3, 2023-06 02R q11-a, 2025-06 02 q4-b, 2025-10 01 q15, 2025-11 02 q10) — slices persisted in-repo `lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-012/slices/`
 - glued-×10N unit-sup 16 parts — eyes-on queue
 - 64 run-012 crops staged (push+attach pending); 213 run-011 machine-staged crops review:true — verdict passes still queued
+
+### run-012 spot-check additions (live-player verification, October 2026)
+
+**Live-player verification of run-012** (receipt `run-012-spotcheck.json`): deployment currency proven (live /corpus plane byte-exact vs tip `d56a2fb95a1e617f`); all 43 text fixes render (19/19 presence probes, 5 pages browser-verified incl. KaTeX pmatrix product rendering as real bracketed matrices). Two actionable residuals found:
+
+7. **Attach render-completeness law**: a crop attach is complete only when ALL FOUR hold — (a) `assets[]` metadata updated (crop-required → crop + rawUrl), (b) inline `![…](rawUrl)` link injected into `problemMd`, (c) the `> *Figure not shown…*` note removed, (d) URL gate passed before all three. The player renders figures ONLY from inline problemMd links — `assets[]` is never rendered. run-012's attach (6ba0c467) did (a)+(d) only ⇒ **58/64 crops render-invisible** (the "Figure not shown" callout still shows).
+8. **markPoints mirror law**: every `solutionMd`/`problemMd` edit must mirror into `markPoints[].textMd` in the SAME edit. The player renders the mark-scheme block whenever `solutionMd ≠ markPoints[0].textMd` — so an unmirrored fix UN-HIDES the stale OCR beside the fixed answer (and keeps leak rows alive: the 17-b © row and the q19 furniture+Q20 rows render in the markPoints block on both the 2020-06 and 2020-11 twins; 25 stale mirrors censused).
+9. **Spot-check attribution law**: page-wide absence probes over-collect from sibling planes riding the same RSC payload (SME `questions.json` copy, markPoints mirrors, corpus blueprint data). Triage every stale hit to its source plane (official field vs markPoints vs SME copy) before judging a fix failed. The SME plane staleness is by-design for official-plane waves (exam-questions tree + DB re-ingest are separate lanes).
+10. **Furniture census gap**: truncated header variants (`Question Working Answer Notes Ma`, header-only fragments) render live but fall outside the 8 boilerplate classes — extend the census to header-prefix matching; new defect leads: 2024-06 02R q2-a/2-b foreign %-profit/chairs solution rows; 2019-06 02 4-e problemMd inverse-matrix junk.
+
+**run-012 spot-check open queue deltas**: + mirror-sync wave (25 markPoints mirrors), + inline-link injection wave (58 crops), + F4/F5 eyes-on leads; PAT rotation still pending.

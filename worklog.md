@@ -35,3 +35,22 @@ Work Log:
 Stage Summary:
 - run-012 CLOSED of record: census rebuilt + 43 text fixes + 64 figures attached, all gates green, self-improving docs (playbook §7 + receipts + worklogs) updated.
 - Remaining staged queue unchanged: matrixish ~33 hits/12 groups, glued-×10N 16 parts, 213 review:true verdicts, PAT rotation.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-012-spotcheck (operator trace 1a17cd3843d94f99: "spot-check the fixed parts on the live player")
+Agent: r7a (Super Z, session web-da4ab8b1)
+Task: Live-player verification of the run-012 landed wave on production.
+
+Work Log:
+- State recovery: workspace wiped again post-landing; repo re-cloned; fetch-first found run-012 ALREADY LANDED (PR #407 merged 12f84228 == main tip fe6ae6d6, resources 073639f, crops attached, crop set 626) — the landing executed after the previous session's summary point.
+- Deployment currency PROVEN: GET /corpus/igcse-maths-b-16/official-papers.json live sha16 d56a2fb95a1e617f == repo tip bytes (build_corpus_static.mjs runs at every Vercel build; post-merge deploy current).
+- Probe rig persisted in-repo (lane-artifacts run-012/spotcheck/): targets by pid (17 parts / 15 paper pages), presence+absence windows auto-built from the d829a526..HEAD diff (RSC-escape-safe, \uXXXX unescape), page-wide leak signatures, crop HEAD checks.
+- TEXT WAVE LIVE: all 19 target parts' presence probes found (zero misses); 5 pages browser-verified: 3.4 ×10⁸, 2.40 × 10⁵, 2.34×10⁻², |p|² moduli + x=−21/5, (125p⁹w³)^(2/3), √(20a²) family, (√5−2)(√5+2), (∛81)⁴=3^(16/3), (2n−4), moved-home 17-c rows, and the 2019-06 02 4-d pmatrix product rendering as proper bracketed KaTeX matrices.
+- F1 (actionable): 58/64 run-012 crops RENDER-INVISIBLE — attach updated assets[] only; the player renders figures solely from inline problemMd links; "Figure not shown" note still shows on all 58 (browser-proven on january-2019 q7/q21-a; PNGs HEAD-200). Old-crop path intact (asset_13 + q4 grids render).
+- F2 (actionable): 25 stale markPoints[].textMd mirrors — the player renders markPoints when solutionMd ≠ MP[0].textMd, so run-012 fixes UN-HID stale OCR: 17-b © leak row renders in the official mark-scheme points (2020-06 + 2020-11 twins), q19 furniture+Q20 tail renders, Tier-D parts show flattened rows beside fixed answers. Leak strips visually incomplete until mirror sync.
+- F3 (by-design, disclosed): SME questions.json still carries pre-run-012 text (AM-leak ×1, © ×2, furniture ×31) — official-plane wave; rides page payloads but is dropped at render for covered paper keys.
+- F4/F5 new leads: 2024-06 02R q2-a/2-b foreign %-profit/chairs solution rows; truncated furniture variants rendering (2018-06 q27 tail, 2019-01 q10-b header); 2019-06 4-e problemMd inverse-matrix junk. Open queue corroborated live (glued ×1099/×10110, "4 xy 2").
+- Landed: receipt run-012-spotcheck.json (json.dump law) + playbook §7 laws 7–10 + lane-artifacts spotcheck/ (scripts + probe JSONs + live results) + 8 evidence screenshots in download/t-oeq-mathsb/run012-spotcheck/.
+
+Stage Summary:
+- run-012 VERIFIED LIVE and correct on the text plane; two mechanical follow-up waves queued: markPoints mirror sync (25) + inline-link injection (58 crops); F4/F5 eyes-on leads recorded. Bookkeeping-only commit (.syllabai/** + worklog), fetch-first, no force; read-only spot-check, no credentials used on the live site; PAT rotation STILL PENDING.
