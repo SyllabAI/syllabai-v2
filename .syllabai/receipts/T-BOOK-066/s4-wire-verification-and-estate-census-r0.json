@@ -1,0 +1,43 @@
+{
+  "receipt": "T-BOOK-066 s4-wire-verification-and-estate-census-r0",
+  "task": "T-BOOK-066",
+  "lane": "media-embed S4 lever verification + data-plane estate census",
+  "operator_traces": {
+    "estate_correction_and_credential_hand": "1a17c4611167de11 (2026-10-27): operator ruling 'The warehouse is not maths scoped. Currently it stores all subject.' + napi_ Neon API token + MAIN pooler URI + W1 pooler URI handed chat (env-only)",
+    "prior_warehouse_hunt": "1a17c3bdb1b440ad"
+  },
+  "date_utc": "2026-10-27",
+  "agent": "main agent (zai-web session web-c414c074, chat 08b3170a)",
+  "fetch_first": "origin/main re-verified d829a5268873e7b2d74f96c541de513a8ad30da2 EXACT; local main fast-forwarded, worktree clean; zero code deltas by this desk (bookkeeping-only)",
+  "s4_finding_of_record": {
+    "verdict": "THE S4 LEVER WAS ALREADY DISCHARGED ON THE WIRE before this desk's turn — b08 (u1:c1 ord 8, media-embed) is LIVE VALIDATED version=2; created_at 2026-10-27T04:37:33.552Z, updated_at (the flip) 2026-10-27T04:39:42.205Z; the pre-existing yaml/record state said 'S4 NOT executed / rail serves honest-empty' — this receipt closes that bookkeeping gap with wire evidence",
+    "no_op_decision": "the of-record ingest script (apps/api/scripts/books-ingest-rail.ts @ 8837e00e) carries 'on conflict do update set validation_state = SUGGESTED' — pointing it at the live chapter would have REGRESSED the 7 live VALIDATED siblings; the precheck-before-apply law caught the discharged state and the apply/flip legs were NOT executed (surgical staging was 1-block only: sha256 98acd2f04dbe1094daed46d1900120cbac67d902b6d288bf7b5066fb2673c0c7)",
+    "who_pulled_it": "not attributable from the wire alone (no receipt/yaml/worklog entry found on origin/main for the 04:37Z apply) — flagged as a bookkeeping miss for the self-improvement ledger"
+  },
+  "verification_green": {
+    "l2_row_equals_authored": "content jsonb canonical-equal TRUE; spec_point_refs TRUE; pdf_page_anchor TRUE (18); id TRUE ('c01-states-and-solutions/b08')",
+    "manifest_drift_guards": "url TRUE / youtubeId TRUE (hkBrw2fG75U) / sourceId TRUE (cog-1-1-states-of-matter-changing-state) vs meta/media-sources.yaml row of record",
+    "serve_proof_double_gate": "gate book row (documents.document_id=e6c0db50 v1 VALIDATED, kind TEXTBOOK, uuid acc573b0-868a-40aa-b430-303c04219eda) = 1; gate chapter row (u1:c1 VALIDATED, spec join 1.1+1.2 present) = 1; railBlocksForChapter shape serves u1:c1 -> 8/8 VALIDATED blocks ord 1..8 (prose, figure, sort-match, callout, sim-embed, table-fill, mcq-embed, media-embed) — the media-embed pilot is SERVING",
+    "fleet_census": "29 chapters, book_blocks 178 total / 178 VALIDATED == the lint census of record EXACT (29 packs, 178 blocks); per-chapter n==v everywhere",
+    "glossary": "book_glossary_terms 112 rows, 0 VALIDATED (all SUGGESTED) — the glossary flip is a separate operator lever, honest-empty serving by law (T-BOOK-017/019/022/023 lineage)"
+  },
+  "estate_census_w1": {
+    "endpoint": "ep-calm-queen-az36lppq-pooler.c-3.ap-southeast-1.aws.neon.tech/neondb (ap-southeast-1, cell c-3), read-only census",
+    "operator_ruling_pinned": "'not maths scoped, stores all subject' CONFIRMED by data: seneca_resources 161,621 rows across 262 distinct course_slugs (applied-science-btec…, biology-aqa-…, biology-cambridge-international-…, biology-edexcel-…; chemistry-family rows 19,208)",
+    "by_kind": {"examQuestion": 74328, "courseSection": 54933, "quiz": 32360},
+    "warehouse_meta": "single row key='rebuild': 'supersedes lost warehouse; operator Neon restore would supersede this' — rows 162,271 planned / slugs 262 / mapping 'clean courseIds v1' / incident 'Task 40 data loss ~2026-10-25T13:57Z; rebuilt from r2 corpus' / min_rows 100 / pii_dropped 0; updated_at 2026-10-25T22:04:00.684Z",
+    "schema_state": "wh-v1 warehouse_chunks ABSENT (superseded by the rebuild); present: seneca_resources + warehouse_meta + template app tables (Assignment/AssignmentClass/AssignmentTask/AssignmentTaskState/Class/Enrollment/Resource/User); db 241 MB; extensions plpgsql+vector",
+    "honest_delta": "meta rebuild rows 162,271 vs live 161,621 = 650-row delta, unexplained from the wire — noted, not adjudicated"
+  },
+  "follow_ups_flagged": [
+    "WAREHOUSE SERVING ARM: apps/api/src/services/warehouse/serving.ts reads warehouse_chunks — that relation no longer exists on W1; the T-OPS-PLANE-001 registry row maths-4ma1 was flipped SERVING at run-008 (2026-10-24). A courseRef=4MA1-2016 scoped ask may now 500 on the warehouse path. This desk did NOT touch the registry or envs — operator should rule: revert registry to ASSIGNED, or re-point/retire the serving arm, or provision a new chunk plane.",
+    "GLOSSARY FLIP: 112 terms SUGGESTED — separate lever (rail glossary surface serves honest-empty until then).",
+    "S4 BOOKKEEPING MISS: the 04:37Z apply+flip ran without a receipt/yaml/worklog entry — root-cause-twice candidate for the self-improvement ledger.",
+    "ROTATION LIST: napi_ token, npg_ MAIN pooler, npg_ W1 pooler, ghp_ PAT — all chat-transited; env-only use, never persisted."
+  ],
+  "instruments": {
+    "driver": "sandbox-local /home/z/my-project/scripts/t066_s4_driver.mjs (phases: precheck/snapshot/contentcheck/serveproof/w1census; postgres-js max1 prepare:false pooler-safe; secrets env-only)",
+    "staging": "sandbox-local /home/z/my-project/scripts/t066_s4_stage/ (b08-only surgical booksDir + manifest.json documentId e6c0db50 v1) — validated by the of-record script --dry-run: '1 blocks across 1 chapters, 0 glossary terms'"
+  },
+  "trace": "1a17c4611167de11"
+}

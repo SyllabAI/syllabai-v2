@@ -21500,3 +21500,19 @@ Stage Summary:
 - merge: PUT merge_method=merge -> merge commit d56bb4c3
 - post-merge main tip d56bb4c3 CI: verify:success + hub:success (GREEN, checked first-hand ~100s after merge)
 - notes: bookkeeping-only receipt commit to follow; no force-push; author not self-merged (desk role)
+Task ID: T-BOOK-066-S4-VERIFY (run-0 wire verification + estate census)
+Agent: main agent (zai-web session web-c414c074, chat 08b3170a; operator traces 1a17c4611167de11 / 1a17c3bdb1b440ad)
+
+Work Log:
+- Operator handed MAIN + W1 pooler URIs + napi_ token (env-only, never persisted; rotation list) + ruling "warehouse is not maths scoped, stores all subjects".
+- Fetch-first: origin/main re-verified d829a526 EXACT; local main fast-forwarded, worktree clean.
+- S4 lever precheck BEFORE apply (the law that mattered): b08 u1:c1 ord 8 found ALREADY LIVE VALIDATED version=2 (landed 2026-10-27T04:37:33Z, flipped 04:39:42Z) with no receipt/yaml record — apply/fit legs NOT executed; the of-record upsert's 'on conflict do update set validation_state=SUGGESTED' would have regressed the 7 live VALIDATED siblings. Surgical staging (b08-only booksDir) + dry-run shape '1 blocks across 1 chapters' had already validated the instrument path.
+- Verification GREEN of record: L2 row==authored (content/specRefs/anchor/id canonical-equal), manifest drift guards url/youtubeId/sourceId TRUE, double-gate serve proof u1:c1 -> 8/8 VALIDATED ord-ordered (media-embed serving), fleet census 29 chapters 178/178 VALIDATED == lint census EXACT, glossary 112 all SUGGESTED (separate lever).
+- W1 census (read-only, ep-calm-queen ap-southeast-1): operator ruling CONFIRMED — seneca_resources 161,621 rows / 262 course_slugs all subjects (examQuestion 74,328 / courseSection 54,933 / quiz 32,360; chemistry 19,208); warehouse_meta single 'rebuild' row: Task 40 data loss ~2026-10-25T13:57Z, rebuilt from r2 corpus, supersedes lost warehouse; wh-v1 warehouse_chunks ABSENT (superseded); template app tables co-located; 241 MB; honest delta 650 rows vs meta.
+- Receipt filed + task yaml execution_record amended (S4 wire verification).
+
+Stage Summary:
+- Receipt of record: .syllabai/receipts/T-BOOK-066/s4-wire-verification-and-estate-census-r0.json
+- FLAG for operator (not executed by this desk): the api warehouse serving arm (services/warehouse/serving.ts) reads warehouse_chunks which NO LONGER EXISTS on W1; registry maths-4ma1 was SERVING at run-008 — scoped maths asks may now 500 on the warehouse path. Ruling needed: revert registry to ASSIGNED / re-point the arm / retire the plane.
+- FLAG (self-improvement): the 04:37Z S4 apply+flip ran with zero bookkeeping (no receipt/yaml/worklog entry anywhere on origin/main) — root-cause-twice candidate.
+- SECURITY: 4 chat-transited secrets now on the rotation list (ghp_ PAT, napi_ token, npg_ MAIN, npg_ W1). Bookkeeping-only delta, fetch-first, no force.
