@@ -1,0 +1,22 @@
+schema: t-book-task/v1
+id: T-BOOK-068
+title: "Glossary re-flip r4 — 112 authored 4ch1 terms SUGGESTED → VALIDATED (NEON-DB-LOSS regression repair)"
+operator_order: "lesson-side reading progress, the 112-term glossary flip (trace 1a17cddee7d8a229)"
+status: BLOCKED_ON_CREDENTIAL
+tool: apps/api/scripts/session/glossary-reflip-r4.mts (rebuilt r4, session-side/untracked)
+root_cause_of_record: "r3 flipped 112/112 VALIDATED 2026-10-21T20:02Z; the NEON-DB-LOSS restore (Oct-21 dump predates the flip) regressed the rows to SUGGESTED — ingest upsert never resets validation_state, restore is the only self-consistent vector"
+execution_recipe: |
+  DATABASE_URL=<Neon MAIN pooler> bun apps/api/scripts/session/glossary-reflip-r4.mts --check
+  DATABASE_URL=<Neon MAIN pooler> bun apps/api/scripts/session/glossary-reflip-r4.mts --commit
+  DATABASE_URL=<Neon MAIN pooler> bun apps/api/scripts/session/glossary-reflip-r4.mts --idempotence
+guards: |
+  authored 112 + V1/V3/V4 zero problems; census {SUGGESTED:112,VALIDATED:0} exact;
+  book_blocks total 178 (b6b5dec4 world); UPDATE rowcount == 112; post census {SUGGESTED:0,VALIDATED:112};
+  subject_code='4ch1' pinned; slug = ANY(authored slugs); ssl+prepare:false (Neon pooler)
+verified_today:
+  authored_layer: "112 terms / 0 V-law problems (checked 2026-10-27, trace 1a17e0f21845ef89)"
+  credential: "ABSENT — sandbox DATABASE_URL is a local placeholder; the Task-7 handoff was lost with the rollback; env-only law holds (nothing persisted)"
+system_change_candidate: |
+  The flip car has now been lost TWICE to sandbox rollbacks because it lives session-side.
+  Candidate: PR the tool into apps/api/scripts/books/ (tracked, of-record) so rollback cannot
+  eat it — operator ruling requested. Until then the tool is rebuilt-from-spec each time.

@@ -1,0 +1,43 @@
+schema: t-book-task/v1
+id: T-BOOK-067
+title: "Lesson-side reading progress — the Lesson reuses the rail's ONE chapter_progress row (no fork)"
+operator_order: "lesson-side reading progress, the 112-term glossary flip (trace 1a17cddee7d8a229)"
+status: IN_REVIEW
+branch: t-book-067/lesson-reading-progress
+head: 7355159d
+base: 03d16e31
+push: BLOCKED_ON_CREDENTIAL  # no GitHub PAT held in-session (rotation list); commit is local-only until a PAT is provided
+
+scope:
+  allowed:
+    - apps/hub/src/lib/books-progress-shared.ts   # new — pure helpers, server-safe
+    - apps/hub/src/lib/books-progress.ts          # new — client hook (byte-equal rail extraction)
+    - apps/hub/src/lib/books-progress.test.ts     # new — bun tests
+    - apps/hub/src/components/books/lesson/lesson-progress.tsx  # new — tracker
+    - apps/hub/src/components/books/lesson/lesson-view.tsx      # wire
+    - apps/hub/src/components/books/rail/rail-workspace.tsx     # hook extraction, behavior identical
+    - apps/hub/.env.example                       # rider: retired-Render fossil correction (operator order)
+  forbidden:
+    - packages/db schema changes (chapter_progress already carries the signal)
+    - api surface changes (the hub proxy is a pipe; the api is untouched)
+    - rail behavior changes (extraction is byte-equal; walk-verified)
+    - the glossary flip (T-BOOK-068, separate lever, credential-blocked)
+
+laws_honored:
+  - ADR-BOOK-0001 §8: chapter_progress is the ONLY persisted user signal; the lesson is another READER of the same row
+  - client/server boundary: server components import only from books-progress-shared (no react imports there)
+  - react-hooks: no setState-in-effect cascades (scroll pct via useSyncExternalStore), no render-phase ref mutation
+  - honest presence: no stored row + no movement → the tracker renders nothing (first-visit lessons show no bar)
+  - signed-out (401): persistence silently skipped, surface fully usable
+
+gates:
+  tsc: 0
+  eslint: 0
+  bun_test: "11/11 (books-progress.test.ts)"
+  next_build: 0
+  surface_walk: "production-standalone serve of the branch; Playwright pre-navigation probe — mount → GET (auth=yes) → resume scroll (scrollY 9365 to the section containing lastOrd=2) → IO deepest-visible → debounced PUT (auth=yes) → live bar 'Reading progress …% read'; console clean; evidence download/t-book-067/ (probe-result.json, wire log, screenshots)"
+
+disclosures:
+  - "RETRACTED: this session's earlier 'production core 503' flag was an artifact of probing the RETIRED Render host (syllabai-core.onrender.com). The api-of-record https://syllabai-v2.vercel.app was verified ALIVE (books shelf/chapters/blocks serving, 8/8 VALIDATED for u1:c1; progress route 401-guarded). The operator's standing correction — Render retired, syllabai-v2 is the of-record — is now pinned in .env.example and in the stub-code headers."
+  - "dev-server artifact: next dev (turbopack, 16.3.8) on this sandbox deterministically never hydrates ANY page (HMR ws ERR_INVALID_HTTP_RESPONSE, persists across clean restarts and fresh .next/dev) — surfaced as the pre-rollback 'signed-in bar never mounts in dev' mystery. Production standalone hydrates and runs the full loop. Not a code defect; flag for the operator's dev-environment awareness only."
+  - "push blocked: no GitHub PAT in-session; branch t-book-067/lesson-reading-progress @ 7355159d is local-of-record until a PAT is handed (env-only, per law)."
