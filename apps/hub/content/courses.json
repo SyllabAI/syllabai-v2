@@ -1,6 +1,6 @@
 {
  "schema": "syllabai-demo.course-registry/1.1",
- "note": "Operator-maintained registry mirroring the 39 Edexcel IAL/IGCSE course variants scraped in SyllabAI/syllabai-resources (authoritative source). Every course has a content bundle under content/<slug>/ imported from the corpus: 'pilot' = official-tree course with the 4CH1 concept graph and learner overlay; 'full' = complete SME-native corpus import (notes, exam questions, flashcards; official-spec mapping pending upstream for all non-4CH1 courses). Slugs, levels, subjects and exam codes come from the upstream manifests — never invented. | RULING (CONTENT-AUDIT run-001-r0 ghost item 3, operator order trace 1a15f79acff5346d \"Proceed with (3) Pure-2 ghost handling\", 2026-10-22): cie-a-level-maths-20-pure-2 is the honest skeleton — CIE 9709 Pure 2 is a real syllabus component but SME never published a P2 course (upstream 404 at the CIE pin and resources main HEAD), so the row is \"registered\" (import-pending class per the courses.ts law) pending a commissioned P2 corpus; the empty bundle stays (validator-acknowledged D1 skeleton) and the 9709 P2 past papers (68) remain served from the syllabai-pastpapers archive via pastpapers-corpus.ts.",
+ "note": "Operator-maintained registry mirroring the 39 Edexcel IAL/IGCSE course variants scraped in SyllabAI/syllabai-resources (authoritative source). Every course has a content bundle under content/<slug>/ imported from the corpus: 'pilot' = official-tree course with the 4CH1 concept graph and learner overlay; 'full' = complete SME-native corpus import (notes, exam questions, flashcards; official-spec mapping pending upstream for all non-4CH1 courses). Slugs, levels, subjects and exam codes come from the upstream manifests — never invented. | RULING (CONTENT-AUDIT run-001-r0 ghost item 3, operator order trace 1a15f79acff5346d \"Proceed with (3) Pure-2 ghost handling\", 2026-10-22): cie-a-level-maths-20-pure-2 is the honest skeleton — CIE 9709 Pure 2 is a real syllabus component but SME never published a P2 course (upstream 404 at the CIE pin and resources main HEAD), so the row is \"registered\" (import-pending class per the courses.ts law) pending a commissioned P2 corpus; the empty bundle stays (validator-acknowledged D1 skeleton) and the 9709 P2 past papers (68) remain served from the syllabai-pastpapers archive via pastpapers-corpus.ts. | WAVE-2 (SME-WAVE2 r0, operator trace 1a17e97cb4e3ae95 'Ok go ahead', 2026-10-28): +12 rows for the SME scrape-lane courses (PR #170 / 7fe3c236) — 9 CIE AS lanes + a-level geography-21 + edexcel igcse-history-17, AS maths split into its 4 unit lanes per corpus layout. status 'registered' (import-pending class; content bundles land in a follow-up import run). Codes are page-sourced from Official-Specifications cover_code (9701/9700/9702/9709/9609/9618/9706/9696/4HI1). curriculumCode and coreBridge deliberately omitted (fail-closed law of record; page-sourced windows exist for 7 lanes and can be added on operator order). Honest empties: as-accounting-21 / a-level-geography-21 / igcse-history-17 have no EQ on SME (no_topic_questions_on_sme); geography-21 + history-17 additionally have no SME notes; flashcards missing on SME for business-23/CS-19/accounting-21/geography-21/history-17. Past papers: NONE of the 12 in syllabai-pastpapers (verified 2026-10-28 — CIE archive carries no a-level/as tree; Edexcel IGCSE carries no history).",
  "courses": [
   {
    "slug": "cie-a-level-chemistry-25",
@@ -174,6 +174,98 @@
    "status": "full",
    "board": "Cambridge International",
    "curriculumCode": "9708-2023-2025"
+  },
+  {
+   "slug": "cie-a-level-geography-21",
+   "level": "A-Level",
+   "subject": "Geography",
+   "code": "9696",
+   "status": "registered",
+   "board": "Cambridge International"
+  },
+  {
+   "slug": "cie-as-accounting-21",
+   "level": "AS",
+   "subject": "Accounting",
+   "code": "9706",
+   "status": "registered",
+   "board": "Cambridge International"
+  },
+  {
+   "slug": "cie-as-biology-25",
+   "level": "AS",
+   "subject": "Biology",
+   "code": "9700",
+   "status": "registered",
+   "board": "Cambridge International"
+  },
+  {
+   "slug": "cie-as-business-23",
+   "level": "AS",
+   "subject": "Business",
+   "code": "9609",
+   "status": "registered",
+   "board": "Cambridge International"
+  },
+  {
+   "slug": "cie-as-chemistry-25",
+   "level": "AS",
+   "subject": "Chemistry",
+   "code": "9701",
+   "status": "registered",
+   "board": "Cambridge International"
+  },
+  {
+   "slug": "cie-as-computer-science-19",
+   "level": "AS",
+   "subject": "Computer Science",
+   "code": "9618",
+   "status": "registered",
+   "board": "Cambridge International"
+  },
+  {
+   "slug": "cie-as-maths-20-mechanics",
+   "level": "AS",
+   "subject": "Mathematics",
+   "code": "9709",
+   "status": "registered",
+   "label": "Maths — Mechanics",
+   "board": "Cambridge International"
+  },
+  {
+   "slug": "cie-as-maths-20-probability-and-statistics-1",
+   "level": "AS",
+   "subject": "Mathematics",
+   "code": "9709",
+   "status": "registered",
+   "label": "Maths — Probability & Statistics 1",
+   "board": "Cambridge International"
+  },
+  {
+   "slug": "cie-as-maths-20-pure-1",
+   "level": "AS",
+   "subject": "Mathematics",
+   "code": "9709",
+   "status": "registered",
+   "label": "Maths — Pure 1",
+   "board": "Cambridge International"
+  },
+  {
+   "slug": "cie-as-maths-20-pure-2",
+   "level": "AS",
+   "subject": "Mathematics",
+   "code": "9709",
+   "status": "registered",
+   "label": "Maths — Pure 2",
+   "board": "Cambridge International"
+  },
+  {
+   "slug": "cie-as-physics-25",
+   "level": "AS",
+   "subject": "Physics",
+   "code": "9702",
+   "status": "registered",
+   "board": "Cambridge International"
   },
   {
    "slug": "cie-as-english-general-paper-21",
@@ -798,6 +890,13 @@
    "label": "Physics — Modular 2024, Unit 2",
    "code": "4XPH1",
    "status": "full"
+  },
+  {
+   "slug": "igcse-history-17",
+   "level": "IGCSE",
+   "subject": "History",
+   "code": "4HI1",
+   "status": "registered"
   },
   {
    "slug": "igcse-science-double-award-17-biology",

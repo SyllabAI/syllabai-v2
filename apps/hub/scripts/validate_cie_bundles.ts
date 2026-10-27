@@ -169,7 +169,8 @@ type Row = {
 const reg = JSON.parse(readFileSync(path.join(CONTENT, "courses.json"), "utf8")) as {
   courses: Row[];
 };
-check("registry carries 94 rows (49 Edexcel + 45 CIE)", reg.courses.length === 94, String(reg.courses.length));
+// WAVE-2 r0 (trace 1a17e97cb4e3ae95, resources PR #194): +12 rows = 50 Edexcel + 56 CIE
+check("registry carries 106 rows (50 Edexcel + 56 CIE)", reg.courses.length === 106, String(reg.courses.length));
 for (const exp of EXPECT) {
   const row = reg.courses.find((c) => c.slug === exp.slug);
   if (!row) { check(`registry row ${exp.slug}`, false, "MISSING"); continue; }
@@ -335,9 +336,12 @@ for (const exp of PHASE3_ROSTER) {
   checkRealBundle(exp.slug, exp.code);
 }
 const cieRowCount = reg.courses.filter((c) => c.board === BOARD).length;
-check("registry carries 45 CIE rows (44-slug roster + D1 pure-2)", cieRowCount === 45, String(cieRowCount));
+// WAVE-2 r0: +11 CIE rows (44-slug roster + D1 pure-2 + 11 wave-2 registered skeletons)
+check("registry carries 56 CIE rows (44-slug roster + D1 pure-2 + 11 wave-2 registered)", cieRowCount === 56, String(cieRowCount));
 const cieFilled = reg.courses.filter((c) => c.board === BOARD && c.curriculumCode !== undefined).length;
-check("registry CIE fill of record: 44/45 mapped (the run-009 onGreen fill; pure-2 the honest gate)",
+// WAVE-2 r0: the 11 wave-2 registered rows are honestly unmapped (no curriculumCode —
+// fail-closed law of record), joining pure-2 as the registered/unmapped class
+check("registry CIE fill of record: 44/56 mapped (the run-009 onGreen fill; pure-2 + the 11 wave-2 registered skeletons the honest gates)",
   cieFilled === 44, String(cieFilled));
 check("registry coreBridge CIE law of record: exactly the 26 T-SM-BRIDGE-WIDEN r0 + T-SM-EDX-INGEST-R1 rows carry true; every other CIE row stays absent (Wave-3 band-scheme rows remain blocked pending the levels-of-response ADR)",
   reg.courses
