@@ -4,6 +4,529 @@
  "subject": "Accounting",
  "code": "9706",
  "syllabusVersion": "2023-2025",
- "nodes": [],
- "edges": []
+ "nodes": [
+  {
+   "code": "cie-as-accounting-21",
+   "family": "SUBJECT",
+   "title": "Accounting",
+   "description": null,
+   "parents": [],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-accounting-2023-2025-T1",
+   "family": "TOPIC",
+   "title": "Financial accounting (AS Level)",
+   "description": null,
+   "parents": [
+    "cie-as-accounting-21"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-accounting-2023-2025-T1:SUB1.1",
+   "family": "SUBTOPIC",
+   "title": "Types of business entity",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 1
+  },
+  {
+   "code": "1.1.1",
+   "family": "SPEC_POINT",
+   "title": "Types of business entity: • the different types of business entity: • sole trader • partnership • limited company (including public limited company (plc)) • the advantages and disadvantages of these types of business entity • sources of finance and methods of funding for these types of business entity including: • loans (secured and unsecured) • bank overdrafts • payment by instalments • rental/leasing as an alternative to purchase • trade credit • sources of finance for limited companies as in 1.5.4",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 1,
+   "scope": "AS Level"
+  },
+  {
+   "code": "cie-a-level-accounting-2023-2025-T1:SUB1.2",
+   "family": "SUBTOPIC",
+   "title": "The accounting system",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 2
+  },
+  {
+   "code": "1.2.1",
+   "family": "SPEC_POINT",
+   "title": "The accounting system: • the principles of the double entry system to record business transactions • the accounting equation • the role of books of prime entry in the recording of business transactions • sales journal • sales returns journal • purchases journal • purchases returns journal • cash book • general journal • preparation of ledger accounts • the purpose of a trial balance • the advantages and disadvantages of maintaining full accounting records • the accounting concepts underpinning the preparation of accounts: business entity, historic cost, money • the use of computerised accounting systems in recording financial transactions • the advantages and disadvantages of introducing a computerised accounting system • the ways in which the security of data can be ensured within a computerised accounting system",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 2,
+   "scope": "AS Level"
+  },
+  {
+   "code": "cie-a-level-accounting-2023-2025-T1:SUB1.3",
+   "family": "SUBTOPIC",
+   "title": "Accounting for non-current assets",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 3
+  },
+  {
+   "code": "1.3.1",
+   "family": "SPEC_POINT",
+   "title": "Capital and revenue income and expenditure: • the difference between the treatment of capital and revenue income and capital and revenue expenditure • the effect on profit/loss and asset value of the incorrect treatment of capital and revenue expenditure",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.3"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 3,
+   "scope": "AS Level"
+  },
+  {
+   "code": "1.3.2",
+   "family": "SPEC_POINT",
+   "title": "Changing asset values: • factors that cause the value of non-current assets to depreciate • the purpose of accounting for depreciation of non-current assets and the associated application of relevant • how to calculate depreciation using the reducing balance and straight-line methods • the most appropriate method of calculating depreciation • how to measure the value of non-current assets by the cost model or the revaluation model • how to prepare ledger accounts and journal entries for: • non-current assets (acquisition and revaluation) • depreciation and disposal (including entries for part exchange) • how to calculate profit or loss on disposal of a non-current asset • how to record the effect of a charge for depreciation in the statement of profit or loss and statement of",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.3"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 4,
+   "scope": "AS Level"
+  },
+  {
+   "code": "cie-a-level-accounting-2023-2025-T1:SUB1.4",
+   "family": "SUBTOPIC",
+   "title": "Reconciliation and verification",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 4
+  },
+  {
+   "code": "1.4.1",
+   "family": "SPEC_POINT",
+   "title": "Reconciliation and verification: • the need to reconcile and verify ledger accounts using documentation from internal and external sources • the benefits and limitations of reconciliation and verification procedures",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.4"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 5,
+   "scope": "AS Level"
+  },
+  {
+   "code": "1.4.2",
+   "family": "SPEC_POINT",
+   "title": "Trial balance: • errors which affect the trial balance • errors which do not affect the trial balance: • omission • commission • principle • original entry • reversal • compensating • how to prepare ledger accounts and journal entries to correct errors using a suspense account • the effect on the financial statements of the correction of errors • the benefits and limitations of a trial balance",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.4"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 6,
+   "scope": "AS Level"
+  },
+  {
+   "code": "1.4.3",
+   "family": "SPEC_POINT",
+   "title": "Bank reconciliation statements: • updating of cash books • how to prepare bank reconciliation statements • the benefits and limitations of preparing a bank reconciliation statement",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.4"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 7,
+   "scope": "AS Level"
+  },
+  {
+   "code": "1.4.4",
+   "family": "SPEC_POINT",
+   "title": "Control accounts: • entries in control accounts • sales ledger control accounts and purchases ledger control accounts • reconciliation statements between control account balances and ledger balances • the effects on financial statements of the correction of errors • the benefits and limitations of control accounts",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.4"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 8,
+   "scope": "AS Level"
+  },
+  {
+   "code": "cie-a-level-accounting-2023-2025-T1:SUB1.5",
+   "family": "SUBTOPIC",
+   "title": "Preparation of financial statements",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 5
+  },
+  {
+   "code": "1.5.1",
+   "family": "SPEC_POINT",
+   "title": "Adjustments to draft financial statements: • how to calculate and record the adjustments needed and the effect on financial statements in respect of: • accruals and prepayments of income and expenses • irrecoverable debts, irrecoverable debts recovered and allowance for irrecoverable debts • depreciation • inventory valuation • correction of errors",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 9,
+   "scope": "AS Level"
+  },
+  {
+   "code": "1.5.2",
+   "family": "SPEC_POINT",
+   "title": "Sole traders: • how to prepare a statement of profit or loss and statement of financial position for a sole trader from full or",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 10,
+   "scope": "AS Level"
+  },
+  {
+   "code": "1.5.3",
+   "family": "SPEC_POINT",
+   "title": "Partnerships: • how to prepare a statement of profit or loss, appropriation account and statement of financial position for a • why partners may maintain separate capital accounts and current accounts • how to prepare partners’ capital and current accounts • the contents of a partnership agreement • the advantages and disadvantages to partners of maintaining a partnership agreement • the provisions of the Partnership Act 1890 in respect of partners’ salaries, division of profit or loss, interest",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 11,
+   "scope": "AS Level"
+  },
+  {
+   "code": "1.5.4",
+   "family": "SPEC_POINT",
+   "title": "Limited companies: • the features and accounting treatment of ordinary shares, bonus issues, rights issues, debentures, dividends • the advantages and disadvantages to the company and to the shareholders of a company making a bonus • the advantages and disadvantages to the company and to the shareholders of a company issuing shares and • the distinction between capital reserves (share premium and revaluation reserve) and revenue reserves • how to prepare ledger accounts to record: • an issue of ordinary shares at par or at a premium • a rights issue of shares at par or at a premium • a bonus issue of shares • how to prepare a statement of profit or loss, statement of financial position and statement of changes in • sources of finance for specified purposes",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 12,
+   "scope": "AS Level"
+  },
+  {
+   "code": "cie-a-level-accounting-2023-2025-T1:SUB1.6",
+   "family": "SUBTOPIC",
+   "title": "Analysis and communication of accounting information",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 6
+  },
+  {
+   "code": "1.6.1",
+   "family": "SPEC_POINT",
+   "title": "Users of accounting information: • the differing requirements for information of stakeholders including: • owners • managers • employees • investors • lenders • suppliers • customers • government • public and environmental bodies • how to communicate and analyse the information required by these different stakeholders",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.6"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 13,
+   "scope": "AS Level"
+  },
+  {
+   "code": "1.6.2",
+   "family": "SPEC_POINT",
+   "title": "Calculation and evaluation of ratios: • how to calculate key accounting ratios to measure profitability, liquidity and efficiency: • profitability ratios: gross profit margin, mark-up, profit margin, return on capital employed, expenses to • liquidity ratios: current ratio, acid test ratio • efficiency ratios: non-current asset turnover, trade receivables turnover (days), • how to evaluate the profitability, liquidity and efficiency of an organisation by interpreting ratios • possible measures to improve the profitability, liquidity and efficiency of an organisation • the limitations of accounting information",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T1:SUB1.6"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 14,
+   "scope": "AS Level"
+  },
+  {
+   "code": "cie-a-level-accounting-2023-2025-T2",
+   "family": "TOPIC",
+   "title": "Cost and management accounting (AS Level)",
+   "description": null,
+   "parents": [
+    "cie-as-accounting-21"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-accounting-2023-2025-T2:SUB2.1",
+   "family": "SUBTOPIC",
+   "title": "Costs and cost behaviour",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 1
+  },
+  {
+   "code": "2.1.1",
+   "family": "SPEC_POINT",
+   "title": "Materials and labour: • accounting for material and labour costs • how to identify and calculate fixed costs, variable costs, semi-variable costs and stepped costs • how to identify and calculate the elements of direct and indirect costs • how to calculate the value of closing inventory using the first in first out (FIFO) and weighted average cost • the principles of just in time (JIT) management of inventory",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T2:SUB2.1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 15,
+   "scope": "AS Level"
+  },
+  {
+   "code": "cie-a-level-accounting-2023-2025-T2:SUB2.2",
+   "family": "SUBTOPIC",
+   "title": "Traditional costing methods",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 2
+  },
+  {
+   "code": "2.2.1",
+   "family": "SPEC_POINT",
+   "title": "Costing applications: • how to apply traditional costing methods to prepare costing statements using unit, job and batch costing",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T2:SUB2.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 16,
+   "scope": "AS Level"
+  },
+  {
+   "code": "2.2.2",
+   "family": "SPEC_POINT",
+   "title": "Absorption costing: • the difference between a cost centre and a cost unit • how to allocate and apportion overhead expenditure between production and service departments • how to calculate overhead absorption rates using an appropriate basis • the causes and the calculation of under absorption and over absorption of overheads • how to prepare costing and profit statements using absorption costing • the uses and limitations of absorption costing • the usefulness of absorption cost data as a support for management decision-making • non-financial factors and their significance",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T2:SUB2.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 17,
+   "scope": "AS Level"
+  },
+  {
+   "code": "2.2.3",
+   "family": "SPEC_POINT",
+   "title": "Marginal costing: • how to calculate the contribution of a product • how to interpret a break-even chart • how to calculate the break-even point, contribution to sales ratio, level of output or sales to achieve a target • the use and limitations of break-even analysis • how to prepare costing and profit statements using marginal costing • how to prepare a statement reconciling the reported profits using marginal costing and absorption costing • the uses and limitations of marginal costing • the usefulness of marginal costing data as a support for management decision-making, including make-or- • non-financial factors and their significance",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T2:SUB2.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 18,
+   "scope": "AS Level"
+  },
+  {
+   "code": "2.2.4",
+   "family": "SPEC_POINT",
+   "title": "Cost–volume–profit analysis: • the advantages and limitations of cost–volume–profit analysis • the usefulness of cost–volume–profit data as a support for management decision-making • how to apply costing concepts to make business decisions and recommendations using supporting data • non-financial factors and their significance",
+   "description": null,
+   "parents": [
+    "cie-a-level-accounting-2023-2025-T2:SUB2.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 19,
+   "scope": "AS Level"
+  }
+ ],
+ "edges": [
+  {
+   "source": "cie-as-accounting-21",
+   "relation": "PART_OF",
+   "target": "cie-a-level-accounting-2023-2025-T1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-accounting-2023-2025-T1:SUB1.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.1",
+   "relation": "PART_OF",
+   "target": "1.1.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-accounting-2023-2025-T1:SUB1.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.2",
+   "relation": "PART_OF",
+   "target": "1.2.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-accounting-2023-2025-T1:SUB1.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.3",
+   "relation": "PART_OF",
+   "target": "1.3.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.3",
+   "relation": "PART_OF",
+   "target": "1.3.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-accounting-2023-2025-T1:SUB1.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.4",
+   "relation": "PART_OF",
+   "target": "1.4.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.4",
+   "relation": "PART_OF",
+   "target": "1.4.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.4",
+   "relation": "PART_OF",
+   "target": "1.4.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.4",
+   "relation": "PART_OF",
+   "target": "1.4.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-accounting-2023-2025-T1:SUB1.5",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.5",
+   "relation": "PART_OF",
+   "target": "1.5.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.5",
+   "relation": "PART_OF",
+   "target": "1.5.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.5",
+   "relation": "PART_OF",
+   "target": "1.5.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.5",
+   "relation": "PART_OF",
+   "target": "1.5.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-accounting-2023-2025-T1:SUB1.6",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.6",
+   "relation": "PART_OF",
+   "target": "1.6.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T1:SUB1.6",
+   "relation": "PART_OF",
+   "target": "1.6.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-as-accounting-21",
+   "relation": "PART_OF",
+   "target": "cie-a-level-accounting-2023-2025-T2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T2",
+   "relation": "PART_OF",
+   "target": "cie-a-level-accounting-2023-2025-T2:SUB2.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T2:SUB2.1",
+   "relation": "PART_OF",
+   "target": "2.1.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T2",
+   "relation": "PART_OF",
+   "target": "cie-a-level-accounting-2023-2025-T2:SUB2.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T2:SUB2.2",
+   "relation": "PART_OF",
+   "target": "2.2.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T2:SUB2.2",
+   "relation": "PART_OF",
+   "target": "2.2.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T2:SUB2.2",
+   "relation": "PART_OF",
+   "target": "2.2.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-accounting-2023-2025-T2:SUB2.2",
+   "relation": "PART_OF",
+   "target": "2.2.4",
+   "provenanceTier": "RULE_DERIVED"
+  }
+ ]
 }

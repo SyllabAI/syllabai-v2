@@ -1,9 +1,428 @@
 {
  "board": "Cambridge International",
  "level": "AS",
- "subject": "Mathematics",
+ "subject": "Maths",
  "code": "9709",
  "syllabusVersion": "2023-2025",
- "nodes": [],
- "edges": []
+ "nodes": [
+  {
+   "code": "cie-as-maths-20-pure-2",
+   "family": "SUBJECT",
+   "title": "Maths",
+   "description": null,
+   "parents": [],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T2",
+   "family": "TOPIC",
+   "title": "Pure Mathematics",
+   "description": null,
+   "parents": [
+    "cie-as-maths-20-pure-2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T2:SUB2.1",
+   "family": "SUBTOPIC",
+   "title": "Algebra",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 1
+  },
+  {
+   "code": "2.1.1",
+   "family": "SPEC_POINT",
+   "title": "understand the meaning of | x |, sketch the graph of y = | ax + b | and use relations such as functions",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 1
+  },
+  {
+   "code": "2.1.2",
+   "family": "SPEC_POINT",
+   "title": "2 | a | = | b | ⇔ a = b and | x – a | < b ⇔ a – b < x < a + b when solving equations and inequalities by a linear or quadratic polynomial, and identify the quotient and remainder (which may be zero) theorem.: • divide a polynomial, of degree not exceeding 4, • use the factor theorem and the remainder",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 2
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T2:SUB2.2",
+   "family": "SUBTOPIC",
+   "title": "Logarithmic and exponential functions",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 2
+  },
+  {
+   "code": "2.2.1",
+   "family": "SPEC_POINT",
+   "title": "understand the relationship between logarithms and indices, and use the laws of logarithms (excluding change of base)",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 3
+  },
+  {
+   "code": "2.2.2",
+   "family": "SPEC_POINT",
+   "title": "understand the definition and properties of e Including knowledge of the graph of and ln x , including their relationship as inverse functions and their graphs",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 4
+  },
+  {
+   "code": "2.2.3",
+   "family": "SPEC_POINT",
+   "title": "use logarithms to solve equations and inequalities in which the unknown appears in indices",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 5
+  },
+  {
+   "code": "2.2.4",
+   "family": "SPEC_POINT",
+   "title": "use logarithms to transform a given relationship e.g. to linear form, and hence determine unknown constants by considering the gradient and/or intercept.",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 6
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T2:SUB2.3",
+   "family": "SUBTOPIC",
+   "title": "Trigonometry",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 3
+  },
+  {
+   "code": "2.3.1",
+   "family": "SPEC_POINT",
+   "title": "understand the relationship of the secant, cosecant and cotangent functions to cosine, sine and tangent, and use properties and graphs of all six trigonometric functions for angles of any magnitude",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.3"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 7
+  },
+  {
+   "code": "2.3.2",
+   "family": "SPEC_POINT",
+   "title": "use trigonometrical identities for the simplification and exact evaluation of expressions, e.g. solving and in the course of solving equations, and select an identity or identities appropriate to the context, showing familiarity in particular with the use of tan( A ± B ) forms R sin ^ i ! a h and R cos ^ i ! a h .: • sec i / 1 + tan i and cosec i / 1 + cot i • the expansions of sin( A ± B ) , cos( A ± B ) and • the formulae for sin 2 A , cos 2 A and tan 2 A • the expression of a sin i + b cos i in the",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.3"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 8
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T2:SUB2.4",
+   "family": "SUBTOPIC",
+   "title": "Differentiation",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 4
+  },
+  {
+   "code": "2.4.1",
+   "family": "SPEC_POINT",
+   "title": "use the derivatives of e , ln x , sin x , cos x , tan x , together with constant multiples, sums, differences and composites",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.4"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 9
+  },
+  {
+   "code": "2.4.2",
+   "family": "SPEC_POINT",
+   "title": "differentiate products and quotients e.g.",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.4"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 10
+  },
+  {
+   "code": "2.4.3",
+   "family": "SPEC_POINT",
+   "title": "find and use the first derivative of a function e.g. which is defined parametrically or implicitly.",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.4"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 11
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T2:SUB2.5",
+   "family": "SUBTOPIC",
+   "title": "Integration",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 5
+  },
+  {
+   "code": "2.5.1",
+   "family": "SPEC_POINT",
+   "title": "extend the idea of ‘reverse differentiation’ to ax + b 1 include the integration of e , , ax + b sin( ax + b ) , cos( ax + b ) and sec ( ax + b )",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 12
+  },
+  {
+   "code": "2.5.2",
+   "family": "SPEC_POINT",
+   "title": "use trigonometrical relationships in carrying out integration or",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 13
+  },
+  {
+   "code": "2.5.3",
+   "family": "SPEC_POINT",
+   "title": "understand and use the trapezium rule to Including use of sketch graphs in simple cases to estimate the value of a definite integral. determine whether the trapezium rule gives an over- estimate or an under-estimate.",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 14
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T2:SUB2.6",
+   "family": "SUBTOPIC",
+   "title": "Numerical solution of equations",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 6
+  },
+  {
+   "code": "2.6.1",
+   "family": "SPEC_POINT",
+   "title": "locate approximately a root of an equation, by means of graphical considerations and/or searching for a sign change",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.6"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 15
+  },
+  {
+   "code": "2.6.2",
+   "family": "SPEC_POINT",
+   "title": "understand the idea of, and use the notation for, a sequence of approximations which converges to a root of an equation",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.6"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 16
+  },
+  {
+   "code": "2.6.3",
+   "family": "SPEC_POINT",
+   "title": "understand how a given simple iterative formula Knowledge of the condition for convergence is not of the form x = F( x ) relates to the equation included, but an understanding that an iteration may being solved, and use a given iteration, or an fail to converge is expected. iteration based on a given rearrangement of an equation, to determine a root to a prescribed degree of accuracy.",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T2:SUB2.6"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 17
+  }
+ ],
+ "edges": [
+  {
+   "source": "cie-as-maths-20-pure-2",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T2:SUB2.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.1",
+   "relation": "PART_OF",
+   "target": "2.1.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.1",
+   "relation": "PART_OF",
+   "target": "2.1.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T2:SUB2.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.2",
+   "relation": "PART_OF",
+   "target": "2.2.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.2",
+   "relation": "PART_OF",
+   "target": "2.2.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.2",
+   "relation": "PART_OF",
+   "target": "2.2.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.2",
+   "relation": "PART_OF",
+   "target": "2.2.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T2:SUB2.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.3",
+   "relation": "PART_OF",
+   "target": "2.3.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.3",
+   "relation": "PART_OF",
+   "target": "2.3.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T2:SUB2.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.4",
+   "relation": "PART_OF",
+   "target": "2.4.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.4",
+   "relation": "PART_OF",
+   "target": "2.4.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.4",
+   "relation": "PART_OF",
+   "target": "2.4.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T2:SUB2.5",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.5",
+   "relation": "PART_OF",
+   "target": "2.5.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.5",
+   "relation": "PART_OF",
+   "target": "2.5.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.5",
+   "relation": "PART_OF",
+   "target": "2.5.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T2:SUB2.6",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.6",
+   "relation": "PART_OF",
+   "target": "2.6.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.6",
+   "relation": "PART_OF",
+   "target": "2.6.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T2:SUB2.6",
+   "relation": "PART_OF",
+   "target": "2.6.3",
+   "provenanceTier": "RULE_DERIVED"
+  }
+ ]
 }

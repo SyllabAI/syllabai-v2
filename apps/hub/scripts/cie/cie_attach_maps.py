@@ -362,7 +362,11 @@ def main():
                            notesViaSubtopic=sum(r["notes"]["viaSubtopicScope"] for r in report_rows),
                            questionPartsCoded=sum(r["questionParts"]["coded"] for r in report_rows),
                            flashcardsCoded=sum(r["flashcards"]["coded"] for r in report_rows)))
-    with open(os.path.join(out_dir, "_report_cie_maps.json"), "w", encoding="utf8") as f:
+    # SME-WAVE2 r1: report filename env-overridable (lane-worktree pattern) —
+    # the of-record 44-bank _report_cie_maps.json stays byte-untouched on
+    # wave-2 re-runs; default unchanged.
+    report_name = os.environ.get("CIE_MAPS_REPORT", "_report_cie_maps.json")
+    with open(os.path.join(out_dir, report_name), "w", encoding="utf8") as f:
         f.write(json.dumps(report, indent=1, sort_keys=True) + "\n")
     print("TOTALS:", json.dumps(report["totals"], indent=1), flush=True)
 

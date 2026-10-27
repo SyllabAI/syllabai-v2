@@ -1,9 +1,734 @@
 {
  "board": "Cambridge International",
  "level": "AS",
- "subject": "Mathematics",
+ "subject": "Maths",
  "code": "9709",
  "syllabusVersion": "2023-2025",
- "nodes": [],
- "edges": []
+ "nodes": [
+  {
+   "code": "cie-as-maths-20-pure-1",
+   "family": "SUBJECT",
+   "title": "Maths",
+   "description": null,
+   "parents": [],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 0
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T1",
+   "family": "TOPIC",
+   "title": "Pure Mathematics",
+   "description": null,
+   "parents": [
+    "cie-as-maths-20-pure-1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 1
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T1:SUB1.1",
+   "family": "SUBTOPIC",
+   "title": "Quadratics",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 1
+  },
+  {
+   "code": "1.1.1",
+   "family": "SPEC_POINT",
+   "title": "carry out the process of completing the square for a quadratic polynomial ax + bx + c and use y a completed square form",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 1
+  },
+  {
+   "code": "1.1.2",
+   "family": "SPEC_POINT",
+   "title": "find the discriminant of a quadratic polynomial ax + bx + c and use the discriminant ‘repeated root’ is included.",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 2
+  },
+  {
+   "code": "1.1.3",
+   "family": "SPEC_POINT",
+   "title": "solve quadratic equations, and quadratic By factorising, completing the square and using the inequalities, in one unknown formula.",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 3
+  },
+  {
+   "code": "1.1.4",
+   "family": "SPEC_POINT",
+   "title": "solve by substitution a pair of simultaneous e.g. equations of which one is linear and one is 2 quadratic",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 4
+  },
+  {
+   "code": "1.1.5",
+   "family": "SPEC_POINT",
+   "title": "recognise and solve equations in x which are quadratic in some function of x . tan",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 5
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T1:SUB1.2",
+   "family": "SUBTOPIC",
+   "title": "Functions",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 2
+  },
+  {
+   "code": "1.2.1",
+   "family": "SPEC_POINT",
+   "title": "understand the terms function, domain, range, one-one function, inverse function and composition of functions",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 6
+  },
+  {
+   "code": "1.2.2",
+   "family": "SPEC_POINT",
+   "title": "identify the range of a given function in simple cases, and find the composition of two given functions condition that a composite function",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 7
+  },
+  {
+   "code": "1.2.3",
+   "family": "SPEC_POINT",
+   "title": "determine whether or not a given function is one-one, and find the inverse of a one-one function in simple cases",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 8
+  },
+  {
+   "code": "1.2.4",
+   "family": "SPEC_POINT",
+   "title": "illustrate in graphical terms the relation between Sketches should include an indication of the mirror a one-one function and its inverse line",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 9
+  },
+  {
+   "code": "1.2.5",
+   "family": "SPEC_POINT",
+   "title": "understand and use the transformations of the Including use of the terms ‘translation’, ‘reflection’ graph of y = f( x ) given by and ‘stretch’ in describing transformations. Questions y = f( x ) + a , y = f( x + a ) , may involve algebraic or trigonometric functions, or other graphs with given features. y = a f( x ) , y = f( ax ) and simple combinations of these.",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.2"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 10
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+   "family": "SUBTOPIC",
+   "title": "Coordinate geometry",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 3
+  },
+  {
+   "code": "1.3.1",
+   "family": "SPEC_POINT",
+   "title": "find the equation of a straight line given e.g. given two points, or one point and the gradient. sufficient information",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.3"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 11
+  },
+  {
+   "code": "1.3.1a",
+   "family": "SPEC_POINT",
+   "title": "1 problems: • understand that the equation",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.3"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 12
+  },
+  {
+   "code": "1.3.2",
+   "family": "SPEC_POINT",
+   "title": "interpret and use any of the forms y = mx + c , y – y = m ( x – x ) , ax + by + c = 0 in solving",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.3"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 13
+  },
+  {
+   "code": "1.3.2a",
+   "family": "SPEC_POINT",
+   "title": "2 2 ( x – a ) + ( y – b ) = r represents the circle with centre ( a , b ) and radius r involving lines and circles its associated algebraic equation, and use the line relationship between points of intersection of graphs and solutions of equations.: • use algebraic methods to solve problems • understand the relationship between a graph and",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.3"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 14
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T1:SUB1.4",
+   "family": "SUBTOPIC",
+   "title": "Circular measure",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 4
+  },
+  {
+   "code": "1.4.1",
+   "family": "SPEC_POINT",
+   "title": "understand the definition of a radian, and use the relationship between radians and degrees",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.4"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 15
+  },
+  {
+   "code": "1.4.1a",
+   "family": "SPEC_POINT",
+   "title": "2 in solving problems concerning the arc length triangles and areas of triangles. and sector area of a circle.: • use the formulae s = r i and A = r i Including calculation of lengths and angles in",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.4"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 16
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T1:SUB1.5",
+   "family": "SUBTOPIC",
+   "title": "Trigonometry",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 5
+  },
+  {
+   "code": "1.5.1",
+   "family": "SPEC_POINT",
+   "title": "sketch and use graphs of the sine, cosine and Including e.g. tangent functions (for angles of any size, and using either degrees or radians)",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 17
+  },
+  {
+   "code": "1.5.2",
+   "family": "SPEC_POINT",
+   "title": "use the exact values of the sine, cosine and tangent of 30 °, 45 °, 60 °, and related angles",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 18
+  },
+  {
+   "code": "1.5.3",
+   "family": "SPEC_POINT",
+   "title": "use the notations sin x , cos­ x , tan x to denote No specialised knowledge of these functions is the principal values of the inverse trigonometric required, but understanding of them as examples of relations inverse functions is expected. sin i",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 19
+  },
+  {
+   "code": "1.5.4",
+   "family": "SPEC_POINT",
+   "title": "use the identities / tan i and cos i sin i + cos i / 1",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 20
+  },
+  {
+   "code": "1.5.5",
+   "family": "SPEC_POINT",
+   "title": "find all the solutions of simple trigonometrical equations lying in a specified interval (general forms of solution are not included).",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.5"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 21
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T1:SUB1.6",
+   "family": "SUBTOPIC",
+   "title": "Series",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 6
+  },
+  {
+   "code": "1.6.1",
+   "family": "SPEC_POINT",
+   "title": "use the expansion of ( a + b ) , where n is a positive integer",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.6"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 22
+  },
+  {
+   "code": "1.6.2",
+   "family": "SPEC_POINT",
+   "title": "recognise arithmetic and geometric progressions",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.6"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 23
+  },
+  {
+   "code": "1.6.3",
+   "family": "SPEC_POINT",
+   "title": "use the formulae for the n th term and for the Including knowledge that numbers sum of the first n terms to solve problems involving arithmetic or geometric progressions equivalent).",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.6"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 24
+  },
+  {
+   "code": "1.6.4",
+   "family": "SPEC_POINT",
+   "title": "Questions may involve more than one progression. geometric progression, and the formula for the sum to infinity of a convergent geometric progression.: • use the condition for the convergence of a",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.6"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 25
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T1:SUB1.7",
+   "family": "SUBTOPIC",
+   "title": "Differentiation",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 7
+  },
+  {
+   "code": "1.7.1",
+   "family": "SPEC_POINT",
+   "title": "understand the gradient of a curve at a point as the limit of the gradients of a suitable sequence of chords, and use the notations d y , and d y f ′ ( x ) , f ″( x ) , 2 for first and second derivatives",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.7"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 26
+  },
+  {
+   "code": "1.7.2",
+   "family": "SPEC_POINT",
+   "title": "use the derivative of x (for any rational n ), together with constant multiples, sums and differences of functions, and of composite functions using the chain rule",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.7"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 27
+  },
+  {
+   "code": "1.7.3",
+   "family": "SPEC_POINT",
+   "title": "apply differentiation to gradients, tangents and normals, increasing and decreasing functions and rates of change",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.7"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 28
+  },
+  {
+   "code": "1.7.4",
+   "family": "SPEC_POINT",
+   "title": "locate stationary points and determine their nature, and use information about stationary points in sketching graphs.",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.7"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 29
+  },
+  {
+   "code": "cie-a-level-maths-2023-2025-T1:SUB1.8",
+   "family": "SUBTOPIC",
+   "title": "Integration",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 8
+  },
+  {
+   "code": "1.8.1",
+   "family": "SPEC_POINT",
+   "title": "understand integration as the reverse process of differentiation, and integrate ( ax + b ) (for any rational n except –1), together with constant multiples, sums and differences",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.8"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 30
+  },
+  {
+   "code": "1.8.2",
+   "family": "SPEC_POINT",
+   "title": "solve problems involving the evaluation of a constant of integration",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.8"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 31
+  },
+  {
+   "code": "1.8.3",
+   "family": "SPEC_POINT",
+   "title": "evaluate definite integrals",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.8"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 32
+  },
+  {
+   "code": "1.8.4",
+   "family": "SPEC_POINT",
+   "title": "use definite integration to find lines parallel to the axes, or between a curve and a line or between two curves: • the area of a region bounded by a curve and • a volume of revolution about one of the axes.",
+   "description": null,
+   "parents": [
+    "cie-a-level-maths-2023-2025-T1:SUB1.8"
+   ],
+   "provenanceTier": "RULE_DERIVED",
+   "order": 33
+  }
+ ],
+ "edges": [
+  {
+   "source": "cie-as-maths-20-pure-1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T1:SUB1.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.1",
+   "relation": "PART_OF",
+   "target": "1.1.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.1",
+   "relation": "PART_OF",
+   "target": "1.1.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.1",
+   "relation": "PART_OF",
+   "target": "1.1.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.1",
+   "relation": "PART_OF",
+   "target": "1.1.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.1",
+   "relation": "PART_OF",
+   "target": "1.1.5",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T1:SUB1.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.2",
+   "relation": "PART_OF",
+   "target": "1.2.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.2",
+   "relation": "PART_OF",
+   "target": "1.2.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.2",
+   "relation": "PART_OF",
+   "target": "1.2.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.2",
+   "relation": "PART_OF",
+   "target": "1.2.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.2",
+   "relation": "PART_OF",
+   "target": "1.2.5",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+   "relation": "PART_OF",
+   "target": "1.3.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+   "relation": "PART_OF",
+   "target": "1.3.1a",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+   "relation": "PART_OF",
+   "target": "1.3.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.3",
+   "relation": "PART_OF",
+   "target": "1.3.2a",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T1:SUB1.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.4",
+   "relation": "PART_OF",
+   "target": "1.4.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.4",
+   "relation": "PART_OF",
+   "target": "1.4.1a",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T1:SUB1.5",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.5",
+   "relation": "PART_OF",
+   "target": "1.5.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.5",
+   "relation": "PART_OF",
+   "target": "1.5.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.5",
+   "relation": "PART_OF",
+   "target": "1.5.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.5",
+   "relation": "PART_OF",
+   "target": "1.5.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.5",
+   "relation": "PART_OF",
+   "target": "1.5.5",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T1:SUB1.6",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.6",
+   "relation": "PART_OF",
+   "target": "1.6.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.6",
+   "relation": "PART_OF",
+   "target": "1.6.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.6",
+   "relation": "PART_OF",
+   "target": "1.6.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.6",
+   "relation": "PART_OF",
+   "target": "1.6.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T1:SUB1.7",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.7",
+   "relation": "PART_OF",
+   "target": "1.7.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.7",
+   "relation": "PART_OF",
+   "target": "1.7.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.7",
+   "relation": "PART_OF",
+   "target": "1.7.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.7",
+   "relation": "PART_OF",
+   "target": "1.7.4",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1",
+   "relation": "PART_OF",
+   "target": "cie-a-level-maths-2023-2025-T1:SUB1.8",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.8",
+   "relation": "PART_OF",
+   "target": "1.8.1",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.8",
+   "relation": "PART_OF",
+   "target": "1.8.2",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.8",
+   "relation": "PART_OF",
+   "target": "1.8.3",
+   "provenanceTier": "RULE_DERIVED"
+  },
+  {
+   "source": "cie-a-level-maths-2023-2025-T1:SUB1.8",
+   "relation": "PART_OF",
+   "target": "1.8.4",
+   "provenanceTier": "RULE_DERIVED"
+  }
+ ]
 }
