@@ -21726,3 +21726,20 @@ Stage Summary:
 - Worklog history RESTORED on main (21,709 lines); all referenced receipts intact as files; escalation to operator stands for the 63b9b65b/b4904813 clobber review.
 - Static four unchanged red this round: #285 1c2dd54d, #296 bd2c0b1e, #303 cce02304 (CI failure), #352 13bfea93 (zero CI ~100h+).
 - fetch-first, no force-push, Neon/prod zero-write, merge desk only (R0 authored nothing in this PR).
+
+---
+Task ID: NEON-PAUSE-001 run-002 (operator panel numbers, trace 1a17e9efda380afd)
+Agent: main (Z.ai, session web-590847c1)
+Task: Adjudicate the MAIN pause cause using the operator's console panel + delivered creds; unblock plan.
+
+Work Log:
+- Panel-vs-limits paradox: storage 408.54 MB (38% of 1 GiB), compute 50.17 CU-hrs (~50% of 100), transfer 3.51 GB (panel) — NO line visibly breached -> run-001's 1-GB-storage hypothesis RETIRED; paradox drove the unlock.
+- UNLOCK: console.neon.tech/api/v2 reachable from sandbox with the napi_ key (org-scoped org-withered-mud-59985156). run-001 had only ever tried api.neon.tech (DNS-walled, 6th consecutive). Scan script of-record: scripts/run002_neon_scan.py (reusable egress/quota watch).
+- Consumption of record (MAIN): data_transfer 5,596,915,289 B = 5.60 GB / 5 GB = 112% — the ONLY over-limit metric; compute 206,238 s (~50.17 CU-hrs CU-weighted) = 50%; logical_size 408,543,232 B (== panel storage EXACTLY -> panel identity = MAIN); history 657 kB; written-since-parent 622 MB; single production branch. W1: alive, transfer 13.7 MB -> per-project enforcement. quota_reset_at 2026-11-01T00:00:00Z (both projects).
+- Enforcement live: MAIN proxy 53000 "Your account or project has exceeded the quota..." verbatim re-captured; API POST /endpoints/ep-ancient-cake-a52e4kfd/start -> HTTP 423 "quota exceeded" -> no free un-latch.
+- ROOT CAUSE: monthly network-transfer quota exhausted on MAIN (5.60/5 GB). Operator panel 3.51 GB = console metric lazy-refresh/definition; adjudication unaffected.
+- Prevention package filed: daily egress watch (alarm 4.0 GB), bytea offload (~59 MB) to Object Storage, cache headers on asset routes, paginated bulk drains (embed 1,330 / Phase-D 3,012 re-scan document_chunks 133 MB = multi-GB egress/pass), heavy reads stay on W1.
+- Filed+pushed same-turn: receipts/NEON-PAUSE-001/run-002-transfer-quota-adjudication-r0.json; worktree-from-tip ca9aa23b (R0-AUTO history restore absorbed); scrub-verified.
+
+Stage Summary:
+- REMEDIATION FORK (operator): (A) wait for 2026-11-01T00:00Z auto-resume (~4.2 days; learner DB plane down until then) or (B) Launch upgrade = immediate resume (~$0.14/mo storage at 408 MB; transfer billed above allowance). Prevention mandatory either way (run-rate ~0.21 GB/day -> wall re-trips mid-November). LANE: BLOCKED_ON_PLATFORM_QUOTA with cause now precise and monitorable. Secrets: napi_ + both npg_ transited again — rotation list grows.
