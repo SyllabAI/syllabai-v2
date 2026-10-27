@@ -21549,6 +21549,39 @@ Stage Summary:
 - Bookkeeping-only .syllabai/**, fetch-first, no force.
 
 ---
+Task ID: T-BOOK-067
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, traces 1a17cddee7d8a229 / 1a17e0f21845ef89)
+Task: Operator order "lesson-side reading progress, the 112-term glossary flip" — progress half; plus the session's topology correction of record.
+
+Work Log:
+- TOPOLOGY CORRECTION OF RECORD (operator furious, rightly): an earlier flag this session ("production core 503") was an artifact of probing the RETIRED Render host syllabai-core.onrender.com — the stub script header had even mislabeled that host "the production core of record". The operator's standing order stands: Render is retired; syllabai-v2 is the sole substrate. The api-of-record https://syllabai-v2.vercel.app was verified ALIVE first-hand (books shelf 200 → documentId e6c0db50-0f84-55de-b50c-e4d49285cd6d; chapters 200; u1:c1 blocks 8/8 VALIDATED = the b6b5dec4 world; progress route 401-guarded signed-out). Retraction pinned in the receipt, task yaml, stub header, and — as a code rider — in apps/hub/.env.example (the one remaining repo fossil advertising the retired host as "Production value today"; api.ts/core-api.ts already carried RETIRED-2026-10-23 annotations on main; README diagram refresh registered as a docs follow-up).
+- Sandbox-rollback damage report: the working tree was restored to an Oct-23 fossil (branch t-book-015/books-doctrine); T-BOOK-067 implementation files, the T-BOOK-068 flip car, commit 5c60f5bb, and all walkthrough evidence were destroyed locally; origin/main (03d16e31) held everything merged. Local main fast-forwarded; 3,040 filemode-only diffs silenced via core.fileMode=false; nothing on origin was touched.
+- T-BOOK-067 REBUILT on branch t-book-067/lesson-reading-progress @ 7355159d (base 03d16e31): lib/books-progress-shared.ts (pure: PUT_DEBOUNCE_MS, clampPct, sectionForOrd, maxOrdOf — server-safe, no react imports) + lib/books-progress.ts (client hook, byte-equal extraction of rail-workspace's local useChapterProgress — same GET-on-mount / 1200ms debounced PUT / 401-silent wire) + lesson-progress.tsx (LessonProgressTracker: IO threshold 0.4 deepest-visible → lastOrd; document-scroll pct via useSyncExternalStore — zero setState-in-effect cascades; resume 0<pct<95 → 350ms smooth-scroll to sectionForOrd; honest presence law) + lesson-view wiring (data-progress-idx per section, extras join as anchored #lesson-extras, tracker mounted only when railChapterKey maps) + rail-workspace slimmed (extraction only, behavior byte-identical) + 11 bun tests. Rider: .env.example fossil correction.
+- Gates: tsc 0, eslint 0, bun test 11/11, next build 0.
+- Surface walk of record: Leg A real stack signed-out (dev hub → REAL api-of-record): lesson 200, 3 interactive lanes (8 blocks), 13 progress sections, 0 extras, 0 bars (401-silent law). Leg B auth'd write path (production standalone serve of the branch, core = localhost stub honestly labeled — no learner credential held in-session): Playwright pre-navigation probe — GET progress auth=yes → resume scrolled (scrollY 9365 to the section containing lastOrd=2) → IO tracked → debounced PUT auth=yes → live bar "Reading progress N% read"; console CLEAN. Evidence: download/t-book-067/ (probe-result.json, stub wire log, screenshots, probe script).
+- FORENSIC DISCLOSURE: next dev (turbopack 16.3.8) on this sandbox deterministically never hydrates ANY page (HMR ws ERR_INVALID_HTTP_RESPONSE, persists across clean restarts + fresh .next/dev; proven NOT the code via the production-standalone control). This was the pre-rollback "signed-in bar never mounts in dev" mystery — environment artifact, not a defect.
+- Push BLOCKED: no GitHub PAT in-session (rotation list); branch is local-of-record until a PAT hand (env-only).
+
+Stage Summary:
+- T-BOOK-067 is implementation-complete and walk-proven; PR opens on PAT hand. The lesson now shares the rail's ONE chapter_progress row — no fork (ADR-BOOK-0001 §8).
+- The session's "production core 503" flag is RETRACTED of record; the topology of record is re-anchored everywhere I touched.
+- Follow-ups registered: README architecture-diagram refresh (docs); flip-car system-change PR (see T-BOOK-068).
+
+---
+Task ID: T-BOOK-068
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, traces 1a17cddee7d8a229 / 1a17e0f21845ef89)
+Task: Operator order "lesson-side reading progress, the 112-term glossary flip" — flip half.
+
+Work Log:
+- The flip car (glossary-reflip-r4.mts) and commit 5c60f5bb were destroyed by the sandbox rollback; REBUILT of record at apps/api/scripts/session/glossary-reflip-r4.mts on the repo's own patterns (postgres driver ssl+prepare:false, js-yaml), three modes --check/--commit/--idempotence.
+- Authored layer verified TODAY: 112 terms across 9 packs (seed- excluded), 0 V-law problems (V1 kebab slugs, V3 ms_accepts/ms_avoids bilateral, V4 definitions >= 40 chars + no duplicate slugs).
+- Guards carried: census {SUGGESTED:112,VALIDATED:0} exact pre-commit; book_blocks total 178 (b6b5dec4 world) drift-abort; UPDATE rowcount == 112; post census {SUGGESTED:0,VALIDATED:112}; subject_code='4ch1' pinned; slug = ANY(authored slugs).
+- Execution BLOCKED honestly: sandbox DATABASE_URL is a local placeholder; the script refuses non-Neon targets and no Neon MAIN pooler credential is held in-session (env-only law holds — nothing persisted). The Task-7 handoff was lost with the rollback.
+- Task yaml + receipt registered (reflip-r4-rebuild-r1.json, carrying the r0 root cause of record: NEON-DB-LOSS restore predating the r3 flip).
+
+Stage Summary:
+- Students currently see ZERO 4ch1 glossary terms (VALIDATED-only serving, ADR-BOOK-0001 §5) until the flip lands — one credential hand away: DATABASE_URL=<MAIN pooler> bun apps/api/scripts/session/glossary-reflip-r4.mts --check → --commit → --idempotence.
+- SYSTEM-CHANGE CANDIDATE (ruling requested): the flip car has been lost to rollbacks TWICE because it lives session-side — PR it into apps/api/scripts/books/ so it becomes tracked of-record.
 Task ID: T-BOOK-067/068 (continuation)
 Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a17e7169e166db5)
 Task: Credential hand landed (GitHub PAT + Vercel token + Neon API key + MAIN/W1 poolers, env-only) — push T-BOOK-067, execute the T-BOOK-068 flip.
