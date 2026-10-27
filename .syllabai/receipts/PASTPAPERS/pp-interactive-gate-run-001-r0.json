@@ -1,0 +1,85 @@
+{
+  "receipt": "pp-interactive-gate-run-001-r0",
+  "lane": "PASTPAPERS",
+  "task": "Remove the Interactive surface for unparsed courses (official-plane-only law); Exam Questions untouched",
+  "operatorOrder": {
+    "verbatim": "interactive is supposed to show past papers that are parsed and modified to render in the web properly ... for the rest of the unparsed courses ... remove their link with past papers in 'Interactive' button. (Dont touch exam questions metadata, let them be as is). ... proceed - disappear entirely",
+    "trace": "1a17e79bb0e50399",
+    "confirmationTrace": "1a17cc141dddaebd (design intent) + 1a17e7800327bffd (state question)"
+  },
+  "law": {
+    "name": "OFFICIAL-PLANE-ONLY",
+    "statement": "Past Papers interactive reconstructions are built from the official parsed plane (official-papers.json, ADR-037) ALONE. The SME exam-questions bank (Save My Exams) never builds, advertises, or links an Interactive paper. Courses without the official plane have NO Interactive surface: no reconstructions section, no playable badges, no Interactive chips, no player routes (direct keys 404), no course-home card promise.",
+    "parsedDiscriminator": "bundle has non-empty official-papers.json \u2014 census @ v2 03d16e31: exactly igcse-chemistry-19 (4CH1, 54 papers/477q), igcse-maths-b-16 (4MB1, 66/1281), igcse-physics-19 (4PH1, 55/540)"
+  },
+  "changeScope": {
+    "files": [
+      "apps/hub/src/app/courses/[course]/past-papers/page.tsx",
+      "apps/hub/src/app/courses/[course]/past-papers/[paperKey]/page.tsx",
+      "apps/hub/src/app/courses/[course]/page.tsx",
+      "apps/hub/src/app/courses/[course]/layout.tsx"
+    ],
+    "net": "+61/-34, 4 files",
+    "zeroContact": [
+      "exam-questions routes + questions.json metadata (untouched by law)",
+      "practice-papers builder (separate honest surface, untouched)",
+      "lib/past-papers.ts + pastpapers-reconstruction.ts + planes tests (lib intact, 7/7 green)",
+      "global /past-papers archive pages (corpus-only, untouched)",
+      "legacy exam-questions redirect targets (4CH1 official keys \u2014 still resolve)"
+    ],
+    "sidebarNavLaw": "hasPastPapers now keys on the official plane; sidebar Past Papers stays alive via hasCorpusPapers where the PDF archive exists",
+    "courseHomeCard": "official courses keep the held-count card; corpus-archive courses get an honest PDF-archive card; others not-ready"
+  },
+  "census": {
+    "totals": {
+      "bundles": 94,
+      "parsed": 3,
+      "unparsedInteractiveRemoved": 61,
+      "unparsedAlreadyEmpty": 30
+    },
+    "parsedCourses": {
+      "igcse-chemistry-19": {
+        "before": 104,
+        "after": 54,
+        "smeOnlyDropped": 50
+      },
+      "igcse-maths-b-16": {
+        "before": 68,
+        "after": 66,
+        "smeOnlyDropped": 2
+      },
+      "igcse-physics-19": {
+        "before": 146,
+        "after": 55,
+        "smeOnlyDropped": 91
+      }
+    },
+    "unparsedExamples": {
+      "cie-igcse-economics-25": 15,
+      "cie-igcse-maths-25-extended": 203,
+      "cie-igcse-maths-international-maths-23-extended": 229,
+      "igcse-maths-a-18-higher": 256
+    },
+    "fullTable": "scripts/recon + pp_gate_before_after.py output in the lane work log"
+  },
+  "verification": {
+    "tsc": "bunx tsc --noEmit -> 0 errors (hub, deps installed)",
+    "planesTests": "bun test src/lib/past-papers.planes.test.ts -> 7 pass / 0 fail / 14 expect()",
+    "build": "bun run build (prebuild verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles included) -> ALL GREEN, route table emitted",
+    "diffScope": "git status: exactly the 4 page files; no data, no lib, no test, no route changes"
+  },
+  "disclosure": {
+    "parsedCourseDelta": "On the 3 parsed courses the SME-cited pseudo rows (50/2/91) also drop \u2014 same defect class, now gone; their official interactive papers are untouched (54/66/55 attested papers remain playable).",
+    "mathsBMay2020": "4MB1 SME-only keys may-2020|4mb1-01 and may-2020|4mb1-01r dropped (not covered by the official plane; the June-2020-cancelled session).",
+    "pilot": "4CH1 committed bundle carries official-papers.json; the provider-seam fallback path (no bundle) would serve zero official topics and thus no Interactive \u2014 bundle exists, so unaffected."
+  },
+  "provenance": {
+    "base": "03d16e31 (lane start); rebased onto 28e99920 pre-push (origin advanced T-BOOK-067/068, zero file overlap; .syllabai/worklog.md conflict resolved theirs-verbatim + re-append, append-only verified 0 deletions)",
+    "branch": "lane/pp-interactive-gate",
+    "session": "web-64d10b73-530a-4f71-9961-85d0436c7fb5",
+    "scripts": [
+      "scripts/pp_gate_census.py",
+      "scripts/pp_gate_before_after.py"
+    ]
+  }
+}

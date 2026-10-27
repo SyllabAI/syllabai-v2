@@ -21599,3 +21599,19 @@ Stage Summary:
 - T-BOOK-067: PR #409 of record — implementation-complete, walk-proven, gates green; awaiting operator merge.
 - T-BOOK-068: blocked on Neon MAIN quota (NOT on credentials anymore). Unblock = raise the Neon plan/compute limit (Neon console; control-plane api unreachable from sandbox) or wait for the monthly reset, then re-run the recipe --check → --commit → --idempotence. Students see ZERO 4ch1 glossary terms (and the books plane is down) until the quota is resolved.
 - Rotation list unchanged and still overdue: all chat-exposed secrets (PAT, Vercel token, Neon API key, pooler passwords).
+
+---
+Task ID: PASTPAPERS pp-interactive-gate run-001 (operator order "remove their link with past papers in 'Interactive' button ... proceed - disappear entirely", trace 1a17e79bb0e50399)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Interactive reconstructions may be built ONLY from the official parsed plane; unparsed courses lose the entire Interactive surface (reconstructions section, playable badges, chips, player routes, course-home card promise); the SME exam-questions bank and its metadata stay exactly as-is.
+
+Work Log:
+- CENSUS of record (data first): of 94 course bundles, exactly 3 carry official-papers.json (the ADR-037 parsed plane) — igcse-chemistry-19 (4CH1, 54 papers/477q), igcse-maths-b-16 (4MB1, 66/1281), igcse-physics-19 (4PH1, 55/540); every other bank is provider "Save My Exams" whose sourcePaper fields are topic-question CITATIONS, not full-paper parses. 61 unparsed bundles were recreating pseudo-papers from those citations (2-256 each; econ-25 15, maths-25-extended 203, intl-maths-23-extended 229, maths-a-18-higher 256); 30 were already empty.
+- CHANGE (4 files, +61/-34): past-papers page reconstructions = collectPastPapers(hub.officialPaperTopics) (was collectPastPapersTwoPlane over official+SME); InteractiveChip rendered only on parsed courses (official non-empty) — roadmap popover for unparsed papers on parsed courses stays (the honest "not parsed yet" state); [paperKey] player resolves official-only (SME-only keys 404); course-home Past Papers card counts official-only, with an honest PDF-archive fallback card (corpus archive count + archive copy) so no real archive surface is hidden; layout hasPastPapers keys on the official plane (sidebar stays alive via hasCorpusPapers). Law recorded in comments at every call site.
+- ZERO CONTACT (by law): exam-questions routes + questions.json metadata, practice-papers builder, lib/past-papers.ts + pastpapers-reconstruction.ts + the planes tests (lib functions intact), global /past-papers corpus archive pages, the legacy exam-questions redirect (targets 4CH1 official keys — still resolve).
+- VERIFY: bunx tsc --noEmit 0 errors; bun test past-papers.planes.test.ts 7/7 (14 expect()); bun run build ALL GREEN incl prebuild (verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles); git diff = exactly the 4 page files.
+- Census scripts: pp_gate_census.py (fleet provenance scan) + pp_gate_before_after.py (before/after paper counts per bundle), mirrored under scripts/.
+- Parsed-course delta disclosed: 4CH1 104->54, 4MB1 68->66, 4PH1 146->55 — the dropped rows are the same SME-citation defect class (incl. 4MB1 may-2020 01/01R, the June-2020-cancelled session); official papers untouched.
+
+Stage Summary:
+- The Interactive surface now tells the truth: playable = officially parsed (3 courses), everything else shows the PDF archive and honest not-parsed states; Exam Questions stands alone unchanged. Receipt .syllabai/receipts/PASTPAPERS/pp-interactive-gate-run-001-r0.json; fetch-first at 03d16e31, no force; PAT rotation CRITICAL-OVERDUE reported pre-push (transit 44).
