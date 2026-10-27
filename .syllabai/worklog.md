@@ -21743,3 +21743,21 @@ Work Log:
 
 Stage Summary:
 - REMEDIATION FORK (operator): (A) wait for 2026-11-01T00:00Z auto-resume (~4.2 days; learner DB plane down until then) or (B) Launch upgrade = immediate resume (~$0.14/mo storage at 408 MB; transfer billed above allowance). Prevention mandatory either way (run-rate ~0.21 GB/day -> wall re-trips mid-November). LANE: BLOCKED_ON_PLATFORM_QUOTA with cause now precise and monitorable. Secrets: napi_ + both npg_ transited again — rotation list grows.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-014
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6, trace 1a17eb7014f462a9)
+Task: operator "remaining queue is F4/F5 eyes-on leads (furniture variants, 2024-06 02R q2 foreign rows). And also check the updated docs of the Official-ExamQuestions pipeline"
+
+Work Log:
+- Fetch-first (v2 ff to main; main moved twice mid-run — NEON-PAUSE-001 run-002 + PR #413 sme-wave2, zero contact with igcse-maths-b-16). Receipts re-read (run-012-spotcheck F4/F5 leads + run-013 queue).
+- F4 CLUSTER (2024-06 02R): fetched MS from mirror, rendered p5-p7 @150dpi, READ all three. Diagnosis: q1(a)/(b) MS rows bled into q2-a/2-b solutionMd heads; q1-b/c/d carried "not captured" placeholders; q1-a truncated; q2-a missing printed M2 note; q2-b missing first main row + truncated ALT; 2-b tail carried "cas for each part Total 9 marks" + next-page header + q3's lead-in note. Fixed 7 parts (3 rebuilds-in-place, 3 placeholder->print moves home, 1 lead-in move home; \\$ escapes on money values; "cas" kept — printed).
+- F5 NAMED LEADS: 7 pages of MS/QP evidence rendered + READ (2021-06 02 p7/p8, 2022-01 01 p18, 2023-06 02 p8/p9/p10, 2024-06 01 p18, 2018-06 01 p14, 2019-01 01 p7, 2019-06 02 QP p8). 9 parts fixed: footer/header strips, displaced-sentence-head repair, 2023-06 02 q3 := true q3 rows + q4(b) placeholder -> moved-home rows rebuilt from print (radical restored on the R-formula row), 2019-06 02R 5-d MP mirror := solution (render-visible survivor killed), 2019-06 02 4-e problemMd junk strip + inverse-matrix hint as KaTeX (katex-gated) + lead-in restored.
+- F5 FLEET DISCOVERY: law-10 header-prefix census re-framed F5 fleet-wide — 2230 hits / 641 parts / 58 papers (1149 headers / 1027 Total-footers / 54 spare-grid). Named leads fixed; remaining 2209 hits / 633 parts / 57 papers staged as f5-fleet-worklist.json for run-015 (deterministic strip + sampled page-evidence validation per paper).
+- GATES: fail-closed apply (first run REFUSED with 6 mirror-law violations — fixed before write); census 66/1281/2443/6600 EXACT; PAPER-level mark-code union conserved (domain widened for move-home; 2023-06 B1 verified moved q3->q4b); PUA/FFFD/© 0; $-parity; furniture 0 on edited fields; mirror law byte-exact; serialization byte-law; katex gate; crop URL gate 454/454 HEAD-200. Plane 3bf89d920d1b6bb0 -> f7f4add5161576a9.
+- DOCS CHECK (Official-ExamQuestions pipeline): ADR-039 ACCEPTED 2026-10-24 (fix-and-disclose supersedes ADR-037 verbatim/no-LLM; /0.2 provenance schema {edit_status, edits[], value_trace}; G2-D; marking carve-out = this card's NO-GUESS law; corpus regen = dedicated receipt run). Converter lineage v0.17.0 (wave-24 F64/F65) -> v0.18.0 (wave-25: MS page-bottom furniture dropped AT SOURCE — the F5 class killed at extraction for converter planes). Wave-24/25 branches touch igcse-chemistry-19 only (no maths-b collision). OPEN: maths-b plane still /0.1 without per-part provenance — operator-queued migration.
+- INFRA: disk ENOSPC twice (rootfs 9.9G, ~8G = base image); freed via re-fetchable pdfs/ + stale scratch; v2 git pack (918M) moved to PolarFS /tmp/my-project/r7a-space/v2-objects via .git/objects/info/alternates (SESSION-SCOPED — restore = re-clone; disclosed per playbook law 17).
+- Landing: branch r7a-pp-furniture-eyes-on-014; receipt run-014-f4-f5-eyes-on.json + playbook §8 (laws 13-17) + lane artifacts (scripts + census + fleet worklist) + this worklog.
+
+Stage Summary:
+- F4 + F5 named leads CLOSED end-to-end (16 parts / 26 fields, all printed-page-evidenced, gates GREEN). F5 reframed as fleet class and staged for run-015. Pipeline docs check of record (ADR-039 + converter v0.17->v0.18 + no-collision disclosure). New leads: 2021-06 02 q2 solution misalignment; 2024-06 02R q2-a problemMd tail junk. PAT rotation STILL PENDING.
