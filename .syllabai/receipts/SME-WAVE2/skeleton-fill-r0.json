@@ -8,7 +8,6 @@
   "resourcesChain": "b1212a14 (wave-2 corpus, PR #194) + df34651d (orderfix, PR #198) merged as 0c0f0e08",
   "spineParseProvenance": "a4ce9f55 (the spine parse pin of record; parsed trees for the 7 quals verified tree-identical a4ce9f55..b1212a14 — consumed-input delta ZERO)"
  },
-
  "op1_curriculumCode_promotion": {
   "law": "fill-4ph1 minimal-diff (last-field append, byte-identical otherwise) + the seed cv law bundle.code+'-'+syllabusVersion (bundle-seed.ts:347); page-sourced basis = the probe-url-match quals (work/sme_wave2_specs_receipt.json basis=probe-url-match)",
   "promoted_7": {
@@ -29,11 +28,24 @@
   },
   "note": "the 7 rows' DB cv rows mint at the NEXT deliberate prod-apply bake (the seed reads the committed bundle manifests — registry and DB will agree; the registry promotion does not preempt the DB plane, prod untouched)"
  },
-
  "op2_skeleton_fill": {
-  "chain_of_record": "build_official_spines --cie (scope rules) -> cie_build_bundles (sme-native staging) -> cie_attach_maps (no-guess ladder R1-R5) -> build_official_content.rekey_course (official-spine rekey, p3 pattern)",
-  "filled_10": ["cie-as-chemistry-25", "cie-as-biology-25", "cie-as-physics-25", "cie-as-business-23", "cie-as-computer-science-19", "cie-as-maths-20-pure-1", "cie-as-maths-20-pure-2", "cie-as-maths-20-mechanics", "cie-as-maths-20-probability-and-statistics-1", "cie-as-accounting-21"],
-  "honest_skeletons_2": ["cie-a-level-maths-20-pure-2 (no corpus lane — SME never published 9709 P2 under the A-Level tree; operator ruling)", "cie-a-level-geography-21 (honest-empty on every SME axis)"],
+  "chain_of_record": "build_official_spines --cie (scope rules) -> cie_build_bundles (sme-native staging) -> cie_attach_maps (no-guess ladder R1-R5) -> build_official_content.rekey_course (official-spine rekey, p3 pattern) -> cie_prune_dangling_relatednotes (1 drop, CS-19, recorded) -> patch_corpus_math_23a (the import-layer aria-label->MathML->LaTeX law; 95 speech spans -> 0, level-5 converter resolved all; the corpus of record keeps the raw scrape per the 23a lane's own precedent) -> verify_corpus_23a GATE PASSED (0/0/0/0)",
+  "filled_10": [
+   "cie-as-chemistry-25",
+   "cie-as-biology-25",
+   "cie-as-physics-25",
+   "cie-as-business-23",
+   "cie-as-computer-science-19",
+   "cie-as-maths-20-pure-1",
+   "cie-as-maths-20-pure-2",
+   "cie-as-maths-20-mechanics",
+   "cie-as-maths-20-probability-and-statistics-1",
+   "cie-as-accounting-21"
+  ],
+  "honest_skeletons_2": [
+   "cie-a-level-maths-20-pure-2 (no corpus lane — SME never published 9709 P2 under the A-Level tree; operator ruling)",
+   "cie-a-level-geography-21 (honest-empty on every SME axis)"
+  ],
   "scope_rules_added": {
    "chem/bio/phys/business/accounting AS": "scope_eq 'AS Level' (the parse's own printed markers; AS pools 204/356, 123/257, 145/303, 62/116, 19/34)",
    "cie-as-computer-science-19": "scope_null (9618: parse marks ONLY topics 13-20 'A Level'; topics 1-12 = the AS & A Level shared content, 161 rows)",
@@ -41,40 +53,88 @@
   },
   "orphan_rows": 0,
   "counts": {
-   "notes": 767, "questions": 5444, "parts": 9478, "flashcards": 3726, "specPoints": 803,
+   "notes": 767,
+   "questions": 5444,
+   "parts": 9478,
+   "flashcards": 3726,
+   "specPoints": 803,
    "joinDiff": 0
   }
  },
-
  "corpus_orderfix": {
   "defect": "the wave-2 scrape (PR #170) minted question order PER-SET 0-BASED while the 44-bank corpus law is PER-TOPIC GLOBAL 1-BASED — cross-set collisions (MCQ q0 + SQ q0 of one topic) hard-failed the shim identity law (duplicate externalRef), caught by the roster gate working as designed",
   "repair": "212 topic.json / 5,444 questions across the 9 scraped wave-2 lanes re-minted (sort key: set index, existing order, id, then 1..N; 107 topics had collisions); 0 non-order diff lines; registry counts unchanged; honest-empty lanes untouched",
   "disclosed_not_touched": "the r0 gap-fill lanes' mixed order minting is a pre-existing condition of record (their bundles are frozen at consume pins; any re-consume is another lane's business)",
   "pr": "#198 merged as 0c0f0e08 (2026-10-27T20:59:00Z)"
  },
-
- "asset_hotlink_extension": "markdown LINK form [text](assets/<file>) (no leading '!') joined the hotlink law — the chem-25/CS-19 corpus carries 15 such refs (link texts with loose unescaped '[' / ']', so the anchor is the bare '](assets/...' target boundary); post-fix bare-ref census across the 10 bundles: 0 (the asset-map coherence gate green)",
-
+ "asset_hotlink_extension": "markdown LINK form [text](assets/<file>) (no leading '!') joined the hotlink law — the chem-25/CS-19 corpus carries 15 such refs (link texts with loose unescaped '[' / ']', so the anchor is the bare '](assets/...' target boundary); post-fix bare-ref census across the 10 bundles: 0 (the asset-map coherence gate green) | pollution classes at first gate run (span 95 / textwrap 2 / baretext 3 / dangling 1) repaired by the established 23a import-law chain — the baseline-zero law holds",
  "census_of_record": {
-  "cieRows": 56, "real": 49, "stubs": 5, "skeletons": 2,
-  "stubSlugs": ["cie-a-level-accounting-21", "cie-a-level-economics-23", "cie-as-accounting-21", "cie-as-english-general-paper-21", "cie-igcse-accounting-25"],
-  "skeletonSlugs": ["cie-a-level-geography-21", "cie-a-level-maths-20-pure-2"],
-  "questions": 7763, "parts": 7002, "pkgParts": 11164, "rawQ": 24541, "rawP": 35141,
-  "excl": {"unmapped": 16759, "badSum": 0, "dupOrder": 19},
+  "cieRows": 56,
+  "real": 49,
+  "stubs": 5,
+  "skeletons": 2,
+  "stubSlugs": [
+   "cie-a-level-accounting-21",
+   "cie-a-level-economics-23",
+   "cie-as-accounting-21",
+   "cie-as-english-general-paper-21",
+   "cie-igcse-accounting-25"
+  ],
+  "skeletonSlugs": [
+   "cie-a-level-geography-21",
+   "cie-a-level-maths-20-pure-2"
+  ],
+  "questions": 7763,
+  "parts": 7002,
+  "pkgParts": 11164,
+  "rawQ": 24541,
+  "rawP": 35141,
+  "excl": {
+   "unmapped": 16759,
+   "badSum": 0,
+   "dupOrder": 19
+  },
   "identity": "24541 - 7763 == 16759 + 19",
-  "sharedCodes": {"9709": 9, "0973": 3, "0653": 3, "9700": 2, "9701": 2, "9702": 2, "9609": 2, "9618": 2, "0580": 2, "0455": 2, "0500": 2, "0460": 2, "0607": 2},
+  "sharedCodes": {
+   "9709": 9,
+   "0973": 3,
+   "0653": 3,
+   "9700": 2,
+   "9701": 2,
+   "9702": 2,
+   "9609": 2,
+   "9618": 2,
+   "0580": 2,
+   "0455": 2,
+   "0500": 2,
+   "0460": 2,
+   "0607": 2
+  },
   "distinctCodes": 27,
-  "mapLaw": {"green": true, "bundlesMapped": 54, "maxDbCodeLength": 25},
+  "mapLaw": {
+   "green": true,
+   "bundlesMapped": 54,
+   "maxDbCodeLength": 25
+  },
   "unit9709": "9 real banks; the A-Level five stay pairwise disjoint (S1/S3/S4/S5/S6); each AS bank maps exactly ONE unit equal to its counterpart's; S2 now exists (AS pure-2) — the 9709 unit space S1..S6 complete"
  },
-
  "anchor_gap_disclosure": {
-  "serves": {"cie-as-biology-25": "789 questions (its SME pages carry the official statement text — the R3/R4 join basis; 222 of 1,011 raw stay honest local-only)"},
-  "zero_servable_8": ["cie-as-business-23", "cie-as-chemistry-25", "cie-as-computer-science-19", "cie-as-maths-20-mechanics", "cie-as-maths-20-probability-and-statistics-1", "cie-as-maths-20-pure-1", "cie-as-maths-20-pure-2", "cie-as-physics-25"],
+  "serves": {
+   "cie-as-biology-25": "789 questions (its SME pages carry the official statement text — the R3/R4 join basis; 222 of 1,011 raw stay honest local-only)"
+  },
+  "zero_servable_8": [
+   "cie-as-business-23",
+   "cie-as-chemistry-25",
+   "cie-as-computer-science-19",
+   "cie-as-maths-20-mechanics",
+   "cie-as-maths-20-probability-and-statistics-1",
+   "cie-as-maths-20-pure-1",
+   "cie-as-maths-20-pure-2",
+   "cie-as-physics-25"
+  ],
   "basis": "SME's AS pages for these lanes carry NO official statement text, so the no-guess attach ladder resolves 0 spec codes; the bundle content is complete (notes/questions/flashcards all present, hotlinked); the learner-model join is the documented T-SPECS-CIE-JOIN spec-links sidecar follow-up lane — exactly the class the 44 banks shipped with before their sidecars (spec-links/ covers 45 pre-wave-2 slugs, none of the wave-2 AS lanes)",
   "part_coded_split": "1,368 of 9,478 parts carry official codes (bio-only at the attach layer); the rest keep their verbatim spcpt_* ids for the follow-up"
  },
-
  "gates": {
   "validate_cie_bundles": "PASSED (106 rows / 51/56 mapped / card assertions hold)",
   "roster_test": "15/15 (3862 expect calls)",
@@ -83,7 +143,6 @@
   "spine_validation": "103/103 kg_export-compatible (the committed _validation.json was 13 spec points stale pre-lane — refreshed to 11,962/103)",
   "token_leak_scan": "CLEAN across all changed files (v2 + resources)"
  },
-
  "residuals": [
   "T-SPECS-CIE-JOIN follow-up lane: spec-links sidecars for the 9 wave-2 AS lanes (operator-gated) to close the anchor gap",
   "past-papers acquisition for the 12 (none in the archive — the operator decision of record)",
