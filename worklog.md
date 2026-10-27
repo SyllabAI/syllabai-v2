@@ -54,3 +54,18 @@ Work Log:
 
 Stage Summary:
 - run-012 VERIFIED LIVE and correct on the text plane; two mechanical follow-up waves queued: markPoints mirror sync (25) + inline-link injection (58 crops); F4/F5 eyes-on leads recorded. Bookkeeping-only commit (.syllabai/** + worklog), fetch-first, no force; read-only spot-check, no credentials used on the live site; PAT rotation STILL PENDING.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-013
+Agent: r7a (Super Z, session web-da4ab8b1, chat 1f3003b6, trace 1a17e7858b7ea40d)
+Task: "run the mirror-sync + inline-link" — the two follow-up waves queued by run-012-spotcheck (F1 58/64 crops render-invisible, F2 25 stale markPoints mirror hits).
+
+Work Log:
+- State recovery: fetch-first (main 03d16e31; moved again to bb629a40 mid-run — merged into branch with zero path contact, no force). Census rebuilt from the plane: Wave A = 23 parts (16 byte-exact stale mirrors + 7 pre-existing divergences re-exposed by run-012 solutionMd edits; the spot-check's "25" = probe HITS over 10 probed pids, all inside the 23 — reconciled in receipt + playbook law 11); Wave B = 58 manifest crops across 56 parts (the 6 already-linked exemplars render a shared-stem figure and stay untouched; legacy asset_7_diagram/asset_24_diagram twins metadata-only).
+- URL gate 58/58 HEAD-200 BEFORE attach (law 7d); eyes-on + sha256: 2023-11 8-d and 2025-11 9-b twin crops byte-identical -> one link each (deduped), q7 run-012 crop is the clean full grid-curve figure.
+- Fail-closed apply (scripts/run013_apply.py): in-memory edit + G1-G10 battery, write only on all-green. First two runs correctly refused (gate bugs caught: shadowed snapshot, wrong diff baseline, over-strict furniture/window scopes vs pre-existing F5-class content); corrected to delta semantics; final run ALL GREEN: census 66/1281/2443/6600 EXACT, diff scope 79 fields EXACT (23 textMd + 56 problemMd), mirror parity 23/23, inline structure 56/56, PUA/FFFD/(c) 0, $-parity, no new furniture, render-visible stale mirrors 29->1 (survivor offp_2019-06_02r_5-d pre-existing, queued), serialization byte-law. Plane d56a2fb95a1e617f -> 3bf89d920d1b6bb0.
+- Landing: branch r7a-pp-inline-mirror-013 -> PR #411 -> CI hub+verify SUCCESS (head + post-merge 7b0073e5 first-hand) -> merged 7b0073e5. Local main synced (4eb4158f incl. later bookkeeping).
+- Live verification: deployment currency ~90s post-merge (live /corpus sha16 == 3bf89d920d1b6bb0); payload battery 39 pages ALL GREEN (56/56 inline links, note counts == 4x plane counts = flight-duplication law, 23/23 stale windows absent); browser: q7 figure renders inline 590x728 with callout gone (screenshot), 17-b mark-scheme modal clean (240 000 B1, no (c) leak row, no furniture; screenshot). Two new playbook laws (11 wave-census hits!=parts; 12 flight-duplication + chunk-split probe forensics).
+
+Stage Summary:
+- run-013 COMPLETE: spot-check F1+F2 closed end-to-end (census -> URL gate -> fail-closed apply -> PR/CI/merge -> byte/payload/pixel live verification). Bookkeeping: receipt .syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-013-mirror-sync-inline-link.json + playbook §7 run-013 additions + lane artifacts run-013/ + screenshots download/t-oeq-mathsb/run013/. Queue remaining: F4/F5 eyes-on leads, 213 run-011 crops review passes, PAT rotation pending. fetch-first, no force; PAT env-only via askpass.

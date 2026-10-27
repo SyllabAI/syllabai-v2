@@ -113,3 +113,12 @@
 10. **Furniture census gap**: truncated header variants (`Question Working Answer Notes Ma`, header-only fragments) render live but fall outside the 8 boilerplate classes — extend the census to header-prefix matching; new defect leads: 2024-06 02R q2-a/2-b foreign %-profit/chairs solution rows; 2019-06 02 4-e problemMd inverse-matrix junk.
 
 **run-012 spot-check open queue deltas**: + mirror-sync wave (25 markPoints mirrors), + inline-link injection wave (58 crops), + F4/F5 eyes-on leads; PAT rotation still pending.
+
+### run-013 additions (mirror-sync + inline-link waves, October 2026)
+
+**Both queued waves executed** (receipt `run-013-mirror-sync-inline-link.json`, PR #411 merged `7b0073e5`, plane `d56a2fb95a1e617f → 3bf89d920d1b6bb0`, live-verified same day):
+
+11. **Wave-census law (hits ≠ parts)**: a spot-check's stale-probe HITS page-wide are NOT the fix population. Derive the fix census from the diff (e.g. `solutionMd` changed in the wave AND `markPoints[0].textMd` untouched ⇒ mirror-sync part), then reconcile hits→parts explicitly in the receipt. run-013: 25 hits over 10 probed pids → rigorous 23-part census (16 byte-exact stale mirrors + 7 pre-existing divergences the wave re-exposed). Fixes: `textMd := solutionMd` byte-exact (mirror slot [0] only).
+12. **Flight-duplication probe law**: RSC page payloads embed the corpus plane data a CONSTANT 4× per page. Count probes must compare against 4× the plane count; a constant multiplier is duplication (mechanical), a VARIABLE one is leakage. Corollaries: flight strings escape `\n`/`\"` and chunk-split mid-string (strip chunk-boundary noise + backslashes before needle matching; for short mirrors `staleHit=False` on the pid window is the discriminating proof; for chunk-split long strings the `/corpus` byte-match carries the data-presence proof).
+
+**Queue after run-013**: mirror-sync wave DONE (23), inline-link wave DONE (58 crops / 56 parts, URL-gated, identical-byte twins deduped). Remaining: F4/F5 eyes-on leads; 213 run-011 machine-staged crops `review:true` verdict passes; PAT rotation still pending.
