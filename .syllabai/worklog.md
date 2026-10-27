@@ -21645,3 +21645,20 @@ Work Log:
 
 Stage Summary:
 - The gate is LIVE and truthful: playable = officially parsed (4CH1/4MB1/4PH1), unparsed courses show the PDF archive + honest roadmap states, direct pseudo-paper URLs are dead, Exam Questions stands alone unchanged. PAT rotation CRITICAL-OVERDUE (fingerprint through 44 + this bookkeeping push).
+
+---
+Task ID: NEON-PAUSE-001 run-001 (operator order trace 1a17e89fc9727039: "main database project is paused, because of full storage I guess. What to do?" + napi_ token + MAIN/W1 pooler URLs)
+Agent: main (Z.ai, zai-web session web-590847c1)
+Task: Triage the MAIN Neon suspension; deliver the unblock plan of-record.
+
+Work Log:
+- MAIN (ep-ancient-cake): HARD-SUSPENDED — every query incl. bare SELECTs refused at proxy ('account or project has exceeded the quota. Upgrade your plan to increase limits.'); == T-BOOK-068 first-hand refusal of-record, this run adds reads-also-refused. Carrier health UP (DB-less readiness) but register/login 500 first-hand; books plane 500 per of-record -> platform DB plane DOWN for learners; hub static plane unaffected (16 packs intact).
+- W1 (ep-calm-queen): ALIVE, 241 MB, write-accepting (self-cleaning probe); shape == the of-record rebuild census (seneca_resources 161,621 rows all-subjects, Task-40 data loss Oct-25 superseded the lost warehouse; wh-v1 warehouse_chunks ABSENT) — no new drift; maths-4ma1 chunks plane no longer here.
+- Discriminator: project-level 1 GB breach most likely (account-wide implausible at these sizes); definitive split needs the console Storage page; api.neon.tech DNS-walled from sandbox (5th consecutive of-record) -> napi_ unusable from here.
+- Pricing of record (neon.com/pricing): Launch = NO minimum, $0.35/GB-mo, typical ~$15/mo; storage caps do NOT monthly-reset -> console UPGRADE is the certain unblock (the T-BOOK-068 'wait for reset' hedge applies to CU-hours only).
+- Receipt .syllabai/receipts/NEON-PAUSE-001/run-001-census-unblock-plan-r0.json carries the operator console steps + the full post-resume lane plan (parity census vs NEON-DB-LOSS gate; resume T-BOOK-068 flip / embed 1,330 / Phase-D 3,012; ADR-038 relief package; backup-law implementation; maths serving reconciliation).
+- Secrets: napi_ + both npg_ chat-transited again — rotation list grows. Zero credentials persisted; scrub-verified. Writes: one W1 probe table create+drop (net zero); MAIN zero-writes-possible; zero Vercel mutations.
+- ENVIRONMENT: sandbox recycled MID-TURN (v2-run014 worktree consumed pre-push; receipt re-landed from context into fresh shallow clone @ 4eb4158) — incremental-commit law now reads: file+push the SAME turn, never batch receipts across tool-call boundaries.
+
+Stage Summary:
+- NEON MAIN suspension CONFIRMED + plan of-record: operator console upgrade (Launch, ~$15/mo typical, no minimum) = immediate resume; lane executes parity census + unblocks the tracked quota cars on green-light; ADR-038 relief + nightly pg_dump law now MANDATORY (three loss/pause events in six days). LANE: BLOCKED_ON_PLATFORM_QUOTA (with the fleet).
