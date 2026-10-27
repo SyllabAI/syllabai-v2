@@ -36,6 +36,7 @@ import {
 
 import type { CourseMeta } from "@/lib/courses";
 import type { ExamQuestionTopic, Flashcard, RevisionNote } from "@/lib/contracts";
+import type { RailBlock } from "@/lib/books-rail";
 import {
   flashcardsForSpecRefs,
   questionTopicsForSpecRefs,
@@ -45,6 +46,7 @@ import {
 import type { ChapterLesson, LessonGlossaryEntry, LessonSectionServed } from "@/lib/books-lesson";
 import { parseLessonSegments, rewriteGlossaryChips } from "@/lib/lesson-markdown";
 import { Markdown } from "@/components/markdown";
+import { LessonInteractive } from "@/components/books/lesson/lesson-interactive";
 
 const BOX_STYLES: Record<
   string,
@@ -168,6 +170,9 @@ function SectionBlock({
   notes,
   questionTopics,
   flashcards,
+  blocks,
+  docId,
+  railChapterKey,
 }: {
   section: LessonSectionServed;
   glossary: LessonGlossaryEntry[];
@@ -176,6 +181,11 @@ function SectionBlock({
   notes: readonly RevisionNote[];
   questionTopics: readonly ExamQuestionTopic[];
   flashcards: readonly Flashcard[];
+  /** T-BOOK-026 — this section's rail blocks (authored blockIds + derived
+   *  spec-fill, the join law of record); absent/empty → nothing renders. */
+  blocks?: RailBlock[];
+  docId: string;
+  railChapterKey: string | null;
 }) {
   const md = section.markdown ?? "";
   const segments = md ? parseLessonSegments(md) : [];
@@ -199,6 +209,14 @@ function SectionBlock({
         ),
       )}
       <GlossaryStrip slugs={section.glossarySlugs} glossary={glossary} />
+      {blocks != null && blocks.length > 0 && railChapterKey != null && (
+        <LessonInteractive
+          blocks={blocks}
+          documentId={docId}
+          railChapterKey={railChapterKey}
+          courseSlug={courseSlug}
+        />
+      )}
       <DerivedLinks
         section={section}
         courseCode={courseCode}
@@ -221,6 +239,9 @@ export function LessonView({
   questionTopics,
   flashcards,
   preview,
+  blocksBySection,
+  extraBlocks,
+  railChapterKey,
 }: {
   courseSlug: string;
   docId: string;
@@ -231,6 +252,11 @@ export function LessonView({
   questionTopics: readonly ExamQuestionTopic[];
   flashcards: readonly Flashcard[];
   preview: boolean;
+  /** T-BOOK-026 — the lesson↔rail join result (sectionId → blocks) plus the
+   *  honest extras stream; absent → the lesson renders exactly as before. */
+  blocksBySection?: Record<string, RailBlock[]>;
+  extraBlocks?: RailBlock[];
+  railChapterKey?: string | null;
 }) {
   const { pack, glossary } = lesson;
   return (
@@ -291,9 +317,26 @@ export function LessonView({
               notes={notes}
               questionTopics={questionTopics}
               flashcards={flashcards}
+              blocks={blocksBySection?.[s.id]}
+              docId={docId}
+              railChapterKey={railChapterKey ?? null}
             />
           ))}
         </div>
+        {extraBlocks != null && extraBlocks.length > 0 && railChapterKey != null && (
+          <section className="mt-2 border-t py-6">
+            <h2 className="mb-1 text-xl font-semibold tracking-tight">Interactive extras</h2>
+            <p className="mb-3 text-[13px] text-muted-foreground">
+              Interactive elements for this chapter without a spec-anchored section — honest placement, never dropped.
+            </p>
+            <LessonInteractive
+              blocks={extraBlocks}
+              documentId={docId}
+              railChapterKey={railChapterKey}
+              courseSlug={courseSlug}
+            />
+          </section>
+        )}
         <div className="mt-6 flex flex-wrap gap-3 text-sm">
           <Link
             href={`/courses/${courseSlug}/books/${docId}?chapter=${encodeURIComponent(chapterKey)}`}

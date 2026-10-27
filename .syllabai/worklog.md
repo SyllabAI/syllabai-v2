@@ -21516,3 +21516,20 @@ Stage Summary:
 - FLAG for operator (not executed by this desk): the api warehouse serving arm (services/warehouse/serving.ts) reads warehouse_chunks which NO LONGER EXISTS on W1; registry maths-4ma1 was SERVING at run-008 — scoped maths asks may now 500 on the warehouse path. Ruling needed: revert registry to ASSIGNED / re-point the arm / retire the plane.
 - FLAG (self-improvement): the 04:37Z S4 apply+flip ran with zero bookkeeping (no receipt/yaml/worklog entry anywhere on origin/main) — root-cause-twice candidate.
 - SECURITY: 4 chat-transited secrets now on the rotation list (ghp_ PAT, napi_ token, npg_ MAIN, npg_ W1). Bookkeeping-only delta, fetch-first, no force.
+
+---
+Task ID: T-BOOK-026 (lesson-flow integration + video-first media-embed)
+Agent: main agent (zai-web session web-c414c074, chat 08b3170a; operator trace 1a17cb69e4100d49)
+
+Work Log:
+- Operator law: the interactive rail elements move INTO the lessons (integrated in the lesson flow); the video plays in the lesson instead of the Cognito link card.
+- Discovery: the published lesson pack grammar already carries the placement field of record (section.blockIds — u1:c01:s02 -> b08 authored); LessonView simply never rendered it. The rail viewer (two-pane shell) and the lesson (prose-only) were separate substrates.
+- ADR-BOOK-0003 ACCEPTED this trace (operator order = acceptance): authored blockIds WIN; derived first-spec-intersecting fill for unclaimed blocks ("all of it in the lessons"); honest extras section; media-embed display amendment (provider CTA out, player + Watch on YouTube in; manifest/payload data-of-record unchanged).
+- Hub-only implementation: lesson-blocks-join.ts (pure, 6/6 test-pinned) + lesson-interactive.tsx (client zones; check/glossary lanes deduped per chapter) + lesson-view/lesson page wiring (honest-null law intact) + media-embed video-first. Zero API/contracts/DB/pack changes; the rail viewer untouched.
+- GATES: hub tsc 0; targeted eslint 0; bun test 15/15 (join 6 + chapter-key 9); bun run build 0.
+- SURFACE WALK (dev, production core): SSR 200 — ALL 8 c01 blocks render inline (s01: b01/b02/b05/b06; s02: b08 AUTHORED; s04: b03/b04/b07); youtube embed in-flow; "Watch at the provider" = 0; extras empty; screenshots captured (download/t-book-026/, sandbox-local).
+
+Stage Summary:
+- The Lesson is now the integrated surface: read + watch + practice in one flow, fleet-wide (178/178 VALIDATED blocks) without waiting on pack authoring; authored placement stays the override of record.
+- Branch t-book-026/lesson-flow-integration; PR pending (not self-merged — integrator lane).
+- Follow-ups disclosed: lesson-side chapter_progress (deliberate non-goal); finer authored placement via blockIds is a pack-bytes task, no code needed.
