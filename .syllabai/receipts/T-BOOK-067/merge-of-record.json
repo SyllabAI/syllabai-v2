@@ -1,0 +1,33 @@
+{
+  "task": "T-BOOK-067",
+  "receipt": "merge-of-record",
+  "date": "2026-10-28",
+  "trace": "1a17e7f85630ad0d",
+  "operator_order": "merge #409 and flipping the vehicle into the warehouse",
+  "admission_gates": {
+    "pre_first_attempt": "mergeable clean, head 34acf483, CI verify+hub success x2, 0 reviews, not draft",
+    "first_merge_attempt": "REFUSED by GitHub: 'Pull Request has merge conflicts' — main had moved (3c217e70 direct-to-main receipt commit) colliding with the branch's worklog append; both sides tailed the same base so GitHub's cached mergeable lagged the real merge check"
+  },
+  "resolution": {
+    "strategy": "history-preserving — origin/main merged INTO the branch (merge commit 034c9177), worklog union-resolved in section order (branch Task-10 sections first, main continuation appended last; 21,551-line common prefix verified; zero conflict markers; zero content lost)",
+    "force_push": "NONE (standing law); normal fast-forward push 34acf483..034c9177",
+    "ci_after_resolution": "verify success + hub success on reconciled head 034c9177 (checked first-hand)"
+  },
+  "merge": {
+    "pr": 409,
+    "method": "merge",
+    "head": "034c9177",
+    "merge_commit": "28e99920",
+    "result": "Pull Request successfully merged"
+  },
+  "post_merge": {
+    "main_tip": "28e99920",
+    "ci": "hub success + verify success on the merge commit (checked first-hand ~110s after landing)",
+    "local_main": "synced via ff-only pull"
+  },
+  "effect": "T-BOOK-067 lesson-side reading progress is main-of-record: the lesson shares the rail's ONE chapter_progress row (ADR-BOOK-0001 §8, no fork). Student-visible on the next hub serving deploy (watch the auto-bake BUILD_UTILS_SPAWN_1 class; the CLI-upload recipe is the proven fallback).",
+  "followups": {
+    "t_book_068": "flip still BLOCKED on Neon MAIN quota (re-probed 2026-10-28 first-hand: same proxy refusal; zero writes ever executed) — vehicle-into-repo PR executes the operator's second order",
+    "readme_diagram_refresh": "docs follow-up still registered"
+  }
+}

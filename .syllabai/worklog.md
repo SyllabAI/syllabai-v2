@@ -21615,3 +21615,20 @@ Work Log:
 
 Stage Summary:
 - The Interactive surface now tells the truth: playable = officially parsed (3 courses), everything else shows the PDF archive and honest not-parsed states; Exam Questions stands alone unchanged. Receipt .syllabai/receipts/PASTPAPERS/pp-interactive-gate-run-001-r0.json; fetch-first at 03d16e31, no force; PAT rotation CRITICAL-OVERDUE reported pre-push (transit 44).
+
+---
+Task ID: T-BOOK-067-merge / T-BOOK-068-vehicle
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a17e7f85630ad0d)
+Task: Operator order "merge #409 and flipping the vehicle into the warehouse".
+
+Work Log:
+- Merge #409 admission gates GREEN (head 34acf483, CI verify+hub x2, 0 reviews). First PUT REFUSED: "Pull Request has merge conflicts" — main 3c217e70 (reflip receipt, direct-to-main) and the branch both appended to .syllabai/worklog.md from the same base; GitHub's cached mergeable lagged the real check.
+- Resolved HISTORY-PRESERVING (no force push, law): merged origin/main INTO the branch (034c9177); worklog union-resolved by longest-common-prefix (21,551 lines) with both appends kept in section order — branch Task-10 sections, then main's continuation; zero conflict markers, zero content lost. CI re-ran GREEN on the reconciled head.
+- MERGED of record: PUT merge_method=merge → merge commit 28e99920 on main; post-merge CI hub+verify GREEN first-hand; local main synced. T-BOOK-067 (lesson-side reading progress, one shared chapter_progress row, no fork) is main-of-record; student-visible on the next hub serving deploy.
+- T-BOOK-068 quota re-probe first-hand: SAME Neon proxy refusal ("account or project has exceeded the quota") — flip remains blocked, zero writes ever executed, guards intact.
+- Vehicle-into-repo (operator ruling honored): js-yaml availability verified against the tracked-script convention (books-ingest-rail.ts, books-u4-s34/spotcheck.ts already import hoisted js-yaml 4.1.1 — no package.json change needed); tracked copy staged at apps/api/scripts/books/glossary-reflip-r4.mts on branch t-book-068/flip-car-tracked, PR opened (not self-merged).
+
+Stage Summary:
+- T-BOOK-067 MERGED (28e99920) — merge receipt .syllabai/receipts/T-BOOK-067/merge-of-record.json.
+- T-BOOK-068 flip car becomes TRACKED of-record (rollback-proof); execution still awaits the Neon MAIN quota fix, recipe unchanged.
+- Rotation list unchanged: all chat-exposed secrets still overdue for rotation.
