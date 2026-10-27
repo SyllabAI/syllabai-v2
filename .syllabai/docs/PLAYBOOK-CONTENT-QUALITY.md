@@ -1,0 +1,79 @@
+# PLAYBOOK — Content Quality Protocol (OEQ planes)
+
+> Self-improving agent playbook. Born from T-OEQ-MATHSB-SERVE-1 run-011 (deep-water
+> QA wave on the 4MB1 official-papers plane). Every future content-repair lane MUST
+> read this before touching plane JSON. Append new classes/lessons at the end; never
+> delete entries (the taxonomy is cumulative).
+
+## 1. The laws (non-negotiable)
+
+1. **NO-GUESS**: every text repair must be evidenced by the printed page of record
+   (QP/MS PDF from the `syllabai-pastpapers` mirror, rendered to PNG and READ).
+   Unreadable fragment → leave as-is + note. Wrong-but-plausible math is worse than
+   raw junk.
+2. **MARKS LAW**: `sum(question.totalMarks) == sum(part.marks)` fleet-wide (currently
+   6600 == 6600 over 2443 parts). Never change marks.
+3. **MARK-CODE LAW**: for solution/markPoints rebuilds, the `after` text must keep
+   every mark-code token the `before` text had (M1/A1/B1…). Rebuilds may RESTORE
+   codes lost to OCR garbling (each fix cites its printed-page evidence); they must
+   never LOSE one. Validator regex must handle glued tokens (`M1ft`, `B1for`,
+   `A1oe`): `\b(M[123]|A[123]|B[123])(?=ft|oe|for\b|award|allow|dep|if\b|[^a-z]|$)`.
+4. **NEVER-FABRICATE DIAGRAMS**: automatic matrix/figure reconstruction without
+   page evidence is forbidden. A wrong pmatrix is worse than flattened text.
+5. **FURNITURE**: cover-page blocks, "Turn over", barcodes (P60258A…), dotted-leader
+   junk rows, MS-table headers ("Question Working Answer Mark Notes"), page
+   footers/copyright lines never belong in question/MS text. Strip on sight.
+6. **CURRENCY $**: in OEQ planes `$` in text is ALWAYS money (math is Unicode or
+   explicit KaTeX). Escape as `\$` — remark-math pairs two same-line unescaped `$`
+   into a fake-math segment (24-part defect class killed in run-011). Genuine LaTeX
+   segments stay paired `$…$`.
+7. **Single-line compact JSON**: official-papers.json stays minified
+   (`separators=(',',':')`, ensure_ascii=False).
+8. **Honest flags**: machine-staged (not yet eyes-on-verified) crops carry
+   `review: true` in the asset. Eyes-on-verified → `review: false`.
+
+## 2. Defect taxonomy (as observed on 4MB1, October 2026)
+
+| Class | Signature | Remedy |
+|---|---|---|
+| cover-furniture | stem starts "Please check the examination details…", "Write your name here…", "Answer ALL…" | strip up to and including "You must write down all the stages in your working." |
+| OCR word-salad | interleaved two-column text, "Turnover >", barcodes, `cossssus…` dotted-junk, `MUA ACA AAA` tokens | eyes-on rebuild from printed page |
+| duplicate stem | whole stem block repeated (two-column OCR capture) | rebuild once from page |
+| matrixish flatten | `( −2 4 )` / `(8 3 )` — parens with ≥2 bare number tokens | KaTeX `\begin{pmatrix}` from printed page |
+| unit-sup loss | `m2`, `cm3`, `x2` where print shows superscript | Unicode ² ³ (or `$x^{n}$`) from page |
+| deg-q degree junk | `32q` for 32° inside figure-label lines | context-gated fix (algebra variables `2q`, `10q+p` are LEGIT — do not touch) |
+| currency pairing | two unescaped `$` on one line | escape all non-LaTeX `$` as `\$` |
+| c-junk | `©` used as mis-OCR token in MS text | eyes-on from MS page |
+| fraction flatten | `114 2 M1 × 4200 oe 360` (stacked fraction linearized) | rebuild inline `a/b` from page |
+| crop-required | asset `{kind:'crop-required'}` + "Figure not shown…" note | attach real crop (see §3) |
+
+## 3. Figure crop pipeline (proven run-011)
+
+1. Mirror: `https://raw.githubusercontent.com/SyllabAI/syllabai-pastpapers/main/past-papers/pearson-edexcel/international-gcse/mathematics-b/4mb1/past-papers/<series>/4MB1-<PAPER>/qp.pdf|ms.pdf` (paper slug UPPERCASE: `02R`, not `02r`).
+2. Page find: distinctive-word voting (10 longest normalized words, ≥50% hit), NOT prefix match — OCR interleave breaks prefixes.
+3. Question block: margin words (`x0 < 62`) equal to the question number; block = q-num y → next-q-num y.
+4. Crop: seed on the largest vector item in-block EXCLUDING page furniture (items with area > 45% of page = the answer-box border; margin ticks x<30 / corner ticks; full-width separators), grow union by 25pt proximity, pad 16pt x / 10pt y, clip to block ±40pt, render zoom 3.
+5. Assets live in `syllabai-resources` at `Official-ExamQuestion/igcse-maths-b-16/<series>/4MB1-<paper>/assets/asset_<q>_<mention>[-<occ>].png`, referenced from plane JSON with `rawUrl` on `main`.
+6. Reuse first: the SME plane (`questions.json`) carries 743 Tier-B-verified inline images — match by (series, paper, question-number parsed from the asset URL). 72/263 crop-required parts were satisfied by reuse alone.
+7. GATE: every crop rawUrl HEAD-200 (562/562 at run-011).
+
+## 4. Fleet protocol (multi-agent repair waves)
+
+- Slice worklists per agent (~20 eyes-on parts each); every slice item carries part id, current text, evidence image paths, reasons.
+- Agents write fix-proposal JSON ONLY (part/field/before/after/evidence/note); the main lane applies through the validator (§1 laws) — agents never edit plane JSON.
+- **Concurrency lesson (run-011)**: 8 parallel Task agents exceeded the gateway (context deadline exceeded ×3 rounds, even 2× and 1× during the outage). Fallback: main lane executes the priority classes serially with sampled verification, and the slices stay staged for fleet retry. Check fleet health with ONE cheap agent before committing to a wave.
+- **Script persistence lesson**: run-010's repair script was lost with its session (only the changelog survived). Every repair script now lives in `/home/z/my-project/scripts/` and is named per run (w1_apply.py, w2_salad_fixes.py, w3_apply.py, evidence_prep.py, deepwater_census.py, katex_gate.js, crop_url_gate.py).
+
+## 5. Gates (run these before any push)
+
+1. `scripts/deepwater_census.py` — structure (marks law), junk/furniture counters, unbalanced-$ census.
+2. `scripts/katex_gate.js` — every `$…$` segment parses (standalone katex install OK; hub node_modules may not exist in a fresh clone).
+3. `scripts/crop_url_gate.py` — all crop rawUrls 200.
+4. W2/W3 validators inside the apply scripts (mark-code law, PUA/FFFD scan).
+
+## 6. Open queue (as of run-011)
+
+- matrixish 78 hits / unit-sup 22 parts / c-junk 2 parts — slices `download/t-oeq-mathsb/deepwater/slices/w2-{A,B,C}.json` staged for fleet retry.
+- 64 crop-required parts without a figure yet (list in `worklists/w3-crops.json`, entries with `crop: null`) — auto-crop returned None (figure on adjacent page or raster-only); needs manual region or page-adjacent re-run.
+- 213 crop assets carry `review: true` (machine-staged) — consume via fleet verdict passes (`slices/w3-{1..5}.json` pattern: verdict PASS/FAIL + pageHint).
+- SME-bundle retirement decision still queued (operator card).
