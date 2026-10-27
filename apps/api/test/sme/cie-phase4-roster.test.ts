@@ -24,24 +24,51 @@ const roster = loadRoster();
 // CI pass so a bundle regression is a RED here, never a mid-fleet surprise)
 const mapLaw = mapLawCensus(roster);
 
-// the 4 honest-empty stub banks of record (scope receipt stubBanks)
+// the skeleton class of record (0 nodes + 0 sets, no spine): the D1 pure-2
+// catalog-lane skeleton + geography-21 (no SME notes/EQ/flashcards on SME —
+// the honest corpus gap). SME-WAVE2 r1 (operator order trace
+// 1a17ed20502e4c8d "order the build_bundles import run to fill the 12
+// skeletons with teaching content"): the other 10 wave-2 registered
+// skeletons are FILLED (official-spine bundles via the established
+// spines -> content-maps -> rekey chain at resources PRs #194/#198) and
+// their registry rows flipped registered -> full; the 2 that remain have
+// NO corpus lane of their own to fill from (a-level-pure-2: SME never
+// published 9709 P2 under the A-Level tree — the operator-ruling class;
+// geography-21: honest-empty on every SME axis) — never invented.
+const SKELETON_OF_RECORD = [
+  "cie-a-level-maths-20-pure-2",
+  "cie-a-level-geography-21",
+];
+
+// the honest-empty stub banks of record (0 question sets, official-spine tree
+// serves the KG): the four scope-receipt stubs + as-accounting-21 (SME-WAVE2
+// r1 fill: SME publishes notes for the AS lane but 0 topic questions — the
+// no_topic_questions_on_sme class, now stub-classified after its fill)
 const STUBS_OF_RECORD = [
   "cie-a-level-accounting-21",
   "cie-a-level-economics-23",
   "cie-as-english-general-paper-21",
   "cie-igcse-accounting-25",
+  "cie-as-accounting-21",
 ];
 
-// the skeleton class of record (0 nodes + 0 sets, no spine): the D1 pure-2
-// catalog-lane skeleton + the 11 wave-2 registered skeletons (SME-WAVE2 r0,
-// trace 1a17e97cb4e3ae95, resources PR #194 — identity page-sourced from the
-// Official-Specifications covers; teaching content arrives with the follow-up
-// build_bundles import run)
-const SKELETON_OF_RECORD = [
-  "cie-a-level-maths-20-pure-2",
-  "cie-a-level-geography-21",
-  "cie-as-accounting-21",
-  "cie-as-biology-25",
+// the shared-subject-code join matrix of record (this census): the component
+// banks that seed into ONE subject tree via the seed's resolve-or-create.
+// SME-WAVE2 r1: the AS fill doubles every science/business/CS bank and grows
+// 9709 to 9 (the 4 AS maths units join their A-Level counterparts; distinct
+// syllabus codes stay 27 — the AS codes already existed among them).
+const SHARED_CODES_OF_RECORD: Record<string, number> = {
+  "9709": 9, "0973": 3, "0653": 3, "9700": 2, "9701": 2, "9702": 2,
+  "9609": 2, "9618": 2, "0580": 2, "0455": 2, "0500": 2, "0460": 2, "0607": 2,
+};
+
+// the zero-servable real banks of record (the anchor-gap disclosure class):
+// the english-language-20/25 pairs (seed-only since the phase-4 census) + the
+// 8 wave-2 banks whose SME pages carry no official statement text (the no-guess
+// attach ladder resolves 0 spec codes — the T-SPECS-CIE-JOIN sidecar lane is
+// the documented follow-up). econ-25 LEFT this list at the run-006 serving
+// wave; as-biology-25 SERVES (789) and stays out.
+const ZERO_SERVABLE_OF_RECORD = [
   "cie-as-business-23",
   "cie-as-chemistry-25",
   "cie-as-computer-science-19",
@@ -50,13 +77,9 @@ const SKELETON_OF_RECORD = [
   "cie-as-maths-20-pure-1",
   "cie-as-maths-20-pure-2",
   "cie-as-physics-25",
+  "cie-igcse-english-language-20",
+  "cie-igcse-english-language-25",
 ];
-
-// the shared-subject-code join matrix of record (this census): the component
-// banks that seed into ONE subject tree via the seed's resolve-or-create
-const SHARED_CODES_OF_RECORD: Record<string, number> = {
-  "9709": 5, "0973": 3, "0653": 3, "0580": 2, "0455": 2, "0500": 2, "0460": 2, "0607": 2,
-};
 
 describe("cie-phase4 roster law", () => {
   test("registry carries the 45 " + CIE_BOARD + " rows of record", () => {
@@ -64,14 +87,15 @@ describe("cie-phase4 roster law", () => {
     expect(roster.cieRows).toBe(56);
   });
 
-  test("classification of record: 40 real banks / 4 stubs / 12 skeletons", () => {
-    expect(roster.real).toBe(40);
-    expect(roster.stubs).toBe(4);
-    // WAVE-2 r0: pure-2 + the 11 wave-2 registered skeletons
-    expect(roster.skeletons).toBe(12);
+  test("classification of record: 49 real banks / 5 stubs / 2 skeletons", () => {
+    expect(roster.real).toBe(49);
+    expect(roster.stubs).toBe(5);
+    // SME-WAVE2 r1: 10 of the 12 skeletons filled (the official-spine import
+    // run); the 2 honest corpus gaps remain — never invented
+    expect(roster.skeletons).toBe(2);
   });
 
-  test("stubs are exactly the of-record four", () => {
+  test("stubs are exactly the of-record five", () => {
     const stubs = roster.entries.filter((e) => e.cls === "stub").map((e) => e.slug).sort();
     expect(stubs).toEqual([...STUBS_OF_RECORD].sort());
   });
@@ -86,9 +110,11 @@ describe("cie-phase4 roster law", () => {
     for (const e of real) {
       expect(e.questionSets).toBeGreaterThan(0);
       expect(e.nodes).toBeGreaterThan(0);
-      // the anchored floor: zero is legal ONLY for the three seed-only banks
-      // (the anchor gap disclosure); every other real bank serves > 0
-      if (!["cie-igcse-economics-25", "cie-igcse-english-language-20", "cie-igcse-english-language-25"].includes(e.slug)) {
+      // the anchored floor: zero is legal ONLY for the anchor-gap banks of
+      // record (the zeroServable list below — econ-25 served at run-006; the
+      // english-language pair + the 8 wave-2 no-statement-text banks are the
+      // honest disclosure); every other real bank serves > 0
+      if (!ZERO_SERVABLE_OF_RECORD.includes(e.slug)) {
         expect(e.expectedQuestions).toBeGreaterThan(0);
       }
     }
@@ -178,12 +204,23 @@ describe("cie-phase4 roster law", () => {
     // 19,097 - 6,974 == 12,104 + 19 (12,123 == 12,123). Per-lane pins
     // (physics-23 634/1/634, bio-25 859/1,529) verified UNCHANGED at the
     // live census.
-    expect(questions).toBe(6974);
-    expect(parts).toBe(5947);
+    // the SERVABLE census of record — SME-WAVE2 r1 re-base (the fill run):
+    // the 10 filled banks join the fleet; as-biology-25 serves 789 (its SME
+    // pages carry the official statement text — the R3/R4 join basis); the
+    // other 9 carry the ANCHOR GAP of record (0 spec-anchored parts — their
+    // SME pages carry no statement text, so the no-guess attach ladder
+    // resolves nothing; the bundle content stays complete, the learner-model
+    // join is the documented T-SPECS-CIE-JOIN follow-up lane, exactly the
+    // class the 44 banks shipped with before their spec-links sidecars).
+    // Floors re-pinned from the live census (sme_residual12_census.ts over
+    // loadRoster + mapLawCensus). NOT a loosening: raw grew +5,444/+9,478
+    // with the corpus; servable +789 via the one joinable bank.
+    expect(questions).toBe(7763);
+    expect(parts).toBe(7002);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(9603);
+    expect(pkgParts).toBe(11164);
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -199,10 +236,18 @@ describe("cie-phase4 roster law", () => {
     expect(bio25).toBeDefined();
     expect(bio25!.expectedParts).toBe(859);
     expect(bio25!.expectedPackageParts).toBe(1529);
+    // the wave-2 r1 bank pin: the ONE joinable AS bank (the anchor-gap
+    // disclosure — 789 of 1,011 raw questions serve; 222 raw carry no coded
+    // part, honest local-only practice in the player)
+    const asBio25 = real.find((e) => e.slug === "cie-as-biology-25");
+    expect(asBio25).toBeDefined();
+    expect(asBio25!.expectedQuestions).toBe(789);
+    expect(asBio25!.expectedParts).toBe(1055);
+    expect(asBio25!.expectedPackageParts).toBe(1561);
     const rawQ = real.reduce((s, e) => s + e.rawQuestions, 0);
     const rawP = real.reduce((s, e) => s + e.rawParts, 0);
-    expect(rawQ).toBe(19097);
-    expect(rawP).toBe(25663);
+    expect(rawQ).toBe(24541);
+    expect(rawP).toBe(35141);
     // the shim's exclusion counters of record (the honest disclosure class)
     const excl = real.reduce(
       (a, e) => ({
@@ -212,19 +257,15 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0 },
     );
-    expect(excl).toEqual({ unmapped: 12104, badSum: 0, dupOrder: 19 });
+    expect(excl).toEqual({ unmapped: 16759, badSum: 0, dupOrder: 19 });
     // the question-level identity: raw - servable = unmapped + dupOrder (each
     // exclusion removes whole questions; badSum is zero of record)
-    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder);
-    // the zero-servable real banks of record: seed-only by the fleet's
-    // ingest-skip law (EQ axis honestly empty of record) — econ-25 LEFT this
-    // list at the run-006 serving wave (19 questions of record); the
-    // english-language-20/25 pairs remain the only EQ-empty banks
+    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder); // 24541-7763 == 16759+19
+    // the zero-servable real banks of record — see ZERO_SERVABLE_OF_RECORD
+    // (the module-level law; econ-25 departed at run-006, the wave-2
+    // anchor-gap class joined at the r1 fill)
     const zeroServable = real.filter((e) => e.expectedQuestions === 0).map((e) => e.slug).sort();
-    expect(zeroServable).toEqual([
-      "cie-igcse-english-language-20",
-      "cie-igcse-english-language-25",
-    ]);
+    expect(zeroServable).toEqual([...ZERO_SERVABLE_OF_RECORD].sort());
   });
 
   test("every real bank carries a syllabus code + version (the seed's curriculumCode law)", () => {
@@ -242,7 +283,8 @@ describe("cie-phase4 roster law", () => {
     for (const [code, n] of Object.entries(SHARED_CODES_OF_RECORD)) {
       expect(counts.get(code)).toBe(n);
     }
-    // 40 real banks over 27 distinct syllabus codes of record
+    // 49 real banks over 27 distinct syllabus codes of record (the wave-2
+    // AS codes already existed among the 27 — the fill doubled banks, not codes)
     expect(counts.size).toBe(27);
   });
 
@@ -276,8 +318,9 @@ describe("cie-phase4 roster law", () => {
   test("the map-law census is GREEN over the whole fleet (identity-clean before any COW)", () => {
     expect(mapLaw.green).toBe(true);
     expect(mapLaw.reds).toEqual([]);
-    // 56 rows minus the 12 skeletons (pure-2 + the 11 wave-2) = 44 mapped
-    expect(mapLaw.bundlesMapped).toBe(44);
+    // 56 rows minus the 2 skeletons (pure-2 + geography-21) = 54 mapped
+    // (SME-WAVE2 r1: 44 + the 10 filled banks)
+    expect(mapLaw.bundlesMapped).toBe(54);
   });
 
   test("the varchar(40) store law holds at the census maximum of record", () => {
@@ -285,33 +328,63 @@ describe("cie-phase4 roster law", () => {
     expect(mapLaw.maxDbCodeLength).toBeLessThanOrEqual(mapLaw.storeLawLimit);
   });
 
-  test("the shared subject roots of record: the six same-version component families", () => {
-    // 9709 x5 real banks @2023-2025; 0653 x3 @2023-2024; 0973 x3 @2025-2027;
-    // 0580 x2 + 0607 x2 @2025-2027; 0460 x2 @2025-2026 (the same generation —
+  test("the shared subject roots of record: the twelve same-version component families", () => {
+    // 9709 x9 real banks @2023-2025; 0973 x3 @2025-2027; 0653 x3 @2023-2024;
+    // 0580/0607/0460 x2 @2025-2027/2025-2026; and the wave-2 r1 AS joins:
+    // 9700/9701/9702 @2025-2027, 9609 @2023-2025, 9618 @2024-2025,
+    // 9706 @2023-2025 — each AS bank shares its A-Level counterpart's
+    // version-scoped root (the resolve-or-create join law, agreeing identity;
     // the slugs' 20/25 are batch labels, the bundle's own syllabusVersion governs)
     expect([...mapLaw.sharedSubjectRoots].sort()).toEqual([
-      "0460-2025-2026", "0580-2025-2027", "0607-2025-2027", "0653-2023-2024", "0973-2025-2027", "9709-2023-2025",
-    ]);
+      "0460-2025-2026", "0580-2025-2027", "0607-2025-2027", "0653-2023-2024",
+      "0973-2025-2027", "9609-2023-2025", "9618-2024-2025", "9700-2025-2027",
+      "9701-2025-2027", "9702-2025-2027", "9706-2023-2025", "9709-2023-2025",
+    ].sort());
   });
 
-  test("the 9709 UNIT space is the tail-based disjoint set of record (the graft class is structurally gone)", () => {
-    // pure-2 is the skeleton; the five real banks land S1/S3/S4/S5/S6 — each
-    // from its own official -T tail, PAIRWISE DISJOINT (the pre-optionA order
-    // law landed all five on 9709-S1 — the graft)
+  test("the 9709 UNIT space is the tail-based disjoint set of record, now COMPLETE (the graft class is structurally gone)", () => {
+    // SME-WAVE2 r1: the four AS maths banks join their A-Level counterparts —
+    // the A-LEVEL five stay pairwise disjoint (S1/S3/S4/S5/S6, each from its
+    // own official -T tail), each AS bank maps EXACTLY ONE UNIT whose identity
+    // EQUALS its counterpart's (the resolve-or-create agreeing-identity join,
+    // same version scope), and AS pure-2 lands S2 — the unit the A-LEVEL tree
+    // never served (SME never published 9709 P2 there; the AS tree does).
+    // The 9709 subject UNIT space is now complete: S1..S6 all exist.
     const banks9709 = roster.entries.filter((e) => e.code === "9709" && e.cls === "real");
-    expect(banks9709.length).toBe(5);
-    const unitSets = banks9709.map((e) => {
+    expect(banks9709.length).toBe(9);
+    const al = banks9709.filter((e) => e.slug.startsWith("cie-a-level-"));
+    const asx = banks9709.filter((e) => e.slug.startsWith("cie-as-"));
+    expect(al.length).toBe(5);
+    expect(asx.length).toBe(4);
+    const unitSetsOf = (banks: { slug: string }[]) => banks.map((e) => {
       const bundle = JSON.parse(
         readFileSync(join(import.meta.dir, "../../../hub/content/" + e.slug + "/curriculum.json"), "utf8"),
       ) as BundleCurriculum;
-      return [...mapBundleNodes(bundle, "p").values()].filter((m) => m.nodeType === "UNIT").map((m) => m.dbCode);
+      return { slug: e.slug, units: [...mapBundleNodes(bundle, "p").values()].filter((m) => m.nodeType === "UNIT").map((m) => m.dbCode) };
     });
-    const flat = unitSets.flat().sort();
-    expect(flat).toEqual([
+    const alSets = unitSetsOf(al);
+    const alFlat = alSets.flatMap((s) => s.units).sort();
+    expect(alFlat).toEqual([
       "9709-2023-2025-S1", "9709-2023-2025-S3", "9709-2023-2025-S4", "9709-2023-2025-S5", "9709-2023-2025-S6",
     ]);
-    // pairwise disjoint across banks (each UNIT belongs to exactly one bank)
-    expect(new Set(flat).size).toBe(flat.length);
+    // pairwise disjoint across the A-LEVEL banks (each UNIT belongs to exactly one)
+    expect(new Set(alFlat).size).toBe(alFlat.length);
+    // each AS bank carries exactly ONE unit, the agreeing identity of its counterpart
+    const counterpart: Record<string, string> = {
+      "cie-as-maths-20-pure-1": "9709-2023-2025-S1",
+      "cie-as-maths-20-pure-2": "9709-2023-2025-S2",
+      "cie-as-maths-20-mechanics": "9709-2023-2025-S4",
+      "cie-as-maths-20-probability-and-statistics-1": "9709-2023-2025-S5",
+    };
+    for (const s of unitSetsOf(asx)) {
+      expect(s.units).toEqual([counterpart[s.slug]!]);
+    }
+    // the unit space of record: S1..S6 all served (S2 joined the tree with the fill)
+    const allUnits = [...alFlat, ...asx.map((e) => counterpart[e.slug]!)].sort();
+    expect(new Set(allUnits)).toEqual(new Set([
+      "9709-2023-2025-S1", "9709-2023-2025-S2", "9709-2023-2025-S3",
+      "9709-2023-2025-S4", "9709-2023-2025-S5", "9709-2023-2025-S6",
+    ]));
     // the order-based pre-optionA code must not exist anywhere
     expect(mapLaw.sharedCodes.some((s) => s.dbCode === "9709-S1")).toBe(false);
   });

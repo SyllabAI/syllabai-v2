@@ -339,10 +339,17 @@ const cieRowCount = reg.courses.filter((c) => c.board === BOARD).length;
 // WAVE-2 r0: +11 CIE rows (44-slug roster + D1 pure-2 + 11 wave-2 registered skeletons)
 check("registry carries 56 CIE rows (44-slug roster + D1 pure-2 + 11 wave-2 registered)", cieRowCount === 56, String(cieRowCount));
 const cieFilled = reg.courses.filter((c) => c.board === BOARD && c.curriculumCode !== undefined).length;
-// WAVE-2 r0: the 11 wave-2 registered rows are honestly unmapped (no curriculumCode —
-// fail-closed law of record), joining pure-2 as the registered/unmapped class
-check("registry CIE fill of record: 44/56 mapped (the run-009 onGreen fill; pure-2 + the 11 wave-2 registered skeletons the honest gates)",
-  cieFilled === 44, String(cieFilled));
+// WAVE-2 r1 (operator order trace 1a17ed20502e4c8d "order the curriculumCode
+// promotion for the 7 page-sourced lanes"): the 7 AS lanes whose edition windows
+// are page-sourced on the EXACT probe-url-match quals (9701/9700/9702 @2025-2027,
+// 9709 @2023-2025 — work/sme_wave2_specs_receipt.json basis="probe-url-match")
+// are PROMOTED: 44 + 7 = 51/56. Still honestly unmapped (5): pure-2 (the D1
+// skeleton — cvOfRecord law keeps undefined until a serving corpus exists),
+// as-business-23 / as-computer-science-19 / as-accounting-21 (title-span evidence
+// class, SME card NULL — never exact-probed) and a-level-geography-21 (new-qual
+// download class) — fail-closed, never invented (ADR-030).
+check("registry CIE fill of record: 51/56 mapped (run-009 onGreen fill 44 + the wave-2 r1 page-sourced promotion 7; pure-2 + the 3 title-span AS lanes + geography-21 the honest gates)",
+  cieFilled === 51, String(cieFilled));
 check("registry coreBridge CIE law of record: exactly the 26 T-SM-BRIDGE-WIDEN r0 + T-SM-EDX-INGEST-R1 rows carry true; every other CIE row stays absent (Wave-3 band-scheme rows remain blocked pending the levels-of-response ADR)",
   reg.courses
     .filter((c) => c.board === BOARD)

@@ -63,8 +63,14 @@ CIE_BOARD = "Cambridge CIE"
 # across 4add496..a4ce9f5 for all 7 multi-bank/representative specs before pinning
 CIE_RESOURCES_SHA = "a4ce9f5559990a97950355d8f4cc85d30a796301"
 CIE_RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{CIE_RESOURCES_SHA}"
-CIE_RECEIPT = (REPO.parent.parent / ".syllabai" / "receipts" / "CIE-INTEGRATION"
-               / "cie-phase0-roster-manifest-r0.json")
+# SME-WAVE2 r1 (residual 2): env override follows the lane-worktree pattern of
+# CIE_CACHE/CIE_STAGING — the of-record phase-0 receipt stays byte-untouched and
+# the default path is unchanged; the wave-2 build set reads the additive
+# SME-WAVE2/wave2-roster-manifest-r0.json receipt instead.
+import os as _os  # noqa: E402
+CIE_RECEIPT = (Path(_os.environ["CIE_RECEIPT"]) if _os.environ.get("CIE_RECEIPT")
+               else (REPO.parent.parent / ".syllabai" / "receipts" / "CIE-INTEGRATION"
+                     / "cie-phase0-roster-manifest-r0.json"))
 CIE_LEVEL_PIN = {"a-level": "A-LEVEL", "as": "AS", "igcse": "IGCSE"}
 
 # T-SPECS-TS4-REPAIR-1 — evidence-cited topic split for cie-igcse-history-18
@@ -390,15 +396,36 @@ def cie_scope_rule_for(slug: str, qual: str) -> dict:
     """CIE scoping table. Shared-qual splits are evidence-cited:
     - 9709 (2023-2025): parse topics 1-6 in component order (Pure 1 / Pure 2 /
       Pure 3 / Mechanics / P&S 1 / P&S 2) — banks scope by topic number; the
-      Pure-2 topic has no bank and stays unused (honest pool remainder).
+      Pure-2 topic has no A-LEVEL bank and stays unused (honest pool remainder);
+      SME-WAVE2 r1: the AS tree PUBLISHES pure-2 (discovered live in the wave-2
+      scrape lane), so the AS pure-2 bank joins via the same tuple.
     - 0580 / 0607 (2025-2027): the syllabus prints parallel Core (C*) and
       Extended (E*) trees; the official codes themselves carry the tier prefix
       (C1.1.1 / E1.1.1) — banks scope by code prefix.
     - 0973 / 0653: scope field carries Biology/Chemistry/Physics (230/181/221
       and 70/82/86 rows verified); codes carry B*/C*/P* prefixes.
+    - SME-WAVE2 r1 (operator order trace 1a17ed20502e4c8d, residual 2): the
+      wave-2 AS banks scope the SHARED quals by the parse's own printed scope
+      markers — the int_statements/nmk_outcomes rows carry verbatim
+      'AS Level'/'A Level' scope values extracted from the syllabus PDFs
+      (quals of record: the probe-url-match extension set in
+      work/sme_wave2_specs_receipt.json; AS-pool rows verified at parse time:
+      chem 204/356, bio 123/257, phys 145/303, business 62/116,
+      accounting 19/34).
+      9618 (2024-2025): the parse's scope field marks ONLY the A2-only topics
+      13-20 'A Level' (66 rows); topics 1-12 carry NO marker (161 rows = the
+      AS & A Level shared content per the syllabus's own content grid) — the
+      AS bank scopes scope-null rows (kind scope_null).
     - everything else: the spec serves exactly one bank (spec.json sme_courses)."""
+    # SME-WAVE2 r1: the five AS banks on scope-marked shared quals
+    if slug in ("cie-as-chemistry-25", "cie-as-biology-25", "cie-as-physics-25",
+                "cie-as-business-23", "cie-as-accounting-21"):
+        return {"kind": "scope_eq", "value": "AS Level"}
+    # SME-WAVE2 r1: 9618 AS bank — the parse's scope-null rows = topics 1-12
+    if slug == "cie-as-computer-science-19":
+        return {"kind": "scope_null"}
     if qual == "cie-a-level-maths-2023-2025":
-        for key, num in (("pure-1", "1"), ("pure-3", "3"), ("mechanics", "4"),
+        for key, num in (("pure-1", "1"), ("pure-2", "2"), ("pure-3", "3"), ("mechanics", "4"),
                          ("probability-and-statistics-1", "5"),
                          ("probability-and-statistics-2", "6")):
             if slug.endswith(key):
@@ -427,6 +454,10 @@ def cie_row_in_scope(row: dict, rule: dict) -> bool:
     k = rule["kind"]
     if k == "all":
         return True
+    if k == "scope_null":
+        # SME-WAVE2 r1: rows with no printed 'A Level' marker (the 9618 parse's
+        # topics 1-12 — the AS & A Level shared content)
+        return not row.get("scope")
     code = str(row.get("official_code") or "")
     if k == "topic_numbers":
         return code.split(".")[0] in set(rule["values"])

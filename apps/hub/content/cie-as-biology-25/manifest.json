@@ -1,29 +1,40 @@
 {
-  "schema": "syllabai-demo.content-bundle/2.0",
-  "generatedUtc": "2026-10-28T00:00:00Z",
-  "importSource": {
-    "repo": "SyllabAI/syllabai-resources",
-    "ref": "PR #194 (sme-wave2 r0; branch t-sme-wave2-2026-10-28) \u2014 wave-2 registered skeleton per the pure-2 D1 class: identity page-sourced from Official-Specifications cie-a-level-biology-2025-2027/spec.json (cover_code 9700, window 2025-2027); teaching content arrives with the follow-up build_bundles import run",
-    "upstreamSchemas": []
-  },
-  "curriculum": {
-    "board": "Cambridge International",
-    "level": "AS",
-    "subject": "Biology",
-    "code": "9700",
-    "syllabusVersion": "2025-2027",
-    "nodes": [],
-    "edges": []
-  },
-  "license": "No third-party teaching content is bundled yet (honest skeleton). Official past papers stream from the public SyllabAI/syllabai-pastpapers archive.",
-  "counts": {
-    "notes": 0,
-    "questionSets": 0,
-    "questions": 0,
-    "parts": 0,
-    "marks": 0,
-    "flashcards": 0,
-    "specPoints": 0
-  },
-  "treeKind": "sme-native"
+ "schema": "syllabai-demo.content-bundle/2.0",
+ "generatedUtc": "2026-10-28T00:00:00Z",
+ "importSource": {
+  "repo": "SyllabAI/syllabai-resources",
+  "ref": "main@0c0f0e08045623dd9ae2cdca5bf5667330b83411",
+  "upstreamSchemas": [
+   "syllabai.sme-revision-note/1.0",
+   "syllabai.sme-revision-notes-course/1.0",
+   "syllabai.sme-exam-questions/1.1",
+   "syllabai.sme-spec-point-index/1.0",
+   "syllabai.sme-flashcard-deck/1.0"
+  ]
+ },
+ "curriculum": {
+  "board": "Cambridge International",
+  "level": "AS",
+  "subject": "Biology",
+  "code": "9700",
+  "syllabusVersion": "2025-2027"
+ },
+ "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
+ "counts": {
+  "sections": 11,
+  "topics": 24,
+  "specPoints": 123,
+  "notes": 124,
+  "questionSets": 48,
+  "questions": 1011,
+  "parts": 1898,
+  "marks": 3788,
+  "flashcards": 815
+ },
+ "treeKind": "official-spine",
+ "officialSpine": {
+  "spine": "spines/cie-as-biology-25.json",
+  "resourcesSha": "0c0f0e08045623dd9ae2cdca5bf5667330b83411",
+  "attachmentMap": "content-maps/cie-as-biology-25.json"
+ }
 }
