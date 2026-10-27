@@ -4,8 +4,9 @@
  * Note-anchored CLA island (Contextual Learning Assistant).
  *
  * The CLA product shape, on the Revision Note reader: every note page carries
- * one overlay entry (the floating CLA button; the guided-study banner opens
- * the same panel), and the panel is EXPLICITLY CONTEXTUAL — it answers only
+ * one overlay entry (the floating CLA button — the guided-study banner was
+ * removed by operator order, trace 1a17e7377a2d447d), and the panel is
+ * EXPLICITLY CONTEXTUAL — it answers only
  * about the note being read, with citations into that note and an honest
  * refusal when the note doesn't cover the ask (server-side scope gate,
  * /api/ai/cla). This is the demo twin of production's
@@ -100,14 +101,12 @@ export function NoteCla({
   noteTitle,
   specPointCodes,
   subtopicTitle,
-  guidedStudy,
 }: {
   course: string;
   noteId: string;
   noteTitle: string;
   specPointCodes: string[];
   subtopicTitle: string | null;
-  guidedStudy: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [thread, setThread] = useState<ClaMessage[]>([]);
@@ -459,27 +458,6 @@ export function NoteCla({
 
   return (
     <>
-      {/* guided-study banner (SME anatomy, research §5.3) — now opens the CLA
-          panel instead of navigating to /tutor: asking about THIS note is the
-          CLA's job; the free Tutor stays in the nav for whole-corpus asks */}
-      {guidedStudy && (
-        <div className="flex flex-wrap items-center gap-3 rounded-lg border border-primary/30 bg-primary/5 px-4 py-3">
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10">
-            <Sparkles className="size-4 text-primary" aria-hidden />
-          </span>
-          <div className="min-w-0 flex-1">
-            <p className="text-sm font-semibold">Contextual help available on this note</p>
-            <p className="text-xs text-muted-foreground">
-              Ask the CLA about this note — answers are grounded in this note with citations, and it
-              says so when the note doesn&apos;t cover your question.
-            </p>
-          </div>
-          <Button size="sm" className="gap-1.5" onClick={() => setOpen(true)}>
-            Ask about this
-          </Button>
-        </div>
-      )}
-
       {/* the overlay entry — one CLA button on every note page, hidden while
           the panel is open (SME hides their chat button when the widget is
           open) */}
