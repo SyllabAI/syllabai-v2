@@ -16,6 +16,8 @@ import { notFound } from "next/navigation";
 
 import { loadHubCourse } from "@/lib/courses";
 import { fetchBookChapters } from "@/lib/books";
+import { fetchBookRailBlocks, type RailBlock } from "@/lib/books-rail";
+import { joinRailBlocksIntoSections } from "@/lib/lesson-blocks-join";
 import {
   fetchChapterLesson,
   fetchLessonIndex,
@@ -70,6 +72,26 @@ export default async function LessonPage({
   const preview = lesson.previewOnly && previewParam === "1";
   if (lesson.previewOnly && !preview) notFound();
 
+  // T-BOOK-026 — the lesson↔rail join (the operator's lesson-flow law,
+  // trace 1a17cb69e4100d49): the chapter's VALIDATED rail block stream,
+  // joined into the pack's sections — authored blockIds win, the rest
+  // derive to the first spec-intersecting section, no-home blocks ride
+  // the honest extras stream. The rail coordinate of record is the
+  // REGISTRY key (u1:c1) — resolve it from the chapters fetch above by
+  // the normalized join (the books-lesson.test.ts law). Honest-null law:
+  // no registry match / stream unavailable / empty stream → the lesson
+  // renders exactly as before (blocks absent, nothing fabricated).
+  const railChapterKey =
+    chapters.find((c) => normalizedChapterKey(c.chapterKey) === normalizedChapterKey(chapterKey))
+      ?.chapterKey ?? null;
+  const railBlocks = railChapterKey ? await fetchBookRailBlocks(docId, railChapterKey) : null;
+  const join =
+    railBlocks != null && railBlocks.length > 0
+      ? joinRailBlocksIntoSections(lesson.pack.sections, railBlocks)
+      : null;
+  const blocksBySection: Record<string, RailBlock[]> = {};
+  if (join) for (const [k, v] of join.bySection) blocksBySection[k] = v;
+
   return (
     <LessonView
       courseSlug={slug}
@@ -81,6 +103,9 @@ export default async function LessonPage({
       questionTopics={hub.questionTopics}
       flashcards={hub.flashcards}
       preview={preview}
+      blocksBySection={join ? blocksBySection : undefined}
+      extraBlocks={join && join.extras.length > 0 ? join.extras : undefined}
+      railChapterKey={railChapterKey}
     />
   );
 }
