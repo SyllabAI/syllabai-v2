@@ -21458,3 +21458,19 @@ Stage Summary:
 - skipped gate-b: #285 1c2dd54 (verify+hub failure), #296 bd2c0b1 (hub failure), #303 cce0230 (verify failure), #352 13bfea9 (no check-runs, ~94h static)
 - post-merge main be9077d9: hub+verify GREEN (bounded re-check ~175s)
 - notes: sandbox outage skipped the 05:00 round entirely (no state touched, zero lock residue); mirror external reset #174 this run (restored from origin e3b26132 fetch-first, zero loss); main had advanced lane-side bb9e7bf2 -> e3b26132 (G-5 band validation r0 CLOSED, 431/431 flips); receipt commit bookkeeping-only .syllabai/**
+---
+
+Task ID: T-OEQ-MATHSB-SERVE-1 (run-011 deep-water QA wave)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6; operator order "Deep-water team reorganization session and make sure to report all findings to self improving docs")
+
+Work Log:
+- State recovery: fetch-first to c89c71e6 (run-010 QA wave PR #400 + chemistry sync PR #402 already on main); local clone had been stale (missing official-papers.json).
+- Census of record rebuilt from scratch (run-010 repair script was lost with its session — persistence lesson recorded): 66/1281/2443/6600 marks law EXACT; defects banded: 146 unescaped-$ fields (24 parts rendering fake math via same-line currency pairing), 7 cover-furniture blocks, 14 salad parts (12 in 2019-06_02r), 78 matrixish hits, 22 unit-sup parts, 259 crop-required parts (0 without fallback note), deg-q 48 (all verified legit algebra), KaTeX 93 unbalanced-$ fields.
+- W1 deterministic (153 changes): currency-$ escape (146; $5^{3k+4}$ LaTeX segment preserved) + 7 cover-block strips to the "all the stages in your working." boundary. Census re-run: unbalanced-$ 93->0, furniture classes ALL ZERO.
+- W2 eyes-on (22 fixes, one set — official-4mb1-02r-2019-06, the word-salad set): every fix rebuilt from the printed QP/MS page (11 QP pages + 7 MS pages rendered and read); Q6 duplicated stem deduped; Q10's destroyed equation restored (s = t³ − 7t² − 5t + 121); Q3(c) MS AUTHORED from printed page (was honest not-captured placeholder); matrices as pmatrix, vectors as overrightarrow; mark-code after-superset-before validator (glued-token aware) + PUA + unescaped-$ scans ALL GREEN; KaTeX gate 75/0.
+- W3 figures: reuse-first matcher found 71 Tier-B-verified SME assets (matched by series/paper/qnum from asset URLs); PyMuPDF seed-and-grow vector pipeline produced 128 auto-crops (page find = distinctive-word voting after prefix-search failure diagnosis; question-block margin y-range; answer-box-border/margin-tick exclusions; zoom 3); 198 PNGs committed to syllabai-resources (fc3f09e..ddd406c) under Official-ExamQuestion/igcse-maths-b-16/<series>/4MB1-<paper>/assets/; plane assets crop 363->562, crop-required 263->64; URL gate 562/562 HEAD-200; main-lane eyes-on sample 5/5 PASS; 64 no-crop parts keep honest notes.
+- FLEET OUTAGE of record: 8-agent parallel dispatch + 2 retries (2x, 1x) ALL failed gateway context-deadline — fell back to main-lane execution of the priority classes; worklist slices (w2-A/B/C, w3-1..5) staged for fleet retry.
+- Self-improving docs: NEW .syllabai/docs/PLAYBOOK-CONTENT-QUALITY.md (laws, defect taxonomy, crop-pipeline recipe, fleet protocol, gates, open queue) + receipt run-011-deep-water.json + evidence pack under download/t-oeq-mathsb/deepwater/ (census, worklists, slices, evidence page renders, staged crops).
+
+Stage Summary:
+- Deep-water wave landed on branch r7a-pp-deepwater-011: currency fake-math class KILLED fleet-wide, furniture class KILLED, the worst set (2019-06 02R) rebuilt eyes-on end-to-end, figure coverage 363->562 assets (+199, of which 71 verified-reuse), marks law and structure untouched (6600==6600), all gates green. Open queue: matrixish/unit-sup slices + 64 no-crop parts + 213 review:true crops awaiting fleet verdicts (fleet-health check first). SECURITY: both PATs still unrotated.
