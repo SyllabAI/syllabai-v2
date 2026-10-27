@@ -21632,3 +21632,20 @@ Stage Summary:
 - T-BOOK-067 MERGED (28e99920) — merge receipt .syllabai/receipts/T-BOOK-067/merge-of-record.json.
 - T-BOOK-068 flip car becomes TRACKED of-record (rollback-proof); execution still awaits the Neon MAIN quota fix, recipe unchanged.
 - Rotation list unchanged: all chat-exposed secrets still overdue for rotation.
+
+---
+Task ID: T-BOOK-068-vehicle (flip car into the tracked tree)
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a17e7f85630ad0d)
+Task: Operator ruling "flipping the vehicle into the warehouse" — land the r4 flip car as tracked of-record so sandbox rollbacks cannot eat it a third time.
+
+Work Log:
+- Branch t-book-068/flip-car-tracked off main bb629a40 (fetch-first; contains the just-merged T-BOOK-067 + all receipts).
+- Tracked copy written at apps/api/scripts/books/glossary-reflip-r4.mts: header rewritten as of-record provenance (ruling trace, lineage r3→NEON-DB-LOSS→r4, execution status BLOCKED_ON_PLATFORM_QUOTA, W1-negative topology law, tracked-script convention note); GLOSSARY_DIR depth corrected for the new location (4 ups, same as session layout).
+- VERIFICATION: authored-layer smoke via the tracked path prints 112 terms / 0 V-law problems, then the connect guard fires exactly as designed (placeholder URL refused); executable body diff-verified BYTE-IDENTICAL to the session-of-record script from the first import line; apps/api typecheck 0 (scripts/ outside tsconfig include per repo convention — books-ingest-rail.ts et al.).
+- Dependency posture: NO package.json change — js-yaml imported per the existing tracked-script convention (books-ingest-rail.ts:28, books-u4-s34/spotcheck.ts:20; hoisted 4.1.1 at root).
+- Task yaml 068 updated: tool path of-record, vehicle_ruling field, recipe paths, system_change_candidate → RESOLVED.
+- Session-side copy apps/api/scripts/session/ RETIRED to untracked scratch (kept only as git-status noise; the tracked file is the single source of truth).
+
+Stage Summary:
+- The flip car is rollback-proof of-record. Execution status UNCHANGED: Neon MAIN quota refusal (re-probed 2026-10-28 first-hand) — zero writes ever; recipe --check → --commit → --idempotence ready the moment the quota clears.
+- PR opened on branch t-book-068/flip-car-tracked; NOT self-merged (integrator lane — merge on operator order).
