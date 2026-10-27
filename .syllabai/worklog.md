@@ -21778,3 +21778,17 @@ Work Log:
 
 Stage Summary:
 - BOTH RESIDUALS EXECUTED of record: 7 page-sourced curriculumCodes promoted (51/56 CIE rows mapped), 10 of 12 skeletons filled with the official-spine corpus import (767 notes / 5,444 questions / 9,478 parts / 3,726 flashcards / 803 spec points), 2 honest skeletons remain (no corpus to fill from — never invented), the corpus order law repaired upstream, CI pinned to the new census. Residuals for the operator: (1) the T-SPECS-CIE-JOIN sidecar lane for the 9 AS anchor-gap lanes; (2) past-papers acquisition for the 12; (3) the next deliberate prod-apply bake mints the 10 banks' cv rows (seed reads the committed manifests); (4) token rotation standing order REITERATED (an 8-char prefix momentarily showed in-transcript during credential-helper setup; full token never printed; fp16 5030... unchanged). LANE: awaiting PR CI + merge.
+
+---
+Task ID: R0-AUTO-415-20261028 (Job 438940, sweep 05:30+08)
+Agent: R0-auto (scheduled merge desk, Z.ai)
+Task: Periodic sweep — PR #415 intake and merge.
+
+Work Log:
+- PR #415 (hub: sync igcse-chemistry-19 official-papers.json, head 66dd8f53): CI verify+hub success; mergeable clean; 0 reviews/0 comments (no blockers).
+- Scope audit: single file apps/hub/content/igcse-chemistry-19/official-papers.json (+16/-38); 0 Java, 0 core/hub repo content, no Neon/prod writes.
+- MERGE OF RECORD: PR #415 -> main ecca3c05 (merge_method=merge); post-merge main CI verify+hub BOTH success (bounded re-check, 2 polls).
+- Static four unchanged red this round: #285 1c2dd54d, #296 bd2c0b1e, #303 cce02304 (CI failure), #352 13bfea93 (zero CI ~104h).
+
+Stage Summary:
+- 1 merge of record (#415 -> ecca3c05); bookkeeping-only .syllabai/** receipt push follows; fetch-first, no force-push, Neon/prod zero-write, merge desk only.
