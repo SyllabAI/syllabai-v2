@@ -18,3 +18,20 @@ Stage Summary:
 - Landed here: official-papers.json (fleet-retry wave) + receipt run-012 + playbook §7 additions + lane-artifacts (scripts/slices/manifests/proposals, in-repo persistence law).
 - Open queue (staged, in-repo): matrixish remainder ~33 hits (12 groups listed in receipt), glued-×10N 16 parts, 64 crops pending push+attach, 213 run-011 review:true verdicts, PAT rotation.
 - Landing needs the operator PAT (workspace wipe consumed credentials; none on disk) — push + PR + CI + resources push + crop attach execute on receipt.
+
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-012 LANDING (PAT trace 1a17cbb508c05079)
+Agent: r7a (Super Z, session web-da4ab8b1)
+Task: Land the fleet-retry branch with the operator-supplied PAT.
+
+Work Log:
+- PAT verified (identity SyllabAI), env-only one-shot, never echoed/never on disk.
+- Branch pushed c18e6eea..6ba0c467; resources push 6b9fe7d..073639f (64 PNGs, 0 collisions); URL gate 64/64 HEAD-200 PRE-ATTACH; 64 crops attached in-plane (crop set 626, crop-required 0); gates re-run ALL GREEN.
+- PR #407: CI verify+hub success -> MERGED as 12f84228 == main tip; post-merge main CI verify+hub success; clean auto-merge over concurrent fleet commits (#405/#406/G-7 receipt) verified via compare API + content spot-check.
+- Receipt JSON repaired (invalid \s escapes from raw-text authoring — lesson recorded: receipts via json.dump only).
+- Vercel hub auto-deploys from main; next-session optional: live spot-check of fixed parts on the production player.
+
+Stage Summary:
+- run-012 CLOSED of record: census rebuilt + 43 text fixes + 64 figures attached, all gates green, self-improving docs (playbook §7 + receipts + worklogs) updated.
+- Remaining staged queue unchanged: matrixish ~33 hits/12 groups, glued-×10N 16 parts, 213 review:true verdicts, PAT rotation.

@@ -1,59 +1,69 @@
 {
-  "card": "T-OEQ-MATHSB-SERVE-1",
-  "run": "run-012-fleet-retry",
-  "date": "2026-10-27",
-  "operatorOrder": "fleet retry for the 78 matrixish + 22 superscript parts and 64 remaining figures",
-  "baseMain": "d829a526 (fetch-first; run-011 deep-water wave + physics cutover)",
-  "planeShaBefore16": "1c4b5e295a4eca8f (== run-011 receipt stateOfRecord, workspace-wipe survivor)",
-  "censusRebuild": {
-    "note": "run-011 census regexes died with the session; rebuilt per playbook taxonomy, calibrated slightly BROADER by design (fleet verdicts disposition; over-inclusion safe, under-inclusion not)",
-    "matrixish": "83 per-field raw hits / 55 unique parts (vs 78 hits of record — law: paren group, no comma, no operator, >=2 tokens, every token contains a digit)",
-    "unit-sup": "52 parts outside parens (spaced+glued x10N, unit_flat, neg_exp) vs 22 of record (broader law, incl. variable-x triggers the of-record likely excluded)",
-    "c-junk": "2 parts (exact match)",
-    "figures": "64 crop-required entries (exact match)"
-  },
-  "fleetStatus": {
-    "probe": "PASS (haiku, 1 cheap agent per playbook §4)",
-    "wave1": "4 parallel dispatches (A1/A2/B1/C1) -> context deadline exceeded x4",
-    "serialRetry": "1 dispatch -> context deadline exceeded",
-    "disposition": "gateway outage window persists (run-011 class); main-lane fallback executed per playbook §4; slices stay staged in .syllabai/lane-artifacts/.../run-012/slices/"
-  },
-  "lanes": {
-    "tierD_deterministic": "12 spaced standard-form flattens fixed across 10 parts (x 10 8 -> ×10⁸ law); spaced-exponent-only after an in-run overreach catch: the first pass (\s* collapse) also converted GLUED exponents (×102, ×107) which are syntactically ambiguous (×10² vs integer ×102) — plane rebuilt from backup and re-scoped; 16 glued-×10N parts moved to the eyes-on queue",
-    "eyesOn_matrixish": "14 parts fixed with printed-page evidence (30 QP-page groups read directly; MS pages via token+qnum scoring with top-2 render): 2018-06 01 q27 + 01R q26 (A/B 2x2 matrices rebuilt from print, top rows lost by OCR), 2019-01 01 q20 (4(x²–4)cm), 2020-06+11 01 13-b ((125p⁹w³)^(2/3), Nov=same printed paper P61906A), 2021-06 16-a ((5a²b³)²), 2021-11 16-b ((2a⁵b³)⁴), 2022-06 02R q11 (figure labels), 2024-06 02R q2-b ((2n−4) right angles + '=' restored), 2019-01 02 12-b/c (surd rebuilds: (6√5), 60π√15, 10√3−6√5, AC=√((10√3−6√5)²+(12√5)²), graph-junk tail stripped), 2019-06 02 4-d/e (matrix product rows rebuilt as pmatrix per print), 2020-01 01 q18 (|p|² moduli row + x=−21/5), 2021-01R 26 (√(20a²) family), 2022-01 01R q15 ((√5−2)(√5+2) rationalising), 2023-01 02R 10-b ((∛81)⁴=3^(16/3) fractional indices)",
-    "leakStrips": "3 foreign-row leaks stripped per print: 2020-06+11 01R 17-b (the © class = circled part label (c); 17-c MS rows MOVED home with mark codes — question-level union preserved), 2022-01 01 25 (tail '7 M1 ... AM' foreign row, home noted), 2024-06 01 19 (Q20 row leak; (4√3)² class)",
-    "figures": "64/64 crop-required entries cropped: PyMuPDF seed-and-grow + furniture exclusions + NEW adjacent-page scan (±1, ±2) + whole-page census when the margin block find fails + sliver guard (<50x25pt -> block-raster fallback) + occurrence-indexed names; modes: 42 adjacent+1(no-block), 11 in-block(no-block), 5 adjacent+2, 3 block-raster, 1 in-block, 1 adjacent-2, 1 adjacent-1; smallest crop 8.3KB (slivers eliminated); SAMPLED eyes-on 2/2 real figures; PNGs staged locally — resources push + plane attach DEFERRED to the PAT-gated landing step so the crop-URL gate passes before attach (honest: attach not claimed this run)"
-  },
-  "gates": {
-    "marksLaw": "6600 == 6600 (66 sets / 1281 q / 2443 parts) INTACT",
-    "markCodeUnion": "question-level union preserved on every edit (glued-token aware validator)",
-    "katex": "59/59 segments parse OK (standalone katex, throwOnError)",
-    "unbalancedDollar": "0 (escaped-currency-aware parity)",
-    "furnitureCensus": "0 hits (8 boilerplate classes)",
-    "cJunkResidual": "0 (both parts fixed)",
-    "assets": "crop=562 crop-required=64 UNTOUCHED this run"
-  },
-  "selfImprovingDocs": {
-    "playbook": "PLAYBOOK-CONTENT-QUALITY.md updated: new classes (part-label leak, sqrt-loss, adjacent-page crop law, tier law) + new lessons",
-    "lessons": [
-      "workspace-wipe lesson #2: run-011 scripts persisted OUTSIDE the repo died with the wipe AGAIN — all run-012 scripts + slices + manifests persisted IN-REPO (.syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-012/)",
-      "lost-census law: never re-derive a lost census regex exactly; recalibrate slightly-broader and let fleet verdicts disposition (receipt numbers are anchors, not laws)",
-      "tier law: deterministic lanes require SYNTACTICALLY unambiguous signatures; the \s* collapse (spaced vs glued exponent) caused a caught-and-reverted overreach — Tier-D is spaced-only, glued is eyes-on",
-      "MS page-find: distinctive-word voting on solutionMd mis-lands (q17 -> p3, q12 -> p16 wrong); direct unique-string search + token+qnum scoring with top-2 render is the reliable recipe",
-      "part-label leak class: circled MS part labels OCR to ©; leaked foreign MS rows appear in part tails (17-b, q25, q19) — strip per print, move codes home at QUESTION-level union",
-      "sqrt-loss class: surds flatten as bare digit pairs — ( 6 5 )=(6√5), ( 3 81)=(∛81) with radical+index lost; the radical is the missing glyph, not the layout"
-    ]
-  },
-  "openQueue": [
-    "STAGED fleet-retry remainder (slices persisted in-repo): matrixish ~33 raw hits across 2022-06 01 q18/q23/q24/q26-a, 2023-01 01 q26-a/b, 2023-01 02 q2/q3, 2023-06 02R q11-a, 2025-06 02 q4-b, 2025-10 01 q15, 2025-11 02 q10 (eyes-on MS pages pending)",
-    "STAGED glued-×10N unit-sup: 16 parts (syntactically ambiguous without page evidence)",
-    "64 figure crops staged locally — resources push + plane attach + URL gate behind the operator PAT",
-    "213 machine-staged crops review:true from run-011 — fleet verdict passes still queued",
-    "SECURITY: both PATs (GitHub …JU4 / Vercel vcp_…aoT3) STILL require rotation"
-  ],
-  "disclosures": [
-    "fleet outage window: 5/6 dispatches failed (gateway context-deadline) — probe passed, wave failed; main-lane fallback per playbook §4",
-    "plane attach for the 64 new crops NOT claimed (URL-gate-before-attach law); PNGs + push script staged",
-    "KaTeX segment count 59 vs run-011's 75 = different counting method (per-field non-greedy vs whole-doc), not content delta"
+ "card": "T-OEQ-MATHSB-SERVE-1",
+ "run": "run-012-fleet-retry",
+ "date": "2026-10-27",
+ "operatorOrder": "fleet retry for the 78 matrixish + 22 superscript parts and 64 remaining figures",
+ "baseMain": "d829a526 (fetch-first; run-011 deep-water wave + physics cutover)",
+ "planeShaBefore16": "1c4b5e295a4eca8f (== run-011 receipt stateOfRecord, workspace-wipe survivor)",
+ "censusRebuild": {
+  "note": "run-011 census regexes died with the session; rebuilt per playbook taxonomy, calibrated slightly BROADER by design (fleet verdicts disposition; over-inclusion safe, under-inclusion not)",
+  "matrixish": "83 per-field raw hits / 55 unique parts (vs 78 hits of record — law: paren group, no comma, no operator, >=2 tokens, every token contains a digit)",
+  "unit-sup": "52 parts outside parens (spaced+glued x10N, unit_flat, neg_exp) vs 22 of record (broader law, incl. variable-x triggers the of-record likely excluded)",
+  "c-junk": "2 parts (exact match)",
+  "figures": "64 crop-required entries (exact match)"
+ },
+ "fleetStatus": {
+  "probe": "PASS (haiku, 1 cheap agent per playbook §4)",
+  "wave1": "4 parallel dispatches (A1/A2/B1/C1) -> context deadline exceeded x4",
+  "serialRetry": "1 dispatch -> context deadline exceeded",
+  "disposition": "gateway outage window persists (run-011 class); main-lane fallback executed per playbook §4; slices stay staged in .syllabai/lane-artifacts/.../run-012/slices/"
+ },
+ "lanes": {
+  "tierD_deterministic": "12 spaced standard-form flattens fixed across 10 parts (x 10 8 -> ×10⁸ law); spaced-exponent-only after an in-run overreach catch: the first pass (\\s* collapse) also converted GLUED exponents (×102, ×107) which are syntactically ambiguous (×10² vs integer ×102) — plane rebuilt from backup and re-scoped; 16 glued-×10N parts moved to the eyes-on queue",
+  "eyesOn_matrixish": "14 parts fixed with printed-page evidence (30 QP-page groups read directly; MS pages via token+qnum scoring with top-2 render): 2018-06 01 q27 + 01R q26 (A/B 2x2 matrices rebuilt from print, top rows lost by OCR), 2019-01 01 q20 (4(x²–4)cm), 2020-06+11 01 13-b ((125p⁹w³)^(2/3), Nov=same printed paper P61906A), 2021-06 16-a ((5a²b³)²), 2021-11 16-b ((2a⁵b³)⁴), 2022-06 02R q11 (figure labels), 2024-06 02R q2-b ((2n−4) right angles + '=' restored), 2019-01 02 12-b/c (surd rebuilds: (6√5), 60π√15, 10√3−6√5, AC=√((10√3−6√5)²+(12√5)²), graph-junk tail stripped), 2019-06 02 4-d/e (matrix product rows rebuilt as pmatrix per print), 2020-01 01 q18 (|p|² moduli row + x=−21/5), 2021-01R 26 (√(20a²) family), 2022-01 01R q15 ((√5−2)(√5+2) rationalising), 2023-01 02R 10-b ((∛81)⁴=3^(16/3) fractional indices)",
+  "leakStrips": "3 foreign-row leaks stripped per print: 2020-06+11 01R 17-b (the © class = circled part label (c); 17-c MS rows MOVED home with mark codes — question-level union preserved), 2022-01 01 25 (tail '7 M1 ... AM' foreign row, home noted), 2024-06 01 19 (Q20 row leak; (4√3)² class)",
+  "figures": "64/64 crop-required entries cropped: PyMuPDF seed-and-grow + furniture exclusions + NEW adjacent-page scan (±1, ±2) + whole-page census when the margin block find fails + sliver guard (<50x25pt -> block-raster fallback) + occurrence-indexed names; modes: 42 adjacent+1(no-block), 11 in-block(no-block), 5 adjacent+2, 3 block-raster, 1 in-block, 1 adjacent-2, 1 adjacent-1; smallest crop 8.3KB (slivers eliminated); SAMPLED eyes-on 2/2 real figures; PNGs staged locally — resources push + plane attach DEFERRED to the PAT-gated landing step so the crop-URL gate passes before attach (honest: attach not claimed this run)"
+ },
+ "gates": {
+  "marksLaw": "6600 == 6600 (66 sets / 1281 q / 2443 parts) INTACT",
+  "markCodeUnion": "question-level union preserved on every edit (glued-token aware validator)",
+  "katex": "59/59 segments parse OK (standalone katex, throwOnError)",
+  "unbalancedDollar": "0 (escaped-currency-aware parity)",
+  "furnitureCensus": "0 hits (8 boilerplate classes)",
+  "cJunkResidual": "0 (both parts fixed)",
+  "assets": "crop=562 crop-required=64 UNTOUCHED this run"
+ },
+ "selfImprovingDocs": {
+  "playbook": "PLAYBOOK-CONTENT-QUALITY.md updated: new classes (part-label leak, sqrt-loss, adjacent-page crop law, tier law) + new lessons",
+  "lessons": [
+   "workspace-wipe lesson #2: run-011 scripts persisted OUTSIDE the repo died with the wipe AGAIN — all run-012 scripts + slices + manifests persisted IN-REPO (.syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-012/)",
+   "lost-census law: never re-derive a lost census regex exactly; recalibrate slightly-broader and let fleet verdicts disposition (receipt numbers are anchors, not laws)",
+   "tier law: deterministic lanes require SYNTACTICALLY unambiguous signatures; the \\s* collapse (spaced vs glued exponent) caused a caught-and-reverted overreach — Tier-D is spaced-only, glued is eyes-on",
+   "MS page-find: distinctive-word voting on solutionMd mis-lands (q17 -> p3, q12 -> p16 wrong); direct unique-string search + token+qnum scoring with top-2 render is the reliable recipe",
+   "part-label leak class: circled MS part labels OCR to ©; leaked foreign MS rows appear in part tails (17-b, q25, q19) — strip per print, move codes home at QUESTION-level union",
+   "sqrt-loss class: surds flatten as bare digit pairs — ( 6 5 )=(6√5), ( 3 81)=(∛81) with radical+index lost; the radical is the missing glyph, not the layout"
   ]
+ },
+ "openQueue": [
+  "STAGED fleet-retry remainder (slices persisted in-repo): matrixish ~33 raw hits across 2022-06 01 q18/q23/q24/q26-a, 2023-01 01 q26-a/b, 2023-01 02 q2/q3, 2023-06 02R q11-a, 2025-06 02 q4-b, 2025-10 01 q15, 2025-11 02 q10 (eyes-on MS pages pending)",
+  "STAGED glued-×10N unit-sup: 16 parts (syntactically ambiguous without page evidence)",
+  "64 figure crops staged locally — resources push + plane attach + URL gate behind the operator PAT",
+  "213 machine-staged crops review:true from run-011 — fleet verdict passes still queued",
+  "SECURITY: both PATs (GitHub …JU4 / Vercel vcp_…aoT3) STILL require rotation"
+ ],
+ "disclosures": [
+  "fleet outage window: 5/6 dispatches failed (gateway context-deadline) — probe passed, wave failed; main-lane fallback per playbook §4",
+  "plane attach for the 64 new crops NOT claimed (URL-gate-before-attach law); PNGs + push script staged",
+  "KaTeX segment count 59 vs run-011's 75 = different counting method (per-field non-greedy vs whole-doc), not content delta"
+ ],
+ "landing": {
+  "patLandingTrace": "1a17cbb508c05079",
+  "branchPush": "r7a-pp-fleet-retry-012 c18e6eea..6ba0c467",
+  "resourcesPush": "syllabai-resources main 6b9fe7d..073639f (64 PNGs, 0 collisions, 0 renames)",
+  "urlGate": "64/64 HEAD-200 PRE-ATTACH; crop set now 626, crop-required 0",
+  "pr": "#407 opened, CI verify+hub success, MERGED as 12f84228 == main tip (clean auto-merge over concurrent fleet commits #405/#406/G-7 receipt)",
+  "postMergeMainCI": "verify+hub success",
+  "receiptRepairNote": "original receipt JSON had invalid \\s escapes (raw-text authoring bug) — repaired here; NEW LESSON for playbook: receipts must be written via json.dump, never raw-text templates",
+  "credentialDiscipline": "PAT env-only one-shot, never echoed/never on disk (operator-supplied; rotation still queued)"
+ }
 }
