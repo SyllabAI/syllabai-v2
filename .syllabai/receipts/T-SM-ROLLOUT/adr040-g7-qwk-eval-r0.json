@@ -1,0 +1,1186 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-g7-qwk-eval-r0",
+ "date": "2026-10-27",
+ "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+ "chat": "371a9d19-b6bb-4173-9696-cee324b265a1",
+ "trace_id": "1a17c3dac34795cd",
+ "operator_order": "operator order 'G-7 \u2014 QWK eval + the 16 registry-row flips behind the D5-beta floors' (trace 1a17c3dac34795cd), on the G-6 exit of record f1ca693b / prod dpl_BVPKU53dKcvqDWX5EhGjAH1JfZp5 serving the ruling-A part-aware band dispatch over 431 VALIDATED part-bound LEVELS schemes / 1,257 verbatim bands",
+ "sandbox": "rollback #5 at window open (creds, clone, tmp, worklog tail lost) \u2014 creds reinstalled 13th time (600; DSN single-quoted), blobless clone re-staged at d829a526, de-tokenized; estate of record unaffected",
+ "verdict": "G-7 EXECUTED FAIL-CLOSED: the QWK eval of record is the shipped \u00a75.5 lane's honest refusal \u2014 the band calibration packet is EMPTY (0 human band_placement captures of 287 human marks; 0 band-shaped smart runs of 368; 0 learner answers on any band part), so evaluateBandAgreement(ALL) + evaluateBandAgreementForSubject(4BS1) + evaluateBandAgreementForSubject(4GE1) each refused with the verbatim packet ConflictError BEFORE any insert and NO BAND_QWK row exists (evals stay EXACTLY 12, all POINT_UNWEIGHTED). Every D5-beta floor is unmet with real numbers (n_pairs 0<25, capture 0/0<80%, scored 0/0<50%, level_span 0<2, boundary_straddling 0<10). The metric-kind-hard gate was exercised on a REAL 4BS1 band question through the REAL SmartMarkService.kappaGatePassed: BAND_QWK=false (band parts stay gated \u2014 correct), POINT_UNWEIGHTED=true (the ALL-scope point rows release point parts fleet-wide and can NEVER release a band part \u2014 the per-kind law holding in production). The R5 flip-gate audit of record (the band-wave-side tooling the adr040-eval-lane-r0 receipt deferred to leg 6) ran over the 16 band-scheme deferred rows (ingest-r1.json out_of_scope_gaps_16): ALL 16 NOT_FLIPPED, each with its named blocker. flipped_today = 0 of 16. The whole run is verified byte-identical read-only.",
+ "what_ran": {
+  "seam_exercises": "the REAL shipped \u00a75.5 code, zero code change: TeacherMarkingService.evaluateBandAgreement(null) + evaluateBandAgreementForSubject(4BS1) + evaluateBandAgreementForSubject(4GE1) \u2014 all three threw the of-record packet refusal ('no band-placement human marks available for the band calibration packet (D5-beta)') in 0.7-1.2s each; the floors assert never fired because the packet is empty at zero (the packet-zero refusal precedes the floors assert BY LAW; the floor table below carries the real zero numbers from the census, disclosed as census-derived)",
+  "gate_probe": "kappaGatePassed(exam_paper 75758db7-eb84-48a5-86e3-6dbfa14eedd1, question 00e891c8-d3f7-451d-a761-d27f2ec147cd) on the real wire: metric=BAND_QWK -> false; metric=POINT_UNWEIGHTED -> true \u2014 proving (a) band parts cannot release without a passed BAND_QWK row and (b) the 11 passed ALL-scope POINT_UNWEIGHTED rows + 1 PAPER row (kappa=1.0, Sep 21 - Oct 9, the point-era fleet calibration) never leak into the band path",
+  "runner": "apps/api/g7r0-eval.ts (untracked lane runner; source of record committed beside this receipt as adr040-g7-qwk-eval-r0.runner.ts) \u2014 the adr040-g5-band-validation-r0 runner pattern: real seams, before/after snapshots, byte-identity tripwire, exit-3 integrity guard on any unexpected pass"
+ },
+ "d5_beta_floors_of_record": {
+  "n_pairs": 0,
+  "n_pairs_floor": 25,
+  "scored": "0/0 (packet empty)",
+  "scored_ratio_floor": "50%",
+  "capture": "0/0 (packet empty)",
+  "capture_ratio_floor": "80%",
+  "level_span": 0,
+  "level_span_floor": 2,
+  "boundary_straddling": 0,
+  "boundary_straddling_floor": 10,
+  "basis": "human_marks band_placement captures = 0; band-shaped smart runs = 0; answers on band parts = 0"
+ },
+ "cohort_of_record": {
+  "derivation": "T-SM-EDX-INGEST-R1 ingest-r1.json out_of_scope_gaps_16 ('16 band-scheme deferred rows (phase-0 law, flip-blocked pending ADR) + skeletons (EMPTY inc=0): 9609, 8291, 0450, 0264, 0455x2, 0475, 0680, 0460x2, 0470, 0490, 4BS1, 4EA1-p2, 4ET1, 4GE1') \u2014 the census of record the whole gate chain has carried as 'the 16 registry-row flips'",
+  "cross_check": "all 16 slugs verified present in apps/hub/content/courses.json at HEAD d829a526 with coreBridge falsy (unflipped today); registry DB mirror (course_registry, synced 2026-10-23) carries no flag column \u2014 the flip axis is the courses.json coreBridge declaration per #29 \u00a7R6",
+  "rows": [
+   {
+    "slug": "cie-a-level-business-23",
+    "code": "9609",
+    "note": "9609",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-as-environmental-management-20",
+    "code": "8291",
+    "note": "8291",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-igcse-business-23",
+    "code": "0450",
+    "note": "0450",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-igcse-business-25",
+    "code": "0264",
+    "note": "0264",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-igcse-economics-20",
+    "code": "0455",
+    "note": "0455 x2 (1/2)",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-igcse-economics-25",
+    "code": "0455",
+    "note": "0455 x2 (2/2)",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-igcse-english-literature-21",
+    "code": "0475",
+    "note": "0475",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-igcse-environmental-management-25",
+    "code": "0680",
+    "note": "0680",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-igcse-geography-20",
+    "code": "0460",
+    "note": "0460 x2 (1/2)",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-igcse-geography-25",
+    "code": "0460",
+    "note": "0460 x2 (2/2)",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-igcse-history-18",
+    "code": "0470",
+    "note": "0470",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "cie-igcse-religious-studies-23",
+    "code": "0490",
+    "note": "0490",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "igcse-business-19",
+    "code": "4BS1",
+    "note": "4BS1",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing",
+    "code": "4EA1",
+    "note": "4EA1-p2",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "igcse-english-literature-16",
+    "code": "4ET1",
+    "note": "4ET1",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   },
+   {
+    "slug": "igcse-geography-19",
+    "code": "4GE1",
+    "note": "4GE1",
+    "present": true,
+    "status": "full",
+    "coreBridge": null,
+    "unflippedToday": true
+   }
+  ]
+ },
+ "flip_audit": {
+  "verdict": "0 of 16 flipped; 14 rows blocked at band-infrastructure-absent (no LEVELS scheme in core: G-3 CIE corpus pending / estate skeleton), 2 rows (4BS1, 4GE1) band-LIVE but packet-empty",
+  "band_live_rows": "4BS1: 221 LEVELS VALIDATED part-bound / 663 bands; 4GE1: 210 / 594 (sum 1,257 = the tripwire exactly); both need the capture campaign before any BAND_QWK row can exist",
+  "rows": [
+   {
+    "slug": "cie-a-level-business-23",
+    "code": "9609",
+    "note": "9609",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 9609 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-as-environmental-management-20",
+    "code": "8291",
+    "note": "8291",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 8291 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-business-23",
+    "code": "0450",
+    "note": "0450",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0450 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-business-25",
+    "code": "0264",
+    "note": "0264",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0264 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-economics-20",
+    "code": "0455",
+    "note": "0455 x2 (1/2)",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0455 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-economics-25",
+    "code": "0455",
+    "note": "0455 x2 (2/2)",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0455 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-english-literature-21",
+    "code": "0475",
+    "note": "0475",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0475 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-environmental-management-25",
+    "code": "0680",
+    "note": "0680",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0680 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-geography-20",
+    "code": "0460",
+    "note": "0460 x2 (1/2)",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0460 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-geography-25",
+    "code": "0460",
+    "note": "0460 x2 (2/2)",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0460 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-history-18",
+    "code": "0470",
+    "note": "0470",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0470 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-religious-studies-23",
+    "code": "0490",
+    "note": "0490",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0490 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "igcse-business-19",
+    "code": "4BS1",
+    "note": "4BS1",
+    "levels_schemes": 221,
+    "points_schemes": 0,
+    "mark_bands": 663,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "LEVELS 221 VALIDATED part-bound in core, but BAND_QWK eval rows = 0 \u2014 D5-\u03b2 floors unmet (packet empty: 0 human band_placement captures, 0 answers on band parts); capture campaign required before any flip"
+    ]
+   },
+   {
+    "slug": "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing",
+    "code": "4EA1",
+    "note": "4EA1-p2",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 4EA1 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "igcse-english-literature-16",
+    "code": "4ET1",
+    "note": "4ET1",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 4ET1 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "igcse-geography-19",
+    "code": "4GE1",
+    "note": "4GE1",
+    "levels_schemes": 210,
+    "points_schemes": 0,
+    "mark_bands": 594,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "LEVELS 210 VALIDATED part-bound in core, but BAND_QWK eval rows = 0 \u2014 D5-\u03b2 floors unmet (packet empty: 0 human band_placement captures, 0 answers on band parts); capture campaign required before any flip"
+    ]
+   }
+  ]
+ },
+ "tripwires": {
+  "before_after_byte_identical": true,
+  "after": {
+   "mark_schemes": "LEVELS 431 VALIDATED / POINTS 24,824 (144 SUGGESTED + 24,680 VALIDATED)",
+   "mark_bands": 1257,
+   "evals": 12,
+   "evals_by_metric_scope": [
+    [
+     "POINT_UNWEIGHTED",
+     "ALL",
+     11
+    ],
+    [
+     "POINT_UNWEIGHTED",
+     "PAPER",
+     1
+    ]
+   ],
+   "human_marks": 287,
+   "human_marks_with_band_placement": 0,
+   "smart_runs": 368,
+   "smart_runs_band_shape": 0,
+   "answers_on_band_parts": 0
+  },
+  "integrity_violation": false
+ },
+ "findings_of_record": [
+  "F1 \u2014 the packet, not the floors, is the first gate: with 0 human band captures the \u00a75.5 lane refuses at the packet check and the D5-beta floor list never fires; absence of an evaluation stays gated exactly as pre-registered. A future packet must satisfy capture >= 80% of its own answers, so the campaign must run smart marking on essentially every packet answer.",
+  "F2 \u2014 the raw material for a packet does not exist yet: 0 learner answers exist on any band part (the 4BS1/4GE1 band parts come from the G-4 ingested past papers, which no attempt has touched) \u2014 the capture campaign must first create attempts (probe/synthetic or served learners), then run the live band dispatch (G-6 serving), then have a teacher record bandPlacement captures through recordHumanMark (the hard range law: out-of-band or != marksAwarded = honest 409, never a clamp).",
+  "F3 \u2014 the point side is green fleet-wide and MUST stay per-kind: kappaGatePassed(POINT_UNWEIGHTED)=true on a 4BS1 band question (the 12 point-era ALL/PAPER rows, kappa=1.0) while kappaGatePassed(BAND_QWK)=false on the same question \u2014 the metric-kind-hard law is holding in production; a registry row with both kinds present flips only when EVERY present kind is green (the mixed-course flip law).",
+  "F4 \u2014 the 16-row cohort mixes two classes per the ingest-r1 census: band-scheme-deferred AND estate-skeleton; 14 of 16 additionally need G-3 (CIE 0455/9609 corpus legs) or an estate birth before the band infrastructure can even exist for them; only 4BS1/4GE1 are one capture campaign away from a flippable state.",
+  "F5 \u2014 runner transport fragility (the G-5 disclosure recurring): invocation 1 stalled >300s with zero output (NeonWsClient connect stall, output swallowed by a pipe buffer); the re-run completed its whole workload in ~10s of DB time. AFTER the result was written and all work completed, teardown raised an unhandled NeonWsClient 'Connection terminated unexpectedly' (exit 1, non-substantive \u2014 the of-record outcome is the written result + the byte-identity verdict). Lane transport remains one-WS-session-per-process; chunk or reconnect per phase for future long runs."
+ ],
+ "paths_forward": {
+  "capture_campaign (the only unblocker for 4BS1/4GE1)": "(1) create >= ~32 answers on band parts (the 80% capture floor over a >= 25-scored-pair packet needs the packet sized accordingly; boundary-straddling >= 10 argues for marks near band edges); (2) run the live band dispatch per answer (G-6 serving does this via SmartMarkService.markAttempt / the teacher queue); (3) a teacher records bandPlacement captures via POST /answers/{id}/human-mark (hard range law; rationale in comments); (4) POST /kappa/evaluate metric=BAND_QWK (ALL or SUBJECT scopes) \u2014 floors gate, row lands, kappaGatePassed(BAND_QWK) flips true when kappa >= 0.60; (5) the #29 \u00a7R6 registry PR (coreBridge:true on igcse-business-19 / igcse-geography-19, operator-signed, one row per line with its R2/R5 numbers).",
+  "the other 14 rows": "G-3 (CIE 0455/9609 corpus) + band birth per course first; then the same campaign shape per course/cohort.",
+  "who decides": "the calibration packet's human rater (operator, teacher pool, or a commissioned marker) is an operator decision \u2014 D5's teacher-authorship + override clauses carry over unchanged from the point law."
+ },
+ "artifacts": [
+  ".syllabai/receipts/T-SM-ROLLOUT/adr040-g7-qwk-eval-r0.json",
+  ".syllabai/receipts/T-SM-ROLLOUT/adr040-g7-qwk-eval-r0.runner.ts",
+  "tmp lane result (not committed): /home/z/my-project/tmp/g7r0-result.json"
+ ],
+ "runner_result": {
+  "runner": "apps/api/g7r0-eval.ts (untracked; source embedded in the receipt artifact)",
+  "gate": "ADR-040 \u00a75.5 G-7 \u2014 QWK eval + the 16 registry-row flips behind the D5-beta floors",
+  "cohort_of_record": {
+   "source": "T-SM-EDX-INGEST-R1 ingest-r1.json out_of_scope_gaps_16 (16 band-scheme deferred rows)",
+   "size": 16,
+   "all_present_and_unflipped_at_head": true,
+   "rows": [
+    {
+     "slug": "cie-a-level-business-23",
+     "code": "9609",
+     "note": "9609",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-as-environmental-management-20",
+     "code": "8291",
+     "note": "8291",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-igcse-business-23",
+     "code": "0450",
+     "note": "0450",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-igcse-business-25",
+     "code": "0264",
+     "note": "0264",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-igcse-economics-20",
+     "code": "0455",
+     "note": "0455 x2 (1/2)",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-igcse-economics-25",
+     "code": "0455",
+     "note": "0455 x2 (2/2)",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-igcse-english-literature-21",
+     "code": "0475",
+     "note": "0475",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-igcse-environmental-management-25",
+     "code": "0680",
+     "note": "0680",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-igcse-geography-20",
+     "code": "0460",
+     "note": "0460 x2 (1/2)",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-igcse-geography-25",
+     "code": "0460",
+     "note": "0460 x2 (2/2)",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-igcse-history-18",
+     "code": "0470",
+     "note": "0470",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "cie-igcse-religious-studies-23",
+     "code": "0490",
+     "note": "0490",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "igcse-business-19",
+     "code": "4BS1",
+     "note": "4BS1",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing",
+     "code": "4EA1",
+     "note": "4EA1-p2",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "igcse-english-literature-16",
+     "code": "4ET1",
+     "note": "4ET1",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    },
+    {
+     "slug": "igcse-geography-19",
+     "code": "4GE1",
+     "note": "4GE1",
+     "present": true,
+     "status": "full",
+     "coreBridge": null,
+     "unflippedToday": true
+    }
+   ]
+  },
+  "seam_exercises": [
+   {
+    "call": "evaluateBandAgreement(scope=ALL)",
+    "threw": true,
+    "errorKind": "ConflictError",
+    "errorMessage": "no band-placement human marks available for the band calibration packet (D5-\u03b2)"
+   },
+   {
+    "call": "evaluateBandAgreementForSubject(4BS1)",
+    "threw": true,
+    "errorKind": "ConflictError",
+    "errorMessage": "no band-placement human marks available for the band calibration packet (D5-\u03b2)"
+   },
+   {
+    "call": "evaluateBandAgreementForSubject(4GE1)",
+    "threw": true,
+    "errorKind": "ConflictError",
+    "errorMessage": "no band-placement human marks available for the band calibration packet (D5-\u03b2)"
+   }
+  ],
+  "gate_probe": {
+   "exam_paper_id": "75758db7-eb84-48a5-86e3-6dbfa14eedd1",
+   "question_id": "00e891c8-d3f7-451d-a761-d27f2ec147cd",
+   "kappaGatePassed_BAND_QWK": false,
+   "kappaGatePassed_POINT_UNWEIGHTED": true,
+   "law": "metric-kind-hard (a BAND_QWK row can never release a point part nor the reverse)"
+  },
+  "d5_beta_floors": {
+   "n_pairs": 0,
+   "n_pairs_floor": 25,
+   "scored": "0/0 (packet empty)",
+   "scored_ratio_floor": "50%",
+   "capture": "0/0 (packet empty)",
+   "capture_ratio_floor": "80%",
+   "level_span": 0,
+   "level_span_floor": 2,
+   "boundary_straddling": 0,
+   "boundary_straddling_floor": 10,
+   "basis": "human_marks band_placement captures = 0; band-shaped smart runs = 0; answers on band parts = 0"
+  },
+  "flip_audit": [
+   {
+    "slug": "cie-a-level-business-23",
+    "code": "9609",
+    "note": "9609",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 9609 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-as-environmental-management-20",
+    "code": "8291",
+    "note": "8291",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 8291 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-business-23",
+    "code": "0450",
+    "note": "0450",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0450 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-business-25",
+    "code": "0264",
+    "note": "0264",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0264 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-economics-20",
+    "code": "0455",
+    "note": "0455 x2 (1/2)",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0455 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-economics-25",
+    "code": "0455",
+    "note": "0455 x2 (2/2)",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0455 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-english-literature-21",
+    "code": "0475",
+    "note": "0475",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0475 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-environmental-management-25",
+    "code": "0680",
+    "note": "0680",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0680 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-geography-20",
+    "code": "0460",
+    "note": "0460 x2 (1/2)",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0460 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-geography-25",
+    "code": "0460",
+    "note": "0460 x2 (2/2)",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0460 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-history-18",
+    "code": "0470",
+    "note": "0470",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0470 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "cie-igcse-religious-studies-23",
+    "code": "0490",
+    "note": "0490",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 0490 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "igcse-business-19",
+    "code": "4BS1",
+    "note": "4BS1",
+    "levels_schemes": 221,
+    "points_schemes": 0,
+    "mark_bands": 663,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "LEVELS 221 VALIDATED part-bound in core, but BAND_QWK eval rows = 0 \u2014 D5-\u03b2 floors unmet (packet empty: 0 human band_placement captures, 0 answers on band parts); capture campaign required before any flip"
+    ]
+   },
+   {
+    "slug": "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing",
+    "code": "4EA1",
+    "note": "4EA1-p2",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 4EA1 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "igcse-english-literature-16",
+    "code": "4ET1",
+    "note": "4ET1",
+    "levels_schemes": 0,
+    "points_schemes": 0,
+    "mark_bands": 0,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "no LEVELS scheme in core for 4ET1 (band infrastructure not born \u2014 G-3 CIE corpus pending / estate skeleton)"
+    ]
+   },
+   {
+    "slug": "igcse-geography-19",
+    "code": "4GE1",
+    "note": "4GE1",
+    "levels_schemes": 210,
+    "points_schemes": 0,
+    "mark_bands": 594,
+    "band_qwk_eval_rows": 0,
+    "verdict": "NOT_FLIPPED",
+    "flip_blocked": true,
+    "reasons": [
+     "LEVELS 210 VALIDATED part-bound in core, but BAND_QWK eval rows = 0 \u2014 D5-\u03b2 floors unmet (packet empty: 0 human band_placement captures, 0 answers on band parts); capture campaign required before any flip"
+    ]
+   }
+  ],
+  "flipped_today": 0,
+  "before": {
+   "mark_schemes": [
+    [
+     "LEVELS",
+     "VALIDATED",
+     431
+    ],
+    [
+     "POINTS",
+     "SUGGESTED",
+     144
+    ],
+    [
+     "POINTS",
+     "VALIDATED",
+     24680
+    ]
+   ],
+   "question_versions": [
+    [
+     "REJECTED",
+     2
+    ],
+    [
+     "SUGGESTED",
+     387
+    ],
+    [
+     "VALIDATED",
+     24785
+    ]
+   ],
+   "exam_papers": [
+    [
+     "REJECTED",
+     13
+    ],
+    [
+     "SUGGESTED",
+     61
+    ],
+    [
+     "VALIDATED",
+     205
+    ]
+   ],
+   "mark_bands": 1257,
+   "mark_points": 48791,
+   "evals": 12,
+   "evals_by_metric_scope": [
+    [
+     "POINT_UNWEIGHTED",
+     "ALL",
+     11
+    ],
+    [
+     "POINT_UNWEIGHTED",
+     "PAPER",
+     1
+    ]
+   ],
+   "eval_rows": [
+    {
+     "id": "7ad9aea4-51db-4e40-8b14-2f4422e52872",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 21 2026 14:51:09 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "d6abf83d-d0e0-4a70-ac7b-35ff3f1cc667",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 21 2026 20:24:54 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "33e5050a-ae31-46d5-b85c-b4ce23b75b39",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 21 2026 20:59:51 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "15fb3a94-8731-4dc3-a0c4-6a6f92532c97",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Tue Sep 22 2026 18:39:55 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "490d9dce-eb03-4a75-97b1-998c19536fd7",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Thu Sep 24 2026 11:58:56 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "263ab959-1498-4e5c-aa4a-f556c9899b7f",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Fri Sep 25 2026 10:50:36 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "af25f191-0442-4f5c-a62d-0951daa8b7c2",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Fri Sep 25 2026 12:41:39 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "74a785d6-71b6-4549-ac88-333b924013f8",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 28 2026 05:14:56 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "ce77ef44-972f-4bfc-91d6-9715dbb4389d",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 28 2026 16:07:08 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "2139fcef-8de9-4c0b-93ba-a451edb93f3f",
+     "scope": "PAPER",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 28 2026 21:09:47 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "71c4456d-f465-4025-bb0f-c0648ad08510",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 28 2026 21:10:18 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "d07e7cef-9f9b-49eb-aa30-63d74cd85695",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Fri Oct 09 2026 19:03:23 GMT+0000 (Coordinated Universal Time)"
+    }
+   ],
+   "audit_total": 3266,
+   "human_marks_total": 287,
+   "human_marks_with_band_placement": 0,
+   "smart_runs_total": 368,
+   "smart_runs_band_shape": 0,
+   "answers_on_band_parts": 0
+  },
+  "after": {
+   "mark_schemes": [
+    [
+     "LEVELS",
+     "VALIDATED",
+     431
+    ],
+    [
+     "POINTS",
+     "SUGGESTED",
+     144
+    ],
+    [
+     "POINTS",
+     "VALIDATED",
+     24680
+    ]
+   ],
+   "question_versions": [
+    [
+     "REJECTED",
+     2
+    ],
+    [
+     "SUGGESTED",
+     387
+    ],
+    [
+     "VALIDATED",
+     24785
+    ]
+   ],
+   "exam_papers": [
+    [
+     "REJECTED",
+     13
+    ],
+    [
+     "SUGGESTED",
+     61
+    ],
+    [
+     "VALIDATED",
+     205
+    ]
+   ],
+   "mark_bands": 1257,
+   "mark_points": 48791,
+   "evals": 12,
+   "evals_by_metric_scope": [
+    [
+     "POINT_UNWEIGHTED",
+     "ALL",
+     11
+    ],
+    [
+     "POINT_UNWEIGHTED",
+     "PAPER",
+     1
+    ]
+   ],
+   "eval_rows": [
+    {
+     "id": "7ad9aea4-51db-4e40-8b14-2f4422e52872",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 21 2026 14:51:09 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "d6abf83d-d0e0-4a70-ac7b-35ff3f1cc667",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 21 2026 20:24:54 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "33e5050a-ae31-46d5-b85c-b4ce23b75b39",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 21 2026 20:59:51 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "15fb3a94-8731-4dc3-a0c4-6a6f92532c97",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Tue Sep 22 2026 18:39:55 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "490d9dce-eb03-4a75-97b1-998c19536fd7",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Thu Sep 24 2026 11:58:56 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "263ab959-1498-4e5c-aa4a-f556c9899b7f",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Fri Sep 25 2026 10:50:36 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "af25f191-0442-4f5c-a62d-0951daa8b7c2",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Fri Sep 25 2026 12:41:39 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "74a785d6-71b6-4549-ac88-333b924013f8",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 28 2026 05:14:56 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "ce77ef44-972f-4bfc-91d6-9715dbb4389d",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 28 2026 16:07:08 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "2139fcef-8de9-4c0b-93ba-a451edb93f3f",
+     "scope": "PAPER",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 28 2026 21:09:47 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "71c4456d-f465-4025-bb0f-c0648ad08510",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Mon Sep 28 2026 21:10:18 GMT+0000 (Coordinated Universal Time)"
+    },
+    {
+     "id": "d07e7cef-9f9b-49eb-aa30-63d74cd85695",
+     "scope": "ALL",
+     "metric": "POINT_UNWEIGHTED",
+     "passed": true,
+     "computed_at": "Fri Oct 09 2026 19:03:23 GMT+0000 (Coordinated Universal Time)"
+    }
+   ],
+   "audit_total": 3266,
+   "human_marks_total": 287,
+   "human_marks_with_band_placement": 0,
+   "smart_runs_total": 368,
+   "smart_runs_band_shape": 0,
+   "answers_on_band_parts": 0
+  },
+  "byteIdentical": true,
+  "integrityViolation": false
+ },
+ "next_gates": "G-7 CLOSED fail-closed (0 of 16 flips, each named). The gate chain's remaining open items: the capture campaign (operator decision) unblocks 4BS1/4GE1 flips; G-3 (CIE 0455 P2 corpus) unblocks the CIE half of the 16; the batch-path gap (validateAllForPaper schemeForVersion newest-1, the G-5 finding) still needs its separate PR.",
+ "discipline": "fetch-first, no force; zero DB writes verified byte-identical; no credentials in any committed artifact (DATABASE_URL from env)"
+}
