@@ -10,7 +10,12 @@
  },
  "F4_2024_06_02R_Q1Q2_CLUSTER": {
   "diagnosis": "MS row misalignment: q1(a)/(b) mark-scheme rows bled into q2-a/2-b solutionMd heads; q1-b/c/d carried the 'not captured' placeholder; q1-a truncated; q2-b tail carried 'cas for each part Total 9 marks' + next-page table header + q3's lead-in note; q2-a was missing its printed M2 note row; q2-b was missing its first main row ('10x + 25 + 7x − 83 = 180 … M1 for a correct equation in x') and had a truncated ALT block",
-  "evidence": ["ms.pdf p5/p6/p7 rendered 150dpi and READ", "download/t-oeq-mathsb/run014/evidence/mspg-05.png (q1 block: 1(a) 42/7x2, 1(b) 15(%), 1(c) ($)380, 1(d) 11.4(0) euros or $12)", "mspg-06.png (q2 block: M2 note present in print; 2(b) rows from 10x+25+7x−83=180 to 24 A1)", "mspg-07.png (ALT (b) block: 7Tx/x-form rows, 1260T−175T−830T=3600+2520, 24 A1, 'cas for each part')"],
+  "evidence": [
+   "ms.pdf p5/p6/p7 rendered 150dpi and READ",
+   "download/t-oeq-mathsb/run014/evidence/mspg-05.png (q1 block: 1(a) 42/7x2, 1(b) 15(%), 1(c) ($)380, 1(d) 11.4(0) euros or $12)",
+   "mspg-06.png (q2 block: M2 note present in print; 2(b) rows from 10x+25+7x−83=180 to 24 A1)",
+   "mspg-07.png (ALT (b) block: 7Tx/x-form rows, 1260T−175T−830T=3600+2520, 24 A1, 'cas for each part')"
+  ],
   "fixes": [
    "offp_2024-06_02r_1-a: solutionMd REBUILT (truncated tail completed with the move-home rows: 'or setting up a correct equation…', 'May be seen within a ratio ie 12 : 42', '12 A1 cao')",
    "offp_2024-06_02r_1-b: placeholder -> true 1(b) MS rows (% profit / 15(%) A1 cao)",
@@ -33,7 +38,9 @@
    "offp_2019-06_02r_5-d: markPoints[0].textMd := solutionMd byte-exact (the run-013 render-visible stale-mirror survivor: MP carried 'Total 10 marks / Questions 5b & 5c / Question Working Answer Mark Notes' furniture; solutionMd is the run-012 rebuilt clean text)",
    "offp_2019-06_02_4-e: problemMd junk STRIPPED (flattened inverse-matrix brackets + grid-axis junk 'y −6 −4 −2 A −2 −4 −6 −8' x2 + spare-grid instructions leaked from the grid page) and REBUILT from QP p8: lead-in 'Triangle C is the image of triangle D under the transformation with matrix N.' restored + the printed inverse hint as KaTeX pmatrix + frac (katex-gated); grid figure link kept (run-011 attach, render-visible)"
   ],
-  "evidence": ["download/t-oeq-mathsb/run014/evidence/pg_*.png (7 MS pages + 2 QP pages, all READ)"]
+  "evidence": [
+   "download/t-oeq-mathsb/run014/evidence/pg_*.png (7 MS pages + 2 QP pages, all READ)"
+  ]
  },
  "gates": {
   "applyBattery": "fail-closed: census 66/1281/2443/6600 EXACT; PAPER-level mark-code union conserved for every edited paper (conservation domain widened from question to paper — F4/F5 MOVES rows across sibling questions, codes move but never disappear; 2023-06 B1 verified moved q3-tail -> q4-b); PUA/FFFD/© 0 on edited fields; unescaped-$ parity per line (\\$ escapes on 1-c/1-d money values); furniture 0 on all edited fields (apply's first run REFUSED with 6 mirror-law violations — MP mirrors not yet synced — fixed before any write); markPoints[0].textMd := solutionMd byte-exact on all 11 solutionMd-edited parts with mirrors; serialization byte-law (minified, ensure_ascii=False)",
@@ -50,10 +57,19 @@
   "converterLineage": "v0.17.0 (wave-24, F64/F65: MCQ choice-script restoration from span geometry + 26 figures via stemFigure+manual_crop ledger) -> v0.18.0 (wave-25: MS page-bottom furniture dropped AT SOURCE — 362 lines / 245 corpus blocks — BEL normalization, orphan-crop pruning)",
   "collisionCheck": "wave-24/g8-official-papers-sync + wave-25/sec4-sync branches touch igcse-chemistry-19 ONLY — zero contact with igcse-maths-b-16; both already merged to main before this run",
   "alignment": "run-011..014 handbook practice (printed-page evidence, receipts, no value invention) is ADR-039-conformant in substance; OPEN ITEM: the maths-b plane still carries schema /0.1 and no per-part provenance blocks — the /0.2 provenance migration for this plane is operator-queued work (the card's receipts + lane-artifacts are the functioning disclosure surface meanwhile)",
-  "sources": ["scratch/ADR-039.md (full read)", "v2 commits 269e84be (wave-24) + 9a03102b (wave-25) messages", "wave24-g8-fixes.json disclosure fetched"]
+  "sources": [
+   "scratch/ADR-039.md (full read)",
+   "v2 commits 269e84be (wave-24) + 9a03102b (wave-25) messages",
+   "wave24-g8-fixes.json disclosure fetched"
+  ]
  },
  "diffScope": "26 fields across 16 parts: 15 solutionMd + 11 markPoints[0].textMd mirrors (incl. 5-d mirror-only) + 1 problemMd (4-e); marks/choices/assets/spec codes untouched",
- "scriptsOfRecord": [".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-014/scripts/run014_apply.py", "run014_f5_census.py", "run014_f5_evidence.py", "run014_crop_url_gate.py"],
+ "scriptsOfRecord": [
+  ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-014/scripts/run014_apply.py",
+  "run014_f5_census.py",
+  "run014_f5_evidence.py",
+  "run014_crop_url_gate.py"
+ ],
  "newLeadsQueued": [
   "2021-06 02 q2 (offp_2021-06_02_2): solutionMd carries foreign rows ('area of triangle ABF…' — the calculus question's true MS starts 'dy/dx = 3x^2+2ax+b…' MS p8) — F4-class solution misalignment, needs full MS rebuild",
   "2024-06 02R q2-a problemMd tail junk ('BAL ABC CDE DEL 125 ° BCD ALE ALK y °' garbled label interleave) — problemMd junk class, eyes-on from QP page + figure crop candidate",
@@ -63,5 +79,24 @@
   "PAT rotation STILL PENDING (both exposed tokens: GitHub …JU4 / Vercel vcp_…aoT3)"
  ],
  "credentialDiscipline": "PAT used env-only via per-invocation credential helper; zero credential writes to config/files",
- "verdict": "RUN-014 F4+F5 NAMED LEADS CLOSED END-TO-END WITH PRINTED-PAGE EVIDENCE; F5 REFRAMED AS FLEET CLASS AND STAGED; PIPELINE DOCS CHECK OF RECORD"
+ "verdict": "RUN-014 F4+F5 NAMED LEADS CLOSED END-TO-END WITH PRINTED-PAGE EVIDENCE; F5 REFRAMED AS FLEET CLASS AND STAGED; PIPELINE DOCS CHECK OF RECORD",
+ "landing": {
+  "branch": "r7a-pp-furniture-eyes-on-014",
+  "commit": "13d6def2",
+  "pr": 414,
+  "ci": "2/2 SUCCESS (hub + verify)",
+  "merge": "c3a10b4a93f598ec1dda25a6181da6bf99f57ed4",
+  "liveCorpusByteMatch": "f7f4add5161576a9 EXACT (~2.5min post-merge)"
+ },
+ "liveVerification": {
+  "routeNote": "hub slugs changed since run-013 (course rebuild): paper pages now at /past-papers/june-2024-4mb1-02r (human slugs) with /view/{series}/{paper}?doc=qp|ms|split viewer; the run-012 receipt's /past-papers/official-* routes 404 — route pattern of record updated",
+  "payloadProbeNote": "paper pages are client-rendered (no question text in SSR HTML) — corpus byte-match carries the data-presence proof; browser DOM carries the render-path proof",
+  "browserEvidence": [
+   "june-2024-4mb1-02r q1 dialog: '15(%)', '12 : 42', '11.4(0) euros' render (move-home rows live; '% profit' now LEGITIMATE 1(b) content)",
+   "q2 dialog: 'unknown interior angles' (M2 note restored), '10x + 25 + 7x' (first main row restored), 'ALT (b)' + '1260T − 175T − 830T' (ALT completed), foreign '% profit'/'12 : 42' ABSENT from q2, 'cas for each part Total 9 marks' ABSENT (tail furniture gone)",
+   "q3 dialog: 'labelling of triangles' renders EXACTLY ONCE (moved-home note live)",
+   "screenshot download/t-oeq-mathsb/run014/q2_dialog_f4_fixed_live.png"
+  ],
+  "verdict": "RUN-014 LIVE AND CORRECT ON THE PLAYER"
+ }
 }
