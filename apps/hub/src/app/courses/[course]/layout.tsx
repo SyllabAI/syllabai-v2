@@ -77,7 +77,12 @@ export default async function CourseLayout({
     noteSubtopic: hub.noteSubtopic,
     notesBySubtopic: hub.notesBySubtopic,
     setsBySubtopic: hub.setListsBySubtopic,
-    hasPastPapers: hasPastPapers(hub.questionTopics),
+    // OFFICIAL-PLANE-ONLY LAW (operator order 2026-10-25, trace
+    // 1a17e79bb0e50399): "Past Papers" in the sidebar keys on the official
+    // parsed plane (real interactive reconstructions) OR the corpus PDF
+    // archive (hasCorpusPapers) — never on the SME exam-questions bank's
+    // sourcePaper citations.
+    hasPastPapers: hasPastPapers(hub.officialPaperTopics),
     hasCorpusPapers: courseHasCorpusPapers(slug),
     seneca: seneca ? { total: seneca.total } : undefined,
   };

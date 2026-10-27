@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { boardOf, loadHubCourse } from "@/lib/courses";
-import { collectPastPapersTwoPlane, findPastPaper, paperEstTime } from "@/lib/past-papers";
+import { collectPastPapers, findPastPaper, paperEstTime } from "@/lib/past-papers";
 import {
   matchReconstructions,
   computeCoverage,
@@ -28,13 +28,15 @@ export default async function PastPaperPage({
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
 
-  // official ADR-037 papers live on the officialPaperTopics plane — the
-  // player must resolve them too (IA decision: Past Papers is their only
-  // home). Two-plane merge with official precedence: for paper keys the
-  // official plane covers, the SME copy is dropped — the raw concatenation
-  // rendered both planes' questions and every question appeared twice.
+  // OFFICIAL-PLANE-ONLY LAW (operator order 2026-10-25, trace
+  // 1a17e79bb0e50399, "disappear entirely"): the player resolves papers from
+  // the official parsed plane (officialPaperTopics, ADR-037) ALONE — the SME
+  // exam-questions bank never builds an Interactive paper, so reconstruction
+  // keys that exist only as SME topic-question citations 404 here. Courses
+  // without the official plane have no playable papers at all; their Exam
+  // Questions surface stays exactly as-is (separate plane, zero contact).
   const paper = findPastPaper(
-    collectPastPapersTwoPlane(hub.officialPaperTopics, hub.questionTopics),
+    collectPastPapers(hub.officialPaperTopics),
     paperKey,
   );
   if (!paper) notFound();

@@ -1,0 +1,40 @@
+{
+  "receipt": "T-BOOK-067/surface-walk-prod-standalone-r1",
+  "date": "2026-10-27",
+  "trace": "1a17e0f21845ef89 (session of record for the rebuild)",
+  "task": "T-BOOK-067 lesson-side reading progress",
+  "correction_of_record": {
+    "retracted_flag": "production core 503 (raised earlier this session)",
+    "root_cause": "the probe hit the RETIRED Render host syllabai-core.onrender.com — the operator's standing order is that the Render project is retired and syllabai-v2 is the sole substrate of record",
+    "proof_of_life": {
+      "api_of_record": "https://syllabai-v2.vercel.app",
+      "shelf": "GET /api/v1/content/books?courseId=igcse-chemistry-19 → 200, documentId e6c0db50-0f84-55de-b50c-e4d49285cd6d",
+      "chapters": "200 (u1:c1 'States of matter')",
+      "blocks": "200, 8/8 VALIDATED (the b6b5dec4 world)",
+      "progress_guard": "signed-out GET /progress → 401 (auth gate live)"
+    },
+    "fossil_fixed": "apps/hub/.env.example line 12 ('Production value today: syllabai-core.onrender.com') — the only remaining repo fossil that advertised the retired host as a production target; corrected on the T-BOOK-067 branch. apps/hub/src/lib/api.ts + data/core-api.ts already carried the RETIRED-2026-10-23 annotations on main; apps/hub/README.md architecture diagram still shows the retired core — registered as a docs follow-up, not touched in this feature PR."
+  },
+  "walk_of_record": {
+    "legA_real_stack_signed_out": {
+      "serve": "hub dev with SYLLABAI_CORE_BASE_URL=https://syllabai-v2.vercel.app (the REAL api-of-record)",
+      "surface": "/courses/igcse-chemistry-19/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d/lesson?chapter=u1:c1 → 200",
+      "observed": "interactive lanes 3 (8 blocks joined per ADR-BOOK-0003), data-progress-idx sections 13, extras 0 (all blocks spec-anchored), progress bars 0 (signed-out 401-silent law holds)",
+      "evidence": "download/t-book-067/legA-real-signed-out.png"
+    },
+    "legB_authenticated_write_path": {
+      "serve": "production standalone (bun .next/standalone/apps/hub/server.js) of the T-BOOK-067 branch, core = localhost stub for the AUTH'D progress path only (no learner credential held in-session; stub honestly labeled in-code)",
+      "surface": "/courses/igcse-chemistry-19/books/stub-doc/lesson?chapter=u1:c1, cookie syllabai.token=stub-walk-token",
+      "probe": "Playwright (pre-navigation console attach; the post-load CLI channel drops early logs)",
+      "observed": {
+        "requests": ["GET /api/books/progress → hub proxy → stub auth=yes", "PUT /api/books/progress → hub proxy → stub auth=yes (debounced write)"],
+        "dom": {"resume_scrolled_to": "scrollY 9365 (stored row railScrolledPct=42/lastOrd=2 → sectionForOrd → the section containing lastOrd=2)", "bar": "1 × [data-lesson-progress] 'Reading progress …% read' (live)", "lanes": 4, "progressIdxSections": 14},
+        "console": "clean"
+      },
+      "full_loop": "mount → GET 200 → resume → IO deepest-visible → scroll → debounced PUT → live bar: GREEN"
+    },
+    "dev_server_disclosure": "next dev (turbopack 16.3.8) on this sandbox deterministically never hydrates ANY page (HMR ws ERR_INVALID_HTTP_RESPONSE across clean restarts + fresh .next/dev; production standalone unaffected). This explains the pre-rollback 'signed-in bar never mounts in dev' mystery. Environment artifact, not a code defect."
+  },
+  "artifact_provenance": "the sandbox rollback earlier this session destroyed the working tree, the T-BOOK-068 flip car, and commit 5c60f5bb; T-BOOK-067 was rebuilt from the task spec onto a fresh fetch of origin/main (03d16e31) — branch t-book-067/lesson-reading-progress @ 7355159d",
+  "push": "BLOCKED_ON_CREDENTIAL (no GitHub PAT in-session; env-only law)"
+}

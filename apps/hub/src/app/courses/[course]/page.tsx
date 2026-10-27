@@ -20,6 +20,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { boardOf, listCourses, loadHubCourse, pilotCourseSlug } from "@/lib/courses";
 import { publicConfig } from "@/lib/config";
 import { collectPastPapers } from "@/lib/past-papers";
+import { corpusPapersForCourse } from "@/lib/pastpapers-corpus";
 import { buildPracticePapers } from "@/lib/practice-papers";
 import { CourseHeader } from "@/components/hub/course-header";
 import { CourseSwitcher } from "@/components/hub/course-switcher";
@@ -76,9 +77,17 @@ export default async function CourseHubPage({
   const base = `/courses/${meta.slug}`;
   const qual = `${boardOf(meta)} ${meta.level} ${meta.subject}`;
   // Task 22: real past-paper archive (sourcePaper provenance) + deterministic
-  // practice papers assembled from the same banks
-  const pastPapers = collectPastPapers(hub.questionTopics);
+  // practice papers assembled from the same banks.
+  // OFFICIAL-PLANE-ONLY LAW (operator order 2026-10-25, trace
+  // 1a17e79bb0e50399, "disappear entirely"): the Past Papers card counts
+  // official parsed-plane reconstructions ONLY — the SME exam-questions bank
+  // never advertises a past-paper playback promise. Courses without the
+  // official plane keep an honest card: the corpus PDF archive (when the
+  // syllabai-pastpapers archive holds this specification) or a not-ready
+  // roadmap. The Exam Questions card/bank itself is untouched.
+  const pastPapers = collectPastPapers(hub.officialPaperTopics);
   const heldQuestions = pastPapers.reduce((a, p) => a + p.questions.length, 0);
+  const corpusArchivePapers = corpusPapersForCourse(slug);
   const practicePapers =
     stats.questionSets > 0 ? buildPracticePapers(meta.slug, hub.questionTopics) : [];
   // the 4CH1 pilot runs on the official Pearson tree; every other course runs
@@ -147,14 +156,22 @@ export default async function CourseHubPage({
         {
           icon: ScrollText,
           title: "Past Papers",
-          desc: "The questions we hold from real past papers, grouped by session and played back in paper order — partial reconstructions, not the full official papers.",
+          desc:
+            pastPapers.length > 0
+              ? "The questions we hold from real past papers, grouped by session and played back in paper order — partial reconstructions, not the full official papers."
+              : "Official question papers and mark schemes streamed from the archive — view them side by side, self-mark, or run a timed mock. Interactive playback lands as papers are parsed.",
           tags: ["Practice", "Diagnose"],
-          ready: pastPapers.length > 0,
-          href: pastPapers.length > 0 ? `${base}/past-papers` : undefined,
+          ready: pastPapers.length > 0 || corpusArchivePapers.length > 0,
+          href:
+            pastPapers.length > 0 || corpusArchivePapers.length > 0
+              ? `${base}/past-papers`
+              : undefined,
           countLabel:
             pastPapers.length > 0
               ? `${pastPapers.length} paper${pastPapers.length === 1 ? "" : "s"} · ${heldQuestions} question${heldQuestions === 1 ? "" : "s"} held`
-              : undefined,
+              : corpusArchivePapers.length > 0
+                ? `${corpusArchivePapers.length} paper${corpusArchivePapers.length === 1 ? "" : "s"} · archive`
+                : undefined,
         },
         {
           icon: Files,

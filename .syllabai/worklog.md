@@ -21547,3 +21547,88 @@ Stage Summary:
 - T-BOOK-026 (lesson-flow integration + video-first media-embed, ADR-BOOK-0003) is now ON MAIN of record: the Lesson surface renders ALL rail blocks inline (authored blockIds win, derived spec-fill fleet-wide, honest extras) and the youtube-nocookie player plays inside the lesson with the Watch-on-YouTube link (provider CTA removed).
 - GO-LIVE NOTE: the merge lands the CODE on main; the student-visible rollout completes when the hub serving plane next deploys (hub bake lane / deploy lever — watch the next hub bake for the BUILD_UTILS_SPAWN_1 failure class historically seen on auto-bake).
 - Bookkeeping-only .syllabai/**, fetch-first, no force.
+
+---
+Task ID: T-BOOK-067
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, traces 1a17cddee7d8a229 / 1a17e0f21845ef89)
+Task: Operator order "lesson-side reading progress, the 112-term glossary flip" — progress half; plus the session's topology correction of record.
+
+Work Log:
+- TOPOLOGY CORRECTION OF RECORD (operator furious, rightly): an earlier flag this session ("production core 503") was an artifact of probing the RETIRED Render host syllabai-core.onrender.com — the stub script header had even mislabeled that host "the production core of record". The operator's standing order stands: Render is retired; syllabai-v2 is the sole substrate. The api-of-record https://syllabai-v2.vercel.app was verified ALIVE first-hand (books shelf 200 → documentId e6c0db50-0f84-55de-b50c-e4d49285cd6d; chapters 200; u1:c1 blocks 8/8 VALIDATED = the b6b5dec4 world; progress route 401-guarded signed-out). Retraction pinned in the receipt, task yaml, stub header, and — as a code rider — in apps/hub/.env.example (the one remaining repo fossil advertising the retired host as "Production value today"; api.ts/core-api.ts already carried RETIRED-2026-10-23 annotations on main; README diagram refresh registered as a docs follow-up).
+- Sandbox-rollback damage report: the working tree was restored to an Oct-23 fossil (branch t-book-015/books-doctrine); T-BOOK-067 implementation files, the T-BOOK-068 flip car, commit 5c60f5bb, and all walkthrough evidence were destroyed locally; origin/main (03d16e31) held everything merged. Local main fast-forwarded; 3,040 filemode-only diffs silenced via core.fileMode=false; nothing on origin was touched.
+- T-BOOK-067 REBUILT on branch t-book-067/lesson-reading-progress @ 7355159d (base 03d16e31): lib/books-progress-shared.ts (pure: PUT_DEBOUNCE_MS, clampPct, sectionForOrd, maxOrdOf — server-safe, no react imports) + lib/books-progress.ts (client hook, byte-equal extraction of rail-workspace's local useChapterProgress — same GET-on-mount / 1200ms debounced PUT / 401-silent wire) + lesson-progress.tsx (LessonProgressTracker: IO threshold 0.4 deepest-visible → lastOrd; document-scroll pct via useSyncExternalStore — zero setState-in-effect cascades; resume 0<pct<95 → 350ms smooth-scroll to sectionForOrd; honest presence law) + lesson-view wiring (data-progress-idx per section, extras join as anchored #lesson-extras, tracker mounted only when railChapterKey maps) + rail-workspace slimmed (extraction only, behavior byte-identical) + 11 bun tests. Rider: .env.example fossil correction.
+- Gates: tsc 0, eslint 0, bun test 11/11, next build 0.
+- Surface walk of record: Leg A real stack signed-out (dev hub → REAL api-of-record): lesson 200, 3 interactive lanes (8 blocks), 13 progress sections, 0 extras, 0 bars (401-silent law). Leg B auth'd write path (production standalone serve of the branch, core = localhost stub honestly labeled — no learner credential held in-session): Playwright pre-navigation probe — GET progress auth=yes → resume scrolled (scrollY 9365 to the section containing lastOrd=2) → IO tracked → debounced PUT auth=yes → live bar "Reading progress N% read"; console CLEAN. Evidence: download/t-book-067/ (probe-result.json, stub wire log, screenshots, probe script).
+- FORENSIC DISCLOSURE: next dev (turbopack 16.3.8) on this sandbox deterministically never hydrates ANY page (HMR ws ERR_INVALID_HTTP_RESPONSE, persists across clean restarts + fresh .next/dev; proven NOT the code via the production-standalone control). This was the pre-rollback "signed-in bar never mounts in dev" mystery — environment artifact, not a defect.
+- Push BLOCKED: no GitHub PAT in-session (rotation list); branch is local-of-record until a PAT hand (env-only).
+
+Stage Summary:
+- T-BOOK-067 is implementation-complete and walk-proven; PR opens on PAT hand. The lesson now shares the rail's ONE chapter_progress row — no fork (ADR-BOOK-0001 §8).
+- The session's "production core 503" flag is RETRACTED of record; the topology of record is re-anchored everywhere I touched.
+- Follow-ups registered: README architecture-diagram refresh (docs); flip-car system-change PR (see T-BOOK-068).
+
+---
+Task ID: T-BOOK-068
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, traces 1a17cddee7d8a229 / 1a17e0f21845ef89)
+Task: Operator order "lesson-side reading progress, the 112-term glossary flip" — flip half.
+
+Work Log:
+- The flip car (glossary-reflip-r4.mts) and commit 5c60f5bb were destroyed by the sandbox rollback; REBUILT of record at apps/api/scripts/session/glossary-reflip-r4.mts on the repo's own patterns (postgres driver ssl+prepare:false, js-yaml), three modes --check/--commit/--idempotence.
+- Authored layer verified TODAY: 112 terms across 9 packs (seed- excluded), 0 V-law problems (V1 kebab slugs, V3 ms_accepts/ms_avoids bilateral, V4 definitions >= 40 chars + no duplicate slugs).
+- Guards carried: census {SUGGESTED:112,VALIDATED:0} exact pre-commit; book_blocks total 178 (b6b5dec4 world) drift-abort; UPDATE rowcount == 112; post census {SUGGESTED:0,VALIDATED:112}; subject_code='4ch1' pinned; slug = ANY(authored slugs).
+- Execution BLOCKED honestly: sandbox DATABASE_URL is a local placeholder; the script refuses non-Neon targets and no Neon MAIN pooler credential is held in-session (env-only law holds — nothing persisted). The Task-7 handoff was lost with the rollback.
+- Task yaml + receipt registered (reflip-r4-rebuild-r1.json, carrying the r0 root cause of record: NEON-DB-LOSS restore predating the r3 flip).
+
+Stage Summary:
+- Students currently see ZERO 4ch1 glossary terms (VALIDATED-only serving, ADR-BOOK-0001 §5) until the flip lands — one credential hand away: DATABASE_URL=<MAIN pooler> bun apps/api/scripts/session/glossary-reflip-r4.mts --check → --commit → --idempotence.
+- SYSTEM-CHANGE CANDIDATE (ruling requested): the flip car has been lost to rollbacks TWICE because it lives session-side — PR it into apps/api/scripts/books/ so it becomes tracked of-record.
+Task ID: T-BOOK-067/068 (continuation)
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a17e7169e166db5)
+Task: Credential hand landed (GitHub PAT + Vercel token + Neon API key + MAIN/W1 poolers, env-only) — push T-BOOK-067, execute the T-BOOK-068 flip.
+
+Work Log:
+- PAT verified first-hand (login SyllabAI). fetch-first: origin/main tip == 03d16e31 == the branch base (zero drift). Branch t-book-067/lesson-reading-progress PUSHED (7355159d feature + e378b23a + 34acf483 bookkeeping); PR of record #409 opened 2026-10-28; NOT self-merged (integrator lane — merge on operator order).
+- Credential inventory of the hand: vcp_ = Vercel API token (account syllabai-1403; identified, NOT used for any write); napi_ = Neon API key (UNUSABLE from this sandbox: api.neon.tech DNS fails — pooler direct connections do work); ghp_ + the two poolers used as described.
+- T-BOOK-068 --check on MAIN: REFUSED at the Neon proxy — "Your account or project has exceeded the quota. Upgrade your plan to increase limits." Flip NOT attempted; ZERO writes executed; all guards intact.
+- W1 negative probe: connected; relation "book_glossary_terms" does not exist → books tables live on MAIN only; the recipe's MAIN target is CONFIRMED; W1 correctly untouched.
+- Authored layer re-verified first-hand 2026-10-28: 112 terms / 0 V-law problems.
+- PRODUCTION IMPACT (first-hand probes): api-of-record books plane 500s — shelf (with courseId), glossary?subject=4ch1, document e6c0db50 all 500 while the api PROCESS is alive (400 validation on missing courseId; 401 health guard) → the platform DB plane is down while the quota refusal holds. Identity/learner-model share MAIN → auth/progress degradation expected (not probed; no junk logins against production auth).
+- Receipts of record: reflip-r4-check-r1.json (this commit, main); 068 yaml status → BLOCKED_ON_PLATFORM_QUOTA rides PR #409.
+
+Stage Summary:
+- T-BOOK-067: PR #409 of record — implementation-complete, walk-proven, gates green; awaiting operator merge.
+- T-BOOK-068: blocked on Neon MAIN quota (NOT on credentials anymore). Unblock = raise the Neon plan/compute limit (Neon console; control-plane api unreachable from sandbox) or wait for the monthly reset, then re-run the recipe --check → --commit → --idempotence. Students see ZERO 4ch1 glossary terms (and the books plane is down) until the quota is resolved.
+- Rotation list unchanged and still overdue: all chat-exposed secrets (PAT, Vercel token, Neon API key, pooler passwords).
+
+---
+Task ID: PASTPAPERS pp-interactive-gate run-001 (operator order "remove their link with past papers in 'Interactive' button ... proceed - disappear entirely", trace 1a17e79bb0e50399)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Interactive reconstructions may be built ONLY from the official parsed plane; unparsed courses lose the entire Interactive surface (reconstructions section, playable badges, chips, player routes, course-home card promise); the SME exam-questions bank and its metadata stay exactly as-is.
+
+Work Log:
+- CENSUS of record (data first): of 94 course bundles, exactly 3 carry official-papers.json (the ADR-037 parsed plane) — igcse-chemistry-19 (4CH1, 54 papers/477q), igcse-maths-b-16 (4MB1, 66/1281), igcse-physics-19 (4PH1, 55/540); every other bank is provider "Save My Exams" whose sourcePaper fields are topic-question CITATIONS, not full-paper parses. 61 unparsed bundles were recreating pseudo-papers from those citations (2-256 each; econ-25 15, maths-25-extended 203, intl-maths-23-extended 229, maths-a-18-higher 256); 30 were already empty.
+- CHANGE (4 files, +61/-34): past-papers page reconstructions = collectPastPapers(hub.officialPaperTopics) (was collectPastPapersTwoPlane over official+SME); InteractiveChip rendered only on parsed courses (official non-empty) — roadmap popover for unparsed papers on parsed courses stays (the honest "not parsed yet" state); [paperKey] player resolves official-only (SME-only keys 404); course-home Past Papers card counts official-only, with an honest PDF-archive fallback card (corpus archive count + archive copy) so no real archive surface is hidden; layout hasPastPapers keys on the official plane (sidebar stays alive via hasCorpusPapers). Law recorded in comments at every call site.
+- ZERO CONTACT (by law): exam-questions routes + questions.json metadata, practice-papers builder, lib/past-papers.ts + pastpapers-reconstruction.ts + the planes tests (lib functions intact), global /past-papers corpus archive pages, the legacy exam-questions redirect (targets 4CH1 official keys — still resolve).
+- VERIFY: bunx tsc --noEmit 0 errors; bun test past-papers.planes.test.ts 7/7 (14 expect()); bun run build ALL GREEN incl prebuild (verify_corpus_23a + verify_flashcard_sync_courses + validate_cie_bundles); git diff = exactly the 4 page files.
+- Census scripts: pp_gate_census.py (fleet provenance scan) + pp_gate_before_after.py (before/after paper counts per bundle), mirrored under scripts/.
+- Parsed-course delta disclosed: 4CH1 104->54, 4MB1 68->66, 4PH1 146->55 — the dropped rows are the same SME-citation defect class (incl. 4MB1 may-2020 01/01R, the June-2020-cancelled session); official papers untouched.
+
+Stage Summary:
+- The Interactive surface now tells the truth: playable = officially parsed (3 courses), everything else shows the PDF archive and honest not-parsed states; Exam Questions stands alone unchanged. Receipt .syllabai/receipts/PASTPAPERS/pp-interactive-gate-run-001-r0.json; fetch-first at 03d16e31, no force; PAT rotation CRITICAL-OVERDUE reported pre-push (transit 44).
+
+---
+Task ID: T-BOOK-067-merge / T-BOOK-068-vehicle
+Agent: main agent (Z.ai, zai-web session web-c414c074, chat 08b3170a, trace 1a17e7f85630ad0d)
+Task: Operator order "merge #409 and flipping the vehicle into the warehouse".
+
+Work Log:
+- Merge #409 admission gates GREEN (head 34acf483, CI verify+hub x2, 0 reviews). First PUT REFUSED: "Pull Request has merge conflicts" — main 3c217e70 (reflip receipt, direct-to-main) and the branch both appended to .syllabai/worklog.md from the same base; GitHub's cached mergeable lagged the real check.
+- Resolved HISTORY-PRESERVING (no force push, law): merged origin/main INTO the branch (034c9177); worklog union-resolved by longest-common-prefix (21,551 lines) with both appends kept in section order — branch Task-10 sections, then main's continuation; zero conflict markers, zero content lost. CI re-ran GREEN on the reconciled head.
+- MERGED of record: PUT merge_method=merge → merge commit 28e99920 on main; post-merge CI hub+verify GREEN first-hand; local main synced. T-BOOK-067 (lesson-side reading progress, one shared chapter_progress row, no fork) is main-of-record; student-visible on the next hub serving deploy.
+- T-BOOK-068 quota re-probe first-hand: SAME Neon proxy refusal ("account or project has exceeded the quota") — flip remains blocked, zero writes ever executed, guards intact.
+- Vehicle-into-repo (operator ruling honored): js-yaml availability verified against the tracked-script convention (books-ingest-rail.ts, books-u4-s34/spotcheck.ts already import hoisted js-yaml 4.1.1 — no package.json change needed); tracked copy staged at apps/api/scripts/books/glossary-reflip-r4.mts on branch t-book-068/flip-car-tracked, PR opened (not self-merged).
+
+Stage Summary:
+- T-BOOK-067 MERGED (28e99920) — merge receipt .syllabai/receipts/T-BOOK-067/merge-of-record.json.
+- T-BOOK-068 flip car becomes TRACKED of-record (rollback-proof); execution still awaits the Neon MAIN quota fix, recipe unchanged.
+- Rotation list unchanged: all chat-exposed secrets still overdue for rotation.
