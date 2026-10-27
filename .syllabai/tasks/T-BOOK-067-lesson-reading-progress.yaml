@@ -6,7 +6,8 @@ status: IN_REVIEW
 branch: t-book-067/lesson-reading-progress
 head: 7355159d
 base: 03d16e31
-push: BLOCKED_ON_CREDENTIAL  # no GitHub PAT held in-session (rotation list); commit is local-only until a PAT is provided
+pr_of_record: https://github.com/SyllabAI/syllabai-v2/pull/409  # opened 2026-10-28 (trace 1a17e7169e166db5); head e378b23a = 7355159d + bookkeeping; NOT self-merged (integrator lane)
+push: PUSHED  # PAT handed 2026-10-28 (env-only, never persisted); branch on origin; merge on operator order
 
 scope:
   allowed:
@@ -40,4 +41,4 @@ gates:
 disclosures:
   - "RETRACTED: this session's earlier 'production core 503' flag was an artifact of probing the RETIRED Render host (syllabai-core.onrender.com). The api-of-record https://syllabai-v2.vercel.app was verified ALIVE (books shelf/chapters/blocks serving, 8/8 VALIDATED for u1:c1; progress route 401-guarded). The operator's standing correction — Render retired, syllabai-v2 is the of-record — is now pinned in .env.example and in the stub-code headers."
   - "dev-server artifact: next dev (turbopack, 16.3.8) on this sandbox deterministically never hydrates ANY page (HMR ws ERR_INVALID_HTTP_RESPONSE, persists across clean restarts and fresh .next/dev) — surfaced as the pre-rollback 'signed-in bar never mounts in dev' mystery. Production standalone hydrates and runs the full loop. Not a code defect; flag for the operator's dev-environment awareness only."
-  - "push blocked: no GitHub PAT in-session; branch t-book-067/lesson-reading-progress @ 7355159d is local-of-record until a PAT is handed (env-only, per law)."
+  - "push RESOLVED 2026-10-28: PAT handed env-only; branch pushed; PR of record #409 (base 03d16e31 == origin/main tip at open time; fetch-first verified)."
