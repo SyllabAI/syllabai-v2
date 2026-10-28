@@ -21961,3 +21961,16 @@ Stage Summary:
 - **Diff scope**: 1 file, +1/-1, `apps/hub/content/igcse-chemistry-19/official-papers.json` (mark-scheme textMd correction); zero *.java, zero core/hub repo content, zero Neon/prod exposure
 - **Post-merge main CI**: 2/2 SUCCESS on `0e3f29a5` (bounded 90s re-check)
 - **Notes**: bookkeeping-only receipt commit (.syllabai/worklog.md only); fetch-first reset #226 at sweep start (signature 89962a5, restored, zero loss); no force-push; no self-merge
+Task ID: T-OEQ-MATHSB-SERVE-1 run-017 tranche 2 ('run-017 queue' — tranche-1 newLeadsQueued execution)
+Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6, trace 1a181a25c3323d71)
+
+Work Log:
+- State recovery: workspace reset since tranche-1; fetch-first rebuilt everything — tranche-1 (PR #423), run-013/014/015/016+016b ALL of record in main (515edc81); main plane sha16 65cf3bb6ca1759ce == tranche-1 receipt post-state (verified first-hand); the 'run-016 discrepancy' was already RESOLVED of record (002c8073 receipt note).
+- WHOLE-FIELD census of record (tranche-1's line-context 702/345/65 was a disclosed lower bound): 6,035 raw hits / 1,097 parts / 66 papers across 5 declared classes (W spaced / XL crossline / X10 glued / GS glued-sup / OA operator-adjacent); FP-dominated LEAD LIST by design; severity-ranked per-paper (2025-06 01 top with 29 parts). Artifact + script in-repo.
+- EYES-ON WAVE (all printed-evidenced): 15 pages + 6 zoom crops rendered 150dpi+ and READ — 2025-06 4MB1-01 (QP p7/12/17/18/19/24, MS p11/16/23/24+zoom), 2026-06 01 q25 bearings (MS p26 + 450dpi zoom — the order-24 lead: XY²/2000²/²-superscripts and fraction stacks restored, ∠XYA row confirmed by zoom), 2026-06 01R (QP p5/14/17/20, MS p8/19/24/29+zooms). 53 fields: 19 problemMd + 17 solutionMd + 17 MP mirrors. F5 cross-question leak closed (q10-b carried the q9 MS row wholesale — MS p10→p11 bleed proven). Style of record: plain $ spans (run-012 live-verified), pmatrix matrices, U+0307 recurring dots, sibling-precedent for shared stems.
+- FAIL-CLOSED apply (tranche2_apply.py): 8-gate battery ALL GREEN first run (census EXACT, marks map identical, PUA/FFFD 0, $ parity, diff scope 53 EXACT, mirror 17/17, round-trip PASS); KaTeX gate 317/317 (katex staged in scratch). Plane 65cf3bb6ca1759ce -> a11ad0ccc1923806.
+- Residual classification: remaining W hits on the 3 papers all sit in OTHER parts (2025-06 q6/q8-b/q11/q12; 01R q18/q19/q25/q27-b) = tranche-3 leads; fleet '20002' Pythagoras + 'cos −1' leads pinned in census artifact.
+- AS-PRINTED errata disclosures: 01R q23 'eg (−√5, 5 − √500)' + '5 + 10√5 = −17.4'; q22 '[x=] −27±√(27²−4×3×(−188))/(2×3)'; q20-a loose-paren Condone forms — all zoom-evidenced, never silently repaired.
+
+Stage Summary:
+- run-017 tranche-2 CLOSED: whole-field census supersedes lower bound; order-24 bearings rebuilt (tranche-1's named lead); 3 papers symbol-restored end-to-end vs print; all gates green; playbook §10 laws 24-28 + receipt + census/apply artifacts in-repo. Tranche-3 leads staged; corpus regen + topic.json sync ride next converter run; PAT rotation STILL PENDING.
