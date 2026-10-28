@@ -6,6 +6,15 @@
 Contract: GRAPH_CONTRACT v1.0 — node types Subject / Section / SubTopic /
 SpecificationPoint / ExamPaper; edge types hier / pre / rel / assess.
 
+v1.5: display-text normalization. SpecificationPoint statement/label and
+points[].text now carry the evidenced presentation pass (T-SPEC-AUDIT-1
+PUA map — byte-parity port of the hub's normalizeSpecText, spec-text.ts):
+PDF-extraction glyphs (Wingdings tick, large-paren pieces, symbol quartet)
+map to their printed characters and residual PUA/control/zero-width noise
+strips. The curriculum corpus itself stays spine-verbatim byte-exact
+(importSource pin law) — normalization is presentation-only, and the
+evidence census lives in spec-text.ts.
+
 v1.3: prerequisite/related edge projection. A committed per-course snapshot
 (content/<slug>/prerequisites.json — the operator-validated T-C11 settled
 store + concept anchors + the inferred-prototype curation) projects onto the
@@ -69,6 +78,46 @@ SECTION_COLORS = [
 ]
 
 NUMERIC_POINT = re.compile(r"^\d+\.\d+[A-Z]?$")
+
+# ── presentation-text normalization (T-SPEC-AUDIT-1 parity) ────────────────
+# Faithful port of the hub's normalizeSpecText (apps/hub/src/lib/spec-text.ts):
+# the corpus stays spine-verbatim byte-exact (importSource pin law); this is a
+# presentation-layer pass applied ONLY to exported display text. Every mapping
+# below is evidenced by the corpus-wide census recorded in spec-text.ts.
+_PUA_MAP = {
+    "\uF0FC": "\u2713",
+    "\uF8EB": "(", "\uF8EC": "(", "\uF8ED": "(",
+    "\uF8F6": ")", "\uF8F7": ")", "\uF8F8": ")",
+    "\uF084": "\u2264", "\uF085": "\u2265", "\uF083": "\u2265",
+    "\uF061": "\u21A6",
+}
+_RE_CONTROL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
+_RE_ZERO_WIDTH = re.compile(r"[\u200b-\u200d\u2060\ufeff]")
+_RE_NBSP = re.compile(r"[\u00a0\u202f]")
+_RE_SOFT_HYPHEN = re.compile(r"\u00ad")
+_RE_MULTI_SPACE = re.compile(r" {2,}")
+# Modulus pair guard: inner must be a short operand (no parens/commas/
+# semicolons/equals) — conditional-probability bars pass through untouched.
+_RE_PADDED_PIPES = re.compile(r"\|([^|(),;=]{1,48})\|")
+_RE_PUA = re.compile(r"[\ue000-\uf8ff]")
+
+
+def normalize_display_text(raw: str) -> str:
+    """Display normalization for exported KG text — parity with the hub's
+    normalizeSpecText (see spec-text.ts for the evidence census)."""
+    if not raw:
+        return raw
+    s = re.sub("\uF026\uF026\\s+([A-Za-z])", "\\1\u0308", raw)
+    s = re.sub("([A-Za-z])\\s+\uF026", "\\1\u0307", s)
+    s = _RE_PUA.sub(lambda m: _PUA_MAP.get(m.group(0), ""), s)
+    s = _RE_CONTROL.sub("", s)
+    s = _RE_SOFT_HYPHEN.sub("", s)
+    s = _RE_NBSP.sub(" ", s)
+    s = _RE_ZERO_WIDTH.sub("", s)
+    s = s.replace("`", "")
+    s = _RE_PADDED_PIPES.sub(lambda m: "|" + m.group(1).strip() + "|", s)
+    s = _RE_MULTI_SPACE.sub(" ", s).strip()
+    return s
 
 
 def sub_letter(seq: int) -> str:
@@ -419,7 +468,7 @@ def export_course(slug: str, registry: dict[str, dict]) -> dict:
         if len(sub_codes) != 1:
             raise ExportError(f"{slug}: SPEC_POINT {p['code']} has {len(sub_codes)} "
                               f"SUBTOPIC parents ({parents})")
-        points_list.append({"id": pid, "text": p["title"],
+        points_list.append({"id": pid, "text": normalize_display_text(p["title"]),
                             **({"applicability": p["applicability"]}
                                if p.get("applicability") else {})})
         point_subs[sub_id_of[sub_codes[0]]].append(pid)
@@ -519,20 +568,25 @@ def export_course(slug: str, registry: dict[str, dict]) -> dict:
         "meta": {
             "contract": f"GRAPH_CONTRACT v{CONTRACT_VERSION}",
             "course": slug,
-            "board": "Pearson Edexcel",
+            "board": cur.get("board") or "",
             "level": display_level,
             "subject": display_subject,
             "code": display_code,
             "curriculumCode": qual_code,
             "syllabusVersion": cur.get("syllabusVersion"),
             "source": f"content/{slug}/curriculum.json (curriculum truth, RULE_DERIVED)",
-            "exporter": ("scripts/kg_export.py v1.4 (prerequisite projection + "
-                         "reversed-pair governance + applicability passthrough)"
+            "exporter": ("scripts/kg_export.py v1.5 (prerequisite projection + "
+                         "reversed-pair governance + applicability passthrough + "
+                         "display-text normalization)"
                          if unit_layer else
-                         "scripts/kg_export.py v1.4 (prerequisite projection + "
-                         "reversed-pair governance)"),
+                         "scripts/kg_export.py v1.5 (prerequisite projection + "
+                         "reversed-pair governance + display-text normalization)"),
             "generatedUtc": dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
-            "notes": ("v1.4: hier edges from curriculum truth; prerequisite/related "
+            "notes": ("v1.5: SpecificationPoint statement/label and points[].text "
+                      "carry the evidenced presentation normalization (T-SPEC-AUDIT-1 "
+                      "map, parity with the hub's normalizeSpecText — extraction PUA "
+                      "glyphs mapped/stripped; corpus itself stays spine-verbatim). "
+                      "v1.4: hier edges from curriculum truth; prerequisite/related "
                       "edges from the committed T-C11 prerequisite snapshot where "
                       "one exists (operator-validated projection + inferred-prototype "
                       "tier, provenance in meta.prerequisites; reversed cross-product "
