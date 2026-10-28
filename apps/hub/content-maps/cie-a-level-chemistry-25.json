@@ -20,13 +20,16 @@
   }
  },
  "course": "cie-a-level-chemistry-25",
- "generatedUtc": "2026-10-25T00:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-a-level-chemistry-25/spec_point_index.json": {
    "sha256": "df52900db1d43f6398a48af8fee627e7dce4098fc9526b9d96d8bfa3d7210ecf"
   },
   "scripts/cie_rejoin_resolutions.yaml": {
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
   },
   "spec-links/cie-a-level-chemistry-25.json": {
    "sha256": "d3b659268706d053fca8148b97dfcd9a55afd58e092b366981c3192926bac2ed"
@@ -40591,7 +40594,7 @@
   ],
   "uncoveredSpineCodes": 195
  },
- "resourcesSha": "e481cb47ab6188310abe396cc3011bc5f9e67864",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -40626,7 +40629,8 @@
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": "ACCEPTED",
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": {
     "added": 0,

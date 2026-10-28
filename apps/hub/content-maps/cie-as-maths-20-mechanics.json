@@ -7,23 +7,32 @@
    "viaSubtopicScope": 0
   },
   "notes": {
-   "coded": 1,
+   "coded": 7,
    "total": 31,
-   "unmapped": 30,
+   "unmapped": 24,
    "viaSubtopicScope": 1
   },
   "questionParts": {
-   "coded": 0,
+   "coded": 174,
    "total": 534,
-   "unmapped": 534,
+   "unmapped": 360,
    "viaSubtopicScope": 0
   }
  },
  "course": "cie-as-maths-20-mechanics",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-as-maths-20-mechanics/spec_point_index.json": {
    "sha256": "4e5c90d5245ef885fcfcb1930d77a3c8e8cd7070c9acab5af6a5074642c5d5f4"
+  },
+  "scripts/cie_rejoin_resolutions.yaml": {
+   "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
+  },
+  "spec-links/cie-as-maths-20-mechanics.json": {
+   "sha256": "a6e32710faeae9b32d30a0b20c29d1767a81cd70dad4f0655e94bc0769f8a91c"
   },
   "spine": {
    "file": "spines/cie-as-maths-20-mechanics.json"
@@ -1731,23 +1740,53 @@
    "unmapped": true
   },
   "qstnprt_2Xwvs8ws5ktbck2H": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_2YQDkVm8SkVBxxVr": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.3",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.3",
+     "score": null,
+     "spineCode": "4.5.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_pj3GdcWqJzRMWZMz"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_2YTqvMrX7MqyMJDz": {
    "codes": [],
@@ -1759,13 +1798,23 @@
    "unmapped": true
   },
   "qstnprt_2bGNBdPSxDrK9wcg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_f2XM2XNHqVGhXsnk",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_2f8c4ZSxkfH5tqVg": {
    "codes": [],
@@ -1776,13 +1825,23 @@
    "unmapped": true
   },
   "qstnprt_2h65JwqZVjtDyx9w": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.6",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.1.6",
+     "score": null,
+     "spineCode": "4.1.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Bbhv3NVYwZMwQ36Q",
     "spcpt_CHN4dxR59zVqrj7J"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_2jBY8mHH8SkdgcyP": {
    "codes": [],
@@ -1794,29 +1853,59 @@
    "unmapped": true
   },
   "qstnprt_2mQvdznSPmtG8mMs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_T3w5XpX45nsNRxxB"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_34tQP9XkWZwmywcy": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_36XVtGMgGsJ5DWVB": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_38DWz5RHhd369NHF": {
    "codes": [],
@@ -1844,13 +1933,23 @@
    "unmapped": true
   },
   "qstnprt_3SR25dKGXWBfsGtN": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_3Svm997hHxPpfjPw": {
    "codes": [],
@@ -1870,12 +1969,22 @@
    "unmapped": true
   },
   "qstnprt_3ZNnYKJsHXvJMFwN": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_3jBw6RsYf96C2NKM": {
    "codes": [],
@@ -1923,13 +2032,23 @@
    "unmapped": true
   },
   "qstnprt_4DQFtB2V696yqx2n": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_4M3fX7hdcFmYmzsm": {
    "codes": [],
@@ -1949,12 +2068,22 @@
    "unmapped": true
   },
   "qstnprt_4Z2r78kFnZrsBtzs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_4fsM74D5hDJmVhbb": {
    "codes": [],
@@ -1990,12 +2119,22 @@
    "unmapped": true
   },
   "qstnprt_4x2nYPrWmmk69PY5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_529v2QpqQT3VdSnN": {
    "codes": [],
@@ -2023,13 +2162,33 @@
    "unmapped": true
   },
   "qstnprt_5CzncK8H98qnPnVv": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.3",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.3",
+     "score": null,
+     "spineCode": "4.5.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ",
     "spcpt_pj3GdcWqJzRMWZMz"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_5DzjCHNpSRbTy5ZV": {
    "codes": [],
@@ -2041,13 +2200,23 @@
    "unmapped": true
   },
   "qstnprt_5XFr6k2Hv7KzQGtn": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_5bXXz69S75hrtdvk": {
    "codes": [],
@@ -2075,13 +2244,23 @@
    "unmapped": true
   },
   "qstnprt_5r9gZFWbkWmVF3JF": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_5xfTyCcVmQGnCTJz": {
    "codes": [],
@@ -2117,21 +2296,41 @@
    "unmapped": true
   },
   "qstnprt_6CWsxVJGFYQ3DsVh": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6GqQ96ZcrWVFBNsj": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6HNDgX32Q4MV4PJ4": {
    "codes": [],
@@ -2143,12 +2342,22 @@
    "unmapped": true
   },
   "qstnprt_6R2z9bdz8jRH6CNT": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6bTVXjCbtQyFFybF": {
    "codes": [],
@@ -2160,21 +2369,51 @@
    "unmapped": true
   },
   "qstnprt_6cjR4QTmwx7bGXHs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.3",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.3",
+     "score": null,
+     "spineCode": "4.5.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ",
     "spcpt_pj3GdcWqJzRMWZMz"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6gvCd4PjWkkW4XHg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6k73QZJH9QQrMwbk": {
    "codes": [],
@@ -2194,29 +2433,59 @@
    "unmapped": true
   },
   "qstnprt_6t886M7xcgPGc23w": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6wz8bf2NxW8ZFWRZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6x72BsRqRpCmCfv5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_XFW9FFKtQHckyhBB",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_74C4DTqnDpjZZTdW": {
    "codes": [],
@@ -2265,21 +2534,41 @@
    "unmapped": true
   },
   "qstnprt_7WffPvNwzKQKmd96": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_f2XM2XNHqVGhXsnk",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_7fW85b3BjfRsGZGg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_7x2M7Z6vWKd9n83H": {
    "codes": [],
@@ -2316,12 +2605,22 @@
    "unmapped": true
   },
   "qstnprt_89xw3qCYWPcB2N8f": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_8PgFC2PGZGWvhqvz": {
    "codes": [],
@@ -2342,13 +2641,23 @@
    "unmapped": true
   },
   "qstnprt_8ZSjbpk63CjkQY4W": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx",
     "spcpt_tJ3DwXWcR567CPy5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_8ZhcnqVXBxh8YPBh": {
    "codes": [],
@@ -2359,13 +2668,23 @@
    "unmapped": true
   },
   "qstnprt_8k3Jzg85qpK3hKmt": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_8xgDhFz6CnPjgfVx": {
    "codes": [],
@@ -2376,12 +2695,22 @@
    "unmapped": true
   },
   "qstnprt_93sVTCYk2zg9YWgr": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_953v2mYr2wQQTKTZ": {
    "codes": [],
@@ -2401,12 +2730,22 @@
    "unmapped": true
   },
   "qstnprt_9KmbDHmB4sc58zK9": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_9RdSnTCPfxpCMYH7": {
    "codes": [],
@@ -2458,13 +2797,23 @@
    "unmapped": true
   },
   "qstnprt_9zspYfjTD34CmPGW": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_WFsVkCnbGZDSPsYN",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_BG4VnTKFQ7RD2TXX": {
    "codes": [],
@@ -2476,20 +2825,40 @@
    "unmapped": true
   },
   "qstnprt_BGXZcfzNGbgxGGpn": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_BK7Mz8C2YcB6jTbw": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_BTm4jd7tDySYYjgg": {
    "codes": [],
@@ -2516,13 +2885,23 @@
    "unmapped": true
   },
   "qstnprt_Bdt7NbBmZ4YpgwN5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_BknDGkrJYFKgkpDm": {
    "codes": [],
@@ -2568,13 +2947,23 @@
    "unmapped": true
   },
   "qstnprt_C4NBhkvmVdnqhbB6": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_MKZ5JCZTHydyNZXQ",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_C6WfX2dfnRtbgcBg": {
    "codes": [],
@@ -2594,12 +2983,22 @@
    "unmapped": true
   },
   "qstnprt_CBHw8mzQWhzqgkCZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_CDzFgKtcSCnvsg7R": {
    "codes": [],
@@ -2627,28 +3026,58 @@
    "unmapped": true
   },
   "qstnprt_CRvpvbGVGXzN99mX": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_CZmzD9rmPGvYJtj3": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_CfdHTkGSX8Ts5mFV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ChnTvf44cDPfs3hp": {
    "codes": [],
@@ -2678,12 +3107,22 @@
    "unmapped": true
   },
   "qstnprt_CkXt6xxxPwTWfZYT": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_CkZ68M49dbF7YSVv": {
    "codes": [],
@@ -2695,29 +3134,59 @@
    "unmapped": true
   },
   "qstnprt_CnBVTMKXtw27BqWb": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_CnnvGXYwtXPvS4ZV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_CnzcKpDqGHV6tknx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_CqMfB3ZkWxKmBSxB": {
    "codes": [],
@@ -2787,13 +3256,23 @@
    "unmapped": true
   },
   "qstnprt_DmhwTWZVVRTH2HbF": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.6",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.1.6",
+     "score": null,
+     "spineCode": "4.1.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Bbhv3NVYwZMwQ36Q",
     "spcpt_yr2yZKcDfgWfr86Y"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_F3zHdHWt48pBfPv2": {
    "codes": [],
@@ -2829,12 +3308,22 @@
    "unmapped": true
   },
   "qstnprt_FtBcNrPwjD83VbgF": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_G4f8MkdZ9rRsfqMW": {
    "codes": [],
@@ -2889,12 +3378,22 @@
    "unmapped": true
   },
   "qstnprt_HBtbG5f8TjbDgxbv": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_HBvJPqpfQxy8drXK": {
    "codes": [],
@@ -2930,12 +3429,22 @@
    "unmapped": true
   },
   "qstnprt_HgD7PgZNQSzvVfMC": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_HgwwgZsv2wkcv6GV": {
    "codes": [],
@@ -2964,13 +3473,23 @@
    "unmapped": true
   },
   "qstnprt_HwbRdX9VHW9KKJRM": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_J9sFJhXqvskCjyRr": {
    "codes": [],
@@ -2999,21 +3518,41 @@
    "unmapped": true
   },
   "qstnprt_JKw9YSgvYTrX7NHx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_JPxHW6RDM336KX8k": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_JXFqwFdrb87P7Hfr": {
    "codes": [],
@@ -3034,13 +3573,23 @@
    "unmapped": true
   },
   "qstnprt_Jg8rrC2FZdss4JqJ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_f2XM2XNHqVGhXsnk",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_JrQhwg53XrjcQGP9": {
    "codes": [],
@@ -3069,31 +3618,61 @@
    "unmapped": true
   },
   "qstnprt_K65Z9s6H7SVvFcNh": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.6",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.1.6",
+     "score": null,
+     "spineCode": "4.1.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Bbhv3NVYwZMwQ36Q",
     "spcpt_CHN4dxR59zVqrj7J"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_K6RpwwqRmbX9VRb4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_zCJ9d64JFdCCZvNF"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_KBD7VgvCCT7Jp523": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_KK3j284XKy8qkmj8": {
    "codes": [],
@@ -3122,22 +3701,42 @@
    "unmapped": true
   },
   "qstnprt_KTPY3VBWTr65BMGR": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ",
     "spcpt_zCJ9d64JFdCCZvNF"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Kc3tnS9Qx8vkRChY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_f2XM2XNHqVGhXsnk",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_KjXNPqSKnzjwnb9s": {
    "codes": [],
@@ -3165,12 +3764,22 @@
    "unmapped": true
   },
   "qstnprt_M4xXjswJfYmq7nJr": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_M7Kv4ysQxQc6Z28Q": {
    "codes": [],
@@ -3207,30 +3816,60 @@
    "unmapped": true
   },
   "qstnprt_MHymR6xF6kqyvtNr": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_MKXYBpYx4t3Xg5Rg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_MNmdwjh2X4vNXB6z": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_MNsrYbnT7Ydn2vHX": {
    "codes": [],
@@ -3258,28 +3897,58 @@
    "unmapped": true
   },
   "qstnprt_MXXZwYPd32FZtymY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.3",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.3",
+     "score": null,
+     "spineCode": "4.5.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_pj3GdcWqJzRMWZMz"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_MfkBvZ5bV4yCRxMy": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_MnjThT7Qt5cBYbPH": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Mrd2XQpJqX4jdMtf": {
    "codes": [],
@@ -3290,30 +3959,60 @@
    "unmapped": true
   },
   "qstnprt_MrnRBVBBBG9bMn52": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_MtQ2M865CG67d9YH": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JqNkg4qXvkzKyC8N",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Mx8rGNKT9BmDMGkZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_N3BJWGkVHgP3qbkB": {
    "codes": [],
@@ -3333,13 +4032,23 @@
    "unmapped": true
   },
   "qstnprt_NRPsKwxvnN4RFdc4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_zCJ9d64JFdCCZvNF"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_NX5h3qfVct2zTMyD": {
    "codes": [],
@@ -3359,22 +4068,42 @@
    "unmapped": true
   },
   "qstnprt_NpTfGHXDNGXnwxd8": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_NqX2kmrGbbHtrZT4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Ntg39DMWRdmMttz3": {
    "codes": [],
@@ -3386,45 +4115,95 @@
    "unmapped": true
   },
   "qstnprt_NvFRcghsz7SpTvXt": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_P2JDDBc9BfmdM56N": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_P5fj4GHdrvmZvjTg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_PBXGgZcSBhbZBq88": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_PKkh2FNKtcCxcSp7": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_PN2yTvVP5Gh6H6d2": {
    "codes": [],
@@ -3435,20 +4214,40 @@
    "unmapped": true
   },
   "qstnprt_PZnj5wJRs3XP2qc5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_PbYTwcYMfByhN7ny": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_PdWh44DpfM3hKYNc": {
    "codes": [],
@@ -3468,29 +4267,59 @@
    "unmapped": true
   },
   "qstnprt_Pv62zJWVpRbwMrzM": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_PvFvNV2Kjv8p3W7P": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_PvzvfwXK2Pgymm42": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Q3629gYPZzN4vsy9": {
    "codes": [],
@@ -3510,13 +4339,23 @@
    "unmapped": true
   },
   "qstnprt_QTsCG33654hxztCr": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_QXWZtqYv3sTvC9Fm": {
    "codes": [],
@@ -3527,22 +4366,42 @@
    "unmapped": true
   },
   "qstnprt_QXYPpgkGXMTHnqNg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.6",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.1.6",
+     "score": null,
+     "spineCode": "4.1.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Bbhv3NVYwZMwQ36Q",
     "spcpt_CHN4dxR59zVqrj7J"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_QqH8yXd8F2WPbq7b": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_QwZNpfBhnvtMM6Sk": {
    "codes": [],
@@ -3554,20 +4413,40 @@
    "unmapped": true
   },
   "qstnprt_Qyr94JmhjrrXPWgY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_R3GVfcFCzCdmcDX6": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_R3vyVkShndNJNYnF": {
    "codes": [],
@@ -3579,13 +4458,23 @@
    "unmapped": true
   },
   "qstnprt_RFWJQ8HYSgVcNwWC": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_RNsXMFBrPsTBD8CZ": {
    "codes": [],
@@ -3596,20 +4485,40 @@
    "unmapped": true
   },
   "qstnprt_Rggr7x9YqjDFs5df": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_RrVxzYd7K35QQWpH": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_RyKMSXVtCjz3NK69": {
    "codes": [],
@@ -3620,12 +4529,22 @@
    "unmapped": true
   },
   "qstnprt_Rzbh8FX9VzxMyZtW": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_S7psSHBVNb6wKvx2": {
    "codes": [],
@@ -3703,23 +4622,53 @@
    "unmapped": true
   },
   "qstnprt_SyxBqWtpPGf75btw": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_T3w5XpX45nsNRxxB",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_T8RcBRgm2TPrckrb": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_T3w5XpX45nsNRxxB",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_T9dgB9F62zxppMMS": {
    "codes": [],
@@ -3731,30 +4680,60 @@
    "unmapped": true
   },
   "qstnprt_T9hg5FF6X7VW5F7H": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_TNfTq6dMbPxBK57m": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_TXfYBvJgcv6vD6vq": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_TbtDnThpvyxGmnnS": {
    "codes": [],
@@ -3773,13 +4752,23 @@
    "unmapped": true
   },
   "qstnprt_TmVKjzDMxqfppRWN": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_T3w5XpX45nsNRxxB",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_TpxzqCcjtTpPcVyY": {
    "codes": [],
@@ -3791,31 +4780,71 @@
    "unmapped": true
   },
   "qstnprt_V3mBYbTd38xsZzWS": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_V4pWGX8bt8XY7cQM": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_T3w5XpX45nsNRxxB",
     "spcpt_Z7D4nHnFhnFrbVXx",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_V5FV6X9vSr5YwHQZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_V9z4DwJhjd6h5jXj": {
    "codes": [],
@@ -3834,14 +4863,24 @@
    "unmapped": true
   },
   "qstnprt_VFxRHRYz5kjSwqSH": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_hyPrsgjw24DC9kfJ",
     "spcpt_zCJ9d64JFdCCZvNF"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_VKxvqFxhV8cs6ngn": {
    "codes": [],
@@ -3869,12 +4908,22 @@
    "unmapped": true
   },
   "qstnprt_VbRYjz5ZRnfDyGyZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_VcTDxNvSQ3rDxRc2": {
    "codes": [],
@@ -3886,12 +4935,22 @@
    "unmapped": true
   },
   "qstnprt_VfGZvgKpdsJgGNtn": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_VhGQwb66sjJbd443": {
    "codes": [],
@@ -3911,20 +4970,40 @@
    "unmapped": true
   },
   "qstnprt_VtcrRkzdKbNmbCD3": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.3",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.3",
+     "score": null,
+     "spineCode": "4.5.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_pj3GdcWqJzRMWZMz"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_VwDX6cXt4HWvZNpF": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_VxPdNtygNVcZPD48": {
    "codes": [],
@@ -3935,12 +5014,22 @@
    "unmapped": true
   },
   "qstnprt_W3888FHYXQsyCSpD": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_WNtbD8FHHqHm99st": {
    "codes": [],
@@ -3951,13 +5040,23 @@
    "unmapped": true
   },
   "qstnprt_WQHrWgKqkGz8MmpM": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_HKGykwT46zGnYKzK",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_WRdNN2fXtdv5d5Hk": {
    "codes": [],
@@ -3968,12 +5067,22 @@
    "unmapped": true
   },
   "qstnprt_WTsz8RDQGbb8JNkQ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Wb9K7MnT2ftCSgkw": {
    "codes": [],
@@ -3984,12 +5093,22 @@
    "unmapped": true
   },
   "qstnprt_WsqksPCXm2g39v8x": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Wv28DBKrzrSFzB64": {
    "codes": [],
@@ -4035,12 +5154,22 @@
    "unmapped": true
   },
   "qstnprt_XpdHTpqnGTYSsTfs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_XqMmymzX9XQ4Q4jb": {
    "codes": [],
@@ -4078,13 +5207,23 @@
    "unmapped": true
   },
   "qstnprt_Y4xXXhKR2F6cjZ2V": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_zCJ9d64JFdCCZvNF"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Y6fXY4YzVQXCdqrh": {
    "codes": [],
@@ -4129,12 +5268,22 @@
    "unmapped": true
   },
   "qstnprt_YR8TzpMr84K7ZSQm": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_YdjPHGxP4wbf5cjy": {
    "codes": [],
@@ -4162,13 +5311,23 @@
    "unmapped": true
   },
   "qstnprt_Yk9mfwVZM4DCKCDT": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_YkMxMgZHmPsqDKg3": {
    "codes": [],
@@ -4180,20 +5339,40 @@
    "unmapped": true
   },
   "qstnprt_YpFPD8GZcNWvcQvF": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Yqwd67btqxDsPRZx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Yt9Vf9253qs6Pp5g": {
    "codes": [],
@@ -4239,13 +5418,23 @@
    "unmapped": true
   },
   "qstnprt_ZKQ8j6Dbz6fVwZQt": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_HKGykwT46zGnYKzK",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ZMhQkXGmx37DFJqX": {
    "codes": [],
@@ -4282,13 +5471,23 @@
    "unmapped": true
   },
   "qstnprt_bHPjgcKh7chBqVPz": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx",
     "spcpt_zCJ9d64JFdCCZvNF"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_bKYHgYNfGWn43rXv": {
    "codes": [],
@@ -4394,13 +5593,23 @@
    "unmapped": true
   },
   "qstnprt_cV6BBt4BJWpjyw9N": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_KSK3hXnJBMBQPbNm",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_cWCkCg8YH77ygJVt": {
    "codes": [],
@@ -4411,13 +5620,23 @@
    "unmapped": true
   },
   "qstnprt_cfxDCmSvJDpT5NBj": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ",
     "spcpt_zCJ9d64JFdCCZvNF"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ch7797kx3gDDPKpp": {
    "codes": [],
@@ -4446,13 +5665,23 @@
    "unmapped": true
   },
   "qstnprt_cv3JYSNhdtbsCngv": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_cwgmZgVzJRrN7gfM": {
    "codes": [],
@@ -4507,21 +5736,41 @@
    "unmapped": true
   },
   "qstnprt_dpdXCsZk9Frv6bqp": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.6",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.1.6",
+     "score": null,
+     "spineCode": "4.1.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Bbhv3NVYwZMwQ36Q",
     "spcpt_yr2yZKcDfgWfr86Y"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_dvdG65R7D9GpwCNz": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_f8WwqtBF3F7P6mTh": {
    "codes": [],
@@ -4541,20 +5790,40 @@
    "unmapped": true
   },
   "qstnprt_fRDBqGG4bqSX5Rdx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_fRwNJmwYgvyfT4dd": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_fSWKPZstjGJxf5hn": {
    "codes": [],
@@ -4575,12 +5844,22 @@
    "unmapped": true
   },
   "qstnprt_fn7ddXqqtYF92XQm": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_fnhPDmrMkCPjXwPm": {
    "codes": [],
@@ -4592,20 +5871,40 @@
    "unmapped": true
   },
   "qstnprt_fq9Pf67f3mXv5bdj": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ft4CSSwnMWphFKyj": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_fwMJ6TNZQyJXp3dB": {
    "codes": [],
@@ -4633,13 +5932,23 @@
    "unmapped": true
   },
   "qstnprt_g7VkskbNrK7gYrGp": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_gCZGz8HCNN63GdPp": {
    "codes": [],
@@ -4668,12 +5977,22 @@
    "unmapped": true
   },
   "qstnprt_gPMy5YqmyScCcyD5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.3",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.3",
+     "score": null,
+     "spineCode": "4.5.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_pj3GdcWqJzRMWZMz"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_gW9fYVnkJ5Znq9JF": {
    "codes": [],
@@ -4736,12 +6055,22 @@
    "unmapped": true
   },
   "qstnprt_hK3NY8BxbNjpMGZx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_hN7gPHm7YvjZShDY": {
    "codes": [],
@@ -4762,13 +6091,33 @@
    "unmapped": true
   },
   "qstnprt_hb3g5yfQ6vVWSwKs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.3",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.3",
+     "score": null,
+     "spineCode": "4.5.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ",
     "spcpt_pj3GdcWqJzRMWZMz"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_hdRgC8GSdkKJJPpz": {
    "codes": [],
@@ -4780,32 +6129,62 @@
    "unmapped": true
   },
   "qstnprt_hnW7mkc2gJgKsCzV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.6",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.1.6",
+     "score": null,
+     "spineCode": "4.1.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Bbhv3NVYwZMwQ36Q",
     "spcpt_CHN4dxR59zVqrj7J"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_hwQdFtBRdBrs3vkQ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_T3w5XpX45nsNRxxB",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_j33K8mwcxMNZG7Nk": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_H2rCPXxbhdRrYwvy",
     "spcpt_XFW9FFKtQHckyhBB",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_j3BcQWPcd8bDHgDc": {
    "codes": [],
@@ -4834,12 +6213,22 @@
    "unmapped": true
   },
   "qstnprt_j3y7BQ86JMyJkkq6": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_j4PrS4BCtftfB27q": {
    "codes": [],
@@ -4901,12 +6290,22 @@
    "unmapped": true
   },
   "qstnprt_jYQY77fmnHKjk7fQ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_jvgHrx6Mwg4YRtF7": {
    "codes": [],
@@ -4951,23 +6350,53 @@
    "unmapped": true
   },
   "qstnprt_kMFW85MmhBPWfCbW": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.3",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.3",
+     "score": null,
+     "spineCode": "4.5.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_hyPrsgjw24DC9kfJ",
     "spcpt_pj3GdcWqJzRMWZMz"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_kYCswnvF5bsZDwD7": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_kYn86Yzq45tGKXvY": {
    "codes": [],
@@ -5004,22 +6433,42 @@
    "unmapped": true
   },
   "qstnprt_m8j65Yddc7p8ZqVg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_mBq7csHbCZmQFpVN": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_mDhdbTb5NdvybzG8": {
    "codes": [],
@@ -5039,20 +6488,40 @@
    "unmapped": true
   },
   "qstnprt_mKfrr3JQNQGtDFFY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_mVCjNV4vRshjJxwd": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_mX47Rn2YZjTQRxNf": {
    "codes": [],
@@ -5082,13 +6551,23 @@
    "unmapped": true
   },
   "qstnprt_mZWhgJnR4wXDPp9k": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_mftvVmCx4Xd4Zf8y": {
    "codes": [],
@@ -5101,13 +6580,23 @@
    "unmapped": true
   },
   "qstnprt_mkw7vPTd5VphCvsZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3hQ5czf8zhQ7jNr8",
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_mwnf9N2nqDDSjgTq": {
    "codes": [],
@@ -5160,13 +6649,23 @@
    "unmapped": true
   },
   "qstnprt_nV2fbzRjzBQrbG3p": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_T3w5XpX45nsNRxxB"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_nY8xJsWfv9FpFjRh": {
    "codes": [],
@@ -5195,12 +6694,22 @@
    "unmapped": true
   },
   "qstnprt_ntB6HP6XqX49BtXc": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_p9np48QcfhVVzZNr": {
    "codes": [],
@@ -5220,12 +6729,22 @@
    "unmapped": true
   },
   "qstnprt_pQ6n7kRycpSgzHhv": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_psCGgc6yGBmQqkws": {
    "codes": [],
@@ -5297,22 +6816,42 @@
    "unmapped": true
   },
   "qstnprt_qdJjc3FbVwDSmpQd": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JqNkg4qXvkzKyC8N",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_qfXVYVPcbT4Gc9jc": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_T3w5XpX45nsNRxxB",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_qg8kCrxQQgZypbqG": {
    "codes": [],
@@ -5359,13 +6898,23 @@
    "unmapped": true
   },
   "qstnprt_qsrb2cST6yHQWYYZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ",
     "spcpt_zCJ9d64JFdCCZvNF"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_r2zNVFRzQW6F3rKq": {
    "codes": [],
@@ -5403,12 +6952,22 @@
    "unmapped": true
   },
   "qstnprt_rC6kNXZs48jpwSXB": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_rGrVpTQJDSKbhj6S": {
    "codes": [],
@@ -5419,21 +6978,41 @@
    "unmapped": true
   },
   "qstnprt_rJ2fYSgq22QdD9YQ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_rT5pQMSYR2wsQsS4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_rTCfyZjBKX7NDChN": {
    "codes": [],
@@ -5478,21 +7057,41 @@
    "unmapped": true
   },
   "qstnprt_s489CY8wJpjwwTP8": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_s9BF238QjrhK6HyM": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_sDKDKMMYjvQFYzXw": {
    "codes": [],
@@ -5545,13 +7144,23 @@
    "unmapped": true
   },
   "qstnprt_sT5fTH44fccwMCwS": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_zCJ9d64JFdCCZvNF"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_sc84sVkp8KsH6VSb": {
    "codes": [],
@@ -5630,14 +7239,24 @@
    "unmapped": true
   },
   "qstnprt_tj4RxZvqCMK9zFKY": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_HKGykwT46zGnYKzK",
     "spcpt_XFW9FFKtQHckyhBB",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_tjFqjB9HWRZGdCK6": {
    "codes": [],
@@ -5656,13 +7275,23 @@
    "unmapped": true
   },
   "qstnprt_ttvcjYqjbBzJ4fNS": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_tw7dTXFqdGp3xV4P": {
    "codes": [],
@@ -5717,13 +7346,23 @@
    "unmapped": true
   },
   "qstnprt_vhrkT2d6vPSQvXp4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_HKGykwT46zGnYKzK",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_vjT5SWwwCNvddJdX": {
    "codes": [],
@@ -5760,12 +7399,22 @@
    "unmapped": true
   },
   "qstnprt_w4zBNvnHjVmqhwsM": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_wJBBksjdDpy6Nwvt": {
    "codes": [],
@@ -5777,13 +7426,23 @@
    "unmapped": true
   },
   "qstnprt_wN74hwCN4RSkVCk9": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_wQzYrsRxSHdwpb85": {
    "codes": [],
@@ -5803,12 +7462,22 @@
    "unmapped": true
   },
   "qstnprt_wW5dXVGnSK7cvd3g": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_wWrSM7bfD4mtsByW": {
    "codes": [],
@@ -5820,21 +7489,41 @@
    "unmapped": true
   },
   "qstnprt_wWvW2qW9FcT6jmfy": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx",
     "spcpt_tJ3DwXWcR567CPy5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_wZz2xztwRW8mNJX6": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_wbpfMvKcZgr7DrJc": {
    "codes": [],
@@ -5854,13 +7543,23 @@
    "unmapped": true
   },
   "qstnprt_wqM7XnVPYD6Qhzhq": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JqNkg4qXvkzKyC8N",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ws6zCMjGSvB7T7ny": {
    "codes": [],
@@ -5879,22 +7578,42 @@
    "unmapped": true
   },
   "qstnprt_wxx2bkZzZtkmFCpV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_JqNkg4qXvkzKyC8N",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_wzp5ZtkxcTndPm2x": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VGGwQCfRXHbx69kG",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_x7JmVgGCpNQyGs38": {
    "codes": [],
@@ -5906,12 +7625,22 @@
    "unmapped": true
   },
   "qstnprt_xCHQPqcKXcJYrMFZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_xFhc4HWzsryVYqmS": {
    "codes": [],
@@ -5958,12 +7687,22 @@
    "unmapped": true
   },
   "qstnprt_xTVQm693Z9xMJf5k": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_xTWWp6PqXTFkSjpN": {
    "codes": [],
@@ -6009,13 +7748,23 @@
    "unmapped": true
   },
   "qstnprt_xw525MXCm2jJMghT": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_KSK3hXnJBMBQPbNm",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_y2DndMKGQhXYGmnN": {
    "codes": [],
@@ -6051,21 +7800,41 @@
    "unmapped": true
   },
   "qstnprt_yDcj9w9k4YkmZGWW": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_yDsJWPSRHjWPWmmx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_T3w5XpX45nsNRxxB"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_yG8CdqNxVYG2WYTr": {
    "codes": [],
@@ -6077,13 +7846,23 @@
    "unmapped": true
   },
   "qstnprt_ySRnB4WrDKq5pWQs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_f2XM2XNHqVGhXsnk",
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_yW6kRKRvN7cF5Fgh": {
    "codes": [],
@@ -6105,13 +7884,23 @@
    "unmapped": true
   },
   "qstnprt_ybr64n52Y294h5f4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2nK4hVYkKjxzPtT2",
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_yjpRwYvsgHzDxR9h": {
    "codes": [],
@@ -6140,12 +7929,22 @@
    "unmapped": true
   },
   "qstnprt_ywNsprdpHJykc69b": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_z4x6HKvZJBx6sJtS": {
    "codes": [],
@@ -6156,20 +7955,40 @@
    "unmapped": true
   },
   "qstnprt_z6C3VPbKQ2fzmmrk": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_zBK95bnhWjNTMBS2": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_zBXh6RHsQ3VpQz4k": {
    "codes": [],
@@ -6294,13 +8113,23 @@
    "unmapped": true
   },
   "rn_7vFZ9m4DpPc6jx37": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+     "score": null,
+     "spineCode": "4.5.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GNthPPh4KNTZpVMW",
     "spcpt_hyPrsgjw24DC9kfJ"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_CSV3cjq7Tx5C3PMQ": {
    "codes": [],
@@ -6368,13 +8197,23 @@
    "unmapped": true
   },
   "rn_QrMpYhnmmTTj8Jr5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.3",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.3",
+     "score": null,
+     "spineCode": "4.5.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_pj3GdcWqJzRMWZMz",
     "spcpt_zCJ9d64JFdCCZvNF"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_SzC3rKwDsSPSHrk9": {
    "codes": [],
@@ -6418,12 +8257,22 @@
    "unmapped": true
   },
   "rn_cdSkWFR3mwC9gGh2": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_w6WvWNXxQmC65FFg"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_cqCjSZfjJfWHYmht": {
    "codes": [],
@@ -6451,12 +8300,22 @@
    "unmapped": true
   },
   "rn_mzPqkVnhY8vM2m4X": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.5.4",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+     "score": null,
+     "spineCode": "4.5.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Z7D4nHnFhnFrbVXx"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_s8nz9JZjyMQsHmgc": {
    "codes": [],
@@ -6507,20 +8366,40 @@
    "unmapped": true
   },
   "rn_zn3cJdhFBDHTxQWf": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.6",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.1.6",
+     "score": null,
+     "spineCode": "4.1.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Bbhv3NVYwZMwQ36Q"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_zsB5MXbqYx9Gz92q": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.2.2",
+     "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+     "score": null,
+     "spineCode": "4.2.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_qjrGSfMRNrHFKFX5"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   }
  },
  "notesInlineRefs": {
@@ -6567,9 +8446,9 @@
  "qual": "cie-a-level-maths-2023-2025",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 2,
+  "distinctCodesAttached": 7,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 2,
+  "spineHitCodes": 7,
   "spineSpecPoints": 22,
   "uncoveredSpineCodeList": [
    "4.1.1",
@@ -6577,10 +8456,8 @@
    "4.1.3",
    "4.1.4",
    "4.1.5",
-   "4.1.6",
    "4.1.7",
    "4.2.1",
-   "4.2.2",
    "4.2.3",
    "4.2.4",
    "4.4.1",
@@ -6588,19 +8465,51 @@
    "4.4.3",
    "4.4.4",
    "4.5.1",
-   "4.5.2",
-   "4.5.3",
-   "4.5.4",
    "4.5.5"
   ],
-  "uncoveredSpineCodes": 20
+  "uncoveredSpineCodes": 15
  },
- "resourcesSha": "0c0f0e08045623dd9ae2cdca5bf5667330b83411",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 187,
+    "codesByMethod": {
+     "cie_index_rejoin_wave2as": 191
+    },
+    "codesByTier": {
+     "J4_name_phrase_identity": 191
+    },
+    "itemsWithCodes": 180,
+    "ladderCodesRetained": 2,
+    "sidAnchors": {
+     "added": 0,
+     "conflictsKept": 0,
+     "verified": 0
+    },
+    "sidecarCodes": 191,
+    "sidecarItems": 565,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 0
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": "ACCEPTED",
+    "state": "ACCEPTED",
+    "verdict": null
+   },
+   "sheetUpgrades": {
+    "added": 7,
+    "conflictsKept": 0,
+    "upgraded": 0
+   },
+   "sidecar": "spec-links/cie-as-maths-20-mechanics.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
@@ -6609,6 +8518,7 @@
    "ruleCounts": {
     "R5": 1
    },
+   "sidecarConsumed": true,
    "smeEntries": 36,
    "subtopicScoped": 1,
    "unmapped": 35
@@ -6623,7 +8533,99 @@
    "subtopicCode": "cie-a-level-maths-2023-2025-T4:SUB4.3"
   }
  },
- "spcptToOfficial": {},
+ "spcptToOfficial": {
+  "spcpt_Bbhv3NVYwZMwQ36Q": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "4.1.6",
+   "officialCodes": [
+    "4.1.6"
+   ],
+   "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.1.6",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_GNthPPh4KNTZpVMW": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "4.5.2",
+   "officialCodes": [
+    "4.5.2"
+   ],
+   "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_Z7D4nHnFhnFrbVXx": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "4.5.4",
+   "officialCodes": [
+    "4.5.4"
+   ],
+   "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.4",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_hyPrsgjw24DC9kfJ": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "4.5.2",
+   "officialCodes": [
+    "4.5.2"
+   ],
+   "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.2",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_pj3GdcWqJzRMWZMz": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "4.5.3",
+   "officialCodes": [
+    "4.5.3"
+   ],
+   "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.5.3",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_qjrGSfMRNrHFKFX5": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "4.2.2",
+   "officialCodes": [
+    "4.2.2"
+   ],
+   "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_w6WvWNXxQmC65FFg": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "4.2.2",
+   "officialCodes": [
+    "4.2.2"
+   ],
+   "officialId": "CIE_A_LEVEL_MATHS_2023_2025:4.2.2",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  }
+ },
  "spcptUnmapped": [
   "spcpt_2nK4hVYkKjxzPtT2",
   "spcpt_3hQ5czf8zhQ7jNr8",

@@ -20,13 +20,16 @@
   }
  },
  "course": "cie-igcse-science-combined-science-23-physics",
- "generatedUtc": "2026-10-25T00:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-science-combined-science-23-physics/spec_point_index.json": {
    "sha256": "a1db8e3826b6aaa555e38ae67ef4a850adfde18c1c323e15be627304b179ccba"
   },
   "scripts/cie_rejoin_resolutions.yaml": {
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
   },
   "spec-links/cie-igcse-science-combined-science-23-physics.json": {
    "sha256": "67031ec15416c9e38713e845cecb40df2c8730c043d0f6a0b4475ffffbadff20"
@@ -1897,7 +1900,7 @@
   ],
   "uncoveredSpineCodes": 50
  },
- "resourcesSha": "e481cb47ab6188310abe396cc3011bc5f9e67864",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -1930,7 +1933,8 @@
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": "ACCEPTED",
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": {
     "added": 0,

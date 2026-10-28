@@ -128,9 +128,16 @@ import build_official_content as BOC  # noqa: E402  (item_codes + SPCPT_RE reuse
 RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resources")
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
+# T-SPECS-CIE-CONSUME-2 run-001 (the JOIN-2 chain of record stage #3, operator
+# directive "verdict fills -> review gate -> v2 consume", trace
+# 1a183e66619bd6dd): the wave-2 AS lanes' re-join resolutions of record live
+# in the REJOIN-2 sheet — consumed as a second sheet input with per-sheet
+# via provenance; every other engine method untouched.
+SHEET2_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_wave2as_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "e481cb47ab6188310abe396cc3011bc5f9e67864"
-STAMP = "2026-10-25T00:00:00Z"
+PIN = "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677"
+STAMP = "2026-10-29T16:00:00Z"
+GATE_TRACE = "1a183e66619bd6dd"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
 RANK = {  # lower wins on the same (item, code) key
@@ -180,16 +187,20 @@ def sidecar_rank(entry):  # noqa: C901
 
 def load_sheet():
     import yaml
-    doc = yaml.safe_load(open(SHEET_PATH, encoding="utf8"))
     resolves, other = {}, defaultdict(int)
-    for v in doc["verdicts"]:
-        key = (v["lane"], v["id"])
-        if v["verdict"] == "resolve":
-            resolves[key] = v
-        else:
-            other[v["verdict"]] += 1
-    other["ambiguous"] = len(doc.get("ambiguous") or [])
-    return doc, resolves, dict(other)
+    for path, via in ((SHEET_PATH, "REJOIN-1:gate-1"),
+                      (SHEET2_PATH, "REJOIN-2:gate-2")):
+        doc = yaml.safe_load(open(path, encoding="utf8"))
+        for v in doc["verdicts"]:
+            key = (v["lane"], v["id"])
+            if v["verdict"] == "resolve":
+                if key in resolves:
+                    die(f"sheet resolve overlap {key}")
+                resolves[key] = dict(v, via=via)
+            else:
+                other[v["verdict"]] += 1
+        other["ambiguous"] += len(doc.get("ambiguous") or [])
+    return None, resolves, dict(other)
 
 
 def retraction_pairs(sd):
@@ -339,13 +350,13 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None,
             row["tier"] = v.get("tier")
             row["method"] = "cie_index_rejoin"
             row["lineage"] = L_SIDECAR
-            row["via"] = "REJOIN-1:gate-1"
+            row["via"] = v.get("via", "REJOIN-1:gate-1")
             sheet_upgraded += 1
         else:
             spcpt[sid] = OrderedDict(
                 officialId=v.get("official_id"), officialCode=code, officialCodes=[code],
                 unit=None, tier=v.get("tier"), method="cie_index_rejoin", score=None,
-                lineage=L_SIDECAR, via="REJOIN-1:gate-1")
+                lineage=L_SIDECAR, via=v.get("via", "REJOIN-1:gate-1"))
             sheet_added += 1
 
     # ---- sidecar operator sid-anchors -> spcptToOfficial ---------------------
@@ -406,6 +417,7 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None,
     inputs[f"spec-links/{slug}.json"] = OrderedDict(sha256=sha256_file(sc_path))
     if sheet_rows:
         inputs["scripts/cie_rejoin_resolutions.yaml"] = OrderedDict(sha256=sha256_file(SHEET_PATH))
+        inputs["scripts/cie_rejoin_wave2as_resolutions.yaml"] = OrderedDict(sha256=sha256_file(SHEET2_PATH))
 
     new_att["resourcesSha"] = PIN
     new_att["generatedUtc"] = STAMP
@@ -419,7 +431,8 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None,
                    "REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
         sidecar=f"spec-links/{slug}.json",
         reviewState=OrderedDict(state=sd["review_state"].get("state"),
-                                rejoin=(sd["review_state"].get("rejoin") or {}).get("state")),
+                                rejoin=(sd["review_state"].get("rejoin") or {}).get("state"),
+                                verdict=(sd["review_state"].get("verdict") or {}).get("state")),
         census=OrderedDict(
             codesByTier=dict(sorted(tier_census.items())), codesByMethod=dict(sorted(method_census.items())),
             sidecarItems=len(sd["items"]), itemsWithCodes=len([1 for it in sd["items"].values() if it.get("codes")]),
@@ -729,10 +742,11 @@ def main() -> int:
     import yaml  # noqa: F401  (asserted available)
     sheet_doc, sheet_resolves, sheet_other = load_sheet()
     print(f"sheet: resolves={len(sheet_resolves)} other={sheet_other}", flush=True)
-    if len(sheet_resolves) != 634:
-        die(f"sheet resolves {len(sheet_resolves)} != 634")
-    if sheet_other.get("quarantine", 0) + sum(v for k, v in sheet_other.items() if k != "quarantine") != 166:
-        die(f"sheet non-resolve {sheet_other} != 166 quarantines")
+    if len(sheet_resolves) != 758:
+        die(f"sheet resolves {len(sheet_resolves)} != 758 (634 REJOIN-1 + "
+            f"124 REJOIN-2)")
+    if sheet_other.get("quarantine", 0) + sum(v for k, v in sheet_other.items() if k != "quarantine") != 200:
+        die(f"sheet non-resolve {sheet_other} != 200 quarantines (166 + 34)")
 
     registry = load_json(os.path.join(HUB, "content", "courses.json"))
     reg_rows = {r["slug"]: r for r in (registry["courses"] if isinstance(registry, dict) else registry)}
@@ -846,26 +860,18 @@ def main() -> int:
 
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
-        lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-003 (operator order 'Ok proceed', "
-                           "trace 1a17484361a63449) — the third pin-vintage rung: the resources "
-                           "tip moved 09842f9f -> e481cb47 (~26 commits across three observed "
-                           "vintages: T-BOOK-054 u3:c21 and T-BOOK-055 u4:c22 authoring+flips, "
-                           "UGM lanes 11/12 corpora "
-                           "+ enrichments, converter v0.17.0-v0.17.3, the wave-24 G8 fixes, "
-                           "BL-008 waves, SIB v1.2.2, the physics PUA tranche, then in-run the "
-                           "T-BOOK-056 u4:c23 wave + the UGM lane-12 amendments/restore "
-                           "(22543473..64f45861), then BL-008 pass 4 "
-                           "(64f45861..e481cb47)) with "
-                           "consumed-input delta ZERO — spec-links/ tree-identical (95 "
-                           "files at both pins), rejoin sheet blob-identical 2bcd4db3. "
-                           "THIS run is the quiescent pin-vintage convergence of the fleet at "
-                           "e481cb47 (the run-006/007/001/002 shape on a moved vintage): 44/44 "
-                           "re-keys, every consumed counter byte-equal to the run-002 floors, "
-                           "resourcesSha the only map move (stamp unchanged 2026-10-25T00:00:00Z), "
-                           "manifest officialSpine.resourcesSha the only bundle move; the pin "
-                           "moves WITH the of-record (fa7ede6/0c8892d precedent)"),
-        gatewayTrace="1a17484361a63449",
+        lane="T-SPECS-CIE-CONSUME-2",
+        operatorDirective=("T-SPECS-CIE-CONSUME-2 run-001 (operator directive "
+                           "'verdict fills -> review gate -> v2 consume', trace "
+                           "1a183e66619bd6dd) — the JOIN-2 chain of record stage "
+                           "#3: the gate-2 ACCEPTED wave-2 AS chain (JOIN-2 "
+                           "anchors + REJOIN-2 J* + VERDICT-2 V*) consumed into "
+                           "the hub attachment layer and bundles; engine method "
+                           "untouched except the disclosed per-run states (PIN/"
+                           "STAMP/directive/trace) + the second sheet input "
+                           "(REJOIN-2 wave2as, per-sheet via provenance) + the "
+                           "reviewState verdict mirror"),
+        gatewayTrace=GATE_TRACE,
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),

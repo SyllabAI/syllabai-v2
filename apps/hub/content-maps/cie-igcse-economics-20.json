@@ -20,13 +20,16 @@
   }
  },
  "course": "cie-igcse-economics-20",
- "generatedUtc": "2026-10-25T00:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-economics-20/spec_point_index.json": {
    "sha256": "40f3b4d19b1ea01f6ecc5dff242340315520c507f9ac71f870990a80a1899fd2"
   },
   "scripts/cie_rejoin_resolutions.yaml": {
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
   },
   "spec-links/cie-igcse-economics-20.json": {
    "sha256": "e9dd751b398ad4c8e863e60289f3264cffaaed64eb1f85b04fcda56d40ee2ad3"
@@ -14124,7 +14127,7 @@
   ],
   "uncoveredSpineCodes": 55
  },
- "resourcesSha": "e481cb47ab6188310abe396cc3011bc5f9e67864",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -14159,7 +14162,8 @@
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": "ACCEPTED",
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": {
     "added": 0,
