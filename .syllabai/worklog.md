@@ -22212,3 +22212,18 @@ Work Log:
 - PAT rotation standing order REITERATED (CRITICAL-OVERDUE).
 Stage Summary:
 - Both resources landings of the chain stand of record with CI receipts disclosed; the inherited G-E1 red is owned by the F114 disclosure plane, with the one-line cure named and the gate's own instruction quoted of record. LANE: the chain awaits PR #439's merge for the v2 consume plane; prod-apply remains operator-gated.
+
+Task ID: T-SPEC-CORPUS-WS-1 run-001 (geography-21 1.4.1 upstream corpus artifact — resources-side fix per pin law, operator order trace 1a1843ea991a3481)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+
+Task: Execute the T-SPEC-QA-TREE-1 sibling filed follow-up — fix the geography-21 1.4.1 leading-space extraction artifact UPSTREAM in syllabai-resources (v2 corpus stays spine-verbatim per pin law).
+
+Work Log:
+- Lineage traced first-hand: v2 manifest.importSource = main@340803c9 (the T-SPECS-9696-4HI1 r0 parse landing — that parked specs-import order is DONE, landed, and pinned); upstream artifact localized to Official-Specifications/parsed/cie-a-level-geography-2025-2026/664556-2025-2026-syllabus.parsed.json spec_points[14]/text (official_code 1.4.1).
+- ROOT CAUSE reproduced (parser instrumented): the 9696 PDF text layer embeds \x07 BEFORE a space at the line head; _mk received '\x07 Modifications...' verbatim; the SENTENCE_SPLIT control-glyph post-block (340803c9) removed the glyph but stranded the following space at the text edge.
+- CENSUS ground truth: all 82 resources parsed stores — exactly 1 edge-whitespace hit (this artifact); all 106 v2 curricula — exactly 1 hit (the consumed copy). Footprint precisely the filed artifact, nothing else.
+- FIX (resources @ a0b10aac, transit 48, three-way verified, 2 files +17/-7): SENTENCE_SPLIT post-block now strips the stranded edge whitespace after glyph removal, disclosed via new 'edge-whitespace-stripped' flag (control-glyph-stripped retained); sub_items get the same pass (census-proven no-op). Deterministic re-parse reproduces the committed store byte-exactly ex-parsed_utc with exactly one point differing (1.4.1); counts 167/14/56 unchanged; parse_report byte-identical; _summary byte-identical (restored — CLI partial-run summary rewrite drops sibling CIE rows: DISCLOSED hazard).
+- GATES: diff-scope exactly 2 files; cie_parse_check.py verdict-set IDENTICAL to pristine origin/main (C1-C5/C7-C9 PASS; C6+C10 FAIL pre-exist — checker hardcodes pre-r0 56/33-row expectations vs actual 58 and a pre-r0 absolute-path scratch backup; zero new failures — checker staleness FILED for checker owners); battery GREEN (scripts/ws_gates.py).
+- v2 side NOT touched (pin law): the consumed cut stays honest until a re-import lane bumps geography-21's manifest ref; both render planes (spec explorer normalizeSpecText + kg normalize_display_text) already trim on display.
+- Session continuity note: sandbox recycled mid-lane-turn once more (lane worktrees + scratch lost, origin authoritative state intact throughout; local ledger mirrors restored from durable).
+- fetch-first, no force, zero DB contact; PAT rotation CRITICAL-OVERDUE (transits 48+49 this lane, same fingerprint — rotation REQUIRED before any re-supply).
