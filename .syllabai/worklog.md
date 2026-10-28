@@ -22160,3 +22160,14 @@ Work Log:
 
 Stage Summary:
 - THE JOIN-2 CHAIN OF RECORD IS CLOSED END-TO-END: verdict fills (18 V3) -> review gate (191/191, ACCEPTED) -> v2 consume (12,768 codes attached, 7 anchor-gap banks serving 1,063 previously-unreachable questions, pure-2 + the english-language pair the honest zeros) — the learner-UI consumption surface of record for the 8 wave-2 AS banks at CIE pin 20a35ccc6. Residuals: prod-apply posture operator-gated; the REJOIN-2 in-item duplicates sidecar repair (rejoin owners, one line); PAT rotation CRITICAL-OVERDUE standing order.
+
+---
+Task ID: T-SPECS-CIE-VERDICT-2/GATE-2 addendum — resources CI receipts + inherited-red disclosure (same operator directive trace 1a183e66619bd6dd)
+Agent: main (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Work Log:
+- resources CI receipts, bounded polls: the verdict (b97a80c72) and gate (20a35ccc6) commits' runs both complete with official-export-gates FAILURE and corpus-gates/sync CANCELLED (concurrency fail-fast); every pre-existing run in the window (251b46ba parent, F114 e56e04b0 itself) shows cancelled/empty — the failing gate state was NEVER exercised before this chain's landings.
+- INHERITED-RED ROOT-CAUSE (job log read first-hand via the check-run logs channel): "EXPORT GATE FAILED — G-E1: harness delta census (0 parts) != disclosure of record (10 parts, scripts/exporter-disclosures/2026-10-29-run017-t3-corpus-reconcile.json)". The F114 corpus-sync lane (e56e04b04) reconciled corpus := the plane of record, driving the NEXT exporter run's delta to 0, while its own filed disclosure still demands 10 parts — the G-E1 gate refuses exactly per its law ("disclosed-class drift outside the filed census refuses; regenerate the disclosure only after eyeballing every class"). This chain's deltas (spec-links sidecars + manifest additive) have ZERO export-harness contact; the red is the F114 disclosure-vs-state race, not a chain defect.
+- Disposition per the lane discipline (the REJOIN-2 addendum's inherited-red precedent): DISCLOSED for the F114/OEQ-MATHSB owners — NOT repaired here, no blind disclosure regeneration, the export-disclosure plane is that lane's. Cure = the owners file the follow-up 0-part no-op disclosure after eyeballing every class; the gate then passes on the reconciled state of record. The v2 lane (PR #439) is independent of resources CI (its own verify+hub).
+- PAT rotation standing order REITERATED (CRITICAL-OVERDUE).
+Stage Summary:
+- Both resources landings of the chain stand of record with CI receipts disclosed; the inherited G-E1 red is owned by the F114 disclosure plane, with the one-line cure named and the gate's own instruction quoted of record. LANE: the chain awaits PR #439's merge for the v2 consume plane; prod-apply remains operator-gated.
