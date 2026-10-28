@@ -1,15 +1,376 @@
 {
- "schemaVersion": "glm-ocr-ms-v1+adr040-g1-tranche",
- "extractionMethod": "textlayer-tables-adr040-g1-cie-r1 (deterministic parse: inline partial-levels groups on the text layer + bbox-coordinate parse of Level|Descriptors|Mark tables and AO matrices; NOT GLM-OCR — full parser pass remains of record for ingest)",
+ "schemaVersion": "glm-ocr-ms-v1+adr040-g3-cie9609-r1",
+ "extractionMethod": "textlayer-tables-adr040-g3-cie9609-r1 (deterministic PyMuPDF word-geometry parse; grammars C-AO-matrix / C1-two-axis / C-multi-axis / D-prose / E-unlabeled per the committed parser; multi-axis rows keep per-axis cells verbatim; dash-normalized only; cross-page pending merge; fail-closed tiling oracles; single-axis bottom 0/1, top == entry marks)",
  "reviewRequired": true,
  "paper": {
   "code": "9609",
   "session": "2022-06",
   "paper": "9609-S22-QP-22",
-  "repo_path": "past-papers/cambridge-international/ial/business/9609/past-papers/2022-06/9609-S22-QP-22"
+  "repo_path": "past-papers/cambridge-international/ial/business/9609/past-papers/2022-06/9609-S22-QP-22",
+  "source_pdf": "9609_s22_ms_22.pdf"
  },
- "entries": [],
+ "entries": [
+  {
+   "entryId": null,
+   "label": "1(b)(ii)",
+   "number": 1,
+   "qwc": false,
+   "mcq": false,
+   "correctOption": null,
+   "answerText": null,
+   "markPoints": [],
+   "guidance": [],
+   "marks": 2,
+   "marksCellSource": "ao-matrix-level-table",
+   "bandGrammar": "C1-two-axis",
+   "axes": [
+    {
+     "name": "Knowledge",
+     "max": 2
+    },
+    {
+     "name": "Application",
+     "max": 0
+    }
+   ],
+   "bandRows": [
+    {
+     "levelLabel": "2",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "Explanation of one problem of allocating fixed costs in context",
+        "raw": "2"
+       },
+       {
+        "marksMin": null,
+        "marksMax": null,
+        "descriptor": null,
+        "raw": ""
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "1",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "Identification of one problem of allocating fixed costs",
+        "raw": "1"
+       },
+       {
+        "marksMin": null,
+        "marksMax": null,
+        "descriptor": null,
+        "raw": ""
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "0",
+     "isNCC": true,
+     "subRows": [
+      [
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable content",
+        "raw": "0"
+       },
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable content",
+        "raw": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "confidence": 0.9,
+   "parseNotes": [
+    "axis_max_from_body_reachable (header printed no per-axis marks)"
+   ]
+  },
+  {
+   "entryId": null,
+   "label": "1(c)",
+   "number": 1,
+   "qwc": false,
+   "mcq": false,
+   "correctOption": null,
+   "answerText": null,
+   "markPoints": [],
+   "guidance": [],
+   "marks": 8,
+   "marksCellSource": "ao-matrix-level-table",
+   "bandGrammar": "C1-two-axis",
+   "axes": [
+    {
+     "name": "Knowledge Application",
+     "max": 4
+    },
+    {
+     "name": "Analysis",
+     "max": 4
+    }
+   ],
+   "bandRows": [
+    {
+     "levelLabel": "2b",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 4,
+        "marksMax": 4,
+        "descriptor": "Shows understanding of two stakeholders in context",
+        "raw": "4"
+       },
+       {
+        "marksMin": 4,
+        "marksMax": 4,
+        "descriptor": "Good analysis of the impact of the APP decision to stop selling the small + APP box size on two stakeholders of FP",
+        "raw": "4"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "2a",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 3,
+        "marksMax": 3,
+        "descriptor": "Shows understanding of one stakeholder in context",
+        "raw": "3"
+       },
+       {
+        "marksMin": 3,
+        "marksMax": 3,
+        "descriptor": "Good analysis of the impact of the decision to stop APP selling the small box size on one stakeholder of FP",
+        "raw": "3"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "1b",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "Shows knowledge of two stakeholders",
+        "raw": "2"
+       },
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "Limited analysis of the impact of K stopping selling a + K product on two stakeholders",
+        "raw": "2"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "1a",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "Shows knowledge of one stakeholder",
+        "raw": "1"
+       },
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "Limited analysis of the impact of stopping selling a K product on one stakeholder",
+        "raw": "1"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "0",
+     "isNCC": true,
+     "subRows": [
+      [
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable content",
+        "raw": "No creditable"
+       },
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable content",
+        "raw": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "confidence": 0.9,
+   "parseNotes": [
+    "axis_max_from_body_reachable (header printed no per-axis marks)"
+   ]
+  },
+  {
+   "entryId": null,
+   "label": "2(b)(ii)",
+   "number": 2,
+   "qwc": false,
+   "mcq": false,
+   "correctOption": null,
+   "answerText": null,
+   "markPoints": [],
+   "guidance": [],
+   "marks": 4,
+   "marksCellSource": "ao-matrix-level-table",
+   "bandGrammar": "C1-two-axis",
+   "axes": [
+    {
+     "name": "Knowledge",
+     "max": 4
+    },
+    {
+     "name": "Application",
+     "max": 0
+    }
+   ],
+   "bandRows": [
+    {
+     "levelLabel": "2b",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 4,
+        "marksMax": 4,
+        "descriptor": "Explanation of two limitations of using break-even analysis in context",
+        "raw": "4"
+       },
+       {
+        "marksMin": null,
+        "marksMax": null,
+        "descriptor": null,
+        "raw": ""
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "2a",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 3,
+        "marksMax": 3,
+        "descriptor": "Explanation of one limitation of using break- even analysis in context",
+        "raw": "3"
+       },
+       {
+        "marksMin": null,
+        "marksMax": null,
+        "descriptor": null,
+        "raw": ""
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "1b",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "Knowledge of two limitations of using break- even analysis",
+        "raw": "2"
+       },
+       {
+        "marksMin": null,
+        "marksMax": null,
+        "descriptor": null,
+        "raw": ""
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "1a",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "Knowledge of one limitation of using break- even analysis",
+        "raw": "1"
+       },
+       {
+        "marksMin": null,
+        "marksMax": null,
+        "descriptor": null,
+        "raw": ""
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "0",
+     "isNCC": true,
+     "subRows": [
+      [
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable content",
+        "raw": "0"
+       },
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable content",
+        "raw": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "confidence": 0.9,
+   "parseNotes": [
+    "axis_max_from_body_reachable (header printed no per-axis marks)"
+   ]
+  }
+ ],
  "parseNotes": [
-  "levelStructureDetected: inlineRangeGroups=0, levelDescriptorsMarkTables=0, aoMatrixHeaders=0 (detection-only this tranche), evalLevelRows=0"
+  "tables_C1-two-axis=3",
+  "errors=1",
+  "error: p25 2(c) [table] axis max sum 4 != marks 8",
+  "marks_fallback_notes=[]"
+ ],
+ "reviewEvidence": [
+  "deterministic word-geometry parse (textlayer-tables-adr040-g3-cie9609-r1, the committed adr040-g3-cie9609-corpus-r0.parse.py), fail-closed oracles: single-axis tiling (bottom 0/1, contiguous, top == entry marks), multi-axis per-axis reach + sum(axis max) == entry marks, level labels strictly descending with 2b/2a sub-level support, NCC unified to the printed phrase",
+  "verbatim law: descriptors byte-faithful from the text layer (dash-normalized only)",
+  "aggregates of record: 105 papers, 295 entries, 2895 band rows (93 single-axis + 2802 multi-axis per-axis cells), 72 band-bearing papers — exact match to the of-record summary",
+  "multi-axis grids carry axes[] + bandRows[] per-axis cells VERBATIM (F2 of the 9609 G-3 receipt); they are NOT tilable into the single-axis mark_bands schema and are held from the LEVELS birth pending the per-axis schema lane"
  ]
 }

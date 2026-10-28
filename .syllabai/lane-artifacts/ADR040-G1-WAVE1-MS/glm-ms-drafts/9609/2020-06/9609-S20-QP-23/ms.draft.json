@@ -1,15 +1,281 @@
 {
- "schemaVersion": "glm-ocr-ms-v1+adr040-g1-tranche",
- "extractionMethod": "textlayer-tables-adr040-g1-cie-r1 (deterministic parse: inline partial-levels groups on the text layer + bbox-coordinate parse of Level|Descriptors|Mark tables and AO matrices; NOT GLM-OCR — full parser pass remains of record for ingest)",
+ "schemaVersion": "glm-ocr-ms-v1+adr040-g3-cie9609-r1",
+ "extractionMethod": "textlayer-tables-adr040-g3-cie9609-r1 (deterministic PyMuPDF word-geometry parse; grammars C-AO-matrix / C1-two-axis / C-multi-axis / D-prose / E-unlabeled per the committed parser; multi-axis rows keep per-axis cells verbatim; dash-normalized only; cross-page pending merge; fail-closed tiling oracles; single-axis bottom 0/1, top == entry marks)",
  "reviewRequired": true,
  "paper": {
   "code": "9609",
   "session": "2020-06",
   "paper": "9609-S20-QP-23",
-  "repo_path": "past-papers/cambridge-international/ial/business/9609/past-papers/2020-06/9609-S20-QP-23"
+  "repo_path": "past-papers/cambridge-international/ial/business/9609/past-papers/2020-06/9609-S20-QP-23",
+  "source_pdf": "9609_s20_ms_23.pdf"
  },
- "entries": [],
+ "entries": [
+  {
+   "entryId": null,
+   "label": "1(c)",
+   "number": 1,
+   "qwc": false,
+   "mcq": false,
+   "correctOption": null,
+   "answerText": null,
+   "markPoints": [],
+   "guidance": [],
+   "marks": 8,
+   "marksCellSource": "ao-matrix-level-table",
+   "bandGrammar": "C1-two-axis",
+   "axes": [
+    {
+     "name": "Knowledge Application",
+     "max": 4
+    },
+    {
+     "name": "Analysis",
+     "max": 4
+    }
+   ],
+   "bandRows": [
+    {
+     "levelLabel": "2b",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 4,
+        "marksMax": 4,
+        "descriptor": "factors which may determine location in context Shows understanding",
+        "raw": "4"
+       },
+       {
+        "marksMin": 4,
+        "marksMax": 4,
+        "descriptor": "determine location in context Good analysis of one",
+        "raw": "4"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "2a",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 3,
+        "marksMax": 3,
+        "descriptor": "of one factor that may determine location in context Shows knowledge of",
+        "raw": "3"
+       },
+       {
+        "marksMin": 3,
+        "marksMax": 3,
+        "descriptor": "factor that may determine location in context Limited analysis of two",
+        "raw": "3"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "1b",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "two (or more) factors which may determine location Shows knowledge of",
+        "raw": "2"
+       },
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "(or more) factors which may determine location Limited analysis of one",
+        "raw": "2"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "1a",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "one factor that may determine location",
+        "raw": "1"
+       },
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "factor that may determine location",
+        "raw": "1"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "0",
+     "isNCC": true,
+     "subRows": [
+      [
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable content",
+        "raw": "No creditable"
+       },
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable content",
+        "raw": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "confidence": 0.9
+  },
+  {
+   "entryId": null,
+   "label": "2(c)",
+   "number": 2,
+   "qwc": false,
+   "mcq": false,
+   "correctOption": null,
+   "answerText": null,
+   "markPoints": [],
+   "guidance": [],
+   "marks": 8,
+   "marksCellSource": "ao-matrix-level-table",
+   "bandGrammar": "C1-two-axis",
+   "axes": [
+    {
+     "name": "Knowledge Application",
+     "max": 4
+    },
+    {
+     "name": "Analysis",
+     "max": 4
+    }
+   ],
+   "bandRows": [
+    {
+     "levelLabel": "2b",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 4,
+        "marksMax": 4,
+        "descriptor": "of just in time inventory control in context Shows understanding",
+        "raw": "4"
+       },
+       {
+        "marksMin": 4,
+        "marksMax": 4,
+        "descriptor": "disadvantages of Just in Time inventory control in context Good analysis of one",
+        "raw": "4"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "2a",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 3,
+        "marksMax": 3,
+        "descriptor": "of inventory control in context Shows knowledge of",
+        "raw": "3"
+       },
+       {
+        "marksMin": 3,
+        "marksMax": 3,
+        "descriptor": "disadvantage of Just in Time inventory control in context Limited analysis of two",
+        "raw": "3"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "1b",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "Just in Time inventory control Shows knowledge of",
+        "raw": "2"
+       },
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "disadvantages of Just in Time inventory control Limited analysis of one",
+        "raw": "2"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "1a",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "inventory control",
+        "raw": "1"
+       },
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "disadvantage of Just in Time inventory control",
+        "raw": "1"
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "0",
+     "isNCC": true,
+     "subRows": [
+      [
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable content",
+        "raw": "creditable"
+       },
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable content",
+        "raw": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "confidence": 0.9
+  }
+ ],
  "parseNotes": [
-  "levelStructureDetected: inlineRangeGroups=0, levelDescriptorsMarkTables=0, aoMatrixHeaders=1 (detection-only this tranche), evalLevelRows=0"
+  "tables_C1-two-axis=2",
+  "errors=2",
+  "error: p5 1(b)(ii) [table] axis 0 level 2: descriptor without marks ('')",
+  "error: p9 2(b)(ii) [table] axis 0 level 2b: descriptor without marks ('')",
+  "marks_fallback_notes=[]"
+ ],
+ "reviewEvidence": [
+  "deterministic word-geometry parse (textlayer-tables-adr040-g3-cie9609-r1, the committed adr040-g3-cie9609-corpus-r0.parse.py), fail-closed oracles: single-axis tiling (bottom 0/1, contiguous, top == entry marks), multi-axis per-axis reach + sum(axis max) == entry marks, level labels strictly descending with 2b/2a sub-level support, NCC unified to the printed phrase",
+  "verbatim law: descriptors byte-faithful from the text layer (dash-normalized only)",
+  "aggregates of record: 105 papers, 295 entries, 2895 band rows (93 single-axis + 2802 multi-axis per-axis cells), 72 band-bearing papers — exact match to the of-record summary",
+  "multi-axis grids carry axes[] + bandRows[] per-axis cells VERBATIM (F2 of the 9609 G-3 receipt); they are NOT tilable into the single-axis mark_bands schema and are held from the LEVELS birth pending the per-axis schema lane"
  ]
 }
