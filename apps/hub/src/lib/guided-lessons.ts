@@ -60,6 +60,10 @@ export interface GuidedImportIndex {
     distractors: number;
     glossaryTerms: number;
     authored_chars_conserved: number;
+    /** Figures census (figures-0.2 generation, additive). */
+    figures?: number;
+    figures_module_mapped?: number;
+    figures_note_level?: number;
   };
   landing: {
     lessons_rel: string;
@@ -91,6 +95,9 @@ export interface GuidedLessonImport {
     specAnchors: { code: string; text: string }[];
     primer: { text: string; prerequisiteSubtopic: string | null };
     modules: GuidedModule[];
+    /** Figures layer (hub/lesson-import/1.1, additive): the parent revision note's own
+     *  diagrams, mapped deterministically upstream; absent in the 1.0 generation. */
+    figures?: GuidedFigure[];
     assets: {
       glossary: { term: string; definition: string; firstLesson: number }[];
       workedExample?: {
@@ -121,6 +128,9 @@ export interface GuidedModule {
     postCheckRecalibration: boolean;
   };
   checkRefs: string[];
+  /** Figures layer (additive): ids of this module's claimed figures; resolves in
+   *  lesson.figures (closure import-gated both ways). */
+  figureIds?: string[];
 }
 
 export interface GuidedDepthLayer {
@@ -128,6 +138,22 @@ export interface GuidedDepthLayer {
   analogy: string;
   examPointer: string;
 }
+
+/** NOTE: the resolver helpers (figuresForModule / noteLevelFigures) live in
+ *  lib/guided-figures.ts — client-safe, no server-only import.
+
+/** One figure of the figures layer (hub/lesson-import/1.1): the parent revision
+ *  note's own asset (sourcing decision of record — zero new hosting), with the
+ *  nearest preceding note heading as provenance and the claiming lessons as
+ *  L-ordinals (empty = note-level figure, page-fallback only). */
+export interface GuidedFigure {
+  id: string;
+  url: string;
+  alt: string;
+  sourceHeading: string;
+  moduleIds: string[];
+}
+
 
 /** sme-question-package/1.0 — the checks that back a lesson's checkRefs. */
 export interface GuidedQuestionPackage {

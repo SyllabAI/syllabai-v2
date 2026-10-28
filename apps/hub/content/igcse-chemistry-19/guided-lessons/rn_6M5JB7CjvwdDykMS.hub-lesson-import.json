@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_6M5JB7CjvwdDykMS",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "12ac238bfd47f80b9969aee04bcaddd2e369136daef71e5f82813b340dba0530",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "8d25a56a87b45a1ce66e3bf3cd02f57b4d34b12d34b2ce43e5fd057ac1c545ac",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_6M5JB7CjvwdDykMS",
@@ -74,6 +74,9 @@
           "rn_6M5JB7CjvwdDykMS::L1::Q3",
           "rn_6M5JB7CjvwdDykMS::L1::Q4",
           "rn_6M5JB7CjvwdDykMS::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -121,6 +124,9 @@
           "rn_6M5JB7CjvwdDykMS::L2::Q3",
           "rn_6M5JB7CjvwdDykMS::L2::Q4",
           "rn_6M5JB7CjvwdDykMS::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -153,6 +159,26 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/cc99152418ea-pie-chart-showing-composition-of-air.png",
+        "alt": "Pie chart showing composition of the atmosphere",
+        "sourceHeading": "The composition of the atmosphere",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/5eae7623f887-oxygen-in-air-using-combustion.png",
+        "alt": "Oxygen in air using combustion, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Finding the percentage of oxygen",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

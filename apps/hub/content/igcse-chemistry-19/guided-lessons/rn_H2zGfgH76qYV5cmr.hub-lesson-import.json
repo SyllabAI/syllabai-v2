@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_H2zGfgH76qYV5cmr",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e5724f0ed4e299e3cdc8943dc0b4e1a4b2aeeb990393236365fe86d39bad0b6a",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "0f2799c4b9dfc734b9cad075a4b132b51fd7c656f4e105aebf8a21156a8e5d11",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_H2zGfgH76qYV5cmr",
@@ -130,6 +130,13 @@
           "rn_H2zGfgH76qYV5cmr::L2::Q3",
           "rn_H2zGfgH76qYV5cmr::L2::Q4",
           "rn_H2zGfgH76qYV5cmr::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04",
+          "fig-05"
         ]
       }
     ],
@@ -162,6 +169,53 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c905b447320d-ethene.png",
+        "alt": "ethene",
+        "sourceHeading": "Table of alkenes",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b9fdeaaf358a-propene.png",
+        "alt": "propene",
+        "sourceHeading": "Table of alkenes",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3bd75c6173ba-but-1-ene.png",
+        "alt": "but-1-ene",
+        "sourceHeading": "Table of alkenes",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/e3ee45ddd9ca-pent-1-ene.png",
+        "alt": "pent-1-ene",
+        "sourceHeading": "Table of alkenes",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a57dcf5ee1ea-double-bond-opening.png",
+        "alt": "Double Bond Opening, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Table of alkenes",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

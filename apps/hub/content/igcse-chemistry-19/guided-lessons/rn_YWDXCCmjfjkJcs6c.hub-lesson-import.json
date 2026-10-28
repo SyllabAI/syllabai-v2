@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_YWDXCCmjfjkJcs6c",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "70119e84395e4e4f459780f4c551905f3c1bb0206b26a5b9916b07031f8c800e",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "4d642b5210e1448c6e129bd1e010583a161c7ae646db871be2849cc26b3b3eed",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_YWDXCCmjfjkJcs6c",
@@ -73,6 +73,9 @@
           "rn_YWDXCCmjfjkJcs6c::L1::Q3",
           "rn_YWDXCCmjfjkJcs6c::L1::Q4",
           "rn_YWDXCCmjfjkJcs6c::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -152,6 +155,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/33049bad4b31-copper-sulfate-crystals.png",
+        "alt": "copper sulfate crystals",
+        "sourceHeading": "Chemical test for water",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
   }
 }

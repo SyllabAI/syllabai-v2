@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_qV5R2cKB59bSKD33",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "820cc88fe0cbbd6da9ff94ea780d39c13d6ff96f301f0d6113507356b11571ec",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "510b89ca36b622a3f584265ac59129b39b4a19e59b1fd55ab1322aa435e3e253",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_qV5R2cKB59bSKD33",
@@ -117,6 +117,10 @@
           "rn_qV5R2cKB59bSKD33::L2::Q3",
           "rn_qV5R2cKB59bSKD33::L2::Q4",
           "rn_qV5R2cKB59bSKD33::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       }
     ],
@@ -172,6 +176,26 @@
         ],
         "finalAnswer": "The mean titre is 14.95 cm³."
       }
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/695c81d8834b-39888-titration-setup1.png",
+        "alt": "Diagram showing a titration setup. A conical flask, pipette, and burette on a stand are labelled, illustrating the process of adding a solution.",
+        "sourceHeading": "How to carry out a titration",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/513bd971eddc-titration-apparatus.png",
+        "alt": "Titration apparatus, downloadable AS & A Level Chemistry revision notes",
+        "sourceHeading": "How to carry out a titration",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

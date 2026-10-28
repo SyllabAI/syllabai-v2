@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_ZWrmDYtNGnmFycPM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a7fb598c603a3b59c0fac8c066f2441d74527a87783b036363cfe803c5564554",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "aad52bc5a9fedf464c84095ac3ddb226c22bf65a3b71d6cb054ca2f0d8dec3cf",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_ZWrmDYtNGnmFycPM",
@@ -125,6 +125,9 @@
           "rn_ZWrmDYtNGnmFycPM::L2::Q3",
           "rn_ZWrmDYtNGnmFycPM::L2::Q4",
           "rn_ZWrmDYtNGnmFycPM::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -162,6 +165,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7303a3f65744-1-7-equilibria-neutralisation-reaction-of-hcl-an.png",
+        "alt": "Equilibria Neutralisation Reaction of HCl and NaOH, downloadable AS & A Level Chemistry revision notes",
+        "sourceHeading": "Neutralisation",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

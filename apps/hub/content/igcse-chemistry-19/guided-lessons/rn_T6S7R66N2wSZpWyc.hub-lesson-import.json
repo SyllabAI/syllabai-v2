@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_T6S7R66N2wSZpWyc",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "497bbd1b9f8bf4a7242cab6dc0f4ecb0d51a90cff67ec6ebc7aae279ad23c759",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "d427b2cd3c7493850783ea0ad363d1d5ede963bd2d310c9f59257eaf02fca523",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_T6S7R66N2wSZpWyc",
@@ -202,6 +202,43 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/fcb7881d572c-31024-9-1-3-test-for-ammonia.png",
+        "alt": "The diagram shows a solution being heated to release ammonia gas, which turns damp red litmus paper blue",
+        "sourceHeading": "Testing for ammonia gas",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/d5d1f4100721-test-for-carbon-dioxide.png",
+        "alt": "Test for Carbon Dioxide showing limewater turning cloudy",
+        "sourceHeading": "Testing for carbon dioxide gas",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/1503f79fbcb3-40918-test-for-chlorine.png",
+        "alt": "The diagram shows damp blue litmus paper being placed into chlorine gas and then turning red before bleaching to a final white colour",
+        "sourceHeading": "Testing for chlorine gas",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/91f24758f2d8-24375-test-for-hydrogen-1.png",
+        "alt": "The diagram shows a lit splint being placed at the neck of a test-tube of gas, and giving a sqeuaky pop sound for the presence of hydrogen",
+        "sourceHeading": "Testing for hydrogen gas",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/e5e4e86fe2a1-7265-test-for-oxygen-1.png",
+        "alt": "The diagram shows a glowing splint being added to a test-tube of oxygen, and the spling relights to confirm the presence of oxygen",
+        "sourceHeading": "Testing for oxygen gas",
+        "moduleIds": []
+      }
+    ]
   }
 }

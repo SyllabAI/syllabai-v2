@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_MMkxbt9y3M3XvXrc",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "32830b85a705da6de13590712e950f7ef926f96db48b4c32bdbcd5ecfa97dfba",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "72f3f3b41fdc354e82faaf2cb026691da1fe39bafbd0e7fbc34ef28d4f60c175",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_MMkxbt9y3M3XvXrc",
@@ -120,6 +120,9 @@
           "rn_MMkxbt9y3M3XvXrc::L2::Q3",
           "rn_MMkxbt9y3M3XvXrc::L2::Q4",
           "rn_MMkxbt9y3M3XvXrc::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -152,6 +155,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/8fe0937b7071-structure-of-alloy.png",
+        "alt": "Diagram to show the structure of an alloy",
+        "sourceHeading": "Alloy structure",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

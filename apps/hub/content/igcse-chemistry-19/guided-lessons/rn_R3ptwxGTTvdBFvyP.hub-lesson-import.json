@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_R3ptwxGTTvdBFvyP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "8e129f9647a7907c37083c7dff5bc8a35b01ed31ee9d8577dcca3fe7d25f79a3",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "64852e43c2e653c21ab05f4c3a9e6c60086290c326409d2640f02f8e147c59b0",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_R3ptwxGTTvdBFvyP",
@@ -75,6 +75,9 @@
           "rn_R3ptwxGTTvdBFvyP::L1::Q3",
           "rn_R3ptwxGTTvdBFvyP::L1::Q4",
           "rn_R3ptwxGTTvdBFvyP::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -123,6 +126,9 @@
           "rn_R3ptwxGTTvdBFvyP::L2::Q3",
           "rn_R3ptwxGTTvdBFvyP::L2::Q4",
           "rn_R3ptwxGTTvdBFvyP::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -173,6 +179,26 @@
         ],
         "finalAnswer": "Rf = 0.5 for that substance in that solvent."
       }
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/23a624524aa6-chromatography-e2-80-93-pure-impure.png",
+        "alt": "Chromatogram showing the separation of brown ink",
+        "sourceHeading": "Interpreting chromatograms",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/8797d28f11b4-64942-using-rf-values-to-identify-mixture-compon.avif",
+        "alt": "using-rf-values-to-identify-mixture-components",
+        "sourceHeading": "Rf Values",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

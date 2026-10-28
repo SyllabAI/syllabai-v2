@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_2MpXPtNXvn8pQm3r",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d222c6b66b9d8723b504436d12cb23d7bd0afbcde6276aa5bc86dc2b39aca7c6",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "afc8afad39f3cb3a57d1645686a6546f8e0b62e5623f5b16b88abe820e16580e",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_2MpXPtNXvn8pQm3r",
@@ -74,6 +74,13 @@
           "rn_2MpXPtNXvn8pQm3r::L1::Q3",
           "rn_2MpXPtNXvn8pQm3r::L1::Q4",
           "rn_2MpXPtNXvn8pQm3r::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04",
+          "fig-05"
         ]
       },
       {
@@ -122,6 +129,13 @@
           "rn_2MpXPtNXvn8pQm3r::L2::Q3",
           "rn_2MpXPtNXvn8pQm3r::L2::Q4",
           "rn_2MpXPtNXvn8pQm3r::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04",
+          "fig-05"
         ]
       }
     ],
@@ -154,6 +168,58 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/56b09b8503b8-alcohol-functional-group-1.png",
+        "alt": "Diagram to show the OH functional group of an alcohol",
+        "sourceHeading": "A molecule of ethanol",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/71118e3fbf2b-methanol.png",
+        "alt": "methanol-",
+        "sourceHeading": "A molecule of ethanol",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3f6c4a4a57f2-screenshot-2024-02-18-191221.png",
+        "alt": "screenshot-2024-02-18-191221",
+        "sourceHeading": "A molecule of ethanol",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/16c62b2a8b09-propanol-displayed.png",
+        "alt": "propanol-displayed",
+        "sourceHeading": "A molecule of ethanol",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/2959bb774061-butanol.png",
+        "alt": "butanol",
+        "sourceHeading": "A molecule of ethanol",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      }
+    ]
   }
 }

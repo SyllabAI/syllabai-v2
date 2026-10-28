@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_y85XYRv5QfgZFQxv",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1e04311b112db053c21725c33ec74847a63008b594b0b1f169e4d3f9c63a4dac",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "fb76353b76e1e098ffd2afc1162c2302e022d276e5111c2d8581593606f3e3a9",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_y85XYRv5QfgZFQxv",
@@ -69,6 +69,9 @@
           "rn_y85XYRv5QfgZFQxv::L1::Q3",
           "rn_y85XYRv5QfgZFQxv::L1::Q4",
           "rn_y85XYRv5QfgZFQxv::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -148,6 +151,24 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4244f166d353-o-w7kap-2-graphs-2-v2.png",
+        "alt": "Reaction profiles for exothermic and endothermic reactions",
+        "sourceHeading": "Reaction profiles of exothermic and endothermic reactions",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4bb979764952-exo-reaction-profile-with-catalyst.png",
+        "alt": "Reaction profile showing the effect of a catalyst on activation energy",
+        "sourceHeading": "Diagram showing the effect of a catalyst on activation energy",
+        "moduleIds": []
+      }
+    ]
   }
 }
