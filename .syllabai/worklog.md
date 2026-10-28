@@ -22146,3 +22146,11 @@ Operator directive: three-tier triage (corpus/hub/live) + deep audit + self-impr
 - VERDICT: PASS — 0 HIGH across corpus/hub/live, 0 new defects; 2 pre-existing DISCLOSED review_queue items (F95-class, converter/SME-owned); the only live-tier user-visible question marks on this paper remain the fleet-wide specPointIds-empty state.
 - EMITTED: .syllabai/receipts/ops-pastpapers/pastpapers-4ch1-2026-2c-triage-run-001-r0.json + .syllabai/lane-artifacts/ops-pastpapers/run-001-j2c-triage/j2c-triage-evidence.json + this entry (bookkeeping-only .syllabai/**); local deliverables TRIAGE-june2026-4ch1-2c-2026-10-29.{json,md}.
 - QUEUE: 2(d)(i)-class F95 ledger parts await SME review (converter lane owns the crop decision); F113 generator-string bump (topic.json label still v0.29.0/2026-10-27 vs converter v0.30.0 — cosmetic provenance nit) rides the converter's next full regen; crop-queue reconcile vs resources AGENTS.md open-work still owed before ANY crop wave executes (standing operator gate); june-2026-4ch1-2c deep-audit residual = none; SME/DB re-ingest operator-queued (inherited); PAT rotation STILL PENDING (CRITICAL-OVERDUE — 4th notice on this lane). fetch-first, no force, no DB contact.
+
+## R0-AUTO-77 receipt — 2026-10-29T20:45Z (Job 438940, sweep 04:30+08)
+- Task ID: 90 (R0-auto trace cron-agent-loop-202610290430)
+- Merged: PR #436 import(worked-examples-1.0) — FEED worked-examples-v4 + 112 revised artifacts + import script (114 files, +1945/-1157, all apps/hub/**)
+- Head: f3a2bdfd | Merge sha: 22f8a2de | merge_method=merge, no force
+- Gates: head CI all success (hub+verify) pre-merge; mergeable=clean; new main tip 22f8a2de CI 2/2 GREEN post-merge
+- Checks: reviews=0, comments=0, no REQUEST_CHANGES/HOLD/BLOCKING; diff boundary PASS (no *.java, no external core/hub content, no Neon/prod writes)
+- Author: SyllabAI (no recusal conflict, no claim collisions observed)
