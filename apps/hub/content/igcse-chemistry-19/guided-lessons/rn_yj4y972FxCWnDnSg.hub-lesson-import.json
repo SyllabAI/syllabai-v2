@@ -5,8 +5,8 @@
     "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_yj4y972FxCWnDnSg",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "dd64eba73ab8bdce34d06228471aa959e68ec559e51ad2b98e0757f6689d4ebf",
-    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
+    "sourceLayerSha256": "06105814431b04e4b03be5b9b8603323a7e5712e0be78e705abd37ce978ff520",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_yj4y972FxCWnDnSg",
@@ -168,7 +168,16 @@
           "firstLesson": 2
         }
       ],
-      "workedExample": null
+      "workedExample": {
+        "prompt": "In the crucible experiment, 0.24 g of magnesium is burned in air until the mass is constant; 0.40 g of magnesium oxide remains. (Ar: Mg = 24, O = 16.) a) Calculate the mass of oxygen that combined with the magnesium. b) Determine the empirical formula of magnesium oxide. c) Explain why the crucible lid is lifted frequently during heating.",
+        "steps": [
+          "a) Mass of oxygen = 0.40 - 0.24 = 0.16 g.",
+          "b) Moles of Mg = 0.24 / 24 = 0.01 mol; moles of O = 0.16 / 16 = 0.01 mol.",
+          "The ratio Mg : O = 0.01 : 0.01 = 1 : 1, so the empirical formula is MgO.",
+          "c) Lifting the lid lets enough air in for the magnesium to oxidise fully while stopping magnesium oxide smoke from escaping."
+        ],
+        "finalAnswer": "a) 0.16 g of oxygen. b) MgO (a 1:1 ratio). c) Air enters for full oxidation while the smoke is kept in."
+      }
     },
     "figures": [
       {

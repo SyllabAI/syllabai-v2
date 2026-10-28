@@ -5,8 +5,8 @@
     "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_bGgYrQXP2tqrYwdV",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "2046704a912429ca92d6928170e94a399e356f447abaa3e240ffe60e5536ba67",
-    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
+    "sourceLayerSha256": "5afc3774db5d98e6cf211aeccf35d498da3c201d7017d1fed02af59175cc1043",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_bGgYrQXP2tqrYwdV",
@@ -224,7 +224,15 @@
           "firstLesson": 3
         }
       ],
-      "workedExample": null
+      "workedExample": {
+        "prompt": "a) State two differences between condensation and addition polymerisation. b) A dicarboxylic acid reacts with a diol to make the polyester terylene: state which functional groups meet and what is released per link. c) Describe how to deduce the two monomers from a polyester's structure.",
+        "steps": [
+          "a) Condensation polymerisation links two different monomers (each with functional groups at both ends) and releases one small molecule — usually water — per linkage; addition polymerisation uses one C=C monomer and forms the polymer molecule only.",
+          "b) Each -COOH group of the dicarboxylic acid reacts with an -OH group of the diol, forming an ester linkage and losing one molecule of water per link — the acid lost the -OH and the diol lost the -H.",
+          "c) Identify the ester -COO- linkages and break the C-O single bond in each link, then add -OH groups back to the C=O carbons (regenerating the dicarboxylic acid) and -H atoms back to the oxygens (regenerating the diol)."
+        ],
+        "finalAnswer": "a) Two monomers + water released vs one monomer, polymer only. b) -COOH meets -OH: ester link + H2O per link. c) Break the ester C-O single bond; restore -OH to the acid and -H to the diol."
+      }
     },
     "figures": [
       {
