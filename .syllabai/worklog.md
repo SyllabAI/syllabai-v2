@@ -21992,3 +21992,13 @@ Work Log:
 
 Stage Summary:
 - The re-join lane is fired of record: the 8-bank anchor gap's identity-grade class is closed to the honest J1-J4 ceiling (124 pairs / 1,541 codes / 7 of 8 lanes; pure-2 honest zero), all ten gates green, footprint exactly the declared 14 paths, resources pushed FF no force. The SUGGESTED resolutions await the operator-keyed gate round (T-SPECS-CIE-GATE-1 precedent) and then the v2 consume chain; nothing was promoted, consumed, or manufactured (rule 3).
+
+---
+
+Task ID: T-SPECS-CIE-REJOIN-2 r0 addendum — CI receipts + inherited-red disclosure (same operator order trace 1a181f6adcfa4c55)
+Agent: main (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+Work Log:
+- resources CI @ 8a9e224 (bounded poll, 6 x ~75s): corpus-gates SUCCESS, official-export-gates SUCCESS, sync still in_progress at budget close — disclosed, not asserted. The lane's own battery (RJ1-RJ10 10/10) + the repo corpus gates agree: the rejoin landing is green where it is judged.
+- v2 main CI @ 3870c5fc (bookkeeping-only worklog commit): hub SUCCESS, verify FAILURE — Test step 1 fail / 3,046 (3,032 pass / 13 skip): "(fail) T-MIG-136 bands 3b+4 through T-CONSUME-EDX-1: the maths-b corpus laws > the RESTORED interactive bundle builds through the shim (the 04aee80 operator ruling 'Restore it', trace 1a15de779f2250f9)".
+- INHERITED-RED DISCLOSURE: the SAME single test fails at the base dd20b81b (verified first-hand: check-runs on dd20b81b show verify completed/failure). The red is the maths-b lane's plane (T-MIG-136 band / the restored interactive bundle law), pre-dating T-SPECS-CIE-REJOIN-2; this lane's deltas (resources: cie-as-* sidecars + manifest additive only; v2: .syllabai/worklog.md only) have zero maths-b contact — the maths-b content-maps pin stays 8460a5f3, untouched. Per the lane discipline (no other lane's plane touched; AGENT.md rule 7 independent work), the red is DISCLOSED for the maths-b owners (their run-017 tranche-3 leads are staged) — NOT repaired here, no blind fix attempted.
+- PAT rotation standing order REITERATED (CRITICAL-OVERDUE of record through this lane's push cycle).
