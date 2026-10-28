@@ -21870,3 +21870,19 @@ Work Log:
 
 Stage Summary:
 - run-016 CLOSED of record at main 1ea8d091: 53/53 spare-grid fused problemMd blocks rebuilt/stripped, 4 grids attached, live-verified. Queue: 2021-06 02 q2 rebuild; 2024-06 02R q2-a junk; orphan census; 213 crop review passes; 11-e legacy link; SME/DB + /0.2 (operator); PAT rotation STILL PENDING (both exposed tokens).
+
+---
+
+## R0-AUTO receipt — 2026-10-28T06:07Z (cron 14:00 UTC+8, Job 438940)
+
+- **Task ID (local)**: 70
+- **PR merged**: #424 "G-4 mirror prep: CIE 9609 verbatim drafts of record (105 papers, exact of-record reconciliation)" — author SyllabAI, head `8b0d23ab`, base `e591fb5d`
+- **Merge sha**: `a4bbe6a8` (merge_method=merge, PUT API)
+- **Pre-merge CI on head**: 2/2 SUCCESS (verify + hub)
+- **mergeable**: clean (base == main tip at decision time, no intake required)
+- **Reviews/comments**: 0 (no REQUEST_CHANGES / HOLD / BLOCKING hits)
+- **Diff scope**: 123 files, +44,934/-553, 100% under `.syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/9609/**`; zero *.java, zero core/hub content, zero Neon/prod exposure
+- **Post-merge main CI**: 2/2 SUCCESS on `a4bbe6a8` (verify + hub, confirmed after bounded 90s re-check)
+- **Skipped this round**: #423 (`e488b0a3`) NO-CI at decision time (check-runs not started, created 05:37Z) — per rule (b) pending → skip, eligible for later rounds
+- **Static four**: #285 `1c2dd54d` FAIL:hub,verify / #296 `bd2c0b1e` FAIL:hub / #303 `cce02304` FAIL:verify / #352 `13bfea93` NO-CI (~115h) — unchanged, gate-b re-verified this round
+- **Notes**: bookkeeping-only receipt commit (.syllabai/worklog.md only); fetch-first mirror reset #220 hit at sweep start (signature `89962a5`, restored, zero data loss); no force-push; no self-merge (PR author SyllabAI ≠ R0-auto)
