@@ -1,0 +1,62 @@
+{
+  "schema": "syllabai.lane-receipt/1.0",
+  "task": "T-SPECS-MATHSB-ANCHORS-r0",
+  "family": "MATHSB-ANCHORS",
+  "run": "run-001",
+  "operator_order": "extend the attachment map with evidence-based spec anchors for the 166 — proper fix that also strengthens question/flashcard joins. But before that check https://github.com/SyllabAI/syllabai-resources/tree/main/SME-RevisionNotes",
+  "trace_id": "1a181ba3a6e696b9",
+  "session": "web-528c0352-0cf7-4715-a187-50aec294b288",
+  "lane": "restore lane (main agent)",
+  "generated_utc": "2026-10-28T10:05:00Z",
+  "predecessor": "r024 root-cause (166/199 maths-b notes subtopic:null; SME agreement proven live; two fix paths identified)",
+  "upstream_commit": {
+    "repo": "SyllabAI/syllabai-resources",
+    "sha": "8460a5f3a03fd7d43ed31e39c27d846f8a747208",
+    "title": "maths-b content join r0: evidence-based spec anchors for the 166 loose notes",
+    "files": 8,
+    "rebased_over": ["00684ef5 F90 r2-consumed twin (#206)", "4c04603f PR #204 run-017 tranche-1 companion"]
+  },
+  "hub_commit": {
+    "repo": "SyllabAI/syllabai-v2",
+    "shas": ["00d57efa (stage-2: pin bump 08447ba9->8460a5f3 + content-maps + report row + task card)", "260c11c9 (stage-3 flip files; completes 00d57efa whose atomic-add failure missed five bundle files)"],
+    "based_on": "9883b1f5 (post-#427)"
+  },
+  "what_was_done": [
+    "Checked SME-RevisionNotes corpus first per operator order: 107 course dirs, igcse-maths-b-16 = 199 notes x (json+md) + manifest tree (10 SME topics x subtopic x leaf) + 64 deck.json files; found spec_point_ids present, spec_point_codes EMPTY for maths-b (vs chemistry's AI_VALIDATED codes)",
+    "Located the join failure chain: spec_point_map.json regime B name-only (34 mapped / 181 unmapped at 0.62 floor) -> hub attachment map spcptUnmapped 181 -> notes.specPointCodes [] x166 -> subtopicOfNote null -> loose rendering",
+    "DISCLOSED upstream defect: spec_point_index.json 'notes' arrays corrupted (all 215 rows point at rn_283Sr4VvpJ7B7Z9V); note-side spec_point_ids proven complete and 1:1 (215/215) and used as the anchor of record",
+    "DISCLOSED live defect in the of-record 34: 'Difference Of Two Squares' attached 8E 'Sum and difference of two vectors' (topic-inconsistent, algebra note); 3 keep+flag rows (8E, 6C Parallel Lines, 4D Range), 1 ledger repoint (5G->8K Combination of Transformations, S2-flagged row, decisive topic-consistent C1)",
+    "Built scripts/sme_maths_b_content_join.py: content-evidence join (note title + block text + anchored-card text) vs the 98 parsed 4MB1 statements, hard topic gate (SME notes-IA topic == official topic title, 1:1 verified at load), stemmed-token containment (exact 1.0 / morphological 0.5) + SequenceMatcher + title coverage, deterministic (-score, code) tie-break, idempotent re-runs (byte-identical modulo generated_utc, proven x2)",
+    "Tiers of record: C1_content_join 27 (clean; hand-audited 27/27 correct), C2_content_join 30 (flagged moderate/ambiguous/cross-topic), C3_topic_anchored 112 (topic-certain, statement not uniquely derivable — operator-ordered extension; best content-corroborated statement, flagged, full candidate profile recorded), S1/S2 kept; 13 honestly unmapped with reasons + profiles",
+    "Downstream builders re-run for the course: flashcard_spec_map coded 61 -> 262 (unresolved spcpt 208 -> 6); spec-links items_with_codes 94 -> 450 (notes 188/199, cards 262/268, pending 19); spec-links README documents the C-tier vocabulary",
+    "v2 stage-2: pin bump + content-maps/igcse-maths-b-16.json regen (spcptToOfficial 34 -> 202) + _report.json surgical row merge (aggregate preserved from HEAD; full-regen blocked by the spine-less-by-design D1 bundle cie-a-level-maths-20-pure-2 — left to a dedicated fleet bump)",
+    "v2 stage-3: apply_official_flip --course igcse-maths-b-16, gates G1-G5 pass, --check failed=0; notes.json 185+3 coded / 11 unmapped; flashcards 262 specPointCode"
+  ],
+  "verification": {
+    "join_idempotence": "2 consecutive re-runs byte-identical modulo generated_utc",
+    "c1_audit": "27/27 C1 rows hand-verified against statement wording",
+    "topic_gate": "asserted at runtime against parsed topic titles (drift aborts)",
+    "flip_gates": "G1-G5 pass (script-enforced); build_official_content --check failed=0",
+    "grouping_replication": "buildSpecTreeIndex + subtopicOfNote replicated offline on the landing tree: 188/199 notes group under a topic sub-topic, all 10 topics populated, 11 honest loose",
+    "stale_base_incident": "first attempt built on stale c55927e7-era content plane; discarded (backup branch backup-r025-stale-0daf2f3b); fresh-tree re-run produced byte-identical outcomes = determinism proof",
+    "sidecar_consistency": "resolution sidecar resolved_code vs map unmapped: 0 mismatches"
+  },
+  "review_queue": {
+    "flags": 162,
+    "unmapped_spcpts": 13,
+    "loose_notes": 11,
+    "card": ".syllabai/tasks/T-SPECS-MATHSB-REVIEW-1.yaml",
+    "named_priorities": [
+      "Finding Equations of Straight Lines C3->4K (true anchor 4I y=mx+c; long-statement dilution)",
+      "Speed/Distance-Time Graphs C3->4K (true anchor 4N kinematics)",
+      "Difference Of Two Squares kept 8E (topic-inconsistent; true anchor 3C)"
+    ]
+  },
+  "user_visible_effect": "/courses/igcse-maths-b-16/revision-notes: loose notes 166 -> 11 (remaining 11 are the honest no-evidence residue, disclosed); flashcards gain 201 coded joins (61 -> 262)",
+  "no_touch": ["main DB (quota outage unbroken)", "igcse-chemistry-19 golden", "other courses' content-maps (stayed at their generation-of-record)", "CIE lanes"],
+  "followups": [
+    "T-SPECS-MATHSB-REVIEW-1 adjudication (162 flags / 13 unmapped)",
+    "dedicated fleet bump for a full attach regen once a skip-law for spine-less-by-design bundles lands",
+    "long-statement dilution refinement candidate: cov dampening for statements with >6 content tokens"
+  ]
+}
