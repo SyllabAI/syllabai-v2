@@ -69,3 +69,19 @@ Work Log:
 
 Stage Summary:
 - run-013 COMPLETE: spot-check F1+F2 closed end-to-end (census -> URL gate -> fail-closed apply -> PR/CI/merge -> byte/payload/pixel live verification). Bookkeeping: receipt .syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-013-mirror-sync-inline-link.json + playbook §7 run-013 additions + lane artifacts run-013/ + screenshots download/t-oeq-mathsb/run013/. Queue remaining: F4/F5 eyes-on leads, 213 run-011 crops review passes, PAT rotation pending. fetch-first, no force; PAT env-only via askpass.
+
+---
+Task ID: run-017 tranche 1 (trace 1a180f0984579d39, operator order "Make symbol-loss restoration the next repair wave (run-016/017): proper census, then fix each part eyes-on against the original paper" + Official-ExamQuestion corpus/pipeline pointers)
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Pipeline docs read as ordered (Official-ExamQuestion README/AGENTS: ADR-039 fix-and-disclose, G0-G9 gates, pastpapers byte-frozen source, /0.2 provenance schema). QP/MS of record located in syllabai-pastpapers (sparse clone, PAT scrubbed).
+- Census of record (S1 digit-letter-digit in plain text): 702 matches / 345 parts / 65 papers (300 problemMd) — line-context LOWER bound; in-run found undercount classes: cross-line splits (q13 '2\nx 2'), glued superscripts (order-24 '20002'=2000^2), operator-adjacent (q21 '3 x+ 6'=3^(x+6)).
+- Tranche 1 = operator's linked paper 2026-06 4MB1-01, complete: 10 pages rendered 150dpi and READ (QP p2/p9/p17/p19/p24 + MS p6/p12/p21+3 zooms/p23/p27) — every repaired expression read off the page: q1 6x<20-2x; q13 proportional-to-sqrt(w) radical + y=64/x^2 row set; q21 3^(x+6)/9^x/5^x + full working-column rebuild (5^{"4"} ft-convention zoom-verified, answer 1875 = 5^4x3); q23 w^3 x w^-5 / 5x^0 / (8a^3b^9)^(1/3) / (36c^4d^2)^(1/2)/(3c^-5d^3) + answers w^-2/5/2ab^3/2c^7d^-2; q26 x^2=2-y^2, 3y-x=4 + full quadratic row rebuild.
+- Fail-closed apply (scripts/run017_patch.py): FIRST apply correctly refused by gates (dry-run logic lacked assignment — write was a no-op, caught by diff-scope gate 1!=19; reset + fixed). Final apply: 15 fields + 7 markPoints[0] mirrors = 22 changed fields EXACT. Gates ALL GREEN: census 66/1281/2443/6600 EXACT, marks map identical, PUA/FFFD 0, $-balance 0, diff scope EXACT, mirror law 7/7 byte-exact, S1 residual on paper 0, serialization byte-law round-trip PASS. Plane eabd5ca8b643f93f -> df4985715db07b0b.
+- Source corpus (ADR-039): 2026-06/4MB1-01/topic.json — 19 fields + 8 mark_points mirrors, edit_status extracted->corrected on 8 parts, edits[] +29, value_trace stamped, indent=1 round-trip PASS. Disclosed: questions.md render now stale (regen queued).
+- Disclosures: q1 stray mark-column '2' dropped (interleave artifact, part.marks carries it); KaTeX spans where structure demands; order-24 bearings NOT touched (glued-sup real, MS page unread — tranche-2 lead, no half-evidenced edits).
+- FINDING for operator: run-016 (PR #421) committed .syllabai bookkeeping ONLY (18 files, zero content-plane) yet its message/receipt claim plane eabd5ca8->5fc8abdb with 53 rebuilds — official-papers.json at tip is still eabd5ca8 and still carried all the damage this run fixed. Not adjudicated here; flagged in receipt newLeadsQueued.
+
+Stage Summary:
+- run-017 tranche 1 CLOSED END-TO-END: census filed, linked paper fully symbol-restored vs printed evidence (hub 22 fields + corpus 19 fields + disclosures), receipts + lane artifacts in-repo. Tranche-2 queued: whole-field census (345+ parts / 65 papers, severity-first), order-24 bearings rebuild, run-016 discrepancy adjudication. fetch-first, no force; PAT inline-only, scrubbed.
