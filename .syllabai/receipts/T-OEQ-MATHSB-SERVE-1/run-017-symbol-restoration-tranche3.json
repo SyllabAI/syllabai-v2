@@ -1,0 +1,65 @@
+{
+ "card": "T-OEQ-MATHSB-SERVE-1",
+ "run": "run-017 tranche 3 (eyes-on restoration wave + first official-plane GFM table)",
+ "date": "2026-10-28",
+ "operatorOrder": "trace 1a182f5ca066a979: 'tranche-3 eyes-on (2025-06 q6/q8/q11/q12; 01R q18/q19/q25/q27-b), q23 wage-table GFM re-emit (needs renderer check), corpus topic.json sync riding the next converter run' — the tranche-2 receipt newLeadsQueued discharged verbatim",
+ "environmentDefectOfRecord": "sandbox swap mid-card: post-restart clone arrived STALE (main 4008e6ce, tranche objects absent, official-papers.json missing from tree) while untracked-of-HEAD .syllabai receipts survived; recovered fetch-first (anonymous) — origin/main held the full landed history (bf91422a PR #427 ancestor-verified), local main fast-forwarded 4008e6ce -> 5e883867, plane sha16 re-verified a11ad0ccc1923806 first-hand before any edit; no force, no writes before the pin check",
+ "planeState": {
+  "before": "a11ad0ccc1923806 (origin/main post-tranche-2, verified first-hand post-recovery)",
+  "after": "6f481c68cd4f1231"
+ },
+ "scopeOfRecord": "19 fields = 9 solutionMd rebuilds + 9 markPoints[0] mirrors (mirror law) + 1 problemMd GFM re-emit: 2025-06 4MB1-01 q6, q8-b, q11, q12 solutionMd; 2026-06 4MB1-01R q18, q19, q25, q27-a, q27-b solutionMd; 2025-06 4MB1-01 q23-a problemMd wage-table GFM re-emit (first official-plane GFM table)",
+ "evidenceProtocol": "11 pages rendered 150dpi and READ: MS 2025-06 p8 (q6) / p9 (q8) / p12 (q11) / p13 (q12); QP 2025-06 p19 (q23 wage table) / p8 (q11 stem + q12 stem); MS 2026-06-01R p20 (q18 main) / p21 (ALT1) / p22 (ALT2) / p23 (q19) / p32-34 (q25 main+ALT1+ALT2) / p36 (q27 a+b); zooms: 450dpi answer-cell word-anchored crops (q11 '243' plain + 'condone √243' radical restored), 300dpi row crops p32 row4 (lambda-substitution quoting), p33/p34 values blocks (dots), p21 quadratic-formula radicand (double-parens CONFIRMED), p34 note (allow-gap CONFIRMED); PDF text layer used for glyph-run counts (law 30)",
+ "gates": {
+  "census_66_1281_2443_6600": "EXACT",
+  "marks_map_identical": true,
+  "PUA_FFFD_whole_plane": "0 / 0",
+  "dollar_parity_edited_fields": "even",
+  "diff_scope": "19 edits == expected set EXACT",
+  "mirror_law_mp0_byte_exact": "9/9 solution-touched parts",
+  "changed_set_EXACT": true,
+  "serialization_byte_law": "compact single-line JSON, ensure_ascii=False, no trailing NL; round-trip PASS",
+  "katex_gate_edited_fields": "198 segments / 0 failures (katex throwOnError)",
+  "gfm_table_render_gate": "table=true th=true tr=6 through react-markdown + remark-gfm + rehype-raw + rehype-sanitize (renderToStaticMarkup) — the renderer-check prerequisite DISCHARGED",
+  "verify_corpus_23a": "PASSED (files=321, 0 pollution classes)",
+  "verify_flashcard_sync": "exit 0",
+  "verify_katex_pipeline": "exit 0 (335,954 nodes; 379 residuals PRE-EXISTING fleet-wide — zero tranche-3 tokens in error log)"
+ },
+ "rendererCheckOfRecord": {
+  "prerequisite": "tranche-2 disclosure: 'q23-a problemMd wage-table flatten NOT touched: presentation/structure class (GFM re-emit), zero GFM-table precedent in the official plane (0 pipe rows) — filed as lead, needs renderer verification first'",
+  "verification": "question-player.tsx renders part.problemMd (line 1992) and part.solutionMd (line 1530) through components/Markdown -> react-markdown + remark-gfm + CORPUS_SCHEMA=defaultSchema (tables allowed) + table renderer (markdown.tsx line 276)",
+  "gateCatch": "first apply attempt put the GFM block inline after the stem sentence — render gate RED (table=false, tr=0, header row glued mid-paragraph); plane reverted byte-exact, manifest fixed to blank-line-delimited block, re-applied GREEN — the gate is load-bearing, kept as law 29",
+  "precedent": "2019-06-02R q7 value table (questions.json, UIUX-TIER-B run-003)"
+ },
+ "disclosures": [
+  "AS-PRINTED errata kept verbatim (law 27 class): q8-b '8 must be not be $2^3$' (Pearson word-order typo); 01R ALT1 evaluated-coefficients '0.88, 0.23. 0.12, 0.26, 0.13' (stray period); p34 ALT2 note 'allow' + MISSING symbol gap before 'to be any other letters throughout' (Pearson print defect, gap transcribed)",
+  "q11 answer cell of record is PLAIN '243' (QP stem: sqrt(675)-sqrt(108)=sqrt(m), m=243) — plane answer was already plain 243 (no radical loss); the RADICAL loss was in the A1 note 'condone 243' -> restored to 'condone $\\sqrt{243}$' (450dpi word-anchored zoom evidence)",
+  "q11 notes rows '225 x 3 and 36 x 3' / '25 x 27 and 4 x 27' are PLAIN 'x' AS PRINTED (decomposition prose, not symbol loss) — kept plain",
+  "rebuilt fields carry printed MS footer rows only where printed (law 33): q6 'cas Total 2 marks', q8-b 'cas Total 3 marks', q11 'wr Total 3 marks', q12 'wr Total 3 marks', q19 'Total 4 marks', q25 'Total 5 marks'; q18/q27 print none",
+  "lambda normalization: stray U+1D70C (mathematical italic lambda) from parse debris replaced by \\lambda in math and U+03BB in prose — PUA/FFFD gate unaffected, glyph-class cleanup disclosed",
+  "q27 scope note: receipt lead said 'q27-b'; census regex caught only q27-a ('2 x+2'); eyes-on showed BOTH a (fused answer/mark/B1 row) and b (fused equation rows + Condone note) scrambled — both rebuilt, scope declared as q27-a + q27-b",
+  "renderer gate needed bun install --frozen-lockfile in the recovered sandbox (node_modules absent post-swap; 952 packages, lockfile untouched)"
+ ],
+ "corpusSyncQueued": {
+  "disposition": "RIDES THE NEXT CONVERTER RUN (operator instruction verbatim; tranche-1/2 disclosed pattern) — NOT executed this run",
+  "papers": ["2025-06/4MB1-01", "2026-06/4MB1-01", "2026-06/4MB1-01R"],
+  "targets": "Official-ExamQuestion source-corpus topic.json (schema syllabai.official-paper-questions/0.2) + questions.md regen must reconcile to plane 6f481c68cd4f1231 for the 19 fields (pids: offp_2025-06_01_6, offp_2025-06_01_8-b, offp_2025-06_01_11, offp_2025-06_01_12, offp_2025-06_01_23-a problemMd, offp_2026-06_01r_18, offp_2026-06_01r_19, offp_2026-06_01r_25, offp_2026-06_01r_27-a, offp_2026-06_01r_27-b)",
+  "converterLineage": "Official-ExamQuestions pipeline v0.17.0 -> v0.18.0 (wave-24/25); corpus of record NOT locally cloned (probe: raw.githubusercontent Official-ExamQuestion/igcse-maths-b-16/2025-06/4MB1-01/topic.json 404 on syllabai-pastpapers main — corpus repo of record to be confirmed at converter-run time)"
+ },
+ "scriptsOfRecord": [
+  "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/t3_manifest_a.py (2025-06 after-texts of record)",
+  "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/t3_manifest_b.py (01R after-texts of record)",
+  "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/tranche3_apply.py (fail-closed 9-gate battery incl changed_set_EXACT)",
+  "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/t3_render_gate.mjs (KaTeX + GFM render gates)",
+  "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/tranche3-apply-log.json (edit ledger)",
+  "scripts/run017_t3_*.py (census extraction / evidence locate / render / zoom — session-side)"
+ ],
+ "newLeadsQueued": [
+  "fleet GS leads: '[AB=] 10002 + 20002' Pythagoras part; 'cos −1 2×6×7' cosine-rule part (census artifact has pids)",
+  "corpus questions.md regen + topic.json sync (3 papers above) — rides the NEXT converter run",
+  "SME/DB re-ingest + /0.2 provenance migration (operator-queued)",
+  "live-player spot check of the tranche-3 parts after Vercel redeploy",
+  "PAT rotation STILL PENDING (both exposed tokens: GitHub …JU4 / Vercel vcp_…aoT3)"
+ ],
+ "landing": "commit r7a-pp-symbolloss-t3-017 -> push -> PR -> CI -> merge (fetch-first, no force)"
+}
