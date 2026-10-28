@@ -21947,3 +21947,17 @@ Work Log:
 
 Stage Summary:
 - The operator's audit order is answered of record: every one of the 106 specification trees renders properly and the only rendering defects (extraction-artifact junk + tofu + one copy error) are fixed at the presentation layer with corpus provenance intact. Deep-parse residue (bracket/scatter/subscript class) is censused in the receipt and awaits an operator-gated resources-side eyes-on lane.
+
+---
+
+## R0-AUTO receipt — 2026-10-28T09:08Z (cron 17:00 UTC+8, Job 438940)
+
+- **Task ID (local)**: 76
+- **PR merged**: #426 "F90 80-denominator restoration sync (2022-06 2C 6(a)) — companion of resources PR #205" — author SyllabAI, head `4d13e965`, base `515edc81`
+- **Merge sha**: `0e3f29a5` (merge_method=merge, PUT API)
+- **Pre-merge CI on head**: 2/2 SUCCESS (verify + hub); pre-merge main CI GREEN on `515edc81`
+- **mergeable**: clean (base == main tip at decision time)
+- **Reviews/comments**: 0 (no REQUEST_CHANGES / HOLD / BLOCKING hits)
+- **Diff scope**: 1 file, +1/-1, `apps/hub/content/igcse-chemistry-19/official-papers.json` (mark-scheme textMd correction); zero *.java, zero core/hub repo content, zero Neon/prod exposure
+- **Post-merge main CI**: 2/2 SUCCESS on `0e3f29a5` (bounded 90s re-check)
+- **Notes**: bookkeeping-only receipt commit (.syllabai/worklog.md only); fetch-first reset #226 at sweep start (signature 89962a5, restored, zero loss); no force-push; no self-merge
