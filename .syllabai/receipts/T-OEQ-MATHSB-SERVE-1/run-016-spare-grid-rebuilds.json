@@ -79,11 +79,23 @@
   "PAT rotation STILL PENDING (both exposed tokens: GitHub ...JU4 / Vercel vcp_...aoT3)"
  ],
  "credentialDiscipline": "PAT env-only via GIT_ASKPASS helper (v2 push) and direct env bearer (resources Contents API); zero credential writes to config/files; helper script deleted after use",
- "verdict": "RUN-016 SPARE-GRID WAVE CLOSED END-TO-END: 53/53 fused problemMd blocks rebuilt/stripped with printed-page evidence (18 vision reads + 53/53 text-layer verifies), 4 crop-required grids measured+pushed+gated+attached, formula boxes KaTeX-rebuilt per format law, all invariants held",
+ "verdict": "RUN-016 SPARE-GRID WAVE CLOSED END-TO-END: 53/53 fused problemMd blocks rebuilt/stripped with printed-page evidence (18 vision reads + 53/53 text-layer verifies), 4 crop-required grids measured+pushed+gated+attached, formula boxes KaTeX-rebuilt per format law, all invariants held; LANDED OF RECORD at main 1ea8d091, live-verified",
  "landingDefectOfRecord": {
   "defect": "first landing attempt commit 0ae1643c (branch r7a-pp-spare-grid-016, PR #421, merged 3c49285b) carried ONLY the new untracked artifacts (receipt + lane-artifacts) — the land script's 'git checkout main -- .' step reverted the tracked files (plane / playbook / worklog) before staging, so the merged main plane remained eabd5ca8b643f93f; CI hub+verify passed on the unmodified plane (content-empty landing, NOT a wrong-content landing)",
   "detection": "post-merge origin/main plane hash check: eabd5ca8 != receipt's 5fc8abdba88325e8",
   "recovery": "all three tracked edits are deterministic artifacts of the of-record scripts: run016_apply.py re-run reproduced the plane BYTE-EXACT (sha16 5fc8abdba88325e8, same 3710608 B), run016_docs.py re-emitted receipt/playbook/worklog; re-land follows on a fresh branch",
   "lesson": "never 'git checkout <base> -- .' inside a landing script — staging must reference the lane's own edited files explicitly"
+ },
+ "landing": {
+  "attempt1": "commit 0ae1643c / branch r7a-pp-spare-grid-016 / PR #421 -> merged 3c49285b (CONTENT-EMPTY: land-script defect, see landingDefectOfRecord)",
+  "attempt2_of_record": "commit ccb0e66c / branch r7a-pp-spare-grid-016b / PR #422 -> CI hub+verify SUCCESS -> merged 1ea8d091 (API PUT-merge 404'd persistently despite mergeable_state=clean; local no-ff merge + direct push used, disclosed; PR auto-marked merged)",
+  "postMergeMainCI": "hub SUCCESS + verify SUCCESS on 1ea8d091",
+  "liveCorpusByteMatch": "5fc8abdba88325e8 EXACT (~2min post-merge, syllabai-hub-v2.vercel.app/corpus/igcse-maths-b-16/official-papers.json)",
+  "resourcesCommits": [
+   "1b79e25e",
+   "21cfccec",
+   "826ac7a8",
+   "4b0e9dac"
+  ]
  }
 }

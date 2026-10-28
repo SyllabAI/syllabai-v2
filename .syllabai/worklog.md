@@ -21857,3 +21857,16 @@ Stage Summary:
 - Queue after run-016 (in receipt): 2021-06 02 q2 MS rebuild; 2024-06 02R q2-a junk (needs polygon crop); orphan census; 213 crop review passes; 11-e legacy link; SME/DB + /0.2 (operator); PAT rotation STILL PENDING.
 
 - LANDING DEFECT (run-016): first landing 0ae1643c / PR #421 / merge 3c49285b carried bookkeeping only — the land script's `git checkout main -- .` reverted the tracked plane/playbook/worklog before staging; detected by the post-merge hash check (origin/main plane still eabd5ca8); recovery = deterministic re-run of run016_apply.py (plane reproduced BYTE-EXACT 5fc8abdba88325e8) + re-land on a fresh branch. Lesson: staging in landing scripts must reference the lane's edited files explicitly, never a base-tree checkout.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-016 (landing record)
+Agent: R7a main lane (operator trace 1a180c961abffa3d)
+Task: Landing + live verification for run-016 (bookkeeping append).
+
+Work Log:
+- PR #422 (branch r7a-pp-spare-grid-016b @ ccb0e66c): CI hub+verify SUCCESS; API PUT-merge 404'd persistently (5 attempts, mergeable_state=clean) — local no-ff merge of ccb0e66c + direct push used instead (disclosed; PR #422 auto-marked merged); main 1ea8d091.
+- Post-merge main CI 2/2 SUCCESS; live /corpus/igcse-maths-b-16/official-papers.json byte-match 5fc8abdba88325e8 EXACT (~2min post-merge).
+- Receipt landing section + landingDefectOfRecord finalized; disk-pressure cleanup: run016 mirror PDFs deleted (re-fetchable per law 17).
+
+Stage Summary:
+- run-016 CLOSED of record at main 1ea8d091: 53/53 spare-grid fused problemMd blocks rebuilt/stripped, 4 grids attached, live-verified. Queue: 2021-06 02 q2 rebuild; 2024-06 02R q2-a junk; orphan census; 213 crop review passes; 11-e legacy link; SME/DB + /0.2 (operator); PAT rotation STILL PENDING (both exposed tokens).
