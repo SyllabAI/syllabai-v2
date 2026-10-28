@@ -1,0 +1,81 @@
+{
+  "schema": "syllabai.lane-receipt/1.0",
+  "task": "T-SPECS-MATHSB-2B-OVERLAY-1 run-001 (the 13 unmapped generic lessons via the T-SPEC-2b operator-verdict overlay)",
+  "family": "T-SPECS-MATHSB-2B-OVERLAY-1",
+  "run": "run-001",
+  "operator_order": "apply the T-SPEC-2b precedent ... for the 13 unmapped generic lessons (activating the run-001 receipt followup #2 sanctioned path)",
+  "trace_id": "1a183901ab68b9fd",
+  "session": "web-528c0352-0cf7-4715-a187-50aec294b288",
+  "generated_utc": "2026-10-28T18:40:00Z",
+  "queue_of_record": "the 13 unmapped stays of T-SPECS-MATHSB-REVIEW-1 run-001 (resources b7bf5bbc sheet UNMAPPED_STAY 13; card .syllabai/tasks/T-SPECS-MATHSB-REVIEW-1.yaml notes field)",
+  "resources_landing": {
+    "sha": "6162cc770e8391e4a76d68919b88fd9f23081ce9",
+    "based_on": "0a4670a3 (PR #207 merge tip at lane start; FF push, no force)",
+    "engine": "scripts/maths_b_tspec2b_overlay.py",
+    "lane_law": "T-SPEC-2b SIDE-CAR overlay (the build_learner_spec_links.verdict_overlay convention): verdicts recorded on spec_point_resolution.json resolved[] rows with method 'operator-verdict lane (T-SPEC-2b; PMT excluded as source per operator instruction 2026-09-18)'; spec_point_map.json BYTE-UNTOUCHED (sha256 asserted before/after); map lane wins; the overlay fills ONLY ids the map itself left unmapped",
+    "verdict_law": "T_SPEC_2B_ATTACH = term-identity (note name/title prints the statement's distinctive content term verbatim; tier C1_content_join) or grouping-consistent topic-plane semantic home with of-record rows cited (tier C3_topic_anchored); T_SPEC_2B_STAY = no statement-plane home in the 98-statement spine (pool READ in full, quoted) — attaching would be a guess (the sda-bio 2.54 no-guess class); every basis quotes the statement READ + note text + of-record grouping; no-guess preserved, 13/13 accounted",
+    "verdicts": {
+      "T_SPEC_2B_ATTACH": 11,
+      "T_SPEC_2B_STAY": 2
+    },
+    "attaches": [
+      "Repeated Percentage Change -> 1H (term identity 'percentage'; C1)",
+      "Best Buys -> 1G (money plane; 1G of-record for Money Calculations; run-001 candidate of note)",
+      "Converting Units -> 1G (measures plane)",
+      "Squared & Cubic Units -> 1G (measures plane)",
+      "Collecting Like Terms -> 3A (3A of-record for Algebraic Notation)",
+      "Expanding One Bracket -> 3C (FAMILY GROUPING: of-record Expanding Two/Three/Squared Brackets rows all 3C)",
+      "Expand & Simplify -> 3C (same family)",
+      "Midpoint of a Line -> 4H (4H of-record for 2D Coordinates; run-001 candidate of note)",
+      "Pie Charts -> 10A (10A of-record for the statistical-diagrams family)",
+      "Relative Frequency -> 10E (10E of-record for Basic Probability)",
+      "Expected Frequency -> 10K (TERM IDENTITY: 10K READ 'Understand and use the term expected frequency', 0 prior mappings; the r1 10C/10K 0.252 tie broken by the eyes-on read: 10C = grouped-mean statistics)"
+    ],
+    "stays": [
+      "Mathematical Symbols — no notation/symbols statement exists in the T1 pool (READ in full 1A-1K; cov_w 0.0 on every candidate)",
+      "Systematic Lists — no listing/outcomes statement in T10; 10I rejected = 'Using simple conditional probability for combined events', a conditional technique the note does not teach"
+    ],
+    "battery": "ALL PASS: 13/13 accounted, attaches' codes valid in the parsed pool + topic-gate consistent, method string verbatim, stays structured, resolution-mirrors-overlay, map sha256 unchanged, idempotence = r2 pass marker no-op (sheet r2_overlay.pass)",
+    "map_flashcards_extension": "scripts/map_flashcards.py extended with the same verdict_overlay fill (additive; new totals row spec_link_overlay_2b) — within this lane's carded downstream scope (map_flashcards named in T-SPECS-MATHSB-REVIEW-1 scope.allowed)",
+    "downstream_rederived": [
+      "SME-Flashcards/igcse-maths-b-16/flashcard_spec_map.json: 1082 cards / 268 coded (coded 262->268; 6 Repeated-Percentage-Change cards via overlay2b; all other cards byte-identical)",
+      "Official-Specifications/parsed/_flashcard_map_report.json",
+      "spec-links/igcse-maths-b-16.json: 467 items / 465 coded (notes 188->197/199, cards 262->268/268) — exactly 9 note items + 6 card items changed, nothing else"
+    ],
+    "hub_effect": "loose maths-b revision notes 11 -> 2 (Mathematical Symbols, Listing Outcomes — the two honest stays)"
+  },
+  "v2_landing": {
+    "worktree": "detached at 992d280b (origin/main at lane start; fetch-first verified)",
+    "stages": [
+      "stage-1 pin bump: apps/hub/scripts/attach_official_map.py RESOURCES_SHA b7bf5bbc.. -> 6162cc77.. (R026-2B-OVERLAY comment)",
+      "stage-2 attach regen --course igcse-maths-b-16: content-maps/igcse-maths-b-16.json spcptToOfficial 202 rows UNCHANGED (map lane), spcptUnmapped 13, 15 items now carry the 2b method rows (9 notes + 6 cards — exact); _report.json maths-b row: items notes 197 / flashcards 268, spineHitCodes 69->70, uncoveredSpineCodes 29->28; git scope = exactly the 3 expected files",
+      "stage-3 flip via scripts/apply_official_flip.py --course igcse-maths-b-16 (the stage-3 proper writer; the bare build_official_content --out path was tried first and abandoned — it is the lane-build pretty-printed writer, wrong serialization law; --out writes were reverted byte-exact before apply): G1-G5 APPLIED (dry-run + apply both 1/1 ok); notes.json 197/199 coded with the 11 attaches live (delta = exactly 9 notes); flashcards.json delta = exactly 6 cards (specPointCode 1H); questions.json regressed by the KNOWN flip-pipeline re-emission gap and was restored BYTE-EXACT to the run-002 repaired state (sha 2a0eccaa41e341f2, verified post-restore) — zero questions-plane change; curriculum.json untouched; manifest ONLY officialSpine.resourcesSha bumped (field-level diff verified; counts unchanged 65/1270/2412/6500/1082/199)"
+    ],
+    "gates": {
+      "flip_gates": "G1-G5 APPLIED (1/1 courses ok)",
+      "build_check": "build_official_content --check --course igcse-maths-b-16: failed=0 (honest unmapped classes 2/814/2412, inlineResidual 13)",
+      "typecheck": "bun run typecheck exit 0",
+      "flashcard_sync": "verify:flashcard-sync exit 0",
+      "corpus": "verify:corpus PASSED",
+      "cie": "verify:cie PASSED (paper-count assertions hold)",
+      "tests": "bun test apps/api packages: 3,046 ran / 13 skip / 0 FAIL (== the of-record green arithmetic)",
+      "env": "bun install --frozen-lockfile: 952 packages, no drift"
+    },
+    "cache_note": "the attach raw-fetch cache (work/spec-maps-cache) is keyed by rel path WITHOUT the pin sha (latent pin-blindness, disclosed — not patched cross-lane); the 4 maths-b cache entries were backed up to work/spec-maps-cache-b7bf5bbc-backup/ and cleared before stage-2 so the regen consumed the 6162cc77 pin fresh"
+  },
+  "no_touch": [
+    "main DB (Neon quota outage unbroken — zero DB contact)",
+    "questions.json of igcse-maths-b-16 (byte-frozen foreign authority, run-002 repaired state)",
+    "igcse-chemistry-19 golden",
+    "spec_point_map.json in resources (the map lane — side-car law)",
+    "all other courses' bundles/content-maps/report rows",
+    "CIE lanes"
+  ],
+  "followups": [
+    "the 2 honest stays are terminal under the current 98-statement spine — reopen only if Edexcel amends the spec or a notation/listing statement appears in a future spine refresh",
+    "flip-pipeline owners: the questions.json linkage re-emission gap (G4 non-emptiness) remains open of record — dodged by byte-restore again, not patched cross-lane",
+    "attach_official_map.py fetch cache is pin-blind (rel-path key without sha) — machine-local backup+clear workaround used, not patched cross-lane",
+    "PAT rotation STILL CRITICAL-OVERDUE"
+  ],
+  "push_mode": "direct push to both mains per the MATHSB-ANCHORS run-001 / MATHSB-REVIEW-1 run-001 lane precedent (operator-ordered adjudication of this lane's own card); fetch-first rechecks before each push; FF only, no force"
+}

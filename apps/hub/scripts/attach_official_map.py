@@ -66,7 +66,14 @@ REPO = Path(__file__).resolve().parent.parent
 # trace 1a181ba3a6e696b9). Only maths-b's five join inputs differ
 # pin..tip (byte-verified); supersedes the interim 08447ba9 pin which carried
 # the pre-join maths-b linkage (33/61) through the #427 landing.
-RESOURCES_SHA = "b7bf5bbc0f88c8f9e281919d4e211b7628f3f427"
+# R026-2B-OVERLAY: bumped to the T-SPEC-MATHSB-2B-OVERLAY-1 tip — first pin
+# carrying the T-SPEC-2b operator-verdict side-car overlay for the 13 unmapped
+# generic lessons (resources scripts/maths_b_tspec2b_overlay.py: 11 attaches +
+# 2 honest stays on spec_point_resolution.json; map lane byte-untouched; map
+# flashcards verdict_overlay fill; spec-links notes 197/199, cards 268/268).
+# Operator order trace 1a183901ab68b9fd. Only maths-b's join inputs differ
+# pin..tip (byte-verified lane scope).
+RESOURCES_SHA = "6162cc770e8391e4a76d68919b88fd9f23081ce9"
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 DEFAULT_CACHE = Path("/home/z/my-project/work/spec-maps-cache")
 
