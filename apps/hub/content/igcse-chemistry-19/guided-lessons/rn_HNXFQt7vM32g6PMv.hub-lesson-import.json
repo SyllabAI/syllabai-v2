@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_HNXFQt7vM32g6PMv",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "2d2f221ce005cd289ca376b87f3f8921fe38a8767a5f71f1bb58a0db32d7e3c1",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "049fc01571af09b804b65f84e6863edc4c0a1e7b7cb9ee51a3d898b6144a7960",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_HNXFQt7vM32g6PMv",
@@ -69,6 +69,9 @@
           "rn_HNXFQt7vM32g6PMv::L1::Q3",
           "rn_HNXFQt7vM32g6PMv::L1::Q4",
           "rn_HNXFQt7vM32g6PMv::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -116,6 +119,9 @@
           "rn_HNXFQt7vM32g6PMv::L2::Q3",
           "rn_HNXFQt7vM32g6PMv::L2::Q4",
           "rn_HNXFQt7vM32g6PMv::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -148,6 +154,18 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/201994f03a81-exothermic-and-endothermic-reactions-v2.png",
+        "alt": "Energy level diagrams for an exothermic and endothermic reaction",
+        "sourceHeading": "Energy level diagrams",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_TsfqyK9BYMtN2Bfd",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "eb583c9a1caa62421301af43745d559987b19ea1cb0db20995466af4f0697e95",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "57db4170a181bfba9fe0d43f2ad2322244627cbecc8714a0aa0f2d9237bf5422",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_TsfqyK9BYMtN2Bfd",
@@ -75,6 +75,9 @@
           "rn_TsfqyK9BYMtN2Bfd::L1::Q3",
           "rn_TsfqyK9BYMtN2Bfd::L1::Q4",
           "rn_TsfqyK9BYMtN2Bfd::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -167,6 +170,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f14cefa5953b-paper-chromatography-new.png",
+        "alt": "paper-chromatography-new",
+        "sourceHeading": "Diagram of the apparatus needed for paper chromatography",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
   }
 }

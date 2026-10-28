@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_V9tPMnX6Hq2XnqcP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "9cf73672b81f0f50f5acca4ad9cac98296ebe99d6416f0b1ee45bf44fe674b08",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "6afeae639957cffa8cb00eb70cc476be1d59f90f060eab3e0fa31fd857026852",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_V9tPMnX6Hq2XnqcP",
@@ -116,6 +116,9 @@
           "rn_V9tPMnX6Hq2XnqcP::L2::Q3",
           "rn_V9tPMnX6Hq2XnqcP::L2::Q4",
           "rn_V9tPMnX6Hq2XnqcP::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -148,6 +151,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4b1b30ea7cbf-electronic-configuration-of-li-na-and-k.png",
+        "alt": "Electronic configuration of Li, Na and K, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Electronic configuration of Group 1 elements",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

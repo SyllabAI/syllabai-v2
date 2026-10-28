@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_nzW5ppBTV3ZnfSYY",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1be2b411b13c597fbf71dbed0a488febaa06fd9774402ea93fac4a7e4b9ad2c4",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "b6bf58e437c4046f0b32b18cf8b254ceab038f21a5be031b76e6dd7cb9c7ba5a",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_nzW5ppBTV3ZnfSYY",
@@ -123,6 +123,9 @@
           "rn_nzW5ppBTV3ZnfSYY::L2::Q3",
           "rn_nzW5ppBTV3ZnfSYY::L2::Q4",
           "rn_nzW5ppBTV3ZnfSYY::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -170,6 +173,24 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4706b9965ae1-diagram-showing-the-carbon-extraction-of-iron.png",
+        "alt": "The blast furnace",
+        "sourceHeading": "The blast furnace",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/96f86d3c38b1-extraction-of-al.png",
+        "alt": "extraction-of-al",
+        "sourceHeading": "The electrolytic cell for extraction of aluminium",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_KpvF2TWr5fYHk2Jz",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5c530727a009f4d8c27932c9445efd0675e10265d3b39d360bcb0707ec5bcf6b",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "f0e878acb5d41c63694e2d14853fe9224a5ebe7e0a14cc71adb23b6b67408f4e",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_KpvF2TWr5fYHk2Jz",
@@ -83,6 +83,9 @@
           "rn_KpvF2TWr5fYHk2Jz::L1::Q3",
           "rn_KpvF2TWr5fYHk2Jz::L1::Q4",
           "rn_KpvF2TWr5fYHk2Jz::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -132,6 +135,9 @@
           "rn_KpvF2TWr5fYHk2Jz::L2::Q3",
           "rn_KpvF2TWr5fYHk2Jz::L2::Q4",
           "rn_KpvF2TWr5fYHk2Jz::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-04"
         ]
       }
     ],
@@ -164,6 +170,40 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3e82430107bc-2-2-5-intermolecular-forces-vs-covalent-bonds.png",
+        "alt": "Intermolecular Forces Vs Covalent Bonds, downloadable IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Simple molecular structures",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/cb17c2f79e81-4-1-11-the-structure-of-buckminsterfullerene-1.png",
+        "alt": "The structure of Buckminsterfullerene",
+        "sourceHeading": "C<sub>60</sub> fullerene",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/e81c57c28b08-10-1-1-alkanes-boiling-point-graph.png",
+        "alt": "Alkanes Boiling Point",
+        "sourceHeading": "The relationship between molecular mass and boiling point",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/ed6b00507fcf-electrical-wire-insulator.png",
+        "alt": "Electrical wire insulator, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Conductivity of simple molecular structures",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

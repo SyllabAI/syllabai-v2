@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_KTZjJ7sPdDt4tkTH",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4649fc86a02ba5fd71d61db6b3ecb3c53e5d1675724c656c51816c93f16a4935",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "25ad2b8094cae2ec636ec10921d344af8df5d46ce0d7f72030bde9e1c83ce453",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_KTZjJ7sPdDt4tkTH",
@@ -121,6 +121,10 @@
           "rn_KTZjJ7sPdDt4tkTH::L2::Q3",
           "rn_KTZjJ7sPdDt4tkTH::L2::Q4",
           "rn_KTZjJ7sPdDt4tkTH::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       },
       {
@@ -209,6 +213,26 @@
         ],
         "finalAnswer": "The overall energy change is -184 kJ, so the reaction is exothermic."
       }
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/6bc418862a43-bond-making-exothermic-reaction.png",
+        "alt": "Bond making exothermic reaction",
+        "sourceHeading": "Exothermic reactions",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/d10962535d6f-bond-breaking-endothermic-reaction.png",
+        "alt": "Bond breaking endothermic reaction",
+        "sourceHeading": "Endothermic reactions",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_tvwj4VZ6yFscPJfD",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "084bce7003dc2a508f27b27dd0c651b4344138aa98653bb68a555fbfb8964b2b",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "cb097fecb6eebf8ea5e39fcd6d9f79b97b9df728564ae8d257112fd4d93db5a1",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_tvwj4VZ6yFscPJfD",
@@ -73,6 +73,10 @@
           "rn_tvwj4VZ6yFscPJfD::L1::Q3",
           "rn_tvwj4VZ6yFscPJfD::L1::Q4",
           "rn_tvwj4VZ6yFscPJfD::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       },
       {
@@ -120,6 +124,10 @@
           "rn_tvwj4VZ6yFscPJfD::L2::Q3",
           "rn_tvwj4VZ6yFscPJfD::L2::Q4",
           "rn_tvwj4VZ6yFscPJfD::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       }
     ],
@@ -152,6 +160,28 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/65a73758c90f-5-6-reaction-kinetics-iron-catalyst-1.png",
+        "alt": "Diagram showing how iron acts as a catalyst for the Haber process",
+        "sourceHeading": "The effect of a catalyst on rate of reaction",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b9dba5d10ec4-5-6-reaction-kinetics-iron-catalyst-2.png",
+        "alt": "Reaction Kinetics - Iron Catalyst (2), downloadable AS & A Level Chemistry revision notes",
+        "sourceHeading": "The effect of a catalyst on rate of reaction",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      }
+    ]
   }
 }

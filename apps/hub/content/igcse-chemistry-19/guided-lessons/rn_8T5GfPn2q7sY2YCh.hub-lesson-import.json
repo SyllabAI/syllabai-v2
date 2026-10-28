@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_8T5GfPn2q7sY2YCh",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "58fc5d55f2ae780ff8d79d54b40bcb3deb1bd9244558cdad7a52fa077773a054",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "88ae22dac8f77b62da333d086791c5c9f1572d9dc8467f7db39aa4ef2ff8945f",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_8T5GfPn2q7sY2YCh",
@@ -70,6 +70,9 @@
           "rn_8T5GfPn2q7sY2YCh::L1::Q3",
           "rn_8T5GfPn2q7sY2YCh::L1::Q4",
           "rn_8T5GfPn2q7sY2YCh::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -118,6 +121,9 @@
           "rn_8T5GfPn2q7sY2YCh::L2::Q3",
           "rn_8T5GfPn2q7sY2YCh::L2::Q4",
           "rn_8T5GfPn2q7sY2YCh::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -150,6 +156,26 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b44045653d49-3-4-hydroxy-compounds-combustion-of-alcohols.png",
+        "alt": "Equation to show the complete combustion of ethanol",
+        "sourceHeading": "Combustion",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/adff44b26934-10-2-10-heating-under-reflux-1.png",
+        "alt": "Equipment showing ethanol being heated under reflux",
+        "sourceHeading": "The oxidation of ethanol",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

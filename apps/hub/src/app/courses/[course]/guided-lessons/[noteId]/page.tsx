@@ -9,11 +9,14 @@ import { loadHubCourse } from "@/lib/courses";
 import { Breadcrumbs } from "@/components/hub/chrome";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import {
+  figuresForModule,
   findGuidedEntry,
   loadGuidedIndex,
   loadGuidedLesson,
   loadGuidedPackage,
+  noteLevelFigures,
   type GuidedDepthLayer,
+  type GuidedFigure,
   type GuidedModule,
   type GuidedQuestion,
 } from "@/lib/guided-lessons";
@@ -157,11 +160,33 @@ export default async function GuidedLessonPage({
                   key={m.id}
                   module={m}
                   ordinal={mi + 1}
+                  figures={figuresForModule(imported, mi)}
                   questions={m.checkRefs
                     .map((ref) => questionsById.get(ref))
                     .filter((q): q is GuidedQuestion => q !== undefined)}
                 />
               ))}
+              {noteLevelFigures(imported).length > 0 && (
+                <section className="space-y-2" aria-labelledby="static-note-figures">
+                  <h2 id="static-note-figures" className="text-base font-semibold tracking-tight">
+                    From the revision note
+                  </h2>
+                  <p className="text-[13px] text-muted-foreground">
+                    Diagrams on this note&apos;s page that are not tied to a specific lesson.
+                  </p>
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {noteLevelFigures(imported).map((f) => (
+                      <span
+                        key={f.id}
+                        className="block aspect-video w-full overflow-hidden rounded-md border bg-muted/40"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element -- corpus hotlink law, identical to the notes reader img: branch */}
+                        <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
+                      </span>
+                    ))}
+                  </div>
+                </section>
+              )}
             </div>
           </details>
 
@@ -198,10 +223,12 @@ export default async function GuidedLessonPage({
 function StaticModuleSection({
   module: m,
   ordinal,
+  figures,
   questions,
 }: {
   module: GuidedModule;
   ordinal: number;
+  figures: GuidedFigure[];
   questions: GuidedQuestion[];
 }) {
   return (
@@ -221,6 +248,19 @@ function StaticModuleSection({
           </div>
         )}
         <p className="text-[13px] leading-relaxed text-muted-foreground">{m.opening}</p>
+        {figures.length > 0 && (
+          <div className="grid gap-2 sm:grid-cols-2">
+            {figures.map((f) => (
+              <span
+                key={f.id}
+                className="block aspect-video w-full overflow-hidden rounded-md border bg-muted/40"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- corpus hotlink law, identical to the notes reader img: branch */}
+                <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       <Card>

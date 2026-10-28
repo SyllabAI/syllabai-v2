@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_jXXsc4wt2344BjxX",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "515d552ee84b02cd08a6d2fd09594ee6752ceee27fb8b41ac4ed842b479a291e",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "302724c7bc7387d27013ff9f60b4443e88b72d659b640940c6ada54d700997fe",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_jXXsc4wt2344BjxX",
@@ -116,6 +116,9 @@
           "rn_jXXsc4wt2344BjxX::L2::Q3",
           "rn_jXXsc4wt2344BjxX::L2::Q4",
           "rn_jXXsc4wt2344BjxX::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -148,6 +151,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/8619a5260621-group-7-element-electronic-configurations.png",
+        "alt": "Group 7 element electronic configurations, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Electronic configuration of Group 7 elements",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_jVwPmjqHbqQkXcjG",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a8fd590884218fdf9a6a0f56687b51a4088276d368e25c78561f51f8631ebe9a",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "ce707f027988b114a8e35ed6f5cd6718f23dade8d69057baa2f9fa8de09d4630",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_jVwPmjqHbqQkXcjG",
@@ -79,6 +79,9 @@
           "rn_jVwPmjqHbqQkXcjG::L1::Q3",
           "rn_jVwPmjqHbqQkXcjG::L1::Q4",
           "rn_jVwPmjqHbqQkXcjG::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -126,6 +129,9 @@
           "rn_jVwPmjqHbqQkXcjG::L2::Q3",
           "rn_jVwPmjqHbqQkXcjG::L2::Q4",
           "rn_jVwPmjqHbqQkXcjG::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-03"
         ]
       }
     ],
@@ -158,6 +164,33 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/aefc6e6cc34b-oppositely-charged-ions-attraction-due-to-electr.png",
+        "alt": "Oppositely charged ions attraction due to electrostatic attraction, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Ionic bonding",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/1fc8bbfea68e-nacl-lattice-ball-ball-stick.png",
+        "alt": "NaCl Lattice_ Ball + Ball & Stick, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Giant ionic lattice of sodium chloride",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7418c58b0248-molten-ionic-substances-conduct-electricity-1.png",
+        "alt": "Molten ionic substances conduct electricity, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Conductivity of ionic compounds",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

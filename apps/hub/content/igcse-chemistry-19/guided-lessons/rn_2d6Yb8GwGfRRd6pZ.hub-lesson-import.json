@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_2d6Yb8GwGfRRd6pZ",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "39e6fceb916466bc94800f8893208e8a9208d06e69435c0b85cbb621a3b15d75",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "c68e1b3a74ec6c080ab6e13e8250c2dd254ef0fc391c8847bd2ddae2c635a21a",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_2d6Yb8GwGfRRd6pZ",
@@ -123,6 +123,9 @@
           "rn_2d6Yb8GwGfRRd6pZ::L2::Q3",
           "rn_2d6Yb8GwGfRRd6pZ::L2::Q4",
           "rn_2d6Yb8GwGfRRd6pZ::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -160,6 +163,24 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a9182d3d4399-equilibrium-in-open-closed-systems.png",
+        "alt": "Equilibrium in open & closed systems",
+        "sourceHeading": "The difference between an open and closed system",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/d2522ef3b3c0-dynamic-equilibrium.png",
+        "alt": "Graph to show dynamic equilibrium",
+        "sourceHeading": "The rate of the forward and reverse reaction during the progress of a reaction",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

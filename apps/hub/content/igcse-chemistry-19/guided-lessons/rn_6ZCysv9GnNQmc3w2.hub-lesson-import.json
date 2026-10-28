@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_6ZCysv9GnNQmc3w2",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7fa9c7a29b9c95e3ec980a4191b469d1a5a26e206d3a82509aaeba979f9293ca",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "c9e495d8dc0a37f138b32426bcb8dcd405fc182f26d5c5870f054a91c671c98d",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_6ZCysv9GnNQmc3w2",
@@ -116,6 +116,9 @@
           "rn_6ZCysv9GnNQmc3w2::L2::Q3",
           "rn_6ZCysv9GnNQmc3w2::L2::Q4",
           "rn_6ZCysv9GnNQmc3w2::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -148,6 +151,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bf49f3442360-copper-sulfate-crystals.jpg",
+        "alt": "copper-sulfate-crystals",
+        "sourceHeading": "Copper sulfate crystals",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

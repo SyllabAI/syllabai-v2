@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_XJ8qXfzZJJFKXHnF",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4b2902eee71a446d10548b470b3837b3e53ec5e3c8b538289dd0dfa3cb15031e",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "f037175e52eae21d8fe887ff00ef55805ea0aa86ce3b2a41505314ab93d91274",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_XJ8qXfzZJJFKXHnF",
@@ -74,6 +74,12 @@
           "rn_XJ8qXfzZJJFKXHnF::L1::Q3",
           "rn_XJ8qXfzZJJFKXHnF::L1::Q4",
           "rn_XJ8qXfzZJJFKXHnF::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04"
         ]
       },
       {
@@ -122,6 +128,10 @@
           "rn_XJ8qXfzZJJFKXHnF::L2::Q3",
           "rn_XJ8qXfzZJJFKXHnF::L2::Q4",
           "rn_XJ8qXfzZJJFKXHnF::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-05",
+          "fig-06"
         ]
       },
       {
@@ -202,6 +212,90 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/99f7914c498b-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
+        "alt": "Effect of Surface Area on a Reaction Rate",
+        "sourceHeading": "Effect of surface area of a solid on the rate of reaction",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/53457075782f-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
+        "alt": "Effect of Surface Area on a Reaction Rate",
+        "sourceHeading": "Effect of surface area of a solid on the rate of reaction",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bc431f784ecc-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
+        "alt": "Effect of Surface Area on a Reaction Rate",
+        "sourceHeading": "Effect of surface area of a solid on the rate of reaction",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/04c05d9703f7-investigating-effect-of-concentration-on-rate-re.png",
+        "alt": "Investigating effect of concentration on rate reaction",
+        "sourceHeading": "Effect of concentration of a solution on the rate of reaction",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a239c4d1d14d-7-1-2-investigating-effect-of-te.png",
+        "alt": "Investigating the effect of temperature on rate of reaction",
+        "sourceHeading": "Effect of temperature on the rate of reaction",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f6b39eeb434c-investigating-effect-of-catalyst-on-rate-reactio.png",
+        "alt": "Investigating effect of catalyst on rate reaction",
+        "sourceHeading": "Effect of a catalyst on the rate of reaction",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-07",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/df21ea4622dc-concentration-of-solution-igcse-and-gcse-chemist.png",
+        "alt": "How pressure and concentration affect the rate of reaction",
+        "sourceHeading": "Graph showing the effect of concentration on rate of reaction",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-08",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f79bbd6d8d05-temperature-graph.png",
+        "alt": "How temperature affects the rate of reaction",
+        "sourceHeading": "Graph showing the effect of temperature on rate of reaction",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-09",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/af7327c623e6-surface-area-graph.png",
+        "alt": "How surface area affects the rate of reaction",
+        "sourceHeading": "Graph showing the effect of surface area on rate of reaction",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-10",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/883d31f43a32-surface-area-of-a-solid-reactant.png",
+        "alt": "Surface Area of a Solid Reactant, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Surface area and particle size",
+        "moduleIds": []
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_cTk2cs2h2BKQ3y3B",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e0ccc4b3acb7c76c3e943d1fcd058b6e0fa8d273e0188b55692e3ec0260e6eaa",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "f394cd251ee9e39aef6a1db41e26a19762e275ae925fe682d068f113a0a2e03c",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_cTk2cs2h2BKQ3y3B",
@@ -79,6 +79,9 @@
           "rn_cTk2cs2h2BKQ3y3B::L1::Q3",
           "rn_cTk2cs2h2BKQ3y3B::L1::Q4",
           "rn_cTk2cs2h2BKQ3y3B::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -178,6 +181,17 @@
         ],
         "finalAnswer": "13.6 g of potassium nitrate dissolves in 20 g of water at 50 °C; 108 g of lead(II) nitrate crystallises on cooling from 90 °C to 40 °C"
       }
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/8f9dfc68f8ce-salt-solubility-curves.png",
+        "alt": "A graph to show the solubility curves of three different salts",
+        "sourceHeading": "Solubility curve for three salts",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
   }
 }

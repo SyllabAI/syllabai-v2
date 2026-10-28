@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_wTtM2fQVVjntRm64",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b0b22d2c9302fc9271aaa5ed5078cab51a06b835acf0b5a99774c6139f27da0a",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "08a4de42dcddf9e0f1e78260dd06ac7cd787ed07ac70dc9f033fd9d20ebb931e",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_wTtM2fQVVjntRm64",
@@ -122,6 +122,9 @@
           "rn_wTtM2fQVVjntRm64::L2::Q3",
           "rn_wTtM2fQVVjntRm64::L2::Q4",
           "rn_wTtM2fQVVjntRm64::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -159,6 +162,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3a09260ed3b6-the-periodic-table-2.png",
+        "alt": "The periodic table showing the location of metals and non metals",
+        "sourceHeading": "Metals and non-metals in the periodic table",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }
