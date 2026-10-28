@@ -21810,3 +21810,16 @@ Work Log:
 
 Stage Summary:
 - F5 FLEET STRIP CLOSED END-TO-END: 2168 lines out, furniture census 0 (excl. 53 deferred spare-grid), all 17 playbook invariants held, sampled evidence 55/55 + 2 supplemental papers PASS. Landing: branch r7a-pp-f5-fleet-strip-015 (PAT env-only via per-invocation askpass; zero credential writes), PR + CI + merge + live byte-match to follow in the landing section of the receipt. Queue after: run-016 spare-grid rebuilds (53), 2021-06 02 q2 misalignment, 2024-06 02R q2-a junk, displaced-sentence-head orphan census, PAT rotation STILL PENDING.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-015 (landing record)
+Agent: R7a main lane (operator session trace 1a17ffb05099dfbd)
+Task: Landing + live verification for run-015 (bookkeeping append).
+
+Work Log:
+- Pushed r7a-pp-f5-fleet-strip-015 @ dd3a36c3 (PAT env-only via per-invocation askpass; zero credential writes); PR #417 opened; CI hub+verify 2/2 SUCCESS; MERGED -> main 430cb8cbc1049b64c57865cacd5cfdbadbe66330; post-merge main CI 2/2 SUCCESS.
+- LIVE: /corpus/igcse-maths-b-16/official-papers.json byte-match eabd5ca8b643f93f EXACT ~2min post-merge (deployment currency of record). Strip wave = pure removal — byte-match carries data-presence per the run-014 payloadProbeNote law.
+- Receipt landing section updated in place (bookkeeping-only .syllabai/**).
+
+Stage Summary:
+- RUN-015 LANDED END-TO-END: PR #417 merged 430cb8cb, live corpus byte-exact. Queue: run-016 spare-grid rebuilds (53), 2021-06 02 q2 misalignment, 2024-06 02R q2-a junk, PAT rotation STILL PENDING (GitHub ...JU4 / Vercel vcp_...aoT3).
