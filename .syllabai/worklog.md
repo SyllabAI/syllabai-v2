@@ -21932,6 +21932,35 @@ Stage Summary:
 - **Notes**: 14:30 escalation RESOLVED — red main introduced by direct-push `57d73a99` (4 cie-phase4 roster law failures) was repaired by lane run-002 `9eea70b6` (direct push, "fleet laws catch up with the spec-fill, CI-verify fix on transit 46"); both direct pushes remain operator-visibility items; bookkeeping-only receipt commit (.syllabai/worklog.md only); fetch-first reset #222 at sweep start (signature 89962a5, restored, zero loss); no force-push; no self-merge
 
 ---
+Task ID: T-SPEC-AUDIT-1 r0 (operator order trace 1a181a3e7f63f0fd "Now go through all of the 'Specification Tree' of all the courses. Check if they render properly and beautifully. Check if they have any parsing or formatting error. Then fix everything.")
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Audit all 106 specification trees end-to-end (data plane + live render), then fix everything fixable without violating the no-guess/pin laws.
+
+Work Log:
+- Read-only audit of record (origin/main 515edc81): data census over all 15,832 curriculum title/description fields replicating buildSpecTreeIndex + the specification page path (audit_spec_trees.py, char_census.py), and a live fetch of all 106 /courses/<slug>/specification pages with badge-vs-computed comparison (audit_spec_live.py). Receipts: .syllabai/receipts/T-SPEC-AUDIT-1/ (README + data-audit-census.json + live-audit.json).
+- STRUCTURAL VERDICT: 106/106 sound — zero dup codes, zero broken parents, zero invisible nodes, zero badge lies (49 applicability pages badge == computed, 4,292 points; 57 honest-card pages), zero pin-law violations, no error markers live.
+- DEFECT CENSUS (extraction artifacts surfacing verbatim): U+0007 bullet scatter n=1,207 across 21 courses; PUA tofu n=44+78+22+20+3 across ial-maths/geo-19 (F084→≤ 14/14 context, F085→≥, F083→≥, F061→↦ 3/3, F8EB-F8F8 large-paren pieces, F0FC→✓ Wingdings, F075/F072 orphaned vector arrows stripped, F026→derivative dots); U+00AD n=2; stray backtick n=1; "| x |" modulus padding n=24 (guarded — "P(B | A)" passes verbatim); multi/edge-space + NBSP scatter.
+- KEPT (printed verbatim, no-guess): igcse-accounting-17 "**" footnote markers. NOT FIXED (deep parse class, operator-gated follow-up): unbalanced brackets ~51 / chem subscript loss (PC l ← PCl₅ class) / matrix-column scatter — these need eyes-on vs printed evidence (4MB1 PR #423 precedent); resources-side maps/sidecars join on pool wording verbatim so corpus text repair is a resources lane, not a v2 blind edit.
+- FIX (render-layer, corpus byte-untouched): NEW src/lib/spec-text.ts normalizeSpecText() with the evidenced mapping table (idempotent, verified 15,832/15,832 artifact-free + idempotent; conditional-probability bars safe; modulus pairs compact); spec-tree.ts normalizes topic/subtopic/subject titles at index build (spec page + sidebar); specification/page.tsx normalizes statement text + replaces the header copy "Every N specification statement … exactly as Pearson assesses them" (grammar error, board-wrong for 56 CIE courses, hollow on 57 applicability-less courses) with board-aware "All N specification statements from the official <board> specification, as printed" + filter sentence only where applicability exists.
+- GATES: tsc 0 errors; verify:corpus PASS; verify:flashcard-sync PASS; verify:cie PASS; full build GREEN 1637/1637 (106 spec pages SSG); prerendered-HTML probes 10/10 (new copy CIE+Pearson, old copy absent, BEL absent, ≤/≥/✓/()/|x| present, cond-prob verbatim).
+- Push = TRANSIT 48 (3 source files + receipt + this entry; fetch-first recheck pre-push; no force). PAT rotation CRITICAL-OVERDUE reported pre-push (same fingerprint through 48).
+
+Stage Summary:
+- The operator's audit order is answered of record: every one of the 106 specification trees renders properly and the only rendering defects (extraction-artifact junk + tofu + one copy error) are fixed at the presentation layer with corpus provenance intact. Deep-parse residue (bracket/scatter/subscript class) is censused in the receipt and awaits an operator-gated resources-side eyes-on lane.
+
+---
+
+## R0-AUTO receipt — 2026-10-28T09:08Z (cron 17:00 UTC+8, Job 438940)
+
+- **Task ID (local)**: 76
+- **PR merged**: #426 "F90 80-denominator restoration sync (2022-06 2C 6(a)) — companion of resources PR #205" — author SyllabAI, head `4d13e965`, base `515edc81`
+- **Merge sha**: `0e3f29a5` (merge_method=merge, PUT API)
+- **Pre-merge CI on head**: 2/2 SUCCESS (verify + hub); pre-merge main CI GREEN on `515edc81`
+- **mergeable**: clean (base == main tip at decision time)
+- **Reviews/comments**: 0 (no REQUEST_CHANGES / HOLD / BLOCKING hits)
+- **Diff scope**: 1 file, +1/-1, `apps/hub/content/igcse-chemistry-19/official-papers.json` (mark-scheme textMd correction); zero *.java, zero core/hub repo content, zero Neon/prod exposure
+- **Post-merge main CI**: 2/2 SUCCESS on `0e3f29a5` (bounded 90s re-check)
+- **Notes**: bookkeeping-only receipt commit (.syllabai/worklog.md only); fetch-first reset #226 at sweep start (signature 89962a5, restored, zero loss); no force-push; no self-merge
 Task ID: T-OEQ-MATHSB-SERVE-1 run-017 tranche 2 ('run-017 queue' — tranche-1 newLeadsQueued execution)
 Agent: r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6, trace 1a181a25c3323d71)
 
