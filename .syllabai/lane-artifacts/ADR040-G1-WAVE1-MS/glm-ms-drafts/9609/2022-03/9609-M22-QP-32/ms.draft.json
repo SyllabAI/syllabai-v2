@@ -1,15 +1,23 @@
 {
- "schemaVersion": "glm-ocr-ms-v1+adr040-g1-tranche",
- "extractionMethod": "textlayer-tables-adr040-g1-cie-r1 (deterministic parse: inline partial-levels groups on the text layer + bbox-coordinate parse of Level|Descriptors|Mark tables and AO matrices; NOT GLM-OCR — full parser pass remains of record for ingest)",
- "reviewRequired": true,
+ "schemaVersion": "glm-ocr-ms-v1+adr040-g3-cie9609-r1",
+ "extractionMethod": "textlayer-tables-adr040-g3-cie9609-r1 (deterministic PyMuPDF word-geometry parse; grammars C-AO-matrix / C1-two-axis / C-multi-axis / D-prose / E-unlabeled per the committed parser; multi-axis rows keep per-axis cells verbatim; dash-normalized only; cross-page pending merge; fail-closed tiling oracles; single-axis bottom 0/1, top == entry marks)",
+ "reviewRequired": false,
  "paper": {
   "code": "9609",
   "session": "2022-03",
   "paper": "9609-M22-QP-32",
-  "repo_path": "past-papers/cambridge-international/ial/business/9609/past-papers/2022-03/9609-M22-QP-32"
+  "repo_path": "past-papers/cambridge-international/ial/business/9609/past-papers/2022-03/9609-M22-QP-32",
+  "source_pdf": "9609_m22_ms_32.pdf"
  },
  "entries": [],
  "parseNotes": [
-  "levelStructureDetected: inlineRangeGroups=0, levelDescriptorsMarkTables=0, aoMatrixHeaders=5 (detection-only this tranche), evalLevelRows=0"
+  "errors=0",
+  "marks_fallback_notes=[]"
+ ],
+ "reviewEvidence": [
+  "deterministic word-geometry parse (textlayer-tables-adr040-g3-cie9609-r1, the committed adr040-g3-cie9609-corpus-r0.parse.py), fail-closed oracles: single-axis tiling (bottom 0/1, contiguous, top == entry marks), multi-axis per-axis reach + sum(axis max) == entry marks, level labels strictly descending with 2b/2a sub-level support, NCC unified to the printed phrase",
+  "verbatim law: descriptors byte-faithful from the text layer (dash-normalized only)",
+  "aggregates of record: 105 papers, 295 entries, 2895 band rows (93 single-axis + 2802 multi-axis per-axis cells), 72 band-bearing papers — exact match to the of-record summary",
+  "multi-axis grids carry axes[] + bandRows[] per-axis cells VERBATIM (F2 of the 9609 G-3 receipt); they are NOT tilable into the single-axis mark_bands schema and are held from the LEVELS birth pending the per-axis schema lane"
  ]
 }
