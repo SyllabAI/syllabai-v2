@@ -22128,3 +22128,9 @@ Work Log:
 
 Stage Summary:
 - The standing q27-b bare-caret lead is DISCHARGED eyes-on with the full gate battery; the fleet GS leads map is filed with the Pythagoras/cosine-rule bucket ranked; landing PR + post-redeploy live spot-check follow.
+
+## T-OEQ-MATHSB-SERVE-1 run-018 landing + live spot-check — 2026-10-29
+- PR #437 (eeac1380, t-oeq-mathsb/run-018) MERGED as 792c1565 (merge_method=merge); pre-merge CI verify+hub 2/2 success; post-merge main CI 2/2 success
+- Vercel auto-redeploy: syllabai-hub-v2-jo7actqgv READY @ sha 792c156; production alias syllabai-hub-v2.vercel.app -> 792c156 (alias list verified via Vercel API, live == main tip first-hand)
+- LIVE SPOT-CHECK GREEN: june-2026-4mb1-01r q27-b NEW KaTeX stem present raw/flight (2 layers), #429 bare-caret residual ABSENT, katex msup paints; june-2025-4mb1-01 wage-table regression 6/6 (table + rows + stems intact) — live == plane of record 5fe3af48816d260b, zero regressions observed
+- Receipt updated with landing + liveSpotCheck sections; residual queue: fleet B1 bare-caret wave (21 parts) + GS census trig bucket (159 leads) filed for the operator; PAT rotation CRITICAL-OVERDUE (standing)
