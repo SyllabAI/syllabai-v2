@@ -59,7 +59,14 @@ REPO = Path(__file__).resolve().parent.parent
 # NEXTBUMP-2: bumped to the bump-time tip (PR #33 merge) — the NEXT #2 fleet
 # bump's convergence pin per the PINSPLIT-1 ruling of record (floor law
 # >= 89260832 satisfied; carries T-SPEC-STAGE2-1 + tranche-2 + sda-bio verdict).
-RESOURCES_SHA = "08447ba9e706d0e503beb8243401b5dbfffe74df"
+# R025-MATHSB-JOIN: bumped to the maths-b content-join tip — first pin carrying
+# scripts/sme_maths_b_content_join.py r0 (202/215 spcpt->official rows, tiers
+# C1/C2/C3 + ledger repoint 5G->8K) and its rebuilt flashcard map + spec-links
+# sidecar; unblocks the 166 loose revision notes on the hub (operator order
+# trace 1a181ba3a6e696b9). Only maths-b's five join inputs differ
+# pin..tip (byte-verified); supersedes the interim 08447ba9 pin which carried
+# the pre-join maths-b linkage (33/61) through the #427 landing.
+RESOURCES_SHA = "8460a5f3a03fd7d43ed31e39c27d846f8a747208"
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 DEFAULT_CACHE = Path("/home/z/my-project/work/spec-maps-cache")
 
