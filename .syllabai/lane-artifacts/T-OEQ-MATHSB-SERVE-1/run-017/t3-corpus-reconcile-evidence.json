@@ -1,0 +1,348 @@
+{
+ "wave": "T-OEQ-MATHSB-SERVE-1 run-017 tranche-3 corpus reconcile (trace 1a183c376e58b165)",
+ "plane": {
+  "sha16": "44f4180e0d68c8a8",
+  "source": "syllabai-v2 origin/main da2a266f apps/hub/content/igcse-maths-b-16/official-papers.json"
+ },
+ "corpus": {
+  "base": "6162cc77",
+  "landed": "251b46ba",
+  "race_merged": "03b88f54 (PR #211 SIB chem EXM, zero overlap)"
+ },
+ "census": {
+  "plane_papers": 66,
+  "plane_parts": 2443,
+  "corpus_parts": 2443,
+  "field_matched": 2443,
+  "residual_drift_pairs_post_sync": 0,
+  "ordered_pids": 10,
+  "ordered_field_writes": 26
+ },
+ "battery": {
+  "total": 144,
+  "pass": 141,
+  "fail_ids": [
+   "C107-g9-static-corpus-green",
+   "C14-figure-crops",
+   "C66-stem-figures-ledger"
+  ],
+  "fail_class": "corpus-wide asset-byte canaries unrunnable in sparse sandbox",
+  "ab_proof": "pristine HEAD (git stash) fails the identical 3 on the identical tree",
+  "new_pins": "C120-C146 all PASS"
+ },
+ "pins": [
+  {
+   "id": "C120-t3-sync-01-6-solution_md",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "6",
+   "field": "solution_md",
+   "sha256": "5b857f8a473b2baf1e4d1c2407588f31c370b9523c119af7a33608b640daa087",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_6 solution_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C121-t3-sync-01-6-mark_points",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "6",
+   "field": "mark_points",
+   "sha256": "d392e417e51f3072cdc4f67044b2d0766a344d5afe4675f41fa12112cb52dd93",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_6 mark_points == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C122-t3-sync-01-8-b-solution_md",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "8(b)",
+   "field": "solution_md",
+   "sha256": "a0c40e408a0830e272b87aa05aabdc38a1f867fd0ba811abb2ad557b54e014ba",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_8-b solution_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C123-t3-sync-01-8-b-mark_points",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "8(b)",
+   "field": "mark_points",
+   "sha256": "3a826450310ba215ee20ef439cc8ff28ab90ca535a7b00ea2c45cdd845bd90fb",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_8-b mark_points == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C124-t3-sync-01-11-solution_md",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "11",
+   "field": "solution_md",
+   "sha256": "a3cf602f605e05fc308297e58dcd14ad17a78848d5ef45b577811da38206939e",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_11 solution_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C125-t3-sync-01-11-mark_points",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "11",
+   "field": "mark_points",
+   "sha256": "eb3f1f6b471975abe4c2d363d5b8cbbb6415fafbf765216f08c3c004f1fd1509",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_11 mark_points == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C126-t3-sync-01-12-solution_md",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "12",
+   "field": "solution_md",
+   "sha256": "18763e9b5a1e489e0b7e46804dbefc1502d730cfd52643dc8629e77ca86a3b4b",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_12 solution_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C127-t3-sync-01-12-problem_md",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "12",
+   "field": "problem_md",
+   "sha256": "c2b1c4899128025b9a3a8240c9af45ab8cff4adbb3aca0dc36382adcbb46d1df",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_12 problem_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C128-t3-sync-01-12-mark_points",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "12",
+   "field": "mark_points",
+   "sha256": "38fb904c10b4ce14f83a5efe2c9cf53ea4a4dad61af778b163a3309939527138",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_12 mark_points == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C129-t3-sync-01-23-a-solution_md",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "23(a)",
+   "field": "solution_md",
+   "sha256": "004b9b6bfce7dea49da64bc2b50e3f91d22c3f48a71004c399f949d7c070b878",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_23-a solution_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C130-t3-sync-01-23-a-problem_md",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "23(a)",
+   "field": "problem_md",
+   "sha256": "974f69d6a031ed1f3f4662e935a2c005c42f41bd6073603aa8ca95edae92c000",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_23-a problem_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C131-t3-sync-01-23-a-mark_points",
+   "spec": "4mb1",
+   "series": "2025-06",
+   "paper": "01",
+   "part": "23(a)",
+   "field": "mark_points",
+   "sha256": "ce6e0f74fe1b8ba96b89ab49d8e566351464b5b79af8e2e7a13fb571821daa18",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2025-06_01_23-a mark_points == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C132-t3-sync-01R-18-solution_md",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "18",
+   "field": "solution_md",
+   "sha256": "bf2f083781b630d398cffae7db6776a331b94bdda0b2172d7be3a106e7e85eef",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_18 solution_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C133-t3-sync-01R-18-problem_md",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "18",
+   "field": "problem_md",
+   "sha256": "947bf87558a5a54d3b12601ac818e2de4000e706217aadfac0fe8022c06b8224",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_18 problem_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C134-t3-sync-01R-18-mark_points",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "18",
+   "field": "mark_points",
+   "sha256": "09d4e18c36695b8416283fc4ebe62ad5fca446d3e693d67750d04eedc99b3537",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_18 mark_points == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C135-t3-sync-01R-19-solution_md",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "19",
+   "field": "solution_md",
+   "sha256": "58d4ce6291fcc0863ab8cb2a411375a99029a5bee9e5442b3dde878ee50d57dd",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_19 solution_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C136-t3-sync-01R-19-problem_md",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "19",
+   "field": "problem_md",
+   "sha256": "d9b39d33e9ce85d0203431ddad9a441b0d442965bcb29e3dddccb837b517e1fc",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_19 problem_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C137-t3-sync-01R-19-mark_points",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "19",
+   "field": "mark_points",
+   "sha256": "f74ae275edbbb5f3d491c27c2c2840c7e6d03e084d5bd1e5272dcc67fd5256f7",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_19 mark_points == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C138-t3-sync-01R-25-solution_md",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "25",
+   "field": "solution_md",
+   "sha256": "ef63c320984a2dbb1d83deb0541366d89e620b3313ead9272eabdcc464b08cd6",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_25 solution_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C139-t3-sync-01R-25-problem_md",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "25",
+   "field": "problem_md",
+   "sha256": "2a03a8795a49249c73059e4125341369ffaac9d83767cba9ad63231a50a1867c",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_25 problem_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C140-t3-sync-01R-25-mark_points",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "25",
+   "field": "mark_points",
+   "sha256": "853e2565d5fe66ab42c865c3cb57072de11135c0a1cafd885fca78d91e89df37",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_25 mark_points == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C141-t3-sync-01R-27-a-solution_md",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "27(a)",
+   "field": "solution_md",
+   "sha256": "825b4ab692fb7c4939de02199d191bc662a943f296ede69166b7929109248bde",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_27-a solution_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C142-t3-sync-01R-27-a-problem_md",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "27(a)",
+   "field": "problem_md",
+   "sha256": "c3d8f62eaf3954ebb6fb50bbe588b696d11f00f9dd52be5db3f577deddab7589",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_27-a problem_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C143-t3-sync-01R-27-a-mark_points",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "27(a)",
+   "field": "mark_points",
+   "sha256": "99c80aa8e72e5af264b27957a0ae5345ab23dd39cf8e0bb177a2f779a97e29b9",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_27-a mark_points == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C144-t3-sync-01R-27-b-solution_md",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "27(b)",
+   "field": "solution_md",
+   "sha256": "c1e25f8c2019b34eede56fb00a31b0f7c5c4ae1d2a903a62e8ba79d414a6ea87",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_27-b solution_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C145-t3-sync-01R-27-b-problem_md",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "27(b)",
+   "field": "problem_md",
+   "sha256": "98f78f632743cbaff76b666697dca3ee801051ebbb4a3e3086d66c930cb471b8",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_27-b problem_md == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  },
+  {
+   "id": "C146-t3-sync-01R-27-b-mark_points",
+   "spec": "4mb1",
+   "series": "2026-06",
+   "paper": "01R",
+   "part": "27(b)",
+   "field": "mark_points",
+   "sha256": "116c6473f34a96f9b583ee2bca99f9b933d84e96ab5339f5736a6336b469f57e",
+   "check": "part_field_sha",
+   "assertion": "run-017 tranche-3 corpus reconcile byte pin: offp_2026-06_01r_27-b mark_points == plane of record 44f4180e0d68c8a8 (F114); any re-extraction symbol-loss regression trips this pin"
+  }
+ ],
+ "render": {
+  "renderer_of_record": "scripts/official_examq_extract.py write_questions_md",
+  "stale_pre_wave": [
+   "2026-06/4MB1-01"
+  ],
+  "post_wave_render_eq_committed": [
+   "2025-06/4MB1-01",
+   "2026-06/4MB1-01",
+   "2026-06/4MB1-01R"
+  ]
+ },
+ "scrub": {
+  "ghp": 0,
+  "napi": 0,
+  "vcp": 0
+ }
+}

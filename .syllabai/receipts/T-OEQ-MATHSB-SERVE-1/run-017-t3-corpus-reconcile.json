@@ -1,0 +1,60 @@
+{
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-017 tranche-3 corpus reconcile + questions.md regen (corpusSyncQueued discharge)",
+  "date": "2026-10-29",
+  "operatorOrder": "trace 1a183c376e58b165: 'Corpus topic.json sync + questions.md regen (3 papers → plane 44f4180e)' — the tranche-3 receipt corpusSyncQueued + the standing queue item 'corpus topic.json sync (3 papers, rides next converter run)' discharged verbatim",
+  "shape": "The F112 exporter-disclosure-sync with the direction REVERSED: corpus := plane of record — the plane (official-papers.json @ syllabai-v2 origin/main tip da2a266f, sha16 44f4180e0d68c8a8 verified first-hand pre-write, CI 2/2, live byte-match of record) is UNTOUCHED; the source corpus is reconciled to it so the NEXT exporter run is a byte-no-op vs the served plane",
+  "corpusRepoOfRecord": {
+    "repo": "SyllabAI/syllabai-resources (identified this run from the exporter port header — the receipt's 'to be confirmed at converter-run time' resolved; the earlier syllabai-pastpapers probe 404 was the wrong repo guess)",
+    "base": "6162cc77 (the T-SPECS-MATHSB-2B-OVERLAY-1 'resources consumed' pin)",
+    "landed": "251b46ba0bd9a08d66d57eca44fc8c80cd283289 (pushed HEAD:main 03b88f54..251b46ba, no force)",
+    "raceOfRecord": "origin advanced 6162cc77 -> 03b88f54 (PR #211 SIB chemistry EXM pass-17, SubjectIntelligence tree) mid-lane — caught by the fetch-first re-check pre-push; zero file overlap verified; merged 251b46ba",
+    "sandbox": "sparse checkout (blob:none) — the full 8.1G asset tree does not fit the sandbox disk; all canary-relevant text + the 14 asset dirs named by the 3 asset-byte canaries were materialized"
+  },
+  "scopeOfRecord": {
+    "papers": ["2025-06/4MB1-01", "2026-06/4MB1-01", "2026-06/4MB1-01R"],
+    "pids": ["offp_2025-06_01_6", "offp_2025-06_01_8-b", "offp_2025-06_01_11", "offp_2025-06_01_12", "offp_2025-06_01_23-a", "offp_2026-06_01r_18", "offp_2026-06_01r_19", "offp_2026-06_01r_25", "offp_2026-06_01r_27-a", "offp_2026-06_01r_27-b"],
+    "fieldWrites": "26 = 10 solution_md + 10 mark_points + 6 problem_md (19 of the tranche-3 receipt's fields + 5 PR #429 reconciled-tranche-2 problemMd carries kept wholesale by the adjudication + q27(b) problemMd from the fresh census)",
+    "questionsMdRegen": "3 papers via write_questions_md (the converter of record's renderer); 2026-06/4MB1-01 = the r0-wave render debt (the ONLY stale render corpus-wide, 144-byte delta) discharged",
+    "censusContext": "full 66-paper plane-vs-corpus census first-hand: 2443/2443 parts matched; residual drift classes = the 26 ordered fields + corpus-wide v0.20.0 re-extraction baseline evolution (NOT touched — disclosed, rides the converter's own next full regen) + 28 pre-existing exporter marks-normalization rows (corpus null vs plane 0 on sub-part rows, NOT touched)"
+  },
+  "gates": {
+    "G1_inputs": "plane sha16 44f4180e0d68c8a8 EXACT + resources HEAD 6162cc77 + clean worktree (idempotent re-apply guard added after the script's own partial-apply iteration)",
+    "G3_afterTexts": "plane == t3_manifest_a/b after-texts of record byte-exact for the 9 solutionMd 'set' fields; 23-a problemMd carries the GFM block + opening sentence, FLAT table absent",
+    "G4_mirror": "plane markPoints[0].textMd == solutionMd on all 10 pids (single-row, marks == part marks)",
+    "G2_scope": "inline recomputed drift == expected map EXACTLY on all 10 pids (the census-detail stale-read trap caught: 01R q27(b) problemMd is a 27th drifting field — the #429 bare-caret residual — scope corrected before any write); pre-states pristine (edit_status extracted, edits[] empty); MP ids align",
+    "G6_renderBaseline": "render(topic)==committed questions.md on 2025-06 + 01R; stale set == exactly ['2026-06/4MB1-01'] (the known r0 debt)",
+    "P1_fileScope": "changed set == exactly 2 topic.json + 3 questions.md (git porcelain parsed)",
+    "P2_residual": "0 drift on all 10 pids across all 8 shared fields post-write",
+    "P3_P4_render": "post-write render==committed on all 3 papers; questions.md diff blocks within the pre-declared sets {6,8,11,12,23}/{18,19,25,27}/{1,13,21,23,26}",
+    "P5_pua": "PUA 0 / FFFD 0 across the 6 changed corpus files",
+    "P6_marks": "mark_points sums == part marks on all linked parts (3 papers); no marks field touched",
+    "P8_scrub": "0 ghp_/napi_/vcp_ hits in changed files; both .git dirs scrubbed post-push",
+    "battery": "141/144 canaries PASS (117 pre-existing + 27 new part_field_sha pins C120-C146 all green); the 3 fails (C107-g9-static-corpus-green figures-inlined-count leg, C14-figure-crops, C66-stem-figures-ledger) are corpus-wide ASSET-BYTE canaries unrunnable in the sparse sandbox — A/B-PROVEN pre-existing: pristine HEAD (git stash) fails the IDENTICAL 3 on the IDENTICAL tree; all content legs PASS incl maths-lane C86/C87/C88 + C9/C10/C11"
+  },
+  "disclosures": [
+    "q27(b) problemMd carried VERBATIM with the #429 bare-caret residual ('Show that x^2 + 2x − 80 = 0') — the tranche-3 receipt's queued 1-field micro-fix lead stands; NO-GUESS law held (no QP stem read in this session)",
+    "2025-06 q12 problemMd carries the plane's stem-duplication artifact verbatim ('… x = ……………Solve … x =') — filed as an owning-lane lead (eyes-on QP p8); NOT fixed eyes-off",
+    "2025-06 q23(a) solution_md + mark_points are plane-of-record carries (pre-reconcile serving state; the v0.20.0 re-extraction flattened the export-era text) — the reconciliation-ledger shows 2025-06 was never part of the three-way reconcile",
+    "corpus-wide v0.20.0 re-extraction baseline evolution (~1300 solutionMd/problemMd fields vs the export-era plane) NOT touched — the converter's own next full regen owns it; this wave reconciles ONLY the receipt-ordered pids",
+    "validation-report.json NOT regenerated (the C57/F66 clobber lesson) — the reports remain the extraction-time receipts of record",
+    "the 28 corpus-marks-null-vs-plane-0 rows are a pre-existing exporter normalization class, NOT touched",
+    "the 3 asset-byte canary fails are sparse-sandbox unrunnable, A/B-proven pre-existing; the full battery re-runs at the next converter run on a full checkout",
+    "sanity swim-lane note: the resources .git briefly carried the clone PAT in .git/config — scrubbed to clean origin URL within the same minute as the clone (the standing law held: 0 token hits at final scrub)"
+  ],
+  "emitted": {
+    "exporterDisclosure": "scripts/exporter-disclosures/2026-10-29-run017-t3-corpus-reconcile.json (5+5 pids, 2 sets; 2026-06 4MB1-01 exporter-neutral — questions.md is not exporter surface; NO r2-consumed twin: no v2 plane PR ships, the plane is already of record)",
+    "canaries": "27 part_field_sha byte pins C120-C146 (one per synced field, corpus-form sha256) + the check_canaries.py part_field_sha check type",
+    "ledger": "F114 row (Official-ExamQuestion/LEDGER.md, F112 column shape)",
+    "scriptsOfRecord": "/home/z/my-project/scripts/t3_corpus_census.py (66-paper drift census), t3_corpus_sync.py (fail-closed patch battery G1-G6/P1-P8/EMIT, idempotent), t3_ledger_append.py",
+    "evidencePack": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/t3-corpus-reconcile-evidence.json"
+  },
+  "queue": [
+    "SME/DB re-ingest + /0.2 provenance migration (operator-queued, unchanged)",
+    "the q12 problemMd stem-duplication + q27(b) bare-caret 1-field micro-fix leads (owning lanes, eyes-on QP reads)",
+    "fleet GS leads + 213 review:true crops (unchanged standing queue)",
+    "PAT rotation STILL PENDING (both exposed tokens)",
+    "next converter/exporter run: declare --source-cut resources@251b46ba — expected byte-no-op vs the plane; full-canary battery re-run on a full checkout"
+  ],
+  "landing": "LANDED: syllabai-resources 251b46ba pushed to main (no force, race merged); v2 bookkeeping (this receipt + worklog + evidence pack) bookkeeping-only .syllabai/**; the official-papers.json plane of record 44f4180e0d68c8a8 byte-UNTOUCHED"
+}
