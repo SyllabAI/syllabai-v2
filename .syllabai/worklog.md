@@ -21792,3 +21792,21 @@ Work Log:
 
 Stage Summary:
 - 1 merge of record (#415 -> ecca3c05); bookkeeping-only .syllabai/** receipt push follows; fetch-first, no force-push, Neon/prod zero-write, merge desk only.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-015
+Agent: R7a main lane (operator session trace 1a17ffb05099dfbd, order "run-015")
+Task: F5 fleet strip wave — execute the run-014 staged worklist (f5-fleet-worklist.json) as a deterministic whole-line furniture strip under the tier law (sampled page-evidence validation per paper before bulk apply).
+
+Work Log:
+- Preflight: main fast-forwarded 4008e6ce -> 10011f1e (run-014 + receipts already merged via PR #414); plane sha16 byte-verified f7f4add5161576a9 (worklist directly applicable); disk 7.4G free.
+- Worklist decoded: 2209 hits = 1138 HEADER (8 unique texts) + 1018 TOTAL (28 unique) + 53 SPARE-GRID-INSTR; fields solutionMd 1078 / markPoints[0] 1078 (same 615 parts) / problemMd 53.
+- TIER-LAW DEFER DECISION: the 53 SPARE-GRID hits are FUSED inside flattened single-line problemMd blocks that also carry genuine question text + printed matrix-formula boxes (enumerated all 53 — 51 distinct line patterns) — whole-line strip unsafe, deferred to run-016 eyes-on (2019-06 02 4-e precedent class). Run scope = HEADER/TOTAL = 2156 hits / 615 parts / 55 papers.
+- Sampled page-evidence validation (tier law): run015_sample.py — deterministic per-paper samples (both-kind part preferred + cas-Total carrier + mid-list for >=30-hit papers), page-find via distinctive-token+qnum scoring with furniture-line text-layer bonus, 103 pages rendered 150dpi and READ: 55/55 papers PASS (headers + italic Total footers confirmed printed furniture; standalone cas/wr rows confirmed GENUINE and never in strip set; 2021-01 01R p7 proves singular 'Total N mark' = wrap artifact; 2022-06 01R p5 shows genuine printed 'Total 1 mark').
+- run015_apply.py fail-closed battery — TWO REFUSALS before GREEN (the gates working as designed): (1) check-7 modeled markPoints[0] as line-removals while the mirror law overwrites textMd := solutionMd on stale mirrors (179 disclosed re-syncs) — model corrected; (2) post-strip re-census caught 12 capital-C 'Cas Total N marks' lines OUTSIDE the worklist (run-014 census was case-sensitive) — 5 supplemental pages rendered and READ (2025-06 02 p8-12 + 2026-06 02R p10, all show Cas cell + Total footer on ONE printed row), staged as supplemental_cas_variants.json, verdicts updated, ALL GREEN.
+- APPLIED: 2168 furniture lines stripped across 1230 field edits (+615 mirror syncs), 615 parts / 55 papers; plane f7f4add5161576a9 -> eabd5ca8b643f93f.
+- Post gates ALL GREEN: census 66/1281/2443/6600==6600 EXACT; PAPER-level mark-code union conserved EXACTLY; PUA/FFFD/(c) 0->0 whole-plane; unescaped-$ parity 0 violations; HEADER/TOTAL/CAS-EACH/PMT == 0 fleet-wide; SPARE-GRID remnants == 53 untouched; mirror law byte-exact; diff-scope solutionMd+markPoints[0] ONLY; serialization byte-law; katex gate 101/101; crop URL gate 454/454.
+- Receipt .syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-015-f5-fleet-strip.json + playbook §9 laws 18-20 (fleet-strip, case-policy, fused-line) + lane artifacts in-repo (scripts, sample_manifest, sample_verdicts, supplemental worklist; evidence renders re-fetchable under download/t-oeq-mathsb/run015).
+
+Stage Summary:
+- F5 FLEET STRIP CLOSED END-TO-END: 2168 lines out, furniture census 0 (excl. 53 deferred spare-grid), all 17 playbook invariants held, sampled evidence 55/55 + 2 supplemental papers PASS. Landing: branch r7a-pp-f5-fleet-strip-015 (PAT env-only via per-invocation askpass; zero credential writes), PR + CI + merge + live byte-match to follow in the landing section of the receipt. Queue after: run-016 spare-grid rebuilds (53), 2021-06 02 q2 misalignment, 2024-06 02R q2-a junk, displaced-sentence-head orphan census, PAT rotation STILL PENDING.
