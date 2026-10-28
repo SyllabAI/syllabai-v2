@@ -24,6 +24,7 @@ import remarkMath from "remark-math";
 import remarkRehype from "remark-rehype";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
+import { toText } from "hast-util-to-text";
 import { normalizeCorpusMath } from "./math-fix";
 import { normalizeCorpusEmphasis } from "./emphasis-fix";
 import { rehypeKatexMhchem } from "./rehypeKatexMhchem";
@@ -40,22 +41,54 @@ function visibleText(html: string): string {
 }
 const FRAG_RE = /[^\s]*\\[a-zA-Z]+[^\s]*/g;
 
-async function renderBody(bodyMd: string): Promise<string> {
-  return unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkMath)
-    .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeRaw)
-    .use(rehypeSanitize, defaultSchema as never)
-    .use(rehypeKatexMhchem, { errorColor: "#b91c1c", strict: "ignore" })
-    .use(rehypeStringify)
-    .process(normalizeCorpusMath(normalizeCorpusEmphasis(bodyMd)))
-    .then(String);
+/** Render through the markdown.tsx chain of record, ending at the HAST root
+ * (no stringify — CI's typecheck only resolves direct dependencies and
+ * rehype-stringify is transitive; everything below reads the tree directly). */
+const processor = unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkMath)
+  .use(remarkRehype, { allowDangerousHtml: true })
+  .use(rehypeRaw)
+  .use(rehypeSanitize, defaultSchema as never)
+  .use(rehypeKatexMhchem, { errorColor: "#b91c1c", strict: "ignore" });
+
+async function renderTree(bodyMd: string): Promise<any> {
+  const mdast = processor.parse(normalizeCorpusMath(normalizeCorpusEmphasis(bodyMd)));
+  return processor.run(mdast);
 }
 
-// rehype-stringify is ESM-only in this workspace — import lazily
-const { default: rehypeStringify } = await import("rehype-stringify");
+type HastLike = { type?: string; tagName?: string; properties?: { className?: unknown }; value?: string; children?: HastLike[] };
+
+function countKatexErrors(tree: HastLike): number {
+  let n = 0;
+  (function walk(node: HastLike) {
+    if (node.type === "element") {
+      const cls = node.properties?.className;
+      if (Array.isArray(cls) && cls.map(String).includes("katex-error")) n++;
+    }
+    (node.children ?? []).forEach(walk);
+  })(tree);
+  return n;
+}
+
+/** user-visible text: text nodes outside <annotation> (KaTeX's TeX source)
+ * and <style> — the hast equivalent of the audit's quote-aware tag strip */
+function visibleTextOf(tree: HastLike): string {
+  const chunks: string[] = [];
+  (function walk(node: HastLike) {
+    if (node.type === "element") {
+      const tag = (node.tagName || "").toLowerCase();
+      if (tag === "annotation" || tag === "style") return;
+    }
+    if (node.type === "text") {
+      chunks.push(node.value ?? "");
+      return;
+    }
+    (node.children ?? []).forEach(walk);
+  })(tree);
+  return chunks.join(" ");
+}
 
 describe("T-UGM-RENDER-1: every committed UGM body renders clean", () => {
   test(
@@ -70,9 +103,9 @@ describe("T-UGM-RENDER-1: every committed UGM body renders clean", () => {
         );
         for (const r of d.resources as { slug: string; bodyMd: string }[]) {
           bodies++;
-          const html = await renderBody(r.bodyMd ?? "");
-          const errSpans = (html.match(/katex-error/g) || []).length;
-          const frags = visibleText(html).match(FRAG_RE) || [];
+          const tree = await renderTree(r.bodyMd ?? "");
+          const errSpans = countKatexErrors(tree);
+          const frags = visibleTextOf(tree).match(FRAG_RE) || [];
           if (errSpans > 0) errored.push(`${course}/${r.slug}(${errSpans})`);
           if (frags.length > 0) leaked.push(`${course}/${r.slug}(${frags.length})`);
         }
@@ -110,8 +143,8 @@ describe("T-UGM-RENDER-1: every committed UGM body renders clean", () => {
             for (const field of ["problemMd", "solutionMd", "hintMd"] as const) {
               if (!p?.[field]) continue;
               checked++;
-              const html = await renderBody(p[field]);
-              const n = (html.match(/katex-error/g) || []).length;
+              const tree = await renderTree(p[field]);
+              const n = countKatexErrors(tree);
               errs += n;
               if (n > 0) errored.push(`${course}[${ti}].${qi}.${pi}.${field}`);
             }
