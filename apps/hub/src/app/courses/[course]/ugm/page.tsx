@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { boardOf, getCourseMeta } from "@/lib/courses";
 import { getUgmBundle, ugmStationNames } from "@/lib/ugm";
+import { MathText } from "@/components/hub/math-text";
 import { CourseHeader } from "@/components/hub/course-header";
 
 /**
@@ -104,7 +105,7 @@ export default async function CourseUgmPage({
                       <Compass className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden />
                       <span className="min-w-0">
                         <span className="block text-[13px] font-medium leading-snug">
-                          {r.title}
+                          <MathText text={r.title} />
                           {primary ? (
                             <span
                               className="ml-1.5 inline-flex items-center gap-0.5 rounded bg-primary/10 px-1 py-0.5 align-middle text-[10px] font-semibold text-primary"
@@ -151,7 +152,9 @@ export default async function CourseUgmPage({
                 >
                   <Landmark className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
                   <span className="min-w-0">
-                    <span className="block text-[13px] font-medium leading-snug">{r.title}</span>
+                    <span className="block text-[13px] font-medium leading-snug">
+                      <MathText text={r.title} />
+                    </span>
                     <span className="mt-0.5 block text-xs text-muted-foreground">
                       {r.nonOverlapReason}
                     </span>

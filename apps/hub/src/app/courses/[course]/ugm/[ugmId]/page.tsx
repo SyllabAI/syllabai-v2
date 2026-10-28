@@ -7,6 +7,7 @@ import { boardOf, getCourseMeta } from "@/lib/courses";
 import { getUgmBundle, ugmResourceById } from "@/lib/ugm";
 import { Breadcrumbs } from "@/components/hub/chrome";
 import { Markdown } from "@/components/markdown";
+import { MathText } from "@/components/hub/math-text";
 
 /**
  * Underground Mathematics resource reader — the text of record landed by
@@ -21,6 +22,25 @@ import { Markdown } from "@/components/markdown";
  * resource is one.
  */
 export const dynamic = "force-dynamic";
+
+/**
+ * Metadata resolves BEFORE the body streams — calling notFound() here turns
+ * a bad ugmId into a real HTTP 404. (T-UGM-RENDER-1: with force-dynamic the
+ * body path streams 200 first, so the not-found UI rendered with a 200
+ * status — the soft-404 the 2026-10-27 live audit caught.)
+ */
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ course: string; ugmId: string }>;
+}) {
+  const { course: slug, ugmId } = await params;
+  const meta = await getCourseMeta(slug);
+  const ugm = meta ? await getUgmBundle(slug) : null;
+  const resource = ugm ? ugmResourceById(ugm, ugmId) : null;
+  if (!meta || !resource) notFound();
+  return { title: resource.title };
+}
 
 export default async function UgmReaderPage({
   params,
@@ -54,7 +74,7 @@ export default async function UgmReaderPage({
 
       <header className="mt-4 space-y-3">
         <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-[28px]">
-          {resource.title}
+          <MathText text={resource.title} />
         </h1>
         <div className="flex flex-wrap items-center gap-1.5">
           {resource.resourceTypeLabel || resource.resourceType ? (
@@ -140,7 +160,9 @@ export default async function UgmReaderPage({
                     className="flex items-center gap-2 rounded-md border px-3 py-2 text-[13px] transition-colors hover:border-primary/40"
                   >
                     <ArrowLeft className="size-3.5 rotate-180 text-primary" aria-hidden />
-                    <span className="min-w-0 truncate">{r.title}</span>
+                    <span className="min-w-0 truncate">
+                      <MathText text={r.title} />
+                    </span>
                   </Link>
                 </li>
               );
