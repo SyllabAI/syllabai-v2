@@ -1,0 +1,54 @@
+{
+  "schema": "syllabai.lane-receipt/1.0",
+  "task": "T-SPECS-MATHSB-ANCHORS-r0 (run-002: the shim-restore repair)",
+  "family": "MATHSB-ANCHORS",
+  "run": "run-002",
+  "operator_order": "the MATHSB-ANCHORS lane fixes/reverts the shim break -> main green -> merge #429 -> I run the landing receipt + live byte-match",
+  "trace_id": "1a182f7c06e85b11",
+  "session": "web-752465e5-2985-476b-86a3-0bf785493dc5",
+  "lane": "maths-b lane (main agent, r0 maintainer)",
+  "generated_utc": "2026-10-28T15:00:56Z",
+  "predecessor": "MATHSB-ANCHORS run-001 (00d57efa/260c11c9/dd20b81b) — the stage-3 flip landed the content-join but regressed the questions.json anchor linkage to empty",
+  "hub_commit": {
+    "repo": "SyllabAI/syllabai-v2",
+    "branch": "mathsb-anchors-shim-restore-r0",
+    "based_on": "5e883867 (main tip of record at repair time)",
+    "files": [
+      "apps/hub/content/igcse-maths-b-16/questions.json",
+      "apps/hub/content/igcse-maths-b-16/manifest.json",
+      ".syllabai/receipts/MATHSB-ANCHORS/run-002-shim-restore.json",
+      ".syllabai/worklog.md"
+    ]
+  },
+  "root_cause": [
+    "Stage-3 flip (260c11c9) re-derived questions.json via build_official_content.py: per part the generator emits specPointIds/specPointCodes from the spine-resolved code map while smeSpecPointIds falls back to the PRE-flip specPointIds when the source has no smeSpecPointIds key (maths-b never had one)",
+    "For maths-b the spine-resolved `codes` resolved EMPTY (pre-flip linkage carried the ALNUM spine codes 1A..10N directly; the resolver produced no output), so the flip emitted (sme=X, ids=(), codes=()) on all 2,412 parts — the pre-flip codes survived ONLY inside smeSpecPointIds",
+    "Flip gate G4 (every linked code resolves to a SPEC_POINT node) is vacuous on EMPTY linkage — no gate asserted non-emptiness, so apply_official_flip reported G1-G5 pass / --check failed=0 over the defective output",
+    "The T-MIG-136 band-4 anchor law (bundle-questions.ts:270 reads specPointCodes) then found 0 anchored parts on every question -> unmapped=1270 -> pkg.questions empty -> bundle-questions.test.ts:486 toBeGreaterThan(0) failure — the deterministic CI verify red 1/3046 on main since dd20b81b, inherited by every open PR (incl. #429)",
+    "Fleet census: igcse-maths-b-16 was the ONLY zero-coded bundle hub-wide (91 other question bundles all carry codes where populated) — unique defect, not a fleet migration"
+  ],
+  "what_was_done": [
+    "Recon fail-closed: pre/post-flip part-level diff proved the ONLY delta is the anchor triple — every other part field byte-identical on all 2,412 parts (question ids, problemMd, solutionMd, marks, order, difficulty all diff-0); curriculum.json byte-identical pre/post; marks 6500 / badSum 0 both sides",
+    "Proved the flip's own smeSpecPointIds values are 1:1 the pre-flip linkage codes part-by-part (top triple multiplicities identical: x58 '1H', x58 ('2H','2C','2D'), x31 '3C', ...; 94 distinct codes, 2,392 coded parts, 1723 multi-code parts)",
+    "Repair: specPointIds = specPointCodes = the flip's own smeSpecPointIds values; smeSpecPointIds KEPT as the flip emitted (build_official_content design: 'smeSpecPointIds keeps the originals') — the identity rekey the flip intended; zero other bytes touched",
+    "Serialized per the corpus law (compact separators, ensure_ascii=False, single line, no trailing newline)"
+  ],
+  "verification": {
+    "fail_closed_asserts": "A1 structure 65/1270/2412 both sides; A2 (slug,order,id) keying identical; A3 no field differs outside the triple; A4 sme==pre-codes 1:1; A5 the 20 honest no-anchor parts empty on all three fields; A6 code multiset equal (94 distinct); A7 curriculum.json byte-identical to the flip commit",
+    "post_write_gates": "2,392 parts with codes restored (== pre-flip census), 94 distinct codes, structure 65/1270/2412/6500 unchanged, marks 6500, badSum 0, UFFFD 0, single-line compact JSON",
+    "ci_equivalent_local": "bun test apps/api packages = 3,033 pass / 13 skip / 0 fail across 3,046 tests (the red is gone); bun run typecheck clean; golden/runner.ts --selftest OK; bun test golden/retrieval-eval 22 pass 0 fail; retrieval-eval selftest 19/19 vectors",
+    "restore_shape": "resulting triple (sme=X, ids=X, codes=X): linkage fields byte-match the pre-flip of-record values the shim laws were verified against; consistent with the fleet pattern (ids==codes everywhere; sme keeps the resources-side identity, which for maths-b IS the ALNUM series)"
+  },
+  "user_visible_effect": "/courses/igcse-maths-b-16 questions re-anchor to the spec spine (primaryTopicCode + spec-point joins live again through the ingest shim); CI verify returns green on main, unblocking PR #429 (run-017 tranche-2) and every lane parked on the inherited red",
+  "no_touch": ["notes.json / flashcards.json / curriculum.json / manifest provenance fields (officialSpine, importSource, counts)", "official-papers.json (PR #429's plane)", "igcse-chemistry-19 golden", "other courses' bundles", "main DB"],
+  "disclosed_residuals": [
+    "Flip-gate gap of record: G4 is vacuous on empty linkage — a non-emptiness gate for courses whose pre-flip linkage is non-empty belongs to the flip pipeline owners (build_official_content/apply_official_flip); not patched here (cross-lane discipline)",
+    "smeSpecPointIds now carries the ALNUM series (not spcpt_* tokens) on maths-b questions — the flip's own emission, kept; the SD0 strand reexport's spcpt_* expectation applies to notes/flashcards surfaces, not questions",
+    "run-001's review queue (162 flags / 13 unmapped spcpts / 11 loose notes) unchanged — T-SPECS-MATHSB-REVIEW-1"
+  ],
+  "followups": [
+    "PR #429 (run-017 tranche-2) merge after this lands green: merge main into run-017-symbol-loss-tranche2-r2, union-resolve worklog, CI on new head, merge",
+    "operator landing receipt + live byte-match per the trace order",
+    "flip pipeline non-emptiness gate candidate for the content-join owners"
+  ]
+}
