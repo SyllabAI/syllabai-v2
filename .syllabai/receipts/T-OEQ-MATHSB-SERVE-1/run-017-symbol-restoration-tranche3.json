@@ -65,7 +65,7 @@
   "live-player spot check of the tranche-3 parts after Vercel redeploy",
   "PAT rotation STILL PENDING (both exposed tokens: GitHub …JU4 / Vercel vcp_…aoT3)"
  ],
- "landing": "commit r7a-pp-symbolloss-t3-017 -> push -> PR -> CI -> merge (fetch-first, no force)",
+ "landing": "LANDED: PR #432 CI success -> merged d6c6a57007b36549f10fc05ed14835fa03ad47b3 (main); post-merge main plane sha16 44f4180e0d68c8a8 verified first-hand; fetch-first, no force",
  "threeWayReconciliation": {
   "trigger": "origin/main advanced mid-run 5e883867 -> ef3aba92 (PR #429 'run-017 tranche 2 (reconciled)' — a parallel lane rebuilt the SAME 01R questions q18/q19/q25/q27-a/q27-b plus 2023-11 P1 / 2025-11 P2 / other 01R fields, 74 field edits of theirs)",
   "mechanics": "merge origin/main into r7a-pp-symbolloss-t3-017 (002c8073 precedent); plane resolved SEMANTICALLY by tranche3_reconcile.py: their merged plane (0c75d58f837ec61f) as base + my 19 manifest edits re-applied -> 44f4180e0d68c8a8; worklog.md union-resolved (their MATHSB-ANCHORS run-002 entry + my tranche-3 entry); their reconciliation-ledger.json / tranche2-receipt update / MATHSB-ANCHORS receipt / manifest note taken wholesale",
