@@ -22245,3 +22245,12 @@ Stage Summary:
 - geography-21 re-imported @ main@a0b10aac (the fixed cut): the corpus plane of record is clean; spec-explorer and knowledge-graph renders unchanged by design (they trimmed on display all along); both T-SPEC-QA-TREE-1 filed follow-ups now CLOSED (kg regen wave @ 9241436e; upstream artifact fix @ a0b10aac + this re-import).
 - PAT rotation CRITICAL-OVERDUE (transit 50 this push, same fingerprint a8ccee736aa8c75b) — rotation REQUIRED before any re-supply.
 - Artifacts: .syllabai/receipts/T-SPEC-GEO21-REIMPORT-1/ (staging _report_cie.json + gates-r0.json); lane script at session scripts/geo21_reimport_apply.py.
+
+## R0-AUTO-78 receipt — 2026-10-29T22:15Z (Job 438940, sweep 06:00+08)
+- Task ID: 93 (R0-auto trace cron-agent-loop-202610290600)
+- Merged: PR #440 fix(T-UGM-RENDER-1) — UGM math-render repair, display equations + label refs via HAST root (6 files +775/-18, all apps/hub/**)
+- Head: 569c9d90 | Merge sha: 567edc36 | merge_method=merge, no force
+- Gates: head CI all success pre-merge; mergeable=clean; new main tip 567edc36 CI 2/2 GREEN post-merge
+- Checks: reviews=0, comments=0; boundary PASS (no *.java, no external core/hub, no Neon/prod)
+- Author: SyllabAI; no recusal conflict, no claim collisions
+- Skipped: PR #441 (NO-CI + mergeable=dirty), static four unchanged
