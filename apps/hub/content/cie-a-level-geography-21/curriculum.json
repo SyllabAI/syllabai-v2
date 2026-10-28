@@ -1,9 +1,4049 @@
 {
- "board": "Cambridge International",
- "level": "A-Level",
- "subject": "Geography",
- "code": "9696",
- "syllabusVersion": "2025-2026",
- "nodes": [],
- "edges": []
+  "board": "Cambridge International",
+  "level": "A-Level",
+  "subject": "Geography",
+  "code": "9696",
+  "syllabusVersion": "2025-2026",
+  "nodes": [
+    {
+      "code": "cie-a-level-geography-21",
+      "family": "SUBJECT",
+      "title": "Geography",
+      "description": null,
+      "parents": [],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 0
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T1",
+      "family": "TOPIC",
+      "title": "Hydrology and fluvial geomorphology",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T1:SUB1.1",
+      "family": "SUBTOPIC",
+      "title": "The drainage basin system",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "1.1.1",
+      "family": "SPEC_POINT",
+      "title": "Outputs: evaporation, evapotranspiration and river discharge.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "1.1.2",
+      "family": "SPEC_POINT",
+      "title": "Stores: interception, soil water, surface water, ground water, and channel storage.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "1.1.3",
+      "family": "SPEC_POINT",
+      "title": "Flows: above ground – throughfall, stemflow, overland flow, and channel flow. below ground – infiltration, percolation, throughflow, groundwater, and baseflow.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "1.1.4",
+      "family": "SPEC_POINT",
+      "title": "Underground water: water tables, ground water, recharge, and springs.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T1:SUB1.2",
+      "family": "SUBTOPIC",
+      "title": "Discharge relationships within drainage basins",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "1.2.1",
+      "family": "SPEC_POINT",
+      "title": "Components of hydrographs (storm and annual).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 5
+    },
+    {
+      "code": "1.2.2",
+      "family": "SPEC_POINT",
+      "title": "Influences on hydrographs.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 6
+    },
+    {
+      "code": "1.2.3",
+      "family": "SPEC_POINT",
+      "title": "Climate: precipitation type and intensity, temperature, evaporation, transpiration, evapotranspiration, and antecedent moisture. Drainage basin characteristics: size and shape, drainage density, porosity and permeability of soils, rock type, slopes, vegetation type, and land use.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 7
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T1:SUB1.3",
+      "family": "SUBTOPIC",
+      "title": "River channel processes and landforms",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "1.3.1",
+      "family": "SPEC_POINT",
+      "title": "Channel processes",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 8
+    },
+    {
+      "code": "1.3.2",
+      "family": "SPEC_POINT",
+      "title": "Erosion: abrasion/corrasion, solution, cavitation, and hydraulic action.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 9
+    },
+    {
+      "code": "1.3.3",
+      "family": "SPEC_POINT",
+      "title": "Load transport: traction, saltation, suspension, and solution.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 10
+    },
+    {
+      "code": "1.3.4",
+      "family": "SPEC_POINT",
+      "title": "Deposition and sedimentation: the Hjulström curve.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 11
+    },
+    {
+      "code": "1.3.5",
+      "family": "SPEC_POINT",
+      "title": "River flow: velocity and discharge, patterns of flow (laminar, turbulent and helicoidal), and thalweg.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 12
+    },
+    {
+      "code": "1.3.6",
+      "family": "SPEC_POINT",
+      "title": "Channel types: straight, braided, and meandering.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 13
+    },
+    {
+      "code": "1.3.7",
+      "family": "SPEC_POINT",
+      "title": "Landforms: meander (river cliffs, point bars, oxbow lakes), riffle and pool sequences, waterfalls, gorges, bluffs, floodplains, levées, and deltas.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 14
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T1:SUB1.4",
+      "family": "SUBTOPIC",
+      "title": "The human impact",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "1.4.1",
+      "family": "SPEC_POINT",
+      "title": " Modifications to catchment flows and stores and to channel flows by land-use changes (deforestation, afforestation, urbanisation), abstraction and water storage.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 15
+    },
+    {
+      "code": "1.4.2",
+      "family": "SPEC_POINT",
+      "title": "The causes and impacts of river floods; prediction of flood risk and recurrence intervals.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 16
+    },
+    {
+      "code": "1.4.3",
+      "family": "SPEC_POINT",
+      "title": "The prevention and amelioration of river floods to include:",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 17
+    },
+    {
+      "code": "1.4.4",
+      "family": "SPEC_POINT",
+      "title": "forecasts and warnings",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 18
+    },
+    {
+      "code": "1.4.5",
+      "family": "SPEC_POINT",
+      "title": "hard engineering – dams, straightening, levées and diversion spillways",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 19
+    },
+    {
+      "code": "1.4.6",
+      "family": "SPEC_POINT",
+      "title": "soft engineering – floodplain and drainage basin management, wetland and river bank conservation and river restoration.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 20
+    },
+    {
+      "code": "1.4.7",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study a recent river flood event showing the causes of the flood, impacts on both people and the environment, and evaluate attempts to reduce the impact of the flood.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T1:SUB1.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 21
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T2",
+      "family": "TOPIC",
+      "title": "Atmosphere and weather",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T2:SUB2.1",
+      "family": "SUBTOPIC",
+      "title": "Diurnal energy budgets",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "2.1.1",
+      "family": "SPEC_POINT",
+      "title": "Factors affecting diurnal energy budget: incoming (shortwave) solar radiation, reflected solar radiation, energy absorbed into the surface and subsurface, albedo, sensible heat transfer, longwave radiation, latent heat transfer – evaporation, dew and absorbed energy returned to earth.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2:SUB2.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 22
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T2:SUB2.2",
+      "family": "SUBTOPIC",
+      "title": "The global energy budget",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "2.2.1",
+      "family": "SPEC_POINT",
+      "title": "The latitudinal pattern of radiation: excesses and deficits.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2:SUB2.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 23
+    },
+    {
+      "code": "2.2.2",
+      "family": "SPEC_POINT",
+      "title": "Atmospheric transfers: wind belts and ocean currents.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2:SUB2.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 24
+    },
+    {
+      "code": "2.2.3",
+      "family": "SPEC_POINT",
+      "title": "Seasonal variations in temperature, pressure and wind belts: the influence of latitude, land/sea distribution, and ocean currents.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2:SUB2.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 25
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T2:SUB2.3",
+      "family": "SUBTOPIC",
+      "title": "Weather processes and phenomena",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "2.3.1",
+      "family": "SPEC_POINT",
+      "title": "Atmospheric moisture processes: evaporation, condensation, freezing, melting, deposition, and sublimation.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2:SUB2.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 26
+    },
+    {
+      "code": "2.3.2",
+      "family": "SPEC_POINT",
+      "title": "Causes of precipitation: convection, frontal and orographic uplift of air, and radiation cooling.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2:SUB2.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 27
+    },
+    {
+      "code": "2.3.3",
+      "family": "SPEC_POINT",
+      "title": "Types of precipitation: clouds, rain, hail, snow, dew, and fog.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2:SUB2.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 28
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T2:SUB2.4",
+      "family": "SUBTOPIC",
+      "title": "The human impact (2.4)",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "2.4.1",
+      "family": "SPEC_POINT",
+      "title": "The enhanced greenhouse effect and global warming: the evidence, possible causes and atmospheric impacts.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2:SUB2.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 29
+    },
+    {
+      "code": "2.4.2",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study an urban area which shows the effects of human activity on climate: temperature (heat island), humidity, precipitation and winds.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T2:SUB2.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 30
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T3",
+      "family": "TOPIC",
+      "title": "Rocks and weathering",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T3:SUB3.1",
+      "family": "SUBTOPIC",
+      "title": "Plate tectonics",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "3.1.1",
+      "family": "SPEC_POINT",
+      "title": "Nature of tectonic plates and their global patterns.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 31
+    },
+    {
+      "code": "3.1.2",
+      "family": "SPEC_POINT",
+      "title": "Types of plate boundaries: divergent (constructive), conservative and convergent (destructive).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 32
+    },
+    {
+      "code": "3.1.3",
+      "family": "SPEC_POINT",
+      "title": "Processes and associated landforms: sea floor spreading, subduction, fold mountain building, ocean ridges, ocean trenches, and volcanic island arcs.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 33
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T3:SUB3.2",
+      "family": "SUBTOPIC",
+      "title": "Weathering",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "3.2.1",
+      "family": "SPEC_POINT",
+      "title": "Physical (mechanical) weathering processes: freeze–thaw, heating/cooling, salt crystal growth, pressure release (dilatation), and vegetation root action.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 34
+    },
+    {
+      "code": "3.2.2",
+      "family": "SPEC_POINT",
+      "title": "Chemical weathering processes: hydrolysis, hydration, and carbonation.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 35
+    },
+    {
+      "code": "3.2.3",
+      "family": "SPEC_POINT",
+      "title": "General factors affecting the type and rate of weathering: climate, rock type, rock structure, vegetation, and relief.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 36
+    },
+    {
+      "code": "3.2.4",
+      "family": "SPEC_POINT",
+      "title": "Specific factors affecting the type and rate of weathering: temperature and rainfall (Peltier diagram).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 37
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T3:SUB3.3",
+      "family": "SUBTOPIC",
+      "title": "Slope processes",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "3.3.1",
+      "family": "SPEC_POINT",
+      "title": "Slope processes, conditions under which each occurs and effects on slopes.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 38
+    },
+    {
+      "code": "3.3.2",
+      "family": "SPEC_POINT",
+      "title": "Mass movement: heaves, flows, slides, and falls.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 39
+    },
+    {
+      "code": "3.3.3",
+      "family": "SPEC_POINT",
+      "title": "Water and sediment movement on slopes: rainsplash and surface runoff (sheetwash and rills).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 40
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T3:SUB3.4",
+      "family": "SUBTOPIC",
+      "title": "The human impact (3.4)",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "3.4.1",
+      "family": "SPEC_POINT",
+      "title": "The impact of human activities on the stability of slopes: increasing stability and decreasing stability.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 41
+    },
+    {
+      "code": "3.4.2",
+      "family": "SPEC_POINT",
+      "title": "Strategies to modify slopes to reduce mass movements: pinning, netting, grading and afforestation.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 42
+    },
+    {
+      "code": "3.4.3",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study the impacts of human activity on slopes showing the effect on the stability of the slope, and evaluate attempts to reduce mass movement.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T3:SUB3.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 43
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T4",
+      "family": "TOPIC",
+      "title": "Population",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T4:SUB4.1",
+      "family": "SUBTOPIC",
+      "title": "Natural increase as a component of population change",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "4.1.1",
+      "family": "SPEC_POINT",
+      "title": "Natural increase rate, birth rate and death rate, fertility rate, and infant mortality rate.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 44
+    },
+    {
+      "code": "4.1.2",
+      "family": "SPEC_POINT",
+      "title": "Factors (social, economic, environmental and political) affecting levels of fertility and mortality.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 45
+    },
+    {
+      "code": "4.1.3",
+      "family": "SPEC_POINT",
+      "title": "The interpretation of age/sex structure diagrams.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 46
+    },
+    {
+      "code": "4.1.4",
+      "family": "SPEC_POINT",
+      "title": "Population structure (age, gender, dependency, and dependency ratio).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 47
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T4:SUB4.2",
+      "family": "SUBTOPIC",
+      "title": "Demographic transition",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "4.2.1",
+      "family": "SPEC_POINT",
+      "title": "Changes in birth rate and death rate over time.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 48
+    },
+    {
+      "code": "4.2.2",
+      "family": "SPEC_POINT",
+      "title": "A critical appreciation of the demographic transition model, Stages 1–5.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 49
+    },
+    {
+      "code": "4.2.3",
+      "family": "SPEC_POINT",
+      "title": "Issues of youthful populations and ageing populations.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 50
+    },
+    {
+      "code": "4.2.4",
+      "family": "SPEC_POINT",
+      "title": "Links between population and development: changes in infant mortality rate and life expectancy over time.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 51
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T4:SUB4.3",
+      "family": "SUBTOPIC",
+      "title": "Population–resource relationships",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "4.3.1",
+      "family": "SPEC_POINT",
+      "title": "The concept of food security. Causes and consequences of food shortages.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 52
+    },
+    {
+      "code": "4.3.2",
+      "family": "SPEC_POINT",
+      "title": "The roles of technology and innovation in development of food production. The role of constraints (e.g. war, climatic hazards) in relation to sustaining population.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 53
+    },
+    {
+      "code": "4.3.3",
+      "family": "SPEC_POINT",
+      "title": "The concept of carrying capacity.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 54
+    },
+    {
+      "code": "4.3.4",
+      "family": "SPEC_POINT",
+      "title": "Candidates should be able to critically evaluate the concept of optimum population including overpopulation and underpopulation.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 55
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T4:SUB4.4",
+      "family": "SUBTOPIC",
+      "title": "The management of natural increase",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "4.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study one country’s population policy regarding natural increase, showing the difficulties faced and evaluate the attempted solution(s). (The case study must include attempts to alter the natural increase rate and to manage the results of population change.)",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T4:SUB4.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 56
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T5",
+      "family": "TOPIC",
+      "title": "Migration",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 5
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T5:SUB5.1",
+      "family": "SUBTOPIC",
+      "title": "Migration as a component of population change",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "5.1.1",
+      "family": "SPEC_POINT",
+      "title": "Movements of populations (excluding all movements of less than one year’s duration).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5:SUB5.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 57
+    },
+    {
+      "code": "5.1.2",
+      "family": "SPEC_POINT",
+      "title": "Causes of migration: push factors and pull factors, processes of migration (including chain migration) and patterns of migration (including by distance and by age), the role of constraints, obstacles and barriers (e.g. cost, national borders).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5:SUB5.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 58
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T5:SUB5.2",
+      "family": "SUBTOPIC",
+      "title": "Internal migration (within a country)",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "5.2.1",
+      "family": "SPEC_POINT",
+      "title": "Rural–urban and urban–rural movements: their causes and impacts on source areas and receiving/destination areas including population structures.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5:SUB5.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 59
+    },
+    {
+      "code": "5.2.2",
+      "family": "SPEC_POINT",
+      "title": "Stepped migration within the settlement hierarchy and urban–urban movements.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5:SUB5.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 60
+    },
+    {
+      "code": "5.2.3",
+      "family": "SPEC_POINT",
+      "title": "Causes and impacts of intra-urban movements (within urban settlements).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5:SUB5.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 61
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T5:SUB5.3",
+      "family": "SUBTOPIC",
+      "title": "International migration",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "5.3.1",
+      "family": "SPEC_POINT",
+      "title": "Voluntary and forced (involuntary) movements.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5:SUB5.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 62
+    },
+    {
+      "code": "5.3.2",
+      "family": "SPEC_POINT",
+      "title": "Causes and patterns of international migrations (including economic migration and refugee flows) and impacts on source areas and receiving/destination areas.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5:SUB5.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 63
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T5:SUB5.4",
+      "family": "SUBTOPIC",
+      "title": "The management of international migration",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "5.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study one international migration stream: its causes, character, scale, pattern and impacts on source areas and receiving/destination areas.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T5:SUB5.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 64
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T6",
+      "family": "TOPIC",
+      "title": "Settlement dynamics",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 6
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T6:SUB6.1",
+      "family": "SUBTOPIC",
+      "title": "Changes in rural settlements",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "6.1.1",
+      "family": "SPEC_POINT",
+      "title": "Contemporary issues in rural settlements in LICs, MICs and HICs, (e.g. depopulation, service provision) including the impacts of internal migration and the consequences of urban growth.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 65
+    },
+    {
+      "code": "6.1.2",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study a rural settlement (village or hamlet) or a rural area showing some of the issues of its development and growth (or decline) and evaluating the responses to these issues.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 66
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T6:SUB6.2",
+      "family": "SUBTOPIC",
+      "title": "Urban trends and issues of urbanisation",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "6.2.1",
+      "family": "SPEC_POINT",
+      "title": "Urban growth. The process of urbanisation and its causes and consequences in LICs, MICs and HICs, including counterurbanisation and re-urbanisation, competition for land and urban renewal.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 67
+    },
+    {
+      "code": "6.2.2",
+      "family": "SPEC_POINT",
+      "title": "The concept of a world city: causes of the growth of world cities and the development of a hierarchy of world cities.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 68
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T6:SUB6.3",
+      "family": "SUBTOPIC",
+      "title": "The changing structure of urban settlements",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "6.3.1",
+      "family": "SPEC_POINT",
+      "title": "Factors (social, economic, environmental and political) affecting the location of activities within urban areas (including planning) and how urban locations change over time for retailing, services and manufacturing.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 69
+    },
+    {
+      "code": "6.3.2",
+      "family": "SPEC_POINT",
+      "title": "The changing central business district (CBD).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 70
+    },
+    {
+      "code": "6.3.3",
+      "family": "SPEC_POINT",
+      "title": "Competition for space (spatial competition) in urban areas, the concept of bid rent, and functional zonation.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 71
+    },
+    {
+      "code": "6.3.4",
+      "family": "SPEC_POINT",
+      "title": "Residential segregation: causes (income and race/ethnicity) and processes (e.g. operation of the housing market, influence of family and friends, culture and planning).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 72
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T6:SUB6.4",
+      "family": "SUBTOPIC",
+      "title": "The management of urban settlements",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "6.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study urban settlements showing the challenges of, and evaluating the attempted solutions in, each of the following:",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 73
+    },
+    {
+      "code": "6.4.2",
+      "family": "SPEC_POINT",
+      "title": "a shanty town (squatter settlement) in an LIC or MIC",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 74
+    },
+    {
+      "code": "6.4.3",
+      "family": "SPEC_POINT",
+      "title": "providing infrastructure (either power or transport) for a city.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T6:SUB6.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 75
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T7",
+      "family": "TOPIC",
+      "title": "Tropical environments",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 7
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T7:SUB7.1",
+      "family": "SUBTOPIC",
+      "title": "Tropical climates",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "7.1.1",
+      "family": "SPEC_POINT",
+      "title": "Global distribution and climatic characteristics of humid tropical and seasonally humid tropical environments: the roles of the intertropical convergence zone (ITCZ), subtropical anticyclones, and monsoons.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7:SUB7.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 76
+    },
+    {
+      "code": "7.1.2",
+      "family": "SPEC_POINT",
+      "title": "The key features of temperature and rainfall and their annual and diurnal variations in the humid tropical and seasonally humid tropical environments.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7:SUB7.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 77
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T7:SUB7.2",
+      "family": "SUBTOPIC",
+      "title": "Landforms of tropical environments",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "7.2.1",
+      "family": "SPEC_POINT",
+      "title": "The formation of characteristic landforms: granite: (deep weathering profiles) tors, inselbergs, and bornhardts limestone: tropical karst (cone karst, tower karst, and cockpit karst).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7:SUB7.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 78
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T7:SUB7.3",
+      "family": "SUBTOPIC",
+      "title": "Humid tropical (rainforest) ecosystems and seasonally humid tropical (savanna) ecosystems",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "7.3.1",
+      "family": "SPEC_POINT",
+      "title": "Plant communities: development of climax, subclimax and plagioclimax.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7:SUB7.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 79
+    },
+    {
+      "code": "7.3.2",
+      "family": "SPEC_POINT",
+      "title": "Vegetation characteristics.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7:SUB7.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 80
+    },
+    {
+      "code": "7.3.3",
+      "family": "SPEC_POINT",
+      "title": "Nutrient cycling: Gersmehl diagrams, soil fertility, energy flows, and trophic levels.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7:SUB7.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 81
+    },
+    {
+      "code": "7.3.4",
+      "family": "SPEC_POINT",
+      "title": "Soil formation: soil forming processes, soil types and profile characteristics (oxisols/latosols, tropical red and brown earths).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7:SUB7.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 82
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T7:SUB7.4",
+      "family": "SUBTOPIC",
+      "title": "Sustainable management of tropical environments",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "7.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study some of the threats to (exploitation) and problems of sustainable management of areas within either the rainforest ecosystem or the savanna ecosystem and evaluate attempted solutions.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T7:SUB7.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 83
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T8",
+      "family": "TOPIC",
+      "title": "Coastal environments",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 8
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T8:SUB8.1",
+      "family": "SUBTOPIC",
+      "title": "Coastal processes",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "8.1.1",
+      "family": "SPEC_POINT",
+      "title": "Wave generation and characteristics: fetch, energy, refraction, breaking waves, high and low energy waves, swash, and backwash.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 84
+    },
+    {
+      "code": "8.1.2",
+      "family": "SPEC_POINT",
+      "title": "Marine erosion: hydraulic action, cavitation, corrasion/abrasion, solution, and attrition.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 85
+    },
+    {
+      "code": "8.1.3",
+      "family": "SPEC_POINT",
+      "title": "Sub-aerial processes: weathering and mass movement.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 86
+    },
+    {
+      "code": "8.1.4",
+      "family": "SPEC_POINT",
+      "title": "Marine transportation and deposition: sediment sources and characteristics, sediment cells, and longshore drift.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 87
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T8:SUB8.2",
+      "family": "SUBTOPIC",
+      "title": "Characteristics and formation of coastal landforms",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "8.2.1",
+      "family": "SPEC_POINT",
+      "title": "Erosional landforms: cliffs and wave-cut platforms, caves, arches and stacks.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 88
+    },
+    {
+      "code": "8.2.2",
+      "family": "SPEC_POINT",
+      "title": "Depositional landforms: beaches in cross section (profile) and plan, swash and drift aligned beaches, simple and compound spits, tombolos, offshore bars, barrier beaches, coastal dunes, tidal sedimentation in estuaries, coastal saltmarshes, and mangroves.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 89
+    },
+    {
+      "code": "8.2.3",
+      "family": "SPEC_POINT",
+      "title": "The role of sea level change in the formation of coastal landforms.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 90
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T8:SUB8.3",
+      "family": "SUBTOPIC",
+      "title": "Coral reefs",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "8.3.1",
+      "family": "SPEC_POINT",
+      "title": "Characteristics, distribution and formation of fringing reefs, barrier reefs, and atolls.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 91
+    },
+    {
+      "code": "8.3.2",
+      "family": "SPEC_POINT",
+      "title": "Conditions required for coral growth.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 92
+    },
+    {
+      "code": "8.3.3",
+      "family": "SPEC_POINT",
+      "title": "Threats to coral reefs (global warming, sea-level rise, pollution, physical damage) and possible management strategies.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 93
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T8:SUB8.4",
+      "family": "SUBTOPIC",
+      "title": "Sustainable management of coasts",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "8.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study some of the problems of sustainably managing a stretch or stretches of coastline, and evaluate attempted solutions (including hard engineering and soft engineering).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T8:SUB8.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 94
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T9",
+      "family": "TOPIC",
+      "title": "Hazardous environments",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 9
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T9:SUB9.1",
+      "family": "SUBTOPIC",
+      "title": "Hazards resulting from tectonic processes",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "9.1.1",
+      "family": "SPEC_POINT",
+      "title": "The global distribution of earthquakes and volcanoes related to plate tectonics.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 95
+    },
+    {
+      "code": "9.1.2",
+      "family": "SPEC_POINT",
+      "title": "Earthquakes and resultant hazards: shaking, landslides, soil liquefaction, and tsunami.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 96
+    },
+    {
+      "code": "9.1.3",
+      "family": "SPEC_POINT",
+      "title": "Volcanoes and resultant hazards: types of eruption and their products (nuées ardentes, lava flows, volcanic mudflows/lahars, volcanic landslides, pyroclastic flows, and ash fallout).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 97
+    },
+    {
+      "code": "9.1.4",
+      "family": "SPEC_POINT",
+      "title": "Primary and secondary impacts on lives and property.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 98
+    },
+    {
+      "code": "9.1.5",
+      "family": "SPEC_POINT",
+      "title": "Prediction, hazard mapping, preparedness and monitoring of earthquake and volcanic hazards and perception of risk.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 99
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T9:SUB9.2",
+      "family": "SUBTOPIC",
+      "title": "Hazards resulting from mass movements",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "9.2.1",
+      "family": "SPEC_POINT",
+      "title": "Mass movements and resultant hazards: nature and causes.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 100
+    },
+    {
+      "code": "9.2.2",
+      "family": "SPEC_POINT",
+      "title": "Impacts on lives and property.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 101
+    },
+    {
+      "code": "9.2.3",
+      "family": "SPEC_POINT",
+      "title": "Prediction, hazard mapping, preparedness and monitoring of the hazard and the perception of risk.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 102
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T9:SUB9.3",
+      "family": "SUBTOPIC",
+      "title": "Hazards resulting from atmospheric disturbances",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "9.3.1",
+      "family": "SPEC_POINT",
+      "title": "Global distribution of areas most at risk from large-scale tropical disturbances (cyclones, hurricanes, typhoons) and small-scale atmospheric disturbances (tornadoes).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 103
+    },
+    {
+      "code": "9.3.2",
+      "family": "SPEC_POINT",
+      "title": "Processes causing the formation and development of cyclones, hurricanes, typhoons and tornadoes.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 104
+    },
+    {
+      "code": "9.3.3",
+      "family": "SPEC_POINT",
+      "title": "Hazards from large-scale atmospheric disturbances: storm surges, coastal flooding, intense rainfall leading to severe river floods and mass movement, and high winds.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 105
+    },
+    {
+      "code": "9.3.4",
+      "family": "SPEC_POINT",
+      "title": "Hazards from small-scale atmospheric disturbances: intense precipitation (rain and hail), high winds, and pressure imbalances.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 106
+    },
+    {
+      "code": "9.3.5",
+      "family": "SPEC_POINT",
+      "title": "Primary and secondary impacts on lives and property.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 107
+    },
+    {
+      "code": "9.3.6",
+      "family": "SPEC_POINT",
+      "title": "Prediction, preparedness and monitoring of large- and small-scale atmospheric disturbances and perception of risk.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 108
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T9:SUB9.4",
+      "family": "SUBTOPIC",
+      "title": "Sustainable management in hazardous environments",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "9.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study some of the problems of sustainable management of a hazardous environment and evaluate attempted or possible solutions.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T9:SUB9.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 109
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T10",
+      "family": "TOPIC",
+      "title": "Hot arid and semi-arid environments",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 10
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T10:SUB10.1",
+      "family": "SUBTOPIC",
+      "title": "Hot arid and semi-arid climates",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "10.1.1",
+      "family": "SPEC_POINT",
+      "title": "Global distribution and climatic characteristics of hot arid and semi-arid environments.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 110
+    },
+    {
+      "code": "10.1.2",
+      "family": "SPEC_POINT",
+      "title": "Definitions and causes of aridity: pressure and wind systems, influence of ocean currents, rain shadow effect.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 111
+    },
+    {
+      "code": "10.1.3",
+      "family": "SPEC_POINT",
+      "title": "The key features of hot arid and semi-arid environments: high wind energy environments, diurnal and seasonal variations in precipitation and temperature.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 112
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T10:SUB10.2",
+      "family": "SUBTOPIC",
+      "title": "Landforms of hot arid and semi-arid environments",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "10.2.1",
+      "family": "SPEC_POINT",
+      "title": "Weathering processes: thermal fracture, exfoliation, salt weathering, chemical weathering, and their effects.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 113
+    },
+    {
+      "code": "10.2.2",
+      "family": "SPEC_POINT",
+      "title": "Processes of erosion, transport and deposition by wind: corrasion/abrasion, deflation, traction, saltation, and suspension.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 114
+    },
+    {
+      "code": "10.2.3",
+      "family": "SPEC_POINT",
+      "title": "Erosion, transport and deposition by water action: hydrological regime, episodic rainfall, sheet and flash floods.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 115
+    },
+    {
+      "code": "10.2.4",
+      "family": "SPEC_POINT",
+      "title": "Characteristic landforms: sand dunes, wind sculptured rocks (yardang, zeugen), wadis, alluvial fans, arroyos, pediments, and piedmont zone (bahadas, playas, salt lakes, inselbergs).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 116
+    },
+    {
+      "code": "10.2.5",
+      "family": "SPEC_POINT",
+      "title": "Relative roles of aeolian and fluvial processes: evidence for past climate change (Pleistocene pluvials), and the role of past processes in the development of landforms.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 117
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T10:SUB10.3",
+      "family": "SUBTOPIC",
+      "title": "Soils and vegetation",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "10.3.1",
+      "family": "SPEC_POINT",
+      "title": "Vegetation: biomass productivity (biodiversity, limited nutrient cycling, fragility), adaptation of plants to extreme temperatures, physical and physiological drought.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 118
+    },
+    {
+      "code": "10.3.2",
+      "family": "SPEC_POINT",
+      "title": "Soils processes: upward capillary movement of water and minerals (salinisation).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 119
+    },
+    {
+      "code": "10.3.3",
+      "family": "SPEC_POINT",
+      "title": "The process of desertification (both natural and human factors) leading to the degradation of soils and vegetation in semi-arid environments.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 120
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T10:SUB10.4",
+      "family": "SUBTOPIC",
+      "title": "Sustainable management of hot arid and semi-arid environments",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "10.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study the problems of sustainable management in either a hot arid or a semi-arid environment and evaluate attempted or possible solutions.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T10:SUB10.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 121
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T11",
+      "family": "TOPIC",
+      "title": "Production, location and change",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 11
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T11:SUB11.1",
+      "family": "SUBTOPIC",
+      "title": "Agricultural systems and food production",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "11.1.1",
+      "family": "SPEC_POINT",
+      "title": "Factors (physical, social, economic, political) affecting agricultural land use and practices on farms: the roles of irrigation, land tenure, the nature of demand and distance from markets, and agricultural technology.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11:SUB11.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 122
+    },
+    {
+      "code": "11.1.2",
+      "family": "SPEC_POINT",
+      "title": "The concept of an agricultural system with inputs, throughputs, subsystems and output: one arable system and one pastoral system.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11:SUB11.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 123
+    },
+    {
+      "code": "11.1.3",
+      "family": "SPEC_POINT",
+      "title": "Intensive and extensive production and agricultural productivity.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11:SUB11.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 124
+    },
+    {
+      "code": "11.1.4",
+      "family": "SPEC_POINT",
+      "title": "Issues in the intensification of agriculture and the extension of cultivation.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11:SUB11.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 125
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T11:SUB11.2",
+      "family": "SUBTOPIC",
+      "title": "The management of agricultural change",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "11.2.1",
+      "family": "SPEC_POINT",
+      "title": "Case study : candidates must study the need for, and some of the difficulties in, the management of agricultural change in one country, at the local scale (the farm, holding or producer) and at the national scale, and evaluate the attempted solutions.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11:SUB11.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 126
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T11:SUB11.3",
+      "family": "SUBTOPIC",
+      "title": "Manufacturing and related service industry",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "11.3.1",
+      "family": "SPEC_POINT",
+      "title": "Factors affecting the location of manufacturing and related service industry (land, labour, capital, markets, materials, technology, economies and diseconomies of scale, inertia, transport, government policies).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11:SUB11.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 127
+    },
+    {
+      "code": "11.3.2",
+      "family": "SPEC_POINT",
+      "title": "Industrial agglomeration, functional linkages, the industrial estate and the export processing zone (EPZ).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11:SUB11.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 128
+    },
+    {
+      "code": "11.3.3",
+      "family": "SPEC_POINT",
+      "title": "The informal sector of manufacturing and services: causes, characteristics, location and impact.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11:SUB11.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 129
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T11:SUB11.4",
+      "family": "SUBTOPIC",
+      "title": "The management of change in manufacturing industry",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "11.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study the industrial policy for one country’s manufacturing and consequent changes in the character, location and organisation of its manufacturing, showing some of the issues faced and evaluate the attempted solutions.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T11:SUB11.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 130
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T12",
+      "family": "TOPIC",
+      "title": "Environmental management",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 12
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T12:SUB12.1",
+      "family": "SUBTOPIC",
+      "title": "Sustainable energy supplies",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "12.1.1",
+      "family": "SPEC_POINT",
+      "title": "Renewable and non-renewable energy resources.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 131
+    },
+    {
+      "code": "12.1.2",
+      "family": "SPEC_POINT",
+      "title": "Factors at the national scale affecting demand for and supply of energy and the balance between different sources (including sustainability, levels of development, resource endowment, climate, income, technology, pollution, energy policy and energy security).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 132
+    },
+    {
+      "code": "12.1.3",
+      "family": "SPEC_POINT",
+      "title": "Trends in the consumption of fossil fuels, nuclear power and renewables (hydroelectric power (HEP), wind, biofuels) in LICs, MICs and HICs.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 133
+    },
+    {
+      "code": "12.1.4",
+      "family": "SPEC_POINT",
+      "title": "The environmental impacts of energy production, transport and usage at local and global scales.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 134
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T12:SUB12.2",
+      "family": "SUBTOPIC",
+      "title": "The management of energy supply",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "12.2.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study one country’s overall electrical energy strategy showing some of the issues of changes in demand for and supply of electricity, in power production and its location, and evaluate the success of the overall strategy.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 135
+    },
+    {
+      "code": "12.2.2",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study one named located scheme to produce electricity (e.g. a power station), showing some of the issues of changes in demand and supply, in power production and its location, and evaluate the success of the scheme.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 136
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T12:SUB12.3",
+      "family": "SUBTOPIC",
+      "title": "Environmental degradation",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "12.3.1",
+      "family": "SPEC_POINT",
+      "title": "Pollution (land, air and water): nature, causes, solutions.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 137
+    },
+    {
+      "code": "12.3.2",
+      "family": "SPEC_POINT",
+      "title": "Demand for and supply of water and issues of water quality.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 138
+    },
+    {
+      "code": "12.3.3",
+      "family": "SPEC_POINT",
+      "title": "Factors in the degradation of rural environments (e.g. overpopulation, poor agricultural practices, deforestation).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 139
+    },
+    {
+      "code": "12.3.4",
+      "family": "SPEC_POINT",
+      "title": "Factors in the degradation of urban environments (e.g. urbanisation, industrial development, inadequate waste management).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 140
+    },
+    {
+      "code": "12.3.5",
+      "family": "SPEC_POINT",
+      "title": "Constraints on improving the quality of degraded environments.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 141
+    },
+    {
+      "code": "12.3.6",
+      "family": "SPEC_POINT",
+      "title": "The protection of environments at risk at the local or regional scale: needs, measures and outcomes.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 142
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T12:SUB12.4",
+      "family": "SUBTOPIC",
+      "title": "The management of a degraded environment",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "12.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study one degraded environment, showing the causes of its degradation, problems faced, issues in attempts to improve the environment and evaluate the attempted solutions.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T12:SUB12.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 143
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T13",
+      "family": "TOPIC",
+      "title": "Global interdependence",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 13
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T13:SUB13.1",
+      "family": "SUBTOPIC",
+      "title": "Trade flows and trading patterns",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "13.1.1",
+      "family": "SPEC_POINT",
+      "title": "Visible and invisible imports and exports. Global patterns of, and inequalities in, trade flows.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 144
+    },
+    {
+      "code": "13.1.2",
+      "family": "SPEC_POINT",
+      "title": "Factors affecting global trade (including resource endowment, locational advantage, historical factors such as colonial ties, trade agreements and changes in the global market).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 145
+    },
+    {
+      "code": "13.1.3",
+      "family": "SPEC_POINT",
+      "title": "The role of the World Trade Organization (WTO) and free trade. Candidates should be able to critically evaluate the impacts of trade on exporting and importing countries.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 146
+    },
+    {
+      "code": "13.1.4",
+      "family": "SPEC_POINT",
+      "title": "The nature and role of Fairtrade.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 147
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T13:SUB13.2",
+      "family": "SUBTOPIC",
+      "title": "International debt and international aid",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "13.2.1",
+      "family": "SPEC_POINT",
+      "title": "The causes, nature and problems of debt for countries. The international debt crisis and debt relief.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 148
+    },
+    {
+      "code": "13.2.2",
+      "family": "SPEC_POINT",
+      "title": "Different types of international aid and aid donors: relief aid, development aid, tied aid, bilateral aid and multilateral aid.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 149
+    },
+    {
+      "code": "13.2.3",
+      "family": "SPEC_POINT",
+      "title": "Candidates should be able to critically evaluate the impacts of international aid on receiving countries.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 150
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T13:SUB13.3",
+      "family": "SUBTOPIC",
+      "title": "The development of international tourism",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "13.3.1",
+      "family": "SPEC_POINT",
+      "title": "Reasons for, and trends in, the growth of international tourism.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 151
+    },
+    {
+      "code": "13.3.2",
+      "family": "SPEC_POINT",
+      "title": "The impacts of tourism on the environments, societies and economies (local and national) of tourist destinations.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 152
+    },
+    {
+      "code": "13.3.3",
+      "family": "SPEC_POINT",
+      "title": "Carrying capacity and the tourism multiplier effect.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 153
+    },
+    {
+      "code": "13.3.4",
+      "family": "SPEC_POINT",
+      "title": "Recent developments in different types of tourism (including ecotourism).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 154
+    },
+    {
+      "code": "13.3.5",
+      "family": "SPEC_POINT",
+      "title": "Candidates should be able to critically evaluate the life cycle model of tourism.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 155
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T13:SUB13.4",
+      "family": "SUBTOPIC",
+      "title": "The management of a tourist destination",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "13.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study one tourist area or resort, its growth and development, showing the issues of sustainability it faces and evaluating the impacts of tourism on the destination’s environment(s), society and economy.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T13:SUB13.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 156
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T14",
+      "family": "TOPIC",
+      "title": "Economic transition",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-21"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 14
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T14:SUB14.1",
+      "family": "SUBTOPIC",
+      "title": "National development",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 1
+    },
+    {
+      "code": "14.1.1",
+      "family": "SPEC_POINT",
+      "title": "The nature of the primary, secondary, tertiary and quaternary sectors and their roles in economic development.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 157
+    },
+    {
+      "code": "14.1.2",
+      "family": "SPEC_POINT",
+      "title": "The nature, causes (physical and human) and distribution of global inequalities in social and economic wellbeing.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 158
+    },
+    {
+      "code": "14.1.3",
+      "family": "SPEC_POINT",
+      "title": "Candidates should be able to critically evaluate some of the measures and indices of social and economic inequality.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.1"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 159
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T14:SUB14.2",
+      "family": "SUBTOPIC",
+      "title": "The globalisation of economic activity",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 2
+    },
+    {
+      "code": "14.2.1",
+      "family": "SPEC_POINT",
+      "title": "An introduction to global patterns of resources, production and markets.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 160
+    },
+    {
+      "code": "14.2.2",
+      "family": "SPEC_POINT",
+      "title": "Foreign direct investment (FDI) and the new international division of labour (NIDL). Factors affecting the growth and spatial structure of transnational corporations (TNCs).",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 161
+    },
+    {
+      "code": "14.2.3",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study the global spatial organisation and operation of one TNC.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 162
+    },
+    {
+      "code": "14.2.4",
+      "family": "SPEC_POINT",
+      "title": "Factors in the emergence and growth of newly industrialised countries (NICs). Changes in the location of economic activity (e.g. outsourcing of manufacturing and offshoring of services): nature, causes and impacts.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.2"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 163
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T14:SUB14.3",
+      "family": "SUBTOPIC",
+      "title": "Regional development within countries",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 3
+    },
+    {
+      "code": "14.3.1",
+      "family": "SPEC_POINT",
+      "title": "Regional disparities in social and economic development.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 164
+    },
+    {
+      "code": "14.3.2",
+      "family": "SPEC_POINT",
+      "title": "The concept of core–periphery.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 165
+    },
+    {
+      "code": "14.3.3",
+      "family": "SPEC_POINT",
+      "title": "The process of cumulative causation from initial advantage(s), spread and backwash effects, regional divergence and convergence.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.3"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 166
+    },
+    {
+      "code": "cie-a-level-geography-2025-2026-T14:SUB14.4",
+      "family": "SUBTOPIC",
+      "title": "The management of regional development",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 4
+    },
+    {
+      "code": "14.4.1",
+      "family": "SPEC_POINT",
+      "title": "Case study: candidates must study one country’s regional development policy, its regional disparities, some of the difficulties faced in trying to overcome these disparities and evaluate the attempted solutions.",
+      "description": null,
+      "parents": [
+        "cie-a-level-geography-2025-2026-T14:SUB14.4"
+      ],
+      "provenanceTier": "RULE_DERIVED",
+      "order": 167
+    }
+  ],
+  "edges": [
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T1:SUB1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.1",
+      "relation": "PART_OF",
+      "target": "1.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.1",
+      "relation": "PART_OF",
+      "target": "1.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.1",
+      "relation": "PART_OF",
+      "target": "1.1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.1",
+      "relation": "PART_OF",
+      "target": "1.1.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T1:SUB1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.2",
+      "relation": "PART_OF",
+      "target": "1.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.2",
+      "relation": "PART_OF",
+      "target": "1.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.2",
+      "relation": "PART_OF",
+      "target": "1.2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T1:SUB1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.3",
+      "relation": "PART_OF",
+      "target": "1.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.3",
+      "relation": "PART_OF",
+      "target": "1.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.3",
+      "relation": "PART_OF",
+      "target": "1.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.3",
+      "relation": "PART_OF",
+      "target": "1.3.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.3",
+      "relation": "PART_OF",
+      "target": "1.3.5",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.3",
+      "relation": "PART_OF",
+      "target": "1.3.6",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.3",
+      "relation": "PART_OF",
+      "target": "1.3.7",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T1:SUB1.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.4",
+      "relation": "PART_OF",
+      "target": "1.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.4",
+      "relation": "PART_OF",
+      "target": "1.4.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.4",
+      "relation": "PART_OF",
+      "target": "1.4.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.4",
+      "relation": "PART_OF",
+      "target": "1.4.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.4",
+      "relation": "PART_OF",
+      "target": "1.4.5",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.4",
+      "relation": "PART_OF",
+      "target": "1.4.6",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T1:SUB1.4",
+      "relation": "PART_OF",
+      "target": "1.4.7",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T2:SUB2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2:SUB2.1",
+      "relation": "PART_OF",
+      "target": "2.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T2:SUB2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2:SUB2.2",
+      "relation": "PART_OF",
+      "target": "2.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2:SUB2.2",
+      "relation": "PART_OF",
+      "target": "2.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2:SUB2.2",
+      "relation": "PART_OF",
+      "target": "2.2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T2:SUB2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2:SUB2.3",
+      "relation": "PART_OF",
+      "target": "2.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2:SUB2.3",
+      "relation": "PART_OF",
+      "target": "2.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2:SUB2.3",
+      "relation": "PART_OF",
+      "target": "2.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T2:SUB2.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2:SUB2.4",
+      "relation": "PART_OF",
+      "target": "2.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T2:SUB2.4",
+      "relation": "PART_OF",
+      "target": "2.4.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T3:SUB3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.1",
+      "relation": "PART_OF",
+      "target": "3.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.1",
+      "relation": "PART_OF",
+      "target": "3.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.1",
+      "relation": "PART_OF",
+      "target": "3.1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T3:SUB3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.2",
+      "relation": "PART_OF",
+      "target": "3.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.2",
+      "relation": "PART_OF",
+      "target": "3.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.2",
+      "relation": "PART_OF",
+      "target": "3.2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.2",
+      "relation": "PART_OF",
+      "target": "3.2.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T3:SUB3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.3",
+      "relation": "PART_OF",
+      "target": "3.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.3",
+      "relation": "PART_OF",
+      "target": "3.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.3",
+      "relation": "PART_OF",
+      "target": "3.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T3:SUB3.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.4",
+      "relation": "PART_OF",
+      "target": "3.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.4",
+      "relation": "PART_OF",
+      "target": "3.4.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T3:SUB3.4",
+      "relation": "PART_OF",
+      "target": "3.4.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T4:SUB4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.1",
+      "relation": "PART_OF",
+      "target": "4.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.1",
+      "relation": "PART_OF",
+      "target": "4.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.1",
+      "relation": "PART_OF",
+      "target": "4.1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.1",
+      "relation": "PART_OF",
+      "target": "4.1.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T4:SUB4.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.2",
+      "relation": "PART_OF",
+      "target": "4.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.2",
+      "relation": "PART_OF",
+      "target": "4.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.2",
+      "relation": "PART_OF",
+      "target": "4.2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.2",
+      "relation": "PART_OF",
+      "target": "4.2.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T4:SUB4.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.3",
+      "relation": "PART_OF",
+      "target": "4.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.3",
+      "relation": "PART_OF",
+      "target": "4.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.3",
+      "relation": "PART_OF",
+      "target": "4.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.3",
+      "relation": "PART_OF",
+      "target": "4.3.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T4:SUB4.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T4:SUB4.4",
+      "relation": "PART_OF",
+      "target": "4.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T5",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T5:SUB5.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5:SUB5.1",
+      "relation": "PART_OF",
+      "target": "5.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5:SUB5.1",
+      "relation": "PART_OF",
+      "target": "5.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T5:SUB5.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5:SUB5.2",
+      "relation": "PART_OF",
+      "target": "5.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5:SUB5.2",
+      "relation": "PART_OF",
+      "target": "5.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5:SUB5.2",
+      "relation": "PART_OF",
+      "target": "5.2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T5:SUB5.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5:SUB5.3",
+      "relation": "PART_OF",
+      "target": "5.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5:SUB5.3",
+      "relation": "PART_OF",
+      "target": "5.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T5:SUB5.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T5:SUB5.4",
+      "relation": "PART_OF",
+      "target": "5.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T6",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T6:SUB6.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.1",
+      "relation": "PART_OF",
+      "target": "6.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.1",
+      "relation": "PART_OF",
+      "target": "6.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T6:SUB6.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.2",
+      "relation": "PART_OF",
+      "target": "6.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.2",
+      "relation": "PART_OF",
+      "target": "6.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T6:SUB6.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.3",
+      "relation": "PART_OF",
+      "target": "6.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.3",
+      "relation": "PART_OF",
+      "target": "6.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.3",
+      "relation": "PART_OF",
+      "target": "6.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.3",
+      "relation": "PART_OF",
+      "target": "6.3.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T6:SUB6.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.4",
+      "relation": "PART_OF",
+      "target": "6.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.4",
+      "relation": "PART_OF",
+      "target": "6.4.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T6:SUB6.4",
+      "relation": "PART_OF",
+      "target": "6.4.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T7",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T7:SUB7.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7:SUB7.1",
+      "relation": "PART_OF",
+      "target": "7.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7:SUB7.1",
+      "relation": "PART_OF",
+      "target": "7.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T7:SUB7.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7:SUB7.2",
+      "relation": "PART_OF",
+      "target": "7.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T7:SUB7.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7:SUB7.3",
+      "relation": "PART_OF",
+      "target": "7.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7:SUB7.3",
+      "relation": "PART_OF",
+      "target": "7.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7:SUB7.3",
+      "relation": "PART_OF",
+      "target": "7.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7:SUB7.3",
+      "relation": "PART_OF",
+      "target": "7.3.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T7:SUB7.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T7:SUB7.4",
+      "relation": "PART_OF",
+      "target": "7.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T8",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T8:SUB8.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.1",
+      "relation": "PART_OF",
+      "target": "8.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.1",
+      "relation": "PART_OF",
+      "target": "8.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.1",
+      "relation": "PART_OF",
+      "target": "8.1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.1",
+      "relation": "PART_OF",
+      "target": "8.1.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T8:SUB8.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.2",
+      "relation": "PART_OF",
+      "target": "8.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.2",
+      "relation": "PART_OF",
+      "target": "8.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.2",
+      "relation": "PART_OF",
+      "target": "8.2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T8:SUB8.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.3",
+      "relation": "PART_OF",
+      "target": "8.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.3",
+      "relation": "PART_OF",
+      "target": "8.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.3",
+      "relation": "PART_OF",
+      "target": "8.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T8:SUB8.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T8:SUB8.4",
+      "relation": "PART_OF",
+      "target": "8.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T9",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T9:SUB9.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.1",
+      "relation": "PART_OF",
+      "target": "9.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.1",
+      "relation": "PART_OF",
+      "target": "9.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.1",
+      "relation": "PART_OF",
+      "target": "9.1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.1",
+      "relation": "PART_OF",
+      "target": "9.1.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.1",
+      "relation": "PART_OF",
+      "target": "9.1.5",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T9:SUB9.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.2",
+      "relation": "PART_OF",
+      "target": "9.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.2",
+      "relation": "PART_OF",
+      "target": "9.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.2",
+      "relation": "PART_OF",
+      "target": "9.2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T9:SUB9.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.3",
+      "relation": "PART_OF",
+      "target": "9.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.3",
+      "relation": "PART_OF",
+      "target": "9.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.3",
+      "relation": "PART_OF",
+      "target": "9.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.3",
+      "relation": "PART_OF",
+      "target": "9.3.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.3",
+      "relation": "PART_OF",
+      "target": "9.3.5",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.3",
+      "relation": "PART_OF",
+      "target": "9.3.6",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T9:SUB9.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T9:SUB9.4",
+      "relation": "PART_OF",
+      "target": "9.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T10",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T10:SUB10.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.1",
+      "relation": "PART_OF",
+      "target": "10.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.1",
+      "relation": "PART_OF",
+      "target": "10.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.1",
+      "relation": "PART_OF",
+      "target": "10.1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T10:SUB10.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.2",
+      "relation": "PART_OF",
+      "target": "10.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.2",
+      "relation": "PART_OF",
+      "target": "10.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.2",
+      "relation": "PART_OF",
+      "target": "10.2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.2",
+      "relation": "PART_OF",
+      "target": "10.2.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.2",
+      "relation": "PART_OF",
+      "target": "10.2.5",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T10:SUB10.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.3",
+      "relation": "PART_OF",
+      "target": "10.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.3",
+      "relation": "PART_OF",
+      "target": "10.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.3",
+      "relation": "PART_OF",
+      "target": "10.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T10:SUB10.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T10:SUB10.4",
+      "relation": "PART_OF",
+      "target": "10.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T11",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T11:SUB11.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11:SUB11.1",
+      "relation": "PART_OF",
+      "target": "11.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11:SUB11.1",
+      "relation": "PART_OF",
+      "target": "11.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11:SUB11.1",
+      "relation": "PART_OF",
+      "target": "11.1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11:SUB11.1",
+      "relation": "PART_OF",
+      "target": "11.1.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T11:SUB11.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11:SUB11.2",
+      "relation": "PART_OF",
+      "target": "11.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T11:SUB11.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11:SUB11.3",
+      "relation": "PART_OF",
+      "target": "11.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11:SUB11.3",
+      "relation": "PART_OF",
+      "target": "11.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11:SUB11.3",
+      "relation": "PART_OF",
+      "target": "11.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T11:SUB11.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T11:SUB11.4",
+      "relation": "PART_OF",
+      "target": "11.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T12",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T12:SUB12.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.1",
+      "relation": "PART_OF",
+      "target": "12.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.1",
+      "relation": "PART_OF",
+      "target": "12.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.1",
+      "relation": "PART_OF",
+      "target": "12.1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.1",
+      "relation": "PART_OF",
+      "target": "12.1.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T12:SUB12.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.2",
+      "relation": "PART_OF",
+      "target": "12.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.2",
+      "relation": "PART_OF",
+      "target": "12.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T12:SUB12.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.3",
+      "relation": "PART_OF",
+      "target": "12.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.3",
+      "relation": "PART_OF",
+      "target": "12.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.3",
+      "relation": "PART_OF",
+      "target": "12.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.3",
+      "relation": "PART_OF",
+      "target": "12.3.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.3",
+      "relation": "PART_OF",
+      "target": "12.3.5",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.3",
+      "relation": "PART_OF",
+      "target": "12.3.6",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T12:SUB12.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T12:SUB12.4",
+      "relation": "PART_OF",
+      "target": "12.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T13",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T13:SUB13.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.1",
+      "relation": "PART_OF",
+      "target": "13.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.1",
+      "relation": "PART_OF",
+      "target": "13.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.1",
+      "relation": "PART_OF",
+      "target": "13.1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.1",
+      "relation": "PART_OF",
+      "target": "13.1.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T13:SUB13.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.2",
+      "relation": "PART_OF",
+      "target": "13.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.2",
+      "relation": "PART_OF",
+      "target": "13.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.2",
+      "relation": "PART_OF",
+      "target": "13.2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T13:SUB13.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.3",
+      "relation": "PART_OF",
+      "target": "13.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.3",
+      "relation": "PART_OF",
+      "target": "13.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.3",
+      "relation": "PART_OF",
+      "target": "13.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.3",
+      "relation": "PART_OF",
+      "target": "13.3.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.3",
+      "relation": "PART_OF",
+      "target": "13.3.5",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T13:SUB13.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T13:SUB13.4",
+      "relation": "PART_OF",
+      "target": "13.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-21",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T14",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T14:SUB14.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.1",
+      "relation": "PART_OF",
+      "target": "14.1.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.1",
+      "relation": "PART_OF",
+      "target": "14.1.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.1",
+      "relation": "PART_OF",
+      "target": "14.1.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T14:SUB14.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.2",
+      "relation": "PART_OF",
+      "target": "14.2.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.2",
+      "relation": "PART_OF",
+      "target": "14.2.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.2",
+      "relation": "PART_OF",
+      "target": "14.2.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.2",
+      "relation": "PART_OF",
+      "target": "14.2.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T14:SUB14.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.3",
+      "relation": "PART_OF",
+      "target": "14.3.1",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.3",
+      "relation": "PART_OF",
+      "target": "14.3.2",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.3",
+      "relation": "PART_OF",
+      "target": "14.3.3",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14",
+      "relation": "PART_OF",
+      "target": "cie-a-level-geography-2025-2026-T14:SUB14.4",
+      "provenanceTier": "RULE_DERIVED"
+    },
+    {
+      "source": "cie-a-level-geography-2025-2026-T14:SUB14.4",
+      "relation": "PART_OF",
+      "target": "14.4.1",
+      "provenanceTier": "RULE_DERIVED"
+    }
+  ]
 }

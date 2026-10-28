@@ -159,7 +159,8 @@ const EXPECT: Array<{
   { slug: "cie-igcse-maths-25-extended", code: "0580", level: "IGCSE", papers: 134, subject: "Mathematics", label: "Maths — Extended", components: [2, 4] },
 ];
 
-const D1_SKELETON = "cie-a-level-maths-20-pure-2"; // the honest-empty ghost bundle (ruling in courses.json note)
+const D1_SKELETON = "cie-a-level-maths-20-pure-2"; // T-SPECS-9696-4HI1: now a SPEC-FILL skeleton — official-spine tree + honestly-empty banks (the former honest-empty ghost bundle; ruling in courses.json note)
+const SPEC_FILL_PIN = "340803c9af4a949d3e274251b08697c6b42ba016"; // T-SPECS-9696-4HI1 r0: the resources parse landing (9696 adapter + 4HI1 option_rows) — the spec-fill manifests pin this exact SHA
 
 // ── 1. registry posture ───────────────────────────────────────────────────────
 type Row = {
@@ -270,17 +271,37 @@ for (const exp of EXPECT) {
     const manifest = JSON.parse(readFileSync(path.join(dir, "manifest.json"), "utf8")) as {
       schema: string; counts: Record<string, number>; treeKind?: string;
       curriculum?: { board?: string; code?: string };
-      importSource?: { repo?: string };
+      importSource?: { repo?: string; ref?: string; upstreamSchemas?: string[] };
+      officialSpine?: { spine?: string; resourcesSha?: string; attachmentMap?: string };
     };
     const curriculum = JSON.parse(readFileSync(path.join(dir, "curriculum.json"), "utf8")) as {
-      board?: string; nodes: unknown[]; edges: unknown[];
+      board?: string; code?: string; nodes: Array<{ family?: string }>; edges: unknown[];
     };
-    const countsZero = Object.values(manifest.counts ?? {}).every((n) => n === 0);
-    check(`bundle ${exp.slug}: honest-empty skeleton (all counts 0)`, countsZero,
-      JSON.stringify(manifest.counts));
+    // T-SPECS-9696-4HI1: the SPEC-FILL skeleton class — the official parsed
+    // spec tree is served while every teaching bank stays honestly empty (no
+    // SME corpus exists: no attachmentMap, no bank counts). The tree itself
+    // carries the truth: specPoints == the pinned spine's SPEC_POINT census.
+    const spine = JSON.parse(readFileSync(path.join(HUB, "spines", `${exp.slug}.json`), "utf8")) as {
+      curriculum?: { nodes?: Array<{ family?: string }> };
+    };
+    const spCount = (spine.curriculum?.nodes ?? []).filter((n) => n.family === "SPEC_POINT").length;
+    const banksZero = ["notes", "questionSets", "questions", "parts", "marks", "flashcards"]
+      .every((k) => (manifest.counts?.[k] ?? 0) === 0);
+    const treePopulated = (manifest.counts?.specPoints ?? 0) > 0
+      && manifest.counts?.specPoints === spCount
+      && curriculum.nodes.filter((n) => n.family === "SPEC_POINT").length === spCount;
+    check(`bundle ${exp.slug}: spec-fill skeleton (official-spine tree, banks honestly empty)`,
+      manifest.treeKind === "official-spine"
+      && manifest.officialSpine?.spine === `spines/${exp.slug}.json`
+      && manifest.officialSpine?.resourcesSha === SPEC_FILL_PIN
+      && manifest.officialSpine?.attachmentMap === undefined
+      && manifest.importSource?.ref === `main@${SPEC_FILL_PIN}`
+      && (manifest.importSource?.upstreamSchemas ?? []).includes("syllabai.parsed-specification/1.0")
+      && banksZero && treePopulated,
+      `${manifest.treeKind}/${String(manifest.officialSpine?.resourcesSha ?? "").slice(0, 7)} pts=${manifest.counts?.specPoints}/${spCount} banks-zero=${banksZero}`);
     check(`bundle ${exp.slug}: board/identity`,
       manifest.curriculum?.board === BOARD && manifest.curriculum?.code === exp.code
-      && curriculum.board === BOARD && curriculum.nodes.length === 0 && curriculum.edges.length === 0);
+      && curriculum.board === BOARD && curriculum.nodes.length > 0 && curriculum.edges.length > 0);
     continue;
   }
   checkRealBundle(exp.slug, exp.code);

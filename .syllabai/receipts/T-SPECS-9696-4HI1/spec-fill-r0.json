@@ -1,0 +1,33 @@
+{
+  "receipt": "T-SPECS-9696-4HI1/spec-fill-r0",
+  "operatorOrder": "trace 1a180fb64c61c3f5 — 'Import their specs pdf, parse them. save them.' targeting the 3 spec-tree gap courses of the spec-tree census of record (local ledger 35: pure-2, a-level-geography-21, igcse-history-17)",
+  "date": "2026-10-28",
+  "agent": "main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+  "pins": {
+    "v2Base": "9ec3ff949ff33e295fa22a272cfe34a005f6cc2b",
+    "resourcesSha": "340803c9af4a949d3e274251b08697c6b42ba016 (T-SPECS-9696-4HI1 r0 parse landing, FF-pushed over 6650d075)"
+  },
+  "whatLanded": {
+    "resources": "9696 parse (int_statements per-qual adapter: TOPIC_DOT + ARM_ON_SUBHEAD + SENTENCE_SPLIT + PAPER_HEAD exclusion + title-continuation + control-glyph strip; 14T/56S/167 pts, G1-G4 PASS) + 4HI1 parse (NEW family option_rows: marker-confirmed option heads, gap-buffered row prose, one verbatim statement per numbered row; 21 options x 5 rows = 105 pts, G1-G4 PASS) + 3-file split for igcse-history + _summary.json 56->58 rows (56 origin rows deep-equal asserted)",
+    "spines": "build_official_spines pins bumped 888bca4/a4ce9f5 -> 340803c9; CIE builds via the additive CIE_RECEIPT roster (spec-fill-roster-r0.json, wave-2 pattern); cie-a-level-maths-20-pure-2 = topic_numbers ['2'] (pre-wired 9709 tuple) -> 1T/6S/17 pts; cie-a-level-geography-21 = kind all (whole 9696 pool) -> 14T/56S/167 pts; igcse-history-17 = Edexcel path kind all -> 21T/105S/105 pts; ZERO orphans, ZERO dup-suffixes; of-record spines/_report*.json byte-untouched (staging reports archived in this receipt dir)",
+    "bundles": "curriculum.json = spine nodes/edges VERBATIM under the registry header of record (rekey overlay law); manifests: treeKind official-spine + officialSpine {spine, resourcesSha} with NO attachmentMap (honest: no corpus) + importSource main@340803c9 + upstreamSchemas [syllabai.parsed-specification/1.0]; teaching banks ALL ZERO (notes/questions/flashcards/learner-sim/concept-graph untouched or honest-empty shapes); igcse-history-17 created as a new 7-file bundle; registry statuses UNCHANGED (registered) — the home-page spec card stays gated by the page.tsx:315 honest-empty law until notes/questions land, but the /courses/<slug>/specification route serves the tree NOW (its only gate is bundle.curriculum presence)"
+  },
+  "codeChanges": [
+    "build_official_spines.py: both parse pins bumped; load_topics_index now tolerates 404 for unified-parse (CIE) quals — the slug_qual scan spans all 58 manifest quals and the 33 CIE dirs carry no topics.json (latent assumption exposed by the pin bump; the Edexcel path never consumes those entries)",
+    "validate_cie_bundles.ts: pure-2's honest-empty D1_SKELETON branch replaced by the SPEC-FILL SKELETON class (official-spine tree + banks honestly 0 + officialSpine {spine, resourcesSha==SPEC_FILL_PIN} + attachmentMap ABSENT + importSource pin + specPoints == spine census both sides); SPEC_FILL_PIN constant added; registry status expectations UNCHANGED (pure-2 stays registered)"
+  ],
+  "gates": {
+    "verify:cie": "PASS (the card's paper-count assertions hold at this tree)",
+    "verify:corpus (23a)": "PASS",
+    "verify:flashcard-sync": "PASS",
+    "tsc --noEmit": "0 errors",
+    "full build": "GREEN (build_corpus_static + next build, full route table, SSG prerender incl the 3 filled course pages)",
+    "spine-meta cross-checks": "specPoints/topics/subtopics == spine meta for all 3 bundles; node codes unique"
+  },
+  "races": "resources push hit a moved origin (4b0e9dac -> 6650d075, PRs #202/#203) — zero file overlap proven, rebased clean, re-pushed FF as 340803c9",
+  "residuals": [
+    "live verification after the hub deploy (specification routes for the 3 slugs + honest-empty home cards unchanged)",
+    "the home-page spec card for the 3 courses activates only when teaching banks land (page.tsx:315 law) — or if the operator orders the law amended",
+    "igcse-history-17 teaching corpus + the 2 skeletons' banks remain the resource-wave scope"
+  ]
+}

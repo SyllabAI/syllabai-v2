@@ -42,7 +42,7 @@ REPO = Path(__file__).resolve().parent.parent
 # upstream parse this build is pinned to (resources main @ T-KG-16: paper/unit
 # applicability derived for the remaining quals — spines don't consume it, so
 # this is a provenance pin bump; T-KG-15/14 repairs beneath)
-RESOURCES_SHA = "888bca4abfe545ce86784fe0ea9a9698209b3ddf"
+RESOURCES_SHA = "340803c9af4a949d3e274251b08697c6b42ba016"
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 DEFAULT_CACHE = Path("/home/z/my-project/work/spines-cache")
 
@@ -61,7 +61,7 @@ BOARD = "Pearson Edexcel"
 CIE_BOARD = "Cambridge CIE"
 # resources main @ CIE-PHASE0-1/1: parse_report counts + pdf_sha1 verified identical
 # across 4add496..a4ce9f5 for all 7 multi-bank/representative specs before pinning
-CIE_RESOURCES_SHA = "a4ce9f5559990a97950355d8f4cc85d30a796301"
+CIE_RESOURCES_SHA = "340803c9af4a949d3e274251b08697c6b42ba016"
 CIE_RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{CIE_RESOURCES_SHA}"
 # SME-WAVE2 r1 (residual 2): env override follows the lane-worktree pattern of
 # CIE_CACHE/CIE_STAGING — the of-record phase-0 receipt stays byte-untouched and
@@ -1236,10 +1236,20 @@ def build_course(slug: str, qual: str, registry: dict, cache: Path,
 
 
 def load_topics_index(cache: Path, quals: list[str]) -> dict:
-    """number -> [(clean_title, page, ordering), ...] per qual."""
+    """number -> [(clean_title, page, ordering), ...] per qual.
+    T-SPECS-9696-4HI1: quals whose parsed/ dir carries the unified CIE parse
+    (<stem>.parsed.json, no 3-file split) have no topics.json — the Edexcel
+    path never consumes them, so a missing file yields an empty index entry
+    instead of a 404 (the slug_qual scan spans every qual in the manifest)."""
     idx = {}
     for q in quals:
-        t = fetch_json(f"Official-Specifications/parsed/{q}/topics.json", cache)
+        try:
+            t = fetch_json(f"Official-Specifications/parsed/{q}/topics.json", cache)
+        except urllib.error.HTTPError as exc:
+            if exc.code != 404:
+                raise
+            idx[q] = {}
+            continue
         rows = t.get("topics", []) if isinstance(t, dict) else t
         by_no: dict[str, list] = {}
         for r in rows:

@@ -21886,3 +21886,18 @@ Stage Summary:
 - **Skipped this round**: #423 (`e488b0a3`) NO-CI at decision time (check-runs not started, created 05:37Z) — per rule (b) pending → skip, eligible for later rounds
 - **Static four**: #285 `1c2dd54d` FAIL:hub,verify / #296 `bd2c0b1e` FAIL:hub / #303 `cce02304` FAIL:verify / #352 `13bfea93` NO-CI (~115h) — unchanged, gate-b re-verified this round
 - **Notes**: bookkeeping-only receipt commit (.syllabai/worklog.md only); fetch-first mirror reset #220 hit at sweep start (signature `89962a5`, restored, zero data loss); no force-push; no self-merge (PR author SyllabAI ≠ R0-auto)
+
+---
+Task ID: T-SPECS-9696-4HI1 run-001 (operator order trace 1a180fb64c61c3f5 "Import their specs pdf, parse them. save them." — the 3 spec-tree gap courses of the census of record)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Import the official spec PDFs (resources Official-Specifications plane), parse them, save them — spec trees for cie-a-level-maths-20-pure-2, cie-a-level-geography-21, igcse-history-17.
+
+Work Log:
+- RESOURCES (pushed FF 340803c9, rebased over the 6650d075 race — PRs #202/#203, zero file overlap): 9696 parsed via cie_spec_parser int_statements + per-qual adapter (TOPIC_DOT / ARM_ON_SUBHEAD / SENTENCE_SPLIT / PAPER_HEAD exclusion / title-continuation / \x07 strip flagged) = 14 topics / 56 subtopics / 167 verbatim statements, G1-G4 PASS; 4HI1 parsed via the NEW spec_parser family option_rows (marker-confirmed option heads kill front-matter heads; gap-buffered two-column row prose handles the printed row-boundary overlap; one verbatim statement per numbered row) = 21 options x 5 rows = 105 statements ground-truth-verified, G1-G4 PASS; 3-file split + parse_report for igcse-history; _summary.json 56 -> 58 rows with all 56 origin rows deep-equal (asserted).
+- V2 lane worktree @ 9ec3ff94: spine-builder pins -> 340803c9; load_topics_index 404-tolerance (CIE dirs carry no topics.json — latent assumption exposed by the pin bump); CIE builds via the additive CIE_RECEIPT roster receipt (wave-2 pattern) — pure-2 = topic_numbers ['2'] (pre-wired) 1T/6S/17 pts; geography-21 = whole pool 14T/56S/167 pts; igcse-history-17 Edexcel path = 21T/105S/105 pts; ZERO orphans/dup-suffixes; of-record spines/_report*.json byte-untouched.
+- Bundles: curriculum.json = spine verbatim under the registry header (rekey overlay law); manifests = treeKind official-spine + officialSpine {spine, resourcesSha} NO attachmentMap + importSource main@340803c9 + syllabai.parsed-specification/1.0; banks ALL honestly 0; igcse-history-17 = new 7-file bundle; registry statuses unchanged (registered). The /courses/<slug>/specification route serves the trees NOW (bundle.curriculum gate only); the home spec card stays honest-empty per page.tsx:315 until teaching banks land.
+- Gates: verify:cie PASS (pure-2's D1 skeleton branch replaced by the SPEC-FILL SKELETON class — official-spine tree + banks 0 + attachmentMap ABSENT + specPoints == spine census both sides); verify:corpus PASS; verify:flashcard-sync PASS; tsc 0 errors; full build GREEN (SSG prerender incl the 3 pages).
+- Push = TRANSIT 46 (v2). PAT rotation CRITICAL-OVERDUE reported pre-push (same fingerprint through 46; rotation list per 8d1c390e).
+
+Stage Summary:
+- The 3 spec-tree gaps of the census of record are CLOSED at the data plane: every live course now carries a parsed official spec tree (106/106 bundles), 103 course-home cards render the spec card, and the 3 spec-fill courses serve /specification directly. Residuals: post-deploy live verification; the 3 home cards activate with the resource wave (or an operator amendment of the empty-branch law).

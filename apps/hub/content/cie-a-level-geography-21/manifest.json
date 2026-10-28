@@ -3,27 +3,33 @@
   "generatedUtc": "2026-10-28T00:00:00Z",
   "importSource": {
     "repo": "SyllabAI/syllabai-resources",
-    "ref": "PR #194 (sme-wave2 r0; branch t-sme-wave2-2026-10-28) \u2014 wave-2 registered skeleton per the pure-2 D1 class: identity page-sourced from Official-Specifications cie-a-level-geography-2025-2026/spec.json (cover_code 9696, window 2025-2026); teaching content arrives with the follow-up build_bundles import run",
-    "upstreamSchemas": []
+    "ref": "main@340803c9af4a949d3e274251b08697c6b42ba016",
+    "upstreamSchemas": [
+      "syllabai.parsed-specification/1.0"
+    ]
   },
   "curriculum": {
     "board": "Cambridge International",
     "level": "A-Level",
     "subject": "Geography",
     "code": "9696",
-    "syllabusVersion": "2025-2026",
-    "nodes": [],
-    "edges": []
+    "syllabusVersion": "2025-2026"
   },
-  "license": "No third-party teaching content is bundled yet (honest skeleton). Official past papers stream from the public SyllabAI/syllabai-pastpapers archive.",
+  "license": "Official exam-board specification statements (parsed from the official syllabus PDF, syllabai-resources Official-Specifications plane). No third-party teaching content is bundled yet (honest skeleton — notes/questions/flashcards arrive with the resource wave).",
   "counts": {
+    "sections": 14,
+    "topics": 56,
+    "specPoints": 167,
     "notes": 0,
     "questionSets": 0,
     "questions": 0,
     "parts": 0,
     "marks": 0,
-    "flashcards": 0,
-    "specPoints": 0
+    "flashcards": 0
   },
-  "treeKind": "sme-native"
+  "treeKind": "official-spine",
+  "officialSpine": {
+    "spine": "spines/cie-a-level-geography-21.json",
+    "resourcesSha": "340803c9af4a949d3e274251b08697c6b42ba016"
+  }
 }
