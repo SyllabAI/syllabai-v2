@@ -5,8 +5,8 @@
     "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_kJg2gwF77vdFZZ2H",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "72989cc2e49db8048b5724a24853c972c6e4ccb0dd5332a5a11d797e91b7365d",
-    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
+    "sourceLayerSha256": "cf810821ca828da7b6e0689e664bdfe03032a2d4e314d0eff6ce37eddd840828",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_kJg2gwF77vdFZZ2H",
@@ -200,7 +200,15 @@
           "firstLesson": 2
         }
       ],
-      "workedExample": null
+      "workedExample": {
+        "prompt": "a) Describe the test for carbonate ions, including the ionic equation for the gas-forming step. b) Describe the test that distinguishes chloride, bromide and iodide ions, naming the three precipitate colours. c) Describe the sulfate ion test and explain why acid is added first.",
+        "steps": [
+          "a) Add dilute acid to the sample — fizzing shows carbon dioxide is released — and bubble the gas through limewater, which turns cloudy if carbonate is present: CO3 2- (aq) + 2H+ (aq) → CO2 (g) + H2O (l).",
+          "b) Acidify the sample with nitric acid, then add silver nitrate solution: a white precipitate shows chloride (AgCl), cream shows bromide (AgBr), and yellow shows iodide (AgI).",
+          "c) Acidify with dilute hydrochloric acid, then add barium chloride solution: a white precipitate of barium sulfate (Ba2+ (aq) + SO4 2- (aq) → BaSO4 (s)) shows sulfate ions. The acid first removes carbonate impurities, which would otherwise form their own white precipitate and give a false positive."
+        ],
+        "finalAnswer": "a) Acid, then limewater turns cloudy; CO3 2- + 2H+ → CO2 + H2O. b) AgNO3 after HNO3: white (Cl-), cream (Br-), yellow (I-). c) HCl then BaCl2 gives white BaSO4; the acid removes carbonate interference."
+      }
     },
     "figures": [
       {
