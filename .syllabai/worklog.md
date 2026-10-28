@@ -21837,3 +21837,23 @@ Work Log:
 
 Stage Summary:
 - 1 merge of record (#420 -> 09a10e7e); bookkeeping-only .syllabai/** receipt push follows; fetch-first, no force-push, Neon/prod zero-write, merge desk only.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-016
+Agent: R7a main lane (operator session chat 1f3003b6, trace 1a180c961abffa3d, order "run-016")
+Task: run-016 per the run-015 receipt disposition — the 53 SPARE-GRID-INSTR fused problemMd blocks (eyes-on surgical rebuild, 2019-06 02 4-e precedent class).
+
+Work Log:
+- State recovery: fetch-first (local clone stale at 4008e6ce -> ff to 0c00c123); runs 011-015 confirmed landed of record (PRs #404/#407/#411/#414/#417); local plane sha16 eabd5ca8b643f93f == run-015 receipt byte-exact.
+- Evidence: 29 mirror QP PDFs fetched; token+qnum page-find (109 renders); 53/53 text-layer verification (37 PASS + 16 REVIEW); 18 vision reads covering every formula-box part, all 3 zero-link stubs, the odd-shape parts (2023-11 7-d/8-d, 2025-06 02R 11-g stray '2a', 2021-01 9-f 'N2'), and both grid-decision page pairs; footer variants of record pinned (Turn over / Turn to page N / next page / Only use this grid).
+- Sibling part-boundary law established from 13 sibling dumps (lead-ins live on the PRECEDING part) — prevented 8 duplicate-stem rebuilds.
+- Crops: 4 crop-required grids measured via pdftotext -bbox tick-label union (minus-glyph policy), rendered 200dpi, VIEWED, pushed to resources main via Contents API (1b79e25e/21cfccec/826ac7a8/4b0e9dac; 404 collision-check first; raw 200 x4 verified); 2023-11 asset_8_8-d sliver mis-crop link REPLACED (orphan disclosed).
+- Apply (fail-closed run016_apply.py): 39 strips (marker-anchored stems preserved) + 14 rebuilds (8 KaTeX boxes, 3 evidenced text restorations, 4 crop attaches with stub-note removal); G1-G10 ALL GREEN first run after table assembly (assert fixes: 39+14 census); plane eabd5ca8b643f93f -> 5fc8abdba88325e8 (3710608 B).
+- Post gates: katex 117/117; URL gate 56/56 (incl. 4 new); census/mark-union/PUA/FFFD/$-parity exact.
+- Bookkeeping: receipt run-016-spare-grid-rebuilds.json (json.dump law) + playbook laws 21-23 + lane artifacts in-repo + evidence under download/t-oeq-mathsb/run016.
+
+Stage Summary:
+- run-016 CLOSED of record: the last F5 deferred class (53 fused spare-grid blocks) rebuilt from print, 4 grids restored to answerability, all 23 playbook invariants held.
+- Queue after run-016 (in receipt): 2021-06 02 q2 MS rebuild; 2024-06 02R q2-a junk (needs polygon crop); orphan census; 213 crop review passes; 11-e legacy link; SME/DB + /0.2 (operator); PAT rotation STILL PENDING.
+
+- LANDING DEFECT (run-016): first landing 0ae1643c / PR #421 / merge 3c49285b carried bookkeeping only — the land script's `git checkout main -- .` reverted the tracked plane/playbook/worklog before staging; detected by the post-merge hash check (origin/main plane still eabd5ca8); recovery = deterministic re-run of run016_apply.py (plane reproduced BYTE-EXACT 5fc8abdba88325e8) + re-land on a fresh branch. Lesson: staging in landing scripts must reference the lane's edited files explicitly, never a base-tree checkout.
