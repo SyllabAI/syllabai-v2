@@ -85,3 +85,16 @@ Work Log:
 
 Stage Summary:
 - run-017 tranche 1 CLOSED END-TO-END: census filed, linked paper fully symbol-restored vs printed evidence (hub 22 fields + corpus 19 fields + disclosures), receipts + lane artifacts in-repo. Tranche-2 queued: whole-field census (345+ parts / 65 papers, severity-first), order-24 bearings rebuild, run-016 discrepancy adjudication. fetch-first, no force; PAT inline-only, scrubbed.
+---
+Task ID: run-017 tranche 2-r2 (trace 1a181a0eb215e04d) — COLLISION RECONCILIATION LANDING
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Mid-wave collision: the r7a lane landed r7a-pp-symbolloss-t2-017 on main (53 fields: 2025-06 P1 32 + 1R 19 + 2026-06 P1 2) while my 77-field wave sat on PR #428 (base 515edc81) — #428 went dirty on the single-line plane.
+- Three-way reconciliation onto main@dd20b81b: r7a-only 38 fields KEPT; my 62 mine-only APPLIED; overlap 15 = 3 text-identical + 12 ADJUDICATED to this wave (all 12 content-consistent with the printed pages on both sides — zero contradictions; kept tranche-1 house dialect + printed part labels r7a dropped). Ledger artifact filed.
+- Final patch: 2023-11 Q24 p18 general-ratio section rebuilt from a fresh MS p18 read (last S1 residual on my papers eliminated). r7a's 2025-06 P1 keeps 8 S1 hits (their scope, disclosed, tranche-3).
+- Gates on the union: census 66/1281/2443/6600 EXACT, marks-map identical, FFFD/PUA 0, $-balance 0-new, mirror byte-exact on all touched parts, S1 residual 0 on my 3 papers, byte-law round-trip PASS. Plane a11ad0ccc1923806 -> 0c75d58f837ec61f.
+- CI channel: branch push AND pull_request events dropped for this lane's PRs all run (0 check-runs ever on run-017-symbol-loss-tranche2); re-trigger empty commit + close/reopen both dead-ended; main itself RED (verify T-MIG-136/T-CONSUME-EDX-1 shim test failing on the MATHSB-ANCHORS stage-3 flip 260c11c9/dd20b81b — hub GREEN, verify RED, deterministic). Merge NOT executed (landing law: no merge onto red main; CI channel dead). PR left ready + escalation filed. fetch-first, no force; PAT inline-only, scrubbed.
+
+Stage Summary:
+- run-017 tranche 2 content COMPLETE and reconciled: 0c75d58f837ec61f awaits a green window (main verify fix by the MATHSB-ANCHORS lane) + a working CI channel. Escalations: (1) red main T-MIG-136 shim test; (2) PR CI event-drop for this lane; (3) r7a 2025-06 P1 residual 8 S1 hits; (4) corpus topic.json ADR-039 sync for the 3 papers rides next resources PR.
