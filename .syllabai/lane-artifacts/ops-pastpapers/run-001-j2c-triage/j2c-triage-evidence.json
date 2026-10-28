@@ -1,0 +1,1351 @@
+{
+ "trace": "1a1840f85f1b0325",
+ "date": "2026-10-29",
+ "lane": "ops-pastpapers",
+ "run": "run-001-j2c-triage",
+ "base": {
+  "resources_main": "20a35ccc6 (31 commits / 300 files since Task-15 base 0c0f0e080; chemistry lane touched by F110 leg-2 grid 2022-06 2C, F90 2022-06 2C 6(a), F111 marks-fragments re-receipt, F113 MS-answer-figure wave 6d40e1f0e, sib BL-011 pass-17; THIS paper touched only by F113: topic.json + assets/asset_5_a_ms_answer.png)",
+  "v2_main": "6c66180e6 (hub through PR #419 F110 sync, PR #433 F113 MS-answer-figure sync 7 parts/6 slices, PR #435 manifest bump importSource@6d40e1f0e)",
+  "pinned_blobs": {
+   "topic_corpus": "76162f22f77e901f80b817048491985f5ab453dc",
+   "official_papers": "0c47db277dbcaf26aa5111e180f6a874617c12cb"
+  }
+ },
+ "battery": {
+  "subs_patterns": 10,
+  "line_patterns": 12,
+  "counts": {
+   "corpus_parts": 36,
+   "hub_parts": 36,
+   "high": 0,
+   "by_design": 0,
+   "legit": 0
+  },
+  "findings": [
+   {
+    "severity": "BY-DESIGN",
+    "layer": "corpus",
+    "part": "1-a",
+    "field": "solution_md",
+    "class": "FURNITURE-LINE",
+    "detail": {
+     "line_idx": 3,
+     "pattern": "^\\s*\\d{1,2}\\s*$",
+     "line_no": 1,
+     "line": "4"
+    }
+   },
+   {
+    "severity": "BY-DESIGN",
+    "layer": "corpus",
+    "part": "1-a",
+    "field": "mark_points[0].text_md",
+    "class": "FURNITURE-LINE",
+    "detail": {
+     "line_idx": 3,
+     "pattern": "^\\s*\\d{1,2}\\s*$",
+     "line_no": 1,
+     "line": "4"
+    }
+   },
+   {
+    "severity": "BY-DESIGN",
+    "layer": "corpus",
+    "part": "1-c-iii",
+    "field": "solution_md",
+    "class": "FURNITURE-LINE",
+    "detail": {
+     "line_idx": 3,
+     "pattern": "^\\s*\\d{1,2}\\s*$",
+     "line_no": 1,
+     "line": "2"
+    }
+   },
+   {
+    "severity": "BY-DESIGN",
+    "layer": "corpus",
+    "part": "3-c-iii",
+    "field": "solution_md",
+    "class": "FURNITURE-LINE",
+    "detail": {
+     "line_idx": 3,
+     "pattern": "^\\s*\\d{1,2}\\s*$",
+     "line_no": 3,
+     "line": "2"
+    }
+   },
+   {
+    "severity": "BY-DESIGN",
+    "layer": "hub",
+    "part": "offp_2026-06_2c_1-a",
+    "field": "markPoints[0].textMd",
+    "class": "FURNITURE-LINE",
+    "detail": {
+     "line_idx": 3,
+     "pattern": "^\\s*\\d{1,2}\\s*$",
+     "line_no": 1,
+     "line": "4"
+    }
+   }
+  ]
+ },
+ "reconciliation": {
+  "hard_failures": [],
+  "parts": 36,
+  "solutionMd_enriched_diff": 36,
+  "rows": [
+   {
+    "part": "offp_2026-06_2c_1-a",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     227,
+     1038
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     4,
+     4,
+     4
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [
+     "assets/asset_1_a_table.png"
+    ],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_1-b",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     288,
+     794
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [
+     "assets/asset_1_b_structures.png"
+    ],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_1-c-i",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     6,
+     334
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [
+     "assets/asset_1_c_displayed-formula.png"
+    ],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_1-c-ii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     79,
+     598
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [
+     "assets/asset_1_c_ii_equation.png"
+    ],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_1-c-iii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     201,
+     665
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [
+     "assets/asset_1_c_iii_polyester.png"
+    ],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_2-a",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     65,
+     346
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_2-b",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     311,
+     604
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [
+     "assets/asset_2_b_apparatus.png"
+    ],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_2-c",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     480,
+     877
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     3,
+     3,
+     3
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_2-d-i",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     64,
+     445
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [
+     "assets/asset_2_d_table_stem.png"
+    ],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_2-d-ii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     420,
+     396
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_2-e-i",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     83,
+     429
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_2-e-ii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     223,
+     350
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     3,
+     3,
+     3
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_3-a-i",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     117,
+     459
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_3-a-ii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     106,
+     393
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_3-b-i",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     214,
+     541
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_3-b-ii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     11,
+     300
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_3-b-iii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     17,
+     361
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_3-b-iv",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     67,
+     283
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_3-c-i",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     31,
+     525
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [
+     "assets/asset_3_c_i_table.png"
+    ],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_3-c-ii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     304,
+     589
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     3,
+     3,
+     3
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_3-c-iii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     144,
+     322
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_4-a",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     13,
+     242
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_4-b-i",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     48,
+     449
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_4-b-ii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     139,
+     563
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_4-c",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     581,
+     1022
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     6,
+     6,
+     6
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_5-a",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     127,
+     846
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [
+     "assets/asset_5_a_ms_answer.png"
+    ],
+    "ms_source_assets": [
+     "assets/asset_5_a_ms_answer.png"
+    ]
+   },
+   {
+    "part": "offp_2026-06_2c_5-b",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     179,
+     497
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_5-c-i",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     123,
+     482
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_5-c-ii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     151,
+     502
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_5-d",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     542,
+     906
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     5,
+     5,
+     5
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_6-a",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     52,
+     382
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_6-b",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     55,
+     252
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_6-c",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     27,
+     376
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_6-d",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     38,
+     343
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     1,
+     1,
+     1
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_6-e-i",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     43,
+     538
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     2,
+     2,
+     2
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [
+     "assets/asset_6_e_table_stem.png"
+    ],
+    "ms_source_assets": []
+   },
+   {
+    "part": "offp_2026-06_2c_6-e-ii",
+    "in_corpus": true,
+    "marks_eq": true,
+    "problem_overlap": 1.0,
+    "problem_tail_ok": true,
+    "solution_eq": false,
+    "solution_len": [
+     143,
+     555
+    ],
+    "mp_count_eq": true,
+    "mp_exact": true,
+    "mp_marks_sum": [
+     3,
+     3,
+     3
+    ],
+    "choices_eq": true,
+    "assets_eq": true,
+    "assets": [],
+    "ms_source_assets": []
+   }
+  ]
+ },
+ "arithmetic": {
+  "corpus": [
+   {
+    "q": 1,
+    "parts_sum": 10,
+    "printed": 10,
+    "src": "printed-footer",
+    "ok": true
+   },
+   {
+    "q": 2,
+    "parts_sum": 14,
+    "printed": 14,
+    "src": "printed-footer",
+    "ok": true
+   },
+   {
+    "q": 3,
+    "parts_sum": 15,
+    "printed": 15,
+    "src": "printed-footer",
+    "ok": true
+   },
+   {
+    "q": 4,
+    "parts_sum": 10,
+    "printed": 10,
+    "src": "printed-footer",
+    "ok": true
+   },
+   {
+    "q": 5,
+    "parts_sum": 12,
+    "printed": 12,
+    "src": "printed-footer",
+    "ok": true
+   },
+   {
+    "q": 6,
+    "parts_sum": 9,
+    "printed": 9,
+    "src": "printed-footer",
+    "ok": true
+   }
+  ],
+  "hub": [
+   {
+    "q": "1",
+    "parts_sum": 10,
+    "printed": 10,
+    "ok": true
+   },
+   {
+    "q": "2",
+    "parts_sum": 14,
+    "printed": 14,
+    "ok": true
+   },
+   {
+    "q": "3",
+    "parts_sum": 15,
+    "printed": 15,
+    "ok": true
+   },
+   {
+    "q": "4",
+    "parts_sum": 10,
+    "printed": 10,
+    "ok": true
+   },
+   {
+    "q": "5",
+    "parts_sum": 12,
+    "printed": 12,
+    "ok": true
+   },
+   {
+    "q": "6",
+    "parts_sum": 9,
+    "printed": 9,
+    "ok": true
+   }
+  ],
+  "corpus_paper_sum": [
+   70,
+   70
+  ],
+  "hub_paper_sum": [
+   70,
+   70
+  ]
+ },
+ "assets": {
+  "checks": [
+   {
+    "path": "assets/asset_1_a_table.png",
+    "used_by": [
+     "1-a"
+    ],
+    "sources": [
+     "qp.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "table"
+    ],
+    "in_dir": true,
+    "dir_size": 28724,
+    "head_sha256": "bce4314b58f1bece",
+    "head_bytes": 28724,
+    "ok": true
+   },
+   {
+    "path": "assets/asset_1_b_structures.png",
+    "used_by": [
+     "1-b"
+    ],
+    "sources": [
+     "qp.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "repeating-unit structures A-D"
+    ],
+    "in_dir": true,
+    "dir_size": 12583,
+    "head_sha256": "54fb0faa95ccb901",
+    "head_bytes": 12583,
+    "ok": true
+   },
+   {
+    "path": "assets/asset_1_c_displayed-formula.png",
+    "used_by": [
+     "1-c-i"
+    ],
+    "sources": [
+     "qp.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "displayed formula of butane-1,4-dioic acid"
+    ],
+    "in_dir": true,
+    "dir_size": 4753,
+    "head_sha256": "86a0bee2b286d072",
+    "head_bytes": 4753,
+    "ok": true
+   },
+   {
+    "path": "assets/asset_1_c_ii_equation.png",
+    "used_by": [
+     "1-c-ii"
+    ],
+    "sources": [
+     "qp.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "equation to complete (acid + sodium -> salt + hydrogen)"
+    ],
+    "in_dir": true,
+    "dir_size": 9671,
+    "head_sha256": "0a41f1b872eefba9",
+    "head_bytes": 9671,
+    "ok": true
+   },
+   {
+    "path": "assets/asset_1_c_iii_polyester.png",
+    "used_by": [
+     "1-c-iii"
+    ],
+    "sources": [
+     "qp.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "polyester repeating unit"
+    ],
+    "in_dir": true,
+    "dir_size": 4735,
+    "head_sha256": "33772ff73c4e6f63",
+    "head_bytes": 4735,
+    "ok": true
+   },
+   {
+    "path": "assets/asset_2_b_apparatus.png",
+    "used_by": [
+     "2-b"
+    ],
+    "sources": [
+     "qp.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "apparatus"
+    ],
+    "in_dir": true,
+    "dir_size": 13140,
+    "head_sha256": "55d889e08269776d",
+    "head_bytes": 13140,
+    "ok": true
+   },
+   {
+    "path": "assets/asset_2_d_table_stem.png",
+    "used_by": [
+     "2-d-i"
+    ],
+    "sources": [
+     "qp.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "table"
+    ],
+    "in_dir": true,
+    "dir_size": 16932,
+    "head_sha256": "2381afce324d8eab",
+    "head_bytes": 16932,
+    "ok": true
+   },
+   {
+    "path": "assets/asset_3_c_i_table.png",
+    "used_by": [
+     "3-c-i"
+    ],
+    "sources": [
+     "qp.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "table"
+    ],
+    "in_dir": true,
+    "dir_size": 22324,
+    "head_sha256": "d903c07f0225660f",
+    "head_bytes": 22324,
+    "ok": true
+   },
+   {
+    "path": "assets/asset_5_a_ms_answer.png",
+    "used_by": [
+     "5-a"
+    ],
+    "sources": [
+     "ms.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "ms answer figure"
+    ],
+    "in_dir": true,
+    "dir_size": 10803,
+    "head_sha256": "2405b3ac0ce66d07",
+    "head_bytes": 10803,
+    "ok": true
+   },
+   {
+    "path": "assets/asset_6_e_table_stem.png",
+    "used_by": [
+     "6-e-i"
+    ],
+    "sources": [
+     "qp.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "table"
+    ],
+    "in_dir": true,
+    "dir_size": 19178,
+    "head_sha256": "abf230279647e1c6",
+    "head_bytes": 19178,
+    "ok": true
+   }
+  ],
+  "hub_url_prefix_ok": true,
+  "f113_slices": [
+   {
+    "path": "assets/asset_5_a_ms_answer.png",
+    "used_by": [
+     "5-a"
+    ],
+    "sources": [
+     "ms.pdf"
+    ],
+    "kinds": [
+     "crop"
+    ],
+    "mentions": [
+     "ms answer figure"
+    ],
+    "in_dir": true,
+    "dir_size": 10803,
+    "head_sha256": "2405b3ac0ce66d07",
+    "head_bytes": 10803,
+    "ok": true
+   }
+  ]
+ },
+ "validation_gates": {
+  "G0-identity": "PASS",
+  "G1-structure": "PASS",
+  "G2-D-disclosure": "PASS",
+  "G3-mcq-integrity": "PASS",
+  "G4-figure-resolution": "PASS",
+  "G5-answer-linkage": "PASS",
+  "G6-registry-codes": "PASS",
+  "G7-solution-emission": "PASS"
+ },
+ "negative_controls": [
+  {
+   "id": "N1-mark-bump",
+   "expected_gate": "G2-D/value-trace",
+   "detected": true
+  },
+  {
+   "id": "N2-paraphrase",
+   "expected_gate": "G2-D/edits[]",
+   "detected": true,
+   "target": "2(c)"
+  },
+  {
+   "id": "N3-fake-spec-code",
+   "expected_gate": "G6",
+   "detected": true
+  }
+ ],
+ "review_queue": [
+  {
+   "part": "1(b)",
+   "reason": "drawing-option MCQ candidate (options linearized in problem_md, no choices[])"
+  },
+  {
+   "part": "2(d)(i)",
+   "reason": "mark-point answer gap: MPs are margin-note fragments / marks digit (MS answer is a printed drawing)"
+  }
+ ],
+ "spec_tagging": {
+  "tagged": 36,
+  "parts": 36,
+  "pending_llm": 0,
+  "no_spec_point": 0
+ },
+ "live": {
+  "http": "200",
+  "final_url": "https",
+  "bytes": "//syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/past-papers/june-2026-4ch1-2c",
+  "ssr_stem_q1": true,
+  "ssr_q2_titration_data": true,
+  "flight_part_id_5a": true,
+  "flight_f113_asset": true,
+  "flight_solution_2di": true,
+  "flight_solution_prose": true,
+  "subs_hits": [],
+  "raw_url_form": [
+   "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/Official-ExamQuestion/igcse-chemistry-19/2026-06/4CH1-2C/assets/asset_5_a_ms_answer.png"
+  ],
+  "resolver_form": [],
+  "asset_heads": [
+   {
+    "tag": "page_raw_url",
+    "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/Official-ExamQuestion/igcse-chemistry-19/20",
+    "head": "200:image/png"
+   },
+   {
+    "tag": "hub_rawUrl",
+    "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/Official-ExamQuestion/igcse-chemistry-19/20",
+    "head": "200:image/png"
+   }
+  ],
+  "flight_hub_solution_match": true,
+  "hub_fragment": "Concordant means within 0.20 cm³ of each other. Titrations 1, 3 and 4 read 22.95",
+  "parts_in_flight": 36
+ },
+ "harness_law": [
+  "FURNITURE_LINE includes the blank-line dropper ^\\s*$ — MUST be excluded when scanning served markdown (legit paragraph breaks); served-text leak semantics != extraction-stream semantics",
+  "corpus part identity = normalized part_number (it already carries the question number: '2(d)(i)' -> '2-d-i'); rsplit/suffix mapping double-counts the q-number",
+  "exporter problemMd is a RE-FORMAT (stems prepended, boxes -> tables) — verify with token-overlap >= 0.8, never byte-tail",
+  "radix-dialog 'View answer' modals IGNORE synthetic element.click() — solution-panel absence assertions MUST gate on expansion state (solution-prose text present) and be confirmed by a second, distinct probe (real CDP click)",
+  "terminal/display can swallow bracket sequences ('![ms' rendered as '!s') — ground-truth string content via char-code dumps before alleging data corruption",
+  "shared crops render once per consuming part (6-e-table-stem x2 = shared:true by design)"
+ ]
+}

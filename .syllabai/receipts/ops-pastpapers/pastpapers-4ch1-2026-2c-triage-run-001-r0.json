@@ -1,0 +1,48 @@
+{
+ "task": "Operator directive (trace 1a1840f85f1b0325): june-2026-4ch1-2c three-tier triage (corpus / hub / live) + deep audit + self-improving documentation — post-F113 MS-answer-figure wave end-to-end verification for the paper that received a crop slice",
+ "agent": "r0",
+ "date": "2026-10-29",
+ "base": {
+  "resources_main": "20a35ccc6 (31 commits / 300 files since Task-15 base 0c0f0e080; chemistry lane touched by F110 leg-2 grid 2022-06 2C, F90 2022-06 2C 6(a), F111 marks-fragments re-receipt, F113 MS-answer-figure wave 6d40e1f0e, sib BL-011 pass-17; THIS paper touched only by F113: topic.json + assets/asset_5_a_ms_answer.png)",
+  "v2_main": "6c66180e6 (hub through PR #419 F110 sync, PR #433 F113 MS-answer-figure sync 7 parts/6 slices, PR #435 manifest bump importSource@6d40e1f0e)",
+  "pinned_blobs": {
+   "topic_corpus": "76162f22f77e901f80b817048491985f5ab453dc",
+   "official_papers": "0c47db277dbcaf26aa5111e180f6a874617c12cb"
+  }
+ },
+ "verdict_t1_corpus": "PASS — battery FURNITURE_SUBS x10 + FURNITURE_LINE x12 (set verified byte-identical at Task-15 base 0c0f0e080; the 'x13' note in the Task-15 session summary was a miscount, corrected here): 0 HIGH / 5 BY-DESIGN (bare-numeral printed-MS marks rows: 1-a solution_md+mark_points '4', 1-c-iii '2', 3-c-iii '2') / 0 LEGIT (no choices parts). PUA/mojibake/control-char 0. Marks 70/70 paper total, per-question printed-footer sums all ok. solutionMd coverage 36/36 marks>0 parts. Assets 10/10 on disk + HEAD sha256 verified. Validation-report gates 8/8 PASS (G0-identity, G1-structure, G2-D-disclosure, G3-mcq-integrity, G4-figure-resolution, G5-answer-linkage, G6-registry-codes, G7-solution-emission); negative controls N1/N2(2c)/N3 detected-as-designed; spec_tagging 36/36 tagged, no_spec_point 0 (the legacy '3 no-spec-point parts' residue class does not exist in this paper); review_queue 2 disclosed items (1(b) drawing-option MCQ candidate — options linearized in problem_md; 2(d)(i) F95-class printed-drawing MS answer — served via descriptive markPoint + enriched prose, F113 crop correctly scoped to 5-a only)",
+ "verdict_t2_hub": "PASS — 36/36 parts reconcile EXACT vs corpus (marks, markPoints id/marks/textMd triples, choices, asset path sets); markPoints marks-sum == part marks for all parts, corpus==hub; problemMd verified by token-overlap >= 0.8 on all parts (exporter reformats: stems prepended, boxes -> tables, so byte-tail matching is structurally invalid); solutionMd 36/36 enriched (wave-22 semantics: corpus solution_md = raw printed-MS table text, hub solutionMd = enriched prose, by design); hub BY-DESIGN 1 (1-a markPoints '4' — matches corpus). F113 embed verified: 5-a solutionMd carries proper ![ms answer figure — official mark scheme answer figure (ms.pdf p.9)](rawUrl) markdown + assets[] entry source=ms page=9. specPointIds empty = corpus-wide fleet state (0/56, 0/35, 0/38 spot-checked), codes present 36/36",
+ "verdict_t3_live": "PASS — route 200 (june-2026-4ch1-2c); SSR renders Q1 polymerisation stem + Q2 titration data; RSC flight payload ships 36/36 part ids + client-gated solutionMd (byte-fragment match vs bundle, incl. 2-d-i 'ticks in boxes 1, 3 and 4'); furniture SUBS battery 0 hits on served HTML; F113 asset HEAD 200 image/png; DOM: 10 QP crop <img> all loaded 0 broken (shared 6-e-table-stem x2 = by design); Q5 'View answer' mark-scheme modal renders 5-a enriched prose + markPoints + asset_5_a_ms_answer.png fully loaded (naturalWidth 317, complete); june-2023 2CR ms figure also renders — F113 verified end-to-end on live for both probed papers",
+ "deep_audit_findings": [
+  "0 new content defects across all three tiers; the two live-tier 'defect' hypotheses raised mid-probe were both harness artifacts and were DISPROVEN with second-method verification (see harness_law + scare_resolutions)",
+  "F95-class part 2(d)(i): disclosed in corpus validation-report review_queue, served coherently (descriptive tick MP + full prose solution); open item belongs to the converter's F95 ledger / SME review queue, not this paper's content plane",
+  "Provenance nit: topic.json generator string says v0.29.0 / generated 2026-10-27T20:27:28Z while converter @ main is v0.30.0 (F113) — the F113 change to this paper (asset + hub-side embed) post-dates the label; cosmetic, no data risk, converter's next full regen owns the bump",
+  "markPoints fragment pairs (5-a MP1 'If M1 and M2 not fully' + MP2 'max 1 mark') = F86 all-marks-fragments class, by design",
+  "wave20 stem_figure_stubs: 4; text_repairs qp applied=18 with per-line sha receipts; mcq_keys_applied [] and ms_link_overrides [] (no overrides for this paper)"
+ ],
+ "harness_law": [
+  "FURNITURE_LINE includes the blank-line dropper ^\\s*$ — MUST be excluded when scanning served markdown (legit paragraph breaks); served-text leak semantics != extraction-stream semantics",
+  "corpus part identity = normalized part_number (it already carries the question number: '2(d)(i)' -> '2-d-i'); rsplit/suffix mapping double-counts the q-number",
+  "exporter problemMd is a RE-FORMAT (stems prepended, boxes -> tables) — verify with token-overlap >= 0.8, never byte-tail",
+  "radix-dialog 'View answer' modals IGNORE synthetic element.click() — solution-panel absence assertions MUST gate on expansion state (solution-prose text present) and be confirmed by a second, distinct probe (real CDP click)",
+  "terminal/display can swallow bracket sequences ('![ms' rendered as '!s') — ground-truth string content via char-code dumps before alleging data corruption",
+  "shared crops render once per consuming part (6-e-table-stem x2 = shared:true by design)"
+ ],
+ "scare_resolutions": [
+  "MS modal showed 'potassium sulfate solubility' content -> suspected cross-paper contamination -> RESOLVED: it is this paper's Q2 (solubility of potassium sulfate by titration; matches the 22.95/23.05/22.90/22.65 concordancy data of 2-d-i). No contamination.",
+  "F113 figure 'ships but never renders' -> suspected UI render gap -> RESOLVED: radix dialog needs real pointer events; with a real CDP click the figure renders (naturalWidth 317, complete). No gap."
+ ],
+ "emitted": [
+  ".syllabai/receipts/ops-pastpapers/pastpapers-4ch1-2026-2c-triage-run-001-r0.json (this receipt)",
+  ".syllabai/lane-artifacts/ops-pastpapers/run-001-j2c-triage/j2c-triage-evidence.json (machine evidence: battery findings, recon rows, asset sha256s, gates, live probes)",
+  ".syllabai/worklog.md append (ops entry, trace 1a1840f85f1b0325)"
+ ],
+ "queue": [
+  "2(d)(i)-class F95 ledger parts await SME review (converter lane owns the crop decision)",
+  "F113 generator-string bump rides the converter's next full regen",
+  "crop-queue reconcile vs resources AGENTS.md open-work still owed before ANY crop wave executes (standing operator gate)",
+  "PAT rotation STILL PENDING (CRITICAL-OVERDUE; 4th notice on this lane)"
+ ],
+ "method": "read-only content planes (raw @ pinned SHAs, blob-sha verified); furniture battery via direct converter import (official_examq_extract.py + sibling official_examq_text_repairs.py @ 20a35ccc6); corpus<->hub field reconciliation; live tier via HTTP probes + headless-browser DOM/modal verification with expansion-state gating; GET-only against prod; zero LLM/Neon/db writes",
+ "write_ledger": "receipt + evidence + worklog append only (.syllabai/** bookkeeping); no source, index, corpus, hub or db changes"
+}
