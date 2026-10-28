@@ -1,0 +1,54 @@
+{
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "018-gs-leads-q27b-microfix",
+  "date": "2026-10-29",
+  "operatorOrder": "fleet GS leads (Pythagoras/cosine-rule parts), the q27-b bare-caret micro-fix, live spot-check after Vercel redeploys",
+  "shape": "plane-content micro-fix (1 field) + fleet leads census (filed, not executed) + post-deploy live spot-check",
+  "dischargeOfRecord": [
+    "run-017 dfeb0f0d disclosed residual: 'their q27-b problemMd bare caret queued for the owning lane (no QP READ this session — NO-GUESS)'",
+    "run-017 6c66180e t3-corpus-reconcile: 'G2 gate caught 01R q27(b) problemMd (#429 bare-caret residual) as a 27th field — carried verbatim with the standing micro-fix lead, NO-GUESS held'"
+  ],
+  "environmentRecoveryOfRecord": "post-restart clone arrived stale (main 4008e6ce, official-papers.json ABSENT, prior summary environment diverged): fetch-first verified origin/main 6c66180e (run-017 tranche-3 + tranche-2-reconciled + t3-corpus-reconcile ALL LANDED from the parallel session — PRs #423/#427/#429/#431/#432/#435), ff-only after discarding a same-session apply that had hit the LEGACY questions.json on the stale base (that edit was never of record, zero history); plane of record verified first-hand official-papers.json sha16 44f4180e0d68c8a8, census 66/1281/2443/6600",
+  "fixManifest": {
+    "set": "official-4mb1-01r-2026-06",
+    "pid": "offp_2026-06_01r_27-b",
+    "field": "problemMd",
+    "old": "Show that x^2 + 2x − 80 = 0  (bare caret + raw U+2212 outside math — the #429 bare-caret residual class)",
+    "new": "Show that $x^2 + 2x - 80 = 0$  (law-26 KaTeX, ASCII hyphen inside math per tranche-3 solutionMd style; q23-a wage-table raw-$ problemMd precedent)"
+  },
+  "evidence": {
+    "qp": "2026-06 4MB1-01R p24 (P74287A02424) @2.6x gray + 5x zoom crop: '(b) Show that x^2 + 2x − 80 = 0' (true superscript; stem sentence 'A regular polygon P has (x + 2) sides.' parenthesised — the q27-a plane cell already carries it verbatim)",
+    "ms": "p36 @2.4x: (a) 360/(x+2) oe B1; (b) Eg 360x + 720 = 9x^2 + 18x + 360x, [9x^2 + 18x − 720 = 0] — consistent with x^2 + 2x − 80 = 0; p37 (c) (x + 10)(x − 8) roots corroborate",
+    "rootCause": "PDF embedded font maps operators to control glyphs U+001F/U+001E/U+001D — text-layer extraction flattens the equation ('Show that x\\nx\\n2\\n2\\n80\\n0\\n\\x1f\\x1e\\x1d'); the #429 rebuild re-flattened with a bare caret",
+    "files": ["run-018/qp-2026-06-01R-p24.png", "run-018/qp-p24-b-zoom.png", "run-018/ms-2026-06-01R-p36.png"]
+  },
+  "gates": {
+    "census_EXACT": "66/1281/2443/6600 pre==post",
+    "marks_map_identical": "per-pid (marks, markPoints (marks,code)) tuple map identical",
+    "PUA_FFFD_0": "0 across problemMd/solutionMd/markPoints[].textMd",
+    "dollar_parity": "edited field raw-$ count even (currency \\$ class untouched)",
+    "changed_set_EXACT": "{(offp_2026-06_01r_27-b, problemMd)} exactly",
+    "serialization_roundtrip": "single-line compact JSON preserved",
+    "scrub_assert": "napi_/ghp_/vcp_/postgresql://neon.tech zero hits",
+    "mirror_law": "N/A (problemMd edit; markPoints[0].textMd mirrors solutionMd, untouched)",
+    "render_gate": "GREEN through react-markdown 10.1.0 + remark-gfm 4.0.1 + remark-math 6.0.0 + rehype-raw 7 + rehype-sanitize 6 + rehype-katex (bun.lock pins): OLD cell renders no math node (defect class documented), NEW renders .katex msup x^2 … − 80 = 0",
+    "fleet_katex_gate": "479 segments (problemMd+solutionMd+markPoints textMd), 0 failures @ katex 0.16.47 throwOnError",
+    "canary_C145": "advanced 98f78f63… (pinned the #429 residual) -> 8c9d69a3… (new cell), pin form sha256(field utf-8) reproduced first-hand; assertion updated to plane 5fe3af48816d260b with discharge note"
+  },
+  "planeSha": { "before": "44f4180e0d68c8a8", "after": "5fe3af48816d260b" },
+  "fleetGsLeadsCensus": {
+    "artifact": "run-018/gs-leads-census.json (1,046 KB)",
+    "planePin": "official-papers.json @44f4180e0d68c8a8 (pre-fix pin, census-only artifact)",
+    "classes": { "G1": "276 parts", "G2": "2023 parts", "G3": "245 parts", "G4": "117 parts", "B1_bare_caret": "21 parts", "P1_PUA": "0 (fleet clean)" },
+    "pythagorasCosineRuleBucket": "159 leads (keyword-classified — official plane carries EMPTY specPointCodes 0/2443, disclosed), top: 2023-06-02 q8 (105), 2021-06-02 q9 (97), 2022-06-01R q22 (94), 2026-06-01R q18 (87), 2025-06-02 q9 (75); B1 in bucket: 2023-11-01 q26 (34 bare carets)",
+    "posture": "strict pattern census with per-class fragments, per-part adjudication required, LEADS FILED NOT EXECUTED (run-017 fleet-census law); lowercase math-token cores only, mark-label false positives (**P1**, A1, 4MB1) stripped"
+  },
+  "disclosures": [
+    "corpus side (syllabai-resources F114 topic.json) still carries the bare-caret verbatim — the corpus correction rides the NEXT converter run (standing disposition, same shape as the run-017 corpusSyncQueued discharge); C145 pin assertion documents the plane-vs-corpus divergence window",
+    "the questions.md corpus render for 2026-06 4MB1-01R regenerates at the next converter run (6c66180e discharged the run-017 regen debt pre-fix)",
+    "census G2 (detached-sup) is a broad net (2,023 parts incl. legit label classes) — ranking signal is the per-class fragment inspection + trig bucket, per-part adjudication required before any mass wave",
+    "B1 bare-caret fleet class = 21 parts beyond q27-b (incl. 2023-11-01 q21 '3x^2 + 6x − 9 = 0', 2025-06-01R q19 '4 × 10^(−8n)') — filed as the natural follow-up wave, NOT executed (operator order names q27-b only)"
+  ],
+  "artifacts": { "lane": "run-018/ (census + 3 evidence renders + apply/census scripts + both node gates)", "scripts": "/home/z/my-project/scripts/run018_*.py, scripts/tierb-run005/*" },
+  "nextActions": ["push branch, PR, CI watch, merge", "live spot-check after Vercel redeploy (q27-b stem renders KaTeX; q23-a wage table still paints)", "PAT rotation CRITICAL-OVERDUE (standing)"]
+}
