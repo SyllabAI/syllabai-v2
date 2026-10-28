@@ -66,7 +66,7 @@ REPO = Path(__file__).resolve().parent.parent
 # trace 1a181ba3a6e696b9). Only maths-b's five join inputs differ
 # pin..tip (byte-verified); supersedes the interim 08447ba9 pin which carried
 # the pre-join maths-b linkage (33/61) through the #427 landing.
-RESOURCES_SHA = "8460a5f3a03fd7d43ed31e39c27d846f8a747208"
+RESOURCES_SHA = "b7bf5bbc0f88c8f9e281919d4e211b7628f3f427"
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 DEFAULT_CACHE = Path("/home/z/my-project/work/spec-maps-cache")
 
