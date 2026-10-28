@@ -1,0 +1,67 @@
+{
+ "card": "T-OEQ-MATHSB-SERVE-1",
+ "run": "019-b1-followup-wave",
+ "date": "2026-10-29",
+ "operatorOrder": "B1 follow-up wave (trace 1a1846182c4e4e81)",
+ "shape": "plane-content wave: the 21-part B1 bare-caret bucket of the run-018 GS-leads census executed end-to-end (eyes-on -> law-26 KaTeX -> 8-gate battery -> landing)",
+ "dischargeOfRecord": [
+  "run-018 filed the fleet GS-leads census (gs-leads-census.json @ plane 44f4180e0d68c8a8) with classSummary B1 bare-caret = 21 parts, disposition 'LEADS FILED NOT EXECUTED per the fleet-census law, B1 follow-up wave filed for the operator'",
+  "operator order 'B1 follow-up wave' (trace 1a1846182c4e4e81) = execute that bucket",
+  "offp_2026-06_01r_27-b (1 of the 21) was already discharged by run-018 (census taken at pre-fix pin); this run executes the remaining 20"
+ ],
+ "waveManifest": {
+  "parts": 20,
+  "fieldWrites": 38,
+  "fixes": 82,
+  "caretTokensConverted": 143,
+  "contentDigitCorrections": 1,
+  "sets": ["official-4mb1-01-2020-06", "official-4mb1-01-2020-11", "official-4mb1-01-2023-01(02R)", "official-4mb1-01-2023-11", "official-4mb1-01r-2025-06", "official-4mb1-01r-2026-06", "official-4mb1-02-2025-11"],
+  "partsList": ["2020-06 13-b", "2020-11 13-b", "2023-01 02R 10-b", "2023-11 16", "2023-11 21-a", "2023-11 21-b", "2023-11 24", "2023-11 26", "2023-11 28-b", "2025-06 01R 19-a", "2025-06 01R 19-b", "2026-06 01R 17-a", "2026-06 01R 17-b", "2026-06 01R 20-a", "2026-06 01R 23", "2026-06 01R 27-c", "2025-11 02 5", "2025-11 02 9-a", "2025-11 02 9-e", "2025-11 02 12"]
+ },
+ "method": {
+  "eyesOn": "every edited field adjudicated first-hand against the official print: 19 QP/MS pages rendered @150dpi (pdftoppm, syllabai-pastpapers @HEAD raw) + 2x 300dpi zoom crops for digit-level calls; NO-GUESS held",
+  "law26": "bare caret expressions wrapped as law-26 KaTeX $...$; inside math: U+2212/U+2013 -> ASCII hyphen, x -> \\times, => -> \\Rightarrow, sqrt -> \\sqrt{}, unicode sups 9/3 absorbed as ^9/^3; quoted-substitution \"...\" convention preserved inside math (tranche-3 precedent $\"(-8-5\\lambda)\"^2$); unicode sups/roots OUTSIDE math kept outside ((3^81)^4, brackets)",
+  "mirrorLaw": "markPoints[0].textMd == solutionMd verified byte-true PRE for all 15 solution-edited parts; same edit applied in lockstep; post-apply mirror asserted",
+  "scope": "B1 caret class ONLY; G1/G2/G3/G4 flattening classes and P1 PUA remain filed-not-executed per the fleet-census law (e.g. 2025-06 01R 19-a '10103' flattened sups and trailing lone U+2212 debris deliberately untouched)"
+ },
+ "disclosures": [
+  "CONTENT CORRECTION (1): 2023-01 02R q10-b solutionMd 'M1 dealing with 81^(1/3)' -> 'M1 dealing with $81^{\\frac{4}{3}}$' — 300dpi zoom (run-019/zoom-2023-01-q10b-note2-17.png) shows the print is 81^(4/3); the plane's 1/3 is a transcription digit error carried inside a caret token, corrected within the eyes-on wrap and disclosed here; mathematically corroborated by the printed ('3^81)^4 = 3^(16/3) row on the same page",
+  "PRINT-VERBATIM PRESERVATION: 2025-11 02 q5 solutionMd M1 note 'quadratic equation 4x^2 - y^2 = 9' — 300dpi zoom (run-019/zoom-2025-11-q5-note8-09.png) confirms the official print itself says '= 9' (not '= 27'); plane mirrors print verbatim, wrapped as-is, NO content change",
+  "the census B1 frags quoted '2023-11-01 q21 3x^2 + 6x - 9 = 0' and '2025-06-01R q19 4 x 10^(-8n)' — both executed exactly as filed"
+ ],
+ "evidence": {
+  "source": "SyllabAI/syllabai-pastpapers raw @HEAD (unauthenticated), 10 PDFs staged in scratch pp_4mb1_b1/",
+  "qp": ["2020-06 4MB1-01 p8 (P61906A0824)", "2020-11 4MB1-01 p8 (P61906A0824)", "2023-11 4MB1-01 p17 (P73494A01724)", "2025-06 4MB1-01R p16 (P79517A01628)", "2025-11 4MB1-02 p12 (P79558A01240) + p26 (P79558A02640)"],
+  "ms": ["2023-01 02R p17 (+2 zooms)", "2023-11 p11/p15/p18/p21/p23", "2025-11 02 p9 (+3 zooms)/p15/p21", "2026-06 01R p19/p24/p29/p37"],
+  "files": "run-019/*.png (19 pages + 5 zoom crops); field projections run-019/run019_projection.json; spans run-019/run019_spans.json"
+ },
+ "planeDelta": {
+  "before": "5fe3af48816d260b",
+  "after": "701ae1997de5421a",
+  "census": "66 sets / 1281 q / 2443 parts / marks 6600==6600 EXACT pre==post",
+  "fleetBareCaretCensus": "21 parts (run-018 filing) -> 0 after this run (B1 class eliminated fleet-wide)",
+  "C145_canary": "part_field_sha C145 pins 2026-06 01R 27(b) problem_md @8c9d69a3 — q27-b NOT touched by this wave (0 carets, already discharged); canary survives; pinned parts (2025-06 01 q6/8b/11/12/23a, 2026-06 01R q18/19/25/27a/27b) verified DISJOINT from the 20 executed parts"
+ },
+ "gates": {
+  "census_EXACT": "66/1281/2443/6600 pre==post",
+  "marks_map_identical": "per-pid (marks, markPoints (marks,code)) tuple map identical",
+  "PUA_FFFD_0": "0 across problemMd/solutionMd/markPoints[].textMd",
+  "dollar_parity": "all 20 edited fields raw-$ count even (\\$ currency class untouched)",
+  "changed_set_EXACT": "38 writes == declared set exactly (8 problemMd + 15 solutionMd + 15 mirrored markPoints[0])",
+  "mirror_law": "scoped of-record law (run-018): edited solutionMd parts mirror markPoints[0] byte-true; fleet-wide 331 legitimate non-mirror parts in PRE-state untouched (gate scoped to edited parts, disclosed)",
+  "serialization_roundtrip": "single-line compact JSON preserved",
+  "scrub_assert": "napi_/ghp_/vcp_/postgresql://neon.tech zero hits",
+  "B1_post_census_zero": "whole-plane bare-caret census outside math spans == 0",
+  "katex_gate": "100/100 new math spans OK @ katex 0.16.47 throwOnError (bun, fleet-gate standard)",
+  "render_gate": "38/38 projected fields through the ACTUAL hub pipeline (react-markdown 10.1.0 + remark-gfm 4.0.1 + remark-math 6.0.0 + rehype-raw 7 + rehype-sanitize 6 + rehype-katex, react 19): .katex nodes present (349 total), zero katex-error, count NEW >= OLD per field"
+ },
+ "environmentRecoveryOfRecord": "post-restart clone arrived stale AGAIN (local main 4008e6ce, official-papers.json ABSENT): fetch-first verified origin/main cc440605 carrying the full run-017 lane + run-018 (PRs #423/#427/#429/#431/#432/#435/#437) + sibling lanes through PR #439; ff-only applied; plane of record verified first-hand @5fe3af48816d260b before any edit; no GH CLI and no PAT in env this session — raw.githubusercontent worked unauthenticated for the 10 pastpaper PDFs",
+ "residualDisclosure": "G1 276 / G2 2023 / G3 245 / G4 117 lead parts (incl. the Pythagoras/cosine-rule keyword bucket 159) remain FILED NOT EXECUTED per the fleet-census law, pending operator order; corpus side (resources F114) still carries the B1 residuals verbatim — correction rides the NEXT converter run (standing disposition)",
+ "landing": {
+  "branch": "t-oeq-mathsb/run-019",
+  "pr": "PENDING",
+  "merge": "PENDING",
+  "vercel": "PENDING",
+  "liveSpotCheck": "PENDING"
+ }
+}
