@@ -1,54 +1,54 @@
 {
- "schema": "syllabai-demo.content-bundle/2.0",
- "generatedUtc": "2026-10-22T14:25:00Z",
- "importSource": {
-  "repo": "SyllabAI/syllabai-resources",
-  "ref": "main@118ee4cf1be6a50496c1726d4a7465af611a86a9",
-  "upstreamSchemas": [
-   "syllabai.sme-revision-note/1.0",
-   "syllabai.sme-revision-notes-course/1.0",
-   "syllabai.sme-exam-questions/1.1",
-   "syllabai.sme-flashcard-deck/1.0"
-  ],
-  "note": "ADR-037 converter v0.23.0 corpus (Task 20 crop wave, data + canary-arm wave - converter unchanged): the Task 19 deep audit's disclosed crop-wave queue executed end-to-end, surgically per AGENTS.md law 5. The C98-pinned 15 drawing-linearization parts are cropped+stripped (16 crops incl. the F94 particles owner); the closure re-census found the Task 19 census UNDER-INCLUSIVE - 6 further parts (2020-01 2C 6(d)(ii), 2021-01 1CR 8(b)(iii), 2021-06 1C 5(c)(i), 2022-06 1CR 7(d)(i), 2022-06 2CR 5(c)(ii), 2023-06 1CR 10(c)(i)) cropped+stripped in the same tranche (atom runs broken by multi-char tokens HO/CH3/COOCH3/C6H4/bracket glyphs); the F94 option-drawing follow-up landed as shared refs (2020-11 2CR 1(b) -> stem apparatus crop; 2023-01 2C 2(a)(ii)/(iii) -> properties table). Every rect eyeballed against the 150 dpi page render and re-verified on the rendered PNG; boxes ledgered in STEM-RESTORE stemFigures + CROP-REVIEW manual_crop so a clean re-run reproduces them (F45 semantics, dpi 150). check_canaries.py learned the three Task-19 check types it shipped without (F104: C96/C97/C98 red-on-main as unknown check types since Task 19); C98 pins the corpus-wide census at expected_open = 0 with the element=value composition exclusion; C22 green via the 4 backfilled 2026-06 2C ledger entries; C56's Symbol-bracket pin re-homed to 2023-01 2CR 4(b)(ii). Canary suite 6->2 red (C13/C71 recorded, the F97-class reconciliation wave's scope). G-E gates green; census constants unchanged (54 sets / 477 questions / 2,607 parts / 4,161 markPoints; figure crops 446->473 (22 new owner crops + 5 shared refs), honest stubs 7). Serving delta: 27 changed parts across 20 official sets, G-E1-matched against scripts/exporter-disclosures/2026-10-27-wave27-c98-crop-wave.json. Wave-15 UX doctrine governs under ADR-039 fix-and-disclose. 54 official sets (16x1C + 16x2C + R-variants), 477 questions, 2607 parts, all spec-tagged."
- },
- "curriculum": {
-  "board": "Pearson Edexcel",
-  "level": "IGCSE",
-  "subject": "Chemistry",
-  "code": "4CH1",
-  "syllabusVersion": "2017 (Issue 3)"
- },
- "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
- "counts": {
-  "sections": 4,
-  "topics": 28,
-  "specPoints": 182,
-  "notes": 112,
-  "questionSets": 82,
-  "questions": 1001,
-  "parts": 4011,
-  "marks": 8568,
-  "flashcards": 909
- },
- "treeKind": "official",
- "upstreamSchemas": [
-  "syllabai.official-paper-questions/0.1"
- ],
- "countsProvenance": {
-  "note": "Counts census the served bundle (CONTENT-AUDIT run-001-r0 found the import-time counts stale; the v0.9.0 sync recomputed them from the files; wave-12 recomputed again from the v0.10.0 corpus; wave-15 recomputed again from the v0.12.0 corpus; wave-16 recomputed again from the v0.13.0 corpus). Breakdown preserved below; live UI reads the files directly.",
-  "smeCorpus": {
-   "questionSets": 28,
-   "questions": 524,
-   "parts": 1404,
-   "marks": 3708
+  "schema": "syllabai-demo.content-bundle/2.0",
+  "generatedUtc": "2026-10-28T02:30:00Z",
+  "importSource": {
+    "repo": "SyllabAI/syllabai-resources",
+    "ref": "main@68eaf75ea248c4b5a38091b9f6003f14bb775e9f",
+    "upstreamSchemas": [
+      "syllabai.sme-revision-note/1.0",
+      "syllabai.sme-revision-notes-course/1.0",
+      "syllabai.sme-exam-questions/1.1",
+      "syllabai.sme-flashcard-deck/1.0"
+    ],
+    "note": "ADR-037 converter v0.29.0 corpus (F108, the MS-grid parser tranche - the Finding-5 MS-box parser + the F88 grid sync): official-papers.json synced by SyllabAI/syllabai-v2#415 (merged ecca3c05) from this cut. 14 parts changed, G-E1-matched against scripts/exporter-disclosures/2026-10-28-f108-ms-grid-parser-tranche.json: 11 printed-MS fraction-denominator/notation markPoint restorations (leg 0, e.g. the mean's division by 3, the /7 and /2 mole divisors, the /46 Mr denominator), the 2023-01 2C 2(a)(ii)/(iii) shared-figure ride-through dedup (owner 2(a)(i) retains the properties table), and the 2023-06 2CR 7(c)(ii) wave-28 graded-value rider (propanoic -> 2-methylpropanoic acid). Counts-neutral (verified base-vs-merged: 54 sets / 477 questions / 2607 parts / 4860 marks / 4161 markPoints both sides); all rawUrls live. NOTE superseding the #415 body prose: the body's leg-2 sentence names the grid parts as 2021-06 1C 1(a)/2023-06 1CR 4(a), but the actual problemMd-delta pair is 2023-01 2C 2(a)(ii)/(iii) - the disclosure json is the receipt of record (per the #415 post-merge review, worklog Task 13). Prior lineage: Task-20 crop-wave corpus @118ee4cf (converter v0.23.0). Serving doctrine: Wave-15 UX under ADR-039 fix-and-disclose. 54 official sets (16x1C + 16x2C + R-variants), 477 questions, 2607 parts, all spec-tagged."
   },
-  "adr037OfficialAdds": {
-   "questionSets": 54,
-   "questions": 477,
-   "parts": 2607,
-   "marks": 4860,
-   "source": "ADR-037 official-paper wiring (converter v0.10.0 wave-12 corpus through resources main@2275e143a0; exporter of record F44 @ bf8d56c30f; G-E1..G-E4 5/5 green under the frozen wave-12 delta census scripts/exporter-disclosures/2026-10-22-wave12.json) wave-15 appends the 1CR tranche (11 sets / 118 questions / 636 parts / 1210 marks) from the v0.12.0 corpus @ main@1e69c5d26bfa0dc20dc78127f0cf71ec2233169c (exporter v4, G-E1..G-E5 green). wave-16 appends the 2CR tranche (11 sets / 79 questions / 423 parts / 770 marks) from the v0.13.0 corpus @ main@329fe1f43c4a7fa3a0d9b03fe655b4ff03dff347 (exporter v4, G-E1..G-E5 green; expected-deltas = the of-record wave-16 disclosure's 2CR half, its 22-set baseline being the pre-wave-15 bundle)."
+  "curriculum": {
+    "board": "Pearson Edexcel",
+    "level": "IGCSE",
+    "subject": "Chemistry",
+    "code": "4CH1",
+    "syllabusVersion": "2017 (Issue 3)"
+  },
+  "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
+  "counts": {
+    "sections": 4,
+    "topics": 28,
+    "specPoints": 182,
+    "notes": 112,
+    "questionSets": 82,
+    "questions": 1001,
+    "parts": 4011,
+    "marks": 8568,
+    "flashcards": 909
+  },
+  "treeKind": "official",
+  "upstreamSchemas": [
+    "syllabai.official-paper-questions/0.1"
+  ],
+  "countsProvenance": {
+    "note": "Counts census the served bundle (CONTENT-AUDIT run-001-r0 found the import-time counts stale; the v0.9.0 sync recomputed them from the files; wave-12 recomputed again from the v0.10.0 corpus; wave-15 recomputed again from the v0.12.0 corpus; wave-16 recomputed again from the v0.13.0 corpus). Breakdown preserved below; live UI reads the files directly.",
+    "smeCorpus": {
+      "questionSets": 28,
+      "questions": 524,
+      "parts": 1404,
+      "marks": 3708
+    },
+    "adr037OfficialAdds": {
+      "questionSets": 54,
+      "questions": 477,
+      "parts": 2607,
+      "marks": 4860,
+      "source": "ADR-037 official-paper wiring (converter v0.10.0 wave-12 corpus through resources main@2275e143a0; exporter of record F44 @ bf8d56c30f; G-E1..G-E4 5/5 green under the frozen wave-12 delta census scripts/exporter-disclosures/2026-10-22-wave12.json) wave-15 appends the 1CR tranche (11 sets / 118 questions / 636 parts / 1210 marks) from the v0.12.0 corpus @ main@1e69c5d26bfa0dc20dc78127f0cf71ec2233169c (exporter v4, G-E1..G-E5 green). wave-16 appends the 2CR tranche (11 sets / 79 questions / 423 parts / 770 marks) from the v0.13.0 corpus @ main@329fe1f43c4a7fa3a0d9b03fe655b4ff03dff347 (exporter v4, G-E1..G-E5 green; expected-deltas = the of-record wave-16 disclosure's 2CR half, its 22-set baseline being the pre-wave-15 bundle)."
+    }
   }
- }
 }
