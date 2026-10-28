@@ -176,6 +176,61 @@ const FEEDS = {
       );
     },
   },
+  "worked-examples-v4": {
+    manifest: "hub-import-manifest-v4.json",
+    manifest_version: 4,
+    lesson_kind: "hub-lesson-import-1.1",
+    adapter: "guided-lesson-0.2--hub-lesson-import-1.1",
+    promo: {
+      commit: "6d0eb77d62404ddd5724cb35cee6d8c6a2a77e85", // commit C of resources PR #212 (namespace-complete: 0.2 revision + 1.1 outputs + manifest v4 + records)
+      tree: "3a6a50c5ae9e7b93145f31068367ddf95fae6131",
+      parent: "4f68b1a99246f4521da48a8f8c477935114ae11f",
+      trace: "1a183e5ea252e9b5",
+    },
+    integration_branch: "integration/worked-examples-1.0-20261029", // pending-promotion mode allowed on this branch
+    artifact_pin: "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde", // commit A — the worked-example source revision (lesson channel)
+    pkg_pin: "4d857c472fd725597ac21db189542c8f12c82dba", // INT-0 — the question packages stay byte-identical
+    schemas: {
+      hub: "/home/z/my-project/scripts/fig4-hub-lesson-import.1.1.schema.json",
+      pkg: `/home/z/my-project/.tmp/fig4/up/schema-sme-question-package.1.0.schema.json`,
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.1.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.0.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/.tmp/we1/out/hub-import-manifest-v4.json",
+      int3: "/home/z/my-project/.tmp/we1/out/INT-3-transform-record-worked-examples-1.0.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261029-worked-examples-10.json`,
+    identity: {
+      notes: 112,
+      lessons: 239,
+      checks: 1195,
+      keyPoints: 1212,
+      distractors: 3565,
+      glossaryTerms: 654,
+      figures: 200,
+      figures_module_mapped: 122,
+      figures_note_level: 78,
+      workedExamples_populated: 112,
+      workedExamples_null: 0,
+      authored_chars_conserved: 1426764,
+      authored_chars_v3_baseline: 1347771,
+      added_chars: 78993,
+    },
+    figures_feed: true,
+    we_feed: true, // declared stream-delta feed: the legacy-stream equality gate is NOT asserted — the 86 WE blocks ARE the declared delta (per-note law: chars == v3 anchor + WE block, INT record)
+    landing: "revision", // declared G-DELTA: all 112 lesson files re-pin (86 content delta + 26 pin-only); packages byte-identical
+    relFor(a) {
+      if (!a.path.startsWith("SME-GuidedLessons/integration/")) throw new Error(`v4 manifest path not integration-relative: ${a.path}`);
+      return a.path;
+    },
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.1" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.1/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages/"))
+      );
+    },
+  },
 };
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";

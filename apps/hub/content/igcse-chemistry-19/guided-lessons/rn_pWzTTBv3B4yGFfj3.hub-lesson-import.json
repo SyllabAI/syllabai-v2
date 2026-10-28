@@ -5,8 +5,8 @@
     "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_pWzTTBv3B4yGFfj3",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "83b5abe2800f02efaeb437c795d62e287108d9a7f55f95e3c540f90b7b87c128",
-    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
+    "sourceLayerSha256": "60578c117f01d4a3d49f985de135a45ada7614ca5e2db0142f1b5cf9c709fd64",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_pWzTTBv3B4yGFfj3",
@@ -164,7 +164,17 @@
           "firstLesson": 2
         }
       ],
-      "workedExample": null
+      "workedExample": {
+        "prompt": "A dish holds 4.88 g of hydrated copper sulfate, CuSO4.xH2O. Gentle heating to constant mass leaves 4.00 g of white anhydrous CuSO4. (Mr: CuSO4 = 159.5, H2O = 18.) a) Calculate the mass of water lost. b) Determine x and write the formula of the hydrated salt.",
+        "steps": [
+          "a) Mass of water = 4.88 - 4.00 = 0.88 g.",
+          "b) Moles of CuSO4 = 4.00 / 159.5 = 0.025 mol.",
+          "Moles of H2O = 0.88 / 18 = 0.049 mol.",
+          "Ratio of water to salt = 0.049 / 0.025 = 1.96, which rounds to the nearest whole number 2.",
+          "The formula of the hydrated salt is CuSO4.2H2O."
+        ],
+        "finalAnswer": "a) 0.88 g of water. b) x = 2, so the salt is CuSO4.2H2O."
+      }
     },
     "figures": [
       {

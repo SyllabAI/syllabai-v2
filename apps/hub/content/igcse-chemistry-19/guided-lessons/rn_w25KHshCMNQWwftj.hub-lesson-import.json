@@ -5,8 +5,8 @@
     "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_w25KHshCMNQWwftj",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "8f7aa5913debb2826109a2baf41eaa747b302931d276a6d1bae0b2ab8e19a2fc",
-    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
+    "sourceLayerSha256": "5625b0a5aedd1a26c4a52476f4c15fea8aa397951b7d2a30c03a47de5a11f1d6",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_w25KHshCMNQWwftj",
@@ -152,7 +152,15 @@
           "firstLesson": 2
         }
       ],
-      "workedExample": null
+      "workedExample": {
+        "prompt": "50 cm3 (50 g) of dilute hydrochloric acid is mixed with 50 cm3 (50 g) of sodium hydroxide solution in a polystyrene cup, and the temperature rises from 19.0 °C to 26.0 °C. (Specific heat capacity of the solution = 4.18 J/g/°C, density = 1 g/cm3.) a) Calculate the temperature rise. b) Calculate the heat energy released using Q = m x c x ΔT. c) State the assumptions the calculation makes.",
+        "steps": [
+          "a) ΔT = 26.0 - 19.0 = 7.0 °C.",
+          "b) The total mass heated is 50 + 50 = 100 g, so Q = 100 x 4.18 x 7.0 = 2926 J (about 2.9 kJ).",
+          "c) The assumptions of record: the solution's specific heat capacity equals that of pure water (4.18 J/g/°C), its density equals 1 g/cm3, the reaction is complete, and heat losses are negligible."
+        ],
+        "finalAnswer": "a) 7.0 °C. b) Q = 100 x 4.18 x 7.0 = 2926 J. c) Water-like specific heat capacity and density, complete reaction, negligible heat loss."
+      }
     },
     "figures": [
       {
