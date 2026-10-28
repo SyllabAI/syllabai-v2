@@ -17,22 +17,29 @@ def gshow(rev, path):
 
 ORIGIN = "origin/main"
 fills = {
-    "cie-a-level-maths-20-pure-2": {"board": "Cambridge International", "level": "A-Level",
-                                     "subject": "Mathematics", "code": "9709", "sv": "2023-2025"},
-    "cie-a-level-geography-21": {"board": "Cambridge International", "level": "A-Level",
-                                  "subject": "Geography", "code": "9696", "sv": "2025-2026"},
-    "igcse-history-17": {"board": "Pearson Edexcel", "level": "IGCSE",
-                          "subject": "History", "code": "4HI1", "sv": "2017"},
+    "cie-a-level-maths-20-pure-2": {"reg_board": "Cambridge International", "sv_fallback": None},
+    "cie-a-level-geography-21": {"reg_board": "Cambridge International", "sv_fallback": None},
+    "igcse-history-17": {"reg_board": "Pearson Edexcel", "sv_fallback": "2017"},
 }
 
-for slug, hdr in fills.items():
+for slug, cfg in fills.items():
     spine = json.loads((STAGING / f"{slug}.json").read_text())
     cur = spine["curriculum"]
     mc = spine["meta"]["counts"]
     cdir = REPO / "apps/hub/content" / slug
     new = slug not in ("cie-a-level-maths-20-pure-2", "cie-a-level-geography-21")
 
-    # ---- curriculum.json: header of record + spine nodes/edges verbatim ----
+    # header of record: SPINE VERBATIM (level/subject/code/syllabusVersion —
+    # the rekey law overlays ONLY the board to the registry form; the map-law
+    # census binds the SUBJECT node title to the fleet's shared roots, e.g.
+    # 'Maths (9709)')
+    hdr = {
+        "board": cfg["reg_board"],
+        "level": cur["level"],
+        "subject": cur["subject"],
+        "code": cur["code"],
+        "sv": cur["syllabusVersion"] or cfg["sv_fallback"],
+    }
     curriculum = {
         "board": hdr["board"], "level": hdr["level"], "subject": hdr["subject"],
         "code": hdr["code"], "syllabusVersion": hdr["sv"],

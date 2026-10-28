@@ -24,32 +24,35 @@ const roster = loadRoster();
 // CI pass so a bundle regression is a RED here, never a mid-fleet surprise)
 const mapLaw = mapLawCensus(roster);
 
-// the skeleton class of record (0 nodes + 0 sets, no spine): the D1 pure-2
-// catalog-lane skeleton + geography-21 (no SME notes/EQ/flashcards on SME —
-// the honest corpus gap). SME-WAVE2 r1 (operator order trace
-// 1a17ed20502e4c8d "order the build_bundles import run to fill the 12
-// skeletons with teaching content"): the other 10 wave-2 registered
-// skeletons are FILLED (official-spine bundles via the established
-// spines -> content-maps -> rekey chain at resources PRs #194/#198) and
-// their registry rows flipped registered -> full; the 2 that remain have
-// NO corpus lane of their own to fill from (a-level-pure-2: SME never
-// published 9709 P2 under the A-Level tree — the operator-ruling class;
-// geography-21: honest-empty on every SME axis) — never invented.
-const SKELETON_OF_RECORD = [
-  "cie-a-level-maths-20-pure-2",
-  "cie-a-level-geography-21",
-];
+// the skeleton class of record: EXTINCT as of T-SPECS-9696-4HI1 run-001
+// (operator order trace 1a180fb64c61c3f5 "Import their specs pdf, parse
+// them. save them.") — the two honest corpus gaps (the D1 pure-2
+// catalog-lane skeleton + geography-21) received their OFFICIAL PARSED SPEC
+// TREES from the resources Official-Specifications plane (resources
+// 340803c9: the 9696 int_statements adapter + the 4HI1 option_rows family,
+// gates G1-G4 PASS) and reclassified skeleton -> stub by the classifier's
+// own law (official-spine curriculum present, 0 question sets). The skeleton
+// class (0 nodes AND 0 sets) is now empty: every CIE bundle carries its
+// official spec tree. Their TEACHING BANKS stay honestly empty (never
+// invented) — they serve as stubs until the resource wave lands.
+const SKELETON_OF_RECORD: string[] = [];
 
 // the honest-empty stub banks of record (0 question sets, official-spine tree
 // serves the KG): the four scope-receipt stubs + as-accounting-21 (SME-WAVE2
 // r1 fill: SME publishes notes for the AS lane but 0 topic questions — the
 // no_topic_questions_on_sme class, now stub-classified after its fill)
+// + the 2 T-SPECS-9696-4HI1 spec-fill skeletons (pure-2: SME never published
+// 9709 P2 under the A-Level tree — the operator-ruling class; geography-21:
+// honest-empty on every SME axis — the spec tree comes from the official
+// 9696 syllabus PDF parse, never invented)
 const STUBS_OF_RECORD = [
   "cie-a-level-accounting-21",
   "cie-a-level-economics-23",
   "cie-as-english-general-paper-21",
   "cie-igcse-accounting-25",
   "cie-as-accounting-21",
+  "cie-a-level-maths-20-pure-2",
+  "cie-a-level-geography-21",
 ];
 
 // the shared-subject-code join matrix of record (this census): the component
@@ -87,22 +90,29 @@ describe("cie-phase4 roster law", () => {
     expect(roster.cieRows).toBe(56);
   });
 
-  test("classification of record: 49 real banks / 5 stubs / 2 skeletons", () => {
+  test("classification of record: 49 real banks / 7 stubs / 0 skeletons", () => {
     expect(roster.real).toBe(49);
-    expect(roster.stubs).toBe(5);
-    // SME-WAVE2 r1: 10 of the 12 skeletons filled (the official-spine import
-    // run); the 2 honest corpus gaps remain — never invented
-    expect(roster.skeletons).toBe(2);
+    expect(roster.stubs).toBe(7);
+    // T-SPECS-9696-4HI1 run-001: the last 2 skeletons received their official
+    // parsed spec trees (resources 340803c9) and reclassified as stubs — the
+    // skeleton class is extinct; the 7 stubs carry official-spine trees with
+    // honestly-empty banks
+    expect(roster.skeletons).toBe(0);
   });
 
-  test("stubs are exactly the of-record five", () => {
+  test("stubs are exactly the of-record seven", () => {
     const stubs = roster.entries.filter((e) => e.cls === "stub").map((e) => e.slug).sort();
     expect(stubs).toEqual([...STUBS_OF_RECORD].sort());
   });
 
-  test("the skeleton is exactly the of-record catalog form", () => {
-    const skel = roster.entries.filter((e) => e.cls === "skeleton").map((e) => e.slug).sort();
-    expect(skel).toEqual([...SKELETON_OF_RECORD].sort());
+  test("the skeleton class is extinct and the 2 spec-fills carry real spec trees", () => {
+    const skel = roster.entries.filter((e) => e.cls === "skeleton").map((e) => e.slug);
+    expect(skel).toEqual([]);
+    for (const slug of ["cie-a-level-maths-20-pure-2", "cie-a-level-geography-21"]) {
+      const e = roster.entries.find((x) => x.slug === slug);
+      expect(e?.cls).toBe("stub");
+      expect(e?.nodes ?? 0).toBeGreaterThan(0); // the official parsed spec tree serves
+    }
   });
 
   test("every real bank is coherent: sets >= 1, nodes > 0, questions/parts floors of record", () => {
@@ -318,9 +328,9 @@ describe("cie-phase4 roster law", () => {
   test("the map-law census is GREEN over the whole fleet (identity-clean before any COW)", () => {
     expect(mapLaw.green).toBe(true);
     expect(mapLaw.reds).toEqual([]);
-    // 56 rows minus the 2 skeletons (pure-2 + geography-21) = 54 mapped
-    // (SME-WAVE2 r1: 44 + the 10 filled banks)
-    expect(mapLaw.bundlesMapped).toBe(54);
+    // T-SPECS-9696-4HI1 run-001: the 2 skeletons received their official spec
+    // trees and reclassified as stubs — all 56 rows now map (54 + 2)
+    expect(mapLaw.bundlesMapped).toBe(56);
   });
 
   test("the varchar(40) store law holds at the census maximum of record", () => {

@@ -21901,3 +21901,18 @@ Work Log:
 
 Stage Summary:
 - The 3 spec-tree gaps of the census of record are CLOSED at the data plane: every live course now carries a parsed official spec tree (106/106 bundles), 103 course-home cards render the spec card, and the 3 spec-fill courses serve /specification directly. Residuals: post-deploy live verification; the 3 home cards activate with the resource wave (or an operator amendment of the empty-branch law).
+
+---
+Task ID: T-SPECS-9696-4HI1 run-002 (CI-verify fix — the run-001 transit-46 push went red on 4 roster-law tests; fix + re-land)
+Agent: main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)
+Task: Land the fleet-law corrections the CI verify job caught on transit 46.
+
+Work Log:
+- CI verify on 57d73a99: 4 FAILs in cie-phase4 roster law — the tests of record still pinned "5 stubs / 2 skeletons / 54 mapped". ROOT CAUSE: the spec-fills reclassified pure-2 + geography-21 skeleton -> stub BY THE CLASSIFIER'S OWN LAW (cie-phase4-apply: stub = official-spine curriculum present + 0 question sets) — the test pins were stale, not the bundles.
+- SECOND defect the local roster re-run exposed: the map-law census went RED on pure-2 — my additive roster row carried subject 'mathematics' so the SUBJECT root mapped 'Mathematics (9709)' vs the fleet's shared 9709 root 'Maths (9709)' (cross-bank tree drift). FIXED of-record: roster subject -> 'maths' (the phase-0 join-matrix form), pure-2 spine rebuilt, and the bundle-header law corrected to SPINE VERBATIM except the board overlay (level 'A-LEVEL'/'IGCSE', subject 'Maths'/'Geography'/'History', sv '2017' fallback for the Edexcel qual whose spec.json carries no edition window) — the bio-25/AS-pure-2 precedents pin this exact form.
+- TESTS OF RECORD updated (cie-phase4-roster.test.ts): classification 49 real / 7 STUBS / 0 SKELETONS; STUBS_OF_RECORD + the 2 spec-fills; the skeleton class asserted EXTINCT with the 2 spec-fills carrying real spec trees (nodes > 0, cls stub); map-law census bundlesMapped 54 -> 56.
+- Gates re-run: mapLaw green TRUE / 56 mapped / maxLen 25 / zero reds; verify:cie PASS; sme suite 111/111 PASS; verify:corpus PASS; verify:flashcard-sync PASS; hub build compiled + static generation OK.
+- Push = TRANSIT 47 (bookkeeping + law corrections, no force-push; transit 46 stays history of record). PAT rotation CRITICAL-OVERDUE (same fingerprint through 47).
+
+Stage Summary:
+- The fleet laws now describe the post-fill truth: every one of the 56 CIE rows maps (the skeleton class is extinct), 49 real banks + 7 honest stubs. The 3 spec-tree gap courses serve their official parsed spec trees at /specification.
