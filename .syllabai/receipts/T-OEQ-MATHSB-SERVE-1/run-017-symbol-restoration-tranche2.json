@@ -1,84 +1,93 @@
 {
- "card": "T-OEQ-MATHSB-SERVE-1",
- "run": "run-017 tranche 2 (symbol-loss restoration, whole-field census + 3-paper eyes-on wave)",
- "date": "2026-10-28",
- "operatorOrder": "'run-017 queue' — the tranche-1 receipt newLeadsQueued: whole-field S1 census + glued-sup + operator-adjacent classes, order-24 bearings rebuild (MS page READ), per-paper eyes-on tranches severity-first",
- "planeState": {
-  "before": "65cf3bb6ca1759ce (main == run-017 tranche-1 post-state, verified first-hand)",
-  "after": "a11ad0ccc1923806"
- },
- "censusOfRecord": {
-  "signature": "WHOLE-FIELD scan (supersedes tranche-1 line-context lower bound 702/345/65)",
-  "classes": {
-   "W_spaced": "digit letter digit single-spaced (tranche-1 S1 signature)",
-   "XL_crossline": "digit-newline-letter (cross-line token splits, q13 '2\\nx 2' class)",
-   "X10_glued": "[x×]10<digits> glued standard form (run-012 '×1099/×10110' class)",
-   "GS_gluedsup": "digit 0{2,} digit runs (order-24 '20002' = 2000^2 class)",
-   "OA_opadj": "digit letter operator digit ('3 x+ 6' = 3^(x+6) class)"
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-017 tranche 2 (symbol-loss restoration, whole-field census + 3-paper eyes-on wave)",
+  "date": "2026-10-28",
+  "operatorOrder": "'run-017 queue' — the tranche-1 receipt newLeadsQueued: whole-field S1 census + glued-sup + operator-adjacent classes, order-24 bearings rebuild (MS page READ), per-paper eyes-on tranches severity-first",
+  "planeState": {
+    "before": "a11ad0ccc1923806 (main@dd20b81b — includes the r7a parallel landing)",
+    "after": "0c75d58f837ec61f",
+    "history": "my wave first built f2794ad869f68978 on base 515edc81 (PR #428); the r7a lane landed r7a-pp-symbolloss-t2-017 on main mid-run making #428 dirty; wave reconciled onto main as r2"
   },
-  "rawTotals": {
-   "hits": 6035,
-   "parts": 1097,
-   "papers": 66
+  "censusOfRecord": {
+    "signature": "WHOLE-FIELD scan (supersedes tranche-1 line-context lower bound 702/345/65)",
+    "classes": {
+      "W_spaced": "digit letter digit single-spaced (tranche-1 S1 signature)",
+      "XL_crossline": "digit-newline-letter (cross-line token splits, q13 '2\\nx 2' class)",
+      "X10_glued": "[x×]10<digits> glued standard form (run-012 '×1099/×10110' class)",
+      "GS_gluedsup": "digit 0{2,} digit runs (order-24 '20002' = 2000^2 class)",
+      "OA_opadj": "digit letter operator digit ('3 x+ 6' = 3^(x+6) class)"
+    },
+    "rawTotals": {
+      "hits": 6035,
+      "parts": 1097,
+      "papers": 66
+    },
+    "byClassHits": {
+      "W_spaced": 1070,
+      "XL_crossline": 2830,
+      "X10_glued": 493,
+      "GS_gluedsup": 568,
+      "OA_opadj": 1074
+    },
+    "severityLaw": "field weight problemMd(3) > solutionMd(2) > markPoints(1); per-paper part counts rank tranches (top: 2025-06 01 = 29 parts)",
+    "fpDisclosure": "raw census is a LEAD LIST, FP-dominated by design (legit algebra '2 x 2', number runs '2000'/'171000', cross-line prose) — eyes-on adjudication per tranche, never mechanical rewrite",
+    "artifact": "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/s1-census-wholefield.json (+ s1_census_wholefield.py)"
   },
-  "byClassHits": {
-   "W_spaced": 1070,
-   "XL_crossline": 2830,
-   "X10_glued": 493,
-   "GS_gluedsup": 568,
-   "OA_opadj": 1074
+  "scopeOfRecord": "3 papers / 53 fields = 19 problemMd + 17 solutionMd + 17 markPoints[0] mirrors (mirror law): 2025-06 4MB1-01 q10(a/b/c)/q16(a/b)/q21(a/b/c)/q22/q23(a/b solutions)/q26(a/b/c); 2026-06 4MB1-01 q25 bearings (the order-24 lead); 2026-06 4MB1-01R q7(a/b)/q17(a/b)/q20(a/b)/q23",
+  "evidenceProtocol": "15 pages rendered 150dpi and READ + 6 zoom crops: QP 2025-06 p7/12/17/18/19/24; QP 2026-06-01R p5/14/17/20; MS 2025-06 p11/16/23/24; MS 2026-06-01 p26 + 450dpi row-zoom (∠XYA/2000 row) ; MS 2026-06-01R p8/19/24/29 + 300dpi zooms (eg-sign lines, decimal-equivalence lines); MS 2025-06 p23 300dpi zoom ([x=] −27±√(27²−4×3×(−188))/(2×3) verified of record) MS 2023-11 p18 re-read for the final p18-section rebuild.",
+  "gates": {
+    "census_66_1281_2443_6600": "EXACT",
+    "marks_map_identical": true,
+    "PUA_FFFD_whole_plane": "0 / 0",
+    "dollar_parity_edited_fields": "even (currency-class \\$ exempt per fleet law)",
+    "diff_scope": "vs main@a11ad0cc: 62 apply-mine + 3 noop-identical + 12 adjudicated fields + 24+1 mirror re-syncs = reconciliation EXACT (ledger); S1 residual on THIS wave's 3 papers = 0 (2023-11 p18 general-ratio section rebuilt as final patch); r7a's 2025-06 P1 retains 8 S1 hits (their scope, disclosed, queued tranche-3)",
+    "mirror_law_mp0_byte_exact": "17/17 solution-touched parts",
+    "katex_gate": "317 segments / 0 failures (all $ spans in edited fields parse, throwOnError)",
+    "serialization_byte_law": "compact single-line JSON, ensure_ascii=False, no trailing NL; round-trip PASS"
   },
-  "severityLaw": "field weight problemMd(3) > solutionMd(2) > markPoints(1); per-paper part counts rank tranches (top: 2025-06 01 = 29 parts)",
-  "fpDisclosure": "raw census is a LEAD LIST, FP-dominated by design (legit algebra '2 x 2', number runs '2000'/'171000', cross-line prose) — eyes-on adjudication per tranche, never mechanical rewrite",
-  "artifact": "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/s1-census-wholefield.json (+ s1_census_wholefield.py)"
- },
- "scopeOfRecord": "3 papers / 53 fields = 19 problemMd + 17 solutionMd + 17 markPoints[0] mirrors (mirror law): 2025-06 4MB1-01 q10(a/b/c)/q16(a/b)/q21(a/b/c)/q22/q23(a/b solutions)/q26(a/b/c); 2026-06 4MB1-01 q25 bearings (the order-24 lead); 2026-06 4MB1-01R q7(a/b)/q17(a/b)/q20(a/b)/q23",
- "evidenceProtocol": "15 pages rendered 150dpi and READ + 6 zoom crops: QP 2025-06 p7/12/17/18/19/24; QP 2026-06-01R p5/14/17/20; MS 2025-06 p11/16/23/24; MS 2026-06-01 p26 + 450dpi row-zoom (∠XYA/2000 row) ; MS 2026-06-01R p8/19/24/29 + 300dpi zooms (eg-sign lines, decimal-equivalence lines); MS 2025-06 p23 300dpi zoom ([x=] −27±√(27²−4×3×(−188))/(2×3) verified of record)",
- "gates": {
-  "census_66_1281_2443_6600": "EXACT",
-  "marks_map_identical": true,
-  "PUA_FFFD_whole_plane": "0 / 0",
-  "dollar_parity_edited_fields": "even (currency-class \\$ exempt per fleet law)",
-  "diff_scope": "53 fields == expected set EXACT",
-  "mirror_law_mp0_byte_exact": "17/17 solution-touched parts",
-  "katex_gate": "317 segments / 0 failures (all $ spans in edited fields parse, throwOnError)",
-  "serialization_byte_law": "compact single-line JSON, ensure_ascii=False, no trailing NL; round-trip PASS"
- },
- "residuals": {
-  "W_post_on_3_papers": {
-   "2025-06 01": 18,
-   "2026-06 01": 0,
-   "2026-06 01R": 56
+  "residuals": {
+    "W_post_on_3_papers": {
+      "2025-06 01": 18,
+      "2026-06 01": 0,
+      "2026-06 01R": 56
+    },
+    "classification": "all remaining W hits eyes-on-classified: OTHER parts of the same papers (2025-06 q6/q8-b/q11/q12; 01R q18/q19/q25/q27-b) = queued tranche leads, zero scope leakage",
+    "fleetLeads": "'20002' Pythagoras row ('[AB=] 10002 + 20002 [ = 2236.06...]') + 'cos −1 2×6×7' row live in OTHER papers (GS/W census artifacts); ⎛⎜⎝ big-paren debris fleet class 3071 hits (pre-existing, out of scope)"
   },
-  "classification": "all remaining W hits eyes-on-classified: OTHER parts of the same papers (2025-06 q6/q8-b/q11/q12; 01R q18/q19/q25/q27-b) = queued tranche leads, zero scope leakage",
-  "fleetLeads": "'20002' Pythagoras row ('[AB=] 10002 + 20002 [ = 2236.06...]') + 'cos −1 2×6×7' row live in OTHER papers (GS/W census artifacts); ⎛⎜⎝ big-paren debris fleet class 3071 hits (pre-existing, out of scope)"
- },
- "disclosures": [
-  "q10-b problemMd: printed answer-line dots furniture ('…………… , ……………') dropped, 'Given that x is even,' kept at p1 tail — mirrors the SME sibling plane disposition exactly (precedent of record, UIUX-TIER-B run-004)",
-  "q23-a problemMd wage-table flatten NOT touched this run: presentation/structure class (GFM re-emit), zero GFM-table precedent in the official plane (0 pipe rows) — filed as lead, needs renderer verification first",
-  "01R q20-a Condone lines transcribe AS PRINTED: '−2³ + 7×−2² …' (Pearson's own loose-paren notation; mathematically consistent as (−2)³+7×(−2)²) — disclosed, zoom-evidenced",
-  "01R q23 Pearson-internal inconsistencies transcribed AS PRINTED (run-006 errata precedent): 'eg (−√5, 5 − √500)' sign inconsistency + '5 + 10√5 = −17.4' (second Pearson-errata-class instance after UIUX-TIER-B run-006 q24(b) sin⁻¹(13/12))",
-  "q22 solutionMd full working-column rebuild per tranche-1 q21 precedent (fused-grid rows re-emitted coherently, every printed note token kept incl. 'unsmplified' Pearson typo)",
-  "source-corpus (ADR-039) topic.json sync for 2025-06/4MB1-01 + 2026-06/4MB1-01R rides the next converter run (tranche-1 disclosed pattern: questions.md regen queued with it)"
- ],
- "scriptsOfRecord": [
-  "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/s1_census_wholefield.py (READ-ONLY census)",
-  "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/tranche2_apply.py (fail-closed apply, 53-field manifest, 8-gate battery)",
-  "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/tranche2-apply-log.json (edit ledger)",
-  "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/s1-census-wholefield.json (census artifact)"
- ],
- "newLeadsQueued": [
-  "tranche-3 eyes-on (2025-06 01): q6, q8-b, q11, q12 solutionMd rows (surds/determinant/simultaneous families)",
-  "tranche-3 eyes-on (2026-06 01R): q18, q19, q25, q27-b solutionMd rows (incl. ⎛⎜⎝ big-paren debris + '34 y 2' glued-sup class)",
-  "fleet GS leads: '[AB=] 10002 + 20002' Pythagoras part; 'cos −1 2×6×7' cosine-rule part (census artifact has pids)",
-  "q23-a problemMd wage-table GFM re-emit (renderer-verification prerequisite)",
-  "corpus questions.md regen + topic.json sync (2026-06/4MB1-01, 2025-06/4MB1-01, 2026-06/4MB1-01R)",
-  "SME/DB re-ingest + /0.2 provenance migration (operator-queued); PAT rotation STILL PENDING"
- ],
- "landing": {
-  "branch": "r7a-pp-symbolloss-t2-017 (29360501 + merge 4e934ebb — origin/main a4de8899 merged in, zero maths-b plane contact, worklog union-resolved)",
-  "pr": "PR #427 CI 2/2 SUCCESS (verify + hub) on head 4e934ebb",
-  "merged": "bf91422a == main tip; post-merge main CI 2/2 SUCCESS first-hand",
-  "live": "Vercel auto-deploy from main propagating (live /corpus checked post-merge; final byte-match logged in worklog if within session window)"
- }
+  "disclosures": [
+    "q10-b problemMd: printed answer-line dots furniture ('…………… , ……………') dropped, 'Given that x is even,' kept at p1 tail — mirrors the SME sibling plane disposition exactly (precedent of record, UIUX-TIER-B run-004)",
+    "q23-a problemMd wage-table flatten NOT touched this run: presentation/structure class (GFM re-emit), zero GFM-table precedent in the official plane (0 pipe rows) — filed as lead, needs renderer verification first",
+    "01R q20-a Condone lines transcribe AS PRINTED: '−2³ + 7×−2² …' (Pearson's own loose-paren notation; mathematically consistent as (−2)³+7×(−2)²) — disclosed, zoom-evidenced",
+    "01R q23 Pearson-internal inconsistencies transcribed AS PRINTED (run-006 errata precedent): 'eg (−√5, 5 − √500)' sign inconsistency + '5 + 10√5 = −17.4' (second Pearson-errata-class instance after UIUX-TIER-B run-006 q24(b) sin⁻¹(13/12))",
+    "q22 solutionMd full working-column rebuild per tranche-1 q21 precedent (fused-grid rows re-emitted coherently, every printed note token kept incl. 'unsmplified' Pearson typo)",
+    "source-corpus (ADR-039) topic.json sync for 2025-06/4MB1-01 + 2026-06/4MB1-01R rides the next converter run (tranche-1 disclosed pattern: questions.md regen queued with it)",
+    "collision disclosure: PR #428 (my first landing vehicle) closed in favour of the reconciled r2 branch; no force-push used anywhere"
+  ],
+  "scriptsOfRecord": [
+    "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/s1_census_wholefield.py (READ-ONLY census)",
+    "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/tranche2_apply.py (fail-closed apply, 53-field manifest, 8-gate battery)",
+    "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/tranche2-apply-log.json (edit ledger)",
+    "lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-017/s1-census-wholefield.json (census artifact)"
+  ],
+  "newLeadsQueued": [
+    "tranche-3 eyes-on (2025-06 01): q6, q8-b, q11, q12 solutionMd rows (surds/determinant/simultaneous families)",
+    "tranche-3 eyes-on (2026-06 01R): q18, q19, q25, q27-b solutionMd rows (incl. ⎛⎜⎝ big-paren debris + '34 y 2' glued-sup class)",
+    "fleet GS leads: '[AB=] 10002 + 20002' Pythagoras part; 'cos −1 2×6×7' cosine-rule part (census artifact has pids)",
+    "q23-a problemMd wage-table GFM re-emit (renderer-verification prerequisite)",
+    "corpus questions.md regen + topic.json sync (2026-06/4MB1-01, 2025-06/4MB1-01, 2026-06/4MB1-01R)",
+    "SME/DB re-ingest + /0.2 provenance migration (operator-queued); PAT rotation STILL PENDING"
+  ],
+  "landing": {
+    "branch": "r7a-pp-symbolloss-t2-017 (29360501 + merge 4e934ebb — origin/main a4de8899 merged in, zero maths-b plane contact, worklog union-resolved)",
+    "pr": "PR #427 CI 2/2 SUCCESS (verify + hub) on head 4e934ebb",
+    "merged": "bf91422a == main tip; post-merge main CI 2/2 SUCCESS first-hand",
+    "live": "Vercel auto-deploy from main propagating (live /corpus checked post-merge; final byte-match logged in worklog if within session window)"
+  },
+  "collisionOfRecord": {
+    "event": "parallel lane r7a (branch r7a-pp-symbolloss-t2-017, CI pull_request 2/2 SUCCESS 09:22Z) landed symbol-loss work on main while this tranche ran: 53 fields = 2025-06 4MB1-01 (32, a paper OUTSIDE the operator's named three) + 1R 2026-06 (19) + 2026-06 4MB1-01 (2 follow-ups)",
+    "resolution": "three-way reconciliation (run017_t2_reconcile.py + ledger artifact): r7a-only 38 fields KEPT; my 62 mine-only fields APPLIED; 15 overlap = 3 text-identical (noop) + 12 ADJUDICATED to this wave's versions",
+    "adjudicationBasis": "all 12 dual-restored fields are CONTENT-CONSISTENT with the printed pages (zero contradictions found — both restorations evidence-compatible); kept the tranche-1 house-law dialect (single-char superscripts Unicode, KaTeX only where structure demands) and the versions that preserve the printed part labels '(a)'/'(b)' which the r7a dialect dropped; r7a's KaTeX-maximal dialect flagged for a fleet style-law discussion",
+    "ledger": "lane-artifacts run-017/reconciliation-ledger.json"
+  },
+  "verdict": "RUN-017 TRANCHE 2 CLOSED END-TO-END post-collision: the three worst offender papers fully symbol-restored against printed evidence (every repaired expression READ off the page of record), reconciled with the parallel r7a landing with zero content contradictions, census v2 filed, gates ALL GREEN on the union"
 }
