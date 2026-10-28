@@ -1,0 +1,188 @@
+{
+ "schemaVersion": "glm-ocr-ms-v1+adr040-g3-cie9609-r1",
+ "extractionMethod": "textlayer-tables-adr040-g3-cie9609-r1 (deterministic PyMuPDF word-geometry parse; grammars C-AO-matrix / C1-two-axis / C-multi-axis / D-prose / E-unlabeled per the committed parser; multi-axis rows keep per-axis cells verbatim; dash-normalized only; cross-page pending merge; fail-closed tiling oracles; single-axis bottom 0/1, top == entry marks)",
+ "reviewRequired": false,
+ "paper": {
+  "code": "9609",
+  "session": "2025-11",
+  "paper": "9609-W25-QP-33",
+  "repo_path": "past-papers/cambridge-international/ial/business/9609/past-papers/2025-11/9609-W25-QP-33",
+  "source_pdf": "9609_w25_ms_33.pdf"
+ },
+ "entries": [
+  {
+   "entryId": null,
+   "label": "4(b)",
+   "number": 4,
+   "qwc": false,
+   "mcq": false,
+   "correctOption": null,
+   "answerText": null,
+   "markPoints": [],
+   "guidance": [],
+   "marks": 12,
+   "marksCellSource": "ao-matrix-level-table",
+   "bandGrammar": "C-AO-matrix",
+   "axes": [
+    {
+     "name": "AO1 Knowledge",
+     "max": 2
+    },
+    {
+     "name": "AO2 Application",
+     "max": 2
+    },
+    {
+     "name": "AO3 Analysis",
+     "max": 2
+    },
+    {
+     "name": "AO4 Evaluation",
+     "max": 6
+    }
+   ],
+   "bandRows": [
+    {
+     "levelLabel": "3",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": null,
+        "marksMax": null,
+        "descriptor": null,
+        "raw": ""
+       },
+       {
+        "marksMin": null,
+        "marksMax": null,
+        "descriptor": null,
+        "raw": ""
+       },
+       {
+        "marksMin": null,
+        "marksMax": null,
+        "descriptor": null,
+        "raw": ""
+       },
+       {
+        "marksMin": 5,
+        "marksMax": 6,
+        "descriptor": "Developed evaluation in context • A developed judgement/conclusion is made in the business context. • Developed evaluative comments which balance some key arguments in the business context.",
+        "raw": "5–6 marks Developed evaluation in context • A developed judgement/conclusion is made in the business context. • Developed evaluative comments which balance some key arguments in the business context."
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "2",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "Developed knowledge of relevant key term(s) and/or factor(s) is used to answer the question.",
+        "raw": "2 marks Developed knowledge of relevant key term(s) and/or factor(s) is used to answer the question."
+       },
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "Developed application of relevant point(s) to the business context.",
+        "raw": "2 marks Developed application of relevant point(s) to the business context."
+       },
+       {
+        "marksMin": 2,
+        "marksMax": 2,
+        "descriptor": "Developed analysis that identifies connections between causes, impacts and/or consequences.",
+        "raw": "2 marks Developed analysis that identifies connections between causes, impacts and/or consequences."
+       },
+       {
+        "marksMin": 3,
+        "marksMax": 4,
+        "descriptor": "Developed evaluation • A developed judgement/conclusion is made. • Developed evaluative comments which balance some key arguments.",
+        "raw": "3–4 marks Developed evaluation • A developed judgement/conclusion is made. • Developed evaluative comments which balance some key arguments."
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "1",
+     "isNCC": false,
+     "subRows": [
+      [
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "Limited knowledge of relevant key term(s) and/or factor(s) is used to answer the question.",
+        "raw": "1 mark Limited knowledge of relevant key term(s) and/or factor(s) is used to answer the question."
+       },
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "Limited application of relevant point(s) to the business context.",
+        "raw": "1 mark Limited application of relevant point(s) to the business context."
+       },
+       {
+        "marksMin": 1,
+        "marksMax": 1,
+        "descriptor": "Limited analysis that identifies connections between causes, impacts and/or consequences.",
+        "raw": "1 mark Limited analysis that identifies connections between causes, impacts and/or consequences."
+       },
+       {
+        "marksMin": 1,
+        "marksMax": 2,
+        "descriptor": "Limited evaluation • A judgement/conclusion is made with limited supporting comment/evidence. • An attempt is made to balance the arguments.",
+        "raw": "1–2 marks Limited evaluation • A judgement/conclusion is made with limited supporting comment/evidence. • An attempt is made to balance the arguments."
+       }
+      ]
+     ]
+    },
+    {
+     "levelLabel": "0",
+     "isNCC": true,
+     "subRows": [
+      [
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable response",
+        "raw": "0 marks No creditable response."
+       },
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable response",
+        "raw": "0 marks No creditable response."
+       },
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable response",
+        "raw": "0 marks No creditable response."
+       },
+       {
+        "marksMin": 0,
+        "marksMax": 0,
+        "descriptor": "No creditable response",
+        "raw": "0 marks No creditable response."
+       }
+      ]
+     ]
+    }
+   ],
+   "confidence": 0.9
+  }
+ ],
+ "parseNotes": [
+  "tables_C-AO-matrix=1",
+  "errors=0",
+  "marks_fallback_notes=[]"
+ ],
+ "reviewEvidence": [
+  "deterministic word-geometry parse (textlayer-tables-adr040-g3-cie9609-r1, the committed adr040-g3-cie9609-corpus-r0.parse.py), fail-closed oracles: single-axis tiling (bottom 0/1, contiguous, top == entry marks), multi-axis per-axis reach + sum(axis max) == entry marks, level labels strictly descending with 2b/2a sub-level support, NCC unified to the printed phrase",
+  "verbatim law: descriptors byte-faithful from the text layer (dash-normalized only)",
+  "aggregates of record: 105 papers, 295 entries, 2895 band rows (93 single-axis + 2802 multi-axis per-axis cells), 72 band-bearing papers — exact match to the of-record summary",
+  "multi-axis grids carry axes[] + bandRows[] per-axis cells VERBATIM (F2 of the 9609 G-3 receipt); they are NOT tilable into the single-axis mark_bands schema and are held from the LEVELS birth pending the per-axis schema lane"
+ ]
+}
