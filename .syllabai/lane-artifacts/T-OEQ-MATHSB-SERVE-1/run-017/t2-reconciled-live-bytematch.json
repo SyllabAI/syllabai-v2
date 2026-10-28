@@ -1,0 +1,101 @@
+{
+ "what": "run-017 tranche-2-reconciled landing live byte-match (trace 1a18387f583cb4bd)",
+ "live_build": {
+  "deployment": "dpl_DXD9QqgxVKbhEsrKvoxdiTArfYVx",
+  "state": "READY",
+  "sha": "992d280b",
+  "equals_main_tip": true
+ },
+ "plane_sha16_of_record": "44f4180e0d68c8a8",
+ "field_probes": "14/14 MATCH (5 raw/flight, 9 escaped-layer)",
+ "probes": [
+  [
+   "june-2026-4mb1-01",
+   "q1 problemMd",
+   "MATCH",
+   "Solve the inequality 6x < 20 − 2x"
+  ],
+  [
+   "june-2026-4mb1-01",
+   "q1 solutionMd",
+   "MATCH",
+   "Accept 6x + 2x < 20 ..."
+  ],
+  [
+   "november-2023-4mb1-01",
+   "q24 solutionMd",
+   "MATCH",
+   "P(1st Red) = $\\frac{3}{8}$ ..."
+  ],
+  [
+   "november-2025-4mb1-02",
+   "q5 problemMd",
+   "MATCH",
+   "y^2 = 27 ..."
+  ],
+  [
+   "november-2025-4mb1-02",
+   "q5 solutionMd",
+   "MATCH",
+   "substitution of the linear ..."
+  ],
+  [
+   "june-2025-4mb1-01",
+   "q6 solutionMd",
+   "MATCH",
+   "$g + 4e^2 = 5d$ or ..."
+  ],
+  [
+   "june-2025-4mb1-01",
+   "q8-b solutionMd",
+   "MATCH",
+   "p = 1 scores B0, no isw"
+  ],
+  [
+   "june-2025-4mb1-01",
+   "q11 solutionMd",
+   "MATCH",
+   "\\sqrt{225\\times3} - \\sqrt{36\\times3}"
+  ],
+  [
+   "june-2025-4mb1-01",
+   "q12 solutionMd",
+   "MATCH",
+   "12\\times\\frac{2x+3}{4} ..."
+  ],
+  [
+   "june-2025-4mb1-01",
+   "q23-a problemMd GFM",
+   "MATCH raw/flight + RENDERED <table>"
+  ],
+  [
+   "june-2026-4mb1-01r",
+   "q18 solutionMd",
+   "MATCH",
+   "\\frac{x}{x+1} = \\sin 20"
+  ],
+  [
+   "june-2026-4mb1-01r",
+   "q19 solutionMd",
+   "MATCH",
+   "3x^2 + 9x = 3x(x+3)"
+  ],
+  [
+   "june-2026-4mb1-01r",
+   "q25 solutionMd",
+   "MATCH",
+   "\\begin{pmatrix} -8-5\\lambda ..."
+  ],
+  [
+   "june-2026-4mb1-01r",
+   "q27 solutionMd",
+   "MATCH",
+   "\\frac{360}{x+2} ..."
+  ]
+ ],
+ "defect_absences": {
+  "'6 x 20 2 x' on 2026-06 P1": "absent",
+  "'d x d' on 2023-11 P1": "absent"
+ },
+ "verdict": "LIVE BYTE-MATCH PASS"
+}
