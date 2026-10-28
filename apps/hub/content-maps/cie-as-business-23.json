@@ -7,23 +7,32 @@
    "viaSubtopicScope": 0
   },
   "notes": {
-   "coded": 1,
+   "coded": 12,
    "total": 67,
-   "unmapped": 66,
+   "unmapped": 55,
    "viaSubtopicScope": 1
   },
   "questionParts": {
-   "coded": 0,
+   "coded": 60,
    "total": 386,
-   "unmapped": 386,
+   "unmapped": 326,
    "viaSubtopicScope": 0
   }
  },
  "course": "cie-as-business-23",
- "generatedUtc": null,
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-as-business-23/spec_point_index.json": {
    "sha256": "44e77f7fee170b255270c093e8574bba0628331a04d5d63750abc538f3e51ba7"
+  },
+  "scripts/cie_rejoin_resolutions.yaml": {
+   "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
+  },
+  "spec-links/cie-as-business-23.json": {
+   "sha256": "ee129d26f570f3d54ab39c5b5eb02b43545b2bace1270d789b73f12026ed6875"
   },
   "spine": {
    "file": "spines/cie-as-business-23.json"
@@ -39,15 +48,25 @@
    "unmapped": true
   },
   "qstnprt_2kTF3twHymGDbNS4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "5.1.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.1.2",
+     "score": null,
+     "spineCode": "5.1.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_HNWhbrWzNffV6Xcp",
     "spcpt_Rj79DGRnvmB3k8VB",
     "spcpt_wRvkRVx965VDB2q6",
     "spcpt_xyGwJqrMKH5Z3Z9s"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_2pVfB4cvxh5JK7Gd": {
    "codes": [],
@@ -83,12 +102,22 @@
    "unmapped": true
   },
   "qstnprt_39MpNHjwvpXhq7SF": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.1.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.1.4",
+     "score": null,
+     "spineCode": "2.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7brF8KrmmqX2nsRp"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_3D4HqY8Z8gT2PZ82": {
    "codes": [],
@@ -134,12 +163,22 @@
    "unmapped": true
   },
   "qstnprt_3hdkhYxKsvXV5D7d": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3ky4crMCr3qV8ygv"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_3nxtXz2Ny8CZh5pc": {
    "codes": [],
@@ -184,12 +223,22 @@
    "unmapped": true
   },
   "qstnprt_4tr3HqZBjksyWytR": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_4xrkkTYPPhRbCGKW": {
    "codes": [],
@@ -216,14 +265,24 @@
    "unmapped": true
   },
   "qstnprt_5RjGZTmF6PFChdSx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck",
     "spcpt_KqZW6bhZpwnDNWCx",
     "spcpt_yr953J85cRZGnD8n"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_5RqJ7kd3KGGB4hT2": {
    "codes": [],
@@ -234,12 +293,22 @@
    "unmapped": true
   },
   "qstnprt_5Tpk3j7tqBVCpwJw": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "1.1.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:1.1.2",
+     "score": null,
+     "spineCode": "1.1.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_YMFyNMm9ZbPwqJ3r"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6Nnb2wgW6FhWYYcn": {
    "codes": [],
@@ -259,12 +328,22 @@
    "unmapped": true
   },
   "qstnprt_6Qn7Nf3vKhYXfTF7": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6TbZnPG92QDpKRKx": {
    "codes": [],
@@ -286,13 +365,23 @@
    "unmapped": true
   },
   "qstnprt_6mrqxMhh3zkSgVSc": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "3.3.6",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:3.3.6",
+     "score": null,
+     "spineCode": "3.3.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7nGyWK3gzKHVYR2Y",
     "spcpt_qJyf7pPSKcSQnDQy"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6rfcs8NKhw7NQsvb": {
    "codes": [],
@@ -303,12 +392,22 @@
    "unmapped": true
   },
   "qstnprt_6wqQYmqpM3cTZW8Z": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_6xQ6dYCVyp2YbFns": {
    "codes": [],
@@ -354,13 +453,23 @@
    "unmapped": true
   },
   "qstnprt_7KHxrR4cy3f9QmQ8": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5pQYXh9vHYF8pwm4",
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_7Kv6HrQmf9TbF2vy": {
    "codes": [],
@@ -434,13 +543,23 @@
    "unmapped": true
   },
   "qstnprt_8kzm7nwNM73zWdDZ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "5.5.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.5.2",
+     "score": null,
+     "spineCode": "5.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Yh4pS8Qnnb4NZY4P",
     "spcpt_tvBZWjGwzsDBT984"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_8sXYcx4WcPZRdzdv": {
    "codes": [],
@@ -492,12 +611,22 @@
    "unmapped": true
   },
   "qstnprt_9Z8hnhhqRDdv8Ntz": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_9q6zrFSYJSqzWVjw": {
    "codes": [],
@@ -551,12 +680,22 @@
    "unmapped": true
   },
   "qstnprt_C74GKyZPdsg3ktVM": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_C8J49GnkKdjpbRtQ": {
    "codes": [],
@@ -577,12 +716,22 @@
    "unmapped": true
   },
   "qstnprt_CKpMh66ZYmcVBP3G": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_GPrvVcNFdh3sHjMc"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_CdqPjwnyZvHw69DY": {
    "codes": [],
@@ -817,12 +966,22 @@
    "unmapped": true
   },
   "qstnprt_GpnwR8jvtqJCfCdW": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_GyhzQhwqN28tCK7h": {
    "codes": [],
@@ -844,12 +1003,22 @@
    "unmapped": true
   },
   "qstnprt_H4tB4DD9Mjbh3FqV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_H8bPgSFpZ3FjR2h7": {
    "codes": [],
@@ -869,12 +1038,22 @@
    "unmapped": true
   },
   "qstnprt_HBTscwMK3Bbmk55T": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.3.1",
+     "score": null,
+     "spineCode": "5.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VJjK6rKzSqr9b7wP"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_HBmsGwqpBW6YFxs9": {
    "codes": [],
@@ -885,14 +1064,24 @@
    "unmapped": true
   },
   "qstnprt_HMPftYq6GTPz9qDm": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "3.3.6",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:3.3.6",
+     "score": null,
+     "spineCode": "3.3.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7nGyWK3gzKHVYR2Y",
     "spcpt_Xj6DTvRJ4nPRwRQn",
     "spcpt_qJyf7pPSKcSQnDQy"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_HTwTYGQNPdgBr9Fn": {
    "codes": [],
@@ -971,23 +1160,43 @@
    "unmapped": true
   },
   "qstnprt_JQkCwhC6fxmk5cD2": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_JRvRY9HB8fwTZNTX": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "5.1.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.1.2",
+     "score": null,
+     "spineCode": "5.1.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_HNWhbrWzNffV6Xcp",
     "spcpt_Rj79DGRnvmB3k8VB",
     "spcpt_wRvkRVx965VDB2q6",
     "spcpt_xyGwJqrMKH5Z3Z9s"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_JhjrwMG8spBJfppM": {
    "codes": [],
@@ -1092,12 +1301,22 @@
    "unmapped": true
   },
   "qstnprt_McYBV7GWC3MPcvBP": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_MdgHRhS7F7RcNRCB": {
    "codes": [],
@@ -1119,12 +1338,22 @@
    "unmapped": true
   },
   "qstnprt_N4rgCRHDFZ46rhgV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ND6tcTb78yWs2wXH": {
    "codes": [],
@@ -1179,30 +1408,60 @@
    "unmapped": true
   },
   "qstnprt_NzNvbPx4xY2XPwcH": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_P52xYTMztVYDvkmD": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.3.1",
+     "score": null,
+     "spineCode": "5.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VJjK6rKzSqr9b7wP"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_P6cbCBVYJGhJftzC": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2BHWpstsF6GvCjGm",
     "spcpt_3djjqqRTyyTTqjrC",
     "spcpt_rVXPwzP8ZVXcfC34"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_P7qJ3Cv2W9Xyh2cJ": {
    "codes": [],
@@ -1250,12 +1509,22 @@
    "unmapped": true
   },
   "qstnprt_Pht4Kjg689MJXt3b": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.3.1",
+     "score": null,
+     "spineCode": "5.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_yS3VScpS35RVQf9m"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Pn6PQ5rZYcBrPYsC": {
    "codes": [],
@@ -1376,14 +1645,24 @@
    "unmapped": true
   },
   "qstnprt_RBnqpbmZsdtWJYXh": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.3",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.1.3",
+     "score": null,
+     "spineCode": "4.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Gbjy7rm7dD9Nh8CH",
     "spcpt_RJ5fT57vqQq4YTbC",
     "spcpt_TWbnNKRVc2zzxQx8"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_RWYC995x6cHNmDVX": {
    "codes": [],
@@ -1430,12 +1709,22 @@
    "unmapped": true
   },
   "qstnprt_Rv7Nzn4qWhY22yKz": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_rVXPwzP8ZVXcfC34"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Rv7qqWG7Skrj3w3T": {
    "codes": [],
@@ -1507,12 +1796,22 @@
    "unmapped": true
   },
   "qstnprt_TCw2QmXyk6vpSXzc": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5pQYXh9vHYF8pwm4"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_TPhCnNKhr8wtQ8Xz": {
    "codes": [],
@@ -1539,20 +1838,40 @@
    "unmapped": true
   },
   "qstnprt_Tj9VfbWpt2hrGpwr": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_rVXPwzP8ZVXcfC34"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_TrWDB7DhJ73gZKD3": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_TtWB5gRdFs8NYF3s": {
    "codes": [],
@@ -1606,12 +1925,22 @@
    "unmapped": true
   },
   "qstnprt_VKCvG9hnjbbPqndx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_TvDK4d3Kg4zQKKxR"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_VKZY9ysDWVwcZ3T2": {
    "codes": [],
@@ -1673,15 +2002,25 @@
    "unmapped": true
   },
   "qstnprt_W9K8qS97DMkJ9wpV": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "5.1.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.1.2",
+     "score": null,
+     "spineCode": "5.1.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_HNWhbrWzNffV6Xcp",
     "spcpt_Rj79DGRnvmB3k8VB",
     "spcpt_wRvkRVx965VDB2q6",
     "spcpt_xyGwJqrMKH5Z3Z9s"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_W9qt4MC5qYSjqJ57": {
    "codes": [],
@@ -1692,12 +2031,22 @@
    "unmapped": true
   },
   "qstnprt_WBDgzNtsvw6fYMjx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_WK3QGJ34vd8FrX2z": {
    "codes": [],
@@ -1790,13 +2139,23 @@
    "unmapped": true
   },
   "qstnprt_XP6NH35HZ82pRcRT": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.3.1",
+     "score": null,
+     "spineCode": "5.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_VJjK6rKzSqr9b7wP",
     "spcpt_yS3VScpS35RVQf9m"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_Xbj2qH8QH7PkWpDd": {
    "codes": [],
@@ -1848,12 +2207,22 @@
    "unmapped": true
   },
   "qstnprt_YBYWPQzsCy7Yy6x5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.3",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.1.3",
+     "score": null,
+     "spineCode": "4.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Gbjy7rm7dD9Nh8CH"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_YBn7hqy5bkSdh4xR": {
    "codes": [],
@@ -1864,21 +2233,41 @@
    "unmapped": true
   },
   "qstnprt_YD4753N8GwGg7z3Q": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "3.2.3",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:3.2.3",
+     "score": null,
+     "spineCode": "3.2.3",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_XF8XpMZ8qW8rrg9N",
     "spcpt_wqQPMHhGMG3Fh6Hc"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_YQ8xr89sqxzB5QjC": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2BHWpstsF6GvCjGm"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_YVycry4sz8QfZGK3": {
    "codes": [],
@@ -1947,14 +2336,24 @@
    "unmapped": true
   },
   "qstnprt_ZMNGwpykHNZvMyBK": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5pQYXh9vHYF8pwm4",
     "spcpt_9ZqbfZBbHQqRmPck",
     "spcpt_RJ5fT57vqQq4YTbC"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ZMSkt3mDkt8Kwqyk": {
    "codes": [],
@@ -2015,13 +2414,23 @@
    "unmapped": true
   },
   "qstnprt_ZtqZ66hzZv73mBqr": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2BHWpstsF6GvCjGm",
     "spcpt_GPrvVcNFdh3sHjMc"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_ZwZ9VtxWyNVXv6fN": {
    "codes": [],
@@ -2041,12 +2450,22 @@
    "unmapped": true
   },
   "qstnprt_b8vCcxv6vxRMfPJP": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.3",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.1.3",
+     "score": null,
+     "spineCode": "4.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Gbjy7rm7dD9Nh8CH"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_b9dp9zpgRJMqwxY4": {
    "codes": [],
@@ -2132,12 +2551,22 @@
    "unmapped": true
   },
   "qstnprt_cCSWPxWJPSqrcXzt": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.3.1",
+     "score": null,
+     "spineCode": "5.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_m3JpkNyTH9zk2cFy"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_cYzwZqfQmYJNcqyB": {
    "codes": [],
@@ -2204,13 +2633,23 @@
    "unmapped": true
   },
   "qstnprt_dbnrkZv4Trg9wnDz": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.1.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.1.4",
+     "score": null,
+     "spineCode": "2.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7brF8KrmmqX2nsRp",
     "spcpt_MwrmQ8kh9x5vVQkS"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_dcNdGnpRzp9nmV2P": {
    "codes": [],
@@ -2264,12 +2703,22 @@
    "unmapped": true
   },
   "qstnprt_fnfMm82MzHBwhr3X": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5pQYXh9vHYF8pwm4"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_fr69cqHGzg2wQcb8": {
    "codes": [],
@@ -2345,13 +2794,23 @@
    "unmapped": true
   },
   "qstnprt_h9KRQdP68m5DyxQn": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5pQYXh9vHYF8pwm4",
     "spcpt_VNBxNSmCGc3rmvQK"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_hPwjSqnHSgThDzBQ": {
    "codes": [],
@@ -2412,12 +2871,22 @@
    "unmapped": true
   },
   "qstnprt_hy8sZsqqxKMPvhQg": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.3.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.3.2",
+     "score": null,
+     "spineCode": "4.3.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_QBqy5GYt9ZQSqQJd"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_j3XF5tYtJ2qrhqjw": {
    "codes": [],
@@ -2445,24 +2914,44 @@
    "unmapped": true
   },
   "qstnprt_jMFgjggysxH3vQcD": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "5.1.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.1.2",
+     "score": null,
+     "spineCode": "5.1.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5swFS3RXNpkmkpn9",
     "spcpt_SwfQQHpXbZ5ZBvtn",
     "spcpt_nMjkDn56nrtGcy5k",
     "spcpt_wRvkRVx965VDB2q6"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_jZQZCHPPgStBbtN5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "5.5.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.5.2",
+     "score": null,
+     "spineCode": "5.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Yh4pS8Qnnb4NZY4P",
     "spcpt_tvBZWjGwzsDBT984"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_jggxYXXQDvwpvrsN": {
    "codes": [],
@@ -2634,12 +3123,22 @@
    "unmapped": true
   },
   "qstnprt_pjHxqfZ7ykx9MkyQ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "3.2.3",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:3.2.3",
+     "score": null,
+     "spineCode": "3.2.3",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_XF8XpMZ8qW8rrg9N"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_pqTpFDcccvYM6jH8": {
    "codes": [],
@@ -2651,12 +3150,22 @@
    "unmapped": true
   },
   "qstnprt_q48ChQVFxPxMCw4s": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.3",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.1.3",
+     "score": null,
+     "spineCode": "4.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_Gbjy7rm7dD9Nh8CH"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_q9ZrytnCRvyB3WM6": {
    "codes": [],
@@ -2685,12 +3194,22 @@
    "unmapped": true
   },
   "qstnprt_qpDpvsmkCKJmjvCB": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.1.4",
+     "score": null,
+     "spineCode": "4.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_vXK2DxFgwJMV89JJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_qr7xf9pQ6d6Tx4kH": {
    "codes": [],
@@ -2702,12 +3221,22 @@
    "unmapped": true
   },
   "qstnprt_qx4cwnvJ379RnKZs": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.3.1",
+     "score": null,
+     "spineCode": "5.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_m3JpkNyTH9zk2cFy"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_r2yJTdpPQFjY4Snr": {
    "codes": [],
@@ -2755,12 +3284,22 @@
    "unmapped": true
   },
   "qstnprt_rqRgf49M36gJS38r": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "5.1.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.1.2",
+     "score": null,
+     "spineCode": "5.1.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_wRvkRVx965VDB2q6"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_sKGsrSMnXn5xjWqt": {
    "codes": [],
@@ -2779,12 +3318,22 @@
    "unmapped": true
   },
   "qstnprt_sx6dDwYnvmfg8JS4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.1.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.1.4",
+     "score": null,
+     "spineCode": "2.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7brF8KrmmqX2nsRp"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_tCB4624mZs2jfx9f": {
    "codes": [],
@@ -2803,12 +3352,22 @@
    "unmapped": true
   },
   "qstnprt_tVnwsvHSfXNzyGDx": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2BHWpstsF6GvCjGm"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_tX7QmcyNRQNWQMJV": {
    "codes": [],
@@ -2829,12 +3388,22 @@
    "unmapped": true
   },
   "qstnprt_tc6xSmsZQyP8PJ5C": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5pQYXh9vHYF8pwm4"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_tgMFBPQBK7HZsX8m": {
    "codes": [],
@@ -2974,12 +3543,22 @@
    "unmapped": true
   },
   "qstnprt_wXprXS8PbVfd7DSP": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_wXvVgfg9xz5jgGn7": {
    "codes": [],
@@ -3136,12 +3715,22 @@
    "unmapped": true
   },
   "qstnprt_xzncZ6BKVMY3wTdQ": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.1.4",
+     "score": null,
+     "spineCode": "4.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_vXK2DxFgwJMV89JJ"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_y3QfSGgTW9M64YNQ": {
    "codes": [],
@@ -3154,13 +3743,23 @@
    "unmapped": true
   },
   "qstnprt_y4dXN2tBTpZ6c2Dy": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.1.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.1.4",
+     "score": null,
+     "spineCode": "2.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_MwrmQ8kh9x5vVQkS",
     "spcpt_RJ5fT57vqQq4YTbC"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_y7KMzpQXHT9jCvM5": {
    "codes": [],
@@ -3234,12 +3833,22 @@
    "unmapped": true
   },
   "qstnprt_yryxtX9Fh5ydNX3Y": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_9ZqbfZBbHQqRmPck"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_yvnnwbm7Vs7R3XK5": {
    "codes": [],
@@ -3464,15 +4073,25 @@
    "unmapped": true
   },
   "rn_P9pQrMHkSmkGyXxX": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.2.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+     "score": null,
+     "spineCode": "2.2.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5pQYXh9vHYF8pwm4",
     "spcpt_9ZqbfZBbHQqRmPck",
     "spcpt_FcMkPS8VgDGvdCY6",
     "spcpt_KqZW6bhZpwnDNWCx"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_Q3mWCPRwtdpvYRPt": {
    "codes": [],
@@ -3519,15 +4138,25 @@
    "unmapped": true
   },
   "rn_WTCRWSmfzwddX6Bk": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "1.1.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:1.1.2",
+     "score": null,
+     "spineCode": "1.1.2",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_F4vZ6hfmD4xqV7cj",
     "spcpt_YMFyNMm9ZbPwqJ3r",
     "spcpt_kfxfzx2TcZ2TpxCr",
     "spcpt_rvhxNZ5Nn4SnNbYh"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_WvBjd2xC7s2bStY5": {
    "codes": [],
@@ -3547,15 +4176,25 @@
    "unmapped": true
   },
   "rn_YCp9XmYf7cVqKjR4": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "5.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.3.1",
+     "score": null,
+     "spineCode": "5.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2Z63rXk8wM62P8P9",
     "spcpt_VJjK6rKzSqr9b7wP",
     "spcpt_m3JpkNyTH9zk2cFy",
     "spcpt_yS3VScpS35RVQf9m"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_YPPB8WDZKzzKCszX": {
    "codes": [],
@@ -3636,15 +4275,25 @@
    "unmapped": true
   },
   "rn_dJKMsZqZ5MHHZdfw": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_3ky4crMCr3qV8ygv",
     "spcpt_V67PvPwfCcFqv6hy",
     "spcpt_dzXCvvykbGG43ZKb",
     "spcpt_tPQ3HX5zyZFNZ9dB"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_djrmbmykx8vgX2y6": {
    "codes": [],
@@ -3662,18 +4311,39 @@
    "unmapped": true
   },
   "rn_fKdFcfGFX7BGwJdw": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "3.2.3",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:3.2.3",
+     "score": null,
+     "spineCode": "3.2.3",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_XF8XpMZ8qW8rrg9N",
     "spcpt_dbJDdXbrsxvzh6tR",
     "spcpt_qsGGFgRrYBpZtwxc",
     "spcpt_sBGQbnrwWDfFWBzS"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_fZHdbFdjtChpk3Y5": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "5.5.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.5.2",
+     "score": null,
+     "spineCode": "5.5.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_PhwzKXch6sY2gh8c",
     "spcpt_Yh4pS8Qnnb4NZY4P",
@@ -3682,11 +4352,31 @@
     "spcpt_tHGX29nKMyPf2b4w",
     "spcpt_tvBZWjGwzsDBT984"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_gV22dn79CNGnkS7y": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.3",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.1.3",
+     "score": null,
+     "spineCode": "4.1.3",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.1.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.1.4",
+     "score": null,
+     "spineCode": "4.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_FxgBFWSXRF8C6nVB",
     "spcpt_Gbjy7rm7dD9Nh8CH",
@@ -3697,8 +4387,7 @@
     "spcpt_sbgVqKmMs7Cfbq3M",
     "spcpt_vXK2DxFgwJMV89JJ"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_gfW36YrNjkfwNvQ8": {
    "codes": [],
@@ -3736,13 +4425,23 @@
    "unmapped": true
   },
   "rn_jz7TdKSJPQXSjCBb": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "2.1.4",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.1.4",
+     "score": null,
+     "spineCode": "2.1.4",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7brF8KrmmqX2nsRp",
     "spcpt_MwrmQ8kh9x5vVQkS"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_kMWbnWYQ4khF9VBy": {
    "codes": [],
@@ -3812,7 +4511,18 @@
    "unmapped": true
   },
   "rn_ntFcpF9wSvx7rQP8": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "5.1.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.1.2",
+     "score": null,
+     "spineCode": "5.1.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_5swFS3RXNpkmkpn9",
     "spcpt_FmwxHQzHB2v8ydZG",
@@ -3822,8 +4532,7 @@
     "spcpt_nMjkDn56nrtGcy5k",
     "spcpt_wRvkRVx965VDB2q6"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_pM3WFHf4MdNBpkfJ": {
    "codes": [],
@@ -3836,7 +4545,18 @@
    "unmapped": true
   },
   "rn_pb2bFdr8BPvthGST": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "2.3.1",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.3.1",
+     "score": null,
+     "spineCode": "2.3.1",
+     "tier": "V3_subsection_head_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_2BHWpstsF6GvCjGm",
     "spcpt_3djjqqRTyyTTqjrC",
@@ -3845,8 +4565,7 @@
     "spcpt_d6PfyQ79YyqfvYgd",
     "spcpt_rVXPwzP8ZVXcfC34"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_q3MbMC3ZkmcqknmB": {
    "codes": [],
@@ -3868,14 +4587,24 @@
    "unmapped": true
   },
   "rn_qQGPB5kwJC6DbZBD": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "3.3.6",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:3.3.6",
+     "score": null,
+     "spineCode": "3.3.6",
+     "tier": "J4_name_phrase_identity",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_7nGyWK3gzKHVYR2Y",
     "spcpt_Xj6DTvRJ4nPRwRQn",
     "spcpt_qJyf7pPSKcSQnDQy"
    ],
-   "kind": "note",
-   "unmapped": true
+   "kind": "note"
   },
   "rn_qh3kDY35QZHDCn7w": {
    "codes": [],
@@ -3960,23 +4689,22 @@
   "rn_wZbzGv957SZ3px9r": {
    "codes": [
     {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "cie_index_rejoin_wave2as",
+     "officialCode": "4.3.2",
+     "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.3.2",
+     "score": null,
+     "spineCode": "4.3.2",
+     "tier": "J3_name_text_identity",
+     "unit": null
+    },
+    {
      "lineage": "subtopic_title_scope",
      "method": null,
      "officialCode": "4.3.1",
      "officialId": null,
      "score": null,
      "spineCode": "4.3.1",
-     "tier": null,
-     "unit": null,
-     "viaSpcpt": "spcpt_4PXfBg7Fp8PKcRHC"
-    },
-    {
-     "lineage": "subtopic_title_scope",
-     "method": null,
-     "officialCode": "4.3.2",
-     "officialId": null,
-     "score": null,
-     "spineCode": "4.3.2",
      "tier": null,
      "unit": null,
      "viaSpcpt": "spcpt_4PXfBg7Fp8PKcRHC"
@@ -4273,13 +5001,12 @@
  "qual": "cie-a-level-business-2023-2025",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 2,
+  "distinctCodesAttached": 13,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 2,
+  "spineHitCodes": 13,
   "spineSpecPoints": 62,
   "uncoveredSpineCodeList": [
    "1.1.1",
-   "1.1.2",
    "1.1.3",
    "1.2.1",
    "1.2.2",
@@ -4293,15 +5020,12 @@
    "2.1.1",
    "2.1.2",
    "2.1.3",
-   "2.1.4",
    "2.1.5",
    "2.1.6",
    "2.1.7",
    "2.2.1",
    "2.2.2",
    "2.2.3",
-   "2.2.4",
-   "2.3.1",
    "3.1.1",
    "3.1.2",
    "3.1.3",
@@ -4311,42 +5035,73 @@
    "3.1.7",
    "3.2.1",
    "3.2.2",
-   "3.2.3",
    "3.2.4",
    "3.3.1",
    "3.3.2",
    "3.3.3",
    "3.3.4",
    "3.3.5",
-   "3.3.6",
    "4.1.1",
    "4.1.2",
-   "4.1.3",
-   "4.1.4",
    "4.2.1",
    "4.2.2",
    "5.1.1",
-   "5.1.2",
    "5.2.1",
    "5.2.2",
    "5.2.3",
    "5.2.4",
-   "5.3.1",
    "5.4.1",
    "5.4.2",
    "5.4.3",
    "5.4.4",
-   "5.5.1",
-   "5.5.2"
+   "5.5.1"
   ],
-  "uncoveredSpineCodes": 60
+  "uncoveredSpineCodes": 49
  },
- "resourcesSha": "0c0f0e08045623dd9ae2cdca5bf5667330b83411",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
-  "specLinks": null,
+  "specLinks": {
+   "census": {
+    "codesAttachedFromSidecar": 73,
+    "codesByMethod": {
+     "cie_index_rejoin_wave2as": 60,
+     "operator_verdict": 18
+    },
+    "codesByTier": {
+     "J3_name_text_identity": 14,
+     "J4_name_phrase_identity": 46,
+     "V3_subsection_head_identity": 18
+    },
+    "itemsWithCodes": 72,
+    "ladderCodesRetained": 1,
+    "sidAnchors": {
+     "added": 0,
+     "conflictsKept": 0,
+     "verified": 0
+    },
+    "sidecarCodes": 78,
+    "sidecarItems": 451,
+    "sidecarOnlyItems": 0,
+    "t2Hints": 0
+   },
+   "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
+   "regime": "spec_links_sidecar_accepted",
+   "reviewState": {
+    "rejoin": "ACCEPTED",
+    "state": "ACCEPTED",
+    "verdict": "ACCEPTED"
+   },
+   "sheetUpgrades": {
+    "added": 12,
+    "conflictsKept": 0,
+    "upgraded": 0
+   },
+   "sidecar": "spec-links/cie-as-business-23.json",
+   "t2Policy": "T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage"
+  },
   "specPointMap": {
    "crossLaneResolved": 0,
    "derivation": "deterministic ladder R1-R4 (leaf) + R5 (subtopic scope, notes only) over the upstream spec_point_index incl. cross_lane_join resolutions; every row carries its rule id",
@@ -4355,6 +5110,7 @@
    "ruleCounts": {
     "R5": 5
    },
+   "sidecarConsumed": true,
    "smeEntries": 242,
    "subtopicScoped": 5,
    "unmapped": 237
@@ -4397,7 +5153,164 @@
    "subtopicCode": "cie-a-level-business-2023-2025-T4:SUB4.3"
   }
  },
- "spcptToOfficial": {},
+ "spcptToOfficial": {
+  "spcpt_5pQYXh9vHYF8pwm4": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "2.2.4",
+   "officialCodes": [
+    "2.2.4"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_7brF8KrmmqX2nsRp": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "2.1.4",
+   "officialCodes": [
+    "2.1.4"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.1.4",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_7nGyWK3gzKHVYR2Y": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "3.3.6",
+   "officialCodes": [
+    "3.3.6"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:3.3.6",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_9ZqbfZBbHQqRmPck": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "2.2.4",
+   "officialCodes": [
+    "2.2.4"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.2.4",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_Gbjy7rm7dD9Nh8CH": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "4.1.3",
+   "officialCodes": [
+    "4.1.3"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.1.3",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_MwrmQ8kh9x5vVQkS": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "2.1.4",
+   "officialCodes": [
+    "2.1.4"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:2.1.4",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_QBqy5GYt9ZQSqQJd": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "4.3.2",
+   "officialCodes": [
+    "4.3.2"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.3.2",
+   "score": null,
+   "tier": "J3_name_text_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_XF8XpMZ8qW8rrg9N": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "3.2.3",
+   "officialCodes": [
+    "3.2.3"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:3.2.3",
+   "score": null,
+   "tier": "J3_name_text_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_YMFyNMm9ZbPwqJ3r": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "1.1.2",
+   "officialCodes": [
+    "1.1.2"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:1.1.2",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_tvBZWjGwzsDBT984": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "5.5.2",
+   "officialCodes": [
+    "5.5.2"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.5.2",
+   "score": null,
+   "tier": "J3_name_text_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_vXK2DxFgwJMV89JJ": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "4.1.4",
+   "officialCodes": [
+    "4.1.4"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:4.1.4",
+   "score": null,
+   "tier": "J4_name_phrase_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  },
+  "spcpt_wRvkRVx965VDB2q6": {
+   "lineage": "spec_links_sidecar_accepted",
+   "method": "cie_index_rejoin",
+   "officialCode": "5.1.2",
+   "officialCodes": [
+    "5.1.2"
+   ],
+   "officialId": "CIE_A_LEVEL_BUSINESS_2023_2025:5.1.2",
+   "score": null,
+   "tier": "J3_name_text_identity",
+   "unit": null,
+   "via": "REJOIN-2:gate-2"
+  }
+ },
  "spcptUnmapped": [
   "spcpt_228VNPQcgCJTyVM8",
   "spcpt_2BHWpstsF6GvCjGm",

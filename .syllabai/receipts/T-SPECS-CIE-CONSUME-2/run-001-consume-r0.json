@@ -1,0 +1,75 @@
+{
+  "schema": "syllabai.lane-receipt/1.0",
+  "lane": "T-SPECS-CIE-CONSUME-2",
+  "run": "run-001-consume-r0",
+  "generated_utc": "2026-10-29T16:00:00Z",
+  "operator_directive": "verdict fills -> review gate -> v2 consume",
+  "gateway_trace": "1a183e66619bd6dd",
+  "fires": "T-SPECS-CIE-GATE-2 record NEXT #3 (the JOIN-2 chain of record, stage #3)",
+  "chain": {
+    "stage_1_verdict_fills": {
+      "lane": "T-SPECS-CIE-VERDICT-2",
+      "resources_commit": "b97a80c72bcba64546b376746efac76fd7847737",
+      "resolves": 18,
+      "code_entries": 169,
+      "refs_cured": 184,
+      "battery": "VD1-VD10 10/10 PASS"
+    },
+    "stage_2_review_gate": {
+      "lane": "T-SPECS-CIE-GATE-2",
+      "resources_commit": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
+      "verified": "191/191 (V 18 + J 124 + T2 49)",
+      "promoted": "8 sidecars review_state SUGGESTED -> ACCEPTED (rejoin x7, verdict x2) + manifest chain blocks + cie_gate_wave2as appended",
+      "battery": "GT1-GT7 7/7 PASS"
+    },
+    "stage_3_v2_consume": {
+      "engine": "apps/hub/scripts/cie/cie_consume_spec_links.py (per-run states patched: PIN/STAMP/directive/trace + the disclosed REJOIN-2 second-sheet input with per-sheet via provenance + the reviewState verdict mirror; every other method untouched)",
+      "pin": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
+      "staging_hash": "925c6d1a22dd09f610d7e37fe5bd0efea73eca6e54cc536b3b0452667a9dafd4",
+      "changed_courses": 52,
+      "totals": {
+        "codesFromSidecar": 12768,
+        "cross_foot": "11,058 (prior floors) + 1,541 REJOIN-2 J* + 169 VERDICT-2 V* = 12,768 EXACT",
+        "t2Hints": 100,
+        "t2_cross_foot": "51 (prior floors) + 49 (the wave-2 chem T2_near) = 100 EXACT",
+        "sheetAdded": 124,
+        "sheetUpgraded": 0,
+        "sheetConflicts": 289,
+        "inlineRewrites": 124,
+        "sidAnchors": "0 added / 26 verified / 0 conflicts (the byte fixed point of record)",
+        "v8RetractDropped": 0,
+        "misTagRepointDropped": 0
+      }
+    }
+  },
+  "gates": [
+    {"gate": "in-engine battery (M1 no-loss / M2 T2-never-authoritative / M3 sheet cross-foot / R1 counts / R2 smeSpecPointIds byte-equal / R3 bodyMd exact-substitution / R4 manifest+curriculum / R5-R6 spine linkage / A1 sid-anchor law)", "result": "52/52 OK, exit 0"},
+    {"gate": "post-apply idempotence re-run", "result": "changed=0/52 (the CIE-REFRESH-1 no-op shape)"},
+    {"gate": "verify:cie (validate_cie_bundles.ts, CIE_PIN advanced e481cb47 -> 20a35ccc6 of record, documented in-file)", "result": "PASS"},
+    {"gate": "verify:corpus", "result": "PASS (dangling 0; the script's speech-baseline rewrite disclosed and NOT landed — file restored to committed state)"},
+    {"gate": "verify:flashcard-sync", "result": "PASS (manifest matches the registry: [igcse-chemistry-19])"},
+    {"gate": "bun run build:hub", "result": "GREEN (full next build incl. the 1,637-route SSG)"},
+    {"gate": "bun run typecheck", "result": "clean"},
+    {"gate": "bun test apps/api packages", "result": "3,033 pass / 0 fail / 13 skip of 3,046 — the cie-phase4 roster law re-pinned from the shim's own admission output (computed, never transcribed): questions 7,763 -> 8,826 (+1,063 == unmapped 16,759 -> 15,696 EXACT), parts 7,002 -> 8,752, pkgParts 11,164 -> 13,334, excl identity 24,541-8,826 == 15,696+19, ZERO_SERVABLE 10 -> 3 (pure-2 + the english-language pair; the 7 consuming AS banks departed with per-bank pins)"}
+  ],
+  "per_bank_servable": {
+    "cie-as-chemistry-25": [328, 561, 740],
+    "cie-as-physics-25": [395, 555, 796],
+    "cie-as-business-23": [54, 73, 73],
+    "cie-as-computer-science-19": [77, 138, 138],
+    "cie-as-maths-20-pure-1": [48, 94, 94],
+    "cie-as-maths-20-mechanics": [104, 212, 212],
+    "cie-as-maths-20-probability-and-statistics-1": [57, 117, 117],
+    "cie-as-maths-20-pure-2": [0, 0, 0]
+  },
+  "inflight_disclosures": [
+    "The resources tip moved 20a35ccc6 -> e3d648a19 (4 sibling commits, YCH12 SB2 polish + SIB/F113 waves) AFTER the consume ran; the consume input vintage of record stays 20a35ccc6 (the engine's fixed PIN; spec-links delta at the tip verified via the compare API — none of the 4 commits touch spec-links); the next consume absorbs the delta per the standing consume-law.",
+    "The 11 inherited REJOIN-2 in-item duplicate code entries (disclosed in T_SPECS_CIE_VERDICT_2_RECORD.md) are INERT at the bundle plane: the engine's strongest-wins per-code dedup collapses them at attach time (the census counts raw entries; the linkage carries one entry per official code). A sidecar-side repair remains the rejoin owners' one-line fix-forward.",
+    "Local-sandbox environment notes (zero of-record impact): disk pressure forced reproducible-artifact cleanup mid-run (old staging dirs, caches, one failed Turbopack build from ENOSPC, the local resources clone deleted after its work landed); the sparse-checkout initially materialized a partial content tree which produced one false flashcard-sync drift reading, resolved by full materialization before the gate battery of record."
+  ],
+  "posture": {
+    "prod_apply": "OPERATOR-GATED per the phase-4 plane law — this lane lands the data plane of record only; no deploy, no DB write, no prod contact",
+    "push_discipline": "fetch-first, FF no force",
+    "pat_rotation": "CRITICAL-OVERDUE standing order REITERATED"
+  }
+}

@@ -20,13 +20,16 @@
   }
  },
  "course": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics",
- "generatedUtc": "2026-10-25T00:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-science-co-ordinated-sciences-double-award-23-physics/spec_point_index.json": {
    "sha256": "2785ab00b921096dc6a3b3a6292fa47a1bd87fb06a69362ab82caeda1c4617b3"
   },
   "scripts/cie_rejoin_resolutions.yaml": {
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
   },
   "spec-links/cie-igcse-science-co-ordinated-sciences-double-award-23-physics.json": {
    "sha256": "80972136dee8300b2b9b408cf7643cbe1abacd05ac67c9c2e3da9fb4dde22d24"
@@ -12295,7 +12298,7 @@
   ],
   "uncoveredSpineCodes": 165
  },
- "resourcesSha": "e481cb47ab6188310abe396cc3011bc5f9e67864",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -12327,7 +12330,8 @@
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": "ACCEPTED",
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": {
     "added": 0,

@@ -20,13 +20,16 @@
   }
  },
  "course": "cie-igcse-maths-25-extended",
- "generatedUtc": "2026-10-25T00:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-maths-25-extended/spec_point_index.json": {
    "sha256": "090532c09d46bc84e41932b57153ff5364edf2dec14aaaa80dfe2e16734a5f7e"
   },
   "scripts/cie_rejoin_resolutions.yaml": {
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
   },
   "spec-links/cie-igcse-maths-25-extended.json": {
    "sha256": "c1b24ad5555c75311307988a2171f2af11b6a10a4f75d3293c212226d98347ae"
@@ -23883,7 +23886,7 @@
   ],
   "uncoveredSpineCodes": 125
  },
- "resourcesSha": "e481cb47ab6188310abe396cc3011bc5f9e67864",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -23915,7 +23918,8 @@
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": "ACCEPTED",
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": {
     "added": 0,

@@ -20,13 +20,16 @@
   }
  },
  "course": "cie-igcse-biology-23",
- "generatedUtc": "2026-10-25T00:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-biology-23/spec_point_index.json": {
    "sha256": "0481e4f868a350d28aa4dbaa3d4039e4758ac315fcd8bc8be0e5c20d47c48ca4"
   },
   "scripts/cie_rejoin_resolutions.yaml": {
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
   },
   "spec-links/cie-igcse-biology-23.json": {
    "sha256": "1a5aa4b7fb1e6fa2a067c53e7f885f48255edc4bd6faf270dd078bf6a4ffde40"
@@ -17674,7 +17677,7 @@
   ],
   "uncoveredSpineCodes": 212
  },
- "resourcesSha": "e481cb47ab6188310abe396cc3011bc5f9e67864",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -17710,7 +17713,8 @@
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": "ACCEPTED",
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": {
     "added": 0,
