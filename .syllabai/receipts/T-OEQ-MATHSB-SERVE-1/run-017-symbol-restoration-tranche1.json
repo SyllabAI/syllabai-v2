@@ -1,0 +1,56 @@
+{
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-017 tranche 1 (symbol-loss restoration, paper 2026-06 4MB1-01)",
+  "date": "2026-10-28",
+  "operatorOrder": "trace 1a180f0984579d39: 'Make symbol-loss restoration the next repair wave (run-016/017): proper census, then fix each part eyes-on against the original paper' + pointers to Official-ExamQuestion corpus and pipeline docs",
+  "planeState": {
+    "before": "eabd5ca8b643f93f (v2 main 3c49285b; note: run-016 PR #421 committed .syllabai bookkeeping only — its 'plane 5fc8abdb' claim is NOT reflected in official-papers.json at tip; reported to operator, not adjudicated here)",
+    "after": "df4985715db07b0b"
+  },
+  "censusOfRecord": {
+    "signatureS1_digit_letter_digit_plain_text": {
+      "matches_line_context": 702,
+      "affected_parts": 345,
+      "papers": 65,
+      "problemMd_matches": 300,
+      "artifact": "lane-artifacts run-017/s1-census-linecontext.json"
+    },
+    "knownUndercountClasses": [
+      "cross-line token splits (found in-run: q13 '2\\nx 2' spans a newline; whole-field scanning catches it, per-line census missed it)",
+      "glued superscripts (found in-run: 2026-06-01 order-24 bearings solution '20002' = 2000^2; not S1-shaped)",
+      "operator-adjacent patterns (found in-run: q21 problem '3 x+ 6' = 3^(x+6); S1 needs digit-letter-digit so it escaped)",
+      "=> fleet 345 parts is a LOWER bound; tranche-2 census must scan whole-field + these classes"
+    ]
+  },
+  "scopeOfRecord": "2026-06 4MB1-01 complete per printed evidence: q1, q13, q21, q23(a)-(d), q26 = 15 fields + 7 markPoints[0] mirrors = 22 changed fields, diff scope EXACT",
+  "evidenceProtocol": "8 QP/MS pages rendered 150dpi and READ: QP p2 (q1 6x<20-2x), QP p9 (q13 proportional-to-sqrt(w) radical), QP p17 (q21 3^(x+6)/9^x/5^x exponents), QP p19 (q23 a-d indices), QP p24 (q26 simultaneous pair), MS p6 (q1 row), MS p12 (q13 row), MS p21 + 3 zoom crops (q21 working incl 5^{\"4\"} ft-convention, answer 1875 verified 5^4 x 3), MS p23 (q23 answers w^-2/5/2ab^3/2c^7d^-2), MS p27 (q26 quadratic row set)",
+  "gates": {
+    "census_66_1281_2443_6600": "EXACT",
+    "marks_map_identical": true,
+    "U+FFFD_PUA": "0 / 0 whole-plane",
+    "unbalanced_dollar_fields": 0,
+    "diff_scope": "22 fields == expected set EXACT (15 edits + 7 mirrors)",
+    "mirror_law_mp0_byte_exact": "7/7 solution-touched parts",
+    "S1_residual_on_patched_paper": 0,
+    "serialization_byte_law": "compact single-line JSON, ensure_ascii=False, no trailing NL; round-trip PASS pre+post"
+  },
+  "sourceCorpus": {
+    "file": "Official-ExamQuestion/igcse-maths-b-16/2026-06/4MB1-01/topic.json (schema /0.2)",
+    "edits": "19 fields + 8 mark_points[0] mirrors; edit_status extracted->corrected on 8 parts; edits[] +29 entries; value_trace.text stamped; serialization indent=1 round-trip PASS",
+    "disclosedFollowUp": "questions.md human render now stale for this paper — regen rides with next converter run (queued)"
+  },
+  "disclosures": [
+    "q1 solution line 1: stray mark-column '2' (text-layer interleave, not content; part.marks=2 carries it) dropped to avoid the '8x < 20 2' misread; disclosed here",
+    "KaTeX $...$ spans introduced where structure demands it (multi-char exponents, fractions, roots); single-char superscripts stay Unicode per house style (this paper had 3 pre-existing $ spans)",
+    "order-24 (bearings q25) NOT touched: glued-superscript damage ('20002') is real but its MS page was not READ this run — no half-evidenced edits; tranche-2 lead",
+    "census artifact is line-context (lower bound); whole-field re-census queued for tranche 2"
+  ],
+  "newLeadsQueued": [
+    "tranche-2: whole-field S1 census + glued-sup + operator-adjacent classes; per-paper eyes-on tranches (65 papers, 345+ parts)",
+    "order-24 bearings solution rebuild (needs MS bearing-page read; '20002' class)",
+    "run-016 plane discrepancy: PR #421 content-plane changes absent from official-papers.json at tip — operator adjudication",
+    "corpus questions.md regen for 2026-06/4MB1-01"
+  ],
+  "credentialDiscipline": "PAT inline one-time per use; all clones scrubbed post-op (grep 0 hits); no tokens in any artifact",
+  "verdict": "RUN-017 TRANCHE 1 CLOSED END-TO-END: the operator's linked paper (2026-06 4MB1-01) fully symbol-restored against printed evidence — every repaired expression READ off the page of record; census of record filed (345+ parts / 65 papers lower bound); source corpus corrected with ADR-039 disclosures"
+}
