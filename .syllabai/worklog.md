@@ -21916,3 +21916,17 @@ Work Log:
 
 Stage Summary:
 - The fleet laws now describe the post-fill truth: every one of the 56 CIE rows maps (the skeleton class is extinct), 49 real banks + 7 honest stubs. The 3 spec-tree gap courses serve their official parsed spec trees at /specification.
+
+---
+
+## R0-AUTO receipt — 2026-10-28T07:08Z (cron 15:00 UTC+8, Job 438940)
+
+- **Task ID (local)**: 72
+- **PR merged**: #425 "Guided-lesson entry path (b)+(c): per-note lesson links + dedicated guided-lessons index" — author SyllabAI, head `98753424`, base `a4bbe6a8`
+- **Merge sha**: `306cd9d4` (merge_method=merge, PUT API)
+- **Pre-merge CI on head**: 2/2 SUCCESS (verify + hub); pre-merge main CI GREEN on `9eea70b6` (run-002 repair of the 14:30 red-main escalation — fleet laws catch-up, verify+hub back to success)
+- **mergeable**: clean (base a4bbe6a8 behind main 9eea70b6, zero conflict)
+- **Reviews/comments**: 0 (no REQUEST_CHANGES / HOLD / BLOCKING hits)
+- **Diff scope**: 3 files, +137/-16, all `apps/hub/src/app/**` (guided-lessons page.tsx new +109; course page.tsx +7/-2; revision-notes notes-index.tsx +21/-14); zero *.java, zero core/hub repo content, zero Neon/prod exposure
+- **Post-merge main CI**: 2/2 SUCCESS on `306cd9d4` (bounded 90s re-check)
+- **Notes**: 14:30 escalation RESOLVED — red main introduced by direct-push `57d73a99` (4 cie-phase4 roster law failures) was repaired by lane run-002 `9eea70b6` (direct push, "fleet laws catch up with the spec-fill, CI-verify fix on transit 46"); both direct pushes remain operator-visibility items; bookkeeping-only receipt commit (.syllabai/worklog.md only); fetch-first reset #222 at sweep start (signature 89962a5, restored, zero loss); no force-push; no self-merge
