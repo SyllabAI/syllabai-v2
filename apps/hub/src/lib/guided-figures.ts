@@ -6,7 +6,7 @@
  * content seam into the bundle; the types ride type-only imports (erased at
  * compile time). Fail-closed law: an undeclared figureId resolves to nothing.
  */
-import type { GuidedFigure, GuidedLessonImport } from `@/lib/guided-lessons`;
+import type { GuidedFigure, GuidedLessonImport } from "@/lib/guided-lessons";
 
 /** The figures a module claims (module.figureIds resolved against lesson.figures;
  *  closure is import-gated both ways upstream). */
