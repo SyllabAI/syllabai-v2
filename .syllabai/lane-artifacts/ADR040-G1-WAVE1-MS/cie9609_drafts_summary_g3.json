@@ -1,0 +1,780 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-g3-cie9609-corpus-r0",
+ "date": "2026-10-28",
+ "corpus": "CIE 9609 (Business, IAL) MS band structures, 105 papers (48 held + 57 extension), grammars B/C1/C2/C-AO-matrix/D/E",
+ "totals": {
+  "papers": 105,
+  "entries": 295,
+  "bands": 2895,
+  "band_bearing": 72,
+  "papers_with_parse_errors": 17,
+  "grammars": {
+   "C1-two-axis": 41,
+   "C-multi-axis": 12,
+   "E-unlabeled": 18,
+   "C-AO-matrix": 212,
+   "D-prose": 12
+  }
+ },
+ "gap_ledger": {
+  "m24_m25_march": "primary source 404 (12 files); no substitution under the parity law",
+  "w26": "not sat yet",
+  "parse_error_papers": [
+   "9609-S20-QP-21",
+   "9609-S20-QP-22",
+   "9609-S20-QP-22",
+   "9609-S20-QP-23",
+   "9609-S20-QP-32",
+   "9609-S20-QP-33",
+   "9609-S22-QP-22",
+   "9609-W20-QP-22",
+   "9609-W20-QP-23",
+   "9609-W20-QP-31",
+   "9609-W20-QP-33",
+   "9609-W21-QP-21",
+   "9609-W21-QP-23",
+   "9609-W21-QP-32",
+   "9609-W21-QP-33",
+   "9609-M26-QP-22",
+   "9609-S26-QP-22"
+  ]
+ },
+ "drafts": [
+  {
+   "paper": "9609-M22-QP-12",
+   "session": "2022-03",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-M22-QP-22",
+   "session": "2022-03",
+   "entries": 4,
+   "bands": 36,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-M22-QP-32",
+   "session": "2022-03",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S20-QP-11",
+   "session": "2020-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S20-QP-12",
+   "session": "2020-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S20-QP-13",
+   "session": "2020-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S20-QP-21",
+   "session": "2020-06",
+   "entries": 3,
+   "bands": 22,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-S20-QP-22",
+   "session": "2020-06",
+   "entries": 3,
+   "bands": 30,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-S20-QP-23",
+   "session": "2020-06",
+   "entries": 2,
+   "bands": 20,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-S20-QP-31",
+   "session": "2020-06",
+   "entries": 2,
+   "bands": 24,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S20-QP-32",
+   "session": "2020-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-S20-QP-33",
+   "session": "2020-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-S22-QP-11",
+   "session": "2022-06",
+   "entries": 6,
+   "bands": 15,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S22-QP-12",
+   "session": "2022-06",
+   "entries": 6,
+   "bands": 15,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S22-QP-13",
+   "session": "2022-06",
+   "entries": 6,
+   "bands": 15,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S22-QP-21",
+   "session": "2022-06",
+   "entries": 3,
+   "bands": 26,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S22-QP-22",
+   "session": "2022-06",
+   "entries": 3,
+   "bands": 26,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-S22-QP-23",
+   "session": "2022-06",
+   "entries": 4,
+   "bands": 36,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S22-QP-31",
+   "session": "2022-06",
+   "entries": 2,
+   "bands": 24,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S22-QP-32",
+   "session": "2022-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S22-QP-33",
+   "session": "2022-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S23-QP-11",
+   "session": "2023-06",
+   "entries": 4,
+   "bands": 50,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S23-QP-12",
+   "session": "2023-06",
+   "entries": 4,
+   "bands": 50,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S23-QP-13",
+   "session": "2023-06",
+   "entries": 4,
+   "bands": 50,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S23-QP-21",
+   "session": "2023-06",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S23-QP-22",
+   "session": "2023-06",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S23-QP-23",
+   "session": "2023-06",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S23-QP-31",
+   "session": "2023-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S23-QP-32",
+   "session": "2023-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S23-QP-33",
+   "session": "2023-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W20-QP-11",
+   "session": "2020-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W20-QP-12",
+   "session": "2020-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W20-QP-13",
+   "session": "2020-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W20-QP-21",
+   "session": "2020-11",
+   "entries": 4,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W20-QP-22",
+   "session": "2020-11",
+   "entries": 3,
+   "bands": 28,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-W20-QP-23",
+   "session": "2020-11",
+   "entries": 3,
+   "bands": 26,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-W20-QP-31",
+   "session": "2020-11",
+   "entries": 1,
+   "bands": 12,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-W20-QP-32",
+   "session": "2020-11",
+   "entries": 2,
+   "bands": 24,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W20-QP-33",
+   "session": "2020-11",
+   "entries": 2,
+   "bands": 24,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-W21-QP-11",
+   "session": "2021-11",
+   "entries": 4,
+   "bands": 16,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W21-QP-12",
+   "session": "2021-11",
+   "entries": 4,
+   "bands": 16,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W21-QP-13",
+   "session": "2021-11",
+   "entries": 4,
+   "bands": 16,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W21-QP-21",
+   "session": "2021-11",
+   "entries": 2,
+   "bands": 20,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-W21-QP-22",
+   "session": "2021-11",
+   "entries": 4,
+   "bands": 36,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W21-QP-23",
+   "session": "2021-11",
+   "entries": 3,
+   "bands": 28,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-W21-QP-31",
+   "session": "2021-11",
+   "entries": 2,
+   "bands": 24,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W21-QP-32",
+   "session": "2021-11",
+   "entries": 1,
+   "bands": 12,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-W21-QP-33",
+   "session": "2021-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-M26-QP-12",
+   "session": "2026-03",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-M26-QP-22",
+   "session": "2026-03",
+   "entries": 6,
+   "bands": 62,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-M26-QP-32",
+   "session": "2026-03",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S24-QP-11",
+   "session": "2024-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S24-QP-12",
+   "session": "2024-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S24-QP-13",
+   "session": "2024-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S24-QP-21",
+   "session": "2024-06",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S24-QP-22",
+   "session": "2024-06",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S24-QP-23",
+   "session": "2024-06",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S24-QP-31",
+   "session": "2024-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S24-QP-32",
+   "session": "2024-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S24-QP-33",
+   "session": "2024-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S25-QP-11",
+   "session": "2025-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S25-QP-12",
+   "session": "2025-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S25-QP-13",
+   "session": "2025-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S25-QP-21",
+   "session": "2025-06",
+   "entries": 7,
+   "bands": 68,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S25-QP-22",
+   "session": "2025-06",
+   "entries": 7,
+   "bands": 68,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S25-QP-23",
+   "session": "2025-06",
+   "entries": 7,
+   "bands": 68,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S25-QP-31",
+   "session": "2025-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S25-QP-32",
+   "session": "2025-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S25-QP-33",
+   "session": "2025-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S26-QP-11",
+   "session": "2026-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S26-QP-12",
+   "session": "2026-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S26-QP-13",
+   "session": "2026-06",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S26-QP-21",
+   "session": "2026-06",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S26-QP-22",
+   "session": "2026-06",
+   "entries": 6,
+   "bands": 62,
+   "reviewRequired": true
+  },
+  {
+   "paper": "9609-S26-QP-23",
+   "session": "2026-06",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S26-QP-31",
+   "session": "2026-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S26-QP-32",
+   "session": "2026-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-S26-QP-33",
+   "session": "2026-06",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W23-QP-11",
+   "session": "2023-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W23-QP-12",
+   "session": "2023-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W23-QP-13",
+   "session": "2023-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W23-QP-21",
+   "session": "2023-11",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W23-QP-22",
+   "session": "2023-11",
+   "entries": 7,
+   "bands": 68,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W23-QP-23",
+   "session": "2023-11",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W23-QP-31",
+   "session": "2023-11",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W23-QP-32",
+   "session": "2023-11",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W23-QP-33",
+   "session": "2023-11",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W24-QP-11",
+   "session": "2024-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W24-QP-12",
+   "session": "2024-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W24-QP-13",
+   "session": "2024-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W24-QP-21",
+   "session": "2024-11",
+   "entries": 8,
+   "bands": 74,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W24-QP-22",
+   "session": "2024-11",
+   "entries": 6,
+   "bands": 42,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W24-QP-23",
+   "session": "2024-11",
+   "entries": 7,
+   "bands": 68,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W24-QP-31",
+   "session": "2024-11",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W24-QP-32",
+   "session": "2024-11",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W24-QP-33",
+   "session": "2024-11",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W25-QP-11",
+   "session": "2025-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W25-QP-12",
+   "session": "2025-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W25-QP-13",
+   "session": "2025-11",
+   "entries": 0,
+   "bands": 0,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W25-QP-21",
+   "session": "2025-11",
+   "entries": 4,
+   "bands": 50,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W25-QP-22",
+   "session": "2025-11",
+   "entries": 7,
+   "bands": 58,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W25-QP-23",
+   "session": "2025-11",
+   "entries": 7,
+   "bands": 58,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W25-QP-31",
+   "session": "2025-11",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W25-QP-32",
+   "session": "2025-11",
+   "entries": 2,
+   "bands": 32,
+   "reviewRequired": false
+  },
+  {
+   "paper": "9609-W25-QP-33",
+   "session": "2025-11",
+   "entries": 1,
+   "bands": 16,
+   "reviewRequired": false
+  }
+ ]
+}
