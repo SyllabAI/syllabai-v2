@@ -1,0 +1,42 @@
+{
+ "gates": {
+  "S1_spine_delta_exact": {
+   "ok": true,
+   "detail": "diffs=['.curriculum.nodes[20].title', '.meta.resourcesSha'] counts_old=167pts counts_new=167pts"
+  },
+  "S2_serializer_law": {
+   "ok": true,
+   "detail": "recon=0041571845f1e617 tip=0041571845f1e617 bytes=124786/124786"
+  },
+  "S3_curriculum_delta_exact": {
+   "ok": true,
+   "detail": "diffs=1 title 1.4.1 old=' Modifications to catchment flows and st' new='Modifications to catchment flows and sto'"
+  },
+  "S7_whitespace_census_zero": {
+   "ok": true,
+   "detail": "spine_hits=0 curr_hits=0"
+  },
+  "S4_corpus_byte_match": {
+   "ok": true,
+   "detail": "parsed@a0b10aac text[:48]='Modifications to catchment flows and stores and ' flags=['control-glyph-stripped', 'edge-whitespace-stripped', 'synthesized-ordinal']"
+  },
+  "K0_kg_baseline_ex_utc": {
+   "ok": true,
+   "detail": "export_course() on CURRENT curriculum == committed kg (ex generatedUtc)"
+  },
+  "S5_manifest_surgical": {
+   "ok": true,
+   "detail": "line_diffs=3"
+  },
+  "K1_kg_invariance_ex_utc": {
+   "ok": true,
+   "detail": "rebuilt from NEW curriculum == committed kg (ex generatedUtc); full-byte-equal-incl-utc=False"
+  }
+ },
+ "fail": null,
+ "writes": {
+  "spine_sha16": "df7d98d8f3205384",
+  "curriculum_sha16": "c543cad657caea97",
+  "manifest_sha16": "7f7af5fa1f1f06b4"
+ }
+}

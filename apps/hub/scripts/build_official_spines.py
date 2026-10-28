@@ -61,7 +61,7 @@ BOARD = "Pearson Edexcel"
 CIE_BOARD = "Cambridge CIE"
 # resources main @ CIE-PHASE0-1/1: parse_report counts + pdf_sha1 verified identical
 # across 4add496..a4ce9f5 for all 7 multi-bank/representative specs before pinning
-CIE_RESOURCES_SHA = "340803c9af4a949d3e274251b08697c6b42ba016"
+CIE_RESOURCES_SHA = "a0b10aac9e6ba66fba398c2e9a8d009c54092bee"
 CIE_RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{CIE_RESOURCES_SHA}"
 # SME-WAVE2 r1 (residual 2): env override follows the lane-worktree pattern of
 # CIE_CACHE/CIE_STAGING — the of-record phase-0 receipt stays byte-untouched and
