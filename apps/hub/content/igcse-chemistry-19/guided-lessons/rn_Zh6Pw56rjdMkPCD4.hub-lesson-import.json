@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_Zh6Pw56rjdMkPCD4",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e5b79e26f0d8b938c04f07c07cac4d4002316ed6eb948afa98caad225674aef7",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "a4e8368c66a06ea2feea2849dbd18db5c1f1b345e3588e941060494cde17fbbd",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_Zh6Pw56rjdMkPCD4",
@@ -155,6 +155,36 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a2a146844cc8-1-8-reaction-kinetics-concentration-on-rate-of-r.png",
+        "alt": "Diagram showing how increasing concentration means more particles in the same volume / space, resulting in more collisions",
+        "sourceHeading": "Diagram showing the effect of increasing concentration",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/0d0230196407-oh-cvjgh-changing-pressure-rates.png",
+        "alt": "Diagram showing how increasing pressure means the same number of more particles in a smaller volume / space, resulting in more collisions",
+        "sourceHeading": "Diagram showing the effect of increasing pressure",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/e0c6650c0b9a-6-1-6-effect-of-temperature.png",
+        "alt": "Diagram showing how increasing temperature means that the particles have more kinetic energy, resulting in more collisions",
+        "sourceHeading": "Diagram showing the effect of increasing temperature",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3745ee583d9b-6-1-6-effect-of-surface-area.png",
+        "alt": "Diagram showing how increasing surface area means more particles are available for reaction, resulting in more collisions",
+        "sourceHeading": "Diagram showing the effect of increasing surface area",
+        "moduleIds": []
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_2VnK66PqbvFKdKYt",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "418cd823eac124d94ef7d892b63adedfdc6daad98140edb54f60246580eedc6c",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "347606206079a2da1aa6c00db81b7faf55c2aa192be15b56941539ca34011e43",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_2VnK66PqbvFKdKYt",
@@ -75,6 +75,11 @@
           "rn_2VnK66PqbvFKdKYt::L1::Q3",
           "rn_2VnK66PqbvFKdKYt::L1::Q4",
           "rn_2VnK66PqbvFKdKYt::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03"
         ]
       },
       {
@@ -123,6 +128,9 @@
           "rn_2VnK66PqbvFKdKYt::L2::Q3",
           "rn_2VnK66PqbvFKdKYt::L2::Q4",
           "rn_2VnK66PqbvFKdKYt::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-04"
         ]
       }
     ],
@@ -170,6 +178,44 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/263ab5cb97bf-solid.png",
+        "alt": "Diagram showing the regular arrangement of a solid in rows and columns",
+        "sourceHeading": "Summary of the properties of the three states of matter",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3f6e693e61a8-liquid.png",
+        "alt": "Diagram showing how the particles in a liquid are arranged randomly and close together but not all touching",
+        "sourceHeading": "Summary of the properties of the three states of matter",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f82561bc2aff-gas.png",
+        "alt": "Diagram showing how the particles in a  gas are far apart and moving quickly and randomly",
+        "sourceHeading": "Summary of the properties of the three states of matter",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/74c3504eeb9c-changing-state-igcse-and-gcse-chemistry-revision.png",
+        "alt": "Diagram showing the changes of state",
+        "sourceHeading": "Changing states of matter",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

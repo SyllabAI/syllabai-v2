@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_TWGVV6RXN3Ktqb9h",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7e35c264cb2e60f2320b082872ee7ecc0d285eacd228ecf9733f98f76cbf045d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "2cabca3b368dc254330637bc5dd213876dee909217fa19a31c3708721e30adb2",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_TWGVV6RXN3Ktqb9h",
@@ -118,6 +118,9 @@
           "rn_TWGVV6RXN3Ktqb9h::L2::Q3",
           "rn_TWGVV6RXN3Ktqb9h::L2::Q4",
           "rn_TWGVV6RXN3Ktqb9h::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -160,6 +163,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/80d3f7b47f5f-elements-compounds-mixtures.png",
+        "alt": "A diagram to show the difference between elements, compounds and mixtures",
+        "sourceHeading": "Particle diagram showing elements, compounds and mixtures",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

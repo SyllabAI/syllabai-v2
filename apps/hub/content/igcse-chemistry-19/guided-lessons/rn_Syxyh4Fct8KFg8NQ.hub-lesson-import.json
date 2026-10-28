@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_Syxyh4Fct8KFg8NQ",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b57df7e45aaff76d8099bffe18b81631e76e4e91572dd831eae9725063039387",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "4358c7bd6455daa66d8cd8b9a9f717abcc4b0b192bb7dc7974e96273d569fe22",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_Syxyh4Fct8KFg8NQ",
@@ -173,6 +173,29 @@
         ],
         "finalAnswer": "The sodium ion's electronic configuration is 2,8."
       }
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/93dc810eaf5c-25377-rules-of-electron-shell-filling.png",
+        "alt": "Diagram showing that the first (innermost) shell holds a maximum of 2 electrons, the second shell holds a maximum of 8 electrons and the third shell holds a maximum of 8 electrons",
+        "sourceHeading": "Electron shell diagram",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/286c2a2c3535-57740-two-ways-to-represent-electronic.png",
+        "alt": "The diagram shows that a chlorine atom has 2 electrons in its first shell, 8 electrons in its second shell and 7 electrons in its third / outermost shell",
+        "sourceHeading": "The relationship between the electronic configurations and periodic table",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/43bbc4f69179-59464-position-of-chlorine-in-periodic.png",
+        "alt": "Simplified periodic table showing that chlorine is in Group 7, Period 3",
+        "sourceHeading": "The position of chlorine on the periodic table",
+        "moduleIds": []
+      }
+    ]
   }
 }

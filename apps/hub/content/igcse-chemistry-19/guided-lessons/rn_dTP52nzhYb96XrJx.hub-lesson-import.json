@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_dTP52nzhYb96XrJx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5511252f72c5067391c6e76a5af5691596c84cb6265a68ef71f31c1b908b9428",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "3920a40d0bfbec6089b170bef5eec7b3a2e9832bc27e271dd1f07a34104ea425",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_dTP52nzhYb96XrJx",
@@ -127,6 +127,9 @@
           "rn_dTP52nzhYb96XrJx::L2::Q3",
           "rn_dTP52nzhYb96XrJx::L2::Q4",
           "rn_dTP52nzhYb96XrJx::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -174,6 +177,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/9ac22038140d-universal-indicator-and-the-ph-scale2.png",
+        "alt": "Universal-indicator-and-the-pH-scale2, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Universal indicator",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

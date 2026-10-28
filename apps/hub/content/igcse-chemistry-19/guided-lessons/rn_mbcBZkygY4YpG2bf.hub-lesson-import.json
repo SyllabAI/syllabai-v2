@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_mbcBZkygY4YpG2bf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "653faf8073313ff0a8fc993a8bb5800da94506aa2d0fc3fcd76143e7d52b2b16",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "b081ff9fe3c5cf0b21f39f5acdfe40d41690b5b7f90ba4175932f45a3ed35dff",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_mbcBZkygY4YpG2bf",
@@ -117,6 +117,10 @@
           "rn_mbcBZkygY4YpG2bf::L2::Q3",
           "rn_mbcBZkygY4YpG2bf::L2::Q4",
           "rn_mbcBZkygY4YpG2bf::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       }
     ],
@@ -159,6 +163,26 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c5759671de73-1-6-1-formation-of-ions-1.png",
+        "alt": "1-6-1-formation-of-ions-1",
+        "sourceHeading": "Formation of cations",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/55759c7d2ee2-1-6-1-formation-of-ions-2.png",
+        "alt": "1-6-1-formation-of-ions-2",
+        "sourceHeading": "Formation of anions",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_NdJGQM8BqHmTy7Vg",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "f0d92cd1c3760ac1ed3b34fa660927875a32ed69c10a763bf9d86bcf3306904d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "5b4155d1ce31e4350735247a25f4677ed72cc643851b58078387976a73a0b7aa",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_NdJGQM8BqHmTy7Vg",
@@ -118,6 +118,9 @@
           "rn_NdJGQM8BqHmTy7Vg::L2::Q3",
           "rn_NdJGQM8BqHmTy7Vg::L2::Q4",
           "rn_NdJGQM8BqHmTy7Vg::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -150,6 +153,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/59f45e5b608b-3-1-an-introduction-to-as-level-organic-chemistr.png",
+        "alt": "An Introduction to AS Level Organic Chemistry Chain Isomerism, downloadable AS & A Level Chemistry revision notes",
+        "sourceHeading": "Naming isomers",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_5g8Dd6y89tkCVJsN",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "da2b18a753f5afc394e34a779b3e4ed61a12a5dd5f8afb7c00413e013b572479",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "d7fe0b3d07d166b86009eaf7dbc78acc1a0dceada973af619f436c96728cac89",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_5g8Dd6y89tkCVJsN",
@@ -69,6 +69,9 @@
           "rn_5g8Dd6y89tkCVJsN::L1::Q3",
           "rn_5g8Dd6y89tkCVJsN::L1::Q4",
           "rn_5g8Dd6y89tkCVJsN::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -163,6 +166,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/16691ff6344b-40620-50944-using-titration-to-prepare-a-salt.png",
+        "alt": "Using-titration-to-prepare-a-salt1, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Preparation of a soluble salt using a titration",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
   }
 }

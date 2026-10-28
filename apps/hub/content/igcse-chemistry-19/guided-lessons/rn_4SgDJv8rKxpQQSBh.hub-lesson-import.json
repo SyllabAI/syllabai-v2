@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_4SgDJv8rKxpQQSBh",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "011e6b72650bc9b8b126356d4230b29df1b74c3773dfa69ed43d33c0e09158a9",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "bce0fa99ff86fdd1d4e120927a6479ebbdf5a320abfe6a89d2733c9cc943fba6",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_4SgDJv8rKxpQQSBh",
@@ -77,6 +77,9 @@
           "rn_4SgDJv8rKxpQQSBh::L1::Q3",
           "rn_4SgDJv8rKxpQQSBh::L1::Q4",
           "rn_4SgDJv8rKxpQQSBh::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -124,6 +127,9 @@
           "rn_4SgDJv8rKxpQQSBh::L2::Q3",
           "rn_4SgDJv8rKxpQQSBh::L2::Q4",
           "rn_4SgDJv8rKxpQQSBh::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       },
       {
@@ -208,6 +214,40 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b584e58f57d7-polymers-basic.png",
+        "alt": "Diagram of monomers forming a polymer",
+        "sourceHeading": "Monomers",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4ed1b252996b-7-7-polymerisation-polymers-from-one-alkene-mono.png",
+        "alt": "1,2,-dichloroethene and the formation of its polymer",
+        "sourceHeading": "Drawing polymers and repeat units from the monomer",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/71e32a223215-drawing-repeating-units.png",
+        "alt": "Diagram showing how to draw the repeat unit from a monomer",
+        "sourceHeading": "The monomer & repeat unit",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a5eae3b2d6c0-deducing-monomer-structure-from-repeat-units.png",
+        "alt": "Deducing monomer structure from repeat units",
+        "sourceHeading": "The repeat unit & monomer",
+        "moduleIds": []
+      }
+    ]
   }
 }

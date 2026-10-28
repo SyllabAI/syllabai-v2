@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_MmqCNJfWbtYzRVqT",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a44c20c6291ca3f8a2d9a8451df50a3024db120035219653b451df1079520f4d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "5c4a0101c7a54159c0534f7e2f9c56d7fcdeff5aef0cad25878f2347b06f5fac",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_MmqCNJfWbtYzRVqT",
@@ -70,6 +70,9 @@
           "rn_MmqCNJfWbtYzRVqT::L1::Q3",
           "rn_MmqCNJfWbtYzRVqT::L1::Q4",
           "rn_MmqCNJfWbtYzRVqT::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -149,6 +152,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/8ecc04d614d3-substitution-alkanes-halogens.png",
+        "alt": "Substitution-Alkanes-&-Halogens, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "The reaction between methane and bromine in the presence of ultraviolet radiation",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_rHKCkt3PTXDBpmJG",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "0a9b38309c967f733acc56c81cef630bd5f56fef29da3cce370f335edc00f9c7",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "9239e02f0621a281341d60e01ac37c1b0c40935a9a00872e3a104a5f71b5843f",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_rHKCkt3PTXDBpmJG",
@@ -79,6 +79,9 @@
           "rn_rHKCkt3PTXDBpmJG::L1::Q3",
           "rn_rHKCkt3PTXDBpmJG::L1::Q4",
           "rn_rHKCkt3PTXDBpmJG::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       },
       {
@@ -158,6 +161,31 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a96fee7014b1-electrical-wire-insulated.png",
+        "alt": "Diagram of an insulated electrical wire",
+        "sourceHeading": "Covalent compounds are used as insulating materials",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7418c58b0248-molten-ionic-substances-conduct-electricity-1.png",
+        "alt": "Molten ionic substances conduct electricity, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Conductivity of ionic compounds",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4920e1930d50-transfer-of-charge.png",
+        "alt": "Electrolysis apparatus set up",
+        "sourceHeading": "Diagram showing the direction of movement of electrons and ions in the electrolysis of NaCl",
+        "moduleIds": []
+      }
+    ]
   }
 }

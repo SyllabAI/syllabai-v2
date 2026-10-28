@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_bvyrkKqRBMKCRzHM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "378d52f1b8f26f650492084b2c1c876a7b17384d962f0ca541d1457fe1d739a3",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "ef5a725af79e2e0401b2157b5e076e63db58d9b2212e343617100656c4c5a783",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_bvyrkKqRBMKCRzHM",
@@ -70,6 +70,9 @@
           "rn_bvyrkKqRBMKCRzHM::L1::Q3",
           "rn_bvyrkKqRBMKCRzHM::L1::Q4",
           "rn_bvyrkKqRBMKCRzHM::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -149,6 +152,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/879faa3aeca2-disposal-of-polymers.png",
+        "alt": "Disposal of polymers, Edexcel IGCSE Chemistry",
+        "sourceHeading": "Disposal of polymers",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
   }
 }

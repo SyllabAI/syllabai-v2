@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_v5JjfpT6grhtq3QW",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7735010d35450a50d098d31e26f6897b2d99e82424298b7bd2ea7f94e473f9b6",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "fb7eb2c3598b42aea28838595689cd74e4fab72aeb358188d5e57bddbc8018f6",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_v5JjfpT6grhtq3QW",
@@ -69,6 +69,9 @@
           "rn_v5JjfpT6grhtq3QW::L1::Q3",
           "rn_v5JjfpT6grhtq3QW::L1::Q4",
           "rn_v5JjfpT6grhtq3QW::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -148,6 +151,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/6e1199d29e25-testing-for-positive-metal-ions.png",
+        "alt": "testing-for-positive-metal-ions",
+        "sourceHeading": "Testing for metal cations",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
   }
 }

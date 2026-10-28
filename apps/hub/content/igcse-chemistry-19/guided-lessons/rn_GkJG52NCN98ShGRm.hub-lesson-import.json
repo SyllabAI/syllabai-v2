@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_GkJG52NCN98ShGRm",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "abeb1aac86bde0bf418ca510b538beddd76d62920efbfedf3bda9596cbf0a69a",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "ba92feb1366ebbb499aec73a1e52bfccd8864dc9eaac67dad87d3cc59e7d345f",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_GkJG52NCN98ShGRm",
@@ -152,6 +152,22 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/e66a005131b0-diamond-structure.png",
+        "alt": "Diamond structure, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "The bonding and structure in diamond",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4d8e2b444cc1-13344-graphite-structure.jpg",
+        "alt": "Diagram of graphite structure showing layers with carbon atoms forming three covalent bonds each, weak attraction forces, and delocalised electrons.",
+        "sourceHeading": "Bonding and structure in graphite",
+        "moduleIds": []
+      }
+    ]
   }
 }
