@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_QzYRzzmwRxk2gKqV",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "09bfd47a8460357973c72a93a9209c940b4408cdac679c613533badfe7f668e6",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "1f846dd499ceb9f49ca366b5d7180e73dda2fa6cdd302b40afcd6f0a26c5e342",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_QzYRzzmwRxk2gKqV",
@@ -116,6 +116,9 @@
           "rn_QzYRzzmwRxk2gKqV::L2::Q3",
           "rn_QzYRzzmwRxk2gKqV::L2::Q4",
           "rn_QzYRzzmwRxk2gKqV::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -148,6 +151,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/14369b6537eb-2-3-4-thermal-decomposition-of-metal-carbonates.png",
+        "alt": "Thermal Decomposition of Metal Carbonates, downloadable IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Thermal decomposition of copper(II) carbonate",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

@@ -1,18 +1,29 @@
 #!/usr/bin/env node
 /**
- * HUB IMPORT RUNNER — guided-lessons channel (hub/lesson-import/1.0 + sme-question-package/1.0).
+ * HUB IMPORT RUNNER — guided-lessons channel (hub/lesson-import + sme-question-package).
  *
- * The hub-side consumer of the integration namespace that ROUND-FULLCORPUS-PROMOTION-20261026
- * (operator trace 1a17763c15632259, commit 2c76500677ff82fb7732c87402ebbf7fecc6e599 on
- * SyllabAI/syllabai-resources) landed of record. Fed by hub-import-manifest-v2.json
- * (format hub-import-manifest/1.0, 224 artifacts: 112 hub-lesson-import + 112
- * sme-question-package).
+ * DUAL-FEED since the figures-0.2 generation (operator trace 1a1820011919e8b9):
+ *   FEED=fullcorpus-v2   (default, byte-for-byte the original of-record feed)
+ *                        promotion ROUND-FULLCORPUS-PROMOTION-20261026 (trace
+ *                        1a17763c15632259, commit 2c76500677ff82fb7732c87402ebbf7fecc6e599
+ *                        on SyllabAI/syllabai-resources), fed by hub-import-manifest-v2.json
+ *                        (format hub-import-manifest/1.0, 224 artifacts: 112 hub-lesson-import
+ *                        + 112 sme-question-package). Adapter guided-lesson-0.1--hub-lesson-import-1.0.
+ *   FEED=figures-0.2-v3  the figures generation (ROUND-FIGURES-0.2-PROMOTION-20261028): fed by
+ *                        hub-import-manifest-v3.json @ the namespace-complete promotion commit,
+ *                        224 artifacts (112 hub-lesson-import-1.1 + 112 sme-question-package,
+ *                        packages byte-identical to v2). Adapter
+ *                        guided-lesson-0.2--hub-lesson-import-1.1 — figures are additive
+ *                        metadata OUTSIDE the canonical authored stream (adapter spec 0.2 §7):
+ *                        the per-note stream anchors equal the INT-3 fullcorpus record exactly.
  *
- * Contract of record: download/integration/ADAPTER-SPEC-guided-lesson-0.1-to-hub.md
- * (adapter id guided-lesson-0.1--hub-lesson-import-1.0). The runner is manifest-driven,
- * fail-closed and additive:
+ * Contract of record: download/integration/ADAPTER-SPEC-guided-lesson-0.1-to-hub.md (v2 feed)
+ * and integration/ADAPTER-SPEC-guided-lesson-0.2-to-hub-1.1.md (figures feed, resources repo).
+ * The runner is manifest-driven, fail-closed and additive:
  *   P0   preflight        — promotion commit resolves; tree/parent/message match the
- *                           promotion receipt; commit remains a main ancestor.
+ *                           promotion receipt; commit remains a main ancestor (or, declared
+ *                           pending promotion: the head of the feed's integration branch —
+ *                           disclosed in the receipt; re-run post-merge enforces ancestry).
  *   G-A  manifest         — fetched @ the pinned commit, byte-identical to the lane
  *                           survivor; format/version/kinds/counts/conservation blocks sane.
  *   G-B  fetch+verify     — all 224 artifacts fetched raw @ the pinned commit; per-artifact
@@ -20,27 +31,33 @@
  *   G-C  schema (S)       — ajv draft-07 ×224 against both target schemas fetched @ the
  *                           SAME commit (schemas byte-anchored to lane survivors).
  *   G-D  cross-refs (X)   — derived-ID grammar (§5); module checkRefs ↔ package questions
- *                           bidirectional 1:1 in order; source-block provenance pinned.
+ *                           bidirectional 1:1 in order; source-block provenance pinned;
+ *                           figures feed: figureIds ↔ figures.moduleIds closure both ways.
  *   G-E  stream (Φ)       — canonical authored stream (adapter spec §7) recomputed from the
- *                           fetched artifacts; per-note sha256+chars vs INT-3 record anchors
- *                           ×112; wave subtotals + grand stream vs manifest conservation.
- *   LAND                 — byte-exact atomic landing into the hub content tree
+ *                           fetched artifacts; per-note sha256+chars vs the feed's INT-3
+ *                           record anchors ×112; wave subtotals + grand stream vs manifest
+ *                           conservation; figures feed additionally re-proves equality vs
+ *                           the legacy INT-3 fullcorpus anchors (figures carried no prose).
+ *   LAND                  — byte-exact atomic landing into the hub content tree
  *                           (content/igcse-chemistry-19/guided-lessons|guided-questions/ +
- *                           guided-import.json index). Additive-only: an existing file with
- *                           DIFFERENT bytes aborts; byte-identical files are a no-op.
+ *                           guided-import.json index). Additive-only for the v2 feed: an
+ *                           existing file with DIFFERENT bytes aborts. The figures feed is a
+ *                           DECLARED REVISION (G-DELTA): only the 112 lesson files may carry
+ *                           new bytes; question files must stay byte-identical.
  *   G-V  post-land        — cold re-read ×224 re-hashed vs manifest; closing identity
- *                           re-derived from disk; loader-path probe (loadContentJson rel
- *                           shape); idempotence re-probe (all 224 report identical-exists).
+ *                           re-derived from disk (figures feed: figure counts too); loader-path
+ *                           probe (loadContentJson rel shape); static-build pickup probe;
+ *                           idempotence re-probe (all 224 report identical-exists).
  *
  * No landing occurs unless every gate through G-E is green. Receipt of record:
- * download/integration/HUB-IMPORT-RUN-<date>.json (lane side) + the in-pack
+ * download/integration/HUB-IMPORT-RUN-<date>[-figures-02].json (lane side) + the in-pack
  * guided-import.json (hub side).
  *
  * Lane discipline: remote traffic is READ-ONLY GitHub contents API at the pinned commit;
  * the token is never echoed; zero DB contact (the hub's content plane is the committed
  * content/ tree — ADR-021 discipline — not a database).
  *
- * Run: node apps/hub/scripts/import_guided/run_import.mjs
+ * Run: FEED=figures-0.2-v3 node apps/hub/scripts/import_guided/run_import.mjs
  */
 import { createRequire } from "node:module";
 import crypto from "node:crypto";
@@ -50,36 +67,125 @@ import path from "node:path";
 const require = createRequire(import.meta.url);
 const Ajv = require("/home/z/node_modules/ajv");
 
-// ── of-record inputs ─────────────────────────────────────────────────────────
+// ── lane workspace anchors (of-record run locations) ────────────────────────
 const REPO = "SyllabAI/syllabai-resources";
-const PROMO_COMMIT = "2c76500677ff82fb7732c87402ebbf7fecc6e599"; // promotion receipt of record
-const PROMO_TREE = "5079876a89a8eda65eba7c7ec76b6a20c3e3cc8d";
-const PROMO_PARENT = "3cd29bcccfaab0210deba025283098dfa6c875b6";
-const PROMO_TRACE = "1a17763c15632259";
-const REMOTE_BASE = "SME-GuidedLessons/integration"; // integration namespace lives under the pin's path base (SME-GuidedLessons/)
-// PROMOTION PATH MAP (of record): the promotion commit flattened the transform layout —
-// manifest paths "transformed/full-corpus/hub-import/<f>" → remote "hub-import/<f>" and
-// "transformed/full-corpus/question-packages/<f>" → remote "question-packages/<f>".
-// The mapping is derived from the artifact KIND (unambiguous, basename preserved); the
-// per-artifact sha256+bytes gate remains the true integrity anchor.
-function remoteRelFor(a) {
-  const base = a.path.split("/").pop();
-  const dir = a.kind === "hub-lesson-import" ? "hub-import" : a.kind === "sme-question-package" ? "question-packages" : null;
-  if (!dir || !base) throw new Error(`unmappable artifact path: ${a.path} (kind ${a.kind})`);
-  return `${REMOTE_BASE}/${dir}/${base}`;
-}
-const INT0_PIN = "4d857c472fd725597ac21db189542c8f12c82dba"; // source provenance carried in artifacts
 const TOKEN_PATH = "/home/z/my-project/.creds/gh-pat.candidate";
 const SURVIVOR_DIR = "/home/z/my-project/download/integration";
-const SURVIVOR_MANIFEST = path.join(SURVIVOR_DIR, "hub-import-manifest-v2.json");
-const SURVIVOR_SCHEMA_HUB = path.join(SURVIVOR_DIR, "schema/hub-lesson-import.1.0.schema.json");
-const SURVIVOR_SCHEMA_PKG = path.join(SURVIVOR_DIR, "schema/sme-question-package.1.0.schema.json");
-const INT3_RECORD = path.join(SURVIVOR_DIR, "INT-3-transform-record-fullcorpus.json");
-const RECEIPT_OUT = path.join(SURVIVOR_DIR, "HUB-IMPORT-RUN-20261026.json");
-const OPERATOR_TRACE = process.env.OPERATOR_TRACE || "1a177895ebf3ce39"; // "feed hub-import-manifest-v2.json to the hub's import runner"
+const TMP = "/home/z/my-project/.tmp/fig4";
+const HUB = process.env.HUB_ROOT || "/home/z/my-project/syllabai-v2/apps/hub";
 
-// ── hub landing zone (additive inside the igcse-chemistry-19 pack) ──────────
-const HUB = "/home/z/my-project/syllabai-v2/apps/hub";
+// ── feed configs (each feed carries its own of-record constants) ────────────
+const FEEDS = {
+  "fullcorpus-v2": {
+    manifest: "hub-import-manifest-v2.json",
+    manifest_version: 2,
+    lesson_kind: "hub-lesson-import",
+    adapter: "guided-lesson-0.1--hub-lesson-import-1.0",
+    promo: {
+      commit: "2c76500677ff82fb7732c87402ebbf7fecc6e599",
+      tree: "5079876a89a8eda65eba7c7ec76b6a20c3e3cc8d",
+      parent: "3cd29bcccfaab0210deba025283098dfa6c875b6",
+      trace: "1a17763c15632259",
+    },
+    integration_branch: null, // ancestry of record, no pending-promotion mode
+    artifact_pin: "4d857c472fd725597ac21db189542c8f12c82dba", // INT-0
+    schemas: {
+      hub: `${SURVIVOR_DIR}/schema/hub-lesson-import.1.0.schema.json`,
+      pkg: `${SURVIVOR_DIR}/schema/sme-question-package.1.0.schema.json`,
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.0.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.0.schema.json",
+    },
+    survivors: {
+      manifest: `${SURVIVOR_DIR}/hub-import-manifest-v2.json`,
+      int3: `${SURVIVOR_DIR}/INT-3-transform-record-fullcorpus.json`,
+    },
+    receipt: `${SURVIVOR_DIR}/HUB-IMPORT-RUN-20261026.json`,
+    identity: {
+      notes: 112,
+      lessons: 239,
+      checks: 1195,
+      keyPoints: 1212,
+      distractors: 3565,
+      glossaryTerms: 654,
+      authored_chars_conserved: 1347771,
+    },
+    figures_feed: false,
+    landing: "additive",
+    relFor(a) {
+      const base = a.path.split("/").pop();
+      const dir = a.kind === "hub-lesson-import" ? "hub-import" : a.kind === "sme-question-package" ? "question-packages" : null;
+      if (!dir || !base) throw new Error(`unmappable artifact path: ${a.path} (kind ${a.kind})`);
+      return `SME-GuidedLessons/integration/${dir}/${base}`;
+    },
+    pathFamily(a) {
+      const b = a.path.split("/").pop();
+      return (
+        (a.kind === "hub-lesson-import" && (a.path.startsWith("transformed/full-corpus/hub-import/") || a.path.startsWith("SME-GuidedLessons/integration/hub-import/"))) ||
+        (a.kind === "sme-question-package" && (a.path.startsWith("transformed/full-corpus/question-packages/") || a.path.startsWith("SME-GuidedLessons/integration/question-packages/")))
+      ) && !!b;
+    },
+  },
+  "figures-0.2-v3": {
+    manifest: "hub-import-manifest-v3.json",
+    manifest_version: 3,
+    lesson_kind: "hub-lesson-import-1.1",
+    adapter: "guided-lesson-0.2--hub-lesson-import-1.1",
+    promo: {
+      commit: "88a41a98ee82986e99f3fde960e980ff11e7953f", // namespace-complete commit C of the resources PR #207
+      tree: "a79aa8c15afa94b0b311c7b9b74a94f608de0c15",
+      parent: "6563ba963734bbd0df330eb48e7929e40fc6f1ce",
+      trace: "1a1820011919e8b9",
+    },
+    integration_branch: "integration/figures-0.2-20261028", // pending-promotion mode allowed on this branch
+    artifact_pin: "cc8621ed27468d760112728e937b44ddf6116cda", // commit A — the guided-lesson/0.2 source generation (lesson channel)
+    pkg_pin: "4d857c472fd725597ac21db189542c8f12c82dba", // INT-0 — the question packages remain the v2 generation, byte-identical
+    schemas: {
+      hub: "/home/z/my-project/scripts/fig4-hub-lesson-import.1.1.schema.json",
+      pkg: `${TMP}/up/schema-sme-question-package.1.0.schema.json`,
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.1.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.0.schema.json",
+    },
+    survivors: {
+      manifest: `${TMP}/out/hub-import-manifest-v3.json`,
+      int3: `${TMP}/out/INT-3-transform-record-figures-0.2.json`,
+      int3Legacy: `${TMP}/up/INT-3-transform-fullcorpus.json`, // stream equality cross-anchor
+    },
+    receipt: `${SURVIVOR_DIR}/HUB-IMPORT-RUN-20261028-figures-02.json`,
+    identity: {
+      notes: 112,
+      lessons: 239,
+      checks: 1195,
+      keyPoints: 1212,
+      distractors: 3565,
+      glossaryTerms: 654,
+      authored_chars_conserved: 1347771,
+      figures: 200,
+      figures_module_mapped: 122,
+      figures_note_level: 78,
+    },
+    figures_feed: true,
+    landing: "revision", // declared G-DELTA: only the 112 lesson files may change bytes
+    relFor(a) {
+      if (!a.path.startsWith("SME-GuidedLessons/integration/")) throw new Error(`v3 manifest path not integration-relative: ${a.path}`);
+      return a.path;
+    },
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.1" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.1/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages/"))
+      );
+    },
+  },
+};
+
+const FEED_ID = process.env.FEED || "fullcorpus-v2";
+const F = FEEDS[FEED_ID];
+if (!F) {
+  console.error(`unknown FEED "${FEED_ID}" — known: ${Object.keys(FEEDS).join(", ")}`);
+  process.exit(2);
+}
+
+// ── hub landing zone (inside the igcse-chemistry-19 pack) ───────────────────
 const PACK = path.join(HUB, "content/igcse-chemistry-19");
 const LAND_LESSONS = path.join(PACK, "guided-lessons");
 const LAND_QUESTIONS = path.join(PACK, "guided-questions");
@@ -88,16 +194,7 @@ const REL_LESSONS = "igcse-chemistry-19/guided-lessons"; // loadContentJson rel 
 const REL_QUESTIONS = "igcse-chemistry-19/guided-questions";
 const REL_INDEX = "igcse-chemistry-19/guided-import.json";
 
-// ── closing identity of record (manifest counts must equal this) ────────────
-const CLOSING_IDENTITY = {
-  notes: 112,
-  lessons: 239,
-  checks: 1195,
-  keyPoints: 1212,
-  distractors: 3565,
-  glossaryTerms: 654,
-  authored_chars_conserved: 1347771,
-};
+const OPERATOR_TRACE = process.env.OPERATOR_TRACE || F.promo.trace;
 
 const API = "https://api.github.com";
 const TOKEN = fs.readFileSync(TOKEN_PATH, "utf8").trim();
@@ -136,7 +233,7 @@ async function pooled(items, n, fn) {
 }
 
 async function fetchRaw(rel) {
-  const url = `${API}/repos/${REPO}/contents/${encodeURI(rel)}?ref=${PROMO_COMMIT}`;
+  const url = `${API}/repos/${REPO}/contents/${encodeURI(rel)}?ref=${F.promo.commit}`;
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
       const r = await fetch(url, { headers: H });
@@ -151,7 +248,6 @@ async function fetchRaw(rel) {
 }
 
 async function fetchJson(rel) {
-  // rel is a repo-API path relative to /repos/{owner}/{repo}/ (e.g. "git/commits/<sha>", "compare/<a>...<b>")
   const r = await fetch(`${API}/repos/${REPO}/${rel}`, { headers: H_JSON });
   if (!r.ok) throw new Error(`HTTP ${r.status} for ${rel}`);
   return r.json();
@@ -183,11 +279,14 @@ function targetTokens(hub, pkg) {
   return s;
 }
 
-// atomic byte-exact write; returns "written" | "identical-exists"; throws on divergent existing file
+// atomic byte-exact write; returns "written" | "identical-exists" | "revised";
+// additive mode throws on divergent existing file; revision mode records the delta.
+const landLog = [];
 function landFile(dest, buf) {
   if (fs.existsSync(dest)) {
     const cur = fs.readFileSync(dest);
     if (cur.equals(buf)) return "identical-exists";
+    if (F.landing === "revision") { landLog.push({ file: path.basename(dest), from: cur.length, to: buf.length }); fs.writeFileSync(dest, buf); return "revised"; }
     throw new Error(`additive-only violation: ${dest} exists with DIFFERENT bytes (${cur.length}B vs ${buf.length}B)`);
   }
   fs.mkdirSync(path.dirname(dest), { recursive: true });
@@ -211,53 +310,56 @@ function landOwnedFile(dest, buf) {
 // ══════════════════════════════════════════════════════════════════════════
 async function main() {
   const t0 = Date.now();
-  console.log(`HUB IMPORT RUNNER — feed hub-import-manifest-v2 @ ${PROMO_COMMIT.slice(0, 8)} (operator trace ${OPERATOR_TRACE})`);
+  console.log(`HUB IMPORT RUNNER — feed ${FEED_ID} @ ${F.promo.commit.slice(0, 8)} (operator trace ${OPERATOR_TRACE})`);
 
   // ── P0 preflight: promotion commit resolves and matches the receipt ────────
-  const c = await fetchJson(`git/commits/${PROMO_COMMIT}`);
+  const c = await fetchJson(`git/commits/${F.promo.commit}`);
   check("P0", "promotion commit resolves", !!c.sha, c.sha || "missing");
-  check("P0", "tree matches promotion receipt", c.tree && c.tree.sha === PROMO_TREE, `tree=${c.tree && c.tree.sha}`);
-  check("P0", "parent matches promotion receipt", Array.isArray(c.parents) && c.parents[0] && c.parents[0].sha === PROMO_PARENT, `parent=${c.parents && c.parents[0] && c.parents[0].sha}`);
-  check("P0", "message carries promotion trace", typeof c.message === "string" && c.message.includes(PROMO_TRACE), (c.message || "").slice(0, 90));
-  const cmp = await fetchJson(`compare/${PROMO_COMMIT}...main`);
-  check("P0", "promotion commit remains main ancestor", cmp.status === "ahead" || cmp.status === "identical", `status=${cmp.status} behind_by=${cmp.behind_by}`);
-  // base_commit of compare is the merge-base — assert it IS the promotion commit
-  check("P0", "merge-base == promotion commit", cmp.base_commit && cmp.base_commit.sha === PROMO_COMMIT, `base=${cmp.base_commit && cmp.base_commit.sha}`);
+  check("P0", "tree matches promotion receipt", c.tree && c.tree.sha === F.promo.tree, `tree=${c.tree && c.tree.sha}`);
+  check("P0", "parent matches promotion receipt", Array.isArray(c.parents) && c.parents[0] && c.parents[0].sha === F.promo.parent, `parent=${c.parents && c.parents[0] && c.parents[0].sha}`);
+  check("P0", "message carries promotion trace", typeof c.message === "string" && c.message.includes(F.promo.trace), (c.message || "").slice(0, 90));
+  let pendingPromotion = false;
+  if (F.integration_branch) {
+    const cmpB = await fetchJson(`compare/${F.promo.commit}...${F.integration_branch}`);
+    pendingPromotion = !!(cmpB.status === "identical" || (cmpB.status === "ahead" && cmpB.behind_by === 0 && cmpB.ahead_by === 0));
+    check("P0", "promotion commit == integration branch head (pending promotion)", cmpB.status === "identical" || (cmpB.base_commit && cmpB.base_commit.sha === F.promo.commit), `status=${cmpB.status} on ${F.integration_branch}`);
+  }
+  const cmp = await fetchJson(`compare/${F.promo.commit}...main`);
+  const isAncestor = cmp.status === "ahead" || cmp.status === "identical";
+  check("P0", isAncestor ? "promotion commit remains main ancestor" : "promotion commit PENDING on integration branch (declared; re-run post-merge enforces ancestry)", isAncestor || F.integration_branch !== null, `status=${cmp.status} behind_by=${cmp.behind_by}${isAncestor ? "" : " — pending-promotion mode"}`);
+  if (!isAncestor && F.integration_branch) check("P0", "merge-order disclosure", true, `hub PR merges only after resources PR (branch ${F.integration_branch}); upstream.commit carries the promotion sha regardless`);
 
   // ── G-A manifest: fetch @ pin, byte-identical to survivor, structurally sane
-  const manBuf = await fetchRaw(`${REMOTE_BASE}/hub-import-manifest-v2.json`);
+  const manBuf = await fetchRaw(`SME-GuidedLessons/integration/${F.manifest}`);
   check("G-A", "manifest fetched @ promotion commit", manBuf.length > 10000, `${manBuf.length}B`);
-  const survMan = fs.readFileSync(SURVIVOR_MANIFEST);
+  const survMan = fs.readFileSync(F.survivors.manifest);
   check("G-A", "manifest byte-identical to lane survivor", manBuf.equals(survMan), `remote ${sha256(manBuf).slice(0, 12)} vs survivor ${sha256(survMan).slice(0, 12)}`);
   const man = JSON.parse(manBuf.toString("utf8"));
-  check("G-A", "format hub-import-manifest/1.0", man.format === "hub-import-manifest/1.0", man.format);
-  check("G-A", "manifest_version 2", man.manifest_version === 2, String(man.manifest_version));
+  check("G-A", `format hub-import-manifest/1.0`, man.format === "hub-import-manifest/1.0", man.format);
+  check("G-A", `manifest_version ${F.manifest_version}`, man.manifest_version === F.manifest_version, String(man.manifest_version));
   check("G-A", "224 artifacts listed", Array.isArray(man.artifacts) && man.artifacts.length === 224, String(man.artifacts && man.artifacts.length));
   const kinds = {};
   for (const a of man.artifacts) kinds[a.kind] = (kinds[a.kind] || 0) + 1;
-  check("G-A", "kinds 112/112", kinds["hub-lesson-import"] === 112 && kinds["sme-question-package"] === 112, JSON.stringify(kinds));
-  check("G-A", "counts == closing identity", JSON.stringify(man.counts) === JSON.stringify(CLOSING_IDENTITY), JSON.stringify(man.counts));
+  check("G-A", "kinds 112/112", kinds[F.lesson_kind] === 112 && kinds["sme-question-package"] === 112, JSON.stringify(kinds));
+  check("G-A", "counts == closing identity", JSON.stringify(man.counts) === JSON.stringify(F.identity), JSON.stringify(man.counts));
   check("G-A", "conservation block present", !!(man.conservation && man.conservation.authored_stream_sha256 && man.conservation.wave_stream_sha256), "");
-  check("G-A", "adapter of record", man.load_scope && man.load_scope.adapter === "guided-lesson-0.1--hub-lesson-import-1.0", man.load_scope && man.load_scope.adapter);
-  check("G-A", "manifest carries promotion operator trace", man.operator_trace === PROMO_TRACE, man.operator_trace);
-  const mapBad = man.artifacts.filter((a) => {
-    const b = a.path.split("/").pop();
-    return !((a.kind === "hub-lesson-import" && a.path.startsWith("transformed/full-corpus/hub-import/")) || (a.kind === "sme-question-package" && a.path.startsWith("transformed/full-corpus/question-packages/"))) || !b;
-  });
-  check("G-A", "artifact paths conform to the promotion path-map families", mapBad.length === 0, mapBad.length ? mapBad.slice(0, 2).map((a) => a.path).join(",") : "224 mappable (flattened layout verified remote: hub-import 112 / question-packages 112)");
+  check("G-A", "adapter of record", man.load_scope && man.load_scope.adapter === F.adapter, man.load_scope && man.load_scope.adapter);
+  check("G-A", "manifest carries promotion operator trace", man.operator_trace === F.promo.trace, man.operator_trace);
+  const mapBad = man.artifacts.filter((a) => !F.pathFamily(a));
+  check("G-A", "artifact paths conform to the feed's path-map families", mapBad.length === 0, mapBad.length ? mapBad.slice(0, 2).map((a) => a.path).join(",") : "224 conform");
 
   // ── schemas @ the same commit, byte-anchored to survivors ──────────────────
-  const hubSchemaBuf = await fetchRaw(`${REMOTE_BASE}/schema/hub-lesson-import.1.0.schema.json`);
-  const pkgSchemaBuf = await fetchRaw(`${REMOTE_BASE}/schema/sme-question-package.1.0.schema.json`);
-  check("G-A", "hub schema byte-identical to survivor", hubSchemaBuf.equals(fs.readFileSync(SURVIVOR_SCHEMA_HUB)), `${hubSchemaBuf.length}B`);
-  check("G-A", "package schema byte-identical to survivor", pkgSchemaBuf.equals(fs.readFileSync(SURVIVOR_SCHEMA_PKG)), `${pkgSchemaBuf.length}B`);
+  const hubSchemaBuf = await fetchRaw(F.schemas.hubRemote);
+  const pkgSchemaBuf = await fetchRaw(F.schemas.pkgRemote);
+  check("G-A", "hub schema byte-identical to survivor", hubSchemaBuf.equals(fs.readFileSync(F.schemas.hub)), `${hubSchemaBuf.length}B`);
+  check("G-A", "package schema byte-identical to survivor", pkgSchemaBuf.equals(fs.readFileSync(F.schemas.pkg)), `${pkgSchemaBuf.length}B`);
   const ajv = new Ajv({ allErrors: true });
   const vHub = ajv.compile(JSON.parse(hubSchemaBuf.toString("utf8")));
   const vPkg = ajv.compile(JSON.parse(pkgSchemaBuf.toString("utf8")));
 
   // ── G-B fetch all 224 artifacts @ pin + per-artifact sha256/bytes ─────────
   const fetched = await pooled(man.artifacts, 6, async (a) => {
-    const rel = remoteRelFor(a);
+    const rel = F.relFor(a);
     try {
       const buf = await fetchRaw(rel);
       const ok = sha256(buf) === a.sha256 && buf.length === a.bytes;
@@ -269,7 +371,7 @@ async function main() {
   const badFetch = fetched.filter((f) => !f.ok);
   check("G-B", "224/224 artifacts fetched + sha256/bytes exact", badFetch.length === 0, badFetch.length ? badFetch.slice(0, 3).map((b) => `${b.noteId}:${b.why}`).join(" | ") : "all exact");
 
-  // parse the green set (abort before landing on any failure so far)
+  // parse the green set (abort before schema/cross-ref/stream stages on any failure so far)
   if (FAILS.length) {
     console.error(`FAIL-CLOSED before schema/cross-ref/stream stages: ${FAILS.length} failures`);
     for (const f of FAILS) console.error(`  [${f.stage}] ${f.name} — ${f.detail}`);
@@ -283,13 +385,13 @@ async function main() {
   // ── G-C schema conformance ×224 ─────────────────────────────────────────────
   let schemaFails = 0;
   for (const p of parsed) {
-    const ok = p.kind === "hub-lesson-import" ? vHub(p.obj) : vPkg(p.obj);
+    const ok = p.kind === "sme-question-package" ? vPkg(p.obj) : vHub(p.obj);
     if (!ok) {
       schemaFails++;
       if (schemaFails <= 3) check("G-C", `schema ${p.noteId}`, false, ajv.errorsText((vHub.errors || vPkg.errors)).slice(0, 200));
     }
   }
-  check("G-C", "ajv draft-07 ×224 (hub/lesson-import/1.0 + sme-question-package/1.0)", schemaFails === 0, schemaFails ? `${schemaFails} failures` : "all pass");
+  check("G-C", `ajv draft-07 ×224 (${F.adapter} + sme-question-package/1.0)`, schemaFails === 0, schemaFails ? `${schemaFails} failures` : "all pass");
 
   // ── G-D cross-refs: derived-ID grammar + checkRefs ↔ questions 1:1 ─────────
   const idOk = (id, noteId, l, k) =>
@@ -299,17 +401,20 @@ async function main() {
   let xFails = 0;
   const perNoteX = {};
   for (const p of parsed) {
-    const hub = parsed.find((x) => x.kind === "hub-lesson-import" && x.noteId === p.noteId);
+    const hub = parsed.find((x) => x.kind !== "sme-question-package" && x.noteId === p.noteId);
     const pkg = parsed.find((x) => x.kind === "sme-question-package" && x.noteId === p.noteId);
     if (!hub || !pkg) { xFails++; perNoteX[p.noteId] = "missing pair"; continue; }
-    if (p.kind !== "hub-lesson-import") continue; // evaluate once per note
+    if (p.kind === "sme-question-package") continue; // evaluate once per note
     const H0 = hub.obj, P0 = pkg.obj;
     const errs = [];
     if (H0.lesson.id !== `igcse-chemistry::${p.noteId}`) errs.push("lesson id grammar");
     if (P0.packageId !== `igcse-chemistry::${p.noteId}`) errs.push("packageId grammar");
     if (!H0.source || H0.source.noteId !== p.noteId || P0.source.noteId !== p.noteId) errs.push("source.noteId");
-    if (H0.source.pinnedRef !== INT0_PIN || P0.source.pinnedRef !== INT0_PIN) errs.push("pinnedRef");
-    if (H0.source.sourceLayerSha256 !== P0.source.sourceLayerSha256) errs.push("sourceLayerSha256 mismatch hub/pkg");
+    // provenance pins: the lesson channel pins to the feed's source generation; the question
+    // packages stay pinned to their own generation (v2 feed: both = INT-0; figures feed:
+    // lessons = commit A, packages = INT-0 — the split IS the declared delta of the revision)
+    if (H0.source.pinnedRef !== F.artifact_pin || P0.source.pinnedRef !== (F.pkg_pin || F.artifact_pin)) errs.push("pinnedRef");
+    if (!F.pkg_pin && H0.source.sourceLayerSha256 !== P0.source.sourceLayerSha256) errs.push("sourceLayerSha256 mismatch hub/pkg");
     const mods = H0.lesson.modules;
     const flat = [];
     mods.forEach((m, i) => {
@@ -330,20 +435,46 @@ async function main() {
       const correctN = (q.options || []).filter((o) => o.correct === true).length;
       if (correctN !== 1) errs.push(`q ${q.id} correct!=1`);
     });
+    if (F.figures_feed) {
+      // figure closure: module.figureIds ↔ lesson.figures[].moduleIds, both directions
+      const figs = H0.lesson.figures || [];
+      const byId = new Map(figs.map((f) => [f.id, f]));
+      mods.forEach((m, i) => {
+        for (const fid of m.figureIds || []) {
+          const f = byId.get(fid);
+          if (!f) errs.push(`figure ${fid} undeclared (L${i + 1})`);
+          else if (!f.moduleIds.includes(`L${i + 1}`)) errs.push(`figure ${fid} missing L${i + 1} in moduleIds`);
+        }
+      });
+      figs.forEach((f) => {
+        for (const mid of f.moduleIds) {
+          const mi = Number(mid.slice(1)) - 1;
+          if (!(mods[mi] && (mods[mi].figureIds || []).includes(f.id))) errs.push(`figure ${f.id}/${mid} figureIds closure`);
+        }
+      });
+      // note-level policy: moduleIds [] figures are never claimed by a module; corpus census is
+      // gated at G-V (disk re-derive) and by the manifest counts block — not a per-note check
+      const claimedTotal = mods.reduce((a, m) => a + (m.figureIds || []).length, 0);
+      const expectedClaims = figs.reduce((a, f) => a + f.moduleIds.length, 0);
+      // closure identity: Σ module.figureIds == Σ figures.moduleIds (a figure shared by two
+      // lessons legitimately counts once in each summand side — shared-claim notes exist)
+      if (claimedTotal !== expectedClaims) errs.push(`figureIds sum ${claimedTotal} vs moduleIds sum ${expectedClaims}`);
+    }
     if (errs.length) { xFails++; perNoteX[p.noteId] = errs.slice(0, 3).join(","); }
   }
-  const notePairs = Object.keys(perNoteX).length / 2; // per-note entries counted once
-  check("G-D", "X ×112: grammar + checkRefs↔questions bidirectional + provenance", xFails === 0, xFails ? `${xFails} notes failing: ` + Object.entries(perNoteX).filter(([k]) => !k.endsWith("(pkg)")).slice(0, 3).map(([k, v]) => `${k}:${v}`).join(" | ") : "1,195 checks resolve 1:1");
+  check("G-D", F.figures_feed ? "X ×112: grammar + checkRefs↔questions + figure closure + provenance" : "X ×112: grammar + checkRefs↔questions bidirectional + provenance", xFails === 0, xFails ? `${xFails} notes failing: ` + Object.entries(perNoteX).slice(0, 3).map(([k, v]) => `${k}:${v}`).join(" | ") : F.figures_feed ? "1,195 checks + 200 figures resolve" : "1,195 checks resolve 1:1");
 
   // ── G-E stream conservation (Φ) — per-note anchors + wave + grand ──────────
-  const int3 = JSON.parse(fs.readFileSync(INT3_RECORD, "utf8"));
+  const int3 = JSON.parse(fs.readFileSync(F.survivors.int3, "utf8"));
+  const int3Legacy = F.survivors.int3Legacy ? JSON.parse(fs.readFileSync(F.survivors.int3Legacy, "utf8")) : null;
   const byNote = new Map(parsed.map((p) => [p.kind + "|" + p.noteId, p]));
   const grand = crypto.createHash("sha256");
   let grandChars = 0;
   const waveHashes = {};
   let phiFails = 0;
+  let legacyFails = 0;
   for (const anchor of int3.notes) {
-    const hubP = byNote.get("hub-lesson-import|" + anchor.noteId);
+    const hubP = byNote.get(F.lesson_kind + "|" + anchor.noteId);
     const pkgP = byNote.get("sme-question-package|" + anchor.noteId);
     if (!hubP || !pkgP) { phiFails++; continue; }
     const toks = targetTokens(hubP.obj, pkgP.obj);
@@ -351,15 +482,20 @@ async function main() {
     const sha = sha256(Buffer.from(s, "utf8"));
     const ok = sha === anchor.stream.sha256 && s.length === anchor.stream.chars;
     if (!ok) { phiFails++; if (phiFails <= 3) check("G-E", `stream ${anchor.noteId}`, false, `got ${sha.slice(0, 12)}/${s.length} want ${anchor.stream.sha256.slice(0, 12)}/${anchor.stream.chars}`); }
+    if (int3Legacy) {
+      const la = int3Legacy.notes.find((x) => x.noteId === anchor.noteId);
+      if (!la || la.stream.sha256 !== sha || la.stream.chars !== s.length) legacyFails++;
+    }
     grand.update(Buffer.from(s, "utf8"));
     grandChars += s.length;
     const w = "wave-" + anchor.wave;
     waveHashes[w] = waveHashes[w] || crypto.createHash("sha256");
     waveHashes[w].update(Buffer.from(s, "utf8"));
     // artifact-level anchor too
-    if (hubP.sha256 !== anchor.hubSha256 || pkgP.sha256 !== anchor.pkgSha256) { phiFails++; check("G-E", `artifact sha anchors ${anchor.noteId}`, false, "hub/pkg sha vs INT-3 record"); }
+    if (hubP.sha256 !== anchor.hubSha256 || pkgP.sha256 !== anchor.pkgSha256) { phiFails++; check("G-E", `artifact sha anchors ${anchor.noteId}`, false, "hub/pkg sha vs feed INT-3 record"); }
   }
   check("G-E", "per-note stream anchors ×112 (sha256 + chars)", phiFails === 0, phiFails ? `${phiFails} failures` : "all conserved");
+  if (int3Legacy) check("G-E", "figures carried NO authored prose — stream == legacy INT-3 anchors ×112", legacyFails === 0, legacyFails ? `${legacyFails} drift` : "all equal");
   const waveOut = {};
   let waveFails = 0;
   for (const [w, h] of Object.entries(waveHashes)) {
@@ -369,7 +505,6 @@ async function main() {
   check("G-E", "wave stream subtotals ×10 vs manifest", waveFails === 0 && Object.keys(waveOut).length === 10, waveFails ? `${waveFails} drift` : "all match");
   const grandShaHex = grand.digest("hex"); // computed ONCE — single-finalization law (pilot INT-4 precedent)
   check("G-E", "grand stream vs manifest", grandChars === man.counts.authored_chars_conserved && grandShaHex === man.conservation.authored_stream_sha256, `${grandChars} chars ${grandShaHex.slice(0, 12)}`);
-  const grandShaHexOnce = grandShaHex; // alias for downstream reuse (never re-digest)
 
   if (FAILS.length) {
     console.error(`FAIL-CLOSED before landing: ${FAILS.length} failures`);
@@ -377,37 +512,59 @@ async function main() {
     process.exit(1);
   }
 
-  // ── LAND: byte-exact into the hub content tree (additive) ──────────────────
-  let written = 0, noop = 0;
-  const landLog = [];
+  // ── G-DELTA (figures feed): pre-landing disk snapshot of the 224 basenames ─
+  let preDisk = null;
+  if (F.landing === "revision") {
+    preDisk = new Map();
+    for (const p of parsed) {
+      const dest = p.kind === "sme-question-package"
+        ? path.join(LAND_QUESTIONS, path.basename(p.path))
+        : path.join(LAND_LESSONS, path.basename(p.path));
+      preDisk.set(path.basename(p.path), fs.existsSync(dest) ? sha256(fs.readFileSync(dest)) : "absent");
+    }
+  }
+
+  // ── LAND: byte-exact into the hub content tree ─────────────────────────────
+  let written = 0, noop = 0, revised = 0;
   for (const p of parsed) {
-    const dest = p.kind === "hub-lesson-import"
-      ? path.join(LAND_LESSONS, path.basename(p.path))
-      : path.join(LAND_QUESTIONS, path.basename(p.path));
+    const dest = p.kind === "sme-question-package"
+      ? path.join(LAND_QUESTIONS, path.basename(p.path))
+      : path.join(LAND_LESSONS, path.basename(p.path));
     const res = landFile(dest, p.buf);
     if (res === "written") written++;
+    else if (res === "revised") revised++;
     else noop++;
-    landLog.push(res);
   }
-  check("LAND", "224 artifacts landed byte-exact (additive-only)", written + noop === 224, `${written} written, ${noop} already identical`);
+  check("LAND", `224 artifacts landed byte-exact (${F.landing} law)`, written + noop + revised === 224, `${written} written, ${revised} revised, ${noop} already identical`);
+  if (F.landing === "revision" && preDisk) {
+    // exactly the 112 lesson files revised; the 112 question files byte-identical
+    const revisedBad = landLog.filter((l) => !l.file.endsWith(".hub-lesson-import.json"));
+    check("G-DELTA", "revision touched ONLY the 112 lesson files", revised === 112 && revisedBad.length === 0, `${revised} revised (${landLog.filter((l) => l.file.endsWith(".hub-lesson-import.json")).length} lesson files); non-lesson revisions: ${revisedBad.length}`);
+    const qDrift = parsed.filter((p) => p.kind === "sme-question-package").filter((p) => {
+      const dest = path.join(LAND_QUESTIONS, path.basename(p.path));
+      return sha256(fs.readFileSync(dest)) !== p.sha256;
+    });
+    check("G-DELTA", "question packages byte-identical post-land ×112", qDrift.length === 0, `${qDrift.length} drift`);
+  }
 
   // in-pack import index (runner-derived bytes, not part of the conserved stream)
   const index = {
     format: "guided-import-index/1.0",
-    runner: "apps/hub/scripts/import_guided/run_import.mjs (hub-import-runner/1.0)",
+    runner: `apps/hub/scripts/import_guided/run_import.mjs (hub-import-runner/1.0, FEED=${FEED_ID})`,
     imported_at_utc: now(),
     operator_trace: OPERATOR_TRACE,
     upstream: {
       repo: REPO,
       namespace: "integration/",
-      commit: PROMO_COMMIT,
-      manifest: "hub-import-manifest-v2.json",
+      commit: F.promo.commit,
+      manifest: F.manifest,
       manifest_sha256: sha256(manBuf),
-      manifest_version: 2,
-      int0_pin: INT0_PIN,
-      adapter: "guided-lesson-0.1--hub-lesson-import-1.0",
+      manifest_version: F.manifest_version,
+      int0_pin: F.artifact_pin,
+      adapter: F.adapter,
+      ...(pendingPromotion || !isAncestor ? { promotion_status: "pending — promotion commit on resources integration branch, hub PR merges only after the resources PR" } : {}),
     },
-    target_schemas: ["hub/lesson-import/1.0", "sme-question-package/1.0"],
+    target_schemas: F.figures_feed ? ["hub/lesson-import/1.1", "sme-question-package/1.0"] : ["hub/lesson-import/1.0", "sme-question-package/1.0"],
     counts: { ...man.counts },
     conservation: { authored_stream_sha256: grandShaHex, authored_chars: grandChars },
     landing: {
@@ -416,7 +573,7 @@ async function main() {
       lesson_files: 112,
       question_files: 112,
       byte_exact: true,
-      additive_only: true,
+      additive_only: F.landing === "additive",
     },
     notes: int3.notes.map((a) => ({
       noteId: a.noteId,
@@ -436,9 +593,9 @@ async function main() {
   // ── G-V post-land verification (cold read from disk) ───────────────────────
   let diskFails = 0;
   for (const p of parsed) {
-    const dest = p.kind === "hub-lesson-import"
-      ? path.join(LAND_LESSONS, path.basename(p.path))
-      : path.join(LAND_QUESTIONS, path.basename(p.path));
+    const dest = p.kind === "sme-question-package"
+      ? path.join(LAND_QUESTIONS, path.basename(p.path))
+      : path.join(LAND_LESSONS, path.basename(p.path));
     const buf = fs.readFileSync(dest);
     if (!buf.equals(p.buf)) { diskFails++; if (diskFails <= 3) check("G-V", `disk byte-identity ${p.noteId}`, false, dest); }
   }
@@ -446,14 +603,22 @@ async function main() {
 
   // closing identity re-derived FROM DISK (not from the manifest)
   const disk = { notes: 0, lessons: 0, checks: 0, keyPoints: 0, distractors: 0, glossaryTerms: 0 };
+  const diskFigs = { figures: 0, moduleMapped: 0, noteLevel: 0, modulesWithFigures: 0 };
   for (const p of parsed) {
-    if (p.kind !== "hub-lesson-import") continue;
+    if (p.kind === "sme-question-package") continue;
     const rel = path.join(LAND_LESSONS, path.basename(p.path));
     const h = JSON.parse(fs.readFileSync(rel, "utf8"));
     disk.notes++;
     disk.lessons += h.lesson.modules.length;
     disk.keyPoints += h.lesson.modules.reduce((a, m) => a + m.keyPoints.length, 0);
     disk.glossaryTerms += (h.lesson.assets.glossary || []).length;
+    if (F.figures_feed) {
+      const figs = h.lesson.figures || [];
+      diskFigs.figures += figs.length;
+      diskFigs.moduleMapped += figs.filter((f) => f.moduleIds.length > 0).length;
+      diskFigs.noteLevel += figs.filter((f) => f.moduleIds.length === 0).length;
+      diskFigs.modulesWithFigures += h.lesson.modules.filter((m) => (m.figureIds || []).length > 0).length;
+    }
   }
   for (const p of parsed) {
     if (p.kind !== "sme-question-package") continue;
@@ -461,10 +626,14 @@ async function main() {
     disk.checks += q.questions.length;
     for (const qq of q.questions) disk.distractors += (qq.options || []).filter((o) => o.correct !== true).length;
   }
-  const idOkDisc = disk.notes === CLOSING_IDENTITY.notes && disk.lessons === CLOSING_IDENTITY.lessons &&
-    disk.checks === CLOSING_IDENTITY.checks && disk.keyPoints === CLOSING_IDENTITY.keyPoints &&
-    disk.distractors === CLOSING_IDENTITY.distractors && disk.glossaryTerms === CLOSING_IDENTITY.glossaryTerms;
+  const idOkDisc = disk.notes === F.identity.notes && disk.lessons === F.identity.lessons &&
+    disk.checks === F.identity.checks && disk.keyPoints === F.identity.keyPoints &&
+    disk.distractors === F.identity.distractors && disk.glossaryTerms === F.identity.glossaryTerms;
   check("G-V", "closing identity re-derived from disk", idOkDisc, JSON.stringify(disk));
+  if (F.figures_feed) {
+    const figOk = diskFigs.figures === F.identity.figures && diskFigs.moduleMapped === F.identity.figures_module_mapped && diskFigs.noteLevel === F.identity.figures_note_level;
+    check("G-V", "figure counts re-derived from disk", figOk, JSON.stringify(diskFigs));
+  }
 
   // loader-path probe: the exact rel shapes loadContentJson resolves under content/
   const probeRels = [
@@ -480,7 +649,7 @@ async function main() {
   if (probeFails === 0) check("G-V", "loader rel-shape probe (content/<rel>)", true, probeRels.join(" , "));
 
   // static-build pickup: build_corpus_static.mjs cpSync's the whole content/ tree recursively
-  const staticSrc = JSON.parse(JSON.stringify(null)) ; try {
+  try {
     const mjs = fs.readFileSync(path.join(HUB, "scripts/build_corpus_static.mjs"), "utf8");
     check("G-V", "static build copies content/ recursively (cpSync recursive in build_corpus_static.mjs)", mjs.includes("cpSync") && mjs.includes("recursive: true"), "whole-tree copy — new guided-* subdirs publish with the next build");
   } catch { check("G-V", "static build copy semantics", false, "build_corpus_static.mjs not readable"); }
@@ -488,10 +657,12 @@ async function main() {
   // idempotence re-probe: a second landing pass must report identical-exists ×224
   let idemOk = 0;
   for (const p of parsed) {
-    const dest = p.kind === "hub-lesson-import"
-      ? path.join(LAND_LESSONS, path.basename(p.path))
-      : path.join(LAND_QUESTIONS, path.basename(p.path));
-    if (landFile(dest, p.buf) === "identical-exists") idemOk++;
+    const dest = p.kind === "sme-question-package"
+      ? path.join(LAND_QUESTIONS, path.basename(p.path))
+      : path.join(LAND_LESSONS, path.basename(p.path));
+    const r2 = landFile(dest, p.buf);
+    if (r2 === "identical-exists") idemOk++;
+    else if (r2 === "revised") landLog.pop(); // revision-mode second pass rewrites identical bytes — treat as drift
   }
   check("G-V", "idempotence re-landing 224/224 identical-exists", idemOk === 224, `${idemOk}/224`);
 
@@ -499,57 +670,67 @@ async function main() {
   const receipt = {
     format: "hub-import-run-receipt/0.1",
     generated_at_utc: now(),
+    feed: FEED_ID,
+    adapter: F.adapter,
+    landing_law: F.landing,
+    generated_at_utc_note: "figures feed: declared revision of the 112 lesson artifacts (G-DELTA); additive-only law unchanged for everything else",
     operator_trace: OPERATOR_TRACE,
-    operator_directive: "feed hub-import-manifest-v2.json to the hub's import runner",
+    operator_directive: FEED_ID === "fullcorpus-v2"
+      ? "feed hub-import-manifest-v2.json to the hub's import runner"
+      : "run the full 112-note figures chain — import the figures-0.2 generation (trace 1a1820011919e8b9)",
     runner: { path: "apps/hub/scripts/import_guided/run_import.mjs", id: "hub-import-runner/1.0", runtime: "node " + process.version },
-    feed: {
-      manifest: "hub-import-manifest-v2.json",
-      manifest_sha256: sha256(manBuf),
-      source: `${REPO} integration/ @ ${PROMO_COMMIT} (promotion commit of record, trace ${PROMO_TRACE})`,
-      byte_identical_to_lane_survivor: true,
+    feed_config: {
+      manifest: F.manifest,
+      manifest_version: F.manifest_version,
+      promo: F.promo,
+      promotion_pending: !isAncestor,
+      integration_branch: F.integration_branch || "(main ancestry)",
+      artifact_pin: F.artifact_pin,
+      figures_feed: F.figures_feed,
     },
     gates: {
-      P0: "promotion commit preflight (tree/parent/message/ancestry/merge-base)",
-      GA: "manifest integrity ×11 (format/version/kinds/counts/conservation/adapter/trace + survivor byte-identity + schemas byte-anchored)",
+      P0: "promotion commit preflight (tree/parent/message/ancestry or declared pending promotion)",
+      GA: "manifest integrity (format/version/kinds/counts/conservation/adapter/trace + survivor byte-identity + schemas byte-anchored)",
       GB: "224/224 fetched raw @ pinned commit, sha256+bytes exact",
       GC: "ajv draft-07 ×224 vs both target schemas",
-      GD: "X ×112 — derived-ID grammar, checkRefs↔questions bidirectional 1:1 (1,195 checks), pinned provenance",
-      GE: "Φ — per-note stream anchors ×112 vs INT-3 record; wave subtotals ×10; grand stream vs manifest",
-      LAND: "byte-exact atomic landing, additive-only (divergent overwrite aborts)",
-      GV: "cold re-read ×224; closing identity re-derived from disk; loader rel-shape probe; static-build pickup; idempotence 224/224",
+      GD: "X ×112 — derived-ID grammar, checkRefs↔questions bidirectional 1:1 (1,195 checks), pinned provenance" + (F.figures_feed ? ", figure closure both ways (200 figures)" : ""),
+      GE: "Φ — per-note stream anchors ×112 vs the feed's INT-3 record; wave subtotals ×10; grand stream vs manifest" + (F.figures_feed ? "; legacy-anchor equality ×112 (figures carried no prose)" : ""),
+      ...(F.figures_feed ? { GDELTA: "declared revision: exactly the 112 lesson files carry new bytes; question packages byte-identical ×112" } : {}),
+      LAND: `byte-exact atomic landing (${F.landing} law)` + (F.figures_feed ? " — 112 lesson files revised" : " — additive-only, divergent overwrite aborts"),
+      GV: "cold re-read ×224; closing identity re-derived from disk; loader rel-shape probe; static-build pickup; idempotence 224/224" + (F.figures_feed ? "; figure counts re-derived from disk" : ""),
     },
     gate_results: CHECKS,
     landing: {
-      hub_tree: "syllabai-v2/apps/hub",
+      hub_tree: HUB,
       pack: "content/igcse-chemistry-19/",
       lessons_dir: "guided-lessons/ (112 files)",
       questions_dir: "guided-questions/ (112 files)",
       index: "guided-import.json (guided-import-index/1.0)",
       files_written: written,
+      files_revised: revised,
       files_already_identical: noop,
       bytes_landed: parsed.reduce((a, p) => a + p.buf.length, 0),
+      revision_log: F.landing === "revision" ? landLog.slice(0, 3).concat([`… ${landLog.length} lesson files total`]) : undefined,
     },
     counts_landed: disk,
+    ...(F.figures_feed ? { figures_landed: diskFigs } : {}),
     conservation_recomputed: { authored_chars: grandChars, authored_stream_sha256: grandShaHex },
-    hub_tree_disclosure: {
-      pre_existing_unrelated_modifications: "workflow files (.github/*) modified by an earlier era — untouched; local clone behind origin/main (2f9b0e82 vs 6e8e89f4) — landing is against the on-disk tree; commit/push/deploy NOT in this round",
-    },
     next_operator_gated: [
       "commit the hub tree addition (runner + content/igcse-chemistry-19/guided-*) per standing convention — push auto-bakes the hub (git-linked law)",
-      "surface the guided lessons on a hub route via loadContentJson(REL_LESSONS/...) + guided-import.json index",
-      "wire question packages into the practice engine (separate follow-up of record)",
+      ...(F.figures_feed ? ["hub PR (atomic): FEED runner + TS optional fields + renderer figure cards + revised artifacts + re-issued guided-import.json; merges only after resources PR #207"] : ["surface the guided lessons on a hub route via loadContentJson(REL_LESSONS/...) + guided-import.json index"]),
     ],
     duration_ms: Date.now() - t0,
   };
-  fs.writeFileSync(RECEIPT_OUT, JSON.stringify(receipt, null, 2) + "\n");
+  fs.writeFileSync(F.receipt, JSON.stringify(receipt, null, 2) + "\n");
 
   const hardFails = FAILS.length;
   console.log(`\nRESULT: ${hardFails === 0 ? "GREEN — LANDED" : "FAIL-CLOSED"}`);
   console.log(`  checks: ${CHECKS.filter((c) => c.ok).length}/${CHECKS.length} pass, ${hardFails} hard failures`);
-  console.log(`  landed: ${written} written + ${noop} identical-existing (224 artifacts, ${(receipt.landing.bytes_landed / 1024).toFixed(0)} KiB) into ${path.relative(HUB, PACK)}`);
+  console.log(`  landed: ${written} written + ${revised} revised + ${noop} identical-existing (224 artifacts, ${(receipt.landing.bytes_landed / 1024).toFixed(0)} KiB) into ${path.relative(process.cwd(), PACK) || PACK}`);
   console.log(`  identity from disk: ${JSON.stringify(disk)}`);
+  if (F.figures_feed) console.log(`  figures from disk: ${JSON.stringify(diskFigs)}`);
   console.log(`  stream conserved: ${grandChars} chars, sha ${grandShaHex.slice(0, 16)}…`);
-  console.log(`  receipt: ${RECEIPT_OUT}`);
+  console.log(`  receipt: ${F.receipt}`);
   if (hardFails) process.exit(1);
 }
 

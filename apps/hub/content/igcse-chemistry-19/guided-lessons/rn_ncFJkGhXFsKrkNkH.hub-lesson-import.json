@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_ncFJkGhXFsKrkNkH",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "cfcb584184878ace4ce4054f80c37ae3c24d7447fc7bb8f1e0fd0d10a952b7c9",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "eb5fc4781fee87f6a3f047f73bd169f953d08261410149b0d57e244d932ccae6",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_ncFJkGhXFsKrkNkH",
@@ -73,6 +73,9 @@
           "rn_ncFJkGhXFsKrkNkH::L1::Q3",
           "rn_ncFJkGhXFsKrkNkH::L1::Q4",
           "rn_ncFJkGhXFsKrkNkH::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -158,6 +161,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bee92fbdc07c-addition-water-to-ethene.png",
+        "alt": "Equation showing the hydration of ethene with steam to form ethanol",
+        "sourceHeading": "Hydration of ethene",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
   }
 }

@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_w25KHshCMNQWwftj",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4f00e6d39ceb75d8db22bd9c12f2ba7aaa2a34f545e2fcfb75a28a0bb68e8524",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "8f7aa5913debb2826109a2baf41eaa747b302931d276a6d1bae0b2ab8e19a2fc",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_w25KHshCMNQWwftj",
@@ -70,6 +70,9 @@
           "rn_w25KHshCMNQWwftj::L1::Q3",
           "rn_w25KHshCMNQWwftj::L1::Q4",
           "rn_w25KHshCMNQWwftj::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       },
       {
@@ -150,6 +153,24 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b9fb5c85577b-18446-1-5-chemical-energetics-calorime.png",
+        "alt": "Apparatus used to find the energy released when two solutions are mixed together",
+        "sourceHeading": "A simple calorimeter",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/dd682762e179-50507-5-1-4-simple-calorimeter-1.png",
+        "alt": "Simple Calorimeter_1, downloadable IB Chemistry revision notes",
+        "sourceHeading": "Diagram to show the set up of calorimetry equipment",
+        "moduleIds": []
+      }
+    ]
   }
 }

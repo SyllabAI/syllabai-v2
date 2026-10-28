@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_BDkhS5vQpRd4hvwf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "8c21764009d75988b6e76f51ee291ba6e1e5907e1a4145a5d0d7be8fdef4c4c6",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "21ed7ab88630b380884905d3a8299908462588b35b18f839ac6015edb5132246",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_BDkhS5vQpRd4hvwf",
@@ -88,6 +88,10 @@
           "rn_BDkhS5vQpRd4hvwf::L1::Q3",
           "rn_BDkhS5vQpRd4hvwf::L1::Q4",
           "rn_BDkhS5vQpRd4hvwf::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       },
       {
@@ -137,6 +141,10 @@
           "rn_BDkhS5vQpRd4hvwf::L2::Q3",
           "rn_BDkhS5vQpRd4hvwf::L2::Q4",
           "rn_BDkhS5vQpRd4hvwf::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-03",
+          "fig-04"
         ]
       }
     ],
@@ -169,6 +177,44 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c7d0647f74ec-8218-ester-functional-group.png",
+        "alt": "Diagram to show the ester functional group",
+        "sourceHeading": "Making esters",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/13dbce47bc6d-preparing-ethyl-ethanoate.png",
+        "alt": "Diagram to show the formation of ethyl ethanoate from ethanoic acid and ethanol",
+        "sourceHeading": "Diagram showing the formation of ethyl ethanoate",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/144cdf1cac9a-parts-of-an-ester.png",
+        "alt": "Diagram showing parts of an ester",
+        "sourceHeading": "Naming Esters",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c69d40377fe9-updated-ester-table.png",
+        "alt": "Table showing the esters formed from different alcohols and carboxylic acids",
+        "sourceHeading": "Examples of Esters Table",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

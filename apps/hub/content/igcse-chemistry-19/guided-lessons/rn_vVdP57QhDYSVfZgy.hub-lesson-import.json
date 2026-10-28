@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_vVdP57QhDYSVfZgy",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "4327a83a516d75321b84d492da0a5239c1fd0b12f3c90ed1854610ede5291b10",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "48e6462fbc730194696d3bb75ee0a5bc86d75eff1e7712ba9789ff8aab7baa9a",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_vVdP57QhDYSVfZgy",
@@ -73,6 +73,10 @@
           "rn_vVdP57QhDYSVfZgy::L1::Q3",
           "rn_vVdP57QhDYSVfZgy::L1::Q4",
           "rn_vVdP57QhDYSVfZgy::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       },
       {
@@ -120,6 +124,10 @@
           "rn_vVdP57QhDYSVfZgy::L2::Q3",
           "rn_vVdP57QhDYSVfZgy::L2::Q4",
           "rn_vVdP57QhDYSVfZgy::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
         ]
       }
     ],
@@ -152,6 +160,28 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/ab92bee4b88a-identifying-metal-cations.png",
+        "alt": "Identifying Metal Cations, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Flame tests",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7a1f64dfaa45-colours-of-metal-cations.png",
+        "alt": "Colours of metal cations, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Flame tests",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      }
+    ]
   }
 }

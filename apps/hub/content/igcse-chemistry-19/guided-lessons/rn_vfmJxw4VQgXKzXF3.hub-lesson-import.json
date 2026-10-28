@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_vfmJxw4VQgXKzXF3",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "f6f44979448db7632883612b330ba64a907a3cfedbb03e94e268d93727f40030",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "3d390c3e8c8a34a1e693868e1f3769ab437710d689439302b2c630ab8187ab0e",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_vfmJxw4VQgXKzXF3",
@@ -120,6 +120,9 @@
           "rn_vfmJxw4VQgXKzXF3::L2::Q3",
           "rn_vfmJxw4VQgXKzXF3::L2::Q4",
           "rn_vfmJxw4VQgXKzXF3::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
         ]
       }
     ],
@@ -152,6 +155,24 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/579fbbeed97a-covalent-bonding-in-non-metals.png",
+        "alt": "Covalent bonding in non-metals, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Covalent bonding",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/fb1ccc341e28-4-1-4-hydrogen-molecular-orbital.png",
+        "alt": "Hydrogen molecular orbital, downloadable IB Chemistry revision notes",
+        "sourceHeading": "Electrostatic attractions",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }

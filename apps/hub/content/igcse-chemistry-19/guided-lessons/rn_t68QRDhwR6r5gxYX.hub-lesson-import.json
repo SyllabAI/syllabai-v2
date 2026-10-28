@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.2",
     "noteId": "rn_t68QRDhwR6r5gxYX",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "896e336e57952664ec4a8d47feebc4c299140f152eb6e00cccf7f53f2cb84479",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "1f2e2e285b058b9f2aa8c038652af8993cc30886c81629a7d0d92cd1feda5c1d",
+    "pinnedRef": "cc8621ed27468d760112728e937b44ddf6116cda"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_t68QRDhwR6r5gxYX",
@@ -121,6 +121,9 @@
           "rn_t68QRDhwR6r5gxYX::L2::Q3",
           "rn_t68QRDhwR6r5gxYX::L2::Q4",
           "rn_t68QRDhwR6r5gxYX::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
         ]
       }
     ],
@@ -153,6 +156,17 @@
         }
       ],
       "workedExample": null
-    }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/6a98f5a0c76f-6-2-2-energy-changes-reversible-reactions.png",
+        "alt": "Energy Changes & Reversible Reactions, downloadable IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "The dehydration of hydrated copper(II) sulfate",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
   }
 }
