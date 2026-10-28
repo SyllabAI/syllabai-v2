@@ -15,8 +15,37 @@
   "fixes": 82,
   "caretTokensConverted": 143,
   "contentDigitCorrections": 1,
-  "sets": ["official-4mb1-01-2020-06", "official-4mb1-01-2020-11", "official-4mb1-01-2023-01(02R)", "official-4mb1-01-2023-11", "official-4mb1-01r-2025-06", "official-4mb1-01r-2026-06", "official-4mb1-02-2025-11"],
-  "partsList": ["2020-06 13-b", "2020-11 13-b", "2023-01 02R 10-b", "2023-11 16", "2023-11 21-a", "2023-11 21-b", "2023-11 24", "2023-11 26", "2023-11 28-b", "2025-06 01R 19-a", "2025-06 01R 19-b", "2026-06 01R 17-a", "2026-06 01R 17-b", "2026-06 01R 20-a", "2026-06 01R 23", "2026-06 01R 27-c", "2025-11 02 5", "2025-11 02 9-a", "2025-11 02 9-e", "2025-11 02 12"]
+  "sets": [
+   "official-4mb1-01-2020-06",
+   "official-4mb1-01-2020-11",
+   "official-4mb1-01-2023-01(02R)",
+   "official-4mb1-01-2023-11",
+   "official-4mb1-01r-2025-06",
+   "official-4mb1-01r-2026-06",
+   "official-4mb1-02-2025-11"
+  ],
+  "partsList": [
+   "2020-06 13-b",
+   "2020-11 13-b",
+   "2023-01 02R 10-b",
+   "2023-11 16",
+   "2023-11 21-a",
+   "2023-11 21-b",
+   "2023-11 24",
+   "2023-11 26",
+   "2023-11 28-b",
+   "2025-06 01R 19-a",
+   "2025-06 01R 19-b",
+   "2026-06 01R 17-a",
+   "2026-06 01R 17-b",
+   "2026-06 01R 20-a",
+   "2026-06 01R 23",
+   "2026-06 01R 27-c",
+   "2025-11 02 5",
+   "2025-11 02 9-a",
+   "2025-11 02 9-e",
+   "2025-11 02 12"
+  ]
  },
  "method": {
   "eyesOn": "every edited field adjudicated first-hand against the official print: 19 QP/MS pages rendered @150dpi (pdftoppm, syllabai-pastpapers @HEAD raw) + 2x 300dpi zoom crops for digit-level calls; NO-GUESS held",
@@ -31,8 +60,19 @@
  ],
  "evidence": {
   "source": "SyllabAI/syllabai-pastpapers raw @HEAD (unauthenticated), 10 PDFs staged in scratch pp_4mb1_b1/",
-  "qp": ["2020-06 4MB1-01 p8 (P61906A0824)", "2020-11 4MB1-01 p8 (P61906A0824)", "2023-11 4MB1-01 p17 (P73494A01724)", "2025-06 4MB1-01R p16 (P79517A01628)", "2025-11 4MB1-02 p12 (P79558A01240) + p26 (P79558A02640)"],
-  "ms": ["2023-01 02R p17 (+2 zooms)", "2023-11 p11/p15/p18/p21/p23", "2025-11 02 p9 (+3 zooms)/p15/p21", "2026-06 01R p19/p24/p29/p37"],
+  "qp": [
+   "2020-06 4MB1-01 p8 (P61906A0824)",
+   "2020-11 4MB1-01 p8 (P61906A0824)",
+   "2023-11 4MB1-01 p17 (P73494A01724)",
+   "2025-06 4MB1-01R p16 (P79517A01628)",
+   "2025-11 4MB1-02 p12 (P79558A01240) + p26 (P79558A02640)"
+  ],
+  "ms": [
+   "2023-01 02R p17 (+2 zooms)",
+   "2023-11 p11/p15/p18/p21/p23",
+   "2025-11 02 p9 (+3 zooms)/p15/p21",
+   "2026-06 01R p19/p24/p29/p37"
+  ],
   "files": "run-019/*.png (19 pages + 5 zoom crops); field projections run-019/run019_projection.json; spans run-019/run019_spans.json"
  },
  "planeDelta": {
@@ -58,10 +98,10 @@
  "environmentRecoveryOfRecord": "post-restart clone arrived stale AGAIN (local main 4008e6ce, official-papers.json ABSENT): fetch-first verified origin/main cc440605 carrying the full run-017 lane + run-018 (PRs #423/#427/#429/#431/#432/#435/#437) + sibling lanes through PR #439; ff-only applied; plane of record verified first-hand @5fe3af48816d260b before any edit; no GH CLI and no PAT in env this session — raw.githubusercontent worked unauthenticated for the 10 pastpaper PDFs",
  "residualDisclosure": "G1 276 / G2 2023 / G3 245 / G4 117 lead parts (incl. the Pythagoras/cosine-rule keyword bucket 159) remain FILED NOT EXECUTED per the fleet-census law, pending operator order; corpus side (resources F114) still carries the B1 residuals verbatim — correction rides the NEXT converter run (standing disposition)",
  "landing": {
-  "branch": "t-oeq-mathsb/run-019",
-  "pr": "PENDING",
-  "merge": "PENDING",
-  "vercel": "PENDING",
-  "liveSpotCheck": "PENDING"
+  "branch": "t-oeq-mathsb/run-019 (content f531e9ae after 2x rebase union of .syllabai/worklog.md against lanes PR #440 + the 76e275ee wave — append-only union law, theirs-verbatim-first, zero markers; plane byte-sha invariant 701ae1997de5421a across both rebases)",
+  "pr": "PR #441 MERGED c7405564",
+  "ci": "pre-merge channel DROP disclosed of record (0 check-runs on both heads across empty-commit + close/reopen re-probes — the run-017 lane event-drop class, same two dead-ends documented); POST-MERGE main push CI success on c7405564 (run 40778174271, first-hand) — the run-018 'pre+post' pattern satisfied as post-1/1 with the pre-drop disclosed",
+  "vercel": "syllabai-hub-v2 dpl_42GwnucX7Ps3aREhSG7nT5K2NZCJ READY @ c740556484; production alias syllabai-hub-v2.vercel.app",
+  "liveSpotCheck": "PASS 6/6 — june-2020-4mb1-01 (125p katex SSR, old bare caret absent), november-2023-4mb1-01 (9 katex nodes, 8x^2/22x^2 residuals absent), june-2025-4mb1-01r (2 katex, 10^(-8n)/c^(-1/2) bare absent), june-2026-4mb1-01r (14 katex, '3x^2 - 15' bare absent, q27-b regression intact), november-2025-4mb1-02 (7 katex, 4x^2 - y^2 = 27 bare absent), january-2023-4mb1-02r (SSR-katex N/A for this paper class — client-side player; content parity via RSC flight payload: $\\sqrt{81}/81^{\\frac{4}{3}} = 81^{-\\frac{5}{6}}$ + $81^{\\frac{4}{3}}$ digit correction live verbatim, old 1/3 token absent)"
  }
 }
