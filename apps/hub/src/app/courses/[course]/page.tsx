@@ -264,8 +264,13 @@ export default async function CourseHubPage({
             ? "Pick the concept you don't understand yet — we'll explain it simply, then check your understanding. Any order works."
             : "Step-by-step guided lessons for every revision note — rolling out course by course.",
           tags: ["Study", "Practice", "Diagnose"],
-          href: guided ? `${base}/revision-notes` : undefined,
-          ctaLabel: guided ? "Pick a note" : undefined,
+          // Entry-path lanes (b)+(c) (operator decision of record, trace
+          // 1a1810c1ef1cb521): the live card now lands on the dedicated
+          // guided-lessons index (one hop into any lesson) instead of three
+          // hops through the notes listing; not-ready courses keep the
+          // honest roadmap.
+          href: guided ? `${base}/guided-lessons` : undefined,
+          ctaLabel: guided ? "Browse lessons" : undefined,
           countLabel: guided
             ? `Live for ${guided.counts.notes} notes · ${guided.counts.lessons} lessons`
             : undefined,
