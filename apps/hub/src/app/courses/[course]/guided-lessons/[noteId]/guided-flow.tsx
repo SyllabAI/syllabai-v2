@@ -63,7 +63,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
-import { figuresForModule } from "@/lib/guided-lessons";
+import { figuresForModule } from "@/lib/guided-figures";
 import type {
   GuidedDepthLayer,
   GuidedFigure,

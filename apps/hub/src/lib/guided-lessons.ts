@@ -139,6 +139,9 @@ export interface GuidedDepthLayer {
   examPointer: string;
 }
 
+/** NOTE: the resolver helpers (figuresForModule / noteLevelFigures) live in
+ *  lib/guided-figures.ts — client-safe, no server-only import.
+
 /** One figure of the figures layer (hub/lesson-import/1.1): the parent revision
  *  note's own asset (sourcing decision of record — zero new hosting), with the
  *  nearest preceding note heading as provenance and the claiming lessons as
@@ -151,26 +154,6 @@ export interface GuidedFigure {
   moduleIds: string[];
 }
 
-/** The figures a module claims (module.figureIds resolved against lesson.figures;
- *  closure is import-gated — undeclared ids resolve to nothing, fail-closed). */
-export function figuresForModule(
-  lesson: GuidedLessonImport,
-  moduleOrdinal: number,
-): GuidedFigure[] {
-  const figures = lesson.lesson.figures;
-  const ids = lesson.lesson.modules[moduleOrdinal]?.figureIds;
-  if (!figures || !ids || ids.length === 0) return [];
-  const byId = new Map(figures.map((f) => [f.id, f]));
-  return ids
-    .map((id) => byId.get(id))
-    .filter((f): f is GuidedFigure => f !== undefined);
-}
-
-/** Note-level figures (moduleIds []) — readable in the read-as-a-page fallback
- *  and on the note page itself (via bodyMd), never inside the lesson flow. */
-export function noteLevelFigures(lesson: GuidedLessonImport): GuidedFigure[] {
-  return (lesson.lesson.figures ?? []).filter((f) => f.moduleIds.length === 0);
-}
 
 /** sme-question-package/1.0 — the checks that back a lesson's checkRefs. */
 export interface GuidedQuestionPackage {

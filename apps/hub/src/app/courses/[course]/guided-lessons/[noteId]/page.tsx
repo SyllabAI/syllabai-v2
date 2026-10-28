@@ -9,17 +9,16 @@ import { loadHubCourse } from "@/lib/courses";
 import { Breadcrumbs } from "@/components/hub/chrome";
 import { ResourcePanel } from "@/components/hub/resource-panel";
 import {
-  figuresForModule,
   findGuidedEntry,
   loadGuidedIndex,
   loadGuidedLesson,
   loadGuidedPackage,
-  noteLevelFigures,
   type GuidedDepthLayer,
   type GuidedFigure,
   type GuidedModule,
   type GuidedQuestion,
 } from "@/lib/guided-lessons";
+import { figuresForModule, noteLevelFigures } from "@/lib/guided-figures";
 import { GuidedLessonFlow } from "./guided-flow";
 import { GuidedCheckList } from "./guided-check";
 
