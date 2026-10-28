@@ -1,0 +1,33 @@
+{
+  "band": "T-CONSUME-EDX-1",
+  "run": "002-maths-b-attach-refresh-convergence-r0",
+  "at": "2026-10-29T00:00:00Z",
+  "order": "operator trace 1a1840f11ddafa8d: 'bundle refresh / re-derive notes.json + content-maps at resources HEAD (the T-CONSUME-EDX-1 pattern, re-applied)'",
+  "executor": "main agent (Z.ai, zai-web session web-528c0352, chat a7ae5075, trace 1a1840f11ddafa8d)",
+  "verdict": "DUPLICATE-OF-RECORD — INDEPENDENT CONVERGENCE; local run discarded ff-only per the run-018 recovery precedent; ZERO repo content changes shipped from this session",
+  "finding_of_record": [
+    "The ordered refresh was ALREADY LANDED on origin/main by the parallel lane (map content-maps/igcse-maths-b-16.json pin 6162cc77 = T-SPECS-MATHSB-2B-OVERLAY-1 run-001 commit, generatedUtc 2026-10-28T18:04:07Z; notes 197/199 coded, uncoded = Mathematical Symbols + Listing Outcomes, the two T_SPEC_2B_STAY terminal stays; landing family of record T-OEQ-MATHSB-SERVE-1, PRs #423-#437, live spot-check PASS run-018 @ 78e648e5).",
+    "This session independently re-derived the same layer at resources HEAD b97a80c7 (Stage 2 attach_official_map.py pin bump dc9c1efc->b97a80c7 with bump-law comment; Stage 3 apply_official_flip.py --course igcse-maths-b-16 through G1-G5) and CONVERGED: flashcards.json and curriculum.json BYTE-IDENTICAL to origin; notes.json identical in ALL linkage fields (197/199, same codes incl. the 4 of-record r1 repoints: Difference Of Two Squares 8E->3C maths_b_review_adjudication, Congruence +6I, Set Notation & Venn Diagrams +2G, Combination of Transformations 5G->8K) with only 5 bodyMd rows older than origin; content-map identical modulo resourcesSha (6162cc77 vs b97a80c7 — maths-b inputs identical by last-touch law, tip adds CIE-VERDICT-2 only).",
+    "SANDBOX RESET EVENT of record: between traces the workspace lost syllabai-resources/ (re-cloned blob:none sparse at origin/main b97a80c7, 2026-10-28 19:44Z), v2-wt-r026/, pgtools/, and RECOVERY/PROOF_OCT21_PUBLIC.DUMP (the 93MB pre-loss byte mirror — CRITICAL asset loss, see followups); 3,455 files arrived mode-churned 100644->100755 (zero content delta, verified numstat 0/0); worklog.md rolled back to the znotes-re-1 vintage (r016-r023 entries lost from the outer log; git receipts remain the system of record).",
+    "STALE-CLONE TRAP (second instance of the run-018 law): local main was c55927e7, behind origin/main by 583 commits; fetch-first caught it AFTER the re-derive completed and BEFORE any push; a same-base hazard was also caught and neutralized mid-run: apply_official_flip zeroed the maths-b questions.json band-3b linkage (2352 parts, T-MIG-136 foreign authority per the T-CONSUME-EDX-2 ruling) — restored byte-HEAD at the local base, then the whole delta was discarded wholesale once origin proved newer on every axis (origin questions.json carries the newer 4MB1-QUALITY state; origin wins).",
+    "Verification battery of this run (all green before the discard ruling): Stage 2 census notesCoded 197/199 flashcardsCoded 268/268; r2 field laws L1-L6 (questions byte-HEAD at base, bodyMd inline-Spec-point-line-only, note codes == upstream spec-links, card specPointIds==map codes + specPointCode==codes[0] per build_official_content.py:17 law, G3 no-spcpt-in-linkage scan, manifest counts stable + pin stamped); effect proof subtopicOfNote 197/199 placed, 2 loose (the stays), 11 attaches spot-proven incl. Relative & Expected Frequency carrying both 10E+10K; build:hub EXIT 0 after bun install --frozen-lockfile restored the post-reset node_modules (canonical Turbopack build, not the OOM'd first attempt at 4041MB box / 2246MB used)."
+  ],
+  "changes": [],
+  "verification": {
+    "resources_pin_verified": "b97a80c72bcba64546b376746efac76fd7847737 (origin/main tip 2026-10-28 19:44Z; maths-b inputs last touched 6162cc77 2026-10-28T18:04Z)",
+    "origin_state_first_hand": "notes 197/199 coded; map pin 6162cc77; spcptToOfficial 202 / spcptUnmapped 13 (SPM-layer truth by the T-SPEC-2b side-car law: map lane byte-untouched, 11 operator-verdict homes live at item level, 2 terminal stays)",
+    "byte_comparison_local_vs_origin": "flashcards.json IDENTICAL; curriculum.json IDENTICAL; notes.json linkage IDENTICAL (5 bodyMd rows older locally); content-map identical modulo pin; manifest identical modulo pin + counts equal",
+    "build_gate": "build:hub exit 0 (post bun install --frozen-lockfile; sandbox OOM 137 on first attempt was environmental)"
+  },
+  "scope_guards": [
+    "NO push from this session — nothing of record to ship; local delta discarded via git checkout -- . then merge --ff-only origin/main",
+    "CIE paths zero-touched; questions.json never shipped; the pin-bump edit to attach_official_map.py was discarded with the working tree (origin carries its own pin evolution)",
+    "worktree left clean at 78e648e5, main == origin/main"
+  ],
+  "followups": [
+    "CRITICAL-OPERATOR: recovery/proof_oct21_public.dump (93MB pre-loss byte mirror, the NEON-DB-LOSS chain's forensic anchor) was sandbox-resident only and is LOST with this reset — the Neon proof branch itself was already deleted; content-equivalent re-derivation remains possible from prod after the quota fix (pg_dump), but the byte-exact Oct-21 mirror is unrecoverable from this sandbox",
+    "CRITICAL-OPERATOR: PAT rotation remains overdue per prior lanes (token still embedded in remote URLs of both clones)",
+    "outer worklog.md lost the r016-r023 lane entries in the reset — git receipts are the system of record; consider a committed LANELOG to end the sandbox-resident log pattern",
+    "the maths-b SPM-layer spcptUnmapped=13 block stays as-is by the side-car law; if the fleet ever regenerates maps fleet-wide, the operator-verdict rows in spec_point_resolution.json remain available for a deliberate Stage 2 semantics extension (operator-gated, affects sda-chem/sda-bio/acct too)"
+  ]
+}
