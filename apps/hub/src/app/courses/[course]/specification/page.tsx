@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getCourseBundle, loadHubCourse } from "@/lib/courses";
 import { getDataProvider } from "@/lib/data";
 import { CourseHeader } from "@/components/hub/course-header";
+import { normalizeSpecText } from "@/lib/spec-text";
 import { SpecificationExplorer, type SpecTopicVM } from "./client";
 import { allCourseParams } from "@/lib/static-params";
 
@@ -41,9 +42,15 @@ export default async function CourseSpecificationPage({
       .filter((n): n is NonNullable<typeof n> => Boolean(n))
       .map((n) => ({
         code: n.code,
-        text: n.title,
+        text: normalizeSpecText(n.title),
         applicability: n.applicability ?? null,
       }));
+
+  // T-SPEC-AUDIT-1: board-aware header copy — the explorer serves CIE and
+  // Pearson courses alike, and the filter sentence only applies where
+  // applicability was actually derived (honest otherwise)
+  const boardName = curriculum.board || "the awarding body";
+  const hasApplicability = curriculum.nodes.some((n) => n.applicability);
 
   const topics: SpecTopicVM[] = hub.index.tree.topics.map((t) => ({
     number: t.number,
@@ -62,7 +69,7 @@ export default async function CourseSpecificationPage({
         meta={meta}
         title={`${meta.subject} ${meta.code} — specification explorer`}
         crumb="Specification"
-        description={`Every ${stats.specPoints} specification statement with its printed assessment home — filter by paper, unit or tier exactly as Pearson assesses them. Statements are the parsed specification text as printed.`}
+        description={`All ${stats.specPoints} specification statements from the official ${boardName} specification, as printed${hasApplicability ? ` — filter by paper, unit or tier exactly as ${boardName} assesses them` : ""}.`}
       />
       <div className="mt-6">
         <SpecificationExplorer topics={topics} totalPoints={stats.specPoints} />
