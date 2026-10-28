@@ -85,3 +85,17 @@ Work Log:
 
 Stage Summary:
 - run-017 tranche 1 CLOSED END-TO-END: census filed, linked paper fully symbol-restored vs printed evidence (hub 22 fields + corpus 19 fields + disclosures), receipts + lane artifacts in-repo. Tranche-2 queued: whole-field census (345+ parts / 65 papers, severity-first), order-24 bearings rebuild, run-016 discrepancy adjudication. fetch-first, no force; PAT inline-only, scrubbed.
+---
+Task ID: run-017 tranche 2 (trace 1a181a0eb215e04d, operator order "continue paper-by-paper, starting with the worst offenders (2023-11 P1, 2026-06 1R, 2025-11 P2)")
+Agent: r0 (Super Z, zai-web session web-752465e5-2985-476b-86a3-0bf785493dc5)
+
+Work Log:
+- Census v2 of record (whole-field, $-span-stripped, uppercase-parity + glued-plus + d-glyph classes): S1 704 hits/362 parts; union 1271/440 parts/65 papers (lower bound; undercount classes disclosed incl lost-fraction fields which carry no S1 signature). Artifact s2-census-wholefield.json.
+- Tranche 2 = the 3 worst offenders, complete vs printed evidence: 2023-11 4MB1-01 (8 parts), 2026-06 4MB1-01R (11 parts), 2025-11 4MB1-02 (9 parts) = 28 parts, 52 fields + 25 markPoints[0] mirrors = 77 changed fields EXACT. 51 pages rendered 150dpi and READ + 2 zoom crops.
+- Restorations incl: 3x^2+6x-9 completing-square pair, matrices 3A-2B + BC(p) pmatrix rebuilds, (2x^2y^3)^3 + (125p^11q/375p^15q^3)^-2, sin-20 triangle 3-page working (radicals+superscripts), single-fraction Q19, f(x)=x^3+7x^2+17x+14 factor chain, y=x^3-15x+5 stationary points (sqrt class), vector OB 3-page rebuild (lambda param, KaTeX pmatrix), polygon 360/(x+2) show-that chain, 2025-11 inequality 3p-2>4, region R x+y<5/y<2x+3, simultaneous 4x^2-y^2=27, cubic 2x^3-9x^2+3x+7 + 4x-18+38/x^2<0, solid ABCDE cosine-rule chain (15sqrt2 class), g:x->(3x-1)/(x+1), sweets 46/91 + full n-method fraction rebuild.
+- Fail-closed apply (run017_t2_apply.py): 3 anchor refusals fixed by byte-exact re-extraction (interleaved M1-notes), one $-balance gate rescope (70 PRE-EXISTING fleet unbalanced-$ fields verified byte-unchanged; gate = 0 NEW + changed-fields balanced). Final: gates ALL GREEN census 66/1281/2443/6600 EXACT, marks-map identical, FFFD/PUA 0, diff scope 77 EXACT, mirror 25/25 byte-exact, S1 residual on the 3 papers 0, byte-law round-trip PASS pre+post. Plane 65cf3bb6ca1759ce -> f2794ad869f68978.
+- Disclosures: census is a triage floor not a ceiling (eyes-on extensions listed in receipt); Q17-2023 part-boundary reallocation; axis/figure dumps stripped + honest-reconstruction notes where no asset exists; printed-MS quirks kept AS PRINTED (Q5 note '=9' zoom-verified, '- -187'/'- -97', 1R Q23 '5+10sqrt5=-17.4' second line); U+2A7D->house <=; fraction line-split interleave in unflagged regions left for its own wave.
+- fetch-first, no force; PAT inline-only, scrubbed (grep 0 hits).
+
+Stage Summary:
+- run-017 tranche 2 CLOSED: worst-3 papers fully symbol-restored vs printed evidence, census v2 filed, receipt + lane artifacts in-repo. Tranche-3 queue: ~62 papers / 440 parts (severity order); corpus topic.json ADR-039 sync for these 3 papers rides next resources PR; figure crop assets leads (hexagon, 3-D solid, triangle); fleet fraction-completeness census queued.

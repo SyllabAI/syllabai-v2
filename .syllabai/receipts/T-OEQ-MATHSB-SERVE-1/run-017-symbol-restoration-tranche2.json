@@ -1,0 +1,48 @@
+{
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-017 tranche 2 (symbol-loss restoration, worst offenders: 2023-11 4MB1-01, 2026-06 4MB1-01R, 2025-11 4MB1-02)",
+  "date": "2026-10-28",
+  "operatorOrder": "trace 1a181a0eb215e04d: 'continue paper-by-paper, starting with the worst offenders (2023-11 P1, 2026-06 1R, 2025-11 P2)' — continuing the trace 1a180f0984579d39 mandate (proper census, then fix each part eyes-on against the original paper)",
+  "planeState": {
+    "before": "65cf3bb6ca1759ce (branch base 515edc81 = main tip at fetch-first)",
+    "after": "f2794ad869f68978"
+  },
+  "scopeOfRecord": "3 papers complete per printed evidence: 2023-11 4MB1-01 (8 parts: printed Q16/Q17ab/Q21ab/Q24/Q26/Q28ab), 2026-06 4MB1-01R (11 parts: printed Q5/Q7/Q17ab/Q18/Q19/Q20/Q23/Q25/Q27abc), 2025-11 4MB1-02 (9 parts: printed Q3ac/Q5/Q9ade/Q10/Q11/Q12) = 28 parts, 52 fields + 25 markPoints[0] mirrors = 77 changed fields EXACT",
+  "censusOfRecordV2": {
+    "method": "whole-field scan ($-spans stripped), artifact-parity with tranche-1 S1 plus uppercase letters (matrices/axis-O), operator-adjacent glued-plus class, d-glyph class, 4+digit glued-sup leads for targets",
+    "s1_digit_letter_digit_wholefield": {"matches": 704, "parts": 362},
+    "union_all_classes": {"matches": 1271, "parts": 440, "papers": 65},
+    "artifact": "lane-artifacts run-017/s2-census-wholefield.json",
+    "disclosedUndercountClasses": ["cross-line token splits (now caught whole-field)", "glued superscripts (S3 lead list per target paper, eyes-on triage)", "operator-adjacent exponent loss (S1OPG glued-plus)", "lost-fraction fields carry no S1 signature at all (found eyes-on: 2023-11 Q24 10/19; 2025-11 Q12 46/91; 1R Q5 stem) — fleet fraction-completeness census queued"]
+  },
+  "evidenceProtocol": "51 QP/MS pages rendered 150dpi and READ + 2 zoom crops (1R MS p29 decimal-note; 2025-11 MS p9 M1-note '=9'). 2023-11: QP p12/p13/p17/p20/p22/p24 + MS p11/p15/p18/p19/p21/p23. 1R: QP p4/p5/p14/p15/p16/p17/p20/p24 + MS p7/p8/p19/p20/p21/p22/p23/p24/p29/p32/p33/p34/p36/p37. 2025-11: QP p6/p7/p12/p26/p28/p29/p30/p34/p36 + MS p7/p9/p15/p17/p18/p20/p21/p22.",
+  "gates": {
+    "census_66_1281_2443_6600": "EXACT pre+post",
+    "marks_map_identical": true,
+    "U+FFFD_PUA": "0 / 0 whole-plane",
+    "unbalanced_dollar_fields": "0 NEW (70 pre-existing fleet-condition fields byte-unchanged); all 52 changed fields balanced",
+    "diff_scope": "52 fields + 25 mirrors = 77 == expected set EXACT",
+    "mirror_law_mp0_byte_exact": "25/25 solution-touched parts",
+    "S1_residual_on_patched_papers": 0,
+    "serialization_byte_law": "compact single-line JSON, ensure_ascii=False, no trailing NL; round-trip PASS pre+post",
+    "pre_patch_snapshot": "lane-artifacts run-017/pre-patch-snapshot-t2.json (52 field sha16s)"
+  },
+  "disclosures": [
+    "census is a triage floor, not a ceiling: parts fixed beyond signature hits where page evidence showed same-class damage (e.g. 2023-11 Q24 prob 10/19 fraction lost; 1R Q5 stem fraction + b=-4 lost; 1R Q20 stem operators; 2025-11 Q12 prob 46/91 lost; 2025-11 Q9ade curve '+7'/'= 0'/'4x-18+38/x^2<0' lost; whole working-column rebuilds where flattening was pervasive: 2023-11 Q26 solu, 1R Q18 solu 3-page, 2025-11 Q10 solu)",
+    "part-boundary reallocation: 2023-11 Q17 printed-part-(b) matrices (B, C, BC) were flattened into part (a)'s problemMd; moved to part (b) per QP layout",
+    "figure/axis text: 2025-11 Q3c axis-label tail stripped (grid asset already attached run-013); 2025-11 Q10 figure-label dump stripped + honest-reconstruction note (3-D diagram, no asset yet); 2025-11 Q11 axis dump stripped + note (graph fully described in text); 2023-11 Q16 hexagon rebuilt text-only per the QP's own side-length list (asset crop lead queued); 2023-11 Q25 kept its pre-existing reconstruction note",
+    "printed-MS quirks transcribed AS PRINTED: 2025-11 Q5 M1 note '4x^2 - y^2 = 9' (QP says 27; zoom-verified printed=9, kept); 'implies by p = 2 or p < 2' (printed); '−−187'/'−−97' formula forms; 1R Q23 decimal note second line '5+10√5 = −17.4' kept as printed (apparent source typo; math suggests 5−10√5; content unchanged, disclosed)",
+    "U+2A7D (slanted ⩽) in 2025-11 Q11a solu normalized to plane house ≤ (semantics identical; matches the same paper's own problemMd usage)",
+    "known fleet condition NOT fixed (out of class): numerator/denominator line-split interleave remains in unflagged regions of large flattened MS fields where all glyphs are intact (fraction-interleave census wave queued)",
+    "1R Q26c solu '45x^2 - 873x + 3240' kept at x^2 per arithmetic (5x^2-97x+360 scaled x9); the printed page's tiny superscript is ambiguous at 150dpi but the x^2 form is the mathematically consistent one and matches the n-version eg line"
+  ],
+  "newLeadsQueued": [
+    "tranche-3+: remaining ~62 flagged papers (440-part union lower bound), severity order per s2 census ranking (next: 2025-06 1R, 2025-10 P1, 2024-06 1R/2R)",
+    "corpus topic.json ADR-039 corrections for the 3 tranche-2 papers ride the next resources PR (hub plane of record first; tranche-1 pattern)",
+    "figure crop assets for run-013-class attachment: 2023-11 hexagon (Q16), 2025-11 3-D solid (Q10), 1R Q18 triangle",
+    "fleet fraction-completeness census (lost fractions carry no S1 signature; 3 found eyes-on this tranche)",
+    "questions.md regen backlog (tranche-1 carry-over)"
+  ],
+  "credentialDiscipline": "PAT inline one-time per use; clones scrubbed post-op (grep 0 hits); no tokens in any artifact",
+  "verdict": "RUN-017 TRANCHE 2 CLOSED END-TO-END: the three worst offender papers fully symbol-restored against printed evidence — every repaired expression READ off the page of record; census v2 (whole-field, artifact-parity) filed; 77 changed fields gates ALL GREEN; S1 residual on the three papers is zero"
+}
