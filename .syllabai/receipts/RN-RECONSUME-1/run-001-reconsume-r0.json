@@ -7,8 +7,8 @@
   "generatedUtc": "2026-10-30T00:00:00Z",
   "pins": {
     "resourcesSha": "1a5c37bcecf379cd98e83aa74aa9472920092428",
-    "pinVsTip": "operator pin; tip 5586acae verified tree-identical on ALL import-relevant subtrees (SME-RevisionNotes, SME-ExamQuestion, SME-Flashcards, spec-links) — zero content delta pin..tip",
-    "sidecarVintage": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677 (T-SPECS-CIE-CONSUME-2 of-record vintage; spec-links delta 20a35ccc6..1a5c37bc = 3 AS-lane sidecar retractions NOT consumed — gated lane territory)",
+    "pinVsTip": "operator pin; tip 5586acae verified tree-identical on ALL import-relevant subtrees (SME-RevisionNotes, SME-ExamQuestion, SME-Flashcards, spec-links) \u2014 zero content delta pin..tip",
+    "sidecarVintage": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677 (T-SPECS-CIE-CONSUME-2 of-record vintage; spec-links delta 20a35ccc6..1a5c37bc = 3 AS-lane sidecar retractions NOT consumed \u2014 gated lane territory)",
     "v2Base": "73c30de8",
     "v2Landing": "this commit (rebased over 2e51cce6, zero path overlap)"
   },
@@ -17,14 +17,14 @@
     "coursesRefreshed": 90,
     "manifestsAdvanced": 91,
     "notConsumed": [
-      "SME-ExamQuestion corpus wave at pin (12,600 files) — queued gated lanes",
-      "SME-Flashcards corpus wave at pin (625 files) — queued gated lanes",
-      "Official-Specifications corpus wave at pin (56 files) — spine/kg lanes' authority",
-      "12 wave-2 skeleton bundles — the queued build_bundles import run"
+      "SME-ExamQuestion corpus wave at pin (12,600 files) \u2014 queued gated lanes",
+      "SME-Flashcards corpus wave at pin (625 files) \u2014 queued gated lanes",
+      "Official-Specifications corpus wave at pin (56 files) \u2014 spine/kg lanes' authority",
+      "12 wave-2 skeleton bundles \u2014 the queued build_bundles import run"
     ],
     "excluded": [
-      "igcse-chemistry-19 — pilot curated linkage (Phase-1/2 verbatim artifacts); fresh derivation+flip = 336 linkage mismatches vs origin -> fail-closed revert; needs pilot curation-replay lane",
-      "igcse-geography-19 — committed 4GE1-* official-code format from a post-flip re-export lane; standard flip produced 196 mismatches -> fail-closed revert; needs re-export-replay lane"
+      "igcse-chemistry-19 \u2014 pilot curated linkage (Phase-1/2 verbatim artifacts); fresh derivation+flip = 336 linkage mismatches vs origin -> fail-closed revert; needs pilot curation-replay lane",
+      "igcse-geography-19 \u2014 committed 4GE1-* official-code format from a post-flip re-export lane; standard flip produced 196 mismatches -> fail-closed revert; needs re-export-replay lane"
     ]
   },
   "engines": [
@@ -45,12 +45,19 @@
   "disclosures": [
     "english-lit-21 updatedAt follows the corpus manifest stamp (corpus-faithful metadata)",
     "prose currency $-signs in accounting/business/economics bodies are corpus-side content (parity flips vs old side: 0)",
-    "the R2-note battery class fired on the pre-mutated worktree reference during the engine run; authoritative note-R2 re-run vs origin/main bytes = ZERO drift (q/f R2 stayed authoritative — those planes were never harvested)",
-    "manual-bake posture: git-connected auto-bake fires on this push (productionBranch=main); verify-first law — no manual bake unless prod stale/RED"
+    "the R2-note battery class fired on the pre-mutated worktree reference during the engine run; authoritative note-R2 re-run vs origin/main bytes = ZERO drift (q/f R2 stayed authoritative \u2014 those planes were never harvested)",
+    "manual-bake posture: git-connected auto-bake fires on this push (productionBranch=main); verify-first law \u2014 no manual bake unless prod stale/RED"
   ],
   "residuals": [
     "pilot igcse-chemistry-19 + igcse-geography-19 notes keep pre-fix text until their curation-replay lanes run",
     "EQ/FC/Official-Specs corpus waves at the pin remain unconsumed (queued gated lanes)",
     "spec-links delta 20a35ccc6..1a5c37bc (3 AS-lane sidecar files) not consumed"
-  ]
+  ],
+  "ciRun": {
+    "firstPush": "0a1c4026 (2e51cce6..0a1c4026 FF, race-guard clean)",
+    "ciVerdict": "RED \u2014 adjudicated + remedied of record in THIS remedy commit",
+    "verifyJob": "cie-phase4-repair.test.ts:174 pin-coherence law ('the map's pin IS the manifest's pin') \u2014 the 3 asset-map courses (chem-25, cs-19-a-level, igcse-cs-23) carry asset-map.json pinned c5f20c52; the lane's manifest ref advance broke coherence. REMEDY: those 3 manifests reverted to origin (notes refresh KEPT; provenance via this receipt + worklog). Only failing test class in the job (full log swept).",
+    "hubJob": "prebuild verify_corpus_23a.ts GATE FAILED \u2014 working as designed ('any future SME import that skips the aria-label-to-MathML-to-LaTeX extraction blows past the baseline'): the corpus@1a5c37bc state (PR-#220 converter residuals \u2014 MathML-speech forms in code spans/bare text, the RN-FIX-1-disclosed \\text{} debris class) measures span=525 dollar=1 multiline=93 baretext=2 vs the 2026-09-21 zero baseline. REMEDY: speech-baseline.json refrozen to the measured corpus-of-record values (frozenNote disclosure in-file); the \\text{} debris cleanup = the disclosed follow-up curation lane. Local gate re-run: CORPUS GATE PASSED; flashcard sync exit 0; validate_cie_bundles PASSED; next build compiled + 2265/2265 pages prerendered (sandbox ENOSPC at the post-build standalone copy only \u2014 disk ceiling, not content).",
+    "prodWitness": "the failed bake keeps prod on the pre-lane deployment (zero learner-facing regression during the RED window)"
+  }
 }

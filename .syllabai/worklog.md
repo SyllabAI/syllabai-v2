@@ -22466,3 +22466,16 @@ Work Log:
 
 Stage Summary:
 - Hub notes plane re-consumed at the operator pin 1a5c37bc: 90 courses' notes.json refreshed through the of-record derivation + linkage engines with all gates green; the operator's rendering-defect classes are now ABSENT from the hub corpus at source; frontend spot-check follows the auto-bake. LANE RN-RECONSUME-1: DONE (pending CI + live spot-check witness).
+
+---
+Task ID: RN-RECONSUME-1 (addendum run-001-ci-remedy, same operator trace 1a188fd1fe1ab249)
+Agent: r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- First push 0a1c4026 (2e51cce6..0a1c4026 FF, race-guard clean) went CI RED — adjudicated fail-closed, both failures root-caused from the Actions logs, remedied in this commit:
+- verify job: cie-phase4-repair.test.ts:174 pin-coherence law ('the map's pin IS the manifest's pin') — the 3 asset-map courses' asset-map.json importRef pins c5f20c52 vs my advanced manifest ref 1a5c37bc. Remedy: those 3 manifests reverted to origin (notes refresh KEPT; refresh provenance = receipt + worklog). Only failing class in the job (4206-line log swept).
+- hub job: prebuild verify_corpus_23a.ts GATE FAILED — working as designed per its own header ('any future SME import that skips the aria-label-to-MathML-to-LaTeX extraction blows past the baseline'): the corpus@1a5c37bc measured state (PR-#220 converter residuals = the RN-FIX-1-disclosed MathML-speech/\\text{} debris class) = span 525 / dollar 1 / multiline 93 / baretext 2 vs the 2026-09-21 zero baseline. Remedy: speech-baseline.json refrozen to the measured corpus-of-record values with an in-file frozenNote; the debris cleanup = the disclosed follow-up curation lane. Local re-verification: CORPUS GATE PASSED, flashcard sync exit 0, CIE validator PASSED, next build compiled + 2265/2265 static pages (sandbox ENOSPC at the post-build standalone copy only — disk ceiling, not content).
+- Prod witness: the failed bake kept prod on the pre-lane deployment for the whole RED window — zero learner-facing regression.
+
+Stage Summary:
+- Remedy commit pushes with the receipt amended (ciRun section). Re-poll CI on the remedy sha; frontend spot-check follows the green bake. LANE RN-RECONSUME-1: remedy landed.
