@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.2",
-  "adapter": "guided-lesson-0.3--hub-lesson-import-1.2",
+  "format": "hub/lesson-import/1.3",
+  "adapter": "guided-lesson-0.4--hub-lesson-import-1.3",
   "source": {
-    "sourceFormat": "guided-lesson/0.3",
+    "sourceFormat": "guided-lesson/0.4",
     "noteId": "rn_tvwj4VZ6yFscPJfD",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7ebe4a87bb363dd9936c12db12d187700a64832d84388ada849f8984e311ac34",
-    "pinnedRef": "1ed554ec60fb9c0a41303946312ba50bb0a8834f"
+    "sourceLayerSha256": "33cef286532a998bacea8bcd239633e1cd2f980867f024f0e95037798c2d1492",
+    "pinnedRef": "71922d1510ee9e00400667670b40f36e1ae5d456"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_tvwj4VZ6yFscPJfD",
@@ -75,8 +75,7 @@
           "rn_tvwj4VZ6yFscPJfD::L1::Q5"
         ],
         "figureIds": [
-          "fig-01",
-          "fig-02"
+          "fig-01"
         ]
       },
       {
@@ -175,6 +174,7 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/65a73758c90f-5-6-reaction-kinetics-iron-catalyst-1.png",
         "alt": "Diagram showing how iron acts as a catalyst for the Haber process",
         "sourceHeading": "The effect of a catalyst on rate of reaction",
+        "binding": "unresolved",
         "moduleIds": [
           "L1",
           "L2"
@@ -186,8 +186,8 @@
         "alt": "Reaction Kinetics - Iron Catalyst (2), downloadable AS & A Level Chemistry revision notes",
         "sourceHeading": "The effect of a catalyst on rate of reaction",
         "caption": "Catalysts work by attracting reactant molecules on to the surface and so providing an alternate reaction pathway of lower energy",
+        "binding": "content-overlap",
         "moduleIds": [
-          "L1",
           "L2"
         ]
       }
