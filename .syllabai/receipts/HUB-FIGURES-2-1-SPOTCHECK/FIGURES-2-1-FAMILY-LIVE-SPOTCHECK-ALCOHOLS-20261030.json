@@ -1,0 +1,64 @@
+{
+  "receipt": "FIGURES-2-1-FAMILY-LIVE-SPOTCHECK-ALCOHOLS-20261030",
+  "format": "hub-presentation-receipt/0.1",
+  "date": "2026-10-30",
+  "operator_trace": "1a189d4cf5f528b5",
+  "operator_directive": "live spot-check (walk the Alcohols set) rides 2.1's queued item",
+  "wave": "FIGURES-2.1-FAMILY-LIVE-SPOTCHECK — live browser walk of the Alcohols lesson set against the Vercel bake of v2 main, verifying the stacked FIGURES-2.1 family of record: 2.1 caption-first law + 2.2 concept-grain binding + 2.1B provenance-line drop",
+  "rides": {
+    "queue_of_record": "FIGURES-2.1 follow-up queue -> FIGURES-2.2-CONCEPT-GRAIN-BINDING (landed: resources PR #227 merge 0b201a74, hub import GREEN 34/34) -> FIGURES-2.1B-CAPTION-SOURCE-DROP (landed: v2 PR #463 merge 3547b71f)",
+    "this_receipt": "the live spot-check rider — executes against the live learner surface, no code or data change"
+  },
+  "probe_of_record": {
+    "v2_main_head": "1e3fbad2c151461c6b31e396923f770b6ab2c6a9",
+    "resources_main_head": "3b2ce8da700b80f51700fb34fc721c90d6654d6b",
+    "open_prs_v2": [
+      464,
+      296
+    ],
+    "open_prs_resources": [
+      116,
+      53
+    ],
+    "collision_note": "open PRs are maths-parity / specs-receipt / serving-experience lanes — zero path overlap with guided-lessons; walk is read-only",
+    "live_surface": "https://syllabai-hub-v2.vercel.app (Vercel bake of v2 main incl. 2.2 content artifacts + 2.1B render amendment)",
+    "render_code_at_main": "StaticFigure (page.tsx:289) + ModuleFigures (guided-flow.tsx:734) both conditional {f.caption && <figcaption>} — fail-closed; single remaining src 'from the revision note' hit is the 2.1B amendment doc comment (guided-flow.tsx:731)"
+  },
+  "alcohols_set_of_record": [
+    "rn_2MpXPtNXvn8pQm3r — Alcohols (4.5.1), 2 lessons, 5 figures",
+    "rn_8T5GfPn2q7sY2YCh — Oxidation of Ethanol, 2 lessons, 2 figures (carries the directive's quoted figure: fig-02 sourceHeading 'The oxidation of ethanol')"
+  ],
+  "walk_results": {
+    "rn_2MpXPtNXvn8pQm3r_Alcohols": {
+      "interactive_flow_walk": "full lesson-set walkthrough executed live: L1 gate -> layers -> terms -> example -> checks -> recalibration, L2 same with all 5 checks answered, 'Lesson set complete — You worked through all 2 lessons' card reached; 'Restart lesson set' returns clean",
+      "flow_gate_L1": "exactly 1 flow figure = fig-01, teaching caption 'Diagram of the side chain and -OH group in ethanol which characterises its chemistry', no provenance line",
+      "flow_gate_L2": "exactly 4 flow figures = fig-02..05, captions 'Displayed formula — Methanol / Ethanol / Propan-1-ol / Butan-1-ol', no provenance line (pre-2.2 wholesale render would show all 5 here)",
+      "static_noJS_fallback": "L1 section 1 figure (fig-01 captioned), L2 section 4 figures (fig-02..05 captioned); note-level 'From the revision note' loose-figures section ABSENT — all 5 figures concept-grain bound",
+      "provenance_hits_in_full_served_html": 0,
+      "served_payload_check": "'Displayed formula' x12 present in served RSC payload — data current with figures-2-2-v6"
+    },
+    "rn_8T5GfPn2q7sY2YCh_OxidationOfEthanol": {
+      "flow_gate_L1": "exactly 1 flow figure = fig-01 (Combustion), caption 'The complete combustion of ethanol is as follows:'",
+      "flow_gate_L2": "exactly 1 flow figure = fig-02 — THE directive figure (sourceHeading 'The oxidation of ethanol') — renders with teaching caption 'Ethanol can be oxidised by heating it with potassium dichromate...' and NO '— from the revision note' line",
+      "static_noJS_fallback": "L1 section 1 figure (fig-01 captioned), L2 section 1 figure (fig-02 captioned); no note-level loose-figures section",
+      "provenance_hits_in_full_served_html": 0
+    },
+    "rider_failclosed_rows_live": {
+      "rn_4tzwS4GZjPybwtkS_CalculateConcentrationsOfSolutions": "fig-01 captioned under L1; fig-02 (2.2 unresolved, no caption) renders BARE under both L1 and L2 — zero figcaption elements, no empty figcaption; prov hits 0",
+      "rn_tvwj4VZ6yFscPJfD_Catalysts": "fig-01 (2.2 unresolved, no caption) renders BARE under both L1 and L2; fig-02 captioned under L2; prov hits 0",
+      "verdict": "2.1B stated fail-closed consequence verified live — uncaptioned figures are bare diagrams, no empty figcaption anywhere"
+    }
+  },
+  "acceptance": {
+    "concept_grain_binding_live": "PASS — every Alcohols-set diagram renders under exactly the lesson that teaches it (L1:[fig-01]; L2:[fig-02..05]; Oxidation L1:[fig-01], L2:[fig-02]), matching the 2.2 sample_of_record and the landed hub-import-1.3 artifacts byte-for-byte at the render seam",
+    "provenance_drop_live": "PASS — zero 'from the revision note' occurrences in the full served HTML of all 4 pages walked (including RSC payload)",
+    "caption_law_live": "PASS — teaching captions render as figcaption after key points on every captioned figure; fail-closed rows render bare",
+    "flow_integrity": "PASS — full lesson-set lifecycle (start, gates, layers, terms, example, checks, recalibration, completion, restart) exercised live without error"
+  },
+  "artifacts": [
+    "download/figures-spotcheck/alcohols-L1-gate-fig01.png",
+    "download/figures-spotcheck/alcohols-L2-gate-4-formulae.png",
+    "download/figures-spotcheck/oxidation-L2-gate-fig02-caption-only.png"
+  ],
+  "discipline": "zero-DB; read-only walk (no code, no data, no PR); fetch-first re-ground before receipt; sandbox recycle survived by re-grounding from disk receipts + GitHub probes before any conclusion; token unechoed; scope held to the Alcohols set per directive with the 2 fail-closed rows included as the riding family's stated live consequence"
+}
