@@ -15,12 +15,32 @@
   "f5CensusRevision": {
     "instrumentLineage": "run018_gs_census.py byte-clone + F5 revision of record (run-020 filings.F5_censusClassDisclosures, operator-ruled this run): (a) U1 uppercase-sup class ADDED (glued [A-Z]\\d{1,2} + detached [A-Z] \\d{1,2}) with mark-code hygiene (playbook \u00a71.3 glued-token-aware law regex strips bare M1/A1/B1-class tokens before the U1 scan \u2014 without it U1 floods to 2386 parts of mark-code false positives; with it U1 = 449 parts fleet-wide, 86 in the trig bucket); (b) sin/cos/tan stem FP suppressed from G1-G3 (matched letter ending si|co|ta = print-verbatim keyword, e.g. 'sin 20' -> 'n 20'); (c) fraction-splinter weaves re-classed FS-excluded (G2/G3 hit with >=2 splinter shapes in a \u00b124ch window \u2014 '18 x'/'1 2x'/'3 8x' are fraction linearizations, not superscripts); (d) DELETED-sup stays UNREGEXABLE (disclosed instrument limitation, unchanged law)",
     "dualTrack": {
-      "preF5": {"trigBucket": 158, "G1": "275(60 trig)", "G2": "2023(158)", "G3": "246(7)", "G4": "120(27)", "B1": "0", "P1": "0"},
-      "postF5": {"trigBucket": 153, "G1": "234(21 trig)", "G2": "1883(148)", "G3": "88(2)", "G4": "120(27)", "B1": "0", "P1": "0", "U1": "449(86 trig, newly visible)"},
+      "preF5": {
+        "trigBucket": 158,
+        "G1": "275(60 trig)",
+        "G2": "2023(158)",
+        "G3": "246(7)",
+        "G4": "120(27)",
+        "B1": "0",
+        "P1": "0"
+      },
+      "postF5": {
+        "trigBucket": 153,
+        "G1": "234(21 trig)",
+        "G2": "1883(148)",
+        "G3": "88(2)",
+        "G4": "120(27)",
+        "B1": "0",
+        "P1": "0",
+        "U1": "449(86 trig, newly visible)"
+      },
       "netEffect": "158 -> 153 (F5b/c suppression outweighs F5a visibility on the bucket; U1 adds 86 trig parts to the census-visible population)",
       "continuityProof": "pre-F5 track reproduces the of-record 158 at both census pins (a794747f and 21f5369e)"
     },
-    "artifacts": [".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-023/f5-census-revised.json (baseline pin a794747f1a503e12)", ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-023/f5-census-post-run023.json (final pin 21f5369ea4e228a1, counts IDENTICAL \u2014 segment-2+trim moved zero bucket counts)"]
+    "artifacts": [
+      ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-023/f5-census-revised.json (baseline pin a794747f1a503e12)",
+      ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-023/f5-census-post-run023.json (final pin 21f5369ea4e228a1, counts IDENTICAL \u2014 segment-2+trim moved zero bucket counts)"
+    ]
   },
   "tokenFixableSubclass": {
     "definition": "post-F5 trig-bucket parts carrying >=1 token-shape class hit (G1/G2/G3/U1 sup debris, B1 caret, P1 PUA); excludes whole-cell rebuild classes (F4/F6) and FS fraction weaves",
@@ -55,10 +75,15 @@
   ],
   "credentials": "operator PAT re-used from this session's supply (env/GIT_ASKPASS only, inline per-command; askpass file zero token bytes; no config/remote-URL/netrc contact). v2 push + resources push + PR APIs consumed it. Standing ROTATION-REQUIRED order re-flagged for BOTH tokens (GitHub \u2026JU4 re-exposed in transit again this session; Vercel vcp_\u2026aoT3 untouched, Vercel API not contacted).",
   "landing": {
-    "branch": "t-oeq-mathsb/run-023",
-    "status": "PUSH-PENDING",
-    "pr": null, "ci": null, "merge": null, "vercel": null, "liveSpotCheck": null,
-    "resourcesPr": "SyllabAI/syllabai-resources PR #225 CREATED (CI watch + merge pending)"
+    "branch": "t-oeq-mathsb/run-023 PUSHED (088e56b3 content+bookkeeping; cc8dde09 empty-commit CI re-fire; ac423e77 race-guard merge of origin/main 0d2c5111 with worklog union resolution)",
+    "pr": "PR #454 \u2014 https://github.com/SyllabAI/syllabai-v2/pull/454",
+    "ciIncident": "zero-check-runs for ~19min across both the initial PR and the empty-commit re-fire \u2014 ROOT CAUSE of record: PR mergeable=False/state=dirty (worklog.md append-append conflict vs fast-moving main) \u2192 no merge ref \u2192 pull_request workflows skip; NOT the T-PR-TRIAGE-1 event-drop class (the documented third remedy was fired and correctly ineffective); remedy = merge origin/main into branch (750e8c61 precedent) with union resolution",
+    "ci": "2/2 GREEN (hub + verify) on head ac423e77",
+    "merge": "5a8c8ea2 merged @ ~19:45Z, merge_method=merge",
+    "vercel": "commit status SUCCESS on merge sha 5a8c8ea2 (the run-022 canceled-from-dashboard class did NOT recur \u2014 status channel worked this run)",
+    "liveSpotCheck": "PASS \u2014 corpus endpoint sha16 21f5369ea4e228a1 EXACT (3,717,142B @19:48:39Z, ~3.5min post-merge); june-2021-4mb1-02 page: 6/6 effective positives \u2014 3 NEW head-row transcription markers HIT ('Method I: Using intersecting secants', 'Case 1: Finding length AB', 'M1 correct method for finding FB or BD'), 11-a true close '448.7953623' HIT, 11-b head 'M1dep multiplying out brackets' HIT, 'must simplify to' HIT via byte-attribution (RSC payload carries literal backslash-n JSON escapes between the tokens \u2014 the naive \\s+ marker regex missed it; text present count=2, \u00a77 attribution of record)",
+    "resourcesPr": "SyllabAI/syllabai-resources PR #225 CI 1/1 GREEN, MERGED 6cf1e365 \u2014 corpus back-sync +6 pids landed BOTH repos",
+    "credentials": "operator PAT from this session (env/GIT_ASKPASS inline per command; zero token bytes on disk); standing ROTATION-REQUIRED re-flagged (GitHub \u2026JU4 re-exposed in transit; Vercel vcp_\u2026aoT3 untouched)"
   },
   "nextSafeActions": [
     "v2 landing: PR -> CI 2/2 -> merge -> Vercel redeploy verify (content-marker flight-parity pattern) -> live spot-check (probe pages: /courses/igcse-maths-b-16/past-papers/june-2021-4mb1-02 q10b head-row + q11a close + q11b reunite)",
@@ -71,5 +96,17 @@
     "evidence": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-023/ = f5-census-revised.json + f5-census-post-run023.json + run023_seg2_projection.json + run023_render_gate.mjs + ms-2021-06-02-p-24/25/26.png",
     "corpus": "SyllabAI/syllabai-resources 2021-06/4MB1-02 + 2023-06/4MB1-02 topic.json (PR #225)",
     "scriptsMirror": "/home/z/my-project/scripts/run023_*.py|mjs"
+  },
+  "landingAddendum": {
+    "date": "2026-10-29T19:50Z",
+    "scriptsOfRecord": [
+      "scripts/run023_f5_census.py (dual-track F5 instrument, argv sha/overridable)",
+      "scripts/run023_seg2_apply.py (5 field-writes + 19 gates)",
+      "scripts/run023_render_gate.mjs (actual-hub-engine render gate, in-repo copy)",
+      "scripts/run023_backsync.py (v2 trim + 9 corpus writes + exporter verification 6/6)",
+      "scripts/run023_resources_pr.py / run023_v2_pr.py (PR drivers)",
+      "scripts/run023_spotcheck.py (vercel + corpus + page probes)"
+    ],
+    "scope": "bookkeeping-only (.syllabai/**): this receipt landing block + landingAddendum + worklog entry; fetch-first, ff-only push, no force"
   }
 }

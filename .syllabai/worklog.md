@@ -22438,3 +22438,11 @@ Work Log:
 
 Stage Summary:
 - The "T-SPECS-CIE-JOIN sidecars" order is discharged as a verified closed-state audit: the 8-bank anchor gap's chain is landed, consumed, census-re-pinned, dedup-honest, and CI-green at both planes; every residual is operator-gated by design (evidence overlay / prod-apply / tokens). The agent-actionable sidecar plane is EMPTY. Queue guidance: the standing alternatives are past-papers x12 acquisition, maths-b provenance /0.1->/0.2, guided-lessons aria-labels, and the CRITICAL-OPERATOR trio (GitHub PAT rotation + Vercel PAT reissue + the Neon DB decision).
+
+## T-OEQ-MATHSB-SERVE-1 run-023 landing addendum — 2026-10-29T19:50Z
+- PR #454 merged 5a8c8ea2 (CI 2/2 green on ac423e77); landing: push 088e56b3 -> empty-commit re-fire cc8dde09 (ineffective) -> ROOT CAUSE of record: mergeable=False/dirty (worklog append-append vs fast main) = no merge ref = workflows skip (NOT the event-drop class) -> merge origin/main into branch ac423e77 (union resolution, 750e8c61 precedent) -> CI fired
+- Vercel commit status SUCCESS on merge sha (run-022 canceled-from-dashboard class did not recur); corpus endpoint sha16 21f5369ea4e228a1 EXACT @19:48:39Z (~3.5min post-merge); live page 6/6 effective positives (3 NEW head-row markers + 11-a close + 11-b head + 'must simplify to' via RSC escaped-\n byte-attribution §7)
+- SyllabAI/syllabai-resources PR #225 MERGED 6cf1e365 (CI 1/1) — corpus back-sync +6 pids landed BOTH repos; exporter-of-record verification 6/6 EXACT stands; 1461-pid standing debt unchanged
+- Tranche-2 queued of record: token-fixable subclass execution over the 153-part worklist (f5-census-post-run023.json), twin-pair dedupe first (2020-06/2020-11 q16/q26/q28)
+- CRITICAL-OPERATOR: both tokens ROTATION-REQUIRED (GitHub …JU4 re-exposed in transit again this session; Vercel vcp_…aoT3)
+- Bookkeeping-only (.syllabai/**): receipt landing block + landingAddendum + this entry; fetch-first, ff-only push, no force
