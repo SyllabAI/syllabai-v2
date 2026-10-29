@@ -229,3 +229,16 @@ Work Log:
 
 Stage Summary:
 - Stage A LANDED on branch t-foresight-v0/stage-a-20261030: contracts + service + 3 verbatim exports + 18-test battery; NO route mount, NO hub bytes, NO DB. Landing via branch push + PR (REST API with the standing remote-embedded credential channel — never echoed); CI verify+hub fire on the PR; merge on green. Stage B (route mount GET /api/v1/teacher/classes/:classId/foresights + hub headline-first panel + golden captures) and Stage C menu remain operator-gated. CD-A/CD-B/CD-C remain open unfiled candidates — CD-A is now the smallest (adapter from the existing classOverview service to the testbuilder port).
+
+---
+Task ID: T-FORESIGHT-V0-PLAN-1 run-002 landing addendum (same trace 1a1893c557d8f819)
+Agent: main agent (Super Z, session web-528c0352)
+Task: Record the PR #455 CI state and the first-hand red-class diagnosis.
+
+Work Log:
+- Branch t-foresight-v0/stage-a-20261030 pushed; PR #455 opened via REST (standing remote-embedded credential channel, token never echoed); first API attempt failed "Bad credentials" (sed pattern expected user:pass; the URL is token-only) — corrected extraction, PR created.
+- CI RED-CLASS DIAGNOSED FIRST-HAND (jobs 123704637386/123704637740 logs pulled): verify = 3 fails ALL "run-002 repair — the committed asset-map coherence law > cie-*" (a-level-cs-19, igcse-cs-23, +1 same class); hub = corpus-verify prebuild exit 1 in the KaTeX-span corpus gate. Signature byte-identical to main HEAD 0a1c4026 (RN-RECONSUME-1 corpus lane — its own ci run 40945945055 red on the SAME two steps). TIMELINE PROOF: base 2e51cce6 hub+verify GREEN; the PR checks run on the MERGE REF which now inherits 0a1c4026 (main moved after branch-off). This tree locally: FULL suite 3051/0 INCLUDING the same cie asset-map tests — the redness is the corpus lane's, not Stage A's.
+- Disposition of record: PR comment 6507318637 posted with the diagnosis; merge DEFERRED until main recovers green (base recovery belongs to the RN-RECONSUME-1 lane owner: CIE asset maps vs re-built bundles + corpus prebuild); NO base-merge into the branch while base is red (no red-pulling). PR #455 stays IN_REVIEW-open; local gates all green on the exact tranche tree.
+
+Stage Summary:
+- Stage A of record on PR #455 (commit 7bbc8ea6): contracts + service + verbatim exports + 18-test battery; CI blocked by the base-red class, merge gated on base recovery (R0/corpus-lane owner); Stage B/C pending operator go.
