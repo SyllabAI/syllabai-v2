@@ -25,6 +25,7 @@ import { TeacherNav } from "@/components/teacher/teacher-nav";
 import { KGExplorer } from "@/components/kg-explorer/KGExplorer";
 import { classKnowledgeGraphHost } from "@/components/kg-explorer/adapters";
 import { NodeDrillDown } from "./drill-down-panel";
+import { ForesightsDialog } from "./foresights-dialog";
 import type {
   ClassKnowledgeGraphView,
   SubjectView,
@@ -57,11 +58,17 @@ export function ClassKGClient({ classId }: { classId: string }) {
   // TFA-07: the drill chain — a node's "Affected students" action opens the
   // §13.5 panel (which itself chains into the §14 individual graph)
   const [inspectNodeId, setInspectNodeId] = useState<string | null>(null);
+  // T-FORESIGHT-V0-PLAN-1 Stage B: the "Readiness" action opens the
+  // foresights/v1 panel for the same picked node (plan §8 — pick any topic
+  // node → Readiness panel)
+  const [readinessNodeId, setReadinessNodeId] = useState<string | null>(null);
   // the host is memoized on the graph payload, so the action closure goes
   // through a ref to always reach the latest setter without rebuilding the host
   const inspectRef = useRef<(nodeId: string) => void>(() => {});
+  const readinessRef = useRef<(nodeId: string) => void>(() => {});
   useEffect(() => {
     inspectRef.current = setInspectNodeId;
+    readinessRef.current = setReadinessNodeId;
   }, []);
 
   // one bootstrap fetch: the class (name, course, status) + the subject list
@@ -112,6 +119,7 @@ export function ClassKGClient({ classId }: { classId: string }) {
       kg
         ? classKnowledgeGraphHost(kg, {
             onInspectNode: (nodeId) => inspectRef.current(nodeId),
+            onReadinessNode: (nodeId) => readinessRef.current(nodeId),
           })
         : null,
     [kg],
@@ -209,7 +217,7 @@ export function ClassKGClient({ classId }: { classId: string }) {
             host={host}
             height={640}
             title={`${kg?.rootCode ?? ""} — ${detail?.name ?? "class"} heatmap`}
-            subtitle="teaching coverage × class understanding · enrolled members only · select a node for its affected students"
+            subtitle="teaching coverage × class understanding · enrolled members only · select a node for its affected students or its readiness prior"
           />
           {rootId ? (
             <NodeDrillDown
@@ -217,6 +225,14 @@ export function ClassKGClient({ classId }: { classId: string }) {
               rootId={rootId}
               nodeId={inspectNodeId}
               onClose={() => setInspectNodeId(null)}
+            />
+          ) : null}
+          {rootId ? (
+            <ForesightsDialog
+              classId={classId}
+              rootId={rootId}
+              nodeId={readinessNodeId}
+              onClose={() => setReadinessNodeId(null)}
             />
           ) : null}
         </>
