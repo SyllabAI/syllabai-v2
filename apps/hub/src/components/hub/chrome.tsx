@@ -6,6 +6,7 @@
 import Link from "next/link";
 import { ChevronRight, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { MathText } from "@/components/hub/math-text";
 
 export interface Crumb {
   label: string;
@@ -35,7 +36,11 @@ export function Breadcrumbs({ items, className }: { items: Crumb[]; className?: 
             </Link>
           ) : (
             <span className={i === items.length - 1 ? "font-medium text-foreground" : "text-muted-foreground"}>
-              {c.label}
+              {/* T-UGM-RENDER-2: the current-page crumb carries resource titles
+                  whose $…$ math leaked raw on 235/628 UGM pages (fresh sweep
+                  2026-10-29, residual R1). MathText is a server component and a
+                  byte-identical no-op for math-free labels. */}
+              <MathText text={c.label} />
             </span>
           )}
         </span>

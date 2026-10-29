@@ -87,3 +87,29 @@ export async function pilotPracticePaperParams(): Promise<StaticParam[]> {
   const papers = buildPracticePapers(slug, bundle.questionTopics);
   return papers.map((p) => ({ course: slug, paperId: p.id }));
 }
+
+/**
+ * Every Underground Mathematics reader page (T-UGM-RENDER-2).
+ *
+ * Unlike the generic detail pages (enumerated pilot-only because the full
+ * corpus is ~15K paths), the UGM plane is BOUNDED and fully committed: 2
+ * courses, 628 resources. The reader therefore enumerates its entire param
+ * space and pairs it with `dynamicParams = false` on the route — an unknown
+ * ugmId is rejected by the route resolver BEFORE any render begins, which
+ * is the only 404 mechanism that is streaming-safe by construction (the
+ * T-UGM-RENDER-1 generateMetadata-notFound posture still flushes 200 under
+ * Next 16 streaming metadata; verified live 2026-10-29). Flag-off or
+ * missing bundle → empty list → the whole surface 404s, honoring the
+ * absent=OFF flag law.
+ */
+export async function allUgmReaderParams(): Promise<StaticParam[]> {
+  const courses = await listCourses();
+  const { getUgmBundle } = await import("@/lib/ugm");
+  const out: StaticParam[] = [];
+  for (const c of courses.filter((x) => x.hasBundle)) {
+    const ugm = await getUgmBundle(c.slug);
+    if (!ugm) continue;
+    for (const r of ugm.resources) out.push({ course: c.slug, ugmId: r.ugmId });
+  }
+  return out;
+}
