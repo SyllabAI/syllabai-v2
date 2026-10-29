@@ -271,3 +271,17 @@ Work Log:
 
 Stage Summary:
 - T-FORESIGHT-V0-PLAN-1 Stages A+B COMPLETE of record (tranches 1+2, the plan's operator-gated scope fully executed). Remaining: Stage C menu (numeric projection / LLM narration / context rows / weighted propagation) — each operator-gated with its own ADR; CD-A/CD-B/CD-C remain open unfiled candidates (CD-A still the smallest).
+---
+Task ID: FIGURES-2.1B-CAPTION-SOURCE-DROP run-001 (operator trace 1a18983337102e19: "Remove the \"The oxidation of ethanol — from the revision note\" part from the diagrams.")
+Agent: main agent (Super Z, session web-e79a3bd8)
+Task: Presentation law §6 amendment — drop the "sourceHeading — from the revision note" provenance line under guided-lesson diagrams; teaching captions retained.
+
+Work Log:
+- Fetch-first re-ground: heads moved past the FIGURES-2.2 record (v2 3de8e6b2→3539948e, resources 5586acae→3b2ce8da) — FIGURES-2.2 landed of record in the interim (resources PR #227 merge 0b201a74; hub import GREEN 34/34; .syllabai/receipts/HUB-FIGURES-2-2/ mirrors on main). No 2.2 work re-executed.
+- Probe: the quoted learner-visible string maps 1:1 to the §6 provenance line <p>{f.sourceHeading} — from the revision note</p> rendered under every guided-lesson diagram; grep census = 3 src hits (page.tsx:295 render, guided-flow.tsx:744 render, :730 doc comment), no tests assert the string. Open-PR collision check clean (maths-serving / foresight / docs lanes, zero path overlap with the guided-lessons route tree).
+- Edit: StaticFigure (page.tsx) + ModuleFigures (guided-flow.tsx) amended in lockstep — figcaption renders ONLY when f.caption exists; provenance line removed; doc comments carry the amendment (FIGURES-2.1B, trace 1a18983337102e19). Teaching captions (f.caption, the FIGURES-2.1 EXPLAIN-DONT-LIST payload) KEPT. +20/−15, 2 files; zero data bytes (resources untouched), zero DB contact.
+- Fail-closed consequence of record: the 2 uncaptioned figures (rn_4tzwS4GZjPybwtkS fig-02, rn_tvwj4VZ6yFscPJfD fig-01 — 2.2's unresolved rows) previously showed the provenance line as their only text; they now render bare diagrams (no empty figcaption).
+- Gates: eslint 0 errors on both files (the 1 warning — unused eslint-disable directive at guided-flow.tsx:740 — proven PRE-EXISTING via HEAD stash probe, not introduced); bun run build GREEN (prebuild corpus verifiers + next build compiled, route table intact).
+
+Stage Summary:
+- FIGURES-2.1B executes via branch PR (CI verify+hub of record, merge on green): diagrams under guided lessons render the teaching caption only — no "— from the revision note" provenance line anywhere on the learner surface. Receipt .syllabai/receipts/HUB-FIGURES-2-1B/FIGURES-2-1B-CAPTION-SOURCE-DROP-20261030.json (+download mirror post-merge). If the operator meant the teaching captions themselves removed too, that is a one-line follow-up on the same two sites.

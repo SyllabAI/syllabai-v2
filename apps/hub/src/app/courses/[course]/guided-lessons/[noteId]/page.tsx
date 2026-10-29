@@ -281,19 +281,22 @@ function StaticModuleSection({
 /** Figures layer (hub/lesson-import/1.2, FIGURES-2.1 explain-dont-list): the same
  *  figure card the lesson flow renders — the parent revision note's own diagram
  *  (hotlink law, CLS-guarded 16:9 box, alt mandatory), caption-first: the note's
- *  own explanatory line when the source has one, the "sourceHeading — from the
- *  revision note" provenance line always. Fail-closed: no caption → provenance
- *  line only. */
+ *  own explanatory line when the source has one. Presentation law §6 amended
+ *  (FIGURES-2.1B, operator trace 1a18983337102e19): the "sourceHeading — from
+ *  the revision note" provenance line is dropped — the teaching caption is the
+ *  only line under the diagram. Fail-closed: no caption → bare diagram, no
+ *  empty figcaption. */
 function StaticFigure({ f }: { f: GuidedFigure }) {
   return (
     <figure className="space-y-1.5">
       <span className="block aspect-video w-full overflow-hidden rounded-md border bg-muted/40">
         <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
       </span>
-      <figcaption className="space-y-0.5">
-        {f.caption && <p className="text-[13px] leading-relaxed">{f.caption}</p>}
-        <p className="text-xs text-muted-foreground">{f.sourceHeading} — from the revision note</p>
-      </figcaption>
+      {f.caption && (
+        <figcaption className="space-y-0.5">
+          <p className="text-[13px] leading-relaxed">{f.caption}</p>
+        </figcaption>
+      )}
     </figure>
   );
 }
