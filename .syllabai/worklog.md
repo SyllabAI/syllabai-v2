@@ -22557,3 +22557,17 @@ Stage Summary:
 - Skipped: #296 bd2c0b1e (FAIL hub, sole static remainder)
 - Window: main advanced a80e8649 -> 5ad5a573 mid-round (#465 run-025 wave-2 41/142 units landed pre-sweep; FIGURES-2.1 live spot-check receipt landed during receipt prep); #465 addendum re-flags both standing tokens ROTATION-REQUIRED
 - Bookkeeping-only: this commit touches .syllabai/worklog.md only; fetch-first, ff-only push, no force
+
+## T-MG-MP-RECT-1 run-002 — 2026-10-30 (operator merge receipt + five-gate review)
+- Task ID: T-MG-MP-RECT-1 run-002 | Agent: Super Z (session web-123877e4) | Operator directive (IM trace 1a189effa167a315): "Merge #464" — the manual merge word plan §4 held open for the Phase 1 PR.
+- Found the PR ALREADY MERGED by the R0-auto merge desk before the manual word arrived: merged_at 2026-10-29T23:02:38Z, merge commit 8df5807b, merged_by SyllabAI (org), desk receipt 6f49e87a (R0-AUTO-82, "#464 + #466 merged (2/2), main c779c7fa CI 2/2 GREEN"). Same class as the #458 event: the operator's word NOW (this trace) supplies the manual-word authorization retroactively; discrepancy recorded, not adjudicated.
+- Five-gate review against the post-merge remote state, ALL PASS:
+  (1) Identity zero-touch / additive-only — 21 files +12117/−9; the 6 modified files are exactly the disclosed append/pin categories (api index.ts +12−0, contracts barrel +1−0, 0000-snapshot union fold +161−1, journal +8−1, rebaseline census pins +14−7, schema.ts +35−0); zero identity files; head c3b05295 = merge parent 2 untouched; base 3b4322b3 verified ancestor of merge parent a80e864.
+  (2) CI double verification — merge commit 8df5807b check-runs re-pulled this lane: verify SUCCESS + hub SUCCESS; head CI green pre-merge (934cb92b); desk additionally bounded-re-checked post-merge CI 2/2 ×2.
+  (3) Fence census — routes/cla.ts a9fdabfd079e…EXACT + services/cla/service.ts db4573c79e96…EXACT at BOTH the merge commit 8df5807b and current main tip 74bbab67 (zero drift through the subsequent #466/#467 landings).
+  (4) Mergeability — mergeable=true, merge_state=clean; landed clean.
+  (5) Title conformity — "Merge PR #464: feat(mg-parity) T-MG-MP-RECT-1 run-001 — mark_point_repair lane (paper-regions API + RegionOverlay + drizzle 0017)" conforms to the §4 shape; the desk's description phrase diverges from the PR's own subtitle ("mark_point_rects geometry plane + regions read API + join-proof seed") and reads as the desk's lane label — their receipt body correctly enumerates the paper-regions contents; recorded, not adjudicated.
+- File integrity: all 21 landed files byte-identical to authored c3b05295 (git rev-parse blob compare 21/21); zero overlap with the 23 files main gained since (other lanes).
+- Desk adjudications of record (6f49e87a): PR-body 'placeholder' substring adjudicated harmless; boundary PASS — drizzle 0017 + seed are repo code only, the merge itself executed zero DB writes (seeding live rects is a deployment-time action; extraction truth is RECT-2's lane).
+- Local main ff'd to 74bbab67. Bookkeeping-only .syllabai/worklog.md; fetch-first, ff-only push, no force.
+- Stage Summary: Phase 1 (T-MG-MP-RECT-1) is MERGED AND VERIFIED end-to-end — mark_point_rects geometry plane live on main at the schema level, regions read API + RegionOverlay landed, fences frozen. Next per plan §3: Phase 2 carding (T-MG-AWARDS-1 — mark_awards ledger + DC-7 event-spine join) or T-MG-MP-RECT-2 (content lane, real rect extraction) per operator priority.
