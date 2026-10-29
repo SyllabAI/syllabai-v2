@@ -56,7 +56,7 @@
  * their standing 1.7 alignments; 131 non-overlaps remain).
  */
 import { describe, expect, test, mock } from "bun:test";
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 // ugm.ts is a server module (import "server-only"); the package is a Next.js
@@ -1403,12 +1403,240 @@ describe("the pure-3 course plane (T-UGM-HUB-CONSUME-9/-10/-11/-12/-13/-14/-15/-
     expect(b3.source.figureMap).toBe("UGM-Resources/figures-map.json");
   });
 
-  test("the flag law: both course planes are flagged for the surface", () => {
+  test("the flag law: all three course planes are flagged for the surface", () => {
     const flags = JSON.parse(
       readFileSync(join(import.meta.dir, "../../content/flags.json"), "utf8"),
     );
     const courses = flags.flags.ugmLaneResources.courses;
     expect(courses).toContain("cie-a-level-maths-20-pure-1");
     expect(courses).toContain("cie-a-level-maths-20-pure-3");
+    expect(courses).toContain("cie-a-level-maths-20-pure-2");
+  });
+});
+
+describe("the pure-2 course plane (T-UGM-HUB-CONSUME-P2, lane 18 — the FIRST lane on a THIRD course plane)", () => {
+  const B2_PATH = join(
+    import.meta.dir,
+    "../../content/cie-a-level-maths-20-pure-2/ugm-resources.json",
+  );
+  const b2 = UgmLaneBundle.parse(JSON.parse(readFileSync(B2_PATH, "utf8")));
+
+  test("schema + the corpus pin of record (post-#226 merge, T-UGM-P2-1)", () => {
+    expect(b2.schema).toBe("syllabai-demo.ugm-lane-resources/1.2");
+    expect(b2.lane).toBe("cie-a-level-maths-20-pure-2");
+    expect(b2.source.ref).toBe(
+      "main@3b2ce8da700b80f51700fb34fc721c90d6654d6b",
+    );
+    expect(b2.source.enrichment).toEqual([
+      "UGM-Enrichment/cie-a-level-maths-20-pure-2-algebra.json",
+      "UGM-Enrichment/cie-a-level-maths-20-pure-2-logarithmic-and-exponential-functions.json",
+      "UGM-Enrichment/cie-a-level-maths-20-pure-2-trigonometry.json",
+      "UGM-Enrichment/cie-a-level-maths-20-pure-2-differentiation.json",
+      "UGM-Enrichment/cie-a-level-maths-20-pure-2-integration.json",
+      "UGM-Enrichment/cie-a-level-maths-20-pure-2-numerical-solution-of-equations.json",
+    ]);
+    // the COURSE-PLANE SERVE LAW: the plane owns NO capture dirs — the 12
+    // pure-1/pure-3 capture dirs of record supply the served text
+    expect(b2.source.resourcesDir).toEqual([
+      "UGM-Resources/pure-1-circular-measure",
+      "UGM-Resources/pure-1-coordinate-geometry",
+      "UGM-Resources/pure-1-differentiation",
+      "UGM-Resources/pure-1-functions",
+      "UGM-Resources/pure-1-series",
+      "UGM-Resources/pure-1-trigonometry",
+      "UGM-Resources/pure-3-algebra",
+      "UGM-Resources/pure-3-differentiation",
+      "UGM-Resources/pure-3-integration",
+      "UGM-Resources/pure-3-iteration",
+      "UGM-Resources/pure-3-logarithmic-and-exponential-functions",
+      "UGM-Resources/pure-3-trigonometry",
+    ]);
+    expect(b2.reviewState.state).toBe("SUGGESTED");
+    expect(b2.rights.textOnly).toBe(false);
+  });
+
+  test("the course-plane fleet census of record: 166 bodies / 178 claims / 17 spec points / 27 station rows", () => {
+    expect(b2.resources.length).toBe(166);
+    expect(b2.coverage.aligned).toBe(166); // every served body carries its P2 rows
+    expect(b2.coverage.nonOverlap).toBe(0); // the ONE companion rides byref, never served
+    expect(b2.coverage.candidateRows).toBe(178); // the 17-code index claims (own 171 + sibling riders 7)
+    expect(b2.coverage.ugmResourcesConsidered).toBe(166);
+    expect(b2.coverage.alignedShare).toBe(1.0);
+    expect(b2.coverage.specPointsCovered).toEqual([
+      "2.1.1", "2.1.2", "2.2.1", "2.2.2", "2.2.3", "2.2.4",
+      "2.3.1", "2.3.2", "2.4.1", "2.4.2", "2.4.3",
+      "2.5.1", "2.5.2", "2.5.3", "2.6.1", "2.6.2", "2.6.3",
+    ]);
+    expect(b2.stations.length).toBe(27); // 4 + 5 + 3 + 4 + 4 + 7 declared rows
+    expect(new Set(b2.stations.map((s) => s.slug)).size).toBe(16); // all from the 25-station capture catalog — zero new stations
+    expect(b2.coverage.lanes.length).toBe(6);
+    expect(b2.coverage.lanes[0]).toMatchObject({
+      station: "algebra",
+      stationTitle: "Algebra",
+      ugmResourcesConsidered: 31,
+      aligned: 0, // the fresh-only counting law (the lane-16 law)
+      nonOverlap: 0,
+      candidateRows: 33, // the lane's index claims (31 own + 2 from the two-code rows... the 2.1.2 three-bullet merge delivers 27)
+      crossLaneAligned: 31,
+    });
+    expect(b2.coverage.lanes[4]).toMatchObject({
+      station: "integration",
+      stationTitle: "Integration",
+      ugmResourcesConsidered: 22,
+      aligned: 0,
+      nonOverlap: 1, // the r5324 capture-gap companion
+      candidateRows: 23,
+      crossLaneAligned: 20, // 15 one_to_many + the FIVE trapezium flips
+    });
+    expect(b2.coverage.lanes[5]).toMatchObject({
+      station: "numerical-solution-of-equations",
+      stationTitle: "Numerical solution of equations",
+      ugmResourcesConsidered: 7,
+      aligned: 0,
+      nonOverlap: 0,
+      candidateRows: 10,
+      crossLaneAligned: 7,
+    });
+  });
+
+  test("the course-plane serve law: provenance on every served body, zero corpus text moves", () => {
+    // every served body carries its corpus path of record + owning course
+    for (const r of b2.resources) {
+      expect(r.textOfRecordUnder).toMatch(/^UGM-Resources\/pure-(1|3)-[a-z-]+\//);
+      expect(
+        r.servedFromCourse === "cie-a-level-maths-20-pure-1" ||
+          r.servedFromCourse === "cie-a-level-maths-20-pure-3",
+      ).toBe(true);
+    }
+    const courses = b2.coverage.coursePlaneJoins?.courses ?? {};
+    expect(courses).toEqual({
+      "cie-a-level-maths-20-pure-3": 117,
+      "cie-a-level-maths-20-pure-1": 49,
+    });
+    expect(b2.coverage.coursePlaneJoins?.kinds).toEqual({
+      one_to_many: 161,
+      flip: 5,
+    });
+    expect(b2.coverage.coursePlaneJoins?.count).toBe(166);
+    expect(b2.coverage.coursePlaneJoins?.byrefNonOverlap).toBe(1);
+  });
+
+  test("the trapezium realization: 2.5.3 serves the five flips + the two standing-home joins", () => {
+    const sp = b2.specPoints.find((s) => s.code === "2.5.3");
+    expect(sp?.ugmIds).toEqual([
+      "approximating-areas",
+      "r5642",
+      "r6592",
+      "r7903",
+      "r7912",
+      "r8140",
+      "underneath-the-arches",
+    ]);
+    expect(sp?.primaryPick).toBe("r7903");
+    // the P2-unique code: NO other bundle carries 2.5.3 — every served body
+    // of the cluster is a flip of a beyond-spec routing of record (or the
+    // two standing-home trapezium joins r6592/r7912)
+    const flips = ["approximating-areas", "r5642", "r7903", "r8140", "underneath-the-arches"];
+    for (const slug of flips) {
+      const r = b2.resources.find((x) => x.ugmId === slug);
+      expect(r).toBeDefined();
+      expect(r?.specPoints.map((s) => s.code)).toContain("2.5.3");
+    }
+  });
+
+  test("the rider reconciliation: sibling-code claims land in the owning lane's index", () => {
+    // 2.6.1 = 5 numerical rows + 3 riders (r9082 algebra / see-the-power +
+    // to-log-or-not-to-log logs-exp)
+    expect(b2.specPoints.find((s) => s.code === "2.6.1")?.ugmIds).toEqual([
+      "r5948", "r7549", "r8013", "r8231", "r8711", "r9082", "see-the-power", "to-log-or-not-to-log",
+    ]);
+    // 2.5.1 = 7 integration rows + 2 riders (r7616 trigonometry / r8774
+    // differentiation — appended in lane order after the owning lane's own
+    // claims, the rider-reconciliation order of record)
+    expect(b2.specPoints.find((s) => s.code === "2.5.1")?.ugmIds).toEqual([
+      "inverse-integrals", "r7074", "r8679", "r9184", "stretching-an-integral", "trigsy-integrals", "two-for-one", "r7616", "r8774",
+    ]);
+    // r8679's row rides BOTH 2.6.2 and 2.6.3 from the integration lane
+    const r8679 = b2.resources.find((r) => r.ugmId === "r8679");
+    expect(r8679?.specPoints.map((s) => s.code).sort()).toEqual(["2.5.1", "2.6.2", "2.6.3"]);
+  });
+
+  test("the seventeen picks of record — every pick rides a SERVED body (the r6018 law at its honest end)", () => {
+    const picks: Record<string, string> = {
+      "2.1.1": "absolutely",
+      "2.1.2": "can-you-find-cubic-edition",
+      "2.2.1": "calculators1950",
+      "2.2.2": "an-irrational-inequality",
+      "2.2.3": "powerful-fractions",
+      "2.2.4": "how-far-did-the-earth-move",
+      "2.3.1": "going-round-in-circles",
+      "2.3.2": "equation-or-identity-ii",
+      "2.4.1": "can-you-find-chain-rule-edition",
+      "2.4.2": "how-does-your-rectangle-grow",
+      "2.4.3": "implicit-circles",
+      "2.5.1": "inverse-integrals",
+      "2.5.2": "circular-slice",
+      "2.5.3": "r7903",
+      "2.6.1": "r5948",
+      "2.6.2": "r8404",
+      "2.6.3": "r8231",
+    };
+    const served = new Set(b2.resources.map((r) => r.ugmId));
+    for (const [code, pick] of Object.entries(picks)) {
+      const sp = b2.specPoints.find((s) => s.code === code);
+      expect(sp?.primaryPick).toBe(pick);
+      expect(served.has(pick)).toBe(true); // every pick has a served body under pure-2
+    }
+  });
+
+  test("the ONE byref companion: r5324 (capture gap) disclosed, never served", () => {
+    const byref = b2.coverage.nonOverlapByReference;
+    expect(byref?.count).toBe(1);
+    expect(byref?.rows[0]?.ugmSlug).toBe("r5324");
+    expect(byref?.rows[0]?.reason).toMatch(/COMPANION DISCLOSURE/);
+    expect(b2.resources.find((r) => r.ugmId === "r5324")).toBeUndefined();
+  });
+
+  test("the image plane: 147 refs localized across 33 resources (all committed under public/ugm-assets)", () => {
+    expect(b2.coverage.figures).toEqual({
+      figureRefs: 147,
+      resources: 33,
+      uniqueAssets: 123,
+      inlineRewritten: 20,
+    });
+    let refs = 0;
+    for (const r of b2.resources) {
+      const found = r.bodyMd.match(/\/ugm-assets\/[^)\s]+/g) ?? [];
+      refs += found.length;
+      for (const ref of found) {
+        const p = join(import.meta.dir, "../../public", ref);
+        expect(existsSync(p)).toBe(true);
+      }
+    }
+    expect(refs).toBe(147);
+  });
+
+  test("pure-2 honesty invariants: unique ids, declared stations, delimiter balance, SUGGESTED provenance", () => {
+    const ids = b2.resources.map((r) => r.ugmId);
+    expect(new Set(ids).size).toBe(ids.length);
+    const declared = new Set(b2.stations.map((s) => s.slug));
+    for (const r of b2.resources) {
+      expect(declared.has(r.station)).toBe(true);
+      expect(r.nonOverlap).toBe(false);
+      expect(r.specPoints.length).toBeGreaterThan(0);
+      expect((r.bodyMd.match(/\\\(/g) ?? []).length).toBe(
+        (r.bodyMd.match(/\\\)/g) ?? []).length,
+      );
+      expect((r.bodyMd.match(/\\\[/g) ?? []).length).toBe(
+        (r.bodyMd.match(/\\\]/g) ?? []).length,
+      );
+    }
+    expect(b2.reviewState.state).toBe("SUGGESTED");
+    // the two station-less standing-home rows resolve via front-matter
+    for (const slug of ["r6592", "r7912"]) {
+      const r = b2.resources.find((x) => x.ugmId === slug);
+      expect(r?.station).toBe("introducing-calculus");
+      expect(r?.specPoints.map((s) => s.code)).toContain("2.5.3");
+    }
   });
 });

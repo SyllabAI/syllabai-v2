@@ -129,7 +129,23 @@
  * i² = −1; the lane-9 row stands); 43 candidates closed exactly = 0 + 1 + 42;
  * the stations list is the FULL 18-station sweep closure — all 18 already
  * declared, so the unique-station count stays 25 while the declared-row
- * count grows 106 → 124
+ * count grows 106 → 124; Pure 2 eighteenth — PR #226 consumed by
+ * T-UGM-HUB-CONSUME-P2 (the FIRST lane on a THIRD course plane,
+ * cie-a-level-maths-20-pure-2, CIE 9709 Pure 2 in FULL — spec points
+ * 2.1.1–2.6.3, 17 codes): the COURSE-PLANE SERVE LAW's debut shape. The
+ * corpus lane T-UGM-P2-1 is byref-only (no capture dirs, MANIFEST
+ * untouched), so the plane serves ZERO fresh bodies: all 166 served
+ * bodies are cross-course twin joins of record whose byte-true text was
+ * read from the pure-1/pure-3 capture dirs named by each row's
+ * textOfRecordUnder (sha256 vs MANIFEST v2 audited at import) and
+ * embedded with textOfRecordUnder + servedFromCourse provenance — zero
+ * corpus text moves. 166 rows = 161 one_to_many twin joins + 5 trapezium
+ * flips (beyond-spec of record under P1/P3, realized by the P2-unique
+ * 2.5.3); 178 index claims across the 17 spec points (the corpus filing
+ * law: a row lives in the file owning its first P2 code, sibling-code
+ * claims ride and reconcile at run level); the ONE byref companion
+ * (r5324, capture gap) rides nonOverlapByReference, never served; every
+ * pick of record rides a SERVED body (the r6018 law at its honest end)
  * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
  * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
  * hub-side import is
@@ -203,6 +219,12 @@ const UgmResource = z.object({
   // T-UGM-HUB-CONSUME-8b: of those, how many render INLINE at the converter's
   // position-accurate placeholder spots (the rest are section-anchored)
   figuresInline: z.number().default(0),
+  // T-UGM-HUB-CONSUME-P2 (course-plane serve law): the corpus path of record
+  // this served body was read from, and the course whose capture dir owns it
+  // (the text of record stays first-of-record under pure-1/pure-3 — zero
+  // corpus text moves). Present only on course-plane bundles.
+  textOfRecordUnder: z.string().optional(),
+  servedFromCourse: z.string().optional(),
 });
 
 const UgmSpecPointIndex = z.object({
@@ -309,6 +331,16 @@ const UgmLaneBundle = z.object({
         priorAlignmentOfRecord: z.unknown().optional(),
         nonOverlapRef: z.boolean().optional(),
       })),
+    }).optional(),
+    // T-UGM-HUB-CONSUME-P2: the course-plane serve census — every served
+    // body of a byref course plane is a cross-course twin join resolved to
+    // its corpus text of record (provenance on the resource rows)
+    coursePlaneJoins: z.object({
+      count: z.number(),
+      kinds: z.record(z.string(), z.number()).optional(),
+      courses: z.record(z.string(), z.number()).optional(),
+      byrefNonOverlap: z.number().optional(),
+      note: z.string().optional(),
     }).optional(),
     lanes: z.array(z.object({
       station: z.string(),
