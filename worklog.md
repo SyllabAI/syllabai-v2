@@ -113,3 +113,17 @@ Work Log:
 
 Stage Summary:
 - run-001 SHIPPED as small PR; post-merge followup: Vercel deploy + live spot-check of the new adjudicated copy.
+
+---
+Task ID: T-HUB-LOOSE-COPY-1 run-001 landing addendum (operator trace 1a1877634d2acb49)
+Agent: main agent (Super Z, session web-528c0352)
+Task: Close the deploy loop — operator supplied a fresh VERCEL_PAT; inspect production deployments and live-verify the honest copy.
+
+Work Log:
+- Vercel API (env-only token, never echoed/committed): project syllabai-hub-v2 prj_YhOJvdlHn1RggYyP; GET /v6/deployments?app=syllabai-hub-v2 (projectId param 404s on this PAT — app-name is the working form).
+- Auto-deploy of record: dpl_61c1Xi5kuCRNFPJ6… for merge 544c3700a — created 11:19:47Z, READY 11:22:45Z, aliasAssigned=true -> syllabai-hub-v2.vercel.app. No lane intervention needed.
+- Live marker PASS x2 (deployment URL + alternate alias syllabai-hub-v2-syllab-ai.vercel.app): "No spec-point home on the official specification" / "This is an adjudicated outcome of the spec-mapping lane, not pending work" — listing exactly Mathematical Symbols + Listing Outcomes.
+- Forensics note: the apex alias served the pre-merge build to this lane's fetch tool for ~16 min after READY; API aliasAssigned + deployment-URL marker discriminate fetch-path cache from alias failure. Recorded in the receipt landing block.
+
+Stage Summary:
+- T-HUB-LOOSE-COPY-1 run-001 FULLY CLOSED: merged (544c3700a), deployed (READY 11:22:45Z), live-verified x2, receipt landing block committed (bookkeeping-only, direct main per cd3be784 precedent).

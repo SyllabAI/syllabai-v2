@@ -25,6 +25,14 @@
     "copy_truth_first_hand": "pre-edit live check (2026-10-29): revision-notes page grouped notes under spec-code headings, 'Not yet anchored' section held exactly Mathematical Symbols + Listing Outcomes; census at 2559034b: igcse-maths-b-16 codeless 2/199 (the stays); 83 courses carry code-less notes (some fully uncoded, e.g. cie-as-maths-20-pure-2 39/39) — hence the course-aware design rather than a fleet-wide 'mapping complete' claim",
     "scope_census": "git status at commit: exactly 3 code files (1 new, 2 modified); zero apps/hub/content/** bytes; zero content-maps bytes"
   },
+  "landing": {
+    "at": "2026-10-29T11:45Z",
+    "channel": "Vercel git auto-deploy (apps/hub/vercel.json deploymentEnabled.main=true) — fired on merge 544c3700a without lane intervention",
+    "deployment": "dpl_61c1Xi5kuCRNFPJ6… (url syllabai-hub-v2-15dn7d4o6-syllab-ai.vercel.app) created 11:19:47Z, READY 11:22:45Z, aliasAssigned=true -> syllabai-hub-v2.vercel.app",
+    "token": "fresh VERCEL_PAT supplied by operator via IM (trace 1a1877634d2acb49) after the prior vcp_…aoT3 was ROTATION-REQUIRED per run-020; used env-only (stored untracked at /home/z/my-project/.secrets/vercel_pat, mode 600, outside both repos); zero PAT bytes in any committed artifact",
+    "live_spot_check": "PASS first-hand x2: deployment URL and alternate alias syllabai-hub-v2-syllab-ai.vercel.app both serve the new adjudicated copy verbatim — heading 'No spec-point home on the official specification', body 'This is an adjudicated outcome of the spec-mapping lane, not pending work', listing exactly Mathematical Symbols + Listing Outcomes; note: the apex alias kept serving the pre-merge build to this lane's fetch tool for ~16 min after READY (fetch-path cache artifact, not an alias failure — API aliasAssigned=true + deployment-URL marker check discriminate)",
+    "verified_via_api": "GET /v6/deployments?app=syllabai-hub-v2 (projectId query param returns not_found on this PAT — app-name param is the working form) + GET /v13/deployments/{uid}"
+  },
   "scope_guards": [
     "no bundle or content-maps bytes touched",
     "default (in-progress) copy byte-identical to the legacy sentence — the other 82 courses' card text is unchanged by this PR",
