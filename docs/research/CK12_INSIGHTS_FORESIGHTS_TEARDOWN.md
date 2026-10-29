@@ -1,6 +1,6 @@
 # CK-12 "Insights" & "Foresights" — competitive feature teardown
 
-**Status:** RESEARCH NOTE — external competitive analysis only; no product decision, no code change, no DB contact (zero-DB-contact discipline held; production Neon quota outage window unaffected).
+**Status:** RESEARCH NOTE — external competitive analysis only; no product decision, no code change, no DB contact (zero-DB-contact discipline held; production Neon quota outage window unaffected). **FOLLOW-UPS OF RECORD (trace 1a1893280de1b2c5):** the 50%-receipt is now adopted as design law in `docs/adr/ADR-CLASS-0002-comprehension-first-prediction-surfaces.md`, and the Foresights-v0 deterministic read model is scoped in `docs/FORESIGHTS-V0-PLAN.md` (§6 sketch below is superseded by that plan).
 **Task ID:** T-RESEARCH-CK12-LA-1 run-001 (operator trace `1a18927f61e8cbf5`: "Before proceeding, I want you to analyze two features. Those are 'Insights' and 'Foresights' https://www.ck12.org/pages/learning-analytics/")
 **Date:** 2026-10-30 (Asia/Dhaka)
 **Source basis:** 8 external sources, gathered web-side 2026-10-30; no authenticated CK-12 product access (demos are behind sign-in). Every CK-12-internal claim below is from CK-12's own pages or the CK-12-run study; everything under "How it likely works" is explicitly INFERENCE.
