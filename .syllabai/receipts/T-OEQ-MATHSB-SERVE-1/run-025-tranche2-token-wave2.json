@@ -1,0 +1,94 @@
+{
+ "lane": "T-OEQ-MATHSB-SERVE-1",
+ "run": "run-025-tranche2-token-wave2",
+ "title": "Tranche-2 token repair wave-2: residual-142 worklist partial discharge — 41 units adjudicated page-first (23 fix units / 24 changed pids / 67 fix tuples / 48 field writes; 18 zero-fix units discharged page-evidenced), wave-3 residual 101 units mapped",
+ "operatorOrder": "run-025 = residual 142 units",
+ "operatorTrace": "1a189b1cdb854e99",
+ "date": "2026-10-30",
+ "worklistReconciliation": {
+  "basis": "run-024 wave-1 adjudicated 7 units / 10 filed parts of the deduped 149-unit worklist -> residual 142 units / 143 parts (includes the 4th full twin pair 2020-06/2020-11 02 1-b)",
+  "residualUnits": 142,
+  "residualParts": 143,
+  "pages": 196,
+  "candidates": {
+   "total": 1353,
+   "fixish": 1070,
+   "sctAdvisory": 509
+  },
+  "artifacts": [
+   "run025_wave2_worklist.json",
+   "run025_worksheet.json (196 page briefs, read_order2 order)",
+   "run025_triage.json",
+   "paper_briefs/ (57 paper briefs)"
+  ]
+ },
+ "wave2Execution": {
+  "unitsAdjudicated": 41,
+  "fixUnits": 23,
+  "zeroFixUnits": 18,
+  "changedPids": 24,
+  "fixTuples": 67,
+  "fieldWrites": 48,
+  "fixUnitList": [
+   "offp_2018-06_01r_21 (8^2+15^2)",
+   "offp_2018-06_01r_27 (6^2+6^2; 9.52^2)",
+   "offp_2018-06_02r_11-a (3^2+8^2; AO^2 5.10^2 8^2 x2 lines)",
+   "offp_2018-06_02r_11-b (3^2; tan^-1 sol+mirror)",
+   "offp_2018-06_02r_12-b (formula box a2b2c2 problem + 3 numerator lines + cos^-1 x3 sol + mirror x6)",
+   "offp_2019-06_01_17-b (12^2-4^2 x3)",
+   "offp_2019-06_01r_27 (AC^2 AD^2 6.4^2; AD^2 quadratic)",
+   "offp_2020-01_01_17 (BD^2=6.5^2-2.5^2; BD^2 notes)",
+   "offp_2020-01_02_7-a (r^2; h^2; h^3 x2 + problem h^3)",
+   "offp_2020-01_02_10-a (6^2=10^2+7^2; 10^2+7^2-6^2 sol+mirror; mirror cm^2)",
+   "offp_2020-01_02_10-b (formula box problem)",
+   "offp_2020-01_02r_8-a (sin^-1 sol+mirror)",
+   "offp_2020-01_02r_8-b (BC^2=100^2+30^2)",
+   "offp_2020-01_02r_8-d (mirror cm^2)",
+   "offp_2020-01_02r_8-e (formula box problem)",
+   "offp_2020-06_02_1-b + offp_2020-11_02_1-b (TWIN: sin^-1 x2 lockstep)",
+   "offp_2021-01_02_3 (SQ^2 40^2 60^2; QT^2 50^2; notes x2)",
+   "offp_2021-01_02_10-c (GLUED formula box a2b2c2; BM^2 6^2 x2 exp=2; 2^2 4^2 6^2 4.58^2; 6^2 2.29^2)",
+   "offp_2021-01_02r_5-a (BD^2 10.6^2 9.2^2; BD^2 notes)",
+   "offp_2021-01_02r_11 (24^2-12^2 exp=2; 48^2-24^2; 12^2-6^2)",
+   "offp_2021-06_01_18 (25^2 18.496^2 exp=2)",
+   "offp_2021-06_01_19 (3x^2 y^2 sol+mirror diverged)",
+   "offp_2021-06_02_11-a (AB^2 AC^2 8^2)"
+  ],
+  "newCatchAllClass": "inverse-trig flattened sups admitted where print-verified: sin^-1 (2020-01 02r 8-a sol+mirror; 2020-06/11 02 1-b twin x2), tan^-1 (2018-06 02r 11-b sol+mirror), cos^-1 (2018-06 02r 12-b x3 sol + x3 mirror) — 6 papers, 14 tuples",
+  "newUnitSupClass": "diverged-mirror unit sups: 20.7 [cm2] mirror (2020-01 02 10-a; solution already real cm^2), 498, 499 (cm2) mirror (2020-01 02r 8-d)",
+  "zeroFixLaw": "page-evidenced or ctx-class-cited discharge: trig angles (SCT census 509), diagram labels, prose numbers ('to 3 significant figures'), marks-column bleeds ('oe 3', '36 6' = 36 + marks 6), mark-code runs (M0M0M0A0/B1M1M1M1A1), radical-flatten fence (24+24√3, 12+12√3, x√3, 30√3, Allow 8 2 = 8√2), deleted-sup F5d (2018-06 02r 12-b '( 4 + 4 ) + 15' etc), displaced-sup aggregates (2021-01 02 7-a '2 2 2 3 82 − (2h) 2'; 2021-01 02r 5-d BE-quadratic; 2021-06 01 18 Alt-2 denominator), fraction weaves FS (run-004 R4-A owning class: ½(2.5)(BD), ½(10)(r)+..., 12×12 = ½×½ in 8-d)"
+ },
+ "planeOfRecord": {
+  "before": "f91f4c1b9d53bec3",
+  "after": "1a479c05194e1da7",
+  "path": "apps/hub/content/igcse-maths-b-16/official-papers.json",
+  "bytes": 3718164
+ },
+ "gates": {
+  "battery": "11/11 GREEN (plane_pin f91f4c1b, census_EXACT 66/1281/2443/6600 pre==post, marks_map_identical, PUA_FFFD_delta_clean, dollar_parity, changed_set_EXACT 48 field writes, mirror_integrity incl diverged-field protection (8-a/8-d/10-a/11-b/12-b/19 independent), serialization_roundtrip, scrub_assert, token_discharge 67/67, class_post_census no-growth)",
+  "katex": "117/117 new spans OK @ katex 0.16.47 throwOnError",
+  "render": "48/48 projected fields GREEN through the ACTUAL hub engine (react-markdown + remark-gfm + remark-math + rehype-raw + rehype-sanitize + local rehypeKatexMhchem; 223 total .katex spans, zero katex-error, zero count regressions)",
+  "spotCheck": "10/10 local byte probes post-apply (8^2+15^2, 6^2+6^2 cos105, formula box, BC^2 100^2 30^2, sin^-1 twin x2, 12^2-6^2, 25^2 18.496^2, AB^2 AC^2 8^2, mirror cm^2); probe-pid typo (2018 vs 2020 02r) self-caught and corrected — no plane defect"
+ },
+ "evidence": {
+  "pagesReadFirstHand": "30+ MS/QP pages @150dpi READ this run (ms/qp 2018-06 01R/02R, 2019-06 01/01R, 2020-01 01/01R/02/02R, 2020-06 01R/02, 2021-01 01/02/02R, 2021-06 01/02) + 4 needle-located additions (ms-2018-06-01R-p11, ms-2020-01-02-p11, ms-2021-06-01-p13/p14); render infrastructure = run-024 212-page set alive + run025_locate.py needle renderer",
+  "location": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-025/ (fixes + projection + worksheet + triage + worklist + apply + locate + gates) + /home/z/my-project/scratch/oeq_run025/ (paper_briefs x57, briefs x33) + /home/z/my-project/scripts/run025_*.py mirror"
+ },
+ "instrumentDisclosure": "run-024's disclosed G-bucket census non-reproducibility persists (F5c FS splinter shapes; enumeration remains a POINTER not a bound); run-025 continues the per-part page-read authority with page-read catch-alls admitted where print-verified (inverse-trig + unit-sup classes, counted separately in fix notes)",
+ "corpusSide": "rides the NEXT converter run (standing disposition): +24 changed pids join the 1461+7=1468-pid standing back-sync debt; NO solo converter trigger, NO solo resources PR",
+ "landing": {
+  "branch": "t-oeq-mathsb/run-025 PUSHED (content f046a1f2: plane + lane artifacts; race-guard fetch-first clean, origin/main unchanged at 3b4322b3 at push time)",
+  "pr": "PR #465 — https://github.com/SyllabAI/syllabai-v2/pull/465 (body patched post-merge: 23 fix units / 67 tuples correction of an interim undercount)",
+  "ci": "2/2 GREEN (verify + hub) on head f046a1f2 — the run-023 zero-check-runs class did NOT recur (workflows fired immediately)",
+  "merge": "1e3fbad2c151461c6b31e396923f770b6ab2c6a9 merged, merge_method=merge, mergeable clean",
+  "vercel": "commit status SUCCESS on merge sha 1e3fbad2 (poll 0) — status channel healthy, no canceled-from-dashboard recurrence",
+  "liveSpotCheck": "PASS — corpus endpoint sha16 1a479c05194e1da7 EXACT (3,718,164B) on every probe; live served-content markers 12/12 (formula box a^2b^2c^2, BC^2=100^2+30^2, sin^-1 x2, 40^2+60^2, BM^2=6^2+6^2, 25^2+18.496^2, 10.6^2+9.2^2, twin sin^-1, 48^2-24^2, mirror cm^2); past-paper page-flight markers N/A for this page type (question content fetched client-side from the corpus endpoint — the corpus byte probe IS the content-level evidence, run-022 lineage)"
+ },
+ "wave3Continuation": {
+  "residualUnits": 101,
+  "map": "run025_triage.json (needsPage/zeroByClass split + per-candidate reasons) + run025_worksheet.json + paper_briefs/ + rendered 196-page set (scratch/oeq_run024/pages) + run025_locate.py for unmapped-page needles",
+  "note": "scope of the operator order was the full 142; this run discharges 41 at full NO-GUESS evidence quality and files the explicit 101-unit continuation so wave-3 is pure execution"
+ },
+ "credentials": "operator PAT env/GIT_ASKPASS inline per command (askpass zero token bytes); standing ROTATION-REQUIRED order re-flagged for BOTH tokens (GitHub …JU4, Vercel vcp_…aoT3) — UNCHANGED, still awaiting rotation",
+ "bookkeeping": "receipt + worklog entry + this addendum land bookkeeping-only .syllabai/** direct to main per the 28346abe/67d4f475/0026b4b4 precedent; fetch-first, ff-only, no force"
+}
