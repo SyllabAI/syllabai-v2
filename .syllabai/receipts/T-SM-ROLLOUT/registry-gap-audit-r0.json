@@ -1,0 +1,335 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "registry-gap-audit-r0",
+ "date": "2026-10-24",
+ "operator_order_trace": "1a16db0b84efbe15",
+ "operator_order": "\"I want you to finish smart mark enabling for all courses' 'Exam Questions'\" (IM, 2026-10-24)",
+ "mode": "repo-side READ-ONLY audit over main@3af8fdb6 (committed registry + committed corpus) \u2014 zero DB contact, zero registry writes, zero flips. The flip precondition of record (T-SM-BRIDGE-WIDEN r0 law: a read-only production bank census proving each row's sme-eq refs exist under a VALIDATED mark scheme) is NOT discharged by this audit and is named per wave below.",
+ "state_of_record": {
+  "registry_rows": 94,
+  "eligible": 30,
+  "eligible_composition": "29 coreBridge:true + 1 pilot (igcse-chemistry-19)",
+  "unflipped": 64,
+  "flipped_validator_pin": "validate_cie_bundles.ts asserts the exact flagged set (2 maths-a + 4MB1 + 21 CIE + 3 SD0 via the 26->29 pin advance) \u2014 flips are a two-file change (registry + validator pin) by law"
+ },
+ "repo_side_method": "per course: questions.json parsed; part counted G1-ready iff marks>0 AND non-empty solutionMd for 100% of parts (the D1 acceptance criterion \u2014 full mark-scheme coverage \u2014 verified on the committed corpus of record)",
+ "completion_funnel_disjoint": {
+  "A_flip_ready_pending_db_census": {
+   "count": 33,
+   "corpus_parts": 17319,
+   "rows": [
+    {
+     "slug": "cie-igcse-accounting-21",
+     "code": "0452",
+     "parts": 242
+    },
+    {
+     "slug": "cie-igcse-further-maths-additional-maths-25",
+     "code": "0606",
+     "parts": 441
+    },
+    {
+     "slug": "cie-igcse-science-combined-science-23-biology",
+     "code": "0653",
+     "parts": 44
+    },
+    {
+     "slug": "cie-igcse-science-combined-science-23-chemistry",
+     "code": "0653",
+     "parts": 51
+    },
+    {
+     "slug": "cie-igcse-science-combined-science-23-physics",
+     "code": "0653",
+     "parts": 48
+    },
+    {
+     "slug": "ial-biology-18",
+     "code": "YBI11",
+     "parts": 611
+    },
+    {
+     "slug": "ial-chemistry-17",
+     "code": "YCH11",
+     "parts": 957
+    },
+    {
+     "slug": "ial-further-maths-18-further-pure-1",
+     "code": "YFM01",
+     "parts": 280
+    },
+    {
+     "slug": "ial-maths-20-decision-1",
+     "code": "YMA01",
+     "parts": 375
+    },
+    {
+     "slug": "ial-maths-20-mechanics-1",
+     "code": "YMA01",
+     "parts": 539
+    },
+    {
+     "slug": "ial-maths-20-mechanics-2",
+     "code": "YMA01",
+     "parts": 554
+    },
+    {
+     "slug": "ial-maths-20-pure-1",
+     "code": "YMA01",
+     "parts": 712
+    },
+    {
+     "slug": "ial-maths-20-pure-2",
+     "code": "YMA01",
+     "parts": 591
+    },
+    {
+     "slug": "ial-maths-20-pure-3",
+     "code": "YMA01",
+     "parts": 790
+    },
+    {
+     "slug": "ial-maths-20-pure-4",
+     "code": "YMA01",
+     "parts": 660
+    },
+    {
+     "slug": "ial-maths-20-statistics-1",
+     "code": "YMA01",
+     "parts": 574
+    },
+    {
+     "slug": "ial-maths-20-statistics-2",
+     "code": "YMA01",
+     "parts": 591
+    },
+    {
+     "slug": "ial-physics-19",
+     "code": "YPH11",
+     "parts": 546
+    },
+    {
+     "slug": "igcse-accounting-17-financial-statements",
+     "code": "4AC1",
+     "parts": 73
+    },
+    {
+     "slug": "igcse-accounting-17-introduction-to-bookkeeping-and-accounting",
+     "code": "4AC1",
+     "parts": 328
+    },
+    {
+     "slug": "igcse-biology-modular-24-unit-1",
+     "code": "4XBI1",
+     "parts": 366
+    },
+    {
+     "slug": "igcse-biology-modular-24-unit-2",
+     "code": "4XBI1",
+     "parts": 549
+    },
+    {
+     "slug": "igcse-chemistry-modular-24-unit-1",
+     "code": "4XCH1",
+     "parts": 704
+    },
+    {
+     "slug": "igcse-chemistry-modular-24-unit-2",
+     "code": "4XCH1",
+     "parts": 651
+    },
+    {
+     "slug": "igcse-economics-17",
+     "code": "4EC1",
+     "parts": 623
+    },
+    {
+     "slug": "igcse-further-maths-19",
+     "code": "4PM1",
+     "parts": 464
+    },
+    {
+     "slug": "igcse-ict-17",
+     "code": "4IT1",
+     "parts": 134
+    },
+    {
+     "slug": "igcse-maths-a-modular-24-foundation-unit-1",
+     "code": "4XMAF/4XMAH",
+     "parts": 200
+    },
+    {
+     "slug": "igcse-maths-a-modular-24-foundation-unit-2",
+     "code": "4XMAF/4XMAH",
+     "parts": 132
+    },
+    {
+     "slug": "igcse-maths-a-modular-24-higher-unit-1",
+     "code": "4XMAF/4XMAH",
+     "parts": 1665
+    },
+    {
+     "slug": "igcse-maths-a-modular-24-higher-unit-2",
+     "code": "4XMAF/4XMAH",
+     "parts": 1696
+    },
+    {
+     "slug": "igcse-physics-modular-24-unit-1",
+     "code": "4XPH1",
+     "parts": 559
+    },
+    {
+     "slug": "igcse-physics-modular-24-unit-2",
+     "code": "4XPH1",
+     "parts": 569
+    }
+   ],
+   "remaining_legs": "r0-style production bank census (read-only Neon) -> bundle ingest where the census shows zero bank refs -> G1 audit -> the two-file flip (courses.json coreBridge:true + curriculumCode fill + validate_cie_bundles.ts pin advance) -> hub deploy -> live probe (depth1 x N + depth2 joins + negative controls)"
+  },
+  "B_band_scheme_adr_blocked": {
+   "count": 21,
+   "rows": [
+    {
+     "slug": "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing"
+    },
+    {
+     "slug": "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing"
+    },
+    {
+     "slug": "igcse-english-language-a-16-paper-3-coursework"
+    },
+    {
+     "slug": "igcse-english-literature-16"
+    },
+    {
+     "slug": "cie-igcse-english-language-20"
+    },
+    {
+     "slug": "cie-igcse-english-language-25"
+    },
+    {
+     "slug": "cie-igcse-english-literature-21"
+    },
+    {
+     "slug": "cie-as-english-general-paper-21"
+    },
+    {
+     "slug": "cie-igcse-business-23"
+    },
+    {
+     "slug": "cie-igcse-business-25"
+    },
+    {
+     "slug": "cie-a-level-business-23"
+    },
+    {
+     "slug": "cie-igcse-history-18"
+    },
+    {
+     "slug": "cie-igcse-geography-20"
+    },
+    {
+     "slug": "cie-igcse-geography-25"
+    },
+    {
+     "slug": "cie-igcse-religious-studies-23"
+    },
+    {
+     "slug": "cie-as-environmental-management-20"
+    },
+    {
+     "slug": "cie-igcse-environmental-management-25"
+    },
+    {
+     "slug": "cie-igcse-economics-20"
+    },
+    {
+     "slug": "cie-igcse-economics-25"
+    },
+    {
+     "slug": "igcse-business-19"
+    },
+    {
+     "slug": "igcse-geography-19"
+    }
+   ],
+   "blocker": "the levels-of-response ADR (of record: bridge-widen-r0 exclusions \u2014 checklist law, NOT liftable by an ingest lane); many of these rows carry 100%-coverage corpora already (e.g. 0455 x2 = 1,237 parts, 4GE1 = 883, 4BS1 = 612, 9609 = 692) so corpus is NOT the blocker",
+   "operator_ask": "scope ruling: extend T-SM-ROLLOUT to levels/band-scheme courses (new ADR + band-aware marking support) or confirm the point-scheme boundary"
+  },
+  "C_corpus_authoring_required": {
+   "count": 9,
+   "rows": [
+    {
+     "slug": "cie-a-level-accounting-21",
+     "code": "9706",
+     "parts": 0
+    },
+    {
+     "slug": "cie-a-level-economics-23",
+     "code": "9708",
+     "parts": 0
+    },
+    {
+     "slug": "cie-igcse-accounting-25",
+     "code": "0452",
+     "parts": 0
+    },
+    {
+     "slug": "igcse-science-double-award-modular-24-biology-unit-1",
+     "code": "4XSD1",
+     "parts": 0
+    },
+    {
+     "slug": "igcse-science-double-award-modular-24-biology-unit-2",
+     "code": "4XSD1",
+     "parts": 0
+    },
+    {
+     "slug": "igcse-science-double-award-modular-24-chemistry-unit-1",
+     "code": "4XSD1",
+     "parts": 0
+    },
+    {
+     "slug": "igcse-science-double-award-modular-24-chemistry-unit-2",
+     "code": "4XSD1",
+     "parts": 0
+    },
+    {
+     "slug": "igcse-science-double-award-modular-24-physics-unit-1",
+     "code": "4XSD1",
+     "parts": 0
+    },
+    {
+     "slug": "igcse-science-double-award-modular-24-physics-unit-2",
+     "code": "4XSD1",
+     "parts": 0
+    }
+   ],
+   "note": "questions.json committed but EMPTY (0 parts) \u2014 SME harvest/authoring lanes in syllabai-resources precede any ingest/flip"
+  },
+  "D_ghost_ruled": {
+   "count": 1,
+   "rows": [
+    "cie-a-level-maths-20-pure-2"
+   ],
+   "note": "the D1 skeleton (validator cvOfRecord: fleet-skipped, 'nothing to seed or ingest') \u2014 honest-empty by ruling, excluded from the funnel"
+  },
+  "partition_check": true
+ },
+ "cross_reference": {
+  "bridge_widen_r0_exclusions_still_current": true,
+  "band_rows_no_longer_in_registry_or_now_flipped": [],
+  "0452_duplicate_code_exclusion": "RETIRED this run \u2014 see 0452-tiebreak-r0.json (the deterministic cv-pinned selection law); the cie-igcse-accounting-21 flip now awaits only the bank census + flip wave (it sits in funnel A)",
+  "kappa_posture": "flip-non-blocking: the scope=ALL eval row passed=true (2026-10-09) keeps kappaGatePassed green globally per bridge-widen-r0; SUBJECT-scope evals (T-SM-KAPPA-SUBJECT, migration 0007 live) are the D2 pre-registered discipline \u2014 teacher-queue dependent, advance in parallel",
+  "spec_join_disclosure": "raw-corpus specPointCode coverage varies (0-100%) \u2014 NOT a blocker: the flipped CIE control group shows the same shape (anchoring resolves through the spec-links consume engine + DB-side topic joins, not raw corpus codes); Edexcel linear rows anchor at 88-100%",
+  "pre_existing_test_failures": "bun test apps/hub/src/lib on CLEAN main: 5 fail (the dual-run-posture env-dependent block) / 283; with this lane: same 5 / 290 (+7 new, all pass) \u2014 not introduced here"
+ },
+ "files_touched": [
+  "apps/hub/src/lib/subject-root.ts (new \u2014 the pure law)",
+  "apps/hub/src/lib/subject-root.test.ts (new \u2014 7 law cases)",
+  "apps/hub/src/lib/core-topics.ts (resolver: cv-pinned selection, cv-aware memo key)",
+  "apps/hub/src/app/api/core/questions/route.ts (passes the registry row's curriculumCode pin)",
+  ".syllabai/receipts/T-SM-ROLLOUT/registry-gap-audit-r0.json",
+  ".syllabai/receipts/T-SM-ROLLOUT/0452-tiebreak-r0.json"
+ ]
+}

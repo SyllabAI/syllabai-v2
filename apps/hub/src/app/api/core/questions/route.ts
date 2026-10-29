@@ -209,16 +209,22 @@ export async function GET(req: NextRequest) {
 
   // course → curriculum code → core subject root
   let code: string | null = null;
+  let curriculumCode: string | null = null;
   try {
     const courses = await listCourses();
-    code = courses.find((c) => c.slug === course)?.code ?? null;
+    const row = courses.find((c) => c.slug === course);
+    code = row?.code ?? null;
+    // the cv pin (e.g. "0452-2023-2025") — pins the exact subject row when a
+    // board code legitimately maps to several curriculum-version trees
+    // (T-SM-ROLLOUT-0452 r0; the bridge-widen r0 dup-code exclusion).
+    curriculumCode = row?.curriculumCode ?? null;
   } catch {
     code = null;
   }
   if (!code) {
     return Response.json({ available: false, reason: "unknown_course" });
   }
-  const rootId = await rootIdForCourseCode(code, token);
+  const rootId = await rootIdForCourseCode(code, token, curriculumCode);
   if (!rootId) {
     return Response.json({ available: false, reason: "no_subject" });
   }

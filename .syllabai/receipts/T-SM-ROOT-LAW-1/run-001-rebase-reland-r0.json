@@ -1,0 +1,67 @@
+{
+  "band": "T-SM-ROOT-LAW-1",
+  "run": "run-001",
+  "at": "2026-10-29T13:40:00Z",
+  "order": "operator IM trace 1a187e90cb20a989: 'start a #285 or #352 rebase lane next' — #352 selected (surgical live-serving-path correctness fix; CI has never judged its head; triage verdict STILL LIVE-NEEDED)",
+  "executor": "main agent (Z.ai, zai-web session web-528c0352, chat a7ae5075)",
+  "parent_of_record": "T-PR-TRIAGE-1 run-001 (receipt .syllabai/receipts/T-PR-TRIAGE-1/run-001-static-four-red-r0.json, PR #446 merge 481e09c6): verdict '#352 KEEP-OPEN — REBASE LANE REQUIRED (or fold into the active T-SM-ROLLOUT lane)'",
+  "source_pr": {
+    "number": 352,
+    "title": "fix(t-sm-rollout-0452) r0: the deterministic subject-root law (dup-code .find() winner retired) + the T-SM-ROLLOUT registry gap audit of record",
+    "head_ref": "t-sm-rollout-0452/r0",
+    "head_sha": "13bfea9355a7e585ae9dbb3349b29b85f2ff8c6a",
+    "base_at_cut": "3af8fdb6",
+    "created_at": "2026-10-24T11:57:32Z",
+    "ci_history": "NO check-runs EVER recorded on the head (the zero-check-runs CI-channel drop class) — this lane is the first time CI judges the content"
+  },
+  "method": "fetch-first; drift audit before any application (git diff 3af8fdb6..origin/main on touched code files); byte-exact reland by git checkout of the 6 non-worklog files from pr-352-head, per-file git-hash EXACT verification; stale worklog hunk deliberately not transplanted (fresh entry of record instead); branch PR from fresh origin/main; no force; no DB contact",
+  "drift_audit": {
+    "code_files_diff_base_to_main": "EMPTY (zero drift on apps/hub/src/lib/core-topics.ts and apps/hub/src/app/api/core/questions/route.ts between the PR base 3af8fdb6 and origin/main 28346abe)",
+    "hazard_still_live": "subjects.find((s) => s.code === code) confirmed at core-topics.ts:89 on main @ 28346abe",
+    "subject_root_files_on_main": "ABSENT (both)",
+    "receipts_on_main": "ABSENT (both) from .syllabai/receipts/T-SM-ROLLOUT/"
+  },
+  "changes": [
+    { "file": "apps/hub/src/lib/subject-root.ts", "what": "NEW — pickSubjectRoot, the PURE deterministic selection law: single-code-hit resolves; multi-hit resolves by the registry row's curriculumCode cv pin (seed cv law bundle-seed.ts:347); ambiguity without a pin refuses deterministically (the honest negative, never an unspecified .find() winner). Relanded byte-exact from 13bfea93." },
+    { "file": "apps/hub/src/lib/subject-root.test.ts", "what": "NEW — 7 law cases incl. pin resolution, pin-miss refusal, null-knowledge-root filtering. Relanded byte-exact." },
+    { "file": "apps/hub/src/lib/core-topics.ts", "what": "rootIdForCourseCode gains optional cv pin (cv-aware memo key code\\u0000cv; misses still never memoized); .find() winner retired in favor of pickSubjectRoot; SubjectView moved to subject-root.ts with a stable re-export. Relanded byte-exact — zero drift vs base verified first." },
+    { "file": "apps/hub/src/app/api/core/questions/route.ts", "what": "the Exam-Questions bridge route now passes row.curriculumCode as the pin. Relanded byte-exact — zero drift vs base verified first." },
+    { "file": ".syllabai/receipts/T-SM-ROLLOUT/0452-tiebreak-r0.json", "what": "RELANDED byte-exact — retires the T-SM-BRIDGE-WIDEN r0 exclusion 0452_duplicate_subject_code_ambiguity." },
+    { "file": ".syllabai/receipts/T-SM-ROLLOUT/registry-gap-audit-r0.json", "what": "RELANDED byte-exact — the registry gap audit of record (94 rows → 30 flipped / 64 unflipped; disjoint completion funnel 33 A + 21 B + 9 C + 1 D; 17,319 parts flip-ready-pending-census)." },
+    { "file": ".syllabai/worklog.md", "what": "fresh T-SM-ROOT-LAW-1 run-001 entry appended (the PR's Oct-24 worklog hunk NOT transplanted — superseded by this entry)." }
+  ],
+  "caller_safety": "SubjectView re-export keeps the historical import path stable (importers: teacher clients, api.ts, types.ts); courses.ts schema already carries curriculumCode (z.string().optional()); the new rootIdForCourseCode param is optional so the CLA route inherits the deterministic-refusal posture unchanged; frozen OrderByCode API port contract untouched; zero API changes.",
+  "verification": {
+    "law_tests": "bun test src/lib/subject-root.test.ts — 7 pass / 0 fail (12 expect calls)",
+    "hub_lib_suite": "bun test src/lib — 366 pass / 0 fail (the r0 recorded 285/5 with the pre-existing dual-run-posture block; that block has since been fixed upstream — posture strictly improved on this branch)",
+    "root_typecheck": "bun run typecheck — 34 errors, BYTE-IDENTICAL to clean origin/main (pre-existing sandbox-only missing-test-dep artifacts; not ours; diff of full outputs = empty)",
+    "hub_tsc": "bun x tsc --noEmit in apps/hub — 46 errors, BYTE-IDENTICAL to clean origin/main (same class; diff = empty)",
+    "build_hub": "bun run build:hub — exit 0 (corpus-verify prebuild + next build; the hub normative type gate)",
+    "byte_exact": "per-file git hash-object vs git rev-parse pr-352-head:<file> — 6/6 EXACT",
+    "ci": "BRANCH CI 2/2 GREEN on head 1364c81e64a7 (verify:success + hub:success) — the FIRST CI judgment of this content ever (the r0 head never received a check-run); the pull_request event fired normally, the zero-check-runs drop class did NOT recur"
+  },
+  "landing": {
+    "pr": 450,
+    "merged_sha": "ad98fb693145",
+    "merge_method": "merge (true merge commit), no force",
+    "merge_commit_ci": "hub:success + verify:success (2/2) on ad98fb69",
+    "vercel_deployment_proof": "GitHub-side of record (no Vercel PAT needed): Vercel commit status on ad98fb69 = SUCCESS, target https://vercel.com/syllab-ai/syllabai-hub-v2/9PMXtfyLNcNkLptwtGoiheCMisYx (the hub-v2 deployment for this sha)",
+    "live_spot_checks": "2026-10-29T14:02:56Z+ against https://syllabai-hub-v2.vercel.app: GET /api/health → 200 {status:ok, service:syllabai-hub, dataMode:core-api, coreConfigured:true} (x-vercel-cache MISS, age 0 — served fresh from the function); GET /api/core/questions?course=igcse-chemistry-19 → 200 {available:false, reason:unauthenticated}; GET /api/core/questions?course=0452-25 → 200 same — the bridge route is auth-gated (clean JSON refusal, zero 500s): no-regression posture recorded; the law's positive proof stays with CI 2/2 + subject-root 7/7",
+    "pr_352_disposition": "CLOSED as superseded-by-reland with evidence comment (issue comment 6498682705); reopenable by law; the operator-ruling thread stays on #352 of record",
+    "vercel_pat_disclosure": "the Vercel PAT stored repo-external at /home/z/my-project/.secrets/vercel_pat was LOST with the sandbox reset (directory wiped; token never committed anywhere by law, hence unrecoverable locally) — deployment-API-level verification (READY/aliasAssigned via API) was therefore replaced by the GitHub-side Vercel commit status of record; CRITICAL-OPERATOR flag: reissue the Vercel PAT if API-level deployment verification is wanted for future lanes"
+  },
+  "scope_guards": [
+    "no API code touched (frozen port contract intact); no bundle bytes; no registry flips (the flip precondition — r0-style production bank census — remains named per funnel wave, NOT discharged)",
+    "no DB contact",
+    "no force; fetch-first; branch PR; stale worklog hunk not transplanted",
+    "receipts byte-exact — no editorial drift vs the r0 of record"
+  ],
+  "operator_rulings_preserved": "the #352 comment thread (6 comments incl. B-funnel EXTEND 6386881150, ADR-040 draft 6387566660, OQ-1 coursework OUT + A-wave 6389527849/6389726884, Ask-1 outcome 6396397891) stays on #352 of record; this PR's body links them; #352 to be closed RELANDED-BY-THIS-LANE after merge (reopenable by law).",
+  "followups": [
+    "DONE: #352 closed superseded-by-reland (comment 6498682705)",
+    "DONE: landing proof of record (merge CI 2/2 + Vercel commit status SUCCESS + live no-regression probes)",
+    "#285 rebase lane remains queued (recommended owner T-SM chain #276 per the triage receipt) — note its CI head DID get check-runs (silent-red class, not the drop class), so a rebase + fresh CI re-judges it",
+    "CRITICAL-OPERATOR: Vercel PAT reissue (lost with sandbox reset; GitHub PAT still functional) + GitHub PAT rotation still overdue",
+    "CI-channel zero-check-runs class: the ops lane proposed by the triage receipt remains open"
+  ]
+}

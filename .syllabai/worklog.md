@@ -22323,3 +22323,38 @@ Stage Summary:
 - Skipped: #285 1c2dd54d (FAIL verify+hub), #296 bd2c0b1e (FAIL hub), #352 13bfea93 (NO-CI, stall ~126h+), #446 c8d32a49 (NO-CI — static-four triage receipt, awaits first CI)
 - Lane status: #303 CLOSED UNMERGED this window (static four -> static three); main advanced 544c3700 -> 2c370ea4 (T-HUB-LOOSE-COPY-1 landing addendum) before sweep merges; #444/#445 landed earlier by lane (8b1380b1, 544c3700)
 - Bookkeeping-only: this commit touches .syllabai/worklog.md only; fetch-first, ff-only push, no force
+
+## T-SM-ROOT-LAW-1 run-001 — the #352 rebase lane lands the deterministic subject-root law (Z.ai session web-528c0352, trace 1a187e90cb20a989, 2026-10-29)
+
+Operator order: "start a #285 or #352 rebase lane next" — acting on the T-PR-TRIAGE-1 run-001 verdict "#352 KEEP-OPEN — rebase lane required" (receipt .syllabai/receipts/T-PR-TRIAGE-1/run-001-static-four-red-r0.json).
+
+- Drift audit first-hand: git diff 3af8fdb6..origin/main over the two touched code files = EMPTY (zero drift since the PR base); the dup-code .find() hazard confirmed live at apps/hub/src/lib/core-topics.ts:89; subject-root.{ts,test.ts} and both r0 receipts confirmed absent on main @ 28346abe.
+- Landed byte-exact from pr-352-head 13bfea93 (git-hash-verified EXACT per file): apps/hub/src/lib/subject-root.ts (pickSubjectRoot — single-hit resolves; multi-hit resolves by the registry row's curriculumCode cv pin per the seed cv law; ambiguity without a pin refuses deterministically), subject-root.test.ts (7 law cases), core-topics.ts (rootIdForCourseCode gains the optional cv pin; cv-aware memo key `${code}\u0000${cv ?? ""}`; misses still never memoized), api/core/questions/route.ts (the bridge route passes row.curriculumCode), receipts T-SM-ROLLOUT/{0452-tiebreak-r0,registry-gap-audit-r0}.json.
+- The PR's stale worklog hunk (the Oct-24 entry) deliberately NOT transplanted — this fresh entry is the worklog of record for the same content (same disposition as the #296 reland).
+- Gates: subject-root.test.ts 7/7; hub lib suite 366 pass / 0 fail (the r0 recorded 285/5 with the dual-run-posture block pre-existing — since fixed upstream; posture strictly improved); root typecheck + hub tsc byte-identical to clean main (sandbox-only missing-test-dep artifacts, not ours); build:hub exit 0 (the hub normative type gate).
+- Zero API changes; the frozen OrderByCode port contract untouched; the CLA route inherits the deterministic-refusal posture unchanged (optional 3rd param).
+- Lane receipt: .syllabai/receipts/T-SM-ROOT-LAW-1/run-001-rebase-reland-r0.json; branch t-sm-root-law-1/r0; fetch-first, no force, no DB contact.
+
+---
+Task ID: T-SPECS-CIE-REJOIN-2 run-002-dup-repair-r0 (the CONSUME-2-filed residual "rejoin owners, one line"; owner session chat 0283e086)
+Agent: r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Discharged the filed REJOIN-2 in-item duplicates residual at source: fetch-first census EXACT vs the GATE-2/CONSUME-2 pins (11 dup items / 12 surplus byte-identical twin entries / GT7 census base 1,759) across business-23 (5), computer-science-19 (2), maths-20-mechanics (4).
+- Repair of record (resources 7765e43f..267cd49e, FF no force, race-guard clear): order-preserving FIRST-WINS dedup inside the affected items' codes arrays — the kept entry IS the original landing payload (provenance preserved); codes census 1,759 -> 1,747; manifest BYTE-UNTOUCHED (verified counter-free for code entries); totals/review_state/anchors/pending deep-equal; footprint exactly 3 sidecars + engine + battery + record/check.
+- Battery DR1-DR6 6/6 PASS (independent HEAD-blob re-derivation; later-twin-removal-only mutation law; post-census 0; engine re-run zero-write; DR6 consume-plane inertness: all 11 items retain the exact payload the consume's per-official_id attach already used — v2 outcome unchanged, zero v2 contact).
+- CI receipts (bounded 6 windows): official-export-gates + corpus-gates SUCCESS @ 267cd49e; sync in_progress at bound — disclosed, not asserted. Noted: the formerly-RED G-E1 export gate now passes (its owners' cure landed interim).
+- Engine defect note of record: the REJOIN-2 cascade's per-item dedup missed multi-ref cure paths for these 11 items; the repair engine's pre-pins + twin discipline make the class non-recurrent (any non-identical duplicate refuses fail-closed).
+- Zero v2 tree contact; no prod/DB contact; no token printed/persisted. PAT rotation standing order REITERATED (CRITICAL-OVERDUE).
+
+Stage Summary:
+- The JOIN-2 chain's last owed residual CLOSED at source: sidecars dedup-honest (0 in-item duplicates), consume outcome unchanged by construction, manifest history byte-preserved. LANE r0: IDLE.
+
+## T-SM-ROOT-LAW-1 run-001 landing addendum — 2026-10-29 (Z.ai session web-528c0352, trace 1a187e90cb20a989)
+
+- PR #450 merged as ad98fb69 (merge_method=merge, no force); merge-commit CI 2/2 (verify+hub); branch CI was the FIRST CI judgment of the #352 content ever (its original head never received a check-run — the drop class did not recur on this lane).
+- #352 CLOSED as superseded-by-reland with evidence comment (issue comment 6498682705); the operator-ruling thread stays on #352 of record.
+- Deployment proof WITHOUT the Vercel PAT (lost with the sandbox reset — /home/z/my-project/.secrets wiped, token unrecoverable by law): GitHub-side Vercel commit status on ad98fb69 = SUCCESS (target vercel.com/syllab-ai/syllabai-hub-v2/9PMXtfyLNcNkLptwtGoiheCMisYx).
+- Live spot-checks 14:02:56Z+ @ https://syllabai-hub-v2.vercel.app: /api/health 200 {status:ok, coreConfigured:true} (x-vercel-cache MISS — fresh from the function); /api/core/questions?course=igcse-chemistry-19 and ?course=0452-25 both 200 clean auth-gated refusals, zero 500s — no-regression posture; the law's positive proof stays with CI 2/2 + subject-root 7/7.
+- CRITICAL-OPERATOR flags: Vercel PAT reissue (this lane) + GitHub PAT rotation (standing, overdue).
+- Bookkeeping-only (.syllabai/** only): receipt landing block + this addendum; fetch-first, ff-only push, no force, no DB contact.
