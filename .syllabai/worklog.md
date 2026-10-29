@@ -22502,3 +22502,13 @@ Work Log:
 
 Stage Summary:
 - The operator's command discharged END-TO-END: corpus import/notes-cache harvest re-run at pin 1a5c37bc -> notes plane re-consumed through the of-record engines (90 courses) -> CI GREEN after the adjudicated remedy -> auto-bake READY -> frontend spot-check PASS (defects absent, math typeset). Residuals of record: pilot igcse-chemistry-19 + igcse-geography-19 keep pre-fix text until their curation-replay lanes; EQ/FC/Official-Specs corpus waves at the pin unconsumed (queued gated lanes); the \text{} debris cleanup = the follow-up curation lane (baseline refrozen to the corpus-of-record meanwhile). LANE RN-RECONSUME-1: DONE.
+
+## R0-AUTO-81 receipt — 2026-10-29T21:36Z (Job 438940, sweep 05:30+08)
+- Task ID: 120 (R0-auto trace cron-agent-loop-202610300530)
+- Merged (1/2 quota): PR #458 docs(T-MG-MARK-PARITY-1) run-001 — MathsGenie marking-model dossier + plan + provenance (3 files +467/-0: receipts/tasks .syllabai x2 + docs/MG-MARK-PARITY-PLAN.md)
+- Head: fd030d42 | Merge sha: 1a5582a2 (@21:43Z, authoritative branch-head verified) | merge_method=merge, no force
+- Gates: head CI 2/2 success; mergeable=clean; reviews=0 comments=0; body clean; boundary PASS (no *.java, no external core/hub, no Neon/prod); base ff63de2e CI 2/2 GREEN confirmed pre-merge; author SyllabAI, no recusal conflict
+- Post-merge: main tip 1a5582a2 CI 2/2 GREEN (bounded re-check x2, hub ~3min)
+- Skipped: #296 bd2c0b1e (FAIL hub, sole static remainder), #461 86d71d38 (NO-CI at my gate — landed anyway via author race-guard intake + re-fire, merged by the parallel instance as 1122b54b while my receipt was in flight; their desk's gates)
+- Window ledger: #454 MERGED 19:44:54Z (author re-fired CI post my NO-CI+dirty skip — remedy path of record worked as designed); #463 merged 3547b71f (FIGURES-2.1B caption source-label drop); static-two -> static-one (#285 closed unmerged by author 18:05Z yesterday)
+- Bookkeeping-only: this commit touches .syllabai/worklog.md only; fetch-first, ff-only push, no force
