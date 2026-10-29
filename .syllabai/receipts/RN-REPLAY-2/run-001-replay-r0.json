@@ -1,0 +1,58 @@
+{
+ "receipt": "RN-REPLAY-2-run-001",
+ "family": "HUB-CORPUS-REPLAY",
+ "operatorTrace": "1a18983973a80779",
+ "operatorOrder": "fire the pilot/geography replay lanes",
+ "agent": "r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, chat 0283e086-b297-4875-912b-a9f4fd722dc5)",
+ "generatedUtc": "2026-10-29T21:58:11Z",
+ "pins": {
+  "resourcesSha": "1a5c37bcecf379cd98e83aa74aa9472920092428",
+  "pinVsTip": "operator pin of record (RN-RECONSUME-1); SME-RevisionNotes tree-identical pin..tip 3b2ce8da (zero-path proof); resources pin-range delta for both subtrees == RN-FIX-1 + PR-#220 waves EXACTLY (chem 15 paths / geo 14 paths)",
+  "v2Base": "4be637f71023a01985c24bb1c05905b8813d0793",
+  "v2Landing": "bbf9203f63815fe888d83c31528d532ebad1fb79"
+ },
+ "scope": {
+  "plane": "notes-plane only (2 notes.json files; manifests byte-untouched)",
+  "courses": [
+   "igcse-chemistry-19",
+   "igcse-geography-19"
+  ],
+  "notConsumed": "EQ/FC/Official-Specs corpus waves at the pin remain queued gated lanes (unchanged from RN-RECONSUME-1 residuals)"
+ },
+ "adjudication": {
+  "chemPilot": "pilot law replay, NO flip (treeKind stays 'official'): fresh build_bundles.py note-path derivation at the pin + committed curated Phase-1/2 linkage restored byte-equal; 10 notes carry corpus-fm spec_point_codes strictly SUBSET of the committed curated superset (corpus-side fm drift disclosed, committed wins per the exclusion ruling); raw inline spcpt_* posture preserved (162; frontend-sanitized per note-body-fix.ts Task-19 law)",
+  "geoReexport": "flip + committed-law restore: fresh sme-native derivation -> of-record flip (committed spine + content-map; stats notes=102/unmapped=4/inlineResidual=3) -> flip-vs-origin divergence reproduced first-hand = 98 notes x 2 fields = 196 EXACT -> committed 4GE1-* display law restored per note + inline bijection re-applied (258 spine-form refs -> 4GE1 form, 3 flip-residual tokens stay raw)",
+  "derivationFidelity": "real-delta body set (pin-normalized) = 8 notes per course, 1:1 with the changed md files at the pin; classes = T4 emphasis tightening + PR-#220 math-wave \\frac repairs + T5 speech-code-span reversal; metadata byte-stable; note sets + order identical (112/102)"
+ },
+ "gates": {
+  "filePurity": "exactly 2 notes.json modified, NOTHING else (manifests/maps/spines/questions/flashcards/curriculum byte-untouched)",
+  "linkageFidelity": "ZERO mismatches vs origin for smeSpecPointIds/specPointIds/specPointCodes across 214/214 common notes; key-shape law held (chem carries NO smeSpecPointIds key per committed pilot law)",
+  "noteSetDelta": "+0/-0 both courses; order identical",
+  "metadataFidelity": "title/sourceUrl/guidedStudy/path/sectionSlug/topicSlug/updatedAt byte-equal x 214 notes",
+  "serialization": "Pearson compact law: single-line, ensure_ascii=False, no trailing newline (committed per-line convention preserved)",
+  "defectCensus": "APL=0 speech=0 *F *=0 2pif=0 omega-star=0 spine-form=0 across both refreshed bundles",
+  "fixOfRecordSpans": "chem 'Δ*H =*' PRESENT; geo '*Clarke-Fisher Model*' + '*Global energy use per person*' PRESENT",
+  "inlinePostures": "chem 162 raw tokens preserved; geo 258 4GE1 refs + 3 raw residuals preserved",
+  "manifestsUntouched": "counts recompute not required (note sets identical); chem manifest's ADR-037 official-papers pin chain + geo EDBUMP-1 stamp left to their owning lanes; refresh provenance = this receipt + worklog"
+ },
+ "ciRun": {
+  "sha": "bbf9203f63815fe888d83c31528d532ebad1fb79",
+  "verdict": "GREEN — verify + hub completed success, bounded poll 3/4 windows"
+ },
+ "bakeWitness": {
+  "deployment": "dpl_ELwzgkh52Lvt8i9UHCy1goQx9Wyv READY (git-connected auto-bake, production)"
+ },
+ "spotCheck": {
+  "corpusPlane": "/corpus/igcse-chemistry-19/notes.json (112 notes) + /corpus/igcse-geography-19/notes.json (102 notes): defect census ALL ZERO, fix-of-record spans PRESENT, pin advanced to 1a5c37bc, old pins (aa0b4de1/08447ba9) gone",
+  "pageSurface": "/courses/igcse-chemistry-19/revision-notes/rn_2VnK66PqbvFKdKYt (200) + /courses/igcse-geography-19/revision-notes/rn_GKcgJscg9VX6rG9G (200): defect hits ALL ZERO, pin advanced",
+  "verdict": "FRONTEND SPOT-CHECK PASS — the pilot and geography courses now serve the fixed notes with curated linkage intact"
+ },
+ "disclosures": [
+  "chem-19: 10 corpus-fm linkage drift notes (committed superset preserved; strict-subset class)",
+  "geo-19: flip notesUnmapped=4 (empty linkage both sides, byte-equal); 3 unresolved inline tokens stay raw (committed posture; frontend-sanitized)",
+  "manifests byte-untouched — provenance recorded here + worklog only",
+  "lane scripts: scripts/rn_replay2_*.py in the session workspace (derive/apply/land/witness)"
+ ],
+ "tokenLaw": "GITHUB_PAT/VERCEL_PAT env-only (credential helper; Vercel read-only); zero token bytes printed or persisted",
+ "pushLaw": "fetch-first, race-guarded rebase (origin moved 4be637f7->0d3c50ee mid-lane, clean), FF push no force, zero DB contact"
+}
