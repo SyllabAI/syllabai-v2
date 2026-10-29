@@ -594,10 +594,11 @@ function GateStage(p: StageProps) {
   const prevKeyPoints = prev ? prev.keyPoints.slice(0, 3) : [];
   const prevRest = prev ? prev.keyPoints.length - prevKeyPoints.length : 0;
   const resumed = Object.keys(state.answers).length > 0;
-  // Figures layer (1.1, SME-faithful placement — evidence walk receipt
-  // SME-GUIDED-STUDY-figures-walk-20261028.json): the module's own diagrams render
-  // immediately after the opening plain-words text, before the key points; a module
-  // without figures renders nothing (fail-closed, identical to the 1.0 generation).
+  // Figures layer (hub/lesson-import/1.2, FIGURES-2.1 explain-dont-list — adapter spec
+  // 0.3→1.2 §6, superseding the 1.1-era after-opening placement): the module's own
+  // diagrams render AFTER the key points they illustrate, caption-first (operator trace
+  // 1a188a15ac19ed05 — SME explains with its diagrams, it does not list them); a module
+  // without figures renders nothing (fail-closed, identical to earlier generations).
   const moduleFigures = figuresForModule(lesson, moduleOrdinal);
   return (
     <Card>
@@ -609,8 +610,6 @@ function GateStage(p: StageProps) {
           <h2 className="text-lg font-semibold tracking-tight">{m.title}</h2>
           <p className="text-[13px] leading-relaxed text-muted-foreground">{m.opening}</p>
         </div>
-
-        {moduleFigures.length > 0 && <ModuleFigures figures={moduleFigures} />}
 
         <div className="space-y-2">
           <p className="text-sm font-medium">What you know already</p>
@@ -658,6 +657,8 @@ function GateStage(p: StageProps) {
             ))}
           </ul>
         </div>
+
+        {moduleFigures.length > 0 && <ModuleFigures figures={moduleFigures} />}
 
         <fieldset className="space-y-2">
           <legend className="text-sm font-semibold">Tell us your confidence level against the key points</legend>
@@ -720,25 +721,30 @@ function GateStage(p: StageProps) {
   );
 }
 
-/** Figures layer (hub/lesson-import/1.1): the parent revision note's own diagrams —
- *  zero new hosting, the same hotlink path the notes reader serves. Same CLS-guarded
- *  markup as the notes reader (UX audit 2026-10-02 #21): fixed 16:9 box with
- *  object-contain reserves the layout, nothing shifts; alt is mandatory upstream. */
+/** Figures layer (hub/lesson-import/1.2, FIGURES-2.1 explain-dont-list): the parent
+ *  revision note's own diagrams — zero new hosting, the same hotlink path the notes
+ *  reader serves. Same CLS-guarded markup as the notes reader (UX audit 2026-10-02 #21):
+ *  fixed 16:9 box with object-contain reserves the layout, nothing shifts; alt is
+ *  mandatory upstream. Presentation law of record (adapter spec 0.3→1.2 §6, operator
+ *  trace 1a188a15ac19ed05): caption-first — the note's own explanatory line when the
+ *  source has one, the "sourceHeading — from the revision note" provenance line always;
+ *  the 1.1-era block-level label is removed (the diagrams are part of the lesson, not a
+ *  provenance gallery). Fail-closed: a module without figures renders nothing. */
 function ModuleFigures({ figures }: { figures: GuidedFigure[] }) {
   return (
-    <div className="space-y-2">
-      <p className="text-sm font-medium">Diagrams from the revision note</p>
-      <div className="grid gap-2 sm:grid-cols-2">
-        {figures.map((f) => (
-          <span
-            key={f.id}
-            className="block aspect-video w-full overflow-hidden rounded-md border bg-muted/40"
-          >
+    <div className="space-y-3">
+      {figures.map((f) => (
+        <figure key={f.id} className="space-y-1.5">
+          <span className="block aspect-video w-full overflow-hidden rounded-md border bg-muted/40">
             {/* eslint-disable-next-line @next/next/no-img-element -- corpus hotlink law, identical to the notes reader img: branch */}
             <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
           </span>
-        ))}
-      </div>
+          <figcaption className="space-y-0.5">
+            {f.caption && <p className="text-[13px] leading-relaxed">{f.caption}</p>}
+            <p className="text-xs text-muted-foreground">{f.sourceHeading} — from the revision note</p>
+          </figcaption>
+        </figure>
+      ))}
     </div>
   );
 }

@@ -175,13 +175,7 @@ export default async function GuidedLessonPage({
                   </p>
                   <div className="grid gap-2 sm:grid-cols-2">
                     {noteLevelFigures(imported).map((f) => (
-                      <span
-                        key={f.id}
-                        className="block aspect-video w-full overflow-hidden rounded-md border bg-muted/40"
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element -- corpus hotlink law, identical to the notes reader img: branch */}
-                        <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
-                      </span>
+                      <StaticFigure key={f.id} f={f} />
                     ))}
                   </div>
                 </section>
@@ -250,13 +244,7 @@ function StaticModuleSection({
         {figures.length > 0 && (
           <div className="grid gap-2 sm:grid-cols-2">
             {figures.map((f) => (
-              <span
-                key={f.id}
-                className="block aspect-video w-full overflow-hidden rounded-md border bg-muted/40"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element -- corpus hotlink law, identical to the notes reader img: branch */}
-                <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
-              </span>
+              <StaticFigure key={f.id} f={f} />
             ))}
           </div>
         )}
@@ -287,6 +275,26 @@ function StaticModuleSection({
         </Card>
       )}
     </section>
+  );
+}
+
+/** Figures layer (hub/lesson-import/1.2, FIGURES-2.1 explain-dont-list): the same
+ *  figure card the lesson flow renders — the parent revision note's own diagram
+ *  (hotlink law, CLS-guarded 16:9 box, alt mandatory), caption-first: the note's
+ *  own explanatory line when the source has one, the "sourceHeading — from the
+ *  revision note" provenance line always. Fail-closed: no caption → provenance
+ *  line only. */
+function StaticFigure({ f }: { f: GuidedFigure }) {
+  return (
+    <figure className="space-y-1.5">
+      <span className="block aspect-video w-full overflow-hidden rounded-md border bg-muted/40">
+        <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
+      </span>
+      <figcaption className="space-y-0.5">
+        {f.caption && <p className="text-[13px] leading-relaxed">{f.caption}</p>}
+        <p className="text-xs text-muted-foreground">{f.sourceHeading} — from the revision note</p>
+      </figcaption>
+    </figure>
   );
 }
 
