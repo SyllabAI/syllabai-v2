@@ -96,12 +96,14 @@
   "environmentRecoveryOfRecord": "sandbox recycled between run-023 landing and this run: all run-0xx session scripts lost; local clone reset to an Oct-23-era state MISSING the entire T-OEQ lane (0026b4b4/52be5b45 absent from the object store; official-papers.json absent from stale origin/main 4008e6ce). Recovery: fetch-first restored the full store (origin/main 8861ea1c = run-023 tip); main ff-only; askpass rebuilt (zero token bytes); run-020 instruments recovered from the IN-REPO lane-artifacts (the of-record templates survived); hub node_modules restored via bun install --frozen-lockfile (952 packages, run-020 precedent). Probe-before-work discipline caught the stale-clone state before any write.",
   "credentials": "operator PAT re-used from the standing supply (env/GIT_ASKPASS only, inline per command; askpass file zero token bytes; no config/remote-URL/netrc contact). Standing ROTATION-REQUIRED order re-flagged for BOTH tokens (GitHub …JU4, Vercel vcp_…aoT3).",
   "landing": {
-    "branch": "t-oeq-mathsb/run-024",
-    "pr": "PENDING",
-    "ci": "PENDING",
-    "merge": "PENDING",
-    "vercel": "PENDING",
-    "liveSpotCheck": "PENDING"
+    "branch": "t-oeq-mathsb/run-024 PUSHED (86d71d38 content+bookkeeping; f6cbe9de race-guard merge of fast origin/main ff63de2e with .syllabai/worklog.md append-append UNION resolution — the run-023 documented conflict/remedy class, both run-024 and FIGURES-2.1B entries preserved)",
+    "pr": "PR #461 — https://github.com/SyllabAI/syllabai-v2/pull/461",
+    "ciIncident": "zero-check-runs ~20min on the initial PR head (86d71d38) — mergeable unknown/dirty (worklog append-append vs fast main ff63de2e carrying PR #463) = no merge ref = pull_request workflows skip; the run-023 root cause of record REPRODUCED; remedy = merge origin/main into branch with union resolution (f6cbe9de) -> CI fired immediately",
+    "ci": "2/2 GREEN (verify + hub) on merge head f6cbe9de",
+    "merge": "1122b54b merged, merge_method=merge, mergeable clean",
+    "vercel": "commit status SUCCESS on merge sha 1122b54b ('Deployment has completed') — the run-022 canceled-from-dashboard class did NOT recur; status channel healthy",
+    "liveSpotCheck": "PASS — corpus endpoint sha16 f91f4c1b9d53bec3 EXACT (3,717,560B; deploy propagation observed live: old pin 21f5369e x7 probes then new pin on attempt 8, ~6min post-merge); page markers 13/13 across 4 pages: june-2022-4mb1-01r 4/4 ('$L^2$','$AD^2$','may see $AC^2$','$3^2$'), june-2024-4mb1-02 4/4 ('$a^2$ = $b^2$','$EH^2$','$BF^2$','$DH^2$'), june-2021-4mb1-02 2/2 ('$AD^2$','$8.4^2$'), june-2020-4mb1-01 3/3 ('$x^2$','$4^2$','kx'); RSC escaped-\\n + whitespace-collapsed matching per §7",
+    "credentials": "operator PAT env/GIT_ASKPASS inline per command; askpass helper REBUILT mid-run (workspace wipe discovered at push leg — zero token bytes); standing ROTATION-REQUIRED re-flagged (GitHub …JU4 re-supplied from summary record; Vercel vcp_…aoT3 untouched)"
   },
   "nextSafeActions": [
     "run-025 wave-2: residual 142 units over the deduped worklist — read-order artifacts of record (run024_read_order.json greedy high-yield + run024_pagemap.json full 207-page map + rendered PNG set)",

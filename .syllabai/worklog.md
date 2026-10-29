@@ -22512,3 +22512,9 @@ Stage Summary:
 - Skipped: #296 bd2c0b1e (FAIL hub, sole static remainder), #461 86d71d38 (NO-CI at my gate — landed anyway via author race-guard intake + re-fire, merged by the parallel instance as 1122b54b while my receipt was in flight; their desk's gates)
 - Window ledger: #454 MERGED 19:44:54Z (author re-fired CI post my NO-CI+dirty skip — remedy path of record worked as designed); #463 merged 3547b71f (FIGURES-2.1B caption source-label drop); static-two -> static-one (#285 closed unmerged by author 18:05Z yesterday)
 - Bookkeeping-only: this commit touches .syllabai/worklog.md only; fetch-first, ff-only push, no force
+
+## T-OEQ-MATHSB-SERVE-1 run-024 landing addendum — 2026-10-30
+- PR #461 merged 1122b54b (CI 2/2 green on race-guard merge head f6cbe9de); zero-check-runs incident of record: run-023 class REPRODUCED (worklog append-append vs fast main = mergeable dirty = workflows skip) — remedy = merge origin/main + UNION resolution (both run-024 and FIGURES-2.1B worklog entries preserved)
+- Vercel commit status SUCCESS on merge sha (run-022 canceled-from-dashboard class did NOT recur); corpus endpoint sha16 f91f4c1b9d53bec3 EXACT (deploy propagation observed live: 21f5369e x7 then new pin on attempt 8, ~6min post-merge); live spot-check 13/13 markers across 4 pages (22-a L^2/AD^2/AC^2/3^2, 2024-06 7 EH^2/BF^2/DH^2/cosine-rule a^2=b^2, 10-b AD^2/8.4^2, 2020-06 01 x^2/4^2)
+- askpass helper rebuilt mid-run (workspace wipe found at push leg; zero token bytes, env-only); PAT rotation standing order re-flagged
+- Wave-2 queue of record: 142 residual units (deduped worklist) + mirror-sync leads (7-a glyph delta, 26-twin split) + 10-b Method II content-loss filing; read-order artifacts of record in run-024 lane-artifacts
