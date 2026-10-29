@@ -1,0 +1,41 @@
+{
+  "band": "T-DC3-REBASE-1",
+  "run": "run-001",
+  "at": "2026-10-29T18:04:17Z",
+  "order": "operator IM trace 1a188ce31d507789: '#285 rebase lane' — the second of the two T-PR-TRIAGE-1 rebase lanes",
+  "executor": "main agent (Z.ai, zai-web session web-528c0352, chat a7ae5075)",
+  "parent_of_record": "T-PR-TRIAGE-1 run-001 verdict '#285 KEEP-OPEN — REBASE LANE REQUIRED' (receipt .syllabai/receipts/T-PR-TRIAGE-1/run-001-static-four-red-r0.json)",
+  "verdict": "SUPERSEDED-BY-OF-RECORD-DERIVATION — NO CODE LANDS. The DC-3 re-attempt economics feature is ALREADY OF RECORD on main via 1e69c49c (2026-10-22 11:59:33Z, the T-SM chain lane the triage receipt itself named as recommended owner): migration 0009_dc3-mark-entitlement + the inline gate of record in apps/api/src/services/smartmark/index.ts + routes/smartmark wiring + docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md + a 461-line test file (14 tests / 4 describes). Landing the PR's derivation now would create a SECOND ordinal substrate (a smart_mark_results.attempt_ordinal column alongside the of-record append-only ai_mark_events ledger) — dual count sources, the exact nondeterminism class the house laws refuse. #285 closes superseded, reopenable by law.",
+  "triage_correction_of_record": "T-PR-TRIAGE-1 run-001's supersession probe for #285 was a FALSE NEGATIVE: its 'zero dc3/reattempt commits on main' clause does not survive first-hand re-derivation — 1e69c49c ('dc3-reattempt-entitlement: ...') landed 2026-10-22, a week BEFORE the triage ran (10-29). Root cause: the probe searched for the PR's file layout (apps/api/src/services/smartmark/entitlement.ts — indeed absent) instead of the feature; the of-record implementation lives INLINE in apps/api/src/services/smartmark/index.ts (§'DC-3 re-attempt entitlement (the gate of record)') under a RENAMED plan doc (DC3-REATTEMPT-ENTITLEMENT-PLAN.md vs the PR's DC3-REATTEMPT-ECONOMICS-PLAN.md) with the migration under a different tag (0009_dc3-mark-entitlement). The triage receipt's #285 verdict is hereby corrected of record: not KEEP-OPEN-rebase-lane but SUPERSEDED (the '#285 rebase lane' operator order is discharged by this receipt without a code landing).",
+  "comparison_matrix": {
+    "feature_identity": "spec §3.3 re-attempt economics (spec docx sha 0da8044a, byte-recovered): one free AI mark per part per scheme revision; paid unlimited; trial pending product sign-off",
+    "mechanism": "PR: attempt_ordinal first-class COLUMN on smart_mark_results + created_at-order backfill (migration 0008) — counts read off the mark rows. MAIN OF RECORD: append-only ai_mark_events LEDGER ((learner, part, ordinal) UNIQUE, CHECK ordinal>=1) + mark_entitlement_policies/mark_entitlements side tables (0006 class_features precedent; row-absent learner = free) — counted at the markAttempt path, never inferred. DIVERGENT BY DESIGN: the ledger is race-fail-closed and leaves the mark rows untouched.",
+    "gate_site": "PR: route handler body at student smartMarkAttempt before the pass. MAIN: runEntitledPass — the WHOLE pass (advisory xact lock per (learner,question) → ordinal counts → policy decision → engine pass → ledger stamp) inside ONE transaction on the caller's tx runner; a refused pass rolls back to exactly nothing; whole-pass refusal, never half-marked. STRONGER than the PR.",
+    "scheme_revision_keying": "PR: keyed (learner, part, mark_scheme_id). MAIN: per-part prior counts off version-scoped part ids — 'the count per scheme revision by construction (acceptance (b))'. EQUIVALENT INTENT, different substrate.",
+    "teacher_queue_site_R11": "PR R11: AI marks insert from TWO sites (student pass + teacher queue engine copy) — ordinal stamped at BOTH. MAIN: the teachermarking service has ZERO ledger references, and the of-record plan doc RULES the question at line 110: the teacher queue's own marking is school work, not learner-facing re-marks (deliberate exemption — teacher marks neither consume nor count toward learner entitlement). DISPOSITIONED DIFFERENTLY, OF RECORD — not an oversight.",
+    "refusal_shape": "PR: 409 + the spec's disclosure sentence. MAIN: 402 entitlement_required (routes/smartmark:84) + FREE_TIER_DISCLOSURE ('Your first mark on this part is free -- re-marks need a paid plan.') + trialDisclosure(n) with honest counts. Same sentence family; 402 is the of-record mapping.",
+    "trial_posture": "BOTH unshipped pending product sign-off — spec open question (a) stays open of record; main ships the policy ROW mechanism with the trial tier gated on the operator ruling.",
+    "tests": "PR: 260-line file. MAIN: 461 lines, 14 tests across policy pin (a) / ordinal pin (b) / copy review (c) / envelope+wire — the spec's acceptance pins.",
+    "migration_slot": "PR's 0008 is UNUSABLE as-is: main's journal advanced 0008→0016 (teaching_toolkit took 0008; 0009 IS the dc3 migration; ADR-040 0015/0016 among the nine added since the PR base c390ce16)."
+  },
+  "residual_rider_filed_not_executed": "the PR's R11 concern survives in one narrow form: teacher-queue AI marks do not stamp the learner ledger (of-record ruling: school work). If the operator ever wants mark-ROW ordinal truthfulness (attempt_ordinal readable off smart_mark_results for audit/display), that is a NEW small additive lane (derive-at-read or backfill from the ledger), NOT a reopen of #285's competing substrate.",
+  "changes": [
+    { "file": ".syllabai/receipts/T-DC3-REBASE-1/run-001-superseded-by-of-record-r0.json", "what": "this receipt of record (the lane's discharge)" },
+    { "file": ".syllabai/worklog.md", "what": "T-DC3-REBASE-1 run-001 entry" }
+  ],
+  "verification": {
+    "first_hand": "PR #285 read live via API (12 files, 1 commit 1c2dd54d, base c390ce16); the of-record implementation read first-hand on origin/main 0026b4b4 (gate code lines 1486-1580, disclosure copy 1395-1410, route wiring :84/:203); journal tags read first-hand (0008_teaching_toolkit, 0009_dc3-mark-entitlement, ..., 0016_adr040-scheme-part-binding)",
+    "landing_provenance": "git log: 1e69c49c dated 2026-10-22T11:59:33Z; no separate entitlement.ts file on main (inline of record)",
+    "no_code_landed": "zero bytes of the PR applied; the branch audit was read-only against pr-285-head fetched locally"
+  },
+  "scope_guards": [
+    "no app code touched by this lane; bookkeeping-only (.syllabai/**)",
+    "no force; fetch-first; the PR closes WITH an evidence comment and stays reopenable by law",
+    "no DB contact"
+  ],
+  "followups": [
+    "static-four-red status after this lane: #296 relanded, #303 closed broken-vehicle, #352 relanded via T-SM-ROOT-LAW-1 (PR #450), #285 closed superseded-by-of-record — ALL FOUR DISPOSED; the triage queue is EMPTY",
+    "residual rider: mark-row ordinal truthfulness (R11 form) — operator-gated new lane if wanted",
+    "triage-probe lesson of record: supersession probes must search FEATURES (message+content greps, migration tags, plan-doc renames), not the PR's file layout"
+  ]
+}
