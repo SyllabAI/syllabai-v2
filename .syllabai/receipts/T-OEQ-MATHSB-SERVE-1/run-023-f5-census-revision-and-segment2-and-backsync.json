@@ -1,0 +1,75 @@
+{
+  "lane": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-023-f5-census-revision-and-segment2-and-backsync",
+  "title": "F5 census-class revision + token-fixable subclass attribution; q10(b) head-row completion + q11(a)/(b) overspill reunite (Tier-B class, operator-authorized); corpus back-sync +6 pids with 6/6 EXACT exporter verification",
+  "operatorOrder": "158 trigger leads with token-fixable subclass + F5 census revision (run-020 menu), q10(b) head-row / 11-a carrier completion class, corpus back-sync + 5 pids (to catch the next converter run)",
+  "operatorTrace": "1a188f9c0b718705",
+  "date": "2026-10-29T19:20Z+",
+  "environmentRecoveryOfRecord": "sandbox recycled between run-022 landing and this run: /home/z/my-project re-materialized from an older snapshot (all run-0xx session scripts lost; local v2 clone reset to an Oct-23-era detached state missing 0026b4b4 from its object store). Recovery: git fetch restored the full object store (origin/main d4a2311f INCLUDES the run-022 landing addendum 0026b4b4 plus T-DC3-REBASE-1 and T-SPEC-KG-REEXPORT-1 landings); local main ff'd to d4a2311f; askpass rebuilt (zero token bytes). All of-record run-022 work verified intact upstream.",
+  "planeOfRecord": {
+    "before": "a794747f1a503e12",
+    "afterSegment2": "fbc7f383ed8f5843",
+    "afterTrim": "21f5369ea4e228a1",
+    "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+  },
+  "f5CensusRevision": {
+    "instrumentLineage": "run018_gs_census.py byte-clone + F5 revision of record (run-020 filings.F5_censusClassDisclosures, operator-ruled this run): (a) U1 uppercase-sup class ADDED (glued [A-Z]\\d{1,2} + detached [A-Z] \\d{1,2}) with mark-code hygiene (playbook \u00a71.3 glued-token-aware law regex strips bare M1/A1/B1-class tokens before the U1 scan \u2014 without it U1 floods to 2386 parts of mark-code false positives; with it U1 = 449 parts fleet-wide, 86 in the trig bucket); (b) sin/cos/tan stem FP suppressed from G1-G3 (matched letter ending si|co|ta = print-verbatim keyword, e.g. 'sin 20' -> 'n 20'); (c) fraction-splinter weaves re-classed FS-excluded (G2/G3 hit with >=2 splinter shapes in a \u00b124ch window \u2014 '18 x'/'1 2x'/'3 8x' are fraction linearizations, not superscripts); (d) DELETED-sup stays UNREGEXABLE (disclosed instrument limitation, unchanged law)",
+    "dualTrack": {
+      "preF5": {"trigBucket": 158, "G1": "275(60 trig)", "G2": "2023(158)", "G3": "246(7)", "G4": "120(27)", "B1": "0", "P1": "0"},
+      "postF5": {"trigBucket": 153, "G1": "234(21 trig)", "G2": "1883(148)", "G3": "88(2)", "G4": "120(27)", "B1": "0", "P1": "0", "U1": "449(86 trig, newly visible)"},
+      "netEffect": "158 -> 153 (F5b/c suppression outweighs F5a visibility on the bucket; U1 adds 86 trig parts to the census-visible population)",
+      "continuityProof": "pre-F5 track reproduces the of-record 158 at both census pins (a794747f and 21f5369e)"
+    },
+    "artifacts": [".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-023/f5-census-revised.json (baseline pin a794747f1a503e12)", ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-023/f5-census-post-run023.json (final pin 21f5369ea4e228a1, counts IDENTICAL \u2014 segment-2+trim moved zero bucket counts)"]
+  },
+  "tokenFixableSubclass": {
+    "definition": "post-F5 trig-bucket parts carrying >=1 token-shape class hit (G1/G2/G3/U1 sup debris, B1 caret, P1 PUA); excludes whole-cell rebuild classes (F4/F6) and FS fraction weaves",
+    "count": 153,
+    "disposition": "FILED as the tranche-2 worklist of record (f5-census-post-run023.json tokenFixableSubclass.parts[]); execution is evidence-gated per-part eyes-on (NO-GUESS law) and rides the next tranche \u2014 the census revision + attribution IS this run's ordered deliverable for the subclass",
+    "twinPairsNoted": "several worklist entries are content-identical across series (2020-06/2020-11 q16/q26/q28 same counts) \u2014 dedupe opportunities for tranche-2"
+  },
+  "segment2": {
+    "evidence": "9 MS pages of record READ first-hand at 150dpi across runs 022-023; THIS run: ms-2021-06-02 p20 (staged run-020), p24 (q10 Case 3 close + Total 10 marks), p25 (q11(a) complete 4-row block closing 'A1 (449 or better) For reference: 448.7953623\u2026', part total 5), p26 (q11(b) complete 6-row block, part total 6, 'Total 11 marks') \u2014 PNGs staged in run-023 lane-artifacts",
+    "writes": [
+      "W1 offp_2021-06_02_10-b solutionMd: prepend H (p20 head-row transcription: Method I label + long note incl. NB sentence + 'Case 1: Finding length AB' + FE\u00d7FA=FD\u00d7FB oe / 3.5\u00d78.4=3.0\u00d7FB oe M1 row) + join \\n \u2014 the run-022 filed HEADLESS-blob lead discharged; Tier-B hand-transcription class authorized by the operator order",
+      "W2/W3 offp_2021-06_02_11-a solutionMd + markPoints[2021-06-11-a-MP1].textMd (lockstep): truncate the 11(b) Row-1 overspill fragment T (74 ch, cut mid-note 'Allow with no \u03c0 or') \u2014 field now ends at the true 11(a) close '448.7953623\u2026'",
+      "W4/W5 offp_2021-06_02_11-b solutionMd + markPoints[2021-06-11-b-MP1].textMd (lockstep): prepend T verbatim + join \\n \u2014 reunites the Row-1 the plane had split across two parts (zero overlap with 11-b's existing head: r-form note equation vs (3\u221a3+2)-form answer cell \u2014 run-022 F2 reunite pattern)"
+    ],
+    "trim": "follow-up 1-byte trim: 11-a sol/mp drop the single trailing \\n left by the truncation (the row terminator belonged to the moved fragment's slot; strip_furniture would rstrip it at the next converter run) \u2014 makes the back-synced corpus form == next-run form == plane",
+    "gates": "19/19 GREEN (census 66/1281/2443/6600 pre==post, marks law 6600==6600, changed_set EXACT 5, byte decomposition per-write, boundary anchors, mark-code superset, PUA/FFFD delta-clean, dollar parity, katex spans) + render gate 5/5 through the ACTUAL hub engine (react-markdown + remark-gfm + remark-math + rehype-raw + rehype-sanitize + local rehypeKatexMhchem; H's $\\frac{1}{2}\\times 8.4\\times AB$ renders 1 .katex, zero errors, zero regressions)"
+  },
+  "segment3CorpusBacksync": {
+    "scope": "the operator-ordered +5 pids (run-022 lineage: 2021 10-b/11-a/9-b, 2023 8/9-b) + 11-b (segment-2) = 6 pids / 9 corpus field-writes",
+    "target": "SyllabAI/syllabai-resources Official-ExamQuestion/igcse-maths-b-16/{2021-06,2023-06}/4MB1-02/topic.json @5586acae",
+    "form": "corpus := plane of record values EXACTLY (strip_furniture no-op on all fields as captured); serialization byte-law preserved (indent=1, ensure_ascii=False, no trailing newline; roundtrip-verified True before writes); git diff touches ONLY the 9 fields",
+    "verification": "exporter of record (filed copy unmodified) export_series at the back-synced corpus: 6/6 pids EXACT (solutionMd + markPoints == plane 21f5369ea4e228a1) \u2014 the S2 Total-strip divergence is MOOT for 2023-8 ('Total 7 marks' rides the 'A1 cas' line, fullmatch strip does not fire): ZERO-divergence catch-up, the standing S2 class does not grow",
+    "pr": "SyllabAI/syllabai-resources PR #225 (branch t-oeq-mathsb/run-023-backsync, commit c80077d3)",
+    "note": "the 1461-pid standing back-sync debt (run-021 scope_a) is UNCHANGED by this run; R1/R2 exporter-law menu remains operator-gated"
+  },
+  "disclosures": [
+    "U1 instrument hygiene was required beyond the run-020 F5 filing: bare mark-code tokens (M1/A1/B1 and suffixed forms) are glued-uppercase+digit and match the naive U1 regex 2386 times fleet-wide \u2014 the playbook \u00a71.3 mark-code strip law is now part of the instrument (disclosed as an instrument-level choice, adjudication still governs)",
+    "the token-fixable subclass count (153) is a CENSUS attribution, not an execution count; per-part eyes-on (NO-GUESS) still governs every tranche-2 fix",
+    "G4 fleet count moved 117 -> 120 between the pre-F5 tracks of the two census runs (mark-code strip creates 3 new line-boundary matches) \u2014 trig-bucket G4 unchanged at 27; disclosed as an instrument-interaction artifact",
+    "2021-06-02 q11 print structure adjudicated of record: 11(a) = the WHOLE p25 block (4 M-rows + A1 449, 5 marks incl. the surface-area row), 11(b) = p26 cylinder block (6 marks) \u2014 corrects the naive reading that surface-area content belongs to 11(b)",
+    "corpus topic.json 'generated_utc'/'generator' header fields left untouched (back-sync writes content fields only)"
+  ],
+  "credentials": "operator PAT re-used from this session's supply (env/GIT_ASKPASS only, inline per-command; askpass file zero token bytes; no config/remote-URL/netrc contact). v2 push + resources push + PR APIs consumed it. Standing ROTATION-REQUIRED order re-flagged for BOTH tokens (GitHub \u2026JU4 re-exposed in transit again this session; Vercel vcp_\u2026aoT3 untouched, Vercel API not contacted).",
+  "landing": {
+    "branch": "t-oeq-mathsb/run-023",
+    "status": "PUSH-PENDING",
+    "pr": null, "ci": null, "merge": null, "vercel": null, "liveSpotCheck": null,
+    "resourcesPr": "SyllabAI/syllabai-resources PR #225 CREATED (CI watch + merge pending)"
+  },
+  "nextSafeActions": [
+    "v2 landing: PR -> CI 2/2 -> merge -> Vercel redeploy verify (content-marker flight-parity pattern) -> live spot-check (probe pages: /courses/igcse-maths-b-16/past-papers/june-2021-4mb1-02 q10b head-row + q11a close + q11b reunite)",
+    "resources PR #225: CI watch -> merge (reviewed-PR act per F44 law)",
+    "tranche-2: token-fixable subclass execution over the 153-part worklist (f5-census-post-run023.json), twin-pair dedupe first, per-part page evidence",
+    "PAT rotation (standing order, both tokens)"
+  ],
+  "writeSet": {
+    "content": "apps/hub/content/igcse-maths-b-16/official-papers.json (a794747f1a503e12 -> 21f5369ea4e228a1 via fbc7f383ed8f5843)",
+    "evidence": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-023/ = f5-census-revised.json + f5-census-post-run023.json + run023_seg2_projection.json + run023_render_gate.mjs + ms-2021-06-02-p-24/25/26.png",
+    "corpus": "SyllabAI/syllabai-resources 2021-06/4MB1-02 + 2023-06/4MB1-02 topic.json (PR #225)",
+    "scriptsMirror": "/home/z/my-project/scripts/run023_*.py|mjs"
+  }
+}

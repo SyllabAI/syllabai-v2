@@ -1,0 +1,143 @@
+{
+  "lane": "T-OEQ-MATHSB-SERVE-1 run-023 segment-2",
+  "planeOfRecord": {
+    "before": "a794747f1a503e12",
+    "after": "fbc7f383ed8f5843"
+  },
+  "writes": [
+    {
+      "pid": "offp_2021-06_02_10-b",
+      "field": "solutionMd",
+      "op": "prepend H (p20 head-row transcription) + join \\n",
+      "oldLen": 4525,
+      "newLen": 5408
+    },
+    {
+      "pid": "offp_2021-06_02_11-a",
+      "field": "solutionMd",
+      "op": "truncate overspill T",
+      "oldLen": 1486,
+      "newLen": 1398
+    },
+    {
+      "pid": "offp_2021-06_02_11-a",
+      "field": "markPoints[2021-06-11-a-MP1].textMd",
+      "op": "lockstep truncate T",
+      "oldLen": 1486,
+      "newLen": 1398
+    },
+    {
+      "pid": "offp_2021-06_02_11-b",
+      "field": "solutionMd",
+      "op": "prepend T (reunite) + join \\n",
+      "oldLen": 1136,
+      "newLen": 1225
+    },
+    {
+      "pid": "offp_2021-06_02_11-b",
+      "field": "markPoints[2021-06-11-b-MP1].textMd",
+      "op": "lockstep prepend T + join \\n",
+      "oldLen": 1136,
+      "newLen": 1225
+    }
+  ],
+  "movedFragmentT": "( ) ( )\n2π 3 3 + 2 + 2π 3 3 + 2 h = M1 setting up a correct equation. Allow with no π or",
+  "headTranscriptionH": "Method I: Using intersecting secants to find FB or BD\nNote that lengths given in the question are not exact and so therefore there are a number of valid areas for triangle ABF\nThere are many ways of finding the required area – in essence for Method I the first two marks are for calculating the length of either FB or BD, the third mark is for setting up a correct equation for either AB or AD and the final two marks are for a complete, correct method for calculating the area of triangle ABF\nNB an answer which rounds to 23 or 24 with no obvious incorrect working scores full marks. Note that using $\\frac{1}{2} \\times 8.4 \\times AB$ (therefore assuming angle FAB is 90°) which for reference gives 23.3375… can score M1A1M1M0A0 maximum\nCase 1: Finding length AB\nFE × FA = FD × FB oe\nor 3.5 × 8.4 = 3.0 × FB oe\nM1 correct method for finding FB or BD e.g. 3.5 × 8.4 = 3.0 × (3 + BD)",
+  "gates": [
+    {
+      "name": "census",
+      "ok": true,
+      "detail": "(66, 1281, 2443, 6600, 6600)==(66, 1281, 2443, 6600, 6600)"
+    },
+    {
+      "name": "marks_law",
+      "ok": true,
+      "detail": "6600==6600"
+    },
+    {
+      "name": "changed_set",
+      "ok": true,
+      "detail": "{'11a_mp', '11a_sol', '11b_sol', '10b_sol', '11b_mp'}"
+    },
+    {
+      "name": "decomp_10b",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "decomp_11a",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "decomp_11b",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "boundary_10b",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "boundary_11a",
+      "ok": true,
+      "detail": "'os 35 \\n449 5 A1 (449 or better) For reference: 448.7953623…\\n'"
+    },
+    {
+      "name": "boundary_11b",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "markcode_10b_sol",
+      "ok": true,
+      "detail": "lost=set()"
+    },
+    {
+      "name": "markcode_11a_sol",
+      "ok": true,
+      "detail": "lost=set()"
+    },
+    {
+      "name": "markcode_11b_sol",
+      "ok": true,
+      "detail": "lost=set()"
+    },
+    {
+      "name": "pua_delta_10b_sol",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "pua_delta_11a_sol",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "pua_delta_11b_sol",
+      "ok": true,
+      "detail": "[]"
+    },
+    {
+      "name": "dollar_parity_10b",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dollar_parity_11a_sol",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dollar_parity_11b_sol",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "katex_spans",
+      "ok": true,
+      "detail": "no-katex-install (spans: 1 pair in H, print-verbatim)"
+    }
+  ]
+}
