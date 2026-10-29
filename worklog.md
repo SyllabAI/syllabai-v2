@@ -172,3 +172,14 @@ Work Log:
 
 Stage Summary:
 - run-022 ready on local branch t-oeq-mathsb/run-022 (content + bookkeeping commits); no PAT in env this session — push -> PR -> CI -> merge -> Vercel -> live spot-check fire on operator PAT supply (env/GIT_ASKPASS only); both standing exposed tokens remain ROTATION-REQUIRED (standing order).
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-022 push-leg addendum (same trace 1a187e0b42de09c1)
+Agent: main agent (Super Z, session web-da4ab8b1)
+Task: Record the actual push-attempt state.
+
+Work Log:
+- git push origin t-oeq-mathsb/run-022 FAILED of record: 'fatal: could not read Username for https://github.com: terminal prompts disabled' — zero credential channels this session (env/GIT_ASKPASS/netrc/gh-hosts all absent; GIT_TERMINAL_PROMPT=0). The run-020 pre-PAT pattern reproduced exactly.
+
+Stage Summary:
+- 2fcf170b (content) + d7273cc7 (bookkeeping) + this addendum READY on local t-oeq-mathsb/run-022; push -> PR -> CI -> merge -> Vercel redeploy -> live spot-check fire mechanically on operator PAT supply (env/GIT_ASKPASS only); PAT rotation standing order re-flagged.
