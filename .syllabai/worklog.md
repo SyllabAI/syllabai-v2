@@ -22587,3 +22587,12 @@ Work Log:
 - Race-guard: origin moved 3b4322b3 -> 1caad2e9 mid-lane (R3-MIXED-CHECK-TYPES bookkeeping, ZERO content-path overlap, worklog append-union on the origin tip version).
 - Bookkeeping: receipt .syllabai/receipts/EQFC-CONSUME-1/run-001-eqfc-consume-r0.json; 194 files, +236,035/-16,764. Residuals of record: the \text{} debris cleanup = the follow-up curation lane; the cs-19 dual-section defect filed upstream; the wave's unmapped growth (+2,705 q) joins the verdict fills -> review gate -> v2 consume chain for official-code registration. LANE EQFC-CONSUME-1: landed (pending CI + bake witness + live spot-check).
 >>>>>>> Stashed changes
+
+---
+Task ID: EQFC-CONSUME-1 (closing witness run-001, same operator trace 1a189b35ae5d5161)
+
+Work Log:
+- CI GREEN on the lane tip 954ba7e1 (hub + verify completed success, bounded poll 2/4 windows).
+- Auto-bake witness: dpl_A4TEQoi97RkwLhPFwSXz9y READY @ 954ba7e11 (git-connected bake; the prior bake dpl_78miQwWZvDozgoV4HNZNMJ @ 1caad2e97 superseded).
+- LIVE SPOT-CHECK PASS on the production alias: corpus plane 8/8 (physics-25 108 sets served vs 76 pre-wave; chem-23 73 sets/1,300 questions; business-23 speech debris GONE with the LaTeX form live; ial-chem-17 399 wave-joined MCQ choices; defect census ascii-pi ZERO + speech-marker hits ZERO on the probed planes; maths-a-18h flashcards served) + page surface (exam-questions pages 200 at 817,681/255,666 bytes; corpus-index 200).
+- Residuals of record restated in the receipt; LANE EQFC-CONSUME-1: DONE.
