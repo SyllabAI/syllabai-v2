@@ -22547,3 +22547,13 @@ Stage Summary:
 - Corpus side: +24 changed pids ride the NEXT converter run (1468-pid standing back-sync debt unchanged in mechanism); no solo converter trigger.
 - Wave-3 continuation of record: 101 residual units + run025_triage.json (needsPage/zeroByClass + per-candidate reasons) + 196-page rendered set + run025_locate.py needle renderer — wave-3 is pure execution.
 - Standing: both tokens ROTATION-REQUIRED re-flagged (GitHub …JU4, Vercel vcp_…aoT3); Vercel-channel receipt healthy this run (no canceled-from-dashboard recurrence).
+
+## R0-AUTO-82 receipt — 2026-10-29T23:10Z (Job 438940, sweep 07:00+08)
+- Task ID: 123 (R0-auto trace cron-agent-loop-202610300700)
+- Merged (2/2 quota): PR #464 feat(mg-parity) T-MG-MP-RECT-1 run-001 — mark_point_repair lane: paper-regions API (routes+service+sql), RegionOverlay hub component, regions lib + tests, contracts paper-regions, drizzle 0017_mark-point-rects migration + seed/fixture scripts (21 files +12117/-9); PR #466 bookkeeping(T-UGM-XBOARD-IAL-1) X0 — cross-board registry flags + feasibility receipts (4 files +1240/-2)
+- Heads: #464 c3b05295, #466 8e88f3a4 | Merge shas: 8df5807b (@23:07Z), c779c7fa (@23:12Z) | merge_method=merge, no force
+- Gates: both head CI 2/2 success; mergeable=clean both; reviews=0 comments=0 both; body scans: #464 'placeholder' substring adjudicated harmless, #466 clean; boundary PASS both (no *.java, no external core/hub, no Neon/prod — drizzle 0017 + seed are repo code only, merge executes zero DB writes); base a80e8649 CI 2/2 GREEN pre-merge; author SyllabAI, no recusal conflicts
+- Post-merge: 8df5807b CI 2/2 GREEN (bounded re-check x2) before #466; c779c7fa CI 2/2 GREEN (bounded re-check x2)
+- Skipped: #296 bd2c0b1e (FAIL hub, sole static remainder)
+- Window: main advanced a80e8649 -> 5ad5a573 mid-round (#465 run-025 wave-2 41/142 units landed pre-sweep; FIGURES-2.1 live spot-check receipt landed during receipt prep); #465 addendum re-flags both standing tokens ROTATION-REQUIRED
+- Bookkeeping-only: this commit touches .syllabai/worklog.md only; fetch-first, ff-only push, no force
