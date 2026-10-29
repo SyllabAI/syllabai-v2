@@ -22406,3 +22406,13 @@ Operator order: "open the kg re-export lane" — the T-OEQ-MATHSB-SERVE-1 "expor
 - POST-LAND VERIFY (PENDING — Vercel deploy from this commit had not fired at write time): on the next deploy live /kg/data should serve the new generation for the 8 Class B courses (spot: ial-chemistry-17 meta.counts Section 20 / nodes 360; igcse-accounting-17-introduction SubTopic 16 / nodes 68) and index.json counts should match. Verify live and flip SERVING notes in a follow-up read-only turn.
 - Receipt: .syllabai/receipts/T-SPEC-KG-REEXPORT-1/run-001-reexport-r0.json; branch landed fetch-first, race-guard clear (origin/main == census cut at push), ff-only, no force.
 - CRITICAL-OPERATOR (standing, re-flagged): GitHub PAT re-exposed in transit AGAIN this session (plaintext re-supply) — rotation REQUIRED before any further re-supply; used env-only here (credential helper expansion, zero token bytes on disk, zero token bytes in this worklog/receipt/commit).
+
+---
+
+## T-SPEC-KG-REEXPORT-1 run-001 landing addendum — 2026-10-30 (same session, trace 1a188c2ce31f963d)
+
+- Landing commit 3e81d52e CI: verify SUCCESS + hub SUCCESS (2/2) first-hand via check-runs API.
+- SERVING FLIP VERIFIED LIVE (first-hand bytes, cache-busted): /kg/data/index.json serves 106 entries with the new counts (ial-chemistry-17 nodes 360, ial-physics-19 194, igcse-accounting-17-introduction 68, igcse-chemistry-19 215 nodes / 369 edges incl. the 145 pre + 10 rel projection); /kg/data/ial-chemistry-17.json serves generatedUtc 2026-10-29T18:03:26Z, exporter v1.5, Section 20 / nodes 360 / specPoints 319 — the official-spine generation is LIVE for the Class B set; the ~10-day kg-plane vintage gap is CLOSED at the serving plane.
+- GitHub-side Vercel commit status still "pending" while the production alias already served the new plane — same status-channel-lag class disclosed at T-OEQ-MATHSB-SERVE-1 run-022; live-bytes-first recording per that precedent.
+- Receipt postLand block flipped PENDING -> CONFIRMED (this commit, bookkeeping-only .syllabai/**).
+- fetch-first, race-guard clear, ff-only push, no force; zero DB contact; PAT rotation CRITICAL-OVERDUE (standing re-flag).

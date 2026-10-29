@@ -220,7 +220,9 @@
   "72 stable files byte-untouched — no generatedUtc churn"
  ],
  "postLand": {
-  "servingFlip": "PENDING next deploy — live /kg/data probes recorded pre-deploy in the worklog entry; flip verify is a follow-up read-only turn"
+  "servingFlip": "CONFIRMED live (first-hand bytes, cache-busted probes 2026-10-30): /kg/data/index.json 106 entries with the new counts (ial-chemistry-17 nodes 360, ial-physics-19 194, igcse-accounting-17-introduction 68, igcse-chemistry-19 215/369); /kg/data/ial-chemistry-17.json serves generatedUtc 2026-10-29T18:03:26Z, exporter v1.5, Section 20 / nodes 360 / specPoints 319 — official-spine generation LIVE for the Class B set",
+  "ci": "landing commit 3e81d52e: verify SUCCESS + hub SUCCESS (2/2) first-hand",
+  "vercelStatusNote": "GitHub-side Vercel commit status still 'pending' while the alias already served the new plane — the run-022 status-channel-lag class; live bytes recorded first per that precedent"
  },
  "discipline": "fetch-first, race-guarded ff-only push, no force; PAT env-only; zero DB contact; data-only change class (no TypeScript surface)",
  "landingNote": "rebased onto e1f3e3b3 (T-DC3-REBASE-1 bookkeeping-only .syllabai/**; zero content-plane contact) after a push-leg race; the census/wave cut of record remains 0026b4b47b125f0a3586addae0492cc3b26904cd — data bytes unchanged by the re-land (git checkout of the same blobs)"
