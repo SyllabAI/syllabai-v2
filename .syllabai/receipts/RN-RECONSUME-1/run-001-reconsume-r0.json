@@ -1,0 +1,56 @@
+{
+  "receipt": "RN-RECONSUME-1-run-001",
+  "family": "HUB-CORPUS-RECONSUME",
+  "operatorTrace": "1a188fd1fe1ab249",
+  "operatorOrder": "'re-run the hub corpus import/notes-cache harvest against 1a5c37bc, then a spot-check in the frontend'",
+  "agent": "r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+  "generatedUtc": "2026-10-30T00:00:00Z",
+  "pins": {
+    "resourcesSha": "1a5c37bcecf379cd98e83aa74aa9472920092428",
+    "pinVsTip": "operator pin; tip 5586acae verified tree-identical on ALL import-relevant subtrees (SME-RevisionNotes, SME-ExamQuestion, SME-Flashcards, spec-links) — zero content delta pin..tip",
+    "sidecarVintage": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677 (T-SPECS-CIE-CONSUME-2 of-record vintage; spec-links delta 20a35ccc6..1a5c37bc = 3 AS-lane sidecar retractions NOT consumed — gated lane territory)",
+    "v2Base": "73c30de8",
+    "v2Landing": "this commit (rebased over 2e51cce6, zero path overlap)"
+  },
+  "scope": {
+    "plane": "notes-plane only (content/<slug>/notes.json + manifest provenance)",
+    "coursesRefreshed": 90,
+    "manifestsAdvanced": 91,
+    "notConsumed": [
+      "SME-ExamQuestion corpus wave at pin (12,600 files) — queued gated lanes",
+      "SME-Flashcards corpus wave at pin (625 files) — queued gated lanes",
+      "Official-Specifications corpus wave at pin (56 files) — spine/kg lanes' authority",
+      "12 wave-2 skeleton bundles — the queued build_bundles import run"
+    ],
+    "excluded": [
+      "igcse-chemistry-19 — pilot curated linkage (Phase-1/2 verbatim artifacts); fresh derivation+flip = 336 linkage mismatches vs origin -> fail-closed revert; needs pilot curation-replay lane",
+      "igcse-geography-19 — committed 4GE1-* official-code format from a post-flip re-export lane; standard flip produced 196 mismatches -> fail-closed revert; needs re-export-replay lane"
+    ]
+  },
+  "engines": [
+    "apps/hub/scripts/import_corpus/fetch_corpus.py (pin 1a5c37bc; 13,379 files, 0 fail)",
+    "apps/hub/scripts/cie/cie_fetch_corpus.py (pin 1a5c37bc; 6,885 files, 0 fail)",
+    "apps/hub/scripts/cie/cie_build_bundles.py (44 matrix courses -> staging)",
+    "apps/hub/scripts/import_corpus/build_bundles.py (49 Edexcel bundles -> throwaway)",
+    "apps/hub/scripts/cie/cie_consume_spec_links.py Stage C/D functions (refresh_bundle+battery, engine file UNMODIFIED; sidecars 20a35ccc6; maps byte-identical idempotent merge asserted)",
+    "apps/hub/scripts/build_official_content.py Stage 3 flip (--content-root at fresh derivation; committed maps/spines)"
+  ],
+  "gates": {
+    "filePurity": "90 notes.json + 91 manifest.json modified, NOTHING else (maps/spines/questions/flashcards/curriculum/skeletons byte-untouched)",
+    "defectCensus": "APL=0, speech-debris(fraction-numerator class)=0, ellipsis-text=0 across all modified notes.json (was 28,909 broken-italics + 490 *F *= + 179 ascii-pi + 51 APL + speech debris pre-lane)",
+    "noteSetDelta": "+97/-0 (corpus growth of record: cs-19 +9, business-25 +65, econ-20 +17, english-lit-21 +6; counts.notes recomputed exactly there)",
+    "linkageFidelity": "ZERO mismatches vs origin for smeSpecPointIds/specPointIds/specPointCodes on every common note across 90 courses; 1,755 inline spcpt->code rewrites re-applied",
+    "serializationFidelity": "per-line committed conventions preserved (CIE indent-1, Pearson compact, no trailing newlines)"
+  },
+  "disclosures": [
+    "english-lit-21 updatedAt follows the corpus manifest stamp (corpus-faithful metadata)",
+    "prose currency $-signs in accounting/business/economics bodies are corpus-side content (parity flips vs old side: 0)",
+    "the R2-note battery class fired on the pre-mutated worktree reference during the engine run; authoritative note-R2 re-run vs origin/main bytes = ZERO drift (q/f R2 stayed authoritative — those planes were never harvested)",
+    "manual-bake posture: git-connected auto-bake fires on this push (productionBranch=main); verify-first law — no manual bake unless prod stale/RED"
+  ],
+  "residuals": [
+    "pilot igcse-chemistry-19 + igcse-geography-19 notes keep pre-fix text until their curation-replay lanes run",
+    "EQ/FC/Official-Specs corpus waves at the pin remain unconsumed (queued gated lanes)",
+    "spec-links delta 20a35ccc6..1a5c37bc (3 AS-lane sidecar files) not consumed"
+  ]
+}
