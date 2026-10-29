@@ -1,21 +1,20 @@
 {
   "format": "guided-import-index/1.0",
-  "runner": "apps/hub/scripts/import_guided/run_import.mjs (hub-import-runner/1.0, FEED=worked-examples-v4)",
-  "imported_at_utc": "2026-10-29T10:55:45Z",
-  "operator_trace": "1a1873ca7ff0c865",
+  "runner": "apps/hub/scripts/import_guided/run_import.mjs (hub-import-runner/1.0, FEED=figures-2-1-v5)",
+  "imported_at_utc": "2026-10-29T18:44:11Z",
+  "operator_trace": "1a188c14685e2965",
   "upstream": {
     "repo": "SyllabAI/syllabai-resources",
     "namespace": "integration/",
-    "commit": "6d0eb77d62404ddd5724cb35cee6d8c6a2a77e85",
-    "manifest": "hub-import-manifest-v4.json",
-    "manifest_sha256": "b11c66524cf810d093f0578482e1436f7fafb984815c7faf82f8b838cd711b0d",
-    "manifest_version": 4,
-    "int0_pin": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde",
-    "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
-    "promotion_status": "pending — promotion commit on resources integration branch, hub PR merges only after the resources PR"
+    "commit": "48d9c656628a3f2f78348ba738b2cb0d437e4abc",
+    "manifest": "hub-import-manifest-v5.json",
+    "manifest_sha256": "bc1a01cd43a327669d416e4a81c33587b708c481387c5e77af7f48bd47fc59b8",
+    "manifest_version": 5,
+    "int0_pin": "1ed554ec60fb9c0a41303946312ba50bb0a8834f",
+    "adapter": "guided-lesson-0.3--hub-lesson-import-1.2"
   },
   "target_schemas": [
-    "hub/lesson-import/1.1",
+    "hub/lesson-import/1.2",
     "sme-question-package/1.0"
   ],
   "counts": {
@@ -32,7 +31,11 @@
     "workedExamples_null": 0,
     "authored_chars_conserved": 1426764,
     "authored_chars_v3_baseline": 1347771,
-    "added_chars": 78993
+    "added_chars": 78993,
+    "captions_coalesced": 143,
+    "captions_row_context": 16,
+    "captions_inline": 3,
+    "captions_none": 38
   },
   "conservation": {
     "authored_stream_sha256": "d49c4b3229177a888e493b8e8bac613d79c595d90d4adfb12059190ab67530ba",
@@ -52,7 +55,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_2MpXPtNXvn8pQm3r.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_2MpXPtNXvn8pQm3r.sme-question-package.json",
-      "lessonSha256": "825049d49c92be0d4b65f2895936a0059873d3dd67af7e6c12c04ef283b5cf02",
+      "lessonSha256": "90c46ca8197eaa9b08fb0cf49f604efa3d22e0e329fe0b4887588ce72acaa4dd",
       "packageSha256": "51fc26bb305cd86795025eef105a4e495541285686e424b57c7b2d1ca741d2cb",
       "streamSha256": "34343d36e6e50b2578cb9bca35474ee99eed4d9aac15d894008a159b7bfb3be1",
       "streamChars": 10464
@@ -62,7 +65,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_2VnK66PqbvFKdKYt.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_2VnK66PqbvFKdKYt.sme-question-package.json",
-      "lessonSha256": "afb1ce4be880e7b0831ff111c3193264c7be9ad4b936b4c475e6a2006a97ce6a",
+      "lessonSha256": "83f3dc245f438e4f5ee4f89313ad4edf6ddeae93f95a7e83ab72857b7df2c541",
       "packageSha256": "3325376f600edf566a5436341f63e3ef68253642df5ccabc4627188e678e1d8a",
       "streamSha256": "163295be40c03ad92ea2b59706f9028496b8e67374e4698a443921cc0d1d9143",
       "streamChars": 14004
@@ -72,7 +75,7 @@
       "wave": 1,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_2d6Yb8GwGfRRd6pZ.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_2d6Yb8GwGfRRd6pZ.sme-question-package.json",
-      "lessonSha256": "f96796c24d42c5d9f41cf2ba3305ea17b9c8cd34023ae265aa7cd8b8c0b7a68c",
+      "lessonSha256": "a1ecd3006a87ce7d186aaecb47467027f2b57d82024fd047b0c7773c12090667",
       "packageSha256": "b8b93aeea585dbe25bacb779c64e080efbc01158ff4aa8b16151e5f20d63efaa",
       "streamSha256": "b6865b30f92f1b218fa6d770c6667d852271e8fb2c03e906b2bb6460d1de9364",
       "streamChars": 12728
@@ -82,7 +85,7 @@
       "wave": 10,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_2z53qk2CdWrVVc7V.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_2z53qk2CdWrVVc7V.sme-question-package.json",
-      "lessonSha256": "f5cea6671d4331b161baf4e1dc552f833451303184496d8cd79be32748101bfe",
+      "lessonSha256": "522fc1e223bf6806e519f71fbeee922ff38516cc7118cdf785a132c65b6bad25",
       "packageSha256": "aa438d2b29a27cc27a7867de150b52b921b23bf73edb52131d7ebd364258e819",
       "streamSha256": "fa4f7cf52775098e30006c77a272a622b6343106aa4cf3a2ea31d698e2314b77",
       "streamChars": 9749
@@ -92,7 +95,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_3B8JxsSjJvR9B4fk.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_3B8JxsSjJvR9B4fk.sme-question-package.json",
-      "lessonSha256": "f7007d2176a45e32b26721af297c4834c6efb70d5c14f32bbc78bb622a534d8d",
+      "lessonSha256": "457d15eb3ae376c5e27f31857922f5b6c268ba423e78f6eb6ff3ce04c6717531",
       "packageSha256": "fffb1ced17641f96e3c51ea581891dbd798df5d1fb1abafd87edb36faa3c9eaf",
       "streamSha256": "139d3a45489247cb20deffdb7f7153091a0af6a1d8c89a5a67d24fabea1aff89",
       "streamChars": 18827
@@ -102,7 +105,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_3YZNCXSQQqXTT6HR.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_3YZNCXSQQqXTT6HR.sme-question-package.json",
-      "lessonSha256": "1ff9021d3d1de1d1fe2468c08f7ffea5ff3ec470ab7460b3c89cc733ef42eea3",
+      "lessonSha256": "74888d4d2194966e47d125f20149ef0ec9fc32a08e462dc4cba04e2aadfe5490",
       "packageSha256": "be1760e370755561a23203210ba1ae6c24a1d6483b83f40425cae90b43914760",
       "streamSha256": "fd06797c32dac49ee97e99b00f3d93e4b79157aeda081fc472b76305aa59ad91",
       "streamChars": 13167
@@ -112,7 +115,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_3wZh9qRT7qFJn9QW.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_3wZh9qRT7qFJn9QW.sme-question-package.json",
-      "lessonSha256": "dacc8a174fbd404259555c69b49497a263f02e9b0d7086a0f72adbdcd5fa01ae",
+      "lessonSha256": "1d44698ec374cb8d34287834f6e0df007fad3e1a15f8bbe4b848feb44ccc94fb",
       "packageSha256": "a778b6822e505e2d4173155548b3fd5b05adea93b918543e5da704a8169deb04",
       "streamSha256": "25e3800d2f79c7356d6766354945c64c6a4e6980523af28f67eb9d7fe026c23c",
       "streamChars": 10313
@@ -122,7 +125,7 @@
       "wave": 1,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_4SgDJv8rKxpQQSBh.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_4SgDJv8rKxpQQSBh.sme-question-package.json",
-      "lessonSha256": "27946dd7595d58c7cfa84761a3dd88b618f191a23b974d8609aa7264c6027e52",
+      "lessonSha256": "8199fd698e3fea8a3b32f073ccf763db94e97611c9d9f9aa22da22e6760b5dbe",
       "packageSha256": "e2cd47ca9e39b267babec735e991b1f023571d9fec80d939b9d7361e7890575d",
       "streamSha256": "aca12c94798c689b5d037de799b31485a9bc2a8cd72b572312b24e665f8a7f24",
       "streamChars": 15175
@@ -132,7 +135,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_4tzwS4GZjPybwtkS.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_4tzwS4GZjPybwtkS.sme-question-package.json",
-      "lessonSha256": "b520b2295f1f7ae1d3a91a7edae5a5676796aea5170cc8e6d5d2bb976d864bf6",
+      "lessonSha256": "49caea4291f924e70d824501acde58b4cee3d3f50cab2ca11eb8ef821fb0461c",
       "packageSha256": "0feb36f9e25a9bce15dd58194e11be64647334d91dcc98d13ac50c6949d734b0",
       "streamSha256": "43369b47142841832c4ac8cb157b32e192410b93da366f06fa66a83d8e2cab20",
       "streamChars": 9963
@@ -142,7 +145,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_5WvdZNzzhHdjj2Qq.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_5WvdZNzzhHdjj2Qq.sme-question-package.json",
-      "lessonSha256": "ee93c76e48b95b71c583cd17226e892f594724880c465e0008d603064aa1796b",
+      "lessonSha256": "a051bf27156d0f1cc5745dea54a1f77a7287a49ac3b0ecb9a44b42a10043db1e",
       "packageSha256": "d45b4a1db7a18d666196c4160d0222603d7ddaaa0894353649df3345262af8fd",
       "streamSha256": "c0b0e4614645845a122ad1679502e16f9bd6de507a92725a80f966ab3d7d8219",
       "streamChars": 13710
@@ -152,7 +155,7 @@
       "wave": 7,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_5g8Dd6y89tkCVJsN.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_5g8Dd6y89tkCVJsN.sme-question-package.json",
-      "lessonSha256": "e8b0d3eb9cb0a228994512dbae9077cd6d084d7aa481ffdd92732262f7d6d69c",
+      "lessonSha256": "e9bac345a32a2cf9179bf35e8761e855b834064ce7b47be944134f612e606e55",
       "packageSha256": "e4a5d859f9582a91428f5ca0c32a8977436ce1eb7bcf842ef262bf816fec6c60",
       "streamSha256": "ae0541e55664ff6cd9328c6452bed3631c5c0d20f421d8b0c51e5e11061ce6ef",
       "streamChars": 11742
@@ -162,7 +165,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_6478QfpYNQDjZSvt.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_6478QfpYNQDjZSvt.sme-question-package.json",
-      "lessonSha256": "a1d5889dd510fa1c5ff2971c238a88473f194f02cfe4deabbf3e2fd27ec095ae",
+      "lessonSha256": "dec7ad48f4a53b64719b4b07e3821ee21f610eb052b8b8e8ed92b3b890e4a61c",
       "packageSha256": "1bd5d5009e2aef3182600b02d11a05612685a0568acee6a3c376fae145393ee0",
       "streamSha256": "a86004590d82132857eb696d15875ca43072fdb096e0017deb974717f18c84c9",
       "streamChars": 11010
@@ -172,7 +175,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_6M5JB7CjvwdDykMS.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_6M5JB7CjvwdDykMS.sme-question-package.json",
-      "lessonSha256": "3c3b89587eac1e9bfdc5b5fb25d86e0655d1af6b4b1d2762343a84054caf06f5",
+      "lessonSha256": "9d80ab3f8f4dbca1bd16a022a940d705de34b8fd5be254edb54b6ab54b5a24d1",
       "packageSha256": "d2fb1bc55577d649a6e4761d6e999bcfa8d75c8804ddb808be78443f4709fa66",
       "streamSha256": "ef4fc2d46d4e34cbad3940e8e67a77c30d8089b64d177aacda261cfb982325f4",
       "streamChars": 14516
@@ -182,7 +185,7 @@
       "wave": 7,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_6ZCysv9GnNQmc3w2.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_6ZCysv9GnNQmc3w2.sme-question-package.json",
-      "lessonSha256": "cf5051b06cf8c102a5c026765cbe90b443f2c17c193e0c5f4baea72d4b25056b",
+      "lessonSha256": "2af2727e0807e903f99e25c6a70a77a8f698aafd8c8ed28a04a0a71069c7a1d2",
       "packageSha256": "0d065eda01156bf3f65305b4d03c6f761559325a07d3cdb37a0326ff2727ee13",
       "streamSha256": "08d4094065c5f640e82e5630cda3c06effcdfd63716d220adeba7ab633934936",
       "streamChars": 11488
@@ -192,7 +195,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_6c2G8nJpFSnQnbcP.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_6c2G8nJpFSnQnbcP.sme-question-package.json",
-      "lessonSha256": "6ccc7353c19c61c18d06c09bcbfd605710a31963246820ff71cf023375ab3746",
+      "lessonSha256": "cc4a95666735510de58ac64a40d9f6352c2934267eebe998b1dedd91deef0764",
       "packageSha256": "4eedfc5dd2a99116452445a03ecb8b0459b6113d0c51ed2847f417f1871e5343",
       "streamSha256": "261fffd731727428033d14782dc2e5f8743ee07df0bd1492c4aa90fb0e7d97a9",
       "streamChars": 9996
@@ -202,7 +205,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_7Q8M9nVkr2FxCzxd.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_7Q8M9nVkr2FxCzxd.sme-question-package.json",
-      "lessonSha256": "efed2c64198860b823c5294b488726d4cef5809860eff420ce97092f1b736e9a",
+      "lessonSha256": "5c10b8be8ffab2d7dc7d86cacf102c0357949cf2ac8df194d99bae099e9996b0",
       "packageSha256": "4592f20334870d85ea7478a196d7fa0f7a502008edc6af2c83dceb1d0542908c",
       "streamSha256": "45fd0d5fa77d8b532a1bb31a2a8dd458aca5897f41fcbf49b45a9a469af75cf4",
       "streamChars": 20293
@@ -212,7 +215,7 @@
       "wave": 10,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_7ZMc3T3J4SJXfNdR.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_7ZMc3T3J4SJXfNdR.sme-question-package.json",
-      "lessonSha256": "8226e21ac50c04b1bf4bedd4b4f24ea26eb07f3ccda7dc9b28407ab7349840ca",
+      "lessonSha256": "63313ad2c302932769a85c400fc22027f753cf90007f3384fb9f516ed1b49699",
       "packageSha256": "fd964d06382346a6114b984593dedf95e7313fccb2ff6c19f4b579514e542caf",
       "streamSha256": "316c46238ee73fce1206d84f31e869aa94c119c8a8b913ca79ca7b4ab9c7439d",
       "streamChars": 10533
@@ -222,7 +225,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_8Nv33F4dD3kkZnY6.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_8Nv33F4dD3kkZnY6.sme-question-package.json",
-      "lessonSha256": "70aca238523e2d62a2af1725e36f747c8fc34d8dc4590b3b8b44449ea6aa9e74",
+      "lessonSha256": "bb2795ef34ccdd533cb54880cd20ba3e4e95b0b5d64806c703ef07551888e620",
       "packageSha256": "beb7361ec8c08c3d7be5595370eaba02bace82658e17f3b6e5faff3bcc3ebdf7",
       "streamSha256": "c1f04d0e6acfbfb8cab8790a962a7c0a1dbb46e20015c8903f3fb0a2d2b8f8cb",
       "streamChars": 10741
@@ -232,7 +235,7 @@
       "wave": 10,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_8T5GfPn2q7sY2YCh.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_8T5GfPn2q7sY2YCh.sme-question-package.json",
-      "lessonSha256": "51684d61571913ef1a5bfb1ea1c7987ba1e12ee3d5723956baa86c01c74d55f9",
+      "lessonSha256": "8a11934cb8c3f85f2d84bd0f379377f1596ef215b107e40ce1f612f53e3a38cf",
       "packageSha256": "649d66fef6ce90d19e736518252c22093e6d19f3131c2552474ef4946eb1448a",
       "streamSha256": "3dc811011f6c02a6df1130b200a8950f15c5154aa9d42e80e049e58cb1cad323",
       "streamChars": 11782
@@ -242,7 +245,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_9J7DQhskyxzhd7CP.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_9J7DQhskyxzhd7CP.sme-question-package.json",
-      "lessonSha256": "9fa0e9020758c3692312d3e8f4086f55e832b7ee03ef8706ebed19c668cb384d",
+      "lessonSha256": "6a742feef531630b7fa7e8c115a9c0a005799fa0d9f67edc48e6ec3ba505b9d9",
       "packageSha256": "7133bc5bfa29e863ebbb893d390b7ceea0b5461dbd5a954cb4e7c06a6f9d7946",
       "streamSha256": "03e618548e786e9cd448f39313ece93d2649b261ef020ca98cd890cbd3283773",
       "streamChars": 11298
@@ -252,7 +255,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_9WM8QhSxmYpGhjqd.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_9WM8QhSxmYpGhjqd.sme-question-package.json",
-      "lessonSha256": "ef5dc865555d17e1564a4c5c1c16819ef9c61ea2538bdb99eb220b952e0e15f2",
+      "lessonSha256": "98d0b3080da1617a6cecd90efc3f640c4b1dc8d228413a0be73a38c016ab4d32",
       "packageSha256": "fc74187c8ace6ec21d7f22b3b4bc1665258714c61d496daee333788833da0fb8",
       "streamSha256": "5384fb263292885cc669cc8e31ac1e48fb12d3e0973928acd81d0717b44755ac",
       "streamChars": 11597
@@ -262,7 +265,7 @@
       "wave": 10,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_BBGMYy3Yx9Nm4GV3.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_BBGMYy3Yx9Nm4GV3.sme-question-package.json",
-      "lessonSha256": "79d2f313020bd2155b4d119097abe34e534e0492126e60991261d9ea0956df37",
+      "lessonSha256": "798e6017825decd26123900f78f952b3be887bb02fde82e9094fcef0c9d3d0a8",
       "packageSha256": "c8ea5d3768d68f591ae8d75d07d7b3ef1cc6189fb12cfb10a176a51e40d1ab2a",
       "streamSha256": "710cfb1b8885d7b87f21a362317e71fe906207cf687ca618d5d62f4ef872a7fe",
       "streamChars": 10351
@@ -272,7 +275,7 @@
       "wave": 10,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_BDkhS5vQpRd4hvwf.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_BDkhS5vQpRd4hvwf.sme-question-package.json",
-      "lessonSha256": "5bf21801bfb02897b03bb88b231a7cb7f0b217795bdfa181219caeb949d38e3a",
+      "lessonSha256": "a421f3d37f1a8b6b26fe06577ae11eccaae0e62b9983c367b0309e8132e39efe",
       "packageSha256": "fc9d6d2da2d2f8ae3d596b2932f7748ed6f5758d1781efd914ce04c12c111ca5",
       "streamSha256": "312ce10baef577556de8598f5916d208a384fa4ded3f330d9ff4818ed4f54c59",
       "streamChars": 10440
@@ -282,7 +285,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_BX88twwgffRMgx82.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_BX88twwgffRMgx82.sme-question-package.json",
-      "lessonSha256": "53a8156ef9c5911dc85f7620b49a51185720947890a57ddd5635aa044f559353",
+      "lessonSha256": "04157d6f0d5c7ef0af2b027b4995318950f0b355500c7f3fc1e67d89c1b93ff6",
       "packageSha256": "72a103aec73ecc946ef0016cdeb5c17fd59ba18ccd0d79167498e5ca6f947cfb",
       "streamSha256": "a82dfb2527f3f8309917f2e907e3a5beed3b6ee1723af98321c2d91131419478",
       "streamChars": 12611
@@ -292,7 +295,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_DBGf3WVffDBNDp4R.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_DBGf3WVffDBNDp4R.sme-question-package.json",
-      "lessonSha256": "d8681f78d49a80c0b7ed21f295c12de5d5702fe1bd13c236d305fb5dc51ded74",
+      "lessonSha256": "0df4083daf42088a7cd21d8ea14bb1fb33b4f6fd7b85da00dcd161daf2c2c9e9",
       "packageSha256": "dc69eac55ddd4ba02c933b7c7ab4026fdefa9984ce623d83c8ffced0ca6fbc61",
       "streamSha256": "d6e5d9cf5e489604ee894270c0c308bf5dd23f5a023c7db61becfb93befef8d2",
       "streamChars": 11271
@@ -302,7 +305,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_DGkNCJRcCN4VQ28p.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_DGkNCJRcCN4VQ28p.sme-question-package.json",
-      "lessonSha256": "3525a161f56f6d4c7698a27d65b1d446d9d7f8a60afb7bf54018a6a8e99cae1f",
+      "lessonSha256": "cf2ea8c20df4c1c94e511713e852c3b2273e6abcd910c63a4ed5d35172cb7684",
       "packageSha256": "6b44a91e43aa9d12ae3641b12169603ba5c80a62ea7f7f7679f4684221e58b5e",
       "streamSha256": "675039bcade9e2338dc816143759468bc89206bc1f51db696713f0ac286d2a97",
       "streamChars": 12338
@@ -312,7 +315,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_DRQXrcSrmgQ7jcbZ.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_DRQXrcSrmgQ7jcbZ.sme-question-package.json",
-      "lessonSha256": "b102b1d92c21a5db2d90c4562488adaf9dbfee0b6135c85812ef7693b14377e0",
+      "lessonSha256": "eb2b74f727cc4e776257c3bf1f277bd58986c4c76a12ac1840ca010f234d095c",
       "packageSha256": "b5c1ba67e6b9f9b088270e7df3333b543cb382c71216cc0a7f193392a50566ad",
       "streamSha256": "72ecb40281d65c30a065b42cb3d2209752b807eec0fe95f896e4150e672a0e7f",
       "streamChars": 15624
@@ -322,7 +325,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_DrqzYWZMScqGrbWT.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_DrqzYWZMScqGrbWT.sme-question-package.json",
-      "lessonSha256": "a9bd9e9e00b682b45b739e35f66c1cc76f013b90d5f7fd7669c3dd935efc31a4",
+      "lessonSha256": "7696c5827de010dad45cf9414c3c94f59ec9fa9d3b029527eefb1dc98bd625f7",
       "packageSha256": "54d2a446c5329a184e889763da0697f1454a7b889446d35b8c7c2c0e36454859",
       "streamSha256": "e41886f5a6d95b57d00aaecc3c0bdf37a1a9bce98931344bd4ad5f9735a6e394",
       "streamChars": 12080
@@ -332,7 +335,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_FCnWFz9MhgsqnZGM.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_FCnWFz9MhgsqnZGM.sme-question-package.json",
-      "lessonSha256": "d6b1b056a1d827da9466862688107b50ed5c565f18fb9dbe0106b5068418dba2",
+      "lessonSha256": "6acdb2a56857a19e75efb94d520f2c09abf5dfc3004ce24b1500c00a03ae00c8",
       "packageSha256": "8fa78bbb5d59789a08134127bf072247a3c222dbe8a2207b5576c7ef9928ad3c",
       "streamSha256": "26d1ccf1115e38a3321c20a5cfb63bfd16999607dacd1fe822ecc85d51c32a03",
       "streamChars": 13679
@@ -342,7 +345,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_GkJG52NCN98ShGRm.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_GkJG52NCN98ShGRm.sme-question-package.json",
-      "lessonSha256": "58db740448be920af033dbf4726f3d520bea66dfad4399f3e19d3f3f756cb3d0",
+      "lessonSha256": "28931d4ffd88dd6ac77cb43543ffb5368c815189c12899d38d6c3e7a84d2fd44",
       "packageSha256": "5c86803d33a5971626cd7a4a50a336b8a8b38e097457a428894604a79919befe",
       "streamSha256": "0fb69fe580344bf516881e9aa0147b1c0757a0e5d8a0920e6835e5fd2b871b28",
       "streamChars": 13989
@@ -352,7 +355,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_H2zGfgH76qYV5cmr.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_H2zGfgH76qYV5cmr.sme-question-package.json",
-      "lessonSha256": "d41abf63240ca19400d0c5067fd78d76411cb8daf5f0fb4fe0485b99ad4d78ff",
+      "lessonSha256": "399a6c1d75b948b9a48246d28d917878851883fcc5c0868dd12e810cf09aa02c",
       "packageSha256": "04a05ac53c3dd8734182b18eed5ce86dc0c36b268743a21ed8882ad476de0c62",
       "streamSha256": "6558051cfd50f30e8f83658d2c097af51fccd9304ace14c1dec63b1da1def1bb",
       "streamChars": 10751
@@ -362,7 +365,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_H6ZVkxvdNgYDvfFb.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_H6ZVkxvdNgYDvfFb.sme-question-package.json",
-      "lessonSha256": "4753a07dd8c70682d26374476fb75bdc384af5811af8918843eb70e0a7a0b246",
+      "lessonSha256": "603bbbd38299a65284165d381749aab913c9e1f637873966f346c573aea776d3",
       "packageSha256": "470fe62ace41490585c017890529795c2f7ff27adb394d6cb358d49b3f2f486d",
       "streamSha256": "43945367ed42e4b0ee273dfa7b0815cd3ec9008c0f746cf88b8d5142ff93186a",
       "streamChars": 10577
@@ -372,7 +375,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_H9chr9BWCfXYW472.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_H9chr9BWCfXYW472.sme-question-package.json",
-      "lessonSha256": "fc029ee8d10500c9b4c282fda6a1ca1c034032c49bdbe59dc1db9ef26686581c",
+      "lessonSha256": "afd9bed3af7525ab628a1a0ec2531b52cf2debe07dd5f70ea84ef30fb4616824",
       "packageSha256": "1b78967e2ff91bcdc520509c71b9b5f9e67117f5b334aab4894ee6538b2c3334",
       "streamSha256": "8cfef5c04e7beff65ec1351a00ffe7ee49f6099f212d4e9bd7668ff27a00ce4d",
       "streamChars": 17452
@@ -382,7 +385,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_HNXFQt7vM32g6PMv.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_HNXFQt7vM32g6PMv.sme-question-package.json",
-      "lessonSha256": "b839af25e7a72e3cf59172796bf205149f5d403ec129b129e918bf6f94cf0cce",
+      "lessonSha256": "37dd041c5ae2c7375a9b0cfe89a7c866d0abd2b286d7ec7f3c23c42dc5aaf093",
       "packageSha256": "c13941166d6654f361ca248ca3acf0b03f40fba7c8fc9d9e44edc8254d0f944c",
       "streamSha256": "a1a90ebcd2c92b711e4d59af2aa894510c818a6b9177cea059f667a14040a324",
       "streamChars": 10870
@@ -392,7 +395,7 @@
       "wave": 1,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_HZM2WRjPPT8Srcxt.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_HZM2WRjPPT8Srcxt.sme-question-package.json",
-      "lessonSha256": "227832518a3e03fc04b92e5d0666354330375797dbedd939b7556a78897fe059",
+      "lessonSha256": "cd727773cdf1a3b9f618b1723d5fc950dfed08cc53d46162b54bbe91ecc67c63",
       "packageSha256": "314e03fcb0941f417bcaedc2de90f9d322ceb20286bd5a5eac458a0e3a33c84a",
       "streamSha256": "4bf1d573f42eeaf074dd8fdeb8fa45d933febec31b28b523cfb58d750381b09a",
       "streamChars": 7091
@@ -402,7 +405,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_Hkwmd9GSp3gdxxR5.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_Hkwmd9GSp3gdxxR5.sme-question-package.json",
-      "lessonSha256": "2efe276bde9a9a236cd4bd4808be33e0c1196111c47f3d74e3e7a526da5e71c0",
+      "lessonSha256": "cd3423c9beb2b135c9c22431647766535768506ae080854bbed5c6409167dec3",
       "packageSha256": "3974e4bc501e105190608e3ccd083c17872a5caa69f6f2c19dc9aa97e491d1ef",
       "streamSha256": "0fc10e3c616ab54e10dbdf008c1e8e6cc117c54015ca4c48838b96c1328d2bc3",
       "streamChars": 12311
@@ -412,7 +415,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_Hp2nK8XpN2SmjdQc.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_Hp2nK8XpN2SmjdQc.sme-question-package.json",
-      "lessonSha256": "8235f9c6eb81557cd910f789acfb83298963411e134bb0da49abd33dbc282dd3",
+      "lessonSha256": "d211c6faf9113cf18af45a9b72748d4bc1ddf0324d4044b27736dd163ee9815e",
       "packageSha256": "65fe98ac12cc84d5469e66dde2774bcb5f00f145209ce884f89350bb8544197d",
       "streamSha256": "bb4110fe566d7445c55804f677d40dcea000b3dbf32ca6d0c0c9b7896bc15794",
       "streamChars": 14201
@@ -422,7 +425,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_HqqBFgKRHykMMhbB.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_HqqBFgKRHykMMhbB.sme-question-package.json",
-      "lessonSha256": "1b59e8a2097ee043d6a866549c169a7b35ab6984beb87730e7927c5862bbc165",
+      "lessonSha256": "75922c2a7c520fd04f05bd7053608479aef287074eb70450407c550c411667c5",
       "packageSha256": "049cd177ab76646d3913b4a57183ae7d8705e0c2e4d15bd5fb5a91d2104c9ca3",
       "streamSha256": "5366bcccc6dd323f04780bea6705d3747bd6c31a0ecb4b5e7c42d00ddacb15dc",
       "streamChars": 12239
@@ -432,7 +435,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_J7ZcTWyRxRgWQ45R.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_J7ZcTWyRxRgWQ45R.sme-question-package.json",
-      "lessonSha256": "3adf4008b4ef7b7c6f59b8ba32681e06310166159c07d3128966505e8fc34867",
+      "lessonSha256": "48df99b9b09bbeb454ce19869e30970666859d0066915dbdd0bdea95b56b73cd",
       "packageSha256": "e3bd61e93bf389f8490474d992cac415d1e042c77f8a9aef0d8c408268927ba2",
       "streamSha256": "b17d7261a48f7f0383621f5d0aa9230aecb8e277764a68a9c6a2f70f802c2bde",
       "streamChars": 13997
@@ -442,7 +445,7 @@
       "wave": 1,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_JCfdFrHsCkrmMbFj.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_JCfdFrHsCkrmMbFj.sme-question-package.json",
-      "lessonSha256": "6cc703687618f97f47f6f8eef3d5f54e3be521abf9ff5f857dc18599188907bb",
+      "lessonSha256": "41808b6a4619862b823527516853d44ba38a39dfc71ff6cbccbc0adaa63c2c61",
       "packageSha256": "a70d58f3e1b88edba04029ff9954fff089b400cd2757861e01666d75bc16047b",
       "streamSha256": "421b323e4a86804b2d9d63adff6947ce844d7539252569a4cbaf6c03e843522c",
       "streamChars": 20587
@@ -452,7 +455,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_KTZjJ7sPdDt4tkTH.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_KTZjJ7sPdDt4tkTH.sme-question-package.json",
-      "lessonSha256": "2b789e81b9e6ebfedb8d6ed0cc77b4be414f16f2414fdea7c5a1552b108dad35",
+      "lessonSha256": "b3061ccc265f42fe8be82fca4dfcdee8d07a52a51ae2191fc1254fb84cb5cc37",
       "packageSha256": "b06a677f3df9534e68511c8d0b644de91706d536513b89cf6219bdef1c152972",
       "streamSha256": "6c44bfa607d979ccbb712c6900fcc5288bf5956626a4416a9f9e3ef61852465f",
       "streamChars": 14933
@@ -462,7 +465,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_Kd76WccxD9ytSJJC.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_Kd76WccxD9ytSJJC.sme-question-package.json",
-      "lessonSha256": "9d40c1dce89e9f3a6fc0fefe09db7d65a2caada0c4fc24d3d11e1818663c0ff6",
+      "lessonSha256": "15716c941ab2b33c81578ceec19698f453d943ed4922c9ec24ce0e1dd613b676",
       "packageSha256": "aa933550b578ecba6ceb69f6255f2b3764a3adf2f1c4a4370d2359ba2a030916",
       "streamSha256": "7d6cc56260e7b891b50cb974b8c9394bc9d1dfa8869b4c5a338f9add9795cdd9",
       "streamChars": 13123
@@ -472,7 +475,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_KpvF2TWr5fYHk2Jz.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_KpvF2TWr5fYHk2Jz.sme-question-package.json",
-      "lessonSha256": "c504739f2073c9c4092f86085a79df00b500c77ef01c8db03a86180dad461f95",
+      "lessonSha256": "e25869a22e09295681f7cf9be7e4aa7d5443f9a1f54c87ebb33b0b5bd04e3c07",
       "packageSha256": "c25955a0c957e8b432e2ec8352c8129de3eba03c25453fddff7ae9255aa3e734",
       "streamSha256": "e2266f76ee7429664a69754787945beb4f5157a21c72bcc3b6ff5be94d7035a2",
       "streamChars": 14972
@@ -482,7 +485,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_MMkxbt9y3M3XvXrc.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_MMkxbt9y3M3XvXrc.sme-question-package.json",
-      "lessonSha256": "b9c1cb69394c2340d8e27948a7369578fdf501343622ec1aab3e546653417c7c",
+      "lessonSha256": "2ad83b0c0d52a513d0500e315cc750f23237c70d1b87cf2d3c50ee890cd281d1",
       "packageSha256": "48fcf2b3eb3b27d4da1eb449d92ceabc281822ee761f36a58a35720f250421b1",
       "streamSha256": "d911b7aa813bc3244788d40977d8c8cd5fe1848ce950f6869c8034ced1903b2f",
       "streamChars": 11805
@@ -492,7 +495,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_MVnFKDMVkswzpmpw.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_MVnFKDMVkswzpmpw.sme-question-package.json",
-      "lessonSha256": "85c196be88d3ae1488ae4f2a22e78f647c66d0a37b6a3154595bc714f1681685",
+      "lessonSha256": "0f1a5431c8ba567b674708f228dde19df7f57f3b5aaff01431489f4b802cc09c",
       "packageSha256": "345a19e13f4bd7dd419f4edb230aa63eac7137331edba135ecc7c2e4f85de35b",
       "streamSha256": "7e1550f885ab7bf78976c60dff7b2dee62cf0b8c7a3d087e38a00ed37a39f347",
       "streamChars": 12412
@@ -502,7 +505,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_MmqCNJfWbtYzRVqT.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_MmqCNJfWbtYzRVqT.sme-question-package.json",
-      "lessonSha256": "90c839f209aaedb5a228939b0c797e86dae6f8711e8450ce860e618c8916e146",
+      "lessonSha256": "a0727a4623166f84e7025737038bae0ecbcfcead3041a54300a9ce07bd1de1ee",
       "packageSha256": "c24f413ffd0b563993e0d20ab7d01bed984d3189e7668429e029a09b3177950b",
       "streamSha256": "8d08426ce6212cdefec33f36c0e8331479952651d4b76e8acbce225319f2caa6",
       "streamChars": 10943
@@ -512,7 +515,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_N4HX8tqbdhTQcHyS.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_N4HX8tqbdhTQcHyS.sme-question-package.json",
-      "lessonSha256": "2d980949635b7f0553bd1f0c713c83c024bb36bc34b863749f7788727536b510",
+      "lessonSha256": "e157c1d17b7a0525bfc5cbf191a3674a3efb2cb9f1eecdd1ddbacebc0b33fc58",
       "packageSha256": "6e009f485b6cdbc5eff12f49d2ba37f1af429b7f8b27eddcabb43039d7c25c0b",
       "streamSha256": "aac501243663a80d0a2369572689de7692279d64c22dc90145eb3620484d5918",
       "streamChars": 11594
@@ -522,7 +525,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_NdJGQM8BqHmTy7Vg.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_NdJGQM8BqHmTy7Vg.sme-question-package.json",
-      "lessonSha256": "34fbc48810e1b80d8aed9eb92e757159ed5218eba40353007c33d89144f0cd7d",
+      "lessonSha256": "ccfca98891d45704a9aa0ac7faa71254b58e9bca0bcf66a429465f0cccd6ffc1",
       "packageSha256": "d386a35b8a24b8fb1185d05cf91e22ff98e02f34de7207f88c3139b782127c06",
       "streamSha256": "1478056bfed48e8e27ba33f6a1383d3f404f162e169002f70a75e1ba6a419875",
       "streamChars": 11556
@@ -532,7 +535,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_QVmDs8X4szpds3cP.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_QVmDs8X4szpds3cP.sme-question-package.json",
-      "lessonSha256": "91872a4e83712cf26d47bcacf256edbe08402d21dad5bb6f2b63b2abc7a91db2",
+      "lessonSha256": "198c2eed7d290fcc79fb43a1090d49352b21e6bae9bfbb3b08b0752c80227c5c",
       "packageSha256": "c12e81995c960c2560635c3c8933dccb8c76caf79b850fc789ab657ed2917ae0",
       "streamSha256": "44ed51805375e3c55272ace44bba732189d77c71abc89f86b63238a671015e5c",
       "streamChars": 11565
@@ -542,7 +545,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_QzYRzzmwRxk2gKqV.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_QzYRzzmwRxk2gKqV.sme-question-package.json",
-      "lessonSha256": "123913ab7b8f24bd7c7348dc5cdfe807207d250778b25eda3a7395284d6cd596",
+      "lessonSha256": "8ba412d0f6343d03e5882f65b52183f76c8505367777afbb860e3020157f6f4b",
       "packageSha256": "e53157ac0a33ef2703884e240e34050d655ad10f5c9bc436f234b469f82978f8",
       "streamSha256": "d0fafe21d0353188373fca70c706b7943aa3f8780d69cdd1596a9b1dcbf3ae35",
       "streamChars": 13177
@@ -552,7 +555,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_R3ptwxGTTvdBFvyP.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_R3ptwxGTTvdBFvyP.sme-question-package.json",
-      "lessonSha256": "d4f7170514744f4a8de4e3c1b748660d09cda265bbc234e320819d743ed84eb7",
+      "lessonSha256": "acea240a2fcfe1d31f08df1f20e30255a8b3cd07dee2da090926e7519b390ed8",
       "packageSha256": "f9355444cde87b19b47b1d3bcf9199d5490475ddfabc616bebd2560e2f2fa6ea",
       "streamSha256": "c911e0fb74c59d355a81a4d0726513de307e88037492cfe82767634570206eef",
       "streamChars": 11386
@@ -562,7 +565,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_RvgxXR36425BFMcx.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_RvgxXR36425BFMcx.sme-question-package.json",
-      "lessonSha256": "b0c3f17cd0ed0259f67e6ce92f0846abea11b229eab829f1d3b033cd9b31c4ae",
+      "lessonSha256": "ba3cce5caf24b41885751c5d7ebc6199f2d9a772a194c1055caf5798656e4b73",
       "packageSha256": "72106a473fdc9383ceafbdfd09560a0c773787a6bf4a48e8990405fea95f87cc",
       "streamSha256": "10ce4b893a4ec4efc138c0cbd9b5ed4d72c916f715bc757fcb2e7041f2932a0f",
       "streamChars": 12516
@@ -572,7 +575,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_S2fg29M7cqvMj5kT.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_S2fg29M7cqvMj5kT.sme-question-package.json",
-      "lessonSha256": "0dfda9c6449cb145d018442bacf3ecfdac6b0b36ab87936e726acb8e72aa6d37",
+      "lessonSha256": "f2377ac595a0d814f8100abbb1ff9ca84a1239a6a89d435d3da3b187e9e16a20",
       "packageSha256": "2f53ba8e62efe61e1b0eaeb4be9396d63453b9aa372afd1b0880cc1dff9390bb",
       "streamSha256": "35044ac8c2ab03aa6eb6c67b65c0402ac4614ef5f43ae4c378323789e862bc50",
       "streamChars": 12792
@@ -582,7 +585,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_S7GPh8BBPBbmhYKm.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_S7GPh8BBPBbmhYKm.sme-question-package.json",
-      "lessonSha256": "b7871f465ac726fcd2bf356523312de7f22217750808b897db4ba583613bc093",
+      "lessonSha256": "da3238b0cddddaa27887965f0166232eaaa236acdd6e575d89cd83c0bb80298f",
       "packageSha256": "bbb1a754e7d2644abc698f141299349d0bf0332a3eaae5f7ea9f547cee411090",
       "streamSha256": "2a455e251017fdc3e98d5d78d218559f21ac1677a022e0426fa5b13366b8d3df",
       "streamChars": 12456
@@ -592,7 +595,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_Syxyh4Fct8KFg8NQ.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_Syxyh4Fct8KFg8NQ.sme-question-package.json",
-      "lessonSha256": "ab46338e7ea24fc9c4d956c820d5cd540e7436ed006f13dc807e0efdb6f8cf73",
+      "lessonSha256": "8bbd9d5b9459dd4f6c1744d8a51e4a8cd139a732b8ffc515911a8dafb952467d",
       "packageSha256": "fbcc92da1a36f89b7542da35928213b3890abb00881da885280d0bc8b428758b",
       "streamSha256": "cdf825f6e5814b7bb28fb8a0071d746d98ffd97f6e9e35d849792684dfc12c2a",
       "streamChars": 12389
@@ -602,7 +605,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_T55t3HNsgyZcXZtN.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_T55t3HNsgyZcXZtN.sme-question-package.json",
-      "lessonSha256": "c6a4d850e1822d15435cd86c12bdced6593b90f3f07ff237e9524ea347d82164",
+      "lessonSha256": "82cec5d7489228b9241b3401e032626967dea29ee52b881e93bea7df77f5cccf",
       "packageSha256": "82f53c4ea445afa5125b361216288d0a835b66ff3a4c958fa42daa34dbe68966",
       "streamSha256": "2ba0a27072f9e62ed56d2d9474ea8bb6314cda4a1a9fd2e5a788d85346ecf981",
       "streamChars": 10028
@@ -612,7 +615,7 @@
       "wave": 7,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_T6S7R66N2wSZpWyc.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_T6S7R66N2wSZpWyc.sme-question-package.json",
-      "lessonSha256": "c6a5e4fb46c80212188a90fbc379d23b13d3e79482915e00255ef17f70037a24",
+      "lessonSha256": "65832159e02fca58ad4add6e2cb8b3c9481aa9e7ece06d7408557ff8540cd9bd",
       "packageSha256": "7c0611e4a888646367266b9a4e44d9fe7e95c9d1534ed77b2dba3d2f0fc5e786",
       "streamSha256": "d8d9bf2bbdc827f1c5d68073d72e68198bf6f1ef7add61df5c3e09adf09964b6",
       "streamChars": 15197
@@ -622,7 +625,7 @@
       "wave": 1,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_TM4QVMgXVxs4vbfY.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_TM4QVMgXVxs4vbfY.sme-question-package.json",
-      "lessonSha256": "19ad296474d375d66d440703886a5f018861e83560ec22742113a13d3d87499e",
+      "lessonSha256": "214652e09937efea3168d418f235dd3a600191dbb2d80264f85124021c7a0437",
       "packageSha256": "73aacaabc5dcc18d7ed5b272b33f93123c62173682118bbcd41c24bfadf150ce",
       "streamSha256": "420eb922c8ca6fc44c1da77c0681853c3cce2fc74cd5c47912ca367e715275c1",
       "streamChars": 20322
@@ -632,7 +635,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_TWGVV6RXN3Ktqb9h.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_TWGVV6RXN3Ktqb9h.sme-question-package.json",
-      "lessonSha256": "eb95a65445e2dfd57443d212d6b79c41e6a641acd801ea16f985dd74bc88b042",
+      "lessonSha256": "5e944502a94b084400adb4d10ae20875f38990ee225a1a4b39615840e6a5360a",
       "packageSha256": "d028afd5fd244629d669fda6de5131f7ea06735327386fd2d1e041faa3cce2c6",
       "streamSha256": "da157d7cce0a0c9839104ac943ccebc2649c05a518c1cc9954e99e1aeb221a95",
       "streamChars": 13478
@@ -642,7 +645,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_TsfqyK9BYMtN2Bfd.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_TsfqyK9BYMtN2Bfd.sme-question-package.json",
-      "lessonSha256": "34c6b961c4498f5e96e0689bb6e8785efe46985a8143d5be919c9058be0d4155",
+      "lessonSha256": "a9b2940255dba8b1aff1c2626a216399d4113e5c817c0cf274500535b40ebf64",
       "packageSha256": "efff9ed65d82f272c795d80c70ccae5f96197d143d8222218016ff1877ab1f47",
       "streamSha256": "a78ca8b91b6746814a8753925dc5f9bc95483105aa9470aad10e9e9de95c7e2f",
       "streamChars": 13779
@@ -652,7 +655,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_V3hNWh6QWrbCRHrX.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_V3hNWh6QWrbCRHrX.sme-question-package.json",
-      "lessonSha256": "ae1fb464d9030797eaf49879fe0ec6f91659f37082cac42489538a7848277175",
+      "lessonSha256": "279bbd76d6324e30c9e0ea88e5f129e3a37cfb7296b5edd3d9eaafab27fdad6a",
       "packageSha256": "6789dbf9c90ccd6ef7caddf016aa0435b575ee873969ea889acb0037af6f7425",
       "streamSha256": "e4c37658e555e37d4981c07f1b75acdd39892c2b3f6b6ef7738ef7ef182e1d35",
       "streamChars": 16438
@@ -662,7 +665,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_V9tPMnX6Hq2XnqcP.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_V9tPMnX6Hq2XnqcP.sme-question-package.json",
-      "lessonSha256": "62e98fe0cd54fd4ca78716e396578cb3dd081b22942d15f31848de5208052de0",
+      "lessonSha256": "6c8d909678d642a15c7d7bbc5c76095f7b82b01d205cae6cd190ce2baac01aa2",
       "packageSha256": "6900429d906ba2fc965f0612ec696090fd7b8b52d4b3415b6dbf8f9b26067204",
       "streamSha256": "611901784117843a1a960c3847d1e1b8467530c1a14991cdfb9566a92ae51aab",
       "streamChars": 14940
@@ -672,7 +675,7 @@
       "wave": 7,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_VvsXMdW3TB37JhWF.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_VvsXMdW3TB37JhWF.sme-question-package.json",
-      "lessonSha256": "e1f30f43e65922d8da47752261f72de23850b71f832d908f4aee3e2b1af6e0e1",
+      "lessonSha256": "74f7f68909ba25ddd81bc43bb9a11c2f4e5e33555fa48b60671cb5b291303375",
       "packageSha256": "42965a5b017caa3a5f1156c03797331236479596995d686f4b9adf316dde7a99",
       "streamSha256": "326999a5cabf46eb869d75562912bfb8ab6fd422d0cef99b667fe24426ec0adf",
       "streamChars": 11675
@@ -682,7 +685,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_VyXFNyxZHZGkxqTG.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_VyXFNyxZHZGkxqTG.sme-question-package.json",
-      "lessonSha256": "ff2b983ec52f4ac0e921cde15da0cb1ca714b6d8aaa723ecf0ed7a5bbd26e8c5",
+      "lessonSha256": "d46ee1a6f4925b54290793888539c18b986648a057b29898f0e08ea96fde5938",
       "packageSha256": "694aa810c214aa5fc7ec9f85e707de62239e0db7848ec5a66acd2e909da20f9a",
       "streamSha256": "7e7ded578e0230e2f9e02f6d591dc42e43fbf649d791e64899378baf8af383c4",
       "streamChars": 11435
@@ -692,7 +695,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_WJD4ZN4kQfzJNSPV.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_WJD4ZN4kQfzJNSPV.sme-question-package.json",
-      "lessonSha256": "bb69348e227ca27493ab2709fde04a9ef0487e051d008133335e1e88fb9037ea",
+      "lessonSha256": "e1ec48338942ceb2941c78b070ce8758384a9b4bb4b5eb3b69d74b13e53063cc",
       "packageSha256": "7430cf8d355660f3e1632afc4f18b6d89170babca7d5a4bb3698f404069aafc3",
       "streamSha256": "9b1a1451159e98e26fe102cf903b2ef9668299ab3defa12612ef8d7db07d63ca",
       "streamChars": 14024
@@ -702,7 +705,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_XJ8qXfzZJJFKXHnF.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_XJ8qXfzZJJFKXHnF.sme-question-package.json",
-      "lessonSha256": "9e4e4a9dd04135806afa5cd396eb7e36b53246a7ae29751b2fb8fdccf31dc9f3",
+      "lessonSha256": "be2b66c4593c17fcb019ffd4313961f91294d00e22dddda51029e38dca1ed5dc",
       "packageSha256": "feb7f9ea79e64d4e94e2974ca18473b6d91cb4efbcdbb6d55ff293bf4624d0f2",
       "streamSha256": "b34fb4be7ab57331c7503f64b7069b40fbeab254a3427dcdc5e9c7a1676f629b",
       "streamChars": 15851
@@ -712,7 +715,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_YBWYstSRgM2QPzQq.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_YBWYstSRgM2QPzQq.sme-question-package.json",
-      "lessonSha256": "c55033a84a3b4e7fba39fa5a82e48bda14e0ff618f0496d644df1224cc0af362",
+      "lessonSha256": "74f79d62cd0e9ae6283d1c6cb2b0bdac663de4f7f31117dbf0d774812d1ea8ec",
       "packageSha256": "86a3390fa2c20d4eb47d900e97770d3eb7d58e061fecd5a011975f81000e8113",
       "streamSha256": "233f7b97ae547a9a16b15c0ad059b156841e8faa5e6d5c7259236f0cfbd928f9",
       "streamChars": 12767
@@ -722,7 +725,7 @@
       "wave": 7,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_YWDXCCmjfjkJcs6c.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_YWDXCCmjfjkJcs6c.sme-question-package.json",
-      "lessonSha256": "f2f365bb56fe22dc4831f30460f2578e14f9f8464abeb1b756158b43da1a9ffe",
+      "lessonSha256": "71544abd8fb5a297c7f156eeaf6c880d99c228b6989dfe38ae406cd2344dd017",
       "packageSha256": "c60b51654c63bf042a2eae931e3d1fbe2bec8c3aa3adc1658771e13fcef01854",
       "streamSha256": "5d1ac59ebafbeb9fe9615f68cf2a7e28d89aec91e72cc362899e6d33a24df354",
       "streamChars": 9879
@@ -732,7 +735,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_ZWrmDYtNGnmFycPM.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_ZWrmDYtNGnmFycPM.sme-question-package.json",
-      "lessonSha256": "537d2ba5fe4408b7b9a1ab6edab8dc8833e027b05c6cbde12d07d32b2bb3d9df",
+      "lessonSha256": "87c7403546cbb32426b29971a3a46e8288c5a66e79cd6dcfefddc8a7185cf30a",
       "packageSha256": "76525855bc816d6e989e79c8a85b8e4101f0ffdfacca4154329195b4409d905d",
       "streamSha256": "c9e4f76bc57be6c44a25c5fe7e16433955b133cc0757bab8a1c37925a13a92f4",
       "streamChars": 11974
@@ -742,7 +745,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_Zh6Pw56rjdMkPCD4.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_Zh6Pw56rjdMkPCD4.sme-question-package.json",
-      "lessonSha256": "9e1b4f93e15bf01e2cd073c44a020f0fe7d6ab67c2718f132a94a917ef41bad8",
+      "lessonSha256": "1e8e1a0452b4c8639c3317bcd2eebcb1b0b9bd10566f0d73ea280265b04799a3",
       "packageSha256": "b26b55babbebd118fb274b19810d208c59f781683ee081cf4907fbf42aa5c541",
       "streamSha256": "ca06a5857840e60323979fca642e512ad8dfc523513bfa0abde8aa172e010a70",
       "streamChars": 11309
@@ -752,7 +755,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_b3XCzdtfQddbJjVf.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_b3XCzdtfQddbJjVf.sme-question-package.json",
-      "lessonSha256": "b7dec75c27826c18754bd88cb95216580874c624056c25e49021c3b749605ade",
+      "lessonSha256": "910abaa3b2fa54b9d0ec911e6c686a0248d8fbe91dcf78e43df02396a7d79bcc",
       "packageSha256": "f53eceeaa51ab00b549f2b84e8f97a2259c51d849c4898ff5b45ed68d2a9deb8",
       "streamSha256": "0afe0aa0f63fc2061f6c0a1fa1cc1448c7ffa09150990820414ff4363ebfc09d",
       "streamChars": 10995
@@ -762,7 +765,7 @@
       "wave": 10,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_bGgYrQXP2tqrYwdV.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_bGgYrQXP2tqrYwdV.sme-question-package.json",
-      "lessonSha256": "9cc7fb704acd5af25101278007cf09ab103d7453402ed7f694c039f5ca2f016a",
+      "lessonSha256": "a68c78955aa18abdf0c9f311f7500a47848a156c38d50780f863042dce0befbc",
       "packageSha256": "974f6d42c32bbef90dcfba88f8790aa4c632a9f85743881c0729ffdafb6964dc",
       "streamSha256": "7042629a9ff422a520965e118f572dd84067628a275f27123c7c5618a6655feb",
       "streamChars": 14479
@@ -772,7 +775,7 @@
       "wave": 10,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_bvyrkKqRBMKCRzHM.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_bvyrkKqRBMKCRzHM.sme-question-package.json",
-      "lessonSha256": "66d40369f1aefa83203f6c117b170ec10e9fcfd5e711f5f45d5a15cdf3688838",
+      "lessonSha256": "99b387d840fce03763c1aa3c4a1316736c0ef280ab5152b29ff652feb43b0e48",
       "packageSha256": "ce57ac05e0a340741746c9b0eda5eedef608c9752f16b0b297f44060b448e2fe",
       "streamSha256": "31abb66554dbddab256261d8a6c4f6e482ec01e7bf4157fd94b0b5e64b98f179",
       "streamChars": 10683
@@ -782,7 +785,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_by5FDNfkqdBCkmXb.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_by5FDNfkqdBCkmXb.sme-question-package.json",
-      "lessonSha256": "7c8736a6d19f356cd0e8c2e916ba3623cfefe9128c59c864e3dd16dbce0afc5b",
+      "lessonSha256": "4a8a36d3d8e23cfc8206da48666463175d27e0d78ad1f1cfe536c4c415b07d8d",
       "packageSha256": "4a7b80da7b1be823ec2a31fd6d5dbca8f614fe76b9dbc48bdb24f793a5e39935",
       "streamSha256": "0976e51be3e1a79143fffb987167140291f8294f0d4c19f50b75cdfd454e0968",
       "streamChars": 10313
@@ -792,7 +795,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_cTk2cs2h2BKQ3y3B.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_cTk2cs2h2BKQ3y3B.sme-question-package.json",
-      "lessonSha256": "0071e33738b950dafbcf0bff74ca734aa0377d263045086b638be45ef235e39b",
+      "lessonSha256": "1e3c851b51e4db5839ac160d4af57dbdb080615e359245d279fa00df3679d036",
       "packageSha256": "362697534aa060ee8ed0628a180048272e9442475e3a060ed0e2ec045a181f4f",
       "streamSha256": "3025c40753fb6373315dfece4e930a646c2ac9de61b12e0069b2af9fa2dd90bb",
       "streamChars": 11344
@@ -802,7 +805,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_dTP52nzhYb96XrJx.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_dTP52nzhYb96XrJx.sme-question-package.json",
-      "lessonSha256": "bb58fd8aa756222711dbbfc55406515e42e90dc1ef60ec58bc1da4688f61f51b",
+      "lessonSha256": "6838e60476a934bedbc8cf7492da6242b7acecbf8a460afeeb5059c0e0217e26",
       "packageSha256": "7f28cefbb78f79bdd8adaea3fb22df7d8658081b5d2286f4268570d842f61e55",
       "streamSha256": "2ba70a663e73c3cb74434d844659634b2a788c4ccf54ea0916c8113b05f96781",
       "streamChars": 12343
@@ -812,7 +815,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_dgVRCKCwn4rTGxGZ.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_dgVRCKCwn4rTGxGZ.sme-question-package.json",
-      "lessonSha256": "15cb3c998beaed609681e340a7db1bb957ac9bcf5607df2af6fbcd35e26f05bd",
+      "lessonSha256": "e06581be8476d88bae3e86142ec076745a986dfcce661984f09dc0df7ea7dbbe",
       "packageSha256": "f50f6fb9d685d1523a4c0887455c27effd5b78d654957f56518c1d7b66144ab5",
       "streamSha256": "5d373d08ac9cd23ca6a105dc84f08dd883114a05e00907ba4a34b76bc3af0342",
       "streamChars": 15325
@@ -822,7 +825,7 @@
       "wave": 1,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_fQSYvKRMDBj3s2Bx.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_fQSYvKRMDBj3s2Bx.sme-question-package.json",
-      "lessonSha256": "25db105405283c8254f1e951d310dc5617383590d3745854cee6602e7cd8d7d6",
+      "lessonSha256": "53ebcf688b5a0cd3269f25581464e2490f6276132fafd6fa6265566fbba7b50a",
       "packageSha256": "94f7768fe6c01805d933e1b8769e22bcbf119a66d221613d95de356fcb615dbb",
       "streamSha256": "0f877cc36899d3648523c3b2798de9a0696977c163a39b989068d180fe435ea4",
       "streamChars": 12071
@@ -832,7 +835,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_gBGX339WBpwyCrFF.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_gBGX339WBpwyCrFF.sme-question-package.json",
-      "lessonSha256": "f84643cd64ed69280b04bb11febb7ff5b0bdcff4b45718d62c41fde0fb9ec76d",
+      "lessonSha256": "8e3c6f4dd01389ab946ae664c0dfd67cbbbdd73917e71817304216dce778b2d2",
       "packageSha256": "5d889a633f08a1b369d9e83cb7c70ed1f3aff63b7686cb5c81ef651a15d7dad4",
       "streamSha256": "0bf53f585334fb018a9fab624bc8e5d9f32b43a1f3e65ce792ebd78f0bd8b5c5",
       "streamChars": 13402
@@ -842,7 +845,7 @@
       "wave": 1,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_jNJ4gTmcHqdFqsNh.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_jNJ4gTmcHqdFqsNh.sme-question-package.json",
-      "lessonSha256": "3907c981a101dbd1d4d50cc179ee6936499ac59c80581b4f26e66fb3b724416c",
+      "lessonSha256": "b6e4967e4684a36b8f2b6932d3b3421768b46453d7dd6e8b100b8819f6ffd0de",
       "packageSha256": "650a443be2f7865285b420c807e63b5236e304261d0788fa971108447247e378",
       "streamSha256": "55d4e74214605ff4d9bbd72eda34bbe038332b024d7050bb8bf25bf06a69149e",
       "streamChars": 15340
@@ -852,7 +855,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_jVwPmjqHbqQkXcjG.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_jVwPmjqHbqQkXcjG.sme-question-package.json",
-      "lessonSha256": "e60c4f36907b23c43b5b2399e69bbfaa55eb28e879226c56f1e992ef8ec135e1",
+      "lessonSha256": "04129e5d8bb089713f31f2451292d5e85e182be3e02a4b9e630bc22627e9529f",
       "packageSha256": "9ac7080d6dd137f20d330cd10774a166601b8241f905e8a596fb881b7879b03f",
       "streamSha256": "914f998b511a6ef7ce07d48ec2b7ed624e2efc366aaf4bf970f703ca94a1239a",
       "streamChars": 14308
@@ -862,7 +865,7 @@
       "wave": 5,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_jXXsc4wt2344BjxX.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_jXXsc4wt2344BjxX.sme-question-package.json",
-      "lessonSha256": "45d5a917b0c0377ff5ac852597429990e4c550384a7cee3a0b48bca67168d3fa",
+      "lessonSha256": "8c5eed7ed1d9240fc02fdff83acac2e5e58e955b6b321700ea376bace3309af1",
       "packageSha256": "e34fd68a67f200d0f59e9ae1ca28ab55596a081c8c68a1cab5fe04ab50625b52",
       "streamSha256": "57af679cf1878f743b3e3c58493a968bc88fb34d9e57919cab25669f0bf11d5e",
       "streamChars": 14195
@@ -872,7 +875,7 @@
       "wave": 1,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_kJg2gwF77vdFZZ2H.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_kJg2gwF77vdFZZ2H.sme-question-package.json",
-      "lessonSha256": "da1db494ed603e5ac19d8ce1557b61e6724d26ef7aac0fcb109a143dfe9f75f5",
+      "lessonSha256": "55fc305c102a7faedf53a96ecf3885576c45932b1b4935b06d8a1e4b7178ff17",
       "packageSha256": "43f13f6bdd8842cb2eae1d7e46db61888001989bb0eff4b822c365b715e5ee97",
       "streamSha256": "c034c3ab59aa99e0759c171da2f6d0bd3a533e7af3330af5f4af70ef1f3fc886",
       "streamChars": 18464
@@ -882,7 +885,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_kb2VkFMdBTbmG33t.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_kb2VkFMdBTbmG33t.sme-question-package.json",
-      "lessonSha256": "b91ce56754aa51d45f448c2e77136609dd96c8afb7c9b67c2a0e571643a491d7",
+      "lessonSha256": "1f28658fbbd8f600c721232428383f1775010946a5eb66a6c41c9d93de4d829f",
       "packageSha256": "83f64d53d83d0d9f2ed36f209e5417d9b7ca17ae82d2cc940303f3a58da80090",
       "streamSha256": "7ed428c956131163d27746453484e8c770e3e76d33d6b590d0ce197023c8fe2c",
       "streamChars": 12952
@@ -892,7 +895,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_kdRjZHjHcpVZsD3h.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_kdRjZHjHcpVZsD3h.sme-question-package.json",
-      "lessonSha256": "6337cc82277070fbaf0bf7fb3a412b8911387aae3fe7bca5d615b961d3f15898",
+      "lessonSha256": "eaf03b8a34621e02bdd8e02912009ed61634ed0ded5e79c4e7fa129cd12afe98",
       "packageSha256": "cab157dcbb75585d7b5afb72d0c0828321e86bbe91391540799b268bcec21dbb",
       "streamSha256": "2174cddd61c1a186d6fe6d41803e679b1a36e52c1870be8c0cf842ea8193509b",
       "streamChars": 12788
@@ -902,7 +905,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_mBqgkpZ3hbSBmWCC.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_mBqgkpZ3hbSBmWCC.sme-question-package.json",
-      "lessonSha256": "dfe2db560e2cd639c767d431f2b79b9c3afc1d68c157c5eb382a2fdc2650c036",
+      "lessonSha256": "16e4e8382a201cb4f42d137231107437488cfe679411b483b140715cf6c2f40a",
       "packageSha256": "c98d689f730b4ac7335c23b4072fec1f7ac100af68388693956789b94a23cde7",
       "streamSha256": "586e7db8d162b63a904deb3a4df3f85c72876b4ea16c28566c879c4c225590ad",
       "streamChars": 13220
@@ -912,7 +915,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_mbcBZkygY4YpG2bf.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_mbcBZkygY4YpG2bf.sme-question-package.json",
-      "lessonSha256": "d154b5ab5f28715bb727beab38cf9d340e6a83b53e4227e1ef4916116b1b3607",
+      "lessonSha256": "268b291f3e6bb49e88a29db7d7b7c87289996525c92b94864fc1caf0ac44e4a0",
       "packageSha256": "ad55f032b101b1aa272490fbf3a58237c0fa2e1f17e59483b2129689d367348a",
       "streamSha256": "cd93cd930b17ad491b3f3243b5ccbc9abcba47b2217c68801eb3fa6a1a0dd6c6",
       "streamChars": 11704
@@ -922,7 +925,7 @@
       "wave": 10,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_ncFJkGhXFsKrkNkH.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_ncFJkGhXFsKrkNkH.sme-question-package.json",
-      "lessonSha256": "5c5437b2df9dbc2fa1856252abde4a4ac3bffba3c3b08ca9f4f55eb11cb20136",
+      "lessonSha256": "0dd0a9f69f0db17913e9d834603546495ad3968f08bee098797f5cbee1ef7d8e",
       "packageSha256": "ecdbef1ed173d37f4adc18ed43b9fa0ad5ec593d518cda8e92f2eaa23bb9d272",
       "streamSha256": "fc3baea76d9cfdc60542f7e42721e3f03e964b9ede914a62b3cb0b45f9912c5b",
       "streamChars": 11953
@@ -932,7 +935,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_nzW5ppBTV3ZnfSYY.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_nzW5ppBTV3ZnfSYY.sme-question-package.json",
-      "lessonSha256": "9dea2821e83bdf37bf2f94950abf3172fe865eb358a25f1d9450a1a14382c5b0",
+      "lessonSha256": "a1cf60483dfdf4995ae99980475a43388f9599b9bf2733673815fbeee404c33c",
       "packageSha256": "6cac7ef89ddb61bfc35d281028e57a55d85c6b3e4825022119eba410d9db95eb",
       "streamSha256": "530a95f428a0395d1e81d779874c0061cf2677cef6113a4826a7228fbbd3ce68",
       "streamChars": 14058
@@ -942,7 +945,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_p2FmkrXqZSzFngpg.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_p2FmkrXqZSzFngpg.sme-question-package.json",
-      "lessonSha256": "707ffd3e716ee7f6a952663db3fbf44cfb5999650fd70d133ea680dd453adc50",
+      "lessonSha256": "a6b4220fefe9aeffca7db627cd280788abca2a06faf5343cdd22ec3c03dc46cb",
       "packageSha256": "489a3b2413fa90fcc6a2b3cdc79689254d2211abacdfc02cdc598049efae312e",
       "streamSha256": "aecb8abf22f769d4f1598058484f72873ae81b398af8788a0f261c7fe8a559e5",
       "streamChars": 11721
@@ -952,7 +955,7 @@
       "wave": 7,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_pBp5Z5C2RHTKk7Wn.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_pBp5Z5C2RHTKk7Wn.sme-question-package.json",
-      "lessonSha256": "590b5b0b4eb649594595bb678a08d42b3b5006d0ac51718edf09bba6bea03bbb",
+      "lessonSha256": "0df9d0ce1c104cb9d7c6cd16c6dd6066e8f178bdbeb85cf26e2ecf80e195add3",
       "packageSha256": "c6ac394b3e83487866f4031e821c2efe75ee467432c2eccfbeba1bb66168e375",
       "streamSha256": "d54fa7d326f6c9200b56f4b73179f9fc6733468e6afe301aedb03790f4f5b045",
       "streamChars": 11162
@@ -962,7 +965,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_pWzTTBv3B4yGFfj3.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_pWzTTBv3B4yGFfj3.sme-question-package.json",
-      "lessonSha256": "9ee784886c1158f2957740c2c948c21143c86c5603bc9742c4b4dc73a1b4dd90",
+      "lessonSha256": "ce696e3538fd51181cfb2269f656e5f7e01f38912a9ecd150ac5b1682c51c62f",
       "packageSha256": "ecb65d975a5d2395867cd50587d1951c6c49cb366d20baa56f0efcf0fad7f86a",
       "streamSha256": "4e44b15b6e7b64a2cdafc73ea61749acdf998dc51dd2c0677fc2bc7f7523144e",
       "streamChars": 13116
@@ -972,7 +975,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_qV5R2cKB59bSKD33.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_qV5R2cKB59bSKD33.sme-question-package.json",
-      "lessonSha256": "42e3d4ec27cada6202a2dfe9744a1b4f6a10913577f752ece5caa44d2e918374",
+      "lessonSha256": "101e79b00b5c9ca6366a225b73bcd7f0156621b07e20b242fd46a76c4cd151ee",
       "packageSha256": "aeabfaf219006aae0264646446372dfbb27bb82627a8d7be0b84e9b9f2be1838",
       "streamSha256": "db86ec5368019d7f9e199fdf29ed8fe6fac3b79dff2a6f946344b8b23fed72cd",
       "streamChars": 11131
@@ -982,7 +985,7 @@
       "wave": 7,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_qb9TBhB6VmnFGjvf.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_qb9TBhB6VmnFGjvf.sme-question-package.json",
-      "lessonSha256": "f8a81c8ea46185a05fba62a75a43edb2d8d4d20a01218c8de2df58f504e120ca",
+      "lessonSha256": "4ab806328b3741cb9a640f967d8f056b8bebff13d4dc986cb34146be79e55c5f",
       "packageSha256": "e818d5c51d336ffe4e29e5f0418484f60d4605a2942736d28a0f0f9c67fd6e0e",
       "streamSha256": "4529bc36b2b568fc0daa5bf9c146def9acc482dc705c7906f60aa7e6ecee39cf",
       "streamChars": 11553
@@ -992,7 +995,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_rHKCkt3PTXDBpmJG.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_rHKCkt3PTXDBpmJG.sme-question-package.json",
-      "lessonSha256": "63762318c0821b5c98513b7582edad2257e2747fc76e95ac7eed36fd8d3d1281",
+      "lessonSha256": "0f95d16e189339f5e49088001b85a50bd6133f626347c87cc09de5db52a539f6",
       "packageSha256": "f07a4e42cd33a4df6515f22dd8cf1fb3a031e4a05cc76a9b000da5011d321151",
       "streamSha256": "add3fb086d149be1a004b28a6cda1cc2128dbcf233c2802bb4ff1a9ea4f65411",
       "streamChars": 13265
@@ -1002,7 +1005,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_sX8yyBxHn8bS7t46.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_sX8yyBxHn8bS7t46.sme-question-package.json",
-      "lessonSha256": "86c74ac1fff5ef426641cd5568e18fbe56df205887dceb0147f17e892ee9087d",
+      "lessonSha256": "7ef6a48d05558c52ce77b5e12c040329b54b518217273e4f5c03523f6aa64041",
       "packageSha256": "84cbb5b8875c6ef3b823d957e84e2c696bc7fe55e953b47f209b4e82b98afe6e",
       "streamSha256": "01a90c0d207585a56fc4f007276dd1f3d628766a2788bd2f1a6000d5a37ff448",
       "streamChars": 13273
@@ -1012,7 +1015,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_sf7s7s6bQ2cZv29s.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_sf7s7s6bQ2cZv29s.sme-question-package.json",
-      "lessonSha256": "e23670c85810961fc2633067d406c5d75d9f88937b121048c742489c505164c1",
+      "lessonSha256": "1f8cae3efd83c8f70e1b052912afb3348029e3ad626407a12aabaa458e2babe2",
       "packageSha256": "872baadef6d330a74c3dfa6489c710985ab7c4051ddbbd7e040ceeffee329069",
       "streamSha256": "4464399decd63dea6775610f5c250a8927232f66a06f3690b93ad507e8c49ac7",
       "streamChars": 12819
@@ -1022,7 +1025,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_t68QRDhwR6r5gxYX.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_t68QRDhwR6r5gxYX.sme-question-package.json",
-      "lessonSha256": "0f56236a8050afae666c795f55788f013d702f64411210f56f7e80c540640b02",
+      "lessonSha256": "0255b4b992e947d2b71b7369445fda467b7fbe09157833cd4c932e60e382847a",
       "packageSha256": "95892ef71566f5e863376eb519f02e682e8d9961e3884fef59077b7abcd91da2",
       "streamSha256": "6a12c4dc77e67cc742dec625db5501981577b6c9c4fca3702da26f37fa58e9d4",
       "streamChars": 10436
@@ -1032,7 +1035,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_tvwj4VZ6yFscPJfD.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_tvwj4VZ6yFscPJfD.sme-question-package.json",
-      "lessonSha256": "c6e45ab984e10df017dc8f9465cb5614fadf5af25474a21829c9794ec2f3d579",
+      "lessonSha256": "f03c2b7eecfbfa35f39cd8ed5addf1562282b6a217106815ea85ba8d6a3146a9",
       "packageSha256": "4ce6e3f5a23e49488e0d5e39394c6b9e73ca2ea38ba883028777124b1ea83936",
       "streamSha256": "786291a1d1ce0c52b796df06c5b39a53a7a147e8e73fdc1385667c5f4c1e0b40",
       "streamChars": 10622
@@ -1042,7 +1045,7 @@
       "wave": 7,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_v5JjfpT6grhtq3QW.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_v5JjfpT6grhtq3QW.sme-question-package.json",
-      "lessonSha256": "0e9eb0f189a2d2b58a22dbcaebb576692088e55331770568ae96b6dfbf384e4b",
+      "lessonSha256": "f8c152fae80a0a31acac2644a5242d192d952fa91d140cd7c4d9685983265b64",
       "packageSha256": "269f94115ca7302770b6b63f548cdc98d03a1a1aaad19443de657996009e7828",
       "streamSha256": "af88664475afe1e38f6b86202ed046df64c176f7051d7fcb257a5532a0d8c6b3",
       "streamChars": 10347
@@ -1052,7 +1055,7 @@
       "wave": 7,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_vVdP57QhDYSVfZgy.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_vVdP57QhDYSVfZgy.sme-question-package.json",
-      "lessonSha256": "a0819efb849a616c6bc44401151b3dd96c0661d31af928be085482c65131fdaf",
+      "lessonSha256": "5c14b4daaf19452c17bff1ae2751d6982aa3e0881e5d4bcb39e2cebcad335a33",
       "packageSha256": "d250505592c821dffdf28057546cfc30c42633ec11d7505656704eaad4f9543d",
       "streamSha256": "d9acc3ff7760f96f6f10d2de391d969ec583ab5aec1e238c20ccfe86d241bea2",
       "streamChars": 9491
@@ -1062,7 +1065,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_vXPcH3vS8wv7BFkK.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_vXPcH3vS8wv7BFkK.sme-question-package.json",
-      "lessonSha256": "276144d2a28714f82bdd64a934f584585419dc8debbc6e5fcd21d0833da51f2b",
+      "lessonSha256": "e875589217664788639aa1fd1cdf29d891d6cb16d2f2ba684a08a229dd0e7d45",
       "packageSha256": "61ee80ec174601c2f12bf10d02fe41d9a7a64ca8012a68eaf3a6c9afdfa31844",
       "streamSha256": "33e070a840a286fab7c0dda26e40df7bcf09daa64e41283a2e1c7f5111056a76",
       "streamChars": 12785
@@ -1072,7 +1075,7 @@
       "wave": 4,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_vfmJxw4VQgXKzXF3.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_vfmJxw4VQgXKzXF3.sme-question-package.json",
-      "lessonSha256": "b7a2fb1b119b8a62481e14ceca9b8d850f22f3f22396a70f3a033e776aa8a91c",
+      "lessonSha256": "0d3e25d241e8ca092a023672bc286260dff268ff5ac5753e8e662c101bb329ab",
       "packageSha256": "eae7bf12ce236f20274b702507ed5b414f801ea7899ad653f4dcaa4c47e4e321",
       "streamSha256": "8c55f284b1158d45aefee59d8ab2b6b1f5cb045995efcedf895f36ec3bae36f5",
       "streamChars": 13522
@@ -1082,7 +1085,7 @@
       "wave": 2,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_vzGMZxqQtWYVWB7h.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_vzGMZxqQtWYVWB7h.sme-question-package.json",
-      "lessonSha256": "68942151f4cafdc35714f3f60701bf3ceb3bed99e42130520799b959c08b231f",
+      "lessonSha256": "7ec4008544f7d3bf95bde2eee711e06a9c83d1dbdf8902ffd2718d1c85a3b0ec",
       "packageSha256": "4b8e603ff1bfac2ebd1fd3a02abc14cc4c3e81d59e3210278bbd8ceb32f46069",
       "streamSha256": "5e02414b52261638ac680fef6acf37310b609242f30cd32e4de8a6c117d50894",
       "streamChars": 11570
@@ -1092,7 +1095,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_w25KHshCMNQWwftj.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_w25KHshCMNQWwftj.sme-question-package.json",
-      "lessonSha256": "fa27e1e199f76636285d8178d2359c919a1bc0797854a1361d19662543a748ab",
+      "lessonSha256": "ecf4a0bb652fca9f508f62b087e0ba80294fd60c54d697a4b6e478e677f5ac7e",
       "packageSha256": "89e3a9d0e068091b2ead89aaa609c981db364e36e26b2e0970eeca895480593d",
       "streamSha256": "ce9bbf58007fa5d8b139c1efb216cd12ea3d67e9c7770e2ff0fac300c0891a8e",
       "streamChars": 12025
@@ -1102,7 +1105,7 @@
       "wave": 9,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_wDdXr5k7gknQ7xJp.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_wDdXr5k7gknQ7xJp.sme-question-package.json",
-      "lessonSha256": "2de06b2bd9fb059817fbd6de114efc05a951d798f779de18be0bb55a84d8cbc4",
+      "lessonSha256": "b62bfdf2810399623c09d87830e8cbc05e39b117f3806a9d1c631c886bc8e320",
       "packageSha256": "e44d86f9c902466d3d5dd99599db5a3af423ef8949f71a4c63be2ed633be0511",
       "streamSha256": "9bb7a82be4565d2dc4915a4ece594c82930fde9881257e0baf8b415d9e9da313",
       "streamChars": 18564
@@ -1112,7 +1115,7 @@
       "wave": 1,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_wTtM2fQVVjntRm64.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_wTtM2fQVVjntRm64.sme-question-package.json",
-      "lessonSha256": "85038a71b5298da9e5ecb13c52a594b3229eeb0e64434ed5213cff5707c323b2",
+      "lessonSha256": "c7964c2d6606f6490fc55da9bc07ed31923ab3c332bcc73bb2439f1088ec6ce1",
       "packageSha256": "23bac15e1b1ba407a6baf3992e9bb92fb80b2f2f6a3cea214e688a5292c4f0db",
       "streamSha256": "eefdc7aa75cfdcddaa79255c0cded97e7182b1638c77f53642c6c96c51fa76ca",
       "streamChars": 12092
@@ -1122,7 +1125,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_x5m8QBWxtKvxQ9sx.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_x5m8QBWxtKvxQ9sx.sme-question-package.json",
-      "lessonSha256": "8ebf4bd892adbad49ced164877f511a879fd852f0f07f31e86ecbaff9080d949",
+      "lessonSha256": "2823c75f07f4e4eb96fa50f422710b4f561b7523eb0b10d04cfda0f0e0c912ce",
       "packageSha256": "3321e4431e1d5ce2f8822d4a31bff8638fbf4c130f7ab4738230d20b89066690",
       "streamSha256": "e66533ad1d407c95fddfa1ed79c1f1cee2a050e014d791f602df405f96f75241",
       "streamChars": 12849
@@ -1132,7 +1135,7 @@
       "wave": 1,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_xT8XsdJtDX5gNFXj.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_xT8XsdJtDX5gNFXj.sme-question-package.json",
-      "lessonSha256": "928cfaeabc926edd3afdaf6b9f216abd85dfa333bae167cb40d06a622544dd08",
+      "lessonSha256": "c80f416dceca1435c80ff745334164e61d5eecbf15f18c359f4c05c269ea48b8",
       "packageSha256": "c3247366b8ddcdd17874fe530d191e9de0f9a3e392f43d318a9802cfbc79af52",
       "streamSha256": "ac74bfa8f0136934612ded3f1874ed7d0fa8b83c972d0000b7bd2600b9f5207c",
       "streamChars": 12204
@@ -1142,7 +1145,7 @@
       "wave": 6,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_xq9jy75y43kDXkvx.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_xq9jy75y43kDXkvx.sme-question-package.json",
-      "lessonSha256": "e0fadc0196a343f9ec92a414ff2cbdeb5c5e74274753c77b0003782930917956",
+      "lessonSha256": "9c1b4fe838dd0a218e797d047c84f300c7c447fe90a505c4f269dc16bda8f613",
       "packageSha256": "021b7bf1d93a48fe872dad247db9492a89f345be76040f8f19527a4d5f6b8961",
       "streamSha256": "6758ff96fd09a670d7cbb2edb3c53ac4ef491d9378d514b70eb683bd4e45e23b",
       "streamChars": 12410
@@ -1152,7 +1155,7 @@
       "wave": 8,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_y85XYRv5QfgZFQxv.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_y85XYRv5QfgZFQxv.sme-question-package.json",
-      "lessonSha256": "0c1b7f26d171d1ead4b53323032b2916f7aefc5193b82e004b511171ed8bae7c",
+      "lessonSha256": "707e6ca658b88c57285efdc5a0f4dc3e1ad9c64f93b72da79dc7e0bd63280010",
       "packageSha256": "2f22474d95f3498a1bf0ef1e7eee3331e03f7273c1dba29555ebe6119b19adee",
       "streamSha256": "6834709c35c755f407f1a18688cb5bdcd3803a47865f9b996991adb5e1010146",
       "streamChars": 10762
@@ -1162,7 +1165,7 @@
       "wave": 3,
       "lessonPath": "igcse-chemistry-19/guided-lessons/rn_yj4y972FxCWnDnSg.hub-lesson-import.json",
       "packagePath": "igcse-chemistry-19/guided-questions/rn_yj4y972FxCWnDnSg.sme-question-package.json",
-      "lessonSha256": "c1e72a30e9958cfc34c4edd060972c35bb0c02134e8bfa7bc6ee7cb37d7ba1dc",
+      "lessonSha256": "326a3a3f2c0449fbeca12224fb1fec05b31022faf5ee4b7cf9d3fe81aa23d70e",
       "packageSha256": "154bed18ef5c18723bdaac17aeff83956d4daa09e0388837333b8cadbe5a6277",
       "streamSha256": "64ff4e35ca74ec189f62aef8a18294061c0acfed9672c9d5823512caa8a42363",
       "streamChars": 12838

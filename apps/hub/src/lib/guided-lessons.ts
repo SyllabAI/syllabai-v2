@@ -151,6 +151,10 @@ export interface GuidedFigure {
   url: string;
   alt: string;
   sourceHeading: string;
+  /** figures-2.1 captions layer (hub/lesson-import/1.2): the parent note's own
+   *  explanatory line, coalesced at the 0.3 source generation; absent where the
+   *  source has none (renderer falls back to the provenance line only). */
+  caption?: string;
   moduleIds: string[];
 }
 

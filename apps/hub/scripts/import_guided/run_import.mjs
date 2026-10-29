@@ -231,6 +231,67 @@ const FEEDS = {
       );
     },
   },
+  "figures-2-1-v5": {
+    manifest: "hub-import-manifest-v5.json",
+    manifest_version: 5,
+    lesson_kind: "hub-lesson-import-1.2",
+    adapter: "guided-lesson-0.3--hub-lesson-import-1.2",
+    directive: "run the full 112-note figures-2.1 captions chain — import the 1.2 generation (traces 1a188a15ac19ed05 + 1a188c14685e2965)",
+    promo: {
+      commit: "48d9c656628a3f2f78348ba738b2cb0d437e4abc", // commit C of resources PR #222 (namespace-complete: 0.3 revision + 1.2 outputs + manifest v5 + records)
+      tree: "aca6dd873565fcd01200775da567bcecd7b9bf81",
+      parent: "1ed554ec60fb9c0a41303946312ba50bb0a8834f", // commit A — the source-0.3 captions generation
+      trace: "1a188c14685e2965",
+    },
+    integration_branch: null, // ancestry of record — hub run happens only after the resources PR merges
+    artifact_pin: "1ed554ec60fb9c0a41303946312ba50bb0a8834f", // commit A — the source-0.3 captions generation (lesson channel)
+    pkg_pin: "4d857c472fd725597ac21db189542c8f12c82dba", // INT-0 — the question packages stay byte-identical
+    schemas: {
+      hub: "/home/z/my-project/scripts/fig21-survivors/hub-lesson-import.1.2.schema.json",
+      pkg: "/home/z/my-project/scripts/fig21-survivors/sme-question-package.1.0.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.2.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.0.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/fig21-survivors/hub-import-manifest-v5.json",
+      int3: "/home/z/my-project/scripts/fig21-survivors/INT-3-transform-record-figures-2.1.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261030-figures-2-1.json`,
+    identity: {
+      notes: 112,
+      lessons: 239,
+      checks: 1195,
+      keyPoints: 1212,
+      distractors: 3565,
+      glossaryTerms: 654,
+      figures: 200,
+      figures_module_mapped: 122,
+      figures_note_level: 78,
+      workedExamples_populated: 112,
+      workedExamples_null: 0,
+      authored_chars_conserved: 1426764,
+      authored_chars_v3_baseline: 1347771,
+      added_chars: 78993,
+      captions_coalesced: 143,
+      captions_row_context: 16,
+      captions_inline: 3,
+      captions_none: 38,
+    },
+    figures_feed: true,
+    we_feed: true, // the v4 stream is the declared baseline; this feed's equality gate is per-note vs the v4 bytes (captions are not §7 tokens)
+    landing: "revision", // declared G-DELTA: the 112 lesson files re-pin (captions delta); packages byte-identical
+    relFor(a) {
+      if (!a.path.startsWith("SME-GuidedLessons/integration/")) throw new Error(`v5 manifest path not integration-relative: ${a.path}`);
+      return a.path;
+    },
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.2" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.2/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages/"))
+      );
+    },
+    targetSchemas: ["hub/lesson-import/1.2", "sme-question-package/1.0"],
+  },
 };
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";
@@ -619,7 +680,7 @@ async function main() {
       adapter: F.adapter,
       ...(pendingPromotion || !isAncestor ? { promotion_status: "pending — promotion commit on resources integration branch, hub PR merges only after the resources PR" } : {}),
     },
-    target_schemas: F.figures_feed ? ["hub/lesson-import/1.1", "sme-question-package/1.0"] : ["hub/lesson-import/1.0", "sme-question-package/1.0"],
+    target_schemas: F.targetSchemas || (F.figures_feed ? ["hub/lesson-import/1.1", "sme-question-package/1.0"] : ["hub/lesson-import/1.0", "sme-question-package/1.0"]),
     counts: { ...man.counts },
     conservation: { authored_stream_sha256: grandShaHex, authored_chars: grandChars },
     landing: {
@@ -730,9 +791,9 @@ async function main() {
     landing_law: F.landing,
     generated_at_utc_note: "figures feed: declared revision of the 112 lesson artifacts (G-DELTA); additive-only law unchanged for everything else",
     operator_trace: OPERATOR_TRACE,
-    operator_directive: FEED_ID === "fullcorpus-v2"
+    operator_directive: F.directive || (FEED_ID === "fullcorpus-v2"
       ? "feed hub-import-manifest-v2.json to the hub's import runner"
-      : "run the full 112-note figures chain — import the figures-0.2 generation (trace 1a1820011919e8b9)",
+      : "run the full 112-note figures chain — import the figures-0.2 generation (trace 1a1820011919e8b9)"),
     runner: { path: "apps/hub/scripts/import_guided/run_import.mjs", id: "hub-import-runner/1.0", runtime: "node " + process.version },
     feed_config: {
       manifest: F.manifest,

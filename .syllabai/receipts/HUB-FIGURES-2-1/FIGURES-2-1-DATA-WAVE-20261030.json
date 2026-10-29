@@ -1,0 +1,42 @@
+{
+  "receipt": "FIGURES-2-1-DATA-WAVE-20261030",
+  "traces": ["1a188a15ac19ed05", "1a188c14685e2965"],
+  "date": "2026-10-30",
+  "wave": "FIGURES-2.1-EXPLAIN-DONT-LIST — data side complete; hub render side coded, import + PR pending resources merge",
+  "resources_side": {
+    "branch": "integration/figures-2-1-20261030",
+    "commit_A": {
+      "sha": "1ed554ec60fb9c0a41303946312ba50bb0a8834f",
+      "parent": "9db02bb758b7487dd6a5b32131d5413f7bc2c56b",
+      "content": "112 × guided-lesson/0.3 (source-0.3/ namespace) + schema/guided-lesson.0.3.schema.json"
+    },
+    "commit_C": {
+      "sha": "48d9c656628a3f2f78348ba738b2cb0d437e4abc",
+      "tree": "aca6dd873565fcd01200775da567bcecd7b9bf81",
+      "parent": "1ed554ec60fb9c0a41303946312ba50bb0a8834f",
+      "content": "112 × hub/lesson-import/1.2 (hub-import-1.2/) + schema 1.2 + hub-import-manifest-v5.json + records/INT-3-transform-record-figures-2.1.json + records/FIGURES-2.1-PROMOTION-20261030.json + tooling/figures-2-1-captions-pipeline.js + ADAPTER-SPEC-guided-lesson-0.3-to-hub-1.2.md"
+    },
+    "pr": {"number": 222, "url": "https://github.com/SyllabAI/syllabai-resources/pull/222", "ci": "sync check in_progress at receipt time (rclone Drive mirror; #220 precedent 26 min); corpus-gates/official-export-gates are path-filtered to other lanes"},
+    "census": {"figures": 200, "captions_coalesced": 143, "captions_row_context": 16, "captions_inline": 3, "captions_none": 38, "notes_with_figures": 90},
+    "gates": {"source_phase": "340/340", "transform_phase": "789/789", "verify_phase_cold": "675/675"},
+    "conservation": "per-note stream == v4 (worked-examples-1.0) bytes ×112 (matchesV4); grand 1,426,764 chars == manifest v4 of record; wave subtotals ×10 equal",
+    "sample_of_record": {
+      "note": "rn_2MpXPtNXvn8pQm3r (Alcohols, 4.5.1)",
+      "fig-01": "Diagram of the side chain and -OH group in ethanol which characterises its chemistry",
+      "fig-02..05": "Displayed formula — Methanol / Ethanol / Propan-1-ol / Butan-1-ol (row-context from verbatim table cells)"
+    }
+  },
+  "hub_side_code": {
+    "runner": "FEED figures-2-1-v5 added (promo commit C 48d9c656, tree aca6dd87..., parent commit A; artifact_pin commit A; pkg_pin INT-0; landing revision; identity == manifest v5 counts incl. captions_* census); target_schemas + operator_directive parameterized (feed-driven fallbacks preserve v2/v3/v4 behavior byte-for-byte)",
+    "types": "GuidedFigure.caption?: string (guided-lessons.ts)",
+    "render": "guided-flow.tsx: ModuleFigures moved from after-opening to AFTER key points (before the confidence fieldset); component rewritten caption-first (caption line + 'sourceHeading — from the revision note' provenance line; 1.1-era block label removed; single column). page.tsx: StaticFigure helper applied to both static grids (module figures + note-level section)",
+    "survivors": "scripts/fig21-survivors/ (manifest v5, INT record, both schemas) — byte-exact for the runner's G-A",
+    "gates_local": {"eslint": "0 errors (1 pre-existing unused-directive warning retained at guided-flow.tsx; new page.tsx directive removed)", "build": "bun run build GREEN pre-landing (prebuild corpus verifiers + next build)"}
+  },
+  "pending": [
+    "resources PR #222 CI green → merge (probe-first: confirm not already auto-merged)",
+    "hub: FEED=figures-2-1-v5 node apps/hub/scripts/import_guided/run_import.mjs → G-DELTA lands 112 revised lesson files + re-issued guided-import.json + receipt HUB-IMPORT-RUN-20261030-figures-2-1.json",
+    "post-landing build + hub PR (runner + content + render + receipts), CI green, merge, verify"
+  ],
+  "discipline": "zero-DB; read-only probes pre-write; token unechoed; git-data-API commits (no local clone of resources — recycle-hardened); all remote fetches pinned (v4 commit A 8ea8c63a for source layer, v4 commit C 6d0eb77d for outputs/packages/sidecars); single-round blob+tree+commit pushes"
+}

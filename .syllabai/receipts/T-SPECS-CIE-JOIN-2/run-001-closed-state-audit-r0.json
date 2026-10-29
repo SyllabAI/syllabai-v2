@@ -1,0 +1,42 @@
+{
+  "task": "T-SPECS-CIE-JOIN-2",
+  "run": "run-001-closed-state-audit-r0",
+  "at": "2026-10-29T18:46:45Z",
+  "agent": "main (zai-web session web-528c0352-0cf7-4715-a187-50aec294b288, chat a7ae5075-f66a-468d-a084-9ababf97ae25, trace 1a188f07d6e27165)",
+  "order": "operator message verbatim: 'T-SPECS-CIE-JOIN sidecars'",
+  "finding_of_record": "The T-SPECS-CIE-JOIN sidecar lane is ALREADY CLOSED END-TO-END of record — the full chain (JOIN-2 sidecars -> REJOIN-2 index re-join -> VERDICT-2 operator-verdict fills -> GATE-2 review/promotion -> CONSUME-2 v2 consume + census re-pin -> REJOIN-2 run-002 dup-repair) landed from the parallel chain lane (operator directive trace 1a183e66619bd6dd) BEFORE this order; this session's standing queue view was STALE (correction disclosed). Every logged artifact below verified FIRST-HAND 2026-10-29; nothing taken from prose alone. NO CODE LANDS, no resources contact, no DB contact (Neon outage unbroken).",
+  "audit": {
+    "v2_plane": {
+      "cie_pin": "apps/hub/scripts/cie/cie_consume_spec_links.py line 138: PIN = '20a35ccc621d418a6bb3f4a62ef2cdecd7abf677' — the CONSUME-2 pin advance LANDED",
+      "census_repin": "apps/api/test/sme/cie-phase4-roster.test.ts: questions 8826 / parts 8752 / pkgParts 13334 / ZERO_SERVABLE_OF_RECORD exactly ['cie-as-maths-20-pure-2','cie-igcse-english-language-20','cie-igcse-english-language-25'] — PASSED LIVE by CI (verify+hub both success) at tip d4a2311f",
+      "consume_pr": "PR #439 merged=True merge_sha 0dc11fd7, verified ancestor of origin/main via merge-base",
+      "main_ci": "verify+hub both success at e1f3e3b3 AND at tip d4a2311f",
+      "receipts_present": [".syllabai/receipts/T-SPECS-CIE-CONSUME-2/run-001-consume-r0.json", ".syllabai/receipts/T-SPECS-CIE-REJOIN-2/run-002-dup-repair-r0.json"],
+      "consume_totals": "codesFromSidecar 12,768 (== 11,058 floors + 1,541 J + 169 V EXACT), t2Hints 100, sheetAdded 124, 7 anchor-gap banks serving +1,063 previously-unreachable questions (7,763 -> 8,826 == unmapped 16,759 -> 15,696 EXACT)"
+    },
+    "resources_plane": {
+      "tip": "main 1a5c37bc (SME-RevisionNotes rendering fixes, 2026-10-29T18:08Z)",
+      "dup_repair": "commit 267cd49e819f5c9a ancestor of main (compare status ahead, behind_by 0); 14 subsequent commits touch ZERO spec-links/ paths (compare files scan)",
+      "sidecar_states": "all 8 wave-2 AS sidecars top-level review_state == ACCEPTED with rejoin+verdict sub-states ACCEPTED where the lane resolved; accepted_utc 2026-10-29T14:00:00Z (the GATE-2 stamp); pure-2 honestly carries no rejoin block (its zero-resolve lane)",
+      "dedup_honesty": "in-item duplicate census across all 8 sidecars: 0 duplicate items / 0 surplus entries (battery A1) — the run-002 dup-repair holds at source (census 1,759 -> 1,747)",
+      "pending_crossfoot": "sum(anchors.pending_refs) over the 8 lanes = 9,142 EXACT (10,867 -> 9,326 rejoin -> 9,142 verdict); rejoin resolved_pairs sum = 124 EXACT (physics 41 / chem 25 / cs 29 / mech 7 / bus 12 / probstat 5 / pure-1 5 / pure-2 0)",
+      "chain_arithmetic": "per-block pre->post EXACT on sampled lanes: business 803 ->(60 refs)-> 743 ->(33 refs)-> 710; chem 2,511 ->(354)-> 2,157 ->(151)-> 2,006; physics 2,170 ->(636)-> 1,534; cs 789 ->(129)-> 660; pre-rejoin vintages re-fetched at 8460a5f3 and compared first-hand",
+      "promotion_proof": "pre-rejoin review_state = SUGGESTED / gate pending (lane T-SPECS-CIE-JOIN-2) observed at 8460a5f3; current = ACCEPTED — the GATE-2 promotion verified against both vintages",
+      "ci": "scripts-tests success at the two most recent tested commits (128f4d21, 9db02bb7); Google Drive sync cancels are the concurrency fail-fast shape"
+    },
+    "counter_nuance_disclosed": "anchors.universe_resolved is recomputed by the rejoin engine ONLY on sidecars already carrying an anchors.verdict block (scripts/cie_index_rejoin_wave2as.py line ~452 'if \"verdict\" in a:'), so the 6 verdict-less lanes keep their pre-rejoin value (physics/cs/mech/probstat/pure-1 show 0 despite resolved pairs; chem 2->31 = 2 original + 25 rejoin + 4 verdict EXACT). This is the engines' of-record conditional semantics, battery-preserved by REJOIN-2's RJ rules; the load-bearing counters (pending_refs / items / codes / totals) are EXACT everywhere. Cosmetic counter-maintenance gap only; NOT repaired (no cross-lane blind fix).",
+    "gap_census": {
+      "coverage": "52 CIE spec-links sidecars on resources main vs 56 CIE registry rows; the 4 uncovered rows fully accounted: cie-as-biology-25 (serves 789 via its own SME official-statement basis — R3/R4, sidecar-free by design), cie-as-accounting-21 + cie-a-level-maths-20-pure-2 + cie-a-level-geography-21 (all STUBS_OF_RECORD — honestly-empty banks, no content to join, never invented)",
+      "remaining_pending": "9,142 pending refs across the 8 lanes = the honest-stay + quarantine populations (J: 766 stays + 34 name_phrase_multi_text; V: 207 stays + 575 finer_than_official_subsection/name_phrase_multi_text) — out BY DESIGN per the T-SPEC-2c never-collapse doctrine; the sanctioned path for any of them is an operator-evidence overlay (the T-SPEC-2b precedent), which requires operator-supplied verdict evidence, not agent manufacture",
+      "honest_zeros": "ZERO_SERVABLE 3 = pure-2 (the REJOIN-2 honest-zero lane) + the english-language pair; the skeleton class is extinct (49 real / 7 stubs / 0 skeletons of record)"
+    }
+  },
+  "disposition": "LANE IDLE-COMPLETE — the operator order discharges as this closed-state audit; no sidecar, engine, manifest, bundle, or census change is warranted; the next actionable states are all operator-gated (evidence overlay / prod-apply / token rotation), not agent-actionable",
+  "disclosures": [
+    "this session's standing-queue item was stale: the chain closed from the parallel directive trace 1a183e66619bd6dd before the order trace 1a188f07d6e27165 — correction of record",
+    "fetch-first: local main fast-forwarded 4008-era -> d4a2311f ff-only on arrival; origin/main == local throughout the audit",
+    "credential consumed from the remote URL in-process only (env-style shell variable, never echoed, never written to disk)",
+    "no DB contact (Neon outage unbroken); no prod contact; no deploy; bookkeeping-only .syllabai/**",
+    "PAT rotation standing order REITERATED (CRITICAL-OVERDUE of record)"
+  ]
+}
