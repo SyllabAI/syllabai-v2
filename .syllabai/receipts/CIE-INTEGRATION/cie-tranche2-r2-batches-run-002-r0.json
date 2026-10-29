@@ -1,0 +1,105 @@
+{
+ "lane": "T-SPECS-CIE-TRANCHE2-B02",
+ "run": "run-001",
+ "receipt": "cie-tranche2-r2-batches-run-002-r0.json",
+ "generated_utc": "2026-10-22T02:55:00Z",
+ "session": "web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e",
+ "operator_trace": "1a1614f00e3596dd",
+ "directive_verbatim": "the operator's second tranche-2 ruling batch, 26 rows verbatim (carried in the chem25-b02 batch directive; listed below)",
+ "operator_rulings_verbatim": [
+  "spcpt_26qcCY45Rx3S5Q75 -> anchor 23.3.2, 23.4.4 only if the linked parts confirm entropy/Gibbs coverage; otherwise split the entropy and Gibbs scopes.",
+  "spcpt_2ThbMTgPgvQbtpTc -> anchor 28.4.1, 28.4.2.",
+  "spcpt_6kfKxfq3Q9w2RBGz -> anchor 24.2.3, 24.2.4; verify electron-flow and feasibility coverage against the linked parts.",
+  "spcpt_7GFsrZwSKvKWbScF -> anchor 1.1.7 only if the linked parts concern ionisation-energy trends; otherwise hold for evidence.",
+  "spcpt_9Dxx4xs6KDbb85cJ -> hold for evidence; the linked phenylamine parts span several organic-chemistry topics, and the candidate excerpt does not isolate the intended reaction scope.",
+  "spcpt_BsxZ3K63vTYS5gtF -> anchor 32.2.3, 32.2.4; keep distinct from general acidity and NMR topics.",
+  "spcpt_CdtkSssKHMzw5ZTn -> split by reaction route; candidate anchors 21.1.2 and 36.1.2 require part-level confirmation before assignment.",
+  "spcpt_HmMgqHYYJMyF6nVN -> anchor 6.1.1, 6.1.2; do not add 2.3.1 without direct evidence.",
+  "spcpt_WXp9yV6RjmGqJnn3 -> anchor 12.1.3, 12.1.4; add 14.1.6 only if the linked parts explicitly cover the relevant nitrogen-oxide reaction.",
+  "spcpt_XQ97pkXbbVSfgqZD -> anchor 19.2.1, 19.2.2, 19.2.3.",
+  "spcpt_Y6Qj4KVdMvB2kpqv -> anchor 7.1.4, 7.1.7, 7.1.8 only where supported by the linked question part; do not map the whole equilibrium subtopic by default.",
+  "spcpt_YpKqb5HsZsxDZymV -> anchor 24.2.3, 24.2.4; distinguish measuring electrode potentials from electrolysis calculations.",
+  "spcpt_Ytmx9DyG2jXQB5D6 -> anchor 19.2.2; include 19.2.1 or 19.2.3 only if the linked parts cover production or hydrolysis respectively.",
+  "spcpt_Zt25mTwwxK5GP3RX -> anchor 28.1.2, 28.1.3; exclude transition-element properties unrelated to orbital shape.",
+  "spcpt_c7vFrg8fTnmm4kcp -> anchor 25.1.4, 25.1.5 only if the linked parts concern Le Chatelier's principle; otherwise hold for evidence.",
+  "spcpt_fFh7hPWmj22BJ5tJ -> anchor 24.2.1-24.2.4 only for the specific standard-electrode/cell-potential content evidenced by the linked parts.",
+  "spcpt_gXGMxJcrhrnxtZD -> anchor 1.1.7 only if the linked parts concern ionisation-energy trends; otherwise hold for evidence.",
+  "spcpt_hZTPmmSRrdvvX3Qd -> anchor 8.1.2, 8.1.3 only where the linked parts test activation energy and the Boltzmann distribution.",
+  "spcpt_j9xWMbPMSC6qSJnY -> anchor 23.4.1, 23.4.2 only if these are the official Gibbs-equation calculation points in the source specification; verify before committing.",
+  "spcpt_jptnPNnPshVwycwD -> anchor 13.1.1, 13.1.2; add other hydrocarbon points only when the linked parts support them.",
+  "spcpt_kYX8rJ8Ff8TSC2TK -> anchor 11.3.1, 11.3.2 only if those are the official halide-ion reducing-agent points; verify the exact source wording.",
+  "spcpt_kmmQMJ52BJxbDd6g -> anchor 33.3.1-33.3.4.",
+  "spcpt_mVXNDWrRyFCbsscr -> anchor 32.2.5, 32.2.6; keep distinct from general phenol acidity.",
+  "spcpt_pYmRWxPrtMDKj5ym -> quarantine: deuterated-solvent preparation is not established as a standalone syllabus point by the supplied candidate evidence. Retain only if the linked parts explicitly assess solvent choice or its role in proton NMR.",
+  "spcpt_qd7Tc37DJzJjRrmk -> anchor 18.2.1, 18.2.2.",
+  "spcpt_sFJ6ZPXvkT79fC2f -> anchor 4.1.1, 4.1.2 only where the linked parts directly assess ideal-gas assumptions or the origin of pressure."
+ ],
+ "vocab_mapping_law": "B01 precedent re-applied: plain anchors -> anchor(codes); conditional anchors (only-if/only-where/verify-before-committing), the split row, and hold-for-evidence rows -> defer (reason verbatim, candidates NEVER encoded); the explicit quarantine row (deuterated-solvent preparation) -> quarantine per template semantics. The lane never upgrades a candidate to an anchor (ADR-030).",
+ "dispositions": [
+  "instrument sid spcpt_gXGMxJcrhrnxtZD prefix-resolves to the unique sheet row spcpt_gXGMxJcrhrnxtZD6 (Trends in Ionisation Energy; trailing 6 dropped in transit) — ruled defer per the conditional",
+  "spcpt_HmMgqHYYJMyF6nVN re-affirms the b01 anchor 6.1.1+6.1.2: all 22 sheet part_refs already coded of record (b01, 44 entries) so re-encoding yields zero fresh entries — EXCLUDED from rulings[] (G3/G4 would abort); its 'do not add 2.3.1 without direct evidence' CLOSES the b01 2.3.1 conditional (2.3.1 stays un-encoded; part-level staging no longer needed)",
+  "conditional adds on plain anchors (14.1.6 on Oxides of Nitrogen; 19.2.1/19.2.3 on Production of Hydroxynitriles) NOT encoded — verbatim in anchor notes; return to the operator with part-level evidence"
+ ],
+ "preflight": {
+  "sid_location": "26/26 instrument rows resolved: 25 exact sheet rows + 1 unique-prefix resolution; operator evidence reading matches rows EXACTLY (classes, pending part counts, scoped pools; e.g. both 24.2.3+24.2.4 rows and both 1.1.7 rows land inside their scoped candidate pools; CdtkSssKHMzw5ZTn's 21.1.2/36.1.2 are wide_phrase_hits outside the scoped pool exactly as the operator's split condition states)",
+  "G2_substrate": "fleet sheet regen of record (commit fceeefb) BEFORE encoding: sidecar pins refreshed for the 7 moved banks, map pins re-pinned to the live v2 content-maps with pool cross-foots EXACT unchanged (44 banks / 3,575 sids / 16,335 parts / 21,381 declarations / 1,203 sidless), SPI pins zero drift; chem25 sheet sha acd1c1fc pinned in the batch yaml == index == current file at encode time",
+  "G4_registry_pairing": "26/26 anchored code-slots PAIRED to CIE_A_LEVEL_CHEMISTRY_2025_2027 (28.4.1+28.4.2, 24.2.3+24.2.4 x2 sids, 32.2.3+32.2.4, 12.1.3+12.1.4, 19.2.1+19.2.2+19.2.3, 19.2.2, 28.1.2+28.1.3, 13.1.1+13.1.2, 33.3.1-4, 32.2.5+32.2.6, 18.2.1+18.2.2)",
+  "G3_pending_universe": "67/67 anchor part_refs sidecar-pending EXACT; ZERO overlap with the b01-coded parts; chem25 sids_only_in_map = the excluded HmMgqHYYJMyF6nVN itself (map row persists, sidecar pool emptied by b01)",
+  "idempotency_sweep": "HmMgqHYYJMyF6nVN re-anchor probe: 22/22 parts already carry 6.1.1+6.1.2 -> exclusion required (encoder would G4-abort on zero eligible entries)"
+ },
+ "batch": {
+  "chem25-b02": {
+   "bank": "cie-a-level-chemistry-25",
+   "rulings": 25,
+   "anchor": 12,
+   "defer": 12,
+   "quarantine": 1,
+   "parts_touched": 67,
+   "entries_added": 147
+  }
+ },
+ "predicted_vs_actual": {
+  "parts_touched": 67,
+  "first_code_parts": 67,
+  "entries_added": 147,
+  "already_present_skipped": 0,
+  "delta_class": "EXACT"
+ },
+ "encoded_shape": "codes[] {official_id, official_code, tier: V8_name_phrase_verdict, method: operator_verdict, unit: null, score: null, source_sid}; pending[] PRESERVED (declared trail); tranche2_batches batch block + machine record graph/reports/tranche2-r2/batches/chem25-b02.json written; G5 totals deltas exact (coded question_parts 362 -> 429)",
+ "consume_of_record": {
+  "resources_pr": 42,
+  "branch": "t-specs-tranche2-b02/r0",
+  "head_sha": "e4f4a34",
+  "merge_sha": "85e0d13a2028b1ecf02807a71dca840ed6ed3725",
+  "ci": "corpus-gates SUCCESS (02:13:35Z start, ~2min class) + sync SUCCESS (02:13:15Z start, ~31min vs 21.2min baseline — disclosed variance, both gates green before merge)",
+  "rebase_discipline": "rebased onto 08447ba after main moved (wave-14 v0.11.0 / YPH11 parse lane / CourseLessons r0+r1); file-level disjointness from the tranche-2 substrate verified BEFORE rebase (zero shared paths)"
+ },
+ "census_repin": {
+  "tool": "scripts/census_per_slug.ts (bun, zero-DB)",
+  "v2_tip": "372a2b76 (incl. sibling lanes T-BOOK-033 Lesson renderer, EDBUMP-1, contracts r0.1)",
+  "figures": {
+   "questions": 6715,
+   "part_rows": 5696,
+   "package_parts": 9276,
+   "raw_questions": 19097,
+   "raw_parts": 25663
+  },
+  "verdict": "EXACT UNCHANGED vs of-record; tree stayed clean"
+ },
+ "gate_posture": "134c PARKED - census unchanged, zero DB-plane movement",
+ "pending_after": {
+  "chem25_sidecar_pending_parts": 1247,
+  "note": "1314 -> 1247 after the 67 first-code parts"
+ },
+ "returns_to_operator": [
+  "12 defer rows (candidates staged for part-level confirmation): 26qcCY45Rx3S5Q75 entropy/Gibbs 23.3.2/23.4.4-elsewhere-split | 7GFsrZwSKvKWbScF + gXGMxJcrhrnxtZD6 ionisation-energy 1.1.7 | Y6Qj4KVdMvB2kpqv equilibrium 7.1.4/7.1.7/7.1.8 | c7vFrg8fTnmm4kcp Le Chatelier 25.1.4/25.1.5 | fFh7hPWmj22BJ5tJ electrode 24.2.1-4 | hZTPmmSRrdvvX3Qd Boltzmann 8.1.2/8.1.3 | j9xWMbPMSC6qSJnY Gibbs 23.4.1/23.4.2 (verify official wording) | kYX8rJ8Ff8TSC2TK halide 11.3.1/11.3.2 (verify official wording) | CdtkSssKHMzw5ZTn multi-step routes 21.1.2/36.1.2 (split by route) | sFJ6ZPXvkT79fC2f ideal gas 4.1.1/4.1.2",
+  "1 quarantine row: pYmRWxPrtMDKj5ym deuterated-solvent preparation (re-entry only if the linked parts explicitly assess solvent choice / proton-NMR role)",
+  "conditional adds pending evidence: 14.1.6 (Oxides of Nitrogen), 19.2.1/19.2.3 (Production of Hydroxynitriles); post-anchor verification act: electron-flow/feasibility coverage (Standard Cell Potential row)",
+  "nextAct: lane stages part-level verbatim evidence for the defer/quarantine rows so the operator can confirm or quarantine with the evidence in hand"
+ ],
+ "residuals": [
+  "PAT rotation CRITICAL-OVERDUE (fp a8ccee736aa8c75b, operator-keyed)",
+  "tranche-3 (1,203 sid-less) after the verdict program",
+  "~3,480 chem25+fleet sids still unruled (chem25 231 of 256 ruled-pool sids untouched this round)"
+ ]
+}
