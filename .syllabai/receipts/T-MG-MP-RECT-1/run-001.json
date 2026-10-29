@@ -1,0 +1,58 @@
+{
+  "task": "T-MG-MP-RECT-1",
+  "run": "run-001",
+  "date": "2026-10-30",
+  "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md §3.1",
+  "branch": "t-mg-mp-rect-1/run-001 (head 934cb92b99b5ba1f14fa9315804bcb6da2587b1c, PR #464)",
+  "base": "3b4322b3fe42b16c7a9910629dbce99413b63fa7",
+  "provenance": {
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e",
+    "trace": "1a189b0cc0fab889 (operator word 'Merge #458' → merge-receipt recovery → Phase 1 carding)",
+    "sandbox_reset": "local syllabai-v2/ and mg-audit/ were wiped mid-lane; remote state recovered via the syllabai-core origin token; PR #458 verified MERGED (1a5582a2, R0-AUTO-81 merge-desk sweep, 2026-10-29T21:32:07Z) with all five merge gates PASS before any Phase 1 work; local worklog MG entries lost with the reset and re-recorded",
+    "genie_auth": "the authenticated MathsGenie session file was destroyed by the reset (nothing to clear; disposal question resolved by default)"
+  },
+  "acceptance": {
+    "pin_a_join": "PASS — service tests prove rect→mark_point→part resolution for direct AND ADR-040 scheme-level bindings; version-level points land on the question region; multi-rect ordinal order",
+    "pin_b_contract": "PASS — routes + service responses validated against paperAssetRegionsResponseSchema; questionPartId WIRED non-null on part regions (the parity divergence by design)",
+    "pin_c_honest_empty": "PASS — 200 negative path EXACT {extracted:false,markable:false,groundingComplete:false,regions:[]} for a known ungrounded paper; 404 T-C20 shared 'exam paper' envelope for unknown",
+    "pin_d_zero_touch": "PASS — additive-only diff; zero fenced-file contact (cla.ts a9fdabfd / cla service.ts db4573c7 untouched); identity files (prompt.ts/contracts identity surface) untouched"
+  },
+  "gates": {
+    "targeted": "paper-regions 19/19 + hub regions 6/6 + rebaseline 26/26 (51/51)",
+    "full_suite": "3600 pass / 0 fail / 13 skip across 205 files",
+    "typecheck": "0 errors (root + hub-local tsc)",
+    "db_check": "drizzle-kit check green (0000 fold + 0017 chain validate)",
+    "ci": "PR #464 head 934cb92b — verify SUCCESS + hub SUCCESS (first CI pass 21fa1875 went red-class: hub build typechecks lib tests, regions.test.ts stub param shape TS2345 + unused directive TS2578; repaired in-place, transport-only, no behavior change)"
+  },
+  "artifacts": {
+    "migration": "packages/db/drizzle/0017_mark-point-rects.sql",
+    "snapshots": ["meta/0017_snapshot.json (hand-chained)", "meta/0000_snapshot.json (union fold, T-SENECA-001/ADR-040 precedent)", "meta/_journal.json (idx 17)"],
+    "schema": "packages/db/src/schema/schema.ts (+markPointRects, appended, 0 deletions)",
+    "contracts": ["packages/contracts/src/paper-regions.ts (NEW)", "packages/contracts/src/index.ts (+1 barrel line)"],
+    "service": ["apps/api/src/services/paper-regions/index.ts (NEW)", "apps/api/src/services/paper-regions/sql.ts (NEW structural seam)"],
+    "router": ["apps/api/src/routes/paper-regions/index.ts (NEW)", "apps/api/src/index.ts (+import/+construction/+mount block, disclosed-commit precedent)"],
+    "seed": ["apps/api/scripts/seed-mark-point-rects.ts (NEW)", "apps/api/scripts/fixtures/mark-point-rects-joinproof.json (NEW, join-proof rehearsal, placeholder refs disclosed)"],
+    "hub": ["apps/hub/src/lib/regions.ts (NEW fetcher)", "apps/hub/src/lib/regions.test.ts (NEW)", "apps/hub/src/components/pastpapers/RegionOverlay.tsx (NEW, standalone)"],
+    "tests": ["apps/api/test/paper-regions/service.test.ts (NEW)", "apps/api/test/paper-regions/routes.test.ts (NEW)", "packages/db/scripts/rebaseline.test.ts (census pin 84/791/114/83/146 + fold comment chain)"]
+  },
+  "design_laws_adopted": {
+    "region_key": "derive-never-store (plan §3.1 default, carding-time pin): external_ref or q{n} fallback; labeled part '6.a' vs answer-line '9.p{ordering+1}' — their two conventions verbatim",
+    "wired_question_part_id": "the one deliberate divergence from their serving (theirs null on live papers) — the parity gap this phase closes",
+    "binding_precedence": "mark_points.question_part_id direct wins; ADR-040 mark_schemes.question_part_id scheme-level resolves when the point is unbound; version-level → question region",
+    "grounding_complete": "regions.length > 0 AND every markable region extracted — vacuous-zero-region stays FALSE (the observed negative path); regions-with-zero-markable reads TRUE (nothing to ground)",
+    "fold_precedent": "0000_snapshot union fold per T-SENECA-001/ADR-040; drizzle-kit strict-schema shape proven (no FK schemaFrom/schemaTo; index columns isExpression/asc/nulls spelling)",
+    "seed_honesty": "the checked-in manifest is a JOIN-PROOF rehearsal with placeholder refs (loud-fail on unresolved); extraction truth is T-MG-MP-RECT-2's content lane"
+  },
+  "non_goals": [
+    "pdf-pane.tsx untouched (overlay mounts alongside; monolith refactor is its own lane)",
+    "no extraction/geometry truth (T-MG-MP-RECT-2)",
+    "no award/ledger planes (Phase 2 T-MG-AWARDS-1)",
+    "no page mount of the overlay (Phase 6 T-MG-FEEDBACK-1 surface)"
+  ],
+  "residuals": [
+    "seed fixture refs must be aligned with live corpus refs before the first real run (script exit 3 guards ambiguity)",
+    "region page for un-extracted regions is null; RECT-2 backfills page-true anchors",
+    "hub overlay page-mount point (the hosting page composition) lands with the Phase 6 feedback surface",
+    "MERGE STATUS: OPEN, operator-gated — plan §4 manual-word merges only for the MG tranche; R0-auto not authorized for this band"
+  ]
+}

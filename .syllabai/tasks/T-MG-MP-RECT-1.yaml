@@ -1,0 +1,55 @@
+version: 1
+task:
+  id: T-MG-MP-RECT-1
+  title: "MG parity Phase 1 — mark_point_rects (geometry on the definition plane) + regions read API + seed"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e, trace 1a189b0cc0fab889)"
+  status: OPEN
+  priority: P2
+  band: T-MG-MARK-PARITY (interactive paper marking)
+  wave: mg-parity-phase1
+  deps: [T-MG-MARK-PARITY-1]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.1"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    - "(a) join pin — every seeded rect resolves to a live mark_points row AND a question_parts row (service tests: direct + ADR-040 scheme-level bindings; version-level points land on the question region)"
+    - "(b) contract pin — API shape byte-matches the plan §1.3 region model with questionPartId WIRED non-null on part regions (routes tests validate against paperAssetRegionsResponseSchema)"
+    - "(c) honest-empty pin — known ungrounded paper returns the §1.3 negative path exactly {extracted:false,markable:false,groundingComplete:false,regions:[]}; unknown paper → 404 T-C20"
+    - "(d) zero-touch pin — Gate 1 + fence census clean; additive-only diff"
+  execution_record: >
+    run-001 (2026-10-30). Migration 0017_mark-point-rects.sql (additive
+    CREATE TABLE + FK cascade to mark_points + ix point/page + page>0,
+    0..1-per-coordinate and confidence 0..1 CHECKs, UNIQUE(mark_point_id,
+    ordinal)); 0017_snapshot hand-chained and the table FOLDED into
+    0000_snapshot.json per the T-SENECA-001/ADR-040 fold precedent
+    (drizzle-kit check green); rebaseline census pins advanced
+    83/781/112/82/139 -> 84/791/114/83/146 with the comment-chain entry.
+    Schema: markPointRects pgTable appended (defaultNow on created_at per
+    the v2-native additive convention). Contract: packages/contracts/
+    paper-regions.ts (rect + region + response zod, region-key law and
+    negative-path documented; barrel one-liner). Service:
+    services/paper-regions (structural sql seam, R-M-LAZY head law,
+    deterministic question order external_ref asc nulls last/created_at/id;
+    region-key DERIVE law — external_ref or q{n} positional fallback,
+    labeled part "6.a" vs answer-line "9.p{ordering+1}"; binding law direct
+    mark_points.question_part_id over ADR-040 scheme-level
+    mark_schemes.question_part_id; version-level points → question region;
+    groundingComplete = regions exist AND every markable region extracted —
+    the zero-region negative path stays false per the observed shape).
+    Router: routes/paper-regions GET /:id/regions (auth shell per
+    exam-papers/books parity, 400 malformed-uuid / 404 T-C20 shared
+    "exam paper" envelope / 200 honest-empty); mounted
+    /api/v1/paper-assets in index.ts (disclosed minimal wiring, T-MIG-031
+    precedent). Seed: scripts/seed-mark-point-rects.ts (1:1 markPointRef
+    resolution per paper, loud-fail on 0/N hits, ordinal-conflict upsert,
+    --dry-run) + fixtures/mark-point-rects-joinproof.json (JOIN-PROOF
+    rehearsal manifest — placeholder refs, explicitly NOT extraction
+    truth; T-MG-MP-RECT-2 owns real geometry). Hub: lib/regions.ts
+    (books-rail discipline mirror, strict zod mirror, honest-null, no-store,
+    client-safe divergence documented) + components/pastpapers/
+    RegionOverlay.tsx (standalone overlay — pdf-pane.tsx NOT touched;
+    normalized rects as CSS percentages, on-demand chrome only).
+    GATES: paper-regions 19/19 + hub regions 6/6 + rebaseline 26/26 +
+    full suite 3600 pass / 0 fail + typecheck 0 + db:check green.
+    Sandbox-reset provenance: this lane ran post-reset (session continuity
+    via the merge-receipt recovery in worklog; the MG dossier PR #458 was
+    verified merged as 1a5582a2 before carding).

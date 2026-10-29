@@ -279,21 +279,28 @@ describe("verifyBaseline (checked-in baseline)", () => {
   // uq_book_chapters_identity / uq_documents_canonical_id as unique
   // CONSTRAINTS, which the parity law normalizes against the of-record
   // runtime schema (0 drifts, verified).
-  test("83/781/112/82/139 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // T-MG-MP-RECT-1 run-001 (0017_mark-point-rects, plan of record
+  // docs/MG-MARK-PARITY-PLAN.md §3.1, the 0014/0016 fold precedent):
+  // mark_point_rects adds 1 table, 10 columns, 2 indexes, 1 fk, 7 checks
+  // (uq_mark_point_rect_point_ordinal rides uniqueConstraints, not the
+  // index count — the mpa precedent) on top of the ruling-A baseline
+  // -> 84/791/114/83/146.
+  test("84/791/114/83/146 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 83/83");
-    expect(v.inventory).toContain("columns 781");
-    expect(v.inventory).toContain("indexes 112");
-    expect(v.inventory).toContain("fks 82");
-    expect(v.inventory).toContain("checks 139");
+    expect(v.inventory).toContain("tables 84/84");
+    expect(v.inventory).toContain("columns 791");
+    expect(v.inventory).toContain("indexes 114");
+    expect(v.inventory).toContain("fks 83");
+    expect(v.inventory).toContain("checks 146");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(83);
+    expect(run.size).toBe(84);
     expect(run.has("public.mark_bands")).toBe(true); // ADR-040 — the levels analog of mark_points
+    expect(run.has("public.mark_point_rects")).toBe(true); // T-MG-MP-RECT-1 — the geometry plane on the definition join
     expect(run.has("public.warehouse_registry")).toBe(true);
     // T-SENECA-001 run-004 — the pack side families ride 0014 in MAIN; the
     // corpus table itself lives in the sci-chem warehouse, never here

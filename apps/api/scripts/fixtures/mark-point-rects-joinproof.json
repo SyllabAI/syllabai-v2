@@ -1,0 +1,11 @@
+{
+  "paperCode": "1MA1/1F",
+  "sessionLabel": "June 2025",
+  "note": "JOIN-PROOF REHEARSAL MANIFEST — T-MG-MP-RECT-1 run-001 (plan docs/MG-MARK-PARITY-PLAN.md §3.1). Geometry values are the observed-shape placeholders proving the seed join end-to-end (resolution 1:1, ordinal upsert, DB CHECK gates); markPointRef values are PLACEHOLDERS to be aligned with the live corpus refs before the first real run — the script fails loudly (exit 3) on any ref that does not resolve exactly once. Extraction TRUTH is T-MG-MP-RECT-2's content lane, per plan §3.1 Backfill. Geometry shape mirrors the MathsGenie region model observed in the dossier (normalized 0..1 per page, multi-rect ordinal rows).",
+  "rects": [
+    { "markPointRef": "q9a-1", "regionKey": "1MA1/1F-q9.a", "page": 4, "x": 0.08, "y": 0.31, "width": 0.52, "height": 0.06, "ordinal": 0, "extractionConfidence": 0.94 },
+    { "markPointRef": "q9a-2", "regionKey": "1MA1/1F-q9.a", "page": 4, "x": 0.08, "y": 0.39, "width": 0.52, "height": 0.06, "ordinal": 1, "extractionConfidence": 0.94 },
+    { "markPointRef": "q9b-1", "regionKey": "1MA1/1F-q9.p2", "page": 4, "x": 0.08, "y": 0.52, "width": 0.52, "height": 0.08, "ordinal": 0, "extractionConfidence": 0.91 },
+    { "markPointRef": "q12-1", "regionKey": "1MA1/1F-q12", "page": 7, "x": 0.1, "y": 0.22, "width": 0.62, "height": 0.14, "ordinal": 0, "extractionConfidence": 0.88 }
+  ]
+}
