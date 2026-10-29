@@ -153,3 +153,33 @@ Work Log:
 
 Stage Summary:
 - Static-four-red queue DISCHARGED to verdicts: 1 relanded+closed (#296), 1 closed-broken (#303), 2 verdict-commented rebase lanes (#285/#352); CI drop-class remedy of record documented.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-022 (operator trace 1a187e0b42de09c1: "F1–F3 structural repairs (fused/foreign MS blocks — they shrink the trig bucket)")
+Agent: main agent (Super Z, session web-da4ab8b1)
+Task: Execute the run-020 tranche-2 structural leg — detach the fused/foreign MS blocks (F1/F2) and adjudicate F3.
+
+Work Log:
+- Environment recovery of record (4th stale-clone occurrence): fetch-first -> origin/main 28346abe (run-017..021 all landed, PRs #423-#446), ff-only, plane verified f2cbe67ab7d24993 first-hand pre-edit; bun install 952 pkgs for the render gate.
+- 9 MS pages READ first-hand (150dpi): 2023-06-02 p13/p14/p15 (q8 genuine block closes 'Total 7 marks'; 9(a) 3-mark rows; '(b) (2x−3) | 5 | B1' boundary; ALT block on p15 closes the tail) + 2021-06-02 p16/p20/p21/p22/p24/p25 (q9(b) true block = 2 B1ft rows @2 marks; blob = q10(b) block from the 'FB = 9.8' A1 row through the Method II Case 3 close, answer '23' for '5' marks — F2 filing's '7-mark' corrected; q11(a) first-row fragment anchored on p25, complementary to the 11-a carrier).
+- F1 APPLIED: q8 3330->1816 ch (genuine block + lockstep mirror); q9(b) portion (935 ch) re-homed verbatim to 9-b replacing the 'not captured' stub (0 mp rows, RATTACH convention); q9(a) portion (577 ch) discarded per the run-020 filing (9-a carries its own rebuilt solution + 3 mp rows).
+- F2 APPLIED: 9-b 4857->201 ch (true 2-mark block + lockstep mirror); q10(b) block (4525 ch) re-homed verbatim to 10-b replacing its stub (0 mp rows); q11(a) fragment (129 ch) prepended verbatim to 11-a (+ lockstep mirror; pre-apply mp[0] carried 43 ch of tall-paren control-glyph variants — normalization disclosed).
+- F3 NO-OP (claims correction of record): the run-020 'raw pdftotext-flatten duplicate of ALT1' exists at NO pin — C132 byte-match + pre-run-020 plane byte-match + zero duplicate signatures; likely misread of the census fragment view (raw print-verbatim margin values 'sin20 = 0.34202…' sit outside KaTeX spans). q18 untouched; C132 still verifies.
+- GATES 13/13 GREEN (battery clone + byte_decomposition zero-loss law + boundary_law + stub_discharge + moved_signatures + katex_spans_unchanged); render gate 8/8 through the ACTUAL hub engine (0 exceptions, 0 katex-error); fleet KaTeX gate 567 segments 0 failures.
+- POST-APPLY CENSUS (instrument byte-clone, classes UNCHANGED) @ a794747f1a503e12: trig bucket 159 -> 158 (2021-06-02 9-b left the bucket; 10-b now carries its own blob — its PRE trig=True came from the problemMd △ABF stem, true-ownership corroborated twice); 2023 q8 hits 105 -> 71; B1 0 / P1 0 held; leadCount 2046 held (2023-9-b joined as raw-of-record carrier).
+- ZERO canary contact (2023-06/2021-06 outside C120-C146; F3 no-op so even q18's C132 untouched). Corpus back-sync debt +5 pids rides the next converter run (standing disposition).
+- Filed (not executed): q10(b) head-row completion (p20 preamble + Case 1 header + first M1 row — hand-transcription = Tier-B provenance class, fenced); 11-a head/tail carrier completion class; token-fixable subclass over the 158 + F5 census-class revision (operator-gated, run-020 menu).
+
+Stage Summary:
+- run-022 ready on local branch t-oeq-mathsb/run-022 (content + bookkeeping commits); no PAT in env this session — push -> PR -> CI -> merge -> Vercel -> live spot-check fire on operator PAT supply (env/GIT_ASKPASS only); both standing exposed tokens remain ROTATION-REQUIRED (standing order).
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 run-022 push-leg addendum (same trace 1a187e0b42de09c1)
+Agent: main agent (Super Z, session web-da4ab8b1)
+Task: Record the actual push-attempt state.
+
+Work Log:
+- git push origin t-oeq-mathsb/run-022 FAILED of record: 'fatal: could not read Username for https://github.com: terminal prompts disabled' — zero credential channels this session (env/GIT_ASKPASS/netrc/gh-hosts all absent; GIT_TERMINAL_PROMPT=0). The run-020 pre-PAT pattern reproduced exactly.
+
+Stage Summary:
+- 2fcf170b (content) + d7273cc7 (bookkeeping) + this addendum READY on local t-oeq-mathsb/run-022; push -> PR -> CI -> merge -> Vercel redeploy -> live spot-check fire mechanically on operator PAT supply (env/GIT_ASKPASS only); PAT rotation standing order re-flagged.
