@@ -22281,3 +22281,17 @@ Stage Summary:
 - LIVE SPOT-CHECK PASS (flight-content-parity class, run-019 pattern): /courses/igcse-maths-b-16/past-papers/june-2022-4mb1-01r HTTP 200 — new sources '$k^2$' x12 / '144x^2' x4 present (solution + mirror carriers; exact context 'for k or $k^2$ 36 18 x $k^2$' x2), q22(a) note + ALTERNATIVE block present; ALL old flattened forms ABSENT ('36 18 x k2', '126 x 144 x 2', '144 x 2', '36 9 k2', 'for k or k 2'); zero class="katex" on this route (client-painted, the disclosed SSR/flight split). Live == plane f2cbe67ab7d2493 for q22(a); zero regressions.
 - Landing receipt appended to .syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-020-gbucket-wave-tranche1.json (/landing section). Bookkeeping-only (.syllabai/**), fetch-first, no force, zero DB contact.
 - Residual unchanged: tranche-2 = F1-F3 structural repairs (owning lane) then token-fixable trig leads; F5 census-revision menu + F4/F6 rebuild-class scheduling for the operator; corpus side rides next converter run; PAT rotation REQUIRED.
+
+---
+Task ID: R0-HUB-REDEPLOY-BAKE-1 (operator trace 1a187507672cf211 "hub redeploy bake")
+Agent: r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Fetch-first adjudication: syllabai-hub-v2 (prj_YhOJvdlHn1RggYyPKF8ydvvLn6Bl) is GIT-CONNECTED of record since 2026-10-16 (productionBranch=main) — every main push auto-bakes production; the run-006 manual-bake posture is superseded.
+- Deployment of record found: dpl_4KNgbHt7kUKqgHf5LE9QutvDCDDQ target=production READY 2026-10-29T10:52:30Z @ 2559034b == the main tip read first-hand twice via ls-remote; aliases attached incl. syllabai-hub-v2.vercel.app; prior auto-bake same day dpl_EVQCG2vdQQzzqVTnSxvcxmoqqECv (PR #443 merge @ 93990eb).
+- Independent verification battery (the 099 law — no duplicate prod move): alias 200 x-vercel-cache HIT fresh epoch; probe-live-bundle 21/21 assets, viewer 200 fresh; s144 regression guard GREEN (gesturestart/change/end+pan-x PRESENT); wire smoke /login /tutor /teacher/marking all 200; race-guard clear (tip unchanged through run).
+- VERDICT: redeploy bake ALREADY SATISFIED of record by the git-connected auto-bake; ZERO duplicate production bake executed by this lane; receipt run-001 filed .syllabai-only.
+- Zero deployments created; Vercel read-only; no token printed/persisted; disclosure: future bake commands read verify-first, manual bake only if prod stale/RED.
+
+Stage Summary:
+- Hub prod = current main tip 2559034b serving GREEN (alias + bundle probe + wire smoke); deliberate-bake era closed by the 2026-10-16 git link. LANE r0: IDLE.
