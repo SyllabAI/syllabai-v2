@@ -22323,3 +22323,14 @@ Stage Summary:
 - Skipped: #285 1c2dd54d (FAIL verify+hub), #296 bd2c0b1e (FAIL hub), #352 13bfea93 (NO-CI, stall ~126h+), #446 c8d32a49 (NO-CI — static-four triage receipt, awaits first CI)
 - Lane status: #303 CLOSED UNMERGED this window (static four -> static three); main advanced 544c3700 -> 2c370ea4 (T-HUB-LOOSE-COPY-1 landing addendum) before sweep merges; #444/#445 landed earlier by lane (8b1380b1, 544c3700)
 - Bookkeeping-only: this commit touches .syllabai/worklog.md only; fetch-first, ff-only push, no force
+
+## T-SM-ROOT-LAW-1 run-001 — the #352 rebase lane lands the deterministic subject-root law (Z.ai session web-528c0352, trace 1a187e90cb20a989, 2026-10-29)
+
+Operator order: "start a #285 or #352 rebase lane next" — acting on the T-PR-TRIAGE-1 run-001 verdict "#352 KEEP-OPEN — rebase lane required" (receipt .syllabai/receipts/T-PR-TRIAGE-1/run-001-static-four-red-r0.json).
+
+- Drift audit first-hand: git diff 3af8fdb6..origin/main over the two touched code files = EMPTY (zero drift since the PR base); the dup-code .find() hazard confirmed live at apps/hub/src/lib/core-topics.ts:89; subject-root.{ts,test.ts} and both r0 receipts confirmed absent on main @ 28346abe.
+- Landed byte-exact from pr-352-head 13bfea93 (git-hash-verified EXACT per file): apps/hub/src/lib/subject-root.ts (pickSubjectRoot — single-hit resolves; multi-hit resolves by the registry row's curriculumCode cv pin per the seed cv law; ambiguity without a pin refuses deterministically), subject-root.test.ts (7 law cases), core-topics.ts (rootIdForCourseCode gains the optional cv pin; cv-aware memo key `${code}\u0000${cv ?? ""}`; misses still never memoized), api/core/questions/route.ts (the bridge route passes row.curriculumCode), receipts T-SM-ROLLOUT/{0452-tiebreak-r0,registry-gap-audit-r0}.json.
+- The PR's stale worklog hunk (the Oct-24 entry) deliberately NOT transplanted — this fresh entry is the worklog of record for the same content (same disposition as the #296 reland).
+- Gates: subject-root.test.ts 7/7; hub lib suite 366 pass / 0 fail (the r0 recorded 285/5 with the dual-run-posture block pre-existing — since fixed upstream; posture strictly improved); root typecheck + hub tsc byte-identical to clean main (sandbox-only missing-test-dep artifacts, not ours); build:hub exit 0 (the hub normative type gate).
+- Zero API changes; the frozen OrderByCode port contract untouched; the CLA route inherits the deterministic-refusal posture unchanged (optional 3rd param).
+- Lane receipt: .syllabai/receipts/T-SM-ROOT-LAW-1/run-001-rebase-reland-r0.json; branch t-sm-root-law-1/r0; fetch-first, no force, no DB contact.

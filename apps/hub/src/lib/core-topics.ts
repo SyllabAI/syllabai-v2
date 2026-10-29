@@ -24,13 +24,13 @@ import "server-only";
  */
 import { coreBaseUrl } from "./core-proxy";
 import { v2SurfaceBase } from "./api";
+import { pickSubjectRoot, type SubjectView } from "./subject-root";
 
-export interface SubjectView {
-  id: string;
-  code: string;
-  name: string;
-  knowledgeNodeId: string | null;
-}
+// the pure selection law + the subject wire view live in ./subject-root
+// (unit-testable without the server-only boundary); re-exported here so the
+// historical import path stays stable for callers.
+export { pickSubjectRoot } from "./subject-root";
+export type { SubjectView } from "./subject-root";
 
 export interface NodeView {
   id: string;
@@ -41,6 +41,9 @@ export interface NodeView {
 }
 
 let subjectsCache: { at: number; subjects: SubjectView[] } | null = null;
+// key `${code}\u0000${curriculumCode ?? ""}` — the cv pin is part of the
+// resolution identity (T-SM-ROLLOUT-0452 r0): two same-code subjects with
+// different pins must never share a memo slot.
 const subjectRootByCode = new Map<string, string | null>();
 const topicIdByCode = new Map<string, string>(); // `${rootId}:${code}` → nodeId
 
@@ -72,12 +75,22 @@ export async function fetchCoreJson<T>(
   }
 }
 
-/** Course code (e.g. "4CH1") → the subject's knowledge-tree rootId. */
+/** Course code (e.g. "4CH1") → the subject's knowledge-tree rootId.
+ *
+ * `curriculumCode` (optional, the registry row's cv pin — e.g.
+ * "0452-2023-2025") disambiguates codes that legitimately map to several
+ * subject rows, one per curriculum version (T-SM-BRIDGE-WIDEN r0's
+ * "0452_duplicate_subject_code_ambiguity" exclusion; the selection law is
+ * pickSubjectRoot in ./subject-root). Selection misses — including the
+ * ambiguous-without-pin refusal — are NEVER memoized, per the module law:
+ * a cached null must not outlive the request that earned it. */
 export async function rootIdForCourseCode(
   code: string,
   token: string | null,
+  curriculumCode?: string | null,
 ): Promise<string | null> {
-  const memoized = subjectRootByCode.get(code);
+  const memoKey = `${code}\u0000${curriculumCode ?? ""}`;
+  const memoized = subjectRootByCode.get(memoKey);
   if (memoized) return memoized;
   const stale = !subjectsCache || Date.now() - subjectsCache.at > 300_000;
   if (stale) {
@@ -86,9 +99,11 @@ export async function rootIdForCourseCode(
   }
   // A failed refetch deliberately falls through to the stale list: curriculum
   // identity is deploy-immutable, so a stale root beats a fabricated null.
-  const hit = subjectsCache?.subjects.find((s) => s.code === code);
+  const hit = subjectsCache
+    ? pickSubjectRoot(subjectsCache.subjects, code, curriculumCode)
+    : null;
   const rootId = hit?.knowledgeNodeId ?? null;
-  if (rootId) subjectRootByCode.set(code, rootId);
+  if (rootId) subjectRootByCode.set(memoKey, rootId);
   return rootId;
 }
 
