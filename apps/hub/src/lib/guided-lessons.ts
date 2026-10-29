@@ -155,6 +155,10 @@ export interface GuidedFigure {
    *  explanatory line, coalesced at the 0.3 source generation; absent where the
    *  source has none (renderer falls back to the provenance line only). */
   caption?: string;
+  /** figures-2.2 binding layer (hub/lesson-import/1.3): the rule of record that
+   *  produced this figure's claims — heading-unique | sole-lesson |
+   *  content-overlap | note-level | unresolved (fail-closed keeps). */
+  binding?: string;
   moduleIds: string[];
 }
 

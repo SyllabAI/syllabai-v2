@@ -16,5 +16,6 @@
 export * from "./analytics";
 export * from "./concept-edges";
 export * from "./concept-seed";
+export * from "./foresights";
 export * from "./kg";
 export * from "./snapshot";

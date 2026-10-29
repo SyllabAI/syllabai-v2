@@ -222,8 +222,12 @@ export type ClassNodeStudentsView = {
 
 // ── shared internals ─────────────────────────────────────────────────────────
 
-/** the §17 gate (:104-112) with the projection the trio needs (the name). */
-async function graphOwnedClass(
+/** the §17 gate (:104-112) with the projection the trio needs (the name).
+ *  T-FORESIGHT-V0-PLAN-1 Stage A: exported verbatim (mechanical export,
+ *  REUSE-not-redeclare) for services/teacher/foresights.ts — the gate-order
+ *  law (404 "class not found" → 403 "this class belongs to another teacher")
+ *  is the Foresights gate too (plan §3); semantics byte-untouched. */
+export async function graphOwnedClass(
   deps: KnowledgeDeps,
   teacherId: string,
   classId: string,
@@ -238,8 +242,10 @@ async function graphOwnedClass(
   return c;
 }
 
-/** the roster: member student ids, enrolled_at asc (the class scope source). */
-async function memberStudentIds(deps: KnowledgeDeps, classId: string): Promise<string[]> {
+/** the roster: member student ids, enrolled_at asc (the class scope source).
+ *  T-FORESIGHT-V0-PLAN-1 Stage A: exported verbatim (mechanical export,
+ *  REUSE-not-redeclare) — the Foresights roster source (plan §3). */
+export async function memberStudentIds(deps: KnowledgeDeps, classId: string): Promise<string[]> {
   const rows = (await deps.sql`
     select student_id from class_members where class_id = ${classId}::uuid order by enrolled_at asc`) as Array<{
     student_id: string;
@@ -248,8 +254,10 @@ async function memberStudentIds(deps: KnowledgeDeps, classId: string): Promise<s
 }
 
 /** the enabled roster: member ids resolved against accounts, ENABLED only —
- *  the independent-student rule's account half. */
-async function enabledRoster(
+ *  the independent-student rule's account half. T-FORESIGHT-V0-PLAN-1
+ *  Stage A: exported verbatim (mechanical export, REUSE-not-redeclare) —
+ *  the independent-student rule IS the Foresights roster law (plan §3/§9.4). */
+export async function enabledRoster(
   deps: KnowledgeDeps,
   memberIds: string[],
 ): Promise<{ roster: string[]; names: Map<string, string> }> {

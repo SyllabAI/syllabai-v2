@@ -1,0 +1,77 @@
+{
+  "receipt": "FIGURES-2-1B-CAPTION-SOURCE-DROP-20261030",
+  "format": "hub-presentation-receipt/0.1",
+  "date": "2026-10-30",
+  "operator_trace": "1a18983337102e19",
+  "operator_directive": "Remove the \"The oxidation of ethanol — from the revision note\" part from the diagrams.",
+  "wave": "FIGURES-2.1B-CAPTION-SOURCE-DROP — presentation law §6 amendment: the \"sourceHeading — from the revision note\" provenance line dropped from guided-lesson diagrams; teaching captions retained",
+  "interpretation_of_record": "the quoted learner-visible string is exactly the §6 provenance line rendered under every guided-lesson diagram (<p className=\"text-xs text-muted-foreground\">{f.sourceHeading} — from the revision note</p>); \"The oxidation of ethanol\" is that figure's sourceHeading. The directive removes the provenance line WHOLESALE. The teaching captions (f.caption — the FIGURES-2.1 EXPLAIN-DONT-LIST payload) are KEPT. If the operator intended the captions themselves removed too, that is a one-line follow-up on the same two sites.",
+  "state_context": {
+    "figures_2_1": "landed of record (caption-first law §6, adapter spec 0.3→1.2)",
+    "figures_2_2": "landed of record — resources PR #227 merge 0b201a74, hub import GREEN 34/34, 112 lesson files revised (concept-grain binding); render unchanged by design in 2.2"
+  },
+  "probe_of_record": {
+    "v2_main_head": "3539948e6bf3ed9e9731fe0f1b1932633db05a9a",
+    "resources_main_head": "3b2ce8da700b80f51700fb34fc721c90d6654d6b",
+    "open_prs_v2": [
+      462,
+      461,
+      460,
+      458,
+      296
+    ],
+    "open_prs_resources": [
+      116,
+      53
+    ],
+    "grep_census": "\"from the revision note\" in apps/hub/src = 3 hits: page.tsx:295 (render), guided-flow.tsx:744 (render), guided-flow.tsx:730 (doc comment); no tests assert the string; content JSON note bodies carry the phrase as prose (unrelated to the render)",
+    "collision_check": "open PR paths (4MB1 maths serving, foresight follow-ups, docs receipts lanes) do not touch the guided-lessons route tree — no collisions"
+  },
+  "change_surface": {
+    "files": [
+      "apps/hub/src/app/courses/[course]/guided-lessons/[noteId]/page.tsx (StaticFigure)",
+      "apps/hub/src/app/courses/[course]/guided-lessons/[noteId]/guided-flow.tsx (ModuleFigures)"
+    ],
+    "delta": "+20/-15 across 2 files; figcaption now renders ONLY when f.caption exists; doc comments carry the amendment trace (FIGURES-2.1B, 1a18983337102e19)",
+    "data_delta": "NONE — resources untouched, lesson JSON untouched, GuidedFigure type untouched (sourceHeading stays in the data contract)",
+    "db_delta": "NONE — zero-DB discipline"
+  },
+  "fail_closed_consequence": {
+    "uncaptioned_figures": [
+      "rn_4tzwS4GZjPybwtkS fig-02",
+      "rn_tvwj4VZ6yFscPJfD fig-01"
+    ],
+    "note": "the 2 FIGURES-2.2 unresolved fail-closed rows (no caption in source) previously showed the provenance line as their only text; they now render as bare diagrams (no empty figcaption). Honest consequence of dropping provenance."
+  },
+  "verification": {
+    "eslint": "0 errors on both files (1 pre-existing unused-disable-directive warning at guided-flow.tsx:740 — proven present on HEAD via stash probe, not introduced)",
+    "build": "bun run build GREEN — prebuild corpus verifiers + corpus static + next build compiled, full route table emitted",
+    "ci": "verify + hub on the PR merge ref — of-record merge gate",
+    "pr": "pending at receipt-write time; landing addendum records number + merge sha"
+  },
+  "discipline": "zero-DB; fetch-first re-ground (heads moved 3de8e6b2→3539948e / 5586acae→3b2ce8da while the window was closed — FIGURES-2.2 landed in between, no work re-executed); token via credential channel never echoed; merge via REST on green CI; receipt via json.dump law",
+  "landing": {
+    "pr": {
+      "number": 463,
+      "url": "https://github.com/SyllabAI/syllabai-v2/pull/463",
+      "head_sha": "80a55be4b0634acc1b3b2ac32b6d219cb53d6013",
+      "base": "main"
+    },
+    "ci": {
+      "verify": "completed/success",
+      "hub": "completed/success",
+      "ci_workflow": "completed/success",
+      "note": "green at 123s on the merge ref; merge via REST PUT, merge_method=merge"
+    },
+    "merge_sha": "3547b71f1527e98ca29d8250e66460818b3ead9f",
+    "main_state_at_merge": "784eaa26 (branch rebased mid-lane onto it — race guard; incoming #462/#460 zero path overlap)",
+    "post_merge_verification": {
+      "main_head": "3547b71f (merge sha on main, ancestry-proven)",
+      "render_sites": "the 2 provenance <p> lines are GONE from src (previously page.tsx:295 + guided-flow.tsx:744)",
+      "caption_law": "figcaption conditional present at both sites (page.tsx:295, guided-flow.tsx:743) — teaching captions render, no empty figcaption",
+      "remaining_src_hits": "1 doc-comment hit only (guided-flow.tsx:731 — the amendment record itself); ZERO learner-surface occurrences",
+      "deploy": "Vercel auto-bake follows main; learner surface updates on the next green bake"
+    },
+    "worklog": "run-001 entry + landing addendum in worklog.md (root worklog of record)"
+  }
+}

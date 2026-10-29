@@ -22490,3 +22490,15 @@ Stage Summary:
 - Corpus side rides the NEXT converter run: +7 changed pids join the 1461-pid standing debt; no solo converter trigger, no solo resources PR (operator order scoped to v2)
 - Wave-2 continuation of record: 142 residual units with greedy high-yield read-order + full 207-page pagemap + rendered PNG set (run-024 artifacts); CRITICAL-OPERATOR: both tokens ROTATION-REQUIRED (standing)
 - Bookkeeping: receipt + worklist + pagemap + projection + fixes + both gates + 12 evidence PNGs; fetch-first, no force
+
+---
+Task ID: RN-RECONSUME-1 (closing witness run-001, same operator trace 1a188fd1fe1ab249)
+Agent: r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- CI GREEN on the remedy sha 8861ea1c (verify + hub completed success, bounded poll 3/4 windows).
+- Auto-bake witness: dpl_5qJSoTvrJy READY @ 8861ea1c (git-connected bake; the RED-window bake dpl_CLtBQgHDac = ERROR of record, prod served 2e51cce6 throughout — zero learner-facing regression).
+- LIVE FRONTEND SPOT-CHECK PASS on the production alias: (a) corpus plane — /corpus/{slug}/notes.json probed for cie-a-level-accounting-21, ial-chemistry-17, cie-a-level-physics-25: ALL operator defect classes ZERO on the served bytes (APL U+2375, fraction-numerator/over-denominator/cross-times speech debris, *F *= broken italics), LaTeX \frac markers live at 159/196/765 spans, zero literal 2pif, zero bare non-LaTeX pi (residual regex hits adjudicated as \mathrm{\pi} false positives); (b) page surface — /courses/cie-a-level-accounting-21/revision-notes/rn_cy5JQvc6q8nnnTdh (the PR-#220 ABC-costing sample note) renders 200, 132,845 bytes, page defect hits ALL ZERO, 14 KaTeX render spans (typeset math learner-visible).
+
+Stage Summary:
+- The operator's command discharged END-TO-END: corpus import/notes-cache harvest re-run at pin 1a5c37bc -> notes plane re-consumed through the of-record engines (90 courses) -> CI GREEN after the adjudicated remedy -> auto-bake READY -> frontend spot-check PASS (defects absent, math typeset). Residuals of record: pilot igcse-chemistry-19 + igcse-geography-19 keep pre-fix text until their curation-replay lanes; EQ/FC/Official-Specs corpus waves at the pin unconsumed (queued gated lanes); the \text{} debris cleanup = the follow-up curation lane (baseline refrozen to the corpus-of-record meanwhile). LANE RN-RECONSUME-1: DONE.

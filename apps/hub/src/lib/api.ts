@@ -93,6 +93,7 @@ import type {
   TeacherTopicRowView,
   TeacherValidateAllResult,
   TeacherVersionActionResult,
+  ClassForesightsView,
   ClassLearnerRow,
   ClassOverviewView,
   ClassTopicDrillDown,
@@ -1665,6 +1666,18 @@ export const api = {
   ) =>
     request<LearnerKnowledgeGraphView>(
       `/api/v1/teacher/classes/${classId}/learners/${learnerId}/knowledge-graph?rootId=${encodeURIComponent(rootId)}`,
+    ),
+
+  // Teacher, T-FORESIGHT-V0-PLAN-1 Stage B: the foresights/v1 readiness read
+  // model — a pre-assignment PRIOR for one not-yet-measured topic, derived
+  // read-only from THIS class's own skill/misconception evidence on the
+  // topic's prerequisite chain (ADR-CLASS-0002 comprehension-first law: the
+  // headline sentence + the disclosure string are wire-level fields every
+  // client renders; NOT_ASSESSABLE + unlockPath are first-class). A pure
+  // read; archived classes stay readable (the 409 is a write gate).
+  teacherClassForesights: (classId: string, rootId: string, nodeId: string) =>
+    request<ClassForesightsView>(
+      `/api/v1/teacher/classes/${classId}/foresights?rootId=${encodeURIComponent(rootId)}&nodeId=${encodeURIComponent(nodeId)}`,
     ),
 
   // ── Teaching Toolkit (T-TEACH-013): the 4 educator-ai generators.

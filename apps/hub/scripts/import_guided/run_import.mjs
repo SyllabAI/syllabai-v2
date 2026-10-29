@@ -292,6 +292,75 @@ const FEEDS = {
     },
     targetSchemas: ["hub/lesson-import/1.2", "sme-question-package/1.0"],
   },
+  "figures-2-2-v6": {
+    manifest: "hub-import-manifest-v6.json",
+    manifest_version: 6,
+    lesson_kind: "hub-lesson-import-1.3",
+    adapter: "guided-lesson-0.4--hub-lesson-import-1.3",
+    directive: "run the full 112-note figures-2.2 binding chain — import the 1.3 generation (traces 1a18923d3913e2ed + 1a1892c0212a94fd)",
+    promo: {
+      commit: "7e31c64e1f87da85cb7fcfc95c9c6482ee73bc00", // commit C of resources PR #227 (namespace-complete: 0.4 revision + 1.3 outputs + manifest v6 + records)
+      tree: "6d932a3955bc2f1fd336a7bdac125c50c1f126a7",
+      parent: "71922d1510ee9e00400667670b40f36e1ae5d456", // commit A — the source-0.4 binding generation
+      trace: "1a1892c0212a94fd",
+    },
+    integration_branch: null, // ancestry of record — hub run happens only after the resources PR merges
+    artifact_pin: "71922d1510ee9e00400667670b40f36e1ae5d456", // commit A — the source-0.4 binding generation (lesson channel)
+    pkg_pin: "4d857c472fd725597ac21db189542c8f12c82dba", // INT-0 — the question packages stay byte-identical
+    schemas: {
+      hub: "/home/z/my-project/scripts/fig22-survivors/hub-lesson-import.1.3.schema.json",
+      pkg: "/home/z/my-project/scripts/fig22-survivors/sme-question-package.1.0.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.3.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.0.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/fig22-survivors/hub-import-manifest-v6.json",
+      int3: "/home/z/my-project/scripts/fig22-survivors/INT-3-transform-record-figures-2.2.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261030-figures-2-2.json`,
+    identity: {
+      notes: 112,
+      lessons: 239,
+      checks: 1195,
+      keyPoints: 1212,
+      distractors: 3565,
+      glossaryTerms: 654,
+      figures: 200,
+      figures_module_mapped: 122,
+      figures_note_level: 78,
+      workedExamples_populated: 112,
+      workedExamples_null: 0,
+      authored_chars_conserved: 1426764,
+      authored_chars_v3_baseline: 1347771,
+      added_chars: 78993,
+      captions_coalesced: 143,
+      captions_row_context: 16,
+      captions_inline: 3,
+      captions_none: 38,
+      binding_heading_unique: 90,
+      binding_sole_lesson: 0,
+      binding_content_overlap: 12,
+      binding_note_level: 78,
+      binding_unresolved: 20,
+      figures_binding_narrowed: 102,
+      figures_claims_changed: 12,
+      figures_wholesale_claims_kept: 2,
+    },
+    figures_feed: true,
+    we_feed: true, // the 1.2 stream is the declared baseline; this feed's equality gate is per-note vs the figures-2.1 INT-3 anchors (binding/claims are not §7 tokens)
+    landing: "revision", // declared G-DELTA: the 112 lesson files re-pin (binding delta); packages byte-identical
+    relFor(a) {
+      if (!a.path.startsWith("SME-GuidedLessons/integration/")) throw new Error(`v6 manifest path not integration-relative: ${a.path}`);
+      return a.path;
+    },
+    pathFamily(a) {
+      return (
+        (a.kind === "hub-lesson-import-1.3" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.3/")) ||
+        (a.kind === "sme-question-package" && a.path.startsWith("SME-GuidedLessons/integration/question-packages/"))
+      );
+    },
+    targetSchemas: ["hub/lesson-import/1.3", "sme-question-package/1.0"],
+  },
 };
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";

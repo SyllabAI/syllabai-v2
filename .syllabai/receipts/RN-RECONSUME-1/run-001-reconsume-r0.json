@@ -59,5 +59,13 @@
     "verifyJob": "cie-phase4-repair.test.ts:174 pin-coherence law ('the map's pin IS the manifest's pin') \u2014 the 3 asset-map courses (chem-25, cs-19-a-level, igcse-cs-23) carry asset-map.json pinned c5f20c52; the lane's manifest ref advance broke coherence. REMEDY: those 3 manifests reverted to origin (notes refresh KEPT; provenance via this receipt + worklog). Only failing test class in the job (full log swept).",
     "hubJob": "prebuild verify_corpus_23a.ts GATE FAILED \u2014 working as designed ('any future SME import that skips the aria-label-to-MathML-to-LaTeX extraction blows past the baseline'): the corpus@1a5c37bc state (PR-#220 converter residuals \u2014 MathML-speech forms in code spans/bare text, the RN-FIX-1-disclosed \\text{} debris class) measures span=525 dollar=1 multiline=93 baretext=2 vs the 2026-09-21 zero baseline. REMEDY: speech-baseline.json refrozen to the measured corpus-of-record values (frozenNote disclosure in-file); the \\text{} debris cleanup = the disclosed follow-up curation lane. Local gate re-run: CORPUS GATE PASSED; flashcard sync exit 0; validate_cie_bundles PASSED; next build compiled + 2265/2265 pages prerendered (sandbox ENOSPC at the post-build standalone copy only \u2014 disk ceiling, not content).",
     "prodWitness": "the failed bake keeps prod on the pre-lane deployment (zero learner-facing regression during the RED window)"
+  },
+  "bakeWitness": {
+    "deployment": "dpl_5qJSoTvrJy READY @ 8861ea1caae8235d8c3482a41f853658e635c4e2 (auto-bake, git-connected; the RED-window bake dpl_CLtBQgHDac for 0a1c4026 = ERROR of record, prod served 2e51cce6 throughout \u2014 zero learner-facing regression)",
+    "liveSpotCheck": {
+      "corpusPlane": "/corpus/{slug}/notes.json probed on the production alias for cie-a-level-accounting-21 + ial-chemistry-17 + cie-a-level-physics-25: defect census APL=0 speech_frac=0 speech_over=0 speech_cross=0 broken_ital_F=0; LaTeX \\frac markers live (159/196/765 spans); zero literal '2pif'; zero bare non-LaTeX pi (the residual regex hits were \\mathrm{\\pi} false positives)",
+      "pageSurface": "/courses/cie-a-level-accounting-21/revision-notes/rn_cy5JQvc6q8nnnTdh (the PR-#220 ABC-costing sample note) renders 200 with 132,845 bytes: page defect hits ALL ZERO + 14 KaTeX render spans (typeset math live)",
+      "verdict": "FRONTEND SPOT-CHECK PASS \u2014 the operator's rendering-defect classes are ABSENT from the served frontend and the math-wave LaTeX is learner-visible"
+    }
   }
 }

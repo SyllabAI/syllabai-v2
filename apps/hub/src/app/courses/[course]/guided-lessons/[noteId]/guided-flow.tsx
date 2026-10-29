@@ -726,10 +726,11 @@ function GateStage(p: StageProps) {
  *  reader serves. Same CLS-guarded markup as the notes reader (UX audit 2026-10-02 #21):
  *  fixed 16:9 box with object-contain reserves the layout, nothing shifts; alt is
  *  mandatory upstream. Presentation law of record (adapter spec 0.3→1.2 §6, operator
- *  trace 1a188a15ac19ed05): caption-first — the note's own explanatory line when the
- *  source has one, the "sourceHeading — from the revision note" provenance line always;
- *  the 1.1-era block-level label is removed (the diagrams are part of the lesson, not a
- *  provenance gallery). Fail-closed: a module without figures renders nothing. */
+ *  trace 1a188a15ac19ed05, amended FIGURES-2.1B trace 1a18983337102e19): caption-first —
+ *  the note's own explanatory line when the source has one, and nothing else; the
+ *  "sourceHeading — from the revision note" provenance line is dropped (the diagrams are
+ *  part of the lesson, not a provenance gallery). Fail-closed: a module without figures
+ *  renders nothing. */
 function ModuleFigures({ figures }: { figures: GuidedFigure[] }) {
   return (
     <div className="space-y-3">
@@ -739,10 +740,11 @@ function ModuleFigures({ figures }: { figures: GuidedFigure[] }) {
             {/* eslint-disable-next-line @next/next/no-img-element -- corpus hotlink law, identical to the notes reader img: branch */}
             <img src={f.url} alt={f.alt} loading="lazy" className="size-full object-contain" />
           </span>
-          <figcaption className="space-y-0.5">
-            {f.caption && <p className="text-[13px] leading-relaxed">{f.caption}</p>}
-            <p className="text-xs text-muted-foreground">{f.sourceHeading} — from the revision note</p>
-          </figcaption>
+          {f.caption && (
+            <figcaption className="space-y-0.5">
+              <p className="text-[13px] leading-relaxed">{f.caption}</p>
+            </figcaption>
+          )}
         </figure>
       ))}
     </div>

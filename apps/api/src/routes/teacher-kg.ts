@@ -20,6 +20,19 @@
  *     "/edges" (:87-105, relation→source-code→target-code deterministic
  *     order, PART_OF excluded, misconception-family widening).
  *
+ *   Foresights-v0 (T-FORESIGHT-V0-PLAN-1 Stage B, 2026-10-30 — NO frozen-core
+ *     counterpart; the plan §7 mount): GET
+ *     "/api/v1/teacher/classes/{classId}/foresights?rootId=&nodeId=" — the
+ *     ADR-CLASS-0002 comprehension-first pre-assignment readiness read model
+ *     (foresights/v1). Pure read over services/teacher/foresights.ts
+ *     (classForesights); the service owns the ENTIRE gate order (the F-072
+ *     order verbatim: graphOwnedClass 404/403 → root 404-first tree read →
+ *     target 404 + subject isolation) and there is deliberately NO
+ *     archived-class gate on reads (F-072 law: the 409 is a write gate — a
+ *     teacher may inspect a past class's readiness; the coverage PUT above
+ *     keeps its own 409). The view serializes VERBATIM — zero route-level
+ *     reshaping of the C1 headline / C3 disclosure / decision tables.
+ *
  * Route security (SecurityConfig + deep-audit 09-28 M5 parity): the frozen
  * controllers carry class-level @PreAuthorize("hasAnyRole('TEACHER','ADMIN')")
  * ON TOP of the /api/v1/teacher/** route rule — both routers open with the
@@ -27,16 +40,21 @@
  * for authenticated non-teachers, the classroom.ts :407-414 precedent).
  * The per-object §17 OWNERSHIP gate (404 "class not found" / 403 "this
  * class belongs to another teacher") lives INSIDE the services
- * (covOwnedClass / classGraph's ownedClass) — the route never re-guesses it.
+ * (covOwnedClass / classGraph's ownedClass / classForesights'
+ * graphOwnedClass) — the route never re-guesses it.
  *
  * Param laws (Spring MVC parity, GlobalExceptionHandler.java):
  *   - {classId} / {specPointNodeId} / {nodeId} / {learnerId} are
  *     @PathVariable UUID → malformed UUID → 400 bad_request "malformed
  *     request" (:167-170, checked in-path BEFORE any sql);
- *   - rootId is a @RequestParam UUID on all three knowledge-graph GETs and
- *     /edges → missing → 400 validation_failed "missing required
- *     parameter: rootId" (:185-190), malformed → 400 bad_request "malformed
- *     request" (the learnerkg.ts T-MIG-079 signature-order precedent).
+ *   - rootId is a @RequestParam UUID on all three knowledge-graph GETs,
+ *     /edges, and /foresights → missing → 400 validation_failed "missing
+ *     required parameter: rootId" (:185-190), malformed → 400 bad_request
+ *     "malformed request" (the learnerkg.ts T-MIG-079 signature-order
+ *     precedent);
+ *   - nodeId is a @RequestParam UUID on /foresights (the prediction target)
+ *     → the SAME missing/malformed law as rootId, checked AFTER rootId (the
+ *     frozen signature order: path params → rootId → nodeId).
  *
  * PUT body law (MarkRequest, TeachingCoverageController :188-191 —
  * @NotBlank String status, @Size(max = 500) String note): @Valid runs
@@ -99,6 +117,7 @@ import {
 } from "../services/knowledge";
 import { activateConceptGraph, SeedConflictError } from "../services/teacher/concept-seed";
 import { teacherConceptEdges } from "../services/teacher/concept-edges";
+import { classForesights } from "../services/teacher/foresights";
 import { BadRequestError, ConflictError } from "../services/selfmark";
 
 const UUID_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
@@ -230,21 +249,30 @@ export function createTeacherClassesKgRouter(deps: KnowledgeDeps): Hono {
 
   // ── ClassKnowledgeGraph (the class-scoped KG family, 3 endpoints) ──────
 
-  const rootIdOf = (
+  // the @RequestParam UUID law, parameterized over the query name (the same
+  // missing/malformed envelopes as the rootIdOf it generalizes — the /edges
+  // precedent; nodeId joins it with the Stage B mount).
+  const uuidQueryOf = (
     c: Context,
-  ): { ok: true; rootId: string } | { ok: false; response: Response } => {
-    const raw = c.req.query("rootId");
+    name: string,
+  ): { ok: true; value: string } | { ok: false; response: Response } => {
+    const raw = c.req.query(name);
     if (raw === undefined) {
       return {
         ok: false,
-        response: c.json(apiError(400, "validation_failed", "missing required parameter: rootId"), 400),
+        response: c.json(
+          apiError(400, "validation_failed", `missing required parameter: ${name}`),
+          400,
+        ),
       };
     }
     if (!UUID_RE.test(raw)) {
       return { ok: false, response: c.json(apiError(400, "bad_request", "malformed request"), 400) };
     }
-    return { ok: true, rootId: raw };
+    return { ok: true, value: raw };
   };
+
+  const rootIdOf = (c: Context) => uuidQueryOf(c, "rootId");
 
   // GET "/{classId}/knowledge-graph" (:59-63) — the heatmap; archived
   // classes readable (the service keeps the gate order).
@@ -259,7 +287,7 @@ export function createTeacherClassesKgRouter(deps: KnowledgeDeps): Hono {
     if (!root.ok) return root.response;
     try {
       return c.json(
-        await classGraph(deps, gate.userId, classId, root.rootId),
+        await classGraph(deps, gate.userId, classId, root.value),
         200,
       );
     } catch (e) {
@@ -283,7 +311,7 @@ export function createTeacherClassesKgRouter(deps: KnowledgeDeps): Hono {
     if (!root.ok) return root.response;
     try {
       return c.json(
-        await classNodeStudents(deps, gate.userId, classId, root.rootId, nodeId),
+        await classNodeStudents(deps, gate.userId, classId, root.value, nodeId),
         200,
       );
     } catch (e) {
@@ -308,7 +336,41 @@ export function createTeacherClassesKgRouter(deps: KnowledgeDeps): Hono {
     if (!root.ok) return root.response;
     try {
       return c.json(
-        await classLearnerKnowledgeGraph(deps, gate.userId, classId, learnerId, root.rootId),
+        await classLearnerKnowledgeGraph(deps, gate.userId, classId, learnerId, root.value),
+        200,
+      );
+    } catch (e) {
+      const mapped = mapErrors(e, c);
+      if (mapped) return mapped;
+      throw e;
+    }
+  });
+
+  // ── Foresights-v0 (T-FORESIGHT-V0-PLAN-1 Stage B, ADR-CLASS-0002) ───────
+
+  // GET "/{classId}/foresights?rootId=&nodeId=" (plan §7 — no frozen-core
+  // counterpart) — the foresights/v1 pre-assignment readiness read model.
+  // The service owns the ENTIRE gate order (graphOwnedClass 404/403 → root
+  // 404-first → target 404 + subject isolation) and the C1/C3 strings;
+  // the route carries only the shell, the param laws and the error map.
+  // NO archived-class gate: the 409 is a write gate (F-072 law) — a
+  // teacher may inspect a past class's readiness. The KnowledgeDeps shape
+  // IS a ForesightsDeps (engine optional → the paper defaults + the frozen
+  // CONFIG 0.45/2 — C6, zero new tuning at the route layer).
+  r.get("/:classId/foresights", async (c) => {
+    const gate = requireRole(c, "TEACHER", "ADMIN");
+    if (gate instanceof Response) return gate;
+    const classId = c.req.param("classId");
+    if (!UUID_RE.test(classId)) {
+      return c.json(apiError(400, "bad_request", "malformed request"), 400);
+    }
+    const root = uuidQueryOf(c, "rootId");
+    if (!root.ok) return root.response;
+    const node = uuidQueryOf(c, "nodeId");
+    if (!node.ok) return node.response;
+    try {
+      return c.json(
+        await classForesights(deps, gate.userId, classId, root.value, node.value),
         200,
       );
     } catch (e) {

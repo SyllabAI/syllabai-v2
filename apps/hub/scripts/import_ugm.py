@@ -291,6 +291,43 @@ Sources of record (course cie-a-level-maths-20-pure-1, eight UGM lanes):
     all riding fresh bodies. Figure plane unchanged: figures=0 honestly
     (the map of record predates the lane; the fresh bodies carry no map
     rows and no placeholders).
+  - lane 18 (T-UGM-HUB-CONSUME-P2 — the FIRST lane on a THIRD course
+    plane, corpus PR #226 merged of record at 3b2ce8da): content/
+    cie-a-level-maths-20-pure-2/ugm-resources.json — CIE 9709 Pure 2 in
+    FULL (spec points 2.1.1–2.6.3, 17 codes, the 2023-2025 syllabus PDF
+    of record sha1 997e5a9f), the COURSE-PLANE SERVE LAW's debut shape:
+    the T-UGM-P2-1 corpus lane is byref-only (no capture dirs, MANIFEST
+    untouched — the #55 sibling law), so the plane serves ZERO fresh
+    bodies and EVERY aligned row is a cross-course twin join whose text
+    of record lives under an earlier plane's capture dir (pure-1/pure-3),
+    named by the row's textOfRecordUnder. The lane-9 law is evolved for
+    the plane: a cross-course row joins BY REFERENCE when the OWNING
+    course already serves the body under shared spec facts — but the P2
+    twin codes (2.x.y) are facts NO other bundle carries, so the plane
+    SERVES the of-record bodies under pure-2: the byte-true text is read
+    from the capture dir of record (sha256 vs MANIFEST v2 audited),
+    embedded with textOfRecordUnder + servedFromCourse provenance, and
+    indexed at the P2 codes. Zero corpus text moves; 166 rows = 161
+    one_to_many twin joins (incl. the 2.1.2 three-bullet merge delivering
+    27 bodies and the two standing-home trapezium joins r6592/r7912 whose
+    station-less rows resolve to their front-matter UGM station,
+    introducing-calculus — the corpus's "?" sweep bucket, disclosed) + 5
+    trapezium flips (approximating-areas/r5642/r7903/r8140/
+    underneath-the-arches — beyond-spec of record under P1/P3, realized
+    by the P2-unique 2.5.3); 178 index claims across 17 codes; the ONE
+    byref companion disclosure rides nonOverlapByReference (r5324, the
+    capture-gap companion — bodyImported=false of record, never forced);
+    the depth-guard hold (integral-chasing-2 @ 2.5.1, by parts) stays
+    corpus-side of record. Fresh-only psp counting (the lane-16 law):
+    every psp block ships resources [] with primaryPick resolving to its
+    served row (the r6018 pick law, every pick now riding a SERVED body).
+    Figure plane: run-scoped — 33 of the served bodies carry figures-map
+    rows (147 refs / 123 assets, all already committed under
+    public/ugm-assets by the P1/P3 runs; the copy re-verifies sha256).
+    stationScope of record is a STRING list (the lane-17 list-shape law
+    grows a string form) with the integration lane's "?" sweep bucket
+    dropped loudly (it holds exactly the two station-less standing-home
+    rows, whose stations resolve via front-matter).
 
 Output: content/<lane>/ugm-resources.json, schema
 "syllabai-demo.ugm-lane-resources/1.1" (multi-lane) — per-spec-point resource
@@ -363,7 +400,21 @@ ENRICHMENT_SCHEMA = "syllabai.ugm-spec-enrichment/1.0"
 # lane-17 PR touches the new enrichment + the shared MANIFEST lane-17 block +
 # both READMEs + LEDGER only — verified pin-to-pin; the strictly-additive law
 # holds; the prior lane-16 pin 51630517 → c8b80c6a is superseded).
-DEFAULT_REF = "main@c0d12159325de18c549a32842ebd72e13f057f53"
+# T-UGM-HUB-CONSUME-P2: pin advanced past lane 18 (T-UGM-P2-1, corpus
+# PR #226, merge 3b2ce8da700b80f51700fb34fc721c90d6654d6b — the Pure 2
+# COURSE-PLANE lane of record): 6 enrichment files (algebra 31 / logs-exp 39 /
+# trigonometry 28 / differentiation 41 / integration 20 + 1 byref companion /
+# numerical 7 rows), 166 cross-course twin-join rows over the pure-1/pure-3
+# capture dirs (161 one_to_many + 5 trapezium flips), 17/17 spec points
+# covered, zero corpus files added (MANIFEST untouched — the #55 sibling
+# law; the capture lanes 1-17 keep byte-identical MANIFEST v2 blocks, so the
+# served bodies still audit against their owning lanes' blob identities).
+# reviewed ALL GREEN of record: PR #226 CI sync 1/1 green at head 71868db1,
+# mergeable clean, merged under the operator order trace 1a189581eea41f79
+# ("Merge -> T-UGM-HUB-CONSUME-P2") at 3b2ce8da with first-parent ancestry
+# 0b201a74 + 71868db1 verified; the strictly-additive law holds (the merge
+# diff is exactly the lane's 8 files +4112).
+DEFAULT_REF = "main@3b2ce8da700b80f51700fb34fc721c90d6654d6b"
 DEFAULT_LANE = "cie-a-level-maths-20-pure-1"
 
 # T-UGM-HUB-CONSUME-8a: the figure map + assets of record (corpus PR #107)
@@ -475,7 +526,7 @@ LANE_STATIONS = {
             "laneTitle": "Differentiation",
             "stations": [
                 {"slug": "introducing-calculus", "title": "Introducing Calculus"},
-                {"slug": "calculus-of-powers", "title": "Calculus Of Powers"},
+                {"slug": "calculus-of-powers", "title": "Calculus of Powers"},
                 {"slug": "chain-rule", "title": "Chain Rule"},
                 {"slug": "calculus-meets-functions", "title": "Calculus Meets Functions"},
                 {"slug": "calculus-trig-log", "title": "Calculus Trig Log"},
@@ -888,16 +939,149 @@ LANE_STATIONS = {
             "expected": {"resources": 0, "rows": 0, "aligned": 0, "nonOverlap": 1},
         },
     ],
+    # T-UGM-HUB-CONSUME-P2: the pure-2 course plane — CIE 9709 Pure 2 in
+    # FULL (17 spec points 2.1.1–2.6.3), the FIRST lane on a THIRD course
+    # plane and the debut of the COURSE-PLANE SERVE LAW. The corpus lane
+    # T-UGM-P2-1 (PR #226) is byref-only: no capture dirs exist (MANIFEST
+    # untouched), every aligned row is a cross-course twin join whose text
+    # of record lives under a pure-1/pure-3 capture dir. The plane SERVES
+    # those of-record bodies under pure-2 (the 2.x.y codes are facts no
+    # other bundle carries) — the blocks declare `coursePlane: True`, NO
+    # res_dir, and expected.resources = the lane's unique served slugs
+    # (expected.rows = the lane's index claims). The integration lane's
+    # stationScope carries the corpus's "?" sweep bucket (the two
+    # station-less standing-home rows r6592/r7912) — dropped loudly at the
+    # hub boundary; both rows resolve to their front-matter UGM station
+    # (introducing-calculus), which the block declares.
+    "cie-a-level-maths-20-pure-2": [
+        {
+            "coursePlane": True,
+            "laneSlug": "algebra",
+            "laneTitle": "Algebra",
+            "stations": [
+                {"slug": "combining-functions", "title": "Combining Functions"},
+                {"slug": "polynomials", "title": "Polynomials & Rational Functions"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+                {"slug": "thinking-about-functions", "title": "Thinking about Functions"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-2-algebra.json",
+            "ledger": "LEDGER.md — T-UGM-P2-1 (PR #226, the Pure 2 course-plane lane)",
+            # 31 served rows (27 of them the 2.1.2 three-bullet merge, 5 ×
+            # 2.1.1, plus the 2.1.2 companions); claims 33 = 31 + the two
+            # two-code rows (the lane-2/3 strays joining beside standing
+            # homes).
+            "expected": {"resources": 31, "rows": 33, "aligned": 0, "nonOverlap": 0, "crossLaneAligned": 31},
+        },
+        {
+            "coursePlane": True,
+            "laneSlug": "logarithmic-and-exponential-functions",
+            "laneTitle": "Logarithmic and exponential functions",
+            "stations": [
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "combining-functions", "title": "Combining Functions"},
+                {"slug": "exp-and-log", "title": "Exponentials & Logarithms"},
+                {"slug": "sequences", "title": "Sequences"},
+                {"slug": "thinking-about-algebra", "title": "Thinking about Algebra"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-2-logarithmic-and-exponential-functions.json",
+            "ledger": "LEDGER.md — T-UGM-P2-1 (PR #226, the Pure 2 course-plane lane)",
+            "expected": {"resources": 39, "rows": 41, "aligned": 0, "nonOverlap": 0, "crossLaneAligned": 39},
+        },
+        {
+            "coursePlane": True,
+            "laneSlug": "trigonometry",
+            "laneTitle": "Trigonometry",
+            "stations": [
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "trigonometry-compound-angles", "title": "Trigonometry: Compound Angles"},
+                {"slug": "trigonometry-triangles-to-functions", "title": "Trigonometry: Triangles to Functions"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-2-trigonometry.json",
+            "ledger": "LEDGER.md — T-UGM-P2-1 (PR #226, the Pure 2 course-plane lane)",
+            "expected": {"resources": 28, "rows": 29, "aligned": 0, "nonOverlap": 0, "crossLaneAligned": 28},
+        },
+        {
+            "coursePlane": True,
+            "laneSlug": "differentiation",
+            "laneTitle": "Differentiation",
+            "stations": [
+                {"slug": "calculus-of-powers", "title": "Calculus of Powers"},
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-2-differentiation.json",
+            "ledger": "LEDGER.md — T-UGM-P2-1 (PR #226, the Pure 2 course-plane lane)",
+            "expected": {"resources": 41, "rows": 42, "aligned": 0, "nonOverlap": 0, "crossLaneAligned": 41},
+        },
+        {
+            "coursePlane": True,
+            "laneSlug": "integration",
+            "laneTitle": "Integration",
+            "stations": [
+                {"slug": "calculus-trig-log", "title": "Calculus of Trigonometry & Logarithms"},
+                {"slug": "chain-rule", "title": "Chain Rule & Integration by Substitution"},
+                {"slug": "introducing-calculus", "title": "Introducing Calculus"},
+                {"slug": "product-rule", "title": "Product Rule & Integration by Parts"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-2-integration.json",
+            "ledger": "LEDGER.md — T-UGM-P2-1 (PR #226, the Pure 2 course-plane lane)",
+            # 20 served rows = 15 one_to_many + the FIVE trapezium flips of
+            # record (approximating-areas / r5642 / r7903 / r8140 /
+            # underneath-the-arches — beyond-spec routings under the P1/P3
+            # plane, realized by the P2-unique 2.5.3); claims 23; the ONE
+            # byref companion (r5324, capture gap) rides nonOverlapByReference.
+            "expected": {"resources": 20, "rows": 23, "aligned": 0, "nonOverlap": 1, "crossLaneAligned": 20},
+        },
+        {
+            "coursePlane": True,
+            "laneSlug": "numerical-solution-of-equations",
+            "laneTitle": "Numerical solution of equations",
+            "stations": [
+                {"slug": "calculus-of-powers", "title": "Calculus of Powers"},
+                {"slug": "circles", "title": "Circles"},
+                {"slug": "exp-and-log", "title": "Exponentials & Logarithms"},
+                {"slug": "geometry-of-equations", "title": "Geometry of Equations"},
+                {"slug": "polynomials", "title": "Polynomials & Rational Functions"},
+                {"slug": "sequences", "title": "Sequences"},
+                {"slug": "thinking-about-numbers", "title": "Thinking about Numbers"},
+            ],
+            "enrichment": "UGM-Enrichment/cie-a-level-maths-20-pure-2-numerical-solution-of-equations.json",
+            "ledger": "LEDGER.md — T-UGM-P2-1 (PR #226, the Pure 2 course-plane lane)",
+            "expected": {"resources": 7, "rows": 10, "aligned": 0, "nonOverlap": 0, "crossLaneAligned": 7},
+        },
+    ],
 }
 
 # T-UGM-HUB-CONSUME-9: res_dir basename → course key, for the cross-course
 # join law (a crossLaneAligned row whose textOfRecordUnder names another
 # course's lane dir joins BY REFERENCE instead of failing).
+# T-UGM-HUB-CONSUME-P2: course-plane blocks declare NO res_dir (the byref
+# course-plane shape) — they contribute no capture dir and are skipped here;
+# the pure-2 supply dirs are the pure-1/pure-3 capture dirs of record.
 COURSE_OF_DIR = {
     os.path.basename(lb["res_dir"]): course
     for course, blocks in LANE_STATIONS.items()
     for lb in blocks
+    if lb.get("res_dir")
 }
+
+# T-UGM-HUB-CONSUME-P2: the UGM station catalog of record — every station
+# slug the corpus capture lanes declare, with its site title. The course-plane
+# lane blocks (no capture dirs of their own) declare their swept stations
+# against this catalog; unknown slugs fail closed. Title resolution: the LAST
+# declaration wins — the course-plane-era lane blocks (9+) carry the UGM
+# site titles of record ("Calculus of Trigonometry & Logarithms", not the
+# lane-7 shorthand "Calculus Trig Log"); the earliest forms are the legacy
+# shorthand of the first capture lanes.
+STATION_CATALOG = {}
+for _course, _blocks in LANE_STATIONS.items():
+    for _lb in _blocks:
+        if _lb.get("res_dir") and _lb.get("stations"):
+            for _s in _lb["stations"]:
+                STATION_CATALOG[_s["slug"]] = _s["title"]
+        elif _lb.get("res_dir") and _lb.get("station"):
+            STATION_CATALOG[_lb["station"]] = _lb["title"]
 
 
 def fail(msg):
@@ -916,7 +1100,11 @@ def import_lane(repo, lane_block, course):
     Lane blocks come in two shapes: single-station (lanes 1-2: `station` +
     `title`) and multi-station (lane 3+: `laneSlug` + `laneTitle` +
     `stations[]`, audited against the enrichment's stationScope block).
+    T-UGM-HUB-CONSUME-P2 adds the third shape: course-plane byref lanes
+    (`coursePlane: True`, no res_dir — the pure-2 twin-join serve law).
     """
+    if lane_block.get("coursePlane"):
+        return _import_course_plane_lane(repo, lane_block, course)
     station = lane_block.get("station") or lane_block["laneSlug"]
     st_slugs = [s["slug"] for s in lane_block.get("stations") or [{"slug": station}]]
     exp = lane_block["expected"]
@@ -1261,6 +1449,328 @@ def import_lane(repo, lane_block, course):
     }
 
 
+def _import_course_plane_lane(repo, lane_block, course):
+    """T-UGM-HUB-CONSUME-P2: the COURSE-PLANE SERVE LAW (first of record).
+
+    A course-plane lane declares NO res_dir and serves ZERO fresh bodies:
+    every aligned row of record is a cross-course twin join (the T-UGM-P2-1
+    corpus lane) whose text of record lives under an earlier plane's capture
+    dir (pure-1/pure-3), named by the row's textOfRecordUnder. The plane
+    SERVES those of-record bodies under this course — the row's P2 codes are
+    facts no other bundle carries — reading the byte-true text from the
+    capture dir and embedding it with full provenance (textOfRecordUnder +
+    servedFromCourse). Zero corpus text moves.
+
+    Fail-closed audits: enrichment schema/review_state/coverage (fresh-only
+    counting: aligned 0, nonOverlap = the byref companion rows), the
+    stationScope string-list law (catalog titles; the "?" sweep bucket
+    dropped loudly and only when it holds exactly the station-less rows),
+    the stationBreakdown aggregate census, the expected census shape, per-row
+    corpus identity (path under a KNOWN capture dir of ANOTHER course,
+    sha256 vs MANIFEST v2, front-matter ugm_id/station/source-url, body-H1
+    title equality, delimiter balance), the fresh-only psp shape (resources
+    [] with a primaryPick string), (slug, code) uniqueness within the lane,
+    and the rider law (a row lives in the lane owning its FIRST code; its
+    sibling-code claims are validated against the sibling coursePlane lanes'
+    psp and reconciled at run level in main()).
+    """
+    station = lane_block["laneSlug"]
+    st_slugs = [s["slug"] for s in lane_block["stations"]]
+    exp = lane_block["expected"]
+
+    # ── 1. enrichment facts of record (fresh-only counting) ─────────────
+    enr_path = os.path.join(repo, lane_block["enrichment"])
+    with open(enr_path, encoding="utf-8") as fh:
+        enr = json.load(fh)
+    if enr.get("schema") != ENRICHMENT_SCHEMA:
+        fail(f"[{station}] enrichment schema {enr.get('schema')!r} != {ENRICHMENT_SCHEMA}")
+    if enr.get("review_state", {}).get("state") != "SUGGESTED":
+        fail(f"[{station}] enrichment review_state is not SUGGESTED — refuse to import as if it were")
+    cov = enr.get("coverage", {})
+    cla = enr.get("crossLaneAligned") or []
+    nonov = enr.get("nonOverlapRows") or []
+    psp = enr.get("perSpecPoint") or {}
+    if not cla:
+        fail(f"[{station}] a course-plane lane must serve its twin joins of record")
+    if cov.get("aligned") != exp["aligned"] or cov.get("nonOverlap") != exp["nonOverlap"]:
+        fail(f"[{station}] enrichment coverage {cov.get('aligned')}/{cov.get('nonOverlap')} "
+             f"!= expected {exp['aligned']}/{exp['nonOverlap']}")
+    if cov.get("aligned") != 0:
+        fail(f"[{station}] coverage.aligned {cov.get('aligned')} != 0 — the course-plane law serves ZERO fresh bodies")
+    clc = cov.get("crossLaneCoverage") or {}
+    if clc.get("crossLaneAligned") != len(cla) or exp.get("crossLaneAligned") != len(cla):
+        fail(f"[{station}] crossLaneCoverage {clc.get('crossLaneAligned')}/expected "
+             f"{exp.get('crossLaneAligned')} != CLA rows {len(cla)}")
+
+    # ── 1b. the stationScope string-list law + the "?" sweep bucket ─────
+    ss_stations = (enr.get("stationScope") or {}).get("stations")
+    if not isinstance(ss_stations, list) or not ss_stations:
+        fail(f"[{station}] course-plane lane but enrichment carries no stationScope.stations")
+    unknown = sorted({s for s in ss_stations if s != "?" and s not in STATION_CATALOG})
+    if unknown:
+        fail(f"[{station}] stationScope slugs outside the station catalog: {unknown}")
+    if sorted(s for s in ss_stations if s != "?") != sorted(st_slugs):
+        fail(f"[{station}] stationScope {sorted(s for s in ss_stations if s != '?')} "
+             f"!= lane block {sorted(st_slugs)}")
+    for s in lane_block["stations"]:
+        if STATION_CATALOG.get(s["slug"]) != s["title"]:
+            fail(f"[{station}] lane block title drift for {s['slug']}: "
+                 f"{s['title']!r} != catalog {STATION_CATALOG.get(s['slug'])!r}")
+    qmark = "?" in ss_stations
+    sb = cov.get("stationBreakdown")
+    if not isinstance(sb, dict) or not sb:
+        fail(f"[{station}] course-plane lane carries no stationBreakdown census")
+    sb_cla = sum(v.get("crossLaneAligned", 0) for v in sb.values())
+    sb_nono = sum(v.get("nonOverlap", 0) for v in sb.values())
+    sb_res = sum(v.get("resources", 0) for v in sb.values())
+    if sb_cla != len(cla):
+        fail(f"[{station}] stationBreakdown crossLaneAligned sum {sb_cla} != CLA rows {len(cla)}")
+    # T-UGM-HUB-CONSUME-P2 disclosure law: the corpus stationBreakdown of
+    # record attributes the twin joins per station but NOT the byref
+    # companions (integration's r5324 rides coverage-level only) — the sum
+    # must never EXCEED the byref rows; a shortfall is disclosed loudly.
+    if sb_nono > len(nonov):
+        fail(f"[{station}] stationBreakdown nonOverlap sum {sb_nono} exceeds byref rows {len(nonov)}")
+    if sb_nono < len(nonov):
+        print(f"    [byref] {len(nonov) - sb_nono} byref companion(s) ride coverage-level "
+              f"(not attributed per-station in the corpus stationBreakdown of record)")
+    if sb_res > cov.get("ugmResourcesConsidered"):
+        fail(f"[{station}] stationBreakdown resources sum {sb_res} exceeds "
+             f"ugmResourcesConsidered {cov.get('ugmResourcesConsidered')}")
+    if sb_res < cov.get("ugmResourcesConsidered"):
+        print(f"    [sweep] {cov.get('ugmResourcesConsidered') - sb_res} considered candidate(s) ride "
+              f"coverage-level (not attributed per-station in the corpus stationBreakdown of record)")
+    for s in st_slugs:
+        if s not in sb:
+            fail(f"[{station}] no stationBreakdown entry for {s}")
+    if qmark:
+        q = sb.get("?") or {}
+        stationless = sum(1 for r in cla if not r.get("station"))
+        if q.get("resources") != stationless:
+            fail(f"[{station}] the '?' sweep bucket ({q.get('resources')}) does not hold exactly "
+                 f"the station-less rows ({stationless}) — refusing to drop it silently")
+        print(f"    [?] sweep bucket dropped loudly: {q.get('resources')} station-less row(s) "
+              f"resolve via their front-matter UGM station")
+
+    # ── 2. the expected census shape ─────────────────────────────────────
+    unique_slugs = {r.get("ugmSlug") for r in cla}
+    if exp.get("resources") != len(unique_slugs):
+        fail(f"[{station}] expected.resources {exp.get('resources')} != unique served slugs {len(unique_slugs)}")
+    if exp.get("nonOverlap") != len(nonov):
+        fail(f"[{station}] expected.nonOverlap {exp.get('nonOverlap')} != byref rows {len(nonov)}")
+    for r in nonov:
+        if r.get("bodyImported") is not False:
+            fail(f"[{station}] course-plane non-overlap must ride bodyImported=false: {r.get('ugmSlug')!r}")
+
+    # ── 3. the fresh-only psp shape + the sibling rider map ─────────────
+    for c, block in sorted(psp.items()):
+        if block.get("resources"):
+            fail(f"[{station}] {c}: psp resources non-empty — the fresh-only psp counting law")
+        if not block.get("primaryPick"):
+            fail(f"[{station}] {c}: primaryPick must name its served row of record "
+                 f"(a course-plane lane carries no honest gaps)")
+    sibling_picks = {}
+    for lb in LANE_STATIONS[course]:
+        if lb is lane_block or not lb.get("coursePlane"):
+            continue
+        with open(os.path.join(repo, lb["enrichment"]), encoding="utf-8") as fh:
+            sib = json.load(fh)
+        for c, block in (sib.get("perSpecPoint") or {}).items():
+            sibling_picks[c] = (block or {}).get("primaryPick")
+
+    # ── 4. resolve every served body of record ───────────────────────────
+    manifest = json.load(open(os.path.join(repo, "UGM-Resources", "MANIFEST.json"), encoding="utf-8"))
+    mf_by_path = {}
+    if manifest.get("manifest_version") == 2:
+        for lbm in manifest.get("lanes", []):
+            for e in lbm.get("files", []):
+                mf_by_path[e.get("path") or e.get("file") or e.get("name")] = e
+    parsed = {}
+    claims = set()
+    own_codes = set(psp)
+    for r in cla:
+        slug = r.get("ugmSlug")
+        rel = r.get("textOfRecordUnder") or ""
+        m = re.match(r"UGM-Resources/([^/]+)/", rel)
+        if not m:
+            fail(f"[{station}] {slug}: textOfRecordUnder {rel!r} is not a corpus capture path")
+        supplier_course = COURSE_OF_DIR.get(m.group(1))
+        if not supplier_course:
+            fail(f"[{station}] {slug}: capture dir {m.group(1)!r} is not a declared course lane dir")
+        if supplier_course == course:
+            fail(f"[{station}] {slug}: textOfRecordUnder names THIS course's capture dir — "
+                 f"the course-plane law serves other planes' bodies of record")
+        full = os.path.join(repo, rel)
+        if not os.path.exists(full):
+            fail(f"[{station}] {slug}: body of record missing: {rel}")
+        entry = mf_by_path.get(rel[len("UGM-Resources/"):])
+        if entry is None:
+            fail(f"[{station}] {slug}: body path not in MANIFEST v2: {rel}")
+        h = hashlib.sha256(open(full, "rb").read()).hexdigest()
+        if entry.get("sha256") != h:
+            fail(f"[{station}] {slug}: sha256 mismatch vs MANIFEST v2: {rel}")
+        text = open(full, encoding="utf-8").read()
+        fm_m = FM_RE.match(text)
+        if not fm_m:
+            fail(f"[{station}] {slug}: no front-matter: {rel}")
+        fm = yaml.safe_load(fm_m.group(1))
+        body = text[fm_m.end():]
+        ri = fm.get("resource_identity") or {}
+        if ri.get("ugm_id") != slug:
+            fail(f"[{station}] {slug}: front-matter ugm_id {ri.get('ugm_id')!r} drift")
+        fst = ri.get("station")
+        if not fst:
+            fail(f"[{station}] {slug}: the serve law requires the front-matter UGM station: {rel}")
+        if fst not in st_slugs:
+            fail(f"[{station}] {slug}: front-matter station {fst!r} not declared {sorted(st_slugs)}")
+        if r.get("station") is not None and r.get("station") != fst:
+            fail(f"[{station}] {slug}: row station {r.get('station')!r} != front-matter station {fst!r}")
+        if (fm.get("source") or None) != (r.get("url") or None):
+            fail(f"[{station}] {slug}: row url {r.get('url')!r} != front-matter source {fm.get('source')!r}")
+        h1m = re.search(r"^# (.+)$", body, re.M)
+        h1 = h1m.group(1).strip() if h1m else None
+        if not h1 or re.sub(r"\s+", " ", h1) != re.sub(r"\s+", " ", r.get("title") or ""):
+            fail(f"[{station}] {slug}: body H1 {h1!r} != row title {r.get('title')!r}")
+        if body.count(r"\(") != body.count(r"\)") or body.count(r"\[") != body.count(r"\]"):
+            fail(f"[{station}] {slug}: delimiter imbalance in {rel}")
+        if not body.strip():
+            fail(f"[{station}] {slug}: empty body: {rel}")
+        codes = r.get("codes") or []
+        if not codes:
+            fail(f"[{station}] {slug}: a course-plane row must claim its P2 codes")
+        row_own, row_riders = [], []
+        for c in codes:
+            if (slug, c) in claims:
+                fail(f"[{station}] {slug}: code {c} claimed twice within the lane")
+            claims.add((slug, c))
+            if c in own_codes:
+                row_own.append(c)
+            elif c in sibling_picks:
+                row_riders.append(c)
+            else:
+                fail(f"[{station}] {slug}: code {c} is neither this lane's nor a sibling "
+                     f"coursePlane lane's psp code of record")
+        if not row_own:
+            fail(f"[{station}] {slug}: the filing law requires the row to live in the lane "
+                 f"owning its FIRST P2 code")
+        if slug in parsed:
+            fail(f"[{station}] {slug}: two CLA rows within the lane")
+        parsed[slug] = {
+            "station": fst,
+            "title": r.get("title"),
+            "url": r.get("url"),
+            "resourceType": (_tag_prefix(fm, "type/") or "").replace("type/", ""),
+            "resourceTypeLabel": ri.get("resource_type_label"),
+            "level": ri.get("level"),
+            "supplierCourse": supplier_course,
+            "textOfRecordUnder": rel,
+            "bodyMd": body,
+            "row": r,
+            "own_codes": row_own,
+            "rider_codes": row_riders,
+        }
+
+    # ── 5. served resources + the spec index (own claims; riders ride) ──
+    resources = []
+    for slug in sorted(parsed):
+        p = parsed[slug]
+        r = p["row"]
+        sp_rows = []
+        for code in p["own_codes"] + p["rider_codes"]:
+            pick = psp[code].get("primaryPick") if code in own_codes else sibling_picks.get(code)
+            sp_rows.append({
+                "code": code,
+                "confidence": r.get("confidence"),
+                "primaryPick": pick == slug,
+                "note": r.get("note"),
+                "modesRecorded": r.get("modesRecorded") or [],
+            })
+        pk = [s["code"] for s in sp_rows if s["primaryPick"]]
+        if len(pk) != len(set(pk)):
+            fail(f"[{station}] {slug}: primaryPick flagged twice under the same code")
+        resources.append({
+            "ugmId": slug,
+            "slug": slug,
+            "station": p["station"],
+            "title": p["title"],
+            "url": p["url"],
+            "resourceType": p["resourceType"],
+            "resourceTypeLabel": p["resourceTypeLabel"],
+            "level": p["level"],
+            "hasTeacherSupport": bool(r.get("hasTeacherSupport")),
+            "nonOverlap": False,
+            "specPoints": sp_rows,
+            "bodyMd": p["bodyMd"],
+            # T-UGM-HUB-CONSUME-P2 provenance: the text of record stays
+            # first-of-record under the capture dir (zero corpus text moves)
+            "textOfRecordUnder": p["textOfRecordUnder"],
+            "servedFromCourse": p["supplierCourse"],
+        })
+
+    spec_points, rider_claims = [], []
+    total_claims = 0
+    for code, block in sorted(psp.items(), key=lambda kv: spec_code_key(kv[0])):
+        ids = sorted(slug for slug in parsed if code in parsed[slug]["own_codes"])
+        spec_points.append({
+            "code": code,
+            "officialText": block.get("officialText"),
+            "primaryPick": block.get("primaryPick"),
+            "resourceCount": len(ids),
+            "ugmIds": ids,
+        })
+        total_claims += len(ids)
+    for slug in sorted(parsed):
+        for c in parsed[slug]["rider_codes"]:
+            rider_claims.append((c, slug))
+            total_claims += 1
+    if total_claims != exp["rows"]:
+        fail(f"[{station}] claim census {total_claims} "
+             f"(own {total_claims - len(rider_claims)} + riders {len(rider_claims)}) "
+             f"!= expected rows {exp['rows']}")
+
+    # ── 6. byref companion disclosures (the r5324 law, unchanged) ───────
+    nonoverlap_byref = []
+    for r in nonov:
+        nonoverlap_byref.append({
+            "ugmSlug": r.get("ugmSlug"),
+            "station": r.get("station"),
+            "title": r.get("title"),
+            "url": r.get("url"),
+            "reason": r.get("reason"),
+        })
+
+    n = exp["resources"]
+    if len(resources) != n:
+        fail(f"[{station}] served census {len(resources)} != {n}")
+
+    cov_lane = {
+        "station": station,
+        "stationTitle": lane_block.get("laneTitle", station),
+        "ugmResourcesConsidered": cov.get("ugmResourcesConsidered"),
+        "aligned": cov.get("aligned"),
+        "nonOverlap": cov.get("nonOverlap"),
+        "alignedShare": cov.get("alignedShare"),
+        "candidateRows": total_claims,
+        "crossLaneAligned": len(cla),
+    }
+    stations_ref = [{"slug": s["slug"], "title": s["title"], "url": None}
+                    for s in lane_block["stations"]]
+    print(f"    [{station}] course-plane serve: {len(resources)} of-record bodies "
+          f"({total_claims} claims, {len(rider_claims)} sibling riders), "
+          f"{len(nonoverlap_byref)} byref companion(s)")
+    return {
+        "stations": stations_ref,
+        "resources": resources,
+        "spec_points": spec_points,
+        "coverage": cov_lane,
+        "enr": enr,
+        "lb": lane_block,
+        "nonoverlap_byref": nonoverlap_byref,
+        "_rider_claims": rider_claims,
+        "_course_plane": True,
+    }
+
+
 def _fig_alt(caption):
     """Alt text for the injected image line: the map caption, md-attribute safe."""
     t = re.sub(r"\s+", " ", caption or "").strip()
@@ -1494,6 +2004,28 @@ def main():
     if len(resources) != sum(lb["expected"]["resources"] for lb in lane_blocks):
         fail("merged resource census mismatch")
 
+    # ── T-UGM-HUB-CONSUME-P2: the course-plane rider reconciliation ──────
+    # A CLA row lives in the lane owning its FIRST P2 code (the corpus filing
+    # law); sibling-code claims ride the row. Append each rider claim to the
+    # owning lane's index entry, then re-audit the pick law at run level
+    # (the r6018 law: every pick must resolve to a SERVED row of record).
+    if any(p.get("_course_plane") for p in parts):
+        for p in parts:
+            for code, slug in p.get("_rider_claims") or []:
+                idx = next((sp for sp in spec_points if sp["code"] == code), None)
+                if idx is None:
+                    fail(f"[course-plane] rider code {code} has no index entry of record")
+                if slug in idx["ugmIds"]:
+                    fail(f"[course-plane] rider double-claim {slug!r}@{code}")
+                idx["ugmIds"].append(slug)
+        for p in parts:
+            if not p.get("_course_plane"):
+                continue
+            for sp in p["spec_points"]:
+                if sp["primaryPick"] is not None and sp["primaryPick"] not in sp["ugmIds"]:
+                    fail(f"[course-plane] {sp['code']}: primaryPick {sp['primaryPick']!r} "
+                         f"does not resolve to a served row after the rider reconciliation")
+
     # ── cross-lane join (T-UGM-HUB-CONSUME-4, strand lanes) ─────────────
     # A strand lane (lane 4+) may carry crossLaneAligned / crossLaneNonOverlap
     # in its enrichment: mappings for resources whose TEXT of record lives
@@ -1526,6 +2058,12 @@ def main():
         # in-run + by-reference rows — a course run may span several lanes).
         p["_cc_inrun"] = 0
         p["_cc_cross"] = 0
+        # T-UGM-HUB-CONSUME-P2: a course-plane part consumed its CLA rows at
+        # import (the serve law resolved every row to its body of record and
+        # audited the declared crossLaneCoverage there); the by-reference
+        # join below must not re-process them.
+        if p.get("_course_plane"):
+            continue
         if not cla and not cno:
             continue
         own_codes = set(enr["perSpecPoint"].keys())
@@ -1640,7 +2178,15 @@ def main():
             "ref": args.ref,
             "enrichment": [lb["enrichment"] for lb in lane_blocks],
             "enrichmentSchema": ENRICHMENT_SCHEMA,
-            "resourcesDir": [lb["res_dir"] for lb in lane_blocks],
+            "resourcesDir": (
+                # T-UGM-HUB-CONSUME-P2: a course-plane run owns no capture
+                # dirs — the serve reads the of-record bodies from the
+                # pure-1/pure-3 capture dirs named by textOfRecordUnder
+                sorted({os.path.dirname(r["textOfRecordUnder"])
+                        for r in resources if r.get("textOfRecordUnder")})
+                if any(lb.get("coursePlane") for lb in lane_blocks)
+                else [lb["res_dir"] for lb in lane_blocks]
+            ),
             "ledger": "LEDGER.md — " + "; ".join(lb["ledger"] for lb in lane_blocks),
             "adr": "ADR-UGM-0001 as amended 2026-10-23 (syllabai-experimental)",
             "operatorAttestation": "2026-10-24 — text + static figures may ship into SyllabAI; permission declared",
@@ -1741,6 +2287,32 @@ def main():
                  if row.get(k) is not None}
                 for row in crosscourse
             ],
+        }
+
+    # T-UGM-HUB-CONSUME-P2: the course-plane serve census (additive, only
+    # when the run serves a byref course plane) — every served body is a
+    # cross-course twin join resolved to its corpus text of record.
+    if any(p.get("_course_plane") for p in parts):
+        cp_kinds = {}
+        for p in parts:
+            for r in (p.get("enr") or {}).get("crossLaneAligned") or []:
+                k = r.get("kind") or "join"
+                cp_kinds[k] = cp_kinds.get(k, 0) + 1
+        cp_courses = {}
+        for r in resources:
+            c = r.get("servedFromCourse")
+            if c:
+                cp_courses[c] = cp_courses.get(c, 0) + 1
+        bundle["coverage"]["coursePlaneJoins"] = {
+            "count": len(resources),
+            "kinds": cp_kinds,
+            "courses": cp_courses,
+            "byrefNonOverlap": len(byref),
+            "note": ("the course-plane serve law (T-UGM-HUB-CONSUME-P2): every served "
+                     "body's text of record stays first-of-record under its capture-lane "
+                     "dir (pure-1/pure-3) — zero corpus text moves; this plane serves the "
+                     "of-record bodies at its own spec points, each resource carrying "
+                     "textOfRecordUnder + servedFromCourse provenance"),
         }
 
     # ── emit ─────────────────────────────────────────────────────────────

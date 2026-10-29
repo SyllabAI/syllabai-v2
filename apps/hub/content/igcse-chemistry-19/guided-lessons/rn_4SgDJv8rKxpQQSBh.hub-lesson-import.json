@@ -1,12 +1,12 @@
 {
-  "format": "hub/lesson-import/1.2",
-  "adapter": "guided-lesson-0.3--hub-lesson-import-1.2",
+  "format": "hub/lesson-import/1.3",
+  "adapter": "guided-lesson-0.4--hub-lesson-import-1.3",
   "source": {
-    "sourceFormat": "guided-lesson/0.3",
+    "sourceFormat": "guided-lesson/0.4",
     "noteId": "rn_4SgDJv8rKxpQQSBh",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "9c7fbb9e38fd80a9a6640506c60fff0954814b9c800c1f5f62adbf1ad4293964",
-    "pinnedRef": "1ed554ec60fb9c0a41303946312ba50bb0a8834f"
+    "sourceLayerSha256": "04588f007345acfbb778d968e6f341a5a036f39f7a0eca83bfd125c2b1421774",
+    "pinnedRef": "71922d1510ee9e00400667670b40f36e1ae5d456"
   },
   "lesson": {
     "id": "igcse-chemistry::rn_4SgDJv8rKxpQQSBh",
@@ -230,6 +230,7 @@
         "alt": "Diagram of monomers forming a polymer",
         "sourceHeading": "Monomers",
         "caption": "Diagram showing how lots of monomers bond together to form a polymer",
+        "binding": "heading-unique",
         "moduleIds": [
           "L1"
         ]
@@ -239,6 +240,7 @@
         "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4ed1b252996b-7-7-polymerisation-polymers-from-one-alkene-mono.png",
         "alt": "1,2,-dichloroethene and the formation of its polymer",
         "sourceHeading": "Drawing polymers and repeat units from the monomer",
+        "binding": "unresolved",
         "moduleIds": [
           "L2"
         ]
@@ -249,6 +251,7 @@
         "alt": "Diagram showing how to draw the repeat unit from a monomer",
         "sourceHeading": "The monomer & repeat unit",
         "caption": "Diagram showing the concept of drawing a repeat unit of a monomer",
+        "binding": "note-level",
         "moduleIds": []
       },
       {
@@ -257,6 +260,7 @@
         "alt": "Deducing monomer structure from repeat units",
         "sourceHeading": "The repeat unit & monomer",
         "caption": "Diagram showing the monomer of the repeat unit of polymer",
+        "binding": "note-level",
         "moduleIds": []
       }
     ]

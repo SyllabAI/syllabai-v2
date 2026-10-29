@@ -205,7 +205,11 @@ const BAND_LABEL: Record<string, string> = {
  */
 export function classKnowledgeGraphHost(
   view: ClassKnowledgeGraphView,
-  opts?: { onInspectNode?: (nodeId: string) => void },
+  opts?: {
+    onInspectNode?: (nodeId: string) => void;
+    /** T-FORESIGHT-V0-PLAN-1 Stage B — the "Readiness" node action target */
+    onReadinessNode?: (nodeId: string) => void;
+  },
 ): KGXHost {
   const wireById = new Map(view.nodes.map((n) => [n.id, n]));
   // the wire carries the tree as childIds — derive parent pointers once
@@ -385,14 +389,31 @@ export function classKnowledgeGraphHost(
     },
     caption:
       "Member-only aggregation: only this class's enrolled students count — independent students never enter these numbers. Grey/dashed means not yet taught (a teaching-coverage state, NOT a mastery state).",
-    ...(opts?.onInspectNode
+    ...(opts?.onInspectNode || opts?.onReadinessNode
       ? {
           nodeActions: (node: KGXNode): KGXAction[] => [
-            {
-              id: "affected-students",
-              label: "Affected students",
-              onSelect: () => opts.onInspectNode!(node.id),
-            },
+            ...(opts?.onInspectNode
+              ? [
+                  {
+                    id: "affected-students",
+                    label: "Affected students",
+                    onSelect: () => opts.onInspectNode!(node.id),
+                  },
+                ]
+              : []),
+            // T-FORESIGHT-V0-PLAN-1 Stage B: the pre-assignment readiness
+            // prior (foresights/v1) — plan §8's "pick any topic node →
+            // Readiness panel", a second read-only action beside the
+            // §13.5 drill leg. The graph stays a pure projection.
+            ...(opts?.onReadinessNode
+              ? [
+                  {
+                    id: "readiness",
+                    label: "Readiness",
+                    onSelect: () => opts.onReadinessNode!(node.id),
+                  },
+                ]
+              : []),
           ],
         }
       : {}),
