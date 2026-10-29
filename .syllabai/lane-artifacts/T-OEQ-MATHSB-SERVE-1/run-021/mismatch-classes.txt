@@ -1,0 +1,45 @@
+===== official-4mb1-01-2025-06 12 problemMd =====
+  regen (237 ch): 'Solve 4 3 Show clear algebraic working. x = ......................... . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n\nSolve 4 3 Show clear algebraic working. x = ……………Solve 4 3 Show clear algebraic working. x ='
+  plane (92 ch): 'Solve 4 3 Show clear algebraic working. x = ……………Solve 4 3 Show clear algebraic working. x ='
+  diff ops: 1; first 3:
+    delete regen[0:145]='Solve 4 3 Show clear algebraic working. x = ......................... . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .\n\nSolve 4 3 Show clear alge' plane[0:0]='Solve 4 3 Show clear alge'
+
+===== official-4mb1-01r-2026-06 18 problemMd =====
+  regen (754 ch): 'Diagram NOT C accurately drawn (x + 1) cm x cm 20° A B The diagram shows triangle ABC AC x cm BC = x cm ABC BAC 20° Calculate the length, in cm to 2 significant figures, of BC ................................... . . . . . . . . . . . . . . . . . . . . . . . . '
+  plane (342 ch): 'The diagram shows triangle ABC\n\nAC = (x + 1) cm  BC = x cm  ∠ABC = 90°  ∠BAC = 20°\n\nCalculate the length, in cm to 2 significant figures, of BC\n\ncm\n\n> *Figure not shown in this reconstruction — the printed paper includes a diagram (not drawn accurately).*\n> La'
+  diff ops: 2; first 3:
+    delete regen[0:270]='Diagram NOT C accurately drawn (x + 1) cm x cm 20° A B The diagram shows triangle ABC AC x cm BC = x cm ABC BAC 20° Calculate the length, in cm to 2 significant figures, of BC ................................... . . . . . . . . . . . . . . . . . . . . . . . . . . . cm\n\nThe diagram shows triangl' plane[0:0]='The diagram shows triangl'
+    delete regen[612:754]=' · Other figure text: 1).\n\n> *No printed figure accompanies this part — in the paper you would draw the diagram (or label the apparatus) in the answer space provided.*' plane[342:342]=' · Other figure text: 1).'
+
+===== official-4mb1-01r-2026-06 19 solutionMd =====
+  regen (1222 ch): '$3x^2 + 9x = 3x(x+3)$ 4 M1 Correctly factorises $3x^2 + 9x$\nor or\n$2x^2 + 9x + 9 = (2x+3)(x+3)$ factorises $2x^2 + 9x + 9$ correctly\nMay be awarded for factorising after the fractions are added,\nin which case expect to see $3x(x+3)(x-2)$ in the denom\n$\\frac{2x'
+  plane (1236 ch): '$3x^2 + 9x = 3x(x+3)$ 4 M1 Correctly factorises $3x^2 + 9x$\nor or\n$2x^2 + 9x + 9 = (2x+3)(x+3)$ factorises $2x^2 + 9x + 9$ correctly\nMay be awarded for factorising after the fractions are added,\nin which case expect to see $3x(x+3)(x-2)$ in the denom\n$\\frac{2x'
+  diff ops: 1; first 3:
+    insert regen[1222:1222]='^2 - 16x - 6}{3x^2 - 6x}$' plane[1222:1236]='^2 - 16x - 6}{3x^2 - 6x}$\nTotal 4 marks'
+
+===== official-4mb1-01r-2026-06 19 problemMd =====
+  regen (163 ch): 'Express as a single fraction in its simplest terms x 2 3x 2 9 x\n\nExpress as a single fraction in its simplest terms $\\frac{x-5}{x-2}$ + $\\frac{2x^2+9x+9}{3x^2+9x}$'
+  plane (98 ch): 'Express as a single fraction in its simplest terms $\\frac{x-5}{x-2}$ + $\\frac{2x^2+9x+9}{3x^2+9x}$'
+  diff ops: 1; first 3:
+    delete regen[0:65]='Express as a single fraction in its simplest terms x 2 3x 2 9 x\n\nExpress as a single fract' plane[0:0]='Express as a single fract'
+
+===== official-4mb1-01r-2026-06 19 markPoints =====
+  regen (1307 ch): '[{"id": "2026-06-19-MP1", "marks": 4, "textMd": "$3x^2 + 9x = 3x(x+3)$ 4 M1 Correctly factorises $3x^2 + 9x$\\nor or\\n$2x^2 + 9x + 9 = (2x+3)(x+3)$ factorises $2x^2 + 9x + 9$ correctly\\nMay be awarded for factorising after the fractions are added,\\nin which cas'
+  plane (1322 ch): '[{"id": "2026-06-19-MP1", "marks": 4, "textMd": "$3x^2 + 9x = 3x(x+3)$ 4 M1 Correctly factorises $3x^2 + 9x$\\nor or\\n$2x^2 + 9x + 9 = (2x+3)(x+3)$ factorises $2x^2 + 9x + 9$ correctly\\nMay be awarded for factorising after the fractions are added,\\nin which cas'
+
+===== official-4mb1-01r-2026-06 25 solutionMd =====
+  regen (6893 ch): '$\\left[\\overrightarrow{OB}\\right] = \\begin{pmatrix} -8-5\\lambda \\\\ 7+3\\lambda \\end{pmatrix}$ oe eg $\\begin{pmatrix} -8 \\\\ 7 \\end{pmatrix} + \\begin{pmatrix} -5\\lambda \\\\ 3\\lambda \\end{pmatrix}$ eg $\\begin{pmatrix} -8 \\\\ 7 \\end{pmatrix} + \\begin{pmatrix} 5\\lambd'
+  plane (6907 ch): '$\\left[\\overrightarrow{OB}\\right] = \\begin{pmatrix} -8-5\\lambda \\\\ 7+3\\lambda \\end{pmatrix}$ oe eg $\\begin{pmatrix} -8 \\\\ 7 \\end{pmatrix} + \\begin{pmatrix} -5\\lambda \\\\ 3\\lambda \\end{pmatrix}$ eg $\\begin{pmatrix} -8 \\\\ 7 \\end{pmatrix} + \\begin{pmatrix} 5\\lambd'
+  diff ops: 1; first 3:
+    insert regen[6893:6893]='}\\right)$ A1\noe fractions' plane[6893:6907]='}\\right)$ A1\noe fractions\nTotal 5 marks'
+
+===== official-4mb1-01r-2026-06 25 markPoints =====
+  regen (7359 ch): '[{"id": "2026-06-25-MP1", "marks": 5, "textMd": "$\\\\left[\\\\overrightarrow{OB}\\\\right] = \\\\begin{pmatrix} -8-5\\\\lambda \\\\\\\\ 7+3\\\\lambda \\\\end{pmatrix}$ oe eg $\\\\begin{pmatrix} -8 \\\\\\\\ 7 \\\\end{pmatrix} + \\\\begin{pmatrix} -5\\\\lambda \\\\\\\\ 3\\\\lambda \\\\end{pmatrix}$'
+  plane (7374 ch): '[{"id": "2026-06-25-MP1", "marks": 5, "textMd": "$\\\\left[\\\\overrightarrow{OB}\\\\right] = \\\\begin{pmatrix} -8-5\\\\lambda \\\\\\\\ 7+3\\\\lambda \\\\end{pmatrix}$ oe eg $\\\\begin{pmatrix} -8 \\\\\\\\ 7 \\\\end{pmatrix} + \\\\begin{pmatrix} -5\\\\lambda \\\\\\\\ 3\\\\lambda \\\\end{pmatrix}$'
+
+===== official-4mb1-01r-2026-06 27(a) problemMd =====
+  regen (318 ch): 'A regular polygon P has x 2 sides.\n\nA regular polygon P has (x + 2) sides.\n\n(a) Write down, in terms of x, an expression for the size, in degrees, of each exterior angle of P\n\nA regular polygon Q has x sides.\n\nThe size of each exterior angle of polygon Q is 9°'
+  plane (282 ch): 'A regular polygon P has (x + 2) sides.\n\n(a) Write down, in terms of x, an expression for the size, in degrees, of each exterior angle of P\n\nA regular polygon Q has x sides.\n\nThe size of each exterior angle of polygon Q is 9° greater than the size of each exter'
+  diff ops: 1; first 3:
+    delete regen[0:36]='A regular polygon P has x 2 sides.\n\nA regular polygon P has (' plane[0:0]='A regular polygon P has ('
+
