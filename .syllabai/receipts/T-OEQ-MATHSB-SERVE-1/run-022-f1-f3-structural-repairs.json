@@ -64,12 +64,13 @@
   "environmentRecoveryOfRecord": "post-restart clone arrived stale a FOURTH time (local main 4008e6ce t-ops receipt tip, official-papers.json ABSENT, T-OEQ branches unfetched, handoff-summary pins 9883b1f5/a11ad0ccc1923806 unverifiable as objects): fetch-first verified origin/main 28346abe carrying the full run-017..run-021 lane (PRs #423-#446) + sibling lanes; ff-only applied; plane of record verified first-hand f2cbe67ab7d24993 pre-edit (and the pre-run-020 pin 701ae199 reproduced from ce2cffb0^ for the F3 correction); run-020/018 battery + census + gate templates recovered from the fetched origin. Hub node_modules wiped by the recycle: bun install --frozen-lockfile 952 packages restored for the render gate.",
   "credentials": "zero PAT contact this run: mirror fetches + git fetch all unauthenticated/anonymous (syllabai-pastpapers raw @HEAD per PLAYBOOK-CONTENT-QUALITY.md). No PAT in env/GIT_ASKPASS/netrc this session \u2014 push leg expected BLOCKED (run-020 pre-PAT pattern): commit(s) ready on local branch t-oeq-mathsb/run-022; PR -> CI -> merge -> Vercel redeploy -> live spot-check fire mechanically once the operator supplies a fresh PAT (env/GIT_ASKPASS only). The two standing exposed tokens GitHub \u2026JU4 / Vercel vcp_\u2026aoT3 remain ROTATION-REQUIRED before any re-supply (standing order, multiple receipts).",
   "landing": {
-    "branch": "t-oeq-mathsb/run-022",
-    "status": "PUSH-PENDING \u2014 see credentials",
-    "pr": null,
-    "ci": null,
-    "vercel": null,
-    "liveSpotCheck": null
+    "branch": "t-oeq-mathsb/run-022 PUSHED (race-guard merge of origin/main c53e2ed3 into branch = 91f75c8a, clean; fired on operator PAT supply, env/GIT_ASKPASS only)",
+    "pr": "PR #452 (head 91f75c8a) \u2014 https://github.com/SyllabAI/syllabai-v2/pull/452",
+    "ci": "2/2 GREEN (GitHub Actions 'hub' + 'verify' success on head 91f75c8a)",
+    "merge": "52be5b45 merged @ ~14:35Z, merge_method=merge, title 'Merge PR #452: content(4MB1): T-OEQ-MATHSB-SERVE-1 run-022 \u2014 F1-F3 structural repairs (fused/foreign MS blocks; trig bucket 159->158)'",
+    "vercel": "DISCREPANCY OF RECORD \u2014 the only GitHub-side Vercel record on merge sha 52be5b45 is deployment 7415321027 (Production, created 14:40:34Z) 'Canceled from the Vercel Dashboard' (state failure/inactive); its deployment URL (syllabai-hub-v2-rnokvt6ho-syllab-ai.vercel.app) serves a dead 18,751B Vercel error page; re-pulls 14:50Z+ show no additional status/deployment records. PRODUCTION TRUTH: the alias syllabai-hub-v2.vercel.app serves the NEW plane \u2014 corpus endpoint sha16 a794747f1a503e12 EXACT (3,716,237B, probe @14:49:33Z + stable re-probe) \u2014 so a successful deployment of 52be5b45 IS serving production with NO GitHub-side record: event-drop / out-of-band dashboard-deploy class (cf. T-PR-TRIAGE-1 event-drop precedents). OPERATOR FLAG: if no manual dashboard deploy/cancel was performed this session, the Vercel status channel needs investigation. No Vercel token used (API untouched).",
+    "liveSpotCheck": "PASS (content-marker flight-parity pattern, run-019/020 precedent) \u2014 june-2023-4mb1-02: 3/3 positives ['for a quadratic with any value of n seen' = F1 9-b re-homed 935ch block; 'Total 7 marks' = F1 q8 truncated close; 'A1 cas' = q8 tail pair], scoped stub-negative absent-OK (\u00b13000ch around anchor); june-2021-4mb1-02: 3/3 positives ['setting up correct sine rule formula' = F2 10-b re-homed 4525ch blob; 'moving their triangle B' = F2 9-b true 2-mark B1ft block; 'M1 for calculating AC or AB' = F2 11-a prepended p25 fragment], scoped stub-negative absent-OK. Page-wide absence probes avoided per \u00a77 law (sibling-plane over-collect).",
+    "credentials": "fresh GitHub PAT supplied by operator this session -> env/GIT_ASKPASS ONLY (askpass script contains zero token bytes, grep-verified); no config/remote-URL/netrc/gh-hosts contact; Vercel token not supplied, Vercel API untouched; standing ROTATION-REQUIRED re-flagged for BOTH tokens (GitHub \u2026JU4 re-exposed in transit this session; Vercel vcp_\u2026aoT3)"
   },
   "nextSafeActions": [
     "operator PAT supply -> push, PR, CI watch, merge, Vercel redeploy verify, live spot-check (probe pages: /courses/igcse-maths-b-16/past-papers/june-2023-4mb1-02 q8+q9b, june-2021-4mb1-02 q9b+q10b+q11a)",
@@ -83,5 +84,15 @@
     "receipt": ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-022-f1-f3-structural-repairs.json (this file)",
     "evidence": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-022/ = run022_boundaries.py + run022_apply.py + run022_recensus.py + run022_projection.json (8 field-writes old/new) + gs-census-post-run022.json + run022_render_gate.mjs",
     "scriptsMirror": "/home/z/my-project/scripts/run022_*.py"
+  },
+  "landingAddendum": {
+    "date": "2026-10-29T15:0xZ",
+    "scriptsOfRecord": [
+      "scripts/run022_pr_api.py (PR create / CI watch / merge via REST API)",
+      "scripts/run022_spotcheck.py (Vercel status poll + corpus byte probe + page probes)",
+      "scripts/run022_vercel_triage.py (full status/deployments/check-runs detail)",
+      "scripts/run022_extract_markers.py (probe markers from plane of record a794747f1a503e12)"
+    ],
+    "scope": "bookkeeping-only (.syllabai/**): this receipt landing block + worklog entry; fetch-first, ff-only push, no force"
   }
 }

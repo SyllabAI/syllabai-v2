@@ -22369,3 +22369,12 @@ Stage Summary:
 - Lane status since last sweep: #450 merged ad98fb69 (T-SM-ROOT-LAW-1 reland of #352 content, CI 2/2 first-ever judgment), #352 CLOSED superseded-by-reland — the ~128h NO-CI stall case resolved by the reland path of record; #451 merged c53e2ed3 (F117 11(d) markPoints sync); main advanced c53e2ed3 -> af48880e this round
 - Ledger note: lane discloses Vercel PAT lost with sandbox reset (.secrets wiped) — deployment proof moved to GitHub-side commit status; strengthens the standing PAT-rotation escalation
 - Bookkeeping-only: this commit touches .syllabai/worklog.md only; fetch-first, ff-only push, no force
+
+## T-OEQ-MATHSB-SERVE-1 run-022 landing addendum — 2026-10-29T15:00Z+
+- Push leg fired on operator PAT supply (env/GIT_ASKPASS only; askpass file zero token bytes grep-verified; no config/remote-URL/netrc contact)
+- Race-guard: origin/main c53e2ed3 merged into branch pre-push (91f75c8a, clean); pushed t-oeq-mathsb/run-022 -> PR #452
+- CI 2/2 GREEN (hub + verify) on head 91f75c8a; merged 52be5b45 @ ~14:35Z (merge_method=merge, no force)
+- Live spot-check PASS (content-marker flight-parity pattern, run-019/020 precedent): corpus endpoint sha16 a794747f1a503e12 EXACT x2 probes (3,716,237B); june-2023-4mb1-02 3/3 positives (F1 q8 'Total 7 marks' close + 'A1 cas', F1 9-b re-homed block 'for a quadratic with any value of n seen'); june-2021-4mb1-02 3/3 positives (F2 10-b blob 'setting up correct sine rule formula', F2 9-b true block 'moving their triangle B', F2 11-a fragment 'M1 for calculating AC or AB'); scoped stub-negatives absent-OK both pages (±3000ch around anchors; page-wide absence probes avoided per §7 law)
+- VERCEL DISCREPANCY OF RECORD: only GitHub-side record on merge sha = deployment 7415321017-class 7415321027 'Canceled from the Vercel Dashboard' (failure, 14:40:34Z, dead error-page URL, no further records on re-pull) while production alias serves the new plane — serving deployment has NO GitHub-side record; event-drop / out-of-band dashboard-deploy class disclosed; OPERATOR FLAG: if no manual dashboard action this session, investigate the Vercel status channel
+- CRITICAL-OPERATOR: both standing exposed tokens ROTATION-REQUIRED (GitHub …JU4 re-exposed in transit this session; Vercel vcp_…aoT3); no Vercel token used, Vercel API untouched
+- Bookkeeping-only (.syllabai/**): receipt landing block + landingAddendum + this entry; fetch-first, ff-only push, no force
