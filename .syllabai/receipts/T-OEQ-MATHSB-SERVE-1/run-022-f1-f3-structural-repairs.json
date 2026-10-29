@@ -1,0 +1,87 @@
+{
+  "lane": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-022-f1-f3-structural-repairs",
+  "title": "F1-F3 structural repairs: the fused/foreign MS blocks detached and re-homed to their true owner parts (they shrink the trig bucket)",
+  "operatorOrder": "F1\u2013F3 structural repairs (fused/foreign MS blocks \u2014 they shrink the trig bucket)",
+  "operatorTrace": "1a187e0b42de09c1",
+  "session": "web-da4ab8b1-a924-45d1-ae19-04dc343162a6",
+  "date": "2026-10-29",
+  "planeOfRecord": {
+    "before": "f2cbe67ab7d24993",
+    "after": "a794747f1a503e12",
+    "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+  },
+  "dischargeOfRecord": "run-020 residual: 'tranche-2 = the structural filings F1-F3 first (they shrink the trig bucket), then the token-fixable subclass over the 159 with the F5 class-revision menu for the operator' \u2014 the F1-F3 leg discharged verbatim this run; the token-fixable subclass + F5 revision remain queued for the operator.",
+  "method": {
+    "boundaries": "run-022/run022_boundaries.py \u2014 fail-closed extraction module; every boundary signature must occur EXACTLY once; old fields must decompose BYTE-EXACTLY into the moved pieces (zero byte loss/creation law).",
+    "eyesOn": "9 MS pages READ first-hand (150dpi renders): 2023-06 4MB1-02 ms p13 (q8 start row '8 | \u2220ABC = 90\u00b0 | 7 | M1 using circle theorem' = plane bytes), p14 ('Total 7 marks' close; new Qu/Working/Answer/Mark/Notes header; 9(a) 3-mark rows; '(b) (2x\u22123) | 5 | B1 (2x\u22123) seen or used' boundary; main-method close), p15 (ALT (b) block: '(x \u2212 3/2) B1 seen or used', '8x\u00b2 \u00b1 mx \u22124', '8x\u00b2 \u2212 6x \u22124 A1 allow multiples eg 4x\u00b2 \u2212 3x \u22122', x = (3\u00b1\u221a41)/8 \u2014 the plane tail's last line = this page's last ALT row). 2021-06 4MB1-02 ms p16 (q9(b) true block = exactly 2 B1ft rows, '2' marks; q9 Total 10 marks; the blob ABSENT), p20 (Method I preamble + 'Case 1: Finding length AB' + '(b) FE\u00d7FA = FD\u00d7FB oe or 3.5\u00d78.4 = 3.0\u00d7FB oe | M1' \u2014 rows NOT carried by the blob; 'FB = 9.8' A1 row = the blob's head; answer '23' for '5' marks), p21 (Method I Case 2 = blob bytes), p22 (Method I Case 3 close 'with all areas again being 22.8345608\u2026' = blob bytes), p24 (Method II Case 3 close 'A1 (allow 24 or better\u2026) \u2013 For reference: 24.0466585\u2026' + 'Total 10 marks' \u2014 q10(b) END; page otherwise blank), p25 (q11(a) FIRST row: 'M1 for calculating AC or AB - note that use of cosine rule AB\u00b2 = AC\u00b2 + 8\u00b2 \u2212 2(8)(AC)cos35 with AB = AC must simplify to AC cos 35 = 4 or AB cos 35 = 4 before awarding this mark \u2013 for reference: AC (or AB) = 4.883098355\u2026' \u2014 the blob's 2-line fragment = the note's first two lines; the 11-a carrier = the working column + the note's continuation). NO-GUESS held throughout.",
+    "battery": "run-022/run022_apply.py \u2014 clone of tranche-2/run-018/run-019/run-020 fail-closed battery with the mirror law REFINED for the attach class (see gates)."
+  },
+  "structuralRepairs": {
+    "F1_msBlockFusion_2023-06-02_8": {
+      "repair": "q8 solutionMd 3330\u21921816 ch = genuine q8 block only (closes 'Total 7 marks', p13+p14 anchored); markPoints[0] (7 marks) lockstep mirror; q9(b) portion (935 ch, p14 main rows + p15 ALT rows) re-homed VERBATIM to offp_2023-06_02_9-b replacing the 'not captured' stub (0 markPoints rows \u2014 RATTACH solutionMd-only attach convention, plane precedent offp_2021-06_02_4-b-i); q9(a) portion (577 ch) DISCARDED per the run-020 F1 filing \u2014 9-a carries its own rebuilt solutionMd + 3 markPoints rows (content match print-verified: 16a+b=112 / 4a+b=16 / a=8, b=\u221216 / SC B2).",
+      "byteEvidence": "old q8 == new q8 + '\\n' + q9a(577) + '\\n' + q9b(935) byte-exact"
+    },
+    "F2_foreignBlob_2021-06-02_9-b": {
+      "repair": "9-b solutionMd 4857\u2192201 ch = the true 2-mark block only (2 B1ft rows, p16 anchored); markPoints[0] (2 marks) lockstep mirror; the foreign blob decomposes into (a) the q10(b) MS block from the 'FB = 9.8' A1 row (p20) through the Method II Case 3 close '24.0466585\u2026' (p24; 'Total 10 marks' not carried by the text layer) = 4525 ch re-homed VERBATIM to offp_2021-06_02_10-b replacing the 'not captured' stub (0 mp rows), and (b) the q11(a) first-row note fragment (129 ch, p25) prepended VERBATIM to offp_2021-06_02_11-a (markPoints[0] lockstep mirror) \u2014 reuniting the row the plane had split across two parts.",
+      "byteEvidence": "old 9-b == new 9-b + '\\n' + q10b(4525) + '\\n' + q11frag(129); new 11-a == q11frag + '\\n' + old 11-a, byte-exact"
+    },
+    "F3_duplicateAttach_2026-06-01R_18": {
+      "disposition": "NO-OP \u2014 CLAIMS CORRECTION OF RECORD: the run-020 F3 filing ('a raw pdftotext-flatten DUPLICATE of the entire ALT1 block') describes a state that does NOT exist in the plane of record at ANY pin: (1) current field sha256[:32] bf2f083781b630d3\u2026 == the C132 t3-sync pin byte-exact; (2) the pre-run-020 plane (701ae199 = ce2cffb0^) q18 solutionMd is byte-identical to current; (3) 'ALT1' occurs exactly once, 'ALT2' exactly once, the quoted raw signatures ('( AB )', 'x 2 = 2 x + 1') occur ZERO times. The likely misread source: the run-020 census fragment view, where q18's raw margin text outside KaTeX spans ('oe sin20 = 0.34202\u2026', 'cos20 = 0.93969\u2026', 'tan20 = 0.36397\u2026' \u2014 print-verbatim MS margin values) reads like a raw twin of the KaTeX'd ALT1. q18 needs NO structural repair; its residual G-hits are the F5-disclosed print-verbatim keyword class (operator-gated census revision, unchanged)."
+    }
+  },
+  "gates": {
+    "battery": "13/13 GREEN (run-022/run022_apply.py, run-020 battery clone): census_EXACT 66/1281/2443/6600 pre==post; marks_map_identical; PUA_FFFD_0; dollar_parity; changed_set_EXACT (5 solutionMd writes + 3 lockstep mirrors, nothing else); mirror_law_refined (edited parts with mp rows mirror byte-exact: q8/2021-9-b/11-a; edited parts without mp rows stay 0-row: 2023-9-b/10-b \u2014 the RATTACH attach class); serialization_roundtrip single-line compact; scrub_assert clean; byte_decomposition (zero byte loss/creation in the move, all three decompositions byte-exact); boundary_law (all print-anchored head/close signatures); stub_discharge (the 'not captured' stub absent from both attach targets); moved_signatures (8 of-record fragments verified in their new homes); katex_spans_unchanged (0 new $ segments introduced \u2014 the moved blocks are raw-of-record text).",
+    "render_gate": "8/8 projected fields GREEN through the ACTUAL hub pipeline engine \u2014 react-markdown 10.1.0 + remark-gfm 4.0.1 + remark-math 6.0.0 + rehype-raw 7 + rehype-sanitize 6 + the hub's LOCAL rehypeKatexMhchem (markdown.tsx of-record plugin list) \u2014 zero render exceptions, zero katex-error, .katex 0\u21920 (no math spans introduced).",
+    "fleet_katex_gate": "567 segments (plane-wide problemMd+solutionMd+markPoints textMd), 0 failures @ katex 0.16.47 throwOnError.",
+    "canaries": "ZERO canary contact: C120-C146 part_field_sha pins are scoped to the run-017 sync pids (2025-06/2026-06 sets) + run-018 C145 (q27-b); 2023-06 and 2021-06 carry no pins (verified from run-017-t3-corpus-reconcile scopeOfRecord.pids). F3 = no-op so even the q18 pins are untouched; C132 (01R q18 solution_md) still byte-verifies against the plane post-run."
+  },
+  "postApplyCensus": {
+    "pin": "a794747f1a503e12",
+    "artifact": "run-022/gs-census-post-run022.json (run-018 instrument byte-clone, classes + stripping law UNCHANGED)",
+    "trigBucketLeadCount": "159 \u2192 158 (the run-018/020 filing's 159 count reconciled)",
+    "classSummaryDelta": "G1 276\u2192275 (trig 62\u219260); G2 2023\u21922023 (trig 159\u2192158); G3 245\u2192246 (trig 7\u21927); G4 117\u2192117 (trig 27\u219227); B1 0 held; P1 0 held",
+    "perPidMovements": {
+      "offp_2021-06_02_9-b": "trig True\u2192False (the sine/cosine blob left; residual G2:1 from its own problemMd matrix flatten) \u2014 the bucket's \u22121",
+      "offp_2021-06_02_10-b": "trig True held; now carries its OWN blob (G2:37/G1:6/G4:5); its PRE trig=True came from the problemMd stem ('calculate the area\u2026of \u25b3 ABF') \u2014 true-ownership corroborated twice",
+      "offp_2023-06_02_8": "trig True held (genuine Pythagoras block); hits 105\u219271 (G2 85\u219257, G3 8\u21924; the fused q9 hits gone)",
+      "offp_2021-06_02_11-a": "trig True held; G2 46\u219248 (+2 from the reunited fragment's flattened 'AB 2 = AC 2 + 82' shapes)",
+      "offp_2023-06_02_9-b": "NOT-A-LEAD \u2192 lead (G2:11/G1:1/G3:2, trig False) \u2014 joins the census honestly as the raw-of-record carrier of q9(b)",
+      "offp_2023-06_02_9-a": "unchanged lead (G2:4/G3:2, rebuilt carrier of record)"
+    },
+    "leadCountTotal": "2046 \u2192 2046 (2023-9-b joined; 2021-9-b's pre-census G1/G4 hits left with the blob)"
+  },
+  "disclosures": [
+    "q9(a) raw MS portion (577 ch) discarded per the run-020 F1 filing: the raw marking notes ('Do not condone missing brackets', 'allow one error only', SC B2) are not carried by 9-a's rebuilt solutionMd \u2014 the rebuilt carrier + 3 markPoints rows are the of-record presentation; no markable content lost.",
+    "the re-homed q10(b) block is HEADLESS: the blob starts at the 'FB = 9.8' A1 row; the p20 preamble ('Method I: Using intersecting secants\u2026' + the long note), the 'Case 1: Finding length AB' header and the first M1 row ('FE\u00d7FA = FD\u00d7FB oe or 3.5\u00d78.4 = 3.0\u00d7FB oe | M1 correct method\u2026') were never in the plane. Filed for the owning lane (p20 evidence of record) \u2014 deliberate fence: hand-transcription from print is a different provenance class than the raw text layer (Tier-B re-transcription lane).",
+    "the prepended q11(a) fragment is itself truncated mid-row ('must simplify to' \u2014 the print's continuation 'AC cos 35 = 4 or AB cos 35 = 4' is exactly what the existing 11-a carrier opens with, so the reunited field carries the full sentence across the join; the join is byte-verbatim on both sides).",
+    "11-a markPoints[0] pre-apply mirror drift of record: mp[0] (1399 ch) carried the same block with tall-paren control-glyph variants (\\u239c/\\u239e class) the LATEX-1 lineage had already stripped from solutionMd (1359->1356-era cleaning; 43 ch delta) \u2014 the of-record set_field lockstep law normalized mp[0] to the new solutionMd; disclosed as a glyph-variant replacement, zero semantic content change.",
+    "the 'Total 8 marks' (2023 q9) and 'Total 10 marks' (2021 q10) lines are NOT carried by the text layer at the fusion boundaries \u2014 consistent with the t3-corpus-reconcile S2 furniture-strip class (the flatten dropped them); the plane's rebuilt blocks deliberately retain Total lines where they exist, none fabricated here.",
+    "F2 filing correction of record: the blob is a FOREIGN 5-MARK q10(b) block (p20 print: answer '23' for '5' marks), not '7-mark' as run-020 filed; the 7-mark part of 2021-06 02 is 12-c (functions) \u2014 unrelated.",
+    "corpus side: the 5 edited pids join the standing corpus back-sync debt (run-021 scope_a quantified 1461 pids; +5 pids / 8 field-writes now) \u2014 rides the NEXT converter run (standing disposition, run-018/019/020 precedent). No corpus contact this run.",
+    "the q11-a carrier remains itself mid-block-truncated at its tail ('2\u03c0 3 3 + 2 + 2\u03c0 3 3 + 2 h = M1 setting up a correct equation. Allow with no \u03c0 or' \u2014 the 11(b) head, pre-existing state, untouched) \u2014 filed as an owning-lane lead alongside the 11-a headless-carry class; NOT widened mid-wave."
+  ],
+  "environmentRecoveryOfRecord": "post-restart clone arrived stale a FOURTH time (local main 4008e6ce t-ops receipt tip, official-papers.json ABSENT, T-OEQ branches unfetched, handoff-summary pins 9883b1f5/a11ad0ccc1923806 unverifiable as objects): fetch-first verified origin/main 28346abe carrying the full run-017..run-021 lane (PRs #423-#446) + sibling lanes; ff-only applied; plane of record verified first-hand f2cbe67ab7d24993 pre-edit (and the pre-run-020 pin 701ae199 reproduced from ce2cffb0^ for the F3 correction); run-020/018 battery + census + gate templates recovered from the fetched origin. Hub node_modules wiped by the recycle: bun install --frozen-lockfile 952 packages restored for the render gate.",
+  "credentials": "zero PAT contact this run: mirror fetches + git fetch all unauthenticated/anonymous (syllabai-pastpapers raw @HEAD per PLAYBOOK-CONTENT-QUALITY.md). No PAT in env/GIT_ASKPASS/netrc this session \u2014 push leg expected BLOCKED (run-020 pre-PAT pattern): commit(s) ready on local branch t-oeq-mathsb/run-022; PR -> CI -> merge -> Vercel redeploy -> live spot-check fire mechanically once the operator supplies a fresh PAT (env/GIT_ASKPASS only). The two standing exposed tokens GitHub \u2026JU4 / Vercel vcp_\u2026aoT3 remain ROTATION-REQUIRED before any re-supply (standing order, multiple receipts).",
+  "landing": {
+    "branch": "t-oeq-mathsb/run-022",
+    "status": "PUSH-PENDING \u2014 see credentials",
+    "pr": null,
+    "ci": null,
+    "vercel": null,
+    "liveSpotCheck": null
+  },
+  "nextSafeActions": [
+    "operator PAT supply -> push, PR, CI watch, merge, Vercel redeploy verify, live spot-check (probe pages: /courses/igcse-maths-b-16/past-papers/june-2023-4mb1-02 q8+q9b, june-2021-4mb1-02 q9b+q10b+q11a)",
+    "token-fixable subclass over the 158 trig-bucket leads + F5 census-class revision (operator-gated, run-020 menu unchanged)",
+    "owning-lane leads filed this run: q10(b) head-row completion (p20), 11-a head/tail carrier completion class",
+    "corpus back-sync (+5 pids) rides the next converter run; exporter-law alignment menu (R1/R2) per run-021 stands operator-gated",
+    "PAT rotation (standing order, both tokens)"
+  ],
+  "writeSet": {
+    "content": "apps/hub/content/igcse-maths-b-16/official-papers.json (f2cbe67ab7d24993 -> a794747f1a503e12)",
+    "receipt": ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-022-f1-f3-structural-repairs.json (this file)",
+    "evidence": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-022/ = run022_boundaries.py + run022_apply.py + run022_recensus.py + run022_projection.json (8 field-writes old/new) + gs-census-post-run022.json + run022_render_gate.mjs",
+    "scriptsMirror": "/home/z/my-project/scripts/run022_*.py"
+  }
+}
