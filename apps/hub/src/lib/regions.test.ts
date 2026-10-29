@@ -6,6 +6,16 @@
 import { describe, expect, test, afterEach } from "bun:test";
 import { fetchPaperRegions } from "./regions";
 
+const ORIGINAL = { base: process.env.NEXT_PUBLIC_API_BASE_URL, core: process.env.SYLLABAI_CORE_BASE_URL };
+
+const ORIGINAL_FETCH = globalThis.fetch;
+
+type FetchImpl = (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
+
+function stubFetch(impl: FetchImpl) {
+  globalThis.fetch = impl as typeof fetch;
+}
+
 const VALID_PAYLOAD = {
   extracted: true,
   markable: true,
@@ -28,21 +38,11 @@ const VALID_PAYLOAD = {
   ],
 };
 
-const ORIGINAL = { base: process.env.NEXT_PUBLIC_API_BASE_URL, core: process.env.SYLLABAI_CORE_BASE_URL };
-
 afterEach(() => {
   process.env.NEXT_PUBLIC_API_BASE_URL = ORIGINAL.base;
   process.env.SYLLABAI_CORE_BASE_URL = ORIGINAL.core;
-  // @ts-expect-error test stub
   globalThis.fetch = ORIGINAL_FETCH;
 });
-
-const ORIGINAL_FETCH = globalThis.fetch;
-
-function stubFetch(impl: () => Promise<Response>) {
-  // @ts-expect-error test stub
-  globalThis.fetch = impl;
-}
 
 describe("fetchPaperRegions — the honest-failure law", () => {
   test("no base url configured → null (never throws)", async () => {
