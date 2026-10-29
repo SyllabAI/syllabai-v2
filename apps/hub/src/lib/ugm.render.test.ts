@@ -26,6 +26,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import { toText } from "hast-util-to-text";
 import { normalizeCorpusMath } from "./math-fix";
+import { mathTitleToPlainText } from "./math-title";
 import { normalizeCorpusEmphasis } from "./emphasis-fix";
 import { rehypeKatexMhchem } from "./rehypeKatexMhchem";
 
@@ -155,4 +156,32 @@ describe("T-UGM-RENDER-1: every committed UGM body renders clean", () => {
     expect(checked).toBeGreaterThan(300);
     expect(errs).toBeLessThanOrEqual(93);
   }, 600_000);
+  // ------------------------------------------------------------------
+  // T-UGM-RENDER-2 — the plaintext-title fleet gate.
+  //
+  // 235 of the 628 resource titles carry $…$ math. mathTitleToPlainText is
+  // the tab/SEO law (generateMetadata) and must be LEAK-PROOF fleet-wide:
+  // no dollar signs, no backslash commands, never empty, never ballooning.
+  // The changed-count pin (235) locks the census of record 2026-10-29 — a
+  // new math title shifts it, which is exactly when math-title.ts deserves
+  // a fresh look.
+  test("UGM titles: mathTitleToPlainText is leak-proof across all 628", () => {
+    let changed = 0;
+    let total = 0;
+    const leaks: string[] = [];
+    for (const course of COURSES) {
+      const d = JSON.parse(readFileSync(join(CONTENT_DIR, course, "ugm-resources.json"), "utf8"));
+      for (const r of d.resources as { slug: string; title: string }[]) {
+        total++;
+        const plain = mathTitleToPlainText(r.title);
+        if (plain !== r.title) changed++;
+        if (!plain.length || plain.includes("$") || /\\[a-zA-Z]/.test(plain) || plain.length > 128) {
+          leaks.push(`${course}/${r.slug}: ${plain.slice(0, 80)}`);
+        }
+      }
+    }
+    expect(total).toBe(628);
+    expect(changed).toBe(235);
+    expect(leaks).toEqual([]);
+  });
 });

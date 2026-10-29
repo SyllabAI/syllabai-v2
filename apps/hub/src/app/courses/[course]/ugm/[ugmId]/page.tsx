@@ -5,6 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { boardOf, getCourseMeta } from "@/lib/courses";
 import { getUgmBundle, ugmResourceById } from "@/lib/ugm";
+import { allUgmReaderParams } from "@/lib/static-params";
+import { mathTitleToPlainText } from "@/lib/math-title";
 import { Breadcrumbs } from "@/components/hub/chrome";
 import { Markdown } from "@/components/markdown";
 import { MathText } from "@/components/hub/math-text";
@@ -20,14 +22,30 @@ import { MathText } from "@/components/hub/math-text";
  * confidence from the corpus of record), rights holder + attestation line,
  * teacher-support disclosure, and the declared non-overlap reason when the
  * resource is one.
+ *
+ * Static-serving (T-UGM-RENDER-2): the reader joins the ADR-021 tranche-4.12
+ * posture — the former force-dynamic was demo-era inheritance that forced
+ * per-request streaming, and under Next 16 streaming metadata the shell
+ * flushed HTTP 200 before any notFound() could resolve (the soft-404 the
+ * 2026-10-29 fresh sweep re-confirmed: bogus slugs → 200, Googlebot UA
+ * included). The route now enumerates all 628 (course, ugmId) pairs at build
+ * and rejects everything else at the resolver via `dynamicParams = false` —
+ * a real 404 that needs no flush timing at all. The notFound() guards below
+ * stay as defense-in-depth (flag flips between build and serve).
  */
-export const dynamic = "force-dynamic";
+export async function generateStaticParams() {
+  return allUgmReaderParams();
+}
+export const dynamicParams = false;
 
 /**
- * Metadata resolves BEFORE the body streams — calling notFound() here turns
- * a bad ugmId into a real HTTP 404. (T-UGM-RENDER-1: with force-dynamic the
- * body path streams 200 first, so the not-found UI rendered with a 200
- * status — the soft-404 the 2026-10-27 live audit caught.)
+ * The tab/SEO title is PLAINTEXT (T-UGM-RENDER-2): 235 of 628 resource
+ * titles carry `$…$` math and the raw string leaked into document.title on
+ * every one of them (fresh sweep residual R2) — the head streams before any
+ * MathML could survive there. mathTitleToPlainText renders the same title
+ * law the breadcrumb/h1 use, deterministically, fail-closed on unmapped
+ * commands. The notFound() here remains the flag-law backstop; unknown
+ * ugmIds never reach this function anymore (resolver-level 404 above).
  */
 export async function generateMetadata({
   params,
@@ -39,7 +57,7 @@ export async function generateMetadata({
   const ugm = meta ? await getUgmBundle(slug) : null;
   const resource = ugm ? ugmResourceById(ugm, ugmId) : null;
   if (!meta || !resource) notFound();
-  return { title: resource.title };
+  return { title: mathTitleToPlainText(resource.title) };
 }
 
 export default async function UgmReaderPage({
