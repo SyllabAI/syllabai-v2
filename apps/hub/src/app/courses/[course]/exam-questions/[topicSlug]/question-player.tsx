@@ -78,6 +78,7 @@ import {
   type Course,
 } from "@/lib/progress";
 import type { ExamQuestion } from "@/lib/contracts";
+import { partDisplayLabel } from "@/lib/part-label";
 import { api, ApiError, aiAskErrorMessage } from "@/lib/api";
 import type {
   SmartMarkAttemptView,
@@ -594,6 +595,12 @@ function QuestionBody({
   return (
     <div className="space-y-4" data-question-block={question.id}>
       {question.parts.map((p, idx) => {
+        // the printed part label ("(a)", "(a)(i)") — derived fail-closed from
+        // the official id slug / SME questionPart (lib/part-label). null =
+        // honestly no label; never an index guess (index letters mislabel
+        // sub-part sequences like (a)(i),(a)(ii),(b)(i) as a,b,c). The
+        // operator-reported learner-surface gap: labels were aria-only before.
+        const labelChip = partDisplayLabel(p);
         if (p.questionType === "multiple_choice") {
           return (
             <McqPart
@@ -605,7 +612,8 @@ function QuestionBody({
               optionsVisible={mcqOptionsVisible(question, idx)}
               onViewModel={onViewModel}
               coreJoin={coreJoin?.mcq[p.id] ?? null}
-              partLabel={question.parts.length > 1 ? String.fromCharCode(97 + idx) : null}
+              labelChip={labelChip}
+              partLabel={labelChip ?? (question.parts.length > 1 ? String.fromCharCode(97 + idx) : null)}
               onAskClaPart={coreJoin ? () => onAskClaPart(p.id) : undefined}
             />
           );
@@ -619,7 +627,8 @@ function QuestionBody({
             topicSlug={topicSlug}
             subtopicCode={subtopicCode}
             showPartBadge={question.parts.length > 1}
-            partLabel={question.parts.length > 1 ? String.fromCharCode(97 + idx) : null}
+            labelChip={labelChip}
+            partLabel={labelChip ?? (question.parts.length > 1 ? String.fromCharCode(97 + idx) : null)}
             coreLive={coreLive}
             onAskClaPart={coreJoin ? () => onAskClaPart(p.id) : undefined}
           />
@@ -712,6 +721,7 @@ function StructuredPart({
   topicSlug,
   subtopicCode,
   showPartBadge,
+  labelChip,
   partLabel,
   coreLive,
   onAskClaPart,
@@ -722,7 +732,10 @@ function StructuredPart({
   topicSlug: string;
   subtopicCode: string | null;
   showPartBadge: boolean;
-  /** a/b/c… label for the CLA lightbulb's aria text (never rendered as a chip) */
+  /** the printed label ("(a)", "(a)(i)") when the corpus attests one; null = no chip */
+  labelChip: string | null;
+  /** true label when known, else the legacy index letter — CLA aria text only
+   *  (the visible chip is labelChip) */
   partLabel: string | null;
   coreLive: boolean;
   /** question-anchored CLA per-part entry (join-verified questions only) */
@@ -730,30 +743,39 @@ function StructuredPart({
 }) {
   return (
     <div className="space-y-2">
-      {/* SME (figure 16): per-part marks right-aligned, no chips/spec codes on
+      {/* SME (figure 16): per-part marks right-aligned, no spec codes on
           the learner face. Single-part questions dedupe — the header badge
-          already carries the total (figure 24). The lightbulb rides the same
-          row (the web s129 parity entry — scaffolded help, never the answer). */}
-      {(showPartBadge || onAskClaPart) && (
-        <div className="flex items-center justify-end gap-1.5">
-          {showPartBadge && (
-            <span className="text-xs text-muted-foreground">
-              {part.marks} mark{part.marks === 1 ? "" : "s"}
+          already carries the total (figure 24). The printed part label
+          ("(a)(i)" — the operator-reported gap) rides the row's left edge
+          when the corpus attests it; the lightbulb keeps the right edge
+          (the web s129 parity entry — scaffolded help, never the answer). */}
+      {(labelChip || showPartBadge || onAskClaPart) && (
+        <div className="flex items-center gap-1.5">
+          {labelChip && (
+            <span className="rounded-md bg-muted px-1.5 py-0.5 text-xs font-semibold tabular-nums">
+              {labelChip}
             </span>
           )}
-          {onAskClaPart && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="size-6 text-muted-foreground hover:text-primary"
-              onClick={onAskClaPart}
-              aria-haspopup="dialog"
-              aria-label={`Ask CLA for help with part ${partLabel ?? ""} — scaffolded, never the answer`}
-              title="Ask CLA — scaffolded help with this part, never the answer"
-            >
-              <Lightbulb className="size-3.5" aria-hidden />
-            </Button>
-          )}
+          <div className="ml-auto flex items-center gap-1.5">
+            {showPartBadge && (
+              <span className="text-xs text-muted-foreground">
+                {part.marks} mark{part.marks === 1 ? "" : "s"}
+              </span>
+            )}
+            {onAskClaPart && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="size-6 text-muted-foreground hover:text-primary"
+                onClick={onAskClaPart}
+                aria-haspopup="dialog"
+                aria-label={`Ask CLA for help with part ${partLabel ?? ""} — scaffolded, never the answer`}
+                title="Ask CLA — scaffolded help with this part, never the answer"
+              >
+                <Lightbulb className="size-3.5" aria-hidden />
+              </Button>
+            )}
+          </div>
         </div>
       )}
       <PartProblem md={part.problemMd} />
@@ -1164,6 +1186,7 @@ function McqPart({
   optionsVisible,
   onViewModel,
   coreJoin,
+  labelChip,
   partLabel,
   onAskClaPart,
 }: {
@@ -1176,7 +1199,10 @@ function McqPart({
   onViewModel: () => void;
   /** core identity for this part, when the 4CH1 bridge verified the join */
   coreJoin: BridgeMcqPart | null;
-  /** a/b/c… label for the CLA lightbulb's aria text (never rendered as a chip) */
+  /** the printed label ("(a)", "(a)(i)") when the corpus attests one; null = no chip */
+  labelChip: string | null;
+  /** true label when known, else the legacy index letter — CLA aria text only
+   *  (the visible chip is labelChip) */
   partLabel: string | null;
   /** question-anchored CLA per-part entry — an MCQ row IS the part, so the
    *  lightbulb anchors the row itself (PAST_PAPER_QUESTION, web s129 parity) */
@@ -1302,19 +1328,26 @@ function McqPart({
 
   return (
     <div className="space-y-3">
-      {onAskClaPart && (
-        <div className="flex items-center justify-end">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="size-6 text-muted-foreground hover:text-primary"
-            onClick={onAskClaPart}
-            aria-haspopup="dialog"
-            aria-label={`Ask CLA for help with ${partLabel ? `part ${partLabel}` : "this question"} — scaffolded, never the answer`}
-            title="Ask CLA — scaffolded help with this question, never the answer"
-          >
-            <Lightbulb className="size-3.5" aria-hidden />
-          </Button>
+      {(labelChip || onAskClaPart) && (
+        <div className="flex items-center gap-1.5">
+          {labelChip && (
+            <span className="rounded-md bg-muted px-1.5 py-0.5 text-xs font-semibold tabular-nums">
+              {labelChip}
+            </span>
+          )}
+          {onAskClaPart && (
+            <Button
+              variant="ghost"
+              size="icon"
+              className="ml-auto size-6 text-muted-foreground hover:text-primary"
+              onClick={onAskClaPart}
+              aria-haspopup="dialog"
+              aria-label={`Ask CLA for help with ${partLabel ? `part ${partLabel}` : "this question"} — scaffolded, never the answer`}
+              title="Ask CLA — scaffolded help with this question, never the answer"
+            >
+              <Lightbulb className="size-3.5" aria-hidden />
+            </Button>
+          )}
         </div>
       )}
       <PartProblem
