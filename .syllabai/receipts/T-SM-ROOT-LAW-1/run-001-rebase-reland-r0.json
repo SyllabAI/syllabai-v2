@@ -38,7 +38,17 @@
     "hub_tsc": "bun x tsc --noEmit in apps/hub — 46 errors, BYTE-IDENTICAL to clean origin/main (same class; diff = empty)",
     "build_hub": "bun run build:hub — exit 0 (corpus-verify prebuild + next build; the hub normative type gate)",
     "byte_exact": "per-file git hash-object vs git rev-parse pr-352-head:<file> — 6/6 EXACT",
-    "ci": "branch CI pending push — verify + hub 2/2 required (CI is the first-ever judgment of this content; the r0 head never got a check-run)"
+    "ci": "BRANCH CI 2/2 GREEN on head 1364c81e64a7 (verify:success + hub:success) — the FIRST CI judgment of this content ever (the r0 head never received a check-run); the pull_request event fired normally, the zero-check-runs drop class did NOT recur"
+  },
+  "landing": {
+    "pr": 450,
+    "merged_sha": "ad98fb693145",
+    "merge_method": "merge (true merge commit), no force",
+    "merge_commit_ci": "hub:success + verify:success (2/2) on ad98fb69",
+    "vercel_deployment_proof": "GitHub-side of record (no Vercel PAT needed): Vercel commit status on ad98fb69 = SUCCESS, target https://vercel.com/syllab-ai/syllabai-hub-v2/9PMXtfyLNcNkLptwtGoiheCMisYx (the hub-v2 deployment for this sha)",
+    "live_spot_checks": "2026-10-29T14:02:56Z+ against https://syllabai-hub-v2.vercel.app: GET /api/health → 200 {status:ok, service:syllabai-hub, dataMode:core-api, coreConfigured:true} (x-vercel-cache MISS, age 0 — served fresh from the function); GET /api/core/questions?course=igcse-chemistry-19 → 200 {available:false, reason:unauthenticated}; GET /api/core/questions?course=0452-25 → 200 same — the bridge route is auth-gated (clean JSON refusal, zero 500s): no-regression posture recorded; the law's positive proof stays with CI 2/2 + subject-root 7/7",
+    "pr_352_disposition": "CLOSED as superseded-by-reland with evidence comment (issue comment 6498682705); reopenable by law; the operator-ruling thread stays on #352 of record",
+    "vercel_pat_disclosure": "the Vercel PAT stored repo-external at /home/z/my-project/.secrets/vercel_pat was LOST with the sandbox reset (directory wiped; token never committed anywhere by law, hence unrecoverable locally) — deployment-API-level verification (READY/aliasAssigned via API) was therefore replaced by the GitHub-side Vercel commit status of record; CRITICAL-OPERATOR flag: reissue the Vercel PAT if API-level deployment verification is wanted for future lanes"
   },
   "scope_guards": [
     "no API code touched (frozen port contract intact); no bundle bytes; no registry flips (the flip precondition — r0-style production bank census — remains named per funnel wave, NOT discharged)",
@@ -48,9 +58,10 @@
   ],
   "operator_rulings_preserved": "the #352 comment thread (6 comments incl. B-funnel EXTEND 6386881150, ADR-040 draft 6387566660, OQ-1 coursework OUT + A-wave 6389527849/6389726884, Ask-1 outcome 6396397891) stays on #352 of record; this PR's body links them; #352 to be closed RELANDED-BY-THIS-LANE after merge (reopenable by law).",
   "followups": [
-    "after merge: close #352 as superseded-by-reland with evidence comment",
-    "landing addendum: Vercel auto-deploy of the hub merge + live spot-check of subject-root serving (0452 double-tree posture)",
-    "#285 rebase lane remains queued (recommended owner T-SM chain #276 per the triage receipt)",
+    "DONE: #352 closed superseded-by-reland (comment 6498682705)",
+    "DONE: landing proof of record (merge CI 2/2 + Vercel commit status SUCCESS + live no-regression probes)",
+    "#285 rebase lane remains queued (recommended owner T-SM chain #276 per the triage receipt) — note its CI head DID get check-runs (silent-red class, not the drop class), so a rebase + fresh CI re-judges it",
+    "CRITICAL-OPERATOR: Vercel PAT reissue (lost with sandbox reset; GitHub PAT still functional) + GitHub PAT rotation still overdue",
     "CI-channel zero-check-runs class: the ops lane proposed by the triage receipt remains open"
   ]
 }

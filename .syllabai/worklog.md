@@ -22349,3 +22349,12 @@ Work Log:
 
 Stage Summary:
 - The JOIN-2 chain's last owed residual CLOSED at source: sidecars dedup-honest (0 in-item duplicates), consume outcome unchanged by construction, manifest history byte-preserved. LANE r0: IDLE.
+
+## T-SM-ROOT-LAW-1 run-001 landing addendum — 2026-10-29 (Z.ai session web-528c0352, trace 1a187e90cb20a989)
+
+- PR #450 merged as ad98fb69 (merge_method=merge, no force); merge-commit CI 2/2 (verify+hub); branch CI was the FIRST CI judgment of the #352 content ever (its original head never received a check-run — the drop class did not recur on this lane).
+- #352 CLOSED as superseded-by-reland with evidence comment (issue comment 6498682705); the operator-ruling thread stays on #352 of record.
+- Deployment proof WITHOUT the Vercel PAT (lost with the sandbox reset — /home/z/my-project/.secrets wiped, token unrecoverable by law): GitHub-side Vercel commit status on ad98fb69 = SUCCESS (target vercel.com/syllab-ai/syllabai-hub-v2/9PMXtfyLNcNkLptwtGoiheCMisYx).
+- Live spot-checks 14:02:56Z+ @ https://syllabai-hub-v2.vercel.app: /api/health 200 {status:ok, coreConfigured:true} (x-vercel-cache MISS — fresh from the function); /api/core/questions?course=igcse-chemistry-19 and ?course=0452-25 both 200 clean auth-gated refusals, zero 500s — no-regression posture; the law's positive proof stays with CI 2/2 + subject-root 7/7.
+- CRITICAL-OPERATOR flags: Vercel PAT reissue (this lane) + GitHub PAT rotation (standing, overdue).
+- Bookkeeping-only (.syllabai/** only): receipt landing block + this addendum; fetch-first, ff-only push, no force, no DB contact.
