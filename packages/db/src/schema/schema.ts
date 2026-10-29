@@ -1827,3 +1827,38 @@ export const teachingCoverage = pgTable("teaching_coverage", {
         primaryKey({ columns: [table.classId, table.specPointNodeId], name: "teaching_coverage_pkey"}),
         check("ck_tcov_status", sql`(status)::text = ANY (ARRAY[('TAUGHT'::character varying)::text, ('NOT_TAUGHT'::character varying)::text])`),
 ]);
+
+// T-MG-MP-RECT-1 run-001 (plan of record: docs/MG-MARK-PARITY-PLAN.md §3.1).
+// Additive v2-native side table (packages/db/src/schema/README.md §"Additive
+// v2-native tables"): normalized region geometry for mark_points — the
+// MathsGenie rects plane (their pdfMarking region rects[]) adopted onto the
+// definition plane as ROWS, one row per rect, ordinal-disambiguated.
+// Purely additive: no column on mark_points itself; cascade on point delete.
+export const markPointRects = pgTable("mark_point_rects", {
+        id: uuid().primaryKey().notNull(),
+        markPointId: uuid("mark_point_id").notNull(),
+        page: integer().notNull(),
+        x: doublePrecision().notNull(),
+        y: doublePrecision().notNull(),
+        width: doublePrecision().notNull(),
+        height: doublePrecision().notNull(),
+        ordinal: integer().default(0).notNull(),
+        extractionConfidence: doublePrecision("extraction_confidence"),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("ix_mark_point_rects_point").using("btree", table.markPointId.asc().nullsLast().op("uuid_ops")),
+        index("ix_mark_point_rects_page").using("btree", table.page.asc().nullsLast().op("int4_ops")),
+        unique("uq_mark_point_rect_point_ordinal").on(table.markPointId, table.ordinal),
+        foreignKey({
+                columns: [table.markPointId],
+                foreignColumns: [markPoints.id],
+                name: "mark_point_rects_mark_point_id_fkey"
+        }).onDelete("cascade"),
+        check("mark_point_rects_page_check", sql`page > 0`),
+        check("mark_point_rects_x_check", sql`(x >= (0)::double precision) AND (x <= (1)::double precision)`),
+        check("mark_point_rects_y_check", sql`(y >= (0)::double precision) AND (y <= (1)::double precision)`),
+        check("mark_point_rects_width_check", sql`(width >= (0)::double precision) AND (width <= (1)::double precision)`),
+        check("mark_point_rects_height_check", sql`(height >= (0)::double precision) AND (height <= (1)::double precision)`),
+        check("mark_point_rects_ordinal_check", sql`ordinal >= 0`),
+        check("mark_point_rects_extraction_confidence_check", sql`(extraction_confidence >= (0)::double precision) AND (extraction_confidence <= (1)::double precision)`),
+]);

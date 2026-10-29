@@ -49,6 +49,7 @@ import { buildSmartMarkRouters } from "./routes/smartmark";
 import { buildCronRouters } from "./routes/cron";
 import { buildQuestionsRouters } from "./routes/questions";
 import { buildExamPapersRouters } from "./routes/exam-papers";
+import { buildPaperRegionsRouters } from "./routes/paper-regions";
 import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
 import { buildTeacherMarkingRouters } from "./routes/teachermarking";
@@ -95,6 +96,7 @@ const smartmark = buildSmartMarkRouters();
 const cron = buildCronRouters();
 const questions = buildQuestionsRouters();
 const examPapers = buildExamPapersRouters();
+const paperRegions = buildPaperRegionsRouters();
 const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
@@ -406,6 +408,16 @@ app.route("/api/v1/cron", cron.cronRoute);
 // review.
 app.route("/api/v1/exam-papers", examPapers.examPapersRoute);
 app.route("/api/v1/questions", questions.questionsRoute);
+
+// Paper-assets regions router (T-MG-MP-RECT-1 — MG parity). Plan of record
+// docs/MG-MARK-PARITY-PLAN.md §3.1: GET /api/v1/paper-assets/:id/regions —
+// the MathsGenie getRegions contract shape over mark_point_rects +
+// question_parts + mark_points, questionPartId WIRED. Read-only corpus
+// surface, zero PII; auth shell mirrors the exam-papers/books routers (any
+// authenticated user). Additive module — no fenced file touched; this mount
+// block + import + construction are the minimal app-level wiring per the
+// T-MIG-010/020/021/030/031/032 disclosed-commit precedent.
+app.route("/api/v1/paper-assets", paperRegions.paperAssetsRoute);
 
 // Test-builder + answer-input routers (T-MIG-034 — Wave 3). Path parity with
 // the frozen core: TestBuilderController under /api/v1/teacher/tests (the
