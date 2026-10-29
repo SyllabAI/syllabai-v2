@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, GraduationCap } from "lucide-react";
 import { boardOf, loadHubCourse } from "@/lib/courses";
 import { loadGuidedIndex } from "@/lib/guided-lessons";
+import { looseAnchorCopy } from "@/lib/loose-copy";
 import { CourseHeader } from "@/components/hub/course-header";
 
 export const dynamic = "force-dynamic";
@@ -98,7 +99,7 @@ export default async function GuidedLessonsIndexPage({
         ))}
         {unmapped.length > 0 && (
           <section aria-label="Not yet anchored to a spec point">
-            <h2 className="text-[15px] font-semibold leading-snug">Not yet anchored to a spec point</h2>
+            <h2 className="text-[15px] font-semibold leading-snug">{looseAnchorCopy(slug).title}</h2>
             <p className="text-xs text-muted-foreground">{unmapped.length} guided lesson set{unmapped.length === 1 ? "" : "s"}</p>
             <div className="mt-2 grid gap-1.5 sm:grid-cols-2">{unmapped.map(({ entry, note }) => renderRow(entry, note))}</div>
           </section>
