@@ -1,0 +1,73 @@
+{
+  "band": "T-PR-TRIAGE-1",
+  "run": "run-001",
+  "at": "2026-10-29T12:05:00Z",
+  "order": "operator trace 1a1878f004d03db9: 'static-four-red PR triage (#285/#296/#303/#352)'",
+  "executor": "main agent (Z.ai, zai-web session web-528c0352, chat a7ae5075, trace 1a1878f004d03db9)",
+  "verdict": "TRIAGE OF RECORD — 4 open PRs evidence-adjudicated first-hand (GitHub API: PRs, check-runs, compare, files, comments; local main greps at 544c3700a): #285 KEEP-OPEN rebase-lane-required; #296 RELANDED-BY-THIS-PR (B02 receipt byte-exact); #303 CLOSED-BROKEN-VEHICLE (intent restagable); #352 KEEP-OPEN rebase-lane-required",
+  "method": "fetch-first; per-PR: metadata + mergeable_state + head check-runs + compare main...head + files + comment thread; supersession probes on main (git log greps + cat-file existence); no content files touched; no force; close/comments are reopenable by law",
+  "pr_verdicts": [
+    {
+      "pr": 285,
+      "title": "dc3: the re-attempt economics — AI-mark ordinal first-class on the mark row + entitlement gate",
+      "state": "open, dirty (conflict), behind 644, ahead 1, 5 files",
+      "checks": "verify:failure + hub:failure at own head 2026-10-21T22:54Z, BOTH with empty output summaries (era-flavored silent failure, 10-21 CI-channel-drop era)",
+      "supersession": "NONE — apps/api/src/services/smartmark/entitlement.ts MISSING on main; zero dc3/reattempt commits on main",
+      "verdict": "KEEP-OPEN — REBASE LANE REQUIRED",
+      "why": "real unlanded feature (smartmark entitlement + reattempt economics + 260-line test file); the smartmark plane has since moved under it (T-SM-KAPPA-SUBJECT #270 subject-CTE fix merged; ADR-037 B3 per-point mark_points laws applied on the production corpus 2026-10-29 receipt 02edf2bf; ADR-040 band model ACCEPTED 1aec820) — the mark-row ordinal + entitlement gate must be re-derived against that reality; CI on a fresh base is the arbiter of the silent reds; recommended owner: the T-SM chain (#276)"
+    },
+    {
+      "pr": 296,
+      "title": "T-SPECS-CIE-TRANCHE2-B02 run-001 receipt (chem25 second ruling batch)",
+      "state": "open, dirty (conflict), behind 608, ahead 1, 2 files",
+      "checks": "verify:SUCCESS; hub:failure at 2026-10-22T03:05Z with EMPTY summary — receipts+worklog-only diff, era flake flavor",
+      "supersession": "THE GAP IS REAL: B01 receipt landed on main (041221cb, cie-tranche2-r2-batches-run-001-r0.json) but B02 (operator_trace 1a1614f00e3596dd, 26 ruling rows verbatim, chem25, dispositions 3) was MISSING on main — the operator's second ruling batch of record was stranded here since 10-22",
+      "verdict": "RELANDED-BY-THIS-PR",
+      "why": "the dirty was worklog.md-only (the branch's worklog hunk is an unrelated DEPLOY api-of-record run-012 entry — deliberately NOT transplanted); the receipt itself is JSON-valid and relanded BYTE-EXACT from bd2c0b1ef at the B01-mirrored path .syllabai/receipts/CIE-INTEGRATION/cie-tranche2-r2-batches-run-002-r0.json; #296 to be closed as superseded-by-reland with identical bytes (reopenable, zero value lost)"
+    },
+    {
+      "pr": 303,
+      "title": "content(ADR-037 wave-16): the serving-experience bundle (de-interleaved markschemes, restored blanks, typography, stems)",
+      "state": "open, mergeable:True, unstable, behind 557, ahead 1, 2 files",
+      "checks": "verify:failure at 2026-10-22T15:03Z (empty summary); hub:success",
+      "supersession": "intent UNLANDED (main greps de-interleav / serving-experience / typography = 0 commits) — but the VEHICLE is broken twice over",
+      "verdict": "CLOSE — BROKEN VEHICLE, INTENT RESTAGABLE",
+      "why": "(1) JUNK DOUBLE-NESTED PATH: the PR's files are apps/hub/content/igcse-chemistry-19/apps/hub/content/igcse-chemistry-19/{manifest,questions}.json (+134,981 lines orphaned under a doubled prefix that does not exist on main) — the same construction disease as wave-13 r0, which carries the of-record cleanup law 41be0b1b 'land the bundle at the real content path + remove the r0 double-nested junk path'; (2) PRE-WAVE-14 BASE: head is 557 behind and igcse-chemistry-19/questions.json was since advanced by wave-14's ADR-037 v0.11.0 corpus (PUA-free text + 3 answer-linkage closures; G-E1..G-E4 green, dd7c7b27) — landing this bundle at the real path would REGRESS those gates; verdict: close with evidence comment, intent re-stageable fresh from a post-B3/wave-14 base at the real content path (wave-13 r1 pattern), reopenable on operator order"
+    },
+    {
+      "pr": 352,
+      "title": "fix(t-sm-rollout-0452) r0: the deterministic subject-root law (dup-code .find() winner retired) + T-SM-ROLLOUT registry",
+      "state": "open, dirty (conflict), behind 364, ahead 1, 5 files, 5 comments",
+      "checks": "NONE EVER RECORDED on the head — the CI channel drop this lane reported in the worklog; the verdict must come from a fresh push on a rebased branch",
+      "supersession": "PARTIAL, NOT FULL: the lane's later legs are of record elsewhere (ADR-040 #356 merged+ACCEPTED 1aec820; A-wave census #359; T-SM-EDX-INGEST-R1 #360 10/10 GREEN) BUT the r0 unique law is STILL UNLANDED and STILL LIVE-NEEDED: the dup-code .find() winner pattern survives on main at apps/hub/src/lib/core-topics.ts:89 (subjectsCache?.subjects.find((s) => s.code === code)); #270's CTE fix was api-side and complementary; both r0 receipts (0452-tiebreak-r0, registry-gap-audit-r0) are also absent from main",
+      "verdict": "KEEP-OPEN — REBASE LANE REQUIRED (or fold into the active T-SM-ROLLOUT lane)",
+      "why": "the deterministic subject-root law is exactly the nondeterministic-first-match hazard on a live serving path; the comment thread's operator rulings (B-funnel EXTEND, OQ-1 coursework OUT, first band wave CORP) live on the PR — a rebase lane re-lands the r0 law + receipts and lets CI judge what this head never could"
+    }
+  ],
+  "changes": [
+    {
+      "file": ".syllabai/receipts/CIE-INTEGRATION/cie-tranche2-r2-batches-run-002-r0.json",
+      "what": "RELANDED byte-exact from t-specs-tranche2-b02-receipt/r0 @ bd2c0b1ef (git show FETCH_HEAD redirect; JSON-validated; B01-mirrored placement)"
+    },
+    {
+      "file": ".syllabai/receipts/T-PR-TRIAGE-1/run-001-static-four-red-r0.json + card + worklog",
+      "what": "this triage of record"
+    }
+  ],
+  "verification": {
+    "api_first_hand": "4/4 PRs read live (state/mergeable/check-runs/compare/files/comments); #352 comment thread read in full (5 comments, 10-24..10-25)",
+    "main_greps": "dc3/reattempt: 0; TRANCHE2-B02 receipts: absent until this reland; wave-16/de-interleav/serving-experience/typography: 0; T-SM-ROLLOUT: mirror + #270 CTE only; core-topics.ts .find() pattern confirmed live at line 89",
+    "receipt_integrity": "B02 receipt JSON-valid post-reland; family format matches B01 (lane/run/receipt/generated_utc/operator_trace/directive_verbatim/rulings/dispositions)"
+  },
+  "scope_guards": [
+    "no app code, no bundle, no content-maps bytes touched (reland + bookkeeping only)",
+    "no PR closed without evidence comment; reopenable by law",
+    "no force; fetch-first; branch PR"
+  ],
+  "followups": [
+    "#285: rebase lane against the post-#270/ADR-037/ADR-040 smartmark plane (owner T-SM chain #276) — re-judge the silent reds on fresh CI",
+    "#352: rebase lane (or fold into active T-SM-ROLLOUT leg) to land the deterministic subject-root law + the two r0 receipts; CI has never judged this head",
+    "#303: if the serving-experience intent is still wanted, re-stage from post-B3/wave-14 base at the REAL content path (wave-13 r1 pattern); operator-gated",
+    "CI-channel drop class (heads with zero check-runs): worth an ops lane — a PR whose head never got judged is invisible to the red/green discipline"
+  ]
+}

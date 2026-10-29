@@ -1,0 +1,31 @@
+version: 1
+task:
+  id: T-PR-TRIAGE-1
+  title: "Static-four-red PR triage (#285/#296/#303/#352) + reland the stranded CIE-INTEGRATION B02 receipt"
+  owner: "main agent (Z.ai, zai-web session web-528c0352-0cf7-4715-a187-50aec294b288, trace 1a1878f004d03db9)"
+  status: DONE # run-001 (zai-web session web-528c0352, trace 1a1878f004d03db9): 4/4 PRs evidence-adjudicated first-hand; #296's B02 receipt relanded byte-exact from bd2c0b1ef; verdicts #285/#352 KEEP-OPEN rebase-lane, #303 CLOSE-broken-vehicle; evidence comments posted on the PRs
+  priority: P2
+  band: T-PR-TRIAGE (repo hygiene — the un-judged/stranded PR queue)
+  wave: pr-hygiene
+  deps: []
+  scope:
+    allowed:
+      - ".syllabai/receipts/CIE-INTEGRATION/cie-tranche2-r2-batches-run-002-r0.json (byte-exact reland from bd2c0b1ef)"
+      - ".syllabai/receipts/T-PR-TRIAGE-1/** (this receipt family)"
+      - ".syllabai/tasks/T-PR-TRIAGE-1-static-four-red-triage.yaml"
+      - ".syllabai/worklog.md (append-only entry)"
+      - "GitHub PR state changes: #303 close + evidence comments on #285/#352/#303/#296"
+    forbidden:
+      - "any app code / bundle / content-maps bytes"
+      - "any force push or history rewrite"
+      - "merging #285 or #352 as-is (their verdicts require rebase lanes)"
+  notes: >
+    The four "static red" PRs were the standing no-blocker queue item. Root
+    causes found: #285 real feature (smartmark entitlement) unlanded behind
+    644 with silent era-reds; #296 a receipts-only vehicle whose worklog
+    conflict stranded the operator's second CIE ruling batch receipt (B02,
+    26 rows chem25) for a week while B01 landed; #303 the wave-13
+    double-nested-junk-path construction disease repeating, on a pre-wave-14
+    base that would regress corpus gates; #352 a live-needed serving law
+    (dup-code .find() winner, still at core-topics.ts:89 on main) whose head
+    CI never judged (channel-drop class).
