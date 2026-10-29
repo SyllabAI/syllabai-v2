@@ -293,8 +293,15 @@ describe("cie-phase4 roster law", () => {
     expect(asPs1!.expectedPackageParts).toBe(117);
     const rawQ = real.reduce((s, e) => s + e.rawQuestions, 0);
     const rawP = real.reduce((s, e) => s + e.rawParts, 0);
-    expect(rawQ).toBe(24541);
-    expect(rawP).toBe(35141);
+    // EQFC-CONSUME-1 re-pin (the tranche-3 "tests of record, not the bundles"
+    // class): the SME-ExamQuestion/SME-Flashcards corpus waves at pin
+    // main@1a5c37bc grew the raw banks (+2,705 q / +8,855 p — the new
+    // structured-question sets and wave content). The growth is unmapped at
+    // the official-code layer (excl.unmoved +2,705 EXACTLY), so the SERVABLE
+    // floors (8826/8752/13334) and every per-course servable pin are
+    // UNCHANGED of record — the identity law re-proven below.
+    expect(rawQ).toBe(27246);
+    expect(rawP).toBe(43996);
     // the shim's exclusion counters of record (the honest disclosure class)
     const excl = real.reduce(
       (a, e) => ({
@@ -304,10 +311,10 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0 },
     );
-    expect(excl).toEqual({ unmapped: 15696, badSum: 0, dupOrder: 19 });
+    expect(excl).toEqual({ unmapped: 18401, badSum: 0, dupOrder: 19 });
     // the question-level identity: raw - servable = unmapped + dupOrder (each
     // exclusion removes whole questions; badSum is zero of record)
-    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder); // 24541-8826 == 15696+19
+    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder); // 27246-8826 == 18401+19
     // the zero-servable real banks of record — see ZERO_SERVABLE_OF_RECORD
     // (the module-level law; econ-25 departed at run-006, the wave-2
     // anchor-gap class joined at the r1 fill and DEPARTED at the CONSUME-2

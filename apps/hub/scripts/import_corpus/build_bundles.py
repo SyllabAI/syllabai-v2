@@ -42,7 +42,7 @@ DOCS = os.path.join(PROJECT, "docs")
 # T-CONSUME-EDX-1: pin every fetch + hotlink to the exact resources commit the
 # bundles claim in importSource.ref — provenance must resolve forever, and raw
 # CDN serves any sha permanently.
-RESOURCES_SHA = "aa0b4de1b732738b4d02dabdd02d9ead85522907"  # T-CONSUME-EDX-2 pin (census-validated tranche-1 tip; includes T-SPEC-ACCT-REPAIR-1 + T-SPEC-ACCT-ADJ-1)
+RESOURCES_SHA = "1a5c37bcecf379cd98e83aa74aa9472920092428"  # T-CONSUME-EDX-2 pin (census-validated tranche-1 tip; includes T-SPEC-ACCT-REPAIR-1 + T-SPEC-ACCT-ADJ-1)
 RESOURCES_DATE = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())  # stamped at each build
 RAW_BASE = f"https://raw.githubusercontent.com/SyllabAI/syllabai-resources/{RESOURCES_SHA}"
 

@@ -34,7 +34,7 @@ import urllib.request
 import urllib.error
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-REPO = "/home/z/my-project/syllabai-v2"
+REPO = os.environ.get("SYLLABAI_HUB_PROJECT", "/home/z/my-project/syllabai-v2")
 CONTENT = os.path.join(REPO, "apps/hub/content")
 CACHE = "/home/z/my-project/work/corpus-cache3/SME-ExamQuestion"
 RESULTS = os.path.join(REPO, "apps/hub/tool-results/backfill-choices")

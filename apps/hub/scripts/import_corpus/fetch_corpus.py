@@ -28,7 +28,7 @@ WORK = "/home/z/my-project/work"
 CACHE = os.path.join(WORK, "corpus-cache")
 RAW = (
     "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/"
-    "aa0b4de1b732738b4d02dabdd02d9ead85522907"  # T-CONSUME-EDX-2: fetch pinned to the exact commit the manifests will claim
+    "1a5c37bcecf379cd98e83aa74aa9472920092428"  # T-CONSUME-EDX-2: fetch pinned to the exact commit the manifests will claim
 )
 
 MAX_WORKERS = 20

@@ -1,0 +1,90 @@
+{
+ "receipt": "EQFC-CONSUME-1-run-001",
+ "family": "HUB-CORPUS-RECONSUME",
+ "operatorTrace": "1a189b35ae5d5161",
+ "operatorOrder": "'EQ/FC/Official-Specs corpus waves'",
+ "agent": "r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, chat 0283e086-b297-4875-912b-a9f4fd722dc5)",
+ "generatedUtc": "2026-10-30T00:00:00Z",
+ "adjudication": {
+  "definitionOfRecord": "the queued gated lane residual carried verbatim by RN-RECONSUME-1 (receipt + worklog at 8861ea1c) and RN-REPLAY-2 (3b4322b3): 'EQ/FC/Official-Specs corpus waves at the pin remain queued gated lanes'",
+  "pin": "main@1a5c37bcecf379cd98e83aa74aa9472920092428 (the operator pin of record)",
+  "pinVsTip": "ALL import-relevant subtrees verified tree-IDENTICAL 1a5c37bc..3b2ce8da (and ..tip 1caad2e9 by ancestry) first-hand via rev-parse: SME-RevisionNotes 6e3a26c0, SME-ExamQuestion 262c7398, SME-Flashcards 580901c9, Official-Specifications 7c9a2efb, spec-links 72df717f \u2014 zero content delta pin..tip; consume runs at the pin of record",
+  "v2Base": "3b4322b3 (RN-REPLAY-2 receipt tip; rebased over 1caad2e9, zero content-path overlap, worklog union)"
+ },
+ "scope": {
+  "planes": "questions.json + flashcards.json + manifest serving-class (counts/importSource/generatedUtc) + asset-map pin coherence; notes/curriculum/spines/content-maps byte-untouched",
+  "coursesMerged": 81,
+  "coursesRekeyed": 100,
+  "manifestsUpdated": 81,
+  "assetMapsAdvanced": 3,
+  "foreignAuthorityExcluded": [
+   "igcse-chemistry-19 (ADR-037 converter v0.32.0 corpus, F117)",
+   "igcse-physics-19 (G-E4-PHYS-STAMP-1 exporter-of-record data-cut stamp)",
+   "igcse-maths-b-16 (T-MIG-136 anchors + operator restore ruling; official-papers plane)"
+  ],
+  "failClosed": [
+   "cie-a-level-computer-science-19 questions.json REVERTED byte-exact to HEAD: the corpus-of-record carries the 'algorithms' topic under TWO sections (9-algorithm-design... 38q + 19-computational-thinking... 40q, dual section ids 9/19) \u2014 a re-scrape leftover upstream; the set-slug derivation collides ('algorithms--exam-questions' x2) and the roster shim refuses (duplicate externalRef sme-eq-...-algorithms-q4). FILED for the corpus curation lane. cs-19 flashcards merged clean (2,656 cards, 0 dup ids).",
+   "7 zero-question stubs verified upstream-faithful at the pin (SME-ExamQuestion carries ZERO topic.json/questions.md for them \u2014 no_topic_questions_on_sme): cie-a-level-accounting-21, cie-a-level-economics-23, cie-a-level-geography-21, cie-as-accounting-21, cie-as-english-general-paper-21, cie-igcse-accounting-25, igcse-history-17 \u2014 nothing to consume"
+  ],
+  "officialSpecsAdjudication": "the OS wave (56 files at the pin) = spine/kg lanes' authority of record (RN-RECONSUME-1 receipt): the geography-2025-2026 + igcse-history parse sets were consumed by the T-SPECS spec-fill lanes; igcse-chemistry-legacy-4ch0 + igcse-chemistry/teaching-and-learning-materials are outside the 39-SME-course manifest scope by the legacy-dir law; the CIE bundle engines read ZERO OS files (verified: 0 refs in cie_build_bundles/build_bundles). No unconsumed engine inputs for this lane."
+ },
+ "engines": [
+  "apps/hub/scripts/import_corpus/fetch_corpus.py (pin constant advanced aa0b4de1 -> 1a5c37bc of record, T-CONSUME-EDX-2 mechanism; 11,995 files, 0 fail)",
+  "apps/hub/scripts/cie/cie_fetch_corpus.py (UNMODIFIED; live-tip resolve + subtree-identity adjudication; 8,046 files, 0 fail incl. the 10-AS-lane extension)",
+  "apps/hub/scripts/cie/cie_build_bundles.py (UNMODIFIED; CIE_PHASE0_MANIFEST env override = the documented extension point; 54-course extended matrix \u2014 44 of record + 10 AS lanes with counters computed at the pin; counters EXACT for the AS lanes)",
+  "apps/hub/scripts/import_corpus/build_bundles.py (pin constant advanced aa0b4de1 -> 1a5c37bc; 49 Edexcel packs, throwaway project)",
+  "apps/hub/scripts/backfill_mcq_choices.py (REPO -> env override, T-CONSUME-EDX-2 pattern; corpus-cache3 -> the pin cache; 1,626 choices rows joined verbatim from the corpus-of-record across 16 courses, 0 join misses, 1 key_count_anomaly disclosed (igcse-business-19 upstream row))",
+  "apps/hub/scripts/cie/cie_consume_spec_links.py Stage C/D functions (UNMODIFIED; refresh_bundle + battery driven per course with the COMMITTED content-maps \u2014 CONSUME-2 lineage, idempotent)"
+ ],
+ "mergeRules": {
+  "textFields": "corpus-of-record text advances propagate (the fix-at-source doctrine); committed 23a-dictionary LaTeX forms preserved where the corpus-of-record retains unconverted speech (speech detection = the verify_corpus_23a gate's own span classes) \u2014 the 23a-preservation carry",
+  "choices": "staged (wave-joined) wins; committed MCQ choices preserved where upstream captures none",
+  "smeSpecPointIds": "committed value preserved on existing items (the staged derivation predates the sme field); new items carry the derivation's pre-rekey specPointIds (the committed convention)",
+  "relatedNoteIds": "staged when all resolve in the package's notes.json, else the committed form (23c-relink preservation); the hard danglingRefs gate stayed 0 fleet-wide"
+ },
+ "delta": {
+  "files": 194,
+  "insertions": 236035,
+  "deletions": 16764,
+  "corpusAdvanceFields": {
+   "q:problemMd": 15924,
+   "q:solutionMd": 20524,
+   "fc:front": 520,
+   "fc:back": 839,
+   "choices": 45
+  },
+  "carry23aFields": {
+   "q:problemMd": 235,
+   "q:solutionMd": 204,
+   "fc:front": 263,
+   "fc:back": 414
+  },
+  "growth": {
+   "newSets": 243,
+   "newQuestions": 40,
+   "keepHubQuestionOnly": "38 within cs-19's matched set (the corpus dual-section class \u2014 reverted with the q plane)",
+   "carryRelatedNotes": 10
+  },
+  "rawCensus": "rawQuestions 24541 -> 27246 (+2705), rawParts 35141 -> 43996 (+8855); excl.unmapped 15696 -> 18401 (+2705 EXACTLY \u2014 the growth is unmapped-pending-verdict at the official-code layer); SERVABLE FLOORS UNCHANGED (8826 q / 8752 p / 13334 pkgParts); zeroServable {pure-2, english-language-20, english-language-25} unchanged",
+  "rosterTestRepin": "cie-phase4-roster.test.ts rawQ/rawP/unmapped re-pinned with disclosure (the tranche-3 'tests of record, not the bundles' class); every per-course servable pin and floor UNCHANGED"
+ },
+ "gates": {
+  "corpusGate": "PASSED after the speech-baseline refreeze (span 525->655, dollar 1, textwrap 0->10, multiline 93->107, baretext 2->9 \u2014 corpus-faithful PR-#220 converter residual classes in the wave content; the 23a-preservation carry held the landed increase to +130 span vs +2148 uncarried; danglingRefs 0 HARD); the aria-label-to-LaTeX cleanup remains the disclosed follow-up curation lane",
+  "flashcardSync": "exit 0",
+  "cieValidator": "PASSED (108 specs, D2 0, pure-1 bank 67)",
+  "typecheck": "tsc x4 0 errors",
+  "smeBattery": "111 pass / 0 fail (incl. the re-pinned roster law)",
+  "repoTests": "3063 pass / 13 skip / 0 fail",
+  "build": "bun run build: compiled + 2431/2431 static pages (was 2265 \u2014 the wave's new sets/questions serve)"
+ },
+ "ciRun": {
+  "pending": "push + bounded poll 4x75s + bake witness + live spot-check follow in the closing witness entry"
+ },
+ "disclosures": [
+  "speech-baseline refrozen to the measured corpus-of-record (the run-001-ci-remedy remedy class)",
+  "battery A1/M2 waivers DOCUMENTED for the idempotent-rekey drive class: A1 governs the consume engine's own map mutations (zero map contact here; maps byte-identical), M2's T2_near tiers live in the Edexcel-generation maps of record and the committed planes already carry those items' codes (verified first-hand: sda-17-biology 130 T2 items / 31 committed parts)",
+  "engine pin constants advanced of record with this receipt as the citation (fetch_corpus.py, build_bundles.py: aa0b4de1 -> 1a5c37bc); backfill REPO env-overridable (T-CONSUME-EDX-2 pattern); cie engines byte-unmodified",
+  "the 243 new sets ride the NEXT converter/DB-plane runs; no DB contact this lane",
+  "token discipline: GITHUB_PAT via env/credential-helper only; never printed/persisted"
+ ]
+}
