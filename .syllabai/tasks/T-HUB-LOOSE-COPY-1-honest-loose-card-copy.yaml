@@ -1,0 +1,28 @@
+version: 1
+task:
+  id: T-HUB-LOOSE-COPY-1
+  title: "Honest loose-card copy — course-aware looseAnchorCopy(); maths-b adjudicated terminal truth replaces the stale 'still in progress upstream' claim"
+  owner: "main agent (Z.ai, zai-web session web-528c0352-0cf7-4715-a187-50aec294b288, trace 1a187582eb9b9ab5)"
+  status: DONE # run-001 (zai-web session web-528c0352, trace 1a187582eb9b9ab5): apps/hub/src/lib/loose-copy.ts (ADJUDICATED_NO_SPEC_HOME = igcse-maths-b-16 only; DEFAULT_COPY byte-preserves the legacy sentence) + notes-index.tsx unmapped-card title+body source swap + guided-lessons/page.tsx unmapped-heading source swap; gates: bun run typecheck green, build:hub exit 0 (corpus-verify prebuild + next build); commit a0e43856; receipt .syllabai/receipts/T-HUB-LOOSE-COPY-1/run-001-honest-loose-card-copy-r0.json
+  priority: P2
+  band: T-HUB-LOOSE-COPY (hub UI honesty followup of T-SPECS-MATHSB-2B-OVERLAY-1 run-001 / T-CONSUME-EDX-1 run-002 convergence)
+  wave: hub-honesty
+  deps: []
+  scope:
+    allowed:
+      - "apps/hub/src/lib/loose-copy.ts (new)"
+      - "apps/hub/src/app/courses/[course]/revision-notes/notes-index.tsx (copy source swap only)"
+      - "apps/hub/src/app/courses/[course]/guided-lessons/page.tsx (heading source swap only)"
+    forbidden:
+      - "apps/hub/content/** (zero bundle bytes)"
+      - "apps/hub/content-maps/**"
+      - "any other course's adjudication status (adding courses to ADJUDICATED_NO_SPEC_HOME is operator-gated)"
+  notes: >
+    The loose card's legacy body promised "the spec-point mapping (still in
+    progress upstream) will slot them into the tree" — TRUE for the 82 other
+    courses carrying code-less notes, FALSE for igcse-maths-b-16 where the
+    mapping lane is CLOSED (197/199 coded at resources HEAD; the 2 uncoded are
+    T-SPEC-2B terminal stays, class no_statement_plane_home: Mathematical
+    Symbols, Listing Outcomes). Per-course truth via a static map keyed by
+    course slug; no manifest schema change, no bundle regen, no second
+    taxonomy — grouping law untouched.

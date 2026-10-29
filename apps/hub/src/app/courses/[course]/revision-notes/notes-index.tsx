@@ -12,6 +12,7 @@ import { GraduationCap } from "lucide-react";
 import { ChevronGlyph, NumberedLabel } from "@/components/hub/chrome";
 import { ProgressRing } from "@/components/hub/progress-ring";
 import { useCourseProgress, type Course } from "@/lib/progress";
+import { looseAnchorCopy } from "@/lib/loose-copy";
 import { cn } from "@/lib/utils";
 import type { SpecTree } from "@/lib/spec-tree";
 
@@ -39,6 +40,7 @@ export function NotesIndex({
   initialSubtopic: string | null;
 }) {
   const progress = useCourseProgress(course);
+  const looseCopy = looseAnchorCopy(course);
 
   const groups = useMemo(() => {
     return tree.topics
@@ -182,11 +184,8 @@ export function NotesIndex({
       {unmapped.length > 0 && (
         <Card>
           <CardContent className="p-4">
-            <p className="mb-2 text-sm font-medium">Not yet anchored to a spec point</p>
-            <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
-              These notes exist in the corpus without a machine-readable specification anchor —
-              the spec-point mapping (still in progress upstream) will slot them into the tree.
-            </p>
+            <p className="mb-2 text-sm font-medium">{looseCopy.title}</p>
+            <p className="mb-3 text-xs leading-relaxed text-muted-foreground">{looseCopy.body}</p>
             <ul className="space-y-1.5">
               {unmapped.map((n) => (
                 <li key={n.noteId}>

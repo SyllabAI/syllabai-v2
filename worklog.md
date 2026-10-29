@@ -98,3 +98,18 @@ Work Log:
 
 Stage Summary:
 - run-017 tranche 2 content COMPLETE and reconciled: 0c75d58f837ec61f awaits a green window (main verify fix by the MATHSB-ANCHORS lane) + a working CI channel. Escalations: (1) red main T-MIG-136 shim test; (2) PR CI event-drop for this lane; (3) r7a 2025-06 P1 residual 8 S1 hits; (4) corpus topic.json ADR-039 sync for the 3 papers rides next resources PR.
+
+---
+Task ID: T-HUB-LOOSE-COPY-1 run-001 (operator trace 1a187582eb9b9ab5: "file the honest-copy fix as a small PR")
+Agent: main agent (Super Z, session web-528c0352)
+Task: Replace the maths-b loose card's now-false "still in progress upstream" promise with the adjudicated terminal truth, course-aware, without touching bundle bytes or the 82 in-progress courses' copy.
+
+Work Log:
+- State check first hand: sandbox re-reset (2nd) recovered — local main was stale c55927e7 (-609), ff-aligned to 2559034b; census at HEAD: igcse-maths-b-16 codeless 2/199 (Mathematical Symbols + Listing Outcomes, the T-SPEC-2B terminal stays); 83 courses carry code-less notes (some fully uncoded) — hence course-aware design, not a fleet-wide claim.
+- apps/hub/src/lib/loose-copy.ts: looseAnchorCopy(course) — ADJUDICATED_NO_SPEC_HOME (igcse-maths-b-16 only, receipt-cited) ?? DEFAULT_COPY byte-preserving the legacy sentence.
+- Both surfaces wired: revision-notes unmapped card (title+body) and guided-lessons unmapped heading (title); grouping law untouched.
+- Gates: bun install --frozen-lockfile (952 pkgs) → bun run typecheck green → build:hub EXIT 0 (corpus-verify prebuild + next build).
+- Commits: code a0e43856 + this artifacts commit; branch t-hub-loose-copy-1/r0 → PR (small); card + receipt under .syllabai/.
+
+Stage Summary:
+- run-001 SHIPPED as small PR; post-merge followup: Vercel deploy + live spot-check of the new adjudicated copy.
