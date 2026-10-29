@@ -18,7 +18,32 @@
   "liveRecensus": {
     "pin": "701ae1997de5421a",
     "artifact": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-020/gs-census-post-b1.json",
-    "classSummary": {"G1": {"parts": 276, "trigBucketParts": 62}, "G2": {"parts": 2023, "trigBucketParts": 159}, "G3": {"parts": 245, "trigBucketParts": 7}, "G4": {"parts": 117, "trigBucketParts": 27}, "B1": {"parts": 0, "trigBucketParts": 0}, "P1": {"parts": 0, "trigBucketParts": 0}},
+    "classSummary": {
+      "G1": {
+        "parts": 276,
+        "trigBucketParts": 62
+      },
+      "G2": {
+        "parts": 2023,
+        "trigBucketParts": 159
+      },
+      "G3": {
+        "parts": 245,
+        "trigBucketParts": 7
+      },
+      "G4": {
+        "parts": 117,
+        "trigBucketParts": 27
+      },
+      "B1": {
+        "parts": 0,
+        "trigBucketParts": 0
+      },
+      "P1": {
+        "parts": 0,
+        "trigBucketParts": 0
+      }
+    },
     "trigBucketLeadCount": 159,
     "leadCount": 2046,
     "notes": [
@@ -28,7 +53,9 @@
     ]
   },
   "tranche1Execution": {
-    "parts": ["offp_2022-06_01r_22-a"],
+    "parts": [
+      "offp_2022-06_01r_22-a"
+    ],
     "fixPairs": 7,
     "tokens": 8,
     "fixes": "7 old->new pairs (run-020/run020_fixes.py): 5x flattened k^2 ('k2'/'k 2' shapes) + 2x flattened 144x^2 ('144 x 2' shape) -> law-26 KaTeX in the q22(a) ALTERNATIVE block",
@@ -65,5 +92,19 @@
     "tranche-2: F1/F2/F3 structural repairs in their owning lane (attach class), then token-fixable trig leads",
     "F4 + F6 rebuild/annex-class scheduling per the run-004 run-005 menu",
     "PAT rotation (standing order, both tokens)"
-  ]
+  ],
+  "landing": {
+    "pr": "PR #443 merged 93990eb27edc55b1e0be88014440337b66da325c (merge_method=merge, mergeable clean, reviews 0)",
+    "ci": "pre-merge head c88a2845: hub completed:success + verify completed:success (2/2); post-merge main 93990eb2 CI fired (channel-drop class NOT observed this run)",
+    "vercel": "production alias syllabai-hub-v2.vercel.app serving the merged main (Vercel API not queried this run — no Vercel token supplied; deploy verified by content marker, run-019 flight-parity pattern)",
+    "liveSpotCheck": {
+      "url": "/courses/igcse-maths-b-16/past-papers/june-2022-4mb1-01r (HTTP 200, 422KB)",
+      "flightContentParity": "PASS — new sources present: '$k^2$' x12, '144x^2' x4 (solution + mirrored markPoints[0] carriers), exact context 'for k or $k^2$ 36 18 x $k^2$' x2; q22(a) distinctive note + ALTERNATIVE block present",
+      "regressionChecks": "PASS — ALL old flattened forms ABSENT on live: '36 18 x k2', '126 x 144 x 2', '144 x 2', '36 9 k2', 'for k or k 2'",
+      "ssrNote": "zero class=\"katex\" on this route — client-painted content, the run-019 disclosed SSR/flight split class; flight-layer parity is the verification of record",
+      "verdict": "live == plane of record f2cbe67ab7d2493 for q22(a); zero regressions observed"
+    },
+    "credentials": "operator re-supplied a GitHub PAT (…JU4 suffix — SAME class as the standing exposed token): used env/GIT_ASKPASS only (0600 transient helper, scrubbed post-push; token NEVER written to config/files/logs/receipts); ROTATION STANDING ORDER RE-FLAGGED — the …JU4 token is now ALSO exposed in the chat transcript and must be rotated after this wave",
+    "blockedAtResolution": "push leg UNBLOCKED by the PAT re-supply; the blockedAt state above is retained as the pre-landing record"
+  }
 }
