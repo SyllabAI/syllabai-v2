@@ -353,3 +353,16 @@ Work Log:
 
 Stage Summary:
 - T-OEQ-PARTLABEL-2 LANDED of record (CI verify+hub 2/2 GREEN on head 0c3410df; PR #469 merged — merge commit 2da5a15a7b8f104f, API GET merged:true): part labels print on the same line as the part text — the printed-paper reading the operator asked for. One file changed (question-player.tsx, +66/-38); lib/part-label.ts derivation untouched (fail-closed law intact, 13/13). Receipt: .syllabai/receipts/T-OEQ-PARTLABEL-2/run-001.json (merge close-out appended).
+Task ID: T-UGM-XBOARD-IAL-1 X1 run-001 (operator trace 1a189f76c6e1d075: "Start")
+Agent: main agent (Z.ai)
+Task: X1 — the FIRST cross-board mirror bundle: ial-maths-20-pure-1 ugm-resources.json from the run-001 feasibility matrix (vehicle V1 of record, PR #466).
+
+Work Log:
+- Join of record: run-001-feasibility-r0.json matrix P1 (22 rows; key P1.a.b <-> curriculum SPEC_POINT code a.b, V1 biject asserted) x the three CIE bundles' aligned serving sets. 301 mirrored rows across 18 UGM stations; 22/22 IAL codes covered; zero INSUFFICIENT on P1 (the 2 hard GAPs are P4 5.2/6.4, X4 scope).
+- Byte-true mirror law: every served bodyMd is byte-equal to its CIE hub bundle row of record, with textOfRecordUnder = "<cie-course>/ugm-resources.json" + servedFromCourse provenance (the T-UGM-HUB-CONSUME-P2 course-plane serve law taken cross-board). Zero corpus text moves, zero recapture, zero new intake; CIE non-overlap disclosures stay on the CIE bundles (one disclosure one home).
+- depthGrade law fail-closed: DIRECT->SERVES (15); DIRECT_THIN/PARTIAL/PARTIAL_VERY_THIN->SERVES_WITH_GUARD (7) with the guard language riding each resource specPoints note ("[SERVES_WITH_GUARD] <- CIE pure-1 1.1.3 (serves) ..."); GAP->INSUFFICIENT would carry null pick + zero rows (schema-1.2 honest-gap law, never served). primaryPick inherits the source lane's pick of record (22/22).
+- Validation: V1 biject + V2 (every ref resolves to CIE index + resource rows) + V3 (pick law, no orphans, no nonOverlap mirrors, \\(\\)/\\[\\] delimiter balance, /ugm-assets/ existence, cross-course byte-equality) all PASS at build; bun suite 68/68 green incl. the new cross-board mirror pin block (301 rows byte-compared in CI, spine officialText byte-equal to curriculum titles, guard set = exactly 7); hub-local tsc 0; validate_cie_bundles PASS (untouched plane); render census 794 untouched by design.
+- Receipts: .syllabai/receipts/T-UGM-XBOARD-IAL-1/x1-pure-1-mirror-r0.json (per-row depthGrade map + census + validation of record).
+
+Stage Summary:
+- X1 of record: ial-maths-20-pure-1 carries a validated cross-board mirror bundle (SUGGESTED, review-gated); learner surface visibility unchanged (flag law from X0; surface ships when commissioned). X2-X4 (P2/P3/P4 mirrors, incl. the 2 INSUFFICIENT DE rows on P4) follow the same shape. Bookkeeping + committed data only; zero code behavior change, zero DB contact.

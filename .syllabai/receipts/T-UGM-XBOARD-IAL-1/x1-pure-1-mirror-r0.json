@@ -1,0 +1,1070 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "T-UGM-XBOARD-IAL-1",
+ "run": "x1-pure-1-mirror-r0",
+ "kind": "cross-board-mirror-build",
+ "generatedUtc": "2026-10-29T23:30:24Z",
+ "unit": "P1",
+ "matrixSource": ".syllabai/receipts/T-UGM-XBOARD-IAL-1/run-001-feasibility-r0.json",
+ "depthGradeLaw": {
+  "mapping": {
+   "DIRECT": "SERVES",
+   "DIRECT_THIN": "SERVES_WITH_GUARD",
+   "PARTIAL": "SERVES_WITH_GUARD",
+   "PARTIAL_VERY_THIN": "SERVES_WITH_GUARD",
+   "GAP": "INSUFFICIENT"
+  },
+  "serving": "SERVES/SERVES_WITH_GUARD rows serve their mirrored rows with the guard language on each resource specPoints note; INSUFFICIENT rows carry null pick + zero rows (schema-1.2 honest-gap law) — disclosed, never served."
+ },
+ "rows": [
+  {
+   "ial": "P1.1.1",
+   "ialCode": "1.1",
+   "class": "PARTIAL_VERY_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.7.2",
+     "role": "adjacent"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.6.1",
+     "role": "adjacent"
+    }
+   ],
+   "note": "indices embedded in x^n / binomial material; 1 dedicated body (powerful-quads)",
+   "served": [
+    "r9942",
+    "chain-mapping",
+    "designing-a-polynomial",
+    "gradient-spotting",
+    "i-can-see-u",
+    "producing-a-rule",
+    "r8588",
+    "r9082",
+    "slippery-slopes-another-derivative",
+    "r5703",
+    "r6877",
+    "r7391",
+    "r8286",
+    "r8399",
+    "r8543",
+    "can-you-find-curvy-cubics",
+    "curvy-cubics",
+    "floppy-hair",
+    "r5732",
+    "r6180",
+    "r6537",
+    "r6820",
+    "r6867",
+    "r6868",
+    "r7196",
+    "r7280",
+    "r7386",
+    "r7586",
+    "r7720",
+    "r7785",
+    "r7839",
+    "r7998",
+    "r8441",
+    "r8548",
+    "r9260",
+    "r9599",
+    "r9671",
+    "r9905",
+    "r5640",
+    "r7078",
+    "r5563",
+    "r5965",
+    "r6102",
+    "r6503",
+    "r6770",
+    "r7489",
+    "r7978",
+    "r8014",
+    "r9207",
+    "r9404",
+    "r9928"
+   ],
+   "primaryPick": "r9942"
+  },
+  {
+   "ial": "P1.1.2",
+   "ialCode": "1.2",
+   "class": "DIRECT_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.1.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.5.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.2.1",
+     "role": "adjacent"
+    }
+   ],
+   "note": "surds: 7 corpus bodies (irrational-roots, r7485, r6018 sin-18-as-surd, invertibles)",
+   "served": [
+    "factorisable-quads",
+    "inequalities-for-some-occasions",
+    "irrational-roots",
+    "pick-a-card",
+    "quad-solving-sorter",
+    "r5059",
+    "r6246",
+    "r6638",
+    "r7035",
+    "r9742",
+    "r9989",
+    "which-quadratic",
+    "geogebra-constructions-quadratic",
+    "proving-quad-formula",
+    "quadratic-grids",
+    "r6712",
+    "r7533",
+    "r7972",
+    "r8775",
+    "r8781",
+    "trig-tables",
+    "r7021",
+    "r7912",
+    "r8330",
+    "trig-countdown",
+    "trig-tables-teacher-support",
+    "r9527",
+    "r5362",
+    "r7607",
+    "r5764",
+    "r5966",
+    "compose",
+    "composing-gets-me-nowhere",
+    "domain-and-range-dominoes",
+    "forming-functions-defining-domains",
+    "invertibles",
+    "making-inverse-functions"
+   ],
+   "primaryPick": "quad-solving-sorter"
+  },
+  {
+   "ial": "P1.1.3",
+   "ialCode": "1.3",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.1.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.1.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.1.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "name-that-graph",
+    "quad-symmetry",
+    "r6526",
+    "r6756",
+    "r9724",
+    "which-parabola",
+    "which-quadratic",
+    "paired-parabolas",
+    "discriminating",
+    "discriminating-teacher-support",
+    "r5138",
+    "r5316",
+    "r6828",
+    "r7455",
+    "r8812",
+    "r9658",
+    "r9659",
+    "r9742",
+    "r7350",
+    "factorisable-quads",
+    "inequalities-for-some-occasions",
+    "irrational-roots",
+    "pick-a-card",
+    "quad-solving-sorter",
+    "r5059",
+    "r6246",
+    "r6638",
+    "r7035",
+    "r9989",
+    "geogebra-constructions-quadratic",
+    "proving-quad-formula",
+    "quadratic-grids",
+    "r6712",
+    "r7533",
+    "r7972",
+    "r8775",
+    "r8781"
+   ],
+   "primaryPick": "name-that-graph"
+  },
+  {
+   "ial": "P1.1.4",
+   "ialCode": "1.4",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.1.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "discriminating",
+    "discriminating-teacher-support",
+    "r5138",
+    "r5316",
+    "r6526",
+    "r6828",
+    "r7455",
+    "r8812",
+    "r9658",
+    "r9659",
+    "r9742",
+    "r7350"
+   ],
+   "primaryPick": "discriminating"
+  },
+  {
+   "ial": "P1.1.5",
+   "ialCode": "1.5",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.1.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.1.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.1.5",
+     "role": "serves"
+    }
+   ],
+   "note": "disguised quadratics (quadratic in f(x)) serve the IAL solving surface",
+   "served": [
+    "name-that-graph",
+    "quad-symmetry",
+    "r6526",
+    "r6756",
+    "r9724",
+    "which-parabola",
+    "which-quadratic",
+    "paired-parabolas",
+    "factorisable-quads",
+    "inequalities-for-some-occasions",
+    "irrational-roots",
+    "pick-a-card",
+    "quad-solving-sorter",
+    "r5059",
+    "r6246",
+    "r6638",
+    "r7035",
+    "r9742",
+    "r9989",
+    "geogebra-constructions-quadratic",
+    "proving-quad-formula",
+    "quadratic-grids",
+    "r6712",
+    "r7533",
+    "r7972",
+    "r8775",
+    "r8781",
+    "r5682",
+    "r6215",
+    "r6816",
+    "r7485",
+    "r9546",
+    "powerful-quads",
+    "r5847",
+    "r6387",
+    "r8128",
+    "r8407",
+    "r8855"
+   ],
+   "primaryPick": "name-that-graph"
+  },
+  {
+   "ial": "P1.1.6",
+   "ialCode": "1.6",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.1.4",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r5287",
+    "r6429",
+    "r7328",
+    "r8045",
+    "r9614",
+    "r9658",
+    "r6804",
+    "r7520",
+    "r7588",
+    "r8781"
+   ],
+   "primaryPick": "r7328"
+  },
+  {
+   "ial": "P1.1.7",
+   "ialCode": "1.7",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.1.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "factorisable-quads",
+    "inequalities-for-some-occasions",
+    "irrational-roots",
+    "pick-a-card",
+    "quad-solving-sorter",
+    "r5059",
+    "r6246",
+    "r6638",
+    "r7035",
+    "r9742",
+    "r9989",
+    "which-quadratic",
+    "geogebra-constructions-quadratic",
+    "proving-quad-formula",
+    "quadratic-grids",
+    "r6712",
+    "r7533",
+    "r7972",
+    "r8775",
+    "r8781"
+   ],
+   "primaryPick": "quad-solving-sorter"
+  },
+  {
+   "ial": "P1.1.8",
+   "ialCode": "1.8",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.1.3",
+     "role": "serves"
+    }
+   ],
+   "note": "graphical representation embedded in inequality material",
+   "served": [
+    "factorisable-quads",
+    "inequalities-for-some-occasions",
+    "irrational-roots",
+    "pick-a-card",
+    "quad-solving-sorter",
+    "r5059",
+    "r6246",
+    "r6638",
+    "r7035",
+    "r9742",
+    "r9989",
+    "which-quadratic",
+    "geogebra-constructions-quadratic",
+    "proving-quad-formula",
+    "quadratic-grids",
+    "r6712",
+    "r7533",
+    "r7972",
+    "r8775",
+    "r8781"
+   ],
+   "primaryPick": "quad-solving-sorter"
+  },
+  {
+   "ial": "P1.1.9",
+   "ialCode": "1.9",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.1.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "factorisable-quads",
+    "inequalities-for-some-occasions",
+    "irrational-roots",
+    "pick-a-card",
+    "quad-solving-sorter",
+    "r5059",
+    "r6246",
+    "r6638",
+    "r7035",
+    "r9742",
+    "r9989",
+    "which-quadratic",
+    "geogebra-constructions-quadratic",
+    "proving-quad-formula",
+    "quadratic-grids",
+    "r6712",
+    "r7533",
+    "r7972",
+    "r8775",
+    "r8781"
+   ],
+   "primaryPick": "quad-solving-sorter"
+  },
+  {
+   "ial": "P1.1.10",
+   "ialCode": "1.10",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.1.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.1.4",
+     "role": "serves"
+    }
+   ],
+   "note": "year-skew: IAL P1 polynomials served by CIE P3 algebra bodies",
+   "served": [
+    "function-builder-ii",
+    "r5276",
+    "r6317",
+    "r6577",
+    "whats-left",
+    "can-you-find-cubic-edition",
+    "how-not-to-solve-a-cubic",
+    "r5032",
+    "r5196",
+    "r5248",
+    "r6299",
+    "r6431",
+    "r6488",
+    "r6546",
+    "r6612",
+    "r6790",
+    "r7036",
+    "r7108",
+    "r7243",
+    "r7991",
+    "r8468",
+    "r8701",
+    "r9006",
+    "r9330"
+   ],
+   "primaryPick": "whats-left"
+  },
+  {
+   "ial": "P1.1.11",
+   "ialCode": "1.11",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.7.4",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.2.5",
+     "role": "adjacent"
+    }
+   ],
+   "note": "cubic/reciprocal sketching via stationary-points + transformation material",
+   "served": [
+    "r9260",
+    "can-you-find-curvy-cubics",
+    "curvy-cubics",
+    "floppy-hair",
+    "r5732",
+    "r6180",
+    "r6537",
+    "r6820",
+    "r6867",
+    "r6868",
+    "r7196",
+    "r7280",
+    "r7386",
+    "r7586",
+    "r7720",
+    "r7785",
+    "r7839",
+    "r7998",
+    "r8441",
+    "r8548",
+    "r9599",
+    "r9671",
+    "r9905",
+    "r7433",
+    "talking-about-curves",
+    "two-way-calculus",
+    "average-turning-points",
+    "r5768",
+    "r6703",
+    "r7212",
+    "r7861",
+    "r8959",
+    "r9506",
+    "r9582",
+    "r9781",
+    "r5640",
+    "r7115",
+    "r8936",
+    "r7119",
+    "r5595",
+    "r9673",
+    "its-a-matter-of-perspective",
+    "name-that-graph-again",
+    "order-order",
+    "transformers",
+    "translating-or-not",
+    "r6607"
+   ],
+   "primaryPick": "r9260"
+  },
+  {
+   "ial": "P1.1.12",
+   "ialCode": "1.12",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.2.5",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r7119",
+    "r5595",
+    "r9673",
+    "its-a-matter-of-perspective",
+    "name-that-graph-again",
+    "order-order",
+    "transformers",
+    "translating-or-not",
+    "r6607"
+   ],
+   "primaryPick": "order-order"
+  },
+  {
+   "ial": "P1.2.1",
+   "ialCode": "2.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.3.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.3.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "cartesian-coordinates",
+    "describing-straight-lines",
+    "lots-of-lines",
+    "r5202",
+    "r5661",
+    "r5948",
+    "r5967",
+    "r6230",
+    "r6366",
+    "r6583",
+    "r6803",
+    "r6835",
+    "r8449",
+    "r8748",
+    "r9273",
+    "simultaneous-squares",
+    "straight-line-pairs",
+    "between-the-lines",
+    "near-miss",
+    "negatively-triangular",
+    "r5255",
+    "r5281",
+    "r5737",
+    "r5887",
+    "r6234",
+    "r6514",
+    "r7296",
+    "r7320",
+    "r8080",
+    "r8408",
+    "r9709",
+    "spot-the-difference",
+    "the-circle-of-apollonius-coordinate-edition",
+    "the-equation-of-a-straight-line",
+    "conic-sections-in-real-life",
+    "finding-circles",
+    "olympic-rings",
+    "pairs-of-circles",
+    "r5624",
+    "r5717",
+    "r5777",
+    "r5903",
+    "r6100",
+    "r6390",
+    "r7171",
+    "r7549",
+    "r7599",
+    "r7656",
+    "r7925",
+    "r8275",
+    "r8419",
+    "r8509",
+    "r8946",
+    "r9045",
+    "r9368",
+    "r9386",
+    "r9452",
+    "r9551",
+    "r9768",
+    "teddy-bear",
+    "teddy-bear-teacher-support"
+   ],
+   "primaryPick": "straight-line-pairs"
+  },
+  {
+   "ial": "P1.2.2",
+   "ialCode": "2.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.3.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "between-the-lines",
+    "describing-straight-lines",
+    "lots-of-lines",
+    "near-miss",
+    "negatively-triangular",
+    "r5202",
+    "r5255",
+    "r5281",
+    "r5661",
+    "r5737",
+    "r5887",
+    "r5948",
+    "r5967",
+    "r6230",
+    "r6234",
+    "r6366",
+    "r6514",
+    "r6583",
+    "r6803",
+    "r6835",
+    "r7296",
+    "r7320",
+    "r8080",
+    "r8408",
+    "r8449",
+    "r8748",
+    "r9273",
+    "r9709",
+    "simultaneous-squares",
+    "spot-the-difference",
+    "straight-line-pairs",
+    "the-circle-of-apollonius-coordinate-edition",
+    "the-equation-of-a-straight-line",
+    "conic-sections-in-real-life",
+    "finding-circles",
+    "olympic-rings",
+    "pairs-of-circles",
+    "r5624",
+    "r5717",
+    "r5777",
+    "r5903",
+    "r6100",
+    "r6390",
+    "r7171",
+    "r7549",
+    "r7599",
+    "r7656",
+    "r7925",
+    "r8275",
+    "r8419",
+    "r8509",
+    "r8946",
+    "r9045",
+    "r9368",
+    "r9386",
+    "r9452",
+    "r9551",
+    "r9768",
+    "teddy-bear",
+    "teddy-bear-teacher-support"
+   ],
+   "primaryPick": "teddy-bear"
+  },
+  {
+   "ial": "P1.3.1",
+   "ialCode": "3.1",
+   "class": "DIRECT_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.5.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.5.5",
+     "role": "adjacent"
+    }
+   ],
+   "note": "sine/cosine rule: 6 trig-station bodies ride 1.5.x rows (r5497, r6049, r6589, sine-ing-the-way)",
+   "served": [
+    "going-round-in-circles",
+    "big-trig",
+    "calculating-latitude",
+    "can-you-find-trigonometry-edition",
+    "can-you-find-trigonometry-edition-teacher-support",
+    "catching-waves",
+    "from-stars-to-waves",
+    "have-a-sine",
+    "how-high-am-i",
+    "muddled-trig",
+    "r5199",
+    "r5497",
+    "r7000",
+    "r7184",
+    "r7374",
+    "r7577",
+    "r7912",
+    "r7973",
+    "r8386",
+    "r8713",
+    "slices-of-pi",
+    "slices-of-pi-teacher-support",
+    "trig-tables",
+    "r6138",
+    "general-solutions",
+    "r5269",
+    "r8136",
+    "r9491",
+    "r9837"
+   ],
+   "primaryPick": "going-round-in-circles"
+  },
+  {
+   "ial": "P1.3.2",
+   "ialCode": "3.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.4.1",
+     "role": "serves"
+    }
+   ],
+   "note": "1.4.1a problem-sub-point n=0 -> depth guard on problem rows",
+   "served": [
+    "r5534",
+    "problem-areas",
+    "r8936",
+    "belt",
+    "r6164",
+    "r6838",
+    "r7385",
+    "r7495",
+    "r7816",
+    "r7937",
+    "r7979",
+    "r8225",
+    "r9028",
+    "r9423",
+    "sector-spirals",
+    "r8946",
+    "r9386"
+   ],
+   "primaryPick": "r5534"
+  },
+  {
+   "ial": "P1.3.3",
+   "ialCode": "3.3",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.5.1",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "going-round-in-circles",
+    "big-trig",
+    "calculating-latitude",
+    "can-you-find-trigonometry-edition",
+    "can-you-find-trigonometry-edition-teacher-support",
+    "catching-waves",
+    "from-stars-to-waves",
+    "have-a-sine",
+    "how-high-am-i",
+    "muddled-trig",
+    "r5199",
+    "r5497",
+    "r7000",
+    "r7184",
+    "r7374",
+    "r7577",
+    "r7912",
+    "r7973",
+    "r8386",
+    "r8713",
+    "slices-of-pi",
+    "slices-of-pi-teacher-support",
+    "trig-tables"
+   ],
+   "primaryPick": "going-round-in-circles"
+  },
+  {
+   "ial": "P1.4.1",
+   "ialCode": "4.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.7.1",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "binomials-are-the-answer",
+    "estimating-gradients",
+    "gradients-of-gradients",
+    "mapping-a-derivative",
+    "zooming-in"
+   ],
+   "primaryPick": "binomials-are-the-answer"
+  },
+  {
+   "ial": "P1.4.2",
+   "ialCode": "4.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.7.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r9942",
+    "chain-mapping",
+    "designing-a-polynomial",
+    "gradient-spotting",
+    "i-can-see-u",
+    "producing-a-rule",
+    "r8588",
+    "r9082",
+    "slippery-slopes-another-derivative",
+    "r5703",
+    "r6877",
+    "r7391",
+    "r8286",
+    "r8399",
+    "r8543",
+    "can-you-find-curvy-cubics",
+    "curvy-cubics",
+    "floppy-hair",
+    "r5732",
+    "r6180",
+    "r6537",
+    "r6820",
+    "r6867",
+    "r6868",
+    "r7196",
+    "r7280",
+    "r7386",
+    "r7586",
+    "r7720",
+    "r7785",
+    "r7839",
+    "r7998",
+    "r8441",
+    "r8548",
+    "r9260",
+    "r9599",
+    "r9671",
+    "r9905",
+    "r5640"
+   ],
+   "primaryPick": "r9942"
+  },
+  {
+   "ial": "P1.4.3",
+   "ialCode": "4.3",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.7.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r8065",
+    "r5703",
+    "r6877",
+    "r7391",
+    "r8286",
+    "r8399",
+    "r8543",
+    "r9942",
+    "a-tangent-is",
+    "gradient-match",
+    "gradients-important-real-world",
+    "r6345",
+    "r6352",
+    "r6584",
+    "r6959",
+    "r7734",
+    "r7750",
+    "r8231",
+    "r8287",
+    "r8625",
+    "r9138",
+    "r9815",
+    "slippery-slopes",
+    "speed-vs-velocity",
+    "tangent-or-normal",
+    "walk-sorting",
+    "r7433",
+    "talking-about-curves",
+    "two-way-calculus"
+   ],
+   "primaryPick": "r8065"
+  },
+  {
+   "ial": "P1.5.1",
+   "ialCode": "5.1",
+   "class": "DIRECT_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.8.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.8.2",
+     "role": "serves"
+    }
+   ],
+   "note": "n=6 bodies",
+   "served": [
+    "r8716",
+    "r9701",
+    "r5768",
+    "r7410",
+    "r7734",
+    "thinking-constantly"
+   ],
+   "primaryPick": "r8716"
+  },
+  {
+   "ial": "P1.5.2",
+   "ialCode": "5.2",
+   "class": "DIRECT_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.8.1",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r8716",
+    "r9701"
+   ],
+   "primaryPick": "r8716"
+  }
+ ],
+ "census": {
+  "ialSpecPoints": 22,
+  "depthGrade": {
+   "SERVES_WITH_GUARD": 7,
+   "SERVES": 15
+  },
+  "mirroredResources": 301,
+  "candidateRows": 624,
+  "perSourceCourse": {
+   "cie-a-level-maths-20-pure-1": 277,
+   "cie-a-level-maths-20-pure-3": 24
+  },
+  "specPointsCovered": 22
+ },
+ "validation": {
+  "V1_biject": "PASS (22 matrix keys <-> 22 curriculum SPEC_POINT codes)",
+  "V2_refs": "PASS (every ref resolves to CIE index + resource of record)",
+  "V3_serve": "PASS (pick law, no orphans, no nonOverlap mirrors, delimiter balance, asset existence, INSUFFICIENT never serves, byte-equality across sources)"
+ }
+}
