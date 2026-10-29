@@ -1,0 +1,36 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "T-UGM-XBOARD-IAL-1",
+ "run": "x0-registry-flags",
+ "kind": "bookkeeping-pre-lane",
+ "operatorTrace": "1a189d4054dd2b7d",
+ "generatedUtc": "2026-10-30T00:00:00Z",
+ "task": "X0: declare the cross-board registry of record + flag the four IAL mirror courses ahead of the bundle lanes",
+ "files": [
+  {
+   "path": "apps/hub/content/flags.json",
+   "change": "flags.ugmLaneResources.courses += ial-maths-20-pure-1..4 (inert); new optional crossBoard block declaring registry EDEXCEL_IAL_PURE_YMA01_2020, source law, feasibility verdict pointer, flagged-ahead status"
+  },
+  {
+   "path": ".syllabai/receipts/T-UGM-XBOARD-IAL-1/run-001-feasibility-r0.json",
+   "change": "new — run-001 feasibility census of record (verdict + census + full 77-row matrix)"
+  },
+  {
+   "path": ".syllabai/receipts/T-UGM-XBOARD-IAL-1/x0-registry-flags-r0.json",
+   "change": "new — this receipt"
+  },
+  {
+   "path": "worklog.md",
+   "change": "append-only T-UGM-XBOARD-IAL-1 ledger entry (run-001 + X0)"
+  }
+ ],
+ "inertnessGates": {
+  "consumerLaw": "lib/ugm.ts absent=OFF: ugmFeatureEnabled reads flags.ugmLaneResources.courses only; getUgmBundle returns null for flagged courses without a committed bundle (honest empty)",
+  "staticParams": "allUgmReaderParams skips null bundles -> zero IAL ugm routes -> surface 404s (streaming-safe route-resolver law, T-UGM-RENDER-2 posture)",
+  "coursePage": "courses/[course]/page.tsx renders the UGM card only when flagged AND bundle validates — no roadmap ghost card",
+  "verifiedOnDisk": "no ugm-resources.json exists on any of the four IAL courses at X0 (inertness invariant asserted pre-commit)",
+  "schemaSafety": "FlagsFile zod law = flags: record(string, unknown); runtime reads .courses only; bundle test flag-law asserts toContain on the three CIE slugs (pass unchanged)"
+ },
+ "next": "X1-X4 per-unit mirror bundle lanes on operator commission; each lands content/ial-maths-20-pure-N/ugm-resources.json under registry EDEXCEL_IAL_PURE_YMA01_2020 with per-row source-CIE refs + depth grades",
+ "reviewState": "SUGGESTED (AGENT.md rule 2)"
+}

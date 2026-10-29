@@ -7,8 +7,25 @@
    "courses": [
     "cie-a-level-maths-20-pure-1",
     "cie-a-level-maths-20-pure-3",
-    "cie-a-level-maths-20-pure-2"
-   ]
+    "cie-a-level-maths-20-pure-2",
+    "ial-maths-20-pure-1",
+    "ial-maths-20-pure-2",
+    "ial-maths-20-pure-3",
+    "ial-maths-20-pure-4"
+   ],
+   "crossBoard": {
+    "registry": "EDEXCEL_IAL_PURE_YMA01_2020",
+    "targetCourses": [
+     "ial-maths-20-pure-1",
+     "ial-maths-20-pure-2",
+     "ial-maths-20-pure-3",
+     "ial-maths-20-pure-4"
+    ],
+    "source": "CIE 9709 UGM corpus of record (628 captured bodies + 166 byref across cie-a-level-maths-20-pure-1/2/3) re-adjudicated per IAL spec point — the SAME captured substrate, zero recapture, zero new intake",
+    "feasibility": "T-UGM-XBOARD-IAL-1 run-001 VERDICT: FEASIBLE (conditional) — IAL spine YMA01 2020 = 77 spec points; served-eligible 75/77 (48 DIRECT + 9 DIRECT_THIN + 12 PARTIAL + 6 PARTIAL_VERY_THIN); hard gaps IAL P4 5.2 + 6.4 (differential equations — corpus zero, not fillable from UGM); fail-closed matrix validation V1/V2/V3 PASS; census of record in .syllabai/receipts/T-UGM-XBOARD-IAL-1/",
+    "law": "CIE_A_LEVEL_MATHS_2023_2025 does NOT migrate: IAL mirror rows live under EDEXCEL_IAL_PURE_YMA01_2020; every IAL row carries per-row source-CIE specPoint refs + depthGrade SERVES|SERVES_WITH_GUARD|INSUFFICIENT; INSUFFICIENT rows are disclosed, never served; year-skew (e.g. CIE P3 algebra bodies serving IAL P1/P2) keeps the source CIE specRef of record beside the IAL re-adjudication",
+    "status": "flagged-ahead (T-UGM-XBOARD-IAL-1 X0): the four IAL slugs are flagged inert until the mirror bundles commit — lib/ugm.ts absent=OFF law: flagged course with no committed bundle resolves null (honest empty; static params skip, course card omits, ugm routes 404); bundle lanes X1-X4 pending operator commission"
+   }
   },
   "senecaCourseResources": {
    "surface": "Seneca resource packs in the teacher assignment creator (T-SENECA-001; corpus: the operator-approved Seneca Resource Hub harvest, syllabai-experimental @ d67bc1e3, PII-scrubbed; linked courses only — rollout wave (trace 1a16fa6c496aa371): 82 mapped courses; honestly unmapped (no Seneca equivalent): Accounting, Environmental Management, Further Maths/Additional/Discrete maths, Maths B, IAL Decision 1)",
