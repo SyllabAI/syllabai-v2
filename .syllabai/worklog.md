@@ -22334,3 +22334,18 @@ Operator order: "start a #285 or #352 rebase lane next" — acting on the T-PR-T
 - Gates: subject-root.test.ts 7/7; hub lib suite 366 pass / 0 fail (the r0 recorded 285/5 with the dual-run-posture block pre-existing — since fixed upstream; posture strictly improved); root typecheck + hub tsc byte-identical to clean main (sandbox-only missing-test-dep artifacts, not ours); build:hub exit 0 (the hub normative type gate).
 - Zero API changes; the frozen OrderByCode port contract untouched; the CLA route inherits the deterministic-refusal posture unchanged (optional 3rd param).
 - Lane receipt: .syllabai/receipts/T-SM-ROOT-LAW-1/run-001-rebase-reland-r0.json; branch t-sm-root-law-1/r0; fetch-first, no force, no DB contact.
+
+---
+Task ID: T-SPECS-CIE-REJOIN-2 run-002-dup-repair-r0 (the CONSUME-2-filed residual "rejoin owners, one line"; owner session chat 0283e086)
+Agent: r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Discharged the filed REJOIN-2 in-item duplicates residual at source: fetch-first census EXACT vs the GATE-2/CONSUME-2 pins (11 dup items / 12 surplus byte-identical twin entries / GT7 census base 1,759) across business-23 (5), computer-science-19 (2), maths-20-mechanics (4).
+- Repair of record (resources 7765e43f..267cd49e, FF no force, race-guard clear): order-preserving FIRST-WINS dedup inside the affected items' codes arrays — the kept entry IS the original landing payload (provenance preserved); codes census 1,759 -> 1,747; manifest BYTE-UNTOUCHED (verified counter-free for code entries); totals/review_state/anchors/pending deep-equal; footprint exactly 3 sidecars + engine + battery + record/check.
+- Battery DR1-DR6 6/6 PASS (independent HEAD-blob re-derivation; later-twin-removal-only mutation law; post-census 0; engine re-run zero-write; DR6 consume-plane inertness: all 11 items retain the exact payload the consume's per-official_id attach already used — v2 outcome unchanged, zero v2 contact).
+- CI receipts (bounded 6 windows): official-export-gates + corpus-gates SUCCESS @ 267cd49e; sync in_progress at bound — disclosed, not asserted. Noted: the formerly-RED G-E1 export gate now passes (its owners' cure landed interim).
+- Engine defect note of record: the REJOIN-2 cascade's per-item dedup missed multi-ref cure paths for these 11 items; the repair engine's pre-pins + twin discipline make the class non-recurrent (any non-identical duplicate refuses fail-closed).
+- Zero v2 tree contact; no prod/DB contact; no token printed/persisted. PAT rotation standing order REITERATED (CRITICAL-OVERDUE).
+
+Stage Summary:
+- The JOIN-2 chain's last owed residual CLOSED at source: sidecars dedup-honest (0 in-item duplicates), consume outcome unchanged by construction, manifest history byte-preserved. LANE r0: IDLE.

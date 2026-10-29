@@ -1,0 +1,24 @@
+{
+ "task": "T-SPECS-CIE-REJOIN-2",
+ "run": "run-002-dup-repair-r0",
+ "at": "2026-10-29T14:01:17Z",
+ "agent": "r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, chat 0283e086-b297-4875-912b-a9f4fd722dc5)",
+ "discharge": "the residual filed by T-SPECS-CIE-CONSUME-2: 'the REJOIN-2 in-item duplicates sidecar repair (rejoin owners, one line)'",
+ "act": {
+  "repo": "SyllabAI/syllabai-resources",
+  "push": "7765e43f..267cd49e819f5c9a2fc1a9c733886a59ebfdfa4f",
+  "method": "FF no force, race-guard clear; commit 267cd49e819f5c9a2fc1a9c733886a59ebfdfa4f",
+  "defect": "REJOIN-2 cascade appended the same code entry twice to 11 items across 3 wave-2 AS sidecars (byte-identical twins); disclosed at GATE-2 ('the 11 inherited duplicates still pinned'), pinned inert at consume by CONSUME-2",
+  "repair": "order-preserving FIRST-WINS dedup within the affected items' codes arrays (kept entry = the original landing payload; provenance preserved); census 1,759 -> 1,747 (-12 surplus twin entries: business-23 -5, cs-19 -3, mechanics -4)",
+  "footprint": "exactly spec-links/{cie-as-business-23,cie-as-computer-science-19,cie-as-maths-20-mechanics}.json + engine scripts/cie_rejoin2_dup_repair.py + battery scripts/cie_rejoin2_dup_repair_check.py + graph/reports/T_SPECS_CIE_REJOIN_2_REPAIR_{RECORD.md,CHECK.json}",
+  "manifest": "byte-untouched (verified counter-free for code entries; landing stats are receipts, not live counts)",
+  "v2_effect": "ZERO by construction (DR6): all 11 repaired items retain exactly the pre-state first payload the consume's per-official_id attach already used; no bundle/census/prod contact"
+ },
+ "battery": "DR1-DR6 6/6 PASS (independent HEAD-blob re-derivation; later-twin-removal-only mutation discipline; post-census 0 dup; manifest sha stable; engine re-run zero-write; consume payload retention)",
+ "ci_receipts": "resources @ 267cd49e bounded poll 6 windows: official-export-gates SUCCESS + corpus-gates SUCCESS; sync still in_progress at bound (disclosed, not asserted \u2014 the standing discipline); note: the formerly-RED G-E1 export gate now passes (its owners' cure landed in the interim)",
+ "disclosures": [
+  "nothing manufactured, nothing promoted, nothing consumed (AGENT.md rules 2/3)",
+  "no token printed or persisted; credentials consumed inside single combined invocations",
+  "PAT rotation standing order REITERATED (CRITICAL-OVERDUE of record)"
+ ]
+}
