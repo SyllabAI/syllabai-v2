@@ -1,0 +1,66 @@
+{
+  "receipt": "R3-MIXED-CHECK-TYPES-QUEUED-20261030",
+  "format": "queue-receipt/0.1",
+  "date": "2026-10-30",
+  "operator_trace": "1a189fd011119961",
+  "operator_directive": "R-3 — mixed check types (selected from the recorded improvement queue: \"Say which and I'll queue it with a receipt of record\")",
+  "wave": "R3-MIXED-CHECK-TYPES — port SME's mixed check taxonomy (recall / explain-why / application with self-grade-vs-model-answer or keyword auto-grade) to the authored format and renderer, per the R-3 item of record",
+  "state_context": {
+    "guided_corpus": "112/112 notes authored and live (239 lessons / 1,195 checks / 1,195 MCQs — hub coverage probe zero-drift)",
+    "figures_family": "COMPLETE + live-verified (2.1 captions, 2.2 concept-grain binding, 2.1B provenance drop; spot-check receipt FIGURES-2-1-FAMILY-LIVE-SPOTCHECK-ALCOHOLS-20261030)",
+    "r_queue": "R-1 landed (course card), R-2 landed (per-topic deep links), R-5 landed (naming law) — R-3 is the top open port item of record",
+    "evidence_of_record": "download/SME-Guided-Study-Recheck-and-Hub-Comparison-20261026.docx — live-confirmed SME composition under a Medium start on Lesson 2: exactly 5 items = 1 multiple-choice (auto-graded) + 2 recall + 1 explain-why + 1 application; written kinds keyword auto-graded with model answer shown"
+  },
+  "probe_of_record": {
+    "v2_main_head": "23b0c97ec99e0b2ed1da8d8575be53089209899c (incl. spot-check bookkeeping mirror)",
+    "resources_main_head": "3b2ce8da700b80f51700fb34fc721c90d6654d6b",
+    "open_prs_v2": [
+      464,
+      296
+    ],
+    "open_prs_resources": [
+      116,
+      53
+    ],
+    "hub_question_contract": "GuidedQuestion (guided-lessons.ts:175) = {id, moduleId, stem, misconceptionClass, options[{key,text,correct,explanation,misconception|null}]} — no kind field",
+    "package_census_20261030": "112 sme-question-package artifacts x 1,195 questions x 4,760 options; question-level keys EXACTLY {id, moduleId, stem, misconceptionClass, options} (every question, all 112 files) — zero kind/type data anywhere upstream-to-downstream; 100% single-select MCQ",
+    "renderer_sites": [
+      "guided-check.tsx — GuidedCheckList (static no-JS fallback + read layer): single-select radiogroup, first-pick verdict, reveal-answer, misconception flag",
+      "guided-flow.tsx check stage (~L1100-1160) — interactive flow: per-question Submit answer -> verdict + explanation -> Next question; confidence-gate scoring hooks onAnswer(id, key, correct)"
+    ],
+    "consumers_of_answers": "flow scoring (answered/correct tallies, recalibration defaults) and static checklist tally — both assume exactly one correct option; written kinds need a correct-boolean equivalent (keyword hit) to flow through the same tallies"
+  },
+  "mechanism": {
+    "taxonomy": "kind enum of record: mcq (default) | recall | explain-why | application — the four kinds live-confirmed on SME; mcq = existing auto-graded single-select; recall/explain-why/application = written: free-text response graded by keyword match with the model answer always shown on settle",
+    "data_delta_additive": "GuidedQuestion gains OPTIONAL fields only: kind? (absent == mcq, byte-back-compat), modelAnswer? (string), keywords? (string[] for auto-grade). Existing 1,195 MCQs and their 4,760 options MUST remain byte-identical (conservation gate) — nothing converted, nothing deleted",
+    "grading_law": "keyword auto-grade: case-insensitive whole-token match of the learner text against keywords[]; >=1 hit -> correct verdict (same emerald Correct path + explanation/model answer); 0 hits -> Not quite + model answer; empty submit -> blocked (mirror of continueDisabledUntilChoice spirit); keywords absent -> reveal-only (model answer shown, no verdict) — fail-closed, never a silent wrong grade",
+    "renderer_law": "both sites in lockstep: MCQ path untouched; written kinds render a labelled input/textarea, submit -> verdict role=status + model answer; a11y: label for the input, aria-live on verdict; the flow stage feeds keyword-hit boolean into the existing onAnswer tally without changing its signature semantics (correct: boolean)",
+    "fail_closed": "written-kind item missing modelAnswer -> renders stem + reveal-only, never gradeable, never blank; unknown kind value -> renders as reveal-only and counts as a designed warning at the export gate, never guessed"
+  },
+  "execution_plan": {
+    "stage_A_pilot": {
+      "tranche": "the walked Alcohols subtopic set: rn_2MpXPtNXvn8pQm3r (2 lessons) + rn_8T5GfPn2q7sY2YCh (2 lessons) = 4 lessons -> +16 authored written items (8 recall, 4 explain-why, 4 application), each spec-anchored to the lesson's keyPoints and carrying modelAnswer + keywords",
+      "resources_side": "question-package schema minor bump (additive optional kind/modelAnswer/keywords) + new namespace per repo conventions (naming pinned at wave-open from resources layout probe; additive-only law) + authored pilot tranche + ADAPTER-SPEC addendum + transform record",
+      "hub_side": "types (GuidedQuestion optional fields) + guided-check.tsx written path + guided-flow.tsx written path + FEED bump (v6 -> v7) + re-issued pilot artifacts + eslint/bun build + PR, CI green, probe-before-merge",
+      "verify": "conservation: 1,195 existing MCQs byte-identical; census: 1,211 questions total post-pilot (1,195 + 16); live spot-check on the Alcohols set (the walked seam): written item renders, keyword hit grades Correct, miss shows model answer, MCQs unchanged; static fallback + flow both exercised"
+    },
+    "stage_B_rollout_operator_gated": "corpus rollout ~956 authored items (239 lessons x [2 recall + 1 explain-why + 1 application]) in authoring waves with per-note SCHEMA PASS gates, wave receipt + recalibration, matching the waves 1-5 authoring discipline; tranche order mirrors the authoring register"
+  },
+  "acceptance": [
+    "existing 1,195 MCQs byte-identical and rendering unchanged (conservation)",
+    "pilot tranche live: 16 written items across the 4 Alcohols lessons in the mixed taxonomy, both renderer sites, keyword auto-grade + model answer behaviour verified live",
+    "tally integrity: written-kind outcomes flow into answered/correct counts and flow scoring without signature changes",
+    "a11y: labelled inputs, role=status verdicts, keyboard-operable",
+    "eslint + bun run build + CI green; zero-DB held; resources additive-only",
+    "receipts of record: wave receipt + landing addendum + live spot-check addendum"
+  ],
+  "risks": [
+    "authoring quality: written items must be spec-anchored (keyPoints-derived), SME attestation discipline — mitigated by the export-gate designed-warning mechanism",
+    "keyword auto-grade false negatives: mitigated by generous keyword sets (synonym-bearing) + model answer always visible + reveal-only fallback when keywords are absent",
+    "renderer regression on 1,195 untouched MCQs: mitigated by kind-optional back-compat + byte-conservation gate + the live spot-check seam",
+    "two-repo coordination: established FIGURES pattern (additive namespace on resources, FEED bump + import on hub, probe-before-merge)",
+    "scale: stage B is ~956 authored items — operator-gated, wave-sized, NOT silently bundled into stage A"
+  ],
+  "discipline": "zero-DB; fetch-first re-ground before any write; token unechoed; resources additive-only; NOTHING authored before operator execute; receipts + worklog of record; merge via REST on green CI (verify + hub)",
+  "queued_state": "AWAITING OPERATOR EXECUTE — say 'probe and execute' to start stage A"
+}

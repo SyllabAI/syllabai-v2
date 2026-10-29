@@ -326,3 +326,16 @@ Work Log:
 
 Stage Summary:
 - FIGURES-2.1 family LIVE-VERIFIED of record: concept-grain binding, caption-first law, and the 2.1B provenance drop all hold on the live learner surface for the Alcohols set, end to end. Walk is read-only — zero data change, zero DB contact, resources untouched. Family queue empty of record.
+---
+Task ID: R3-MIXED-CHECK-TYPES queue run-001 (operator trace 1a189fd011119961: "R-3 — mixed check types")
+Agent: main agent (Super Z, session web-e79a3bd8)
+Task: Queue the top open port item of record — SME's mixed check taxonomy (recall / explain-why / application with keyword auto-grade + model answer) ported to the authored format and renderer. QUEUED, NOT executed; operator-gated.
+
+Work Log:
+- Probe of record: hub contract is 100% single-select MCQ — 112 packages x 1,195 questions x 4,760 options, question keys EXACTLY {id, moduleId, stem, misconceptionClass, options}, zero kind data upstream-to-downstream. Two renderer sites: guided-check.tsx (static/read layer) + guided-flow.tsx check stage (~L1100-1160, Submit answer -> verdict -> Next). Taxonomy of record from the 2026-10-26 recheck doc: 5-item set = 1 MCQ + 2 recall + 1 explain-why + 1 application, written kinds keyword auto-graded with model answer shown.
+- Mechanism fixed additive-only: optional kind/modelAnswer/keywords on GuidedQuestion (absent == mcq, existing 1,195 MCQs byte-identical — conservation gate); grading law (case-insensitive whole-token keyword match, model answer always shown on settle, reveal-only fail-closed when keywords absent); renderer law (both sites in lockstep, a11y labelled inputs + role=status verdicts, flow tally integrity preserved).
+- Execution plan staged: stage A pilot = the walked Alcohols tranche (2 notes / 4 lessons -> +16 authored items: 8 recall, 4 explain-why, 4 application) + schema minor bump + new additive namespace + FEED v7 + both renderer paths + live spot-check; stage B corpus rollout (~956 items) explicitly operator-gated, wave-sized, not bundled.
+- Receipt: download/R3-MIXED-CHECK-TYPES-QUEUED-20261030.json (+ .syllabai/receipts/HUB-R3-QUEUED/ mirror, this commit). Bookkeeping-only, fetch-first, ff-only.
+
+Stage Summary:
+- R-3 QUEUED of record with a stage-A pilot spec (Alcohols tranche) and an operator-gated stage-B rollout. AWAITING OPERATOR EXECUTE. R-1/R-2/R-5 remain landed; the R-queue's only open item is now this wave.
