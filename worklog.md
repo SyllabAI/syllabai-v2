@@ -258,3 +258,16 @@ Work Log:
 
 Stage Summary:
 - Stage B LANDED on branch t-foresight-v0/stage-b-20261030 (stacked on the Stage A branch): route mount + 12-test route battery + the hub headline-first panel + 14 golden captures; every ADR-CLASS-0002 clause now enforced at BOTH layers (wire + render). PR #456 opened against t-foresight-v0/stage-a-20261030; merge order of record: #455 first (base recovered, merge ref refreshed), then #456 retarget/merge to main. Stage C items (numeric projection, LLM narration, context enrichment, weighted propagation) each need their own ADR — untouched by design. CD-A/CD-B/CD-C remain open unfiled candidates.
+
+---
+Task ID: T-FORESIGHT-V0-PLAN-1 run-003 landing addendum (same trace 1a18954e7a6ad9bd)
+Agent: main agent (Super Z, session web-528c0352)
+Task: Record the Stage B landing (PRs #455 + #459 merged) and the CI state of record.
+
+Work Log:
+- PR #455 (Stage A) merged a6fc888e AFTER base recovery: the run-002 addendum's deferred action completed — origin/main 8861ea1c (RN-RECONSUME-1 ci-remedy) merged into the branch (b3d7b246), merge ref re-fired, check-runs verify+hub BOTH success, merged via REST.
+- PR #459 (Stage B, opened stacked with base = the Stage A branch; numbering jumped 456→459) retargeted to main after the #455 merge; head-sha check-runs verify+hub BOTH success (16e5f4a0) + the ci pull_request workflow completed success (run 40952247821) — the merge-ref sha briefly listed zero check runs (the known zero-check-runs listing class; the pull_request run of record was green, so no remedy was needed) — merged 0b5f76d0.
+- Post-merge: main's ci push run on 0b5f76d0 fired (in_progress at addendum time). Stage A + Stage B are now ON MAIN: the foresights/v1 wire (Stage A contracts), the classForesights service, the mounted route, the hub Readiness panel + goldens. Zero DB contact held across the entire lane (fakeSql + static renders only; Neon auto-resume 2026-11-01T00:00Z unchanged — the route is mounted but the deployment keeps serving with the DB gate untouched; first live read happens post-unlock).
+
+Stage Summary:
+- T-FORESIGHT-V0-PLAN-1 Stages A+B COMPLETE of record (tranches 1+2, the plan's operator-gated scope fully executed). Remaining: Stage C menu (numeric projection / LLM narration / context rows / weighted propagation) — each operator-gated with its own ADR; CD-A/CD-B/CD-C remain open unfiled candidates (CD-A still the smallest).
