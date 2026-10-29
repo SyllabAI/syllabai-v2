@@ -31,7 +31,11 @@ import { normalizeCorpusEmphasis } from "./emphasis-fix";
 import { rehypeKatexMhchem } from "./rehypeKatexMhchem";
 
 const CONTENT_DIR = join(import.meta.dir, "../../content");
-const COURSES = ["cie-a-level-maths-20-pure-1", "cie-a-level-maths-20-pure-3"];
+const COURSES = [
+  "cie-a-level-maths-20-pure-1",
+  "cie-a-level-maths-20-pure-3",
+  "cie-a-level-maths-20-pure-2",
+];
 
 /** quote-aware tag strip + KaTeX annotation removal → user-visible text */
 function visibleText(html: string): string {
@@ -93,7 +97,7 @@ function visibleTextOf(tree: HastLike): string {
 
 describe("T-UGM-RENDER-1: every committed UGM body renders clean", () => {
   test(
-    "no visible raw-LaTeX fragments, no katex-error spans, across all 628 bodies",
+    "no visible raw-LaTeX fragments, no katex-error spans, across all 794 bodies",
     async () => {
       let bodies = 0;
       const leaked: string[] = [];
@@ -111,12 +115,16 @@ describe("T-UGM-RENDER-1: every committed UGM body renders clean", () => {
           if (frags.length > 0) leaked.push(`${course}/${r.slug}(${frags.length})`);
         }
       }
-      expect(bodies).toBe(628);
+      expect(bodies).toBe(794); // 628 (P1 479 + P3 149) + 166 (the pure-2 course-plane serve, T-UGM-HUB-CONSUME-P2)
       expect(errored).toEqual([]);
-      // the two disclosed authoring-damage bodies; everything else must be 0
+      // the two disclosed authoring-damage bodies; everything else must be 0.
+      // T-UGM-HUB-CONSUME-P2: rotating-derivatives is ALSO served under the
+      // pure-2 plane (its 2.4.x twin join) — the same disclosed damage, a
+      // second course key.
       const allowed = new Set([
         "cie-a-level-maths-20-pure-1/r7839",
         "cie-a-level-maths-20-pure-3/rotating-derivatives",
+        "cie-a-level-maths-20-pure-2/rotating-derivatives",
       ]);
       const unexpected = leaked.filter((s) => !allowed.has(s.split("(")[0]));
       expect(unexpected).toEqual([]);
@@ -159,13 +167,14 @@ describe("T-UGM-RENDER-1: every committed UGM body renders clean", () => {
   // ------------------------------------------------------------------
   // T-UGM-RENDER-2 — the plaintext-title fleet gate.
   //
-  // 235 of the 628 resource titles carry $…$ math. mathTitleToPlainText is
-  // the tab/SEO law (generateMetadata) and must be LEAK-PROOF fleet-wide:
-  // no dollar signs, no backslash commands, never empty, never ballooning.
-  // The changed-count pin (235) locks the census of record 2026-10-29 — a
-  // new math title shifts it, which is exactly when math-title.ts deserves
-  // a fresh look.
-  test("UGM titles: mathTitleToPlainText is leak-proof across all 628", () => {
+  // 316 of the 794 resource titles carry $…$ math (235 across the P1+P3
+  // fleet of record 2026-10-29 + 81 pure-2 titles, T-UGM-HUB-CONSUME-P2).
+  // mathTitleToPlainText is the tab/SEO law (generateMetadata) and must be
+  // LEAK-PROOF fleet-wide: no dollar signs, no backslash commands, never
+  // empty, never ballooning. The changed-count pin (316) locks the census
+  // of record — a new math title shifts it, which is exactly when
+  // math-title.ts deserves a fresh look.
+  test("UGM titles: mathTitleToPlainText is leak-proof across all 794", () => {
     let changed = 0;
     let total = 0;
     const leaks: string[] = [];
@@ -180,8 +189,8 @@ describe("T-UGM-RENDER-1: every committed UGM body renders clean", () => {
         }
       }
     }
-    expect(total).toBe(628);
-    expect(changed).toBe(235);
+    expect(total).toBe(794);
+    expect(changed).toBe(316);
     expect(leaks).toEqual([]);
   });
 });
