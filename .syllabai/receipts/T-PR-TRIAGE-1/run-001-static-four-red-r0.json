@@ -57,7 +57,9 @@
   "verification": {
     "api_first_hand": "4/4 PRs read live (state/mergeable/check-runs/compare/files/comments); #352 comment thread read in full (5 comments, 10-24..10-25)",
     "main_greps": "dc3/reattempt: 0; TRANCHE2-B02 receipts: absent until this reland; wave-16/de-interleav/serving-experience/typography: 0; T-SM-ROLLOUT: mirror + #270 CTE only; core-topics.ts .find() pattern confirmed live at line 89",
-    "receipt_integrity": "B02 receipt JSON-valid post-reland; family format matches B01 (lane/run/receipt/generated_utc/operator_trace/directive_verbatim/rulings/dispositions)"
+    "receipt_integrity": "B02 receipt JSON-valid post-reland; family format matches B01 (lane/run/receipt/generated_utc/operator_trace/directive_verbatim/rulings/dispositions)",
+    "ci_channel_event_of_record": "the reland PR #446's pull_request event was DROPPED at open (close+reopen and empty-commit synchronize both failed to re-fire; 2 ghost check-suites stuck 'queued' with ZERO workflow runs created while other lanes' CI completed normally) — the working remedy of record: MERGE MAIN INTO THE BRANCH (fresh synchronize fired, verify+hub both green in ~2.5 min); branch was concurrently stale-base, so the update was due anyway; the zero-check-runs class remedy is now three-step of record: (1) merge origin/main into the branch, (2) empty-commit push, (3) close+reopen",
+    "landing": "PR #446 merged as 481e09c6c (CI 2/2 green: verify+hub); #296 closed as RELANDED-BY with evidence comment; #303 closed as BROKEN-VEHICLE with evidence comment; #285/#352 KEEP-OPEN verdict comments posted (issuecomments 6496351415 / 6496356172 / 6496355814 / 6497142026)"
   },
   "scope_guards": [
     "no app code, no bundle, no content-maps bytes touched (reland + bookkeeping only)",

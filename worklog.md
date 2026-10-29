@@ -140,3 +140,16 @@ Work Log:
 
 Stage Summary:
 - run-001 SHIPPED as bookkeeping PR (this commit family); followups: rebase lanes for #285/#352, operator-gated re-stage for #303, ops-lane candidate for the zero-check-runs CI class.
+
+---
+Task ID: T-PR-TRIAGE-1 run-001 landing addendum (same trace 1a1878f004d03db9)
+Agent: main agent (Super Z, session web-528c0352)
+Task: Land the triage + record the CI-channel remedy.
+
+Work Log:
+- PR #446: pull_request event dropped at open (ghost queued check-suites, zero runs; close/reopen and empty-commit did NOT re-fire) — REMEDY OF RECORD: merge origin/main into the branch (also resolved its stale base + worklog add/add) -> synchronize fired, verify+hub green in ~2.5 min. Merged as 481e09c6c.
+- PR actions of record: #303 CLOSED broken-vehicle (junk doubled path + pre-wave-14 base); #296 CLOSED relanded-by-#446 (B02 receipt byte-exact); #285/#352 KEEP-OPEN rebase-lane verdict comments posted.
+- main ff'd to 481e09c6c; receipt verification carries the ci_channel_event_of_record + landing blocks.
+
+Stage Summary:
+- Static-four-red queue DISCHARGED to verdicts: 1 relanded+closed (#296), 1 closed-broken (#303), 2 verdict-commented rebase lanes (#285/#352); CI drop-class remedy of record documented.
