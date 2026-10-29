@@ -183,3 +183,19 @@ Work Log:
 
 Stage Summary:
 - 2fcf170b (content) + d7273cc7 (bookkeeping) + this addendum READY on local t-oeq-mathsb/run-022; push -> PR -> CI -> merge -> Vercel redeploy -> live spot-check fire mechanically on operator PAT supply (env/GIT_ASKPASS only); PAT rotation standing order re-flagged.
+
+---
+Task ID: T-RESEARCH-CK12-LA-1 run-001 (operator trace 1a18927f61e8cbf5: "Before proceeding, I want you to analyze two features. Those are 'Insights' and 'Foresights' https://www.ck12.org/pages/learning-analytics/")
+Agent: main agent (Super Z, session web-528c0352)
+Task: Competitive teardown of CK-12's two learning-analytics features and map them onto syllabai-v2's existing analytics/learner-model surface.
+
+Work Log:
+- 8 external sources gathered web-side (S1 landing page ck12.org/pages/learning-analytics; S2/S3 Help Center Insights access articles 7361858991899 + 360047996193; S4 LMS-loop articles Canvas/Schoology/generic; S5 CK-12-run 10-teacher Foresights study info.ck12.org; S6 Tech & Learning third-party review; S7 OTAN adaptive-practice/ML write-up; S8 corroborating snippets). No authenticated product access — demos behind sign-in; all prediction-mechanics claims explicitly flagged INFERENCE.
+- Findings of record: Insights = retrospective per-student/class read model (skill level beginning->mastery, composite Engagement Score, Time on Read, gap recommendations + top-performer flags), lesson/assignment-scoped, LMS-native re-entry ("Go to Insights"); Foresights = PRE-assignment class/individual performance prediction (Skill Level Prediction graph), math/science core only, Precalculus insights-only, cold-start gate "a couple of assignments" disclosed in fine print.
+- Receipt of record from vendor's own study: 50% of 10 tested teachers could NOT read the Skill Level Prediction graph (avg 75% comprehension quiz; 90% "easy to interpret" — the presentation-ease vs comprehension-gap is the actionable design law).
+- Mapping first-hand (source-read of apps/api/src/services/teacher/analytics.ts T-MIG-053 r3a + docs/research/VERIFICATION_EVIDENCE_POC.md): T-MIG-053 class-intelligence read model IS the Insights analog at parity-or-depth (evidence-kind separation, honest UNMEASURED, weak-prereq T-C11 projection); NO Foresights analog exists anywhere in the API surface; NBA/intervention are learner-side, not teacher-prediction-side. Delta of record = the predictive read model.
+- House-law analysis: CK-12 composite Engagement Score collides with the never-conflate-engagement-with-mastery law; a Foresights-shaped v0 sketch filed in the doc (deterministic prerequisite-chain band propagation as a READ-ONLY derived model, prediction=prior-never-evidence, cold start = existing evidence floor, plain-language-first UX) — SKETCH ONLY, no plan adopted, no routes/schema/DB touched.
+- Zero DB contact (Neon outage discipline held); zero app bytes touched; docs-only lane.
+
+Stage Summary:
+- docs/research/CK12_INSIGHTS_FORESIGHTS_TEARDOWN.md filed as the of-record analysis (7 sections: positioning, Insights teardown, Foresights teardown, mechanism inference, SWR, syllabai mapping table, open questions); followup candidates for the operator: (a) adopt the 50%-receipt as a design law for any future prediction surface, (b) scope a deterministic Foresights-v0 read model from T-MIG-053 machinery, (c) authenticated CK-12 demo access to resolve the 4 open questions.
