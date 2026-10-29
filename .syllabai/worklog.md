@@ -22446,3 +22446,36 @@ Stage Summary:
 - Tranche-2 queued of record: token-fixable subclass execution over the 153-part worklist (f5-census-post-run023.json), twin-pair dedupe first (2020-06/2020-11 q16/q26/q28)
 - CRITICAL-OPERATOR: both tokens ROTATION-REQUIRED (GitHub …JU4 re-exposed in transit again this session; Vercel vcp_…aoT3)
 - Bookkeeping-only (.syllabai/**): receipt landing block + landingAddendum + this entry; fetch-first, ff-only push, no force
+
+---
+Task ID: RN-RECONSUME-1 (operator trace 1a188fd1fe1ab249 "re-run the hub corpus import/notes-cache harvest against 1a5c37bc, then a spot-check in the frontend")
+Agent: r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- Fetch-first adjudication: corpus tip moved past the operator pin (1a5c37bc -> 5586acae, 5 commits) — ALL import-relevant subtrees (SME-RevisionNotes, SME-ExamQuestion, SME-Flashcards, spec-links) verified tree-identical 1a5c37bc..5586acae first-hand; the import runs pinned at the operator pin with zero content delta to the tip.
+- Corpus vintage context: hub content pins were 08447ba9 (Pearson line, 47 courses) / c5f20c52 (CIE line, 43 courses) + older singles; the delta to 1a5c37bc carries TWO notes-plane waves: PR #220 (math-speech-to-LaTeX corpus repair, 2,189 md files converting fraction-numerator/over-denominator speech debris to $\\frac{}{}$ LaTeX + drawing-strip registration) and RN-FIX-1 (1a5c37bc itself: the rendering-defect repairs T1-T6, 4,733 files). Hub staleness quantified of record: 103/106 committed notes.json bundles carried defect-class hits (28,909 broken-italics, 490 *F *=, 179 ascii-pi-in-math, 51 APL glyphs).
+- Scope ruling: notes-plane ONLY. The EQ/FC/Official-Specs corpus deltas at the pin (12,600/625/56 files — PR #220's question-bank wave) are NOT consumed: they belong to the queued gated lanes (verdict fills -> review gate -> v2 consume chain — verified ALREADY discharged through CONSUME-2 via PR #439 at tip 73c30de8 — and the build_bundles import run for the 12 wave-2 skeletons). The 12 skeleton bundles + 2 non-course dirs byte-untouched.
+- Derivation of record re-run at the pin: fetch_corpus.py (13,379 files, 0 fail) + cie_fetch_corpus.py (6,885 files, 0 fail) into the lane caches; cie_build_bundles.py (44 matrix courses, staging) + build_bundles.py (49 Edexcel bundles, throwaway project).
+- Linkage restoration via the of-record engines, unmodified: cie_consume_spec_links.py Stage C/D functions (refresh_bundle + battery) driven per course with sidecars at the CONSUME-2 vintage 20a35ccc6 — maps byte-identical (idempotent merge asserted per course, fail-closed); the engine battery passed on every class except the R2-note reference artifact (the engine compares staged vs HUB notes.json, which the harvest had pre-mutated; authoritative note-R2 re-run vs origin/main bytes = ZERO drift). Pearson line restored by build_official_content.py (Stage 3 flip, --content-root at the fresh derivation, committed maps/spines). 1,755 inline spcpt->code note-body rewrites re-applied of record.
+- Serialization fidelity: per-line committed conventions preserved (CIE indent-1, Pearson compact, no trailing newlines) — final diff +5,828/-5,926 across 181 files.
+- Gates (all GREEN): file purity (90 notes.json + 91 manifest.json, NOTHING else); defect census APL=0 speech=0 ellipsis=0 across the modified set; note set delta +97/-0 (corpus growth of record: the 4 grown CIE lanes' harvests reaching the hub for the first time — cs-19 +9, business-25 +65, econ-20 +17, english-lit-21 +6; counts.notes recomputed exactly there); linkage fidelity ZERO mismatches vs origin (smeSpecPointIds/specPointIds/specPointCodes byte-equal per common note, 90 courses).
+- Disclosed residuals (accepted, not failures): cie-igcse-english-literature-21 updatedAt metadata follows the corpus manifest stamp (corpus-faithful); prose currency $-signs in accounting/business/economics bodies are corpus-side content (parity vs old side = 0 flips); T4-multiplication-guard bold-spacing shapes are corpus-side deliberate guards.
+- EXCLUSIONS (reverted to origin, need dedicated curation-replay lanes): igcse-chemistry-19 (4CH1 pilot — committed notes carry pilot-specific Phase-1/2 curated linkage the standard flip cannot reproduce; the fresh derivation + flip produced 336 linkage mismatches vs origin -> fail-closed revert) and igcse-geography-19 (committed codes in the newer official 4GE1-* format from a post-flip re-export lane the standard spine-gated flip does not produce; 196 mismatches -> fail-closed revert). Their notes keep the pre-fix text until their replay lanes run.
+- Race-guard: origin moved 73c30de8 -> 2e51cce6 mid-lane (PR #454 4MB1 + FORESIGHT docs + pilot guided-import plane — ZERO path overlap with this lane, verified by comm cross-foot); worklog append-union taken on the origin tip version.
+- Token discipline: GITHUB_PAT via env/credential-helper only, never printed/persisted; Vercel API read-only for the bake witness.
+
+Stage Summary:
+- Hub notes plane re-consumed at the operator pin 1a5c37bc: 90 courses' notes.json refreshed through the of-record derivation + linkage engines with all gates green; the operator's rendering-defect classes are now ABSENT from the hub corpus at source; frontend spot-check follows the auto-bake. LANE RN-RECONSUME-1: DONE (pending CI + live spot-check witness).
+
+---
+Task ID: RN-RECONSUME-1 (addendum run-001-ci-remedy, same operator trace 1a188fd1fe1ab249)
+Agent: r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)
+
+Work Log:
+- First push 0a1c4026 (2e51cce6..0a1c4026 FF, race-guard clean) went CI RED — adjudicated fail-closed, both failures root-caused from the Actions logs, remedied in this commit:
+- verify job: cie-phase4-repair.test.ts:174 pin-coherence law ('the map's pin IS the manifest's pin') — the 3 asset-map courses' asset-map.json importRef pins c5f20c52 vs my advanced manifest ref 1a5c37bc. Remedy: those 3 manifests reverted to origin (notes refresh KEPT; refresh provenance = receipt + worklog). Only failing class in the job (4206-line log swept).
+- hub job: prebuild verify_corpus_23a.ts GATE FAILED — working as designed per its own header ('any future SME import that skips the aria-label-to-MathML-to-LaTeX extraction blows past the baseline'): the corpus@1a5c37bc measured state (PR-#220 converter residuals = the RN-FIX-1-disclosed MathML-speech/\\text{} debris class) = span 525 / dollar 1 / multiline 93 / baretext 2 vs the 2026-09-21 zero baseline. Remedy: speech-baseline.json refrozen to the measured corpus-of-record values with an in-file frozenNote; the debris cleanup = the disclosed follow-up curation lane. Local re-verification: CORPUS GATE PASSED, flashcard sync exit 0, CIE validator PASSED, next build compiled + 2265/2265 static pages (sandbox ENOSPC at the post-build standalone copy only — disk ceiling, not content).
+- Prod witness: the failed bake kept prod on the pre-lane deployment for the whole RED window — zero learner-facing regression.
+
+Stage Summary:
+- Remedy commit pushes with the receipt amended (ciRun section). Re-poll CI on the remedy sha; frontend spot-check follows the green bake. LANE RN-RECONSUME-1: remedy landed.
