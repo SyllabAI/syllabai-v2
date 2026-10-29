@@ -1,0 +1,119 @@
+{
+  "lane": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-024-tranche2-token-wave1",
+  "title": "Tranche-2 token repair wave-1: twin-pair deduplication FIRST (4 full twin pairs, 153 parts -> 149 units) + evidence-gated execution over the wave-1 head (7 units / 10 filed parts) + page-evidenced zero-fix discharge (2 parts) + full infrastructure of record for the residual 142 units",
+  "operatorOrder": "The token repair for tranche-2 = 153-part worklist (twin-pair deduplication first)",
+  "operatorTrace": "1a189540e67f59b1",
+  "date": "2026-10-30",
+  "planeOfRecord": {
+    "before": "21f5369ea4e228a1",
+    "after": "f91f4c1b9d53bec3",
+    "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+  },
+  "worklistOfRecord": {
+    "basis": "run-023 f5-census-post-run023.json tokenFixableSubclass.parts[] = 153 pids (authoritative part universe)",
+    "twinPairDedupFirst": {
+      "law": "full-payload-identical parts (problemMd + solutionMd + all markPoints textMd byte-identical) = ONE adjudication unit; fixes apply to every member in lockstep",
+      "filedParts": 153,
+      "unitsAfterDedup": 149,
+      "fullTwinGroups": [
+        [
+          "offp_2020-06_01_16",
+          "offp_2020-11_01_16"
+        ],
+        [
+          "offp_2020-06_01_26",
+          "offp_2020-11_01_26"
+        ],
+        [
+          "offp_2020-06_01_28",
+          "offp_2020-11_01_28"
+        ],
+        [
+          "offp_2020-06_02_1-b",
+          "offp_2020-11_02_1-b"
+        ]
+      ],
+      "note": "confirms the run-023 twinPairsNoted filing exactly (2020-06/2020-11 same-count groups); artifact run024_worklist.json dedup section"
+    },
+    "instrumentDisclosure": "run-024 rebuilt candidate-enumeration instrument (run018->run020->run023 lineage): G1/G2/G3/U1/U1D over math-stripped, §1.3 mark-code-stripped text with advisory SCT (sin/cos/tan tail) + FSW (fraction-weave) flags. NOT byte-verified against run-023's census (the F5c FS splinter shape set did not reproduce: single-digit contexts like '7.4 g'/'4cos' vs multi-digit '18 x'/'1 2x' remain unresolved) — DISCLOSED; the FILED 153-part universe is authoritative and untouched by this. Enumeration is a POINTER, not a bound: the per-part page read (NO-GUESS) is the token authority, and page-read catch-alls (digit-base sups '32'/'402'/'802'/'1002'/'42'/'8.42' — shapes no census class covers) were admitted where print-verified, counted separately in the fix notes."
+  },
+  "wave1Execution": {
+    "units": 7,
+    "filedParts": 10,
+    "changedPids": 8,
+    "fixTuples": 59,
+    "fieldWrites": 16,
+    "parts": {
+      "offp_2022-06_01r_22-a": "13 solutionMirror tuples: L^2 x10, AD^2/CD^2/AC^2 chains x2 blocks, AH^2/AD^2/DC^2/L^2 summary line, AC^2 prose mentions x2, 3^2 catch-all (print p15/p16 rows verified line-by-line)",
+      "offp_2024-06_02_7-a": "9 tuples applied to solution AND mirror independently (4ch pre-existing big-paren glyph delta preserved, NO overwrite): BF^2, 40^2 x2, BC^2, EH^2 x5 (2 glued + 3 detached), 100^2 x5",
+      "offp_2024-06_02_7-b": "problemMd cosine-rule formula line a^2 = b^2 + c^2 - 2bc cos A (print qp p16) + solutionMirror 80^2/40^2, DH^2, 100^2, DH^2 prose",
+      "offp_2021-06_02_10-b": "solution-only (nmp=0 attach part): AD^2 quadratic (p21 Case 2) + 8.4^2 = 3^2 + AD^2 Method-II line x3 (p23 Cases 1/2 + p24 Case 3, exp=3 replace-all)",
+      "offp_2020-06_01_26 + offp_2020-11_01_26": "twin: solution '(= sqrt3 x^2)' x3 (print p18 rows 1-3) + mirror independent fixes x9 patterns (mirror is the FLATTENED variant throughout: (2x)2 x6, pix2 x4, x2 — print p18 verifies every row; solution already carries real ² glyphs in the pi rows — pre-existing divergence documented, fields fixed independently, zero overwrite)",
+      "offp_2020-06_01_28 + offp_2020-11_01_28": "twin: 4^2 + 4^2 catch-alls in both GE cosine-rule lines (print p20: sqrt(4^2+4^2-2x4x4xcos135/45))"
+    },
+    "zeroFixDischarges": {
+      "offp_2020-06_01_16 + offp_2020-11_01_16": "ms p12 READ: all census hits print-verbatim (tan75/tan15 keywords, 'of 15º/75º' prose, 'is 75°' prose); leading 'x 4' = fraction x/5 + marks-column bleed FURNITURE (filed lead, not a sup) — zero token fixes due"
+    },
+    "fencesHonored": [
+      "22-a problemMd stem = run-020 F6 ANNEX whole-stem rebuild filing — untouched, own lane stands",
+      "7-a 'BC = 40 3' + 28-twin problemMd '4 2 cm²' = radical-flatten class (4√2 print-verified) — FENCED, not sups",
+      "deleted-sup contexts where the ² glyph is ABSENT from the plane ((22.5)²/(19.485...)²/(28.75)²/57.5² in 7-a/7-b eg lines; 'k 36' 22-a 'or k^2=36-72x-27+72x' line) — re-insertion is content reconstruction, F5d-disclosed unregexable class, LEAVE + disclose",
+      "print-literal mark-code runs ('M1A1M1M0A0' 10-b p20, 'B1M1M1M1A0M0A0' 28 p20) — print-verbatim, LEAVE",
+      "fraction weaves (FS class) untouched throughout — run-004 R4-A owning class"
+    ],
+    "newFilings": [
+      "10-b Method II '=> AD^2 - (6cos129)AD - 61.56 = 0' lines (print pp.23/24, three blocks) are ABSENT from the re-homed blob (only the 8.4^2 lines survive) — content-loss vs print, owning-lane class, filed not repaired",
+      "26-twin solution/mirror DIVERGENCE: solution carries real ² glyphs in the pi rows while the mirror is flattened — same length, different content; fixed independently; mirror-sync-wave candidate",
+      "7-a mirror 4ch big-paren glyph delta (U+239C/U+239F vs spaces) — mirror-sync-wave candidate (run-013 class)"
+    ]
+  },
+  "evidence": {
+    "pagesReadFirstHand": [
+      "ms-2022-06-01R-p15-15.png",
+      "ms-2022-06-01R-p16-16.png",
+      "ms-2024-06-02-p14-14.png",
+      "qp-2024-06-02-p16-16.png",
+      "ms-2021-06-02-p20-20.png",
+      "ms-2021-06-02-p21-21.png",
+      "ms-2021-06-02-p23-23.png",
+      "ms-2021-06-02-p24-24.png",
+      "ms-2020-06-01-p12-12.png",
+      "ms-2020-06-01-p18-18.png",
+      "ms-2020-06-01-p20-20.png",
+      "qp-2020-06-01-p20-20.png"
+    ],
+    "renderInfrastructure": "59 papers' QP/MS PDFs cached; 207 distinct pages located by whitespace-collapsed + alnum-projected needle search (run-020 pagemap pattern automated) and rendered @150dpi; read-order artifacts (greedy high-yield + full coverage) filed for wave-2+",
+    "location": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-024/ (12 evidence PNGs + worklist + pagemap + fixes + projection + both gates)"
+  },
+  "gates": {
+    "battery": "11/11 GREEN (plane_pin 21f5369e, census_EXACT 66/1281/2443/6600 pre==post, marks_map_identical, PUA_FFFD_delta_clean, dollar_parity, changed_set_EXACT 16 field writes, mirror_integrity incl. diverged-field protection, serialization single-line, scrub clean, token_discharge 59/59, class_post_census no-growth)",
+    "katex": "80/80 new spans OK @ katex 0.16.47 throwOnError",
+    "render": "16/16 projected fields GREEN through the ACTUAL hub engine (react-markdown + remark-gfm + remark-math + rehype-raw + rehype-sanitize + local rehypeKatexMhchem; 170 total .katex spans, zero katex-error, zero count regressions)",
+    "spotCheck": "post-apply byte probes: 10-b '$8.4^2$ = $3^2$ + $AD^2$ − 2 ( 3)( AD ) cos (180 − 51)', 26 '(= √3$x^2$)', 22-a '$AD^2$ + $CD^2$ = $AC^2$ ⇒ $AC^2$ = 9 + 9', 7-b '[ Cosine rule: $a^2$ = $b^2$ + $c^2$ – 2bc cos A ]' — all EXACT"
+  },
+  "corpusSide": "rides the NEXT converter run (standing disposition): +7 changed pids (22-a, 7-a, 7-b, 10-b, 26-twin x2, 28-twin x2 — 16-twins unchanged) join the 1461-pid standing back-sync debt; NO solo converter trigger, NO solo resources PR this run (operator order scoped to the v2 token repair)",
+  "environmentRecoveryOfRecord": "sandbox recycled between run-023 landing and this run: all run-0xx session scripts lost; local clone reset to an Oct-23-era state MISSING the entire T-OEQ lane (0026b4b4/52be5b45 absent from the object store; official-papers.json absent from stale origin/main 4008e6ce). Recovery: fetch-first restored the full store (origin/main 8861ea1c = run-023 tip); main ff-only; askpass rebuilt (zero token bytes); run-020 instruments recovered from the IN-REPO lane-artifacts (the of-record templates survived); hub node_modules restored via bun install --frozen-lockfile (952 packages, run-020 precedent). Probe-before-work discipline caught the stale-clone state before any write.",
+  "credentials": "operator PAT re-used from the standing supply (env/GIT_ASKPASS only, inline per command; askpass file zero token bytes; no config/remote-URL/netrc contact). Standing ROTATION-REQUIRED order re-flagged for BOTH tokens (GitHub …JU4, Vercel vcp_…aoT3).",
+  "landing": {
+    "branch": "t-oeq-mathsb/run-024",
+    "pr": "PENDING",
+    "ci": "PENDING",
+    "merge": "PENDING",
+    "vercel": "PENDING",
+    "liveSpotCheck": "PENDING"
+  },
+  "nextSafeActions": [
+    "run-025 wave-2: residual 142 units over the deduped worklist — read-order artifacts of record (run024_read_order.json greedy high-yield + run024_pagemap.json full 207-page map + rendered PNG set)",
+    "mirror-sync wave leads: 7-a 4ch glyph delta + 26-twin solution/mirror split (run-013 class)",
+    "10-b Method II content-loss filing -> owning lane",
+    "F4/F6 rebuild-class scheduling per the run-004/005 menu (unchanged)",
+    "PAT rotation (standing order, both tokens)"
+  ],
+  "writeSet": {
+    "content": "apps/hub/content/igcse-maths-b-16/official-papers.json (21f5369ea4e228a1 -> f91f4c1b9d53bec3)",
+    "evidence": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-024/ = run024_fixes.py + run024_projection.json + run024_worklist.json + run024_pagemap.json + run024_katex_gate.mjs + run024_render_gate.mjs + 12 evidence PNGs",
+    "scriptsMirror": "/home/z/my-project/scripts/run024_*.py (census/worklist/pagemap/apply/occ_dump)",
+    "readOrder": "/home/z/my-project/scratch/oeq_run024/run024_read_order.json + run024_read_order2.json (wave-2 continuation map)"
+  }
+}
