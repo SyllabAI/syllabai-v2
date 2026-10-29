@@ -22358,3 +22358,14 @@ Stage Summary:
 - Live spot-checks 14:02:56Z+ @ https://syllabai-hub-v2.vercel.app: /api/health 200 {status:ok, coreConfigured:true} (x-vercel-cache MISS — fresh from the function); /api/core/questions?course=igcse-chemistry-19 and ?course=0452-25 both 200 clean auth-gated refusals, zero 500s — no-regression posture; the law's positive proof stays with CI 2/2 + subject-root 7/7.
 - CRITICAL-OPERATOR flags: Vercel PAT reissue (this lane) + GitHub PAT rotation (standing, overdue).
 - Bookkeeping-only (.syllabai/** only): receipt landing block + this addendum; fetch-first, ff-only push, no force, no DB contact.
+
+## R0-AUTO-80 receipt — 2026-10-29T14:36Z (Job 438940, sweep 22:30+08)
+- Task ID: 115 (R0-auto trace cron-agent-loop-202610292230)
+- Merged (1/2 quota): PR #449 R-2 completion — per-lesson-end handoffs at every guided lesson's recalibration (1 file +37/-0, apps/hub/src/app/courses/[course]/guided-lessons/[noteId]/guided-flow.tsx)
+- Head: 5e0ce4ad | Merge sha: af48880e (@14:36Z, authoritative branch-head verified) | merge_method=merge, no force
+- Gates: head CI 2/2 success (verify+hub); mergeable=clean; reviews=0 comments=0; body flag scan clean; boundary PASS (no *.java, no external core/hub, no Neon/prod); author SyllabAI, no recusal conflict
+- Post-merge: main tip af48880e CI 2/2 GREEN (bounded re-check x2); no PUT-reorder anomaly this round (branch head == response sha)
+- Skipped: #285 1c2dd54d (FAIL verify+hub), #296 bd2c0b1e (FAIL hub — still open despite landing-addendum prose; closure belongs to its author)
+- Lane status since last sweep: #450 merged ad98fb69 (T-SM-ROOT-LAW-1 reland of #352 content, CI 2/2 first-ever judgment), #352 CLOSED superseded-by-reland — the ~128h NO-CI stall case resolved by the reland path of record; #451 merged c53e2ed3 (F117 11(d) markPoints sync); main advanced c53e2ed3 -> af48880e this round
+- Ledger note: lane discloses Vercel PAT lost with sandbox reset (.secrets wiped) — deployment proof moved to GitHub-side commit status; strengthens the standing PAT-rotation escalation
+- Bookkeeping-only: this commit touches .syllabai/worklog.md only; fetch-first, ff-only push, no force
