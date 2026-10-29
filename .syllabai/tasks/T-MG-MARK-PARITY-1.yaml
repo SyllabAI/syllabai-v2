@@ -1,0 +1,39 @@
+version: 1
+task:
+  id: T-MG-MARK-PARITY-1
+  title: "MathsGenie marking model — findings dossier (external read-only) + full-parity build plan (6 phase cards, gate-by-gate)"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e, trace 1a189506253cfef5)"
+  status: OPEN
+  priority: P2
+  band: T-MG-MARK-PARITY (interactive paper marking)
+  wave: mg-parity-plan
+  deps: []
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md"
+  execution_record: >
+    Plan run-001. External competitive dossier captured 2026-10-30 against
+    mathsgenie.co.uk (5 passes: SSR dissection, hydrated-DOM ground truth,
+    network observation, 196-chunk client archaeology, tRPC zod validation
+    oracle) with an operator-consented authenticated pass (magic-code login,
+    operator-relayed OTP; operator's own attempt observed live: B1 singles,
+    cross-part region-scoping proof at 9.b, P1/P1/C1 multi-mark-point at
+    17.p1, tldraw ink doc 17->16 shapes). Integrity: zero writes to the
+    target service by the analyst; every probe validation-rejected
+    pre-resolver; single role-guard execution (battle.sheet.markRegion,
+    classroom-owner role confirmed) mutated nothing. Deliverable: docs/
+    MG-MARK-PARITY-PLAN.md (5,884 words) — findings §1, grounding census §2
+    (mark_points at 8861ea1c, ai_mark_events seam, pdf-pane v4, T-MIG-128),
+    six-phase full-parity plan §3 (T-MG-MP-RECT-1 rects, T-MG-AWARDS-1
+    ledger, T-MG-INK-1 ink+SDK gate, T-MG-CROPMARK-1 crop-then-mark
+    pipeline, T-MG-UPLOAD-1 submissions, T-MG-FEEDBACK-1 surfaces), lane
+    compliance §4 (manual-word merges only, no R0-auto for this tranche),
+    risks §5, appendices A/B. Stack adjudication: hybrid — pdf-pane v4 stays
+    the renderer; the MODEL (normalized rects, award ledger with per-award
+    ids + ordinals, crop-then-mark scoping law, workingRef evidence
+    pointers) is what gets adopted.
+  children:
+    - T-MG-MP-RECT-1   # additive mark_point_rects + regions read API + seed subset
+    - T-MG-AWARDS-1    # additive mark_awards + mark_working_blocks + event-spine join
+    - T-MG-INK-1       # ink layer + learner_pdf_drawings + SDK decision gate (tldraw vs native)
+    - T-MG-CROPMARK-1  # crop-then-mark pipeline service + scoping regression test
+    - T-MG-UPLOAD-1    # paper_mark_submissions + documentRef extension (uploaded_paper, paper_mark_submission)
+    - T-MG-FEEDBACK-1  # feedback panel + rect highlight + DC-7 progress join

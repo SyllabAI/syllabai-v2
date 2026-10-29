@@ -1,0 +1,96 @@
+{
+  "card": "T-MG-MARK-PARITY-1",
+  "run": "run-001",
+  "kind": "plan-of-record + external-dossier provenance",
+  "created_utc": "2026-10-30",
+  "session": {
+    "agent": "Super Z (main agent, zai-web)",
+    "session_id": "web-123877e4-3cca-4eba-b72d-52233419378e",
+    "traces": [
+      "1a188ed8be60fe4d",
+      "1a1890f15b1768e1",
+      "1a1892bc13fa1b81",
+      "1a1893844f03a5fd",
+      "1a18939363674eb5",
+      "1a1894399d5698ad",
+      "1a1894a75022be59",
+      "1a1894e00ad77a75",
+      "1a189506253cfef5"
+    ]
+  },
+  "target": {
+    "service": "mathsgenie.co.uk",
+    "primary_artifact": "paper/gcse/maths/edexcel/gcse-maths-2025-june-1ma1-1f (Edexcel 1F June 2025, 20pp, P76402A0120)",
+    "consent": "operator-supplied account (magic-code login, operator-relayed OTP); operator performed their own attempt in-session"
+  },
+  "integrity": {
+    "writes_to_target_by_analyst": 0,
+    "mutation_probes_executed": 15,
+    "mutation_probes_reached_resolver": 1,
+    "resolver_note": "battle.sheet.markRegion ran its role guard only ('only available to student accounts') — no data change; confirmed classroom-owner role",
+    "validation_law": "tRPC validates input before resolver; all schema-leak probes rejected pre-execution",
+    "reads": "unauthenticated where possible (getRegions public); cookie-scoped otherwise; 2 list queries + 4 getRegionMarks + 3 getPdfDrawings + page/route fetches"
+  },
+  "evidence_inventory": {
+    "ssr_html_bytes": 117525,
+    "chunks_downloaded": 196,
+    "client_bytes_mb": 4.7,
+    "key_chunks": {
+      "offline_taxonomy": [
+        "1mxsvx670-tel.js",
+        "0i6i2zun0oahh.js"
+      ],
+      "marker_lifecycle": "1xxw32_5ihqvw.js"
+    },
+    "live_attempt": {
+      "region_marks_total": 9,
+      "score": "5/11",
+      "regions": [
+        "1.p1",
+        "2.p1",
+        "3.p1",
+        "4.p1",
+        "5.p1",
+        "9.a",
+        "9.b",
+        "9.c",
+        "17.p1"
+      ],
+      "ink_shapes": "17 (15 draw + 2 text, 11148 B) -> 16 (11 draw + 5 text, 8740 B) after operator edits"
+    }
+  },
+  "findings_of_record": [
+    "documentRef union: printable | paper_asset | uploaded_paper | daily_five_sheet | collection_worksheet | paper_mark_submission",
+    "Region model: kind question|part, regionKey 1|1.p1|6.a, rects normalized 0..1 multi, questionPartId NULL on live papers",
+    "14 mutation inputs validator-leaked incl. createMarkSubmission {id=client-UUID,...} and markQuestionRegion {regionId, imageDataUrl}",
+    "Crop-then-mark scoping enforced by construction (9.b: 'handwriting in part (a) is outside the scope of this marking')",
+    "Award ledger position-indexed without per-entry ids; workingRef evidence-pointer slot observed null",
+    "Doctrine specimen 17.p1: correct conclusion, zero working -> 0/3, 'the question explicitly requires all working, so the conclusion alone earns no marks'",
+    "Ink = tldraw store doc {schema:1, shapes[]} keyed by sourceUrl AND documentRef; op-sync via canvas.commit {canvasId, snapshot, appliedOpIds}",
+    "Their proxy = no-store CORS shim + analytics (genie_anon_id); deliberate divergence from our T-MIG-128 immutable-cache law — no change"
+  ],
+  "deliverable": {
+    "plan_doc": "docs/MG-MARK-PARITY-PLAN.md (5884 words, 332 lines)",
+    "task_card": ".syllabai/tasks/T-MG-MARK-PARITY-1.yaml",
+    "phase_children": [
+      "T-MG-MP-RECT-1",
+      "T-MG-AWARDS-1",
+      "T-MG-INK-1",
+      "T-MG-CROPMARK-1",
+      "T-MG-UPLOAD-1",
+      "T-MG-FEEDBACK-1"
+    ]
+  },
+  "lane": {
+    "additive_only": true,
+    "identity_zero_touch": [
+      "prompt.ts",
+      "PROMPT_VERSION",
+      "packages/contracts/**",
+      "apps/api/src/routes/cla.ts (tip-of-record blob a9fdabfd; historical fence anchor 3c2ceb01 — evolved via merged lanes, zero diff from this PR)",
+      "apps/api/src/services/cla/service.ts (tip-of-record blob db4573c7 = fence anchor of record, byte-frozen)"
+    ],
+    "merge_authorization": "operator word required per PR; R0-auto NOT authorized for this tranche",
+    "fence_census": "git diff --stat origin/main -- apps/api/src/routes/cla.ts apps/api/src/services/cla/service.ts packages/contracts = 0 lines at branch t-mg-mark-parity-1/run-001"
+  }
+}
