@@ -1862,3 +1862,73 @@ export const markPointRects = pgTable("mark_point_rects", {
         check("mark_point_rects_ordinal_check", sql`ordinal >= 0`),
         check("mark_point_rects_extraction_confidence_check", sql`(extraction_confidence >= (0)::double precision) AND (extraction_confidence <= (1)::double precision)`),
 ]);
+
+// T-MG-AWARDS-1 run-001 (plan of record: docs/MG-MARK-PARITY-PLAN.md §3.2).
+// Additive v2-native pair (packages/db/src/schema/README.md §"Additive
+// v2-native tables"): the AWARD plane — runtime, per-learner, per-region
+// award LEDGER joined to the definition plane — plus the working evidence
+// blocks its workingRef points at. The unique constraint IS the DC-7 claim
+// (INSERT ... ON CONFLICT DO NOTHING = claim-before-write once-only at row
+// granularity, the createGradedEvidencePublisher award-shaped analog).
+// Ledger-preserving law: cascade on learner delete (PII posture, the
+// ai_mark_events precedent), NO cascade on mark_point delete (the learner's
+// record of record outlives mark-scheme edits; deletion fails loud).
+export const markAwards = pgTable("mark_awards", {
+        id: uuid().primaryKey().notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        documentRefType: text("document_ref_type").notNull(),
+        documentRefId: uuid("document_ref_id").notNull(),
+        regionKey: text("region_key").notNull(),
+        markPointId: uuid("mark_point_id"),
+        page: integer(),
+        code: text().notNull(),
+        awarded: boolean().notNull(),
+        score: integer().notNull(),
+        maxScore: integer("max_score").notNull(),
+        ordinal: integer().default(0).notNull(),
+        workingRef: uuid("working_ref"),
+        pipelineVersion: text("pipeline_version").notNull(),
+        feedback: jsonb().notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("ix_mark_awards_learner_doc").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.documentRefType.asc().nullsLast().op("text_ops"), table.documentRefId.asc().nullsLast().op("uuid_ops")),
+        unique("uq_mark_awards_learner_doc_region_code_ordinal").on(table.learnerId, table.documentRefId, table.regionKey, table.code, table.ordinal),
+        foreignKey({
+                columns: [table.learnerId],
+                foreignColumns: [users.id],
+                name: "mark_awards_learner_id_fkey"
+        }).onDelete("cascade"),
+        foreignKey({
+                columns: [table.markPointId],
+                foreignColumns: [markPoints.id],
+                name: "mark_awards_mark_point_id_fkey"
+        }),
+        check("mark_awards_score_check", sql`score >= 0 AND score <= max_score`),
+        check("mark_awards_max_score_check", sql`max_score > 0`),
+        check("mark_awards_ordinal_check", sql`ordinal >= 0`),
+        check("mark_awards_page_check", sql`page IS NULL OR page > 0`),
+]);
+
+// T-MG-AWARDS-1 run-001 (plan §3.2, the "mark_working_blocks (additive,
+// Phase-2 optional / Phase-4 exercised)" bullet) — the workingBlocks slot
+// of record; mark_awards.workingRef points here (the evidence-pointer
+// law). Kind is the ink|text|structure triad; content is the opaque jsonb
+// payload (Phase 4's crop/transcription shapes own its inner schema).
+export const markWorkingBlocks = pgTable("mark_working_blocks", {
+        id: uuid().primaryKey().notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        documentRefType: text("document_ref_type").notNull(),
+        documentRefId: uuid("document_ref_id").notNull(),
+        regionKey: text("region_key").notNull(),
+        kind: text().notNull(),
+        content: jsonb().notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        index("ix_mark_working_blocks_learner_doc").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.documentRefType.asc().nullsLast().op("text_ops"), table.documentRefId.asc().nullsLast().op("uuid_ops")),
+        foreignKey({
+                columns: [table.learnerId],
+                foreignColumns: [users.id],
+                name: "mark_working_blocks_learner_id_fkey"
+        }).onDelete("cascade"),
+        check("mark_working_blocks_kind_check", sql`kind IN ('ink', 'text', 'structure')`),
+]);

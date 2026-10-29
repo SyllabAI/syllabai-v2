@@ -1,0 +1,71 @@
+{
+  "paperCode": "PLACEHOLDER-1MA1-1F",
+  "sessionLabel": "PLACEHOLDER June 2025",
+  "learnerEmail": "placeholder-learner@example.edu",
+  "note": "T-MG-AWARDS-1 run-001 internal marking dry-run rehearsal manifest (plan of record docs/MG-MARK-PARITY-PLAN.md §3.2). PLACEHOLDER identity values by design — the join-proof posture of mark-point-rects-joinproof.json: align paperCode/sessionLabel/learnerEmail to the live corpus before the first real run; the script fails loudly (exit 3) on any unresolvable placeholder. The regionKey values are the DERIVED keys of the target paper (§3.1 region-key law) — the seed writes the ledger directly and never re-derives. The three-award P1/P1/C1 region is the plan §3.2 ledger pin (a) shape: duplicate P1 disambiguated by ordinal, non-awarded C1 carries score 0; the first P1 carries the working evidence (pin b shape).",
+  "regions": [
+    {
+      "regionKey": "1",
+      "awards": [
+        {
+          "code": "P1",
+          "awarded": true,
+          "score": 1,
+          "maxScore": 1,
+          "ordinal": 0,
+          "markPointRef": "PLACEHOLDER-REF-1-P1-A",
+          "page": 2,
+          "pipelineVersion": "paper-mark/v1-dryrun",
+          "feedback": {
+            "attempt": "full",
+            "chatMessage": "Method seen: 180 - 125 = 55 (the angle sum applied correctly).",
+            "pointsScored": ["states the angle sum of the triangle"],
+            "pointsNotScored": [],
+            "thoughtProcess": "The working shows the subtraction stated explicitly and carried out correctly; the process mark is earned.",
+            "strategiesForImprovement": ["state the final answer with units"]
+          },
+          "working": {
+            "kind": "text",
+            "content": { "transcript": "180 - 125 = 55", "source": "crop-transcribe-dryrun" }
+          }
+        },
+        {
+          "code": "P1",
+          "awarded": true,
+          "score": 1,
+          "maxScore": 1,
+          "ordinal": 1,
+          "markPointRef": "PLACEHOLDER-REF-1-P1-B",
+          "page": 2,
+          "pipelineVersion": "paper-mark/v1-dryrun",
+          "feedback": {
+            "attempt": "full",
+            "chatMessage": "Second process point: the angles on the straight line are used.",
+            "pointsScored": ["uses angles on a straight line"],
+            "pointsNotScored": [],
+            "thoughtProcess": "The decomposition is present in the working; ordinal 1 disambiguates this duplicate P1 from ordinal 0 (the position law).",
+            "strategiesForImprovement": []
+          }
+        },
+        {
+          "code": "C1",
+          "awarded": false,
+          "score": 0,
+          "maxScore": 1,
+          "ordinal": 0,
+          "markPointRef": "PLACEHOLDER-REF-1-C1",
+          "page": 2,
+          "pipelineVersion": "paper-mark/v1-dryrun",
+          "feedback": {
+            "attempt": "full",
+            "chatMessage": "Final answer not stated; the correctness mark is not earned.",
+            "pointsScored": [],
+            "pointsNotScored": ["states 55 degrees with units"],
+            "thoughtProcess": "The working reaches 55 but no stated answer line exists in the region; the C1 stays unawarded and carries score 0 (the write-side score law).",
+            "strategiesForImprovement": ["always write the final answer on the answer line"]
+          }
+        }
+      ]
+    }
+  ]
+}

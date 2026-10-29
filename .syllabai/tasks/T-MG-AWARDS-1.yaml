@@ -1,0 +1,84 @@
+version: 1
+task:
+  id: T-MG-AWARDS-1
+  title: "MG parity Phase 2 — mark_awards ledger (the award plane) + mark_working_blocks + DC-7 claim write + paper-marks read API"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e, trace 1a18a028b0638c99)"
+  status: OPEN
+  priority: P2
+  band: T-MG-MARK-PARITY (interactive paper marking)
+  wave: mg-parity-phase2
+  deps: [T-MG-MP-RECT-1]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.2"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    - "(a) ledger pin — one region, three award rows (P1/P1/C1), score = Σ awarded, ordinal disambiguates the duplicate codes (service test: region score 2, maxScore 3, P1 ordinals {0,1}, distinct per-award ids)"
+    - "(b) evidence pin — an award with workingRef resolves to its working block in the same region slice (left join served inline)"
+    - "(c) event pin — an award write emits exactly one graded-evidence event through the DC-7 claim (the createGradedEvidencePublisher integration pattern: won claim → award row carrying workingRef THEN the zero-orphan working block; re-fire → claim re-issued, conflict target absorbs it, ZERO rows, no orphan block)"
+    - "(d) posture pin — both routes auth-gated (401 shell first); the learner id rides getAuth(c).userId, never the wire (no learnerId field exists on any contract shape)"
+  execution_record: >
+    run-001 (2026-10-30). Migration 0018_mark-awards.sql (additive pair:
+    mark_awards — uuid PK, learner FK→users cascade, document_ref
+    type/id, region_key text, mark_point_id NULLABLE FK→mark_points
+    NO-cascade (ledger-preserving: the record of record outlives
+    mark-scheme edits; deletion fails loud), page NULL CHECK>0, code text,
+    awarded bool, score/max_score CHECK 0<=score<=max, max>0, ordinal
+    DEFAULT 0 CHECK>=0, working_ref (pointer, no FK — the pointer law),
+    pipeline_version, feedback jsonb, created_at defaultNow;
+    UNIQUE(learner_id, document_ref_id, region_key, code, ordinal) — THE
+    DC-7 CLAIM; ix learner/doc — plus mark_working_blocks (id, learner
+    cascade, document_ref, region_key, kind CHECK ink|text|structure,
+    content jsonb, created_at; ix learner/doc). 0018_snapshot
+    hand-chained and BOTH tables FOLDED into 0000_snapshot.json (the
+    RECT-1 fold precedent, mg_awards1_snapshot.py); drizzle-kit check
+    green; rebaseline census pins advanced 84/791/114/83/146 ->
+    86/815/116/86/151 with the comment-chain entry (+2 tables, +24
+    columns, +2 indexes, +3 fks, +5 checks; uq rides uniqueConstraints —
+    the mpa precedent). schema.ts: markAwards + markWorkingBlocks
+    appended (defaultNow per the v2-native convention; 0 deletions).
+    Contracts: packages/contracts/paper-awards.ts (documentRefType union
+    enum from the dossier §1.1 — 6 kinds, Phase-5 extension pending;
+    feedbackObject schema = the observed §1.6 decomposition;
+    markAwardWriteSchema with ordinal REQUIRED (the position law);
+    served award at per-AWARD grain with the per-award id (the parity
+    headline); ledger + claim-receipt response shapes; NO learnerId on
+    any wire shape — the posture law in the contract itself; barrel
+    one-liner). Service: services/paper-awards (structural sql seam;
+    PaperAwardPublisher seam with noop + frozenParity E-2 doubles and
+    the LIVE createPaperAwardPublisher — claim-before-write once-only at
+    row granularity, zero-orphan ordering: workingRef generated BEFORE
+    the claim and carried ON the claimed row, block insert ONLY on a won
+    claim so a suppressed re-fire writes nothing; ledger() groups by
+    region_key, score = Σ awarded, maxScore = Σ max_score, honest-empty
+    regions:[]; resolveRegion() = the POST identity bridge — regionId is
+    the REAL questions.id / question_parts.id the RECT-1 regions API
+    serves, re-derived through the SAME §3.1 law: external_ref, else q{n}
+    via the window-function positional fallback (nulls-last semantics a
+    row-value comparison cannot carry), labeled /^[a-z]/i '9.a' vs
+    answer-line '9.p{ordering+1}'; structural duplicates of the RECT-1
+    regex/ordering keep fences independent; unknown region → 404 T-C20
+    'region {uuid} not found'; documentRefType fixed paper_asset at the
+    bridge — Phase-5 uploaded refs arrive with their own bridge).
+    Router: routes/paper-awards GET /api/v1/paper-marks
+    (documentRefType defaults paper_asset — the union enum validated,
+    documentRefId required uuid → 400 malformed request) + POST
+    /api/v1/paper-marks/regions/:regionId/awards (Phase 4's pipeline
+    write site, shipped now: unreadable body → 400 malformed_body, zod
+    → 400 validation_failed 'field: message' first-issue, malformed uuid
+    → 400 bad_request 'malformed request', unknown region → 404; 200
+    claim receipt {emitted, suppressed, workingBlocks} — suppressed
+    re-fires are 200 counts, never errors, the idempotent pipeline
+    semantics); auth shell FIRST per selfmark/assessment posture
+    (learner-scoped PII surface); mounted /api/v1/paper-marks in
+    index.ts (disclosed minimal wiring, T-MIG-031 precedent).
+    Seed: scripts/seed-mark-awards.ts (paper by paperCode+sessionLabel
+    identity law, learner by email, markPointRef 1:1 scoped to the
+    paper's tree — loud-fail exit 3; UPSERT do-update posture DELIBERATE
+    divergence disclosed: the seed is a fixture GROUNDER, the once-only
+    claim belongs to the pipeline path; --dry-run) +
+    fixtures/mark-awards-dryrun.json (PLACEHOLDER identity values, the
+    RECT-1 join-proof posture; the three-award P1/P1/C1 region is pin-a
+    shape, the first P1 carries working evidence — pin-b shape).
+    GATES: paper-awards 23/23; full suite 3636 pass / 0 fail / 13 skip
+    (208 files); typecheck 0 (contracts+shared+db+api); hub-local tsc
+    clean (the RECT-1 CI-repair lesson pre-paid); db:check green;
+    rebaseline 26/26.
