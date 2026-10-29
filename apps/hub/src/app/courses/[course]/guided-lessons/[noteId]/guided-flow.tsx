@@ -31,6 +31,12 @@
  *     trajectory chip ("started X → next time Y") echoed on the
  *     set-complete recap, next to a browser-local helpfulness ask
  *     (thumbs) — never scored, never exported (zero-DB law).
+ *   → R-2 per-lesson-end handoffs (SME parity): every lesson's last
+ *     stage offers the same "Keep going" practice links the set-complete
+ *     recap shows — the subtopic's exam-questions set + flashcard deck,
+ *     resolved server-side (always-live fallback law). The block renders
+ *     only when another lesson follows; the final lesson ends straight
+ *     into the recap, which already carries it.
  *
  * WRITE-ONCE LAW: a rating is chosen once per module; a resumed session
  * restores it and must not re-prompt (the gate radio locks once written;
@@ -508,6 +514,8 @@ export function GuidedLessonFlow({
         rating={rating}
         prevRecalibrated={prevRecalibrated}
         prevDone={prevDone}
+        examQuestionsHref={examQuestionsHref}
+        flashcardsHref={flashcardsHref}
         recalChoice={recalChoice[m.id]}
         onRecalChoice={(r) => setRecalChoice((c) => ({ ...c, [m.id]: r }))}
         onChooseRating={chooseRating}
@@ -534,6 +542,11 @@ interface StageProps {
   prevRecalibrated: Rating | undefined;
   /** R-4: whether the learner actually walked the previous lesson */
   prevDone: boolean;
+  /** R-2 per-lesson-end handoff targets (resolved server-side, see the
+   *  flow's call site): rendered at each lesson's recalibration when
+   *  another lesson follows in the set. */
+  examQuestionsHref: string;
+  flashcardsHref: string;
   /** the current module's post-check recalibration choice, pre-continue */
   recalChoice: Rating | undefined;
   onRecalChoice: (r: Rating) => void;
@@ -978,6 +991,30 @@ function RecalibrateStage(p: StageProps) {
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-xs text-muted-foreground">Your trajectory for this lesson:</p>
             <TrajectoryChip from={rating} to={p.state.recalibrated[m.id]} />
+          </div>
+        )}
+        {/* R-2 per-lesson-end handoffs (SME parity — the of-record walk has
+            Exam Questions / Flashcards at EACH lesson end, not only the set
+            end): the same resolved hrefs the set-complete recap ships, so
+            no new resolution and no new 404 surface. Rendered only when
+            another lesson follows — the final lesson ends straight into the
+            FinishedView recap, which already carries the block. */}
+        {p.moduleOrdinal + 1 < p.moduleCount && (
+          <div className="space-y-1.5 border-t pt-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              Keep going
+            </p>
+            <p className="text-[13px] text-muted-foreground">
+              Done with this guided lesson? Try this topic&apos;s practice before the next one.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              <Button asChild variant="outline">
+                <a href={p.examQuestionsHref}>Exam questions</a>
+              </Button>
+              <Button asChild variant="outline">
+                <a href={p.flashcardsHref}>Flashcards</a>
+              </Button>
+            </div>
           </div>
         )}
       </CardContent>
