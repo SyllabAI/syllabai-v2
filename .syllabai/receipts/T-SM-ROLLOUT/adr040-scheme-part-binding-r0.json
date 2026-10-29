@@ -1,0 +1,89 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-scheme-part-binding-r0",
+ "date": "2026-10-26",
+ "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+ "trace_id": "1a1776dff15bb991",
+ "operator_ruling": "\"A\" \u2014 the part-binding delta (trace 1a1776dff15bb991), answering the binding-granularity question of adr040-bandshape-fit-r0 (comment 6411847075): a LEVELS mark scheme may bind the exact question part it marks; NULL stays the historical version-level binding",
+ "pr_of_record": {
+  "number": 388,
+  "head": "e567e3ff",
+  "merge": "7ab06ecb22cb8476b5e2bae46cfde814a66c2619",
+  "checks": {
+   "hub": "success",
+   "verify": "success"
+  }
+ },
+ "migration_0016": {
+  "file": "packages/db/drizzle/0016_adr040-scheme-part-binding.sql",
+  "statements": [
+   "ALTER TABLE mark_schemes ADD COLUMN question_part_id uuid",
+   "ADD CONSTRAINT mark_schemes_question_part_id_fkey FK -> question_parts(id) ON DELETE CASCADE",
+   "CREATE INDEX ix_mark_schemes_part (question_part_id uuid_ops)"
+  ],
+  "meta": "hand-chained 0016_snapshot.json + journal idx 16 (the T-SENECA-001 fold precedent); db:check green; 0000_snapshot folded end-state advanced; rebaseline pins 83/780/111/81/139 -> 83/781/112/82/139"
+ },
+ "law_changes": [
+  "ingest birth: ONE LEVELS scheme per printed grid; part-granular refs bind the part (fail-closed when absent); question-granular refs keep the unbound shape; both-kinds refuses per printed ref; question-granular grid + version points refuse; orphan refs refuse \u2014 never a silent drop",
+  "R4 tiling: bound part -> THAT part's marks; unbound -> legacy single/multi-part law",
+  "dispatch: part-aware resolution (part-bound LEVELS wins, then version-unbound); markAttempt groups per resolved scheme, per-kind provenance (1.4.0 band / 1.3.0 point); shared tail total+evidence read the attempt FRESH (multi-group correct, single-group value-identical)",
+  "teacher markAnswer: case-ordered part-aware resolution"
+ ],
+ "gates": {
+  "typecheck": 0,
+  "full_suite": "3045 pass / 0 fail / 13 skip",
+  "db:check": "green",
+  "new_tests": "+7 ruling-A tests (band-birth split law, dual birth, same-ref both-kinds, question-granular coexistence, orphan, absent-part, part-bound R4 pass/refuse, part-bound dual-path dispatch + V34 refusal)"
+ },
+ "prod_apply": {
+  "ceremony": "adr040-scheme-part-binding-r0-apply",
+  "statements": 3,
+  "backup": {
+   "columns": [
+    "id",
+    "question_version_id",
+    "version_label",
+    "source_document_id",
+    "validation_state",
+    "extraction_method",
+    "created_at",
+    "general_guidance",
+    "scheme_kind"
+   ],
+   "fks": [
+    "mark_schemes_question_version_id_fkey"
+   ],
+   "indexes": [
+    "mark_schemes_pkey",
+    "uq_mark_scheme"
+   ],
+   "tripwires": {
+    "schemes": 24824,
+    "levels": 0,
+    "bands": 0,
+    "evals": 12,
+    "sme_eq_active": 20930
+   }
+  },
+  "apply": "COMMITTED",
+  "post": {
+   "columns_ok": true,
+   "fks": [
+    "mark_schemes_question_part_id_fkey",
+    "mark_schemes_question_version_id_fkey"
+   ],
+   "ix_ok": true,
+   "tripwires": {
+    "schemes": 24824,
+    "levels": 0,
+    "bands": 0,
+    "evals": 12,
+    "sme_eq_active": 20930
+   }
+  },
+  "verdict": "GREEN"
+ },
+ "unchanged": "tripwires byte-unchanged through the ceremony: mark_schemes 24,824 / LEVELS 0 / mark_bands 0 / evals 12 / active sme-eq 20,930",
+ "unblocks": "G-4 LEVELS birth for the repo-covered 4GE1/4BS1 papers under the ruled law \u2014 the 111 union-collision numbers now birth two honest schemes (e.g. 3(d) 6-mark + 3(e) 9-mark bound to their own parts); the R4 part-sum refusal is gone for honestly bound grids",
+ "standing_gaps": "CIE 9609/0455 MS fetch 0/78 (JS-gated; the concurrent qppair-cie lane's QP side advanced); 4GE1 bundle re-export (KG critical path); teacher packet band-placement helper (teachermarking :1305) still resolves version-newest \u2014 disclosed, cycle-1 posture"
+}

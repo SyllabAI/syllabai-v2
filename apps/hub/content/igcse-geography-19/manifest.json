@@ -1,1 +1,41 @@
-{"schema":"syllabai-demo.content-bundle/2.0","generatedUtc":"2026-10-21T13:21:31Z","importSource":{"repo":"SyllabAI/syllabai-resources","ref":"main@dc9c1efcfa5ccd3cb728f258b8dc2e718487d120","upstreamSchemas":["syllabai.sme-revision-note/1.0","syllabai.sme-revision-notes-course/1.0","syllabai.sme-exam-questions/1.1","syllabai.sme-flashcard-deck/1.0"]},"curriculum":{"board":"Edexcel","level":"IGCSE","subject":"Geography","code":"4GE1","syllabusVersion":"2017"},"license":"Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.","counts":{"sections":9,"topics":31,"specPoints":202,"notes":102,"questionSets":39,"questions":750,"parts":883,"marks":2734,"flashcards":1168},"treeKind":"official-spine","officialSpine":{"spine":"spines/igcse-geography-19.json","resourcesSha":"dc9c1efcfa5ccd3cb728f258b8dc2e718487d120","attachmentMap":"content-maps/igcse-geography-19.json"}}
+{
+ "schema": "syllabai-demo.content-bundle/2.0",
+ "generatedUtc": "2026-10-26T11:30:00Z",
+ "importSource": {
+  "repo": "SyllabAI/syllabai-resources",
+  "ref": "main@08447ba9e706d0e503beb8243401b5dbfffe74df",
+  "upstreamSchemas": [
+   "syllabai.sme-revision-note/1.0",
+   "syllabai.sme-revision-notes-course/1.0",
+   "syllabai.sme-exam-questions/1.1",
+   "syllabai.sme-flashcard-deck/1.0"
+  ],
+  "note": "EDBUMP-1 stamp-only convergence (2026-10-22, operator trace 1a1615dbd41cea41): importSource.ref re-pinned main@dc9c1efc -> main@08447ba9 to close the pin-vintage gap with the CIE fleet. Content NOT re-derived: the Edexcel input planes (SME-RevisionNotes, SME-Flashcards, SME-ExamQuestion, Edexcel spec-link sidecars) are tree-identical dc9c1efc..08447ba9 — zero-delta proof of record (217 changed paths in range, zero SME-*, zero Edexcel spec-links; in-range deltas are pilot-scoped igcse-chemistry-19 official-plane waves or non-import planes: CourseLessons, books/pearson-edexcel, CIE rulings). Receipt: .syllabai/receipts/EDBUMP-1/run-001."
+ },
+ "curriculum": {
+  "board": "Edexcel",
+  "level": "IGCSE",
+  "subject": "Geography",
+  "code": "4GE1",
+  "syllabusVersion": "2017"
+ },
+ "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
+ "counts": {
+  "sections": 9,
+  "topics": 31,
+  "specPoints": 202,
+  "notes": 102,
+  "questionSets": 39,
+  "questions": 750,
+  "parts": 883,
+  "marks": 2734,
+  "flashcards": 1168
+ },
+ "treeKind": "official-spine",
+ "officialSpine": {
+  "spine": "spines/igcse-geography-19.json",
+  "resourcesSha": "08447ba9e706d0e503beb8243401b5dbfffe74df",
+  "attachmentMap": "content-maps/igcse-geography-19.json"
+ },
+ "note": "4GE1 bundle re-export (adr040-g2-4ge1-reexport-r0, operator order trace 1a177aaf6b9e86c1 'pick up that re-export lane next'): the PR #386 fail-closed refusal (seed law mapBundleNodes: namespaced SPEC_POINT codes outside every pinned spec-code shape) is repaired at the identity level ONLY — the corpus statement regime IGCSE_GEOGRAPHY:S<n>.<mmm> (operator-validated T-SPEC-7/T-SPEC-10 page-context anchors, spec_point_map.json/spec_point_resolution.json of record in syllabai-resources) is re- namespaced to the Edexcel self-namespace law of record (4CH1-1.1 precedent, bundle-seed.ts lane-C leg 4): 4GE1-S<n>.<mmm>. dbCodes land verbatim; hub joins (spec-tree.ts) stay equality-based. Tree structure, node count (243), edges (242), and the 3 corpus-unreferenced SX topic-summary statements are retained verbatim. Content NOT re-derived from resources; importSource ref pin unchanged. Known defects of record NOT repaired here (display/mapping lanes): truncated SUBTOPIC titles and coarse anchor granularity of the corpus re-code."
+}

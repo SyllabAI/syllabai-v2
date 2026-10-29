@@ -1,0 +1,180 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_WJD4ZN4kQfzJNSPV",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "11d420454e1ac0efcc78e60b5dc0b6029b28ad369ec239dd10a215830d555d31",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_WJD4ZN4kQfzJNSPV",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Gases in the Atmosphere",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-3-gases-in-the-atmosphere/2-3-2-practical-determine-the--of-oxygen-in-air",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.10",
+        "text": "understand how to determine the percentage by volume of oxygen in air using experiments involving the reactions of metals (e.g. iron) and non-metals (e.g. phosphorus) with air"
+      },
+      {
+        "code": "4CH1-2.14",
+        "text": "practical: determine the approximate percentage by volume of oxygen in air using a metal or a non-metal"
+      }
+    ],
+    "primer": {
+      "text": "From Composition of Air you already know that oxygen makes up about one-fifth of dry air and that its share can be found by reacting a metal or non-metal with a sealed volume of air. This practical note walks the iron-wool burette experiment from aim to conclusion, including the working that turns water-level readings into the approximate percentage of oxygen.",
+      "prerequisiteSubtopic": "Gases in the Atmosphere"
+    },
+    "modules": [
+      {
+        "id": "rn_WJD4ZN4kQfzJNSPV::L1",
+        "title": "Aim and method",
+        "sourceHeadings": [
+          "Aim",
+          "Method"
+        ],
+        "specRefs": [
+          "4CH1-2.14",
+          "4CH1-2.10"
+        ],
+        "opening": "This practical determines how much of the air is oxygen, using the oxidation of iron as the measuring reaction. A piece of iron wool sits at the bottom of a burette filled with water, and the tube stands upside down in a trough, held upright by a clamp. Over several days the iron slowly uses up the oxygen inside, and the water level climbs to record exactly how much gas has gone.",
+        "keyPoints": [
+          "First the dead volume from the last graduation to the tap is measured by draining 50.0 mL of water.",
+          "Iron filings or a piece of iron wool are placed in the bottom of the closed burette.",
+          "The burette is inverted into a trough of water and clamped vertically.",
+          "The starting water level is recorded, then read again after 3-4 days.",
+          "A little water moistens the inside of the burette before the iron is added."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "You trap a measured column of air over water with iron wool inside, then wait days for the iron to rust. The rusting eats the oxygen, and the water rises to take its place, which you read off the scale.",
+            "analogy": "It is like watching a slow leak in a sealed tyre under water: bubbles of lost volume show up as water creeping up the gauge.",
+            "examPointer": "Method questions want the sequence: measure the dead volume, add the iron, invert in water, record both water levels."
+          },
+          "medium": {
+            "restatement": "The apparatus fixes a known air volume at the start, and the iron oxidises inside it over several days, converting gaseous oxygen into solid rust. Because the product is solid, the gas volume falls by the oxygen share alone, and the rising water level records that fall against the fixed scale.",
+            "analogy": "Think of a guarantee: whatever gas disappears, water silently pays back the exact same volume, so the water scale becomes the oxygen counter.",
+            "examPointer": "Explain why the burette is inverted in water: it seals the air sample and lets the water level double as the volume gauge."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_WJD4ZN4kQfzJNSPV::L1::Q1",
+          "rn_WJD4ZN4kQfzJNSPV::L1::Q2",
+          "rn_WJD4ZN4kQfzJNSPV::L1::Q3",
+          "rn_WJD4ZN4kQfzJNSPV::L1::Q4",
+          "rn_WJD4ZN4kQfzJNSPV::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_WJD4ZN4kQfzJNSPV::L2",
+        "title": "Results, calculation and conclusion",
+        "sourceHeadings": [
+          "Results",
+          "Calculation"
+        ],
+        "specRefs": [
+          "4CH1-2.10",
+          "4CH1-2.14"
+        ],
+        "opening": "The recorded readings are the 3.8 mL between the 50 mL mark and the tap, an initial water level of 2.6 mL and a final water level of 12.7 mL. From these, the starting air volume, the final air volume and the oxygen volume follow in turn. Dividing the oxygen volume by the starting air volume and scaling up gives the percentage of oxygen in the air.",
+        "keyPoints": [
+          "The initial volume of air is (50.0 + 3.8) - 2.6, which equals 51.2 mL.",
+          "The final volume of air is 53.8 - 12.7, which equals 41.1 mL.",
+          "The volume of oxygen used is 51.2 - 41.1, which equals 10.1 mL.",
+          "The percentage of oxygen is 10.1 divided by 51.2, multiplied by 100.",
+          "The result, 19.7 percent, agrees with oxygen making up approximately 20 percent of the air."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Work out the air volume at the start and at the end from the water readings, and the difference between them is the oxygen that the iron used. Turn that difference into a percentage of the starting air and you get about one-fifth.",
+            "analogy": "Like timing how much bathwater drained by reading the depth before and after: the difference tells the story in one subtraction.",
+            "examPointer": "Show every line of the working and end with the percentage; the final mark is for the conclusion matching about 20 percent."
+          },
+          "medium": {
+            "restatement": "The initial air volume is the full column, 50.0 mL plus the 3.8 mL beyond the scale, less the 2.6 mL of water already inside, giving 51.2 mL. After oxidation the air column is 53.8 - 12.7 = 41.1 mL, so the oxygen used is 10.1 mL, and 10.1 / 51.2 x 100 = 19.7 percent, the approximate oxygen share of air.",
+            "analogy": "Treat the burette like a fuel gauge: you compare the tank before and after the journey, and the drop tells you exactly how much was burned.",
+            "examPointer": "Quote the answer to a sensible precision and state the comparison with the expected one-fifth; that final comparison sentence is often a dedicated mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_WJD4ZN4kQfzJNSPV::L2::Q1",
+          "rn_WJD4ZN4kQfzJNSPV::L2::Q2",
+          "rn_WJD4ZN4kQfzJNSPV::L2::Q3",
+          "rn_WJD4ZN4kQfzJNSPV::L2::Q4",
+          "rn_WJD4ZN4kQfzJNSPV::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "burette",
+          "definition": "A long graduated tube with a tap, used here upside down to hold and measure the trapped air column.",
+          "firstLesson": 1
+        },
+        {
+          "term": "oxidation",
+          "definition": "A reaction in which a substance gains oxygen, such as iron turning to rust in this practical.",
+          "firstLesson": 1
+        },
+        {
+          "term": "initial volume",
+          "definition": "The volume of air sealed in the burette at the start, worked out as 51.2 mL in this run.",
+          "firstLesson": 2
+        },
+        {
+          "term": "water level",
+          "definition": "The height of the water surface inside the burette, read off the scale at the start and after several days.",
+          "firstLesson": 2
+        },
+        {
+          "term": "iron wool",
+          "definition": "A strand of fine iron fibres that rusts through its whole length, using up the oxygen around it.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A burette with iron wool inside is inverted in a trough of water. The volume between the 50 mL mark and the tap is 3.8 mL, the initial water level is 2.6 mL and the final water level after several days is 12.7 mL. Determine the approximate percentage by volume of oxygen in air.",
+        "steps": [
+          "Initial volume of air: (50.0 + 3.8) - 2.6 = 51.2 mL",
+          "Final volume of air: 53.8 - 12.7 = 41.1 mL",
+          "Volume of oxygen used: 51.2 - 41.1 = 10.1 mL",
+          "Percentage of oxygen: 10.1 / 51.2 x 100 = 19.7%",
+          "The oxygen takes up approximately 20% of the air."
+        ],
+        "finalAnswer": "The percentage of oxygen in the air is 19.7%."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7034d031be6a-investigating-percentage-of-oxygen-in-air.png",
+        "alt": "Investigating-Percentage-of-Oxygen-in-Air, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Apparatus to measure the percentage of oxygen in the atmosphere",
+        "moduleIds": []
+      }
+    ]
+  }
+}

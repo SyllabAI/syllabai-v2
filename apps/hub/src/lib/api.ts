@@ -2,8 +2,10 @@
  * SyllabAI API client.
  *
  * Routing:
- * - Production (Vercel): `NEXT_PUBLIC_API_BASE_URL` points at the Spring Boot
- *   service on Render (e.g. https://syllabai-core.onrender.com) — absolute URLs.
+ * - Production (Vercel): `NEXT_PUBLIC_API_BASE_URL` pointed at the Spring Boot
+ *   service on Render (e.g. https://syllabai-core.onrender.com — RETIRED
+ *   2026-10-23, operator decision; core fully retired, hub serves standalone
+ *   from this repo) — absolute URLs.
  * - Sandbox preview: relative URLs with `XTransformPort` query, which the Caddy
  *   gateway forwards to the Java backend on port 8080.
  *
@@ -52,6 +54,9 @@ import type {
   AssignmentSummaryView,
   AssignmentSubmissionView,
   AssignmentView,
+  AssignmentPackLibraryView,
+  AssignmentPackLearnerView,
+  AssignmentPackCompleteResponse,
   ExamPaperBrowseView,
   ExamPaperDetailView,
   HumanMarkView,
@@ -118,6 +123,11 @@ import type {
   TeacherClassView,
   ClassKnowledgeGraphView,
   ClassNodeStudentsView,
+  ToolkitContextView,
+  ToolkitGenerateResultView,
+  ToolkitResourceDetailView,
+  ToolkitResourceSummaryView,
+  ToolkitToolType,
 } from "./types";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ?? "";
@@ -964,7 +974,8 @@ const USER_KEY = "syllabai.user";
 export function apiPath(path: string): string {
   // path arrives like "/api/v1/auth/login" or ".../tree?includeMisconceptions=true".
   // The resolved base is documented as the bare API origin (e.g.
-  // https://syllabai-core.onrender.com), but a trailing /api/v1 (as older
+  // https://syllabai-core.onrender.com — RETIRED 2026-10-23, core fully
+  // retired), but a trailing /api/v1 (as older
   // deployment notes described) must not double the prefix — normalize it
   // away so both operator conventions produce identical URLs.
   const base = resolveBase(path);
@@ -1462,6 +1473,58 @@ export const api = {
   learnerAssignments: () =>
     request<LearnerAssignmentView[]>("/api/v1/learners/me/assignments"),
 
+  // ── Seneca resource packs (T-SENECA-001) — the assignment creator's
+  // "Seneca resources" option. The pack IS an assignments row + side-table
+  // tasks, so hand-ins stay the submitAssignmentSubmission endpoint above;
+  // these methods carry the pack-specific reads/writes only.
+
+  // Teacher: the course-linked resource library for the picker — scoped by
+  // the page's OWN course (no course filterer anywhere in this surface).
+  teacherPackLibrary: (course: string, opts?: { kind?: string; topic?: string; q?: string; limit?: number }) => {
+    const p = new URLSearchParams({ course });
+    if (opts?.kind) p.set("kind", opts.kind);
+    if (opts?.topic) p.set("topic", opts.topic);
+    if (opts?.q) p.set("q", opts.q);
+    if (opts?.limit) p.set("limit", String(opts.limit));
+    return request<AssignmentPackLibraryView>(
+      `/api/v1/teacher/assignment-packs/resources?${p.toString()}`,
+    );
+  },
+
+  // Teacher: register the pack (fail-closed: every resource id must exist
+  // AND belong to the course).
+  teacherCreateAssignmentPack: (body: {
+    title: string;
+    courseSlug: string;
+    courseLabel: string;
+    dueAt: string;
+    classId?: string | null;
+    resourceIds: string[];
+  }) =>
+    request<import("@/lib/types").AssignmentPackDetailView>(
+      "/api/v1/teacher/assignment-packs",
+      { method: "POST", body: JSON.stringify(body) },
+    ),
+
+  // Teacher: pack preview (tasks with content; owner-gated).
+  teacherAssignmentPack: (id: string) =>
+    request<import("@/lib/types").AssignmentPackDetailView>(
+      `/api/v1/teacher/assignment-packs/${id}`,
+    ),
+
+  // Learner: the pack's tasks + MY per-task states.
+  learnerAssignmentPack: (id: string) =>
+    request<AssignmentPackLearnerView>(`/api/v1/learners/me/assignment-packs/${id}`),
+
+  // Learner: complete one task (server-side scoring: exam questions clamp
+  // marksAwarded into 0..marksTotal; sections/quizzes complete at full
+  // credit). Returns the derived hand-in numbers.
+  learnerCompletePackTask: (assignmentId: string, resourceId: string, marksAwarded?: number | null) =>
+    request<AssignmentPackCompleteResponse>(
+      `/api/v1/learners/me/assignment-packs/${assignmentId}/tasks/${resourceId}/complete`,
+      { method: "POST", body: JSON.stringify({ marksAwarded: marksAwarded ?? null }) },
+    ),
+
   // T-C78: the server-composed agenda read model (Spec §22 route) — the
   // "what is on my plate" view, due-soonest first. Called WITHOUT a rootId
   // here: actions stays null (the recommendations surface owns advice) and
@@ -1603,6 +1666,52 @@ export const api = {
     request<LearnerKnowledgeGraphView>(
       `/api/v1/teacher/classes/${classId}/learners/${learnerId}/knowledge-graph?rootId=${encodeURIComponent(rootId)}`,
     ),
+
+  // ── Teaching Toolkit (T-TEACH-013): the 4 educator-ai generators.
+  // NO subject input anywhere — the picked class resolves Subject / Board /
+  // Level / Curriculum server-side (the operator directive); the chips ride
+  // back read-only in the context payload. Generation is synchronous and
+  // typically takes 10–25 s (document-sized LLM output).
+
+  // Teacher: class context — chips + quota + the course's book-chapter topic
+  // lane; ?topicId= resolves the topic's auto-attachable outcomes
+  // (SPEC_POINTs with teaching_coverage, or the chapter's learning objective).
+  teacherToolkitContext: (classId: string, topicId?: string) =>
+    request<ToolkitContextView>(
+      `/api/v1/teacher/toolkit/context?classId=${encodeURIComponent(classId)}${
+        topicId ? `&topicId=${encodeURIComponent(topicId)}` : ""
+      }`,
+    ),
+
+  // Teacher: generate one toolkit document for a class. body.data is the
+  // per-tool payload (validated server-side against the closed presets).
+  teacherToolkitGenerate: (body: {
+    toolType: ToolkitToolType;
+    classId: string;
+    data: unknown;
+  }) =>
+    request<ToolkitGenerateResultView>("/api/v1/teacher/toolkit/generate", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+
+  // Teacher: my generated resources, newest first (own rows only).
+  teacherToolkitResources: (params?: {
+    limit?: number;
+    type?: ToolkitToolType;
+    classId?: string;
+  }) => {
+    const qs = new URLSearchParams();
+    if (params?.limit) qs.set("limit", String(params.limit));
+    if (params?.type) qs.set("type", params.type);
+    if (params?.classId) qs.set("classId", params.classId);
+    const suffix = qs.toString() ? `?${qs.toString()}` : "";
+    return request<ToolkitResourceSummaryView[]>(`/api/v1/teacher/toolkit/resources${suffix}`);
+  },
+
+  // Teacher: one resource's full document (ownership-checked server-side).
+  teacherToolkitResource: (id: string) =>
+    request<ToolkitResourceDetailView>(`/api/v1/teacher/toolkit/resources/${id}`),
 
   // Learner: my classroom overview — classes + flattened unread badge.
   // Empty for the independent student; that empty IS the honest state.

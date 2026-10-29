@@ -1,0 +1,38 @@
+{
+  "receipt": "T-SPECS-9696-4HI1/spec-fill-roster-r0",
+  "operatorOrder": "trace 1a180fb64c61c3f5 — 'Import their specs pdf, parse them. save them.' (targets: the 3 spec-tree gap courses of the census of record, local ledger 35)",
+  "mode": "additive — the of-record CIE-INTEGRATION phase-0 roster manifest is byte-untouched; this file serves the 2-course CIE spec-fill build set only via the CIE_RECEIPT env override (the SME-WAVE2 wave2-roster-manifest-r0 pattern)",
+  "pins": {
+    "resourcesSha": "340803c9af4a949d3e274251b08697c6b42ba016",
+    "resourcesChain": "T-SPECS-9696-4HI1 r0 parse landing (9696 int_statements adapter + 4HI1 option_rows family), rebased over 6650d075 (T-SPECS-CIE-JOIN-2 sidecars + F111 re-receipt; zero file overlap), pushed FF",
+    "parseProvenance": "parsed/ trees of record: cie-a-level-geography-2025-2026 (14 topics / 56 subtopics / 167 statements, gates G1-G4 PASS) + igcse-history (21 options x 5 rows = 105 statements, gates G1-G4 PASS)",
+    "spineParseProvenance": "the wave-2 parse pin a4ce9f55 trees verified byte-stable a4ce9f55..340803c9 for the 9709 qual (no cie-a-level-maths-2023-2025 parse changes in the window; consumed-input delta ZERO for pure-2)"
+  },
+  "buildSet": [
+    "cie-a-level-maths-20-pure-2",
+    "cie-a-level-geography-21"
+  ],
+  "honestSkeletons": [],
+  "deliverable1_bankSpecJoin": {
+    "matrix": [
+      {
+        "slug": "cie-a-level-maths-20-pure-2",
+        "level": "a-level",
+        "subject": "maths",
+        "spec": "cie-a-level-maths-2023-2025",
+        "syllabusCode": "9709",
+        "edition": "2023-2025",
+        "note": "the D1 ANTICIPATION row of the CIE course-catalog lane: SME never published 9709 P2 under the A-Level tree (operator ruling, SME-WAVE2 skeleton-fill-r0 receipt) — this fill serves the SPEC TREE ONLY from the official 9709 parse (topic_numbers ['2'], the same scope law the AS pure-2 bank consumes); teaching banks stay honestly empty — roster subject form corrected to the phase-0 join-matrix form (maths) after the map-law census caught the cross-bank SUBJECT-root drift (Mathematics vs Maths)"
+      },
+      {
+        "slug": "cie-a-level-geography-21",
+        "level": "a-level",
+        "subject": "geography",
+        "spec": "cie-a-level-geography-2025-2026",
+        "syllabusCode": "9696",
+        "edition": "2025-2026",
+        "note": "honest-empty on every SME axis (skeleton-fill-r0 receipt) — the parse of record now exists (9696 2025-2026 syllabus PDF); the fill serves the SPEC TREE ONLY, whole-qual scope (kind all) per the A-Level-course law (the A-Level course covers the full AS & A Level qualification, mirroring cie-a-level-biology-25 vs its AS sibling); teaching banks stay honestly empty"
+      }
+    ]
+  }
+}

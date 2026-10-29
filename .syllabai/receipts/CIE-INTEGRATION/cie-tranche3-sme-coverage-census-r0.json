@@ -1,0 +1,101 @@
+{
+ "receipt": "CIE-INTEGRATION/cie-tranche3-sme-coverage-census-r0",
+ "family": "CIE-INTEGRATION",
+ "operatorTrace": "1a168b49fbe9806d ('tranche-3 proceed', 2026-10-23, zai-web)",
+ "operatorOrder": "fire the tranche-3 residual of the CIE-INTEGRATION anchor-gap program (operator-gated residual restated of record at T-RULE-T2-HOLDSPLIT-DURABILITY-1: 'tranche-3 (1,203 sid-less, operator-gated)'); economics-25 first per the program definition",
+ "agent": "main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+ "generatedUtc": "2026-10-23T13:30:00Z",
+ "lane": "T-RULE-T3-SME-COVERAGE-1 run-001",
+ "phase": "the tranche-3 CENSUS + SOURCE-FIDELITY ATTESTATION of record — the 1,203-part surface re-pinned computed-fresh at the current resources tip, the source-declaration-gap verdict evidenced first-hand, the honest-disposition menu filed; ZERO content changes (bookkeeping receipt, .syllabai-only fence)",
+
+ "programOfRecord": {
+  "definition": "tranche-3 = the 1,203-part upstream coverage gap (economics-25's 585 first) — SME corpus work in the resources lane, upstream of any verdict (cie-anchor-gap-census-r0 completionProgramOfRecord.tranche3_smeCoverage)",
+  "whereRestated": [
+   "T-RULE-T2-APPLY-2 run-002 residuals",
+   "T-RULE-T2-HOLDSPLIT-1 stage summary",
+   "T-RULE-T2-HOLDSPLIT-2 stage summary ('Next: consume lane re-key ...; residuals unchanged: tranche-3 (1,203 sid-less)')",
+   "T-RULE-T2-HOLDSPLIT-DURABILITY-1 stage summary ('tranche-3 (1,203 sid-less, operator-gated)')"
+  ],
+  "precedingTranches": "tranche-1 (155 T2_near operator verdicts) LANDED of record; tranche-2 (16,335-part verdict program, mass order per bank) progressively consumed of record (adoption run-002 @ 3838a264, V8 retraction run-003 @ e7c7a68, mistag re-key @ ea21a72, holdsplit apply @ 5edff0a8 + sidecar capture/durability @ fa664a86)"
+ },
+
+ "freshCensus": {
+  "method": "source-side fresh computation over the committed banks of record at resources FETCH_HEAD 4b119e71023b091fa545b400fe8006831f914b2e (scratch anonymous sparse clone, spec-links/ + SME-ExamQuestion/<44 cie lanes>, 2.0GB materialized); lane script scripts/t3_census_fresh.py persisted lane-side; the census-is-computed law honored — figures computed, never transcribed",
+  "classes": "source-side definitions: parts_raw = all question parts in the bank topic.json files; parts_with_refs = parts carrying >=1 declared spec_point_ids; parts_no_refs = parts_raw - parts_with_refs (the no-declaration class = the tranche-3 surface); refs_unique = unique declared spcpt_* ids; refs_dangling = declared ids absent from the bank's spec_point_index.json universe; universe = index spec_points entities",
+  "totals": {"parts_raw": 25663, "parts_with_refs": 24460, "parts_no_refs": 1203, "refs_dangling_sum": 322},
+  "crossfootVsOfRecord": {
+   "class_total": {"fresh": 1203, "of_record_cie_anchor_gap_census_r0": 1203, "delta": 0},
+   "named_rows": {
+    "cie-igcse-economics-25": {"fresh": 585, "of_record": 585},
+    "cie-igcse-economics-20": {"fresh": 119, "of_record": 119},
+    "cie-igcse-geography-20": {"fresh": 114, "of_record": 114},
+    "cie-igcse-maths-international-maths-23-extended": {"fresh": 82, "of_record": 82}
+   },
+   "verdict": "EXACT reproduction of the of-record tranche-3 class at the advanced tip — the class is stable across pins e4533d7-era -> 4b119e71"
+  },
+  "shape": {
+   "lanes_with_gap": 28,
+   "lanes_zero_gap": 16,
+   "index_only_banks_raw_zero": ["cie-a-level-accounting-21", "cie-a-level-economics-23", "cie-as-english-general-paper-21", "cie-igcse-accounting-25"],
+   "largest_dangling_entity_rows": {"cie-igcse-business-25": 198, "cie-igcse-economics-25": 43, "cie-a-level-maths-20-probability-and-statistics-2": 16, "cie-igcse-economics-20": 20, "cie-igcse-maths-25-core": 26},
+   "full_table": ".syllabai/lane-artifacts/T-RULE-T3-SME-COVERAGE-1/census-fresh-4b119e71.json (44 rows: raw/with_refs/no_refs/refs_unique/universe/dangling/sidecar_question_parts per lane; mirrored git-protected per the MB4-MS-FRESHPARSE wipe lesson)"
+  },
+  "sidecarFidelity": "per-row cross-check: sidecar question_parts == source parts_with_refs EXACTLY on every populated row (econ-25 40/40, econ-20 493/493, chem-25 1676/1676, bio-25 1534/1534, ... ) — the sidecar lane is a faithful mirror of the source declarations"
+ },
+
+ "sourceFidelityProbes": [
+  {
+   "bank": "cie-igcse-economics-25",
+   "fetchedUtc": "2026-10-23",
+   "url": "https://www.savemyexams.com/igcse/economics/cie/25/topic-questions/1-the-basic-economic-problem/1-1-the-nature-of-the-basic-economic-problem/paper-1/",
+   "authorization": "LICENSE-DATA.md SME attestation 2026-09-17 + 2026-10-17 Cambridge extension (public pages, no credentials)",
+   "findings": "17 questions / 17 parts on the page; exactly ONE part carries spec_point_ids ([spcpt_xzHNvStfDbY3yhX2]) — byte-identical to the corpus capture of 2026-10-17 (topic.json qstn_VFxsMzTg6GKD9967); ZERO specPoint entity records anywhere in the __NEXT_DATA__ payload (raw occurrences: specPoints 0 / spec_points 0 / specPoint 0) — the payload declares bare ids only, never entity definitions",
+   "verdict": "ZERO source drift since the corpus harvest; entity definitions are NOT obtainable from the topic-question pages"
+  },
+  {
+   "bank": "cie-igcse-economics-20",
+   "fetchedUtc": "2026-10-23",
+   "url": "https://www.savemyexams.com/igcse/economics/cie/20/topic-questions/1-the-basic-economic-problem/1-1-the-nature-of-the-economic-problem/paper-1/",
+   "authorization": "as above",
+   "findings": "15 parts on the page, 8 declare refs (2 unique ids: spcpt_2ncRDHWZDSxTKPVx, spcpt_xDqvKZX9TyDBmhm4); ZERO specPoint entity records in the payload (same probe)",
+   "verdict": "the declared-refs-but-dangling class shares the same source shape: ids only, definitions live (if anywhere) on SME notes/spec surfaces, not on question pages"
+  }
+ ],
+
+ "rootCauseOfRecord": {
+  "chain": "the corpus EQ atomizer is a faithful passthrough (scripts/sme_examq_setpage_scrape.py atomize_question: spec_point_ids = part.get('spec_point_ids') or [] — no filtering, no loss); the SME source itself declares spec alignment for only 24,460 of 25,663 CIE parts; the 1,203 undeclared parts have NO sidecar entry and NO smeSpecPointIds BECAUSE THE SOURCE NEVER DECLARED THEM",
+  "econ25Specifics": "SME publishes NO content revision notes for the 2027-2029 econ syllabus (notes manifest: pages_expected 8 / pages_scraped 8 — the exam-technique section only); the corpus spec_point_index universe is therefore 16 exam-technique entities; the 43 declared part refs dangle (entities absent from every lane's corpus universe — cross-lane join round T-SPECS-CIE-INDEX-1 NEXT #1 resolved 0/43 of record); VERDICT-1 identity tiers V1-V5 resolved 0 (no_unique_identity 16 notes; dangling_eq_refs_pending 44); flashcards axis: 827 discovered uncoded (SME declares no spec refs there either)",
+  "lawsApplied": [
+   "AGENT.md rules 1-3 (authoritative-only at validation state; agent mappings stay suggestions until the gate; do NOT manufacture coverage for intentionally uncovered SpecificationPoints through semantic similarity)",
+   "ADR-030 (never invent)",
+   "the phase-2 content-maps reconciliation ladder R5 of record: subtopic-scope expansion is NOTES ONLY — parts/cards NEVER expanded (learner-analytics honesty): the SME topic names verbatim-match the official spine subsections (e.g. '1.1 The Nature of the Basic Economic Problem' = SUB1.1), but a topic-level anchor can never honestly select a point within a subsection, and expanding parts by topic scope is forbidden by the R5 law regardless",
+   "the tier ladder floor (operator_verdict > T1_verbatim > J* > upstream_item_join > sme_declared_link_rekey > subtopic_title_scope): every tier above the floor is verdict-class or declared-source-class work; tranche-3 is upstream of verdicts, and no declared-source surface exists for the undeclared parts"
+  ]
+ },
+
+ "dispositionOfRecord": {
+  "verdict": "THE TRANCHE-3 SURFACE IS A CONFIRMED SOURCE-DECLARATION GAP, NOT CORPUS DEBT — the 1,203 cannot be closed by any honest corpus-side join: the declarations do not exist upstream, entity definitions are not in the attested page payloads (2 probes), the corpus universes cannot define them (index harvest is notes-derived and the notes do not exist for the gap banks), and the R5 law forbids topic-scope expansion of parts",
+  "classes": {
+   "class_A_pure_no_declaration": "parts with zero declared refs (econ-25 545 of its 585 after the 40 ref-carrying parts; geog-20 114; intl-maths-23-core 69; ...) — closable ONLY by SME publishing spec declarations or content notes",
+   "class_B_declared_but_dangling": "322 dangling ref instances fleet-wide (business-25 198, econ-25 43, maths-25-core 26, econ-20 20, ps-2 16, ...) — closable ONLY by defining the entities from a surface SME has not attested to publish for these banks (not the question pages, not the notes, not the flashcards)"
+  },
+  "parityPrecedent": "the maths-b Stage-2 disposition class (T-SPEC-STAGE2-MATHSB-1 ATTESTED-HONEST-UNRESOLVED): the corpus attests honestly to what the source does not provide"
+ },
+
+ "operatorDecisionMenu": {
+  "option_1_accept_honest_gap": "accept the attested gap as the serving truth (the bundle/ingest/census chain is PROVEN faithful; the 6,599-anchored servable truth stands); zero further corpus work",
+  "option_2_external_dependency_watch": "periodic SME freshness re-checks (the 2026-10-17 harvest is proven current as of 2026-10-23); on any SME publication for the gap banks, the standard chain re-opens mechanically",
+  "option_3_authored_content_lane": "an explicitly operator-ordered ORIGINAL-CONTENT lane (CourseLessons-class, NOT the SME planes — provenance preservation law) authored against the official spines for the gap banks, econ-25 first; carries its own review/promotion gate; the 1,203 then close through the standard verdict+consume chain",
+  "option_4_targeted_source_surface_probe": "a bounded run-002 enumerating whether SME publishes any spec-point definition surfaces (spec pages / syllabus listings) for the class-B banks before declaring class-B a dead-end; zero corpus writes either way"
+ },
+
+ "fence": ".syllabai/receipts/CIE-INTEGRATION/** + .syllabai/worklog.md — ZERO content changes (no banks, no maps, no bundles, no sidecars touched)",
+ "residuals": [
+  "tranche-3 itself: 1,203 parts — now EVIDENCED as source-declaration gap; disposition awaits operator menu choice",
+  "class-B 322 dangling refs: run-002 probe optional (option_4)",
+  "PAT rotation CRITICAL-OVERDUE (same fingerprint through this push, transit 35 -> 36; rotation list per 8d1c390e)",
+  "the hung resources sync job (standing residual, not this lane)"
+ ],
+ "hygiene": "zero credentials/PATs in any file or log; read-only on resources (scratch anonymous sparse clone, shared checkouts untouched); v2 lane worktree at bf41299b (detached); fetch-first, no force",
+ "transitLedger": "this push: 35 -> 36 (.syllabai-only bookkeeping)"
+}

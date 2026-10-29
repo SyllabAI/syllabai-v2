@@ -1,0 +1,35 @@
+{
+  "receipt": "f182-drill-build-run-001-r0",
+  "lane": "F-182 build — the per-spec-point drill surface goes live: zod contracts + the drill route + the F-055-shaped attempt-evidence seam + the hub drill UI (the opening plan §6.1 line, executed)",
+  "operator_launch_word": "build PR. (IM trace 1a16503704429681, 2026-10-23)",
+  "prereg": "docs/F182-DRILL-BUILD-PLAN.md (committed WITH the implementation per the #216/#225/#229/#232/DC-4/F182-opening pattern); foundation of record docs/F182-DRILL-SURFACE-PLAN.md (policies P1..P6 untouched)",
+  "spec_of_record": "Kognity dossier v1.1 Deep Dive D §8.5 row 1 (tracker F-182, repo syllabai-v2, deps F-028/F-049/F-178)",
+  "grounding_first_hand_at_main": "v2 main 17e2c89eaeae (PR #300 merged; R0-auto desk); the opening foundation present (services/drill/{census,draw}.ts + census-of-record.json + the 15 pins); F-055 read first-hand from the live tracker row (ADR-016: immutable attempt evidence — score, time, confidence, flag); the DB evidence substrate (attempts/ai_mark_events) is uuid-keyed to the questions plane, which is WHY the seam is F-055-SHAPED over the drill's own bundle-keyed tables and not a write into the attempts plane",
+  "mechanism": {
+    "contracts": "packages/contracts/src/drill.ts — F-182-SPEC-NATIVE (no Java DTO; DC-7 posture), contracts-first still enforced; the answer-leakage law pinned: draw responses carry choices WITHOUT isCorrect and NEVER solutionMd",
+    "db": "migration 0010_drill_surface.sql — drill_draws (recency substrate P4 + the P5 determinism audit row) + drill_part_evidence (the F-055 shape: correct/marks_awarded/response_time_ms/confidence_level/self_doubt_flag, provenance DRILL, IMMUTABLE by unique (draw_id, part_id) with no UPDATE path in code); ZERO-STAKES LAW: neither table is read by any gradebook/progress projection and no attempts/ai_mark_events row is ever written by the drill",
+    "journal_repair_of_record": "drizzle-kit check was DEAD on main (0000_snapshot prevId = 0008's id; 0009_snapshot id cloned from 0000's — duplicate-pointer collision since the DC-3 re-baseline); repaired 0000.prevId -> '' + fresh 0009 id (metadata only, zero DDL change), then re-baselined 0000 to the union end-state per T-MIG-002-R: 77/730/105/73/126 VERIFY PASS 0 drifts (was 75/702/102/70/120)",
+    "api": "services/drill/{bank,store,serve}.ts — the DrillBank port (fail-closed course registry ['igcse-chemistry-19'], bundle loaded per-isolate via the census-script path law, answer facts stripped at the port); the store over the injected SqlFn (two tables, no UPDATE); the serve service (drawForLearner + recordDrillEvidence: MCQ server-graded from the private isCorrect lookup, structured recorded UNGRADED null/null, the instant solutionMd reveal riding the evidence ack); routes/drill mounted at /api/v1/learners/me/drill (authz shell first, contracts-first binding)",
+    "hub": "apps/hub/src/app/practice/drill/ + lib/drill.ts — the drillable address picker (P3 rows only) -> the 5-part player (F-055 telemetry rendered: confidence 1..5 + self-doubt) -> instant reveal per part -> zero-stakes summary -> Retake (fresh server-drawn seed, P5); progress-server posture (any failure -> honest empty state); signed-out -> sign-in CTA",
+    "error_laws": "401 anonymous (shell first); 404 unknown course/address/draw (ownership-scoped); 409 below-floor (P3 verbatim) + duplicate evidence (immutability); 400 malformed_body (failed safeParse), part-not-in-draw, choice-on-structured"
+  },
+  "battery": {
+    "typecheck": "root (contracts/shared/db/api) 0 errors; hub tsc --noEmit 0",
+    "suite": "bun test apps/api packages: 2639 pass / 13 skip / 0 fail (52 new pins: contracts drill 14, routes 19, bank integration 6, opening's 15 untouched + db rebaseline advanced)",
+    "golden": "selftest OK",
+    "retrieval_eval": "0 fail + 19/19 vectors",
+    "zero_core_census_gate": "GREEN",
+    "census_regeneration": "byte-identical sha256 9e94c938e2d4c40d64048934532b441c77b75a2bc3d4841d2c2e97a7233789af (the anti-drift artifact pin holds)",
+    "hub_build": "build:hub exit 0 (prebuild corpus gates + next build)",
+    "lint": "eslint on touched hub files 0",
+    "drizzle": "drizzle-kit check GREEN (repaired journal); generate byte-clean (exactly the two drill tables)"
+  },
+  "residuals": [
+    "the draw endpoint reads the bundle at runtime through the census-script relative path — the API's serverless packaging is a deploy-lane concern outside repo CI; the DrillBank port makes a loading-strategy swap a one-function change; failure mode is fail-loud, never a silent empty draw",
+    "recency is naive by design (P4: latest-10-draws at the address, fallback disclosed via usedFallback); F-185 supersedes the selection",
+    "structured parts recorded UNGRADED (Smart Mark integration is the marking lanes' title)",
+    "11 uncovered + 14 thin addresses stay unoffered (P3) until content lands",
+    "the reveal rides the evidence ack (submit-to-reveal); F-183 owns the reveal LAW (markPoints M1..Mn structure, any peek-without-answer posture)"
+  ],
+  "trace": "1a16503704429681"
+}

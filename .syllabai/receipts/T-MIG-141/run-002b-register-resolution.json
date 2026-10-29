@@ -1,0 +1,76 @@
+{
+ "task": "T-MIG-141",
+ "run": "run-002b-register-resolution",
+ "lane": "r7a (Super Z, zai-web session web-da4ab8b1, chat 1f3003b6)",
+ "trace": "1a169bc10f7dc5c9",
+ "timestamp_utc": "2026-10-24",
+ "act": "Pending-register evidence pass + adjudication + table.v1 update (Phase A completion leg): 21 register items resolved; v1 unmapped-set hole discovered and closed; table.v1.json = 83 entries + 5 sequence_rules landed in syllabai-parser 25e3a39",
+ "operator_order": "run-002b (pending register) -> run-003 (Phase B dry-run + wrong-map disproof) [trace 1a169bc10f7dc5c9]",
+ "gate_status": {
+  "neon_db_loss": "UN-GATED at afbfcfb4 (NEON-DB-LOSS run-004 step-0 closure: single-writer hold RELEASED, T-MIG-141 Phase B/C/D un-gated); run-005 tripwire 52020986: estate ALL STABLE (chunks 13,765)",
+  "this_run_writes": "zero DB writes (t0_readonly READ ONLY txns throughout); repo-side only"
+ },
+ "census_reverify": {
+  "wired_scope": "2,765 rows / 25,399 PUA instances / 85 distinct — reproduced EXACT at run-002b start (live t0_readonly census in the table build)",
+  "run_signatures": "10 distinct same-CP PUA run signatures pinned EXACT (F075F075F075F072 x15, F075F075F075F075 x30, F075x8 x1, F067F067F067F067 x7, F067F067 x2, F067 x9, F026F026F026F026 x21, F026F026 x1, F026 x9, F072 x7)",
+  "v1_arithmetic_correction": "v1-mapped-by-CP-set = 23,708 (93.3% receipt figure was count-field-consistent); unmapped-by-v1 = 1,691, NOT the 774 the register listed"
+ },
+ "v1_hole_disclosure": {
+  "finding": "5 CPs carried 917 instances with NO table entry AND NO register item: U+F084 x520, U+F0B1 x392, U+F033 x2, U+F050 x1, U+F0CF x2 (25,399 - 23,708 v1-mapped - 774 registered = 937; 917 hole + 20 = the F072/F067 run-instance overlap bookkeeping resolved by simulation-derived accounting)",
+  "root_cause": "run-002 build set entry counts from spec Appendix A pins and its commit message claims (sqrt, plus-minus, ticks among '25 new evidenced entries') did not all reach the landed table; the register enumerated only the never-planned CPs",
+  "disposition": "F084/F0B1/F033/F050 mapped with evidence (phase-A crops + fresh context census); F0CF fail-closed into the re-carried register"
+ },
+ "adjudications_key": [
+  "F026 -> U+0307 (recurring-decimal dot above; 95 inst incl. 4-dot runs over 0.7878-style digits)",
+  "F02F -> U+0338 (cancel stroke over digits in fraction working; bbox geometry full-height 14-16pt x 3.3pt)",
+  "F061 -> U+21A6 (mapsto: 'f:x ↦ 2/x')",
+  "F067 -> U+2192 (41 = 9 standalone chem arrows + 32 via SEQ-B4/B5 over-arrow runs)",
+  "F06C -> U+03BB (lambda vector scalars, 160 inst)",
+  "F06F -> U+00B0 (degree: '80°', 'cos(x+q)°')",
+  "F072 -> U+2206 standalone (7 inst, all 4CH1: 'ΔH', 'Q = m x c x ΔT') + 15 run-heads via SEQ-A1 — OEQ-Delta CONFLICT RESOLVED by sequence-first ordering (font-split: 4MA1 head slot vs 4CH1 delta slot)",
+  "F075 -> no single entry: 173 inst all inside over-arrow shaft runs (SEQ-A1/A2/A3)",
+  "F0B6 -> U+21CC (equilibrium, converges F083)",
+  "F0BC -> U+2026 ('333…)' trailing dots)",
+  "F0D7 -> U+00B7 ('2²·3²·5³' prime factors)",
+  "F097 -> U+2022 (bullets; OEQ donor corroborated)",
+  "F8EB/F8EC/F8ED -> U+239B/239C/239D + F8F6/F8F7/F8F8 -> U+239E/239F/23A0 (tall-paren pieces around column vectors '(−7/3)'; scaffold pairing render+line-structure proven; NOT curly braces)",
+  "F084 -> U+2264 (SPEC-SQRT HYPOTHESIS OVERTURNED: 520/520 inequality placements; complementary pair with F085=≥; radical is vector-drawn)",
+  "F0B1 -> U+00B1 (392, quadratic-formula workings; spec pin confirmed)",
+  "F033/F050 -> U+2713 (ticks in instruction parens)",
+  "F041 -> U+0041 (single 'or A = 8')",
+  "F0CF -> FAIL-CLOSED (no-ink glyph at 300dpi word box; phase-A crop showed unattributable arc from neighboring content; 2 inst re-carried in register)"
+ ],
+ "sequence_rules": {
+  "mechanism": "new additive table field; matched longest-first BEFORE singles per the spec ordering law; unobserved run lengths stay fail-closed",
+  "rules": {"SEQ-A1": "F075x3+F072 -> U+2192 (x15)", "SEQ-A2": "F075x4 -> U+2192 (x30)", "SEQ-A3": "F075x8 -> U+2192 (x1)", "SEQ-B4": "F067x4 -> U+2192 (x7)", "SEQ-B5": "F067x2 -> U+2192 (x2)"},
+  "c7_deletion_disclosure": "165 chars collapsed across 55 runs + drop class 5,146 (F0A2)"
+ },
+ "validation": {
+  "coverage": "singles(census) 20,078 - seq-covered 47 + seq chars 220 + drop 5,146 + unmapped F0CF 2 = 25,399 EXACT",
+  "full_bank_simulation": "all 2,765 rows normalized: idempotence green; residual PUA = {U+F0CF: 2} EXACTLY; sequence consumption EXACT (15/30/1/7/2); drop accounting 5,146",
+  "non_pua_targets": "all entry/sequence targets non-PUA asserted"
+ },
+ "oeq_donor_corroboration": "F0E0 (→), F0E5 (Σ), F8E7 (─) confirmed by our renders; F8EE-F8F0/F8F9-F8FB bracket pieces upheld on donor+census+family-convergence (edge-thin in renders — partial, disclosed)",
+ "parser_landing": {
+  "repo": "SyllabAI/syllabai-parser",
+  "commit": "25e3a39",
+  "push": "503bdaf..25e3a39 main->main verified",
+  "files": "tools/glyph-normalization/table.v1.json + README.md + evidence/T-MIG-141/{crops-run002b/ x75, sheets/sheetB1-B5, run002b/ x6 JSON artifacts}",
+  "worktree_dirt_note": "pre-existing unstaged worktree modifications (CODEOWNERS/CI/crops) left untouched — lane staged only its own 88 paths"
+ },
+ "evidence": {
+  "sheets": "evidence/T-MIG-141/sheets/sheetB1_arrows.png + sheetB2_braces.png + sheetB3_stragglers.png + sheetB4_corrob.png + sheetB5_missing5.png (eyeballed via vision)",
+  "crops": "evidence/T-MIG-141/crops-run002b/ (75 crops @150dpi from the byte-frozen pastpapers archive; page-scan fallback where chunk page offsets were 0-indexed/off)",
+  "json_artifacts": "evidence/T-MIG-141/run002b/{b_contexts,b_run_patterns,b_brace_and_jobs,b_render_manifest,b_probe2,b_table_validation}.json"
+ },
+ "artifacts": ["run-002b-register-resolution.json"],
+ "disclosures": [
+  "zero DB writes (t0_readonly READ ONLY txns only); zero prod mutations",
+  "v1 register understated the unmapped set (774 listed vs 1,691 actual) — discovered by the census-match law and closed in this run; v1 commit-message entry list vs landed-table delta is the root cause",
+  "spec Appendix A F084=sqrt hypothesis OVERTURNED by evidence (<= proven) — spec text NOT edited; the correction lives in the table note + this receipt per the pin-of-record convention",
+  "F0CF (2 inst) fail-closed: no-ink glyph not nameable at the F48 standard; the 2 carrier rows are Phase-B scope-exclusion or operator-ruling candidates",
+  "F084 radical contexts ('y = √(x+4)') have NO text-layer char (vector-drawn) — out of patch scope, no action possible at the char level",
+  "U+F0A6 closed-zero (0 wired instances, census re-verified)"
+ ],
+ "next": "run-003 Phase-B dry-run (zero writes) + C4 wrong-map disproof against table.v1 @ 25e3a39"
+}

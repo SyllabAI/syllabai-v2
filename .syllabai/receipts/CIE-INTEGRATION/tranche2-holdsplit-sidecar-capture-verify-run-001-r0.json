@@ -1,0 +1,41 @@
+{
+ "receipt": "CIE-INTEGRATION/tranche2-holdsplit-sidecar-capture-verify-run-001-r0",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T2-HOLDSPLIT-2",
+ "run": "run-001",
+ "kind": "independent-verification + fleet-race theirs-first closure (zero writes by this desk)",
+ "operatorDirectiveVerbatim": "sidecar durability capture of these 3 verdicts",
+ "narrative": {
+  "staging": "this desk staged the full capture independently (scripts/holdsplit2_sidecar_capture.py, gates G0-G6 ALL GREEN, commit e0c9c9a on branch t-rule-t2-holdsplit-capture/r0, pushed) targeting the SAME residual declared by T-RULE-T2-HOLDSPLIT-1 (v2 @ 5edff0a8)",
+  "fleetRace": "while staging, origin/main advanced cf79ecd -> fa664a8: the sibling desk (T-RULE-T2-HOLDSPLIT-DURABILITY-1 run-001, session web-64d10b73, dispatch trace 1a1686d11b430639 'CIE tranche2 next') landed the SAME 3-verdict capture theirs-first; rebase correctly conflicted; per the fleet-race theirs-first law the local staging was discarded (rebase aborted, branch deleted locally + on the remote, no PR opened, zero pushes by this desk)",
+  "verification": "this desk then ran an independent line-against-line verification of the sibling's of-record bytes (scripts/holdsplit2_verify_sibling.py) — ALL GREEN (V0-V6)"
+ },
+ "verificationOfRecord": {
+  "resourcesCommit": "fa664a8 (main @ verification time; sibling lane T-RULE-T2-HOLDSPLIT-DURABILITY-1 run-001)",
+  "sidecarSha256": "d3b659268706d053fca8148b97dfcd9a55afd58e092b366981c3192926bac2ed (base 4802af4e... — matches the sibling-claimed shas exactly)",
+  "manifestSha256": "f30a74fa2f664af332a825b3a734c7872e37286497680dfc77be2d1f0276f796 (base e41878e3...)",
+  "machineRecord": "graph/reports/tranche2-r2/holdsplit-sidecar-capture-run-001-r0.json — lane/rowsAdded/countsDelta/base+result shas exact, serialization law round-trip",
+  "gates": {
+   "V0": "byte identities base 4802af4e -> result d3b65926 confirmed",
+   "V1": "serialization law (indent=1, ensure_ascii=False, key order preserved) round-trips byte-exact on post images",
+   "V2": "11 changed sidecar paths ALL inside anchors.operatorSidAnchors; 23 prior records + items + all top-level planes deep-unchanged",
+   "V3": "3/3 new records field-equal to the v2 registry of record (origin/main @ 8b4172be at capture; codes order, officialId, tier, method, lineage, via registry-exact long form — true full-rebuild byte parity)",
+   "V4": "6/6 codes spine-verified (34.2.2, 34.2.4, 21.1.2, 36.1.2, 37.4.4, 37.4.5) with expected statements",
+   "V5": "v2 consume engine sid-anchor merge law reproduces 0 added / 26 verified / 0 conflicts-kept — the 3 registry rows @ 5edff0a8 are now engine-durable at every consume re-run AND full rebuild",
+   "V6": "cross-foot sids 26 / distinctCodes 52 (+6 codes zero overlap with the prior 46); tier counts holdResolved/splitResolved/quarantineResolved = 1/1/1; manifest diffs 11 paths all in the two disclosed rows (per-course census sids=26 + fleet operator_sid_anchors block lane/appliedUtc/sids + tierPolicy +3 new tiers, prior rows preserved)"
+  }
+ },
+ "verdictsVerified": {
+  "spcpt_9Dxx4xs6KDbb85cJ": "hold RESOLVED -> 34.2.2+34.2.4 (tranche2_hold_resolved)",
+  "spcpt_CdtkSssKHMzw5ZTn": "split CONFIRMED BOTH SIDES -> 21.1.2+36.1.2 (tranche2_split_resolved)",
+  "spcpt_pYmRWxPrtMDKj5ym": "quarantine gate MET -> 37.4.4+37.4.5 (tranche2_quarantine_resolved)"
+ },
+ "rulingsVerbatimSource": "T-SPECS-CIE-TRANCHE2-B02 operator_rulings_verbatim rows 4/6/23 @ bd2c0b1e",
+ "residuals": [
+  "v2 consume re-key (consume lane) at the resources tip advances the pin of record ea21a72 -> fa664a8 and the census sidAnchors 0/23/0 -> 0/26/0 (A1 battery verified 26)",
+  "tranche-3 (1,203 sid-less parts)",
+  "PAT rotation CRITICAL-OVERDUE",
+  "hung resources sync job"
+ ],
+ "scope": "verification only — zero content writes by this desk in either repo; session worklog + this receipt + v2 worklog append are the only artifacts"
+}

@@ -1,0 +1,57 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-g1-qppair-cie-r0",
+ "date": "2026-10-26",
+ "session": "web-3bd4aa99-51b0-4bec-a362-f94adc40f19d",
+ "trace_id": "1a1777809ac63a89",
+ "operator_order": "\"review/merge PR #5, then QP-pairing wave\" (trace 1a1777809ac63a89)",
+ "gate": "G-1 (CIE side) QP/MS pairing leg, continuing adr040-g1-msfetch-cie-r0 (PR #5 merge 1b5d952c)",
+ "adr_of_record": "docs/ADR-040-LEVELS_OF_RESPONSE_MARKING.md (ACCEPTED via #356, merge 1aec820)",
+ "pr5_review_and_merge": {
+  "verdict": "REVIEWED + MERGED",
+  "review_evidence": [
+   "68/68 ms.pdf git-blob-sha (sha1) byte-match vs the locally fetched identity-verified set",
+   "manifests canonical (provenance, sha256, printed-identity checks, COVID no-sitting notes)",
+   "honest gap ledger intact (10 non-published Feb/March MS targets, no substitution)",
+   "AGENT.md rules 1-7 compliant; no review comments on the PR"
+  ],
+  "merge_commit": "1b5d952ceb8a19a3ee01ba4df8aea6403cd404fe",
+  "merge_method": "merge (review-of-record commit message)",
+  "note": "repo 'sync' check is a background branch-sync automation (15-43min, always success); all three prior merged PRs (#2/#3/#4) merged with it still in_progress — not a gate"
+ },
+ "qp_pairing_wave": {
+  "targets": 68,
+  "fetched": 68,
+  "fetch_failures": 0,
+  "source": "XtremePapers (CAIE section), same subject dirs as the MS of record (ms->qp filename swap)",
+  "coverage_note": "includes the June-2020 (COVID no-sitting) published series and both Feb/March variant-2 QP files",
+  "pairing_evidence_of_record": "printed code+component+session+year equality on page 1 of both QP and MS (pdftotext p1, programmatic)",
+  "pairing_pass": "68/68",
+  "non_gating_observation": "'question paper' cover wording on 29/68 QP p1s; identity rests on the printed fields above",
+  "session_print_variance": [
+   "0455_m19_qp_22/ms_22 and 0455_m20_qp_22/ms_22: QP cover 'February/March YYYY' vs MS cover 'March YYYY' - CIE March-series cover convention, same sitting; code/component/year agree; disclosed per manifest notes (AGENT.md rule 2, no silent normalization)"
+  ],
+  "landing_pr": "https://github.com/SyllabAI/syllabai-pastpapers/pull/6",
+  "landing_commit": "dd8a21b49",
+  "files": "68 qp.pdf + 68 manifest.yaml (canonical question-paper material entry + pairing note) + 2 specification.yaml + 1 wave doc"
+ },
+ "agent_md_compliance": {
+  "rule_1_manifests_canonical": true,
+  "rule_2_no_inference": "variance disclosed not normalized; 10 non-published MS targets untouched; no QP-only dirs created",
+  "rule_3_pairing_evidence_preserved": "of record in every manifest identification.notes + cie_qp_pair_checks.json lane artifact",
+  "rule_4_durable_reporting": "this receipt + lane artifacts + PR #6 + worklog append",
+  "rule_5_task_ids": "task T-SM-ROLLOUT; base commit 1b5d952c (pastpapers); corpus commit dd8a21b49; v2 receipt commit <this>",
+  "rule_6_no_ingestion_contract_change": "additive materials entries + free-form notes only",
+  "rule_7_not_learner_servable": "corpus stays behind validation in core"
+ },
+ "lane_artifacts_landed": [
+  ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/cie_qp_fetch_results.json",
+  ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/cie_qp_pair_checks.json"
+ ],
+ "next_lane": "band-shape design on staged CIE tables (B-grammar verbatim; AO matrices parser pass) + 4GE1 bundle re-export; QP/MS pairing for the CIE wave complete",
+ "cross_refs": [
+  "SyllabAI/syllabai-pastpapers#6",
+  "SyllabAI/syllabai-pastpapers#5 (merged 1b5d952c)",
+  "SyllabAI/syllabai-v2#276"
+ ]
+}

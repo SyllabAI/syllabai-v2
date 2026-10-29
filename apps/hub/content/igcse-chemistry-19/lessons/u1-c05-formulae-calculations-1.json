@@ -1,0 +1,645 @@
+{
+ "packId": "u1-c05-formulae-calculations-1",
+ "chapterKey": "u1:c05",
+ "courseId": "igcse-chemistry-19",
+ "title": "Formulae and calculations (part 1)",
+ "learningObjective": "Write word equations and balanced chemical equations (including state symbols): for reactions studied in this course; for unfamiliar reactions where suitable information is provided; Calculate relative formula masses (including relative molecular masses) (Mᵣ) from relative atomic masses (Aᵣ); Calculate percentage yield; Understand how the formulae of simple compounds can be obtained experimentally, including metal oxides, water and salts containing water of crystallisation; Know what is meant by the terms empirical formula and molecular formula; Know that the mole (mol) is the unit for the amount of a substance; Calculate empirical and molecular formulae from experimental data; Understand how to carry out calculations involving amount of substance, relative atomic mass (Aᵣ) and relative formula mass (Mᵣ); Practical: Know how to determine the formula of a metal oxide by combustion (e.g. magnesium oxide) or by reduction (e.g. copper(II) oxide); Calculate reacting masses using experimental data and chemical equations",
+ "paperRoute": "core",
+ "sections": [
+  {
+   "id": "u1:c05:s01",
+   "title": "Formulae, equations and calculations — the chapter map",
+   "bookPage": 38,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf047_0144",
+    "chem_v3_u1_c5_pdf047_0145"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "mole"
+   ],
+   "specRefs": [
+    "1.25"
+   ],
+   "markdown": "This chapter opens with one of the biggest numbers you will meet in\nchemistry: a single gold bar contains almost **4 × 10²⁵ gold atoms** — that is 4 followed by 25 noughts. Counting\natoms one by one is obviously hopeless, so chemistry needs a way of\ncounting particles *by weighing*. That is what this chapter builds: the\n**[[mole]]**, the unit chemists use for amount of substance, and the\ncalculations that flow from it — formulae, balanced equations, reacting\nmasses and yields.\n\n:::prior-knowledge\nYou will use ideas from earlier chapters throughout: **balancing and\nreading formulae** builds on writing word and symbol equations (Chapter 1);\nthe **relative atomic mass** recap in this chapter leans directly on\nisotopes and weighted averages from Chapter 3 (u1:c03); and the\n**Periodic Table** supplies the Aᵣ values you will be given in every\ncalculation.\n:::\n\nBy the end of this lesson you will be able to:\n\n- write **word equations** and **balanced chemical equations**, including\n  **state symbols**, for familiar and unfamiliar reactions;\n- calculate **relative formula masses (Mᵣ)** from relative atomic masses\n  (Aᵣ), including for hydrated crystals such as CuSO₄·5H₂O;\n- interconvert **masses in grams** and **amounts in moles**, and use the\n  **[[avogadro-constant]]**;\n- determine **empirical and molecular formulae** from experimental data —\n  including by combustion and reduction of metal oxides, and water of\n  crystallisation experiments;\n- calculate **reacting masses** from chemical equations, decide which\n  reagent is **in excess**, and calculate **percentage yields**.\n\n:::exam-hint\nThe chapter's own objectives list is your revision checklist: every one of\nits bullets is an examinable skill. Notice what the first objective\ngoes out of its way to emphasise — you must be able to write balanced\nequations **including state symbols** both for reactions you have studied\n*and* for unfamiliar reactions where you are given suitable information.\nThe unfamiliar-reaction half is where marks are commonly lost.\n:::\n\n:::misconception\n\"It says moles — so this chapter is about small furry animals burrowing\nin the soil.\" The [[mole]] is a *counting unit*, like \"a dozen\" but for\n6 × 10²³ particles. Nothing about it is furry; everything about it is\narithmetic. Chapter 3 gave you a taste of huge numbers (6 × 10²³ atoms in\nthe sports-hall thought experiment); this chapter turns that number into\na working tool.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.25/1.27 items — writing and balancing equations,\nand the mole as the unit of amount of substance.\n:::"
+  },
+  {
+   "id": "u1:c05:s02",
+   "title": "Writing equations — word equations and symbol equations",
+   "bookPage": 38,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf047_0146"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "word-equation",
+    "chemical-equation"
+   ],
+   "specRefs": [
+    "1.25"
+   ],
+   "markdown": "There is a sharp line between the two types of chemical equation you\ncould be asked to write. A **[[word-equation]]** names the substances: for\nexample, *magnesium + oxygen → magnesium oxide*. A **[[chemical-equation]]**\n(usually called a **symbol equation**) uses formulae instead:\n2Mg + O₂ → 2MgO. Symbol equations are what chemists normally use — you\nshould only write a word equation **if you are specifically asked to**.\n\nOne rule sits above everything else in this section, and it applies to\nboth types: **all chemical equations must be balanced**. An unbalanced\nequation is not a slightly imperfect answer — it is a wrong answer, because\nit asserts that atoms can appear or disappear. The next four sections\nbuild the balancing skill step by step, and the exam-hint below flags the\nsingle most common way candidates throw marks away.\n\n:::exam-hint\nRead the instruction precisely: *you should only write a word equation\nif you are specifically asked to*. If a question says \"write an\nequation\", the examiner wants the **symbol** equation — a word equation\nwhere a formula equation was expected scores little or nothing, even if\nthe chemistry is right.\n:::\n\n:::misconception\n\"A word equation and a symbol equation are two different reactions.\" No —\nthey are two *descriptions* of the same reaction. Mg + O₂ → 2MgO and\n*magnesium + oxygen → magnesium oxide* carry exactly the same chemical\ninformation; the symbol version additionally carries the proportions,\nwhich is why it can (and must) be balanced.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.25 items — choosing word vs symbol equations and\nthe must-be-balanced rule.\n:::"
+  },
+  {
+   "id": "u1:c05:s03",
+   "title": "What all the numbers in a formula mean",
+   "bookPage": 39,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf048_0147"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "coefficient"
+   ],
+   "specRefs": [
+    "1.25"
+   ],
+   "markdown": "Before you can balance anything, you must be able to *count atoms through\na formula* — and that means understanding the two very different kinds of\nnumber that appear in equations. Take the balanced equation\n\nCaCO₃ + 2HCl → CaCl₂ + CO₂ + H₂O\n\nto make the point. A **big number written in front of a formula** (the\n2 in 2HCl) is sometimes called a **[[coefficient]]**; it multiplies\n*everything* in the formula. A **small subscript number** (the 3 in\nCaCO₃) applies **only to the atom immediately before it**.\n\nA second example, 2Cl → Cl₂, shows why the distinction matters\nchemically, not just arithmetically: **2Cl** means two *separate* chlorine\natoms, while **Cl₂** means two chlorine atoms *joined in a molecule*. Same\natoms, completely different substances.\n\nWork through the counting example: in **2H₂SO₄** the big 2 gives\nyou 2 molecules of sulfuric acid; each molecule has 2 hydrogens, 1 sulfur\nand 4 oxygens. Count the atoms in the whole expression and you find\n**4 hydrogens, 2 sulfurs and 8 oxygens**. Brackets extend the subscript's\nreach: in **Ca(OH)₂** the 2 applies to *everything inside the bracket* —\n1 calcium, 2 oxygens, 2 hydrogens. (Chapter 7 (u1:c07) shows how\nformulae like this are worked out.)\n\n:::key-point\nA small subscript number applies only to the atom immediately before it\nin the formula. A subscript after brackets applies to everything inside\nthe brackets. A big number in front applies to the whole formula.\n:::\n\n:::exam-hint\nCounting atoms through formulae with brackets is exactly where marks go\nmissing under time pressure. Practise until 2H₂SO₄ → 4 H, 2 S, 8 O and\nCa(OH)₂ → 1 Ca, 2 O, 2 H are instant, because every balancing question\nin this chapter — and every reacting-mass calculation later — stands on\nthis counting skill.\n:::\n\n:::misconception\n\"The 2 in 2H₂SO₄ means 2 sulfur atoms.\" It means **2 whole molecules** of\nH₂SO₄ — so 2 sulfurs, 4 hydrogens, 8 oxygens in total. The big number\nmultiplies everything; the subscripts describe each single molecule.\nConfusing the two scales of \"two\" is the root of most miscounts.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.25 items — counting atoms through coefficients,\nsubscripts and brackets.\n:::"
+  },
+  {
+   "id": "u1:c05:s04",
+   "title": "Balancing equations",
+   "bookPage": 39,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf048_0148",
+    "chem_v3_u1_c5_pdf049_0149"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "balanced-equation"
+   ],
+   "specRefs": [
+    "1.25"
+   ],
+   "markdown": "Chemical reactions **rearrange atoms into new combinations** — they never\ncreate or destroy them. It follows that a finished equation must end up\nwith exactly the same number of each type of atom that it started with;\nthat is what makes it a **[[balanced-equation]]**. Watch the idea build\nwith methane burning in oxygen:\n\nCH₄ + O₂ → CO₂ + H₂O\n\nCount the atoms on each side and the equation *can't* be right: the right\nside has gained an oxygen atom and lost two hydrogens. The substances are\nall correct — methane really does burn to carbon dioxide and water — so\n**the proportions must be wrong**. Fixing\nproportions, without touching the substances, is the whole skill.\n\nOne sentence is the single most important sentence in this chapter, and\nit deserves to be quoted in full: you must **never, never change a\nformula** when balancing an equation. All you are allowed to do\nis write **big numbers in front of the formulae**. The next section\napplies the fix to the methane equation, and Worked example 1 shows the\nsystematic method in action.\n\n:::exam-hint\nThis is the really-important one, and the emphasis is the point:\n**never change a formula when balancing**. If the equation needs another oxygen, you write\na bigger *big number* — you never turn O₂ into O₃ or H₂O into H₂O₂.\nChanging a formula changes the substances, which changes the chemistry;\nchanging a big number changes only the proportions, which is what\nbalancing means.\n:::\n\n:::misconception\n\"CH₄ + O₂ → CO₂ + H₂O is nearly balanced, so it is nearly right.\" There is\nno such thing as *nearly* balanced — an equation either conserves every\natom type or it is wrong. Here the left side has 4 H and 2 O while the\nright has 2 H and 3 O. The chemistry (which substances) is fine; the\nproportions (how much of each) are not, and only the proportions may be\nedited.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.25 items — the conservation rule and the\nnever-change-a-formula law.\n:::"
+  },
+  {
+   "id": "u1:c05:s05",
+   "title": "Try again — balancing the methane equation",
+   "bookPage": 40,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf049_0150"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.25"
+   ],
+   "markdown": "Now fix the methane equation. With the proportions adjusted — and *only*\nthe proportions — the balanced equation for the combustion of methane is:\n\nCH₄ + 2O₂ → CO₂ + 2H₂O\n\nCount each symbol as one atom of that element and check both sides:\n**1 carbon** each side; **4 hydrogens** each side (4 on the left inside\nCH₄, 2 × 2 on the right inside 2H₂O); **4 oxygens** each side (2 × 2 on\nthe left, 2 + 2 on the right). Every atom type balances — the equation\nis *balanced*.\n\nBalancing is a skill with a method. Learn the systematic approach and\napply it exactly:\n\n- **Work across the equation from left to right**, checking one element\n  after another. If an element seems impossible to fix that way, leave it\n  until the end — you will often find it has sorted itself out.\n- **Count unchanged groups as a whole.** If a group of atoms such as the\n  sulfate group (SO₄) appears unchanged on both sides, count the group\n  once instead of individual sulfurs and oxygens. It saves time.\n- **Check everything at the end**, to be sure you have not disturbed\n  something you already counted.\n\n:::exam-hint\nThe three-step method is worth adopting verbatim: left-to-right,\none element at a time; unchanged atom-groups counted whole; full recount\nat the end. The \"leave the awkward element until last\" tip is the one\nthat rescues equations involving O₂ — you will see exactly why in\nWorked example 2 (the ethane combustion).\n:::\n\n:::misconception\n\"I balanced it left to right, so it must still be balanced when I finish.\"\nNot necessarily — fixing a later element can *unbalance* an earlier one\n(for instance, changing 2H₂O on the right alters both the H and the O\ncounts). That is precisely why the method ends with **check everything\nat the end**: the last pass is not optional tidying, it is\nwhere the marks are secured.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.25 items — the systematic balancing method on\nfamiliar equations.\n:::"
+  },
+  {
+   "id": "u1:c05:s06",
+   "title": "Worked example 1 — balancing zinc + hydrochloric acid",
+   "bookPage": 40,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf049_0151",
+    "chem_v3_u1_c5_pdf049_0152",
+    "chem_v3_u1_c5_pdf050_0153",
+    "chem_v3_u1_c5_pdf050_0154"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.25"
+   ],
+   "markdown": "Balance the equation for the reaction between zinc and hydrochloric acid:\n\nZn + HCl → ZnCl₂ + H₂\n\nRun the systematic method from the previous section, left to right. **Zinc**: 1 atom on each side — no problem. **Hydrogen**: 1 atom on\nthe left, 2 on the right; if there are 2 at the end, there must have been\n2 at the start, and the only way to achieve that is **2HCl**. (You must\n*not* change the formula to H₂Cl, because that substance does not exist.)\n**Chlorine**: with 2HCl there are now 2 on each side — good. Finally\ncheck everything again, and the equation is finished:\n\nZn + 2HCl → ZnCl₂ + H₂\n\nThe atom-count table for the finished equation:\n\n|                | Zn | H | Cl | Zn | H | Cl |\n|----------------|----|---|----|----|---|----|\n| numbers of atoms | 1 | 2 | 2  | 1 | 2 | 2  |\n\n:::key-point\nHalves *are* acceptable in balanced equations, and you can always remove\none later by doubling everything — but you will rarely meet them at\nInternational GCSE. Worked example 2 shows the halving trick in its\nnatural habitat: an odd number of oxygens.\n:::\n\n:::exam-hint\nA second hint settles two state-symbol worries before they start: don't worry if you don't yet know what the state\nsymbols should be — that is not important at this stage. But do register\nthe correction it adds: **water is a liquid (l), not an aqueous solution\n(aq)** — an aqueous solution is formed when something is *dissolved in*\nwater.\n:::\n\n:::misconception\n\"If I need 2 hydrogens on the left, I can write H₂Cl.\" You cannot —\n**H₂Cl is not a substance**. Hydrochloric acid is HCl, period. Balancing\nadjusts *how many* formula units take part (the big number 2HCl); it\nnever rewrites *what* the substance is. This is the never-change-a-formula\nlaw from the last section, caught red-handed in exam conditions.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.25 items — left-to-right balancing with the\natom-count check.\n:::"
+  },
+  {
+   "id": "u1:c05:s07",
+   "title": "Worked example 2 — balancing the combustion of ethane",
+   "bookPage": 41,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf050_0156"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.25"
+   ],
+   "markdown": "Balance the equation for the combustion of ethane:\n\nC₂H₆ + O₂ → CO₂ + H₂O\n\nThe systematic method, left to right. **Carbons**: 2 on the left,\nso 2CO₂ on the right. **Hydrogens**: 6 on the left, so 3H₂O on the right.\n**Oxygens**: now there are 7 on the right ((2 × 2) + 3) but only 2 on the\nleft — and here comes the problem to recognise: oxygen\natoms have to travel **in pairs** (O₂ molecules), so you cannot put an\nodd number like 7 of them on the left directly.\n\nThe trick: **allow yourself halves**. 7 oxygen atoms is the same as\n3½ oxygen molecules:\n\nC₂H₆ + 3½O₂ → 2CO₂ + 3H₂O\n\nThen **double everything** to remove the fraction:\n\n2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O\n\n:::key-point\nHalving (then doubling the whole equation) is the standard escape from an\nodd number of oxygens. You might reasonably object that half an O₂\nmolecule is not a physical thing — the doubling step answers that\nobjection; the final equation has only whole numbers.\n:::\n\n:::exam-hint\nThe full context: halves are\n*acceptable* in balanced equations, but you will rarely meet them at\nInternational GCSE — and if you do produce one, **double everything**\nrather than leaving it. An examiner will accept either the halved or the\ndoubled form; the doubled form is the one you should hand in.\n:::\n\n:::misconception\n\"I can't balance this — 7 oxygens can't come from O₂ molecules, so the\nreaction must be wrong.\" The reaction is fine; your *temporary* arithmetic\nis what needs the half. Oxygen atoms still conserve: 14 on the left\n(7 O₂ × 2), 14 on the right (4 CO₂ gives 8 + 6 H₂O gives 6). The half\nmolecule is scaffolding, removed by the doubling step before you write\nyour final answer.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.25 items — combustion balancing with the\nhalf-then-double trick.\n:::"
+  },
+  {
+   "id": "u1:c05:s08",
+   "title": "State symbols",
+   "bookPage": 41,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf050_0157"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "state-symbol",
+    "aqueous"
+   ],
+   "specRefs": [
+    "1.25"
+   ],
+   "markdown": "**State symbols** are often — but not always — written after each formula\nin an equation to show the **physical state** everything is in. The four\nyou need to know:\n\n| Symbol | State |\n|--------|-------|\n| (s) | solid |\n| (l) | liquid |\n| (g) | gas |\n| (aq) | in aqueous solution (dissolved in water) |\n\nA worked illustration:\n\n2K(s) + 2H₂O(l) → 2KOH(aq) + H₂(g)\n\nRead aloud, this says: solid potassium reacts with liquid water to make a\nsolution of potassium hydroxide in water, and hydrogen gas. Notice how\nmuch extra information the state symbols carry — the same balanced\nequation *without* them would not tell you that the potassium hydroxide\nends up dissolved, or that the hydrogen leaves as a gas.\n\n:::exam-hint\nThe two symbols candidates mix up are **(l)** and **(aq)**. Water in a\nbeaker is H₂O(**l**); salt *dissolved in* that water is NaCl(**aq**).\nThe previous section said it plainly: water is a liquid, not an aqueous\nsolution — (aq) is reserved for something dissolved in water. State symbols are part of the 1.25 objective\n(\"including state symbols\"), so a perfectly balanced equation can still\ndrop marks without them.\n:::\n\n:::misconception\n\"(aq) means 'in water', so pure water is H₂O(aq).\" No — (aq) means\n*dissolved in water*, which requires something doing the dissolving.\nPure water is the solvent itself: H₂O(**l**). Only species dissolved in\nwater — ions like KOH(aq) above — earn the (aq) label.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.25 items — the four state symbols and their\ncorrect assignment.\n:::"
+  },
+  {
+   "id": "u1:c05:s09",
+   "title": "How much of each substance reacts? — the carbon-12 scale and Aᵣ",
+   "bookPage": 41,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf050_0158",
+    "chem_v3_u1_c5_pdf051_0160",
+    "chem_v3_u1_c5_pdf051_0161",
+    "chem_v3_u1_c5_pdf051_0162",
+    "chem_v3_u1_c5_pdf051_0163",
+    "chem_v3_u1_c5_pdf051_0164"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "relative-atomic-mass",
+    "carbon-12-scale"
+   ],
+   "specRefs": [
+    "1.26"
+   ],
+   "markdown": "A practical question sets up the whole second half of the chapter: make iron(II) sulfide by heating iron with sulfur —\n\nFe + S → FeS\n\n— and ask: **in what proportions should you mix them?** Certainly not\nequal masses, because iron and sulfur atoms do not weigh the same. An\niron atom contains more protons and neutrons than a sulfur atom, so it is\nabout **one and three-quarter times heavier**. Getting the proportions\nright therefore requires knowing the masses of the individual atoms\ntaking part — which is exactly what the **[[relative-atomic-mass]]**\ndelivers.\n\n**The carbon-12 scale.** A single atom weighs about\n1.67 × 10⁻²⁴ g — an absurd number to calculate with. Instead, chemists\ncompare all atomic masses against a standard: the mass of an atom of the\n**carbon-12 isotope** ([[carbon-12-scale]]). On this scale one ¹²C atom\nweighs **exactly 12 units**, and the basic unit of the scale is\n**one-twelfth** of that — approximately the mass of the most common\nhydrogen atom. So fluorine-19 has a relative mass of **19** (19 times\none-twelfth of a ¹²C atom), and magnesium's most common isotope has a\nrelative mass of **24**.\n\n**From isotopes to Aᵣ.** Real samples contain a *mixture* of isotopes, so\nwe need the average mass of an atom taking them all into account — the\nrelative atomic mass. The definition, verbatim:\n\n> The relative atomic mass of an element is the **weighted average mass**\n> of the isotopes of the element. It is measured on **the carbon-12\n> scale**, on which a carbon-12 (¹²C) atom has a mass of **exactly 12**.\n\nBecause these are *relative* masses, they have **no units**. Chlorine's\nAᵣ is 35.45 (quoted 35.5), lithium's is 6.94 (quoted 7), sodium's is\n22.99 (quoted 23) — averages over their isotope mixtures. The\nInternational GCSE convention: use the Periodic Table values, with\ndecimals where given (Cl 35.5, Cu 63.5).\n\n:::key-point\nTo work out a weighted average you have to know **how much of each isotope\nis present** in the sample — the weighted-average method from Chapter 3\n(u1:c03) is the same mathematics again here.\n:::\n\n:::exam-hint\nOne vocabulary line the examiner enforces: avoid\n**'relative molecular mass'** for ionic substances — it can only properly\ndescribe actual molecules (covalent substances). You should not use it\nfor magnesium oxide or sodium chloride. **Relative formula mass covers\neverything**, which is why the next section installs it as the default\nterm.\n:::\n\n:::misconception\n\"Aᵣ = 35.5 means a chlorine atom weighs 35.5 units.\" No single chlorine\natom does — 35.5 is the **weighted average** across the ³⁵Cl/³⁷Cl\nmixture. Any one atom weighs 35 or 37; the *sample average* is 35.5.\nThis is the Chapter 3 isotope story (weighted averages need how much of\neach isotope is present) reappearing as the foundation for Mᵣ.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.26 items — the carbon-12 scale and Aᵣ as weighted\naverage.\n:::"
+  },
+  {
+   "id": "u1:c05:s10",
+   "title": "Relative formula mass (Mᵣ)",
+   "bookPage": 42,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf051_0165",
+    "chem_v3_u1_c5_pdf052_0167"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "relative-formula-mass",
+    "relative-molecular-mass"
+   ],
+   "specRefs": [
+    "1.26"
+   ],
+   "markdown": "Compounds get weighed on the same carbon-12 scale as atoms. A water\nmolecule, H₂O, has a mass of **18** on this scale — 18 times the mass of\none-twelfth of a ¹²C atom. For compounds the term is\n**[[relative-formula-mass]]**, given the symbol **Mᵣ** (it is sometimes\ncalled [[relative-molecular-mass]] — the previous section explains why\n*formula* mass is the safer phrase: it covers ionic substances too).\n\nCalculating an Mᵣ is bookkeeping: **add up the relative atomic masses of\nevery atom in the formula**, using the Periodic Table. The copper(II)\nsulfate crystals example, CuSO₄·5H₂O, shows the one twist you\nmust be ready for. When some substances crystallise from solution, water\nbecomes **chemically bound** to the salt — [[water-of-crystallisation]] —\nand the bound water is *part of the formula*: there are always 5 water\nmolecules per CuSO₄ unit, and salts carrying it are **hydrated**. (Other\nexamples: Na₂CO₃·10H₂O and MgCl₂·6H₂O.)\n\n:::key-point\nRelative atomic masses are **always given** in the exam — in the question\nor on the Periodic Table. You never calculate Aᵣ yourself; but if you use\nthe Periodic Table, take the **larger of the two numbers** (the relative\natomic mass, not the atomic number).\n:::\n\n:::exam-hint\nThe classic miscount on hydrated formulae: work out\nthe hydrogens and oxygens of the water **as complete H₂O units**, not\nseparately. The common mistake is to get 10 hydrogens right (2 × 5) but\nthen count only **1** oxygen instead of **5**. Five waters = 10 H **and**\n5 O. (The structure: five water molecules bonded to each copper(II)\nsulfate unit — and write copper(II) properly: capital I twice, not Il.)\n:::\n\n:::misconception\n\"The ·5H₂O in CuSO₄·5H₂O is just wet salt — you can ignore it in\ncalculations.\" You cannot. The water of crystallisation is **chemically\nbound** and part of the formula; the salt is *hydrated*, and its Mᵣ\nincludes all five waters. Ignoring them turns every downstream\npercentage-composition and mole calculation on this salt into a wrong\nanswer.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.26 items — Mᵣ from Aᵣ values, hydrated formulae\nincluded.\n:::"
+  },
+  {
+   "id": "u1:c05:s11",
+   "title": "Using relative formula mass to find percentage composition",
+   "bookPage": 43,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf052_0169"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "percentage-composition"
+   ],
+   "specRefs": [
+    "1.26"
+   ],
+   "markdown": "Once you have an Mᵣ, one division tells you what fraction of a compound's\nmass any part of it contributes — the **[[percentage-composition]]**.\nFirst worked case, magnesium carbonate:\n\n**To find the Mᵣ of MgCO₃** (Aᵣ values: C = 12, O = 16, Mg = 24):\n\nMᵣ = 24 + 12 + (3 × 16) = 24 + 12 + 48 = **84**\n\nYou add the masses of 1 × Mg, 1 × C and 3 × O — the subscripts do the\ncounting. The second case adds brackets to the arithmetic, calcium\nhydroxide:\n\n**To find the Mᵣ of Ca(OH)₂** (Aᵣ values: Ca = 40, O = 16, H = 1):\n\nMᵣ = 40 + 2 × (16 + 1) = 40 + 34 = **74**\n\nThe bracketed (OH) group is counted **as a unit** (16 + 1 = 17) and then\ndoubled — exactly the bracket rule from section 3, now earning its keep\nin a calculation. With the Mᵣ in hand, the percentage by mass of any\nelement follows: that element's total contribution divided by the whole,\n× 100. The next two sections work that division through two complete\nexamples.\n\n:::exam-hint\nTwo habits are worth copying in the exam. First, **write the Aᵣ values\ndown before starting** — list them (\"Relative atomic masses: C = 12,\nO = 16, Mg = 24\") even though they are given, because it makes the\nworking checkable. Second,\nmultiply first, add second: 3 × 16 = 48 as its own step stops the\n\"C + O₃\" addition errors.\n:::\n\n:::misconception\n\"Mᵣ of Ca(OH)₂ is 40 + 16 + 1 + 2 = 59.\" The 2 after the bracket doubles\n**everything inside it** — both the O and the H. Correct working is\n40 + 2 × (16 + 1) = 40 + 34 = 74. Forgetting to multiply the hydrogen is\nthe bracket-rule failure wearing a calculation costume.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.26 items — Mᵣ with bracketed groups.\n:::"
+  },
+  {
+   "id": "u1:c05:s12",
+   "title": "Worked example — Mᵣ of copper(II) sulfate crystals, CuSO₄·5H₂O",
+   "bookPage": 43,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf052_0171"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "water-of-crystallisation",
+    "hydrated-salt"
+   ],
+   "specRefs": [
+    "1.26"
+   ],
+   "markdown": "This formula looks far more complicated than the previous ones — the\nadvice is to break it into its two natural pieces. First, why the\nwater is there at all: when some substances crystallise from solution,\nwater becomes **chemically bound up with the salt**. This is\n[[water-of-crystallisation]], and salts containing it are **hydrated**\n([[hydrated-salt]]). There are **always 5 water molecules per 1 CuSO₄\nunit** — they are part of the formula, not impurities. (Other examples:\nNa₂CO₃·10H₂O and MgCl₂·6H₂O.)\n\n**To find the Mᵣ of CuSO₄·5H₂O** (Aᵣ values: H = 1, O = 16, S = 32,\nCu = 63.5).\n\nThe method: work out the relative formula mass of water first, then add\nthe correct number of waters on to the rest of the formula:\n\n- **Water**: Mᵣ(H₂O) = (2 × 1) + 16 = **18**\n- **The salt part**: Mᵣ(CuSO₄) = 63.5 + 32 + (4 × 16) = 63.5 + 32 + 64 = **159.5**\n- **Assemble**: 159.5 + (5 × 18) = 159.5 + 90 = **249.5**\n\nThe same section then points the tool at a single element — **to find the\npercentage by mass of copper in copper(II) oxide, CuO** (Aᵣ: O = 16,\nCu = 63.5): Mᵣ(CuO) = 63.5 + 16 = 79.5, of which **63.5 is copper**, so\nthe copper percentage is (63.5 / 79.5) × 100 ≈ **79.9%**. \"Having found\nthe relative formula mass of a compound, we can work out the percentage\nby mass of any part of it\" — the bridge to the next section.\n\n:::key-point\nFor a hydrated salt, compute the water's Mᵣ once (18 for H₂O) and multiply\nby the number of waters of crystallisation. The dot · in the formula\nmeans \"plus this many whole waters per formula unit\" — nothing more\nmysterious than that.\n:::\n\n:::exam-hint\nStructure your Mᵣ working for hydrated salts in three parts: salt part,\nwater part, assemble. Examiners award method marks for the\nstages — a bare \"249.5\" with no visible 159.5 + 90 can lose the working\nmark even with the right answer. And quote Mᵣ(CuSO₄·5H₂O) = 249.5 —\nthis exact value returns in Worked example 7 (percentage yield of these\nvery crystals).\n:::\n\n:::misconception\n\"CuSO₄·5H₂O means CuSO₄ joined to 5 separate H₂O molecules floating\naround the crystal.\" The five waters are **chemically bound** into the\ncrystal structure — bonded to each CuSO₄ unit. They are not loose water you could shake off; heating is\nneeded to drive them out (that experiment is Worked example 6's\nneighbour, section 26).\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.26 items — Mᵣ of hydrated salts.\n:::"
+  },
+  {
+   "id": "u1:c05:s13",
+   "title": "Worked example — percentage by mass of oxygen in sodium carbonate",
+   "bookPage": 43,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf052_0173"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.26"
+   ],
+   "markdown": "**To find the percentage by mass of oxygen in sodium carbonate, Na₂CO₃**\n(Aᵣ values: Na = 23, C = 12, O = 16).\n\nHold one picture beside this calculation: 1-mole quantities of carbon\n(12 g), sulfur (32 g), iron (56 g), copper (63.5 g) and magnesium (24 g)\n— the bridge from formula-mass arithmetic to the mole, which the very\nnext section makes explicit. Here, the\ncalculation runs:\n\n1. **Mᵣ(Na₂CO₃)** = (2 × 23) + 12 + (3 × 16) = 46 + 12 + 48 = **106**\n2. **Oxygen's contribution**: there are 3 oxygens in the formula, so the\n   total mass of oxygen is 3 × 16 = **48**\n3. **Percentage**: (48 / 106) × 100 ≈ **45.3%**\n\nStep 2 in words: \"48 of this 106 is due to the oxygen (remember that\nthere are 3 oxygens in the formula, so the total mass of oxygen is\n3 × 16 = 48).\" The multiply-before-you-divide structure is the\nwhole method: count the element's atoms, total their mass, divide by the\ncompound's Mᵣ.\n\n:::exam-hint\nCarry the \"total mass of the element\" as its own named step (3 × 16 = 48)\nbefore dividing by 106. That presentation is also self-checking: the three element percentages (Na, C, O) must sum\nto 100% — a quick sanity check that catches subscript slips on the spot.\n:::\n\n:::misconception\n\"Oxygen is 16/106 ≈ 15% of the compound.\" That divides *one* oxygen's mass\nby the whole. The formula has **three** oxygens: 48/106 ≈ 45.3%. The\nsubscript is part of the mass arithmetic, not decoration — every atom in\nthe formula contributes its Aᵣ to the element's share.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.26 items — percentage by mass of a named element.\n:::"
+  },
+  {
+   "id": "u1:c05:s14",
+   "title": "The mole",
+   "bookPage": 44,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf053_0175"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "mole",
+    "molar-mass"
+   ],
+   "specRefs": [
+    "1.27",
+    "1.28"
+   ],
+   "markdown": "In chemistry, the **[[mole]]** is a unit of the **amount of substance**.\nYou can express an amount in grams *or* in moles — and the difference\nbetween the two expressions is that **1 mole of any substance has its own\nparticular mass**. Examples: 1 mole of water has a mass of 18 g, 1 mole\nof sulfur 32 g, 1 mole of magnesium oxide 40 g. The\nabbreviation for mole is **mol**.\n\nSo the same sample can be described both ways: 36 g of water **is** 2 mol\n(because 1 mol of water is 18 g); but 36 g of sulfur is only 1.125 mol\n(1 mol of sulfur is 32 g), and 36 g of magnesium is 1.5 mol (1 mol of\nmagnesium is 24 g). Same 36 grams — different amounts of substance,\nbecause the particles weigh different amounts. On phrasing: \"amount in\nmoles\" and \"number of moles\" mean the same thing,\njust as \"amount in grams\" and \"number of grams\" do.\n\n**Where the mass of 1 mole comes from**: calculate the relative formula\nmass (Mᵣ) and **attach the units, grams**. Three worked out:\n\n- **1 mole of oxygen gas, O₂** (Aᵣ: O = 16): Mᵣ = 32, so 1 mol has a mass\n  of **32 g**.\n- **1 mole of calcium chloride, CaCl₂** (Aᵣ: Cl = 35.5, Ca = 40):\n  Mᵣ = 40 + (2 × 35.5) = 111, so 1 mol has a mass of **111 g**.\n- **1 mole of iron(II) sulfate crystals, FeSO₄·7H₂O** (Aᵣ: H = 1, O = 16,\n  S = 32, Fe = 56): Mᵣ = 56 + 32 + (4 × 16) + 7 × [(2 × 1) + 16] =\n  56 + 32 + 64 + 126 = **278**, so 1 mol has a mass of **278 g** — the\n  hydrated-crystal method from section 12, reused without ceremony.\n\n:::key-point\nMass of 1 mole = Mᵣ expressed in grams. This is the [[molar-mass]] idea —\nthe next section adds the terminology and its one fine-print distinction.\n:::\n\n:::exam-hint\nNotice the oxygen example specifies **oxygen gas, O₂** — 32 g, not 16 g.\nWhenever a question says \"1 mole of oxygen\", check whether it means atoms\n(O, 16 g) or molecules (O₂, 32 g): the next section makes quoting the\nformula compulsory for exactly this reason.\n:::\n\n:::misconception\n\"1 mole of every substance weighs the same.\" That is the property of 1\n*mole* (it contains the same *number* of particles — section 17) — not of\n1 mole's *mass*. 1 mol of water is 18 g, 1 mol of sulfur 32 g, 1 mol of\nMgO 40 g: equal particle counts, unequal masses, because their particles\nare differently heavy.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.27/1.28 items — mass of 1 mole from Mᵣ, hydrated\ncrystals included.\n:::"
+  },
+  {
+   "id": "u1:c05:s15",
+   "title": "Quoting the formula — and the molar mass vocabulary",
+   "bookPage": 44,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf053_0179",
+    "chem_v3_u1_c5_pdf054_0180",
+    "chem_v3_u1_c5_pdf054_0181",
+    "chem_v3_u1_c5_pdf054_0182",
+    "chem_v3_u1_c5_pdf054_0183"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.27",
+    "1.28"
+   ],
+   "markdown": "Whenever you talk about a mole of something, **you must quote its\nformula** — otherwise there is a real risk of confusion. The classic\nexample: \"1 mole of oxygen\" could mean\n\n- 1 mole of oxygen **atoms**, O, with a mass of **16 g**, or\n- 1 mole of oxygen **molecules**, O₂, with a mass of **32 g**.\n\nTwice the mass, same words. The formula is what disambiguates, which is\nwhy exam answers never say \"oxygen\" without the formula when a mole\ncalculation is in play.\n\nThis section assembles the vocabulary and the number sense you need:\n\n- **'Molar mass' is often used instead of 'mass of 1 mole'** — same\n  practical meaning at this level.\n- Fine print (extension, for completeness): strictly, molar\n  mass has units of **g/mol** while mass of 1 mole has units of **g**.\n  You are unlikely to need the distinction at International GCSE.\n- **Don't over-rely on learned formulae**: if 1 mole weighs 100 g, it\n  should be obvious that 2 moles weigh twice as much, 10 moles ten times\n  as much, 0.2 moles 0.2 times as much.\n- **Division as sense-check**: if 1 mol weighs 18 g, the number of moles\n  in 54 g is simply *how many times 18 goes into 54*. If you feel safer\n  with a formula, use it — but never let the formula replace the sanity\n  check.\n\n:::exam-hint\nThe \"how many times does it go in?\" instinct is a genuine exam tool: in\n54 g of water, 18 goes in 3 times → 3 mol. Do this mental division\n*before* reaching for moles = mass/Mᵣ, and you will catch flipped\nfractions (Mᵣ/mass) before they cost you the answer — 18/54 would\nplainly be nonsense here.\n:::\n\n:::misconception\n\"'Moles of oxygen' is a complete answer.\" It is not — the examiner cannot\nmark what they cannot interpret. \"1 mol oxygen\" is ambiguous between\n16 g (atoms) and 32 g (molecules); always write **1 mol O₂** or\n**1 mol O**. The rule: quote the formula, every time.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.27/1.28 items — formula quoting and mole-mass\nsense checks.\n:::"
+  },
+  {
+   "id": "u1:c05:s16",
+   "title": "Simple calculations with moles",
+   "bookPage": 45,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf054_0184"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.28"
+   ],
+   "markdown": "You need to be able to **interconvert between a mass in grams and an\namount in moles** for a given substance. There is one formula to learn:\n\n$$\\text{number of moles} = \\frac{\\text{mass (g)}}{\\text{mass of 1 mole (g)}}$$\n\nYou can rearrange it to find whatever you want. If rearranging causes\nproblems, use a **formula triangle**: mass on top, number of moles and\nmass of 1 mole on the bottom — cover the quantity you want and the\ntriangle shows the operation (top ÷ bottom, or bottom × bottom, or top ÷\nbottom). Look at it carefully and make sure you can deduce all three\nequations from it.\n\nTwo worked cases, both with the Mᵣ found first:\n\n**Finding the mass of 0.2 mol of calcium carbonate, CaCO₃**\n(Aᵣ: C = 12, O = 16, Ca = 40):\n\n- Mᵣ(CaCO₃) = 40 + 12 + (3 × 16) = **100**, so 1 mol has a mass of 100 g\n- 0.2 mol has a mass of 0.2 × 100 = **20 g**\n\n**Finding the number of moles in 54 g of water, H₂O**\n(Aᵣ: H = 1, O = 16):\n\n- Mᵣ(H₂O) = (2 × 1) + 16 = **18**, so 1 mol has a mass of 18 g\n- 54 g of water is 54 / 18 = **3 mol**\n\n:::key-point\nNumber of moles = mass in grams ÷ mass of 1 mole in grams. Every\nremaining calculation in this chapter — reacting masses, yields, excess —\nis this line plus a chemical equation.\n:::\n\n:::exam-hint\nAlways find (and *show*) the Mᵣ first. The two\nworkings above each carry three visible stages — Mᵣ, then the mole-mass\nlink, then the answer. That structure earns method marks even when an\narithmetic slip lands late, and it makes your answer checkable by the\n\"how many times does it go in?\" instinct from the last section.\n:::\n\n:::misconception\n\"moles = mass ÷ Mᵣ, so to get the mass I also divide by Mᵣ.\" Rearrange,\ndon't repeat: **mass = moles × mass of 1 mole**. The two directions are\nthe triangle's two different reads — 0.2 mol × 100 g/mol = 20 g versus\n54 g ÷ 18 g/mol = 3 mol. Writing the division both ways is the single\nmost common mole-arithmetic slip.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.28 items — mass ↔ moles interconversion.\n:::"
+  },
+  {
+   "id": "u1:c05:s17",
+   "title": "Moles and the Avogadro constant",
+   "bookPage": 46,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf055_0187"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "avogadro-constant"
+   ],
+   "specRefs": [
+    "1.27",
+    "1.28"
+   ],
+   "markdown": "Here is the number that makes the mole worth having. Imagine 1 mole of\n¹²C: it has a mass of **12 g** and contains about **6 × 10²³ carbon\natoms** — 6 followed by 23 noughts. That number of particles in 12 g of\n¹²C is the **[[avogadro-constant]]**.\n\nAnd the punchline: **1 mole of anything else contains this same number\nof particles**. Examples:\n\n- 1 mole of magnesium contains 6 × 10²³ magnesium atoms, Mg, and has a\n  mass of **24 g**\n- 1 mole of water contains 6 × 10²³ water molecules, H₂O, and has a mass\n  of **18 g**\n\nThis is *the reason we use moles*: **if we know the number of moles we\nalso know how many particles are present** — and\nif we know how many particles are present, we can work out how much of\none substance reacts with a certain amount of another. Reactions happen\nparticle-by-particle; the mole is the bridge from the grams you can weigh\nto the particles that actually react.\n\nA scale check: approximately 1 × 10³² water\nmolecules go over Niagara Falls *every second* in summer — 100 million\nmillion million million million molecules. Against that, 6 × 10²³ is a\nsmall, weighable, laboratory-sized crowd.\n\n:::key-point\nEqual moles = equal numbers of particles, regardless of substance. 1 mol\nof Mg and 1 mol of H₂O both carry 6 × 10²³ particles — the masses differ\n(24 g vs 18 g) because the particles differ; the *counts* do not.\n:::\n\n:::exam-hint\nTwo forms of the same fact get tested: the Avogadro constant value\n(**6 × 10²³ per mole**) and the inference (*moles → particles*: 0.5 mol\nof Mg contains 0.5 × 6 × 10²³ = 3 × 10²³ atoms). Watch the precision\nhabit in the examples — \"about 6 × 10²³\", \"approximately\" —\nthe constant is quoted to one significant figure at this level.\n:::\n\n:::misconception\n\"1 mole of magnesium has more particles than 1 mole of water, because\nmagnesium atoms are heavier.\" Heavier particles mean a **greater mass**\n(24 g vs 18 g) — but the **count is identical**: 6 × 10²³ each. A mole\nis a count, not a weight; that is precisely why it can convert between\nthe two.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.27/1.28 items — the Avogadro constant and\nmoles-to-particles conversion.\n:::"
+  },
+  {
+   "id": "u1:c05:s18",
+   "title": "Formulae — from mole ratios to empirical and molecular formulae",
+   "bookPage": 46,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf055_0188",
+    "chem_v3_u1_c5_pdf056_0189",
+    "chem_v3_u1_c5_pdf056_0190"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "empirical-formula",
+    "molecular-formula"
+   ],
+   "specRefs": [
+    "1.32",
+    "1.33"
+   ],
+   "markdown": "Formulae come *from* mole ratios. Start with sulfur dioxide, SO₂: there are 2 O atoms for each S atom. Scale it up — if you had 1 mol\nof SO₂ you would still have twice as many O atoms as S atoms: **1 mol of\nS atoms and 2 mol of O atoms**. And back down: if an experiment found a\nsample of sulfur dioxide containing 0.1 mol of S atoms, it must also\ncontain **0.2 mol of O atoms** (0.2 mol contains twice as many atoms as\n0.1 mol — the same point holds with 0.02 vs 0.01 mol).\n\nRun the logic forward and you can *read formulae out of mole data*:\n\n- A compound contains **0.2 mol Ca and 0.2 mol O** → equal numbers of\n  atoms → the formula is **CaO**.\n- A compound contains **0.4 mol Mn and 0.8 mol O** → twice as many O\n  atoms as Mn atoms → the formula is **MnO₂**.\n\nFormulae found this way have names, and both are defined:\n\n> The **[[empirical-formula]]** shows the **simplest whole number ratio**\n> of the atoms present in a compound.\n>\n> The **[[molecular-formula]]** shows the **actual number of atoms of each\n> element** present in a molecule (covalent compound) or formula unit\n> (ionic compound) of a compound.\n\nThe two can coincide or differ: calcium oxide is CaO *both* ways; hydrogen\nperoxide has empirical formula **HO** but molecular formula **H₂O₂**. To\nget from one to the other you need one extra datum — the Mᵣ of the\ncompound — which is exactly the machinery the next four sections build.\n\n:::key-point\nMole ratios *are* atom ratios. The empirical formula is that ratio in\nsimplest whole numbers; the molecular formula is the actual atom count,\nand it is always the empirical formula (or a whole-number multiple of it).\n:::\n\n:::exam-hint\nA significant-figures confession: more significant figures *should*\nhave been used for the numbers of moles in these examples, but were\nomitted for simplicity. In the exam, carry more\nfigures through the intermediate mole values (the practicals later give\n0.0400 vs 0.040 for exactly this reason) and only round at the ratio.\n:::\n\n:::misconception\n\"The empirical formula and molecular formula are always different.\" They\nare often the same — CaO is both. They differ only when the molecular\nformula is a *multiple* of the simplest ratio (HO vs H₂O₂). Treating\n\"empirical\" as automatically \"not the real formula\" is wrong; treating it\nas automatically \"the real formula\" is wrong too — you need the Mᵣ to\ndecide (section 23).\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.32/1.33 items — empirical vs molecular\ndefinitions and mole-ratio reading.\n:::"
+  },
+  {
+   "id": "u1:c05:s19",
+   "title": "Worked examples 3 and 4 — empirical formulae from masses",
+   "bookPage": 47,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf056_0191",
+    "chem_v3_u1_c5_pdf056_0192",
+    "chem_v3_u1_c5_pdf056_0193",
+    "chem_v3_u1_c5_pdf056_0195"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.33"
+   ],
+   "markdown": "In order to find the empirical formula of a compound such as copper oxide,\nwe need to know how many atoms of copper combine with how many atoms of\noxygen — and we work atoms out from **moles**. If we know the ratio\nbetween the numbers of copper and oxygen atoms, we know the formula.\n\n**Example 3** — a sample of a compound contains **1.27 g of Cu** and\n**0.16 g of O**. Calculate the empirical formula (Aᵣ: Cu = 63.5, O = 16).\nIt is easiest in columns, using a table:\n\n|                                             | Cu        | O         |\n|---------------------------------------------|-----------|-----------|\n| masses/g                                    | 1.27      | 0.16      |\n| moles of atoms = mass ÷ mass of 1 mole of atoms | 1.27/63.5 | 0.16/16   |\n| number of moles of atoms                    | 0.02      | 0.01      |\n| divide by the **smaller** number for the ratio | 0.02/0.01 | 0.01/0.01 |\n| ratio of moles                              | 2         | 1         |\n| empirical formula                           | **Cu₂O**  |           |\n\nThere are twice as many moles of Cu as O — so twice as many Cu atoms as O\natoms in the compound. One warning that examiners love: we are counting\n**atoms**, so we divide by the mass of 1 mole of oxygen\n**atoms** (16), **not** by 32 (the mass of 1 mole of oxygen *molecules*).\n\n**Example 4** — a sample contains **0.78 g of K, 1.10 g of Mn and\n1.28 g of O** (Aᵣ: K = 39, Mn = 55, O = 16). Again, a table:\n\n|                                             | K       | Mn      | O        |\n|---------------------------------------------|---------|---------|----------|\n| masses/g                                    | 0.78    | 1.10    | 1.28     |\n| moles of atoms = mass ÷ mass of 1 mole of atoms | 0.78/39 | 1.10/55 | 1.28/16  |\n| number of moles of atoms                    | 0.02    | 0.02    | 0.08     |\n| divide by the smallest number for the ratio | 0.02/0.02 | 0.02/0.02 | 0.08/0.02 |\n| ratio of moles                              | 1       | 1       | 4        |\n| empirical formula                           | **KMnO₄** |         |          |\n\n:::exam-hint\nOn this page: the original masses were measured to 2 significant\nfigures, so the numbers of moles should also be given to\n2 significant figures (0.010). If you write 0.01 in the exam that is fine\nand still gives the correct answer — but match your figure count to your\ndata, deliberately rather than accidentally.\n:::\n\n:::misconception\n\"0.16 g of O is 0.16/32 = 0.005 mol, so the formula would be Cu₄O.\" The\ncompound's formula counts **atoms**, and the oxygen in it arrived as\nindividual atoms — divide by 16 (1 mol of O atoms), not 32 (1 mol of O₂\nmolecules). Worth stopping for: this is the single most common\nempirical-formula slip.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.33 items — empirical formulae from mass data in\ntable form.\n:::"
+  },
+  {
+   "id": "u1:c05:s20",
+   "title": "Practicals — finding the formula of a metal oxide by combustion and by reduction",
+   "bookPage": 48,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf056_0196",
+    "chem_v3_u1_c5_pdf057_0197",
+    "chem_v3_u1_c5_pdf057_0198",
+    "chem_v3_u1_c5_pdf057_0199",
+    "chem_v3_u1_c5_pdf057_0200",
+    "chem_v3_u1_c5_pdf057_0201",
+    "chem_v3_u1_c5_pdf058_0202",
+    "chem_v3_u1_c5_pdf058_0203",
+    "chem_v3_u1_c5_pdf058_0204",
+    "chem_v3_u1_c5_pdf058_0205",
+    "chem_v3_u1_c5_pdf058_0206",
+    "chem_v3_u1_c5_pdf058_0207",
+    "chem_v3_u1_c5_pdf058_0208",
+    "chem_v3_u1_c5_pdf059_0209",
+    "chem_v3_u1_c5_pdf059_0210",
+    "chem_v3_u1_c5_pdf059_0211",
+    "chem_v3_u1_c5_pdf059_0212",
+    "chem_v3_u1_c5_pdf059_0213",
+    "chem_v3_u1_c5_pdf060_0214"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "combustion",
+    "reduction",
+    "displacement-reaction",
+    "redox-reaction"
+   ],
+   "specRefs": [
+    "1.31",
+    "1.33",
+    "1.36"
+   ],
+   "markdown": "Spec 1.36 is a practical: **know how to determine the formula of a metal\noxide by combustion or by reduction**. Both experiments are here, each\nending in the same empirical-formula table.\n\n## By combustion — magnesium oxide\n\nBurn magnesium in oxygen and watch how the mass changes. Procedure:\nweigh a crucible **with its lid**; add a ~10 cm piece of magnesium ribbon\nand weigh again; heat strongly (a roaring flame), **lifting the lid every\nfew seconds**; cool and weigh when finished. The magnesium burns with a\nbright white flame to give magnesium oxide, a white powder. The lid\nstops the powder escaping — but it must be lifted to **let oxygen in**.\n\nA set of results: crucible 32.46 g; + magnesium 32.70 g; + contents at\nthe end 32.86 g.\n\n- mass of magnesium = 32.70 − 32.46 = **0.24 g**\n- the mass **increases** because the magnesium combines with oxygen from\n  the air: mass of oxygen gained = 32.86 − 32.70 = **0.16 g**\n- the reaction type was **[[combustion]]**\n\nThe empirical-formula table (Aᵣ: Mg = 24, O = 16):\n\n|                 | Mg        | O         |\n|-----------------|-----------|-----------|\n| masses/g        | 0.24      | 0.16      |\n| moles of atoms  | 0.24/24   | 0.16/16   |\n| number of moles | 0.010     | 0.010     |\n| ÷ smaller       | 1         | 1         |\n| empirical formula | **MgO** |           |\n\n:::safety\nWear eye protection and take care not to get burned when raising the\ncrucible lid with tongs. The crucible will stay very hot for some time.\n:::\n\n## By reduction — copper oxide\n\nAlternatively, **remove the oxygen** and watch the mass fall. Pass\nhydrogen gas over copper oxide in a ceramic dish inside a tube; ignite\nthe excess hydrogen at the small hole; heat strongly until pink-brown\ncopper is seen. Results: dish 23.78 g; + copper oxide 26.96 g; + contents\nat end 26.32 g.\n\n- mass of copper oxide = 26.96 − 23.78 = **3.18 g**\n- mass of copper at the end = 26.32 − 23.78 = **2.54 g**\n- mass of oxygen removed = 3.18 − 2.54 = **0.64 g**\n\nThe reaction, CuO + H₂ → Cu + H₂O, is a **[[displacement-reaction]]**\n(hydrogen is more reactive than copper and displaces it) — and can also\nbe called a **[[redox-reaction]]**: the copper oxide has been\n**reduced** — oxygen removed, the [[reduction]] of the copper(II) oxide. Chapter 14 develops both.\n\nThe table (Aᵣ: Cu = 63.5, O = 16): 2.54/63.5 = 0.0400 mol Cu;\n0.64/16 = 0.040 mol O; ratio 1 : 1 → empirical formula **CuO**.\n\n:::safety\nThe teacher demonstrating needs to wear a face shield and use safety\nscreens; pupils require eye protection and should be no closer than\n2 metres. If a drying agent is needed, use anhydrous calcium chloride —\nNOT concentrated sulfuric acid.\n:::\n\n:::key-point\nBefore lighting the hydrogen stream, **fill the whole tube with\nhydrogen first**: a hydrogen–oxygen mixture is explosive. Let the gas\nflow through for a while to flush out all the oxygen, then light the\nstream (or the Bunsen burner).\n:::\n\n:::key-point\nHow do you know the reaction has finished? Nothing more happens in the\ncrucible — and you check by **heating to constant mass**: weigh, heat,\nweigh again, repeating until the mass stays constant. (Precision note:\nthe original masses here are 2 significant figures, so quote the moles\nas 0.010 — the extra figure shows the precision honestly.)\n:::\n\n:::exam-hint\nIn practice the ratio \"is not very often\" exactly 1:1 — the experimental\nculprits: some magnesium oxide powder may escape when\nthe lid is lifted; not all the magnesium may react; and magnesium can\nalso react with **nitrogen** in the air. Expect a question to hand you a\nslightly-off ratio and ask which of these explains it — that question is\nasking for this list.\n:::\n\n:::misconception\n\"The mass went down in the reduction experiment, so matter was\ndestroyed.\" The oxygen **left the dish as water vapour** — hydrogen\ncarried it away. Every gram is conserved: 0.64 g of oxygen moved from\ncopper oxide into the water stream. \"Mass decrease\" in this experiment\nmeans *oxygen removed*, i.e. reduction — not loss of matter.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.31/1.36 items — the two metal-oxide practicals\nand their mass-change logic.\n:::"
+  },
+  {
+   "id": "u1:c05:s21",
+   "title": "Determining the formula of water",
+   "bookPage": 51,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf060_0215",
+    "chem_v3_u1_c5_pdf060_0216",
+    "chem_v3_u1_c5_pdf060_0217",
+    "chem_v3_u1_c5_pdf060_0218"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.31"
+   ],
+   "markdown": "Modify the reduction apparatus slightly and the same experiment\ndetermines **the formula of water**: this time\nthe **water vapour** produced by the reaction between copper(II) oxide\nand hydrogen is **condensed** in a U-tube and collected. The dish is\nweighed before and after as before, **and** the mass of water collected\nis measured.\n\nThe results table adds one row to the reduction experiment's:\n\n|                                        | g      |\n|----------------------------------------|--------|\n| mass of empty dish                     | 23.78  |\n| mass of dish + copper oxide            | 26.96  |\n| mass of dish + contents at end         | 26.32  |\n| mass of water collected                | **0.72** |\n\nThe reasoning, step by step: the mass of oxygen lost from the\ncopper(II) oxide is **0.64 g** (26.96 − 26.32). **All** that oxygen\ncombines with hydrogen to form water — so the water contains 0.64 g of\noxygen. Since 0.72 g of water was collected, the mass of hydrogen in it\nmust be 0.72 − 0.64 = **0.08 g**. Now the familiar table:\n\n|                        | H         | O         |\n|------------------------|-----------|-----------|\n| masses/g               | 0.08      | 0.64      |\n| number of moles of atoms | 0.08/1  | 0.64/16   |\n| number of moles        | 0.08      | 0.040     |\n| ÷ smaller              | 2         | 1         |\n| empirical formula      | **H₂O**   |           |\n\nTwo hydrogen atoms to every oxygen atom — the experiment lands on the\nformula you have written since Chapter 1, but now you have *derived* it\nfrom masses.\n\n:::exam-hint\nThe whole experiment hinges on one conservation sentence worth quoting\nin answers: **all the oxygen lost from the copper(II) oxide ends up in\nthe water**. That is why oxygen's share of the water is *read off the\ndish* (0.64 g) and only hydrogen's must be *inferred* (0.72 − 0.64).\nQuestions love asking which mass comes from which measurement.\n:::\n\n:::misconception\n\"0.72 g of water means 0.72/18 = 0.04 mol of water, so we're done.\"\nThat shortcut uses the answer's formula — circular. The experiment's\npoint is to *derive* H₂O without assuming it: weigh the oxygen that\nleft the oxide (0.64 g), weigh the water formed (0.72 g), infer the\nhydrogen (0.08 g), and let the mole table say 2 : 1. Only after the\ntable agrees with H₂O does the 18 g/mol check make sense as a\nconfirmation.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.31 items — determining the formula of water\nexperimentally.\n:::"
+  },
+  {
+   "id": "u1:c05:s22",
+   "title": "Working out formulae using percentage composition figures",
+   "bookPage": 51,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf060_0219",
+    "chem_v3_u1_c5_pdf061_0221",
+    "chem_v3_u1_c5_pdf061_0222",
+    "chem_v3_u1_c5_pdf061_0223"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.33"
+   ],
+   "markdown": "The worked examples and practicals so far determined empirical formulae\n**from masses**. In the exam you are often given **percentages by mass**\ninstead. The next worked example shows the one extra step — and it is a\npleasant one.\n\n**Example 5.** Find the empirical formula of a compound containing\n**82.7% C** and **17.3% H** by mass (Aᵣ: H = 1, C = 12).\n\nThe percentage figures apply to **any amount you choose — so choose\n100 g**. Then the percentages simply *become* masses: 82.7% of 100 g is\n82.7 g. The table does the rest:\n\n|                                 | C         | H         |\n|---------------------------------|-----------|-----------|\n| percentages/%                   | 82.7      | 17.3      |\n| masses in 100 g/g               | 82.7      | 17.3      |\n| number of moles of atoms        | 82.7/12   | 17.3/1    |\n| number of moles                 | 6.89      | 17.3      |\n| ÷ smallest to get ratio         | 6.89/6.89 | 17.3/6.89 |\n| ratio of moles                  | 1         | 2.5       |\n\nThe ratio comes out **1 : 2.5** — and here is the exam-thinking: The empirical formula is the *whole-number* ratio,\nso a fraction is not an error, it is a instruction to scale up: **multiply\nboth numbers by 2** to get **C₂H₅**, the empirical formula.\n\n:::key-point\nPercentages → assume 100 g → the percentages become masses → the\nfamiliar table runs unchanged. The only new decision is at the ratio:\n1 : 2.5 is not \"rounded to\" 1 : 2 or 1 : 3 — it is multiplied up to\nwhole numbers (2 : 5).\n:::\n\n:::exam-hint\nThe exact line between legitimate rounding and corruption: calculating 17.3/6.89 gives **2.51** — rounding that to 2.5\n(or 1.01 to 1) is fine; rounding 2.51 **to 3** is not. And a ratio like\n1 : 1.33 is not rounded down to 1 : 1 — you multiply by 3 to obtain the\nwhole-number ratio. Halves ×2, thirds ×3, quarters ×4: recognise the\nfraction, clear it honestly.\n:::\n\n:::misconception\n\"A ratio of 1 : 2.5 must be experimental error — round it to 1 : 2.\"\nNo: with correct data, 2.5 is telling you the simplest *whole-number*\nratio needs scaling. 1 : 2.5 → 2 : 5 → C₂H₅. Rounding a clean fraction\naway instead of multiplying it up produces a formula that is not just\nimprecise but chemically impossible to reconcile with the given\npercentages.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.33 items — empirical formulae from percentage\ncomposition.\n:::"
+  },
+  {
+   "id": "u1:c05:s23",
+   "title": "Converting empirical formulae into molecular formulae",
+   "bookPage": 52,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf061_0224"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.32",
+    "1.33"
+   ],
+   "markdown": "The C₂H₅ from the last section cannot be a real compound's formula — as\nyou will recognise once you meet organic chemistry in Unit 4. The\n**[[molecular-formula]]** (the actual number of each atom present in a\nmolecule) has to be a **multiple** of the empirical formula, like C₄H₁₀.\n\nThe conversion needs exactly one extra piece of information: **the\nrelative formula mass of the compound** — or the mass of 1 mole, which\nis just the Mᵣ in grams. Continuing the previous example: suppose you\nare told the relative formula mass is **58**.\n\n- Mᵣ of C₂H₅ = (2 × 12) + (5 × 1) = **29** (Aᵣ: H = 1, C = 12)\n- How many times does 29 go into 58? **58 / 29 = 2**\n- So the molecule contains **2 lots of C₂H₅**: the molecular formula is\n  **C₄H₁₀**\n\nThat is the whole method: divide the given Mᵣ by the empirical-formula\nMᵣ, multiply the empirical formula by the answer. The ratio of elements\nis untouched (both C and H scale by the same factor), which is why the\nmolecular formula always \"cancels down\" to the empirical formula.\n\n:::key-point\nMolecular formula = empirical formula × n, where\n**n = Mᵣ(compound) ÷ Mᵣ(empirical formula)**. If n comes out as a\nwhole number, the data is consistent; if it does not, something upstream\n(the percentage table or the Mᵣ) needs re-checking.\n:::\n\n:::exam-hint\nShow the division as its own line (58 / 29 = 2) and *then* the scaled\nformula — method marks live in the n step, not just the final C₄H₁₀.\nAnd note: knowing \"a bit more organic chemistry\"\n(Unit 4) is how you'd *spot* that C₂H₅ is impossible — but you do not\nneed that knowledge in the exam; the Mᵣ does the deciding for you.\n:::\n\n:::misconception\n\"The molecular formula is C₂H₅ doubled in mass, so 2 × 29 = 58 —\ntherefore the molecular formula is 58.\" The Mᵣ is a number; the formula\nis atoms. The factor n multiplies the **formula** (C₂H₅ → C₄H₁₀), not\nthe mass figure. Writing \"the molecular formula is 2\" or \"is 58\" confuses\nthe scaling factor with the formula itself.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.32/1.33 items — empirical-to-molecular conversion\nvia Mᵣ.\n:::"
+  },
+  {
+   "id": "u1:c05:s24",
+   "title": "Worked example 6 — and into the crucible: heating barium chloride crystals",
+   "bookPage": 52,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf061_0225",
+    "chem_v3_u1_c5_pdf062_0228",
+    "chem_v3_u1_c5_pdf062_0229"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "anhydrous"
+   ],
+   "specRefs": [
+    "1.32",
+    "1.33"
+   ],
+   "markdown": "**Example 6.** A compound has the empirical formula **CH₂**. If the\nrelative formula mass is **56**, work out the molecular formula.\n\n- Mᵣ of CH₂ = 12 + (2 × 1) = **14**\n- 56 / 14 = **4**\n- The molecule contains 4 lots of CH₂: the molecular formula is **C₄H₈**\n\nThe closing check: the ratio of elements in the molecular formula must\nbe the same as in the empirical formula — and indeed C₄H₈ cancels down\nto CH₂.\n\nThe section then turns to the crucible work that the next sections\ncalculate. Two reminders set the vocabulary: when\nsome substances crystallise from solution, water becomes chemically bound\nto the salt — **water of crystallisation** — and the salt is said to be\n**hydrated**; **[[anhydrous]]** means *without* water. Picture barium\nchloride crystals being heated in a crucible: the experiment that\nwill hand you the mass data for finding **n** in BaCl₂·nH₂O.\n\n:::safety\nBarium chloride is toxic, but a Bunsen flame is not hot enough to release\nit into the atmosphere.\n:::\n\n:::exam-hint\nThe practical question to be ready for: **how can you be sure all the water has been driven off?** Heat\nto **constant mass** — heat the crucible, weigh it, and repeat until the\nmass remains constant. If the mass is still falling, water remains; when\nit is constant, all the water has gone. The same constant-mass discipline\nappeared in the metal-oxide practicals (section 20); it is the standard\nanswer wherever a crucible experiment is examined.\n:::\n\n:::misconception\n\"CH₂ with Mᵣ 56 must be C₂H₄ — because 2 × 14 = 28 and 28 is close to\n56, so it 'rounds up'.\" n must be an exact division, not an\napproximation: 56 / 14 = 4 exactly, giving C₄H₈. If your division does\nnot land on a whole number, the error is upstream (wrong Mᵣ or a\npercentage-table slip) — never \"round n to the nearest whole number and\nhope\".\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.32/1.33 items — molecular formula from empirical\nformula + Mᵣ.\n:::"
+  },
+  {
+   "id": "u1:c05:s25",
+   "title": "Interpreting symbols in equations in terms of moles",
+   "bookPage": 53,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf062_0230",
+    "chem_v3_u1_c5_pdf062_0231"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.28"
+   ],
+   "markdown": "Take the methane equation you balanced in section 5:\n\nCH₄ + 2O₂ → CO₂ + 2H₂O\n\nRead at molecular level, it says 1 molecule of CH₄ combines with 2\nmolecules of O₂ to form 1 molecule of CO₂ and 2 molecules of H₂O. But\nmolecules are inconveniently small for calculation — and the mole fixes\nthat, because the same ratios hold for moles:\n\n**1 mol CH₄ reacts with 2 mol O₂ to form 1 mol CO₂ and 2 mol H₂O**\n\nNothing about the equation's meaning has changed — the ratios are still\nthe same. The equation's big numbers do double\nduty: they balance the atoms *and* they announce the proportions in\nmoles.\n\nThe arithmetic, pinned: the big numbers in front of the formulae tell\nus **the number of moles** of each substance that\nreact. And although there does not appear to be a big number in front of\nthe CH₄ and CO₂, there is — a '1' that we simply do not write.\n\n:::key-point\nA chemical equation can always be read as a mole recipe: the balancing\nnumbers are the moles. An invisible '1' counts as a big number\n(CaCO₃ → CaO + CO₂ means 1 mol : 1 mol : 1 mol).\n:::\n\n:::exam-hint\nThis reading is the hinge between the first half of this chapter\n(equations) and the second half (reacting masses): every mass calculation\nfrom here on starts by *interpreting the equation in terms of moles*.\nWhen a question says \"using the equation\", that instruction means: write\nthe mole row underneath the equation before touching any masses.\n:::\n\n:::misconception\n\"The equation means 1 *gram* of CH₄ reacts with 2 *grams* of O₂.\" No —\nthe balancing numbers are mole ratios, never gram ratios. In fact\n1 mol CH₄ (16 g) reacts with 2 mol O₂ (64 g): the mass ratio is 16 : 64,\nnot 1 : 2. Grams and moles are connected through Mᵣ, which is exactly\nwhy the next sections interpose a moles step between the equation and\nthe masses.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.28 items — equations read as mole recipes.\n:::"
+  },
+  {
+   "id": "u1:c05:s26",
+   "title": "Empirical formula calculations involving water of crystallisation — finding n",
+   "bookPage": 53,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf062_0232",
+    "chem_v3_u1_c5_pdf062_0233"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "anhydrous",
+    "hydrated-salt"
+   ],
+   "specRefs": [
+    "1.31",
+    "1.33"
+   ],
+   "markdown": "Heat a salt that contains water of crystallisation and the water is\ndriven off, leaving the **[[anhydrous]]** salt behind. Barium chloride —\na **[[hydrated-salt]]** — is the commonly used example, because the\nbarium chloride itself does not decompose even on quite strong heating —\nonly the water leaves.\n\n**The experiment** (heating the crystals in a crucible) hands you three\nmasses:\n\n- mass of crucible = **30.00 g**\n- mass of crucible + barium chloride crystals, BaCl₂·nH₂O = **32.44 g**\n- mass of crucible + anhydrous barium chloride, BaCl₂ = **32.08 g**\n\n**Finding n** means finding the ratio of the number of moles of BaCl₂ to\nthe number of moles of water — \"it's just another empirical formula\ncalculation\" (Aᵣ: H = 1, O = 16, Cl = 35.5, Ba = 137; Mᵣ of BaCl₂ = 137 +\n2 × 35.5 = 208, Mᵣ of H₂O = 18):\n\n- mass of BaCl₂ = 32.08 − 30.00 = **2.08 g**\n- mass of water = 32.44 − 32.08 = **0.36 g**\n\nThe mole table:\n\n|                       | BaCl₂       | H₂O       |\n|-----------------------|-------------|-----------|\n| masses/g              | 2.08        | 0.36      |\n| ÷ Mᵣ for moles        | 2.08/208    | 0.36/18   |\n| number of moles       | 0.0100      | 0.020     |\n| ratio of moles        | 1           | 2         |\n| empirical formula     | **BaCl₂·2H₂O** |        |\n\nThe unknown n was 2 — found by the identical divide-by-Mᵣ,\ndivide-by-smallest machinery as every other empirical formula in this\nchapter. The only novelty is that one of the \"elements\" is a whole water\nmolecule.\n\n:::exam-hint\nTwo Mᵣ values must be *assembled* before the table can start: BaCl₂ =\n208 (137 + 2 × 35.5) and H₂O = 18. Show both constructions — the marks\nsit in the assembly, and the table cannot misfire if 208 and 18 are\nwritten explicitly. Note also which masses produce which subtraction:\ncrystals-minus-crucible gives the *hydrate*, anhydrous-minus-crucible\ngives the *salt*, and their difference is the *water*.\n:::\n\n:::misconception\n\"n is found by dividing the mass of crystals by the mass of water.\" That\nignores the salt entirely: n is the ratio of **moles** — 0.020 mol water\nto 0.010 mol BaCl₂ — not of masses (0.36/2.08 = 0.17 would be nonsense).\nConvert each mass to moles with its own Mᵣ *first*; the ratio comes only\nafter both conversions.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.31/1.33 items — finding n in hydrated salts.\n:::"
+  },
+  {
+   "id": "u1:c05:s27",
+   "title": "Calculations using moles, chemical equations and masses of substances",
+   "bookPage": 53,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf062_0234",
+    "chem_v3_u1_c5_pdf063_0235"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.28",
+    "1.29"
+   ],
+   "markdown": "Section 25 taught you to read an equation in moles. This section cashes\nthat in for **masses**. Take the methane equation again:\n\nCH₄ + 2O₂ → CO₂ + 2H₂O\n\nInterpreted in moles: **1 mol CH₄ reacts with 2 mol O₂** to form 1 mol\nCO₂ and 2 mol H₂O. The molecular bookkeeping beneath it: 2 mol of O₂ contains twice as many molecules as 1 mol of\nCH₄ — the proportions you weigh out are the proportions that the\nmolecules react in.\n\nNow attach masses, using the Mᵣ values (CH₄ = 16, O₂ = 32, CO₂ = 44,\nH₂O = 18):\n\n- 1 mol CH₄ = **16 g** and 2 mol O₂ = **64 g** react exactly...\n- ...to form 1 mol CO₂ = **44 g** and 2 mol H₂O = **36 g**\n\nCheck the bookkeeping with the conservation instinct from section 4:\n16 + 64 = 80 g on the left; 44 + 36 = 80 g on the right. Mass conserved,\nmoles proportioned — the equation is now a quantitative recipe. The\nfirst full problem, previewed here, arrives in the next section: limestone, impure calcium carbonate, decomposes on\nheating to calcium oxide (quicklime) and carbon dioxide — a **thermal\ndecomposition** with Mᵣ(CaCO₃) = 100 and Mᵣ(CaO) = 56, the two numbers\nyou will need.\n\n:::key-point\nThe mass scale of any reaction comes from its mole recipe: multiply each\nmole count by the substance's mass of 1 mole. Conservation is the built-in\ncheck — total mass of products must equal total mass of reactants.\n:::\n\n:::exam-hint\nThe four masses (16 g, 64 g, 44 g, 36 g) are worth deriving rather than\nmemorising: each is moles × Mᵣ, straight from the equation's big numbers.\nExaminers ask this pattern constantly — \"what mass of oxygen reacts with\n16 g of methane?\" — and the answer is always the same three moves:\nequation → moles → mass.\n:::\n\n:::misconception\n\"If the equation says CH₄ + 2O₂, I need equal *masses* of methane and\noxygen.\" The equation proportions are moles (1 : 2), not grams. Converting\nto masses gives 16 g : 64 g — oxygen's extra factor of 4 comes from its\nMᵣ being double methane's while you need double the moles. Confusing the\nmole row with a mass row is the error that makes conservation look\nbroken.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.28/1.29 items — mole-recipe to mass conversions.\n:::"
+  },
+  {
+   "id": "u1:c05:s28",
+   "title": "Calculations involving only masses",
+   "bookPage": 54,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf063_0237"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.29"
+   ],
+   "markdown": "The reacting-mass problems are now in view, and the exam's format is\nprecise. Typical calculations give you a **mass of\nstarting material** and ask how much **product** you are likely to\nobtain; you will also find them done **in reverse** — told the mass of\nproduct, asked how much starting material you would need. And in almost\nall the cases you will meet at International GCSE, **you will be given\nthe equation** for the reaction.\n\nThat last sentence is worth reading twice. The exam does not test\nwhether you can recall an equation mid-problem; it tests whether you can\n*use* the one supplied — read it in moles (section 25), convert the given\nmass to moles (section 16), walk the mole ratio, and convert back to\nmass. The next sections run that pipeline through three complete\nproblems: heating calcium carbonate, extracting iron, and extracting\nlead — each with the method spelled out and the alternative route shown.\n\nThe three-step skeleton those problems share:\n\n1. **Calculate the number of moles** using the mass you have been given.\n2. **Use the chemical equation** to work out the number of moles of the\n   substance you are interested in.\n3. **Convert the number of moles to a mass.**\n\n:::exam-hint\n\"When you have finished a chemistry calculation, the impression should\nnearly always be that there are a lot of words with a few numbers between\nthem, not vice versa\" — that is the description of a full-mark answer.\nShow the equation-reading and the unit changes as words and lines, not as\na bare arithmetic stream: the words are where the method marks are parked.\n:::\n\n:::misconception\n\"Reacting-mass questions require memorising which equation belongs to\nwhich reaction.\" At International GCSE, the equation is given in\nalmost all cases — the skill being tested is the moles pipeline, not\nrecall. Memorise the *pipeline* (mass → moles → ratio → moles → mass)\nrather than reaction equations, and read the supplied equation carefully\nfor its balancing numbers.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.29 items — the three-step reacting-mass skeleton.\n:::"
+  },
+  {
+   "id": "u1:c05:s29",
+   "title": "A problem involving heating calcium carbonate — the three-step method",
+   "bookPage": 54,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf063_0238",
+    "chem_v3_u1_c5_pdf064_0239",
+    "chem_v3_u1_c5_pdf064_0240",
+    "chem_v3_u1_c5_pdf064_0241",
+    "chem_v3_u1_c5_pdf064_0242"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.29"
+   ],
+   "markdown": "When calcium carbonate, CaCO₃, is heated, calcium oxide is formed. The\ntask: **calculate the mass of calcium oxide produced by heating 25 g of\ncalcium carbonate** (Aᵣ: C = 12, O = 16, Ca = 40):\n\nCaCO₃ → CaO + CO₂\n\n**Step 1 — moles from the given mass.** Mᵣ(CaCO₃) = 40 + 12 + (3 × 16) =\n100, so:\n\nnumber of moles = mass ÷ mass of 1 mole = 25 / 100 = **0.25 mol**\n\n**Step 2 — the equation gives the target moles.** From the equation,\n**1 mol of CaCO₃ decomposes to produce 1 mol of CaO** — so 0.25 mol\nCaCO₃ produces **0.25 mol CaO**.\n\n**Step 3 — moles back to mass.** Mᵣ(CaO) = 40 + 16 = 56:\n\nmass = number of moles × mass of 1 mole = 0.25 × 56 = **14 g**\n\nThe reaction will produce **14 g of calcium oxide**.\n\n**The alternative route (ratios).** The same answer without the explicit\nmoles: 1 mol CaCO₃ produces 1 mol CaO, so\n100 g produces 56 g; therefore 1 g produces 56/100 = 0.56 g; therefore\n25 g produces 25 × 0.56 = **14 g**. \"You do not have to learn both\nmethods, just learn whichever method you are happier with.\"\n\nTwo more hints complete the section. On precision: the\nimpression of a full-mark answer is \"a lot of words with a few numbers\nbetween them\" — and even if your mental arithmetic is fast enough to\nskip steps, **you must still show all your calculations**. On a\nhalf-factor trap (which returns in the iron problem): to find the mass\nof Fe you multiply moles of Fe by 56 — a common mistake is to multiply\nby the mass of **2Fe** (112 g), but the '2' has *already been used* when\nthe moles of Fe were worked out from the equation.\n\n:::key-point\nThe Aᵣ of Fe is 56; the Mᵣ of Fe₂O₃ = (2 × 56) + (3 × 16) = 160. These\nare the two numbers the next problem runs on — assembled exactly as\nhere, from the Periodic Table values.\n:::\n\n:::exam-hint\nThe ratio method shines when the equation's coefficients are awkward or\nthe arithmetic is round-numbered (100 → 56 here). The three-step method\nscales to *every* problem in the rest of the chapter, including the\ntwo-equation lead problem where the ratio method gets messier. Learn one\nprimary method, keep the other as a checking tool — and remember to\nshow the working either way.\n:::\n\n:::misconception\n\"CaCO₃ → CaO + CO₂ shows 3 substances, so 1 mol CaCO₃ gives 3 mol of\nproducts.\" The big (or unwritten '1') numbers give **1 mol CaO and 1 mol\nCO₂** separately — the mole row is read per substance, not summed into a\nsingle \"3\". Step 2 needs the specific pair (CaCO₃ → CaO), which the\nbalancing numbers state directly.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.29 items — the three-step method on thermal\ndecomposition.\n:::"
+  },
+  {
+   "id": "u1:c05:s30",
+   "title": "A problem about extracting iron — a 2 : 1 mole ratio",
+   "bookPage": 55,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf064_0243",
+    "chem_v3_u1_c5_pdf065_0244"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.29"
+   ],
+   "markdown": "The equation below is for a reaction that occurs in the extraction of\niron:\n\nFe₂O₃ + 3C → 2Fe + 3CO\n\n**Calculate the mass of iron which can be formed from 1000 g of iron\noxide.**\n\n**Step 1.** Mᵣ(Fe₂O₃) = (2 × 56) + (3 × 16) = **160**, built exactly\nso. So:\n\nnumber of moles = 1000 / 160 = **6.25 mol Fe₂O₃**\n\n**Step 2 — now the ratio matters.** From the equation, **1 mol Fe₂O₃\nproduces 2 mol Fe** — \"we know this because of the big numbers in front\nof the formulae\". Starting with a certain number of moles of Fe₂O₃, you\nobtain **twice as many** moles of Fe:\n\n6.25 mol Fe₂O₃ → 2 × 6.25 = **12.5 mol Fe**\n\n**Step 3.** Mass of 12.5 mol Fe = 12.5 × 56 = **700 g**.\n\n**The alternative route (ratios):** 1 mol Fe₂O₃ produces 2 mol Fe, so\n160 g (1 mol) of Fe₂O₃ produces 2 × 56 = 112 g (2 mol) of Fe; 1 g of\nFe₂O₃ produces 112/160 g; therefore 1000 g produces\n1000 × 112/160 = **700 g**.\n\n:::exam-hint\nArm yourself for industrial-scale variants: **you should be\ntold how many grams there are in a tonne** if the question needs it\n(the conversion: 1 tonne = 1 000 000 g), and note that\n1 000 000 might be written as 10⁶ or 1 × 10⁶ — \"these are both the\nsame\". The next section uses exactly this conversion.\n:::\n\n:::misconception\n\"1 mol Fe₂O₃ produces 1 mol Fe — the iron comes from the iron oxide, one\nformula unit each.\" Read the equation: **2Fe**. Each Fe₂O₃ unit carries\n*two* iron atoms, so each mole of it yields **two** moles of iron. The\nbalancing numbers encode the atom bookkeeping — 1 : 2 here — and\nignoring the 2 halves your answer (350 g instead of 700 g).\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.29 items — reacting-mass problems with non-1:1\nratios.\n:::"
+  },
+  {
+   "id": "u1:c05:s31",
+   "title": "A problem involving the extraction of lead — two equations and a tonne",
+   "bookPage": 56,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf065_0246",
+    "chem_v3_u1_c5_pdf066_0247",
+    "chem_v3_u1_c5_pdf066_0248"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.29"
+   ],
+   "markdown": "Lead is extracted from galena, PbS. The ore is roasted in air to produce\nlead(II) oxide, PbO:\n\n2PbS(s) + 3O₂(g) → 2PbO(s) + 2SO₂(g)\n\nThe lead(II) oxide is then converted to lead by heating it with carbon in\na blast furnace:\n\nPbO(s) + C(s) → Pb(l) + CO(g)\n\nThe molten lead is tapped from the bottom of the furnace.\n**Calculate the mass of lead that would be produced from 1 tonne of\ngalena.**\n\n**Step 1 — mind the units.** Moles need grams, so convert: 1 tonne =\n1 000 000 g (multiply by 1 000 000 — the number has to increase). Then,\nwith Mᵣ(PbS) = 207 + 32 = 239:\n\nnumber of moles of PbS = 1 000 000 / 239 = **4184 mol**\n\n**Step 2 — trace the lead through BOTH equations.** From the first:\n2 mol PbS produce 2 mol PbO, so 4184 mol PbS → **4184 mol PbO**. From the\nsecond: 1 mol PbO produces 1 mol Pb, so 4184 mol PbO → **4184 mol Pb**.\n\n**Step 3 — back to mass, then to tonnes.** Mass of Pb = 4184 × 207 =\n866 000 g. Divide by 1 000 000: **0.866 tonne** of lead.\n\nThe doubling trick explains a second route: double the second equation (2PbO + 2C → 2Pb + 2CO) so you can trace what\nhappens to **all** the 2PbO from the first — and then notes the\nsimplification: this could be reduced to *1 mol PbS produces 1 mol Pb*,\nsaving arithmetic, though it makes no difference to the answer. Its HINT\nweighs the two methods: the three-step route uses the same steps in every\ncalculation but needs the tonne conversions; the ratio route has fewer\nsteps but will not extend to the solution calculations of the next\nchapter.\n\n:::cross-curricular\nThis flow sheet — roast the ore, reduce the oxide, tap the metal from\nthe furnace's base — is the extractive-metallurgy pattern that powered\nthe industrial revolution, and the blast furnace is still the reason\niron and lead (Chapter 14 revisits both) have been cheap enough to build\na metal-based civilisation on. The chemistry is old; the mole\narithmetic you just did is what makes the yields predictable.\n:::\n\n:::exam-hint\nTwo-equation problems are bookkeeping, not new chemistry: follow the\nsubstance (here PbS → PbO → Pb) through each equation's own mole ratio,\nin order. Write the mole row for each equation separately before\ncombining — and keep the tonne conversion at the very edges of the\nproblem (once in, once out), never in the middle of the mole arithmetic.\n:::\n\n:::misconception\n\"The two equations both start with 2, so 2 mol PbS gives 1 mol Pb.\"\nTrace it: 2 mol PbS → 2 mol PbO (first equation), then 2 mol PbO → 2 mol\nPb (second). The lead count never halves — 2 mol PbS yields **2 mol Pb**.\nThe doubling of the second equation exists precisely to make this chain\nvisible; simplifying to 1 : 1 is a convenience, not a change.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.29 items — multi-step extraction problems with\nunit conversions.\n:::"
+  },
+  {
+   "id": "u1:c05:s32",
+   "title": "What is a percentage yield?",
+   "bookPage": 57,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf066_0249",
+    "chem_v3_u1_c5_pdf066_0250"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.30"
+   ],
+   "markdown": "If you calculate how much product a reaction *might* produce, in real\nlife you rarely obtain as much as you expected. Expect 100 g, collect\n80 g — your percentage yield is **80%**. The rest is lost somehow, and\nthe standard loss mechanisms are: **spillages**; losses when\ntransferring a liquid from one container to another; and — a big one —\n**side reactions**, which divert some of your starting materials into\nunwanted products — that \"happens a lot during reactions in organic\nchemistry\", where experiments making and purifying organic compounds\nrarely give high yields.\n\nPercentage yield is also where the previous problem's arithmetic gets its\nsecond life. Revisiting the lead calculation with the *ratios* route:\ntrace the lead through both equations — 2 mol PbS produces 2 mol PbO,\nthen (doubling the second equation) 2 mol PbO produces 2 mol Pb — so\nevery 2 mol of PbS produces 2 mol of Pb. Substitute masses: 2 × 239 g PbS\nproduces 2 × 207 g Pb, that is **478 g PbS produces 414 g Pb**. Tonnes\nasked? \"It's much easier to think a bit, and realise that the ratio is\nalways going to be the same, whatever the units\": 478 tonnes PbS produces\n414 tonnes Pb. Proportion: 1 tonne gives 414/478 = **0.866 tonne** — the\nsame answer as section 31, with no gram-conversion at all.\n\n:::key-point\nA proportion's ratio is unit-independent: 478 g : 414 g and\n478 tonnes : 414 tonnes are the same 414/478. This is why the ratio\nmethod can work directly in tonnes — the units cancel inside the\nproportion.\n:::\n\n:::exam-hint\nThe \"ratio is the same whatever the units\" insight is a genuine exam\nshortcut for any yield or reacting-mass question set in tonnes (or kg).\nUse it *deliberately*: state the proportion in the question's own units,\nthen divide. It replaces the convert-in-convert-out arithmetic of the\nthree-step method — at the cost of the generality that method's HINT in\nsection 31 warned about.\n:::\n\n:::misconception\n\"A low percentage yield means I did the calculation wrong.\" No — the\ncalculated amount is the *theoretical* yield (what the equation promises);\nthe low percentage yield measures the *experiment's* losses against it.\nSpills, transfer losses and side reactions are real chemistry, not\narithmetic errors. The next section defines the two yields formally and\ndoes the division.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.30 items — why yields fall short of theory.\n:::"
+  },
+  {
+   "id": "u1:c05:s33",
+   "title": "Calculating percentage yields",
+   "bookPage": 57,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf066_0250",
+    "chem_v3_u1_c5_pdf067_0251"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "percentage-yield",
+    "theoretical-yield",
+    "actual-yield"
+   ],
+   "specRefs": [
+    "1.30"
+   ],
+   "markdown": "Suppose a calculation says you should get **12.5 g of copper sulfate\ncrystals**, but the experiment delivers only **11.2 g**. Name both\nnumbers:\n\n- **12.5 g is the [[theoretical-yield]]** — obtained by carrying out a\n  moles calculation from the equation;\n- **11.2 g is the [[actual-yield]]** — what the experiment actually\n  produced, and it will be **given to you in the question**.\n\nThe formula is then one division:\n\n$$\\text{percentage yield} = \\frac{\\text{actual yield}}{\\text{theoretical yield}} \\times 100$$\n\nHere: (11.2 / 12.5) × 100 = **89.6%**.\n\nThe sanity bound every marker looks for: **the\npercentage yield should always come out as less than 100%**. If it comes\nout above 100%, either you have made a mistake in the calculation, or the\nquestion is deliberately continuing by asking what went wrong\nexperimentally. Its own example: if you are making a salt (Chapter 17),\na percentage yield above 100% can mean the salt **was not completely\ndry** — extra water inflating the \"product\" mass.\n\n:::key-point\nPercentage yield = actual ÷ theoretical × 100. The actual yield is\nalways the given number; the theoretical yield is always the one *you*\ncalculate from the equation. Never divide the other way.\n:::\n\n:::exam-hint\nIdentify which number is which before dividing — that is the entire\nskill in this calculation type. Clues: the theoretical yield's context is\n\"calculate/could/might produce\"; the actual yield's context is \"she\nmade/obtained/collected\". Worked example 7 (next section) shows the\ntheoretical yield being *derived* through a full two-equation mole\nchain before the division — that derivation is where most of the marks\nlive.\n:::\n\n:::misconception\n\"A percentage yield of 89.6% means 10.4% of the atoms vanished.\"\nConservation of mass never breaks: the \"missing\" 10.4% of product is\nunreacted starting material, product lost in transfers or purification,\nor mass diverted into **side-reaction products** you did not count.\nThe yield measures how much of your product *ended up in the bottle*,\nnot whether atoms were destroyed.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.30 items — percentage yield calculations.\n:::"
+  },
+  {
+   "id": "u1:c05:s34",
+   "title": "Worked example 7 — percentage yield of copper(II) sulfate crystals",
+   "bookPage": 58,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf067_0252"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.30"
+   ],
+   "markdown": "**Example 7.** A student reacted **2.40 g of copper(II) oxide (CuO)** with\nhot sulfuric acid. She made **5.21 g of copper(II) sulfate crystals\n(CuSO₄·5H₂O)**. The two reactions run in sequence: the copper(II) oxide\nreacts with the sulfuric acid to form copper(II) sulfate in solution, and\nthe copper(II) sulfate then crystallises from that solution with five\nwaters of crystallisation attached — CuSO₄ → CuSO₄·5H₂O, one formula unit\ngiving one formula unit of crystals.\n\n**Deriving the theoretical yield.** First, the moles of copper(II)\noxide — we have enough information to calculate them. Mᵣ(CuO) = 63.5 + 16\n= 79.5:\n\nnumber of moles of CuO = 2.40 / 79.5 = **0.0302 mol**\n\nFrom the first reaction, **0.0302 mol CuO produces 0.0302 mol CuSO₄**\n(one formula unit → one formula unit). From the crystallisation step,\n**0.0302 mol CuSO₄ produces 0.0302 mol CuSO₄·5H₂O**.\n\nNow convert to mass — the Mᵣ of the crystals is the one you built in\nsection 12: Mᵣ(CuSO₄·5H₂O) = **249.5**.\n\nmass = 0.0302 × 249.5 = **7.53 g**\n\nThis is the **theoretical yield** of copper(II) sulfate crystals.\n\n**The percentage yield.** The actual yield is what the experiment\nobtained: **5.21 g**.\n\npercentage yield = (5.21 / 7.53) × 100 = **69.2%**\n\n:::key-point\nA 1 : 1 : 1 mole chain (CuO → CuSO₄ → CuSO₄·5H₂O) means the *moles never\nchange* through the two steps — only the mass does, when each substance's\nown Mᵣ is applied. The chain's job is to get you from the starting mass\nto the theoretical yield of the *product as collected* (crystals\nincluded).\n:::\n\n:::exam-hint\nTwo details make this example exam-hard. First, the product's Mᵣ must\ninclude the **water of crystallisation** (249.5, not 159.5 for CuSO₄) —\nuse the wrong one and the whole calculation dies at the last step\n(despite correct moles). Second, number discipline: 0.0302 mol carries\nthree significant figures because the mass data does.\nThe 69.2% then lands below 100% as it should (section 33's bound).\n:::\n\n:::misconception\n\"The theoretical yield is 2.40 g — the copper(II) oxide all becomes\nproduct, so the masses match.\" The *moles* carry over 1 : 1, not the\nmasses: 0.0302 mol of CuO weighs 2.40 g, but the same 0.0302 mol of\nCuSO₄·5H₂O weighs 0.0302 × 249.5 = 7.53 g — the sulfate and the five\nwaters add enormous mass. Each step multiplies by its own substance's\nmass of 1 mole; only the mole count is conserved.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.30 items — theoretical yield derivation plus\npercentage yield.\n:::"
+  },
+  {
+   "id": "u1:c05:s35",
+   "title": "Which substance is in excess?",
+   "bookPage": 58,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf067_0253",
+    "chem_v3_u1_c5_pdf068_0254",
+    "chem_v3_u1_c5_pdf068_0255"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "excess-reagent",
+    "reagent"
+   ],
+   "specRefs": [
+    "1.29"
+   ],
+   "markdown": "When you make something in the lab, you rarely mix things in exactly the\nright proportions. Usually **something is in excess** — there is more\nthan enough of it to react with the other substance — and you remove the\nexcess afterwards (by filtering, for example). A **[[reagent]]** is just\nsomething that reacts; the substance left over is the\n**[[excess-reagent]]**.\n\nThe trap: until now, every problem gave you enough information to\ncalculate moles of **one** thing. What if you are given\nmoles of **both**?\n\n> Magnesium reacts with hydrochloric acid:\n> Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g)\n> **0.2 mol Mg is reacted with 0.2 mol HCl. Calculate the mass of\n> hydrogen gas produced.**\n\nThe tempting wrong answer: 0.2 mol Mg produces 0.2 mol H₂, so the mass of\nH₂ = 0.2 × 2 = **0.4 g**. \"Unfortunately this is not the correct answer!\"\nCheck against the equation: 1 mol Mg reacts with **2 mol HCl**, so 0.2 mol\nMg would need **0.4 mol HCl** — but only 0.2 mol was used. The magnesium\ncannot all react, so its moles cannot be used to work out the hydrogen.\n\nStart from the HCl instead: 2 mol HCl reacts with 1 mol Mg, so 0.2 mol\nHCl reacts with 0.1 mol Mg — and there *is* enough Mg (0.2 mol) to react\nwith all of it. **The Mg is in excess**, which means **all the HCl\nreacts**, and HCl controls the product:\n\n2 mol HCl produce 1 mol H₂ → 0.2 mol HCl produce **0.1 mol H₂**\n\nmass of H₂ = 0.1 × 2 = **0.2 g** — the correct answer.\n\n:::key-point\nYou **always have to use the chemical equation** to determine which\nsubstance is in excess — \"more of it\" is not the test. Variant: 0.2 mol\nMg with 0.3 mol HCl *looks* like HCl is in excess\n(there is more of it), but 0.3 mol HCl only reacts with 0.15 mol Mg —\nstill not enough HCl to use up all the Mg, so the Mg is **still** in\nexcess.\n:::\n\n:::exam-hint\nThe method closes in one line: **to deduce which substance is\nin excess, try both numbers of moles in the chemical equation and\ncompare**. Run each reagent's moles through the ratio and see which one\nruns out first — the one that runs out (HCl here) is the limiting\nreagent, and *it* — never the excess one — feeds the product\ncalculation.\n:::\n\n:::misconception\n\"Whichever reagent I have more moles of must be the one in excess.\"\nExcess is a *ratio* property, not a size property: 0.3 mol of HCl against\n0.2 mol of Mg still leaves HCl short, because the equation demands\n2 mol HCl per 1 mol Mg. Always convert both amounts through the\nequation's ratio before naming the excess.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.29 items — limiting and excess reagent\nidentification.\n:::"
+  },
+  {
+   "id": "u1:c05:s36",
+   "title": "Worked example 8 — excess with nitric acid, and the chapter close",
+   "bookPage": 59,
+   "chunkRefs": [
+    "chem_v3_u1_c5_pdf068_0256",
+    "chem_v3_u1_c5_pdf069_0257",
+    "chem_v3_u1_c5_pdf069_0258",
+    "chem_v3_u1_c5_pdf069_0259",
+    "chem_v3_u1_c5_pdf069_0260",
+    "chem_v3_u1_c5_pdf069_0261"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [],
+   "specRefs": [
+    "1.29"
+   ],
+   "markdown": "**Example 8.** Copper reacts with concentrated nitric acid according to\nthe equation:\n\nCu(s) + 4HNO₃(aq) → Cu(NO₃)₂(aq) + 2H₂O(l) + 2NO₂(g)\n\n**3.2 g of copper** is reacted with **0.40 mol** of concentrated nitric\nacid. Work out which reagent is in excess.\n\n**Convert the copper mass to moles first** (Aᵣ: Cu = 63.5):\n\nnumber of moles of Cu = 3.2 / 63.5 ≈ **0.050 mol**\n\n**Run each reagent through the equation.** The equation says 1 mol Cu\nreacts with **4 mol HNO₃**, so:\n\n0.050 mol Cu reacts with 4 × 0.050 = **0.20 mol HNO₃**\n\nWe have **more** than 0.20 mol HNO₃ (we have 0.40 mol) — therefore\n**HNO₃ is in excess** (and the copper is the limiting reagent).\n\nThe follow-through: if the question went further and asked for the\namount of NO₂ produced *using these quantities*, you would have to use\nthe **copper's** moles — not all the HNO₃ is used up. From the equation,\n2 mol Cu produce 2 mol NO₂, so 0.050 mol Cu gives 2 × 0.050 =\n**0.10 mol NO₂**. This is exactly the section 35 law: the limiting\nreagent feeds the product calculation.\n\nThe closing skills to self-check: balancing equations, mole and\nmolar-mass conversions, empirical formulae from percentages, reacting\nmasses through CaCO₃ and the extraction reactions, and yield problems —\nthis lesson's practice is wired to the question bank through the\nquick-checks above.\n\n:::summary\n- Equations must **balance** — same atoms out as in. Balance with big\n  numbers only; **never change a formula**. State symbols: (s), (l),\n  (g), (aq).\n- Big numbers = coefficients = **moles**; subscripts belong to the atom\n  (or bracket) before them (2H₂SO₄ = 4 H, 2 S, 8 O).\n- **Mᵣ** = sum of the Aᵣ values (hydrated salts include their waters:\n  CuSO₄·5H₂O = 159.5 + 90 = 249.5); **mass of 1 mole = Mᵣ in grams**.\n- **1 mol = 6 × 10²³ particles** (the Avogadro constant); moles =\n  mass ÷ mass of 1 mole.\n- **Empirical formula** = simplest whole-number ratio (from masses or\n  percentages → assume 100 g); **molecular formula** = empirical × n,\n  n = Mᵣ(compound) ÷ Mᵣ(empirical).\n- Formulae *from experiments*: metal oxides by combustion or reduction\n  (spec 1.36); water from collected masses; n in BaCl₂·nH₂O.\n- Reacting masses: **mass → moles → equation ratio → moles → mass**.\n  The limiting reagent (never the excess one) feeds the product.\n- **Percentage yield = actual ÷ theoretical × 100** — always < 100%\n  unless something went wrong (or the product is wet).\n:::\n\n:::can-you\n- [ ] balance any given equation left-to-right, with state symbols, and\n      explain the never-change-a-formula rule?\n- [ ] count atoms through coefficients, subscripts and brackets\n      (2H₂SO₄; Ca(OH)₂)?\n- [ ] calculate Mᵣ for simple and hydrated formulae (CuSO₄·5H₂O) and\n      state the mass of 1 mole?\n- [ ] interconvert masses and moles, including the × 6 × 10²³ particle\n      step?\n- [ ] find an empirical formula from masses *and* from percentages, then\n      convert to the molecular formula given Mᵣ?\n- [ ] outline both metal-oxide practicals (combustion and reduction) and\n      say how the mass change reveals the formula?\n- [ ] carry a reacting-mass problem through the three steps, including\n      2 : 1 ratios and tonne conversions?\n- [ ] identify which reagent is in excess and justify it from the\n      equation?\n- [ ] calculate a percentage yield from an actual and a theoretical\n      yield, and explain why it should fall below 100%?\n:::\n\n:::exam-hint\nOne chapter, one spine: **the mole converts between what you can weigh\n(grams) and what actually reacts (particles)**. Every exam question in\nthis chapter is that conversion wearing a different coat — equation\nreading, Mᵣ assembly, empirical formulae, practicals, yields, excess.\nWhen a question looks unfamiliar, find which link of the chain it is\ntesting and run that link; the quick-checks above map the coats\none-to-one.\n:::\n\n:::misconception\n\"This chapter is eight separate skills to memorise.\" It is one skill —\nmole bookkeeping — applied eight ways. The HINT from section 28 says the\ndeep version: a full-mark answer is \"a lot of words with a few numbers\nbetween them\". If you can *say* which link each calculation runs\nthrough, the numbers follow; if you cannot say it, no formula-triangle\nwill save the answer.\n:::\n\n:::quick-check\n\nQuestion-bank join: spec 1.29 items — excess-reagent problems with mixed\nmass/mole data (Example 8 pattern).\n:::"
+  }
+ ],
+ "status": "published",
+ "version": 1,
+ "sources": {
+  "bookOfRecord": "edexcel-international-gcse-9-1-chemistry-student-book-pdf-free.pdf (sha256 d48020e0cc0b5545b330bb59b242472198210e424525e4381cd5d2a58a58cc04)",
+  "parseOfRecord": "parsed/edexcel_igcse_chemistry_chunks_v3.jsonl (sha256 b2c67eafe4e3766bab41b41fc24795ca0fe95c1f5f55b8a3b3bffbc709af6d33)",
+  "blockPackReceipt": null
+ },
+ "lintPack": "chem@0.1.0"
+}

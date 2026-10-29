@@ -1,0 +1,117 @@
+{
+ "run": "run-007-phase-d-fold-in (tranche 1)",
+ "task": "T-MIG-141",
+ "operator_gate": "Proceed trace 1a16aeddae71c715 (run-006 next_safe_actions[0])",
+ "driver": "phase_d_reembed.py sha 025f77e8 @ syllabai-parser 315b1a8 (frozen pins verified in CI)",
+ "workflow": "syllabai-v2 t-mig-141-phase-d.yml @ dc69c339 (dispatch-gated)",
+ "ci_run": {
+  "id": 40038134828,
+  "url": "https://github.com/SyllabAI/syllabai-v2/actions/runs/40038134828",
+  "verify_job": "success",
+  "apply_job": "success (exit 0, honest RPD wall)"
+ },
+ "pre_drain_pins": {
+  "bank": 13765,
+  "embed_hist": {
+   "1": 2949,
+   "2": 10816
+  },
+  "no_vec": 1330,
+  "selector": {
+   "total": 4006,
+   "stale_with_vec": 2676,
+   "stale_no_vec": 273,
+   "nullvec_rev2": 1057
+  },
+  "c9d_sha256": "eb43f28cf405817db5bc14c7f744003130f7b9b9d1a116f2d45d0e37503a2720",
+  "manifest_sha256": "a12b1d418af7c359fa084d458abe07a6b3309c65756980dbdbfb62a03f3b4ee8",
+  "selector_ids_sha256": "1a1bc83d20891c1a3efe7eb13b64a28408446a0b26c2f526c3f13f8a6e8e201d",
+  "before_images_gz_sha256": "2e021ce651e20b057289d79c10ebc54ac09c24ce0d8bf55ad8e24a11276b83c5",
+  "before_images_raw_sha256": "101a3450dc409d8a20cee79e39ca40bb8375990855cedd7e92ac33a55fdcf558"
+ },
+ "tranche_1": {
+  "ci_receipt": {
+   "run": "run-007-phase-d-fold-in",
+   "task": "T-MIG-141",
+   "driver": "phase_d_reembed.py",
+   "mode": "apply",
+   "tranche_size": 1000,
+   "verdict": "GREEN",
+   "operator_gate": "workflow_dispatch fire order = operator go (Proceed, trace 1a16aeddae71c715)",
+   "pins": {
+    "C9D": "eb43f28cf405817db5bc14c7f744003130f7b9b9d1a116f2d45d0e37503a2720",
+    "selector_ids": "1a1bc83d20891c1a3efe7eb13b64a28408446a0b26c2f526c3f13f8a6e8e201d",
+    "manifest": "a12b1d418af7c359fa084d458abe07a6b3309c65756980dbdbfb62a03f3b4ee8",
+    "drift_median_min": 0.85,
+    "model": "gemini-embedding-001"
+   },
+   "disclosures": [
+    "frozen 133d port cannot re-embed stale rows (embedding-is-null-only, never writes embed_rev) \u2014 this driver adds the minimal Phase-D write law (same provider shape, same pacing constants), disclosed in the run-007 receipt",
+    "mode=backfill-sharded superseded by T-MIG-138 run-003 empirical finding (pool keys lack the legacy 1000-RPD class); sharded RPD-wall LAW preserved in single-key sequential form",
+    "drift gate = FULL per-tranche census over old-vector rows (>= the spec's stratified sample of 300); neighbor Jaccard = soft report (spec season 1)"
+   ],
+   "verify": {
+    "bank": {
+     "total": 13765,
+     "embed_hist": {
+      "1": 2949,
+      "2": 10816
+     },
+     "no_vec": 1330
+    },
+    "selector": {
+     "total": 4006,
+     "stale_with_vec": 2676,
+     "stale_no_vec": 273,
+     "nullvec_rev2": 1057,
+     "c9d": "EXACT",
+     "born_clean_subset": "GREEN",
+     "undrifted_vec_rows_checked": 2676
+    },
+    "stale_vec_models": {
+     "gemini-embedding-001": 2676
+    }
+   },
+   "skipped_artifact": "artifacts/skipped-rows.txt",
+   "embed": {
+    "embedded": 4,
+    "wall": true,
+    "skipped": 996,
+    "secs": 1115.6
+   },
+   "drift": {
+    "n": 0,
+    "note": "no old-vector rows in this tranche (never-embedded residual only) \u2014 gate vacuous, disclosed"
+   },
+   "write": {
+    "written": 4,
+    "post_bad_rows": 0,
+    "selector_after": 4002
+   }
+  },
+  "embedded": 4,
+  "wall": true,
+  "skipped": 996,
+  "written": 4,
+  "selector_after": 4002,
+  "drift_gate": "vacuous this tranche (the 4 rows were never-embedded residual, no old vectors) \u2014 the hard gate has NOT yet consumed real traffic; first real census fires on the next dispatch that reaches stale rows",
+  "lane_corroboration_t0_readonly": {
+   "selector_after": 4002,
+   "embed_hist_after": {
+    "1": 2949,
+    "2": 10816
+   },
+   "fresh_rows": "4 rows rev=2 gemini-embedding-001 dim=768 embedded_at 2026-10-23T23:29:36Z",
+   "note": "hist unchanged because the 4 were nullvec_rev2 selector members (rev was already 2; embedding IS NULL cleared) \u2014 consistent"
+  },
+  "key_budget_finding": "T138_GEMINI_KEY (operator pool #1) carried ~4 embedding requests of budget with the whole Pacific day remaining (first 429 at row 5 survived the full 4-retry chain incl. 240s backoff) \u2014 corroborates the T-MIG-138 run-003 empirical finding of record; the pool is NOT a viable drain path at scale"
+ },
+ "disclosures": [
+  "spec \u00a76 machinery deviation disclosed in the driver header + workflow + README run-007: frozen 133d port cannot re-embed stale rows; dedicated deterministic driver of record (same provider shape verbatim, same pacing constants)",
+  "NO COW leg (embed-only per-row guarded writes; before-images + phase_d_rollback.py = rollback unit of record)",
+  "drift hard gate UNCONSUMED so far (vacuous n=0) \u2014 median >= 0.85 census still ahead; operator go for the drain implies the gate as staged",
+  "T138_GEMINI_KEY quota ~4 req/day empirical \u2014 ESCALATION: drain requires an operator key decision (fresh 1000-RPD-class key recommended; the app's own Vercel key alternative; pool keys 2/3/4 presumed same class per run-003 shard findings)",
+  "4,002 rows remain in the selector; the DB is the resume pointer \u2014 next dispatch continues exactly where this stopped"
+ ],
+ "verdict": "GREEN (tranche 1 of record: 4 written, honest wall; drain PAUSED pending operator key decision)"
+}

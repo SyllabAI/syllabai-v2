@@ -24,42 +24,91 @@ const roster = loadRoster();
 // CI pass so a bundle regression is a RED here, never a mid-fleet surprise)
 const mapLaw = mapLawCensus(roster);
 
-// the 4 honest-empty stub banks of record (scope receipt stubBanks)
+// the skeleton class of record: EXTINCT as of T-SPECS-9696-4HI1 run-001
+// (operator order trace 1a180fb64c61c3f5 "Import their specs pdf, parse
+// them. save them.") — the two honest corpus gaps (the D1 pure-2
+// catalog-lane skeleton + geography-21) received their OFFICIAL PARSED SPEC
+// TREES from the resources Official-Specifications plane (resources
+// 340803c9: the 9696 int_statements adapter + the 4HI1 option_rows family,
+// gates G1-G4 PASS) and reclassified skeleton -> stub by the classifier's
+// own law (official-spine curriculum present, 0 question sets). The skeleton
+// class (0 nodes AND 0 sets) is now empty: every CIE bundle carries its
+// official spec tree. Their TEACHING BANKS stay honestly empty (never
+// invented) — they serve as stubs until the resource wave lands.
+const SKELETON_OF_RECORD: string[] = [];
+
+// the honest-empty stub banks of record (0 question sets, official-spine tree
+// serves the KG): the four scope-receipt stubs + as-accounting-21 (SME-WAVE2
+// r1 fill: SME publishes notes for the AS lane but 0 topic questions — the
+// no_topic_questions_on_sme class, now stub-classified after its fill)
+// + the 2 T-SPECS-9696-4HI1 spec-fill skeletons (pure-2: SME never published
+// 9709 P2 under the A-Level tree — the operator-ruling class; geography-21:
+// honest-empty on every SME axis — the spec tree comes from the official
+// 9696 syllabus PDF parse, never invented)
 const STUBS_OF_RECORD = [
   "cie-a-level-accounting-21",
   "cie-a-level-economics-23",
   "cie-as-english-general-paper-21",
   "cie-igcse-accounting-25",
+  "cie-as-accounting-21",
+  "cie-a-level-maths-20-pure-2",
+  "cie-a-level-geography-21",
 ];
 
-// the single catalog-lane skeleton of record (0 nodes + 0 sets, no spine)
-const SKELETON_OF_RECORD = ["cie-a-level-maths-20-pure-2"];
-
 // the shared-subject-code join matrix of record (this census): the component
-// banks that seed into ONE subject tree via the seed's resolve-or-create
+// banks that seed into ONE subject tree via the seed's resolve-or-create.
+// SME-WAVE2 r1: the AS fill doubles every science/business/CS bank and grows
+// 9709 to 9 (the 4 AS maths units join their A-Level counterparts; distinct
+// syllabus codes stay 27 — the AS codes already existed among them).
 const SHARED_CODES_OF_RECORD: Record<string, number> = {
-  "9709": 5, "0973": 3, "0653": 3, "0580": 2, "0455": 2, "0500": 2, "0460": 2, "0607": 2,
+  "9709": 9, "0973": 3, "0653": 3, "9700": 2, "9701": 2, "9702": 2,
+  "9609": 2, "9618": 2, "0580": 2, "0455": 2, "0500": 2, "0460": 2, "0607": 2,
 };
+
+// the zero-servable real banks of record (the anchor-gap disclosure class):
+// the english-language-20/25 pairs (seed-only since the phase-4 census) + the
+// banks whose SME pages carry no official statement text AND whose sidecar
+// chain resolved nothing (the no-guess attach ladder resolves 0 spec codes —
+// the T-SPECS-CIE-JOIN sidecar lane was the documented follow-up). econ-25
+// LEFT this list at the run-006 serving wave; as-biology-25 SERVES (789) and
+// stays out; 7 of the 8 wave-2 banks DEPARTED at the T-SPECS-CIE-CONSUME-2
+// run-001 re-base (their gate-2 ACCEPTED chain consumed); pure-2 stays (the
+// REJOIN-2 honest-zero lane).
+const ZERO_SERVABLE_OF_RECORD = [
+  "cie-as-maths-20-pure-2",
+  "cie-igcse-english-language-20",
+  "cie-igcse-english-language-25",
+];
 
 describe("cie-phase4 roster law", () => {
   test("registry carries the 45 " + CIE_BOARD + " rows of record", () => {
-    expect(roster.cieRows).toBe(45);
+// WAVE-2 r0: 45 + 11 wave-2 registered rows = 56
+    expect(roster.cieRows).toBe(56);
   });
 
-  test("classification of record: 40 real banks / 4 stubs / 1 skeleton", () => {
-    expect(roster.real).toBe(40);
-    expect(roster.stubs).toBe(4);
-    expect(roster.skeletons).toBe(1);
+  test("classification of record: 49 real banks / 7 stubs / 0 skeletons", () => {
+    expect(roster.real).toBe(49);
+    expect(roster.stubs).toBe(7);
+    // T-SPECS-9696-4HI1 run-001: the last 2 skeletons received their official
+    // parsed spec trees (resources 340803c9) and reclassified as stubs — the
+    // skeleton class is extinct; the 7 stubs carry official-spine trees with
+    // honestly-empty banks
+    expect(roster.skeletons).toBe(0);
   });
 
-  test("stubs are exactly the of-record four", () => {
+  test("stubs are exactly the of-record seven", () => {
     const stubs = roster.entries.filter((e) => e.cls === "stub").map((e) => e.slug).sort();
     expect(stubs).toEqual([...STUBS_OF_RECORD].sort());
   });
 
-  test("the skeleton is exactly the of-record catalog form", () => {
-    const skel = roster.entries.filter((e) => e.cls === "skeleton").map((e) => e.slug).sort();
-    expect(skel).toEqual([...SKELETON_OF_RECORD].sort());
+  test("the skeleton class is extinct and the 2 spec-fills carry real spec trees", () => {
+    const skel = roster.entries.filter((e) => e.cls === "skeleton").map((e) => e.slug);
+    expect(skel).toEqual([]);
+    for (const slug of ["cie-a-level-maths-20-pure-2", "cie-a-level-geography-21"]) {
+      const e = roster.entries.find((x) => x.slug === slug);
+      expect(e?.cls).toBe("stub");
+      expect(e?.nodes ?? 0).toBeGreaterThan(0); // the official parsed spec tree serves
+    }
   });
 
   test("every real bank is coherent: sets >= 1, nodes > 0, questions/parts floors of record", () => {
@@ -67,9 +116,11 @@ describe("cie-phase4 roster law", () => {
     for (const e of real) {
       expect(e.questionSets).toBeGreaterThan(0);
       expect(e.nodes).toBeGreaterThan(0);
-      // the anchored floor: zero is legal ONLY for the three seed-only banks
-      // (the anchor gap disclosure); every other real bank serves > 0
-      if (!["cie-igcse-economics-25", "cie-igcse-english-language-20", "cie-igcse-english-language-25"].includes(e.slug)) {
+      // the anchored floor: zero is legal ONLY for the anchor-gap banks of
+      // record (the zeroServable list below — econ-25 served at run-006; the
+      // english-language pair + pure-2 (the honest zero of the wave-2 class)
+      // are the honest disclosure); every other real bank serves > 0
+      if (!ZERO_SERVABLE_OF_RECORD.includes(e.slug)) {
         expect(e.expectedQuestions).toBeGreaterThan(0);
       }
     }
@@ -99,12 +150,93 @@ describe("cie-phase4 roster law", () => {
     // 116 fully-unmapped questions gain servability (unmapped 12,479 ->
     // 12,363 EXACT, per slug == the lane-side prediction). Floors re-pinned
     // from the census tool of record (cie-tranche1-t2near-run-001-r0.json).
-    expect(questions).toBe(6715);
-    expect(parts).toBe(5696);
+    // TRANCHE-2 ADOPTION RE-BASE (T-RULE-T2-APPLY-2 run-002, operator order
+    // 'adopt the consume-law on v2 branch', trace 1a164dcf6cff9061, not a
+    // loosening): the consume engine's operator sid-anchor law adopted of
+    // record at the pin advance c5f20c52 -> 3838a264 (the PR-#49-merged
+    // tip) — the 23 sid-anchors reproduce as a BYTE FIXED POINT (registry
+    // plane already carried them @ a9bd2488) and the pending item-plane
+    // operator V8 part-level verdict surface (B01 48 + B02 147 = 195
+    // entries across cie-a-level-chemistry-25 +191, cie-igcse-chemistry-23
+    // +2, cie-igcse-science-combined-science-23-physics +2) lands — ALL on
+    // question_part items: +66 questions gain servability as their
+    // newly-coded parts admit (unmapped 12,363 -> 12,297 EXACT), +90 plain
+    // part rows, +130 package parts;
+    // raw 19,097/25,663 UNCHANGED; physics-23 634/1/634 and bio-25
+    // 859/1529 bank anchors byte-stable; map-law census green 44/44.
+    // Floors re-pinned from the live census of the adopted tree
+    // (scripts/t2consume_census_probe.ts over loadRoster + mapLawCensus).
+    // TRANCHE-2 RETRACTION RE-BASE (T-RULE-T2-V8-RETRACT-1 run-003, operator
+    // order '7-sid V8 retraction batch', trace 1a16541e55a06bd1, not a
+    // loosening): the operator gate disclosed at run-002 opens — resources
+    // PR #68 retracts the b01/b02 V8 part-level entries the tranche-2 ruling
+    // corrects (42 removals + 12 ruling assignments tier
+    // tranche2_conditional_resolved + 1 verify-only group across 7 sids;
+    // anchors byte-frozen, sidAnchors 0/23/0) and the consume engine's
+    // retraction law (surgical (item, code) drops + the zero-code mirror)
+    // lands them: ONE chem25 question loses its only coded part
+    // (qstnprt_8W7sTFyZCChbbB8q, the of-record 26.1.4 mis-tag residual) —
+    // questions 6781 -> 6780, parts 5786 -> 5782, pkgParts 9406 -> 9402,
+    // unmapped 12,297 -> 12,298 EXACT (raw 19,097/25,663 UNCHANGED; the
+    // identity rawQ - questions == unmapped + dupOrder re-proven:
+    // 12,317 == 12,298 + 19). Floors re-pinned from the live census
+    // (scripts/t2retract_census_probe.ts over loadRoster + mapLawCensus).
+    // MIS-TAG RE-POINT RE-BASE (T-RULE-T2-MISTAG-1, operator order '10-mis-tag
+    // re-point batch', trace 1a1658227c0c0365, not a loosening): the mis-tag
+    // residual disclosed at T-RULE-T2-COND-1 misTags[10] + the v8Retraction
+    // disclosures opens — resources PR #69 re-points the 10 mis-tagged parts
+    // to their spine-verified true homes (3 V8-mirror removals + 11 additions
+    // across 8 parts, tier tranche2_mis_tag_repoint; WW34 keep-as-context +
+    // tKhp keep-no-op zero-change; anchors byte-frozen, sidAnchors 0/23/0) and
+    // the consume engine's mis-tag re-point law (surgical drops + the normal
+    // sidecar_rank additions) lands them: FOUR chem25 questions regain
+    // servability as their newly-coded parts admit (h3SZ 28.2.1+28.2.7, 8W7s
+    // 26.2.3, xZch 8.2.3, PPqr 11.2.1 — incl. the retraction's uncoded 8W7s
+    // residual) — questions 6780 -> 6784, parts 5782 -> 5789, pkgParts
+    // 9402 -> 9411, unmapped 12,298 -> 12,294 EXACT (raw 19,097/25,663
+    // UNCHANGED; the identity re-proven: 12,313 == 12,294 + 19). Floors
+    // re-pinned from the live census (scripts/t2retract_census_probe.ts over
+    // loadRoster + mapLawCensus).
+    // Floors re-pinned from the live census (the T-RULE-T3-SME-COVERAGE-1
+    // re-key class, standing law "not a loosening"): the tranche-3 consume
+    // chain (run-004 re-key at 3dd9bb98 + run-006 econ-25 serving + the
+    // run-007 quiescent convergence at 6dc1f0a2) landed the re-keyed sidecar
+    // codes in the maps, so +190 chem25-family questions admit servability
+    // (unmapped 12,294 -> 12,104 EXACTLY -190), parts 5,789 -> 5,947, pkgParts
+    // 9,411 -> 9,603 (probe: scripts/probe_roster_full.py over loadRoster).
+    // econ-25 LEAVES the zero-servable list: its run-006 serving wave gave
+    // the bank 19 questions / 19 package parts (was EQ-axis empty of record).
+    // Raw 19,097/25,663 UNCHANGED; the identity re-proven at the new floors:
+    // 19,097 - 6,974 == 12,104 + 19 (12,123 == 12,123). Per-lane pins
+    // (physics-23 634/1/634, bio-25 859/1,529) verified UNCHANGED at the
+    // live census.
+    // the SERVABLE census of record — SME-WAVE2 r1 re-base (the fill run):
+    // the 10 filled banks join the fleet; as-biology-25 serves 789 (its SME
+    // pages carry the official statement text — the R3/R4 join basis); the
+    // other 9 carry the ANCHOR GAP of record (0 spec-anchored parts — their
+    // SME pages carry no statement text, so the no-guess attach ladder
+    // resolves nothing; the bundle content stays complete, the learner-model
+    // join is the documented T-SPECS-CIE-JOIN follow-up lane, exactly the
+    // class the 44 banks shipped with before their spec-links sidecars).
+    // Floors re-pinned from the live census (sme_residual12_census.ts over
+    // loadRoster + mapLawCensus). NOT a loosening: raw grew +5,444/+9,478
+    // with the corpus; servable +789 via the one joinable bank.
+    // CONSUME-2 RE-BASE (T-SPECS-CIE-CONSUME-2 run-001, operator directive
+    // 'verdict fills -> review gate -> v2 consume', trace 1a183e66619bd6dd,
+    // not a loosening): the gate-2 ACCEPTED wave-2 AS chain (JOIN-2 anchors
+    // + REJOIN-2 J* + VERDICT-2 V*) consumed of record at the pin advance
+    // e481cb47 -> 20a35ccc6 — 7 of the 8 wave-2 anchor-gap banks gain
+    // servability (unmapped 16,759 -> 15,696 EXACT, questions +1,063,
+    // per-slug values pinned below); pure-2 stays the honest zero (its
+    // sidecar resolved 0 — the REJOIN-2 record's honest-zero lane). Floors
+    // re-pinned from the shim's own admission output (loadRoster, the same
+    // single admission law).
+    expect(questions).toBe(8826);
+    expect(parts).toBe(8752);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(9276);
+    expect(pkgParts).toBe(13334);
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
@@ -120,10 +252,49 @@ describe("cie-phase4 roster law", () => {
     expect(bio25).toBeDefined();
     expect(bio25!.expectedParts).toBe(859);
     expect(bio25!.expectedPackageParts).toBe(1529);
+    // the wave-2 r1 bank pin: the ONE joinable AS bank (the anchor-gap
+    // disclosure — 789 of 1,011 raw questions serve; 222 raw carry no coded
+    // part, honest local-only practice in the player)
+    const asBio25 = real.find((e) => e.slug === "cie-as-biology-25");
+    expect(asBio25).toBeDefined();
+    expect(asBio25!.expectedQuestions).toBe(789);
+    expect(asBio25!.expectedParts).toBe(1055);
+    expect(asBio25!.expectedPackageParts).toBe(1561);
+    // the wave-2 CONSUME-2 bank pins: the 7 anchor-gap banks after their
+    // first consume (the gate-2 ACCEPTED chain) — each was 0/0/0 of record
+    // pre-consume (the JOIN-2 anchor-gap disclosure)
+    const asChem25 = real.find((e) => e.slug === "cie-as-chemistry-25");
+    expect(asChem25!.expectedQuestions).toBe(328);
+    expect(asChem25!.expectedParts).toBe(561);
+    expect(asChem25!.expectedPackageParts).toBe(740);
+    const asPhys25 = real.find((e) => e.slug === "cie-as-physics-25");
+    expect(asPhys25!.expectedQuestions).toBe(395);
+    expect(asPhys25!.expectedParts).toBe(555);
+    expect(asPhys25!.expectedPackageParts).toBe(796);
+    const asBus23 = real.find((e) => e.slug === "cie-as-business-23");
+    expect(asBus23!.expectedQuestions).toBe(54);
+    expect(asBus23!.expectedParts).toBe(73);
+    expect(asBus23!.expectedPackageParts).toBe(73);
+    const asCs19 = real.find((e) => e.slug === "cie-as-computer-science-19");
+    expect(asCs19!.expectedQuestions).toBe(77);
+    expect(asCs19!.expectedParts).toBe(138);
+    expect(asCs19!.expectedPackageParts).toBe(138);
+    const asPure1 = real.find((e) => e.slug === "cie-as-maths-20-pure-1");
+    expect(asPure1!.expectedQuestions).toBe(48);
+    expect(asPure1!.expectedParts).toBe(94);
+    expect(asPure1!.expectedPackageParts).toBe(94);
+    const asMech = real.find((e) => e.slug === "cie-as-maths-20-mechanics");
+    expect(asMech!.expectedQuestions).toBe(104);
+    expect(asMech!.expectedParts).toBe(212);
+    expect(asMech!.expectedPackageParts).toBe(212);
+    const asPs1 = real.find((e) => e.slug === "cie-as-maths-20-probability-and-statistics-1");
+    expect(asPs1!.expectedQuestions).toBe(57);
+    expect(asPs1!.expectedParts).toBe(117);
+    expect(asPs1!.expectedPackageParts).toBe(117);
     const rawQ = real.reduce((s, e) => s + e.rawQuestions, 0);
     const rawP = real.reduce((s, e) => s + e.rawParts, 0);
-    expect(rawQ).toBe(19097);
-    expect(rawP).toBe(25663);
+    expect(rawQ).toBe(24541);
+    expect(rawP).toBe(35141);
     // the shim's exclusion counters of record (the honest disclosure class)
     const excl = real.reduce(
       (a, e) => ({
@@ -133,18 +304,16 @@ describe("cie-phase4 roster law", () => {
       }),
       { unmapped: 0, badSum: 0, dupOrder: 0 },
     );
-    expect(excl).toEqual({ unmapped: 12363, badSum: 0, dupOrder: 19 });
+    expect(excl).toEqual({ unmapped: 15696, badSum: 0, dupOrder: 19 });
     // the question-level identity: raw - servable = unmapped + dupOrder (each
     // exclusion removes whole questions; badSum is zero of record)
-    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder);
-    // the zero-servable real banks of record: seed-only by the fleet's
-    // ingest-skip law (EQ axis honestly empty of record)
+    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder); // 24541-8826 == 15696+19
+    // the zero-servable real banks of record — see ZERO_SERVABLE_OF_RECORD
+    // (the module-level law; econ-25 departed at run-006, the wave-2
+    // anchor-gap class joined at the r1 fill and DEPARTED at the CONSUME-2
+    // re-base except pure-2's honest zero)
     const zeroServable = real.filter((e) => e.expectedQuestions === 0).map((e) => e.slug).sort();
-    expect(zeroServable).toEqual([
-      "cie-igcse-economics-25",
-      "cie-igcse-english-language-20",
-      "cie-igcse-english-language-25",
-    ]);
+    expect(zeroServable).toEqual([...ZERO_SERVABLE_OF_RECORD].sort());
   });
 
   test("every real bank carries a syllabus code + version (the seed's curriculumCode law)", () => {
@@ -162,13 +331,15 @@ describe("cie-phase4 roster law", () => {
     for (const [code, n] of Object.entries(SHARED_CODES_OF_RECORD)) {
       expect(counts.get(code)).toBe(n);
     }
-    // 40 real banks over 27 distinct syllabus codes of record
+    // 49 real banks over 27 distinct syllabus codes of record (the wave-2
+    // AS codes already existed among the 27 — the fill doubled banks, not codes)
     expect(counts.size).toBe(27);
   });
 
   test("slug filter law: 'all' selects everything; unknown slugs are refused (never invented)", () => {
-    expect(resolveSlugFilter(roster, "all").length).toBe(45);
-    expect(resolveSlugFilter(roster, undefined).length).toBe(45);
+    // WAVE-2 r0: 45 + 11 wave-2 registered rows = 56
+    expect(resolveSlugFilter(roster, "all").length).toBe(56);
+    expect(resolveSlugFilter(roster, undefined).length).toBe(56);
     const one = resolveSlugFilter(roster, "cie-igcse-chemistry-23");
     expect(one.length).toBe(1);
     expect(one[0]?.code).toBe("0620");
@@ -195,7 +366,9 @@ describe("cie-phase4 roster law", () => {
   test("the map-law census is GREEN over the whole fleet (identity-clean before any COW)", () => {
     expect(mapLaw.green).toBe(true);
     expect(mapLaw.reds).toEqual([]);
-    expect(mapLaw.bundlesMapped).toBe(44); // 45 rows minus the pure-2 skeleton
+    // T-SPECS-9696-4HI1 run-001: the 2 skeletons received their official spec
+    // trees and reclassified as stubs — all 56 rows now map (54 + 2)
+    expect(mapLaw.bundlesMapped).toBe(56);
   });
 
   test("the varchar(40) store law holds at the census maximum of record", () => {
@@ -203,33 +376,63 @@ describe("cie-phase4 roster law", () => {
     expect(mapLaw.maxDbCodeLength).toBeLessThanOrEqual(mapLaw.storeLawLimit);
   });
 
-  test("the shared subject roots of record: the six same-version component families", () => {
-    // 9709 x5 real banks @2023-2025; 0653 x3 @2023-2024; 0973 x3 @2025-2027;
-    // 0580 x2 + 0607 x2 @2025-2027; 0460 x2 @2025-2026 (the same generation —
+  test("the shared subject roots of record: the twelve same-version component families", () => {
+    // 9709 x9 real banks @2023-2025; 0973 x3 @2025-2027; 0653 x3 @2023-2024;
+    // 0580/0607/0460 x2 @2025-2027/2025-2026; and the wave-2 r1 AS joins:
+    // 9700/9701/9702 @2025-2027, 9609 @2023-2025, 9618 @2024-2025,
+    // 9706 @2023-2025 — each AS bank shares its A-Level counterpart's
+    // version-scoped root (the resolve-or-create join law, agreeing identity;
     // the slugs' 20/25 are batch labels, the bundle's own syllabusVersion governs)
     expect([...mapLaw.sharedSubjectRoots].sort()).toEqual([
-      "0460-2025-2026", "0580-2025-2027", "0607-2025-2027", "0653-2023-2024", "0973-2025-2027", "9709-2023-2025",
-    ]);
+      "0460-2025-2026", "0580-2025-2027", "0607-2025-2027", "0653-2023-2024",
+      "0973-2025-2027", "9609-2023-2025", "9618-2024-2025", "9700-2025-2027",
+      "9701-2025-2027", "9702-2025-2027", "9706-2023-2025", "9709-2023-2025",
+    ].sort());
   });
 
-  test("the 9709 UNIT space is the tail-based disjoint set of record (the graft class is structurally gone)", () => {
-    // pure-2 is the skeleton; the five real banks land S1/S3/S4/S5/S6 — each
-    // from its own official -T tail, PAIRWISE DISJOINT (the pre-optionA order
-    // law landed all five on 9709-S1 — the graft)
+  test("the 9709 UNIT space is the tail-based disjoint set of record, now COMPLETE (the graft class is structurally gone)", () => {
+    // SME-WAVE2 r1: the four AS maths banks join their A-Level counterparts —
+    // the A-LEVEL five stay pairwise disjoint (S1/S3/S4/S5/S6, each from its
+    // own official -T tail), each AS bank maps EXACTLY ONE UNIT whose identity
+    // EQUALS its counterpart's (the resolve-or-create agreeing-identity join,
+    // same version scope), and AS pure-2 lands S2 — the unit the A-LEVEL tree
+    // never served (SME never published 9709 P2 there; the AS tree does).
+    // The 9709 subject UNIT space is now complete: S1..S6 all exist.
     const banks9709 = roster.entries.filter((e) => e.code === "9709" && e.cls === "real");
-    expect(banks9709.length).toBe(5);
-    const unitSets = banks9709.map((e) => {
+    expect(banks9709.length).toBe(9);
+    const al = banks9709.filter((e) => e.slug.startsWith("cie-a-level-"));
+    const asx = banks9709.filter((e) => e.slug.startsWith("cie-as-"));
+    expect(al.length).toBe(5);
+    expect(asx.length).toBe(4);
+    const unitSetsOf = (banks: { slug: string }[]) => banks.map((e) => {
       const bundle = JSON.parse(
         readFileSync(join(import.meta.dir, "../../../hub/content/" + e.slug + "/curriculum.json"), "utf8"),
       ) as BundleCurriculum;
-      return [...mapBundleNodes(bundle, "p").values()].filter((m) => m.nodeType === "UNIT").map((m) => m.dbCode);
+      return { slug: e.slug, units: [...mapBundleNodes(bundle, "p").values()].filter((m) => m.nodeType === "UNIT").map((m) => m.dbCode) };
     });
-    const flat = unitSets.flat().sort();
-    expect(flat).toEqual([
+    const alSets = unitSetsOf(al);
+    const alFlat = alSets.flatMap((s) => s.units).sort();
+    expect(alFlat).toEqual([
       "9709-2023-2025-S1", "9709-2023-2025-S3", "9709-2023-2025-S4", "9709-2023-2025-S5", "9709-2023-2025-S6",
     ]);
-    // pairwise disjoint across banks (each UNIT belongs to exactly one bank)
-    expect(new Set(flat).size).toBe(flat.length);
+    // pairwise disjoint across the A-LEVEL banks (each UNIT belongs to exactly one)
+    expect(new Set(alFlat).size).toBe(alFlat.length);
+    // each AS bank carries exactly ONE unit, the agreeing identity of its counterpart
+    const counterpart: Record<string, string> = {
+      "cie-as-maths-20-pure-1": "9709-2023-2025-S1",
+      "cie-as-maths-20-pure-2": "9709-2023-2025-S2",
+      "cie-as-maths-20-mechanics": "9709-2023-2025-S4",
+      "cie-as-maths-20-probability-and-statistics-1": "9709-2023-2025-S5",
+    };
+    for (const s of unitSetsOf(asx)) {
+      expect(s.units).toEqual([counterpart[s.slug]!]);
+    }
+    // the unit space of record: S1..S6 all served (S2 joined the tree with the fill)
+    const allUnits = [...alFlat, ...asx.map((e) => counterpart[e.slug]!)].sort();
+    expect(new Set(allUnits)).toEqual(new Set([
+      "9709-2023-2025-S1", "9709-2023-2025-S2", "9709-2023-2025-S3",
+      "9709-2023-2025-S4", "9709-2023-2025-S5", "9709-2023-2025-S6",
+    ]));
     // the order-based pre-optionA code must not exist anywhere
     expect(mapLaw.sharedCodes.some((s) => s.dbCode === "9709-S1")).toBe(false);
   });

@@ -6,14 +6,21 @@ live Neon end-state of the frozen Java core's Flyway migrations (V1..V61+,
 against the task branch, never hand-authored. Re-baselining procedure is at
 the bottom of this file.
 
-- Baseline captured: 2026-10-04T18:27Z (task T-MIG-002, branch `t-mig-002/r2`)
+- Baseline captured: 2026-10-25T10:13Z (ADR-040 §5.2 re-baseline, task
+  T-SM-ROLLOUT adr040-mig-r0, branch `t-sm-adr040-mig/r0-0015`)
 - Neon project: `billowing-cherry-15418366` ("SyllabAI", pg 18)
-  - source branch: `t-mig-002/r2` (`br-dry-sun-a5wsx9n1`, copy-on-write of
-    production `br-muddy-bar-a5huwldd`) — production itself was only ever
-    the parent of the copy; zero reads/writes against production compute.
-- Introspected: 62 tables · 579 columns · 87 indexes · 54 foreign keys ·
-  98 check constraints · 0 views · 0 enums (live==snapshot==runtime verified,
-  see `.syllabai/receipts/T-MIG-002/`)
+  - source branch: `t-sm-adr040-mig/r0-0015` (`br-old-grass-a5p6ey1o`,
+    copy-on-write of production `br-muddy-bar-a5huwldd`) — production itself
+    was only ever the parent of the copy; zero reads/writes against
+    production compute. The branch carried the re-applied restore-lost
+    0007+0014 artifacts (see `.syllabai/receipts/T-SM-ROLLOUT/adr040-mig-r0.json`
+    FINDING) so the pull reflects the of-record end-state + 0015.
+- Introspected: 83 tables · 780 columns · 109 indexes (+2 unique
+  constraint-classified) · 81 foreign keys · 139 check constraints · 0 views
+  · 0 enums (live==snapshot==runtime verified, see
+  `.syllabai/receipts/T-MIG-002-R/` + `.syllabai/receipts/T-SM-ROLLOUT/`)
+- Prior baseline: 2026-10-04T18:27Z (task T-MIG-002, branch `t-mig-002/r2`)
+  — 62 tables · 579 columns · 87 indexes · 54 fks · 98 checks.
 
 ## Files
 
@@ -27,6 +34,25 @@ the bottom of this file.
 | `../drizzle/meta/_journal.json` | drizzle-kit journal |
 
 ## flyway_schema_history — core-owned, NEVER managed by Drizzle
+
+## Additive v2-native tables (each with its owning task)
+
+Hand-authored, additive-only (BASELINE_DB.md §4) — never part of the
+drizzle-kit pull baseline:
+
+- `bookChapters` / `bookBlocks` / `bookGlossaryTerms` / `chapterProgress` —
+  T-MIG-133 (Student Books) / T-BOOK-xxx band (0005).
+- `classFeatures`, `courseRegistry` — T-TEACH-002 (0006).
+- `markEntitlementPolicies`, `markEntitlements`, `aiMarkEvents` — DC-3
+  re-attempt entitlement (0009).
+- `assignmentResources`, `assignmentResourceStates` — T-SENECA-001
+  (0014, the run-004 placement rework): the pack task list hung off the
+  core-era `assignments` row by FK (side-table law), per-learner states
+  with server-side scoring. `senecaResources` is deliberately ABSENT — it
+  is a CORPUS plane living in the sci-chem course-group warehouse
+  (template wh-v2, `scripts/provisioner/wh-v2-fragment-seneca-resources.sql`),
+  referenced by the bare `resource_id` text id per the seam law (§4.1:
+  ids are the contract — no cross-project FK).
 
 `flyway_schema_history` is present in the generated schema (62/62 tables are
 modelled — none omitted silently) but is **Flyway-owned forever**:
@@ -126,3 +152,29 @@ by it — no private tooling is needed to regenerate or audit this baseline.
 4. After a live re-baseline: typecheck `packages/db`; append a receipt under
    `.syllabai/receipts/T-MIG-002-R/`; update this header with the new capture
    date and counts.
+
+## V2-native migrations (additive-only, post-baseline — owning task ledger)
+
+Every migration after the 0000 baseline is a v2-owned additive structure per
+`docs/BASELINE_DB.md` §4. Owning task ids (the file headers carry the same):
+
+| Migration | Owning task | Structures |
+|---|---|---|
+| `0003_f5s7-g2-spec-point-constraint.sql` | T-MIG-139 (F.5 §7 G2) | `ck_node_type` seven-value law (SPEC_POINT joins) |
+| `0004_cla_thread_sync_tier.sql` | T-MIG-069 | CLA thread sync tier |
+| `0005_book-rail-tables.sql` | T-MIG-133 band 133a | `book_chapters` + the book rail tables |
+| `0006_class_feature_toggles.sql` | T-TEACH-002 (ADR-CLASS-0001) | `class_features` side table |
+| `0007_t-sm-kappa-subject.sql` | T-MIG-102 lane | `smart_mark_agreement_evaluations.subject_id` |
+| `0008_teaching_toolkit.sql` | T-TEACH-011 | `teaching_toolkit_resources` + `teaching_toolkit_usage` + `class_features.ai_toolkit` + the `prompt_versions` teaching-toolkit/* v1.0 seed rows |
+| `0009_dc3-mark-entitlement.sql` | DC-3 re-attempt entitlement (docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md) | `ai_mark_events` (APPEND-ONLY ordinal ledger, (learner, part, ordinal) UNIQUE fail-closed) + `mark_entitlement_policies` (seeded free/paid; trial unshipped — spec open question (a) operator-gated) + `mark_entitlements` (row-absent = free) |
+| `0011_dc5-mark-point-alternatives.sql` | DC-5 cross-tool conformance (docs/DC5-CONFORMANCE-LINT-PLAN.md) | `mark_point_alternatives` (the materialised acceptable-answer surface — the spec's "MarkingPoint rows gain acceptable_alternatives + numeric_values columns" translated to the BASELINE_DB §4.2 new-v2-table form: mark_points is Flyway-owned, alter-structure-never, prereg R-DC5-1; mark_scheme_id is the scheme-revision carrier, uq_mpa_row makes materialisation idempotent) |
+| `0012_study_plans.sql` | Study-Plan Builder (docs/STUDY-PLAN-BUILDER-PLAN.md) | `study_plans` (the learner's plan-config row — the three builder steps: courses, per-course exam seasons, per-day minutes; uq_study_plan_learner = ONE active plan, PUT replaces; the ONLY persisted state of the lane — the generated week and every completion state stay query-time projections over the DC-7 event rows, created_at is the immutable day-walk anchor) |
+| `0014_assignment_resource_tables.sql` | T-SENECA-001 run-004 (docs/SENECA_RESOURCE_PACKS_PLAN.md D9) | `assignment_resources` + `assignment_resource_states` — the pack side families in MAIN, WITHOUT the seneca FK (seam law: `resource_id` is a bare varchar(64) reference into the sci-chem warehouse's `seneca_resources`; run-002's pre-ruling FK drops at T1) |
+
+DC-3 substrate notes: `ai_mark_events` is APPEND-ONLY (the markAttempt
+ordinal ledger — counted in the marking path, never inferred); entitlement
+state rides side tables (the 0006 class_features precedent; row-absent
+learner = free); the trial row ships only when the operator's business
+ruling lands (spec open question (a)). Authored as 0008; RENUMBERED 0009 at
+the merge gate per first-pushed (T-TEACH-011 took the 0008 slot mid-flight,
+337344dc) — mechanism byte-identical.

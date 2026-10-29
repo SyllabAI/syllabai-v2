@@ -1,0 +1,190 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_5g8Dd6y89tkCVJsN",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "8525e479894dad470db5ee0cdeed667922fea2dba24580628e1ef826f8cbb1cd",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_5g8Dd6y89tkCVJsN",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Acids, Bases & Salt Preparations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-7-acids-bases-and-salt-preparations/2-7-6-prepare-a-soluble-salt-ii",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.40C",
+        "text": "describe an experiment to prepare a pure, dry sample of a soluble salt, starting from an acid and alkali"
+      }
+    ],
+    "primer": {
+      "text": "From Acid-Alkali Titrations you already know how a burette and a pipette measure reacting volumes exactly. This note borrows that skill for making a dry salt sample from an acid and an alkali, where the indicator does its job once and is then left out.",
+      "prerequisiteSubtopic": "Acid-Alkali Titrations"
+    },
+    "modules": [
+      {
+        "id": "rn_5g8Dd6y89tkCVJsN::L1",
+        "title": "Preparation of a soluble salt using a titration",
+        "sourceHeadings": [
+          "Preparation of a soluble salt using a titration"
+        ],
+        "specRefs": [
+          "4CH1-2.40C"
+        ],
+        "opening": "When both starting materials are soluble, the salt is prepared from an acid and an alkali, and a titration shows exactly when they have reacted in the right proportions. A few drops of indicator reveal the neutral point during the measured run. Because the indicator would contaminate the product, the real batch repeats the found volumes with no indicator present.",
+        "keyPoints": [
+          "A dry salt can be prepared from an acid and an alkali.",
+          "A pipette measures the alkali into a conical flask.",
+          "A few drops of indicator such as phenolphthalein or methyl orange are added.",
+          "The acid is run in slowly from a burette until the indicator just changes colour.",
+          "The starting and final burette readings give the volume of acid added."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Measure the alkali into a flask with a pipette, add indicator drops, then run acid in from a burette until the colour just changes. Read the burette before and after to find the volume that reacted.",
+            "analogy": "The indicator is like a referee with a flag: it cannot play in the real match, but it tells you exactly when the winning point was scored.",
+            "examPointer": "Name the apparatus with its role, pipette for the alkali and burette for the acid, because mixed-up apparatus lists cost method marks."
+          },
+          "medium": {
+            "restatement": "The titration finds the exact reacting ratio rather than preparing the product itself. Once the acid volume that neutralises the alkali is known, that pair of volumes can be repeated cleanly, because reacting in the found ratio leaves neither acid nor alkali behind in the salt solution.",
+            "analogy": "It is like test-driving a recipe in a small pan before cooking the full pot: the trial tells you the exact quantities, and the real batch follows them without the tester's tasting spoon in it.",
+            "examPointer": "If asked why the trial matters, say it fixes the exact volume ratio so the clean batch has no leftover acid or alkali to contaminate the crystals."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_5g8Dd6y89tkCVJsN::L1::Q1",
+          "rn_5g8Dd6y89tkCVJsN::L1::Q2",
+          "rn_5g8Dd6y89tkCVJsN::L1::Q3",
+          "rn_5g8Dd6y89tkCVJsN::L1::Q4",
+          "rn_5g8Dd6y89tkCVJsN::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_5g8Dd6y89tkCVJsN::L2",
+        "title": "Method",
+        "sourceHeadings": [
+          "Method"
+        ],
+        "specRefs": [
+          "4CH1-2.40C"
+        ],
+        "opening": "Once the neutral volume is known, the same volumes of acid and alkali are mixed again with the indicator left out, so nothing but salt and water is made. The solution is heated until part of the water has gone, leaving a saturated solution. Crystals are then allowed to form, the liquid above them is poured off, and the solid is left to dry.",
+        "keyPoints": [
+          "The measured volumes are repeated without the indicator.",
+          "Heating partially evaporates the solution, leaving a saturated solution.",
+          "Crystals are left to form, then the excess solution is decanted off.",
+          "Some water is deliberately left behind in the crystals.",
+          "Leaving water behind allows for water of crystallisation and stops the salt overheating and decomposing."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Repeat the titration volumes with no indicator, then heat the solution until it is saturated but not dry. Let crystals form, pour off the surplus liquid and let the solid dry in air.",
+            "analogy": "Stopping the heating with water left is like taking bread out before it burns: a little moisture is wanted, and pushing all the way to dryness spoils the product.",
+            "examPointer": "Evaporate to saturated, never to dryness, and give both reasons if asked: water of crystallisation and avoiding decomposition."
+          },
+          "medium": {
+            "restatement": "The clean repeat guarantees the crystals grow from pure salt solution with no dye trapped inside. Partial evaporation leaves the solution saturated, so on cooling and standing the salt crystallises with its waters of crystallisation intact, and any mother liquor holding impurities is decanted away rather than cooked onto the solid.",
+            "analogy": "Decanting the leftover liquid is like draining the cooking water from pasta: what you want stays behind in the pot, and the flavoured water you throw away carries off what you do not.",
+            "examPointer": "Two-mark evaporation questions usually want the saturated-solution state plus the water-of-crystallisation reason, so quote both rather than one."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_5g8Dd6y89tkCVJsN::L2::Q1",
+          "rn_5g8Dd6y89tkCVJsN::L2::Q2",
+          "rn_5g8Dd6y89tkCVJsN::L2::Q3",
+          "rn_5g8Dd6y89tkCVJsN::L2::Q4",
+          "rn_5g8Dd6y89tkCVJsN::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "titration",
+          "definition": "A technique in which one solution is added to another from a burette until they exactly react.",
+          "firstLesson": 1
+        },
+        {
+          "term": "burette",
+          "definition": "A long graduated tube with a tap, used to deliver measured volumes of solution.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pipette",
+          "definition": "A calibrated tube used to transfer one fixed, accurate volume of liquid.",
+          "firstLesson": 1
+        },
+        {
+          "term": "indicator",
+          "definition": "A dye whose colour changes to show the pH of a solution, marking the neutral point here.",
+          "firstLesson": 1
+        },
+        {
+          "term": "saturated solution",
+          "definition": "A solution holding as much dissolved salt as it can at that temperature.",
+          "firstLesson": 2
+        },
+        {
+          "term": "water of crystallisation",
+          "definition": "Water molecules built into a salt's crystal structure, written after a dot in its formula.",
+          "firstLesson": 2
+        },
+        {
+          "term": "evaporation",
+          "definition": "The change from liquid to vapour that concentrates a solution as it is heated.",
+          "firstLesson": 2
+        },
+        {
+          "term": "crystallisation",
+          "definition": "The formation of ordered solid crystals as a concentrated solution loses water.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A student prepares a pure, dry sample of sodium chloride from hydrochloric acid and sodium hydroxide solution. a) Name the apparatus used to measure each reactant. b) Why is indicator added in the first run but left out of the second? c) Why is the solution heated only until part of the water has evaporated, not to dryness?",
+        "steps": [
+          "a) A pipette measures a fixed volume of the alkali into a conical flask; the acid is run in from a burette until the indicator just changes colour.",
+          "b) The indicator marks the neutral point so the exact reacting volumes are found; it would contaminate the salt, so the same volumes are mixed again with no indicator.",
+          "c) Heating stops once a saturated solution forms: leaving some water allows for water of crystallisation and prevents the salt from overheating and decomposing."
+        ],
+        "finalAnswer": "a) Pipette for the alkali, burette for the acid. b) The indicator finds the neutral point but would contaminate the product. c) To allow water of crystallisation and avoid decomposition."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/16691ff6344b-40620-50944-using-titration-to-prepare-a-salt.png",
+        "alt": "Using-titration-to-prepare-a-salt1, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Preparation of a soluble salt using a titration",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
+  }
+}

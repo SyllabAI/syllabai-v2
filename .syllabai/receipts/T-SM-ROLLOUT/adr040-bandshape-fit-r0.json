@@ -1,0 +1,70 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-bandshape-fit-r0",
+ "date": "2026-10-26",
+ "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+ "trace_id": "1a177498cc458f0d",
+ "operator_order": "\"the band-shape design against these real tables\" — the conv53 unblocked item named by adr040-g1-msfetch-r0 (\"Next: band-shape design against the REAL printed tables\") and re-named by adr040-bandwave1-g2kgseed-r0",
+ "scope_of_record": "fit-check the ADR-040 band-shape design of record (migration 0015 DDL + bandCoverageViolations() + ingest LEVELS birth prefix law + R4 part-sum tiling + hub band dispatch inputs + D5-β floors) against the 62 staged REAL printed tables (437 band entries / 1,275 verbatim band rows) from adr040-g1-msfetch-r0 @ 9a085fef",
+ "method": {
+  "inputs": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts (62 ms.draft.json; 4bs1 38 + 4ge1 24) at tip d5fcdef8 (9a085fe ancestor-verified)",
+  "design_sources_read": [
+   "packages/db/drizzle/0015_adr040-levels-of-response.sql",
+   "apps/api/src/services/ingestion/band-coverage.ts (bandCoverageViolations + part-marks resolution header law)",
+   "apps/api/src/services/content/review-writes.ts (R4 caller: single part -> its marks, multi-part -> SUM)",
+   "apps/api/src/services/ingestion/glm-ocr.ts (markPointRef + converter bands push, entry.guidance skip, generalGuidance null)",
+   "apps/api/src/services/ingestion/past-paper.ts (bandsForQuestion union-by-number prefix law; both-kinds ConflictException; mark_bands insert)",
+   "apps/api/src/services/smartmark/index.ts (dispatch reads level_index/marks_min/marks_max/descriptor_md/guidance_md; band_decision_v1)",
+   "apps/api/src/services/teachermarking/index.ts (D5-β floors constants)",
+   "docs/ADR-040-LEVELS_OF_RESPONSE_MARKING.md (§2 model, §2.2 prompt law, §2.3 QWK floors)"
+  ],
+  "live_db_check_readonly": "mark_bands columns = 0015 verbatim; counts mark_bands=0, mark_schemes=24,824, LEVELS=0; tripwires active sme-eq=20,930, evals=12 — byte-unchanged",
+  "script": "adr040-bandshape-fit-r0.audit.py (committed beside this receipt; output tmp/bandshape_fit.json)"
+ },
+ "receipt_verification": {
+  "files": 62,
+  "band_entries": 437,
+  "band_rows": 1275,
+  "top_marks_distribution": {"6": 149, "8": 138, "9": 76, "12": 74},
+  "per_spec": {"4bs1": {"files": 38, "entries": 227, "rows": 681, "tops": {"6": 113, "9": 76, "12": 38}},
+                "4ge1": {"files": 24, "entries": 210, "rows": 594, "tops": {"6": 36, "8": 138, "12": 36}}},
+  "verdict": "adr040-g1-msfetch-r0 numbers reproduced EXACTLY by independent re-parse"
+ },
+ "fit_verdicts": {
+  "mark_bands_DDL_representability": {
+   "verdict": "HOLD",
+   "evidence": "all 1,275 rows: level_index positive ints, marks_min=1 everywhere (bottom 0-or-1 law: 437/437 bottom=1), marks_max>=marks_min, descriptor non-blank — zero DDL-refutable rows"
+  },
+  "bandCoverageViolations_at_draft_stage": {
+   "verdict": "HOLD — 0 violations independently re-computed",
+   "evidence": "ordinals exactly 1..n (437/437); level_index ascends with marks (437/437); contiguous ranges (no gap/overlap); no zero-mark bands; no inverted ranges; no blank descriptors; array order already ascending everywhere (0 breaks)"
+  },
+  "levels_granularity_for_QWK": {
+   "verdict": "HOLD",
+   "evidence": "levels per entry: 3-band x401, 2-band x36 (all 36 are 4GE1 6-mark grids 1-3/4-6); D5-β level-span >=2 feasible on every entry"
+  },
+  "descriptor_verbatim_prompt_fitness": {
+   "verdict": "HOLD with disclosed posture",
+   "evidence": "descriptor length min 230 / median 437 / max 8,172 chars (max = 4ge1 2022-06 4GE1-01 3(h) L3); ALL 1,275 rows carry AO markers verbatim and PDF line-wrap newlines — sent verbatim per §2.2 is correct; R8 measures the LEVELS prompt delta as planned",
+   "guidance": "band.guidance null on 1,275/1,275 and band-bearing entries carry zero guidance[] lines — mark_bands.guidance_md stays NULL for the whole wave; dispatch null-guidance path is the exercised one; nothing is dropped (converter's entry.guidance skip is empirically void for wave-1); general_guidance stays null at birth (converter hardcode) — §5.4 prompt carries descriptors only for this wave"
+  },
+  "ingest_union_by_question_number": {
+   "verdict": "GAP of record — the one seam that blocks birth",
+   "numbers": "111 question numbers across 50/62 papers carry >=2 band-bearing parts under ONE printed question number (top pairs: 6+9 x37, 6+12 x74; 4bs1 75 numbers, 4ge1 36 numbers). bandsForQuestion unions them into ONE scheme -> UNIQUE(mark_scheme_id, level_index) violation -> whole-draft ingest refusal. both-kinds refusals: 0 in the staged drafts (they are grid-only: 437/437 entries band-bearing, 0 point entries) — the §2.2 refusal never fires from MS-side data",
+   "examples": ["4bs1/2019-06/4BS1-01 Q3: 3(d)(6) + 3(e)(9)", "4bs1/2019-06/4BS1-01 Q4: 4(b)(6) + 4(c)(12)", "4ge1 8+12 and 6+12 pairs across 36 numbers"]
+  },
+  "r4_part_sum_tiling": {
+   "verdict": "GAP of record — structural, not numeric",
+   "numbers": "437/437 printed grids are PART-granular (labels 1(g), 2(f), 3(d), 3(e), 4(b), 4(c), 7(f), 8(e), 1(h)...) while the additive scheme model binds ONE scheme per question VERSION whose tiling target is the version's part-SUM. The staged MS drafts carry only grid rows (questionTotals mirror grid tops), so the single-grid numbers (215) look clean here — but the version's part-sum comes from the QP-side parts and exceeds the grid top wherever the question has sibling parts (the printed labels prove sibling parts exist). Fail-closed at the VALIDATED flip, i.e. blocked, not wrong",
+   "note": "the band-coverage.ts header pre-registered exactly this possibility: 'any mismatch is a receipt finding of record, never a silent guess' — this receipt IS that finding"
+  }
+ },
+ "finding_of_record": "The wave-1 REAL tables are part-granular levels grids; the ADR-040 additive scheme model binds one LEVELS scheme per question version. Two consequences, both fail-closed: (1) 111 numbers union two grids into one scheme (UNIQUE collision, whole-draft refusal); (2) every grid tiles a PART's marks, never the version's part-sum (R4 refusal at the VALIDATED flip). The DDL, the coverage law, the descriptor law, the ordinal law, the QWK floors and the dispatch inputs all HOLD against the real rows — the mismatch is exactly one axis: scheme binding granularity.",
+ "paths_forward_of_record": {
+  "A_scheme_part_binding_delta": "additive migration 0016: nullable question_part_id on mark_schemes (or mark_bands) + part-level scheme lookup at dispatch + tiling law reads the bound part's marks (single-part branch already in code) — the design-honest fit: one printed grid = one scheme bound to the part it marks; no fabricated grids, verbatim law untouched",
+  "B_draft_question_split": "no schema change: refine the past-paper draft so each band-bearing part becomes its own question/version (single part) before ingest — keeps ADR-040 untouched but reshapes question identity/external refs on the past-paper lane and collides with the QP-side numbering",
+  "decision_owner": "operator — ADR-040 §7 discipline; this receipt supplies the numbers both paths need"
+ },
+ "unchanged": "active sme-eq 20,930; mark_schemes 24,824; LEVELS 0; mark_bands 0; evals 12 — zero DB writes issued this run",
+ "next": "operator ruling on the binding-granularity path (A vs B) -> G-4 LEVELS birth for the non-colliding set under the ruled law -> R4 band validation -> G-6 API deploy -> G-7 QWK; CIE 9609/0455 MS fetch stays ledgered (0/78, JS-gated); 4GE1 bundle re-export stays the KG critical-path item"
+}

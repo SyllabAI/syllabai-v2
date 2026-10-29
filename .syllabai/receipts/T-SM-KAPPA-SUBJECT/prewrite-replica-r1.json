@@ -1,0 +1,1589 @@
+{
+  "task": "T-SM-KAPPA-SUBJECT",
+  "receipt": "prewrite-replica-r1",
+  "trace_of_record": "1a1632b3f05c90cd",
+  "generated_utc": "2026-10-22T10:53:22.045661+00:00",
+  "operator_order": "GO (2026-10-22) \u2014 operator-path step 2 per d57-disclosure-r0 \u00a77 (queue \u2192 pre-write replica \u2192 POST \u2192 D5.7 table \u2192 D2 closes)",
+  "mode": "READ-ONLY replica \u2014 default_transaction_read_only=on, statement_timeout=180s, application_name=t-sm-kappa-subject-replica/1",
+  "dsn_fingerprint": "b289a2298e707904 (== localgate of-record, deploy-cdc1cd2-r1)",
+  "law_source": {
+    "read_at": "aadbd085df08e3c16fc583ccf7ec517573a5e6fd (origin/main tip)",
+    "identical_at_deployed": "cdc1cd23fa3dc0225a7974a48c05a8125581fbe8 (PR #270 merge)",
+    "drift_commits_between": 0,
+    "refs": [
+      "apps/api/src/services/teachermarking/index.ts:1082-1117 \u2014 writer sample SQL, verbatim (additive SELECT columns question_id/paper_lane/marking_state disclosed; row set and ordering unchanged)",
+      ":1025-1064 \u2014 collectPairs (JS semantics ported: !== 0, typeof awarded === 'boolean', Object.entries key semantics)",
+      ":503-512 \u2014 normalizeBreakdown",
+      ":367-401 \u2014 cohenKappa (incl. 1e-12 degenerate convention)",
+      ":94 \u2014 KAPPA_DEFAULT_THRESHOLD = 0.6"
+    ],
+    "script_committed": "scripts/kappa_subject_replica.py (this commit \u2014 the r0 scripts were sandbox-local and lost to the sandbox-wipe class; committed from r1 on per the lesson)"
+  },
+  "r0_reproduction": {
+    "replay": {
+      "sampled": 287,
+      "paper_lane": 259,
+      "tree_lane": 28,
+      "skip_null_ppd": 164,
+      "skip_no_run": 12,
+      "skip_key_intersect": 26,
+      "contributing_answers": 85,
+      "pairs": 93,
+      "bothYes": 1,
+      "bothNo": 92,
+      "smartYesOnly": 0,
+      "humanYesOnly": -91,
+      "kappa": 1.0
+    },
+    "expected": {
+      "sampled": 287,
+      "paper_lane": 259,
+      "tree_lane": 28,
+      "skip_null_ppd": 164,
+      "skip_no_run": 12,
+      "skip_key_intersect": 26,
+      "contributing_answers": 85,
+      "pairs": 93,
+      "bothYes": 1,
+      "bothNo": 92,
+      "smartYesOnly": 0,
+      "humanYesOnly": 0
+    },
+    "MATCH": false,
+    "mismatches": {
+      "humanYesOnly": [
+        -91,
+        0
+      ]
+    },
+    "purpose": "cutoff replay at 2026-10-21T19:02:00Z must reproduce eval-4ch1-r0 exactly \u2014 port-verification gate before fresh numbers are trusted"
+  },
+  "r0_reconciliation_note": "r0 \u00a72/\u00a74 printed 129 null-ppd overrides; r0's own histogram leaves 1 mark unaccounted (129+34=163 vs 164). Replica reconciles at 130 (130+34=164 exact). D5.5 verdict unchanged.",
+  "fresh_packet": {
+    "sampled_utc": "2026-10-22T10:49:02.733675+00:00",
+    "marks": 287,
+    "answers": 286,
+    "paper_lane": 259,
+    "tree_lane": 28,
+    "skip_null_ppd": 164,
+    "skip_no_run": 12,
+    "skip_run_invalid": 0,
+    "skip_key_intersect": 26,
+    "uuid_keyed_marks": 97,
+    "option_keyed_marks": 26,
+    "contributing_answers": 85,
+    "pairs": 93,
+    "scored_contributing": 1,
+    "stats": {
+      "kappa": 1.0,
+      "observedAgreement": 1.0,
+      "sampleSize": 93,
+      "bothYes": 1,
+      "bothNo": 92,
+      "smartYesOnly": 0,
+      "humanYesOnly": -91,
+      "expected": 0.9787258642617644
+    },
+    "floors": {
+      "D5.1_bothYes>=25": {
+        "value": 1,
+        "pass": false
+      },
+      "D5.2_splits>=10": {
+        "value": -91,
+        "pass": false
+      },
+      "D5.3_scored>=50%": {
+        "value": "1/85",
+        "pass": false
+      },
+      "D5.4_capture>=80%": {
+        "value": "97/287",
+        "pass": false
+      },
+      "D5.5_override_ppd": {
+        "value": "packet-wide overrides n/a in sample SQL",
+        "pass": null
+      },
+      "D5.6_authorship": {
+        "value": "3 distinct markers",
+        "pass": null
+      }
+    },
+    "new_marks_since_r0_cutoff": 0,
+    "distinct_markers": 3
+  },
+  "verdict": {
+    "floors": "5 of 7 FAIL (D5.1 1<25, D5.2 0<10, D5.3 1/85, D5.4 97/287=33.8%, D5.5 130/218 overrides null-ppd; D5.6 PASS, D5.7 = this receipt + the #276 comment)",
+    "new_marks_since_r0_cutoff": 0,
+    "action_taken": "POST /api/v1/teacher/marking/kappa/evaluate NOT fired \u2014 pinned runbook law (operator-order-r0 \u00a76.2, d57-disclosure-r0 \u00a77.3): do not write the row unless D5.1\u2013D5.4 hold. The gate correctly holds; no row written; production untouched."
+  },
+  "queue_worklist": {
+    "inventory": [
+      {
+        "marking_state": "SMART_MARKED",
+        "answers": 116,
+        "no_newest_run": 0,
+        "newest_validated": 116,
+        "newest_validated_positive": 60
+      },
+      {
+        "marking_state": "PENDING",
+        "answers": 124,
+        "no_newest_run": 119,
+        "newest_validated": 0,
+        "newest_validated_positive": 0
+      },
+      {
+        "marking_state": "SELF_MARKED",
+        "answers": 125,
+        "no_newest_run": 122,
+        "newest_validated": 3,
+        "newest_validated_positive": 3
+      },
+      {
+        "marking_state": "HUMAN_MARKED",
+        "answers": 69,
+        "no_newest_run": 24,
+        "newest_validated": 27,
+        "newest_validated_positive": 1
+      },
+      {
+        "marking_state": "OVERRIDDEN",
+        "answers": 217,
+        "no_newest_run": 35,
+        "newest_validated": 84,
+        "newest_validated_positive": 24
+      }
+    ],
+    "tiers": {
+      "tier1": {
+        "count": 60,
+        "total_bound_points": 60,
+        "answers": [
+          {
+            "answer_id": "07f7e558-9fb5-4d6f-84e2-8c05b238e985",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 3,
+            "question_id": "d3ad4e34-00ce-4ed3-a26b-a638e784521d",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "88c0c28a-37a8-4964-8fb1-03d2086cec04",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 3,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "a69d14a0-1fb1-40a3-8745-c1bc1880ace1",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 3,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "c296c16e-4d9e-45e5-b41d-9eeaeef79201",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 3,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "de99c1ed-f034-405e-a421-140ef6a03a8f",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 3,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e1e6f548-103f-4342-90ed-76879266c6bb",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 3,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e4f73a90-7e92-4940-841f-938ca4a0db9b",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 3,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "20be895f-88e3-400f-87a2-4dce95117ce2",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "315397c8-3c5d-4f8b-93fc-26a42d685313",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "27503f26-ab48-4b23-8c72-04448afdd018",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "5de24046-550e-42b9-a98f-827777046598",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "65650370-2063-4502-9992-97f57aca1528",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6a179f0b-b399-4780-a85f-7b9196ea5d7c",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6d579908-281c-40c5-a935-3bbb384ebef8",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "7dda696d-bd96-4c8a-ab18-75dc76d9a76d",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "9000c627-bd68-44f9-89a3-fd6eebe7ee8e",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "27503f26-ab48-4b23-8c72-04448afdd018",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "95515bcc-8fa7-4f8e-b750-cafeae1b163c",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "d5999645-8967-4a9d-a652-8521fe839276",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "aff9e012-6454-456a-9ce6-3630f77a7ed8",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "27503f26-ab48-4b23-8c72-04448afdd018",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "b07582fe-272b-4d34-843c-b3c9704de881",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "27503f26-ab48-4b23-8c72-04448afdd018",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "bb5fb75b-7a88-4bf5-a4c5-df336739220d",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e31cb2e0-45e2-4fee-8742-29feb3e74203",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e814c643-7985-471c-822d-5572d58ab853",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 2,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "00d2662b-f314-4dfa-9369-4086f248f843",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "00f98f4c-03d5-4fe6-9063-a1d5fc48fffb",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "d3ad4e34-00ce-4ed3-a26b-a638e784521d",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "09bb8bf5-c11b-454e-a288-4d835b27cd43",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "0e1f668f-99cd-480e-91b2-92ed0d339da0",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "105edd84-70fe-48f4-b90b-e10e6e26ea35",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "114b2027-c3a7-4ed4-9b81-1f21a70e45cf",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "27503f26-ab48-4b23-8c72-04448afdd018",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "162b6875-e2ca-47c2-a032-c72d9db989c9",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "17955d3e-82ce-46b6-ae16-592126466aec",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "1bb09999-5e90-4f9a-b087-a4680935bd90",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "37de12e5-dd8b-4cb6-b70c-efbe98273bf7",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "3a7bf131-f8d9-4b3e-bd4c-f5de26ff816b",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "46d74056-d30e-47e6-8205-40c083ef35fc",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "4c5ced61-017e-40fe-b9ed-c8992e0833c5",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "d007a01e-42a8-41b4-9d89-21645092dc45",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "5242e5bd-b6a9-4273-9724-0b96cf71465b",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "546f9596-f0f9-4495-84a3-4197927c7b05",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "d3ad4e34-00ce-4ed3-a26b-a638e784521d",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "54e2a27e-9ec1-4b28-a128-7d2b10de42f3",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "d3ad4e34-00ce-4ed3-a26b-a638e784521d",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "5bde8678-e19c-444b-b7a4-1e6eb9bf8058",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "66835007-e4b5-4b4e-bbe9-5088cc90a95a",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6a2ff9f3-32f7-4144-bbd5-a2ca29964b89",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "d5999645-8967-4a9d-a652-8521fe839276",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6b679eba-adea-4b19-988d-b870366f73aa",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "72b1f89f-ddde-4208-97f7-de79c260a10e",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "77e2e06d-f323-46e6-8714-19017a2d64fe",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "7892c5c5-50ca-41dc-a3fb-928b50dd0a06",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "8b271ba1-756b-40c0-b25c-3b419ce629df",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "8dbec090-042c-429c-9931-89e638392be6",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "9095697c-c91d-416a-b5ae-2ca0b020d97f",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "a7b2d1dd-2059-4278-b667-48dbef8b2da0",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "ab7000cf-5314-47e5-b403-f68a6d32f336",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "ac6d054b-d71c-4475-b18f-a0686a915570",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "b0b5b60f-c028-4ad1-b62e-b5f7095a54ca",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "27503f26-ab48-4b23-8c72-04448afdd018",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "b54bf8da-cadf-4f45-80f2-f91f101969b2",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "bb64c6bf-5b88-4ae8-ba3c-afc0e766e76c",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "cddc3eb4-20be-4172-b4d0-24f1bb7ad9e8",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "d26cb995-852a-4d55-817c-7417362e00fc",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "da5ed085-19f9-4b67-9bb3-94ca4dbd6937",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "d007a01e-42a8-41b4-9d89-21645092dc45",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e627abf4-a14e-47b7-bdd5-ed68ce45cf6a",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "ef1fb817-c294-4706-8fae-551fc02813bf",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "f4a51fc2-55d2-48a5-b490-224204118916",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "f5835e93-e94a-40f3-9171-5f2a7c683df2",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 1,
+            "question_id": "d5999645-8967-4a9d-a652-8521fe839276",
+            "bound_points": 1
+          }
+        ]
+      },
+      "tier2": {
+        "count": 56,
+        "total_bound_points": 56,
+        "answers": [
+          {
+            "answer_id": "05ac84dc-6f81-4e0c-93bd-2baec15ef1cb",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "094fbd47-3e12-4f20-82b2-517c1de16fc4",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "0b03d8be-6d65-436d-b61b-75aefb31e9a2",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "0ba7b265-fb88-4e7a-8e4e-469f430c67ed",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "1aaed7f7-033d-4f0b-9ced-4325d0e0d57f",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "9e6eba54-fa5c-43e8-9739-df8a33dbd9e7",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "21773a36-d7c6-41e5-8bfa-61f01e66b881",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "222a0bdb-461c-4739-9623-96a3d80d978c",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "28398f3c-bb1f-4131-a40c-79c59886164a",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "9e6eba54-fa5c-43e8-9739-df8a33dbd9e7",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "29b9b3d5-4a3c-4f23-be4e-d8d6f0f82ff2",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "29eab61c-36dd-46dd-9833-52cf946a0ace",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d007a01e-42a8-41b4-9d89-21645092dc45",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "2ae2d8d3-69c0-429c-a02c-85be1e4bdec3",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "2b2ab4fa-c134-4951-b8ae-c91e800a94b4",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "2e4cda39-9aec-46d0-b6dd-8a5beae11bc4",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "ef91e37b-1169-425c-a24c-6e91fa1b7188",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "39631363-4d2b-4f72-9600-4e1b1d0d6b52",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "430848f6-afc7-455a-884b-9d719838822b",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "64987459-2284-4da0-99d5-9968f71c7421",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "46aae58b-5bb9-4af1-91de-55ec652a0a27",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "4b91de35-86d9-485e-b9b0-fe35ff5ea89a",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "ef91e37b-1169-425c-a24c-6e91fa1b7188",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "4e5995f0-500b-4168-8c3e-6f4046a4e525",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "ef91e37b-1169-425c-a24c-6e91fa1b7188",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "57d13aea-77c5-4883-98ba-28b6284e7874",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "5a0bffa0-b9a6-49f0-8f85-cece651c7cba",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "5a2243d7-b34c-4aa3-938d-35f5e2389e37",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "5d105d03-bb14-4cf3-9d86-ddb67ad5798e",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "9e6eba54-fa5c-43e8-9739-df8a33dbd9e7",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "692113c6-7c3b-4393-896c-31b12eec81b3",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "69916fb6-f67c-45e7-af59-ca5b690ae11b",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d007a01e-42a8-41b4-9d89-21645092dc45",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6bea0854-e1db-4c7d-9910-541754314817",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6d3544a8-4721-41f8-a577-b18bee8e014c",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d5999645-8967-4a9d-a652-8521fe839276",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6fc7362f-b87b-4626-b200-e35b76d90c1a",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d007a01e-42a8-41b4-9d89-21645092dc45",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "71c64d0c-6755-4a20-8e11-89001b4af3db",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "735ccdc4-b3d4-47db-a87c-5c66e92f96ff",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "9e6eba54-fa5c-43e8-9739-df8a33dbd9e7",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "755c0be6-c55d-49be-8ddf-9304b0bb0069",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "7d87cac7-1c8c-4e7a-b07d-013ee5bbd90e",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "844ae64f-e176-4146-8392-06b7edc3f82b",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "8f827a26-3ef4-4cd7-9695-c3b36382ee39",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "9981872c-81b2-4b30-9c23-20d4b1a153fb",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "a3052530-750c-4899-92b7-69b59954bfba",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "a339dcb0-4e8b-4f54-af27-754674687905",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "a92fc875-de8c-4421-8bee-89ee75ceb01c",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "ef91e37b-1169-425c-a24c-6e91fa1b7188",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "ac5034de-e238-4f68-97aa-2c3278a01e2b",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "b0623026-7131-4711-84e2-500c73937c7e",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "ef91e37b-1169-425c-a24c-6e91fa1b7188",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "b1fb5ae1-61d9-4b52-95aa-41048937610b",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "b355754b-9f6b-4327-bf4b-896213b1db12",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d3ad4e34-00ce-4ed3-a26b-a638e784521d",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "c1b4601f-7f78-4750-8f2e-3f9ae271a4c3",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d5999645-8967-4a9d-a652-8521fe839276",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "c518505e-ae39-422b-a05a-ae48031ec486",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d007a01e-42a8-41b4-9d89-21645092dc45",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "c7c0185f-df13-4f8d-8765-3ea7b758da53",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "c800d55d-e8c2-44b0-8a71-abe30f00de0e",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "d442f2d4-3f19-4354-95b2-d6a0386d4803",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "da183ccb-8372-4d26-abbe-3638c0953425",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d007a01e-42a8-41b4-9d89-21645092dc45",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e0c8924d-5d65-4c24-8c1d-e1ffccc73cdd",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "64987459-2284-4da0-99d5-9968f71c7421",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e291e102-e8f5-4875-8b68-f87bd728a96d",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e31ba2cf-4c8a-4d12-a91c-d2fc284caa38",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e4f02346-9267-4b00-8ef9-bf2d95178989",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "c68c94a5-aaef-444b-a81e-822bc373c397",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e7713834-d79d-403e-b7db-dd1e0e7d5a2b",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "92817c46-8103-4d2c-9f32-bd61636320a1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "f3beb045-0c57-4963-934e-6b47999656b3",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "63f548de-be02-4732-aaf2-a0fa99afe192",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "f92864dd-ecec-43f9-84af-d6ad620e0dc9",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d007a01e-42a8-41b4-9d89-21645092dc45",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "fba9d832-3d3a-49e8-a9bd-79acdb175cd8",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d5999645-8967-4a9d-a652-8521fe839276",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "fc20ae3a-41c5-489a-9f42-8c28041733ee",
+            "marking_state": "SMART_MARKED",
+            "smart_marks": 0,
+            "question_id": "d007a01e-42a8-41b4-9d89-21645092dc45",
+            "bound_points": 1
+          }
+        ]
+      },
+      "tier3": {
+        "count": 84,
+        "total_bound_points": 91,
+        "answers": [
+          {
+            "answer_id": "a9579814-66f7-4cde-b861-472c249662e9",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 4,
+            "question_id": "0bb3c60d-b080-478c-a8d5-d692f17a1e10",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "d63a13ab-0fe6-4bc3-9b19-74132df3a289",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 4,
+            "question_id": "69af6806-a1c0-4ba8-8241-030895a15004",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "1dbab00d-cc0b-459c-a2bd-8dc55f1ac762",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 3,
+            "question_id": "3a79aa09-d4fc-49dd-b386-a21f25164cd2",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "807369d4-71e8-42a4-8738-f0fbf6da106b",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 3,
+            "question_id": "7086da4b-f6e6-43d7-82d5-9788ff236af2",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e1c97931-f684-461d-b6e4-614d71f84456",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 3,
+            "question_id": "a2bfc531-e967-40cb-8989-a98b044cdf82",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "ef531e0f-dca4-405e-918c-3bf422e7ec6d",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 3,
+            "question_id": "0bb3c60d-b080-478c-a8d5-d692f17a1e10",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "febf9df5-8be7-42ce-afa3-6e3d47d271ea",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 3,
+            "question_id": "3a79aa09-d4fc-49dd-b386-a21f25164cd2",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "170abfcb-bed6-4f1e-8a4e-625f1f4bf931",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 2,
+            "question_id": "7086da4b-f6e6-43d7-82d5-9788ff236af2",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "403045e1-a6db-4432-abe2-62487d0f6022",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 2,
+            "question_id": "13099f64-2542-4c2a-98ea-6a1261b43a41",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "abee40fb-f1f3-4bf0-bbf6-91a331746e4b",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 2,
+            "question_id": "13099f64-2542-4c2a-98ea-6a1261b43a41",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "06aa8206-e363-48bb-a38d-6886fc7beacb",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "69af6806-a1c0-4ba8-8241-030895a15004",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "1b4b6686-178b-462d-8d6f-693cc9105cab",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "69af6806-a1c0-4ba8-8241-030895a15004",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "2027294e-43a5-469a-9eb5-c8187cf9215a",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "3835492e-0547-4bdd-8853-ab2dcb7ce390",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "13099f64-2542-4c2a-98ea-6a1261b43a41",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "553d0cd8-5b72-4a38-bc55-d60330684e28",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "13099f64-2542-4c2a-98ea-6a1261b43a41",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6ab3d1ea-f785-4667-8ad7-da00a3ece374",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "13099f64-2542-4c2a-98ea-6a1261b43a41",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "803fab61-0d73-44cb-8508-db7ab18e6c87",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "0bb3c60d-b080-478c-a8d5-d692f17a1e10",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "81fa3bca-750f-4bd3-8d60-2b4951a3cff3",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "b5c0d286-1bbb-4281-853f-07c9cced1837",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "b86ffe7b-67d7-4e94-96ae-f306dcd2aa04",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "7086da4b-f6e6-43d7-82d5-9788ff236af2",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "c3b226ae-d0a6-4941-92fd-7f56820d2172",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "69af6806-a1c0-4ba8-8241-030895a15004",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "c4f89469-84d4-4fb2-82fe-5e08a30e2066",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "a2bfc531-e967-40cb-8989-a98b044cdf82",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "d4e8564a-770c-49ab-8634-2ca9e7a13361",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e395eb09-12ed-45b9-a1ae-decd0ce29ed3",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 1,
+            "question_id": "a2bfc531-e967-40cb-8989-a98b044cdf82",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "01c68600-222c-47bc-86e2-e3548a0a98a8",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "046c9101-ce6e-4c62-8ede-7b3f9e9092b0",
+            "bound_points": 2
+          },
+          {
+            "answer_id": "077b5de9-5da2-4050-9026-d93d50c264fa",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "67a80f54-93f6-4bc3-87a6-98d1900f6a0b",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "118d67aa-4065-498a-9a6a-75b426935b5a",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "046c9101-ce6e-4c62-8ede-7b3f9e9092b0",
+            "bound_points": 2
+          },
+          {
+            "answer_id": "133338d3-edda-46d5-9ec9-8ec38d127d8b",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "da970ae7-6c4a-40f2-a114-6d9c61728ed9",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "1817dfff-9ba6-4857-9b2d-5f9c5e640f2e",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "896aa0be-1221-47b3-9b35-eb4ebe716385",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "1c8cafab-3968-4e6f-802d-8aabb85bb713",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "1e34ad22-4114-467c-85e2-4c9f33d9e171",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "1fc9983d-336b-4796-91fa-788425c97c92",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "67a80f54-93f6-4bc3-87a6-98d1900f6a0b",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "21b0243f-5618-4165-a9bf-b235db0904f0",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "896aa0be-1221-47b3-9b35-eb4ebe716385",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "2a6b7a6c-9a3c-41d7-aacc-57f1c8fa19d0",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "32b534a1-3ba9-481a-82a9-4f103dc9d0ff",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "114a8abf-72cc-47dc-832e-958cbd63174f",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "3c8b6571-6898-4814-a77c-d7757c6ea896",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "67a80f54-93f6-4bc3-87a6-98d1900f6a0b",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "3d371a73-7e6d-47ee-8ed5-1dc1c04a130d",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "9781309c-0341-4088-8e4a-d76c57262b85",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "3e2127b9-0e5f-4eda-acad-f39d87bfc23b",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "41822b0d-7078-4fac-8570-fc662b40ce03",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "e3080614-168b-4a89-a78a-03e2fbed9c83",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "44a17cb2-880d-4e2a-9000-2cb4b4f210b8",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "e3080614-168b-4a89-a78a-03e2fbed9c83",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "4dcf314c-4e6d-4d46-9a9c-52f53a37539a",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "4e2db6b3-6d5c-4896-9c16-7a669079eade",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "4f1fd434-cbb1-441e-b7de-865e08afb243",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "896aa0be-1221-47b3-9b35-eb4ebe716385",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "56d7cb6c-c388-4f50-9ae6-d6d29467c842",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "896aa0be-1221-47b3-9b35-eb4ebe716385",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "583b8212-74dc-49c5-a52b-fb44a47077e7",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "896aa0be-1221-47b3-9b35-eb4ebe716385",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "5b2e008d-9060-4ea4-89da-5bfc5743d758",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "5dc0d2ec-1f55-4ab0-8504-8de35512cf12",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "631e587f-7b3f-4174-b4d3-9d2ec782229b",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "224f671a-e6a5-4d75-ae82-881f1b057b98",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6aba18d3-a6f8-4e7a-96d0-76ac27a629c1",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6e509d5f-466f-4bd0-893b-eb3440122c9e",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "e3080614-168b-4a89-a78a-03e2fbed9c83",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "6e8af161-6dee-450d-b3a3-83d2dc29afaa",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "224f671a-e6a5-4d75-ae82-881f1b057b98",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "7109ceb0-b33d-47c2-b2f3-5e04b133a3b8",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "67a80f54-93f6-4bc3-87a6-98d1900f6a0b",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "71e67ebd-6ef9-4cf8-a2ac-225d2b77c9ea",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "046c9101-ce6e-4c62-8ede-7b3f9e9092b0",
+            "bound_points": 2
+          },
+          {
+            "answer_id": "75ee4585-0b8a-4199-b3b4-f2ce46182d84",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "7b20a0a4-e96d-49d3-be66-172aa660cff7",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "82b6cdc5-c4f8-4e8b-b3bb-01c2eecdd492",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "86b112dd-cd46-47dd-ad87-b331c560b0e5",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "443c130b-d439-4a09-b4d1-42dd2ae3ae7d",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "88f5e4f8-6269-466f-a0aa-ec39bc9c193d",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "443c130b-d439-4a09-b4d1-42dd2ae3ae7d",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "915dd6bd-917f-42db-a353-964846ab4ca1",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "e3080614-168b-4a89-a78a-03e2fbed9c83",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "99efb1d5-1420-4334-b386-f9baf733e5e7",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "d62c2242-94ef-46ec-8f72-cf3649ad4e43",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "9e4c9535-02ee-498c-9753-067818abe949",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "046c9101-ce6e-4c62-8ede-7b3f9e9092b0",
+            "bound_points": 2
+          },
+          {
+            "answer_id": "a7c8c1a0-96da-47e2-b2b8-d3d49da5ff23",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "c3f129a6-d1fe-4139-b7e2-63b7b9e0a3eb",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "cb285ad4-4e83-41d9-8d14-ed454d9317d3",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "cbba1ee8-9423-4c46-9787-1a5f92a214a1",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "3bf12cc2-774e-4c7b-8fdd-9c9dfac01e20",
+            "bound_points": 2
+          },
+          {
+            "answer_id": "cdcbb787-d3f9-4f23-bcbb-f0d1df2bb770",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "cdec7bdd-1ac6-452e-b4d9-0722164cb01d",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "da970ae7-6c4a-40f2-a114-6d9c61728ed9",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "d2f4faf5-a94f-476e-b8ae-d4ae188890a7",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "e3080614-168b-4a89-a78a-03e2fbed9c83",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "d3974f7c-7572-44af-9a12-6149d0dac79b",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "a2bfc531-e967-40cb-8989-a98b044cdf82",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "d5eca5cc-1174-4492-b88b-f3c837a07520",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "44ba9bfe-9be8-4325-8971-f3b64a827ea1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "d6c5a8b5-7584-491b-807b-8c0ee705ce13",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "44ba9bfe-9be8-4325-8971-f3b64a827ea1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "dcea345e-179f-4c6b-92f8-92131f18582e",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "df1c66ee-7a5c-4099-8e12-dc371a492de1",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "44ba9bfe-9be8-4325-8971-f3b64a827ea1",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e10d9ad3-2c55-41a3-b796-0351dfbf21ab",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "9781309c-0341-4088-8e4a-d76c57262b85",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "e1c5e91c-5ba4-4c34-a450-18afc17ae541",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "3bf12cc2-774e-4c7b-8fdd-9c9dfac01e20",
+            "bound_points": 3
+          },
+          {
+            "answer_id": "e3032530-463c-42b1-b5e6-e2ad9b7f19a9",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "e3080614-168b-4a89-a78a-03e2fbed9c83",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "ea9f6a88-0164-4361-a4e3-ba761eb74921",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "eb8aef91-68cb-4a30-925f-45ed61821d00",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "f57171ff-8da1-4d5d-b479-06576d1e544d",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "896aa0be-1221-47b3-9b35-eb4ebe716385",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "f6431673-3c18-4adc-afcc-93830f338c83",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "f80e041a-9f85-45a3-b1f4-1ef7a37bd3fe",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "896aa0be-1221-47b3-9b35-eb4ebe716385",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "f97a9c27-a354-41db-87f0-95b4d8dd2941",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "896aa0be-1221-47b3-9b35-eb4ebe716385",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "f9f94094-8327-4f74-adba-1ddda70613dd",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          },
+          {
+            "answer_id": "fe293e00-e6ee-4d06-80a0-94d0501eb022",
+            "marking_state": "OVERRIDDEN",
+            "smart_marks": 0,
+            "question_id": "96ae4235-2210-4327-811a-3bde94575e3a",
+            "bound_points": 1
+          }
+        ]
+      }
+    },
+    "d5_1_projection": "tier-1 bound points = 60 \u2014 D5.1's >=25 bothYes is reachable if the tier-1 queue completes with full perPointDecisions capture (\u00a75 of record said ~32; the live breakdown bound-point count is higher)",
+    "drift_vs_operator_order_r0_inventory": "OVERRIDDEN 218\u2192217 answers (2026-10-21\u219222); tier-1 63\u219260; tier-2 56\u219256; tier-3 84\u219284 \u2014 live data moved, worklist regenerated"
+  },
+  "next": [
+    "1. Teacher queue runs the tier worklist (this receipt holds the concrete answer ids): every mark sends perPointDecisions (UUID-keyed, <=50), overrides included (D5.5), authorized teacher accounts only (D5.6)",
+    "2. Re-run scripts/kappa_subject_replica.py (committed) \u2014 POST only if D5.1-D5.4 hold",
+    "3. POST /api/v1/teacher/marking/kappa/evaluate {\"subjectId\":\"e56dc9ee-aa74-426f-94a6-4b72d3dc346b\"} under an authorized teacher/operator identity (D5.6; computedBy = auth.userId)",
+    "4. GET /api/v1/teacher/marking/kappa/latest?subjectId=... read-back",
+    "5. D5.7 composition table on #276 -> D2 closes substantively"
+  ]
+}

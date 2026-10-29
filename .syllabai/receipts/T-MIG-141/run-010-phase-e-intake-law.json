@@ -1,0 +1,41 @@
+{
+  "run": "run-010-phase-e-intake-law",
+  "task": "T-MIG-141",
+  "spec": "docs/SPEC-T-MIG-141-GLYPH-NORMALIZATION.md §7",
+  "operator_gate": "operator order 'C1–C9 acceptance sweep + card close-out' (this session) — Phase E is the card's own next_safe_actions[0] prerequisite for the sweep's C8; executed as the run-010 leg",
+  "parser_commits": {
+    "run-010": "cc9e4c0 (935bbd0..cc9e4c0 pushed + verified on origin/main)",
+    "base": "935bbd0 (the run-009 reconnect law of record)"
+  },
+  "what_landed": {
+    "python_reference_impl": "tools/glmocr/normalize_pua.py — normalize_pua(text, table) (name-aligned with the OEQ donor), load_table (sha-pin fail-closed), CompiledTable normalize/census (born-clean), intake_gate, CLI — byte-exact port of the frozen Phase-B driver semantics (phase_b_apply normalize_factory); ONE disclosed improvement: slice-matching replaces the driver's index probe, which IndexErrors on an end-of-string partial run (equivalence test proves byte-equality on a 400-trial deterministic battery + documents the boundary crash class)",
+    "ocr_batch_integration": "tools/ocr_batch ocr_batch.py v1.1.0 -> v1.2.0 — the document AND every page piece normalized at intake through table.v1.json (the single map home); born-clean gate C-intake-zero-pua FAILS the paper (PaperError) on any surviving artifact — review, never silent serve; manifest/provenance carry the glyphNormalization census (pre/post) + gate + table sha; README byte-faithful law carve-out disclosed (char-level map only, no reflow/rewrap)",
+    "java_consumer": "com.syllabai.parser.structure.glmocr.PuaNormalizer reads the SAME table.v1.json (no second map) — frozen-driver-exact port (slice-match + DROP + C0 space + born-clean census + fail-closed table resolution: env GLYPH_NORMALIZATION_TABLE else repo walk-up); WIRED into the canonical pipeline entry points GlmOcrConformanceDump + GlmOcrAtomizeDump via PuaNormalizer.normalizeAtIntake before parse (identity on artifact-free input — existing fixtures untouched, proven live); GlmOcrGlyphDump = the conformance CLI",
+    "conformance": "tools/glmocr/conformance.py gained the glyph leg — 16 glyph fixture classes at src/test/resources/glyph-normalization/ (32 md files + manifest.json pinning expectedNormalized + censusPre/censusPost + gate per file) covering ALL 84 single entries + all 5 sequence rules + the C0 policy + the DROP class + the born-clean fail-closed law; py/java must agree BYTE-EXACTLY or CI fails on drift; PASS classes must census ZERO post-normalization; the FAIL class must fire the gate; byte-exact reads (no universal-newline translation)"
+  },
+  "gates": {
+    "glyph_conformance": "16/16 classes GREEN (py/java byte-exact + manifest pins + born-clean law)",
+    "semantic_conformance_regression": "25/25 PASS under the intake law (identity on the clean wph11 fixtures) — FULL CONFORMANCE line unchanged",
+    "unit_tests": {
+      "test_normalize_pua.py": "18/18 OK (incl. frozen-driver equivalence battery + bank-sample replay '(ii) <F0CF> 1 B1' -> '(ii) ∉ 1 B1')",
+      "test_ocr_batch.py": "36/36 OK (4 new intake-law tests)",
+      "test_health.py": "25/25 OK (regression)",
+      "test_atomize.py": "16/16 OK (regression)"
+    },
+    "canary": "C-intake-zero-pua PINNED in three places: ocr_batch batch gate + conformance manifest law + named constant of record"
+  },
+  "evidence": [
+    "parser evidence/T-MIG-141/run010-phase-e/conformance-full.txt (57 PASS + FULL CONFORMANCE + GLYPH CONFORMANCE 16/16)",
+    "parser evidence/T-MIG-141/run010-phase-e/test-normalize-pua.txt",
+    "parser evidence/T-MIG-141/run010-phase-e/test-ocr-batch.txt",
+    "parser evidence/T-MIG-141/run010-phase-e/test-health.txt",
+    "parser evidence/T-MIG-141/run010-phase-e/test-atomize.txt"
+  ],
+  "disclosures": [
+    "build method of record for this session's live runs: sandbox javac (Temurin 21) + Maven-Central Jackson 2.17.1 jars (no maven binary in the sandbox); the CI mvn path is unchanged and the harness's m2 classpath discovery still applies; GlmOcrGlyphDump/PuaNormalizer live under src/main/java so the mvn test-compile picks them up",
+    "normalize_pua census counts the DROP class as consumed (not an artifact) and C0 as artifacts only outside the mapped policy — the born-clean law reads POST-normalization census",
+    "the archive tree was restructured since the audit (igcse/.../1c -> international-gcse/.../4CH1-1C) — the run-011 C5 probes use the current of-record path"
+  ],
+  "zero_db_writes": true,
+  "discipline": "additive tools/tests/evidence only; fetch-first; no force; the 347 mode-bit-only dirty files in the sandbox clone left untouched (pre-existing, run-007 disclosure)"
+}

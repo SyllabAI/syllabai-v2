@@ -1,0 +1,64 @@
+{
+  "run": "run-004-f0cf-ruling",
+  "task": "T-MIG-141",
+  "date": "2026-10-24",
+  "operator_order_trace": "1a169e3fdeaecd11",
+  "lane": "r7a (Super Z, session web-da4ab8b1, chat 1f3003b6)",
+  "subject": "Operator ruling on the 2 U+F0CF carrier rows — offered option set {map-as-space, Phase-C re-parse, leave}",
+  "ruling": {
+    "decision": "MAP U+F0CF -> U+2209 (NOT AN ELEMENT OF) — a 4th option the evidence forced; all three offered options refuted",
+    "landed": "syllabai-parser d9c1511 (25e3a39..d9c1511 pushed+verified): table.v1.json 84 entries + 5 sequence_rules, pending_register EMPTY",
+    "carriers": [
+      "chunk e2a2b4c2-ef7b-4756-820a-e7978dba76b5 — 4MA1/1FR JUN 2025 MARK_SCHEME, page 15, atom 20 (F0CF at content offset 529, whitespace-padded, row '(ii) ... F0CF ... 1 B1'; sibling F0C6 on the row above)",
+      "chunk 9cba1315-c47a-48f4-a0c8-cdd673e5463a — 4MA1/1HR JUN 2025 MARK_SCHEME, page 8, atom 5 (identical pattern)"
+    ],
+    "decisive_evidence": [
+      "300dpi MuPDF render: glyph VISIBLE at its exact pdftotext bbox (429.9,84.9,435.0,100.8 pt), shape = element-of-with-slash (U+2209), in both papers",
+      "300dpi poppler cross-render: same glyph drawn — rules out renderer divergence",
+      "grayscale tight-box ink: min=0, mean 218.9 (1FR) / 215.9 (1HR) vs the landed empty-set control (F0C6) mean 217.9 / 217.6 — ink profile indistinguishable from a real glyph",
+      "semantic scaffold: gridblock render shows the marks-grid Answer column '1, 2, 4, 5, 7, 8, 10, 11' / U+2205 / U+2209 each followed by '1 B1' — set-notation answers; SymbolMT plane family F0C6=U+2205 (landed), F0C7=U+2229 (26), F0C8=U+222A (3), F0D0=U+2220 (31); F0CE (= unslashed element-of) has ZERO bank instances (census) so the slashed U+2209 is the only consistent name",
+      "evidence files: syllabai-parser evidence/T-MIG-141/crops-run004-f0cf/ (tight + band + gridblock both papers, poppler cross-render, f0cf_render_probe.json)"
+    ],
+    "offered_options_refuted": {
+      "map-as-space": "the glyph carries a markable set-notation ANSWER ('(ii) … ∉ … 1 B1'); spacing it silently blanks an exam answer cell (re-sim: map-as-space output differs from the correct map on both carriers — damage demonstrated, not stylistic)",
+      "Phase-C re-parse": "the text layer is fully repairable in place now that the glyph is named; re-parse adds OCR/LLM authorship risk (ADR-037 class: converter extracts never authors) for zero gain; Phase-C remains reserved for genuinely beyond-repair documents",
+      "leave": "rests on the run-002b 'no-ink spacer / not nameable' premise, which the renders factually OVERTURN; leaving = permanent PUA garbage in served answer cells + register never closes + bank stuck at 25,397/25,399"
+    },
+    "run002b_verdict_correction": "run-002b's 'no-ink @300dpi' was a probe crop-placement artifact (unreconstructible, disclosed): with the correct pdftotext bbox applied, BOTH MuPDF and poppler draw the glyph; the run-002b register note ('marks-grid spacer or unattributable arc') is OVERTURNED of record"
+  },
+  "verification": {
+    "table_pin": {"repo": "syllabai-parser", "commit": "d9c1511", "entries": 84, "sequence_rules": 5,
+                   "sha256": "1fdd4b4a5ebede2e437473e55a2786dea1a9755d03b68d1eea78a39364e2094a",
+                   "pending_register_items": 0},
+    "full_bank_resim_vs_ruled_table": {
+      "method": "in-memory patch over t0_readonly snapshot (zero DB writes)",
+      "scope": {"union_rows": 2949, "pua_rows": 2765, "ctl_only_rows": 184,
+                 "c9_id_set_sha256": "4014404b365f21b49e03997c53903a0145189c66ac58a9de38c56d3843c1c037",
+                 "c9_stable_vs_run003": true,
+                 "before_images_content_identical_to_run003": true},
+      "G-B_header_integrity": {"violations": 0},
+      "G-C_bounded_delta": {"substitution_instances": 20033, "F0CF_subs": 2, "drop_instances": 5146,
+                             "seq_runs": 55, "seq_runs_used": {"SEQ-A1": 15, "SEQ-A2": 30, "SEQ-A3": 1, "SEQ-B4": 7, "SEQ-B5": 2},
+                             "seq_chars": 220, "ctl_spaced": 2000, "len_delta": -5311,
+                             "accounting_note": "run-003 receipt JSON pinned 20,031 singles; +2 F0CF = 20,033 EXACT (the '20,078' in prose was the coverage-law 'singles - seq-covered 47' blend)"},
+      "G-D_zero_artifact_post_state": {"clean_rows": 2949, "exception_rows": 0, "residual_pua": {},
+                                         "headline": "wired-bank PUA coverage 25,399/25,399 = 100%; residual ZERO"},
+      "G-E_control_group": {"pinned": 200, "identical_to_run003_pin": true},
+      "idempotence_failures": 0,
+      "f0cf_option_disproof": {
+        "correct_map": "byte-exact vs independent expected rebuild on both carriers; post-state '(ii) … ∉ … 1 B1'",
+        "map_as_space": "differs from correct on both carriers (answer blanked) — damage demonstrated"
+      }
+    },
+    "embed_pre_state": [{"embed_rev": 2, "rows": 2949, "no_vec": 273}]
+  },
+  "disclosures": [
+    "The ruling is a 4th option outside the operator's offered set; operator retains overturn rights — the change is additive, reversible (before-images of record), and DB-writes remain ungated-none (repo-side only).",
+    "run-002b F0CF evidence line in table.v1 (render_ref 'b_evidence/UFF0CF_tight300...') described the artifact probe; the new entry + README run-004 section supersede it and document the artifact.",
+    "Phase-B real write run remains operator-gated; this run changed NO DB rows."
+  ],
+  "next_safe_actions": [
+    "operator go/no-go: Phase-B real write run on the FULL 2,949-row union (zero exceptions now)",
+    "Phase B via CI-gate Actions pattern; embed_rev -> 1 stale-marker; Phase D re-embed fold-in (273 no-vec rows on scope)"
+  ]
+}

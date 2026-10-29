@@ -1,0 +1,46 @@
+{
+  "lane": "T-SM-EDX-INGEST",
+  "run": "edx-ingest-r0",
+  "operator_order_trace": "1a163bc5c7ebebf5",
+  "operator_order": "\"kick off an Edexcel bundle ingest for a priority subset (e.g. the linear IGCSE sciences 4BI1/4PH1/4SD0 first)\" (IM, 2026-10-22)",
+  "date": "2026-10-22",
+  "target_rows": [
+    {"slug": "igcse-biology-19", "code": "4BI1"},
+    {"slug": "igcse-physics-19", "code": "4PH1"},
+    {"slug": "igcse-science-double-award-17-biology", "code": "4SD0", "outcome": "PARKED — see sd0_strand_defect"},
+    {"slug": "igcse-science-double-award-17-chemistry", "code": "4SD0", "outcome": "PARKED — see sd0_strand_defect"},
+    {"slug": "igcse-science-double-award-17-physics", "code": "4SD0", "outcome": "PARKED — see sd0_strand_defect"}
+  ],
+  "preflight": {
+    "sandbox_rollback_4": "turn-start deep restore destroyed .creds/, repos/, recon outputs; nothing of record affected (ingest had not started); creds re-supplied by operator (GitHub PAT, Vercel token, Neon DSN, Neon API token, 24-hex operator ref 0a85d7624284cb970c417f17 — opaque, NOT a sha256 of any DSN rendering tested)",
+    "dsn_localgate": "string-fingerprint did NOT match the of-record localgate (b289a2298e707904) under 5 renderings — DATA census gate used instead and PASSED exactly: questions 22,906/14,708, sme-eq 21,973/13,096, smart_mark_results 368/244@2026-10-19; deltas noted: validated schemes 22,729→22,740 (+11, foreign activity), ALL-scope passed kappa evals 1→11 (foreign activity, flagged to operator)",
+    "channel_binding_deviation": "postgres.js cannot parse channel_binding=require (instant AggregateError, verified); stripped from SEED_DATABASE_URI; TLS posture unchanged (sslmode=require kept + scripts pass ssl:'require' explicitly)",
+    "subjects_precheck": "4PH1 subject row existed with knowledge root (86265a33); 4BI1/4SD0 had NO subject rows (curriculum seed prerequisite)"
+  },
+  "seeds": {
+    "igcse-biology-19": "APPLIED — subject 8b2c0ac9, root ed25a7be, cv 11f24a2c (4BI1-2017), 5 units / 22 topics / 176 specPoints, 204 nodes / 203 edges / 176 applicability (6m02s)",
+    "igcse-physics-19": "SEED SKIPPED BY LAW — knowledge node 4PH1 exists with provenance src@75755855 vs bundle pin src@08447ba9; the seeder's requireSeedNode honestly refuses cross-provenance re-seed ('resolve manually, never re-seed over it'). Resolution: existing tree left untouched; the questions ingest resolves spec codes against it fail-closed — see ingest result (489/489, zero failures: the existing tree fully serves the current bundle)",
+    "sd0_x3": "DEFECT DISCOVERED BEFORE APPLY — see sd0_strand_defect; the biology SD0 seed WAS applied at 14:03:43Z and then surgically UNDONE (own-lane artifact, zero questions/learner/teacher data — 8 in-tx abort assertions; 161 nodes / 160 edge endpoints / 1 subject / 1 cv deleted, all provenance-scoped to the lane's exact provenance string)"
+  },
+  "sd0_strand_defect": {
+    "finding": "the three 4SD0 strand bundles derive COLLIDING knowledge-node codes: biology T1 'The nature and variety of living organisms' and chemistry T1 'Principles of chemistry' both map to 4SD0-S1; spec-point codes collide too (4SD0-1.1 = bio 'living organisms share…' vs chem 'three states of matter')",
+    "proven_pattern": "the CIE 0973 triple-strand corpus (same one-code-three-strands shape) embeds the strand letter in topic codes (…-2025-2027-TB1/TC/TP) — 782 nodes, zero collisions, one subject root",
+    "ruling": "SD0 bundles are defective UPSTREAM (T-CONSUME-EDX export law); the honest seeder refused the graft; keeping the bare-code biology tree would sabotage any future strand-coded re-export, so the lane undid its own seed and parked all three SD0 rows",
+    "followup": "re-export the 4SD0 bundles with strand-disambiguated codes mirroring the CIE 0973 law, then re-run this lane's seed+ingest for the three rows"
+  },
+  "ingest": {
+    "atomicity_deviation_disclosed": "the of-record runner wraps the whole course in ONE transaction; this sandbox hard-kills tool calls at ~10 min and reaps background children (verified twice incl. setsid), so no 324-489Q course ingest can complete in one call. apps/api/scripts/slice-ingest-bundle-questions.ts (committed for audit) runs the SAME shim + SAME frozen SmeQuestionIngestService + SAME flattenTx seam with ONE TRANSACTION PER QUESTION-SET (ADR-026 replace is slice-scoped by construction: deactivation of exactly the re-emitted refs = exactly the slice's refs); resume ledger at scripts/recon/slice-ledger-*.json; per-slice dry-run proof ran first (GREEN, deactivated:0); idempotent; end state censused equal to single-tx semantics",
+    "igcse-biology-19": "21/21 sets committed — 322 refs, 322 VALIDATED, 322 STRUCTURED, 858 spec joins; raw 324 → 2 honestly excluded by the anchor law (human-influences q15, food-production q11: parts carry NO spec codes — un-joinable to the KG, never rewritten); long-topic refs use the compressed-head branch of the smeRef law as designed",
+    "igcse-physics-19": "24/24 sets committed — 489 refs, 489 VALIDATED, 489 STRUCTURED, 984 spec joins; ZERO exclusions; the pre-existing 4PH1 tree (src@75755855) fully serves the current bundle (src@08447ba9)",
+    "bank_totals": "questions 22,906→23,717 (+811 = 322+489, exact); STRUCTURED 14,708→15,519 (+811, exact)"
+  },
+  "flip": [
+    {"slug": "igcse-biology-19", "code": "4BI1", "changes": ["coreBridge:true", "curriculumCode:4BI1-2017 (the fill-where-served law; the cv row was created by this lane's seed and is ACTIVE)"], "validated_refs": 322},
+    {"slug": "igcse-physics-19", "code": "4PH1", "changes": ["coreBridge:true (curriculumCode 4PH1-2017 already of record)"], "validated_refs": 489}
+  ],
+  "flip_totals": {"courses": 2, "validated_bridgable_questions": 811, "coreBridge_law_of_record": "26 rows (24 prior + these 2)"},
+  "validator_pin_advance": "validate_cie_bundles.ts global coreBridge pin advanced 24→26 rows (the designed two-file change class, r1 precedent); local prebuild chain 393 PASS / 0 FAIL (same of-record count); full local hub build GREEN (1m47s)",
+  "rebase": "origin/main advanced 322b32f→e589a43 (parallel HUB-SYNC-W17 lane, PR #301) mid-lane; change set rebased cleanly (no overlap on touched files); .syllabai/worklog.md union-resolved over the fetched version",
+  "verification_plan": "post-merge: hub auto-build (git-linked syllabai-hub-v2); depth-1 /api/core/questions probes with a fresh disclosed probe learner: available:true expected for igcse-biology-19 + igcse-physics-19; negative control igcse-science-double-award-17-biology must stay not_pilot (parked)",
+  "credential_note": "all operator-supplied secrets installed 600 under .creds/; rotation still recommended at lane close"
+}

@@ -1,0 +1,204 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_nzW5ppBTV3ZnfSYY",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "276fadb176a242513e52b0fad6d98858e49128242028ea4f4ede205a9a7fef25",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_nzW5ppBTV3ZnfSYY",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Extraction & Uses of Metals",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-5-extraction-and-uses-of-metals/2-5-2-extracting-metals",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.23C",
+        "text": "explain how the method of extraction of a metal is related to its position in the reactivity series, illustrated by carbon extraction for iron and electrolysis for aluminium"
+      },
+      {
+        "code": "4CH1-2.24C",
+        "text": "be able to comment on a metal extraction process, given appropriate information detailed knowledge of the processes used in the extraction of a specific metal is not required"
+      }
+    ],
+    "primer": {
+      "text": "From Reactivity Series you know that carbon sits part-way up the ranking and that more reactive metals hold oxygen more tightly. This note applies the ranking to industry: metals above carbon need electrolysis, those below can be reduced by coke, and the blast furnace and the aluminium cell show both routes in detail.",
+      "prerequisiteSubtopic": "Reactivity Series"
+    },
+    "modules": [
+      {
+        "id": "rn_nzW5ppBTV3ZnfSYY::L1",
+        "title": "Extraction of metals and the reactivity series",
+        "sourceHeadings": [
+          "Extraction of metals and the reactivity series",
+          "Extraction of iron from hematite"
+        ],
+        "specRefs": [
+          "4CH1-2.23C",
+          "4CH1-2.24C"
+        ],
+        "opening": "A metal's position in the reactivity series decides how it is extracted. Metals above carbon are too reactive to be reduced by it, so electrolysis is used, while those below carbon are extracted by heating with this cheap reducing agent. Iron, sitting mid-series, is won from hematite in the blast furnace, a continuous process making thousands of tonnes per day.",
+        "keyPoints": [
+          "The more reactive a metal, the higher it sits in the series and the more readily it is oxidised.",
+          "Metals above carbon in the series must be extracted by electrolysis of their molten compounds.",
+          "Metals below carbon are extracted by heating with carbon, a cheap reducing route.",
+          "In the blast furnace, coke burns in hot air and the exothermic reaction heats the furnace.",
+          "Carbon monoxide reduces the iron(III) oxide to molten iron, which is tapped off at the bottom."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Reactivity picks the method: electrolysis for metals above carbon, heating with carbon for those below. In the furnace, coke makes carbon monoxide, which strips oxygen from iron ore so molten iron collects at the bottom.",
+            "analogy": "Think of carbon as a customer with a fixed budget for oxygen: it can afford to buy oxygen from metals it outranks, but not from those above it.",
+            "examPointer": "Learn the three zones in order and what each does: burning coke, making carbon monoxide, then reducing the ore."
+          },
+          "medium": {
+            "restatement": "The extraction method tracks the series: above carbon, electrolysis of the molten compound is the only route; below carbon, cheap coke does the reduction. In the blast furnace, coke burns to heat the furnace, more coke converts carbon dioxide into carbon monoxide, and carbon monoxide reduces iron(III) oxide to iron while limestone removes acidic impurities as slag.",
+            "analogy": "Picture a production line where each zone hands over to the next: the heat made in zone one fuels the chemistry of zones two and three.",
+            "examPointer": "Comment-style questions give information to read: match the process described to the reactivity position before judging its cost or suitability."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_nzW5ppBTV3ZnfSYY::L1::Q1",
+          "rn_nzW5ppBTV3ZnfSYY::L1::Q2",
+          "rn_nzW5ppBTV3ZnfSYY::L1::Q3",
+          "rn_nzW5ppBTV3ZnfSYY::L1::Q4",
+          "rn_nzW5ppBTV3ZnfSYY::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_nzW5ppBTV3ZnfSYY::L2",
+        "title": "Extraction of aluminium",
+        "sourceHeadings": [
+          "Extraction of aluminium"
+        ],
+        "specRefs": [
+          "4CH1-2.23C",
+          "4CH1-2.24C"
+        ],
+        "opening": "Aluminium sits above carbon, so its oxide cannot be reduced by coke and electrolysis is used instead. Its ore, bauxite, is purified to aluminium oxide and dissolved in molten cryolite, which cuts the operating temperature from over 2000 degrees Celsius. At the cathode aluminium ions gain electrons; at the anode oxide ions lose them, and the oxygen released gradually burns the graphite anodes away.",
+        "keyPoints": [
+          "Aluminium is above carbon in the reactivity series, so carbon cannot reduce its oxide.",
+          "Bauxite is purified to aluminium oxide and dissolved in molten cryolite.",
+          "Cryolite lowers the melting point of the mixture, saving the energy cost of melting pure aluminium oxide.",
+          "At the cathode aluminium ions gain electrons, and molten aluminium collects at the bottom.",
+          "At the anode oxide ions lose electrons, and the oxygen released reacts with the graphite so the anodes wear away."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Electricity does what carbon cannot: at the cathode, aluminium ions pick up electrons and turn into molten metal that collects at the bottom of the cell, while oxide ions give up electrons at the anode and form oxygen gas. Dissolving the purified oxide in molten cryolite keeps the melting point of the mixture workable, so the cell does not need enormous heating.",
+            "analogy": "Like a crowded train with two doors: passengers, the electrons, step off at one door and an equal number step on at the other, so the total never changes even though everyone has moved.",
+            "examPointer": "Be ready to give both electrode half-equations, to explain why the anodes must be replaced regularly, and to name electricity as the major expense."
+          },
+          "medium": {
+            "restatement": "Electrolysis is chosen because aluminium outranks carbon: aluminium ions are reduced at the cathode to molten metal, while oxide ions are oxidised at the anode, releasing oxygen that burns the graphite anodes away. Dissolving the purified oxide in molten cryolite cuts the temperature needed, though the electricity demand remains the major expense of the process.",
+            "analogy": "Think of the cell as a battery-powered tug of war: electrons are pulled off oxide ions at one electrode and handed to aluminium ions at the other, so both changes happen together.",
+            "examPointer": "The classic comparison asks why aluminium uses electrolysis while iron uses carbon reduction; answer from reactivity position first, then mention cost."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_nzW5ppBTV3ZnfSYY::L2::Q1",
+          "rn_nzW5ppBTV3ZnfSYY::L2::Q2",
+          "rn_nzW5ppBTV3ZnfSYY::L2::Q3",
+          "rn_nzW5ppBTV3ZnfSYY::L2::Q4",
+          "rn_nzW5ppBTV3ZnfSYY::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "blast furnace",
+          "definition": "The tall, continuously running furnace in which iron is extracted from hematite by carbon monoxide reduction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "hematite",
+          "definition": "The iron(III) oxide ore charged into the blast furnace.",
+          "firstLesson": 1
+        },
+        {
+          "term": "coke",
+          "definition": "An impure form of carbon that burns to heat the furnace and provides the reducing agent.",
+          "firstLesson": 1
+        },
+        {
+          "term": "limestone",
+          "definition": "Calcium carbonate added to the furnace to remove acidic impurities as slag.",
+          "firstLesson": 1
+        },
+        {
+          "term": "slag",
+          "definition": "The molten calcium silicate waste that floats on the iron and is tapped off separately.",
+          "firstLesson": 1
+        },
+        {
+          "term": "electrolysis",
+          "definition": "Splitting a compound into its elements with electricity, used for metals above carbon.",
+          "firstLesson": 1
+        },
+        {
+          "term": "cryolite",
+          "definition": "The molten solvent in which aluminium oxide is dissolved to lower the operating temperature.",
+          "firstLesson": 2
+        },
+        {
+          "term": "ore",
+          "definition": "A rock containing enough metal to make extracting it worthwhile.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "a) Explain why iron is extracted by carbon reduction but aluminium by electrolysis. b) Write the equation for the reduction step in the blast furnace. c) Write the half-equations for the two electrodes in aluminium extraction and explain why the anodes must be replaced regularly.",
+        "steps": [
+          "a) Iron sits below carbon in the reactivity series, so cheap carbon (as carbon monoxide) can reduce its oxide; aluminium sits above carbon, so carbon cannot reduce its oxide and electrolysis is used instead.",
+          "b) The blast-furnace reduction of record: Fe2O3 (s) + 3CO (g) → 2Fe (l) + 3CO2 (g).",
+          "c) Cathode: Al3+ + 3e- → Al (reduction). Anode: 2O2- → O2 + 4e- (oxidation). The oxygen released reacts with the carbon of the graphite anodes to form CO2, burning them away, so the anodes are replaced regularly."
+        ],
+        "finalAnswer": "a) Iron is below carbon (carbon reduction); aluminium is above it (electrolysis). b) Fe2O3 + 3CO → 2Fe + 3CO2. c) Al3+ + 3e- → Al and 2O2- → O2 + 4e-; the oxygen burns the graphite anodes away."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4706b9965ae1-diagram-showing-the-carbon-extraction-of-iron.png",
+        "alt": "The blast furnace",
+        "sourceHeading": "The blast furnace",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/96f86d3c38b1-extraction-of-al.png",
+        "alt": "extraction-of-al",
+        "sourceHeading": "The electrolytic cell for extraction of aluminium",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
+  }
+}

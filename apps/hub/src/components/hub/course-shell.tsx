@@ -26,6 +26,7 @@ import {
   PanelLeftClose,
   PanelLeftOpen,
   ScrollText,
+  Sparkles,
   Target,
   X,
 } from "lucide-react";
@@ -180,6 +181,13 @@ export function CourseShell({
           badge: courseHasBookArchive(data.course.slug) ? undefined : "roadmap",
         },
         { href: `${base}/flashcards`, label: "Flashcards", icon: CircleHelp },
+        // T-SENECA-001 Task 43: harvested Seneca course content — the row
+        // only renders for courses with a registered Seneca bundle under the
+        // live flag (courses without a mapping show nothing, never a
+        // disabled placeholder).
+        ...(data.seneca
+          ? [{ href: `${base}/seneca`, label: "Seneca Resources", icon: Sparkles, badge: data.seneca.total.toLocaleString() }]
+          : []),
       ],
     },
     {

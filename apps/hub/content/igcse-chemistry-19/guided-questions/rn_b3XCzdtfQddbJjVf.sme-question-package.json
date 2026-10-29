@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_b3XCzdtfQddbJjVf",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "824406048187423327988ec44c0578ed7d464485dc36747823934f50e19faf6e",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_b3XCzdtfQddbJjVf",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L1::Q1",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L1",
+      "stem": "What runs along the modern periodic table's left-to-right order?",
+      "misconceptionClass": "ordering principle",
+      "options": [
+        {
+          "key": "A",
+          "text": "Increasing atomic number",
+          "correct": true,
+          "explanation": "Every step along the table adds one proton, which is what atomic number counts.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Increasing atomic mass",
+          "correct": false,
+          "explanation": "Mass-based ordering was the older idea; the modern table follows proton count.",
+          "misconception": "historical mass ordering carried forward"
+        },
+        {
+          "key": "C",
+          "text": "Date of discovery",
+          "correct": false,
+          "explanation": "Discovery order would scatter similar elements; the table orders by structure.",
+          "misconception": "history confused with arrangement"
+        },
+        {
+          "key": "D",
+          "text": "Alphabetical order of name",
+          "correct": false,
+          "explanation": "Names are labels, not the organising principle.",
+          "misconception": "labelling mistaken for ordering"
+        }
+      ]
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L1::Q2",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L1",
+      "stem": "How does an element's proton count compare with its left-hand neighbour's?",
+      "misconceptionClass": "one-proton step",
+      "options": [
+        {
+          "key": "A",
+          "text": "Exactly one more",
+          "correct": true,
+          "explanation": "Adjacent elements differ by a single proton, which is why the order is so regular.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Eight more",
+          "correct": false,
+          "explanation": "Eight is a period-length idea, not the neighbour-to-neighbour step.",
+          "misconception": "period length applied to neighbours"
+        },
+        {
+          "key": "C",
+          "text": "It doubles",
+          "correct": false,
+          "explanation": "Doubling would tear through the sequence; the step is one.",
+          "misconception": "growth pattern invented"
+        },
+        {
+          "key": "D",
+          "text": "There is no fixed pattern",
+          "correct": false,
+          "explanation": "The pattern is as fixed as it gets: plus one every step.",
+          "misconception": "regularity denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L1::Q3",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L1",
+      "stem": "Why is the table ordered by atomic number rather than by something else?",
+      "misconceptionClass": "purpose of the ordering",
+      "options": [
+        {
+          "key": "A",
+          "text": "So that elements with similar properties end up in the same columns",
+          "correct": true,
+          "explanation": "The arrangement is functional: chemical families gather vertically.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because atomic numbers are easier to spell",
+          "correct": false,
+          "explanation": "The choice is chemical, not cosmetic.",
+          "misconception": "trivial reason substituted"
+        },
+        {
+          "key": "C",
+          "text": "Because proton counts can change during reactions",
+          "correct": false,
+          "explanation": "Proton counts are fixed; that stability is precisely why they can anchor the table.",
+          "misconception": "fingerprint property inverted"
+        },
+        {
+          "key": "D",
+          "text": "So the table fits neatly on one page",
+          "correct": false,
+          "explanation": "Page layout has nothing to do with it; property patterns do.",
+          "misconception": "layout mistaken for logic"
+        }
+      ]
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L1::Q4",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L1",
+      "stem": "In a reaction an atom gains electrons. Which number is unchanged?",
+      "misconceptionClass": "fingerprint invariance",
+      "options": [
+        {
+          "key": "A",
+          "text": "The atomic number",
+          "correct": true,
+          "explanation": "Electron changes cannot touch the proton count, so the element keeps its identity.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The electron count",
+          "correct": false,
+          "explanation": "That is exactly what changed when the electron was gained.",
+          "misconception": "the changed quantity missed"
+        },
+        {
+          "key": "C",
+          "text": "The ion's charge",
+          "correct": false,
+          "explanation": "Gaining an electron alters the charge by definition.",
+          "misconception": "charge assumed fixed"
+        },
+        {
+          "key": "D",
+          "text": "None - gaining an electron makes a new element",
+          "correct": false,
+          "explanation": "Only a change in proton count makes a new element; electrons merely make ions.",
+          "misconception": "electron change read as transmutation"
+        }
+      ]
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L1::Q5",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L1",
+      "stem": "Where do elements with similar chemical properties end up in the table?",
+      "misconceptionClass": "property columns",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the same vertical column",
+          "correct": true,
+          "explanation": "Similar properties sharing a column is the payoff of the atomic-number ordering.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "In the same horizontal row",
+          "correct": false,
+          "explanation": "Rows collect neighbours in proton count, not chemical look-alikes.",
+          "misconception": "rows and columns swapped"
+        },
+        {
+          "key": "C",
+          "text": "Diagonally opposite each other",
+          "correct": false,
+          "explanation": "No diagonal rule governs the basic arrangement.",
+          "misconception": "invented placement rule"
+        },
+        {
+          "key": "D",
+          "text": "Scattered at random",
+          "correct": false,
+          "explanation": "The whole design exists to keep chemical families together.",
+          "misconception": "design denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L2::Q1",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L2",
+      "stem": "Which description matches the table's rows and columns?",
+      "misconceptionClass": "rows vs columns",
+      "options": [
+        {
+          "key": "A",
+          "text": "Periods are rows; groups are columns",
+          "correct": true,
+          "explanation": "The vocabulary is fixed: periods across, groups down.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Periods are columns; groups are rows",
+          "correct": false,
+          "explanation": "The two names are swapped; remember groups go down like gravity.",
+          "misconception": "row and column labels swapped"
+        },
+        {
+          "key": "C",
+          "text": "Both rows and columns are called groups",
+          "correct": false,
+          "explanation": "Only the vertical columns carry the name group.",
+          "misconception": "vocabulary collapsed"
+        },
+        {
+          "key": "D",
+          "text": "Neither direction has a special name",
+          "correct": false,
+          "explanation": "Both directions are named because both carry information.",
+          "misconception": "naming dismissed"
+        }
+      ]
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L2::Q2",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L2",
+      "stem": "What does the period number tell you about an atom?",
+      "misconceptionClass": "period meaning",
+      "options": [
+        {
+          "key": "A",
+          "text": "How many shells of electrons it holds",
+          "correct": true,
+          "explanation": "Period 3 atoms have three shells; the row number is the shell count.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "How many electrons are in the outer shell",
+          "correct": false,
+          "explanation": "That is the group number's job, not the period's.",
+          "misconception": "group meaning assigned to period"
+        },
+        {
+          "key": "C",
+          "text": "How many protons it has",
+          "correct": false,
+          "explanation": "Proton count is the atomic number, read from order rather than position name.",
+          "misconception": "atomic number conflated with period"
+        },
+        {
+          "key": "D",
+          "text": "How many neutrons it has",
+          "correct": false,
+          "explanation": "Neutrons vary between isotopes and appear nowhere in the position numbers.",
+          "misconception": "neutrons drafted in"
+        }
+      ]
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L2::Q3",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L2",
+      "stem": "What does the group number tell you about an atom?",
+      "misconceptionClass": "group meaning",
+      "options": [
+        {
+          "key": "A",
+          "text": "How many electrons sit in its outermost shell",
+          "correct": true,
+          "explanation": "Group 4 atoms carry four outer electrons; the column is the outer count.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "How many shells it holds",
+          "correct": false,
+          "explanation": "Shell count comes from the period row, not the group column.",
+          "misconception": "period meaning assigned to group"
+        },
+        {
+          "key": "C",
+          "text": "How many isotopes the element has",
+          "correct": false,
+          "explanation": "Isotope counts are properties of samples and discovery, not of position.",
+          "misconception": "unrelated property attached"
+        },
+        {
+          "key": "D",
+          "text": "Its atomic mass",
+          "correct": false,
+          "explanation": "Atomic mass is a separate number printed in the element's box.",
+          "misconception": "box numbers confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L2::Q4",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L2",
+      "stem": "Which numbering does the table use for its columns?",
+      "misconceptionClass": "Group 0 convention",
+      "options": [
+        {
+          "key": "A",
+          "text": "1 to 7, then a final column called Group 0",
+          "correct": true,
+          "explanation": "The last column is named 0 instead of 8 - a naming convention of the table.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0 to 7, starting at the left",
+          "correct": false,
+          "explanation": "The leftmost column is Group 1; the 0 belongs to the far right.",
+          "misconception": "zero shifted to the start"
+        },
+        {
+          "key": "C",
+          "text": "1 to 8 with no exceptions",
+          "correct": false,
+          "explanation": "The final column deliberately breaks the run and is called Group 0.",
+          "misconception": "uniform numbering assumed"
+        },
+        {
+          "key": "D",
+          "text": "Letters A to H",
+          "correct": false,
+          "explanation": "This course numbers the groups; letters belong to other table styles.",
+          "misconception": "other table styles imported"
+        }
+      ]
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L2::Q5",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L2",
+      "stem": "An atom has 3 shells and 5 electrons in its outermost. Where does it sit?",
+      "misconceptionClass": "position from counts",
+      "options": [
+        {
+          "key": "A",
+          "text": "Period 3, Group 5",
+          "correct": true,
+          "explanation": "Shell count sets the period, outer-electron count sets the group.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Period 5, Group 3",
+          "correct": false,
+          "explanation": "The two translations are swapped; shells give the period.",
+          "misconception": "translations reversed"
+        },
+        {
+          "key": "C",
+          "text": "Period 3, Group 0",
+          "correct": false,
+          "explanation": "Group 0 is the last column's name, not a home for five outer electrons.",
+          "misconception": "Group 0 misapplied"
+        },
+        {
+          "key": "D",
+          "text": "Period 8, Group 5",
+          "correct": false,
+          "explanation": "Periods run only 1 to 7; three shells means Period 3.",
+          "misconception": "invented period number"
+        }
+      ]
+    }
+  ]
+}

@@ -117,6 +117,64 @@ export function collectPastPapers(banks: QuestionBankLike[]): PastPaper[] {
   );
 }
 
+/**
+ * Paper keys (dateSlug-numberSlug) attested by the given banks. The official
+ * ADR-037 plane is the source of record: wherever it reconstructs a paper,
+ * that paper is fully held there (the exporter passes the SME content through
+ * byte-identically into the official bundle).
+ */
+export function officialCoveredKeys(banks: QuestionBankLike[]): Set<string> {
+  const covered = new Set<string>();
+  for (const bank of banks) {
+    for (const q of bank.questions) {
+      const meta = paperMeta(q);
+      if (meta) covered.add(`${slugify(meta.date)}-${slugify(meta.number)}`);
+    }
+  }
+  return covered;
+}
+
+/**
+ * Drop SME questions whose sourcePaper key is covered by the official plane.
+ * Per PAPER KEY, not per question: mixing the partial SME provenance into a
+ * complete official reconstruction concatenated both planes' copies of every
+ * question (maths-B: 63 collided keys × 2 = every question twice on the
+ * player, s-serve-1 dup report). Chemistry never hit this only because its
+ * SME sourcePaper refs never collide with its official keys. Questions with
+ * no sourcePaper can't collide and are kept (they never reach the grouping
+ * anyway); SME-only paper keys (e.g. maths-B May 2020) survive untouched.
+ */
+export function dropOfficialCoveredSme(
+  covered: Set<string>,
+  banks: QuestionBankLike[],
+): QuestionBankLike[] {
+  if (covered.size === 0) return banks;
+  return banks.map((bank) => ({
+    ...bank,
+    questions: bank.questions.filter((q) => {
+      const meta = paperMeta(q);
+      return !meta || !covered.has(`${slugify(meta.date)}-${slugify(meta.number)}`);
+    }),
+  }));
+}
+
+/**
+ * collectPastPapers over the two planes with official precedence: the
+ * official banks first, and the SME banks filtered down to papers the
+ * official plane does NOT cover. All past-paper surfaces (rail + player)
+ * must build their reconstructions through this — calling collectPastPapers
+ * directly on the raw concatenation re-introduces the doubled questions.
+ */
+export function collectPastPapersTwoPlane(
+  official: QuestionBankLike[],
+  sme: QuestionBankLike[],
+): PastPaper[] {
+  return collectPastPapers([
+    ...official,
+    ...dropOfficialCoveredSme(officialCoveredKeys(official), sme),
+  ]);
+}
+
 export function hasPastPapers(banks: QuestionBankLike[]): boolean {
   return banks.some((b) => b.questions.some((q) => q.parts.some((p) => p.sourcePaper?.date || p.sourcePaper?.number)));
 }

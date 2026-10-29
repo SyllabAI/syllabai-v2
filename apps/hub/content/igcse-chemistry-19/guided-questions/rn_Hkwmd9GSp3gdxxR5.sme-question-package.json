@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_Hkwmd9GSp3gdxxR5",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "ac3c01fe9c7f4f21ecd4afc4ec026b597763ca9480a3d72ff81abb07e9458127",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_Hkwmd9GSp3gdxxR5",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L1::Q1",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L1",
+      "stem": "What does the molecular formula show that the empirical formula does not?",
+      "misconceptionClass": "formula-distinction error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The actual number of each type of atom in one molecule",
+          "correct": true,
+          "explanation": "The empirical form only fixes the ratio; the molecular form states the true counts.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The simplest whole-number ratio",
+          "correct": false,
+          "explanation": "That is the empirical formula's own job; the question asks for the extra information.",
+          "misconception": "definitions swapped"
+        },
+        {
+          "key": "C",
+          "text": "The compound's state at room temperature",
+          "correct": false,
+          "explanation": "Neither formula encodes state; both are atom bookkeeping.",
+          "misconception": "unrelated property invoked"
+        },
+        {
+          "key": "D",
+          "text": "The compound's relative formula mass",
+          "correct": false,
+          "explanation": "Both formulae imply a mass once Ar values are applied; the distinction is about atom counts.",
+          "misconception": "mass property misassigned"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L1::Q2",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L1",
+      "stem": "A compound of iron and oxygen is 70% iron and 30% oxygen (Fe 56, O 16). What is the empirical formula?",
+      "misconceptionClass": "ratio-scaling error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fe2O3",
+          "correct": true,
+          "explanation": "Moles are 1.25 and 1.875; dividing by the smaller gives 1 : 1.5, and doubling makes 2 : 3.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "FeO",
+          "correct": false,
+          "explanation": "1 : 1.5 was rounded down to 1 : 1; the exam hint says multiply to whole numbers, never round away atoms.",
+          "misconception": "ratio rounded down instead of scaled"
+        },
+        {
+          "key": "C",
+          "text": "Fe3O2",
+          "correct": false,
+          "explanation": "Iron holds the smaller mole value, so iron takes the 2 after scaling, not the 3.",
+          "misconception": "ratio order swapped"
+        },
+        {
+          "key": "D",
+          "text": "Fe1.5O",
+          "correct": false,
+          "explanation": "1.5 must be cleared by multiplying every value by two; formulae carry whole atoms.",
+          "misconception": "subscripts left fractional"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L1::Q3",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L1",
+      "stem": "A compound shows 31.58% carbon and 5.26% hydrogen and no other data. What must happen before the mole table can be built?",
+      "misconceptionClass": "data-completeness error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The oxygen percentage is found as 100 - 31.58 - 5.26 = 63.16",
+          "correct": true,
+          "explanation": "Percentages must cover the whole compound; the missing share belongs to the unnamed element, oxygen.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The table is built with carbon and hydrogen only",
+          "correct": false,
+          "explanation": "Ignoring oxygen would silently drop a third of the compound; every element needs a column.",
+          "misconception": "missing element ignored"
+        },
+        {
+          "key": "C",
+          "text": "The percentages are converted to grams by weighing",
+          "correct": false,
+          "explanation": "No weighing is needed; percentages are used directly as if grams of a 100 g sample.",
+          "misconception": "bench step confused with arithmetic"
+        },
+        {
+          "key": "D",
+          "text": "The molecular formula is guessed from carbon's percentage",
+          "correct": false,
+          "explanation": "Guessing skips the evidence; the table method exists to prevent exactly that.",
+          "misconception": "shortcut substituted for method"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L1::Q4",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L1",
+      "stem": "Substance X has empirical formula C4H10S and relative formula mass 180 (C 12, H 1, S 32). What is its molecular formula?",
+      "misconceptionClass": "molecular-formula error",
+      "options": [
+        {
+          "key": "A",
+          "text": "C8H20S2",
+          "correct": true,
+          "explanation": "The empirical mass is (12 x 4) + (1 x 10) + (32 x 1) = 90, so 180 / 90 = 2 and every subscript doubles.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "C4H10S",
+          "correct": false,
+          "explanation": "Treating the empirical form as final ignores the 180; the factor is 2, not 1.",
+          "misconception": "division step skipped"
+        },
+        {
+          "key": "C",
+          "text": "C2H5S",
+          "correct": false,
+          "explanation": "90 / 180 is 0.5, but the molecular formula can never be smaller than the empirical one.",
+          "misconception": "division inverted"
+        },
+        {
+          "key": "D",
+          "text": "C8H10S2",
+          "correct": false,
+          "explanation": "The factor multiplies every subscript; hydrogen was left at 10.",
+          "misconception": "multiplier applied to one element only"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L1::Q5",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L1",
+      "stem": "Benzene's molecular formula is C6H6. What is its empirical formula?",
+      "misconceptionClass": "ratio-simplification error",
+      "options": [
+        {
+          "key": "A",
+          "text": "CH",
+          "correct": true,
+          "explanation": "Both subscripts divide by six, the largest common factor, leaving the simplest ratio.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "C6H6",
+          "correct": false,
+          "explanation": "C6H6 is the molecular formula; simplifying by six is required for the empirical form.",
+          "misconception": "molecular form reused"
+        },
+        {
+          "key": "C",
+          "text": "C2H2",
+          "correct": false,
+          "explanation": "Dividing by three is a start but not the simplest; the ratio must reduce fully.",
+          "misconception": "simplification stopped early"
+        },
+        {
+          "key": "D",
+          "text": "C3H3",
+          "correct": false,
+          "explanation": "Dividing by two still leaves a common factor; keep going until none remains.",
+          "misconception": "partial division again"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L2::Q1",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L2",
+      "stem": "Ethane's empirical formula is CH3 and its molecular formula is C2H6. What is the multiplier?",
+      "misconceptionClass": "multiplier error",
+      "options": [
+        {
+          "key": "A",
+          "text": "2, because the molecular mass 30 divided by the empirical mass 15 is 2",
+          "correct": true,
+          "explanation": "24 + 6 = 30 against 12 + 3 = 15; the ratio of the two masses is the multiplier.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "3, from the subscript of hydrogen",
+          "correct": false,
+          "explanation": "Hydrogen's 3 describes the ratio inside the empirical unit; the multiplier comes from dividing masses.",
+          "misconception": "subscript read as multiplier"
+        },
+        {
+          "key": "C",
+          "text": "6, the total atom count",
+          "correct": false,
+          "explanation": "Six atoms are present in total, but the repeat unit is counted by mass, not by tally.",
+          "misconception": "atom count treated as multiplier"
+        },
+        {
+          "key": "D",
+          "text": "1, since both formulae describe ethane",
+          "correct": false,
+          "explanation": "Both describe the same substance, yet the molecular form holds two empirical units, not one.",
+          "misconception": "identity confused with multiplicity"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L2::Q2",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L2",
+      "stem": "When the empirical table is adapted for a hydrated salt, what are the two columns?",
+      "misconceptionClass": "table-adaptation error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The anhydrous salt and the water",
+          "correct": true,
+          "explanation": "The two components of a hydrated salt replace the elements; everything else in the method survives.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The metal and the non-metal",
+          "correct": false,
+          "explanation": "Water is not an element; the split is by component, not by metal versus non-metal.",
+          "misconception": "composition thinking reused"
+        },
+        {
+          "key": "C",
+          "text": "The hydrated salt and the crucible",
+          "correct": false,
+          "explanation": "The crucible never enters the table; only the two chemical components do.",
+          "misconception": "apparatus mixed into the data"
+        },
+        {
+          "key": "D",
+          "text": "The salt before and after heating",
+          "correct": false,
+          "explanation": "Before and after are measurements of the same salt; the columns are the salt and its water.",
+          "misconception": "stages treated as components"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L2::Q3",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L2",
+      "stem": "11.25 g of hydrated copper sulfate loses water on heating until 7.19 g of anhydrous CuSO4 remains (Mr 159.5; water Mr 18). What is the formula of the hydrated salt?",
+      "misconceptionClass": "hydrated-formula error",
+      "options": [
+        {
+          "key": "A",
+          "text": "CuSO4.5H2O",
+          "correct": true,
+          "explanation": "Water's mass is 11.25 - 7.19 = 4.06 g; moles are 0.045 and 0.226, and 0.226 / 0.045 is 5.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "CuSO4.H2O",
+          "correct": false,
+          "explanation": "The water moles are five times the salt moles; one water understates the ratio badly.",
+          "misconception": "ratio reduced to one"
+        },
+        {
+          "key": "C",
+          "text": "CuSO4.4.06H2O",
+          "correct": false,
+          "explanation": "4.06 is a mass in grams; only moles - after the relative formula mass division - may become subscripts.",
+          "misconception": "grams copied as subscripts"
+        },
+        {
+          "key": "D",
+          "text": "CuSO4.18H2O",
+          "correct": false,
+          "explanation": "18 is water's relative formula mass, not a mole amount; the ratio of moles is five.",
+          "misconception": "water's mass value misused as a count"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L2::Q4",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L2",
+      "stem": "Why must heating continue until the mass is constant in the hydrated-salt work?",
+      "misconceptionClass": "endpoint reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "A constant mass shows every trace of water has been driven off",
+          "correct": true,
+          "explanation": "Lingering water inflates the water column's mass and the deduced x; constant mass is the evidence of completion.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To decompose the anhydrous salt further",
+          "correct": false,
+          "explanation": "Decomposition is contamination here; the target is water removal, nothing more.",
+          "misconception": "decomposition treated as goal"
+        },
+        {
+          "key": "C",
+          "text": "To make the salt absorb extra water",
+          "correct": false,
+          "explanation": "The method removes water; absorbing more would defeat the weighing.",
+          "misconception": "direction reversed"
+        },
+        {
+          "key": "D",
+          "text": "Constant mass proves the crucible is clean",
+          "correct": false,
+          "explanation": "The reading tracks the sample, not the dish's cleanliness.",
+          "misconception": "apparatus concern substituted"
+        }
+      ]
+    },
+    {
+      "id": "rn_Hkwmd9GSp3gdxxR5::L2::Q5",
+      "moduleId": "rn_Hkwmd9GSp3gdxxR5::L2",
+      "stem": "Methane's empirical and molecular formulae are both CH4. Ethene's are CH2 and C2H4. What general pattern follows?",
+      "misconceptionClass": "generalisation error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Some compounds' two forms match, while others differ by a whole-number multiplier",
+          "correct": true,
+          "explanation": "Methane is its own simplest ratio; ethene holds two units - both patterns are normal.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The two forms never match for organic compounds",
+          "correct": false,
+          "explanation": "Methane matches itself exactly; 'often differ' is not 'always differ'.",
+          "misconception": "overclaim from one example"
+        },
+        {
+          "key": "C",
+          "text": "The empirical formula is always half the molecular one",
+          "correct": false,
+          "explanation": "Ethene's factor is two, but benzene needs six; the multiplier varies.",
+          "misconception": "multiplier fixed at two"
+        },
+        {
+          "key": "D",
+          "text": "Ionic compounds follow the molecular pattern",
+          "correct": false,
+          "explanation": "Ionic compounds are written empirically; molecular forms belong to molecules.",
+          "misconception": "ionic rule misapplied"
+        }
+      ]
+    }
+  ]
+}

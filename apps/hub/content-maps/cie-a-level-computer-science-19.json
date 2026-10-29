@@ -20,13 +20,13 @@
   }
  },
  "course": "cie-a-level-computer-science-19",
- "generatedUtc": "2026-10-22T12:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-a-level-computer-science-19/spec_point_index.json": {
    "sha256": "97735e1e44a99a01df5f30db6c4f34c50638d2e6d05c34bcfddd0b6d98997d43"
   },
   "spec-links/cie-a-level-computer-science-19.json": {
-   "sha256": "242c84fd706c7ce7ffb05c0d4e0e3bfacc327712713001802bfa1157ed9245a7"
+   "sha256": "9c02f913244e29c3f0ae7a9d80ef858d76c956cc0ac78cb56ef9d50f49577130"
   },
   "spine": {
    "file": "spines/cie-a-level-computer-science-19.json"
@@ -37442,7 +37442,7 @@
   ],
   "uncoveredSpineCodes": 154
  },
- "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -37458,16 +37458,22 @@
     },
     "itemsWithCodes": 344,
     "ladderCodesRetained": 41,
+    "sidAnchors": {
+     "added": 0,
+     "conflictsKept": 0,
+     "verified": 0
+    },
     "sidecarCodes": 373,
-    "sidecarItems": 1380,
-    "sidecarOnlyItems": 0,
+    "sidecarItems": 1389,
+    "sidecarOnlyItems": 9,
     "t2Hints": 0
    },
    "derivation": "ACCEPTED spec-links sidecar (T-SPECS-CIE join/verdict/gate/rejoin chain) merged item-level: operator-verdict authoritative, T1 gate-verified, J* post-gate identity-grade; T2_near carried as non-authoritative items[].t2HintCodes only; REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": null,
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": null,
    "sidecar": "spec-links/cie-a-level-computer-science-19.json",

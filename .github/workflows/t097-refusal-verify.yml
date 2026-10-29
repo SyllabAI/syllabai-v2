@@ -21,6 +21,13 @@
 #     receipt).
 name: t097-refusal-verify
 
+# RETIRED VEHICLE (2026-10-23, operator decision: "core is fully retired",
+# correction trace 1a16517d60dbb92d — supersedes the retired-origin citation
+# this file carried): the dual-live run-003 recipe requires the LIVE frozen
+# core, whose standalone service has been retired. The job is guarded off;
+# the recipe is retained in git as the migration-era record (run-003 receipt
+# already of record under .syllabai/receipts/T-MIG-097/). Do not dispatch.
+
 on:
   workflow_dispatch:
     inputs:
@@ -38,6 +45,7 @@ concurrency:
 
 jobs:
   verify:
+    if: false  # RETIRED with core (2026-10-23) — dual-live legs cannot dispatch against a retired service
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
@@ -90,7 +98,8 @@ jobs:
 
       - name: Run-003 — the 10-leg refusal matrix, dual-live (CI v2 boot vs the live core)
         env:
-          T097_CORE: "https://syllabai-core.onrender.com"
+          # T097_CORE removed 2026-10-23: the core origin citation was stripped
+          # with the core retirement (f-0009 fix); see the banner above.
           T097_V2: "http://localhost:8081"
           T097_RECEIPT_NAME: "run-003-refusal-verify"
         run: |

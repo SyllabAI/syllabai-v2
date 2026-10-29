@@ -1,0 +1,277 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-bandwave1-r2probe-r0",
+ "date": "2026-10-26",
+ "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+ "trace_id": "1a1746bf0217c575",
+ "operator_order": "\"start \u00a75.3\" (trace 1a1746bf0217c575) \u2014 the band-wave-1 ingest leg of ADR-040 \u00a75, named \"\u00a75.3 converter LEVELS mode against the first band wave corpora (0455\u00d72, 4GE1, 4BS1, 9609 \u2014 corpus-complete, OQ-2 corpus-first)\" on the adr040-prod-apply-r0 disclosure, and scoped by adr040-conv53-r0 as: \"the 0455\u00d72/4GE1/4BS1/9609 corpora through the LEVELS mode \u2014 includes the SME/bundle band-shape design against the real printed tables and the first live R2 probe with parts_with_bands_bound\"",
+ "adr_of_record": "docs/ADR-040-LEVELS_OF_RESPONSE_MARKING.md (ACCEPTED via #356, merge 1aec820)",
+ "ledger_state_on_start": "ADR-040 \u00a75 legs 1\u20134 closed of record: leg 1 acceptance #356 (merge 1aec820) \u00b7 leg 2 additive migration #364 (merge 340ec64) + production apply ceremony GREEN adr040-prod-apply-r0 (0007+0014+0015 live; \u00a75.2 restore-drift finding CLOSED) \u00b7 leg 3 converter LEVELS mode #366 (merge 4f45f8a, adr040-conv53-r0) \u00b7 leg 4 hub band dispatch #370 (merge 7792ae0, adr040-hub-dispatch-r0). Legs 5 (eval lane) and 6 (band waves) open.",
+ "mode": "READ-ONLY production census on the main of-record project (ep-ancient-cake-a52e4kfd/neondb, pooled endpoint). Zero writes, zero DDL, zero registry edits, zero flips. Session-level read-only per connection. Statement inventory: the R2 SQL of record (the awave-bank-census-r0 \u00a75-shape census extended per the conv53 receipt with parts_with_bands_bound + levels_parts_missing_bands) + presence/absence probes by every ref shape + global tripwires + the 4CH1 positive control. Corpus-side grounding read from the hub corpora of record (apps/hub/content/<slug>/questions.json @ main 66b67d4) \u2014 files, not DB.",
+ "instrument_posture": "The band-wave-1 ingest leg's FIRST receipt. The conv53 receipt scoped 'the first live R2 probe with parts_with_bands_bound' to run at this audit leg (no mark_bands rows exist on the estate before the first band ingest) \u2014 this run is that probe, executed live for the first time.",
+ "result": {
+  "A_global_tripwires": {
+   "active_sme_eq": 20930,
+   "of_record": 24824,
+   "match": true,
+   "questions_total": 24846,
+   "questions_active": 21291,
+   "mark_schemes_total": 24824,
+   "schemes_points": 24824,
+   "schemes_levels": 0,
+   "mark_bands_total": 0,
+   "agreement_evals": 12,
+   "serving_banks": {
+    "econ-17": 525,
+    "pure-1": 462,
+    "accounting-17": 254
+   },
+   "banks_of_record": {
+    "econ-17": 525,
+    "pure-1": 462,
+    "accounting-17": 254
+   }
+  },
+  "B_r2_census_by_paper": [
+   {
+    "board": "(no paper)",
+    "qualification": "(no paper)",
+    "structured_parts": 32235,
+    "mcq_parts": 0,
+    "parts_under_validated_scheme": 32235,
+    "parts_with_points_bound": 32235,
+    "parts_with_bands_bound": 0,
+    "levels_parts_missing_bands": 0
+   },
+   {
+    "board": "Edexcel",
+    "qualification": "4CH1",
+    "structured_parts": 1821,
+    "mcq_parts": 0,
+    "parts_under_validated_scheme": 1821,
+    "parts_with_points_bound": 1472,
+    "parts_with_bands_bound": 0,
+    "levels_parts_missing_bands": 0
+   },
+   {
+    "board": "Edexcel",
+    "qualification": "4CH0",
+    "structured_parts": 556,
+    "mcq_parts": 0,
+    "parts_under_validated_scheme": 556,
+    "parts_with_points_bound": 468,
+    "parts_with_bands_bound": 0,
+    "levels_parts_missing_bands": 0
+   },
+   {
+    "board": "unknown-board",
+    "qualification": "4CH1",
+    "structured_parts": 136,
+    "mcq_parts": 0,
+    "parts_under_validated_scheme": 136,
+    "parts_with_points_bound": 119,
+    "parts_with_bands_bound": 0,
+    "levels_parts_missing_bands": 0
+   }
+  ],
+  "B_totals": {
+   "structured_parts": 34748,
+   "mcq_parts": 0,
+   "parts_under_validated_scheme": 34748,
+   "parts_with_points_bound": 34294,
+   "parts_with_bands_bound": 0,
+   "levels_parts_missing_bands": 0
+  },
+  "D_wave1_core_presence": {
+   "by_slug": {
+    "cie-igcse-economics-20": {
+     "active_ref_exact": 0,
+     "ref_loose": 0
+    },
+    "cie-igcse-economics-25": {
+     "active_ref_exact": 0,
+     "ref_loose": 0
+    },
+    "igcse-geography-19": {
+     "active_ref_exact": 0,
+     "ref_loose": 0
+    },
+    "igcse-business-19": {
+     "active_ref_exact": 0,
+     "ref_loose": 0
+    },
+    "cie-a-level-business-23": {
+     "active_ref_exact": 0,
+     "ref_loose": 0
+    }
+   },
+   "by_code": {
+    "0455": {
+     "questions_ref": 0,
+     "exam_papers_qual": 0,
+     "knowledge_nodes": 0
+    },
+    "4GE1": {
+     "questions_ref": 0,
+     "exam_papers_qual": 0,
+     "knowledge_nodes": 0
+    },
+    "4BS1": {
+     "questions_ref": 0,
+     "exam_papers_qual": 0,
+     "knowledge_nodes": 0
+    },
+    "9609": {
+     "questions_ref": 0,
+     "exam_papers_qual": 0,
+     "knowledge_nodes": 0
+    }
+   }
+  },
+  "D_kg_families_present": {
+   "0455": false,
+   "4GE1": false,
+   "4BS1": false,
+   "9609": false
+  },
+  "E_positive_control_4ch1": {
+   "structured_parts": 1286,
+   "parts_under_validated_scheme": 1286,
+   "parts_with_points_bound": 1034,
+   "parts_with_bands_bound": 0
+  },
+  "C_note": "the sme-eq bank carries no exam_paper_id (bank rows predate paper binding; the awave KG spine codes are the family key) \u2014 the census families are the paper estates: '(no paper)' = the sme-eq bank itself, plus the 4CH1/4CH0 past-paper estates"
+ },
+ "corpus_grounding_of_record": {
+  "cie-igcse-economics-20": {
+   "topics": 39,
+   "parts": 612,
+   "by_type": {
+    "multiple_choice": 612
+   },
+   "marks_distribution": {
+    "1": 612
+   },
+   "distinct_source_papers": 306,
+   "source_paper_shape": {
+    "date": "Nov 2020",
+    "number": "0455/12",
+    "questionNumber": 1,
+    "questionPart": null
+   }
+  },
+  "cie-igcse-economics-25": {
+   "topics": 36,
+   "parts": 625,
+   "by_type": {
+    "multiple_choice": 625
+   },
+   "marks_distribution": {
+    "1": 625
+   },
+   "distinct_source_papers": 299,
+   "source_paper_shape": {
+    "date": "Nov 2020",
+    "number": "0455/12",
+    "questionNumber": 1,
+    "questionPart": null
+   }
+  },
+  "igcse-geography-19": {
+   "topics": 39,
+   "parts": 883,
+   "by_type": {
+    "structured": 717,
+    "multiple_choice": 166
+   },
+   "marks_distribution": {
+    "1": 304,
+    "2": 182,
+    "3": 80,
+    "4": 182,
+    "5": 2,
+    "6": 32,
+    "7": 3,
+    "8": 76,
+    "12": 21,
+    "15": 1
+   },
+   "distinct_source_papers": 619,
+   "source_paper_shape": {
+    "date": "June 2019",
+    "number": "4GE1/01",
+    "questionNumber": 1,
+    "questionPart": "b(iii)"
+   }
+  },
+  "igcse-business-19": {
+   "topics": 25,
+   "parts": 612,
+   "by_type": {
+    "multiple_choice": 125,
+    "structured": 487
+   },
+   "marks_distribution": {
+    "1": 258,
+    "2": 91,
+    "3": 93,
+    "6": 76,
+    "9": 57,
+    "12": 37
+   },
+   "distinct_source_papers": 398,
+   "source_paper_shape": {
+    "date": "June 2023",
+    "number": "Paper 2",
+    "questionNumber": 1,
+    "questionPart": "a(iii)"
+   }
+  },
+  "cie-a-level-business-23": {
+   "topics": 33,
+   "parts": 692,
+   "by_type": {
+    "structured": 692
+   },
+   "marks_distribution": {
+    "1": 9,
+    "2": 158,
+    "3": 229,
+    "4": 17,
+    "6": 2,
+    "8": 146,
+    "12": 89,
+    "16": 6,
+    "20": 36
+   },
+   "distinct_source_papers": 357,
+   "source_paper_shape": {
+    "date": "June 2023",
+    "number": "Paper 21",
+    "questionNumber": 2,
+    "questionPart": "ai"
+   }
+  }
+ },
+ "findings_of_record": [
+  "F1 \u2014 KG SPINES ABSENT IN CORE: zero knowledge_nodes in the 0455/4GE1/4BS1/9609 families (probe D), while hub-side official spines exist for all four wave-1 courses (apps/hub/spines/<slug>.json, tier_columns family; e.g. 9609: 10 topics / 34 subtopics / 116 specPoints). KG spine seeding into core knowledge_nodes is the G0 prerequisite before wave-1 questions can bind primary topics and before rootIdForCourseCode-style resolution can serve them.",
+  "F2 \u2014 ZERO CORE PRESENCE: 0 questions (every ref shape probed), 0 exam_papers, 0 mark_schemes for all four wave-1 codes. The birth shape of record is the past-paper-lane ref law proven by the 4CH1 pilot: external_ref '<course>/past-papers/<series-year>/<PAPERCODE>#q<N>', provenance PAST_PAPER, exam_papers rows binding QP+MS document ids (4CH1 precedent: extraction_method 'pdflane-atoms-draft-v1').",
+  "F3 \u2014 THE REAL PRINTED LEVELS TABLES ARE ON NO REACHABLE ESTATE: the official mark-scheme Level/Marks/Descriptor tables for the wave-1 courses exist neither on main (repo tree swept), nor in the DB, nor in lane-artifacts. Per the adr040-conv53-r0 scope boundary of record \u2014 \"the hub-bundle band shape (questions.json part-level bands \u2192 buildSmePackage \u2192 SmeQuestionIngestService) must be designed against the REAL first-wave levels tables \u2014 designing it blind now would be guessing\" \u2014 the band-shape design and the first LEVELS birth are GATED on the wave-1 MS documents entering the of-record extraction lane (pdflane/GLM-OCR). The verbatim law (ADR-040 \u00a72.1: descriptor_md verbatim-as-printed) forbids authoring descriptors from any non-printed source; the corpus solutionMd fields are SME model answers with skill tags ([K]/[Ap]/[An]/[U]/[E]/[S]), not printed level tables \u2014 verified by sampling across all wave-1 corpora.",
+  "F4 \u2014 0455\u00d72 CORPUS SHAPE REFINEMENT: the two 0455 corpora (612 + 625 = 1,237 parts \u2014 exactly the ADR-040 \u00a71 figure) are 100% multiple_choice (1-mark, paper-1 MCQs). The levels-marked 0455 paper-2 structured questions have NO hub-corpus presence. The corpus-complete premise of record holds for the other three wave-1 courses (4GE1: 883 parts = 717 structured incl. the 8/12-mark shapes + 166 MCQ; 4BS1: 612 = 487 structured incl. 6/9/12-mark + 125 MCQ; 9609: 692 = all structured incl. 8/12/20-mark) \u2014 for 0455\u00d72 the band side additionally requires the paper-2 QP corpus. The wave-1 band-bearing corpus of record is therefore 4GE1 + 4BS1 + 9609; 0455\u00d72 enter the wave on the corpus-extension path. (Marks-shape candidates only: the levels-marked set of record is determined by the printed MS at extraction, never assumed \u2014 honest-skip law.)"
+ ],
+ "gates_to_first_band_ingest_ordered": [
+  "G-1. MS documents of the wave-1 papers into the of-record extraction lane (pdflane/GLM-OCR) \u2192 glmMarkSchemeDraft entries[].bands[] verbatim \u2192 unblocks the band-shape design (conv53 scope boundary) and the LEVELS birth",
+  "G-2. KG spine seeding for the wave-1 courses (spines exist on hub: apps/hub/spines/) \u2014 G0 prerequisite for primary-topic binding and serving resolution",
+  "G-3. 0455\u00d72 paper-2 QP corpus extension (F4) \u2014 or the wave proceeds 4GE1/4BS1/9609-first",
+  "G-4. ingestPastPaperDraft LEVELS mode \u2192 schemes birth SUGGESTED + mark_bands verbatim (the \u00a75.3 code, already live on main)",
+  "G-5. R4 SME validation \u2014 bandCoverageViolations() fail-closed (contiguity/tiling/verbatim-floor), NOT force-bypassable",
+  "G-6. API deploy (the \u00a75.2 NO_SCHEME_BANDS guard + \u00a75.4 LEVELS dispatch are main code, CLI-only lane)",
+  "G-7. \u00a75.5 eval lane (QWK, D5-\u03b2 floors, metric discriminator) then two-file flips per the unchanged R1\u2013R8 runbook"
+ ],
+ "estate_coherence": "Zero drift: active sme-eq 20,930 (of record), mark_schemes 24,824 = 24,824 POINTS + 0 LEVELS, mark_bands 0, agreement evals 12, serving banks 525/462/254 \u2014 the estate is byte-identical to the adr040-prod-apply-r0 post-verify state. The first live R2 band probe returns parts_with_bands_bound = 0 and levels_parts_missing_bands = 0 across every family \u2014 the honest band baseline of record before the first band ingest.",
+ "security": "DB contacted read-only via the pooled DSN (session-level read-only enforced); GitHub read via PAT for tree/raw/PR fetches; no credentials in any repo artifact; no writes to any estate; PAT rotation reminders stand.",
+ "files_touched": [
+  ".syllabai/receipts/T-SM-ROLLOUT/adr040-bandwave1-r2probe-r0.json",
+  ".syllabai/worklog.md (append)"
+ ]
+}

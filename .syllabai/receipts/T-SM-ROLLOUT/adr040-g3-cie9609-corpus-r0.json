@@ -1,0 +1,76 @@
+{
+  "lane": "T-SM-ROLLOUT",
+  "run": "adr040-g3-cie9609-corpus-r0",
+  "date": "2026-10-28",
+  "session": "web",
+  "trace_id": "1a1801afbeceffd9",
+  "operator_order": "proceed with G-3 (CIE corpus) meanwhile (trace 1a17e8adb7ce8275); 'You might find the papers in syllabai-pastpapers repo' (trace 1a17e98b8bc099e9); 'Proceed' (this trace)",
+  "gate": "G-3 tail of ADR-040 §5 — the CIE 9609 (AS & A Level Business) corpus: session extension + the C-grammar AO-matrix full parse, the remaining G-3 scope for the 9609 registry row named by adr040-g3-cie0455-corpus-r0 F5",
+  "state_found_read_only": {
+    "v2_tip": "0cdf5f1f (fleet has advanced past the G-7 fail-closed exit 4842fdb9; F5/F108 lanes landed PRs #415-#418 in between — no gate receipts changed)",
+    "g3_0455": "CLOSED of record (receipt adr040-g3-cie0455-corpus-r0 @ cd1afef7; pastpapers PR #7 open)",
+    "pastpapers_9609_holdings": "48 paper dirs through 2023-06 (manifest+ms.pdf+er.pdf; ms-only wave; qp.pdf not yet collected per specification.yaml notes)",
+    "v2_9609_drafts": "48 detection-grade dirs, ALL entries:[] (aoMatrixHeaders detected on 22 but never parsed — the F5 tail)",
+    "registry_row": "cie-a-level-business-23 (code 9609), one of the 16 deferred rows of the G-7 fail-closed census"
+  },
+  "fetch_of_record": {
+    "source": "papers.xtremepape.rs direct file URLs (the established CIE source of record per docs/T-SM-ROLLOUT-CIE-WAVE1-MSFETCH-2026-10-26.md; byte-parity restored in the 0455 wave)",
+    "probe_matrix": "126 candidates (2023-11..2026-06, ms+qp, components 11-33; March = variant-2) -> 114 present, 12 x HTTP 404",
+    "extension_landed": "57 paper dirs (w23 x9, s24 x9, w24 x9, s25 x9, w25 x9, m26 x3, s26 x9), each manifest.yaml + ms.pdf + qp.pdf, as syllabai-pastpapers PR #8 @ 983a97b8; specification.yaml papers_present 48 -> 105",
+    "verification": "PDF magic + page count + page-1 printed identity (code 9609, component, series, MARK SCHEME/QUESTION PAPER wording) + sha256 ledger + full-text watermark scan (raw bytes)",
+    "provenance_note": "served bytes carry a thin xtremepape.rs page-footer stamp; the wave-1 of-record parity anchors carry the same stamp, so it is provenance-neutral of record (documented in every manifest stray_prints)",
+    "qp_text_layer_law": "2023+ QPs are font-remapped (Creator GMC/Quadient 'Inspire Designer' = the CIE composition chain); 13 QPs (w24/s25/w25/m26/s26 P3 + m26-32) fail text-layer identity and were verified by render (printed front: code/component/series/QUESTION PAPER) + producer fingerprint; mark schemes unaffected",
+    "gap_ledger": "m24/m25 March sessions (12 files) primary-404, no substitution under the parity law (dynamicpapers = watermarked derivatives rejected of record in the 0455 wave; bestexamhelp WAF-blocked); w26 not sat"
+  },
+  "grammar_of_record": {
+    "C-AO-matrix": "Level | AO1..AO4 axes with per-axis mark ranges (2022 P3; 2023+ P2/P3 8/12-mark)",
+    "C1-two-axis": "Level | skill1 | Marks | skill2 | Marks (2020-2022 P2 8-mark; s20 tiles 4-3-2-1 both axes, s22 splits levels 2b/2a)",
+    "C2-single-axis": "Level | skill | Marks (P2 2-mark parts with (APP)/(K) tags)",
+    "B": "Level | Description | Marks (m22 P1)",
+    "D-prose": "'Level N - descriptor' lines with trailing ranges (w21 P1)",
+    "E-unlabeled": "trailing 'descriptor ... N marks' rows without level labels (2022 P1)",
+    "F-ao-pair": "Level-less 2-axis mark-allocation grids (2023+ P2 3-mark Explain: AO1 1 mark + AO2 2 marks; levels implied, bottom row NCC)",
+    "template_exotica": "w21-2x 11-mark rotated-header tables (EVAL+ columns); s22-2x 11-mark level-less C1 (axes 4+7); s26 P1 tick-based AO guidance (no level tables — correct negative)"
+  },
+  "parse_of_record": {
+    "method": "textlayer-tables-adr040-g3-cie9609-r1 (text-layer segmentation + PyMuPDF word geometry; column regions anchor-relative to the printed marks digits; 6pt line-bucketed word order; same grammar family as the 0455 v5.8 parser, extended for multi-axis matrices)",
+    "oracles": "fail-closed per grammar: single-axis tiling (bottom 0/1, contiguous, top == entry marks); multi-axis per-axis reach (axis max reached somewhere) + sum(axis max) == entry marks; level labels strictly descending with 2b/2a sub-level support; NCC rows unified to the printed phrase; marks-from-axis-sum disclosed fallback where the question row prints no digit (s26 template quirk); cross-page pending merge",
+    "results": "105 papers (48 held + 57 extension), 295 verbatim band entries, 2895 band rows; grammars: C-AO-matrix 212, C1-two-axis 41, E-unlabeled 18, C-multi-axis 12, D-prose 12; marks distribution 2m x15, 3m x94, 4m x2, 8m x79, 12m x105",
+    "band_shape_audit": "0 axis-sum mismatches corpus-wide; descriptors verbatim from the text layer (dash-normalized only), median 65 chars, max 407",
+    "review_tranche": "88 papers clean (oracle-passed + spot-checks: w23-21 1(c)/1(a)(ii), m26-32 3(c), s25-21 1(c), s22-21 2(b)(ii), s20-21 1(d) verified against printed tables during parser iteration); 17 papers reviewRequired:true with disclosed notes (15 parse errors on s20/w20/w21 template exotica + 2 descriptor slivers); drafts carry the error list in parseNotes",
+    "scope_note": "2024+ P1 (11/12/13) mark schemes are tick-based AO guidance, no level tables — 0 band entries is the correct negative there; the 9609 band story lives in P2 (8/12-mark) and P3 (12-mark) grids"
+  },
+  "sources_rejected_of_record": [
+    "dynamicpapers.com — watermarked derivatives (62/70 stamped, parity sha mismatch) — rejected of record in the 0455 wave, still excluded",
+    "bestexamhelp.com — clean bytes but WAF challenge after ~1 file — not scalable",
+    "gceguide.cc — parked domain"
+  ],
+  "landing": {
+    "pastpapers": "PR #8 (branch t-sm-rollout/g3-cie9609-corpus-r0 @ 983a97b8): 57 QP+MS dirs + specification.yaml papers_present 48->105 + wave doc docs/T-SM-ROLLOUT-CIE-9609-G3-CORPUS-2026-10-28.md",
+    "v2": "this commit: 105 verbatim drafts replace the 48 detection-grade drafts under .syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/9609/ + cie9609_drafts_summary_g3.json + parser committed as adr040-g3-cie9609-corpus-r0.parse.py",
+    "issue": "#276 comment of record"
+  },
+  "gates_now": {
+    "G-1": "CLOSED (Edexcel 62/62 + CIE 68/78 wave-1 + 0455 extension 66 files + 9609 extension 114 files)",
+    "G-2": "CLOSED 5/5",
+    "G-3": "CLOSED THIS RECEIPT — the CIE corpus legs of record are complete for the named registry rows (0455 x2 by adr040-g3-cie0455-corpus-r0; 9609 by this receipt); the other 12 deferred rows (0450, 0264, 0475, 0680, 0460 x2, 0470, 0490, 8291, 4BS1-p2, 4EA1-p2, 4ET1, 4GE1) need their own corpus legs or estate births before band infrastructure exists",
+    "G-4": "CLOSED (431 LEVELS schemes born part-bound) — the CIE LEVELS birth (G-4 mirror over the 0455+9609 corpora) is the NEXT lane, unblocked; must rule multi-axis consumption (two-axis/4-axis grids keep per-axis cells verbatim; the single-axis tiling law does not apply to them)",
+    "G-5": "CLOSED (band validation R4 fail-closed over the 431)",
+    "G-6": "CLOSED (API deploy dpl_BVPKU53dKcvqDWX5EhGjAH1JfZp5; part-aware dispatch serving)",
+    "G-7": "CLOSED FAIL-CLOSED (empty band packet; 0/16 rows flip; F4 paths forward)"
+  },
+  "findings_of_record": [
+    "F1 — THE 9609 BAND GRAMMAR SPACE IS SIX DEEP (B/C1/C2/C-AO-matrix/D/E plus the level-less F ao-pair form), twice the 0455 variance: every 2020+ session carries band tables, but their shape changes per template family; per-printed-document parsing is mandatory (the 0455 F4 variant-variance law holds on 9609: s22-21 prints 2b/2a sub-levels its siblings do not)",
+    "F2 — MULTI-AXIS GRIDS ARE THE 9609 NORM AND DO NOT TILE: P2 8-mark splits KA(4)+Analysis(4) with per-axis marks {4,4,2,1}/{4,3,2,1} (no single 0..8 tiling); P3/12-mark runs 4 AO axes with ranges; the verbatim extract keeps per-axis cells and the G-4 mirror must rule two-axis/4-axis consumption before any LEVELS birth on 9609",
+    "F3 — THE 2023+ TEMPLATES PRINT NO LEVEL COLUMN ON 3-MARK PARTS (AO-pair grids with implied levels) AND THE 2026 TEMPLATE OFTEN PRINTS NO QUESTION MARKS DIGIT AT ALL (axis-sum fallback disclosed in parseNotes) — marks provenance must come from the printed per-axis maxes, which remain verbatim",
+    "F4 — 2024+ P1 IS TICK-BASED (no level tables): the correct band-entry count for s24+/m26/s26 P1 is zero; any future wave expecting P1 bands on 9609 would be wrong by construction",
+    "F5 — QP TEXT-LAYER REMAPPING IS A CIE PRODUCTION REALITY (GMC/Quadient Inspire Designer), NOT SITE TAMPERING: 13/57 QPs needed render-based identity; the of-record acceptance law for 2023+ QPs is render + producer fingerprint + printed-front check"
+  ],
+  "unchanged": "core DB untouched (0 writes); evals stay 12; the 16-row census unchanged; no serving behavior changed; all secrets env-only",
+  "cross_refs": [
+    "SyllabAI/syllabai-pastpapers#8",
+    "SyllabAI/syllabai-pastpapers#7",
+    "SyllabAI/syllabai-pastpapers#6",
+    "SyllabAI/syllabai-v2#276"
+  ]
+}

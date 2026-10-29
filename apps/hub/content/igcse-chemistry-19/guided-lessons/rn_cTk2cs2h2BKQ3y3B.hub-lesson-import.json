@@ -1,0 +1,197 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_cTk2cs2h2BKQ3y3B",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "f394cd251ee9e39aef6a1db41e26a19762e275ae925fe682d068f113a0a2e03c",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_cTk2cs2h2BKQ3y3B",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "States of Matter",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-1-states-of-matter/1-1-4-solubility",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.4",
+        "text": "know what is meant by the terms: • solvent • solute • solution • saturated solution."
+      },
+      {
+        "code": "4CH1-1.5C",
+        "text": "know what is meant by the term solubility in the units g per 100 g of solvent"
+      },
+      {
+        "code": "4CH1-1.6C",
+        "text": "understand how to plot and interpret solubility curves"
+      }
+    ],
+    "primer": {
+      "text": "You already know from States of Matter that dissolving spreads one substance evenly through another, particle by particle. This note attaches numbers to that picture: solubility, measured in grams per 100 grams of solvent. It follows the number as temperature rises, compares how solids and gases behave differently, and draws the results as solubility curves you can read values from.",
+      "prerequisiteSubtopic": "States of Matter"
+    },
+    "modules": [
+      {
+        "id": "rn_cTk2cs2h2BKQ3y3B::L1",
+        "title": "Solubility",
+        "sourceHeadings": [
+          "Solubility"
+        ],
+        "specRefs": [
+          "4CH1-1.4",
+          "4CH1-1.5C"
+        ],
+        "opening": "Stir sugar into tea and it seems to vanish, but chemists can say exactly how much will dissolve. Solubility is the measurement of how much of a substance dissolves in a given volume of liquid, expressed in grams per 100 grams of solvent. The substance doing the dissolving is the solvent; the solid that disappears into it is the solute.",
+        "keyPoints": [
+          "Solubility measures how much of a substance dissolves in a given volume of liquid.",
+          "The liquid that does the dissolving is called the solvent.",
+          "Solubility values are stated in grams per 100 grams of solvent.",
+          "Higher temperature makes most solids more soluble.",
+          "Gases dissolve better under high pressure but worse when warmed.",
+          "Different substances dissolve to different extents in the same solvent."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Solubility is a measured amount: how many grams of a solid can dissolve in 100 grams of solvent before nothing more will go into the liquid.",
+            "analogy": "Think of a cup of tea that can only take so much sugar: past a certain spoonful, the extra sits on the bottom no matter how you stir.",
+            "examPointer": "Quote the unit correctly, grams per 100 grams of solvent, and remember that solids and gases move in opposite directions as temperature rises."
+          },
+          "medium": {
+            "restatement": "The solubility of a solid is the maximum mass that can dissolve in 100 grams of solvent at that temperature, and it usually climbs as the sample is warmed; gases respond to pressure as well, dissolving more under high pressure and less when heated.",
+            "analogy": "Return to the sugared tea: warming it lets noticeably more sugar dissolve before leftovers appear, which is exactly the temperature effect the numbers record.",
+            "examPointer": "Questions often pair a solid with a gas in the same table; state both temperature trends separately, and add the pressure trend for gases."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_cTk2cs2h2BKQ3y3B::L1::Q1",
+          "rn_cTk2cs2h2BKQ3y3B::L1::Q2",
+          "rn_cTk2cs2h2BKQ3y3B::L1::Q3",
+          "rn_cTk2cs2h2BKQ3y3B::L1::Q4",
+          "rn_cTk2cs2h2BKQ3y3B::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_cTk2cs2h2BKQ3y3B::L2",
+        "title": "Solubility Curves",
+        "sourceHeadings": [
+          "Solubility Curves",
+          "Solubility curves"
+        ],
+        "specRefs": [
+          "4CH1-1.6C"
+        ],
+        "opening": "Plot how much of a salt dissolves in 100 grams of water at a series of temperatures, join the points, and you have a solubility curve. The curve answers practical questions at a glance: how much dissolves at any chosen temperature, how that changes when you warm or cool, and where one salt stands against another.",
+        "keyPoints": [
+          "A solubility curve plots solubility, in grams per 100 grams of water, against temperature.",
+          "Each point records the maximum mass that dissolves before a saturated solution forms.",
+          "Points are measured at several temperatures, then joined to trace the curve.",
+          "Most salts dissolve better as the water gets hotter.",
+          "Sodium chloride is the exception, changing very little as temperature rises.",
+          "Reading a curve gives the mass that will dissolve at any chosen temperature."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "A solubility curve is a graph with temperature along the bottom and dissolving mass up the side, drawn from measurements taken at several temperatures.",
+            "analogy": "It works like a growth chart: each measurement pins down one point, and the joined line lets you estimate values in between.",
+            "examPointer": "Read the axes before anything else; the vertical axis is mass per 100 grams of water, never per litre."
+          },
+          "medium": {
+            "restatement": "Each measured point gives the maximum mass dissolving in 100 grams of water at one temperature, and the joined curve lets you read values between the measurements and compare different salts at a glance.",
+            "analogy": "The growth chart picture still holds: points at fixed intervals, a smooth line between them, and every salt getting its own line on the same axes.",
+            "examPointer": "Curve questions usually ask for a read-off, a comparison between two salts, or the change on cooling; identify which one is being asked before calculating."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_cTk2cs2h2BKQ3y3B::L2::Q1",
+          "rn_cTk2cs2h2BKQ3y3B::L2::Q2",
+          "rn_cTk2cs2h2BKQ3y3B::L2::Q3",
+          "rn_cTk2cs2h2BKQ3y3B::L2::Q4",
+          "rn_cTk2cs2h2BKQ3y3B::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "solubility",
+          "definition": "The mass of a substance that dissolves in 100 grams of solvent at a given temperature.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solvent",
+          "definition": "The liquid in which a substance dissolves.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solute",
+          "definition": "The substance that dissolves into the solvent.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solution",
+          "definition": "The mixture formed when a solute dissolves in a solvent.",
+          "firstLesson": 1
+        },
+        {
+          "term": "saturated solution",
+          "definition": "A solution holding the maximum dissolved mass possible at that temperature, with any extra solid left undissolved.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solubility curve",
+          "definition": "A graph of solubility in grams per 100 grams of water plotted against temperature.",
+          "firstLesson": 2
+        },
+        {
+          "term": "crystallisation",
+          "definition": "The formation of solid crystals from a solution, typically on cooling.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Use the solubility curves to answer two questions. How much potassium nitrate dissolves in 20 g of water at 50 °C? And what mass of lead(II) nitrate crystals forms when 200 cm³ of saturated solution, prepared at 90 °C, is cooled to 40 °C?",
+        "steps": [
+          "At 50 °C the curve shows potassium nitrate dissolving to 68 g per 100 g of water, so in 20 g of water: 68 x (20 / 100) = 13.6 g",
+          "For lead(II) nitrate the curve gives 118 g per 100 g of water at 90 °C and 64 g per 100 g of water at 40 °C, so cooling deposits 118 - 64 = 54 g per 100 g of water",
+          "The prepared solution holds twice the 100 g basis of water, so the total crystal mass is 2 x 54 = 108 g"
+        ],
+        "finalAnswer": "13.6 g of potassium nitrate dissolves in 20 g of water at 50 °C; 108 g of lead(II) nitrate crystallises on cooling from 90 °C to 40 °C"
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/8f9dfc68f8ce-salt-solubility-curves.png",
+        "alt": "A graph to show the solubility curves of three different salts",
+        "sourceHeading": "Solubility curve for three salts",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
+  }
+}

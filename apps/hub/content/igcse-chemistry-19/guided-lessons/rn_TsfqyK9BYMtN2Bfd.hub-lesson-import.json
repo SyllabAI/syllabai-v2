@@ -1,0 +1,194 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_TsfqyK9BYMtN2Bfd",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "ac18f59291ac9a1e90d4a964905f7c0c63b70017ffa17fd8443675f169d18d22",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_TsfqyK9BYMtN2Bfd",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Elements, Compounds & Mixtures",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-2-elements-compounds-and-mixtures/1-2-5-practical-investigating-paper-chromatography",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.10",
+        "text": "describe these experimental techniques for the separation of mixtures: simple distillation, fractional distillation, filtration, crystallisation, paper chromatography"
+      },
+      {
+        "code": "4CH1-1.13",
+        "text": "practical: investigate paper chromatography using inks/food colourings"
+      }
+    ],
+    "primer": {
+      "text": "Separation Techniques introduced paper chromatography as a way of splitting an ink into its dyes. This practical turns that idea into a full procedure: setting up the paper, spotting samples, running the solvent, and comparing Rf values so an unknown mixture of colourings can be named. Revisit the chromatography part of Separation Techniques first if the setup still feels new.",
+      "prerequisiteSubtopic": "Separation Techniques"
+    },
+    "modules": [
+      {
+        "id": "rn_TsfqyK9BYMtN2Bfd::L1",
+        "title": "Apparatus and Method",
+        "sourceHeadings": [
+          "Apparatus",
+          "Method"
+        ],
+        "specRefs": [
+          "4CH1-1.13"
+        ],
+        "opening": "This practical separates the dyes in four known food colourings and an unknown mixture using paper chromatography. Capillary tubes place tiny spots on a pencil start line, water climbs the paper, and each dye travels its own distance. Careful setup matters: every distance you measure later depends on how cleanly the run was carried out.",
+        "keyPoints": [
+          "A pencil start line is drawn 2 cm from the bottom edge of the chromatography paper.",
+          "Each colouring gets its own capillary tube, so one sample cannot contaminate another.",
+          "Spots are kept no bigger than 2-3 mm so the dyes can pull apart cleanly.",
+          "Water goes in to 1 cm or less, keeping the solvent below the pencil line.",
+          "The run is left undisturbed until the solvent has climbed at least three quarters of the paper.",
+          "A solvent front line is drawn at the wet edge before any distances are measured in mm."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Draw a pencil line 2 cm up the paper, spot every colouring on it with its own tube, stand the paper in 1 cm of water so nothing dissolves too early, and let the solvent climb three quarters of the way before marking the wet edge.",
+            "analogy": "It is a race with strict starting rules: every dye begins together on the same grid line, in its own lane, and nobody moves the finish tape until most of the track is covered.",
+            "examPointer": "Method marks reward order and reasons - pencil first, small spots, shallow solvent, then measure from the start line to the centre of each spot."
+          },
+          "medium": {
+            "restatement": "A pencil start line 2 cm from the bottom carries spots of colourings A to D and the unknown U, each placed with a fresh capillary tube and kept within 2-3 mm. The paper stands in water no deeper than 1 cm, clipped to a wooden spill, and the solvent climbs undisturbed until it is at least three quarters of the way up before the wet edge is marked.",
+            "analogy": "Treat the start line as a race grid and the solvent front as the finish judge: the race is only fair if every runner starts on the grid, stays in lane, and the clock stops at a marked line.",
+            "examPointer": "For each step, give the reason as well as the action - pencil so the line cannot run, small spots so dyes stay distinct, shallow water so samples begin above the solvent."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TsfqyK9BYMtN2Bfd::L1::Q1",
+          "rn_TsfqyK9BYMtN2Bfd::L1::Q2",
+          "rn_TsfqyK9BYMtN2Bfd::L1::Q3",
+          "rn_TsfqyK9BYMtN2Bfd::L1::Q4",
+          "rn_TsfqyK9BYMtN2Bfd::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_TsfqyK9BYMtN2Bfd::L2",
+        "title": "Common Errors and Results",
+        "sourceHeadings": [
+          "Common errors & sources of inaccuracy",
+          "Results"
+        ],
+        "specRefs": [
+          "4CH1-1.10",
+          "4CH1-1.13"
+        ],
+        "opening": "Most lost marks in this practical come from five avoidable slips: an ink start line, oversized spots, solvent above the line, letting the front run off the paper, and leaving the beaker open. Each has a simple fix, and the results table turns a clean run into Rf values. When the unknown's Rf matches a known colouring, that dye is named.",
+        "keyPoints": [
+          "Ink start lines dissolve and run with the solvent, so every line and label is pencil.",
+          "Oversized spots smear and merge, making the Rf value hard to measure accurately.",
+          "Solvent above the start line dissolves the samples away, so no dye ever climbs the paper.",
+          "A lid on the beaker keeps a solvent vapour atmosphere and stops the run slowing down.",
+          "The paper comes out before the solvent front reaches the top, or Rf cannot be calculated.",
+          "Matching Rf values mean the unknown holds that same dye, backed up by a visual check."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Five slips ruin the run: ink lines that dissolve, spots too big, solvent over the start line, a front that runs off the top, and an open beaker. Each has a one-step fix, and a clean run gives Rf values that name the unknown's dyes.",
+            "analogy": "Think of the five errors as five ways to spoil a race: a moving start line, runners too wide for their lanes, a grid underwater, a finish past the stadium, and no lid on the clock.",
+            "examPointer": "Error questions ask for cause and fix in one line - name the slip, then state the pencil, small-spot, shallow-solvent, early-lift or lid remedy."
+          },
+          "medium": {
+            "restatement": "Ink start lines add their own travelling dyes, oversized spots blur into one another, solvent above the line dissolves the samples before they can climb, an uncovered beaker lets vapour escape and slows the run, and a front that reaches the very top leaves its distance unmeasurable. A clean run fills the results table, and matching Rf values between the unknown and a known colouring identify that dye.",
+            "analogy": "A covered beaker is like a covered pan: the steam stays in, the process stays steady, and nothing escapes to spoil what you are watching.",
+            "examPointer": "Rf comparison questions want the logic stated: equal heights and equal Rf values point to the same substance, while a single match proves presence, not purity of the whole unknown."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_TsfqyK9BYMtN2Bfd::L2::Q1",
+          "rn_TsfqyK9BYMtN2Bfd::L2::Q2",
+          "rn_TsfqyK9BYMtN2Bfd::L2::Q3",
+          "rn_TsfqyK9BYMtN2Bfd::L2::Q4",
+          "rn_TsfqyK9BYMtN2Bfd::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "separation",
+          "definition": "Taking a mixture apart into its components by physical means.",
+          "firstLesson": 1
+        },
+        {
+          "term": "chromatography paper",
+          "definition": "The absorbent paper on which the dyes are spotted and separated.",
+          "firstLesson": 1
+        },
+        {
+          "term": "start line",
+          "definition": "The pencil line 2 cm from the bottom of the paper where all samples are spotted.",
+          "firstLesson": 1
+        },
+        {
+          "term": "capillary tube",
+          "definition": "A fine glass tube used to place one tiny spot of sample on the start line.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solvent front",
+          "definition": "The furthest edge reached by the wet solvent, marked with a pencil line at the wet edge.",
+          "firstLesson": 1
+        },
+        {
+          "term": "Rf value",
+          "definition": "The distance moved by a spot divided by the distance moved by the solvent.",
+          "firstLesson": 2
+        },
+        {
+          "term": "evaporation",
+          "definition": "Solvent turning to vapour from the wet paper; slowed by a lid on the beaker.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "In the paper chromatography practical, the solvent front travels 72 mm from the start line. The blue spot of known colouring B travels 54 mm, and one spot of the unknown mixture U also travels 54 mm, landing level with B. a) Calculate the Rf value of spot U. b) What does the comparison allow you to conclude? c) Explain why the start line is drawn in pencil rather than ink.",
+        "steps": [
+          "a) Rf = distance moved by spot ÷ distance moved by solvent, so Rf = 54 / 72 = 0.75.",
+          "b) Spot U travels the same distance and shares colouring B's Rf value, so the unknown contains the blue dye of colouring B (backed up by the visual match).",
+          "c) Pencil marks are insoluble, so the start line stays put; an ink line would dissolve and travel up the paper, adding its own dyes to the chromatogram."
+        ],
+        "finalAnswer": "a) Rf = 0.75. b) The unknown contains colouring B's blue dye. c) Pencil is insoluble and does not run, unlike ink."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f14cefa5953b-paper-chromatography-new.png",
+        "alt": "paper-chromatography-new",
+        "sourceHeading": "Diagram of the apparatus needed for paper chromatography",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
+  }
+}

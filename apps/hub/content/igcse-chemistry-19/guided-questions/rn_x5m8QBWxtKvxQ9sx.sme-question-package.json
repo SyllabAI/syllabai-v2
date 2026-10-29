@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_x5m8QBWxtKvxQ9sx",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "650f80d1c68a835f748f7e166fdeda8219b136360b96d1ef73b9f21d2d8a932b",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_x5m8QBWxtKvxQ9sx",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L1::Q1",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L1",
+      "stem": "A reaction mixture warms from 19 °C to 21 °C as chemicals react. What does this show?",
+      "misconceptionClass": "temperature-direction reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The reaction is exothermic because heat was given out to the surroundings",
+          "correct": true,
+          "explanation": "A temperature rise means heat left the chemicals and warmed everything around them, which is the signature of an exothermic change.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The reaction is endothermic because the mixture absorbed heat",
+          "correct": false,
+          "explanation": "Endothermic changes take heat in and would cool the mixture; the reading rose instead of falling.",
+          "misconception": "temperature direction reversed"
+        },
+        {
+          "key": "C",
+          "text": "The reaction released no energy because the chemicals stayed liquid",
+          "correct": false,
+          "explanation": "Physical state does not decide heat flow; the measured temperature rise does.",
+          "misconception": "state-change confusion"
+        },
+        {
+          "key": "D",
+          "text": "The thermometer manufactured the extra heat",
+          "correct": false,
+          "explanation": "The thermometer records the temperature; the reaction supplies the heat it reports.",
+          "misconception": "apparatus blamed"
+        }
+      ]
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L1::Q2",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L1",
+      "stem": "Which set of reaction types always gives energy out?",
+      "misconceptionClass": "classification recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Neutralisation and combustion",
+          "correct": true,
+          "explanation": "Both reaction types always release heat to the surroundings.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Displacement and combustion",
+          "correct": false,
+          "explanation": "Displacement reactions can take energy in or give it out, so they do not always release heat.",
+          "misconception": "displacement assumed always exothermic"
+        },
+        {
+          "key": "C",
+          "text": "Displacement and neutralisation",
+          "correct": false,
+          "explanation": "Neutralisation does release heat, but displacement can run in either energy direction.",
+          "misconception": "displacement mis-typed"
+        },
+        {
+          "key": "D",
+          "text": "Endothermic and combustion",
+          "correct": false,
+          "explanation": "Endothermic reactions take heat in, so the pairing cannot be correct.",
+          "misconception": "category inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L1::Q3",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L1",
+      "stem": "Why does the temperature of the surroundings rise during an exothermic reaction?",
+      "misconceptionClass": "energy transfer logic",
+      "options": [
+        {
+          "key": "A",
+          "text": "Heat released by the reaction flows into the surroundings",
+          "correct": true,
+          "explanation": "Energy given out by the chemicals has nowhere to go except the surroundings, warming them.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The surroundings supply the energy for the reaction",
+          "correct": false,
+          "explanation": "That describes an endothermic change; exothermic reactions hand energy over instead.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "C",
+          "text": "The reaction destroys energy so none remains in the chemicals",
+          "correct": false,
+          "explanation": "Energy is conserved; it is transferred, never destroyed.",
+          "misconception": "energy destroyed"
+        },
+        {
+          "key": "D",
+          "text": "The products store the released heat permanently",
+          "correct": false,
+          "explanation": "The heat passes to the surroundings; the products end with less energy than the reactants.",
+          "misconception": "products as heat store"
+        }
+      ]
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L1::Q4",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L1",
+      "stem": "In an endothermic reaction, what happens to the energy of the system?",
+      "misconceptionClass": "system-energy bookkeeping",
+      "options": [
+        {
+          "key": "A",
+          "text": "It increases because heat is taken in from the surroundings",
+          "correct": true,
+          "explanation": "Energy absorbed from the surroundings raises the heat content of the system.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It decreases because energy leaves the system",
+          "correct": false,
+          "explanation": "An endothermic change pulls energy in; a falling energy content describes exothermic reactions.",
+          "misconception": "exo and endo swapped"
+        },
+        {
+          "key": "C",
+          "text": "It stays exactly the same throughout the change",
+          "correct": false,
+          "explanation": "Total energy is conserved, but the share held by the system changes when heat crosses the boundary.",
+          "misconception": "conservation misapplied"
+        },
+        {
+          "key": "D",
+          "text": "It becomes impossible to measure with school apparatus",
+          "correct": false,
+          "explanation": "A thermometer in the mixture tracks the change directly.",
+          "misconception": "measurement despair"
+        }
+      ]
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L1::Q5",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L1",
+      "stem": "The products of a reaction have less energy than the reactants. Which conclusion follows?",
+      "misconceptionClass": "energy-level inference",
+      "options": [
+        {
+          "key": "A",
+          "text": "The reaction was exothermic and heat was transferred to the surroundings",
+          "correct": true,
+          "explanation": "A lower product energy means energy left the chemicals as heat.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The reaction was endothermic and heat entered the chemicals",
+          "correct": false,
+          "explanation": "Heat entering would leave the products with more energy, not less.",
+          "misconception": "sign inverted"
+        },
+        {
+          "key": "C",
+          "text": "Energy was created inside the reaction mixture",
+          "correct": false,
+          "explanation": "Energy is never created; the drop matches the heat handed over to the surroundings.",
+          "misconception": "energy created"
+        },
+        {
+          "key": "D",
+          "text": "No energy conclusion can be drawn from energy levels",
+          "correct": false,
+          "explanation": "The energy difference is exactly the evidence needed to classify the reaction.",
+          "misconception": "inference refused"
+        }
+      ]
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L2::Q1",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L2",
+      "stem": "A student claims energy was destroyed in a reaction that cooled. What is the correct response?",
+      "misconceptionClass": "conservation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Energy was transferred to the surroundings, not destroyed",
+          "correct": true,
+          "explanation": "The law of conservation of energy forbids destruction; the heat simply moved out of the mixture.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Energy was destroyed because the temperature fell",
+          "correct": false,
+          "explanation": "A falling temperature signals heat leaving, not energy vanishing.",
+          "misconception": "destruction accepted"
+        },
+        {
+          "key": "C",
+          "text": "Energy was created inside the thermometer bulb",
+          "correct": false,
+          "explanation": "The thermometer only reports temperature; it does not manufacture energy.",
+          "misconception": "creation claimed"
+        },
+        {
+          "key": "D",
+          "text": "The law of conservation of energy does not apply to chemical reactions",
+          "correct": false,
+          "explanation": "The law applies to every reaction; energy changes location but persists.",
+          "misconception": "law scope error"
+        }
+      ]
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L2::Q2",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L2",
+      "stem": "Why do the products of an exothermic reaction hold less energy than the reactants?",
+      "misconceptionClass": "energy account reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The missing energy was released to the surroundings as heat",
+          "correct": true,
+          "explanation": "Conservation requires the energy difference to appear somewhere, and it leaves as heat.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The products are always colder, so they store less",
+          "correct": false,
+          "explanation": "Temperature is a reading, not the energy ledger; the difference is the transferred heat.",
+          "misconception": "temperature equated to energy"
+        },
+        {
+          "key": "C",
+          "text": "Some energy was destroyed while bonds rearranged",
+          "correct": false,
+          "explanation": "No energy disappears; it is transferred to the surroundings.",
+          "misconception": "destruction claimed"
+        },
+        {
+          "key": "D",
+          "text": "The products gained energy from the surroundings",
+          "correct": false,
+          "explanation": "Gaining energy would make the products richer in energy, the opposite of the observation.",
+          "misconception": "direction inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L2::Q3",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L2",
+      "stem": "Which pairing of reaction type and energy direction is correct?",
+      "misconceptionClass": "pairing logic",
+      "options": [
+        {
+          "key": "A",
+          "text": "Combustion gives energy out; displacement may give energy out or take it in",
+          "correct": true,
+          "explanation": "Combustion always releases heat, while displacement appears in both directions in the list of heat changes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Combustion takes energy in; neutralisation gives it out",
+          "correct": false,
+          "explanation": "Combustion always gives energy out; only the second half of the pairing is right.",
+          "misconception": "combustion inverted"
+        },
+        {
+          "key": "C",
+          "text": "Neutralisation takes energy in; combustion takes it in",
+          "correct": false,
+          "explanation": "Both named types give energy out.",
+          "misconception": "both inverted"
+        },
+        {
+          "key": "D",
+          "text": "Displacement always takes energy in; combustion gives it out",
+          "correct": false,
+          "explanation": "Displacement can run either way, so the word always makes the claim wrong.",
+          "misconception": "displacement fixed"
+        }
+      ]
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L2::Q4",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L2",
+      "stem": "A table shows four experiments; one mixture cools while three warm. What classifies the cooling one?",
+      "misconceptionClass": "data interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Endothermic, because its temperature fell as heat was taken in",
+          "correct": true,
+          "explanation": "A temperature drop marks heat flowing from the surroundings into the mixture.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Exothermic, because most reactions are exothermic",
+          "correct": false,
+          "explanation": "Classification follows the measured direction, not the frequency of reaction types.",
+          "misconception": "majority voting"
+        },
+        {
+          "key": "C",
+          "text": "Impossible to classify without a balanced equation",
+          "correct": false,
+          "explanation": "The temperature change alone classifies the reaction.",
+          "misconception": "equation demanded"
+        },
+        {
+          "key": "D",
+          "text": "Endothermic, because one chemical in it is a weak acid",
+          "correct": false,
+          "explanation": "The classification rests on the observed temperature fall, not on the identity of a single chemical.",
+          "misconception": "chemical stereotyping"
+        }
+      ]
+    },
+    {
+      "id": "rn_x5m8QBWxtKvxQ9sx::L2::Q5",
+      "moduleId": "rn_x5m8QBWxtKvxQ9sx::L2",
+      "stem": "Where does the energy transferred in a reaction end up if the mixture warms?",
+      "misconceptionClass": "location of transfer",
+      "options": [
+        {
+          "key": "A",
+          "text": "In the surroundings, including the thermometer and the air around the cup",
+          "correct": true,
+          "explanation": "The heat spreads to everything touching the mixture, which is what the thermometer detects.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Nowhere, because the reaction consumed it",
+          "correct": false,
+          "explanation": "Energy is conserved; the warming shows it moved to the surroundings.",
+          "misconception": "consumption claimed"
+        },
+        {
+          "key": "C",
+          "text": "In the reactants, which store extra energy afterwards",
+          "correct": false,
+          "explanation": "The reactants are spent; the products hold less energy than they did.",
+          "misconception": "reactants enriched"
+        },
+        {
+          "key": "D",
+          "text": "Only in the products, which stay hot forever",
+          "correct": false,
+          "explanation": "The products share their energy with the surroundings as the mixture cools.",
+          "misconception": "products hoard heat"
+        }
+      ]
+    }
+  ]
+}

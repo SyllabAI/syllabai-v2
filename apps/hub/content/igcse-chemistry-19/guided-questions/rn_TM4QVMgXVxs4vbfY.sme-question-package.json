@@ -1,0 +1,555 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_TM4QVMgXVxs4vbfY",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "eab2f6f2851f4ac47f1a47707cae3d704d0b3175f44f25a4cb6c28c8ea1df8d3",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_TM4QVMgXVxs4vbfY",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L1::Q1",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L1",
+      "stem": "During electrolysis, a substance is oxidised. What has happened to it?",
+      "misconceptionClass": "electron-definition of oxidation",
+      "options": [
+        {
+          "key": "A",
+          "text": "It has lost electrons",
+          "correct": true,
+          "explanation": "In electrochemistry oxidation is defined as electron loss, whatever the substance.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It has gained electrons",
+          "correct": false,
+          "explanation": "Electron gain is the definition of reduction, not of oxidation.",
+          "misconception": "swaps the oxidation and reduction definitions"
+        },
+        {
+          "key": "C",
+          "text": "It has combined with oxygen",
+          "correct": false,
+          "explanation": "That is the older oxygen-based definition; electrode reactions are classified by electrons instead.",
+          "misconception": "reaches for the oxygen-only definition at an electrode"
+        },
+        {
+          "key": "D",
+          "text": "It has become a neutral substance",
+          "correct": false,
+          "explanation": "Discharge does make products neutral, but the label oxidation refers specifically to electron loss.",
+          "misconception": "equates becoming neutral with being oxidised"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L1::Q2",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L1",
+      "stem": "At which electrode are positive ions reduced during electrolysis, and what happens there?",
+      "misconceptionClass": "electrode-process pairing",
+      "options": [
+        {
+          "key": "A",
+          "text": "The cathode, where they gain electrons",
+          "correct": true,
+          "explanation": "Positive ions are attracted to the negative cathode, where gaining electrons reduces them to neutral atoms.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The cathode, where they lose electrons",
+          "correct": false,
+          "explanation": "The electrode is right, but electron loss is oxidation, the opposite process.",
+          "misconception": "pairs the correct electrode with the opposite process"
+        },
+        {
+          "key": "C",
+          "text": "The anode, where they gain electrons",
+          "correct": false,
+          "explanation": "The anode is the positive electrode; positive ions are not reduced there.",
+          "misconception": "swaps the roles of the two electrodes"
+        },
+        {
+          "key": "D",
+          "text": "The anode, where they lose electrons",
+          "correct": false,
+          "explanation": "That describes negative ions being oxidised at the anode, not positive ions.",
+          "misconception": "describes the anion half of electrolysis instead"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L1::Q3",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L1",
+      "stem": "In the half equation Pb2+ + 2e- → Pb, what is true of the charge on the two sides?",
+      "misconceptionClass": "charge balance in half equations",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both sides carry no overall charge",
+          "correct": true,
+          "explanation": "The 2+ of the lead ion is exactly cancelled by the two negative charges of the electrons, and the lead atom is neutral.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The left side is 2+ and the right side is neutral, and that is acceptable",
+          "correct": false,
+          "explanation": "The electrons carry two negative charges, so the left side is neutral overall once they are counted.",
+          "misconception": "ignores the charge carried by electrons"
+        },
+        {
+          "key": "C",
+          "text": "Both sides are 2+",
+          "correct": false,
+          "explanation": "The two electrons are negatively charged, so they cancel the ion's 2+ rather than adding to it.",
+          "misconception": "treats electrons as positive charge carriers"
+        },
+        {
+          "key": "D",
+          "text": "The charges need not match in a half equation",
+          "correct": false,
+          "explanation": "Charge balance is required at every electrode; it is the check that the electron count is right.",
+          "misconception": "denies that half equations must balance by charge"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L1::Q4",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L1",
+      "stem": "Why are oxidation and reduction defined through electron transfer rather than oxygen transfer in this topic?",
+      "misconceptionClass": "scope of the redox definitions",
+      "options": [
+        {
+          "key": "A",
+          "text": "Electrode reactions move electrons whether or not oxygen is involved",
+          "correct": true,
+          "explanation": "Electron loss and gain describe every electrode reaction, including ones with no oxygen anywhere in the system.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Oxygen is never produced during electrolysis",
+          "correct": false,
+          "explanation": "It is: the water-anode half equation releases oxygen gas, so oxygen chemistry is not absent here.",
+          "misconception": "overstates the absence of oxygen in electrolysis"
+        },
+        {
+          "key": "C",
+          "text": "Electron definitions apply because electrons are the particles that carry charge through the circuit",
+          "correct": false,
+          "explanation": "True as physics, but the classification reason is coverage: electron transfer is what every electrode reaction shares.",
+          "misconception": "justifies the definition by conduction rather than coverage"
+        },
+        {
+          "key": "D",
+          "text": "Oxygen transfer only happens in combustion reactions",
+          "correct": false,
+          "explanation": "Oxygen-based definitions also cover rusting and other reactions; the real reason for switching is the electrode context.",
+          "misconception": "invents a false restriction on oxygen-based definitions"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L1::Q5",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L1",
+      "stem": "A half equation is written for one electrode of an electrolysis cell. What must be true of it?",
+      "misconceptionClass": "half-equation requirements",
+      "options": [
+        {
+          "key": "A",
+          "text": "The charges on its two sides balance",
+          "correct": true,
+          "explanation": "The exam hint is explicit: charges on each side of the equation should always balance.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Electrons appear on both sides of the arrow",
+          "correct": false,
+          "explanation": "In a half equation the electrons sit on one side only, showing the direction of transfer.",
+          "misconception": "places electrons on both sides of a half equation"
+        },
+        {
+          "key": "C",
+          "text": "The atoms need not balance, because only half the reaction is shown",
+          "correct": false,
+          "explanation": "Each half equation must still be balanced in atoms as well as charge.",
+          "misconception": "excuses atom imbalance because the equation is 'only half'"
+        },
+        {
+          "key": "D",
+          "text": "The electrode's name is written above the arrow",
+          "correct": false,
+          "explanation": "There is no such convention here; the classification, reduction or oxidation, is written beside the equation instead.",
+          "misconception": "invents a labelling convention"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L2::Q1",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L2",
+      "stem": "Which half equation shows the reaction at the cathode during the electrolysis of molten lead(II) bromide?",
+      "misconceptionClass": "cathode half-equation selection",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pb2+ + 2e- → Pb",
+          "correct": true,
+          "explanation": "Lead ions gain the two electrons they need at the cathode, so neutral lead is deposited.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Pb → Pb2+ + 2e-",
+          "correct": false,
+          "explanation": "This is the reverse: it shows lead atoms losing electrons, which is oxidation at an anode.",
+          "misconception": "reverses the cathode reaction into an oxidation"
+        },
+        {
+          "key": "C",
+          "text": "Pb2+ + e- → Pb+",
+          "correct": false,
+          "explanation": "A lead(II) ion needs two electrons to become a neutral atom; one electron gives an invented half-way ion.",
+          "misconception": "mismatches the electron count with the ion's charge"
+        },
+        {
+          "key": "D",
+          "text": "2Br- → Br2 + 2e-",
+          "correct": false,
+          "explanation": "That is the anode half equation for the bromide ions in the same cell.",
+          "misconception": "answers with the other electrode's equation"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L2::Q2",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L2",
+      "stem": "At the anode of molten lead(II) bromide, bromide ions are discharged. Which half equation correctly shows this oxidation?",
+      "misconceptionClass": "halide oxidation half-equation form",
+      "options": [
+        {
+          "key": "A",
+          "text": "2Br- → Br2 + 2e-",
+          "correct": true,
+          "explanation": "Two bromide ions lose one electron each and pair into a bromine molecule, releasing two electrons.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Br- → Br2 + e-",
+          "correct": false,
+          "explanation": "One bromide ion cannot make a two-atom bromine molecule; the atoms do not balance.",
+          "misconception": "drops the pairing coefficient for the diatomic molecule"
+        },
+        {
+          "key": "C",
+          "text": "2Br- + 2e- → Br2",
+          "correct": false,
+          "explanation": "Adding electrons is reduction; a negative ion at the anode must release them instead.",
+          "misconception": "writes electron gain where electron loss belongs"
+        },
+        {
+          "key": "D",
+          "text": "Br2 + 2e- → 2Br-",
+          "correct": false,
+          "explanation": "This is the reduction of bromine molecules, the exact reverse of the discharge that happens at the anode.",
+          "misconception": "reverses the anode process entirely"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L2::Q3",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L2",
+      "stem": "During the electrolysis of aqueous sodium chloride, which half equation is the cathode reaction?",
+      "misconceptionClass": "aqueous cathode product selection",
+      "options": [
+        {
+          "key": "A",
+          "text": "2H+ + 2e- → H2",
+          "correct": true,
+          "explanation": "In aqueous sodium chloride it is the hydrogen ions that are reduced at the cathode, releasing hydrogen gas.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Na+ + e- → Na",
+          "correct": false,
+          "explanation": "Sodium is not deposited from aqueous solution; the hydrogen ions are discharged instead.",
+          "misconception": "deposits the metal cation from aqueous solution"
+        },
+        {
+          "key": "C",
+          "text": "2Cl- → Cl2 + 2e-",
+          "correct": false,
+          "explanation": "That is the anode half equation, where chloride ions are oxidised to chlorine.",
+          "misconception": "answers with the anode's equation"
+        },
+        {
+          "key": "D",
+          "text": "H2 → 2H+ + 2e-",
+          "correct": false,
+          "explanation": "This runs the cathode reaction backwards, as an oxidation releasing electrons.",
+          "misconception": "reverses the direction of the cathode reaction"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L2::Q4",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L2",
+      "stem": "Chlorine forms at the anode during the electrolysis of aqueous sodium chloride. Why is this classified as oxidation?",
+      "misconceptionClass": "classifying halide discharge",
+      "options": [
+        {
+          "key": "A",
+          "text": "Each chloride ion loses an electron on its way to becoming chlorine",
+          "correct": true,
+          "explanation": "Electron loss is the definition of oxidation, and the chloride ions supply the electrons that leave the anode.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The chlorine atoms gain electrons to complete their outer shells",
+          "correct": false,
+          "explanation": "Electron gain is reduction; the chloride ions are the species that lose electrons here.",
+          "misconception": "swaps loss and gain while naming the wrong species"
+        },
+        {
+          "key": "C",
+          "text": "Chlorine is produced as a gas",
+          "correct": false,
+          "explanation": "A change of state says nothing about electron transfer, so it cannot classify the reaction.",
+          "misconception": "classifies redox by the physical state of the product"
+        },
+        {
+          "key": "D",
+          "text": "The anode is negative, so ions there must gain electrons",
+          "correct": false,
+          "explanation": "The anode is the positive electrode in electrolysis, and its ions lose electrons.",
+          "misconception": "mislabels the anode's polarity and process"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L2::Q5",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L2",
+      "stem": "Which statement compares the cathode products of molten lead(II) bromide and aqueous sodium chloride correctly?",
+      "misconceptionClass": "molten versus aqueous cathode outcomes",
+      "options": [
+        {
+          "key": "A",
+          "text": "Molten lead(II) bromide deposits lead; aqueous sodium chloride releases hydrogen gas",
+          "correct": true,
+          "explanation": "The molten compound deposits its own metal cation, while in the aqueous solution the hydrogen ions are reduced instead.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Both cells deposit their metal cation at the cathode",
+          "correct": false,
+          "explanation": "Sodium is not deposited from aqueous solution; hydrogen gas forms there instead.",
+          "misconception": "assumes the cation always discharges from solution"
+        },
+        {
+          "key": "C",
+          "text": "Both cells produce hydrogen gas at the cathode",
+          "correct": false,
+          "explanation": "Molten lead(II) bromide contains no hydrogen ions; it deposits lead.",
+          "misconception": "overextends the hydrogen cathode to molten compounds"
+        },
+        {
+          "key": "D",
+          "text": "Neither cathode produces a neutral substance",
+          "correct": false,
+          "explanation": "Discharge at the cathode turns ions into neutral products, lead atoms or hydrogen molecules.",
+          "misconception": "denies that ions become neutral products on discharge"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L3::Q1",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L3",
+      "stem": "Which half equation is the cathode reaction during the electrolysis of aqueous copper(II) sulfate?",
+      "misconceptionClass": "cathode selection in copper(II) sulfate",
+      "options": [
+        {
+          "key": "A",
+          "text": "Cu2+ + 2e- → Cu",
+          "correct": true,
+          "explanation": "Copper ions gain two electrons each at the cathode and are deposited as copper metal.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2H+ + 2e- → H2",
+          "correct": false,
+          "explanation": "That is the cathode half equation for dilute sulfuric acid; copper(II) sulfate deposits copper instead.",
+          "misconception": "reuses the sulfuric acid cathode for copper(II) sulfate"
+        },
+        {
+          "key": "C",
+          "text": "Cu → Cu2+ + 2e-",
+          "correct": false,
+          "explanation": "This is oxidation of copper atoms, the reverse of what the cathode does.",
+          "misconception": "reverses the cathode reaction"
+        },
+        {
+          "key": "D",
+          "text": "Cu2+ + e- → Cu+",
+          "correct": false,
+          "explanation": "One electron leaves a copper(II) ion still charged; the cathode supplies the full two electrons needed for neutral copper.",
+          "misconception": "stops the reduction half way to a made-up ion"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L3::Q2",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L3",
+      "stem": "During the electrolysis of dilute sulfuric acid, what is oxidised at the anode?",
+      "misconceptionClass": "water as the discharged species",
+      "options": [
+        {
+          "key": "A",
+          "text": "Water molecules",
+          "correct": true,
+          "explanation": "The solution is acidic, so water molecules give up electrons at the anode and release oxygen gas.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Sulfate ions",
+          "correct": false,
+          "explanation": "The sulfate ions stay in solution in this case; water is the species discharged at the anode.",
+          "misconception": "assumes the solution's own anion must discharge"
+        },
+        {
+          "key": "C",
+          "text": "Hydroxide ions",
+          "correct": false,
+          "explanation": "An acidic solution contains no hydroxide ions, so they cannot be the species discharged.",
+          "misconception": "assumes hydroxide ions are present in acidic solution"
+        },
+        {
+          "key": "D",
+          "text": "Hydrogen ions",
+          "correct": false,
+          "explanation": "Hydrogen ions are positive and are reduced at the cathode, not oxidised at the anode.",
+          "misconception": "sends the cation to the wrong electrode"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L3::Q3",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L3",
+      "stem": "The anode half equation for dilute sulfuric acid is 2H2O → O2 + 4H+ + 4e-. Why does it involve water rather than OH-?",
+      "misconceptionClass": "acidic solutions lack hydroxide",
+      "options": [
+        {
+          "key": "A",
+          "text": "An acidic solution contains no hydroxide ions, so water is the species discharged",
+          "correct": true,
+          "explanation": "Acidic solutions do not contain OH- ions; the exam hint names water as the participant in the oxidation half equation.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "OH- ions are insoluble in water",
+          "correct": false,
+          "explanation": "Hydroxide ions are thoroughly water-soluble; they are simply absent from acidic solutions.",
+          "misconception": "invents an insolubility for hydroxide ions"
+        },
+        {
+          "key": "C",
+          "text": "Water conducts electricity better than hydroxide ions do",
+          "correct": false,
+          "explanation": "Conduction belongs to the ions in solution; the choice of water is about which species is present.",
+          "misconception": "explains discharge by conductivity instead of species presence"
+        },
+        {
+          "key": "D",
+          "text": "OH- ions would make the solution acidic",
+          "correct": false,
+          "explanation": "It is the other way round: hydroxide ions make solutions alkaline, which is why acidic ones contain none.",
+          "misconception": "inverts the acidic and alkaline roles"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L3::Q4",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L3",
+      "stem": "Aqueous copper(II) sulfate has the same anode half equation as dilute sulfuric acid. Why?",
+      "misconceptionClass": "shared water-anode pattern",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both solutions are acidic, so water is discharged at the anode in each",
+          "correct": true,
+          "explanation": "Neither solution contains hydroxide ions, so the water molecules step in and release oxygen at both anodes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Copper ions break water molecules apart at the anode",
+          "correct": false,
+          "explanation": "Copper ions travel to the cathode and are deposited; they play no part in the anode reaction.",
+          "misconception": "attributes the anode chemistry to the metal cation"
+        },
+        {
+          "key": "C",
+          "text": "Every aqueous solution shares the same anode reaction",
+          "correct": false,
+          "explanation": "Aqueous sodium chloride is a counter-example: its chloride ions, not water, are discharged at the anode.",
+          "misconception": "overgeneralises the water anode to all solutions"
+        },
+        {
+          "key": "D",
+          "text": "The oxygen comes from the sulfate ions in both cases",
+          "correct": false,
+          "explanation": "The oxygen is released from water molecules; the sulfate ions are not discharged here.",
+          "misconception": "misattributes the oxygen's source"
+        }
+      ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L3::Q5",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L3",
+      "stem": "Copper(II) sulfate solution is slightly acidic in water. According to the exam hint, what follows for its oxidation half equation?",
+      "misconceptionClass": "applying the water-versus-hydroxide rule",
+      "options": [
+        {
+          "key": "A",
+          "text": "Water is involved, because acidic solutions contain no hydroxide ions",
+          "correct": true,
+          "explanation": "Slightly acidic still means no OH- ions, so H2O appears in the oxidation half equation and the exam conditions will say so.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Hydroxide ions are involved, because every aqueous solution contains them",
+          "correct": false,
+          "explanation": "The hint is explicit that acidic solutions do not contain OH- ions, so hydroxide cannot appear here.",
+          "misconception": "assumes a universal hydroxide presence in water"
+        },
+        {
+          "key": "C",
+          "text": "Neither water nor hydroxide appears in the half equation",
+          "correct": false,
+          "explanation": "One of the two must appear; for this acidic solution it is water.",
+          "misconception": "denies that any discharge species is needed"
+        },
+        {
+          "key": "D",
+          "text": "The question will never state which species to use, so both are acceptable",
+          "correct": false,
+          "explanation": "The exam hint says conditions are clearly stated, so you always know whether water or OH- applies.",
+          "misconception": "claims the conditions are never specified"
+        }
+      ]
+    }
+  ]
+}

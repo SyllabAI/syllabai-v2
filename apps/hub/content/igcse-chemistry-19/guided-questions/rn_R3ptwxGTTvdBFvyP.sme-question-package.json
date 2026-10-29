@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_R3ptwxGTTvdBFvyP",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "8e129f9647a7907c37083c7dff5bc8a35b01ed31ee9d8577dcca3fe7d25f79a3",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_R3ptwxGTTvdBFvyP",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L1::Q1",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L1",
+      "stem": "A chromatogram shows four separate spots stacked at different heights. What was applied to the baseline?",
+      "misconceptionClass": "spot count interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "A mixture — each component shows as its own spot",
+          "correct": true,
+          "explanation": "Several spots mean several substances travelled, which is a mixture.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A pure substance — one chemical always gives four dots",
+          "correct": false,
+          "explanation": "A pure substance gives exactly one spot.",
+          "misconception": "count invented"
+        },
+        {
+          "key": "C",
+          "text": "An element — dots prove atomic simplicity",
+          "correct": false,
+          "explanation": "Chromatography says nothing about elements versus compounds, only how many substances are present.",
+          "misconception": "wrong domain inference"
+        },
+        {
+          "key": "D",
+          "text": "A compound with four bonds",
+          "correct": false,
+          "explanation": "Spot count counts substances, not bonds.",
+          "misconception": "bond confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L1::Q2",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L1",
+      "stem": "Brown ink is run beside red, yellow and blue inks. The brown leaves three dots, each level with one of the others. What follows?",
+      "misconceptionClass": "alignment conclusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "The brown ink is a mixture of the red, yellow and blue inks",
+          "correct": true,
+          "explanation": "Level dots mean identical substances, and three of them make up the brown.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The brown ink is pure, since its dots are level",
+          "correct": false,
+          "explanation": "Three dots is three substances — the very picture of a mixture here.",
+          "misconception": "alignment overread as purity"
+        },
+        {
+          "key": "C",
+          "text": "The inks reacted to make brown during the run",
+          "correct": false,
+          "explanation": "No reaction occurs; the brown was mixed before it reached the paper.",
+          "misconception": "reaction invented"
+        },
+        {
+          "key": "D",
+          "text": "The chromatogram is faulty and should be repeated",
+          "correct": false,
+          "explanation": "The result is exactly what a mixture of three dyes looks like.",
+          "misconception": "evidence dismissed"
+        }
+      ]
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L1::Q3",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L1",
+      "stem": "Why is a reference spot of a known compound included on the same paper?",
+      "misconceptionClass": "reference spot purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "So unknown spots that line up with it can be identified by matching",
+          "correct": true,
+          "explanation": "A level line between reference and unknown means the same substance.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To make the chromatogram look complete",
+          "correct": false,
+          "explanation": "The reference has a working role, not a decorative one.",
+          "misconception": "decorative assumption"
+        },
+        {
+          "key": "C",
+          "text": "To use up spare space on the paper",
+          "correct": false,
+          "explanation": "Space is not the concern; identification is.",
+          "misconception": "trivial rationale"
+        },
+        {
+          "key": "D",
+          "text": "Because every valid chromatogram must contain four spots",
+          "correct": false,
+          "explanation": "There is no spot-count rule; references exist to match against.",
+          "misconception": "rule invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L1::Q4",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L1",
+      "stem": "Two samples give chromatograms whose spots sit at exactly the same heights. What can be concluded?",
+      "misconceptionClass": "identical chromatograms",
+      "options": [
+        {
+          "key": "A",
+          "text": "The samples are the same substance",
+          "correct": true,
+          "explanation": "Identical substances produce identical chromatograms.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One sample is purer than the other",
+          "correct": false,
+          "explanation": "Same spots, same purity picture; nothing distinguishes them.",
+          "misconception": "purity ranking invented"
+        },
+        {
+          "key": "C",
+          "text": "The solvent was different for each",
+          "correct": false,
+          "explanation": "A different solvent would shift the heights.",
+          "misconception": "condition mismatch assumed"
+        },
+        {
+          "key": "D",
+          "text": "The samples are mixtures of the same colour",
+          "correct": false,
+          "explanation": "Height matching identifies substances regardless of colour.",
+          "misconception": "colour-based reasoning"
+        }
+      ]
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L1::Q5",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L1",
+      "stem": "An exam prints a chromatogram in black and white. How do you tell whether a mixture contains a given known sample?",
+      "misconceptionClass": "monochrome matching",
+      "options": [
+        {
+          "key": "A",
+          "text": "Check whether the mixture's dots line up horizontally with the known's dots",
+          "correct": true,
+          "explanation": "In black and white, level alignment is the only reliable match.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Compare the darkness of the spots",
+          "correct": false,
+          "explanation": "Shade depends on quantity and printing, not identity.",
+          "misconception": "shade as identity"
+        },
+        {
+          "key": "C",
+          "text": "Count which sample has more dots overall",
+          "correct": false,
+          "explanation": "Counts say pure versus mixture, not which substances are shared.",
+          "misconception": "count as match"
+        },
+        {
+          "key": "D",
+          "text": "Measure which spots are widest",
+          "correct": false,
+          "explanation": "Spot width is not the identification criterion.",
+          "misconception": "size as identity"
+        }
+      ]
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L2::Q1",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L2",
+      "stem": "What is the Rf value of a substance?",
+      "misconceptionClass": "Rf definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "Distance moved by the substance divided by distance moved by the solvent",
+          "correct": true,
+          "explanation": "Both distances are measured from the baseline.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Distance moved by the solvent divided by distance moved by the substance",
+          "correct": false,
+          "explanation": "That inverts the ratio and pushes values above one.",
+          "misconception": "ratio inverted"
+        },
+        {
+          "key": "C",
+          "text": "The time the substance takes to climb the paper",
+          "correct": false,
+          "explanation": "Rf is about distances, not times.",
+          "misconception": "time substituted"
+        },
+        {
+          "key": "D",
+          "text": "The mass of substance dissolved in the solvent",
+          "correct": false,
+          "explanation": "No mass enters the calculation.",
+          "misconception": "quantity confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L2::Q2",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L2",
+      "stem": "Why must every Rf value be smaller than one?",
+      "misconceptionClass": "Rf bound",
+      "options": [
+        {
+          "key": "A",
+          "text": "The substance cannot travel further than the solvent that carries it",
+          "correct": true,
+          "explanation": "The solvent front sets the maximum distance, so the ratio stays below one.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Values above one are simply rounded down",
+          "correct": false,
+          "explanation": "The bound is physical, not a rounding convention.",
+          "misconception": "rounding as physics"
+        },
+        {
+          "key": "C",
+          "text": "Because Rf is measured in centimetres",
+          "correct": false,
+          "explanation": "Rf has no units at all.",
+          "misconception": "unit confusion"
+        },
+        {
+          "key": "D",
+          "text": "One is the maximum solubility allowed",
+          "correct": false,
+          "explanation": "Solubility does not cap the ratio; the geometry of the run does.",
+          "misconception": "solubility cap"
+        }
+      ]
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L2::Q3",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L2",
+      "stem": "A student measures Rf = 0.4 in one solvent, then repeats the run in a different solvent. What happens?",
+      "misconceptionClass": "solvent dependence",
+      "options": [
+        {
+          "key": "A",
+          "text": "The Rf value can change, because it depends on the solvent used",
+          "correct": true,
+          "explanation": "The value is constant only for a given substance in a given solvent.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The Rf stays 0.4 in every solvent",
+          "correct": false,
+          "explanation": "Changing the solvent changes the value.",
+          "misconception": "universality assumed"
+        },
+        {
+          "key": "C",
+          "text": "Rf doubles when the solvent changes",
+          "correct": false,
+          "explanation": "There is no fixed scaling between solvents.",
+          "misconception": "linear rule invented"
+        },
+        {
+          "key": "D",
+          "text": "Rf becomes meaningless after the first run",
+          "correct": false,
+          "explanation": "Each run gives a valid value for its own solvent.",
+          "misconception": "one-run validity"
+        }
+      ]
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L2::Q4",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L2",
+      "stem": "Where exactly are the two distances for an Rf calculation measured from and to?",
+      "misconceptionClass": "measurement anchors",
+      "options": [
+        {
+          "key": "A",
+          "text": "From the baseline to the centre of the dot, and to the solvent front",
+          "correct": true,
+          "explanation": "Baseline to centre for the substance; baseline to front for the solvent.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "From the top of the paper down to the dots",
+          "correct": false,
+          "explanation": "Both distances run upward from the same baseline.",
+          "misconception": "direction reversed"
+        },
+        {
+          "key": "C",
+          "text": "From dot edge to dot edge",
+          "correct": false,
+          "explanation": "Centres, not edges, are the marked convention.",
+          "misconception": "edge convention"
+        },
+        {
+          "key": "D",
+          "text": "From the solvent container to the pencil line",
+          "correct": false,
+          "explanation": "The container plays no part; the paper's baseline is the anchor.",
+          "misconception": "apparatus anchor"
+        }
+      ]
+    },
+    {
+      "id": "rn_R3ptwxGTTvdBFvyP::L2::Q5",
+      "moduleId": "rn_R3ptwxGTTvdBFvyP::L2",
+      "stem": "Why can Rf values identify an unknown component of a mixture?",
+      "misconceptionClass": "identification logic",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because a substance's Rf under the same conditions matches a known value in the tables",
+          "correct": true,
+          "explanation": "Same substance, same solvent, same value — the match names the component.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because every substance has a unique Rf across all solvents",
+          "correct": false,
+          "explanation": "The value is unique only within a fixed solvent; the table must match conditions.",
+          "misconception": "universal uniqueness"
+        },
+        {
+          "key": "C",
+          "text": "Because higher spots always mean bigger molecules",
+          "correct": false,
+          "explanation": "Travel reflects solubility in the solvent, not molecular size rules of thumb.",
+          "misconception": "size heuristic"
+        },
+        {
+          "key": "D",
+          "text": "Because the solvent records its own fingerprint",
+          "correct": false,
+          "explanation": "The identification reads the spots, not the solvent.",
+          "misconception": "solvent fingerprint"
+        }
+      ]
+    }
+  ]
+}

@@ -220,7 +220,27 @@ export function Markdown({
           },
           img: ({ src, alt }) => {
             const s = typeof src === "string" ? src : "";
-            if (s.startsWith("/content-assets/")) {
+            if (s.startsWith("/content-assets/") || s.startsWith("/ugm-assets/")) {
+              // T-UGM-HUB-CONSUME-8a: UGM static figures serve from the
+              // committed public/ugm-assets mirror (same local-image law as
+              // the content-assets corpus plane)
+              return (
+                <span className="block overflow-hidden rounded-md border">
+                  <Image
+                    src={s}
+                    alt={alt ?? ""}
+                    width={640}
+                    height={400}
+                    unoptimized
+                    className="h-auto w-full max-w-md"
+                  />
+                </span>
+              );
+            }
+            // T-SENECA-001 Task 43: harvested Seneca images are committed to
+            // the public/seneca-images mirror and rewritten into the content
+            // at bundle-generation time — same local-image law as ugm-assets.
+            if (s.startsWith("/seneca-images/")) {
               return (
                 <span className="block overflow-hidden rounded-md border">
                   <Image

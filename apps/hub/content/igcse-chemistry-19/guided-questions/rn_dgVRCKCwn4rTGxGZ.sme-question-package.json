@@ -1,0 +1,555 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_dgVRCKCwn4rTGxGZ",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "afb5501298f58057dd4d5bfd63b28ea2de6b588d94003edd93c9f4dd36620336",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_dgVRCKCwn4rTGxGZ",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L1::Q1",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L1",
+      "stem": "Which three values are needed to calculate a heat energy change?",
+      "misconceptionClass": "variable identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Mass heated, temperature change and specific heat capacity",
+          "correct": true,
+          "explanation": "Those three multiply together to give the heat energy change in joules.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Volume, time and temperature change",
+          "correct": false,
+          "explanation": "Time never enters the expression; volume must first be turned into a mass.",
+          "misconception": "time intruded"
+        },
+        {
+          "key": "C",
+          "text": "Mass, boiling point and specific heat capacity",
+          "correct": false,
+          "explanation": "The change in temperature matters, not the boiling point.",
+          "misconception": "wrong temperature datum"
+        },
+        {
+          "key": "D",
+          "text": "Moles, temperature change and density",
+          "correct": false,
+          "explanation": "Moles belong to the molar enthalpy step, not to the heat energy change itself.",
+          "misconception": "steps merged"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L1::Q2",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L1",
+      "stem": "What does a specific heat capacity of 4.18 J/g/°C mean for water?",
+      "misconceptionClass": "definition reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "1 g of water needs 4.18 J to rise by 1 °C",
+          "correct": true,
+          "explanation": "The definition ties one gram and one degree to the stated energy.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "1 litre of water needs 4.18 J to boil",
+          "correct": false,
+          "explanation": "The definition concerns a 1 °C rise for 1 g, not boiling a litre.",
+          "misconception": "definition stretched"
+        },
+        {
+          "key": "C",
+          "text": "Water warms by 4.18 °C for every joule supplied",
+          "correct": false,
+          "explanation": "That inverts the ratio; many joules are needed for a single degree.",
+          "misconception": "ratio inverted"
+        },
+        {
+          "key": "D",
+          "text": "Water releases 4.18 J when it freezes",
+          "correct": false,
+          "explanation": "Freezing involves a different energy change altogether.",
+          "misconception": "process swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L1::Q3",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L1",
+      "stem": "100 cm3 of dilute solution is warmed. What mass should the calculation use?",
+      "misconceptionClass": "assumption application",
+      "options": [
+        {
+          "key": "A",
+          "text": "100 g, because the solution is assumed to have the density of water",
+          "correct": true,
+          "explanation": "The 1 g/cm3 assumption makes the volume reading double as the mass.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "50 g, because half the solution is water",
+          "correct": false,
+          "explanation": "No such split exists in the assumption set; the whole solution behaves like water.",
+          "misconception": "invented split"
+        },
+        {
+          "key": "C",
+          "text": "The mass of the dissolved solid only",
+          "correct": false,
+          "explanation": "Everything in the cup is warmed, not just the solute.",
+          "misconception": "solute only"
+        },
+        {
+          "key": "D",
+          "text": "The mass cannot be found without a balance",
+          "correct": false,
+          "explanation": "The density assumption removes the need to weigh the solution.",
+          "misconception": "assumption ignored"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L1::Q4",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L1",
+      "stem": "A temperature rises from 25 °C to 37 °C. What ΔT goes into the expression?",
+      "misconceptionClass": "delta extraction",
+      "options": [
+        {
+          "key": "A",
+          "text": "12 °C, the difference between final and initial readings",
+          "correct": true,
+          "explanation": "Subtracting 25 from 37 gives the change the expression needs.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "37 °C, the final temperature itself",
+          "correct": false,
+          "explanation": "The expression wants the change, not the endpoint.",
+          "misconception": "endpoint used"
+        },
+        {
+          "key": "C",
+          "text": "62 °C, the two readings added",
+          "correct": false,
+          "explanation": "Adding temperatures has no physical meaning here.",
+          "misconception": "readings added"
+        },
+        {
+          "key": "D",
+          "text": "25 °C, the starting temperature",
+          "correct": false,
+          "explanation": "The starting reading alone says nothing about the size of the change.",
+          "misconception": "start used"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L1::Q5",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L1",
+      "stem": "Why can a temperature change in °C be used unchanged in the expression?",
+      "misconceptionClass": "unit reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "A change of one degree Celsius equals a change of one kelvin",
+          "correct": true,
+          "explanation": "The two scales differ by a fixed offset, so differences are identical on both.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Celsius and kelvin are the same scale with different names",
+          "correct": false,
+          "explanation": "The scales have different zero points; only their step sizes match.",
+          "misconception": "scales equated"
+        },
+        {
+          "key": "C",
+          "text": "The expression works in Fahrenheit too",
+          "correct": false,
+          "explanation": "Fahrenheit degrees are a different size, so the expression would break.",
+          "misconception": "scale confusion"
+        },
+        {
+          "key": "D",
+          "text": "Specific heat capacity has no units",
+          "correct": false,
+          "explanation": "It carries J/g/°C, which is why the temperature unit matters.",
+          "misconception": "units denied"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L2::Q1",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L2",
+      "stem": "A calculation gives Q = 3135 J and the temperature rose. What is the final quoted answer?",
+      "misconceptionClass": "sign application",
+      "options": [
+        {
+          "key": "A",
+          "text": "-3.14 kJ, because the exothermic change makes the value negative",
+          "correct": true,
+          "explanation": "The rise shows energy left the chemicals, so the negative sign applies before converting to kilojoules.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "+3.14 kJ, because energy calculations are always positive",
+          "correct": false,
+          "explanation": "Sizes are positive but enthalpy changes carry the direction as a sign.",
+          "misconception": "sign dropped"
+        },
+        {
+          "key": "C",
+          "text": "-3135 kJ, because joules convert directly",
+          "correct": false,
+          "explanation": "Dividing by 1000 was skipped; the number is a kilojoule conversion error.",
+          "misconception": "conversion skipped"
+        },
+        {
+          "key": "D",
+          "text": "3135 kJ, because the sign is optional",
+          "correct": false,
+          "explanation": "The sign is chemistry, not decoration, and the unit is wrong.",
+          "misconception": "both errors kept"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L2::Q2",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L2",
+      "stem": "Why must the enthalpy change for a combustion always be negative?",
+      "misconceptionClass": "convention reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Combustion always releases heat, and released energy is written as a negative change",
+          "correct": true,
+          "explanation": "Burning fuels warm their surroundings, which fixes the sign by convention.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because flames are hot, and hot means negative",
+          "correct": false,
+          "explanation": "The sign tracks energy flow, not temperature size.",
+          "misconception": "temperature equated to sign"
+        },
+        {
+          "key": "C",
+          "text": "Because fuels are negative chemicals",
+          "correct": false,
+          "explanation": "No chemical carries a sign; the transfer does.",
+          "misconception": "chemical sign myth"
+        },
+        {
+          "key": "D",
+          "text": "Because kilojoules are always negative units",
+          "correct": false,
+          "explanation": "Units are neutral; endothermic values in kilojoules are positive.",
+          "misconception": "unit sign myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L2::Q3",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L2",
+      "stem": "Which order describes the reliable route through a heat energy calculation?",
+      "misconceptionClass": "method sequencing",
+      "options": [
+        {
+          "key": "A",
+          "text": "State the expression, list values, substitute, solve, apply the sign",
+          "correct": true,
+          "explanation": "That sequence keeps units and direction under control to the final line.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Guess the sign, substitute, then find the expression",
+          "correct": false,
+          "explanation": "The expression comes first; the sign is applied at the end from the temperature direction.",
+          "misconception": "sequence scrambled"
+        },
+        {
+          "key": "C",
+          "text": "Convert to kilojoules first, then find the mass",
+          "correct": false,
+          "explanation": "The mass is needed before any multiplication can happen.",
+          "misconception": "order inverted"
+        },
+        {
+          "key": "D",
+          "text": "Solve, then decide which expression was used",
+          "correct": false,
+          "explanation": "Choosing the expression after solving makes the answer untraceable.",
+          "misconception": "reverse engineering"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L2::Q4",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L2",
+      "stem": "A student writes a positive answer although the mixture cooled. What went wrong?",
+      "misconceptionClass": "diagnosis",
+      "options": [
+        {
+          "key": "A",
+          "text": "The sign step was missed: a temperature fall means energy entered and the value is positive",
+          "correct": true,
+          "explanation": "The student should have ended with a positive value, so a negative one would show the opposite slip.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Nothing: cooling reactions always give positive numbers",
+          "correct": false,
+          "explanation": "The direction decides the sign; the student ignored it.",
+          "misconception": "sign ignored"
+        },
+        {
+          "key": "C",
+          "text": "The mass must have been wrong",
+          "correct": false,
+          "explanation": "The described fault is the sign, not the mass.",
+          "misconception": "misdiagnosis"
+        },
+        {
+          "key": "D",
+          "text": "The specific heat capacity should be negative for cooling",
+          "correct": false,
+          "explanation": "The capacity is a property of the substance and stays positive.",
+          "misconception": "property sign myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L2::Q5",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L2",
+      "stem": "Q is calculated as 25080 J. Express this in kilojoules.",
+      "misconceptionClass": "unit conversion",
+      "options": [
+        {
+          "key": "A",
+          "text": "25.1 kJ",
+          "correct": true,
+          "explanation": "Dividing 25080 by 1000 gives 25.08, which rounds to 25.1 at three significant figures.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "250.8 kJ",
+          "correct": false,
+          "explanation": "That divides by 100 rather than 1000.",
+          "misconception": "wrong divisor"
+        },
+        {
+          "key": "C",
+          "text": "0.0251 kJ",
+          "correct": false,
+          "explanation": "That divides by a million, confusing joules with millijoules.",
+          "misconception": "over-division"
+        },
+        {
+          "key": "D",
+          "text": "25080 kJ",
+          "correct": false,
+          "explanation": "No conversion was applied at all.",
+          "misconception": "no conversion"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L3::Q1",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L3",
+      "stem": "What distinguishes the molar enthalpy change from the heat energy change?",
+      "misconceptionClass": "concept separation",
+      "options": [
+        {
+          "key": "A",
+          "text": "It divides the heat energy change by the number of moles of fuel",
+          "correct": true,
+          "explanation": "The per-mole scaling is exactly what makes the value comparable between fuels.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It multiplies the heat energy change by the volume heated",
+          "correct": false,
+          "explanation": "Volume belongs to the mass step, and multiplication goes the wrong way.",
+          "misconception": "operation inverted"
+        },
+        {
+          "key": "C",
+          "text": "It ignores the temperature change entirely",
+          "correct": false,
+          "explanation": "The temperature change feeds the heat energy change that the division starts from.",
+          "misconception": "dependency denied"
+        },
+        {
+          "key": "D",
+          "text": "It is always measured directly by the thermometer",
+          "correct": false,
+          "explanation": "The thermometer only gives the temperature change; the molar value is calculated.",
+          "misconception": "measurement conflated"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L3::Q2",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L3",
+      "stem": "Which unit belongs to the molar enthalpy change?",
+      "misconceptionClass": "unit recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "kJ/mol",
+          "correct": true,
+          "explanation": "Kilojoules per mole is the stated unit for the molar enthalpy change.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "J/°C",
+          "correct": false,
+          "explanation": "That mixes energy with a temperature step and misses the per-mole part.",
+          "misconception": "unit garbled"
+        },
+        {
+          "key": "C",
+          "text": "g/J",
+          "correct": false,
+          "explanation": "That inverts both parts of the scaling.",
+          "misconception": "unit inverted"
+        },
+        {
+          "key": "D",
+          "text": "mol/dm3",
+          "correct": false,
+          "explanation": "That is a concentration unit from a different topic.",
+          "misconception": "unit borrowed"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L3::Q3",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L3",
+      "stem": "0.01 mol of a fuel warms water by an amount worth -12.54 kJ. What is the molar enthalpy change?",
+      "misconceptionClass": "calculation",
+      "options": [
+        {
+          "key": "A",
+          "text": "-1254 kJ/mol",
+          "correct": true,
+          "explanation": "Dividing -12.54 kJ by 0.01 mol scales the heat up to one mole.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "-0.1254 kJ/mol",
+          "correct": false,
+          "explanation": "That multiplies by 0.01 instead of dividing.",
+          "misconception": "operation inverted"
+        },
+        {
+          "key": "C",
+          "text": "+1254 kJ/mol",
+          "correct": false,
+          "explanation": "The negative sign must survive the division.",
+          "misconception": "sign dropped"
+        },
+        {
+          "key": "D",
+          "text": "-12.54 kJ/mol",
+          "correct": false,
+          "explanation": "No scaling by moles was applied.",
+          "misconception": "division skipped"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L3::Q4",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L3",
+      "stem": "Why compare fuels per mole rather than per experiment?",
+      "misconceptionClass": "fair comparison",
+      "options": [
+        {
+          "key": "A",
+          "text": "Different experiments burn different amounts, so only per-mole values are like for like",
+          "correct": true,
+          "explanation": "Scaling to a mole removes the effect of how much fuel happened to be burned.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Per-experiment values are always larger",
+          "correct": false,
+          "explanation": "Size depends on the amounts chosen, not on the basis of comparison.",
+          "misconception": "size myth"
+        },
+        {
+          "key": "C",
+          "text": "Experiments are unreliable and should be avoided",
+          "correct": false,
+          "explanation": "The experiments are fine; the scaling is what makes them comparable.",
+          "misconception": "method dismissed"
+        },
+        {
+          "key": "D",
+          "text": "Moles cancel the temperature change out",
+          "correct": false,
+          "explanation": "The temperature change still feeds the heat energy change at the start.",
+          "misconception": "cancellation myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_dgVRCKCwn4rTGxGZ::L3::Q5",
+      "moduleId": "rn_dgVRCKCwn4rTGxGZ::L3",
+      "stem": "A fuel burns to release 20.9 kJ per gram. What additional data gives the molar enthalpy change?",
+      "misconceptionClass": "path planning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The relative formula mass, to convert the per-gram value to a per-mole value",
+          "correct": true,
+          "explanation": "Multiplying the per-gram figure by the formula mass in g/mol reaches kJ/mol.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The volume of water heated",
+          "correct": false,
+          "explanation": "That data fed the original heat calculation and adds nothing here.",
+          "misconception": "stale data reused"
+        },
+        {
+          "key": "C",
+          "text": "The colour of the flame",
+          "correct": false,
+          "explanation": "Flame appearance carries no quantitative information for this step.",
+          "misconception": "irrelevant datum"
+        },
+        {
+          "key": "D",
+          "text": "The room temperature during burning",
+          "correct": false,
+          "explanation": "The temperature change is already inside the per-gram figure.",
+          "misconception": "double counting"
+        }
+      ]
+    }
+  ]
+}

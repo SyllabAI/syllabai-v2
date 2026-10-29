@@ -1,0 +1,121 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_HZM2WRjPPT8Srcxt",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "71a32b566d28ab75453a9650fb75c8cce075c83cb9ebd89549fbe5027aefa8d5",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_HZM2WRjPPT8Srcxt",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "States of Matter",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-1-states-of-matter/1-1-3-solutions",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.4",
+        "text": "know what is meant by the terms: solvent, solute, solution, saturated solution"
+      }
+    ],
+    "primer": {
+      "text": "Everyday life already teaches this note: stirring sugar into tea or salt into soup shows something vanishing into a liquid. That liquid, that vanished substance and the resulting mixture each carry a precise name, and this note fixes the vocabulary — solvent, solute, solution, saturated solution, soluble, insoluble — using sea water, where all of them appear at once.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_HZM2WRjPPT8Srcxt::L1",
+        "title": "Solutions Terminology",
+        "sourceHeadings": [
+          "Solutions Terminology",
+          "Solutions terminology"
+        ],
+        "specRefs": [
+          "4CH1-1.4"
+        ],
+        "opening": "Dissolving has a vocabulary of its own, and every term in it names a role. Sea water carries the whole set in one example: the water is the solvent, the salt is the solute, and the mixture itself is the solution. Add enough salt and the water refuses to take more — the saturated state — which the Dead Sea shows on a grand scale.",
+        "keyPoints": [
+          "The solvent is the liquid doing the dissolving; in sea water it is the water.",
+          "The solute is the substance that dissolves; in sea water it is the salt.",
+          "A solution is the mixture formed once a solute has dissolved in a solvent.",
+          "A saturated solution holds the maximum amount of dissolved solute the solvent can take, as with sea water in the Dead Sea.",
+          "Soluble describes a substance that will dissolve, and insoluble describes one that will not, like sand in water."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Six terms describe dissolving. The solvent is the liquid, the solute is what dissolves in it, and the solution is the mixture you get; saturated means no more solute can dissolve, while soluble and insoluble record whether something dissolves at all.",
+            "analogy": "Making a cup of tea: the hot water is the solvent, the sugar is the solute, the sweet drink is the solution — and once sugar piles up undissolved at the bottom, the cup is saturated.",
+            "examPointer": "Definition questions are free marks when the terms are precise: learn each one with its single-line meaning and a sea-water example."
+          },
+          "medium": {
+            "restatement": "In a solution the solvent is the liquid doing the dissolving and the solute is the substance dissolved in it; the solution is the mixture that results. A saturated solution carries the greatest amount of dissolved solute possible, and soluble or insoluble records whether a substance will dissolve.",
+            "analogy": "A rush-hour bus: the bus is the solvent, the passengers are the solute, the loaded bus is the solution, and when nobody else can board, it is saturated.",
+            "examPointer": "Expect a match-the-term item or a definition with a missing word; quote the term exactly (saturated solution, not saturated liquid) and attach the sea-water or Dead Sea example where it fits."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_HZM2WRjPPT8Srcxt::L1::Q1",
+          "rn_HZM2WRjPPT8Srcxt::L1::Q2",
+          "rn_HZM2WRjPPT8Srcxt::L1::Q3",
+          "rn_HZM2WRjPPT8Srcxt::L1::Q4",
+          "rn_HZM2WRjPPT8Srcxt::L1::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "solvent",
+          "definition": "The liquid that does the dissolving; in sea water the solvent is the water.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solute",
+          "definition": "The substance that dissolves in the liquid; in sea water the solute is the salt.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solution",
+          "definition": "The mixture formed once a solute has dissolved in a solvent; sea water is the example.",
+          "firstLesson": 1
+        },
+        {
+          "term": "saturated solution",
+          "definition": "A solution holding the greatest amount of dissolved solute the solvent can take, such as sea water in the Dead Sea.",
+          "firstLesson": 1
+        },
+        {
+          "term": "soluble",
+          "definition": "Describing a substance that is able to dissolve, like salt in water.",
+          "firstLesson": 1
+        },
+        {
+          "term": "insoluble",
+          "definition": "Describing a substance that is unable to dissolve, like sand in water.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "A learner stirs salt and sand into a beaker of water. The salt disappears into the water but the sand settles on the bottom. Name: a) the role of the water, b) the role of the salt, c) the mixture formed once the salt has dissolved, d) the term describing the sand.",
+        "steps": [
+          "a) The water is the solvent: the liquid doing the dissolving.",
+          "b) The salt is the solute: the substance that dissolves in the liquid to form the mixture.",
+          "c) Once the solute has dissolved in the solvent, the mixture is called the solution.",
+          "d) The sand does not dissolve, so it is insoluble."
+        ],
+        "finalAnswer": "a) Solvent. b) Solute. c) Solution. d) Sand is insoluble."
+      }
+    }
+  }
+}

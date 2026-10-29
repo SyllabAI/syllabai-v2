@@ -1,0 +1,37 @@
+version: 1
+task:
+  id: T-SPECS-MATHSB-REVIEW-1
+  title: "Adjudicate the maths-b content-join review queue (162 flags / 13 unmapped)"
+  owner: "restore lane (Z.ai, zai-web session web-528c0352, trace 1a181ba3a6e696b9)"
+  status: DONE
+  priority: P2
+  band: T-SPECS
+  wave: maths-b-anchor-fix
+  deps: []
+  scope:
+    allowed:
+      - "SyllabAI/syllabai-resources SME-ExamQuestion/igcse-maths-b-16/* (tier re-adjudication only)"
+      - "downstream re-derivation chain (map_flashcards, build_learner_spec_links, attach, flip)"
+    forbidden:
+      - "any forced attachment outside the recorded tier law"
+      - "changes to the official parsed 4MB1 registry"
+  notes: >
+    The r0 content join (resources 8460a5f3, scripts/sme_maths_b_content_join.py)
+    attached 202/215 SME spec points: C1_content_join 27 (clean), C2_content_join 30
+    (flagged: moderate/ambiguous/cross-topic), C3_topic_anchored 112 (topic-certain,
+    statement not uniquely derivable — best content-corroborated statement, flagged),
+    S1/S2 of-record rows kept except one ledger repoint (5G->8K Combination of
+    Transformations). Open queue: 162 flags + 13 honestly-unmapped spcpts
+    (13 notes still loose on the hub: Collecting Like Terms, Expanding &
+    Simplifying Single Brackets, Midpoint of a Line, Best Buys, Mathematical
+    Symbols, Repeated Percentage Change, Converting between Units, Squared &
+    Cubic Units, Listing Outcomes, Relative & Expected Frequency, Pie Charts —
+    generic lessons the coarse 98-statement 4MB1 spine cannot see textually).
+    Known near-miss examples worth prioritizing: 'Finding Equations of Straight
+    Lines' C3->4K (true anchor 4I y=mx+c, long-statement dilution),
+    'Speed/Distance-Time Graphs' C3->4K (true anchor 4N kinematics; 4N already
+    of-record for the Kinematics S1 row), 'Difference Of Two Squares' kept 8E
+    (topic-inconsistent, true anchor 3C factorisation — below decisive bar).
+    Every flagged row carries its full candidate profile in
+    spec_point_map.json (mappings[].evidence.profile) for adjudication.
+    Hub effect of record: notes loose 166 -> 11; flashcards coded 61 -> 262.

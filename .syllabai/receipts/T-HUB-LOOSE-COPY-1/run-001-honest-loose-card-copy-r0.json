@@ -1,0 +1,47 @@
+{
+  "band": "T-HUB-LOOSE-COPY-1",
+  "run": "run-001",
+  "at": "2026-10-29T11:16:24Z",
+  "order": "operator trace 1a187582eb9b9ab5: 'file the honest-copy fix as a small PR' — direct followup of the T-CONSUME-EDX-1 run-002 convergence receipt (2026-10-29 state check confirmed live: maths-b loose card names exactly the two terminal stays while still promising 'still in progress upstream')",
+  "executor": "main agent (Z.ai, zai-web session web-528c0352, chat a7ae5075, trace 1a187582eb9b9ab5)",
+  "verdict": "SHIPPED — small PR: course-aware loose-card copy via new lib/loose-copy.ts; igcse-maths-b-16 states the adjudicated terminal truth (no spec-point home, mapping lane closed, not pending work); DEFAULT_COPY byte-preserves the legacy sentence for the 82 courses whose upstream mapping is genuinely still in progress; both surfaces wired (revision-notes unmapped card title+body, guided-lessons unmapped heading title)",
+  "changes": [
+    {
+      "file": "apps/hub/src/lib/loose-copy.ts (new)",
+      "what": "looseAnchorCopy(course): ADJUDICATED_NO_SPEC_HOME static map (single entry igcse-maths-b-16, citing T-SPEC-2B terminal-stay class + family of record T-SPECS-MATHSB-2B-OVERLAY-1 run-001 @ 3c74e63c + T-CONSUME-EDX-1 run-002 convergence receipt) with ?? DEFAULT_COPY fallback; no manifest schema change, no bundle regen"
+    },
+    {
+      "file": "apps/hub/src/app/courses/[course]/revision-notes/notes-index.tsx",
+      "what": "import + looseCopy = looseAnchorCopy(course) + the unmapped card's hardcoded title/body replaced by {looseCopy.title}/{looseCopy.body} — render structure, classNames, note links untouched"
+    },
+    {
+      "file": "apps/hub/src/app/courses/[course]/guided-lessons/page.tsx",
+      "what": "import + unmapped section heading hardcoded string replaced by {looseAnchorCopy(slug).title} — count line and rows untouched"
+    }
+  ],
+  "verification": {
+    "typecheck": "bun run typecheck green (packages/contracts, shared, db, apps/api tsc --noEmit)",
+    "hub_build": "bun run build:hub EXIT 0 — corpus-verify prebuild + next build (the hub type gate; next build type-checks apps/hub)",
+    "copy_truth_first_hand": "pre-edit live check (2026-10-29): revision-notes page grouped notes under spec-code headings, 'Not yet anchored' section held exactly Mathematical Symbols + Listing Outcomes; census at 2559034b: igcse-maths-b-16 codeless 2/199 (the stays); 83 courses carry code-less notes (some fully uncoded, e.g. cie-as-maths-20-pure-2 39/39) — hence the course-aware design rather than a fleet-wide 'mapping complete' claim",
+    "scope_census": "git status at commit: exactly 3 code files (1 new, 2 modified); zero apps/hub/content/** bytes; zero content-maps bytes"
+  },
+  "landing": {
+    "at": "2026-10-29T11:45Z",
+    "channel": "Vercel git auto-deploy (apps/hub/vercel.json deploymentEnabled.main=true) — fired on merge 544c3700a without lane intervention",
+    "deployment": "dpl_61c1Xi5kuCRNFPJ6… (url syllabai-hub-v2-15dn7d4o6-syllab-ai.vercel.app) created 11:19:47Z, READY 11:22:45Z, aliasAssigned=true -> syllabai-hub-v2.vercel.app",
+    "token": "fresh VERCEL_PAT supplied by operator via IM (trace 1a1877634d2acb49) after the prior vcp_…aoT3 was ROTATION-REQUIRED per run-020; used env-only (stored untracked at /home/z/my-project/.secrets/vercel_pat, mode 600, outside both repos); zero PAT bytes in any committed artifact",
+    "live_spot_check": "PASS first-hand x2: deployment URL and alternate alias syllabai-hub-v2-syllab-ai.vercel.app both serve the new adjudicated copy verbatim — heading 'No spec-point home on the official specification', body 'This is an adjudicated outcome of the spec-mapping lane, not pending work', listing exactly Mathematical Symbols + Listing Outcomes; note: the apex alias kept serving the pre-merge build to this lane's fetch tool for ~16 min after READY (fetch-path cache artifact, not an alias failure — API aliasAssigned=true + deployment-URL marker check discriminate)",
+    "verified_via_api": "GET /v6/deployments?app=syllabai-hub-v2 (projectId query param returns not_found on this PAT — app-name param is the working form) + GET /v13/deployments/{uid}"
+  },
+  "scope_guards": [
+    "no bundle or content-maps bytes touched",
+    "default (in-progress) copy byte-identical to the legacy sentence — the other 82 courses' card text is unchanged by this PR",
+    "grouping law untouched (spec-tree.ts / courses.ts / subtopicOfNote never opened)",
+    "no secrets; fetch-first; branch PR; no force"
+  ],
+  "followups": [
+    "post-merge: Vercel auto-deploy, then live spot-check of https://syllabai-hub-v2.vercel.app/courses/igcse-maths-b-16/revision-notes for the new adjudicated copy",
+    "if a future course's spec-mapping lane closes with terminal stays, adding its slug to ADJUDICATED_NO_SPEC_HOME is an operator-gated one-line change (receipt-cited)",
+    "guided-lessons section aria-label still reads 'Not yet anchored to a spec point' (a11y label, not user-visible copy) — left as-is for minimal diff; can follow the copy in a later UI lane if the operator wants"
+  ]
+}

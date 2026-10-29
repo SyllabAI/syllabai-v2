@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_VyXFNyxZHZGkxqTG",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "5913ac345bf7e6d0486cf2fe68630fcbfefce2a756ca18a4fcecc45460dee5d2",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_VyXFNyxZHZGkxqTG",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L1::Q1",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L1",
+      "stem": "A question gives you the mass of a substance. How do you reach the amount in moles?",
+      "misconceptionClass": "formula-direction error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Divide the mass by its relative formula mass",
+          "correct": true,
+          "explanation": "Moles = mass ÷ Mr, so dividing converts the mass into the equation's own currency.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Multiply the mass by its relative formula mass",
+          "correct": false,
+          "explanation": "That flips the relationship; multiplying would inflate grams into a meaningless total.",
+          "misconception": "mass-Mr relationship inverted"
+        },
+        {
+          "key": "C",
+          "text": "Divide the mass by the atomic number",
+          "correct": false,
+          "explanation": "The atomic number counts protons and plays no part in mole sums.",
+          "misconception": "atomic number substituted for Mr"
+        },
+        {
+          "key": "D",
+          "text": "Read the moles straight off the balanced equation",
+          "correct": false,
+          "explanation": "The equation supplies ratios, not amounts; the ratio step comes after the moles are found.",
+          "misconception": "ratio used before moles"
+        }
+      ]
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L1::Q2",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L1",
+      "stem": "In 2Mg + O2 → 2MgO, 0.25 mol of magnesium burns completely. How many moles of magnesium oxide form?",
+      "misconceptionClass": "ratio misreading",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.25",
+          "correct": true,
+          "explanation": "The balancing numbers pair 2 Mg with 2 MgO, a one-to-one ratio, so the moles carry across unchanged.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.5",
+          "correct": false,
+          "explanation": "The 2s sit on both sides and cancel; treating MgO alone as doubled misreads the ratio.",
+          "misconception": "coefficient counted on one side only"
+        },
+        {
+          "key": "C",
+          "text": "0.125",
+          "correct": false,
+          "explanation": "Nothing is halved here; a one-to-one ratio leaves the amount exactly as it was.",
+          "misconception": "ratio inverted"
+        },
+        {
+          "key": "D",
+          "text": "0.75",
+          "correct": false,
+          "explanation": "Adding the coefficients 2 and 1 is meaningless; ratios compare, they do not sum.",
+          "misconception": "coefficients added"
+        }
+      ]
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L1::Q3",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L1",
+      "stem": "2Al2O3 → 4Al + 3O2. How many moles of aluminium come from 2 mol of aluminium oxide?",
+      "misconceptionClass": "ratio misreading",
+      "options": [
+        {
+          "key": "A",
+          "text": "4",
+          "correct": true,
+          "explanation": "The equation shows 2 aluminium oxide giving 4 aluminium, a one-to-two ratio, so 2 becomes 4.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2",
+          "correct": false,
+          "explanation": "This reads the ratio as one-to-one; the balancing numbers 2 and 4 double the product.",
+          "misconception": "ratio read as one-to-one"
+        },
+        {
+          "key": "C",
+          "text": "6",
+          "correct": false,
+          "explanation": "Adding 2 and 4 confuses a ratio with a sum; only multiplication moves between substances.",
+          "misconception": "coefficients added"
+        },
+        {
+          "key": "D",
+          "text": "8",
+          "correct": false,
+          "explanation": "Doubling twice over-applies the ratio; 2 mol of oxide needs one doubling only.",
+          "misconception": "ratio applied twice"
+        }
+      ]
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L1::Q4",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L1",
+      "stem": "Magnesium oxide has Mr = 40. What mass forms from 0.25 mol, using 2Mg + O2 → 2MgO?",
+      "misconceptionClass": "mass-conversion error",
+      "options": [
+        {
+          "key": "A",
+          "text": "10 g",
+          "correct": true,
+          "explanation": "Mass = moles x Mr: 0.25 x 40 = 10 g of magnesium oxide.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "40 g",
+          "correct": false,
+          "explanation": "This quotes Mr alone; the moles must still scale it.",
+          "misconception": "moles ignored"
+        },
+        {
+          "key": "C",
+          "text": "8 g",
+          "correct": false,
+          "explanation": "This uses the Mr of O2 (32) instead of magnesium oxide (40).",
+          "misconception": "wrong substance's Mr used"
+        },
+        {
+          "key": "D",
+          "text": "4 g",
+          "correct": false,
+          "explanation": "This uses Ar of oxygen (16) rather than the compound's Mr of 40.",
+          "misconception": "Ar of an element substituted for Mr"
+        }
+      ]
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L1::Q5",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L1",
+      "stem": "A question asks for the maximum mass of a product. What does that phrasing change about the method?",
+      "misconceptionClass": "method-scope misunderstanding",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nothing - the moles, ratio, mass route applies exactly as usual",
+          "correct": true,
+          "explanation": "'Maximum' flags a reacting-mass calculation; the route never varies.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The masses must be rounded up at the end",
+          "correct": false,
+          "explanation": "Maximum describes completeness of reaction, not rounding; the arithmetic stays ordinary.",
+          "misconception": "rounding confused with reaction extent"
+        },
+        {
+          "key": "C",
+          "text": "A different formula replaces the mole route",
+          "correct": false,
+          "explanation": "No separate formula exists; maximum and minimum masses use the same three steps.",
+          "misconception": "special formula assumed"
+        },
+        {
+          "key": "D",
+          "text": "The ratio step can be skipped for the maximum",
+          "correct": false,
+          "explanation": "Skipping the ratio ignores the equation; every reacting-mass answer depends on it.",
+          "misconception": "ratio seen as optional"
+        }
+      ]
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L2::Q1",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L2",
+      "stem": "Using Ar values Zn = 65 and O = 16, what is the relative formula mass of zinc oxide, ZnO?",
+      "misconceptionClass": "formula-mass error",
+      "options": [
+        {
+          "key": "A",
+          "text": "81",
+          "correct": true,
+          "explanation": "65 + 16 = 81 for the one-to-one pair in the formula.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "65",
+          "correct": false,
+          "explanation": "This drops the oxygen entirely; both elements contribute.",
+          "misconception": "oxygen omitted"
+        },
+        {
+          "key": "C",
+          "text": "97",
+          "correct": false,
+          "explanation": "This doubles the oxygen; ZnO holds one O only.",
+          "misconception": "oxygen doubled"
+        },
+        {
+          "key": "D",
+          "text": "49",
+          "correct": false,
+          "explanation": "Subtracting 16 from 65 has no meaning here; formula masses add.",
+          "misconception": "subtraction misapplied"
+        }
+      ]
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L2::Q2",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L2",
+      "stem": "Using Ar C = 12 and O = 16, what is the relative formula mass of carbon dioxide, CO2?",
+      "misconceptionClass": "subscript handling error",
+      "options": [
+        {
+          "key": "A",
+          "text": "44",
+          "correct": true,
+          "explanation": "12 + (2 x 16) = 12 + 32 = 44.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "28",
+          "correct": false,
+          "explanation": "This counts one oxygen; the subscript 2 doubles the 16.",
+          "misconception": "subscript ignored on oxygen"
+        },
+        {
+          "key": "C",
+          "text": "60",
+          "correct": false,
+          "explanation": "This triples the oxygen; CO2 carries two O atoms, not three.",
+          "misconception": "oxygen miscounted"
+        },
+        {
+          "key": "D",
+          "text": "12",
+          "correct": false,
+          "explanation": "This counts the carbon only; the dioxide part carries 32 of the total.",
+          "misconception": "carbon-only reading"
+        }
+      ]
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L2::Q3",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L2",
+      "stem": "16.2 g of zinc oxide (Mr = 81) reacts. How many moles is that?",
+      "misconceptionClass": "division-direction error",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.2",
+          "correct": true,
+          "explanation": "16.2 / 81 = 0.2 mol of zinc oxide.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "5",
+          "correct": false,
+          "explanation": "This divides the other way round: 81 / 16.2 = 5 turns the moles back into a mass.",
+          "misconception": "division inverted"
+        },
+        {
+          "key": "C",
+          "text": "0.02",
+          "correct": false,
+          "explanation": "A decimal slip: 16.2 over 81 is a fifth of one, not a fiftieth.",
+          "misconception": "decimal place slip"
+        },
+        {
+          "key": "D",
+          "text": "0.5",
+          "correct": false,
+          "explanation": "Halving does not match the division; 0.5 mol would need a mass of 40.5 g.",
+          "misconception": "arithmetic slip"
+        }
+      ]
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L2::Q4",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L2",
+      "stem": "Moles from an experiment come out as C 0.1 : ZnO 0.2 : CO2 0.1 : Zn 0.2. What whole-number ratio fits?",
+      "misconceptionClass": "simplification error",
+      "options": [
+        {
+          "key": "A",
+          "text": "1 : 2 : 1 : 2",
+          "correct": true,
+          "explanation": "Dividing every value by the smallest, 0.1, leaves 1 : 2 : 1 : 2.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "1 : 1 : 1 : 1",
+          "correct": false,
+          "explanation": "This discards the twos; ZnO and Zn carry twice the moles of C and CO2.",
+          "misconception": "ratio simplified too far"
+        },
+        {
+          "key": "C",
+          "text": "2 : 1 : 2 : 1",
+          "correct": false,
+          "explanation": "This inverts the pattern; dividing by the smallest raises the larger values, not the smaller.",
+          "misconception": "ratio inverted"
+        },
+        {
+          "key": "D",
+          "text": "1 : 2 : 2 : 1",
+          "correct": false,
+          "explanation": "This swaps the middle entries; CO2 matched C at 0.1, not ZnO.",
+          "misconception": "substances mispaired"
+        }
+      ]
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L2::Q5",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L2",
+      "stem": "The experiment above pairs carbon with zinc oxide, making carbon dioxide and zinc. Which balanced equation fits the 1 : 2 : 1 : 2 ratio?",
+      "misconceptionClass": "balancing-application error",
+      "options": [
+        {
+          "key": "A",
+          "text": "C + 2ZnO → CO2 + 2Zn",
+          "correct": true,
+          "explanation": "One carbon, two zinc oxide, one carbon dioxide, two zinc - the ratio lands on the skeleton exactly.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "C + ZnO → CO2 + Zn",
+          "correct": false,
+          "explanation": "This keeps the bare skeleton; it ignores the measured twos on ZnO and Zn.",
+          "misconception": "unbalanced skeleton kept"
+        },
+        {
+          "key": "C",
+          "text": "C + ZnO → CO2 + 2Zn",
+          "correct": false,
+          "explanation": "Doubling lands on the wrong substance here; the ratio doubles ZnO and Zn together.",
+          "misconception": "ratio applied to one side only"
+        },
+        {
+          "key": "D",
+          "text": "2C + ZnO → 2CO2 + Zn",
+          "correct": false,
+          "explanation": "This doubles the carbon pair instead; the data put the twos on the zinc oxide and the zinc.",
+          "misconception": "ratio applied to the wrong pair"
+        }
+      ]
+    }
+  ]
+}

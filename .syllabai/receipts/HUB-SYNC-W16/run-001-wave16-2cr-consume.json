@@ -1,0 +1,69 @@
+{
+ "lane": "HUB-SYNC-W16",
+ "run": "run-001-wave16-2cr-consume",
+ "dispatch": {
+  "operator_trace": "1a163ce60ef6f5a5",
+  "order": "wave-16 sync",
+  "session": "web-64d10b73-530a-4f71-9961-85d0436c7fb5"
+ },
+ "lane_class": "wave-16 hub sync — pure-append content wave: the 11 official 4CH1-2CR sets land in the v2 pilot bundle igcse-chemistry-19; the pin re-stamps to the consumed cut; zero SME-plane changes, zero code changes",
+ "filed_open_item_closed": {
+  "filed_by": "HUB-SYNC-W15 receipt open_items + durable ledger HUB-SYNC-W15-R0 residuals",
+  "text": "wave-16 hub sync (2CR tranche, 11 sets / 79Q / 423P / 770M @ resources 329fe1f4) — operator-ordered lane"
+ },
+ "inputs": {
+  "declared_data_cut": "main@329fe1f43c4a7fa3a0d9b03fe655b4ff03dff347 (resources v0.13.0, PR #47 merge 329fe1f4 — the r2cr 2CR tranche conversion of record)",
+  "cut_adjudication": "the resources tip 4f2eb1a2 (v0.13.1, F52 italic-Delta normalization) was deliberately NOT consumed: F52 changed the 2020-01 1CR topic.json bytes AFTER wave-15 consumed them, so a tip-side export would emit changed deltas on the 1CR slice and break the pure-append wave class; at the declared cut the 43 common official sets are byte-identical to the served bundle (r2cr of record: the 43-set corpus is byte-identical modulo generator/timestamp) and G-E1b proves identity live",
+  "exporter_of_record": "scripts/official_examq_export_hub.py v4 @ 329fe1f4 (G-E5 data-cut law + the 2CR roster: PAPER_SERIES 1C/2C 16 series + 1CR/2CR the same 11 R series = 54 slices)",
+  "bundle_of_record": "v2 origin/main ad1e3873 (pilot manifest pin main@1e69c5d2 after HUB-SYNC-W15)",
+  "disclosure": "scripts/exporter-disclosures/2026-10-22-wave16-2cr-tranche.json @ the cut",
+  "expected_deltas_input": "the of-record disclosure's 2CR half (faithful projection: new = the 11 official-4ch1-2cr-* keys / 423 part ids, gone={}, changed={}); the disclosure of record carries 22 new keys because its baseline was the pre-wave-15 bundle — the 1CR half was consumed at HUB-SYNC-W15 and is common-set territory here (G-E1b)",
+  "staging": "54 topic copies materialized from the cut's own committed bytes via git show (G-E5 input law); lane worktrees only — shared checkouts untouched throughout"
+ },
+ "gates": {
+  "G-E5": "54/54 staging topics content-identical to main@329fe1f4 (modulo the converter header)",
+  "G-E3": "54 slices == the MULTI-SERIES constants of record (4860 marks)",
+  "G-E2": "part-sum / markPoints sum-law / spec-code shapes hold on all official sets",
+  "G-E1": "423 deltas == the wave-16 2CR-half census exactly (11 new 2CR slugs; gone=0; changed=0)",
+  "G-E1b": "set-level identity fields byte-equal on all 43 common official sets",
+  "G-E4": "SME prefix byte-identical (2605414 bytes — the same constant the wave-15 run proved)"
+ },
+ "staged_census": {
+  "sets": "28 SME kept + 54 official = 82",
+  "official": "477 questions / 2607 parts / 4860 marks / 4161 markPoints / 368 crops / 8 honest stubs",
+  "twocr_tranche": "11 sets / 79 questions / 423 parts / 770 marks / 52 crops / 0 stubs",
+  "twocr_spec_honesty": "0/79 questions and 0/423 parts carry spec codes (data-verified this lane) — the tranche serves pending-llm under the anchor law, same as the 1CR tranche",
+  "assets": "no asset files land — official-set crops serve via rawUrl provenance refs into syllabai-resources (the PR #292/#297 two-file landing convention)"
+ },
+ "write_set": [
+  "apps/hub/content/igcse-chemistry-19/questions.json (71 -> 82 sets, staged output verbatim)",
+  "apps/hub/content/igcse-chemistry-19/manifest.json (importSource.ref -> main@329fe1f4 (exporter-stamped, G-E5-proven); note bumped to the wave-16 text in the same reviewed change (F44/F51 law — the exporter's note hardcode lags by design); counts recomputed 82/1001/4011/8568; SME-plane counts asserted unchanged 4/28/182/112/909; countsProvenance note wave-16 clause + adr037OfficialAdds 54/477/2607/4860 + wave-16 source append)",
+  ".syllabai/receipts/HUB-SYNC-W16/run-001-wave16-2cr-consume.json (this file)",
+  ".syllabai/worklog.md (Task HUB-SYNC-W16-R0 section appended, union-merge on the origin version)"
+ ],
+ "untouched_by_design": [
+  "the SME plane (28 sets byte-identical — G-E4)",
+  "the 43 common official sets (32 SME-era + 11 1CR, byte-identical — G-E1b/G-E1)",
+  "counts SME-plane fields (sections/topics/specPoints/notes/flashcards)",
+  "generatedUtc left as-is (the PR #292/#297 convention — the note is the per-wave carrier)",
+  "all 48 Edexcel non-pilot manifests, all 44 CIE manifests, content-maps/*",
+  "the resources repo (zero pushes to it this lane)"
+ ],
+ "disclosures": [
+  "F52 residual: the consumed cut predates resources v0.13.1 (the corpus-wide italic-Delta normalization U+01FB -> U+0394 on the 2020-01 R slices, x5 per the F52 census) — this bundle serves the pre-normalization bytes: 3 occurrences in the 2020-01 2CR slice (data-verified in the staged output this lane) and the 2020-01 1CR pair already served since wave-15; corpus-side is fixed at F52, counts and part ids are unaffected (F52: the wave-16 disclosure remains exact), and the hub-side normalization is a future lane with its own disclosure",
+  "the 2CR parts carry zero spec codes (pending-llm anchor law) — Smart Mark bridge eligibility for these rows is unchanged registry law (no coreBridge flip in this lane)",
+  "the exporter's staged note hardcode is the wave-14 text — bumped lane-side per the exporter's own instruction ('bump it in the same reviewed PR as the wave'), the same division of labor the wave-15 run used"
+ ],
+ "open_items": [
+  "F52 hub normalization lane (U+01FB -> U+0394 on the served 2020-01 1CR+2CR slices; would emit changed deltas vs this bundle and needs its own disclosed census)",
+  "1CR/2CR spec-label waves (labels only, G6 judges) — resources-side tranche next step",
+  "CIE tranche2 consume lane (132c4b68/5178b3b6 real CIE-side input deltas)",
+  "maths-b Stage-2 regen (operator-keyed)",
+  "PAT rotation (operator, CRITICAL overdue — see transit)"
+ ],
+ "transit": {
+  "last_recorded": 31,
+  "this_push": 32,
+  "disclosure": "2 origin pushes observed since the last recorded row with no transit rows: 68e16619 (4MB1-QUALITY ms-answerkey-02r receipt filing) and ad1e3873 (MCQ choices backfill, no durable-worklog section)"
+ }
+}

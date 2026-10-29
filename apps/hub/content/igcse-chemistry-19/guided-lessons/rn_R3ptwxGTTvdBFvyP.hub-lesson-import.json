@@ -1,0 +1,204 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_R3ptwxGTTvdBFvyP",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "64852e43c2e653c21ab05f4c3a9e6c60086290c326409d2640f02f8e147c59b0",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_R3ptwxGTTvdBFvyP",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Elements, Compounds & Mixtures",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-2-elements-compounds-and-mixtures/1-2-4-interpreting-chromatograms",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.11",
+        "text": "understand how a chromatogram provides information about the composition of a mixture"
+      },
+      {
+        "code": "4CH1-1.12",
+        "text": "understand how to use the calculation of Rf values to identify the components of a mixture"
+      }
+    ],
+    "primer": {
+      "text": "You already know from Separation Techniques how paper chromatography separates the components of an ink. This note reads the result: what the spots say about purity and composition, and how Rf values put numbers on each component so unknowns can be named.",
+      "prerequisiteSubtopic": "Separation Techniques"
+    },
+    "modules": [
+      {
+        "id": "rn_R3ptwxGTTvdBFvyP::L1",
+        "title": "Reading the Spots",
+        "sourceHeadings": [
+          "Identifying Mixtures",
+          "Interpreting chromatograms"
+        ],
+        "specRefs": [
+          "4CH1-1.11"
+        ],
+        "opening": "A chromatogram is the finished paper after a run, and it reads like a list of ingredients. One spot means a pure substance; several spots mean a mixture, because each component travels to its own height. Run known compounds alongside as reference spots, and any unknown whose dots line up horizontally with a reference is named.",
+        "keyPoints": [
+          "A pure substance produces one spot on a chromatogram; an impure sample produces more than one.",
+          "A mixture separates on the paper, showing each of its components as a separate spot.",
+          "Identical substances produce identical chromatograms under the same conditions.",
+          "A known compound run as a reference spot helps match and identify unknown spots.",
+          "The brown ink's three dots line up horizontally with red, yellow and blue, so the ink contains all three.",
+          "Exam chromatograms are black and white, so matching is done by horizontal alignment of dots."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Count the spots: one means pure, several means a mixture with every component showing its own spot. Dots at the same height came from the same substance, so a reference chemical settles what an unknown contains.",
+            "analogy": "It is like footprints marked at different heights on a wall chart: everyone who reached the same line took the same climb.",
+            "examPointer": "Spot counts decide pure versus impure; horizontal alignment decides which substance is which."
+          },
+          "medium": {
+            "restatement": "Each component of a mixture travels to its own characteristic height, so the finished chromatogram displays the components as separate spots — one spot for a pure substance, several for a mixture. A known compound run alongside acts as a reference: any unknown spot sitting level with it belongs to that substance, which is how exam chromatograms identify components without colour.",
+            "analogy": "Athletes on a climbing wall reach different holds; the height each one ends at is their signature, and matching heights match the climbers.",
+            "examPointer": "In black-and-white papers, match dots by level lines, never by shade."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_R3ptwxGTTvdBFvyP::L1::Q1",
+          "rn_R3ptwxGTTvdBFvyP::L1::Q2",
+          "rn_R3ptwxGTTvdBFvyP::L1::Q3",
+          "rn_R3ptwxGTTvdBFvyP::L1::Q4",
+          "rn_R3ptwxGTTvdBFvyP::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_R3ptwxGTTvdBFvyP::L2",
+        "title": "Rf Values",
+        "sourceHeadings": [
+          "Rf Values"
+        ],
+        "specRefs": [
+          "4CH1-1.12"
+        ],
+        "opening": "Every substance has a retention factor: the distance it moves up the paper divided by the distance the solvent front moves. The value is a ratio with no units, always less than one, and constant for that substance in that solvent — change the solvent and the value changes with it. Compare measured values against known ones and unknown components can be named.",
+        "keyPoints": [
+          "Rf equals the distance moved by the substance divided by the distance moved by the solvent.",
+          "The value is a ratio, carries no units, and always stays below one.",
+          "A compound keeps the same Rf in the same solvent, but a new solvent changes it.",
+          "Measured Rf values compared with tables of known values identify the components of a mixture.",
+          "Measure both distances from the baseline to the centre of each dot or front.",
+          "Strict mark schemes reward careful ruler work on both distances."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Divide how far the spot climbed by how far the solvent climbed: that number is Rf. It has no units, never reaches one, and repeats exactly while the solvent stays the same. Comparing the value with recorded tables names the substance, provided the same solvent was used.",
+            "analogy": "If the solvent front runs a full race and the substance completes half of it, the substance's score is 0.5.",
+            "examPointer": "Anchor both measurements at the baseline and read to the centre of the dot."
+          },
+          "medium": {
+            "restatement": "The retention factor is computed as the distance moved by the substance over the distance moved by the solvent front, both measured from the pencil baseline. Being a ratio it carries no units and must stay below one, since the substance can never outrun the solvent that carries it; a fresh solvent re-sets the value, so tables of known values apply only under matching conditions.",
+            "analogy": "Treat the solvent front as the full length of a swimming pool and the spot as one swimmer's lap: the fraction completed is the swimmer's score, whatever the pool's size.",
+            "examPointer": "Change the solvent and every Rf changes with it — state the solvent when quoting values."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_R3ptwxGTTvdBFvyP::L2::Q1",
+          "rn_R3ptwxGTTvdBFvyP::L2::Q2",
+          "rn_R3ptwxGTTvdBFvyP::L2::Q3",
+          "rn_R3ptwxGTTvdBFvyP::L2::Q4",
+          "rn_R3ptwxGTTvdBFvyP::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "separation",
+          "definition": "Taking a mixture apart into its components by physical means.",
+          "firstLesson": 1
+        },
+        {
+          "term": "chromatogram",
+          "definition": "The visual output of a chromatography run: the paper with its separated spots after the run.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reference spot",
+          "definition": "A spot of a known compound run alongside unknowns so spots can be matched.",
+          "firstLesson": 1
+        },
+        {
+          "term": "pure substance",
+          "definition": "A substance that gives a single spot on a chromatogram.",
+          "firstLesson": 1
+        },
+        {
+          "term": "baseline",
+          "definition": "The pencil starting line on chromatography paper where samples are spotted.",
+          "firstLesson": 2
+        },
+        {
+          "term": "Rf value",
+          "definition": "The ratio of the distance moved by a substance to the distance moved by the solvent.",
+          "firstLesson": 2
+        },
+        {
+          "term": "solvent",
+          "definition": "The liquid that travels up the paper and carries the substances with it.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A student runs a chromatogram and measures the distance moved by the substance as 3 units and the distance moved by the solvent as 6 units. Calculate the Rf value of the substance.",
+        "steps": [
+          "Distance moved by the substance, measured baseline to centre: 3 on the printed scale.",
+          "Distance moved by the solvent, measured baseline to front: 6 on the same scale.",
+          "Rf value: 3 / 6 = 0.5, a ratio with no units."
+        ],
+        "finalAnswer": "Rf = 0.5 for that substance in that solvent."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/23a624524aa6-chromatography-e2-80-93-pure-impure.png",
+        "alt": "Chromatogram showing the separation of brown ink",
+        "sourceHeading": "Interpreting chromatograms",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/8797d28f11b4-64942-using-rf-values-to-identify-mixture-compon.avif",
+        "alt": "using-rf-values-to-identify-mixture-components",
+        "sourceHeading": "Rf Values",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
+  }
+}

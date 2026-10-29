@@ -1,0 +1,201 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_Syxyh4Fct8KFg8NQ",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "4358c7bd6455daa66d8cd8b9a9f717abcc4b0b192bb7dc7974e96273d569fe22",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_Syxyh4Fct8KFg8NQ",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "The Periodic Table",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-4-the-periodic-table/1-4-2-electronic-configurations",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.19",
+        "text": "understand how to deduce the electronic configurations of the first 20 elements from their positions in the Periodic Table"
+      },
+      {
+        "code": "4CH1-1.22",
+        "text": "understand how the electronic configuration of a main group element is related to its position in the Periodic Table"
+      }
+    ],
+    "primer": {
+      "text": "From Atomic Structure you already know that electrons orbit the nucleus in shells, and that each shell further out carries more energy. This note turns that picture into a working tool: how to write down the electron arrangement for the first twenty elements, and how those same numbers reveal an element's group and period on the Periodic Table.",
+      "prerequisiteSubtopic": "Atomic Structure"
+    },
+    "modules": [
+      {
+        "id": "rn_Syxyh4Fct8KFg8NQ::L1",
+        "title": "Deducing Electronic Configurations",
+        "sourceHeadings": [
+          "Deducing Electronic Configurations",
+          "Electronic configuration of the first 20 elements"
+        ],
+        "specRefs": [
+          "4CH1-1.19"
+        ],
+        "opening": "There are two ways to show where the electrons are in an atom: a shell diagram with rings, or a short list of numbers called the electronic configuration. The numbers count how many electrons sit in each shell, taken from the nucleus outwards. Carbon, for instance, carries six electrons, so its configuration is 2,4.",
+        "keyPoints": [
+          "Electrons occupy the shell nearest the nucleus first, and a shell must be full before the next one starts to fill.",
+          "The first shell holds 2 electrons, the second holds 8, and in this course the third shell is also treated as holding 8.",
+          "For the first twenty elements, the fourth shell only starts to fill once the third shell already holds eight electrons.",
+          "The electronic configuration lists the electron count of each shell, separated by commas, counting from the nucleus outwards.",
+          "Ions have configurations too: a sodium atom has 11 electrons, but the ion has lost one, leaving 2,8.",
+          "Potassium and calcium break the simple pattern: their electrons enter the fourth shell before the third shell fills further."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Shells fill from the nucleus outward: 2 in the first shell, then 8 in the second, then 8 in the third across the first twenty elements. The configuration simply lists those counts, comma by comma, so carbon reads 2,4 and sodium reads 2,8,1.",
+            "analogy": "Think of a hotel with fixed bed counts per floor: two beds on the ground floor and eight on each floor above in this model. Guests always take the lowest floor with a free bed first, and the configuration is just the list of how many beds are taken on each floor.",
+            "examPointer": "Practise writing the first twenty elements both as shell diagrams and as number lists; the exam hint says either form can be asked for."
+          },
+          "medium": {
+            "restatement": "Each shell sits at a higher energy the further it lies from the nucleus, so filling runs strictly inward to outward: 2, then 8, then 8 in the simplified model, with potassium and calcium the two places where the fourth shell starts early for reasons of stability.",
+            "analogy": "Picture a car park that fills floor by floor from the bottom, with one learned quirk: for two vehicles (potassium and calcium) the fourth floor opens while the third still has spaces left.",
+            "examPointer": "Be ready to jump straight from an atomic number to its configuration, and later from a configuration back to the position; both directions appear in exams."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Syxyh4Fct8KFg8NQ::L1::Q1",
+          "rn_Syxyh4Fct8KFg8NQ::L1::Q2",
+          "rn_Syxyh4Fct8KFg8NQ::L1::Q3",
+          "rn_Syxyh4Fct8KFg8NQ::L1::Q4",
+          "rn_Syxyh4Fct8KFg8NQ::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_Syxyh4Fct8KFg8NQ::L2",
+        "title": "Electronic Configurations & the Periodic Table",
+        "sourceHeadings": [
+          "Electronic Configurations & the Periodic Table",
+          "Electronic configurations and the periodic table"
+        ],
+        "specRefs": [
+          "4CH1-1.22"
+        ],
+        "opening": "The design of the Periodic Table mirrors the way electrons are arranged. Read a configuration in two steps: how many numbers it contains gives the number of occupied shells, and that count is the period. The final number counts the outer electrons, and that count is the group, so chlorine at 2,8,7 sits in Group 7, Period 3.",
+        "keyPoints": [
+          "The number of number-groups in the configuration equals the number of occupied shells, which gives the period.",
+          "The last number in the configuration shows the outer electrons, which gives the group.",
+          "Atoms in the same group share their count of outer-shell electrons.",
+          "Chlorine, with configuration 2,8,7, has three occupied shells and seven outer electrons, placing it in Group 7, Period 3.",
+          "The group number is printed on the exam Periodic Table, but the period number is not, so label it yourself at the start."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Read any configuration in two moves: count the number-groups to get the period, and read the last number to get the group. Argon at 2,8,8 therefore sits in Period 3, Group 0.",
+            "analogy": "A full address tells you the street and the house number: the count of address lines names the street (the period) and the final line pins the exact door (the group).",
+            "examPointer": "Chlorine is the worked case to remember: 2,8,7 means Group 7, Period 3, and the exam table prints group numbers but never period numbers."
+          },
+          "medium": {
+            "restatement": "The table's shape follows electron arrangement: a new period begins each time a new shell starts filling, and every column collects atoms whose outer shells hold the same electron count, which is why a column shares its chemistry.",
+            "analogy": "Picture a housing estate where every home on the same avenue has the same number of front doors; the shared door-count defines each avenue, just as the shared outer count defines each column.",
+            "examPointer": "Given a position such as Period 4, Group 2, rebuild the configuration by filling 2, then 8, then 8 across the periods and placing the group count last, giving 2,8,8,2."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_Syxyh4Fct8KFg8NQ::L2::Q1",
+          "rn_Syxyh4Fct8KFg8NQ::L2::Q2",
+          "rn_Syxyh4Fct8KFg8NQ::L2::Q3",
+          "rn_Syxyh4Fct8KFg8NQ::L2::Q4",
+          "rn_Syxyh4Fct8KFg8NQ::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "shell",
+          "definition": "One of the fixed positions around the nucleus that electrons occupy; the shell nearest the nucleus fills first, and each one further out carries more energy.",
+          "firstLesson": 1
+        },
+        {
+          "term": "configuration",
+          "definition": "Short for electronic configuration: the list of electron counts per shell, written with commas, such as 2,4 for carbon.",
+          "firstLesson": 1
+        },
+        {
+          "term": "energy level",
+          "definition": "Another name for a shell; the further a level sits from the nucleus, the more energy it carries.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ion",
+          "definition": "An atom that has lost or gained electrons, so its configuration differs from the parent atom's.",
+          "firstLesson": 1
+        },
+        {
+          "term": "period",
+          "definition": "The row of the Periodic Table an element occupies, equal to its number of occupied shells.",
+          "firstLesson": 2
+        },
+        {
+          "term": "group",
+          "definition": "The column of the Periodic Table an element occupies, equal to its number of outer electrons.",
+          "firstLesson": 2
+        },
+        {
+          "term": "outer electron",
+          "definition": "An electron in the outermost occupied shell; its count is the last number of the configuration.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A sodium atom has 11 electrons. Write the electronic configuration of the sodium ion, which has lost one electron.",
+        "steps": [
+          "A sodium atom has 11 electrons.",
+          "The ion has lost one electron, so 11 - 1 = 10 electrons remain.",
+          "Fill the shells with 10 electrons: 2 in the first shell and 8 in the second shell."
+        ],
+        "finalAnswer": "The sodium ion's electronic configuration is 2,8."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/93dc810eaf5c-25377-rules-of-electron-shell-filling.png",
+        "alt": "Diagram showing that the first (innermost) shell holds a maximum of 2 electrons, the second shell holds a maximum of 8 electrons and the third shell holds a maximum of 8 electrons",
+        "sourceHeading": "Electron shell diagram",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/286c2a2c3535-57740-two-ways-to-represent-electronic.png",
+        "alt": "The diagram shows that a chlorine atom has 2 electrons in its first shell, 8 electrons in its second shell and 7 electrons in its third / outermost shell",
+        "sourceHeading": "The relationship between the electronic configurations and periodic table",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/43bbc4f69179-59464-position-of-chlorine-in-periodic.png",
+        "alt": "Simplified periodic table showing that chlorine is in Group 7, Period 3",
+        "sourceHeading": "The position of chlorine on the periodic table",
+        "moduleIds": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "run": "run-008",
+  "task": "T-OPS-PLANE-001",
+  "at": "2026-10-24T08:45:00Z",
+  "operator_order": "'re fire, check now' (IM trace 1a16cfcdd5d8113d) — re-fire the blocked deploy and verify",
+  "context": "sandbox recycled again (stage + repo wiped); rebuilt from the fleet of record. Fleet tip moved to 4008e6ce (4 api commits since the run-006 bundle: Seneca assignment-packs T-SENECA-001 + realtime hosting kit f188 + the other lane's run-007 W1 knock receipt — seam files untouched); bundle rebuilt from the CURRENT tip.",
+  "refire": {
+    "cap_window": "2026-10-24T08:19Z — the api-deployments-free-per-day window had passed (refusal was ~20:37Z 10-23)",
+    "rebuild": "T-MIG-093 recipe at tip: shim v2 CLEAN, 6 asset SHA pins EXACT (24fa91ac/8a651dd9/e53e5f87/b3b75292/b1fea699/a7b14cbd), bun bundle 372 modules / 3,489,258 bytes, worktree restored pristine (0 deltas), localgate 8/8 ALL PASS through the POOLER DATABASE_URL",
+    "deploy_1": "SUCCEEDED — dpl syllabai-v2-iv8bt74ek READY, prod health 200 (0.69s, faster than the pre-flip bundle)",
+    "env_state_at_deploy": "SYLLABAI_WAREHOUSE_SERVING=on + SYLLABAI_WAREHOUSE_URL_MATHS_4MA1 (W1 pooler) + DATABASE_URL (pooler host) all baked; registry ASSIGNED -> coverage law keeps main until the flip"
+  },
+  "flip_and_check": {
+    "flip_1": "08:24:50Z registry maths-4ma1 ASSIGNED -> SERVING (guarded flip-serving.mjs: REFUSE unless ASSIGNED + of-record env name); 35 s TTL wait",
+    "check_1_unscoped": "tutor/ask without courseRef -> 200 deterministic-refusal evidenceCount 0 at 1.96 ms — the pipeline short-circuits before retrieval for a scope-less learner (expected posture, not a seam signal)",
+    "courseRef_law": "resolveForCourse matches curriculum_versions.code EXACTLY — courseRef must be '4MA1-2016' (the course_registry SLUG 'igcse-maths-a-18-higher' resolves to a deterministic-course-refusal by design)",
+    "check_2_scoped": "tutor/ask courseRef=4MA1-2016 post-flip -> HTTP 500 'internal_error'; prod runtime logs (vercel logs, dpl_Bo9RBHyC8ErGYiqqdYEWXvugkrEX): postgres 42601 'syntax error at end of input' position 216, routine scanner_yyerror"
+  },
+  "root_cause_latent_prod_bug": {
+    "what": "run-004's shipped seam step-1 (serving.ts searchRows): the tagged() parts array has FOUR bind slots (select vector, course group, ORDER-BY vector — the SQL reuses the literal twice — limit) but only THREE params were passed; candidateLimit landed in the order-by <=> position and `limit` was left empty -> 42601 end-of-input = guaranteed 500 on EVERY covered-group ask",
+    "why_it_shipped": "the run-004 LIVE PROBE ran the RIG path (hand-built query, not this function — receipt says 'probe used the rig path'), and the unit fakes do not validate template arity: the existing params.at(-1)===cap assertion is blind (the cap was the last param in BOTH arities); the localgate's 8 legs never exercise the ask pipeline (T-MIG-097 legs deliberately LLM-free)",
+    "ab_of_record": "flip REVERTED to ASSIGNED (instant revert law) -> the SAME bundle + SAME courseRef ask served through the MAIN path: evidenceCount 6, refused false, groq, 2.22 s = the main arm + the pooler DATABASE_URL both work live in prod; the 500 was EXCLUSIVELY the seam"
+  },
+  "repair": {
+    "fix": "serving.ts: restore the missing second `literal` bind (order-by vector) — transport-only, SQL text byte-identical; serving.test.ts run-008 arity pin: step1.params toHaveLength(4) + params[0]===params[2]",
+    "gates": "typecheck clean; serving.test.ts 10/10 PASS; bundle rebuilt at the fixed tip (92899b49), localgate 8/8; deploy_2 syllabai-v2-qxxki2a8e READY; prod health 200",
+    "push": "fix committed + pushed as 92899b49 (fetch-first rebase, remote URL scrubbed post-push)"
+  },
+  "final_flip_and_verification": {
+    "flip_2": "08:39:16Z registry maths-4ma1 -> SERVING (guarded, pre-row verified ASSIGNED)",
+    "final_ask": "tutor/ask courseRef=4MA1-2016 through the DEPLOYED app: 200, answer 541 chars, evidenceCount 6, refused false, groq, 3.581 s — the differential is decisive: the identical ask that 500'd through the seam pre-fix now returns grounded evidence, the only delta is the arity repair, and the fail-loud law means the seam cannot silently fall back to main (a broken seam propagates 5xx)",
+    "residual_probe_writes": "probe learners (census class r0-t1flipcheck*/r0-t1abmain/r0-t1flipfinal + localgate registers x3 today) — of-record probe class, disclosed"
+  },
+  "tripwire_r7": {
+    "at_utc": "2026-10-24T08:42Z",
+    "corpus_planes": "ALL PASS byte-flat: document_chunks 13,765 / documents 1,354 / question_asset 585 / revision_note_asset 194 / exam_papers_4MA1 110 — the flip and both deploys wrote ZERO corpus rows",
+    "attributed_drift": "table_count 80 (=+0013); users 600 (+probe census class); mark_points 23,876 / mark_schemes 12,024 (the T-CONTENT-MP-REBUILD-001 writer persisting across the 12 h window, r5 16,241 -> r7 23,876; writer still owes its receipts); db 266 MB",
+    "loss_signature": "NONE"
+  },
+  "serving_state_of_record": {
+    "registry": "maths-4ma1 = SERVING since 2026-10-24T08:39:16Z",
+    "envs": "master switch on + W1 pooler URL + DATABASE_URL pooler host (production)",
+    "deployment": "syllabai-v2-qxxki2a8e READY serving the repaired seam",
+    "revert_paths": "registry -> ASSIGNED (instant, no redeploy); master env off (redeploy); DATABASE_URL back to direct (redeploy, NOT recommended — the pooler swap closes the run-005 hazard)",
+    "T2_prerequisite_unchanged": "the main-plane DROP still requires the warehouse-hydrate upgrade first (serving.ts hydrates document_chunks on main by id)"
+  },
+  "residuals": [
+    "hub NOT paused (both pause levers rejected by the limited token) — every fleet push still auto-bakes a hub deployment against the same account cap; operator console action or plan upgrade still recommended",
+    "CI->Neon DNS wall (4 consecutive neon-replay failures) — org runner policy triage still owed",
+    "mark-plane rebuild writer still owes run receipt + survivor id-hash",
+    "PAT rotation overdue (four token families chat-transited)",
+    "sci-chem warehouse (order-2 per census, 5,563 chunks) — next group wave repeats this exact playbook"
+  ],
+  "push": "see worklog Task 21"
+}

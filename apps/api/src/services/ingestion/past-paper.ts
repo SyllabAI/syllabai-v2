@@ -46,12 +46,24 @@
  *     surfaced as review findings by the mapper, never silently dropped);
  *   - mark points split by the questionRef prefix law ("N" or "N-x"),
  *     part resolved by the label after the first dash, question-level
- *     points attach to the scheme directly.
+ *     points attach to the scheme directly;
+ *   - ADR-040 §5.3 as amended (ruling A, trace 1a1776dff15bb991): each
+ *     printed grid births its OWN scheme_kind='LEVELS' scheme with verbatim
+ *     mark_bands rows — part-granular grids (ref "N-x") bind the part they
+ *     mark (question_part_id), question-granular grids (ref "N") keep the
+ *     version-unbound shape; both-kinds refuses per printed grid ref; grids
+ *     matching no question refuse (never a silent drop). The version's
+ *     remaining parts keep the point scheme unchanged.
  */
 import type { SqlFn } from "../identity/users";
 import { ConflictException } from "../identity/errors";
 import type { PastPaperDraft } from "@syllabai/contracts";
 import { hygienicStem } from "../tutor/stem-hygiene";
+import {
+  buildAlternativeInserts,
+  extractAcceptableAnswers,
+  insertMarkPointAlternatives,
+} from "./acceptable-answers";
 
 type Row = Record<string, unknown>;
 
@@ -60,6 +72,8 @@ export interface IngestionSummary {
   questions: number;
   parts: number;
   markPoints: number;
+  /** ADR-040 §5.3 — mark_bands rows written (LEVELS schemes); additive, never serialized to the frozen 201 view. */
+  markBands: number;
 }
 
 /** Java String.hashCode — the anchor-code cap's hash (bit-exact, 32-bit signed). */
@@ -112,6 +126,60 @@ function pointsForQuestion(
   return points.filter(
     (p) => p.questionRef !== null && (p.questionRef === questionNumber || p.questionRef.startsWith(prefix)),
   );
+}
+
+/**
+ * ADR-040 §2.2 as amended (operator ruling A, trace 1a1776dff15bb991,
+ * receipt adr040-bandshape-fit-r0): the printed grid is its own binding
+ * unit — one grid = one LEVELS scheme. Grids group by EXACT questionRef
+ * under the version's number; ref === number is the question-granular
+ * (version-unbound) shape, ref "N-x" is the part-bound shape (the wave-1
+ * Edexcel reality: 437/437 staged grids are part-granular).
+ */
+export interface BandGridGroup<T> {
+  ref: string;
+  bands: T[];
+  granular: "question" | "part";
+}
+
+export function bandGridsForVersion<T extends { questionRef: string | null }>(
+  bands: T[],
+  questionNumber: string,
+): Array<BandGridGroup<T>> {
+  const prefix = `${questionNumber}-`;
+  const byRef = new Map<string, T[]>();
+  for (const b of bands) {
+    if (b.questionRef === null) continue; // unref'd bands bind nothing — orphaned below
+    if (b.questionRef !== questionNumber && !b.questionRef.startsWith(prefix)) continue;
+    const list = byRef.get(b.questionRef);
+    if (list) list.push(b);
+    else byRef.set(b.questionRef, [b]);
+  }
+  return [...byRef.entries()].map(([ref, bs]) => ({
+    ref,
+    bands: bs,
+    granular: ref === questionNumber ? ("question" as const) : ("part" as const),
+  }));
+}
+
+/** Band refs that match NO question number of the paper draft — they would
+ *  birth silently under the version loop, so the birth refuses instead
+ *  (fail-closed; never a silent drop of printed law). */
+export function orphanBandRefs<T extends { questionRef: string | null }>(
+  bands: T[],
+  numbers: string[],
+): string[] {
+  const missing = new Set<string>();
+  for (const b of bands) {
+    const ref = b.questionRef;
+    if (ref === null) {
+      missing.add("(no ref)");
+      continue;
+    }
+    const number = ref.split("-")[0]!;
+    if (!numbers.includes(number)) missing.add(ref);
+  }
+  return [...missing];
 }
 
 /** resolve the part a mark point targets: "3-a" → part "a" of question 3 (:228-237). */
@@ -460,58 +528,181 @@ export async function ingestPastPaperDraft(
   }
 
   let pointCount = 0;
-  if (draft.markScheme !== null && draft.markScheme.points !== null) {
+  let bandCount = 0;
+  if (draft.markScheme !== null) {
     const scheme = draft.markScheme;
     for (const [questionNumber, versionId] of versionsByNumber) {
       const mine = pointsForQuestion(scheme.points, questionNumber);
-      if (mine.length === 0) continue;
-      const schemeId = crypto.randomUUID();
-      await sql`
-        insert into mark_schemes (
-          id, question_version_id, version_label, source_document_id,
-          validation_state, extraction_method, created_at, general_guidance
-        ) values (
-          ${schemeId}::uuid,
-          ${versionId}::uuid,
-          ${nullSafe(scheme.version, "1")},
-          ${scheme.sourceDocumentId},
-          'SUGGESTED',
-          ${draft.extractionMethod},
-          ${new Date().toISOString()},
-          ${scheme.generalGuidance ?? null}
-        )`;
-      let order = 0;
-      for (const mp of mine) {
-        // resolve the part a mark point targets: "3-a" → part "a"
-        const partRef = resolvePartRef(mp.questionRef!);
-        let partId: string | null = null;
-        if (partRef !== null) {
+      // ADR-040 §2.2 as amended (operator ruling A, trace 1a1776dff15bb991,
+      // receipt adr040-bandshape-fit-r0): the marking kind is per-scheme at
+      // the printed grid's own granularity — the real wave-1 tables are
+      // PART-granular (one grid per extended-writing part), so each grid
+      // births its own LEVELS scheme bound to that part, and the version's
+      // point scheme backs the remaining parts unchanged.
+      const grids = bandGridsForVersion(scheme.bands, questionNumber);
+      if (mine.length === 0 && grids.length === 0) continue;
+
+      // both-kinds at the printed grid's own ref: point rows under the SAME
+      // exact ref would hand one binding two marking kinds — refuse loudly
+      // (the whole-draft transaction rolls back).
+      for (const grid of grids) {
+        const clash = mine.filter((p) => p.questionRef === grid.ref);
+        if (clash.length > 0) {
+          throw new ConflictException(
+            `mark scheme entry ${grid.ref} carries both mark points (${clash.length}) and level bands (${grid.bands.length}) — the marking kind is per-scheme at the printed grid's granularity (ADR-040 §2.2 as amended, ruling A trace 1a1776dff15bb991); split the part or correct the draft`,
+          );
+        }
+      }
+      // a QUESTION-granular grid is the version-unbound LEVELS shape: it
+      // cannot coexist with the version's point scheme (one unbound scheme
+      // per version — the dispatch reads it as the whole question's kind).
+      const questionGrid = grids.find((g) => g.ref === questionNumber);
+      if (questionGrid !== undefined && mine.length > 0) {
+        throw new ConflictException(
+          `question ${questionNumber} carries a question-level levels grid and ${mine.length} mark points — an unbound LEVELS scheme cannot coexist with the version's point scheme (ADR-040 §2.2 as amended, ruling A trace 1a1776dff15bb991); split the question or correct the draft`,
+        );
+      }
+
+      if (mine.length > 0) {
+        const schemeId = crypto.randomUUID();
+        await sql`
+          insert into mark_schemes (
+            id, question_version_id, version_label, source_document_id,
+            validation_state, extraction_method, created_at, general_guidance
+          ) values (
+            ${schemeId}::uuid,
+            ${versionId}::uuid,
+            ${nullSafe(scheme.version, "1")},
+            ${scheme.sourceDocumentId},
+            'SUGGESTED',
+            ${draft.extractionMethod},
+            ${new Date().toISOString()},
+            ${scheme.generalGuidance ?? null}
+          )`;
+        let order = 0;
+        for (const mp of mine) {
+          // resolve the part a mark point targets: "3-a" → part "a"
+          const partRef = resolvePartRef(mp.questionRef!);
+          let partId: string | null = null;
+          if (partRef !== null) {
+            const partRows: Row[] = await sql`
+              select id from question_parts
+              where question_version_id = ${versionId}::uuid and label = ${partRef}
+              limit 1`;
+            if (partRows.length > 0 && partRows[0]) partId = String(partRows[0].id);
+          }
+          const mpPointId = crypto.randomUUID();
+          await sql`
+            insert into mark_points (
+              id, mark_scheme_id, question_part_id, ref, ordering, text,
+              marks, acceptance_criteria, extraction_confidence, created_at
+            ) values (
+              ${mpPointId}::uuid,
+              ${schemeId}::uuid,
+              ${partId}::uuid,
+              ${mp.questionRef},
+              ${order++},
+              ${mp.text},
+              ${Math.max(mp.marks, 1)},
+              ${JSON.stringify(mp.acceptance)}::jsonb,
+              ${mp.confidence},
+              ${new Date().toISOString()}
+            )`;
+          // DC-5 (spec §3.5, prereg docs/DC5-CONFORMANCE-LINT-PLAN.md §4.2): the
+          // acceptable-answer materialisation rides the same write path,
+          // additive to the ingestion pipeline; empty extraction = no rows.
+          await insertMarkPointAlternatives(
+            sql,
+            buildAlternativeInserts(
+              mpPointId,
+              schemeId,
+              extractAcceptableAnswers(mp.text ?? ""),
+              "dc5-r1-ingestion",
+              new Date().toISOString(),
+              () => crypto.randomUUID(),
+            ),
+          );
+          pointCount++;
+        }
+      }
+
+      // ADR-040 §5.3 LEVELS mode under ruling A: one LEVELS scheme per
+      // printed grid, birthed SUGGESTED exactly as the point mode does, with
+      // scheme_kind='LEVELS' and the bands VERBATIM (level ordinal, printed
+      // range, descriptor/guidance as printed — the converter never trims,
+      // paraphrases, or re-derives; the coverage/tiling law gates at R4
+      // validation, not at the draft write). No mark_points rows exist for a
+      // LEVELS scheme — the per-point decisions humans never made are never
+      // fabricated. Part-granular grids bind question_part_id (the part MUST
+      // exist in the paper draft — never a guess); question-granular grids
+      // keep the version-unbound shape.
+      for (const grid of grids) {
+        const schemeId = crypto.randomUUID();
+        let gridPartId: string | null = null;
+        if (grid.granular === "part") {
+          const partRef = resolvePartRef(grid.ref);
+          if (partRef === null) {
+            throw new ConflictException(
+              `band grid ${grid.ref} has no part suffix — part-granular grids bind the part they mark (ruling A trace 1a1776dff15bb991); correct the draft ref`,
+            );
+          }
           const partRows: Row[] = await sql`
             select id from question_parts
             where question_version_id = ${versionId}::uuid and label = ${partRef}
             limit 1`;
-          if (partRows.length > 0 && partRows[0]) partId = String(partRows[0].id);
+          if (partRows.length === 0 || !partRows[0]) {
+            throw new ConflictException(
+              `band grid ${grid.ref} targets part "${partRef}" but the paper draft carries no such part under question ${questionNumber} — bands bind the part they mark, never a guess (ruling A trace 1a1776dff15bb991); correct the draft's part labels`,
+            );
+          }
+          gridPartId = String(partRows[0].id);
         }
         await sql`
-          insert into mark_points (
-            id, mark_scheme_id, question_part_id, ref, ordering, text,
-            marks, acceptance_criteria, extraction_confidence, created_at
+          insert into mark_schemes (
+            id, question_version_id, version_label, source_document_id,
+            validation_state, extraction_method, created_at, general_guidance,
+            scheme_kind, question_part_id
           ) values (
-            ${crypto.randomUUID()}::uuid,
             ${schemeId}::uuid,
-            ${partId}::uuid,
-            ${mp.questionRef},
-            ${order++},
-            ${mp.text},
-            ${Math.max(mp.marks, 1)},
-            ${JSON.stringify(mp.acceptance)}::jsonb,
-            ${mp.confidence},
-            ${new Date().toISOString()}
+            ${versionId}::uuid,
+            ${bound(grid.ref, 20)},
+            ${scheme.sourceDocumentId},
+            'SUGGESTED',
+            ${draft.extractionMethod},
+            ${new Date().toISOString()},
+            ${scheme.generalGuidance ?? null},
+            'LEVELS',
+            ${gridPartId}::uuid
           )`;
-        pointCount++;
+        for (const band of grid.bands) {
+          await sql`
+            insert into mark_bands (
+              id, mark_scheme_id, level_index, marks_min, marks_max,
+              descriptor_md, guidance_md, extraction_confidence, created_at
+            ) values (
+              ${crypto.randomUUID()}::uuid,
+              ${schemeId}::uuid,
+              ${band.levelIndex},
+              ${band.marksMin},
+              ${band.marksMax},
+              ${band.descriptor},
+              ${band.guidance ?? null},
+              ${band.confidence},
+              ${new Date().toISOString()}
+            )`;
+          bandCount++;
+        }
       }
+    }
+    // band grids matching no question of the paper draft would birth
+    // silently under the version loop — refuse instead (fail-closed).
+    const orphans = orphanBandRefs(scheme.bands, [...versionsByNumber.keys()]);
+    if (orphans.length > 0) {
+      throw new ConflictException(
+        `band grids ${orphans.join(", ")} match no question in the paper draft — printed band law never drops silently (ruling A trace 1a1776dff15bb991); correct the draft refs`,
+      );
     }
   }
 
-  return { paperId, questions: questionCount, parts: partCount, markPoints: pointCount };
+  return { paperId, questions: questionCount, parts: partCount, markPoints: pointCount, markBands: bandCount };
 }

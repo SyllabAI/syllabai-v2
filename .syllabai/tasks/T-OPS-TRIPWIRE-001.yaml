@@ -1,0 +1,46 @@
+version: 1
+task:
+  id: T-OPS-TRIPWIRE-001
+  title: "Standing estate tripwire — run scripts/dbprobe/estate-tripwire.mjs around every DB-writing lane; attribute every delta; escalate unclaimed INCIDENT-class deltas"
+  owner: "no single owner — EVERY lane runs it around its own writes; restore-parity lane (web-590847c1) filed the instrument + baseline"
+  status: OPEN
+  priority: P1
+  band: T-OPS (operations / loss detection)
+  wave: standing (permanent duty)
+  deps: ["run-004-step0-closure-r0 (closure baseline)", "run-005-estate-tripwire-r0 (fingerprint baseline + decision rule)"]
+  facts_of_record: >
+    Operator concern (trace 1a169024dcc4baf1): 'There might be more data loss,
+    because many agents are working on many different things.' Two live loss
+    vectors: concurrent-agent mistakes (demonstrated: the unattributed
+    10:49-11:53Z satellite DDL) and infrastructure interventions at the 1 GB
+    wall (the original loss trigger; DB now 23%). Baseline r0 taken
+    13:49:06Z: 75 tables, DDL fingerprint 42d5e2ce..., estate row
+    fingerprint 9d495471..., all gate pins stable, no loss found.
+  next_safe_actions: >
+    (1) ANY LANE: before and after DB-writing work, run
+    `DB_URL=... node scripts/dbprobe/estate-tripwire.mjs` (READ ONLY, ~30s)
+    and diff vs .syllabai/receipts/NEON-DB-LOSS/run-005-estate-tripwire-r0-fingerprint.json
+    (or the latest fingerprint artifact). (2) On any INCIDENT-class delta
+    (corpus/identity row DECREASE, DDL fingerprint change, flyway regression):
+    check the repo worklog for the claiming lane FIRST — unclaimed deltas get
+    a NEON-DB-LOSS receipt + operator escalation immediately. (3) After any
+    operator-keyed console action: run it once. (4) Keep the latest
+    fingerprint artifact committed so the next diff has a fresh base.
+  forbidden:
+    - "using the tripwire connection for anything but SELECT (it is READ ONLY by construction — keep it that way)"
+    - "storing DB_URL in any file, script default, or receipt (env-only, always)"
+    - "treating activity-plane growth as loss (decision rule in run-005)"
+    - "letting an unclaimed INCIDENT-class delta pass without a receipt + escalation"
+base:
+  repo: "syllabai-v2 @ 6e9bb855"
+basis: >
+  Operator trace 1a169024dcc4baf1 + run-005-estate-tripwire-r0 + the
+  10:49Z unattributed-DDL precedent (run-003 observations).
+scope:
+  allowed:
+    - "scripts/dbprobe/estate-tripwire.mjs (instrument evolution, read-only law preserved)"
+    - ".syllabai/receipts/NEON-DB-LOSS/ (append-only)"
+    - ".syllabai/worklog.md (append-only)"
+  forbidden:
+    - "any DB write from the tripwire lane"
+    - "packages/db/src/schema/**"

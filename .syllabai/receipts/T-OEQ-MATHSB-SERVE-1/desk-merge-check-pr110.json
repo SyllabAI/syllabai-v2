@@ -1,0 +1,31 @@
+{
+  "id": "T-OEQ-MATHSB-SERVE-1/desk-merge-check-pr110",
+  "type": "desk-merge-conflict-check",
+  "date": "2026-10-26",
+  "trace": "1a174ec1255522d9",
+  "operator_instruction": "desk-merge PR #110",
+  "target": {
+    "repo": "SyllabAI/syllabai-resources",
+    "pr": 110,
+    "head": "139ee9315cb3 (t-oeq-mathsb-tranche1)",
+    "base_of_record": "09842f9f2ae3",
+    "main_at_check": "41d352212173",
+    "method": "blobless clone (repos/syllabai-resources-ro) fetch-first three-way classification + converter/canary inventory; READ-ONLY against resources — zero writes"
+  },
+  "findings": [
+    "F1 ORPHAN TIP: branch head 139ee931 is a single parentless commit (rev-list count 1, empty %P — the Git Data API snapshot-rebuild pattern); merge-base vs main exits 1 (no common ancestor). Recent merged PR branches carry full ancestry (rev-list 653-656) — this PR is structurally unlike every recent merge.",
+    "F2 PATH DIVERGENCE: branch-changed vs base = 475 paths; main-changed vs base = 1,810; intersection = 77 and ALL 77 differ on both sides vs base AND from each other (identical: 0, one-side-clean: 0) — zero trivial resolutions.",
+    "F3 CONVERTER VERSION-LINE FORK: branch converter = v0.17.0 of the maths-B lane (F64 x12, F65 = maths-B page furniture, v0.16.0-maths-lane lineage per inline comments); main converter = v0.17.4 of the spec-lane/physics line (F64 x18, F67, NO maths-B F65). Both lines claim 'v0.17.0'. F65 is a NAME COLLISION: main's F65 = figure-queue crops (CHANGELOG L688), branch's F65 = maths-B furniture/layout laws.",
+    "F4 CANARY ID COLLISION (decisive): branch C72-maths-tranche1-gates / C73-course-registry-chemistry-default / C74-maths-drain-state vs main C72-mcq-choice-scripts-2026-06 / C73-figure-queue-disposition / C74-physics-pua-tranche-guard (+C75-physics-2p-footer-law, C76-physics-1p-question-count). 72 vs 74 canaries; three ids collide with DIFFERENT content — mechanical union impossible; renumbering the branch's canaries is a record-level decision (v2 receipts of record cite '72 canaries hold' / 'C74 58/8->66/0' at the old ids).",
+    "F5 SAFE CORE: 392 branch-new paths with zero overlap on main (390 under Official-ExamQuestion/igcse-maths-b-16/** + scripts/prep_ocr_layer_2019mb.py + scripts/sweep_maths_b_66.py) — pure additions, byte-landable.",
+    "F6 AS-IS MERGE WOULD REGRESS MAIN: taking the branch's shared blobs drops main's converter line (v0.17.4 -> v0.17.0-maths-lane), main's C72/C73 chemistry canaries, and C74-C76 physics canaries, and misaligns 71 chemistry files (main re-run them under the 387863cd line). Any as-is merge violates the fail-closed law."
+  ],
+  "verdict": "DESK MERGE BLOCKED — fail-closed. The merge-time rebase/conflict check (duty of record per the serve card's next_safe_actions) ran and returned a semantic fork, not mechanical noise. No writes performed against SyllabAI/syllabai-resources.",
+  "proposed_path": "T-OEQ-MATHSB-1 run-004 'reconcile onto main' (lane run, not desk act): (1) renumber branch canaries C72/C73/C74 -> next free ids (C77/C78/C79) across CANARIES.json + check_canaries.py + branch receipts; (2) merge maths-B lane converter features onto main v0.17.4 (rename the colliding F65; propose merged converter v0.18.0); (3) union CHANGELOG.md + LEDGER.md; (4) re-run the 66/66 emission under the merged converter (pre-flight: locate the maths-B OCR source layer), full G0-G7 + canary battery incl. main's C72-C76; (5) byte-parity report vs the 139ee931 emission of record; (6) push branch with true ancestry (parent = main tip) -> clean desk-merge -> serve-card P0 gate flips GREEN with the merge sha pinned.",
+  "operator_alternatives": [
+    "APPROVE the reconciliation run (recommended).",
+    "Corpus-first partial land WITHOUT canary registration — NOT recommended: the emission lands ungated on main, violating the G-gate landing law.",
+    "Merge as-is — REJECT: enumerated regressions in F6."
+  ],
+  "card_impact": "T-OEQ-MATHSB-SERVE-1 stays OPEN + GATED on PR #110; its P0 gate language ('sync pins main@<merge-sha>') is unchanged. This receipt is the merge-time check of record it anticipated."
+}

@@ -1,0 +1,64 @@
+{
+  "task": "NEON-DB-LOSS — mark_points subject attribution (operator question) + rebuild-scope input",
+  "run": "run-007-markpoints-subject-attribution-r0",
+  "agent": "restore-parity / ops lane (Z.ai session web-590847c1, chat 986f6715)",
+  "operator_trace": "1a169e273772bad5 (operator: 'The markpoints, were they of only maths b? Or other subjects as well?')",
+  "date": "2026-10-24",
+
+  "VERDICT": "NEVER MATHS-B-ONLY. The mark_points estate spans FOUR subjects (Maths A, Maths B, Chemistry, Physics — plus CIE A-Level variants). The SURVIVING 14,141 (all pre-snapshot, newest 2026-10-20T22:28Z) reconcile exactly into three planes: exam-linked paper schemes (all Chemistry, 3,836 pts), the SME EQ question bank (5,822 schemes / 9,662 pts — Maths A 3,968, Maths B 2,133, Chemistry 1,911, Physics 1,135, CIE A-Level Maths 515), and 117 unresolved-source draft schemes (643 pts). The LOST +26,109 (Oct-22 recorded runs of record) was primarily MATHS: the 4MB1 62-paper artwork run (Maths B) + T-MIG-138 marks backfill (4MA1, Maths A) + the fprod1 V60/V61 bank-marks repair lineage (java-core migrations, not in this repo). 3,836 + 9,662 + 643 = 14,141 exact.",
+
+  "surviving_14141_attribution": {
+    "method": "READ ONLY chain discovery (mp-subject-census.mjs phases 1-4): schema introspection -> source_document_id text-compare relays per T-MIG-141 law (never ::uuid) -> exam_papers.mark_scheme_document_id -> subjects; question-bank chain via question_version_id -> questions.exam_paper_id; id-namespace texture via digit-masked patterns; age profile vs the Oct-21 00:43:12Z snapshot boundary.",
+    "plane_1_paper_relay": {
+      "points": 3836, "schemes": 794, "papers": 90,
+      "subject": "ALL Chemistry (4CH1 subject row)",
+      "breakdown": { "unknown-qualification": 2407, "4CH1": 1161, "4CH0": 265, "IGCSE_stray": 3 }
+    },
+    "plane_2_sme_eq_bank": {
+      "points": 9662, "schemes": 5822,
+      "signature": "extraction sme-corpus-import-v1 (ADR-026), provenance PAST_PAPER, source ids in the sme-eq-* namespace (no exam-paper relay; PAST_PAPER-flavored EQ bank)",
+      "by_subject_family": {
+        "sme-eq-igcse-maths-a-higher": { "schemes": 2693, "points": 3538 },
+        "sme-eq-igcse-maths-b": { "schemes": 1202, "points": 2133 },
+        "sme-eq-igcse-chemistry": { "schemes": 593, "points": 1404 },
+        "sme-eq-igcse-physics": { "schemes": 583, "points": 1135 },
+        "sme-eq-cie-a-level-chemistry": { "schemes": 229, "points": 507 },
+        "sme-eq-igcse-maths-a-foundation": { "schemes": 274, "points": 430 },
+        "sme-eq-cie-a-level-maths": { "schemes": 248, "points": 515, "detail": "mechanics 204 / prob-stats 164 / pure 147" }
+      }
+    },
+    "plane_3_drafts": { "points": 643, "schemes": 117, "signature": "pdflane-atoms-draft-v1, source_document_id NULL", "subject": "UNRESOLVED of record — chunk-subject relay matched nothing; pdflane lane is chemistry-corpus per the trim census, but the label stays unresolved pending an owner ruling" },
+    "subject_rollup_of_survivors": {
+      "Maths_total": "6,616 pts (46.8%) — IGCSE Maths A 3,968 (higher+foundation), IGCSE Maths B 2,133, CIE A-Level Maths 515",
+      "Chemistry_total": "5,747 pts (40.6%) — paper-relay 3,836 + SME EQ 1,404 + CIE A-Level 507; PLUS the 643 draft pts likely but unresolved",
+      "Physics_total": "1,135 pts (8.0%) — IGCSE EQ bank only",
+      "Unresolved": "643 pts (4.5%) — the draft schemes"
+    },
+    "verification_checks": [
+      "reconciliation: 3,836 + 9,662 + 643 = 14,141 EXACT",
+      "maths_check: 0 surviving points chain to a 4MA1/4MB1 exam paper via the question bank — all surviving maths lives on the SME EQ bank plane (paper-relayed schemes are chemistry-only)",
+      "age profile: pre_snapshot 14,141 / at_or_post_snapshot 0 (matches the restore adjudication: the survivors ARE the snapshot)"
+    ]
+  },
+
+  "lost_26109_attribution_of_record": {
+    "runs": "4MB1 62-paper artwork scale run (Maths B) + T-MIG-138 embed/marks backfill (4MA1, Maths A) + fprod1 bank-marks repair lineage V60/V61 (flyway lives in the frozen java-core repo; not greppable here) — attribution basis: run-003 adjudication + T-CONTENT-MP-REBUILD-001 facts_of_record (~12.4k new schemes at ~2.1 pts/scheme)",
+    "subject_reading": "primarily MATHS A + MATHS B"
+  },
+
+  "rebuild_scope_implication": {
+    "headline": "T-CONTENT-MP-REBUILD-001 'from scratch' spans FOUR subjects, not maths alone. Instrument enumeration for the dispatch:",
+    "instruments": [
+      "SME EQ bank re-import (ADR-026 sme-corpus-import-v1) — the single biggest surviving plane (5,822 schemes / 9,662 pts); its 14,141 surviving points double as the oracle for this plane's replay",
+      "Chemistry paper scheme pipeline (ADR-037/wave lineage) — 794 schemes / 3,836 pts on 90 papers",
+      "4MB1 62-paper artwork scale run — lost, re-run (Maths B)",
+      "T-MIG-138 marks backfill — lost, re-run (Maths A / 4MA1)",
+      "fprod1 V60/V61 repair lineage — re-run via java-core flyway history",
+      "117 draft schemes (643 pts): owner ruling required — re-derive via pdflane-atoms-draft or rule re-derivable-and-drop"
+    ],
+    "oracle_note": "The 14,141 oracle is multi-subject — the replay must reproduce ALL four subjects' survivors, not just maths, before the rebuild census can claim the 40,250 basis."
+  },
+
+  "zero_writes_statement": "Four READ ONLY probe sessions (phase 1-4 scripts, sandbox scripts/dbprobe/); one phase-2 SQL defect (ungrouped outer column) and one phase-4 fan-out defect (chunk join multiplication) were caught by reconciliation checks and fixed — final numbers reconcile exactly. Zero DB writes, zero Neon API calls, zero Vercel mutations, zero LLM calls. Repo additions: this receipt + T-CONTENT-MP-REBUILD-001 scoping note + worklog entry. Probe scripts stay sandbox-local (house pattern, trim-census precedent); the receipt embeds all numbers of record.",
+  "secrets_disclosure": "Pooler URL env-only; nothing persisted to disk."
+}

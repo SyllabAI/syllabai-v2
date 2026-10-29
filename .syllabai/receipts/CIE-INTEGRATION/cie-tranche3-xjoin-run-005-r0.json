@@ -1,0 +1,18 @@
+{
+ "receipt": "cie-tranche3-xjoin-run-005-r0",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T3-SME-COVERAGE-1 run-005 (the ② cross-lane join round at the re-harvest vintage)",
+ "operatorOrder": "Process with: class-A/residual-61 disposition processing (trace 1a16a02c49cfc7d9, 2026-10-23, zai-web)",
+ "generatedUtc": "2026-10-23T20:05:00Z",
+ "resourcesShaFrom": "3dd9bb982834743f0b8c81123c8f15003c74c06a",
+ "resourcesShaTo": "9b6d0bdf91cb9b197ffa453a69d7534843cbca11 (rebased onto the sibling fleet tip 15d51c7c mid-lane, zero overlap — fetch-first held)",
+ "push": "transit 40 (15d51c7c..9b6d0bdf); pure FF; three-way verified",
+ "mechanics": "the of-record ① engine (cie_xlane_join.py) re-run verbatim with per-run states patched (FIXED_STAMP 2026-10-23T20:00:00Z, directive ② round, trace carried); the block REPLACES the ① record in place on all 44 index files (the run-003b placeholders superseded); X battery 10/10 with run-005 per-run pins (X2 re-scoped to block-replacement data stability — the ① 'append-only' premise cannot hold for a re-round; X3/X10 re-pinned 322-era -> 61-era; the substantive assertions X4-X9 untouched and green: verbatim-equal sibling records, quarantine honesty, byte-idempotent re-run, 2-lane independent rebuild, sidecar reconciliation)",
+ "result": {
+  "dangling_pairs": "61 -> resolved 54 (9 definition-grade / 45 name-only) + 0 ambiguous + 7 recordless",
+  "cured_by": "the run-003 re-harvest's +524 sibling-universe sids (fleet union 8,429); via_lanes recorded per cure",
+  "recordless_7": "spcpt_FmVMxSY4pdr2ghgq (maths-25-extended AND intl-maths-23-extended), history-18 x2, cs-19 x1, chem-25 x1, business-23 x1 — no spec_point record corpus-wide (honest, rule 3)",
+  "disposition_menu_update": "the residual-61 class: 54 now carry cross-lane records of record (serving-side cure available through the bundle builder's cross_lane_join.resolved merge at the next serving wave); 7 recordless + class-A 1,203 remain the source-declaration gap — the operator menu (accept-honest-gap / external-dependency watch / authored-content lane) stands with the fresh numbers"
+ },
+ "hygiene": "lane worktree only; shared checkouts untouched; zero DB/LLM contact"
+}

@@ -1,0 +1,44 @@
+{
+ "lane": "T-SM-EDX-INGEST-R1",
+ "run": "ingest-r1",
+ "date": "2026-10-25",
+ "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+ "chat": "371a9d19-b6bb-4173-9696-cee324b265a1",
+ "trace_id": "1a16ece951b064c9",
+ "operator_order": "Proceed with the remaining 42 unlisted subjects (IM, 2026-10-24)",
+ "mode": "production ingest (questions + mark schemes) on the main of-record project (ep-ancient-cake-a52e4kfd/neondb) via the frozen shim buildSmePackage + frozen SmeQuestionIngestService (ADR-026 evidence-safe slice-scoped replace); curriculum seeds via the of-record seedBundleCurriculum composed in chunked passes; zero schema contact; zero registry edits outside apps/hub/content/courses.json coreBridge flips; no assets shipped (image-normalization law; question_asset 585 pilot rows preserved).",
+ "pipeline_of_record": {
+  "instrument": "census_gate_families.ts — the FAMILY-aware gate census mirroring (a) the shim's inclusion law (anchor part / part-sum / dup-order), (b) the emittedRowRefs member law (-p<idx> per option part, -s when plain parts exist; base ref carries the member-suffix reserve), (c) the hub join's family law. Pilot exception: igcse-chemistry-19 joins under the LEGACY law sme-eq-<topicSlug>-q<N> (the hub's pilot branch) — censused and ingested under the legacy shape.",
+  "gate": "included == banked == validated per registry row (every family ref active AND VALIDATED)",
+  "earlier_instrument_correction": "the base-ref-only census undercounted member-emitted (MCQ-heavy) bundles and misread the pilot law; the family census is the sole instrument of record (the r0 method's member-aware successor)"
+ },
+ "ingests_this_lane": {
+  "note": "the fleet ingests (Edexcel point-scheme 28 rows + CIE point-scheme 0452/0606/0653 + 18 SM ghost-repair rows) ran 2026-10-24 across chunked sessions; this receipt records the lane-total end state + the four rows completed/verified 2026-10-25",
+  "9701_cie_a_level_chemistry_25": "seed pre-existing (484 nodes); ingest 9/9 chunks APPLIED (319/319 FULL)",
+  "9618_cie_a_level_computer_science_19": "seed ALL PASSES COMPLETE (227 spec points, 7 passes); ingest 11/11 chunks APPLIED (264/264 FULL)",
+  "4CH1_igcse_chemistry_19_pilot": "legacy-law re-ingest (ingest-pilot-legacy.ts, positional byte-equality rewrite): 60-partition chunks 1-12 + 30-partition chunks 13-37 applied of the 82-set SME vintage; the registry's SERVING plane moved to the 28-set official plane (main @ cef03cbd, awave/official-papers restructure) — the serving-plane census is 523/523 FULL; the remaining old-plane chunks are unserved and were not run (disclosed)",
+  "4MB1_igcse_maths_b_16": "ingest-bundle-chunked 100-partition chunks 1-6 + targeted completion (ingest-targeted-sets.ts, 22 gap sets, 3+2+2 chunks) -> 1261/1261 FULL"
+ },
+ "gate_end_state": {
+  "full_rows_total": 60,
+  "full_non_sm_rows": 33,
+  "full_sm_ghost_repair_rows": 27,
+  "flip_set_33": ["cie-igcse-accounting-21", "cie-igcse-further-maths-additional-maths-25", "cie-igcse-science-combined-science-23-biology", "cie-igcse-science-combined-science-23-chemistry", "cie-igcse-science-combined-science-23-physics", "ial-biology-18", "ial-chemistry-17", "ial-further-maths-18-further-pure-1", "ial-maths-20-decision-1", "ial-maths-20-mechanics-1", "ial-maths-20-mechanics-2", "ial-maths-20-pure-1", "ial-maths-20-pure-2", "ial-maths-20-pure-3", "ial-maths-20-pure-4", "ial-maths-20-statistics-1", "ial-maths-20-statistics-2", "ial-physics-19", "igcse-accounting-17-financial-statements", "igcse-accounting-17-introduction-to-bookkeeping-and-accounting", "igcse-biology-modular-24-unit-1", "igcse-biology-modular-24-unit-2", "igcse-chemistry-modular-24-unit-1", "igcse-chemistry-modular-24-unit-2", "igcse-economics-17", "igcse-further-maths-19", "igcse-ict-17", "igcse-maths-a-modular-24-foundation-unit-1", "igcse-maths-a-modular-24-foundation-unit-2", "igcse-maths-a-modular-24-higher-unit-1", "igcse-maths-a-modular-24-higher-unit-2", "igcse-physics-modular-24-unit-1", "igcse-physics-modular-24-unit-2"],
+  "out_of_scope_gaps_16": "band-scheme deferred rows (phase-0 law, flip-blocked pending ADR) + skeletons (EMPTY inc=0): 9609, 8291, 0450, 0264, 0455x2, 0475, 0680, 0460x2, 0470, 0490, 4BS1, 4EA1-p2, 4ET1, 4GE1",
+  "registry_total_coreBridge_rows_after_flip": 62
+ },
+ "bank_totals": {
+  "questions_at_phase0_restored_estate": 7662,
+  "sme_refs_end_of_lane": 22097,
+  "question_asset_preserved": 585,
+  "knowledge_nodes": 9711
+ },
+ "hazards_disposed": [
+  "YMA01 x9 share cv YMA01-2020 with order-colliding topic codes across different specs (the 4SD0 defect class) — resolved by the unit-token topic-code shape of the ingest vintage; nine sibling bundles validated collision-free through the frozen seeder + shim laws",
+  "4AC1 x2 strand collision — resolved by the B/F strand-tail re-export shape",
+  "pilot asset-store hazard — every package shipped no assets (image markdown normalized to bracketed descriptions DB-side); question_asset 585 rows verified intact at lane end",
+  "member-ref inflation vs base-ref census — instrument corrected (the family census)",
+  "sandbox rollback #9 mid-lane (2026-10-24 ~22:35Z): repo clone + uncommitted working tree + /tmp state lost; ALL DB applies durable (external Neon); recovery by reconstruction + idempotent re-verification via the family census"
+ ],
+ "rollup": "Smart Mark coverage now gate-green on 60 of the 78 non-skeleton rows; the 33-row flip PR carries the registry to 62 coreBridge rows of 94 (the remaining 32: 16 band-scheme deferred + 13 skeletons/EMPTY + 3 pre-existing non-SM rows out of this lane's scope)."
+}

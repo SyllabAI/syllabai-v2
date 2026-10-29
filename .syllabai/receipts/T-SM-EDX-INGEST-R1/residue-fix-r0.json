@@ -1,0 +1,75 @@
+{
+  "lane": "T-SM-EDX-INGEST-R1",
+  "task": "residue-fix-r0 — the 4-ref fix (operator-ordered)",
+  "operator_order": {
+    "verbatim": "fire the 4-ref residue fix lane",
+    "channel": "zai-web",
+    "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+    "chat": "371a9d19-b6bb-4173-9696-cee324b265a1",
+    "trace_id": "1a1726a399902f45",
+    "date": "2026-10-25"
+  },
+  "target_of_record": {
+    "probe_finding": "receipt probe-r1.json (e8dbe7e) + issue 276 comment 6396007135: 4 complete family absences",
+    "refs": [
+      "sme-eq-igcse-economics-17-government-policies-q35",
+      "sme-eq-igcse-economics-17-the-macroeconomic-objectives-q14",
+      "sme-eq-ial-maths-20-pure-1-graphs-of-functions-q0",
+      "sme-eq-ial-maths-20-pure-1-laws-of-indices-and-surds-q11"
+    ]
+  },
+  "root_cause_of_record": {
+    "class": "UNMAPPED (the shim's anchor law)",
+    "evidence": [
+      "all 4 corpus questions carry EMPTY part specPointCodes (every sibling in the same sets is coded); marks sums correct (badSum=0); no dup orders",
+      "DB: the 4 refs absent from EVERY 10-24 ingest pass (58-row inactive graphs set, 105-row inactive laws set, etc.) - a question-level law exclusion, not a lost chunk",
+      "the frozen validate fail-closed on the of-record targeted runner (unknown KG code YMA01-1.11), proving the awave-seeded spines (econ TOPICs 4EC1-S{topicOrder}-{a}, flat specs 4EC1-{code}; pure-1 YMA01-P1.x prefix injection, primaries YMA01-SP{n}-_) are NOT derivable by the current frozen mapper"
+    ]
+  },
+  "fix_of_record": {
+    "pr1_content": {
+      "pr": 361,
+      "merge": "52ddc7e74",
+      "what": "anchor repair - the 4 questions' empty part specPointCodes authored (grounded in DB descriptors + sibling law): econ q35 -> 2.1.2b (Monetary policy/central banks), econ q14 -> 1.1.1e (possible causes of growth, exact), pure-1 q0 -> 1.11 (graphs/sketching), pure-1 q11 -> 1.1 x2 (laws of indices)",
+      "ci": "verify + hub 2/2 GREEN on 711d1d3",
+      "diff": "2 minified corpus lines, surgical"
+    },
+    "pr2_db": {
+      "tool": "apps/api/scripts/r1fix-residue-package.ts (agent-side fix driver, committed 3fe6f96 as evidence)",
+      "composition": "4-question package built mirroring the shim's per-question field laws byte-for-byte, handed to the FROZEN SmeQuestionIngestService (validate + KG resolution + ADR-026 slice-scoped replace + version/scheme emission); one package per course (source envelope law)",
+      "deviation_disclosure": "the PACKAGER is not the frozen shim for these 4 questions (the frozen shim cannot map the awave-seeded curricula); every DB-facing law stays frozen; both packages dry-run (sentinel rollback, zero persistence) before apply",
+      "applied": {
+        "igcse-economics-17": {"questions": 2, "rows_emitted": "q35 base + q14-p1 MCQ member", "deactivated": 0},
+        "ial-maths-20-pure-1": {"questions": 2, "rows_emitted": "q0 + q11 base rows (1+2 parts)", "deactivated": 0}
+      }
+    }
+  },
+  "verification": {
+    "db": {
+      "families": "4/4 present, active, PAST_PAPER provenance (matches the course banks), 1 VALIDATED scheme each, 1 spec join each, primaries 4EC1-S3-2 / 4EC1-S1-1 / YMA01-SP1-_ x2",
+      "dup_check": "ZERO duplicate active refs in the sme-eq space",
+      "bank_census": {"igcse-economics-17": "523 -> 525", "ial-maths-20-pure-1": "460 -> 462", "igcse-accounting-17": "254 (unchanged)"}
+    },
+    "reconciliation": {
+      "scope": "all 31 topics of the 3 probe courses, corpus vs served families, join law byte-faithful (smeRef.ts)",
+      "result": "962/962 joined, ZERO skips (was 958/962 + 4 family-absent)"
+    },
+    "live_reprobe": [
+      {"course": "igcse-economics-17", "topic": "government-policies--exam-questions", "joined": "48/48", "skipped": []},
+      {"course": "igcse-economics-17", "topic": "the-macroeconomic-objectives--exam-questions", "joined": "44/44", "skipped": []},
+      {"course": "ial-maths-20-pure-1", "topic": "graphs-of-functions--exam-questions", "joined": "30/30", "skipped": []},
+      {"course": "ial-maths-20-pure-1", "topic": "laws-of-indices-and-surds--exam-questions", "joined": "36/36", "skipped": []}
+    ],
+    "serving_safety": "deactivated=0 on both packages - the serving 958 rows untouched (UUIDs, versions, schemes intact)"
+  },
+  "verdict": {
+    "statement": "The 4-ref residue is CLOSED end-to-end: root-caused (anchor-law unmapped class), corpus-repaired (PR #361), banked through the frozen service (pure insert), and live-verified (962/962 joined, zero skips, correct negatives unchanged)."
+  },
+  "environment_events": [
+    "sandbox pins DATABASE_URL to a local sqlite DSN (assignments silently ignored) - SEED_DATABASE_URL composed inline from .creds/db.env with channel_binding stripped for the postgres.js client",
+    "gh/psql absent in the fresh substrate - REST API + psycopg2 (read-only) + bun tooling"
+  ],
+  "commits": {"pr_361_head": "711d1d3", "pr_361_merge": "52ddc7e74", "lane_tool": "3fe6f96"},
+  "recorded_at": "2026-10-25",
+  "recorded_by": "Z.ai main agent (SyllabAI ops lane)"
+}

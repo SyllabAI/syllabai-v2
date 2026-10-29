@@ -1,0 +1,430 @@
+{
+ "packId": "u3-c19-energetics",
+ "chapterKey": "u3:c19",
+ "courseId": "igcse-chemistry-19",
+ "title": "Energetics",
+ "learningObjective": "know that chemical reactions in which heat energy is given out are described as exothermic, and those in which heat energy is taken in are described as endothermic; describe simple calorimetry experiments for reactions such as combustion, displacement, dissolving and neutralisation; calculate the heat energy change from a measured temperature change using the expression Q = m c Δ T; calculate the molar enthalpy change (ΔH) from the heat energy change, Q; draw and explain energy level diagrams to represent exothermic and endothermic reactions; know that bond-breaking is an endothermic process and that bond-making is an exothermic process; use bond energies to calculate the enthalpy change during a chemical reaction; practical: investigate temperature changes accompanying some of the following types of change: • salts dissolving in water • neutralisation reactions • displacement reactions • combustion reactions.",
+ "paperRoute": "core",
+ "sections": [
+  {
+   "id": "u3:c19:s01",
+   "title": "Energetics",
+   "bookPage": 207,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf216_0819",
+    "chem_v3_u3_c19_pdf216_0820",
+    "chem_v3_u3_c19_pdf216_0821"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "exothermic",
+    "endothermic"
+   ],
+   "specRefs": [
+    "3.1",
+    "3.2",
+    "3.3",
+    "3.4",
+    "3.5C",
+    "3.6C",
+    "3.7C",
+    "3.8"
+   ],
+   "markdown": "Every chemical reaction involves an energy change. Some reactions pour heat\nout into the surroundings; others pull heat in from them. This chapter is\nabout measuring those changes, calculating them, and explaining them through\nthe bonds that break and form while reactions happen.\n\nThe chapter runs on two tracks. The **core track** (assessed in both Paper 1C\nand Paper 2C) covers the exothermic/endothermic split, the calorimetry\nexperiments that measure heat changes for combustion, displacement, dissolving\nand neutralisation, the equation Q = mc∆T, and the calculation of molar\nenthalpy changes. The **chemistry-only track** (Paper 2C, sections marked\n3.5C/3.6C/3.7C) adds energy level diagrams and bond-energy calculations. The\npractical work — investigating temperature changes when salts dissolve,\nneutralisations happen, metals displace and fuels burn — is core practical\nwork, and the examiners ask about its method, its errors and its\nimprovements as often as they ask for the numbers.\n\nTwo words carry the whole chapter. A reaction that gives out heat is\n[[exothermic]]; a reaction that takes heat in is [[endothermic]]. Everything\nelse — the diagrams, the equations, the experiments — exists to measure,\ncompare and explain those two directions of energy flow.\n\n:::prior-knowledge\nYou have already met energy changes without naming them: burning fuels\n(Unit 1, states of matter and fuels), metals reacting with acids and the\ndisplacement reactions of the reactivity series (u2:c14), neutralisation\n(u2:c16), and the thermal decomposition of carbonates (u2:c10's electrolysis\nneighbour, u1:c08's reactions). The mole and molar calculations from\nu1:c05/u1:c06 are used in every worked example here — if mol/dm³\nconcentration sums feel shaky, revise them first.\n:::\n\n:::cross-curricular\nPhysics shares the specific heat capacity idea — the same J/g/°C quantity\nappears in thermal physics. Design technology meets it in hand warmers and\nself-heating meal packs. Geography uses heat of combustion when comparing\nfuels and carbon footprints.\n:::\n\n:::exam-hint\nIn the exam, the command words for this chapter are *know*, *describe*,\n*calculate*, *draw* and *explain*. \"Know\" questions want the exothermic or\nendothermic definition in one precise sentence — direction of heat flow\nrelative to the surroundings. \"Describe\" questions want a method in logical\norder. \"Calculate\" questions want Q = mc∆T and ΔH = Q ÷ n set out with units.\n\"Draw\" questions (Paper 2C) want labelled energy level diagrams. \"Explain\"\nquestions want bonds broken (energy in) versus bonds made (energy out).\n:::\n\n:::misconception\n\"Energy changes only matter for dramatic reactions like explosions.\" Every\nreaction carries an energy change — dissolving a pinch of ammonium chloride\nin water lowers the temperature measurably, and neutralising dilute acid with\ndilute alkali warms the mixture by several degrees even though nothing\nappears to happen. The size differs; the direction of energy flow is always\nthere.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.1–3.8 energetics items. Before going further, say\nin one sentence each: which direction does heat flow in an exothermic\nreaction, and what happens to the temperature of the surroundings? Then list\nthe four reaction families you will measure calorimetrically this chapter.\n:::"
+  },
+  {
+   "id": "u3:c19:s02",
+   "title": "Exothermic reactions",
+   "bookPage": 207,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf216_0822",
+    "chem_v3_u3_c19_pdf216_0823",
+    "chem_v3_u3_c19_pdf216_0824"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "exothermic",
+    "quicklime"
+   ],
+   "specRefs": [
+    "3.1"
+   ],
+   "markdown": "A reaction that **gives out heat energy to the surroundings** is called an\n[[exothermic]] reaction. Hold a test-tube in which an exothermic reaction is\nhappening and the tube gets warmer: heat is flowing out of the reaction\nmixture into the glass, your fingers and the air. That is the definition and\nthe observation in one — heat leaves the reaction for the surroundings, and\nthe temperature of everything around the mixture goes **up**.\n\nThe clearest way to see what is happening energetically is to compare the\nchemical energy stored in the bonds of the chemicals before and after. In an\nexothermic reaction the **products have less chemical energy than the\nreactants**. The difference does not vanish — it is converted to heat energy\nand released to the surroundings. Chemical energy stored in bonds becomes\nheat energy in the environment, so the reaction mixture and its surroundings\nwarm up.\n\nThe classic demonstration is adding water to solid calcium oxide. The heat\nproduced is enough to boil the water and raise steam, and calcium hydroxide\nforms:\n\nCaO(s) + H₂O(l) → Ca(OH)₂(s)\n\nThe reaction releases so much heat that the water can be seen steaming as the\nsolid crumbles — a dramatic confirmation that chemical energy has been\nconverted to heat on a large scale.\n\n:::did-you-know\nCalcium oxide is known as [[quicklime]]. Adding water to it is described as\nslaking it, and the calcium hydroxide produced is known as slaked lime. The\nsame chemistry underlies traditional lime mortars, which harden as the\nquicklime slakes and then slowly absorbs carbon dioxide from the air.\n:::\n\n:::safety\nIt is less hazardous to use a lump of calcium oxide rather than powdered\ncalcium oxide, and skin contact must be avoided — the solid is caustic and\nthe slaking reaction scalds. Wear eye protection.\n:::\n\n:::exam-hint\nA one-mark \"know\" question wants exactly this chain: exothermic → heat given\nout **to the surroundings** → temperature of the surroundings rises. If the\nquestion then asks you to explain in terms of energy, add the second chain:\nproducts have less chemical energy than reactants → the difference is\nreleased as heat. Saying \"it gets hot\" without naming the surroundings earns\nnothing; the heat flow direction is the mark.\n:::\n\n:::misconception\n\"An exothermic reaction must produce a flame.\" Flames belong to the small\nsubset of exothermic reactions that burn — adding water to quicklime, or\ndilute acid neutralising dilute alkali, is fiercely exothermic with no flame\nat all. The test is the temperature of the surroundings, not light.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.1 exothermic-definition items. Write the definition\nof an exothermic reaction without looking, then explain the calcium oxide +\nwater reaction in terms of the chemical energy of products versus reactants.\nFinally, name the product and its common name.\n:::"
+  },
+  {
+   "id": "u3:c19:s03",
+   "title": "Exothermic reactions in action",
+   "bookPage": 208,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf217_0825",
+    "chem_v3_u3_c19_pdf217_0828"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "exothermic",
+    "displacement-reaction"
+   ],
+   "specRefs": [
+    "3.1"
+   ],
+   "markdown": "You have already met dozens of [[exothermic]] reactions — this\nsection gathers the families the examiners expect you to recognise on sight.\n\n**Any reaction that produces a flame is exothermic.** Burning things releases\nheat energy. The clearest example is hydrogen burning in oxygen, producing\nwater and a large amount of heat:\n\n2H₂(g) + O₂(g) → 2H₂O(l)\n\nThe burning of hydrogen is used in oxy-hydrogen cutting equipment\nunderwater, because the flame is hot enough to cut metal even beneath the\nsurface. You met the same reaction as the test for hydrogen (the squeaky\npop) and in the reactivity-series work.\n\n**Metals reacting with acids** are exothermic. When magnesium reacts with\ndilute sulfuric acid, the mixture gets very warm:\n\nMg(s) + H₂SO₄(aq) → MgSO₄(aq) + H₂(g)\n\n**Neutralisation reactions** are exothermic. About the only interesting thing\nyou can observe when sodium hydroxide solution reacts with dilute\nhydrochloric acid is that the temperature rises:\n\nNaOH(aq) + HCl(aq) → NaCl(aq) + H₂O(l)\n\nNothing changes colour, no gas bubbles out — but the mixture is measurably\nwarmer than the two starting solutions. You will measure exactly how much\nheat this family releases later in the chapter.\n\n**[[displacement-reaction]]s** are exothermic. The most spectacular example is\nthe thermite reaction between powdered aluminium and iron(III) oxide, a\ndisplacement (competition) reaction that releases so much heat that the iron\nformed is molten — the reaction is used to weld railway lines together:\n\n2Al(s) + Fe₂O₃(s) → 2Fe(l) + Al₂O₃(s)\n\n:::exam-hint\n\"Give two examples of exothermic reactions\" is a gift question if you keep a\nmental list: combustion (hydrogen, or any fuel), metal + acid,\nneutralisation, displacement. Name the chemicals, not just the family —\n\"magnesium with dilute sulfuric acid\" scores; \"a reaction that gets hot\" does\nnot. If asked for equations, any balanced equation from this section is safe.\n:::\n\n:::misconception\n\"Neutralisation cannot be exothermic because salt solution does not feel\nwarm.\" With dilute solutions the temperature rise is only a few degrees —\nreal, measurable with a thermometer, but easy to miss with a finger. The\nthermometer, not your hand, decides whether a reaction is exothermic; later\nin this chapter the measured rise for KOH + HCl works out at ΔH = −55.4\nkJ/mol.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.1 exothermic-examples items. List the four\nexothermic families from memory, write a balanced equation for one member of\neach family, and state what you would observe (other than a flame) for the\nmetal + acid and neutralisation examples.\n:::"
+  },
+  {
+   "id": "u3:c19:s04",
+   "title": "Enthalpy change (∆H)",
+   "bookPage": 209,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf218_0829",
+    "chem_v3_u3_c19_pdf218_0832",
+    "chem_v3_u3_c19_pdf218_0833"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "enthalpy-change",
+    "stability",
+    "mole"
+   ],
+   "specRefs": [
+    "3.4"
+   ],
+   "markdown": "You can measure the amount of heat energy taken in or released in a chemical\nreaction. It is called the [[enthalpy-change]] of the reaction and is given\nthe symbol ∆H. ∆H is pronounced \"delta H\" — the Greek letter ∆ is used to\nmean \"change in\", so ∆H means \"change in heat\". One subtlety matters: it is\nnot possible to measure how much enthalpy (H) a substance *has* — you can\nonly measure the **change** in enthalpy when it reacts. The enthalpy change\nis the amount of heat energy taken in or given out in a chemical reaction;\nit is the difference between the energy of the products and the energy of\nthe reactants.\n\n∆H is given a minus or a plus sign to show whether heat is being given out\nor absorbed, and you always read the sign from the point of view of the\nreactants. For an exothermic reaction, ∆H is **negative**, because the\nreactants are losing energy as heat — heat is transferred to the\nsurroundings, which then get warmer. ∆H is measured in units of kJ/mol\n(kilojoules per mole); you may also see the units written kJ mol⁻¹.\n\nWritten next to an equation, the enthalpy change looks like this:\n\nMg(s) + H₂SO₄(aq) → MgSO₄(aq) + H₂(g)   ∆H = −466.9 kJ/mol\n\nThe ∆H here represents the enthalpy change of the reaction: 466.9 kJ of heat\nis given out when one mole of magnesium reacts in this way. You know heat\nhas been given out because ∆H carries a negative sign.\n\nThe word [[stability]] describes the relative energies of reactants and\nproducts: **the more energy a chemical has, the less stable it is.** So when\nan exothermic reaction runs, the products (lower energy) are more stable than\nthe reactants — energy has drained out of the chemicals into the\nsurroundings. And remember the vocabulary: the reactants are the chemicals\nyou start with. The per-mole basis is why the [[mole]] matters here — every\n∆H you quote is for the amounts shown in the balanced equation.\n\n:::key-point\n∆H is the enthalpy change: the heat energy taken in or given out by a\nreaction, measured from the reactants' point of view. Negative ∆H = heat\ngiven out (exothermic). Positive ∆H = heat taken in (endothermic). Units:\nkJ/mol (equivalently kJ mol⁻¹).\n:::\n\n:::exam-hint\nTwo habits earn the sign-and-units marks every time. First, never quote a\n∆H without its sign — an answer of \"466.9 kJ/mol\" for the magnesium reaction\nabove loses the mark that \"−466.9 kJ/mol\" scores. Second, keep the units per\nmole: if a question gives you heat in joules for 0.78 g of fuel, dividing by\nmoles before quoting kJ/mol is part of the calculation, not decoration (the\nfull method arrives in the worked example later in this chapter).\n:::\n\n:::misconception\n\"A negative ∆H means energy is missing.\" The minus sign records a **loss\nfrom the reactants**, not a loss from the universe: the heat has been\ntransferred to the surroundings, where it warms them up. Energy is\nconserved — the sign just says which way it flowed relative to the chemicals.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.4 enthalpy-change items. Define enthalpy change,\nstate why exothermic reactions carry a negative ∆H, and write the two\nacceptable forms of the units. Then explain why a chemical with more energy\nis described as less stable.\n:::"
+  },
+  {
+   "id": "u3:c19:s05",
+   "title": "Showing an exothermic change on an energy level diagram",
+   "bookPage": 209,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf218_0834"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "energy-level-diagram"
+   ],
+   "specRefs": [
+    "3.5C"
+   ],
+   "markdown": "An [[energy-level-diagram]] is the standard picture for the energy story of a\nreaction. The vertical axis is energy (label it!), the horizontal axis is\nthe progress of the reaction, and the reactants and products each sit on\ntheir own horizontal level.\n\nFor an **exothermic** reaction the reactants sit **higher** than the\nproducts — they have more chemical energy — so the arrow from reactants to\nproducts points **down**. The drop between the two levels is the energy that\nhas been released to the surroundings as heat. Because the products have less\nenergy, we say the products are **more stable** than the reactants. As the\nreaction runs, the temperature of both the reaction mixture and its\nsurroundings goes up — that warming is the released energy showing itself.\n\nDraw the diagram in this order and you cannot lose the labels:\n\n1. Two horizontal levels — reactants on the upper level, products on the\n   lower level.\n2. Vertical axis labelled \"energy\", horizontal axis labelled \"progress of\n   the reaction\".\n3. An arrow pointing down from reactants to products.\n4. ∆H written next to the arrow with its **negative** sign — the drop is the\n   magnitude, the sign records the direction.\n\n:::exam-hint\nPaper 2C loves three details on this diagram. Label both axes — an unlabelled\nenergy axis costs the mark even if the shape is perfect. Put the reactants\nabove the products for an exothermic change, with a downward arrow. And\nwrite ∆H beside the arrow **with its minus sign**; \"∆H\" alone, or a positive\nvalue on a downward diagram, contradicts itself and loses the mark. If the\nquestion asks you to *explain* the shape, one sentence does it: the products\nhave less chemical energy than the reactants, so the difference is released\nas heat.\n:::\n\n:::misconception\n\"The products are drawn lower because the reaction mixture ended up colder.\"\nThe levels show **chemical energy stored in the chemicals**, not the\ntemperature at the end. An exothermic reaction leaves the *surroundings*\nhotter precisely because the *chemicals* ended with less energy — the two\nobservations point in opposite directions, and the diagram records the\nchemicals.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.5C energy-level-diagram items. Sketch the\nexothermic energy level diagram from memory: axes, levels, arrow, sign.\nThen answer cold — for the reaction Mg + H₂SO₄ (ΔH = −466.9 kJ/mol), which\nlevel is higher and what does the drop represent?\n:::"
+  },
+  {
+   "id": "u3:c19:s06",
+   "title": "Endothermic reactions",
+   "bookPage": 209,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf218_0835",
+    "chem_v3_u3_c19_pdf219_0836"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "endothermic",
+    "thermal-decomposition"
+   ],
+   "specRefs": [
+    "3.1"
+   ],
+   "markdown": "A reaction that **absorbs heat from the surroundings** is called an\n[[endothermic]] reaction. Hold a test-tube in which an endothermic reaction\nis happening and the tube gets **colder** — heat is flowing the other way,\nout of your fingers and the air and into the reaction mixture.\n\nIn energy terms the picture mirrors the exothermic case exactly. In an\nendothermic reaction the **products have more chemical energy than the\nreactants**. To supply the extra energy needed to convert low-energy\nreactants into high-energy products, heat energy is absorbed from the\nsurroundings and converted to chemical energy stored in the new bonds. The\ntemperature of the reaction mixture and the surroundings goes **down**\nbecause heat energy has been drained and converted into a different form.\n\nChemical cold packs work on exactly this principle: an endothermic reaction\ninside the pack absorbs heat from the surroundings, lowering the temperature\nof the injured arm it rests against.\n\nThe everyday laboratory example is the [[thermal-decomposition]] of metal\ncarbonates, which you met with Group 2 chemistry. These are endothermic —\nyou have to heat a carbonate **constantly** to make it decompose, because\nthe reaction keeps drawing heat from the flame. Copper(II) carbonate (green)\ndecomposes on heating to produce copper(II) oxide (black):\n\nCuCO₃(s) → CuO(s) + CO₂(g)\n\nZinc carbonate decomposes similarly to form zinc oxide when heated.\n\nOne warning that examiners turn into questions: **not every reaction that\nneeds heating is endothermic.** Sometimes we heat a mixture simply to make\nthe reaction go faster — the burning of magnesium needs a hot flame to start\nit, yet the reaction itself is fiercely exothermic. The direction of the\ntemperature change *during* the reaction tells you which kind you have; the\npresence of a Bunsen burner does not.\n\n:::exam-hint\nThe examiner's favourite endothermic definition question adds a twist:\n\"explain why the decomposition of copper(II) carbonate is endothermic.\" The\nfull-mark chain is: the products have **more** chemical energy than the\nreactants → the extra energy must be absorbed from the surroundings as heat\n→ so the temperature of the surroundings falls and heating must continue\nthroughout the reaction. Keep the heating-continuously point — it is what\nseparates an endothermic decomposition from a merely slow reaction.\n:::\n\n:::misconception\n\"If you have to light a Bunsen burner, the reaction must be endothermic.\"\nHeat applied to *start* or *speed up* a reaction tells you nothing about the\ndirection of the overall energy change. Magnesium burning needs a flame to\nget going and then releases far more heat than it absorbed. Classify by the\ntemperature change of the mixture itself: drops during the change →\nendothermic; rises → exothermic.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.1 endothermic-definition items. Define an\nendothermic reaction, state the energy relationship between products and\nreactants, write the equation for the thermal decomposition of copper(II)\ncarbonate, and explain why a reaction needing a flame to start is not\nnecessarily endothermic.\n:::"
+  },
+  {
+   "id": "u3:c19:s07",
+   "title": "Showing an endothermic change on an energy level diagram",
+   "bookPage": 210,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf219_0837"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "energy-level-diagram"
+   ],
+   "specRefs": [
+    "3.5C"
+   ],
+   "markdown": "The endothermic [[energy-level-diagram]] is the mirror image of the exothermic\none. In an endothermic change the **products have more energy than the\nreactants**, so we say the products are **less stable** than the reactants.\nThat extra energy has to come from somewhere, and it is taken from the\nsurroundings — for the thermal decomposition of carbonates in the laboratory,\nit comes from the Bunsen burner.\n\nBecause the reactants are **gaining** energy, the enthalpy change of the\nreaction is given a **positive** sign. The thermal decomposition of calcium\ncarbonate carries the value you should be able to quote and explain:\n\nCaCO₃(s) → CaO(s) + CO₂(g)   ∆H = +178 kJ/mol\n\nThis means that 178 kJ of heat energy must be absorbed to convert one mole\nof calcium carbonate into calcium oxide and carbon dioxide. On the diagram,\nthe arrow from reactants to products points **up**, the products level sits\n**above** the reactants level, and ∆H is written beside the arrow with its\nplus sign. Label the vertical axis \"energy\" and the horizontal axis \"progress\nof the reaction\" exactly as before.\n\n:::exam-hint\nPaper 2C asks for both diagrams in a single question so the comparison marks\nare easy to bank: exothermic = products lower, ∆H negative, arrow down;\nendothermic = products higher, ∆H positive, arrow up. For the calcium\ncarbonate example, quote the value *with* its plus sign and attach the\nmeaning — \"178 kJ absorbed **per mole** of calcium carbonate decomposed.\"\nOmitting \"per mole\" leaves the answer incomplete; the value is defined for\nthe equation's amounts.\n:::\n\n:::misconception\n\"The +178 kJ/mol is the total heat the Bunsen burner supplied.\" The value is\nthe minimum absorbed **by the reaction** per mole of calcium carbonate\ndecomposed — the burner also heats the tube, the air and everything else,\nwhich is why a real flame delivers far more than 178 kJ in practice. The\nquoted ∆H is the reaction's share, not the fuel bill.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.5C endothermic-diagram items. Draw the endothermic\nenergy level diagram for CaCO₃ → CaO + CO₂ with every label, then state the\nmeaning of ∆H = +178 kJ/mol in one sentence. Finally, name where the energy\ncomes from in the laboratory and what that does to the surroundings.\n:::"
+  },
+  {
+   "id": "u3:c19:s08",
+   "title": "Specific heat capacity and the Q = mc∆T equation",
+   "bookPage": 211,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf220_0839",
+    "chem_v3_u3_c19_pdf220_0840",
+    "chem_v3_u3_c19_pdf220_0842"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "specific-heat-capacity",
+    "calorimeter"
+   ],
+   "specRefs": [
+    "3.3"
+   ],
+   "markdown": "When we heat something up, it gets hotter. The [[specific-heat-capacity]]\ntells us how much energy has to be put in to increase the temperature of\nsomething. It is defined as **the amount of heat needed to raise the\ntemperature of 1 gram of a substance by 1 °C**. The unit is J/g/°C (or\nJ g⁻¹ °C⁻¹).\n\nFor water the value is **4.18 J/g/°C** — 4.18 J of heat energy raises the\ntemperature of 1 g of water by 1 °C. The idea scales in both directions, and\nthe multiplication is easy to reason through:\n\n- 1 g of water by 2 °C needs 4.18 × 2 = 8.36 J.\n- 2 g of water by 2 °C needs 2 × 8.36 = 16.72 J.\n\nThe heat energy required is **directly proportional** to the mass (m) and to\nthe temperature change (∆T), which compresses the whole idea into one\nequation — the workhorse of this chapter:\n\n**heat energy change = mass × specific heat capacity × temperature change**\n\n**Q = m × c × ∆T**\n\nEach symbol carries a discipline. Q is the heat energy change in joules. m\nis the mass **of the substance being heated** (in grams — usually water). c\nis that substance's specific heat capacity (4.18 J/g/°C for water). ∆T is\nits temperature change in °C. The same equation runs backwards for cooling:\nto cool 1 g of water by 1 °C you must remove 4.18 J, so an endothermic\nprocess sitting in water still hands you a usable Q — you just read the\ntemperature drop.\n\nA [[calorimeter]] is simply the container you run a calorimetry experiment\nin: in one experiment it is a copper can, in others a polystyrene cup. What\nmatters is that the reaction's heat ends up changing the temperature of a\nknown mass of water inside it.\n\n:::key-point\nThe unit of specific heat capacity is J/g/°C (J g⁻¹ °C⁻¹). Water's value is\n4.18 J/g/°C — memorise it, every calculation in this chapter uses it. The\n∆ in ∆T is the same \"change in\" symbol as in ∆H, this time applied to\ntemperature, and the equation applies to cooling as well as heating.\n:::\n\n:::exam-hint\nQ = mc∆T questions are won and lost on *which mass* and *which ∆T* you\nsubstitute. m is the mass of the **water (or solution) being heated**, never\nthe mass of the solid burned or dissolved. ∆T is final minus initial (or the\nmagnitude of the drop for cooling processes). Carry an extra significant\nfigure through the calculator and round at the end; divide by 1000 to\nconvert J to kJ before computing a ∆H in kJ/mol.\n:::\n\n:::misconception\n\"Specific heat capacity is a property of heating only.\" The quantity\ndescribes energy needed *per degree of temperature change in either\ndirection* — removing 4.18 J cools 1 g of water by 1 °C just as supplying\n4.18 J warms it. Endothermic experiments in this chapter depend on the\ncooling direction: the reaction takes heat from the water, ∆T is a drop, and\nQ still comes out of the same equation.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.3 Q=mc∆T items. State the definition and unit of\nspecific heat capacity, calculate the energy needed to warm 50 g of water\nfrom 20.0 °C to 35.0 °C, and name the container used in a calorimetry\nexperiment with the two common laboratory examples.\n:::"
+  },
+  {
+   "id": "u3:c19:s09",
+   "title": "Calorimetry and the combustion-of-an-alcohol experiment",
+   "bookPage": 211,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf220_0843",
+    "chem_v3_u3_c19_pdf220_0844",
+    "chem_v3_u3_c19_pdf220_0841",
+    "chem_v3_u3_c19_pdf221_0845",
+    "chem_v3_u3_c19_pdf221_0846"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "calorimetry",
+    "enthalpy-change-of-combustion"
+   ],
+   "specRefs": [
+    "3.2",
+    "3.8"
+   ],
+   "markdown": "Measuring the heat absorbed or given out by a reaction is\n[[calorimetry]], and it is more straightforward than the name suggests. The\nidea: let the reaction's heat change the temperature of a known mass of\nwater, then use Q = mc∆T to calculate the heat released. The mass, specific\nheat capacity and temperature change all belong to **the substance heated**\n— the water. If you also know how many moles of reactant were used up, you\ncan divide Q by n to reach the molar enthalpy change ∆H in kJ/mol.\n\nThe classic International GCSE experiment measures the heat given off when\nsmall alcohols burn — methanol, ethanol, propan-1-ol and butan-1-ol. The\nalcohol burns in a small spirit burner and the heat produced warms water in\na copper can (the calorimeter). The molar enthalpy change of combustion is\nhow much heat energy is released when **one mole** of the alcohol burns.\n\nThe procedure, in the order that earns method marks:\n\n1. Measure **100 cm³ of cold water** with a measuring cylinder and transfer\n   it to the copper can.\n2. Take the **initial temperature** of the water.\n3. Weigh a spirit burner containing the alcohol **with its lid on** — the\n   lid stays on whenever the wick is not lit, to stop the alcohol\n   evaporating.\n4. Arrange the apparatus so the burner can heat the water in the can, and\n   shield it as far as possible to prevent draughts.\n5. Light the wick. Stop heating when the water has a reasonable temperature\n   rise (about 40.0 °C); extinguish the flame by putting the lid back on the\n   wick.\n6. Stir the water thoroughly and measure the **maximum temperature**.\n7. Weigh the spirit burner again with its lid on.\n8. Repeat with the same alcohol to check reliability, then repeat with other\n   alcohols.\n\nHow big a temperature rise should you aim for? There is no ideal answer — it\nis a deliberate compromise. The higher the temperature the water reaches,\nthe greater the heat losses to the surroundings during the experiment; but\nif you only warm the water a little, errors in reading the thermometer and\nin finding the small mass change of the alcohol become too significant. A\nrise of around 40 °C balances the two.\n\n:::safety\nWear eye protection. Never carry a lit spirit burner, and never fill or\nre-fill one when there is a naked flame nearby. Keep the lid on the burner\nwhenever the wick is not lit.\n:::\n\n:::key-point\nThe enthalpy change when 1 mole of a substance is burned is called the\n[[enthalpy-change-of-combustion]]. Every combustion result in this chapter\nis quoted per mole of fuel burned.\n:::\n\n:::exam-hint\nMethod questions on this experiment reward the *control* details: lid on\nwhen not lit (stops evaporation changing the mass), shielding from draughts\n(cuts heat loss), stir before reading (distributes the heat so the maximum\nis true), weigh the burner *with* the lid both times. If asked for an\nimprovement, \"use a lid or shield around the can to reduce heat loss\" or\n\"a wind shield to prevent draughts\" are the standard reliable answers.\n:::\n\n:::misconception\n\"The mass to use in Q = mc∆T is the mass of alcohol that burned.\" The Q\nequation describes the **water**: m is the 100 g of water in the can (100\ncm³ × density 1 g/cm³). The mass of alcohol burned — the change in the\nburner's reading — enters later, when you convert Q into a per-mole value.\nMixing the two masses up is the single most common arithmetic error on this\nexperiment.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.2 + 3.8 combustion-calorimetry items. List the\nprocedure in order from memory, then answer: why does the burner lid go back\non between weighings, why shield the flame, and what temperature rise do you\naim for — with the reason it is a compromise?\n:::"
+  },
+  {
+   "id": "u3:c19:s10",
+   "title": "Worked example: the combustion calculation",
+   "bookPage": 212,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf221_0847",
+    "chem_v3_u3_c19_pdf221_0848",
+    "chem_v3_u3_c19_pdf222_0850",
+    "chem_v3_u3_c19_pdf222_0851"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "molar-enthalpy-change",
+    "enthalpy-change-of-combustion"
+   ],
+   "specRefs": [
+    "3.3",
+    "3.4"
+   ],
+   "markdown": "Combustion is exothermic, so the temperature of the water goes up; as the\nethanol burns, the total mass of burner plus ethanol goes down. Here is a\ncomplete data set and the full route from it to a molar enthalpy change of\ncombustion — the calculation the examiner asks you to reproduce with fresh\nnumbers.\n\n| Measurement | Value |\n|---|---|\n| Volume of water / cm³ | 100 |\n| Mass of burner + ethanol before / g | 137.36 |\n| Mass of burner + ethanol after / g | 136.58 |\n| Original temperature of water / °C | 21.5 |\n| Final temperature of water / °C | 62.8 |\n\n:::worked-example\n**Find the molar enthalpy change of combustion of ethanol from the data\nabove.**\n\n*Step 1 — temperature change.* ∆T = 62.8 − 21.5 = **41.3 °C**.\n\n*Step 2 — mass of water.* 100 cm³ of water has mass **100 g** (density of\nwater ≈ 1 g/cm³ at room temperature).\n\n*Step 3 — heat gained by the water.* c = 4.18 J/g/°C (it is the water that\nis being heated):\n\nQ = mc∆T = 100 × 4.18 × 41.3 = 17 260 J\n\nDivide by 1000 to convert to kJ: Q = **17.26 kJ**. This is the heat released\nby the ethanol burned in this experiment.\n\n*Step 4 — moles of ethanol burned.* Mass burned = 137.36 − 136.58 = **0.78 g**.\nEthanol, C₂H₅OH, has relative molecular mass (2 × 12) + (5 × 1) + 16 + 1 =\n**46**:\n\nn = mass ÷ Mr = 0.78 ÷ 46 = **0.01696 mol**\n\n*Step 5 — molar enthalpy change.* The [[molar-enthalpy-change]] is the heat\nenergy change divided by the number of moles burned:\n\n∆H = Q ÷ n = −17.26 ÷ 0.01696 = −1017.7 ≈ **−1020 kJ/mol** (3 s.f.)\n\nWritten on the equation:\n\nCH₃CH₂OH + 3O₂ → 2CO₂ + 3H₂O   ∆H = −1020 kJ/mol\n\nThe negative sign shows heat is released — the combustion is exothermic, as\nthe rising temperature already told you.\n:::\n\n:::key-point\nThe [[enthalpy-change-of-combustion]] is defined for **one mole** of\nsubstance burned — that is why Step 4 exists. Quoting −17.26 kJ as a final\nanswer confuses the heat released *in the experiment* with the per-mole\nquantity the question asked for.\n:::\n\n:::exam-hint\nTwo technique rules decide whether the arithmetic marks survive to the end.\nFirst, significant figures: quote the final answer to 3 significant figures,\ncarry more figures through the calculator, and round only at the end — the\nleast precise piece of experimental data fixes how many figures your answer\ncan honestly carry. Second, the sign: add it at the ∆H stage and sanity-check\nit against the temperature change. Temperature went **up** → exothermic →\n∆H **negative**. Temperature down → endothermic → ∆H positive. A\nsign-and-trend mismatch means a step has gone wrong.\n:::\n\n:::misconception\n\"Rounding at every step keeps the working tidy.\" Rounding early compounds:\n0.01696 mol rounded to 0.02 mol turns −1017.7 kJ/mol into −863 kJ/mol — off\nby more than 150 kJ and outside the mark scheme's tolerance. Keep the\ncalculator's full display until the final line, then round once.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.3 + 3.4 combustion-calculation items. Redo the\nfive steps with the burner masses 200.00 g and 199.30 g, the same 100 cm³ of\nwater warming from 20.0 °C to 54.0 °C, and butan-1-ol (Mr = 74). Check: your\nQ = 14 212 J, your n = 0.00946 mol, and your answer near −1500 kJ/mol with\na minus sign.\n:::"
+  },
+  {
+   "id": "u3:c19:s11",
+   "title": "Evaluating the combustion experiment",
+   "bookPage": 213,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf222_0852",
+    "chem_v3_u3_c19_pdf222_0853",
+    "chem_v3_u3_c19_pdf223_0854"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "incomplete-combustion"
+   ],
+   "specRefs": [
+    "3.2",
+    "3.8"
+   ],
+   "markdown": "How accurate was the −1020 kJ/mol obtained for ethanol? Data booklets quote\nan accepted value of **−1370 kJ/mol** for the enthalpy change of combustion\nof ethanol — 1370 kJ of heat should be given out when one mole burns. The\nexperimental value is **less exothermic** than expected: the experiment\nseemed to give out less heat than it should have. Explaining that gap is a\nguaranteed exam question, and the answer has two parts.\n\n**Heat loss dominates.** The warm water gives out heat to the air; heat from\nthe flame escapes straight into the surroundings rather than into the water;\nand heat is used to raise the temperature of the copper can and the\nthermometer as well as the water. Every joule that takes those side-routes\nis a joule the Q = mc∆T calculation never sees, so the measured temperature\nrise is too small and the calculated ∆H is too little exothermic.\n\n**The combustion is incomplete.** [[incomplete-combustion]] happens when\nthere is not enough oxygen present, and it releases **less** heat than\ncomplete combustion. You can see the evidence directly: the flame of the\nwick is often yellow-orange rather than blue, and soot (carbon) collects on\nthe bottom of the copper can. In complete combustion the flame is blue and\ncarbon dioxide is produced instead of carbon. Both observations — flame\ncolour and soot — are acceptable evidence in the exam.\n\nWhen the same experiment is repeated across the alcohol family, a pattern\nemerges. Plotting the molar enthalpy change of combustion against the number\nof carbon atoms in the alcohol shows the combustion reaction getting **more\nexothermic as the alcohol chain becomes longer** — longer alcohols give out\nmore heat energy per mole when they burn than shorter ones. The increase is\n**regular**: each step from one alcohol to the next adds one extra CH₂ unit,\nso the number of extra bonds broken and made increases in a regular way, and\nso does the heat evolved.\n\nOne plotting discipline belongs with that graph. The points should be joined\nas **discrete points, not a smooth curve**: a smooth curve is only correct\nfor a continuous independent variable — one that can take any value. There\nis no such thing as an alcohol with 0.5 or 1.64 carbon atoms; the number of\ncarbon atoms is non-continuous, so a line through the points can mislead.\nThe comparison remains valid: repeat with other alcohols under conditions as\nsimilar as possible, and the trend in heat evolved with chain length is\nreliable.\n\n:::key-point\nEvaluation formula for this experiment: measured ∆H less exothermic than the\ndata booklet → (1) heat lost to surroundings (air, can, thermometer), (2)\nincomplete combustion (yellow-orange flame, soot) because less heat is\nreleased when oxygen is short.\n:::\n\n:::exam-hint\n\"Suggest why the student's value differs from the data book value\" wants the\ntwo-part answer above, with **evidence**. State the heat-loss routes\nspecifically (to the air, from the flame, into the can and thermometer), then\nquote an observation for incomplete combustion — soot on the can or a\nyellow-orange flame instead of blue. For the improvement question,\n\"insulate the can / add a lid / shield from draughts\" attacks heat loss;\n\"burn the alcohol in plenty of oxygen\" attacks incompleteness. Match each\nimprovement to the error it fixes.\n:::\n\n:::misconception\n\"A value of −1020 kJ/mol instead of −1370 kJ/mol means the arithmetic was\nwrong.\" The arithmetic is fine; the *method* is systematically imperfect.\nHeat escaping to the surroundings and incomplete combustion both push the\nmeasured temperature rise down, and a smaller ∆T produces a smaller — less\nexothermic — ∆H. The gap's direction is predictable, which is exactly what\nmakes it a favourite evaluation question.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.2 + 3.8 experiment-evaluation items. List the\nthree heat-loss routes, give two observations that prove the combustion was\nincomplete, and state the trend in ∆H of combustion as alcohol chain length\nincreases — with the reason the increase is regular.\n:::"
+  },
+  {
+   "id": "u3:c19:s12",
+   "title": "Calorimetry for reactions in solution",
+   "bookPage": 214,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf223_0855"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "molar-enthalpy-change"
+   ],
+   "specRefs": [
+    "3.2"
+   ],
+   "markdown": "Very similar methods to the alcohol experiment measure molar enthalpy\nchanges for three more reaction families:\n\n- **displacement reactions** — for example zinc metal in copper(II) sulfate\n  solution;\n- **dissolving** — for example ammonium chloride dissolving in water to form\n  a solution;\n- **neutralisation reactions** — for example potassium hydroxide solution\n  with dilute hydrochloric acid.\n\nThese experiments also involve \"heating water\" — but this time the water is\npart of the solutions themselves. The reaction happens in (or into) a\npolystyrene cup, the solution warms or cools, and the same equation Q = mc∆T\nconverts the temperature change into heat energy. Two assumptions do the\nconverting, and you must be able to state both:\n\n1. the **density** of the solution is the same as that of water, so 1 cm³ of\n   solution has a mass of 1 g;\n2. the **specific heat capacity** of the mixture is the same as that of\n   water — reasonable, because the reaction mixture is mostly water.\n\nFrom there the route to the [[molar-enthalpy-change]] is identical to the\ncombustion example: Q = mc∆T for the heat, moles of the limiting reactant\nfor n, then ∆H = Q ÷ n with the sign fixed by whether the temperature rose\n(exothermic, negative) or fell (endothermic, positive). The next three\nsections run the full procedure and calculation for each family in turn.\n\n:::exam-hint\n\"Describe how to measure the enthalpy change of neutralisation\" and its\nsiblings for displacement and dissolving are describe-the-method questions:\npolystyrene cup in a beaker (insulation), measured volumes, initial\ntemperature, add and stir, record maximum (or minimum) temperature. Then the\nassumption pair — density of solution = density of water, and specific heat\ncapacity of mixture = 4.18 J/g/°C because the mixture is mostly water —\nusually sits on the mark scheme as its own line. Learn it verbatim once and\nreuse it for all three families.\n:::\n\n:::misconception\n\"Each reaction family needs a different equation.\" The equation never\nchanges: Q = mc∆T, then ∆H = Q ÷ n. What changes is *what reacts* (a metal\nand a salt solution, a salt and water, an acid and an alkali) and therefore\n*which moles* you divide by. The constant structure is why one worked\nexample per family is enough preparation for all of them.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.2 solution-calorimetry items. Name the three\nsolution-reaction families, state the two standard assumptions of the\nmethod, and write the two-step calculation route from temperature change to\nmolar enthalpy change.\n:::"
+  },
+  {
+   "id": "u3:c19:s13",
+   "title": "Practical: measuring the enthalpy change of a displacement reaction",
+   "bookPage": 215,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf224_0856",
+    "chem_v3_u3_c19_pdf224_0857",
+    "chem_v3_u3_c19_pdf224_0858",
+    "chem_v3_u3_c19_pdf224_0859",
+    "chem_v3_u3_c19_pdf225_0860",
+    "chem_v3_u3_c19_pdf225_0862",
+    "chem_v3_u3_c19_pdf225_0863"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "displacement-reaction",
+    "excess"
+   ],
+   "specRefs": [
+    "3.2",
+    "3.4",
+    "3.8"
+   ],
+   "markdown": "To determine the enthalpy change for the [[displacement-reaction]] between zinc\nand copper(II) sulfate, the procedure is:\n\n1. Place a polystyrene cup in a 250 cm³ glass beaker.\n2. Transfer **50 cm³ of 0.200 mol/dm³ copper(II) sulfate solution** into the\n   cup using a measuring cylinder.\n3. Weigh **1.20 g of zinc** using a weighing boat on a balance.\n4. Record the **initial temperature** of the copper(II) sulfate solution.\n5. Add the zinc.\n6. Stir the solution as quickly as possible.\n7. Record the **maximum temperature** reached.\n\n| Measurement | Value |\n|---|---|\n| Initial temperature of copper(II) sulfate solution / °C | 17.0 |\n| Maximum temperature of the reaction mixture / °C | 27.3 |\n\nThe calculation uses the same assumptions as every solution experiment: the\nsolution's density is that of water (1 cm³ has mass 1 g) and its specific\nheat capacity is 4.18 J/g/°C, because the mixture is mostly water.\n\n:::worked-example\n**Calculate the enthalpy change for this displacement reaction when 1 mole\nof copper(II) sulfate reacts with zinc.**\n\n*Step 1 — heat given out.* ∆T = 27.3 − 17.0 = 10.3 °C:\n\nQ = mc∆T = 50 × 4.18 × 10.3 = 2152.7 J = 2.1527 kJ\n\n*Step 2 — which reactant runs out first?* Moles of CuSO₄ = (50 ÷ 1000) ×\n0.200 = **0.0100 mol**. Moles of Zn = 1.20 ÷ 65 = **0.0185 mol**. One mole\nof Zn reacts with one mole of CuSO₄, so 0.0100 mol of CuSO₄ reacts with\n0.0100 mol of Zn — we added 0.0185 mol of zinc, so the zinc is in\n[[excess]] and the **copper(II) sulfate is the limiting reactant**.\n(Excess means more than enough is present to ensure all the copper(II)\nsulfate reacts.)\n\n*Step 3 — per mole.* The heat released when 1 mole of CuSO₄ reacts is:\n\n∆H = Q ÷ n = 2.1527 ÷ 0.0100 = 215.3 ≈ **−215 kJ/mol**\n\nZn(s) + CuSO₄(aq) → ZnSO₄(aq) + Cu(s)   ∆H = −215 kJ/mol\n\nThe negative sign is added because the temperature of the reaction mixture\nwent up: the displacement is exothermic and heat is released. (Remember the\n÷1000 when converting the 50 cm³ to dm³ — the concentration is given in\nmol/dm³.)\n:::\n\nYou could repeat this experiment with metals of different reactivities: the\nmore reactive the metal, the more heat should be released in the\ndisplacement. Keep everything else the same — the number of moles of metal,\nthe size of the solid particles, and the volume and concentration of the\ncopper(II) sulfate solution. **Do not use metals more reactive than\nmagnesium**: those react with the water itself, and you would be measuring\nthe heat released by the metal–water reaction instead.\n\n:::key-point\nThe moles you divide Q by are the moles of the **limiting reactant** — the\nchemical that is not in excess. In this experiment the zinc was deliberately\nin excess so that all 0.0100 mol of copper(II) sulfate reacted, making the\nper-mole division clean.\n:::\n\n:::exam-hint\nThe examiner builds this question in three layers: the Q = mc∆T arithmetic\n(2 marks), the moles comparison that identifies the excess reactant (1–2\nmarks), and the division plus sign (2 marks). The layer candidates drop is\nthe middle one — *say explicitly* that 0.0185 mol of zinc exceeds the\n0.0100 mol of copper(II) sulfate, so copper(II) sulfate is limiting and its\nmoles go in the denominator of ∆H = Q ÷ n. A final answer without the\nnegative sign, or divided by the zinc's moles, loses the last two marks.\n:::\n\n:::misconception\n\"Use the moles of the reactant you weighed, because its mass was measured.\"\nThe per-mole definition attaches to the balanced equation's reacting ratio,\nnot to whichever mass was easier to weigh. With zinc in excess, dividing by\n0.0185 mol would understate the per-mole value; the reaction's heat belongs\nto the 0.0100 mol of copper(II) sulfate that actually reacted.\n:::\n\n:::safety\nWear eye protection and avoid skin contact with the salts and their\nsolutions.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.2 + 3.4 + 3.8 displacement-calorimetry items.\nRun the three-layer calculation with 50 cm³ of 0.100 mol/dm³ CuSO₄ and 1.30\ng of zinc (Ar = 65): identify the limiting reactant, show which moles divide\nQ, and justify the sign of ∆H. Check: n(CuSO₄) = 0.00500 mol, n(Zn) =\n0.0200 mol, zinc in excess.\n:::"
+  },
+  {
+   "id": "u3:c19:s14",
+   "title": "Practical: measuring the enthalpy change when a salt dissolves",
+   "bookPage": 216,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf225_0864",
+    "chem_v3_u3_c19_pdf226_0865",
+    "chem_v3_u3_c19_pdf226_0866",
+    "chem_v3_u3_c19_pdf226_0867",
+    "chem_v3_u3_c19_pdf226_0868"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "dissolving",
+    "molar-enthalpy-change"
+   ],
+   "specRefs": [
+    "3.2",
+    "3.4",
+    "3.8"
+   ],
+   "markdown": "Calorimetry also measures the heat given out or taken in when salts dissolve\nin water. The set-up is the same polystyrene cup in a 250 cm³ beaker used\nfor the displacement experiment. For ammonium chloride:\n\n1. Place a polystyrene cup in a 250 cm³ glass beaker.\n2. Transfer **100 cm³ of water** into the cup using a measuring cylinder.\n3. Record the **initial temperature** of the water.\n4. Weigh **5.20 g of ammonium chloride** using a weighing boat on a balance.\n5. Add the ammonium chloride to the water and stir vigorously until it has\n   all dissolved.\n6. Record the **minimum temperature**.\n\n| Measurement | Value |\n|---|---|\n| Initial temperature of water / °C | 18.3 |\n| Minimum temperature of salt solution / °C | 15.1 |\n\nThe temperature **decreases**, so the process is endothermic — heat is\nabsorbed from the surroundings for the dissolving to occur. Note one\ndifference of kind, not just of sign: [[dissolving]] is a **physical\nprocess** rather than a chemical reaction. When some salts dissolve heat is\ngiven out (exothermic); when others dissolve the process is endothermic —\nammonium chloride belongs to the second group.\n\nThe calculation follows the standard assumptions: the diluted solution has\nthe specific heat capacity of water (it is mostly water), and the mass of\nthe solution is 100 g — the small mass of ammonium chloride is ignored. Heat\nabsorbed from the surrounding air is a further source of error, one that\nmatters much more here than in the hotter experiments.\n\n:::worked-example\n**Calculate the molar enthalpy change for dissolving ammonium chloride in\nwater.**\n\n*Step 1 — heat absorbed.*\n\nQ = mc∆T = 100 × 4.18 × (18.3 − 15.1) = 100 × 4.18 × 3.2 = 1337.6 J =\n**1.3376 kJ**\n\n*Step 2 — moles dissolved.* The relative formula mass of ammonium chloride,\nNH₄Cl, is 14 + (4 × 1) + 35.5 = **53.5**:\n\nn = mass ÷ Mr = 5.20 ÷ 53.5 = **0.0972 mol**\n\n*Step 3 — per mole.* The [[molar-enthalpy-change]] of solution:\n\n∆H = Q ÷ n = 1.3376 ÷ 0.0972 = **+13.8 kJ/mol**\n\nThe **positive** sign shows that heat is absorbed — dissolving ammonium\nchloride in water is an endothermic process, which is why the temperature\nwent down.\n:::\n\n:::key-point\nDissolving is a physical process. The direction of its temperature change\ndepends on the salt: some dissolvings warm the water (exothermic), others\ncool it (endothermic). Read the thermometer — do not assume.\n:::\n\n:::exam-hint\nTwo marks hide in the details here. The thermometer reads a **minimum** for\nthis experiment — \"maximum temperature\" is copy-paste from the exothermic\nexperiments and drops the observation mark. And the sign discipline inverts:\ntemperature **down** → endothermic → ∆H **positive**. If asked why the\nassumptions are reasonable, the answer is that the solution is mostly water,\nso it inherits water's specific heat capacity; if asked for a major error,\nheat absorbed from the surrounding air during the (slow) dissolving is the\nhonest one.\n:::\n\n:::misconception\n\"Endothermic means the thermometer reads a lower number because the\nthermometer is losing heat.\" The drop is real heat transfer: the dissolving\nsalt **takes** energy from the water to pull its particles apart and into\nsolution, so the water's temperature falls. The energy has not disappeared —\nit has become chemical energy in the solution, exactly the reverse of the\nexothermic bookkeeping.\n:::\n\n:::safety\nWear eye protection and avoid skin contact with the salts and their\nsolutions.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.2 + 3.4 + 3.8 dissolving-calorimetry items.\nRecalculate with 6.40 g of ammonium chloride in 100 cm³ of water falling\nfrom 19.6 °C to 15.6 °C: show Q, n and the signed ∆H. Check: Q = 1672 J,\nn = 0.1196 mol, ∆H ≈ +14.0 kJ/mol. Then state whether potassium chloride\ndissolving exothermically would give a maximum or minimum reading.\n:::"
+  },
+  {
+   "id": "u3:c19:s15",
+   "title": "Practical: measuring the enthalpy change of neutralisation",
+   "bookPage": 217,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf226_0869",
+    "chem_v3_u3_c19_pdf227_0871",
+    "chem_v3_u3_c19_pdf227_0872",
+    "chem_v3_u3_c19_pdf228_0873",
+    "chem_v3_u3_c19_pdf228_0874"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "neutralisation",
+    "molar-enthalpy-change"
+   ],
+   "specRefs": [
+    "3.2",
+    "3.4",
+    "3.8"
+   ],
+   "markdown": "The reaction between an alkali and an acid is essentially the reaction\nbetween hydroxide ions and hydrogen ions to form water:\n\nOH⁻(aq) + H⁺(aq) → H₂O(l)\n\nFor the potassium hydroxide + hydrochloric acid example, suppose you know\nthe concentration of the potassium hydroxide but are not so sure of the\ndilute hydrochloric acid — the label has gone missing. The following method\nfinds the unknown concentration **and** the heat released, in one run:\n\n1. Place a polystyrene cup in a 250 cm³ glass beaker.\n2. Transfer **25 cm³ of 2.00 mol/dm³ potassium hydroxide** into the cup.\n3. Record the initial temperature.\n4. Fill a burette with **50.00 cm³ of dilute hydrochloric acid**.\n5. Use the burette to add **5.00 cm³** of the acid to the potassium\n   hydroxide.\n6. Stir vigorously and record the maximum temperature reached.\n7. Keep adding further **5.00 cm³ portions**, stirring and recording the\n   maximum temperature each time, until 50.00 cm³ in total has been added.\n\nPlot the temperature of the mixture against the volume of acid added. The\nshape tells the story: the temperature **increases at first** because the\nacid reacts with the alkali and gives out heat; once all the alkali has been\nused up, further additions are just cold acid poured into warm solution —\nnothing left to react with — so the temperature **goes down**.\n\nDraw **two lines of best fit**, one through the rising points and one\nthrough the falling points: the point where the lines cross represents\n**complete [[neutralisation]]**. Reading from the graph, the maximum temperature\nis 31.8 °C, reached when 28.00 cm³ of acid has been added (the initial\ntemperature for the ∆T is 19.3 °C).\n\n:::worked-example\n**Calculate the heat released per mole and the unknown acid concentration.**\n\n*Step 1 — heat given out.* Total volume at neutralisation = 25 + 28 = 53 cm³:\n\nQ = mc∆T = 53 × 4.18 × (31.8 − 19.3) = 2769.3 J = **2.7693 kJ**\n\n(Assumptions as always: density of the mixture = 1 g/cm³, and specific heat\ncapacity = that of water because the neutralised solution is mostly water.)\n\n*Step 2 — moles.* Moles of KOH = (25 ÷ 1000) × 2.00 = **0.0500 mol**. At the\nneutralisation point the moles of HCl are **exactly the same** — that is\nwhat the crossing point guarantees.\n\n*Step 3 — the [[molar-enthalpy-change]].* The heat released when 1 mole of\nKOH reacts with 1 mole of HCl:\n\n∆H = 2.7693 ÷ 0.0500 = **−55.4 kJ/mol**\n\nKOH(aq) + HCl(aq) → KCl(aq) + H₂O(l)   ∆H = −55.4 kJ/mol\n\nThe negative sign shows heat is released in this exothermic neutralisation.\n\n*Step 4 — the unknown concentration.* 28.00 cm³ of acid contained the\n0.0500 mol of HCl:\n\nconcentration = moles ÷ volume in dm³ = 0.0500 ÷ (28.00 ÷ 1000) = 0.0500 ÷\n0.02800 = **1.79 mol/dm³**\n\nOne accuracy footnote: strictly, the water formed would first appear as\nsteam, and extra heat is given out when steam condenses to liquid water —\nthe attraction forces between molecules form exothermically. At this level\nthe value is taken for the liquid product.\n:::\n\n:::key-point\nThe two-lines-of-best-fit construction exists to fix the true neutralisation\npoint: the crossing volume is where moles of acid = moles of alkali, which\nis why the HCl moles can be read off the KOH moles without knowing the acid\nconcentration in advance.\n:::\n\n:::exam-hint\nThis experiment is the richest mark-scheme target in the chapter. Know the\ngraph shape and its explanation (rises — exothermic neutralisation; falls —\ncold acid diluting warm mixture with nothing left to react), the\ntwo-best-fit-lines crossing construction, and the neat two-in-one finish:\n∆H = −55.4 kJ/mol **and** the acid concentration 1.79 mol/dm³ from the same\nrun. When asked why the temperature falls after neutralisation, the phrase\n\"no further reaction — only dilution with cold acid\" is the mark.\n:::\n\n:::misconception\n\"The maximum temperature must be at the largest volume of acid added.\"\nAfter the crossing point you are adding cold acid to a warm, spent mixture —\neach 5.00 cm³ portion drags the temperature down further. The peak sits at\nthe **neutralisation volume** (28.00 cm³ here), which is smaller than the\n50.00 cm³ delivered in total; that is the entire logic of finding the\ncrossing point.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.2 + 3.4 + 3.8 neutralisation-calorimetry items.\nSketch the temperature-versus-volume graph from memory with both best-fit\nlines, calculate n(KOH), and show how the unknown HCl concentration follows\nfrom the crossing volume. Check: n(KOH) = 0.0500 mol; if the crossing came\nat 25.00 cm³, the acid would be 2.00 mol/dm³.\n:::"
+  },
+  {
+   "id": "u3:c19:s16",
+   "title": "Why do reactions give out or absorb heat?",
+   "bookPage": 219,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf228_0875",
+    "chem_v3_u3_c19_pdf229_0876"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "endothermic",
+    "exothermic",
+    "activation-energy"
+   ],
+   "specRefs": [
+    "3.6C"
+   ],
+   "markdown": "During chemical reactions, bonds in the reactants have to be broken and new\nones formed to make the products. The whole energy story of every reaction\nrests on two facts:\n\n**Breaking bonds needs energy — endothermic.**\n**Making bonds releases energy — exothermic.**\n\nThink about hydrogen burning in oxygen to make water:\n\n2H₂(g) + O₂(g) → 2H₂O(l)\n\nEnergy has to be supplied to break the bonds in the hydrogen molecules and\nin the oxygen molecule. Energy is released when new bonds form between the\nhydrogen and oxygen atoms inside the water molecules. In this particular\nreaction the products are more stable than the reactants: the total energy\n**released** when the covalent bonds form in the water molecules is **more\nthan** the energy **required** to break the covalent bonds in the hydrogen\nand oxygen molecules. Released > absorbed, so the reaction is\n[[exothermic]] overall.\n\nHeating calcium carbonate runs the ledger the other way. Breaking up the\noriginal bonds in the compound **uses more energy** than is obtained when\nthe new ones are made: the reactants are more stable than the products, so\nwhen the reaction finishes more energy has been absorbed than released — an\n[[endothermic]] change.\n\nThis is also where the small starting push many reactions need comes from:\nenergy is required to begin breaking the reactant bonds even in a reaction\nthat releases heat overall (the quantity is called the [[activation-energy]]\nand this chapter's bond-energy arithmetic is what lets you account for it).\nBut the classification of a reaction depends only on the **balance**:\nabsorbed minus released.\n\n- released **>** absorbed → exothermic, ∆H negative, products more stable.\n- absorbed **>** released → endothermic, ∆H positive, products less stable.\n\n:::key-point\nThe sign of ∆H is decided by competition: energy in to break reactant bonds\nversus energy out from making product bonds. Whichever term is bigger wins\nthe sign — and the winner also decides which side of the energy level\ndiagram sits higher.\n:::\n\n:::exam-hint\n\"Explain, in terms of breaking and making bonds, why this reaction is\nexothermic\" has a three-part mark scheme: (1) bond breaking is endothermic /\nneeds energy, (2) bond making is exothermic / releases energy, (3) more\nenergy is released making the new bonds than is needed to break the original\nones. All three sentences, in that order. Omitting the comparison sentence\nis the most common way to drop the third mark — naming both processes is not\nthe same as comparing them.\n:::\n\n:::misconception\n\"Bonds are like springs — breaking them must release the stored energy.\"\nEveryday intuition says breaking things releases energy (snapping a stick,\nsmashing a plate), but chemical bonds work the opposite way: the bond is the\n*low-energy arrangement*, so pulling it apart **costs** energy, and forming\nit **pays** energy back. That inversion is the single most examined idea in\nthe chemistry-only half of this chapter.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.6C bond-breaking/making items. Write the two\nlaw-statements (breaking/making) from memory, apply them to explain why\nhydrogen burning is exothermic, and why calcium carbonate decomposition is\nendothermic — one sentence each with the comparison word *more* or *less*\nincluded.\n:::"
+  },
+  {
+   "id": "u3:c19:s17",
+   "title": "Bond energies",
+   "bookPage": 220,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf229_0877",
+    "chem_v3_u3_c19_pdf229_0878",
+    "chem_v3_u3_c19_pdf229_0879"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "bond-energy"
+   ],
+   "specRefs": [
+    "3.7C"
+   ],
+   "markdown": "Breaking chemical bonds requires energy, and the stronger the bond, the\nmore energy is needed to break it. The [[bond-energy]] is defined as **the\namount of energy needed to break 1 mole of covalent bonds in gaseous\nmolecules**, measured in kJ/mol. The same number works in reverse: the bond\nenergy is also the amount of energy released when 1 mole of those bonds\n**forms**.\n\nTwo examples anchor the idea. The Cl–Cl bond energy is **243 kJ/mol**: it\ntakes 243 kJ to break all the Cl–Cl bonds in 1 mole of chlorine gas,\nsplitting each molecule into two chlorine atoms — and if those atoms\nrecombine into their original molecules, exactly 243 kJ is released again.\nThe H–Cl bond energy is **432 kJ/mol**: if you see 2HCl(g) in an equation,\nit takes 2 × 432 kJ to break all the H–Cl bonds in the two moles of hydrogen\nchloride — or 2 × 432 kJ will be released when 2HCl(g) is formed from H and\nCl atoms. The coefficient in front multiplies the bond energy; that one\nsentence is the whole counting rule of the next section.\n\n| Bond | C–H | C–Cl | I–Cl | Cl–Cl | I–I | H–Cl | H–I |\n|---|---|---|---|---|---|---|---|\n| Bond energy / kJ/mol | 413 | 346 | 234 | 243 | 151 | 432 | 298 |\n\nSome bonds are much stronger than others. A striking comparison from the\ntable: the bond between iodine and hydrogen (298 kJ/mol) is about **twice as\nstrong** as the bond between two iodine atoms (151 kJ/mol).\n\nBond energies can be used to calculate how much heat will be absorbed or\nreleased during reactions of **covalent molecules**. If a reaction involves\nionic compounds, different energy terms are needed — beyond International\nGCSE. The method is an estimate by dismantling and rebuilding: calculate how\nmuch energy would be needed to break the reactants up into individual atoms,\nthen how much would be given out when those atoms recombine into the new\narrangements of the products.\n\n:::exam-hint\nBond-energy questions always supply the table — you never memorise values.\nWhat you must bring is the counting discipline: multiply each bond energy by\n**how many moles of that bond** appear in the balanced equation. The 1-mole\ndefinition is also a mark: writing \"energy to break a bond\" instead of\n\"energy to break **1 mole** of bonds in gaseous molecules\" loses the\ndefinition mark. Note the word *gaseous* — it constrains where the method is\nvalid (see the next section's worked example).\n:::\n\n:::misconception\n\"A bond energy of 432 kJ/mol for H–Cl means one HCl molecule needs 432 kJ\nto break.\" The value is per **mole** of bonds — one molecule needs 432 kJ\ndivided by the Avogadro number, an utterly tiny amount. All bond-energy\narithmetic runs in per-mole quantities multiplied by the\nequation's coefficients.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.7C bond-energy-definition items. State the\ndefinition of bond energy with its unit, interpret Cl–Cl = 243 kJ/mol in\nboth directions (breaking and forming), and calculate the energy to break\nall the bonds in 2 moles of HCl gas.\n:::"
+  },
+  {
+   "id": "u3:c19:s18",
+   "title": "Bond-energy calculations",
+   "bookPage": 221,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf230_0880",
+    "chem_v3_u3_c19_pdf230_0882",
+    "chem_v3_u3_c19_pdf230_0883",
+    "chem_v3_u3_c19_pdf231_0884",
+    "chem_v3_u3_c19_pdf231_0885",
+    "chem_v3_u3_c19_pdf231_0886"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "bond-energy",
+    "hesss-law"
+   ],
+   "specRefs": [
+    "3.7C"
+   ],
+   "markdown": "The calculation recipe has one sign rule and two sums. When energy is given\nout you show it with a **negative** sign; when energy is taken in, positive.\nThen:\n\n- **energy needed to break all the bonds in the reactants** — every term\n  positive;\n- **energy released when the new bonds are made in the products** — every\n  term negative;\n- **overall change = (energy in to break) + (energy out to make)** — a\n  positive total means the reaction is endothermic, a negative total\n  exothermic.\n\nA quick illustration of the rule: if breaking all the reactant bonds costs\n+1000 kJ and making the product bonds releases −1200 kJ, the overall change\nis +1000 + (−1200) = **−200 kJ** — the reaction releases 200 kJ of energy\noverall, so it is exothermic.\n\n:::worked-example\n**Methane reacts with chlorine in the presence of ultraviolet light to\nproduce chloromethane and hydrogen chloride.** You can imagine all the bonds\nbeing broken in the methane and chlorine, and then being reformed in new\nways in the products. Calculate the overall energy change.\n\nBonds that need to be broken (endothermic):\n\n| Bond | Count | Sum |\n|---|---|---|\n| 4 C–H | 4 × (+413) | +1652 kJ |\n| 1 Cl–Cl | 1 × (+243) | +243 kJ |\n| | **total in** | **+1895 kJ** |\n\nNew bonds made (exothermic):\n\n| Bond | Count | Sum |\n|---|---|---|\n| 3 C–H | 3 × (−413) | −1239 kJ |\n| 1 C–Cl | 1 × (−346) | −346 kJ |\n| 1 H–Cl | 1 × (−432) | −432 kJ |\n| | **total out** | **−2017 kJ** |\n\nMore energy is released when bonds are formed than is required to break\nthem, so the reaction releases energy overall: it is exothermic.\n\nOverall energy change = +1895 + (−2017) = **−122 kJ**\n\nThe negative sign of the answer shows that, overall, heat is given out as\nthe bonds rearrange.\n:::\n\nTwo honesty notes belong beside every bond-energy answer. First, [[bond-energy]]\ncalculations only ever give **estimates**: the strength of a bond varies\nslightly depending on what else is around it in the molecule, so quoted bond\nenergies are **average** values — good, but not perfect. Enthalpy changes\nmeasured by the calorimetry experiments of this chapter are more specific for\nparticular compounds. Second, the \"break everything, rebuild everything\"\nroute is an **imaginary** one — the real reaction does not actually happen\nby all the bonds being broken this way. That does not matter: the overall\namount of heat released or absorbed is the same however you do the reaction,\nas long as the reactants and products are the same. That fact is\n[[hesss-law]], which you will meet again if you take chemistry further.\n\n:::worked-example\n**Combustion of methane.** The equation is:\n\nCH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g)\n\n| Bond | C–H | O=O | C=O | O–H |\n|---|---|---|---|---|\n| Bond energy / kJ/mol | 413 | 498 | 743 | 464 |\n\nStart by drawing out the structures showing all the bonds, so the bond\ncounts are right: CH₄ holds 4 C–H; the two O₂ molecules hold 2 O=O\ndouble bonds (498 kJ/mol is the energy to break the **whole** double bond);\nCO₂ holds 2 C=O; the two H₂O molecules hold 4 O–H.\n\nBonds that need to be broken (endothermic):\n\n4 C–H = 4 × (+413) = +1652 kJ\n2 O=O = 2 × (+498) = +996 kJ\n**total in = +2648 kJ**\n\nNew bonds made (exothermic):\n\n2 C=O = 2 × (−743) = −1486 kJ\n4 O–H = 4 × (−464) = −1856 kJ\n**total out = −3342 kJ**\n\nEnthalpy change = +2648 + (−3342) = **−694 kJ/mol**\n\nMore energy is released when bonds are formed than is required to break\nthem: the reaction is exothermic. Energy is given out as the reactants are\nconverted to the products, so the products must have less energy than the\nreactants — the products are more stable, and an energy level diagram for\nthis reaction shows the products level sitting below the reactants level,\nwith a downward arrow and ∆H = −694 kJ/mol.\n\nThe reaction is written with H₂O(g) rather than H₂O(l) deliberately: bond\nenergies can only be used for **gaseous** molecules. Finding the enthalpy\nchange for the same reaction forming liquid water would need the energy\nreleased by H₂O(g) → H₂O(l) as well — beyond International GCSE.\n:::\n\n:::exam-hint\nPaper 2C marks these in four slots: correct bond **counts** from the drawn-out\nstructures (the balancing coefficients multiply the bonds — 2O₂ means 2\nO=O, and 2H₂O means 4 O–H), correct signs (+ in, − out), the addition to a\ntotal, and the exothermic/endothermic verdict tied to the sign. Draw the\nmolecules first: every miscounted bond in this question family traces back\nto skipping the structures. If an energy level diagram is required, the\nsign of your total dictates which level the products occupy.\n:::\n\n:::misconception\n\"O=O at 498 kJ/mol breaks into two O– bonds worth 249 kJ each, so count the\ndouble bond as two single bonds.\" The 498 kJ/mol is the energy to break the\n**whole double bond at once** — count one O=O per oxygen molecule. Bond\ntables list whole bonds (single or double as printed); inventing half-values\nor counting double bonds twice is the standard arithmetic corruption in this\nquestion.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.7C bond-energy-calculation items. Recalculate the\nmethane + chlorine example with the C–H value 410 kJ/mol: your totals are\n+1883 in and −2008 out, giving −125 kJ — confirm the sign does not change.\nThen state the two honesty notes (average values; imaginary route) in one\nsentence each.\n:::"
+  },
+  {
+   "id": "u3:c19:s19",
+   "title": "Looking ahead: entropy",
+   "bookPage": 223,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf232_0887",
+    "chem_v3_u3_c19_pdf232_0888"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "entropy",
+    "activation-energy"
+   ],
+   "specRefs": [
+    "3.1"
+   ],
+   "markdown": "Many reactions you meet at International GCSE are exothermic — combustion\nand neutralisation, for instance. Despite needing a small amount of energy\nto get started (the [[activation-energy]]), these reactions release heat\nenergy overall because the products are more stable than the reactants.\nEnthalpy is clearly a driving force: reactions that give out heat happen\nreadily.\n\nBut endothermic processes happen too. Dissolving ammonium nitrate in water\nlowers the temperature of the solution — yet it dissolves anyway, pulling\nheat out of its surroundings and still going. How? A second factor is at\nwork: [[entropy]].\n\nEntropy is a measure of **the number of ways of distributing the energy in\na system**. It is greater in a more disordered system, because the energy\ncan be dispersed more flexibly. The ordering runs solid → liquid → gas:\nsolids have lower entropy than liquids, and liquids lower entropy than\ngases — a gas's particles roam freely, so its energy has the most ways to\nbe shared out.\n\nIf the entropy of a system **increases** during a change, the change is more\nlikely to happen. When ammonium nitrate dissolves, although the process is\nendothermic, the NH₄⁺ and NO₃⁻ ions in the giant ionic lattice become\nseparated from each other and gain freedom of movement in the water — the\nentropy of the system increases enough to outweigh the enthalpy\nunfavourability. The same logic explains a kitchen classic: the reaction\nbetween baking soda and vinegar (an endothermic reaction that proceeds\nspontaneously, fizzing out carbon dioxide gas) — producing a gas increases\nthe entropy of the system, and the increase carries the change.\n\nYou do not need to calculate entropy at this level. What the examiners want\nis the concept: enthalpy is not the only driving force, and an increase in\ndisorder can power changes that absorb heat.\n\n:::exam-hint\nThis is enrichment, not a numbered specification point — but it earns\nextension credit and it future-proofs the explanation questions. If asked\n\"why does ammonium nitrate dissolve even though the process is endothermic?\",\nthe mature two-part answer is: the dissolving is endothermic, but the ions\nleaving the lattice for the solution increases the entropy of the system,\nand that increase outweighs the enthalpy change. The same pattern answers\nfor any spontaneous endothermic change that produces a gas.\n:::\n\n:::misconception\n\"Endothermic changes cannot happen by themselves because they need heat\npumped in.\" They cannot happen if enthalpy were the only driving force —\nbut disorder counts too. A change that absorbs heat can still run on its\nown when it increases the number of ways the system's energy can be\ndistributed: ammonium nitrate dissolving in cool water is the standard\nproof.\n:::\n\n:::quick-check\nQuestion-bank join: extension entropy items. Define entropy in one sentence,\norder the three states of matter by entropy, and explain in two sentences\nwhy ammonium nitrate dissolves in water even though the temperature drops.\n:::"
+  },
+  {
+   "id": "u3:c19:s20",
+   "title": "Chapter 19 questions",
+   "bookPage": 224,
+   "chunkRefs": [
+    "chem_v3_u3_c19_pdf233_0889",
+    "chem_v3_u3_c19_pdf233_0890",
+    "chem_v3_u3_c19_pdf233_0892",
+    "chem_v3_u3_c19_pdf233_0893",
+    "chem_v3_u3_c19_pdf234_0894",
+    "chem_v3_u3_c19_pdf234_0895",
+    "chem_v3_u3_c19_pdf234_0896",
+    "chem_v3_u3_c19_pdf234_0897",
+    "chem_v3_u3_c19_pdf234_0898",
+    "chem_v3_u3_c19_pdf234_0899"
+   ],
+   "blockIds": [],
+   "glossarySlugs": [
+    "exothermic",
+    "endothermic",
+    "enthalpy-change"
+   ],
+   "specRefs": [
+    "3.1",
+    "3.2",
+    "3.3",
+    "3.4",
+    "3.5C",
+    "3.6C",
+    "3.7C",
+    "3.8"
+   ],
+   "markdown": "You have the complete toolkit now: the exothermic/endothermic split, the\n∆H sign convention, the Q = mc∆T and ∆H = Q ÷ n pair, four calorimetry\nsetups with their assumptions and errors, and — for Paper 2C — energy level\ndiagrams and bond-energy arithmetic. The question bank for this chapter\njoins the platform by the specification points below, so every practice\nitem you are served targets exactly the skills these sections taught.\n\nBefore you open the question bank, audit yourself against the chapter's\ncore moves. Can you define both reaction types with the heat-flow direction?\nCan you run a five-step combustion calculation from a burner data table?\nCan you state the two solution-calorimetry assumptions and the two errors\nthat make combustion results less exothermic? On the Paper 2C track: can\nyou draw both energy level diagrams with every label, and run a bond-energy\nsum with correct counts and signs? Anything that wobbled is a section to\nrevisit, not a reason to start over.\n\n:::summary\n- **[[exothermic]]**: heat given out to the surroundings, temperature rises,\n  products have less chemical energy (more stable), ∆H negative. Families:\n  combustion, metal + acid, neutralisation, displacement.\n- **[[endothermic]]**: heat taken in from the surroundings, temperature\n  falls, products have more chemical energy (less stable), ∆H positive.\n  Example: thermal decomposition of carbonates — heating must continue\n  throughout. Not everything that needs a flame to start is endothermic.\n- **[[enthalpy-change]] ∆H**: heat taken in or given out per the equation's\n  amounts, read from the reactants' point of view, units kJ/mol; you can\n  only measure the change, never the absolute enthalpy.\n- **Q = mc∆T** converts a temperature change of a known mass (usually\n  water, c = 4.18 J/g/°C) into heat energy; ∆H = Q ÷ n converts it to a\n  per-mole value with the sign from the temperature trend.\n- **Calorimetry families**: combustion (spirit burner + copper can; lid,\n  shielding, stir), displacement (polystyrene cup; excess metal; divide by\n  the limiting reactant), dissolving (physical process; minimum\n  temperature; read the sign carefully), neutralisation (two best-fit\n  lines; crossing point = complete neutralisation; doubles as an unknown\n  concentration method).\n- **Evaluation**: combustion values come out less exothermic than data\n  books because of heat loss and incomplete combustion (yellow-orange\n  flame, soot); longer alcohol chains burn more exothermically, rising\n  regularly with each extra CH₂.\n- **Paper 2C**: energy level diagrams (label both axes; products' level\n  follows the sign of ∆H); bond-breaking endothermic, bond-making\n  exothermic; bond energies are per-mole averages for gaseous molecules —\n  count bonds from drawn-out structures, add +in and −out, and the total's\n  sign classifies the reaction.\n:::\n\n:::can-you\n- Define exothermic and endothermic reactions and give two balanced\n  equations for each?\n- Draw and label energy level diagrams for both types (Paper 2C)?\n- Calculate Q from mc∆T and quote it with the right sign and units?\n- Convert Q into a molar enthalpy change, dividing by the **limiting**\n  reactant's moles?\n- Describe all four calorimetry procedures with their key controls and\n  assumptions?\n- Explain why a combustion experiment under-reads, with evidence?\n- Calculate an overall enthalpy change from bond energies, including\n  double bonds and balancing coefficients (Paper 2C)?\n:::\n\n:::exam-hint\nPast-paper items for this chapter cluster into three question shapes: a\ncalculate-from-data Q = mc∆T / ∆H = Q ÷ n chain (always with a sign mark),\na describe-the-method-and-its-errors practical question (assumptions,\nimprovements, evidence of incomplete combustion), and the Paper 2C\ndiagram-plus-bond-energy pair. Practise all three shapes against the\nclock — and remember the chapter-wide discipline: sign first, then size.\n:::\n\n:::misconception\n\"Revising the formulas is enough for this chapter.\" The formula questions\nare the predictable half. The unpredictable half is the practical\nunderstanding — which mass goes into m, why the lid stays on the burner,\nwhy two lines of best fit, why the zinc is in excess. The examiner tests\nthe *why* behind every step; the sections in this chapter were written so\neach step's reason is one sentence you can quote.\n:::\n\n:::quick-check\nQuestion-bank join: spec 3.1–3.8 chapter assessment items. Work through the\ncan-you list honestly, marking each item secure or shaky, then take the\nplatform's spec-joined question set for 3.2–3.4 first (the calculation\nchain earns the most marks per minute of revision).\n:::"
+  }
+ ],
+ "status": "published",
+ "version": 1,
+ "sources": {
+  "bookOfRecord": "edexcel-international-gcse-9-1-chemistry-student-book-pdf-free.pdf (sha256 d48020e0cc0b5545b330bb59b242472198210e424525e4381cd5d2a58a58cc04)",
+  "parseOfRecord": "parsed/edexcel_igcse_chemistry_chunks_v3.jsonl (sha256 b2c67eafe4e3766bab41b41fc24795ca0fe95c1f5f55b8a3b3bffbc709af6d33)",
+  "blockPackReceipt": null
+ },
+ "lintPack": "chem@0.1.0"
+}

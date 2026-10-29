@@ -1,0 +1,195 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_QVmDs8X4szpds3cP",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "05be0967519c54da142622c2270c673422e3a07b0a733263823fef513a6f8b6b",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_QVmDs8X4szpds3cP",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "States of Matter",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-1-states-of-matter/1-1-5-practical-investigate-the-solubility-of-a-solid-in-water-at-a-specific-temperature",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.5C",
+        "text": "know what is meant by the term solubility in the units g per 100 g of solvent"
+      },
+      {
+        "code": "4CH1-1.7C",
+        "text": "practical: investigate the solubility of a solid in water at a specific temperature"
+      }
+    ],
+    "primer": {
+      "text": "You already know from States of Matter what a solution is, and from Solubility how it is measured in grams per 100 grams of solvent. This note makes that measurement hands-on: prepare a saturated solution at a fixed temperature, evaporate the water away, weigh the solid left behind, and calculate the solubility from the masses recorded.",
+      "prerequisiteSubtopic": "States of Matter"
+    },
+    "modules": [
+      {
+        "id": "rn_QVmDs8X4szpds3cP::L1",
+        "title": "Method",
+        "sourceHeadings": [
+          "Practical: Investigate the solubility of a solid in water at a specific temperature",
+          "Method"
+        ],
+        "specRefs": [
+          "4CH1-1.7C"
+        ],
+        "opening": "The aim is to find how much of a solid dissolves in water at one chosen temperature. Excess solid is stirred into warm water until no more will dissolve, the saturated solution cools to exactly 30 °C, and a portion of the clear liquid is weighed into an evaporating basin before all the water is evaporated away.",
+        "keyPoints": [
+          "The practical measures a solid's solubility at one chosen temperature.",
+          "Excess solid is added and stirred until some refuses to dissolve.",
+          "Leftover undissolved solid is the guarantee that the solution is saturated.",
+          "The saturated solution cools to the target temperature before any is poured off.",
+          "Only clear solution may enter the pre-weighed evaporating basin.",
+          "The basin is reheated, cooled and reweighed until two masses agree, confirming all water has gone."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Stir in more solid than the water can take, let it settle at the chosen temperature, pour off the clear liquid only, and weigh what remains once every trace of water is gone.",
+            "analogy": "It is like drying a wet cloth on a scale: keep weighing after more drying until the number stops changing, and that is the true dry mass.",
+            "examPointer": "The phrase to quote is heating to constant mass: reheat, cool, reweigh, repeat until two readings match."
+          },
+          "medium": {
+            "restatement": "Excess solid guarantees a saturated solution; cooling to the exact target temperature fixes the conditions; leaving the undissolved solid behind keeps the measured mass honest; and heating to constant mass proves every trace of water has been driven off before the final weighing.",
+            "analogy": "The wet-cloth picture carries over: repeated dry-and-weigh cycles until two consecutive readings agree, at which point any further heating would change nothing.",
+            "examPointer": "Method questions award marks for the guards: excess solid, no transferred crystals, the exact temperature, and constant mass; name all four."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_QVmDs8X4szpds3cP::L1::Q1",
+          "rn_QVmDs8X4szpds3cP::L1::Q2",
+          "rn_QVmDs8X4szpds3cP::L1::Q3",
+          "rn_QVmDs8X4szpds3cP::L1::Q4",
+          "rn_QVmDs8X4szpds3cP::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_QVmDs8X4szpds3cP::L2",
+        "title": "Results",
+        "sourceHeadings": [
+          "Results"
+        ],
+        "specRefs": [
+          "4CH1-1.5C",
+          "4CH1-1.7C"
+        ],
+        "opening": "The weighed results tell the whole story in three numbers: the solution poured in, the solid recovered, and therefore the water that carried it. From those, the solubility comes out in the standard unit, grams per 100 grams of water, and the solute's share of the solution can be stated as a percentage.",
+        "keyPoints": [
+          "Mass of solution is the filled basin minus the empty basin.",
+          "Mass of recovered solid is the dry basin minus the same empty basin.",
+          "Mass of water is the solution mass minus the solid mass.",
+          "Solubility is the solid mass scaled up to 100 grams of water.",
+          "The recorded data gives 32.0 grams per 100 grams of water at 30 °C.",
+          "Expressed as a share of the whole solution, the solute is 24.2 percent."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Subtract the empty basin's mass to get the solution mass, do the same for the dry solid, and the difference between those two is the water.",
+            "analogy": "Think of weighing a full lunchbox, then the food alone: subtract the box's own weight each time, and the masses of the contents appear on their own.",
+            "examPointer": "State the unit with the answer: grams per 100 grams of water at the stated temperature."
+          },
+          "medium": {
+            "restatement": "Two subtractions recover the solute and solution masses, their difference gives the water mass, and scaling the solute to 100 grams of water converts the data into a solubility value that can be compared across temperatures.",
+            "analogy": "The lunchbox subtraction still works, with one extra step: after finding the food and total contents, the packaging itself is what remains to be counted.",
+            "examPointer": "A follow-up part often asks for the solute's percentage of the solution; that divides by the solution mass, never by the water mass."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_QVmDs8X4szpds3cP::L2::Q1",
+          "rn_QVmDs8X4szpds3cP::L2::Q2",
+          "rn_QVmDs8X4szpds3cP::L2::Q3",
+          "rn_QVmDs8X4szpds3cP::L2::Q4",
+          "rn_QVmDs8X4szpds3cP::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "saturated solution",
+          "definition": "A solution holding as much dissolved solid as it can at that temperature.",
+          "firstLesson": 1
+        },
+        {
+          "term": "evaporating basin",
+          "definition": "A shallow dish in which small quantities of liquid are gently evaporated.",
+          "firstLesson": 1
+        },
+        {
+          "term": "heating to constant mass",
+          "definition": "Repeated reheating, cooling and reweighing until two consecutive masses agree, showing all water has gone.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solubility",
+          "definition": "The mass of a substance that dissolves in 100 grams of solvent at a given temperature.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solvent",
+          "definition": "The liquid, here water, that does the dissolving.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solute",
+          "definition": "The solid that dissolves; here copper(II) sulfate.",
+          "firstLesson": 1
+        },
+        {
+          "term": "percentage by mass",
+          "definition": "The solute's mass divided by the solution's mass, multiplied by 100.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A saturated copper(II) sulfate solution is prepared at 30 °C. The empty evaporating basin weighs 25.00 g, the basin plus saturated solution weighs 74.50 g, and the basin plus dry solid after heating to constant mass weighs 37.00 g. Find the solubility in grams per 100 grams of water, and the solute's percentage by mass of the solution.",
+        "steps": [
+          "Mass of solution: 74.50 - 25.00 = 49.50 g",
+          "Mass of dissolved solid: 37.00 - 25.00 = 12.00 g",
+          "Mass of water: 49.50 - 12.00 = 37.50 g",
+          "Solubility at 30 °C: 12.00 / 37.50 x 100 = 32.0 g per 100 g of water",
+          "Percentage by mass of solute: 12.00 / 49.50 x 100 = 24.2 %"
+        ],
+        "finalAnswer": "32.0 g per 100 g of water at 30 °C, with the solute making up 24.2 % of the solution by mass"
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/1aa2f3cc1462-23078-practical-investigate-the-solubility-of-a-.png",
+        "alt": "Practical: Investigate the Solubility of a Solid in Water at a Specific Temperature",
+        "sourceHeading": "Method",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
+  }
+}

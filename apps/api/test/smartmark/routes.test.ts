@@ -42,15 +42,25 @@ const ATTEMPT_UPDATE = /update attempts set marking_state = \? , marks_awarded =
 const TOPICS = /select node_id from question_topics where question_id = \?/;
 const FLIP = /update attempts set evidence_emitted = true where id = \? and evidence_emitted = false/;
 const VERSION = /select id from question_versions where question_id = \? order by version desc/;
-const VALIDATED_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+const VALIDATED_SCHEME = /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+// ruling A (trace 1a1776dff15bb991): the shared tail's fresh attempt reads
+const ATTEMPT_TOTAL_READ = /select coalesce\(sum\(marks_awarded\), 0\) as total from answers where attempt_id = \?/;
+const PENDING_READ = /select 1 from answers where attempt_id = \? and marking_state = \? limit 1/;
 const NEWEST_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? order by created_at desc/;
 const POINTS = /select id, ref, ordering, text, marks, question_part_id from mark_points where mark_scheme_id = \? order by ordering/;
-const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? order by computed_at desc/;
-const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? order by computed_at desc/;
+const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? and metric = \? order by computed_at desc/;
+const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? and metric = \? order by computed_at desc/;
 const RESULT_INSERT = /insert into smart_mark_results/;
 const RESULT_LATEST = /select id, answer_id, model_id, marks_awarded, confidence, validation_passed, breakdown, failure_reason from smart_mark_results where answer_id = \? order by created_at desc/;
 const ATTEMPT_SMART_UPDATE = /update attempts set marking_state = \? where id = \?/;
 const ATTEMPT_TOTAL_UPDATE = /update attempts set marks_awarded = \? where id = \?/;
+// DC-3 gate surface (migration 0008 baseline; the gate runs on every student pass)
+const DC3_ADVISORY = /select pg_advisory_xact_lock\(hashtextextended\(\s*\?\s*,\s*0\)\)/;
+const DC3_PRIOR = /select ans\.question_part_id, count\(e\.id\)::int as prior from answers ans left join ai_mark_events e on e\.learner_id = \? and e\.question_part_id = ans\.question_part_id where ans\.attempt_id = \? group by ans\.question_part_id/;
+const DC3_ENTITLEMENT = /select tier from mark_entitlements where learner_id = \?/;
+const DC3_POLICY = /select tier, re_marks_per_day as "reMarksPerDay", unlimited from mark_entitlement_policies where tier = \?/;
+const DC3_USED_TODAY = /select count\(\*\)::int as used from ai_mark_events where learner_id = \? and mark_ordinal >= 2 and created_at >= date_trunc\('day', now\(\) at time zone 'utc'\)/;
+const DC3_STAMP = /insert into ai_mark_events/;
 
 const ATTEMPT = { id: ATTEMPT_ID, learner_id: LEARNER_ID, question_id: QUESTION_ID, exam_paper_id: PAPER_ID, marking_state: "PENDING", evidence_emitted: false };
 
@@ -79,12 +89,23 @@ function baseRoutes(): Route[] {
         { id: POINT_A1, ref: "a(i)", ordering: 1, text: "states the mole ratio", marks: 2, question_part_id: PART_A },
         { id: POINT_A2, ref: "a(ii)", ordering: 2, text: "correct unit handling", marks: 1, question_part_id: PART_A },
       ] },
+    { match: DC3_ADVISORY, rows: [] },
+    { match: DC3_PRIOR, rows: [{ question_part_id: PART_A, prior: 0 }] },
+    { match: DC3_ENTITLEMENT, rows: [] },
+    { match: DC3_POLICY, rows: [
+        { tier: "free", reMarksPerDay: 0, unlimited: false },
+        { tier: "paid", reMarksPerDay: null, unlimited: true },
+      ] },
+    { match: DC3_USED_TODAY, rows: [{ used: 0 }] },
+    { match: DC3_STAMP, rows: [] },
     { match: KAPPA_ALL, rows: [] },
     { match: KAPPA_PAPER, rows: [{ passed: true }], rowsFor: (p) => (p[1] === PAPER_ID ? [{ passed: true }] : []) },
     { match: RESULT_INSERT, rows: [] },
     { match: RESULT_LATEST, rows: [{ id: "bb000000-0000-4000-8000-000000000001", answer_id: ANSWER_A, model_id: "glm-4.6", marks_awarded: 2, confidence: 0.9, validation_passed: true, breakdown: [], failure_reason: null }] },
     { match: ATTEMPT_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_TOTAL_UPDATE, rows: [] },
+    { match: ATTEMPT_TOTAL_READ, rows: [{ total: 0 }] },
+    { match: PENDING_READ, rows: [] },
   ];
 }
 

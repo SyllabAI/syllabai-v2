@@ -1,0 +1,44 @@
+{
+ "task": "R0-HUB-REDEPLOY-BAKE-1",
+ "run": "run-001-redeploy-verification-r0",
+ "operatorTrace": "1a187507672cf211",
+ "command": "hub redeploy bake",
+ "at": "2026-10-29T11:05:44Z",
+ "agent": "r0 (Super Z, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e)",
+ "adjudication": {
+  "topology_change_of_record": "syllabai-hub-v2 git-connected since link.createdAt=1792131227886 (2026-10-16), productionBranch=main; every main push auto-bakes production (supersedes the run-006 manual-bake posture)",
+  "deployment_of_record": {
+   "dpl": "dpl_4KNgbHt7kUKqgHf5LE9QutvDCDDQ",
+   "target": "production",
+   "readyState": "READY",
+   "createdAt": "2026-10-29T10:52:30Z",
+   "githubCommitSha": "2559034bb9f75afc7246c24701ede13c8eb2d422",
+   "aliases": [
+    "syllabai-hub-v2.vercel.app",
+    "syllabai-hub-v2-syllab-ai.vercel.app",
+    "syllabai-hub-v2-git-main-syllab-ai.vercel.app"
+   ],
+   "commitMsg": "receipt(T-OEQ-MATHSB-SERVE-1) run-020: landing record"
+  },
+  "prior_dpl_same_day": {
+   "dpl": "dpl_EVQCG2vdQQzzqVTnSxvcxmoqqECv",
+   "createdAt": "2026-10-29T10:44:02Z",
+   "sha": "93990eb27edc55b1e0be88014440337b66da325c",
+   "note": "PR #443 merge auto-bake"
+  },
+  "main_tip_first_hand": "ls-remote read twice this run: 2559034bb9f75afc7246c24701ede13c8eb2d422 (== deployed sha)"
+ },
+ "verification_battery": {
+  "alias_http": "GET https://syllabai-hub-v2.vercel.app/ -> 200, x-vercel-cache HIT age 351-358s (fresh epoch)",
+  "served_bundle_probe": "scripts/probe-live-bundle.py: viewer route 200 fresh MISS, 21/21 assets fetched",
+  "s144_regression_guard": "gesturestart+gesturechange+gestureend+pan-x PRESENT in chunk 25nnl15pamlyd.js / css 3-tnmrsfcuhcs.css -> T-MIG-127 fix live, no regression",
+  "wire_smoke": "/login 200, /tutor 200, /teacher/marking 200",
+  "race_guard": "main tip unchanged 2559034b through run"
+ },
+ "verdict": "REDEPLOY BAKE ALREADY SATISFIED OF RECORD: prod alias serves a READY production build of the exact current main tip; lane discharged the command as the independent verification per the 099 law; ZERO duplicate production bake executed by this lane",
+ "disclosures": [
+  "zero deployments created; Vercel API used read-only (identity, project, deployments, alias attach)",
+  "no tokens printed or persisted; credentials consumed inside single combined invocations",
+  "posture note for future bake commands: git-connected auto-deploy era since 2026-10-16 \u2014 bake commands read as verify-first, manual bake only if prod stale/RED"
+ ]
+}

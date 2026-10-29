@@ -1,0 +1,50 @@
+{
+ "task": "T-SENECA-001 Task 45 widen-cie-r1 (post run-012 purge reconciliation)",
+ "generatedUtc": "2026-10-26T13:05:00Z",
+ "context": "The r0 widening (parallel lane, commit a7aad8e0, generatedUtc 2026-10-26T10:31:16Z) exported the 22 target bundles from PRE-purge W1 (fleet 162,271/262). run-012 (operator-approved, trace 1a178336c0685d05) then purged 650 off-subject pairings; 6 of them lived in 3 of the 22 target bundles, leaving the committed static exports stale vs the live warehouse. This r1 re-run re-exports the bundles from the CLEAN fleet.",
+ "generator": "scripts/seneca_widen_cie_r0.py (same script of record; baselines patched r0->r1: fleet 161_621/262, chemistry-cambridge-international-a-level 282, geography-cambridge-international-gcse-2027-exams 640, physics-cambridge-international-gcse-supplement 1218)",
+ "gates": {
+  "G0_dsn": "staged (.t1.env 0600, never echoed)",
+  "G1_pk": "(id, course_slug)",
+  "G2_fleet": "161621/262",
+  "G2_targets": "exact (22/22 at post-purge truth)",
+  "G3_pii": "clean across 15,548 resources (same phone law v3 + mirror-filename strip + RFC-2606 carve-out as r0)"
+ },
+ "delta_vs_r0": {
+  "bundles_rewritten": 22,
+  "resources_removed": 6,
+  "resources_added": 0,
+  "resources_modified_in_place": 0,
+  "removed_by_slug": {
+   "chemistry-cambridge-international-a-level": 2,
+   "geography-cambridge-international-gcse-2027-exams": 1,
+   "physics-cambridge-international-gcse-supplement": 3
+  },
+  "removed_ids_match_run012_purge_manifest": "6/6 exact (course_slug, id) pair match",
+  "registry_course_entries_updated": {
+   "cie-a-level-chemistry-25": "questions 80 -> 78",
+   "cie-igcse-geography-20": "questions 386 -> 385",
+   "cie-igcse-geography-25": "questions 386 -> 385",
+   "cie-igcse-physics-23": "supplement questions 919 -> 916"
+  },
+  "flags_delta": "none (idempotent sorted union; senecaStudentResourceHub stays 62 courses)",
+  "images_delta": "none (needed 1,885; 0 copied — all already committed at r0; blob-missing 0; missing-ref count unchanged at 509, decorative covers that 404 upstream per the Task 40/45 image law)"
+ },
+ "totals": {
+  "bundles": 22,
+  "resources": 15548,
+  "registry_total_courses": 62,
+  "flags_total_courses": 62
+ },
+ "verification": {
+  "method": "per-bundle id-set diff HEAD(ahead-of-commit) vs worktree after re-run; cross-check of every removed (course_slug, id) against probe-results/run011_offsubject_ids.json",
+  "result": "6 removed / 0 added / 0 in-place-modified; all 6 pairs present in the run-012 purge manifest"
+ },
+ "receipts_ported_from_r5": [
+  "run-011-family-sweep-262.json",
+  "run-011-offsubject-decision-matrix.md",
+  "run-011-offsubject-ids.json",
+  "run-012-offsubject-purge.json"
+ ],
+ "zero_db_writes": true
+}

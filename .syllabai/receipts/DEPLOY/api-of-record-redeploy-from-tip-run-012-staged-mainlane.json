@@ -1,0 +1,55 @@
+{
+  "card": "LEVER api-of-record redeploy from tip — STAGED AND PRE-CLEARED (boot-class gate PASS; DB-class gate legs BLOCKED on the session-absent Neon wire credential; deploy leg TOKEN-GATED — no VERCEL_PAT in this session) — the operator order 'pick up that deploy next' (trace 1a1615bd91730f99), the standing 'redeploy the api carrier' order class",
+  "receipt": "api-of-record-redeploy-from-tip-run-012-staged-mainlane",
+  "lane": "main (Z.ai main agent, zai-web session web-590847c1-cf63-4098-b0c8-a90085355429, chat 986f6715-e92f-43a2-a13a-818c0a1a7d17)",
+  "created_at_utc": "2026-10-22T02:20Z",
+  "operator_trace": "1a1615bd91730f99 'pick up that deploy next, but before that check the current state' — the deploy lever of record after T-TEACH-008 (PR #286) + CI-REPAIR (tail law) + PR #291 (LESSON wire) landed past the run-011 serve",
+  "state_check_of_record": {
+    "main_tip": "cd3be78404b32d83496eb26baff1e9533e54c2aa — CI verify success + hub success (2/2 check-runs, first-hand via API)",
+    "open_prs": "1 only — #285 (dc3, foreign lane, head CI red per the R0-AUTO sweep note; untouched)",
+    "plane_deltas_vs_serves": {
+      "carrier (apps/api+packages) 6404e6fa..cd3be78": "bundle-seed.ts +20-1 (CI-REPAIR TS4L trailing-variant tail admission) + contracts/books-lesson.ts +105 (PR #291) + contracts/index.ts +1 + 3 test files — REAL code delta, the run-001 content-equivalence doctrine FAILS -> redeploy is warranted, not prophylactic-only",
+      "hub (apps/hub) 2100e410..cd3be78": "2 content files only (wave-13/14 manifest+questions sync); APP-CODE delta ZERO; T-TEACH-008 (872f0a1b) is an ANCESTOR of the verified bake 2100e410 (API compare: merge_base=872f0a1b, behind 9) — the class-scoped test builder is ALREADY IN the verified hub serve; hub rides the git-integration auto-bake (platform law, run-005 note), no hub lever open"
+    }
+  },
+  "build_at_tip": [
+    "093 recipe verbatim via the workspace-retargeted recipe tool (.syllabai/receipts/T-MIG-093/tools/deploy_bundle_build.py copied to session scripts with REPO/STAGE constants retargeted ONLY; method untouched)",
+    "shim v2 worktree-only (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 concept YAMLs inlined byte-verbatim via concept-assets.gen.ts, explicit Node adapter entry), restored post-build, git-verified CLEAN tree (git status --porcelain empty)",
+    "asset SHAs == the 6 source pins EXACT (concepts 24fa91ac7149682b, edges 8a651dd9e60bfefa, practicals e53e5f87606a2b5a, relationships b3b7529222d77d80, spec_points b1fea69953205077, topics a7b14cbdd34bb9fe)",
+    "bundle: 347 modules / 3,297,951 bytes CJS; bun 1.3.14 — run-010 class was 346 / 3,296,029: the +1 module / +1,922 bytes IS the real code delta (books-lesson contract + tail law), the expected drift class"
+  ],
+  "localgate_boot_class_PASS": [
+    "staged bundle booted under a real Node http server (localgate-server.cjs harness identical to deploy-entry adapter), LOCAL-ONLY 44-byte JWT key (production secret law), DATABASE_URL attempted from the session env",
+    "leg 1 health 200 UP {groups:[liveness,readiness],status:UP} — the module-scope concept-graph singleton + requireHash byte-pin laws PROVEN by boot itself (any missing/mangled asset throws at module load)",
+    "leg 2 login-malformed 400 validation_failed 'password: must not be blank' (of-record EXACT)",
+    "leg 6 cla/ask unauth 401 (boot law)"
+  ],
+  "localgate_db_class_BLOCKED_disclosed": [
+    "DIAGNOSIS (not a bundle defect): the session env DATABASE_URL is the workspace SQLite default (file:/home/z/my-project/db/custom.db class) — the of-record Neon wire credential (run-010/011 held the ep-ancient-cake-a52e4kfd pooler string in their volatile env) is NOT present in this session; the bundle's pg driver cannot serve a file: URL -> every DB-reading leg 500s (register, books trio, tutor, ratings)",
+    "CORROBORATION the bundle is sound: the SAME legs pass against the LIVE carrier's Neon in the pre-deploy snapshot below (register 201, me/state 200, 095 discriminator EXACT) — the 500 signature is wire-absence, not code",
+    "workspace .env searched: only the same SQLite default; no Neon string recoverable lane-side (the Neon API is NEON_PAT-gated; none in session)",
+    "DISCHARGE PATH: one volatile-env export of the Neon pooler DATABASE_URL + re-run scripts/localgate_r012.py (the 17-check gate of record, saved at the session scripts dir) — zero disk writes of the credential, the law holds"
+  ],
+  "pre_deploy_live_snapshot_15_15_GREEN": [
+    "the gap run-010 disclosed (alias-holder state unreadable without VERCEL_PAT) is here CLOSED at the behavior plane: the LIVE carrier probed directly (read-only + ONE register-only synthetic probe learner, the of-record census class)",
+    "L1 health 200 UP; L2 shelf 200 1/1 (igcse-chemistry-19); L3 chapters 200 29/29 WITH specScoreNulls=11 SERVED (the T-BOOK-025 fix still live); L4 glossary 200 112/112; L5 blocks 200 7 (u1:c1); L6 login parity 400 EXACT; L7 cla/ask 401; L8 CORS preflight 204 + ACAO EXACT https://syllabai-hub-v2.vercel.app; L9 hostile origin 403 no-ACAO (Task-17 prune holding); L10 register 201 (census-run012-pre-1792635600@example.invalid, register-only); L11 learners/me/state 200; L12 095 discriminator 400 'cardId: card id must be the hub content id' (run-002 census message EXACT)",
+    "L13 hub-v2 /api/health 200 {status:ok,service:syllabai-hub,dataMode:core-api,coreConfigured:true} — probed at the hub domain of record (a first probe-target script error hit the carrier domain by mistake, corrected of record, re-run 200)",
+    "VERDICT: the run-011 bundle (6404e6fa-equivalent, syllabai-v2-fmnc0xe1b class) still serves GREEN on the public wire — a clean rollback baseline and a clean pre-deploy baseline"
+  ],
+  "stage_shape": {
+    "dir": "/home/z/my-project/api-stage (workspace topology; of-record /tmp class)",
+    "files": [
+      "api/index.js (3,297,951 bytes CJS, the staged bundle at tip cd3be78)",
+      "vercel.json (rewrites /api/v1/(.*) -> /api/index + /actuator/health -> /api/index)",
+      ".vercel/project.json {projectId prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ, orgId team_ULL54qkhzKBmnKrpO6BD4mYX}"
+    ]
+  },
+  "deploy_leg": {
+    "status": "TOKEN-GATED — ONE COMMAND once a token-bearing lane/operator acts (the run-010 -> run-011 staged-handoff precedent)",
+    "command_of_record": "cd /home/z/my-project/api-stage && vercel deploy --prod --yes --token <VERCEL_PAT>",
+    "post_deploy_battery_of_record": "the 15-leg snapshot re-run (scripts/live_snapshot_r012_pre.py is the reusable harness) + the boot-class localgate legs; expect ZERO wire-visible behavior change (the delta is the tail-law admission + compile-time contracts — both verified by the verify lane) — the act is CURRENCY (carrier back at tip class), not incident-driven",
+    "rollback_anchor_of_record": "the current alias holder (run-011's syllabai-v2-fmnc0xe1b class), verified serving 15/15 in the pre-deploy snapshot above; re-aliasable via dashboard/CLI"
+  },
+  "write_ledger": "prod Neon: 1 synthetic probe learner (register-only, census-run012-pre-*@example.invalid, the of-record census class) + ZERO tutor writes; ZERO DDL; ZERO env writes; ZERO deployments; ZERO secret material printed/logged/committed (the workspace SQLite URL was shape-inspected host-only, never printed in full; no Neon credential exists in this session to leak)",
+  "verdict": "STAGED AND PRE-CLEARED (boot-class) — the staged bundle at main tip cd3be78 is deploy-ready (6/6 asset pins, clean tree, boot laws proven, pre-deploy live baseline 15/15); the DB-class gate legs await ONE volatile Neon DATABASE_URL export and the deploy leg awaits ONE VERCEL_PAT — the same two-credential handoff class run-010 -> run-011 discharged"
+}

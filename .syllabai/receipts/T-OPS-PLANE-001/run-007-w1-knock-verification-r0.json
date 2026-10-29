@@ -1,0 +1,30 @@
+{
+  "run": "run-007",
+  "task": "T-OPS-PLANE-001",
+  "at": "2026-10-24T07:43:25Z",
+  "operator_order": "W1 pooler URL knock (IM trace 1a16cccfe17ba159) + PAT re-knock (IM trace 1a16cd9e87535909) after this session's sandbox recycle",
+  "kind": "independent post-cut-over verification (knock receipt) — READ-ONLY probes only; zero writes, zero DDL, zero main contact",
+  "credentials_note": "sandbox was recycled again between turns (clone + /tmp tokens wiped); re-established from the operator's fresh PAT (chat-transited; rotation list unchanged, now five families chat-transited) + the W1 pooler URL knock. URL stored volatile-only at 0600 /tmp/wh_url, never echoed, never committed. Probe scripts persisted sandbox-side at scripts/wh_probe*.py (project workspace, not the fleet repo).",
+  "verification": {
+    "identity": "PASS — Neon project flat-leaf-09845356, Postgres 18.6 (fd34222), endpoint ep-calm-queen-az36lppq-pooler.c-3.ap-southeast-1.aws.neon.tech == the W1 endpoint of record; channel_binding=require honored by libpq",
+    "template_law": "PASS — wh-v1 frozen template intact: pgvector 0.8.6 present; HNSW ix_warehouse_chunks_embedding live; template tables warehouse_chunks + warehouse_meta only; wh-v1 byte-untouched by any wh-v2 fragment (zero seneca-like tables — discriminator holds)",
+    "meta_of_record": "PASS — warehouse_meta: template_version=wh-v1, course_group=maths-4ma1, subject_id=763dfe2d-d2b5-48fb-ba4c-2f708c637b26 (== run-006 registry_row_of_record), source_fingerprint=plane:88706faabc86b92c2ef7519736516a5ae63bb19120de8b7dd88b26738d7a957a (== run-003/run-006 id-hash 88706faa…), migrated_at=2026-10-23T18:44:28.832Z",
+    "census_parity": "PASS — warehouse_chunks 8,202 rows == run-001 trim census EXACT == run-006 copy_count_parity; 330 distinct document_id; kind symmetry QUESTION_PAPER 2,734 / MARK_SCHEME 2,734 / EXTERNAL_QUESTIONS 2,734; token_estimate sum 2,400,494 (avg 293/chunk); series span JUN-2026 (645) back through the JAN-2020s (top-8 disclosed in worklog)",
+    "embed_coverage": "DISCLOSED — 6,872/8,202 embedded (gemini-embedding-001, dims 768 on every non-null); 1,330 NULL (16.2%) = the RPD-wall honest-skip class, NOT a schema/data fault; embed-completion pass owed (quota-gated). NOTE: Phase-D fold-in tranche 1 STARTED on main (f763cefe, receipt f763cefe lane) — embedding quota contention between the two lanes is LIVE and needs coordination at the next embed window",
+    "sci_chem_discriminator": "PASS — zero seneca-like tables, wh-v1 not wh-v2: W1 is NOT the ruled 4CH1 import home; main's remaining corpus plane (5,563 sci-chem rows per run-006 identity_untouched gate) untouched by this run"
+  },
+  "discrepancy_of_record": "the knock URL was W1 (wave-1 maths), while the pending 4CH1 seneca pack T1 (T-SENECA-001 run-004 rework — PR #316 MERGED 323d246, gates green) requires the SCI-CHEM warehouse (wh-v2 = frozen wh-v1 + scripts/provisioner/wh-v2-fragment-seneca-resources.sql) per the run-003 placement ruling (trace 1a16adad843081b1). Awaiting: the sci-chem pooler URL, or an explicit operator amendment word to place the pack elsewhere (amendment would need of-record group-map change).",
+  "residuals": [
+    "sci-chem warehouse URL awaited (console-side creation, W1 precedent; Neon API egress still DNS-blocked sandbox-side)",
+    "main DB access still stood down — this run made ZERO main contact; main URL needed only at the sci-chem T1 parity-migration step",
+    "embed remainder 1,330 rows on W1 (quota-gated; coordinate with Phase-D tranche schedule)",
+    "carried unchanged from run-006: Vercel Hobby cap (window ~20:37Z 2026-10-24; deploy stage was recycled with the old sandbox — re-fire needs the T-MIG-093 bundle rebuild from the fresh clone), CI->Neon DNS wall regression (4 consecutive neon-replay failures), hub build red (BUILD_UTILS_SPAWN_1), PAT rotation overdue"
+  ],
+  "artifacts": [
+    "scripts/wh_probe.py (identity/extensions/tables/indexes/seneca-discriminator)",
+    "scripts/wh_probe2.py (columns/meta rows/censuses/dims/time range)",
+    "scripts/wh_probe3.py (kind census/embed coverage/model/dims/token sum/series top-8)",
+    "local session worklog Task 25 (mirror of this receipt)"
+  ],
+  "push": "bookkeeping commit on main immediately after this file; see the .syllabai/worklog.md entry of the same date"
+}

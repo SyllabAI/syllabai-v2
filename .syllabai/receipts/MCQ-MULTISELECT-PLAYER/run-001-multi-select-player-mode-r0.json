@@ -1,0 +1,48 @@
+{
+  "schema": "syllabai.lane-receipt/1.0",
+  "lane": "MCQ-MULTISELECT-PLAYER",
+  "run": "run-001-multi-select-player-mode-r0",
+  "trace": "1a168b3dc7498b5d",
+  "operatorOrder": "Multi-select player mode (the multi-select player lane left registered by MB4-MS-FRESHPARSE run-002: 3 geography parts awaiting operator order)",
+  "date": "2026-10-23",
+  "scope": {
+    "course": "cie-igcse-geography-25",
+    "residualTarget": [
+      {"topic": "tourism", "question": "qstn_M46gFbph3SfmbFyC", "part": "qstnprt_CynRM8qyJh8JvtPD", "choices": 6, "correct": 2, "marks": 1, "key": "B+F all-or-nothing per solutionMd ('Both are needed for the mark')"},
+      {"topic": "fieldwork", "question": "qstn_nBmkvXgSh2wztPHb", "part": "qstnprt_wwyp5VXqrzDvTpHW", "choices": 7, "correct": 3, "marks": 3, "key": "3 true statements, 1 mark each ('Tick three answers')"},
+      {"topic": "graphical-skills", "question": "qstn_PFwgTc8pRGJmDKTS", "part": "qstnprt_nHgZVRw5HDbRS35f", "choices": 5, "correct": 2, "marks": 2, "key": "C and D, 1 mark each"}
+    ],
+    "classOfRecord": "E1_mcq_not_answerable / ambiguous_key(N_correct) under the exactly-one law — all 3 fully labeled + fully texted + solutionMd-attested sets, so the honest notice was FALSE advertising; the key was never missing",
+    "paths": [
+      "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx",
+      "apps/hub/scripts/audit_mcq_corpus_health.ts"
+    ],
+    "corpusEdits": "ZERO — the data already attests the multi keys; this is a player-law fix only"
+  },
+  "laws": {
+    "isMultiSelectKey": "every choice labeled AND >=2 isCorrect flags -> multi-select mode (new, player + audit lockstep)",
+    "hasAnswerKey": "extended exactly-one -> >=1 attested correct (drives autoMarked; all-MCQ multi questions now hide the self-score footer and record instantly)",
+    "hasUsableChoices": "UNCHANGED exactly-one + some labeled text (single-select keyed-text law untouched; attested multi keys classify as multi first and never reach the single paths or the legacy parser)",
+    "interaction": "checkbox-mode rows/letter-chips (role=checkbox aria-checked), toggle before submit, heading 'Choose N answers' (N = attested correct count, mirrors the papers' 'Tick THREE answers'), submit gated on exactly N ticks with a 'Select exactly N answers to submit.' helper",
+    "recording": "exact-set law: recordMcqAnswer stores the comma-joined sorted tick set in the EXISTING chosen:string field and the exact-set match as the boolean correct — zero progress-schema migration (labels never contain commas); assignments-tab/learner-state/kg-learner-state/next-best-actions read only subtopic/at/correct and are unaffected",
+    "feedback": "exact match -> 'Correct — well done.'; partial (k>0 ticks right) -> 'Partly correct — k of N ticks are right. The correct answers are …' (amber); none -> 'Not quite. The correct answers are …'; per-option post-submit marking unchanged (all isCorrect options go green incl. missed ones — teaching signal); Try again clears the multi set",
+    "coreBridge": "no core submit for multi — the 4CH1 attempt contract is single-option (geography has no coreJoin anyway; defensive guard of record)",
+    "restore": "a persisted multi answer restores as chosen.split(',') on mount; submitted=!!answer unchanged"
+  },
+  "validation": {
+    "auditLockstep": "audit_mcq_corpus_health.ts: isMultiSelectKey branch + census.mcq.multiSelect class + I2 narrowed to UNATTESTED (labels-missing) keys — census: mcq=8814 answerable=8814 NOT_ANSWERABLE=0 (was 3) multi_select=3 ambiguous=0 (was 3) structured_no_solution=2 (pre-existing igcse-chemistry-19, different lane) E1 DETAILS empty",
+    "lint": "eslint on question-player.tsx: 0 problems (audit script is eslint-ignored by config, bun-run census)",
+    "typecheck": "tsc --noEmit baseline-identical: 24 pre-existing errors all in unbuilt workspace packages (@syllabai/contracts, @syllabai/shared) — ZERO errors in the changed files (stash/pop diff = empty)",
+    "gates": "verify_corpus_23a PASSED + verify_flashcard_sync_courses PASSED + validate_cie_bundles PASSED (corpus untouched)"
+  },
+  "environment": {
+    "sandbox": "no wipe this lane; lane executed in one pass",
+    "base": "ff-only sync to origin/main bf41299b before work (11 sibling commits: T-BOOK-OPS f-0011 r1, NEON-DB-LOSS run-002 census, DATA-PLANE-PLACEMENT r0 law, t-mig-141 phase A)"
+  },
+  "residualRegister": [
+    "books-rail mcq-embed-block single-select law NOT extended — out of scope: the book wire never carries isCorrect (own data plane); revisit only if book embeds ever serve corpus multi keys",
+    "partial credit is NOT persisted: the boolean progress contract records exact-set match only; inline feedback reports partial ticks honestly ('k of N') but learner-state signals treat a partial as not-correct — disclosed, consistent with the tourism all-or-nothing mark law ('Both are needed for the mark')",
+    "PAT rotation OVERDUE (carried from MB4-MS-FRESHPARSE run-002 register)",
+    "igcse-chemistry-19 2 pre-existing E2 (different lane, out of scope)"
+  ]
+}

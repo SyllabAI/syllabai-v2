@@ -1,0 +1,186 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_vfmJxw4VQgXKzXF3",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "0a4ac2fc7b27f7b749defcb77a291793b0cd975e0e58d7d659f5a3444c61526c",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_vfmJxw4VQgXKzXF3",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Covalent Bonding",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-7-covalent-bonding/1-7-1-formation-of-covalent-bonds",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.44",
+        "text": "know that a covalent bond is formed between atoms by the sharing of a pair of electrons"
+      },
+      {
+        "code": "4CH1-1.45",
+        "text": "understand covalent bonds in terms of electrostatic attractions"
+      }
+    ],
+    "primer": {
+      "text": "From Ionic Bonding you already know that atoms can reach full outer shells by losing or gaining electrons. Non-metal atoms cannot hand electrons to one another, so this note shows the other route: sharing pairs of electrons, and the electrical attraction that makes each shared pair a strong bond.",
+      "prerequisiteSubtopic": "Ionic Bonding"
+    },
+    "modules": [
+      {
+        "id": "rn_vfmJxw4VQgXKzXF3::L1",
+        "title": "Formation of covalent bonds",
+        "sourceHeadings": [
+          "Formation of covalent bonds"
+        ],
+        "specRefs": [
+          "4CH1-1.44"
+        ],
+        "opening": "Non-metal atoms can reach a full outer shell without forming ions: they share pairs of electrons instead. Each shared pair is one covalent bond, and covalent bonds are very strong. Two chlorine atoms, for example, each supply one electron to a shared pair, and the shared electrons are then counted towards the outer shell of both atoms.",
+        "keyPoints": [
+          "Covalent bonds form when non-metal atoms share pairs of electrons to gain full outer shells.",
+          "Each shared pair of electrons is one covalent bond, and the bonds are very strong.",
+          "Shared electrons are called bonding electrons and always occur in pairs.",
+          "Outer electrons that take no part in the bond are called non-bonding electrons.",
+          "Covalently bonded substances are either simple molecular structures, like water, or giant covalent structures, like diamond."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Two non-metal atoms each put one electron into a shared pair, and the pair counts in both outer shells at once. That shared pair is the covalent bond, the bonds are strong, and any outer electrons left unshared are simply non-bonding.",
+            "analogy": "Two neighbours each contribute one brick to build a shared garden wall: the wall belongs to both properties at the same time, and neither owner could claim it alone.",
+            "examPointer": "Say shared, not transferred: writing that electrons are donated or gained in covalent bonding costs the mark that distinguishes it from ionic bonding."
+          },
+          "medium": {
+            "restatement": "A covalent bond is a shared electron pair contributed jointly by two non-metal atoms, with the pair occupying the outer shells of both atoms simultaneously. The bond is strong, the shared electrons are the bonding electrons, and the unshared outer electrons remain the non-bonding electrons of their own atoms.",
+            "analogy": "Picture two authors co-writing one paragraph that appears in both of their books: the same text serves both works, and neither book is complete on its own.",
+            "examPointer": "Classify substances by structure when asked: simple molecular examples include oxygen and water, while diamond and graphite are the giant covalent examples."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vfmJxw4VQgXKzXF3::L1::Q1",
+          "rn_vfmJxw4VQgXKzXF3::L1::Q2",
+          "rn_vfmJxw4VQgXKzXF3::L1::Q3",
+          "rn_vfmJxw4VQgXKzXF3::L1::Q4",
+          "rn_vfmJxw4VQgXKzXF3::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_vfmJxw4VQgXKzXF3::L2",
+        "title": "Electrostatic attractions in covalent bonds",
+        "sourceHeadings": [
+          "Electrostatic attractions"
+        ],
+        "specRefs": [
+          "4CH1-1.45"
+        ],
+        "opening": "A covalent bond holds because of electrical attraction: the shared pair of electrons is negatively charged, and both atomic nuclei are positively charged, so each nucleus pulls on the same pair. The bond is drawn as a short straight line between the two atoms, and the sharing lets each atom sit in a noble-gas-like arrangement that is more stable.",
+        "keyPoints": [
+          "The shared pair of electrons and both nuclei pull on each other with strong electrostatic attraction.",
+          "The electrons in the pair carry a negative charge, and each nucleus carries a positive one, so attraction follows.",
+          "A covalent bond is drawn as a short straight line between the two atoms, such as H-H.",
+          "The shared electrons are best regarded as charge clouds in constant motion, not as points fixed in place.",
+          "Sharing lets each atom reach an arrangement similar to a noble gas, which makes each atom more stable."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Both nuclei pull positively on the same negatively charged shared pair, and that double pull is the glue of the bond. Draw the bond as a line between the atoms, and remember the shared electrons move constantly rather than sitting still.",
+            "analogy": "Two friends each holding one handle of the same shopping bag: the bag stays between them because both are gripping it, just as both nuclei grip the shared pair.",
+            "examPointer": "When asked to explain the bond in terms of attraction, name both parties: the shared pair and the nuclei; omitting the nuclei loses the electrostatic link."
+          },
+          "medium": {
+            "restatement": "The bond's strength comes from electrostatics: the negatively charged shared pair sits between two positively charged nuclei, and each nucleus attracts the pair. The electrons form moving charge clouds rather than fixed positions, and the shared arrangement gives each atom a noble-gas-like outer-shell pattern with greater stability.",
+            "analogy": "Picture a tug-of-war rope gripped by both teams at once: the rope is held taut precisely because two sides pull on the same object, which is the shared pair here.",
+            "examPointer": "Use the phrase electrostatic attraction between the shared pair and the nuclei; answers that stop at sharing without the attraction rarely reach the explanation mark."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_vfmJxw4VQgXKzXF3::L2::Q1",
+          "rn_vfmJxw4VQgXKzXF3::L2::Q2",
+          "rn_vfmJxw4VQgXKzXF3::L2::Q3",
+          "rn_vfmJxw4VQgXKzXF3::L2::Q4",
+          "rn_vfmJxw4VQgXKzXF3::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "covalent bond",
+          "definition": "A bond formed between two atoms that share a pair of electrons.",
+          "firstLesson": 1
+        },
+        {
+          "term": "bonding electrons",
+          "definition": "The shared electrons that make up a covalent bond; they occur in pairs.",
+          "firstLesson": 1
+        },
+        {
+          "term": "non-bonding electrons",
+          "definition": "Outer-shell electrons that take no part in any covalent bond and stay with their own atom.",
+          "firstLesson": 1
+        },
+        {
+          "term": "nucleus",
+          "definition": "The positively charged centre of an atom, which attracts the shared electron pair.",
+          "firstLesson": 2
+        },
+        {
+          "term": "charge cloud",
+          "definition": "The moving region of space in which shared electrons are best described as sitting, rather than a fixed point.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Two chlorine atoms form a molecule of Cl2. a) Describe how the covalent bond forms, stating what each atom contributes. b) Explain why the bond is strong in terms of electrostatic attraction. c) State how the bond is shown in a displayed formula.",
+        "steps": [
+          "a) Each chlorine atom contributes one electron to a shared pair; the pair counts towards the outer shell of both atoms, so each reaches a full outer shell without forming ions.",
+          "b) The shared pair of electrons is negatively charged and the two nuclei are positively charged, so strong electrostatic attraction acts between the shared pair and each nucleus and holds the atoms together.",
+          "c) A single covalent bond is drawn as a short straight line between the two atoms: Cl-Cl."
+        ],
+        "finalAnswer": "a) Each atom shares one electron — one shared pair forms the bond. b) Electrostatic attraction between the shared pair and both nuclei. c) A short straight line: Cl-Cl."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/579fbbeed97a-covalent-bonding-in-non-metals.png",
+        "alt": "Covalent bonding in non-metals, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Covalent bonding",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/fb1ccc341e28-4-1-4-hydrogen-molecular-orbital.png",
+        "alt": "Hydrogen molecular orbital, downloadable IB Chemistry revision notes",
+        "sourceHeading": "Electrostatic attractions",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
+  }
+}

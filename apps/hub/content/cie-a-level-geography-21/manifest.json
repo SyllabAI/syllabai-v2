@@ -1,0 +1,35 @@
+{
+  "schema": "syllabai-demo.content-bundle/2.0",
+  "generatedUtc": "2026-10-29T00:00:00Z",
+  "importSource": {
+    "repo": "SyllabAI/syllabai-resources",
+    "ref": "main@a0b10aac9e6ba66fba398c2e9a8d009c54092bee",
+    "upstreamSchemas": [
+      "syllabai.parsed-specification/1.0"
+    ]
+  },
+  "curriculum": {
+    "board": "Cambridge International",
+    "level": "A-LEVEL",
+    "subject": "Geography",
+    "code": "9696",
+    "syllabusVersion": "2025-2026"
+  },
+  "license": "Official exam-board specification statements (parsed from the official syllabus PDF, syllabai-resources Official-Specifications plane). No third-party teaching content is bundled yet (honest skeleton — notes/questions/flashcards arrive with the resource wave).",
+  "counts": {
+    "sections": 14,
+    "topics": 56,
+    "specPoints": 167,
+    "notes": 0,
+    "questionSets": 0,
+    "questions": 0,
+    "parts": 0,
+    "marks": 0,
+    "flashcards": 0
+  },
+  "treeKind": "official-spine",
+  "officialSpine": {
+    "spine": "spines/cie-a-level-geography-21.json",
+    "resourcesSha": "a0b10aac9e6ba66fba398c2e9a8d009c54092bee"
+  }
+}

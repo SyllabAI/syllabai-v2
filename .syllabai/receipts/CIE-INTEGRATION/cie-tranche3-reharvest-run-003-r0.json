@@ -1,0 +1,43 @@
+{
+ "receipt": "cie-tranche3-reharvest-run-003-r0",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T3-SME-COVERAGE-1 run-003 (+run-003b lineage restore)",
+ "operatorOrder": "tranche-3 re-harvest (trace 1a169db74ca578c9, 2026-10-23, zai-web)",
+ "agent": "main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+ "generatedUtc": "2026-10-23T19:40:00Z",
+ "resourcesShaFrom": "bcc36476c3ee207f8e7ea77904e490f6fdbc0cd6",
+ "resourcesShaTo": "3dd9bb982834743f0b8c81123c8f15003c74c06a",
+ "commits": [
+  {"sha": "79be11fd71de9a7e073ff470cb2ffeae5ba72dbe", "what": "run-003 corpus: SME notes re-harvest at the 2026-10-23 vintage (5 grown lanes)"},
+  {"sha": "600f0e45fa1c0cc38f90448de445aff9e569c398", "what": "run-003: spec_point_index re-derivation + ADDITIVE sidecar re-key + disclosure 2026-10-23-tranche3-reharvest.json"},
+  {"sha": "3dd9bb982834743f0b8c81123c8f15003c74c06a", "what": "run-003b: cross_lane_join lineage restoration on the 5 re-derived indexes (the of-record harvester doc_out predates the \u2460 round enrichment; blocks re-recorded at the run-003 vintage, resolved {} then and now)"}
+ ],
+ "pushes": "transit 37 (bcc36476..600f0e45) + transit 38 (600f0e45..3dd9bb98); pure FF both; fetch-first held (origin verified bcc36476 pre-push; three-way verified post-push: ls-remote 600f0e45 == GitHub API 600f0e45 == fresh fetch tree-delta zero)",
+ "sweep": {
+  "basis": "fleet-wide notes index-page census (run-002 A2 method, 44 lanes, pagination-none detected) UNION live sitemap; sitemap demonstrably LAGS the notes surface (econ-25's 84 new leaves absent from the sitemap) — disclosed; committed-missing-from-union = 0 on all 44 (discovery complete, fail-closed)",
+  "grown": {"cie-igcse-business-25": 65, "cie-igcse-economics-25": 84, "cie-igcse-economics-20": 17, "cie-a-level-computer-science-19": 9, "cie-igcse-english-literature-21": 6},
+  "grown_total": 181, "shrunk": 0
+ },
+ "reharvest": {
+  "tool": "scripts/sme_notes_scrape.py (of record), BASE-patched exactly-one-replacement to the lane worktree; discovery = the union cache",
+  "pages": {"cie-a-level-computer-science-19": "144/144", "cie-igcse-business-25": "85/85", "cie-igcse-economics-20": "79/79", "cie-igcse-economics-25": "92/92", "cie-igcse-english-literature-21": "173/173"},
+  "fetch_failures": 0, "pages_removed": 0,
+  "drift": {"cie-igcse-english-literature-21": "127 pages live-edited by SME on 2026-10-21 (updated_at bumps + heading-level edits; spec_point_ids unchanged) — applied per the vintage law, disclosed; other lanes 0 changed files"},
+  "registry": "top-level manifest.json + README.md patched additively over the merged 93-course dict (the sparse checkout does not materialize untouched courses; the naive write_registry() rebuild would drop rows — prevented); totals pages 8203 -> 8384, spec_point_links 14639 -> 15163"
+ },
+ "index_rederivation": {
+  "tool": "scripts/cie_spcpt_index_harvest.py (of record) at commit-1 HEAD; FIXED_STAMP -> 2026-10-23T18:00:00Z; 44-lane fail-closed battery (sidecar reconciliation) ALL GREEN; only the 5 lanes written",
+  "universe": {"cie-a-level-computer-science-19": "244 -> 282", "cie-igcse-business-25": "51 -> 276", "cie-igcse-economics-20": "126 -> 163", "cie-igcse-economics-25": "16 -> 212", "cie-igcse-english-literature-21": "686 -> 714"}
+ },
+ "sidecar_rekey": {
+  "law": "ADDITIVE ONLY — the join law of record (resolve_spcpt T1_verbatim/T2_near) applied to NEW universe sids exclusively; existing items/codes byte-stable except pending->codes moves (existing codes win by official_id); later-lane blocks preserved field-exact and self-checked (review_state incl verdict/complete, anchors.rejoin/.verdict/.tranche2, registry)",
+  "new_sids": 524, "joined": 156, "pending_refs_moved_to_codes": 232,
+  "per_lane": {"cie-a-level-computer-science-19": {"new": 38, "joined": 0}, "cie-igcse-business-25": {"new": 225, "joined": 50, "parts_touched": 158}, "cie-igcse-economics-20": {"new": 37, "joined": 3, "parts_touched": 16}, "cie-igcse-economics-25": {"new": 196, "joined": 103, "parts_touched": 26}, "cie-igcse-english-literature-21": {"new": 28, "joined": 0}}
+ },
+ "census_after": {
+  "class_b_dangling": "322 -> 61 (business-25 198->0, econ-25 43->0, econ-20 20->0; residual 61 all on lanes whose notes did not grow, identical to the before-state rows; cs-19's 1 dangling id not among its 9 new pages' definitions — honest residual, no guess)",
+  "class_a_no_declaration_parts": "1203 -> 1203 UNCHANGED (run-001 source-declaration-gap disposition stands)"
+ },
+ "hygiene": "scratch anonymous partial clone (blob:none + sparse) as the lane worktree; shared checkouts untouched; zero DB contact; zero LLM calls; PAT transit 37+38 on the standing fingerprint — rotation CRITICAL overdue (reported to operator pre-push per the law)",
+ "artifacts": "lane scripts + reports mirrored git-protected at .syllabai/lane-artifacts/T-RULE-T3-SME-COVERAGE-1/run-003-reharvest/"
+}

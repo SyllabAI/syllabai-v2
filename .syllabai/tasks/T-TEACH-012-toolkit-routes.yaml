@@ -3,7 +3,7 @@ task:
   id: T-TEACH-012
   title: "Toolkit API routes — generate/context/resources + quota + class feature gate + tests"
   owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
-  status: OPEN
+  status: DONE # run-001 (same session): routes/teaching-toolkit.ts self-contained (module+router per the fence) — generate/context/resources(+detail) wires, ownership ladder 404/403/409, ai_toolkit gate 403, quota 25/day atomic consume-before-spend 429+Retry-After, dead-chain 503 consumes nothing, prompt_versions templates + {token} interpolation, zod wall + structure laws + ONE self-heal retry (incl. bridge UNPARSEABLE/TRUNCATED), 502 + FAILED self-forensic rows, silent pins (subject/objectives/scores/persona); ratelimit llm-tier line + index.ts mount (OUT-OF-FENCE-flagged T-MIG-117 precedent); commits d80da5ce + rider; 24 route tests green, full suite 2552/0, typecheck 0 errors
   priority: P0
   band: T-TEACH
   wave: teach-toolkit-A

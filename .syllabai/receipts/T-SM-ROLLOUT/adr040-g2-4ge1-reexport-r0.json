@@ -1,0 +1,113 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-g2-4ge1-reexport-r0",
+ "date": "2026-10-26",
+ "session": "web-3bd4aa99-51b0-4bec-a362-f94adc40f19d",
+ "trace_id": "1a177aaf6b9e86c1",
+ "operator_order": "\"pick up that re-export lane next\" (trace 1a177aaf6b9e86c1) — the 4GE1 bundle-repair path pinned by adr040-bandwave1-g2kgseed-r0",
+ "adr_of_record": "docs/ADR-040-LEVELS_OF_RESPONSE_MARKING.md (ACCEPTED via #356, merge 1aec820)",
+ "defect_of_record": "PR #386 G-2 fail-closed refusal: the 4GE1 bundle's 202 SPEC_POINT codes carried the namespaced regime IGCSE_GEOGRAPHY:S<n>.<mmm> — outside every pinned spec-code shape; mapBundleNodes exit 1, zero writes",
+ "identity_analysis_of_record": "The S<n>.<mmm> statement regime IS the operator-validated official identity of record for this corpus (T-SPEC-7 / T-SPEC-10; spec_point_map.json + spec_point_resolution.json = AI_VALIDATED, 259/262 resolved, 3 meta-entries honestly unmapped, in syllabai-resources). The namespace prefix is presentation, not identity. The repair re-namespaces to the Edexcel self-namespace law of record (4CH1-1.1 precedent, bundle-seed.ts lane-C leg 4): IGCSE_GEOGRAPHY:X -> 4GE1-X.",
+ "reexport_pr": {
+  "pr": "SyllabAI/syllabai-v2#392",
+  "branch": "t-sm-rollout/4ge1-bundle-reexport-r0",
+  "commit": "4bd966acb",
+  "merge_commit": "1fb88efa03e197976a076c74ca98e5ceec7bcc6d",
+  "checks": "verify=success hub=success (mergeable_state clean)",
+  "files": "7 (curriculum/questions/notes/flashcards/manifest/concept-graph/learner-sim)",
+  "namespace_rewrites": {
+   "curriculum.json": 404,
+   "questions.json": 1732,
+   "notes.json": 458,
+   "flashcards.json": 2310,
+   "total": 4504
+  },
+  "verification_battery": [
+   "202/202 SPEC_POINT codes match ^4GE1-S[0-9X]+\\.[0-9]+$ and pass the seed numeric-start gate (simulated against the exact bundle-seed.ts law)",
+   "tree integrity: 243 nodes (1 SUBJECT + 9 TOPIC + 31 SUBTOPIC + 202 SPEC_POINT), 242 PART_OF edges, edge list mirrors parent chain 1:1",
+   "corpus join preserved: 13 distinct question-part codes + 17 note codes all resolve in the tree (883 parts stay placed)",
+   "SX bucket (3 topic-summary statements) retained verbatim, disclosed; corpus-unreferenced",
+   "content NOT re-derived from resources; importSource pin 08447ba9 unchanged"
+  ]
+ },
+ "seed_ceremony": {
+  "law": "the frozen T-MIG-134 ceremony per adr040-bandwave1-g2kgseed-r0 (census -> dry-run -> apply -> post-verify -> idempotence)",
+  "target": "production main of-record project ep-ancient-cake-a52e4kfd/neondb, pooled endpoint, inline env only",
+  "preflight_census": {
+   "knowledge_nodes": 10605,
+   "knowledge_edges": 10861,
+   "curriculum_versions": 45,
+   "questions_total": 24846,
+   "mark_schemes_total": 24824,
+   "mark_schemes_LEVELS": 0,
+   "mark_bands": 0,
+   "agreement_evals": 12,
+   "4GE1_nodes": 0,
+   "4GE1_versions": 0
+  },
+  "dry_run": "CLEAN — statement sequence executed clean; transaction rolled back; zero persistence",
+  "apply": {
+   "result": "APPLIED (ONE transaction)",
+   "version_of_record": "4GE1-2017 (Pearson Edexcel International GCSE (9-1) Geography, ACTIVE)",
+   "curriculumVersionId": "214cdc18-fd24-40c1-bfbd-931e29d85261",
+   "rootNodeId": "974077bc-7bfc-457f-8bca-9a4602ba735c",
+   "nodesCreated": 243,
+   "edgesCreated": 242,
+   "applicabilityWrites": 199
+  },
+  "postverify_census": {
+   "deltas_of_record": {
+    "knowledge_nodes": 243,
+    "knowledge_edges": 242,
+    "curriculum_versions": 1
+   },
+   "4GE1_by_type": {
+    "SPEC_POINT": 202,
+    "SUBJECT": 1,
+    "TOPIC": 31,
+    "UNIT": 9
+   },
+   "subjects_row_bound": [
+    [
+     "4GE1",
+     "Geography (4GE1)",
+     "974077bc-7bfc-457f-8bca-9a4602ba735c"
+    ]
+   ],
+   "edge_integrity": "every non-root 4GE1 node exactly one outgoing PART_OF edge (store direction law) — 0 violations; root carries 9 incoming child edges",
+   "tripwires_unchanged": {
+    "questions_total": 24846,
+    "mark_schemes_total": 24824,
+    "mark_schemes_LEVELS": 0,
+    "mark_bands": 0,
+    "agreement_evals": 12
+   }
+  },
+  "idempotence_of_record": {
+   "probe": "igcse-geography-19 re-apply (the 134a structural no-op law)",
+   "result": {
+    "nodesCreated": 0,
+    "nodesReused": 243,
+    "edgesCreated": 0,
+    "edgesReused": 242,
+    "applicabilityWrites": 0,
+    "alreadyActive": true
+   }
+  }
+ },
+ "gates_status": {
+  "G-2_kg_spine_seeding": "CLOSED 5/5 wave-1 courses (0455x2 / 4BS1 / 9609 / 4GE1: 845 nodes / 840 edges / 5 ACTIVE versions; idempotence verified on 4BS1 and 4GE1)",
+  "wave1_implication": "rootIdForCourseCode('4GE1') resolves; the 883-part 4GE1 corpus can bind the KG spine; band-shape design + G-4 LEVELS birth unblocked for the full wave-1 set"
+ },
+ "known_defects_disclosed_not_repaired": [
+  "SUBTOPIC display titles are truncated corpus fragments ('Description', 'A growing', ...) — display-quality lane, non-gating",
+  "corpus re-code granularity: whole topic question-sets map onto coarse page-context anchors (e.g. 9-1..9-3 -> S3.066) — mapping-granularity lane; the band gates ride the subject root, not per-topic binding"
+ ],
+ "security": "production-main write plane used: pooled owner credential via inline env (SEED_DATABASE_URL), never printed, never persisted; preflight/post-verify censuses ran READ ONLY sessions (BEGIN READ ONLY, always rolled back); flyway_schema_history untouched (seed writes data rows only)",
+ "next_lane": "band-shape design against the staged CIE + Edexcel band tables -> G-4 LEVELS birth; R4 validation; 4GE1 now joins 4BS1/9609/0455 in the wave-1 gate chain",
+ "cross_refs": [
+  "SyllabAI/syllabai-v2#392",
+  "SyllabAI/syllabai-v2#386",
+  "SyllabAI/syllabai-v2#276"
+ ]
+}

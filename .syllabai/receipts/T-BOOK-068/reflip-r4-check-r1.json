@@ -1,0 +1,52 @@
+{
+  "task": "T-BOOK-068",
+  "receipt": "glossary-reflip-r4-check-r1",
+  "date_utc": "2026-10-27T17:40Z-17:46Z",
+  "date_dhaka": "2026-10-28",
+  "trace": "1a17e7169e166db5",
+  "session": "web-c414c074 / chat 08b3170a",
+  "credential_hand": {
+    "received": ["GitHub PAT (verified login: SyllabAI)", "Vercel API token (identified: account syllabai-1403, team_ULL54...; NOT used for any write)", "Neon API key (UNUSABLE from sandbox: api.neon.tech DNS resolution fails; pooler direct connections do work)", "Neon MAIN pooler URL", "Neon W1 pooler URL"],
+    "law": "env-only injection, never persisted to any file, scrubbed from logs; rotation list unchanged (all chat-exposed)"
+  },
+  "authored_layer": {
+    "terms": 112,
+    "v_law_problems": 0,
+    "verified": "2026-10-28 first-hand via glossary-reflip-r4.mts --check (loadAuthored over books/4ch1/glossary, seed- excluded)"
+  },
+  "main_pooler_probe": {
+    "host": "ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech",
+    "command": "DATABASE_URL=<MAIN> bun apps/api/scripts/session/glossary-reflip-r4.mts --check",
+    "result": "CONNECTION REFUSED at the Neon proxy: 'Your account or project has exceeded the quota. Upgrade your plan to increase limits.'",
+    "reading": "proxy-level refusal -> affects ALL new connections to the project, including the production api; NOT a credential problem (the hand landed); flip NOT attempted, ZERO writes executed",
+    "controls_true": "authored 112/0 printed before the connection attempt; the script refuses non-Neon targets (guard intact)"
+  },
+  "w1_pooler_probe": {
+    "host": "ep-calm-queen-az36lppq-pooler.c-3.ap-southeast-1.aws.neon.tech",
+    "result": "connected; query failed: relation \"book_glossary_terms\" does not exist",
+    "reading": "W1 is warehouse-only (per DATA-PLANE-PLACEMENT.md); the book tables live on MAIN only -> the recipe's 'MAIN pooler' target is CONFIRMED as the only possible target; W1 correctly untouched"
+  },
+  "production_impact_first_hand": {
+    "api_of_record": "https://syllabai-v2.vercel.app",
+    "probes": {
+      "GET /api/v1/content/books?courseId=igcse-chemistry-19": "500 internal_error (2026-10-27T17:45:35Z)",
+      "GET /api/v1/content/books/glossary?subject=4ch1": "500 internal_error (2026-10-27T17:44:17Z)",
+      "GET /api/v1/content/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d": "500 internal_error (2026-10-27T17:44:17Z)",
+      "GET /api/v1/content/books (no courseId)": "400 validation_failed 'missing required parameter: courseId' — api PROCESS alive; failure is the DB plane",
+      "GET /api/v1/health": "401 Unauthorized — process alive"
+    },
+    "reading": "the books serving plane is DOWN production-wide while the quota refusal holds; identity/learner-model share MAIN (DATA-PLANE-PLACEMENT.md) so auth/progress degradation is expected too (not probed — no junk logins against production auth)"
+  },
+  "no_writes_executed": true,
+  "flip_status": "BLOCKED_ON_PLATFORM_QUOTA (task yaml updated on PR #409 branch)",
+  "unblock_options": [
+    "operator raises the Neon plan/compute limit on the MAIN project (Neon console; the control plane api is unreachable from this sandbox)",
+    "or wait for the monthly compute-hours reset",
+    "then re-run of record: DATABASE_URL=<MAIN> bun apps/api/scripts/session/glossary-reflip-r4.mts --check ; --commit ; --idempotence (all guards unchanged)"
+  ],
+  "related": {
+    "pr_of_record_t_book_067": "https://github.com/SyllabAI/syllabai-v2/pull/409",
+    "task_yaml": ".syllabai/tasks/T-BOOK-068-glossary-reflip-r4.yaml (BLOCKED_ON_PLATFORM_QUOTA; update rides PR #409)",
+    "prior_receipt": "reflip-r4-rebuild-r1.json (root cause of record: NEON-DB-LOSS restore predating the r3 flip)"
+  }
+}

@@ -1,0 +1,180 @@
+# PLAYBOOK — Content Quality Protocol (OEQ planes)
+
+> Self-improving agent playbook. Born from T-OEQ-MATHSB-SERVE-1 run-011 (deep-water
+> QA wave on the 4MB1 official-papers plane). Every future content-repair lane MUST
+> read this before touching plane JSON. Append new classes/lessons at the end; never
+> delete entries (the taxonomy is cumulative).
+
+## 1. The laws (non-negotiable)
+
+1. **NO-GUESS**: every text repair must be evidenced by the printed page of record
+   (QP/MS PDF from the `syllabai-pastpapers` mirror, rendered to PNG and READ).
+   Unreadable fragment → leave as-is + note. Wrong-but-plausible math is worse than
+   raw junk.
+2. **MARKS LAW**: `sum(question.totalMarks) == sum(part.marks)` fleet-wide (currently
+   6600 == 6600 over 2443 parts). Never change marks.
+3. **MARK-CODE LAW**: for solution/markPoints rebuilds, the `after` text must keep
+   every mark-code token the `before` text had (M1/A1/B1…). Rebuilds may RESTORE
+   codes lost to OCR garbling (each fix cites its printed-page evidence); they must
+   never LOSE one. Validator regex must handle glued tokens (`M1ft`, `B1for`,
+   `A1oe`): `\b(M[123]|A[123]|B[123])(?=ft|oe|for\b|award|allow|dep|if\b|[^a-z]|$)`.
+4. **NEVER-FABRICATE DIAGRAMS**: automatic matrix/figure reconstruction without
+   page evidence is forbidden. A wrong pmatrix is worse than flattened text.
+5. **FURNITURE**: cover-page blocks, "Turn over", barcodes (P60258A…), dotted-leader
+   junk rows, MS-table headers ("Question Working Answer Mark Notes"), page
+   footers/copyright lines never belong in question/MS text. Strip on sight.
+6. **CURRENCY $**: in OEQ planes `$` in text is ALWAYS money (math is Unicode or
+   explicit KaTeX). Escape as `\$` — remark-math pairs two same-line unescaped `$`
+   into a fake-math segment (24-part defect class killed in run-011). Genuine LaTeX
+   segments stay paired `$…$`.
+7. **Single-line compact JSON**: official-papers.json stays minified
+   (`separators=(',',':')`, ensure_ascii=False).
+8. **Honest flags**: machine-staged (not yet eyes-on-verified) crops carry
+   `review: true` in the asset. Eyes-on-verified → `review: false`.
+
+## 2. Defect taxonomy (as observed on 4MB1, October 2026)
+
+| Class | Signature | Remedy |
+|---|---|---|
+| cover-furniture | stem starts "Please check the examination details…", "Write your name here…", "Answer ALL…" | strip up to and including "You must write down all the stages in your working." |
+| OCR word-salad | interleaved two-column text, "Turnover >", barcodes, `cossssus…` dotted-junk, `MUA ACA AAA` tokens | eyes-on rebuild from printed page |
+| duplicate stem | whole stem block repeated (two-column OCR capture) | rebuild once from page |
+| matrixish flatten | `( −2 4 )` / `(8 3 )` — parens with ≥2 bare number tokens | KaTeX `\begin{pmatrix}` from printed page |
+| unit-sup loss | `m2`, `cm3`, `x2` where print shows superscript | Unicode ² ³ (or `$x^{n}$`) from page |
+| deg-q degree junk | `32q` for 32° inside figure-label lines | context-gated fix (algebra variables `2q`, `10q+p` are LEGIT — do not touch) |
+| currency pairing | two unescaped `$` on one line | escape all non-LaTeX `$` as `\$` |
+| c-junk | `©` used as mis-OCR token in MS text | eyes-on from MS page |
+| fraction flatten | `114 2 M1 × 4200 oe 360` (stacked fraction linearized) | rebuild inline `a/b` from page |
+| crop-required | asset `{kind:'crop-required'}` + "Figure not shown…" note | attach real crop (see §3) |
+
+## 3. Figure crop pipeline (proven run-011)
+
+1. Mirror: `https://raw.githubusercontent.com/SyllabAI/syllabai-pastpapers/main/past-papers/pearson-edexcel/international-gcse/mathematics-b/4mb1/past-papers/<series>/4MB1-<PAPER>/qp.pdf|ms.pdf` (paper slug UPPERCASE: `02R`, not `02r`).
+2. Page find: distinctive-word voting (10 longest normalized words, ≥50% hit), NOT prefix match — OCR interleave breaks prefixes.
+3. Question block: margin words (`x0 < 62`) equal to the question number; block = q-num y → next-q-num y.
+4. Crop: seed on the largest vector item in-block EXCLUDING page furniture (items with area > 45% of page = the answer-box border; margin ticks x<30 / corner ticks; full-width separators), grow union by 25pt proximity, pad 16pt x / 10pt y, clip to block ±40pt, render zoom 3.
+5. Assets live in `syllabai-resources` at `Official-ExamQuestion/igcse-maths-b-16/<series>/4MB1-<paper>/assets/asset_<q>_<mention>[-<occ>].png`, referenced from plane JSON with `rawUrl` on `main`.
+6. Reuse first: the SME plane (`questions.json`) carries 743 Tier-B-verified inline images — match by (series, paper, question-number parsed from the asset URL). 72/263 crop-required parts were satisfied by reuse alone.
+7. GATE: every crop rawUrl HEAD-200 (562/562 at run-011).
+
+## 4. Fleet protocol (multi-agent repair waves)
+
+- Slice worklists per agent (~20 eyes-on parts each); every slice item carries part id, current text, evidence image paths, reasons.
+- Agents write fix-proposal JSON ONLY (part/field/before/after/evidence/note); the main lane applies through the validator (§1 laws) — agents never edit plane JSON.
+- **Concurrency lesson (run-011)**: 8 parallel Task agents exceeded the gateway (context deadline exceeded ×3 rounds, even 2× and 1× during the outage). Fallback: main lane executes the priority classes serially with sampled verification, and the slices stay staged for fleet retry. Check fleet health with ONE cheap agent before committing to a wave.
+- **Script persistence lesson**: run-010's repair script was lost with its session (only the changelog survived). Every repair script now lives in `/home/z/my-project/scripts/` and is named per run (w1_apply.py, w2_salad_fixes.py, w3_apply.py, evidence_prep.py, deepwater_census.py, katex_gate.js, crop_url_gate.py).
+
+## 5. Gates (run these before any push)
+
+1. `scripts/deepwater_census.py` — structure (marks law), junk/furniture counters, unbalanced-$ census.
+2. `scripts/katex_gate.js` — every `$…$` segment parses (standalone katex install OK; hub node_modules may not exist in a fresh clone).
+3. `scripts/crop_url_gate.py` — all crop rawUrls 200.
+4. W2/W3 validators inside the apply scripts (mark-code law, PUA/FFFD scan).
+
+## 6. Open queue (as of run-011)
+
+- matrixish 78 hits / unit-sup 22 parts / c-junk 2 parts — slices `download/t-oeq-mathsb/deepwater/slices/w2-{A,B,C}.json` staged for fleet retry.
+- 64 crop-required parts without a figure yet (list in `worklists/w3-crops.json`, entries with `crop: null`) — auto-crop returned None (figure on adjacent page or raster-only); needs manual region or page-adjacent re-run.
+- 213 crop assets carry `review: true` (machine-staged) — consume via fleet verdict passes (`slices/w3-{1..5}.json` pattern: verdict PASS/FAIL + pageHint).
+- SME-bundle retirement decision still queued (operator card).
+
+## 7. run-012 additions (fleet-retry wave, October 2026)
+
+### New defect classes
+
+| Class | Signature | Remedy |
+|---|---|---|
+| part-label leak | `©` starting an MS row; whole foreign MS rows in a part tail ("Total N marks" + "Question Working Answer Mark Notes" + rows of another question) | circled part labels (Ⓒ) OCR to ©; strip leaked rows per printed page; when the rows belong to a sibling part, MOVE them home — mark codes preserved at QUESTION-level union |
+| sqrt-loss | bare digit pairs `( 6 5 )`, `( 3 81)`, `60π 15`, `10 3 − 6 5` — the radical/index glyph is what OCR lost, not the layout | rebuild from print: `(6√5)`, `(∛81)⁴`, `60π√15`, `10√3 − 6√5`; ∛ = U+221B, fractional indices in caret form `81^(4/3)` |
+| glued-exponent ambiguity | `×102`, `× 107` — reads as ×10² OR integer ×102 | NEVER deterministic; eyes-on only. Tier-D is SPACED exponents only (`× 10 8` has exactly one coherent reading) |
+
+### New laws / lessons (append-only)
+
+1. **Lost-census law**: never re-derive a dead census regex exactly. Recalibrate SLIGHTLY BROADER from the taxonomy, publish your law, let fleet verdicts disposition. Receipt numbers are anchors, not laws.
+2. **Tier law**: deterministic lanes require syntactically unambiguous signatures only. A `\s*` where `\s+` belongs turned run-012's first Tier-D pass into an overreach (glued exponents converted) — caught by re-census diff, plane rebuilt from backup. When in doubt: eyes-on.
+3. **In-repo persistence law** (upgrades §4 lesson): scripts/slices/manifests live in `.syllabai/lane-artifacts/<card>/<run>/` INSIDE the repo. `/home/z/my-project/scripts/` dies with workspace wipes (run-010 AND run-011 losses).
+4. **MS page-find recipe**: distinctive-word voting on solutionMd mis-lands (q17 → p3, q12 → p16). Reliable recipe: (a) direct search for a unique string from the part text; (b) token+qnum scoring (2pts/token hit, +1 qnum present), render TOP-2 candidates; (c) always verify the question number row is on the rendered page before reading fixes off it.
+5. **Adjacent-page crop law** (extends §3): when the voted page yields no vector seed, scan p+1, p+2, p−1, p−2 (whole-page vector census when the margin block find fails); sliver guard: grown union < 50×25pt ⇒ block-raster fallback of the question block; occurrence-indexed asset names for multi-asset parts.
+6. **URL-gate-before-attach**: crops produced without the resources push in the same run stay UNATTACHED — stage PNGs + push script, attach at the PAT-gated landing so §3.7's gate passes before the plane references them.
+
+### run-012 open queue (supersedes §6 partially)
+
+- matrixish remainder (~33 raw hits: 2022-06 01 q18/q23/q24/q26-a, 2023-01 01 q26-a/b, 2023-01 02 q2/q3, 2023-06 02R q11-a, 2025-06 02 q4-b, 2025-10 01 q15, 2025-11 02 q10) — slices persisted in-repo `lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-012/slices/`
+- glued-×10N unit-sup 16 parts — eyes-on queue
+- 64 run-012 crops staged (push+attach pending); 213 run-011 machine-staged crops review:true — verdict passes still queued
+
+### run-012 spot-check additions (live-player verification, October 2026)
+
+**Live-player verification of run-012** (receipt `run-012-spotcheck.json`): deployment currency proven (live /corpus plane byte-exact vs tip `d56a2fb95a1e617f`); all 43 text fixes render (19/19 presence probes, 5 pages browser-verified incl. KaTeX pmatrix product rendering as real bracketed matrices). Two actionable residuals found:
+
+7. **Attach render-completeness law**: a crop attach is complete only when ALL FOUR hold — (a) `assets[]` metadata updated (crop-required → crop + rawUrl), (b) inline `![…](rawUrl)` link injected into `problemMd`, (c) the `> *Figure not shown…*` note removed, (d) URL gate passed before all three. The player renders figures ONLY from inline problemMd links — `assets[]` is never rendered. run-012's attach (6ba0c467) did (a)+(d) only ⇒ **58/64 crops render-invisible** (the "Figure not shown" callout still shows).
+8. **markPoints mirror law**: every `solutionMd`/`problemMd` edit must mirror into `markPoints[].textMd` in the SAME edit. The player renders the mark-scheme block whenever `solutionMd ≠ markPoints[0].textMd` — so an unmirrored fix UN-HIDES the stale OCR beside the fixed answer (and keeps leak rows alive: the 17-b © row and the q19 furniture+Q20 rows render in the markPoints block on both the 2020-06 and 2020-11 twins; 25 stale mirrors censused).
+9. **Spot-check attribution law**: page-wide absence probes over-collect from sibling planes riding the same RSC payload (SME `questions.json` copy, markPoints mirrors, corpus blueprint data). Triage every stale hit to its source plane (official field vs markPoints vs SME copy) before judging a fix failed. The SME plane staleness is by-design for official-plane waves (exam-questions tree + DB re-ingest are separate lanes).
+10. **Furniture census gap**: truncated header variants (`Question Working Answer Notes Ma`, header-only fragments) render live but fall outside the 8 boilerplate classes — extend the census to header-prefix matching; new defect leads: 2024-06 02R q2-a/2-b foreign %-profit/chairs solution rows; 2019-06 02 4-e problemMd inverse-matrix junk.
+
+**run-012 spot-check open queue deltas**: + mirror-sync wave (25 markPoints mirrors), + inline-link injection wave (58 crops), + F4/F5 eyes-on leads; PAT rotation still pending.
+
+### run-013 additions (mirror-sync + inline-link waves, October 2026)
+
+**Both queued waves executed** (receipt `run-013-mirror-sync-inline-link.json`, PR #411 merged `7b0073e5`, plane `d56a2fb95a1e617f → 3bf89d920d1b6bb0`, live-verified same day):
+
+11. **Wave-census law (hits ≠ parts)**: a spot-check's stale-probe HITS page-wide are NOT the fix population. Derive the fix census from the diff (e.g. `solutionMd` changed in the wave AND `markPoints[0].textMd` untouched ⇒ mirror-sync part), then reconcile hits→parts explicitly in the receipt. run-013: 25 hits over 10 probed pids → rigorous 23-part census (16 byte-exact stale mirrors + 7 pre-existing divergences the wave re-exposed). Fixes: `textMd := solutionMd` byte-exact (mirror slot [0] only).
+12. **Flight-duplication probe law**: RSC page payloads embed the corpus plane data a CONSTANT 4× per page. Count probes must compare against 4× the plane count; a constant multiplier is duplication (mechanical), a VARIABLE one is leakage. Corollaries: flight strings escape `\n`/`\"` and chunk-split mid-string (strip chunk-boundary noise + backslashes before needle matching; for short mirrors `staleHit=False` on the pid window is the discriminating proof; for chunk-split long strings the `/corpus` byte-match carries the data-presence proof).
+
+**Queue after run-013**: mirror-sync wave DONE (23), inline-link wave DONE (58 crops / 56 parts, URL-gated, identical-byte twins deduped). Remaining: F4/F5 eyes-on leads; 213 run-011 machine-staged crops `review:true` verdict passes; PAT rotation still pending.
+
+### run-014 additions (F4/F5 eyes-on wave, October 2026)
+
+**F4 cluster (2024-06 02R q1/q2/q3) + F5 named leads closed** (receipt `run-014-f4-f5-eyes-on.json`, plane `3bf89d920d1b6bb0 -> f7f4add5161576a9`):
+
+13. **Misalignment-cluster law (upgrades §7 part-label leak)**: when leaked MS rows are found in a part, eyes-on the WHOLE cluster before editing — the leak's source part is usually a victim too (run-014: q1(a)/(b) rows bled into q2-a/2-b heads while q1-b/c/d served "not captured" placeholders, q1-a was truncated, q2-a had lost its printed M2 note row, q2-b its first main row, and q3's lead-in note had leaked into 2-b's tail). Fix = strip foreign + move home + complete truncations, ALL from the printed page. Placeholder parts ("official mark scheme line … not captured") adjacent to a leak are prime move-home victims — grep for the placeholder string when a cluster is suspected.
+14. **Paper-level code-union law (widens law 3's domain for move-home edits)**: when rows MOVE between sibling questions of the same paper, mark codes legitimately change question — the conservation gate is the PAPER-level union (codes move, never disappear). Same-question rebuilds keep the question-level gate (run-012 law).
+15. **Printed-shorthand law**: examiner shorthand that LOOKS like OCR junk may be genuinely printed ("cas 2.25 A1 oe", "cas for each part" — 2023-06/2024-06 MS print these in the Working column; eyes-on confirmed p18/p9). Never strip a token without page evidence just because it looks like garbage; conversely a fragment whose owner row exists elsewhere ("dy" = first token of the NEXT question's "dy/dx" row) is a leak, not shorthand — disposition: strip the fragment, queue the misaligned owner, never inject a lone fragment into a wrong solution.
+16. **Fleet furniture law (law 10 confirmed fleet-wide)**: the header-prefix census re-framed F5 from 8 named leads to 2230 hits / 641 parts / 58 papers (1149 table headers, 1027 "Total N marks" footers, 54 spare-grid instructions). MS page-bottom furniture is dropped AT SOURCE by converter v0.18.0 for converter-extracted planes (ADR-039 lineage, wave-25); hand-maintained planes need the deterministic strip wave with sampled page-evidence validation per paper (tier law) — worklist staged at `lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-014/f5-fleet-worklist.json` (run-015).
+17. **Disk-pressure law (lane operations)**: the sandbox overlay rootfs is ~9.9G with the base image consuming ~8G; lane artifacts (evidence renders, mirror PDFs, fetched pack corpora) silently fill it (two waves lost to ENOSPC mid-run). Working pattern: mirror PDFs are re-fetchable — delete bulk pdfs/ after page renders; git object stores can live on the PolarFS scratch via `.git/objects/info/alternates` (disclose in the worklog; session-scoped); never symlink (blocked by sandbox); stale build scratch (JDK tarballs, downloaded books) is the first thing to go.
+
+**Queue after run-014**: F5 fleet strip wave (2209 staged hits); 2021-06 02 q2 solution misalignment (new F4-class lead); 2024-06 02R q2-a problemMd tail junk; 213 review:true crop verdict passes; SME/DB re-ingest (F3, may fold ADR-039 §7.2 provenance regeneration); maths-b plane /0.2 provenance migration (operator-queued); PAT rotation STILL PENDING.
+
+### run-015 additions (F5 fleet strip wave, October 2026)
+
+**F5 fleet strip closed** (receipt `run-015-f5-fleet-strip.json`, plane `f7f4add5161576a9 -> eabd5ca8b643f93f`): 2168 whole-line furniture strips (1138 HEADER + 1018 TOTAL worklist hits + 12 supplemental capital-C `Cas Total N marks` case variants) over 615 parts / 55 papers, `markPoints[0].textMd := solutionMd` byte-exact on every solutionMd edit (179 stale mirrors re-synced, disclosed); census 66/1281/2443/6600 EXACT; post-strip furniture census HEADER/TOTAL/CAS-EACH/PMT == 0 fleet-wide; 53 SPARE-GRID hits correctly DEFERRED. Sampled page-evidence validation 103 + 5 pages rendered 150dpi and READ — 55/55 papers PASS.
+
+18. **Fleet-strip law (executes law 16's remedy safely)**: a deterministic whole-line strip wave needs ALL FOUR legs — (a) per-hit guards: exact content match at the recorded line index AND the line carries no mark-code token / no `$` / no PUA/FFFD/© AND matches a line-anchored boilerplate signature (fail-closed refuses otherwise); (b) sampled page-evidence per paper (tier law) BEFORE apply; (c) a post-strip re-census expecting ZERO — the re-census is not a formality, it is what surfaced the capital-C census gap; (d) mirror sync folded into the same edit. The two apply-battery refusals this run (mirror-overwrite modeling, 12 case-variant escapees) are the law working as designed — fix the model/evidence, never the gate.
+19. **Case-policy law (extends law 1 lost-census)**: every census regex must DECLARE its case policy and be recalibrated slightly broader across case variants (`(?:cas|Cas|CAS)` — run-014's case-sensitive `Total` regex let 12 capital-C `Cas Total N marks` lines escape the worklist; caught only by the post-strip re-census). Corollary: singular `Total N mark` variants are genuine footer forms (1-mark questions print singular; 2021-01 01R p7 shows a wrapped `Total 2 mark` + `s`).
+20. **Fused-line law (defer class)**: whole-line strip is safe ONLY for lines whose census match is line-anchored. Substring-signature classes (`spare grid`, `Do not write in this area`, PMT markers fused into flattened blocks) are NOT strip-able: run-015's 53 SPARE-GRID hits all sit inside single-line problemMd blocks that also carry genuine question text + printed matrix-formula boxes — disposition: eyes-on surgical rebuild from the QP page (the 2019-06 02 4-e run-014 precedent), staged as run-016 worklist.
+
+**Queue after run-015**: run-016 spare-grid fused-line rebuilds (53 parts, eyes-on, QP evidence); 2021-06 02 q2 misalignment; 2024-06 02R q2-a problemMd junk; displaced-sentence-head orphan census (post-strip residual, rare); 213 review:true crops; SME/DB re-ingest + /0.2 provenance migration (operator-queued); PAT rotation STILL PENDING.
+
+### run-016 additions (SPARE-GRID fused rebuild wave, October 2026)
+
+**53/53 fused problemMd blocks closed** (receipt `run-016-spare-grid-rebuilds.json`, plane `eabd5ca8b643f93f -> 5fc8abdba88325e8`): 39 strips + 14 evidence-verified rebuilds; 4 crop-required grids measured from the text layer, pushed to resources, URL-gated, attached; 8 formula boxes rebuilt as KaTeX; census 66/1281/2443/6600 EXACT; katex 117/117; URL gate 56/56.
+
+21. **Fused-rebuild law (executes law 20's remedy)**: a fused-block rebuild needs (a) printed-page evidence per part — text-layer verification for ALL parts plus vision reads for every ambiguous class (formula boxes, interleaved labels, zero-link parts, odd footers); (b) **part-boundary law**: lead-in rows printed between sub-part (n) and (n+1) belong to part (n)'s tail in this plane — check the sibling BEFORE restoring anything to (n+1) or the rebuild duplicates stems (13 sibling dumps checked this wave); (c) formula boxes rebuild as KaTeX with literal square brackets matching the print (`[The inverse of matrix $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is $\frac{1}{ad-bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$]`; `[Determinant of matrix $\begin{pmatrix} a & b \\ c & d \end{pmatrix} = ad-bc$]`; 2024-11 prints "Inverse" without "The" — quote the print, not the pattern); (d) strip footer variants wholesale — "Turn over for a spare grid…", "Turn to page N for a spare grid…", "A spare grid is on the next page…", "Only use this grid…" — plus stray fragments of NEIGHBOURING boxes fused into the stem (2025-06 02R 11-g carried "2a" off the quadratic-formula box).
+22. **Grid-crop measurement law**: never eyeball crop rects. pdftotext -bbox gives the outermost axis tick-label word rects; grid bbox = their union padded (this wave: l16/t12/r18/b4 pt at 200dpi), with a per-paper minus-glyph policy (U+2212 vs U+2013 both occur across 4MB1 papers) and post-crop white-out for header fragments caught at ROI edges; every crop is VIEWED before push. **Mis-crop repair class**: an existing link whose asset renders as a sliver/fragment (asset_8_8-d.png 281x832 = one grid column) is a BROKEN figure — measure + push a correct crop, replace the link, disclose the orphan (do not delete mid-wave).
+23. **Stub-to-crop law**: a `> *Figure not shown…*` stub whose printed figure is ESSENTIAL to the part (transformation/plotting grids are the canonical case) is crop-required — the full 4-leg attach law 7 applies to NEW crops too: crop + resources push + URL gate + inline link + REMOVE the stub note, one edit. The 3 zero-link stubs this wave (2020-06/2020-11 8-d, 2024-11 11-e) were unanswerable without their grids.
+
+**Queue after run-016**: 2021-06 02 q2 solution misalignment (F4-class full MS rebuild); 2024-06 02R q2-a problemMd junk (polygon-label interleave, needs its own crop decision); displaced-sentence-head orphan census; 213 review:true crop verdict passes; 2020-01 02R 11-e legacy link modernization; SME/DB re-ingest + /0.2 provenance migration (operator-queued); PAT rotation STILL PENDING.
+
+### run-017 tranche-2 additions (symbol-loss restoration wave, October 2026)
+
+**Whole-field census + 3-paper eyes-on wave closed** (receipt `run-017-symbol-restoration-tranche2.json`, plane `65cf3bb6ca1759ce -> a11ad0ccc1923806`): whole-field census of record 6,035 hits / 1,097 parts / 66 papers (5 declared classes); 53 fields restored across 2025-06 01 (q10/q16/q21/q22/q23-solutions/q26), 2026-06 01 q25 bearings (the order-24 lead), 2026-06 01R (q7/q17/q20/q23); katex 317/317; census 66/1281/2443/6600 EXACT; mirror law 17/17.
+
+24. **Whole-field census law (supersedes the line-context lower bound)**: S-class censuses scan WHOLE fields — per-line scans structurally miss cross-line token splits (`2\nx 2`) and undercount glued classes. Declare every class pattern separately (W spaced / XL crossline / X10 glued-×10N / GS glued-sup digit-runs / OA operator-adjacent); the raw census is a LEAD LIST, FP-dominated by design (legit `2 x 2` algebra, `2000`-class number runs, prose line-breaks) — severity-rank it (problemMd > solutionMd > markPoints, then per-paper part counts) and adjudicate eyes-on per tranche; never mechanically rewrite census hits.
+25. **Sibling-precedent law**: where the SME sibling plane already re-transcribed the same printed content eyes-on (UIUX-TIER-B runs 003–006), the official-plane rebuild mirrors the sibling's span shape and lineation VERBATIM for shared stems (2025-06 q10 D/E/F stem, q16 stems) — zero new judgment calls; the sibling's own residual damage does not transfer.
+26. **KaTeX-span law (extends tranche-1)**: plain `$...$` delimiters are the convention for new edits (run-012 live-verified; legacy `\$...\$` fields exist, do not imitate); quoted ft-tokens stay inside spans as literal quote chars (`$5^{"4"}$`, `$\left("255.207..."\right)^2$`); single-char superscripts may stay Unicode; multi-char exponents / fractions / roots / matrices must be KaTeX (`\begin{pmatrix}`); U+0307 combining dot is the recurring-decimal class (40-use precedent) — q22's `0.3̇ / 1.1̇` Allow lines restored with it.
+27. **AS-PRINTED errata law (extends the T-MIG-141 run-006 precedent)**: Pearson-internal inconsistencies are transcribed AS PRINTED and disclosed, never silently repaired — 01R q23 prints `eg (−√5, 5 − √500)` (sign inconsistent with its own answer) and `5 + 10√5 = −17.4`; q22 notes print `[x =] (−27 ± √(27² − 4×3×(−188)))/(2×3)` as a one-sign-error example; q20-a prints the loose-paren `−2³ + 7×−2²` Condone form. Zoom-crop evidence at 300dpi minimum for every transcribed inconsistency.
+28. **Cross-question leak class (extends law 13's cluster law)**: extractor grid-fusion leaks can cross QUESTION boundaries, not just part boundaries — 2025-06 q10-b carried the q9 MS row wholesale (`27 + 6 + 10`, `2580`, `360`, `1620` total-students content). Cite the leak source page (MS p10 vs p11) in the receipt; disposition stays strip-foreign + rebuild-from-print.
+
+**Queue after run-017 tranche-2**: tranche-3 eyes-on (2025-06 q6/q8-b/q11/q12; 01R q18/q19/q25/q27-b), fleet GS leads (Pythagoras `10002+20002` part, `cos −1 2×6×7` part), q23-a GFM table re-emit (renderer verification first), corpus questions.md regen + topic.json sync, 213 review:true crops, SME/DB re-ingest + /0.2 provenance migration (operator-queued), PAT rotation STILL PENDING.
+
+### run-017 tranche-3 additions (eyes-on wave + first official-plane GFM table, October 2026)
+
+**Tranche-3 closed** (receipt `run-017-symbol-restoration-tranche3.json`, plane `a11ad0ccc1923806 -> 6f481c68cd4f1231`): 19 edits = 9 solutionMd rebuilds (+9 markPoints[0] mirrors) + q23-a problemMd wage-table GFM re-emit; 2025-06 01 q6/q8-b/q11/q12 (MS p8/9/12/13) + 2026-06 01R q18/q19/q25/q27-a/q27-b (MS p20-22/23/32-34/36); katex 198/198 on edited fields; GFM render gate through the actual pipeline; census 66/1281/2443/6600 EXACT.
+
+29. **Renderer-verification-before-structure law (discharges the tranche-2 filed prerequisite)**: GFM-table re-emits in the official plane require a render gate through the ACTUAL pipeline shape (react-markdown + remark-gfm + rehype-raw + rehype-sanitize defaultSchema, `renderToStaticMarkup`) BEFORE apply. The gate caught a real defect pre-write: the first manifest put the table inline after the stem sentence ("…company. | Wage…") — a GFM table whose header row is not at line start does NOT parse (RED: table=false tr=0); fixed to a blank-line-delimited block (GREEN: table=true th=true tr=6). GFM blocks must start on a fresh line. Precedent: 2019-06-02R q7 (questions.json); q23-a is the FIRST official-plane GFM table of record.
+30. **Text-layer glyph-run law**: dot-runs in decimal approximations are transcribed from the PDF TEXT LAYER, not pixels — pixel zooms miscount dots; `8.2(35294.......)` = 7 dots and `−10.0(58823....)` = 4 dots per text layer on BOTH p33/p34. Pixels for structure, text layer for glyph-run counts.
+31. **Radicand nesting AS-PRINTED**: printed double-parens are transcribed verbatim, never normalized — q18 ALT1 quadratic formula prints `√(((2(cos20)² − 2))² − 4(cos20)²((cos20)² − 1))` over `2(cos20)²`; emitted as `\left(\left(2(\cos 20)^2 - 2\right)\right)^2`. Column vectors = `\begin{pmatrix}`; vector arrows = `\overrightarrow{}`; `⎡⎣` big-bracket artifacts = `\left[…\right]` (+ `\atop` for the two-line values bracket).
+32. **Printed-gap disclosure (extends law 27)**: 01R p34 ALT2 prints "allow ␣ to be any other letters throughout" with a MISSING symbol (Pearson print defect where λ/x-or-y should stand) — transcribe with the gap, disclose in the receipt. Also of record: q8-b "8 must be not be $2^3$" (Pearson word-order typo, kept), ALT1 evaluated-coefficients "0.88, 0.23. 0.12, 0.26, 0.13" (stray period kept).
+33. **MS footer-row fidelity**: rebuilt fields carry the printed footer rows (`cas`/`wr` + `Total N marks`) only where the printed page shows them for that row (q6/q8-b/q11/q12/q19/q25 yes; q18/q27 none printed; q22 tranche-2 precedent).
+
+**Queue after run-017 tranche-3**: fleet GS leads (Pythagoras `10002+20002` part, `cos −1 2×6×7` part — census artifact has pids), 213 review:true crops, corpus questions.md regen + topic.json sync for 2025-06/4MB1-01 + 2026-06/4MB1-01 + 2026-06/4MB1-01R (rides the NEXT converter run — the converter of record is the Official-ExamQuestions pipeline v0.17→v0.18 lineage; the corpus of record is NOT locally cloned), SME/DB re-ingest + /0.2 provenance migration (operator-queued), PAT rotation STILL PENDING (both exposed tokens: GitHub …JU4 / Vercel vcp_…aoT3).

@@ -1,0 +1,26 @@
+{
+ "run": "run-013",
+ "task": "T-OPS-PLANE-001",
+ "at": "2026-10-24T17:48:43Z sweep start (check) / filed same turn",
+ "operator_order": "Proceed (IM trace 1a16f061f806ae29) continuing the Check-current-state sweep (trace 1a16eb9171d7128d, Task 28)",
+ "environment": "sandbox SURVIVED this turn (no recycle); /tmp creds 0600 intact; gh CLI absent -> GitHub REST via curl; stored PAT auth 200",
+ "checks": {
+  "w1_delta_vs_task28": "ZERO \u2014 meta/census identical (8,202 chunks / 330 docs / 3x2,734 kinds), embeds 6,872 + 1,330 NULL unchanged, max embedded_at 2026-10-23T12:48:28 (no embed progress), zero seneca/wh-v2 tables; READ-ONLY probes only",
+  "main_movement": "362c4ea9..b62e66df = 4 commits (c14 bake + all-packs A2 probe fix b62e66df; NEON-DB-LOSS run-012 oracle verdict; ADR-037 via PR #355)",
+  "pr316": "closed/merged of record, 323d246 @ 2026-10-23T23:31:31Z (re-verified via API)",
+  "open_prs": "#352/#303/#296/#285 \u2014 none this lane's, none sci-chem"
+ },
+ "ledger_repair": {
+  "finding": "run-007 worklog entry (Task ID: 25-26) added by 4008e6ce was REMOVED by ca7ef93d (parent 2aca7c98 already contained it; worklog diff +10/-31 = active non-union tail rewrite; intent not adjudicated from this lane)",
+  "action": "append-only restoration byte-faithful from 4008e6ce + Task 27 reconstructed (trace 1a16cfa8b27b5fb9) + Task 28 re-filed byte-faithful (trace 1a16eb9171d7128d) + Task 29 this sweep; receipt never lost, only the log entry",
+  "law": "LEDGER-REPAIR precedent; incremental-commit same-turn push; fetch-first, no force"
+ },
+ "w1_serving_of_record": "registry maths-4ma1 = SERVING since 2026-10-24T08:39:16Z (run-008 flip), deploy syllabai-v2-qxxki2a8e READY, revert = registry->ASSIGNED instant",
+ "needs_queue_unchanged": [
+  "sci-chem URL (or amendment word) -> 4CH1 data T1",
+  "MP-REBUILD unclaimed-writer adjudication (NEON-DB-LOSS run-011/012)",
+  "embed-completion window (1,330 rows; Phase-D tranche-1 coordination)",
+  "PAT rotation class-wide"
+ ],
+ "writes": "ZERO rows on any database plane; .syllabai/** bookkeeping only"
+}

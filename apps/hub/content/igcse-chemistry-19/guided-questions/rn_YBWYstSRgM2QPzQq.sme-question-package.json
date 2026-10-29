@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_YBWYstSRgM2QPzQq",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "52a0af6293df107468d5c8f26a13f1974da18f8888c34ca73e64160970a87ac8",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_YBWYstSRgM2QPzQq",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L1::Q1",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L1",
+      "stem": "Salt water is heated in simple distillation. What is collected in the beaker, and what is left in the flask?",
+      "misconceptionClass": "simple distillation products",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pure water collects in the beaker; the salt stays in the flask",
+          "correct": true,
+          "explanation": "Only the liquid boils off and condenses; the dissolved solid cannot evaporate.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Salt collects in the beaker; water stays in the flask",
+          "correct": false,
+          "explanation": "The vapour that rises is water, so water is what the condenser delivers to the beaker.",
+          "misconception": "products reversed"
+        },
+        {
+          "key": "C",
+          "text": "Both collect in the beaker as salt water",
+          "correct": false,
+          "explanation": "Distillation separates; the beaker receives the condensed liquid only.",
+          "misconception": "separation denied"
+        },
+        {
+          "key": "D",
+          "text": "Nothing collects until the salt boils too",
+          "correct": false,
+          "explanation": "Heating stops once the liquid has gone; the salt never boils.",
+          "misconception": "solid assumed volatile"
+        }
+      ]
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L1::Q2",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L1",
+      "stem": "In a labelled diagram of simple distillation, where must the cooling water enter?",
+      "misconceptionClass": "condenser water direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "At the bottom of the condenser, near the collecting beaker",
+          "correct": true,
+          "explanation": "Water entering low fills the cooling jacket against the vapour flow and chills the whole condenser.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "At the top of the condenser, near the column",
+          "correct": false,
+          "explanation": "That is where water leaves; entering high leaves the lower jacket uncooled.",
+          "misconception": "flow direction inverted"
+        },
+        {
+          "key": "C",
+          "text": "Into the flask, to speed the boiling",
+          "correct": false,
+          "explanation": "Cooling water belongs to the condenser jacket, not the boiling flask.",
+          "misconception": "jacket confused with boiler"
+        },
+        {
+          "key": "D",
+          "text": "Anywhere, since the direction makes no difference",
+          "correct": false,
+          "explanation": "Diagrams are marked on the correct direction, as the exam hint stresses.",
+          "misconception": "detail dismissed"
+        }
+      ]
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L1::Q3",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L1",
+      "stem": "Ethanol and water mix completely. Which technique separates them, and how is it run?",
+      "misconceptionClass": "miscible liquids separation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fractional distillation: hold 78 °C to boil off the ethanol, then stop before 100 °C",
+          "correct": true,
+          "explanation": "The lower boiling point leaves first; stopping at 100 °C keeps water out of the beaker.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Filtration: ethanol passes through, water is caught",
+          "correct": false,
+          "explanation": "Both are liquids; there is no undissolved solid for filter paper to catch.",
+          "misconception": "filtration for liquids"
+        },
+        {
+          "key": "C",
+          "text": "Simple distillation: collect both liquids in one beaker",
+          "correct": false,
+          "explanation": "One beaker of mixed distillate is no separation at all.",
+          "misconception": "simple used for pairs"
+        },
+        {
+          "key": "D",
+          "text": "Crystallisation: cool until ethanol crystals form",
+          "correct": false,
+          "explanation": "Ethanol does not crystallise from the mixture; it boils at 78 °C.",
+          "misconception": "technique mismatch"
+        }
+      ]
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L1::Q4",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L1",
+      "stem": "During fractional distillation of ethanol and water, the thermometer climbs from 78 °C towards 100 °C. What should the operator do?",
+      "misconceptionClass": "temperature stall point",
+      "options": [
+        {
+          "key": "A",
+          "text": "Stop heating — the ethanol has all been collected",
+          "correct": true,
+          "explanation": "A rising temperature means the low-boiling substance is gone and water is next.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Increase the heat to finish faster",
+          "correct": false,
+          "explanation": "More heat brings water over and ruins the separation.",
+          "misconception": "speed over purity"
+        },
+        {
+          "key": "C",
+          "text": "Swap the beaker and keep collecting the same liquid",
+          "correct": false,
+          "explanation": "The distillate is already the ethanol; continuing collects water into it.",
+          "misconception": "collect-all habit"
+        },
+        {
+          "key": "D",
+          "text": "Add cold water to the mixture",
+          "correct": false,
+          "explanation": "Dilution does not separate anything.",
+          "misconception": "dilution as separation"
+        }
+      ]
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L1::Q5",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L1",
+      "stem": "What does miscible mean, and why does it rule out filtration for an ethanol-water mixture?",
+      "misconceptionClass": "miscible meaning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The liquids mix with no boundary, so no solid exists for filter paper to catch",
+          "correct": true,
+          "explanation": "Filtration needs an undissolved solid; two liquids that blend have none.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The liquids have equal densities, so they cannot be separated at all",
+          "correct": false,
+          "explanation": "Density equality is irrelevant; boiling points do the separating.",
+          "misconception": "density-based rule"
+        },
+        {
+          "key": "C",
+          "text": "The liquids react into a compound, so distillation is barred",
+          "correct": false,
+          "explanation": "Miscible liquids still blend physically; nothing new is formed.",
+          "misconception": "mixing as reaction"
+        },
+        {
+          "key": "D",
+          "text": "The liquids must first be frozen to separate them",
+          "correct": false,
+          "explanation": "The separation runs on boiling point differences, not freezing.",
+          "misconception": "state-change detour"
+        }
+      ]
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L2::Q1",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L2",
+      "stem": "Sand is stirred into water. Which technique recovers the sand, and what is the sand left on the paper called?",
+      "misconceptionClass": "filtration products",
+      "options": [
+        {
+          "key": "A",
+          "text": "Filtration; the sand left on the paper is the residue",
+          "correct": true,
+          "explanation": "Undissolved solids stay on the paper as residue while the filtrate passes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Filtration; the sand in the beaker below is the filtrate",
+          "correct": false,
+          "explanation": "The filtrate is the liquid that passed through, not the solid caught.",
+          "misconception": "terms swapped"
+        },
+        {
+          "key": "C",
+          "text": "Simple distillation; the sand boils off first",
+          "correct": false,
+          "explanation": "Sand is a solid with no boiling point to exploit here.",
+          "misconception": "technique mismatch"
+        },
+        {
+          "key": "D",
+          "text": "Crystallisation; the sand grows crystals",
+          "correct": false,
+          "explanation": "Crystals grow from dissolved solids; sand never dissolved.",
+          "misconception": "dissolved confused with suspended"
+        }
+      ]
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L2::Q2",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L2",
+      "stem": "How does a cold glass rod test whether a solution is ready for crystallisation?",
+      "misconceptionClass": "saturation test",
+      "options": [
+        {
+          "key": "A",
+          "text": "Dip a clean, dry, cold rod in; crystals forming on it show the solution is saturated",
+          "correct": true,
+          "explanation": "A saturated solution deposits crystals on a cold surface straight away.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The rod dissolves if the solution is saturated",
+          "correct": false,
+          "explanation": "Glass does not dissolve; the rod is an observation tool.",
+          "misconception": "rod as reagent"
+        },
+        {
+          "key": "C",
+          "text": "The rod changes colour when crystals are near",
+          "correct": false,
+          "explanation": "The signal is crystal growth on the rod, not a colour change.",
+          "misconception": "invented indicator"
+        },
+        {
+          "key": "D",
+          "text": "Stir with the rod; faster stirring proves saturation",
+          "correct": false,
+          "explanation": "Stirring changes nothing about how much is dissolved.",
+          "misconception": "rate confused with extent"
+        }
+      ]
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L2::Q3",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L2",
+      "stem": "Why does crystallisation need a solid that is much more soluble in hot solvent than in cold?",
+      "misconceptionClass": "solubility gap requirement",
+      "options": [
+        {
+          "key": "A",
+          "text": "The gap lets crystals grow as the solution cools and keeps them from redissolving",
+          "correct": true,
+          "explanation": "Falling solubility on cooling drives the solid out of solution as crystals.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Hot solvent sterilises the crystals",
+          "correct": false,
+          "explanation": "The technique rests on solubility differences, not hygiene.",
+          "misconception": "extraneous purpose"
+        },
+        {
+          "key": "C",
+          "text": "Cold solvent would boil instead",
+          "correct": false,
+          "explanation": "Cooling is applied after heating; nothing boils during crystallisation.",
+          "misconception": "process confusion"
+        },
+        {
+          "key": "D",
+          "text": "The solid must melt before it can crystallise",
+          "correct": false,
+          "explanation": "Crystals form from solution; melting the solid is not part of the method.",
+          "misconception": "melting conflated"
+        }
+      ]
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L2::Q4",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L2",
+      "stem": "In paper chromatography, why must the pencil line sit above the solvent level at the start?",
+      "misconceptionClass": "baseline placement",
+      "options": [
+        {
+          "key": "A",
+          "text": "So the samples do not wash off the line into the solvent container",
+          "correct": true,
+          "explanation": "Submerged spots dissolve away into the solvent instead of travelling up the paper.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "So the solvent cannot evaporate",
+          "correct": false,
+          "explanation": "Line placement has no effect on evaporation.",
+          "misconception": "purpose invented"
+        },
+        {
+          "key": "C",
+          "text": "So the pencil does not run into the chromatogram",
+          "correct": false,
+          "explanation": "Pencil is chosen precisely because it does not run; the depth rule protects the samples.",
+          "misconception": "pencil vs ink conflation"
+        },
+        {
+          "key": "D",
+          "text": "Because spots below the line travel faster",
+          "correct": false,
+          "explanation": "Travel distance depends on solubility, not on starting depth.",
+          "misconception": "head-start theory"
+        }
+      ]
+    },
+    {
+      "id": "rn_YBWYstSRgM2QPzQq::L2::Q5",
+      "moduleId": "rn_YBWYstSRgM2QPzQq::L2",
+      "stem": "Why is the starting line drawn in pencil rather than ink?",
+      "misconceptionClass": "pencil rationale",
+      "options": [
+        {
+          "key": "A",
+          "text": "Pencil does not dissolve, so it will not run up the paper with the samples",
+          "correct": true,
+          "explanation": "Ink would travel with the solvent and confuse the results.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Pencil marks are darker and easier to see",
+          "correct": false,
+          "explanation": "Visibility is not the reason; chemical inertness in the solvent is.",
+          "misconception": "contrast rationale"
+        },
+        {
+          "key": "C",
+          "text": "Ink would make the paper too heavy",
+          "correct": false,
+          "explanation": "Paper mass is irrelevant.",
+          "misconception": "absurd mechanic"
+        },
+        {
+          "key": "D",
+          "text": "Pencil is the only colour allowed under exam rules",
+          "correct": false,
+          "explanation": "The rule is chemical: inks dissolve and would join the separation.",
+          "misconception": "regulation invented"
+        }
+      ]
+    }
+  ]
+}

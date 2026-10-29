@@ -285,6 +285,25 @@ export const glmIcTableSchema = z.object({
 });
 export type GlmIcTable = z.infer<typeof glmIcTableSchema>;
 
+/**
+ * MarkBand — the LEVELS analog of MarkPoint (ADR-040 §5.3; v2 additive, NO
+ * frozen Java ancestor): one printed level row of a levels-marked MS entry —
+ * the "Level / Marks / Descriptor" table the point-splitter cannot consume.
+ * `level` is the printed level number (1 = lowest), `marksMin`/`marksMax`
+ * the printed range, `descriptor`/`guidance` VERBATIM-AS-PRINTED (never
+ * trimmed/paraphrased — the R4 "descriptors verbatim" check pins the mapper
+ * stores them untouched). Wire law: additive field with .default([]) —
+ * pre-ADR-040 parser drafts (no `bands` key) bind byte-identically.
+ */
+export const glmMarkBandSchema = z.object({
+  level: javaJsonInt.nullable().default(null),
+  marksMin: javaJsonInt.nullable().default(null),
+  marksMax: javaJsonInt.nullable().default(null),
+  descriptor: z.string().nullable().default(null),
+  guidance: z.string().nullable().default(null),
+});
+export type GlmMarkBand = z.infer<typeof glmMarkBandSchema>;
+
 /** MarkSchemeEntry (:81-108) — marks Integer (rowspan-deferred = null). */
 export const glmMarkSchemeEntrySchema = z.object({
   entryId: z.string().nullable().default(null),
@@ -299,6 +318,7 @@ export const glmMarkSchemeEntrySchema = z.object({
   marks: javaJsonInt.nullable().default(null),
   marksCellSource: z.string().nullable().default(null),
   confidence: javaJsonDouble.default(0.0),
+  bands: z.array(glmMarkBandSchema).default([]),
 });
 export type GlmMarkSchemeEntry = z.infer<typeof glmMarkSchemeEntrySchema>;
 

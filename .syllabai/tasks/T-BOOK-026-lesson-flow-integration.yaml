@@ -1,0 +1,46 @@
+id: T-BOOK-026
+title: "Lesson-flow integration — rail blocks inline in the lesson + video-first media-embed"
+band: T-BOOK-xxx
+status: IN_REVIEW
+created: "2026-10-27"
+adr: docs/adr/ADR-BOOK-0003-lesson-flow-integration.md
+operator_order: "trace 1a17cb69e4100d49 — 'The Interactive rail … I wanted all of it moved into the lessons. Integrated inside the lesson … instead of showing cognito link, cant you give the actual youtube video link? Videos will also be inside the Lessons flow.'"
+execution_record: >
+  IMPLEMENTED THIS TRACE (2026-10-27). Hub-only: NEW apps/hub/src/lib/lesson-blocks-join.ts
+  (pure join law: authored blockIds win -> derived first-spec-intersecting fill ->
+  honest extras; ord-ordered merge; SSR-stable) + NEW lesson-blocks-join.test.ts
+  (6/6 bun test) + NEW components/books/lesson/lesson-interactive.tsx (client zone;
+  check lane + glossary lane deduped per chapter at module scope; page-true jump =
+  133d deep link to the rail viewer) + lesson-view.tsx (per-section interactive zone
+  after glossary strip, before derived links; honest "Interactive extras" section)
+  + lesson/page.tsx (rail key resolved via normalized join off the registry chapters;
+  fetchBookRailBlocks; join; honest-null renders the lesson exactly as before) +
+  media-embed-block.tsx video-first (provider CTA REMOVED; youtube-nocookie player
+  inline + Watch on YouTube link; attribution + licensing law lines stay; fallback
+  link card only without youtubeId). GATES: hub tsc --noEmit 0; eslint targeted exit 0;
+  bun test lesson-blocks-join + books-lesson 15/15; bun run build exit 0 (standalone).
+  SURFACE WALK OF RECORD (dev standalone, SYLLABAI_CORE_BASE_URL=production core,
+  4CH1 igcse-chemistry-19 u1:c01): SSR 200 — ALL 8 rail blocks render inside the
+  lesson (b01 prose + b02 figure + b05 sim + b06 table-fill derived to s01; b08
+  media-embed AUTHORED in s02 per the pack blockIds of record; b03 sort-match +
+  b04 callout + b07 mcq derived to s04); youtube-nocookie embed hkBrw2fG75U present
+  in-flow; "Watch at the provider" count 0; extras empty (every block found a spec
+  home); screenshots download/t-book-026/ (sandbox-local). The rail viewer is
+  UNTOUCHED (two-pane companion stays; zero API/contracts/DB changes).
+scope:
+  allowed:
+    - "apps/hub/src/lib/lesson-blocks-join.ts (new)"
+    - "apps/hub/src/lib/lesson-blocks-join.test.ts (new)"
+    - "apps/hub/src/components/books/lesson/lesson-interactive.tsx (new)"
+    - "apps/hub/src/components/books/lesson/lesson-view.tsx"
+    - "apps/hub/src/app/courses/[course]/books/[docId]/lesson/page.tsx"
+    - "apps/hub/src/components/books/rail/widgets/media-embed-block.tsx (display law per ADR-BOOK-0003 d2)"
+    - "docs/adr/ADR-BOOK-0003-lesson-flow-integration.md (new)"
+    - ".syllabai/tasks/T-BOOK-026-lesson-flow-integration.yaml (this file)"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "apps/api/** (the serving DOUBLE gate is the api's; zero API changes)"
+    - "packages/** (no contracts changes — the envelope/payload laws stand)"
+    - "the rail viewer two-pane shell (stays the page-true PDF companion)"
+    - "pack bytes / lint law (no books/** changes)"
+    - "chapter_progress semantics (rail's signal; lesson-side progress = follow-up)"

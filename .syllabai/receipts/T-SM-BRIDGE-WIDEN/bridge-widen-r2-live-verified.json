@@ -1,0 +1,33 @@
+{
+  "lane": "T-SM-BRIDGE-WIDEN",
+  "run": "bridge-widen-r2-live-verified",
+  "parent_runs": ["bridge-widen-r0 (registry, rebased ace15fc)", "bridge-widen-r1-validator-pin (1d721c3, deploy dpl_8kUaTwfqLHYL8XxNnetLUGoYEgjg READY 12:27:57Z)"],
+  "date": "2026-10-22",
+  "live_verification": {
+    "probe_identity": "ONE disclosed probe learner account widen-probe-20261022a@example.com (STUDENT role, precedent w0a-probe-20261008b; registered via POST /api/v1/auth/register 201; zero attempts written by this lane; token stored /tmp, never printed)",
+    "depth1_available_true": [
+      "cie-igcse-physics-23 (0625, rootId 57a31699...)",
+      "cie-igcse-chemistry-23 (0620, rootId 4d37e662...)",
+      "igcse-maths-b-16 (4MB1, rootId 7cb03087...)",
+      "cie-a-level-biology-25 (9700, rootId a4c1e409...)",
+      "cie-igcse-maths-25-extended (0580, rootId 42714c1a...)",
+      "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry (0973, rootId 889f2259...)"
+    ],
+    "negative_controls_still_blocked": {
+      "cie-igcse-geography-20 (Wave-3 band-scheme)": "available=false reason=not_pilot",
+      "igcse-physics-19 (4PH1, zero bank refs)": "available=false reason=not_pilot"
+    },
+    "depth2_joins": [
+      {"course": "igcse-maths-b-16", "topic": "2018-06-4mb1-01--exam-questions", "joined": 28, "structured": 28, "skipped": 0},
+      {"course": "cie-igcse-maths-25-extended", "topic": "3d-pythagoras-and-trigonometry--exam-questions", "joined": 5, "structured": 5, "skipped": 26},
+      {"course": "cie-a-level-chemistry-25", "topic": "23-1-lattice-energy-and-born-haber-cycles--structured-questions", "joined": 4, "structured": 4, "skipped": 7},
+      {"course": "cie-igcse-physics-23", "topic": "1-2-motion--multiple-choice-questions (MCQ control)", "joined": 27, "mcqPartsMapped": 27, "skipped": 0}
+    ],
+    "verdict": "LIVE: the Smart Mark surface (Submit for marking panel + 'Smart Mark my answers' button, signed-in learners, structured questions, post-submit) is reachable on the flipped courses; the blocked laws still hold exactly where they should."
+  },
+  "structured_vs_mcq_posture": {
+    "smart_mark_bearing_courses": "16 of 22 flipped courses carry structured sets in the hub player (button applies there); 6 CIE IGCSE science courses serve MCQ-only sets in the hub player — the bridge records their real MCQ attempts (learner model, mastery), but MCQs are answer-key marked by design and never show the AI button",
+    "skip_law": "per-topic skip counts vary by how much of a topic's bank counterpart lines up (marks/counts must match or the question honestly degrades to local practice — never mis-joined); maths-b 2018-06-4mb1-01 joined 28/28 with zero skips"
+  },
+  "not_proven_here": "an end-to-end AI smart-mark call on a NEW course was deliberately NOT fired (write/LLM budget discipline): the pipeline itself is proven of record on the pilot (34 SMART_MARKED attempts, latest 2026-10-19); this lane proves identity + availability. One deliberate learner click now proves the rest."
+}

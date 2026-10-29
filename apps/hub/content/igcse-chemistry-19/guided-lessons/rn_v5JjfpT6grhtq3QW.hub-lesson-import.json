@@ -1,0 +1,175 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_v5JjfpT6grhtq3QW",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a71860feebeb2ef311bf754ed27b18bd0abe0f4808ffc113107180b76c9b5071",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_v5JjfpT6grhtq3QW",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Chemical Tests",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-8-chemical-tests/2-8-3-tests-for-cations",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.47",
+        "text": "describe tests for these cations: NH4+ using sodium hydroxide solution and identifying the gas evolved; Cu2+, Fe2+ and Fe3+ using sodium hydroxide solution"
+      }
+    ],
+    "primer": {
+      "text": "From Flame Tests you already know one way to identify a metal cation: the colour it gives a flame. This note adds the solution route, where sodium hydroxide drops out coloured hydroxide solids, and finishes with the ammonium ion's own gas test.",
+      "prerequisiteSubtopic": "Flame Tests"
+    },
+    "modules": [
+      {
+        "id": "rn_v5JjfpT6grhtq3QW::L1",
+        "title": "Testing for metal cations",
+        "sourceHeadings": [
+          "Testing for metal cations"
+        ],
+        "specRefs": [
+          "4CH1-2.47"
+        ],
+        "opening": "Metal cations in solution are identified by the colours of the solids that drop out when a few drops of sodium hydroxide are added. Iron(II) gives a pale green solid, iron(III) an orange-brown solid and copper(II) a light blue solid. If nothing appears, the hydroxide may simply be soluble, or the solution may hold too few ions to show.",
+        "keyPoints": [
+          "A few drops of sodium hydroxide are added first, and any precipitate is noted.",
+          "Iron(II) ions give a pale green precipitate of iron(II) hydroxide.",
+          "Iron(III) ions give an orange-brown precipitate of iron(III) hydroxide.",
+          "Copper(II) ions give a light blue precipitate of copper(II) hydroxide.",
+          "No precipitate can mean the hydroxide is soluble, or too few ions are present."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Add sodium hydroxide drop by drop and watch the colour of any solid that forms: pale green means iron(II), orange-brown means iron(III), light blue means copper(II).",
+            "analogy": "The three hydroxides are like three signature paints precipitating out of a clear varnish; the paint colour identifies which pigment, which ion, was dissolved in it.",
+            "examPointer": "Use the full colour words, pale green, orange-brown and light blue, because bare green or blue is exactly what mark schemes decline to reward."
+          },
+          "medium": {
+            "restatement": "A precipitate appears only when the metal hydroxide is insoluble, since the sodium hydroxide supplies hydroxide ions that meet the metal ions and build the solid. A blank result is not proof of absence: the hydroxide may dissolve away as fast as it forms, or the metal ion may simply be too dilute to give visible cloudiness.",
+            "analogy": "The reaction is like two crowds meeting in a corridor where only some pairs clump: the insoluble pairs form visible clumps, while compatible pairs drift through without ever gathering.",
+            "examPointer": "For no-precipitate questions, give both readings, soluble hydroxide or too little ion, rather than declaring the ion absent."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_v5JjfpT6grhtq3QW::L1::Q1",
+          "rn_v5JjfpT6grhtq3QW::L1::Q2",
+          "rn_v5JjfpT6grhtq3QW::L1::Q3",
+          "rn_v5JjfpT6grhtq3QW::L1::Q4",
+          "rn_v5JjfpT6grhtq3QW::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_v5JjfpT6grhtq3QW::L2",
+        "title": "Test for ammonium ion, NH4+",
+        "sourceHeadings": [
+          "Test for ammonium ion, NH4+"
+        ],
+        "specRefs": [
+          "4CH1-2.47"
+        ],
+        "opening": "Ammonium ions cannot form a coloured solid, so their test works through a gas instead. Sodium hydroxide is added and the mixture is warmed, releasing ammonia gas, which turns damp red litmus paper blue. The ionic equation swaps one hydrogen ion for one hydroxide ion, giving ammonia and water.",
+        "keyPoints": [
+          "Add sodium hydroxide and warm the mixture to release ammonia gas.",
+          "The ammonia gas turns damp red litmus paper blue.",
+          "The ionic equation is NH4+ plus OH- giving NH3 and H2O.",
+          "A faint cloudiness can still count as a positive result.",
+          "Ammonium is the cation NH4+, tested by the gas it releases with alkali."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Add sodium hydroxide to the solution and warm it: ammonia gas leaves the mixture, and damp red litmus paper turning blue confirms it. That gas is the ammonium ion's signature.",
+            "analogy": "Warming is the door-opener here: without the heat the ammonia stays dissolved, and with it the gas walks out where the litmus can meet it.",
+            "examPointer": "Name both the reagent and the warming, then identify the gas with the litmus result, because the test description needs all three parts."
+          },
+          "medium": {
+            "restatement": "The hydroxide ion strips a hydrogen ion from NH4+ to make neutral NH3 and water, and warming pushes the ammonia out of solution as a gas. The litmus check closes the loop back to the gas tests, since ammonia is the only syllabus gas that turns damp red litmus blue.",
+            "analogy": "The reaction is a handover: hydroxide collects the spare hydrogen ion like a cloakroom attendant taking a coat, and the lighter guest, ammonia, leaves the room and announces itself downstairs.",
+            "examPointer": "Quote the ionic equation NH4+ plus OH- giving NH3 plus H2O, and link the gas to damp red litmus turning blue."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_v5JjfpT6grhtq3QW::L2::Q1",
+          "rn_v5JjfpT6grhtq3QW::L2::Q2",
+          "rn_v5JjfpT6grhtq3QW::L2::Q3",
+          "rn_v5JjfpT6grhtq3QW::L2::Q4",
+          "rn_v5JjfpT6grhtq3QW::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "cation",
+          "definition": "A positive ion, the species these tests identify.",
+          "firstLesson": 1
+        },
+        {
+          "term": "precipitate",
+          "definition": "The insoluble solid that drops out when sodium hydroxide meets certain metal ions.",
+          "firstLesson": 1
+        },
+        {
+          "term": "sodium hydroxide",
+          "definition": "The alkali reagent added to test for metal and ammonium cations.",
+          "firstLesson": 1
+        },
+        {
+          "term": "ammonium ion",
+          "definition": "The NH4+ cation, identified by warming with alkali and testing the ammonia released.",
+          "firstLesson": 2
+        },
+        {
+          "term": "ionic equation",
+          "definition": "An equation showing only the ions that actually take part in the reaction.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A solution may contain Fe2+, Fe3+, Cu2+ or NH4+ ions. a) State the result of adding a few drops of sodium hydroxide solution for each of the three metal ions. b) Describe the test for ammonium ions, including the ionic equation. c) A very dilute solution shows only a faint cloudiness with NaOH. How should this be read?",
+        "steps": [
+          "a) Fe2+ gives a pale green precipitate of iron(II) hydroxide; Fe3+ gives an orange-brown precipitate of iron(III) hydroxide; Cu2+ gives a light blue precipitate of copper(II) hydroxide.",
+          "b) Add sodium hydroxide and warm the mixture: ammonia gas is released, confirmed by damp red litmus paper turning blue. Ionic equation: NH4+ (aq) + OH- (aq) → NH3 (g) + H2O (l).",
+          "c) A faint cloudiness or slight colour change can still be a positive result when the cation is present only in small amounts."
+        ],
+        "finalAnswer": "a) Pale green (Fe2+), orange-brown (Fe3+), light blue (Cu2+). b) NaOH + warm → NH3, red litmus turns blue; NH4+ + OH- → NH3 + H2O. c) A positive result at low concentration."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/6e1199d29e25-testing-for-positive-metal-ions.png",
+        "alt": "testing-for-positive-metal-ions",
+        "sourceHeading": "Testing for metal cations",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
+  }
+}

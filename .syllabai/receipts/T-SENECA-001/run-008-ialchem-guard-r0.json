@@ -1,0 +1,106 @@
+{
+ "schema": "syllabai.receipt/T-SENECA-001/1.0",
+ "run": "run-008-ialchem-guard-r0",
+ "task": "T-SENECA-001 cosmetic re-slice #1 \u2014 ial-chemistry-17 breadcrumb guard (operator 'run #1', trace 1a1732c7073a3229; re-knock with W1 pooler URL trace 1a1739bceebd7d21)",
+ "scope": "DELETE exactly 2 off-family examQuestion pairings (id, 'ial-chemistry-17') from W1 seneca_resources wh-v3; resources themselves remain under their legitimate courses (pair semantics)",
+ "operator_context": {
+  "sandbox_recycle": "#6 between turns \u2014 .t1.env + clone lost; operator re-knocked with the same W1 pooler URL (ep-calm-queen-az36lppq pooler, fingerprint-of-record bda641812e51); staged 0600, never echoed",
+  "prior_spotcheck": "Task 35 (trace 1a16fc77c1abb289) \u2014 the 2 rows were found and ruled cosmetic-fixable; accounting honesty probe + fleet 1:1 flag/warehouse verified same day"
+ },
+ "gates": {
+  "G0_env": "PASS",
+  "G1_pk_shape": {
+   "pk": [
+    "course_slug",
+    "id"
+   ],
+   "pass": true
+  },
+  "G2_preflight": {
+   "rows": [
+    {
+     "id": "da94ff86-d818-465a-8d32-754d71e988d5",
+     "kind": "examQuestion",
+     "title": "Figure 1 shows a picture of two chromosomes.\nName the letter that identifies the locus of a gene.",
+     "topic_path": "Biology: AQA A Level > Genetic Information & Variation > DNA, Genes & Chromosomes > Genes"
+    },
+    {
+     "id": "fdd9e1ed-632a-496b-b794-52568075c18d",
+     "kind": "examQuestion",
+     "title": "Describe TWO similarities and TWO differences between Mendeleev\u2019s periodic table and the periodic table we have today.",
+     "topic_path": "Applied Science: BTEC Level 3 National Extended Diploma > Principles of Science I > Properties of Substances > The Periodic Table"
+    }
+   ],
+   "pass": true
+  },
+  "G3_baselines": {
+   "pass": true,
+   "drifts": {}
+  },
+  "G4_tx": "COMMIT (in-tx verify exact)",
+  "G5_post_parity": "PASS (fresh session)"
+ },
+ "deleted": [
+  {
+   "id": "da94ff86-d818-465a-8d32-754d71e988d5",
+   "kind": "examQuestion",
+   "title": "Figure 1 shows a picture of two chromosomes.\nName the letter that identifies the locus of a gene.",
+   "topic_path": "Biology: AQA A Level > Genetic Information & Variation > DNA, Genes & Chromosomes > Genes"
+  },
+  {
+   "id": "fdd9e1ed-632a-496b-b794-52568075c18d",
+   "kind": "examQuestion",
+   "title": "Describe TWO similarities and TWO differences between Mendeleev\u2019s periodic table and the periodic table we have today.",
+   "topic_path": "Applied Science: BTEC Level 3 National Extended Diploma > Principles of Science I > Properties of Substances > The Periodic Table"
+  }
+ ],
+ "post": {
+  "slug_total": 300,
+  "by_kind": {
+   "courseSection": 204,
+   "examQuestion": 78,
+   "quiz": 18
+  },
+  "topic_carrying": 78,
+  "families": {
+   "Chemistry: Cambridge International A Level": 22,
+   "Chemistry: AQA A Level": 55,
+   "Chemistry: AQA GCSE Foundation": 1
+  },
+  "chem_families": {
+   "Chemistry: AQA A Level": 55,
+   "Chemistry: AQA GCSE Foundation": 1,
+   "Chemistry: Cambridge International A Level": 22
+  },
+  "off_family_total": 0,
+  "pilot_total": 5695,
+  "fleet_rows": 58205,
+  "fleet_slugs": 82,
+  "chunks": 8202,
+  "pairs_gone": 0,
+  "deleted_ids_serving_other_courses": {
+   "cie-a-level-biology-25": 1,
+   "cie-a-level-chemistry-25": 2,
+   "ial-biology-18": 1
+  }
+ },
+ "survivor_proof": {
+  "note": "the 2 resource ids still serve their legitimate courses after the pair-delete \u2014 only the IAL-chemistry pairing was cut",
+  "deleted_ids_serving_other_courses": {
+   "cie-a-level-biology-25": 1,
+   "cie-a-level-chemistry-25": 2,
+   "ial-biology-18": 1
+  }
+ },
+ "rule_table_of_record": {
+  "file": "scripts/rollout_import_seneca_v3.py",
+  "change": "R() gains bc_require_if_present (additive; NULL-breadcrumb rows pass, present non-Chemistry breadcrumb roots excluded); ial-chemistry-17 rule -> R(['Chemistry'], 'IAL', bc_require_if_present=['Chemistry:']); ial-biology-18 / ial-physics-19 deliberately UNGUARDED (live state predates guard; data-validated sweep disclosed for operator, not silently applied)",
+  "guard_proof": "5/5 synthetic cases PASS incl. both deleted-row classes excluded, NULL-breadcrumb + both chemistry families retained; ial-biology-18 regression unchanged; py_compile OK"
+ },
+ "verification_ceiling": "authed creator happy-path per course still needs a real token (unchanged since run-006)",
+ "notes": [
+  "main DB untouched this run (zero contact); maths plane UNTOUCHED (warehouse_chunks 8,202); pilot 5,695 UNTOUCHED; fleet 58,207 -> 58,205 / 82 slugs",
+  "defects caught en route (fail-closed, zero bad writes): autocommit-always bug in connect() (would have broken the single-tx law), q() double-fetch false-negative in G1 (gate aborted on healthy DB twice), EXPECT.families omitted the 2 off-family rows pre-delete (gate redesign: chem_families + off_family_total)",
+  "latent class disclosed: subject-file rows with foreign breadcrumb roots can serve sibling IAL/CIE rules (e.g. the BTEC periodic-table EQ also serves cie-a-level-chemistry-25) \u2014 a data-validated fleet sweep is available on operator order"
+ ]
+}

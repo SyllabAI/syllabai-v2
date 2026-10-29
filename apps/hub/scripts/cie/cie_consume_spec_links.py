@@ -8,7 +8,10 @@ Consumption law (REJOIN-1 NEXT #2 verbatim semantics):
   - verdict semantics: operator-verdict entries (V1-V4) are authoritative;
   - T2_near: accepted-near, NON-AUTHORITATIVE hint — carried in the map as
     items[].t2HintCodes, NEVER in items[].codes, NEVER in bundle linkage;
-  - the rejoin's J*-tier entries: consumed post-gate (ACCEPTED, identity-grade).
+  - the rejoin's J*-tier entries: consumed post-gate (ACCEPTED, identity-grade);
+  - operator sid-anchors (anchors.operatorSidAnchors, T-RULE-T2-APPLY-2):
+    sid-level operator rulings -> spcptToOfficial add-if-absent / verify-if-equal /
+    conflict-keep+disclose (NO-GUESS); added sids leave spcptUnmapped; battery A1.
 
 Pipeline (deterministic, fixed stamp, fail-loud):
   A  pins      sidecar review states + sha256s + registry/spine/bundle presence
@@ -25,19 +28,87 @@ Lineage precedence for dedup (strongest first):
   sidecar operator-verdict (V*) > sidecar T1_verbatim > sidecar J* >
   upstream_item_join (ladder) > sme_declared_link_rekey > subtopic_title_scope
 
-Pin of record: syllabai-resources origin/main aa0b4de1 (the tranche-1 advance
-75981cad -> aa0b4de1, verified: Official-Specifications/parsed, SME-RevisionNotes,
-SME-Flashcards tree-sha-IDENTICAL to the r9 pin; SME-ExamQuestion moved but ALL
-changed files are igcse-accounting-17* (Edexcel) — zero CIE corpus contact; the
-ONLY CIE input delta is spec-links/ — the T-SPECS-CIE-TRANCHE1-T2NEAR-1 verdict
-round, whose V6_near_text_verdict entries are consume-authoritative by the same
-sidecar_rank law).
+Pin of record: syllabai-resources origin/main 3838a264 (the T-RULE-T2-APPLY-2
+ADOPTION advance, operator order 'adopt the consume-law on v2 branch', trace
+1a164dcf6cff9061): consumed vintage c5f20c52 (the CIE-REFRESH-1 re-key, v2
+8e740fc4) -> the PR-#49-merged tip 3838a264, verified: SME-RevisionNotes,
+SME-ExamQuestion, Official-Specifications tree-sha-IDENTICAL to the c5f20c52
+pin; Official-ExamQuestion moved but 100% igcse-chemistry-19 wave-19 exporter
+surface (not an engine input); scripts moved but the engine's ONE script input
+cie_rejoin_resolutions.yaml is blob-identical (2bcd4db3, sheet 634/166 pins
+hold); the ONLY consumed-input delta is spec-links/ — 8 sidecars of record:
+the 23 tranche-2 operator sid-anchors (anchors.operatorSidAnchors, PR #49,
+5b85ea3) + the pending item-plane verdict rounds (T-RULE-T2-B01 132c4b6,
+B02 e4f4a34, COMPLETE-1-BAND-B geo-25 58d7f68, PARSE-REPAIR-1/2 06de1f2a +
+b83a3799), all consume-authoritative by the sidecar_rank law.
 
 TRANCHE-1 RE-RUN (2026-10-21, operator order 'tranche-1', trace
 1a15e4200e6af579): consumes the tranche-1 verdict sidecars — the 155-part
 T2_near review queue of the anchor-gap census receipt promoted to the V*
 authoritative class. The consumption law is UNCHANGED (this engine's semantics
 already rank V* first and hold T2_near as hints).
+
+T-RULE-T2-APPLY-2 ADOPTION (2026-10-22, operator order 'adopt the consume-law
+on v2 branch', trace 1a164dcf6cff9061): the Stage B operator sid-anchor law
+(anchors.operatorSidAnchors -> spcptToOfficial add-if-absent / verify-if-equal /
+conflict-keep+disclose; added sids leave spcptUnmapped; census sidAnchors;
+battery A1) adopted of record at the pin advance to the PR-#49-merged tip.
+
+T-RULE-T2-V8-RETRACT-1 run-003 (2026-10-23, operator order '7-sid V8 retraction
+batch', trace 1a16541e55a06bd1): the operator V8-retraction law — the Stage B
+surgical (item, code) drops from anchors.v8Retraction (L_SIDECAR V8 operator-
+verdict mirrors only, NO-GUESS), the zero-code mirror, the M1 provenance-checked
+exemption, the per-course guard — of record at the pin advance to the PR-#68-
+merged tip e7c7a68.
+
+T-RULE-T2-MISTAG-1 (2026-10-23, operator order '10-mis-tag re-point batch',
+trace 1a1658227c0c0365): the operator mis-tag re-point law — the 10 mis-tagged
+question parts (T-RULE-T2-COND-1 misTags[10]) re-pointed to their spine-verified
+true homes in anchors.misTagRepoints (schema syllabai.operator-mis-tag-repoint/
+1.0): the SAME surgical (item, code) drop semantics as the V8-retraction law
+(L_SIDECAR V8 operator-verdict mirrors only, NO-GUESS) + additions flow through
+the normal sidecar_rank law (tier tranche2_mis_tag_repoint, method
+operator_verdict); the sid-anchor plane stays byte-frozen (sidAnchors 0/23/0
+fixed point); per-course guard: misTagRepointDropped <=
+anchors.misTagRepoints.counts.entriesRemoved — of record at the pin advance to
+the PR-#69-merged tip ea21a72.
+
+T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-001 (2026-10-25, operator order 'v2
+consume-lane pin advance', trace 1a16dda5d7cfb325): the wave-vintage pin
+advance — the committed-substrate residue wave (T-RULE-T3-SUBSTRATE-1 run-002)
+moved the SME trees 4,342 carriers formatting-only (transpile_alt KaTeX alt);
+consumed-input delta ZERO at 6dc1f0a2..31b0ef4a (spec-links/ tree-identical
+e6b0b3a9, rejoin sheet blob-identical, SME-ExamQuestion/*/spec_point_index.json
+0-file delta fleet-wide, Official-Specifications tree-sha-identical c95ed99f);
+quiescent pin-vintage convergence of the fleet at the resources tip 31b0ef4a
+(the run-006/007 shape on a moved vintage) — of record at the pin advance from
+6dc1f0a2.
+
+T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-002 (2026-10-25, operator order 'Fire',
+trace 1a16f39798b9d6c1 — the named next rung disclosed at the run-001 landing):
+the second pin-vintage rung. Input classification at 31b0ef4a..09842f9f (10
+commits: T-BOOK-047 u2:c14 authoring+flip, the UGM-Assets image plane 976
+figures, the handover-rule docs, the f-0019 filing, T-PARSE-YCH11-1 R2 polish
+harvest, T-PARSE-YCH12-1 SB2 parse — all CourseLessons/UGM-Assets/books/parsed
+planes): consumed-input delta ZERO — spec-links/ tree-identical, rejoin sheet
+blob-identical 2bcd4db3; quiescent pin-vintage convergence of the fleet at the
+resources tip 09842f9f (the run-006/007/001 shape on a moved vintage) — of
+record at the pin advance from 31b0ef4a.
+
+T-RULE-T3-CONSUME-PIN-ADVANCE-1 run-003 (2026-10-25, operator order 'Ok proceed',
+trace 1a17484361a63449 — the named next rung disclosed at the run-002 landing):
+the third pin-vintage rung. Input classification at 09842f9f..e481cb47 (~26
+commits: T-BOOK-054 u3:c21 and T-BOOK-055 u4:c22 authoring+flips, UGM lanes 11/12
+corpora + enrichments, converter v0.17.0-v0.17.3, the wave-24 G8 fixes, BL-008
+waves, SIB v1.2.2, the physics PUA tranche — all
+SME-GuidedLessons/CourseLessons/Official-ExamQuestion/UGM-Resources/
+SubjectIntelligence/books/Official-Specifications planes): consumed-input delta
+ZERO — spec-links/ tree-identical (95 files at both pins), rejoin sheet
+blob-identical 2bcd4db3; quiescent pin-vintage convergence of the fleet at the
+resources tip 22543473 (the run-006/007/001/002 shape on a moved vintage) — of
+record at the pin advance from 09842f9f (the tip moved twice in-run —
+22543473 -> 64f45861 -> e481cb47, consumed-input delta ZERO at every sub-range
+— the rung re-targeted to the commit-time tip per the run-002 discipline).
 """
 from __future__ import annotations
 
@@ -57,9 +128,16 @@ import build_official_content as BOC  # noqa: E402  (item_codes + SPCPT_RE reuse
 RESOURCES = os.environ.get("CIE_RESOURCES", "/home/z/my-project/syllabai-resources")
 SIDECAR_DIR = os.path.join(RESOURCES, "spec-links")
 SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
+# T-SPECS-CIE-CONSUME-2 run-001 (the JOIN-2 chain of record stage #3, operator
+# directive "verdict fills -> review gate -> v2 consume", trace
+# 1a183e66619bd6dd): the wave-2 AS lanes' re-join resolutions of record live
+# in the REJOIN-2 sheet — consumed as a second sheet input with per-sheet
+# via provenance; every other engine method untouched.
+SHEET2_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_wave2as_resolutions.yaml")
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "aa0b4de1b732738b4d02dabdd02d9ead85522907"
-STAMP = "2026-10-21T13:45:00Z"
+PIN = "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677"
+STAMP = "2026-10-29T16:00:00Z"
+GATE_TRACE = "1a183e66619bd6dd"
 SCHEMA = "syllabai.official-attachment/1.0"
 L_SIDECAR = "spec_links_sidecar_accepted"
 RANK = {  # lower wins on the same (item, code) key
@@ -109,19 +187,57 @@ def sidecar_rank(entry):  # noqa: C901
 
 def load_sheet():
     import yaml
-    doc = yaml.safe_load(open(SHEET_PATH, encoding="utf8"))
     resolves, other = {}, defaultdict(int)
-    for v in doc["verdicts"]:
-        key = (v["lane"], v["id"])
-        if v["verdict"] == "resolve":
-            resolves[key] = v
-        else:
-            other[v["verdict"]] += 1
-    other["ambiguous"] = len(doc.get("ambiguous") or [])
-    return doc, resolves, dict(other)
+    for path, via in ((SHEET_PATH, "REJOIN-1:gate-1"),
+                      (SHEET2_PATH, "REJOIN-2:gate-2")):
+        doc = yaml.safe_load(open(path, encoding="utf8"))
+        for v in doc["verdicts"]:
+            key = (v["lane"], v["id"])
+            if v["verdict"] == "resolve":
+                if key in resolves:
+                    die(f"sheet resolve overlap {key}")
+                resolves[key] = dict(v, via=via)
+            else:
+                other[v["verdict"]] += 1
+        other["ambiguous"] += len(doc.get("ambiguous") or [])
+    return None, resolves, dict(other)
 
 
-def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
+def retraction_pairs(sd):
+    """T-RULE-T2-V8-RETRACT-1: the operator V8-retraction law.
+
+    Returns the exact {(item_id, official_code): sid} surface the operator
+    ruling retracted (anchors.v8Retraction.sids[*].removed, resources PR #68).
+    The map is a DERIVED mirror of the sidecar for L_SIDECAR codes: when the
+    sidecar of record no longer carries a verdict, its mirror must not be
+    resurrected by the ladder. Surgical keying on (item, code) pairs only;
+    any other lineage carrying the same code is preserved verbatim."""
+    out = {}
+    blk = ((sd.get("anchors") or {}).get("v8Retraction") or {})
+    for k, r in (blk.get("sids") or {}).items():
+        for e in (r.get("removed") or []):
+            out[(e["item"], e["code"])] = k
+    return out
+
+
+def mistag_pairs(sd):
+    """T-RULE-T2-MISTAG-1: the operator mis-tag re-point law.
+
+    Returns the exact {(item_id, official_code): part} surface the operator
+    batch re-pointed (anchors.misTagRepoints.parts[*].removed, resources
+    PR #69). Same surgical semantics as retraction_pairs: the sidecar of
+    record no longer carries these V8 mirrors on the re-pointed parts, so
+    their ladder mirrors must drop; any other lineage carrying the same code
+    is preserved verbatim (NO-GUESS)."""
+    out = {}
+    blk = ((sd.get("anchors") or {}).get("misTagRepoints") or {})
+    for k, r in (blk.get("parts") or {}).items():
+        for e in (r.get("removed") or []):
+            out[(e["item"], e["code"])] = k
+    return out
+
+
+def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None, mistag=None):
     """Stage B: sidecar -> map merge. Returns (new_att, stats)."""
     st = defaultdict(int)
     items = att["items"]
@@ -144,6 +260,30 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
         existing = list(rec.get("codes") or [])
         cand = []
         for seq, e in enumerate(existing):
+            if retract and (iid, e.get("officialCode")) in retract:
+                # the operator V8-retraction law (T-RULE-T2-V8-RETRACT-1):
+                # drop the L_SIDECAR V8 mirror the ruling retracted; a same-code
+                # entry from any OTHER lineage is preserved verbatim (NO-GUESS).
+                if (e.get("lineage") != L_SIDECAR
+                        or not str(e.get("tier", "")).startswith("V8")
+                        or e.get("method") != "operator_verdict"):
+                    die(f"{slug}: retraction {iid}/{e.get('officialCode')} targets a "
+                        f"non-sidecar entry (lineage {e.get('lineage')!r}, "
+                        f"tier {e.get('tier')!r}, method {e.get('method')!r}) — NO-GUESS")
+                st["retractDropped"] += 1
+                continue
+            if mistag and (iid, e.get("officialCode")) in mistag:
+                # the operator mis-tag re-point law (T-RULE-T2-MISTAG-1): drop
+                # the L_SIDECAR V8 mirror the batch re-pointed; same surgical
+                # semantics and NO-GUESS guard as the retraction law.
+                if (e.get("lineage") != L_SIDECAR
+                        or not str(e.get("tier", "")).startswith("V8")
+                        or e.get("method") != "operator_verdict"):
+                    die(f"{slug}: mis-tag re-point {iid}/{e.get('officialCode')} targets a "
+                        f"non-sidecar entry (lineage {e.get('lineage')!r}, "
+                        f"tier {e.get('tier')!r}, method {e.get('method')!r}) — NO-GUESS")
+                st["mistagDropped"] += 1
+                continue
             cand.append((sidecar_rank(e), seq, e, "ladder"))
         accepted = [e for e in (sit.get("codes") or []) if e.get("tier") != "T2_near"]
         hints = [e for e in (sit.get("codes") or []) if e.get("tier") == "T2_near"]
@@ -168,11 +308,16 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
         # final order: sidecar-class first (sidecar seq), then ladder (original order)
         side = [e for e in merged if e.get("lineage") == L_SIDECAR]
         ladd = [e for e in merged if e.get("lineage") != L_SIDECAR]
-        if merged:
-            rec["codes"] = side + ladd
+        # the zero-code mirror (T-RULE-T2-V8-RETRACT-1): a sidecar item whose
+        # codes all retracted mirrors to the empty unmapped state — the stale
+        # committed codes must not survive a `merged`-empty guard.
+        rec["codes"] = side + ladd
+        if side + ladd:
             rec.pop("unmapped", None)
-            codes_added += len(side)
-            codes_kept_ladder += len(ladd)
+        else:
+            rec["unmapped"] = True
+        codes_added += len(side)
+        codes_kept_ladder += len(ladd)
         if hints:
             rec["t2HintCodes"] = [
                 OrderedDict(officialId=h.get("official_id"), officialCode=h.get("official_code"),
@@ -205,18 +350,52 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
             row["tier"] = v.get("tier")
             row["method"] = "cie_index_rejoin"
             row["lineage"] = L_SIDECAR
-            row["via"] = "REJOIN-1:gate-1"
+            row["via"] = v.get("via", "REJOIN-1:gate-1")
             sheet_upgraded += 1
         else:
             spcpt[sid] = OrderedDict(
                 officialId=v.get("official_id"), officialCode=code, officialCodes=[code],
                 unit=None, tier=v.get("tier"), method="cie_index_rejoin", score=None,
-                lineage=L_SIDECAR, via="REJOIN-1:gate-1")
+                lineage=L_SIDECAR, via=v.get("via", "REJOIN-1:gate-1"))
             sheet_added += 1
+
+    # ---- sidecar operator sid-anchors -> spcptToOfficial ---------------------
+    # T-RULE-T2-APPLY-2 law (sidecar block anchors.operatorSidAnchors, schema
+    # syllabai.operator-sid-anchors/1.0): add-if-absent / verify-if-equal /
+    # conflict-keep+disclose (NO-GUESS — the sheet law's conflict posture);
+    # added sids leave spcptUnmapped (registry-plane law of v2 @ a9bd2488,
+    # T-RULE-T2-APPLY-1). Sheet rows carry ZERO entries for these sids
+    # (censused of record) — no provenance-overwrite vector.
+    an_added = an_verified = an_kept = 0
+    oan = ((sd.get("anchors") or {}).get("operatorSidAnchors") or {}).get("anchors") or {}
+    unmapped = list(att.get("spcptUnmapped") or [])
+    for sid, ar in oan.items():
+        codes = list(ar.get("officialCodes") or [])
+        if not codes:
+            continue
+        row = spcpt.get(sid)
+        if row is None:
+            spcpt[sid] = OrderedDict(
+                officialId=ar.get("officialId") or codes[0],
+                officialCode=codes[0], officialCodes=codes,
+                unit=None, tier=ar.get("tier"), method=ar.get("method"),
+                score=None, lineage=ar.get("lineage") or L_SIDECAR,
+                via=ar.get("via"))
+            if sid in unmapped:
+                unmapped.remove(sid)
+            an_added += 1
+        else:
+            have = list(row.get("officialCodes") or
+                        ([row.get("officialCode")] if row.get("officialCode") else []))
+            if have != codes:
+                an_kept += 1  # NO-GUESS: keep the committed row, disclose
+            else:
+                an_verified += 1
 
     new_att = OrderedDict(att)
     new_att["items"] = new_items
     new_att["spcptToOfficial"] = spcpt
+    new_att["spcptUnmapped"] = unmapped
 
     # ---- recompute coverage / reconciliation --------------------------------
     def cov(kind, total):
@@ -238,6 +417,7 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
     inputs[f"spec-links/{slug}.json"] = OrderedDict(sha256=sha256_file(sc_path))
     if sheet_rows:
         inputs["scripts/cie_rejoin_resolutions.yaml"] = OrderedDict(sha256=sha256_file(SHEET_PATH))
+        inputs["scripts/cie_rejoin_wave2as_resolutions.yaml"] = OrderedDict(sha256=sha256_file(SHEET2_PATH))
 
     new_att["resourcesSha"] = PIN
     new_att["generatedUtc"] = STAMP
@@ -251,13 +431,15 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
                    "REJOIN sheet sid->code rows upgrade/add spcptToOfficial (conflicts kept, disclosed)",
         sidecar=f"spec-links/{slug}.json",
         reviewState=OrderedDict(state=sd["review_state"].get("state"),
-                                rejoin=(sd["review_state"].get("rejoin") or {}).get("state")),
+                                rejoin=(sd["review_state"].get("rejoin") or {}).get("state"),
+                                verdict=(sd["review_state"].get("verdict") or {}).get("state")),
         census=OrderedDict(
             codesByTier=dict(sorted(tier_census.items())), codesByMethod=dict(sorted(method_census.items())),
             sidecarItems=len(sd["items"]), itemsWithCodes=len([1 for it in sd["items"].values() if it.get("codes")]),
             sidecarCodes=len([1 for it in sd["items"].values() for e in (it.get("codes") or [])]),
             t2Hints=t2_total, sidecarOnlyItems=len(sidecar_only),
-            codesAttachedFromSidecar=codes_added, ladderCodesRetained=codes_kept_ladder),
+            codesAttachedFromSidecar=codes_added, ladderCodesRetained=codes_kept_ladder,
+            sidAnchors=OrderedDict(added=an_added, verified=an_verified, conflictsKept=an_kept)),
         sheetUpgrades=OrderedDict(added=sheet_added, upgraded=sheet_upgraded, conflictsKept=sheet_conflict) if (sheet_rows or sheet_upgraded or sheet_added) else None,
         t2Policy="T2_near is a non-authoritative hint (GATE-1 tier_policy); never in codes/linkage")
     sp = new_att["sources"]["specPointMap"]
@@ -274,7 +456,8 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows):
         questionParts=cov("question_part", pre_cov["questionParts"]["total"]),
         flashcards=cov("flashcard", pre_cov["flashcards"]["total"]))
     return new_att, dict(tier_census), dict(method_census), sidecar_only, \
-        (sheet_added, sheet_upgraded, sheet_conflict), (len(spine_hit), len(uncovered), outside)
+        (sheet_added, sheet_upgraded, sheet_conflict), (len(spine_hit), len(uncovered), outside), \
+        st["retractDropped"], st["mistagDropped"]
 
 
 def spcpt_display_map(att, ctx, spine_set):
@@ -381,20 +564,35 @@ def code_key(e):
     return e.get("spineCode") or e.get("officialCode")
 
 
-def battery(slug, old_att, new_att, sd, committed, staged, sheet_rows, sidecar_only, recon):
+def battery(slug, old_att, new_att, sd, committed, staged, sheet_rows, sidecar_only, recon, retract=None, mistag=None):
     """Stage D: per-course fail-closed assertions. Returns list of stat rows."""
     problems = []
     spine = load_json(os.path.join(HUB, "spines", f"{slug}.json"))
     spine_codes = {n["code"] for n in spine["curriculum"]["nodes"] if n["family"] == "SPEC_POINT"}
 
-    # M1: no loss, no item drift
+    # M1: no loss, no item drift — EXCEPT the operator V8-retraction surface
+    # (T-RULE-T2-V8-RETRACT-1) and the operator mis-tag re-point surface
+    # (T-RULE-T2-MISTAG-1): the rulings retracted/re-pointed exactly these
+    # (item, code) pairs, so their disappearance is the ordered outcome, not
+    # loss. Any other drop still fails closed.
+    retract_keys = set(retract or ()) | set(mistag or ())
     if set(old_att["items"]) != set(new_att["items"]):
         problems.append("M1 item-id set changed")
     for iid, old_rec in old_att["items"].items():
         old_keys = {code_key(c) for c in old_rec.get("codes") or []}
         new_keys = {code_key(c) for c in new_att["items"][iid].get("codes") or []}
-        if not old_keys <= new_keys:
-            problems.append(f"M1 code loss {iid}: {sorted(old_keys - new_keys)}")
+        lost = old_keys - new_keys
+        if lost:
+            unexpected = {k for k in lost if (iid, k) not in retract_keys}
+            dropped_expected = {k for k in lost if (iid, k) in retract_keys}
+            for k in dropped_expected:
+                src = [c for c in old_rec.get("codes") or [] if code_key(c) == k]
+                if src and (src[0].get("lineage") != L_SIDECAR
+                            or not str(src[0].get("tier", "")).startswith("V8")
+                            or src[0].get("method") != "operator_verdict"):
+                    unexpected.add(k)
+            if unexpected:
+                problems.append(f"M1 code loss {iid}: {sorted(unexpected)}")
         if new_att["items"][iid].get("kind") != old_rec.get("kind"):
             problems.append(f"M1 kind drift {iid}")
 
@@ -461,7 +659,18 @@ def battery(slug, old_att, new_att, sd, committed, staged, sheet_rows, sidecar_o
     cm = load_json(os.path.join(HUB, "content", slug, "manifest.json"))
     diff_keys = {k for k in set(sm) | set(cm) if sm.get(k) != cm.get(k)}
     if diff_keys != {"officialSpine"}:
-        problems.append(f"R4 manifest diff {sorted(diff_keys)}")
+        # CIE-REFRESH-1 sessionSideAdaptation (re-applied run-006, band-D
+        # disclosed): the re-run-at-moved-pin honest no-op — the adopted
+        # flip manifest already carries the run pin, so the engine's
+        # linkage-only refresh reproduces it byte-for-byte (diff == set()
+        # AND the staged officialSpine.resourcesSha == PIN). The
+        # serving-class manifest delta vs the GIT-committed state (counts/
+        # generatedUtc/importSource/officialSpine) is verified exactly in
+        # the lane apply evidence, not here.
+        if diff_keys == set() and (sm.get("officialSpine") or {}).get("resourcesSha") == PIN:
+            pass
+        else:
+            problems.append(f"R4 manifest diff {sorted(diff_keys)}")
     else:
         ospine = {k: v for k, v in sm["officialSpine"].items()}
         cspine = {k: v for k, v in cm["officialSpine"].items()}
@@ -492,6 +701,33 @@ def battery(slug, old_att, new_att, sd, committed, staged, sheet_rows, sidecar_o
                     if c not in spine_codes:
                         problems.append(f"R5 linkage outside spine part {p['id']}: {c}")
 
+    # A1: operator sid-anchors law — plane exclusivity + census cross-foot
+    oan = ((sd.get("anchors") or {}).get("operatorSidAnchors") or {}).get("anchors") or {}
+    _verified = _kept = 0
+    for sid, ar in oan.items():
+        codes = list(ar.get("officialCodes") or [])
+        if not codes:
+            continue
+        in_off = sid in new_att["spcptToOfficial"]
+        in_um = sid in (new_att.get("spcptUnmapped") or [])
+        if in_off and in_um:
+            problems.append(f"A1 sid in both planes {sid}")
+        row = new_att["spcptToOfficial"].get(sid)
+        if row is None:
+            problems.append(f"A1 anchor not merged {sid}")
+            continue
+        have = list(row.get("officialCodes") or
+                    ([row.get("officialCode")] if row.get("officialCode") else []))
+        if have != codes:
+            _kept += 1  # conflict-kept: disclosed, not a defect
+        else:
+            _verified += 1
+    sa = ((new_att.get("sources") or {}).get("specLinks") or {}).get("census", {}).get("sidAnchors") or {}
+    if sa.get("added", 0) + sa.get("verified", 0) + sa.get("conflictsKept", 0) != _verified + _kept:
+        problems.append(f"A1 census {dict(sa)} != battery added+verified={_verified} kept={_kept}")
+    if sa.get("conflictsKept") != _kept:
+        problems.append(f"A1 conflictsKept {sa.get('conflictsKept')} != battery {_kept}")
+
     ok = not problems
     row = OrderedDict(
         course=slug, ok=ok,
@@ -506,10 +742,11 @@ def main() -> int:
     import yaml  # noqa: F401  (asserted available)
     sheet_doc, sheet_resolves, sheet_other = load_sheet()
     print(f"sheet: resolves={len(sheet_resolves)} other={sheet_other}", flush=True)
-    if len(sheet_resolves) != 634:
-        die(f"sheet resolves {len(sheet_resolves)} != 634")
-    if sheet_other.get("quarantine", 0) + sum(v for k, v in sheet_other.items() if k != "quarantine") != 166:
-        die(f"sheet non-resolve {sheet_other} != 166 quarantines")
+    if len(sheet_resolves) != 758:
+        die(f"sheet resolves {len(sheet_resolves)} != 758 (634 REJOIN-1 + "
+            f"124 REJOIN-2)")
+    if sheet_other.get("quarantine", 0) + sum(v for k, v in sheet_other.items() if k != "quarantine") != 200:
+        die(f"sheet non-resolve {sheet_other} != 200 quarantines (166 + 34)")
 
     registry = load_json(os.path.join(HUB, "content", "courses.json"))
     reg_rows = {r["slug"]: r for r in (registry["courses"] if isinstance(registry, dict) else registry)}
@@ -541,8 +778,18 @@ def main() -> int:
         ctx = AOM.course_ctx(spine["meta"].get("scopeRule") or {}, spine_codes)
         sheet_rows = {k: v for k, v in sheet_resolves.items() if k[0] == slug}
 
-        new_att, tier_census, method_census, sidecar_only, sheet_counts, recon = \
-            merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows)
+        retract = retraction_pairs(sd)
+        mistag = mistag_pairs(sd)
+        blk_counts = (((sd.get("anchors") or {}).get("v8Retraction") or {}).get("counts") or {})
+        mt_counts = (((sd.get("anchors") or {}).get("misTagRepoints") or {}).get("counts") or {})
+        new_att, tier_census, method_census, sidecar_only, sheet_counts, recon, retract_dropped, mistag_dropped = \
+            merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows, retract, mistag)
+        if retract_dropped > (blk_counts.get("entriesRemoved") or 0):
+            die(f"{slug}: retractDropped {retract_dropped} > entriesRemoved "
+                f"{blk_counts.get('entriesRemoved')} — retraction surface mismatch")
+        if mistag_dropped > (mt_counts.get("entriesRemoved") or 0):
+            die(f"{slug}: misTagRepointDropped {mistag_dropped} > entriesRemoved "
+                f"{mt_counts.get('entriesRemoved')} — mis-tag surface mismatch")
 
         if len(sidecar_only) > max(50, 0.10 * len(sd["items"])):
             die(f"{slug}: sidecarOnly {len(sidecar_only)} of {len(sd['items'])} — id-space mismatch, investigate")
@@ -551,19 +798,23 @@ def main() -> int:
         new_bytes = dumps_map(new_att)
         map_changed = old_bytes != new_bytes
         if not map_changed:
+            _sa = (((new_att.get("sources") or {}).get("specLinks") or {}).get("census") or {}).get("sidAnchors") or {}
             report_rows.append(OrderedDict(course=slug, changed=False, ok=True,
-                                           sidecarCodes=sum(tier_census.values())))
+                                           sidecarCodes=sum(tier_census.values()),
+                                           sidAnchors=_sa))
             continue
 
         # determinism: merge twice, byte-identical
-        re_att, *_ = merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows)
+        re_att, *_ = merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows, retract, mistag)
         if dumps_map(re_att) != new_bytes:
             die(f"{slug}: merge not deterministic")
 
         staged, rstats = refresh_bundle(slug, new_att)
-        row, problems = battery(slug, att, new_att, sd, None, staged, sheet_rows, sidecar_only, recon)
+        row, problems = battery(slug, att, new_att, sd, None, staged, sheet_rows, sidecar_only, recon, retract, mistag)
         row["changed"] = True
         row["tierCensus"] = dict(sorted(tier_census.items()))
+        row["v8RetractDropped"] = retract_dropped
+        row["misTagRepointDropped"] = mistag_dropped
         row["rekey"] = rstats
         row["sheet"] = OrderedDict(added=sheet_counts[0], upgraded=sheet_counts[1], conflictsKept=sheet_counts[2])
         if problems:
@@ -578,11 +829,17 @@ def main() -> int:
                 f.write(new_bytes)
             changed.append(slug)
             totals["codesFromSidecar"] += sum(tier_census.values())
+            totals["v8RetractDropped"] += retract_dropped
+            totals["misTagRepointDropped"] += mistag_dropped
             totals["t2Hints"] += sum(len(r.get("t2HintCodes") or []) for r in new_att["items"].values())
             totals["sheetAdded"] += sheet_counts[0]
             totals["sheetUpgraded"] += sheet_counts[1]
             totals["sheetConflicts"] += sheet_counts[2]
             totals["inlineRewrites"] += rstats["inlineNewRewrites"]
+            _sa2 = (((new_att.get("sources") or {}).get("specLinks") or {}).get("census") or {}).get("sidAnchors") or {}
+            totals["sidAnchorsAdded"] += _sa2.get("added", 0)
+            totals["sidAnchorsVerified"] += _sa2.get("verified", 0)
+            totals["sidAnchorsConflictsKept"] += _sa2.get("conflictsKept", 0)
             print(f"OK {slug}: sidecar codes {sum(tier_census.values())} by {dict(sorted(tier_census.items()))} "
                   f"| sheet +{sheet_counts[0]}/~{sheet_counts[1]} | inline rewrites {rstats['inlineNewRewrites']}", flush=True)
         report_rows.append(row)
@@ -603,12 +860,18 @@ def main() -> int:
 
     report = OrderedDict(
         schema="syllabai.cie-consume-report/1.0",
-        lane="T-SPECS-CIE-CONSUME-1",
-        operatorDirective=("tranche-1 (operator order 'tranche-1', trace 1a15e4200e6af579) — "
-                           "the tranche-1 verdict round's consume re-run: tranche1_t2NearVerdicts "
-                           "of cie-anchor-gap-census-r0 landed in the sidecars at resources pin "
-                           "aa0b4de1 (T-SPECS-CIE-TRANCHE1-T2NEAR-1); the r9 consumption law unchanged"),
-        gatewayTrace="1a15e4200e6af579",
+        lane="T-SPECS-CIE-CONSUME-2",
+        operatorDirective=("T-SPECS-CIE-CONSUME-2 run-001 (operator directive "
+                           "'verdict fills -> review gate -> v2 consume', trace "
+                           "1a183e66619bd6dd) — the JOIN-2 chain of record stage "
+                           "#3: the gate-2 ACCEPTED wave-2 AS chain (JOIN-2 "
+                           "anchors + REJOIN-2 J* + VERDICT-2 V*) consumed into "
+                           "the hub attachment layer and bundles; engine method "
+                           "untouched except the disclosed per-run states (PIN/"
+                           "STAMP/directive/trace) + the second sheet input "
+                           "(REJOIN-2 wave2as, per-sheet via provenance) + the "
+                           "reviewState verdict mirror"),
+        gatewayTrace=GATE_TRACE,
         resourcesSha=PIN,
         stamp=STAMP,
         sidecars=len(slugs),
@@ -619,6 +882,9 @@ def main() -> int:
                        "hint (items[].t2HintCodes, never in codes/linkage) + rejoin J* post-gate "
                        "(REJOIN-1 record NEXT #2 verbatim)",
         courses=report_rows)
+    # quiescent-run robustness (T-RULE-T2-APPLY-2 adoption run-002 disclosure): at changed=0
+    # no per-course staging dir exists yet — create the staging root so the report still lands.
+    os.makedirs(STAGING, exist_ok=True)
     with open(os.path.join(STAGING, "_report_cie_consume.json"), "w", encoding="utf8") as f:
         f.write(dumps_map(report) + "\n")
     print(json.dumps({"changed": len(changed), "totals": dict(totals), "stagingHash": stage_hash}, indent=1), flush=True)

@@ -27,6 +27,16 @@ MANIFEST = os.environ.get("CIE_PHASE0_MANIFEST", os.path.join(REPO, ".syllabai",
 
 IMG_RE_MD = re.compile(r"(!\[[^\]]*\]\()((?:\.\./)+assets/[^)]+|assets/[^)]+)(\))")
 IMG_RE_HTML = re.compile(r'(<img[^>]*\bsrc=")((?:\.\./)+assets/[^"]+|assets/[^"]+)(")')
+# SME-WAVE2 r1: markdown LINK syntax [text](assets/<file>) (no leading '!') —
+# the chem-25/CS-19 corpus embeds image-describing links the IMG_RE_MD pass
+# cannot see (15 refs of record), and the link TEXTS themselves carry loose
+# unescaped '[' / ']' (e.g. "[...log[X] on the x-axis](assets/...)" — the
+# corpus's own loose markdown), so the anchor is the bare target boundary
+# '](assets/...' : anything that shape references the corpus assets dir and
+# gets the same pinned-URL rewrite. IMG passes first (byte-identical for the
+# image form), LINK catches the rest. The asset-map coherence gate
+# (cie-phase4-repair) stays green: 0 bare refs outside maps.
+LINK_RE_MD = re.compile(r"(\]\()((?:\.\./)+assets/[^)]+|assets/[^)]+)(\))")
 UPSTREAM_SCHEMAS = [
     "syllabai.sme-revision-note/1.0",
     "syllabai.sme-revision-notes-course/1.0",
@@ -64,7 +74,7 @@ def hotlink(course, corpus, section, topic, text):
         fname = m.group(2).split("/")[-1]
         return f"{m.group(1)}{base}/assets/{fname}{m.group(3)}"
 
-    return IMG_RE_HTML.sub(repl, IMG_RE_MD.sub(repl, text))
+    return LINK_RE_MD.sub(repl, IMG_RE_HTML.sub(repl, IMG_RE_MD.sub(repl, text)))
 
 
 def parse_note_md(text):

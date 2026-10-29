@@ -1,0 +1,71 @@
+version: 1
+task:
+  id: T-BOOK-066
+  title: "media-embed sources manifest + Cognito video pilot (ADR-BOOK-0002 implementation): manifest schema + G4 lint rule, pilot pack u1-c01 curation, authoring flip + bake + gates"
+  owner: "main-agent (zai-web session web-c414c074, chat 08b3170a, trace 1a179b7708279ae1)"
+  status: IN_PROGRESS
+  priority: P1
+  band: T-BOOK (interactive books)
+  wave: media-embed-video-pilot
+  deps: [T-BOOK-006, T-BOOK-010]
+  execution_record: >
+    Operator "Go" (2026-10-27, trace 1a179b7708279ae1) to draft the video-pilot
+    ADR offered at trace 1a179adedb4682cd (f-0039 candidate 1, operator-endorsed:
+    "we can use Cognito's videos"). DELIVERED THAT TRACE: ADR-BOOK-0002 PROPOSED
+    (docs/adr/ADR-BOOK-0002-media-embed-sources-manifest-video-pilot.md).
+    ACCEPTED + IMPLEMENTATION RUN (2026-10-27, trace 1a179c0ba4ff04ed): the
+    operator order "run the T-BOOK-066 chain" is recorded as the ADR acceptance
+    of record (status flipped PROPOSED -> ACCEPTED in the same ops tx as this
+    yaml update). Curation of record (per-URL fetch-verify, all 200): Cognito
+    Edexcel-IGCSE-Triple 1.1 lesson page (UFJRRHluWEk) embeds exactly one video
+    in the c01 spec band — youtube hkBrw2fG75U "GCSE Chemistry - States of
+    Matter & Changing State" (@Cognitoedu), oembed 200 (embeddable),
+    youtube-nocookie probe 200, specRefs 1.1+1.2 both in the 4CH1-S1-a join
+    set; the 1.3 solubility lesson page carries NO video (census 2026-10-27),
+    so the pilot ships ONE media-embed block (<=2 density guard respected,
+    no padding). Scope ride-alongs disclosed per the ACCEPTED ADR (the yaml
+    forbidden items were pre-acceptance guardrails): packages/contracts
+    media-embed payload gains required sourceId (ADR decision 1, "contracts
+    first"); apps/hub media-embed-block.tsx grows the decision-3 embed law
+    (youtube-nocookie iframe, rel=0, no autoplay, attribution in-card, link
+    fallback) — T-BOOK-006's link card stays as the fallback shape; the rail
+    block b08 + pack.yaml plan row ride the authoring PR (pack bytes are not
+    ops tx). Lint manifest rebuilt session-side from DB truth via the LIVE
+    chapters registry (documentId e6c0db50 + pdfPageStart/End; the T-BOOK-011
+    rebuild precedent — no Neon string in this session, the api edge serves
+    the same rows). Residual operator lever (recorded, NOT executed): the
+    books-ingest-rail.ts apply + VALIDATED flip is the operator's S4 lever;
+    without it the rail serves honest-empty live while the authoring planes
+    and gates land.
+    S4 WIRE VERIFICATION (2026-10-27, trace 1a17c4611167de11): the lever was
+    found ALREADY DISCHARGED ON THE WIRE — b08 u1:c1 ord 8 media-embed
+    VALIDATED version=2 (landed 04:37:33Z, flipped 04:39:42Z same day) with
+    NO prior receipt/yaml record; this desk did NOT re-apply (the of-record
+    upsert would have reset the 7 live VALIDATED siblings to SUGGESTED).
+    Verification GREEN: L2 row==authored (content/specRefs/anchor/id),
+    manifest drift guards url/youtubeId/sourceId, double-gate serve proof
+    u1:c1 -> 8/8 VALIDATED ord-ordered, fleet census 178/178 VALIDATED
+    across 29 chapters == lint census EXACT. Receipt:
+    .syllabai/receipts/T-BOOK-066/s4-wire-verification-and-estate-census-r0.json
+    (carries the W1 all-subjects estate census + the warehouse-arm
+    follow-up flag: warehouse_chunks superseded by the Task-40 rebuild).
+base:
+  repo: "syllabai-v2 @ f869ffaf (main, post research-doc commit)"
+basis: >
+  Operator "Go" trace 1a179b7708279ae1; operator endorsement trace
+  1a179adedb4682cd; f-0039 (feature-gap census, open);
+  docs/books/research/COGNITO-LESSON-ANALYSIS-2026-10-27.md; BOOK-PACK-SPEC
+  section 4 (media-embed payload, ADR-first clause, lint law 4); ADR-BOOK-0001
+  decisions 9/11; ADR-BOOK-0001 yaml format precedent (T-BOOK-015).
+scope:
+  allowed:
+    - "docs/adr/ADR-BOOK-0002-media-embed-sources-manifest-video-pilot.md"
+    - "books/4ch1/meta/media-sources.yaml (new, post-ACCEPTED)"
+    - "books/** lint/validator additions (G4 media-embed rule)"
+    - ".syllabai/tasks/T-BOOK-066-media-embed-video-pilot.yaml"
+    - ".syllabai/worklog.md (append only)"
+  forbidden:
+    - "packages/** (contracts payload amendment rides the T-BOOK-066 lane AFTER ACCEPTED, contracts first)"
+    - "apps/** renderer changes beyond verification (T-BOOK-006 built the cards lane)"
+    - "syllabai-resources/** pack bytes from THIS task yaml (authoring flips run as their own PRs under the standing authoring law)"
+    - "Kognity content of any kind (proprietary — f-0039 closes that reading)"

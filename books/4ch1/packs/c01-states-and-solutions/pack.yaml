@@ -1,10 +1,12 @@
 # S0 output of record - c01-states-and-solutions
+# T-BOOK-066: b08 media-embed appended per ADR-BOOK-0002 (planned_blocks 7 -> 8);
+# the S0 plan is binding — lint G1 checks planned == on-disk.
 chapter: "c01"
 chapter_key: "u1:c1"
 title: "States of matter"
 status: published # S4 flip of record — golive-r0 (operator order, trace 1a15ecf114c3406d); DB book_blocks VALIDATED of record
 block_schema: "book.block/1"
-planned_blocks: 7
+planned_blocks: 8
 check_density: "1 mcq-embed per pack (bank law: checkRefs only)"
 blocks:
   - {ord: 1, id: "c01-states-and-solutions/b01", type: prose, file: "blocks/b01-prose.json", anchor: 11}
@@ -14,3 +16,4 @@ blocks:
   - {ord: 5, id: "c01-states-and-solutions/b05", type: sim-embed, file: "blocks/b05-sim-embed.json", anchor: 15}
   - {ord: 6, id: "c01-states-and-solutions/b06", type: table-fill, file: "blocks/b06-table-fill.json", anchor: 16}
   - {ord: 7, id: "c01-states-and-solutions/b07", type: mcq-embed, file: "blocks/b07-mcq-embed.json", anchor: 18}
+  - {ord: 8, id: "c01-states-and-solutions/b08", type: media-embed, file: "blocks/b08-media-embed.json", anchor: 18}

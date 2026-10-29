@@ -1,0 +1,43 @@
+{
+  "receipt": "f184-decay-strength-opening-run-001-r0",
+  "lane": "F-184 opening — decay-driven strength surface (read-only foundation: strength law S1..S6 + practice-now queue + pins)",
+  "operator_launch_word": "the filed dossier line is F-184 (decay strength, ADR-031 computed-never-persisted) -> F-185 (model-driven draw + method-credit agreement measurement) -> F-186 (battle wave) (IM trace 1a167ba6542964b1, 2026-10-23)",
+  "prereg": "docs/F184-DECAY-STRENGTH-PLAN.md (committed WITH the implementation per the #216/#225/#229/#232/DC-4/F182/F183 pattern)",
+  "spec_of_record": {
+    "product_spec": "Kognity Competitive Research Dossier v1.1, Deep Dive D 8.3 (law 3) + 8.5 (syllabai/docs/research/KOGNITY_COMPETITIVE_RESEARCH_DOSSIER_2026-10-20.md)",
+    "tracker_row": "F-184 'Decay-driven strength surface (mastery bar with computed decay)' — P1, Wave 3 - Tutor & Diagnostic Intelligence, Cycle 2+, repo syllabai-v2, deps F-137/F-159/F-169/F-033",
+    "dependency_posture": "F-137/F-159/F-033 Not Started and F-169 Planned are stale-generation rows whose substance exists in v2: the decay math of record is services/learner-model/decay.ts + packages/contracts/src/decay.ts (frozen-core port, T-MIG-038/041/042/066, ADR-031 anchor law verbatim) and the per-address learner substrate is the F-182 build's drill_part_evidence seam — composed, not re-adjudicated, per the F-182 opening's disclosed-posture precedent",
+    "scope_law": "the filed spec verbatim: per-spec-point strength display driven by learner state + computed decay (ADR-031: decay computed, never persisted); the bar honestly falls as skills decay and doubles as the practice-now queue at decaying addresses; explicit bar-semantics documentation; NO engagement-only component"
+  },
+  "grounding_first_hand_at_main": [
+    "v2 main of record fcfc73a67b6282c22ad2f6f90eafec84ce92eb97; the F-182 opening (PR #310) + build and the F-183 MS-reveal law (PR #322) are the landed foundation — the F-183 tracker note ends 'Next per the filed dossier line: F-184 decay strength -> F-185 model-driven draw -> F-186 battle wave'",
+    "the ONE decay-math owner: services/learner-model/decay.ts decayedMastery = P0 * e^(-t/tau), tau frozen on the anchor's band (30/90/365 by LOW/DEVELOPING/SECURE at P0), floor 0.1, never persisted; bandOf thresholds 0.45/0.8; params of record LEARNER_DECAY_PAPER_DEFAULTS (reviewBelow 0.6) mirrored in packages/contracts/src/decay.ts",
+    "the evidence substrate: drill_part_evidence (migration 0010) — immutable (learner, course, code, part) rows; the seam's grading law grades MCQ server-side (marksAwarded = correct ? marks : 0) and records structured rows UNGRADED (null, never invented) — so graded = marksAwarded != null is exactly the server-graded MCQ population",
+    "the address space: services/drill/census-of-record.json (F-182 opening) — 182 spine SPEC_POINTs, 171 covered, 157 drillable; the bar exists only where the drill ships (anchor-law adjacency)",
+    "the engagement-coupled anti-pattern of record: apps/hub courses/[course]/strengths strengths-panel.tsx (browser-overlay accuracy/engaged fill, SIMULATED badge) — the filed replacement target; this opening ships its server-side law, the build PR re-surfaces the UI"
+  ],
+  "mechanism": [
+    "apps/api/src/services/drill/strength.ts — masteryAnchor (S1: marks-weighted sum awarded / sum possible over graded rows, fail-closed on impossible rows), addressStrength (S2/S3/S4: decayedMastery from the ONE owner with now as an explicit argument, bandOf on the decayed value, BAR_SEMANTICS strings, honest null on zero graded evidence, graded/ungraded counts disclosed), practiceNowQueue (S5: evidence-bearing addresses below reviewBelow 0.6, weakest first, code tie-break, QUEUE_SIZE 10), isGraded (S1's graded law) — pure module: no store, no SqlFn, no clock, no writes (S6)",
+    "apps/api/test/drill/strength.test.ts — 19 pins: S1 anchor arithmetic (marks-weighted not mean-of-means; binary MCQ; graded-only; fail-closed corruption), S2 decay conformance (hand-computed e^(-t/tau) cases; tau frozen on the ANCHOR's band while the displayed band re-bands on the decayed value — 0.8 SECURE anchor decays to a DEVELOPING 0.7533 on tau 365; floor 0.1; determinism; clock-skew shows the full anchor), S3/S4 (band boundaries 0.4/0.5/0.7/0.8/0.9 on the decayed value; honest nulls; substrate counts; no engagement counter in the result shape; BAR_SEMANTICS of record), S5 (weakest-first + code tie-break + QUEUE_SIZE cap with deterministic truncation; above-threshold stays out until decay crosses it), S6 (census-of-record adjacency: the queue over the 157 drillable codes only; params-of-record pins)",
+    "policy decisions Q1..Q6 disclosed in the plan doc 4 (marks-weighted anchor; graded-only; last-graded-evidence clock; re-band on decayed value; evidence-gated capped queue; course scoping with the caller)"
+  ],
+  "battery": {
+    "typecheck": "root bun run typecheck (contracts/shared/db/api) — 0 errors",
+    "suite": "bun test apps/api packages — 2735 pass / 13 skip / 0 fail (146 files; the 19 strength pins included)",
+    "strength_pins": "bun test apps/api/test/drill/strength.test.ts — 19 pass / 0 fail (219 expect calls)",
+    "zero_core": "scripts/preflight_zero_core_census.py --gate — GREEN (zero live entries, inventory complete)",
+    "census": "no census surface touched — census-of-record.json consumed by the adjacency pins, never recomputed; regeneration byte-identity remains pinned by draw.test.ts (green in the suite)"
+  },
+  "address_space_of_record_2026_10_23": {
+    "drillable_addresses": "157 of 182 spine SPEC_POINTs (the bar's address space, unchanged since the F-182 opening)",
+    "queue_constants": "reviewBelow 0.6, QUEUE_SIZE 10, floor 0.1, tau 30/90/365 by anchor band",
+    "anchor_law": "P0 = sum(marksAwarded)/sum(marksPossible) over graded rows; the graded population is the server-graded MCQ rows (structured evidence stays ungraded by the seam's own law)"
+  },
+  "residuals": [
+    "no endpoint, no contracts churn, no DB object, no UI in this opening — the build PR adds the strength route (read-only projection over the evidence seam) + the learner-overview bar + queue UI under the pinned shapes, rendering BAR_SEMANTICS verbatim",
+    "the anchor is a marks-weighted posterior, NOT BKT — F-137/F-138/F-139 are the research lanes that replace the anchor derivation; the decay law is untouched by construction (one owner)",
+    "multi-course strength projection is a build-PR decision; the law of record is per-address and course-agnostic",
+    "F-185 (model-driven draw + method-credit agreement measurement) and F-186 (battle wave) follow per the filed dossier line; F-186 is strictly sequenced after F-185 per its filed row"
+  ],
+  "trace": "1a167ba6542964b1"
+}

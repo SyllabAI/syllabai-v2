@@ -83,7 +83,17 @@ export default async function PastPapersPage({
   // The corpus attests papers in FIVE different metadata shapes (verified by
   // walking questions.json across courses); matchReconstruction normalises
   // each into (session ids, unit, variant) to match corpus rows.
-  const reconstructions = collectPastPapers(hub.questionTopics);
+  // OFFICIAL-PLANE-ONLY LAW (operator order 2026-10-25, trace
+  // 1a17e79bb0e50399, "disappear entirely"): reconstructions are built from
+  // the official parsed plane (officialPaperTopics, ADR-037) ALONE. The SME
+  // exam-questions bank NEVER builds an Interactive paper — its sourcePaper
+  // refs are topic-question citations, not full-paper parses, and grouping
+  // them into pseudo-papers misrepresented unparsed courses as interactive.
+  // Courses without the official plane get NO Interactive surface at all
+  // (no reconstructions, no playable badges, no Interactive chips); their
+  // Exam Questions bank stays exactly as-is on its own surface.
+  const parsedCourse = hub.officialPaperTopics.length > 0;
+  const reconstructions = collectPastPapers(hub.officialPaperTopics);
   const { matchKeys, matchedReconKeys, reconForCorpus } = matchReconstructions(
     papers,
     reconstructions,
@@ -282,15 +292,17 @@ export default async function PastPapersPage({
                             </Link>
                           </Button>
                         )}
-                        <InteractiveChip
-                          href={matchKeys.has(`${p.sessionId}:${p.dir}`) ? `${base}/past-papers/${matchKeys.get(`${p.sessionId}:${p.dir}`)}` : null}
-                          paperRef={p.ref}
-                          interactiveCount={interactiveCount}
-                          coverageLabel={coverageChipLabel(coverages.get(`${p.sessionId}:${p.dir}`) ?? null)}
-                          coverageTitle={coverages.get(`${p.sessionId}:${p.dir}`)
-                            ? coverageTitle(coverages.get(`${p.sessionId}:${p.dir}`)!)
-                            : null}
-                        />
+                        {parsedCourse && (
+                          <InteractiveChip
+                            href={matchKeys.has(`${p.sessionId}:${p.dir}`) ? `${base}/past-papers/${matchKeys.get(`${p.sessionId}:${p.dir}`)}` : null}
+                            paperRef={p.ref}
+                            interactiveCount={interactiveCount}
+                            coverageLabel={coverageChipLabel(coverages.get(`${p.sessionId}:${p.dir}`) ?? null)}
+                            coverageTitle={coverages.get(`${p.sessionId}:${p.dir}`)
+                              ? coverageTitle(coverages.get(`${p.sessionId}:${p.dir}`)!)
+                              : null}
+                          />
+                        )}
                       </div>
                     </div>
                   </li>

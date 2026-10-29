@@ -1,0 +1,41 @@
+{
+  "task": "DC-3 re-attempt entitlement (P1) — spec-recovered lane, run-001",
+  "date": "2026-10-22",
+  "operator_traces": {
+    "lane_open": "1a1604fe1912f9b9",
+    "spec_source_url": "1a1608f0c92a0349",
+    "current_session": "1a161583f72832d5"
+  },
+  "spec_provenance": {
+    "file": "SyllabAI-SmartChat-Mark-Design-Spec.docx",
+    "sha256": "0da8044a0667a47c684d4b0486784be02bc4992546eca2ec2946043e9e2b287a",
+    "recorded_prefix": "0da8044a",
+    "match": "EXACT",
+    "source": "github.com/nawaf-al-hussain/FileUpload/tree/main/SME-Research (operator-provided, post-reset recovery)",
+    "section_of_record": "3.3 DC-3 - Re-Attempt Economics"
+  },
+  "artifacts": {
+    "migration": "packages/db/drizzle/0008_dc3-mark-entitlement.sql (CREATE-only, v2-owned; seed rows free+paid)",
+    "schema": "packages/db/src/schema/schema.ts (+ai_mark_events, +mark_entitlement_policies, +mark_entitlements)",
+    "service": "apps/api/src/services/smartmark/index.ts (runEntitledPass gate + tx-aware engine + EntitlementError)",
+    "route": "apps/api/src/routes/smartmark/index.ts (402 entitlement_required + detail; production tx wiring)",
+    "tests": "apps/api/test/smartmark/dc3-entitlement.test.ts (13 pins) + fixture extensions in smartmark.test.ts / routes.test.ts",
+    "plan": "docs/DC3-REATTEMPT-ENTITLEMENT-PLAN.md (preregistration of record)",
+    "baseline": "packages/db/drizzle/meta/0000_snapshot.json refreshed from 0008 (T-BOOK-002 re-baseline flow)"
+  },
+  "gates": {
+    "typecheck": "clean (contracts/shared/db/api)",
+    "tests": "2515 pass / 0 fail / 13 skip (2528 tests, 131 files) incl. 13 new DC-3 pins",
+    "verifyBaseline": "ok=true, 0 drifts; census re-pinned 70/667/98/62/115 -> 73/685/101/67/118",
+    "fence": "zero touches on the byte-frozen set (routes/cla.ts @72644a96, services/cla/service.ts @efbbfd61, leakage-policy.ts, routes/tutor.ts, hub/**, packages/contracts/**); BASELINE_DB §4.1 honored: CREATE-only, zero ALTER on any Flyway-era table",
+    "golden": "not golden-gated (GOLDEN_MASTER §3 lifecycle posture; 200 AttemptSmartMarkView unchanged)"
+  },
+  "honest_deviations": [
+    "ordinal rides the append-only ai_mark_events ledger (attempt_id-keyed), not a column on the Flyway-frozen attempts row (§4.1 law); the spec's intent (counted in-path, stored, never inferred) holds in full",
+    "policy read server-side in the marking path; the route carries the 402 mapping (the spec's contrast is gate-vs-UI-styling)",
+    "disclosure copy day-truthful ('left today') over the spec's month example — the spec's own mechanics say per day",
+    "trial tier ships as implemented law, NOT as a policy row — N awaits the operator's ruling (spec open question (a)); no business value invented"
+  ],
+  "posture": "PR open; merge operator-gated (the merge word = the product sign-off the spec's effort note demands)",
+  "renumber_receipt": "merge-gate 2026-10-22: main took the 0008 slot mid-flight (T-TEACH-011 teaching_toolkit, idx 8 @337344dc); renumbered 0008 -> 0009 per first-pushed (0009_dc3-mark-entitlement.sql, DDL byte-preserved); union census re-measured 75/702/102/70/120, verifyBaseline 0 drifts; migration field above reads '0008_*' as authored — the shipped file of record is 0009_dc3-mark-entitlement.sql"
+}

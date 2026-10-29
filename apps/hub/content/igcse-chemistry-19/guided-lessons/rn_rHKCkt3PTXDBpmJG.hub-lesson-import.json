@@ -1,0 +1,199 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_rHKCkt3PTXDBpmJG",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "d67af7c43e5487e39c5b2fc9dc6319d31733e6dd87518a8fc22bd368596feda6",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_rHKCkt3PTXDBpmJG",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Electrolysis",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-9-electrolysis/1-9-1-explaining-conductivity",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.55C",
+        "text": "understand why covalent compounds do not conduct electricity"
+      },
+      {
+        "code": "4CH1-1.56C",
+        "text": "understand why ionic compounds conduct electricity only when molten or in aqueous solution"
+      },
+      {
+        "code": "4CH1-1.57C",
+        "text": "know that anion and cation are terms used to refer to negative and positive ions respectively"
+      }
+    ],
+    "primer": {
+      "text": "From Covalent Bonding and Ionic Bonding you know the two families of compounds and the particles inside them. This note asks one question of both: can anything charged actually move? The answer decides whether a compound conducts, and it also introduces the names anion and cation for the two charges of ion.",
+      "prerequisiteSubtopic": "Covalent Bonding"
+    },
+    "modules": [
+      {
+        "id": "rn_rHKCkt3PTXDBpmJG::L1",
+        "title": "Conductivity of covalent & ionic compounds",
+        "sourceHeadings": [
+          "Conductivity of covalent compounds",
+          "Conductivity of ionic compounds"
+        ],
+        "specRefs": [
+          "4CH1-1.55C",
+          "4CH1-1.56C"
+        ],
+        "opening": "An electric current is a flow of charged particles, which usually means electrons but can also mean ions. Covalent compounds have no freely moving charged particles, so they act as insulators in solid, liquid and gaseous form. Ionic compounds hold fixed ions in the solid state, but once molten or dissolved the ions move and carry the current, so those two states conduct.",
+        "keyPoints": [
+          "An electric current is a flow of charged particles, usually electrons but sometimes ions.",
+          "Covalent compounds do not conduct, since nothing charged is free to move through them and carry the current.",
+          "Covalent substances work as insulating materials whether solid, liquid or gas.",
+          "Ionic compounds conduct in the molten state or in solution, because their ions can then move and carry charge.",
+          "Solid ionic compounds do not conduct, because their ions are fixed in the lattice and cannot move."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Ask one question of any substance: is something charged and free to move? Covalent compounds answer no in every state, so they insulate. Ionic compounds answer no when solid but yes once melted or dissolved, because the ions are then free to travel and carry the current.",
+            "analogy": "Think of two buildings: one has no staff at all, the other has plenty of staff who are locked in during the day and released at closing time; only the second building can ever get work moving.",
+            "examPointer": "Match the state to the answer every time: covalent never conducts, ionic conducts only when molten or aqueous, and the moving particles are the ions."
+          },
+          "medium": {
+            "restatement": "Conduction is a mobility test for charge. Covalent structures fail it in every state, which is why they find work as insulators in transformers, equipment and wiring. Ionic structures fail it as solids, where the lattice pins the ions, but pass it when molten or aqueous, because the freed ions migrate under the applied field and carry the current.",
+            "analogy": "Picture two warehouses: one is empty, the other is full of trolleys chained in place; only after the chains are cut, by melting or dissolving, can the trolleys roll and move goods.",
+            "examPointer": "Use the application examples when asked to explain insulating behaviour: sulfur hexafluoride gas around transformers, silicone oils in equipment, and plastic coating on household wiring."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_rHKCkt3PTXDBpmJG::L1::Q1",
+          "rn_rHKCkt3PTXDBpmJG::L1::Q2",
+          "rn_rHKCkt3PTXDBpmJG::L1::Q3",
+          "rn_rHKCkt3PTXDBpmJG::L1::Q4",
+          "rn_rHKCkt3PTXDBpmJG::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_rHKCkt3PTXDBpmJG::L2",
+        "title": "Cations and anions",
+        "sourceHeadings": [
+          "Cations and anions"
+        ],
+        "specRefs": [
+          "4CH1-1.57C"
+        ],
+        "opening": "The two charges of ion carry two names: an anion is a negatively charged ion, and a cation is a positively charged ion. During electrolysis the electrodes pull the two apart, with cations moving to the negatively charged cathode and anions moving to the positively charged anode, while the electrons themselves travel from the anode towards the cathode in the outer circuit.",
+        "keyPoints": [
+          "An anion is a negatively charged ion, such as Cl-, O2- or the sulfate ion.",
+          "A cation is a positively charged ion, such as K+, Mg2+ or H+.",
+          "During electrolysis, cations move towards the negatively charged electrode, the cathode.",
+          "Anions move towards the positively charged electrode, the anode.",
+          "The electrons flow from the anode towards the cathode through the external circuit."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Two names, two charges, two destinations: negative anions swim to the positive anode, positive cations swim to the negative cathode, and opposite charges are the whole steering mechanism. The electrons complete the loop by flowing the other way through the wires.",
+            "analogy": "It is like a dance floor with two DJ booths: the cations (one name) always drift to one booth, the anions to the other, and nobody needs telling twice because opposite charges attract.",
+            "examPointer": "Anchor the memory aid: cations pair with cathodes, anions with anodes, and both pairings are opposite-charge attractions."
+          },
+          "medium": {
+            "restatement": "The vocabulary of record: anion names the negative ion and cation the positive ion. Under electrolysis the electrodes impose opposite potentials, so each ion migrates towards the electrode of opposite charge, cations to the cathode and anions to the anode, while electrons carry the return current from anode to cathode outside the electrolyte.",
+            "analogy": "Picture a sorting machine with two chutes of opposite polarity: every item is pulled to the chute that cancels its charge, and the conveyor belt carries the overflow around the back.",
+            "examPointer": "In a metal the moving charge is electrons; in a salt solution it is the ions moving to the electrodes while carrying the electrons; name the right carrier for each setting."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_rHKCkt3PTXDBpmJG::L2::Q1",
+          "rn_rHKCkt3PTXDBpmJG::L2::Q2",
+          "rn_rHKCkt3PTXDBpmJG::L2::Q3",
+          "rn_rHKCkt3PTXDBpmJG::L2::Q4",
+          "rn_rHKCkt3PTXDBpmJG::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "anion",
+          "definition": "A negatively charged ion, attracted to the positively charged anode during electrolysis.",
+          "firstLesson": 2
+        },
+        {
+          "term": "cation",
+          "definition": "A positively charged ion, attracted to the negatively charged cathode during electrolysis.",
+          "firstLesson": 2
+        },
+        {
+          "term": "electrolysis",
+          "definition": "The process in which an electric current splits a molten or dissolved compound, with ions migrating to the electrodes.",
+          "firstLesson": 2
+        },
+        {
+          "term": "electrode",
+          "definition": "A conductor dipped into the electrolyte, at which ions gain or lose electrons; the anode is positive and the cathode negative.",
+          "firstLesson": 2
+        },
+        {
+          "term": "insulator",
+          "definition": "A material that does not conduct electricity because it has no mobile charged particles.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "Molten potassium bromide is electrolysed using inert electrodes. a) Name the ions that move to each electrode, using the terms cation and anion. b) Explain why solid potassium bromide does not conduct but the molten compound does. c) Explain why a molten covalent liquid still does not conduct.",
+        "steps": [
+          "a) Cations are positive ions, so the K+ cations migrate to the negatively charged cathode; anions are negative ions, so the Br- anions migrate to the positively charged anode.",
+          "b) In the solid the ions sit in fixed positions in the lattice, so no charged particle is free to move and carry a current; melting frees the ions, which then move and carry the charge.",
+          "c) A covalent compound has no freely moving charged particles in any state — no ions and no mobile electrons — so it cannot conduct even when molten."
+        ],
+        "finalAnswer": "a) K+ cations to the cathode; Br- anions to the anode. b) Solid: ions fixed in the lattice; molten: ions free to move and carry charge. c) Covalent substances have no mobile charged particles at all."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a96fee7014b1-electrical-wire-insulated.png",
+        "alt": "Diagram of an insulated electrical wire",
+        "sourceHeading": "Covalent compounds are used as insulating materials",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/7418c58b0248-molten-ionic-substances-conduct-electricity-1.png",
+        "alt": "Molten ionic substances conduct electricity, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Conductivity of ionic compounds",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/4920e1930d50-transfer-of-charge.png",
+        "alt": "Electrolysis apparatus set up",
+        "sourceHeading": "Diagram showing the direction of movement of electrons and ions in the electrolysis of NaCl",
+        "moduleIds": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_kdRjZHjHcpVZsD3h",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "c239e8645ee81289283136f08d028dbacc6cd677474fe9ef9ac8601c2c312676",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_kdRjZHjHcpVZsD3h",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Electrolysis",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-9-electrolysis/1-9-4-practical-investigate-the-electrolysis-of-aqueous-solutions",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.58C",
+        "text": "describe experiments to investigate electrolysis, using inert electrodes, of molten compounds (including lead(II) bromide) and aqueous solutions (including sodium chloride, dilute sulfuric acid and copper(II) sulfate) and to predict the products"
+      },
+      {
+        "code": "4CH1-1.60C",
+        "text": "practical: investigate the electrolysis of aqueous solutions"
+      }
+    ],
+    "primer": {
+      "text": "From Electrolysis Experiments you know the apparatus and the prediction rules for aqueous electrolysis. This note is the practical itself: electrolyse three named solutions in the lab, collect the gases in inverted test tubes, run the identity tests, and read the products straight off what appears at each electrode.",
+      "prerequisiteSubtopic": "Electrolysis"
+    },
+    "modules": [
+      {
+        "id": "rn_kdRjZHjHcpVZsD3h::L1",
+        "title": "Method & testing the products",
+        "sourceHeadings": [
+          "Method:",
+          "Testing the products"
+        ],
+        "specRefs": [
+          "4CH1-1.60C"
+        ],
+        "opening": "The experiment electrolyses three solutions, sodium chloride, dilute sulfuric acid and copper(II) sulfate, in a beaker whose electrodes are covered by the liquid. Two inverted test tubes sit over the electrodes to catch any gas, a power pack drives the current, and each collected sample is then tested: a lighted splint for hydrogen, a glowing splint for oxygen, and litmus paper for chlorine.",
+        "keyPoints": [
+          "The aim is to electrolyse sodium chloride, dilute sulfuric acid and copper(II) sulfate solutions, collecting and identifying the products.",
+          "The electrodes are covered with the solution, and two inverted test tubes sit over them to collect gases.",
+          "The electrodes connect to a power pack or battery, which is switched on to let electrolysis take place.",
+          "A gas that burns with a pop from a lighted splint is hydrogen, collected at the cathode.",
+          "A gas that relights a glowing splint is oxygen, and a gas that bleaches litmus is chlorine."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Set up the cell with the electrodes covered by the solution and inverted tubes above them, switch on, and watch each electrode. Test any gas with a lighted splint for the pop of hydrogen, a glowing splint for oxygen, or litmus for chlorine, and treat any solid coating as the metal itself.",
+            "analogy": "It is like cooking with a lid: the tubes trap whatever rises, so nothing escapes before you have tasted, or tested, it.",
+            "examPointer": "Name the test for each gas in the right direction: pop means hydrogen at the cathode, relighting means oxygen at the anode, bleaching means chlorine."
+          },
+          "medium": {
+            "restatement": "The practical is a controlled comparison: identical apparatus, three different electrolytes, and the same gas tests applied throughout. Inverted tubes accumulate the gaseous products while the current runs, and the testing step names each gas: the cathode pop gives hydrogen, the anode relight gives oxygen, and litmus bleaching gives chlorine.",
+            "analogy": "Think of three identical kettles boiled with different waters: the apparatus stays constant, so any difference in what collects must come from the liquid, which is the comparison the practical is built on.",
+            "examPointer": "Solid products count as results too: a pink-brown coat on the cathode of the copper(II) sulfate cell is the copper, and colour is the clue to which metal."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kdRjZHjHcpVZsD3h::L1::Q1",
+          "rn_kdRjZHjHcpVZsD3h::L1::Q2",
+          "rn_kdRjZHjHcpVZsD3h::L1::Q3",
+          "rn_kdRjZHjHcpVZsD3h::L1::Q4",
+          "rn_kdRjZHjHcpVZsD3h::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_kdRjZHjHcpVZsD3h::L2",
+        "title": "Results & conclusions",
+        "sourceHeadings": [
+          "Results:",
+          "Conclusions:"
+        ],
+        "specRefs": [
+          "4CH1-1.58C"
+        ],
+        "opening": "The results table across the three solutions is the practical's payoff. Sodium chloride solution splits into hydrogen at its cathode and chlorine at its anode, the chlorine showing itself by bleaching litmus. Dilute sulfuric acid splits into hydrogen at its cathode and oxygen at its anode, while copper(II) sulfate deposits pink-brown copper at its cathode and gives oxygen at its anode.",
+        "keyPoints": [
+          "Sodium chloride solution splits into hydrogen gas at its cathode and chlorine gas at its anode.",
+          "The chlorine at the anode shows itself by bleaching a piece of litmus paper.",
+          "Dilute sulfuric acid splits into hydrogen gas at its cathode and oxygen gas at its anode.",
+          "Copper(II) sulfate solution yields copper metal at its cathode and oxygen gas at its anode.",
+          "The copper appears as a pink-brown deposit on the cathode electrode."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Three solutions, three product pairs: hydrogen and chlorine for sodium chloride, hydrogen and oxygen for dilute sulfuric acid, copper and oxygen for copper(II) sulfate. The gas tests and the pink-brown deposit are the evidence, and the conclusions simply name what each result means.",
+            "analogy": "It is like a tasting menu with three dishes: the same fork and knife do the testing, and each dish announces its own flavour, hydrogen here, chlorine there, copper in the third.",
+            "examPointer": "Quote the results as pairs, cathode and anode together, because the conclusions join the two halves of each row."
+          },
+          "medium": {
+            "restatement": "The conclusions follow the prediction rules met earlier: sodium chloride supplies a halide, so chlorine reaches the anode while hydrogen wins the cathode; sulfuric acid offers no halide, so oxygen forms instead; and copper(II) sulfate contributes a metal less reactive than hydrogen, so copper deposits while oxygen forms at the anode.",
+            "analogy": "Picture three vending machines loaded differently but sharing one mechanism: the mechanism is the rule set, and each machine's stock, the ions in its solution, decides what drops out.",
+            "examPointer": "Learn the table as three complete rows, cathode and anode together, because exam questions quote one row and expect the missing half."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_kdRjZHjHcpVZsD3h::L2::Q1",
+          "rn_kdRjZHjHcpVZsD3h::L2::Q2",
+          "rn_kdRjZHjHcpVZsD3h::L2::Q3",
+          "rn_kdRjZHjHcpVZsD3h::L2::Q4",
+          "rn_kdRjZHjHcpVZsD3h::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "electrolysis",
+          "definition": "The splitting of a molten or dissolved compound by an electric current.",
+          "firstLesson": 1
+        },
+        {
+          "term": "electrolyte",
+          "definition": "The solution being electrolysed, which conducts through its moving ions.",
+          "firstLesson": 1
+        },
+        {
+          "term": "cathode",
+          "definition": "The negatively charged electrode, where hydrogen pops or the metal deposits.",
+          "firstLesson": 1
+        },
+        {
+          "term": "anode",
+          "definition": "The positively charged electrode, where oxygen or chlorine is released.",
+          "firstLesson": 1
+        },
+        {
+          "term": "litmus",
+          "definition": "Paper indicator used here to detect chlorine, which bleaches it.",
+          "firstLesson": 1
+        }
+      ],
+      "workedExample": {
+        "prompt": "Three aqueous solutions — sodium chloride, dilute sulfuric acid and copper(II) sulfate — are electrolysed with inert electrodes and the products are collected. a) The gas at the cathode in the sulfuric acid cell burns with a 'pop'. Identify it. b) The gas at the anode in the sodium chloride cell bleaches litmus. Identify it and name the cathode product of this cell. c) A pink-brown deposit forms on the cathode of the copper(II) sulfate cell. Name the deposit and the anode product.",
+        "steps": [
+          "a) A gas that burns with a 'pop' from a lighted splint is hydrogen, so dilute sulfuric acid gives hydrogen at the cathode (with oxygen at the anode).",
+          "b) A gas that bleaches litmus paper is chlorine; the conclusion of record pairs it with hydrogen at the cathode for sodium chloride solution.",
+          "c) A pink-brown deposit on an electrode is the metal itself — copper — and the copper(II) sulfate cell gives oxygen at the anode, confirmed by the gas relighting a glowing splint."
+        ],
+        "finalAnswer": "a) Hydrogen. b) Chlorine at the anode; hydrogen at the cathode. c) Copper at the cathode; oxygen at the anode."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/9f22fc866bd4-electrolysis-apparatus-inverted-test-tubes.png",
+        "alt": "Diagram showing electrolysis equipment with inverted test tubes above the electrodes to collect the gases",
+        "sourceHeading": "Electrolysis cell for collecting gaseous products from aqueous solutions",
+        "moduleIds": []
+      }
+    ]
+  }
+}

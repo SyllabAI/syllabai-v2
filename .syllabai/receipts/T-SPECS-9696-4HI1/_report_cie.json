@@ -1,0 +1,57 @@
+{
+ "resourcesSha": "340803c9af4a949d3e274251b08697c6b42ba016",
+ "board": "Cambridge CIE",
+ "generatedUtc": "2026-10-28T06:12:42Z",
+ "courses": {
+  "cie-a-level-maths-20-pure-2": {
+   "qual": "cie-a-level-maths-2023-2025",
+   "rule": {
+    "kind": "topic_numbers",
+    "values": [
+     "2"
+    ]
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 6,
+    "specPoints": 17,
+    "parsePool": 146,
+    "scopedPool": 17,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-a-level-geography-21": {
+   "qual": "cie-a-level-geography-2025-2026",
+   "rule": {
+    "kind": "all"
+   },
+   "counts": {
+    "topics": 14,
+    "subtopics": 56,
+    "specPoints": 167,
+    "parsePool": 167,
+    "scopedPool": 167,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "duplicate subtopic title 'The human impact' in section 'Atmosphere and weather' (official key 2.4) — suffixed with key",
+    "duplicate subtopic title 'The human impact' in section 'Rocks and weathering' (official key 3.4) — suffixed with key"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  }
+ },
+ "failures": []
+}

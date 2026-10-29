@@ -20,13 +20,16 @@
   }
  },
  "course": "cie-as-environmental-management-20",
- "generatedUtc": "2026-10-22T12:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-as-environmental-management-20/spec_point_index.json": {
    "sha256": "4689922c322ead95527574fdfd2953f9a2c6d102d4722403f24f8dae17af6640"
   },
   "scripts/cie_rejoin_resolutions.yaml": {
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
   },
   "spec-links/cie-as-environmental-management-20.json": {
    "sha256": "f5db78d898d48b144118ac305607ad998c3ece1cd29acf634afc87cda1eedf11"
@@ -3468,7 +3471,7 @@
   ],
   "uncoveredSpineCodes": 65
  },
- "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -3486,6 +3489,11 @@
     },
     "itemsWithCodes": 57,
     "ladderCodesRetained": 171,
+    "sidAnchors": {
+     "added": 0,
+     "conflictsKept": 0,
+     "verified": 0
+    },
     "sidecarCodes": 71,
     "sidecarItems": 151,
     "sidecarOnlyItems": 0,
@@ -3495,7 +3503,8 @@
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": "ACCEPTED",
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": {
     "added": 0,

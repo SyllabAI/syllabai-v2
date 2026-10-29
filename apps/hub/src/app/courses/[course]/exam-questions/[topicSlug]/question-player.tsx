@@ -67,6 +67,7 @@ import { AnswerTextarea, answerPlaceholder } from "@/components/answer-textarea"
 import { QuestionHelpPanel } from "@/components/question-help-panel";
 import { Markdown } from "@/components/markdown";
 import { PartProblem } from "@/components/part-problem";
+import { MarkScheme, hasMarkCodes } from "@/components/mark-scheme";
 import {
   recordMcqAnswer,
   recordSelfScore,
@@ -476,6 +477,7 @@ export function QuestionPlayer({
           join={claFor ? (bridge.data.questions[claFor.q.id] ?? null) : null}
           questionNumber={claFor ? claFor.index + 1 : null}
           initialTargetId={claFor?.targetId ?? null}
+          course={course}
           messages={
             claFor
               ? (claSnapshot.threads.find(
@@ -579,7 +581,8 @@ function QuestionBody({
 
   /** SME: MCQs are marked instantly — no manual "How did you do?" box.
    * Mixed MCQ+structured questions keep the self-score box (their MCQ parts
-   * still record instant per-part marks). */
+   * still record instant per-part marks). Multi-select MCQs (attested
+   * N-correct keys, isMultiSelectKey) also record instantly — exact-set law. */
   const autoMarked =
     question.parts.length > 0 &&
     question.parts.every((p) => p.questionType === "multiple_choice" && hasAnswerKey(p));
@@ -1093,20 +1096,48 @@ function TypedAnswerWorkspace({
 
 function hasUsableChoices(part: ExamQuestion["parts"][number]): boolean {
   const c = part.choices;
-  return !!c && c.length > 0 && c.some((o) => o.label && o.textMd.trim());
+  if (!c || c.length === 0) return false;
+  // exactly-one-correct is required for auto-marking here too (not just in
+  // hasAnswerKey): upstream rows with an UNATTESTED multi-correct key (no
+  // full labels) must keep the honest notice — first-match keying would
+  // silently assert an answer the corpus does not attest. Attested
+  // multi-select keys (2–3 isCorrect, every choice labeled — corpus
+  // census: 3 geography-25 parts) are answered by isMultiSelectKey below,
+  // never here.
+  return (
+    c.some((o) => o.label && o.textMd.trim()) &&
+    c.filter((o) => o.isCorrect).length === 1
+  );
 }
 
 /**
  * SME parity (live SME markup verified 2026-09-18): the answer UI is always
  * the letter buttons; option CONTENT may be text rows, a composite image, or
  * table rows kept verbatim in the stem. A part is answerable whenever the
- * corpus carries an attested key — labeled choices with exactly one
- * isCorrect flag — regardless of whether option text was captured.
+ * corpus carries an attested key — labeled choices with at least one
+ * isCorrect flag (single-select: exactly one; multi-select: an attested
+ * set, see isMultiSelectKey) — regardless of whether option text was
+ * captured.
  */
 function hasAnswerKey(part: ExamQuestion["parts"][number]): boolean {
   const c = part.choices;
   if (!c || c.length < 2) return false;
-  return c.every((o) => !!o.label) && c.filter((o) => o.isCorrect).length === 1;
+  return c.every((o) => !!o.label) && c.filter((o) => o.isCorrect).length >= 1;
+}
+
+/**
+ * Multi-select mode (CIE "Tick THREE answers" class; corpus census: 3
+ * geography-25 parts — tourism/fieldwork/graphical-skills): every choice
+ * labeled and ≥2 attested isCorrect flags. The learner ticks exactly N (=
+ * attested correct count) options; the recorded boolean is the exact-set
+ * match — the boolean progress contract has no partial credit, and inline
+ * feedback still reports partial ticks honestly. Operator order
+ * "Multi-select player mode" (trace 1a168b3dc7498b5d).
+ */
+function isMultiSelectKey(part: ExamQuestion["parts"][number]): boolean {
+  const c = part.choices;
+  if (!c || c.length < 2) return false;
+  return c.every((o) => !!o.label) && c.filter((o) => o.isCorrect).length >= 2;
 }
 
 /**
@@ -1162,35 +1193,81 @@ function McqPart({
     "idle",
   );
 
-  const keyedText = hasUsableChoices(part);
-  const letterOnly = !keyedText && hasAnswerKey(part);
+  const nCorrect = part.choices?.filter((o) => o.isCorrect).length ?? 0;
+  const multi = isMultiSelectKey(part);
+  const multiWithText =
+    multi && (part.choices?.some((c) => c.label && c.textMd.trim()) ?? false);
+  const keyedText = !multi && hasUsableChoices(part);
+  const letterOnly = !multi && !keyedText && hasAnswerKey(part);
 
   const options: McqChoice[] = useMemo(() => {
-    if (keyedText) {
+    if (keyedText || multiWithText) {
       return part.choices!.map((c) => ({ label: c.label, isCorrect: c.isCorrect, textMd: c.textMd }));
     }
-    if (letterOnly) {
+    if (letterOnly || multi) {
       // SME: option content may live in the stem (composite image / table);
       // the answer UI is the letter buttons alone
       return part.choices!.map((c) => ({ label: c.label, isCorrect: c.isCorrect, textMd: "" }));
     }
     // legacy fallback: options inline in the problem markdown (correct letter
-    // parsed from the mark scheme) — still never invented
+    // parsed from the mark scheme) — still never invented; single-select only
+    // (attested multi keys classify as multi above, never reach this path)
     const correct = parseCorrectOption(part.solutionMd);
     return parseOptions(part.problemMd).map((o) => ({
       label: o.letter,
       isCorrect: correct === o.letter,
       textMd: o.text,
     }));
-  }, [part, keyedText, letterOnly]);
+  }, [part, keyedText, letterOnly, multi, multiWithText]);
 
+  const correctLabels = useMemo(
+    () => options.filter((o) => o.isCorrect).map((o) => o.label),
+    [options],
+  );
   const correctLabel = useMemo(() => options.find((o) => o.isCorrect)?.label ?? null, [options]);
   const [chosen, setChosen] = useState<string | null>(answer?.chosen ?? null);
+  // multi-select state — persisted comma-joined in the same chosen field
+  // (zero-migration: choice labels never contain commas)
+  const [chosenMulti, setChosenMulti] = useState<string[]>(() =>
+    multi && answer?.chosen ? answer.chosen.split(",").filter(Boolean) : [],
+  );
   const [submitted, setSubmitted] = useState<boolean>(!!answer);
   const [showWhy, setShowWhy] = useState(true);
-  const answerable = options.length > 0 && correctLabel !== null;
+  const answerable = multi
+    ? options.length > 0 && nCorrect >= 2
+    : options.length > 0 && correctLabel !== null;
+  const multiKey = (labels: string[]) => [...labels].sort().join(",");
+  const multiExact =
+    multi && submitted && multiKey(chosenMulti) === multiKey(correctLabels);
+  const multiHits = multi
+    ? chosenMulti.filter((l) => correctLabels.includes(l)).length
+    : 0;
+
+  const toggleMulti = (label: string) => {
+    if (submitted) return;
+    setChosenMulti((cur) =>
+      cur.includes(label) ? cur.filter((x) => x !== label) : [...cur, label],
+    );
+  };
 
   const submit = () => {
+    if (multi) {
+      // exact-set law: the learner must tick exactly N (= attested correct
+      // count) options; the recorded boolean is the exact-set match
+      if (chosenMulti.length !== nCorrect) return;
+      const picked = multiKey(chosenMulti);
+      recordMcqAnswer(
+        course,
+        key,
+        topicSlug,
+        subtopicCode,
+        picked,
+        picked === multiKey(correctLabels),
+      );
+      setSubmitted(true);
+      // no core bridge for multi — the 4CH1 attempt contract is single-option
+      return;
+    }
     if (!chosen) return;
     recordMcqAnswer(course, key, topicSlug, subtopicCode, chosen, chosen === correctLabel);
     setSubmitted(true);
@@ -1241,11 +1318,17 @@ function McqPart({
         </div>
       )}
       <PartProblem
-        md={keyedText || letterOnly ? part.problemMd : stripOptionLines(part.problemMd)}
+        md={
+          keyedText || letterOnly || multi
+            ? part.problemMd
+            : stripOptionLines(part.problemMd)
+        }
       />
       {answerable ? (
         <>
-          <p className="text-[13px] font-medium">Choose your answer</p>
+          <p className="text-[13px] font-medium">
+            {multi ? `Choose ${nCorrect} answers` : "Choose your answer"}
+          </p>
           {letterOnly && !optionsVisible && (
             <div className="rounded-md border border-warn/30 bg-warn/10 px-3 py-2 text-xs leading-relaxed text-warn-ink">
               The option artwork for this question (diagrams on the source site) was not captured
@@ -1254,24 +1337,29 @@ function McqPart({
               with the tutor. The answer key is attested, so you can still commit an answer below.
             </div>
           )}
-          {keyedText ? (
-          <div className="space-y-2" role="radiogroup" aria-label="MCQ options">
+          {keyedText || multiWithText ? (
+          <div
+            className="space-y-2"
+            role={multi ? "group" : "radiogroup"}
+            aria-label={multi ? "MCQ options — tick the correct set" : "MCQ options"}
+          >
             {options.map((o) => {
-              const isChosen = chosen === o.label;
+              const isChosen = multi ? chosenMulti.includes(o.label) : chosen === o.label;
               const showCorrect = submitted && o.isCorrect;
               const showWrong = submitted && isChosen && !o.isCorrect;
               return (
                 <div
                   key={o.label}
-                  role="radio"
+                  role={multi ? "checkbox" : "radio"}
                   aria-checked={isChosen}
                   tabIndex={submitted ? -1 : 0}
-                  onClick={() => !submitted && setChosen(o.label)}
+                  onClick={() => (multi ? toggleMulti(o.label) : setChosen(o.label))}
                   onKeyDown={(e) => {
                     if (submitted) return;
                     if (e.key === " " || e.key === "Enter") {
                       e.preventDefault();
-                      setChosen(o.label);
+                      if (multi) toggleMulti(o.label);
+                      else setChosen(o.label);
                     }
                   }}
                   className={cn(
@@ -1313,18 +1401,22 @@ function McqPart({
             })}
           </div>
           ) : (
-            <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="MCQ answer letters">
+            <div
+              className="flex flex-wrap gap-2"
+              role={multi ? "group" : "radiogroup"}
+              aria-label={multi ? "MCQ answer letters — tick the correct set" : "MCQ answer letters"}
+            >
               {options.map((o) => {
-                const isChosen = chosen === o.label;
+                const isChosen = multi ? chosenMulti.includes(o.label) : chosen === o.label;
                 const showCorrect = submitted && o.isCorrect;
                 const showWrong = submitted && isChosen && !o.isCorrect;
                 return (
                   <button
                     key={o.label}
-                    role="radio"
+                    role={multi ? "checkbox" : "radio"}
                     aria-checked={isChosen}
                     disabled={submitted}
-                    onClick={() => setChosen(o.label)}
+                    onClick={() => (multi ? toggleMulti(o.label) : setChosen(o.label))}
                     className={cn(
                       "flex size-11 items-center justify-center rounded-full border text-sm font-semibold transition-colors",
                       showWrong
@@ -1342,31 +1434,60 @@ function McqPart({
               })}
             </div>
           )}
+          {multi && !submitted && chosenMulti.length > 0 && chosenMulti.length !== nCorrect && (
+            <p className="text-xs text-muted-foreground">
+              Select exactly {nCorrect} answers to submit.
+            </p>
+          )}
           <div className="flex flex-wrap items-center gap-3">
             {!submitted ? (
-              <Button size="sm" disabled={!chosen} onClick={submit}>
+              <Button
+                size="sm"
+                disabled={multi ? chosenMulti.length !== nCorrect : !chosen}
+                onClick={submit}
+              >
                 Submit answer
               </Button>
             ) : (
               <>
-                <p
-                  className={cn(
-                    "text-[13px] font-medium",
-                    chosen === correctLabel
-                      ? "text-success"
-                      : "text-destructive",
-                  )}
-                >
-                  {chosen === correctLabel
-                    ? "Correct — well done."
-                    : `Not quite. The correct answer is ${correctLabel}.`}
-                </p>
+                {multi ? (
+                  <p
+                    className={cn(
+                      "text-[13px] font-medium",
+                      multiExact
+                        ? "text-success"
+                        : multiHits > 0
+                          ? "text-warn"
+                          : "text-destructive",
+                    )}
+                  >
+                    {multiExact
+                      ? "Correct — well done."
+                      : multiHits > 0
+                        ? `Partly correct — ${multiHits} of ${nCorrect} ticks are right. The correct answers are ${correctLabels.join(", ")}.`
+                        : `Not quite. The correct answers are ${correctLabels.join(", ")}.`}
+                  </p>
+                ) : (
+                  <p
+                    className={cn(
+                      "text-[13px] font-medium",
+                      chosen === correctLabel
+                        ? "text-success"
+                        : "text-destructive",
+                    )}
+                  >
+                    {chosen === correctLabel
+                      ? "Correct — well done."
+                      : `Not quite. The correct answer is ${correctLabel}.`}
+                  </p>
+                )}
                 <Button
                   size="sm"
                   variant="ghost"
                   className="h-8 gap-1.5 text-xs text-muted-foreground"
                   onClick={() => {
-                    setChosen(null);
+                    if (multi) setChosenMulti([]);
+                    else setChosen(null);
                     setSubmitted(false);
                     setShowWhy(true);
                   }}
@@ -1399,11 +1520,15 @@ function McqPart({
                 aria-expanded={showWhy}
               >
                 {showWhy ? <ChevronUp className="size-3.5" aria-hidden /> : <ChevronDown className="size-3.5" aria-hidden />}
-                Why this is the answer
+                {hasMarkCodes(part.solutionMd) ? "Answer and mark scheme" : "Why this is the answer"}
               </button>
               {showWhy && (
                 <div className="border-t px-3 py-2">
-                  <Markdown>{part.solutionMd}</Markdown>
+                  {hasMarkCodes(part.solutionMd) ? (
+                    <MarkScheme md={part.solutionMd} />
+                  ) : (
+                    <Markdown>{part.solutionMd}</Markdown>
+                  )}
                 </div>
               )}
             </div>
@@ -1890,7 +2015,35 @@ function MarkSchemeDialog({
                       <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
                         The completed answer should show:
                       </p>
-                      <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
+                      {hasMarkCodes(p.solutionMd) ? (
+                        <MarkScheme md={p.solutionMd} />
+                      ) : (
+                        <Markdown>{transformMarkTags(p.solutionMd)}</Markdown>
+                      )}
+                    </div>
+                  )}
+                  {p.markPoints && p.markPoints.length > 0 &&
+                    p.solutionMd?.trim() !== p.markPoints[0]?.textMd?.trim() && (
+                    <div className="border-t pt-3">
+                      <p className="mb-1.5 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                        Official mark scheme points
+                      </p>
+                      <ul className="space-y-1.5">
+                        {p.markPoints.map((mp) => (
+                          <li key={mp.id} className="flex items-start gap-2 text-[13px] leading-relaxed">
+                            <span
+                              className="mt-0.5 shrink-0 rounded bg-muted px-1.5 py-0.5 text-[10.5px] font-semibold tabular-nums text-muted-foreground"
+                              title={`${mp.marks} mark${mp.marks === 1 ? "" : "s"}`}
+                            >
+                              {mp.id}
+                              {mp.marks > 1 ? ` ×${mp.marks}` : ""}
+                            </span>
+                            <span className="min-w-0 flex-1">
+                              <Markdown>{transformMarkTags(mp.textMd)}</Markdown>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   )}
                 </section>

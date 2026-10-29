@@ -154,6 +154,38 @@ const auditRows = (): Route => ({
   rows: [],
 });
 
+/** ADR-040 §5.3: the R4 gate's kind lookup (legacy rows read POINTS byte-identically). */
+const schemeKindById = (kind: string | null = "POINTS", partId: string | null = null): Route => ({
+  match: /select scheme_kind, question_part_id from mark_schemes where id/,
+  rows: [{ scheme_kind: kind, question_part_id: partId }],
+});
+
+/** ADR-040 §2.2 as amended (ruling A): the bound-part awarded-range read. */
+const boundPartMarks = (marks: number | null): Route => ({
+  match: /select marks from question_parts where id = \?\s*::uuid/,
+  rows: marks === null ? [] : [{ marks }],
+});
+
+/** ADR-040 §5.3: the R4 gate's band read (empty = the zero-band LEVELS scheme). */
+const schemeBands = (rows: Array<Record<string, unknown>> = []): Route => ({
+  match: /select level_index, marks_min, marks_max, descriptor_md from mark_bands where mark_scheme_id/,
+  rows,
+});
+
+/** ADR-040 §5.3: the R4 gate's awarded-range read (the version's part marks). */
+const versionParts = (marks: number[]): Route => ({
+  match: /select marks from question_parts where question_version_id/,
+  rows: marks.map((m) => ({ marks: m })),
+});
+
+/** A valid 4-level 0-12 tile (the ADR-040 §2.1 shape). */
+const TILED_BANDS = [
+  { level_index: 1, marks_min: 0, marks_max: 2, descriptor_md: "Level 1 (0-2 marks): isolated statements." },
+  { level_index: 2, marks_min: 3, marks_max: 6, descriptor_md: "Level 2 (3-6 marks): linked statements." },
+  { level_index: 3, marks_min: 7, marks_max: 9, descriptor_md: "Level 3 (7-9 marks): applies knowledge." },
+  { level_index: 4, marks_min: 10, marks_max: 12, descriptor_md: "Level 4 (10-12 marks): precise use of terminology." },
+];
+
 describe("actorLabelOf / guards — the frozen recorder + entity laws", () => {
   test("email label passes through; null/blank/anonymousUser → system", () => {
     expect(actorLabelOf({ userId: "u", email: "t@syllab.ai" })).toBe("t@syllab.ai");
@@ -321,6 +353,7 @@ describe("ContentReviewWriteService — validate-all (the V20 guard order)", () 
       bridge,
       versionsOfPaper("SUGGESTED"),
       schemeForVersion("SUGGESTED"),
+      schemeKindById(),
       { match: /update question_versions set validation_state = 'VALIDATED' where id/, rows: [] },
       { match: /update mark_schemes set validation_state = 'VALIDATED' where id/, rows: [] },
       { match: /update exam_papers set validation_state = 'VALIDATED' where id/, rows: [] },
@@ -353,6 +386,7 @@ describe("ContentReviewWriteService — validate-all (the V20 guard order)", () 
       { match: /select reconciliation_status from glm_ocr_bridge_records where paper_id/, rows: [] },
       versionsOfPaper("SUGGESTED"),
       schemeForVersion("SUGGESTED"),
+      schemeKindById(),
       { match: /update question_versions set validation_state = 'VALIDATED' where id/, rows: [] },
       { match: /update mark_schemes set validation_state = 'VALIDATED' where id/, rows: [] },
       { match: /update exam_papers set validation_state = 'VALIDATED' where id/, rows: [] },
@@ -379,6 +413,7 @@ describe("ContentReviewWriteService — mark-scheme level", () => {
   test("validate with criteria + guidance: point update + guidance + audit detail", async () => {
     const routes = [
       schemeById(),
+      schemeKindById(),
       schemePoints(),
       { match: /update mark_points set acceptance_criteria/, rows: [] },
       {
@@ -417,6 +452,7 @@ describe("ContentReviewWriteService — mark-scheme level", () => {
   test("no body = validate as-is (no guidance update issued)", async () => {
     const routes = [
       schemeById(),
+      schemeKindById(),
       schemePoints(),
       { match: /update mark_schemes set validation_state = 'VALIDATED' where id/, rows: [] },
       auditRows(),
@@ -429,7 +465,7 @@ describe("ContentReviewWriteService — mark-scheme level", () => {
   });
 
   test("null markPointId → 404 'mark point in scheme null not found' (no cascade law)", async () => {
-    const routes = [schemeById(), schemePoints()];
+    const routes = [schemeById(), schemeKindById(), schemePoints()];
     const svc = new ContentReviewWriteService({ sql: txFakeSql(routes), clock });
     expect(
       svc.validateMarkScheme(SCHEME_ID, [{ markPointId: null, acceptanceCriteria: ["x"] }], null, TEACHER),
@@ -442,6 +478,177 @@ describe("ContentReviewWriteService — mark-scheme level", () => {
     ];
     const svc = new ContentReviewWriteService({ sql: txFakeSql(routes), clock });
     expect(svc.rejectMarkScheme(UNKNOWN, TEACHER)).rejects.toThrow(`mark scheme ${UNKNOWN} not found`);
+  });
+});
+
+describe("ContentReviewWriteService — ADR-040 §5.3 the R4 band-coverage gate", () => {
+  test("LEVELS scheme with a tiled band set → VALIDATED (the gate rides through)", async () => {
+    const routes = [
+      schemeById("SUGGESTED"),
+      schemeKindById("LEVELS"),
+      schemeBands(TILED_BANDS),
+      versionParts([12]), // single-part version: the part's marks are the awarded range
+      schemePoints(),
+      { match: /update mark_schemes set validation_state = 'VALIDATED' where id/, rows: [] },
+      auditRows(),
+    ];
+    const tx = txFakeSql(routes);
+    const svc = new ContentReviewWriteService({ sql: tx, clock });
+    const out = await svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER);
+    expect(out.validationState).toBe("VALIDATED");
+  });
+
+  test("ruling A: a part-bound LEVELS scheme tiles THAT part's marks, not the version sum", async () => {
+    // a 4-level 0-12 grid bound to a 12-mark part inside a 20-mark multi-part
+    // version — the wave-1 printed reality (437/437 part-granular grids):
+    // the bound-part read wins, the version part-sum never fires
+    const routes = [
+      schemeById("SUGGESTED"),
+      schemeKindById("LEVELS", "60000000-0000-4000-8000-000000000012"),
+      schemeBands(TILED_BANDS),
+      { match: /select marks from question_parts where id = \?\s*::uuid/, rows: [{ marks: 12 }] },
+      schemePoints(),
+      { match: /update mark_schemes set validation_state = 'VALIDATED' where id/, rows: [] },
+      auditRows(),
+    ];
+    const tx = txFakeSql(routes);
+    const svc = new ContentReviewWriteService({ sql: tx, clock });
+    const out = await svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER);
+    expect(out.validationState).toBe("VALIDATED");
+    // the version part-sum read must never fire for a bound scheme
+    expect(tx.calls.some((c) => /question_parts where question_version_id/.test(c.text))).toBe(false);
+  });
+
+  test("ruling A: a part-bound LEVELS scheme short of ITS part's marks → 409 (tiling stays hard)", async () => {
+    const routes = [
+      schemeById("SUGGESTED"),
+      schemeKindById("LEVELS", "60000000-0000-4000-8000-000000000012"),
+      schemeBands(TILED_BANDS),
+      { match: /select marks from question_parts where id = \?\s*::uuid/, rows: [{ marks: 15 }] },
+      schemePoints(),
+      auditRows(),
+    ];
+    const svc = new ContentReviewWriteService({ sql: txFakeSql(routes), clock });
+    expect(svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER)).rejects.toThrow(
+      "LEVELS scheme band coverage invalid — the top band ends at 12 but the awarded range reaches 15 — bands must tile the awarded range (ADR-040 §2.1)",
+    );
+  });
+
+  test("LEVELS scheme with zero bands → 409 (absence = gated, the NO_SCHEME_BANDS precondition)", async () => {
+    const routes = [schemeById(), schemeKindById("LEVELS"), schemePoints(), schemeBands([]), versionParts([12])];
+    const svc = new ContentReviewWriteService({ sql: txFakeSql(routes), clock });
+    expect(svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER)).rejects.toThrow(
+      "LEVELS scheme band coverage invalid — the scheme carries no bands — a LEVELS scheme with zero bands marks nothing (ADR-040 §2.1: zero marks is not a band)",
+    );
+  });
+
+  test("LEVELS scheme with a range gap → 409 naming the offending levels", async () => {
+    const gapped = TILED_BANDS.map((b) =>
+      b.level_index === 3 ? { ...b, marks_min: 8 } : b, // 6→8 gap (7 missing)
+    );
+    const routes = [schemeById(), schemeKindById("LEVELS"), schemePoints(), schemeBands(gapped), versionParts([12])];
+    const svc = new ContentReviewWriteService({ sql: txFakeSql(routes), clock });
+    expect(svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER)).rejects.toThrow(
+      "mark ranges are not contiguous (gap): level 2 ends at 6 but level 3 starts at 8 (expected 7)",
+    );
+  });
+
+  test("top band short of the awarded range → 409 (tiling)", async () => {
+    const short = TILED_BANDS.map((b) =>
+      b.level_index === 4 ? { ...b, marks_max: 11 } : b, // reaches 11, part awards 12
+    );
+    const routes = [schemeById(), schemeKindById("LEVELS"), schemePoints(), schemeBands(short), versionParts([12])];
+    const svc = new ContentReviewWriteService({ sql: txFakeSql(routes), clock });
+    expect(svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER)).rejects.toThrow(
+      "the top band ends at 11 but the awarded range reaches 12 — bands must tile the awarded range (ADR-040 §2.1)",
+    );
+  });
+
+  test("multi-part version: the awarded range is the SUM (the one printed table reaches the question total)", async () => {
+    const routes = [
+      schemeById("SUGGESTED"),
+      schemeKindById("LEVELS"),
+      schemeBands(TILED_BANDS),
+      versionParts([4, 8]), // parts a(4) + b(8) — the 12 total
+      schemePoints(),
+      { match: /update mark_schemes set validation_state = 'VALIDATED' where id/, rows: [] },
+      auditRows(),
+    ];
+    const tx = txFakeSql(routes);
+    const svc = new ContentReviewWriteService({ sql: tx, clock });
+    const out = await svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER); // 12 == 4+8 tiles
+    expect(out.validationState).toBe("VALIDATED");
+  });
+
+  test("unknown part marks (no parts) → the tiling check is skipped, the flip rides", async () => {
+    const routes = [
+      schemeById("SUGGESTED"),
+      schemeKindById("LEVELS"),
+      schemeBands(TILED_BANDS),
+      versionParts([]), // zero parts: range unknown — never fabricated
+      schemePoints(),
+      { match: /update mark_schemes set validation_state = 'VALIDATED' where id/, rows: [] },
+      auditRows(),
+    ];
+    const tx = txFakeSql(routes);
+    const svc = new ContentReviewWriteService({ sql: tx, clock });
+    const out = await svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER);
+    expect(out.validationState).toBe("VALIDATED");
+  });
+
+  test("scheme_kind absent (legacy row) reads POINTS — the gate never fires, zero behavior change", async () => {
+    const routes = [
+      schemeById(),
+      schemeKindById(null), // legacy row: scheme_kind column default rides, but a null select rides too
+      schemePoints(),
+      { match: /update mark_schemes set validation_state = 'VALIDATED' where id/, rows: [] },
+      auditRows(),
+    ];
+    const tx = txFakeSql(routes);
+    const svc = new ContentReviewWriteService({ sql: tx, clock });
+    const out = await svc.validateMarkScheme(SCHEME_ID, null, null, TEACHER);
+    expect(out.validationState).toBe("VALIDATED");
+    // the gate bailed before any band/part read
+    expect(queriesOf(tx).some((t) => t.includes("from mark_bands"))).toBe(false);
+  });
+
+  test("batch: a LEVELS scheme that fails the gate fails the WHOLE batch BEFORE any mutation", async () => {
+    const routes = [
+      findPaper(),
+      { match: /select reconciliation_status from glm_ocr_bridge_records where paper_id/, rows: [] },
+      versionsOfPaper("SUGGESTED"),
+      schemeForVersion("SUGGESTED"),
+      schemeKindById("LEVELS"),
+      schemeBands([]), // zero bands
+      versionParts([12]),
+    ];
+    const tx = txFakeSql(routes);
+    const svc = new ContentReviewWriteService({ sql: tx, clock });
+    expect(svc.validateAllForPaper(PAPER_ID, false, TEACHER)).rejects.toThrow(
+      "LEVELS scheme band coverage invalid",
+    );
+    // fail fast BEFORE mutating: no update statement was issued at all
+    const calls = (tx as unknown as { calls: Array<{ text: string }> }).calls;
+    expect(calls.some((c) => c.text.includes("update question_versions"))).toBe(false);
+    expect(calls.some((c) => c.text.includes("update mark_schemes"))).toBe(false);
+    expect(calls.some((c) => c.text.includes("update exam_papers"))).toBe(false);
+  });
+
+  test("batch: force does NOT bypass the band gate (data-integrity vs human-review semantics)", async () => {
+    const routes = [
+      findPaper(),
+      { match: /select reconciliation_status from glm_ocr_bridge_records where paper_id/, rows: [] },
+      versionsOfPaper("SUGGESTED"),
+      schemeForVersion("SUGGESTED"),
+      schemeKindById("LEVELS"),
+      schemeBands([]),
+      versionParts([12]),
+    ];
+    const tx = txFakeSql(routes);
+    const svc = new ContentReviewWriteService({ sql: tx, clock });
+    expect(svc.validateAllForPaper(PAPER_ID, true, TEACHER)).rejects.toThrow(
+      "LEVELS scheme band coverage invalid",
+    );
   });
 });
 

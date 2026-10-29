@@ -55,8 +55,13 @@ import { buildTeacherMarkingRouters } from "./routes/teachermarking";
 import { buildSmeRouters } from "./routes/sme";
 import { buildInterventionRouters } from "./routes/intervention";
 import { buildLearnerRouters } from "./routes/learner";
+import { buildLearnerProgressRouters } from "./routes/learner/progress";
+import { buildLearnerStudyPlanRouters } from "./routes/learner/study-plan";
+import { buildDrillRouters, drillErrorResponse } from "./routes/drill";
 import { buildClassroomRouters } from "./routes/classroom";
 import { buildTeacherAssignmentsRouters } from "./routes/assignments";
+import { buildAssignmentPacksRouters } from "./routes/assignment-packs"; // T-SENECA-001 (r5) — the Seneca resource packs (v2-native, additive; the T-TEACH-012 one-mount-line precedent)
+import { buildTeachingToolkitRouters } from "./routes/teaching-toolkit";
 import { buildResearchRouters } from "./routes/research";
 import { buildIngestionRouters } from "./routes/ingestion";
 import { buildBooksApp } from "./services/books";
@@ -74,7 +79,7 @@ import { withClassFeatureGate, resolveTutorAnchor, resolveClaAnchor, resolveSmar
 import { requireDatabaseUrl } from "@syllabai/db";
 import { createSql } from "./services/identity/users";
 import { buildClaThreadsRouters } from "./routes/cla-threads";
-import { buildLlmChain } from "./services/llmchain";
+import { buildLlmChain, chainAsDrillMethodCreditGenerator } from "./services/llmchain";
 import { toErrorResponse, apiError } from "./services/identity/errors";
 import { bootErrorBody, getAuth } from "./middleware/auth";
 import { DEFAULT_CORS_ORIGINS } from "./services/identity/config";
@@ -94,6 +99,8 @@ const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
 const learnerKg = buildLearnerKgRouters();
+const learnerProgress = buildLearnerProgressRouters();
+const learnerStudyPlan = buildLearnerStudyPlanRouters();
 const sme = buildSmeRouters();
 const intervention = buildInterventionRouters();
 const classroom = buildClassroomRouters();
@@ -104,6 +111,7 @@ const featureGateDeps: FeatureGateDeps = {
   sql: createSql(requireDatabaseUrl(process.env as { DATABASE_URL?: string })),
 };
 const teacherAssignments = buildTeacherAssignmentsRouters();
+const assignmentPacks = buildAssignmentPacksRouters(); // T-SENECA-001
 const revisionNotes = buildRevisionNotesRouters();
 const knowledge = buildKnowledgeRouters();
 const teacherKg = buildTeacherKgRouters();
@@ -120,11 +128,18 @@ const ingestion = buildIngestionRouters();
 // honest 503 postures everywhere are byte-identical to the pre-adapter
 // surface; keyed boots generate/mark/transcribe for real with failover.
 const llmChain = buildLlmChain();
+// F-183 — the drill's method-credit seam rides THE ONE CHAIN OF RECORD (the
+// smartmark posture): dormant on zero-key boots (the honest null on the ack,
+// law L6), live method-credit verdicts when the chain is up.
+const drill = buildDrillRouters(process.env, {
+  methodCreditGenerator: chainAsDrillMethodCreditGenerator(llmChain),
+});
 const tutor = buildTutorRouters(process.env, { chain: llmChain });
 const cla = buildClaRouters(process.env, { chain: llmChain });
 const claThreads = buildClaThreadsRouters(process.env);
 const answerInput = buildAnswerInputRouters(process.env, { chain: llmChain });
 const llmadmin = buildLlmAdminRouters(process.env, llmChain);
+const teachingToolkit = buildTeachingToolkitRouters(process.env, { chain: llmChain });
 
 const app = new Hono();
 
@@ -290,6 +305,47 @@ app.route("/api/v1/learners/me", learner.learnerRoute);
 // minimal app-level wiring per the 010/020/021/030/032/041/062 precedent
 // so R0 can ratify or lift them out at review.
 app.route("/api/v1/learners/me", learnerKg.learnerKgRoute);
+
+// DC-7 progress attribution routers (spec §3.7; prereg
+// docs/DC7-PROGRESS-ATTRIBUTION-PLAN.md). DC-7-SPEC-NATIVE paths, not a
+// frozen-port band: GET /api/v1/learners/me/progress and
+// GET /api/v1/learners/me/plan-projection — the event→projection rollup
+// (three display levels, separate notes|questions dimensions) and the
+// study plan's subscription to the SAME projection (per-task-type
+// thresholds). The router owns its authz internally (the
+// createLearnerStateRouter shell posture); both handlers are pure
+// read-time projections — the rollup writes nothing, so the tree, the
+// plan and the dashboard can never disagree. Additive mount per the
+// minimal app-level wiring precedent.
+app.route("/api/v1/learners/me", learnerProgress.learnerProgressRoute);
+
+// Study-Plan Builder routers (spec §5.3 + roadmap Table 3 P2 row; prereg
+// docs/STUDY-PLAN-BUILDER-PLAN.md). DC-7-SPEC-NATIVE paths under the same
+// band: GET/PUT /api/v1/learners/me/study-plan and GET
+// /api/v1/learners/me/study-plan/defaults — the plan-config upsert (the
+// lane's ONLY write, migration 0012_study_plans) and the deterministic
+// week generator whose task completion states ride the DC-7
+// buildPlanProjection subscription (nothing completion-shaped is stored).
+// The router owns its authz internally (the shell posture). Additive mount
+// per the minimal app-level wiring precedent.
+app.route("/api/v1/learners/me", learnerStudyPlan.learnerStudyPlanRoute);
+
+// F-182 drill surface routers (the per-spec-point drill; prereg
+// docs/F182-DRILL-BUILD-PLAN.md under the opening plan
+// docs/F182-DRILL-SURFACE-PLAN.md §6.1). F-182-SPEC-NATIVE paths, not a
+// frozen-port band: GET /api/v1/learners/me/drill/addresses (the drillable
+// address picker — the census of record's fail-closed floor P3),
+// POST /api/v1/learners/me/drill/draw (the 5-part draw, policies P1..P5
+// untouched from the opening's pure modules) and
+// POST /api/v1/learners/me/drill/evidence (the F-055-shaped attempt-evidence
+// seam over the drill address space — one immutable row per (draw, part),
+// the instant post-attempt reveal riding the ack). The router owns its
+// authz internally (the createLearnerStateRouter shell posture). ZERO-STAKES
+// LAW: the drill writes ONLY its own tables (drill_draws +
+// drill_part_evidence, migration 0010_drill_surface) and reads NO
+// progress-bearing table — no attempts, no ai_mark_events, no gradebook
+// events, ever. Additive mount per the minimal app-level wiring precedent.
+app.route("/api/v1/learners/me/drill", drill.drillRoute);
 
 // Marking routers (T-MIG-032 — Wave 3). Path parity with the frozen core:
 // LearnerSelfMarkController + StudentSmartMarkController share the
@@ -584,6 +640,33 @@ app.route("/api/v1/teacher/learners", classroom.teacherRosterRoute);
 // R0 can ratify or lift them out at review.
 app.route("/api/v1/teacher/assignments", teacherAssignments.teacherAssignmentsRoute);
 
+// Assignment packs (T-SENECA-001 — the teacher assignment creator's "Seneca
+// resources" option; v2-native additive side-family, the frozen assignments
+// wire untouched). Teacher: library feed + create + preview at
+// /api/v1/teacher/assignment-packs; learner: pack detail + task completion
+// under /api/v1/learners/me/assignment-packs. The pack IS an `assignments`
+// row + side-table tasks, so the existing hand-in/roster/agenda surfaces
+// work unchanged. OUT-OF-FENCE COMMIT (T-SENECA-001, R0 ratification
+// requested): the import + construction + two mount lines are the minimal
+// app-level wiring, the T-TEACH-012 precedent.
+app.route("/api/v1/teacher/assignment-packs", assignmentPacks.teacherPacksRoute);
+app.route("/api/v1/learners/me", assignmentPacks.learnerPacksRoute);
+
+// Teaching Toolkit router (T-TEACH-012 — the 4 educator-ai generators,
+// plan of record docs/TEACHING_TOOLKIT_PLAN.md). Mounted at
+// /api/v1/teacher/toolkit (generate/context/resources); the router owns
+// its TEACHER/ADMIN authz internally, and generation rides THE ONE chain
+// of record above (chainAsToolkitGenerator, the T-TEACH-010 bridge).
+//
+// ⚠️ OUT-OF-FENCE COMMIT (T-TEACH-012, R0 ratification requested):
+// T-TEACH-012's scope.allowed covers routes/teaching-toolkit.ts,
+// middleware/ratelimit.ts (the llm-tier line) and test/teachingtoolkit/**
+// — NOT this file. The import + construction + one mount line + this
+// comment are the minimal app-level wiring, shipped as a separate commit
+// per the T-MIG-010/020/021/030/032/033/034/041t2/052t2/T-MIG-117
+// precedent so R0 can ratify or lift them out at review.
+app.route("/api/v1/teacher/toolkit", teachingToolkit.toolkitRoute);
+
 // Revision-notes + knowledge + teacher-KG/coverage/concept-graph routers
 // (T-MIG-082 tranche-1 — the deferred-mount band, r4b). Path parity with the
 // frozen core: RevisionNoteLearnerController (/api/v1/learners/me/revision-
@@ -694,6 +777,11 @@ app.all("/api/v1/*", (c) => {
  * serves (:224-230: "internal_error" / "an internal error occurred").
  */
 app.onError((err, c) => {
+  // F-182 lane: UnknownCourseError is the drill's fail-closed course registry
+  // (the anchor law) — 404 not_found, never a 500 (drillErrorResponse also
+  // maps the identity-domain errors; the drill module shares the shape).
+  const drillMapped = drillErrorResponse(err);
+  if (drillMapped) return c.json(drillMapped.body, drillMapped.status as 400 | 401 | 403 | 404 | 409 | 429);
   const mapped = toErrorResponse(err);
   if (mapped) {
     if (mapped.headers) for (const [k, v] of Object.entries(mapped.headers)) c.header(k, v);

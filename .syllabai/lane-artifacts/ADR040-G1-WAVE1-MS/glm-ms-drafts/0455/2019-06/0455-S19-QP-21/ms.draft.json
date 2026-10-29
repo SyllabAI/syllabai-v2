@@ -1,0 +1,27 @@
+{
+ "schemaVersion": "glm-ocr-ms-v1+adr040-g3-cie-bgrammar-r0",
+ "extractionMethod": "textlayer-tables-adr040-g3-cie-r2 (deterministic PyMuPDF word-box parse; header grammars A 'Level|Descriptors|Mark', B 'Level|Description|Marks', C end-of-MS 'Guidance table for Question N(d),...' with printed per-part pointers; marks read from the page-header Marks column x; cross-page continuation merge; en-dash ranges normalized; descriptors verbatim; zero-row excluded per wave-1 convention)",
+ "reviewRequired": false,
+ "paper": {
+  "code": "0455",
+  "session": "2019-06",
+  "paper": "0455-S19-QP-21",
+  "repo_path": "past-papers/cambridge-international/igcse/economics/0455/past-papers/2019-06/0455-S19-QP-21",
+  "source_pdf": "0455_s19_ms_21.pdf"
+ },
+ "entries": [],
+ "parseNotes": [
+  "headerGrammars=[]",
+  "zero_rows_excluded=0",
+  "trailing_zero_fragments=0",
+  "headerless_continuations=0",
+  "headerless_grids=0",
+  "marks_from_grid_tiling=0"
+ ],
+ "reviewEvidence": [
+  "deterministic word-box parse (textlayer-tables-adr040-g3-cie-r2), fail-closed tiling oracle passed on every grid (levels {3,2,1} exactly, L3max==printed part marks, L3min==L2max+1, L2min==L1max+1, non-blank descriptors): 0 failures across 53 papers",
+  "band-shape audit: all entries 8 marks, levels (3,2,1), ranges 6-8/3-5/1-2, bottom marksMin 1, 0 tiling violations (xcheck_audit of record)",
+  "verbatim cross-check vs the wave-1 staged w20 trio: ranges 12/12 equal; descriptors row-exact — the staged detection-grade tranche carried parse-bleed artifacts (next row's opening text appended to L3 descriptors); this parse supersedes it",
+  "source pdf sha256 of record: None"
+ ]
+}

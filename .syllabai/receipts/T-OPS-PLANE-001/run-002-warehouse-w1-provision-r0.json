@@ -1,0 +1,49 @@
+{
+  "receipt": "T-OPS-PLANE-001 run-002-warehouse-w1-provision-r0",
+  "date_utc": "2026-10-23T18:24:30Z",
+  "lane": "ops (data-plane)",
+  "event": "FIRST COURSE-GROUP WAREHOUSE (W1) PROVISIONED via the console-side path of record — operator created the Neon project console-side and handed back the pooler URL (chat-transited); ops lane applied the frozen template and verified.",
+  "warehouse": {
+    "designation": "W1 (course-group warehouse #1, ADR-038 fleet)",
+    "endpoint_host": "ep-calm-queen-az36lppq-pooler.c-3.ap-southeast-1.aws.neon.tech",
+    "region": "ap-southeast-1 (cell c-3; NEW-style endpoint with cell segment)",
+    "database": "neondb",
+    "role": "neondb_owner",
+    "note_vs_main": "main (ep-ancient-cake-a52e4kfd) is us-east-2 — cross-region copy will cost main-side egress only (~8,202 chunks est. < 0.2 GB, well inside main's own 5 GB/project allowance; transfer is PER PROJECT on Neon, verified 2026-10-23 from docs/introduction/plans + faqs/free-plan-limits-and-quotas)"
+  },
+  "freshness_probe_pre_apply": {
+    "server": "PostgreSQL 18.6 (fd34222) aarch64",
+    "size": "7,536 kB (fresh-database baseline)",
+    "tables": 0,
+    "non_system_schemas": ["public"],
+    "extensions": ["plpgsql"],
+    "vector_extension_available": "0.8.6",
+    "satellite_or_template_residue": "NONE (unlike the quarantined satellite project)",
+    "read_only": true
+  },
+  "applied": {
+    "template": "wh-v1 (scripts/provisioner/template.sql, FROZEN 2026-10-23) applied VERBATIM — no per-group edits",
+    "template_sha256": "b5aed1f8280c7996ffc16e007b8e6215cd4d29a3258c96a7cab4a64a63c19545",
+    "method": "postgres-js sql.unsafe(template) — mirrors provision.mjs steps 3-5 exactly (API path provision.mjs steps 1-2 remain egress-blocked: api.neon.tech HTTP 000)",
+    "executor_script": "sandbox-local scripts/whprobe/whapply.mjs (probe scripts stay sandbox-local by house pattern; template itself is the committed of-record instrument)"
+  },
+  "verification": {
+    "tables": ["warehouse_meta", "warehouse_chunks"],
+    "indexes_expected_6": ["ix_warehouse_chunks_embedding (HNSW vector_cosine_ops)", "ix_warehouse_chunks_subject_kind", "ix_warehouse_chunks_subject_year_series", "ix_warehouse_chunks_course_group", "ix_warehouse_chunks_document_id", "ix_warehouse_chunks_spec_codes (gin, partial)"],
+    "indexes_result": "6/6 present + warehouse_chunks_pkey + uq_warehouse_chunk + warehouse_meta_pkey",
+    "vector_extension_installed": "0.8.6",
+    "canary_roundtrip": "PASS — insert 1 CANARY row (document_id='canary-provision', subject_id=nil-uuid 00000000-0000-0000-0000-000000000000 because subject_id is uuid NOT NULL) -> count 1 -> delete -> count 0",
+    "size_after_template": "7,896 kB"
+  },
+  "warehouse_meta_state": {
+    "template_version": "wh-v1",
+    "course_group": "PENDING-OPERATOR-ASSIGNMENT",
+    "subject_id": "PENDING-OPERATOR-ASSIGNMENT",
+    "migrated_at": "2026-10-23 18:24:30.770298 (server UTC)",
+    "ruling": "Group assignment deliberately NOT prejudged by ops — it is a data-level ruling. One UPDATE to warehouse_meta assigns it (provision.mjs ON CONFLICT DO UPDATE semantics designed for exactly this). PROPOSAL: maths-4ma1 (order-1 group per run-001-trim-census-r0; subject uuid 763dfe2d-d2b5-48fb-ba4c-2f708c637b26; matches the staged dryrun-4ma1.mjs)."
+  },
+  "main_impact": "ZERO main writes (probes READ ONLY; template applied to W1 only). Post-work assurance: estate tripwire r3 run 2026-10-23T18:25:47Z — see run-008-estate-tripwire-r3-drift-watch.json.",
+  "secrets_hygiene": "W1 pooler password transited chat (trace 1a169fa9a95ffb69) -> ADDED TO ROTATION LIST (list now: 2x ghp_ PATs, napi_ Neon API token, npg_ main pooler, npg_ W1 pooler, plus prior Vercel vcp_ + 3 plaintext LLM keys). Credentials used env-only, never written to disk, never committed.",
+  "unblocks": "Provisioner BLOCKED state RESOLVED for W1 (console-side path). Next gates: (1) operator rules W1 course group (proposal: maths-4ma1); (2) COW branch of main created console-side for BRANCH_DB_URL (dryrun-4ma1.mjs is branch-only BY LAW — 'MAIN PROD URL IS NEVER USED HERE'); (3) run dryrun-4ma1.mjs (copy 8,202 chunks + parity + two-step seam + zero-residue rehearsal); (4) T1 cut-over per DATA-PLANE-PLACEMENT.md §5.",
+  "trace": "1a169fa9a95ffb69"
+}

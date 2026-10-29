@@ -1,0 +1,74 @@
+{
+  "lane": "T-SM-ROLLOUT",
+  "run": "adr040-g5-band-validation-r0",
+  "date": "2026-10-27",
+  "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+  "trace_id": "1a179ec453e4fb01",
+  "operator_order": "\"proceed with G-5\" (trace 1a179ec453e4fb01), on the G-4 exit of record (adr040-g4-levels-birth-r1 @ bb9e7bf2: 431 part-bound SUGGESTED LEVELS schemes / 1,257 verbatim band rows)",
+  "gate": "G-5 of ADR-040 §5 — band validation (R4): the §5.3 fail-closed gate on the mark-scheme SUGGESTED → VALIDATED transition, over the 431 wave-1 LEVELS schemes",
+
+  "law": {
+    "r4_gate": "review-writes.ts assertBandsTileForFlip — runs BEFORE the flip, throws ConflictException naming every violation (never force-bypassable: force's frozen semantics are about missing human review, never about accepting malformed band data)",
+    "coverage_law": "band-coverage.ts bandCoverageViolations — per-row basics (positive-integer ordinals, non-negative marks, marks_max >= marks_min, descriptor present non-blank), ordinal set exactly 1..n, contiguous chain (b[i].marks_max + 1 = b[i+1].marks_min), bottom band starts 0 or 1, zero marks is not a band, top band reaches the awarded range",
+    "awarded_range_resolution": "ruling A (trace 1a1776dff15bb991 / receipt adr040-bandshape-fit-r0): a part-bound scheme (question_part_id set) tiles THAT part's marks — the wave-1 printed tables are part-granular; version-level schemes keep the single-part/multi-part-SUM reading; unknown marks → tiling check skipped, never fabricated",
+    "flip_mechanics": "validateMarkScheme (:224-252 port): R4 gate → flip → ONE content_review_audit row in the SAME transaction (fail-closed: an audit insert failure rolls the mutation back)"
+  },
+
+  "method": {
+    "seam_faithfulness": "the REAL shipped service — ContentReviewWriteService.validateMarkScheme(schemeId, null, null, null) per scheme, exercised from a lane runner against prod; NO deviations, NO lane patches: criteria=null → validate as-is, guidance=null → general_guidance untouched, actor=null → actor_label 'system' (the lane convention, mirroring G-4's created_by NULL)",
+    "scope_discipline": "schemes ONLY. G-5 is band validation, not the §7 paper-level workflow — question_versions and exam_papers states snapshotted before/after and verified byte-identical",
+    "cohort_selection": "select id from mark_schemes where scheme_kind='LEVELS' and validation_state='SUGGESTED' order by id — RESUME-SAFE by construction (a re-run picks up exactly the unflipped remainder; the state machine itself forbids double flips: flips happen only from SUGGESTED)"
+  },
+
+  "preflight": {
+    "tool": "scripts/g5_preflight.py (sandbox) — read-only; snapshot tmp/g5_preflight.json",
+    "tripwires_at_entry": "mark_schemes 25,255 / LEVELS 431 (all SUGGESTED) / 431 part-bound (0 unbound) / mark_bands 1,257 / evals 12 — EXACT vs the G-4 exit of record",
+    "shape": "LEVELS schemes with zero bands: 0; schemes-per-version max 2, versions with >1 scheme 109 (the ruling-A multi-scheme reality)",
+    "sql_dry_run": "the R4 tiling law mirrored in SQL over all 431 schemes (ordinals 1..n, contiguity, bottom 0/1, no zero-mark band, descriptors non-blank, top band = bound part marks): 0 violators",
+    "baselines": "POINTS 144 SUGGESTED + 24,680 VALIDATED; question_versions REJECTED 2 / SUGGESTED 387 / VALIDATED 24,785; exam_papers REJECTED 13 / SUGGESTED 61 / VALIDATED 205; mark_points 48,791; content_review_audit 2,835 (VALIDATE 2,441)",
+    "verdict": "CLEARED FOR G-5 RUNNER"
+  },
+
+  "execution": {
+    "passes": 2,
+    "pass_1": "318/431 flips, then the 10-minute shell timeout killed the process mid-run. Every completed flip is ONE committed transaction + its audit row — zero partial state, zero double flips on resume.",
+    "pass_2": "resumed over the SUGGESTED remainder (113) and completed the cohort. The pass-2 post-flip snapshot read died on a dropped Neon WebSocket AFTER the last flip committed — disclosed, a lane-tooling fragility, not a flip failure; the outcome was verified by the independent read-only postflight instead.",
+    "refusals": 0,
+    "note": "no code change between passes; both passes ran the same runner (apps/api/g5r0-validate.ts, untracked; source copied beside this receipt, no credentials — DATABASE_URL from env)"
+  },
+
+  "verification_post_flip": {
+    "tool": "scripts/g5_postflight.py (sandbox) — independent of the bun runner; snapshot tmp/g5_postflight.json",
+    "flip_outcome": "LEVELS states: VALIDATED 431 / SUGGESTED 0 — 431/431 part-bound among VALIDATED",
+    "audit_contract": "exactly 431 rows in the window: actor_label system / action VALIDATE / target mark_scheme / from SUGGESTED / to VALIDATED — one per flip, the fail-closed AUDIT contract held",
+    "tripwires": "mark_schemes 25,255 / POINTS histogram byte-identical (144 SUGGESTED + 24,680 VALIDATED = 24,824) / question_versions histogram byte-identical / exam_papers histogram byte-identical / mark_bands 1,257 / mark_points 48,791 / evals 12 — ALL OK",
+    "post_flip_tiling": "the R4 tiling SQL dry-run re-run post-flip: 0 violators",
+    "verdict": "G-5 CLOSED — 431/431 VALIDATED, world byte-identical, tiling green"
+  },
+
+  "findings_of_record": [
+    "BATCH-PATH GAP (not exercised here, fix = separate PR, never a silent lane patch): review-writes.ts validateAllForPaper resolves schemes via schemeForVersion (order by created_at desc limit 1) — a pre-ruling-A shape assuming one scheme per version. Under ruling A, 109 wave-1 versions carry 2 part-bound LEVELS schemes each (max 2; 431 schemes over 322 versions), so a paper-level batch flip would flip only the newest scheme per version and leave the sibling part-bound scheme SUGGESTED. The per-scheme seam used by this receipt is unaffected (explicit schemeId end-to-end).",
+    "RUNNER FRAGILITY (disclosed, lane-only): one NeonWsClient session per runner process; long runs over the remote pooler hit a shell timeout (pass 1) and a WebSocket drop (pass 2, post-flip snapshot read). Resume-safe by cohort selection + the SUGGESTED-only state machine; the 431 audit rows prove zero double flips. Any future long lane run should chunk or reconnect per scheme."
+  ],
+
+  "unchanged": "POINTS world byte-identical (24,824 schemes, histogram 144 SUGGESTED + 24,680 VALIDATED); question_versions 387 SUGGESTED + 24,785 VALIDATED + 2 REJECTED unchanged; exam_papers 61 SUGGESTED + 205 VALIDATED + 13 REJECTED unchanged; mark_bands 1,257 rows untouched; mark_points 48,791 untouched; smart_mark_agreement_evaluations 12 untouched; no writes issued outside the 431 scheme flips + their audit rows",
+
+  "artifacts": {
+    "committed": [
+      ".syllabai/receipts/T-SM-ROLLOUT/adr040-g5-band-validation-r0.json (this receipt)",
+      ".syllabai/receipts/T-SM-ROLLOUT/adr040-g5-band-validation-r0.runner.ts (the runner source of record — no credentials)"
+    ],
+    "untracked_lane_tooling": "apps/api/g5r0-validate.ts (the working copy of the runner, same content as the committed source of record)",
+    "lane_side": "scripts/g5_preflight.py + scripts/g5_postflight.py (read-only probes), tmp/g5_preflight.json + tmp/g5_postflight.json (snapshots), tmp/g5r0-result.json never written (both passes died after their last flip; the postflight is the of-record outcome evidence)"
+  },
+
+  "gates_now": {
+    "G-1": "CLOSED — 62/62 Edexcel of record + CIE 68/78 leg",
+    "G-2": "CLOSED 5/5",
+    "G-3": "CIE 0455 P2 corpus — pending the CIE drafts lane (detection-grade reviewRequired)",
+    "G-4": "CLOSED (adr040-g4-levels-birth-r1 @ bb9e7bf2)",
+    "G-5": "CLOSED THIS RECEIPT — 431/431 wave-1 LEVELS schemes VALIDATED under the R4 tiling gate; the band data now stands on the same VALIDATED footing the registry flips require",
+    "G-6": "NEXT — API deploy (CLI-only): required before any live band_decision_v1 serving (dispatch resolves per part under ruling A)",
+    "G-7": "QWK eval + the 16 registry-row flips behind the D5-beta floors (level-span >= 2, boundary-straddling, BAND_QWK)"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "task": "neon-db-loss-census-attribution",
+  "operator_trace": "1a16869e9139f859",
+  "agent": "Super Z (zai-web session web-590847c1-cf63-4098-b0c8-a90085355429, chat 986f6715-e92f-43a2-a13a-818c0a1a7d17)",
+  "date": "2026-10-23",
+  "report": "Operator reports 'Neon storage is currently full 1gb' then dispatches 'figure it out' with a multi-agent fleet active. This lane ran read-only discovery to identify the overnight DB change the T-MIG-138 run-008 receipt asked for.",
+  "verdict": "CONFIRMED — the production database (neondb @ ep-ancient-cake-a52e4kfd) was dropped/recreated server-side overnight Oct 22->23. The entire syllabai of-record schema (71 tables) and all persisted content are GONE from the server. What exists there now: an 18 MB database holding a non-SyllabAI template schema (Assignment/AssignmentClass/AssignmentTask/AssignmentTaskState/Class/Enrollment/Resource/User) + neon_auth schema (Managed Better Auth enabled). Operator has confirmed the template app is theirs ('supposed to be addition to syllabai'). Data recovery: no Neon-server copy is reachable from here; the reliable path is deterministic re-derivation from git (see recovery_order).",
+  "zero_llm": true,
+  "zero_db_write": true,
+  "method": "fetch-first repo read + read-only SQL probes via pooler (postgres-js, scripts held outside repo, credentials env-only, never written to disk) + Vercel API read-only env/deploy reads. No Neon project touched, no schema changes, no writes of any kind.",
+  "evidence": {
+    "three_source_attribution": [
+      "(1) THIS LANE probe (Oct 23, pooler, role neondb_owner): pg_database_size=18 MB; PostgreSQL 18.6; schemas = public + neon_auth ONLY; syllabai of-record tables (documents/exam_papers/document_chunks/mark_points/question_asset/users/user_roles) ABSENT in all schemas; Resource-column fingerprint = template app.",
+      "(2) T-MIG-138 run-008 receipt (commit fcfc73a, 07:45Z Oct 23): all four shards honest-red row 1, PostgresError 'relation document_chunks does not exist'; attribution: 'the table vanished server-side at the target between 09:15Z Oct 22 and 07:45Z Oct 23, operator-keyed surfaces only'; drain holds 200/216; keys NOT exercised.",
+      "(3) T-BOOK-OPS f-0011 T-C20 battery receipt (commits 21e4dba/1f5595c, 08:07Z Oct 23): shelf 500 internal_error RED, api route-alive with 'break is INSIDE the first DB query', 'the reader break is 100% the api->Neon leg'."
+    ],
+    "loss_window": "2026-10-22T09:15Z (last known-good, T-MIG-138 metadata census) -> 2026-10-23T07:45Z (run-008 discovery). Likely trigger context: operator reports the project hit its 1 GB Free-plan storage wall (official Neon behavior at >1 GB: inserts/updates/deletes that would grow storage FAIL; no data deleted by the platform itself). The drop/recreate was operator-keyed (console action or external agent), not a Neon platform purge.",
+    "baseline_census_of_record_2026_10_22": {
+      "db_size": "335 MB / 1 GB (33%)",
+      "document_chunks": "133 MB, ~13,700 rows",
+      "mark_points": "35 MB, 40,250 rows",
+      "question_asset": "30 MB, 585 bytea rows",
+      "revision_note_asset": "29 MB, 194 bytea rows",
+      "documents_by_kind": "301 QUESTION_PAPER, 289 MARK_SCHEME, 489 EXTERNAL_QUESTIONS, 162 SYLLABUS, 112 EXTERNAL_NOTES",
+      "exam_papers": "4MA1=110, 4CH1=37+8 legacy",
+      "migrations": "through 0009_dc3-mark-entitlement (0008 applied of-record at d433bfd)"
+    },
+    "carrier_wiring": "Vercel syllabai-v2 (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ) DATABASE_URL -> postgresql://syllabai_v2_app_w2r2:***@ep-ancient-cake-a52e4kfd.us-east-2.aws.neon.tech/neondb (same endpoint, app role; password masked here by law). Re-point is NOT recommended until the database is restored.",
+    "satellite_disclosure": "The template tables + neon_auth in the fresh DB belong to the operator's assignments prototype (operator confirmation trace 1a16833597049251). It sits on the prod endpoint. It is 18 MB, harmless, but it is NOT a syllabai schema and must not be treated as of-record.",
+    "secrets_disclosure": "Read-only env decryption placed 3 LLM keys in chat transit (Groq/OpenRouter/Gemini pair). Rotation list EXTENDED: GitHub PAT (already CRITICAL-OVERDUE per 3e3fafe), Vercel token, Neon token, syllabai_v2_app_w2r2 password, neondb_owner password, CRON_SECRET, SYLLABAI_TEACHER_JOIN_CODE, the 3 LLM keys. Rotate all at wrap-up per standing law."
+  },
+  "recovery_order": [
+    "1. Coordinate the active restoration agent: single-writer on the endpoint until it lands. No other lane touches the DB.",
+    "2. Check Neon console once for restore material: Free plan instant-restore window is 6h (likely expired) and manual snapshots = 1 (only if one was ever taken). If neither exists, proceed to 3 — do not wait.",
+    "3. Deterministic re-derivation from of-record (preferred, fully reproducible): fresh DB -> drizzle migrations 0001..0009 -> chemistry wave re-run (ADR-037 instrument, verbatim doctrine) -> 4MA1 110 papers (papers-ingest-138.ts) -> books lesson-pack bake (T-BOOK-038 chain) -> Embedding-v2 backfill (216 rows, CI-egress discipline) -> hub content planes re-sync (git-connected).",
+    "4. Acceptance gate: this receipt's baseline_census_of_record_2026_10_22 IS the parity target. Restore is DONE only when the census matches (counts + kinds + exam_papers) and T-C20 battery exits 0.",
+    "5. Prevention (folded into ADR-038): nightly logical pg_dump -> Object Storage/GitHub; warehouse split removes the 1 GB wall that triggered the operator intervention."
+  ],
+  "zero_writes_statement": "This lane wrote zero bytes to any Neon project and zero Vercel mutations. Repo additions are additive-only: this receipt + docs/ADR-038 + worklog entry."
+}

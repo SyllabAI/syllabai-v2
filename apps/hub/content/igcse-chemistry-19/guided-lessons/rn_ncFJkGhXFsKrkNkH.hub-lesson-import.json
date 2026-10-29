@@ -1,0 +1,186 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_ncFJkGhXFsKrkNkH",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "c435208b0e2072ed7955f558ee1ef1042e35b5c1cf7c134f21790fee4f100483",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_ncFJkGhXFsKrkNkH",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Alcohols",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-5-alcohols/4-5-3-manufacture-of-ethanol",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.32C",
+        "text": "know that ethanol can be manufactured by: reacting ethene with steam in the presence of a phosphoric acid catalyst at a temperature of about 300 ºC and a pressure of about 60–70 atm; the fermentation of glucose, in the absence of air, at an optimum temperature of about 30 ºC and using the enzymes in yeast"
+      },
+      {
+        "code": "4CH1-4.33C",
+        "text": "understand the reasons for fermentation, in the absence of air, and at an optimum temperature"
+      }
+    ],
+    "primer": {
+      "text": "From the previous note you already know the two-carbon alcohol and its eagerness to meet oxygen. This note steps back to ask where industrial ethanol comes from: an oil-derived alkene joined with steam in one route, and living yeast digesting sugar in the other.",
+      "prerequisiteSubtopic": "Alcohols"
+    },
+    "modules": [
+      {
+        "id": "rn_ncFJkGhXFsKrkNkH::L1",
+        "title": "Hydration of ethene",
+        "sourceHeadings": [
+          "Hydration of ethene"
+        ],
+        "specRefs": [
+          "4CH1-4.32C"
+        ],
+        "opening": "Industry builds ethanol from ethene, the short alkene that cracking hands over in bulk. This lesson states the three conditions that switch the reaction on and follows the exit mixture through the condenser, where everything is sorted by boiling point.",
+        "keyPoints": [
+          "The ethene feedstock comes from the cracking of hydrocarbons.",
+          "Steam adds across the ethene double bond using a concentrated phosphoric acid catalyst.",
+          "The conditions are a temperature of about 300 degrees Celsius and a pressure of 60 to 70 atmospheres.",
+          "Unreacted ethene leaves first because it boils at minus 103 degrees, far below the liquids.",
+          "The ethanol and water are then separated by fractional distillation."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Ethene from cracking reacts with steam to make ethanol. Concentrated phosphoric acid catalyses the change at about 300 degrees and 60 to 70 atmospheres, and the leaving mixture is sorted by boiling point.",
+            "analogy": "The carbon double bond is like an open zip; a water molecule zips straight into the gap, with the acid catalyst acting as the fingers that start the pull.",
+            "examPointer": "Learn the three conditions as a set; examiners ask for the catalyst, the temperature and the pressure together."
+          },
+          "medium": {
+            "restatement": "Hydration adds steam across the ethene double bond using a concentrated phosphoric acid catalyst, a temperature near 300 degrees Celsius and a pressure of 60 to 70 atmospheres. Unreacted ethene, ethanol and water leave the chamber and are separated first by boiling point, then by fractional distillation.",
+            "analogy": "Picture a sorting office: parcels arrive mixed, the gas exits through the top vent first because it boils coldest, and the two liquids travel on to a second, slower line.",
+            "examPointer": "Quote the boiling points if asked why ethene separates first: minus 103 against 78 and 100 degrees."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ncFJkGhXFsKrkNkH::L1::Q1",
+          "rn_ncFJkGhXFsKrkNkH::L1::Q2",
+          "rn_ncFJkGhXFsKrkNkH::L1::Q3",
+          "rn_ncFJkGhXFsKrkNkH::L1::Q4",
+          "rn_ncFJkGhXFsKrkNkH::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_ncFJkGhXFsKrkNkH::L2",
+        "title": "Fermentation",
+        "sourceHeadings": [
+          "Fermentation"
+        ],
+        "specRefs": [
+          "4CH1-4.32C",
+          "4CH1-4.33C"
+        ],
+        "opening": "The second route lets yeast do the work: enzymes inside the cells split glucose into ethanol and carbon dioxide. The recipe is strict about air and gentle with warmth, and this lesson explains exactly why both conditions matter.",
+        "keyPoints": [
+          "Yeast enzymes break dissolved sugar or starch down into ethanol and carbon dioxide.",
+          "The equation is written C6H12O6 giving 2CO2 plus 2C2H5OH.",
+          "The mixture is kept between 25 and 35 degrees, with 30 degrees as the optimum.",
+          "Air is excluded because the yeast must respire without oxygen to make ethanol.",
+          "Yeast dies once the alcohol reaches about 15 percent, so the route runs in batches."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Yeast turns glucose into ethanol and carbon dioxide with no air present, at about 30 degrees. Colder runs too slowly, hotter harms the enzymes, and strong alcohol kills the yeast so the vessel restarts in batches.",
+            "analogy": "Yeast is a tiny workforce with a strict climate: too cold and they labour slowly, too hot and they quit, and at 15 percent alcohol they drown in their own product.",
+            "examPointer": "Give the two reasons separately: no air because the process is anaerobic, and about 30 degrees to keep the enzymes working."
+          },
+          "medium": {
+            "restatement": "Enzymes in yeast split glucose without oxygen into ethanol and carbon dioxide, written as C6H12O6 giving two carbon dioxides plus two ethanols. Air is shut out so the yeast respires anaerobically, about 30 degrees keeps the enzymes active without harming them, and alcohol near 15 percent kills the yeast to end the batch.",
+            "analogy": "A brewery vat is a sealed greenhouse for workers who cannot stand a draught: keep the windows shut, hold a mild warmth, and harvest before their own product poisons them.",
+            "examPointer": "State the optimum as about 30 degrees and explain both tails: too slow below, enzymes damaged above."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_ncFJkGhXFsKrkNkH::L2::Q1",
+          "rn_ncFJkGhXFsKrkNkH::L2::Q2",
+          "rn_ncFJkGhXFsKrkNkH::L2::Q3",
+          "rn_ncFJkGhXFsKrkNkH::L2::Q4",
+          "rn_ncFJkGhXFsKrkNkH::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "hydration",
+          "definition": "Adding water across a double bond; ethene plus steam yields ethanol under the industrial conditions.",
+          "firstLesson": 1
+        },
+        {
+          "term": "fermentation",
+          "definition": "The breakdown of glucose by yeast enzymes without oxygen, yielding ethanol and carbon dioxide.",
+          "firstLesson": 2
+        },
+        {
+          "term": "distillation",
+          "definition": "Separating liquids by boiling point and recondensing the vapours; both route mixtures end this way.",
+          "firstLesson": 1
+        },
+        {
+          "term": "enzyme",
+          "definition": "A biological catalyst in yeast that speeds the breakdown of glucose at mild temperatures.",
+          "firstLesson": 2
+        },
+        {
+          "term": "respiration",
+          "definition": "The release of energy from glucose in living cells; yeast carries it out without oxygen here so ethanol forms.",
+          "firstLesson": 2
+        },
+        {
+          "term": "batch process",
+          "definition": "A production method that stops and restarts; fermentation ends when alcohol near 15 percent kills the yeast.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "State the conditions for manufacturing ethanol by a) hydration of ethene and b) fermentation of glucose, writing the fermentation equation. c) Explain why fermentation is run in the absence of air and at about 30 °C, and why it is a batch process.",
+        "steps": [
+          "a) Hydration: ethene (from cracking) reacts with steam using a concentrated phosphoric acid catalyst, a temperature of about 300 °C and a pressure of 60-70 atm.",
+          "b) Fermentation: glucose dissolved in water with yeast, fermented at 25-35 °C (optimum 30 °C) in the absence of oxygen: C6H12O6 → 2CO2 + 2C2H5OH.",
+          "c) Air is excluded because the yeast must respire anaerobically to produce ethanol; about 30 °C is optimal because lower temperatures make the reaction too slow while higher temperatures denature the enzymes.",
+          "The yeast is killed once the alcohol concentration reaches about 15%, so the vessel is emptied and the process restarted — which is why fermentation is a batch process."
+        ],
+        "finalAnswer": "a) Phosphoric acid catalyst, ~300 °C, 60-70 atm. b) C6H12O6 → 2CO2 + 2C2H5OH (yeast enzymes, ~30 °C, no air). c) Anaerobic respiration; enzymes need warmth but denature if hotter; ~15% alcohol kills the yeast, hence batch."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bee92fbdc07c-addition-water-to-ethene.png",
+        "alt": "Equation showing the hydration of ethene with steam to form ethanol",
+        "sourceHeading": "Hydration of ethene",
+        "moduleIds": [
+          "L1"
+        ]
+      }
+    ]
+  }
+}

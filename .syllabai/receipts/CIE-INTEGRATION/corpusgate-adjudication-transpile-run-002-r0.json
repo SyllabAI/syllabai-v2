@@ -1,0 +1,56 @@
+{
+ "receipt": "corpusgate-adjudication-transpile-run-002-r0",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T3-CORPUSGATE-ADJ-1",
+ "operatorOrder": "extend the instrument to the 6-span residue wave (IM trace 1a16a8b536bf1b95, session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e) — discharges the run-001 watchlist item residualDisclosure.gateCleanSpeechResidue (receipt corpusgate-adjudication-transpile-run-001-r0.json @ e87fa6a3)",
+ "agent": "main (zai-web)",
+ "generatedUtc": "2026-10-23T21:25:43Z",
+ "state": {
+  "raceGuard": "origin/main had moved e87fa6a3 -> 7f0c15f3 (14 upstream commits: T-MIG-141 run-006 census, PR #342 f188 hosting kit, T-OPS-PLANE-001 run-006 T1 cut-over, PR #341); local main ff-merged fetch-first BEFORE any work; econ-25 content verified untouched in e87fa6a3..7f0c15f3 (zero commits) and the 6-span census reproduced exactly on the new tip",
+  "baseline": "gate counters all zero (run-001 zero baseline held); residue census 6 (roster of record); doubled-macro defect class present in served content (see macroRepairLeg)"
+ },
+ "residueWave": {
+  "rosterOfRecord": "6 gate-clean speech spans, all in notes.json (receipt run-001): [16] x2 TR worked-example broken multiline spans, [42] TVC '$ 60 space straight x space straight Q', [51] x2 budget-balance (inline + multiline), [81] 'equals space EUR 190 comma 000 straight m' — NOTE: the run-001 receipt's 'EUR' is a prose gloss; the served byte is the euro sign U+20AC (disclosed, no content impact)",
+  "detection": "census-exact (residue_census2.py semantics): backticked code span, inner carries the speech signature ' space ' and NO gate-mark token; --expect-residue 6 pin asserted pre-apply (fail-closed exit 2 on deviation)",
+  "results": "11/11 roster lines/spans converted, 11/11 via $..$ math (speechToTexSafe 8 + genericChain 3 — the 3 being the two [16] definition lines and [51] '= deficit'), 11/11 KaTeX-verified (throwOnError), 0 unfixed, census 6 -> 0; the two [16] prose definition lines ('Sales Revenue = Price of product X Quantity sold') convert via genericChain to \\text-wrapped math per the of-record ladder order (speechToTexSafe declines them by design: prose-dominated heuristic); the trailing '> ' whitespace lines stay verbatim per the multiline gate",
+  "tokenAdditions": "4 new evidence-derived pre-map rules, KaTeX-probed this run, per-instance audited in the report: en-dash U+2013 -> '-' (minus position; deficit arithmetic 800b-900b confirmed by the '= deficit' narrative; 2 instances), pound sign -> \\pounds (probed OK; 4 instances), euro sign -> \\text{€} (\\texteuro probed UNDEFINED — KaTeX undefined control sequence; \\text{€} probed OK with a cosmetic 'no character metrics' warning; 1 instance), 'billion' -> \\text{billion} (mtext word bypassing the prose-domination heuristic; 1 instance; kept distinct from [51]'s 'straight b' = \\mathrm{b} — the Wiris alt itself uses both spellings, conversion is faithful to the alt)"
+ },
+ "macroRepairLeg": {
+  "defect": "BYTE-PROVEN of-record rendering defect discovered first-hand during run-002 recon: the ladder's \\b-word rules (speech-math GREEK loop + PHRASES 'times') re-escape already-built macros — '\\Delta' becomes '\\\\Delta' and '\\times' becomes '\\\\times'; KaTeX PARSES the doubled form (throwOnError passes — why every run-001 gate stayed green) but RENDERS italic 'Delta'/'times' instead of the glyphs",
+  "scope": "39 served occurrences (codepoint-audited: notes.json 27 + questions.json 12, flashcards.json 0), all inside run-001's converted $..$ math; an earlier bash-quoted census of 41 was escaping noise — the instrument count and the codepoint audit agree at 39",
+  "repair": "idempotent collapse of the doubled-macro pattern (bounded to Delta|times — the only two the econ ladder doubles); every repaired string's $..$ segments re-verified with KaTeX (a post-repair parse failure is a regression -> refuse); macroNorm guard applied to ALL new conversions; post-write doubled-macro rescan asserted zero on disk bytes",
+  "healthy": "3 single-backslash occurrences in notes.json ([43] TR formula '\\ \\times' form from the genericChain run) render correctly (control-space + real times) and are untouched"
+ },
+ "instrument": {
+  "file": "apps/hub/scripts/cie/econ25_speech_transpile.ts (v2, extended in place; run-001 gate-path behavior preserved)",
+  "laws": "unchanged ladder econPreMap -> ciePreMap -> speechToTexSafe(KaTeX+residual-grammar) x2 (stripSpaceTokens variant) -> genericChain -> ciePlainCollapse; NO-GUESS scope widened ONLY by the operator-ordered residue class; dry-run default; --apply gated on zero-unfixed + clean gate-after + residue-after zero + doubled-macro-after zero; byte-exact round-trip assertion pre-write; post-write disk re-read + triple rescan (gate / residue / doubled-macro); --expect-residue N roster pin",
+  "collapseRungSplit": "ciePlainCollapse now receives a base pre-map (whitespace/artifact repair only) — prevents the collapse table's \\btimes\\b rule mangling a pre-built \\times into '\\*' and keeps currency glyphs literal in code spans (run-001 never exercised the collapse rung: 39/39 were KaTeX math — the split is forward-looking hardening)",
+  "results": "see the run-002 report (11 fixes with before/after/via/klass + 39 macro repairs + the 6-span roster with full inner values)"
+ },
+ "battery": {
+  "verify_corpus_23a": "CORPUS GATE PASSED (all counters 0)",
+  "verify_flashcard_sync_courses": "exit 0",
+  "validate_cie_bundles": "CIE VALIDATOR PASSED (pure-1 bank 67 intact)",
+  "hub_tsc": "bunx tsc --noEmit exit 0",
+  "hub_build": "bun run build exit 0 (prebuild chain + build_corpus_static + next build)",
+  "rescans": "post-write on disk bytes: gate 0 / residue 0 / doubled-macro 0 for all three files"
+ },
+ "byteScope": {
+  "gitNumstat": "notes.json 8 lines / questions.json 3 lines / instrument 205+46-; flashcards.json byte-identical (absent from git status)",
+  "untouched": "zero registry/map/manifest contact — the 23 tranche-2 anchors and the run-007 roster re-pin untouched"
+ },
+ "disclosures": [
+  "the [16] definition lines serve as genericChain math with bare italic uppercase operands (KaTeX collapses inter-word spaces: 'SalesRevenue') — of-record genericChain quality precedent from run-001 ('PED = - 1.2'); the ladder order is law and was not reordered",
+  "genericChain's \\btimes\\b rule leaves a control-space ('\\ ') artifact before the fresh \\times it inserts — parses and renders correctly (space + multiplication sign); deterministic, disclosed",
+  "the euro conversion emits a cosmetic KaTeX 'no character metrics for €' warning under strict:'ignore' — renders; \\texteuro is UNDEFINED in KaTeX and was rejected by the probe",
+  "evidence probes ran as an untracked script copied into apps/hub/scripts/cie/ for module resolution and deleted after execution (canonical copy persisted outside the repo at scripts/residue_ladder_probe.ts); the probe wrote only to the session work dir",
+  "the doubled-macro defect class is bounded to econ-25 by this instrument's scope; other CIE lanes remain a residual (the standing instrument re-runs per-lane on future serving waves, per the run-001 doctrine)"
+ ],
+ "artifacts": {
+  "report": "/home/z/my-project/work/econ25_transpile_report_run2.json (11 fixes + 39 macro repairs + roster — the no-guess audit trail)",
+  "receipt": ".syllabai/receipts/CIE-INTEGRATION/corpusgate-adjudication-transpile-run-002-r0.json",
+  "instrument": "apps/hub/scripts/cie/econ25_speech_transpile.ts",
+  "evidenceSideFiles": "/home/z/my-project/work/residue_wave_enum.json + residue_wave_probe.json (pre-instrument probe record); /home/z/my-project/work/econ25_transpile_report.json (run-001, preserved untouched)"
+ },
+ "trace": "1a16a8b536bf1b95"
+}

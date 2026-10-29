@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_7ZMc3T3J4SJXfNdR",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "db7ae4a76dd1bcf1382ec4efbe08d72e5fbd77e5f482e06f5e7f00cb0c726404",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_7ZMc3T3J4SJXfNdR",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_7ZMc3T3J4SJXfNdR::L1::Q1",
+      "moduleId": "rn_7ZMc3T3J4SJXfNdR::L1",
+      "stem": "Which three substances are heated together in the flask?",
+      "misconceptionClass": "method recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ethanoic acid, ethanol and concentrated sulfuric acid",
+          "correct": true,
+          "explanation": "The two parents plus the acid catalyst are the charged mixture.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Ethanoic acid, ethanol and water",
+          "correct": false,
+          "explanation": "Water is the product to be avoided, not an ingredient of the charge.",
+          "misconception": "product recycled"
+        },
+        {
+          "key": "C",
+          "text": "Ethanol, sodium carbonate and calcium chloride",
+          "correct": false,
+          "explanation": "Those two solutions belong to the purification stage afterwards.",
+          "misconception": "stages mixed"
+        },
+        {
+          "key": "D",
+          "text": "Ethanoic acid, magnesium and ethanol",
+          "correct": false,
+          "explanation": "Magnesium belongs to acid-metal reactions, not to this ester practical.",
+          "misconception": "reaction crossed"
+        }
+      ]
+    },
+    {
+      "id": "rn_7ZMc3T3J4SJXfNdR::L1::Q2",
+      "moduleId": "rn_7ZMc3T3J4SJXfNdR::L1",
+      "stem": "Why is a Bunsen burner not used for the heating?",
+      "misconceptionClass": "safety reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ethanol is flammable, so a naked flame is unsafe",
+          "correct": true,
+          "explanation": "A water bath or electric heater gives gentle heat without ignition risk.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The ester would burn away to nothing",
+          "correct": false,
+          "explanation": "The concern is igniting the ethanol vapour, not destroying the product.",
+          "misconception": "risk misplaced"
+        },
+        {
+          "key": "C",
+          "text": "The catalyst only works when cold",
+          "correct": false,
+          "explanation": "The method explicitly heats the mixture; only the heat source changes.",
+          "misconception": "condition invented"
+        },
+        {
+          "key": "D",
+          "text": "Bunsen flames are banned in all school practicals",
+          "correct": false,
+          "explanation": "Flames are used where safe; here the flammable ethanol rules one out.",
+          "misconception": "overgeneralised rule"
+        }
+      ]
+    },
+    {
+      "id": "rn_7ZMc3T3J4SJXfNdR::L1::Q3",
+      "moduleId": "rn_7ZMc3T3J4SJXfNdR::L1",
+      "stem": "Why is the ester distilled off as soon as it forms?",
+      "misconceptionClass": "procedure reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Removing it stops the reverse reaction turning it back into reactants",
+          "correct": true,
+          "explanation": "Taking the product away shifts the reaction in its favour and protects the yield.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To make its smell stronger in the sample",
+          "correct": false,
+          "explanation": "The distillation protects the yield; the smell is only a later check.",
+          "misconception": "purpose swapped"
+        },
+        {
+          "key": "C",
+          "text": "To save heating time and electricity",
+          "correct": false,
+          "explanation": "Economy is not the chemical reason; the reverse reaction is.",
+          "misconception": "economics blamed"
+        },
+        {
+          "key": "D",
+          "text": "To keep the ester dissolved in the acid",
+          "correct": false,
+          "explanation": "The opposite is true: the method removes it from the mixture entirely.",
+          "misconception": "outcome reversed"
+        }
+      ]
+    },
+    {
+      "id": "rn_7ZMc3T3J4SJXfNdR::L1::Q4",
+      "moduleId": "rn_7ZMc3T3J4SJXfNdR::L1",
+      "stem": "Why do esters leave the reaction mixture before the other liquids?",
+      "misconceptionClass": "property reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Their low boiling points make them the first to evaporate",
+          "correct": true,
+          "explanation": "Volatility puts the ester at the front of the queue when the mixture warms.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They are the heaviest liquids present",
+          "correct": false,
+          "explanation": "Low boiling points, not heavy mass, decide who leaves first.",
+          "misconception": "mass blamed"
+        },
+        {
+          "key": "C",
+          "text": "They are solids that melt early",
+          "correct": false,
+          "explanation": "Esters here are oily liquids from the start.",
+          "misconception": "phase invented"
+        },
+        {
+          "key": "D",
+          "text": "They dissolve the water first",
+          "correct": false,
+          "explanation": "Water is the by-product and plays no part in the exit order.",
+          "misconception": "mechanism invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_7ZMc3T3J4SJXfNdR::L1::Q5",
+      "moduleId": "rn_7ZMc3T3J4SJXfNdR::L1",
+      "stem": "How is the distilled ester collected?",
+      "misconceptionClass": "apparatus recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "In a separate beaker by condensation",
+          "correct": true,
+          "explanation": "The vapour cools back to liquid and gathers in its own vessel.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "On a filter paper",
+          "correct": false,
+          "explanation": "Filtration is for solids, and the ester arrives as a liquid.",
+          "misconception": "technique crossed"
+        },
+        {
+          "key": "C",
+          "text": "Back in the boiling flask",
+          "correct": false,
+          "explanation": "The point of distilling off is to leave the flask behind.",
+          "misconception": "direction reversed"
+        },
+        {
+          "key": "D",
+          "text": "By freezing it solid",
+          "correct": false,
+          "explanation": "No freezing stage exists in this method.",
+          "misconception": "stage invented"
+        }
+      ]
+    },
+    {
+      "id": "rn_7ZMc3T3J4SJXfNdR::L2::Q1",
+      "moduleId": "rn_7ZMc3T3J4SJXfNdR::L2",
+      "stem": "How is the product checked before any washing begins?",
+      "misconceptionClass": "practical technique",
+      "options": [
+        {
+          "key": "A",
+          "text": "By smelling the distillate",
+          "correct": true,
+          "explanation": "The sweet smell of the ester is the quick qualitative check the method names.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "By tasting it",
+          "correct": false,
+          "explanation": "Laboratory chemicals are never tasted, whatever they smell like.",
+          "misconception": "unsafe technique"
+        },
+        {
+          "key": "C",
+          "text": "By burning a little of it",
+          "correct": false,
+          "explanation": "Igniting a flammable distillate is not part of this method.",
+          "misconception": "unsafe technique"
+        },
+        {
+          "key": "D",
+          "text": "By weighing the whole flask",
+          "correct": false,
+          "explanation": "Mass alone cannot confirm which substances are present.",
+          "misconception": "test mismatch"
+        }
+      ]
+    },
+    {
+      "id": "rn_7ZMc3T3J4SJXfNdR::L2::Q2",
+      "moduleId": "rn_7ZMc3T3J4SJXfNdR::L2",
+      "stem": "Why is sodium carbonate solution added to the distillate?",
+      "misconceptionClass": "purification reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "To remove the acidic impurities",
+          "correct": true,
+          "explanation": "The carbonate neutralises both acids until none remain to fizz.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To add flavour to the ester",
+          "correct": false,
+          "explanation": "Flavouring happens in food factories, not in this purification.",
+          "misconception": "purpose invented"
+        },
+        {
+          "key": "C",
+          "text": "To dry the ester",
+          "correct": false,
+          "explanation": "Drying agents are different substances; the carbonate targets acids.",
+          "misconception": "agent mismatch"
+        },
+        {
+          "key": "D",
+          "text": "To catalyse the reaction further",
+          "correct": false,
+          "explanation": "The reaction is already over; the carbonate works on impurities.",
+          "misconception": "stage confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_7ZMc3T3J4SJXfNdR::L2::Q3",
+      "moduleId": "rn_7ZMc3T3J4SJXfNdR::L2",
+      "stem": "What is the fizzing during the sodium carbonate wash?",
+      "misconceptionClass": "observation reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carbon dioxide released as the carbonate meets the acids",
+          "correct": true,
+          "explanation": "Carbonate plus acid always releases the gas, and the fizzing shows it leaving.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Hydrogen escaping from the ester",
+          "correct": false,
+          "explanation": "No hydrogen is produced by this neutralisation.",
+          "misconception": "gas swapped"
+        },
+        {
+          "key": "C",
+          "text": "Oxygen bubbling out of solution",
+          "correct": false,
+          "explanation": "Oxygen is not generated in an acid-carbonate reaction.",
+          "misconception": "gas swapped"
+        },
+        {
+          "key": "D",
+          "text": "Ester vapour escaping early",
+          "correct": false,
+          "explanation": "The distillate is already liquid; the bubbles are gas from the neutralisation.",
+          "misconception": "source misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_7ZMc3T3J4SJXfNdR::L2::Q4",
+      "moduleId": "rn_7ZMc3T3J4SJXfNdR::L2",
+      "stem": "What does the calcium chloride solution remove?",
+      "misconceptionClass": "purification reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The leftover ethanol",
+          "correct": true,
+          "explanation": "Calcium chloride is the named remover of ethanol from the sample.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The ethanoic acid",
+          "correct": false,
+          "explanation": "The acids were already removed by the sodium carbonate wash.",
+          "misconception": "washes swapped"
+        },
+        {
+          "key": "C",
+          "text": "The water",
+          "correct": false,
+          "explanation": "Water removal is not the stated job of this solution here.",
+          "misconception": "role invented"
+        },
+        {
+          "key": "D",
+          "text": "The ester itself",
+          "correct": false,
+          "explanation": "The product is what the washing is protecting, not removing.",
+          "misconception": "target reversed"
+        }
+      ]
+    },
+    {
+      "id": "rn_7ZMc3T3J4SJXfNdR::L2::Q5",
+      "moduleId": "rn_7ZMc3T3J4SJXfNdR::L2",
+      "stem": "Which contaminants can still be present in the raw distillate before washing?",
+      "misconceptionClass": "contaminant recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ethanoic acid, sulfuric acid and ethanol",
+          "correct": true,
+          "explanation": "All three travel over with the volatile ester during the distillation.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Water only",
+          "correct": false,
+          "explanation": "The method names three specific travellers, not just water.",
+          "misconception": "list truncated"
+        },
+        {
+          "key": "C",
+          "text": "Magnesium and hydrogen",
+          "correct": false,
+          "explanation": "Neither metal nor its gas plays any part in this practical.",
+          "misconception": "reaction crossed"
+        },
+        {
+          "key": "D",
+          "text": "Sodium chloride only",
+          "correct": false,
+          "explanation": "No chloride salts are involved before the washing stage.",
+          "misconception": "salt invented"
+        }
+      ]
+    }
+  ]
+}

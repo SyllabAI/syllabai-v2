@@ -1,0 +1,121 @@
+version: 1
+task:
+  id: T-CONTENT-MB4-PBLOCK-001
+  title: 'MB4-MS-FRESHPARSE run-003 candidate (filed from the player-side spot-check r0): ONE 4MB1 part renders a marks-header understatement — igcse-maths-b-16 part qstnprt_44ZeXONRp3mA1ojbLLET0U (2021-01-4mb1-02, 4MB1/02 Jan-2021 Q8(d), hub marks=3) carries a single "**P7** (2 marks)" block whose Notes fold the Method-1 M1 row ("M1 for showing 1 pair of angles are equal or stating ∠AEB=∠BEC =90") and the A1 row ("A1 Both triangles are dep on M2 being awarded. A written conclusion with their reason."); the plan-of-record (lane-artifacts mb4_deep_plan.txt) says "Q8 … hub-marks=[2, 2, 2, 3] … p3 need=3: ATTACH-UNIQUE" — so the applied emission contradicts BOTH the plan-of-record AND the merge law (a row may fold into its predecessor only when that predecessor''s code-mark > 1; M2''s predecessor M1 has code-mark 1, so Method-1 = M1(1)+M2(2) must emit TWO P-blocks or a group-sum (3) heading, not one (2) heading) AND the run-002 commit-of-record claim "printed==hub-sum verified on all 45, zero banners required"; player impact is cosmetic (1/2,412 parts, the M1 criterion text IS visible as a Note, zero content loss) but the claims-integrity mismatch (receipt-of-record vs artifact) is the defect class the correctness culture files'
+  owner: 'main (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646) — CLAIMED under operator "Proceed" (trace 1a16d32c68567071) at 2026-10-24; claimed_at 2026-10-24, claim-in-first-commit (MB4-MS-FRESHPARSE run-003 pickup; filed-by provenance: spot-check lane trace 1a16af697e9af2bd / 1a16a8b2741dadf5)'
+  status: DONE
+  priority: P2
+  band: T-CONTENT (corpus / bank marks)
+  wave: content-defects
+  deps: []
+  facts_of_record: >
+    DISCOVERY VEHICLE — player-side spot-check r0 (trace 1a16a8b2741dadf5):
+    live https://syllabai-hub-v2.vercel.app/corpus/igcse-maths-b-16/questions.json
+    sha256 fb39a752cbdb704c... byte-equal to `git show origin/main:` (deploy of
+    record = main tip); structure law 65/1270/2412 EXACT; blank solutionMd = 0
+    (run-002 E2 claim verified player-side); all 57 formerly-blank parts
+    (cc5bfc3a baseline) filled with 0 glyph/0 raw-$ defects except the ONE row
+    below; 1,301 unescaped $...$ spans all math-intended (0 prose pairs);
+    743 img embeds == ARTWORK claim, 5/5 sampled assets HEAD 200.
+    THE ROW — qstnprt_44ZeXONRp3mA1ojbLLET0U: solutionMd begins
+    "**P7** (2 marks) Show either by argument or calculation that 2" and every
+    other mark reference is a "- Note:" line (incl. the Method-1 M1 line and
+    the A1 dep line); P-block mark-sum = 2 vs part.marks = 3.
+    PLAN-OF-RECORD — .syllabai/lane-artifacts/MB4-MS-FRESHPARSE/mb4_deep_plan.txt:
+    "===== 2021-01-4mb1-02  hub-questions=12 pdf-questions=12 anomalies=0 /
+    Q8 printed-total=9 hub-marks=[2, 2, 2, 3] main-rows=13
+    marks_seq=[1, 1, 1, 1, 1, 1, 2, 1, 2, 1, 2, 1, 1] / -> p0..p2 need=2
+    ATTACH-UNIQUE / -> p3 need=3: ATTACH-UNIQUE". The printed marks_seq sums
+    to 16 vs hub Q8 total 9 — consistent only after the Alternative/Method>=2
+    exclusion; the reconciliation between the extractor's 13-row census and
+    the partition's actual input sequence for Q8 is UNRESOLVED of record.
+    RECEIPT-OF-RECORD — .syllabai/receipts/MB4-MS-FRESHPARSE/
+    run-002-45-residual-deep-lane-r0.json: scope attached=45 (PDF-unique 38 +
+    MSMD-unique 1 + EYESON 6), leftHonest=0; no per-part itemization; no
+    disclosure of a 2-vs-3 shortfall; commit 6702128f claims "printed==hub-sum
+    verified on all 45, zero banners required" — this row is the counterexample
+    (either the apply-stage heading used a single row's mark value instead of
+    the group sum, or the extractor demoted the M1 main row to a Note via the
+    mid-guidance/notes-embedded-code law, or the fold law was violated at
+    emission; eyes-on adjudicates which).
+    OUT-OF-SCOPE HERE (already filed elsewhere, do not widen): 11 U+FFFD parts
+    in 2019-06-4mb1-02 (UIUX-TIER-B run-003 filed run-004 sub-lane); OCR-sandwich
+    2020-01 class and 2024-11 Notes bracket-debris (TIER-B run-004 candidates);
+    2019-01-4mb1-01 banner rows (deterministic-parse-flag = banner law working
+    as designed, NOT a defect).
+  next_safe_actions: >
+    (1) EYES-ON the MS of record: syllabai-pastpapers 4MB1 Jan-2021 4MB1/02
+    ms.pdf, Q8(d) page (raw.githubusercontent.com/SyllabAI/syllabai-pastpapers/
+    main/past-papers/pearson-edexcel/international-gcse/mathematics-b/4mb1/
+    past-papers/2021-01/4MB1-02/ms.pdf); decide whether "M1 for showing 1 pair
+    of angles are equal or stating ∠AEB=∠BEC =90" sits AT the code column (a
+    main row) or is an indented continuation (a Note) — this single fact
+    adjudicates all three root-cause hypotheses.
+    (2) Re-derive Q8's row sequence with the extractor of record
+    (lane-artifacts mb4_deep_extract.py) and reconcile census (13 rows / 16
+    marks) vs the partition input; expect Method-1 = M1(1)+M2(2)=3 == hub need.
+    (3) Re-emit the ONE part's solutionMd per the corpus laws: two P-blocks
+    P(1)+P(2) (merge law forbids M2 folding under M1) OR a single group-sum
+    (3 marks) heading iff eyes-on shows a 3-mark main row; keep Method-2/3 and
+    all current Notes verbatim (zero deletion); P-id numbering stays
+    question-continuous (P7 remains the correct id for the first emitted
+    block; downstream parts unaffected — verify the question's P-id sequence
+    stays strictly increasing after re-emission); add the deterministic
+    parse-flag banner ONLY if printed-total verification still fails.
+    (4) Gates of record: semantic diff = exactly 1 solutionMd change and zero
+    other field changes; verify_corpus_23a + verify_flashcard_sync_courses +
+    validate_cie_bundles ALL GREEN; KaTeX gate on the touched part; single-line
+    compact JSON law; receipt
+    .syllabai/receipts/MB4-MS-FRESHPARSE/run-003-pblock-header-r0.json with the
+    eyes-on evidence (page dump / crop) attached.
+    (5) Append both worklogs (repo .syllabai/worklog.md + session worklog);
+    fetch-first, no force.
+  execution_record: >
+    RUN-003 EXECUTED end-to-end (trace 1a16d32c68567071; claim 96ac5cd2):
+    (1) EYES-ON of record — 2021-01 4MB1/02 ms.pdf p13 (sha b95e01099522...):
+    Q8(d) is ONE grid row with mark cell '3' at (472.9, 41.6); A1 row's mark
+    cell EMPTY; the 'M2 Show either...'/'M1 for showing...'/'A1 dep on M2'
+    strings sit at x0=515.4 INSIDE the merged Notes cell, their digits
+    ('2','1','90') at x>=648 INSIDE note text — inline subdivision guidance,
+    NOT code-column rows; crops run-003/q8d-region-zoom.png + q8d-bottom-zoom.png.
+    (2) Extractor-of-record rerun reproduces the census defect: Q8 = 13
+    pseudo-rows (inline Notes-cell codes, code-derived marks sum 16) vs grid
+    truth 4 rows [2,2,2,3]=9; plan marks_seq == code-derivation EXACT
+    (evidence run-003/rows-2021-01-4MB1-02.json) — the card's hypothesis (b)
+    is REFUTED (the M1 line must NOT be promoted; it is Notes-of-record) and
+    hypothesis (a/c) resolved: the fold-emission printed the leading
+    pseudo-row's value instead of the group sum.
+    (3) FIX — card option (3) fired: minimal-diff raw-substring surgery,
+    '**P7** (2 marks) ' -> '**P7** (3 marks) ' = 1 BYTE in the whole bundle
+    (offset 948971); zero deletion; P-id P7 unchanged (no Q9 cascade); M1/M2
+    subdivision stays verbatim as Notes per eyes-on truth.
+    (4) GATES ALL GREEN: verify_corpus_23a PASS / verify_flashcard_sync
+    exit 0 registry match / validate_cie_bundles PASS (2,259 holdings) /
+    structure law 65/1270/2412 UNCHANGED / touched part P-sum 3 == hub 3,
+    0 raw-$, 0 U+FFFD/PUA / single-line compact JSON kept (diff: 1 file,
+    1 line).
+    (5) Receipt run-003-pblock-header-r0.json; instruments + evidence
+    mirrored to lane-artifacts/MB4-MS-FRESHPARSE/run-003/; residual row-model
+    class (Notes-cell inline codes fleet census) FILED for operator, not
+    self-granted. Environment: workspace reset #3 pre-claim — of-record
+    survived via origin, all instruments now git-protected.
+  scope:
+    allowed:
+      - "apps/hub/content/igcse-maths-b-16/questions.json (the ONE part qstnprt_44ZeXONRp3mA1ojbLLET0U solutionMd only)"
+      - ".syllabai/lane-artifacts/MB4-MS-FRESHPARSE/** (extractor/plan rerun outputs)"
+      - ".syllabai/receipts/MB4-MS-FRESHPARSE/**"
+      - ".syllabai/tasks/T-CONTENT-MB4-PBLOCK-001.yaml (status/execution_record only)"
+      - ".syllabai/worklog.md (append-only)"
+    forbidden:
+      - "every other part, field, bundle, or course (no widening to the U+FFFD / OCR-sandwich classes — those have their own filings)"
+      - "apps/hub/src/** (render plane untouched — the player pipeline is correct)"
+      - "apps/hub/content/igcse-maths-b-16/manifest.json structure law (65/1270/2412 must not move)"
+      - "packages/db/**, flyway, syllabai-core / syllabai-hub (frozen)"
+base:
+  repo: "syllabai-v2 @ 23e59a0c (filing commit basis; live deploy sha-verified fb39a752 on the bundle of record)"
+basis: >
+  Operator directive "file a run-003 candidate card" (trace 1a16af697e9af2bd),
+  discharging the spot-check r0 filed finding (trace 1a16a8b2741dadf5);
+  evidence scripts of record: scripts/mb4_player_spotcheck.py,
+  scripts/mb4_player_spotcheck_live.py, scripts/mb4_spotcheck_adjudicate.py
+  (session workspace, result JSONs alongside); AGENT_COORDINATION.md §4 yaml law.

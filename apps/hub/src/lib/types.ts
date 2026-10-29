@@ -1769,6 +1769,126 @@ export interface TeacherAnnouncementView {
   createdAt: string;
 }
 
+// ── T-TEACH-013 — the Teaching Toolkit wire (mirrors
+// @syllabai/contracts/src/teaching-toolkit.ts; the hub speaks JSON, not zod).
+// THE OPERATOR DIRECTIVE: no subject picker anywhere — the picked class
+// resolves Subject/Board/Level/Curriculum server-side and rides back as the
+// read-only context chips.
+
+export type ToolkitToolType = "lesson-plan" | "rubric" | "sow" | "coach";
+
+/** read-only class context chips — the visual replacement for the removed
+ *  subject picker (resolved server-side from the owned class row). */
+export interface ToolkitClassContextView {
+  classId: string | null;
+  courseId: string;
+  classLabel: string | null;
+  subject: string;
+  board: string | null;
+  level: string;
+  curriculumCode: string | null;
+}
+
+export interface ToolkitQuotaView {
+  used: number;
+  limit: number;
+  /** next UTC midnight (ISO) — the counter's reset instant */
+  resetsAt: string;
+}
+
+/** a topic lane row: book chapters for the class's course (Phase A) */
+export interface ToolkitTopicView {
+  topicId: string;
+  title: string;
+  learningObjective: string | null;
+  /** "book_chapter" | "spec_tree" */
+  source: string;
+}
+
+/** one auto-attachable outcome (SPEC_POINT title or the chapter's learning
+ *  objective); coverage rides teaching_coverage when applicable */
+export interface ToolkitOutcomeView {
+  nodeId: string | null;
+  title: string;
+  coverage: "TAUGHT" | "NOT_TAUGHT" | null;
+}
+
+// ── T-TEACH-015 grounding depth (coverage-aware prefill, read-only) ────────
+
+/** the class's first not-yet-taught spec point, natural syllabus order */
+export interface ToolkitSowResumeView {
+  specPointNodeId: string;
+  specCode: string;
+  specTitle: string;
+  topicNodeId: string | null;
+  topicTitle: string | null;
+}
+
+/** a topic with untaught spec points, syllabus order — coverage gaps, NOT
+ *  mastery-weakness data (the analytics lane stays with T-MIG-034) */
+export interface ToolkitCoverageGapView {
+  topicNodeId: string;
+  topicTitle: string;
+  untaughtCount: number;
+  totalCount: number;
+}
+
+/** a coach note-card candidate: revision notes then chapter objectives */
+export interface ToolkitPassageView {
+  passageId: string;
+  source: "revision_note" | "book_chapter";
+  title: string;
+  body: string;
+  ref: string | null;
+}
+
+export interface ToolkitGroundingView {
+  /** class coverage over the course's spec-point universe (0/0 = no tree) */
+  specPointsTaught: number;
+  specPointsTotal: number;
+  sowResume: ToolkitSowResumeView | null;
+  coverageGaps: ToolkitCoverageGapView[];
+  passages: ToolkitPassageView[];
+}
+
+export interface ToolkitContextView {
+  context: ToolkitClassContextView;
+  quota: ToolkitQuotaView;
+  topics: ToolkitTopicView[];
+  topic?: ToolkitTopicView;
+  outcomes?: ToolkitOutcomeView[];
+  /** T-TEACH-015 grounding depth — class-bound contexts only */
+  grounding?: ToolkitGroundingView;
+}
+
+export interface ToolkitResourceSummaryView {
+  id: string;
+  toolType: ToolkitToolType;
+  courseId: string;
+  classId: string | null;
+  status: "SUCCESS" | "FAILED";
+  model: string | null;
+  providerName: string | null;
+  elapsedMs: number | null;
+  createdAt: string;
+  /** { toolType, data, context } — the prompt inputs + resolved chips */
+  input: Record<string, unknown>;
+}
+
+export interface ToolkitResourceDetailView extends ToolkitResourceSummaryView {
+  output: Record<string, unknown> | null;
+  failureReason: string | null;
+}
+
+export interface ToolkitGenerateResultView {
+  resource: ToolkitResourceSummaryView;
+  output: Record<string, unknown>;
+  elapsedMs: number;
+  model: string;
+  providerName: string;
+  quota: ToolkitQuotaView;
+}
+
 /** learner-side class row (the classroom overlay) + unread badge */
 export interface LearnerClassView {
   id: string;
@@ -2061,4 +2181,77 @@ export interface UserCourseView {
 
 export interface MyCoursesView {
   courses: UserCourseView[];
+}
+
+// ── Seneca resource packs (T-SENECA-001) — the assignment creator's
+// "Seneca resources" option: course-linked harvest rows (pilot:
+// igcse-chemistry-19 = Edexcel IGCSE Chemistry 4CH1), side-table tasks on
+// the SAME assignments row, server-side scoring, hand-in via the existing
+// submissions endpoint. The frozen assignments types above are untouched.
+
+export type AssignmentPackResourceKind = "courseSection" | "examQuestion" | "quiz";
+
+/** one picker row — the picker never ships question bodies */
+export interface AssignmentPackResourceRow {
+  id: string;
+  kind: AssignmentPackResourceKind;
+  title: string | null;
+  topicPath: string | null;
+  marksTotal: number | null;
+  questionType: string | null;
+}
+
+export interface AssignmentPackLibraryView {
+  courseSlug: string;
+  courseLabel: string;
+  total: number;
+  topics: string[];
+  resources: AssignmentPackResourceRow[];
+}
+
+export interface AssignmentPackTask {
+  resourceId: string;
+  position: number;
+  kind: AssignmentPackResourceKind;
+  title: string | null;
+  topicPath: string | null;
+  marksTotal: number | null;
+  questionType: string | null;
+  /** RAW Seneca template — may carry $var placeholders + a generationScript;
+   *  instantiation is CLIENT-side (the API never evals corpus scripts) */
+  questionMd: string | null;
+  markSchemeMd: string | null;
+  notesMd: string | null;
+  quizSummaryMd: string | null;
+  generationScript: string | null;
+}
+
+export interface AssignmentPackDetailView {
+  assignmentId: string;
+  title: string;
+  courseSlug: string;
+  courseLabel: string;
+  marksTotal: number;
+  questionCount: number;
+  dueAt: string;
+  status: string;
+  tasks: AssignmentPackTask[];
+}
+
+export interface AssignmentPackTaskState {
+  resourceId: string;
+  status: "todo" | "complete";
+  marksAwarded: number | null;
+  score: number | null;
+  completedAt: string | null;
+}
+
+export interface AssignmentPackLearnerView extends AssignmentPackDetailView {
+  myStates: AssignmentPackTaskState[];
+}
+
+export interface AssignmentPackCompleteResponse {
+  state: AssignmentPackTaskState;
+  questionsCompleted: number;
+  score: number;
 }

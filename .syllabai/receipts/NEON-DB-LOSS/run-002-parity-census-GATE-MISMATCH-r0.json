@@ -1,0 +1,40 @@
+{
+  "task": "neon-db-loss-step0-parity-census",
+  "run": "run-002-parity-census-GATE-MISMATCH-r0",
+  "agent": "main (Super Z, zai-web session web-590847c1, chat 986f6715)",
+  "operator_trace": "1a168961620b5f55",
+  "date": "2026-10-23",
+  "measured_at_utc": "2026-10-23T11:53:47Z (census) + forensics pass ~11:58Z",
+  "method": "Direct pooler read-only census (neondb_owner, session-level 'set session characteristics as transaction read only', per-statement autocommit) via scripts/dbprobe/parity-census.mjs + mp-forensics.mjs. Zero writes; credentials env-only, never on disk; masked in this receipt by law.",
+  "verdict": "GATE-MISMATCH — the restore is REAL and largely faithful, but the estate does NOT yet satisfy the Oct-22 acceptance gate. 5/7 gate lines PASS exactly; mark_points FAILS (14,141 vs 40,250, -64.9%) with db_size a downstream symptom (195 MB vs 335 MB: the mark_points deficit ~25 MB + compact fresh indexes vs pre-loss bloat). Official parity closure is WITHHELD; single-writer hold on the endpoint STANDS; T-MIG-141 Phase B/C/D gates remain shut.",
+  "gate": [
+    { "name": "documents_by_kind", "expect": "301 QP / 289 MS / 489 EQ / 162 SYL / 112 EN", "live": "exact + 1 TEXTBOOK (post-baseline books-lane growth, expected)", "pass": true },
+    { "name": "exam_papers_4MA1", "expect": "110", "live": "110", "pass": true },
+    { "name": "exam_papers_4CH1", "expect": ">=37 (baseline 37+8 legacy)", "live": "38 (+4CH0=8, +45/14/1 unknown-board/qual edges)", "pass": true },
+    { "name": "document_chunks_rows", "expect": "~13,700 ±2%", "live": "13,765 (90 MB, fresh compact indexes)", "pass": true },
+    { "name": "mark_points_rows", "expect": "40,250", "live": "14,141 (10.1 MB)", "pass": false },
+    { "name": "question_asset_rows", "expect": "585", "live": "585 (29.7 MB bytea)", "pass": true },
+    { "name": "revision_note_asset_rows", "expect": "194", "live": "194 (14.2 MB bytea)", "pass": true }
+  ],
+  "forensics": {
+    "mark_points_shape": "14,141 points over 6,733 mark_schemes (avg 2.1 pts/scheme). created_at histogram: 2026-09 = 5,280, 2026-10 = 8,861 — timestamps span the estate's full age (Sep 20 onward), consistent with a verbatim/logical restore preserving original timestamps, NOT a bulk re-derivation (which would cluster at restore time).",
+    "scheme_linkage_intact": "15,025 / 15,128 question_parts (99.3%) have a mark_scheme via question_version_id — the bank's scheme STRUCTURE survived essentially whole.",
+    "mark_points_content_thin": "Only 78 / 289 MARK_SCHEME registry documents carry schemes via source_document_id (text-compare to documents.document_id); 6,013 of 6,733 schemes reference source ids that match NO documents row (question-bank/SME namespace, not the papers registry — text-compare law, audit-id class). 10,404 of 14,141 points sit on such unmatched schemes; 3,737 on registry MS docs.",
+    "candidate_attributions": [
+      "(a) RESTORE PARTIAL: the restore preserved schemes + points for part of the bank and the mark_points drain is still incomplete (mirrors the T-MIG-138 embed-backfill pattern: 200/216 drained, 16 remain). Restore lane must confirm whether its instrument drains mark_points incrementally.",
+      "(b) BASELINE SUPERSEDED-ROWS: the 40,250 baseline may count points under scheme versions later repaired/replaced (flyway V60 'fprod1b bridge superseded', V61 'fprod1 bank marks repair'); a later logical snapshot could legitimately hold fewer points. Requires the restore lane's method + the baseline ingest law to adjudicate."
+    ],
+    "embeddings_state": "5,255 / 13,765 document_chunks have NULL embedding (38%). No baseline gate existed for this metric; T-MIG-138's 200/216 refers to the shard drain queue, not total nulls. CI-egress backfill discipline continues; recorded for the trim pass.",
+    "satellite_resolution": "Satellite template tables (Resource/Assignment/Class/Enrollment/User) are GONE from the main endpoint — the ADR-038 quarantine is now physically satisfied; neon_auth has 9 tables (project-level Managed Better Auth feature, not the template).",
+    "identity_plane": "users = 587; flyway_schema_history through V63 (exam series seed pearson 2026 2027) all success=true; no server-side drizzle journal table found (additive 0009 was applied of-record at d433bfd; journal not persisted server-side — observation, not a gate item)."
+  },
+  "recovery_order_update": [
+    "1. Restore lane files its method receipt (WHAT was restored, from what source, with what cuts) — REQUIRED before the mark_points question can be adjudicated between attributions (a) and (b).",
+    "2. If (a): complete the mark_points plane, then re-run this census (scripts/dbprobe/parity-census.mjs) to ALL-GATE-PASS.",
+    "3. If (b): operator + baseline ingest law rule the 40,250 pin obsolete; ADR-038 receipt (this file) records the amended pin, and the gate closes on the amended numbers.",
+    "4. Either way: T-C20 battery exit 0 remains the second closure clause — deferred until mark_points is resolved (marking surfaces would test thin).",
+    "5. Closure = re-census PASS + battery exit 0, filed as run-003; single-writer hold releases then; trim pass (incl. 5,255 null-embedding rows + unwired 1,223-chunk plane) and T-OPS-PLANE-001 warehouse work follow ADR-038 order."
+  ],
+  "secrets_disclosure": "Operator pasted a fresh GitHub PAT + Neon API token + pooler URL in chat (trace 1a168961620b5f55). Findings: GitHub PAT REJECTED (401 Bad credentials, verified via api.github.com/user — token invalid for both git and API; rotation still required, a NEW one must be issued); Neon API token UNUSABLE from this sandbox (api.neon.tech DNS/egress blocked, HTTP 000 — same wall as prior sessions; token unused, env-only); pooler URL functional and used read-only for this census (neondb_owner password now re-transited — remains on the rotation list). All three stay on the rotation list.",
+  "zero_writes_statement": "This lane wrote zero bytes to any Neon project and zero Vercel mutations. Read-only SQL only, session-level READ ONLY enforced. Repo delta: this receipt + census scripts held outside the repo (scripts/dbprobe/, env-only credentials)."
+}

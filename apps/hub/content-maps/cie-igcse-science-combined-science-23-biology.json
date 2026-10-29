@@ -20,7 +20,7 @@
   }
  },
  "course": "cie-igcse-science-combined-science-23-biology",
- "generatedUtc": "2026-10-22T12:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-science-combined-science-23-biology/spec_point_index.json": {
    "sha256": "00177c81f62116007c8f9a85dac4d67b930bf74d3e65774b61d63126b72a7db1"
@@ -28,8 +28,11 @@
   "scripts/cie_rejoin_resolutions.yaml": {
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
   },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
+  },
   "spec-links/cie-igcse-science-combined-science-23-biology.json": {
-   "sha256": "4a874a3a92f79733f9c62f8498b67d7bf6b803055e2b6ae9ff5552651552ad86"
+   "sha256": "334d653dfc8d42f9f95357ad12ed5ca19c3540dd7db6b16b19987ae3530d306d"
   },
   "spine": {
    "file": "spines/cie-igcse-science-combined-science-23-biology.json"
@@ -1579,7 +1582,7 @@
   ],
   "uncoveredSpineCodes": 36
  },
- "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -1599,6 +1602,11 @@
     },
     "itemsWithCodes": 34,
     "ladderCodesRetained": 13,
+    "sidAnchors": {
+     "added": 0,
+     "conflictsKept": 0,
+     "verified": 0
+    },
     "sidecarCodes": 39,
     "sidecarItems": 106,
     "sidecarOnlyItems": 0,
@@ -1608,7 +1616,8 @@
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": "ACCEPTED",
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": {
     "added": 0,

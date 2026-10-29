@@ -1,0 +1,898 @@
+{
+  "census": {
+    "courses": 94,
+    "topics": 2120,
+    "questions": 36608,
+    "parts": 58124,
+    "questionTypes": {
+      "multiple_choice": 8786,
+      "structured": 46926,
+      "open": 2412
+    },
+    "mcq": {
+      "total": 8786,
+      "keyedText": 6900,
+      "letterOnly": 1883,
+      "legacy": 0,
+      "notAnswerable": 3,
+      "letterOnlyArtworkHidden": 77,
+      "ambiguousKey": 3,
+      "choiceRows": 35151
+    },
+    "structured": {
+      "total": 49338,
+      "noSolution": 117
+    },
+    "emptyProblemParts": 0,
+    "questionNoParts": 0,
+    "errors": [
+      {
+        "cls": "E1_mcq_not_answerable",
+        "course": "cie-igcse-geography-25",
+        "topic": "tourism",
+        "question": "qstn_M46gFbph3SfmbFyC",
+        "part": "qstnprt_CynRM8qyJh8JvtPD",
+        "reason": "ambiguous_key(2_correct)",
+        "correctLetterFromSolution": null,
+        "nChoices": 6,
+        "nCorrect": 2,
+        "labeled": 6,
+        "withText": 6
+      },
+      {
+        "cls": "E1_mcq_not_answerable",
+        "course": "cie-igcse-geography-25",
+        "topic": "fieldwork",
+        "question": "qstn_nBmkvXgSh2wztPHb",
+        "part": "qstnprt_wwyp5VXqrzDvTpHW",
+        "reason": "ambiguous_key(3_correct)",
+        "correctLetterFromSolution": null,
+        "nChoices": 7,
+        "nCorrect": 3,
+        "labeled": 7,
+        "withText": 7
+      },
+      {
+        "cls": "E1_mcq_not_answerable",
+        "course": "cie-igcse-geography-25",
+        "topic": "graphical-skills",
+        "question": "qstn_PFwgTc8pRGJmDKTS",
+        "part": "qstnprt_nHgZVRw5HDbRS35f",
+        "reason": "ambiguous_key(2_correct)",
+        "correctLetterFromSolution": null,
+        "nChoices": 5,
+        "nCorrect": 2,
+        "labeled": 5,
+        "withText": 5
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2018-06-4mb1-01r",
+        "question": "qstn_1V1oE2rWaH6YfYm3l6qcd8",
+        "part": "qstnprt_GgxL2wONLXBH31g0c1qH2"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2018-06-4mb1-01r",
+        "question": "qstn_1V1oE2rWaH6YfYm3l6qcd8",
+        "part": "qstnprt_1DfzHeShTU5MtSx0bLdDAv"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2018-06-4mb1-01r",
+        "question": "qstn_1V1oE2rWaH6YfYm3l6qcd8",
+        "part": "qstnprt_4WVIItcA7cwiEriE3ZX7wM"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2018-06-4mb1-02r",
+        "question": "qstn_6cahXjvWJgxxdxs0GMO0iV",
+        "part": "qstnprt_3pMf0sdEKnkyZ8FB5M9Ypu"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2018-06-4mb1-02r",
+        "question": "qstn_6G83iuslyg6KNsq1oHurBY",
+        "part": "qstnprt_1uWaUNsvvDkC2IwHyJESZ2"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-01-4mb1-01",
+        "question": "qstn_7FoVfVvTNPle7S3vRg1fcE",
+        "part": "qstnprt_PXgoa5KsgdsQn2zScDEqI"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-01-4mb1-01",
+        "question": "qstn_5ZiSNxrRCnyOrZPfOdj3ij",
+        "part": "qstnprt_7d8RqgsdXw69JvM5DOVDFG"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-01-4mb1-02",
+        "question": "qstn_5VAJzcimlYXe5q1RDb7dGJ",
+        "part": "qstnprt_7j822L5t0AEUc44d0FKbsK"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-01-4mb1-02",
+        "question": "qstn_5VAJzcimlYXe5q1RDb7dGJ",
+        "part": "qstnprt_5r1Ci5PIHm01WZUIhNkTC2"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-01-4mb1-02",
+        "question": "qstn_5VAJzcimlYXe5q1RDb7dGJ",
+        "part": "qstnprt_73RZJeq3f4vKXIqgjkxv6M"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-06-4mb1-01",
+        "question": "qstn_2hoUCKtYQg2A9GLjpiJtsW",
+        "part": "qstnprt_xZhZdOSzUxoQmYUMUh5xG"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-06-4mb1-01",
+        "question": "qstn_2hoUCKtYQg2A9GLjpiJtsW",
+        "part": "qstnprt_5V2QHNAd9a7Gxhc0y6cpmI"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-06-4mb1-01r",
+        "question": "qstn_7HxldlBNtY2pmjRkUPSMlp",
+        "part": "qstnprt_7jkWqjuT5mDcKDT4b125zM"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-06-4mb1-01r",
+        "question": "qstn_2OfoPEoDlhzYEisIXmnAVt",
+        "part": "qstnprt_74z3kLdDB19tMcPBqthXST"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-06-4mb1-01r",
+        "question": "qstn_3z0Wn5XzOtj94aniu5Ehm9",
+        "part": "qstnprt_16DK9xVYypmrLsWClW9zzn"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-06-4mb1-01r",
+        "question": "qstn_3z0Wn5XzOtj94aniu5Ehm9",
+        "part": "qstnprt_7MujSckB37VWgQdRLMLBPi"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-06-4mb1-01r",
+        "question": "qstn_6dGnXMm2dysMtBkGTWH4n7",
+        "part": "qstnprt_4fOAQxKwy7uq9EfKQ4LIuY"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2019-06-4mb1-01r",
+        "question": "qstn_1oVqGx1rv3yI6GV3H6lSfQ",
+        "part": "qstnprt_2srZPAb0NZ9bsquJFjretD"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-01-4mb1-01",
+        "question": "qstn_2Cakch59XFkSdvzOLNP92D",
+        "part": "qstnprt_UwnM4SWWqKzfYs5F7yaGp"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-01-4mb1-01r",
+        "question": "qstn_1bpMenfbR5AZg52FceJExn",
+        "part": "qstnprt_5pJEUDfsCJyxmLgEO5PLvn"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-01-4mb1-01r",
+        "question": "qstn_1bpMenfbR5AZg52FceJExn",
+        "part": "qstnprt_5A2bDMSow6RqUp2ImnWIj4"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-01-4mb1-02r",
+        "question": "qstn_C4p0kToVTGBWKE4xntOyD",
+        "part": "qstnprt_5ZwHVs1sGNCKLiiOKMrcpB"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-06-4mb1-01r",
+        "question": "qstn_2qeN0WGdSp9d6gvFfwkA3w",
+        "part": "qstnprt_4m6KlHGEMyXRrK8aIUadWu"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-06-4mb1-01r",
+        "question": "qstn_3BwuSd2uE4pW6vtX1YEF9c",
+        "part": "qstnprt_3cpy3bSBilfeGqwXj57bL5"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-06-4mb1-02",
+        "question": "qstn_5ZUyhMfC9d0GS9xh4JgR5T",
+        "part": "qstnprt_2pDMLsLb5D3eAQvOcfTxo9"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-06-4mb1-02",
+        "question": "qstn_5iLYmpraLprlZ7b5UOmJZz",
+        "part": "qstnprt_7fHKjK4VSG21eb6wV8FvcM"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-06-4mb1-02",
+        "question": "qstn_5iLYmpraLprlZ7b5UOmJZz",
+        "part": "qstnprt_3np6lEt8By54STGfisb76J"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-06-4mb1-02r",
+        "question": "qstn_p7f95ToJlCRxAruzzXyGK",
+        "part": "qstnprt_74BKy4X1QjHuPEKOMlrOVr"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-06-4mb1-02r",
+        "question": "qstn_p7f95ToJlCRxAruzzXyGK",
+        "part": "qstnprt_22sY3vYcDiEb8IMe861pic"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-06-4mb1-02r",
+        "question": "qstn_6Zq6EMPCFk1GPduoONgeBr",
+        "part": "qstnprt_4iwOMEDuLbrJq3Cu1ugUxu"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-06-4mb1-02r",
+        "question": "qstn_4G5Bk45RQ7AqAKW5CL9KgV",
+        "part": "qstnprt_4mBCcOBEw8OeZnffEy8YX8"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-11-4mb1-01r",
+        "question": "qstn_5aRCi3UIFHYBK8rFVDJ01H",
+        "part": "qstnprt_53ahud3SZqP3RmkqSaaUp8"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-11-4mb1-01r",
+        "question": "qstn_5bg9J592YVQ5EIXt7l6bmW",
+        "part": "qstnprt_1hykkEWrjZSngi6xkjtMdx"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-11-4mb1-02",
+        "question": "qstn_5mtrYm30apHrjzPNVKR7sT",
+        "part": "qstnprt_3Hh4j5FnPb8VS8Q3bSkcP5"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-11-4mb1-02",
+        "question": "qstn_2DRt8P3EZZAQXPUlfglWoT",
+        "part": "qstnprt_3TT0RjeUtevfZXDeXJJM7g"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-11-4mb1-02",
+        "question": "qstn_2DRt8P3EZZAQXPUlfglWoT",
+        "part": "qstnprt_7XjYw3Cw3SwvIN3ONBzkGU"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-11-4mb1-02r",
+        "question": "qstn_2k3IuKqkvrTbFRGF1q2Hq6",
+        "part": "qstnprt_5z8K9wWzAJhKQdLvh2XM3e"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-11-4mb1-02r",
+        "question": "qstn_2k3IuKqkvrTbFRGF1q2Hq6",
+        "part": "qstnprt_5iQx7P6kpCLQkYpSzp1FKm"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-11-4mb1-02r",
+        "question": "qstn_7137BjnJ1CUVlfXajyqR1Y",
+        "part": "qstnprt_2o9wKA9NJUk2hlQNvFDnuo"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2020-11-4mb1-02r",
+        "question": "qstn_YRaP4D2ziH3heLVxcfneZ",
+        "part": "qstnprt_42QOW2eDPR9xVeAkkSHxhq"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-01",
+        "question": "qstn_4lCZ2oIMl7lDYuyOTk6Gmn",
+        "part": "qstnprt_6LOweHKkuWKFLgrpXidWUp"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-01",
+        "question": "qstn_36Z5ntmcEbLuLZcQOIJ4Ta",
+        "part": "qstnprt_3W2cWVE7k2ixhpkHsLETFG"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-01",
+        "question": "qstn_6FMHGWUIBQau4bHYQodS9z",
+        "part": "qstnprt_6fGw050OEx8LGDuPSku1KN"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-01",
+        "question": "qstn_5KhB0svX0PajT4gCX4p59J",
+        "part": "qstnprt_Lu6DPBOi9nQzFiw5oobnT"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-01",
+        "question": "qstn_YfRykaJHXoSeqrzPCAXG4",
+        "part": "qstnprt_2BCdYyafKyFrHx7SaIzw43"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-01",
+        "question": "qstn_PGirns1CfOzD4jukbVwsE",
+        "part": "qstnprt_3F4qdMgMfncDOV9ySVTenL"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-01r",
+        "question": "qstn_3SoN3UtDFMXCmbM8VGK9Kx",
+        "part": "qstnprt_wK1N9AH0fBchwvSatQS59"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_6zioru7wWOHjQ22Vy3f7mz",
+        "part": "qstnprt_5ce68LofLXNtYhZrdTLwMF"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_6zioru7wWOHjQ22Vy3f7mz",
+        "part": "qstnprt_1hlqCkRxrx2NZp6QJFlEv4"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_6zioru7wWOHjQ22Vy3f7mz",
+        "part": "qstnprt_39iV4qupYtqsKPhlr9VyKd"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_1lIPwIKPDfAXON2TCIAHTA",
+        "part": "qstnprt_7ZPjofSiaYlyPGs0O05Evp"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_1lIPwIKPDfAXON2TCIAHTA",
+        "part": "qstnprt_4zCzxqSThGt7wrb9Wr8S1R"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_1lIPwIKPDfAXON2TCIAHTA",
+        "part": "qstnprt_1Soso90FzFZz07M5o8hK8O"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_1lIPwIKPDfAXON2TCIAHTA",
+        "part": "qstnprt_44ZeXONRp3mA1ojbLLET0U"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_3UvX4H7OWMaB7Sfsu1BrpK",
+        "part": "qstnprt_19lIFwcW8wZtMKanl81C2H"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_3UvX4H7OWMaB7Sfsu1BrpK",
+        "part": "qstnprt_7NXMSS0NUdfl4hK90qxe47"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_2oVoGEQ3mngHTme3gLm2mZ",
+        "part": "qstnprt_7UCg0GMYCiSH8c0rkdok8c"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_2oVoGEQ3mngHTme3gLm2mZ",
+        "part": "qstnprt_1Nzn32SvGRWkIfw0S5QR1G"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02",
+        "question": "qstn_6OJ2eTDvCKFNigbPW2WMLE",
+        "part": "qstnprt_3Hfm1BsO7wKlszhuRqzMGM"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02r",
+        "question": "qstn_4GsNhbwyUvpLCQsmgtvzfk",
+        "part": "qstnprt_lV4RdRc3fJH0LX2G1hgFB"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02r",
+        "question": "qstn_4GsNhbwyUvpLCQsmgtvzfk",
+        "part": "qstnprt_7kXK1WVtSkU9WlF7fW1wWc"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-01-4mb1-02r",
+        "question": "qstn_7ZPN0pCvteQW9uVAkyGC34",
+        "part": "qstnprt_65bbcD88Xa32OjyGX3hwxO"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-06-4mb1-01",
+        "question": "qstn_nZPr8jbRIzOYanpT3Popu",
+        "part": "qstnprt_5rpbknSkwt3oqFdqAax39o"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-06-4mb1-02",
+        "question": "qstn_6RWdKXZzCsHkCeAGIfHQjY",
+        "part": "qstnprt_1qIUo500QLo9CbY6gacDdt"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-06-4mb1-02",
+        "question": "qstn_6RWdKXZzCsHkCeAGIfHQjY",
+        "part": "qstnprt_2mydDpYHB2uI9pQxLfUXSL"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-06-4mb1-02",
+        "question": "qstn_6RWdKXZzCsHkCeAGIfHQjY",
+        "part": "qstnprt_4ES5iSlhbCX64AFsbZGgBl"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2021-06-4mb1-02",
+        "question": "qstn_6bLoCbORM4NBHFrCLHLEJT",
+        "part": "qstnprt_X68wVEWsE8hpOzZlbraCg"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02",
+        "question": "qstn_1psEN6VlgLxeip3fLFz6zb",
+        "part": "qstnprt_bhp8IJejlONvQyKJe1NBY"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02",
+        "question": "qstn_1psEN6VlgLxeip3fLFz6zb",
+        "part": "qstnprt_6qieKdOfLGOLaTUcAKQql4"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02",
+        "question": "qstn_1psEN6VlgLxeip3fLFz6zb",
+        "part": "qstnprt_45YQBaKxTGtGYdqfr9yffr"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02",
+        "question": "qstn_1psEN6VlgLxeip3fLFz6zb",
+        "part": "qstnprt_2aF0cAQ83wlf7CiqAYwm4n"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02",
+        "question": "qstn_1psEN6VlgLxeip3fLFz6zb",
+        "part": "qstnprt_4eOxVaJllu11zDvjK7hGi2"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02",
+        "question": "qstn_13mKx9LNLres1oxl9P69Ys",
+        "part": "qstnprt_5QgvpJgjs0Pa5zR7T1iIrm"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02",
+        "question": "qstn_13mKx9LNLres1oxl9P69Ys",
+        "part": "qstnprt_J8DN6qgoxkjDzo9R8Znev"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02r",
+        "question": "qstn_5xXC9caDvSAxxcEAldLoA3",
+        "part": "qstnprt_3dHFnkDb84AEHlHFRAeDvW"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02r",
+        "question": "qstn_5xXC9caDvSAxxcEAldLoA3",
+        "part": "qstnprt_7F9yLRjkOmhoygGJrLYqPq"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02r",
+        "question": "qstn_2oi4DjSo2u33hGsYyelhoW",
+        "part": "qstnprt_6BKSzBT9c3vza7VBW0fBZK"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02r",
+        "question": "qstn_5D8tjqH6pLXGyRgMB6zWpp",
+        "part": "qstnprt_3S9btuYriT3YwF6FG9MMfL"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-01-4mb1-02r",
+        "question": "qstn_5D8tjqH6pLXGyRgMB6zWpp",
+        "part": "qstnprt_1vr8Eto9IQ9Tv1hZQRBluG"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-06-4mb1-02",
+        "question": "qstn_5p5ERXLmnvThGwe94libTe",
+        "part": "qstnprt_4awzezW3JSdwNk2QniwPXu"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-06-4mb1-02",
+        "question": "qstn_5p5ERXLmnvThGwe94libTe",
+        "part": "qstnprt_1sb3FfngHBFfK0mw2YX4vf"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-06-4mb1-02",
+        "question": "qstn_5p5ERXLmnvThGwe94libTe",
+        "part": "qstnprt_31S5whcj71fuuD8gYZY4bs"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-06-4mb1-02",
+        "question": "qstn_4jNDdoSKBqA1ZmDDnHNlpy",
+        "part": "qstnprt_1BKT0k9GFHCv0ojVlnAIOD"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-06-4mb1-02r",
+        "question": "qstn_2PH2mEIGCRCK5pbyz2p0eR",
+        "part": "qstnprt_2938XPpcOL5ZoKDUaaEvlX"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-06-4mb1-02r",
+        "question": "qstn_2PH2mEIGCRCK5pbyz2p0eR",
+        "part": "qstnprt_lSuCCeN7TIISvfH9pQyEC"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2022-06-4mb1-02r",
+        "question": "qstn_2PH2mEIGCRCK5pbyz2p0eR",
+        "part": "qstnprt_4qmJZk4e5KdNIS5ifualaD"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2023-01-4mb1-02",
+        "question": "qstn_7F5dO1jAIXlC7ursLFgOsr",
+        "part": "qstnprt_3vH9D8vmVDJpCV3HrN5ibE"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2023-01-4mb1-02",
+        "question": "qstn_7F5dO1jAIXlC7ursLFgOsr",
+        "part": "qstnprt_6ERSwsxcYtcCb4J62erG5G"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2023-01-4mb1-02r",
+        "question": "qstn_1ALgxwCbomp6CywgQfsil",
+        "part": "qstnprt_uh9DlUjGXAaJp30VVjeeO"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2023-01-4mb1-02r",
+        "question": "qstn_1ALgxwCbomp6CywgQfsil",
+        "part": "qstnprt_5XzpysAiLOSlpDKqRdHxu0"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2023-06-4mb1-02",
+        "question": "qstn_6RkKIGitu0aUS8v2fHzEQV",
+        "part": "qstnprt_7CEBZQC8TGfwl40h7uIqdH"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2023-06-4mb1-02",
+        "question": "qstn_5PqriJdj1qF0Mqq3iiMrw7",
+        "part": "qstnprt_2uJ3rgbAOB1XxbTq4MdCe3"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2023-06-4mb1-02",
+        "question": "qstn_5PqriJdj1qF0Mqq3iiMrw7",
+        "part": "qstnprt_2tlscFdfUADvqk83KLky2n"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2023-06-4mb1-02",
+        "question": "qstn_5PqriJdj1qF0Mqq3iiMrw7",
+        "part": "qstnprt_3m8hj3hkvQGFlrrQsqYiHY"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2023-06-4mb1-02r",
+        "question": "qstn_1OPzBW1CBoMyRxWPHbPEWa",
+        "part": "qstnprt_d2DZyQ2ObOfG0X47vPFDJ"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2023-11-4mb1-02",
+        "question": "qstn_47WFPKpnueQdkJVlNvG60R",
+        "part": "qstnprt_nnDkd6qSiSDigfe3jnR4S"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2024-06-4mb1-01",
+        "question": "qstn_5aZUSxql06d2j038cGzMh7",
+        "part": "qstnprt_2Sz6rAuuRBUuKcMeBJxcYH"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2024-06-4mb1-01",
+        "question": "qstn_5Kb7uhy8b8YaBbZC0lgSdu",
+        "part": "qstnprt_5vNaoWaOBngIIUxY6OC4wx"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2024-06-4mb1-01",
+        "question": "qstn_4qwrvKj0bcn2f6q7nfAHRv",
+        "part": "qstnprt_5MigjUhi6jvRSLhugSpe42"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2024-06-4mb1-01",
+        "question": "qstn_4qwrvKj0bcn2f6q7nfAHRv",
+        "part": "qstnprt_2Cyhd3HGkuv0kMZSi6HRUA"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2024-11-4mb1-02",
+        "question": "qstn_1qgcaJxmUOCbM9RVFhvzLQ",
+        "part": "qstnprt_5Q99bwTSPG4rm54SDXJUdZ"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2024-11-4mb1-02",
+        "question": "qstn_1qgcaJxmUOCbM9RVFhvzLQ",
+        "part": "qstnprt_6GatxX27xLAtt8XmGE0Jiu"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2024-11-4mb1-02",
+        "question": "qstn_1qgcaJxmUOCbM9RVFhvzLQ",
+        "part": "qstnprt_4WbIyHTVugjtmJV0IhoHAx"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2024-11-4mb1-02",
+        "question": "qstn_1qgcaJxmUOCbM9RVFhvzLQ",
+        "part": "qstnprt_2OM7q2uQq3ODrRa1Y5N1jM"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2024-11-4mb1-02",
+        "question": "qstn_1qgcaJxmUOCbM9RVFhvzLQ",
+        "part": "qstnprt_3bnjho93GD1pIUQUJbUCXz"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2024-11-4mb1-02",
+        "question": "qstn_YvrvGrIwGxB9GHSoNIliH",
+        "part": "qstnprt_10cQzPWVVS7mvBBlXJXAs1"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2025-06-4mb1-02",
+        "question": "qstn_4LIEEgiZ7wIzSc6NZmVRU2",
+        "part": "qstnprt_6W8LZ34MSUL8fShDrfy2br"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2025-06-4mb1-02",
+        "question": "qstn_4yvfZ0PUg7z1ZgGE0Yy05T",
+        "part": "qstnprt_1VzrpRwdRqZNK06Mkeshl0"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2025-06-4mb1-02r",
+        "question": "qstn_6iXAdJ0bg1BDOqJLhJggOm",
+        "part": "qstnprt_18vSLef6qqLSYGD9QsFs61"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2025-06-4mb1-02r",
+        "question": "qstn_6iXAdJ0bg1BDOqJLhJggOm",
+        "part": "qstnprt_6odboAcFdoAYaTw5UB75gR"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2025-06-4mb1-02r",
+        "question": "qstn_6iXAdJ0bg1BDOqJLhJggOm",
+        "part": "qstnprt_5nZ1iIaZoVWRywA3AvryLO"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2025-11-4mb1-02",
+        "question": "qstn_46WtptxkEBdnGk2BZkiu2f",
+        "part": "qstnprt_61LtqLQK8m6CYFQl9IbFCo"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2026-06-4mb1-02",
+        "question": "qstn_6nEpOUHrnLUQVlPgMJaubN",
+        "part": "qstnprt_4eClyGPKogerUWG8Ztl3wy"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2026-06-4mb1-02",
+        "question": "qstn_1I3i7sPIcPFytl3j3D4Gjv",
+        "part": "qstnprt_5jGabgV3rQZSUJQV7WEWEs"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2026-06-4mb1-02r",
+        "question": "qstn_3xftSfAJDFKRW1K8pLDSgM",
+        "part": "qstnprt_27zmYGse2ef815SYuc9wlZ"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2026-06-4mb1-02r",
+        "question": "qstn_3xftSfAJDFKRW1K8pLDSgM",
+        "part": "qstnprt_2UxrEMNI17ylBuypFOv3EE"
+      },
+      {
+        "cls": "E2_structured_no_solution",
+        "course": "igcse-maths-b-16",
+        "topic": "2026-06-4mb1-02r",
+        "question": "qstn_3xftSfAJDFKRW1K8pLDSgM",
+        "part": "qstnprt_3FPW51Hvi2ltNEUtOhL4yr"
+      }
+    ]
+  },
+  "wave15_igcse_chemistry_19": {
+    "mcq": 343,
+    "mcqNoChoices": 0,
+    "structured": 3245,
+    "structuredNoSolution": 0,
+    "topics": 71,
+    "questions": 922,
+    "parts": 3588
+  }
+}

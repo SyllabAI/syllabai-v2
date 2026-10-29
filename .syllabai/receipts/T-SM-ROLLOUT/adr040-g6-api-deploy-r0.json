@@ -1,0 +1,102 @@
+{
+  "lane": "T-SM-ROLLOUT",
+  "run": "adr040-g6-api-deploy-r0",
+  "date": "2026-10-27",
+  "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+  "trace_id": "1a17b8bbf75d83c5",
+  "operator_order": {
+    "verbatim": "G-6 — API deploy",
+    "channel": "zai-web",
+    "chat": "371a9d19-b6bb-4173-9696-cee324b265a1",
+    "trace_id": "1a17b8bbf75d83c5"
+  },
+  "entry_state": {
+    "g5_exit_of_record": "e3b26132 (#276 comment 6427302433): 431/431 part-bound LEVELS VALIDATED via the real shipped seam",
+    "serving_before": "dpl_C2hsDCzEy15JhfE4RNo9SWknhezJ (production alias syllabai-v2.vercel.app, cli-upload, created 2026-10-24T19:33Z) — PREDATES the ruling-A merge 7ab06ecb (PR #388, 2026-10-26): the part-aware band dispatch was NOT serving; this deploy is what makes G-7's live band serving possible",
+    "sandbox": "rollback #6 repaired on arrival (repo/tmp reclaimed, blobless re-clone); .creds 4x600 intact incl. probe-reverify.env; worktree of record re-verified at tip",
+    "ci_at_source": "tip 1ab008b5 check-runs first-hand: verify=success, hub=success"
+  },
+  "source_of_record": {
+    "commit": "1ab008b5576998499f36e2ace15815cac93fcd0b",
+    "subject": "Task 19 r2 chemistry sync: official-papers + manifest pin (PR #402)",
+    "fetch_first": true,
+    "delta_note": "live serving (Oct 24) predated the ruling-A merge 7ab06ecb — the shipped delta includes routes/smartmark + routes/teachermarking + review-writes part-aware band serving (1.4.0 band / 1.3.0 point provenance)"
+  },
+  "recipe_of_record": {
+    "name": "T-MIG-093 CLI-upload bundle recipe (run-007/run-009 lineage; gitSource lever FORBIDDEN — the empty-build trap law)",
+    "tool": ".syllabai/receipts/T-MIG-093/tools/deploy_bundle_build.py",
+    "lane_copy": "scripts/g6_deploy_bundle_build.py — PATH CONSTANTS ONLY (REPO->session clone, STAGE->tmp/api-stage); shim patterns byte-identical, asserted-unique, pre-checked ZERO drift at tip vs aef295d (snapshot.ts + nba-concept-graph.ts unchanged since run-009)",
+    "shims": "worktree-only (Bun.CryptoHasher->node:crypto, Bun.YAML.parse->js-yaml, 6 hash-pinned concept-graph YAMLs inlined byte-verbatim via generated asset module; SHA-256 pins still enforce byte integrity); upstream repo restored clean after the deploy (git status empty asserted; fs mode-only noise silenced via core.fileMode false)",
+    "stage": "2-file shape of record: api/index.js + vercel.json (rewrites /api/v1/(.*) and /actuator/health -> /api/index) + .vercel/project.json (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ / team_ULL54qkhzKBmnKrpO6BD4mYX)",
+    "cli": "vercel 65.4.0 via npx vercel@latest (run-009 used 62.7.0; version recorded per the disclosure law)"
+  },
+  "bundle": {
+    "modules": 374,
+    "bytes": 3549049,
+    "prior_generation": "run-009: 341 modules / 3,211,177 bytes — +33 modules = the aef295d..tip serving delta (ruling-A part-binding, ratelimit middleware, cla/assignments/drill/learner-progress/teaching-toolkit routes)",
+    "static_band_assertions": {
+      "band_decision_v1": 3,
+      "mark_bands": 14,
+      "question_part_id": 109,
+      "NO_SCHEME_BANDS": 6,
+      "scheme_kind": 15,
+      "assertBandsTileForFlip": 3,
+      "Bun.serve": 0,
+      "realtime_module": 0
+    },
+    "env_census": "bundle env reads = the 12 provisioned project vars (all criticals present server-side) + defaulted tunables (SYLLABAI_LLM_DAILY_BUDGET, WAREHOUSE_OVERFETCH/CACHE_MS, RATELIMIT_*) — no missing criticals"
+  },
+  "localgate": {
+    "verdict": "8/8 ALL PASS on the real Neon wire",
+    "tool": "scripts/g6_localgate.py — lane copy of T-MIG-093 localgate (STAGE path + probe-identity class only)",
+    "legs": "health 200 UP; login malformed 400 validation_failed; register 201 (real Neon INSERT); tutor session create 201 / list-nonempty 200 (L06 fix) / latest 200 / delete 204 / list-empty 200",
+    "probe_learner": "g6-localgate-1793075421@example.invalid (1 census-class register, of record)",
+    "wire_law": "stage/.env.localgate 0600, deleted post-run; see env findings below"
+  },
+  "deploy_legs": {
+    "preview_attempt": "dpl_FekDkpmc9mgNiVEjCShF4v62WPP9 (preview) — probes 500x3 FUNCTION_INVOCATION_FAILED -> ABORT law held, production untouched",
+    "preview_finding_of_record": "all 12 project env vars are target:['production']-only -> ANY preview of this project boots env-less and dies at boot; the preview leg came from the kappa-era deploy_cdc1cd2.sh script; the CURRENT of-record T-MIG-093 lineage (run-007/009) is a direct --prod shape with the localgate as pre-gate and instant-rollback as the safety — proceeded per the current of-record shape",
+    "prod_deploy": {
+      "uid": "dpl_BVPKU53dKcvqDWX5EhGjAH1JfZp5",
+      "url": "syllabai-v2-hon0hhlsp-syllab-ai.vercel.app",
+      "state": "READY (Ready in 10s)",
+      "target": "production",
+      "createdAt": "2026-10-27T04:32:45Z"
+    }
+  },
+  "post_deploy_verification": {
+    "api_health": "GET /actuator/health -> 200 {\"groups\":[\"liveness\",\"readiness\"],\"status\":\"UP\"} on BOTH production domains",
+    "auth_law": "POST /api/v1/auth/login {} -> 400 (tip shape: malformed_body 'request body is not readable'; message-shape delta vs run-009's validation_failed for the {} body DISCLOSED — the localgate's of-record malformed-email body still returns exactly 400 validation_failed, the auth wall law holds)",
+    "decay_law": "GET /api/v1/cron/nightly-decay -> 401 unauthorized 'missing or wrong Authorization bearer — the hub seam forwards the Vercel Cron bearer verbatim' (the fail-closed reason string byte-law HOLDS)",
+    "hub_sanity": "GET hub /api/health -> 200 {\"status\":\"ok\",\"service\":\"syllabai-hub\",\"dataMode\":\"core-api\",\"coreConfigured\":true} (byte-law holds; hub untouched — git-linked at tip)"
+  },
+  "alias_state": {
+    "before": "syllabai-v2.vercel.app -> dpl_C2hsDCzE (Oct 24 19:33Z cli-upload); syllabai-v2-syllab-ai.vercel.app -> dpl_EzDQbaRk (Oct 22-23, ONE DEPLOYMENT BEHIND — pre-existing drift finding)",
+    "after": "BOTH production domains -> dpl_BVPKU53d (the G-6 serving of record); git-main alias -> dpl_9fsQxz (572f2bbe build, untouched)",
+    "drift_repair_act": "POST /v2/deployments/dpl_BVPKU53d/aliases {alias syllabai-v2-syllab-ai.vercel.app} — HTTP 200, oldDeploymentId dpl_EzDQbaRk (the run-009 one-call re-alias shape, applied in the forward direction)",
+    "domain_finding_of_record": "syllabai-v2-syllab-ai.vercel.app is NO LONGER in the project domain list (GET /v9/projects/{id}/domains returns only syllabai-v2.vercel.app) -> vercel deploy --prod can never re-attach it; it survived as a stale manual alias serving pre-ruling-A code; repaired to align with the run-007/009 both-aliases posture; follow-up (separate PR): either re-add the domain to the project or retire the alias deliberately"
+  },
+  "env_findings": [
+    "DATABASE_URL (and CRON_SECRET / SYLLABAI_JWT_SECRET / SYLLABAI_TEACHER_JOIN_CODE / both warehouse URLs) are now Vercel type:encrypted sensitive-envelope vars — the env API returns the {\"v\":...} envelope, NOT plaintext: the run-009 8411 decrypt law is superseded for these vars by the sensitive-env policy (fingerprint parity gate failed closed correctly on first attempt; no secret printed)",
+    "localgate wire therefore = the .creds/db.env DSN of record (same Neon endpoint ep-ancient-cake-a52e4kfd the API serves; the wire the G-4/G-5 lane runs proved live yesterday), staged 0600 memory-only and deleted post-run",
+    "LLM keys remain plain-readable (gsk_/sk-or-v1_/AQ. prefixes visible); no env writes performed"
+  ],
+  "tripwires": {
+    "mark_schemes_total": 25255,
+    "levels_schemes_total": 431,
+    "levels_validated": 431,
+    "levels_suggested": 0,
+    "levels_part_bound": 431,
+    "points_schemes": 24824,
+    "mark_bands": 1257,
+    "mark_points": 48791,
+    "evals": 12,
+    "verdict": "EXACT — all byte-identical to the G-5 exit of record: the deploy wrote ZERO database state (read-only psycopg2 on the lane wire)"
+  },
+  "rollback": {
+    "anchor": "dpl_C2hsDCzEy15JhfE4RNo9SWknhezJ (READY, untouched — the pre-act serving of record)",
+    "shape": "one-call re-alias POST /v2/deployments/{anchor}/aliases {alias syllabai-v2.vercel.app} — the proven restore shape (exercised today in the forward direction)"
+  },
+  "hygiene": "tokens/DSN inline-or-0600 only, zero secret material printed/committed; .env.localgate deleted; worktree shims restored clean (git status empty, mode-only noise silenced locally); zero LLM spend; zero Neon writes beyond the 1 disclosed census-class probe learner; hub untouched; fetch-first for the receipt push, no force",
+  "next_gates": "G-7 QWK eval + the 16 registry-row flips behind the D5-beta floors — the serving of record now carries band_decision_v1 part-aware dispatch over 431 VALIDATED part-bound LEVELS schemes / 1,257 verbatim bands"
+}

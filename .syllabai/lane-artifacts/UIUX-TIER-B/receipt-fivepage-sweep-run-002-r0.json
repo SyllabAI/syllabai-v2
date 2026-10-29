@@ -1,0 +1,36 @@
+{
+ "lane": "UIUX-TIER-B run-002 (five-page sweep r0)",
+ "operator_order": "trace 1a169bffbef4d581: 'five-page sweep of the remaining Tier-B papers'",
+ "context": "run-001 (cca15c09 + receipt a67bda1c) closed the Tier-B queue of record: 39 ARTWORK-2 soft-skips -> 61 embeds, 34 box-paren flattened parts -> 0, NNq-degree 6 -> 0, KaTeX gate 155 segments 0 failures; three set pages eyeballed PASS (2021-01-02r / 2021-01-02 / 2023-01-01). run-002 sweeps five REMAINING Tier-B-touched set pages, selected by bundle signal (embeds + KaTeX segments + matrix/table density) outside the run-001 eyeball trio.",
+ "pages": [
+  {"slug": "2019-06-4mb1-02r", "why": "GFM table (T2 q7 of record) + 18 embeds + 21 problem-side KaTeX segments", "status": 200, "katex_spans": 21, "katex_expected_problemSide": 21, "katex_errors": 0, "gfm_tables": 1, "box_paren": 0, "assets": "7 unique all 200", "difficulty_split": "easy 3 / medium 5 / hard 3 = 11q", "verdict": "PASS"},
+  {"slug": "2019-06-4mb1-02", "why": "6 matrix-class parts (vector chain re-transcription) + 14 embeds", "status": 200, "katex_spans": 39, "katex_errors": 0, "gfm_tables": 0, "box_paren": 0, "assets": "4 unique all 200", "difficulty_split": "easy 1 / medium 7 / hard 3 = 11q", "verdict": "PASS"},
+  {"slug": "2018-06-4mb1-02", "why": "4 matrix parts + kite-arrow repair + q3 tank re-crop", "status": 200, "katex_spans": 91, "katex_errors": 0, "gfm_tables": 0, "box_paren": 0, "assets": "4 unique all 200", "difficulty_split": "easy 1 / medium 4 / hard 6 = 11q", "verdict": "PASS"},
+  {"slug": "2018-06-4mb1-02r", "why": "3 matrix parts + tank re-crop target", "status": 200, "katex_spans": 16, "katex_errors": 0, "gfm_tables": 0, "box_paren": 0, "assets": "7 unique all 200", "difficulty_split": "easy 0 / medium 5 / hard 7 = 12q", "verdict": "PASS"},
+  {"slug": "2025-06-4mb1-02", "why": "highest embed density (27) + trapezium re-adjudication target", "status": 200, "katex_spans": 0, "katex_expected_problemSide": 0, "katex_errors": 0, "gfm_tables": 0, "box_paren": 0, "assets": "9 unique all 200", "difficulty_split": "easy 2 / medium 8 / hard 2 = 12q", "verdict": "PASS"}
+ ],
+ "verdict": "PASS 5/5 — Tier-B deploys verified live and healthy",
+ "key_adjudications": [
+  "SSR katex-span counts match problemMd-side segment counts EXACTLY per page (21==21, 0==0); solutionMd math renders behind the client-side View-answer accordion, so absence from SSR HTML is correct behavior, not a render defect (falsified the remark-math closing-dollar-digit hypothesis empirically — remark-math v6 renders digit-adjacent segments fine)",
+  "2019-06-02r GFM table renders live -> the Tier-B bundle (cca15c09) is the served deployment (freshness probe; x-vercel-cache HIT age 84s is edge-fresh, and ARTWORK-3-era embed counts present in payload)",
+  "31 unique asset URLs across the 5 pages, 402-class anonymous-200 verified, zero paren-filename regressions (fcee56b rename law holds)",
+  "difficulty tabs non-degenerate on all 5 pages (lane 3 mapping live; 2018-06-02r 0-easy is a legitimate paper property, not the null->medium fallback class)"
+ ],
+ "residual_census_run002": {
+  "note": "NEW quantification of the disclosed flattened-pile family (lane 2 'Tier-B residuals' note + T5 disclosure), regex-census then eyes-on adjudication of every problemMd hit",
+  "box_paren_fleet": 0,
+  "solutionMd_student_view_answer": {"spaced_fraction_ms_notes": 125, "ten_n_literal_exponent": 23, "q_deg_ambiguous": 6, "subtotal": 154},
+  "problemMd_student_visible_genuine": {"q_stdform_x10_garble": 2, "q_deg_exponent_loss": 3, "set_roster_venn_flattening": 7, "empty_grid_axis_of_record": 1, "subtotal": 13},
+  "false_positives_excluded": ["q as legitimate variable (2021-01-01r vectors, 2022-01-01 p-q relation)", "genuine data lists (2023-06-01r 'ten numbers' mode/median x2 parts)"],
+  "genuine_problemMd_examples": [
+    "2018-06-01: 'Solve the equation 4x + (5.2 q 105) = (7.1 q 107) - 12x' (OCR read x10^5 as 'q 105')",
+    "2018-06-01r: 'The number of people living in Delhi is 1.7 q 107'",
+    "2025-06-01: 'Simplify fully 32 q r 5' (exponent lost)",
+    "2025-11-02: 'Solve the inequality 5 2 q ( ) 30' (parens flattened)",
+    "2023-11-02 x3 + 2026-06-01r + 2026-06-02 x3: universal-set rosters flattened ('E = { , , , 1 2 3 4 5 ... }' commas detached)"
+   ],
+  "scale_verdict": "~165 genuine fragments across 61/65 sets -> a full Tier-B run-003 re-transcription program under the no-guess law (each fragment needs QP/MS-render eyes-on; MS sources fetchable from syllabai-resources archive per the 02R precedent). NOT closable mechanically; filed for operator."
+ },
+ "gates": {"zero_content_changes": true, "syllabai_only_bookkeeping": true, "read_only_sweep": true, "scrub_assert": "clean (no creds in any artifact)"},
+ "artifacts": {"sandbox_scripts": "scripts/r0_tierb_fivepage_sweep.py + r0_tierb_fivepage_sweep_receipt.json + r0_tierb_rendertest/", "this_receipt": ".syllabai/lane-artifacts/UIUX-TIER-B/receipt-fivepage-sweep-run-002-r0.json"}
+}

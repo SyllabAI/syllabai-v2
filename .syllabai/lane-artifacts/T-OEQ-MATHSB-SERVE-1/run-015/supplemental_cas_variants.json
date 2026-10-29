@@ -1,0 +1,98 @@
+{
+ "built": "run-015 supplemental: capital-C case variants (Cas Total N marks) missed by run-014 case-sensitive census; found by the post-strip furniture gate",
+ "evidence": [
+  "pg_2025-06_02_4-b-p08.png (READ earlier: q4 block ends Cas + Total 6 marks same printed row)",
+  "pg_2025-06_02_5-d-p09.png",
+  "pg_2025-06_02_6-e-p10.png",
+  "pg_2025-06_02_7-c-p11.png",
+  "pg_2025-06_02_8-b-p12.png",
+  "pg_2026-06_02r_5-p10.png"
+ ],
+ "verdict": "PASS \u2014 printed Cas Working-column cell + italic Total footer on one row; same furniture class as lowercase cas variants",
+ "worklist": [
+  {
+   "pid": "offp_2025-06_02_4-b",
+   "field": "solutionMd",
+   "line": 30,
+   "kind": "TOTAL",
+   "text": "Cas Total 6 marks"
+  },
+  {
+   "pid": "offp_2025-06_02_4-b",
+   "field": "markPoints[0]",
+   "line": 30,
+   "kind": "TOTAL",
+   "text": "Cas Total 6 marks"
+  },
+  {
+   "pid": "offp_2025-06_02_5-d",
+   "field": "solutionMd",
+   "line": 1,
+   "kind": "TOTAL",
+   "text": "Cas Total 9 marks"
+  },
+  {
+   "pid": "offp_2025-06_02_5-d",
+   "field": "markPoints[0]",
+   "line": 1,
+   "kind": "TOTAL",
+   "text": "Cas Total 9 marks"
+  },
+  {
+   "pid": "offp_2025-06_02_6-e",
+   "field": "solutionMd",
+   "line": 4,
+   "kind": "TOTAL",
+   "text": "Cas Total 7 marks"
+  },
+  {
+   "pid": "offp_2025-06_02_6-e",
+   "field": "markPoints[0]",
+   "line": 4,
+   "kind": "TOTAL",
+   "text": "Cas Total 7 marks"
+  },
+  {
+   "pid": "offp_2025-06_02_7-c",
+   "field": "solutionMd",
+   "line": 11,
+   "kind": "TOTAL",
+   "text": "Cas Total 7 marks"
+  },
+  {
+   "pid": "offp_2025-06_02_7-c",
+   "field": "markPoints[0]",
+   "line": 11,
+   "kind": "TOTAL",
+   "text": "Cas Total 7 marks"
+  },
+  {
+   "pid": "offp_2025-06_02_8-b",
+   "field": "solutionMd",
+   "line": 24,
+   "kind": "TOTAL",
+   "text": "Cas Total 9 marks"
+  },
+  {
+   "pid": "offp_2025-06_02_8-b",
+   "field": "markPoints[0]",
+   "line": 24,
+   "kind": "TOTAL",
+   "text": "Cas Total 9 marks"
+  },
+  {
+   "pid": "offp_2026-06_02r_5",
+   "field": "solutionMd",
+   "line": 31,
+   "kind": "TOTAL",
+   "text": "Cas Total 6 marks"
+  },
+  {
+   "pid": "offp_2026-06_02r_5",
+   "field": "markPoints[0]",
+   "line": 31,
+   "kind": "TOTAL",
+   "text": "Cas Total 6 marks"
+  }
+ ]
+}

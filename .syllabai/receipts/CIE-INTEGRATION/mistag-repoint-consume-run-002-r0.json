@@ -1,0 +1,75 @@
+{
+ "schema": "syllabai.cie-integration-receipt/1.0",
+ "lane": "T-RULE-T2-MISTAG-1",
+ "run": "run-002 (v2 consume of the resources run-001 sidecar of record)",
+ "generatedUtc": "2026-10-23T10:30:00Z",
+ "operatorDirective": "10-mis-tag re-point batch (zai-web session web-df0238cc-641e-4e8e-ae60-bc44c2aeec2e, gateway trace 1a1658227c0c0365)",
+ "gateOpened": [
+  "T-RULE-T2-COND-1 misTags[10] (download/tranche2_conditional_resolution_r0.json, Mis-tag Flags of record)",
+  "resources v8Retraction disclosures: 8W7s re-point + zm7p 24.2.x re-point operator-gated (run-001 of the retraction lane)"
+ ],
+ "resourcesOfRecord": {
+  "repo": "SyllabAI/syllabai-resources",
+  "pr": 69,
+  "mergedSha": "ea21a721e09e3a7ccfa1f92d6f667bc290412e14",
+  "sidecarSha256Before": "ddf8173503b7926b6d4dbac3cab8d13a2b0e3448b9b1513a87d07166bf7cef74",
+  "sidecarSha256After": "4802af4e170b6a594057fe34aaf4535b7cdbd06b8da07d7f62754d28333be98a",
+  "sidecarBlock": "anchors.misTagRepoints (schema syllabai.operator-mis-tag-repoint/1.0)",
+  "machineRecord": "graph/reports/tranche2-r2/mis-tag-repoint-run-001-r0.json",
+  "counts": {"parts": 10, "partsChanged": 8, "entriesRemoved": 3, "entriesAdded": 11, "keepAsContext": 2, "keepNoOp": 1},
+  "remoteReVerified": "remote sidecar bytes == local patched bytes (True)"
+ },
+ "adjudications": {
+  "h3SZ": {"removed": [], "added": ["28.2.1", "28.2.7"], "note": "flag '28.3.x' gloss = colour subtopic; the part CONSTRUCTS ligand-substitution equations -> 28.2.1+28.2.7 verbatim (named Cu(II) complexes)"},
+  "NzSv": {"removed": [], "added": ["24.1.1", "24.2.6"], "kept": ["24.2.7 (J4)"], "note": "electrolytic copper purification: deposit/dissolve prediction from E-theta positions (24.1.1) + relative reactivity from E values (24.2.6); half-equations i/iv keep the J4 24.2.7"},
+  "8W7s": {"removed": [], "added": ["26.2.3"], "note": "receipt shorthand 26.1.4 REJECTED on spine evidence (rate-constant calculation); 26.2.3 names 'Fe3+ or Fe2+ in the I-/S2O8(2-) reaction' verbatim"},
+  "kTXY": {"removed": ["24.2.3", "24.2.4"], "added": ["24.1.1"], "note": "electroplating electrolyte + polarity = 24.1.1; V8/YpKq E-theta mirrors rejected (no such content)"},
+  "zm7p": {"removed": ["6.1.1"], "added": ["24.2.6", "24.2.4"], "note": "E-value feasibility (24.2.6) + E-cell combination (24.2.4); V8/HmMg 6.1.1 rejected as primary home"},
+  "WW34": {"removed": [], "added": [], "note": "KEEP-as-context: 12.1.3 genuine (nitric-acid manufacture = man-made NOx occurrence); flag's 12.1.2 rejected (basicity); no balancing point in spine; ZERO change"},
+  "TR8Y": {"removed": [], "added": ["2.4.1"], "kept": ["12.1.3 context"], "note": "molar-volume route (24 dm3) = 2.4.1 limb (b); 4.1.3 declined (pV=nRT not used); 12.1.3 kept (car exhausts = man-made NOx)"},
+  "xZch": {"removed": [], "added": ["8.2.3"], "note": "confirmed verbatim (frequency of effective collisions on temperature increase); 7.1.3/8.1.1 declined"},
+  "PPqr": {"removed": [], "added": ["11.2.1"], "note": "halogen oxidising power down Group 17 = 11.2.1 verbatim"},
+  "tKhp": {"removed": [], "added": [], "note": "KEEP no-op: 23.3.2 genuine (Specimen Paper 4 Q2a); set-placement note only; ZERO change"}
+ },
+ "consumeOfRecord": {
+  "pinAdvance": "e7c7a68cf4790b951f77876982030413dd4662b7 -> ea21a721e09e3a7ccfa1f92d6f667bc290412e14",
+  "engineLaw": "the consume engine learns the operator mis-tag re-point law: mistag_pairs(sd) from anchors.misTagRepoints.parts[*].removed -> surgical (item, code) drops (L_SIDECAR V8 operator-verdict mirrors only, NO-GUESS guard) + M1 battery exemption (union with the retraction surface, provenance-checked per pair) + per-course guard misTagRepointDropped <= anchors.misTagRepoints.counts.entriesRemoved; additions flow the normal sidecar_rank law (tier tranche2_mis_tag_repoint ranks via method operator_verdict)",
+  "changedCourses": 44,
+  "misTagRepointDropped": 3,
+  "v8RetractDropped": 0,
+  "sidAnchors": {"added": 0, "verified": 23, "conflictsKept": 0},
+  "sheet": {"added": 0, "upgraded": 0, "conflictsKept": 289},
+  "stagingHash": "b74a4908fc95ef79216f23275e3421519ad40867852afa9175081a133f4ebd31"
+ },
+ "deltaProof": {
+  "chem25ItemsChanged": 8,
+  "changedSet": ["qstnprt_h3SZSqQsTHghWbsY", "qstnprt_NzSvYtNwzZCrRZnj", "qstnprt_8W7sTFyZCChbbB8q", "qstnprt_kTXYM7f9SxYYn8G4", "qstnprt_zm7pJv9p2Hgg8kd4", "qstnprt_TR8YGRrrZVfYTZbF", "qstnprt_xZchcnpv7g3b8ZhZ", "qstnprt_PPqrtZVrBZtwTCwh"],
+  "perPartCodeSetsExact": true,
+  "sidAnchorPlaneByteEqual": {"spcptToOfficial": 69, "spcptUnmapped": 262},
+  "nonChem25ItemPlanes": "43/43 byte-unchanged (proven per-bank)",
+  "chem25QuestionsBundleDelta": "8 parts linkage-only (specPointIds/specPointCodes), proven exact",
+  "coverage": {"distinctCodesAttached": "155 -> 161", "uncoveredSpineCodes": "201 -> 195", "codesOutsideSpine": 0}
+ },
+ "censusRePin": {
+  "questions": "6780 -> 6784",
+  "parts": "5782 -> 5789",
+  "pkgParts": "9402 -> 9411",
+  "unmapped": "12,298 -> 12,294 EXACT (four chem25 questions regain servability: h3SZ/8W7s/xZch/PPqr)",
+  "raw": "19,097/25,663 UNCHANGED",
+  "identity": "rawQ - questions == unmapped + dupOrder re-proven: 12,313 == 12,294 + 19",
+  "probe": "scripts/t2retract_census_probe.ts over loadRoster + mapLawCensus (green 44/44)"
+ },
+ "pinLadder": {
+  "CIE_PIN": "ea21a721e09e3a7ccfa1f92d6f667bc290412e14",
+  "CIE_PIN_PRIOR_5": "e7c7a68cf4790b951f77876982030413dd4662b7 (demoted, allow-list extended)"
+ },
+ "disclosures": [
+  "the resolution receipt shorthand 26.1.4 (8W7s) is corrected to 26.2.3 on spine evidence; the receipt of record stays untouched — anchors.misTagRepoints is the spine-faithful correction of record",
+  "source_sid stays None on all 11 additions: part-level operator adjudications, NOT sid mirrors — the tagged sid is recorded per part in anchors.misTagRepoints",
+  "WW34 keep-as-context + tKhp keep-no-op: zero sidecar change, documented in the block",
+  "anchors.operatorSidAnchors + anchors.v8Retraction BYTE-FROZEN (additive-only law): the 23 of-record sid rulings and the retraction record reproduce byte-exact",
+  "manifest courses row untouched in resources (pre-existing stale census owned by the regen lane)",
+  "v2 origin/main moved 41fb011 -> edd5a91d during the run (T-MIG-141 spec + task card, zero surface overlap with this lane); branch re-based off edd5a91d fetch-first"
+ ],
+ "scope": ["apps/hub/scripts/cie/cie_consume_spec_links.py", "apps/hub/content-maps/ (44)", "apps/hub/content/ (44 manifests + chem25 questions.json)", "apps/hub/scripts/validate_cie_bundles.ts", "apps/api/test/sme/cie-phase4-roster.test.ts", ".syllabai/receipts/CIE-INTEGRATION/mistag-repoint-consume-run-002-r0.json", ".syllabai/worklog.md"]
+}

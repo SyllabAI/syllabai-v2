@@ -1,0 +1,555 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_JCfdFrHsCkrmMbFj",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "b7e8a1b997cf1d38cb02189aee7cea91f77f4e0404c8516cbc6ab3b3a128d09d",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_JCfdFrHsCkrmMbFj",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L1::Q1",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L1",
+      "stem": "10.0 g of mercury(II) oxide is heated in a sealed container and decomposes completely into mercury and oxygen. What is the total mass of mercury and oxygen present afterwards?",
+      "misconceptionClass": "gas-mass dismissal and conservation scope",
+      "options": [
+        {
+          "key": "A",
+          "text": "10.0 g",
+          "correct": true,
+          "explanation": "The vessel is sealed, so every atom stays inside: the atoms of mercury(II) oxide have merely rearranged into mercury and oxygen.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Less than 10.0 g",
+          "correct": false,
+          "explanation": "A gas still has mass; nothing leaves a sealed container simply by becoming gaseous.",
+          "misconception": "dismisses the mass of gaseous products"
+        },
+        {
+          "key": "C",
+          "text": "More than 10.0 g",
+          "correct": false,
+          "explanation": "Heating supplies energy, not atoms, so no extra mass can appear.",
+          "misconception": "treats heating as adding mass"
+        },
+        {
+          "key": "D",
+          "text": "Cannot be told without weighing",
+          "correct": false,
+          "explanation": "Conservation of mass predicts the total exactly, so no new weighing is needed.",
+          "misconception": "denies that conservation makes the mass predictable"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L1::Q2",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L1",
+      "stem": "Which principle is the reason a chemical equation can be balanced at all?",
+      "misconceptionClass": "balancing justification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Atoms are neither created nor destroyed in a reaction",
+          "correct": true,
+          "explanation": "Balancing works because the same atoms must appear on both sides, only rearranged.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Mass depends on the volume a substance occupies",
+          "correct": false,
+          "explanation": "Volume changes as substances change state; it plays no part in why balancing is possible.",
+          "misconception": "confuses conservation with volume arguments"
+        },
+        {
+          "key": "C",
+          "text": "Every reaction can run backwards as well as forwards",
+          "correct": false,
+          "explanation": "Reversibility is a separate idea; balancing does not depend on it.",
+          "misconception": "imports reversibility as the justification"
+        },
+        {
+          "key": "D",
+          "text": "A catalyst changes the products of a reaction",
+          "correct": false,
+          "explanation": "A catalyst only alters the rate; it neither appears in the balanced result nor justifies balancing.",
+          "misconception": "overstates what a catalyst does"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L1::Q3",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L1",
+      "stem": "In a sealed vessel, 71 g of chlorine is supplied and 23 g of sodium reacts completely, leaving 35.5 g of chlorine unreacted. What mass of sodium chloride has formed?",
+      "misconceptionClass": "accounting for unreacted excess",
+      "options": [
+        {
+          "key": "A",
+          "text": "58.5 g",
+          "correct": true,
+          "explanation": "Total mass is conserved: 23 + 71 = 94 g before, and 94 − 35.5 = 58.5 g of chlorine remains, so 58.5 g must be sodium chloride.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "94 g",
+          "correct": false,
+          "explanation": "94 g is the total starting mass; it ignores the 35.5 g of chlorine left over.",
+          "misconception": "ignores the unreacted excess when closing the mass account"
+        },
+        {
+          "key": "C",
+          "text": "35.5 g",
+          "correct": false,
+          "explanation": "35.5 g is the leftover chlorine, not the product that formed.",
+          "misconception": "reports the leftover reactant as the product"
+        },
+        {
+          "key": "D",
+          "text": "23 g",
+          "correct": false,
+          "explanation": "The product contains atoms from both reactants, so its mass must exceed the sodium's alone.",
+          "misconception": "counts only one reactant's mass in the product"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L1::Q4",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L1",
+      "stem": "A candle burns inside an open jar, and the jar's contents weigh less afterwards. Does this contradict the Law of Conservation of Mass?",
+      "misconceptionClass": "open versus closed systems",
+      "options": [
+        {
+          "key": "A",
+          "text": "No — gaseous products escaped from the jar into the air",
+          "correct": true,
+          "explanation": "The system is open, so the missing mass left as gases; conservation applies to the candle plus the air taken together.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Yes — the contents lost mass, and mass can never change",
+          "correct": false,
+          "explanation": "The law compares total mass including escaped gases, not just what remains in the jar.",
+          "misconception": "applies conservation to an open system's visible contents only"
+        },
+        {
+          "key": "C",
+          "text": "Yes — burning destroys some of the atoms",
+          "correct": false,
+          "explanation": "Burning rearranges atoms; it never destroys them.",
+          "misconception": "believes combustion destroys matter"
+        },
+        {
+          "key": "D",
+          "text": "No — solids always weigh less after heating",
+          "correct": false,
+          "explanation": "The conclusion happens to be no, but the reasoning is wrong: the mass left as gases is the true reason.",
+          "misconception": "reaches the right verdict through an invented rule"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L1::Q5",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L1",
+      "stem": "Spec point 1.25 asks you to write word and balanced chemical equations. For which reactions does this apply?",
+      "misconceptionClass": "scope of the equation-writing skill",
+      "options": [
+        {
+          "key": "A",
+          "text": "Reactions studied in the specification and unfamiliar ones where suitable information is provided",
+          "correct": true,
+          "explanation": "Both cases are named: the reactions you have met, and new ones you can interpret from the details supplied.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Only the reactions studied in the specification",
+          "correct": false,
+          "explanation": "The skill extends beyond the studied list to unfamiliar reactions with enough information given.",
+          "misconception": "narrows the required scope to familiar reactions"
+        },
+        {
+          "key": "C",
+          "text": "Only unfamiliar reactions",
+          "correct": false,
+          "explanation": "Studied reactions remain firmly included; unfamiliar ones are an addition, not a replacement.",
+          "misconception": "inverts the scope, dropping studied reactions"
+        },
+        {
+          "key": "D",
+          "text": "Only reactions where state symbols are demanded",
+          "correct": false,
+          "explanation": "State symbols are part of the equation format, not a limit on which reactions apply.",
+          "misconception": "confuses the state-symbol requirement with the scope of the skill"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L2::Q1",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L2",
+      "stem": "Sodium hydroxide reacts with hydrochloric acid to form sodium chloride and water. Which word equation is correct?",
+      "misconceptionClass": "reactant-product placement",
+      "options": [
+        {
+          "key": "A",
+          "text": "sodium hydroxide + hydrochloric acid → sodium chloride + water",
+          "correct": true,
+          "explanation": "The two starting substances sit left of the arrow and the two new substances sit right, exactly as the sentence states.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "sodium chloride + water → sodium hydroxide + hydrochloric acid",
+          "correct": false,
+          "explanation": "This reverses the reaction: the products named in the sentence have been written on the left.",
+          "misconception": "writes the products where the reactants belong"
+        },
+        {
+          "key": "C",
+          "text": "sodium + chlorine → sodium chloride",
+          "correct": false,
+          "explanation": "The reactants are compounds with full names of their own; swapping in element names loses hydroxide and the acid.",
+          "misconception": "substitutes element names for the actual reactants"
+        },
+        {
+          "key": "D",
+          "text": "sodium hydroxide → sodium chloride + water",
+          "correct": false,
+          "explanation": "Hydrochloric acid is a starting substance and must appear on the left; it has been dropped entirely.",
+          "misconception": "omits a reactant from the equation"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L2::Q2",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L2",
+      "stem": "Iron(II) hydroxide and sodium sulfate are formed when iron(II) sulfate solution and sodium hydroxide react together. Which word equation matches?",
+      "misconceptionClass": "products-first sentence reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "iron(II) sulfate + sodium hydroxide → iron(II) hydroxide + sodium sulfate",
+          "correct": true,
+          "explanation": "The substances that are formed are the products, so they belong on the right even though the sentence mentions them first.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "iron(II) hydroxide + sodium sulfate → iron(II) sulfate + sodium hydroxide",
+          "correct": false,
+          "explanation": "This copies the mention order; the formed substances have been placed on the left by mistake.",
+          "misconception": "copies the order of mention instead of the reaction direction"
+        },
+        {
+          "key": "C",
+          "text": "iron(II) sulfate + sodium hydroxide → iron(II) sulfate + sodium hydroxide",
+          "correct": false,
+          "explanation": "The right-hand side merely restates the starting substances; no new substances have been written.",
+          "misconception": "restates the reactants as the products"
+        },
+        {
+          "key": "D",
+          "text": "iron(II) sulfate → iron(II) hydroxide + sodium sulfate",
+          "correct": false,
+          "explanation": "Sodium hydroxide is the second starting substance and must appear on the left.",
+          "misconception": "drops a reactant while reading the sentence"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L2::Q3",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L2",
+      "stem": "Coal is mainly carbon, and it burns in air. Which word equation describes the reaction?",
+      "misconceptionClass": "burning in air means oxygen",
+      "options": [
+        {
+          "key": "A",
+          "text": "carbon + oxygen → carbon dioxide",
+          "correct": true,
+          "explanation": "Burning in air means reacting with oxygen, so oxygen is the second reactant.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "carbon → carbon dioxide",
+          "correct": false,
+          "explanation": "The oxygen from the air is a reactant and must be named on the left.",
+          "misconception": "omits oxygen when a substance burns in air"
+        },
+        {
+          "key": "C",
+          "text": "carbon + air → carbon dioxide",
+          "correct": false,
+          "explanation": "Air is the mixture the oxygen comes from; the reacting substance named in equations is oxygen.",
+          "misconception": "names air, not oxygen, as the reactant"
+        },
+        {
+          "key": "D",
+          "text": "carbon dioxide → carbon + oxygen",
+          "correct": false,
+          "explanation": "This reverses the burning process, putting the products on the left.",
+          "misconception": "reverses the direction of the reaction"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L2::Q4",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L2",
+      "stem": "In a word equation, what does the arrow represent?",
+      "misconceptionClass": "arrow semantics",
+      "options": [
+        {
+          "key": "A",
+          "text": "The conversion of the reactants into the products",
+          "correct": true,
+          "explanation": "The arrow is read as to form or produces: the substances on the left become the substances on the right.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "That both sides contain the same substances",
+          "correct": false,
+          "explanation": "Reactants and products are different substances; the arrow is not an equals sign.",
+          "misconception": "reads the arrow as an equality of the two sides"
+        },
+        {
+          "key": "C",
+          "text": "That the reactants dissolve into each other",
+          "correct": false,
+          "explanation": "Dissolving is a physical change; the arrow describes a chemical reaction making new substances.",
+          "misconception": "confuses the reaction arrow with dissolving"
+        },
+        {
+          "key": "D",
+          "text": "That heat is always needed for the reaction",
+          "correct": false,
+          "explanation": "Some reactions need heating and some do not; the bare arrow itself carries no such claim.",
+          "misconception": "assumes every reaction is heated"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L2::Q5",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L2",
+      "stem": "A reaction is speeded up using a catalyst. Where does the catalyst's name appear in the word equation?",
+      "misconceptionClass": "catalyst placement",
+      "options": [
+        {
+          "key": "A",
+          "text": "Written above the arrow",
+          "correct": true,
+          "explanation": "A catalyst is neither consumed nor formed, so its name is annotated on the arrow itself.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "On the left, as one of the reactants",
+          "correct": false,
+          "explanation": "Reactants are consumed; a catalyst is only added to make the reaction go faster and survives unchanged.",
+          "misconception": "treats the catalyst as a consumed ingredient"
+        },
+        {
+          "key": "C",
+          "text": "On the right, as one of the products",
+          "correct": false,
+          "explanation": "Products are new substances made by the reaction; the catalyst is not one of them.",
+          "misconception": "treats the catalyst as a formed substance"
+        },
+        {
+          "key": "D",
+          "text": "Nowhere — catalysts are never shown",
+          "correct": false,
+          "explanation": "The note is explicit: the catalyst's name can be written above the arrow.",
+          "misconception": "denies that catalysts are annotated on equations"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L3::Q1",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L3",
+      "stem": "Which list names all the non-metals that must be written as molecules in symbol equations?",
+      "misconceptionClass": "diatomic set recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "H2, N2, O2, F2, Cl2, Br2, I2",
+          "correct": true,
+          "explanation": "These seven non-metals exist as diatomic molecules and are written that way in equations.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "H2, N2 and O2 only",
+          "correct": false,
+          "explanation": "The fluorine, chlorine, bromine and iodine molecules belong to the same set; three of the seven have been dropped.",
+          "misconception": "recalls only the most familiar diatomic trio"
+        },
+        {
+          "key": "C",
+          "text": "H2, O2, N2, Cl2 and CO2",
+          "correct": false,
+          "explanation": "Carbon dioxide is a compound, not one of the elemental non-metals written as molecules.",
+          "misconception": "slips a compound into the diatomic element list"
+        },
+        {
+          "key": "D",
+          "text": "Every element that is a gas at room temperature",
+          "correct": false,
+          "explanation": "The noble gases are gaseous elements yet exist as single atoms, so being a gas is not the test.",
+          "misconception": "assumes every gaseous element is diatomic"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L3::Q2",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L3",
+      "stem": "In a symbol equation, what does the state symbol (aq) mean?",
+      "misconceptionClass": "state-symbol meanings",
+      "options": [
+        {
+          "key": "A",
+          "text": "Dissolved in water",
+          "correct": true,
+          "explanation": "(aq) marks an aqueous substance: one dissolved in water, as sodium hydroxide solution is in the neutralisation example.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A gas",
+          "correct": false,
+          "explanation": "A gas carries the symbol (g); (aq) is reserved for substances dissolved in water.",
+          "misconception": "misreads (aq) as the gas state"
+        },
+        {
+          "key": "C",
+          "text": "A pure liquid",
+          "correct": false,
+          "explanation": "A pure liquid is (l); (aq) says the substance is spread through water, not melted into a pure liquid.",
+          "misconception": "confuses aqueous with the pure liquid state"
+        },
+        {
+          "key": "D",
+          "text": "A solid",
+          "correct": false,
+          "explanation": "A solid is (s); (aq) belongs to substances dissolved in water.",
+          "misconception": "misreads (aq) as the solid state"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L3::Q3",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L3",
+      "stem": "The combustion of sulfur is written S (s) + O2 (g) → SO2 (g). What does this equation show?",
+      "misconceptionClass": "reading particles from a symbol equation",
+      "options": [
+        {
+          "key": "A",
+          "text": "One sulfur atom reacts with one oxygen molecule to make one sulfur dioxide molecule",
+          "correct": true,
+          "explanation": "S is single atoms, O2 is a molecule of two oxygen atoms, and the equation shows them combining one-to-one into SO2.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One sulfur molecule reacts with one oxygen molecule",
+          "correct": false,
+          "explanation": "Sulfur here is written as single atoms, not as molecules.",
+          "misconception": "calls the sulfur atoms molecules"
+        },
+        {
+          "key": "C",
+          "text": "Two separate oxygen atoms react with the sulfur",
+          "correct": false,
+          "explanation": "The oxygen arrives as one O2 molecule; the equation does not split it into separate atoms.",
+          "misconception": "splits the oxygen molecule into loose atoms"
+        },
+        {
+          "key": "D",
+          "text": "Sulfur dioxide forms as a liquid",
+          "correct": false,
+          "explanation": "The state symbol (g) after SO2 marks a gas.",
+          "misconception": "ignores the state symbol on the product"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L3::Q4",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L3",
+      "stem": "Al (s) + CuO (s) → Al2O3 (s) + Cu (s) needs balancing. Which balanced equation is correct?",
+      "misconceptionClass": "element-by-element tally discipline",
+      "options": [
+        {
+          "key": "A",
+          "text": "2Al (s) + 3CuO (s) → Al2O3 (s) + 3Cu (s)",
+          "correct": true,
+          "explanation": "Aluminium 2 = 2, oxygen 3 = 3 and copper 3 = 3, so every element tallies across the equation.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Al (s) + 3CuO (s) → Al2O3 (s) + 3Cu (s)",
+          "correct": false,
+          "explanation": "Only one aluminium atom is supplied on the left while Al2O3 needs two.",
+          "misconception": "forgets to fix the aluminium count"
+        },
+        {
+          "key": "C",
+          "text": "2Al (s) + 3CuO (s) → Al2O3 (s) + 2Cu (s)",
+          "correct": false,
+          "explanation": "The 3 CuO bring three copper atoms across, so the copper product must read 3Cu, not 2Cu.",
+          "misconception": "leaves the copper tally unupdated"
+        },
+        {
+          "key": "D",
+          "text": "2Al (s) + 2CuO (s) → Al2O3 (s) + 2Cu (s)",
+          "correct": false,
+          "explanation": "Two CuO supply only two oxygen atoms, but Al2O3 needs three; the oxygen tally is left short.",
+          "misconception": "stops balancing before the oxygen tally closes"
+        }
+      ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L3::Q5",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L3",
+      "stem": "An equation needs more oxygen on the product side. Why may you not balance it by changing H2O into H2O2?",
+      "misconceptionClass": "subscript versus coefficient",
+      "options": [
+        {
+          "key": "A",
+          "text": "H2O2 is a different substance, hydrogen peroxide, so the formula itself is fixed",
+          "correct": true,
+          "explanation": "Changing a small number inside a formula changes what the substance is; only the large numbers in front may be adjusted.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Subscripts may be changed freely, like coefficients",
+          "correct": false,
+          "explanation": "Coefficients scale the amount of a substance; subscripts redefine it. The two are not interchangeable.",
+          "misconception": "treats subscripts as adjustable like coefficients"
+        },
+        {
+          "key": "C",
+          "text": "The hydrogen ratio would stay the same, so nothing changes",
+          "correct": false,
+          "explanation": "The hydrogen count is unchanged, but the oxygen count and the substance's identity both change, which is exactly the problem.",
+          "misconception": "checks only one element and misses the identity change"
+        },
+        {
+          "key": "D",
+          "text": "Oxygen may never be added to the product side of an equation",
+          "correct": false,
+          "explanation": "Oxygen is added routinely by placing coefficients, such as writing O2 as a reactant; only formula edits are forbidden.",
+          "misconception": "overgeneralises the ban into 'no oxygen may ever be added'"
+        }
+      ]
+    }
+  ]
+}

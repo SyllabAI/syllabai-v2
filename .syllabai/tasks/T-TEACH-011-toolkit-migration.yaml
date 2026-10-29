@@ -3,7 +3,7 @@ task:
   id: T-TEACH-011
   title: "Migration 0008 — teaching_toolkit_resources + teaching_toolkit_usage + class_features.ai_toolkit"
   owner: "planning session (Z.ai, zai-web session web-528c0352, trace 1a16153b3e129e51)"
-  status: OPEN
+  status: DONE # run-001 (same session): migration 0008_teaching_toolkit (2 tables + class_features.ai_toolkit + the 4 prompt_versions seed rows T-TEACH-010 defers here) via drizzle-kit generate + journal/snapshot + schema README owning-task ledger; commits c029fec2 + amendment 0f360ac0 (baseline verify refresh: 0000_snapshot re-baselined to the runtime end-state, rebaseline.test.ts counts 72/684/99/65/117 — the verify gate stays green, the T-MIG-002-R law); db:check + db typecheck green
   priority: P1
   band: T-TEACH
   wave: teach-toolkit-A

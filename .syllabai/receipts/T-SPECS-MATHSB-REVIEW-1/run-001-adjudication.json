@@ -1,0 +1,77 @@
+{
+  "schema": "syllabai.lane-receipt/1.0",
+  "task": "T-SPECS-MATHSB-REVIEW-1 run-001 (review-queue adjudication r1)",
+  "family": "T-SPECS-MATHSB-REVIEW-1",
+  "run": "run-001",
+  "operator_order": "begin adjudicating this queue",
+  "trace_id": "1a183185e0ef73dd",
+  "session": "web-528c0352-0cf7-4715-a187-50aec294b288",
+  "generated_utc": "2026-10-28T16:35:00Z",
+  "queue_of_record": "card .syllabai/tasks/T-SPECS-MATHSB-REVIEW-1.yaml (162 flag rows / 13 unmapped; filed by MATHSB-ANCHORS run-001 at resources 8460a5f3)",
+  "resources_landing": {
+    "sha": "b7bf5bbc0f88c8f9e281919d4e211b7628f3f427",
+    "based_on": "6d40e1f0 (F113 MS-answer-figure wave #208 — zero file overlap with this lane's plane; first push built on 8a9e2241 was rejected non-FF by the concurrent F113 landing and was rebased clean, disclosed)",
+    "engine": "scripts/maths_b_review_adjudicate.py",
+    "verdict_law": "REPOINT/UPGRADE at refined margin >= 0.08 with corroboration (cov_w >= 0.30 or tp >= 0.55), topic-gated; CARD_NAMED rows land the review-card anchors (refined-reproduced or eyes-on with statement reads quoted); CROSS_TOPIC decisive confirms clear flags keeping the disclosure; everything else stays annotated adjudicated-stay; no-guess preserved",
+    "refined_scorer": "statement-frequency weighted cov (w=1/sqrt(sf), the run-001 followup's long-statement dilution refinement) + title precision tp + engine ns + 0.10 raw cov; corpus-derived only (command_words.json is EMPTY — no external stopword list)",
+    "verdicts": {
+      "CARD_NAMED_REPOINT": 1,
+      "EYES_ON_REPOINT": 3,
+      "REPOINT": 1,
+      "UPGRADE": 64,
+      "CROSS_TOPIC_CONFIRM": 3,
+      "CONFIRM_STAY": 55,
+      "STAY": 32,
+      "UNMAPPED_STAY": 13
+    },
+    "repoints_of_record": [
+      "Finding Equations of Straight Lines 4K->4I (refined evidence reproduced the card anchor; the served note's own title 'Equations of Straight Lines (y = mx + c)' corroborates 4I verbatim)",
+      "Speed-Time Graphs 4K->4N (eyes-on: 4K read = the 4J-continuation fragment 'The gradients of graphs above by drawing'; 4N = 'Applications to linear kinematics'; grouping-consistent with the Kinematics S1->4N row)",
+      "Distance-Time Graphs 4K->4N (same evidence read)",
+      "Difference Of Two Squares 8E->3C (eyes-on: 8E = 'Sum and difference of two vectors' name-match trap; 3C = 'The factorisation of simple algebraic expressions'; refined in-topic 3D rejected = 'Use of the factor theorem')",
+      "Multiple Ratios 1B->1H (r0 tie-break artifact on a 0.0018 near-tie; 1H = 'Fractions, decimals, ratio, proportion and percentage')"
+    ],
+    "queue_movement": "flags 162 -> 88; tiers C1 96 / C3 73 / S1 20 / C2 12 / S2 1 (202/215 mapped); ledger +5; 3 r0 dup-flag rows (Difference Of Two Squares, Parallel Lines, Range) disclosed and collapsed by the flags-rebuild",
+    "unmapped_13": "honest stays re-verified (UNMAPPED_STAY 13); plausible semantic homes (Best Buys->1G, Midpoint of a Line->4H class) NOT manufactured — the T-SPEC-2b operator-verdict overlay lane is the sanctioned future path",
+    "battery": "ALL PASS: 215/215 accounted, flags==flagged-mappings, repointed codes valid in pool, official_ids consistent, ledger 5/5, resolution-mirrors-map, no dup flag rows, sheet rows 172, idempotence = byte-no-op re-run under the r1 pass-marker law (one-shot gate pass; --force re-adjudicates)",
+    "sheet": "SME-ExamQuestion/igcse-maths-b-16/review_adjudication.json (172 rows, full refined profiles, verdict bases)",
+    "downstream_rederived": [
+      "SME-Flashcards/igcse-maths-b-16/flashcard_spec_map.json: 1082 cards / 262 coded (189 rows re-provisioned via sme_spec_link_inheritance — provenance + repointed codes; card count unchanged, no card links the 5 repointed spcpts)",
+      "Official-Specifications/parsed/_flashcard_map_report.json",
+      "spec-links/igcse-maths-b-16.json: 467 items / 450 coded (notes 188/199, cards 262/268) + manifest timestamp-only (trailing-newline byte-law restored after the builder)"
+    ]
+  },
+  "v2_landing": {
+    "worktree": "detached at eb493d71 (origin/main at lane start; ef3aba92 had advanced mid-lane via PR #433 F113-sync — fetched first)",
+    "stages": [
+      "stage-1 pin bump: apps/hub/scripts/attach_official_map.py RESOURCES_SHA 8460a5f3.. -> b7bf5bbc..",
+      "stage-2 attach regen --course igcse-maths-b-16: content-maps/igcse-maths-b-16.json spcptToOfficial 202 rows, 72 changed (5 repoints + 64 upgrades + 3 cross-topic confirms = exact); _report.json maths-b row REFRESHED (202/13 mapped/unmapped, items flashcards 262 / notes 188, spineHitCodes 31->69, uncoveredSpineCodes 67->29) — this also repairs the LATENT r0 DEFECT where the run-001 surgical merge left the row at its pre-r0 state (34/181)",
+      "stage-3 flip --course igcse-maths-b-16: G1-G5 APPLIED; notes.json 188/199 coded with the repointed codes live (Difference Of Two Squares 3C, Distance-Time 4N, Speed-Time 4N, Equations of Straight Lines (y=mx+c) 4I, Multiple Ratios 1H); flashcards.json BYTE-IDENTICAL (explained: zero cards link the repointed spcpts; the 189 spec_map changes are provenance-only); questions.json REGRESSED by the known flip-pipeline gap (2,392 parts lost the run-002 linkage on re-emission, 0 parts differ outside the linkage triple — the run-002 disclosure stands, gap belongs to the flip pipeline owners) and was restored BYTE-EXACT to the run-002 repaired state (sha 2a0eccaa41e341f2) — zero questions-plane change in this landing",
+      "manifest.json: ONLY officialSpine.resourcesSha bumped; accumulated note byte-preserved; counts unchanged 65/1270/2412/6500/1082/199"
+    ],
+    "gates": {
+      "flip_gates": "G1-G5 APPLIED",
+      "build_check": "build_official_content --check --course igcse-maths-b-16: failed=0 (notesUnmapped 11, flashcardsUnmapped 820, questionPartsUnmapped 2412 — honest classes preserved)",
+      "typecheck": "bun run typecheck exit 0",
+      "flashcard_sync": "verify:flashcard-sync exit 0",
+      "corpus": "verify:corpus PASSED (dangling relatedNoteIds 0)",
+      "cie": "verify:cie PASSED (paper-count assertions hold)",
+      "tests": "bun test apps/api packages: 3,033 pass / 13 skip / 0 FAIL of 3,046 (== the of-record green arithmetic)"
+    }
+  },
+  "no_touch": [
+    "main DB (Neon quota outage unbroken — zero DB contact)",
+    "questions.json of igcse-maths-b-16 (byte-frozen foreign authority, run-002 repaired state)",
+    "igcse-chemistry-19 golden",
+    "all other courses' bundles/content-maps/report rows",
+    "CIE lanes"
+  ],
+  "followups": [
+    "the 88 remaining flags are adjudicated-stays (topic-certain, statement not uniquely text-derivable at the refined bar) — re-adjudication only on new evidence classes; sheet carries per-row refined profiles",
+    "the 13 unmapped: T-SPEC-2b operator-verdict overlay lane is the sanctioned path for plausible semantic homes (Best Buys->1G, Midpoint of a Line->4H candidates of note, NOT landed here)",
+    "flip-pipeline owners: the questions.json linkage re-emission gap (G4 non-emptiness) remains open of record — dodged here by byte-restore, not patched cross-lane",
+    "map_spec_points.py and build_learner_spec_links.py carry hardcoded dev-path BASE (/home/z/my-project/download/syllabai-resources) — machine-local workaround used, not patched cross-lane",
+    "PAT rotation STILL CRITICAL-OVERDUE (same fingerprint through this landing)"
+  ],
+  "push_mode": "direct push to both mains per the MATHSB-ANCHORS run-001 lane precedent (operator-ordered adjudication of this lane's own card); fetch-first rechecks before each push; one non-FF rejection on resources resolved by clean rebase over the concurrent F113 landing (zero overlap, no force)"
+}

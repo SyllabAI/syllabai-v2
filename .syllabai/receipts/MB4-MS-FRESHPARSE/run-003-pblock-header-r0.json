@@ -1,0 +1,47 @@
+{
+ "schema": "syllabai.lane-receipt/1.0",
+ "lane": "MB4-MS-FRESHPARSE",
+ "run": "run-003-pblock-header-r0",
+ "task": "T-CONTENT-MB4-PBLOCK-001 (claim 96ac5cd2, status flip DONE in this commit)",
+ "trace": "1a16d32c68567071 (operator 'Proceed'); filed from 1a16af697e9af2bd; spot-check of record 1a16a8b2741dadf5",
+ "date": "2026-10-24",
+ "scope": {
+  "course": "igcse-maths-b-16",
+  "part": "qstnprt_44ZeXONRp3mA1ojbLLET0U",
+  "paper": "4MB1/02 January 2021 Q8(d), topicSlug 2021-01-4mb1-02",
+  "fix": "ONE heading token: '**P7** (2 marks) ' -> '**P7** (3 marks) ' — 1 byte in the whole 2.83MB bundle"
+ },
+ "eyeson_of_record": {
+  "source": "syllabai-pastpapers past-papers/pearson-edexcel/international-gcse/mathematics-b/4mb1/past-papers/2021-01/4MB1-02/ms.pdf",
+  "ms_pdf_sha256": "b95e01099522266d791713ce73a9c31f3ecb85c50ac259ac6c95b2b69b4104f0",
+  "finding": "Q8(d) is ONE grid row whose mark cell holds the standalone digit '3' at (x0=472.9, y0=41.6, p13) — the ONLY mark cell of the part (the A1 row 'Both triangles are similar as 2 angles are equal or sides pair in the same ratio' has an EMPTY mark cell, visually verified). The 'M2 Show either by argument or calculation that 2 pairs...' / 'M1 for showing 1 pair of angles are equal or stating AEB=BEC=90' / 'A1 dep on M2 being awarded' strings sit at x0=515.4 INSIDE the merged Notes cell (same column as 'If using lengths AE or EC...' and 'NB If angles shown equal...'), and their digits ('2' of 'that 2 pairs', '1' of '1 pair', '90') sit at x>=648 INSIDE note text — they are inline subdivision guidance, NOT code-column rows.",
+  "crops": ["run-003/q8d-region-zoom.png (sha256 6eebcd7eaf9435251290b176b54a3525baed905c29b7cbff8b068ac9a15c100b)", "run-003/q8d-bottom-zoom.png (sha256 1f9306274eb64858040159be7aeb9f2136c1ac0c924d503f44df3cb1f324179e)"],
+  "corroboration": "parsed/ms.md of the same paper carries NO Q8 part detail ('## Q8 (9 marks)' then straight to 'Total for Question 8: 9 marks') — the coarse-parse class that forced run-002's PDF path; printed total 9 corroborated.",
+  "instrument": "run-003/eyeson_locate.py (PyMuPDF word geometry + 3.2x crops)"
+ },
+ "root_cause_of_record": {
+  "layer_1_row_model": "The run-002 extractor, on this split-header generation, promoted inline M/A-codes inside Notes cells to ROWS: rerun reproduces Q8 = 13 rows (pg12 M1(2),A1,M1for(2),A1,M1(2),A1 + pg13 M2,M1,M2,M1,M2,M1,A1) vs grid truth 4 rows [2,2,2,3]=9 (evidence run-003/rows-2021-01-4MB1-02.json). The plan-of-record marks_seq [1,1,1,1,1,1,2,1,2,1,2,1,1] (sum 16) is exactly the code-derived marks (M2=2, M1=1, A1=1) of those 13 pseudo-rows.",
+  "layer_2_emission": "The DP re-assembled the pseudo-rows into hub-shaped groups (a=[1,1] b=[1,1] c=[1,1] d=[2,1]) — sums recovered the hub marks everywhere, so (a)-(c) emissions are mark-consistent and OUT OF FENCE here; but the (d) fold-emission printed the leading pseudo-row's value (2) as the block heading instead of the group sum (3) — the exact understatement the spot-check filed.",
+  "wider_class_filed_not_selfgranted": "The spurious-row row-model class potentially affects OTHER papers of this generation (Notes-cell inline codes); a fleet census is an OPERATOR decision (card precedent: quantification for operator, not self-granted). This run's fence = the ONE filed part."
+ },
+ "fix_of_record": {
+  "law_applied": "card option (3): single group-sum heading iff eyes-on shows a 3-mark main row — it does (the '3' cell). The M1/M2/A1 subdivision lines stay verbatim as Notes (zero deletion); P-id P7 unchanged (no renumbering cascade into Q9); minimal-diff raw-substring surgery, no re-serialization.",
+  "byte_diff": "1 byte at offset 948971 of the serialized bundle: '2' -> '3'",
+  "semantic_diff": "exactly 1 part / 1 field (solutionMd) / 1 token; every other part, field, topic, question byte-identical (asserted programmatically both directions)",
+  "instrument": "run-003/mb4_run003_apply.py (occurrence-uniqueness + 1-byte + bidirectional-token + P-law assertions)"
+ },
+ "gates": {
+  "verify_corpus_23a": "CORPUS GATE PASSED (0 bare speech text, 0 dangling relatedNoteIds)",
+  "verify_flashcard_sync_courses": "exit 0 — flashcard core-sync manifest matches the registry",
+  "validate_cie_bundles": "CIE VALIDATOR PASSED (holdings 2,259; 108 specs; paper-count assertions hold)",
+  "structure_law": "65/1270/2412 UNCHANGED",
+  "touched_part_post": "P-sum 3 == hub marks 3; P-numbering strictly increasing; 0 unescaped $; 0 U+FFFD/PUA; first line '**P7** (3 marks) Show either by argument or calculation that 2'",
+  "single_line_compact_json": "kept (git diff --stat: 1 file, 1 insertion, 1 deletion)"
+ },
+ "residuals_disclosed": [
+  "The extractor's Notes-cell-inline-code row-model class is NOT fixed in this run (fence) — operator decision on a fleet census + extractor v3; (a)-(c) emissions of Q8 are mark-consistent and were not touched.",
+  "2019-01-4mb1-01 deterministic-parse-flag banners remain as designed (honesty markers, not defects).",
+  "11-part 2019-06-02 UFFFD sub-lane + OCR-sandwich/bracket-debris classes remain with their own filings (UIUX-TIER-B run-004 candidates)."
+ ],
+ "environment": "sandbox workspace reset #3 observed pre-claim (session scripts/worklog rolled back); card + repo worklog of record survived via origin 51c42953 and were ff-restored — this run mirrors ALL instruments + evidence into lane-artifacts immediately per the incremental-commit law"
+}

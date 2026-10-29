@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_NdJGQM8BqHmTy7Vg",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "f0d92cd1c3760ac1ed3b34fa660927875a32ed69c10a763bf9d86bcf3306904d",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_NdJGQM8BqHmTy7Vg",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L1::Q1",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L1",
+      "stem": "How many carbon atoms does the stem pent stand for?",
+      "misconceptionClass": "stem recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "5",
+          "correct": true,
+          "explanation": "Pent is the fifth stem: meth 1, eth 2, prop 3, but 4, pent 5.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "4",
+          "correct": false,
+          "explanation": "Four carbons is the stem but, one step below pent.",
+          "misconception": "off-by-one stem"
+        },
+        {
+          "key": "C",
+          "text": "6",
+          "correct": false,
+          "explanation": "Six carbons is hex, the stem above pent.",
+          "misconception": "off-by-one the other way"
+        },
+        {
+          "key": "D",
+          "text": "3",
+          "correct": false,
+          "explanation": "Three carbons is prop, which shares no letters with pent worth trusting.",
+          "misconception": "stem guessed"
+        }
+      ]
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L1::Q2",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L1",
+      "stem": "What information does the suffix of an organic name carry?",
+      "misconceptionClass": "suffix role",
+      "options": [
+        {
+          "key": "A",
+          "text": "Which functional group the compound carries",
+          "correct": true,
+          "explanation": "The end part of the name names the reactive group, such as ene for a C=C bond.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "How many carbon atoms are in the chain",
+          "correct": false,
+          "explanation": "Carbon counting belongs to the stem at the front of the name.",
+          "misconception": "roles swapped"
+        },
+        {
+          "key": "C",
+          "text": "The boiling point of the compound",
+          "correct": false,
+          "explanation": "Physical data never appears in the name; the suffix is structural information.",
+          "misconception": "data in name"
+        },
+        {
+          "key": "D",
+          "text": "The state of the compound at room temperature",
+          "correct": false,
+          "explanation": "State is a physical property; the suffix records the functional group instead.",
+          "misconception": "state encoded"
+        }
+      ]
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L1::Q3",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L1",
+      "stem": "Which name matches a 2-carbon molecule with a C=C double bond?",
+      "misconceptionClass": "stem plus suffix assembly",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ethene",
+          "correct": true,
+          "explanation": "Eth gives two carbons and ene gives the double bond, so the assembly is ethene.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Methene",
+          "correct": false,
+          "explanation": "One carbon cannot carry a C=C bond, and meth is the wrong stem for two carbons.",
+          "misconception": "stem miscounted"
+        },
+        {
+          "key": "C",
+          "text": "Ethane",
+          "correct": false,
+          "explanation": "The suffix ane means no special group; the double bond demands ene.",
+          "misconception": "suffix mismatched"
+        },
+        {
+          "key": "D",
+          "text": "Ethanediol",
+          "correct": false,
+          "explanation": "That name points to an alcohol-family compound, not a 2-carbon alkene.",
+          "misconception": "family swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L1::Q4",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L1",
+      "stem": "A molecule named butanol contains how many carbon atoms, and which family?",
+      "misconceptionClass": "name decoding",
+      "options": [
+        {
+          "key": "A",
+          "text": "4 carbon atoms, the alcohol family",
+          "correct": true,
+          "explanation": "The stem but counts four carbons and the suffix anol places it in the alcohol family.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "4 carbon atoms, the alkene family",
+          "correct": false,
+          "explanation": "Alkenes carry the suffix ene; anol signals the alcohol group instead.",
+          "misconception": "suffix misread"
+        },
+        {
+          "key": "C",
+          "text": "3 carbon atoms, the alcohol family",
+          "correct": false,
+          "explanation": "Three carbons would be propanol; but always means four.",
+          "misconception": "stem miscounted"
+        },
+        {
+          "key": "D",
+          "text": "5 carbon atoms, the alkane family",
+          "correct": false,
+          "explanation": "Five carbons is pent, and alkanes end in ane, neither of which matches butanol.",
+          "misconception": "both parts wrong"
+        }
+      ]
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L1::Q5",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L1",
+      "stem": "Why do IUPAC rules matter for naming compounds?",
+      "misconceptionClass": "nomenclature purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "They give every compound one unambiguous name scientists worldwide can use",
+          "correct": true,
+          "explanation": "A shared rulebook means a name reconstructs the same structure in any laboratory.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They shorten all names to three letters",
+          "correct": false,
+          "explanation": "The rules aim for precision, not brevity; names grow longer as structures grow richer.",
+          "misconception": "brevity goal imagined"
+        },
+        {
+          "key": "C",
+          "text": "They let chemists rename compounds daily",
+          "correct": false,
+          "explanation": "The opposite is true: fixed rules keep names stable over time.",
+          "misconception": "instability claimed"
+        },
+        {
+          "key": "D",
+          "text": "They only apply to compounds with six or more carbons",
+          "correct": false,
+          "explanation": "The rules apply throughout; six carbons is just the exam expectation ceiling.",
+          "misconception": "scope inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L2::Q1",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L2",
+      "stem": "Why are the carbon atoms in a chain numbered when naming?",
+      "misconceptionClass": "numbering purpose",
+      "options": [
+        {
+          "key": "A",
+          "text": "To record exactly which carbon carries the functional group",
+          "correct": true,
+          "explanation": "The number in the name is the address of the reactive group on the chain.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To count the total number of atoms in the molecule",
+          "correct": false,
+          "explanation": "Total counting is the stem job; numbering is about position along the chain.",
+          "misconception": "count confused with position"
+        },
+        {
+          "key": "C",
+          "text": "To show the order in which the atoms were discovered",
+          "correct": false,
+          "explanation": "Discovery order never enters the naming system.",
+          "misconception": "history in name"
+        },
+        {
+          "key": "D",
+          "text": "To rank the atoms by reactivity",
+          "correct": false,
+          "explanation": "Numbering locates groups; it does not rank them.",
+          "misconception": "ranking imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L2::Q2",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L2",
+      "stem": "A molecule carries two identical functional groups. How is its name adjusted?",
+      "misconceptionClass": "di- prefix rule",
+      "options": [
+        {
+          "key": "A",
+          "text": "The prefix di- is added to the second part of the name",
+          "correct": true,
+          "explanation": "Two identical groups are flagged with di- before the suffix part of the name.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The suffix is deleted because groups cancel out",
+          "correct": false,
+          "explanation": "Groups never cancel; both must be reflected in the name.",
+          "misconception": "cancellation imagined"
+        },
+        {
+          "key": "C",
+          "text": "The stem is doubled instead of the suffix",
+          "correct": false,
+          "explanation": "The doubling convention attaches to the second part of the name, not the stem.",
+          "misconception": "wrong half doubled"
+        },
+        {
+          "key": "D",
+          "text": "The name is left unchanged because groups share one position",
+          "correct": false,
+          "explanation": "Two groups need two positions recorded; silence would misdescribe the molecule.",
+          "misconception": "omission accepted"
+        }
+      ]
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L2::Q3",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L2",
+      "stem": "How does the naming system cope with isomers?",
+      "misconceptionClass": "naming isomers",
+      "options": [
+        {
+          "key": "A",
+          "text": "The same rules applied to each structure produce different, correct names",
+          "correct": true,
+          "explanation": "Because the rules encode chain length and group position, each arrangement earns its own name.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Isomers all share one name because their formula matches",
+          "correct": false,
+          "explanation": "A shared molecular formula does not force a shared name; arrangement changes the name.",
+          "misconception": "formula decides name"
+        },
+        {
+          "key": "C",
+          "text": "Isomers are named by adding numbers chosen at random",
+          "correct": false,
+          "explanation": "Position numbers follow fixed rules about where the group sits, never randomness.",
+          "misconception": "arbitrary numbering"
+        },
+        {
+          "key": "D",
+          "text": "Isomers cannot be named, so they are labelled A and B",
+          "correct": false,
+          "explanation": "The naming system handles isomers precisely; letter labels are not part of it.",
+          "misconception": "system refused"
+        }
+      ]
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L2::Q4",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L2",
+      "stem": "What do the numbers in a branched name such as 2-methylbutane tell you?",
+      "misconceptionClass": "numbers in branched names",
+      "options": [
+        {
+          "key": "A",
+          "text": "Where the side chain sits relative to the main chain",
+          "correct": true,
+          "explanation": "The number fixes the position of the side chain along the main chain.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "How many side chains the molecule has",
+          "correct": false,
+          "explanation": "Counting side chains is a separate job; the number locates a side chain.",
+          "misconception": "count confused with position"
+        },
+        {
+          "key": "C",
+          "text": "The temperature at which the compound boils",
+          "correct": false,
+          "explanation": "Physical data is never encoded in the name.",
+          "misconception": "data in name"
+        },
+        {
+          "key": "D",
+          "text": "The year the compound was first made",
+          "correct": false,
+          "explanation": "History plays no role in IUPAC names.",
+          "misconception": "history in name"
+        }
+      ]
+    },
+    {
+      "id": "rn_NdJGQM8BqHmTy7Vg::L2::Q5",
+      "moduleId": "rn_NdJGQM8BqHmTy7Vg::L2",
+      "stem": "What level of naming is expected of you in this specification?",
+      "misconceptionClass": "exam scope",
+      "options": [
+        {
+          "key": "A",
+          "text": "Name simple straight-chain compounds and unbranched isomers with up to six carbons",
+          "correct": true,
+          "explanation": "The expectation covers straightforward chains and unbranched isomers within six carbons.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Generate any branched name from scratch, however complex",
+          "correct": false,
+          "explanation": "Branched names may appear in questions, but you are not usually asked to build them yourself.",
+          "misconception": "scope inflated"
+        },
+        {
+          "key": "C",
+          "text": "Name only the first two members of each family",
+          "correct": false,
+          "explanation": "The ceiling is six carbons, not two; meth and eth are just the first stems.",
+          "misconception": "scope deflated"
+        },
+        {
+          "key": "D",
+          "text": "Write trade names instead of systematic names",
+          "correct": false,
+          "explanation": "The specification expects IUPAC systematic names, not trade labels.",
+          "misconception": "system swapped"
+        }
+      ]
+    }
+  ]
+}

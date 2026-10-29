@@ -1,0 +1,27 @@
+{
+  "band": "T-SM-KAPPA-SUBJECT",
+  "kind": "deploy-investigation",
+  "id": "deploy-investigation-r0",
+  "createdAtUtc": "2026-10-22T09:57:05Z",
+  "gatewayTrace": "1a162e7030a519dd",
+  "note": "CORRECTED pre-commit — the first draft of this receipt drew two wrong conclusions that are RETRACTED here of record; the deploy was then completed per the 093 recipe (see deploy-cdc1cd2-r1.json)",
+  "arc": [
+    "order 'execute' received; creds re-supplied and installed (600); runbook fired",
+    "repo-root CLI preview deploy built an EMPTY app (404 on all routes) — initially diagnosed as 'framework=null monorepo, root must be apps/api'",
+    "deployment archaeology: alias ground truth showed prod serving dpl_EzDQbaRk (api-stage, dirty tree, 09:33Z); a first-draft receipt concluded 'external api-stage lane holds the prod lever; do not stomp' and cleanup was run (preview deleted, bypass revoked, env files purged)",
+    "LEDGER RECOVERY falsified both draft conclusions: the durable ledger (T-SM-KAPPA-SUBJECT-DEPLOY-R0 entry, trace 1a1605558e578ec5) records the of-record 093 recipe — the deploy unit is a BUILT BUNDLE, previews boot env-less (all env vars production-target-only), the repo-root/gitSource empty-build trap is a KNOWN incident class (16:36:33Z law), and 'apps/api root' was NEVER the law",
+    "the 'api-stage' deployments ARE the opaque dirty-tree builds the order aims to replace (provenance finding of record: prior carrier dpl_GfV24Bcb built from UNPUSHED DIRTY tree d3b6a85 — 'the ordered cdc1cd2 redeploy strictly improves provenance')",
+    "the prior fire leg was quota-blocked (api-deployments-free-per-day, Hobby); the window has since rolled (3 successful deployments today)",
+    "execution resumed per recipe: build leg + localgate 8/8 + fire leg ALL GREEN (deploy-cdc1cd2-r1.json)"
+  ],
+  "retractionsOfRecord": [
+    "RETRACTED: 'deployment root must be apps/api' — the deploy law of record is the T-MIG-093 bundle recipe; no repo directory is a deploy root",
+    "RETRACTED: 'no production CLI deploy — would stomp an external lane' — the 09:33 api-stage deployment is the class of unverified dirty-tree builds the operator's order supersedes; the order stood and was executed"
+  ],
+  "standingFindings": [
+    "preview deployments are env-less AND Vercel-Authentication-walled (302); plain-curl preview probes are meaningless for this project — the localgate on the real Neon wire is the staging gate of record",
+    "vercel CLI 65.1.0 'vercel curl' subcommand defective ('No deployment URL found'); bypass mechanics: PATCH /v1/projects/{id}/protection-bypass {generate:{secret:32-char}} + header x-vercel-protection-bypass",
+    "cleanup executed mid-investigation: junk preview dpl_BQFGGVcz deleted; automation bypass secret revoked (0 remain); vercel-pull env files purged; no token at rest in .git/config"
+  ],
+  "postureCorrectionOfRecord": "'api deploy = CLI-only operator-gated lever' (D5.7 disclosure #276 comment 6325903109 section 7) is corrected by the durable ledger entry (trace 1a1605558e578ec5) + deploy-cdc1cd2-r1.json: the lever is the 093 recipe (build -> localgate -> --prod fire from the stage), operator-gated, and the open question remains who fires the api-stage dirty-tree builds (00:08Z and 09:33Z Oct 22) — operator to confirm ownership"
+}

@@ -1,0 +1,555 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_V3hNWh6QWrbCRHrX",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "f3a99affe9a616a939f76eef17443357dd3cd341b79a84e133304575013c0937",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_V3hNWh6QWrbCRHrX",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L1::Q1",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L1",
+      "stem": "What is the definition of a fuel?",
+      "misconceptionClass": "fuel definition",
+      "options": [
+        {
+          "key": "A",
+          "text": "A substance that releases heat energy when it burns",
+          "correct": true,
+          "explanation": "Heat output on burning is the whole definition, with burning itself exothermic.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Any liquid that can be poured into an engine",
+          "correct": false,
+          "explanation": "Solid coal is a fuel too; physical state is not part of the definition.",
+          "misconception": "liquid-only fuel"
+        },
+        {
+          "key": "C",
+          "text": "A substance that absorbs heat as it reacts",
+          "correct": false,
+          "explanation": "Fuels give heat out; absorbing heat is the endothermic opposite.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "D",
+          "text": "Any substance containing carbon",
+          "correct": false,
+          "explanation": "Carbon content alone does not make a fuel; the heat release on burning does.",
+          "misconception": "composition test misused"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L1::Q2",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L1",
+      "stem": "Which list contains only fossil fuels?",
+      "misconceptionClass": "fossil fuel list",
+      "options": [
+        {
+          "key": "A",
+          "text": "Coal, oil and natural gas",
+          "correct": true,
+          "explanation": "These three head the fossil fuel list, joined by oil shales and tar sands.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Coal, ethanol and natural gas",
+          "correct": false,
+          "explanation": "Ethanol is not a fossil fuel on this list; it belongs to the alcohols family.",
+          "misconception": "biofuel mixed in"
+        },
+        {
+          "key": "C",
+          "text": "Wood, oil and bitumen",
+          "correct": false,
+          "explanation": "Wood is not a fossil fuel; it is recent plant material.",
+          "misconception": "wood misclassified"
+        },
+        {
+          "key": "D",
+          "text": "Peat, hydrogen and oil",
+          "correct": false,
+          "explanation": "Hydrogen is not fossil; the fossil set is coal, oil, gas, shales and tar sands.",
+          "misconception": "hydrogen misclassified"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L1::Q3",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L1",
+      "stem": "What are the products of the complete combustion of propane, C3H8?",
+      "misconceptionClass": "complete products",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carbon dioxide and water",
+          "correct": true,
+          "explanation": "Excess oxygen turns all three carbons into CO2 and all eight hydrogens into water.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Carbon monoxide and water",
+          "correct": false,
+          "explanation": "CO appears only when oxygen is limited; complete burning goes all the way to CO2.",
+          "misconception": "incomplete products used"
+        },
+        {
+          "key": "C",
+          "text": "Carbon and steam only",
+          "correct": false,
+          "explanation": "Plain carbon is the soot of incomplete burning, not the complete case.",
+          "misconception": "soot misplaced"
+        },
+        {
+          "key": "D",
+          "text": "Sulfur dioxide and water",
+          "correct": false,
+          "explanation": "Propane itself carries no sulfur; SO2 comes from impurities in other fuels.",
+          "misconception": "pollutant misattached"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L1::Q4",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L1",
+      "stem": "Balance the equation: C3H8 + 5O2 -> ? CO2 + 4H2O",
+      "misconceptionClass": "balancing",
+      "options": [
+        {
+          "key": "A",
+          "text": "3",
+          "correct": true,
+          "explanation": "Three carbon atoms in propane must all appear as three CO2 molecules on the right.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "1",
+          "correct": false,
+          "explanation": "One CO2 would strand two of the three carbons from propane.",
+          "misconception": "carbon miscounted"
+        },
+        {
+          "key": "C",
+          "text": "5",
+          "correct": false,
+          "explanation": "Five belongs to the oxygen coefficient; the carbon count fixes the CO2 at three.",
+          "misconception": "coefficient copied"
+        },
+        {
+          "key": "D",
+          "text": "8",
+          "correct": false,
+          "explanation": "Eight counts hydrogens, not carbon dioxide molecules.",
+          "misconception": "atom type crossed"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L1::Q5",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L1",
+      "stem": "Why do fossil fuels all contain small quantities of sulfur?",
+      "misconceptionClass": "impurity origin",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because sulfur impurities are present in the fuel sources themselves",
+          "correct": true,
+          "explanation": "The crude and coal carry traces of sulfur from their formation, which survives into the refined fuel.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because sulfur is added deliberately during refining",
+          "correct": false,
+          "explanation": "Nothing is added; the sulfur is an unwanted leftover from the source material.",
+          "misconception": "deliberate additive claimed"
+        },
+        {
+          "key": "C",
+          "text": "Because engines manufacture sulfur during use",
+          "correct": false,
+          "explanation": "Engines only release what the fuel already contains.",
+          "misconception": "engine as source"
+        },
+        {
+          "key": "D",
+          "text": "Because sulfur dissolves out of the air into the fuel",
+          "correct": false,
+          "explanation": "The sulfur comes with the fuel from the ground, not from the air afterwards.",
+          "misconception": "air blamed"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L2::Q1",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L2",
+      "stem": "Which condition causes incomplete combustion in a boiler?",
+      "misconceptionClass": "condition recognition",
+      "options": [
+        {
+          "key": "A",
+          "text": "Insufficient oxygen reaching the flame",
+          "correct": true,
+          "explanation": "Starved flames cannot fully oxidise the carbon, so CO and soot appear.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Excess oxygen reaching the flame",
+          "correct": false,
+          "explanation": "Excess oxygen drives the complete reaction to CO2 and water instead.",
+          "misconception": "condition inverted"
+        },
+        {
+          "key": "C",
+          "text": "The presence of water vapour in the air",
+          "correct": false,
+          "explanation": "Water vapour is a product of burning, not a cause of incomplete burning.",
+          "misconception": "product blamed"
+        },
+        {
+          "key": "D",
+          "text": "Using methane instead of propane",
+          "correct": false,
+          "explanation": "Any hydrocarbon burns incompletely if oxygen is short; the fuel choice is not the cause.",
+          "misconception": "fuel blamed"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L2::Q2",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L2",
+      "stem": "In the equation 2CH4 + 3O2 -> 2CO + 4H2O, why does only 3O2 appear instead of 4O2?",
+      "misconceptionClass": "oxygen budget reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because the limited oxygen cannot fully oxidise the carbon to dioxide",
+          "correct": true,
+          "explanation": "Three O2 is all the supply allows, so carbon stops at monoxide and the equation reflects the shortage.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because methane contains less carbon when oxygen is scarce",
+          "correct": false,
+          "explanation": "The methane formula never changes; only the oxygen supply changes.",
+          "misconception": "fuel mutates"
+        },
+        {
+          "key": "C",
+          "text": "Because water needs no oxygen at all",
+          "correct": false,
+          "explanation": "Every water molecule carries an oxygen atom, which is part of the same budget.",
+          "misconception": "water oxygen ignored"
+        },
+        {
+          "key": "D",
+          "text": "Because the 3 balances the equation more neatly",
+          "correct": false,
+          "explanation": "Coefficients follow atom counts, not tidiness; the 3 records the real oxygen limit.",
+          "misconception": "aesthetic balancing"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L2::Q3",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L2",
+      "stem": "What is soot, in the language of this note?",
+      "misconceptionClass": "soot identification",
+      "options": [
+        {
+          "key": "A",
+          "text": "Unburnt fuel appearing as carbon particles",
+          "correct": true,
+          "explanation": "Soot is the carbon that never found enough oxygen to leave as an oxide.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Ash from the minerals in the fuel",
+          "correct": false,
+          "explanation": "The note names soot as unburnt hydrocarbon, not mineral ash.",
+          "misconception": "ash confused"
+        },
+        {
+          "key": "C",
+          "text": "Another name for water vapour",
+          "correct": false,
+          "explanation": "Water is a separate, fully oxidised product; soot is carbon.",
+          "misconception": "products merged"
+        },
+        {
+          "key": "D",
+          "text": "The catalyst used inside engines",
+          "correct": false,
+          "explanation": "Catalysts are separate hardware; soot is a combustion product.",
+          "misconception": "hardware confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L2::Q4",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L2",
+      "stem": "Methane burns with equation CH4 + O2 -> C + 2H2O. What does this show about the oxygen supply?",
+      "misconceptionClass": "severity ladder",
+      "options": [
+        {
+          "key": "A",
+          "text": "The supply is so poor that carbon cannot oxidise at all",
+          "correct": true,
+          "explanation": "Carbon emerges as the bare element, the bottom rung of the incomplete ladder.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The supply is generous, so burning is complete",
+          "correct": false,
+          "explanation": "Complete burning would show CO2, not bare carbon, on the right.",
+          "misconception": "case inverted"
+        },
+        {
+          "key": "C",
+          "text": "The supply is irrelevant to this equation",
+          "correct": false,
+          "explanation": "The one-oxygen supply is exactly what forces the carbon product down to C.",
+          "misconception": "condition disconnected"
+        },
+        {
+          "key": "D",
+          "text": "The methane has decomposed without burning",
+          "correct": false,
+          "explanation": "The reaction still burns the hydrogen to water; it is incomplete burning, not mere breakdown.",
+          "misconception": "decomposition confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L2::Q5",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L2",
+      "stem": "Why does incomplete combustion matter beyond the equation?",
+      "misconceptionClass": "practical consequence",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because carbon monoxide formed this way is poisonous to people",
+          "correct": true,
+          "explanation": "The next section shows CO binding in the blood; the equation is where the danger starts.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because soot makes the water products acidic",
+          "correct": false,
+          "explanation": "Soot is carbon; the acid-rain story belongs to sulfur and nitrogen oxides.",
+          "misconception": "stories crossed"
+        },
+        {
+          "key": "C",
+          "text": "Because incomplete burning releases no energy",
+          "correct": false,
+          "explanation": "Heat is still released, just less efficiently than complete burning.",
+          "misconception": "energy denial"
+        },
+        {
+          "key": "D",
+          "text": "Because boilers stop working entirely",
+          "correct": false,
+          "explanation": "Appliances keep running; the hazard is the gas released, not a shutdown.",
+          "misconception": "shutdown imagined"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L3::Q1",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L3",
+      "stem": "Why is carbon monoxide especially dangerous in the home?",
+      "misconceptionClass": "hazard properties",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is odourless, colourless and tasteless, so it goes unnoticed",
+          "correct": true,
+          "explanation": "With no sensory warning, a person can inhale it without realising anything is present.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It has a strong smell that people ignore",
+          "correct": false,
+          "explanation": "The danger is the absence of smell, not the ignoring of one.",
+          "misconception": "sensory claim inverted"
+        },
+        {
+          "key": "C",
+          "text": "It stains walls green as a warning",
+          "correct": false,
+          "explanation": "CO is colourless and leaves no visible trace to warn anyone.",
+          "misconception": "visual warning invented"
+        },
+        {
+          "key": "D",
+          "text": "It explodes on contact with air",
+          "correct": false,
+          "explanation": "The hazard is poisoning through inhalation, not explosion.",
+          "misconception": "hazard type swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L3::Q2",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L3",
+      "stem": "According to the specification, what is the key point about carbon monoxide poisoning?",
+      "misconceptionClass": "spec emphasis",
+      "options": [
+        {
+          "key": "A",
+          "text": "It reduces the capacity of the blood to transport oxygen",
+          "correct": true,
+          "explanation": "The exam hint names exactly this as the marking point examiners look for.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It dissolves the walls of the lungs",
+          "correct": false,
+          "explanation": "The mechanism is oxygen transport, not physical damage to lung tissue.",
+          "misconception": "damage mode invented"
+        },
+        {
+          "key": "C",
+          "text": "It thickens the blood until it cannot flow",
+          "correct": false,
+          "explanation": "Flow thickness is not the claim; carrying capacity is.",
+          "misconception": "flow confused with capacity"
+        },
+        {
+          "key": "D",
+          "text": "It prevents red blood cells from being made",
+          "correct": false,
+          "explanation": "Existing cells are hijacked; production of new cells is not part of the story.",
+          "misconception": "production blocked"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L3::Q3",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L3",
+      "stem": "How much more strongly does haemoglobin bind carbon monoxide than oxygen?",
+      "misconceptionClass": "binding strength",
+      "options": [
+        {
+          "key": "A",
+          "text": "Around 200 to 250 times more strongly",
+          "correct": true,
+          "explanation": "The detailed explanation quotes that range as the affinity gap.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "About the same strength",
+          "correct": false,
+          "explanation": "If the strengths matched, CO would be far less dangerous than it is.",
+          "misconception": "affinity equalised"
+        },
+        {
+          "key": "C",
+          "text": "About half as strongly",
+          "correct": false,
+          "explanation": "CO binds far more strongly than oxygen, not more weakly.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "D",
+          "text": "Around 2 to 5 times more strongly",
+          "correct": false,
+          "explanation": "The gap is two orders of magnitude larger, which is why CO wins so completely.",
+          "misconception": "magnitude underestimated"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L3::Q4",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L3",
+      "stem": "What name is given to the stable compound formed when haemoglobin binds CO?",
+      "misconceptionClass": "terminology",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carboxyhaemoglobin",
+          "correct": true,
+          "explanation": "The detailed explanation names carboxyhaemoglobin as the stable product of the binding.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Oxyhaemoglobin",
+          "correct": false,
+          "explanation": "That is the oxygen-carrying form CO prevents from forming.",
+          "misconception": "opposite named"
+        },
+        {
+          "key": "C",
+          "text": "Carboxylic acid",
+          "correct": false,
+          "explanation": "That is an organic acid family, unrelated to the blood compound here.",
+          "misconception": "term borrowed"
+        },
+        {
+          "key": "D",
+          "text": "Carbonic acid",
+          "correct": false,
+          "explanation": "Carbonic acid belongs to CO2 in water, a different gas and a different story.",
+          "misconception": "gas confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_V3hNWh6QWrbCRHrX::L3::Q5",
+      "moduleId": "rn_V3hNWh6QWrbCRHrX::L3",
+      "stem": "Is referring to haemoglobin required in your exam answer?",
+      "misconceptionClass": "exam requirement",
+      "options": [
+        {
+          "key": "A",
+          "text": "No, but recent mark schemes accept it if the oxygen-transport point is stated",
+          "correct": true,
+          "explanation": "The spec excludes the requirement, yet mark schemes allow the detail alongside the key point.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Yes, the full haemoglobin mechanism must be quoted",
+          "correct": false,
+          "explanation": "The specification explicitly says references to haemoglobin are not required.",
+          "misconception": "requirement inflated"
+        },
+        {
+          "key": "C",
+          "text": "No, and mentioning haemoglobin loses the mark",
+          "correct": false,
+          "explanation": "Mark schemes accept it; only the key point must not be omitted.",
+          "misconception": "penalty imagined"
+        },
+        {
+          "key": "D",
+          "text": "Only for extended writing questions",
+          "correct": false,
+          "explanation": "The rule does not switch with question type; the key point is always the target.",
+          "misconception": "question-type rule invented"
+        }
+      ]
+    }
+  ]
+}

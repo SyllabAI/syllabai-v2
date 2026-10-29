@@ -1,0 +1,184 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_w25KHshCMNQWwftj",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "5625b0a5aedd1a26c4a52476f4c15fea8aa397951b7d2a30c03a47de5a11f1d6",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_w25KHshCMNQWwftj",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Energetics",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-1-energetics/3-1-2-calorimetry",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.2",
+        "text": "describe simple calorimetry experiments for reactions such as combustion, displacement, dissolving and neutralisation"
+      }
+    ],
+    "primer": {
+      "text": "From Exothermic & Endothermic you already know that reactions hand heat to their surroundings or take it from them. This note shows how simple calorimetry turns that heat into numbers you can compare, first for reactions mixed in solution and then for burning fuels. It ends with the errors that spoil the measurement and how to shut them down.",
+      "prerequisiteSubtopic": "Energetics"
+    },
+    "modules": [
+      {
+        "id": "rn_w25KHshCMNQWwftj::L1",
+        "title": "Calorimetry for reactions in solution",
+        "sourceHeadings": [
+          "Reactions in solution",
+          "A simple calorimeter"
+        ],
+        "specRefs": [
+          "4CH1-3.2"
+        ],
+        "opening": "Mixing two solutions and watching the thermometer is the simplest energy measurement in chemistry. This lesson shows the insulated set-up that keeps the heat in and the working assumptions that let the numbers be trusted.",
+        "keyPoints": [
+          "The energy produced by a reaction in solution is found by measuring the temperature change when the solutions are mixed.",
+          "The solutions are mixed in an insulated container to prevent heat loss to the surroundings.",
+          "Solution calorimetry suits neutralisation reactions, dissolving solids in water and displacement reactions.",
+          "A simple calorimeter can be a polystyrene cup, a vacuum flask or a metal can.",
+          "Assumptions include a specific heat capacity of 4.18 J/g/°C, a density of 1 g/cm3 and negligible heat losses."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "To compare energies from solutions, mix them in a cup that keeps heat in and record how much the temperature climbs. The cup, flask or can that holds the mixture is the calorimeter.",
+            "analogy": "It is like weighing soup in a vacuum flask so none of the heat leaks out before you measure how warm it got.",
+            "examPointer": "Name the insulated container, the thermometer and the stirred mixture when describing this experiment."
+          },
+          "medium": {
+            "restatement": "The temperature change of a mixed solution measures the energy produced, provided the vessel is insulated so heat stays inside. The working assumes the solution behaves like pure water, with a specific heat capacity of 4.18 J/g/°C and a density of 1 g/cm3.",
+            "analogy": "A polystyrene cup is the budget version of a laboratory flask: cheap, light and surprisingly good at trapping heat where you want it.",
+            "examPointer": "List the assumptions when asked: water-like specific heat capacity and density, container ignored, complete reaction, negligible losses."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_w25KHshCMNQWwftj::L1::Q1",
+          "rn_w25KHshCMNQWwftj::L1::Q2",
+          "rn_w25KHshCMNQWwftj::L1::Q3",
+          "rn_w25KHshCMNQWwftj::L1::Q4",
+          "rn_w25KHshCMNQWwftj::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_w25KHshCMNQWwftj::L2",
+        "title": "Burning fuels and the errors that follow",
+        "sourceHeadings": [
+          "Enthalpy of combustion experiments",
+          "Sources of error"
+        ],
+        "specRefs": [
+          "4CH1-3.2"
+        ],
+        "opening": "Burning a fuel under a known mass of water turns the flame into a heater you can score. This lesson walks the copper-can experiment step by step, then faces the two errors that always lurk in it.",
+        "keyPoints": [
+          "Combustion calorimetry uses the heat released by a burning fuel to raise the heat content of water.",
+          "A fixed volume of water is heated in a copper can while a spirit burner with the fuel is weighed before and after.",
+          "The flame is extinguished once the water has risen by about 20 °C and the final temperature is recorded.",
+          "The main sources of error are heat losses and incomplete combustion of the fuel.",
+          "A lid over the calorimeter and shielding from draughts reduce the heat lost to the surroundings."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Burn a weighed burner under a can of water, then weigh it again; the mass lost is the fuel burned and the thermometer shows the warmth gained. Heat escapes and fuel burns poorly, and both spoil the answer.",
+            "analogy": "It is like boiling a kettle in a draughty doorway: some heat never reaches the water, exactly as some flame heat never reaches the can.",
+            "examPointer": "Name heat losses and incomplete combustion as the errors, with a lid and shielding as the fixes."
+          },
+          "medium": {
+            "restatement": "The burning fuel transfers heat to water in a copper can, and weighing the spirit burner before and after shows how much fuel was consumed. Heat lost to the surroundings and heat absorbed by the calorimeter are the main errors, reduced by a lid and by shielding the flame from draughts.",
+            "analogy": "A windbreak behind a camp stove keeps the flame working on the pan instead of the breeze, just as shielding keeps the flame heating the can.",
+            "examPointer": "Describe the full sequence, including the 20 °C target rise and the re-weighing, and finish with the two named errors."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_w25KHshCMNQWwftj::L2::Q1",
+          "rn_w25KHshCMNQWwftj::L2::Q2",
+          "rn_w25KHshCMNQWwftj::L2::Q3",
+          "rn_w25KHshCMNQWwftj::L2::Q4",
+          "rn_w25KHshCMNQWwftj::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "calorimeter",
+          "definition": "An insulated container, such as a polystyrene cup, vacuum flask or metal can, used to measure heat changes in a reaction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "neutralisation",
+          "definition": "The reaction between an acid and an alkali that always gives energy out to the surroundings.",
+          "firstLesson": 1
+        },
+        {
+          "term": "specific heat capacity",
+          "definition": "The energy needed to raise the temperature of 1 g of a substance by 1 °C; for water it is 4.18 J/g/°C.",
+          "firstLesson": 1
+        },
+        {
+          "term": "spirit burner",
+          "definition": "A small burner holding a liquid fuel, weighed before and after burning to find the mass of fuel consumed.",
+          "firstLesson": 2
+        },
+        {
+          "term": "incomplete combustion",
+          "definition": "Burning that does not convert all of the fuel into the usual products, wasting some of the available energy.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "50 cm3 (50 g) of dilute hydrochloric acid is mixed with 50 cm3 (50 g) of sodium hydroxide solution in a polystyrene cup, and the temperature rises from 19.0 °C to 26.0 °C. (Specific heat capacity of the solution = 4.18 J/g/°C, density = 1 g/cm3.) a) Calculate the temperature rise. b) Calculate the heat energy released using Q = m x c x ΔT. c) State the assumptions the calculation makes.",
+        "steps": [
+          "a) ΔT = 26.0 - 19.0 = 7.0 °C.",
+          "b) The total mass heated is 50 + 50 = 100 g, so Q = 100 x 4.18 x 7.0 = 2926 J (about 2.9 kJ).",
+          "c) The assumptions of record: the solution's specific heat capacity equals that of pure water (4.18 J/g/°C), its density equals 1 g/cm3, the reaction is complete, and heat losses are negligible."
+        ],
+        "finalAnswer": "a) 7.0 °C. b) Q = 100 x 4.18 x 7.0 = 2926 J. c) Water-like specific heat capacity and density, complete reaction, negligible heat loss."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b9fb5c85577b-18446-1-5-chemical-energetics-calorime.png",
+        "alt": "Apparatus used to find the energy released when two solutions are mixed together",
+        "sourceHeading": "A simple calorimeter",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/dd682762e179-50507-5-1-4-simple-calorimeter-1.png",
+        "alt": "Simple Calorimeter_1, downloadable IB Chemistry revision notes",
+        "sourceHeading": "Diagram to show the set up of calorimetry equipment",
+        "moduleIds": []
+      }
+    ]
+  }
+}

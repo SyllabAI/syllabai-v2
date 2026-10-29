@@ -1,0 +1,34 @@
+{
+  "task": "T-SENECA-001",
+  "run": "run-003",
+  "kind": "operator-ruling-record (bookkeeping-only; zero DB writes, zero code contact)",
+  "date": "2026-10-24",
+  "operator_ruling": {
+    "trace": "1a16adad843081b1",
+    "question_of_record": "Should the Seneca resource packs go into main, or into a chemistry-group warehouse per the placement law? (posed to the operator after surfacing docs/DATA-PLANE-PLACEMENT.md during the DB-decision doc search, chat trace 1a16ac05e9026f71)",
+    "word": "chemistry-group warehouse"
+  },
+  "law": [
+    "docs/DATA-PLANE-PLACEMENT.md (RATIFIED, operator plan statement trace 1a168885359acda1): identity + courses + learner model = main; ALL corpus data = warehouse fleet; no new corpus plane in main — a new content table family is assigned its warehouse home at design time or DEFERRED.",
+    "docs/ADR-038 (same ratification): one Neon account, course-group warehouse projects, frozen template provisioned by script, no migrations per warehouse, ever.",
+    "docs/DATA-PLANE-PLACEMENT.md §4.1 seam law: ids are the contract; NO cross-project FKs."
+  ],
+  "state_at_ruling": {
+    "pr": "PR #316 open at t-seneca-001/r5 (head 158ece3a run-002)",
+    "live_data": "run-002 (2026-10-23, pre-ruling) applied 0010_seneca_resource_packs.sql to the live hub DATABASE_URL and imported 5,098 rows into seneca_resources (286 courseSection / 1,430 examQuestion / 3,382 quiz, all course_slug=igcse-chemistry-19) plus empty assignment_resources / assignment_resource_states. All three tables currently sit in MAIN — seneca_resources is a corpus plane in main, which the ratification forbids going forward."
+  },
+  "consequences_of_record": [
+    "seneca_resources (library content, 5,098 rows) -> CHEMISTRY-GROUP WAREHOUSE (group name of record: sci-chem, T-OPS-PLANE-001 group map v1, order 2 after maths-4ma1).",
+    "assignment_resources + assignment_resource_states stay in MAIN (assignment domain of record + learner model plane per the placement table). The FK fk_assignment_resources_resource (resource_id -> seneca_resources.id) must be DROPPED at the T1 step — resource_id remains a plain varchar(64) id reference; the fail-closed existence/course validation already lives app-side (plan D5), which is where the seam law wants it.",
+    "Warehouse template: wh-v2 = frozen wh-v1 (pgvector + chunks + HNSW) + the seneca_resources DDL (title widened to text per run-002 fix, kind check, marks check, 2 indexes). Template version recorded in warehouse_registry. wh-v1 itself stays untouched (W1 maths-4ma1 unaffected). Template owner: T-OPS-PLANE-001 provisioner lane (scripts/provisioner/); DDL fragment supplied by T-SENECA-001.",
+    "PR #316 rework (T-SENECA-001 lane): 0010 splits — main chain gets assignment_resources + assignment_resource_states only (renumbered past main's current head-of-chain; seneca_resources DDL + snapshot/schema entries move out of the main schema into the wh-v2 template); route/service library reads flip to the warehouse pooler client via the registry env name; importer retargets the warehouse URL; plan doc gains the placement addendum (D9).",
+    "Migration follows the T1 pattern of DATA-PLANE-PLACEMENT.md §3: provision wh-v2 warehouse -> parity-verified row migration (counts by kind, distinct id set, PII rescan 0, spot-content hashes) -> main seneca_resources zero-residue drop -> registry status flip is the operator's serving order. No dual writes ever."
+  ],
+  "open_items": [
+    "Sci-chem warehouse URL awaited from the operator (console-side creation per the W1 precedent — Neon API egress remains blocked from the sandbox, T-OPS-PLANE-001 run-008 re-test HTTP 000).",
+    "Confirm which project currently holds the run-002 5,098 rows (the run-002 pooler DATABASE_URL — main ep-ancient-cake-a52e4kfd or another): migration source of record.",
+    "Chemistry subject_id for the warehouse_registry seed is read from main subjects at registration time (W1 pattern: PENDING-OPERATOR-ASSIGNMENT then assigned).",
+    "Registry seed row (main, at T1): course_group='sci-chem', warehouse_url_env='SYLLABAI_WAREHOUSE_URL_SCI_CHEM' (0013 naming law), template_version='wh-v2', status='ASSIGNED' — serving flip stays the operator's UPDATE.",
+    "Hub Vercel env gains the sci-chem pooler URL before serving flip (run-005 law: pooler endpoints for serverless)."
+  ]
+}

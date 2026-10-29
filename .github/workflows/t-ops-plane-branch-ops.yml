@@ -1,0 +1,146 @@
+# T-OPS-PLANE-001 T1 cut-over — branch-ops vehicle for the serving-flip lane.
+#
+# Operator order "T1 cut-over order" (IM trace 1a16a648c69072d9) executes the
+# run-005 of-record sequence whose gate 1 is the zero-residue DELETE rehearsal
+# (placement law §5 step 4) via scripts/provisioner/dryrun-4ma1.mjs against a
+# COPY-ON-WRITE branch of main. Agent sandboxes are DNS-blocked from
+# api.neon.tech; CI is the lane-executable path (T-MIG-044 doctrine).
+#
+# STRICT DISPOSITIONS (neon-replay doctrine class):
+#   - credentials are NEVER printed: both connection strings are derived at
+#     runtime from NEON_API_KEY and add-masked; logs carry ids/hashes only;
+#   - the rehearsal job keeps the branch alive for the deploy-leg localgate
+#     reuse; the drop action DELETEs it with 404 verification;
+#   - prod main is NEVER written: the rehearsal reads main THROUGH the branch
+#     and the zero-residue DELETE inside the instrument ROLLS BACK.
+#   - the warehouse pre-clear + re-copy inside the instrument is the disclosed
+#     idempotency repair (T1 receipt) — flip is not active at rehearsal time.
+
+name: t-ops-plane-branch-ops
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "rehearsal | drop"
+        required: true
+        default: "rehearsal"
+      branch_id:
+        description: "Neon branch id (drop action only)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: t-ops-plane-branch-ops
+  cancel-in-progress: false
+
+jobs:
+  branch-ops:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Install workspace deps (root lockfile)
+        if: inputs.action == 'rehearsal'
+        run: bun install --frozen-lockfile
+
+      - name: Create COW rehearsal branch of main
+        if: inputs.action == 'rehearsal'
+        run: |
+          set -euo pipefail
+          BR="t1-rehearsal-${GITHUB_RUN_ID}"
+          RESP=$(curl -sS -X POST "https://api.neon.tech/v2/projects/${{ vars.NEON_PROJECT_ID }}/branches" \
+            -H "Authorization: Bearer ${{ secrets.NEON_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d "{\"branch\":{\"name\":\"${BR}\"},\"endpoints\":[{\"type\":\"read_write\"}],\"parent_id\":\"${{ vars.NEON_PARENT_BRANCH_ID }}\"}")
+          BID=$(echo "$RESP" | jq -r '.branch.id')
+          HOST=$(echo "$RESP" | jq -r '.endpoints[0].host')
+          POOLED=$(echo "$HOST" | sed 's/\./-pooler./')
+          URI=$(curl -sS "https://api.neon.tech/v2/projects/${{ vars.NEON_PROJECT_ID }}/branches/${BID}/connection_uri?pooled=true&database_name=neondb&role_name=neondb_owner" \
+            -H "Authorization: Bearer ${{ secrets.NEON_API_KEY }}" | jq -r '.uri')
+          echo "::add-mask::${URI}"
+          test -n "$BID" && test "$BID" != "null"
+          # wait for endpoint ready
+          ST=""
+          for i in $(seq 1 40); do
+            ST=$(curl -sS "https://api.neon.tech/v2/projects/${{ vars.NEON_PROJECT_ID }}/endpoints" \
+              -H "Authorization: Bearer ${{ secrets.NEON_API_KEY }}" \
+              | jq -r ".endpoints[] | select(.host==\"$HOST\") | .status" | head -1)
+            [ "$ST" = "ready" ] && break
+            sleep 5
+          done
+          echo "endpoint status: $ST"
+          {
+            echo "### T1 rehearsal branch (KEEP for localgate reuse)"
+            echo "- branch_id: \`$BID\`"
+            echo "- pooled_host: \`$POOLED\`"
+            echo "- endpoint_status: $ST"
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "BRANCH_ID=$BID" >> "$GITHUB_ENV"
+          echo "BRANCH_DB_URL=$URI" >> "$GITHUB_ENV"
+
+      - name: Resolve warehouse W1 pooled URI (account-scoped lookup)
+        if: inputs.action == 'rehearsal'
+        run: |
+          set -euo pipefail
+          WH_PID=$(curl -sS "https://api.neon.tech/v2/projects?limit=100" \
+            -H "Authorization: Bearer ${{ secrets.NEON_API_KEY }}" \
+            | jq -r '.projects[].id' \
+            | while read -r p; do
+                H=$(curl -sS "https://api.neon.tech/v2/projects/$p/branches" \
+                  -H "Authorization: Bearer ${{ secrets.NEON_API_KEY }}" \
+                  | jq -r '[.branches[].endpoints[]?.host] | join(" ")')
+                case "$H" in *ep-calm-queen-az36lppq*) echo "$p"; break;; esac
+              done)
+          test -n "$WH_PID"
+          WH_BID=$(curl -sS "https://api.neon.tech/v2/projects/$WH_PID/branches" \
+            -H "Authorization: Bearer ${{ secrets.NEON_API_KEY }}" \
+            | jq -r '([.branches[] | select(.primary)] + .branches)[0].id')
+          WH_URI=$(curl -sS "https://api.neon.tech/v2/projects/$WH_PID/branches/$WH_BID/connection_uri?pooled=true&database_name=neondb&role_name=neondb_owner" \
+            -H "Authorization: Bearer ${{ secrets.NEON_API_KEY }}" | jq -r '.uri')
+          echo "::add-mask::${WH_URI}"
+          echo "warehouse project: $WH_PID (ep-calm-queen-az36lppq)"
+          echo "WH_DB_URL=$WH_URI" >> "$GITHUB_ENV"
+
+      - name: Zero-residue DELETE rehearsal (dryrun-4ma1)
+        if: inputs.action == 'rehearsal'
+        run: |
+          set -o pipefail
+          BRANCH_DB_URL="$BRANCH_DB_URL" WH_DB_URL="$WH_DB_URL" \
+            node scripts/provisioner/dryrun-4ma1.mjs | tee rehearsal-${GITHUB_RUN_ID}.log
+
+      - name: Upload rehearsal log artifact
+        if: inputs.action == 'rehearsal' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: t1-rehearsal-${{ github.run_id }}
+          path: rehearsal-*.log
+          retention-days: 30
+
+      - name: Drop branch (drop action)
+        if: inputs.action == 'drop'
+        run: |
+          set -euo pipefail
+          BID="${{ inputs.branch_id }}"
+          test -n "$BID"
+          CODE=$(curl -sS -o /dev/null -w "%{http_code}" -X DELETE \
+            "https://api.neon.tech/v2/projects/${{ vars.NEON_PROJECT_ID }}/branches/${BID}" \
+            -H "Authorization: Bearer ${{ secrets.NEON_API_KEY }}")
+          echo "delete http: $CODE"
+          CODE2=$(curl -sS -o /dev/null -w "%{http_code}" \
+            "https://api.neon.tech/v2/projects/${{ vars.NEON_PROJECT_ID }}/branches/${BID}" \
+            -H "Authorization: Bearer ${{ secrets.NEON_API_KEY }}")
+          echo "verify-404 http: $CODE2"
+          [ "$CODE2" = "404" ]
+          {
+            echo "### Branch dropped with 404 verification"
+            echo "- branch_id: \`$BID\`"
+          } >> "$GITHUB_STEP_SUMMARY"

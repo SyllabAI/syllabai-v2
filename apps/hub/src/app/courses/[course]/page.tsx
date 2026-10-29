@@ -5,6 +5,7 @@ import {
   BookMarked,
   BookOpen,
   CircleHelp,
+  Compass,
   FileQuestion,
   Files,
   GraduationCap,
@@ -19,12 +20,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { boardOf, listCourses, loadHubCourse, pilotCourseSlug } from "@/lib/courses";
 import { publicConfig } from "@/lib/config";
 import { collectPastPapers } from "@/lib/past-papers";
+import { corpusPapersForCourse } from "@/lib/pastpapers-corpus";
 import { buildPracticePapers } from "@/lib/practice-papers";
 import { CourseHeader } from "@/components/hub/course-header";
 import { CourseSwitcher } from "@/components/hub/course-switcher";
 import { TagChip } from "@/components/hub/chrome";
 import { allCourseParams } from "@/lib/static-params";
 import { courseHasBookArchive } from "@/lib/books-registry";
+import { getUgmBundle, ugmStationNames } from "@/lib/ugm";
+import { loadGuidedIndex } from "@/lib/guided-lessons";
 
 type FrameworkTag = "Study" | "Practice" | "Diagnose";
 
@@ -73,14 +77,31 @@ export default async function CourseHubPage({
   const base = `/courses/${meta.slug}`;
   const qual = `${boardOf(meta)} ${meta.level} ${meta.subject}`;
   // Task 22: real past-paper archive (sourcePaper provenance) + deterministic
-  // practice papers assembled from the same banks
-  const pastPapers = collectPastPapers(hub.questionTopics);
+  // practice papers assembled from the same banks.
+  // OFFICIAL-PLANE-ONLY LAW (operator order 2026-10-25, trace
+  // 1a17e79bb0e50399, "disappear entirely"): the Past Papers card counts
+  // official parsed-plane reconstructions ONLY — the SME exam-questions bank
+  // never advertises a past-paper playback promise. Courses without the
+  // official plane keep an honest card: the corpus PDF archive (when the
+  // syllabai-pastpapers archive holds this specification) or a not-ready
+  // roadmap. The Exam Questions card/bank itself is untouched.
+  const pastPapers = collectPastPapers(hub.officialPaperTopics);
   const heldQuestions = pastPapers.reduce((a, p) => a + p.questions.length, 0);
+  const corpusArchivePapers = corpusPapersForCourse(slug);
   const practicePapers =
     stats.questionSets > 0 ? buildPracticePapers(meta.slug, hub.questionTopics) : [];
   // the 4CH1 pilot runs on the official Pearson tree; every other course runs
   // on the corpus's own (SME) tree until the official mapping lands upstream
   const officialTree = hub.treeKind !== "sme-native";
+  // UGM lane resources (ADR-UGM-0001 as amended 2026-10-23): the card only
+  // exists when the flags.json gate lists this course AND the committed
+  // bundle validates (lib/ugm.ts absent=OFF law) — no roadmap ghost card.
+  const ugm = await getUgmBundle(meta.slug);
+  // R-1 (operator trace 1a179c6b53bff529): the guided-lesson card keys on the
+  // committed guided-import.json of record (same fail-closed seam the per-note
+  // banner uses) — live courses get real counts from the index, never
+  // hardcoded; courses without one keep an honest roadmap card.
+  const guided = await loadGuidedIndex(meta.slug);
 
   const bands: { id: string; title: string; tagline: string; items: ResourceItem[] }[] = [
     {
@@ -135,14 +156,22 @@ export default async function CourseHubPage({
         {
           icon: ScrollText,
           title: "Past Papers",
-          desc: "The questions we hold from real past papers, grouped by session and played back in paper order — partial reconstructions, not the full official papers.",
+          desc:
+            pastPapers.length > 0
+              ? "The questions we hold from real past papers, grouped by session and played back in paper order — partial reconstructions, not the full official papers."
+              : "Official question papers and mark schemes streamed from the archive — view them side by side, self-mark, or run a timed mock. Interactive playback lands as papers are parsed.",
           tags: ["Practice", "Diagnose"],
-          ready: pastPapers.length > 0,
-          href: pastPapers.length > 0 ? `${base}/past-papers` : undefined,
+          ready: pastPapers.length > 0 || corpusArchivePapers.length > 0,
+          href:
+            pastPapers.length > 0 || corpusArchivePapers.length > 0
+              ? `${base}/past-papers`
+              : undefined,
           countLabel:
             pastPapers.length > 0
               ? `${pastPapers.length} paper${pastPapers.length === 1 ? "" : "s"} · ${heldQuestions} question${heldQuestions === 1 ? "" : "s"} held`
-              : undefined,
+              : corpusArchivePapers.length > 0
+                ? `${corpusArchivePapers.length} paper${corpusArchivePapers.length === 1 ? "" : "s"} · archive`
+                : undefined,
         },
         {
           icon: Files,
@@ -205,12 +234,47 @@ export default async function CourseHubPage({
           countLabel: `${stats.flashcards} card${stats.flashcards === 1 ? "" : "s"}`,
           ready: stats.flashcards > 0,
         },
+        // Underground Mathematics lane library — flagged + bundled courses
+        // only (see the ugm const above); absent otherwise, never a stub.
+        ...(ugm
+          ? [
+              {
+                icon: Compass,
+                title: "Underground Mathematics",
+                desc: `Cambridge's Underground Mathematics (${ugmStationNames(ugm)} collections) — rich problems with suggestions and worked solutions, mapped to this course's specification points (alignment candidates, SUGGESTED).`,
+                tags: ["Study", "Practice"] as FrameworkTag[],
+                href: `${base}/ugm`,
+                countLabel: `${ugm.coverage.aligned} resources · ${ugm.specPoints.length} spec points`,
+                ready: true,
+              },
+            ]
+          : []),
         {
+          // R-1 + R-5 (operator trace 1a179c6b53bff529): this card was the
+          // stale "Smart Lesson — Phase C of the build plan" roadmap ghost
+          // while the guided-lesson corpus is already live (112/112 notes on
+          // the promoted integration). It now leads with the canonical name
+          // ("Guided lessons" — R-5 unification) and, when the committed
+          // guided-import.json exists, flips to the live state with index
+          // counts and a path into the per-note guided entries. The gap-first
+          // desc mirrors the R-7c picker copy on the lesson surface itself.
           icon: Lightbulb,
-          title: "Smart Lesson",
-          desc: "Adaptive study path that adjusts based on your performance — Phase C of the build plan.",
+          title: "Guided lessons",
+          desc: guided
+            ? "Pick the concept you don't understand yet — we'll explain it simply, then check your understanding. Any order works."
+            : "Step-by-step guided lessons for every revision note — rolling out course by course.",
           tags: ["Study", "Practice", "Diagnose"],
-          ready: false,
+          // Entry-path lanes (b)+(c) (operator decision of record, trace
+          // 1a1810c1ef1cb521): the live card now lands on the dedicated
+          // guided-lessons index (one hop into any lesson) instead of three
+          // hops through the notes listing; not-ready courses keep the
+          // honest roadmap.
+          href: guided ? `${base}/guided-lessons` : undefined,
+          ctaLabel: guided ? "Browse lessons" : undefined,
+          countLabel: guided
+            ? `Live for ${guided.counts.notes} notes · ${guided.counts.lessons} lessons`
+            : undefined,
+          ready: Boolean(guided),
         },
       ],
     },

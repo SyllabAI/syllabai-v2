@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { loadHubCourse } from "@/lib/courses";
+import { boardOf, loadHubCourse } from "@/lib/courses";
 import { buildPracticePapers, getPaper, isPaperId, paperEstTime } from "@/lib/practice-papers";
 import { Breadcrumbs, ExamCodePill } from "@/components/hub/chrome";
 import { ResourcePanel } from "@/components/hub/resource-panel";
@@ -51,7 +51,7 @@ export default async function PracticePaperPage({
             <h1 className="max-w-2xl text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
               {paper.title}{" "}
               <span className="text-muted-foreground">
-                (Edexcel {meta.level} {meta.subject})
+                ({boardOf(meta)} {meta.level} {meta.subject})
               </span>
             </h1>
             <ExamCodePill code={meta.code} />
@@ -64,7 +64,7 @@ export default async function PracticePaperPage({
           {/* long sentence, not a chip — the Badge base's whitespace-nowrap
               blew the row past 375px (s133); wrap it like text instead */}
           <Badge variant="secondary" className="max-w-full whitespace-normal text-left font-medium">
-            Assembled from the topic question banks — not an official Edexcel paper
+            Assembled from the topic question banks — not an official {boardOf(meta)} paper
           </Badge>
         </header>
 

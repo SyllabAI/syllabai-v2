@@ -1,0 +1,35 @@
+version: 1
+task:
+  id: T-SPECS-MATHSB-2B-OVERLAY-1
+  title: "Resolve the 13 unmapped generic lessons via the T-SPEC-2b operator-verdict overlay (r2 of the maths-b content-join lane)"
+  owner: "restore lane (Z.ai, zai-web session web-528c0352, trace 1a183901ab68b9fd)"
+  status: DONE
+  priority: P2
+  band: T-SPECS
+  wave: maths-b-anchor-fix
+  deps: ["T-SPECS-MATHSB-REVIEW-1"]
+  scope:
+    allowed:
+      - "SyllabAI/syllabai-resources SME-ExamQuestion/igcse-maths-b-16/* (resolution sidecar + sheet only; map lane byte-untouched)"
+      - "downstream re-derivation chain (map_flashcards overlay fill, build_learner_spec_links, attach pin bump + regen, flip)"
+    forbidden:
+      - "any forced attachment without quoted statement READ + note text + grouping evidence"
+      - "modifying spec_point_map.json mappings (the side-car law: map lane wins, overlay fills only map-unmapped ids)"
+      - "PMT as a source (operator instruction 2026-09-18)"
+  notes: >
+    Operator order trace 1a183901ab68b9fd ("apply the T-SPEC-2b precedent ...
+    for the 13 unmapped generic lessons") activated the lane T-SPECS-MATHSB-REVIEW-1
+    run-001 sanctioned (receipt followup #2: the T-SPEC-2b operator-verdict overlay
+    is the sanctioned path for the 13 unmapped). Verdicts of record (engine
+    resources scripts/maths_b_tspec2b_overlay.py, landed resources 6162cc77):
+    11 T_SPEC_2B_ATTACH — Best Buys 1G, Converting Units 1G, Squared & Cubic Units
+    1G, Repeated Percentage Change 1H (term identity), Collecting Like Terms 3A,
+    Expanding One Bracket 3C, Expand & Simplify 3C (family grouping), Midpoint of
+    a Line 4H, Pie Charts 10A, Relative Frequency 10E, Expected Frequency 10K
+    (term identity, the r1 10C/10K tie broken eyes-on) — + 2 T_SPEC_2B_STAY
+    (Mathematical Symbols, Systematic Lists: no statement-plane home in the
+    98-statement spine, pool READ in full; no-guess held). Hub effect: loose
+    maths-b revision notes 11 -> 2 (the two honest stays); flashcards coded
+    262 -> 268 (6 Repeated-Percentage-Change cards via the map_flashcards
+    verdict_overlay fill); spec-links 467/465 (notes 197/199, cards 268/268).
+    Receipt: .syllabai/receipts/T-SPECS-MATHSB-2B-OVERLAY-1/run-001-v2-landing.json.

@@ -1,0 +1,229 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_H2zGfgH76qYV5cmr",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "94c1d9895ae3328cdc7896b7ca22b3db5d527ada99f1f73b699c52b4cc64537e",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_H2zGfgH76qYV5cmr",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Alkenes",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-4-alkenes/4-4-1-alkenes",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.23",
+        "text": "know that alkenes contain the functional group >C=C<"
+      },
+      {
+        "code": "4CH1-4.24",
+        "text": "know the general formula for alkenes"
+      },
+      {
+        "code": "4CH1-4.25",
+        "text": "explain why alkenes are classified as unsaturated hydrocarbons"
+      },
+      {
+        "code": "4CH1-4.26",
+        "text": "understand how to draw the structural and displayed formulae for alkenes with up to four carbon atoms in the molecule, and name the unbranched-chain isomers knowledge of cis/trans or E/Z notation is not required"
+      }
+    ],
+    "primer": {
+      "text": "From Halogens & Alkanes you already know how the saturated family swaps atoms under UV light. This note introduces its double-bonded cousins: the C=C functional group, the alkane-versus-alkene formula difference, and why that open double bond makes alkenes so much more reactive.",
+      "prerequisiteSubtopic": "Alkanes"
+    },
+    "modules": [
+      {
+        "id": "rn_H2zGfgH76qYV5cmr::L1",
+        "title": "The C=C functional group family",
+        "sourceHeadings": [
+          "What are alkenes?"
+        ],
+        "specRefs": [
+          "4CH1-4.23",
+          "4CH1-4.24",
+          "4CH1-4.25"
+        ],
+        "opening": "Alkenes are the unsaturated counterpart to alkanes, defined by one structural feature. This lesson identifies the C=C functional group, generates the family formula, and explains what unsaturated really means.",
+        "keyPoints": [
+          "Alkenes are unsaturated hydrocarbons whose functional group is the C=C double bond.",
+          "The general formula of an alkene is CnH2n, two fewer hydrogens than the alkane recipe.",
+          "Unsaturated means the C=C bond can open, letting each carbon form one more single bond.",
+          "Because the double bond can open, alkenes are much more reactive than alkanes.",
+          "Each carbon of the double bond ends up with four single bonds once the incoming atoms attach."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Alkenes carry a carbon-carbon double bond, written C=C, and follow the formula CnH2n. The double bond can open up, which is why alkenes are called unsaturated and react more readily than alkanes.",
+            "analogy": "An alkene is a zip half-open on a jacket: the open teeth are ready to fasten onto something new, while the fully zipped alkane has no spare grip.",
+            "examPointer": "Write the functional group as C=C when asked, and contrast the CnH2n formula with the alkane CnH2n+2."
+          },
+          "medium": {
+            "restatement": "Every alkene contains the C=C functional group, the double bond that defines the family and follows the general formula CnH2n. Unsaturated describes the two spare bonding capacities at that bond: opening it lets an incoming atom bond to each carbon, converting one double and two singles into four single bonds per carbon pair.",
+            "analogy": "Think of the double bond as a two-person handshake with arms linked twice; guests arriving can undo one link so each host greets a new visitor with a firm single grip.",
+            "examPointer": "Explain reactivity through the openable double bond, then show the formula difference from alkanes by comparing CnH2n with CnH2n+2."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_H2zGfgH76qYV5cmr::L1::Q1",
+          "rn_H2zGfgH76qYV5cmr::L1::Q2",
+          "rn_H2zGfgH76qYV5cmr::L1::Q3",
+          "rn_H2zGfgH76qYV5cmr::L1::Q4",
+          "rn_H2zGfgH76qYV5cmr::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_H2zGfgH76qYV5cmr::L2",
+        "title": "Drawing and naming the first four",
+        "sourceHeadings": [
+          "Table of alkenes"
+        ],
+        "specRefs": [
+          "4CH1-4.26"
+        ],
+        "opening": "The first four alkenes carry position numbers in their names because the double bond can sit in different places. This lesson lines up ethene to pent-1-ene and reads the numbering system.",
+        "keyPoints": [
+          "The first members are ethene C2H4, propene C3H6, but-1-ene C4H8 and pent-1-ene C5H10.",
+          "Names of longer alkenes carry a number showing where the C=C bond begins in the chain.",
+          "In pent-2-ene the double bond sits between the second and third carbon atoms.",
+          "Drawing a displayed alkene means every bond shown, with the double bond drawn as two lines.",
+          "The cis/trans and E/Z naming systems stay outside the requirement, which covers unbranched-chain isomers only."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Learn ethene, propene, but-1-ene and pent-1-ene with formulae C2H4 to C5H10. The number in the name says which carbon the double bond starts at, counted from one end.",
+            "analogy": "The name works like a street address for the double bond: ethene and propene live in tiny houses with one possible door, but from butene onward the number tells you which door is open.",
+            "examPointer": "Practise drawing each displayed formula with the double bond as two clear lines; both carbons still show four bonds in total."
+          },
+          "medium": {
+            "restatement": "The table runs ethene C2H4, propene C3H6, but-1-ene C4H8 and pent-1-ene C5H10, each obeying CnH2n with one C=C. Position numbers count from the nearer end, so pent-2-ene places the double bond between carbons two and three, and only unbranched-chain isomers are named at this level.",
+            "analogy": "Longer alkene names are like hotel room numbers: the stem names the building size and the number tells you the floor where the double-bond event happens.",
+            "examPointer": "Count from the end that gives the lower number, and remember cis/trans and E/Z labels are outside the requirement."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_H2zGfgH76qYV5cmr::L2::Q1",
+          "rn_H2zGfgH76qYV5cmr::L2::Q2",
+          "rn_H2zGfgH76qYV5cmr::L2::Q3",
+          "rn_H2zGfgH76qYV5cmr::L2::Q4",
+          "rn_H2zGfgH76qYV5cmr::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04",
+          "fig-05"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "alkene",
+          "definition": "An unsaturated hydrocarbon of the family with general formula CnH2n and one C=C double bond.",
+          "firstLesson": 1
+        },
+        {
+          "term": "unsaturated",
+          "definition": "Describing a hydrocarbon whose C=C double bond can open to add more atoms.",
+          "firstLesson": 1
+        },
+        {
+          "term": "double bond",
+          "definition": "A bond made of two shared electron pairs between two carbon atoms, written C=C.",
+          "firstLesson": 1
+        },
+        {
+          "term": "general formula",
+          "definition": "The family recipe using n; for alkenes it is CnH2n.",
+          "firstLesson": 1
+        },
+        {
+          "term": "unbranched-chain isomer",
+          "definition": "A straight-chain arrangement of a molecular formula, the only isomer type named at this level.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "a) State the functional group and the general formula of the alkenes. b) Use the general formula to find the molecular formula of butene (n = 4). c) Explain why alkenes are classified as unsaturated hydrocarbons.",
+        "steps": [
+          "a) The functional group of the alkenes is the carbon-carbon double bond, C=C, and the general formula is CnH2n.",
+          "b) For n = 4, 2 x 4 = 8, so the molecular formula is C4H8 (but-1-ene, with the double bond starting at the first carbon).",
+          "c) Unsaturated means the C=C bond can open up: each carbon of the double bond then forms one more single bond with an incoming atom, so alkenes can make more bonds than alkanes and react far more readily."
+        ],
+        "finalAnswer": "a) C=C; CnH2n. b) C4H8. c) The double bond can open, letting each carbon form one more single bond."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c905b447320d-ethene.png",
+        "alt": "ethene",
+        "sourceHeading": "Table of alkenes",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/b9fdeaaf358a-propene.png",
+        "alt": "propene",
+        "sourceHeading": "Table of alkenes",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/3bd75c6173ba-but-1-ene.png",
+        "alt": "but-1-ene",
+        "sourceHeading": "Table of alkenes",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/e3ee45ddd9ca-pent-1-ene.png",
+        "alt": "pent-1-ene",
+        "sourceHeading": "Table of alkenes",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a57dcf5ee1ea-double-bond-opening.png",
+        "alt": "Double Bond Opening, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Table of alkenes",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
+  }
+}

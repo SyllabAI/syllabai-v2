@@ -1,0 +1,84 @@
+{
+  "receipt": "NEON-DB-LOSS run-012-oracle-reproduction-check-r0",
+  "run": "run-012",
+  "agent": "R0-integrator (Super Z, zai-web session web-1f157e25-0ed7-4f18-8956-3b2a993bc646)",
+  "operator_trace": "1a16ec6092bde2b1 (operator: knows the writer; asks whether the re-run reproduces the survivors exactly)",
+  "date": "2026-10-24",
+  "duty": "T-OPS-TRIPWIRE-001 standing duty (read-only verification around another lane's writes); answers the operator's reproduction question with first-hand probes",
+  "VERDICT": "THE IN-FLIGHT REBUILD DOES NOT (AND STRUCTURALLY CANNOT) PERFORM THE SHARED-KEY ORACLE REPRODUCTION described by the run-006 decision law. The writer's strategy is a PARALLEL-HALF REBUILD: it re-imports the LOST half of the question bank as FRESH rows (questions -> question_versions -> mark_schemes -> mark_points) while leaving the 14,141 survivor points 100% untouched. Zero shared keys by construction (0/15,190+6,753 external_ref overlap; 0 shared scheme keys; 1 accidental shared part). THEREFORE the strict 'replay must reproduce the survivors exactly' proof cannot engage in this run. WHAT IS PROVEN instead (all first-hand, read-only): survivors 14,141 EXACT intact; writer rows carry the of-record instrument signature (sme-corpus-import-v1/ADR-026, provenance PAST_PAPER) on all 15,190 questions; G1 sum-law (per-part mark_points sum == part.marks) 21,736/21,736 EXACT, 0 violations; 0 true orphans (the 4,768 no-part points are ALL the legitimate part-less MCQ-direct class, question_part_id NULL by design); ZERO duplication of surviving content (0 shared external_refs). Aggregate estate now 14,141 + 26,504 = 40,645 vs the 40,250 pre-loss peak basis (+395, +1.0% — overshoot to be reconciled by the writer's own final census receipt; candidates: corpus growth since Oct-22 or re-derivation drift). Writer ACTIVE (newest point 16:39:13Z, still landing during the probe window).",
+  "probes": {
+    "method": "read-only postgres.js sessions (max:1, prepare:false), five SELECT batches; ZERO writes by this lane",
+    "scripts": [
+      "scripts/oracle_repro_check_1_overlap.ts (shared-key overlap)",
+      "scripts/oracle_repro_check_2_keys.ts (key resolution + question-plane growth)",
+      "scripts/oracle_repro_check_3_classify.ts (heartbeat, duplication, orphans, sum-law, provenance)"
+    ],
+    "shared_key_overlap": {
+      "shared_scheme_keys(question_version_id, source_document_id)": 0,
+      "shared_parts(question_part_id)": 1,
+      "shared_external_refs(questions)": 0,
+      "interpretation": "the writer never attaches to surviving keys — it rebuilds on fresh rows"
+    },
+    "question_plane_growth": {
+      "questions": {
+        "total": 21945,
+        "post_boundary": 15190,
+        "pre_existing": 6755
+      },
+      "question_versions": {
+        "total": 21945,
+        "post_boundary": 15190
+      },
+      "question_parts": {
+        "total": 36864,
+        "post_boundary": 21736
+      }
+    },
+    "writer_rows_health": {
+      "new_schemes": 15190,
+      "new_points_at_probe": 26504,
+      "orphaned_no_version": 0,
+      "true_orphaned_points": 0,
+      "null_part_id_partless_class": 4768,
+      "sum_law": {
+        "parts_checked": 21736,
+        "sum_ok": 21736,
+        "violations": 0
+      },
+      "signature": "sme-corpus-import-v1 (ADR-026) / provenance PAST_PAPER — 15,190/15,190",
+      "heartbeat_newest": "2026-10-24T16:39:13.284Z"
+    },
+    "oracle_integrity_re_proof": {
+      "survivor_rows_pre_boundary": 14141,
+      "expected": 14141,
+      "match": true
+    },
+    "aggregate_basis": {
+      "pre_loss_peak_basis": 40250,
+      "live_now": 40645,
+      "delta": 395,
+      "note": "the basis target is already exceeded; final reconciliation belongs to the writer's census receipt"
+    }
+  },
+  "what_can_and_cannot_be_proven": {
+    "CANNOT": [
+      "row-level 'exactly as before' proof for the ~26,109 LOST rows — no reference copy exists (that is why they were lost); the run-006 strict oracle law (replay reproduces survivors on shared keys) is structurally disengaged in this run"
+    ],
+    "CAN_and_PROVEN_here": [
+      "survivors untouched: 14,141 EXACT (re-proved twice this run)",
+      "no duplication of surviving content: 0 shared external_refs across 15,190 writer questions",
+      "internal derivation laws on new rows: G1 sum-law 100% (21,736/21,736), 0 orphans, part-less class by design",
+      "of-record instrument signature on 100% of writer questions"
+    ],
+    "CAN_LATER_on_operator_ask": [
+      "the STRICT shared-key survivor replay as a validation-only dry-run (rollback tx / COW branch) — re-derives the survivor planes attach-style and diffs against the 14,141 WITHOUT touching serving; delivers the run-006 oracle law as evidence even though the serving rebuild follows the parallel-half strategy",
+      "source-fidelity spot check: sample writer rows against the SME EQ source documents (documents plane survived, gate-PASS)"
+    ]
+  },
+  "decision_requested": "none required for safety — writer is healthy and survivors are intact; operator may (a) let it finish and this lane runs the post-completion validation battery + census reconciliation, and optionally (b) order the strict survivor-replay dry-run for the run-006 oracle law evidence",
+  "disclosures": [
+    "run-012 supersedes nothing; run-011's escalation stands (the writer still owes its own claim/receipts on origin — identity now effectively confirmed by the operator)",
+    "probe cost: ~10 read-only SELECTs over indexed planes; no locks taken beyond momentary shared reads",
+    "the +395 basis overshoot is DISCLOSED, not adjudicated — this lane does not own the writer's census"
+  ]
+}

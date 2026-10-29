@@ -1,0 +1,37 @@
+{
+ "receipt": "cie-tranche3-consume-run-004-r0",
+ "family": "CIE-INTEGRATION",
+ "lane": "T-RULE-T3-SME-COVERAGE-1 run-004 (v2 consume half)",
+ "operatorOrder": "tranche-3 re-harvest (trace 1a169db74ca578c9, 2026-10-23, zai-web)",
+ "agent": "main (zai-web session web-64d10b73-530a-4f71-9961-85d0436c7fb5)",
+ "generatedUtc": "2026-10-23T19:45:00Z",
+ "pin": {"from": "fa664a86d64dd954225e0dee05a8cd742703179c", "to": "3dd9bb982834743f0b8c81123c8f15003c74c06a", "scope": "43 of 44 CIE lanes; econ-25 DEFERRED"},
+ "engineRun": {
+  "engine": "apps/hub/scripts/cie/cie_consume_spec_links.py (committed T-SPECS-CIE-CONSUME-1), per-run states patched in the lane worktree (PIN/STAMP/operatorDirective/gatewayTrace — the standing per-run pattern), method untouched",
+  "idSpaceGuardInvestigation": "first run over 44 sidecars ABORTED fail-closed at cie-igcse-economics-25: sidecarOnly 84 of 132 — the guard correctly refused a sidecar 84 new-note items ahead of the bundles (the run-003 re-harvest corpus growth; the tranche-2 durability chain rekeys EXISTING items only). Investigation concluded the divergence IS the new corpus; the committed-bundle enrichment lineage (attach specPointIds->official codes, smeSpecPointIds, prune) forbids a raw rebuild+apply (verified: all 44 staged raw builds diverge from the committed bundles). econ-25 therefore DEFERRED to a serving lane (bundle build + attach + prune + engine consume); this run consumes the other 43 sidecars of record over an input-scoped shadow (spec-links copies minus the econ-25 sidecar; zero engine-method lines touched; the first aborted run's staging discarded per the firstRunIncident precedent)",
+  "sheetGates": "resolves=634 ambiguous/quarantine=166 (unchanged)",
+  "sidecars": 43,
+  "changed": 43,
+  "totals": {"codesFromSidecar": 10986, "t2Hints": 3, "sheetAdded": 0, "sheetUpgraded": 0, "sheetConflictsKept": 289, "inlineRewrites": 0, "sidAnchorsAdded": 0, "sidAnchorsVerified": 26, "sidAnchorsConflictsKept": 0},
+  "stagingHash": "96fe71c5eedb35775b332f95a47daf9e5ad4ab62aaeb5a90759e29a5963f93e4",
+  "battery": "in-engine B1..X1 fail-closed green 43/43; the 26 operator sid-anchors verify-if-equal (byte fixed point preserved)"
+ },
+ "apply": {
+  "mode": "byte-exact verbatim copy (CIE-REFRESH-1 apply mode); every copy byte-compared; staged maps resourcesSha/stamp asserted pre-replace (3dd9bb98 / 2026-10-23T19:30:00Z); bundle-manifest officialSpine.resourcesSha spot-asserted per lane",
+  "filesApplied": 258,
+  "econ25": "zero paths touched (deferred lane; its bundle manifest stays at fa664a86 — accepted via the validator ladder PRIOR_7 slot)"
+ },
+ "validatorLadder": {
+  "file": "apps/hub/scripts/validate_cie_bundles.ts",
+  "advance": "CIE_PIN fa664a86 -> 3dd9bb98; fa664a86 demoted to PRIOR_7 (econ-25's accepted pin); ladder comment carries the run-004 evidence",
+  "run": "bun validate_cie_bundles.ts from apps/hub — ALL PASS (strict-11 coverage 2,164; archive holdings 2,259; pure-1 bank 67; the card's paper-count assertions hold)"
+ },
+ "residuals": [
+  "econ-25 serving lane (operator-dispatchable): bundle build + attach + prune for its 84 re-harvested notes, then the engine consume advances its map/manifest pin fa664a86 -> of-record tip; the sidecar of record is already re-keyed (resources side complete)",
+  "the 61-residual class-B + the 1,203 class-A: operator dispositions per the run-001 menu (unchanged)",
+  "PAT rotation CRITICAL-OVERDUE (transit 37+38+39 on the standing fingerprint)",
+  "hung resources sync job (standing)"
+ ],
+ "hygiene": "v2 lane worktree (detached @ f55f32ea, shared checkout untouched); zero DB writes; zero Vercel mutations; zero LLM calls; fetch-first, no force",
+ "artifacts": "consume report + logs mirrored at .syllabai/lane-artifacts/T-RULE-T3-SME-COVERAGE-1/run-003-reharvest/"
+}

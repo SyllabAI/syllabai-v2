@@ -186,6 +186,41 @@ export const QuestionPart = z.object({
     })
     .nullable()
     .optional(),
+  /**
+   * Official mark-scheme point breakdown (ADR-037 official papers only):
+   * the Pearson MP1/M2… lines behind the "mark scheme" modal — id, marks,
+   * point text. Optional: SME topic sets carry the authored worked answer
+   * only. Loaded verbatim; the sum-law gate holds upstream (ΣMP = marks).
+   */
+  markPoints: z
+    .array(
+      z.object({
+        id: z.string(),
+        marks: z.number(),
+        textMd: z.string(),
+      }),
+    )
+    .optional(),
+  /**
+   * Figure assets attached to the part (ADR-037 official papers): crops
+   * resolved to raw GitHub URLs, plus honest "crop-required" stubs. The
+   * problem markdown already inlines the crops; this carries the structured
+   * provenance (page, review status, shared-figure refs).
+   */
+  assets: z
+    .array(
+      z.object({
+        kind: z.string().nullable(),
+        mention: z.string().nullable(),
+        page: z.number().nullable(),
+        review: z.boolean(),
+        shared: z.boolean(),
+        refPart: z.string().nullable().optional(),
+        path: z.string().nullable().optional(),
+        rawUrl: z.string().nullable().optional(),
+      }),
+    )
+    .optional(),
 });
 
 export const ExamQuestion = z.object({

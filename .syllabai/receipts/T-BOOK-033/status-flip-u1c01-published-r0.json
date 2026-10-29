@@ -1,0 +1,50 @@
+{
+  "band": "T-BOOK-033",
+  "run": "status-flip-u1c01-published-r0",
+  "date": "2026-10-22",
+  "trace_id": "1a162e924c017891",
+  "operator_order": "translate the pack status and re-bake it",
+  "title": "u1:c01 lesson pack status flip of record (draft -> published) + the hub re-bake of record, executed end-to-end across both repos",
+  "context": {
+    "prior_state": "T-BOOK-033 r0 (merged main 372a2b76) shipped the Lesson renderer with the baked u1:c01 pack at status=draft; receipt note: 'appears on the shelf/toggle ONLY after the status flip to published (SUGGESTED law); ?preview=1 shows the draft with a badge today'; the operator command answers that note",
+    "law_chain": "START-HERE law 7 (SUGGESTED: flip is an explicit operator command, recorded in the tracker with a receipt) + law 10 (no status change without a lessonctl.py tracker transaction) + T-C20 (published-only shelf + reader toggle, status-absent mirror)"
+  },
+  "acts": [
+    {
+      "step": "1 — source-of-record flip (syllabai-resources)",
+      "details": "qa/lessonPackV1.json status draft -> published, single-field byte-precise edit (13 sections, sources sha-pinned, authoring receipt qa/receipt.yaml S1-S4 lint PASS 0/0 unchanged); flip receipt qa/flip-published.yaml; tracker.yaml via lessonctl.py tracker --set pack_status=published last_agent=T-BOOK-033/flip r0 --receipt qa/flip-published.yaml (law 10); lesson.yaml receipts mirror append (sections byte-untouched); TRACKER.md human-doc synced same-commit; diff audit: tracker 3 lines, lesson.yaml receipts-key-only, pack 1 field"
+    },
+    {
+      "step": "2 — resources PR lane",
+      "details": "tree-API commit 1f8060f16c84 (5.3GB repo never cloned; PAT inline env-only) -> branch cl-flip/u1c01-pack-published-r0 -> PR SyllabAI/syllabai-resources#45 -> MERGED 08229323ef7c; main verified carrying status: published"
+    },
+    {
+      "step": "3 — hub re-bake (syllabai-v2)",
+      "details": "branch t-book-033/status-flip-rebake-r0 off main tip 5cad720c; import_lesson_packs.py re-run of record (fetch-first, SYLLABAI_PAT env-only) — baked content-plane diff EXACTLY one field (status draft -> published, 1 file / 1 line; lessons-index.json + glossary byte-identical); G4 validate-u1c01-pack.ts GREEN (lessonPackV1 zod, status=published, per-section laws, T-C20 shelf mirror OK); lesson-plane suites GREEN (contracts books-lesson + books-lesson-links 15/15, lesson-markdown 10/10); commit 3abbbed6"
+    },
+    {
+      "step": "4 — pre-existing main-baseline red found + healed at root (rider)",
+      "details": "PR CI: verify GREEN but hub FAILED — root-caused NOT to this lane: the CIE bundle validator allow-list (validate_cie_bundles.ts) still accepted only c5f20c52/bb154527/aa0b4de1 while THREE receipted repair lanes had re-keyed their manifests (pure-3 06de1f2ac205 T-SPECS-CIE-PARSE-REPAIR-1 ea7b9942; fm25 b83a3799a039 T-SPECS-CIE-PARSE-REPAIR-2 b149e119; geo-25 58d7f6892d89 T-SPECS-CIE-COMPLETE-1-BAND-D 2c1c370b) — main tip 5cad720c hub check failed the SAME 3 assertions first-hand (pre-existing, orthogonal to chemistry lessons); ALSO disclosed by the DEPLOY run-013 worklog as blocking BOTH the GH hub workflow AND the Vercel hub bake ('future hub-src pushes stay unbaked until the content lane heals it'); rider commit 51c29c8b: allow-list advanced with verbatim receipt citations + precedence fix on the same assertion (the && chain bound only its last disjunct — treeKind enforced for CIE_PIN only, spine/attachmentMap for CIE_PIN_PRIOR_2 only, a false-accept class) tightened to require treeKind + pin in allow-list + artifact links for EVERY accepted pin, verdict-neutral for all 44 bundles (census pre-verified: 41 @ c5f20c52 + 3 repair pins + pure-2 skeleton on its own branch, correct artifact paths fleet-wide)"
+    },
+    {
+      "step": "5 — all-green merge = the re-bake",
+      "details": "local gates on the rider: prebuild corpus-verify chain GREEN ('CIE VALIDATOR PASSED'), build:hub GREEN (next build exit 0), typecheck x4 exit 0; CI on 51c29c8b: verify success + hub success; PR syllabai-v2#298 MERGED 71cf487699ff — the git-connected hub auto-bake fires from this merge with the validator healed, carrying the published pack (first bakeable hub push since the renderer landed)"
+    }
+  ],
+  "serving_effect": "T-C20 gate now passes for u1:c01: the shelf Lesson badge + reader Lesson toggle serve the pack next to Rail at /courses/igcse-chemistry-19/books/<docId>/lesson; no state leak (status-absent mirror); ?preview=1 no longer required",
+  "write_ledger": {
+    "syllabai_resources": "1 PR merged (#45): 5 files (pack json flip, flip receipt, tracker.yaml, lesson.yaml, TRACKER.md)",
+    "syllabai_v2": "1 PR merged (#298): 2 commits (baked content 1-line flip + CIE validator rider); bookkeeping-only receipt+worklog commit herewith",
+    "neon_writes": 0,
+    "llm_spend": 0,
+    "probe_learners": 0
+  },
+  "findings_filed": [
+    "CIE validator pin allow-list not advanced when a manifest re-key lane lands (caught once, fixed at root in the same band with receipt citations; recurrence would be the second strike under root-cause-twice)",
+    "JS-precedence false-accept class in the repaired assertion (spine/attachmentMap law not enforced for every pin branch) — closed by the tighten"
+  ],
+  "residuals_disclosed": [
+    "tracker.yaml phases.pilot-gate.status still 'not-started' (predates the flip; collective c01-c05 phase; flagged for the next authoring lane, not a defect of this flip)",
+    "Vercel bake/deploy probe of the live Lesson route recorded in the worklog entry (post-merge)"
+  ]
+}

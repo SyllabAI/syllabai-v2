@@ -1,0 +1,309 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_XJ8qXfzZJJFKXHnF",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "b4c1b1d1d3b56a042743cd0bef90dd866477aa76219475340fc2a125dbc074e9",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_XJ8qXfzZJJFKXHnF",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Rates of Reaction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-2-rates-of-reaction/3-2-1-measuring-rates",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.10",
+        "text": "describe the effects of changes in surface area of a solid, concentration of a solution, pressure of a gas, temperature and the use of a catalyst on the rate of a reaction"
+      },
+      {
+        "code": "4CH1-3.9",
+        "text": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a reaction"
+      }
+    ],
+    "primer": {
+      "text": "From Energetics you already know how to follow a reaction with a thermometer. This note follows it with a stopwatch instead, describing the experiments that test how surface area, concentration, temperature and catalysts change the pace of a reaction. It closes by reading the same story off rate graphs.",
+      "prerequisiteSubtopic": "Energetics"
+    },
+    "modules": [
+      {
+        "id": "rn_XJ8qXfzZJJFKXHnF::L1",
+        "title": "Experiments on surface area and concentration",
+        "sourceHeadings": [
+          "Effect of surface area of a solid on the rate of reaction",
+          "Effect of concentration of a solution on the rate of reaction"
+        ],
+        "specRefs": [
+          "4CH1-3.9"
+        ],
+        "opening": "Two experiments anchor the surface area and concentration stories: marble chips fizzing in acid, and a cloudy cross disappearing under thiosulfate. This lesson walks both methods and the measurements each one collects.",
+        "keyPoints": [
+          "The surface area experiment adds marble chips to dilute hydrochloric acid and collects the gas produced.",
+          "A delivery tube feeds the gas into an inverted measuring cylinder in a water trough.",
+          "Gas volume over a fixed time is measured, then the run repeats with different chip sizes.",
+          "The concentration experiment watches a cross under the flask disappear as the mixture clouds.",
+          "Sodium thiosulfate is diluted with water to give different concentrations for each repeat."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Bigger chips or stronger acid should change how fast gas bubbles appear or how quickly a cross vanishes under cloudy liquid. Each experiment changes one factor, times the result and repeats with a new size or strength.",
+            "analogy": "It is like timing how fast sugar vanishes in stirred tea: one lump versus crushed sugar, or weak tea versus strong.",
+            "examPointer": "Name the measured quantity, gas volume or disappearance time, and the factor varied in each method."
+          },
+          "medium": {
+            "restatement": "For surface area, marble chips react with dilute hydrochloric acid and the gas collected in a fixed time is compared across chip sizes. For concentration, sodium thiosulfate of different strengths reacts with acid while a stopwatch times how long a marked cross stays visible through the clouding mixture.",
+            "analogy": "The first is a race of bubbling, the second a race of fading; both stop the clock the moment a fixed landmark is reached.",
+            "examPointer": "Describe apparatus and timing for both methods, and state how the factor is varied between repeats."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_XJ8qXfzZJJFKXHnF::L1::Q1",
+          "rn_XJ8qXfzZJJFKXHnF::L1::Q2",
+          "rn_XJ8qXfzZJJFKXHnF::L1::Q3",
+          "rn_XJ8qXfzZJJFKXHnF::L1::Q4",
+          "rn_XJ8qXfzZJJFKXHnF::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02",
+          "fig-03",
+          "fig-04"
+        ]
+      },
+      {
+        "id": "rn_XJ8qXfzZJJFKXHnF::L2",
+        "title": "Experiments on temperature and catalysts",
+        "sourceHeadings": [
+          "Effect of temperature on the rate of reaction",
+          "Effect of a catalyst on the rate of reaction"
+        ],
+        "specRefs": [
+          "4CH1-3.9"
+        ],
+        "opening": "Two more experiments complete the set: magnesium in warmed acid, and hydrogen peroxide breaking down with and without a black powder. This lesson times both and explains what each comparison proves.",
+        "keyPoints": [
+          "The temperature experiment heats dilute hydrochloric acid to a set temperature in a water bath.",
+          "A strip of magnesium is added, the stopwatch started, and the time taken for the metal to dissolve is recorded.",
+          "The experiment is repeated at different temperatures and the results compared.",
+          "The catalyst experiment adds manganese(IV) oxide to hydrogen peroxide and collects the oxygen produced.",
+          "The run is repeated without the catalyst so the two gas volumes can be compared."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Warm the acid to a chosen temperature, drop in magnesium and time how long it takes to vanish; then try a hotter bath. For catalysts, run the peroxide reaction with the powder and again without, and compare the gas collected.",
+            "analogy": "One test is timing how fast sugar dissolves in warm versus cool tea; the other is checking whether a pinch of powder makes a bottle fizz faster.",
+            "examPointer": "State the timed quantity and the comparison run for each experiment, with the factor varied named."
+          },
+          "medium": {
+            "restatement": "Dilute hydrochloric acid is warmed to a set temperature in a water bath, magnesium is added, and the time for the metal to fully dissolve is recorded before repeating at other temperatures. In the catalyst experiment the oxygen collected from hydrogen peroxide in a fixed time is compared with and without manganese(IV) oxide.",
+            "analogy": "The magnesium race gets faster as the water bath climbs, while the peroxide test is a race run twice, once with a helper and once without.",
+            "examPointer": "Quote the water bath, the dissolve time and the with-and-without comparison when describing these methods."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_XJ8qXfzZJJFKXHnF::L2::Q1",
+          "rn_XJ8qXfzZJJFKXHnF::L2::Q2",
+          "rn_XJ8qXfzZJJFKXHnF::L2::Q3",
+          "rn_XJ8qXfzZJJFKXHnF::L2::Q4",
+          "rn_XJ8qXfzZJJFKXHnF::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-05",
+          "fig-06"
+        ]
+      },
+      {
+        "id": "rn_XJ8qXfzZJJFKXHnF::L3",
+        "title": "Factors, graphs and the economic angle",
+        "sourceHeadings": [
+          "Factors affecting rates of reaction",
+          "The effect of increased concentration or pressure"
+        ],
+        "specRefs": [
+          "4CH1-3.10"
+        ],
+        "opening": "Four factors govern how fast reactions run, and each leaves a fingerprint on the rate graph. This lesson collects the fingerprints and adds the industrial reason anyone cares.",
+        "keyPoints": [
+          "The factors affecting rate are concentration or pressure, temperature, surface area of solids and catalysts.",
+          "A faster reaction shows a steeper starting gradient that becomes horizontal sooner.",
+          "Graphs for changed conditions still finish at the same amount of product.",
+          "Increasing the concentration, pressure, temperature or surface area each increases the rate of reaction.",
+          "Industry favours higher rates because faster production is more efficient and sustainable."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Every factor that packs particles closer or makes them livelier steepens the start of the graph. The curve flattens at the same final product amount, and industry chases that steep start for cheaper production.",
+            "analogy": "It is like three routes up the same hill: steeper starts reach the top sooner, but the summit height never changes.",
+            "examPointer": "Sketch or describe the steeper-start-same-plateau shape and name the four rate factors."
+          },
+          "medium": {
+            "restatement": "Compared with the slower condition, a faster reaction line starts with a steeper gradient and flattens sooner while forming the same amount of product. Concentration, pressure, temperature, surface area and catalysts are the levers, and raising the first four raises the rate that industry prizes.",
+            "analogy": "Two commuters reach the same office, but the express train gets there earlier and waits; the destination is fixed, only the pace differs.",
+            "examPointer": "Compare two lines by gradient, plateau timing and final product, and tie faster rates to production efficiency."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_XJ8qXfzZJJFKXHnF::L3::Q1",
+          "rn_XJ8qXfzZJJFKXHnF::L3::Q2",
+          "rn_XJ8qXfzZJJFKXHnF::L3::Q3",
+          "rn_XJ8qXfzZJJFKXHnF::L3::Q4",
+          "rn_XJ8qXfzZJJFKXHnF::L3::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "rate of reaction",
+          "definition": "How quickly reactants are used up or products are formed in a chemical reaction.",
+          "firstLesson": 1
+        },
+        {
+          "term": "concentration",
+          "definition": "The amount of dissolved reactant in a given volume of solution.",
+          "firstLesson": 1
+        },
+        {
+          "term": "delivery tube",
+          "definition": "A tube that carries gas from the reaction flask to the collecting measuring cylinder.",
+          "firstLesson": 1
+        },
+        {
+          "term": "catalyst",
+          "definition": "A substance that speeds up a reaction without being consumed, such as manganese(IV) oxide for peroxide.",
+          "firstLesson": 2
+        },
+        {
+          "term": "gradient",
+          "definition": "The steepness of a rate graph line; steeper means more product per unit time.",
+          "firstLesson": 3
+        }
+      ],
+      "workedExample": {
+        "prompt": "a) A 2 cm3 cube is cut up into 8 smaller cubes. Show that this doubles its total surface area. b) State the four factors that affect the rate of a reaction and the direction of each effect. c) On a graph of product amount against time, how does a faster reaction differ from a slower one?",
+        "steps": [
+          "a) One 2 cm3 cube has a surface area of 24 cm2; the same cube cut into 8 cubes has a surface area of 48 cm2 — 48 / 24 = 2, so the total surface area doubles (surface area increases as particle size decreases).",
+          "b) Increasing the concentration of a solution (or pressure of a gas), increasing the temperature, and increasing the surface area of a solid each increase the rate; adding a catalyst also increases the rate.",
+          "c) The faster reaction has a steeper starting gradient and becomes horizontal sooner, but both lines finish at the same final amount of product."
+        ],
+        "finalAnswer": "a) 24 cm2 → 48 cm2, a doubling. b) Concentration/pressure, temperature, surface area, catalyst — all increase the rate. c) Steeper start, same plateau."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/99f7914c498b-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
+        "alt": "Effect of Surface Area on a Reaction Rate",
+        "sourceHeading": "Effect of surface area of a solid on the rate of reaction",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/53457075782f-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
+        "alt": "Effect of Surface Area on a Reaction Rate",
+        "sourceHeading": "Effect of surface area of a solid on the rate of reaction",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bc431f784ecc-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
+        "alt": "Effect of Surface Area on a Reaction Rate",
+        "sourceHeading": "Effect of surface area of a solid on the rate of reaction",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-04",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/04c05d9703f7-investigating-effect-of-concentration-on-rate-re.png",
+        "alt": "Investigating effect of concentration on rate reaction",
+        "sourceHeading": "Effect of concentration of a solution on the rate of reaction",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-05",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/a239c4d1d14d-7-1-2-investigating-effect-of-te.png",
+        "alt": "Investigating the effect of temperature on rate of reaction",
+        "sourceHeading": "Effect of temperature on the rate of reaction",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-06",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f6b39eeb434c-investigating-effect-of-catalyst-on-rate-reactio.png",
+        "alt": "Investigating effect of catalyst on rate reaction",
+        "sourceHeading": "Effect of a catalyst on the rate of reaction",
+        "moduleIds": [
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-07",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/df21ea4622dc-concentration-of-solution-igcse-and-gcse-chemist.png",
+        "alt": "How pressure and concentration affect the rate of reaction",
+        "sourceHeading": "Graph showing the effect of concentration on rate of reaction",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-08",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/f79bbd6d8d05-temperature-graph.png",
+        "alt": "How temperature affects the rate of reaction",
+        "sourceHeading": "Graph showing the effect of temperature on rate of reaction",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-09",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/af7327c623e6-surface-area-graph.png",
+        "alt": "How surface area affects the rate of reaction",
+        "sourceHeading": "Graph showing the effect of surface area on rate of reaction",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-10",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/883d31f43a32-surface-area-of-a-solid-reactant.png",
+        "alt": "Surface Area of a Solid Reactant, IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Surface area and particle size",
+        "moduleIds": []
+      }
+    ]
+  }
+}

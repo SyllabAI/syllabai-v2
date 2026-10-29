@@ -1,0 +1,57 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-g1-msfetch-cie-r0",
+ "date": "2026-10-26",
+ "session": "web-3bd4aa99-51b0-4bec-a362-f94adc40f19d",
+ "trace_id": "1a1774b2fece545d",
+ "operator_order": "\"CIE 9609/0455 MS fetch, also coordinate with other agents, check their work\" (trace 1a1774b2fece545d)",
+ "gate": "G-1 gap closure (CIE side) of adr040-bandwave1-r2probe-r0, continuing adr040-g1-msfetch-r0 (which landed Edexcel 4GE1/4BS1 62 docs and left CIE blocked 0/78 on JS-gated sources)",
+ "adr_of_record": "docs/ADR-040-LEVELS_OF_RESPONSE_MARKING.md (ACCEPTED via #356, merge 1aec820)",
+ "fetch_of_record": {
+  "targets_of_record": 78,
+  "fetched_and_verified": 68,
+  "non_published": 10,
+  "non_published_basis": "CIE Feb/March series publishes variant 2 only per component; 9609_m22_ms_{11,13,21,23,31,33}.pdf + 0455_{m19,m20}_ms_{21,23}.pdf do not exist (two independent mirror 404s on exactly those, variant-2 twins verified fine, public March listings corroborate 12/22/32 components)",
+  "source": "XtremePapers (CAIE section) — the archive already cited by the repo's existing Cambridge manifests (0620 S09 et al.); pastpapers.co (2026-09-13 Cambridge-wave source) is now JS-gated, 0/78 per adr040-g1-msfetch-r0",
+  "identity_verification": "68/68: PDF magic + page count (10-35) + printed page-1 checks (syllabus code, component ref e.g. 9609/11 or 0455/21, year, Mark Scheme wording)",
+  "landing": {
+   "repo": "SyllabAI/syllabai-pastpapers",
+   "branch": "t-sm-rollout/cie-wave1-msfetch-r0",
+   "commit": "2564034bd179b55352c8ebaab7a48602e8cda624",
+   "pr": "SyllabAI/syllabai-pastpapers#5",
+   "files": "68 paper dirs (ms.pdf + manifest.yaml each) + 2 specification.yaml + wave doc; 139 files additions-only",
+   "conventions": "canonical manifest identity shape (0620 precedent); XtremePapers provenance per material; MS-only wave — qp.pdf not yet collected (disclosed per manifest); 9609 June-2020 series are the COVID no-sitting published MS (noted per manifest)"
+  }
+ },
+ "extraction_tranche": {
+  "grade": "detection-grade + verbatim-where-confident; reviewRequired=true on all 68 drafts",
+  "entries": 23,
+  "bands_verbatim": 53,
+  "grammars_of_record": [
+   "A: 9609/1 inline partial levels — descriptor text with '(N-M marks)' ranges (session-dependent)",
+   "B: 0455 p2 Level|Descriptors|Mark tables (the 8-mark Discuss parts; 2020-syllabus sessions only — w20 trio parsed verbatim 12 entries/36 bands)",
+   "C: 9609/2+/3 AO matrices (Knowledge/Application/Analysis/Evaluation x Level rows) — DETECTION-ONLY this tranche (vertically-centered level digits + wrapped cells; cell-perfect parse deferred to the full parser pass of record for ingest)",
+   "D (detected, not parsed): 9609 s23-style 'Eval N - descriptor (N marks)' evaluation-level rows"
+  ],
+  "negative_evidence_of_record": "0455 s18/s19 sessions are fully point-marked in the text layer (no level tables) — the 0455 band story lives on 2020-syllabus sessions; 9609 s20 June-2020 COVID MS carry partial prose grids only",
+  "landed": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/{0455,9609}/<session>/<paper-dir>/ms.draft.json (68 files) + cie_fetch_manifest_r1.json + cie_drafts_summary.json"
+ },
+ "coordination_and_verification": {
+  "g1_edexcel_cross_verify": "3/3 spot-checked ms.pdf sha256+bytes+magic match the of-record wave1_fetch_manifest (4GE1-01 2022-06, 4GE1-01R 2022-06, 4BS1-02)",
+  "leg5_eval_lane": "PR #374 MERGED 2026-10-25T20:07:07Z (QWK + D5-beta floors in code + metric-kind-hard gate + band_placement capture side) — leg 5 CLOSED of record",
+  "g2_kg_seed": "PR #386 MERGED 2026-10-25T23:03:38Z (4/5 wave-1 trees: 0455-2023-2025 + 0455-2027-2029 + 4BS1-2017 + 9609-2023-2025; 4GE1 fail-closed refusal -> bundle-repair path)",
+  "v2_main_ci": "ci=success at d5fcdef83; neon-replay workflow red 2026-10-22..26 across pre-wave heads (standing daily audit, findings-filed-never-auto-fixed posture — flagged to operator, not a wave regression)",
+  "worklog_note": ".syllabai/worklog.md appended per multi-agent law (blob API, >1MB rule respected)"
+ },
+ "next_lane": "band-shape design against the REAL printed CIE tables (B-grammar verbatim now staged; C-grammar AO matrices via full parser pass) -> G-4 LEVELS birth for repo-covered papers -> R4 validation; 4GE1 bundle re-export; QP pairing wave for CIE dirs (qp.pdf not yet collected)",
+ "cross_refs": [
+  "SyllabAI/syllabai-pastpapers#5",
+  "SyllabAI/syllabai-v2#276",
+  "SyllabAI/syllabai-v2#386"
+ ],
+ "v2_landing_commit": "bca16322204fbe4f6660eb209457d3a50cd8e4e0",
+ "cross_ref_comment_ids": {
+  "issue_276": 6412158506,
+  "pr_386": 6412158851
+ }
+}

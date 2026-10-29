@@ -1,0 +1,400 @@
+/**
+ * Underground Mathematics lane resources (server-only).
+ *
+ * The consumption seam for the UGM corpus landed of record in
+ * SyllabAI/syllabai-resources (UGM-Enrichment #55 facts + UGM-Resources #58
+ * text, quadratics lane first; Functions second — PR #61; Coordinate geometry
+ * third — PR #66, the first multi-station lane; Circular measure fourth —
+ * PR #74, the first STRAND lane: new-text subset plus a cross-lane join that
+ * serves the circles strand against its existing lane-3 bodies; Trigonometry
+ * fifth — PR #79, the second two-station lane: the whole substrate as text of
+ * record plus two cross-lane fact joins against the lane-2 bodies; Series
+ * sixth — PR #89, the third two-station lane; Differentiation seventh —
+ * PR #91 + amendment #92, the fourth two-station lane; Integration eighth —
+ * PR #96 + the T-UGM-MODE1-8 amendment #99, the second STRAND lane and the
+ * first lane whose pick set is entirely cross-lane joined text; Algebra
+ * ninth — PR #114, the FIRST lane on a SECOND course plane (cie-a-level-
+ * maths-20-pure-3, CIE 9709 Pure 3 3.1 Algebra) — candidate-model shape:
+ * 35 fresh bodies corpus-wide + 16 non-overlaps by reference (no text) +
+ * 9 CROSS-COURSE fact joins against pure-1 bodies served by reference;
+ * Logarithmic and exponential functions tenth — PR #119 + the T-UGM-MODE1-10
+ * stationScope amendment, the SECOND pure-3 lane — dedicated-station-plus-
+ * strays shape (exp-and-log 31 of 34 fresh + 3 strays): 34 fresh bodies +
+ * 26 non-overlaps by reference + 5 CROSS-COURSE one-to-many joins against
+ * pure-1 bodies; the lane-9 byref row to-log-or-not-to-log flips to aligned
+ * WITH a fresh body under 3.2.3 (the CONSUME-10 supersede law drops the
+ * stale byref row); Trigonometry eleventh — PR #126, the THIRD pure-3 lane
+ * and the FIRST MOSTLY-MAPPING lane: the dedicated trigonometry-compound-
+ * angles station is whole-imported of record under lane 5, so 27 of the 28
+ * aligned rows are CROSS-COURSE joins against pure-1-trigonometry bodies
+ * (23 flips of the lane-5 pre-baked 'P3 2.3' pool + 4 one-to-many beside
+ * standing 1.5.x alignments) and the lane's only fresh body is the 3.3.1
+ * pick r7616 (a calculus-trig-log stray); 42 non-overlaps by reference (9
+ * with textOfRecordUnder disclosures per the supersede disclosure law);
+ * the 3.3.2 pick r6018 rides its reference row — the pick lives on the
+ * spec-point index, the body stays first-of-record under pure-1);
+ * Differentiation twelfth — PR #134 + the two T-UGM-MODE1-12 amendments of
+ * record, the FOURTH pure-3 lane and the LARGEST FRESH-TEXT LANE SINCE
+ * LANE 9 (the inverse of the lane-11 shape: neither chain-rule nor
+ * product-rule is whole-imported of record): 40 fresh bodies (13×3.4.1 /
+ * 12×3.4.2 / 15×3.4.3) across the ten scoped stations + the single
+ * CROSS-COURSE flip r8931 riding its lane-7 body under
+ * pure-1-differentiation (3.4.2, by reference) + 29 non-overlaps by
+ * reference (3 honest re-routings of lane-10 bearings: r6620, r8134 → 3.5
+ * Integration, differentiating-exponentials → no extractable text); its 18
+ * supersede drops retire the stale lane-9/10/11 byref rows whose slugs now
+ * carry fresh text; picks r6938/r6530/r8620 — all fresh); Integration
+ * thirteenth — PR #140 + the T-UGM-MODE1-13 amendment r0 (the MANIFEST
+ * version_note v14 prepend + the LEDGER restore join byte, both caught by
+ * the operator eyeball pre-merge), the FIFTH pure-3 lane and the FIRST LANE
+ * OF RECORD WITH AN HONEST EMPTY SPEC POINT (3.5.4, the f'(x)/f(x) row:
+ * ZERO rows corpus-wide, rule 3 — no coverage manufactured): 16 fresh
+ * bodies (10×3.5.1 / 6×3.5.2 / 2×3.5.3 / 0×3.5.4 / 5×3.5.5 / 7×3.5.6
+ * memberships) across the fifteen scoped stations (calculus-trig-log 7 +
+ * chain-rule 5 + product-rule 4 — the three-station-plus-strays law; the
+ * lane-10/11/12 bearing pool PROMOTED with fresh text, the inverse of the
+ * lane-12 shape) + 23 aligned rows (16 fresh + the circular-slice
+ * cross-course flip → 3.5.6/3.5.2 riding its lane-4 body + 6 one-to-many
+ * joins beside standing alignments incl. r5126's pick riding its lane-9
+ * body — the lane-11 r6018 convention one course on) + 11 non-overlaps by
+ * reference (5 superseding stale bearings, 5 P1-1.8-domain routes, 1
+ * no-text teacher-support page); the supersede law drops 17 stale bearing
+ * rows; picks r8679/r9297/r5126/none(3.5.4 the honest gap)/r8134/r8890);
+ * Iteration fourteenth — PR #145 (the SIXTH pure-3 lane, NO honest gap —
+ * every spec point carries rows 8/3/4): 3 fresh bodies (r8711 polynomials
+ * — the purest sign-change search in the corpus; r8013 exp-and-log — the
+ * graphical 3^x=3x+2 read to 2 d.p.; staircase-sequences thinking-about-
+ * numbers — the x = 1 + 1/x fixed point of x²−x−1=0) across the
+ * twenty-station stationScope (the SCATTERED-SUBSTRATE law; NO pre-baked
+ * bearing pool — the inverse of the lane-13 shape) + 11 aligned rows (3
+ * fresh + the r8404 cross-course flip → 3.6.2/3.6.3 riding its lane-6
+ * body under pure-1-series whose spec_points were [] — the FIRST flip of
+ * record whose prior body carried no spec assertion, the circular-slice
+ * precedent + 7 one-to-many joins incl. three same-course riders on
+ * lane-9/10/13 bodies) + 1 non-overlap by reference (staircase-sequences-
+ * revisited, the companion disclosure); the supersede law retires r8013's
+ * stale bearing row; picks r8711/r8404(lane-6 body — the r6018
+ * convention)/r8231(lane-3 body — disclosed); Vectors fifteenth — PR #149
+ * (the SEVENTH pure-3 lane, THE FIRST ZERO-JOIN/ZERO-FLIP LANE of record,
+ * THE DESIGNED HONEST GAP): 20 fresh bodies ALL under the two vector
+ * stations (vector-geometry 15 + combining-vectors 5 — the stations the
+ * spec names are the stations the corpus serves from; CIE pure-1 carries
+ * no vectors, so 3.7 is their first claimant) + 20 aligned rows all fresh
+ * (psp rows 29 = 2/11/5/3/4/4; no cross-lane joins, no flips, no
+ * cross-course traffic, no pre-baked bearing pool) + 6 non-overlaps by
+ * reference (the plane class is-it-a-plane/r6006/r9794/r7187 — P3 3.7 is
+ * lines-only; r5089 rejected BY the 3.7.7 exclusion note — the first
+ * candidate of record rejected by an exclusion row; r8828 vs the 3.7.5
+ * common-perpendicular exclusion); the supersede law retires r8456's
+ * stale lane-3-algebra row (the r8013 PROMOTION precedent — the λ/μ
+ * position-vector intersection + OM·ON angle exam question now rides its
+ * fresh body at 3.7.2/3.7.6); 3.7.7 is the spec's own exclusion row
+ * ('Knowledge of the vector product is not required.') and carries zero
+ * rows by rule — the second honest gap of record after 3.5.4, this time
+ * by design; picks hit-the-spot/r8215/r9575/lots-of-vector-lines/
+ * three-lines/r6493 — ALL riding fresh bodies (the first lane on this
+ * plane whose every pick has a served body); Differential Equations
+ * sixteenth — PRs #155 + the #157 amendment (the EIGHTH pure-3 lane, THE
+ * ZERO-FRESH-BODY LANE OF RECORD, the exact mirror of lane 15): the
+ * corpus's entire student-facing 3.8 pipeline is TWO part-questions, both
+ * ALREADY of record under pure-1 lanes, so the lane serves ZERO fresh
+ * bodies and BOTH aligned rows are cross-course joins by reference —
+ * r6959 rides its pure-1-differentiation 1.7.3 body (the 1979 UCLES
+ * patch-of-fluid exam question: dA/dt = 5 formulated from the rate
+ * statement, integrated with A(0)=0, radius + dr/dt interpreted via the
+ * chain rule, 3.8.1-3.8.4) and r7410 rides its pure-1-integration 1.8.2
+ * body (the 1969 UCLES question: dy/dx = c/x^2 written from the
+ * proportionality statement, integrated to the general form, constant
+ * evaluated from y(2)=1, 3.8.1-3.8.3); the index stays fresh-only with
+ * resourceCount 0/ugmIds [] while the picks ride the reference rows
+ * (r6959 at 3.8.1+3.8.4, r7410 at 3.8.2+3.8.3 — the r6018 law taken to
+ * its honest end); 3 non-overlap disclosures ride byref (PTP-I/II +
+ * weight-pulling; from-parabolas-to-catenaries superseded — served by
+ * its 3.1.6 body); THE CORPUS-BOUNDARY DISCLOSURE: the site's own
+ * differential-equations station is EMPTY (0 resources, verified live);
+ * Complex Numbers seventeenth — PR #168 (the NINTH and FINAL pure-3 lane —
+ * the course plane closes; THE CORPUS-BOUNDARY LANE OF RECORD and the FIRST
+ * ZERO-ALIGNED LANE of record): the UGM site never published its complex-
+ * numbers substrate — both dedicated stations (complex-numbers-faces id 8 /
+ * complex-numbers-plane id 9) are post-freeze AcademicReview shells with
+ * ZERO public resources (re-verified live with a populated-station control;
+ * all four never-captured stations are empty shells), so the corpus is FINAL
+ * at 855 resources / 25 stations; the lane serves ZERO fresh bodies and ZERO
+ * aligned rows of any kind (no joins, no flips, no one-to-many — the pure-1
+ * plane carries no complex numbers either) while every spec point 3.9.1-3.9.8
+ * is an HONEST-EMPTY block (the lane-13 honest-gap law applied lane-wide for
+ * the first time — primaryPick null, ugmIds [], the verbatim spine rows
+ * carried); the ONE companion disclosure rides byref (absurder — the
+ * conjugate-pair factorisation aside a²+b²=(a+ib)(a−ib) derived from
+ * i² = −1; the lane-9 row stands); 43 candidates closed exactly = 0 + 1 + 42;
+ * the stations list is the FULL 18-station sweep closure — all 18 already
+ * declared, so the unique-station count stays 25 while the declared-row
+ * count grows 106 → 124
+ * under ADR-UGM-0001 as amended 2026-10-23 and the operator attestations of
+ * 2026-10-23 (text) and 2026-10-24 (static figures, T-UGM-ASSETS-1). The
+ * hub-side import is
+ * scripts/import_ugm.py → content/<lane>/ugm-resources.json
+ * (schema syllabai-demo.ugm-lane-resources/1.1, multi-lane); this module is its only
+ * reader. Math stays byte-true in UGM's native \( \) / \[ \] delimiters —
+ * the shared Markdown renderer's normalizeCorpusMath already supports them.
+ * The 8a image plane: the importer injects `![alt](/ugm-assets/…)` figure
+ * lines into the served bodyMd at section-anchored positions (the corpus
+ * map of record is UGM-Resources/figures-map.json; binaries ship in
+ * apps/hub/public/ugm-assets/); per-resource `figures` counts ride the rows.
+ *
+ * Gating law (flags.json, ADR-CLASS-0001 practice adapted to content):
+ *   - the flag FILE, the flag KEY or the course slug being ABSENT = OFF —
+ *     getUgmBundle returns null and every surface renders its honest
+ *     empty/not-found state; nothing renders from an unflagged bundle.
+ *   - one-flip kill: delete the course slug from flags.json (content-only
+ *     change, no code deploy).
+ * The flag gates RENDERING only — it never fabricates data, and a flagged
+ * course without a committed bundle still resolves to null (honest empty).
+ *
+ * The corpus is review_state SUGGESTED (AGENT.md rule 2): every surface
+ * built on this module carries the state, the provenance tier and the
+ * rights line — no surface may present these mappings as authoritative.
+ */
+import "server-only";
+import { cache } from "react";
+import { z } from "zod";
+import { loadContentJson } from "@/lib/corpus";
+
+export const UGM_FLAG_KEY = "ugmLaneResources";
+
+// ── bundle schema (syllabai-demo.ugm-lane-resources/1.x) ──────────────
+// 1.2 (T-UGM-HUB-CONSUME-13): primaryPick on the spec-point index is
+// nullable — the honest-gap law (a swept-to-zero spec point keeps its
+// verbatim spine row with a null pick and zero rows; lane 13's 3.5.4 the
+// first of record). 1.1 (multi-lane): singular station/stationUrl →
+// stations[]; each resource carries its station slug;
+// source.enrichment/resourcesDir are per-lane arrays; coverage gains a
+// per-lane breakdown. 1.0 (single station) is
+// superseded — schema drift degrades to the honest empty state (below).
+// Lane 3+ adds multi-station lanes: one lane may carry SEVERAL UGM stations
+// (the corpus enrichment's stationScope block is the of-record breakdown);
+// a resource's `station` is always its front-matter UGM station.
+
+const UgmSpecPointRef = z.object({
+  code: z.string(),
+  confidence: z.string().nullish(),
+  primaryPick: z.boolean(),
+  note: z.string().nullish(),
+  modesRecorded: z.array(z.number()).default([]),
+});
+
+const UgmResource = z.object({
+  ugmId: z.string(),
+  slug: z.string(),
+  station: z.string(),
+  title: z.string(),
+  url: z.string(),
+  resourceType: z.string().nullish(),
+  resourceTypeLabel: z.string().nullish(),
+  level: z.string().nullish(),
+  hasTeacherSupport: z.boolean(),
+  nonOverlap: z.boolean(),
+  nonOverlapReason: z.string().optional(),
+  specPoints: z.array(UgmSpecPointRef),
+  bodyMd: z.string(),
+  // T-UGM-HUB-CONSUME-8a: figure references injected into bodyMd (count
+  // mirrors the corpus figures-map.json rows for this resource)
+  figures: z.number().default(0),
+  // T-UGM-HUB-CONSUME-8b: of those, how many render INLINE at the converter's
+  // position-accurate placeholder spots (the rest are section-anchored)
+  figuresInline: z.number().default(0),
+});
+
+const UgmSpecPointIndex = z.object({
+  code: z.string(),
+  officialText: z.string().nullish(),
+  // schema 1.2 (T-UGM-HUB-CONSUME-13 honest-gap law): a spec point with
+  // zero rows of record (rule 3 — no coverage manufactured) carries a null
+  // pick beside its verbatim spine row; callers must null-check before
+  // serving a pick (1.1 bundles never carry null).
+  primaryPick: z.string().nullable(),
+  resourceCount: z.number(),
+  ugmIds: z.array(z.string()),
+});
+
+const UgmStationRef = z.object({
+  slug: z.string(),
+  title: z.string(),
+  url: z.string().nullish(),
+});
+
+const UgmLaneBundle = z.object({
+  schema: z.string(),
+  generatedUtc: z.string(),
+  reviewState: z.object({ state: z.string(), note: z.string() }),
+  lane: z.string(),
+  stations: z.array(UgmStationRef).min(1),
+  source: z.object({
+    repo: z.string(),
+    ref: z.string(),
+    enrichment: z.array(z.string()).min(1),
+    enrichmentSchema: z.string().optional(),
+    resourcesDir: z.array(z.string()).min(1),
+    ledger: z.string(),
+    adr: z.string(),
+    operatorAttestation: z.string(),
+    // T-UGM-HUB-CONSUME-8a: the image-plane sources of record
+    figureMap: z.string().optional(),
+    assetsManifest: z.string().optional(),
+  }),
+  rights: z.object({
+    holder: z.string(),
+    license: z.string(),
+    textOnly: z.boolean(),
+    note: z.string(),
+  }),
+  coverage: z.object({
+    ugmResourcesConsidered: z.number(),
+    aligned: z.number(),
+    nonOverlap: z.number(),
+    alignedShare: z.number().nullish(),
+    candidateRows: z.number(),
+    // strand lanes (lane 4+): the cross-lane join of record — cross-lane
+    // mappings served against earlier lanes' bodies (no new entries);
+    // T-UGM-HUB-CONSUME-9: cross-COURSE joins count here too (they serve
+    // by reference against the other course's committed bundle)
+    crossLaneJoined: z.object({
+      aligned: z.number(),
+      nonOverlap: z.number(),
+    }).optional(),
+    specPointsCovered: z.array(z.string()),
+    // T-UGM-HUB-CONSUME-8a: the image-plane census (run-scoped sums)
+    figures: z.object({
+      figureRefs: z.number(),
+      resources: z.number(),
+      uniqueAssets: z.number(),
+      // T-UGM-HUB-CONSUME-8b: placeholders localized inline (fail-closed:
+      // the importer refuses to ship any un-localized image placeholder)
+      inlineRewritten: z.number().optional(),
+    }).optional(),
+    // T-UGM-HUB-CONSUME-9 (lane 9, candidate-model law): non-overlap rows
+    // with NO text of record (bodyImported=false) — disclosed with their
+    // reasons, never served as bodies
+    nonOverlapByReference: z.object({
+      count: z.number(),
+      rows: z.array(z.object({
+        ugmSlug: z.string(),
+        station: z.string().nullish(),
+        title: z.string().nullish(),
+        url: z.string().nullish(),
+        reason: z.string().nullish(),
+      })),
+    }).optional(),
+    // T-UGM-HUB-CONSUME-9: the cross-course by-reference joins — the text
+    // of record stays first-of-record under the serving course's bundle
+    crossCourse: z.object({
+      aligned: z.number(),
+      nonOverlapRef: z.number().optional(),
+      flips: z.number().nullish(),
+      oneToMany: z.number().nullish(),
+      courses: z.record(z.string(), z.number()).optional(),
+      note: z.string().optional(),
+      rows: z.array(z.object({
+        ugmSlug: z.string(),
+        codes: z.array(z.string()),
+        title: z.string().nullish(),
+        url: z.string().nullish(),
+        station: z.string().nullish(),
+        textOfRecordUnder: z.string().nullish(),
+        servedUnder: z.string(),
+        kind: z.string().nullish(),
+        confidence: z.string().nullish(),
+        note: z.string().nullish(),
+        primaryPick: z.boolean().optional(),
+        priorAlignmentOfRecord: z.unknown().optional(),
+        nonOverlapRef: z.boolean().optional(),
+      })),
+    }).optional(),
+    lanes: z.array(z.object({
+      station: z.string(),
+      stationTitle: z.string(),
+      ugmResourcesConsidered: z.number().nullish(),
+      aligned: z.number(),
+      nonOverlap: z.number(),
+      alignedShare: z.number().nullish(),
+      candidateRows: z.number(),
+      crossLaneAligned: z.number().optional(),
+      crossLaneNonOverlap: z.number().optional(),
+    })),
+  }),
+  specPoints: z.array(UgmSpecPointIndex),
+  resources: z.array(UgmResource),
+});
+
+export { UgmLaneBundle };
+
+export type UgmBundle = z.infer<typeof UgmLaneBundle>;
+export type UgmResource = z.infer<typeof UgmResource>;
+
+// ── flag law (flags.json) ─────────────────────────────────────────────
+
+const FlagsFile = z.object({
+  schema: z.string(),
+  flags: z.record(z.string(), z.unknown()),
+});
+
+/**
+ * Render-time flag check. Absent file / absent key / absent slug = OFF.
+ * Errors degrade to OFF (a broken flag file must never surface content).
+ */
+export const ugmFeatureEnabled = cache(async function ugmFeatureEnabled(
+  courseSlug: string,
+): Promise<boolean> {
+  const raw = await loadContentJson("flags.json");
+  if (!raw) return false;
+  const parsed = FlagsFile.safeParse(raw);
+  if (!parsed.success) {
+    console.error("[ugm] flags.json unreadable — surface stays OFF", parsed.error.message);
+    return false;
+  }
+  const entry = parsed.data.flags[UGM_FLAG_KEY];
+  if (!entry || typeof entry !== "object") return false;
+  const courses = (entry as { courses?: unknown }).courses;
+  return Array.isArray(courses) && courses.includes(courseSlug);
+});
+
+/**
+ * The flagged + committed + validated bundle for one course, or null.
+ * Null is honest: flag off, bundle missing, or schema drift — the caller
+ * renders the empty/not-found state either way.
+ */
+export const getUgmBundle = cache(async function getUgmBundle(
+  courseSlug: string,
+): Promise<UgmBundle | null> {
+  if (!(await ugmFeatureEnabled(courseSlug))) return null;
+  const raw = await loadContentJson(`${courseSlug}/ugm-resources.json`);
+  if (!raw) return null;
+  const parsed = UgmLaneBundle.safeParse(raw);
+  if (!parsed.success) {
+    console.error(
+      `[ugm] bundle schema drift for ${courseSlug} — serving honest empty state`,
+      parsed.error.message,
+    );
+    return null;
+  }
+  return parsed.data;
+});
+
+export function ugmResourceById(bundle: UgmBundle, ugmId: string): UgmResource | null {
+  return bundle.resources.find((r) => r.ugmId === ugmId) ?? null;
+}
+
+/** Aligned resources hanging off one spec-point code, corpus order. */
+export function ugmResourcesAt(bundle: UgmBundle, code: string): UgmResource[] {
+  const ids = new Set(
+    bundle.specPoints.find((sp) => sp.code === code)?.ugmIds ?? [],
+  );
+  return bundle.resources.filter((r) => ids.has(r.ugmId));
+}
+
+/** Station titles of the bundle's lanes, e.g. "Quadratics and Combining Functions" (4 lanes: "…, Geometry of Equations and Circles"). */
+export function ugmStationNames(bundle: UgmBundle): string {
+  const titles = bundle.stations.map((s) => s.title);
+  if (titles.length <= 1) return titles[0] ?? "Underground Mathematics";
+  return `${titles.slice(0, -1).join(", ")} and ${titles[titles.length - 1]}`;
+}

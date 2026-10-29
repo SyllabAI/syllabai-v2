@@ -66,6 +66,12 @@ import {
 } from "./spec-boost";
 import { hygienicEvidenceText } from "./stem-hygiene";
 import {
+  conformanceReport,
+  lintMarkedPartTurn,
+  MarkConformanceStreamSanitizer,
+  type ConformanceReport,
+} from "./mark-conformance";
+import {
   StreamSanitizer,
   sanitizeAnswer,
 } from "./sanitize";
@@ -174,6 +180,10 @@ export interface GeneratedAnswer {
   /** the provider's finish reason when it sent one (run-013 truncation
    *  disclosure law; null when absent/deterministic) */
   finishReason: string | null;
+  /** DC-5 (docs/DC5-CONFORMANCE-LINT-PLAN.md §4.5): the conformance lint's
+   *  report when the turn was a marked-part turn (markContext present);
+   *  absent on tier-1 turns — the lint never activates there. */
+  conformance?: ConformanceReport;
 }
 
 export interface GeneratedDelta {
@@ -214,6 +224,9 @@ export interface TutorAnsweredEvent {
   historyTurns: number;
   sessionId: string | null;
   provider: string | null;
+  /** DC-5: the marked-part turn's conformance report (null on tier-1
+   *  turns and refusals — the lint only activates on tier-2 turns). */
+  conformance?: ConformanceReport | null;
 }
 export type TelemetrySink = (event: TutorAnsweredEvent) => void;
 
@@ -708,6 +721,8 @@ export async function karagAsk(
     historyTurns: prep.turns.length,
     sessionId,
     provider: generated.provider,
+    // DC-5: the marked-part turn's conformance report (null on tier-1)
+    conformance: generated.conformance ?? null,
   });
 
   return {
@@ -945,6 +960,21 @@ export function buildGroundedTutorGenerator(
           sanitizeAnswer(response.text, context.evidence.length, open, close, (n) =>
             strippedMarkers.push(n),
           ) ?? "";
+        // DC-5 (docs/DC5-CONFORMANCE-LINT-PLAN.md §4.5): on marked-part
+        // turns the conformance lint runs AFTER the H2 hygiene — claimed-
+        // missed points must exist in the scheme rows and offered
+        // alternatives/values must be in the materialised set; violations
+        // are stripped and the report rides the answer (telemetry next).
+        if (context.markContext != null) {
+          const linted = lintMarkedPartTurn(sanitized, context.markContext);
+          return {
+            answer: linted.text,
+            model: response.model,
+            provider: response.providerName,
+            finishReason: response.finishReason ?? null,
+            conformance: conformanceReport(linted),
+          };
+        }
         return {
           answer: sanitized,
           model: response.model,
@@ -967,6 +997,14 @@ export function buildGroundedTutorGenerator(
         fenceOpen(nonceValue),
         fenceClose(nonceValue),
       );
+      // DC-5: on marked-part turns the sentence-buffered conformance
+      // wrapper composes AFTER the fence-marker sanitizer — complete
+      // sentences are linted before emission (per-sentence decisions are
+      // final, the same hold-back design); tier-1 streams are untouched.
+      const conformanceStream =
+        context.markContext != null
+          ? new MarkConformanceStreamSanitizer(context.markContext)
+          : null;
       const request = {
         system: systemPrompt(promptVariantFor(context.courseCode)),
         user: userPrompt(query, history, context, nonceValue),
@@ -976,7 +1014,9 @@ export function buildGroundedTutorGenerator(
       let lastFinishReason: string | null = null;
       try {
         for await (const delta of chain.stream(request)) {
-          const text = sanitizer.push(delta.text == null ? "" : delta.text);
+          const sanitizedText = sanitizer.push(delta.text == null ? "" : delta.text);
+          const text =
+            conformanceStream == null ? sanitizedText : conformanceStream.push(sanitizedText);
           if (text.length === 0) {
             // a zero-text chunk can still carry the terminal finish reason
             if (delta.finishReason != null) lastFinishReason = delta.finishReason;
@@ -992,7 +1032,11 @@ export function buildGroundedTutorGenerator(
         }
         // tail flush: the sanitizer's held-back remainder goes through the
         // exact blocking sanitizeAnswer; identity fields are null (:226-241)
-        const tail = sanitizer.flush();
+        const tailRaw = sanitizer.flush();
+        const tail =
+          conformanceStream == null
+            ? tailRaw
+            : conformanceStream.push(tailRaw) + conformanceStream.flush();
         if (tail.length > 0)
           yield { answer: tail, model: null, provider: null, finishReason: lastFinishReason };
       } catch (e) {

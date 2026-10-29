@@ -1,0 +1,183 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_VyXFNyxZHZGkxqTG",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "ff11d7e9c85579333873ab2755a484297170e72adc48d3c623f3d21478e1d621",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_VyXFNyxZHZGkxqTG",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Chemical Formulae, Equations, Calculations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-4-calculate-reacting-masses",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.25",
+        "text": "write word equations and balanced chemical equations (including state symbols): for reactions studied in this specification, and for unfamiliar reactions where suitable information is provided"
+      },
+      {
+        "code": "4CH1-1.28",
+        "text": "understand how to carry out calculations involving amount of substance, relative atomic mass (Ar) and relative formula mass (Mr)"
+      },
+      {
+        "code": "4CH1-1.29",
+        "text": "calculate reacting masses using experimental data and chemical equations"
+      }
+    ],
+    "primer": {
+      "text": "The earlier notes of this subtopic showed how to read Ar values off the Periodic Table and total them into a relative formula mass. This note puts those numbers to work on whole reactions: convert a starting mass into moles, let the balanced equation set the ratio, then convert back into the mass you were asked for. Balanced equations themselves can also be recovered from measured masses, which is the final trick here.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_VyXFNyxZHZGkxqTG::L1",
+        "title": "The Three-Step Reacting Mass Method",
+        "sourceHeadings": [
+          "Calculate Reacting Masses",
+          "Reacting mass calculations"
+        ],
+        "specRefs": [
+          "4CH1-1.28",
+          "4CH1-1.29"
+        ],
+        "opening": "A chemical equation is more than a description - its balancing numbers are a recipe for masses. Take the mass the question gives, divide by the relative formula mass to reach moles, then use the ratio of the balancing numbers to step from one substance to the other, and multiply back into a mass. Every phrase from 'calculate the mass' to 'maximum mass' signals this same route.",
+        "keyPoints": [
+          "Equations and experimental data let you calculate the moles and masses of reactants and products alike.",
+          "Step one: change the given mass into moles by dividing it by the relative formula mass.",
+          "Step two: take the molar ratio of the two substances straight from the balancing numbers in the equation.",
+          "Step three: change the answer back into a mass by multiplying the moles by the relative formula mass.",
+          "Work in any mass unit you like - grams or tonnes - provided every substance is treated the same way."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Burning 6.0 g of magnesium: 6 / 24 = 0.25 mol of Mg; the equation 2Mg + O2 → 2MgO pairs the substances one-to-one, so 0.25 mol of MgO forms, and 0.25 x 40 = 10 g.",
+            "analogy": "Moles are an exchange rate: dividing by Mr converts grams into the currency every equation counts in, the ratio sets the exchange between substances, and multiplying by Mr converts back.",
+            "examPointer": "Underline the two substances the question names before you start; every step afterwards - moles, ratio, mass - should mention one of them."
+          },
+          "medium": {
+            "restatement": "The three steps generalise: moles = mass ÷ Mr for the starting substance; multiply by the ratio of balancing numbers to reach the target substance; mass = moles x Mr for the target. Units survive only if you keep one mass unit throughout.",
+            "analogy": "Picture two currency booths with the equation as the exchange board between them: sell your grams at one booth, walk the ratio across, buy your grams back at the other.",
+            "examPointer": "Phrases such as 'maximum mass' or 'minimum mass' change nothing - the route stays moles, ratio, mass, exactly as for any reacting-mass question."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_VyXFNyxZHZGkxqTG::L1::Q1",
+          "rn_VyXFNyxZHZGkxqTG::L1::Q2",
+          "rn_VyXFNyxZHZGkxqTG::L1::Q3",
+          "rn_VyXFNyxZHZGkxqTG::L1::Q4",
+          "rn_VyXFNyxZHZGkxqTG::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_VyXFNyxZHZGkxqTG::L2",
+        "title": "Balancing Equations from Reacting Masses",
+        "sourceHeadings": [
+          "Balancing Equations using Reacting Masses"
+        ],
+        "specRefs": [
+          "4CH1-1.25",
+          "4CH1-1.29"
+        ],
+        "opening": "Measured masses can reverse the usual flow: instead of using an equation to predict masses, the masses reveal the equation. Change every mass into moles, divide through by the smallest value, and the whole-number ratio that emerges is the set of balancing numbers. Add state symbols at the end if the physical states are known.",
+        "keyPoints": [
+          "Known masses of every substance in a reaction can be turned into the balanced equation itself.",
+          "Convert each measured mass to moles by dividing by that substance's relative formula mass.",
+          "Divide every mole value by the smallest to expose the whole-number ratio.",
+          "The whole-number ratio supplies the balancing numbers for the unbalanced skeleton equation.",
+          "State symbols can then be attached once each substance's physical state is known."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Carbon burning in zinc oxide: 1.2 g of C is 1.2 / 12 = 0.1 mol; 16.2 g of ZnO is 16.2 / 81 = 0.2 mol; the 0.1 to 0.2 pattern simplifies to 1 : 2 : 1 : 2, giving C + 2ZnO → CO2 + 2Zn.",
+            "analogy": "It is like scaling a photograph down to its smallest common size: shrink every mole value to the smallest of the set, and the picture's proportions - the ratio - become unmistakable.",
+            "examPointer": "Check the finished equation balances atom-for-atom; if it does not, the ratio step slipped somewhere."
+          },
+          "medium": {
+            "restatement": "The same data finished the other way round: CO2 totals 12 + (2 x 16) = 44, so 4.4 g is 0.1 mol, and zinc at 13 / 65 = 0.2 mol completes the 0.1 : 0.2 : 0.1 : 0.2 set before simplifying.",
+            "analogy": "Treat the four mole values as four measuring jugs: pour them into the smallest jug as your unit, and each fills a whole number of times - that count is its balancing number.",
+            "examPointer": "Quote each Mr before dividing; showing 81 for ZnO and 44 for CO2 earns the method marks even ahead of the ratio."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_VyXFNyxZHZGkxqTG::L2::Q1",
+          "rn_VyXFNyxZHZGkxqTG::L2::Q2",
+          "rn_VyXFNyxZHZGkxqTG::L2::Q3",
+          "rn_VyXFNyxZHZGkxqTG::L2::Q4",
+          "rn_VyXFNyxZHZGkxqTG::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "mole",
+          "definition": "The counting unit chemistry uses for amounts of substance; dividing a mass by the substance's relative formula mass gives the number of moles.",
+          "firstLesson": 1
+        },
+        {
+          "term": "molar ratio",
+          "definition": "The comparison of amounts fixed by the balancing numbers in a chemical equation.",
+          "firstLesson": 1
+        },
+        {
+          "term": "reacting masses",
+          "definition": "The masses of substances that take part in a reaction, linked to each other through the balanced equation's ratio.",
+          "firstLesson": 1
+        },
+        {
+          "term": "balanced equation",
+          "definition": "A chemical equation whose atom counts match on both sides, written with the balancing numbers the reaction demands.",
+          "firstLesson": 1
+        },
+        {
+          "term": "experimental data",
+          "definition": "Measured values, such as reacting masses, taken from an experiment and used as the input to a calculation.",
+          "firstLesson": 2
+        },
+        {
+          "term": "state symbols",
+          "definition": "The bracketed letters - (s), (l), (g) or (aq) - added after a formula to show its physical state.",
+          "firstLesson": 2
+        },
+        {
+          "term": "skeleton equation",
+          "definition": "The unbalanced first draft of an equation, showing formulas without balancing numbers.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Magnesium undergoes combustion to form magnesium oxide: 2Mg + O2 → 2MgO. Calculate the mass of magnesium oxide made by completely burning 6.0 g of magnesium. Relative atomic masses: O 16, Mg 24.",
+        "steps": [
+          "Moles of magnesium: 6 / 24 = 0.25.",
+          "The equation pairs 2 Mg with 2 MgO, a one-to-one ratio, so 0.25 mol of magnesium oxide forms.",
+          "Mr of magnesium oxide: 24 + 16 = 40.",
+          "Mass of magnesium oxide: 0.25 x 40 = 10."
+        ],
+        "finalAnswer": "The maximum mass of magnesium oxide is 10 g."
+      }
+    }
+  }
+}

@@ -18,6 +18,7 @@ import {
   ListChecks,
   Network,
   ShieldCheck,
+  Sparkles,
   Users,
   Waypoints,
 } from "lucide-react";
@@ -37,6 +38,9 @@ const TABS = [
   { href: "/teacher/test-builder", label: "Test Builder", icon: ClipboardList },
   { href: "/teacher/assignments", label: "Assignments", icon: ListChecks },
   { href: "/teacher/validation", label: "Validation", icon: FileCheck2 },
+  // T-TEACH-013 — the 4 educator-ai generators; the picked class resolves
+  // the subject server-side (no subject picker — the operator directive).
+  { href: "/teacher/toolkit", label: "Toolkit", icon: Sparkles },
 ] as const;
 
 export function TeacherNav() {
@@ -77,7 +81,9 @@ export function TeacherNav() {
           // routes (/teacher/classes/[id]) highlighted under the same tab
           const active =
             pathname === tab.href ||
-            (tab.href === "/teacher/classes" && pathname.startsWith("/teacher/classes/"));
+            (tab.href === "/teacher/classes" && pathname.startsWith("/teacher/classes/")) ||
+            // the Toolkit keeps its per-tool detail routes lit under one tab
+            (tab.href === "/teacher/toolkit" && pathname.startsWith("/teacher/toolkit"));
           return (
             <Link
               key={tab.href}

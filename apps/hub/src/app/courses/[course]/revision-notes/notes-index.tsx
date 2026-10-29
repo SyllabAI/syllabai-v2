@@ -7,11 +7,12 @@
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { GraduationCap } from "lucide-react";
 import { ChevronGlyph, NumberedLabel } from "@/components/hub/chrome";
 import { ProgressRing } from "@/components/hub/progress-ring";
 import { useCourseProgress, type Course } from "@/lib/progress";
+import { looseAnchorCopy } from "@/lib/loose-copy";
 import { cn } from "@/lib/utils";
 import type { SpecTree } from "@/lib/spec-tree";
 
@@ -39,6 +40,7 @@ export function NotesIndex({
   initialSubtopic: string | null;
 }) {
   const progress = useCourseProgress(course);
+  const looseCopy = looseAnchorCopy(course);
 
   const groups = useMemo(() => {
     return tree.topics
@@ -123,12 +125,16 @@ export function NotesIndex({
                     <div className="grid gap-1.5 sm:grid-cols-2">
                       {subNotes.map((n) => {
                         const read = !!progress.notesRead[n.noteId];
+                        // Entry-path lane (b) (operator decision of record, trace
+                        // 1a1810c1ef1cb521): each guided-note row carries its own
+                        // "Start guided lesson" action — the row is no longer a
+                        // single nested-<a> card (invalid HTML); the title link and
+                        // the lesson link are siblings. R-5 naming law kept.
                         return (
-                          <Link
+                          <div
                             key={n.noteId}
-                            href={`/courses/${course}/revision-notes/${n.noteId}`}
                             className={cn(
-                              "group flex items-start gap-2 rounded-md border bg-card px-3 py-2 text-[13px] transition-colors hover:border-primary/40",
+                              "flex items-start gap-2 rounded-md border bg-card px-3 py-2 text-[13px] transition-colors",
                               initialSubtopic === n.subtopic && "border-primary/30 bg-primary/[0.04]",
                             )}
                           >
@@ -140,9 +146,12 @@ export function NotesIndex({
                               )}
                             />
                             <span className="min-w-0 flex-1">
-                              <span className="block font-medium leading-snug group-hover:text-primary">
+                              <Link
+                                href={`/courses/${course}/revision-notes/${n.noteId}`}
+                                className="block font-medium leading-snug hover:text-primary"
+                              >
                                 {n.title}
-                              </span>
+                              </Link>
                               <span className="mt-1 flex flex-wrap items-center gap-1">
                                 {n.specPointCodes.slice(0, 3).map((c) => (
                                   <code key={c} className="rounded bg-muted px-1 text-[10px]">
@@ -150,13 +159,17 @@ export function NotesIndex({
                                   </code>
                                 ))}
                                 {n.guidedStudy && (
-                                  <Badge variant="secondary" className="text-[10.5px]">
-                                    guided study
-                                  </Badge>
+                                  <Link
+                                    href={`/courses/${course}/guided-lessons/${n.noteId}`}
+                                    className="inline-flex items-center gap-1 rounded-md bg-primary/10 px-1.5 py-0.5 text-[10.5px] font-medium text-primary transition-colors hover:bg-primary/20"
+                                  >
+                                    <GraduationCap className="size-3" aria-hidden />
+                                    Start guided lesson
+                                  </Link>
                                 )}
                               </span>
                             </span>
-                          </Link>
+                          </div>
                         );
                       })}
                     </div>
@@ -171,11 +184,8 @@ export function NotesIndex({
       {unmapped.length > 0 && (
         <Card>
           <CardContent className="p-4">
-            <p className="mb-2 text-sm font-medium">Not yet anchored to a spec point</p>
-            <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
-              These notes exist in the corpus without a machine-readable specification anchor —
-              the spec-point mapping (still in progress upstream) will slot them into the tree.
-            </p>
+            <p className="mb-2 text-sm font-medium">{looseCopy.title}</p>
+            <p className="mb-3 text-xs leading-relaxed text-muted-foreground">{looseCopy.body}</p>
             <ul className="space-y-1.5">
               {unmapped.map((n) => (
                 <li key={n.noteId}>

@@ -1,0 +1,61 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "task": "adr040-prod-apply-r0 — the ADR-040 production apply ceremony (0007 + 0014 + 0015), closing the §5.2 restore-drift finding",
+ "operator_order": {
+  "verbatim": "pick that up",
+  "channel": "zai-web",
+  "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+  "chat": "371a9d19-b6bb-4173-9696-cee324b265a1",
+  "trace_id": "1a17331639105e25",
+  "context": "picks up the flagged open item: the §5.2 FINDING OF RECORD (restore-drift: production missing 0007 + 0014, re-apply to ride the 0015 production apply) and the ADR-040 §5 chain step 2 (the one additive levels-of-response migration onto the estate)"
+ },
+ "apply_of_record": {
+  "base_commit": "c768c79 (main, post-#367)",
+  "migrations": [
+   {
+    "id": "0007_t-sm-kappa-subject",
+    "sha256": "263e1a23b19eef832bf5cf5b106646fcab599e852a390eae8a1aae6104ae26e0",
+    "statements": 8,
+    "what": "smae.subject_id + FK subjects + widened ck_agreement_scope (PAPER|ALL|SUBJECT) + ck_agreement_subject/all/key_exclusive + partial index idx_agreement_subject_latest — the κ SUBJECT-scope infrastructure"
+   },
+   {
+    "id": "0014_assignment_resource_tables",
+    "sha256": "72068ee402e7b124052e851cc61481a7ba43ea42864e0ebe97f5280168e7604d",
+    "statements": 6,
+    "what": "assignment_resources + assignment_resource_states (main-chain shape WITHOUT the seneca FK — the T1-converged version; the lost run-002 pre-ruling apply is thereby superseded cleanly)"
+   },
+   {
+    "id": "0015_adr040-levels-of-response",
+    "sha256": "5bd484a360b062221c77238354d5072062ba0847e56d724b75036253df619199",
+    "statements": 8,
+    "what": "mark_bands (verbatim descriptors, contiguity CHECKs, UNIQUE(scheme, level_index)) + mark_schemes.scheme_kind ('POINTS' default) + human_marks.band_placement JSONB + evaluations.metric ('POINT_UNWEIGHTED' default) — the band-gate DB leg"
+   }
+  ],
+  "apply_law": "backup → pre-flight → apply → post-verify (ADR-040 §5.2); one transaction per migration, chronological 0007 → 0014 → 0015, drizzle statement-breakpoint split, stop-on-error",
+  "instrument": "scripts/ceremony_apply.py (psycopg2; the manual-ceremony estate — no drizzle history schema, consistent with every prior apply)"
+ },
+ "backup_of_record": {
+  "law": "pg_dump unavailable in the ops sandbox (NEON-DB-LOSS run-005); all three migrations strictly additive → census + full-row JSONL snapshot of the two data-bearing ALTERed tables",
+  "census_pre_apply": {"smart_mark_agreement_evaluations": 12, "mark_schemes": 24824, "human_marks": 287, "assignments": 3, "users": 605, "subjects": 40},
+  "snapshots_sha256": {"smart_mark_agreement_evaluations.jsonl": "950f526f5fe71b07…", "human_marks.jsonl": "528b8d3240984767…"},
+  "note": "snapshots kept sandbox-side only (learner data never leaves the estate); hashes are the receipt evidence"
+ },
+ "honest_run_log": [
+  "run 1: 0007 COMMITTED (8 statements); 0014 aborted BEFORE any DDL — psycopg2 rejected the drizzle header comment block as an empty query (client-side error, transaction rolled back, zero 0014 statements executed)",
+  "splitter patched to drop comment-only chunks; run 2 resumed: 0007 verified present and skipped, 0014 COMMITTED (6 statements), 0015 COMMITTED (8 statements)"
+ ],
+ "post_verify": {
+  "artifacts": "mark_bands + assignment_resources + assignment_resource_states exist; scheme_kind default 'POINTS'; metric default 'POINT_UNWEIGHTED'; band_placement + subject_id nullable; all 0007 CHECKs incl. widened ck_agreement_scope (SUBJECT) + partial index; all 0015 mark_bands constraints + FK + ck_mark_scheme_kind + ck_agreement_metric; all 0014 table constraints",
+  "behavior_drift": "NONE: mark_schemes 24,824/24,824 POINTS; smae 12/12 POINT_UNWEIGHTED; mark_bands empty; assignment tables empty",
+  "serving_tripwire": "active sme-eq rows 20,930; residue refs present; banks 525 / 462 / 254 all 100% VALIDATED on latest version — zero serving drift"
+ },
+ "closes": [
+  "the §5.2 FINDING OF RECORD (restore-drift): 0007 + 0014 are on the estate — SUBJECT-scope κ rows can now exist (the 12 smae rows remain PAPER/ALL until the first SUBJECT eval)",
+  "ADR-040 §5 step 2: the ONE additive levels-of-response migration is on production"
+ ],
+ "activates_next": [
+  "§5.3 converter LEVELS mode against the first band wave corpora (0455×2, 4GE1, 4BS1, 9609 — corpus-complete per the R1 family census, OQ-2 corpus-first)",
+  "the NO_SCHEME_BANDS fail-closed guard + LEVELS dispatch are main code — they go live with the next API deploy (CLI); this ceremony is DB-only, hub unchanged (git-linked deploys unaffected)",
+  "the 16 band-scheme deferred rows (ingest-r1.json of record) stay honest-refused until §5.3–§5.6 land — unchanged posture, now unblocked infrastructure-wise"
+ ]
+}

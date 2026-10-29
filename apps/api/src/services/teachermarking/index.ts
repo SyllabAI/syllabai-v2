@@ -73,10 +73,19 @@ import {
   assembleGradedEvidenceEvent,
 } from "../selfmark";
 import {
+  BAND_PIPELINE_VERSION,
+  BandMarkingPipeline,
+  isBandDecisionV1,
+  METRIC_BAND_QWK,
+  METRIC_POINT_UNWEIGHTED,
   PIPELINE_VERSION,
   SmartMarkPipeline,
   SmartMarkService,
+  toMarkingBand,
   toMarkingPoint,
+  type BandDecision,
+  type BandMarkingCandidateGenerator,
+  type BandMarkingContext,
   type Decision,
   type MarkingCandidateGenerator,
   type MarkingContext,
@@ -92,6 +101,24 @@ export const MAX_PAPER_GROUPS_PER_PAGE = 100;
 export const SMART_MARK_BATCH_LIMIT = 50;
 /** SmartMarkAgreementEvaluation.DEFAULT_THRESHOLD (0.60). */
 export const KAPPA_DEFAULT_THRESHOLD = 0.6;
+
+/**
+ * ADR-040 §2.3 — the D5-β minimum-packet floors, band edition (pre-registered
+ * here before the first packet exists — the point D5 law's ordinal siblings):
+ * n_pairs ≥ 25 scored; scored ≥ 50% of the packet; capture ≥ 80%; packet
+ * level-span ≥ 2 distinct teacher placements (guards the QWK degenerate-
+ * unanimity case); ≥ 10 boundary-straddling pairs (teacher mark within one
+ * mark of a band edge — placement error concentrates at boundaries). Unmet
+ * floors refuse the evaluation outright (ConflictError, NO row): absence of
+ * an evaluation stays gated and a degenerate packet can never mint a
+ * passing κ row. Override + teacher-authorship + disclosure clauses are
+ * the unchanged D5 law.
+ */
+export const BAND_FLOOR_MIN_PAIRS = 25;
+export const BAND_FLOOR_MIN_SCORED_RATIO = 0.5;
+export const BAND_FLOOR_MIN_CAPTURE_RATIO = 0.8;
+export const BAND_FLOOR_MIN_LEVEL_SPAN = 2;
+export const BAND_FLOOR_MIN_BOUNDARY_PAIRS = 10;
 export const SCOPE_ALL = "ALL";
 export const SCOPE_PAPER = "PAPER";
 /** T-SM-KAPPA-SUBJECT (D2, #29 comment 3): subject-level calibration packet
@@ -228,6 +255,10 @@ export interface HumanMarkView {
   perPointDecisions: Record<string, number> | null;
   comments: string | null;
   createdAt: string;
+  /** ADR-040 §5.5: present ONLY for band-part captures (the PartSmartMarkView
+   *  bandDecision pattern — the key is absent on point-path marks, so every
+   *  pre-existing response body stays byte-identical). */
+  bandPlacement?: { levelPlacement: number; awardedMarks: number };
 }
 
 /** TeacherViews.AnswerMarkingView — the queue read model row. */
@@ -348,6 +379,16 @@ export interface KappaEvaluationView {
   threshold: number;
   passed: boolean;
   computedAt: string;
+  /** ADR-040 §5.5: the metric discriminator of the row (additive DTO law —
+   *  point rows read POINT_UNWEIGHTED, band rows BAND_QWK; the reads select
+   *  the stored column, never an inference). */
+  metric: string;
+  /** The disclosed-not-gated within-band leg (ADR-040 §2.3): aggregate MAE
+   *  + exact-rate over placement-matched pairs. Band rows only; null on
+   *  point rows and when no placement-matched pairs exist (per-band detail
+   *  is receipt-side, not view-side). */
+  withinBandMae: number | null;
+  withinBandExactRate: number | null;
 }
 
 // ── KappaAgreementService port (pure domain law, :22-64) ────────────────────
@@ -398,6 +439,159 @@ export function cohenKappa(pairs: Array<[number, number]>): KappaStats {
     kappa = (observed - expected) / (1.0 - expected);
   }
   return { kappa, observedAgreement: observed, sampleSize: n };
+}
+
+/**
+ * Quadratic-weighted κ over paired ORDINAL band placements [smart, human]
+ * (ADR-040 §2.3 — the band methodology of record; QWK is a kappa and drops
+ * into the existing kappa column). Categories are the level indices 1..K
+ * with K = the largest level observed across BOTH raters in the packet;
+ * weights w_ij = (i-j)²/(K-1)². observedAgreement carries the UNWEIGHTED
+ * exact-placement agreement (the ADR's disclosure law for that column).
+ *
+ * Degenerate conventions (documented, mirroring cohenKappa's style): a
+ * single-category packet (K = 1) is perfect agreement → 1; a zero weighted-
+ * chance denominator (both raters unanimous on one level, K > 1) → 1 when
+ * the observed agreement is perfect, else 0. The D5-β level-span floor
+ * refuses the unanimity packet upstream — the conventions exist so the
+ * pure function is total, never so degenerate packets pass.
+ */
+export function quadraticWeightedKappa(pairs: Array<[number, number]>): KappaStats {
+  if (pairs.length === 0) {
+    throw new Error("kappa requires at least one paired decision");
+  }
+  const n = pairs.length;
+  let maxLevel = 0;
+  for (const pair of pairs) {
+    if (pair.length !== 2) {
+      throw new Error("band placements must be integer level pairs");
+    }
+    const smart = pair[0]!;
+    const human = pair[1]!;
+    if (!Number.isInteger(smart) || !Number.isInteger(human) || smart < 1 || human < 1) {
+      throw new Error("band placements must be integer level pairs");
+    }
+    if (smart > maxLevel) maxLevel = smart;
+    if (human > maxLevel) maxLevel = human;
+  }
+  const k = maxLevel;
+  let exact = 0;
+  for (const [s, h] of pairs) if (s === h) exact++;
+  const observedAgreement = exact / n;
+  if (k === 1) {
+    return { kappa: 1, observedAgreement, sampleSize: n };
+  }
+  const size = k + 1; // 1-based level indices
+  const o: number[][] = Array.from({ length: size }, () => new Array<number>(size).fill(0));
+  const smartMarg = new Array<number>(size).fill(0);
+  const humanMarg = new Array<number>(size).fill(0);
+  for (const [s, h] of pairs) {
+    o[s]![h]! += 1;
+    smartMarg[s]! += 1;
+    humanMarg[h]! += 1;
+  }
+  let weightedObserved = 0;
+  let weightedExpected = 0;
+  for (let i = 1; i <= k; i++) {
+    for (let j = 1; j <= k; j++) {
+      const w = ((i - j) * (i - j)) / ((k - 1) * (k - 1));
+      weightedObserved += w * (o[i]![j]! / n);
+      weightedExpected += w * ((smartMarg[i]! / n) * (humanMarg[j]! / n));
+    }
+  }
+  let kappa: number;
+  if (weightedExpected <= 1e-12) {
+    kappa = observedAgreement >= 1.0 - 1e-12 ? 1.0 : 0.0;
+  } else {
+    kappa = 1 - weightedObserved / weightedExpected;
+  }
+  return { kappa, observedAgreement, sampleSize: n };
+}
+
+// ── ADR-040 §5.5 — the band packet's row shapes + module helpers ────────────
+
+/** BandRunRow — the run row the band pairing law selects (the collectPairs
+ *  shape + mark_scheme_id, which anchors the band ranges for the D5-β
+ *  boundary-straddling count and the within-band disclosure). */
+interface BandRunRow {
+  id: string;
+  answer_id: string;
+  marks_awarded: number;
+  validation_passed: boolean;
+  breakdown: unknown;
+  failure_reason: string | null;
+  mark_scheme_id: string | null;
+  created_at: string;
+}
+
+/** BandHumanMarkRow — the band sample's row shape: the point sample's
+ *  columns plus the additive band_placement JSONB (the teacher capture's
+ *  pinned band_decision_v1 shape). */
+interface BandHumanMarkRow {
+  id: string;
+  answer_id: string;
+  marker_id: string;
+  marks_awarded: number;
+  per_point_decisions: Record<string, number> | null;
+  band_placement: unknown;
+  comments: string | null;
+  created_at: string;
+}
+
+/** The band placement capture as stored on human_marks.band_placement —
+ *  the pinned band_decision_v1 shape (snake fields, shape tag) the capture
+ *  side writes and the pairing law reads. */
+interface StoredBandPlacement {
+  level_placement: number;
+  awarded_marks: number;
+}
+
+function isStoredBandPlacement(value: unknown): value is StoredBandPlacement {
+  if (value === null || typeof value !== "object" || Array.isArray(value)) return false;
+  const rec = value as Record<string, unknown>;
+  return (
+    rec.shape === "band_decision_v1" &&
+    typeof rec.level_placement === "number" &&
+    Number.isInteger(rec.level_placement) &&
+    typeof rec.awarded_marks === "number" &&
+    Number.isInteger(rec.awarded_marks)
+  );
+}
+
+/** BandPacketStats — what the band pairing law collected, with the D5-β
+ *  floor inputs and the disclosed within-band leg. */
+export interface BandPacketStats {
+  /** paired ordinal placements [smart, human] — the QWK input */
+  pairs: Array<[number, number]>;
+  /** placement-matched pairs' within-band marks [smart, human] — the
+   *  DISCLOSED-not-gated MAE / exact-rate leg (ADR-040 §2.3) */
+  withinBand: Array<[number, number]>;
+  /** scored pairs whose human mark sits within one mark of the placed
+   *  band's edge (placement error concentrates at boundaries) */
+  boundaryStraddling: number;
+  /** distinct teacher placements among the scored pairs */
+  humanLevelSpan: number;
+  /** human marks in scope carrying a band placement (the packet) */
+  packetCount: number;
+  /** of the packet, marks whose answer has a captured smart run (any) */
+  capturedCount: number;
+  /** of the packet, marks that paired against a valid band run */
+  scoredCount: number;
+}
+
+/** The disclosed-not-gated within-band leg: aggregate MAE + exact-rate over
+ *  placement-matched pairs; null when none matched (per-band detail lives
+ *  in the eval receipt, not the view). */
+function withinBandView(
+  packet: BandPacketStats,
+): { withinBandMae: number | null; withinBandExactRate: number | null } {
+  if (packet.withinBand.length === 0) return { withinBandMae: null, withinBandExactRate: null };
+  const total = packet.withinBand.reduce((s, p) => s + Math.abs(p[0]! - p[1]!), 0);
+  const exact = packet.withinBand.filter((p) => p[0] === p[1]).length;
+  return {
+    withinBandMae: total / packet.withinBand.length,
+    withinBandExactRate: exact / packet.withinBand.length,
+  };
 }
 
 // ── shared helpers ───────────────────────────────────────────────────────────
@@ -571,6 +765,7 @@ function chainNext(items: MarkingQueueItem[]): MarkingQueueItem[] {
 
 export class TeacherSmartMarkService {
   private readonly pipeline: SmartMarkPipeline;
+  private readonly bandPipeline: BandMarkingPipeline | null;
 
   constructor(
     private readonly sql: SqlFn,
@@ -583,8 +778,13 @@ export class TeacherSmartMarkService {
     private readonly shared: SmartMarkService,
     private readonly publisher: GradedEvidencePublisher,
     private readonly clock: SubmitClock,
+    /** ADR-040 §5.4: the band dispatch seam for the per-answer topology.
+     *  Absent (unwired legacy construction) → VALIDATED LEVELS schemes
+     *  refuse per-answer with the honest NO_SCHEME_BANDS row. */
+    bandGenerator?: BandMarkingCandidateGenerator,
   ) {
     this.pipeline = new SmartMarkPipeline(generator);
+    this.bandPipeline = bandGenerator === undefined ? null : new BandMarkingPipeline(bandGenerator);
   }
 
   /**
@@ -644,16 +844,29 @@ export class TeacherSmartMarkService {
     }
     const versionId = versionRows[0]!.id;
 
-    // newest VALIDATED scheme backs marking (V34); none → honest refusal
+    // newest VALIDATED scheme backs marking (V34); none → honest refusal.
+    // ADR-040 §5.4 as amended (ruling A, trace 1a1776dff15bb991): the
+    // resolution is PART-aware — a scheme bound to THIS answer's part wins,
+    // then the version-level unbound scheme, then (never silently taken)
+    // a different part's scheme; newest-first within each slot.
     const validatedRows = (await this.sql`
-      select id, validation_state from mark_schemes
+      select id, validation_state, scheme_kind from mark_schemes
       where question_version_id = ${versionId} and validation_state = ${"VALIDATED"}
-      order by created_at desc
-    `) as unknown as Array<{ id: string; validation_state: string }>;
+      order by case when question_part_id = ${answer.question_part_id} then 0
+                    when question_part_id is null then 1 else 2 end,
+               created_at desc
+    `) as unknown as Array<{ id: string; validation_state: string; scheme_kind: string | null }>;
     if (validatedRows.length === 0) {
       return this.refuseUnvalidatedScheme(answer, versionId);
     }
     const scheme = validatedRows[0]!;
+    if ((scheme.scheme_kind ?? "POINTS") === "LEVELS") {
+      // ADR-040 §5.4 — the band dispatch leg, per-answer topology: the bound
+      // scheme's kind selects the marker path. ONE dispatch, no guessing;
+      // band parts refuse honestly until their scheme is VALIDATED (the
+      // refusal below stamps the newest scheme per the V34 law).
+      return this.markAnswerBand(attemptId, attempt, answer, scheme);
+    }
 
     const pointRows = (await this.sql`
       select id, ref, ordering, text, marks, question_part_id
@@ -698,32 +911,155 @@ export class TeacherSmartMarkService {
     };
 
     if (decision.accepted) {
-      // provisional mark application (:135-138)
-      await this.sql`
-        update answers set marks_awarded = ${decision.marksAwarded}, marking_state = ${"SMART_MARKED"}
-        where id = ${answer.id}
-      `;
-      await this.sql`
-        update attempts set marking_state = ${"SMART_MARKED"} where id = ${attemptId}
-      `;
-      const total = await this.recomputeAttemptTotal(attemptId, answer.question_marks);
-      const authoritative = await this.shared.kappaGatePassed(answer.exam_paper_id, answer.question_id);
-      if (authoritative) {
-        // evidence only when the attempt's marking is COMPLETE (:145-157);
-        // re-read mirrors findByAttemptIdOrderByQuestionPartId (the frozen
-        // completeness check re-reads the attempt's answers after the write)
-        const stillPending = (await this.sql`
-          select id, marks_awarded, marking_state from answers
-          where attempt_id = ${attemptId} order by question_part_id
-        `) as unknown as AttemptAnswerStateRow[];
-        if (!stillPending.some((a) => a.marking_state === "PENDING")) {
-          // publishGraded receives the ATTEMPT — its payload carries the
-          // recomputed total, not the single answer's marks (:150)
-          await this.fireEvidence(attempt, answer, total);
-        }
-      }
+      await this.applyProvisionalMark(attemptId, attempt, answer, decision.marksAwarded);
     }
     return resultRow;
+  }
+
+  /** ADR-040 §5.4 — the band marking path for a VALIDATED LEVELS scheme
+   *  (per-answer topology). Unwired band seam → the honest NO_SCHEME_BANDS
+   *  refusal row (append-only, no state change); empty bands on a wired seam
+   *  → the same refusal. Otherwise: kind re-assert + general guidance in ONE
+   *  read (the internal guard refuses a dispatch/read kind mismatch loudly —
+   *  never silently re-routes), the bands read, and the band pipeline decides;
+   *  the accepted tail is the SHARED provisional-mark law (same writes, same
+   *  κ gate, same evidence) with the band pipeline version stamped. */
+  private async markAnswerBand(
+    attemptId: string,
+    attempt: AttemptLockRow,
+    answer: MarkingAnswerRow,
+    scheme: { id: string; validation_state: string; scheme_kind: string | null },
+  ): Promise<SmartMarkResultRow> {
+    if (this.bandPipeline === null) {
+      return this.refuseBandScheme(answer, scheme);
+    }
+    const schemeFullRows = (await this.sql`
+      select validation_state, scheme_kind, general_guidance from mark_schemes where id = ${scheme.id}
+    `) as unknown as Array<{ validation_state: string; scheme_kind: string | null; general_guidance: string | null }>;
+    if (schemeFullRows.length === 0) throw new NotFoundError("mark scheme", scheme.id);
+    const schemeFull = schemeFullRows[0]!;
+    if ((schemeFull.scheme_kind ?? "POINTS") !== "LEVELS") {
+      throw new ConflictError("mark scheme kind changed between dispatch and read -- refusing loudly");
+    }
+    const bandRows = (await this.sql`
+      select id, level_index, marks_min, marks_max, descriptor_md, guidance_md
+      from mark_bands where mark_scheme_id = ${scheme.id} order by level_index
+    `) as unknown as Array<Record<string, unknown>>;
+    const bands = bandRows.map(toMarkingBand);
+    if (bands.length === 0) {
+      return this.refuseBandScheme(answer, scheme);
+    }
+    const context: BandMarkingContext = {
+      answer: {
+        id: answer.id,
+        attemptId,
+        questionPartId: answer.question_part_id,
+        answerText: answer.answer_text,
+        label: answer.label,
+        partMarks: answer.part_marks,
+      },
+      schemeId: scheme.id,
+      schemeValidationState: scheme.validation_state,
+      bands,
+      // the per-answer row already carries the part's prompt (:626 select)
+      partPrompt: answer.prompt,
+      generalGuidance: schemeFull.general_guidance,
+    };
+    const decision: BandDecision = await this.bandPipeline.run(context);
+
+    const resultId = this.clock.newId();
+    await this.sql`
+      insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
+        marks_awarded, confidence, validation_passed, breakdown, failure_reason,
+        mark_scheme_id, scheme_validation_state, raw_output, created_at)
+      values (${resultId}, ${answer.id}, ${BAND_PIPELINE_VERSION}, ${decision.candidate?.modelId ?? null},
+        ${decision.marksAwarded}, ${decision.candidate?.confidence ?? null}, ${decision.accepted},
+        ${JSON.stringify(decision.breakdown)}, ${decision.failureReason}, ${scheme.id},
+        ${scheme.validation_state}, ${decision.candidate?.rawOutput ?? null}, ${this.clock.now().toISOString()})
+    `;
+    const resultRow: SmartMarkResultRow = {
+      id: resultId,
+      answer_id: answer.id,
+      model_id: decision.candidate?.modelId ?? null,
+      marks_awarded: decision.marksAwarded,
+      confidence: decision.candidate?.confidence ?? null,
+      validation_passed: decision.accepted,
+      breakdown: decision.breakdown,
+      failure_reason: decision.failureReason,
+    };
+    if (decision.accepted) {
+      await this.applyProvisionalMark(attemptId, attempt, answer, decision.marksAwarded, METRIC_BAND_QWK);
+    }
+    return resultRow;
+  }
+
+  /** Honest band refusal (ADR-040 §2.2), per-answer topology — the mirror of
+   *  SmartMarkService.refuseBandScheme: append-only row stamped with the
+   *  validated LEVELS scheme it refused; nothing is marked, no state
+   *  changes, no evidence. */
+  private async refuseBandScheme(
+    answer: MarkingAnswerRow,
+    scheme: { id: string; validation_state: string },
+  ): Promise<SmartMarkResultRow> {
+    const resultId = this.clock.newId();
+    await this.sql`
+      insert into smart_mark_results (id, answer_id, pipeline_version, model_id,
+        marks_awarded, confidence, validation_passed, breakdown, failure_reason,
+        mark_scheme_id, scheme_validation_state, raw_output, created_at)
+      values (${resultId}, ${answer.id}, ${BAND_PIPELINE_VERSION}, ${null}, ${0}, ${null}, ${false},
+        ${JSON.stringify([])}, ${"NO_SCHEME_BANDS"}, ${scheme.id},
+        ${scheme.validation_state}, ${null}, ${this.clock.now().toISOString()})
+    `;
+    return {
+      id: resultId,
+      answer_id: answer.id,
+      model_id: null,
+      marks_awarded: 0,
+      confidence: null,
+      validation_passed: false,
+      breakdown: [],
+      failure_reason: "NO_SCHEME_BANDS",
+    };
+  }
+
+  /** The shared accepted tail of markAnswer (point + band dispatches),
+   *  verbatim from the frozen inline block: provisional mark application
+   *  (:135-138), the recomputed total, and the κ-gated evidence only when
+   *  the attempt's marking is COMPLETE (:145-157). ADR-040 §5.5: the κ gate
+   *  is metric-kind-hard — the band dispatch passes BAND_QWK (a band row
+   *  can never release on point evidence); the point dispatch keeps the
+   *  historical default. */
+  private async applyProvisionalMark(
+    attemptId: string,
+    attempt: AttemptLockRow,
+    answer: MarkingAnswerRow,
+    marksAwarded: number,
+    metric: string = METRIC_POINT_UNWEIGHTED,
+  ): Promise<void> {
+    // provisional mark application (:135-138)
+    await this.sql`
+      update answers set marks_awarded = ${marksAwarded}, marking_state = ${"SMART_MARKED"}
+      where id = ${answer.id}
+    `;
+    await this.sql`
+      update attempts set marking_state = ${"SMART_MARKED"} where id = ${attemptId}
+    `;
+    const total = await this.recomputeAttemptTotal(attemptId, answer.question_marks);
+    const authoritative = await this.shared.kappaGatePassed(answer.exam_paper_id, answer.question_id, metric);
+    if (authoritative) {
+      // evidence only when the attempt's marking is COMPLETE (:145-157);
+      // re-read mirrors findByAttemptIdOrderByQuestionPartId (the frozen
+      // completeness check re-reads the attempt's answers after the write)
+      const stillPending = (await this.sql`
+        select id, marks_awarded, marking_state from answers
+        where attempt_id = ${attemptId} order by question_part_id
+      `) as unknown as AttemptAnswerStateRow[];
+      if (!stillPending.some((a) => a.marking_state === "PENDING")) {
+        // publishGraded receives the ATTEMPT — its payload carries the
+        // recomputed total, not the single answer's marks (:150)
+        await this.fireEvidence(attempt, answer, total);
+      }
+    }
   }
 
   /** V34 honest refusal (:106-127): newest scheme stamped, nothing marked. */
@@ -841,6 +1177,9 @@ export class TeacherMarkingService {
     marksAwarded: number,
     perPointDecisions: Record<string, number> | null,
     comments: string | null,
+    /** ADR-040 §5.5 — the band capture side (additive optional, every
+     *  pre-existing caller unchanged): present ONLY for band parts. */
+    bandPlacement: { levelPlacement: number; awardedMarks: number } | null = null,
   ): Promise<HumanMarkView> {
     // scope gate + serialization point FIRST (:95-98 analog) — the attempt
     // id resolves only INSIDE the marker's enrollment scope
@@ -882,6 +1221,21 @@ export class TeacherMarkingService {
       throw new ConflictError("marks " + marksAwarded + " outside part bound 0–" + bound);
     }
 
+    // ADR-040 §5.5 — the band capture side: a band placement is validated
+    // BEFORE any state write (a refused capture leaves the answer untouched),
+    // against the question's newest-version newest scheme's bound bands. The
+    // hard range law holds on the HUMAN side too as an honest data-entry law:
+    // out-of-range or unknown-level placements are a 409, NEVER a clamp, and
+    // the placement's within-band mark must equal marksAwarded (the row's
+    // grade of record — the learner model reads that column; band_placement
+    // is the calibration artifact, not a second score).
+    let bandPlacementJson: string | null = null;
+    if (bandPlacement !== null) {
+      bandPlacementJson = JSON.stringify(
+        await this.validateBandPlacement(answer.question_id, bandPlacement, marksAwarded),
+      );
+    }
+
     // an override revises marks; it never re-fires evidence (:111)
     const revising = attempt.evidence_emitted;
     const answerState = revising ? "OVERRIDDEN" : "HUMAN_MARKED";
@@ -917,10 +1271,10 @@ export class TeacherMarkingService {
     const createdAt = this.clock.now().toISOString();
     await this.sql`
       insert into human_marks (id, answer_id, marker_id, marks_awarded,
-        per_point_decisions, comments, created_at)
+        per_point_decisions, comments, created_at, band_placement)
       values (${markId}, ${answer.id}, ${markerId}, ${marksAwarded},
         ${perPointDecisions === null ? null : JSON.stringify(perPointDecisions)},
-        ${comments}, ${createdAt})
+        ${comments}, ${createdAt}, ${bandPlacementJson})
     `;
     return {
       id: markId,
@@ -929,6 +1283,70 @@ export class TeacherMarkingService {
       perPointDecisions,
       comments,
       createdAt,
+      ...(bandPlacement !== null ? { bandPlacement } : {}),
+    };
+  }
+
+  /** ADR-040 §5.5 — the band capture's LEVELS validation: the question's
+   *  newest-version newest scheme must be LEVELS with bound bands (honest
+   *  409 otherwise — a placement against nothing is refused, never guessed);
+   *  the placement must reference a bound level; awardedMarks must sit
+   *  inside that band's printed range; the stored shape is the pinned
+   *  band_decision_v1 (snake fields, shape tag, empty descriptor_hits — the
+   *  teacher's rationale lives in comments, the smart side's transparency
+   *  array has no human-capture analog in cycle 1). */
+  private async validateBandPlacement(
+    questionId: string,
+    placement: { levelPlacement: number; awardedMarks: number },
+    marksAwarded: number,
+  ): Promise<{
+    shape: "band_decision_v1";
+    level_placement: number;
+    awarded_marks: number;
+    descriptor_hits: Array<never>;
+  }> {
+    const schemeRows = (await this.sql`
+      select ms.id, ms.scheme_kind from mark_schemes ms
+      join question_versions qv on qv.id = ms.question_version_id
+      where qv.question_id = ${questionId}
+      order by qv.version desc, ms.created_at desc
+      limit 1
+    `) as unknown as Array<{ id: string; scheme_kind: string | null }>;
+    const scheme = schemeRows[0];
+    if (!scheme || (scheme.scheme_kind ?? "POINTS") !== "LEVELS") {
+      throw new ConflictError("band placement requires a LEVELS mark scheme with bound bands");
+    }
+    const bandRows = (await this.sql`
+      select level_index, marks_min, marks_max from mark_bands
+      where mark_scheme_id = ${scheme.id} order by level_index
+    `) as unknown as Array<{ level_index: number; marks_min: number; marks_max: number }>;
+    if (bandRows.length === 0) {
+      throw new ConflictError("band placement requires a LEVELS mark scheme with bound bands");
+    }
+    const placed = bandRows.find((b) => b.level_index === placement.levelPlacement);
+    if (placed === undefined) {
+      throw new ConflictError(
+        "band placement level " + placement.levelPlacement +
+          " is not one of the bound levels " + bandRows.map((b) => b.level_index).join(", "),
+      );
+    }
+    if (placement.awardedMarks < placed.marks_min || placement.awardedMarks > placed.marks_max) {
+      throw new ConflictError(
+        "awarded marks " + placement.awardedMarks + " outside level " + placed.level_index +
+          "'s printed range " + placed.marks_min + "–" + placed.marks_max,
+      );
+    }
+    if (placement.awardedMarks !== marksAwarded) {
+      throw new ConflictError(
+        "band placement awardedMarks " + placement.awardedMarks +
+          " must equal the mark's marksAwarded " + marksAwarded,
+      );
+    }
+    return {
+      shape: "band_decision_v1",
+      level_placement: placement.levelPlacement,
+      awarded_marks: placement.awardedMarks,
+      descriptor_hits: [],
     };
   }
 
@@ -1013,6 +1431,9 @@ export class TeacherMarkingService {
       threshold: KAPPA_DEFAULT_THRESHOLD,
       passed,
       computedAt,
+      metric: METRIC_POINT_UNWEIGHTED,
+      withinBandMae: null,
+      withinBandExactRate: null,
     };
   }
 
@@ -1139,6 +1560,299 @@ export class TeacherMarkingService {
       threshold: KAPPA_DEFAULT_THRESHOLD,
       passed,
       computedAt,
+      metric: METRIC_POINT_UNWEIGHTED,
+      withinBandMae: null,
+      withinBandExactRate: null,
+    };
+  }
+
+  // ── ADR-040 §5.5 — the band eval lane (QWK over the ordinal placements) ────
+
+  /**
+   * The band pairing law (collectPairs' LEVELS sibling): for each human mark
+   * in scope CARRYING a band placement (the packet — a mark joins only by
+   * the teacher's explicit capture, zero inference from scheme shapes), the
+   * newest smart run per answer (findLatest THEN the validation filter —
+   * the frozen law's order), a band-shaped VALIDATED breakdown with a
+   * non-null placement on BOTH sides pairs [smart, human] placements.
+   * Skips are documented, never errors: no run → not captured (the capture
+   * floor counts this); unvalidated / point-shaped / placement-less runs
+   * and malformed captures cannot pair. The band ranges ride ONE batched
+   * read over the distinct schemes (`= any(${ids}::uuid[])`) — no N+1 on
+   * mark_bands. The smart side's within-band mark rides the run row's
+   * marks_awarded (the band row's awarded mark of record).
+   */
+  private async collectBandPacket(humanSample: BandHumanMarkRow[]): Promise<BandPacketStats> {
+    const packetRows: BandHumanMarkRow[] = [];
+    for (const mark of humanSample) {
+      if (mark.band_placement !== null && isStoredBandPlacement(mark.band_placement)) {
+        packetRows.push(mark);
+      }
+    }
+    const stats: BandPacketStats = {
+      pairs: [],
+      withinBand: [],
+      boundaryStraddling: 0,
+      humanLevelSpan: 0,
+      packetCount: packetRows.length,
+      capturedCount: 0,
+      scoredCount: 0,
+    };
+    if (packetRows.length === 0) return stats;
+    const pending: Array<{
+      pair: [number, number];
+      smartMarks: number;
+      humanMarks: number;
+      schemeId: string;
+      humanPlacement: number;
+    }> = [];
+    for (const mark of packetRows) {
+      const smartRows = (await this.sql`
+        select id, answer_id, model_id, marks_awarded, confidence, validation_passed,
+               breakdown, failure_reason, mark_scheme_id, created_at
+        from smart_mark_results where answer_id = ${mark.answer_id}
+        order by created_at desc limit 1
+      `) as unknown as BandRunRow[];
+      const smart = smartRows[0];
+      if (!smart) continue; // not captured — the capture floor counts this
+      stats.capturedCount++;
+      if (!smart.validation_passed) continue;
+      const breakdown = normalizeBreakdown(smart.breakdown);
+      if (!isBandDecisionV1(breakdown) || breakdown.level_placement === null) continue;
+      const placement = mark.band_placement as StoredBandPlacement;
+      stats.pairs.push([breakdown.level_placement, placement.level_placement]);
+      stats.scoredCount++;
+      pending.push({
+        pair: [breakdown.level_placement, placement.level_placement],
+        smartMarks: smart.marks_awarded,
+        humanMarks: placement.awarded_marks,
+        schemeId: String(smart.mark_scheme_id),
+        humanPlacement: placement.level_placement,
+      });
+    }
+    stats.humanLevelSpan = new Set(stats.pairs.map((p) => p[1])).size;
+    if (pending.length > 0) {
+      const schemeIds = [...new Set(pending.map((p) => p.schemeId))];
+      const bandRows = (await this.sql`
+        select mark_scheme_id, level_index, marks_min, marks_max from mark_bands
+        where mark_scheme_id = any(${schemeIds}::uuid[])
+      `) as unknown as Array<{
+        mark_scheme_id: string;
+        level_index: number;
+        marks_min: number;
+        marks_max: number;
+      }>;
+      const rangesByScheme = new Map<string, Map<number, { marksMin: number; marksMax: number }>>();
+      for (const b of bandRows) {
+        let byLevel = rangesByScheme.get(String(b.mark_scheme_id));
+        if (byLevel === undefined) {
+          byLevel = new Map();
+          rangesByScheme.set(String(b.mark_scheme_id), byLevel);
+        }
+        byLevel.set(b.level_index, { marksMin: b.marks_min, marksMax: b.marks_max });
+      }
+      for (const entry of pending) {
+        const band = rangesByScheme.get(entry.schemeId)?.get(entry.humanPlacement);
+        if (band === undefined) continue;
+        // D5-β boundary-straddling: the teacher's mark within ONE mark of
+        // either edge of the placed band (placement error concentrates at
+        // band boundaries — the floor guarantees the packet carries them)
+        if (
+          entry.humanMarks - band.marksMin <= 1 ||
+          band.marksMax - entry.humanMarks <= 1
+        ) {
+          stats.boundaryStraddling++;
+        }
+        // the disclosed-not-gated within-band leg: placement-matched pairs only
+        if (entry.pair[0] === entry.pair[1]) {
+          stats.withinBand.push([entry.smartMarks, entry.humanMarks]);
+        }
+      }
+    }
+    return stats;
+  }
+
+  /** The D5-β gate: every unmet floor listed with its real numbers — ONE
+   *  ConflictError, NO evaluation row (absence stays gated, fail-closed). */
+  private assertBandFloors(packet: BandPacketStats): void {
+    const unmet: string[] = [];
+    if (packet.pairs.length < BAND_FLOOR_MIN_PAIRS) {
+      unmet.push(`n_pairs ${packet.pairs.length} < ${BAND_FLOOR_MIN_PAIRS}`);
+    }
+    const scoredRatio = packet.packetCount === 0 ? 0 : packet.scoredCount / packet.packetCount;
+    if (scoredRatio < BAND_FLOOR_MIN_SCORED_RATIO) {
+      unmet.push(
+        `scored ${packet.scoredCount}/${packet.packetCount} < ${Math.round(BAND_FLOOR_MIN_SCORED_RATIO * 100)}%`,
+      );
+    }
+    const captureRatio = packet.packetCount === 0 ? 0 : packet.capturedCount / packet.packetCount;
+    if (captureRatio < BAND_FLOOR_MIN_CAPTURE_RATIO) {
+      unmet.push(
+        `capture ${packet.capturedCount}/${packet.packetCount} < ${Math.round(BAND_FLOOR_MIN_CAPTURE_RATIO * 100)}%`,
+      );
+    }
+    if (packet.humanLevelSpan < BAND_FLOOR_MIN_LEVEL_SPAN) {
+      unmet.push(`level_span ${packet.humanLevelSpan} < ${BAND_FLOOR_MIN_LEVEL_SPAN}`);
+    }
+    if (packet.boundaryStraddling < BAND_FLOOR_MIN_BOUNDARY_PAIRS) {
+      unmet.push(`boundary_straddling ${packet.boundaryStraddling} < ${BAND_FLOOR_MIN_BOUNDARY_PAIRS}`);
+    }
+    if (unmet.length > 0) {
+      throw new ConflictError("band calibration floors unmet (D5-β): " + unmet.join("; "));
+    }
+  }
+
+  /**
+   * ADR-040 §5.5 — the band eval lane, PAPER/ALL scope: the same sample
+   * derivation as evaluateAgreement (the join is byte-parallel; the select
+   * adds h.band_placement), the band pairing law, the D5-β floors (unmet →
+   * 409, NO row — absence stays gated), then QWK over the ordinal
+   * placements dropped into the kappa column with metric = 'BAND_QWK'.
+   *
+   * Disclosed residuals of record (cycle 1): within-band marks are
+   * disclosed-not-gated (aggregate MAE + exact-rate over placement-matched
+   * pairs on the view; per-band detail is receipt-side), and a packet that
+   * spans several schemes shares ONE ordinal scale (the level_index union)
+   * — if the first band cycle shows that miscalibrates, re-pinning goes
+   * through the receipted pre-registration discipline (ADR-040 §2.3).
+   */
+  async evaluateBandAgreement(
+    examPaperId: string | null,
+    computedBy: string,
+  ): Promise<KappaEvaluationView> {
+    const humanSample: BandHumanMarkRow[] =
+      examPaperId === null
+        ? ((await this.sql`
+            select id, answer_id, marker_id, marks_awarded, per_point_decisions,
+                   band_placement, comments, created_at
+            from human_marks order by created_at asc
+          `) as unknown as BandHumanMarkRow[])
+        : ((await this.sql`
+            select h.id, h.answer_id, h.marker_id, h.marks_awarded, h.per_point_decisions,
+                   h.band_placement, h.comments, h.created_at
+            from human_marks h
+            join answers ans on ans.id = h.answer_id
+            join attempts at on at.id = ans.attempt_id
+            join questions q on q.id = at.question_id
+            where q.exam_paper_id = ${examPaperId}
+            order by h.created_at asc
+          `) as unknown as BandHumanMarkRow[]);
+
+    const packet = await this.collectBandPacket(humanSample);
+    if (packet.packetCount === 0) {
+      throw new ConflictError(
+        "no band-placement human marks available for the band calibration packet (D5-β)",
+      );
+    }
+    this.assertBandFloors(packet);
+
+    const stats = quadraticWeightedKappa(packet.pairs);
+    const evaluationId = this.clock.newId();
+    const scope = examPaperId === null ? SCOPE_ALL : SCOPE_PAPER;
+    const passed = stats.kappa >= KAPPA_DEFAULT_THRESHOLD;
+    const computedAt = this.clock.now().toISOString();
+    await this.sql`
+      insert into smart_mark_agreement_evaluations (id, scope, exam_paper_id,
+        sample_size, kappa, observed_agreement, threshold, passed, computed_at, computed_by, metric)
+      values (${evaluationId}, ${scope}, ${examPaperId}, ${stats.sampleSize},
+        ${stats.kappa}, ${stats.observedAgreement}, ${KAPPA_DEFAULT_THRESHOLD},
+        ${passed}, ${computedAt}, ${computedBy}, ${METRIC_BAND_QWK})
+    `;
+    return {
+      id: evaluationId,
+      scope,
+      paperId: examPaperId,
+      subjectId: null,
+      sampleSize: stats.sampleSize,
+      kappa: stats.kappa,
+      observedAgreement: stats.observedAgreement,
+      threshold: KAPPA_DEFAULT_THRESHOLD,
+      passed,
+      computedAt,
+      metric: METRIC_BAND_QWK,
+      ...withinBandView(packet),
+    };
+  }
+
+  /** ADR-040 §5.5 — the band eval lane, SUBJECT scope: the SUBJECT sample
+   *  derivation of evaluateAgreementForSubject verbatim (+ h.band_placement),
+   *  the band pairing law, the D5-β floors, QWK with metric = 'BAND_QWK' —
+   *  riding the migration-0007 infrastructure untouched (the partial index,
+   *  the CHECKs, and the key-exclusivity law all apply to band rows as-is;
+   *  ck_agreement_metric carries the discriminator). */
+  async evaluateBandAgreementForSubject(
+    subjectId: string,
+    computedBy: string,
+  ): Promise<KappaEvaluationView> {
+    const humanSample: BandHumanMarkRow[] = (await this.sql`
+      with recursive qn as (
+        select distinct question_id, node_id from question_topics
+        union
+        select distinct question_id, spec_point_node_id as node_id
+        from question_spec_points where spec_point_node_id is not null
+      ), up as (
+        select qn.question_id, tn.id as node_id, 0 as depth,
+               case when tn.node_type = 'SUBJECT' then tn.id end as subj_node
+        from qn join knowledge_nodes tn on tn.id = qn.node_id
+        union all
+        select up.question_id, p.id, up.depth + 1,
+               case when p.node_type = 'SUBJECT' then p.id else up.subj_node end
+        from up
+        join knowledge_edges e
+          on e.source_node_id = up.node_id and e.relation_type = 'PART_OF'
+        join knowledge_nodes p on p.id = e.target_node_id
+        where up.subj_node is null and up.depth < 8
+      ), qsub as (
+        select q.id as question_id, ep.subject_id as subject_id
+        from questions q join exam_papers ep on ep.id = q.exam_paper_id
+        union
+        select distinct u.question_id, s.id as subject_id
+        from (select distinct question_id, subj_node from up
+              where subj_node is not null) u
+        join subjects s on s.knowledge_node_id = u.subj_node
+      )
+      select h.id, h.answer_id, h.marker_id, h.marks_awarded, h.per_point_decisions,
+             h.band_placement, h.comments, h.created_at
+      from human_marks h
+      join answers ans on ans.id = h.answer_id
+      join attempts at on at.id = ans.attempt_id
+      join qsub on qsub.question_id = at.question_id
+      where qsub.subject_id = ${subjectId}
+      order by h.created_at asc
+    `) as unknown as BandHumanMarkRow[];
+
+    const packet = await this.collectBandPacket(humanSample);
+    if (packet.packetCount === 0) {
+      throw new ConflictError(
+        "no band-placement human marks available for the band calibration packet (D5-β)",
+      );
+    }
+    this.assertBandFloors(packet);
+
+    const stats = quadraticWeightedKappa(packet.pairs);
+    const evaluationId = this.clock.newId();
+    const passed = stats.kappa >= KAPPA_DEFAULT_THRESHOLD;
+    const computedAt = this.clock.now().toISOString();
+    await this.sql`
+      insert into smart_mark_agreement_evaluations (id, scope, exam_paper_id, subject_id,
+        sample_size, kappa, observed_agreement, threshold, passed, computed_at, computed_by, metric)
+      values (${evaluationId}, ${SCOPE_SUBJECT}, null, ${subjectId}, ${stats.sampleSize},
+        ${stats.kappa}, ${stats.observedAgreement}, ${KAPPA_DEFAULT_THRESHOLD},
+        ${passed}, ${computedAt}, ${computedBy}, ${METRIC_BAND_QWK})
+    `;
+    return {
+      id: evaluationId,
+      scope: SCOPE_SUBJECT,
+      paperId: null,
+      subjectId,
+      sampleSize: stats.sampleSize,
+      kappa: stats.kappa,
+      observedAgreement: stats.observedAgreement,
+      threshold: KAPPA_DEFAULT_THRESHOLD,
+      passed,
+      computedAt,
+      metric: METRIC_BAND_QWK,
+      ...withinBandView(packet),
     };
   }
 
@@ -1147,33 +1861,39 @@ export class TeacherMarkingService {
    * for the scope (ALL when paperId null, else PAPER + paper). findFirst…OrderBy
    * ComputedAtDesc parity; id-desc tie-break added for determinism (disclosed
    * read-model choice, the compareWithinPaper string-lexicographic class).
+   * ADR-040 §5.5: the read is METRIC-KIND-HARD — `metric` (default
+   * POINT_UNWEIGHTED, every pre-existing caller unchanged) filters the row;
+   * a band row can never answer a point read nor the reverse.
    */
-  async latestEvaluation(paperId: string | null): Promise<KappaEvaluationView | null> {
+  async latestEvaluation(
+    paperId: string | null,
+    metric: string = METRIC_POINT_UNWEIGHTED,
+  ): Promise<KappaEvaluationView | null> {
     const rows =
       paperId === null
         ? ((await this.sql`
             select id, scope, exam_paper_id, sample_size, kappa, observed_agreement,
-                   threshold, passed, computed_at
+                   threshold, passed, computed_at, metric
             from smart_mark_agreement_evaluations
-            where scope = ${SCOPE_ALL}
+            where scope = ${SCOPE_ALL} and metric = ${metric}
             order by computed_at desc, id desc
             limit 1
           `) as unknown as Array<{
             id: string; scope: string; exam_paper_id: string | null; sample_size: number;
             kappa: number; observed_agreement: number; threshold: number; passed: boolean;
-            computed_at: string;
+            computed_at: string; metric: string;
           }>)
         : ((await this.sql`
             select id, scope, exam_paper_id, sample_size, kappa, observed_agreement,
-                   threshold, passed, computed_at
+                   threshold, passed, computed_at, metric
             from smart_mark_agreement_evaluations
-            where scope = ${SCOPE_PAPER} and exam_paper_id = ${paperId}
+            where scope = ${SCOPE_PAPER} and exam_paper_id = ${paperId} and metric = ${metric}
             order by computed_at desc, id desc
             limit 1
           `) as unknown as Array<{
             id: string; scope: string; exam_paper_id: string | null; sample_size: number;
             kappa: number; observed_agreement: number; threshold: number; passed: boolean;
-            computed_at: string;
+            computed_at: string; metric: string;
           }>);
     const e = rows[0];
     if (!e) return null;
@@ -1188,6 +1908,9 @@ export class TeacherMarkingService {
       threshold: e.threshold,
       passed: e.passed,
       computedAt: e.computed_at,
+      metric: e.metric,
+      withinBandMae: null,
+      withinBandExactRate: null,
     };
   }
 
@@ -1195,19 +1918,23 @@ export class TeacherMarkingService {
    *  for one subject. Same read law as latestEvaluation (:282-293):
    *  findFirst…OrderByComputedAtDesc with the id-desc determinism tie-break;
    *  null when none exists → the route 404s. The partial index
-   *  idx_agreement_subject_latest backs this lookup. */
-  async latestSubjectEvaluation(subjectId: string): Promise<KappaEvaluationView | null> {
+   *  idx_agreement_subject_latest backs this lookup. ADR-040 §5.5: metric
+   *  kind-hard (default POINT_UNWEIGHTED — pre-existing callers unchanged). */
+  async latestSubjectEvaluation(
+    subjectId: string,
+    metric: string = METRIC_POINT_UNWEIGHTED,
+  ): Promise<KappaEvaluationView | null> {
     const rows = (await this.sql`
       select id, scope, exam_paper_id, subject_id, sample_size, kappa, observed_agreement,
-             threshold, passed, computed_at
+             threshold, passed, computed_at, metric
       from smart_mark_agreement_evaluations
-      where scope = ${SCOPE_SUBJECT} and subject_id = ${subjectId}
+      where scope = ${SCOPE_SUBJECT} and subject_id = ${subjectId} and metric = ${metric}
       order by computed_at desc, id desc
       limit 1
     `) as unknown as Array<{
       id: string; scope: string; exam_paper_id: string | null; subject_id: string | null;
       sample_size: number; kappa: number; observed_agreement: number; threshold: number;
-      passed: boolean; computed_at: string;
+      passed: boolean; computed_at: string; metric: string;
     }>;
     const e = rows[0];
     if (!e) return null;
@@ -1222,6 +1949,9 @@ export class TeacherMarkingService {
       threshold: e.threshold,
       passed: e.passed,
       computedAt: e.computed_at,
+      metric: e.metric,
+      withinBandMae: null,
+      withinBandExactRate: null,
     };
   }
 }
@@ -1923,10 +2653,11 @@ export function buildTeacherMarkingModule(
   generator: MarkingCandidateGenerator,
   publisher: GradedEvidencePublisher,
   clock: SubmitClock,
+  bandGenerator?: BandMarkingCandidateGenerator,
 ): TeacherMarkingModule {
   // the 032 shared engine: composed for the kappa gate law (lives once)
-  const shared = new SmartMarkService(sql, generator, publisher, clock);
-  const teacherSmartMark = new TeacherSmartMarkService(sql, generator, shared, publisher, clock);
+  const shared = new SmartMarkService(sql, generator, publisher, clock, bandGenerator);
+  const teacherSmartMark = new TeacherSmartMarkService(sql, generator, shared, publisher, clock, bandGenerator);
   const marking = new TeacherMarkingService(sql, publisher, clock);
   const queue = new TeacherMarkingQueueService(sql, teacherSmartMark, clock);
   return { teacherSmartMark, marking, queue };

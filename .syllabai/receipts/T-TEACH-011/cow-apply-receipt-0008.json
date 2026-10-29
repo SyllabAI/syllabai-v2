@@ -1,0 +1,164 @@
+{
+ "task": "T-TEACH-011",
+ "what": "migration 0008_teaching_toolkit raw-SQL apply (no drizzle bookkeeping)",
+ "mode": "apply",
+ "target_host": "ep-jolly-sea-a56cjqqj.us-east-2.aws.neon.tech",
+ "migration_file": "packages/db/drizzle/0008_teaching_toolkit.sql",
+ "migration_sha256": "cd5041d7844f6e757de5379ea288e8a47fac3987d10102f14d38ca0c6d461c77",
+ "statement_count": 11,
+ "preflight": {
+  "referenced_tables_present": {
+   "users": true,
+   "classes": true,
+   "class_features": true,
+   "prompt_versions": true
+  },
+  "toolkit_tables_absent_expected": {
+   "teaching_toolkit_resources": false,
+   "teaching_toolkit_usage": false
+  },
+  "class_features_ai_toolkit_already_present": false,
+  "class_features_row_census": 0,
+  "prompt_versions_toolkit_rows_pre": 0,
+  "statements_to_apply": 11
+ },
+ "backup": {
+  "law": "backup captured BEFORE any DDL (0007 regime)",
+  "class_features_rows": [],
+  "prompt_versions_toolkit_rows_pre": []
+ },
+ "applied": [
+  {
+   "i": 0,
+   "head": "-- 0008 — T-TEACH-011 (TEACHING_TOOLKIT_PLAN §5): the Teaching Toolkit -",
+   "ms": 99
+  },
+  {
+   "i": 1,
+   "head": "CREATE TABLE \"teaching_toolkit_usage\" ( \"teacher_id\" uuid NOT NULL, \"usa",
+   "ms": 23
+  },
+  {
+   "i": 2,
+   "head": "ALTER TABLE \"class_features\" ADD COLUMN \"ai_toolkit\" boolean DEFAULT tru",
+   "ms": 18
+  },
+  {
+   "i": 3,
+   "head": "ALTER TABLE \"teaching_toolkit_resources\" ADD CONSTRAINT \"teaching_toolki",
+   "ms": 50
+  },
+  {
+   "i": 4,
+   "head": "ALTER TABLE \"teaching_toolkit_resources\" ADD CONSTRAINT \"teaching_toolki",
+   "ms": 29
+  },
+  {
+   "i": 5,
+   "head": "ALTER TABLE \"teaching_toolkit_usage\" ADD CONSTRAINT \"teaching_toolkit_us",
+   "ms": 20
+  },
+  {
+   "i": 6,
+   "head": "CREATE INDEX \"ix_toolkit_resources_teacher\" ON \"teaching_toolkit_resourc",
+   "ms": 20
+  },
+  {
+   "i": 7,
+   "head": "INSERT INTO \"prompt_versions\" (\"id\", \"registry_key\", \"version\", \"templat",
+   "ms": 25
+  },
+  {
+   "i": 8,
+   "head": "INSERT INTO \"prompt_versions\" (\"id\", \"registry_key\", \"version\", \"templat",
+   "ms": 18
+  },
+  {
+   "i": 9,
+   "head": "INSERT INTO \"prompt_versions\" (\"id\", \"registry_key\", \"version\", \"templat",
+   "ms": 18
+  },
+  {
+   "i": 10,
+   "head": "INSERT INTO \"prompt_versions\" (\"id\", \"registry_key\", \"version\", \"templat",
+   "ms": 19
+  }
+ ],
+ "postverify": {
+  "table_teaching_toolkit_resources": true,
+  "table_teaching_toolkit_usage": true,
+  "resources_columns": [
+   "id",
+   "teacher_id",
+   "class_id",
+   "course_slug",
+   "tool_type",
+   "input_metadata",
+   "output",
+   "status",
+   "model",
+   "provider_name",
+   "failure_reason",
+   "elapsed_ms",
+   "created_at"
+  ],
+  "resources_columns_exact": true,
+  "usage_columns_exact": true,
+  "status_default_success": true,
+  "used_default_zero": true,
+  "check_constraints": [
+   "ck_toolkit_resources_status",
+   "ck_toolkit_resources_tool_type"
+  ],
+  "check_constraints_exact": true,
+  "foreign_keys": [
+   {
+    "name": "teaching_toolkit_resources_class_id_fkey",
+    "on_delete": "n"
+   },
+   {
+    "name": "teaching_toolkit_resources_teacher_id_fkey",
+    "on_delete": "a"
+   },
+   {
+    "name": "teaching_toolkit_usage_teacher_id_fkey",
+    "on_delete": "a"
+   }
+  ],
+  "foreign_keys_exact": true,
+  "index_ix_toolkit_resources_teacher": true,
+  "class_features_ai_toolkit": {
+   "type": "boolean",
+   "nullable": "NO",
+   "default": "true"
+  },
+  "class_features_ai_toolkit_ok": true,
+  "prompt_seed_rows": [
+   {
+    "key": "teaching-toolkit/coach",
+    "version": "1.0",
+    "template_len": 1291
+   },
+   {
+    "key": "teaching-toolkit/lesson-plan",
+    "version": "1.0",
+    "template_len": 2119
+   },
+   {
+    "key": "teaching-toolkit/rubric",
+    "version": "1.0",
+    "template_len": 1732
+   },
+   {
+    "key": "teaching-toolkit/sow",
+    "version": "1.0",
+    "template_len": 1604
+   }
+  ],
+  "prompt_seed_rows_exact": true,
+  "public_table_count": 72
+ },
+ "verdict": "APPLIED-AND-VERIFIED",
+ "errors": [],
+ "elapsed_ms": 3235
+}

@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_6M5JB7CjvwdDykMS",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "12ac238bfd47f80b9969aee04bcaddd2e369136daef71e5f82813b340dba0530",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_6M5JB7CjvwdDykMS",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L1::Q1",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L1",
+      "stem": "Which pair of approximate percentages by volume correctly describes nitrogen and oxygen in dry air?",
+      "misconceptionClass": "percentage recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nitrogen about 80 percent, oxygen about 20 percent",
+          "correct": true,
+          "explanation": "Nitrogen takes roughly four-fifths of the volume and oxygen one-fifth, which are the two figures of record for dry air.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Nitrogen about 20 percent, oxygen about 80 percent",
+          "correct": false,
+          "explanation": "That swaps the two shares; oxygen is the smaller fifth, not the larger four-fifths.",
+          "misconception": "the two percentages swapped"
+        },
+        {
+          "key": "C",
+          "text": "Nitrogen about 50 percent, oxygen about 50 percent",
+          "correct": false,
+          "explanation": "Air is not an even split; nitrogen dominates with four times the volume of oxygen.",
+          "misconception": "equal shares assumed"
+        },
+        {
+          "key": "D",
+          "text": "Nitrogen about 78 percent, oxygen about 21 percent of the atmosphere",
+          "correct": false,
+          "explanation": "Those are the finer real-world figures, but the specification's approximate figures of record are 80 and 20 percent; quoting four-fifths and one-fifth is the expected answer.",
+          "misconception": "precision beyond the approximate figures of record"
+        }
+      ]
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L1::Q2",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L1",
+      "stem": "Which gases make up the small remainder of dry air after nitrogen and oxygen?",
+      "misconceptionClass": "trace gas recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "Carbon dioxide, water vapour and the noble gases",
+          "correct": true,
+          "explanation": "These occupy the small leftover fraction of air, each present in proportions far below the oxygen fifth.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Hydrogen and helium in equal shares",
+          "correct": false,
+          "explanation": "Hydrogen is not a significant component of today's atmosphere, and helium is only one of the trace noble gases.",
+          "misconception": "trace composition invented"
+        },
+        {
+          "key": "C",
+          "text": "Chlorine and bromine vapours",
+          "correct": false,
+          "explanation": "The halogens are far too reactive to persist free in air; they appear in the atmosphere in no measurable share.",
+          "misconception": "Group 7 gases misplaced into air"
+        },
+        {
+          "key": "D",
+          "text": "Sulfur dioxide and nitrogen dioxide in small amounts",
+          "correct": false,
+          "explanation": "Those are pollutant gases from combustion and traffic, not the natural fixed components of dry air.",
+          "misconception": "pollutants confused with atmospheric components"
+        }
+      ]
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L1::Q3",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L1",
+      "stem": "What does the note say about how the composition of the atmosphere has behaved over time?",
+      "misconceptionClass": "stability of composition",
+      "options": [
+        {
+          "key": "A",
+          "text": "It has changed very little in 200 million years",
+          "correct": true,
+          "explanation": "The proportions of the main gases have been remarkably stable across that span, which is why approximate figures still hold.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Oxygen has steadily replaced nitrogen",
+          "correct": false,
+          "explanation": "No such replacement has occurred; the four-fifths and one-fifth shares have persisted.",
+          "misconception": "ongoing drift invented"
+        },
+        {
+          "key": "C",
+          "text": "Carbon dioxide has always been one of the two main gases",
+          "correct": false,
+          "explanation": "Carbon dioxide sits in the small remainder today; nitrogen and oxygen are the two main gases.",
+          "misconception": "trace gas promoted to major gas"
+        },
+        {
+          "key": "D",
+          "text": "The composition was completely different before humans appeared",
+          "correct": false,
+          "explanation": "Over the 200-million-year window the mixture has stayed close to today's, long before humans existed.",
+          "misconception": "human-era shift overstated"
+        }
+      ]
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L1::Q4",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L1",
+      "stem": "Why is carbon dioxide described as significant despite its tiny share of air?",
+      "misconceptionClass": "trace gas significance",
+      "options": [
+        {
+          "key": "A",
+          "text": "Because it has a substantial role in global warming as a greenhouse gas",
+          "correct": true,
+          "explanation": "A very small volume fraction can still absorb and store heat energy, which is what makes its warming role large.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because it makes up about half the air by volume",
+          "correct": false,
+          "explanation": "Its share is tiny compared with the nitrogen and oxygen fifths; the significance is chemical, not volumetric.",
+          "misconception": "share inflated to match significance"
+        },
+        {
+          "key": "C",
+          "text": "Because it is needed for respiration in animals",
+          "correct": false,
+          "explanation": "Animals respire using oxygen and release carbon dioxide; the gas's atmospheric significance comes from heat trapping.",
+          "misconception": "biological role substituted for climatic role"
+        },
+        {
+          "key": "D",
+          "text": "Because it gives air most of its mass",
+          "correct": false,
+          "explanation": "Nitrogen and oxygen dominate the mass of air as well as its volume; carbon dioxide contributes little.",
+          "misconception": "mass contribution misattributed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L1::Q5",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L1",
+      "stem": "A student claims dry air is a compound of nitrogen and oxygen. What is the correct verdict?",
+      "misconceptionClass": "mixture vs compound",
+      "options": [
+        {
+          "key": "A",
+          "text": "Wrong: air is a mixture, since its gases keep their own properties and only their proportions are fixed approximately",
+          "correct": true,
+          "explanation": "No chemical bonds join nitrogen to oxygen in air; the gases are simply mixed, and the small components vary slightly with conditions.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Correct: the fixed percentages prove chemical bonding",
+          "correct": false,
+          "explanation": "Approximate proportions are a feature of mixtures over time; a compound would need fixed ratios set by bonds and a single formula.",
+          "misconception": "fixed proportions read as bonding"
+        },
+        {
+          "key": "C",
+          "text": "Correct, because nitrogen and oxygen react to form air",
+          "correct": false,
+          "explanation": "Nitrogen and oxygen coexist uncombined in air; they react only under extreme conditions such as lightning.",
+          "misconception": "mixture imagined as a reaction product"
+        },
+        {
+          "key": "D",
+          "text": "Air is an element because it cannot be separated",
+          "correct": false,
+          "explanation": "Air can be separated by fractional distillation of liquid air, and it is a mixture, not an element.",
+          "misconception": "separability misjudged"
+        }
+      ]
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L2::Q1",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L2",
+      "stem": "Why does the water level inside the bell jar rise during the experiment?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "Burning phosphorus removes oxygen from the air inside, lowering the gas volume so water moves in",
+          "correct": true,
+          "explanation": "The oxygen becomes part of a solid oxide, the gas volume falls, and the pressure drop lets water rise to fill the space.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The burning heats the water and makes it expand upwards",
+          "correct": false,
+          "explanation": "Expansion would push levels down or out; the observed rise comes from gas being consumed, not from heating.",
+          "misconception": "thermal expansion offered as the cause"
+        },
+        {
+          "key": "C",
+          "text": "The phosphorus dissolves into the water and draws it up",
+          "correct": false,
+          "explanation": "Phosphorus stays in the jar burning; nothing dissolving could account for a rise matching one-fifth of the air.",
+          "misconception": "dissolution confused with reaction"
+        },
+        {
+          "key": "D",
+          "text": "Water is produced by the burning and collects inside",
+          "correct": false,
+          "explanation": "Phosphorus oxide is a solid, not water; hydrogen would be needed to make water, and none is present.",
+          "misconception": "product of combustion misidentified"
+        }
+      ]
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L2::Q2",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L2",
+      "stem": "What makes phosphorus a suitable reactant for this experiment?",
+      "misconceptionClass": "reactant suitability",
+      "options": [
+        {
+          "key": "A",
+          "text": "It burns readily until all the available oxygen is used up",
+          "correct": true,
+          "explanation": "Complete use of the oxygen is essential, and phosphorus keeps burning until the supply inside the jar runs out.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It reacts only with nitrogen, leaving the oxygen untouched",
+          "correct": false,
+          "explanation": "The whole point is to consume the oxygen; a nitrogen reaction would measure the wrong gas entirely.",
+          "misconception": "target gas misidentified"
+        },
+        {
+          "key": "C",
+          "text": "It is completely safe to handle in the laboratory",
+          "correct": false,
+          "explanation": "Phosphorus is toxic and hazardous; its suitability is chemical, and safety requires great care.",
+          "misconception": "safety misjudged"
+        },
+        {
+          "key": "D",
+          "text": "It produces extra gas that pushes the water level up",
+          "correct": false,
+          "explanation": "No new gas appears; the measured change is the disappearance of oxygen, which is what makes the maths work.",
+          "misconception": "gas production assumed"
+        }
+      ]
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L2::Q3",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L2",
+      "stem": "A metal such as iron can replace phosphorus in this style of experiment. What is common to both versions?",
+      "misconceptionClass": "method generalisation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both remove the oxygen from a fixed volume of air, and the volume change gives the percentage",
+          "correct": true,
+          "explanation": "Whether metal or non-metal, the reactant must tie up the oxygen and leave the volume loss measurable.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Both must burn with a flame to work",
+          "correct": false,
+          "explanation": "Iron rusts without any flame; slow oxidation inside the closed volume does the same job given time.",
+          "misconception": "flame required for oxidation assumed"
+        },
+        {
+          "key": "C",
+          "text": "Both consume nitrogen as well as oxygen",
+          "correct": false,
+          "explanation": "Neither reactant targets nitrogen; the measurement depends on oxygen alone being removed.",
+          "misconception": "nitrogen consumption assumed"
+        },
+        {
+          "key": "D",
+          "text": "Both must finish within a single lesson",
+          "correct": false,
+          "explanation": "Iron versions take days; the timescale is irrelevant to the measurement principle.",
+          "misconception": "speed confused with validity"
+        }
+      ]
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L2::Q4",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L2",
+      "stem": "Why must the air volume in the experiment be fixed and sealed?",
+      "misconceptionClass": "experimental design reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "So that the measured fall in gas volume corresponds exactly to the oxygen originally present in that sample",
+          "correct": true,
+          "explanation": "A sealed, known starting volume is what turns the volume change into a percentage of the original air.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "To stop the phosphorus from escaping",
+          "correct": false,
+          "explanation": "Containment matters for safety, but the design reason is the fixed volume that makes the measurement meaningful.",
+          "misconception": "safety reason substituted for measurement reason"
+        },
+        {
+          "key": "C",
+          "text": "To keep the water from evaporating",
+          "correct": false,
+          "explanation": "Evaporation is minor here; the seal exists to define the air sample being measured.",
+          "misconception": "secondary effect promoted to purpose"
+        },
+        {
+          "key": "D",
+          "text": "To prevent the nitrogen from reacting",
+          "correct": false,
+          "explanation": "Nitrogen would not react anyway under these conditions; the seal defines the sample, it does not protect the nitrogen.",
+          "misconception": "inert gas mischaracterised"
+        }
+      ]
+    },
+    {
+      "id": "rn_6M5JB7CjvwdDykMS::L2::Q5",
+      "moduleId": "rn_6M5JB7CjvwdDykMS::L2",
+      "stem": "After the experiment, roughly what fraction of the original air volume should the water have risen to occupy?",
+      "misconceptionClass": "expected result",
+      "options": [
+        {
+          "key": "A",
+          "text": "About one-fifth, matching the approximate 20 percent of oxygen in air",
+          "correct": true,
+          "explanation": "The oxygen share of dry air is about one-fifth, so the rise should be close to a fifth of the starting air volume.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "About one-half",
+          "correct": false,
+          "explanation": "Half would imply oxygen made up half the air, contradicting the known composition.",
+          "misconception": "oxygen share doubled"
+        },
+        {
+          "key": "C",
+          "text": "About four-fifths",
+          "correct": false,
+          "explanation": "Four-fifths is the nitrogen share; nitrogen stays in the jar and displaces no water.",
+          "misconception": "nitrogen share attributed to oxygen"
+        },
+        {
+          "key": "D",
+          "text": "The whole volume, as all the air reacts",
+          "correct": false,
+          "explanation": "Only the oxygen reacts; nitrogen and the trace gases remain gaseous, so the rise is partial.",
+          "misconception": "complete consumption assumed"
+        }
+      ]
+    }
+  ]
+}

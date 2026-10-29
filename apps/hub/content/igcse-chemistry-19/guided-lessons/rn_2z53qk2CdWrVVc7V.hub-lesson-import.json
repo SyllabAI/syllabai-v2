@@ -1,0 +1,198 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_2z53qk2CdWrVVc7V",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "dc239d27209216dbeff1a2298cf0ac6ae558a4748fbf3c63852e741d5fa9f5f8",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_2z53qk2CdWrVVc7V",
+    "topicTitle": "4. Organic Chemistry",
+    "subtopicTitle": "Carboxylic acids",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/4-organic-chemistry/4-6-carboxylic-acids/4-6-1-carboxylic-acids",
+    "specAnchors": [
+      {
+        "code": "4CH1-4.34C",
+        "text": "know that carboxylic acids contain the functional group"
+      },
+      {
+        "code": "4CH1-4.35C",
+        "text": "understand how to draw structural and displayed formulae for unbranched-chain carboxylic acids with up to four carbon atoms in the molecule, and name each compound"
+      },
+      {
+        "code": "4CH1-4.37C",
+        "text": "know that vinegar is an aqueous solution containing ethanoic acid"
+      }
+    ],
+    "primer": {
+      "text": "From Manufacture of Ethanol you already know the two-carbon alcohol and both routes that produce it. This note follows the family one step further along: chains that end in the acid group -COOH, the recipe that sizes them, and the kitchen bottle that holds the best-known member.",
+      "prerequisiteSubtopic": "Alcohols"
+    },
+    "modules": [
+      {
+        "id": "rn_2z53qk2CdWrVVc7V::L1",
+        "title": "The carboxyl group and the general formula",
+        "sourceHeadings": [
+          "Carboxylic acids",
+          "Carboxylic acid functional group"
+        ],
+        "specRefs": [
+          "4CH1-4.34C"
+        ],
+        "opening": "Carboxylic acids are the family whose members carry the -COOH group at the end of a chain. This lesson fixes the functional group, the general formula and the trap inside the letter n, which counts only the alkyl chain and never the whole molecule.",
+        "keyPoints": [
+          "Carboxylic acids are compounds containing the carboxyl functional group, -COOH.",
+          "The general formula is CnH2n+1COOH, which shortens to RCOOH.",
+          "The R stands for a varying hydrocarbon chain.",
+          "In the general formula, n counts only the alkyl chain, never every carbon.",
+          "Methanoic acid has n equal to zero, the classic point of confusion."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Carboxylic acids all carry the -COOH group at the end of a chain. The general formula CnH2n+1COOH shortens to RCOOH, where R is the chain and n counts only its carbons.",
+            "analogy": "The -COOH group is like a family crest pinned to the end of a scarf; however long you knit the scarf, the same crest goes on the same end.",
+            "examPointer": "When using CnH2n+1COOH, never count the acid carbon inside n; that slip is the named trap."
+          },
+          "medium": {
+            "restatement": "Members carry the carboxyl functional group, -COOH, giving the general formula CnH2n+1COOH, written RCOOH for short. The letter n counts only the alkyl chain: methanoic acid has n = 0, and propanoic acid has n = 2 because one of its three carbons belongs to the group.",
+            "analogy": "Think of n as a headcount of passengers only: the driver seated at the fixed front end, the acid carbon, is never counted, however full the bus becomes.",
+            "examPointer": "Quote methanoic acid as the proof case: HCOOH has n = 0, which settles any argument about what n counts."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_2z53qk2CdWrVVc7V::L1::Q1",
+          "rn_2z53qk2CdWrVVc7V::L1::Q2",
+          "rn_2z53qk2CdWrVVc7V::L1::Q3",
+          "rn_2z53qk2CdWrVVc7V::L1::Q4",
+          "rn_2z53qk2CdWrVVc7V::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01"
+        ]
+      },
+      {
+        "id": "rn_2z53qk2CdWrVVc7V::L2",
+        "title": "Naming the first four acids and meeting vinegar",
+        "sourceHeadings": [
+          "Naming carboxylic acids"
+        ],
+        "specRefs": [
+          "4CH1-4.35C",
+          "4CH1-4.37C"
+        ],
+        "opening": "Names follow the pattern alkan plus oic acid, so counting carbons is the whole skill. This lesson draws and names the first four unbranched members, then meets the most familiar one in the kitchen: vinegar, a watery mixture of ethanoic acid.",
+        "keyPoints": [
+          "Names are built as alkan plus oic acid, such as ethanoic acid from two carbons.",
+          "The first four members are methanoic, ethanoic, propanoic and butanoic acid.",
+          "Their formulae run HCOOH, CH3COOH, CH3CH2COOH and CH3CH2CH2COOH.",
+          "Drawing an unbranched member means a straight chain with the -COOH at one end.",
+          "Vinegar is an aqueous solution of ethanoic acid at about 5 percent by volume."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Names run alkan plus oic acid: methanoic, ethanoic, propanoic and butanoic acid for one to four carbons. Vinegar is a weak watery mixture holding about 5 percent ethanoic acid.",
+            "analogy": "Naming is a two-piece puzzle: the chain-length piece borrowed from the alkane world clicks onto the fixed acid ending, oic acid.",
+            "examPointer": "Practise drawing all four members with the -COOH at the end; the exam asks for structural and displayed forms up to four carbons."
+          },
+          "medium": {
+            "restatement": "Each unbranched member is named alkan plus oic acid, giving methanoic HCOOH, ethanoic CH3COOH, propanoic CH3CH2COOH and butanoic CH3CH2CH2COOH. Displayed forms show every bond to the terminal -COOH group, and vinegar counts as an aqueous solution of ethanoic acid at roughly 5 percent by volume.",
+            "analogy": "The four acids form one staircase of extra CH2 steps: each name climbs a carbon, and the -COOH landing stays fixed at the top.",
+            "examPointer": "Link vinegar to ethanoic acid by name and by percentage; the pairing is a set knowledge point."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_2z53qk2CdWrVVc7V::L2::Q1",
+          "rn_2z53qk2CdWrVVc7V::L2::Q2",
+          "rn_2z53qk2CdWrVVc7V::L2::Q3",
+          "rn_2z53qk2CdWrVVc7V::L2::Q4",
+          "rn_2z53qk2CdWrVVc7V::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "carboxyl group",
+          "definition": "The -COOH arrangement of atoms that marks a carboxylic acid and sits at the end of the chain.",
+          "firstLesson": 1
+        },
+        {
+          "term": "general formula",
+          "definition": "A family recipe written with the letter n; for these acids it reads CnH2n+1COOH, shortened to RCOOH.",
+          "firstLesson": 1
+        },
+        {
+          "term": "displayed formula",
+          "definition": "A drawing showing every atom and every bond, used here for the acids up to four carbons.",
+          "firstLesson": 2
+        },
+        {
+          "term": "aqueous",
+          "definition": "Dissolved in water; the vinegar on a shelf is a watery solution of ethanoic acid.",
+          "firstLesson": 2
+        },
+        {
+          "term": "vinegar",
+          "definition": "An aqueous solution of ethanoic acid at about 5 percent by volume.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Use the general formula CnH2n+1COOH to find the molecular formula of propanoic acid.",
+        "steps": [
+          "The name prop- means the molecule has 3 carbon atoms in total.",
+          "One carbon belongs to the -COOH group, so the alkyl chain holds 3 - 1 = 2 carbons and n = 2.",
+          "The hydrogen count on the chain follows 2 x 2 + 1 = 5, giving the structural formula C2H5COOH.",
+          "Adding the acid carbon and its two oxygens gives the molecular formula C3H6O2."
+        ],
+        "finalAnswer": "Propanoic acid is C2H5COOH, molecular formula C3H6O2."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/564465104530-28940-carboxylic-acid-functional-group.png",
+        "alt": "Diagram of the general structure of a carboxylic acid",
+        "sourceHeading": "Carboxylic acid functional group",
+        "moduleIds": [
+          "L1"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/dcecb4049a1c-carboxylic-acids-the-first-four-1.png",
+        "alt": "Diagram showing the displayed formula of the first four carboxylic acids",
+        "sourceHeading": "Naming carboxylic acids",
+        "moduleIds": [
+          "L2"
+        ]
+      }
+    ]
+  }
+}

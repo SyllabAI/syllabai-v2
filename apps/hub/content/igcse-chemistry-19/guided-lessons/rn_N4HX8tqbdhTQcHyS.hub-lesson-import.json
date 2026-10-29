@@ -1,0 +1,174 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_N4HX8tqbdhTQcHyS",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "82cad4c21bc23d4eb73db1cffb42fb6eb796f146d8258d1cb10aa1fb02f2852b",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_N4HX8tqbdhTQcHyS",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Chemical Formulae, Equations, Calculations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-2-calculate-relative-mass",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.26",
+        "text": "calculate relative formula masses (including relative molecular masses) (Mr) from relative atomic masses (Ar)"
+      }
+    ],
+    "primer": {
+      "text": "The Periodic Table gave you a relative atomic mass for every element - the larger of the two numbers beside each symbol. This note builds compounds from that starting point: the relative formula mass totals the atomic masses of every atom a formula contains, brackets included. It is the number every reacting-mass working later in this subtopic rests on, so the adding has to be exact.",
+      "prerequisiteSubtopic": "The Periodic Table"
+    },
+    "modules": [
+      {
+        "id": "rn_N4HX8tqbdhTQcHyS::L1",
+        "title": "Relative Atomic Mass and Relative Formula Mass",
+        "sourceHeadings": [
+          "Relative Formula Mass & Relative Molecular Mass"
+        ],
+        "specRefs": [
+          "4CH1-1.26"
+        ],
+        "opening": "Every element carries a relative atomic mass, Ar, printed on the Periodic Table as the larger of its two numbers. A compound has no atomic mass of its own, so it borrows one: the relative formula mass, Mr, totals the atomic masses of all the atoms its formula contains. Add the Ar value of each atom present, and the total is the Mr you can take into any later working.",
+        "keyPoints": [
+          "The relative atomic mass (Ar) of an element is the larger of the two numbers beside its symbol on the Periodic Table.",
+          "The relative formula mass (Mr) of a substance is the total of the atomic masses of every atom its formula contains.",
+          "Mr is also called the relative molecular mass when the substance is a simple molecule.",
+          "Conservation of mass means the total relative formula mass of the reactants equals that of the products in a balanced equation.",
+          "Ar values come from the mass number and the relative abundances of an element's isotopes."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Find Ar on the Periodic Table, then add one Ar for every atom the formula shows: water, H2O, reads (2 x 1) + (1 x 16) = 18, and hydrogen gas, H2, reads 2 x 1 = 2.",
+            "analogy": "Treat it like a shopping bill: each element has a fixed price tag (its Ar), the subscript tells you how many of that item you are buying, and Mr is simply the bill for one formula.",
+            "examPointer": "The larger of the two numbers beside a symbol is Ar; quote it from the table before you add anything, and keep 35.5 for chlorine exactly as printed."
+          },
+          "medium": {
+            "restatement": "Relative masses compare atoms against a standard, so they are plain numbers with no units; adding them for a formula gives Mr, which is why a water molecule totals 18 from two hydrogens at 1 and one oxygen at 16.",
+            "analogy": "Think of a recipe card: hydrogen and oxygen each carry a fixed unit cost, and one serving of H2O costs two hydrogen units plus one oxygen unit - 18 in all.",
+            "examPointer": "If asked why Mr carries no unit, say the masses are relative comparisons rather than gram masses, so no unit attaches to either Ar or Mr."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_N4HX8tqbdhTQcHyS::L1::Q1",
+          "rn_N4HX8tqbdhTQcHyS::L1::Q2",
+          "rn_N4HX8tqbdhTQcHyS::L1::Q3",
+          "rn_N4HX8tqbdhTQcHyS::L1::Q4",
+          "rn_N4HX8tqbdhTQcHyS::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_N4HX8tqbdhTQcHyS::L2",
+        "title": "Formula Masses of Larger Compounds",
+        "sourceHeadings": [
+          "Relative formula (molecular) mass",
+          "How to calculate relative formula mass"
+        ],
+        "specRefs": [
+          "4CH1-1.26"
+        ],
+        "opening": "Bigger formulas bring brackets, and brackets multiply: a subscript after a closing bracket doubles or triples every element inside. Calcium hydroxide, Ca(OH)2, holds one calcium, two oxygens and two hydrogens, while ammonium sulfate, (NH4)2SO4, holds two nitrogens, eight hydrogens, one sulfur and four oxygens. List the atoms element by element first, then total their Ar values once.",
+        "keyPoints": [
+          "A subscript written after a closing bracket multiplies every element inside that bracket.",
+          "Calcium hydroxide, Ca(OH)2, contains one calcium, two oxygens and two hydrogens.",
+          "Ammonium sulfate, (NH4)2SO4, contains two nitrogens, eight hydrogens, one sulfur and four oxygens.",
+          "Total larger formulae element by element: multiply each Ar by its atom count, then add the results.",
+          "Listing the atoms present before adding is the fastest guard against miscounting bracketed groups."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "For Ca(OH)2, the bracket gives two O and two H alongside one Ca, so the total reads (1 x 40) + (2 x 16) + (2 x 1) = 74.",
+            "analogy": "A bracketed group works like a multipack: (OH)2 buys two packs, each holding one oxygen and one hydrogen, so two of each land in the basket.",
+            "examPointer": "Write the atoms-present list before any arithmetic; examiners award the method even when a final total slips."
+          },
+          "medium": {
+            "restatement": "Ammonium sulfate, (NH4)2SO4, shows the method at full size: two nitrogens, eight hydrogens, one sulfur and four oxygens give (2 x 14) + (8 x 1) + (1 x 32) + (4 x 16) = 132.",
+            "analogy": "Keep the receipt layout: one line per element with its count times its Ar, then a single addition at the bottom - the same discipline as the simple compounds, one row longer.",
+            "examPointer": "Potassium carbonate, K2CO3, is a favourite check: (2 x 39) + (1 x 12) + (3 x 16) = 138, with no brackets at all."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_N4HX8tqbdhTQcHyS::L2::Q1",
+          "rn_N4HX8tqbdhTQcHyS::L2::Q2",
+          "rn_N4HX8tqbdhTQcHyS::L2::Q3",
+          "rn_N4HX8tqbdhTQcHyS::L2::Q4",
+          "rn_N4HX8tqbdhTQcHyS::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "relative atomic mass",
+          "definition": "The mass of an atom of an element compared with a standard, shown as the larger of the two numbers beside its symbol on the Periodic Table.",
+          "firstLesson": 1
+        },
+        {
+          "term": "relative formula mass",
+          "definition": "The total of the relative atomic masses of all the atoms present in a formula; symbol Mr.",
+          "firstLesson": 1
+        },
+        {
+          "term": "relative molecular mass",
+          "definition": "The name for relative formula mass when the substance is a simple molecule.",
+          "firstLesson": 1
+        },
+        {
+          "term": "conservation",
+          "definition": "As in the law of conservation of mass: mass can be neither created nor destroyed in a chemical reaction, so the totals on both sides of a balanced equation match.",
+          "firstLesson": 1
+        },
+        {
+          "term": "isotopes",
+          "definition": "Atoms of the same element with the same number of protons but different numbers of neutrons; their abundances fix the element's relative atomic mass.",
+          "firstLesson": 1
+        },
+        {
+          "term": "subscript",
+          "definition": "The small number written after a symbol or bracket, giving how many of that atom the formula contains.",
+          "firstLesson": 2
+        },
+        {
+          "term": "formulae",
+          "definition": "The plural of formula: the written patterns of symbols and subscripts that state what a substance is made of.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Calculate the relative formula mass of sodium chloride, NaCl, copper oxide, CuO, and magnesium nitrate, Mg(NO3)2. Relative atomic masses: Na 23, Cl 35.5, Cu 63.5, O 16, Mg 24, N 14.",
+        "steps": [
+          "Sodium chloride: 23 + 35.5 = 58.5.",
+          "Copper oxide: 63.5 + 16 = 79.5.",
+          "Magnesium nitrate, Mg(NO3)2, holds one Mg, two N and six O; the two nitrogens give 14 x 2 = 28.",
+          "The six oxygens give 16 x 6 = 96.",
+          "Total: 24 + 28 + 96 = 148."
+        ],
+        "finalAnswer": "The relative formula masses are 58.5 for sodium chloride, 79.5 for copper oxide and 148 for magnesium nitrate."
+      }
+    }
+  }
+}

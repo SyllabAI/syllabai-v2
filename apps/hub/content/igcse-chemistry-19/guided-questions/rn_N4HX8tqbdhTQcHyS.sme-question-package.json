@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_N4HX8tqbdhTQcHyS",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a0707858f82d4612f2b4f753fbcc303d1d73d97489afe79e90e4c44b50243394",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_N4HX8tqbdhTQcHyS",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L1::Q1",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L1",
+      "stem": "Which number on the Periodic Table is an element's relative atomic mass?",
+      "misconceptionClass": "table-reading error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The larger of the two numbers beside the symbol",
+          "correct": true,
+          "explanation": "Ar sits beside the symbol as the larger number; the smaller one is the atomic number.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The smaller of the two numbers beside the symbol",
+          "correct": false,
+          "explanation": "That smaller number is the atomic number, which counts protons and never gives the mass.",
+          "misconception": "atomic number mistaken for Ar"
+        },
+        {
+          "key": "C",
+          "text": "The charge on its ion",
+          "correct": false,
+          "explanation": "Ion charges describe electron loss or gain, not the mass of the atom.",
+          "misconception": "ion charge confused with mass"
+        },
+        {
+          "key": "D",
+          "text": "The number of the period it sits in",
+          "correct": false,
+          "explanation": "The period number counts occupied shells; it carries no mass value.",
+          "misconception": "period position mistaken for mass"
+        }
+      ]
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L1::Q2",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L1",
+      "stem": "What does the relative formula mass, Mr, of a substance describe?",
+      "misconceptionClass": "definition confusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "The total mass of all the atoms present in one formula",
+          "correct": true,
+          "explanation": "Mr adds one Ar for every atom the formula contains, giving the formula's total relative mass.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The mass of a single atom of the element",
+          "correct": false,
+          "explanation": "That value is Ar, which belongs to one atom; Mr belongs to the whole formula.",
+          "misconception": "Ar and Mr swapped"
+        },
+        {
+          "key": "C",
+          "text": "The number of atoms in the formula",
+          "correct": false,
+          "explanation": "Mr is a mass total, not a count; the subscripts give the count and the Ar values give the mass.",
+          "misconception": "count treated as mass"
+        },
+        {
+          "key": "D",
+          "text": "The mass of one mole of the substance in grams",
+          "correct": false,
+          "explanation": "A mass in grams per mole is a later idea; Mr itself is a unit-free relative total.",
+          "misconception": "molar mass conflated with Mr"
+        }
+      ]
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L1::Q3",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L1",
+      "stem": "Using Ar values H = 1 and O = 16, what is the relative formula mass of water, H2O?",
+      "misconceptionClass": "subscript handling error",
+      "options": [
+        {
+          "key": "A",
+          "text": "18",
+          "correct": true,
+          "explanation": "(2 x 1) + (1 x 16) = 18, so a water molecule totals 18.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "17",
+          "correct": false,
+          "explanation": "This forgets to double the hydrogen: two H atoms contribute 2, not 1.",
+          "misconception": "subscript ignored on hydrogen"
+        },
+        {
+          "key": "C",
+          "text": "16",
+          "correct": false,
+          "explanation": "This drops the hydrogen entirely; both elements in the formula must be counted.",
+          "misconception": "hydrogen omitted"
+        },
+        {
+          "key": "D",
+          "text": "34",
+          "correct": false,
+          "explanation": "This doubles the oxygen as well as the hydrogen; the subscript 2 belongs to H only.",
+          "misconception": "subscript over-applied"
+        }
+      ]
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L1::Q4",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L1",
+      "stem": "A molecule of hydrogen gas is H2. Using Ar H = 1, what is its relative formula mass?",
+      "misconceptionClass": "diatomic oversight",
+      "options": [
+        {
+          "key": "A",
+          "text": "2",
+          "correct": true,
+          "explanation": "Two hydrogen atoms each contribute 1, so the formula mass is 2 x 1 = 2.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "1",
+          "correct": false,
+          "explanation": "This counts one atom only; the subscript shows hydrogen gas travels as a pair.",
+          "misconception": "diatomic subscript ignored"
+        },
+        {
+          "key": "C",
+          "text": "0.5",
+          "correct": false,
+          "explanation": "Dividing instead of multiplying has no meaning here; each atom adds its Ar once.",
+          "misconception": "division misapplied"
+        },
+        {
+          "key": "D",
+          "text": "There is no Mr for an element",
+          "correct": false,
+          "explanation": "Elements that form molecules still have formula masses; H2 is a molecule of two atoms.",
+          "misconception": "Mr reserved for compounds"
+        }
+      ]
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L1::Q5",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L1",
+      "stem": "In a balanced equation, how does the total relative formula mass of the reactants compare with that of the products?",
+      "misconceptionClass": "conservation misunderstanding",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are equal, because mass is conserved",
+          "correct": true,
+          "explanation": "The law of conservation of mass fixes the totals on both sides of the equation.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The products total more, because new material is made",
+          "correct": false,
+          "explanation": "No new material appears in a chemical reaction; mass is conserved throughout.",
+          "misconception": "mass created in reaction"
+        },
+        {
+          "key": "C",
+          "text": "The reactants total more, because some mass is used up",
+          "correct": false,
+          "explanation": "Mass is never used up in a reaction; it is rearranged into the products.",
+          "misconception": "mass destroyed in reaction"
+        },
+        {
+          "key": "D",
+          "text": "The comparison depends on the particular equation",
+          "correct": false,
+          "explanation": "Conservation applies to every balanced equation, so the totals always match.",
+          "misconception": "conservation seen as case-by-case"
+        }
+      ]
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L2::Q1",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L2",
+      "stem": "How many of each atom does calcium hydroxide, Ca(OH)2, contain?",
+      "misconceptionClass": "bracket counting error",
+      "options": [
+        {
+          "key": "A",
+          "text": "One Ca, two O and two H",
+          "correct": true,
+          "explanation": "The bracket holds one O and one H, and the subscript 2 multiplies both.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One Ca, one O and one H",
+          "correct": false,
+          "explanation": "This ignores the subscript 2, which multiplies the whole bracket.",
+          "misconception": "bracket multiplier ignored"
+        },
+        {
+          "key": "C",
+          "text": "One Ca, one O and two H",
+          "correct": false,
+          "explanation": "The subscript 2 applies to the oxygen inside the bracket as well as the hydrogen.",
+          "misconception": "multiplier applied to hydrogen only"
+        },
+        {
+          "key": "D",
+          "text": "Two Ca, two O and two H",
+          "correct": false,
+          "explanation": "The subscript sits outside the bracket, so it never touches the calcium.",
+          "misconception": "multiplier applied to the metal"
+        }
+      ]
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L2::Q2",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L2",
+      "stem": "Using Ar values Ca = 40, O = 16 and H = 1, what is the relative formula mass of Ca(OH)2?",
+      "misconceptionClass": "bracket arithmetic error",
+      "options": [
+        {
+          "key": "A",
+          "text": "74",
+          "correct": true,
+          "explanation": "(1 x 40) + (2 x 16) + (2 x 1) = 40 + 32 + 2 = 74.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "57",
+          "correct": false,
+          "explanation": "This misses the bracket doubling, counting only one O and one H.",
+          "misconception": "bracket multiplier ignored"
+        },
+        {
+          "key": "C",
+          "text": "72",
+          "correct": false,
+          "explanation": "This forgets the two hydrogens, which add 2 to the total.",
+          "misconception": "hydrogen omitted"
+        },
+        {
+          "key": "D",
+          "text": "98",
+          "correct": false,
+          "explanation": "This doubles the calcium as well: 80 + 16 + 2 = 98 applies the subscript to the wrong atom.",
+          "misconception": "multiplier applied to the metal"
+        }
+      ]
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L2::Q3",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L2",
+      "stem": "Using Ar values K = 39, C = 12 and O = 16, what is the relative formula mass of potassium carbonate, K2CO3?",
+      "misconceptionClass": "subscript handling error",
+      "options": [
+        {
+          "key": "A",
+          "text": "138",
+          "correct": true,
+          "explanation": "(2 x 39) + (1 x 12) + (3 x 16) = 78 + 12 + 48 = 138.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "99",
+          "correct": false,
+          "explanation": "This counts one potassium only; the subscript 2 doubles the 39.",
+          "misconception": "subscript ignored on potassium"
+        },
+        {
+          "key": "C",
+          "text": "122",
+          "correct": false,
+          "explanation": "This counts two oxygens instead of three, losing 16 from the total.",
+          "misconception": "oxygen miscounted"
+        },
+        {
+          "key": "D",
+          "text": "140",
+          "correct": false,
+          "explanation": "This borrows 40 as the Ar of potassium; potassium's value is 39.",
+          "misconception": "wrong Ar read from the table"
+        }
+      ]
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L2::Q4",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L2",
+      "stem": "Which atom counts does ammonium sulfate, (NH4)2SO4, give?",
+      "misconceptionClass": "bracket counting error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two N, eight H, one S and four O",
+          "correct": true,
+          "explanation": "The bracket doubles both the N and the four H inside it, then the sulfate adds S and O.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One N, four H, one S and four O",
+          "correct": false,
+          "explanation": "This reads the formula as if the bracket carried no multiplier at all.",
+          "misconception": "bracket multiplier ignored"
+        },
+        {
+          "key": "C",
+          "text": "Two N, six H, one S and four O",
+          "correct": false,
+          "explanation": "Adding the subscript instead of multiplying gives 4 + 2 hydrogens; multiplying gives 4 x 2 = 8.",
+          "misconception": "multiplier added not multiplied"
+        },
+        {
+          "key": "D",
+          "text": "One N, eight H, one S and four O",
+          "correct": false,
+          "explanation": "The subscript doubles the nitrogen inside the bracket just as it doubles the hydrogen.",
+          "misconception": "multiplier applied to hydrogen only"
+        }
+      ]
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L2::Q5",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L2",
+      "stem": "Using Ar values N = 14, H = 1, S = 32 and O = 16, what is the relative formula mass of (NH4)2SO4?",
+      "misconceptionClass": "bracket arithmetic error",
+      "options": [
+        {
+          "key": "A",
+          "text": "132",
+          "correct": true,
+          "explanation": "(2 x 14) + (8 x 1) + (1 x 32) + (4 x 16) = 28 + 8 + 32 + 64 = 132.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "114",
+          "correct": false,
+          "explanation": "This ignores the bracket doubling, counting one N and four H.",
+          "misconception": "bracket multiplier ignored"
+        },
+        {
+          "key": "C",
+          "text": "130",
+          "correct": false,
+          "explanation": "This counts six hydrogens; the bracket gives 4 x 2 = 8.",
+          "misconception": "hydrogen miscounted"
+        },
+        {
+          "key": "D",
+          "text": "148",
+          "correct": false,
+          "explanation": "This counts five oxygens; the formula shows four, contributing 64.",
+          "misconception": "oxygen miscounted"
+        }
+      ]
+    }
+  ]
+}

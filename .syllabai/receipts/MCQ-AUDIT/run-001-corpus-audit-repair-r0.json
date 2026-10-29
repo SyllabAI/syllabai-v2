@@ -1,0 +1,57 @@
+{
+  "lane": "MCQ-AUDIT",
+  "run": "run-001",
+  "trace": "1a163c51b0b2948d",
+  "date": "2026-10-22",
+  "operator_order": "check if there are more errors like this through all exam questions (origin: the ial-physics-19 MCQ honesty-notice bug report, diagnosed and backfilled this trace)",
+  "tree_of_record": {
+    "backfill_push": "68e16619..ad1e3873 main->main (ls-remote verified ad1e387323cca85b6ed9576cbcd6deba42cb1ebd)",
+    "audit_commit_candidate": "this commit (repair + audit script + receipt + worklog)"
+  },
+  "audit_method": "apps/hub/scripts/audit_mcq_corpus_health.ts replicates the player's exact classification law (hasUsableChoices / hasAnswerKey / parseOptions / parseCorrectOption / mcqOptionsVisible verbatim from question-player.tsx @ ad1e3873) over every part of every question of every course bundle in apps/hub/content/ (94 courses, 2,120 topics, 36,608 questions, 58,124 parts)",
+  "census_of_record": {
+    "mcq_total": 8786,
+    "mcq_answerable": 8783,
+    "mcq_not_answerable": 3,
+    "keyedText": 6900,
+    "letterOnly": 1883,
+    "letterOnlyArtworkHidden_info": 77,
+    "legacy_parse": 0,
+    "structured": 49338,
+    "structured_no_solution": 117,
+    "empty_problem_parts": 0,
+    "questions_without_parts": 0
+  },
+  "findings": [
+    {
+      "class": "REPORTED-CLASS (MCQ choices missing)",
+      "count": 0,
+      "verdict": "CLOSED — 0 of 8,786 MCQ parts lack choices corpus-wide (was 1,976 across 17 bundles before this trace's backfill). Wave-15 sibling content (igcse-chemistry-19 1CR tranche, 118Q/636P) verified clean: 343 MCQ parts all keyed, structured parts all solved."
+    },
+    {
+      "class": "E1 ambiguous-key MCQs (honest notice)",
+      "count_after_repair": 3,
+      "verdict": "ALL 3 are GENUINE MULTI-SELECT questions in cie-igcse-geography-25 (tourism qstnprt_CynRM8qyJh8JvtPD 2-of-6 correct; fieldwork qstnprt_wwyp5VXqrzDvTpHW 3-of-7; graphical-skills qstnprt_nHgZVRw5HDbRS35f 2-of-5). Upstream SME topic.json verified first-hand: multi is_correct flags are UPSTREAM-NATIVE and the upstream solutions explicitly say 'The correct answers are B and F. Both are needed for the mark' / 'C and D are the correct answers'. The single-answer player's honest notice is the DESIGNED behavior; re-keying to exactly-one would fabricate. Remedy = a multi-select player mode (NEW FEATURE LANE, not ordered)."
+    },
+    {
+      "class": "E1 REPAIRED — igcse-business-19 net-cash-flow",
+      "count": 1,
+      "part": "qstnprt_RyYdc9MQhSy5S9PQ",
+      "verdict": "Upstream flags A AND B is_correct=true, but the same upstream stem says 'Select one answer' and the same upstream solutionMd says 'The correct answer is A' plus 'B is incorrect because adding total cash inflow and total cash outflow is not the correct calculation'. Double-attested upstream self-contradiction. REPAIR APPLIED under the same-question solutionMd attestation standard (the Fe-56 isotope-row precedent of this trace's pilot): B -> false, exactly-one-correct=[A] restored. Semantic diff vs HEAD: exactly 1 field changed. Prior 'kept verbatim' note superseded: the attestation existed, it had not been located when that note was made."
+    },
+    {
+      "class": "E2 structured parts with no solutionMd",
+      "count": 117,
+      "course": "igcse-maths-b-16 ONLY (37 of its topics, 4MB1 past papers)",
+      "learner_impact": "SEVERE: TypedAnswerWorkspace renders only when part.solutionMd exists (question-player.tsx:757) — these parts render as read-only stems with NO answer input and no model answer",
+      "provenance": "NOT the SME lane — source.provider = 'Pearson Edexcel past papers — SyllabAI/syllabai-pastpapers archive (deterministic pdflane parse)'. Course solution coverage 95.1% (2,295 solved / 117 not). Loss pattern: first parts never affected; losses at mid (53) and last (32) positions = PDF part-attribution failure in the parse lane, not an upstream gap (mark schemes carry plain-text answers for e.g. standard-form arithmetic).",
+      "recovery_path": "Re-parse the 4MB1 mark-scheme PDFs (syllabai-pastpapers repo, ~37 MS PDFs) and re-attach per-part solutions. The original pdflane parse scripts are NOT committed in syllabai-v2 or syllabai-resources (checked both) — the lane needs a fresh parser build. NOT EXECUTED: new lane requiring operator order."
+    }
+  ],
+  "gates": {
+    "prebuild_after_repair": "ALL GREEN (verify_corpus_23a PASSED; verify_flashcard_sync_courses exit 0; validate_cie_bundles PASSED)",
+    "corpus_audit_post_repair": "8,783/8,786 MCQ answerable; the 3 remainder are upstream-native multi-selects"
+  },
+  "push": "PENDING — filed with the repair commit",
+  "artifacts": ["corpus-audit-run-001-census-r0.json"]
+}

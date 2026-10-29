@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_2z53qk2CdWrVVc7V",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "69ed43dbdfcf6f17fb2519c7aba7c54bfe97f423faecd8226b59239a98b1da1c",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_2z53qk2CdWrVVc7V",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L1::Q1",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L1",
+      "stem": "Which group marks a compound as a carboxylic acid?",
+      "misconceptionClass": "functional group recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "-COOH at the end of a chain",
+          "correct": true,
+          "explanation": "The carboxyl arrangement of atoms is the defining feature of the whole family.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "-OH on its own",
+          "correct": false,
+          "explanation": "An -OH alone marks an alcohol, one step short of the acid group.",
+          "misconception": "alcohol confused"
+        },
+        {
+          "key": "C",
+          "text": "-COO- between two chains",
+          "correct": false,
+          "explanation": "That arrangement is the ester link, not the acid group.",
+          "misconception": "ester confused"
+        },
+        {
+          "key": "D",
+          "text": "A carbon-carbon double bond",
+          "correct": false,
+          "explanation": "A C=C bond marks an alkene and has nothing to do with acidity.",
+          "misconception": "alkene confused"
+        }
+      ]
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L1::Q2",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L1",
+      "stem": "In the general formula CnH2n+1COOH, what does n count?",
+      "misconceptionClass": "formula interpretation",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only the carbons in the alkyl chain",
+          "correct": true,
+          "explanation": "The acid carbon sits outside the count, which is exactly why methanoic acid has n = 0.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Every carbon in the molecule including the acid carbon",
+          "correct": false,
+          "explanation": "Counting the acid carbon would shift every formula by one carbon.",
+          "misconception": "total carbon misread"
+        },
+        {
+          "key": "C",
+          "text": "The number of hydrogen atoms",
+          "correct": false,
+          "explanation": "Hydrogens follow as 2n+1; n itself counts carbons in the chain.",
+          "misconception": "subscript swap"
+        },
+        {
+          "key": "D",
+          "text": "The number of oxygen atoms",
+          "correct": false,
+          "explanation": "The acid always carries two oxygens regardless of n.",
+          "misconception": "constant misread"
+        }
+      ]
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L1::Q3",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L1",
+      "stem": "What is the value of n for methanoic acid, HCOOH?",
+      "misconceptionClass": "edge case",
+      "options": [
+        {
+          "key": "A",
+          "text": "Zero, because there is no alkyl chain at all",
+          "correct": true,
+          "explanation": "The single carbon present belongs to the acid group, so the chain count is empty.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One, because one carbon is visible in the formula",
+          "correct": false,
+          "explanation": "That one carbon is the acid carbon, which never enters the count.",
+          "misconception": "total carbon misread"
+        },
+        {
+          "key": "C",
+          "text": "Two, counting the carbon and one oxygen",
+          "correct": false,
+          "explanation": "n never counts oxygen atoms under any reading.",
+          "misconception": "element mixed in"
+        },
+        {
+          "key": "D",
+          "text": "It is undefined for the first member",
+          "correct": false,
+          "explanation": "The formula applies cleanly; n is simply zero for the shortest member.",
+          "misconception": "formula refusal"
+        }
+      ]
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L1::Q4",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L1",
+      "stem": "What does the R stand for in the shortened formula RCOOH?",
+      "misconceptionClass": "notation meaning",
+      "options": [
+        {
+          "key": "A",
+          "text": "A hydrocarbon chain of any length",
+          "correct": true,
+          "explanation": "R is the placeholder for the varying chain that the acid group sits upon.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A metal atom",
+          "correct": false,
+          "explanation": "Metals appear in salts of these acids, never inside RCOOH itself.",
+          "misconception": "salt confused"
+        },
+        {
+          "key": "C",
+          "text": "The acid group itself",
+          "correct": false,
+          "explanation": "The group is written separately as COOH; R is everything else.",
+          "misconception": "double counting"
+        },
+        {
+          "key": "D",
+          "text": "A water molecule",
+          "correct": false,
+          "explanation": "Water is a product of some reactions here but is never the R group.",
+          "misconception": "group misassigned"
+        }
+      ]
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L1::Q5",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L1",
+      "stem": "Which writing of the family formula is the shortened form?",
+      "misconceptionClass": "formula forms",
+      "options": [
+        {
+          "key": "A",
+          "text": "RCOOH",
+          "correct": true,
+          "explanation": "Replacing the chain detail with R compresses CnH2n+1COOH to its shortest honest form.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "CnH2n+2",
+          "correct": false,
+          "explanation": "That recipe belongs to the alkane family, not to the acids.",
+          "misconception": "family crossed"
+        },
+        {
+          "key": "C",
+          "text": "R-OH",
+          "correct": false,
+          "explanation": "That is the alcohol shorthand; the acids need the full -COOH.",
+          "misconception": "alcohol confused"
+        },
+        {
+          "key": "D",
+          "text": "CnH2n",
+          "correct": false,
+          "explanation": "That recipe fits alkenes, not the acid family.",
+          "misconception": "family crossed"
+        }
+      ]
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L2::Q1",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L2",
+      "stem": "Which name belongs to CH3CH2COOH?",
+      "misconceptionClass": "naming from formula",
+      "options": [
+        {
+          "key": "A",
+          "text": "Propanoic acid",
+          "correct": true,
+          "explanation": "Three carbons in total give the prop- stem with the oic acid ending.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Ethanoic acid",
+          "correct": false,
+          "explanation": "Ethanoic acid carries only two carbons, CH3COOH.",
+          "misconception": "count misread"
+        },
+        {
+          "key": "C",
+          "text": "Butanoic acid",
+          "correct": false,
+          "explanation": "Butanoic acid carries four carbons, one more than shown.",
+          "misconception": "count misread"
+        },
+        {
+          "key": "D",
+          "text": "Propanol",
+          "correct": false,
+          "explanation": "The -ol ending marks an alcohol; this structure ends in the acid group.",
+          "misconception": "ending swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L2::Q2",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L2",
+      "stem": "Which structure belongs to butanoic acid?",
+      "misconceptionClass": "formula from name",
+      "options": [
+        {
+          "key": "A",
+          "text": "CH3CH2CH2COOH",
+          "correct": true,
+          "explanation": "Four carbons in total means three in the chain plus the acid carbon.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "CH3COOH",
+          "correct": false,
+          "explanation": "That two-carbon structure is ethanoic acid.",
+          "misconception": "member shifted"
+        },
+        {
+          "key": "C",
+          "text": "HCOOH",
+          "correct": false,
+          "explanation": "That single-carbon structure is methanoic acid.",
+          "misconception": "member shifted"
+        },
+        {
+          "key": "D",
+          "text": "CH3CH2COOH",
+          "correct": false,
+          "explanation": "That three-carbon structure is propanoic acid.",
+          "misconception": "member shifted"
+        }
+      ]
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L2::Q3",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L2",
+      "stem": "How many carbon atoms does ethanoic acid contain in total?",
+      "misconceptionClass": "carbon counting",
+      "options": [
+        {
+          "key": "A",
+          "text": "Two, one in the chain and one in the acid group",
+          "correct": true,
+          "explanation": "The CH3 contributes one carbon and the -COOH contributes the other.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "One, because only the CH3 is visible",
+          "correct": false,
+          "explanation": "The acid carbon is easy to miss but is present in the -COOH.",
+          "misconception": "acid carbon overlooked"
+        },
+        {
+          "key": "C",
+          "text": "Three",
+          "correct": false,
+          "explanation": "Three carbons in total would make it propanoic acid.",
+          "misconception": "member shifted"
+        },
+        {
+          "key": "D",
+          "text": "Four",
+          "correct": false,
+          "explanation": "Four carbons in total belong to butanoic acid.",
+          "misconception": "member shifted"
+        }
+      ]
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L2::Q4",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L2",
+      "stem": "What exactly is vinegar?",
+      "misconceptionClass": "everyday link",
+      "options": [
+        {
+          "key": "A",
+          "text": "An aqueous solution of ethanoic acid at about 5 percent",
+          "correct": true,
+          "explanation": "The household liquid is a dilute watery solution of the acid, not the pure substance.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Pure ethanoic acid",
+          "correct": false,
+          "explanation": "Pure ethanoic acid is a concentrated liquid, far stronger than any kitchen bottle.",
+          "misconception": "purity overstated"
+        },
+        {
+          "key": "C",
+          "text": "Ethanol with flavourings added",
+          "correct": false,
+          "explanation": "Ethanol is the starting material of the acid, but vinegar contains the acid itself.",
+          "misconception": "alcohol confused"
+        },
+        {
+          "key": "D",
+          "text": "A solution of citric acid",
+          "correct": false,
+          "explanation": "Citric acid souring fruit is a different acid; vinegar is firmly ethanoic.",
+          "misconception": "acid swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_2z53qk2CdWrVVc7V::L2::Q5",
+      "moduleId": "rn_2z53qk2CdWrVVc7V::L2",
+      "stem": "A student draws displayed formulae of the first four acids. Which rule keeps every member unbranched?",
+      "misconceptionClass": "drawing convention",
+      "options": [
+        {
+          "key": "A",
+          "text": "One straight chain with the -COOH group at the end",
+          "correct": true,
+          "explanation": "Unbranched members run a single chain with the acid group terminal.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The -COOH group sits in the middle of the chain",
+          "correct": false,
+          "explanation": "A mid-chain group would break the acid pattern these members follow.",
+          "misconception": "position invented"
+        },
+        {
+          "key": "C",
+          "text": "Side branches appear from three carbons upward",
+          "correct": false,
+          "explanation": "The first four members carry no branches at all.",
+          "misconception": "branching invented"
+        },
+        {
+          "key": "D",
+          "text": "Rings form once four carbons are present",
+          "correct": false,
+          "explanation": "These acids stay open chains; rings belong to other families.",
+          "misconception": "ring invented"
+        }
+      ]
+    }
+  ]
+}

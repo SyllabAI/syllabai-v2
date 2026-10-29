@@ -1,0 +1,203 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_4tzwS4GZjPybwtkS",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "a6fac4e1c86f4117cb304864d6d0ec972d14278b7eaa052fdc7f60471010731f",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_4tzwS4GZjPybwtkS",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Chemical Formulae, Equations, Calculations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-9-calculate-concentrations-of-solutions",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.34C",
+        "text": "understand how to carry out calculations involving amount of substance, volume and concentration (in mol/dm3) of solution"
+      }
+    ],
+    "primer": {
+      "text": "Moles are already second nature: masses to moles with Mr, and the three-step reacting-mass method. This note moves the counting into liquids, where the same mole tally spreads through a measured volume of solution to give concentration.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_4tzwS4GZjPybwtkS::L1",
+        "title": "Solute, Solvent and Concentration",
+        "sourceHeadings": [
+          "Calculate Concentrations of Solutions"
+        ],
+        "specRefs": [
+          "4CH1-1.34C"
+        ],
+        "opening": "Dissolving a solid into a liquid makes a solution, and the amount of solute packed into a given volume decides how concentrated it is. Chemists quote that packing as moles or grams per dm3, with moles the more useful of the two.",
+        "keyPoints": [
+          "A solute is the solid that dissolves; a solvent is the liquid it dissolves into; together they form a solution.",
+          "Concentration is the amount of solute present in a specific volume of solvent.",
+          "More solute in the same volume means a greater concentration, sometimes called strength.",
+          "Concentration carries units of g / dm3 or mol / dm3, with moles the more useful measure.",
+          "To convert cm3 to dm3 divide by 1000; to convert dm3 to cm3 multiply by 1000.",
+          "The formula triangle links moles, concentration and volume: cover the one you want."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Concentration is just how much solute sits in each dm3 of solution; more solute in the same volume means stronger. Moles per dm3 is the preferred measure for chemists, grams per dm3 the everyday one.",
+            "analogy": "Strong coffee: more powder in the same cup tastes stronger. Dissolve more sugar in the same beaker of water and the concentration climbs, exactly the same idea.",
+            "examPointer": "Unit choices are g / dm3 and mol / dm3; if a question asks for mol / dm3, the moles must be found first."
+          },
+          "medium": {
+            "restatement": "The definition splits into two halves, amount of solute and volume of solvent, and quoting one without the other says nothing about strength. The formal units keep volume in dm3, so cm3 figures must be divided by 1000 before any dividing by volume.",
+            "analogy": "Two towns with the same number of shops feel different depending on size: shops per square mile, not shops alone, describes crowding. Solute per dm3, not solute alone, describes concentration.",
+            "examPointer": "Conversions travel both ways: divide by 1000 going cm3 to dm3, multiply by 1000 coming back - the exam hint names this the classic slip."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_4tzwS4GZjPybwtkS::L1::Q1",
+          "rn_4tzwS4GZjPybwtkS::L1::Q2",
+          "rn_4tzwS4GZjPybwtkS::L1::Q3",
+          "rn_4tzwS4GZjPybwtkS::L1::Q4",
+          "rn_4tzwS4GZjPybwtkS::L1::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      },
+      {
+        "id": "rn_4tzwS4GZjPybwtkS::L2",
+        "title": "Calculating Concentrations",
+        "sourceHeadings": [
+          "Calculate Concentrations of Solutions"
+        ],
+        "specRefs": [
+          "4CH1-1.34C"
+        ],
+        "opening": "Every concentration question reduces to the triangle: moles, concentration and volume, with any two known and the third found. Masses must first cross into moles through Mr, titration results must respect the ratio of the balanced equation, and every volume must sit in dm3 before dividing.",
+        "keyPoints": [
+          "Moles of solute equal concentration multiplied by volume, with the volume in dm3.",
+          "Volume of solution equals moles divided by concentration.",
+          "Convert a mass to moles using Mr before any concentration working begins.",
+          "Titration results use the ratio in the balanced equation to scale moles across the two solutions.",
+          "Convert every volume to dm3 before the final division."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Moles = concentration x volume rearranges three ways, so any two of moles, concentration and volume give the third. Keep volume in dm3 throughout and the triangle never lies.",
+            "analogy": "Speed, distance and time behave identically: know any two and the third follows, and mixing miles with kilometres breaks the working just as cm3 breaks dm3 working.",
+            "examPointer": "A mass concentration question is two triangles stacked: mass to moles via Mr, then moles and volume into the triangle."
+          },
+          "medium": {
+            "restatement": "From a mass: convert to moles with Mr, convert cm3 to dm3, then divide moles by volume. From a titration: find moles of the known solution, scale by the ratio in the balanced equation, then divide by the second volume.",
+            "analogy": "Recipe scaling: one packet feeds two, so twenty guests need ten packets. The balanced equation is the recipe and the mole ratio is the packet count.",
+            "examPointer": "The 25.0 cm3 neutralised-by-HCl style question carries four marks: moles, ratio, volume change, and only then the final division."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_4tzwS4GZjPybwtkS::L2::Q1",
+          "rn_4tzwS4GZjPybwtkS::L2::Q2",
+          "rn_4tzwS4GZjPybwtkS::L2::Q3",
+          "rn_4tzwS4GZjPybwtkS::L2::Q4",
+          "rn_4tzwS4GZjPybwtkS::L2::Q5"
+        ],
+        "figureIds": [
+          "fig-01",
+          "fig-02"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "solute",
+          "definition": "The solid substance that dissolves into a liquid.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solvent",
+          "definition": "The liquid that a solute dissolves in.",
+          "firstLesson": 1
+        },
+        {
+          "term": "solution",
+          "definition": "The mixture formed when a solute dissolves in a solvent.",
+          "firstLesson": 1
+        },
+        {
+          "term": "concentration",
+          "definition": "The amount of solute present in a specific volume of solvent.",
+          "firstLesson": 1
+        },
+        {
+          "term": "strength",
+          "definition": "The everyday name for how concentrated a solution is.",
+          "firstLesson": 1
+        },
+        {
+          "term": "amount of substance",
+          "definition": "The mole count of a solute, preferred over mass by chemists.",
+          "firstLesson": 1
+        },
+        {
+          "term": "titration",
+          "definition": "A measured neutralisation used to find an unknown concentration.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Calculate the concentration, in mol / dm3, of a sodium hydroxide solution when 80 g is dissolved in 500 cm3 of water. Relative atomic masses, Ar: Na 23, H 1, O 16.",
+        "steps": [
+          "Mr of NaOH: 23 + 16 + 1 = 40.",
+          "Moles of NaOH: 80 / 40 = 2.",
+          "Volume: 500 / 1000 = 0.5.",
+          "Concentration: 2 / 0.5 = 4."
+        ],
+        "finalAnswer": "The concentration is 4 mol per cubic decimetre."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bd412c868d44-1-2-7-concentration-moles-formula-triangle.png",
+        "alt": "Concentration moles formula triangle, downloadable IB Chemistry revision notes",
+        "sourceHeading": "Calculate Concentrations of Solutions",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/c6a4aebde576-57403-unit-conversion.png",
+        "alt": "How to convert from cm3 to dm3 and back",
+        "sourceHeading": "Calculate Concentrations of Solutions",
+        "moduleIds": [
+          "L1",
+          "L2"
+        ]
+      }
+    ]
+  }
+}

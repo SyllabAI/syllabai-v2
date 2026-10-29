@@ -1,0 +1,35 @@
+{
+ "receipt": "parse-repair-lanes-run-001-r0",
+ "family": "CONTENT-AUDIT",
+ "operatorTrace": "1a1615fe86d96ed9",
+ "operatorOrder": "band B (geo-25's 111 cross-edition rows), band C (EL/fleet leave-unjoined codification), and then the two parse/spine repair lanes — 2026-10-22, zai-web",
+ "agent": "main agent (Z.ai, zai-web session web-6139ba42-da3d-435b-8237-f8623816ae6c, chat a2288756)",
+ "phase": "BOTH parse/spine repair lanes FIRED END-TO-END of record (the candidates FILED by band A's corrections of record, gated by this order): lane 1 = 9709 P3 3.1 algebra glue (spine 39->43 via PURE3_ALGEBRA_SPLIT; 12 joins; pure-3 notes 63->75/79); lane 2 = 0606 topics 3/9/12 + statement/example split policy (lattice 68->77 / 11->14 topics via FM25_ADDED_TOPICS; 9 joins; fm25 notes 23->32/67); determinism baselines sha-proven; kg 93/94 (the 1 FAIL = the pre-existing pure-2 ghost); bun test 0 fail both landings",
+ "lane1": {
+  "resources": "06de1f2a", "v2": "ea7b994",
+  "groundTruth": "official PDF 597421 fetched fresh; 3.1 has FIVE official bullets; the parse glued bullets 2-5 into parse row 3.1.2 and lost the superscript-two glyphs",
+  "repair": "codes 3.1.1/3.1.2 STABLE (3.1.1 notes-column leak trimmed; 3.1.2 trimmed to its true bullet-1 relations limb, superscripts restored — the glued title stands disclosed, functionally superseded); NEW points 3.1.3-3.1.6 = bullets 2-5 verbatim; +4 nodes/+4 edges; 37 order shifts all +4; manifest officialSpine.repairRun",
+  "joins": "12 rows / 15 code entries (Polynomial Division 3.1.3; Factorisation 3.1.3+3.1.4; Factor & Remainder 3.1.4; three partial-fractions notes + Rational Expressions 3.1.5; Improper Fractions 3.1.3+3.1.5; four binomial notes 3.1.6); 4 rows stay pending (no P3 statement teaches them)"
+ },
+ "lane2": {
+  "resources": "b83a3799a", "v2": "b149e11",
+  "groundTruth": "official PDF 662470 fetched fresh; topics 3/9/12 dropped entirely by the parse",
+  "policy": "STATEMENT/EXAMPLE SPLIT POLICY of record: served 0606 grammar = statements as SUBTOPIC titles, example sub-bullets as N.M.K points (over-split codes byte-stable — the join surface); sub-bullet-less statements land as point N.M.1",
+  "repair": "+3 TOPIC/+9 SUBTOPIC/+9 SPEC_POINT nodes, +21 edges, ZERO existing nodes changed; topic/point orders reassigned by official sequence (relative order preserved); manifest repairRun",
+  "joins": "9 rows / 12 code entries (3.1.1; 3.2.1; 3.2.1+3.3.1; 9.1.1 x2; 12.1.1+12.2.1; 12.3.1; 12.4.1; 12.4.1+12.5.1); Operations-with-Polynomials stays pending (no 0606 statement teaches it); the 31 band-A statement-level rows byte-untouched"
+ },
+ "correctionsOfRecord": [
+  "repair-1 re-run double-appended the lane's resolve rows (24/12 R-census abort caught by the fail-closed guard, yaml restored by the guard) — regen-universe bug fixed",
+  "repair-2 first R3 wrongly assumed the pending universe was only the touched rows — reworked to membership+post-shape",
+  "repair-2's first consume ran with a hand-typed PIN matching only the 8-char prefix — caught by this session's own full-sha verify BEFORE any apply; wrapper PIN corrected, consume re-run; the wrong-pin staging was scratch-only",
+  "fm25 manifest counts convention (sections=TOPICs, topics=SUBTOPICs) corrected mid-lane before push",
+  "the CIE meta.counts construction now reads the assembled nodes (post-override truth); pure-3 rebuild byte-verified stable after the patch"
+ ],
+ "gates": "both lanes: pre-override rebuild sha256-IDENTICAL to the live spine (pure-3 718983f1..., fm25 b6b5e2a3...); delta gates exact; kg_export --check-only 93/94 both landings (pure-3 ok 54/53/43, fm25 ok 126/125/34/77); bun test apps/api packages 0 fail (2508 pass / 13 skip) both landings; consumptions: merge-twice deterministic, learner deltas byte-guarded (specPointIds/specPointCodes only, bodyMd byte-equal, curriculum/flashcards/questions byte-identical)",
+ "operatorQueue": ["the standing queue (4MB1 archive followups, PAT/Neon rotation, specPointIds backfill, DB tutor re-ingest); the pure-2 ghost (35505e43 posture) and the lossy 0606 served titles (sub-bullet-less statements aside) remain disclosed, not re-scoped by this order"],
+ "artifacts": [
+  "resources 06de1f2a + b83a3799a: scripts/cie_parse_repair_join.py + scripts/cie_parse_repair2_join.py + cie_complete_verdicts.yaml (790 rows: 509 resolve / 281 pending) + sidecars + manifest (cie_complete.parse_repair.{REPAIR-1,REPAIR-2}) + reports",
+  "v2 ea7b994 + b149e11: build_official_spines.py (PURE3_ALGEBRA_SPLIT + FM25_ADDED_TOPICS + counts node-truth) + spines + content bundles + content-maps + _report_cie_consume.json",
+  "session-side: work/597421-2023-2025-syllabus.pdf + 662470-2025-2027-syllabus.pdf + extracted texts; work/cie-consume-repair{1,2}/"
+ ]
+}

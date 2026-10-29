@@ -1,0 +1,189 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_pWzTTBv3B4yGFfj3",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "60578c117f01d4a3d49f985de135a45ada7614ca5e2db0142f1b5cf9c709fd64",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_pWzTTBv3B4yGFfj3",
+    "topicTitle": "1. Principles of Chemistry",
+    "subtopicTitle": "Chemical Formulae, Equations, Calculations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/1-principles-of-chemistry/1-5-chemical-formulae-equations-calculations/1-5-6-experiment-finding-formulae-of-compounds",
+    "specAnchors": [
+      {
+        "code": "4CH1-1.31",
+        "text": "understand how the formulae of simple compounds can be obtained experimentally, including metal oxides, water and salts containing water of crystallisation"
+      },
+      {
+        "code": "4CH1-1.33",
+        "text": "calculate empirical and molecular formulae from experimental data"
+      }
+    ],
+    "primer": {
+      "text": "The last few notes turned masses into moles and moles back into masses using relative formula masses. This note points that arithmetic at the laboratory bench: measure masses before and after a reaction, convert both into moles, and the ratio that falls out is the formula itself. The worked case is a salt that carries water inside its crystals.",
+      "prerequisiteSubtopic": null
+    },
+    "modules": [
+      {
+        "id": "rn_pWzTTBv3B4yGFfj3::L1",
+        "title": "Formulae of Simple Compounds by Experiment",
+        "sourceHeadings": [
+          "Formulae of Simple Compounds by Experiment",
+          "Formulae of a simple compound by experiment"
+        ],
+        "specRefs": [
+          "4CH1-1.31"
+        ],
+        "opening": "A chemical formula can be dug out of the laboratory itself: weigh the substances before and after a reaction, convert both masses into moles, and compare the two. Experiments where a gas escapes or is taken up suit this treatment best, because the mass change is easy to see. The ratio of moles then hands you the empirical formula.",
+        "keyPoints": [
+          "Mass measurements taken before and after a reaction are the raw material for a formula.",
+          "Converting the masses into moles lets molar ratios be deduced, and the ratios give the empirical formula.",
+          "Experiments with gases being lost or gained are the easiest to handle this way.",
+          "Heating a hydrated salt drives its water off as vapour, shrinking the mass by exactly the water's contribution.",
+          "The formulae of metal oxides, water and salts holding water of crystallisation can all be found experimentally."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Before the reaction, weigh everything; afterwards, weigh again. The difference is the mass that left as gas, and the two remaining masses convert into moles for the ratio.",
+            "analogy": "It works like counting a leaky delivery: weigh the van full and again at the end, and whatever vanished on the road is exactly what the journey consumed.",
+            "examPointer": "When a question says 'a gas is lost', read it as an invitation to use the mass change rather than a warning that the data is broken."
+          },
+          "medium": {
+            "restatement": "The bench method and the arithmetic method are the same move at different scales: balances supply the masses, relative formula masses turn them into moles, and the mole ratio is the formula, straight from evidence.",
+            "analogy": "Think of a baker deducing a recipe from the flour gone missing and the bread that appeared: the pantry's losses and gains, weighed carefully, expose the proportions.",
+            "examPointer": "Questions usually hand you the masses; the marks sit in dividing by the right relative formula masses and simplifying the ratio without panic."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_pWzTTBv3B4yGFfj3::L1::Q1",
+          "rn_pWzTTBv3B4yGFfj3::L1::Q2",
+          "rn_pWzTTBv3B4yGFfj3::L1::Q3",
+          "rn_pWzTTBv3B4yGFfj3::L1::Q4",
+          "rn_pWzTTBv3B4yGFfj3::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_pWzTTBv3B4yGFfj3::L2",
+        "title": "The Formula of a Hydrated Salt",
+        "sourceHeadings": [
+          "The formula of a hydrated salt"
+        ],
+        "specRefs": [
+          "4CH1-1.31",
+          "4CH1-1.33"
+        ],
+        "opening": "Copper sulfate crystals are blue because they hold water; heat them and the blue gives way to a white powder as steam escapes. Weighing before and after captures the water's mass, and dividing each remaining mass by its relative formula mass exposes the ratio of salt to water - the x in the formula.",
+        "keyPoints": [
+          "The aim is to determine the formula of hydrated copper sulfate, written CuSO4.xH2O.",
+          "Heat gently and stir until the blue salt turns completely white, showing all the water has left.",
+          "The water's mass is the hydrated mass minus the anhydrous mass left in the dish.",
+          "Divide each mass by its own relative formula mass, then simplify the ratio of water to salt.",
+          "Write the answer in the form salt.xH2O, rounding the water count to the nearest whole number.",
+          "Avoid overheating: a decomposed salt loses extra mass and corrupts the ratio."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Blue crystals go into the dish, white powder comes out; the missing grams are water. Two divisions by relative formula masses turn salt-mass and water-mass into moles, and the mole ratio writes the formula.",
+            "analogy": "It is like weighing a soggy sponge before and after drying: the difference is the water it held, and weighing the dry sponge separately tells you the sponge's own share.",
+            "examPointer": "Expect an awkward mole ratio: whole numbers are unlikely first time, so round the water figure sensibly at the end."
+          },
+          "medium": {
+            "restatement": "Each mass divides by the relative formula mass of what it measures: salt mass by the anhydrous Mr, water mass by eighteen. Simplify the two mole values to a whole-number ratio and stamp it after the salt's formula.",
+            "analogy": "Two friends split a hotel bill in an odd ratio; divide what each paid by the price of one night and the ratio of nights tells you who stayed how long.",
+            "examPointer": "State the salt formula with its dot before quoting x: examiners want CuSO4.xH2O-style answers, not a bare number floating alone."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_pWzTTBv3B4yGFfj3::L2::Q1",
+          "rn_pWzTTBv3B4yGFfj3::L2::Q2",
+          "rn_pWzTTBv3B4yGFfj3::L2::Q3",
+          "rn_pWzTTBv3B4yGFfj3::L2::Q4",
+          "rn_pWzTTBv3B4yGFfj3::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "hydrated salt",
+          "definition": "A salt that carries water within its crystals.",
+          "firstLesson": 1
+        },
+        {
+          "term": "water of crystallisation",
+          "definition": "Water locked into a hydrated salt's crystal structure, written into the formula after a dot.",
+          "firstLesson": 1
+        },
+        {
+          "term": "empirical formula",
+          "definition": "The simplest whole-number ratio of the elements or ions in a compound, deduced here from mole ratios.",
+          "firstLesson": 1
+        },
+        {
+          "term": "mole",
+          "definition": "The counting unit for amounts of substance; a mass divided by the substance's relative formula mass gives the number of moles.",
+          "firstLesson": 1
+        },
+        {
+          "term": "mass change",
+          "definition": "The difference between the masses recorded before and after heating; in this method it is the water's mass.",
+          "firstLesson": 1
+        },
+        {
+          "term": "anhydrous",
+          "definition": "Describes the salt left once every trace of its water has been driven off.",
+          "firstLesson": 2
+        },
+        {
+          "term": "relative formula mass",
+          "definition": "The total of the relative atomic masses in a formula; the number masses are divided by to reach moles.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "A dish holds 4.88 g of hydrated copper sulfate, CuSO4.xH2O. Gentle heating to constant mass leaves 4.00 g of white anhydrous CuSO4. (Mr: CuSO4 = 159.5, H2O = 18.) a) Calculate the mass of water lost. b) Determine x and write the formula of the hydrated salt.",
+        "steps": [
+          "a) Mass of water = 4.88 - 4.00 = 0.88 g.",
+          "b) Moles of CuSO4 = 4.00 / 159.5 = 0.025 mol.",
+          "Moles of H2O = 0.88 / 18 = 0.049 mol.",
+          "Ratio of water to salt = 0.049 / 0.025 = 1.96, which rounds to the nearest whole number 2.",
+          "The formula of the hydrated salt is CuSO4.2H2O."
+        ],
+        "finalAnswer": "a) 0.88 g of water. b) x = 2, so the salt is CuSO4.2H2O."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/aad49939ebf1-1-5-6-water-of-crystallisation.png",
+        "alt": "Water of Crystallisation, downloadable IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Diagram:",
+        "moduleIds": []
+      }
+    ]
+  }
+}

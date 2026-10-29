@@ -1,0 +1,42 @@
+{
+ "receipt": "T-MIG-138/run-007-drain-fire-r1c.json",
+ "lane": "r1c (Super Z, zai-web session web-6ea7f4ac-d538-4f4f-821f-7e51e0c25cc0, chat 4c2c9606, trace of this act's census: dispatch captured first-hand; operator re-key message 'Ping')",
+ "operator_order": "re-key 'Ping' arriving 2026-10-22 ~09:05Z = the FIRST operator message past the 07:05Z window — executing the staged recipe of record (run-005 + addendum-1 + Task-47 coordination notes): 'the backfill drain resumes at RPD reset', r1c PRIMARY fire lane",
+ "preflight_gates": {
+  "server_authoritative_time": "GitHub Date header 2026-10-22T09:05:12Z (sandbox clock agrees within 3s) — PAST the 07:00Z roll + 07:05Z window",
+  "fire_path_survival": "lane files verified intact post-reset-class: t138-drain-fire.sh 2154B hardened (no-duplicate gate + rows pin), t138-drain-rows-residual-95.txt 3514B, .t138-key-probe.env present",
+  "rows_pin_reverification": "95 rows, all uuid-shaped (36ch/4dashes), all unique — byte-pin held",
+  "no_duplicate_acts": "gate CLEAN at fire time: 0 t-mig-138-intake runs created >= 2026-10-22T06:00:00Z (last run = #10 39571684429, created 2026-10-21)"
+ },
+ "fire_act": {
+  "method": "scripts/t138-drain-fire.sh (curl workflow_dispatch, token inline from git remote, never printed)",
+  "dispatch_http": "204",
+  "inputs": "mode=backfill-sharded, rows=<the 95-row residual pin>, note=run-005 residual provenance",
+  "run": "#11 id 39752817044, created 2026-10-22T09:06:14Z, head 2b4ca4f (= origin/main tip at fetch-first), first dispatch wins",
+  "duration": "~9 min (09:06:14Z -> completed before 09:15:26Z)"
+ },
+ "per_shard_outcomes": {
+  "shard_1": "total=24 embedded=24 wall=0 skipped=0 SUCCESS",
+  "shard_2": "total=24 embedded=24 wall=0 skipped=0 SUCCESS",
+  "shard_3": "total=24 embedded=8 THEN HONEST-RED — job 119737339469 exit 1",
+  "shard_4": "total=23 embedded=23 wall=0 skipped=0 SUCCESS — the T138_GEMINI_KEY_4 revival (run-006) HELD: the previously 403-dead slot drained its full slice"
+ },
+ "new_empirical": {
+  "class": "503 PROVIDER-TRANSIENT — 'embedding provider request failed with status 503 — no failover by design' at shard-3 row 9 (after 8 consecutive clean RESULTs, ~17s/row cadence intact)",
+  "distinct_from": "403 dead-key class (run-005 shard-4) and 429 RPD-wall class (run-003/005 skipped-honest law) — 503 is a provider-side transient, not quota, not auth",
+  "behavior_of_record": "no-failover-by-design held (no cross-key retry, no silent skip); the job died honestly BEFORE the summary echo, so shard-3's unattempted rows were NOT written to skipped-rows (the artifact carries progress only); residual rebuilt from logs instead",
+  "attribution": "single 503 in ~71 successful embeds this window; transient-overload posture most likely; NOT interpreted further (attribution operator-keyed law)"
+ },
+ "census_of_record": {
+  "embedded_this_run": 79,
+  "cumulative": "200/216 (121 by run #10 + 79 by run #11)",
+  "residual": 16,
+  "residual_derivation": "three-way cross-check TRUE: (a) pin-minus-embedded-RESULTs across all four job logs = 16; (b) shard-3 slice minus its 8 RESULT ids = 16; (c) residual == shard-3 unattempted exactly; 16 unique uuid-shaped rows byte-persisted lane-side t138-drain-rows-residual-16.txt with read-back verification; derivation script scripts/t138-run11-residual-derive.py; log evidence persisted tool-results/t138-run11-job-*.log"
+ },
+ "next_window": {
+  "recipe": "operator re-key at/after 07:05Z Oct 23 (RPD roll 07:00Z law) fires the 16-row residual in one shard-size pass (16 << the ~24/shard slices that succeeded this window); fire script repointed to the 16-row pin with the no-duplicate gate made day-dynamic (>= 06:00Z of the current window day, computed at run time — never goes stale)",
+  "projection": "16/16 queue-zero -> T-MIG-138 backfill COMPLETE; last-tranche secrets-hygiene gate (rotate all four chat-transited keys) reachable on completion"
+ },
+ "backup_lane_coordination": "stand-down briefing FILE of record issued to the operator for the second lane (download/t138-drain-stand-down-briefing-backup-lane.md): fallback-only role, run-#11 sighting = stand down by gate AND by order, triple-gated fallback condition, run-#12 numbering if legitimately fired, key bench fingerprints-only, rotation law",
+ "write_ledger": "zero code/content/DB/Neon/LLM writes; lane-side files only (fire script repoint + residual pin + derivation script + briefing) plus this .syllabai-only receipt + worklog entry; fetch-first (origin/main 925ab97->2b4ca4f ridden cleanly, local fast-forwarded before the push); no force; secrets never printed (fingerprints only)"
+}

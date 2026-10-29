@@ -1,0 +1,555 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_DRQXrcSrmgQ7jcbZ",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "b9f4ec2a87b2a45590d78a759d8fbd9f8b3caca02ead07ecfa44a7c1a8eae21b",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_DRQXrcSrmgQ7jcbZ",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L1::Q1",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L1",
+      "stem": "Heating an equilibrium mixture favours which direction?",
+      "misconceptionClass": "temperature shift",
+      "options": [
+        {
+          "key": "A",
+          "text": "The endothermic direction, which absorbs the added heat",
+          "correct": true,
+          "explanation": "The system responds to heating by using up heat in the endothermic direction.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The exothermic direction, which releases more heat",
+          "correct": false,
+          "explanation": "Releasing heat would add to the disturbance, not oppose it.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "C",
+          "text": "Neither direction moves",
+          "correct": false,
+          "explanation": "Temperature shifts do move the balance.",
+          "misconception": "no-shift myth"
+        },
+        {
+          "key": "D",
+          "text": "Both directions equally",
+          "correct": false,
+          "explanation": "Equal shifts would change nothing, which is not observed.",
+          "misconception": "equal myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L1::Q2",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L1",
+      "stem": "The forward reaction of an equilibrium is exothermic. What does cooling the mixture do?",
+      "misconceptionClass": "applied shift",
+      "options": [
+        {
+          "key": "A",
+          "text": "It favours the forward reaction, so more product forms",
+          "correct": true,
+          "explanation": "Cooling favours the heat-releasing side, which is the forward direction here.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It favours the backward reaction, so more reactant forms",
+          "correct": false,
+          "explanation": "The backward reaction is endothermic here and is favoured by heating.",
+          "misconception": "shift inverted"
+        },
+        {
+          "key": "C",
+          "text": "The mixture changes colour to blue",
+          "correct": false,
+          "explanation": "Colour depends on the specific equilibrium, not on cooling alone.",
+          "misconception": "colour assumed"
+        },
+        {
+          "key": "D",
+          "text": "The equilibrium is destroyed",
+          "correct": false,
+          "explanation": "The balance moves; it does not vanish.",
+          "misconception": "destruction myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L1::Q3",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L1",
+      "stem": "What does it mean for the position of equilibrium to shift right?",
+      "misconceptionClass": "terminology",
+      "options": [
+        {
+          "key": "A",
+          "text": "The forward reaction is favoured, so the amount of products increases",
+          "correct": true,
+          "explanation": "Right shifts enrich the product side of the equation.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The reactants increase in amount",
+          "correct": false,
+          "explanation": "That describes a left shift.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "C",
+          "text": "The reaction stops completely",
+          "correct": false,
+          "explanation": "Equilibrium mixtures never stop reacting.",
+          "misconception": "stopping myth"
+        },
+        {
+          "key": "D",
+          "text": "The catalyst becomes more active",
+          "correct": false,
+          "explanation": "Catalysts do not take sides in the shift.",
+          "misconception": "catalyst intruded"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L1::Q4",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L1",
+      "stem": "Iodine monochloride and chlorine form iodine trichloride, with the forward reaction exothermic. On heating, the brown colour deepens. Why?",
+      "misconceptionClass": "colour application",
+      "options": [
+        {
+          "key": "A",
+          "text": "Heating favours the endothermic backward reaction, so more brown reactant forms",
+          "correct": true,
+          "explanation": "The shift runs left, enriching the dark brown starting materials.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Heating favours the forward reaction, so more yellow product forms",
+          "correct": false,
+          "explanation": "The forward reaction is exothermic and is disfavoured by heating.",
+          "misconception": "shift inverted"
+        },
+        {
+          "key": "C",
+          "text": "The product decomposes into oxygen",
+          "correct": false,
+          "explanation": "No oxygen is part of this equilibrium.",
+          "misconception": "invented chemistry"
+        },
+        {
+          "key": "D",
+          "text": "The thermometer itself darkens the liquid",
+          "correct": false,
+          "explanation": "The colour change is chemical, not instrumental.",
+          "misconception": "absurd cause"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L1::Q5",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L1",
+      "stem": "Which change would shift an equilibrium towards the exothermic direction?",
+      "misconceptionClass": "shift control",
+      "options": [
+        {
+          "key": "A",
+          "text": "Lowering the temperature of the mixture",
+          "correct": true,
+          "explanation": "Cooling pulls the balance towards the heat-releasing side.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Raising the temperature of the mixture",
+          "correct": false,
+          "explanation": "Heating favours the endothermic side instead.",
+          "misconception": "direction inverted"
+        },
+        {
+          "key": "C",
+          "text": "Adding a catalyst",
+          "correct": false,
+          "explanation": "Catalysts never move the position.",
+          "misconception": "catalyst myth"
+        },
+        {
+          "key": "D",
+          "text": "Increasing the pressure of a gas equilibrium",
+          "correct": false,
+          "explanation": "Pressure shifts follow molecule counts, not heat.",
+          "misconception": "factors crossed"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L2::Q1",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L2",
+      "stem": "Why does increased pressure favour fewer gas molecules?",
+      "misconceptionClass": "pressure logic",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fewer molecules ease the crowding that the pressure increase created",
+          "correct": true,
+          "explanation": "The shift opposes the squeeze by reducing the gas count.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Fewer molecules are always faster",
+          "correct": false,
+          "explanation": "Speed is not the logic; the count is.",
+          "misconception": "rate conflated"
+        },
+        {
+          "key": "C",
+          "text": "Because solids take up the extra pressure",
+          "correct": false,
+          "explanation": "Solids and liquids are unaffected by pressure changes here.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "D",
+          "text": "Because molecules shrink under pressure",
+          "correct": false,
+          "explanation": "Molecules do not shrink; the balance moves.",
+          "misconception": "absurd mechanism"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L2::Q2",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L2",
+      "stem": "In 2NO2 (g) turning into N2O4 (g), what does increased pressure do?",
+      "misconceptionClass": "applied shift",
+      "options": [
+        {
+          "key": "A",
+          "text": "It favours the forward reaction, since two molecules become one",
+          "correct": true,
+          "explanation": "The product side holds fewer gas molecules, so pressure pushes the balance right.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It favours the backward reaction, since one molecule becomes two",
+          "correct": false,
+          "explanation": "Splitting into more molecules works against a squeeze.",
+          "misconception": "shift inverted"
+        },
+        {
+          "key": "C",
+          "text": "Nothing, because both sides have equal counts",
+          "correct": false,
+          "explanation": "The counts are 2 and 1, not equal.",
+          "misconception": "count misread"
+        },
+        {
+          "key": "D",
+          "text": "It turns the gas into a liquid",
+          "correct": false,
+          "explanation": "The equilibrium stays gaseous.",
+          "misconception": "state confusion"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L2::Q3",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L2",
+      "stem": "A gaseous equilibrium has three molecules on the left and three on the right. What does increased pressure do?",
+      "misconceptionClass": "no-shift case",
+      "options": [
+        {
+          "key": "A",
+          "text": "Nothing to the position, because both sides hold the same gas count",
+          "correct": true,
+          "explanation": "Equal counts leave the balance unmoved by pressure.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It shifts the position to the left",
+          "correct": false,
+          "explanation": "No side has fewer molecules to favour.",
+          "misconception": "shift invented"
+        },
+        {
+          "key": "C",
+          "text": "It shifts the position to the right",
+          "correct": false,
+          "explanation": "The equal count blocks any shift.",
+          "misconception": "shift invented"
+        },
+        {
+          "key": "D",
+          "text": "It stops the forward reaction",
+          "correct": false,
+          "explanation": "Reactions continue at equilibrium regardless.",
+          "misconception": "stopping myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L2::Q4",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L2",
+      "stem": "Which observation would show a gaseous equilibrium shifting right after compression?",
+      "misconceptionClass": "evidence reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "The colour deepens towards the product side of the equation",
+          "correct": true,
+          "explanation": "Enrichment of the product side shows itself as that side's colour strengthening.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The colour lightens towards the reactant side",
+          "correct": false,
+          "explanation": "That would indicate a left shift.",
+          "misconception": "shift inverted"
+        },
+        {
+          "key": "C",
+          "text": "The gas turns into a solid",
+          "correct": false,
+          "explanation": "State changes are not part of the shift.",
+          "misconception": "state confusion"
+        },
+        {
+          "key": "D",
+          "text": "The readings become impossible to take",
+          "correct": false,
+          "explanation": "Compression leaves the mixture observable.",
+          "misconception": "absurd claim"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L2::Q5",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L2",
+      "stem": "Pressure changes do not affect the position when which condition holds?",
+      "misconceptionClass": "condition recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "The same number of moles of gas sits on each side of the equation",
+          "correct": true,
+          "explanation": "Matching gas counts leave the balance with nothing to prefer.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "A catalyst is present in the mixture",
+          "correct": false,
+          "explanation": "Catalysts are irrelevant to pressure shifts.",
+          "misconception": "catalyst myth"
+        },
+        {
+          "key": "C",
+          "text": "The temperature is above room temperature",
+          "correct": false,
+          "explanation": "Temperature level does not cancel pressure effects.",
+          "misconception": "temperature myth"
+        },
+        {
+          "key": "D",
+          "text": "The reaction is exothermic",
+          "correct": false,
+          "explanation": "Heat direction governs temperature shifts, not pressure ones.",
+          "misconception": "factors crossed"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L3::Q1",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L3",
+      "stem": "What effect does a catalyst have on the position of equilibrium?",
+      "misconceptionClass": "invariance recall",
+      "options": [
+        {
+          "key": "A",
+          "text": "None: the position is unchanged",
+          "correct": true,
+          "explanation": "Catalysts speed arrival at equilibrium without moving it.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It shifts the position to the right",
+          "correct": false,
+          "explanation": "That would require favouring the forward direction, which catalysts never do.",
+          "misconception": "right-shift myth"
+        },
+        {
+          "key": "C",
+          "text": "It shifts the position to the left",
+          "correct": false,
+          "explanation": "No direction is favoured.",
+          "misconception": "left-shift myth"
+        },
+        {
+          "key": "D",
+          "text": "It depends on which catalyst is used",
+          "correct": false,
+          "explanation": "Every catalyst behaves the same way here.",
+          "misconception": "selection myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L3::Q2",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L3",
+      "stem": "Why does a catalyst fail to move the equilibrium position?",
+      "misconceptionClass": "mechanism reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "It increases the rate of both the forward and backward reactions by the same amount",
+          "correct": true,
+          "explanation": "Equal speeding leaves the balance between the two untouched.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It is too small an amount to matter",
+          "correct": false,
+          "explanation": "Amount is irrelevant to the symmetry of the effect.",
+          "misconception": "amount myth"
+        },
+        {
+          "key": "C",
+          "text": "It stops both reactions completely",
+          "correct": false,
+          "explanation": "Catalysts speed reactions, never stop them.",
+          "misconception": "inversion"
+        },
+        {
+          "key": "D",
+          "text": "It only helps the reverse reaction",
+          "correct": false,
+          "explanation": "Help is shared equally between directions.",
+          "misconception": "asymmetry myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L3::Q3",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L3",
+      "stem": "What does a catalyst change about an equilibrium system?",
+      "misconceptionClass": "what changes",
+      "options": [
+        {
+          "key": "A",
+          "text": "The time taken to reach equilibrium",
+          "correct": true,
+          "explanation": "Faster arrival is the one change a catalyst delivers.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The final amount of product at equilibrium",
+          "correct": false,
+          "explanation": "The equilibrium composition is identical either way.",
+          "misconception": "yield myth"
+        },
+        {
+          "key": "C",
+          "text": "The enthalpy change of the forward reaction",
+          "correct": false,
+          "explanation": "Energy differences between levels are untouched.",
+          "misconception": "enthalpy myth"
+        },
+        {
+          "key": "D",
+          "text": "The colour of the final mixture",
+          "correct": false,
+          "explanation": "The same final composition has the same colour.",
+          "misconception": "colour myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L3::Q4",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L3",
+      "stem": "On a graph of product amount against time, how does the catalysed run compare with the uncatalysed one?",
+      "misconceptionClass": "graph reading",
+      "options": [
+        {
+          "key": "A",
+          "text": "It flattens sooner but reaches the identical final level",
+          "correct": true,
+          "explanation": "Faster approach with the same destination is the catalytic fingerprint.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It flattens later at a higher level",
+          "correct": false,
+          "explanation": "Neither the timing nor the level changes that way.",
+          "misconception": "shape inverted"
+        },
+        {
+          "key": "C",
+          "text": "It never flattens",
+          "correct": false,
+          "explanation": "Equilibrium is still reached, only sooner.",
+          "misconception": "endless myth"
+        },
+        {
+          "key": "D",
+          "text": "It starts from a higher point",
+          "correct": false,
+          "explanation": "Both runs begin with no product.",
+          "misconception": "start myth"
+        }
+      ]
+    },
+    {
+      "id": "rn_DRQXrcSrmgQ7jcbZ::L3::Q5",
+      "moduleId": "rn_DRQXrcSrmgQ7jcbZ::L3",
+      "stem": "Why is the equilibrium composition the same with and without a catalyst?",
+      "misconceptionClass": "deep reasoning",
+      "options": [
+        {
+          "key": "A",
+          "text": "The same balance between forward and backward rates is restored once equilibrium returns",
+          "correct": true,
+          "explanation": "Equilibrium composition depends on conditions, not on how quickly they are met.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because catalysts remove the reverse reaction",
+          "correct": false,
+          "explanation": "Both directions continue at equilibrium.",
+          "misconception": "one-way myth"
+        },
+        {
+          "key": "C",
+          "text": "Because catalysts change the temperature",
+          "correct": false,
+          "explanation": "Catalysts are not heat sources.",
+          "misconception": "temperature myth"
+        },
+        {
+          "key": "D",
+          "text": "Because products destroy the catalyst",
+          "correct": false,
+          "explanation": "Catalysts survive the reaction unchanged.",
+          "misconception": "consumption myth"
+        }
+      ]
+    }
+  ]
+}

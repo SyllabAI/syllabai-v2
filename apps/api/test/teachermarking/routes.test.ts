@@ -31,8 +31,8 @@ function boot(opts: {
     marking?: Partial<TeacherMarkingModule["marking"]>;
     teacherSmartMark?: Partial<TeacherMarkingModule["teacherSmartMark"]>;
   };
-  latestKappa?: (paperId: string | null) => Promise<KappaEvaluationView | null>;
-  latestSubjectKappa?: (subjectId: string) => Promise<KappaEvaluationView | null>;
+  latestKappa?: (paperId: string | null, metric?: string | null) => Promise<KappaEvaluationView | null>;
+  latestSubjectKappa?: (subjectId: string, metric?: string | null) => Promise<KappaEvaluationView | null>;
 }) {
   const calls: Record<string, unknown[]> = {};
   const fake = (name: string, ret: unknown = {}) => async (...args: unknown[]) => {
@@ -51,8 +51,10 @@ function boot(opts: {
     } as unknown as TeacherMarkingModule["queue"],
     marking: {
       recordHumanMark: fake("recordHumanMark", { id: "m1" }),
-      evaluateAgreement: fake("evaluateAgreement", { id: "k1", scope: "ALL", paperId: null, subjectId: null, sampleSize: 0, kappa: 0.7, observedAgreement: 0.85, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z" }),
-      evaluateAgreementForSubject: fake("evaluateAgreementForSubject", { id: "k2", scope: "SUBJECT", paperId: null, subjectId: SUBJECT_ID, sampleSize: 0, kappa: 0.7, observedAgreement: 0.85, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z" }),
+      evaluateAgreement: fake("evaluateAgreement", { id: "k1", scope: "ALL", paperId: null, subjectId: null, sampleSize: 0, kappa: 0.7, observedAgreement: 0.85, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z", metric: "POINT_UNWEIGHTED", withinBandMae: null, withinBandExactRate: null }),
+      evaluateAgreementForSubject: fake("evaluateAgreementForSubject", { id: "k2", scope: "SUBJECT", paperId: null, subjectId: SUBJECT_ID, sampleSize: 0, kappa: 0.7, observedAgreement: 0.85, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z", metric: "POINT_UNWEIGHTED", withinBandMae: null, withinBandExactRate: null }),
+      evaluateBandAgreement: fake("evaluateBandAgreement", { id: "k3", scope: "ALL", paperId: null, subjectId: null, sampleSize: 0, kappa: 0.9, observedAgreement: 0.95, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z", metric: "BAND_QWK", withinBandMae: 0, withinBandExactRate: 1 }),
+      evaluateBandAgreementForSubject: fake("evaluateBandAgreementForSubject", { id: "k4", scope: "SUBJECT", paperId: null, subjectId: SUBJECT_ID, sampleSize: 0, kappa: 0.9, observedAgreement: 0.95, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z", metric: "BAND_QWK", withinBandMae: 0, withinBandExactRate: 1 }),
       ...((opts.module?.marking ?? {}) as object),
     } as unknown as TeacherMarkingModule["marking"],
     teacherSmartMark: {
@@ -345,7 +347,27 @@ test("valid human mark → 201, marker id from the JWT identity", async () => {
     body: JSON.stringify({ marksAwarded: 2, perPointDecisions: { p1: 1 }, comments: "ok" }),
   });
   expect(res.status).toBe(201);
-  expect(calls.recordHumanMark?.[0]).toEqual([ANSWER_ID, "60000000-0000-4000-8000-000000000001", 2, { p1: 1 }, "ok"]);
+  // ADR-040 §5.5: the additive bandPlacement rides as the 6th arg (null on
+  // the point path — the call shape is otherwise byte-identical).
+  expect(calls.recordHumanMark?.[0]).toEqual([ANSWER_ID, "60000000-0000-4000-8000-000000000001", 2, { p1: 1 }, "ok", null]);
+});
+
+test("ADR-040 §5.5: bandPlacement rides the human-mark body through to the service", async () => {
+  const { app, calls } = boot({ roles: TEACHER });
+  const res = await app.request(`/answers/${ANSWER_ID}/human-mark`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ marksAwarded: 3, bandPlacement: { levelPlacement: 2, awardedMarks: 3 } }),
+  });
+  expect(res.status).toBe(201);
+  expect(calls.recordHumanMark?.[0]).toEqual([
+    ANSWER_ID, "60000000-0000-4000-8000-000000000001", 3, null, null, { levelPlacement: 2, awardedMarks: 3 },
+  ]);
+  const bad = await app.request(`/answers/${ANSWER_ID}/human-mark`, {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ marksAwarded: 3, bandPlacement: { levelPlacement: 0, awardedMarks: 3 } }),
+  });
+  expect(bad.status).toBe(400); // levelPlacement ≥ 1 is binding truth
 });
 
 test("human mark bounds from the contract: 100 rejected, 99 accepted", async () => {
@@ -443,6 +465,7 @@ test("recorded evaluation returns the KappaEvaluationView shape", async () => {
   const view: KappaEvaluationView = {
     id: "k1", scope: "ALL", paperId: null, subjectId: null, sampleSize: 12, kappa: 0.71,
     observedAgreement: 0.86, threshold: 0.6, passed: true, computedAt: "2026-10-05T00:00:00Z",
+    metric: "POINT_UNWEIGHTED", withinBandMae: null, withinBandExactRate: null,
   };
   const { app } = boot({ roles: TEACHER, latestKappa: async () => view });
   const res = await app.request("/kappa/latest");
@@ -504,6 +527,63 @@ test("GET /kappa/latest?subjectId= composes the SUBJECT read; malformed uuid →
   expect(bad.status).toBe(400);
   const both = await app.request(`/kappa/latest?paperId=${PAPER_ID}&subjectId=${SUBJECT_ID}`);
   expect(both.status).toBe(400);
+});
+
+// ── ADR-040 §5.5 — the band eval lane's route wiring ────────────────────────
+
+test("POST /kappa/evaluate {metric: BAND_QWK, subjectId} composes the band SUBJECT lane only", async () => {
+  const { app, calls } = boot({ roles: TEACHER });
+  const res = await app.request("/kappa/evaluate", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ subjectId: SUBJECT_ID, metric: "BAND_QWK" }),
+  });
+  expect(res.status).toBe(201);
+  const body = await res.json();
+  expect(body.metric).toBe("BAND_QWK");
+  expect(calls.evaluateBandAgreementForSubject?.[0]).toEqual([SUBJECT_ID, AUTH_USER]);
+  expect(calls.evaluateAgreementForSubject).toBeUndefined();
+  expect(calls.evaluateAgreement).toBeUndefined();
+});
+
+test("POST /kappa/evaluate {metric: BAND_QWK} without scope → the band ALL lane; paperId scopes the paper", async () => {
+  const all = boot({ roles: TEACHER });
+  const r1 = await all.app.request("/kappa/evaluate", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ metric: "BAND_QWK" }),
+  });
+  expect(r1.status).toBe(201);
+  expect(all.calls.evaluateBandAgreement?.[0]).toEqual([null, AUTH_USER]);
+  const paper = boot({ roles: TEACHER });
+  const r2 = await paper.app.request("/kappa/evaluate", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ paperId: PAPER_ID, metric: "BAND_QWK" }),
+  });
+  expect(r2.status).toBe(201);
+  expect(paper.calls.evaluateBandAgreement?.[0]).toEqual([PAPER_ID, AUTH_USER]);
+  const unknown = boot({ roles: TEACHER });
+  const r3 = await unknown.app.request("/kappa/evaluate", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ metric: "SOMETHING_ELSE" }),
+  });
+  expect(r3.status).toBe(400); // unknown metric = binding failure (R-1)
+});
+
+test("GET /kappa/latest?metric=BAND_QWK threads the metric through the read seams", async () => {
+  const seenPaper: Array<string | null | undefined> = [];
+  const seenSubject: Array<string | null | undefined> = [];
+  const { app } = boot({
+    roles: TEACHER,
+    latestKappa: async (p, m) => { seenPaper.push(m); return null; },
+    latestSubjectKappa: async (s, m) => { seenSubject.push(m); return null; },
+  });
+  const r1 = await app.request("/kappa/latest?metric=BAND_QWK");
+  expect(r1.status).toBe(404);
+  const r2 = await app.request(`/kappa/latest?subjectId=${SUBJECT_ID}&metric=BAND_QWK`);
+  expect(r2.status).toBe(404);
+  expect(seenPaper).toEqual(["BAND_QWK"]);
+  expect(seenSubject).toEqual(["BAND_QWK"]);
+  const bad = await app.request("/kappa/latest?metric=SOMETHING_ELSE");
+  expect(bad.status).toBe(400);
 });
 
 // ── R0 intake pins (review R-1/R-2, merge intake d975ed9+) ──────────────────

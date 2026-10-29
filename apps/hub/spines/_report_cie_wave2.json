@@ -1,0 +1,267 @@
+{
+ "resourcesSha": "a4ce9f5559990a97950355d8f4cc85d30a796301",
+ "board": "Cambridge CIE",
+ "generatedUtc": "2026-10-27T20:00:54Z",
+ "courses": {
+  "cie-as-chemistry-25": {
+   "qual": "cie-a-level-chemistry-2025-2027",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "AS Level"
+   },
+   "counts": {
+    "topics": 22,
+    "subtopics": 51,
+    "specPoints": 204,
+    "parsePool": 356,
+    "scopedPool": 204,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 1 title drift (page-wrap artifact): kept 'Atomic structure'; also seen ['Analytical techniques']",
+    "subtopic 1.1 title drift (page-wrap artifact): kept 'Particles in the atom and atomic radius'; also seen ['× abundance of M ion']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 1,
+    "examples": [
+     "1.1.6a"
+    ]
+   }
+  },
+  "cie-as-biology-25": {
+   "qual": "cie-a-level-biology-2025-2027",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "AS Level"
+   },
+   "counts": {
+    "topics": 11,
+    "subtopics": 24,
+    "specPoints": 123,
+    "parsePool": 257,
+    "scopedPool": 123,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 1,
+    "examples": [
+     "5.1.1a"
+    ]
+   }
+  },
+  "cie-as-physics-25": {
+   "qual": "cie-a-level-physics-2025-2027",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "AS Level"
+   },
+   "counts": {
+    "topics": 11,
+    "subtopics": 32,
+    "specPoints": 145,
+    "parsePool": 303,
+    "scopedPool": 145,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 3,
+    "examples": [
+     "5.2.1a",
+     "5.2.1b",
+     "6.2.1a"
+    ]
+   }
+  },
+  "cie-as-business-23": {
+   "qual": "cie-a-level-business-2023-2025",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "AS Level"
+   },
+   "counts": {
+    "topics": 5,
+    "subtopics": 19,
+    "specPoints": 62,
+    "parsePool": 116,
+    "scopedPool": 62,
+    "orphans": 0
+   },
+   "warnings": [
+    "subtopic 1.1 title drift (page-wrap artifact): kept 'Enterprise'; also seen ['Enterprise continued']",
+    "subtopic 2.1 title drift (page-wrap artifact): kept 'Human resource management (HRM)'; also seen ['Human resource management (HRM) continued']",
+    "subtopic 3.3 title drift (page-wrap artifact): kept 'The marketing mix'; also seen ['The marketing mix continued']",
+    "subtopic 4.1 title drift (page-wrap artifact): kept 'The nature of operations'; also seen ['The nature of operations continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-as-computer-science-19": {
+   "qual": "cie-a-level-computer-science-2024-2025",
+   "rule": {
+    "kind": "scope_null"
+   },
+   "counts": {
+    "topics": 12,
+    "subtopics": 29,
+    "specPoints": 161,
+    "parsePool": 227,
+    "scopedPool": 161,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-as-maths-20-pure-1": {
+   "qual": "cie-a-level-maths-2023-2025",
+   "rule": {
+    "kind": "topic_numbers",
+    "values": [
+     "1"
+    ]
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 8,
+    "specPoints": 33,
+    "parsePool": 146,
+    "scopedPool": 33,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 3,
+    "examples": [
+     "1.3.1a",
+     "1.3.2a",
+     "1.4.1a"
+    ]
+   }
+  },
+  "cie-as-maths-20-pure-2": {
+   "qual": "cie-a-level-maths-2023-2025",
+   "rule": {
+    "kind": "topic_numbers",
+    "values": [
+     "2"
+    ]
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 6,
+    "specPoints": 17,
+    "parsePool": 146,
+    "scopedPool": 17,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-as-maths-20-mechanics": {
+   "qual": "cie-a-level-maths-2023-2025",
+   "rule": {
+    "kind": "topic_numbers",
+    "values": [
+     "4"
+    ]
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 5,
+    "specPoints": 22,
+    "parsePool": 146,
+    "scopedPool": 22,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 4 title drift (page-wrap artifact): kept 'Pure Mathematics'; also seen ['Mechanics']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-as-maths-20-probability-and-statistics-1": {
+   "qual": "cie-a-level-maths-2023-2025",
+   "rule": {
+    "kind": "topic_numbers",
+    "values": [
+     "5"
+    ]
+   },
+   "counts": {
+    "topics": 1,
+    "subtopics": 5,
+    "specPoints": 17,
+    "parsePool": 146,
+    "scopedPool": 17,
+    "orphans": 0
+   },
+   "warnings": [
+    "parse `number` field drifts from array order — array order used (document order authority; upstream gate G2)",
+    "topic 5 title drift (page-wrap artifact): kept 'Mechanics'; also seen ['Probability & Statistics']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  },
+  "cie-as-accounting-21": {
+   "qual": "cie-a-level-accounting-2023-2025",
+   "rule": {
+    "kind": "scope_eq",
+    "value": "AS Level"
+   },
+   "counts": {
+    "topics": 2,
+    "subtopics": 8,
+    "specPoints": 19,
+    "parsePool": 34,
+    "scopedPool": 19,
+    "orphans": 0
+   },
+   "warnings": [
+    "subtopic 1.4 title drift (page-wrap artifact): kept 'Reconciliation and verification'; also seen ['Reconciliation and verification continued']",
+    "subtopic 1.5 title drift (page-wrap artifact): kept 'Preparation of financial statements'; also seen ['Preparation of financial statements continued']",
+    "subtopic 1.6 title drift (page-wrap artifact): kept 'Analysis and communication of accounting information'; also seen ['Analysis and communication of accounting information continued']",
+    "subtopic 2.2 title drift (page-wrap artifact): kept 'Traditional costing methods'; also seen ['Traditional costing methods continued']"
+   ],
+   "dupCodePolicy": {
+    "rule": "verbatim first occurrence (document order); occurrences 2..k carry synthetic ascending letters ('x.y.za', 'x.y.zb', ...) — chosen by the kg_export per-section ord gate (letters parse natively; '@'/'#' do not); tier/scope stay on the node fields",
+    "suffixed": 0,
+    "examples": []
+   }
+  }
+ },
+ "failures": []
+}

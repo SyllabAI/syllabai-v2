@@ -1,0 +1,36 @@
+{
+  "lane": "MB4-MS-RATTACH",
+  "run": "run-001",
+  "trace": "1a164940c29a2b85",
+  "date": "2026-10-22",
+  "operator_order": "fire the maths-b MS re-parse lane",
+  "finding_of_record": "MCQ-AUDIT run-001: 117 structured parts in igcse-maths-b-16 with no solutionMd -> TypedAnswerWorkspace absent -> no answer input for learners",
+  "recon_of_record": {
+    "no_pdf_reparse_needed": "the original parse intermediates ARE committed: SyllabAI/syllabai-pastpapers past-papers/pearson-edexcel/international-gcse/mathematics-b/4mb1/past-papers/{YYYY-MM}/{4MB1-PP[R]}/parsed/{ms.md,qp.md,questions.json} (65/65 fetched, 0 failures)",
+    "root_cause": "the original hub import's section<->part attribution failed where ms.md section paths were merged/mis-ordered/duplicated (e.g. '14(a)(i)' then '14(ii)' losing the letter) — the parse of record carries the content; the import's join dropped it"
+  },
+  "method_of_record": {
+    "formatter_reconstruction": "reverse-engineered from 2,251 existing hub solutions by BYTE-IDENTITY round-trip: ms.md section blocks -> '**{id}** ({label}) {text}' heads ('alternative answer, not scored' -> '0 marks'; ' — ' separator -> single space, leading post-dash spacing preserved), '- Note/Allow/Reject/Ignore: {v}' sub-bullets, consecutive same-kind non-Note bullets re-joined with '; ' (MS table cells), blocks joined '\\n\\n'",
+    "glyph_law": "EMPIRICAL fate table learned per private-use code from aligned note-line diffs (scripts/mb4_learn_glyphs.py): 43 codes map (incl. the shifted greek set F06C->mu, F06D->nu, F067->eta, F061->maps-to, F084->leq, F085->geq, F0B7->middot), all other U+E000..U+F8FF strip; ornament-only lines drop",
+    "provenance_banner": "hub's '_Parsed mark scheme: ..._' banner exists only where import-time totals mismatched (30 rows, 2 questions); import-time totals unrecoverable from current sources -> banner INHERITED VERBATIM from solved siblings, never reconstructed",
+    "alignment": "topics with equal question counts: order zip; the 5 count-mismatch topics (2019-01-4mb1-01, 2019-01-4mb1-01r, 2019-06-4mb1-01r, 2022-06-4mb1-02r, 2023-01-4mb1-02): greedy one-to-one signature pairing on solved-solution line sets; parts<->sections: order zip, attached ONLY where section count == part count",
+    "tiers": "TIER-A: every solved sibling of the question byte-identical (banner-stripped core) to the formatter; TIER-B: sibling(s) show minor diffs (inspected: hub-side import artifacts)"
+  },
+  "verification_of_record": {
+    "core_gate": "1,972/2,019 = 97.67% byte-identity (banner-stripped) across all solved parts, measured pre-union; the 47 residual diffs inspected are pre-existing hub-side attribution artifacts (hub deviates from the parse of record), not formatter errors",
+    "semantic_diff_vs_HEAD": "EXACTLY 60 solutionMd additions on previously-empty parts; ZERO other changes (zero-deletion proven), measured on the union tree fc38e127",
+    "coverage": "no-solution parts in igcse-maths-b-16: 117 -> 57",
+    "prebuild_gates": "ALL GREEN on the union tree (verify_corpus_23a PASSED; verify_flashcard_sync exit 0; validate_cie_bundles PASSED)"
+  },
+  "union_resolve_of_record": {
+    "event": "first push rejected: origin advanced 0a8c8c81 -> fc38e127 (UIUX-REPAIR-1 bundle repair, same file igcse-maths-b-16); local commit abandoned, tree reset to fc38e127",
+    "overlap_analysis": "the sibling filled ZERO of the 117 targets (its 02R re-sync touched already-solved parts only) — the 60-target plan applied intact on their tree; tier census on the union tree: 41 TIER-A + 19 TIER-B",
+    "sibling_compliance": "the sibling's en-dash normalization law derived from its own 386-field solutionMd corpus (653 convert / 224 keep; class behavior: binary/prose convert to '-', negative-number + tight-binding keep) and applied to the candidates: 9 of 13 occurrences converted, 4 KEEP-class retained (2x negative '–2', 'y–axis' tight binding, '–-3'); the sibling's 781 meta-line strips verified to never touch solutionMd (zero pure-removal fields in its diff)",
+    "core_gate_note": "the 97.67% core gate was measured against the pre-normalization tree; the sibling's normalization is a later plane of record applied uniformly course-wide"
+  },
+  "residuals_of_record": {
+    "unattached_57": "targets in questions where ms.md section count != hub part count (merged/mis-ordered/duplicated section paths — no provable attribution without the original import code; forcing would risk mis-attributed answers, worse than the honest gap) + 2 targets in unpaired questions; left solutionless BY DESIGN (fail-closed, zero-fabrication)",
+    "player_note": "the 57 keep the honest state: stem renders, no answer input"
+  },
+  "push": "PENDING — filed with the repair commit"
+}

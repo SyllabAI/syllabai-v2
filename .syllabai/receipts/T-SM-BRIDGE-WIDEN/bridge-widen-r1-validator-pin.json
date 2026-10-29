@@ -1,0 +1,14 @@
+{
+  "lane": "T-SM-BRIDGE-WIDEN",
+  "run": "bridge-widen-r1-validator-pin",
+  "parent_run": "bridge-widen-r0 (commit 6fc223c, rebased to ace15fc)",
+  "date": "2026-10-22",
+  "trigger": "hub production build dpl_21ravgpxXqQga7mz5xjwjpkN5V48 FAILED at prebuild: validate_cie_bundles.ts 23/23 assertions red — the validator pins the OLD coreBridge law ('coreBridge absent on ALL CIE rows, operator-keyed, the T-MIG-136 law' + 'only the two 4MA1 maths-a rows carry it'). The pin exists precisely to make a CIE coreBridge flip a conscious two-file change: registry + validator pin in the same commit. r0 changed the registry without the pin — honest build refusal, working as designed.",
+  "act": "Updated apps/hub/scripts/validate_cie_bundles.ts to the new law of record: (1) BRIDGED_CIE_SLUGS constant — the 21 flipped CIE rows with the operator-order citation; (2) both per-roster fill-where-served pins now assert coreBridge===true on listed rows / undefined on all others; (3) the global CIE pin asserts exactly-the-21-carry-true (Wave-3 band-scheme rows remain enforced-absent pending the levels-of-response ADR); (4) the global set pin asserts the exact 24-row flagged set (2 maths-a T-MIG-135d + igcse-maths-b-16 this lane + 21 CIE this lane), every flagged row true; (5) cvOfRecord comment law updated. No other checks weakened: paper counts, listable, G1/G2/G4, bundle shape, cv pins all byte-identical semantics.",
+  "local_gate": "bun scripts/validate_cie_bundles.ts => 393 PASS / 0 FAIL exit 0 ('CIE VALIDATOR PASSED — the card's paper-count assertions hold at this tree'); verify_flashcard_sync_courses.ts exit 0; verify_corpus_23a.ts 'CORPUS GATE PASSED'. Full three-gate prebuild chain green locally on the flipped registry.",
+  "disclosures": [
+    "The r0 deploy attempt (dpl_21ravgpxXqQga7mz5xjwjpkN5V48) is the failed-build of record; the hub production surface NEVER served the flipped registry (build refused before deploy) — no broken state shipped.",
+    "4MB1 (igcse-maths-b-16, Edexcel) is outside the CIE validator's per-row roster; its flag is enforced by the global set pin added in this run.",
+    "The validator remains the ongoing guard: any future registry coreBridge drift (accidental add/remove) still fails the build against this 24-row law."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+ "lane": "UIUX-TIER-B run-001 r0",
+ "operator_order": "trace 1a16943085ba99ad: eyeball the three set pages on the hub + Tier-B re-transcription (flattened fractions/tables + 39 soft-skipped referencing rules)",
+ "eyeball": {
+  "pages": [
+   "2021-01-4mb1-02r",
+   "2021-01-4mb1-02",
+   "2023-01-4mb1-01"
+  ],
+  "verdict": "PASS — images 19/15/16 all loaded 0 broken @e33d4805; KaTeX absent legitimate (no real math segments on those pages, verified 42 other sets carry them; 2020-01-02 control page rendered 30 .katex spans); difficulty tabs bundle-faithful; currency \\$675/\\$600 escaped-render correct",
+  "screenshots": "sandbox scripts/artwork-scale/eyeball/ (5 png)"
+ },
+ "tierb_reconciliation": {
+  "soft_skips_of_record": 39,
+  "q19_closed_artwork3": 1,
+  "open_figure_rules": 38,
+  "groups": 33,
+  "closed_embeds": 61,
+  "skips_disclosed": [
+   "2022-01-01R 001 duplicate of embedded q6 figure",
+   "2020-06/11-02R q7 spare histogram copies (working-surface duplicates)"
+  ],
+  "misindexed_readjudicated": 7
+ },
+ "resources": {
+  "recrops": 12,
+  "pin": "65c4ba923d7b3303dd9a89a87b6edf74c174eafa",
+  "rename_fix": "fcee56b5b8e4a2e5e2e60888013098f42dc57039"
+ },
+ "gates": {
+  "structure": "65/1270/2412/6500",
+  "structure_law": "65/1270/2412/6500",
+  "embeds_total": 743,
+  "embeds_before": 682,
+  "unique_asset_urls": 402,
+  "urls_anonymous_200": "402/402",
+  "box_paren_parts": 0,
+  "nnq_parts": 0,
+  "katex_segments": 155,
+  "katex_failures": 0,
+  "single_line_json": true
+ },
+ "commits": {
+  "bundle": "see git log UIUX-TIER-B",
+  "receipt": "this file"
+ }
+}

@@ -1,0 +1,802 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "adr040-g1-msfetch-r0",
+ "date": "2026-10-26",
+ "session": "web-c5f00ad5-39f5-4d5a-adbc-97918d3ccde2",
+ "trace_id": "1a1753386b042f7d",
+ "operator_order": "\"fetch them\" (trace 1a1753386b042f7d) \u2014 the open decision of record on adr040-bandwave1-r2probe-r0 (\"supply the wave-1 official MS documents ... or order the extraction lane to fetch them\")",
+ "gate": "G-1 of adr040-bandwave1-r2probe-r0: wave-1 MS documents into the of-record extraction lane -> glmMarkSchemeDraft entries[].bands[] verbatim",
+ "scope_of_record": "wave-1 band courses: 4GE1 (igcse-geography-19), 4BS1 (igcse-business-19) from the repo of record; 9609/0455 CIE side attempted externally (see gap ledger)",
+ "fetch_of_record": {
+  "source": "SyllabAI/syllabai-pastpapers (the repo of record; raw main)",
+  "docs_fetched": 62,
+  "sha256_verified_vs_manifest": 62,
+  "sha_mismatches": 0,
+  "qp_only_dirs": [
+   "4bs1/2021-11/4BS1-011",
+   "4bs1/2021-11/4BS1-021"
+  ],
+  "docs": [
+   {
+    "course_code": "4GE1",
+    "session": "2022-06",
+    "paper": "4GE1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2022-06/4GE1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "c3992c309e6644aa761a07f1d474fbfad230b40b9d1538bf50d4845b9c1b1302",
+    "bytes": 1161703,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2022-06/4GE1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2022-06",
+    "paper": "4GE1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2022-06/4GE1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "cf1b4c3c921b7ef57ac8579674c66cdaef7400b56c120d7b65815db7f85ad451",
+    "bytes": 733932,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2022-06/4GE1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2022-06",
+    "paper": "4GE1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2022-06/4GE1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "571eef3cb08c36ab251fa2e193e5e8d133372923c097c1d6c11876c3b58bdf5f",
+    "bytes": 541224,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2022-06/4GE1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2022-06",
+    "paper": "4GE1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2022-06/4GE1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "200334ef4ce7a7c5d37918d1c6d6325f8e68cb78eb9d5dcffb5c736de6328e54",
+    "bytes": 499810,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2022-06/4GE1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2023-06",
+    "paper": "4GE1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2023-06/4GE1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "180bfa4f02c4878d0db3a2fc8900b13fef6c150a0c396f288362ed373af75f7d",
+    "bytes": 450502,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2023-06/4GE1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2023-06",
+    "paper": "4GE1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2023-06/4GE1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "f0f4f7bd7fe583c7fb5ffe8fac962863415af35a7e048130852ff59d0959c844",
+    "bytes": 471212,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2023-06/4GE1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2023-06",
+    "paper": "4GE1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2023-06/4GE1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "de749019abe1304a88070fad360fee1fa4d2447094f298c7dce5d8ce908a6868",
+    "bytes": 722328,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2023-06/4GE1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2023-06",
+    "paper": "4GE1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2023-06/4GE1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "fa106df90d0613b2103e768bec66e396cce02f8b788d8a7d15c421de88aa86d2",
+    "bytes": 942492,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2023-06/4GE1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2023-11",
+    "paper": "4GE1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2023-11/4GE1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "ca22ee5d5b21fa65ca7b0a01abe526739255643498a2b38a79fd34c37d4b9ebc",
+    "bytes": 304445,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2023-11/4GE1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2023-11",
+    "paper": "4GE1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2023-11/4GE1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "1cf4dbc8105888a78a327a93f35a833835602038dcf594696be8635ace637ce7",
+    "bytes": 1124160,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2023-11/4GE1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2024-06",
+    "paper": "4GE1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2024-06/4GE1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "1f9ff0e92b253fdee3148ce0dd9f8d2094308c11ef710062be9100cfbb9f82d0",
+    "bytes": 389528,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2024-06/4GE1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2024-06",
+    "paper": "4GE1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2024-06/4GE1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "fafb21332bd445d49bc2d9bbd78b4e79e07ece24775c5e3abe05839e5b344e9b",
+    "bytes": 349044,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2024-06/4GE1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2024-06",
+    "paper": "4GE1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2024-06/4GE1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "b48545992ceed02e7b2d26c3cbc4d6716493bee5ea7e66ee01a85693fda6ae55",
+    "bytes": 398707,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2024-06/4GE1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2024-06",
+    "paper": "4GE1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2024-06/4GE1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "e30202e24eed946306e888e243b464c783325afe8288b34ec51f05f92c948c81",
+    "bytes": 449502,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2024-06/4GE1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2024-11",
+    "paper": "4GE1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2024-11/4GE1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "3fcd1687492eb7fb79e1090dcc206bc91f87f9420a509d568e0f909b46f413ad",
+    "bytes": 1134122,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2024-11/4GE1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2024-11",
+    "paper": "4GE1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2024-11/4GE1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "d2a548069c1510c983e44e0410808099854e855f0a7e0813b336274a7077f6ca",
+    "bytes": 409458,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2024-11/4GE1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2025-06",
+    "paper": "4GE1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2025-06/4GE1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "14f1fb3484ebfee42bbad84d797f06cfcee9e464321c1a8e64d8f254b2710e54",
+    "bytes": 403067,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2025-06/4GE1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2025-06",
+    "paper": "4GE1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2025-06/4GE1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "112f25845bf37b3c078d3e39c2aa0ab24162130bbf8d6437f2eec22b324f5edf",
+    "bytes": 410338,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2025-06/4GE1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2025-06",
+    "paper": "4GE1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2025-06/4GE1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "646be36fc4f15b906f8172edd23db1fb861caa08f58f939f3c2da1184dca08cc",
+    "bytes": 692411,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2025-06/4GE1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2025-06",
+    "paper": "4GE1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2025-06/4GE1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "ad8b130fce36b3a2d73f28205196af43ddc03f1044dcd72252e1d5ba1532d401",
+    "bytes": 596170,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2025-06/4GE1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2026-06",
+    "paper": "4GE1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2026-06/4GE1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "71f1fd80216dd2ee603995757b3b65cd2e65f36a01e91de33dccc0ac8682af23",
+    "bytes": 696256,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2026-06/4GE1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2026-06",
+    "paper": "4GE1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2026-06/4GE1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "5c187166050f723ed882c096e6132acadc8533f8eb023f752a3a14f91bdbf1cf",
+    "bytes": 902444,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2026-06/4GE1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2026-06",
+    "paper": "4GE1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2026-06/4GE1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "ceca4d21ffc3a67623a3373264576e016a05c7c41d9214c8fe40eb097167bbec",
+    "bytes": 558952,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2026-06/4GE1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4GE1",
+    "session": "2026-06",
+    "paper": "4GE1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/geography/4ge1/past-papers/2026-06/4GE1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "6f1783a42a7a450651cedbd48fe7072906f7de7cadcd37927c7e0fa81382784e",
+    "bytes": 479170,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4ge1/2026-06/4GE1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2019-06",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2019-06/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "47ec9ddba74da755a7d01585d1bdebea385a93e51b0e2d95c8382187919a7e57",
+    "bytes": 275749,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2019-06/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2019-06",
+    "paper": "4BS1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2019-06/4BS1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "7568dbd1e439390beb46181102014353f1aa8026728bb1c2c6d7ca5822fe9e75",
+    "bytes": 299058,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2019-06/4BS1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2019-06",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2019-06/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "af58c12bc97e61efd86823a8d8642ace9cf15411656eb17d78db2d9e05b4c15e",
+    "bytes": 362696,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2019-06/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2019-06",
+    "paper": "4BS1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2019-06/4BS1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "09884a126bbbd55387dedf54639a348b1ffa84587122cd63d34b914e0a7c8b13",
+    "bytes": 358004,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2019-06/4BS1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2020-06",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2020-06/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "44c8a4d41ae24a69ebd1515fcc77fac6245a7017509624431b16e31c92b7dfe0",
+    "bytes": 237173,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2020-06/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2020-06",
+    "paper": "4BS1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2020-06/4BS1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "23f87ef4321b67a112df35ccc8fe73111bcae91ad613065e5057c3ace807da23",
+    "bytes": 218262,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2020-06/4BS1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2020-06",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2020-06/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "d873ec7315e101d77f4ace32cc582fc3a398359a56466e6fe3613ea751fc6a48",
+    "bytes": 206142,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2020-06/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2020-06",
+    "paper": "4BS1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2020-06/4BS1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "509b50f5fd74e5c818cbf01e93e9337f07313807559b3e242dea3466a768dd60",
+    "bytes": 208365,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2020-06/4BS1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2021-06",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2021-06/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "1e762adf3f20c8ba1c47d7cfac48e5dfe5dcc58d8ad5875dc373dbe08d61e15a",
+    "bytes": 352541,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2021-06/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2021-06",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2021-06/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "7cbdd01e2e0c5509e7bfa3b7593126e022d88e1c30b4638f53b7badd69c35749",
+    "bytes": 376400,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2021-06/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2021-11",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2021-11/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "7a4b8cd48a5660478dcfbc489847c8454d02fad000f6f57b6c46550c256c87d4",
+    "bytes": 294226,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2021-11/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2021-11",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2021-11/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "dc9769fcba4bc2b3593ac640acbe0c5d9366d25d795b3cf91a75c3ac5c062b88",
+    "bytes": 321139,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2021-11/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2022-06",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2022-06/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "f69a290804520e2b29c4c39c7123e0f3c1865da7a2a8464ebe1b569430c6e6a8",
+    "bytes": 222427,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2022-06/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2022-06",
+    "paper": "4BS1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2022-06/4BS1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "a9a37676f12ba55a1925a36792c4f9e48546f4662e4409e878dcc9aedaaaa15a",
+    "bytes": 230152,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2022-06/4BS1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2022-06",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2022-06/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "5adfcde411c7e035a503f3b6b1d94f958b3305c76d5bbb894d9fbb43028e9aab",
+    "bytes": 224230,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2022-06/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2022-06",
+    "paper": "4BS1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2022-06/4BS1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "5adfcde411c7e035a503f3b6b1d94f958b3305c76d5bbb894d9fbb43028e9aab",
+    "bytes": 224230,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2022-06/4BS1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2023-06",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2023-06/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "1176aefacb8daddb4608e6f223302df99325af66b6c95874994324bac7e55e06",
+    "bytes": 252758,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2023-06/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2023-06",
+    "paper": "4BS1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2023-06/4BS1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "b2e586c006543532bbb595e1249140dd225cf7c013daab99326b4d8b5b49c3aa",
+    "bytes": 308700,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2023-06/4BS1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2023-06",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2023-06/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "37aa5b6c9a237bc6338a9f2476a8efa9d7c8c539d40cbfa418d685ff1c6c4808",
+    "bytes": 310755,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2023-06/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2023-06",
+    "paper": "4BS1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2023-06/4BS1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "ab98b6854f2346291cb4f32311cec192cd9b99c4369cc5eba40c3ca5a47506d3",
+    "bytes": 337765,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2023-06/4BS1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2023-11",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2023-11/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "8be6bb9726d8ffe25c3719540b19fc1a3a7041dd290da9c7aee2ddabdf77d691",
+    "bytes": 277886,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2023-11/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2023-11",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2023-11/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "0e3487e85db587a1bac0d6a1fc94ed946044ae621b4f22a28785e435616ea741",
+    "bytes": 422825,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2023-11/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2024-06",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2024-06/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "b9211f929dc2b306187f50142d4a351689ab550803791ad51c21612314f328c5",
+    "bytes": 258357,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2024-06/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2024-06",
+    "paper": "4BS1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2024-06/4BS1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "c7727b34fc5040230e1e0dedf804c0becd773c942dd4f884eff420875f41c141",
+    "bytes": 258470,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2024-06/4BS1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2024-06",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2024-06/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "941ad69ee3649639ba48e2952a8828b388a02190ae624e9c21f8857ad8dfd917",
+    "bytes": 263161,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2024-06/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2024-06",
+    "paper": "4BS1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2024-06/4BS1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "6ed08b13696381f83d12c3963c7a9b44c51ff600382fd83ff32f49c9816138ca",
+    "bytes": 258089,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2024-06/4BS1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2024-11",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2024-11/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "3b949b96431b64a6c0b93c3791911ea20d808d45eb8c8d1f1d58e20514b3bf95",
+    "bytes": 404031,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2024-11/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2024-11",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2024-11/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "2e143058f195de0bd9c6c96e6942c958a5e14364a9051e4c78565c368ad6067a",
+    "bytes": 416055,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2024-11/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2025-06",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2025-06/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "5da4a6445724b7e8970879a5bcefcd6ae9eb8209b3917dcd9c2de49c9edc7289",
+    "bytes": 403188,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2025-06/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2025-06",
+    "paper": "4BS1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2025-06/4BS1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "8606d8c0b515fb713ab13e053535c291422960907f74fa478a6c898ac620465c",
+    "bytes": 225511,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2025-06/4BS1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2025-06",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2025-06/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "6269ba95a0e6e6186b849f3cd7a202d0d56bddb79419c8c93acaff050aa6eada",
+    "bytes": 282770,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2025-06/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2025-06",
+    "paper": "4BS1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2025-06/4BS1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "d75115e7e6300be04a2db0308460d971fa1ad67d900d9f539d1551b1399feff1",
+    "bytes": 284413,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2025-06/4BS1-02R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2025-10",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2025-10/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "fcad98bff317362debbc374461a0dbe98a72dd5d72da34486cf2b382b178ec74",
+    "bytes": 369755,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2025-10/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2025-11",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2025-11/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "5310d17de605a104b93fbc6663688bc01389fcf22de0186b3767a960862a0f4b",
+    "bytes": 277264,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2025-11/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2026-06",
+    "paper": "4BS1-01",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2026-06/4BS1-01/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "7e702eb8c747ec7d5d0eab7ef89e638a72797fa7198f7c3bcd29085c3fd738cd",
+    "bytes": 312874,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2026-06/4BS1-01/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2026-06",
+    "paper": "4BS1-01R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2026-06/4BS1-01R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "81bf7855f23d4df160e1a4211369b5247467284bc2198b8790bf2d4ee6930270",
+    "bytes": 297809,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2026-06/4BS1-01R/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2026-06",
+    "paper": "4BS1-02",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2026-06/4BS1-02/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "7128ee449e5f22300883a306563259e3f056a11d4d40cbf6b3b4e2bf55edbea4",
+    "bytes": 477203,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2026-06/4BS1-02/ms.draft.json"
+   },
+   {
+    "course_code": "4BS1",
+    "session": "2026-06",
+    "paper": "4BS1-02R",
+    "repo_of_record": "SyllabAI/syllabai-pastpapers",
+    "repo_path": "past-papers/pearson-edexcel/international-gcse/business/4bs1/past-papers/2026-06/4BS1-02R/ms.pdf",
+    "manifest_verified": true,
+    "sha256_local": "1276bb4b7376cf90b086a5180cf9c5de8a3d5695f38986d9807567f9feb7d4fd",
+    "bytes": 468345,
+    "glm_ms_draft": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/glm-ms-drafts/4bs1/2026-06/4BS1-02R/ms.draft.json"
+   }
+  ]
+ },
+ "extraction_tranche_of_record": {
+  "method": "deterministic PyMuPDF text-layer parse of the printed levels tables (NOT GLM-OCR); reviewRequired=true; the full parser pass remains the of-record extraction for ingest (G-4)",
+  "contract_shape": "packages/contracts ingestion.ts glmMarkSchemeDraftSchema (entries[].bands[] verbatim: level, marksMin, marksMax, descriptor-as-printed, guidance)",
+  "papers_parsed": 62,
+  "papers_with_band_entries": 62,
+  "band_entries": 437,
+  "band_rows": 1275,
+  "coverage_findings_s21": 0,
+  "top_marks_distribution": {
+   "6": 149,
+   "8": 138,
+   "9": 76,
+   "12": 74
+  },
+  "cross_check": "the distribution matches the corpus band-bearing shapes of record exactly (4BS1 6/9/12-mark, 4GE1 8/12-mark \u2014 adr040-bandwave1-r2probe-r0 corpus_grounding)",
+  "zero_rows_note": "printed zero rows ('No rewardable material') are not bands (ADR-040 \u00a72.1); per-doc warnings carry notes; zero-row capture had a known regex miss in this tranche (documented, informational only)",
+  "subpart_granularity_note": "labels are part-granular (e.g. 1(g)); subpart refinement (b(iii)-style) is deferred to the full parser pass \u2014 reviewRequired discloses this",
+  "artifacts": ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/ (fetch manifests + 62 glm-ms-draft JSONs)"
+ },
+ "gap_ledger_honest": {
+  "4GE1_corpus_sessions_not_in_repo_of_record": {
+   "sessions": [
+    "June 2017 (4GE0 legacy)",
+    "June 2018 (4GE0 legacy)",
+    "June 2019",
+    "Nov 2021"
+   ],
+   "corpus_parts_touched": {
+    "June 2019": 202,
+    "June 2020": 5,
+    "June 2021": 1,
+    "Nov 2021": 26,
+    "June 2022": 110,
+    "May 2023": 16,
+    "null": 196,
+    "May 2024": 1,
+    "June 2023": 70,
+    "June 2024": 88,
+    "June 2017": 61,
+    "June 2018": 59,
+    "Nov 2024": 21,
+    "Nov  2024": 7,
+    "May  2023": 1,
+    "Nov 2023": 6,
+    "Nov 2020": 2,
+    "June 2023 ": 1,
+    "June2017": 1,
+    "Jun 2023": 1,
+    "2018": 1,
+    "SAM 2017": 3,
+    "June2023": 1,
+    "June  2023": 1,
+    "Nov  2023": 1,
+    "June 204GE1/02R19": 1
+   },
+   "note": "repo coverage starts 2022-06; 2017/2018 are legacy-4GE0 spec"
+  },
+  "4BS1_corpus_sessions_not_in_repo_of_record": {
+   "sessions": [
+    "Nov 2020"
+   ],
+   "corpus_parts_touched": {
+    "June 2023": 51,
+    "June 2022": 50,
+    "June 2021": 49,
+    "Nov 2021": 49,
+    "Nov 2020": 46,
+    "June 2024": 50,
+    "Nov 2024": 51,
+    "Nov 2023": 52,
+    "null": 213,
+    "Nov  2024": 1
+   }
+  },
+  "CIE_9609_0455_external_fetch": {
+   "status": "BLOCKED this leg \u2014 0 of 78 attempts landed",
+   "attempts": 78,
+   "good_pdfs": 0,
+   "evidence": [
+    "pastpapers.co serves an HTML wrapper (59981B, text/html) for direct PDF URLs (e.g. /caie/a-level/business-9609/2022-may-june/9609_s22_ms_11.pdf) \u2014 download is JS-gated",
+    "direct-file 404s on 0455 2020-march (no March series files at those tags)",
+    "gceguide.cc now paywall-redirects (lyte.page); papacambridge/dynamicpapers not scriptable per the corpus's own 2026-09-12 probe history"
+   ],
+   "plan": "headless-browser (agent-browser) pass or operator-supplied CIE PDFs; per G-3 the wave proceeds 4GE1/4BS1-first in the meantime"
+  },
+  "none_provenance_parts": "corpus parts with sourcePaper=null (4GE1 196, 4BS1 213, 9609 332, 0455 229/253) have no paper binding to fetch against \u2014 flagged for the ingest leg (honest-skip)"
+ },
+ "unblocks": [
+  "the conv53 band-shape design against REAL printed levels tables (437 real band rows now staged)",
+  "the G-4 LEVELS birth for the repo-covered 4GE1/4BS1 corpus-bearing papers"
+ ],
+ "estate_coherence": "read-only on DB and registry; zero writes anywhere except this receipt + lane artifacts on main",
+ "security": "GitHub PAT via env only; pastpapers.co fetched anonymously; no credentials in artifacts",
+ "files_touched": [
+  ".syllabai/receipts/T-SM-ROLLOUT/adr040-g1-msfetch-r0.json",
+  ".syllabai/lane-artifacts/ADR040-G1-WAVE1-MS/**",
+  ".syllabai/worklog.md (append)"
+ ]
+}

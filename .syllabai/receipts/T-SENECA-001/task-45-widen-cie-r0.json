@@ -1,0 +1,158 @@
+{
+ "task": "T-SENECA-001 Task 45 widen-cie-r0",
+ "generatedUtc": "2026-10-26T12:58:19Z",
+ "gates": {
+  "G0_dsn": "staged",
+  "G1_pk": "(id,course_slug)",
+  "G2_fleet": "161621/262",
+  "G2_targets": "exact",
+  "G3_pii": "clean (phone law v3 + mirror-filename strip; email law + RFC-2606 reserved-domain carve-out; adjudication log: v1 12 curriculum numerics, v2 10 decimals/standard-form, v3 5 self-mirror hex names + 1 example.com ICT lesson \u2014 zero personal data)"
+ },
+ "mapping_courses": 27,
+ "new_bundles": 22,
+ "bundle_counts": {
+  "biology-cambridge-international-a-level": {
+   "sections": 262,
+   "examQuestions": 692,
+   "quizzes": 0,
+   "resources": 954
+  },
+  "biology-cambridge-international-gcse-core": {
+   "sections": 265,
+   "examQuestions": 5,
+   "quizzes": 0,
+   "resources": 270
+  },
+  "biology-cambridge-international-gcse-supplement": {
+   "sections": 396,
+   "examQuestions": 1670,
+   "quizzes": 0,
+   "resources": 2066
+  },
+  "business-cambridge-international-gcse-2027-exams": {
+   "sections": 214,
+   "examQuestions": 67,
+   "quizzes": 0,
+   "resources": 281
+  },
+  "chemistry-cambridge-international-a-level": {
+   "sections": 204,
+   "examQuestions": 78,
+   "quizzes": 0,
+   "resources": 282
+  },
+  "chemistry-cambridge-international-gcse-core": {
+   "sections": 208,
+   "examQuestions": 0,
+   "quizzes": 0,
+   "resources": 208
+  },
+  "chemistry-cambridge-international-gcse-supplement": {
+   "sections": 286,
+   "examQuestions": 1242,
+   "quizzes": 0,
+   "resources": 1528
+  },
+  "co-ordinated-science-biology-cambridge-international-gcse-core": {
+   "sections": 175,
+   "examQuestions": 4,
+   "quizzes": 0,
+   "resources": 179
+  },
+  "co-ordinated-science-biology-cambridge-international-gcse-supplement": {
+   "sections": 225,
+   "examQuestions": 298,
+   "quizzes": 0,
+   "resources": 523
+  },
+  "co-ordinated-science-chemistry-cambridge-international-gcse-core": {
+   "sections": 198,
+   "examQuestions": 0,
+   "quizzes": 0,
+   "resources": 198
+  },
+  "co-ordinated-science-chemistry-cambridge-international-gcse-supplement": {
+   "sections": 244,
+   "examQuestions": 394,
+   "quizzes": 0,
+   "resources": 638
+  },
+  "co-ordinated-science-physics-cambridge-international-gcse-core": {
+   "sections": 184,
+   "examQuestions": 0,
+   "quizzes": 0,
+   "resources": 184
+  },
+  "co-ordinated-science-physics-cambridge-international-gcse-supplement": {
+   "sections": 258,
+   "examQuestions": 475,
+   "quizzes": 0,
+   "resources": 733
+  },
+  "computer-science-cambridge-international-gcse": {
+   "sections": 124,
+   "examQuestions": 109,
+   "quizzes": 0,
+   "resources": 233
+  },
+  "english-gcse-groundwork": {
+   "sections": 336,
+   "examQuestions": 0,
+   "quizzes": 1248,
+   "resources": 1584
+  },
+  "geography-cambridge-international-gcse-2027-exams": {
+   "sections": 255,
+   "examQuestions": 385,
+   "quizzes": 0,
+   "resources": 640
+  },
+  "history-cambridge-international-gcse-the-twentieth-century-option-b": {
+   "sections": 165,
+   "examQuestions": 1318,
+   "quizzes": 697,
+   "resources": 2180
+  },
+  "ict-cambridge-international-gcse": {
+   "sections": 390,
+   "examQuestions": 0,
+   "quizzes": 0,
+   "resources": 390
+  },
+  "maths-cambridge-international-gcse-extended": {
+   "sections": 487,
+   "examQuestions": 2,
+   "quizzes": 0,
+   "resources": 489
+  },
+  "physics-cambridge-international-a-level": {
+   "sections": 203,
+   "examQuestions": 113,
+   "quizzes": 0,
+   "resources": 316
+  },
+  "physics-cambridge-international-gcse-core": {
+   "sections": 454,
+   "examQuestions": 0,
+   "quizzes": 0,
+   "resources": 454
+  },
+  "physics-cambridge-international-gcse-supplement": {
+   "sections": 302,
+   "examQuestions": 916,
+   "quizzes": 0,
+   "resources": 1218
+  }
+ },
+ "imageRewrite": {
+  "needed_files": 1885,
+  "copied": 0,
+  "blob_missing": 0,
+  "rewritten_refs": 3198,
+  "missing_refs": 509
+ },
+ "inline_image_hits": 0,
+ "delta_generationScript_kept": true,
+ "registry_total_courses": 62,
+ "flags_total_courses": 62
+}

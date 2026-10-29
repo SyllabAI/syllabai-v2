@@ -1,7 +1,9 @@
 # Official past papers in the hub bundle (ADR-037 wiring)
 
 Status: WIRED (content) · 2026-10-21 · source wave: syllabai-resources ADR-037
-converter v0.6 (merged `main@de4d8da8`)
+converter v0.6 (merged `main@de4d8da8`) · **see the 2026-10-25 update at the end of
+this document — the official plane moved to `official-papers.json` and the
+per-course handover rule is now of record**
 
 ## What this adds
 
@@ -237,3 +239,36 @@ now close their part-sums), admitted 803 questions / 2950 parts / 1260 options, 
 plane 275 -> **280** (+4 repaired + the recovered Q7), unmapped 1 (unchanged), dupOrder 0,
 g7 violations 0, emitted refs 1210 -> 1219, mark_point rows 3867 -> 3907. The namespace
 injectivity law is unchanged and re-proven on the wave-12 bytes.
+
+## Update 2026-10-25 — plane split + the per-course handover rule
+
+Two IA changes since the wave-12 state described above, both user-directed and both
+shipped on `main`:
+
+1. **Plane split — official sets are OUT of `questions.json`.** The bundle now
+   carries an optional dedicated plane `apps/hub/content/<course>/official-papers.json`
+   → `bundle.officialPaperTopics` (`lib/courses.ts`; courses predating the split get
+   `[]`). The Exam-Questions topic tree renders `questionTopics` only and contains
+   **no official sets**. igcse-chemistry-19 currently holds all 54 official sets on
+   that plane (16×1C + 16×2C + 11×1CR + 11×2CR, resources pin `main@e6950ec1`).
+2. **Past Papers wiring.** The per-course Past Papers page pairs corpus paper rows
+   against `collectPastPapers([...officialPaperTopics, ...questionTopics])` —
+   official sets FIRST, so the complete official paper wins the first-match-wins
+   pairing over any partial SME provenance for the same session. The
+   `InteractiveChip` component is unchanged (matched → the Exam-Questions player
+   with coverage; unmatched → the greyed roadmap chip).
+
+**The handover rule (of record; protocol lives in
+`syllabai-resources/Official-ExamQuestion/AGENTS.md` — "The handover rule").**
+When the Official-ExamQuestion pipeline starts for a course: **H1** — census what
+SME EQ currently connects to Past Papers for that course (which rows light their
+Interactive button via SME `sourcePaper` provenance) and receipt it; **H2** — when
+the pipeline finishes (all gates green), compare the Official output against that
+baseline per paper; any SME coverage the Official output would serve worse is a
+cutover BLOCKER; **H3** — then disconnect the SME sets from Past Papers and connect
+the Official sets (ship `official-papers.json`, record the replaced state in the
+resources `LEDGER.md`). Invariant: a course's past-paper interactive source is
+either SME EQ or Official EQ — never a blend, and the cutover may never silently
+drop coverage the SME side was serving. Chemistry is the executed precedent; every
+future course (4XCH1 modular, 4SD0 shared papers, physics, biology, …) follows the
+same three receipts.

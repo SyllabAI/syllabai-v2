@@ -1,0 +1,55 @@
+{
+  "run": "run-002",
+  "task": "NEON-PAUSE-001",
+  "at": "2026-10-27T18:45-19:05Z (wire-observed UTC)",
+  "trace": "1a17e9efda380afd",
+  "operator_input": "Console usage panel (MAIN, since 2026-10-01): compute 50.17 CU-hrs, storage 408.54 MB, history 657.33 kB, network transfer 3.51 GB",
+  "api_unlock": "console.neon.tech/api/v2 REACHABLE from sandbox with the napi_ key (org-scoped: org-withered-mud-59985156). Corrects run-001's 'napi_ unusable from sandbox': only api.neon.tech was ever tried (still DNS-walled, 6th consecutive). scripts/run002_neon_scan.py filed in sandbox scripts/ = reusable egress/quota watch of-record.",
+  "consumption_of_record": {
+    "MAIN_SyllabAI_billowing-cherry-15418366_us-east-2": {
+      "compute_time_seconds": 206238,
+      "compute_cuhrs_panel": 50.17,
+      "data_transfer_bytes": 5596915289,
+      "logical_size_bytes": 408543232,
+      "pitr_history_bytes": 657328,
+      "written_since_parent_bytes": 622469752,
+      "snapshot_bytes": 0,
+      "branch": "br-muddy-bar-a5huwldd production (single branch, no strays)",
+      "endpoint_state": "idle, disabled=false, suspend_timeout_seconds=0",
+      "quota_reset_at": "2026-11-01T00:00:00Z"
+    },
+    "W1_SyllabAI-Warehouse-1_flat-leaf-09845356_ap-southeast-1": {
+      "compute_time_seconds": 3572,
+      "data_transfer_bytes": 13753134,
+      "logical_size_bytes": 39993344,
+      "endpoint_state": "active, probe CONNECT_OK 915ms, 241 MB",
+      "quota_reset_at": "2026-11-01T00:00:00Z"
+    }
+  },
+  "limits_of_record": {
+    "storage": "1 GiB/branch (branch_logical_size_limit_bytes=1073741824, both projects)",
+    "compute": "100 CU-hrs/project/mo",
+    "transfer": "5 GB/project/mo",
+    "history_retention_seconds": 21600
+  },
+  "root_cause": "MONTHLY NETWORK-TRANSFER QUOTA EXHAUSTED on MAIN: 5,596,915,289 B = 5.60 GB of the 5 GB/project allowance (112%) since Oct 1 - the ONLY over-limit metric. NOT storage (408.5 MB = 38% of 1 GiB; run-001's 1-GB-breach hypothesis formally RETIRED), NOT compute (50.17 CU-hrs = ~50% of 100). Per-project enforcement proven by W1 alive in the same org at 13.7 MB transfer. Proxy refuses pre-compute (PG class 53, code 53000, 'Your account or project has exceeded the quota. Upgrade your plan to increase limits.'); API POST /endpoints/ep-ancient-cake-a52e4kfd/start -> HTTP 423 'quota exceeded' (request_id ab27cb6e-7d57-4a8f-bd21-d762244e665a) => LIVE enforcement, not a stale latch; no free un-latch exists.",
+  "panel_discrepancy_note": "Operator panel transfer 3.51 GB vs enforcement-side 5.60 GB: console metric definition and/or lazy refresh; adjudication unaffected (53000 refusal + 423 start both confirm exceeded). Panel storage 408.54 MB matches API logical_size EXACTLY -> panel identity = MAIN confirmed.",
+  "remediation_fork": [
+    "A. WAIT: auto-resume at quota_reset_at 2026-11-01T00:00:00Z (~4.2 days from adjudication) - free; learner-facing DB plane (auth/progress/books/tutor) stays down; hub static plane unaffected.",
+    "B. UPGRADE to Launch (operator console): immediate resume; no monthly minimum; storage $0.35/GB-mo (~$0.14/mo at 408 MB); transfer above allowance billed per GB - removes the hard wall.",
+    "Either fork: PREVENTION package below is mandatory, or the same wall re-trips mid-November (egress run-rate ~0.21 GB/day)."
+  ],
+  "prevention_package": [
+    "1. Egress watch: run scripts/run002_neon_scan.py daily, alarm at 4.0 GB (80%). Console-host API access now proven from sandbox.",
+    "2. Bytea offload (ADR-038 relief, now egress-driven too): question_asset 585 + revision_note_asset 194 (~59 MB) -> Neon Object Storage; serving bytea through Postgres multiplies egress on every fetch.",
+    "3. HTTP caching on asset/books routes (ETag/Cache-Control): repeat learner fetches must not re-pull bytea through the pooler.",
+    "4. Bulk drains must paginate + aggregate server-side: embed backfill (1,330 NULL) and T-MIG-141 Phase-D (3,012) re-scanning document_chunks (133 MB) = multi-GB egress per pass; seneca parity pulls same class.",
+    "5. Keep heavy reads on W1 (13.7 MB/mo) or on snapshots, not MAIN; Oct-22/23 drop/restore churn (dump egress) contributed to the burn.",
+    "6. Backup-law implementation (nightly pg_dump -> Object Storage) still pending of-record; size its egress into the budget when built."
+  ],
+  "wire_impact": "Unchanged from run-001 (<1 hr old, not re-probed to avoid noise): carrier register/login 500 (DB plane down for learners), /actuator/health DB-less UP, hub static 16 packs fine.",
+  "secrets": "napi_ + MAIN npg_ + W1 npg_ chat-transited AGAIN (third time of-record). Rotation list: GITHUB_PAT, VERCEL_PAT, napi_, npg_MAIN, npg_W1 (+3 plaintext LLM keys in carrier env, wave-16 note). Volatile-only honored; zero credentials persisted; scrub-verified this turn.",
+  "writes": "MAIN: zero possible (refused pre-compute) + one API POST /start attempt (423, no side effect). W1: zero this run (read-only probes). Vercel: zero mutations. No deploys -> cap window untouched.",
+  "environment": "Same sandbox as run-001. repos/v2-np = clone of-record; origin/main advanced 4eb4158f -> ca9aa23b mid-turn (R0-AUTO worklog-clobber restore, shallow view 'behind 2058') - filed worktree-from-tip (repos/v2-run002). repos/v2-run014 + plane-broadcast = foreign/old residue (UUID-message commits, no remote) LEFT UNTOUCHED.",
+  "receipt_culture": "fetch-first (R0-AUTO restore absorbed), incremental-commit same-turn push, no force, worktree-from-tip"
+}

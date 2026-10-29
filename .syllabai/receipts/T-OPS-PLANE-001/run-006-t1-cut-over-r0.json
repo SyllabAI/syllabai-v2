@@ -1,0 +1,70 @@
+{
+  "run": "run-006",
+  "task": "T-OPS-PLANE-001",
+  "at": "2026-10-23T20:45:00Z",
+  "operator_order": "'T1 cut-over order' (IM trace 1a16a648c69072d9) — executes the run-005 of-record five-step sequence",
+  "credentials_note": "sandbox was recycled between sessions (repos + scripts wiped); everything re-established from the fleet of record (clone at 0fc8d748); tokens remain volatile-only, rotation list unchanged",
+  "phase_1_rehearsal": {
+    "verdict": "ALL GATES GREEN — 4MA1 cut-over REHEARSAL-PROVEN",
+    "adaptation_disclosed": "the of-record branch path (dryrun-4ma1.mjs against a COW branch) is DOUBLE-WALLED: api.neon.tech DNS-blocked from this sandbox (curl exit 6) AND from the GitHub runners (dispatch run 40019118989 failed curl exit 6 inside the new t-ops-plane-branch-ops.yml vehicle; neon-replay failing 4 consecutive runs 10-21..10-23 = the 'CI egress proven' doctrine in run-005 was STALE — new latent regression filed). ADAPTATION v2 (rehearsal-t1.mjs): source reads on LIVE main under READ ONLY session (run-003 class); W1 pre-clear + re-copy from live main (idempotency repair, flip not active); zero-residue DELETE leg = single write TRANSACTION on main that ROLLBACKS (atomic, nothing committed, MVCC readers unblocked, ~10 MB dead tuples reclaimed by autovacuum; same rows, same FK graph, same residue checks — minus branch isolation, which both DNS walls forbid).",
+    "gates": [
+      "PASS source_present — 8,202 (run-001 census exact)",
+      "PASS source_fingerprint — id-hash 88706faabc86 == run-003 plane:88706faa…",
+      "PASS copy_count_parity — 8,202 == 8,202",
+      "PASS copy_bytes_parity — 10,307,759 bytes EXACT",
+      "PASS copy_id_hash_parity — sha256 id-set EQUAL",
+      "PASS seam_vector_search — W1 HNSW top-5 in 83 ms (probe cfb282ff, dist 0.0743 — same canary dist as run-003)",
+      "PASS seam_hydrate_by_ids — main hydration 5/5",
+      "PASS zeroresidue_delete — main 8,202 -> 0 INSIDE TXN, rolled back, 4,227 ms lock window",
+      "PASS identity_untouched — in-txn: users 588, mark_points 16,241, documents 1,354, remaining corpus 5,563 (sci-chem)",
+      "PASS rollback_byteflat — post-rollback corpus 13,765 == 13,765, maths 8,202 restored"
+    ],
+    "cosmetic_note": "one 25P01 'no transaction in progress' WARNING from the W1 pool during the copy (postgres-js unsafe-begin pool semantics); copy parity gates prove the end state; same exposure class as the of-record instrument — non-blocking"
+  },
+  "phase_2_migration_0013": {
+    "applied_to_main": true,
+    "at_utc": "2026-10-23T20:33:19Z",
+    "method": "migrate-0013.mjs — packages/db/drizzle/0013_warehouse_registry.sql executed VERBATIM (statement-split on --> statement-breakpoint); guarded REFUSE if registry already present or FK target missing; DRY_RUN pass first; raw apply is the house pattern (main carries NO drizzle bookkeeping table — verified)",
+    "registry_row_of_record": "maths-4ma1 / 763dfe2d-d2b5-48fb-ba4c-2f708c637b26 / SYLLABAI_WAREHOUSE_URL_MATHS_4MA1 / ASSIGNED / wh-v1",
+    "flip_not_in_migration": "the seed stays ASSIGNED per the 0013 header law — the SERVING update is the operator-gated flip step and is HELD (deploy-first law)"
+  },
+  "phase_3_vercel_envs": {
+    "project": "syllabai-v2 (prj_FN5XQUMbpqKhZXFXpT80OdsKveJZ)",
+    "changes": [
+      "SYLLABAI_WAREHOUSE_SERVING=on (production, plain) — master switch",
+      "SYLLABAI_WAREHOUSE_URL_MATHS_4MA1=<W1 pooler URL> (production, encrypted) — the 0013 registry env NAME resolved",
+      "DATABASE_URL SWAPPED to ep-ancient-cake-a52e4kfd-pooler.us-east-2.aws.neon.tech (production, encrypted) — closes the run-005 direct-endpoint hazard; driver-verified safe first (createSql = postgres(url,{max:1,prepare:false}) everywhere incl. the warehouse factory = pgbouncer-transaction-compatible)"
+    ],
+    "safety_state": "registry ASSIGNED + coverage law = whole scope stays main even with master switch on — safe intermediate; env changes apply to NEW deployments only (current prod bundle keeps old envs)"
+  },
+  "phase_4_deploy": {
+    "bundle_build": "T-MIG-093 recipe of record at fleet tip 0fc8d748 — shim v2 applied CLEAN (pattern-asserts passed), 6 asset SHA pins EXACT (concepts 24fa91ac…, concept_edges 8a651dd9…, practicals e53e5f87…, relationships b3b75292…, specification_points b1fea699…, topics a7b14cbd…), bun 1.3.14 single-file CJS bundle 370 modules / 3,466,064 bytes (3.47 MB; of-record cdc1cd2 was 347 mod / 3.30 MB — growth = run-004 serving code + fleet evolution, disclosed); worktree RESTORED PRISTINE (0 tracked deltas, generated files removed)",
+    "localgate": "8/8 ALL PASS through the bundle over the NEW POOLER DATABASE_URL (health 200 UP; login-malformed 400; register 201 real INSERT via pooler = the swapped env proven end-to-end; tutor sessions 201/200/200/204/200-empty). Net residue: ONE probe learner r0-092gate-<ts>@example.invalid (of-record census class)",
+    "fire_leg": "REFUSED — vercel deploy --prod: upload 3.3 MB COMPLETED, CREATE rejected 'Resource is limited - try again in 24 hours (more than 100, code: api-deployments-free-per-day)' — the Hobby-plan daily cap, SAME class as the 10-22 precedent (worklog :11798). ZERO deployments created; prod UNTOUCHED (health 200 UP re-verified post-refusal).",
+    "root_cause_of_cap_burn": "hub git auto-bake fires a deployment on EVERY fleet push (100% ERROR at tip since BUILD_UTILS_SPAWN_1) — red builds still burn the account-level deployment quota; branch pushes add preview deployments",
+    "pause_attempt": "PATCH project paused:true and buildsEnabled:false BOTH rejected 400 (strict schema on this token's API surface, limited:true) — hub bleed needs OPERATOR action: pause hub console-side OR upgrade the plan",
+    "deploy_blocked_next_window": "cap frees ~20:37Z 2026-10-24 ('try again in 24 hours'); the stage is LINKED and READY (deploy-stage/api/index.js + vercel.json + .vercel/project.json of-record ids) — re-fire is ONE command when the window opens; hub must be paused console-side first or the auto-bakes will re-burn the quota"
+  },
+  "phase_5_flip": "HELD by law — SERVING update waits for the deploy to land READY (deploy-first); flip = UPDATE warehouse_registry SET status='SERVING', serving_since=now() WHERE course_group='maths-4ma1' (revert = back to ASSIGNED, no redeploy needed); then the serving verification probe re-run",
+  "tripwire_r5_r6": {
+    "r5_pre_cutover_utc": "2026-10-23T20:29:36Z — corpus byte-flat 13,765; mark plane mid-rebuild (points 16,241 / schemes 7,640, +1,384/+679 since r4 = T-CONTENT-MP-REBUILD-001 writer); users 588; tables 79; db 243 MB",
+    "r6_post_write_utc": "— corpus byte-flat 13,765 PASS (rollback-window delete + re-copy = ZERO residue on main PROVEN at the estate level); documents 1,354 PASS; question_asset 585 PASS; revision_note_asset 194 PASS; exam_papers_4MA1 110 PASS; table_count 80 = 79 + warehouse_registry (0013, EXPECTED drift); users 589 = 588 + localgate probe learner (EXPECTED census class); mark plane FLAT vs r5 in this window; db 243 MB",
+    "loss_signature": "NONE — every delta attributed to a disclosed cut-over cause"
+  },
+  "drop_at_cut_over_dependency_filed": "the placement-law T1 main-plane DROP (reclaiming the ~10 MB 4MA1 corpus) can only happen AFTER the serving hydrate moves off main: serving.ts step-2 hydrates document_chunks ON MAIN by id ('ids are the contract') — dropping main's 4MA1 rows before a warehouse-hydrate upgrade would empty the evidence path. NOT in this cut-over; filed as the T2 prerequisite.",
+  "artifacts": [
+    "rehearsal-t1.mjs (sandbox instrument, adaptation v2)",
+    "migrate-0013.mjs (guarded 0013 applier)",
+    ".github/workflows/t-ops-plane-branch-ops.yml (pushed 0fc8d748 — branch vehicle for when runner DNS allows; untested end-to-end, create step failed on the DNS wall)",
+    "deploy-stage/ (linked, READY to re-fire)",
+    "t1-r5-tripwire.json + t1-r6-tripwire.json (sandbox mirrors; of-record numbers embedded here)"
+  ],
+  "residuals": [
+    "DEPLOY BLOCKED on Vercel Hobby cap — operator lever: pause hub console-side (or upgrade); re-fire = vercel deploy --prod --yes from the linked stage when the window opens",
+    "CI->Neon DNS wall is a live regression (4 consecutive neon-replay failures) — needs org runner policy triage",
+    "hub build red (BUILD_UTILS_SPAWN_1) — hub lane's, unchanged",
+    "mark-plane rebuild lane continues (r5 window +1,384 pts) — writer still owes receipts",
+    "PAT rotation still overdue (all four families chat-transited)"
+  ],
+  "push": "see worklog Task 20"
+}

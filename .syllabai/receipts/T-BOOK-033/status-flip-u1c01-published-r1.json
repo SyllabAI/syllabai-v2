@@ -1,0 +1,31 @@
+{
+  "band": "T-BOOK-033",
+  "run": "status-flip-u1c01-published-r1",
+  "date": "2026-10-22",
+  "trace_id": "1a162e924c017891",
+  "operator_order": "translate the pack status and re-bake it (continuation rider — live verification of r0)",
+  "title": "the chapter-key join law — reader Lesson toggle + shelf Lesson badge heal (live-verified defect)",
+  "defect_of_record": {
+    "found": "live probe of the r0 merge (71cf4876): the published Lesson route served content (608KB, full box coverage) BUT the reader Lesson toggle and the shelf Lesson badge did not render",
+    "root_cause": "the SAME chapter lives in two key formats — DB rail coordinate book_chapters.chapter_key = 'u1:c1' (no padding; read first-hand from the live RSC payload) vs lessonPack chapterKey = 'u1:c01' (contracts grammar u<N>:c<NN>; the baked index) — and the r0 wire joined these keys EXACTLY in three sites: (1) fetchChapterLesson index lookup (toggle dead), (2) shelf lessonChapters.has (badge dead), (3) the lesson-page ?chapter= resolution whose exact branch and fallback BOTH missed a rail-format param, landing idx[0] — a latent wrong-chapter class the moment pack #2 exists (invisible today with one pack)",
+    "why_tests_missed_it": "the join formats were each internally consistent (mock index keys matched mock chapter keys); only the cross-plane join (Neon rail vs baked pack) exposes it — caught by the live probe, not the suite"
+  },
+  "fix": {
+    "law": "ONE normalizer normalizedChapterKey (u<N>:c<NN> -> unit/chapter integers; unknown shapes honest-null) + findChapterKeyInIndex, applied at ALL THREE join sites; the reader lessonHref now carries the pack canonical key (tightest payload); shelf membership normalizes BOTH sides",
+    "tests": "apps/hub/src/lib/books-lesson.test.ts pins the shipped regression pair (rail u1:c1 == pack u1:c01), multi-pack resolution (u2:c11 != idx[0]), honest-null shapes; lesson-plane fleet 34/34 green (contracts + links + markdown + join law)",
+    "gates": "typecheck x4 exit 0; build:hub GREEN incl the corpus-verify prebuild chain (CIE VALIDATOR PASSED); one next-build TS18047 caught and fixed pre-push (chapters possibly-null guard, the shelf null branch untouched)"
+  },
+  "lane": "PR syllabai-v2#299 (branch t-book-033/status-flip-rebake-r0, commit a460472f) -> CI verify+hub 2/2 green -> MERGED cb2323f5073d",
+  "live_verification": {
+    "reader_toggle": "/courses/igcse-chemistry-19/books/e6c0db50-0f84-55de-b50c-e4d49285cd6d?chapter=u1%3Ac1 renders the toggle (aria-label 'Open this chapter as a Lesson') with href carrying chapter=u1%3Ac01",
+    "shelf_badge": "/courses/igcse-chemistry-19/books carries the Lesson badge deep link(s)",
+    "lesson_route": "/lesson?chapter=u1%3Ac1 (rail format) resolves the u1:c01 pack — 200 with content"
+  },
+  "write_ledger": {
+    "syllabai_v2": "1 PR merged (#299): 5 files (lib normalizer + join, 3 page sites, 1 test file); bookkeeping receipt+worklog commit herewith",
+    "neon_writes": 0,
+    "llm_spend": 0,
+    "probe_learners": 0
+  },
+  "system_change": "the join law is now pinned by tests at the lib layer; any future key-format change must move the normalizer, not the call sites (root-cause-twice: this is the first strike, the system change is the normalized join + tests)"
+}

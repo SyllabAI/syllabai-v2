@@ -163,15 +163,45 @@ export const pastPaperMarkPointDraftSchema = z.object({
 export type PastPaperMarkPointDraft = z.infer<typeof pastPaperMarkPointDraftSchema>;
 
 /**
+ * MarkBandDraft — the LEVELS analog of MarkPointDraft (ADR-040 §2.1; v2
+ * additive, NO frozen Java ancestor — PastPaperDraftDto predates band
+ * schemes). One level row of a levels-of-response mark scheme: `levelIndex`
+ * is the ordinal (1 = lowest band), `marksMin`/`marksMax` the printed mark
+ * range, `descriptor` the level descriptor VERBATIM-AS-PRINTED (the R4
+ * "descriptors verbatim" check pins this — never trimmed, never
+ * paraphrased), `guidance` the "notes for awarders" blob as printed
+ * (nullable). Wire law: additive field with null/[] defaults — pre-ADR-040
+ * drafts (no `bands` key) bind byte-identically (ignoreUnknown strip on the
+ * request side; the compactor transform mirrors the points null-law).
+ */
+export const pastPaperMarkBandDraftSchema = z.object({
+  questionRef: z.string().nullable().default(null),
+  levelIndex: javaJsonInt.default(0),
+  marksMin: javaJsonInt.default(0),
+  marksMax: javaJsonInt.default(0),
+  descriptor: z.string().nullable().default(null),
+  guidance: z.string().nullable().default(null),
+  confidence: javaJsonDouble.default(0),
+});
+export type PastPaperMarkBandDraft = z.infer<typeof pastPaperMarkBandDraftSchema>;
+
+/**
  * MarkSchemeDraft (PastPaperDraftDto.java:71-86) — the compactors
  * (`points = points == null ? List.of() : …`) binds null/absent points to
  * [] (both mirrored by the transform). generalGuidance is the V34/G-3
  * optional additive field (null in pre-V34 drafts = "no guidance").
+ * ADR-040 §5.3 additive: `bands` rides beside `points` with the same
+ * compactor convention — a draft carries bands for its levels-marked
+ * entries and points for its point-marked entries (real papers mix both
+ * kinds question-by-question; the kind is the scheme's, per ADR-040 §2.2
+ * dispatch — a scheme with both for one ref is refused loudly at
+ * ingestion, never guessed).
  */
 export const pastPaperMarkSchemeDraftSchema = z.object({
   version: z.string().nullable().default(null),
   sourceDocumentId: z.string().nullable().default(null),
   points: z.array(pastPaperMarkPointDraftSchema).nullable().default(null).transform((p) => p ?? []),
+  bands: z.array(pastPaperMarkBandDraftSchema).nullable().default(null).transform((b) => b ?? []),
   generalGuidance: z.string().nullable().default(null),
 });
 export type PastPaperMarkSchemeDraft = z.infer<typeof pastPaperMarkSchemeDraftSchema>;

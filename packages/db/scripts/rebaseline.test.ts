@@ -242,20 +242,64 @@ describe("specialTypeMap", () => {
 // ---------------------------------------------------------------------------
 
 describe("verifyBaseline (checked-in baseline)", () => {
-  test("70/667/98/62/115 — runtime schema is snapshot-faithful, 0 drifts", async () => {
+  // count bumps per baseline-extending migration: 70/667/98/62/115 was the
+  // T-MIG-002-R proof; T-TEACH-011 (0008_teaching_toolkit) adds 2 tables,
+  // 17 columns, 1 index, 3 fks, 2 checks → 72/684/99/65/117;
+  // DC-3 (0009_dc3-mark-entitlement) adds 3 tables, 18 columns, 3 indexes,
+  // 5 fks, 3 checks → 75/702/102/70/120 (measured: verifyBaseline VERIFY
+  // PASS, 0 drifts, on the union end-state; renumber receipts: F-182 in the
+  // F182 plan, DC-5 in the lane's merge receipt (0010_dc5-... renumbered to
+  // 0011_dc5-... — main's F-182 lane took the 0010 slot with drill_surface and
+  // the landed F-182 journal repair of record supersedes the DC-5 sandbox copy).
+  // DC-5 (0011_dc5-mark-point-alternatives) adds 1 table, 9 columns,
+  // 2 indexes, 2 fks, 1 check (uq_mpa_row rides uniqueConstraints, not the
+  // index count) on top of the F-182 re-baseline (was 75/702/102/70/120 ->
+  // 77/730/105/73/126) -> 78/739/107/75/127
+  // (docs/DC5-CONFORMANCE-LINT-PLAN.md + docs/F182-DRILL-BUILD-PLAN.md).
+  // Study-Plan Builder (0012_study_plans) adds 1 table, 8 columns,
+  // 0 explicit indexes, 1 fk, 1 check (uq_study_plan_learner rides
+  // uniqueConstraints; the PK auto-index is not counted — the mpa precedent)
+  // on top of the DC-5 baseline -> 79/747/107/76/128
+  // (docs/STUDY-PLAN-BUILDER-PLAN.md).
+  // T-OPS-PLANE-001 run-004 (0013_warehouse_registry) adds 1 table,
+  // 7 columns, 1 index, 1 fk, 1 check on top of the study-plan baseline
+  // -> 80/754/108/77/129 (ADR-038 fleet map + the serving flip law).
+  // T-SENECA-001 run-004 (0014_assignment_resource_tables, the placement
+  // rework) adds 2 tables, 14 columns, 4 indexes, 3 fks, 4 checks (uq pair/
+  // triple ride uniqueConstraints, not the index count) on top of the
+  // warehouse-registry baseline -> 82/768/112/80/133. seneca_resources
+  // itself is a CORPUS plane — it lives in the sci-chem warehouse (template
+  // wh-v2), never in main (docs/DATA-PLANE-PLACEMENT.md).
+  // ADR-040 (0015_adr040-levels-of-response, re-baselined on the task-owned
+  // COW branch t-sm-adr040-mig/r0-0015 after the restore-lost 0007+0014
+  // artifacts were re-applied to it — see the PR receipt): mark_bands adds
+  // 1 table, 9 columns, 1 index, 1 fk, 4 checks; scheme_kind + metric +
+  // band_placement add 3 columns and 2 checks -> 83/780/111/81/139. The
+  // index count reads 111 (not 112+1): the restored estate registers
+  // uq_book_chapters_identity / uq_documents_canonical_id as unique
+  // CONSTRAINTS, which the parity law normalizes against the of-record
+  // runtime schema (0 drifts, verified).
+  test("83/781/112/82/139 — runtime schema is snapshot-faithful, 0 drifts", async () => {
     const v = await verifyBaseline();
     if (!v.ok) console.error(v.drifts.map((d) => `[${d.kind}] ${d.detail}`).join("\n"));
     expect(v.ok).toBe(true);
-    expect(v.inventory).toContain("tables 70/70");
-    expect(v.inventory).toContain("columns 667");
-    expect(v.inventory).toContain("indexes 98");
-    expect(v.inventory).toContain("fks 62");
-    expect(v.inventory).toContain("checks 115");
+    expect(v.inventory).toContain("tables 83/83");
+    expect(v.inventory).toContain("columns 781");
+    expect(v.inventory).toContain("indexes 112");
+    expect(v.inventory).toContain("fks 82");
+    expect(v.inventory).toContain("checks 139");
   });
 
   test("runtime loader sees the real table inventory", async () => {
     const run = await loadRuntimeSchema();
-    expect(run.size).toBe(70);
+    expect(run.size).toBe(83);
+    expect(run.has("public.mark_bands")).toBe(true); // ADR-040 — the levels analog of mark_points
+    expect(run.has("public.warehouse_registry")).toBe(true);
+    // T-SENECA-001 run-004 — the pack side families ride 0014 in MAIN; the
+    // corpus table itself lives in the sci-chem warehouse, never here
+    expect(run.has("public.assignment_resources")).toBe(true);
+    expect(run.has("public.assignment_resource_states")).toBe(true);
+    expect(run.has("public.seneca_resources")).toBe(false);
     expect(run.has("public.flyway_schema_history")).toBe(true);
     expect(run.has("public.document_chunks")).toBe(true);
     expect(run.has("public.book_chapters")).toBe(true);
@@ -266,6 +310,21 @@ describe("verifyBaseline (checked-in baseline)", () => {
     // T-TEACH-002 — the class feature toggles + the course bridge (ADR-CLASS-0001)
     expect(run.has("public.class_features")).toBe(true);
     expect(run.has("public.course_registry")).toBe(true);
+    // T-TEACH-011 — the Teaching Toolkit append-only results + quota counter
+    expect(run.has("public.teaching_toolkit_resources")).toBe(true);
+    expect(run.has("public.teaching_toolkit_usage")).toBe(true);
+    // DC-3 — the re-attempt entitlement substrate (additive, v2-owned)
+    expect(run.has("public.ai_mark_events")).toBe(true);
+    expect(run.has("public.mark_entitlement_policies")).toBe(true);
+    expect(run.has("public.mark_entitlements")).toBe(true);
+    // F-182 build — the drill surface's own lane (zero-stakes by construction)
+    expect(run.has("public.drill_draws")).toBe(true);
+    expect(run.has("public.drill_part_evidence")).toBe(true);
+    // DC-5 — the materialised acceptable-answer surface (additive, v2-owned)
+    expect(run.has("public.mark_point_alternatives")).toBe(true);
+    // Study-Plan Builder — the learner's plan-config row (additive, v2-owned;
+    // the ONLY persisted state of the lane — the week stays a projection)
+    expect(run.has("public.study_plans")).toBe(true);
   });
 });
 

@@ -1,0 +1,40 @@
+{
+ "schema": "syllabai-demo.content-bundle/2.0",
+ "generatedUtc": "2026-10-28T00:00:00Z",
+ "importSource": {
+  "repo": "SyllabAI/syllabai-resources",
+  "ref": "main@0c0f0e08045623dd9ae2cdca5bf5667330b83411",
+  "upstreamSchemas": [
+   "syllabai.sme-revision-note/1.0",
+   "syllabai.sme-revision-notes-course/1.0",
+   "syllabai.sme-exam-questions/1.1",
+   "syllabai.sme-spec-point-index/1.0",
+   "syllabai.sme-flashcard-deck/1.0"
+  ]
+ },
+ "curriculum": {
+  "board": "Cambridge International",
+  "level": "AS",
+  "subject": "Chemistry",
+  "code": "9701",
+  "syllabusVersion": "2025-2027"
+ },
+ "license": "Operator-authorized SME corpus — see LICENSE-DATA.md in syllabai-resources (Amendment 2026-09-17). Demo re-use only.",
+ "counts": {
+  "sections": 22,
+  "topics": 51,
+  "specPoints": 204,
+  "notes": 134,
+  "questionSets": 102,
+  "questions": 1075,
+  "parts": 1945,
+  "marks": 3935,
+  "flashcards": 1189
+ },
+ "treeKind": "official-spine",
+ "officialSpine": {
+  "spine": "spines/cie-as-chemistry-25.json",
+  "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
+  "attachmentMap": "content-maps/cie-as-chemistry-25.json"
+ }
+}

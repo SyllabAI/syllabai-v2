@@ -18,7 +18,12 @@ import {
   type TeacherMarkingModule,
 } from "../../src/services/teachermarking";
 import type { GradedEvidencePublisher, SubmitClock } from "../../src/services/selfmark";
-import type { MarkingContext, MarkingCandidateGenerator } from "../../src/services/smartmark";
+import type {
+  BandMarkingCandidateGenerator,
+  BandPlacementCandidate,
+  MarkingContext,
+  MarkingCandidateGenerator,
+} from "../../src/services/smartmark";
 import { fakeSql, gradedEvidenceRoutes, type Route } from "../assessment/helpers";
 
 // ── fixtures ────────────────────────────────────────────────────────────────
@@ -187,7 +192,7 @@ function markAnswerRoutes(overrides: {
     },
     { match: /select id from question_versions/, rows: [{ id: "v1" }] },
     {
-      match: /select id, validation_state from mark_schemes where question_version_id = \? and validation_state = \?/,
+      match: /select id, validation_state, scheme_kind from mark_schemes where question_version_id = \? and validation_state = \?/,
       rows: [{ id: SCHEME_ID, validation_state: "VALIDATED" }],
     },
     { match: /from mark_points/, rows: POINT_ROWS },
@@ -1176,5 +1181,84 @@ describe("evaluateAgreementForSubject — subject calibration packet (T-SM-KAPPA
       { match: /where scope = \? and subject_id = \?/, rows: [] },
     ]);
     expect(await empty.marking.latestSubjectEvaluation(SUBJECT_ID)).toBeNull();
+  });
+});
+
+// ── ADR-040 §5.4 — the band dispatch leg, per-answer topology ───────────────
+
+function bandGenerator(): BandMarkingCandidateGenerator {
+  const candidate: BandPlacementCandidate = {
+    modelId: "glm-4.6",
+    levelPlacement: 2,
+    awardedMarks: 3,
+    descriptorHits: [{ levelIndex: 2, hit: true, rationale: "linked statements" }],
+    confidence: 0.9,
+    rawOutput: "raw",
+  };
+  return {
+    proposeBand: async () => candidate,
+    proposeBandsAll: async (ctxs) => ctxs.map(() => candidate),
+  };
+}
+
+describe("TeacherSmartMarkService.markAnswer — the ADR-040 §5.4 band dispatch leg", () => {
+  const LEVELS_ROW = { id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS" };
+
+  function bandRoutes(): Route[] {
+    const routes = markAnswerRoutes();
+    // the validated-scheme read now carries scheme_kind: LEVELS
+    const validated = routes.find((r) => String(r.match.source).includes("scheme_kind from mark_schemes"));
+    if (validated) validated.rows = [LEVELS_ROW];
+    // the band branch's two-step reads (kind re-assert + guidance; the bands)
+    routes.push({ match: /select validation_state, scheme_kind, general_guidance from mark_schemes where id = \?$/, rows: [{ validation_state: "VALIDATED", scheme_kind: "LEVELS", general_guidance: "Marks are for linked statements." }] });
+    routes.push({ match: /from mark_bands where mark_scheme_id = \? order by level_index/, rows: [
+      { id: "b1", level_index: 1, marks_min: 1, marks_max: 2, descriptor_md: "Answers make basic statements.", guidance_md: null },
+      { id: "b2", level_index: 2, marks_min: 3, marks_max: 4, descriptor_md: "Answers use some precise scientific terminology.", guidance_md: "Reward linked statements." },
+    ] });
+    return routes;
+  }
+
+  test("wired band seam → the per-answer band decision rides the shared provisional tail", async () => {
+    const publisher = spyPublisher();
+    const sql = spySql(bandRoutes());
+    const module = buildTeacherMarkingModule(sql, okGenerator(), publisher, clock, bandGenerator());
+    const row = await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
+    expect(row.validation_passed).toBe(true);
+    expect(row.marks_awarded).toBe(3);
+    expect(row.breakdown).toEqual({
+      shape: "band_decision_v1",
+      level_placement: 2,
+      awarded_marks: 3,
+      descriptor_hits: [{ level_index: 2, hit: true, rationale: "linked statements" }],
+    });
+    // the shared tail: state writes + the κ gate + the evidence claim
+    expect(sql.queries.some((q) => q.includes("update answers set"))).toBe(true);
+    expect(publisher.calls.length).toBe(1);
+  });
+
+  test("unwired band seam → honest NO_SCHEME_BANDS refusal row; nothing marked", async () => {
+    const publisher = spyPublisher();
+    const sql = spySql(bandRoutes());
+    const module = buildTeacherMarkingModule(sql, okGenerator(), publisher, clock);
+    const row = await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
+    expect(row.validation_passed).toBe(false);
+    expect(row.failure_reason).toBe("NO_SCHEME_BANDS");
+    expect(row.marks_awarded).toBe(0);
+    expect(row.breakdown).toEqual([]);
+    expect(sql.queries.some((q) => q.includes("from mark_bands"))).toBe(false);
+    expect(sql.queries.some((q) => q.includes("update answers set"))).toBe(false);
+    expect(publisher.calls.length).toBe(0);
+  });
+
+  test("wired seam + empty mark_bands → NO_SCHEME_BANDS (the LEVELS analog of NO_SCHEME_POINTS)", async () => {
+    const routes = bandRoutes();
+    const bands = routes.find((r) => String(r.match.source).includes("from mark_bands"));
+    if (bands) bands.rows = [];
+    const publisher = spyPublisher();
+    const sql = spySql(routes);
+    const module = buildTeacherMarkingModule(sql, okGenerator(), publisher, clock, bandGenerator());
+    const row = await module.teacherSmartMark.markAnswer(ANSWER_A, TEACHER_ID);
+    expect(row.failure_reason).toBe("NO_SCHEME_BANDS");
+    expect(publisher.calls.length).toBe(0);
   });
 });

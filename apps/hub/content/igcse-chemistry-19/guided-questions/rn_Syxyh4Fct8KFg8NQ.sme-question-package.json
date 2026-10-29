@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_Syxyh4Fct8KFg8NQ",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "b57df7e45aaff76d8099bffe18b81631e76e4e91572dd831eae9725063039387",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_Syxyh4Fct8KFg8NQ",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L1::Q1",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L1",
+      "stem": "Electrons enter a newly filling atom one shell at a time. Which shell takes electrons first?",
+      "misconceptionClass": "fill-order error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The shell closest to the nucleus",
+          "correct": true,
+          "explanation": "The shell nearest the nucleus carries the least energy, and electrons always fill the lowest available shell before moving out.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The shell furthest from the nucleus",
+          "correct": false,
+          "explanation": "Filling runs from the nucleus outward, so the outermost shell is reached last, not first.",
+          "misconception": "fill order inverted"
+        },
+        {
+          "key": "C",
+          "text": "Any shell with space, chosen at random",
+          "correct": false,
+          "explanation": "Filling follows a fixed order by energy; shells are not populated in an arbitrary sequence.",
+          "misconception": "no filling rule assumed"
+        },
+        {
+          "key": "D",
+          "text": "The second shell, before the first shell is full",
+          "correct": false,
+          "explanation": "A shell must be complete before electrons move to the next one, so the first shell closes at two first.",
+          "misconception": "capacity rule misapplied"
+        }
+      ]
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L1::Q2",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L1",
+      "stem": "In the simplified model used for the first twenty elements, how many electrons does the third shell hold before the fourth shell begins?",
+      "misconceptionClass": "shell-capacity confusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "8",
+          "correct": true,
+          "explanation": "For the first twenty elements the course treats the third shell as complete at eight, after which the fourth shell opens.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "18",
+          "correct": false,
+          "explanation": "Eighteen is the third shell's true physical capacity, but the simplified model used here stops it at eight.",
+          "misconception": "true capacity quoted beyond the simplified model"
+        },
+        {
+          "key": "C",
+          "text": "2",
+          "correct": false,
+          "explanation": "Two is the first shell's capacity; the third shell holds eight in this model.",
+          "misconception": "first-shell capacity reused"
+        },
+        {
+          "key": "D",
+          "text": "32",
+          "correct": false,
+          "explanation": "Thirty-two belongs to a much higher shell beyond this course's scope.",
+          "misconception": "higher-shell capacity guessed"
+        }
+      ]
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L1::Q3",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L1",
+      "stem": "Potassium has atomic number 19. Which configuration does it take in the simplified model?",
+      "misconceptionClass": "filling-anomaly error",
+      "options": [
+        {
+          "key": "A",
+          "text": "2,8,8,1",
+          "correct": true,
+          "explanation": "After the third shell holds eight, the next electron enters the fourth shell, giving potassium 2, 8, 8 and then 1.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2,8,9",
+          "correct": false,
+          "explanation": "The third shell never takes a ninth electron in this model; the nineteenth electron starts the fourth shell.",
+          "misconception": "third shell overfilled past eight"
+        },
+        {
+          "key": "C",
+          "text": "2,9",
+          "correct": false,
+          "explanation": "The second shell also closes at eight, so a ninth electron cannot be placed there.",
+          "misconception": "second shell overfilled"
+        },
+        {
+          "key": "D",
+          "text": "2,8,8,2",
+          "correct": false,
+          "explanation": "That is calcium's configuration, with twenty electrons; potassium has nineteen.",
+          "misconception": "confused with calcium's configuration"
+        }
+      ]
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L1::Q4",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L1",
+      "stem": "A carbon atom has six electrons. What is its electronic configuration?",
+      "misconceptionClass": "configuration-writing error",
+      "options": [
+        {
+          "key": "A",
+          "text": "2,4",
+          "correct": true,
+          "explanation": "Two electrons complete the first shell and the remaining four occupy the second shell.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "6",
+          "correct": false,
+          "explanation": "All six cannot sit in one shell; the first shell closes at two.",
+          "misconception": "all electrons placed in one shell"
+        },
+        {
+          "key": "C",
+          "text": "4,2",
+          "correct": false,
+          "explanation": "The counts are read from the nucleus outward, so the smaller filled shell comes first.",
+          "misconception": "shell order reversed"
+        },
+        {
+          "key": "D",
+          "text": "2,2,2",
+          "correct": false,
+          "explanation": "Electrons fill shells to capacity in order, not spread evenly across three shells.",
+          "misconception": "electrons spread evenly across shells"
+        }
+      ]
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L1::Q5",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L1",
+      "stem": "A chlorine atom has 17 electrons. How many occupied shells does it have, and what is its configuration?",
+      "misconceptionClass": "table-reading error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Three; 2,8,7",
+          "correct": true,
+          "explanation": "Two electrons fill the first shell, eight fill the second, and the remaining seven enter the third shell.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Three; 2,8,8",
+          "correct": false,
+          "explanation": "That is argon's configuration with eighteen electrons; chlorine has seventeen, ending 2,8,7.",
+          "misconception": "confused with argon's configuration"
+        },
+        {
+          "key": "C",
+          "text": "Two; 2,15",
+          "correct": false,
+          "explanation": "The second shell closes at eight, so fifteen electrons cannot squeeze into it.",
+          "misconception": "shell capacities overestimated"
+        },
+        {
+          "key": "D",
+          "text": "Three; 7,8,2",
+          "correct": false,
+          "explanation": "Configuration counts run from the nucleus outward, so the smallest shell is written first.",
+          "misconception": "counting order from outside in"
+        }
+      ]
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L2::Q1",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L2",
+      "stem": "An atom has the configuration 2,8,6. Which period of the Periodic Table is it in?",
+      "misconceptionClass": "period-reading error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Period 3",
+          "correct": true,
+          "explanation": "Three number-groups mean three occupied shells, and the number of occupied shells is the period.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Period 6",
+          "correct": false,
+          "explanation": "Six is the outer-electron count, which gives the group, not the period.",
+          "misconception": "group read as period"
+        },
+        {
+          "key": "C",
+          "text": "Period 2",
+          "correct": false,
+          "explanation": "Two is the first shell's count; the period comes from the number of shells, not the first entry.",
+          "misconception": "first shell read as period"
+        },
+        {
+          "key": "D",
+          "text": "Period 16",
+          "correct": false,
+          "explanation": "Sixteen is the electron total (2 + 8 + 6); periods run on shell counts, not totals.",
+          "misconception": "electron total read as period"
+        }
+      ]
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L2::Q2",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L2",
+      "stem": "The same atom, with configuration 2,8,6, belongs to which group?",
+      "misconceptionClass": "group-reading error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Group 6",
+          "correct": true,
+          "explanation": "The last number of the configuration is the outer-electron count, and that count names the group.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Group 3",
+          "correct": false,
+          "explanation": "Three is the period, taken from the number of occupied shells.",
+          "misconception": "period read as group"
+        },
+        {
+          "key": "C",
+          "text": "Group 8",
+          "correct": false,
+          "explanation": "Adding the last two numbers together has no meaning for finding the group.",
+          "misconception": "final numbers summed for the group"
+        },
+        {
+          "key": "D",
+          "text": "Group 16",
+          "correct": false,
+          "explanation": "Sixteen is the electron total; the group reads only the outer shell.",
+          "misconception": "electron total used as the group"
+        }
+      ]
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L2::Q3",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L2",
+      "stem": "Chlorine's configuration is 2,8,7. State its group and period.",
+      "misconceptionClass": "position-derivation error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Group 7, Period 3",
+          "correct": true,
+          "explanation": "Three occupied shells give Period 3, and the seven outer electrons give Group 7.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Group 3, Period 7",
+          "correct": false,
+          "explanation": "The two readings are swapped: shell count gives the period, outer count gives the group.",
+          "misconception": "group and period swapped"
+        },
+        {
+          "key": "C",
+          "text": "Group 7, Period 2",
+          "correct": false,
+          "explanation": "Two is the first shell's count, not the number of occupied shells.",
+          "misconception": "first shell counted as the period"
+        },
+        {
+          "key": "D",
+          "text": "Group 17, Period 3",
+          "correct": false,
+          "explanation": "Seventeen is chlorine's atomic number; the group comes from the seven outer electrons.",
+          "misconception": "atomic number mistaken for the group"
+        }
+      ]
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L2::Q4",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L2",
+      "stem": "Two main-group elements sit in the same group. What does their electronic configuration have in common?",
+      "misconceptionClass": "group-pattern error",
+      "options": [
+        {
+          "key": "A",
+          "text": "The same final number",
+          "correct": true,
+          "explanation": "The last number is the outer-electron count, and a shared group means that count matches even if the shells below differ.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The same electron total",
+          "correct": false,
+          "explanation": "Atoms in one group have different electron totals down the column; only the outer count matches.",
+          "misconception": "total electron count assumed equal"
+        },
+        {
+          "key": "C",
+          "text": "The same number of occupied shells",
+          "correct": false,
+          "explanation": "Shell count is the period, which changes as you move down a group.",
+          "misconception": "period property read as group property"
+        },
+        {
+          "key": "D",
+          "text": "Identical configurations apart from the last number",
+          "correct": false,
+          "explanation": "That pattern would describe one period, not one group.",
+          "misconception": "period pattern mistaken for group pattern"
+        }
+      ]
+    },
+    {
+      "id": "rn_Syxyh4Fct8KFg8NQ::L2::Q5",
+      "moduleId": "rn_Syxyh4Fct8KFg8NQ::L2",
+      "stem": "An element sits in Period 3, Group 5. Which configuration matches that position?",
+      "misconceptionClass": "reverse-derivation error",
+      "options": [
+        {
+          "key": "A",
+          "text": "2,8,5",
+          "correct": true,
+          "explanation": "Three occupied shells fill 2, then 8, and the group supplies the five outer electrons.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2,8,8,5",
+          "correct": false,
+          "explanation": "Four number-groups would mean four occupied shells, which is Period 4, not Period 3.",
+          "misconception": "extra shell added"
+        },
+        {
+          "key": "C",
+          "text": "2,5",
+          "correct": false,
+          "explanation": "Two number-groups mean two occupied shells, which is Period 2.",
+          "misconception": "shell dropped"
+        },
+        {
+          "key": "D",
+          "text": "2,8,3",
+          "correct": false,
+          "explanation": "Three outer electrons would place the element in Group 3, not Group 5.",
+          "misconception": "group count misread"
+        }
+      ]
+    }
+  ]
+}

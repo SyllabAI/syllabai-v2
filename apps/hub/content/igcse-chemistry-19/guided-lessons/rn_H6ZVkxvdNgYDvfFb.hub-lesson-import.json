@@ -1,0 +1,192 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_H6ZVkxvdNgYDvfFb",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "2fb715ef482d8c626e5cc2c9264ff669860f25d436976fe2117680e3efa8318b",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_H6ZVkxvdNgYDvfFb",
+    "topicTitle": "3. Physical Chemistry",
+    "subtopicTitle": "Rates of Reaction",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/3-physical-chemistry/3-2-rates-of-reaction/3-2-5-practical-effect-of-surface-area-on-rate-of-reaction",
+    "specAnchors": [
+      {
+        "code": "4CH1-3.15",
+        "text": "practical: investigate the effect of changing the surface area of marble chips and of changing the concentration of hydrochloric acid on the rate of reaction between marble chips and dilute hydrochloric acid"
+      },
+      {
+        "code": "4CH1-3.9",
+        "text": "describe experiments to investigate the effects of changes in surface area of a solid, concentration of a solution, temperature and the use of a catalyst on the rate of a reaction"
+      }
+    ],
+    "primer": {
+      "text": "From Measuring Rates you already know the gas-collection set-up that times a fizzing reaction. This practical aims that apparatus at marble chips, varying only their size to expose the surface area effect. The conclusion you draw at the end restates collision theory in chips and acid.",
+      "prerequisiteSubtopic": "Rates of Reaction"
+    },
+    "modules": [
+      {
+        "id": "rn_H6ZVkxvdNgYDvfFb::L1",
+        "title": "Marble chips and gas collection",
+        "sourceHeadings": [
+          "Aim:",
+          "Method:"
+        ],
+        "specRefs": [
+          "4CH1-3.15",
+          "4CH1-3.9"
+        ],
+        "opening": "Calcium carbonate chips meet dilute hydrochloric acid in the classic rate practical. This lesson states the aim, lists the apparatus and walks the five-step method that fills the results table.",
+        "keyPoints": [
+          "The aim is to investigate the effect of changing surface area on the rate of reaction.",
+          "A fixed volume of hydrochloric acid is placed in a conical flask connected to an inverted measuring cylinder.",
+          "Marble chips are added, the bung is closed, and the gas volume in a fixed time is recorded.",
+          "The method is repeated with different sizes of marble chips for comparison.",
+          "The investigation covers both chip size and acid concentration on the marble chip reaction."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Pour the same amount of acid into a flask, drop in chips of one size, and measure how much gas appears in a set time. Swap in bigger or smaller chips and run it again to compare. Only the chip size changes from one run to the next.",
+            "analogy": "It is like timing how fast a sugar cube and the same sugar crushed dissolve; only the piece size changes.",
+            "examPointer": "Name the fixed acid volume, the timed gas reading and the one factor varied between runs."
+          },
+          "medium": {
+            "restatement": "A fixed volume of hydrochloric acid reacts with marble chips inside a sealed flask whose delivery tube feeds an inverted measuring cylinder, and the gas collected in a fixed time is recorded. The run is repeated with different chip sizes so that surface area is the only factor changing between experiments.",
+            "analogy": "Each run is a race between the acid and a fresh team of chips; the race clock and the track stay identical while only the team size differs.",
+            "examPointer": "Describe apparatus and timing first, then stress that chip size is the single varied factor."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_H6ZVkxvdNgYDvfFb::L1::Q1",
+          "rn_H6ZVkxvdNgYDvfFb::L1::Q2",
+          "rn_H6ZVkxvdNgYDvfFb::L1::Q3",
+          "rn_H6ZVkxvdNgYDvfFb::L1::Q4",
+          "rn_H6ZVkxvdNgYDvfFb::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_H6ZVkxvdNgYDvfFb::L2",
+        "title": "Results and the collision conclusion",
+        "sourceHeadings": [
+          "Results:",
+          "Conclusion:"
+        ],
+        "specRefs": [
+          "4CH1-3.15"
+        ],
+        "opening": "The results table pairs each chip size with the gas volume collected in thirty seconds. This lesson reads the table, then states the collision-theory conclusion the data supports.",
+        "keyPoints": [
+          "Results are recorded in a table of chip size against the volume of gas produced in thirty seconds.",
+          "Bigger exposed surfaces of the chips push the rate of reaction up.",
+          "More surface particles of the chips are exposed to the dilute hydrochloric acid.",
+          "The extra exposure produces more frequent and successful collisions.",
+          "The increased collision count raises the rate of reaction."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "The table shows bigger gas volumes for the smaller chips, because crushed chips put more particles where the acid can reach. That is the surface area effect written in one line.",
+            "analogy": "It is like handing out leaflets: a crowd of helpers on every corner reaches far more people than one helper standing still.",
+            "examPointer": "Quote the trend from the table and finish with the exposed-particles explanation."
+          },
+          "medium": {
+            "restatement": "The recorded gas volumes rise as the chip size falls, showing that a greater surface area increases the rate of reaction. More surface particles of the marble are exposed to the acid, so more frequent and successful collisions occur each second.",
+            "analogy": "A torn-open tea bag brews faster than a sealed one because twice the leaf meets the water; chips behave the same way in acid.",
+            "examPointer": "Link the measured trend to exposed surface particles and the collision language examiners expect."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_H6ZVkxvdNgYDvfFb::L2::Q1",
+          "rn_H6ZVkxvdNgYDvfFb::L2::Q2",
+          "rn_H6ZVkxvdNgYDvfFb::L2::Q3",
+          "rn_H6ZVkxvdNgYDvfFb::L2::Q4",
+          "rn_H6ZVkxvdNgYDvfFb::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "marble chips",
+          "definition": "Lumps of calcium carbonate used as the solid reactant in this rate investigation.",
+          "firstLesson": 1
+        },
+        {
+          "term": "fixed time",
+          "definition": "The shared time window, such as thirty seconds, during which gas volume is recorded for every run.",
+          "firstLesson": 1
+        },
+        {
+          "term": "surface area",
+          "definition": "The amount of solid surface exposed to the acid, increased by using smaller chips.",
+          "firstLesson": 1
+        },
+        {
+          "term": "fair test",
+          "definition": "An experiment design in which only one factor changes while the rest are held constant.",
+          "firstLesson": 1
+        },
+        {
+          "term": "collision rate",
+          "definition": "The number of particle collisions per second, which rises with exposed surface area.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Describe the experiment that investigates the effect of surface area on the rate of reaction between marble chips and dilute hydrochloric acid, state the expected trend, and explain it using collision theory.",
+        "steps": [
+          "Add a fixed volume of dilute hydrochloric acid to a conical flask connected by a delivery tube to an inverted measuring cylinder.",
+          "Add marble chips, close the bung, and record the volume of gas produced in a fixed time (30 seconds).",
+          "Repeat with different sizes of marble chips, keeping everything else the same, and record chip size against gas volume.",
+          "The smaller the chips, the greater the gas volume collected: increasing the surface area increases the rate, because more surface particles of the marble are exposed to the acid, giving more frequent and successful collisions."
+        ],
+        "finalAnswer": "Fixed-time gas volume per chip size; smaller chips react faster — more exposed surface particles give more frequent and successful collisions."
+      }
+    },
+    "figures": [
+      {
+        "id": "fig-01",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/99f7914c498b-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
+        "alt": "Effect of Surface Area on a Reaction Rate 1, downloadable IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Diagram:",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-02",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/53457075782f-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
+        "alt": "Effect of Surface Area on a Reaction Rate 2, downloadable IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Diagram:",
+        "moduleIds": []
+      },
+      {
+        "id": "fig-03",
+        "url": "https://raw.githubusercontent.com/SyllabAI/syllabai-resources/main/SME-RevisionNotes/igcse-chemistry-19/assets/bc431f784ecc-3-2-1-effect-of-surface-area-on-a-reaction-rate-.png",
+        "alt": "Effect of Surface Area on a Reaction Rate 3, downloadable IGCSE & GCSE Chemistry revision notes",
+        "sourceHeading": "Diagram:",
+        "moduleIds": []
+      }
+    ]
+  }
+}

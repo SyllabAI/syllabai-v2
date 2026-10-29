@@ -1,0 +1,29 @@
+# F-188 realtime plane of record — standalone Bun-native WebSocket transport (ADR-038).
+# This image runs the long-lived Bun.serve plane (apps/api/src/realtime/server.ts,
+# path /realtime). It is deliberately NOT the Vercel serverless fetch-handler entry,
+# which cannot hold persistent connections (ADR-038 R1).
+FROM oven/bun:1
+
+WORKDIR /app
+
+# Workspace-aware dependency install (lockfile-frozen). Every workspace
+# package.json must be present or `bun install --frozen-lockfile` fails.
+COPY package.json bun.lock bunfig.toml tsconfig.base.json ./
+COPY apps/api/package.json apps/api/
+COPY apps/hub/package.json apps/hub/
+COPY packages/contracts/package.json packages/contracts/
+COPY packages/db/package.json packages/db/
+COPY packages/shared/package.json packages/shared/
+COPY golden/llm-shadow/package.json golden/llm-shadow/
+COPY golden/retrieval-eval/package.json golden/retrieval-eval/
+RUN bun install --frozen-lockfile
+
+# Full source copy (runtime closure: the plane imports the identity law of
+# record — apps/api/src/middleware/auth.ts, services/identity/{jwt,users}.ts —
+# and the workspace packages @syllabai/db + @syllabai/contracts; .dockerignore
+# keeps the context lean: no corpus, captures, or tool results are needed).
+COPY . .
+
+# Render injects PORT; the plane binds REALTIME_PORT (default 8081). The shim
+# maps one to the other without touching the server of record.
+CMD ["sh", "-c", "REALTIME_PORT=\"${PORT:-8081}\" exec bun apps/api/src/realtime/server.ts"]

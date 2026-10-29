@@ -1,0 +1,46 @@
+{
+  "schema": "syllabai.serve-receipt/0.1",
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-002 pre-flight (trace 1a1777580eb2a10d)",
+  "generated_utc": "2026-10-26T09:35:00Z",
+  "pin_of_record": {
+    "law": "P0: sync pins main@<merge-sha>, never the branch",
+    "merge_sha": "3000e439d1464c2927d082696f5bb19313af3172",
+    "pr110": {"state": "closed", "merged": true, "merged_at": "2026-10-25T22:44:40Z", "merged_by": "SyllabAI", "branch_tip": "986f9ad2"},
+    "subtree_identity": {
+      "path": "Official-ExamQuestion/igcse-maths-b-16",
+      "tree_sha": "875b2a8835d217cd766bcee49a91841add38323f",
+      "equal_at": ["986f9ad2 (branch tip)", "3000e439 (merge)", "8b5a64f1 (resources main at pre-flight)"],
+      "note": "the emission of record is byte-stable branch->merge->tip; 139ee931 (the pre-rebuild orphan commit) is unreachable — the run-004 reconciliation receipt (86/86 post-merge canaries, parity modulo six disclosed classes) is the bridge of record"
+    },
+    "advancement_disclosure": "resources main advanced 3000e439 -> 8b5a64f1 (6 commits / 151 files, chemistry lanes; OEQ-plane contact = Official-ExamQuestion/AGENTS.md + run_all.sh only; ZERO igcse-maths-b-16/** and zero LEDGER.md paths)"
+  },
+  "census": {
+    "g_s1_as_filed": "66 sets / 20 series (2018-06..2026-06) / 1,270 questions / 2,412 parts / 6,500 marks",
+    "emission_of_record": {"sets": 66, "series": 20, "questions": 1281, "parts": 2443, "marks": 6600},
+    "amendment_disclosure": "G-S1's filed q/p/m numbers (1,270/2,412/6,500) are the SME plane's manifest counts (65 sets) — copied at filing before the emission census existed. The gate's own anchor ('vs the branch-of-record emission') is evaluated against the emission of record: 66/20/1,281/2,443/6,600, per-slice constants frozen in the exporter port and reproduced by G-E3. Every slice carries its printed 100 marks (66 x 100 = 6,600). Disclosed, not silently fixed.",
+    "series_note": "20 series confirmed; 2025-10 prints paper 01 only, 2025-11 prints paper 02 only",
+    "per_set_dirs_mirror_corpus": true
+  },
+  "sme_cross_census_h1_baseline": {
+    "law": "AGENTS.md 'The handover rule' H1 — baseline census of what SME EQ serves on past papers",
+    "sme_plane": {"sets": 65, "questions": 1270, "parts": 2412, "marks": 6500, "file_bytes": 2845915, "file_law": "single-line compact JSON (byte-proven)"},
+    "coverage": "65 session-papers light the past-paper rail via per-part sourcePaper provenance",
+    "official_vs_sme": {
+      "only_official": ["2019-01/02R (11q/39p/100m) — coverage ADDITION"],
+      "only_sme": [],
+      "common_sets": 65,
+      "question_totals_equal": true,
+      "mark_totals_equal": true,
+      "part_granularity_deltas": [
+        {"set": "2018-06/02", "official": 38, "sme": 39}, {"set": "2019-01/02", "official": 36, "sme": 37},
+        {"set": "2019-06/02R", "official": 39, "sme": 40}, {"set": "2020-01/01R", "official": 38, "sme": 39},
+        {"set": "2021-01/02", "official": 37, "sme": 38}, {"set": "2022-01/02", "official": 39, "sme": 40},
+        {"set": "2022-06/02R", "official": 37, "sme": 39}, {"set": "2023-01/02", "official": 30, "sme": 31},
+        {"set": "2025-06/02R", "official": 38, "sme": 37}
+      ],
+      "granularity_note": "9 sets differ in part splitting only; questions AND marks identical on every one (marks conserved per set and corpus-wide: common-set official 6,500 == SME 6,500); all 02/02R-class papers"
+    }
+  },
+  "zero_writes": "read-only against both repos except this card/receipt/worklog bookkeeping; resources checkout is a blobless sparse clone at the pin (untracked lane files only)"
+}

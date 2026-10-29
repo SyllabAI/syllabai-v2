@@ -1,0 +1,500 @@
+{
+ "lane": "T-SM-ROLLOUT",
+ "run": "awave-bank-census-r0",
+ "date": "2026-10-25",
+ "operator_order_trace": "1a16fc5d0befd6b1",
+ "operator_order": "operator pasted pooled credentials in-chat (trace 1a16fc5d0befd6b1) answering PR #352 Ask 1 \u2014 census grant accepted as go order for the A-wave bank census",
+ "mode": "READ-ONLY production bank census on the main of-record project (ep-ancient-cake-a52e4kfd/neondb, main branch, pooled endpoint). Zero writes, zero schema contact, zero registry edits, zero flips, no vectors. Every connection issued SET default_transaction_read_only = on + statement_timeout; statement inventory: information_schema discovery + the #276 SS5 census shape (latest question_versions DISTINCT ON -> questions(active) -> question_parts -> exam_papers -> LEFT mark_schemes(VALIDATED) -> LEFT mark_points, grouped by subject) + positive-control + bound-subject probes.",
+ "credential_posture_disclosure": "DEVIATION FROM SPEC OF RECORD: operator supplied OWNER-role pooled strings (main + one warehouse endpoint) and a Neon API key in-chat instead of the dedicated SELECT-only census_ro role posted on #352 (comment 6389527849). Discipline held: SELECT-only statements only, session-level read-only enforced per connection, secrets excluded from every repo artifact (this receipt included). Recommendations: (a) still provision census_ro for future waves; (b) rotate the owner credentials and the in-chat API key after the A-wave closes \u2014 third owner-graded secret now exposed in chat (PAT, pooler strings, API key).",
+ "scope": "funnel A of record (registry-gap-audit-r0): 33 course rows / 17 subject rows (16 codes; 4XMAF/4XMAH discovered via code-LIKE probe; 0452 present as both cvs 0452-2023-2025 and 0452-2027-2029 per the deterministic subject-root cv law)",
+ "result": {
+  "census_rows": [
+   {
+    "code": "0452",
+    "name": "Accounting (0452)",
+    "cv": "0452-2023-2025",
+    "subject_id": "22597cd0-7517-4a97-a24e-7ee6a72972cd",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "0452",
+    "name": "Accounting (0452)",
+    "cv": "0452-2027-2029",
+    "subject_id": "d3b3677c-73b4-4c17-968e-c974f93869d1",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "0606",
+    "name": "Further Maths (0606)",
+    "cv": "0606-2025-2027",
+    "subject_id": "74ce6fc9-ab93-4628-a8ce-2f10ad9fcf22",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "0653",
+    "name": "Science (0653)",
+    "cv": "0653-2023-2024",
+    "subject_id": "7c65dcc0-c350-4d63-866a-efecba6da262",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "4AC1",
+    "name": "Accounting (4AC1)",
+    "cv": "4AC1-2017",
+    "subject_id": "9639dcf4-91d2-46de-8fad-91aa31f7efc3",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "4EC1",
+    "name": "Economics (4EC1)",
+    "cv": "4EC1-2017",
+    "subject_id": "c84fe69b-be00-4b5d-8535-f162255be460",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "4IT1",
+    "name": "Ict (4IT1)",
+    "cv": "4IT1-2017",
+    "subject_id": "643c011b-ace1-4b81-9cab-15c972b6dd15",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "4PM1",
+    "name": "Further Maths (4PM1)",
+    "cv": "4PM1-2017",
+    "subject_id": "7afbdc92-d50c-4f9a-8bf1-f5d67a27f188",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "4XBI1",
+    "name": "Biology (4XBI1)",
+    "cv": "4XBI1-2024",
+    "subject_id": "bc15ec38-e187-4431-8133-7bf307f9c9aa",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "4XCH1",
+    "name": "Chemistry (4XCH1)",
+    "cv": "4XCH1-2024",
+    "subject_id": "e20a604e-722d-4ad3-8fe8-96aa4c280f23",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "4XMAF/4XMAH",
+    "name": "Maths (4XMAF/4XMAH)",
+    "cv": "4XMAF/4XMAH-2024",
+    "subject_id": "e4041cd1-7637-42f5-9f8c-d67ed3be2a07",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "4XPH1",
+    "name": "Physics (4XPH1)",
+    "cv": "4XPH1-2024",
+    "subject_id": "9e330428-1923-4e07-a628-8f03b1492e94",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "YBI11",
+    "name": "Biology (YBI11)",
+    "cv": "YBI11-2018",
+    "subject_id": "5b219334-116c-43cf-8455-cc5e1de937a4",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "YCH11",
+    "name": "Chemistry (YCH11)",
+    "cv": "YCH11-2018",
+    "subject_id": "9429070d-e17f-40bf-8a31-4972f4ef3672",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "YFM01",
+    "name": "Further Maths (YFM01)",
+    "cv": "YFM01-2018",
+    "subject_id": "2d30ce2c-7506-4f5c-994d-0a178a9ca70d",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "YMA01",
+    "name": "Maths (YMA01)",
+    "cv": "YMA01-2020",
+    "subject_id": "0e76baf0-3947-4584-8743-10ad9b9df32d",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   },
+   {
+    "code": "YPH11",
+    "name": "Physics (YPH11)",
+    "cv": "YPH11-2018",
+    "subject_id": "c0574c7e-5dde-4615-bd4f-365b80bc5c3e",
+    "papers": 0,
+    "structured_parts": 0,
+    "parts_under_validated_scheme": 0,
+    "parts_with_points_bound": 0,
+    "mcq_parts": 0,
+    "verdict": "NO_BANK_PARTS"
+   }
+  ],
+  "course_registry_rows": [
+   {
+    "course_slug": "cie-igcse-accounting-21",
+    "code": "0452",
+    "curriculum_code": "0452-2023-2025",
+    "board": "Cambridge International",
+    "status": "full"
+   },
+   {
+    "course_slug": "cie-igcse-further-maths-additional-maths-25",
+    "code": "0606",
+    "curriculum_code": "0606-2025-2027",
+    "board": "Cambridge International",
+    "status": "full"
+   },
+   {
+    "course_slug": "cie-igcse-science-combined-science-23-biology",
+    "code": "0653",
+    "curriculum_code": "0653-2023-2024",
+    "board": "Cambridge International",
+    "status": "full"
+   },
+   {
+    "course_slug": "cie-igcse-science-combined-science-23-chemistry",
+    "code": "0653",
+    "curriculum_code": "0653-2023-2024",
+    "board": "Cambridge International",
+    "status": "full"
+   },
+   {
+    "course_slug": "cie-igcse-science-combined-science-23-physics",
+    "code": "0653",
+    "curriculum_code": "0653-2023-2024",
+    "board": "Cambridge International",
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-biology-18",
+    "code": "YBI11",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-chemistry-17",
+    "code": "YCH11",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-further-maths-18-further-pure-1",
+    "code": "YFM01",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-maths-20-decision-1",
+    "code": "YMA01",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-maths-20-mechanics-1",
+    "code": "YMA01",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-maths-20-mechanics-2",
+    "code": "YMA01",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-maths-20-pure-1",
+    "code": "YMA01",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-maths-20-pure-2",
+    "code": "YMA01",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-maths-20-pure-3",
+    "code": "YMA01",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-maths-20-pure-4",
+    "code": "YMA01",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-maths-20-statistics-1",
+    "code": "YMA01",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-maths-20-statistics-2",
+    "code": "YMA01",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "ial-physics-19",
+    "code": "YPH11",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-accounting-17-financial-statements",
+    "code": "4AC1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-accounting-17-introduction-to-bookkeeping-and-accounting",
+    "code": "4AC1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-biology-modular-24-unit-1",
+    "code": "4XBI1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-biology-modular-24-unit-2",
+    "code": "4XBI1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-chemistry-modular-24-unit-1",
+    "code": "4XCH1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-chemistry-modular-24-unit-2",
+    "code": "4XCH1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-economics-17",
+    "code": "4EC1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-further-maths-19",
+    "code": "4PM1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-ict-17",
+    "code": "4IT1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-maths-a-modular-24-foundation-unit-1",
+    "code": "4XMAF/4XMAH",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-maths-a-modular-24-foundation-unit-2",
+    "code": "4XMAF/4XMAH",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-maths-a-modular-24-higher-unit-1",
+    "code": "4XMAF/4XMAH",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-maths-a-modular-24-higher-unit-2",
+    "code": "4XMAF/4XMAH",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-physics-modular-24-unit-1",
+    "code": "4XPH1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   },
+   {
+    "course_slug": "igcse-physics-modular-24-unit-2",
+    "code": "4XPH1",
+    "curriculum_code": null,
+    "board": null,
+    "status": "full"
+   }
+  ],
+  "verdicts": "ALL 17 subject rows -> ZERO_BANK_REFS / NO_BANK_PARTS: no exam_papers, no questions, no mark_schemes, no mark_points exist on production main for any A-wave subject",
+  "bank_context": {
+   "exam_papers_total": 218,
+   "exam_papers_distinct_subjects": 3,
+   "questions_total": 23901,
+   "questions_exam_paper_id_null": 22976,
+   "bound_subjects": [
+    {
+     "code": "4MA1",
+     "cv": "4MA1-2016",
+     "papers": 110,
+     "questions": 0
+    },
+    {
+     "code": "4CH1",
+     "cv": "4CH1-2017",
+     "papers": 105,
+     "questions": 922
+    },
+    {
+     "code": "IGCSECHEMISTRY",
+     "cv": "IGCSECHEMISTRY-INGEST",
+     "papers": 3,
+     "questions": 3
+    }
+   ],
+   "positive_control_4CH1_cv_4CH1-2017": {
+    "papers_bound": 105,
+    "papers_with_latest_version_parts": 41,
+    "questions": 922,
+    "structured_questions_latest": 361,
+    "structured_parts": 2513,
+    "parts_under_validated_scheme": 2513,
+    "parts_with_points_bound": 2059,
+    "note": "the control proves the census shape detects green where it exists; 4MA1 shows 110 papers bound with 0 bank questions (T-MIG-138 anchor posture), also detected correctly"
+   }
+  }
+ },
+ "conclusion": "Funnel A census leg DISCHARGED: 33/33 A-wave rows have zero bank refs on production main. Per the T-SM-BRIDGE-WIDEN r0 law the next leg is BUNDLE INGEST for all 33 rows from the committed corpus (17,319 parts repo-side), via a task-owned Neon COW branch per the standing write law (production main stays agent-read-only; flyway_schema_history untouchable; no dual-write), then G1 audit -> two-file flip -> deploy -> live probe, receipts per wave into #276.",
+ "cross_reference": {
+  "ask_1_of": "PR #352 (operator asks; grant delivered via owner creds, deviation disclosed above)",
+  "audit_of_record": "registry-gap-audit-r0 (PR #352)",
+  "gate_model": "issue #276 SS1/SS5 (G0-G3, readiness SQL)",
+  "data_plane": "ADR-038 + docs/DATA-PLANE-PLACEMENT.md (binding)",
+  "adr_040": "merged 1aec820 (ACCEPTED); band-scope parallel lane, unaffected by this census"
+ },
+ "files_touched": [
+  ".syllabai/receipts/T-SM-ROLLOUT/awave-bank-census-r0.json",
+  ".syllabai/worklog.md (append-only section)"
+ ]
+}

@@ -28,7 +28,17 @@ export default async function PastPaperPage({
   const hub = await loadHubCourse(slug);
   if (!hub) notFound();
 
-  const paper = findPastPaper(collectPastPapers(hub.questionTopics), paperKey);
+  // OFFICIAL-PLANE-ONLY LAW (operator order 2026-10-25, trace
+  // 1a17e79bb0e50399, "disappear entirely"): the player resolves papers from
+  // the official parsed plane (officialPaperTopics, ADR-037) ALONE — the SME
+  // exam-questions bank never builds an Interactive paper, so reconstruction
+  // keys that exist only as SME topic-question citations 404 here. Courses
+  // without the official plane have no playable papers at all; their Exam
+  // Questions surface stays exactly as-is (separate plane, zero contact).
+  const paper = findPastPaper(
+    collectPastPapers(hub.officialPaperTopics),
+    paperKey,
+  );
   if (!paper) notFound();
 
   // coverage — find the corpus row this reconstruction matches, then compare
@@ -73,6 +83,21 @@ export default async function PastPaperPage({
             {paper.questions.length} questions · {paper.totalMarks} marks ·{" "}
             {paperEstTime(paper.totalMarks)}
           </p>
+          {/* paper furniture (SME-style header facts): calculator rule +
+              "answer all" instruction. Maths-B-only: 4MB1/01 is the
+              non-calculator paper, /02 allows calculators — other
+              qualifications (e.g. chemistry WCH) have different rules and
+              must not inherit this line. */}
+          {paper.number.startsWith("4MB1") && /\/01/.test(paper.number) && (
+            <p className="text-xs text-muted-foreground">
+              Calculator not allowed · Answer <strong>all</strong> questions · Show all your working
+            </p>
+          )}
+          {paper.number.startsWith("4MB1") && /\/02/.test(paper.number) && (
+            <p className="text-xs text-muted-foreground">
+              Calculator allowed · Answer <strong>all</strong> questions · Show all your working
+            </p>
+          )}
           <div className="flex flex-wrap items-center gap-2">
             {/* long sentence, not a chip — the Badge base's whitespace-nowrap
                 blew the row past 375px (s133); wrap it like text instead */}

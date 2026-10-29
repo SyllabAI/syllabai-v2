@@ -34,6 +34,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import {
   BookOpen,
+  CalendarCheck,
   ChevronRight,
   CircleHelp,
   CloudCheck,
@@ -55,6 +56,7 @@ import { useCourseProgress } from "@/lib/progress";
 // the shared contract (progress-ring and strengths-panel had rounded to 0%)
 import { formatPercent } from "@/lib/format";
 import { api, getToken } from "@/lib/api";
+import { railTodayCopy, useStudyPlan } from "@/lib/study-plan-client";
 import { fetchPilotInfo, PILOT_COURSE_SLUG } from "@/lib/attempt-bridge";
 import { boardOf, hasExamSeriesCalendar } from "@/lib/board";
 import { useDashboardCore } from "@/lib/dashboard-core";
@@ -64,6 +66,7 @@ import { daysAgo, subtopicSetFor } from "@/lib/next-best-actions";
 import { NextBestActionsCard } from "./next-best-actions-card";
 import { ReviewDueStrip } from "./review-due-strip";
 import { SetWorkCard } from "./set-work-card";
+import { ProgressAttributionCard } from "./progress-attribution-card";
 import { ExamSeriesPicker } from "./exam-series-picker";
 import { AddCourseOverlay } from "./add-course-overlay";
 import type { CourseMeta } from "@/lib/courses";
@@ -417,6 +420,8 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
   const { slugs, has, add, remove } = useMySubjects();
   const identity = useIdentity();
   const lastOpened = useLastOpened();
+  const studyPlan = useStudyPlan(); // the Study plan rail (spec §5.3) — one server projection
+  const signedIn = identity !== null; // the identity session of record (token + user)
   const [addOpen, setAddOpen] = useState(false);
   const [stats, setStats] = useState<Record<string, CourseStat>>({});
 
@@ -626,9 +631,55 @@ export function DashboardClient({ courses }: { courses: CourseMeta[] }) {
         <SetWorkCard />
       </section>
 
+      {/* ---- DC-7 progress attribution (measured facts — the SAME projection
+          the trees' rings read; never advice, never a local counter; renders
+          nothing signed out) ---- */}
+      <section aria-label="Today's progress">
+        <ProgressAttributionCard courses={mySubjects} />
+      </section>
+
       {/* ---- Next best actions (recommendation output — advice, not facts) ---- */}
       <section aria-label="Next best actions">
         <NextBestActionsCard courses={mySubjects} />
+      </section>
+
+      {/* ---- Study plan rail (spec §5.3 — the Create Study Plan button,
+          replaced by today's completion once a plan exists: "You've
+          completed 1 of 4 tasks today" with a progress bar. The counters
+          ride the same server payload as the plan page — one projection,
+          never a local counter; docs/STUDY-PLAN-BUILDER-PLAN.md) ---- */}
+      <section aria-label="Study plan" className="space-y-2">
+        <h2 className="flex items-center gap-2 text-lg font-semibold">
+          <CalendarCheck className="size-4 text-primary" aria-hidden />
+          Study plan
+        </h2>
+        {signedIn && studyPlan ? (
+          <Card>
+            <CardContent className="space-y-2 p-4">
+              <p className="text-sm font-medium">{railTodayCopy(studyPlan)}</p>
+              <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
+                <div
+                  className="h-2 rounded-full bg-primary transition-all"
+                  style={{ width: `${studyPlan.week.counters.percentToday}%` }}
+                />
+              </div>
+              <Button asChild variant="outline" size="sm">
+                <Link href="/plan">View plan</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        ) : (
+          <Card>
+            <CardContent className="flex flex-col items-start gap-3 p-4">
+              <p className="text-sm text-muted-foreground">
+                Structured by experienced teachers, tailored to your courses.
+              </p>
+              <Button asChild size="sm">
+                <Link href={signedIn ? "/plan" : "/login"}>Create Study Plan</Link>
+              </Button>
+            </CardContent>
+          </Card>
+        )}
       </section>
 
       {/* ---- Jump back in (SME resume card, backed by real navigation) ---- */}

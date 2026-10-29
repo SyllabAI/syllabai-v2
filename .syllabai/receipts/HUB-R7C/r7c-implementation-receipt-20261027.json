@@ -1,0 +1,52 @@
+{
+  "record": "R-7c hub picker hybrid implemented — guided-lesson set card: gap-first entry copy + collapse to slim header while a lesson runs",
+  "operator_decision": {
+    "verbatim": "R-7c",
+    "operator_trace": "1a179714e00ebe9d",
+    "channel": "zai-web",
+    "session": "web-e79a3bd8-5bc9-4aae-abe2-eb5f5d3964dd",
+    "decides": "R-7 options tabled in download/SME-concept-picker-delta-record-20261027.json (recommended_action; decision owner operator). R-7c = hybrid: keep the set card, collapse to a slim header while a lesson runs, gap-first copy on entry."
+  },
+  "parent_of_record": [
+    "download/SME-concept-picker-delta-record-20261027.json (operator trace 1a17941f7c1d5099 — the four live-verified SME picker facts and the delta table vs the hub's persistent set card)",
+    "download/SME-Guided-Study-Recheck-and-Hub-Comparison-20261026.docx (R-1..R-6 action table; R-7 joins that queue)"
+  ],
+  "implementation": {
+    "branch": "w0a/r-7c-guided-picker-hybrid",
+    "base": "origin/main 8c9c4512 (fetched 2026-10-27; worktree /home/z/my-project/sv2-r7c)",
+    "files_changed": [
+      "apps/hub/src/app/courses/[course]/guided-lessons/[noteId]/guided-flow.tsx (+165/-60) — the only source file touched"
+    ],
+    "behavior_contract": [
+      "1. Gap-first entry copy: pristine state renders the set card with eyebrow 'Guided lessons for this note', heading \"Which concept don't you understand yet?\" and subline \"We'll explain it simply and check your understanding. Pick any lesson — any order works.\" (SME diagnostic framing of record; any-order affordance made explicit). The neutral catalog heading returns once engaged.",
+      "2. Selection-first collapse: on any concept pick (any order — including a first pick of lesson 1, which leaves no progress footprint) the card collapses to a slim header row: name + 'Lesson N of M — <active title>' + live 'X of Y complete' + hairline progress; the full list stays one click away (aria-expanded toggle, 'Show/Hide the lesson list'), reproducing SME's '<- Back to concepts' hop without giving up the persistent progress anchor. Picking a concept from the expanded list re-collapses the card.",
+      "3. moduleDone honesty companion fix: 'complete' now means the module was actually walked (gate rated AND all its checks answered) instead of 'positioned before the active module' (mi < moduleIndex). Sequential walkers get identical numbers; any-order walkers no longer see skipped modules counted complete / labelled Review. Disclosed as in-scope because R-7c's any-order framing makes the old counter self-contradictory at the new slim header (observed live: '2 of 3 complete' after an untouched any-order entry)."
+    ],
+    "state_model": "engaged = picked(UI) || moduleIndex!==0 || stage!==0 || ratings/answers/recalibrated non-empty; listExpanded = listOpen ?? !engaged; reset() clears picked+listOpen+store. SSR/prerender still renders the pristine entry card (server snapshot) and re-renders to restored browser-local state after mount — the documented useSyncExternalStore pattern of this file. No schema, corpus, API or DB changes; browser-local persistence law unchanged (zero-DB)."
+  },
+  "verification": {
+    "gates": {
+      "eslint_guided_flow": "exit 0",
+      "build_hub_ci_parity": "exit 0 (corpus-verify prebuild trio + next build; bun run build:hub at worktree root)"
+    },
+    "surface_walk": {
+      "surface": "production standalone build (bun .next/standalone/apps/hub/server.js, PORT 3200) — the CI-baked artifact shape, not dev mode",
+      "note": "rn_7Q8M9nVkr2FxCzxd (Group 7 Halogens, 3 lessons / 15 checks) — the exact corpus counterpart note of the SME delta-record walk",
+      "steps": [
+        "S1 entry: SSR + client assert gapHeading/gapSub/anyOrder copy all true; 3 lesson buttons + restart present",
+        "S2 any-order first pick (lesson 3 of 3) -> card collapses immediately; slim header 'Guided lessons for this note | Lesson 3 of 3 — Displacement reactions | 0 of 3 complete | Show the lesson list'; honest 0-of-3 under the moduleDone fix",
+        "S3 slim-header click -> list returns; header becomes toggle ('Hide the lesson list', aria-expanded=true) with neutral catalog heading",
+        "S4 re-pick from expanded list (lesson 1) -> card re-collapses ('Lesson 1 of 3 — Physical properties of Group 7 elements')",
+        "S5 rating written while collapsed -> card stays collapsed, Continue enabled, rating persisted browser-local under the real key syllabai.guided-flow.v1.igcse-chemistry::rn_7Q8M9nVkr2FxCzxd (ratings L1=medium)",
+        "S6 Restart from expanded card -> pristine entry restored (gap-first copy back, list visible)"
+      ],
+      "screenshots": "lane evidence archived at download/r7c-evidence-20261027/ (01-entry-gap-first, 02-collapsed-anyorder, 03-reexpanded-midlesson, 04-recollapsed-lesson1, 04-collapsed-lesson2-rated, 05-restart-entry-restored .png)"
+    },
+    "session_notes": [
+      "next dev in this sandbox blocks /_next/* from origin 127.0.0.1 (allowedDevOrigins) and the RSC flight stream never lands — zero interactivity in dev is a sandbox artifact, NOT a code defect; verification therefore ran against the production standalone build",
+      "initial probe misread persistence with the wrong localStorage key (noteId only); the real key is course-qualified 'igcse-chemistry::rn_*' and writes were verified correct — no code issue"
+    ]
+  },
+  "discipline": "no direct-main push (AGENT_BRIEFING §4.7 — branch + PR, integrator merges); fetch-first before push; PAT env-only one-shot, never persisted or echoed; zero DB access; zero Vercel calls; no corpus or schema writes; UI copy derived from the of-record delta (SME subline quoted as flow-mechanics description only)",
+  "recorded_at_utc": "2026-10-27T00:00:00Z"
+}

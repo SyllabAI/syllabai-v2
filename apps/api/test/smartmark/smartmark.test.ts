@@ -159,11 +159,14 @@ const ATTEMPT_READ = /select a\.id, a\.learner_id, a\.question_id, a\.marking_st
 const QUESTIONS_MATCH = /select id, question_type, marks from questions where id = \?/;
 const ANSWERS_MATCH = /select ans\.id, ans\.question_part_id, ans\.answer_text, ans\.marks_awarded, ans\.marking_state, qp\.label, qp\.marks from answers ans join question_parts qp on qp\.id = ans\.question_part_id where ans\.attempt_id = \? order by ans\.question_part_id/;
 const VERSION_MATCH = /select id from question_versions where question_id = \? order by version desc/;
-const VALIDATED_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+const VALIDATED_SCHEME = /select id, validation_state, scheme_kind, question_part_id from mark_schemes where question_version_id = \? and validation_state = \? order by created_at desc/;
+// ruling A (trace 1a1776dff15bb991): the shared tail's fresh attempt reads
+const ATTEMPT_TOTAL_READ = /select coalesce\(sum\(marks_awarded\), 0\) as total from answers where attempt_id = \?/;
+const PENDING_READ = /select 1 from answers where attempt_id = \? and marking_state = \? limit 1/;
 const NEWEST_SCHEME = /select id, validation_state from mark_schemes where question_version_id = \? order by created_at desc/;
 const POINTS_MATCH = /select id, ref, ordering, text, marks, question_part_id from mark_points where mark_scheme_id = \? order by ordering/;
-const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? order by computed_at desc/;
-const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? order by computed_at desc/;
+const KAPPA_ALL = /select passed from smart_mark_agreement_evaluations where scope = \? and metric = \? order by computed_at desc/;
+const KAPPA_PAPER = /select passed from smart_mark_agreement_evaluations where scope = \? and exam_paper_id = \? and metric = \? order by computed_at desc/;
 // T-SM-KAPPA-SUBJECT: the bounded PART_OF walk resolving the question's subject
 const KAPPA_SUBJECT = /select e2\.passed from smart_mark_agreement_evaluations e2/;
 const RESULT_INSERT = /insert into smart_mark_results/;
@@ -172,6 +175,14 @@ const ATTEMPT_SMART_UPDATE = /update attempts set marking_state = \? where id = 
 const ATTEMPT_TOTAL_UPDATE = /update attempts set marks_awarded = \? where id = \?/;
 const TOPICS_MATCH = /select node_id from question_topics where question_id = \?/;
 const FLIP_MATCH = /update attempts set evidence_emitted = true where id = \? and evidence_emitted = false/;
+// DC-3 gate surface (migration 0008 baseline: the gate runs on every student
+// pass; seeded policy rows free+paid; row-absent learner = free)
+const DC3_ADVISORY = /select pg_advisory_xact_lock\(hashtextextended\(\s*\?\s*,\s*0\)\)/;
+const DC3_PRIOR = /select ans\.question_part_id, count\(e\.id\)::int as prior from answers ans left join ai_mark_events e on e\.learner_id = \? and e\.question_part_id = ans\.question_part_id where ans\.attempt_id = \? group by ans\.question_part_id/;
+const DC3_ENTITLEMENT = /select tier from mark_entitlements where learner_id = \?/;
+const DC3_POLICY = /select tier, re_marks_per_day as "reMarksPerDay", unlimited from mark_entitlement_policies where tier = \?/;
+const DC3_USED_TODAY = /select count\(\*\)::int as used from ai_mark_events where learner_id = \? and mark_ordinal >= 2 and created_at >= date_trunc\('day', now\(\) at time zone 'utc'\)/;
+const DC3_STAMP = /insert into ai_mark_events/;
 
 const ATTEMPT_ROW = {
   id: ATTEMPT_ID,
@@ -220,13 +231,24 @@ function markRoutes(opts: {
       ] },
     { match: KAPPA_ALL, rows: opts.kappaAll ?? [] },
     { match: KAPPA_PAPER, rows: opts.kappaPaper ?? [], rowsFor: (p) => (p[1] === PAPER_ID ? opts.kappaPaper ?? [] : []) },
-    { match: KAPPA_SUBJECT, rows: opts.kappaSubject ?? [], rowsFor: (p) => (p[1] === QUESTION_ID ? opts.kappaSubject ?? [] : []) },
+    { match: KAPPA_SUBJECT, rows: opts.kappaSubject ?? [], rowsFor: (p) => (p[2] === QUESTION_ID ? opts.kappaSubject ?? [] : []) },
     { match: RESULT_INSERT, rows: [] },
     { match: ANSWER_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_SMART_UPDATE, rows: [] },
     { match: ATTEMPT_TOTAL_UPDATE, rows: [] },
+    { match: ATTEMPT_TOTAL_READ, rows: [{ total: 0 }] },
+    { match: PENDING_READ, rows: [] },
     { match: TOPICS_MATCH, rows: [{ node_id: "20000000-0000-0000-0000-000000000012" }] },
     { match: FLIP_MATCH, rows: [], rowsFor: () => { opts.onFlip?.(); return []; } },
+    { match: DC3_ADVISORY, rows: [] },
+    { match: DC3_PRIOR, rows: (opts.answers ?? [answerRow()]).map((a) => ({ question_part_id: a.question_part_id, prior: 0 })) },
+    { match: DC3_ENTITLEMENT, rows: [] },
+    { match: DC3_POLICY, rows: [
+        { tier: "free", reMarksPerDay: 0, unlimited: false },
+        { tier: "paid", reMarksPerDay: null, unlimited: true },
+      ] },
+    { match: DC3_USED_TODAY, rows: [{ used: 0 }] },
+    { match: DC3_STAMP, rows: [] },
   ];
 }
 
@@ -274,6 +296,30 @@ describe("SmartMarkService.markAttempt — the ONE engine", () => {
     expect(sql.queries.some((q) => ANSWER_SMART_UPDATE.test(q))).toBe(false);
     expect(sql.queries.some((q) => ATTEMPT_TOTAL_UPDATE.test(q))).toBe(false);
     expect(sql.queries.some((q) => NEWEST_SCHEME.test(q))).toBe(true); // the refusal stamps the newest scheme
+  });
+
+  test("VALIDATED LEVELS scheme (ADR-040) → per-part NO_SCHEME_BANDS refusal; the point path never guesses at bands", async () => {
+    const levelRows = [{ id: SCHEME_ID, validation_state: "VALIDATED", scheme_kind: "LEVELS" }];
+    const sql = fakeSql(markRoutes({ validatedSchemes: levelRows, newestScheme: levelRows }));
+    const results = await new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK).markAttempt(ATTEMPT_ID);
+    const row = results.get(ANSWER_A)!;
+    expect(row.failure_reason).toBe("NO_SCHEME_BANDS");
+    expect(row.validation_passed).toBe(false);
+    expect(row.marks_awarded).toBe(0);
+    expect(row.breakdown).toEqual([]);
+    expect(sql.queries.some((q) => RESULT_INSERT.test(q))).toBe(true); // append-only refusal row persisted
+    expect(sql.queries.some((q) => ANSWER_SMART_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => ATTEMPT_SMART_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => ATTEMPT_TOTAL_UPDATE.test(q))).toBe(false);
+    expect(sql.queries.some((q) => POINTS_MATCH.test(q))).toBe(false); // point fetch never reached
+  });
+
+  test("scheme_kind absent (legacy row, default law) → POINTS path unchanged", async () => {
+    const sql = fakeSql(markRoutes({ validatedSchemes: [{ id: SCHEME_ID, validation_state: "VALIDATED" }] }));
+    const results = await new SmartMarkService(sql, okGenerator, claimingPublisher(), FIXED_CLOCK).markAttempt(ATTEMPT_ID);
+    const row = results.get(ANSWER_A)!;
+    expect(row.validation_passed).toBe(true);
+    expect(row.failure_reason).toBeNull();
   });
 
   test("κ gate fail-closed: no evaluations → authoritative false → NO evidence even when complete", async () => {
@@ -403,7 +449,7 @@ function gateRoutes(opts: {
   return [
     { match: KAPPA_ALL, rows: opts.kappaAll ?? [] },
     { match: KAPPA_PAPER, rows: opts.kappaPaper ?? [], rowsFor: (p) => (p[1] === PAPER_ID ? opts.kappaPaper ?? [] : []) },
-    { match: KAPPA_SUBJECT, rows: opts.kappaSubject ?? [], rowsFor: (p) => (p[1] === QUESTION_ID ? opts.kappaSubject ?? [] : []) },
+    { match: KAPPA_SUBJECT, rows: opts.kappaSubject ?? [], rowsFor: (p) => (p[2] === QUESTION_ID ? opts.kappaSubject ?? [] : []) },
   ];
 }
 

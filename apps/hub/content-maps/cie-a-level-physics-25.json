@@ -20,13 +20,16 @@
   }
  },
  "course": "cie-a-level-physics-25",
- "generatedUtc": "2026-10-22T12:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-a-level-physics-25/spec_point_index.json": {
    "sha256": "00f70fba2cf5551e8a75d6853d5f2761db7d61b09eb68d249eccbb56600cc332"
   },
   "scripts/cie_rejoin_resolutions.yaml": {
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
+  },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
   },
   "spec-links/cie-a-level-physics-25.json": {
    "sha256": "a1c4923a05c6111c96762b835623fab1f5ceffac04276a4a1a44fc7e1c331aa9"
@@ -35967,7 +35970,7 @@
   ],
   "uncoveredSpineCodes": 117
  },
- "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -35985,6 +35988,11 @@
     },
     "itemsWithCodes": 652,
     "ladderCodesRetained": 132,
+    "sidAnchors": {
+     "added": 0,
+     "conflictsKept": 0,
+     "verified": 0
+    },
     "sidecarCodes": 676,
     "sidecarItems": 2053,
     "sidecarOnlyItems": 0,
@@ -35994,7 +36002,8 @@
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": "ACCEPTED",
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": {
     "added": 0,

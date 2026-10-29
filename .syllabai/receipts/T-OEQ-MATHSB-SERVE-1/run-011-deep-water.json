@@ -1,0 +1,65 @@
+{
+  "card": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-011-deep-water",
+  "date": "2026-10-27",
+  "operatorOrder": "Deep-water team reorganization session and make sure to report all findings to self improving docs",
+  "scope": "Full-quality deep-water wave on the 66-set 4MB1 official-papers plane: defect census, deterministic fixes, eyes-on rebuilds, figure-crop pipeline, self-improving docs",
+  "stateOfRecord": {
+    "baseMain": "c89c71e6 (fetch-first; includes PR #400 run-010 QA wave + PR #402 chemistry sync)",
+    "branch": "r7a-pp-deepwater-011",
+    "officialPapersSha16": "1c4b5e295a4eca8f",
+    "bytes": 3773938
+  },
+  "lanes": {
+    "W1_deterministic": {
+      "changes": 153,
+      "W1a_currencyDollarEscape": "146 field fixes — all non-LaTeX $ escaped to \\$; kills the remark-math same-line currency-pairing fake-math class (24 parts were rendering '…$42 The cost for canoeing is $34…' as KaTeX garbage). Sole genuine LaTeX segment (offp_2018-06_01r_12 $5^{3k+4}$) preserved.",
+      "W1b_furnitureStrip": "7 cover-page blocks stripped (2021-11_01, 2020-06_02, 2020-11_02, 2023-06_02, 2018-06_02r, 2019-01_02, 2019-01_02r — Q1 part-a stems) up to the standard instruction line 'You must write down all the stages in your working.'"
+    },
+    "W2_eyesOn_rebuilds": {
+      "fixes": 22,
+      "set": "official-4mb1-02r-2019-06 (the word-salad set) — 11 parts: 1-f, 2-c, 3-c, 4-f, 5-d, 6, 7-e, 8-e, 9-a, 9-b, 10, 11",
+      "evidence": "every fix cites its printed QP/MS page (qp-p0..p33 / ms-p4..p16, rendered and read); 3(c) mark scheme AUTHORED from printed MS page 6 (was honest not-captured placeholder; M2/M1/A1 alternative structure = 3 marks)",
+      "conventions": "Unicode math first (² ³ √ ° ∠ ⩾ ±); KaTeX only for matrices ($\\begin{pmatrix}$) and vector arrows ($\\overrightarrow{OA}$); currency stays \\$-escaped",
+      "validator": "mark-code after-superset-before law (glued-token aware), PUA/FFFD scan, unescaped-$ scan — all green"
+    },
+    "W3_figureCrops": {
+      "attached": 199,
+      "tierR_reuse": "71 assets reused from the SME plane's 743 Tier-B eyes-on-verified inline images (matched by series/paper/question-number from asset URLs) — review:false",
+      "tierA_autocrop": "128 machine-cropped from QP PDFs via PyMuPDF seed-and-grow vector clustering (page find = distinctive-word voting; block = question-margin y-range; furniture exclusions: >45%-page answer-box border, margin/corner ticks, full-width separators) — review:true (honest machine-staged flag)",
+      "keptNotes": 64,
+      "assetsRepo": "syllabai-resources main fc3f09e..ddd406c — 198 PNGs under Official-ExamQuestion/igcse-maths-b-16/<series>/4MB1-<paper>/assets/ (3 name collisions are shared figures across sub-parts — same path, correct semantics)",
+      "urlGate": "562/562 crop rawUrls HEAD-200",
+      "sampledVerification": "5/5 eyes-on PASS by main lane (asset_15/2018-06-01, asset_6/2018-06-01R, asset_10/2022-01-01, +2 prior-run samples); full 259-item verdict fleet queued (slices w3-1..5)"
+    }
+  },
+  "gates": {
+    "marksLaw": "6600 == 6600 (1281 questions / 2443 parts / 66 sets)",
+    "katex": "75 segments, 0 failures",
+    "unbalancedDollar": 0,
+    "furnitureCensus": "pearson-edexcel/paper-reference/total-marks/use-black-ink/fill-in-boxes/write-your-name/turn-over/paper-ref-code/p-code ALL ZERO (residual: 4 '©' mis-OCR tokens in 2020-06/11_01r_17-b MS text — queued)",
+    "degQ": "48 regex hits, ALL verified legit algebra variables (2q, 10q+p, 32qr) — run-010 R3 gate held",
+    "cropUrls": "562/562 200"
+  },
+  "selfImprovingDocs": {
+    "playbook": ".syllabai/docs/PLAYBOOK-CONTENT-QUALITY.md (NEW — laws, defect taxonomy, crop-pipeline recipe, fleet protocol, gates, open queue)",
+    "lessons": [
+      "fleet concurrency: 8/2/1 parallel agents all hit gateway context-deadline during the outage window — slices stay staged, main-lane fallback executed priority classes",
+      "script persistence: run-010 repair script was lost with its session; all run-011 scripts persisted under scripts/ per name",
+      "prefix page-search fails on OCR interleave; distinctive-word voting required",
+      "glued mark codes (M1ft/B1for) defeat word-boundary counting — validator regex updated",
+      "shared figures across sub-parts produce intentional same-path asset collisions"
+    ]
+  },
+  "openQueue": [
+    "matrixish 78 hits / unit-sup 22 parts / c-junk 2 parts — slices w2-A/B/C staged, fleet retry pending",
+    "64 crop-required parts without figure (auto-crop None: adjacent-page/raster cases)",
+    "213 machine-staged crops (review:true) awaiting fleet verdict passes (slices w3-1..5 staged)",
+    "SECURITY: both PATs (GitHub …JU4 / Vercel vcp_…aoT3) STILL require rotation"
+  ],
+  "disclosures": [
+    "manifest officialSpine pin UNTOUCHED (assets rawUrls are main-branch references, consistent with the 363 pre-existing crops; spine converter pin belongs to the r2 chemistry lane)",
+    "subagent fleet outage (Task tool context-deadline x3 rounds) — main-lane fallback documented in playbook §4",
+    "run-010's repair script not recovered (lost with session) — rebuilt census from scratch, persistence lesson recorded"
+  ]
+}

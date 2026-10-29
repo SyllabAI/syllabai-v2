@@ -33,6 +33,12 @@
 import type { FailoverLlmChain } from "./index";
 import type { LlmChainResponse } from "./health";
 import type { LlmProvider } from "../tutor/karag";
+import type { DrillMethodCreditAllocation } from "@syllabai/contracts";
+import type {
+  DrillMethodCreditGenerator,
+  DrillMethodCreditInput,
+} from "../drill/reveal";
+import { DrillMethodCreditGenerationError } from "../drill/reveal";
 import type {
   Allocation,
   FeedbackLlm,
@@ -201,7 +207,9 @@ marks than a point is worth.
 }
 
 /** appendLearnerAnswer — the answer-format-v2 reading law, verbatim. */
-function appendLearnerAnswer(sb: string, answerText: string | null): string {
+/** Exported for the ADR-040 §5.4 band generator (llmchain/bands.ts) — the
+ * answer-format-v2 reading law lives once. */
+export function appendLearnerAnswer(sb: string, answerText: string | null): string {
   return (
     sb +
     `\nLEARNER ANSWER (answer format v2 — Markdown text that may embed\n` +
@@ -451,6 +459,233 @@ export function chainAsCandidateGenerator(chain: FailoverLlmChain): MarkingCandi
         };
       }
       return parsed;
+    },
+  };
+}
+
+// ── F-183 drill method credit (DrillMethodCreditGenerator over the chain) ───
+
+/**
+ * The drill's method-credit seam over THE ONE CHAIN OF RECORD — the
+ * chainAsCandidateGenerator posture at drill scale: one structured drill
+ * part, the MS-of-record points, the learner's text response; the verdict is
+ * per-point method credit (the ADR-025 vocabulary: was the METHOD credited —
+ * boolean, never invented marks). Dormant-by-default (available() delegates
+ * to the chain — zero-key boots refuse and the ack degrades to the honest
+ * null, law L6); truncation refuses (an incomplete verdict is no verdict);
+ * every allocation is re-validated against the MS of record by the reveal
+ * module (no invented refs, no duplicates — the validator-trio law).
+ *
+ * EPHEMERAL BY LAW: the verdict rides the evidence ack and is persisted
+ * nowhere (the zero-stakes drill writes no attempts/ai_mark_events).
+ */
+
+/** The completion budget for one structured drill part: 300 + 150/point, capped 2000. */
+export function methodCreditBudget(pointCount: number): number {
+  return Math.min(2000, 300 + 150 * Math.max(1, pointCount));
+}
+
+export function methodCreditSystemPrompt(): string {
+  return [
+    "You are an examiner's assistant applying the METHOD-CREDIT law for a structured exam question.",
+    "You are given the question part, the official mark scheme points of record (each with its ref and text), and one learner's response.",
+    "For EACH mark scheme point decide exactly one verdict:",
+    '  methodCredited = true  — the response demonstrates the method, reasoning or explanation the point rewards (the examiner would award the point for method, even if a final answer elsewhere is wrong);',
+    '  methodCredited = false — the response does not demonstrate that method (missing, contradictory, or only restating the question).',
+    "Laws:",
+    "- Credit METHOD, not luck: a bare correct answer with no visible method earns credit only when the point of record rewards the answer itself.",
+    "- Ground every rationale in the learner's own words or in what is absent from them — one sentence, no hedging.",
+    "- Exactly one allocation per mark scheme point, using the EXACT refs given. Never invent, rename, merge or drop points.",
+    "- Never assign marks or partial marks — your only output per point is the boolean and the rationale.",
+    'Respond with STRICT JSON only, no prose outside it: {"allocations":[{"ref":"<exact point ref>","methodCredited":true|false,"rationale":"<one sentence>"}]}',
+  ].join("\n");
+}
+
+export function methodCreditUserPrompt(input: DrillMethodCreditInput): string {
+  const points = input.points
+    .map((p) => `- ref: ${p.ref} | marks: ${p.marks} | point text: ${p.textMd}`)
+    .join("\n");
+  return [
+    "QUESTION PART:",
+    input.problemMd,
+    "",
+    "MARK SCHEME POINTS OF RECORD (the examiner's own points — credit against these and nothing else):",
+    points,
+    "",
+    "LEARNER RESPONSE:",
+    input.responseText,
+    "",
+    "Return the allocations JSON now (exactly one entry per point ref above).",
+  ].join("\n");
+}
+
+export function chainAsDrillMethodCreditGenerator(chain: FailoverLlmChain): DrillMethodCreditGenerator {
+  const request = (system: string, user: string, maxTokens: number) => ({
+    system,
+    user,
+    temperature: 0.1,
+    maxTokens,
+    // method credit is rubric-shaped extraction, not open-ended reasoning —
+    // LOW keeps the thinking budget (and wall clock) bounded (the marking
+    // bridge's disclosed knob posture, verbatim)
+    reasoningEffort: "low" as const,
+  });
+
+  return {
+    pipelineVersion: "f183-method-credit-1.0.0",
+    available: () => chain.available(),
+    async credit(input: DrillMethodCreditInput): Promise<DrillMethodCreditAllocation[]> {
+      if (!chain.available()) {
+        throw new DrillMethodCreditGenerationError("PROVIDER_UNAVAILABLE");
+      }
+      let response: LlmChainResponse;
+      try {
+        response = await chain.generate(
+          request(methodCreditSystemPrompt(), methodCreditUserPrompt(input), methodCreditBudget(input.points.length)),
+        );
+      } catch (e) {
+        if (e instanceof DrillMethodCreditGenerationError) throw e;
+        throw new DrillMethodCreditGenerationError("PROVIDER_UNAVAILABLE");
+      }
+      if (isTruncationFinish(response.finishReason)) {
+        // the completion hit the token cap mid-flight: an incomplete verdict
+        // is NO verdict — refuse with the raw text attached (self-forensic)
+        throw new DrillMethodCreditGenerationError("TRUNCATED_OUTPUT", response.text);
+      }
+      const root = readRoot(response.text);
+      const allocations = root.allocations;
+      if (!Array.isArray(allocations)) {
+        throw new DrillMethodCreditGenerationError("UNPARSEABLE_OUTPUT", response.text);
+      }
+      const out: DrillMethodCreditAllocation[] = [];
+      for (const a of allocations) {
+        if (a === null || typeof a !== "object" || Array.isArray(a)) {
+          throw new DrillMethodCreditGenerationError("UNPARSEABLE_OUTPUT", response.text);
+        }
+        const rec = a as Record<string, unknown>;
+        if (typeof rec.ref !== "string" || rec.ref.length === 0) {
+          throw new DrillMethodCreditGenerationError("UNPARSEABLE_OUTPUT", response.text);
+        }
+        if (typeof rec.methodCredited !== "boolean") {
+          throw new DrillMethodCreditGenerationError("UNPARSEABLE_OUTPUT", response.text);
+        }
+        if (typeof rec.rationale !== "string" || rec.rationale.length === 0) {
+          throw new DrillMethodCreditGenerationError("UNPARSEABLE_OUTPUT", response.text);
+        }
+        out.push({ ref: rec.ref, methodCredited: rec.methodCredited, rationale: rec.rationale });
+      }
+      return out;
+    },
+  };
+}
+
+// ── teaching toolkit document generation (T-TEACH-010) ──────────────────────
+
+/**
+ * The toolkit generation port: one system+user call → the RAW JSON root.
+ * Deliberately shape-agnostic — the four output schemas (and the zod wall +
+ * one self-heal retry that feeds a parse failure back to the model) are
+ * ROUTE law (routes/teaching-toolkit.ts); this bridge only owns the chain
+ * posture, the truncation refusal and the fence-tolerant JSON extraction.
+ * Provenance: the recreation's proven loop (4/4 tools, 100% structural
+ * fidelity — znotes/research/2026-10-22-recreation.md), ported to the
+ * §26.1 chain.
+ */
+
+export type ToolkitGenerationErrorReason =
+  | "PROVIDER_UNAVAILABLE"
+  | "TRUNCATED_OUTPUT"
+  | "UNPARSEABLE_OUTPUT";
+
+/** A generation refusal — never an HTTP shape, the route maps these. */
+export class ToolkitGenerationError extends Error {
+  readonly reason: ToolkitGenerationErrorReason;
+  readonly raw: string | null;
+
+  constructor(reason: ToolkitGenerationErrorReason, raw?: string) {
+    super(reason);
+    this.name = "ToolkitGenerationError";
+    this.reason = reason;
+    this.raw = raw ?? null;
+  }
+}
+
+export interface ToolkitGeneration {
+  root: Record<string, unknown>;
+  model: string;
+  providerName: string;
+  /** the full raw text — the FAILED row's self-forensic payload */
+  raw: string;
+}
+
+export interface ToolkitGenerator {
+  available(): boolean;
+  generate(system: string, user: string): Promise<ToolkitGeneration>;
+}
+
+/** The toolkit JSON budget: the SOW document is the largest observed
+ *  contract (4–6k tokens across 5 lesson cards) — 8000 covers every tool
+ *  with headroom (plan §8 risk table). */
+const TOOLKIT_MAX_TOKENS = 8_000;
+/** Generation is open-ended structured writing, not rubric-shaped
+ *  extraction — 0.5 is the recreation's calibrated value (proven 4/4). */
+const TOOLKIT_TEMPERATURE = 0.5;
+
+function toolkitExtractJsonBody(raw: string): string {
+  const start = raw.indexOf("{");
+  const end = raw.lastIndexOf("}");
+  if (start < 0 || end <= start) {
+    throw new ToolkitGenerationError("UNPARSEABLE_OUTPUT", raw);
+  }
+  return raw.slice(start, end + 1);
+}
+
+function toolkitReadRoot(raw: string): Record<string, unknown> {
+  try {
+    const parsed = JSON.parse(toolkitExtractJsonBody(raw)) as unknown;
+    if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) {
+      throw new Error("not an object");
+    }
+    return parsed as Record<string, unknown>;
+  } catch (e) {
+    if (e instanceof ToolkitGenerationError) throw e;
+    throw new ToolkitGenerationError("UNPARSEABLE_OUTPUT", raw);
+  }
+}
+
+export function chainAsToolkitGenerator(chain: FailoverLlmChain): ToolkitGenerator {
+  return {
+    available: () => chain.available(),
+    async generate(system: string, user: string): Promise<ToolkitGeneration> {
+      if (!chain.available()) {
+        throw new ToolkitGenerationError("PROVIDER_UNAVAILABLE");
+      }
+      let response: LlmChainResponse;
+      try {
+        response = await chain.generate({
+          system,
+          user,
+          temperature: TOOLKIT_TEMPERATURE,
+          maxTokens: TOOLKIT_MAX_TOKENS,
+          // structured document writing — LOW keeps the thinking budget
+          // (and the 12–22 s wall clock) bounded, the candidate-generator law
+          reasoningEffort: "low" as const,
+        });
+      } catch {
+        // chain exhaustion/transport: the honest provider-unavailable refusal
+        throw new ToolkitGenerationError("PROVIDER_UNAVAILABLE");
+      }
+      if (isTruncationFinish(response.finishReason)) {
+        // the document hit the token cap mid-flight: the payload is
+        // incomplete — refuse with the raw text attached (self-forensic)
+        throw new ToolkitGenerationError("TRUNCATED_OUTPUT", response.text);
+      }
+      return {
+        root: toolkitReadRoot(response.text),
+        model: response.model,
+        providerName: response.providerName,
+        raw: response.text,
+      };
     },
   };
 }

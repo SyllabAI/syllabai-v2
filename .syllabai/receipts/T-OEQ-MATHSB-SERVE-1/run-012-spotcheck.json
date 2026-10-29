@@ -1,0 +1,87 @@
+{
+ "card": "T-OEQ-MATHSB-SERVE-1",
+ "run": "run-012-spotcheck (live player)",
+ "date": "2026-10-27",
+ "operatorOrder": "spot-check the fixed parts on the live player (trace 1a17cd3843d94f99)",
+ "liveUrlOfRecord": "https://syllabai-hub-v2.vercel.app",
+ "playerRoute": "/courses/igcse-maths-b-16/past-papers/{paperKey}",
+ "deploymentCurrency": {
+  "method": "GET /corpus/igcse-maths-b-16/official-papers.json vs repo tip bytes",
+  "localSha16": "d56a2fb95a1e617f",
+  "liveSha16": "d56a2fb95a1e617f",
+  "verdict": "MATCH (byte-exact; build_corpus_static.mjs runs at every Vercel build, post-merge deploy current)"
+ },
+ "method": [
+  "presence/absence probes auto-built from git diff d829a526..HEAD per target part (windows within one line, RSC-escape-safe, \\uXXXX unescape pass)",
+  "15 paper pages probed (HTTP 200 + payload checks); 5 pages opened in a real browser (agent-browser) with answer dialogs + scroll-through",
+  "crop rawUrls HEAD-checked; DOM <img> naturalWidth checks at stepwise scroll positions"
+ ],
+ "textFixRender": {
+  "verdict": "PASS - all 19 target parts' presence probes found live; zero pre-fix windows in official-plane regions",
+  "visuallyConfirmed": [
+   "3.4 x10^8 (2019-01 01 10-a)",
+   "2.40 x 10^5 span (2020-06 01R 17-b)",
+   "2.34x10^-2 span (17-a)",
+   "|p|^2 moduli rows + x=-21/5 (2020-01 01 18)",
+   "(125p^9w^3)^(2/3) problem (2020-06 01 13-b)",
+   "sqrt(20a^2) family (2021-01 01R 26)",
+   "(sqrt5-2)(sqrt5+2) rationalising (2022-01 01R 15)",
+   "(cbrt81)^4 = 3^(16/3) (2023-01 02R 10-b)",
+   "(2n-4) right angles (2024-06 02R 2-b)",
+   "moved-home 17-c rows 0.5x10^199 / 5x10^n (2020-06 01R)",
+   "pmatrix matrix product (2019-06 02 4-d) rendered as proper bracketed KaTeX matrices (9 katex nodes in dialog)"
+  ],
+  "note": "absence probes initially flagged 25 STALE-PRESENT hits page-wide; source attribution split: markPoints mirrors in the OFFICIAL plane (F2) + SME questions.json copies riding in the same bundle payload (F3, not rendered in the paper player)"
+ },
+ "figures": {
+  "newCropUrls": "3/3 HEAD-200 (asset_7_diagram, asset_7_7, asset_21_21-a @ 2019-01/4MB1-01/assets)",
+  "oldCropRenderPath": "INTACT (asset_13 loads 277x271 in DOM; q4-c/d grids render from inline problemMd links)",
+  "F1_NEW_CROPS_RENDER_INVISIBLE": {
+   "census": "of the 64 run-012-attached crops: 6 have inline problemMd figure links, 58 DO NOT (all 58 still carry the 'Figure not shown' note)",
+   "rootCause": "the attach commit (6ba0c467) updated assets[] metadata (crop-required -> crop + rawUrl) but did NOT inject the inline ![...](rawUrl) link into problemMd nor drop the figure-not-shown note; the player (PartProblem/Markdown) renders figures ONLY from inline problemMd links - assets[] is metadata, never rendered",
+   "browserProof": "january-2019-4mb1-01: q7 + q21-a cards show the 'Figure not shown' callout and zero <img> for the attached crops across full-scroll DOM sampling, while HEAD-200 confirms the PNGs are served",
+   "verdict": "attach is METADATA-COMPLETE but RENDER-INCOMPLETE for 58/64 figures"
+  }
+ },
+ "F2_MARKPOINTS_MIRROR_DRIFT": {
+  "census": "25 markPoints[].textMd mirrors unchanged while solutionMd changed (run-012 edits never mirrored into markPoints)",
+  "renderSemantics": "player renders the mark-scheme block when solutionMd != markPoints[0].textMd (question-player.tsx guard) - run-012 fixes UN-HID these stale blocks; before run-012 identical strings kept the block hidden",
+  "userVisibleConsequences": [
+   "2020-06 01R 17-b MP renders '240 000 B1 (c) 0.5 x10 199 ... 5 x10198 A1' - the (c) leak row STILL RENDERS in the official mark-scheme points (solutionMd is clean); same on the 2020-11 twin",
+   "2024-06 01 19 MP tail renders 'Total 3 marks / Question Working Answer Mark Notes / ( 4 3 ) or 27 + 3 + 2 x 81 4 M1...' - furniture header + Q20 foreign rows still render",
+   "Tier-D parts render stale flattened rows ('3.4 x 10 8 1 B1', '2.34 x10 -2 B1', '(2.5 0)(2 6 2) = 3' class on 2019-06 4-d) beside the fixed answers"
+  ],
+  "screenshot": "q10-a_answer_open.png + q17-b_leak_strip_solution_clean_mp_stale.png + q4-d_katex_pmatrix_visible.png show fixed answer ABOVE stale MP in one frame"
+ },
+ "F3_SME_PLANE_STALENESS": {
+  "verdict": "BY DESIGN (official-plane wave) - disclosed, not a defect of run-012",
+  "evidence": "content/igcse-maths-b-16/questions.json still carries 'Method to find AM' x1, '(c) 0.5' x2, 'Total 6 marks' x31; official plane carries the same only inside markPoints mirrors (F2)",
+  "coupling": "SME copy rides in every paper-page payload (dropped at render for covered paper keys) and serves the exam-questions tree; DB plane likewise until a re-ingest wave"
+ },
+ "F4_NEW_DEFECT_OUT_OF_SCOPE": "2024-06 02R q2-a/2-b solutionMd carry foreign %-profit/chairs MS rows on polygon problems (chairs 12:42 / 12 x 276 - 12 x 240 / 15(%) A1) - MS row misalignment cluster, next eyes-on wave candidate",
+ "F5_FURNITURE_VARIANTS": "truncated furniture variants render live and were missed by the 8-class census: 2018-06 01 q27 solution tail 'Question Working Answer Notes Ma', january-2019 01 q10-b answer block header; plus 2019-06 02 4-e problemMd inverse-matrix junk '[ ( a b ) 1 ( d - b ) ] ... y - 6 - 4 - 2 A - 2 - 4 - 6 - 8' (pre-existing)",
+ "openQueueCorroboration": "glued-x10N ambiguity visible live: january-2019 q10-b '(2 x 1099) / (5 x 10110)' and '4 x 10 -122'; q6 '4 xy 2' superscript-loss - the eyes-on queue is real on the player",
+ "evidenceScreenshots": [
+  "download/t-oeq-mathsb/run012-spotcheck/q10-a_tierD_fixed_and_stale_mp.png",
+  "download/t-oeq-mathsb/run012-spotcheck/q10-a_answer_open.png",
+  "download/t-oeq-mathsb/run012-spotcheck/q7_crop_attached_but_figure_not_shown.png",
+  "download/t-oeq-mathsb/run012-spotcheck/q4-d_pmatrix_problem.png",
+  "download/t-oeq-mathsb/run012-spotcheck/q4-d_katex_pmatrix_answer.png",
+  "download/t-oeq-mathsb/run012-spotcheck/q4-d_katex_pmatrix_visible.png",
+  "download/t-oeq-mathsb/run012-spotcheck/q17-b_leak_strip_solution_clean_mp_stale.png",
+  "download/t-oeq-mathsb/run012-spotcheck/q10-b_cbrt81_fractional_indices.png"
+ ],
+ "scriptsOfRecord": [
+  "scripts/run012_spotcheck_targets.py (repo mirror: .syllabai/lane-artifacts/.../run-012/spotcheck/)",
+  "scripts/run012_build_probes.py",
+  "scripts/run012_live_probes.py"
+ ],
+ "lessonsForPlaybook": [
+  "ATTACH RENDER-COMPLETENESS LAW: a crop attach is complete only when (a) assets[] metadata updated, (b) inline ![...](rawUrl) link injected into problemMd, (c) the 'Figure not shown' note removed, (d) URL gate passed BEFORE all three - assets[] alone never renders",
+  "MARKPOINTS MIRROR LAW: any solutionMd/problemMd edit must mirror into markPoints[].textMd in the same edit - the player renders markPoints whenever the two differ, so unmirrored fixes UN-HIDE stale OCR (and leak rows) in the mark-scheme block",
+  "SPOT-CHECK LAW: page-wide absence probes over-collect from sibling planes riding in the same RSC payload (SME copy, markPoints, corpus blueprint) - attribute every stale hit to its source plane before judging the fix failed",
+  "absence-probe hits must be triaged by source: official part field vs markPoints mirror vs SME copy vs corpus blueprint"
+ ],
+ "verdict": "RUN-012 TEXT WAVE LIVE AND CORRECT ON THE PLAYER; figures + markPoints mirrors carry two actionable residuals (F1: 58 crops render-invisible; F2: 25 stale mirrors incl. 2 leak-family MP rows) - both are mechanical follow-up waves; PAT rotation STILL PENDING",
+ "credentialDiscipline": "read-only spot-check; no credentials used; browser session closed"
+}

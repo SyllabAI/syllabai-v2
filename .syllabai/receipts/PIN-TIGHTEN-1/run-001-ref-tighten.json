@@ -1,0 +1,60 @@
+{
+  "lane": "PIN-TIGHTEN-1",
+  "run": "run-001-ref-tighten",
+  "dispatch": {
+    "operator_trace": "1a162fe3fad3c5a1",
+    "order": "Optional tighten rider",
+    "session": "web-64d10b73-530a-4f71-9961-85d0436c7fb5"
+  },
+  "lane_class": "stamp-only single-manifest ref tighten — content unchanged, no engine re-run, v2-side-only",
+  "wrinkle_of_record": {
+    "filed_by": "EDBUMP-1 receipt open_items + durable ledger ('pilot wrinkle: wave-14 consumed v0.11.0 content but manifest ref still declares main@bf8d56c3 (note discloses); tighten rider available')",
+    "shape": "apps/hub/content/igcse-chemistry-19/manifest.json importSource.note declares the ADR-037 converter v0.11.0 wave-14 corpus while importSource.ref named main@bf8d56c30f8b1532f9735e9f5f1d7e71c0694022 — the F44 exporter-of-record citation",
+    "root_cause_observed_filed_open": "the exporter stamps the exporter-of-record commit rather than the data cut — resources-side exporter-law follow-up lane available (resources repo untouched by this lane)"
+  },
+  "consumed_cut_evidence": {
+    "PR_292_dd7c7b27": "'wave 14 hub sync: ADR-037 v0.11.0 corpus' — the corpus consume",
+    "PR_297_2b4ca4f5": "'wave-14 hub sync: PUA-free text + the 3 answer-linkage closures (v0.11.0 corpus, 1 disclosed delta)' — 'G-E gated re-export of the official block from resources 855cddcf0a'; the LAST commit touching the pilot manifest",
+    "git_truth": "bf8d56c3 is an ANCESTOR of 855cddcf0a22e67ade24aac24f04e219dba2598f — the pin UNDER-claimed and is tightened FORWARD, not back-dated; 855cddcf descends from v0.11.0 (76a18897) and is an ancestor of resources tip 08229323"
+  },
+  "target_pin": {
+    "from": "main@bf8d56c30f8b1532f9735e9f5f1d7e71c0694022",
+    "to": "main@855cddcf0a22e67ade24aac24f04e219dba2598f",
+    "note": "the consumed cut of record, NOT the tip — content was never re-derived at the tip; pinning the tip would over-claim (no-guess held)"
+  },
+  "write_set": {
+    "manifest": "apps/hub/content/igcse-chemistry-19/manifest.json — importSource.ref re-keyed + importSource.note gains the PIN-TIGHTEN-1 disclosure (append-only); exactly 2 lines changed (numstat 2/2), byte format preserved (string surgery, no JSON round-trip)",
+    "receipt": ".syllabai/receipts/PIN-TIGHTEN-1/run-001-ref-tighten.json",
+    "durable_ledger": ".syllabai/worklog.md Task 34 section appended (union-merge on the origin version inside the lane worktree)"
+  },
+  "untouched_by_design": [
+    "countsProvenance wave-12 citation 'exporter of record F44 @ bf8d56c30f' — historical census record, self-described, left byte-identical",
+    "content-maps/igcse-chemistry-19.json — own generation stamp (resourcesSha 2e17aab0, generatedUtc 2026-09-19); no wrinkle of record filed against it; noted as an observation",
+    "content-maps/_report.json — fleet stamp tracks the EDBUMP-1 convergence (08447ba9), not the pilot",
+    "all bundle content files under content/igcse-chemistry-19/",
+    "48 Edexcel manifests @ main@08447ba9; 44 CIE manifests @ main@c5f20c52; pure-2 skeleton receipt-path ref",
+    "syllabai-resources repo — UNTOUCHED, transit stays 28"
+  ],
+  "proofs": [
+    "pre-edit fail-closed asserts: full old-ref count == 1; bf8d56c30f family count == 2 (full ref + counts citation); note marker unique",
+    "post-edit asserts: json-parse green; ref == main@855cddcf0a22e67ade24aac24f04e219dba2598f; disclosure exactly once; historical citation exactly once; new full sha exactly 2 (ref field + disclosure); numstat 2/2",
+    "NON-ATTRIBUTION proven first-hand: git-stash round-trip — the CIE validator fails the IDENTICAL 3 assertions on the pristine origin/main tree (cie-a-level-maths-20-pure-3 @ 06de1f2a, cie-igcse-further-maths-additional-maths-25 @ b83a3799a, cie-igcse-geography-25 @ 58d7f689) — the three CIE repair-pin bundles, zero connection to the Edexcel pilot edit; this lane's pre-fix diagnosis independently corroborates rider 51c29c8b's root-cause of record",
+    "re-lane integrity: write-set vs the incoming range collision-checked clean (manifest + receipts/PIN-TIGHTEN-1 untouched by 5cad720c..b0030cb4; only the shared .syllabai/worklog.md overlapped — union-merged: origin version + Task 34 entry); manifest edit replayed identically on the rebased tree"
+  ],
+  "gates": [
+    "bun install --frozen-lockfile: 930 packages, no lockfile drift",
+    "corpus-static content-plane build: exit 0 with the edit in place (at lane start on 5cad720c)",
+    "at lane start on 5cad720c: build:hub prebuild CIE validator RED with 3 assertions — PROVEN PRE-EXISTING first-hand (git-stash round-trip: identical failures on the pristine tree; same failing step and redness class PR #297 had already disclosed on main)",
+    "MID-LANE EVENT OF RECORD: origin advanced 5cad720c -> b0030cb4 carrying PR #298 whose rider 51c29c8b root-caused the SAME 3 assertions (pure-3 06de1f2ac205 / fm25 b83a3799a039 / geo-25 58d7f6892d89) and fixed the validator (allow-list advanced to the three receipted repair pins + precedence fix); push ABORTED per the fetch-first law, lane rebased onto b0030cb4 with union-merge on the shared ledger",
+    "gates re-proven on the REBASED tree at the FULL-GREEN bar: build:hub full chain exit 0 (prebuild incl CIE VALIDATOR PASSED + next build) — no non-attribution posture needed or used"
+  ],
+  "mechanics": "dedicated lane worktree lane-pin-tighten-1 branched from fetched origin/main 5cad720c (R4 agent live on the shared checkout — untouched); origin advanced mid-lane — the fetch-first pre-push check caught it and the push was ABORTED (no non-FF attempt); lane rebased 5cad720c -> b0030cb4 (commit 227b2b3c) with union-merge on the shared ledger; fetch-first ls-remote re-check immediately pre-push; pure FF push, no force; PAT bash-inline single-line only",
+  "open_items": [
+    "CIE validator redness: CLOSED mid-lane of record by rider 51c29c8b (PR #298) — this lane's pre-fix diagnosis (stash round-trip on the same 3 pins) stands as independent corroboration",
+    "resources-side exporter-law follow-up: stamp the data cut, not the exporter-of-record commit",
+    "CIE tranche2 consume lane (132c4b68/5178b3b6 are real CIE-side input deltas)",
+    "maths-b Stage-2 regen (operator-keyed)",
+    "PAT rotation (operator, CRITICAL overdue — transit 28)",
+    "pilot content-map generation stamp @ 2e17aab0 / 2026-09-19 noted (no wrinkle filed)"
+  ]
+}

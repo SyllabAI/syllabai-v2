@@ -27,8 +27,10 @@
 import { Hono } from "hono";
 import {
   buildSmartMarkModule,
+  EntitlementError,
   SmartFeedbackGenerationError,
   type MarkingCandidateGenerator,
+  type BandMarkingCandidateGenerator,
   type FeedbackLlm,
 } from "../../services/smartmark";
 import {
@@ -44,7 +46,13 @@ import { createSql } from "../../services/identity/users";
 import { createGradedEvidencePublisher } from "../assessment";
 import { apiError } from "../../services/identity/errors";
 import { requireAuth, getAuth } from "../../middleware/auth";
-import { buildLlmChain, chainAsCandidateGenerator, chainAsFeedbackLlm, type FailoverLlmChain } from "../../services/llmchain";
+import {
+  buildLlmChain,
+  chainAsCandidateGenerator,
+  chainAsBandCandidateGenerator,
+  chainAsFeedbackLlm,
+  type FailoverLlmChain,
+} from "../../services/llmchain";
 
 const UUID_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
 
@@ -70,6 +78,11 @@ function errorResponse(c: { json(body: unknown, status: number): Response }, e: 
   if (e instanceof NotFoundError) return c.json(apiError(404, "not_found", e.message), 404);
   if (e instanceof BadRequestError) return c.json(apiError(400, "bad_request", e.message), 400);
   if (e instanceof ConflictError) return c.json(apiError(409, "conflict", e.message), 409);
+  if (e instanceof EntitlementError) {
+    // DC-3 402 of record: the count and the reason ride the body — the gate
+    // never hides what it metered (silent metering reads as breakage)
+    return c.json({ ...apiError(402, "entitlement_required", e.message), detail: e.detail }, 402);
+  }
   if (e instanceof SmartFeedbackGenerationError) {
     // 503 with the FIXED body — detail suppressed (GlobalExceptionHandler:107-117)
     return c.json(
@@ -162,6 +175,7 @@ export function buildSmartMarkRouters(
   env: Record<string, string | undefined> = process.env,
   seams: {
     generator?: MarkingCandidateGenerator;
+    bandGenerator?: BandMarkingCandidateGenerator;
     llm?: FeedbackLlm;
     publisher?: GradedEvidencePublisher;
     clock?: SubmitClock;
@@ -185,6 +199,14 @@ export function buildSmartMarkRouters(
     gradedPublisher,
     seams.clock ?? { newId: () => crypto.randomUUID(), now: () => new Date() },
     seams.llm ?? chainAsFeedbackLlm(chain),
+    "VALIDATED_ONLY",
+    // DC-3: the entitlement envelope's transaction runner — the production
+    // adapter's own begin/commit/rollback (single serialized session)
+    sql.transaction,
+    // ADR-040 §5.4: the band dispatch seam rides the ONE chain (the same
+    // seam law as the point generator — keyed boots mark bands for real,
+    // zero-key/TEST refuse fail-closed PROVIDER_UNAVAILABLE per part).
+    seams.bandGenerator ?? chainAsBandCandidateGenerator(chain),
   );
   return { module, selfMarkModule, studentRoute: createStudentSmartMarkRouter(module) };
 }

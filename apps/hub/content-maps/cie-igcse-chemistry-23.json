@@ -13,14 +13,14 @@
    "viaSubtopicScope": 3
   },
   "questionParts": {
-   "coded": 473,
+   "coded": 474,
    "total": 528,
-   "unmapped": 55,
+   "unmapped": 54,
    "viaSubtopicScope": 0
   }
  },
  "course": "cie-igcse-chemistry-23",
- "generatedUtc": "2026-10-22T12:00:00Z",
+ "generatedUtc": "2026-10-29T16:00:00Z",
  "inputs": {
   "SME-ExamQuestion/cie-igcse-chemistry-23/spec_point_index.json": {
    "sha256": "4f2fa3fcbb34ce03e163c2ba267488b50aa37fd2df7edeb77182a0eec1ac393c"
@@ -28,8 +28,11 @@
   "scripts/cie_rejoin_resolutions.yaml": {
    "sha256": "26578eb1fcf5f906baeadcfe181a5e07fb689ea4fa1a7938666a7f29f8ee0868"
   },
+  "scripts/cie_rejoin_wave2as_resolutions.yaml": {
+   "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
+  },
   "spec-links/cie-igcse-chemistry-23.json": {
-   "sha256": "e4bf74c85e4bc455eefc3007f1ba187127631be04a7ab06790a2880010837fbe"
+   "sha256": "f191ebe8ad4cb627c07c819fbce3c4fc642c05f28d5f17474d980c6c6a7adae1"
   },
   "spine": {
    "file": "spines/cie-igcse-chemistry-23.json"
@@ -12965,12 +12968,32 @@
    "kind": "question_part"
   },
   "qstnprt_hX3YMpyMcsHw7YTn": {
-   "codes": [],
+   "codes": [
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "8.4.1",
+     "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:8.4.1",
+     "score": null,
+     "spineCode": "8.4.1",
+     "tier": "V8_name_phrase_verdict",
+     "unit": null
+    },
+    {
+     "lineage": "spec_links_sidecar_accepted",
+     "method": "operator_verdict",
+     "officialCode": "8.4.2",
+     "officialId": "CIE_IGCSE_CHEMISTRY_2023_2025:8.4.2",
+     "score": null,
+     "spineCode": "8.4.2",
+     "tier": "V8_name_phrase_verdict",
+     "unit": null
+    }
+   ],
    "declaredUnresolved": [
     "spcpt_jxPK72xT9PSVKKw6"
    ],
-   "kind": "question_part",
-   "unmapped": true
+   "kind": "question_part"
   },
   "qstnprt_hcJPsQbsbfV48s6j": {
    "codes": [],
@@ -18093,9 +18116,9 @@
  "qual": "cie-igcse-chemistry-2023-2025",
  "reconciliation": {
   "codesOutsideSpine": [],
-  "distinctCodesAttached": 131,
+  "distinctCodesAttached": 132,
   "itemsOutsideSpine": 0,
-  "spineHitCodes": 131,
+  "spineHitCodes": 132,
   "spineSpecPoints": 252,
   "uncoveredSpineCodeList": [
    "10.1.5",
@@ -18205,7 +18228,6 @@
    "8.1.3",
    "8.3.1",
    "8.3.2",
-   "8.4.1",
    "9.3.4",
    "9.4.1",
    "9.4.2",
@@ -18220,31 +18242,37 @@
    "9.6.4",
    "9.6.5"
   ],
-  "uncoveredSpineCodes": 121
+  "uncoveredSpineCodes": 120
  },
- "resourcesSha": "c5f20c5278137fb16a427f68b3332f1431eb345b",
+ "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
   "resolution": null,
   "specLinks": {
    "census": {
-    "codesAttachedFromSidecar": 356,
+    "codesAttachedFromSidecar": 358,
     "codesByMethod": {
      "cie_definition_text_join": 97,
      "cie_index_rejoin": 256,
-     "operator_verdict": 6
+     "operator_verdict": 8
     },
     "codesByTier": {
      "J1_definition_text_identity": 181,
      "J2_definition_phrase_identity": 4,
      "J4_name_phrase_identity": 71,
      "T1_verbatim": 97,
-     "V6_near_text_verdict": 6
+     "V6_near_text_verdict": 6,
+     "V8_name_phrase_verdict": 2
     },
-    "itemsWithCodes": 317,
+    "itemsWithCodes": 318,
     "ladderCodesRetained": 482,
-    "sidecarCodes": 359,
+    "sidAnchors": {
+     "added": 0,
+     "conflictsKept": 0,
+     "verified": 0
+    },
+    "sidecarCodes": 361,
     "sidecarItems": 634,
     "sidecarOnlyItems": 0,
     "t2Hints": 0
@@ -18253,7 +18281,8 @@
    "regime": "spec_links_sidecar_accepted",
    "reviewState": {
     "rejoin": "ACCEPTED",
-    "state": "ACCEPTED"
+    "state": "ACCEPTED",
+    "verdict": null
    },
    "sheetUpgrades": {
     "added": 0,

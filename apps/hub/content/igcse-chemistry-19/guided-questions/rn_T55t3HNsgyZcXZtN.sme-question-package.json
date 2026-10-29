@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_T55t3HNsgyZcXZtN",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "7768f0edf8b433bb3357100a1780c26ca461f47a610f0d2d2ca2ff6494a9ae9e",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_T55t3HNsgyZcXZtN",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_T55t3HNsgyZcXZtN::L1::Q1",
+      "moduleId": "rn_T55t3HNsgyZcXZtN::L1",
+      "stem": "What is the molar gas volume at RTP?",
+      "misconceptionClass": "molar-volume value error",
+      "options": [
+        {
+          "key": "A",
+          "text": "24 dm3",
+          "correct": true,
+          "explanation": "One mole of any gas occupies 24 dm3 at room temperature and pressure, equal to 24,000 cm3.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "24 cm3",
+          "correct": false,
+          "explanation": "The figure is 24 dm3; 24 cm3 is a thousand times too small.",
+          "misconception": "unit shrunk"
+        },
+        {
+          "key": "C",
+          "text": "2,400 cm3",
+          "correct": false,
+          "explanation": "The cm3 figure is 24,000; one zero has been lost here.",
+          "misconception": "factor of ten dropped"
+        },
+        {
+          "key": "D",
+          "text": "22.4 dm3",
+          "correct": false,
+          "explanation": "22.4 dm3 belongs to 0-degree conditions, not the 20-degree RTP of this specification.",
+          "misconception": "standard-temperature value imported"
+        }
+      ]
+    },
+    {
+      "id": "rn_T55t3HNsgyZcXZtN::L1::Q2",
+      "moduleId": "rn_T55t3HNsgyZcXZtN::L1",
+      "stem": "What conditions define RTP?",
+      "misconceptionClass": "rtp-conditions error",
+      "options": [
+        {
+          "key": "A",
+          "text": "20 ºC and 1 atmosphere",
+          "correct": true,
+          "explanation": "Room temperature and pressure is fixed at 20 degrees Celsius and 1 atm for these sums.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0 ºC and 1 atmosphere",
+          "correct": false,
+          "explanation": "0 degrees is not room temperature in this specification; RTP is 20.",
+          "misconception": "freezing-point reading"
+        },
+        {
+          "key": "C",
+          "text": "25 ºC and 1 atmosphere",
+          "correct": false,
+          "explanation": "25 degrees feels room-like but the specification pins 20.",
+          "misconception": "laboratory-warm value"
+        },
+        {
+          "key": "D",
+          "text": "20 ºC and 2 atmospheres",
+          "correct": false,
+          "explanation": "The pressure half of RTP is 1 atm, not 2.",
+          "misconception": "pressure doubled"
+        }
+      ]
+    },
+    {
+      "id": "rn_T55t3HNsgyZcXZtN::L1::Q3",
+      "moduleId": "rn_T55t3HNsgyZcXZtN::L1",
+      "stem": "What is the amount, in moles, of methane in 225.6 dm3 at RTP?",
+      "misconceptionClass": "volume-to-moles error",
+      "options": [
+        {
+          "key": "A",
+          "text": "9.4 mol",
+          "correct": true,
+          "explanation": "Moles = volume / 24, so 225.6 / 24 = 9.4.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "5,414.4 mol",
+          "correct": false,
+          "explanation": "225.6 x 24 travels the triangle backwards; the molar volume divides.",
+          "misconception": "multiplied where division was needed"
+        },
+        {
+          "key": "C",
+          "text": "0.0094 mol",
+          "correct": false,
+          "explanation": "Dividing by 24,000 fits cm3 data; this volume is already in dm3.",
+          "misconception": "cm3 divisor used on dm3 data"
+        },
+        {
+          "key": "D",
+          "text": "0.106 mol",
+          "correct": false,
+          "explanation": "24 / 225.6 answers the reverse question; the gas volume divides by the molar volume.",
+          "misconception": "division inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_T55t3HNsgyZcXZtN::L1::Q4",
+      "moduleId": "rn_T55t3HNsgyZcXZtN::L1",
+      "stem": "0.25 mol of carbon dioxide at RTP has what volume, in cm3?",
+      "misconceptionClass": "divisor-unit error",
+      "options": [
+        {
+          "key": "A",
+          "text": "6,000 cm3",
+          "correct": true,
+          "explanation": "Volume = moles x molar volume; in cm3 the molar volume is 24,000, so 0.25 x 24,000 = 6,000.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "6 cm3",
+          "correct": false,
+          "explanation": "0.25 x 24 gives 6 dm3; quoting it as cm3 shrinks it a thousand-fold.",
+          "misconception": "dm3 molar volume used on a cm3 question"
+        },
+        {
+          "key": "C",
+          "text": "0.0000104 cm3",
+          "correct": false,
+          "explanation": "0.25 / 24,000 answers the reverse question; volumes come from multiplying.",
+          "misconception": "division used instead of multiplication"
+        },
+        {
+          "key": "D",
+          "text": "96,000 cm3",
+          "correct": false,
+          "explanation": "24,000 / 0.25 flips the triangle; the moles multiply the molar volume.",
+          "misconception": "divisor and multiplier swapped"
+        }
+      ]
+    },
+    {
+      "id": "rn_T55t3HNsgyZcXZtN::L1::Q5",
+      "moduleId": "rn_T55t3HNsgyZcXZtN::L1",
+      "stem": "Which statement states Avogadro's law?",
+      "misconceptionClass": "law-statement error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Equal amounts of gases at the same temperature and pressure occupy the same volume",
+          "correct": true,
+          "explanation": "The law compares amounts and volumes directly; gas identity plays no part.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Equal masses of gases occupy the same volume at RTP",
+          "correct": false,
+          "explanation": "The law counts moles, not grams; equal masses of different gases hold different mole counts.",
+          "misconception": "mass substituted for amount"
+        },
+        {
+          "key": "C",
+          "text": "Equal volumes of gases contain equal numbers of atoms",
+          "correct": false,
+          "explanation": "The law counts molecules; diatomic and triatomic gases break any atom-based version.",
+          "misconception": "atoms counted where molecules are meant"
+        },
+        {
+          "key": "D",
+          "text": "All gases occupy 24 dm3 regardless of amount",
+          "correct": false,
+          "explanation": "24 dm3 is the volume of one mole; the volume scales with the amount present.",
+          "misconception": "molar volume overextended"
+        }
+      ]
+    },
+    {
+      "id": "rn_T55t3HNsgyZcXZtN::L2::Q1",
+      "moduleId": "rn_T55t3HNsgyZcXZtN::L2",
+      "stem": "What volume does 88 g of carbon dioxide occupy at RTP? (Mr of CO2 = 44)",
+      "misconceptionClass": "mass-to-volume chain error",
+      "options": [
+        {
+          "key": "A",
+          "text": "48 dm3",
+          "correct": true,
+          "explanation": "88 / 44 = 2 moles, and 2 x 24 = 48 dm3.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "24 dm3",
+          "correct": false,
+          "explanation": "88 g is two moles, not one; each mole fills its own 24 dm3.",
+          "misconception": "mole count taken as one"
+        },
+        {
+          "key": "C",
+          "text": "2,112 dm3",
+          "correct": false,
+          "explanation": "88 x 24 skips the moles step; grams are not moles.",
+          "misconception": "mass multiplied straight into the molar volume"
+        },
+        {
+          "key": "D",
+          "text": "12 dm3",
+          "correct": false,
+          "explanation": "44 / 88 = 0.5 answers the reverse; 88 g divides by 44 to give 2 moles.",
+          "misconception": "division inverted"
+        }
+      ]
+    },
+    {
+      "id": "rn_T55t3HNsgyZcXZtN::L2::Q2",
+      "moduleId": "rn_T55t3HNsgyZcXZtN::L2",
+      "stem": "C3H8 + 5O2 -> 3CO2 + 4H2O. What volume of oxygen reacts with 150 cm3 of propane, both measured at RTP?",
+      "misconceptionClass": "gas-ratio error",
+      "options": [
+        {
+          "key": "A",
+          "text": "750 cm3",
+          "correct": true,
+          "explanation": "The coefficients pair 1 propane with 5 oxygen, and volumes follow the same ratio: 5 x 150 = 750.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "30 cm3",
+          "correct": false,
+          "explanation": "150 / 5 shrinks the volume; propane is the smaller side and oxygen the larger.",
+          "misconception": "ratio divided instead of scaled"
+        },
+        {
+          "key": "C",
+          "text": "150 cm3",
+          "correct": false,
+          "explanation": "Equating the volumes ignores the balancing 5 in front of the oxygen.",
+          "misconception": "1 : 1 ratio assumed"
+        },
+        {
+          "key": "D",
+          "text": "7,500 cm3",
+          "correct": false,
+          "explanation": "5 x 150 = 750; nothing in the equation supplies another factor of ten.",
+          "misconception": "extra factor of ten"
+        }
+      ]
+    },
+    {
+      "id": "rn_T55t3HNsgyZcXZtN::L2::Q3",
+      "moduleId": "rn_T55t3HNsgyZcXZtN::L2",
+      "stem": "In the same combustion, what is the total volume of the gaseous products from 150 cm3 of propane?",
+      "misconceptionClass": "product-total error",
+      "options": [
+        {
+          "key": "A",
+          "text": "1,050 cm3",
+          "correct": true,
+          "explanation": "The products carry 3 + 4 = 7 ratio units, and 7 x 150 = 1,050.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "600 cm3",
+          "correct": false,
+          "explanation": "Only the water's 4 was used; the carbon dioxide's 3 must join it.",
+          "misconception": "one product counted"
+        },
+        {
+          "key": "C",
+          "text": "450 cm3",
+          "correct": false,
+          "explanation": "Only the carbon dioxide's 3 was used; the water's 4 completes the total.",
+          "misconception": "the other product counted alone"
+        },
+        {
+          "key": "D",
+          "text": "168 cm3",
+          "correct": false,
+          "explanation": "7 x 24 uses the dm3 molar volume on a cm3 question; volumes scale by the ratio, not by 24.",
+          "misconception": "molar volume applied to cm3 data"
+        }
+      ]
+    },
+    {
+      "id": "rn_T55t3HNsgyZcXZtN::L2::Q4",
+      "moduleId": "rn_T55t3HNsgyZcXZtN::L2",
+      "stem": "Why do reacting gas-volume questions need no relative formula masses?",
+      "misconceptionClass": "method error",
+      "options": [
+        {
+          "key": "A",
+          "text": "Under Avogadro's law the coefficients already give the ratio of gas volumes",
+          "correct": true,
+          "explanation": "Equal moles of gas fill equal volumes, so the equation's proportions transfer straight to volumes.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Because all gases have the same relative formula mass",
+          "correct": false,
+          "explanation": "Gases have different formula masses; volume equality comes from mole equality, not mass equality.",
+          "misconception": "false equality assumed"
+        },
+        {
+          "key": "C",
+          "text": "Because gas masses are always conserved",
+          "correct": false,
+          "explanation": "Mass conservation balances the equation; it does not convert volumes.",
+          "misconception": "conservation invoked for the wrong job"
+        },
+        {
+          "key": "D",
+          "text": "Because volumes are measured in dm3",
+          "correct": false,
+          "explanation": "The unit choice is convention; the shortcut comes from the law itself.",
+          "misconception": "unit chosen as reason"
+        }
+      ]
+    },
+    {
+      "id": "rn_T55t3HNsgyZcXZtN::L2::Q5",
+      "moduleId": "rn_T55t3HNsgyZcXZtN::L2",
+      "stem": "What is the amount, in moles, of oxygen in 1,200 cm3 at RTP?",
+      "misconceptionClass": "cm3-divisor error",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.05 mol",
+          "correct": true,
+          "explanation": "In cm3 the molar volume is 24,000, so 1,200 / 24,000 = 0.05.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "50 mol",
+          "correct": false,
+          "explanation": "1,200 / 24 belongs to dm3 volumes; cm3 data needs 24,000.",
+          "misconception": "dm3 divisor used on cm3 data"
+        },
+        {
+          "key": "C",
+          "text": "20 mol",
+          "correct": false,
+          "explanation": "24,000 / 1,200 flips the triangle; the gas volume divides by the molar volume.",
+          "misconception": "division inverted"
+        },
+        {
+          "key": "D",
+          "text": "28,800,000 mol",
+          "correct": false,
+          "explanation": "1,200 x 24,000 inflates; the molar volume divides the volume.",
+          "misconception": "multiplied instead of divided"
+        }
+      ]
+    }
+  ]
+}

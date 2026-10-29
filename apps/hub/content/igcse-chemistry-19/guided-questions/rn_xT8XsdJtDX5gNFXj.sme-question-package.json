@@ -1,0 +1,375 @@
+{
+  "format": "sme-question-package/1.0",
+  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "source": {
+    "sourceFormat": "guided-lesson/0.1",
+    "noteId": "rn_xT8XsdJtDX5gNFXj",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "258fe48f8e5280118d65ccab879398482310160143d23a5d976701d2acbef08f",
+    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+  },
+  "packageId": "igcse-chemistry::rn_xT8XsdJtDX5gNFXj",
+  "subject": "igcse-chemistry",
+  "questions": [
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L1::Q1",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L1",
+      "stem": "Which quantity does one mole measure?",
+      "misconceptionClass": "mole-as-mass confusion",
+      "options": [
+        {
+          "key": "A",
+          "text": "The amount of a substance",
+          "correct": true,
+          "explanation": "The mole counts how much substance is present, and every mole holds the same number of particles.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The mass of a substance",
+          "correct": false,
+          "explanation": "Mass is measured in grams and differs between substances, while a mole fixes only the particle count.",
+          "misconception": "treats the mole as a unit of mass"
+        },
+        {
+          "key": "C",
+          "text": "The volume of a substance",
+          "correct": false,
+          "explanation": "Volume is a separate quantity; the mole counts particles without fixing a volume at this stage of the course.",
+          "misconception": "confuses the mole with molar volume"
+        },
+        {
+          "key": "D",
+          "text": "The reactivity of a substance",
+          "correct": false,
+          "explanation": "Reactivity is a chemical property unrelated to how much is present.",
+          "misconception": "links amount of substance to reactivity"
+        }
+      ]
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L1::Q2",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L1",
+      "stem": "How many atoms are present in one mole of helium?",
+      "misconceptionClass": "Avogadro constant value and particle-type slips",
+      "options": [
+        {
+          "key": "A",
+          "text": "6.02 × 10^23 atoms",
+          "correct": true,
+          "explanation": "One mole of any particles contains the Avogadro constant of them, so one mole of helium atoms is 6.02 × 10^23 atoms.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "6.02 × 10^-23 atoms",
+          "correct": false,
+          "explanation": "The exponent is positive: the constant is 6.02 × 10^23 per mole, a vast count rather than a tiny fraction.",
+          "misconception": "inverts the exponent of the Avogadro constant"
+        },
+        {
+          "key": "C",
+          "text": "1 atom",
+          "correct": false,
+          "explanation": "A mole is a bundle of 6.02 × 10^23 particles, not a single one.",
+          "misconception": "treats the mole as a single particle"
+        },
+        {
+          "key": "D",
+          "text": "6.02 × 10^23 moles",
+          "correct": false,
+          "explanation": "The answer must name particles; moles of moles is a unit error.",
+          "misconception": "recurses the unit instead of naming the particles counted"
+        }
+      ]
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L1::Q3",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L1",
+      "stem": "One mole of carbon and one mole of helium are compared. Which statement is true?",
+      "misconceptionClass": "equal-moles-equal-mass assumption",
+      "options": [
+        {
+          "key": "A",
+          "text": "They contain the same number of atoms",
+          "correct": true,
+          "explanation": "Equal moles contain equal particle counts; only the masses differ, 12 g against 4 g.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "They have the same mass",
+          "correct": false,
+          "explanation": "The masses follow the relative atomic masses, 12 g for carbon and 4 g for helium.",
+          "misconception": "assumes equal moles must have equal masses"
+        },
+        {
+          "key": "C",
+          "text": "Carbon contains twice as many atoms",
+          "correct": false,
+          "explanation": "Particle count depends only on the number of moles, not on how heavy each atom is.",
+          "misconception": "scales particle count with atomic mass"
+        },
+        {
+          "key": "D",
+          "text": "Helium contains more atoms because its atoms are lighter",
+          "correct": false,
+          "explanation": "Lighter atoms simply make a lighter mole; the count per mole is fixed for every substance.",
+          "misconception": "believes lighter particles pack more of them into one mole"
+        }
+      ]
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L1::Q4",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L1",
+      "stem": "What is the mass of one mole of lithium? (Ar: Li = 7)",
+      "misconceptionClass": "Ar-to-molar-mass conversion errors",
+      "options": [
+        {
+          "key": "A",
+          "text": "7 g",
+          "correct": true,
+          "explanation": "The molar mass of an element equals its relative atomic mass written in grams.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "7 kg",
+          "correct": false,
+          "explanation": "Molar mass is read in grams, not kilograms.",
+          "misconception": "swaps grams for kilograms when converting Ar to molar mass"
+        },
+        {
+          "key": "C",
+          "text": "6.02 × 10^23 g",
+          "correct": false,
+          "explanation": "The Avogadro constant counts particles; it is not a mass.",
+          "misconception": "substitutes the Avogadro constant for the molar mass"
+        },
+        {
+          "key": "D",
+          "text": "It cannot be found without more data",
+          "correct": false,
+          "explanation": "Ar alone fixes the molar mass of an element; no extra data is needed.",
+          "misconception": "believes molar mass requires experimental data beyond Ar"
+        }
+      ]
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L1::Q5",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L1",
+      "stem": "Which value is the molar mass of water, H2O? (Ar: H = 1, O = 16)",
+      "misconceptionClass": "Mr arithmetic and subscript handling",
+      "options": [
+        {
+          "key": "A",
+          "text": "18 g",
+          "correct": true,
+          "explanation": "Molar mass = (2 × 1) + 16 = 18 g per mole.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "34 g",
+          "correct": false,
+          "explanation": "Only the hydrogen is doubled: (2 × 1) + 16 = 18, not 2 × (1 + 16) = 34.",
+          "misconception": "multiplies every atomic mass by the subscript instead of only the atom it follows"
+        },
+        {
+          "key": "C",
+          "text": "17 g",
+          "correct": false,
+          "explanation": "The formula H2O carries two hydrogen atoms, so both must be added.",
+          "misconception": "counts only one hydrogen atom in the formula"
+        },
+        {
+          "key": "D",
+          "text": "16 g",
+          "correct": false,
+          "explanation": "The oxygen contribution alone is 16 g; hydrogen adds 2 g more.",
+          "misconception": "ignores the hydrogen contribution entirely"
+        }
+      ]
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L2::Q1",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L2",
+      "stem": "Why must a chemist convert between grams and moles?",
+      "misconceptionClass": "measurement-versus-ratio gap",
+      "options": [
+        {
+          "key": "A",
+          "text": "Balances measure grams while reactions proceed in molar ratios",
+          "correct": true,
+          "explanation": "The balance reads grams, but reacting quantities are fixed particle-for-particle, so a conversion is always needed.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Balances cannot measure solids",
+          "correct": false,
+          "explanation": "Balances measure solids perfectly well in grams; the issue is the unit, not the sample type.",
+          "misconception": "misstates what laboratory balances can do"
+        },
+        {
+          "key": "C",
+          "text": "Moles only apply to gases",
+          "correct": false,
+          "explanation": "Moles count particles of solids, liquids and gases alike.",
+          "misconception": "restricts the mole to one state of matter"
+        },
+        {
+          "key": "D",
+          "text": "Grams are only used for products",
+          "correct": false,
+          "explanation": "Both reactants and products are weighed in grams; the mole is needed for both sides of an equation.",
+          "misconception": "splits the measurement unit by reaction role"
+        }
+      ]
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L2::Q2",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L2",
+      "stem": "Which expression gives the number of moles in a sample of mass m whose molar mass is M?",
+      "misconceptionClass": "formula-direction errors",
+      "options": [
+        {
+          "key": "A",
+          "text": "m ÷ M",
+          "correct": true,
+          "explanation": "Moles = mass ÷ molar mass; dividing grams by g mol^-1 leaves moles.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "M ÷ m",
+          "correct": false,
+          "explanation": "Dividing the molar mass by the mass gives the reciprocal quantity.",
+          "misconception": "inverts the moles-mass relationship"
+        },
+        {
+          "key": "C",
+          "text": "m × M",
+          "correct": false,
+          "explanation": "Multiplication is the mass-from-moles direction, not moles-from-mass.",
+          "misconception": "multiplies where division is required"
+        },
+        {
+          "key": "D",
+          "text": "m − M",
+          "correct": false,
+          "explanation": "Subtracting unlike quantities has no meaning here; the relationship is multiplicative.",
+          "misconception": "guesses an operation instead of using the relationship"
+        }
+      ]
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L2::Q3",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L2",
+      "stem": "What is the mass of 0.250 mol of zinc? (Ar: Zn = 65.38)",
+      "misconceptionClass": "operation selection in mass calculations",
+      "options": [
+        {
+          "key": "A",
+          "text": "16.3 g",
+          "correct": true,
+          "explanation": "Mass = 0.250 × 65.38 = 16.345, which rounds to 16.3 g at three significant figures.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.0038 g",
+          "correct": false,
+          "explanation": "That value comes from dividing moles by molar mass; the mass direction multiplies.",
+          "misconception": "divides moles by molar mass instead of multiplying"
+        },
+        {
+          "key": "C",
+          "text": "65.63 g",
+          "correct": false,
+          "explanation": "Adding the mole amount to the molar mass mixes two different quantities.",
+          "misconception": "adds the molar mass to the mole amount"
+        },
+        {
+          "key": "D",
+          "text": "163 g",
+          "correct": false,
+          "explanation": "The product is 16.345; a factor-of-ten slip inflates it.",
+          "misconception": "slips a decimal place when multiplying"
+        }
+      ]
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L2::Q4",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L2",
+      "stem": "How many moles are in 2.64 g of sucrose, C12H22O11 (Mr = 342.3)?",
+      "misconceptionClass": "operation selection in mole calculations",
+      "options": [
+        {
+          "key": "A",
+          "text": "7.71 × 10^-3 mol",
+          "correct": true,
+          "explanation": "Moles = 2.64 ÷ 342.3 = 0.0077125 mol, which is 7.71 × 10^-3 mol at three significant figures.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "129.7 mol",
+          "correct": false,
+          "explanation": "That value comes from dividing the molar mass by the mass; the mole direction is the reverse.",
+          "misconception": "divides the molar mass by the mass"
+        },
+        {
+          "key": "C",
+          "text": "903.7 mol",
+          "correct": false,
+          "explanation": "Multiplying mass by molar mass answers the wrong question entirely.",
+          "misconception": "multiplies mass by molar mass"
+        },
+        {
+          "key": "D",
+          "text": "0.771 mol",
+          "correct": false,
+          "explanation": "The quotient is 0.0077125; the decimal point sits one position too high here.",
+          "misconception": "places the decimal point one position too high"
+        }
+      ]
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L2::Q5",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L2",
+      "stem": "What mass is 0.100 mol of sodium chloride, NaCl? (Mr: NaCl = 58.5)",
+      "misconceptionClass": "rearrangement and decimal-place slips",
+      "options": [
+        {
+          "key": "A",
+          "text": "5.85 g",
+          "correct": true,
+          "explanation": "Mass = 0.100 × 58.5 = 5.85 g.",
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "0.0017 g",
+          "correct": false,
+          "explanation": "Dividing instead of multiplying answers the moles question, not the mass question.",
+          "misconception": "divides mass by molar mass when mass was asked for"
+        },
+        {
+          "key": "C",
+          "text": "58.5 g",
+          "correct": false,
+          "explanation": "58.5 g is the mass of one whole mole, but the sample holds only 0.100 mol.",
+          "misconception": "reports the molar mass instead of the sample mass"
+        },
+        {
+          "key": "D",
+          "text": "585 g",
+          "correct": false,
+          "explanation": "The product is 5.85; a factor-of-ten slip inflates it.",
+          "misconception": "slips a decimal place in the multiplication"
+        }
+      ]
+    }
+  ]
+}

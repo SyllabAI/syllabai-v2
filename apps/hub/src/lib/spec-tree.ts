@@ -11,6 +11,7 @@
  *     → SUBTOPIC (4CH1-S1-a "States of matter") → SPEC_POINTs (4CH1-1.1 …)
  */
 import type { Curriculum, CurriculumNode, ExamQuestionTopic, Flashcard, RevisionNote } from "@/lib/contracts";
+import { normalizeSpecText } from "@/lib/spec-text";
 
 export interface SpecSubtopic {
   code: string; // "4CH1-S1-a"
@@ -73,7 +74,7 @@ export function buildSpecTreeIndex(curriculum: Curriculum): SpecTreeIndex {
 
   const tree: SpecTree = {
     subjectCode: curriculum.code,
-    subjectTitle: subject?.title ?? curriculum.subject,
+    subjectTitle: normalizeSpecText(subject?.title ?? curriculum.subject),
     topics: [],
   };
 
@@ -88,7 +89,7 @@ export function buildSpecTreeIndex(curriculum: Curriculum): SpecTreeIndex {
       // display number is always the 1-based position (corpus order); the
       // node's `order` field only drives sorting
       number: i + 1,
-      title: topic.title,
+      title: normalizeSpecText(topic.title),
       subtopics: [],
       specPointCount: 0,
     };
@@ -109,7 +110,7 @@ export function buildSpecTreeIndex(curriculum: Curriculum): SpecTreeIndex {
       spec.subtopics.push({
         code: sub.code,
         label: subtopicLabel(sub.code, topic.code, j),
-        title: sub.title,
+        title: normalizeSpecText(sub.title),
         topicCode: topic.code,
         specPointCodes: points,
       });

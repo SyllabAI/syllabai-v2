@@ -1,0 +1,163 @@
+{
+  "format": "hub/lesson-import/1.1",
+  "adapter": "guided-lesson-0.2--hub-lesson-import-1.1",
+  "source": {
+    "sourceFormat": "guided-lesson/0.2",
+    "noteId": "rn_qb9TBhB6VmnFGjvf",
+    "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
+    "sourceLayerSha256": "57ee1685d0a0d4e57d42ff15da73c54a2f12e7833ba1fc338d1d591fe0407068",
+    "pinnedRef": "8ea8c63a46d75fc54733900dfecf5d3c5c93bbde"
+  },
+  "lesson": {
+    "id": "igcse-chemistry::rn_qb9TBhB6VmnFGjvf",
+    "topicTitle": "2. Inorganic Chemistry",
+    "subtopicTitle": "Acids, Bases & Salt Preparations",
+    "sourceUrl": "https://www.savemyexams.com/igcse/chemistry/edexcel/19/revision-notes/2-inorganic-chemistry/2-7-acids-bases-and-salt-preparations/2-7-7-prepare-an-insoluble-salt",
+    "specAnchors": [
+      {
+        "code": "4CH1-2.41C",
+        "text": "describe an experiment to prepare a pure, dry sample of an insoluble salt, starting from two soluble reactants"
+      }
+    ],
+    "primer": {
+      "text": "From Solubility Rules you already know which salts dissolve and which do not. This note uses that table as a design tool, choosing two soluble reactants whose swapped partners give the insoluble salt you want to collect.",
+      "prerequisiteSubtopic": "Solubility Rules"
+    },
+    "modules": [
+      {
+        "id": "rn_qb9TBhB6VmnFGjvf::L1",
+        "title": "The precipitation reaction pattern",
+        "sourceHeadings": [
+          "Prepare an insoluble salt"
+        ],
+        "specRefs": [
+          "4CH1-2.41C"
+        ],
+        "opening": "An insoluble salt is prepared by precipitation, in which two clear solutions are mixed and a solid forms and sinks. The solid that appears is the precipitate, and it is the salt itself. The reaction pairs two soluble starting solutions and swaps their partners, so one product turns solid while the other stays dissolved.",
+        "keyPoints": [
+          "Insoluble salts are made using a precipitation reaction.",
+          "The solid salt formed must be insoluble in water for the method to work.",
+          "Two soluble salts swap partners: soluble salt 1 plus soluble salt 2 gives the insoluble salt plus a third soluble salt.",
+          "In symbol form the pattern is AB plus CD giving AD plus CB.",
+          "The partner-swapping pattern is why chemists also call it double decomposition."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Mix two clear solutions whose salts can swap partners, and the wanted insoluble salt falls out as a solid. Everything else stays dissolved, so the solid can be filtered off as the product.",
+            "analogy": "Two dancing couples swapping partners is the picture: each dancer leaves with a new partner, and one of the new pairs, the insoluble salt, immediately sits down out of the dance.",
+            "examPointer": "Use the AB plus CD pattern to predict products quickly in precipitation questions, then check the solubility table to see which product falls out."
+          },
+          "medium": {
+            "restatement": "The method only works when the wanted product is insoluble, because the solid that separates is the product and is collected as such. If both possible products were soluble, nothing would separate and there would be no solid to collect, which is why the solubility table decides whether this route is available at all.",
+            "analogy": "It is like mixing two teams where only one new pairing is incompatible: the incompatible pair walks off the pitch together, which is exactly the solid you wanted to remove from the game.",
+            "examPointer": "Prediction questions usually hinge on the solubility rules, so name the insoluble product explicitly rather than saying a precipitate forms."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_qb9TBhB6VmnFGjvf::L1::Q1",
+          "rn_qb9TBhB6VmnFGjvf::L1::Q2",
+          "rn_qb9TBhB6VmnFGjvf::L1::Q3",
+          "rn_qb9TBhB6VmnFGjvf::L1::Q4",
+          "rn_qb9TBhB6VmnFGjvf::L1::Q5"
+        ]
+      },
+      {
+        "id": "rn_qb9TBhB6VmnFGjvf::L2",
+        "title": "Recovering and drying the precipitate",
+        "sourceHeadings": [
+          "Prepare an insoluble salt"
+        ],
+        "specRefs": [
+          "4CH1-2.41C"
+        ],
+        "opening": "A fixed volume of the first solution is measured out, and the second solution is added until it sits in a slight excess, which squeezes the maximum amount of solid out of the mixture. The precipitate is collected on a filter, washed with distilled water to strip away traces of the other chemicals, and then left to dry. Silver and lead(II) salts suit this method, and their nitrates make convenient starting materials because every nitrate dissolves.",
+        "keyPoints": [
+          "One salt solution is measured out as a fixed volume.",
+          "The second solution is added until it is in slight excess.",
+          "The slight excess ensures the maximum amount of precipitate.",
+          "Filtering collects the solid precipitate from the mixture.",
+          "Washing with distilled water removes reactants contaminating the residue, which then dries."
+        ],
+        "depthLayers": {
+          "low": {
+            "restatement": "Measure one solution, stir in the second until there is a little too much of it, then filter the solid out. Wash the solid with distilled water and leave it to dry, giving the pure, dry insoluble salt.",
+            "analogy": "The slight excess is like inviting one extra guest so nobody leaves alone: it guarantees every particle of the first salt finds a partner and joins the solid.",
+            "examPointer": "Method marks live in the order: measure, mix to slight excess, filter, wash, dry. Quote them in that order."
+          },
+          "medium": {
+            "restatement": "A slight excess of the second solution drives the shared-ion product all the way out of solution, maximising the yield of solid. Washing matters because the wet residue is soaked in the soluble by-product and leftover reactants, and only distilled water can carry those away without adding fresh impurities of its own.",
+            "analogy": "Washing the precipitate is like rinsing a jumper after dyeing it: the garment keeps its shape and colour, but the loose dye and soap of the process leave in the rinse water.",
+            "examPointer": "If asked why distilled water rather than tap water, say distilled water carries no dissolved minerals that could add new impurities to the product."
+          }
+        },
+        "gatePolicy": {
+          "ratingsScale": [
+            "low",
+            "medium",
+            "high"
+          ],
+          "continueDisabledUntilChoice": true,
+          "resumeWithoutReRate": true,
+          "postCheckRecalibration": true
+        },
+        "checkRefs": [
+          "rn_qb9TBhB6VmnFGjvf::L2::Q1",
+          "rn_qb9TBhB6VmnFGjvf::L2::Q2",
+          "rn_qb9TBhB6VmnFGjvf::L2::Q3",
+          "rn_qb9TBhB6VmnFGjvf::L2::Q4",
+          "rn_qb9TBhB6VmnFGjvf::L2::Q5"
+        ]
+      }
+    ],
+    "assets": {
+      "glossary": [
+        {
+          "term": "precipitate",
+          "definition": "The insoluble solid that forms and separates when two solutions react.",
+          "firstLesson": 1
+        },
+        {
+          "term": "precipitation",
+          "definition": "The reaction in which mixing two solutions produces an insoluble solid product.",
+          "firstLesson": 1
+        },
+        {
+          "term": "double decomposition",
+          "definition": "Another name for the partner-swapping reaction that forms an insoluble salt.",
+          "firstLesson": 1
+        },
+        {
+          "term": "distilled water",
+          "definition": "Water purified by distillation, containing no dissolved minerals, used for washing the product.",
+          "firstLesson": 2
+        },
+        {
+          "term": "residue",
+          "definition": "The solid left on the filter paper after filtration.",
+          "firstLesson": 2
+        }
+      ],
+      "workedExample": {
+        "prompt": "Describe the method for preparing a pure, dry sample of an insoluble salt from two soluble reactants, and state why nitrates make convenient starting materials.",
+        "steps": [
+          "Measure out a fixed volume of the first salt solution, then add the second salt solution until it is in slight excess — this ensures the maximum amount of precipitate forms.",
+          "The two soluble salts swap partners in a double decomposition: soluble salt 1 + soluble salt 2 → insoluble salt + soluble salt 3 (the AB + CD → AD + CB pattern).",
+          "Filter the mixture — the insoluble salt is the residue on the filter paper.",
+          "Wash the residue with distilled water to strip away traces of the other solutions, then leave it to dry.",
+          "Nitrates suit this method because all nitrates are soluble, so silver nitrate or lead(II) nitrate gives a soluble starting salt for the insoluble silver or lead(II) salts wanted."
+        ],
+        "finalAnswer": "Mix to slight excess, filter, wash with distilled water, dry. All nitrates dissolve, so they make ideal soluble starting salts."
+      }
+    }
+  }
+}
