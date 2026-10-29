@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | STAGE A EXECUTED (trace `1a1893c557d8f819` operator go: "Go, execute Stage A") — contracts (§6) + `services/teacher/foresights.ts` (§3–5) + verbatim exports of `graphOwnedClass`/`memberStudentIds`/`enabledRoster` + the §9 battery (18 tests) all GREEN (api typecheck + full 3051-test suite); NO route mount, NO hub, NO DB — Stages B/C pending operator go |
+| **Status** | STAGE B EXECUTED (trace `1a18954e7a6ad9bd` operator go: "Stage B (route + hub headline-first panel)") — route `GET /api/v1/teacher/classes/{classId}/foresights?rootId=&nodeId=` mounted on `createTeacherClassesKgRouter` (param laws + service-owned gates + verbatim view, 12-test route battery), hub headline-first panel live on the v2 class-KG heatmap (`/teacher/classes/[id]/knowledge-graph`: "Readiness" node action → `foresights-dialog.tsx` → `foresights-panel.tsx`, the ADR §8 layout order enforced + `targetMeasured` measured-routing chip) + 14 golden captures (server-side renders of the three state fixtures + the §8 laws). Gates: api typecheck + FULL suite 3063/0; hub tsc + v2-surface 34/34 + goldens 14/14 + `next build` compiled successfully. Zero DB contact. Stage C deferred (each item needs its own ADR) |
 | **Task** | T-FORESIGHT-V0-PLAN-1 (leg b), trace `1a1893280de1b2c5` |
 | **Date** | 2026-10-30 |
 | **Design law** | ADR-CLASS-0002 (comprehension-first prediction surfaces) — this plan is its first applicant |

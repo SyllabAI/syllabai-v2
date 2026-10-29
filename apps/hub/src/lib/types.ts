@@ -2255,3 +2255,20 @@ export interface AssignmentPackCompleteResponse {
   questionsCompleted: number;
   score: number;
 }
+
+// ── T-FORESIGHT-V0-PLAN-1 Stage B — the foresights/v1 wire ──────────────────
+// The canonical shape IS @syllabai/contracts (Stage A pre-ratified it; the
+// API serializes the service view verbatim) — the hub re-exports the types
+// so the client import graph stays uniform (./types) and the wire cannot
+// drift between apps. ADR-CLASS-0002 governs everything rendered from these.
+
+export type {
+  ClassForesightsView,
+  ForesightsPrerequisiteCellView,
+  ForesightsContextChainRow,
+  ForesightsLearnerRow,
+  ForesightsState,
+  ForesightsClassReason,
+  ForesightsLearnerState,
+  ForesightsLearnerReason,
+} from "@syllabai/contracts";

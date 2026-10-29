@@ -76,6 +76,10 @@ const DUAL_RUN_PATHS: readonly string[] = [
   "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
   "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph/nodes/0f0f1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/students?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
   "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/learners/9e9e1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/knowledge-graph?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
+  // T-FORESIGHT-V0-PLAN-1 Stage B — the foresights/v1 readiness read model's
+  // request()-routed emitter (lib/api.ts teacherClassForesights): the class-KG
+  // heatmap page's "Readiness" node action fetches it live.
+  "/api/v1/teacher/classes/3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab/foresights?rootId=3f2a1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab&nodeId=0f0f1c6e-9b4d-4e8a-a7c1-52d9f0b3e7ab",
   // Wave S4 (T-MIG-085, r3a) — the teacher concept-graph page's emitter
   // forms: golden-verified of record (run-002-golden-verify-r3a via PR #152;
   // one filed message-format class, non-blocking per the 081-class precedent).
