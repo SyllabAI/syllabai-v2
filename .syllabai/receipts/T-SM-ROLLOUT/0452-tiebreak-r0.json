@@ -1,0 +1,15 @@
+{
+ "lane": "T-SM-ROLLOUT-0452",
+ "run": "0452-tiebreak-r0",
+ "date": "2026-10-24",
+ "parent": "T-SM-ROLLOUT registry-gap-audit-r0 (operator order trace 1a16db0b84efbe15)",
+ "defect_of_record": "T-SM-BRIDGE-WIDEN r0 exclusion '0452_duplicate_subject_code_ambiguity': subjects table carries two 0452 rows (cv 0452-2023-2025 / 0452-2027-2029, each with its own knowledge tree); rootIdForCourseCode resolved with .find() over an 'order by s.code' listing \u2014 intra-code order unspecified, so cie-igcse-accounting-21 (80 validated bank refs at the r0 census) was excluded rather than risk joining the wrong tree.",
+ "fix": "the deterministic subject-root selection law: apps/hub/src/lib/subject-root.ts (pure, unit-tested) \u2014 single-code-hit resolves as before; multi-hit codes resolve by the registry row's curriculumCode cv pin (the seed cv law, bundle-seed.ts:347); ambiguity without a pin (or an unmatched pin) refuses deterministically (null \u2014 the honest negative), never an unspecified winner. rootIdForCourseCode gains the optional pin param with a cv-aware memo key; the Exam-Questions bridge route passes the row's curriculumCode. Zero API changes (the frozen OrderByCode port contract is untouched); the CLA route keeps its current call shape and inherits the deterministic refusal posture.",
+ "gates": {
+  "new_unit_tests": "bun test apps/hub/src/lib/subject-root.test.ts \u2014 7 pass / 0 fail",
+  "hub_lib_suite": "bun test apps/hub/src/lib \u2014 285 pass / 5 fail (the 5 are the pre-existing dual-run-posture env block, byte-identical on clean main)",
+  "cie_validator": "bun scripts/validate_cie_bundles.ts \u2014 PASS (registry untouched; the 26->29 pin law intact)",
+  "typecheck": "bunx tsc --noEmit (apps/hub) \u2014 exit 0"
+ },
+ "unblocks": "cie-igcse-accounting-21 enters funnel A (flip-ready pending the r0-style bank census); every future same-code multi-version collision resolves by law instead of listing order"
+}
