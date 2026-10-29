@@ -3,7 +3,7 @@
   "run": "run-001",
   "date": "2026-10-30",
   "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md §3.1",
-  "branch": "t-mg-mp-rect-1/run-001",
+  "branch": "t-mg-mp-rect-1/run-001 (head 934cb92b99b5ba1f14fa9315804bcb6da2587b1c, PR #464)",
   "base": "3b4322b3fe42b16c7a9910629dbce99413b63fa7",
   "provenance": {
     "session": "web-123877e4-3cca-4eba-b72d-52233419378e",
@@ -20,8 +20,9 @@
   "gates": {
     "targeted": "paper-regions 19/19 + hub regions 6/6 + rebaseline 26/26 (51/51)",
     "full_suite": "3600 pass / 0 fail / 13 skip across 205 files",
-    "typecheck": "0 errors",
-    "db_check": "drizzle-kit check green (0000 fold + 0017 chain validate)"
+    "typecheck": "0 errors (root + hub-local tsc)",
+    "db_check": "drizzle-kit check green (0000 fold + 0017 chain validate)",
+    "ci": "PR #464 head 934cb92b — verify SUCCESS + hub SUCCESS (first CI pass 21fa1875 went red-class: hub build typechecks lib tests, regions.test.ts stub param shape TS2345 + unused directive TS2578; repaired in-place, transport-only, no behavior change)"
   },
   "artifacts": {
     "migration": "packages/db/drizzle/0017_mark-point-rects.sql",
@@ -51,6 +52,7 @@
   "residuals": [
     "seed fixture refs must be aligned with live corpus refs before the first real run (script exit 3 guards ambiguity)",
     "region page for un-extracted regions is null; RECT-2 backfills page-true anchors",
-    "hub overlay page-mount point (the hosting page composition) lands with the Phase 6 feedback surface"
+    "hub overlay page-mount point (the hosting page composition) lands with the Phase 6 feedback surface",
+    "MERGE STATUS: OPEN, operator-gated — plan §4 manual-word merges only for the MG tranche; R0-auto not authorized for this band"
   ]
 }
