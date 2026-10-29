@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | SCOPED — plan of record; implementation gated on operator go (stages below) |
+| **Status** | STAGE A EXECUTED (trace `1a1893c557d8f819` operator go: "Go, execute Stage A") — contracts (§6) + `services/teacher/foresights.ts` (§3–5) + verbatim exports of `graphOwnedClass`/`memberStudentIds`/`enabledRoster` + the §9 battery (18 tests) all GREEN (api typecheck + full 3051-test suite); NO route mount, NO hub, NO DB — Stages B/C pending operator go |
 | **Task** | T-FORESIGHT-V0-PLAN-1 (leg b), trace `1a1893280de1b2c5` |
 | **Date** | 2026-10-30 |
 | **Design law** | ADR-CLASS-0002 (comprehension-first prediction surfaces) — this plan is its first applicant |

@@ -297,3 +297,144 @@ export type SeedSummary = z.infer<typeof seedSummarySchema>;
  *  path: the store's own object copied key-for-key — never interpreted,
  *  normalized, or defaulted; absent stays null. */
 export const teacherApplicabilitySchema = applicabilitySchema;
+
+// ── Foresights-v1 (T-FORESIGHT-V0-PLAN-1 Stage A — ADR-CLASS-0002's first
+//    applicant): the deterministic pre-assignment readiness read model.
+//    EVERY schema here carries the comprehension-first law: the wire itself
+//    carries the C1 headline sentence + the C3 disclosure string, band-level
+//    encodings reuse the shared §13.3 vocabulary (analyticsBandSchema), and
+//    the honest cannot-predict state is first-class (C4). Zero new thresholds
+//    (C6): classification inherits the learner-engine numbers. ──────────────
+
+/** ForesightsService — the deterministic aggregation contract (§3 of the
+ *  plan); mirrors classAnalyticsPolicySchema's marker convention. */
+export const foresightsPolicySchema = z.literal("foresights/v1");
+
+/** the class-level projection state (C4: NOT_ASSESSABLE is first-class). */
+export const foresightsStateSchema = z.enum([
+  "ASSESSABLE_READY",
+  "ASSESSABLE_AT_RISK",
+  "NOT_ASSESSABLE",
+]);
+export type ForesightsState = z.infer<typeof foresightsStateSchema>;
+
+/** why the class-level state is what it is (first match of the §5 table). */
+export const foresightsClassReasonSchema = z.enum([
+  "NO_PREREQUISITE_CHAIN",
+  "UNMEASURED_PREREQUISITES",
+  "WEAK_PREREQUISITES",
+]);
+export type ForesightsClassReason = z.infer<typeof foresightsClassReasonSchema>;
+
+/** the per-learner projection state (a learner can be NOT_ASSESSABLE while
+ *  the class is assessable — the two-level honesty, plan §5). */
+export const foresightsLearnerStateSchema = z.enum(["READY", "AT_RISK", "NOT_ASSESSABLE"]);
+export type ForesightsLearnerState = z.infer<typeof foresightsLearnerStateSchema>;
+
+/** per-learner reason codes — the affectedReason vocabulary shape extended
+ *  with the UNMEASURED_PREREQ honesty code (the CK-12 fine-print gate made
+ *  first-class, ADR-CLASS-0002 C4). */
+export const foresightsLearnerReasonSchema = z.enum([
+  "LOW_MASTERY_PREREQ",
+  "ACTIVE_MISCONCEPTION_PREREQ",
+  "LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ",
+  "UNMEASURED_PREREQ",
+]);
+export type ForesightsLearnerReason = z.infer<typeof foresightsLearnerReasonSchema>;
+
+/** ForesightsPrerequisiteCellView — one DIRECT (depth-1, post-projection)
+ *  prerequisite cell: EFFECTIVE (decayed at the single asOf anchor) class
+ *  mastery, the shared 4-state band, and the derived-projection flags
+ *  (T-C11 mirror of weakPrerequisiteViewSchema). depth is always 1 by
+ *  construction — the wire keeps the field so consumers can distinguish
+ *  cells from contextChain rows shape-for-shape. */
+export const foresightsPrerequisiteCellViewSchema = z.object({
+  nodeId: z.string().uuid(),
+  code: z.string(),
+  title: z.string(),
+  depth: z.literal(1),
+  derived: z.boolean(),
+  derivedViaConceptCodes: z.array(z.string()),
+  learnersMeasured: z.number().int(),
+  meanEffectiveMastery: z.number().nullable(),
+  masteryBand: analyticsBandSchema,
+  weak: z.boolean(),
+  learnersWithActiveMisconception: z.number().int(),
+});
+export type ForesightsPrerequisiteCellView = z.infer<
+  typeof foresightsPrerequisiteCellViewSchema
+>;
+
+/** ForesightsContextChainRow — a depth ≥ 2 chain row: CONTEXT ONLY (zero
+ *  classification influence, plan §2.7); the RAW node row (no projection —
+ *  a concept row reports its own absence of evidence honestly). */
+export const foresightsContextChainRowSchema = z.object({
+  nodeId: z.string().uuid(),
+  code: z.string(),
+  title: z.string(),
+  depth: z.number().int().min(2),
+  learnersMeasured: z.number().int(),
+  meanEffectiveMastery: z.number().nullable(),
+  masteryBand: analyticsBandSchema,
+});
+export type ForesightsContextChainRow = z.infer<typeof foresightsContextChainRowSchema>;
+
+/** ForesightsLearnerRow — one classified roster member (C1: the lists of
+ *  codes ARE the explanation; no numeric outcome prediction, plan §2.1/§2.2). */
+export const foresightsLearnerRowSchema = z.object({
+  learnerId: z.string().uuid(),
+  displayName: z.string(),
+  state: foresightsLearnerStateSchema,
+  reason: foresightsLearnerReasonSchema.nullable(),
+  weakPrereqCodes: z.array(z.string()),
+  miscoPrereqCodes: z.array(z.string()),
+  unmeasuredPrereqCodes: z.array(z.string()),
+  meanEffectiveMastery: z.number().nullable(),
+});
+export type ForesightsLearnerRow = z.infer<typeof foresightsLearnerRowSchema>;
+
+/** the C4 unlock path: the single missing measurement whose assignment would
+ *  restore assessability (first unmeasured direct prerequisite, code asc). */
+export const foresightsUnlockPathSchema = z.object({
+  nodeId: z.string().uuid(),
+  code: z.string(),
+  title: z.string(),
+});
+export type ForesightsUnlockPath = z.infer<typeof foresightsUnlockPathSchema>;
+
+/** ClassForesightsView — the foresights/v1 wire (plan §6). `headline` is the
+ *  C1 template sentence (reviewable code, not generated prose); `disclosure`
+ *  is the C3 provenance string assembled server-side so EVERY client renders
+ *  prior-vs-evidence honestly; `targetMeasured` routes already-practiced
+ *  topics to the T-MIG-053 drill-down (measured surfaces govern there). */
+export const classForesightsViewSchema = z.object({
+  policy: foresightsPolicySchema,
+  classId: z.string().uuid(),
+  rootId: z.string().uuid(),
+  asOf: javaInstantSchema,
+  targetTopic: z.object({
+    nodeId: z.string().uuid(),
+    code: z.string(),
+    title: z.string(),
+  }),
+  targetMeasured: z.boolean(),
+  classState: foresightsStateSchema,
+  classReason: foresightsClassReasonSchema.nullable(),
+  headline: z.string(),
+  disclosure: z.string(),
+  unlockPath: foresightsUnlockPathSchema.nullable(),
+  prerequisites: z.array(foresightsPrerequisiteCellViewSchema),
+  contextChain: z.array(foresightsContextChainRowSchema),
+  distribution: z.object({
+    ready: z.number().int(),
+    atRisk: z.number().int(),
+    notAssessable: z.number().int(),
+    prereqBandCounts: z.object({
+      LOW: z.number().int(),
+      DEVELOPING: z.number().int(),
+      SECURE: z.number().int(),
+    }),
+  }),
+  learners: z.array(foresightsLearnerRowSchema),
+});
+export type ClassForesightsView = z.infer<typeof classForesightsViewSchema>;
