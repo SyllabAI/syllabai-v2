@@ -49,5 +49,29 @@
     "ci": "verify + hub on the PR merge ref — of-record merge gate",
     "pr": "pending at receipt-write time; landing addendum records number + merge sha"
   },
-  "discipline": "zero-DB; fetch-first re-ground (heads moved 3de8e6b2→3539948e / 5586acae→3b2ce8da while the window was closed — FIGURES-2.2 landed in between, no work re-executed); token via credential channel never echoed; merge via REST on green CI; receipt via json.dump law"
+  "discipline": "zero-DB; fetch-first re-ground (heads moved 3de8e6b2→3539948e / 5586acae→3b2ce8da while the window was closed — FIGURES-2.2 landed in between, no work re-executed); token via credential channel never echoed; merge via REST on green CI; receipt via json.dump law",
+  "landing": {
+    "pr": {
+      "number": 463,
+      "url": "https://github.com/SyllabAI/syllabai-v2/pull/463",
+      "head_sha": "80a55be4b0634acc1b3b2ac32b6d219cb53d6013",
+      "base": "main"
+    },
+    "ci": {
+      "verify": "completed/success",
+      "hub": "completed/success",
+      "ci_workflow": "completed/success",
+      "note": "green at 123s on the merge ref; merge via REST PUT, merge_method=merge"
+    },
+    "merge_sha": "3547b71f1527e98ca29d8250e66460818b3ead9f",
+    "main_state_at_merge": "784eaa26 (branch rebased mid-lane onto it — race guard; incoming #462/#460 zero path overlap)",
+    "post_merge_verification": {
+      "main_head": "3547b71f (merge sha on main, ancestry-proven)",
+      "render_sites": "the 2 provenance <p> lines are GONE from src (previously page.tsx:295 + guided-flow.tsx:744)",
+      "caption_law": "figcaption conditional present at both sites (page.tsx:295, guided-flow.tsx:743) — teaching captions render, no empty figcaption",
+      "remaining_src_hits": "1 doc-comment hit only (guided-flow.tsx:731 — the amendment record itself); ZERO learner-surface occurrences",
+      "deploy": "Vercel auto-bake follows main; learner surface updates on the next green bake"
+    },
+    "worklog": "run-001 entry + landing addendum in worklog.md (root worklog of record)"
+  }
 }

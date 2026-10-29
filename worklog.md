@@ -285,3 +285,15 @@ Work Log:
 
 Stage Summary:
 - FIGURES-2.1B executes via branch PR (CI verify+hub of record, merge on green): diagrams under guided lessons render the teaching caption only — no "— from the revision note" provenance line anywhere on the learner surface. Receipt .syllabai/receipts/HUB-FIGURES-2-1B/FIGURES-2-1B-CAPTION-SOURCE-DROP-20261030.json (+download mirror post-merge). If the operator meant the teaching captions themselves removed too, that is a one-line follow-up on the same two sites.
+---
+Task ID: FIGURES-2.1B-CAPTION-SOURCE-DROP landing addendum (same operator trace 1a18983337102e19)
+Agent: main agent (Super Z, session web-e79a3bd8)
+Task: Record the PR #463 landing and the post-merge verification of record.
+
+Work Log:
+- PR #463 (head 80a55be4, rebased onto main 784eaa26 mid-lane — race guard, incoming #462/#460 zero path overlap) — CI on the merge ref: verify success + hub success + ci workflow success (green at 123s); merged via REST as 3547b71f.
+- Post-merge verified on main @ 3547b71f: both provenance <p> render sites GONE from src; figcaption conditional live at both components (page.tsx:295, guided-flow.tsx:743) — teaching captions render, no empty figcaption; the single remaining src hit is the amendment doc comment itself (guided-flow.tsx:731), zero learner-surface occurrences.
+- Receipt amended with the landing of record (.syllabai/receipts/HUB-FIGURES-2-1B/... + download mirror). Vercel auto-bake follows main; the learner surface updates on the next green bake.
+
+Stage Summary:
+- FIGURES-2.1B COMPLETE of record: the "sourceHeading — from the revision note" provenance line is removed from every guided-lesson diagram on the learner surface; teaching captions (the FIGURES-2.1 EXPLAIN-DONT-LIST payload) retained. Zero data change, zero DB contact, resources untouched. Follow-up if the operator wants teaching captions removed too: one-line conditional flip on the same two sites.
