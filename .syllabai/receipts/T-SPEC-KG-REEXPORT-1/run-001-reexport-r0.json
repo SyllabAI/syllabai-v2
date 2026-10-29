@@ -1,0 +1,227 @@
+{
+ "task": "T-SPEC-KG-REEXPORT-1",
+ "run": "run-001-reexport-r0",
+ "date": "2026-10-29T18:03:26Z",
+ "operatorOrder": {
+  "trace": "1a187e874af9dfbd",
+  "verbatim": "open the kg re-export lane"
+ },
+ "executedIn": {
+  "trace": "1a188c2ce31f963d",
+  "channel": "zai-web",
+  "sessionId": "web-64d10b73-530a-4f71-9961-85d0436c7fb5",
+  "note": "operator supplied the GitHub PAT this session (env-only use; token NEVER written to disk; rotation still REQUIRED — re-exposed in transit)"
+ },
+ "cut": "origin/main 0026b4b47b125f0a3586addae0492cc3b26904cd",
+ "summary": "full-plane kg re-export determinism census found 34 of 106 public/kg/data files stale against the of-record curricula; all 34 re-exported under exporter v1.5 at the current cut + index.json rebuilt; the 72 stable files byte-untouched (no generatedUtc churn)",
+ "rootCause": "T-CONSUME-EDX-1 (2ece53bf, 2026-10-20, 46 Edexcel packs re-imported to the official-spine generation) and T-CONSUME-EDX-2 (c2388bca, 2026-10-21) advanced the Edexcel curricula; the v1.4-era Pearson kg files were never re-exported (QA-TREE-1 skipped them as PUA-clean; lane A scope was coverage-only, 57 missing CIE/history); kg plane vintage gap, ~10 days served",
+ "census": {
+  "coursesWithCurriculum": 106,
+  "stable": 72,
+  "drifted": 34,
+  "missing": [],
+  "failed": [],
+  "orphans": []
+ },
+ "classes": {
+  "A_stampOnly_exporterNotes": [
+   "ial-maths-20-decision-1",
+   "igcse-accounting-17-financial-statements",
+   "igcse-biology-19",
+   "igcse-biology-modular-24-unit-1",
+   "igcse-biology-modular-24-unit-2",
+   "igcse-business-19",
+   "igcse-chemistry-19",
+   "igcse-chemistry-modular-24-unit-1",
+   "igcse-chemistry-modular-24-unit-2",
+   "igcse-economics-17",
+   "igcse-english-language-a-16-paper-1-non-fiction-texts-and-transactional-writing",
+   "igcse-english-language-a-16-paper-2-poetry-and-prose-texts-and-imaginative-writing",
+   "igcse-english-language-a-16-paper-3-coursework",
+   "igcse-english-literature-16",
+   "igcse-further-maths-19",
+   "igcse-maths-a-modular-24-foundation-unit-1",
+   "igcse-maths-a-modular-24-higher-unit-1",
+   "igcse-physics-19",
+   "igcse-physics-modular-24-unit-1",
+   "igcse-physics-modular-24-unit-2",
+   "igcse-science-double-award-modular-24-biology-unit-1",
+   "igcse-science-double-award-modular-24-biology-unit-2",
+   "igcse-science-double-award-modular-24-chemistry-unit-1",
+   "igcse-science-double-award-modular-24-chemistry-unit-2",
+   "igcse-science-double-award-modular-24-physics-unit-1",
+   "igcse-science-double-award-modular-24-physics-unit-2"
+  ],
+  "B_structural": {
+   "ial-biology-18": {
+    "old": {
+     "nodes": 183,
+     "edges": 182,
+     "sections": 4,
+     "subtopics": 8,
+     "specPoints": 170,
+     "applicabilityPoints": 170
+    },
+    "new": {
+     "nodes": 189,
+     "edges": 188,
+     "sections": 8,
+     "subtopics": 10,
+     "specPoints": 170,
+     "applicabilityPoints": 170
+    }
+   },
+   "ial-chemistry-17": {
+    "old": {
+     "nodes": 344,
+     "edges": 343,
+     "sections": 4,
+     "subtopics": 20,
+     "specPoints": 319,
+     "applicabilityPoints": 319
+    },
+    "new": {
+     "nodes": 360,
+     "edges": 359,
+     "sections": 20,
+     "subtopics": 20,
+     "specPoints": 319,
+     "applicabilityPoints": 319
+    }
+   },
+   "ial-physics-19": {
+    "old": {
+     "nodes": 187,
+     "edges": 186,
+     "sections": 4,
+     "subtopics": 11,
+     "specPoints": 171,
+     "applicabilityPoints": 171
+    },
+    "new": {
+     "nodes": 194,
+     "edges": 193,
+     "sections": 11,
+     "subtopics": 11,
+     "specPoints": 171,
+     "applicabilityPoints": 171
+    }
+   },
+   "igcse-accounting-17-introduction-to-bookkeeping-and-accounting": {
+    "old": {
+     "nodes": 70,
+     "edges": 69,
+     "sections": 3,
+     "subtopics": 18,
+     "specPoints": 48,
+     "applicabilityPoints": 48
+    },
+    "new": {
+     "nodes": 68,
+     "edges": 67,
+     "sections": 3,
+     "subtopics": 16,
+     "specPoints": 48,
+     "applicabilityPoints": 48
+    }
+   },
+   "igcse-ict-17": {
+    "old": {
+     "nodes": 211,
+     "edges": 210,
+     "sections": 36,
+     "subtopics": 36,
+     "specPoints": 138,
+     "applicabilityPoints": 138
+    },
+    "new": {
+     "nodes": 211,
+     "edges": 210,
+     "sections": 36,
+     "subtopics": 36,
+     "specPoints": 138,
+     "applicabilityPoints": 138
+    }
+   },
+   "igcse-science-double-award-17-biology": {
+    "old": {
+     "nodes": 161,
+     "edges": 160,
+     "sections": 5,
+     "subtopics": 21,
+     "specPoints": 134,
+     "applicabilityPoints": 134
+    },
+    "new": {
+     "nodes": 161,
+     "edges": 160,
+     "sections": 5,
+     "subtopics": 21,
+     "specPoints": 134,
+     "applicabilityPoints": 134
+    }
+   },
+   "igcse-science-double-award-17-chemistry": {
+    "old": {
+     "nodes": 157,
+     "edges": 156,
+     "sections": 4,
+     "subtopics": 21,
+     "specPoints": 131,
+     "applicabilityPoints": 131
+    },
+    "new": {
+     "nodes": 157,
+     "edges": 156,
+     "sections": 4,
+     "subtopics": 21,
+     "specPoints": 131,
+     "applicabilityPoints": 131
+    }
+   },
+   "igcse-science-double-award-17-physics": {
+    "old": {
+     "nodes": 182,
+     "edges": 181,
+     "sections": 8,
+     "subtopics": 26,
+     "specPoints": 147,
+     "applicabilityPoints": 147
+    },
+    "new": {
+     "nodes": 182,
+     "edges": 181,
+     "sections": 8,
+     "subtopics": 26,
+     "specPoints": 147,
+     "applicabilityPoints": 147
+    }
+   }
+  }
+ },
+ "gates": {
+  "G1_diffScope": true,
+  "G2_glyphs": true,
+  "G3_countsVsCurriculum": true,
+  "G3b_manifestCross": true,
+  "G4_metaLaw": true,
+  "G5_labelLaw": true,
+  "G6_determinism": true,
+  "G7_indexLaw": true
+ },
+ "boardHistogram": {
+  "Cambridge International": 56,
+  "Pearson Edexcel": 50
+ },
+ "boundaries": [
+  "prerequisite/rel edges: exactly one prerequisites.json snapshot in the regenerated set (igcse-chemistry-19 — Class A stamp-only; its 145 pre + 10 rel projected edges byte-preserved since seed); the other 33 rebuilds hier-only. Nothing invented either way",
+  "applicability: present and preserved on all 34 (official-spine curricula carry the T-KG-16 printed homes)",
+  "4CH1 prototype canonicalKG.edexcel-chemistry-4ch1.json untouched (still load-bearing for graph-explorer)",
+  "72 stable files byte-untouched — no generatedUtc churn"
+ ],
+ "postLand": {
+  "servingFlip": "PENDING next deploy — live /kg/data probes recorded pre-deploy in the worklog entry; flip verify is a follow-up read-only turn"
+ },
+ "discipline": "fetch-first, race-guarded ff-only push, no force; PAT env-only; zero DB contact; data-only change class (no TypeScript surface)",
+ "landingNote": "rebased onto e1f3e3b3 (T-DC3-REBASE-1 bookkeeping-only .syllabai/**; zero content-plane contact) after a push-leg race; the census/wave cut of record remains 0026b4b47b125f0a3586addae0492cc3b26904cd — data bytes unchanged by the re-land (git checkout of the same blobs)"
+}
