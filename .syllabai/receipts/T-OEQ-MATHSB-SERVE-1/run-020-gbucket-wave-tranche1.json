@@ -1,0 +1,69 @@
+{
+  "lane": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-020",
+  "title": "G-bucket wave tranche-1: live re-census of the G1/G2/G3/G4 buckets + first eyes-on execution tranche + structural filings",
+  "operatorOrder": "the G1/G2/G3/G4 buckets (incl. the 159 Pythagoras/cosine-rule leads)",
+  "session": "web-da4ab8b1-a924-45d1-ae19-04dc343162a6",
+  "date": "2026-10-29",
+  "planeOfRecord": {
+    "before": "701ae1997de5421a",
+    "after": "f2cbe67ab7d24993",
+    "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+  },
+  "method": {
+    "censusInstrument": "run-018 run018_gs_census.py byte-clone (class regexes + stripping law UNCHANGED) -> run-020/run020_recensus.py; live re-census at the current pin BEFORE any execution (fleet-census law)",
+    "evidence": "10 QP/MS PDFs pulled from SyllabAI/syllabai-pastpapers raw @HEAD (unauthenticated, mirror URL per PLAYBOOK-CONTENT-QUALITY.md), 8 pages rendered @150dpi (pdftoppm) and READ first-hand: ms-2022-06-01R-p15, ms-2022-06-01R-p16, ms-2026-06-01R-p20, ms-2025-06-02-p13, ms-2023-06-02-p13, ms-2021-06-02-p16, ms-2021-06-02-p20, qp-2026-06-01R-p15 (+qp/qp pages for 2022-06-01R p16 and 2025-06-02 p22 staged). NO-GUESS held.",
+    "fence": "tranche-1 fixes = flattened-SUPERSCRIPT tokens (census class shapes G1/G2/G3) only, each token eyes-on-verified against the MS page of record, law-26 KaTeX (ASCII hyphen inside math). Fraction-stack debris (standing run-004 fleet-census/R4-A classes), radical-flatten sibling, problemMd stems (run-004 annex class), and structural attach classes deliberately NOT widened — filed, own lanes stand (run-019 fence precedent)."
+  },
+  "liveRecensus": {
+    "pin": "701ae1997de5421a",
+    "artifact": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-020/gs-census-post-b1.json",
+    "classSummary": {"G1": {"parts": 276, "trigBucketParts": 62}, "G2": {"parts": 2023, "trigBucketParts": 159}, "G3": {"parts": 245, "trigBucketParts": 7}, "G4": {"parts": 117, "trigBucketParts": 27}, "B1": {"parts": 0, "trigBucketParts": 0}, "P1": {"parts": 0, "trigBucketParts": 0}},
+    "trigBucketLeadCount": 159,
+    "leadCount": 2046,
+    "notes": [
+      "B1 fleet census 21 -> 0 HELD (run-019 discharge intact); P1 zero held.",
+      "G1-G4 class-part counts UNCHANGED vs the run-018 filing (the B1 wave's 20 parts still carry G-class hits outside the caret tokens).",
+      "Pythagoras/cosine-rule keyword bucket = 159 leads exactly (matches the run-018 filing); spread over 61 papers."
+    ]
+  },
+  "tranche1Execution": {
+    "parts": ["offp_2022-06_01r_22-a"],
+    "fixPairs": 7,
+    "tokens": 8,
+    "fixes": "7 old->new pairs (run-020/run020_fixes.py): 5x flattened k^2 ('k2'/'k 2' shapes) + 2x flattened 144x^2 ('144 x 2' shape) -> law-26 KaTeX in the q22(a) ALTERNATIVE block",
+    "evidence": "ms-2022-06-01R-p16-16.png (ALTERNATIVE block of record: 'for k or k^2', '... + k^2/(3-8x 1-2x)', '36(1-2x) = 9(3-8x) + k^2', 'k^2 = 36 - 72x - 27 - 126x + 144x^2 - (54x - 144x^2) = 9') + ms-2022-06-01R-p15-15.png (main method block)",
+    "mirror": "offp_2022-06_01r_22-a was one of the 331 legit non-mirror PRE parts (markPoints[0] delta = stray big-paren glyph bytes only, difflib-proven); the of-record battery set_field writes solutionMd AND markPoints[0] in lockstep, so the part converges to mirror post-edit — run-018/019 scoped law unchanged, unedited parts untouched",
+    "zeroTokenParts": {
+      "offp_2026-06_01r_18": "G-hits are print-verbatim 'sin 20' keyword shapes (MS p20: 'sin 20' WITH space is the official print throughout — systematic FP generator) + one structural duplicate-attach (F3 below); ZERO class-token fixes due",
+      "offp_2025-06_02_9-a": "MS p13 multi-branch scheme: superscripts, half-fractions and radicals collapse into the same weave ('2 2 2' lines are both 1/2 fractions and 2 exponents) — token-level NO-GUESS disambiguation impossible -> whole-cell rebuild class (F4), zero token fixes due",
+      "offp_2023-06_02_8": "structural fusion (F1) — token fixes inside fused foreign blocks would be discarded by the owning-lane repair -> fenced",
+      "offp_2021-06_02_9-b": "structural foreign blob (F2) — fenced, same reasoning"
+    }
+  },
+  "gates": {
+    "battery": "10/10 GREEN (run-020/run020_apply.py, tranche-2/run-018/run-019 battery clone): census_EXACT 66/1281/2443/6600 pre==post; marks_map_identical; PUA_FFFD_0; dollar_parity (edited field even, \\$ class untouched); changed_set_EXACT (1 solutionMd write + mirror == declared); mirror_law (edited part post-apply mirror byte-true); serialization_roundtrip single-line compact; scrub_assert clean; sup_token_discharge (all 7 old tokens absent post-apply); class_post_census (k2/'k 2'/'144 x 2' shapes zero on math-stripped text of the edited part)",
+    "katex_gate": "8/8 new spans OK @ katex 0.16.47 throwOnError",
+    "render_gate": "2/2 projected fields GREEN through the ACTUAL hub pipeline engine — react-markdown 10.1.0 + remark-gfm 4.0.1 + remark-math 6.0.0 + rehype-raw 7 + rehype-sanitize 6 + the hub's LOCAL rehypeKatexMhchem (markdown.tsx of-record plugin list, s142), .katex 0 -> 8 per field, 16 total, zero katex-error. GATE-HARDENING of record: run-019's render gate imported upstream 'rehype-katex' (not the hub's actual engine); run-020's gate imports apps/hub/src/lib/rehypeKatexMhchem.ts — the of-record engine.",
+    "canaries": "ZERO canary contact: C120-C146 part_field_sha pins are scoped to the run-017 sync pids (2025-06/2026-06 sets) + run-018 C145 (q27-b); 2022-06-01R carries no pin (verified from run-017-t3-corpus-reconcile receipt scopeOfRecord.pids)."
+  },
+  "filings": {
+    "F1_msBlockFusion_2023-06-02_8": "solutionMd = genuine 7-mark q8 MS block (ends 'Total 7 marks') FUSED with q9(a) (3(-4)^3+a(-4)^2... 'a=8 and b=-16') and q9(b) ((2x-3)/5 quadratic) MS blocks wholesale — adjacent-question attach class. Evidence: ms-2023-06-02-p13-13.png (q8 rows + mark total). FILING: owning-lane (MS-attach/RATTACH lineage) repair = truncate after the genuine block; token fixes inside the fused blocks deliberately NOT spent.",
+    "F2_foreignBlob_2021-06-02_9-b": "solutionMd carries 3 correct q9(b) B1ft lines then a FOREIGN 7-mark bearings/cosine-rule/sine-rule multi-case MS blob ('FB = 9.8', Cases 1-3, Heron's formula, triangle ABF, '8.42 = 32 + AD2 - 2(3)(AD)cos(180-51)') matching the MS pp.20-21 print (ms-2021-06-02-p20-20.png) — a later question's block; markPoints[0] (2 marks) mirrors the whole blob against a 2-mark part. Evidence: ms-2021-06-02-p16-16.png (true q9(b) rows). FILING: attach-class repair = truncate to the true 2-mark block.",
+    "F3_duplicateAttach_2026-06-01R_18": "solutionMd = properly KaTeX'd main + ALT1 + ALT2 (genuine, MS pp.20-21) THEN a raw pdftotext-flatten DUPLICATE of the entire ALT1 block ('ALT1   ( AB ) = ... ( x + 1) − x 2 = 2 x + 1 ...') — duplicate-attach of the text layer. FILING: owning-lane repair = truncate the raw duplicate; zero learner-facing math loss (KaTeX'd twin present).",
+    "F4_rebuildClass_2025-06-02_9-a": "multi-branch area scheme where sup/frac/radical debris is inseparable token-by-token -> whole-cell rebuild with crop evidence (run-004 R4-A class). Filing stands; not token-patched.",
+    "F5_censusClassDisclosures": "(a) UPPERCASE flattened sups ('AD 2', 'AC 2', 'CD 2', 'L2', 'AH 2') are INVISIBLE to the G-classes ([a-z] regexes) — census-invisible sibling shape, fleet-wide count unknown; (b) sin/cos/tan-NN keyword hits systematically generate G2 matches ('sin 20' -> 'n 20') and are usually print-verbatim — the trig bucket's G2 counts are inflated; (c) fraction-splinter weaves ('18 x' / '1 2x' / '3 8x') match G2/G3 but are NOT superscripts; (d) DELETED-sup sibling shape ('or k 36 72 x 27 72 x' where print says k^2 = ...) — no sup glyph survives at all, unregexable — needs a census revision (operator-gated, NOT widened mid-wave).",
+    "F6_stemAnnexCandidate_2022-06-01R_22-a": "problemMd stem carries fraction flatten ('18 x 6 AD = 3 cm DC = cm AH = cm 1 − 2x 3 − 8x' = DC = 18x/(1-2x) cm?, AH = 6/(3-8x) cm? — decode requires the QP figure, qp-2022-06-01R-p16-16.png staged) — run-004 ANNEX whole-stem rebuild class candidate; learner-facing surface; filed for the operator, NOT touched in this tranche."
+  },
+  "corpusSide": "rides the NEXT converter run (standing disposition, run-018/019 precedent): 22-a solutionMd correction joins the F114 reconciliation queue; no corpus contact this run.",
+  "environmentRecoveryOfRecord": "post-restart clone arrived stale a THIRD time (local main 4008e6ce, official-papers.json ABSENT, T-OEQ branches unfetched, handoff summary pins unverifiable): fetch-first verified origin/main 16aeed0a carrying the full run-017/018/019 lane (PRs #423-#441) + sibling lanes; ff-only applied; plane of record verified @701ae1997de5421a first-hand pre-edit; run-018 gs-leads-census.json + battery templates recovered from the fetched origin (the handoff summary's T-OEQ-MATHSB-SERVE-1 receipts/lane-artifacts paths all exist on origin, none locally pre-fetch). Hub node_modules wiped by the recycle: bun install --frozen-lockfile 952 packages restored for the render gate.",
+  "credentials": "zero PAT contact this run: mirror fetches + git fetch all unauthenticated/anonymous. PUSH LEG BLOCKED of record: git push origin t-oeq-mathsb/run-020 FAILS ('could not read Username for https://github.com') — no PAT in env/GIT_ASKPASS/netrc/gh-hosts this session (the prior volatile 0600 PAT was wiped by the sandbox recycle; the two standing exposed tokens GitHub …JU4 / Vercel vcp_…aoT3 are ROTATION-REQUIRED before any re-supply per multiple receipts). Commit ce2cffb0 sits ready on local branch t-oeq-mathsb/run-020; PR -> CI -> merge -> Vercel redeploy -> live spot-check fire mechanically once the operator supplies a fresh PAT (env/GIT_ASKPASS only)",
+  "blockedAt": "push leg — local branch t-oeq-mathsb/run-020 @ ce2cffb0 (+ bookkeeping commit), 0 pushes",
+  "residual": "G1 276 / G2 2023 / G3 245 / G4 117 lead parts minus tranche-1 (22-a partial: 8 tokens discharged, uppercase-sup + stem + fraction classes remain on the part) — tranche-2 = the structural filings F1-F3 first (they shrink the trig bucket), then the token-fixable subclass over the 159 with the F5 class-revision menu for the operator; per-part eyes-on adjudication required throughout (fleet-census law)",
+  "nextSafeActions": [
+    "operator ruling on F5 census-class revision (uppercase sups + deleted sups + keyword-FP suppression)",
+    "tranche-2: F1/F2/F3 structural repairs in their owning lane (attach class), then token-fixable trig leads",
+    "F4 + F6 rebuild/annex-class scheduling per the run-004 run-005 menu",
+    "PAT rotation (standing order, both tokens)"
+  ]
+}
