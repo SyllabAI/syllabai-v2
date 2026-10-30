@@ -46,3 +46,40 @@ task:
     both bundle entries, the native reference implementation, the canonical
     licence snapshot). Fence census: cla.ts a9fdabfd / cla service.ts db4573c7
     EXACT; zero identity-plane paths; zero modified files (pure additive diff).
+    run-002 (2026-10-30). Operator dispatch "run-002" (trace 1a18c048d6165db1).
+    The persistence plane lands exactly per plan §3.3 + the run-001 decision
+    consequences (additive single table learner_pdf_drawings + GET/PUT
+    /api/v1/learner/pdf-drawings): doc jsonb {schema:'syllabai-ink/1',
+    shapes[]} with the container law CHECKed at rest (schema id + shapes
+    array); UNIQUE(learner_id, document_ref_type, document_ref_id) for the
+    internal-ref key + the PARTIAL unique index on (learner_id,
+    document_ref_type, source_url) WHERE document_ref_id IS NULL for the
+    sourceUrl-keyed external-PDF rows (the fallback pin) + the
+    sourceUrl-OR-documentRef refine CHECK (their 'Missing sourceUrl'
+    hard-require not copied). Revision law: the PUT carries the BASE (0
+    seeds revision 1; equal-or-ahead accepted → stored base+1; stale → 409
+    revision_conflict with zero rows written) — E4 single-writer sizing, no
+    op-log (dead per the decision record). Divergences disclosed:
+    documentRefId NULLABLE (the plan §3.3 parenthetical refine resolved over
+    the §3.3 NOT NULL token — the T-card run-002 pin of record governs);
+    createdAt rides the 0018 housekeeping precedent (beyond the plan's
+    column list); the rebaseline band-bump 86/815/116/86/151 ->
+    87/824/117/87/154 (measured verify PASS, 0 drifts) + the drizzle-kit
+    constraint-churn storm from baseline drift REJECTED (additive-only, the
+    0017/0018 precedent). Contracts-first: packages/contracts pdf-drawings
+    (the refine, the container literal, the revision law in the docs);
+    service fence services/learner-pdf-drawings (SqlFn seam, CAS on the
+    observed revision, fail-loud raced-insert posture); router
+    routes/learner/pdf-drawings (auth shell FIRST, the AWARDS-1 binding
+    envelope law); app-root wiring = import + construction + mount (the
+    T-MIG-010/020/021/030/031/032 disclosed-commit precedent). Tests: 17
+    new (9 service + 8 route) over stubbed sql (the 032 pattern) — pins
+    (a) container round-trip, (b) learner scoping, (c) sourceUrl fallback,
+    (d1-d4) the revision law incl. lost-CAS honest re-evaluation. Local
+    verify: typecheck exit 0; bun test apps/api packages 3132 pass / 0
+    fail; golden selftest OK; retrieval-eval + selftest exit 0; zero-core
+    census GATE GREEN. Fence census at cut 280ad8e9: cla.ts a9fdabfd /
+    cla service.ts db4573c7 EXACT; no identity-plane path touched; the
+    only modified pre-existing files are schema.ts (additive append),
+    rebaseline.test.ts (the band-bump pins), contracts/index.ts (the
+    barrel one-liner) and apps/api index.ts (the wiring block).
