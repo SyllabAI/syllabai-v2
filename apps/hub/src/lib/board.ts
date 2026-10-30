@@ -66,3 +66,40 @@ export function hasExamSeriesCalendar(meta: BoardKeyable): boolean {
   const b = boardOf(meta);
   return b === "Edexcel" || b === "Cambridge International";
 }
+
+/** One breadcrumb crumb (mirrors chrome.tsx's Crumb shape without importing
+ *  React chrome into a client-safe lib). */
+export interface CourseCrumb {
+  label: string;
+  href?: string;
+}
+
+/**
+ * The course-page breadcrumb trail (UX review 2026-10-31 F-05).
+ *
+ * The old trail read "AS / Chemistry — AS / Cambridge International": the
+ * level preceded the subject, the middle crumb linked to the page's own URL,
+ * and the CURRENT-page crumb was the awarding board — a page that does not
+ * exist. The rebuilt anatomy reads board → level → course, with the board
+ * crumb linking to the directory's board-filtered view (deep-linkable since
+ * the F-05 companion change to /courses) and the course itself as the
+ * unlinked current crumb. A caller-supplied `crumb` (the subpage name, e.g.
+ * "Revision Notes") stays the final crumb and the course root becomes a
+ * linked middle crumb — subpage call sites keep their prop contract.
+ */
+export function courseCrumbItems(
+  meta: { board?: string; level: string; label: string; slug: string },
+  crumb?: string,
+): CourseCrumb[] {
+  const board = meta.board ?? "Edexcel";
+  const items: CourseCrumb[] = [
+    { label: board, href: `/courses?board=${encodeURIComponent(board)}` },
+    { label: meta.level },
+    { label: meta.label },
+  ];
+  if (crumb) {
+    items[items.length - 1].href = `/courses/${meta.slug}`;
+    items.push({ label: crumb });
+  }
+  return items;
+}
