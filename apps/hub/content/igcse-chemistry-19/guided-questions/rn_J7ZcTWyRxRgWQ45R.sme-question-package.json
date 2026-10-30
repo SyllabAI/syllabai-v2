@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_J7ZcTWyRxRgWQ45R",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b91db0192d4628baf3afd9993c5b6f32e0324a6ab0ac6469630f03c5dfa96e5e",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "4f5d835d390c2ff363495b5de29bcac844c3d062ec0fdcfc55eac180cb105847",
+    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
   },
   "packageId": "igcse-chemistry::rn_J7ZcTWyRxRgWQ45R",
   "subject": "igcse-chemistry",
@@ -192,6 +192,101 @@
       ]
     },
     {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L1::Q6",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L1",
+      "stem": "State the overall charge of every ionic compound, and how the ion charges relate to produce it.",
+      "misconceptionClass": "neutrality recall",
+      "kind": "recall",
+      "modelAnswer": "Ionic compounds carry no overall charge: the positive and negative charges on their ions cancel exactly.",
+      "keywords": [
+        "no",
+        "none",
+        "zero",
+        "0",
+        "overall",
+        "charge",
+        "charges",
+        "cancel",
+        "cancels",
+        "exactly",
+        "positive",
+        "negative"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L1::Q7",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L1",
+      "stem": "State the formula of iron(II) sulfate, given that the sulfate ion carries a 2- charge and the iron(II) ion a 2+ charge.",
+      "misconceptionClass": "fesO4 formula recall",
+      "kind": "recall",
+      "modelAnswer": "One sulfate ion, carrying 2-, exactly cancels the 2+ charge on the iron(II) ion, so the formula is FeSO4.",
+      "keywords": [
+        "feso4",
+        "one",
+        "1",
+        "sulfate",
+        "sulphate",
+        "2-",
+        "2+",
+        "cancels",
+        "cancel",
+        "formula",
+        "iron"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L1::Q8",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L1",
+      "stem": "Explain the difference between saying an ionic compound is neutral and saying an atom is neutral.",
+      "misconceptionClass": "compound vs atom neutrality",
+      "kind": "explain-why",
+      "modelAnswer": "The neutrality belongs to the compound as a whole: its positive and negative ion charges cancel exactly, whereas a neutral atom has equal numbers of protons and electrons in one single particle — the two statements are not the same.",
+      "keywords": [
+        "whole",
+        "compound",
+        "atoms",
+        "atom",
+        "charges",
+        "charge",
+        "cancel",
+        "protons",
+        "proton",
+        "electrons",
+        "electron",
+        "not",
+        "same",
+        "different"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L1::Q9",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L1",
+      "stem": "Aluminium oxide is built from Al3+ ions and O2- ions. Using the direct comparison method of record, work out the formula and justify the ion counts.",
+      "misconceptionClass": "direct comparison counts",
+      "kind": "application",
+      "modelAnswer": "The charges are not equal in size, so more than one of each ion is needed: 2 x 3+ = 6+ from two aluminium ions cancels 3 x 2- = 6- from three oxide ions, giving the formula Al2O3.",
+      "keywords": [
+        "al2o3",
+        "two",
+        "2",
+        "three",
+        "3",
+        "aluminium",
+        "aluminum",
+        "oxide",
+        "oxygen",
+        "cancels",
+        "cancel",
+        "6+",
+        "6-",
+        "formula"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_J7ZcTWyRxRgWQ45R::L2::Q1",
       "moduleId": "rn_J7ZcTWyRxRgWQ45R::L2",
       "stem": "Aluminium oxide forms from Al3+ and O2- ions. Which formula do the swapped counts give?",
@@ -370,6 +465,95 @@
           "misconception": "covalent naming transferred to ionic compounds"
         }
       ]
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L2::Q6",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L2",
+      "stem": "Describe the swap-and-drop rule for building an ionic formula from two ion charges.",
+      "misconceptionClass": "swap and drop rule recall",
+      "kind": "recall",
+      "modelAnswer": "Swap-and-drop turns each ion's charge number into the other ion's count: as Cu2+ with Cl- gives CuCl2.",
+      "keywords": [
+        "swap",
+        "swaps",
+        "drop",
+        "drops",
+        "charge",
+        "number",
+        "count",
+        "other",
+        "cucl2",
+        "copper",
+        "chloride"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L2::Q7",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L2",
+      "stem": "State what is done with the positive and negative signs during swap-and-drop, and how a count of 1 is handled.",
+      "misconceptionClass": "sign and unit count recall",
+      "kind": "recall",
+      "modelAnswer": "Positive and negative signs are dropped during the method, and a count of 1 is never written.",
+      "keywords": [
+        "dropped",
+        "drop",
+        "signs",
+        "sign",
+        "1",
+        "one",
+        "never",
+        "written",
+        "count"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L2::Q8",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L2",
+      "stem": "Explain why applying swap-and-drop to Ca2+ and S2- must not stop at Ca2S2, and what the correct formula is.",
+      "misconceptionClass": "overcount reduction reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "With same-charge ions the method overcounts, so the resulting ratio must be reduced to its simplest whole numbers; Ca2S2 reduces to CaS, the correct formula of calcium sulfide.",
+      "keywords": [
+        "overcounts",
+        "overcount",
+        "reduce",
+        "reduced",
+        "reduction",
+        "simplest",
+        "whole",
+        "numbers",
+        "ratio",
+        "cas",
+        "calcium",
+        "sulfide",
+        "sulphide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_J7ZcTWyRxRgWQ45R::L2::Q9",
+      "moduleId": "rn_J7ZcTWyRxRgWQ45R::L2",
+      "stem": "Magnesium hydroxide forms from Mg2+ ions and OH- ions. Apply swap-and-drop, and explain why brackets appear in the final formula.",
+      "misconceptionClass": "bracket group application",
+      "kind": "application",
+      "modelAnswer": "The 2+ charge swaps to give two hydroxide groups, and because the whole OH- group is doubled the formula is written Mg(OH)2 with the group inside brackets.",
+      "keywords": [
+        "mg(oh)2",
+        "mg",
+        "(oh)2",
+        "oh",
+        "brackets",
+        "bracket",
+        "two",
+        "2",
+        "group",
+        "groups",
+        "doubled",
+        "hydroxide"
+      ],
+      "options": []
     }
   ]
 }

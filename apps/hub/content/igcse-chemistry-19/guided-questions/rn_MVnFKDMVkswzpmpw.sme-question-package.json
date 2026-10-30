@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_MVnFKDMVkswzpmpw",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "63b6cfb545bbe59acd58b6e025e739beb72e515e59b0ee572665c1de28225eda",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "a302cf1d44ddcb6e56ba6d63acc4d28075b815fd9548db73c04a75bbd6fc2b0b",
+    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
   },
   "packageId": "igcse-chemistry::rn_MVnFKDMVkswzpmpw",
   "subject": "igcse-chemistry",
@@ -192,6 +192,95 @@
       ]
     },
     {
+      "id": "rn_MVnFKDMVkswzpmpw::L1::Q6",
+      "moduleId": "rn_MVnFKDMVkswzpmpw::L1",
+      "stem": "Define a diatomic molecule and list the diatomic substances named in the note.",
+      "misconceptionClass": "diatomic definition recall",
+      "kind": "recall",
+      "modelAnswer": "A diatomic molecule contains exactly two atoms; the note names H2, Cl2, O2, N2 and HCl.",
+      "keywords": [
+        "two",
+        "2",
+        "atoms",
+        "atom",
+        "h2",
+        "cl2",
+        "o2",
+        "n2",
+        "hcl",
+        "diatomic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MVnFKDMVkswzpmpw::L1::Q7",
+      "moduleId": "rn_MVnFKDMVkswzpmpw::L1",
+      "stem": "State how many shared pairs the bonds in oxygen and in nitrogen contain, and what bond name each earns.",
+      "misconceptionClass": "bond order recall",
+      "kind": "recall",
+      "modelAnswer": "Oxygen shares two pairs, giving a double bond, and nitrogen shares three pairs, giving a triple bond.",
+      "keywords": [
+        "two",
+        "2",
+        "pairs",
+        "pair",
+        "double",
+        "three",
+        "3",
+        "triple",
+        "oxygen",
+        "nitrogen",
+        "bond"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MVnFKDMVkswzpmpw::L1::Q8",
+      "moduleId": "rn_MVnFKDMVkswzpmpw::L1",
+      "stem": "Explain why each shared pair in a dot-and-cross drawing is drawn with one electron shown as a dot and one as a cross.",
+      "misconceptionClass": "shared pair drawing reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Each shared pair in the drawing uses one electron from each atom, and keeping the donor symbols visible shows exactly which atom supplied each electron of the pair.",
+      "keywords": [
+        "one",
+        "1",
+        "each",
+        "atom",
+        "electron",
+        "electrons",
+        "pair",
+        "shared",
+        "donor",
+        "symbols",
+        "symbol",
+        "visible"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MVnFKDMVkswzpmpw::L1::Q9",
+      "moduleId": "rn_MVnFKDMVkswzpmpw::L1",
+      "stem": "A student draws a dot-and-cross diagram for fluorine, F2, showing four shared electrons between the two atoms. Using the halogen bonding pattern of record, correct the drawing.",
+      "misconceptionClass": "halogen bond order correction",
+      "kind": "application",
+      "modelAnswer": "Like the other halogens, fluorine forms a single covalent bond, so only one pair is shared in F2; the drawing should show exactly two shared electrons, one from each atom.",
+      "keywords": [
+        "single",
+        "one",
+        "1",
+        "pair",
+        "shared",
+        "two",
+        "2",
+        "electrons",
+        "electron",
+        "halogen",
+        "halogens",
+        "f2"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_MVnFKDMVkswzpmpw::L2::Q1",
       "moduleId": "rn_MVnFKDMVkswzpmpw::L2",
       "stem": "How many covalent bonds does one molecule of ammonia, NH3, contain?",
@@ -370,6 +459,102 @@
           "misconception": "count inflated"
         }
       ]
+    },
+    {
+      "id": "rn_MVnFKDMVkswzpmpw::L2::Q6",
+      "moduleId": "rn_MVnFKDMVkswzpmpw::L2",
+      "stem": "Describe the bonding pattern of carbon dioxide in a dot-and-cross diagram.",
+      "misconceptionClass": "co2 bonding recall",
+      "kind": "recall",
+      "modelAnswer": "Carbon dioxide shares two pairs with each oxygen atom, making two double bonds in the molecule.",
+      "keywords": [
+        "two",
+        "2",
+        "pairs",
+        "pair",
+        "double",
+        "bonds",
+        "bond",
+        "oxygen",
+        "carbon",
+        "dioxide",
+        "co2"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MVnFKDMVkswzpmpw::L2::Q7",
+      "moduleId": "rn_MVnFKDMVkswzpmpw::L2",
+      "stem": "State how many C-H single bonds methane has and what extra bond ethane adds between its carbons.",
+      "misconceptionClass": "methane ethane bonds recall",
+      "kind": "recall",
+      "modelAnswer": "Methane has four single C-H bonds, and ethane adds a C-C single bond between its two carbon atoms.",
+      "keywords": [
+        "four",
+        "4",
+        "single",
+        "c-h",
+        "ch",
+        "bonds",
+        "bond",
+        "ethane",
+        "c-c",
+        "cc",
+        "adds",
+        "two",
+        "carbon"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MVnFKDMVkswzpmpw::L2::Q8",
+      "moduleId": "rn_MVnFKDMVkswzpmpw::L2",
+      "stem": "Explain what the formula C2H4 tells you about the bonding between ethene's two carbon atoms.",
+      "misconceptionClass": "ethene double bond reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Ethene contains a C=C double bond: two shared pairs sit between its two carbon atoms, so the carbons are joined by two covalent bonds at once.",
+      "keywords": [
+        "c=c",
+        "cc",
+        "double",
+        "bond",
+        "two",
+        "2",
+        "shared",
+        "pairs",
+        "pair",
+        "carbon",
+        "atoms",
+        "ethene",
+        "c2h4"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MVnFKDMVkswzpmpw::L2::Q9",
+      "moduleId": "rn_MVnFKDMVkswzpmpw::L2",
+      "stem": "A student must draw a dot-and-cross diagram for chloromethane, CH3Cl. Using the organic-molecules-in-scope rule of record, state what the diagram must contain.",
+      "misconceptionClass": "halogenated organic drawing",
+      "kind": "application",
+      "modelAnswer": "Chloromethane is in scope because organic molecules in this skill contain up to two carbon atoms, including versions with halogen atoms attached; the diagram shows four single bonds from the carbon — three C-H bonds and one C-Cl bond — with every outer electron drawn.",
+      "keywords": [
+        "up",
+        "two",
+        "2",
+        "carbon",
+        "atoms",
+        "halogen",
+        "attached",
+        "four",
+        "4",
+        "single",
+        "bonds",
+        "bond",
+        "c-h",
+        "c-cl",
+        "chloromethane"
+      ],
+      "options": []
     }
   ]
 }

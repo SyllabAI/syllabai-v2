@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_KpvF2TWr5fYHk2Jz",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5c530727a009f4d8c27932c9445efd0675e10265d3b39d360bcb0707ec5bcf6b",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "cbbdb2b3844537611f47bb7e05a7a74aa91eaf5c77ad0c0fb8bb911fc71b5f64",
+    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
   },
   "packageId": "igcse-chemistry::rn_KpvF2TWr5fYHk2Jz",
   "subject": "igcse-chemistry",
@@ -192,6 +192,100 @@
       ]
     },
     {
+      "id": "rn_KpvF2TWr5fYHk2Jz::L1::Q6",
+      "moduleId": "rn_KpvF2TWr5fYHk2Jz::L1",
+      "stem": "Contrast the bonding inside a simple molecule with the forces between its neighbouring molecules.",
+      "misconceptionClass": "intramolecular vs intermolecular recall",
+      "kind": "recall",
+      "modelAnswer": "Simple molecular structures have strong covalent bonds inside each molecule but weak forces between neighbouring molecules.",
+      "keywords": [
+        "strong",
+        "covalent",
+        "bonds",
+        "bond",
+        "weak",
+        "forces",
+        "force",
+        "between",
+        "neighbouring",
+        "neighboring",
+        "molecules",
+        "molecule",
+        "intermolecular"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KpvF2TWr5fYHk2Jz::L1::Q7",
+      "moduleId": "rn_KpvF2TWr5fYHk2Jz::L1",
+      "stem": "State the composition and shape of a C60 fullerene molecule as given in the note.",
+      "misconceptionClass": "fullerene structure recall",
+      "kind": "recall",
+      "modelAnswer": "C60 fullerene is a hollow sphere of 60 carbon atoms, joining 20 hexagons and 12 pentagons like a football.",
+      "keywords": [
+        "60",
+        "c60",
+        "carbon",
+        "atoms",
+        "hollow",
+        "sphere",
+        "20",
+        "hexagons",
+        "12",
+        "pentagons",
+        "football"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KpvF2TWr5fYHk2Jz::L1::Q8",
+      "moduleId": "rn_KpvF2TWr5fYHk2Jz::L1",
+      "stem": "Explain why a simple molecular substance melts at a low temperature, naming what is overcome when it melts.",
+      "misconceptionClass": "melting overcome reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The weak intermolecular forces between neighbouring molecules need only a little energy to overcome, so melting and boiling points are low; when the substance melts it is these weak forces that are overcome, not the strong covalent bonds.",
+      "keywords": [
+        "weak",
+        "intermolecular",
+        "forces",
+        "force",
+        "little",
+        "energy",
+        "overcome",
+        "low",
+        "melting",
+        "melt",
+        "boiling",
+        "not",
+        "covalent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KpvF2TWr5fYHk2Jz::L1::Q9",
+      "moduleId": "rn_KpvF2TWr5fYHk2Jz::L1",
+      "stem": "A student claims C60 fullerene should conduct electricity because it contains covalent bonds to many neighbours. Assess the claim using the electron behaviour of record.",
+      "misconceptionClass": "fullerene conductivity claim",
+      "kind": "application",
+      "modelAnswer": "The claim is wrong: C60 cannot conduct, because its spare electrons move only within each buckyball and cannot migrate between the molecules, so no charge can travel through the solid.",
+      "keywords": [
+        "cannot",
+        "cant",
+        "not",
+        "conduct",
+        "conducts",
+        "electrons",
+        "electron",
+        "within",
+        "migrate",
+        "between",
+        "buckyball",
+        "buckyballs",
+        "spare"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_KpvF2TWr5fYHk2Jz::L2::Q1",
       "moduleId": "rn_KpvF2TWr5fYHk2Jz::L2",
       "stem": "Why do larger simple molecular substances generally have higher boiling points?",
@@ -370,6 +464,95 @@
           "misconception": "pressure-to-conduction leap"
         }
       ]
+    },
+    {
+      "id": "rn_KpvF2TWr5fYHk2Jz::L2::Q6",
+      "moduleId": "rn_KpvF2TWr5fYHk2Jz::L2",
+      "stem": "State what happens to the melting and boiling points of simple molecular substances as their relative molecular mass increases.",
+      "misconceptionClass": "molecular mass trend recall",
+      "kind": "recall",
+      "modelAnswer": "Melting and boiling points of simple molecular substances rise as the relative molecular mass increases.",
+      "keywords": [
+        "rise",
+        "rises",
+        "increase",
+        "increases",
+        "higher",
+        "melting",
+        "boiling",
+        "points",
+        "point",
+        "mass",
+        "relative",
+        "molecular"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KpvF2TWr5fYHk2Jz::L2::Q7",
+      "moduleId": "rn_KpvF2TWr5fYHk2Jz::L2",
+      "stem": "Name the everyday insulating materials listed in the note.",
+      "misconceptionClass": "insulator examples recall",
+      "kind": "recall",
+      "modelAnswer": "Common insulators include the plastic coating on household wiring, rubber and wood.",
+      "keywords": [
+        "plastic",
+        "coating",
+        "wiring",
+        "rubber",
+        "wood",
+        "insulators",
+        "insulator"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KpvF2TWr5fYHk2Jz::L2::Q8",
+      "moduleId": "rn_KpvF2TWr5fYHk2Jz::L2",
+      "stem": "Explain why a bigger simple molecule needs more heat before it changes state.",
+      "misconceptionClass": "intermolecular count reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Bigger molecules contain more electrons, so more intermolecular forces of attraction must be overcome; more intermolecular forces mean more heat energy is needed to change state, raising the melting and boiling points.",
+      "keywords": [
+        "more",
+        "electrons",
+        "electron",
+        "intermolecular",
+        "forces",
+        "force",
+        "overcome",
+        "heat",
+        "energy",
+        "needed",
+        "change",
+        "state"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_KpvF2TWr5fYHk2Jz::L2::Q9",
+      "moduleId": "rn_KpvF2TWr5fYHk2Jz::L2",
+      "stem": "A plug cover is made of plastic rather than metal. Using the particle behaviour of record, explain why the plastic keeps the user safe from shock.",
+      "misconceptionClass": "insulation application",
+      "kind": "application",
+      "modelAnswer": "Covalent compounds are poor conductors because no free ions or mobile electrons exist to carry the charge, so the plastic cover does not let the current reach the user.",
+      "keywords": [
+        "no",
+        "free",
+        "ions",
+        "ion",
+        "mobile",
+        "electrons",
+        "electron",
+        "carry",
+        "carries",
+        "charge",
+        "current",
+        "conduct",
+        "poor",
+        "insulator"
+      ],
+      "options": []
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_kdRjZHjHcpVZsD3h",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "17ba1dbb6e548a8266fd37f5a315ada901690114045aea1e6c0ba8d3fa192f9d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "d5ebc434454f253360ad373afbaa979d5ddf04783bff9c328c09235712ba00d2",
+    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
   },
   "packageId": "igcse-chemistry::rn_kdRjZHjHcpVZsD3h",
   "subject": "igcse-chemistry",
@@ -192,6 +192,93 @@
       ]
     },
     {
+      "id": "rn_kdRjZHjHcpVZsD3h::L1::Q6",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L1",
+      "stem": "State the aim of the electrolysis practical described in the note, naming the three solutions used.",
+      "misconceptionClass": "practical aim recall",
+      "kind": "recall",
+      "modelAnswer": "The aim is to electrolyse sodium chloride, dilute sulfuric acid and copper(II) sulfate solutions, collecting and identifying the products.",
+      "keywords": [
+        "electrolyse",
+        "electrolysis",
+        "sodium",
+        "chloride",
+        "sulfuric",
+        "sulphuric",
+        "acid",
+        "copper",
+        "sulfate",
+        "sulphate",
+        "collecting",
+        "identifying",
+        "products"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L1::Q7",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L1",
+      "stem": "State the positive test result that identifies hydrogen gas, and name the electrode at which it is collected in this practical.",
+      "misconceptionClass": "hydrogen test recall",
+      "kind": "recall",
+      "modelAnswer": "A gas that burns with a pop from a lighted splint is hydrogen, collected at the cathode.",
+      "keywords": [
+        "pop",
+        "burns",
+        "burn",
+        "lighted",
+        "splint",
+        "hydrogen",
+        "cathode"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L1::Q8",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L1",
+      "stem": "Explain the purpose of the inverted tubes in this practical's setup, in terms of what they capture.",
+      "misconceptionClass": "gas collection setup reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The electrodes are covered with the solution and the inverted test tubes sit over them to collect the gases that form at each electrode, so the gases can be gathered and tested.",
+      "keywords": [
+        "collect",
+        "collects",
+        "collecting",
+        "collection",
+        "gases",
+        "gas",
+        "inverted",
+        "test",
+        "tubes",
+        "tube",
+        "electrodes",
+        "electrode"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L1::Q9",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L1",
+      "stem": "During the practical, one anode gas bleaches damp litmus and another anode gas relights a glowing splint. Identify each gas and state which solution produces the bleaching one.",
+      "misconceptionClass": "gas test application",
+      "kind": "application",
+      "modelAnswer": "A gas that bleaches litmus is chlorine, and a gas that relights a glowing splint is oxygen; the chlorine comes from the sodium chloride solution, the only one of the three with a halide at the anode.",
+      "keywords": [
+        "chlorine",
+        "bleaches",
+        "bleaching",
+        "litmus",
+        "oxygen",
+        "relights",
+        "glowing",
+        "splint",
+        "sodium",
+        "chloride",
+        "solution"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_kdRjZHjHcpVZsD3h::L2::Q1",
       "moduleId": "rn_kdRjZHjHcpVZsD3h::L2",
       "stem": "Which products form when sodium chloride solution is electrolysed?",
@@ -370,6 +457,87 @@
           "misconception": "electrode products swapped"
         }
       ]
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L2::Q6",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L2",
+      "stem": "State the two products of the electrolysis of sodium chloride solution and the electrode at which each forms.",
+      "misconceptionClass": "nacl products recall",
+      "kind": "recall",
+      "modelAnswer": "Sodium chloride solution splits into hydrogen gas at its cathode and chlorine gas at its anode.",
+      "keywords": [
+        "hydrogen",
+        "cathode",
+        "chlorine",
+        "anode",
+        "sodium",
+        "chloride",
+        "gas",
+        "gases"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L2::Q7",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L2",
+      "stem": "Describe the observation that shows copper has formed at the cathode in the copper(II) sulfate experiment.",
+      "misconceptionClass": "copper deposit observation recall",
+      "kind": "recall",
+      "modelAnswer": "The copper appears as a pink-brown deposit on the cathode electrode.",
+      "keywords": [
+        "pink",
+        "brown",
+        "pink-brown",
+        "deposit",
+        "deposits",
+        "coating",
+        "copper",
+        "cathode",
+        "electrode"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L2::Q8",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L2",
+      "stem": "Explain how the litmus paper confirms which gas is emerging at the anode in the sodium chloride experiment.",
+      "misconceptionClass": "chlorine litmus confirmation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The chlorine at the anode shows itself by bleaching a piece of litmus paper, so the litmus turning white is the confirming test that the anode gas is chlorine.",
+      "keywords": [
+        "bleaching",
+        "bleaches",
+        "bleach",
+        "litmus",
+        "paper",
+        "white",
+        "chlorine",
+        "anode",
+        "confirms",
+        "confirming",
+        "test"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kdRjZHjHcpVZsD3h::L2::Q9",
+      "moduleId": "rn_kdRjZHjHcpVZsD3h::L2",
+      "stem": "A results table is missing the row for dilute sulfuric acid. Using the pattern of record, complete the row with the product at each electrode.",
+      "misconceptionClass": "results table completion",
+      "kind": "application",
+      "modelAnswer": "Dilute sulfuric acid splits into hydrogen gas at its cathode and oxygen gas at its anode.",
+      "keywords": [
+        "hydrogen",
+        "cathode",
+        "oxygen",
+        "anode",
+        "sulfuric",
+        "sulphuric",
+        "acid",
+        "gas",
+        "gases"
+      ],
+      "options": []
     }
   ]
 }

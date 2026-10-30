@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_rHKCkt3PTXDBpmJG",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "0a9b38309c967f733acc56c81cef630bd5f56fef29da3cce370f335edc00f9c7",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "d6edabd82dac57c8d76b3c7003a9aeb7ebcbddb7b6a2cef2e6b03f6624d5e01b",
+    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
   },
   "packageId": "igcse-chemistry::rn_rHKCkt3PTXDBpmJG",
   "subject": "igcse-chemistry",
@@ -192,6 +192,96 @@
       ]
     },
     {
+      "id": "rn_rHKCkt3PTXDBpmJG::L1::Q6",
+      "moduleId": "rn_rHKCkt3PTXDBpmJG::L1",
+      "stem": "Define an electric current in terms of particles.",
+      "misconceptionClass": "current definition recall",
+      "kind": "recall",
+      "modelAnswer": "An electric current is a flow of charged particles, usually electrons but sometimes ions.",
+      "keywords": [
+        "flow",
+        "flows",
+        "charged",
+        "charge",
+        "particles",
+        "particle",
+        "electrons",
+        "electron",
+        "ions",
+        "ion",
+        "current"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_rHKCkt3PTXDBpmJG::L1::Q7",
+      "moduleId": "rn_rHKCkt3PTXDBpmJG::L1",
+      "stem": "State in which physical states covalent substances can serve as insulating materials.",
+      "misconceptionClass": "covalent states recall",
+      "kind": "recall",
+      "modelAnswer": "Covalent substances work as insulating materials whether solid, liquid or gas.",
+      "keywords": [
+        "solid",
+        "liquid",
+        "gas",
+        "states",
+        "state",
+        "insulating",
+        "insulator",
+        "insulators",
+        "covalent",
+        "all"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_rHKCkt3PTXDBpmJG::L1::Q8",
+      "moduleId": "rn_rHKCkt3PTXDBpmJG::L1",
+      "stem": "Explain why nothing in a covalent compound can carry a current through it.",
+      "misconceptionClass": "covalent non-conduction reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Covalent compounds do not conduct, since nothing charged is free to move through them and carry the current — they have no mobile charged particles.",
+      "keywords": [
+        "nothing",
+        "no",
+        "charged",
+        "charge",
+        "free",
+        "move",
+        "moving",
+        "mobile",
+        "carry",
+        "current",
+        "conduct",
+        "not"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_rHKCkt3PTXDBpmJG::L1::Q9",
+      "moduleId": "rn_rHKCkt3PTXDBpmJG::L1",
+      "stem": "A salt is tested as a solid and again as a solution; only the solution lights the bulb. Using the conduction rules of record, explain both results.",
+      "misconceptionClass": "state change conduction application",
+      "kind": "application",
+      "modelAnswer": "Solid ionic compounds do not conduct, because their ions are fixed in the lattice and cannot move; in solution the ionic compound conducts, because its ions can then move and carry charge.",
+      "keywords": [
+        "solid",
+        "fixed",
+        "lattice",
+        "ions",
+        "cannot",
+        "not",
+        "move",
+        "solution",
+        "aqueous",
+        "conduct",
+        "carry",
+        "charge",
+        "mobile"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_rHKCkt3PTXDBpmJG::L2::Q1",
       "moduleId": "rn_rHKCkt3PTXDBpmJG::L2",
       "stem": "What is an anion?",
@@ -370,6 +460,91 @@
           "misconception": "atomic carrier invented"
         }
       ]
+    },
+    {
+      "id": "rn_rHKCkt3PTXDBpmJG::L2::Q6",
+      "moduleId": "rn_rHKCkt3PTXDBpmJG::L2",
+      "stem": "Define a cation and give the examples of cations named in the note.",
+      "misconceptionClass": "cation definition recall",
+      "kind": "recall",
+      "modelAnswer": "A cation is a positively charged ion, such as K+, Mg2+ or H+.",
+      "keywords": [
+        "positive",
+        "positively",
+        "cation",
+        "cations",
+        "ion",
+        "k+",
+        "mg2+",
+        "h+",
+        "examples"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_rHKCkt3PTXDBpmJG::L2::Q7",
+      "moduleId": "rn_rHKCkt3PTXDBpmJG::L2",
+      "stem": "State the path the electrons take through the external circuit during electrolysis.",
+      "misconceptionClass": "electron flow path recall",
+      "kind": "recall",
+      "modelAnswer": "The electrons flow from the anode towards the cathode through the external circuit.",
+      "keywords": [
+        "electrons",
+        "electron",
+        "flow",
+        "anode",
+        "cathode",
+        "towards",
+        "toward",
+        "external",
+        "circuit",
+        "from"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_rHKCkt3PTXDBpmJG::L2::Q8",
+      "moduleId": "rn_rHKCkt3PTXDBpmJG::L2",
+      "stem": "Explain why cations travel to the cathode during electrolysis.",
+      "misconceptionClass": "cation migration reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "During electrolysis, cations move towards the negatively charged electrode, the cathode; opposite charges attract, so the positive cations are drawn to the negative cathode.",
+      "keywords": [
+        "cations",
+        "cation",
+        "move",
+        "towards",
+        "toward",
+        "negative",
+        "negatively",
+        "cathode",
+        "attract",
+        "attraction",
+        "opposite",
+        "positive"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_rHKCkt3PTXDBpmJG::L2::Q9",
+      "moduleId": "rn_rHKCkt3PTXDBpmJG::L2",
+      "stem": "In an electrolysis cell, anions of a dye gather at one electrode. Name that electrode's charge and polarity, and state which species would gather at the other electrode.",
+      "misconceptionClass": "migration prediction application",
+      "kind": "application",
+      "modelAnswer": "Anions move towards the positively charged electrode, the anode, so the dye anions gather there; the cations gather at the other electrode, the negative cathode.",
+      "keywords": [
+        "anode",
+        "positive",
+        "positively",
+        "anions",
+        "gather",
+        "cations",
+        "cathode",
+        "negative",
+        "negatively",
+        "other"
+      ],
+      "options": []
     }
   ]
 }

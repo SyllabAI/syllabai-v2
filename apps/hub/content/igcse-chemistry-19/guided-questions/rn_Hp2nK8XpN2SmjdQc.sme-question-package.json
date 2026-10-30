@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_Hp2nK8XpN2SmjdQc",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7eb7d6cd83e3c5e30908cdbdb73d1126e3205e23e22489e7c3cd4aa8b9575186",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "97d444d093e005036dd4a95093b91d83b00351eadc3db55444d59e761d74bcbc",
+    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
   },
   "packageId": "igcse-chemistry::rn_Hp2nK8XpN2SmjdQc",
   "subject": "igcse-chemistry",
@@ -192,6 +192,94 @@
       ]
     },
     {
+      "id": "rn_Hp2nK8XpN2SmjdQc::L1::Q6",
+      "moduleId": "rn_Hp2nK8XpN2SmjdQc::L1",
+      "stem": "State what the atoms in a metal lattice become after releasing their outer electrons.",
+      "misconceptionClass": "metal ion formation recall",
+      "kind": "recall",
+      "modelAnswer": "Within the lattice the atoms lose their outer electrons, becoming positive metal ions.",
+      "keywords": [
+        "lose",
+        "loses",
+        "lost",
+        "outer",
+        "electrons",
+        "electron",
+        "positive",
+        "metal",
+        "ions",
+        "ion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hp2nK8XpN2SmjdQc::L1::Q7",
+      "moduleId": "rn_Hp2nK8XpN2SmjdQc::L1",
+      "stem": "Describe the two features a drawn metallic lattice displays in two dimensions.",
+      "misconceptionClass": "lattice diagram recall",
+      "kind": "recall",
+      "modelAnswer": "It shows rows of positive ions with the delocalised electrons between them.",
+      "keywords": [
+        "rows",
+        "row",
+        "ions",
+        "ion",
+        "delocalised",
+        "electrons",
+        "electron",
+        "between",
+        "diagram",
+        "2-d"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hp2nK8XpN2SmjdQc::L1::Q8",
+      "moduleId": "rn_Hp2nK8XpN2SmjdQc::L1",
+      "stem": "Explain what the metallic bond is, naming the two players that attract each other inside the lattice.",
+      "misconceptionClass": "metallic bond definition reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The metallic bond is the strong pull that the positive metal ions and the sea of delocalised electrons exert on each other; that mutual attraction holds the lattice together.",
+      "keywords": [
+        "positive",
+        "ions",
+        "ion",
+        "delocalised",
+        "electrons",
+        "electron",
+        "pull",
+        "attraction",
+        "strong",
+        "metallic",
+        "bond",
+        "sea"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hp2nK8XpN2SmjdQc::L1::Q9",
+      "moduleId": "rn_Hp2nK8XpN2SmjdQc::L1",
+      "stem": "A circuit is connected to two terminals pressed onto a pure metal bar. Using the lattice model, explain what carries the current through the bar.",
+      "misconceptionClass": "metal conduction mechanism",
+      "kind": "application",
+      "modelAnswer": "The released outer electrons are delocalised and move freely between the positive ions, so these mobile electrons carry the current through the metal bar.",
+      "keywords": [
+        "delocalised",
+        "electrons",
+        "electron",
+        "move",
+        "freely",
+        "freedom",
+        "mobile",
+        "carry",
+        "carries",
+        "current",
+        "between",
+        "ions"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_Hp2nK8XpN2SmjdQc::L2::Q1",
       "moduleId": "rn_Hp2nK8XpN2SmjdQc::L2",
       "stem": "Why do most metals have high melting and boiling points?",
@@ -370,6 +458,88 @@
           "misconception": "carrier misidentified"
         }
       ]
+    },
+    {
+      "id": "rn_Hp2nK8XpN2SmjdQc::L2::Q6",
+      "moduleId": "rn_Hp2nK8XpN2SmjdQc::L2",
+      "stem": "State which forces must be broken when a metal melts, and what supplies the energy needed.",
+      "misconceptionClass": "metal melting point recall",
+      "kind": "recall",
+      "modelAnswer": "Most metals have high melting and boiling points because strong electrostatic forces need lots of energy to break.",
+      "keywords": [
+        "high",
+        "melting",
+        "boiling",
+        "points",
+        "point",
+        "strong",
+        "electrostatic",
+        "forces",
+        "force",
+        "energy",
+        "lots",
+        "break"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hp2nK8XpN2SmjdQc::L2::Q7",
+      "moduleId": "rn_Hp2nK8XpN2SmjdQc::L2",
+      "stem": "State the term that describes a metal that can be hammered into shape.",
+      "misconceptionClass": "malleability vocabulary recall",
+      "kind": "recall",
+      "modelAnswer": "Such a metal is malleable, meaning it can be hammered into shape.",
+      "keywords": [
+        "malleable",
+        "malleability",
+        "hammered",
+        "hammer",
+        "shape"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hp2nK8XpN2SmjdQc::L2::Q8",
+      "moduleId": "rn_Hp2nK8XpN2SmjdQc::L2",
+      "stem": "Explain why a metal can be hammered into shape, in terms of the arrangement of its ions.",
+      "misconceptionClass": "malleability mechanism reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Malleability works because the atoms or ions form layers, and a push makes one layer slide across its neighbour without breaking the structure apart.",
+      "keywords": [
+        "layers",
+        "layer",
+        "slide",
+        "slides",
+        "sliding",
+        "push",
+        "hammered",
+        "across",
+        "neighbour",
+        "neighbor"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_Hp2nK8XpN2SmjdQc::L2::Q9",
+      "moduleId": "rn_Hp2nK8XpN2SmjdQc::L2",
+      "stem": "An overhead power line made of copper must carry current over a long distance. Using the bonding picture, state which particles carry the current and why copper is suited to this role.",
+      "misconceptionClass": "conduction application",
+      "kind": "application",
+      "modelAnswer": "The delocalised electrons carry the current: metals conduct because their delocalised electrons are available to move and carry charge, so a copper wire lets its electron sea drift along the line.",
+      "keywords": [
+        "delocalised",
+        "electrons",
+        "electron",
+        "carry",
+        "carries",
+        "current",
+        "charge",
+        "move",
+        "conduct",
+        "conduction",
+        "available"
+      ],
+      "options": []
     }
   ]
 }
