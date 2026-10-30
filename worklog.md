@@ -456,3 +456,33 @@ Work Log:
 
 Stage Summary:
 - The foresights/v1.1 amendment (ADR-CLASS-0003) is ON MAIN: lastPracticedAt context fields (cells + context rows, honest-null law) + distribution.atRiskByReason (sum invariant pinned); policy marker foresights/v1 unchanged; zero route bytes, zero new reads, zero new constants; the Stage C menu FULLY adjudicated of record (adopted/rejected/deferred in ADR-CLASS-0003 §Dispositions). Zero DB contact held across the entire lane. CD-A/CD-B/CD-C remain open unfiled candidates (CD-A still the smallest).
+
+---
+Task ID: CD-A run-001 (operator trace 1a18c0171724f5ed: "CD-A")
+Agent: main-lane (session web-528c0352)
+Task: Execute CD-A from the project-state-check backlog - the classOverview->testbuilder analytics adapter (the smallest backlog item). Zero-DB discipline standing (Neon unlock 2026-11-01T00:00Z).
+
+Work Log:
+- State recovery first: the sandbox recycle had restored the checkout STALE at c55927e7 (2026-10-22) with this arc's commits absent from the object store; fetch-first verified all four arc commits (73c30de8 sidecars, 0d2c5111 CK-12 teardown, a6fc888e Stage A, 0b5f76d0 Stage B) are ancestors of origin/main 280ad8e9, then hard-reset local main onto it (the 3455-file dirty state was mode-only, 0 content delta). The approved Foresights v1.1 tranche was found ALREADY LANDED of record (PR #482 merge 6900dfa0, ADR-CLASS-0003) by a parallel lane - re-verified green on the restored tip, NOT redone.
+- CD-A reconstruction disclosed: the conversational draft died with the recycled session; the design was rebuilt from the repo of record - the weakness-options route (T-MIG-034) shipped honest-501 with the ClassAnalyticsPort seam waiting, T-MIG-053 tranche-2 then ported ClassAnalyticsService, and nobody connected them. CD-A IS that connection (the frozen core's TestBuilderService consumed ClassAnalyticsService.overview; both halves were ported; the adapter restores the dependency).
+- classAnalyticsAdapter(deps) landed in services/testbuilder/index.ts: PURE DELEGATION to classOverview - zero re-derivation, zero new reads (the analytics batching law rides unchanged), zero new parameters (the frozen engine 0.45/2 via engineOf - the SAME ceiling the builder holds).
+- buildTestBuilderRouters(env, opts) woke the port: analytics defaults to the REAL adapter over ONE shared sql client; opts.analytics null|port honored verbatim (dormant posture constructible, synthetic-port test path preserved). Stale UNPORTED/DORMANT comments retired in routes/testbuilder.ts + services/testbuilder/{index,builder}.ts.
+- 8 fakeSql pins (analytics-adapter.test.ts): adapter deep-equals classOverview; port-slice narrowing pinned (the static slice type is the point); the COMPOSED derivation - real overview feeding real weaknessOptions - pins the reasons vocabulary (LOW_MEAN_MASTERY / ACTIVE_MISCONCEPTION_PRESENT / BLOCKED_BY_WEAK_PREREQUISITE), the honest UNMEASURED pass-through (null mean, nulls-last), blocked-by codes from weak-prerequisite dependents, the coverage-gap law, policy + selectionHint literals, the frozen default-engine path (no engine injected - the production deps shape); the factory wake-up law (default AWAKE / explicit null DORMANT / explicit port verbatim, no DB contact - lazy client, zero queries).
+
+Gates: typecheck x4 exit 0; bun test apps/api packages -> 3123 pass / 13 skip / 0 fail / 43200 expects; golden --selftest OK; new pins 8/8. Receipt .syllabai/receipts/CD-A/run-001-r0.json.
+
+Disclosures: (1) hub consumption NOT in this tranche - the test-builder page is demo-era (client-side SAMPLE thresholds) and api.ts testBuilderWeaknessOptions has zero callers; a slug->rootId resolution does not exist (SubjectView has no slug) - filed CD-A-hub follow-up, operator-gated. (2) FINDING: no /api/v1/teacher/class/* mount exists - the hub Class Intelligence page calls an unmounted path; the real classOverview is reachable only through this adapter today; needs its own lane. (3) OUT-OF-FENCE comment-only edit in apps/api/src/index.ts (T-MIG-034 fence) - R0 ratification requested per precedent. (4) routes.test.ts/select.test.ts untouched - dormant-501 + synthetic-port + selection pins remain the module-level truth.
+
+Stage Summary:
+- LANDED: the ClassAnalyticsPort wake-up (frozen-core parity restoration) - /api/v1/teacher/tests/weakness-options serves the real law-pinned class-evidence view on production boots; the route wire is byte-unchanged (the 200 shape was always the contract).
+- Open: CD-A-hub (operator-gated), the /api/v1/teacher/class/* mount gap, CD-B/CD-C re-draft on request (their drafts died with the recycled session), PAT rotation standing.
+- Zero DB contact held end-to-end; all work fakeSql-pinned.
+
+---
+Task ID: CD-A run-001 landing addendum (same trace 1a18c0171724f5ed)
+Agent: main-lane (session web-528c0352)
+Task: PR bookkeeping for CD-A run-001.
+
+Work Log:
+- PR #489 opened (https://github.com/SyllabAI/syllabai-v2/pull/489) from t-class-adapter-cda/run-001 @ 1cb5a6a0 (rebased onto c40c876b — a peer PR #486 landed mid-lane; rebased clean, gates re-run on the rebased head: testbuilder+teacher battery 113 pass / 0 fail).
+- CI 2/2 GREEN on the PR head: verify success + hub success. Receipt updated (status PR-OPEN-CI-GREEN, awaiting integrator merge). Bookkeeping-only.

@@ -458,8 +458,9 @@ app.route("/api/v1/learner/pdf-drawings", learnerPdfDrawings.pdfDrawingsRoute);
 // media rides ONLY to the vision-capable member; zero-key/test boots keep
 // the dormant-equivalent 503 transcription_unavailable parity, T-MIG-032
 // precedent); the weakness-options
-// analytics port is DORMANT (null → 501 with the task reference — the
-// class-analytics read service is unclaimed work). The /api/v1/* fallback
+// analytics port is AWAKE since CD-A (trace 1a18c0171724f5ed — the real
+// classOverview adapter, frozen-core parity; the 501 mapping remains for
+// the constructible dormant module). The /api/v1/* fallback
 // below stays the 404-after-auth path for NO router claimed.
 //
 // ⚠️ OUT-OF-FENCE COMMIT (T-MIG-034, R0 ratification requested):
