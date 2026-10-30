@@ -22657,3 +22657,19 @@ Task ID: T-OEQ-MATHSB-SERVE-1 run-026 (operator trace 1a18a26e71056d75: "wave-3 
 - Post-merge verification: main a2ad444e CI 2/2 GREEN (verify then hub, ~3min total, two bounded re-checks); this receipt pushed bookkeeping-only .syllabai/** on that GREEN base per gates-green-first law.
 - Skipped: #296 bd2c0b1e FAIL(hub) unchanged — static saga residual continues, author/operator disposition still awaited (sole remaining open PR after this merge).
 - Ops notes: mirror reset #273 on sweep entry (local found at signature 89962a5d, restored to origin/main c195f5d1, zero data loss, signature unchanged); receipt numbering: R0-AUTO-82 was consumed by the concurrent 07:00+08 sweep instance (its receipt 6f49e87a, "#464 + #466 merged, main c779c7fa CI 2/2 GREEN") — this ledger continues at 83 after tail re-read; sandbox flap #14 (09:00+08 sweep lost entirely to sandbox-start failure, zero-op round) accumulated.
+
+---
+Task ID: NEON-PAUSE-001 run-003 (operator order trace 1a18bce8f9742f7d: "Check the current status of the database?")
+Agent: main (Z.ai, session web-590847c1)
+Task: Status sweep of the Neon estate post-adjudication (day 3).
+
+Work Log:
+- MAIN: SUSPENDED-UNCHANGED — consumption byte-exact frozen vs run-002 (transfer 5.60/5 GB, compute 206,238 s, logical 408.5 MB, history 657 kB) = zero egress since Oct-27T16:07Z; proxy 53000 re-captured first-hand; Oct-28/29 ops = refused start attempts; endpoint idle/disabled=false.
+- W1: ALIVE + ACTIVE — sibling-lane writes confirmed (period compute +2,098 s, transfer 13.7->380 MB = 7.6% of quota, API logical 40->277 MB); last ops Oct-29 17:57-18:04Z; CONNECT_OK; no quota risk at trajectory.
+- Carrier: health 200 UP (DB-less); register real-path 500 first-hand (no row) -> learner DB plane still DOWN. Hub static of-record fine.
+- ETA: auto-resume 2026-11-01T00:00:00Z (~40 h from sweep); Launch upgrade = immediate; prevention package mandatory pre-reset (0.21 GB/day re-trips mid-Nov).
+- Environment: v2-np corrupted/repurposed by foreign UUID lineage (b5ebe1e, no origin ref) — LEFT UNTOUCHED; fresh shallow clone v2-run003 at tip 3245de7 (R0-AUTO-83 absorbed), config scrubbed, run-001/002 receipts verified on origin.
+- Filed+pushed same-turn: receipts/NEON-PAUSE-001/run-003-status-sweep-r0.json; scrub-verified (config + staged).
+
+Stage Summary:
+- LANE: BLOCKED_ON_PLATFORM_QUOTA (steady state, day 3). Nothing executable until Nov-1 auto-resume (~40 h) or operator Launch upgrade. On resume: parity census gate -> blocked cars of-record. Secrets: napi_ + both npg_ 4th transit.

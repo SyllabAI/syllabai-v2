@@ -1,0 +1,16 @@
+{
+  "run": "run-003",
+  "task": "NEON-PAUSE-001",
+  "at": "2026-10-30T07:56-08:05Z (wire-observed UTC)",
+  "trace": "1a18bce8f9742f7d",
+  "operator_order": "\"Check the current status of the database?\"",
+  "main_status": "SUSPENDED-UNCHANGED (day 3): consumption BYTE-EXACT frozen vs run-002 — data_transfer 5,596,915,289 B (5.60/5 GB, 112%), compute_time 206,238 s, logical_size 408,543,232 B, pitr_history 657,328 B -> ZERO egress since last_active 2026-10-27T16:07:31Z. Endpoint idle, disabled=false. Proxy 53000 'Your account or project has exceeded the quota. Upgrade your plan to increase limits.' re-captured first-hand 07:58Z. Three finished ops since suspension (Oct-28 16:17Z, Oct-29 08:43/08:47Z) = refused start attempts (no compute/transfer movement; kind hidden to org-scoped keys). POST /start -> 423 of-record (run-002) stands.",
+  "w1_status": "ALIVE + ACTIVE (sibling-lane workload): period compute 3,572 -> 5,670 s; transfer 13.7 -> 380 MB (7.6% of 5 GB — healthy); API logical 40 -> 277 MB (pg_database_size 241 MB; metric definitions differ — net: real writes confirmed); last ops Oct-29 17:57-18:04Z; endpoint idle (scaled-to-zero, resumes on connect); probe CONNECT_OK 1,554 ms; active_queries empty. No quota risk at current trajectory (~127 MB/day).",
+  "carrier_wire": "/actuator/health 200 UP (DB-less readiness); register real-path 500 internal_error first-hand 07:58:08Z (no row created) -> learner DB plane (auth/progress/books/tutor) still DOWN. Hub static plane of-record fine (not re-probed).",
+  "eta": "Auto-resume at quota_reset_at 2026-11-01T00:00:00Z ~= 40 h from sweep (~Nov-1 05:30-06:00 Dhaka). Launch upgrade = immediate alternative. Prevention package (run-002) MANDATORY before reset: run-rate ~0.21 GB/day re-trips the 5 GB wall mid-November.",
+  "post_resume_queue": "Unchanged of-record: parity census vs NEON-DB-LOSS gate -> T-BOOK-068 flip / embed 1,330 / T-MIG-141 Phase-D 3,012 / ADR-038 relief (bytea offload + cache headers + paginated drains) / backup-law implementation.",
+  "environment_note": "repos/v2-np found CORRUPTED/REPURPOSED post-run-002: HEAD on foreign UUID-lineage commit b5ebe1e, origin/main ref missing, fetch fails (access rights). Treated as foreign residue LEFT UNTOUCHED (same class as v2-run014/plane-broadcast). Fresh shallow clone repos/v2-run003 at tip 3245de7 (R0-AUTO-83 merge-desk sweep absorbed; PR #479 era); config scrubbed post-clone (0 ghp_) per run-001 leak lesson. Nothing of-record lost — run-001/002 receipts verified present on origin.",
+  "secrets": "napi_ + MAIN npg_ + W1 npg_ inline volatile (4th transit of-record). Scrub-verified: .git/config clean + staged delta 0 real-token matches.",
+  "writes": "MAIN: zero (refused pre-compute). W1: zero (read-only probes). Vercel: zero mutations. One carrier register attempt (500, no row created).",
+  "receipt_culture": "fresh-clone-at-tip (fetch-first degenerate), incremental-commit same-turn push, no force"
+}
