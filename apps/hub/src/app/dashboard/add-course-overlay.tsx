@@ -93,10 +93,16 @@ export function AddCourseOverlay({
     return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
   }, [courses, board]);
 
+  // Audit #3: already-added lanes stay in the list. The previous
+  // `!has(c.slug)` filter made the lane's "Added" state and its inline
+  // ExamSeriesPicker unreachable dead UI — a course you had added could
+  // never get its exam series declared or changed from this dialog, which
+  // is exactly what the picker rides the enrolment for (T-C79). It also
+  // made adding destructive to the list: the lane vanished the moment the
+  // Add button was pressed.
   const list = useMemo(() => {
     const needle = q.trim().toLowerCase();
     return courses
-      .filter((c) => !has(c.slug))
       .filter((c) => !board || boardOf(c) === board)
       .filter((c) => !level || c.level === level)
       .filter(
@@ -112,7 +118,13 @@ export function AddCourseOverlay({
           a.label.localeCompare(b.label) ||
           a.slug.localeCompare(b.slug),
       );
-  }, [courses, has, board, level, q]);
+  }, [courses, board, level, q]);
+
+  // the list's already-added lanes — the footer counts the honest remainder
+  const addedCount = useMemo(
+    () => list.reduce((n, c) => (has(c.slug) ? n + 1 : n), 0),
+    [list, has],
+  );
 
   const handleOpenChange = (next: boolean) => {
     if (next) {
@@ -227,7 +239,7 @@ export function AddCourseOverlay({
                 <p className="py-6 text-center text-sm text-muted-foreground">
                   {q
                     ? `No ${board} ${level} course matches “${q}”.`
-                    : `Every ${board} ${level} course is already in My subjects.`}
+                    : `No ${board} ${level} lanes in the registry yet.`}
                 </p>
               ) : (
                 list.map((c) => {
@@ -288,7 +300,9 @@ export function AddCourseOverlay({
         <DialogFooter className="items-center gap-2 sm:justify-between">
           <p className="text-xs text-muted-foreground">
             {level
-              ? `${list.length} ${list.length === 1 ? "lane" : "lanes"} not yet added`
+              ? `${list.length - addedCount} of ${list.length} ${
+                  list.length === 1 ? "lane" : "lanes"
+                } not yet added`
               : "You can add several subjects before closing."}
           </p>
           <Button type="button" onClick={() => handleOpenChange(false)}>
