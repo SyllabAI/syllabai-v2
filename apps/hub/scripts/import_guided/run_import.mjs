@@ -65,7 +65,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const require = createRequire(import.meta.url);
-const Ajv = require("/home/z/node_modules/ajv");
+const Ajv = require("/home/z/my-project/syllabai-v2/node_modules/ajv");
 
 // ── lane workspace anchors (of-record run locations) ────────────────────────
 const REPO = "SyllabAI/syllabai-resources";
@@ -361,6 +361,98 @@ const FEEDS = {
     },
     targetSchemas: ["hub/lesson-import/1.3", "sme-question-package/1.0"],
   },
+  "r3-check-types-v7": {
+    manifest: "hub-import-manifest-v7.json",
+    manifest_version: 7,
+    lesson_kind: "hub-lesson-import-1.4", // legacy single-kind field; v7 uses lessonKinds below
+    lessonKinds: { "hub-lesson-import-1.3": 110, "hub-lesson-import-1.4": 2 }, // generation-union census
+    adapter: "guided-lesson-0.5--hub-lesson-import-1.4",
+    directive: "run the R3 mixed check types stage-A pilot chain — import the 1.4/1.1 generation (queue trace 1a189fd011119961, operator execute trace 1a18a0218b7f44fd)",
+    promo: {
+      // promotion commit of record = the resources PR #228 MERGE commit (byte-identical
+      // content to branch commit C 6aab46b; message carries the execute trace)
+      commit: "11e63360e498c0d83eb98fb65dc7ab87d166159f",
+      tree: "adf81106283bb92f6fc05130ea8945d3caaa33cf",
+      parent: "3b2ce8da700b80f51700fb34fc721c90d6654d6b", // resources main at the merge
+      trace: "1a18a0218b7f44fd",
+    },
+    integration_branch: null, // ancestry of record — hub run happens only after the resources PR merges
+    artifact_pin: "71922d1510ee9e00400667670b40f36e1ae5d456", // the 110 untouched lessons keep the source-0.4 (1.3) pin
+    artifact_pins_by_note: {
+      // the 2 pilot notes re-pin BOTH channels to the source-0.5 generation (commit A)
+      rn_2MpXPtNXvn8pQm3r: "80afdb8e02b628754f0e522d257e54d046ba5b0f",
+      rn_8T5GfPn2q7sY2YCh: "80afdb8e02b628754f0e522d257e54d046ba5b0f",
+    },
+    pkg_pin: "4d857c472fd725597ac21db189542c8f12c82dba", // INT-0 — the 110 untouched packages stay byte-identical
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    pilotDelta: {
+      files: [
+        "rn_2MpXPtNXvn8pQm3r.hub-lesson-import.json",
+        "rn_8T5GfPn2q7sY2YCh.hub-lesson-import.json",
+        "rn_2MpXPtNXvn8pQm3r.sme-question-package.json",
+        "rn_8T5GfPn2q7sY2YCh.sme-question-package.json",
+      ],
+    },
+    schemas: {
+      hub: "/home/z/my-project/scripts/r3-survivors/hub-lesson-import.1.4.schema.json",
+      pkg: "/home/z/my-project/scripts/r3-survivors/sme-question-package.1.1.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.4.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.1.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/r3-survivors/hub-import-manifest-v7.json",
+      int3: "/home/z/my-project/scripts/r3-survivors/INT-3-transform-record-r3-check-types.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261030-r3-check-types.json`,
+    identity: {
+      notes: 112,
+      lessons: 239,
+      checks: 1211,
+      keyPoints: 1212,
+      distractors: 3565,
+      glossaryTerms: 654,
+      figures: 200,
+      figures_module_mapped: 122,
+      figures_note_level: 78,
+      workedExamples_populated: 112,
+      workedExamples_null: 0,
+      authored_chars_conserved: 1429907,
+      authored_chars_v3_baseline: 1347771,
+      added_chars: 82136,
+      captions_coalesced: 143,
+      captions_row_context: 16,
+      captions_inline: 3,
+      captions_none: 38,
+      binding_heading_unique: 90,
+      binding_sole_lesson: 0,
+      binding_content_overlap: 12,
+      binding_note_level: 78,
+      binding_unresolved: 20,
+      figures_binding_narrowed: 102,
+      figures_claims_changed: 12,
+      figures_wholesale_claims_kept: 2,
+      checks_written: 16,
+      checks_mcq: 1195,
+      written_recall: 8,
+      written_explain_why: 4,
+      written_application: 4,
+    },
+    figures_feed: true,
+    we_feed: true, // the 1.3 stream is the declared baseline; this feed's equality gate is per-note vs the figures-2.2 INT-3 anchors (110 exact; 2 pilots carry the 16 written items' tokens)
+    landing: "revision", // declared G-DELTA: exactly the 4 pilot files re-pin (2 lessons + 2 packages); everything else byte-identical
+    relFor(a) {
+      if (!a.path.startsWith("SME-GuidedLessons/integration/")) throw new Error(`v7 manifest path not integration-relative: ${a.path}`);
+      return a.path;
+    },
+    pathFamily(a) {
+      return (
+        ((a.kind === "hub-lesson-import-1.3" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.3/")) ||
+          (a.kind === "hub-lesson-import-1.4" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.4/"))) ||
+        (a.kind === "sme-question-package" && (a.path.startsWith("SME-GuidedLessons/integration/question-packages/") || a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.1/")))
+      );
+    },
+    targetSchemas: ["hub/lesson-import/1.4", "sme-question-package/1.1"],
+  },
 };
 
 const FEED_ID = process.env.FEED || "fullcorpus-v2";
@@ -460,6 +552,12 @@ function targetTokens(hub, pkg) {
   for (const q of pkg.questions) {
     s.push(q.stem, q.misconceptionClass);
     for (const o of q.options) { s.push(o.key, o.text, o.explanation); if (o.misconception != null) s.push(o.misconception); }
+    // R3 written-kind extension (feed-safe: 1.0 packages carry no kind field -> walk unchanged):
+    // kind/modelAnswer/keywords ARE §7 stream tokens on written items (adapter spec 0.5 §7)
+    if (q.kind && q.kind !== "mcq") {
+      if (q.modelAnswer != null) s.push(q.modelAnswer);
+      if (Array.isArray(q.keywords)) for (const k of q.keywords) s.push(k);
+    }
   }
   return s;
 }
@@ -525,7 +623,16 @@ async function main() {
   check("G-A", "224 artifacts listed", Array.isArray(man.artifacts) && man.artifacts.length === 224, String(man.artifacts && man.artifacts.length));
   const kinds = {};
   for (const a of man.artifacts) kinds[a.kind] = (kinds[a.kind] || 0) + 1;
-  check("G-A", "kinds 112/112", kinds[F.lesson_kind] === 112 && kinds["sme-question-package"] === 112, JSON.stringify(kinds));
+  if (F.lessonKinds) {
+    // v7 checks_feed: generation-union census (110x1.3 + 2x1.4 lessons + 112 packages)
+    const kindsOk =
+      Object.entries(F.lessonKinds).every(([k, n]) => kinds[k] === n) &&
+      kinds["sme-question-package"] === 112 &&
+      Object.keys(F.lessonKinds).reduce((a, k) => a + kinds[k], 0) === 112;
+    check("G-A", "kinds 112/112 (generation-union: 110x1.3 + 2x1.4 + 112 packages)", kindsOk, JSON.stringify(kinds));
+  } else {
+    check("G-A", "kinds 112/112", kinds[F.lesson_kind] === 112 && kinds["sme-question-package"] === 112, JSON.stringify(kinds));
+  }
   check("G-A", "counts == closing identity", JSON.stringify(man.counts) === JSON.stringify(F.identity), JSON.stringify(man.counts));
   check("G-A", "conservation block present", !!(man.conservation && man.conservation.authored_stream_sha256 && man.conservation.wave_stream_sha256), "");
   check("G-A", "adapter of record", man.load_scope && man.load_scope.adapter === F.adapter, man.load_scope && man.load_scope.adapter);
@@ -597,8 +704,12 @@ async function main() {
     if (!H0.source || H0.source.noteId !== p.noteId || P0.source.noteId !== p.noteId) errs.push("source.noteId");
     // provenance pins: the lesson channel pins to the feed's source generation; the question
     // packages stay pinned to their own generation (v2 feed: both = INT-0; figures feed:
-    // lessons = commit A, packages = INT-0 — the split IS the declared delta of the revision)
-    if (H0.source.pinnedRef !== F.artifact_pin || P0.source.pinnedRef !== (F.pkg_pin || F.artifact_pin)) errs.push("pinnedRef");
+    // lessons = commit A, packages = INT-0 — the split IS the declared delta of the revision).
+    // v7 checks_feed: the pilot notes re-pin BOTH channels to the source-0.5 commit A
+    // (F.artifact_pins_by_note), untouched lessons/packages keep their generation pins.
+    const hubPin = (F.artifact_pins_by_note && F.artifact_pins_by_note[p.noteId]) || F.artifact_pin;
+    const pkgPin = (F.artifact_pins_by_note && F.artifact_pins_by_note[p.noteId]) || (F.pkg_pin || F.artifact_pin);
+    if (H0.source.pinnedRef !== hubPin || P0.source.pinnedRef !== pkgPin) errs.push("pinnedRef");
     if (!F.pkg_pin && H0.source.sourceLayerSha256 !== P0.source.sourceLayerSha256) errs.push("sourceLayerSha256 mismatch hub/pkg");
     const mods = H0.lesson.modules;
     const flat = [];
@@ -617,8 +728,17 @@ async function main() {
       if (q.id !== rid) errs.push(`order/backref q#${qi}`);
       if (q.moduleId !== mid) errs.push(`moduleId q#${qi}`);
       if (!idOk(q.id, p.noteId, null, null) && !/::L\d+::Q\d+$/.test(q.id)) errs.push(`question id grammar ${q.id}`);
-      const correctN = (q.options || []).filter((o) => o.correct === true).length;
-      if (correctN !== 1) errs.push(`q ${q.id} correct!=1`);
+      if (F.checks_feed && q.kind && q.kind !== "mcq") {
+        // v7 written-kind branch (fail-closed): empty options; modelAnswer required (missing
+        // -> reveal-only downstream, never gradeable, never blank); kind must be one of the
+        // three written values of record (unknown kinds fail the gate, never guessed)
+        if (!Array.isArray(q.options) || q.options.length !== 0) errs.push(`written q ${q.id} options not empty`);
+        if (q.modelAnswer == null || q.modelAnswer.length === 0) errs.push(`written q ${q.id} missing modelAnswer (reveal-only)`);
+        if (!["recall", "explain-why", "application"].includes(q.kind)) errs.push(`unknown kind ${q.kind} on ${q.id}`);
+      } else {
+        const correctN = (q.options || []).filter((o) => o.correct === true).length;
+        if (correctN !== 1) errs.push(`q ${q.id} correct!=1`);
+      }
     });
     if (F.figures_feed) {
       // figure closure: module.figureIds ↔ lesson.figures[].moduleIds, both directions
@@ -659,7 +779,10 @@ async function main() {
   let phiFails = 0;
   let legacyFails = 0;
   for (const anchor of int3.notes) {
-    const hubP = byNote.get(F.lesson_kind + "|" + anchor.noteId);
+    const hubKey = F.lessonKinds
+      ? Object.keys(F.lessonKinds).map((k) => k + "|" + anchor.noteId).find((key) => byNote.has(key))
+      : F.lesson_kind + "|" + anchor.noteId;
+    const hubP = hubKey ? byNote.get(hubKey) : null;
     const pkgP = byNote.get("sme-question-package|" + anchor.noteId);
     if (!hubP || !pkgP) { phiFails++; continue; }
     const toks = targetTokens(hubP.obj, pkgP.obj);
@@ -722,14 +845,21 @@ async function main() {
   }
   check("LAND", `224 artifacts landed byte-exact (${F.landing} law)`, written + noop + revised === 224, `${written} written, ${revised} revised, ${noop} already identical`);
   if (F.landing === "revision" && preDisk) {
-    // exactly the 112 lesson files revised; the 112 question files byte-identical
-    const revisedBad = landLog.filter((l) => !l.file.endsWith(".hub-lesson-import.json"));
-    check("G-DELTA", "revision touched ONLY the 112 lesson files", revised === 112 && revisedBad.length === 0, `${revised} revised (${landLog.filter((l) => l.file.endsWith(".hub-lesson-import.json")).length} lesson files); non-lesson revisions: ${revisedBad.length}`);
+    if (F.pilotDelta) {
+      // v7 checks_feed: declared revision of exactly the pilot files (2 lessons + 2 packages)
+      const expected = new Set(F.pilotDelta.files);
+      const revisedBad = landLog.filter((l) => !expected.has(l.file));
+      check("G-DELTA", "revision touched ONLY the declared pilot files (2 lessons + 2 packages)", revised === F.pilotDelta.files.length && revisedBad.length === 0, `${revised} revised (${landLog.map((l) => l.file).join(", ")}); undeclared: ${revisedBad.length}`);
+    } else {
+      // exactly the 112 lesson files revised; the 112 question files byte-identical
+      const revisedBad = landLog.filter((l) => !l.file.endsWith(".hub-lesson-import.json"));
+      check("G-DELTA", "revision touched ONLY the 112 lesson files", revised === 112 && revisedBad.length === 0, `${revised} revised (${landLog.filter((l) => l.file.endsWith(".hub-lesson-import.json")).length} lesson files); non-lesson revisions: ${revisedBad.length}`);
+    }
     const qDrift = parsed.filter((p) => p.kind === "sme-question-package").filter((p) => {
       const dest = path.join(LAND_QUESTIONS, path.basename(p.path));
       return sha256(fs.readFileSync(dest)) !== p.sha256;
     });
-    check("G-DELTA", "question packages byte-identical post-land ×112", qDrift.length === 0, `${qDrift.length} drift`);
+    check("G-DELTA", "question packages byte-identical post-land vs manifest ×112", qDrift.length === 0, `${qDrift.length} drift`);
   }
 
   // in-pack import index (runner-derived bytes, not part of the conserved stream)

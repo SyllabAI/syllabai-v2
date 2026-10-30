@@ -70,6 +70,7 @@ import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import { figuresForModule } from "@/lib/guided-figures";
+import { checkMode, gradeWritten } from "@/lib/guided-written";
 import type {
   GuidedDepthLayer,
   GuidedFigure,
@@ -1065,10 +1066,91 @@ function CheckQuestion({
   answered: { picked: string; correct: boolean } | null;
   onAnswer: (qid: string, picked: string, correct: boolean) => void;
 }) {
+  const mode = checkMode(question);
+  // R3 written kinds: gradable == known written kind WITH keywords; otherwise the
+  // flow offers reveal-only settle (model answer shown, no verdict, never graded)
+  const gradable = mode === "written" && !!question.keywords && question.keywords.length > 0;
+  const [text, setText] = useState(answered?.picked ?? "");
   const [picked, setPicked] = useState<string | null>(answered?.picked ?? null);
+  const settled = answered !== null;
+
+  if (mode !== "mcq") {
+    const modelAnswer = question.modelAnswer;
+    return (
+      <fieldset className="space-y-2.5">
+        <legend className="text-sm font-medium leading-snug">
+          <span className="mr-2 text-muted-foreground">{index}.</span>
+          {question.stem}
+        </legend>
+        <p className="text-xs uppercase tracking-wide text-muted-foreground">
+          Written response{question.kind ? ` · ${question.kind.replace("-", " ")}` : ""}
+        </p>
+        {gradable && (
+          <div className="grid gap-1.5">
+            <label htmlFor={`flow-written-${index}`} className="text-[13px] font-medium">
+              Your answer
+            </label>
+            <textarea
+              id={`flow-written-${index}`}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              disabled={settled}
+              rows={2}
+              className={cn(
+                "min-h-[56px] w-full rounded-md border bg-transparent px-3 py-2 text-[13px] leading-relaxed",
+                "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-primary",
+                "disabled:cursor-default disabled:opacity-70",
+              )}
+              placeholder="Write your answer in your own words…"
+            />
+          </div>
+        )}
+        {!settled && (
+          gradable ? (
+            <Button
+              size="sm"
+              disabled={text.trim() === ""}
+              onClick={() => {
+                const verdict = gradeWritten(question, text);
+                // the keyword-hit boolean rides the existing onAnswer signature —
+                // tallies/gating/recalibration are unchanged (adapter spec 0.5 §6)
+                onAnswer(question.id, text.trim(), verdict === "correct");
+              }}
+            >
+              Submit answer
+            </Button>
+          ) : (
+            <Button size="sm" onClick={() => onAnswer(question.id, "", false)}>
+              Reveal model answer
+            </Button>
+          )
+        )}
+        {settled && answered && (
+          <div className="space-y-2" role="status">
+            {gradable &&
+              (answered.correct ? (
+                <p className="flex items-center gap-2 text-[13px] font-semibold text-emerald-700 dark:text-emerald-400">
+                  <ThumbsUp className="size-4" aria-hidden />
+                  Great job!
+                </p>
+              ) : (
+                <p className="text-[13px] font-semibold text-red-700 dark:text-red-400">Not quite.</p>
+              ))}
+            {modelAnswer ? (
+              <p className="text-[13px] leading-relaxed text-muted-foreground">
+                Model answer: <span className="font-medium text-foreground">{modelAnswer}</span>
+              </p>
+            ) : (
+              <p className="text-[13px] text-muted-foreground">Model answer unavailable for this item.</p>
+            )}
+          </div>
+        )}
+      </fieldset>
+    );
+  }
+
   const correctOption = question.options.find((o) => o.correct);
   const pickedOption = question.options.find((o) => o.key === picked);
-  const settled = answered !== null;
 
   return (
     <fieldset className="space-y-2.5">
