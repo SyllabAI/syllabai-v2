@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_3B8JxsSjJvR9B4fk",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "baeeef2fe85f0c36374da65dfe14b6e2b2071b9c87a4298b0a85a3dc2ce87e52",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "db193afbac15ad776f1682efd676fab8d2a12db68e12e7629c46ef856e220b24",
+    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
   },
   "packageId": "igcse-chemistry::rn_3B8JxsSjJvR9B4fk",
   "subject": "igcse-chemistry",
@@ -192,6 +192,91 @@
       ]
     },
     {
+      "id": "rn_3B8JxsSjJvR9B4fk::L1::Q6",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L1",
+      "stem": "State the two substances that must both be present for iron to rust.",
+      "misconceptionClass": "rusting conditions recall",
+      "kind": "recall",
+      "modelAnswer": "Both oxygen and water must be present for iron to rust; either one on its own is not enough.",
+      "keywords": [
+        "oxygen",
+        "water",
+        "both",
+        "air",
+        "moisture",
+        "present",
+        "need",
+        "needs"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3B8JxsSjJvR9B4fk::L1::Q7",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L1",
+      "stem": "What job does the calcium chloride do in the dry test tube of the rusting experiment?",
+      "misconceptionClass": "drying agent role recall",
+      "kind": "recall",
+      "modelAnswer": "Calcium chloride is a drying agent: it absorbs water molecules, keeping the air in that tube dry.",
+      "keywords": [
+        "drying",
+        "agent",
+        "absorbs",
+        "absorb",
+        "absorbing",
+        "water",
+        "calcium",
+        "chloride",
+        "dry",
+        "moisture"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3B8JxsSjJvR9B4fk::L1::Q8",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L1",
+      "stem": "Explain why only one of the three nails rusts in the classic three-tube experiment.",
+      "misconceptionClass": "control tubes reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Only the nail with both air and water can rust. The boiled-water tube has no dissolved oxygen left, and the drying agent keeps the dry tube free of water, so each control lacks one of the two substances rusting needs.",
+      "keywords": [
+        "oxygen",
+        "water",
+        "boiled",
+        "drying",
+        "agent",
+        "both",
+        "air",
+        "control",
+        "lacks",
+        "one"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3B8JxsSjJvR9B4fk::L1::Q9",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L1",
+      "stem": "An iron gate is scratched down to the metal on a rainy day. Use the rusting conditions and the nature of rust to describe what will happen to the scratch over time.",
+      "misconceptionClass": "scratch corrosion prediction",
+      "kind": "application",
+      "modelAnswer": "Water from the rain and oxygen from the air are both present at the scratch, so the exposed iron rusts. The rust flakes off easily, exposing fresh iron underneath, so the corrosion keeps going and the gate weakens over time.",
+      "keywords": [
+        "oxygen",
+        "water",
+        "air",
+        "rust",
+        "rusts",
+        "flakes",
+        "flaking",
+        "fresh",
+        "iron",
+        "weakens",
+        "exposed",
+        "continue",
+        "continues"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_3B8JxsSjJvR9B4fk::L2::Q1",
       "moduleId": "rn_3B8JxsSjJvR9B4fk::L2",
       "stem": "Which set names common barrier methods?",
@@ -372,6 +457,91 @@
       ]
     },
     {
+      "id": "rn_3B8JxsSjJvR9B4fk::L2::Q6",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L2",
+      "stem": "Name the common barrier methods listed for protecting iron from rusting.",
+      "misconceptionClass": "barrier methods recall",
+      "kind": "recall",
+      "modelAnswer": "Paint, oil, grease and electroplating are the common barrier methods named in the note.",
+      "keywords": [
+        "paint",
+        "oil",
+        "grease",
+        "electroplating",
+        "coating",
+        "barrier",
+        "barriers"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3B8JxsSjJvR9B4fk::L2::Q7",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L2",
+      "stem": "How exactly do barriers stop iron from rusting?",
+      "misconceptionClass": "barrier mechanism recall",
+      "kind": "recall",
+      "modelAnswer": "A barrier keeps water and oxygen away from the iron, so the two substances needed for rust never reach the metal.",
+      "keywords": [
+        "water",
+        "oxygen",
+        "away",
+        "keep",
+        "keeps",
+        "keeping",
+        "air",
+        "reach",
+        "stops",
+        "prevent",
+        "prevents"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3B8JxsSjJvR9B4fk::L2::Q8",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L2",
+      "stem": "Explain why a scratched barrier can be more damaging than it first appears.",
+      "misconceptionClass": "porous rust reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Once the coating is broken the iron is exposed and rusts again. Because rust is porous it does not seal the surface, so corrosion continues internally underneath and the damage spreads.",
+      "keywords": [
+        "porous",
+        "exposed",
+        "continues",
+        "continue",
+        "internally",
+        "inside",
+        "coating",
+        "rust",
+        "broken",
+        "scratched",
+        "spreads"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3B8JxsSjJvR9B4fk::L2::Q9",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L2",
+      "stem": "Some metals used outdoors never need painting, unlike iron railings. Use this lesson's comparison to explain why their surfaces stay sound once formed.",
+      "misconceptionClass": "protective layer comparison",
+      "kind": "application",
+      "modelAnswer": "Unlike iron, some other metals form protective layers that do not flake away, so the surface stays sealed and the metal underneath is protected; iron's rust is porous and flakes, so it never protects the metal below it.",
+      "keywords": [
+        "protective",
+        "layer",
+        "layers",
+        "flake",
+        "flakes",
+        "porous",
+        "sealed",
+        "protect",
+        "protects",
+        "iron",
+        "unlike",
+        "away"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_3B8JxsSjJvR9B4fk::L3::Q1",
       "moduleId": "rn_3B8JxsSjJvR9B4fk::L3",
       "stem": "Why is zinc chosen as the sacrificial metal for iron?",
@@ -550,6 +720,96 @@
           "misconception": "protection wrongly cancelled"
         }
       ]
+    },
+    {
+      "id": "rn_3B8JxsSjJvR9B4fk::L3::Q6",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L3",
+      "stem": "Describe how sacrificial protection keeps a piece of iron safe.",
+      "misconceptionClass": "sacrificial protection recall",
+      "kind": "recall",
+      "modelAnswer": "A more reactive metal is attached to the iron; that metal oxidises and corrodes first, so it is sacrificed while the iron itself is protected.",
+      "keywords": [
+        "more",
+        "reactive",
+        "metal",
+        "attached",
+        "attached",
+        "corrodes",
+        "corrode",
+        "first",
+        "oxidises",
+        "oxidizes",
+        "sacrificed",
+        "protects"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3B8JxsSjJvR9B4fk::L3::Q7",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L3",
+      "stem": "What maintenance do the zinc bars on a steel ship need, and why must it be done in time?",
+      "misconceptionClass": "zinc bar maintenance recall",
+      "kind": "recall",
+      "modelAnswer": "The zinc bars must be replaced before they completely corrode, because the zinc sacrifices itself by corroding first; once it is gone the iron would no longer be protected.",
+      "keywords": [
+        "replaced",
+        "replace",
+        "renewed",
+        "corrode",
+        "corroded",
+        "corrode",
+        "completely",
+        "zinc",
+        "before",
+        "gone"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3B8JxsSjJvR9B4fk::L3::Q8",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L3",
+      "stem": "Zinc blocks are bolted to a steel hull below the waterline. Use electron loss to explain why the zinc corrodes first while the iron behind it survives.",
+      "misconceptionClass": "electron loss sacrificial reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Zinc loses its electrons more easily than iron, so zinc is oxidised more easily and corrodes first; the zinc gives up its electrons in place of the iron and keeps the iron intact.",
+      "keywords": [
+        "electrons",
+        "electron",
+        "loses",
+        "lost",
+        "oxidised",
+        "oxidized",
+        "easily",
+        "corrodes",
+        "corrode",
+        "first",
+        "instead",
+        "place"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3B8JxsSjJvR9B4fk::L3::Q9",
+      "moduleId": "rn_3B8JxsSjJvR9B4fk::L3",
+      "stem": "Scratch a galvanised dustbin deeply and leave it out in the rain: the iron at the scratch still stays rust-free. Give the two ways the zinc continues to protect the damaged spot.",
+      "misconceptionClass": "galvanising double protection",
+      "kind": "application",
+      "modelAnswer": "The surrounding zinc coating still keeps water and oxygen away from the scratch as a barrier, and zinc carbonate (ZnCO3) forms when the zinc meets the air to strengthen that barrier; in addition the zinc in contact with the iron acts sacrificially, corroding before the iron does.",
+      "keywords": [
+        "barrier",
+        "znco3",
+        "zinc",
+        "sacrificial",
+        "sacrificially",
+        "corrodes",
+        "corroding",
+        "iron",
+        "coating",
+        "water",
+        "oxygen",
+        "before"
+      ],
+      "options": []
     }
   ]
 }

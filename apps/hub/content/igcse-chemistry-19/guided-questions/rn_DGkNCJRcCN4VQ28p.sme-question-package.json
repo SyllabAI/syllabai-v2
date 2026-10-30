@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_DGkNCJRcCN4VQ28p",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "2417fb593326e606c4f61a09f47932ed15aa28fb13e77cf6d44149a8ddc7599d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "c4e5d8ba5989103d857baa42b4e6ffbdb7d9de0a00a65ce898d31e8990b71f33",
+    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
   },
   "packageId": "igcse-chemistry::rn_DGkNCJRcCN4VQ28p",
   "subject": "igcse-chemistry",
@@ -192,6 +192,91 @@
       ]
     },
     {
+      "id": "rn_DGkNCJRcCN4VQ28p::L1::Q6",
+      "moduleId": "rn_DGkNCJRcCN4VQ28p::L1",
+      "stem": "List the metals of the reactivity series of record in order, from the most reactive to the least reactive.",
+      "misconceptionClass": "reactivity series order recall",
+      "kind": "recall",
+      "modelAnswer": "Potassium, sodium, lithium, calcium, magnesium, aluminium, zinc, iron, copper, silver and gold, running from the most reactive at the top to the least reactive at the bottom.",
+      "keywords": [
+        "potassium",
+        "sodium",
+        "lithium",
+        "calcium",
+        "magnesium",
+        "aluminium",
+        "zinc",
+        "iron",
+        "copper",
+        "silver",
+        "gold"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DGkNCJRcCN4VQ28p::L1::Q7",
+      "moduleId": "rn_DGkNCJRcCN4VQ28p::L1",
+      "stem": "Where do the non-metals carbon and hydrogen sit in the reactivity series?",
+      "misconceptionClass": "non-metal seats recall",
+      "kind": "recall",
+      "modelAnswer": "Carbon sits between aluminium and zinc, and hydrogen sits between iron and copper.",
+      "keywords": [
+        "carbon",
+        "aluminium",
+        "zinc",
+        "hydrogen",
+        "iron",
+        "copper",
+        "between"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DGkNCJRcCN4VQ28p::L1::Q8",
+      "moduleId": "rn_DGkNCJRcCN4VQ28p::L1",
+      "stem": "Explain why carbon's position in the reactivity series matters industrially.",
+      "misconceptionClass": "extraction position reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Carbon's place between aluminium and zinc decides which metal oxides it can strip oxygen from: it is used to extract metals that sit below it in the series from their oxides.",
+      "keywords": [
+        "extraction",
+        "extract",
+        "extracted",
+        "oxides",
+        "oxide",
+        "reduce",
+        "reduction",
+        "position",
+        "below",
+        "metals",
+        "oxygen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DGkNCJRcCN4VQ28p::L1::Q9",
+      "moduleId": "rn_DGkNCJRcCN4VQ28p::L1",
+      "stem": "Iron fizzes in dilute acid but copper is untouched by the same acid. Use hydrogen's seat in the series to explain the difference.",
+      "misconceptionClass": "hydrogen seat consequence application",
+      "kind": "application",
+      "modelAnswer": "Hydrogen sits between iron and copper, so iron lies above hydrogen and can push hydrogen out of the acid, while copper lies below hydrogen and cannot displace it, which is why copper shows no reaction.",
+      "keywords": [
+        "hydrogen",
+        "above",
+        "below",
+        "iron",
+        "copper",
+        "acid",
+        "acids",
+        "displace",
+        "displaces",
+        "reacts",
+        "no",
+        "reaction"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_DGkNCJRcCN4VQ28p::L2::Q1",
       "moduleId": "rn_DGkNCJRcCN4VQ28p::L2",
       "stem": "Which word in the mnemonic stands for carbon?",
@@ -370,6 +455,83 @@
           "misconception": "extraction rule inverted"
         }
       ]
+    },
+    {
+      "id": "rn_DGkNCJRcCN4VQ28p::L2::Q6",
+      "moduleId": "rn_DGkNCJRcCN4VQ28p::L2",
+      "stem": "Which metals do the words lions, cats and monkeys stand for in the mnemonic?",
+      "misconceptionClass": "mnemonic word recall",
+      "kind": "recall",
+      "modelAnswer": "Lions stands for lithium, cats for calcium and monkeys for magnesium.",
+      "keywords": [
+        "lithium",
+        "calcium",
+        "magnesium",
+        "lions",
+        "cats",
+        "monkeys"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DGkNCJRcCN4VQ28p::L2::Q7",
+      "moduleId": "rn_DGkNCJRcCN4VQ28p::L2",
+      "stem": "Which two non-metals appear in the mnemonic, and which words mark their rungs?",
+      "misconceptionClass": "mnemonic non-metals recall",
+      "kind": "recall",
+      "modelAnswer": "Carbon appears as the word cute and hydrogen appears as the word hot.",
+      "keywords": [
+        "carbon",
+        "cute",
+        "hydrogen",
+        "hot",
+        "non-metals",
+        "nonmetals"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DGkNCJRcCN4VQ28p::L2::Q8",
+      "moduleId": "rn_DGkNCJRcCN4VQ28p::L2",
+      "stem": "Explain how the mnemonic keeps silver and gold in their correct places in the series.",
+      "misconceptionClass": "mnemonic tail reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Silver and gold finish the sentence, matching their places at the bottom of the series as the least reactive metals, so the end of the sentence mirrors the end of the series.",
+      "keywords": [
+        "finish",
+        "end",
+        "ends",
+        "bottom",
+        "least",
+        "reactive",
+        "silver",
+        "gold",
+        "sentence",
+        "mirrors"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_DGkNCJRcCN4VQ28p::L2::Q9",
+      "moduleId": "rn_DGkNCJRcCN4VQ28p::L2",
+      "stem": "A student expands the mnemonic's rungs as P, S, L, C, M, A, C, Z, I, H, C, S, G and notices two letters repeat. Name the metals at the repeated rungs and the metals each could be confused with.",
+      "misconceptionClass": "repeated initials application",
+      "kind": "application",
+      "modelAnswer": "C repeats: the first C is cute, which is carbon between aluminium and zinc, and the later C is copper. S repeats: the first S is send, which is sodium, while the final S is silver near the bottom.",
+      "keywords": [
+        "carbon",
+        "copper",
+        "sodium",
+        "silver",
+        "cute",
+        "send",
+        "repeat",
+        "repeated",
+        "rungs",
+        "aluminium",
+        "zinc"
+      ],
+      "options": []
     }
   ]
 }

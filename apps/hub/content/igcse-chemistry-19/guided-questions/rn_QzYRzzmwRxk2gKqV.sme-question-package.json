@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_QzYRzzmwRxk2gKqV",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "09bfd47a8460357973c72a93a9209c940b4408cdac679c613533badfe7f668e6",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "751e1dba5d82da937b8491e61d7c9b7b2d9ea84947af84af54b6a86026995959",
+    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
   },
   "packageId": "igcse-chemistry::rn_QzYRzzmwRxk2gKqV",
   "subject": "igcse-chemistry",
@@ -192,6 +192,92 @@
       ]
     },
     {
+      "id": "rn_QzYRzzmwRxk2gKqV::L1::Q6",
+      "moduleId": "rn_QzYRzzmwRxk2gKqV::L1",
+      "stem": "Define thermal decomposition.",
+      "misconceptionClass": "thermal decomposition definition recall",
+      "kind": "recall",
+      "modelAnswer": "Thermal decomposition is the breaking down of a substance due to the action of heat.",
+      "keywords": [
+        "breaking",
+        "down",
+        "breakdown",
+        "heat",
+        "heated",
+        "heating",
+        "substance",
+        "thermal",
+        "decomposition"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QzYRzzmwRxk2gKqV::L1::Q7",
+      "moduleId": "rn_QzYRzzmwRxk2gKqV::L1",
+      "stem": "State the general pattern for heating a metal carbonate that decomposes.",
+      "misconceptionClass": "carbonate pattern recall",
+      "kind": "recall",
+      "modelAnswer": "A metal carbonate breaks down to give a metal oxide and carbon dioxide.",
+      "keywords": [
+        "oxide",
+        "carbon",
+        "dioxide",
+        "co2",
+        "carbonate",
+        "metal",
+        "gives"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QzYRzzmwRxk2gKqV::L1::Q8",
+      "moduleId": "rn_QzYRzzmwRxk2gKqV::L1",
+      "stem": "Explain why copper(II) carbonate decomposes on heating while sodium carbonate, from the top of the reactivity series, resists the flame.",
+      "misconceptionClass": "series position decomposition reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Carbonates of the less reactive metals, those low in the series, break apart on heating; copper sits low in the reactivity series so its carbonate decomposes, while sodium sits at the very top, so its carbonate holds together.",
+      "keywords": [
+        "less",
+        "low",
+        "lower",
+        "reactive",
+        "reactivity",
+        "series",
+        "heat",
+        "heating",
+        "decomposes",
+        "copper",
+        "sodium",
+        "top",
+        "break"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QzYRzzmwRxk2gKqV::L1::Q9",
+      "moduleId": "rn_QzYRzzmwRxk2gKqV::L1",
+      "stem": "A heated tube holds a decomposing carbonate and the solid appears to lose mass. Account for the mass change using the general pattern of the breakdown.",
+      "misconceptionClass": "mass loss accounting",
+      "kind": "application",
+      "modelAnswer": "The metal carbonate gives a metal oxide and carbon dioxide; the carbon dioxide escapes as a gas, so its mass leaves the tube and the solid that remains appears lighter.",
+      "keywords": [
+        "carbon",
+        "dioxide",
+        "co2",
+        "gas",
+        "escapes",
+        "escape",
+        "escaping",
+        "mass",
+        "loss",
+        "lost",
+        "oxide",
+        "lighter",
+        "leaves"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_QzYRzzmwRxk2gKqV::L2::Q1",
       "moduleId": "rn_QzYRzzmwRxk2gKqV::L2",
       "stem": "What colour change is seen when copper(II) carbonate decomposes on heating?",
@@ -370,6 +456,88 @@
           "misconception": "unrelated process cited"
         }
       ]
+    },
+    {
+      "id": "rn_QzYRzzmwRxk2gKqV::L2::Q6",
+      "moduleId": "rn_QzYRzzmwRxk2gKqV::L2",
+      "stem": "Describe the colour change seen when copper(II) carbonate is heated in a test tube.",
+      "misconceptionClass": "colour change recall",
+      "kind": "recall",
+      "modelAnswer": "The green solid darkens little by little as black copper(II) oxide forms.",
+      "keywords": [
+        "green",
+        "black",
+        "darkens",
+        "dark",
+        "colour",
+        "color",
+        "copper(ii)",
+        "oxide",
+        "cuo"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QzYRzzmwRxk2gKqV::L2::Q7",
+      "moduleId": "rn_QzYRzzmwRxk2gKqV::L2",
+      "stem": "Write the symbol equation for the thermal decomposition of copper(II) carbonate, including the state symbols.",
+      "misconceptionClass": "decomposition equation recall",
+      "kind": "recall",
+      "modelAnswer": "CuCO3 (s) gives CuO (s) + CO2 (g).",
+      "keywords": [
+        "cuco3",
+        "cuo",
+        "co2",
+        "equation",
+        "copper",
+        "s",
+        "g"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QzYRzzmwRxk2gKqV::L2::Q8",
+      "moduleId": "rn_QzYRzzmwRxk2gKqV::L2",
+      "stem": "Explain why limewater turning milky identifies the gas given off in this experiment.",
+      "misconceptionClass": "limewater test reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The gas given off is carbon dioxide, and carbon dioxide turns limewater milky, so the milkiness is the positive test that confirms CO2 is the product of the decomposition.",
+      "keywords": [
+        "carbon",
+        "dioxide",
+        "co2",
+        "limewater",
+        "milky",
+        "milkiness",
+        "turns",
+        "confirms",
+        "confirm",
+        "test",
+        "positive"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_QzYRzzmwRxk2gKqV::L2::Q9",
+      "moduleId": "rn_QzYRzzmwRxk2gKqV::L2",
+      "stem": "12.40 g of copper(II) carbonate is heated to constant mass and 7.95 g of black solid remains. State the mass that left as gas and name the gas, using the equation of this lesson.",
+      "misconceptionClass": "mass conservation application",
+      "kind": "application",
+      "modelAnswer": "12.40 - 7.95 = 4.45 g left as carbon dioxide: CuCO3 gives CuO plus CO2, and the escaping CO2 carries the missing mass out of the tube as a gas.",
+      "keywords": [
+        "4.45",
+        "4.45",
+        "carbon",
+        "dioxide",
+        "co2",
+        "gas",
+        "escapes",
+        "mass",
+        "cuo",
+        "cuco3",
+        "missing"
+      ],
+      "options": []
     }
   ]
 }

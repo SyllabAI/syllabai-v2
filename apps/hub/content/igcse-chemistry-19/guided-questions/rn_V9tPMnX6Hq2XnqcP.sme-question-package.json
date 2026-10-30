@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_V9tPMnX6Hq2XnqcP",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "9cf73672b81f0f50f5acca4ad9cac98296ebe99d6416f0b1ee45bf44fe674b08",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "5cbda8faa49d03a3a09aa74e6c843764164fd43275b145e0b4d372925fcaeeb6",
+    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
   },
   "packageId": "igcse-chemistry::rn_V9tPMnX6Hq2XnqcP",
   "subject": "igcse-chemistry",
@@ -192,6 +192,94 @@
       ]
     },
     {
+      "id": "rn_V9tPMnX6Hq2XnqcP::L1::Q6",
+      "moduleId": "rn_V9tPMnX6Hq2XnqcP::L1",
+      "stem": "State the electron loss and the ion formed when a Group 1 metal takes part in a reaction.",
+      "misconceptionClass": "group 1 ion formation recall",
+      "kind": "recall",
+      "modelAnswer": "It needs to lose only the single electron in its outer shell, forming a 1+ ion with a full outer shell.",
+      "keywords": [
+        "one",
+        "1",
+        "single",
+        "outer",
+        "electron",
+        "electrons",
+        "1+",
+        "plus",
+        "ion",
+        "lost",
+        "loses"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V9tPMnX6Hq2XnqcP::L1::Q7",
+      "moduleId": "rn_V9tPMnX6Hq2XnqcP::L1",
+      "stem": "Why is the ion formed by a reacting Group 1 metal atom stable?",
+      "misconceptionClass": "noble gas configuration recall",
+      "kind": "recall",
+      "modelAnswer": "The filled shell underneath becomes the outermost shell, so the ion gains a noble gas configuration.",
+      "keywords": [
+        "noble",
+        "gas",
+        "configuration",
+        "filled",
+        "full",
+        "shell",
+        "outermost",
+        "stable",
+        "stability"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V9tPMnX6Hq2XnqcP::L1::Q8",
+      "moduleId": "rn_V9tPMnX6Hq2XnqcP::L1",
+      "stem": "Account for the shared reaction pattern of the alkali metals using the one-outer-electron structure.",
+      "misconceptionClass": "shared pattern reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "They all share the one-outer-electron pattern: each atom needs to lose only its single outer electron to reach a noble gas configuration, so every alkali metal reacts in the same way.",
+      "keywords": [
+        "one",
+        "outer",
+        "electron",
+        "single",
+        "pattern",
+        "similar",
+        "same",
+        "lose",
+        "loses",
+        "noble",
+        "configuration"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V9tPMnX6Hq2XnqcP::L1::Q9",
+      "moduleId": "rn_V9tPMnX6Hq2XnqcP::L1",
+      "stem": "An unseen metal X sits directly below potassium in Group 1. Predict how many electrons one atom of X loses and whether X reacts more or less vigorously than potassium, giving the trend law you used.",
+      "misconceptionClass": "unseen element prediction",
+      "kind": "application",
+      "modelAnswer": "One electron: like every Group 1 atom, X loses its single outer electron to form a 1+ ion. X reacts more vigorously than potassium, because reactivity increases down the group.",
+      "keywords": [
+        "one",
+        "1",
+        "electron",
+        "electrons",
+        "more",
+        "vigorously",
+        "vigour",
+        "vigor",
+        "increases",
+        "down",
+        "group",
+        "1+",
+        "reactive"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_V9tPMnX6Hq2XnqcP::L2::Q1",
       "moduleId": "rn_V9tPMnX6Hq2XnqcP::L2",
       "stem": "How does the number of occupied electron shells change between lithium, sodium and potassium?",
@@ -370,6 +458,93 @@
           "misconception": "physical property mistaken for the cause"
         }
       ]
+    },
+    {
+      "id": "rn_V9tPMnX6Hq2XnqcP::L2::Q6",
+      "moduleId": "rn_V9tPMnX6Hq2XnqcP::L2",
+      "stem": "State the shell-count step made at each element on descending from lithium through sodium to potassium.",
+      "misconceptionClass": "shell count recall",
+      "kind": "recall",
+      "modelAnswer": "The number of occupied shells rises by one at each element going down the group.",
+      "keywords": [
+        "shells",
+        "shell",
+        "one",
+        "rises",
+        "rise",
+        "increases",
+        "increase",
+        "down",
+        "group",
+        "occupied"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V9tPMnX6Hq2XnqcP::L2::Q7",
+      "moduleId": "rn_V9tPMnX6Hq2XnqcP::L2",
+      "stem": "What happens to the amount of energy needed to remove the outer electron on descending Group 1?",
+      "misconceptionClass": "ionisation energy recall",
+      "kind": "recall",
+      "modelAnswer": "Less energy is needed to overcome the weaker attraction, so the outer electron is lost more easily down the group.",
+      "keywords": [
+        "less",
+        "energy",
+        "needed",
+        "lost",
+        "loses",
+        "easily",
+        "easier",
+        "more",
+        "weaker"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V9tPMnX6Hq2XnqcP::L2::Q8",
+      "moduleId": "rn_V9tPMnX6Hq2XnqcP::L2",
+      "stem": "Explain, in terms of distance and attraction, why potassium's outer electron is lost more easily than sodium's.",
+      "misconceptionClass": "distance attraction reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The extra shell places potassium's outermost electron further away from the nucleus; the greater distance weakens the pull between the nucleus and that electron, so less energy is needed to remove it and it is lost more easily.",
+      "keywords": [
+        "further",
+        "distance",
+        "nucleus",
+        "weaker",
+        "weakens",
+        "weak",
+        "pull",
+        "attraction",
+        "less",
+        "energy",
+        "easily",
+        "easier"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_V9tPMnX6Hq2XnqcP::L2::Q9",
+      "moduleId": "rn_V9tPMnX6Hq2XnqcP::L2",
+      "stem": "Rubidium sits between potassium and caesium in Group 1. Predict whether rubidium's outer electron is lost more or less easily than potassium's, and state the reactivity consequence, using the shell-distance chain.",
+      "misconceptionClass": "intermediate element application",
+      "kind": "application",
+      "modelAnswer": "Rubidium has one more occupied shell than potassium, so its outer electron sits further from the nucleus, the attraction is weaker and the electron is lost more easily; rubidium is therefore more reactive than potassium.",
+      "keywords": [
+        "more",
+        "easily",
+        "further",
+        "weaker",
+        "weak",
+        "reactive",
+        "reactivity",
+        "shell",
+        "shells",
+        "rubidium",
+        "potassium",
+        "distance"
+      ],
+      "options": []
     }
   ]
 }

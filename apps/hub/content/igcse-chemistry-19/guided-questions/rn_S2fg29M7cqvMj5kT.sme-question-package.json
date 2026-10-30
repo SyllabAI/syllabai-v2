@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_S2fg29M7cqvMj5kT",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "fb3b992b80f5925cf9c682ad775ba295f45271c0134406483288342e59f3d025",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "92b3ea666a8c4c4b4c1eee4a7e92eca3ae59a00ad0bc82fd17775b3f3c8fe374",
+    "pinnedRef": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1"
   },
   "packageId": "igcse-chemistry::rn_S2fg29M7cqvMj5kT",
   "subject": "igcse-chemistry",
@@ -192,6 +192,85 @@
       ]
     },
     {
+      "id": "rn_S2fg29M7cqvMj5kT::L1::Q6",
+      "moduleId": "rn_S2fg29M7cqvMj5kT::L1",
+      "stem": "What is combustion, and what type of product does every combustion reaction form?",
+      "misconceptionClass": "combustion definition recall",
+      "kind": "recall",
+      "modelAnswer": "Combustion is the scientific word for burning: oxygen reacts with an element or compound to produce oxides.",
+      "keywords": [
+        "burning",
+        "burn",
+        "oxygen",
+        "oxides",
+        "oxide",
+        "scientific",
+        "reacts",
+        "reaction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S2fg29M7cqvMj5kT::L1::Q7",
+      "moduleId": "rn_S2fg29M7cqvMj5kT::L1",
+      "stem": "Name the three combustions of record for this course.",
+      "misconceptionClass": "combustion set recall",
+      "kind": "recall",
+      "modelAnswer": "Magnesium, hydrogen and sulfur each burning in oxygen.",
+      "keywords": [
+        "magnesium",
+        "hydrogen",
+        "sulfur",
+        "sulphur",
+        "oxygen",
+        "three"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S2fg29M7cqvMj5kT::L1::Q8",
+      "moduleId": "rn_S2fg29M7cqvMj5kT::L1",
+      "stem": "Explain why every combustion reaction can carry both the labels exothermic and oxidation.",
+      "misconceptionClass": "double labelling reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Combustion reactions give out heat, which makes them exothermic, and the burning substance gains oxygen, which makes them oxidation reactions at the same time.",
+      "keywords": [
+        "heat",
+        "exothermic",
+        "oxygen",
+        "gained",
+        "gain",
+        "gains",
+        "oxidation",
+        "gives",
+        "out",
+        "both"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S2fg29M7cqvMj5kT::L1::Q9",
+      "moduleId": "rn_S2fg29M7cqvMj5kT::L1",
+      "stem": "A gas heater burns fuel in a room and warms the air. Classify the burning with the two labels of this lesson and state what role the oxygen plays.",
+      "misconceptionClass": "everyday combustion application",
+      "kind": "application",
+      "modelAnswer": "Burning the fuel is combustion: it is exothermic because it gives out heat that warms the room, and it is oxidation because the fuel gains oxygen from the air and forms oxides.",
+      "keywords": [
+        "combustion",
+        "exothermic",
+        "oxidation",
+        "heat",
+        "oxygen",
+        "oxides",
+        "oxide",
+        "warm",
+        "warms",
+        "gains",
+        "gives"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_S2fg29M7cqvMj5kT::L2::Q1",
       "moduleId": "rn_S2fg29M7cqvMj5kT::L2",
       "stem": "Which observation identifies the combustion of magnesium in oxygen?",
@@ -370,6 +449,90 @@
           "misconception": "energy confused with atom count"
         }
       ]
+    },
+    {
+      "id": "rn_S2fg29M7cqvMj5kT::L2::Q6",
+      "moduleId": "rn_S2fg29M7cqvMj5kT::L2",
+      "stem": "State the observation and the product when magnesium burns in oxygen.",
+      "misconceptionClass": "magnesium combustion recall",
+      "kind": "recall",
+      "modelAnswer": "Magnesium burns with an intense white flame and white magnesium oxide powder is produced.",
+      "keywords": [
+        "white",
+        "flame",
+        "magnesium",
+        "oxide",
+        "mgo",
+        "powder",
+        "intense"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S2fg29M7cqvMj5kT::L2::Q7",
+      "moduleId": "rn_S2fg29M7cqvMj5kT::L2",
+      "stem": "Describe the flame and the product when sulfur burns in oxygen, and give the symbol equation.",
+      "misconceptionClass": "sulfur combustion recall",
+      "kind": "recall",
+      "modelAnswer": "Sulfur burns with a blue flame and produces the colourless, poisonous gas sulfur dioxide: S (s) + O2 (g) gives SO2 (g).",
+      "keywords": [
+        "blue",
+        "flame",
+        "sulfur",
+        "sulphur",
+        "dioxide",
+        "so2",
+        "poisonous",
+        "colourless",
+        "colorless",
+        "toxic",
+        "gas"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S2fg29M7cqvMj5kT::L2::Q8",
+      "moduleId": "rn_S2fg29M7cqvMj5kT::L2",
+      "stem": "A student writes the hydrogen equation as H2 + O2 gives H2O. Explain the correction needed and why the corrected form matters.",
+      "misconceptionClass": "balancing correction reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The equation needs balancing: 2H2 (g) + O2 (g) gives 2H2O (g), because four hydrogen atoms enter on the left and only two would leave on the right; a balanced equation conserves every kind of atom.",
+      "keywords": [
+        "balance",
+        "balanced",
+        "balancing",
+        "2h2",
+        "2h2o",
+        "atoms",
+        "four",
+        "two",
+        "conserve",
+        "conserves",
+        "conserved"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_S2fg29M7cqvMj5kT::L2::Q9",
+      "moduleId": "rn_S2fg29M7cqvMj5kT::L2",
+      "stem": "Three gas jars hold burning magnesium, hydrogen and sulfur. Match each burning substance to its flame colour and name the oxide or product formed in each case.",
+      "misconceptionClass": "combustion matching application",
+      "kind": "application",
+      "modelAnswer": "Magnesium gives an intense white flame and forms magnesium oxide (MgO); hydrogen burns to form water; sulfur gives a blue flame and forms the poisonous gas sulfur dioxide (SO2).",
+      "keywords": [
+        "white",
+        "mgo",
+        "magnesium",
+        "water",
+        "h2o",
+        "blue",
+        "so2",
+        "sulfur",
+        "sulphur",
+        "dioxide",
+        "oxide"
+      ],
+      "options": []
     }
   ]
 }
