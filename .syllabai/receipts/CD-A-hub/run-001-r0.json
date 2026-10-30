@@ -1,0 +1,54 @@
+{
+  "task": "CD-A-hub run-001",
+  "title": "the test-builder weak-area lane consumes the law-pinned view (slug->rootId bridge + labeled sample fallback + server-side live assembly)",
+  "operator_directive": {
+    "trace": "1a18c3130e0a29f5",
+    "word": "CD-A-hub",
+    "date": "2026-10-30"
+  },
+  "session": "web-528c0352-0cf7-4715-a187-50aec294b288",
+  "basis": [
+    "CD-A run-001 (PR #489, open/CI-green at branch time, NOT yet merged to main) closed its tranche with three explicit hub disclosures, operator-gated as 'CD-A-hub follow-up': demo-era client-side SAMPLE thresholds on the builder's weak-area lane; api.ts testBuilderWeaknessOptions with ZERO callers; no slug->rootId resolution exists",
+    "this run executes exactly that follow-up on a branch off origin/main f271d3a4 (fetch-first; main had advanced with the parallel R3 stage-B wave-1 lane, no overlap with the hub test-builder files)",
+    "the bridge of record: the hub course registry's EXPLICIT curriculumCode (courses.json, V53/ADR-030 law: hub-maintained, never derived) matched against SubjectView.curriculumVersion.code on the wire, yielding knowledgeNodeId = rootId; 60/106 registry rows carry curriculumCode; everything else fail-closes",
+    "VOCABULARY FINDING (pinned before design): the server view's topic codes (knowledge nodes, e.g. 4CH1-S1-a) and the hub bundle subtopic codes (e.g. cie-igcse-chemistry-2023-2025-T1:SUB1.1) are DIFFERENT planes - live weak-topic selection can NEVER feed the demo hub assembler; the honest assembly path is the server's own testBuilderPreview (the wire's selectionHint contract), rendered in the Class-Intelligence remediation posture (counts + topic codes + pointer, never a parallel paper renderer - studentPartViewSchema carries no choices/solutions/sourcePaper, so grafting server questions into the hub paper shape would be a lossy data graft, rejected)"
+  ],
+  "change_set": [
+    "apps/hub/src/lib/teacher/weakness-lane.ts: NEW pure mapping layer - resolveRootIdForCourse (explicit curriculumCode bridge; distinct non-null knowledgeNodeId required; 0 or >1 distinct ids -> null, never first-match-wins), liveWeakLane (server ORDER preserved verbatim - no client re-sort; honest nulls pass through; blocked-by codes; coverage gaps separated), sampleWeakTargets (the demo derivation moved VERBATIM: band weak/critical -> LOW_MEAN_MASTERY, misconception probability >= 0.3 -> ACTIVE_MISCONCEPTION_PRESENT, sort meanMastery asc), WEAKNESS_REASON_LABELS with the THIRD frozen literal BLOCKED_BY_WEAK_PREREQUISITE the demo map never carried",
+    "apps/hub/src/app/teacher/test-builder/weakness-lane-view.tsx: NEW presentational lane rows - source disclosure ALWAYS rendered (live: 'Class evidence · M of E learners with evidence' / sample: 'Sample cohort (demo data — not this class's evidence)' - the demo-era UI's unlabeled SAMPLE rendering, the dishonesty this retires); honest unmeasured mastery ('mastery unmeasured', never a fabricated %); evidence vocabulary split (live = LEARNERS with active misconceptions, sample = inventory TRACKED - never conflated); blocked-by evidence line; coverage-gap rows without a checkbox (never selectable, never weak); cap slicing",
+    "apps/hub/src/app/teacher/test-builder/test-builder-client.tsx: subjects fetch once (cachedGet); per-course weakness fetch (cancel-safe; 501 dormant / 404 unmeasured root / auth / network ALL fail-close to the labeled sample lane); source-flip law (the two vocabularies never mix - a flip clears every prior selection including a ?subtopics= deep-link preselect, honestly disclosed); autoBuild branches - live -> api.testBuilderPreview(rootId, topicNodeIds, clamped mode params, includeAnswers) -> summary card (tb-preview-summary) with error path (tb-preview-error); demo assembler untouched on the sample plane; topic tree disabled under live (bundle codes cannot feed server assembly; honest note rendered); markStale retires the preview summary; switchCourse resets weakness+preview",
+    "apps/hub/src/app/teacher/test-builder/page.tsx: registry rows pass curriculumCode through to the client (the bridge input; the demo-era mapping dropped it)",
+    "apps/hub/src/lib/types.ts: SubjectView mirror gains curriculumVersion (exact wire shape - earlier mirror omitted it, capture-unproven drift corrected); WeakTopicOption.masteryBand drift fixed string -> string | null (the wire honesty law)",
+    "apps/hub/src/lib/teacher/types.ts: SwitchableCourse gains curriculumCode? (the explicit core curriculum-version code, V53/ADR-030)",
+    "apps/hub/src/lib/teacher/weakness-lane.test.ts: NEW 13 pins - bridge law x6 (happy, no-code, no-version-match, null node, ambiguity -> null, dedupe same id), live mapping x5 (server order verbatim, honest nulls, evidence vocabulary + blocked-by + selection token, gaps separated + context, three-label coverage), sample verbatim x2 (thresholds incl. the 0.29 sub-threshold negative, ordering + tagging)",
+    "apps/hub/src/app/teacher/test-builder/weakness-lane-view.golden.test.tsx: NEW 12 captures - fixtures parsed through the CANONICAL @syllabai/contracts weaknessOptionsViewSchema before rendering (the foresights-panel pattern; the goldens capture the real wire), source disclosure exact copy both sources, honest null (no % on the unmeasured row, measured 40% exactly once), learners-not-tracked vocabulary, all three reason labels, blocked-by codes exact, gaps checkbox-free (one input per target row), server order pinned, cap slicing, determinism byte-identical, zero-evidence honesty ('No measured evidence yet' never 'no weak areas')"
+  ],
+  "laws_held": [
+    "explicit-only resolution: the bridge reads the registry's hub-maintained curriculumCode against the wire's curriculumVersion.code - no slug parsing, no fuzzy name matching, no first-match-wins on ambiguity (fail-closed null)",
+    "server order is law: liveWeakLane never re-sorts; the frozen comparator's order (meanMastery asc nulls-last -> active-misconception learners desc -> code) renders verbatim",
+    "honesty: null mastery renders 'mastery unmeasured' (never 0%, never a fabricated band); the sample lane is LABELED demo data in every render; live misconception counts are learners, sample counts are tracked inventory - the units never conflate",
+    "coverage gaps are never weak: informational rows without checkboxes, excluded from toggleAllWeak and from the flagged-weak count",
+    "vocabulary isolation: sample selections (bundle subtopic codes) feed ONLY the demo hub assembler; live selections (knowledge topicNodeIds) feed ONLY the server testBuilderPreview - the source-flip effect clears selection so a mixed Set can never exist",
+    "the demo assembler + printable PDF pipeline are byte-untouched on the sample plane (saves, drafts, download modal, manual adds all keep their semantics; drafts keyed by code still restore because sample keys ARE codes)"
+  ],
+  "gates": {
+    "hub_typecheck": "tsc --noEmit exit 0",
+    "contracts_typecheck": "tsc --noEmit exit 0",
+    "hub_battery": "bun test apps/hub -> 517 pass / 7 fail / 18212 expects; the 7 fails PROVEN PRE-EXISTING on pristine f271d3a4 (stash-run: 492 pass / 7 fail / 18151 expects - identical failure set: ugm.render corpus katex fail matches the merge-desk's standing FAIL(hub) skip #296; v2-surface dual-run + cla-store isolation fail only under full-battery parallel interference and pass in isolation), so the tranche adds +25 passing and ZERO new failures",
+    "api_battery_untouched_verify": "bun test apps/api packages -> 3128 pass / 13 skip / 0 fail / 43160 expects (zero api-plane files in the diff)",
+    "hub_build": "next build compiled successfully (/teacher/test-builder in the manifest)"
+  },
+  "disclosures": [
+    "PR #489 (CD-A run-001) was NOT yet merged at branch time; this tranche consumes the ROUTE contract (mounted since T-MIG-034) and works against both postures - the live lane materializes when run-001 merges and the port wakes on production boots; until then every real boot either serves the real view (run-001 merged) or fail-closes to the labeled sample lane",
+    "the ugm.render corpus failure + full-battery parallel-interference failures pre-exist on origin/main (merge-desk receipts 45ae1285 et al. carry the standing FAIL(hub) skip); this run did not touch them",
+    "the 46/106 registry rows WITHOUT curriculumCode fail-close to the labeled sample lane by design (the explicit-only law) - registering them is an operator data decision, not a code gap",
+    "the server-assembly summary card is the remediation-posture receipt (counts + topic codes + pointer); a printable renderer for TestQuestionView (server-paper PDF lane) is NOT in this tranche and stays open",
+    "TestQuestionView.topicCode hub-mirror drift (string | null vs the wire's string) observed but OUT OF FENCE - untouched"
+  ],
+  "follow_ups": [
+    "the /api/v1/teacher/class/* mount gap (hub Class Intelligence dark path) - still needs its own lane (unchanged from CD-A run-001)",
+    "printable server-paper rendering (TestQuestionView PDF lane) - open, own tranche",
+    "CD-B / CD-C from the lost state-check remain unexecuted backlog (re-draft on request)",
+    "PAT rotation standing"
+  ]
+}

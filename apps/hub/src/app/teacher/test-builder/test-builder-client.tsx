@@ -24,9 +24,18 @@
  *   parts, "don't split over a page break"; a running Total.
  *
  *   ── syllabai additions kept from the previous passes ─────────────────
- *   - auto-build from the class's weak areas (SAMPLE cohort evidence,
- *     transparent reasons) with the stale-preview banner ("update
- *     preview" instead of silently destroying the paper);
+ *   - auto-build from the class's weak areas with the stale-preview banner
+ *     ("update preview" instead of silently destroying the paper).
+ *     CD-A-hub (trace 1a18c3130e0a29f5): the weak-area lane is now
+ *     SOURCE-AWARE — the law-pinned server view
+ *     (/api/v1/teacher/tests/weakness-options, policy
+ *     test-builder-weakness/v1, resolved through the explicit
+ *     curriculumCode→knowledgeNodeId bridge) when it resolves, the
+ *     committed-bundle SAMPLE cohort as the LABELED fallback (the demo-era
+ *     thresholds live verbatim in lib/teacher/weakness-lane.ts). Live
+ *     targeting assembles on the SERVER (validated-only, deterministic —
+ *     the testBuilderPreview contract); the demo assembler keeps the
+ *     sample plane. The two vocabularies never mix;
  *   - provenance on every part (subtopic, spec points, source paper);
  *   - saved tests persist the EXPLICIT question list (fixes the old
  *     controls-only save semantics); legacy saves fall back to controls;
@@ -96,7 +105,17 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Markdown } from "@/components/markdown";
 import { TeacherNav } from "@/components/teacher/teacher-nav";
-import { api } from "@/lib/api";
+import { api, ApiError } from "@/lib/api";
+import type { SubjectView, TestPreviewView } from "@/lib/types";
+import {
+  liveWeakLane,
+  resolveRootIdForCourse,
+  sampleWeakTargets,
+  type WeakLaneGap,
+  type WeakLaneLive,
+  type WeakLaneTarget,
+} from "@/lib/teacher/weakness-lane";
+import { WeaknessLaneRows } from "./weakness-lane-view";
 import { useSavedTests } from "@/lib/teacher/stores";
 import {
   filterTaughtCourses,
@@ -107,11 +126,6 @@ import {
 import type { TeacherCourseData } from "@/lib/teacher/types";
 import type { AssembledQuestion, AssembledTest } from "@/lib/teacher/test-assembly";
 import type { SwitchableCourse } from "@/lib/teacher/types";
-
-const REASON_LABELS: Record<string, string> = {
-  LOW_MEAN_MASTERY: "low class mastery",
-  ACTIVE_MISCONCEPTION_PRESENT: "active misconceptions",
-};
 
 const WEAK_LANE_CAP = 6;
 const BANK_PAGE = 40;
@@ -161,15 +175,6 @@ function readBuilderDraft(slug: string): BuilderDraft | null {
 }
 
 type DifficultyFilter = "all" | "easy" | "medium" | "hard";
-
-interface WeakTarget {
-  code: string;
-  title: string;
-  reasons: string[];
-  meanMastery: number;
-  misconceptionCount: number;
-  questionCount: number;
-}
 
 type BankQuestion = AssembledQuestion & { preview: string };
 
@@ -423,6 +428,31 @@ export function TestBuilderClient({
   const [expandedBank, setExpandedBank] = useState<Set<string>>(new Set());
   const [showAllWeak, setShowAllWeak] = useState(false);
 
+  // ── CD-A-hub: the weak-area lane's source state ─────────────────────
+  // subjects once (api.subjects() is cachedGet — one fetch per session);
+  // the per-course weakness fetch resolves rootId through the EXPLICIT
+  // curriculumCode→knowledgeNodeId bridge (never derived, never guessed)
+  // and consumes the law-pinned view. Any failure (dormant-port 501,
+  // unmeasured-root 404, auth, network) fail-closes to the LABELED sample
+  // lane — never a silent mix, never a fabricated live row.
+  type WeaknessState =
+    | { status: "loading" }
+    | { status: "unresolvable" }
+    | { status: "unavailable" }
+    | { status: "live"; lane: WeakLaneLive };
+  const [subjects, setSubjects] = useState<SubjectView[] | null>(null);
+  const [weakness, setWeakness] = useState<WeaknessState | null>(null);
+  // live targeting assembles on the SERVER (testBuilderPreview) — this is
+  // the summary-card state (the Class-Intelligence remediation posture:
+  // counts + topic codes + pointer, never a parallel paper renderer)
+  const [preview, setPreview] = useState<
+    | { status: "loading" }
+    | { status: "ready"; view: TestPreviewView }
+    | { status: "error"; message: string }
+    | null
+  >(null);
+  const prevLaneSourceRef = useRef<"live" | "sample">("sample");
+
   // ── auto-build controls ─────────────────────────────────────────────────
   const [mode, setMode] = useState<"marks" | "count">("marks");
   const [targetMarks, setTargetMarks] = useState<string>("40");
@@ -501,6 +531,8 @@ export function TestBuilderClient({
     setDifficulty("all");
     manualIdsRef.current = new Set();
     setUndoState(null);
+    setWeakness(null);
+    setPreview(null);
   }
 
   // T-TEACH-008 escape hatch: a saved test opened across courses sets the
@@ -547,6 +579,61 @@ export function TestBuilderClient({
     () => (taughtSlugs === null ? null : filterTaughtCourses(courses, taughtSlugs)),
     [courses, taughtSlugs],
   );
+
+  // ── CD-A-hub: subject rows for the slug→rootId bridge (once per session) ─
+  useEffect(() => {
+    let cancelled = false;
+    api
+      .subjects()
+      .then((list) => {
+        if (!cancelled) setSubjects(list);
+      })
+      .catch(() => {
+        if (!cancelled) setSubjects([]); // unresolvable → labeled sample lane
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // ── CD-A-hub: the per-course weakness lane fetch ─────────────────────
+  useEffect(() => {
+    if (!course || subjects === null) return;
+    const meta = (taughtCourses ?? []).find((c) => c.slug === course);
+    const rootId = resolveRootIdForCourse(meta?.curriculumCode, subjects);
+    if (!rootId) {
+      setWeakness({ status: "unresolvable" });
+      return;
+    }
+    let cancelled = false;
+    setWeakness({ status: "loading" });
+    api
+      .testBuilderWeaknessOptions(rootId)
+      .then((v) => {
+        if (!cancelled) setWeakness({ status: "live", lane: liveWeakLane(v) });
+      })
+      .catch(() => {
+        if (!cancelled) setWeakness({ status: "unavailable" });
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [course, subjects, taughtCourses]);
+
+  // the lane renders ONE source at a time and the two vocabularies never
+  // mix (sample selections are bundle subtopic codes, live selections are
+  // knowledge topicNodeIds) — a source flip invalidates every prior
+  // selection, including a ?subtopics= deep-link preselect (honest: those
+  // codes are demo-plane and the live server assembly cannot use them)
+  const laneSource: "live" | "sample" = weakness?.status === "live" ? "live" : "sample";
+  useEffect(() => {
+    if (prevLaneSourceRef.current === laneSource) return;
+    prevLaneSourceRef.current = laneSource;
+    queueMicrotask(() => {
+      setSelected(new Set());
+      setPreview(null);
+    });
+  }, [laneSource]);
 
   // resolve the landing course once the taught set is known: an untaught
   // deep-link slug degrades to the first taught course (never opens the
@@ -764,30 +851,18 @@ export function TestBuilderClient({
 
   // ── derived state ───────────────────────────────────────────────────────
 
-  // class-weakness lane (TEACHER_ARCHITECTURE §6.3) — transparent reasons
-  const weakTargets: WeakTarget[] = useMemo(() => {
+  // class-weakness lane (TEACHER_ARCHITECTURE §6.3) — CD-A-hub: live rows
+  // come from the law-pinned view (SERVER ORDER preserved, honest nulls);
+  // the sample rows are the demo derivation moved VERBATIM into
+  // lib/teacher/weakness-lane.ts and rendered under an explicit demo-data
+  // label. Coverage gaps are informational — never selectable, never weak.
+  const laneLive = weakness?.status === "live" ? weakness.lane : null;
+  const laneGaps: WeakLaneGap[] = laneLive ? laneLive.gaps : [];
+  const weakTargets: WeakLaneTarget[] = useMemo(() => {
+    if (weakness?.status === "live") return weakness.lane.targets;
     if (!data) return [];
-    const out: WeakTarget[] = [];
-    for (const section of data.class.sections) {
-      for (const sub of section.subtopics) {
-        const reasons: string[] = [];
-        if (sub.band === "weak" || sub.band === "critical") reasons.push("LOW_MEAN_MASTERY");
-        if (sub.misconceptions.some((m) => m.probability >= 0.3))
-          reasons.push("ACTIVE_MISCONCEPTION_PRESENT");
-        if (reasons.length > 0) {
-          out.push({
-            code: sub.code,
-            title: sub.title,
-            reasons,
-            meanMastery: sub.meanMastery,
-            misconceptionCount: sub.misconceptions.length,
-            questionCount: sub.questionCount,
-          });
-        }
-      }
-    }
-    return out.sort((a, b) => a.meanMastery - b.meanMastery);
-  }, [data]);
+    return sampleWeakTargets(data.class);
+  }, [weakness, data]);
 
   const allSubtopics = useMemo(
     () => data?.class.sections.flatMap((s) => s.subtopics) ?? [],
@@ -860,8 +935,10 @@ export function TestBuilderClient({
   // ── actions ─────────────────────────────────────────────────────────────
 
   /** auto-build setting edits make the assembled preview stale — never
-   *  destroy it; manual paper edits (add/move/remove) never do. */
+   *  destroy it; manual paper edits (add/move/remove) never do. A settings
+   *  or selection change also retires the live server-assembly summary. */
   function markStale() {
+    setPreview(null);
     setStale((prev) => (test && !prev ? true : prev));
   }
 
@@ -880,10 +957,10 @@ export function TestBuilderClient({
     markStale();
     setSelected((prev) => {
       const next = new Set(prev);
-      const allIn = weakTargets.every((w) => next.has(w.code));
+      const allIn = weakTargets.every((w) => next.has(w.key));
       for (const w of weakTargets) {
-        if (allIn) next.delete(w.code);
-        else next.add(w.code);
+        if (allIn) next.delete(w.key);
+        else next.add(w.key);
       }
       return next;
     });
@@ -1044,9 +1121,38 @@ export function TestBuilderClient({
     }
   }
 
-  /** auto-build (marks-aware deterministic fill over the selection). */
+  /** auto-build — marks-aware deterministic fill over the selection.
+   *  CD-A-hub: under the LIVE lane the assembly runs on the SERVER
+   *  (testBuilderPreview: validated-only questions, marks-targeted,
+   *  deterministic — the view's selectionHint contract); the topicNodeIds
+   *  vocabulary never feeds the demo hub assembler. The summary card is
+   *  the Class-Intelligence remediation posture (counts + codes + pointer). */
   const autoBuild = useCallback(async () => {
     if (!course || selected.size === 0) return;
+    if (laneSource === "live") {
+      const rootId = laneLive?.rootId;
+      if (!rootId) return;
+      setPreview({ status: "loading" });
+      try {
+        const view = await api.testBuilderPreview(
+          rootId,
+          weakTargets.filter((w) => selected.has(w.key)).map((w) => w.key),
+          mode === "count" ? Math.min(50, Math.max(1, Number(maxQuestions) || 20)) : undefined,
+          mode === "marks"
+            ? Math.min(300, Math.max(1, Number(targetMarks) || 0)) || undefined
+            : undefined,
+          true,
+        );
+        setPreview({ status: "ready", view });
+      } catch (err: unknown) {
+        setPreview({
+          status: "error",
+          message:
+            err instanceof ApiError ? err.message : "server assembly unavailable — try again",
+        });
+      }
+      return;
+    }
     setBuilding(true);
     setBuildError(null);
     try {
@@ -1105,7 +1211,7 @@ export function TestBuilderClient({
     } finally {
       setBuilding(false);
     }
-  }, [course, selected, mode, targetMarks, maxQuestions]);
+  }, [course, selected, mode, targetMarks, maxQuestions, laneSource, laneLive, weakTargets]);
 
   /** save the EXPLICIT test (question ids) — honest semantics; a selection
    *  without a test still saves its auto-build controls (legacy shape). */
@@ -1491,7 +1597,7 @@ export function TestBuilderClient({
                     onClick={toggleAllWeak}
                     disabled={weakTargets.length === 0}
                   >
-                    {weakTargets.every((w) => selected.has(w.code))
+                    {weakTargets.every((w) => selected.has(w.key))
                       ? "Clear weak areas"
                       : "Select all weak areas"}
                   </Button>
@@ -1553,12 +1659,18 @@ export function TestBuilderClient({
                   />
                   <Button
                     onClick={autoBuild}
-                    disabled={building || selected.size === 0}
+                    disabled={building || preview?.status === "loading" || selected.size === 0}
                     size="sm"
                     className="h-8"
                   >
                     <FileText className="size-3.5" aria-hidden />
-                    {building ? "Assembling…" : stale && test ? "Update preview" : "Auto-build"}
+                    {building || preview?.status === "loading"
+                      ? "Assembling…"
+                      : laneSource === "live"
+                        ? "Assemble (validated)"
+                        : stale && test
+                          ? "Update preview"
+                          : "Auto-build"}
                   </Button>
                 </div>
                 <p className="mt-1.5 text-xs text-muted-foreground">
@@ -1567,36 +1679,46 @@ export function TestBuilderClient({
                     : `at most ${maxQuestions || "…"} questions, smallest first · `}
                   {weakTargets.length} flagged weak area{weakTargets.length === 1 ? "" : "s"} (top{" "}
                   {WEAK_LANE_CAP} shown)
+                  {laneGaps.length > 0 &&
+                    ` · ${laneGaps.length} unmeasured area${laneGaps.length === 1 ? "" : "s"} with content (below)`}
                 </p>
-                <div className={`mt-2 space-y-1 ${showAllWeak ? "max-h-56 overflow-y-auto pr-1" : ""}`}>
-                  {weakTargets.slice(0, showAllWeak ? undefined : WEAK_LANE_CAP).map((w) => (
-                    <label
-                      key={w.code}
-                      className="flex cursor-pointer items-start gap-2 rounded px-1 py-0.5 text-xs hover:bg-muted/50"
-                    >
-                      <Checkbox
-                        checked={selected.has(w.code)}
-                        onCheckedChange={() => toggle(w.code)}
-                        className="mt-0.5"
-                      />
-                      <span className="min-w-0">
-                        <span className="font-mono text-[10px] text-muted-foreground">{w.code}</span>{" "}
-                        {w.title}
-                        {w.reasons.map((r) => (
-                          <Badge key={r} variant="outline" className="ml-1 h-4 px-1 text-[9px]">
-                            {REASON_LABELS[r] ?? r}
-                          </Badge>
-                        ))}
-                        <span className="block text-[10px] text-muted-foreground">
-                          mean mastery {(w.meanMastery * 100).toFixed(0)}% ·{" "}
-                          {w.misconceptionCount > 0 &&
-                            `${w.misconceptionCount} misconception${w.misconceptionCount === 1 ? "" : "s"} · `}
-                          {w.questionCount} validated question{w.questionCount === 1 ? "" : "s"}
-                        </span>
-                      </span>
-                    </label>
-                  ))}
+                <div className={`mt-2 ${showAllWeak ? "max-h-56 overflow-y-auto pr-1" : ""}`}>
+                  <WeaknessLaneRows
+                    source={laneSource}
+                    targets={weakTargets}
+                    gaps={laneGaps}
+                    enrolledLearners={laneLive?.enrolledLearners}
+                    learnersWithEvidence={laneLive?.learnersWithEvidence}
+                    selected={selected}
+                    onToggle={toggle}
+                    cap={WEAK_LANE_CAP}
+                    showAll={showAllWeak}
+                  />
                 </div>
+                {preview?.status === "ready" && (
+                  <div
+                    className="mt-2 rounded-md border bg-muted/30 px-3 py-2 text-sm"
+                    data-testid="tb-preview-summary"
+                  >
+                    <p>
+                      <strong>{preview.view.questionCount} questions</strong> ·{" "}
+                      <strong>{preview.view.totalMarks} marks</strong> · answer key included
+                    </p>
+                    <p className="mt-1 font-mono text-xs text-muted-foreground">
+                      {preview.view.questions.map((q) => q.topicCode).join(", ")}
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      Assembled on the server from validated questions (deterministic,
+                      marks-targeted). The printable bundle-paper lane keeps its own pipeline —
+                      this card is the validated-assembly receipt.
+                    </p>
+                  </div>
+                )}
+                {preview?.status === "error" && (
+                  <p className="mt-2 text-xs text-destructive" data-testid="tb-preview-error" role="alert">
+                    {preview.message}
+                  </p>
+                )}
                 {weakTargets.length > WEAK_LANE_CAP && (
                   <button
                     type="button"
@@ -1610,15 +1732,27 @@ export function TestBuilderClient({
                 )}
               </div>
 
-              {/* topic filter tree */}
+              {/* topic filter tree — the SAMPLE plane's selection surface.
+                  CD-A-hub: under the live lane its bundle subtopic codes
+                  cannot feed the server assembly, so its checkboxes are
+                  disabled (the weak-area lane above is the targeting
+                  surface; the two vocabularies never mix). */}
               <div>
                 <p className="mb-1.5 flex items-center gap-1.5 text-sm font-medium">
                   <Target className="size-3.5 text-muted-foreground" aria-hidden />
                   Topic filter
                   <span className="font-normal text-muted-foreground">
-                    · {selected.size} of {allSubtopics.length} · {selectedMarks} marks in selection
+                    {laneSource === "live"
+                      ? `· ${selected.size} topic${selected.size === 1 ? "" : "s"} targeted (server assembly)`
+                      : `· ${selected.size} of ${allSubtopics.length} · ${selectedMarks} marks in selection`}
                   </span>
                 </p>
+                {laneSource === "live" && (
+                  <p className="mb-1.5 text-[11px] text-muted-foreground" data-testid="tb-tree-note">
+                    Targeting is on class evidence — pick weak areas above; assembly runs on the
+                    server's validated questions. Topic checkboxes resume with the sample lane.
+                  </p>
+                )}
                 <div className="max-h-64 space-y-2.5 overflow-y-auto rounded-md border p-2.5">
                   {data?.class.sections.map((section) => (
                     <div key={section.code}>
@@ -1629,11 +1763,14 @@ export function TestBuilderClient({
                         {section.subtopics.map((sub) => (
                           <label
                             key={sub.code}
-                            className="flex cursor-pointer items-start gap-2 rounded px-1 py-0.5 text-xs hover:bg-muted/50"
+                            className={`flex items-start gap-2 rounded px-1 py-0.5 text-xs hover:bg-muted/50 ${
+                              laneSource === "live" ? "opacity-50" : "cursor-pointer"
+                            }`}
                           >
                             <Checkbox
                               checked={selected.has(sub.code)}
                               onCheckedChange={() => toggle(sub.code)}
+                              disabled={laneSource === "live"}
                               className="mt-0.5"
                             />
                             <span className="min-w-0">

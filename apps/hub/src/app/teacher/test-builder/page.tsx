@@ -18,7 +18,15 @@ export default async function TestBuilderPage({
   const params = await searchParams;
   const courses = (await listCourses())
     .filter((c) => c.hasBundle)
-    .map((c) => ({ slug: c.slug, label: c.label, code: c.code, level: c.level }));
+    .map((c) => ({
+      slug: c.slug,
+      label: c.label,
+      code: c.code,
+      level: c.level,
+      // CD-A-hub: the explicit core curriculum-version code rides through —
+      // the weakness lane's slug→rootId bridge input (V53/ADR-030 law)
+      curriculumCode: c.curriculumCode,
+    }));
   const pilot = await pilotCourseSlug();
   const initialCourse =
     courses.find((c) => c.slug === params.course)?.slug ?? pilot ?? courses[0]?.slug ?? null;
