@@ -1,0 +1,49 @@
+{
+  "task": "CD-A run-001",
+  "title": "classOverview->testbuilder analytics adapter - the ClassAnalyticsPort wake-up (frozen-core parity restoration)",
+  "operator_directive": {
+    "trace": "1a18c0171724f5ed",
+    "word": "CD-A",
+    "date": "2026-10-30"
+  },
+  "session": "web-528c0352-0cf7-4715-a187-50aec294b288",
+  "basis": [
+    "routes/testbuilder.ts (T-MIG-034): the weakness-options route shipped honest-501 'class analytics dependency not yet ported' - the ClassAnalyticsPort seam was designed for exactly this connection",
+    "T-MIG-053 tranche-2 ported ClassAnalyticsService (services/teacher/analytics.ts, classOverview/learners/topicDrillDown) - but the testbuilder port was never re-wired, leaving the route dormant in production",
+    "the frozen core had TestBuilderService.weaknessOptions CONSUMING ClassAnalyticsService.overview - this run restores that dependency, it adds nothing new",
+    "CD-A was drafted conversationally in a prior session (trace 1a188ffbfed603d9 project-state check) that was lost to a sandbox recycle; this run reconstructs it from the repo of record and states the reconstruction"
+  ],
+  "change_set": [
+    "apps/api/src/services/testbuilder/index.ts: classAnalyticsAdapter(deps) - the adapter of record, PURE DELEGATION to classOverview (structural superset of the port slice; frozen engine 0.45/2 via engineOf, the SAME ceiling the builder holds; zero re-derivation, zero new reads, zero new parameters)",
+    "apps/api/src/routes/testbuilder.ts: buildTestBuilderRouters(env, opts) - the port defaults AWAKE (real adapter over ONE shared sql client); opts.analytics null|port honored verbatim (dormant posture constructible, synthetic-port test path preserved); stale UNPORTED comments retired",
+    "apps/api/src/services/testbuilder/builder.ts: header truth-up only (the dependency is CONNECTED, the 501 mapping retained for the dormant posture)",
+    "apps/api/src/index.ts: COMMENT-ONLY truth-up of the T-MIG-034 mount block (DORMANT -> AWAKE since CD-A) - OUT-OF-FENCE, disclosed, R0 ratification requested",
+    "apps/api/test/testbuilder/analytics-adapter.test.ts: NEW - 8 fakeSql pins (no Neon)"
+  ],
+  "laws_held": [
+    "zero new reads: classOverview is the analytics lane's own batching-law read set; the builder's targetingServableCounts stays the ONE batched query (no per-topic queries)",
+    "zero new parameters (C6 posture): the engine inside the adapter is the frozen one (LEARNER_ENGINE_PAPER_DEFAULTS + CONFIG 0.45/2) - the same WEAK_MASTERY_CEILING_DEFAULT the builder holds",
+    "honesty: unmeasured cells pass through as meanMastery null + UNMEASURED band and sort nulls-last; never fabricated",
+    "the route's honest-501 mapping is RETAINED for the constructible dormant module (routes.test.ts DORMANT pin untouched and still green)",
+    "zero DB contact: every pin runs over fakeSql; the wake-up pins construct createSql against a placeholder URL and issue NO query (lazy client)"
+  ],
+  "gates": {
+    "typecheck": "x4 exit 0",
+    "suite": "bun test apps/api packages -> 3123 pass / 13 skip / 0 fail / 43200 expects",
+    "golden_selftest": "OK",
+    "new_pins": "8 pass / 0 fail (analytics-adapter.test.ts)"
+  },
+  "disclosures": [
+    "V1.1 DUE-DILIGENCE: the previously-approved Foresights v1.1 tranche (operator 'Go: one mini-ADR amendment tranche', trace 1a18bd4b7d542cc1) was found ALREADY LANDED of record on origin/main (PR #482 merge 6900dfa0, ADR-CLASS-0003: D1 lastPracticedAt context fields + D2 distribution.atRiskByReason + the four Stage C dispositions) - executed by a parallel lane. This run re-verified it on the restored tip (all foresights/tests green) and did NOT redo it",
+    "SANDBOX-RECYCLE RECOVERY: the local checkout was found stale at c55927e7 (2026-10-22) with this arc's commits absent from the object store; recovered via fetch + hard reset to origin/main 280ad8e9 after verifying all four arc commits (73c30de8, 0d2c5111, a6fc888e, 0b5f76d0) are ancestors of origin/main. The 3455-file dirty state was mode-only (0 content delta) and normalized by the reset",
+    "HUB SIDE NOT IN THIS TRANCHE: the hub test-builder page is demo-era (weakness derived CLIENT-SIDE from the SAMPLE-cohort /api/teacher/course-data payload with unpinned thresholds: band weak/critical + misconception >= 0.3) and api.ts testBuilderWeaknessOptions has ZERO callers. A hub swap needs a slug->rootId resolution that does not exist (SubjectView carries no slug). Filed as CD-A-hub follow-up, NOT silently fixed",
+    "FINDING (out of scope, disclosed): no /api/v1/teacher/class/* route family is mounted in apps/api/src/index.ts - the hub Class Intelligence page calls api.classOverview (/api/v1/teacher/class/overview) which has no mount; the real classOverview service is reachable only through this CD-A adapter today. Needs its own lane",
+    "OUT-OF-FENCE: apps/api/src/index.ts comment-only edit (T-MIG-034 fence excludes index.ts) - per the T-MIG-010/020/021/030/032/034 disclosure precedent, R0 ratification requested",
+    "testbuilder routes.test.ts + select.test.ts untouched - their pins (dormant 501, synthetic port, selection law) remain the module-level truth"
+  ],
+  "follow_ups": [
+    "CD-A-hub: wire api.testBuilderWeaknessOptions into the hub test-builder weakness lane (needs the slug->rootId resolution design decision - operator gated)",
+    "the /api/v1/teacher/class/* mount gap (hub Class Intelligence dark path) - needs its own task",
+    "CD-B / CD-C from the lost state-check remain unexecuted backlog (drafts lost with the recycled session - re-draft on request)"
+  ]
+}
