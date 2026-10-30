@@ -1,0 +1,26 @@
+{
+  "run": "run-004",
+  "task": "NEON-PAUSE-001",
+  "at": "2026-10-30T08:10-08:25Z (wire-observed UTC)",
+  "trace": "1a18bda10cd31f9d",
+  "operator_order": "\"How do we reduce network transfer usage next time?\"",
+  "basis": "Egress-reduction plan, code-verified against tip 3245de7 lineage (apps/api/src read-only) + consumption of-record (MAIN 5.6 GB/27d ~= 210 MB/day; W1 380 MB/3d while sibling-lane-active). Neon counts egress OUT of Neon: every byte the api pulls from Postgres counts, regardless of region pairing (Vercel iad1 <-> Neon us-east-2 co-location would NOT save transfer — latency only).",
+  "drivers_ranked": [
+    "1. CONTENT-PLANE PULLS (prime suspect): bytea/JSON assets served from Postgres per fetch. CODE-VERIFIED: services/tutor/paper-figures.ts :110/:124 select full qp_draft::text / canonical_json::text per request (whole question-paper JSON to serve figures) with NO cache envelope found; routes/revision-notes.ts :161 serves bytea with 'max-age=3600, private' ONLY (browser-shared-cache-forbidden, no ETag/304, 1h expiry on sha256-immutable content) — and that header is FROZEN-PARITY verbatim (frozen core :48-55), so changing it is a disclosed delta, not a silent patch. Reuse multiplier: one 59 MB asset store x class-size re-reads = GB-class monthly burn.",
+    "2. BULK DRAIN PASSES (lane-driven): embed backfill (1,330 NULL) + T-MIG-141 Phase-D (3,012) re-scanning document_chunks (133 MB) per pass; seneca parity pulls same class. A few full passes = ~1 GB egress.",
+    "3. AUTH BASELINE CHATTER: middleware/auth.ts — authenticator loads user row per authenticated request (tokenVersion check, :80-81) -> one SELECT x every api call. Small per-call, real at scale.",
+    "4. ONE-OFFS: Oct-22/23 drop/restore dump churn (hundreds of MB, non-recurring)."
+  ],
+  "levers_ranked": [
+    "L1 CACHE LIKE CONTENT IS IMMUTABLE (biggest, cheapest): ETag/If-None-Match on all asset+figure routes (304 = headers only ~= zero egress); content-addressed assets can carry long max-age. NOTE: 'private' + 1h is frozen-parity verbatim -> file a disclosed parity-delta note with the change. Expected: cuts the dominant driver to first-fetch-only.",
+    "L2 OFFLOAD BLOBS TO NEON OBJECT STORAGE (structural, 5 GB free/project, separate meter): question_asset 585 + revision_note_asset 194 (~59 MB) out of Postgres; serve via 302 to presigned URLs -> bytes bypass Postgres AND the Vercel function; kills the bytea egress class entirely (ADR-038 relief, now egress-driven).",
+    "L3 STOP SHIPPING WHOLE DOCUMENTS FOR PARTS: paper-figures must extract the figure server-side (one egress pull per unique doc, then cached) or figures pre-split at ingest; never canonical_json::text per request.",
+    "L4 DRAIN DISCIPLINE (lane law): keyset pagination (WHERE id > $last), work-queue table instead of full-table re-scans for NULL-embedding hunts, heavy passes on W1/snapshots or one-shot dumps to sandbox (zero repeat egress), schedule drains early-month, meter between batches via run002_neon_scan.py.",
+    "L5 AUTH HOT-PATH CACHE (flagged decision): 30-60 s in-function cache of tokenVersion/user row. Frozen-parity auth core -> needs operator sign-off + ADR note. Expected: removes the per-request SELECT class.",
+    "L6 WATCH LOOP (already of-record): scripts/run002_neon_scan.py daily; alarm 4.0 GB (80%); track DAILY DELTA of the ENFORCEMENT-SIDE number (console panel is lazy: 3.51 vs 5.6 lesson). Optional: GitHub-Action wrapper would put napi_ in repo secrets = operator secrets-surface decision, NOT unilateral."
+  ],
+  "budget_target": "MAIN < 2.5 GB/mo at current pilot scale (50% headroom); warehouse/heavy reads stay on W1 (observed 7.6% while actively worked). Post-resume day-1 task: enable pg_stat_statements on MAIN for true per-query attribution (plan is driver-ranked by code evidence + arithmetic until then).",
+  "parity_law_note": "Every lever touching frozen-parity surfaces (asset headers, auth middleware) ships as a DISCLOSED delta with ADR note + capture-backed parity check — never a silent patch (fleet double-build lesson).",
+  "secrets": "None new transited this run (napi_/npg_ referenced by family name only). Read-only repo access; zero DB writes (MAIN refused, W1 untouched); zero Vercel mutations.",
+  "receipt_culture": "filing on fresh shallow clone v2-run003 lineage, fetch-first, incremental-commit same-turn push, no force"
+}

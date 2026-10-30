@@ -22673,3 +22673,18 @@ Work Log:
 
 Stage Summary:
 - LANE: BLOCKED_ON_PLATFORM_QUOTA (steady state, day 3). Nothing executable until Nov-1 auto-resume (~40 h) or operator Launch upgrade. On resume: parity census gate -> blocked cars of-record. Secrets: napi_ + both npg_ 4th transit.
+
+---
+Task ID: NEON-PAUSE-001 run-004 (operator order trace 1a18bda10cd31f9d: "How do we reduce network transfer usage next time?")
+Agent: main (Z.ai, session web-590847c1)
+Task: Egress-reduction plan of-record, code-verified.
+
+Work Log:
+- Read-only code pass on apps/api/src: paper-figures.ts :110/:124 pulls FULL qp_draft/canonical_json per request, no cache envelope; revision-notes.ts :161 bytea cache = 'max-age=3600, private' only (frozen-parity verbatim :48-55, no ETag/304); middleware/auth.ts authenticator = per-request user-row SELECT (tokenVersion).
+- Drivers ranked: (1) content-plane pulls (59 MB asset store x class-size reuse = GB-class), (2) bulk drain passes over 133 MB chunks, (3) auth baseline chatter, (4) Oct-22/23 restore churn.
+- Levers ranked: L1 immutable caching + ETag/304 (disclosed parity delta), L2 bytea offload -> Neon Object Storage via 302 presigned URLs (5 GB free, separate meter), L3 extract-don't-ship-whole-documents, L4 drain discipline (keyset pagination, work queues, W1/snapshot/dump-local), L5 auth hot-path cache (operator decision), L6 daily egress watch (run002_neon_scan.py, alarm 4.0 GB, enforcement-side delta).
+- Budget target: MAIN < 2.5 GB/mo at pilot scale; pg_stat_statements on resume = day-1 attribution task. Region co-location NOT a transfer lever (Neon counts its egress regardless).
+- Filed: receipts/NEON-PAUSE-001/run-004-egress-reduction-plan-r0.json.
+
+Stage Summary:
+- PLAN OF-RECORD for the Nov-1 fresh meter: every lever touching frozen-parity surfaces ships as disclosed delta + ADR note. LANE: IDLE pending resume (ETA ~Nov-1 00:00Z) — implementation offer standing for L1/L2/L3/L4 on green-light.
