@@ -1,0 +1,69 @@
+version: 1
+task:
+  id: T-MG-INK-2
+  title: "MG parity — the maths instruments (line/ruler/protractor/compasses) over the run-003 native stroke pipeline, zero schema impact"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)"
+  status: OPEN
+  priority: P3
+  band: T-MG-MARK-PARITY (interactive paper marking) — hub additive surface module over the ink layer of record
+  wave: mg-parity-phase3-ink
+  deps: [T-MG-INK-1]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.3 (the instruments deferral bullet: 'high delight, zero schema impact') + docs/MG-INK-SDK-GATE.md E5 (the instruments consequence of the native verdict)"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    - "(zero-schema pin) every instrument emits ORDINARY stroke shapes in the run-003 grammar — a line is a 2-point stroke; an arc/circle is a polyline sampled along the arc (ARC_STEP_DEG), the circle CLOSED by repeating its first point; NO container change, NO contracts change, NO migration"
+    - "(tool-vs-artifact pin) the ruler/protractor guides are SESSION-LOCAL chrome — never persisted, never parsed from the store; a reload drops the guides and replays the ink"
+    - "(aspect pin) all distance/projection/radius math runs in css-px space with the page box {cssW, cssH}; emitted points are clamped 0..1 page fractions (the anisotropic-page law — a fraction-space naive projection is wrong on A4 portrait)"
+    - "(honest-snap pin) a drag that starts AND ends within the snap band commits the clean instrument stroke; a straddling drag commits the live mixed path (projected where near the guide, raw elsewhere); off-guide drags stay raw freehand — snap failure never fabricates"
+    - "(risk-4 pin) no global keyboard listeners; the guides ride the same canvas pointer handlers; guide manipulation works in any mode (tldraw posture), snap-DRAW only in the guide's own mode"
+  execution_record: >
+    run-001 (2026-10-30). Operator dispatch "Proceed with work" (trace
+    1a18d2a48c6b9fc9) — the queue's next item per the run-003 consequences
+    pointer. Branch t-mg-ink-2/run-001 off origin/main dafe8604. The MG
+    toolbar census (plan §1 pass 2: "Line/Ruler/Protractor/Compasses")
+    realized as four instruments over the run-003 ink layer:
+    apps/hub/src/components/pastpapers/ink/instruments.ts (the PURE math of
+    record — angle convention y-down clockwise 0°=east; degNormalize /
+    angleDegFrom / shortestSignedDelta (−180,180] / inRimSpan; the
+    aspect-correct ruler edge + PX-space projection (projectOntoRuler with
+    the unclamped t0 span law — a pen beyond the ruler's ENDS never folds
+    to the tip); rulerLivePoint/applyRulerSnap; protractor rim
+    [angleDeg+180, angleDeg+360] (the y-down upper half), protractor
+    base/handle/rotate, protractorLivePoint/applyProtractorSnap with the
+    sweptDeg readout; sampleArc (signed direction, ARC_STEP_DEG=2);
+    compassesRadiusFrac / sampleCircleCompasses (closed polyline) /
+    compassesCommitable (MIN_COMMIT_RADIUS_PX=2 tap guard); guide
+    factories + grabOffset/moveGuide clamp); InstrumentGuides.tsx (the
+    session-local guide chrome — ticked ruler bar + rotate grip via the
+    zero-height rotated Arm construction (CSS carries the aspect law),
+    half-disc protractor + base line + pivot dot, × remove buttons;
+    aria-hidden — the toolbar is the a11y surface; holderRead climbs to
+    the [data-page] holder — a rotated guide's own rect is an AABB);
+    InkLayer.tsx extended (mode union + InstrumentMode; toolbar divider +
+    4 labelled buttons Minus/Ruler/Gauge/Compass; guide state + drag ref +
+    down/move/rotate/create callbacks; InkCanvas rewritten as the gesture
+    ROUTER: freehand unchanged, line = rubber-band via the existing
+    activeStroke painter + 2px min-drag guard, compasses = live sampled-
+    circle preview through the same painter + tap guard, ruler/protractor
+    = live point projection within the band + clean-snap commit law +
+    the protractor's live swept-angle readout (role=status); guides
+    render inside the page portal as the canvas's siblings). Tests: 26
+    new (instruments.test.ts) — pins (a) the angle convention, (b) the
+    aspect-correct projection trap (45° edge on an anisotropic box,
+    endpoints equidistant in PX not fractions), (c) the ruler snap law
+    (clean 2-point commit / band miss → null / beyond-ends → null / live
+    projection / 1° rotate quantization), (d) the protractor law (rim
+    start = base+180, arc sampling on-rim within step error, base side
+    never snaps, radius-band miss → null, live rim force), (e) the
+    zero-schema-impact circle (closed polyline, TRUE circle in px space
+    on an anisotropic box, ≤181 open points + closure, tap guard),
+    (f) the guide drag/rotate math (grab-offset preservation, page clamp,
+    negative-sweep arc walk). Local verify: bun test ink 47/47 (26 new +
+    the 21 run-003 pins byte-stable); bun test apps/api packages 3166
+    total / 0 fail / 13 skip; typecheck exit 0 (4 packages); golden
+    selftest OK; retrieval-eval 22 pass / 0 fail + 19/19 selftest;
+    build:hub SUCCESS. Fence census at head: cla.ts a9fdabfd / cla
+    service.ts db4573c7 EXACT; zero identity-plane paths. The ONLY
+    modified pre-existing file is apps/hub/.../InkLayer.tsx — OUR OWN
+    run-003 additive module (the module is the surface card's host; no
+    monolith, no schema, no contracts, no api file touched).

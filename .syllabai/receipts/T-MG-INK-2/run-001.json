@@ -1,0 +1,55 @@
+{
+  "task": "T-MG-INK-2 run-001",
+  "date": "2026-10-30",
+  "operator": {
+    "dispatch": "Proceed with work",
+    "trace": "1a18d2a48c6b9fc9",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md §3.3 (the instruments deferral bullet — 'high delight, zero schema impact') + docs/MG-INK-SDK-GATE.md E5",
+  "class": "additive hub surface module over the run-003 ink layer — the ONLY modified pre-existing file is InkLayer.tsx (our own run-003 additive module); no schema, no contracts, no api, no pdf-pane monolith file touched",
+  "merge_word_expected": null,
+  "what_lands": {
+    "pure_math": "apps/hub/src/components/pastpapers/ink/instruments.ts — the instrument math of record (angle convention y-down clockwise; aspect-correct px-space projection/radius; ruler edge + snap; protractor rim [θ+180, θ+360] + sweptDeg; arc/circle samplers emitting ORDINARY stroke points)",
+    "guide_chrome": "apps/hub/src/components/pastpapers/ink/InstrumentGuides.tsx — session-local ruler/protractor guides (ticked bar + rotate grips via the rotated-Arm CSS construction; half-disc + base + pivot dot; × remove; aria-hidden)",
+    "router": "InkLayer.tsx InkCanvas rewritten as the gesture router (freehand unchanged; line rubber-band + 2px guard; compasses live circle preview + tap guard; ruler/protractor live projection + clean-snap commit + mixed-path fallback + swept-angle role=status readout); toolbar +4 labelled instrument buttons",
+    "tests": "apps/hub/src/components/pastpapers/ink/instruments.test.ts — 26 pins"
+  },
+  "pins": {
+    "zero_schema_pin": "every instrument emits ordinary {kind:'stroke'} shapes — line = 2-point stroke; arc/circle = sampled polyline (2°), circle CLOSED by repeating its first point; container {schema:'syllabai-ink/1', shapes[]} UNCHANGED; no contracts/db/api file in the diff",
+    "tool_vs_artifact_pin": "guides are session-local chrome, never persisted — a reload drops them and replays the ink",
+    "aspect_pin": "distance/projection/radius math in css-px space with the page box; emitted points clamped 0..1 fractions (the anisotropic-page law, pinned by the 45°/A4 test)",
+    "honest_snap_pin": "start AND end in band → clean instrument stroke; straddling drag → the live mixed path; off-guide → raw freehand; snap failure never fabricates",
+    "risk4_pin": "no global keyboard listeners; guides ride the canvas pointer handlers; guide manipulation in any mode, snap-DRAW in the guide's mode only"
+  },
+  "divergences_disclosed": [
+    "the MG census also names a 'Line' tool — realized here as the zero-chrome rubber-band line (drag A→B), the instrument family's simplest member",
+    "rotation quantizes to 1° (display precision) — no snap-to-common-angles (MG/tldraw snap behavior unobserved at dossier grain)",
+    "the ruler's snap line is the bar's CENTER line (a thin bar; drawing along either side within the 6px band snaps) — a physical ruler snaps at its edge; disclosed",
+    "the protractor commits the SHORT rim arc between the first and last captured angles (both live in one semicircle by the span law)",
+    "compasses radius measures as a fraction of the PAGE WIDTH (the pen-width reference dimension) — a circle is width-referenced while its vertical extent is aspect-corrected in px space",
+    "the compasses/line preview paints through the ordinary active-stroke path (ink colour + width), no separate dashed DOM preview",
+    "no Escape/keyboard cancel for instrument drags (Risk 4) — pointer cancel/leave and the one-tap mode toggle are the exits",
+    "guide icons: Gauge stands in for the protractor (lucide has no protractor glyph), Compass for the compasses — aria-labels disambiguate"
+  ],
+  "verification": {
+    "ink_tests": "47/47 (instruments 26 + run-003 grammar/sync 21 byte-stable)",
+    "api_packages_suite": "bun test apps/api packages — 3166 total / 0 fail / 13 skip",
+    "typecheck": "exit 0 (contracts, shared, db, api)",
+    "hub_build": "bun run build:hub SUCCESS (the production build compiles the instruments module)",
+    "golden_selftest": "OK",
+    "retrieval_eval": "22 pass / 0 fail + 19/19 selftest vectors",
+    "zero_core_census": "GATE GREEN (0 identity-plane paths)"
+  },
+  "fence_census": {
+    "apps/api/src/routes/cla.ts": "a9fdabfd… EXACT at head",
+    "apps/api/src/services/cla/service.ts": "db4573c7… EXACT at head",
+    "identity_plane": "prompt.ts / PROMPT_VERSION untouched"
+  },
+  "consequences": [
+    "the ink grammar of record is UNCHANGED — run-002's store and run-003's layer consume instrument output with zero awareness of instruments",
+    "Phase 4 (T-MG-CROPMARK-1) reads the same stroke stream regardless of which instrument produced it",
+    "remaining MG toolbar census items (Browse/Select/Erase, 'Math text box') remain unported-by-choice — Erase is subsumed by undo/clear at v1, disclosed"
+  ],
+  "discipline": "zero target-site writes; zero DB contact; no api/packages/contracts file touched; binaries sandbox-local (node_modules not committed)"
+}
