@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_cTk2cs2h2BKQ3y3B",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "e0ccc4b3acb7c76c3e943d1fcd058b6e0fa8d273e0188b55692e3ec0260e6eaa",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "8593b4c5f8b1a7ea2150fd4e2f23ff86e9847c0275250332b48a5d00b6995802",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_cTk2cs2h2BKQ3y3B",
   "subject": "igcse-chemistry",
@@ -192,6 +192,65 @@
       ]
     },
     {
+      "id": "rn_cTk2cs2h2BKQ3y3B::L1::Q6",
+      "moduleId": "rn_cTk2cs2h2BKQ3y3B::L1",
+      "stem": "State the term for the liquid that does the dissolving.",
+      "misconceptionClass": "solvent naming",
+      "kind": "recall",
+      "modelAnswer": "The solvent.",
+      "keywords": [
+        "solvent"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_cTk2cs2h2BKQ3y3B::L1::Q7",
+      "moduleId": "rn_cTk2cs2h2BKQ3y3B::L1",
+      "stem": "State the units in which solubility values are recorded.",
+      "misconceptionClass": "solubility units",
+      "kind": "recall",
+      "modelAnswer": "Grams per 100 grams of solvent.",
+      "keywords": [
+        "grams",
+        "100",
+        "g"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_cTk2cs2h2BKQ3y3B::L1::Q8",
+      "moduleId": "rn_cTk2cs2h2BKQ3y3B::L1",
+      "stem": "Explain why a saturated solution of one substance can hold more dissolved solid than a saturated solution of another substance at the same temperature.",
+      "misconceptionClass": "solubility specificity logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because different substances dissolve to different extents in the same solvent — solubility is specific to each substance.",
+      "keywords": [
+        "different",
+        "extents",
+        "extent",
+        "specific",
+        "vary",
+        "varies",
+        "substances"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_cTk2cs2h2BKQ3y3B::L1::Q9",
+      "moduleId": "rn_cTk2cs2h2BKQ3y3B::L1",
+      "stem": "A diver's blood dissolves more gas at depth than at the surface. State the two trends from the note that explain more gas dissolving at depth.",
+      "misconceptionClass": "gas solubility applied",
+      "kind": "application",
+      "modelAnswer": "Higher pressure — gases dissolve better under high pressure — and the colder temperature deep underwater, since gases dissolve worse when warmed.",
+      "keywords": [
+        "pressure",
+        "cold",
+        "colder",
+        "cooler"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_cTk2cs2h2BKQ3y3B::L2::Q1",
       "moduleId": "rn_cTk2cs2h2BKQ3y3B::L2",
       "stem": "What does the vertical axis of a solubility curve show?",
@@ -370,6 +429,71 @@
           "misconception": "overgeneralisation"
         }
       ]
+    },
+    {
+      "id": "rn_cTk2cs2h2BKQ3y3B::L2::Q6",
+      "moduleId": "rn_cTk2cs2h2BKQ3y3B::L2",
+      "stem": "State which salt is the exception whose solubility changes very little as temperature rises.",
+      "misconceptionClass": "flat curve exception",
+      "kind": "recall",
+      "modelAnswer": "Sodium chloride (NaCl).",
+      "keywords": [
+        "sodium",
+        "chloride",
+        "nacl"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_cTk2cs2h2BKQ3y3B::L2::Q7",
+      "moduleId": "rn_cTk2cs2h2BKQ3y3B::L2",
+      "stem": "State what each point on a solubility curve records.",
+      "misconceptionClass": "curve point meaning",
+      "kind": "recall",
+      "modelAnswer": "The maximum mass that dissolves before a saturated solution forms (at that temperature).",
+      "keywords": [
+        "maximum",
+        "max",
+        "saturated",
+        "saturation",
+        "most"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_cTk2cs2h2BKQ3y3B::L2::Q8",
+      "moduleId": "rn_cTk2cs2h2BKQ3y3B::L2",
+      "stem": "Explain why a solubility curve is useful once it has been drawn.",
+      "misconceptionClass": "curve utility logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because reading the curve gives the mass that will dissolve at any chosen temperature, without repeating the experiment at each temperature.",
+      "keywords": [
+        "reading",
+        "read",
+        "any",
+        "chosen",
+        "predict",
+        "without"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_cTk2cs2h2BKQ3y3B::L2::Q9",
+      "moduleId": "rn_cTk2cs2h2BKQ3y3B::L2",
+      "stem": "A hot saturated solution of potassium nitrate is cooled. State what you would expect to form, and why.",
+      "misconceptionClass": "cooling crystallisation applied",
+      "kind": "application",
+      "modelAnswer": "Crystals form — most salts dissolve better as the water gets hotter, so cooling means the solution holds less, and the excess solid crystallises out.",
+      "keywords": [
+        "crystals",
+        "crystal",
+        "crystallise",
+        "crystallises",
+        "cooler",
+        "less",
+        "excess"
+      ],
+      "options": []
     }
   ]
 }

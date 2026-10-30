@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_vXPcH3vS8wv7BFkK",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "da34daf2305f86bb852c24146aa7e28819ecc6bf597734675d40ad531bf69d56",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "d80d46eb8eb6a5540027a403c0731a1eae23110d0078865ab79e9633c804db5e",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_vXPcH3vS8wv7BFkK",
   "subject": "igcse-chemistry",
@@ -192,6 +192,73 @@
       ]
     },
     {
+      "id": "rn_vXPcH3vS8wv7BFkK::L1::Q6",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L1",
+      "stem": "State what the yield of a reaction describes.",
+      "misconceptionClass": "yield definition recall",
+      "kind": "recall",
+      "modelAnswer": "The yield is the amount of product obtained from a reaction.",
+      "keywords": [
+        "amount",
+        "product",
+        "obtained",
+        "obtain"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L1::Q7",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L1",
+      "stem": "State what a side reaction is.",
+      "misconceptionClass": "side reaction recall",
+      "kind": "recall",
+      "modelAnswer": "When something extra reacts — such as a gas from the air, or an impurity mixed into a reactant.",
+      "keywords": [
+        "extra",
+        "impurity",
+        "air",
+        "reacts",
+        "react"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L1::Q8",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L1",
+      "stem": "Explain why the mass of dry product weighed at the end is usually less than the reaction could have made.",
+      "misconceptionClass": "product loss logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because some reactant stays behind in the equipment and some product is lost during separation, purification and transfer between containers.",
+      "keywords": [
+        "equipment",
+        "lost",
+        "loss",
+        "separation",
+        "purification",
+        "transfer",
+        "stays"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L1::Q9",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L1",
+      "stem": "State the two directions a reversible reaction keeps running in, and what that does to the amount of product that can build up.",
+      "misconceptionClass": "reversible cap applied",
+      "kind": "application",
+      "modelAnswer": "Products keep turning back into reactants as reactants keep forming products — because the products never all survive, a high yield is never possible.",
+      "keywords": [
+        "reversible",
+        "turning",
+        "turn",
+        "back",
+        "reactants",
+        "products",
+        "never"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_vXPcH3vS8wv7BFkK::L2::Q1",
       "moduleId": "rn_vXPcH3vS8wv7BFkK::L2",
       "stem": "Which expression gives the percentage yield?",
@@ -370,6 +437,70 @@
           "misconception": "values added"
         }
       ]
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L2::Q6",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L2",
+      "stem": "State the percentage yield sum in words.",
+      "misconceptionClass": "percentage yield sum recall",
+      "kind": "recall",
+      "modelAnswer": "Divide the actual yield by the theoretical yield, then multiply by one hundred.",
+      "keywords": [
+        "actual",
+        "theoretical",
+        "divide",
+        "divided",
+        "hundred",
+        "100"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L2::Q7",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L2",
+      "stem": "State how each method of making a compound is described, and what it is built from.",
+      "misconceptionClass": "pathway definition recall",
+      "kind": "recall",
+      "modelAnswer": "It is a reaction pathway — a route built from a sequence of reactions.",
+      "keywords": [
+        "pathway",
+        "route",
+        "sequence",
+        "reactions",
+        "reaction"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L2::Q8",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L2",
+      "stem": "Explain what a percentage yield above one hundred percent signals, and name the usual mistake behind it.",
+      "misconceptionClass": "inversion error logic",
+      "kind": "explain-why",
+      "modelAnswer": "It signals an error — usually the theoretical yield was divided by the actual yield, the inverse of the correct sum.",
+      "keywords": [
+        "error",
+        "mistake",
+        "divided",
+        "divide",
+        "inverse",
+        "inverted",
+        "wrong"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vXPcH3vS8wv7BFkK::L2::Q9",
+      "moduleId": "rn_vXPcH3vS8wv7BFkK::L2",
+      "stem": "A factory route delivers 31 g of product where the theoretical yield is 40 g. Calculate the percentage yield.",
+      "misconceptionClass": "percentage yield applied",
+      "kind": "application",
+      "modelAnswer": "31 / 40 x 100 = 77.5 percent.",
+      "keywords": [
+        "77.5",
+        "77.5 percent"
+      ],
+      "options": []
     }
   ]
 }

@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_RvgxXR36425BFMcx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "9017805deeb2c388fece1c49c207bcff66d1358de92a01a847fe3265481cc67a",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "691b34599910d5766bb0156efa82bd13ba8ad76b6a83caf711e1aac6f774fa1c",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_RvgxXR36425BFMcx",
   "subject": "igcse-chemistry",
@@ -192,6 +192,66 @@
       ]
     },
     {
+      "id": "rn_RvgxXR36425BFMcx::L1::Q6",
+      "moduleId": "rn_RvgxXR36425BFMcx::L1",
+      "stem": "State what a pure substance is in chemistry.",
+      "misconceptionClass": "pure definition",
+      "kind": "recall",
+      "modelAnswer": "A single element or a single compound, and nothing else.",
+      "keywords": [
+        "single",
+        "one",
+        "element",
+        "compound",
+        "nothing"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RvgxXR36425BFMcx::L1::Q7",
+      "moduleId": "rn_RvgxXR36425BFMcx::L1",
+      "stem": "State what adding anything at all to a pure substance produces.",
+      "misconceptionClass": "addition consequence",
+      "kind": "recall",
+      "modelAnswer": "A mixture — adding anything, even another pure substance, produces a mixture.",
+      "keywords": [
+        "mixture"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RvgxXR36425BFMcx::L1::Q8",
+      "moduleId": "rn_RvgxXR36425BFMcx::L1",
+      "stem": "Explain why drinking water fails the chemistry test for purity.",
+      "misconceptionClass": "drinking water logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because drinking water carries dissolved ions and chlorine as well as the water molecules — a pure substance must be a single element or compound with nothing else present.",
+      "keywords": [
+        "ions",
+        "chlorine",
+        "dissolved",
+        "other",
+        "else",
+        "impurities",
+        "impurity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RvgxXR36425BFMcx::L1::Q9",
+      "moduleId": "rn_RvgxXR36425BFMcx::L1",
+      "stem": "A sealed bottle holds only nitrogen molecules. Classify the bottle's contents by the chemistry definition.",
+      "misconceptionClass": "pure classification applied",
+      "kind": "application",
+      "modelAnswer": "It is pure — a single element (nitrogen), which is exactly what the chemistry definition of pure allows.",
+      "keywords": [
+        "pure",
+        "element",
+        "nitrogen"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_RvgxXR36425BFMcx::L2::Q1",
       "moduleId": "rn_RvgxXR36425BFMcx::L2",
       "stem": "A liquid boils steadily between 101 °C and 103 °C at standard pressure. Pure water boils at 100 °C. What follows?",
@@ -370,6 +430,66 @@
           "misconception": "method-scope invented"
         }
       ]
+    },
+    {
+      "id": "rn_RvgxXR36425BFMcx::L2::Q6",
+      "moduleId": "rn_RvgxXR36425BFMcx::L2",
+      "stem": "State how a pure substance melts and boils.",
+      "misconceptionClass": "sharp melting point",
+      "kind": "recall",
+      "modelAnswer": "At one specific, sharp temperature (its melting point and boiling point).",
+      "keywords": [
+        "one",
+        "sharp",
+        "specific",
+        "single",
+        "exact"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RvgxXR36425BFMcx::L2::Q7",
+      "moduleId": "rn_RvgxXR36425BFMcx::L2",
+      "stem": "State which technique checks drug purity by heating a tiny sample slowly.",
+      "misconceptionClass": "drug purity technique",
+      "kind": "recall",
+      "modelAnswer": "Melting point analysis.",
+      "keywords": [
+        "melting",
+        "point",
+        "mp"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RvgxXR36425BFMcx::L2::Q8",
+      "moduleId": "rn_RvgxXR36425BFMcx::L2",
+      "stem": "Explain how melting and boiling data can distinguish a pure substance from a mixture.",
+      "misconceptionClass": "purity evidence logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because a pure substance melts and boils at one specific, sharp temperature while a mixture melts and boils over a range of temperatures — so a sample that melts over a range is a mixture.",
+      "keywords": [
+        "sharp",
+        "one",
+        "range",
+        "mixture",
+        "pure",
+        "specific"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_RvgxXR36425BFMcx::L2::Q9",
+      "moduleId": "rn_RvgxXR36425BFMcx::L2",
+      "stem": "Sample A melts at 80.1 °C with a data-table value of 80.2 °C; sample B melts between 74 °C and 79 °C. State which sample is purer.",
+      "misconceptionClass": "purity comparison applied",
+      "kind": "application",
+      "modelAnswer": "Sample A — the closer the measured point sits to the data-table value, the purer the sample (B melts over a range, so it is a mixture).",
+      "keywords": [
+        "a",
+        "first"
+      ],
+      "options": []
     }
   ]
 }

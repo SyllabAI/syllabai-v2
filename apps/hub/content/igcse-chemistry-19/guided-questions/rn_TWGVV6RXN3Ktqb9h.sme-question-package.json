@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_TWGVV6RXN3Ktqb9h",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7e35c264cb2e60f2320b082872ee7ecc0d285eacd228ecf9733f98f76cbf045d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "d6aead1e4b1a844b27f0cad72d0ee181c76b5d30a1be75a7f8710bad523c9ac5",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_TWGVV6RXN3Ktqb9h",
   "subject": "igcse-chemistry",
@@ -192,6 +192,69 @@
       ]
     },
     {
+      "id": "rn_TWGVV6RXN3Ktqb9h::L1::Q6",
+      "moduleId": "rn_TWGVV6RXN3Ktqb9h::L1",
+      "stem": "State how many elements the periodic table holds.",
+      "misconceptionClass": "element count",
+      "kind": "recall",
+      "modelAnswer": "118 elements (for example copper, iron and magnesium).",
+      "keywords": [
+        "118"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TWGVV6RXN3Ktqb9h::L1::Q7",
+      "moduleId": "rn_TWGVV6RXN3Ktqb9h::L1",
+      "stem": "State what a compound is.",
+      "misconceptionClass": "compound definition",
+      "kind": "recall",
+      "modelAnswer": "A compound joins two or more different elements by chemical bonds into one substance.",
+      "keywords": [
+        "two",
+        "different",
+        "elements",
+        "chemically",
+        "chemical",
+        "bonds",
+        "bonded",
+        "joined"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TWGVV6RXN3Ktqb9h::L1::Q8",
+      "moduleId": "rn_TWGVV6RXN3Ktqb9h::L1",
+      "stem": "Explain why iron sulfide, FeS, cannot be separated into iron and sulfur by sorting or magnets, while a loose mixture of the two powders can.",
+      "misconceptionClass": "compound vs mixture separation logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because FeS is a compound — its elements are joined by chemical bonds, and no physical method can split a compound back into the elements it contains; the loose mixture has no bonds, so physical methods separate it.",
+      "keywords": [
+        "compound",
+        "chemical",
+        "bond",
+        "bonds",
+        "bonded",
+        "physical",
+        "cannot",
+        "never"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TWGVV6RXN3Ktqb9h::L1::Q9",
+      "moduleId": "rn_TWGVV6RXN3Ktqb9h::L1",
+      "stem": "Sample A contains only atoms with 8 protons; sample B contains atoms with 8 protons chemically bonded to atoms with 1 proton. Classify each sample.",
+      "misconceptionClass": "element vs compound applied",
+      "kind": "application",
+      "modelAnswer": "Sample A is an element (all its atoms hold the same number of protons); sample B is a compound (two or more different elements joined by chemical bonds).",
+      "keywords": [
+        "element",
+        "compound"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_TWGVV6RXN3Ktqb9h::L2::Q1",
       "moduleId": "rn_TWGVV6RXN3Ktqb9h::L2",
       "stem": "Stirring sand into water gives cloudy water. How is the result classified, and why?",
@@ -370,6 +433,70 @@
           "misconception": "default-to-mixture habit"
         }
       ]
+    },
+    {
+      "id": "rn_TWGVV6RXN3Ktqb9h::L2::Q6",
+      "moduleId": "rn_TWGVV6RXN3Ktqb9h::L2",
+      "stem": "State what a mixture is.",
+      "misconceptionClass": "mixture definition",
+      "kind": "recall",
+      "modelAnswer": "A mixture holds two or more substances in one place without chemical bonds between them.",
+      "keywords": [
+        "two",
+        "substances",
+        "without",
+        "bonds",
+        "unbonded"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TWGVV6RXN3Ktqb9h::L2::Q7",
+      "moduleId": "rn_TWGVV6RXN3Ktqb9h::L2",
+      "stem": "Name the three mixture examples the note gives.",
+      "misconceptionClass": "mixture examples",
+      "kind": "recall",
+      "modelAnswer": "Sand in water, oil in water, and sulfur mixed with iron filings.",
+      "keywords": [
+        "sand",
+        "oil",
+        "sulfur",
+        "sulphur",
+        "iron"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TWGVV6RXN3Ktqb9h::L2::Q8",
+      "moduleId": "rn_TWGVV6RXN3Ktqb9h::L2",
+      "stem": "Explain why the ingredients of a mixture can each already be compounds.",
+      "misconceptionClass": "mixture ingredient logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the ingredients of a mixture can be elements, compounds or both at once — a mixture only needs two or more substances without chemical bonds between them, whatever each substance is.",
+      "keywords": [
+        "elements",
+        "compounds",
+        "both",
+        "either"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TWGVV6RXN3Ktqb9h::L2::Q9",
+      "moduleId": "rn_TWGVV6RXN3Ktqb9h::L2",
+      "stem": "A student separates a mixture into its parts by evaporating the liquid away. State why physical separation was possible here but would not split a compound.",
+      "misconceptionClass": "separation limit applied",
+      "kind": "application",
+      "modelAnswer": "Physical methods such as filtration or evaporation separate mixtures into their parts because mixtures have no chemical bonds between their ingredients; a compound's elements are chemically bonded, and no physical method can split it.",
+      "keywords": [
+        "mixture",
+        "without",
+        "bonds",
+        "physical",
+        "unbonded",
+        "compound"
+      ],
+      "options": []
     }
   ]
 }

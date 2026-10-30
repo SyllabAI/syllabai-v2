@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_2VnK66PqbvFKdKYt",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "418cd823eac124d94ef7d892b63adedfdc6daad98140edb54f60246580eedc6c",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "b35232ce00c5f7be3507196201bacbec9e82a6d7f1ddcbd9c8039b1681a8fed9",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_2VnK66PqbvFKdKYt",
   "subject": "igcse-chemistry",
@@ -192,6 +192,71 @@
       ]
     },
     {
+      "id": "rn_2VnK66PqbvFKdKYt::L1::Q6",
+      "moduleId": "rn_2VnK66PqbvFKdKYt::L1",
+      "stem": "Describe the arrangement and movement of the particles in a liquid.",
+      "misconceptionClass": "liquid particle description",
+      "kind": "recall",
+      "modelAnswer": "Liquid particles are randomly arranged but still close together, moving around each other.",
+      "keywords": [
+        "random",
+        "randomly",
+        "close",
+        "moving",
+        "move",
+        "around"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2VnK66PqbvFKdKYt::L1::Q7",
+      "moduleId": "rn_2VnK66PqbvFKdKYt::L1",
+      "stem": "State the three states of matter.",
+      "misconceptionClass": "states recall",
+      "kind": "recall",
+      "modelAnswer": "Solids, liquids and gases.",
+      "keywords": [
+        "solid",
+        "solids",
+        "liquid",
+        "liquids",
+        "gas",
+        "gases"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2VnK66PqbvFKdKYt::L1::Q8",
+      "moduleId": "rn_2VnK66PqbvFKdKYt::L1",
+      "stem": "Explain why the same particle model can represent every substance.",
+      "misconceptionClass": "model universality logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because in the model every particle is drawn as a small solid sphere, whatever the substance — the model shows arrangement and movement, not the identity of the substance.",
+      "keywords": [
+        "sphere",
+        "spheres",
+        "same",
+        "small",
+        "solid",
+        "arrangement",
+        "movement"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2VnK66PqbvFKdKYt::L1::Q9",
+      "moduleId": "rn_2VnK66PqbvFKdKYt::L1",
+      "stem": "Substance X has particles vibrating about fixed positions very close together; substance Y has particles far apart moving quickly in all directions. Classify each substance's state.",
+      "misconceptionClass": "state classification applied",
+      "kind": "application",
+      "modelAnswer": "X is a solid (particles sit in a regular arrangement, vibrating about fixed positions, very close together); Y is a gas (particles are randomly arranged, far apart, moving quickly in all directions).",
+      "keywords": [
+        "solid",
+        "gas"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_2VnK66PqbvFKdKYt::L2::Q1",
       "moduleId": "rn_2VnK66PqbvFKdKYt::L2",
       "stem": "What is the difference between boiling and evaporation?",
@@ -370,6 +435,72 @@
           "misconception": "reverse direction taken"
         }
       ]
+    },
+    {
+      "id": "rn_2VnK66PqbvFKdKYt::L2::Q6",
+      "moduleId": "rn_2VnK66PqbvFKdKYt::L2",
+      "stem": "State what happens to the particles of a solid as it melts.",
+      "misconceptionClass": "melting particles",
+      "kind": "recall",
+      "modelAnswer": "The absorbed heat becomes kinetic energy and the particles vibrate more.",
+      "keywords": [
+        "kinetic",
+        "energy",
+        "vibrate",
+        "vibrates",
+        "vibrating",
+        "more"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2VnK66PqbvFKdKYt::L2::Q7",
+      "moduleId": "rn_2VnK66PqbvFKdKYt::L2",
+      "stem": "State the relationship between the temperature at which a substance melts and the temperature at which it freezes.",
+      "misconceptionClass": "melt-freeze temperature",
+      "kind": "recall",
+      "modelAnswer": "Freezing reverses melting at the same temperature — they happen at one identical temperature.",
+      "keywords": [
+        "same",
+        "identical",
+        "temperature",
+        "reverses"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2VnK66PqbvFKdKYt::L2::Q8",
+      "moduleId": "rn_2VnK66PqbvFKdKYt::L2",
+      "stem": "Explain why changing state does not alter the substance's chemical identity.",
+      "misconceptionClass": "physical change logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because changing state is a physical change: the particles stay the same and only the forces between them alter.",
+      "keywords": [
+        "physical",
+        "particles",
+        "stay",
+        "same",
+        "forces",
+        "only"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2VnK66PqbvFKdKYt::L2::Q9",
+      "moduleId": "rn_2VnK66PqbvFKdKYt::L2",
+      "stem": "A student watches bubbles form throughout a heating liquid at exactly 100 °C, and sees droplets forming on a cold lid above it. State which process each observation shows.",
+      "misconceptionClass": "boiling vs condensing applied",
+      "kind": "application",
+      "modelAnswer": "The bubbles forming throughout the liquid at one temperature are boiling; the droplets forming on the cold lid are condensing (condensation).",
+      "keywords": [
+        "boiling",
+        "boil",
+        "condensing",
+        "condensation",
+        "condense",
+        "condenses"
+      ],
+      "options": []
     }
   ]
 }

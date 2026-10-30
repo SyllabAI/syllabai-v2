@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_8Nv33F4dD3kkZnY6",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "7c1c9b348c0ecbb17cbda47472fdc21f54d091d99e731b4761cc3e9067958ae8",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "e409cdb01de30f7c3b105ecfcc5ea0f3c4369efc818688c79fdaaca00f61657e",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_8Nv33F4dD3kkZnY6",
   "subject": "igcse-chemistry",
@@ -192,6 +192,74 @@
       ]
     },
     {
+      "id": "rn_8Nv33F4dD3kkZnY6::L1::Q6",
+      "moduleId": "rn_8Nv33F4dD3kkZnY6::L1",
+      "stem": "State what a compound ion is, and what its formula demands.",
+      "misconceptionClass": "compound ion recall",
+      "kind": "recall",
+      "modelAnswer": "An ion made from more than one element — its formula must be learned as given.",
+      "keywords": [
+        "compound",
+        "more",
+        "one",
+        "element",
+        "elements",
+        "formula",
+        "learned",
+        "learn"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8Nv33F4dD3kkZnY6::L1::Q7",
+      "moduleId": "rn_8Nv33F4dD3kkZnY6::L1",
+      "stem": "State what kind of ion forms when an atom's outer electron count sits below four.",
+      "misconceptionClass": "donation rule recall",
+      "kind": "recall",
+      "modelAnswer": "A positive ion — the atom donates its outer electrons.",
+      "keywords": [
+        "positive",
+        "donate",
+        "donates",
+        "donated",
+        "outer"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8Nv33F4dD3kkZnY6::L1::Q8",
+      "moduleId": "rn_8Nv33F4dD3kkZnY6::L1",
+      "stem": "Explain why a Group 7 atom ends up carrying a 1- charge.",
+      "misconceptionClass": "group 7 charge logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because a Group 7 atom has seven outer electrons — more than four — so it receives one electron to complete the shell, ending with one extra electron and a 1- charge.",
+      "keywords": [
+        "receives",
+        "receive",
+        "gains",
+        "gain",
+        "seven",
+        "7",
+        "extra",
+        "complete"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8Nv33F4dD3kkZnY6::L1::Q9",
+      "moduleId": "rn_8Nv33F4dD3kkZnY6::L1",
+      "stem": "A neutral atom has the configuration 2,8,3. State whether it donates or receives electrons, and the charge of the ion it forms.",
+      "misconceptionClass": "charge deduction applied",
+      "kind": "application",
+      "modelAnswer": "It has 3 outer electrons — fewer than four — so it donates all three and forms a 3+ ion.",
+      "keywords": [
+        "donates",
+        "donate",
+        "3+"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_8Nv33F4dD3kkZnY6::L2::Q1",
       "moduleId": "rn_8Nv33F4dD3kkZnY6::L2",
       "stem": "Which formula and charge belong to the silver ion?",
@@ -370,6 +438,74 @@
           "misconception": "both rows misremembered"
         }
       ]
+    },
+    {
+      "id": "rn_8Nv33F4dD3kkZnY6::L2::Q6",
+      "moduleId": "rn_8Nv33F4dD3kkZnY6::L2",
+      "stem": "Name the five compound ions the table says to know, with their charges.",
+      "misconceptionClass": "compound ion table recall",
+      "kind": "recall",
+      "modelAnswer": "Hydroxide OH-, ammonium NH4+, carbonate CO3 2-, nitrate NO3- and sulfate SO4 2-.",
+      "keywords": [
+        "hydroxide",
+        "ammonium",
+        "carbonate",
+        "nitrate",
+        "sulfate",
+        "sulphate",
+        "oh",
+        "nh4",
+        "co3",
+        "no3",
+        "so4"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8Nv33F4dD3kkZnY6::L2::Q7",
+      "moduleId": "rn_8Nv33F4dD3kkZnY6::L2",
+      "stem": "State the ion that hydrogen rides as in the common-ions table.",
+      "misconceptionClass": "hydrogen ion recall",
+      "kind": "recall",
+      "modelAnswer": "H+, alongside the metal ions.",
+      "keywords": [
+        "h+",
+        "hydrogen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8Nv33F4dD3kkZnY6::L2::Q8",
+      "moduleId": "rn_8Nv33F4dD3kkZnY6::L2",
+      "stem": "Explain why iron appears twice in the common-ions table.",
+      "misconceptionClass": "iron dual charge logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because iron forms two different positive ions — Fe2+ and Fe3+ — depending on how many electrons it loses.",
+      "keywords": [
+        "two",
+        "2",
+        "different",
+        "fe2",
+        "fe3",
+        "ions",
+        "ion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8Nv33F4dD3kkZnY6::L2::Q9",
+      "moduleId": "rn_8Nv33F4dD3kkZnY6::L2",
+      "stem": "A compound contains potassium ions and carbonate ions. State each ion's charge and the overall formula of the compound.",
+      "misconceptionClass": "formula from charges applied",
+      "kind": "application",
+      "modelAnswer": "Potassium (Group 1) gives K+; carbonate is CO3 2-; two K+ ions balance one carbonate, so the formula is K2CO3.",
+      "keywords": [
+        "k2co3",
+        "k+",
+        "two",
+        "2"
+      ],
+      "options": []
     }
   ]
 }

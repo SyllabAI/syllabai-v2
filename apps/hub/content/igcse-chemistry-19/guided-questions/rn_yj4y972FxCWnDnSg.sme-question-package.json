@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_yj4y972FxCWnDnSg",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "9e009e830e0e26206efc0c7fd2f6263517272ac5effdbefb5b91585fe45ed5fc",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "c2762d8e0e4173f180a2c0d2138cb1a6a9d08202f455f5d18f395951b9f486b8",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_yj4y972FxCWnDnSg",
   "subject": "igcse-chemistry",
@@ -192,6 +192,71 @@
       ]
     },
     {
+      "id": "rn_yj4y972FxCWnDnSg::L1::Q6",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L1",
+      "stem": "State the two weighings that together give the magnesium's mass in the crucible practical.",
+      "misconceptionClass": "crucible weighings recall",
+      "kind": "recall",
+      "modelAnswer": "Weigh the crucible with its lid first, then again with the magnesium inside — the difference between them is the metal's mass.",
+      "keywords": [
+        "crucible",
+        "lid",
+        "difference",
+        "subtract",
+        "subtraction",
+        "again"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L1::Q7",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L1",
+      "stem": "State the double purpose of lifting the crucible lid during the heating.",
+      "misconceptionClass": "lid purpose recall",
+      "kind": "recall",
+      "modelAnswer": "Enough air enters for the magnesium to fully oxidise, while the magnesium oxide smoke must not escape.",
+      "keywords": [
+        "air",
+        "oxidation",
+        "oxidise",
+        "smoke",
+        "escape",
+        "escapes"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L1::Q8",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L1",
+      "stem": "Explain why heating continues until the crucible's mass is constant.",
+      "misconceptionClass": "constant mass logic",
+      "kind": "explain-why",
+      "modelAnswer": "A constant mass shows the maximum mass has been reached — the reaction is complete, with every bit of magnesium oxidised.",
+      "keywords": [
+        "constant",
+        "maximum",
+        "complete",
+        "completed",
+        "oxidised",
+        "oxidized"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L1::Q9",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L1",
+      "stem": "In a repeat run, 0.48 g of magnesium (Ar 24) is burnt and the oxide collected weighs 0.80 g. Show the moles of Mg and of O, and state the formula the ratio gives.",
+      "misconceptionClass": "mole ratio from crucible data applied",
+      "kind": "application",
+      "modelAnswer": "Mg: 0.48 / 24 = 0.02 mol; O: (0.80 - 0.48) / 16 = 0.32 / 16 = 0.02 mol; the ratio is 1 : 1, so the formula is MgO.",
+      "keywords": [
+        "mgo",
+        "0.02",
+        "1:1"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_yj4y972FxCWnDnSg::L2::Q1",
       "moduleId": "rn_yj4y972FxCWnDnSg::L2",
       "stem": "What is the role of the methane in this practical?",
@@ -370,6 +435,76 @@
           "misconception": "standard equipment treated as contamination"
         }
       ]
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L2::Q6",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L2",
+      "stem": "State the aim of the copper(II) oxide practical.",
+      "misconceptionClass": "practical aim recall",
+      "kind": "recall",
+      "modelAnswer": "To find the formula of copper(II) oxide, by reduction of the oxide with methane.",
+      "keywords": [
+        "formula",
+        "reduction",
+        "reducing",
+        "reduced",
+        "methane",
+        "copper",
+        "oxide"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L2::Q7",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L2",
+      "stem": "State how the oxygen's mass is obtained in the copper oxide practical.",
+      "misconceptionClass": "oxygen mass recall",
+      "kind": "recall",
+      "modelAnswer": "The oxygen's mass is the oxide's mass minus the metal's mass left after the reduction.",
+      "keywords": [
+        "minus",
+        "subtract",
+        "subtraction",
+        "oxide",
+        "metal",
+        "difference"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L2::Q8",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L2",
+      "stem": "Explain why the excess methane is burned off at the end of the practical.",
+      "misconceptionClass": "methane safety logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because methane is flammable — burning it off means the flammable gas is not released into the lab.",
+      "keywords": [
+        "flammable",
+        "flammability",
+        "burn",
+        "burning",
+        "burned",
+        "burnt",
+        "released",
+        "release",
+        "safe",
+        "safety"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_yj4y972FxCWnDnSg::L2::Q9",
+      "moduleId": "rn_yj4y972FxCWnDnSg::L2",
+      "stem": "A tube holds 2.40 g of copper(II) oxide; after reduction, 1.92 g of copper remains (Cu 63.5, O 16). Show both mole results and state the formula they give.",
+      "misconceptionClass": "reduction mole ratio applied",
+      "kind": "application",
+      "modelAnswer": "Cu: 1.92 / 63.5 = 0.03 mol (about); O: (2.40 - 1.92) / 16 = 0.48 / 16 = 0.03 mol; the ratio is 1 : 1, so the formula is CuO.",
+      "keywords": [
+        "cuo",
+        "0.03",
+        "1:1"
+      ],
+      "options": []
     }
   ]
 }

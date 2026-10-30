@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_b3XCzdtfQddbJjVf",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "824406048187423327988ec44c0578ed7d464485dc36747823934f50e19faf6e",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "daca9b859fa5c3a91aab5bde5e982d5fd995e0cf4671664aae63fa15bfe9e809",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_b3XCzdtfQddbJjVf",
   "subject": "igcse-chemistry",
@@ -192,6 +192,66 @@
       ]
     },
     {
+      "id": "rn_b3XCzdtfQddbJjVf::L1::Q6",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L1",
+      "stem": "State how many elements have been isolated and identified so far.",
+      "misconceptionClass": "element count",
+      "kind": "recall",
+      "modelAnswer": "Over 100 elements.",
+      "keywords": [
+        "100",
+        "hundred",
+        "over"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L1::Q7",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L1",
+      "stem": "State the number that acts as an element's fingerprint.",
+      "misconceptionClass": "fingerprint number",
+      "kind": "recall",
+      "modelAnswer": "The atomic number — it never changes, even in reactions.",
+      "keywords": [
+        "atomic",
+        "number"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L1::Q8",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L1",
+      "stem": "Explain why moving one element to the right along the table always adds exactly one proton.",
+      "misconceptionClass": "proton increments logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because elements are arranged in order of increasing atomic number, and the atomic number counts protons — so each element carries one proton more than the element before it.",
+      "keywords": [
+        "atomic",
+        "number",
+        "protons",
+        "proton",
+        "increasing",
+        "order",
+        "one"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L1::Q9",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L1",
+      "stem": "Elements A and B sit in the same column of the periodic table. Predict how their chemical properties compare.",
+      "misconceptionClass": "column properties applied",
+      "kind": "application",
+      "modelAnswer": "They are similar — ordering by atomic number places elements with similar properties in the same columns.",
+      "keywords": [
+        "similar",
+        "same",
+        "alike",
+        "comparable"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_b3XCzdtfQddbJjVf::L2::Q1",
       "moduleId": "rn_b3XCzdtfQddbJjVf::L2",
       "stem": "Which description matches the table's rows and columns?",
@@ -370,6 +430,68 @@
           "misconception": "invented period number"
         }
       ]
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L2::Q6",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L2",
+      "stem": "State the two numbers an atom's position in the table gives you, and what each counts.",
+      "misconceptionClass": "position numbers synthesis",
+      "kind": "recall",
+      "modelAnswer": "The period number gives the number of electron shells an atom holds, and the group number gives the number of electrons in the outermost shell.",
+      "keywords": [
+        "shells",
+        "shell",
+        "outer",
+        "outermost",
+        "electrons",
+        "electron",
+        "period",
+        "group"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L2::Q7",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L2",
+      "stem": "State the exception in how the table's columns are numbered.",
+      "misconceptionClass": "group 0 exception",
+      "kind": "recall",
+      "modelAnswer": "The final column is named Group 0 instead of Group 8 (groups run 1 to 7).",
+      "keywords": [
+        "0",
+        "zero",
+        "group"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L2::Q8",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L2",
+      "stem": "Explain what the period number of an element records about its atoms.",
+      "misconceptionClass": "period meaning",
+      "kind": "explain-why",
+      "modelAnswer": "It records the number of electron shells an atom holds — a Period 2 element has two shells.",
+      "keywords": [
+        "shells",
+        "shell",
+        "two",
+        "2",
+        "number"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_b3XCzdtfQddbJjVf::L2::Q9",
+      "moduleId": "rn_b3XCzdtfQddbJjVf::L2",
+      "stem": "An element sits in Group 5. State how many electrons it holds in its outermost shell.",
+      "misconceptionClass": "group to outer electrons applied",
+      "kind": "application",
+      "modelAnswer": "Five — the group number gives the number of electrons in the outermost shell.",
+      "keywords": [
+        "five",
+        "5"
+      ],
+      "options": []
     }
   ]
 }

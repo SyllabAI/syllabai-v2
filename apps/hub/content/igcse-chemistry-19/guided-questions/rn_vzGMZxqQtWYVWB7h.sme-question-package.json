@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_vzGMZxqQtWYVWB7h",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a62a39c656a8aa5ca809ecac4f6454bf7e2634d7d324402a2e8f71823858e903",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "ae849d78ef74a2d51f13ed68c8d4e36cf1a8f86e2357ee16d01a648eb10ef628",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_vzGMZxqQtWYVWB7h",
   "subject": "igcse-chemistry",
@@ -192,6 +192,68 @@
       ]
     },
     {
+      "id": "rn_vzGMZxqQtWYVWB7h::L1::Q6",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L1",
+      "stem": "State the term each isotope contributes to the relative-atomic-mass equation.",
+      "misconceptionClass": "Ar term",
+      "kind": "recall",
+      "modelAnswer": "Percentage abundance times mass number — each isotope contributes one term.",
+      "keywords": [
+        "abundance",
+        "abundances",
+        "mass",
+        "times",
+        "multiplied",
+        "product"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L1::Q7",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L1",
+      "stem": "State where an element's Ar value sits relative to its isotope mass numbers.",
+      "misconceptionClass": "Ar position",
+      "kind": "recall",
+      "modelAnswer": "In between — Ar is a weighted average, so it sits between the isotope mass numbers.",
+      "keywords": [
+        "between",
+        "weighted",
+        "average",
+        "middle"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L1::Q8",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L1",
+      "stem": "Explain why the relative-atomic-mass equation divides the summed terms by 100.",
+      "misconceptionClass": "divide by 100 logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the abundances are percentages — dividing by 100 converts the percentage-weighted total back to an average per atom.",
+      "keywords": [
+        "percentages",
+        "percentage",
+        "percent",
+        "100"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L1::Q9",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L1",
+      "stem": "Chlorine has two stable isotopes: 75% of mass 35 and 25% of mass 37. State the top line of the Ar calculation for chlorine.",
+      "misconceptionClass": "Ar top line applied",
+      "kind": "application",
+      "modelAnswer": "(75 x 35) + (25 x 37) — each isotope contributes one term of percentage abundance times mass number.",
+      "keywords": [
+        "75",
+        "35",
+        "25",
+        "37"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_vzGMZxqQtWYVWB7h::L2::Q1",
       "moduleId": "rn_vzGMZxqQtWYVWB7h::L2",
       "stem": "Rubidium: 72% of mass 85, 28% of mass 87. What is the first working step?",
@@ -370,6 +432,73 @@
           "misconception": "sum used instead of average"
         }
       ]
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L2::Q6",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L2",
+      "stem": "State the rounding rule of record for relative-atomic-mass working.",
+      "misconceptionClass": "rounding rule",
+      "kind": "recall",
+      "modelAnswer": "Keep full precision through the working and round only in the final line.",
+      "keywords": [
+        "round",
+        "rounding",
+        "final",
+        "last",
+        "end",
+        "precision",
+        "full"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L2::Q7",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L2",
+      "stem": "State the two products added in the rubidium top line, and their sum.",
+      "misconceptionClass": "rubidium arithmetic",
+      "kind": "recall",
+      "modelAnswer": "6120 and 2436, which sum to 8556.",
+      "keywords": [
+        "6120",
+        "2436",
+        "8556"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L2::Q8",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L2",
+      "stem": "Explain why the rubidium sample's Ar (85.6) sits closer to 85 than to 87.",
+      "misconceptionClass": "weighted average logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because Ar is a weighted average — the 72% abundance of the mass-85 isotope outweighs the 28% of mass-87, so the average sits between the mass numbers but nearer the more abundant isotope.",
+      "keywords": [
+        "weighted",
+        "abundance",
+        "abundances",
+        "72",
+        "more",
+        "nearer",
+        "between",
+        "average"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_vzGMZxqQtWYVWB7h::L2::Q9",
+      "moduleId": "rn_vzGMZxqQtWYVWB7h::L2",
+      "stem": "A different rubidium-like sample holds 60% of mass 85 and 40% of mass 87. Predict whether its Ar sits above or below 86.0.",
+      "misconceptionClass": "abundance shift applied",
+      "kind": "application",
+      "modelAnswer": "Below 86.0 — more of the lighter isotope (60% of mass 85) pulls the weighted average below the 50-50 midpoint of 86.0.",
+      "keywords": [
+        "below",
+        "85",
+        "lighter",
+        "lower",
+        "less"
+      ],
+      "options": []
     }
   ]
 }
