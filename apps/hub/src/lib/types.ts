@@ -583,11 +583,30 @@ export interface TutorEngagementView {
   refusedAny: boolean;
 }
 
+/** CurriculumVersionView mirror (core CurriculumController read view) — the
+ *  version row a subject is scoped by. CD-A-hub consumes ONLY `code`: the
+ *  explicit slug→rootId bridge matches the hub course registry's
+ *  `curriculumCode` (V53/ADR-030: hub-maintained, never derived) against it.
+ *  `status` mirrors the core enum by string (ARCHIVED excluded by the
+ *  service, not the schema). */
+export interface CurriculumVersionViewMirror {
+  id: string;
+  board: string;
+  qualification: string;
+  code: string;
+  title: string;
+  status: string;
+}
+
 export interface SubjectView {
   id: string;
   code: string;
   name: string;
   knowledgeNodeId: string | null;
+  /** CD-A-hub: the version row the slug→rootId bridge matches against.
+   *  Always present on the wire (curriculum.ts subjectViewSchema); earlier
+   *  hub mirrors omitted it — capture-unproven drift, corrected. */
+  curriculumVersion: CurriculumVersionViewMirror;
 }
 
 // ── Tutor chat (T-025, mirrors the T-024 backend DTOs) ──
@@ -1346,7 +1365,9 @@ export interface WeakTopicOption {
   reasons: string[]; // LOW_MEAN_MASTERY | ACTIVE_MISCONCEPTION_PRESENT | BLOCKED_BY_WEAK_PREREQUISITE
   learnersMeasured: number;
   meanMastery: number | null;
-  masteryBand: string;
+  /** wire law (test-builder.ts weakTopicOptionSchema): nullable — unmeasured
+   *  mastery is honest. Earlier hub mirror claimed `string` (drift). */
+  masteryBand: string | null;
   learnersWithActiveMisconception: number;
   activeMisconceptionSignals: number;
   evidenceBackedAttempts: number;
