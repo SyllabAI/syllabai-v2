@@ -30,7 +30,6 @@ import {
   Target,
   X,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -43,6 +42,172 @@ import { isDocumentFocusRoute, isViewerRoute } from "@/lib/focus-routes";
 import { courseHasBookArchive } from "@/lib/books-registry";
 
 export type { SidebarData, SidebarVariant } from "@/components/hub/course-data-context";
+
+type NavItem = {
+  href: string;
+  label: string;
+  icon: typeof BookOpen;
+  disabled?: boolean;
+  badge?: string;
+  exact?: boolean;
+  /** run-004b: tree children (RD's collapsible-group pattern) — rendered
+      under the parent with the 2px tree rail; only real hierarchy ships
+      (Saved questions under Exam Questions), never invented depth. */
+  children?: NavItem[];
+};
+
+/**
+ * run-004b — the course nav row, corrected against the operator-supplied
+ * saved captures of the real MathsGenie + RevisionDojo sidebars
+ * (scripts/rd-sidebar.html, scripts/mg-sidebar.html): MG's airy rhythm
+ * (px-2 py-2 rows, hairline panel, sentence-case group labels) with RD's
+ * accent idiom — the ACTIVE row is a FILLED PILL in the
+ * --accent-primary/--accent-primary-foreground token pair, exactly their
+ * bg-accent-primary recipe. Icons are INLINE (both references — the
+ * run-004 icon tiles were a wrong guess and cost 28px of label width),
+ * inactive ink is the references' neutral 60%. Badges split by semantics:
+ * harvest counts = quiet neutral pill (MG's only count badge is a red
+ * todo-dot — a library size is metadata, not an alert); "roadmap" = the
+ * accent pair inverted, RD's "New" chip. Every colour is a token ride —
+ * --primary/--muted raws per the #500 alias contract, no hardcoded hex.
+ * course-nav-item stays on the row as the documented theme hook
+ * (globals.css); aria-current stays load-bearing for it and for a11y.
+ */
+function NavRow({
+  item,
+  active,
+  onNavigate,
+  indent = false,
+}: {
+  item: NavItem;
+  active: boolean;
+  onNavigate?: () => void;
+  indent?: boolean;
+}) {
+  // numeric badges (harvested counts, e.g. Seneca "1,736") render as quiet
+  // neutral pills; "roadmap" renders as the accent pair inverted (RD "New")
+  const isCount = item.badge !== undefined && /^\d/.test(item.badge);
+  const badge = item.badge && (
+    <span
+      className={cn(
+        "ml-auto shrink-0",
+        isCount
+          ? "rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium tabular-nums text-muted-foreground"
+          : "rounded-md bg-accent-primary-foreground px-1.5 py-px text-[10px] font-medium uppercase tracking-wide text-accent-primary",
+      )}
+    >
+      {item.badge}
+    </span>
+  );
+  if (item.disabled) {
+    return (
+      <span
+        aria-disabled
+        title="Not part of the pilot corpus yet"
+        className="flex cursor-not-allowed items-center gap-2.5 rounded-xl px-2 py-2 text-sm text-muted-foreground"
+      >
+        <item.icon className="size-4 shrink-0 text-muted-foreground/70" aria-hidden />
+        <span className="truncate">{item.label}</span>
+        {badge}
+      </span>
+    );
+  }
+  return (
+    <Link
+      href={item.href}
+      onClick={onNavigate}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "course-nav-item relative flex items-center gap-2.5 rounded-xl px-2 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 focus-visible:ring-inset",
+        indent && "ml-7",
+        active
+          ? "bg-accent-primary text-accent-primary-foreground"
+          : "text-foreground/60 hover:bg-muted hover:text-foreground",
+      )}
+    >
+      <item.icon className="size-4 shrink-0" aria-hidden />
+      <span className="truncate">{item.label}</span>
+      {badge}
+    </Link>
+  );
+}
+
+/**
+ * run-004b — the shared nav renderer (desktop sidebar + mobile drawer).
+ * Group labels go MG's way: sentence case, text-sm muted, carrying their
+ * own top rhythm (px-2.5 pt-5 pb-1) — the 10.5px uppercase micro-tracking
+ * read techy where both references read calm. Tree children render under
+ * their parent behind RD's 2px rail at 17px. One renderer so the two
+ * surfaces cannot drift (the pre-run-004 duplication is what let them).
+ */
+function CourseNav({
+  navGroups,
+  pathname,
+  onNavigate,
+}: {
+  navGroups: { label: string; items: NavItem[] }[];
+  pathname: string;
+  onNavigate?: () => void;
+}) {
+  return (
+    <nav aria-label="Course sections">
+      {navGroups.map((g) => (
+        <div key={g.label}>
+          <p className="px-2.5 pb-1 pt-5 text-sm font-medium text-muted-foreground">
+            {g.label}
+          </p>
+          <ul className="space-y-0.5">
+            {g.items.map((item) => {
+              // UX audit 2026-10-02 #13: a sibling row that claims the
+              // current path via `exact` (e.g. Saved questions under
+              // /exam-questions/saved) suppresses prefix rows — without
+              // this, both rows highlighted at once. run-004b: the check
+              // scopes to the item's own children when it has them (a tree
+              // parent and its child must never pill at the same time),
+              // else to the group's exact rows as before.
+              const exactSiblings = (item.children ?? g.items).some(
+                (s) => s.exact === true,
+              );
+              const active = item.disabled
+                ? false
+                : (item.exact ??
+                  (pathname.startsWith(item.href) && !exactSiblings));
+              return (
+                <li key={item.label}>
+                  <NavRow item={item} active={active} onNavigate={onNavigate} />
+                  {item.children && (
+                    <div className="relative mt-0.5 mb-1 space-y-0.5">
+                      {/* RD's tree rail: 2px hairline at 17px spanning the
+                          children — the parent-child visual contract */}
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-y-0 left-[17px] border-l-2 border-border"
+                      />
+                      {item.children.map((child) => {
+                        const childActive = child.disabled
+                          ? false
+                          : (child.exact ?? pathname.startsWith(child.href));
+                        return (
+                          <NavRow
+                            key={child.label}
+                            item={child}
+                            active={childActive}
+                            onNavigate={onNavigate}
+                            indent
+                          />
+                        );
+                      })}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ))}
+    </nav>
+  );
+}
 
 export function CourseShell({
   data,
@@ -153,7 +318,7 @@ export function CourseShell({
 
   const navGroups: {
     label: string;
-    items: { href: string; label: string; icon: typeof BookOpen; disabled?: boolean; badge?: string; exact?: boolean }[];
+    items: NavItem[];
   }[] = [
     {
       label: "Course",
@@ -193,8 +358,17 @@ export function CourseShell({
     {
       label: "Exam Practice",
       items: [
-        { href: `${base}/exam-questions`, label: "Exam Questions", icon: FileQuestion },
-        { href: `${base}/exam-questions/saved`, label: "Saved questions", icon: Bookmark, exact: pathname.endsWith("/saved") },
+        {
+          href: `${base}/exam-questions`,
+          label: "Exam Questions",
+          icon: FileQuestion,
+          // run-004b: Saved questions is real hierarchy (a facet of the
+          // question bank), so it rides RD's tree-child pattern — the only
+          // nesting the content honestly has
+          children: [
+            { href: `${base}/exam-questions/saved`, label: "Saved questions", icon: Bookmark, exact: pathname.endsWith("/saved") },
+          ],
+        },
         { href: `${base}/past-papers`, label: "Past Papers", icon: ScrollText, disabled: !data.hasPastPapers && !data.hasCorpusPapers, badge: data.hasPastPapers || data.hasCorpusPapers ? undefined : "roadmap" },
         { href: `${base}/practice-papers`, label: "Practice Papers", icon: Files },
         { href: "#", label: "Target Test", icon: Target, disabled: true, badge: "roadmap" },
@@ -202,33 +376,24 @@ export function CourseShell({
     },
   ];
 
-  // NOTE: the collapsed state renders a dedicated 44px rail (same pattern as
-  // resource-panel.tsx) — the "Show menu" affordance must live OUTSIDE the
-  // collapsed column; the previous w-0/overflow-hidden collapse swallowed its
-  // own re-open button, so the sidebar could never be toggled back open.
-  const rail = (
-    <aside
-      className={cn(
-        "sticky hidden w-11 shrink-0 flex-col items-center border-r bg-background pt-3 lg:flex",
-        // s146: on the paper-viewer route the global header is suppressed —
-        // the rail pins to the viewport top and fills the full height
-        viewerRoute
-          ? "top-0 h-[calc(100dvh-1px)]"
-          : "top-14 h-[calc(100dvh-3.5rem-1px)]",
-      )}
-      aria-label="Course navigation"
+  // NOTE (run-004b): the rail is no longer its own <aside> — the shell is
+  // ONE element that animates its width between the expanded panel and the
+  // 44px icon rail (MG's transition-[width] collapse; overflow-hidden
+  // clips the panel while it slides shut and the rail content swaps in
+  // behind it — the old two-aside mount swap could not animate, and the
+  // original w-0 collapse swallowed its own re-open button, which is why
+  // the rail gets a full 44px, keeping "Show menu" reachable).
+  const railButton = (
+    <Button
+      variant="outline"
+      size="icon"
+      className="size-9 shadow-xs"
+      onClick={() => setHidden(false)}
+      aria-label="Show menu"
+      title="Show menu"
     >
-      <Button
-        variant="outline"
-        size="icon"
-        className="size-9 shadow-xs"
-        onClick={() => setHidden(false)}
-        aria-label="Show menu"
-        title="Show menu"
-      >
-        <PanelLeftOpen className="size-4" aria-hidden />
-      </Button>
-    </aside>
+      <PanelLeftOpen className="size-4" aria-hidden />
+    </Button>
   );
 
   const sidebar = (
@@ -246,67 +411,7 @@ export function CourseShell({
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-6">
-          <nav aria-label="Course sections" className="space-y-4">
-            {navGroups.map((g) => (
-              <div key={g.label}>
-                <p className="px-2 pb-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-                  {g.label}
-                </p>
-                <ul className="space-y-0.5">
-                  {g.items.map((item) => {
-                    // UX audit 2026-10-02 #13: a sibling row that claims the
-                    // current path via `exact` (e.g. Saved questions under
-                    // /exam-questions/saved) suppresses prefix rows — without
-                    // this, both rows highlighted at once.
-                    const active = item.disabled
-                      ? false
-                      : (item.exact ??
-                        (pathname.startsWith(item.href) && !g.items.some((s) => s.exact === true)));
-                    const inner = (
-                      <>
-                        <item.icon className="size-4 shrink-0" aria-hidden />
-                        <span className="truncate">{item.label}</span>
-                        {item.badge && (
-                          <Badge variant="outline" className="ml-auto shrink-0 px-1 text-[10.5px] uppercase text-foreground/70">
-                            {item.badge}
-                          </Badge>
-                        )}
-                      </>
-                    );
-                    return (
-                      <li key={item.label}>
-                        {item.disabled ? (
-                          <span
-                            aria-disabled
-                            title="Not part of the pilot corpus yet"
-                            className="flex cursor-not-allowed items-center gap-2.5 rounded-md px-3 py-2 text-sm text-muted-foreground"
-                          >
-                            {inner}
-                          </span>
-                        ) : (
-                          <Link
-                            href={item.href}
-                            onClick={() => setOpen(false)}
-                            aria-current={active ? "page" : undefined}
-                            className={cn(
-                              // course-nav-item: QG theme hooks its fern-spine
-                              // active treatment on this class (globals.css)
-                              "course-nav-item flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition-colors",
-                              active
-                                ? "bg-primary/10 font-medium text-primary"
-                                : "text-foreground/80 hover:bg-muted hover:text-foreground",
-                            )}
-                          >
-                            {inner}
-                          </Link>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            ))}
-          </nav>
+        <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={() => setOpen(false)} />
       </div>
     </div>
   );
@@ -346,23 +451,22 @@ export function CourseShell({
           </div>
         )}
 
-        {/* desktop sidebar — the one and only course sidebar; collapses to a
-            slim rail whose "Show menu" button stays reachable */}
-        {hidden ? (
-          rail
-        ) : (
-          <aside
-            className={cn(
-              "sticky hidden w-64 shrink-0 border-r bg-background lg:block",
-              viewerRoute
-                ? "top-0 h-[calc(100dvh-1px)]"
-                : "top-14 h-[calc(100dvh-3.5rem-1px)]",
-            )}
-            aria-label="Course navigation"
-          >
-            {sidebar}
-          </aside>
-        )}
+        {/* desktop sidebar — the one and only course sidebar; run-004b: one
+            element that animates width between the panel (w-64: back to the
+            references' narrow rhythm now that the tiles are gone — 288px was
+            tile-repair) and the 44px icon rail, MG's transition-[width] ease */}
+        <aside
+          className={cn(
+            "sticky hidden shrink-0 overflow-hidden border-r bg-background transition-[width] duration-200 ease-out motion-reduce:transition-none lg:flex lg:flex-col",
+            hidden ? "w-11 items-center pt-3" : "w-64",
+            viewerRoute
+              ? "top-0 h-[calc(100dvh-1px)]"
+              : "top-14 h-[calc(100dvh-3.5rem-1px)]",
+          )}
+          aria-label="Course navigation"
+        >
+          {hidden ? railButton : sidebar}
+        </aside>
 
         {/* content column */}
         <div className="min-w-0 flex-1">
@@ -408,7 +512,7 @@ function MobileDrawerInner({
   onNavigate: () => void;
   navGroups: {
     label: string;
-    items: { href: string; label: string; icon: typeof BookOpen; disabled?: boolean; badge?: string; exact?: boolean }[];
+    items: NavItem[];
   }[];
 }) {
   const base = `/courses/${data.course.slug}`;
@@ -422,63 +526,7 @@ function MobileDrawerInner({
         </Button>
       </div>
       <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-6">
-        <nav aria-label="Course sections" className="space-y-4">
-          {navGroups.map((g) => (
-            <div key={g.label}>
-              <p className="px-2 pb-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
-                {g.label}
-              </p>
-              <ul className="space-y-0.5">
-                {g.items.map((item) => {
-                  // UX audit 2026-10-02 #13: see the drawer's identical check —
-                  // an exact-matching sibling suppresses prefix rows.
-                  const active = item.disabled
-                    ? false
-                    : (item.exact ??
-                      (pathname.startsWith(item.href) && !g.items.some((s) => s.exact === true)));
-                  const inner = (
-                    <>
-                      <item.icon className="size-4 shrink-0" aria-hidden />
-                      <span className="truncate">{item.label}</span>
-                      {item.badge && (
-                        <Badge variant="outline" className="ml-auto shrink-0 px-1 text-[10.5px] uppercase text-foreground/70">
-                          {item.badge}
-                        </Badge>
-                      )}
-                    </>
-                  );
-                  return (
-                    <li key={item.label}>
-                      {item.disabled ? (
-                        <span
-                          aria-disabled
-                          title="Not part of the pilot corpus yet"
-                          className="flex cursor-not-allowed items-center gap-2.5 rounded-md px-3 py-2 text-sm text-muted-foreground"
-                        >
-                          {inner}
-                        </span>
-                      ) : (
-                        <Link
-                          href={item.href}
-                          onClick={onNavigate}
-                          aria-current={active ? "page" : undefined}
-                          className={cn(
-                            "course-nav-item flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition-colors",
-                            active
-                              ? "bg-primary/10 font-medium text-primary"
-                              : "text-foreground/80 hover:bg-muted hover:text-foreground",
-                          )}
-                        >
-                          {inner}
-                        </Link>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
-        </nav>
+        <CourseNav navGroups={navGroups} pathname={pathname} onNavigate={onNavigate} />
 
         {/* resource-flavoured topic tree (mobile navigation). Papers are
             linear documents — the Exam-Questions spec tree is noise on

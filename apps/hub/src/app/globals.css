@@ -41,6 +41,10 @@
   --color-sim: var(--sim);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
+  /* run-004b — the MG/RD nav active-pill pair as first-class utilities
+     (bg-accent-primary / text-accent-primary-foreground) */
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-foreground: var(--accent-primary-foreground);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -86,6 +90,17 @@
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
+  /* run-004b — the MG/RD nav active-pill pair (RevisionDojo's
+     #e1f3fe/#122731 is the strict template): a pale wash of the theme's own
+     primary + an ink DEEPENED past the raw (62% primary + black) so the
+     pairing clears AA on every theme — measured: SME 8.3 / QG 9.1 /
+     candy-shop 6.4 / plum 8.9 (MG's own #1cb0f6-on-#cefbff text fails at
+     2.3:1, and the removed candy-shop spine block documented its 4.07:1
+     wash failure — the ink is darkened for exactly that reason).
+     color-mix derives both from --primary, so each theme's alias contract
+     re-skins the pill for free (#500) — no per-theme rules anywhere. */
+  --accent-primary: color-mix(in srgb, var(--primary) 14%, var(--background));
+  --accent-primary-foreground: color-mix(in srgb, var(--primary) 62%, black);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
@@ -128,6 +143,12 @@
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
+  /* run-004b — dark pill pair: deep tinted fill + LIGHTENED ink (MG's
+     #002e5f/#46cbe3 template, derived per theme from the dark primary raw;
+     ink at 50/50 with white — measured SME 6.3 / QG 4.6 / candy-shop 10.1 /
+     plum 4.5) */
+  --accent-primary: color-mix(in srgb, var(--primary) 24%, var(--background));
+  --accent-primary-foreground: color-mix(in srgb, var(--primary) 50%, white);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
@@ -354,23 +375,14 @@
   box-shadow: none;
 }
 
-/* --- course sidebar active item: fern spine + raised surface --- */
-[data-theme="quiet-green"] a.course-nav-item[aria-current="page"] {
-  background: var(--surface-raised);
-  color: var(--ink);
-  box-shadow: inset 0 0 0 1px var(--border);
-  position: relative;
-}
-[data-theme="quiet-green"] a.course-nav-item[aria-current="page"]::before {
-  content: "";
-  position: absolute;
-  left: -6px;
-  top: 7px;
-  bottom: 7px;
-  width: 3px;
-  border-radius: 2px;
-  background: var(--fern);
-}
+/* --- course sidebar active item: run-004b removed the per-theme spine
+       overrides (this QG block + the candy-shop and plum siblings). The
+       active pill is now the --accent-primary / --accent-primary-foreground
+       token pair (:root/.dark, color-mix off each theme's --primary raw) —
+       the MG/RD idiom, zero per-theme rules, and no 4.07:1 wash exception
+       left to document. a.course-nav-item[aria-current="page"] is retained
+       in the component as the stable hook should a theme ever need a
+       bespoke touch again. --- */
 
 /* --- framework chips: squared, owned-hue tints (Study=fern, Practice=sage,
        Diagnose=gold). Light uses deep ink on tint; dark flips raws. --- */
@@ -698,27 +710,6 @@
        accent INK for exactly this duty (§3.2/§3.4) — route the class
        through it (#D11450 light 4.63+ / #FF5C8D dark 6.46). --- */
 [data-theme="candy-shop"] .text-primary { color: var(--accent-ink); }
-
-/* --- audit F1: course-nav active — the sanctioned sibling recipe
-       (surface + hairline + 3px cherry spine), same as QG/plum ship.
-       The inherited wash+text-primary recipe fails AA even demoted
-       (accent-ink on the cherry wash = 4.07). --- */
-[data-theme="candy-shop"] a.course-nav-item[aria-current="page"] {
-  background: var(--surface);
-  color: var(--ink);
-  box-shadow: inset 0 0 0 1px var(--line);
-  position: relative;
-}
-[data-theme="candy-shop"] a.course-nav-item[aria-current="page"]::before {
-  content: "";
-  position: absolute;
-  left: -6px;
-  top: 7px;
-  bottom: 7px;
-  width: 3px;
-  border-radius: 2px;
-  background: var(--cherry);
-}
 
 /* --- audit F10: selected menu items carry the accent-ink voice
        (§10.9: accent-ink text + trailing check) instead of ink-on-ink. --- */
@@ -1115,25 +1106,6 @@
 [data-theme="chat-app-plum"].dark .chip-diagnose {
   background: rgba(244, 239, 250, 0.1);
   color: #f4effa;
-}
-
-/* --- course sidebar active item: the conversation-list active recipe
-       (§10.11) — surface + hairline + 3px violet left spine --- */
-[data-theme="chat-app-plum"] a.course-nav-item[aria-current="page"] {
-  background: var(--surface);
-  color: var(--ink);
-  box-shadow: inset 0 0 0 1px var(--line);
-  position: relative;
-}
-[data-theme="chat-app-plum"] a.course-nav-item[aria-current="page"]::before {
-  content: "";
-  position: absolute;
-  left: -6px;
-  top: 7px;
-  bottom: 7px;
-  width: 3px;
-  border-radius: 2px;
-  background: var(--violet);
 }
 
 /* --- audit F2: violet-as-text demotion, DARK only. --primary stays
