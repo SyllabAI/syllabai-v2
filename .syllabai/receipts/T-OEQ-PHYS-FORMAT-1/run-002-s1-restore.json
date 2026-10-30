@@ -1,0 +1,79 @@
+{
+ "lane": "T-OEQ-PHYS-FORMAT-1",
+ "run": "run-002-s1-restore",
+ "title": "4PH1 official plane S1 superscript/subscript restoration wave - flattened exponents (units, suvat/KE, x10N, negexp, digit/decimal clusters, subscripts) mechanically restored with arithmetic adjudication (automated, content-preserving)",
+ "operatorOrder": "trace 1a18da311ba40f75: 'run-002 - the S1 superscript restoration wave' (per run-001's worklistOfRecord: 'run-002 = S1 superscript/subscript restoration page-evidence wave, 577-line worklist is the spine')",
+ "date": "2026-10-30",
+ "planeOfRecord": {
+  "path": "apps/hub/content/igcse-physics-19/official-papers.json",
+  "before": "2cfd90da6fab890934c8fddbf7617e60a227d9dcbb42c212bdeef5d685e40531",
+  "after": "541e067fd506e5fbb31babb478f8fb68f8985de60fdb5a503770b99beff5a7df",
+  "diff": "634 lines changed (+634/-634), single file, 54 of 55 papers touched"
+ },
+ "lawOfThePass": {
+  "pre_registered": "restorations are PURE unicode super/subscript character substitutions at the exact position of the flattened ASCII run; no spacing, wording or order changes; no new $-segments; $-segment interiors never touched (G7); lines already containing any super/subscript char never edited (L3, keeps the inverse map total)",
+  "adjudication_law": "scientific-notation (x10/negexp) and digit/decimal-cluster restorations convert ONLY when the as-written numeric chain is evaluable and FALSE while the restored reading is TRUE (per-line chain at 1%, F60 doctrine) or a neighbour ±2 lines carries a 'label = VALUE' anchor within 1% while as-written is >1% off; plausibility fallback (exponent ranges, scientific-notation position lookbehind) applies only where arithmetic cannot contradict",
+  "shape_grammars": "unit superscripts: SI compound/bare allow-list + digit/paren/= position guards (momentum/gas-var lines excluded); suvat/KE letter superscripts: v2=u2 both-present, +2×-tail, /2a, ½mv2, 0.5×..×v2, E=mc2, speed2/time2/radius2, πr3, V2/R power shape, v2=<numeric>; subscripts: gas law (p/T/V + kPa|Pa|pressure|ratio context), transformer N1/N2, momentum products (m1u1), circuit (V/I/A + keyword or V<digits> cross-reference); funcinv: sin/cos/tan-1 only (isotope names untouched); parensup: (word)(digits) groups + product-quantity groups '(a × b)2' after notation restore",
+  "skip_law": "every ambiguous instance stays in the residual census with its class - never guessed"
+ },
+ "censusOfRecord": {
+  "restorations": 1839,
+  "changed_fields": 634,
+  "papers_touched": 54,
+  "per_field_class": {
+   "problemMd": 229,
+   "solutionMd": 805,
+   "markPoints": 805
+  },
+  "mirror_law": "markPoints textMd restored by the SAME deterministic rules as solutionMd (lockstep by construction; edit counts equal at 805/805)",
+  "by_rule": {
+   "negexp": 507, "x10": 448, "unit-compound": 237, "gas-sub": 208, "suvat-sup": 168,
+   "unit-bare": 82, "ke-shape": 44, "parensup": 23, "suvat-rest": 32, "wordsup": 28,
+   "funcinv": 14, "cluster-d": 18, "circ-sub": 12, "unit-of": 6, "trans-sub": 4,
+   "power-sup": 2, "cluster-f": 2, "pir3": 2, "fffd-repair": 2
+  },
+  "by_evidence": {
+   "shape": 862,
+   "plausibility": 941,
+   "arith:chain": 12,
+   "arith:xline-anchor": 22,
+   "fffd cross-line identity": 2
+  }
+ },
+ "gates": {
+  "G1_structure_marks": "OK (55 sets / 540 questions / 2254 parts; marks[] identical)",
+  "G2_identity_reconstruction": "OK - every changed line reconstructed through the inverse super/subscript map == original byte-exact, 634/634 fields, modulo the DISCLOSED dash-variant normalization (the flattened '-'/U+2212/U+2013 all restore to the single superscript dash U+207B; both sides dash-normalized before compare); 2 FFFD repair pairs allow-listed",
+  "G3_pua_control": "OK (0) | U+FFFD: 2 -> 0 - the two replacement chars (official-4ph1-1p-2022-06 q11 p4, solutionMd + mp0 mirror, '1.92 = launch speed × <U+FFFD>') repaired to '× √0.4' by cross-line identity (next line 'launch speed = 1.92 / √0.4') + the projectile range identity speed × √(2h/g) with h=2.0 m, g=10; arithmetic check 1.92/√0.4 = 3.04 ≈ the MS answer 3.0",
+  "G4_raw_dollar_parity": "OK (388 delimiter chars == main; zero new $)",
+  "G5_katex_segment_set": "OK - the 91 $-segments from run-001 byte-identical and untouched (restorations never enter $ interiors)",
+  "G6_serialization_byte_law": "OK - json.dumps(indent=1, ensure_ascii=False), no trailing newline, round-trip exact",
+  "G7_no_segment_edits": "OK - all 1839 edits on plain lines; zero $-segment interiors touched",
+  "G8_idempotence": "OK - re-running the pass on the applied plane changes 0 fields (exactly-once)"
+ },
+ "residual_for_eyes_on": {
+  "note": "post-restoration census (same taxonomy as run-001); class totals shift because restored lines re-classify - the honest S1 residual is:",
+  "S1_subsup": 132,
+  "S1_x10": 71,
+  "S1_negexp": 2,
+  "S1_parensup": 54,
+  "S1_decimal": 517,
+  "S1_funcinv": 9,
+  "S1_leadzero": 2,
+  "S1_zero_lhs": 6,
+  "residual_disclosure": "the S1-decimal class is dominated by GENUINE decimals inside MS allow-lists ('allow 3.72, 3.715...') - mechanically indistinguishable without page evidence; only arithmetic-anchored instances converted (2); the S1-subsup residual is dominated by MP-label false positives ('MP1.'/'MP3.'), 'sin45'-style angle args and unverifiable substitution-pair digits (e.g. '1.7142 = 0^2 + 2 × a × 0.63' needs its 'a' anchor solved); the '$s = 652 / 26$' $-segment (652 = 65^2) stays eyes-on per run-001's disclosure (G7 keeps $ interiors untouched)",
+  "CONVERT_requalified": 28,
+  "convert_note": "28 restored lines (e.g. 'v² = u² + 2as') now re-enter run-001's CONVERT grammar unchanged - the run-003 KaTeX re-pass sweeps them under the SAME law; no grammar relaxation needed"
+ },
+ "standingDebt": [
+  "RESOURCES BACK-SYNC LAW (inherited from run-001, still open): this and the run-001 pass live v2-side; any future resources-side 4PH1 exporter re-export would OVERWRITE the served state - the exporter must learn/re-apply both passes before any physics back-sync",
+  "questions.md human renders in the resources corpus are now presentation-stale for these lines (same disclosure as maths-B run-017; regen rides with the next converter run)",
+  "eyes-on page-evidence wave (run-003+): the residual S1 lines above + the 28 CONVERT re-qualified lines (KaTeX re-pass under the unchanged run-001 law)"
+ ],
+ "evidence": {
+  "converter": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/phys_s1_restore.py",
+  "payload": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run002-payload.json (all 1839 edits: where/line_no/rule/evidence/before/after/line_before/line_after)",
+  "residual_census": ".syllabai/lane-artifacts/T-OEQ-PHYS-FORMAT-1/run002-residual-census.json (post-restoration line-level worklist)"
+ },
+ "discipline": "pre-registered grammars + full convert-set eyeball per family before apply (three dry-run iterations pulled degenerate-exponent, half-conversion and spacing-collapse classes out of the convert set); read-only recon then single-file serving-plane edit; resources corpus untouched (zero corpus-side writes); zero DB/Neon/prod contact; fetch-first, no force; receipt + evidence in the same PR; fail-closed gates (G2 caught and aborted on three assembly bugs during bring-up before any write)",
+ "verdict": "RUN-002 CLOSED: 1839 restorations across 634 fields (54/55 papers), every family individually eyeballed clean, all eight gates green; the S1 superscript/subscript damage classes are restored to true unicode notation (negexp 177->2, leadzero 12->2, x10 316->71, subsup 577->132); 28 lines re-qualify for the run-003 KaTeX re-pass; residual eyes-on worklist filed"
+}
