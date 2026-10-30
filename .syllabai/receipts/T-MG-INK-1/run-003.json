@@ -1,0 +1,53 @@
+{
+  "task": "T-MG-INK-1 run-003",
+  "date": "2026-10-30",
+  "operator": {
+    "dispatch": "run-003",
+    "trace": "1a18c5b591bd2d0d",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md §3.3 (UI bullet + acceptance pins) + docs/MG-INK-SDK-GATE.md consequence 2 (the run-001 verdict's surface law)",
+  "class": "additive surface module — the standalone ink layer over the view-mode QP pane; the pdf-pane v4 monolith UNTOUCHED (Risk-4 freeze-frame + RegionOverlay composition law)",
+  "merge_word_expected": null,
+  "what_lands": {
+    "module": "apps/hub/src/components/pastpapers/ink/ (ink.ts grammar+geometry+rebase pure · ink-sync.ts the client half of the revision law · paint.ts the normalized painter · InkLayer.tsx the portal manager + toolbar + per-page canvases)",
+    "client_fetcher": "apps/hub/src/lib/pdf-drawings.ts (regions.ts law: zod-v4 local mirror, honest-failure, no-store, Bearer localStorage['syllabai.token'])",
+    "composition": "paper-viewer-client.tsx view-mode QP pane wrapped in the ink host div (the ONLY modified pre-existing file — the T-MIG disclosed-commit precedent)",
+    "grammar_of_record": "stroke {id, kind:'stroke', page, color, widthFrac, points[[x,y]…]} + text {id, kind:'text', page, color, sizeFrac, x, y, text}; coords normalized 0..1 page fractions; widths page-width fractions; container {schema:'syllabai-ink/1', shapes[]} unchanged (run-002 contracts)",
+    "mounting": "structure-only MutationObserver + one canvas portal per [data-page] holder — zero pixel math, zero re-measure listeners; the s145 two-phase zoom stretches the overlay for free (E3)"
+  },
+  "pins": {
+    "persistence_pin": "full-doc PUT carries the BASE revision; 409 → GET + rebaseShapes(union by id) + retry ONCE; second 409 → honest conflict state; failures preserve the working set; flush-before-dispose (ink-sync 9 tests)",
+    "fallback_pin": "sourceUrl-keyed rows: the past-papers corpus document is keyed by corpusRawUrl(qpPath) — the external-document fallback key exactly as run-002's partial unique index intended",
+    "perf_pin": "coalesced capture (≥1.2 css px) + rAF-throttled repaint + backing store dpr ≤ 2 (the pdf-pane:987 law via sizeBackingStore) — the E4 sizing (full-doc, single-writer, 11,148 B observed) keeps repaint trivial",
+    "scope_pin": "books/citations untouched; mock-mode panes excluded (exam conditions); anonymous visitors get zero chrome (no token → renders nothing); gesture law: ink mode owns the page gesture, one tap toggles off",
+    "toolbar_parity": "pen colour (4, the run-001 spike palette verbatim) + thickness (3 page-relative steps) + undo/redo/clear + text boxes (click-to-place, Enter commits, Escape cancels)"
+  },
+  "divergences_disclosed": [
+    "mounting mechanism: portal-into-holders (the concrete realization of the E3 'mounts standalone alongside' law — the monolith's holders are the positioning context; no pdf-pane edit exists to compose from)",
+    "undo/redo/clear are doc-global session-local snapshots (MG's per-shape granularity unobserved); a sync rebase folds into the same set",
+    "mock-mode QP excluded from ink (exam-simulation integrity; the plan's scope list names books/citations — the mock exclusion is this run's scope call, disclosed)",
+    "identity: sourceUrl = corpusRawUrl(qpPath) (the canonical raw URL, stable across environments) with documentRefType at its 'paper_asset' default (inert for sourceUrl-keyed rows under the refine)",
+    "no global keyboard shortcuts (the monolith's keydown registry receives no new competition — Risk 4); undo/redo are toolbar buttons"
+  ],
+  "verification": {
+    "ink_tests": "21/21 (grammar/geometry/rebase 12 + sync controller 9)",
+    "api_packages_suite": "bun test apps/api packages — 3145 total / 0 fail / 13 skip (byte-stable vs run-002)",
+    "typecheck": "exit 0 (contracts, shared, db, api)",
+    "hub_build": "bun run build:hub SUCCESS (the production build compiles the ink module)",
+    "golden_selftest": "OK",
+    "retrieval_eval": "0 fail + 19/19 selftest vectors",
+    "zero_core_census": "GATE GREEN"
+  },
+  "fence_census": {
+    "apps/api/src/routes/cla.ts": "a9fdabfd079eb78d9d73c5d01bd9ef5959c9e46d EXACT",
+    "apps/api/src/services/cla/service.ts": "db4573c79e9644500eae0b95137056f1e9050d72 EXACT",
+    "identity_plane": "prompt.ts / PROMPT_VERSION untouched"
+  },
+  "consequences": [
+    "T-MG-INK-2 (maths instruments: ruler/protractor/compasses) — bespoke over THIS stroke pipeline, zero schema impact",
+    "Phase 4 (T-MG-CROPMARK-1) can read the ink layer as the region-ink source for the crop-then-mark scoping test",
+    "reversal clause of the SDK gate unchanged (native stroke pipeline owns the grammar; an op-log would be a new prereg)"
+  ],
+  "discipline": "zero target-site writes; zero DB contact; no api/packages/contracts file touched; binaries sandbox-local (node_modules not committed)"
+}
