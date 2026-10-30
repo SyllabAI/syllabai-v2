@@ -31,6 +31,36 @@ describe("partDisplayLabel — official plane (id slug)", () => {
   });
 });
 
+describe("partDisplayLabel — F119 data-first official branch (T-OEQ-PARTLABEL-3)", () => {
+  // The exporter of record (resources F119 wave) now EMITS the printed label
+  // as sourcePaper.questionPart on the official plane, G-E6-pinned to the id
+  // slug (identity is the EXPORTER's law — the renderer validates SHAPE only,
+  // never re-derives behind a valid field).
+  test("the field of record is consumed verbatim when shape-valid", () => {
+    expect(partDisplayLabel({ id: "offp_2019-06_1p_1-a-i", sourcePaper: { questionPart: "(a)(i)" } })).toBe("(a)(i)");
+    expect(partDisplayLabel({ id: "offp_2019-06_1p_2-a", sourcePaper: { questionPart: "(a)" } })).toBe("(a)");
+    expect(partDisplayLabel({ id: "offp_2018-06_01_5-a", sourcePaper: { questionPart: "(a)" } })).toBe("(a)");
+  });
+
+  test("field wins over slug derivation (trust the data plane; G-E6 owns identity)", () => {
+    // a shape-valid field is served verbatim even if a stale slug would say
+    // otherwise — the exporter's G-E6 gate is what makes that safe
+    expect(partDisplayLabel({ id: "offp_2019-06_1p_1-a-i", sourcePaper: { questionPart: "(b)" } })).toBe("(b)");
+  });
+
+  test("shape-invalid field falls back to the slug parse (fail-closed, never guessed)", () => {
+    expect(partDisplayLabel({ id: "offp_2019-06_1p_1-a-i", sourcePaper: { questionPart: "garbage" } })).toBe("(a)(i)");
+    expect(partDisplayLabel({ id: "offp_2019-06_1p_1-a-i", sourcePaper: { questionPart: "(a)(b)(c)(d)" } })).toBe("(a)(i)");
+    expect(partDisplayLabel({ id: "offp_2019-06_1p_1-a-i", sourcePaper: { questionPart: "a-i" } })).toBe("(a)(i)");
+  });
+
+  test("null/absent field falls back to the slug parse", () => {
+    expect(partDisplayLabel({ id: "offp_2019-06_1p_1-a-i", sourcePaper: { questionPart: null } })).toBe("(a)(i)");
+    expect(partDisplayLabel({ id: "offp_2019-06_1p_2-a", sourcePaper: null })).toBe("(a)");
+    expect(partDisplayLabel({ id: "offp_2020-01_1p_1", sourcePaper: { questionPart: null } })).toBeNull();
+  });
+});
+
 describe("partDisplayLabel — SME plane (sourcePaper.questionPart)", () => {
   test("top-level letters", () => {
     expect(partDisplayLabel({ id: "qstnprt_6ngCxGqwMvWnRrcv", sourcePaper: { questionPart: "a" } })).toBe("(a)");
