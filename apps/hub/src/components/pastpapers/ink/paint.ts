@@ -38,14 +38,23 @@ type Ctx = {
   textBaseline: CanvasTextBaseline;
 };
 
+/** Paint options: `clear: false` skips the leading clearRect — the
+ * T-MG-CROPMARK-1 run-002 crop composite paints ink OVER an existing
+ * bitmap (the region crop) instead of owning the canvas. Default
+ * behavior (clear) is unchanged for every existing caller. */
+export interface PaintOptions {
+  clear?: boolean;
+}
+
 /** Paint the shape set for ONE page into a dpr-scaled context. */
 export function paintShapes(
   ctx: Ctx,
   box: PaintBox,
   shapes: InkShape[],
   activeStroke?: { color: string; widthFrac: number; points: Array<[number, number]> } | null,
+  opts?: PaintOptions,
 ): void {
-  ctx.clearRect(0, 0, box.cssW, box.cssH);
+  if (opts?.clear !== false) ctx.clearRect(0, 0, box.cssW, box.cssH);
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
   for (const s of shapes) {

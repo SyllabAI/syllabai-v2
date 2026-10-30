@@ -45,6 +45,7 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { PdfPane, type PdfPaneHandle } from "@/components/pastpapers/pdf-pane";
 import { InkLayer } from "@/components/pastpapers/ink/InkLayer";
+import { RegionMarkLayer } from "@/components/pastpapers/region-mark/RegionMarkLayer";
 import {
   corpusRawUrl,
   corpusViewerUrl,
@@ -83,6 +84,10 @@ export interface PaperViewerClientProps {
    *  (?page=N) — applied to the pane matching initialPageDoc */
   initialPage?: number;
   initialPageDoc?: "qp" | "ms";
+  /** T-MG-CROPMARK-1 run-002: the paper-asset uuid (?paperId= deep-link).
+   * Present → the clickable regions surface arms (fetchPaperRegions);
+   * absent/unknown → the surface stays zero-chrome (the honest default). */
+  paperId?: string;
   /** F-022: set when the viewer was opened from a citation drill-in
    *  (?src=<documentId>) — the toolbar then links back to the verbatim
    *  parsed text of that source document (the reader's ?text=1 mode) */
@@ -100,6 +105,7 @@ export function PaperViewerClient({
   initialPage,
   initialPageDoc,
   sourceHref,
+  paperId,
 }: PaperViewerClientProps) {
   const router = useRouter();
   const isSplitCapable = Boolean(paper.qpBytes && paper.msBytes);
@@ -837,6 +843,15 @@ export function PaperViewerClient({
             <InkLayer
               hostRef={qpInkHostRef}
               sourceUrl={paper.qpPath ? corpusRawUrl(paper.qpPath) : null}
+            />
+            {/* T-MG-CROPMARK-1 run-002 (plan §3.4): the crop producer's
+             * trigger UI — clickable region rects + the 202/poll mark
+             * panel over the run-001 API. Zero chrome unless an authed
+             * learner deep-links a grounded paper (?paperId=). */}
+            <RegionMarkLayer
+              hostRef={qpInkHostRef}
+              sourceUrl={paper.qpPath ? corpusRawUrl(paper.qpPath) : null}
+              paperId={paperId ?? null}
             />
           </div>
         )}

@@ -1,0 +1,49 @@
+{
+  "task": "T-MG-CROPMARK-1 run-002",
+  "date": "2026-10-31",
+  "operator": {
+    "dispatch": "run-002 — the crop producer",
+    "trace": "1a18e2e94ec7a3dd",
+    "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+  },
+  "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md §3.4 (the crop-then-mark pipeline's UI half — the run-001 divergence #2 named 'the run-002 surface'); the run-003 consequence pointer ('Phase 4 uses the ink layer as the region-ink source') realized at the client",
+  "class": "hub-only additive module + 4 disclosed additive modifications — zero api/contracts/db bytes, zero schema, zero migrations, zero fenced files (cla.ts / services/cla/service.ts untouched), pdf-pane.tsx byte-untouched (the monolith freeze); the ONLY pre-existing files touched: ink/paint.ts (+9, the PaintOptions clear opt — default behavior unchanged), ink/InkLayer.tsx (+6, the live-ink reader register/unregister), paper-viewer-client.tsx (+14, the paperId prop + the RegionMarkLayer mount in the QP ink-host wrapper), the view page (+11, the uuid-validated ?paperId= deep-link)",
+  "what_lands": {
+    "wire_client": "apps/hub/src/lib/paper-marks.ts — the SCHEMA MIRROR law (zod v4 local mirrors; type-only canonical imports of PaperMarkAccepted/PaperMarkPollResponse); POST /api/v1/paper-marks/regions/:regionId/mark → 202 {markId} | the DEFINED 4xx envelopes (400/404/413/422) → honest rejected messages | failed (the undefined class); pollUntilTerminal — the loop law (injectable delay/poll/isCancelled; terminal succeeded|failed, lost = the non-durable registry's honest 404, timeout = the cap with the SAME markId for Check-again, cancelled; retry: 0 — the client never re-POSTs); no-store; Bearer caller-supplied; no learnerId on any shape",
+    "crop_geometry": "region-mark/region-crop.ts (PURE) — rectToViewSpace (the pane's user-rot law: pp-viewer-prefs-v1 rot read at click grain; 90° steps), clampRect/unionRects, planRegionViewRect (per-page filter → view-space map → union), planCrop (fractions × rendered-bitmap dims — the §3.4 render-resolution law; degenerate → null), estimateDataUrlBytes, chooseImageDataUrl (png → jpeg 0.92 → honest too_large BEFORE the POST; the 4 MB cap mirrored from contracts)",
+    "crop_executor": "region-mark/produce-crop.ts — the thin DOM hand: the [data-page] holder (the ONLY pane coupling, the InkLayer law), the pane canvas (the non-pp-inkLayer canvas), 1:1 bitmap blit, the live ink painted via paintShapes(ctx, page-bitmap box, shapes, null, {clear:false}) translated by (-sx,-sy) — ONE stroke rendering path shared with the ink canvas, zero drift; crop bounds clip the strokes (crop-then-mark by construction); tainted canvas → honest export_blocked",
+    "state": "region-mark/region-mark-state.ts (PURE) — the honest lifecycle reducer: start→cropped→accepted{markId}→progress(queued|running)→succeeded{snapshot}|failed{detail}|timeout{markId} (Check-again resumes the SAME handle)|dismiss; progress from timeout allowed (the resume law); awardsTotals from the served rows (never a local counter)",
+    "surface": "region-mark/RegionMarkLayer.tsx — the clickable regions surface: zero chrome unless token + ?paperId= + sourceUrl + a markable regions payload (fetchPaperRegions honest-null law); 'Mark regions' toggle (bottom-left; the pane's chrome wins stacking — ink toolbar z-40 > rects z-30); structure-only MutationObserver + one pointer-events-auto rect-button portal per [data-page] holder (the InkLayer pattern), markable regions only, honest aria-labels; the result panel (role=status while running): score Σ, per-point award rows ✓/✗ with scores, chatMessage, pointsNotScored, strategiesForImprovement rendered on failures only (the §3.6 observed law at panel grain), transcription in a disclosure, the ledger receipt line; failed/timeout/lost states speak their own truth",
+    "live_ink": "ink/live-ink.ts — the read seam: the producer composites the CURRENT working set (the draw-then-mark debounce race + toggle-off persisted strokes); read-only registry keyed by sourceUrl; InkLayer registers/unregisters its reader (+6 lines); the single-writer law untouched",
+    "tests": "51 — region-crop.test.ts 22 (the rot mapping laws, union/clamp, per-page plan, render-resolution plan, the 4 MB wire choice incl. the lazy-jpeg pin, the prefs read) + region-mark-state.test.ts 9 (the lifecycle, the timeout resume, dismiss, unknown-region no-ops, awardsTotals) + live-ink.test.ts 5 (the read seam) + paper-marks.test.ts 15 (the defined POST taxonomy incl. no-token-before-network, the mirror's strict parse, the honest 404, the loop law incl. cancellation-at-boundary)"
+  },
+  "pins": {
+    "scoping_pin_client": "the crop is the region rect by construction — strokes are painted in full-page space and the CROP CANVAS bounds clip them; a region's crop can only ever contain its own rect (+ the ink inside it), never another region's",
+    "region_ink_source_pin": "the live-ink registry read — the crop carries the learner's current ink (debounce-window edits included), the run-003 consequence pointer realized",
+    "honesty_pin": "every refusal has a typed honest reason (holder_missing / page_not_rendered / degenerate_crop / canvas_unavailable / export_blocked / too_large / rejected / lost / timeout); retry: 0 — a re-mark is a NEW job; no fabricated award, markId, or snapshot anywhere",
+    "rotation_pin": "the pane's user-rot offset is mapped (rectToViewSpace, tested 0/90/180/270); intrinsic per-page /Rotate is unobservable outside the pane — disclosed for the extraction lane's orientation law"
+  },
+  "divergences_disclosed": [
+    "the regions plane activation is a uuid-validated ?paperId= deep-link — the corpus QPs have no paper_assets identity of their own, and the §3.1 regions API is exam_papers-keyed; no fuzzy corpus→exam_papers identity join was invented (that linkage belongs to the RECT-2 extraction lane / Phase-5 surfaces); today the surface arms for any paper with a grounded regions plane (the join-proof seed class, the future RECT-2 output) reached by link",
+    "RegionOverlay.tsx (T-MG-MP-RECT-1) stays byte-untouched and unmounted — run-002's surface is a sibling (RegionMarkLayer) because the semantics differ (click-to-mark state machine vs hover-highlight chrome); its geometry laws are carried, not imported",
+    "the regrade typed channel (POST /parts/:partId/regrade) ships NO UI — §3.4 declares none and the clickable regions surface is region-based; the channel remains API-exercisable (run-001's routes tests pin it); a typed-answer UI is a later card if wanted",
+    "the user-rot offset is read from the pane's own persisted prefs (pp-viewer-prefs-v1, read-only, same validation) because the pane exposes no rotation seam and the monolith stays frozen; intrinsic page /Rotate composes inside the pane's render and is NOT mapped — disclosed; the rects law pins against the as-served page box (the RegionOverlay assumption inherited)",
+    "clicking a region while the ink layer is enabled takes the gesture inside that rect (the marking intent wins locally); the ink toolbar (z-40) stays above the rects (z-30) and the toggle off restores drawing everywhere — two explicit modes, no hidden conflict",
+    "chatMessage renders as plain preformatted text — the §3.6 markdown rendering of the full feedback panel is Phase 6's surface; the strategiesForImprovement failure-only law is already honored",
+    "hub build verified via next build --experimental-build-mode compile (exit 0) + a clean hub tsc --noEmit — the sandbox's 1.1 GB free disk cannot hold the full static-export prerender (3,338 pages); CI's hub workflow is the arbiter of record (the run-001 posture)",
+    "the local full-hub bun test run showed two tail failures NOT of this lane: ugm.render katex corpus (pre-existing on the clean tree — verified by stash) and question-cla-threads (full-run cross-file state pollution — passes alone, twice); the CI test gate (apps/api packages) is 3200/0/13"
+  ],
+  "verification": {
+    "new_tests": "51/51 (region-crop 22 / region-mark-state 9 / live-ink 5 / paper-marks 15)",
+    "api_packages_suite": "bun test apps/api packages — 3200 total / 0 fail / 13 skip (the CI parity gate)",
+    "hub_typecheck": "tsc --noEmit -p apps/hub — clean",
+    "hub_build": "next build --experimental-build-mode compile — exit 0 (full route table); full prerender deferred to CI (disk, disclosed)",
+    "golden_selftest": "OK",
+    "zero_core_census": "GATE GREEN",
+    "fence_census": "cla.ts / services/cla/service.ts untouched by construction (hub-only diff); diff enumerates ONLY the declared paths"
+  },
+  "lineage": {
+    "run_001": "PR #531 merged a911c4fe (the crop-then-mark pipeline of record); the owning-session lane addendum landed 9e679923 (bookkeeping-only)",
+    "branch": "t-mg-cropmark-1/run-002 cut at origin/main 9e679923"
+  }
+}
