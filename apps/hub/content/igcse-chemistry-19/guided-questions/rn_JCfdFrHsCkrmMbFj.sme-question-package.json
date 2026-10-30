@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_JCfdFrHsCkrmMbFj",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "b7e8a1b997cf1d38cb02189aee7cea91f77f4e0404c8516cbc6ab3b3a128d09d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "9748b99f8ad3b9c4a343374418ba7b32d590025adc9f45044bd014b85aa350b8",
+    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
   },
   "packageId": "igcse-chemistry::rn_JCfdFrHsCkrmMbFj",
   "subject": "igcse-chemistry",
@@ -192,6 +192,68 @@
       ]
     },
     {
+      "id": "rn_JCfdFrHsCkrmMbFj::L1::Q6",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L1",
+      "stem": "State the relationship between the total mass of the reactants and the total mass of the products in any chemical reaction.",
+      "misconceptionClass": "mass relationship",
+      "kind": "recall",
+      "modelAnswer": "The total mass of the reactants always equals the total mass of the products.",
+      "keywords": [
+        "mass",
+        "equal",
+        "equals",
+        "same"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L1::Q7",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L1",
+      "stem": "State what happens to the atoms of the reactants during a chemical reaction.",
+      "misconceptionClass": "atom fate",
+      "kind": "recall",
+      "modelAnswer": "New substances form, but the same atoms are present before and after — every atom in the reactants must appear in the products.",
+      "keywords": [
+        "same",
+        "appear",
+        "appears",
+        "conserved",
+        "rearranged"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L1::Q8",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L1",
+      "stem": "Explain why no atoms disappear during a chemical reaction.",
+      "misconceptionClass": "conservation law",
+      "kind": "explain-why",
+      "modelAnswer": "Because atoms cannot be created or destroyed — they are only rearranged into the new substances, so every reactant atom survives into the products.",
+      "keywords": [
+        "created",
+        "destroyed",
+        "rearranged",
+        "rearrange",
+        "survive",
+        "survives"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L1::Q9",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L1",
+      "stem": "12.0 g of magnesium burns completely in 8.0 g of oxygen inside a sealed flask. State the mass of magnesium oxide formed.",
+      "misconceptionClass": "mass conservation applied",
+      "kind": "application",
+      "modelAnswer": "20.0 g — the total mass of the reactants equals the total mass of the products (conservation of mass).",
+      "keywords": [
+        "20",
+        "conservation",
+        "conserved"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_JCfdFrHsCkrmMbFj::L2::Q1",
       "moduleId": "rn_JCfdFrHsCkrmMbFj::L2",
       "stem": "Sodium hydroxide reacts with hydrochloric acid to form sodium chloride and water. Which word equation is correct?",
@@ -372,6 +434,64 @@
       ]
     },
     {
+      "id": "rn_JCfdFrHsCkrmMbFj::L2::Q6",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L2",
+      "stem": "State which side of a word equation the products are written on.",
+      "misconceptionClass": "products side",
+      "kind": "recall",
+      "modelAnswer": "The right-hand side — reactants sit on the left of the arrow and products on the right.",
+      "keywords": [
+        "right",
+        "rhs"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L2::Q7",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L2",
+      "stem": "State the term for the chemical ingredients of a reaction, mixed together before it starts.",
+      "misconceptionClass": "reactant meaning",
+      "kind": "recall",
+      "modelAnswer": "The reactants.",
+      "keywords": [
+        "reactant",
+        "reactants"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L2::Q8",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L2",
+      "stem": "Explain why the reactants are named before the products when a word equation is written.",
+      "misconceptionClass": "equation order logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the reactants are the ingredients mixed together before the reaction starts, and the arrow then signals their conversion into the products — the order follows the course of the reaction.",
+      "keywords": [
+        "before",
+        "order",
+        "first",
+        "conversion",
+        "converted",
+        "start",
+        "starts",
+        "mixed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L2::Q9",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L2",
+      "stem": "Magnesium burns in oxygen to form magnesium oxide. State the word equation for the reaction.",
+      "misconceptionClass": "word equation construction",
+      "kind": "application",
+      "modelAnswer": "magnesium + oxygen → magnesium oxide.",
+      "keywords": [
+        "magnesium",
+        "oxide"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_JCfdFrHsCkrmMbFj::L3::Q1",
       "moduleId": "rn_JCfdFrHsCkrmMbFj::L3",
       "stem": "Which list names all the non-metals that must be written as molecules in symbol equations?",
@@ -550,6 +670,67 @@
           "misconception": "overgeneralises the ban into 'no oxygen may ever be added'"
         }
       ]
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L3::Q6",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L3",
+      "stem": "State the four state symbols used in balanced chemical equations.",
+      "misconceptionClass": "state symbols",
+      "kind": "recall",
+      "modelAnswer": "Solid (s), liquid (l), gas (g) and aqueous (aq).",
+      "keywords": [
+        "solid",
+        "liquid",
+        "gas",
+        "aqueous"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L3::Q7",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L3",
+      "stem": "State how an unchanged group such as the nitrate group is counted when balancing an equation.",
+      "misconceptionClass": "group counting",
+      "kind": "recall",
+      "modelAnswer": "Count it as one entity, instead of balancing its individual atoms separately.",
+      "keywords": [
+        "one",
+        "entity",
+        "group",
+        "whole",
+        "unit"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L3::Q8",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L3",
+      "stem": "Explain why the nitrate group can be balanced as one entity rather than atom by atom.",
+      "misconceptionClass": "group entity logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the group stays unchanged through the reaction — it passes from the reactant to the product as one unit, so counting it as one entity keeps the balance correct.",
+      "keywords": [
+        "unchanged",
+        "stays",
+        "stay",
+        "one",
+        "unit",
+        "entity"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_JCfdFrHsCkrmMbFj::L3::Q9",
+      "moduleId": "rn_JCfdFrHsCkrmMbFj::L3",
+      "stem": "Copper(II) sulfate solution reacts with sodium hydroxide solution, and both solutes are dissolved in water. State the state symbol each of the two reactants carries in the balanced equation.",
+      "misconceptionClass": "state symbols applied",
+      "kind": "application",
+      "modelAnswer": "Aqueous, (aq) — both reactants are dissolved in water.",
+      "keywords": [
+        "aq",
+        "aqueous"
+      ],
+      "options": []
     }
   ]
 }

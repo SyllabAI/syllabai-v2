@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_TM4QVMgXVxs4vbfY",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "eab2f6f2851f4ac47f1a47707cae3d704d0b3175f44f25a4cb6c28c8ea1df8d3",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "c91a470e5b2a6eb101d75a60ebd14181ee0da9793851c98f405d5f80fe46e119",
+    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
   },
   "packageId": "igcse-chemistry::rn_TM4QVMgXVxs4vbfY",
   "subject": "igcse-chemistry",
@@ -192,6 +192,72 @@
       ]
     },
     {
+      "id": "rn_TM4QVMgXVxs4vbfY::L1::Q6",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L1",
+      "stem": "State, in terms of electrons, what reduction is.",
+      "misconceptionClass": "reduction definition",
+      "kind": "recall",
+      "modelAnswer": "Reduction is electron gain (oxidation is electron loss).",
+      "keywords": [
+        "gain",
+        "gains",
+        "gaining",
+        "electrons",
+        "electron"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L1::Q7",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L1",
+      "stem": "State what ions reaching an electrode form after losing or gaining electrons.",
+      "misconceptionClass": "discharge products",
+      "kind": "recall",
+      "modelAnswer": "They form neutral substances, which are discharged as the products.",
+      "keywords": [
+        "neutral",
+        "discharged",
+        "discharge",
+        "substances"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L1::Q8",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L1",
+      "stem": "Explain why the charges on the two sides of a half equation must balance.",
+      "misconceptionClass": "charge balance logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because electrons carry charge: the electrons lost or gained at the electrode set the charge moved, so a correct half equation shows the same total charge on both sides.",
+      "keywords": [
+        "charge",
+        "charges",
+        "same",
+        "equal",
+        "conserved",
+        "conservation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L1::Q9",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L1",
+      "stem": "During electrolysis, a negatively charged chloride ion reaches the anode. State whether the chloride ion is oxidised or reduced, and what it does with electrons.",
+      "misconceptionClass": "electrode classification",
+      "kind": "application",
+      "modelAnswer": "It is oxidised — negative ions lose electrons at the anode, so the chloride ion loses an electron.",
+      "keywords": [
+        "oxidised",
+        "oxidized",
+        "loses",
+        "lose",
+        "lost",
+        "loss",
+        "anode"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_TM4QVMgXVxs4vbfY::L2::Q1",
       "moduleId": "rn_TM4QVMgXVxs4vbfY::L2",
       "stem": "Which half equation shows the reaction at the cathode during the electrolysis of molten lead(II) bromide?",
@@ -372,6 +438,72 @@
       ]
     },
     {
+      "id": "rn_TM4QVMgXVxs4vbfY::L2::Q6",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L2",
+      "stem": "State the substance formed at the cathode during the electrolysis of molten lead(II) bromide.",
+      "misconceptionClass": "cathode product",
+      "kind": "recall",
+      "modelAnswer": "Molten lead metal, from the half equation Pb2+ + 2e- → Pb.",
+      "keywords": [
+        "lead",
+        "pb",
+        "metal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L2::Q7",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L2",
+      "stem": "State the product formed at the anode when a molten chloride salt is electrolysed.",
+      "misconceptionClass": "anode product chlorides",
+      "kind": "recall",
+      "modelAnswer": "Chlorine gas — the same form writes chloride discharge: 2Cl- → Cl2 + 2e-, oxidation.",
+      "keywords": [
+        "chlorine",
+        "cl2",
+        "cl",
+        "gas"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L2::Q8",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L2",
+      "stem": "Explain why the bromide half equation 2Br- → Br2 + 2e- is classified as oxidation.",
+      "misconceptionClass": "oxidation classification",
+      "kind": "explain-why",
+      "modelAnswer": "Because the bromide ions lose electrons — 2Br- → Br2 + 2e- — and oxidation is defined as electron loss.",
+      "keywords": [
+        "lose",
+        "loses",
+        "losing",
+        "lost",
+        "loss",
+        "oxidation",
+        "oxidised",
+        "oxidized",
+        "electrons",
+        "electron"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L2::Q9",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L2",
+      "stem": "Molten potassium bromide is electrolysed. State the product at the cathode, and whether its half equation is oxidation or reduction.",
+      "misconceptionClass": "novel salt cathode",
+      "kind": "application",
+      "modelAnswer": "Potassium metal forms at the cathode: K+ + e- → K is reduction (electron gain).",
+      "keywords": [
+        "potassium",
+        "reduction",
+        "reduced",
+        "k",
+        "gain"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_TM4QVMgXVxs4vbfY::L3::Q1",
       "moduleId": "rn_TM4QVMgXVxs4vbfY::L3",
       "stem": "Which half equation is the cathode reaction during the electrolysis of aqueous copper(II) sulfate?",
@@ -550,6 +682,61 @@
           "misconception": "claims the conditions are never specified"
         }
       ]
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L3::Q6",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L3",
+      "stem": "State the gas produced at the cathode during the electrolysis of dilute sulfuric acid.",
+      "misconceptionClass": "cathode gas",
+      "kind": "recall",
+      "modelAnswer": "Hydrogen gas — the cathode half equation is 2H+ + 2e- → H2.",
+      "keywords": [
+        "hydrogen",
+        "h2"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L3::Q7",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L3",
+      "stem": "State the product formed at the cathode when aqueous copper(II) sulfate is electrolysed, and name the ion it comes from.",
+      "misconceptionClass": "cathode product copper",
+      "kind": "recall",
+      "modelAnswer": "Copper metal, from the Cu2+ ions: Cu2+ + 2e- → Cu.",
+      "keywords": [
+        "copper",
+        "cu"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L3::Q8",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L3",
+      "stem": "Explain why the hydroxide ion, rather than water, appears in the oxidation half equation for alkaline solutions.",
+      "misconceptionClass": "alkaline hydroxide logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because alkaline solutions contain OH- ions — the hydroxide is present to be discharged, so it appears in the oxidation half equation instead of water.",
+      "keywords": [
+        "hydroxide",
+        "oh",
+        "present",
+        "contain",
+        "contains"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TM4QVMgXVxs4vbfY::L3::Q9",
+      "moduleId": "rn_TM4QVMgXVxs4vbfY::L3",
+      "stem": "A student electrolyses dilute sulfuric acid and collects the gas bubbling off at the anode. State the gas collected.",
+      "misconceptionClass": "anode gas identification",
+      "kind": "application",
+      "modelAnswer": "Oxygen — water is oxidised at the anode: 2H2O → O2 + 4H+ + 4e-.",
+      "keywords": [
+        "oxygen",
+        "o2"
+      ],
+      "options": []
     }
   ]
 }

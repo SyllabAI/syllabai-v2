@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_kJg2gwF77vdFZZ2H",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "459db78b720dba5b5859c8d6252f70c0a3dcf413508643442416442605d2f21b",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "0e7771addf58886c501cd7952ce6ac4d293c3f7f22eec0d2749b5fe7849622c4",
+    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
   },
   "packageId": "igcse-chemistry::rn_kJg2gwF77vdFZZ2H",
   "subject": "igcse-chemistry",
@@ -192,6 +192,66 @@
       ]
     },
     {
+      "id": "rn_kJg2gwF77vdFZZ2H::L1::Q6",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L1",
+      "stem": "State the reagent that the gas released from a carbonate sample is bubbled through.",
+      "misconceptionClass": "test sequence",
+      "kind": "recall",
+      "modelAnswer": "Limewater.",
+      "keywords": [
+        "limewater",
+        "lime",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kJg2gwF77vdFZZ2H::L1::Q7",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L1",
+      "stem": "State the positive result of the carbonate ion test.",
+      "misconceptionClass": "positive result",
+      "kind": "recall",
+      "modelAnswer": "The limewater turns cloudy.",
+      "keywords": [
+        "cloudy",
+        "cloud",
+        "milky"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kJg2gwF77vdFZZ2H::L1::Q8",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L1",
+      "stem": "Explain why the limewater turns cloudy during the carbonate test.",
+      "misconceptionClass": "precipitate logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because a white precipitate of calcium carbonate forms in the limewater — the suspended calcium carbonate is the cloudiness.",
+      "keywords": [
+        "calcium",
+        "carbonate",
+        "precipitate",
+        "white",
+        "suspended"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kJg2gwF77vdFZZ2H::L1::Q9",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L1",
+      "stem": "Sodium carbonate reacts with dilute hydrochloric acid. State the two products formed other than the salt sodium chloride.",
+      "misconceptionClass": "ionic equation applied",
+      "kind": "application",
+      "modelAnswer": "Carbon dioxide and water — the ionic equation is CO3 2- (aq) + 2H+ (aq) → CO2 (g) + H2O (l).",
+      "keywords": [
+        "carbon",
+        "dioxide",
+        "co2",
+        "water",
+        "h2o"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_kJg2gwF77vdFZZ2H::L2::Q1",
       "moduleId": "rn_kJg2gwF77vdFZZ2H::L2",
       "stem": "Which reagent pair is used to test for halide ions?",
@@ -372,6 +432,63 @@
       ]
     },
     {
+      "id": "rn_kJg2gwF77vdFZZ2H::L2::Q6",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L2",
+      "stem": "State the colour of the precipitate that identifies iodide ions in the halide test.",
+      "misconceptionClass": "halide colour",
+      "kind": "recall",
+      "modelAnswer": "Yellow — silver iodide is the yellow precipitate.",
+      "keywords": [
+        "yellow"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kJg2gwF77vdFZZ2H::L2::Q7",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L2",
+      "stem": "State the acid used to acidify the sample before silver nitrate is added.",
+      "misconceptionClass": "acidifying reagent",
+      "kind": "recall",
+      "modelAnswer": "Nitric acid.",
+      "keywords": [
+        "nitric"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kJg2gwF77vdFZZ2H::L2::Q8",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L2",
+      "stem": "Explain why the negative ions of the Group 7 elements are called halide ions.",
+      "misconceptionClass": "family naming logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because they are the negative ions formed by the Group 7 elements, the halogens — a halide is a halogen's negative ion.",
+      "keywords": [
+        "group",
+        "halogen",
+        "halogens",
+        "negative",
+        "formed"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kJg2gwF77vdFZZ2H::L2::Q9",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L2",
+      "stem": "Three unknown solutions each give a precipitate with silver nitrate after nitric acid: one white, one cream and one yellow. State the halide ion present in each.",
+      "misconceptionClass": "colour-ion matching",
+      "kind": "application",
+      "modelAnswer": "White = chloride (silver chloride), cream = bromide (silver bromide), yellow = iodide (silver iodide).",
+      "keywords": [
+        "chloride",
+        "bromide",
+        "iodide",
+        "white",
+        "cream",
+        "yellow"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_kJg2gwF77vdFZZ2H::L3::Q1",
       "moduleId": "rn_kJg2gwF77vdFZZ2H::L3",
       "stem": "What is the correct sequence for the sulfate ion test?",
@@ -550,6 +667,66 @@
           "misconception": "test scope over-claimed"
         }
       ]
+    },
+    {
+      "id": "rn_kJg2gwF77vdFZZ2H::L3::Q6",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L3",
+      "stem": "State the formula of the sulfate ion.",
+      "misconceptionClass": "ion formula",
+      "kind": "recall",
+      "modelAnswer": "SO4 2-.",
+      "keywords": [
+        "so4",
+        "sulfate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kJg2gwF77vdFZZ2H::L3::Q7",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L3",
+      "stem": "State the positive result of the sulfate ion test.",
+      "misconceptionClass": "positive result",
+      "kind": "recall",
+      "modelAnswer": "A white precipitate of barium sulfate forms.",
+      "keywords": [
+        "white",
+        "precipitate",
+        "barium",
+        "sulfate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kJg2gwF77vdFZZ2H::L3::Q8",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L3",
+      "stem": "Explain why barium nitrate solution can replace barium chloride solution in the sulfate test.",
+      "misconceptionClass": "reagent substitution logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because either barium salt provides the barium ions needed to form the white barium sulfate precipitate.",
+      "keywords": [
+        "barium",
+        "ba",
+        "ions",
+        "ion",
+        "either",
+        "both"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_kJg2gwF77vdFZZ2H::L3::Q9",
+      "moduleId": "rn_kJg2gwF77vdFZZ2H::L3",
+      "stem": "After acidifying a solution with hydrochloric acid and adding barium chloride, a student sees no precipitate. State whether sulfate ions are present in the solution.",
+      "misconceptionClass": "negative result interpretation",
+      "kind": "application",
+      "modelAnswer": "No — a white precipitate of barium sulfate forms if the sulfate ion is present, so no precipitate means the sulfate ion is absent.",
+      "keywords": [
+        "no",
+        "not",
+        "absent",
+        "none"
+      ],
+      "options": []
     }
   ]
 }

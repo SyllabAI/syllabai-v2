@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_4SgDJv8rKxpQQSBh",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "011e6b72650bc9b8b126356d4230b29df1b74c3773dfa69ed43d33c0e09158a9",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "d146334927c6e9a233179ca067bad91d8658eadabcc02320e03d449fd4f801e9",
+    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
   },
   "packageId": "igcse-chemistry::rn_4SgDJv8rKxpQQSBh",
   "subject": "igcse-chemistry",
@@ -192,6 +192,68 @@
       ]
     },
     {
+      "id": "rn_4SgDJv8rKxpQQSBh::L1::Q6",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L1",
+      "stem": "State the term for a large molecule of high relative molecular mass built from many joined monomers.",
+      "misconceptionClass": "polymer definition",
+      "kind": "recall",
+      "modelAnswer": "A polymer.",
+      "keywords": [
+        "polymer",
+        "polymers"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4SgDJv8rKxpQQSBh::L1::Q7",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L1",
+      "stem": "State the name of the reaction that joins monomers together.",
+      "misconceptionClass": "process naming",
+      "kind": "recall",
+      "modelAnswer": "Addition polymerisation.",
+      "keywords": [
+        "addition",
+        "polymerisation",
+        "polymerization"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4SgDJv8rKxpQQSBh::L1::Q8",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L1",
+      "stem": "Explain what happens to each monomer when it joins the growing polymer chain.",
+      "misconceptionClass": "monomer to repeat unit",
+      "kind": "explain-why",
+      "modelAnswer": "Each monomer becomes a repeat unit, connected to its neighbours by covalent bonds.",
+      "keywords": [
+        "repeat",
+        "unit",
+        "units",
+        "covalent",
+        "bond",
+        "bonds",
+        "neighbours",
+        "neighbors"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4SgDJv8rKxpQQSBh::L1::Q9",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L1",
+      "stem": "A factory manufactures a new material by joining thousands of small molecules into one giant chain. State whether the new material is a natural or a synthetic polymer.",
+      "misconceptionClass": "polymer class identification",
+      "kind": "application",
+      "modelAnswer": "A synthetic polymer — manufactured polymers like plastics and nylon are synthetic, while nature makes the natural or biological polymers.",
+      "keywords": [
+        "synthetic",
+        "manufactured",
+        "man",
+        "made",
+        "manmade"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_4SgDJv8rKxpQQSBh::L2::Q1",
       "moduleId": "rn_4SgDJv8rKxpQQSBh::L2",
       "stem": "Which structural feature must a monomer have for addition polymerisation?",
@@ -372,6 +434,63 @@
       ]
     },
     {
+      "id": "rn_4SgDJv8rKxpQQSBh::L2::Q6",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L2",
+      "stem": "State the name of the polymer formed when ethene undergoes addition polymerisation.",
+      "misconceptionClass": "polymer naming",
+      "kind": "recall",
+      "modelAnswer": "Polyethene.",
+      "keywords": [
+        "polyethene",
+        "polythene"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4SgDJv8rKxpQQSBh::L2::Q7",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L2",
+      "stem": "State the rule for building an addition polymer's name from its monomer's name.",
+      "misconceptionClass": "naming rule",
+      "kind": "recall",
+      "modelAnswer": "Take the monomer's name in brackets and add poly- in front of it.",
+      "keywords": [
+        "poly",
+        "brackets",
+        "bracket",
+        "front"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4SgDJv8rKxpQQSBh::L2::Q8",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L2",
+      "stem": "Explain why the finished polymer chain contains only single bonds even though each monomer carries a C=C double bond.",
+      "misconceptionClass": "bond conversion logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because one of the two bonds in each C=C double bond breaks, and that bond forms the link to the adjacent monomer, leaving the chain with single bonds only.",
+      "keywords": [
+        "breaks",
+        "break",
+        "broken",
+        "single",
+        "double"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4SgDJv8rKxpQQSBh::L2::Q9",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L2",
+      "stem": "Chloroethene is the monomer used to make PVC. State the systematic name of the polymer it forms, following the note's naming rule.",
+      "misconceptionClass": "naming rule applied",
+      "kind": "application",
+      "modelAnswer": "Polychloroethene — the rule puts poly- in front of the monomer's name, chloroethene, in brackets.",
+      "keywords": [
+        "polychloroethene",
+        "chloroethene"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_4SgDJv8rKxpQQSBh::L3::Q1",
       "moduleId": "rn_4SgDJv8rKxpQQSBh::L3",
       "stem": "When drawing a repeat unit from a monomer, what happens to the double bond?",
@@ -550,6 +669,70 @@
           "misconception": "groups stripped"
         }
       ]
+    },
+    {
+      "id": "rn_4SgDJv8rKxpQQSBh::L3::Q6",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L3",
+      "stem": "State what happens to the other groups around the former double bond when a monomer is drawn as a repeat unit.",
+      "misconceptionClass": "substituent order",
+      "kind": "recall",
+      "modelAnswer": "They keep the same order they had around the double bond in the monomer.",
+      "keywords": [
+        "same",
+        "order",
+        "keep",
+        "kept",
+        "unchanged"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4SgDJv8rKxpQQSBh::L3::Q7",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L3",
+      "stem": "State where the bonds at each end of a repeat unit must extend.",
+      "misconceptionClass": "end bonds placement",
+      "kind": "recall",
+      "modelAnswer": "Outside the brackets — one bond at each end, extending beyond them.",
+      "keywords": [
+        "outside",
+        "brackets",
+        "bracket",
+        "beyond"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4SgDJv8rKxpQQSBh::L3::Q8",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L3",
+      "stem": "Explain why changing the single bond back to a double bond recovers the monomer from a repeat unit.",
+      "misconceptionClass": "reversal logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because drawing the repeat unit changed the monomer's double bond to a single bond and added the two end bonds; reversing those steps, and removing the end bonds and the n, gives back the original monomer.",
+      "keywords": [
+        "reverse",
+        "reversing",
+        "reversed",
+        "back",
+        "undo",
+        "undone",
+        "original"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4SgDJv8rKxpQQSBh::L3::Q9",
+      "moduleId": "rn_4SgDJv8rKxpQQSBh::L3",
+      "stem": "A student draws a repeat unit with both end bonds inside the brackets and no subscript n. State the two corrections needed to make the drawing correct.",
+      "misconceptionClass": "repeat unit corrections",
+      "kind": "application",
+      "modelAnswer": "Move the end bonds so they extend outside the brackets, and add the subscript n on the bottom right.",
+      "keywords": [
+        "outside",
+        "brackets",
+        "bracket",
+        "subscript"
+      ],
+      "options": []
     }
   ]
 }

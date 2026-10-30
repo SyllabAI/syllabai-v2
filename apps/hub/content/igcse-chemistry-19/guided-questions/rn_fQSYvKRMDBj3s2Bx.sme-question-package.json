@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_fQSYvKRMDBj3s2Bx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "99db0df95b6f242fee72e3b631c7a4fed0474b4350271b6331ce5b5cad2f2343",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "f31a95345b9168db659e61270427f3bf10a26a43466c66d57e6b0a6784cd9d69",
+    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
   },
   "packageId": "igcse-chemistry::rn_fQSYvKRMDBj3s2Bx",
   "subject": "igcse-chemistry",
@@ -192,6 +192,75 @@
       ]
     },
     {
+      "id": "rn_fQSYvKRMDBj3s2Bx::L1::Q6",
+      "moduleId": "rn_fQSYvKRMDBj3s2Bx::L1",
+      "stem": "State the two starting substances used to make the copper(II) sulfate in this practical.",
+      "misconceptionClass": "reagent recall",
+      "kind": "recall",
+      "modelAnswer": "Copper(II) oxide (the base) and dilute sulfuric acid.",
+      "keywords": [
+        "oxide",
+        "sulfuric",
+        "sulphuric",
+        "acid",
+        "copper"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_fQSYvKRMDBj3s2Bx::L1::Q7",
+      "moduleId": "rn_fQSYvKRMDBj3s2Bx::L1",
+      "stem": "State how the copper(II) oxide is added to the hot acid.",
+      "misconceptionClass": "addition technique",
+      "kind": "recall",
+      "modelAnswer": "Slowly, with stirring, until it is in excess.",
+      "keywords": [
+        "slowly",
+        "slow",
+        "stirring",
+        "stirred",
+        "stir",
+        "excess"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_fQSYvKRMDBj3s2Bx::L1::Q8",
+      "moduleId": "rn_fQSYvKRMDBj3s2Bx::L1",
+      "stem": "Explain why the excess solid must be removed before the solution is crystallised.",
+      "misconceptionClass": "purity logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because filtering removes the excess solid base, leaving only the salt solution in the evaporating basin — the aim is a pure, dry batch of crystals, so leftover base must not contaminate it.",
+      "keywords": [
+        "excess",
+        "filter",
+        "filtering",
+        "filtered",
+        "filtration",
+        "pure",
+        "purity",
+        "contaminate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_fQSYvKRMDBj3s2Bx::L1::Q9",
+      "moduleId": "rn_fQSYvKRMDBj3s2Bx::L1",
+      "stem": "A student forgets to warm the dilute sulfuric acid before adding the copper(II) oxide. State the effect this has on the reaction with the base.",
+      "misconceptionClass": "temperature effect applied",
+      "kind": "application",
+      "modelAnswer": "The reaction is slower — warming the dilute sulfuric acid gently speeds up the reaction with the base, so cold acid reacts more slowly.",
+      "keywords": [
+        "slower",
+        "slow",
+        "slowly",
+        "less",
+        "rate",
+        "speed"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_fQSYvKRMDBj3s2Bx::L2::Q1",
       "moduleId": "rn_fQSYvKRMDBj3s2Bx::L2",
       "stem": "How is the solution heated during the evaporation stage?",
@@ -370,6 +439,80 @@
           "misconception": "stage order scrambled"
         }
       ]
+    },
+    {
+      "id": "rn_fQSYvKRMDBj3s2Bx::L2::Q6",
+      "moduleId": "rn_fQSYvKRMDBj3s2Bx::L2",
+      "stem": "State the purpose of heating the solution gently at the start of the evaporation stage.",
+      "misconceptionClass": "evaporation purpose",
+      "kind": "recall",
+      "modelAnswer": "To evaporate water and make the solution saturated.",
+      "keywords": [
+        "evaporate",
+        "evaporates",
+        "evaporating",
+        "evaporation",
+        "water",
+        "saturated",
+        "saturation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_fQSYvKRMDBj3s2Bx::L2::Q7",
+      "moduleId": "rn_fQSYvKRMDBj3s2Bx::L2",
+      "stem": "State how the crystals are separated from the leftover solution after crystallisation.",
+      "misconceptionClass": "crystal separation",
+      "kind": "recall",
+      "modelAnswer": "The excess solution is decanted away, and the crystals are allowed to dry.",
+      "keywords": [
+        "decanted",
+        "decant",
+        "decanting",
+        "poured",
+        "pour"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_fQSYvKRMDBj3s2Bx::L2::Q8",
+      "moduleId": "rn_fQSYvKRMDBj3s2Bx::L2",
+      "stem": "Explain why the filtrate is left in a warm place to dry.",
+      "misconceptionClass": "crystallisation purpose",
+      "kind": "explain-why",
+      "modelAnswer": "So the solution can dry out and the dissolved copper(II) sulfate can crystallise — leaving it warm lets good crystals form as the water leaves.",
+      "keywords": [
+        "crystallise",
+        "crystallises",
+        "crystallised",
+        "crystallising",
+        "crystals",
+        "crystal",
+        "dry",
+        "dries",
+        "dried",
+        "drying"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_fQSYvKRMDBj3s2Bx::L2::Q9",
+      "moduleId": "rn_fQSYvKRMDBj3s2Bx::L2",
+      "stem": "A student dips a cold glass rod into the evaporating basin and no crystals form on its end. State what this shows about the solution, and what should be done next.",
+      "misconceptionClass": "saturation test applied",
+      "kind": "application",
+      "modelAnswer": "The solution is not saturated yet — keep heating gently to evaporate more water until crystals do form on a cold rod.",
+      "keywords": [
+        "saturated",
+        "saturation",
+        "heat",
+        "heating",
+        "evaporate",
+        "evaporating",
+        "more",
+        "water"
+      ],
+      "options": []
     }
   ]
 }

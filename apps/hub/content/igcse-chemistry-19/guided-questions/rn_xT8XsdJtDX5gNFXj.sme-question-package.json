@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_xT8XsdJtDX5gNFXj",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "258fe48f8e5280118d65ccab879398482310160143d23a5d976701d2acbef08f",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "3c07eb925d3f860a9f12d1bc00976db55eb1b45be4b567d8386dfc04356b3ae3",
+    "pinnedRef": "78ad6a2073c669231bb40bd7266674a257c6003e"
   },
   "packageId": "igcse-chemistry::rn_xT8XsdJtDX5gNFXj",
   "subject": "igcse-chemistry",
@@ -192,6 +192,72 @@
       ]
     },
     {
+      "id": "rn_xT8XsdJtDX5gNFXj::L1::Q6",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L1",
+      "stem": "State the value of the Avogadro constant.",
+      "misconceptionClass": "avogadro value",
+      "kind": "recall",
+      "modelAnswer": "6.02 × 10^23 particles per mole.",
+      "keywords": [
+        "6.02",
+        "6",
+        "02",
+        "23",
+        "avogadro"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L1::Q7",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L1",
+      "stem": "State what the molar mass of an element matches, in grams.",
+      "misconceptionClass": "molar mass element",
+      "kind": "recall",
+      "modelAnswer": "The relative atomic mass (Ar) — the mass of one mole of the element in grams.",
+      "keywords": [
+        "relative",
+        "atomic",
+        "ar"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L1::Q8",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L1",
+      "stem": "Explain why one mole of carbon and one mole of helium contain the same number of particles.",
+      "misconceptionClass": "mole counting logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because equal amounts in moles contain equal numbers of particles, whatever the substance — the mole counts particles, it does not weigh them.",
+      "keywords": [
+        "equal",
+        "equals",
+        "same",
+        "number",
+        "numbers",
+        "count",
+        "counts",
+        "amount",
+        "amounts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L1::Q9",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L1",
+      "stem": "A student needs the molar mass of carbon dioxide, CO2 (Ar: C = 12, O = 16). State how it is found from the atomic masses.",
+      "misconceptionClass": "Mr construction",
+      "kind": "application",
+      "modelAnswer": "Add the atomic masses of all the atoms in the formula together: 12 + (2 × 16) = 44 g/mol, matching the relative formula mass.",
+      "keywords": [
+        "add",
+        "adding",
+        "sum",
+        "total",
+        "together"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_xT8XsdJtDX5gNFXj::L2::Q1",
       "moduleId": "rn_xT8XsdJtDX5gNFXj::L2",
       "stem": "Why must a chemist convert between grams and moles?",
@@ -370,6 +436,65 @@
           "misconception": "slips a decimal place in the multiplication"
         }
       ]
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L2::Q6",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L2",
+      "stem": "State the relationship linking moles, mass and molar mass.",
+      "misconceptionClass": "mole relationship",
+      "kind": "recall",
+      "modelAnswer": "moles = mass ÷ molar mass — the mass divided by the molar mass.",
+      "keywords": [
+        "divided",
+        "divide",
+        "division",
+        "over"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L2::Q7",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L2",
+      "stem": "State the rearranged relationship used to find the mass from a known number of moles.",
+      "misconceptionClass": "mass relationship",
+      "kind": "recall",
+      "modelAnswer": "mass = moles × molar mass — the moles multiplied by the molar mass.",
+      "keywords": [
+        "multiplied",
+        "multiply",
+        "multiplying",
+        "times"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L2::Q8",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L2",
+      "stem": "Explain why molar mass is measured in g mol^-1.",
+      "misconceptionClass": "unit logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because molar mass is the mass of one mole — a mass per amount of substance — so its unit is grams per mole, g mol^-1.",
+      "keywords": [
+        "per",
+        "grams",
+        "gram",
+        "mole"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xT8XsdJtDX5gNFXj::L2::Q9",
+      "moduleId": "rn_xT8XsdJtDX5gNFXj::L2",
+      "stem": "A student has 0.500 mol of water, H2O (Mr = 18). State the mass of the sample.",
+      "misconceptionClass": "mass calculation applied",
+      "kind": "application",
+      "modelAnswer": "mass = moles × molar mass = 0.500 × 18 = 9.0 g.",
+      "keywords": [
+        "9",
+        "9.0",
+        "9g"
+      ],
+      "options": []
     }
   ]
 }
