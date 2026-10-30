@@ -18,6 +18,7 @@
 import Link from "next/link";
 import { ChartColumn, LayoutGrid } from "lucide-react";
 import { Breadcrumbs, ExamCodePill } from "@/components/hub/chrome";
+import { courseCrumbItems } from "@/lib/board";
 import { cn } from "@/lib/utils";
 import type { CourseMeta } from "@/lib/courses";
 
@@ -34,11 +35,13 @@ export function CourseHeader({
   activeTab?: "resources" | "strengths";
   title: string;
   description?: string;
-  /** Final breadcrumb label — the current page's name (SME trail, figure 14:
-   *  "IGCSE / Chemistry / Edexcel / Exam Questions / {topic}"). Defaults to
-   *  the row's board ("Edexcel" for the pre-CIE registry rows,
-   *  "Cambridge International" for the CIE wave), matching the hub-root
-   *  trail (G3 board-aware fix). */
+  /** Final breadcrumb label — the current page's name for subpages (e.g.
+   *  "Revision Notes"). Omitted on the course root, where the course itself
+   *  is the current crumb. The full trail is composed by
+   *  courseCrumbItems (lib/board): board → level → course, board crumb
+   *  linking to the directory's board-filtered view (UX review F-05 — the
+   *  old trail put the board last as the "current page" and linked the
+   *  middle crumb to the page's own URL). */
   crumb?: string;
   /** SME anatomy: the Course Resources / Strengths & Weaknesses tab pair
    *  belongs to the course hub root only — resource pages render breadcrumb +
@@ -57,13 +60,7 @@ export function CourseHeader({
       {/* MG pastel wash — hub-token gradient, see globals.css */}
       <div aria-hidden className="course-hero-gradient absolute inset-0 -z-10" />
       <div className="space-y-3 p-5 sm:p-6">
-        <Breadcrumbs
-          items={[
-            { label: meta.level, href: "/courses" },
-            { label: meta.label, href: base },
-            { label: crumb ?? (meta.board ?? "Edexcel") },
-          ]}
-        />
+        <Breadcrumbs items={courseCrumbItems(meta, crumb)} />
         <div className="flex flex-wrap items-start justify-between gap-3">
           <h1 className="max-w-2xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
             {title}
