@@ -94,12 +94,12 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     expect(pkg.corpusVersion).toContain("syllabai.sme-exam-questions/1.1");
     // 2ece53b re-import carried no option-bearing parts; the 4MB1 OCR-repair
     // wave re-introduced four option-bearing maths-a parts (options 0 -> 4)
-    expect(pkg.counts).toEqual({ questions: 2692, parts: 3538, options: 4, sets: 58, unmapped: 9, badSum: 0, dupOrder: 2 });
+    expect(pkg.counts).toEqual({ questions: 2692, parts: 3538, options: 4, sets: 58, unmapped: 9, badSum: 0, dupOrder: 2, crossSetRefCollision: 0 }); // CONSUME-3: the counter of record rides every census (0 here — the bundle's codes are unchanged)
   });
 
   test("the foundation bundle builds at the exact manifest numbers", () => {
     const pkg = buildFoundation();
-    expect(pkg.counts).toEqual({ questions: 274, parts: 430, options: 0, sets: 45, unmapped: 1, badSum: 0, dupOrder: 0 });
+    expect(pkg.counts).toEqual({ questions: 274, parts: 430, options: 0, sets: 45, unmapped: 1, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 }); // CONSUME-3 counter
   });
 
   test("the chemistry-19 bundle builds at the ADR-037 wave-12 census numbers with the per-paper official namespace (run-004 + wave 12)", () => {
@@ -111,7 +111,7 @@ describe("T-MIG-135b the real bundles through the shim + the frozen gates", () =
     // normalization fixes the 2020-01 R prose; unmapped 1 -> 2: the corpus-level
     // anchor-law counter now spans the R slices' one honestly-unmapped question
     // plus the documented 2019-06 1C terminal case)
-    expect(pkg.counts).toEqual({ questions: 999, parts: 4007, options: 1480, sets: 82, unmapped: 2, badSum: 0, dupOrder: 0 });
+    expect(pkg.counts).toEqual({ questions: 999, parts: 4007, options: 1480, sets: 82, unmapped: 2, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 }); // CONSUME-3 counter
     const refs = (pkg.questions ?? []).map((q) => q.externalRef as string);
     // the package-global namespace is injective — the exact gate that
     // refused the pre-fix bundle (run-003: duplicate externalRef
@@ -258,15 +258,27 @@ describe("T-MIG-135b the fail-closed shim laws", () => {
     expect(ref.startsWith("sme-eq-")).toBe(true);
   });
 
-  test("two sets sharing a topicSlug collide on the package-global namespace and REFUSE (the run-003 blocker class — the per-paper namespace is the fix)", () => {
-    // the pre-fix official wiring: every set on one topicSlug, orders
-    // restarting per set — the shared law derives the same ref twice and
-    // the frozen seenRefs gate refuses the whole bundle at BUILD
+  test("two sets sharing a topicSlug collide on the package-global namespace and the SECOND TWIN IS EXCLUDED + COUNTED (the CONSUME-3 cross-set law; the run-003 blocker class was the build-time refusal, the per-paper namespace remains the durable fix)", () => {
+    // the CONSUME-3 amendment (operator trace 1a18bc6701800065): the wave3
+    // codes made the corpus's MCQ + structured set twins per topic
+    // simultaneously ingestable — the (course, topicSlug, order) namespace
+    // collides cross-set. The honest shim EXCLUDES + COUNTS the second twin
+    // exactly like the T-MIG-136 band-4 badSum class (nothing rewritten; the
+    // skipped twin never ingests so no stored identity changes; the fleet
+    // census of record carries 1,118 disclosed collisions). The pre-fix
+    // build-time refusal was the run-003 blocker class; the per-paper
+    // namespace remains the durable namespace fix.
     const a = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
     const b = structuredClone(foundation.sets.slice(0, 1)) as BundleQuestionSet[];
     b[0]!.slug = a[0]!.slug + "-twin";
     b[0]!.questions[0]!.order = a[0]!.questions[0]!.order;
-    expect(() => oneSet(foundation.slug, foundation.curriculum, [...a, ...b])).toThrow(/duplicate externalRef/);
+    const collided = oneSet(foundation.slug, foundation.curriculum, [...a, ...b]);
+    // the second twin's colliding questions are excluded, the first wins
+    // (7 of the twin's 8 questions reach the ref gate — one is excluded
+    // earlier by another census law — each colliding ref counts once)
+    expect(collided.counts?.crossSetRefCollision).toBe(7);
+    const crefs = (collided.questions ?? []).map((q) => q.externalRef as string);
+    expect(new Set(crefs).size).toBe(crefs.length);
     // the fix law: distinct per-paper topicSlugs dissolve the collision —
     // same orders, same course, disjoint refs, clean build
     const c = structuredClone(a);

@@ -249,6 +249,18 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
   let unmapped = 0;
   let badSum = 0;
   let dupOrder = 0;
+  // the cross-set ref-namespace exclusion (T-SPECS-CIE-CONSUME-3, operator
+  // trace 1a18bc6701800065): the ref namespace is (course, topicSlug, order)
+  // and the corpus carries MCQ + structured set twins per topic sharing the
+  // order numbering. When BOTH twins become ingestable (the wave3 codes made
+  // the MCQ banks servable of record), the second twin's base ref is taken.
+  // The honest shim EXCLUDES + COUNTS the collision exactly like the
+  // T-MIG-136 band-4 badSum class: the bank ingests only questions that
+  // pass every frozen law; nothing is rewritten; the skipped twin never
+  // ingests so no stored identity changes; the hub join degrades the
+  // skipped family symmetrically (the served bundle keeps both — the
+  // census law is the DB-plane archive law, not the serving law).
+  let crossSetRefCollision = 0;
 
   for (const set of sets) {
     const setOrders = new Set<number>();
@@ -314,7 +326,8 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
         );
       }
       if (seenRefs.has(externalRef)) {
-        throw new BundleQuestionsError("duplicate externalRef: " + externalRef);
+        crossSetRefCollision++;
+        continue;
       }
       seenRefs.add(externalRef);
 
@@ -444,6 +457,7 @@ export function buildSmePackage(input: BundleQuestionsInput): SmePackage {
       unmapped: unmapped,
       badSum: badSum,
       dupOrder: dupOrder,
+      crossSetRefCollision: crossSetRefCollision,
     },
     questions,
   };

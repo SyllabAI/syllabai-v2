@@ -1,0 +1,97 @@
+{
+  "schema": "syllabai.lane-receipt/1.0",
+  "lane": "T-SPECS-CIE-CONSUME-3",
+  "run": "run-001-consume-r0",
+  "generated_utc": "2026-10-30T12:00:00Z",
+  "operator_directive": "fire that consume lane",
+  "gateway_trace": "1a18bc6701800065",
+  "fires": "the EQFC-CONSUME-1 receipt residual of record: the wave's unmapped growth (+2,705 q / +8,855 p at the official-code layer) joins the verdict fills -> review gate -> v2 consume chain for official-code registration",
+  "chain_of_record": {
+    "stage_1_join_3": {
+      "lane": "T-SPECS-CIE-JOIN-3",
+      "resources_commit": "7931fc80 (pre-rebase 38e55491)",
+      "what": "9 wave3 lanes' sidecars: 7 additive extensions +8,541 anchored items (T1/T2 substrate + the J0 of-record sid cascade 1,077) + fresh builds cie-as-biology-25 (2,015 items, 1,962 coded, 246 T1/T2 divergences quarantined per the NO-GUESS posture) + cie-as-accounting-21 (98/52); the honest-stub geography-21 excluded (the JOIN-2 record class)",
+      "battery": "WJ1-WJ8 48 PASS / 0 FAIL (independent re-derivation + the j0_cascade replay oracle + byte-idempotence + manifest additive)"
+    },
+    "stage_2_rejoin_3": {
+      "lane": "T-SPECS-CIE-REJOIN-3",
+      "resources_commit": "599d6a0f + the sheet sid fix 60539796 (pre-rebase 21f6a722 + cae389a8)",
+      "what": "J1-J4 index re-join over the wave3 pendings: 12,906 refs -> 1,278 unique pairs; 205 resolves / 1,676 refs cured / 88 ambiguous quarantined / honest stays (840 no-identity + 1 recordless + 144 verdict-evaluated); the sheet trimmed of record to its non-dispositioned delta (204/205 (lane,sid) pairs already dispositioned by REJOIN-1's sheet of record, all same-code — the deterministic re-derivation equality; the consume's sheet-overlap law)",
+      "battery": "deterministic re-run byte-eval (the recovery regeneration reproduced the of-record resolves EXACT); no-op re-runs write nothing (the landed-state law)"
+    },
+    "stage_3_verdict_3": {
+      "lane": "T-SPECS-CIE-VERDICT-3",
+      "resources_commit": "b8505e62 (pre-rebase 41e02281)",
+      "what": "V1/V2/V5/V3 identity-grade fills: 74 resolves / 405 refs cured / 349 code entries / 711 ambiguous quarantined (the finer-than-official-subsection doctrine) / 288 honest stays",
+      "battery": "fail-closed validation + deterministic re-runs"
+    },
+    "stage_4_gate_3": {
+      "lane": "T-SPECS-CIE-GATE-3",
+      "resources_commit": "756117fd (pre-rebase 90f06dfb)",
+      "what": "the wave3 review/promotion gate: verify re-fired ALL 7,964 wave3 entries (4,955 T12 substrate + 1,074 J0 of-record rows + 1,674 J-sheet + 261 V-sheet) with the quarantine law + the pending-still-resolves check + the sheet bijection (tier-agnostic per the cascade dedup law) ALL PASS; 9 lanes' wave3 blocks promoted SUGGESTED -> ACCEPTED (accepted_by = the operator directive verbatim + gateway trace); manifest cie_gate_wave3 appended last",
+      "battery": "GT-W1-W6 22 PASS / 0 FAIL"
+    },
+    "stage_5_consume_3": {
+      "lane": "T-SPECS-CIE-CONSUME-3",
+      "resources_pin": "9cf6037e (the consumed vintage of record)",
+      "what": "the v2 consume at the advanced PIN — the engine extensions of record: (a) the PIN advance (the T-RULE-T3-CONSUME-PIN-ADVANCE-1 class); (b) SHEET3 (cie_wave3_resolutions.yaml via REJOIN-3:gate-3; census 759 resolves / 288 quarantines); (c) the additive item-creation law (the EQ/FC wave consume was content-maps byte-untouched — the wave's new items existed in the hub bundles WITHOUT map rows; sidecar items absent from the map are CREATED iff their id is verbatim-present in the hub bundle plane; ids absent from both = the honest sidecar_only class); (d) the M1 battery amendment (the item set may GROW by exactly the created rows; loss still fails closed)",
+      "battery": "54/54 courses OK exit 0; deterministic merge twice byte-identical; stagingHash 47857869a3ac verified pre-apply"
+    }
+  },
+  "consume_totals": {
+    "codesFromSidecar": 20565,
+    "itemsCreated": 8637,
+    "t2Hints": 375,
+    "sheetAdded": 1,
+    "sheetUpgraded": 0,
+    "sheetConflicts": 289,
+    "sidAnchors": "0/26/0 (the of-record byte fixed point)",
+    "v8RetractDropped": 0,
+    "misTagRepointDropped": 0,
+    "inlineRewrites": 1
+  },
+  "census_of_record": {
+    "raw": "27,246 q / 43,996 p UNCHANGED (the corpus plane untouched — the consume re-keys linkage fields only)",
+    "servable": "8,826 -> 9,916 questions (+1,090) / 8,752 -> 11,904 parts (+3,152) / 13,334 -> 16,674 pkgParts (+3,340)",
+    "unmapped": "18,401 -> 16,193 (-2,208)",
+    "dupOrder": 19,
+    "crossSetRefCollision": 1118,
+    "identity_law": "rawQ - questions == unmapped + dupOrder + crossSetRefCollision EXACT (27246-9916 == 16193+19+1118)",
+    "zeroServable": "unchanged of record: {cie-as-maths-20-pure-2, cie-igcse-english-language-20, cie-igcse-english-language-25}"
+  },
+  "the_cross_set_ref_namespace_law": {
+    "what": "the ref namespace is (course, topicSlug, order) and the corpus carries MCQ + structured set twins per topic sharing the order numbering; the wave3 codes made both twins simultaneously ingestable — the second twin's base ref is taken",
+    "amendment": "the honest shim EXCLUDES + COUNTS the collision (crossSetRefCollision, 1,118 fleet-wide) exactly like the T-MIG-136 band-4 badSum class: nothing rewritten; the skipped twin never ingests so no stored identity changes; the hub join degrades symmetrically; the served bundle keeps both (the census law is the DB-plane archive law, not the serving law)",
+    "precedent": "T-MIG-136 band 4 (badSum), T-MIG-135b run-003 (the pre-fix namespace refusal), the cs-19 dual-section class (the roster shim refusal of record)",
+    "law_tests": "the REFUSE law test rewritten to the skip+count law (7-collision deterministic fixture); the three real-bundle counts pins gain the counter (0 on the three unchanged bundles); the sme family 111/111 GREEN"
+  },
+  "repin": {
+    "roster_test": "the fleet floors 8826/8752/13334 -> 9916/11904/16674; excl {unmapped 16193, badSum 0, dupOrder 19, crossSetRefCollision 1118}; the identity law line amended; per-course re-pins: cie-igcse-physics-23 634/1/634 -> 703/207/840, cie-a-level-biology-25 859/1529 -> 1225/1895 (parts/pkgParts), cie-as-biology-25 789/1055/1561 -> 977/1201/1858; the AS wave-2 banks byte-unchanged of record",
+    "tests_of_record": "the tranche-3 class: the tests move WITH the census, re-based not loosened"
+  },
+  "gates": {
+    "roster": "cie-phase4-roster.test.ts 15 pass / 0 fail (3,966 expect calls)",
+    "sme": "111 pass / 0 fail",
+    "repoTests": "2,560 pass / 13 skip / 0 fail",
+    "typecheck": "tsc x3 (hub, api, shared) 0 errors",
+    "resourcesCI": "corpus-gates SUCCESS + official-export-gates SUCCESS at the chain tip (sync cancelled-benign)"
+  },
+  "disclosures": [
+    "the sheet trim: 204/205 REJOIN-3 resolves were same-code re-derivations of REJOIN-1's of-record dispositions — their item-plane entries STAND of-record-consistent (the 2026-10-19 items co-attach identically); the sheet carries the 1 non-dispositioned row",
+    "the workflow COW floors (6715/5696, dispatch-only) are NOT re-based this lane: the DB-row census needs the fleet COW run (no DB contact this lane per the phase-4 plane law); the floors fail loud at the next dispatch and re-base per the fa7ede6/0c8892d precedent — FILED residual",
+    "the resources-side rebases (race-guard, parallel lanes hot): the pre-rebase -> post-rebase sha mapping 38e55491->7931fc80, 710c75b1->1dbe1922, 21f6a722->599d6a0f, 7bddc8c5->451497a2, cae389a8->bd66676f, d78935c6->9d7be3be, 41e02281->b8505e62, ceb6ebed->795df5c3, 60314dcf->6d925522, 44f9767f->6d3b4359, bcd080f0->56b18a70, 90f06dfb->756117fd; the runs of record executed at the pre-rebase pins (byte-identical landings)",
+    "the F119 4CH1 r2-consumed closing disclosure (resources 5b223bca): the exporter of record proved a byte-level no-op vs the served bundle first-hand; the stale 2,607-part census refused the gate; the pick step's own 'empty-census r2-consumed forms stay eligible' law sanctioned the closing form — unblocked the chain's resources CI",
+    "the \\text{} debris cleanup lane (queued item) was found ALREADY LANDED of record at the chain base 5f170f98 by a parallel session — zero scope overlap; its v2 speech-baseline re-freeze remains the corpus-consume lane's closing step (NOT this lane's — the consume re-keys linkage fields only)"
+  ],
+  "residuals_of_record": [
+    "the workflow COW floor re-base (dispatch-time, fleet-run dependent)",
+    "the corpus-lag class: the v2-census uncovered parts whose corpus ids moved (re-scrapes) stay uncovered until the corpus back-sync (the maths-B corpus-lag precedent); the no-declared-sid population (igcse-economics-25/20, geography-20, the maths lanes) needs a corpus-side linkage lane, never manufacture",
+    "the 1,118 cross-set ref collisions: the durable namespace fix (per-paper topicSlugs fleet-wide) remains the operator-territory follow-on",
+    "PAT rotation standing order REITERATED (CRITICAL-OVERDUE)"
+  ],
+  "posture": {
+    "prod_apply": "OPERATOR-GATED per the phase-4 plane law — this lane lands the data plane of record only; the git-connected auto-bake witnesses the landing; no manual bake, no DB write, no prod contact",
+    "push_discipline": "fetch-first, FF no force, race-guarded rebases disclosed",
+    "token_discipline": "GITHUB_PAT via env/credential-helper only; never printed/persisted"
+  }
+}

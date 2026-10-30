@@ -120,7 +120,7 @@ export interface RosterEntry {
   rawQuestions: number;
   rawParts: number;
   // the shim's own exclusion counters (the honest disclosure class)
-  shimExclusions?: { unmapped: number; badSum: number; dupOrder: number };
+  shimExclusions?: { unmapped: number; badSum: number; dupOrder: number; crossSetRefCollision?: number };
   nodes: number;
 }
 
@@ -179,7 +179,7 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
     let expectedPackageParts = 0;
     let rawQuestions = 0;
     let rawParts = 0;
-    let shimExclusions: { unmapped: number; badSum: number; dupOrder: number } | undefined;
+    let shimExclusions: { unmapped: number; badSum: number; dupOrder: number; crossSetRefCollision?: number } | undefined;
     try {
       const sets = JSON.parse(
         readFileSync(join(dir, "questions.json"), "utf8"),
@@ -236,7 +236,7 @@ export function loadRoster(base: string = HUB_CONTENT): Roster {
             : q.parts.length);
         }, 0);
         expectedPackageParts = pkg.counts.parts ?? 0;
-        shimExclusions = { unmapped: pkg.counts.unmapped ?? 0, badSum: pkg.counts.badSum ?? 0, dupOrder: pkg.counts.dupOrder ?? 0 };
+        shimExclusions = { unmapped: pkg.counts.unmapped ?? 0, badSum: pkg.counts.badSum ?? 0, dupOrder: pkg.counts.dupOrder ?? 0, crossSetRefCollision: pkg.counts.crossSetRefCollision ?? 0 };
       }
     } catch (e) {
       if (e instanceof Error && e.message.startsWith("SHIM LAW VIOLATION")) throw e;

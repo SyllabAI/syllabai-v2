@@ -31,8 +31,11 @@
   "scripts/cie_rejoin_wave2as_resolutions.yaml": {
    "sha256": "8d5f3e53580725859a870b9230583fb16b1352e002800048382dd636c9b68f39"
   },
+  "scripts/cie_wave3_resolutions.yaml": {
+   "sha256": "cc9e77f6c9c02dc3ea3fb910c7fe6a374fb4c96dc1cc78d7bc3489928ea63e1b"
+  },
   "spec-links/cie-as-business-23.json": {
-   "sha256": "ee129d26f570f3d54ab39c5b5eb02b43545b2bace1270d789b73f12026ed6875"
+   "sha256": "ed5e69baff82b70b78c9ab476e6f5f35c3137600b8d27b585997eac16c3a9522"
   },
   "spine": {
    "file": "spines/cie-as-business-23.json"
@@ -5058,7 +5061,7 @@
   ],
   "uncoveredSpineCodes": 49
  },
- "resourcesSha": "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677",
+ "resourcesSha": "9cf6037e31c1ac8eb88a0cb6f545438689728a1d",
  "schema": "syllabai.official-attachment/1.0",
  "sources": {
   "flashcardMap": null,
@@ -5067,12 +5070,12 @@
    "census": {
     "codesAttachedFromSidecar": 73,
     "codesByMethod": {
-     "cie_index_rejoin_wave2as": 60,
+     "cie_index_rejoin_wave2as": 55,
      "operator_verdict": 18
     },
     "codesByTier": {
      "J3_name_text_identity": 14,
-     "J4_name_phrase_identity": 46,
+     "J4_name_phrase_identity": 41,
      "V3_subsection_head_identity": 18
     },
     "itemsWithCodes": 72,
@@ -5082,7 +5085,7 @@
      "conflictsKept": 0,
      "verified": 0
     },
-    "sidecarCodes": 78,
+    "sidecarCodes": 73,
     "sidecarItems": 451,
     "sidecarOnlyItems": 0,
     "t2Hints": 0
@@ -5095,7 +5098,7 @@
     "verdict": "ACCEPTED"
    },
    "sheetUpgrades": {
-    "added": 12,
+    "added": 0,
     "conflictsKept": 0,
     "upgraded": 0
    },
