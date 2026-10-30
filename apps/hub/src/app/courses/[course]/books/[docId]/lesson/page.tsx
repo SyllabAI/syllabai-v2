@@ -43,7 +43,7 @@ export default async function LessonPage({
 
   // the docId must resolve to a real, VALIDATED book (the 133c gate) —
   // reuse the registry as the existence check of record
-  const chapters = await fetchBookChapters(docId);
+  const chapters = await fetchBookChapters(docId, slug);
   if (chapters === null || chapters.length === 0) notFound();
 
   // chapter resolution: ?chapter= in EITHER key format (rail u1:c1 or pack

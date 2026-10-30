@@ -88,7 +88,7 @@ export default async function BooksShelfPage({
             <BookOpen className="h-8 w-8 text-muted-foreground" />
             <p className="font-medium">No student books published for this course yet</p>
             <p className="max-w-md text-sm text-muted-foreground">
-              Books appear here once they pass the human validation gate. The
+              Books appear here as their serving archives are published. The
               past papers archive is already fully available.
             </p>
           </CardContent>
@@ -106,7 +106,7 @@ export default async function BooksShelfPage({
 
 /** One book: registry grouped by unit; each chapter a page-range mount. */
 async function BookCard({ slug, book }: { slug: string; book: BookShelfEntry }) {
-  const chapters = await fetchBookChapters(book.documentId);
+  const chapters = await fetchBookChapters(book.documentId, slug);
   const pdfPath = bookCorpusPathForCourse(slug, "student-book.pdf");
   const paneUrl = pdfPath ? bookPaneUrl(pdfPath) : null;
 
