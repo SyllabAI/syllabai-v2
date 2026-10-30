@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_FCnWFz9MhgsqnZGM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "ee6038060f98c01303dcff9e31adb889f8ab10f3e21475ec9dd3a9817eb18559",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "2c55847dc50598c5648dbdadea7665f9cfc0a6dc78d2ba298a6c9612fc0feb01",
+    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
   },
   "packageId": "igcse-chemistry::rn_FCnWFz9MhgsqnZGM",
   "subject": "igcse-chemistry",
@@ -192,6 +192,100 @@
       ]
     },
     {
+      "id": "rn_FCnWFz9MhgsqnZGM::L1::Q6",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L1",
+      "stem": "Describe how a dot-and-cross diagram distinguishes the outer electrons of the two atoms in an ionic bond.",
+      "misconceptionClass": "diagram convention recall",
+      "kind": "recall",
+      "modelAnswer": "Each atom's outer electrons are given their own symbol: dots for one atom and crosses for the other, so the two sets stay distinguishable in the drawing.",
+      "keywords": [
+        "dots",
+        "dot",
+        "crosses",
+        "cross",
+        "symbol",
+        "symbols",
+        "outer",
+        "electrons",
+        "electron",
+        "atom",
+        "atoms",
+        "own"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L1::Q7",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L1",
+      "stem": "Describe the finishing touch a correct ionic dot-and-cross diagram adds around each ion.",
+      "misconceptionClass": "ion bracket convention recall",
+      "kind": "recall",
+      "modelAnswer": "Large square brackets enclose each ion, with the charge written outside at the top right in superscript.",
+      "keywords": [
+        "square",
+        "brackets",
+        "bracket",
+        "enclose",
+        "charge",
+        "outside",
+        "top",
+        "right",
+        "superscript"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L1::Q8",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L1",
+      "stem": "Explain, in terms of outer shells, why gaining one electron completes the chlorine atom's outer shell in the sodium chloride diagram.",
+      "misconceptionClass": "chloride charge reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Chlorine is a Group 7 non-metal, so gaining the one electron that sodium loses completes its own outer shell; with one more electron than protons the ion carries a 1- charge.",
+      "keywords": [
+        "group",
+        "7",
+        "seven",
+        "gains",
+        "gain",
+        "electron",
+        "electrons",
+        "outer",
+        "shell",
+        "complete",
+        "completes",
+        "full",
+        "charge",
+        "1-"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L1::Q9",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L1",
+      "stem": "A dot-and-cross diagram is drawn for potassium fluoride, formed from a Group 1 metal and a Group 7 non-metal. Using the sodium chloride pattern, state how many electrons transfer and what each ion's charge is.",
+      "misconceptionClass": "group pattern transfer",
+      "kind": "application",
+      "modelAnswer": "One electron transfers: the potassium atom loses its single outer electron to reach a full outer shell, becoming a 1+ ion, and the fluorine atom gains that electron, becoming a 1- ion.",
+      "keywords": [
+        "one",
+        "1",
+        "electron",
+        "electrons",
+        "transfers",
+        "transfer",
+        "loses",
+        "lose",
+        "gains",
+        "gain",
+        "1+",
+        "1-",
+        "full",
+        "outer",
+        "shell"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_FCnWFz9MhgsqnZGM::L2::Q1",
       "moduleId": "rn_FCnWFz9MhgsqnZGM::L2",
       "stem": "What charge does the oxide ion carry in the magnesium oxide diagram, and why?",
@@ -370,6 +464,92 @@
           "misconception": "diagrams conflated"
         }
       ]
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L2::Q6",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L2",
+      "stem": "State how many outer electrons a magnesium atom has available to give away, and which group provides that number.",
+      "misconceptionClass": "group 2 electron count recall",
+      "kind": "recall",
+      "modelAnswer": "A magnesium atom has two outer electrons to give away, because magnesium sits in Group 2.",
+      "keywords": [
+        "two",
+        "2",
+        "outer",
+        "electrons",
+        "electron",
+        "group",
+        "give",
+        "away",
+        "magnesium"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L2::Q7",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L2",
+      "stem": "State the charges of the two ions formed in magnesium oxide and the formula that follows from them.",
+      "misconceptionClass": "mgO ion charge recall",
+      "kind": "recall",
+      "modelAnswer": "The ions formed are Mg2+ and O2-, and the formula of magnesium oxide is MgO.",
+      "keywords": [
+        "mg2+",
+        "mg",
+        "2+",
+        "o2-",
+        "o",
+        "2-",
+        "mgo",
+        "formula",
+        "ions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L2::Q8",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L2",
+      "stem": "Explain why the oxygen atom in magnesium oxide needs exactly two electrons from the magnesium atom.",
+      "misconceptionClass": "oxygen shell need reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Oxygen sits in Group 6, so an oxygen atom needs two more electrons to complete its outer shell; both transferred electrons are received by the oxygen atom, filling it.",
+      "keywords": [
+        "group",
+        "6",
+        "six",
+        "two",
+        "2",
+        "more",
+        "electrons",
+        "electron",
+        "complete",
+        "completes",
+        "outer",
+        "shell",
+        "needs",
+        "received"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_FCnWFz9MhgsqnZGM::L2::Q9",
+      "moduleId": "rn_FCnWFz9MhgsqnZGM::L2",
+      "stem": "A student draws the magnesium oxide diagram but shows one transferred electron coming from the oxygen atom. Using the transfer rule of record, correct the diagram and justify the correction.",
+      "misconceptionClass": "transfer direction correction",
+      "kind": "application",
+      "modelAnswer": "Both transferred electrons come from the magnesium atom, and both are received by the oxygen atom; the drawing must show both electrons as magnesium's electrons moving to the oxygen outer shell.",
+      "keywords": [
+        "both",
+        "two",
+        "2",
+        "magnesium",
+        "oxygen",
+        "received",
+        "transfer",
+        "transferred",
+        "from",
+        "correction"
+      ],
+      "options": []
     }
   ]
 }

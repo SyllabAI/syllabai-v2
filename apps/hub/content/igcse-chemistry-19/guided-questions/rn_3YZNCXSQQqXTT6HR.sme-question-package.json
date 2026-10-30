@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_3YZNCXSQQqXTT6HR",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "c948f2c80310f9bb0d03b94c23646630b924f746b9589bc7be0cdc85505db16a",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "109bc14541342c0818fb153baf6447a0ddd4c4a329c75a0cc057a9bf0ab8928a",
+    "pinnedRef": "fa1f302050ba38b6b2e97760e88d32567d2b0c90"
   },
   "packageId": "igcse-chemistry::rn_3YZNCXSQQqXTT6HR",
   "subject": "igcse-chemistry",
@@ -192,6 +192,90 @@
       ]
     },
     {
+      "id": "rn_3YZNCXSQQqXTT6HR::L1::Q6",
+      "moduleId": "rn_3YZNCXSQQqXTT6HR::L1",
+      "stem": "State what a binary ionic compound contains, and name the classic example given in the note.",
+      "misconceptionClass": "binary compound definition recall",
+      "kind": "recall",
+      "modelAnswer": "A binary ionic compound contains just two elements joined by ionic bonding; the classic example is lead(II) bromide.",
+      "keywords": [
+        "two",
+        "2",
+        "elements",
+        "ionic",
+        "bonding",
+        "bonded",
+        "joined",
+        "lead",
+        "bromide",
+        "binary"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3YZNCXSQQqXTT6HR::L1::Q7",
+      "moduleId": "rn_3YZNCXSQQqXTT6HR::L1",
+      "stem": "State which substance is always the product at the cathode and which is always the product at the anode, when a molten binary ionic compound is electrolysed.",
+      "misconceptionClass": "electrode product rule recall",
+      "kind": "recall",
+      "modelAnswer": "The cathode product is always the metal, and the anode product is always the non-metal.",
+      "keywords": [
+        "cathode",
+        "metal",
+        "anode",
+        "non-metal",
+        "nonmetal",
+        "product",
+        "products",
+        "always"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3YZNCXSQQqXTT6HR::L1::Q8",
+      "moduleId": "rn_3YZNCXSQQqXTT6HR::L1",
+      "stem": "Explain why solid lead(II) bromide cannot be electrolysed, and what heating it past its melting point changes.",
+      "misconceptionClass": "molten conduction reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "In the solid the ions are held in place, but heated beyond its melting point the compound becomes molten and its ions can move freely, so the melt can conduct and electrolysis can happen.",
+      "keywords": [
+        "molten",
+        "melt",
+        "melting",
+        "ions",
+        "ion",
+        "move",
+        "moves",
+        "freely",
+        "freedom",
+        "conduct",
+        "conduction",
+        "mobile"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3YZNCXSQQqXTT6HR::L1::Q9",
+      "moduleId": "rn_3YZNCXSQQqXTT6HR::L1",
+      "stem": "During the electrolysis of molten lead(II) bromide a grey solid forms on one electrode and a brown gas bubbles off the other. Identify both products and state the electrode at which each appears.",
+      "misconceptionClass": "observation to product identification",
+      "kind": "application",
+      "modelAnswer": "The grey solid is lead, deposited at the cathode; the brown gas is bromine, given off at the anode.",
+      "keywords": [
+        "lead",
+        "grey",
+        "cathode",
+        "bromine",
+        "brown",
+        "anode",
+        "deposit",
+        "deposited",
+        "deposits",
+        "gas"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_3YZNCXSQQqXTT6HR::L2::Q1",
       "moduleId": "rn_3YZNCXSQQqXTT6HR::L2",
       "stem": "What extra ions does water itself contribute in the electrolysis of an aqueous solution?",
@@ -370,6 +454,92 @@
           "misconception": "roles confused"
         }
       ]
+    },
+    {
+      "id": "rn_3YZNCXSQQqXTT6HR::L2::Q6",
+      "moduleId": "rn_3YZNCXSQQqXTT6HR::L2",
+      "stem": "Name the two ions produced when water molecules split in an aqueous solution undergoing electrolysis.",
+      "misconceptionClass": "water ion contribution recall",
+      "kind": "recall",
+      "modelAnswer": "Water molecules split into H+ ions and OH- ions, which join the ions from the dissolved compound.",
+      "keywords": [
+        "h+",
+        "h",
+        "hydrogen",
+        "oh-",
+        "oh",
+        "hydroxide",
+        "ions",
+        "ion",
+        "split",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3YZNCXSQQqXTT6HR::L2::Q7",
+      "moduleId": "rn_3YZNCXSQQqXTT6HR::L2",
+      "stem": "State what is produced at the cathode when the dissolved metal is more reactive than hydrogen, and what is produced there when it is less reactive.",
+      "misconceptionClass": "cathode product rule recall",
+      "kind": "recall",
+      "modelAnswer": "Hydrogen forms at the cathode if the metal is more reactive than hydrogen; otherwise the metal itself is deposited there.",
+      "keywords": [
+        "hydrogen",
+        "metal",
+        "reactive",
+        "reactivity",
+        "cathode",
+        "deposit",
+        "deposited",
+        "deposits",
+        "forms"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3YZNCXSQQqXTT6HR::L2::Q8",
+      "moduleId": "rn_3YZNCXSQQqXTT6HR::L2",
+      "stem": "A solution contains bromide ions. Explain which substance forms at the anode during its electrolysis, and why that substance rather than oxygen.",
+      "misconceptionClass": "halide discharge reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A halide ion present at the anode is discharged to form the halogen, so bromine forms; the halide is discharged in preference to the OH- ions, so oxygen is not the product here.",
+      "keywords": [
+        "bromine",
+        "bromide",
+        "halide",
+        "halides",
+        "halogen",
+        "anode",
+        "discharged",
+        "discharge",
+        "oxygen",
+        "oh",
+        "preference"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_3YZNCXSQQqXTT6HR::L2::Q9",
+      "moduleId": "rn_3YZNCXSQQqXTT6HR::L2",
+      "stem": "A solution contains ions of an unknown metal Z that sits below hydrogen in the reactivity series, and it contains no halide ions. Predict the product at each electrode.",
+      "misconceptionClass": "reactivity rule application",
+      "kind": "application",
+      "modelAnswer": "At the cathode the metal Z deposits, because a metal less reactive than hydrogen is discharged instead of hydrogen; at the anode oxygen forms from the OH- ions, because no halide is present to be discharged.",
+      "keywords": [
+        "cathode",
+        "metal",
+        "deposits",
+        "deposit",
+        "deposited",
+        "hydrogen",
+        "anode",
+        "oxygen",
+        "oh",
+        "halide",
+        "less",
+        "discharged"
+      ],
+      "options": []
     }
   ]
 }
