@@ -1074,6 +1074,193 @@ const FEEDS = {
     },
     targetSchemas: ["hub/lesson-import/1.4", "sme-question-package/1.1"],
   },
+  "r3-stageb6-v13": {
+    manifest: "hub-import-manifest-v13.json",
+    manifest_version: 13,
+    lesson_kind: "hub-lesson-import-1.4", // legacy single-kind field; v12 uses lessonKinds below
+    lessonKinds: { "hub-lesson-import-1.3": 41, "hub-lesson-import-1.4": 71 }, // generation-union census (2 stage-A pilots + 10 S-B1 + 12 S-B2 + 12 S-B3 + 11 S-B4 + 12 S-B5 + 12 S-B6 at 1.4)
+    adapter: "guided-lesson-0.5--hub-lesson-import-1.4",
+    directive: "run the R3 mixed check types stage-B wave 6 chain — import the S-B6 tranche (the wave-6 authoring register: 12 notes / 24 lessons / 96 written items; operator ignition trace 1a18dfb539a4c839 'wave 6'). Declared hub revision = 24 files: the 12 S-B6 re-issues (PR #245 generation, bytes fetched @ pin). The S-B2/S-B3/S-B4/S-B5 re-issues are already live on the hub at their v9/v10/v11/v12 pins and are re-proved byte-identical at this manifest",
+    promo: {
+      // promotion commit of record = the resources PR #246 MERGE commit (the merge-of-record fix:
+      // PR #245 merged a2c2b6ce first but its merge message lacked the operator trace, so the hub
+      // runner P0 gate fail-closed; PR #246 re-merged the IDENTICAL content — one empty commit
+      // cf7d7482, tree 268787f8 byte-identical to the #245 merge tree — as the trace-bearing
+      // promotion commit of record; mid-flight races disclosed in receipts: YCH12 lane at wave
+      // open (3e918c44) and the SIB PR #244 race (census-0, zero file overlap))
+      commit: "6b70de744337f41a1cbb9a8ad5ee8e501cd184dc",
+      tree: "268787f891e9f4df4e2c0122705b677559224034",
+      parent: "a2c2b6cec5d7aa31b1ac79ee5a291dc004ac7cdb", // resources main first-parent at the #246 merge (= the #245 merge commit)
+      trace: "1a18dfb539a4c839",
+    },
+    integration_branch: null, // ancestry of record — hub run happens only after the resources PR merges
+    artifact_pin: "71922d1510ee9e00400667670b40f36e1ae5d456", // the 53 untouched lessons keep the source-0.4 (1.3) pin
+    artifact_pins_by_note: {
+      // the 59 R3 notes (2 pilots + 10 S-B1 + 12 S-B2 + 12 S-B3 + 11 S-B4 + 12 S-B5) re-pin BOTH channels to
+      // their source-0.5 generation commits
+      rn_2MpXPtNXvn8pQm3r: "80afdb8e02b628754f0e522d257e54d046ba5b0f",
+      rn_8T5GfPn2q7sY2YCh: "80afdb8e02b628754f0e522d257e54d046ba5b0f",
+      rn_2d6Yb8GwGfRRd6pZ: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_4SgDJv8rKxpQQSBh: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_HZM2WRjPPT8Srcxt: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_JCfdFrHsCkrmMbFj: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_TM4QVMgXVxs4vbfY: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_fQSYvKRMDBj3s2Bx: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_jNJ4gTmcHqdFqsNh: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_kJg2gwF77vdFZZ2H: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_wTtM2fQVVjntRm64: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_xT8XsdJtDX5gNFXj: "78ad6a2073c669231bb40bd7266674a257c6003e",
+      rn_2VnK66PqbvFKdKYt: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_S7GPh8BBPBbmhYKm: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_cTk2cs2h2BKQ3y3B: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_QVmDs8X4szpds3cP: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_TWGVV6RXN3Ktqb9h: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_RvgxXR36425BFMcx: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_YBWYstSRgM2QPzQq: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_R3ptwxGTTvdBFvyP: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_TsfqyK9BYMtN2Bfd: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_kb2VkFMdBTbmG33t: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_vzGMZxqQtWYVWB7h: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_b3XCzdtfQddbJjVf: "96c261a3a06e359dec72f63c67fd24d337adf463",
+      rn_Syxyh4Fct8KFg8NQ: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_mBqgkpZ3hbSBmWCC: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_N4HX8tqbdhTQcHyS: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_VyXFNyxZHZGkxqTG: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_vXPcH3vS8wv7BFkK: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_pWzTTBv3B4yGFfj3: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_yj4y972FxCWnDnSg: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_Hkwmd9GSp3gdxxR5: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_4tzwS4GZjPybwtkS: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_T55t3HNsgyZcXZtN: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_mbcBZkygY4YpG2bf: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_8Nv33F4dD3kkZnY6: "da18433ed9e8351a2e8ce1282b8eaf5c362442d4",
+      rn_3YZNCXSQQqXTT6HR: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_FCnWFz9MhgsqnZGM: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_GkJG52NCN98ShGRm: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_Hp2nK8XpN2SmjdQc: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_J7ZcTWyRxRgWQ45R: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_KpvF2TWr5fYHk2Jz: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_MVnFKDMVkswzpmpw: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_jVwPmjqHbqQkXcjG: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_kdRjZHjHcpVZsD3h: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_rHKCkt3PTXDBpmJG: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_vfmJxw4VQgXKzXF3: "fa1f302050ba38b6b2e97760e88d32567d2b0c90",
+      rn_3B8JxsSjJvR9B4fk: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_5WvdZNzzhHdjj2Qq: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_6M5JB7CjvwdDykMS: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_7Q8M9nVkr2FxCzxd: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_DGkNCJRcCN4VQ28p: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_Kd76WccxD9ytSJJC: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_QzYRzzmwRxk2gKqV: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_S2fg29M7cqvMj5kT: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_V9tPMnX6Hq2XnqcP: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_WJD4ZN4kQfzJNSPV: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_gBGX339WBpwyCrFF: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_jXXsc4wt2344BjxX: "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+      rn_9WM8QhSxmYpGhjqd: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_BX88twwgffRMgx82: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_MMkxbt9y3M3XvXrc: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_ZWrmDYtNGnmFycPM: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_by5FDNfkqdBCkmXb: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_dTP52nzhYb96XrJx: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_nzW5ppBTV3ZnfSYY: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_p2FmkrXqZSzFngpg: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_qV5R2cKB59bSKD33: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_sX8yyBxHn8bS7t46: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_sf7s7s6bQ2cZv29s: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51",
+      rn_xq9jy75y43kDXkvx: "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
+    },
+    pkg_pin: "4d857c472fd725597ac21db189542c8f12c82dba", // INT-0 — the 41 untouched packages stay byte-identical
+    checks_feed: true, // written-kind G-D branch: empty options + modelAnswer required + known-kind enum
+    pilotDelta: {
+      files: [
+        // 24 declared: the 12 S-B6 re-issues (hub revision rides this manifest)
+        "rn_9WM8QhSxmYpGhjqd.hub-lesson-import.json",
+        "rn_BX88twwgffRMgx82.hub-lesson-import.json",
+        "rn_MMkxbt9y3M3XvXrc.hub-lesson-import.json",
+        "rn_ZWrmDYtNGnmFycPM.hub-lesson-import.json",
+        "rn_by5FDNfkqdBCkmXb.hub-lesson-import.json",
+        "rn_dTP52nzhYb96XrJx.hub-lesson-import.json",
+        "rn_nzW5ppBTV3ZnfSYY.hub-lesson-import.json",
+        "rn_p2FmkrXqZSzFngpg.hub-lesson-import.json",
+        "rn_qV5R2cKB59bSKD33.hub-lesson-import.json",
+        "rn_sX8yyBxHn8bS7t46.hub-lesson-import.json",
+        "rn_sf7s7s6bQ2cZv29s.hub-lesson-import.json",
+        "rn_xq9jy75y43kDXkvx.hub-lesson-import.json",
+        "rn_9WM8QhSxmYpGhjqd.sme-question-package.json",
+        "rn_BX88twwgffRMgx82.sme-question-package.json",
+        "rn_MMkxbt9y3M3XvXrc.sme-question-package.json",
+        "rn_ZWrmDYtNGnmFycPM.sme-question-package.json",
+        "rn_by5FDNfkqdBCkmXb.sme-question-package.json",
+        "rn_dTP52nzhYb96XrJx.sme-question-package.json",
+        "rn_nzW5ppBTV3ZnfSYY.sme-question-package.json",
+        "rn_p2FmkrXqZSzFngpg.sme-question-package.json",
+        "rn_qV5R2cKB59bSKD33.sme-question-package.json",
+        "rn_sX8yyBxHn8bS7t46.sme-question-package.json",
+        "rn_sf7s7s6bQ2cZv29s.sme-question-package.json",
+        "rn_xq9jy75y43kDXkvx.sme-question-package.json"
+      ],
+    },
+    schemas: {
+      hub: "/home/z/my-project/scripts/r3-survivors/hub-lesson-import.1.4.schema.json",
+      pkg: "/home/z/my-project/scripts/r3-survivors/sme-question-package.1.1.schema.json",
+      hubRemote: "SME-GuidedLessons/integration/schema/hub-lesson-import.1.4.schema.json",
+      pkgRemote: "SME-GuidedLessons/integration/schema/sme-question-package.1.1.schema.json",
+    },
+    survivors: {
+      manifest: "/home/z/my-project/scripts/r3-survivors/hub-import-manifest-v13.json",
+      int3: "/home/z/my-project/scripts/r3-survivors/INT-3-transform-record-r3-stageb6.json",
+    },
+    receipt: `/home/z/my-project/download/integration/HUB-IMPORT-RUN-20261031-r3-stageb6.json`,
+    identity: {
+      "notes": 112,
+      "lessons": 239,
+      "checks": 1787,
+      "keyPoints": 1212,
+      "distractors": 3565,
+      "glossaryTerms": 654,
+      "figures": 200,
+      "figures_module_mapped": 122,
+      "figures_note_level": 78,
+      "workedExamples_populated": 112,
+      "workedExamples_null": 0,
+      "authored_chars_conserved": 1602286,
+      "authored_chars_v3_baseline": 1347771,
+      "added_chars": 254515,
+      "captions_coalesced": 143,
+      "captions_row_context": 16,
+      "captions_inline": 3,
+      "captions_none": 38,
+      "binding_heading_unique": 90,
+      "binding_sole_lesson": 0,
+      "binding_content_overlap": 12,
+      "binding_note_level": 78,
+      "binding_unresolved": 20,
+      "figures_binding_narrowed": 102,
+      "figures_claims_changed": 12,
+      "figures_wholesale_claims_kept": 2,
+      "checks_written": 592,
+      "checks_mcq": 1195,
+      "written_recall": 296,
+      "written_explain_why": 148,
+      "written_application": 148
+    },
+    figures_feed: true,
+    we_feed: true, // the v13 stream is the declared baseline; this feed's equality gate is per-note vs the INT-3 r3-stageb6 anchors (41 exact at v12; 59 prior-R3 at their own anchors exactly; 12 S-B6 notes carry the 96 written items' tokens)
+    landing: "revision", // declared G-DELTA: exactly the 24 declared files re-pin (12 S-B6); everything else byte-identical
+    relFor(a) {
+      if (!a.path.startsWith("SME-GuidedLessons/integration/")) throw new Error(`v13 manifest path not integration-relative: ${a.path}`);
+      return a.path;
+    },
+    pathFamily(a) {
+      return (
+        ((a.kind === "hub-lesson-import-1.3" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.3/")) ||
+          (a.kind === "hub-lesson-import-1.4" && a.path.startsWith("SME-GuidedLessons/integration/hub-import-1.4/"))) ||
+        (a.kind === "sme-question-package" && (a.path.startsWith("SME-GuidedLessons/integration/question-packages/") || a.path.startsWith("SME-GuidedLessons/integration/question-packages-1.1/")))
+      );
+    },
+    targetSchemas: ["hub/lesson-import/1.4", "sme-question-package/1.1"],
+  },
 };
 
 

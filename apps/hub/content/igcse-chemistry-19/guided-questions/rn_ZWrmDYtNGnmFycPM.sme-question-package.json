@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_ZWrmDYtNGnmFycPM",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a7fb598c603a3b59c0fac8c066f2441d74527a87783b036363cfe803c5564554",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "5b53888f7f97a6fc6dc5289183823a208bf862ffbbf1184b1a09b1b83e4c3c55",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_ZWrmDYtNGnmFycPM",
   "subject": "igcse-chemistry",
@@ -192,6 +192,83 @@
       ]
     },
     {
+      "id": "rn_ZWrmDYtNGnmFycPM::L1::Q6",
+      "moduleId": "rn_ZWrmDYtNGnmFycPM::L1",
+      "stem": "State which ions an acid forms when it is added to water.",
+      "misconceptionClass": "acid ion recall",
+      "kind": "recall",
+      "modelAnswer": "Acids form positively charged hydrogen ions, H+, in water.",
+      "keywords": [
+        "hydrogen",
+        "ions",
+        "ion",
+        "h",
+        "positive",
+        "positively"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZWrmDYtNGnmFycPM::L1::Q7",
+      "moduleId": "rn_ZWrmDYtNGnmFycPM::L1",
+      "stem": "Classify a solution of pH 13 and name the ion it carries in abundance.",
+      "misconceptionClass": "pH classification",
+      "kind": "recall",
+      "modelAnswer": "pH 13 is well above 7, so the solution is alkaline, and it carries plenty of hydroxide ions, OH-.",
+      "keywords": [
+        "alkaline",
+        "alkali",
+        "above",
+        "7",
+        "hydroxide",
+        "oh",
+        "base"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZWrmDYtNGnmFycPM::L1::Q8",
+      "moduleId": "rn_ZWrmDYtNGnmFycPM::L1",
+      "stem": "Explain why all acidic solutions, whatever acid made them, share the same core chemistry.",
+      "misconceptionClass": "shared H+ reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "It is the hydrogen ions, H+, that give a solution its acidity: every acid releases H+ in water, so the shared H+ ions give all acidic solutions their common reactions.",
+      "keywords": [
+        "hydrogen",
+        "ions",
+        "h",
+        "acidity",
+        "acidic",
+        "shared",
+        "common",
+        "same",
+        "releases"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZWrmDYtNGnmFycPM::L1::Q9",
+      "moduleId": "rn_ZWrmDYtNGnmFycPM::L1",
+      "stem": "A student tests three liquids: lemon juice, distilled water and oven cleaner. Predict their order from lowest to highest pH, naming the dominant ion in each.",
+      "misconceptionClass": "pH ordering application",
+      "kind": "application",
+      "modelAnswer": "Lemon juice is acidic, so it has the lowest pH (rich in H+ ions); distilled water is neutral at pH 7; oven cleaner is strongly alkaline, so it has the highest pH (rich in OH- ions).",
+      "keywords": [
+        "acidic",
+        "lowest",
+        "neutral",
+        "7",
+        "alkaline",
+        "highest",
+        "h",
+        "oh",
+        "hydrogen",
+        "hydroxide",
+        "order"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_ZWrmDYtNGnmFycPM::L2::Q1",
       "moduleId": "rn_ZWrmDYtNGnmFycPM::L2",
       "stem": "What is produced when H+ ions meet OH- ions?",
@@ -370,6 +447,84 @@
           "misconception": "purpose invented"
         }
       ]
+    },
+    {
+      "id": "rn_ZWrmDYtNGnmFycPM::L2::Q6",
+      "moduleId": "rn_ZWrmDYtNGnmFycPM::L2",
+      "stem": "Give, in ionic form, the single change that happens in every acid-alkali neutralisation.",
+      "misconceptionClass": "net ionic equation recall",
+      "kind": "recall",
+      "modelAnswer": "H+ + OH- -> H2O: hydrogen ions and hydroxide ions combine to give water.",
+      "keywords": [
+        "h",
+        "oh",
+        "h2o",
+        "water",
+        "ions",
+        "hydrogen",
+        "hydroxide",
+        "combine"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZWrmDYtNGnmFycPM::L2::Q7",
+      "moduleId": "rn_ZWrmDYtNGnmFycPM::L2",
+      "stem": "Magnesium reacting with hydrochloric acid makes a salt but no water. Does this reaction count as a neutralisation?",
+      "misconceptionClass": "neutralisation boundary",
+      "kind": "recall",
+      "modelAnswer": "No: although a salt forms, no water is produced, so the reaction does not fit the definition of a neutralisation.",
+      "keywords": [
+        "no",
+        "not",
+        "water",
+        "salt",
+        "definition",
+        "neutralisation",
+        "neutralization"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZWrmDYtNGnmFycPM::L2::Q8",
+      "moduleId": "rn_ZWrmDYtNGnmFycPM::L2",
+      "stem": "Explain why mixing hydrochloric acid with sodium hydroxide always ends in the same neutral product once the reaction is complete.",
+      "misconceptionClass": "neutral product reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because neutralisation is the pairing of H+ with OH- to form water, H+ + OH- -> H2O; once every hydrogen ion has met a hydroxide ion, only neutral water (pH 7) and the dissolved sodium and chloride ions remain.",
+      "keywords": [
+        "water",
+        "neutral",
+        "h",
+        "oh",
+        "h2o",
+        "ph",
+        "7",
+        "ions",
+        "form"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_ZWrmDYtNGnmFycPM::L2::Q9",
+      "moduleId": "rn_ZWrmDYtNGnmFycPM::L2",
+      "stem": "A field's soil measures pH 5, but the crop to be planted cannot tolerate pH below 7. Name what the farmer should add and explain the effect on the soil.",
+      "misconceptionClass": "soil treatment application",
+      "kind": "application",
+      "modelAnswer": "Add bases such as limestone or quicklime: they neutralise the acidic soil, raising the pH towards 7 so the crop can grow.",
+      "keywords": [
+        "limestone",
+        "quicklime",
+        "bases",
+        "base",
+        "neutralise",
+        "neutralize",
+        "raising",
+        "raise",
+        "ph",
+        "added"
+      ],
+      "options": []
     }
   ]
 }

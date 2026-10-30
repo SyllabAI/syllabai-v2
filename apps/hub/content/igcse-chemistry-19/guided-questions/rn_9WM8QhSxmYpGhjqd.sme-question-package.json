@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_9WM8QhSxmYpGhjqd",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a56dee74288cd084cca7f9ce46dc0e2895776a3e5ea7094bdc543215686a8365",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "3d08e5844d9aa46e83b02828df657be04a671cc33dc45b9f4b24e8b23948278e",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_9WM8QhSxmYpGhjqd",
   "subject": "igcse-chemistry",
@@ -192,6 +192,85 @@
       ]
     },
     {
+      "id": "rn_9WM8QhSxmYpGhjqd::L1::Q6",
+      "moduleId": "rn_9WM8QhSxmYpGhjqd::L1",
+      "stem": "State the position a metal must occupy in the reactivity series before it will react with a dilute acid.",
+      "misconceptionClass": "reactivity condition recall",
+      "kind": "recall",
+      "modelAnswer": "The metal must sit above hydrogen in the reactivity series; metals placed below hydrogen do not react with dilute acids.",
+      "keywords": [
+        "above",
+        "hydrogen",
+        "higher",
+        "series",
+        "position",
+        "reactivity",
+        "than"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9WM8QhSxmYpGhjqd::L1::Q7",
+      "moduleId": "rn_9WM8QhSxmYpGhjqd::L1",
+      "stem": "Which salt family does sulfuric acid give with a metal, and which family does hydrochloric acid give?",
+      "misconceptionClass": "salt family recall",
+      "kind": "recall",
+      "modelAnswer": "Sulfuric acid forms sulfate salts, while hydrochloric acid forms chloride salts.",
+      "keywords": [
+        "sulfate",
+        "sulfates",
+        "chloride",
+        "chlorides",
+        "salt",
+        "salts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9WM8QhSxmYpGhjqd::L1::Q8",
+      "moduleId": "rn_9WM8QhSxmYpGhjqd::L1",
+      "stem": "Explain why potassium and sodium are never used to demonstrate metal-acid reactions in school laboratories.",
+      "misconceptionClass": "explosive reactivity reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Potassium and sodium sit so high in the reactivity series that they react with acids explosively, so the violent reaction would be far too dangerous to demonstrate in class.",
+      "keywords": [
+        "explosive",
+        "explosively",
+        "violent",
+        "violently",
+        "danger",
+        "dangerous",
+        "too",
+        "reactive",
+        "fast",
+        "hazard"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9WM8QhSxmYpGhjqd::L1::Q9",
+      "moduleId": "rn_9WM8QhSxmYpGhjqd::L1",
+      "stem": "Equal-sized pieces of magnesium and iron are dropped into separate tubes of dilute hydrochloric acid. Predict the difference in what you would observe, and give the reason.",
+      "misconceptionClass": "vigour comparison prediction",
+      "kind": "application",
+      "modelAnswer": "Magnesium is the more reactive metal, so its reaction with the acid is the more vigorous: it fizzes faster and releases more heat, while the iron only bubbles slowly.",
+      "keywords": [
+        "vigorous",
+        "vigorously",
+        "faster",
+        "fast",
+        "more",
+        "reactive",
+        "reactivity",
+        "bubbles",
+        "bubbling",
+        "heat",
+        "slow",
+        "slowly"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_9WM8QhSxmYpGhjqd::L2::Q1",
       "moduleId": "rn_9WM8QhSxmYpGhjqd::L2",
       "stem": "What forms when an acid reacts with a metal oxide such as copper(II) oxide?",
@@ -370,6 +449,72 @@
           "misconception": "physical explanation substituted"
         }
       ]
+    },
+    {
+      "id": "rn_9WM8QhSxmYpGhjqd::L2::Q6",
+      "moduleId": "rn_9WM8QhSxmYpGhjqd::L2",
+      "stem": "List the products of a reaction between an acid and a metal carbonate.",
+      "misconceptionClass": "carbonate products recall",
+      "kind": "recall",
+      "modelAnswer": "The products are a salt, carbon dioxide and water.",
+      "keywords": [
+        "salt",
+        "carbon",
+        "dioxide",
+        "water",
+        "three"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9WM8QhSxmYpGhjqd::L2::Q7",
+      "moduleId": "rn_9WM8QhSxmYpGhjqd::L2",
+      "stem": "State the general word equation for the reaction of an acid with a metal oxide base.",
+      "misconceptionClass": "base-reaction equation recall",
+      "kind": "recall",
+      "modelAnswer": "Acid plus base gives a salt plus water: acid + base -> salt + water.",
+      "keywords": [
+        "salt",
+        "water",
+        "plus",
+        "and"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9WM8QhSxmYpGhjqd::L2::Q8",
+      "moduleId": "rn_9WM8QhSxmYpGhjqd::L2",
+      "stem": "Two white solids are added to separate samples of dilute hydrochloric acid. One mixture fizzes, the other simply stirs up with no gas at all. Explain what the fizzing reveals about the first solid.",
+      "misconceptionClass": "effervescence diagnosis",
+      "kind": "explain-why",
+      "modelAnswer": "The fizzing is effervescence of carbon dioxide, so the first solid must be a metal carbonate: acid + carbonate reactions release CO2 gas, while a base such as a metal oxide gives no gas.",
+      "keywords": [
+        "carbonate",
+        "carbon",
+        "dioxide",
+        "effervescence",
+        "fizzing",
+        "fizz",
+        "gas",
+        "co2"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_9WM8QhSxmYpGhjqd::L2::Q9",
+      "moduleId": "rn_9WM8QhSxmYpGhjqd::L2",
+      "stem": "Copper(II) oxide is added to dilute nitric acid until no more solid will dissolve. Name the salt in the solution and explain how the choice of acid fixed its name.",
+      "misconceptionClass": "salt naming from acid identity",
+      "kind": "application",
+      "modelAnswer": "The salt is copper(II) nitrate. Nitric acid always gives nitrate salts: the acid fixes the negative ion of the salt (nitrate), and the metal oxide supplies the copper(II) positive ion, so the two names combine as copper(II) nitrate.",
+      "keywords": [
+        "nitrate",
+        "nitrates",
+        "copper",
+        "salt",
+        "nitric"
+      ],
+      "options": []
     }
   ]
 }

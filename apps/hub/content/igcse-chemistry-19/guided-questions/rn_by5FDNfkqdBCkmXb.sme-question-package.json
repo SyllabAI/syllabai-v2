@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_by5FDNfkqdBCkmXb",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "307356e035cc340d2780cbb0ad405afef5a6a9cb99082c70952061c0648524c8",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "073608d3633a536506cf6468e65edeceeb0bbcc3c12ee94efb603bcb3c644d7d",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_by5FDNfkqdBCkmXb",
   "subject": "igcse-chemistry",
@@ -192,6 +192,82 @@
       ]
     },
     {
+      "id": "rn_by5FDNfkqdBCkmXb::L1::Q6",
+      "moduleId": "rn_by5FDNfkqdBCkmXb::L1",
+      "stem": "State the proton-transfer definition of an acid.",
+      "misconceptionClass": "acid definition recall",
+      "kind": "recall",
+      "modelAnswer": "An acid is a proton donor.",
+      "keywords": [
+        "proton",
+        "donor",
+        "donates",
+        "donate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_by5FDNfkqdBCkmXb::L1::Q7",
+      "moduleId": "rn_by5FDNfkqdBCkmXb::L1",
+      "stem": "Give the ionisation of hydrochloric acid in water, naming both ions produced.",
+      "misconceptionClass": "HCl ionisation recall",
+      "kind": "recall",
+      "modelAnswer": "HCl -> H+ + Cl-: hydrochloric acid ionises to hydrogen ions and chloride ions in water.",
+      "keywords": [
+        "hcl",
+        "h",
+        "cl",
+        "hydrogen",
+        "chloride",
+        "ions",
+        "ionises",
+        "ionize"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_by5FDNfkqdBCkmXb::L1::Q8",
+      "moduleId": "rn_by5FDNfkqdBCkmXb::L1",
+      "stem": "Explain why the words proton and hydrogen ion can be used interchangeably when discussing acids.",
+      "misconceptionClass": "proton identity reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "A hydrogen ion, H+, is simply a hydrogen atom that has lost its only electron — the particle left is exactly a proton, so the two names describe the same particle.",
+      "keywords": [
+        "hydrogen",
+        "ion",
+        "proton",
+        "same",
+        "particle",
+        "electron",
+        "lost",
+        "one",
+        "identical"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_by5FDNfkqdBCkmXb::L1::Q9",
+      "moduleId": "rn_by5FDNfkqdBCkmXb::L1",
+      "stem": "Two different acids, hydrochloric and sulfuric, are each dissolved in water, and both solutions attack magnesium ribbon in the same way. Explain why different acids behave identically here.",
+      "misconceptionClass": "shared H+ application",
+      "kind": "application",
+      "modelAnswer": "Each acid ionises in water, releasing hydrogen ions (protons), and the H+ ions are what make a solution acidic — the common H+ gives the common reactions with the magnesium.",
+      "keywords": [
+        "ionise",
+        "ionises",
+        "hydrogen",
+        "ions",
+        "h",
+        "protons",
+        "proton",
+        "acidic",
+        "common",
+        "release",
+        "water"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_by5FDNfkqdBCkmXb::L2::Q1",
       "moduleId": "rn_by5FDNfkqdBCkmXb::L2",
       "stem": "In proton-transfer language, what is a base?",
@@ -370,6 +446,78 @@
           "misconception": "donor misidentified"
         }
       ]
+    },
+    {
+      "id": "rn_by5FDNfkqdBCkmXb::L2::Q6",
+      "moduleId": "rn_by5FDNfkqdBCkmXb::L2",
+      "stem": "State, in proton language, the role a base plays.",
+      "misconceptionClass": "base definition recall",
+      "kind": "recall",
+      "modelAnswer": "A base is a proton acceptor.",
+      "keywords": [
+        "proton",
+        "acceptor",
+        "accepts",
+        "accept"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_by5FDNfkqdBCkmXb::L2::Q7",
+      "moduleId": "rn_by5FDNfkqdBCkmXb::L2",
+      "stem": "Name the two ions formed when sodium hydroxide dissolves in water.",
+      "misconceptionClass": "NaOH ionisation recall",
+      "kind": "recall",
+      "modelAnswer": "Sodium hydroxide splits into Na+ and OH- ions.",
+      "keywords": [
+        "na",
+        "oh",
+        "sodium",
+        "hydroxide",
+        "ions",
+        "ion"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_by5FDNfkqdBCkmXb::L2::Q8",
+      "moduleId": "rn_by5FDNfkqdBCkmXb::L2",
+      "stem": "Explain why an alkali can neutralise an acid even though the base itself contains no protons at all.",
+      "misconceptionClass": "OH- acceptor reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The alkali releases hydroxide ions, OH-, in water, and it is those hydroxide ions that accept the acid's protons: the base chemistry happens at the OH-, so the base needs no protons of its own — it takes the acid's.",
+      "keywords": [
+        "hydroxide",
+        "oh",
+        "accept",
+        "accepts",
+        "protons",
+        "proton",
+        "ions",
+        "alkali",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_by5FDNfkqdBCkmXb::L2::Q9",
+      "moduleId": "rn_by5FDNfkqdBCkmXb::L2",
+      "stem": "Hydrochloric acid is run into sodium hydroxide solution until the reaction is just complete. Describe the proton handover that has taken place, naming what each OH- ion has become.",
+      "misconceptionClass": "donor-acceptor handover",
+      "kind": "application",
+      "modelAnswer": "The acid played the donor role, giving protons (H+), and the hydroxide ions played the acceptor role: each OH- that accepted an H+ has become a water molecule, H2O.",
+      "keywords": [
+        "donor",
+        "donated",
+        "acceptor",
+        "accepted",
+        "water",
+        "h2o",
+        "protons",
+        "h",
+        "oh"
+      ],
+      "options": []
     }
   ]
 }

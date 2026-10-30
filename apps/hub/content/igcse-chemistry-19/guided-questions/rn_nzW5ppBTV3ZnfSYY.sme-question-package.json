@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_nzW5ppBTV3ZnfSYY",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "1be2b411b13c597fbf71dbed0a488febaa06fd9774402ea93fac4a7e4b9ad2c4",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "58daaa7ee4f3f622b33acb6d8f3b4fc45be0c43bbcd12aa3c422d2d5c3d89c99",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_nzW5ppBTV3ZnfSYY",
   "subject": "igcse-chemistry",
@@ -192,6 +192,84 @@
       ]
     },
     {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L1::Q6",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L1",
+      "stem": "Which extraction route is forced upon metals that sit above carbon in the reactivity series?",
+      "misconceptionClass": "extraction route recall",
+      "kind": "recall",
+      "modelAnswer": "They must be extracted by electrolysis of their molten compounds — carbon is not a strong enough reducing agent for them.",
+      "keywords": [
+        "electrolysis",
+        "molten",
+        "compounds",
+        "compound",
+        "above",
+        "carbon"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L1::Q7",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L1",
+      "stem": "State the cheap reduction route used for metals below carbon, naming the reducing substance.",
+      "misconceptionClass": "carbon reduction recall",
+      "kind": "recall",
+      "modelAnswer": "Heating with carbon: the carbon reduces the metal out of its oxide, and carbon is a cheap reducing agent.",
+      "keywords": [
+        "heating",
+        "heated",
+        "carbon",
+        "cheap",
+        "reduces",
+        "reduction",
+        "reducing",
+        "coke"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L1::Q8",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L1",
+      "stem": "Explain why the blast furnace needs no external heating once it is up and running.",
+      "misconceptionClass": "furnace self-heating reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "In the first zone the coke burns in the hot air, and that burning is exothermic — it gives out heat, which keeps the furnace at its working temperature, so the reaction effectively heats itself.",
+      "keywords": [
+        "exothermic",
+        "heat",
+        "heats",
+        "heating",
+        "coke",
+        "burns",
+        "burning",
+        "hot",
+        "air",
+        "temperature",
+        "itself"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L1::Q9",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L1",
+      "stem": "Zinc sits just above iron in the reactivity series, and both oxides can be reduced by carbon monoxide in a furnace. Using the position-reactivity link, decide which of the two metals is harder to reduce from its oxide, and say why.",
+      "misconceptionClass": "position-reactivity application",
+      "kind": "application",
+      "modelAnswer": "Zinc is the harder of the two to reduce: it sits higher in the reactivity series, so it is more readily oxidised, and reduction is the reverse of the oxidation the metal readily undergoes — its oxide holds the oxygen more strongly.",
+      "keywords": [
+        "higher",
+        "more",
+        "reactive",
+        "readily",
+        "oxidised",
+        "harder",
+        "reduce",
+        "reduction",
+        "zinc"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_nzW5ppBTV3ZnfSYY::L2::Q1",
       "moduleId": "rn_nzW5ppBTV3ZnfSYY::L2",
       "stem": "Why is aluminium oxide dissolved in molten cryolite?",
@@ -370,6 +448,89 @@
           "misconception": "logistics cost invented"
         }
       ]
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L2::Q6",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L2",
+      "stem": "Starting from the ore, name the two preparation stages that ready aluminium oxide for the electrolysis cell.",
+      "misconceptionClass": "bauxite preparation recall",
+      "kind": "recall",
+      "modelAnswer": "Bauxite is first purified to aluminium oxide, and the aluminium oxide is then dissolved in molten cryolite.",
+      "keywords": [
+        "bauxite",
+        "purified",
+        "purify",
+        "aluminium",
+        "oxide",
+        "dissolved",
+        "cryolite",
+        "molten"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L2::Q7",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L2",
+      "stem": "State what happens at the cathode during aluminium extraction and where the product collects.",
+      "misconceptionClass": "cathode half-reaction recall",
+      "kind": "recall",
+      "modelAnswer": "Aluminium ions gain electrons at the cathode (Al3+ + 3e- -> Al), and the molten aluminium collects at the bottom of the cell.",
+      "keywords": [
+        "cathode",
+        "gain",
+        "gains",
+        "electrons",
+        "aluminium",
+        "al",
+        "molten",
+        "bottom",
+        "collects"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L2::Q8",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L2",
+      "stem": "Explain why dissolving the aluminium oxide in cryolite saves the plant money.",
+      "misconceptionClass": "cryolite economy reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Cryolite lowers the melting point of the mixture, so the electrolyte need not be heated to the very high melting point of pure aluminium oxide — the big energy cost of melting pure Al2O3 is avoided.",
+      "keywords": [
+        "cryolite",
+        "melting",
+        "point",
+        "lower",
+        "lowers",
+        "energy",
+        "cost",
+        "saving",
+        "saves",
+        "cheaper"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_nzW5ppBTV3ZnfSYY::L2::Q9",
+      "moduleId": "rn_nzW5ppBTV3ZnfSYY::L2",
+      "stem": "A plant engineer finds the graphite anodes must be replaced every few weeks. Explain what is consuming them, naming the two reactants involved.",
+      "misconceptionClass": "anode wear application",
+      "kind": "application",
+      "modelAnswer": "The oxygen released at the anode (from oxide ions losing electrons) reacts with the hot graphite carbon, burning the anode away as carbon dioxide — oxygen plus carbon — so the anodes wear and need regular replacement.",
+      "keywords": [
+        "oxygen",
+        "graphite",
+        "carbon",
+        "reacts",
+        "reaction",
+        "burns",
+        "burning",
+        "anode",
+        "anodes",
+        "wear",
+        "dioxide",
+        "co2"
+      ],
+      "options": []
     }
   ]
 }

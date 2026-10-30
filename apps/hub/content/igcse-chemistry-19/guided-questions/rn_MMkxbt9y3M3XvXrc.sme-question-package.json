@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_MMkxbt9y3M3XvXrc",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "32830b85a705da6de13590712e950f7ef926f96db48b4c32bdbcd5ecfa97dfba",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "8da00f2ac1ea6b5474ae677bbb7732dcbb7bfc2b298ae334b53a8bd09f903d5b",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_MMkxbt9y3M3XvXrc",
   "subject": "igcse-chemistry",
@@ -192,6 +192,82 @@
       ]
     },
     {
+      "id": "rn_MMkxbt9y3M3XvXrc::L1::Q6",
+      "moduleId": "rn_MMkxbt9y3M3XvXrc::L1",
+      "stem": "Define an alloy in terms of the substances it combines.",
+      "misconceptionClass": "alloy definition recall",
+      "kind": "recall",
+      "modelAnswer": "An alloy is a mixture of a metal with one or more other elements — usually other metals, or a non-metal such as carbon.",
+      "keywords": [
+        "mixture",
+        "metal",
+        "metals",
+        "non",
+        "carbon",
+        "elements",
+        "combined"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MMkxbt9y3M3XvXrc::L1::Q7",
+      "moduleId": "rn_MMkxbt9y3M3XvXrc::L1",
+      "stem": "State the two metals present in brass and the percentage of each.",
+      "misconceptionClass": "brass composition recall",
+      "kind": "recall",
+      "modelAnswer": "Brass contains 70% copper and 30% zinc.",
+      "keywords": [
+        "70",
+        "30",
+        "copper",
+        "zinc",
+        "percent",
+        "brass"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MMkxbt9y3M3XvXrc::L1::Q8",
+      "moduleId": "rn_MMkxbt9y3M3XvXrc::L1",
+      "stem": "Explain why alloys, rather than the pure metals they contain, are so often chosen for everyday objects.",
+      "misconceptionClass": "property advantage reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The blend often behaves differently from its ingredients: alloys can be stronger and harder than the pure metals, and many resist corrosion or withstand extreme temperatures, so they last longer in use.",
+      "keywords": [
+        "stronger",
+        "harder",
+        "resist",
+        "resistant",
+        "corrosion",
+        "temperatures",
+        "useful",
+        "strength",
+        "withstand",
+        "last"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MMkxbt9y3M3XvXrc::L1::Q9",
+      "moduleId": "rn_MMkxbt9y3M3XvXrc::L1",
+      "stem": "A bicycle maker wants a frame metal that shrugs off wet winters without rusting. Decide whether a pure metal or an alloy fits the need better, naming the property behind your decision.",
+      "misconceptionClass": "corrosion resistance application",
+      "kind": "application",
+      "modelAnswer": "An alloy fits: many alloys resist corrosion, so a steel frame (iron mixed with carbon) withstands wet weather far better than a pure metal would.",
+      "keywords": [
+        "corrosion",
+        "resistant",
+        "resist",
+        "rust",
+        "rusting",
+        "steel",
+        "alloy",
+        "weather",
+        "withstand"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_MMkxbt9y3M3XvXrc::L2::Q1",
       "moduleId": "rn_MMkxbt9y3M3XvXrc::L2",
       "stem": "Why are alloys harder than pure metals?",
@@ -370,6 +446,85 @@
           "misconception": "mechanism direction reversed"
         }
       ]
+    },
+    {
+      "id": "rn_MMkxbt9y3M3XvXrc::L2::Q6",
+      "moduleId": "rn_MMkxbt9y3M3XvXrc::L2",
+      "stem": "What does adding atoms of a different size do to the regular arrangement of atoms in a pure metal?",
+      "misconceptionClass": "lattice distortion recall",
+      "kind": "recall",
+      "modelAnswer": "It distorts the regular rows: the differently sized atoms spoil the neat arrangement of the pure metal lattice.",
+      "keywords": [
+        "distorts",
+        "distort",
+        "distorted",
+        "regular",
+        "arrangement",
+        "rows",
+        "lattice",
+        "pattern",
+        "layers"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MMkxbt9y3M3XvXrc::L2::Q7",
+      "moduleId": "rn_MMkxbt9y3M3XvXrc::L2",
+      "stem": "How does the ease of layer sliding compare between an alloy and its pure metal?",
+      "misconceptionClass": "layer sliding comparison",
+      "kind": "recall",
+      "modelAnswer": "In the alloy the layers slide far less easily, and that difficulty is exactly why the alloy is harder than the pure metal.",
+      "keywords": [
+        "slide",
+        "sliding",
+        "less",
+        "easily",
+        "harder",
+        "difficulty",
+        "layers"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MMkxbt9y3M3XvXrc::L2::Q8",
+      "moduleId": "rn_MMkxbt9y3M3XvXrc::L2",
+      "stem": "Explain, step by step, why the different atom sizes in an alloy make the metal harder.",
+      "misconceptionClass": "hardness mechanism chain",
+      "kind": "explain-why",
+      "modelAnswer": "Atoms of different sizes distort the regular rows of the lattice, so the layers can no longer slide smoothly over one another; with slipping made difficult, the alloy resists shaping forces and is harder than the pure metal.",
+      "keywords": [
+        "sizes",
+        "size",
+        "distort",
+        "distorted",
+        "distortion",
+        "layers",
+        "slide",
+        "sliding",
+        "harder",
+        "slip"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_MMkxbt9y3M3XvXrc::L2::Q9",
+      "moduleId": "rn_MMkxbt9y3M3XvXrc::L2",
+      "stem": "An exam question offers four particle diagrams: A shows neat rows of equal circles, B shows uneven circles sitting in distorted rows, C shows molecules in pairs, D shows a fixed alternating grid. Which diagram represents an alloy, and what feature gave it away?",
+      "misconceptionClass": "particle diagram interpretation",
+      "kind": "application",
+      "modelAnswer": "Diagram B: uneven-sized particles in distorted rows are the signature of an alloy — the different-sized atoms have spoiled the regular lattice seen in the others.",
+      "keywords": [
+        "uneven",
+        "distorted",
+        "rows",
+        "different",
+        "sizes",
+        "particles",
+        "diagram",
+        "alloy",
+        "irregular"
+      ],
+      "options": []
     }
   ]
 }

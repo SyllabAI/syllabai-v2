@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_dTP52nzhYb96XrJx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5511252f72c5067391c6e76a5af5691596c84cb6265a68ef71f31c1b908b9428",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "05ad7e79fd9600510b363b9eb614967e3bd41abdb8cb6fd47d5f66b49b771b9a",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_dTP52nzhYb96XrJx",
   "subject": "igcse-chemistry",
@@ -192,6 +192,80 @@
       ]
     },
     {
+      "id": "rn_dTP52nzhYb96XrJx::L1::Q6",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L1",
+      "stem": "What is the natural source of litmus?",
+      "misconceptionClass": "litmus origin recall",
+      "kind": "recall",
+      "modelAnswer": "Litmus is extracted from lichens.",
+      "keywords": [
+        "lichens",
+        "lichen",
+        "natural",
+        "extracted",
+        "source"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L1::Q7",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L1",
+      "stem": "In what physical form is litmus supplied for dipping tests on solutions and gases?",
+      "misconceptionClass": "litmus form recall",
+      "kind": "recall",
+      "modelAnswer": "Litmus comes as red and blue paper for dipping into solutions or testing gases.",
+      "keywords": [
+        "red",
+        "blue",
+        "paper",
+        "dipping",
+        "test",
+        "testing",
+        "gases",
+        "solutions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L1::Q8",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L1",
+      "stem": "Explain why litmus is passed over for titration work even though it distinguishes acids from alkalis perfectly well.",
+      "misconceptionClass": "litmus endpoint reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Litmus passes through a purple transition colour at the changeover, so the endpoint is blurred; a titration needs a very sharp colour change to pinpoint the endpoint, which is why synthetic indicators are used instead.",
+      "keywords": [
+        "purple",
+        "transition",
+        "blurred",
+        "sharp",
+        "endpoint",
+        "change",
+        "gradual",
+        "unsuitable",
+        "titration"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L1::Q9",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L1",
+      "stem": "A student must choose an indicator that will show the endpoint of a titration unmistakably. Which family of indicators should be picked, and what property clinches the choice?",
+      "misconceptionClass": "indicator selection",
+      "kind": "application",
+      "modelAnswer": "Pick a synthetic indicator such as phenolphthalein or methyl orange: their colour change is very sharp, so the endpoint shows as an unmistakable colour switch.",
+      "keywords": [
+        "synthetic",
+        "phenolphthalein",
+        "methyl",
+        "orange",
+        "sharp",
+        "endpoint",
+        "colour",
+        "change"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_dTP52nzhYb96XrJx::L2::Q1",
       "moduleId": "rn_dTP52nzhYb96XrJx::L2",
       "stem": "A solution has pH 2. How is it classified?",
@@ -370,6 +444,88 @@
           "misconception": "methods blended"
         }
       ]
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L2::Q6",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L2",
+      "stem": "State the full range of the pH scale and the value that sits at its middle.",
+      "misconceptionClass": "pH range recall",
+      "kind": "recall",
+      "modelAnswer": "The pH scale runs from 0 to 14, and pH 7 sits at its middle — the neutral point.",
+      "keywords": [
+        "0",
+        "14",
+        "7",
+        "neutral",
+        "middle",
+        "midpoint",
+        "scale"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L2::Q7",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L2",
+      "stem": "What reference tool converts a universal indicator colour into an approximate pH reading?",
+      "misconceptionClass": "colour chart recall",
+      "kind": "recall",
+      "modelAnswer": "A colour chart: the indicator's new colour is matched against the chart, which gives the approximate pH.",
+      "keywords": [
+        "colour",
+        "chart",
+        "matched",
+        "matching",
+        "approximate",
+        "ph",
+        "reading"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L2::Q8",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L2",
+      "stem": "Explain why pH 1 is described as a stronger acid than pH 5, using the direction of the scale.",
+      "misconceptionClass": "pH direction reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The lower the pH, the more acidic the solution: pH 1 sits lower on the scale than pH 5, so it is the more strongly acidic of the two.",
+      "keywords": [
+        "lower",
+        "lowest",
+        "more",
+        "acidic",
+        "acidity",
+        "stronger",
+        "scale",
+        "ph",
+        "direction",
+        "higher"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_dTP52nzhYb96XrJx::L2::Q9",
+      "moduleId": "rn_dTP52nzhYb96XrJx::L2",
+      "stem": "A cleaner bottle is labelled pH 12 and a fruit-juice carton pH 4. Classify both using the scale bands and name the dominant ion in each.",
+      "misconceptionClass": "band classification application",
+      "kind": "application",
+      "modelAnswer": "pH 12 falls in the strongly alkaline band (11-14), so it is rich in OH- ions; pH 4 falls in the weakly acidic band (4-6), so it is rich in H+ ions.",
+      "keywords": [
+        "alkaline",
+        "alkali",
+        "11",
+        "14",
+        "oh",
+        "acidic",
+        "acid",
+        "4",
+        "6",
+        "h",
+        "band",
+        "bands",
+        "strongly",
+        "weakly"
+      ],
+      "options": []
     }
   ]
 }

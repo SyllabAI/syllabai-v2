@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_sf7s7s6bQ2cZv29s",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "0c4ea1cd4fd97bceeb35bc06364aa96db1364c9ea50e2dd1a0a61fd80f2f67e8",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "0891660da4c159b9e68e562cc018c60e85f2f142d4a135755ca76e5ca2127efb",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_sf7s7s6bQ2cZv29s",
   "subject": "igcse-chemistry",
@@ -192,6 +192,83 @@
       ]
     },
     {
+      "id": "rn_sf7s7s6bQ2cZv29s::L1::Q6",
+      "moduleId": "rn_sf7s7s6bQ2cZv29s::L1",
+      "stem": "State the two aluminium properties that suit aircraft bodies.",
+      "misconceptionClass": "aircraft property recall",
+      "kind": "recall",
+      "modelAnswer": "Low density and high strength.",
+      "keywords": [
+        "low",
+        "density",
+        "high",
+        "strength",
+        "strong",
+        "light",
+        "lightweight"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sf7s7s6bQ2cZv29s::L1::Q7",
+      "moduleId": "rn_sf7s7s6bQ2cZv29s::L1",
+      "stem": "Which metal is the standard choice for electrical wiring, and which two properties earn it that place?",
+      "misconceptionClass": "wiring choice recall",
+      "kind": "recall",
+      "modelAnswer": "Copper: its electrical conductivity and its ductility make it the standard wiring metal.",
+      "keywords": [
+        "copper",
+        "conductivity",
+        "conducts",
+        "ductile",
+        "ductility",
+        "wiring",
+        "standard"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sf7s7s6bQ2cZv29s::L1::Q8",
+      "moduleId": "rn_sf7s7s6bQ2cZv29s::L1",
+      "stem": "A can of tomatoes sits on the shelf for months, and the fruit inside is acidic. Explain why the aluminium can survives the acidic food.",
+      "misconceptionClass": "food can reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Aluminium is unreactive and shrugs off acidic foodstuffs, so the can metal does not react with the acid even over long storage.",
+      "keywords": [
+        "unreactive",
+        "acidic",
+        "acid",
+        "food",
+        "foodstuffs",
+        "react",
+        "reaction",
+        "shrugs",
+        "survives",
+        "cans"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sf7s7s6bQ2cZv29s::L1::Q9",
+      "moduleId": "rn_sf7s7s6bQ2cZv29s::L1",
+      "stem": "A new overhead cable run is to be strung across a valley and aluminium is chosen for it. Name the property behind the choice and state what the cable is carrying.",
+      "misconceptionClass": "cable property application",
+      "kind": "application",
+      "modelAnswer": "Aluminium conducts electricity very well, and the cable carries an electric current along the overhead line.",
+      "keywords": [
+        "conducts",
+        "conducting",
+        "conductor",
+        "electricity",
+        "current",
+        "aluminium",
+        "cable",
+        "cables",
+        "well"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_sf7s7s6bQ2cZv29s::L2::Q1",
       "moduleId": "rn_sf7s7s6bQ2cZv29s::L2",
       "stem": "Which type of steel is used for car body panels, and why?",
@@ -370,6 +447,87 @@
           "misconception": "service condition confused with composition"
         }
       ]
+    },
+    {
+      "id": "rn_sf7s7s6bQ2cZv29s::L2::Q6",
+      "moduleId": "rn_sf7s7s6bQ2cZv29s::L2",
+      "stem": "Which steel type suits car body panels, and what carbon content gives it that character?",
+      "misconceptionClass": "mild steel recall",
+      "kind": "recall",
+      "modelAnswer": "Mild steel: its low carbon content of about 0.25% leaves it soft and malleable enough to be pressed into panels.",
+      "keywords": [
+        "mild",
+        "steel",
+        "0",
+        "25",
+        "low",
+        "carbon",
+        "soft",
+        "malleable",
+        "panels"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sf7s7s6bQ2cZv29s::L2::Q7",
+      "moduleId": "rn_sf7s7s6bQ2cZv29s::L2",
+      "stem": "State the two metals alloyed into stainless steel and the property mix that justifies its use.",
+      "misconceptionClass": "stainless composition recall",
+      "kind": "recall",
+      "modelAnswer": "Stainless steel mixes in about 20% chromium and 10% nickel, giving strength together with corrosion resistance.",
+      "keywords": [
+        "chromium",
+        "nickel",
+        "20",
+        "10",
+        "corrosion",
+        "resistant",
+        "resistance",
+        "strength",
+        "stainless"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sf7s7s6bQ2cZv29s::L2::Q8",
+      "moduleId": "rn_sf7s7s6bQ2cZv29s::L2",
+      "stem": "Mild steel, high-carbon steel and stainless steel behave very differently in the workshop. Explain what single variable produces those differences.",
+      "misconceptionClass": "carbon content reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The carbon content decides the character of the steel — the higher the carbon, the harder the steel — so mild steel (about 0.25% carbon) is soft and workable while high-carbon steel (0.5-1.4% carbon) is hard enough for tools.",
+      "keywords": [
+        "carbon",
+        "content",
+        "decides",
+        "character",
+        "higher",
+        "harder",
+        "soft",
+        "mild",
+        "high"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sf7s7s6bQ2cZv29s::L2::Q9",
+      "moduleId": "rn_sf7s7s6bQ2cZv29s::L2",
+      "stem": "A joiner needs a chisel that keeps its cutting edge, and a coachbuilder needs panels that press into shape without cracking. Assign each job its steel type, justifying each with one property word.",
+      "misconceptionClass": "steel selection application",
+      "kind": "application",
+      "modelAnswer": "The chisel takes high-carbon steel — hard is the property that keeps a cutting edge (0.5-1.4% carbon); the coachbuilder takes mild steel — soft and malleable panels press without cracking (about 0.25% carbon).",
+      "keywords": [
+        "high",
+        "carbon",
+        "hard",
+        "chisel",
+        "edge",
+        "mild",
+        "soft",
+        "malleable",
+        "panels",
+        "press"
+      ],
+      "options": []
     }
   ]
 }
