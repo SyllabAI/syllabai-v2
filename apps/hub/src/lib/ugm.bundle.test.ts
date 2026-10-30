@@ -1728,3 +1728,91 @@ describe("the cross-board mirror plane (T-UGM-XBOARD-IAL-1 X1 — the FIRST IAL 
     expect(guardCodes.size).toBe(7);
   });
 });
+
+describe("the cross-board mirror plane (T-UGM-XBOARD-IAL-1 X2 — the SECOND IAL bundle, vehicle V1)", () => {
+  const XB2_PATH = join(
+    import.meta.dir,
+    "../../content/ial-maths-20-pure-2/ugm-resources.json",
+  );
+  const xb2 = UgmLaneBundle.parse(
+    JSON.parse(readFileSync(XB2_PATH, "utf8")),
+  );
+
+  test("parse succeeds under the reader schema (1.2 honest-gap law)", () => {
+    expect(xb2.schema).toBe("syllabai-demo.ugm-lane-resources/1.2");
+    expect(xb2.lane).toBe("ial-maths-20-pure-2");
+    expect(xb2.reviewState.state).toBe("SUGGESTED");
+    expect(xb2.reviewState.note).toContain("Cross-board mirror");
+  });
+
+  test("spec-point index: 19 codes biject the IAL pure-2 curriculum spine", () => {
+    const cur = JSON.parse(
+      readFileSync(
+        join(import.meta.dir, "../../content/ial-maths-20-pure-2/curriculum.json"),
+        "utf8",
+      ),
+    ) as { nodes: Array<{ family?: string; code?: string; title?: string }> };
+    const codes = cur.nodes
+      .filter((n) => n.family === "SPEC_POINT")
+      .map((n) => n.code as string)
+      .sort();
+    expect(xb2.specPoints).toHaveLength(19);
+    expect([...xb2.specPoints.map((s) => s.code)].sort()).toEqual(codes);
+    // spine verbatim law: officialText is the curriculum title of record
+    for (const sp of xb2.specPoints) {
+      const node = cur.nodes.find((n) => n.code === sp.code);
+      expect(sp.officialText).toBe(node?.title ?? null);
+    }
+  });
+
+  test("mirror census of record (run-001 matrix P2: 14 SERVES + 5 SERVES_WITH_GUARD, zero INSUFFICIENT)", () => {
+    expect(xb2.resources).toHaveLength(302);
+    expect(xb2.coverage.specPointsCovered).toHaveLength(19);
+    for (const sp of xb2.specPoints) {
+      expect(sp.resourceCount).toBe(sp.ugmIds.length);
+      if (sp.primaryPick !== null) expect(sp.ugmIds).toContain(sp.primaryPick);
+    }
+    expect(xb2.coverage.coursePlaneJoins?.kinds).toEqual({
+      cross_board_mirror: 302,
+    });
+  });
+
+  test("every mirrored row is a byte-true CIE mirror with provenance of record", () => {
+    const sources = new Map<string, { bodyMd: string }>();
+    for (const c of [
+      "cie-a-level-maths-20-pure-1",
+      "cie-a-level-maths-20-pure-2",
+      "cie-a-level-maths-20-pure-3",
+    ]) {
+      const b = JSON.parse(
+        readFileSync(
+          join(import.meta.dir, "../../content", c, "ugm-resources.json"),
+          "utf8",
+        ),
+      ) as { resources: Array<{ ugmId: string; bodyMd: string }> };
+      for (const r of b.resources) sources.set(`${c}/${r.ugmId}`, r);
+    }
+    for (const r of xb2.resources) {
+      expect(r.nonOverlap).toBe(false);
+      expect(r.specPoints.length).toBeGreaterThan(0);
+      expect(r.servedFromCourse).toMatch(/^cie-a-level-maths-20-pure-[123]$/);
+      expect(r.textOfRecordUnder).toBe(`${r.servedFromCourse}/ugm-resources.json`);
+      const src = sources.get(`${r.servedFromCourse}/${r.ugmId}`);
+      expect(src).toBeDefined();
+      expect(src?.bodyMd).toBe(r.bodyMd); // the byte-true mirror law
+      for (const sp of r.specPoints) {
+        expect(sp.note ?? "").toMatch(/^\[(SERVES|SERVES_WITH_GUARD)\] <- CIE /);
+      }
+    }
+  });
+
+  test("the guard language rides exactly the 5 thin rows of record", () => {
+    const guardCodes = new Set(
+      xb2.resources
+        .flatMap((r) => r.specPoints)
+        .filter((s) => (s.note ?? "").startsWith("[SERVES_WITH_GUARD]"))
+        .map((s) => s.code),
+    );
+    expect(guardCodes.size).toBe(5);
+  });
+});
