@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_sX8yyBxHn8bS7t46",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "cb6d0c93b8836b5f9bea14b3fbcb9671e799a56199ebb3b03e164a215251492d",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "2dfba41a51a3184c6e91edba95542c089940627fc5bb1cff2536449ea65d9428",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_sX8yyBxHn8bS7t46",
   "subject": "igcse-chemistry",
@@ -192,6 +192,79 @@
       ]
     },
     {
+      "id": "rn_sX8yyBxHn8bS7t46::L1::Q6",
+      "moduleId": "rn_sX8yyBxHn8bS7t46::L1",
+      "stem": "Define oxidation in terms of oxygen.",
+      "misconceptionClass": "oxidation definition recall",
+      "kind": "recall",
+      "modelAnswer": "Oxidation is any reaction in which a substance gains oxygen.",
+      "keywords": [
+        "gains",
+        "gain",
+        "oxygen",
+        "reaction",
+        "substance"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sX8yyBxHn8bS7t46::L1::Q7",
+      "moduleId": "rn_sX8yyBxHn8bS7t46::L1",
+      "stem": "Zinc oxide is heated with carbon and loses its oxygen to the carbon. Name the change the zinc oxide has undergone.",
+      "misconceptionClass": "reduction definition recall",
+      "kind": "recall",
+      "modelAnswer": "Reduction — the zinc oxide has lost oxygen.",
+      "keywords": [
+        "reduction",
+        "reduced",
+        "loses",
+        "lost",
+        "loss",
+        "oxygen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sX8yyBxHn8bS7t46::L1::Q8",
+      "moduleId": "rn_sX8yyBxHn8bS7t46::L1",
+      "stem": "Explain why the reaction between zinc and copper(II) oxide cannot be labelled as only an oxidation or only a reduction.",
+      "misconceptionClass": "redox coupling reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because both happen at once: zinc gains the oxygen while copper(II) oxide loses it, so oxidation and reduction occur together — the paired change is what earns the overall reaction the name redox.",
+      "keywords": [
+        "both",
+        "together",
+        "redox",
+        "oxidation",
+        "reduction",
+        "gains",
+        "loses",
+        "paired",
+        "simultaneously"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sX8yyBxHn8bS7t46::L1::Q9",
+      "moduleId": "rn_sX8yyBxHn8bS7t46::L1",
+      "stem": "In the reaction Zn + CuO -> ZnO + Cu, identify the oxidising agent and justify the pick by following the oxygen's journey.",
+      "misconceptionClass": "oxidising agent identification",
+      "kind": "application",
+      "modelAnswer": "Copper(II) oxide is the oxidising agent: it supplies the oxygen that the zinc takes up, so the CuO oxidises the zinc while it is itself reduced to copper.",
+      "keywords": [
+        "copper",
+        "ii",
+        "oxide",
+        "cuo",
+        "oxidising",
+        "agent",
+        "supplies",
+        "oxygen",
+        "oxidises"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_sX8yyBxHn8bS7t46::L2::Q1",
       "moduleId": "rn_sX8yyBxHn8bS7t46::L2",
       "stem": "In Mg + Cu2+ giving Mg2+ + Cu, what has happened to the magnesium?",
@@ -370,6 +443,88 @@
           "misconception": "spectator ions given an active role"
         }
       ]
+    },
+    {
+      "id": "rn_sX8yyBxHn8bS7t46::L2::Q6",
+      "moduleId": "rn_sX8yyBxHn8bS7t46::L2",
+      "stem": "State the electron-transfer definitions of oxidation and reduction.",
+      "misconceptionClass": "OIL RIG recall",
+      "kind": "recall",
+      "modelAnswer": "Oxidation is the loss of electrons and reduction is the gain of electrons — OIL RIG.",
+      "keywords": [
+        "loss",
+        "loses",
+        "lost",
+        "gain",
+        "gains",
+        "electrons",
+        "electron",
+        "oil",
+        "rig"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sX8yyBxHn8bS7t46::L2::Q7",
+      "moduleId": "rn_sX8yyBxHn8bS7t46::L2",
+      "stem": "What are spectator ions, and what happens to them when the ionic equation is written?",
+      "misconceptionClass": "spectator ion recall",
+      "kind": "recall",
+      "modelAnswer": "Spectator ions appear unchanged on both sides of the equation, so they are omitted from the ionic equation.",
+      "keywords": [
+        "spectator",
+        "ions",
+        "unchanged",
+        "both",
+        "sides",
+        "omitted",
+        "omitted",
+        "equation"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sX8yyBxHn8bS7t46::L2::Q8",
+      "moduleId": "rn_sX8yyBxHn8bS7t46::L2",
+      "stem": "Explain what splitting the ionic equation Mg + Cu2+ -> Mg2+ + Cu into two half equations reveals that the single full equation hides.",
+      "misconceptionClass": "half equation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The half equations show the two electron movements separately — magnesium losing two electrons (oxidation) and Cu2+ gaining two electrons (reduction) — so the single line hides who gives the electrons and who receives them.",
+      "keywords": [
+        "half",
+        "equations",
+        "electrons",
+        "electron",
+        "separately",
+        "losing",
+        "gaining",
+        "oxidation",
+        "reduction",
+        "movement",
+        "movements"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_sX8yyBxHn8bS7t46::L2::Q9",
+      "moduleId": "rn_sX8yyBxHn8bS7t46::L2",
+      "stem": "Iron filings dropped into copper(II) sulfate solution become coated with brown copper as the blue colour fades. Describe what has happened to the Cu2+ ions in electron terms and name the change.",
+      "misconceptionClass": "electron gain application",
+      "kind": "application",
+      "modelAnswer": "The Cu2+ ions have gained electrons (the iron loses them, forming Fe2+), so the copper(II) ions are reduced to copper metal — that gain of electrons is reduction.",
+      "keywords": [
+        "gained",
+        "gain",
+        "gains",
+        "electrons",
+        "reduced",
+        "reduction",
+        "cu2",
+        "cu",
+        "blue",
+        "fades"
+      ],
+      "options": []
     }
   ]
 }

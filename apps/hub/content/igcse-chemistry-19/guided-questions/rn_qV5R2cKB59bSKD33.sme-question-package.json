@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_qV5R2cKB59bSKD33",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "820cc88fe0cbbd6da9ff94ea780d39c13d6ff96f301f0d6113507356b11571ec",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "c6908c22ab104bf6e35332978e908b63216e20aaaf97a291e274b9af1ed8309f",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_qV5R2cKB59bSKD33",
   "subject": "igcse-chemistry",
@@ -192,6 +192,80 @@
       ]
     },
     {
+      "id": "rn_qV5R2cKB59bSKD33::L1::Q6",
+      "moduleId": "rn_qV5R2cKB59bSKD33::L1",
+      "stem": "What property of a solution does a titration analyse?",
+      "misconceptionClass": "titration purpose recall",
+      "kind": "recall",
+      "modelAnswer": "Its concentration — a titration is a method of analysing the concentration of solutions.",
+      "keywords": [
+        "concentration",
+        "concentrated",
+        "analyse",
+        "analysing",
+        "solutions",
+        "solution"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qV5R2cKB59bSKD33::L1::Q7",
+      "moduleId": "rn_qV5R2cKB59bSKD33::L1",
+      "stem": "Name the three centre-piece pieces of apparatus in a titration setup.",
+      "misconceptionClass": "apparatus recall",
+      "kind": "recall",
+      "modelAnswer": "A burette, a pipette and a conical flask.",
+      "keywords": [
+        "burette",
+        "pipette",
+        "conical",
+        "flask",
+        "apparatus"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qV5R2cKB59bSKD33::L1::Q8",
+      "moduleId": "rn_qV5R2cKB59bSKD33::L1",
+      "stem": "Explain why a titration can prepare a salt as cleanly as it measures neutralisation.",
+      "misconceptionClass": "salt preparation reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because a titration finds exactly how much alkali neutralises a quantity of acid; repeating that neutralisation at the measured, controlled volumes lets the salt be prepared with no leftover acid or alkali.",
+      "keywords": [
+        "exactly",
+        "neutralises",
+        "neutralizes",
+        "neutralisation",
+        "volumes",
+        "controlled",
+        "measured",
+        "salt",
+        "prepared",
+        "repeat",
+        "repeating"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qV5R2cKB59bSKD33::L1::Q9",
+      "moduleId": "rn_qV5R2cKB59bSKD33::L1",
+      "stem": "A titration finds the volume of hydrochloric acid that neutralises a measured alkali sample. State the three quantities this kind of result is used to calculate in exam questions.",
+      "misconceptionClass": "calculation targets application",
+      "kind": "application",
+      "modelAnswer": "The moles present, the concentration of one of the solutions, or the volume needed for neutralisation — moles, concentration and volume are the three calculation targets.",
+      "keywords": [
+        "moles",
+        "mole",
+        "concentration",
+        "volume",
+        "calculate",
+        "calculated",
+        "neutralise",
+        "neutralize"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_qV5R2cKB59bSKD33::L2::Q1",
       "moduleId": "rn_qV5R2cKB59bSKD33::L2",
       "stem": "Why is a little acid run through the burette before you start?",
@@ -370,6 +444,86 @@
           "misconception": "issue minimised"
         }
       ]
+    },
+    {
+      "id": "rn_qV5R2cKB59bSKD33::L2::Q6",
+      "moduleId": "rn_qV5R2cKB59bSKD33::L2",
+      "stem": "What must be flushed out of the burette's jet space before the first reading is taken?",
+      "misconceptionClass": "jet space recall",
+      "kind": "recall",
+      "modelAnswer": "Air bubbles — a little acid is run through first to clear the jet space between the tap and the tip.",
+      "keywords": [
+        "air",
+        "bubbles",
+        "bubble",
+        "jet",
+        "space",
+        "acid",
+        "flushed",
+        "run",
+        "through"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qV5R2cKB59bSKD33::L2::Q7",
+      "moduleId": "rn_qV5R2cKB59bSKD33::L2",
+      "stem": "How finely must each burette reading be recorded?",
+      "misconceptionClass": "reading precision recall",
+      "kind": "recall",
+      "modelAnswer": "To the nearest 0.05 cm3, read at eye level.",
+      "keywords": [
+        "0",
+        "05",
+        "cm3",
+        "nearest",
+        "eye",
+        "level",
+        "precision"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qV5R2cKB59bSKD33::L2::Q8",
+      "moduleId": "rn_qV5R2cKB59bSKD33::L2",
+      "stem": "Explain why the acid is added one drop at a time only near the endpoint, even though larger portions were fine earlier in the titration.",
+      "misconceptionClass": "drop-wise reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Because the colour change at the endpoint is sharp: a whole portion run in past the endpoint would overshoot and spoil the titre, so drop-by-drop addition stops the first permanent change from being missed.",
+      "keywords": [
+        "overshoot",
+        "sharp",
+        "endpoint",
+        "drop",
+        "drops",
+        "permanent",
+        "change",
+        "missed",
+        "titre",
+        "exact"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_qV5R2cKB59bSKD33::L2::Q9",
+      "moduleId": "rn_qV5R2cKB59bSKD33::L2",
+      "stem": "Titre 1 reads 14.90 cm3 and Titre 2 reads 15.00 cm3. State whether the two results may be averaged, and justify the decision with the concordance rule.",
+      "misconceptionClass": "concordance judgement",
+      "kind": "application",
+      "modelAnswer": "Yes: they differ by only 0.10 cm3, which is within the 0.1 cm3 concordance window, so the two results are concordant and may be averaged.",
+      "keywords": [
+        "concordant",
+        "concordance",
+        "0",
+        "1",
+        "cm3",
+        "within",
+        "averaged",
+        "average",
+        "differ",
+        "yes"
+      ],
+      "options": []
     }
   ]
 }

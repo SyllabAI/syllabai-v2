@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_xq9jy75y43kDXkvx",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "fda12eec8b6fbc7147d0ae427465bd8a409e9076c42a022c3693700381efb914",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "77292afe9b19c4a1bbf71bf198bc0d8e29a96a01abbd4466835d8306cd073ba6",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_xq9jy75y43kDXkvx",
   "subject": "igcse-chemistry",
@@ -192,6 +192,84 @@
       ]
     },
     {
+      "id": "rn_xq9jy75y43kDXkvx::L1::Q6",
+      "moduleId": "rn_xq9jy75y43kDXkvx::L1",
+      "stem": "What makes a rock qualify as an ore of a metal?",
+      "misconceptionClass": "ore definition recall",
+      "kind": "recall",
+      "modelAnswer": "The rock must contain enough of the metal to make extracting it worthwhile.",
+      "keywords": [
+        "rock",
+        "enough",
+        "metal",
+        "extraction",
+        "worthwhile",
+        "ore",
+        "contains"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xq9jy75y43kDXkvx::L1::Q7",
+      "moduleId": "rn_xq9jy75y43kDXkvx::L1",
+      "stem": "Name the three methods by which a metal can be won from its ore.",
+      "misconceptionClass": "extraction routes recall",
+      "kind": "recall",
+      "modelAnswer": "Electrolysis, the blast furnace, or reaction with a more reactive material.",
+      "keywords": [
+        "electrolysis",
+        "blast",
+        "furnace",
+        "reaction",
+        "more",
+        "reactive",
+        "material",
+        "methods"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xq9jy75y43kDXkvx::L1::Q8",
+      "moduleId": "rn_xq9jy75y43kDXkvx::L1",
+      "stem": "Explain why extracting iron from haematite counts as a reduction of the ore.",
+      "misconceptionClass": "oxide reduction reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Haematite is an oxide ore — iron chemically joined to oxygen. Extraction removes that oxygen from the iron(III) oxide, and removing oxygen from a substance is exactly what reduction means.",
+      "keywords": [
+        "oxide",
+        "oxygen",
+        "reduction",
+        "reduced",
+        "loses",
+        "lost",
+        "remove",
+        "removing",
+        "haematite",
+        "iron"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xq9jy75y43kDXkvx::L1::Q9",
+      "moduleId": "rn_xq9jy75y43kDXkvx::L1",
+      "stem": "A prospector finds (a) a vein of metallic gold and (b) a rock rich in a copper compound. State which find needs no chemical extraction and why, using the two ways metals occur in the crust.",
+      "misconceptionClass": "native metal application",
+      "kind": "application",
+      "modelAnswer": "The gold needs none: it is one of the native metals, found as the element itself in the crust, so there is no compound to break down — the copper, locked inside a compound in its rock, must be extracted chemically.",
+      "keywords": [
+        "gold",
+        "native",
+        "element",
+        "uncombined",
+        "no",
+        "compound",
+        "extraction",
+        "copper",
+        "locked"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_xq9jy75y43kDXkvx::L2::Q1",
       "moduleId": "rn_xq9jy75y43kDXkvx::L2",
       "stem": "Which pair of metals is typically found as the uncombined element?",
@@ -370,6 +448,88 @@
           "misconception": "exception overlooked"
         }
       ]
+    },
+    {
+      "id": "rn_xq9jy75y43kDXkvx::L2::Q6",
+      "moduleId": "rn_xq9jy75y43kDXkvx::L2",
+      "stem": "Name the two metals given as examples that are mined straight out of the ground as elements.",
+      "misconceptionClass": "native metals recall",
+      "kind": "recall",
+      "modelAnswer": "Gold and platinum are mined directly as the uncombined metals.",
+      "keywords": [
+        "gold",
+        "platinum",
+        "mined",
+        "directly",
+        "uncombined",
+        "elements",
+        "ground"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xq9jy75y43kDXkvx::L2::Q7",
+      "moduleId": "rn_xq9jy75y43kDXkvx::L2",
+      "stem": "Compared with ores such as haematite or bauxite, what processing stage do gold and platinum skip entirely?",
+      "misconceptionClass": "extraction skip recall",
+      "kind": "recall",
+      "modelAnswer": "They skip all chemical extraction: the metals hardly react, so no processing is needed to separate them out of a compound.",
+      "keywords": [
+        "no",
+        "skip",
+        "chemical",
+        "extraction",
+        "processing",
+        "hardly",
+        "react",
+        "separate",
+        "compound"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xq9jy75y43kDXkvx::L2::Q8",
+      "moduleId": "rn_xq9jy75y43kDXkvx::L2",
+      "stem": "Use the idea of chemical stability to account for unreactive metals occurring free in nature.",
+      "misconceptionClass": "stability reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Their chemical stability stops them reacting with the other substances around them, so over time they remain the free element instead of joining into compounds.",
+      "keywords": [
+        "stability",
+        "stable",
+        "unreactive",
+        "react",
+        "reacting",
+        "element",
+        "elements",
+        "free",
+        "compounds",
+        "substances"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_xq9jy75y43kDXkvx::L2::Q9",
+      "moduleId": "rn_xq9jy75y43kDXkvx::L2",
+      "stem": "Pieces of metal X are stirred into a solution containing a compound of metal N: nothing happens. The test is repeated with metal M, and this time N deposits out of the solution. Rank M, N and X in reactivity, citing the rule you used.",
+      "misconceptionClass": "displacement ranking application",
+      "kind": "application",
+      "modelAnswer": "The rule: a metal can reduce another metal's compound only if it is the more reactive of the two. X displaced nothing, so X is less reactive than N; M displaced N, so M is more reactive than N. The order is M > N > X.",
+      "keywords": [
+        "more",
+        "reactive",
+        "less",
+        "reduce",
+        "reduces",
+        "displaced",
+        "displacement",
+        "rule",
+        "order",
+        "m",
+        "n",
+        "x"
+      ],
+      "options": []
     }
   ]
 }

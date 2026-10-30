@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_BX88twwgffRMgx82",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5bf7f8eb26937aace4ac41deb52f24864dd5f9f3dccfae69f047d61bf0d699f4",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "9b83fbbb989a2bd769da23fa1d67d7157a2e022b7b379ac494b47dc18b860817",
+    "pinnedRef": "286b5ac81d43a28e5faa9f9e8ab16b67fbb12c51"
   },
   "packageId": "igcse-chemistry::rn_BX88twwgffRMgx82",
   "subject": "igcse-chemistry",
@@ -192,6 +192,83 @@
       ]
     },
     {
+      "id": "rn_BX88twwgffRMgx82::L1::Q6",
+      "moduleId": "rn_BX88twwgffRMgx82::L1",
+      "stem": "Which three metal specimens go into the test tubes in this practical, and in what physical form does each arrive?",
+      "misconceptionClass": "specimen form recall",
+      "kind": "recall",
+      "modelAnswer": "A length of magnesium ribbon, some iron filings and some zinc turnings — one metal specimen per test tube.",
+      "keywords": [
+        "magnesium",
+        "ribbon",
+        "iron",
+        "filings",
+        "zinc",
+        "turnings",
+        "specimen",
+        "specimens"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BX88twwgffRMgx82::L1::Q7",
+      "moduleId": "rn_BX88twwgffRMgx82::L1",
+      "stem": "Once the dilute hydrochloric acid runs are complete, what variation of the experiment is carried out next?",
+      "misconceptionClass": "method repeat recall",
+      "kind": "recall",
+      "modelAnswer": "The whole experiment is repeated using dilute sulfuric acid in place of the hydrochloric acid.",
+      "keywords": [
+        "repeated",
+        "repeat",
+        "sulfuric",
+        "acid",
+        "again",
+        "dilute"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BX88twwgffRMgx82::L1::Q8",
+      "moduleId": "rn_BX88twwgffRMgx82::L1",
+      "stem": "Explain why the very first action in this practical is putting on safety glasses, before any acid is poured.",
+      "misconceptionClass": "eye protection reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "Dilute acids are corrosive and can splash or spit once the metals start reacting vigorously, so the eyes must be protected before any acid is handled — the glasses go on first as a standing safety rule.",
+      "keywords": [
+        "splash",
+        "corrosive",
+        "eyes",
+        "eye",
+        "protect",
+        "protection",
+        "safety",
+        "glasses",
+        "acid",
+        "dangerous"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BX88twwgffRMgx82::L1::Q9",
+      "moduleId": "rn_BX88twwgffRMgx82::L1",
+      "stem": "During the magnesium run a gas is given off. Describe how you would test the gas and state the positive result.",
+      "misconceptionClass": "gas test application",
+      "kind": "application",
+      "modelAnswer": "A lighted splint is held at the mouth of the test tube: hydrogen burns with a squeaky pop, so the positive result is the splint going out with a pop.",
+      "keywords": [
+        "lighted",
+        "splint",
+        "pop",
+        "squeaky",
+        "hydrogen",
+        "burn",
+        "burns",
+        "burning",
+        "test"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_BX88twwgffRMgx82::L2::Q1",
       "moduleId": "rn_BX88twwgffRMgx82::L2",
       "stem": "Which metal reacted the most vigorously with the dilute acids?",
@@ -370,6 +447,84 @@
           "misconception": "test procedure blamed for the pattern"
         }
       ]
+    },
+    {
+      "id": "rn_BX88twwgffRMgx82::L2::Q6",
+      "moduleId": "rn_BX88twwgffRMgx82::L2",
+      "stem": "Using the vigour of their reactions with the acids, state the order in which the three metals are placed.",
+      "misconceptionClass": "reactivity ranking recall",
+      "kind": "recall",
+      "modelAnswer": "The order is Mg > Zn > Fe: magnesium reacts most vigorously, zinc reacts steadily, and iron reacts slowest.",
+      "keywords": [
+        "mg",
+        "zn",
+        "fe",
+        "magnesium",
+        "zinc",
+        "iron",
+        "order",
+        "most",
+        "slowest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BX88twwgffRMgx82::L2::Q7",
+      "moduleId": "rn_BX88twwgffRMgx82::L2",
+      "stem": "Name the gas and the dissolved product formed whenever any of these three metals reacts with a dilute acid.",
+      "misconceptionClass": "reaction products recall",
+      "kind": "recall",
+      "modelAnswer": "Hydrogen gas is given off, and a metal salt is left dissolved in solution.",
+      "keywords": [
+        "hydrogen",
+        "gas",
+        "salt",
+        "solution",
+        "metal"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BX88twwgffRMgx82::L2::Q8",
+      "moduleId": "rn_BX88twwgffRMgx82::L2",
+      "stem": "The three metals behaved identically towards hydrochloric and sulfuric acid. Explain what this consistency shows about the reaction pattern.",
+      "misconceptionClass": "acid-independence reasoning",
+      "kind": "explain-why",
+      "modelAnswer": "The pattern is set by the metal's own reactivity, not by which acid is used: each metal reacts in the same way with both dilute acids, so the ranking does not depend on the acid chosen.",
+      "keywords": [
+        "metal",
+        "metals",
+        "reactivity",
+        "acid",
+        "independent",
+        "same",
+        "pattern",
+        "not",
+        "both",
+        "reacts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_BX88twwgffRMgx82::L2::Q9",
+      "moduleId": "rn_BX88twwgffRMgx82::L2",
+      "stem": "A fourth metal X is tried under identical conditions and bubbles even more slowly than the iron did. Predict how X compares with iron in the reactivity series, giving your reason.",
+      "misconceptionClass": "ranking extrapolation",
+      "kind": "application",
+      "modelAnswer": "X is less reactive than iron: reaction vigour falls going down the series, so slower bubbling under the same conditions means the metal sits lower — X ranks below Fe, though both still react.",
+      "keywords": [
+        "less",
+        "lower",
+        "slower",
+        "slow",
+        "below",
+        "reactivity",
+        "series",
+        "iron",
+        "fe",
+        "reactive"
+      ],
+      "options": []
     }
   ]
 }
