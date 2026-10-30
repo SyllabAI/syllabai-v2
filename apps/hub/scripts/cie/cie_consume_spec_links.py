@@ -134,8 +134,9 @@ SHEET_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_resolutions.yaml")
 # in the REJOIN-2 sheet — consumed as a second sheet input with per-sheet
 # via provenance; every other engine method untouched.
 SHEET2_PATH = os.path.join(RESOURCES, "scripts", "cie_rejoin_wave2as_resolutions.yaml")
+SHEET3_PATH = os.path.join(RESOURCES, "scripts", "cie_wave3_resolutions.yaml")  # REJOIN-3 (the wave3 chain, trace 1a18bc6701800065)
 STAGING = os.environ.get("CIE_CONSUME_STAGING", "/home/z/my-project/work/cie-consume-staging")
-PIN = "20a35ccc621d418a6bb3f4a62ef2cdecd7abf677"
+PIN = "9cf6037e31c1ac8eb88a0cb6f545438689728a1d"  # advanced of record: the T-SPECS-CIE-WAVE3 chain tip (JOIN-3/REJOIN-3/VERDICT-3/GATE-3 + the sheet sid fix + the F119 4CH1 r2-consumed closing disclosure), operator trace 1a18bc6701800065
 STAMP = "2026-10-29T16:00:00Z"
 GATE_TRACE = "1a183e66619bd6dd"
 SCHEMA = "syllabai.official-attachment/1.0"
@@ -189,7 +190,8 @@ def load_sheet():
     import yaml
     resolves, other = {}, defaultdict(int)
     for path, via in ((SHEET_PATH, "REJOIN-1:gate-1"),
-                      (SHEET2_PATH, "REJOIN-2:gate-2")):
+                      (SHEET2_PATH, "REJOIN-2:gate-2"),
+                      (SHEET3_PATH, "REJOIN-3:gate-3")):
         doc = yaml.safe_load(open(path, encoding="utf8"))
         for v in doc["verdicts"]:
             key = (v["lane"], v["id"])
@@ -237,8 +239,17 @@ def mistag_pairs(sd):
     return out
 
 
-def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None, mistag=None):
-    """Stage B: sidecar -> map merge. Returns (new_att, stats)."""
+def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None, mistag=None, bundle_ids=None):
+    """Stage B: sidecar -> map merge. Returns (new_att, stats).
+
+    T-SPECS-CIE-CONSUME-3 addition (the wave3 chain, operator trace
+    1a18bc6701800065): the EQ/FC wave consume was content-maps byte-untouched,
+    so the wave's new items exist in the hub bundles WITHOUT map rows. The
+    additive item-creation law: a sidecar item absent from the map is CREATED
+    (kind from the sidecar; codes merged by the strongest-lineage law below)
+    IFF its id is verbatim-present in the hub bundle plane (bundle_ids); ids
+    absent from BOTH map and bundle are the honest sidecar_only class (the
+    corpus-beyond-hub census the original guard was built for)."""
     st = defaultdict(int)
     items = att["items"]
     new_items = OrderedDict()
@@ -252,8 +263,15 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None,
 
     for iid, sit in sd["items"].items():
         if iid not in new_items:
-            sidecar_only.append(iid)
-            continue
+            if bundle_ids is not None and iid in bundle_ids:
+                # the additive item-creation law (CONSUME-3): the hub serves
+                # this id; the map row is created here from the sidecar
+                st["itemsCreated"] += 1
+                rec = OrderedDict(kind=sit.get("kind"), codes=[])
+                new_items[iid] = rec
+            else:
+                sidecar_only.append(iid)
+                continue
         rec = new_items[iid]
         if rec.get("kind") != sit.get("kind"):
             die(f"{slug}: kind mismatch {iid}: map {rec.get('kind')!r} vs sidecar {sit.get('kind')!r}")
@@ -418,6 +436,7 @@ def merge_course(slug, sd, att, spine, ctx, spine_set, sheet_rows, retract=None,
     if sheet_rows:
         inputs["scripts/cie_rejoin_resolutions.yaml"] = OrderedDict(sha256=sha256_file(SHEET_PATH))
         inputs["scripts/cie_rejoin_wave2as_resolutions.yaml"] = OrderedDict(sha256=sha256_file(SHEET2_PATH))
+        inputs["scripts/cie_wave3_resolutions.yaml"] = OrderedDict(sha256=sha256_file(SHEET3_PATH))
 
     new_att["resourcesSha"] = PIN
     new_att["generatedUtc"] = STAMP
@@ -576,8 +595,18 @@ def battery(slug, old_att, new_att, sd, committed, staged, sheet_rows, sidecar_o
     # (item, code) pairs, so their disappearance is the ordered outcome, not
     # loss. Any other drop still fails closed.
     retract_keys = set(retract or ()) | set(mistag or ())
-    if set(old_att["items"]) != set(new_att["items"]):
+    # M1 (CONSUME-3 amendment): the additive item-creation law grows the item
+    # set by exactly the created rows (sidecar items whose ids the hub bundle
+    # serves); any other delta — above all any LOSS — still fails closed.
+    created_ids = set(new_att["items"]) - set(old_att["items"])
+    if set(old_att["items"]) - set(new_att["items"]):
         problems.append("M1 item-id set changed")
+    if created_ids:
+        # every created id must be a bundle-served sidecar item (the
+        # item-creation law's membership guarantee), kinds must match
+        for iid2 in created_ids:
+            if new_att["items"][iid2].get("kind") not in ("note", "question_part"):
+                problems.append(f"M1 created-kind drift {iid2}")
     for iid, old_rec in old_att["items"].items():
         old_keys = {code_key(c) for c in old_rec.get("codes") or []}
         new_keys = {code_key(c) for c in new_att["items"][iid].get("codes") or []}
@@ -742,11 +771,12 @@ def main() -> int:
     import yaml  # noqa: F401  (asserted available)
     sheet_doc, sheet_resolves, sheet_other = load_sheet()
     print(f"sheet: resolves={len(sheet_resolves)} other={sheet_other}", flush=True)
-    if len(sheet_resolves) != 758:
-        die(f"sheet resolves {len(sheet_resolves)} != 758 (634 REJOIN-1 + "
-            f"124 REJOIN-2)")
-    if sheet_other.get("quarantine", 0) + sum(v for k, v in sheet_other.items() if k != "quarantine") != 200:
-        die(f"sheet non-resolve {sheet_other} != 200 quarantines (166 + 34)")
+    if len(sheet_resolves) != 759:
+        die(f"sheet resolves {len(sheet_resolves)} != 759 (634 REJOIN-1 + "
+            f"124 REJOIN-2 + 1 REJOIN-3 non-dispositioned; the 204 same-code "
+            f"re-derivations trimmed of record)")
+    if sheet_other.get("quarantine", 0) + sum(v for k, v in sheet_other.items() if k != "quarantine") != 288:
+        die(f"sheet non-resolve {sheet_other} != 288 quarantines (166 + 34 + 88)")
 
     registry = load_json(os.path.join(HUB, "content", "courses.json"))
     reg_rows = {r["slug"]: r for r in (registry["courses"] if isinstance(registry, dict) else registry)}
@@ -777,13 +807,25 @@ def main() -> int:
         spine_codes = {n["code"] for n in spine["curriculum"]["nodes"] if n["family"] == "SPEC_POINT"}
         ctx = AOM.course_ctx(spine["meta"].get("scopeRule") or {}, spine_codes)
         sheet_rows = {k: v for k, v in sheet_resolves.items() if k[0] == slug}
+        # CONSUME-3: the hub bundle-plane id oracle (the item-creation law's
+        # fail-closed membership check)
+        bundle_ids = set()
+        _nb = load_json(os.path.join(bundle_dir, "notes.json"))
+        for _n in _nb:
+            bundle_ids.add(_n.get("noteId") or _n.get("id"))
+        _qb = load_json(os.path.join(bundle_dir, "questions.json"))
+        for _s in _qb:
+            for _q in _s.get("questions", []):
+                for _p in _q.get("parts", []):
+                    bundle_ids.add(_p["id"])
+        bundle_ids.discard(None)
 
         retract = retraction_pairs(sd)
         mistag = mistag_pairs(sd)
         blk_counts = (((sd.get("anchors") or {}).get("v8Retraction") or {}).get("counts") or {})
         mt_counts = (((sd.get("anchors") or {}).get("misTagRepoints") or {}).get("counts") or {})
         new_att, tier_census, method_census, sidecar_only, sheet_counts, recon, retract_dropped, mistag_dropped = \
-            merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows, retract, mistag)
+            merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows, retract, mistag, bundle_ids=bundle_ids)
         if retract_dropped > (blk_counts.get("entriesRemoved") or 0):
             die(f"{slug}: retractDropped {retract_dropped} > entriesRemoved "
                 f"{blk_counts.get('entriesRemoved')} — retraction surface mismatch")
@@ -791,8 +833,12 @@ def main() -> int:
             die(f"{slug}: misTagRepointDropped {mistag_dropped} > entriesRemoved "
                 f"{mt_counts.get('entriesRemoved')} — mis-tag surface mismatch")
 
+        # CONSUME-3 re-scope: sidecar_only now counts ids absent from BOTH the
+        # map and the hub bundle (the honest corpus-beyond-hub class); the
+        # bundle-served ids were created as map rows above
         if len(sidecar_only) > max(50, 0.10 * len(sd["items"])):
-            die(f"{slug}: sidecarOnly {len(sidecar_only)} of {len(sd['items'])} — id-space mismatch, investigate")
+            die(f"{slug}: sidecarOnly {len(sidecar_only)} of {len(sd['items'])} — "
+                f"id-space mismatch, investigate (ids absent from map AND bundle)")
 
         old_bytes = dumps_map(att)
         new_bytes = dumps_map(new_att)
@@ -805,7 +851,7 @@ def main() -> int:
             continue
 
         # determinism: merge twice, byte-identical
-        re_att, *_ = merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows, retract, mistag)
+        re_att, *_ = merge_course(slug, sd, att, spine, ctx, spine_codes, sheet_rows, retract, mistag, bundle_ids=bundle_ids)
         if dumps_map(re_att) != new_bytes:
             die(f"{slug}: merge not deterministic")
 
@@ -837,6 +883,8 @@ def main() -> int:
             totals["sheetConflicts"] += sheet_counts[2]
             totals["inlineRewrites"] += rstats["inlineNewRewrites"]
             _sa2 = (((new_att.get("sources") or {}).get("specLinks") or {}).get("census") or {}).get("sidAnchors") or {}
+            totals["itemsCreated"] += sum(1 for iid2, r2 in new_att["items"].items()
+                                          if iid2 not in att["items"])
             totals["sidAnchorsAdded"] += _sa2.get("added", 0)
             totals["sidAnchorsVerified"] += _sa2.get("verified", 0)
             totals["sidAnchorsConflictsKept"] += _sa2.get("conflictsKept", 0)

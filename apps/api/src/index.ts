@@ -51,6 +51,7 @@ import { buildQuestionsRouters } from "./routes/questions";
 import { buildExamPapersRouters } from "./routes/exam-papers";
 import { buildPaperRegionsRouters } from "./routes/paper-regions";
 import { buildPaperAwardsRouters } from "./routes/paper-awards";
+import { buildLearnerPdfDrawingsRouters } from "./routes/learner/pdf-drawings"; // T-MG-INK-1 (r0) — the annotation-ink persistence plane (v2-native, additive; the T-SENECA-001 one-import-line precedent)
 import { buildTestBuilderRouters } from "./routes/testbuilder";
 import { buildAnswerInputRouters } from "./routes/answer-input";
 import { buildTeacherMarkingRouters } from "./routes/teachermarking";
@@ -99,6 +100,7 @@ const questions = buildQuestionsRouters();
 const examPapers = buildExamPapersRouters();
 const paperRegions = buildPaperRegionsRouters();
 const paperAwards = buildPaperAwardsRouters();
+const learnerPdfDrawings = buildLearnerPdfDrawingsRouters();
 const testbuilder = buildTestBuilderRouters();
 const teachermarking = buildTeacherMarkingRouters();
 const learnerMe = buildLearnerMeRouters();
@@ -433,6 +435,19 @@ app.route("/api/v1/paper-assets", paperRegions.paperAssetsRoute);
 // T-MIG-010/020/021/030/031/032 disclosed-commit precedent.
 app.route("/api/v1/paper-marks", paperAwards.paperMarksRoute);
 
+// Learner PDF drawing (annotation ink) router (T-MG-INK-1 run-002 — MG
+// parity Phase 3). Plan of record docs/MG-MARK-PARITY-PLAN.md §3.3 (the
+// SDK decision gate's run-002 consequences; verdict record
+// docs/MG-INK-SDK-GATE.md): GET/PUT /api/v1/learner/pdf-drawings — the
+// full-doc {schema:"syllabai-ink/1", shapes[]} container load/store with
+// the revision LWW 409 law (E4: single-writer, full-doc PUT right-sized;
+// no op-log). Learner-scoped PII surface; auth shell mirrors
+// selfmark/assessment (authenticated-only). Additive module — no fenced
+// file touched; this mount block + import + construction are the minimal
+// app-level wiring per the T-MIG-010/020/021/030/031/032 disclosed-commit
+// precedent.
+app.route("/api/v1/learner/pdf-drawings", learnerPdfDrawings.pdfDrawingsRoute);
+
 // Test-builder + answer-input routers (T-MIG-034 — Wave 3). Path parity with
 // the frozen core: TestBuilderController under /api/v1/teacher/tests (the
 // SecurityConfig.java:87 hasAnyRole('TEACHER','ADMIN') rule — the router owns
@@ -443,8 +458,9 @@ app.route("/api/v1/paper-marks", paperAwards.paperMarksRoute);
 // media rides ONLY to the vision-capable member; zero-key/test boots keep
 // the dormant-equivalent 503 transcription_unavailable parity, T-MIG-032
 // precedent); the weakness-options
-// analytics port is DORMANT (null → 501 with the task reference — the
-// class-analytics read service is unclaimed work). The /api/v1/* fallback
+// analytics port is AWAKE since CD-A (trace 1a18c0171724f5ed — the real
+// classOverview adapter, frozen-core parity; the 501 mapping remains for
+// the constructible dormant module). The /api/v1/* fallback
 // below stays the 404-after-auth path for NO router claimed.
 //
 // ⚠️ OUT-OF-FENCE COMMIT (T-MIG-034, R0 ratification requested):

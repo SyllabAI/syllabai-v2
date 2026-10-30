@@ -29,12 +29,12 @@
  *     any non-UUID element → 400 bad_request.
  *   - includeAnswers has defaultValue "false".
  *
- * Weakness-options: the ClassAnalyticsService.overview dependency is
- * UNPORTED in v2 (not T-MIG-033's surface — that is teachermarking/sme).
- * The route honest-501s with the task reference until R0 routes the
- * analytics port — the deterministic selection law is ported and
- * unit-pinned behind the ClassAnalyticsPort seam (never a fabricated
- * body, never a silent gap).
+ * Weakness-options: since CD-A (trace 1a18c0171724f5ed) the analytics
+ * dependency defaults AWAKE — classAnalyticsAdapter over the real
+ * ClassAnalyticsService (T-MIG-053 tranche-2; the frozen-core parity
+ * connection). The route's honest-501 mapping is RETAINED for the
+ * constructible dormant module (analytics: null — tests / a future
+ * deliberate gap): the route NEVER fabricates weakness data.
  */
 import { Hono } from "hono";
 import { z } from "zod";
@@ -46,7 +46,14 @@ import { requireRole } from "../middleware/auth";
 import { apiError, NotFoundException } from "../services/identity/errors";
 import { AnalyticsUnavailable } from "../services/testbuilder/builder";
 import type { TestBuilder } from "../services/testbuilder/builder";
-import { buildTestBuilderComponents } from "../services/testbuilder";
+import {
+  buildTestBuilderModule,
+  classAnalyticsAdapter,
+  type ClassAnalyticsPort,
+} from "../services/testbuilder";
+import { requireDatabaseUrl } from "@syllabai/db";
+import { createSql } from "../services/identity/users";
+import type { KnowledgeDeps } from "../services/knowledge";
 
 const uuidSchema = z.string().uuid();
 
@@ -182,12 +189,29 @@ export function createTestBuilderRouter(deps: { builder: TestBuilder }): Hono {
 
 /**
  * Module + routers composition for the app root — mirrors
- * buildAssessmentRouters' shape exactly (env → requireDatabaseUrl →
- * createSql; the analytics port stays null until R0 routes the class
- * analytics lane).
+ * buildAssessmentRouters' shape (env → requireDatabaseUrl → createSql)
+ * with the CD-A wake-up: the analytics port defaults to the real
+ * classOverview adapter (frozen-core parity); `analytics: null` is the
+ * constructible dormant posture, an explicit port (tests) is honored.
  */
-export function buildTestBuilderRouters(env: Record<string, string | undefined> = process.env) {
-  const components = buildTestBuilderComponents(env);
+export function buildTestBuilderRouters(
+  env: Record<string, string | undefined> = process.env,
+  opts: { now?: () => Date; analytics?: ClassAnalyticsPort | null } = {},
+) {
+  const databaseUrl = requireDatabaseUrl(env as { DATABASE_URL?: string });
+  const sql = createSql(databaseUrl);
+  const deps: KnowledgeDeps = {
+    sql,
+    clock: { newId: () => crypto.randomUUID(), now: opts.now ?? (() => new Date()) },
+  };
+  // CD-A (trace 1a18c0171724f5ed): the port defaults AWAKE — the real
+  // classOverview adapter (frozen-core parity). Explicit `analytics: null`
+  // is the dormant posture (kept for tests and any future deliberate
+  // gap); an explicit port (tests) is honored verbatim. ONE sql client is
+  // shared by the builder, the servable rollup and the analytics adapter.
+  const analytics =
+    opts.analytics === undefined ? classAnalyticsAdapter(deps) : opts.analytics;
+  const components = buildTestBuilderModule(sql, analytics);
   return {
     components,
     testBuilderRoute: createTestBuilderRouter({ builder: components.builder }),

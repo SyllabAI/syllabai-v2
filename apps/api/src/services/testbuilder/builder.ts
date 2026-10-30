@@ -30,10 +30,12 @@
  *     mappings, batched), deterministic ordering meanMastery asc (nulls
  *     last) → learnersWithActiveMisconception desc → code asc.
  *
- * The ClassAnalyticsService.overview dependency is UNPORTED in v2 (not
- * T-MIG-033's surface — that is teachermarking/sme). The selection law is
- * ported here behind the ClassAnalyticsPort seam; the route honest-501s
- * until R0 routes the analytics port (no self-filing per the round-6 rule).
+ * The ClassAnalyticsService.overview dependency arrived with T-MIG-053
+ * tranche-2 (services/teacher/analytics.ts) and is CONNECTED by CD-A
+ * (classAnalyticsAdapter — pure delegation over the frozen 0.45/2
+ * engine): the port defaults AWAKE in buildTestBuilderRouters;
+ * `analytics: null` stays the constructible dormant posture (the route's
+ * honest-501 mapping is retained for it — never a fabricated body).
  */
 import type { StudentQuestionView } from "@syllabai/contracts";
 import type { ServableQuestions } from "../questions/servable";
@@ -448,7 +450,7 @@ export class TestBuilder {
   }
 }
 
-/** The route maps this to 501 with the analytics task reference (the dependency is unported — honest gap, never a fabricated body). */
+/** The route maps this to 501 with the task reference (the port is DORMANT — honest gap, never a fabricated body). */
 export class AnalyticsUnavailable extends Error {
   readonly status = 501;
   readonly code = "not_implemented";
