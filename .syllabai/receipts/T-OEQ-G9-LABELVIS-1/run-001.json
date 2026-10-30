@@ -1,0 +1,25 @@
+{
+ "task": "T-OEQ-G9-LABELVIS-1",
+ "receipt": "run-001",
+ "lane": "Official-ExamQuestion learner surface (Super Z, zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6)",
+ "operator_trace": "1a18bc38cda14119 (\"Repair the label-visibility case on the G9 rendered gate\") — closes the G9 gate gap that F119 filed as its QUEUED follow-up (\"the G9 rendered-gate label-visibility case (the benchmark now has a named follow-up)\") and that the T-OEQ-PARTLABEL-3 receipt carried in not_done_here",
+ "recorded_at_utc": "2026-10-30",
+ "base_of_record": "v2 main 3245de7c91e030625bf556dd6280bfd2d4f10bea (RN-REPLAY-2 line); branch t-oeq-g9-labelvis-1 head 6e4009c7bbbc at PR-open time",
+ "change_of_record": {
+  "file": "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx",
+  "diff": "4 lines / 2 sites — data-part-row={part.id} on the StructuredPart and McqPart flex items-baseline label rows; data-part-label={labelChip} on the two chip spans",
+  "behavior": "ZERO visual/behavioral change. The visible chip, the same-line layout and the smaller label font are the #467/#469 output and are untouched; the attributes are the same stable test-hook pattern as data-question-block (driven by the G9 render check since the F105 landing)."
+ },
+ "why": "The resources-side F120 wave bumps the G9 benchmark contract to v3 (frozen part_labels samples + labelled_parts census, benchmark_version 2 -> 3 per the anti-gaming law) and asserts ACTUAL learner-surface visibility through these hooks: exact frozen label on the chip, chip actually rendered (offsetParent/rects/visibility), geometrically on the SAME first text line as the part text (flex + items-baseline + rect bands), whole-page chip census == labelled_parts per case (36/47/33/45/55/60/39/36), and the fail-closed null class (path-less parts must render NO chip — never an index guess). The original defect class (labels aria-only / never rendered, mislabelled index letters) now FAILS the rendered leg instead of shipping through a green gate suite.",
+ "evidence_of_record": {
+  "location": "syllabai-resources Official-ExamQuestion/benchmark/receipts/2026-10-30-run0/ (committed with the F120 resources PR of record, cited in LEDGER F120)",
+  "rendered_leg": "8/8 case PASS, g9-render-check/0.5, renderer class syllabai-v2-local-runtime (the production apps/hub code of THIS branch driven through a real browser — not a mock); 40/40 label checks green including per-sample rect geometry and the maths-B null probe",
+  "aggregate": "G9 OVERALL PASS over the three mandatory legs (static-corpus 8/8, static-bundles 8/8, rendered 8/8; benchmark_version 3)",
+  "controls": "mutated-fact DETECTED; NEW mutated-label control DETECTED (mutated '(z)(i)' refused, original '(b)(i)' still derives from '1(b)(i)'); dead renderer honestly NOT_RUN (exit 2)"
+ },
+ "ci_of_record": "PR #483 head 6e4009c7bbbc — verify + hub in flight at receipt-write time; the of-record CI verdict and the merged:true API confirmation are recorded in the resources-side LEDGER F120 and the merge-desk receipt once green",
+ "not_done_here": [
+  "The post-deploy syllabai-hub-v2.vercel.app spot receipt for the v3 contract — follows the Vercel bake of the merged main (the local-runtime receipt above is the renderer of record; the spot is a bonus leg, honestly sequenced after deploy)",
+  "The maths-B corpus back-sync (1,461-pid standing debt; unchanged by this wave — the label contract READS the serve-plane field-write, it does not touch it)"
+ ]
+}
