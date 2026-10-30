@@ -1,0 +1,49 @@
+{
+ "task": "T-MG-INK-1 run-002",
+ "date": "2026-10-30",
+ "operator": {
+  "dispatch": "run-002",
+  "trace": "1a18c048d6165db1",
+  "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+ },
+ "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md \u00a73.3 + the run-001 decision consequences (docs/MG-INK-SDK-GATE.md)",
+ "class": "additive persistence plane \u2014 schema + API per the decision-gate consequences; NO surface code (run-003's lane)",
+ "schema": {
+  "table": "learner_pdf_drawings",
+  "doc": "jsonb NOT NULL \u2014 the full-doc container {schema:'syllabai-ink/1', shapes[]}, container law CHECKed at rest (schema id + jsonb_typeof(shapes)='array')",
+  "identity": "UNIQUE(learner_id, document_ref_type, document_ref_id) + PARTIAL UNIQUE INDEX (learner_id, document_ref_type, source_url) WHERE document_ref_id IS NULL + refine CHECK (source_url IS NOT NULL OR document_ref_id IS NOT NULL) \u2014 the plan \u00a73.3 'sourceUrl OR documentRef' law, their 'Missing sourceUrl' hard-require not copied",
+  "revision": "int NOT NULL DEFAULT 1 (the stored counter: an accepted write advances to base+1)",
+  "fk": "learner_id -> users(id) ON DELETE cascade (PII posture, mark_awards precedent)",
+  "migration": "packages/db/drizzle/0019_learner-pdf-drawings.sql (additive-only; the drizzle-kit constraint-churn storm from baseline drift REJECTED, the 0017/0018 precedent) + the rebaseline band-bump 86/815/116/86/151 -> 87/824/117/87/154 (measured verify PASS, 0 drifts)"
+ },
+ "api": {
+  "surface": "GET/PUT /api/v1/learner/pdf-drawings (auth-gated \u2014 authenticated-only shell FIRST; the learner rides the JWT context, never the wire)",
+  "get": "honest-empty drawing:null for a not-yet-drawn document (200, never an error); keyed by exactly one of documentRefId/sourceUrl",
+  "put": "full-doc write carrying the BASE revision \u2014 LWW at equal-or-ahead (stored advances to base+1), 409 revision_conflict on stale with ZERO rows written (the client re-reads and re-applies)",
+  "fallback_pin": "external PDF (sourceUrl-only) drawings store and load with documentRefId NULL",
+  "envelopes": "400 bad_request malformed request / 400 malformed_body / 400 validation_failed first-issue / 409 revision_conflict (the AWARDS-1 v2-native envelope law)"
+ },
+ "divergences": [
+  "documentRefId NULLABLE \u2014 the plan \u00a73.3 parenthetical refine ('allow sourceUrl-keyed rows with null documentRefId via a partial unique index') resolved over the \u00a73.3 NOT NULL token; the T-card run-002 schema pin of record governs",
+  "createdAt rides the 0018 housekeeping precedent (beyond the plan's column list, auditability)",
+  "insert races fail loud against the unique constraint (no ON CONFLICT absorb) \u2014 E4 single-writer makes the window theoretical; fail-loud > silent merge"
+ ],
+ "discipline": "additive-only (1 new table + 4 new modules + 2 new test files + the barrel one-liner + the app-root wiring block + the band-bump pins); zero target-site writes; zero DB contact (migration is deployment-time, the #474 desk precedent); fences cla.ts a9fdabfd / cla service.ts db4573c7 EXACT at cut 280ad8e9; no identity-plane path touched",
+ "deliverables": {
+  "contracts": "packages/contracts/src/pdf-drawings.ts (+ the index.ts barrel one-liner)",
+  "db": "packages/db/src/schema/schema.ts (learnerPdfDrawings append) + drizzle/0019_learner-pdf-drawings.sql + meta/0019_snapshot.json + the advanced 0000 baseline + journal idx 19",
+  "service": "apps/api/src/services/learner-pdf-drawings/{index.ts,sql.ts}",
+  "route": "apps/api/src/routes/learner/pdf-drawings.ts",
+  "wiring": "apps/api/src/index.ts (import + construction + mount, the T-MIG-010/020/021/030/031/032 disclosed-commit precedent)",
+  "tests": "apps/api/test/learner-pdf-drawings/{service.test.ts,routes.test.ts} \u2014 17 pass (9 service + 8 route), the 032 stubbed-sql pattern",
+  "tcard": ".syllabai/tasks/T-MG-INK-1.yaml (execution_record run-002)"
+ },
+ "verification": {
+  "typecheck": "exit 0 (all 4 packages)",
+  "suite": "bun test apps/api packages \u2014 3132 pass / 0 fail / 13 skip (173 files)",
+  "golden_selftest": "OK",
+  "retrieval_eval": "exit 0 + selftest exit 0",
+  "zero_core_census": "GATE GREEN \u2014 zero live entries"
+ },
+ "merge_of_record": "to be appended in the worklog receipt push at merge time (head CI recorded on the PR; merge-sha CI recorded post-merge, the #474/#481 desk precedent)"
+}

@@ -1932,3 +1932,42 @@ export const markWorkingBlocks = pgTable("mark_working_blocks", {
         }).onDelete("cascade"),
         check("mark_working_blocks_kind_check", sql`kind IN ('ink', 'text', 'structure')`),
 ]);
+
+// T-MG-INK-1 run-002 (plan of record: docs/MG-MARK-PARITY-PLAN.md §3.3;
+// verdict record docs/MG-INK-SDK-GATE.md) — the annotation-ink persistence
+// plane: one FULL-DOC jsonb container {schema:'syllabai-ink/1', shapes[]}
+// per (learner, documentRef | sourceUrl) — E4: single-writer, full-doc PUT
+// + revision LWW 409 is right-sized (no op-log: dead per the decision
+// record). Identity law (the plan §3.3 parenthetical refine): keyed EITHER
+// by the internal documentRef (the UNIQUE constraint) OR by the external
+// sourceUrl (external-PDF fallback pin — rows with NULL document_ref_id
+// made unique per (learner, document_ref_type, source_url) by the PARTIAL
+// unique index); the refine CHECK is the "sourceUrl OR documentRef" law
+// (their 'Missing sourceUrl' hard-require not copied — hence document_ref_id
+// NULLABLE, the T-card run-002 pin of record governing over the §3.3 NOT
+// NULL token). The container CHECK pins the doc law at rest (schema id
+// 'syllabai-ink/1', shapes an array). Cascade on learner delete (PII
+// posture, mark_awards precedent). createdAt rides the 0018 housekeeping
+// precedent (disclosed additive extra beyond the plan's column list).
+export const learnerPdfDrawings = pgTable("learner_pdf_drawings", {
+        id: uuid().primaryKey().notNull(),
+        learnerId: uuid("learner_id").notNull(),
+        documentRefType: text("document_ref_type").notNull(),
+        documentRefId: uuid("document_ref_id"),
+        sourceUrl: text("source_url"),
+        doc: jsonb().notNull(),
+        revision: integer().default(1).notNull(),
+        createdAt: timestamp("created_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+        updatedAt: timestamp("updated_at", { withTimezone: true, mode: 'string' }).defaultNow().notNull(),
+}, (table) => [
+        unique("uq_learner_pdf_drawings_learner_doc_ref").on(table.learnerId, table.documentRefType, table.documentRefId),
+        uniqueIndex("ux_learner_pdf_drawings_learner_type_sourceurl").using("btree", table.learnerId.asc().nullsLast().op("uuid_ops"), table.documentRefType.asc().nullsLast().op("text_ops"), table.sourceUrl.asc().nullsLast().op("text_ops")).where(sql`document_ref_id IS NULL`),
+        foreignKey({
+                columns: [table.learnerId],
+                foreignColumns: [users.id],
+                name: "learner_pdf_drawings_learner_id_fkey"
+        }).onDelete("cascade"),
+        check("learner_pdf_drawings_refine_check", sql`source_url IS NOT NULL OR document_ref_id IS NOT NULL`),
+        check("learner_pdf_drawings_doc_container_check", sql`jsonb_typeof(doc -> 'shapes') = 'array' AND doc ->> 'schema' = 'syllabai-ink/1'`),
+        check("learner_pdf_drawings_revision_check", sql`revision >= 1`),
+]);
