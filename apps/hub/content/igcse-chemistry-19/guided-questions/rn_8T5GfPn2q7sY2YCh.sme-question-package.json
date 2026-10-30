@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_8T5GfPn2q7sY2YCh",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "58fc5d55f2ae780ff8d79d54b40bcb3deb1bd9244558cdad7a52fa077773a054",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "12b36590521dd6c3fe1c2f004689bc8b9fa36e15e90e651b099bc107718972f1",
+    "pinnedRef": "80afdb8e02b628754f0e522d257e54d046ba5b0f"
   },
   "packageId": "igcse-chemistry::rn_8T5GfPn2q7sY2YCh",
   "subject": "igcse-chemistry",
@@ -192,6 +192,61 @@
       ]
     },
     {
+      "id": "rn_8T5GfPn2q7sY2YCh::L1::Q6",
+      "moduleId": "rn_8T5GfPn2q7sY2YCh::L1",
+      "stem": "State the products formed when ethanol burns completely in air.",
+      "misconceptionClass": "combustion products",
+      "kind": "recall",
+      "modelAnswer": "Carbon dioxide and water are formed.",
+      "keywords": [
+        "carbon",
+        "dioxide",
+        "water"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8T5GfPn2q7sY2YCh::L1::Q7",
+      "moduleId": "rn_8T5GfPn2q7sY2YCh::L1",
+      "stem": "Name the acid formed when the ethanol in open wine is oxidised by airborne bacteria.",
+      "misconceptionClass": "product naming",
+      "kind": "recall",
+      "modelAnswer": "Ethanoic acid is formed.",
+      "keywords": [
+        "ethanoic"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8T5GfPn2q7sY2YCh::L1::Q8",
+      "moduleId": "rn_8T5GfPn2q7sY2YCh::L1",
+      "stem": "Explain why wine left open for several days tastes acidic and vinegary.",
+      "misconceptionClass": "microbial oxidation",
+      "kind": "explain-why",
+      "modelAnswer": "Airborne acetobacter bacteria use oxygen to oxidise the ethanol in the wine into ethanoic acid, which tastes acidic and vinegary.",
+      "keywords": [
+        "bacteria",
+        "acetobacter",
+        "ethanoic",
+        "acid",
+        "vinegar"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8T5GfPn2q7sY2YCh::L1::Q9",
+      "moduleId": "rn_8T5GfPn2q7sY2YCh::L1",
+      "stem": "A laboratory spirit burner burns ethanol in air with an almost invisible blue flame. State the substance in the air that oxidises the ethanol during this complete combustion.",
+      "misconceptionClass": "oxidising agent identification",
+      "kind": "application",
+      "modelAnswer": "Oxygen in the air is the oxidising substance during complete combustion.",
+      "keywords": [
+        "oxygen",
+        "air"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_8T5GfPn2q7sY2YCh::L2::Q1",
       "moduleId": "rn_8T5GfPn2q7sY2YCh::L2",
       "stem": "Which reagent mixture oxidises ethanol to ethanoic acid in the laboratory?",
@@ -370,6 +425,61 @@
           "misconception": "atoms vanish"
         }
       ]
+    },
+    {
+      "id": "rn_8T5GfPn2q7sY2YCh::L2::Q6",
+      "moduleId": "rn_8T5GfPn2q7sY2YCh::L2",
+      "stem": "Name the oxidising agent heated with ethanol, in dilute sulfuric acid, to produce ethanoic acid in the laboratory.",
+      "misconceptionClass": "reagent recall",
+      "kind": "recall",
+      "modelAnswer": "Potassium dichromate(VI) is the oxidising agent.",
+      "keywords": [
+        "dichromate"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8T5GfPn2q7sY2YCh::L2::Q7",
+      "moduleId": "rn_8T5GfPn2q7sY2YCh::L2",
+      "stem": "State what the symbol [O] stands for in the equation CH3CH2OH + [O] giving CH3COOH + H2O.",
+      "misconceptionClass": "notation meaning",
+      "kind": "recall",
+      "modelAnswer": "[O] stands for oxygen supplied by the oxidising agent.",
+      "keywords": [
+        "oxygen"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8T5GfPn2q7sY2YCh::L2::Q8",
+      "moduleId": "rn_8T5GfPn2q7sY2YCh::L2",
+      "stem": "Explain why a condenser is placed above the flask during the hour-long boil.",
+      "misconceptionClass": "apparatus purpose",
+      "kind": "explain-why",
+      "modelAnswer": "It stops the volatile liquids escaping: vapour condenses on the cold glass and flows back to the flask, so nothing is lost during the long boil.",
+      "keywords": [
+        "escape",
+        "escapes",
+        "escaping",
+        "lost",
+        "condense",
+        "condenses",
+        "back"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_8T5GfPn2q7sY2YCh::L2::Q9",
+      "moduleId": "rn_8T5GfPn2q7sY2YCh::L2",
+      "stem": "A student heats ethanol with potassium dichromate(VI) in dilute sulfuric acid and watches the mixture change colour. State the colour change observed.",
+      "misconceptionClass": "observation recall",
+      "kind": "application",
+      "modelAnswer": "The mixture turns from orange to green.",
+      "keywords": [
+        "orange",
+        "green"
+      ],
+      "options": []
     }
   ]
 }

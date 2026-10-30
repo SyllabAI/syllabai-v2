@@ -184,6 +184,17 @@ export interface GuidedQuestion {
     explanation: string;
     misconception: string | null;
   }[];
+  /** R3 mixed check types (sme-question-package/1.1, additive — absent == "mcq",
+   *  byte-back-compat with the 1,195 conserved 1.0 questions): recall | explain-why |
+   *  application are written kinds (labelled free-text input, keyword auto-grade,
+   *  model answer always shown on settle); unknown values render reveal-only. */
+  kind?: string;
+  /** Written kinds: the model answer, always shown on settle (the teaching moment).
+   *  Absent on a written item -> reveal-only (never gradeable, never blank). */
+  modelAnswer?: string;
+  /** Written kinds: case-insensitive whole-token auto-grade keys (tokenized with the
+   *  same law as the learner text). Absent/empty -> reveal-only, never a silent grade. */
+  keywords?: string[];
 }
 
 /** The discovery index for a course, or null when the course has none. */

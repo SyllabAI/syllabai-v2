@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_2MpXPtNXvn8pQm3r",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "d222c6b66b9d8723b504436d12cb23d7bd0afbcde6276aa5bc86dc2b39aca7c6",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "ec89145944589dd5b8828b153922bd02aba048f1ef6b61ea596cc2d2b6af80e4",
+    "pinnedRef": "80afdb8e02b628754f0e522d257e54d046ba5b0f"
   },
   "packageId": "igcse-chemistry::rn_2MpXPtNXvn8pQm3r",
   "subject": "igcse-chemistry",
@@ -192,6 +192,60 @@
       ]
     },
     {
+      "id": "rn_2MpXPtNXvn8pQm3r::L1::Q6",
+      "moduleId": "rn_2MpXPtNXvn8pQm3r::L1",
+      "stem": "State the functional group that every alcohol carries.",
+      "misconceptionClass": "functional group recall",
+      "kind": "recall",
+      "modelAnswer": "Every alcohol carries the hydroxyl group, written -OH.",
+      "keywords": [
+        "hydroxyl",
+        "oh"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2MpXPtNXvn8pQm3r::L1::Q7",
+      "moduleId": "rn_2MpXPtNXvn8pQm3r::L1",
+      "stem": "State the type of solution formed when an alcohol mixes with water.",
+      "misconceptionClass": "solution behaviour",
+      "kind": "recall",
+      "modelAnswer": "A neutral solution is formed.",
+      "keywords": [
+        "neutral"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2MpXPtNXvn8pQm3r::L1::Q8",
+      "moduleId": "rn_2MpXPtNXvn8pQm3r::L1",
+      "stem": "Explain why the -OH group is called the functional group of the alcohols.",
+      "misconceptionClass": "functional group logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the hydroxyl group is the part of the molecule responsible for the characteristic reactions of alcohols.",
+      "keywords": [
+        "responsible",
+        "characteristic",
+        "reaction",
+        "reactions"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2MpXPtNXvn8pQm3r::L1::Q9",
+      "moduleId": "rn_2MpXPtNXvn8pQm3r::L1",
+      "stem": "A colourless liquid mixes with water to give a neutral solution and burns as a fuel. Name the family it belongs to and state the functional group that decides this.",
+      "misconceptionClass": "family identification",
+      "kind": "application",
+      "modelAnswer": "It is an alcohol: it carries the hydroxyl group, -OH, the functional group responsible for the characteristic reactions of the family.",
+      "keywords": [
+        "alcohol",
+        "hydroxyl",
+        "oh"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_2MpXPtNXvn8pQm3r::L2::Q1",
       "moduleId": "rn_2MpXPtNXvn8pQm3r::L2",
       "stem": "Which formula belongs to ethanol?",
@@ -370,6 +424,57 @@
           "misconception": "group multiplied"
         }
       ]
+    },
+    {
+      "id": "rn_2MpXPtNXvn8pQm3r::L2::Q6",
+      "moduleId": "rn_2MpXPtNXvn8pQm3r::L2",
+      "stem": "State the molecular formula of methanol.",
+      "misconceptionClass": "formula recall",
+      "kind": "recall",
+      "modelAnswer": "Methanol is CH3OH.",
+      "keywords": [
+        "ch3oh"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2MpXPtNXvn8pQm3r::L2::Q7",
+      "moduleId": "rn_2MpXPtNXvn8pQm3r::L2",
+      "stem": "State the acceptable shortened name for propan-1-ol in exams.",
+      "misconceptionClass": "acceptable names",
+      "kind": "recall",
+      "modelAnswer": "Propanol is the acceptable shortened name.",
+      "keywords": [
+        "propanol"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2MpXPtNXvn8pQm3r::L2::Q8",
+      "moduleId": "rn_2MpXPtNXvn8pQm3r::L2",
+      "stem": "Explain what the 1 in propan-1-ol records about the molecule.",
+      "misconceptionClass": "position number",
+      "kind": "explain-why",
+      "modelAnswer": "It records that the -OH group sits on the first carbon atom of the carbon chain.",
+      "keywords": [
+        "first",
+        "carbon",
+        "1"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_2MpXPtNXvn8pQm3r::L2::Q9",
+      "moduleId": "rn_2MpXPtNXvn8pQm3r::L2",
+      "stem": "An alcohol has three carbon atoms in its chain and the -OH group on the first carbon. State its full name.",
+      "misconceptionClass": "position application",
+      "kind": "application",
+      "modelAnswer": "Propan-1-ol (propanol is acceptable).",
+      "keywords": [
+        "propan",
+        "propanol"
+      ],
+      "options": []
     }
   ]
 }
