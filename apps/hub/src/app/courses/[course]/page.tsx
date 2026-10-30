@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import {
   ArrowRight,
   BookMarked,
@@ -18,7 +19,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { boardOf, listCourses, loadHubCourse, pilotCourseSlug } from "@/lib/courses";
-import { publicConfig } from "@/lib/config";
+import { courseMetaDescription, courseTitle, fmtCount } from "@/lib/format";
 import { collectPastPapers } from "@/lib/past-papers";
 import { corpusPapersForCourse } from "@/lib/pastpapers-corpus";
 import { buildPracticePapers } from "@/lib/practice-papers";
@@ -71,6 +72,37 @@ interface ResourceItem {
 export async function generateStaticParams() {
   return allCourseParams();
 }
+
+// UX review 2026-10-31 F-08: the growth-critical page shipped no canonical
+// (while ?tab= produces URL variants), no OG/Twitter card, and a meta
+// description describing a different product. Title + description compose
+// from the registry's own data (courseTitle / courseMetaDescription); the
+// [course] layout feeds the same composers to every subpage, and
+// metadataBase (root layout) resolves the relative URLs.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ course: string }>;
+}): Promise<Metadata> {
+  const { course: slug } = await params;
+  const hub = await loadHubCourse(slug);
+  if (!hub) return {};
+  const title = courseTitle(hub.meta);
+  const description = courseMetaDescription(hub.meta, hub.stats);
+  return {
+    title,
+    description,
+    alternates: { canonical: `/courses/${slug}` },
+    openGraph: {
+      title,
+      description,
+      url: `/courses/${slug}`,
+      type: "website",
+      siteName: "SyllabAI Hub",
+    },
+    twitter: { card: "summary", title, description },
+  };
+}
 export default async function CourseHubPage({
   params,
 }: {
@@ -81,10 +113,24 @@ export default async function CourseHubPage({
   if (!hub) notFound();
   const pilotSlug = await pilotCourseSlug();
   const allCourses = await listCourses();
-  const cfg = publicConfig();
   const { meta, stats } = hub;
+  // honest per-course count of lanes a visitor can actually open (F-03)
+  const liveCount = allCourses.filter((c) => c.hasBundle).length;
   const base = `/courses/${meta.slug}`;
   const qual = `${boardOf(meta)} ${meta.level} ${meta.subject}`;
+  const metaDescription = courseMetaDescription(meta, stats);
+  // Course JSON-LD (F-08) — fed from the same live counts the tiles print;
+  // no invented offers, ratings or durations.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: courseTitle(meta),
+    description: metaDescription,
+    educationalLevel: meta.level,
+    inLanguage: "en",
+    isAccessibleForFree: true,
+    provider: { "@type": "Organization", name: "SyllabAI" },
+  };
   // Task 22: real past-paper archive (sourcePaper provenance) + deterministic
   // practice papers assembled from the same banks.
   // OFFICIAL-PLANE-ONLY LAW (operator order 2026-10-25, trace
@@ -165,7 +211,6 @@ export default async function CourseHubPage({
             : "Connects once this course has a validated serving corpus — the tutor never answers across courses, so there is no cross-course fallback.",
           tags: ["Study", "Practice"],
           href: meta.curriculumCode ? `/tutor?course=${meta.slug}` : undefined,
-          countLabel: meta.curriculumCode ?? undefined,
           ctaLabel: "Ask the tutor",
           ready: !!meta.curriculumCode,
           notReadyLabel: "not yet connected",
@@ -184,7 +229,7 @@ export default async function CourseHubPage({
           desc: "Past paper, exam-style and quiz questions with mark schemes and self-marking, organised by topic.",
           tags: ["Practice", "Diagnose"],
           href: `${base}/exam-questions`,
-          countLabel: `${stats.questions} question${stats.questions === 1 ? "" : "s"} · ${stats.questionSets} set${stats.questionSets === 1 ? "" : "s"}`,
+          countLabel: `${fmtCount(stats.questions)} question${stats.questions === 1 ? "" : "s"} · ${fmtCount(stats.questionSets)} set${stats.questionSets === 1 ? "" : "s"}`,
           ready: stats.questions > 0,
           tint: "bg-chart-2/15",
         },
@@ -211,9 +256,9 @@ export default async function CourseHubPage({
               : undefined,
           countLabel:
             pastPapers.length > 0
-              ? `${pastPapers.length} paper${pastPapers.length === 1 ? "" : "s"} · ${heldQuestions} question${heldQuestions === 1 ? "" : "s"} held`
+              ? `${fmtCount(pastPapers.length)} paper${pastPapers.length === 1 ? "" : "s"} · ${fmtCount(heldQuestions)} question${heldQuestions === 1 ? "" : "s"} held`
               : corpusArchivePapers.length > 0
-                ? `${corpusArchivePapers.length} paper${corpusArchivePapers.length === 1 ? "" : "s"} · archive`
+                ? `${fmtCount(corpusArchivePapers.length)} paper${corpusArchivePapers.length === 1 ? "" : "s"} · official archive`
                 : undefined,
           tint: "bg-chart-5/15",
         },
@@ -226,14 +271,14 @@ export default async function CourseHubPage({
           href: practicePapers.length > 0 ? `${base}/practice-papers` : undefined,
           countLabel:
             practicePapers.length > 0
-              ? `${practicePapers.length} papers · ${stats.questions} questions`
+              ? `${fmtCount(practicePapers.length)} papers · ${fmtCount(stats.questions)} questions`
               : undefined,
           tint: "bg-chart-1/15",
         },
         {
           icon: Files,
           title: "Mock Exams",
-          desc: "Expert-created full practice papers — not part of the pilot corpus yet.",
+          desc: "Expert-created full practice papers — not available for this course yet.",
           tags: ["Practice", "Diagnose"],
           ready: false,
           tint: "bg-chart-1/15",
@@ -253,7 +298,7 @@ export default async function CourseHubPage({
             : "Concise, high-quality notes anchored to corpus spec points (official-spec mapping pending upstream).",
           tags: ["Study"],
           href: `${base}/revision-notes`,
-          countLabel: `${stats.notes} note${stats.notes === 1 ? "" : "s"}`,
+          countLabel: `${fmtCount(stats.notes)} note${stats.notes === 1 ? "" : "s"}`,
           ready: stats.notes > 0,
           tint: "bg-chart-2/15",
         },
@@ -279,7 +324,7 @@ export default async function CourseHubPage({
           desc: "Interactive digital flashcards that reinforce facts and definitions, imported per subtopic.",
           tags: ["Study", "Practice"],
           href: `${base}/flashcards`,
-          countLabel: `${stats.flashcards} card${stats.flashcards === 1 ? "" : "s"}`,
+          countLabel: `${fmtCount(stats.flashcards)} card${stats.flashcards === 1 ? "" : "s"}`,
           ready: stats.flashcards > 0,
           tint: "bg-chart-4/15",
         },
@@ -293,7 +338,7 @@ export default async function CourseHubPage({
                 desc: `Cambridge's Underground Mathematics (${ugmStationNames(ugm)} collections) — rich problems with suggestions and worked solutions, mapped to this course's specification points (alignment candidates, SUGGESTED).`,
                 tags: ["Study", "Practice"] as FrameworkTag[],
                 href: `${base}/ugm`,
-                countLabel: `${ugm.coverage.aligned} resources · ${ugm.specPoints.length} spec points`,
+                countLabel: `${fmtCount(ugm.coverage.aligned)} resources · ${fmtCount(ugm.specPoints.length)} spec points`,
                 ready: true,
                 tint: "bg-primary/10",
               },
@@ -322,7 +367,7 @@ export default async function CourseHubPage({
           href: guided ? `${base}/guided-lessons` : undefined,
           ctaLabel: guided ? "Browse lessons" : undefined,
           countLabel: guided
-            ? `Live for ${guided.counts.notes} notes · ${guided.counts.lessons} lessons`
+            ? `Live for ${fmtCount(guided.counts.notes)} notes · ${fmtCount(guided.counts.lessons)} lessons`
             : undefined,
           ready: Boolean(guided),
           tint: "bg-chart-4/15",
@@ -366,10 +411,7 @@ export default async function CourseHubPage({
           </div>
           <div className="ml-auto flex flex-wrap items-center gap-2">
             <Badge variant="outline" className="font-mono text-[10px]">
-              {stats.specPoints} spec points
-            </Badge>
-            <Badge variant="outline" className="font-mono text-[10px]">
-              data: {cfg.dataMode}
+              {fmtCount(stats.specPoints)} spec points
             </Badge>
             <Link
               href={`/courses/${meta.slug}/specification`}
@@ -439,7 +481,7 @@ export default async function CourseHubPage({
                 <Link
                   key={r.title}
                   href={r.href ?? base}
-                  className={`${tileClass} focus-visible:outline-none`}
+                  className={`${tileClass} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2`}
                 >
                   {inner}
                 </Link>
@@ -447,7 +489,7 @@ export default async function CourseHubPage({
                 <div
                   key={r.title}
                   aria-disabled
-                  title="Not part of the demo corpus yet"
+                  title="On the roadmap — not available for this course yet"
                   className={`${tileClass} opacity-70`}
                 >
                   {inner}
@@ -477,6 +519,12 @@ export default async function CourseHubPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
+      {/* structured data (F-08): same honestly composed text as the meta
+          description — the registry's own counts, nothing invented */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <CourseHeader
         meta={meta}
         activeTab="resources"
@@ -493,7 +541,7 @@ export default async function CourseHubPage({
             <span className="mx-2 text-muted-foreground/50">|</span>
             <span className="font-mono">{meta.code}</span>
           </p>
-          <CourseSwitcher current={meta.slug} courses={allCourses.map((c) => ({ slug: c.slug, label: c.label, subject: c.subject, level: c.level }))} />
+          <CourseSwitcher current={meta.slug} courses={allCourses.map((c) => ({ slug: c.slug, label: c.label, subject: c.subject, level: c.level, board: boardOf(c) }))} />
         </div>
       </CourseHeader>
 
@@ -502,29 +550,34 @@ export default async function CourseHubPage({
           <CardHeader className="pb-2">
             <CardTitle className="flex items-center gap-2 text-base">
               <GraduationCap className="size-4 text-primary" aria-hidden />
-              Content status: import pending
+              Content for this course is on its way
             </CardTitle>
             <CardDescription>
-              This course is registered in the demo corpus (downloaded in{" "}
-              <span className="font-mono text-xs">syllabai-resources</span>) but has no committed
-              content bundle in this repository yet.
+              This course is registered and its materials are in preparation — the full hub
+              switches on here the moment the content lands. Nothing is faked in the meantime:
+              an empty course stays honestly empty.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             <p className="leading-relaxed text-muted-foreground">
-              The Learning Hub IA is live: when an import lands under{" "}
-              <span className="font-mono text-xs">content/{meta.slug}/</span>, the topic tree,
-              notes reader, question player and flashcard decks activate for this course with no
-              further code changes. Nothing is simulated here — a hub with no corpus stays
-              honestly empty.
+              When it goes live you get the whole set: the topic-by-topic notes reader, exam
+              questions with mark schemes, flashcard decks and past papers — the same surfaces
+              already live across the hub.
             </p>
             <p>
-              Explore the fully-loaded pilot course instead:{" "}
+              Until then:{" "}
               <Link
                 href={`/courses/${pilotSlug ?? ""}`}
                 className="font-medium text-primary underline underline-offset-2"
               >
                 Edexcel IGCSE Chemistry (4CH1)
+              </Link>{" "}
+              is fully loaded, or{" "}
+              <Link
+                href="/courses"
+                className="font-medium text-primary underline underline-offset-2"
+              >
+                browse all {fmtCount(liveCount)} live courses
               </Link>
               .
             </p>
