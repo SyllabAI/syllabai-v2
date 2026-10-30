@@ -1,0 +1,65 @@
+{
+  "format": "r3-mixed-check-types-stageb5-live-spotcheck/1.0",
+  "wave": "R3-MIXED-CHECK-TYPES stage B wave 5 (S-B5) — the wave-5 authoring register, 12 notes / 26 lessons / 104 written items",
+  "operator_trace": "1a18d9f731726de1",
+  "generated_at_utc": "2026-10-31T17:55:00Z",
+  "chain_of_record": {
+    "resources_pr": 243,
+    "resources_merge_commit": "0e66325219293c23243c5721dc68199b47a6e71b",
+    "resources_commit_a": "6fb25fc02d1a7acc71ee2231b547ac85e00705c1",
+    "resources_commit_c": "1856b8cc21801fcb874c08e68cab014bdefd98d6",
+    "resources_wave_open_main": "e6dc252bbc5581e212fff1e6ca481921f18db16a",
+    "hub_pr": 517,
+    "hub_head": "7cb2a3baef895480d3489fd5b44b922a2915e3e3",
+    "hub_merge_commit": "e7c70670b118",
+    "hub_pr_ci": "hub completed:success + verify completed:success at head (2/2)",
+    "hub_merge_sha_ci": "hub completed:success + verify completed:success at merge sha e7c70670 (2/2, poll 6)",
+    "race_guard": "main advanced 15853387 -> d10e03ed between PR open and merge (1 commit); PR-file overlap census 0 — merged clean"
+  },
+  "import_run": {
+    "feed": "r3-stageb5-v12",
+    "checks": "34/34 pass, 0 hard failures",
+    "landing": "0 written + 24 revised + 200 identical-existing (224 artifacts) — declared 24-file G-DELTA exact",
+    "identity_from_disk": {"notes": 112, "lessons": 239, "checks": 1691, "keyPoints": 1212, "distractors": 3565, "glossaryTerms": 654},
+    "stream_conserved": "1,570,204 chars, sha 51f3d8988888001a… (== pipeline grand)",
+    "receipt": ".syllabai/receipts/R3-CHECK-TYPES/HUB-IMPORT-RUN-20261031-r3-stageb5.json"
+  },
+  "bake_probe": {
+    "method": "occurrence-aware str.count on SSR HTML (never grep -c line counting); 45s interval; 15-min window",
+    "green_at": "poll 11, 17:24:09Z",
+    "targets": {
+      "rn_3B8JxsSjJvR9B4fk (3-lesson wave-5 note)": {"your_answer": "12/12", "stems": {"Zinc blocks are bolted to a steel hull": 2, "An iron gate is scratched down to the metal": 2}},
+      "rn_WJD4ZN4kQfzJNSPV (2-lesson wave-5 note)": {"your_answer": "8/8", "stems": {"A second run with the same initial volume": 2, "Show how the initial volume of air, 51.2 mL": 2}}
+    },
+    "calibrations_unchanged": {
+      "rn_xT8XsdJtDX5gNFXj (S-B1)": "Your answer x8/8",
+      "rn_2VnK66PqbvFKdKYt (S-B2)": "Your answer x8/8"
+    },
+    "law_2_1b": "'from the revision note' occurrence count == 0 on all probed learner surfaces (wave-5 targets + calibrations)"
+  },
+  "dom_flow_walk": {
+    "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/guided-lessons/rn_WJD4ZN4kQfzJNSPV",
+    "gate": "Medium confidence gate",
+    "provenance_footer_live": "note rn_WJD4ZN4kQfzJNSPV, pinned at 6fb25fc02d1a · promoted SyllabAI/syllabai-resources 0e6632521929",
+    "steps": [
+      "Q1-Q5 MCQ path untouched: radio options, Submit answer -> verdict role=status 'Great job!' x5, explanations render",
+      "Q6 recall (written): textbox 'Your answer' + Submit; law probe — keyword-bearing nonsense sentence ('…burette…') grades CORRECT per the declared whole-token law (>=1 hit -> correct); model answer shown verbatim on settle",
+      "Q7 recall: zero-keyword input ('shiny happy unicorns prance daily') -> 'Not quite.' + model answer VERBATIM ('The starting water level is recorded and the burette is read again after 3-4 days.') + locked",
+      "Q8 explain-why: label 'WRITTEN RESPONSE · EXPLAIN WHY' + keyword hit -> 'Great job!' + model answer VERBATIM",
+      "Q9 application: label 'WRITTEN RESPONSE · APPLICATION' + keyword hit -> 'Great job!' + model answer VERBATIM"
+    ],
+    "screenshots": [
+      "download/r3-stageb5/sb5-flow-q1-mcq.png",
+      "download/r3-stageb5/sb5-flow-q6-recall-miss.png (law-consistent keyword hit)",
+      "download/r3-stageb5/sb5-flow-q7-recall-miss.png",
+      "download/r3-stageb5/sb5-flow-q8-explainwhy-hit.png",
+      "download/r3-stageb5/sb5-flow-q9-application-hit.png"
+    ]
+  },
+  "ledger": {
+    "written_live": "496/~956 (16 stage A + 96x3 waves + 88 S-B4 + 104 S-B5)",
+    "remaining": "~460 across 115 lessons / 53 notes",
+    "next": "STAGE-B WAVE 6 — the wave-6 register tranche (12 notes per the wave-6/ bucket) on the same chain; ledger convention held — operator-gated"
+  },
+  "census_landed": {"notes": 112, "lessons": 239, "checks": 1691, "checks_mcq": 1195, "checks_written": 496, "written_recall": 248, "written_explain_why": 124, "written_application": 124, "sb5_notes": ["rn_3B8JxsSjJvR9B4fk","rn_5WvdZNzzhHdjj2Qq","rn_6M5JB7CjvwdDykMS","rn_7Q8M9nVkr2FxCzxd","rn_DGkNCJRcCN4VQ28p","rn_Kd76WccxD9ytSJJC","rn_QzYRzzmwRxk2gKqV","rn_S2fg29M7cqvMj5kT","rn_V9tPMnX6Hq2XnqcP","rn_WJD4ZN4kQfzJNSPV","rn_gBGX339WBpwyCrFF","rn_jXXsc4wt2344BjxX"], "sb5_written": 104}
+}
