@@ -1,0 +1,66 @@
+{
+  "lane": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-027-tranche2-token-wave4",
+  "title": "Tranche-2 token repair wave-4 partial discharge: 15/73 ledger-derived units adjudicated page-first — 32 fix tuples / 15 field writes / 7 pids changed (plane f48ba914 -> edbe22de after race-guard re-base), 8 page-evidenced zero-fix discharges, wave-5 continuation 58 units filed",
+  "operatorOrder": "wave-4",
+  "operatorTrace": "1a18a57bf71e7e29",
+  "date": "2026-10-30",
+  "scopeReconciliation": {
+    "ofRecordBasis": "ledger-first: run026_w3_worklist.json 103 units - run-026 ledger fully-covered units 30 = 73 units of record. Receipt wave4Continuation claimed 69 (its '34 adjudicated' = 30 ledger-covered + 4 zeroByClass counted as adjudicated-by-triage; receipt unitList 20 = the FIXES changed pids; 10 zero-fix-only pids carry the 44 ZERO_FIX variant discharges). The receipt own note ('NOT yet discharged... cheapest wave-4 openers') + remainingPapers ('zeroByClass verification pages') list those 4 as OPEN wave-4 work.",
+    "adopted": 73,
+    "receiptDelta": "+4 vs receipt — ledger wins per the run-026 101-vs-103 precedent; delta disclosed, no silent trimming; the 4 zeroByClass units adjudicated this run (3 zero-fix verified + 2023-06_02_8 verified fence)",
+    "worklistArtifact": "run027_w4_worklist.json (73 units, basis + receiptDelta filed)"
+  },
+  "wave4Execution": {
+    "unitsAdjudicated": 15,
+    "fixUnits": 7,
+    "zeroFixUnits": 8,
+    "changedPids": 7,
+    "fixTuples": 32,
+    "fieldWrites": 15,
+    "unitList": [
+      "offp_2023-01_02_2 (8^2-3^2 x2, AE^2+3^2=8^2 x2 operator-restoration, quoted sups \"16\"^2/\"9\"^2x2/\"3x8\"^2/3^2x2, angle-clause ∠DEA=∠BCA=90° restoration, ∠DAE x6 space-anchored)",
+      "offp_2023-01_02_3 (CD^2/AB^2, \"15\"^2+\"8\"^2, ...^2[19^2...^2] — 300dpi zoom print-verbatim 19²)",
+      "offp_2023-01_02_4 (3.8^2 x2, \"5.426...\"^2 x2, (3.8)^2 x3 — ms p9 needle-located this run)",
+      "offp_2023-01_02_9-b (FLIPPED from zeroByClass: FI=12^2+20^2 sups sol+mirror diverged-field, ∠FJI x2 sol+mirror)",
+      "offp_2025-06_01_5 (AC^2/20^2/42.5^2 chain x5 tuples)",
+      "offp_2025-06_01_24 (AB^2 x3 incl bracket-weave halves)",
+      "offp_2025-06_02r_9-b (AO^2=13^2+20^2+15^2, AN^2=13^2+20^2+20^2)"
+    ],
+    "zeroFixLaw": "page-evidenced per run-024/025/026 law: marks/prose furniture, sqrt-loss family (\"12 55\", \"3 544\", \"4 34\", \"√569\"-quoted), ½/displaced fraction weaves, ≤-glyph systemic loss (q8 x6), 7/16 fraction loss, weave walls (Working/Notes interleave), Cas/answer-column bleeds, sct trig keywords; stale-candidates disclosure (02-2023-06 4-b census leads absent from current plane)"
+  },
+  "disclosedRestorationClasses": [
+    "11-d operator-restoration extension: AE^2+3^2=8^2 (x2), problem clause ∠DEA = ∠BCA = 90° (print-verified qp p3)",
+    "run-017 ∠-symbol class: ∠DAE x6 (space-anchored tuple: old ' DAE ' not substring of new ' ∠DAE '), ∠FJI x2 (sol+mirror)",
+    "FLEET-CLASS (fenced, candidate for dedicated run): flattened QP formula-sheet boilerplate 'a b c 2bc cos A 2 2 2' family — present on every QP formula page"
+  ],
+  "planeOfRecord": { "before": "37fc0a18720d82ff", "rebasedTo": "f48ba914cf598054", "after": "edbe22de25724627", "bytes": 3721734, "path": "apps/hub/content/igcse-maths-b-16/official-papers.json" },
+  "raceGuard": "origin/main moved +11 mid-run (PR #474 t-mg-mp-rect-2, #475 X3, #477 t-oeq-partlabel-3 — the latter rewrote the plane: part labels as first-class serving field) + bookkeeping. Direct merge CONFLICTED on official-papers.json; remedy: merge aborted, branch reset to origin/main 4fbe8142, battery re-run 11/11 GREEN on new pin f48ba914 (32/32 tuple counts re-validated against the new bytes — partlabel-3 did not touch the 7 target parts' field bytes), re-commit + push. Fetch-first, no force. Post-merge bookkeeping note: origin/main advanced again (+2, PR #480 partlabel-3 receipt) — plane byte-verified UNTOUCHED (edbe22de25724627 EXACT), landing and live verification remain valid.",
+  "gates": {
+    "battery": "11/11 GREEN (plane_pin, census_EXACT 66/1281/2443/6600 pre==post, marks_map_identical, PUA_FFFD_delta_clean, dollar_parity, changed_set_EXACT 15 field writes, mirror_integrity incl diverged 9-b fixed per-field, serialization single-line, scrub clean, token_discharge 32/32, class_post_census no-growth)",
+    "failClosedCatch": "token_discharge RED in first dry-run: tuple old 'DAE' is substring of new '∠DAE' (self-substring false positive) — tuple re-anchored with surrounding spaces (' DAE ' -> ' ∠DAE '), zero battery-law drift",
+    "katex": "54/54 new spans OK @ katex 0.16.47 throwOnError",
+    "render": "15/15 projected fields GREEN through the ACTUAL hub engine (react-markdown + remark-gfm + remark-math + rehype-raw + rehype-sanitize + local rehypeKatexMhchem; 108 total .katex spans, zero katex-error, zero count regressions)"
+  },
+  "landing": {
+    "branch": "t-oeq-mathsb/run-027 PUSHED (content ff481857 on 37fc0a18 base -> re-based commit on 4fbe8142, head e7163a11: plane + lane artifacts incl 27 evidence PNGs (22 first-hand-read 150dpi pages + 5 300dpi zoom crops)",
+    "pr": "PR #478 — https://github.com/SyllabAI/syllabai-v2/pull/478",
+    "ci": "2/2 GREEN (verify + hub) on first head e7163a11",
+    "merge": "557285d6d92bd0e4b0f18b585903e2c78e63fde1 merged, merge_method=merge",
+    "vercel": "commit status 'pending []' with EMPTY contexts >=20min post-merge while the live corpus endpoint serves the new plane sha EXACT — status-channel event-drop class suspected (run-022 'canceled-from-dashboard' precedent). FAIL-LOUD disclosed; the corpus byte probe is the content-level evidence per the run-022 lineage",
+    "liveSpotCheck": "PASS on attempt 1 — corpus endpoint sha16 edbe22de25724627 EXACT (3,721,734 B); live served-content markers 12/12 + bonus marker (AO^2 794 chain) HIT incl escaped-quote served-form matching (run-022 §7 escaped-RSC class); negative control 'AO 2 = 132 + 202 + 152' (9-b old flattened form) ABSENT; page-flight markers N/A for past-paper page type (client-side corpus fetch)"
+  },
+  "wave5Continuation": {
+    "residualUnits": 58,
+    "map": "run027_w5_continuation.json (all 58 units carry triage + pagemap pages + candidates; page cache scratch/oeq_run026/pages + re-render via the run026_infra.py pastpapers source law, pinned tree 2c438f38)",
+    "note": "clusters: 02r-2025-06 (q2/q3-b/q7-c/q10-b), 01-2021-11/2022-01/2023-11/2024-06/2024-11/2026-06, 01r-2020-01/2022-01/2023-06/2024-06, 02-2025-11/2026-06, 02r-2026-06, singles; formula-sheet fleet class awaits operator ruling (dedicated restoration run vs per-wave fences)"
+  },
+  "corpusSide": "rides the NEXT converter run (standing disposition): +7 changed pids join the 1468-pid standing back-sync debt; NO solo converter trigger, NO solo resources PR",
+  "credentials": "operator PAT env/GIT_ASKPASS inline per command (askpass zero token bytes); standing ROTATION-REQUIRED order re-flagged for BOTH tokens (GitHub …JU4, Vercel vcp_…aoT3) — UNCHANGED, still awaiting rotation",
+  "bookkeeping": "receipt + worklog entry + landing addendum are bookkeeping-only .syllabai/** direct to main per the 28346abe/67d4f475/0026b4b4/a80e8649/54d6a104 precedent; fetch-first, ff-only, no force",
+  "writeSet": {
+    "content": "apps/hub/content/igcse-maths-b-16/official-papers.json (f48ba914cf598054 -> edbe22de25724627 on the re-based base)",
+    "evidence": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-027/ = run027_w4_worklist.json + run027_fixes.py + run027_apply.py + run027_projection.json + run027_w5_continuation.json + run027_katex_gate.mjs + run027_render_gate.mjs + run027_w4_plan.py + run027_briefs.py + run027_ctx.py + evidence/ (27 PNGs)",
+    "scriptsMirror": "/home/z/my-project/scripts/run027_{w4_plan,apply,briefs,ctx,spotcheck}.py + run027_{katex_gate,render_gate}.mjs"
+  }
+}
