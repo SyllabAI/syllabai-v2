@@ -1,0 +1,594 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "T-UGM-XBOARD-IAL-1",
+ "run": "x4-pure-4-mirror-r0",
+ "kind": "cross-board-mirror-build",
+ "generatedUtc": "2026-10-30T01:54:39Z",
+ "unit": "P4",
+ "matrixSource": ".syllabai/receipts/T-UGM-XBOARD-IAL-1/run-001-feasibility-r0.json",
+ "depthGradeLaw": {
+  "mapping": {
+   "DIRECT": "SERVES",
+   "DIRECT_THIN": "SERVES_WITH_GUARD",
+   "PARTIAL": "SERVES_WITH_GUARD",
+   "PARTIAL_VERY_THIN": "SERVES_WITH_GUARD",
+   "GAP": "INSUFFICIENT"
+  },
+  "serving": "SERVES/SERVES_WITH_GUARD rows serve their mirrored rows with the guard language on each resource specPoints note; INSUFFICIENT rows carry null pick + zero rows (schema-1.2 honest-gap law) — disclosed, never served."
+ },
+ "rows": [
+  {
+   "ial": "P4.1.1",
+   "ialCode": "1.1",
+   "class": "PARTIAL_VERY_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.7.3",
+     "role": "adjacent"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.6.3",
+     "role": "adjacent"
+    }
+   ],
+   "note": "proof by contradiction: same 3 incidental bodies; unfamiliar-proof application not covered",
+   "served": [
+    "r8065",
+    "r5703",
+    "r6877",
+    "r7391",
+    "r8286",
+    "r8399",
+    "r8543",
+    "r9942",
+    "a-tangent-is",
+    "gradient-match",
+    "gradients-important-real-world",
+    "r6345",
+    "r6352",
+    "r6584",
+    "r6959",
+    "r7734",
+    "r7750",
+    "r8231",
+    "r8287",
+    "r8625",
+    "r9138",
+    "r9815",
+    "slippery-slopes",
+    "speed-vs-velocity",
+    "tangent-or-normal",
+    "walk-sorting",
+    "r7433",
+    "talking-about-curves",
+    "two-way-calculus",
+    "r8907",
+    "common-terms",
+    "change-one-thing",
+    "r5345",
+    "r6137",
+    "r6153",
+    "r6257",
+    "r6592",
+    "r6608",
+    "r7031",
+    "r7258",
+    "r8121",
+    "r8163",
+    "r8249",
+    "r8260",
+    "r9375",
+    "r9468",
+    "r9613",
+    "r9819",
+    "r9916",
+    "r5849",
+    "r6405",
+    "r7424",
+    "r7487",
+    "r8493",
+    "r9177",
+    "r7553",
+    "r9527"
+   ],
+   "primaryPick": "r8065"
+  },
+  {
+   "ial": "P4.2.1",
+   "ialCode": "2.1",
+   "class": "DIRECT_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.1.5",
+     "role": "serves"
+    }
+   ],
+   "note": "partial fractions n=5",
+   "served": [
+    "frightening-function",
+    "r5126",
+    "r7792",
+    "r8152",
+    "r8694"
+   ],
+   "primaryPick": "r7792"
+  },
+  {
+   "ial": "P4.3.1",
+   "ialCode": "3.1",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.4.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.4.3",
+     "role": "serves"
+    }
+   ],
+   "note": "parametric curves via parametric-differentiation bodies; cartesian<->parametric conversion weaker",
+   "served": [
+    "implicit-circles",
+    "parametric-points",
+    "r5053",
+    "r5237",
+    "r5376",
+    "r5678",
+    "r5696",
+    "r6710",
+    "r7042",
+    "r7833",
+    "r8620",
+    "r8939",
+    "r9325",
+    "r9413",
+    "r9809"
+   ],
+   "primaryPick": "implicit-circles"
+  },
+  {
+   "ial": "P4.4.1",
+   "ialCode": "4.1",
+   "class": "DIRECT_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.1.6",
+     "role": "serves"
+    }
+   ],
+   "note": "binomial rational n: n=3 bodies (CIE 3.1.6)",
+   "served": [
+    "from-parabolas-to-catenaries",
+    "r6601",
+    "r7436"
+   ],
+   "primaryPick": "r7436"
+  },
+  {
+   "ial": "P4.5.1",
+   "ialCode": "5.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.4.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.4.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "implicit-circles",
+    "parametric-points",
+    "r5053",
+    "r5237",
+    "r5376",
+    "r5678",
+    "r5696",
+    "r6710",
+    "r7042",
+    "r7833",
+    "r8620",
+    "r8939",
+    "r9325",
+    "r9413",
+    "r9809"
+   ],
+   "primaryPick": "implicit-circles"
+  },
+  {
+   "ial": "P4.5.2",
+   "ialCode": "5.2",
+   "class": "GAP",
+   "depthGrade": "INSUFFICIENT",
+   "refs": [],
+   "note": "HARD GAP: differential-equation formation — corpus zero (CIE 3.8.1 n=0; gapprobe 0 hits)",
+   "served": [],
+   "primaryPick": null
+  },
+  {
+   "ial": "P4.6.1",
+   "ialCode": "6.1",
+   "class": "PARTIAL_VERY_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.8.4",
+     "role": "adjacent"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.7.3",
+     "role": "adjacent"
+    }
+   ],
+   "note": "volumes of revolution: 4 incidental solid-geometry matches (r5584, r6372, r8548); no true V-revolution package — disclose",
+   "served": [
+    "meaningful-areas",
+    "r5007",
+    "r5584",
+    "r6372",
+    "r7386",
+    "r7444",
+    "r7628",
+    "r7861",
+    "r8130",
+    "r8350",
+    "r9138",
+    "r9357",
+    "r8065",
+    "r5703",
+    "r6877",
+    "r7391",
+    "r8286",
+    "r8399",
+    "r8543",
+    "r9942",
+    "a-tangent-is",
+    "gradient-match",
+    "gradients-important-real-world",
+    "r6345",
+    "r6352",
+    "r6584",
+    "r6959",
+    "r7734",
+    "r7750",
+    "r8231",
+    "r8287",
+    "r8625",
+    "r9815",
+    "slippery-slopes",
+    "speed-vs-velocity",
+    "tangent-or-normal",
+    "walk-sorting",
+    "r7433",
+    "talking-about-curves",
+    "two-way-calculus"
+   ],
+   "primaryPick": "r9357"
+  },
+  {
+   "ial": "P4.6.2",
+   "ialCode": "6.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.5.5",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.5.6",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "constant-consistency",
+    "integral-chasing-2",
+    "r6620",
+    "r8134",
+    "r5126",
+    "integral-sorting",
+    "r8778",
+    "r8890",
+    "which-substitution",
+    "r8694"
+   ],
+   "primaryPick": "r8134"
+  },
+  {
+   "ial": "P4.6.3",
+   "ialCode": "6.3",
+   "class": "DIRECT_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.5.3",
+     "role": "serves"
+    }
+   ],
+   "note": "partial-fraction integration n=2",
+   "served": [
+    "r5126",
+    "r8694"
+   ],
+   "primaryPick": "r5126"
+  },
+  {
+   "ial": "P4.6.4",
+   "ialCode": "6.4",
+   "class": "GAP",
+   "depthGrade": "INSUFFICIENT",
+   "refs": [],
+   "note": "HARD GAP: separable DEs — corpus zero (CIE 3.8.2-4 n=0; gapprobe 0 hits)",
+   "served": [],
+   "primaryPick": null
+  },
+  {
+   "ial": "P4.6.5",
+   "ialCode": "6.5",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.8.4",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.4.3",
+     "role": "adjacent"
+    }
+   ],
+   "note": "parametric area via area + parametric material",
+   "served": [
+    "meaningful-areas",
+    "r5007",
+    "r5584",
+    "r6372",
+    "r7386",
+    "r7444",
+    "r7628",
+    "r7861",
+    "r8130",
+    "r8350",
+    "r9138",
+    "r9357",
+    "implicit-circles",
+    "parametric-points",
+    "r5053",
+    "r5237",
+    "r5376",
+    "r5678",
+    "r5696",
+    "r6710",
+    "r7042",
+    "r7833",
+    "r8620",
+    "r8939",
+    "r9325",
+    "r9413",
+    "r9809"
+   ],
+   "primaryPick": "r9357"
+  },
+  {
+   "ial": "P4.7.1",
+   "ialCode": "7.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.7.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.7.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "hit-the-spot",
+    "r9629",
+    "r5153",
+    "r5992",
+    "r7285",
+    "r8215",
+    "r8339",
+    "r8456",
+    "r8565",
+    "r8573",
+    "r8704",
+    "r8798"
+   ],
+   "primaryPick": "hit-the-spot"
+  },
+  {
+   "ial": "P4.7.2",
+   "ialCode": "7.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.7.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r6007",
+    "r7285",
+    "r8215",
+    "r9575",
+    "r9629"
+   ],
+   "primaryPick": "r9575"
+  },
+  {
+   "ial": "P4.7.3",
+   "ialCode": "7.3",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.7.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "hit-the-spot",
+    "r5153",
+    "r5992",
+    "r7285",
+    "r8215",
+    "r8339",
+    "r8456",
+    "r8565",
+    "r8573",
+    "r8704",
+    "r8798"
+   ],
+   "primaryPick": "r8215"
+  },
+  {
+   "ial": "P4.7.4",
+   "ialCode": "7.4",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.7.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r6007",
+    "r7285",
+    "r8215",
+    "r9575",
+    "r9629"
+   ],
+   "primaryPick": "r9575"
+  },
+  {
+   "ial": "P4.7.5",
+   "ialCode": "7.5",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.7.3",
+     "role": "serves"
+    }
+   ],
+   "note": "distance formula embedded in magnitude/position material",
+   "served": [
+    "r6007",
+    "r7285",
+    "r8215",
+    "r9575",
+    "r9629"
+   ],
+   "primaryPick": "r9575"
+  },
+  {
+   "ial": "P4.7.6",
+   "ialCode": "7.6",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.7.4",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.7.5",
+     "role": "serves"
+    }
+   ],
+   "note": "skew-line depth >= IAL requirement (CIE P3 vectors includes shortest distance)",
+   "served": [
+    "lots-of-vector-lines",
+    "three-lines",
+    "vector-squares",
+    "r6007"
+   ],
+   "primaryPick": "lots-of-vector-lines"
+  },
+  {
+   "ial": "P4.7.7",
+   "ialCode": "7.7",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.7.6",
+     "role": "serves"
+    }
+   ],
+   "note": "scalar product thin but sufficient",
+   "served": [
+    "r5813",
+    "r6493",
+    "r7272",
+    "r8456"
+   ],
+   "primaryPick": "r6493"
+  }
+ ],
+ "census": {
+  "ialSpecPoints": 18,
+  "depthGrade": {
+   "SERVES_WITH_GUARD": 8,
+   "SERVES": 8,
+   "INSUFFICIENT": 2
+  },
+  "mirroredResources": 119,
+  "candidateRows": 257,
+  "perSourceCourse": {
+   "cie-a-level-maths-20-pure-1": 68,
+   "cie-a-level-maths-20-pure-3": 36,
+   "cie-a-level-maths-20-pure-2": 15
+  },
+  "specPointsCovered": 16
+ },
+ "validation": {
+  "V1_biject": "PASS (18 matrix keys <-> 18 curriculum SPEC_POINT codes)",
+  "V2_refs": "PASS (every ref resolves to CIE index + resource of record)",
+  "V3_serve": "PASS (pick law, no orphans, no nonOverlap mirrors, delimiter balance, asset existence, INSUFFICIENT never serves, byte-equality across sources)"
+ }
+}

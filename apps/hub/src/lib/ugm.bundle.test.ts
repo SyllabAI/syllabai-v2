@@ -1904,3 +1904,107 @@ describe("the cross-board mirror plane (T-UGM-XBOARD-IAL-1 X3 — the THIRD IAL 
     expect(guardCodes.size).toBe(7);
   });
 });
+
+describe("the cross-board mirror plane (T-UGM-XBOARD-IAL-1 X4 — the FOURTH IAL bundle, vehicle V1)", () => {
+  const XB4_PATH = join(
+    import.meta.dir,
+    "../../content/ial-maths-20-pure-4/ugm-resources.json",
+  );
+  const xb4 = UgmLaneBundle.parse(
+    JSON.parse(readFileSync(XB4_PATH, "utf8")),
+  );
+
+  test("parse succeeds under the reader schema (1.2 honest-gap law)", () => {
+    expect(xb4.schema).toBe("syllabai-demo.ugm-lane-resources/1.2");
+    expect(xb4.lane).toBe("ial-maths-20-pure-4");
+    expect(xb4.reviewState.state).toBe("SUGGESTED");
+    expect(xb4.reviewState.note).toContain("Cross-board mirror");
+  });
+
+  test("spec-point index: 18 codes biject the IAL pure-4 curriculum spine", () => {
+    const cur = JSON.parse(
+      readFileSync(
+        join(import.meta.dir, "../../content/ial-maths-20-pure-4/curriculum.json"),
+        "utf8",
+      ),
+    ) as { nodes: Array<{ family?: string; code?: string; title?: string }> };
+    const codes = cur.nodes
+      .filter((n) => n.family === "SPEC_POINT")
+      .map((n) => n.code as string)
+      .sort();
+    expect(xb4.specPoints).toHaveLength(18);
+    expect([...xb4.specPoints.map((s) => s.code)].sort()).toEqual(codes);
+    // spine verbatim law: officialText is the curriculum title of record
+    for (const sp of xb4.specPoints) {
+      const node = cur.nodes.find((n) => n.code === sp.code);
+      expect(sp.officialText).toBe(node?.title ?? null);
+    }
+  });
+
+  test("mirror census of record (run-001 matrix P4: 8 SERVES + 8 SERVES_WITH_GUARD + 2 INSUFFICIENT)", () => {
+    expect(xb4.resources).toHaveLength(119);
+    expect(xb4.coverage.specPointsCovered).toHaveLength(16);
+    for (const sp of xb4.specPoints) {
+      expect(sp.resourceCount).toBe(sp.ugmIds.length);
+      if (sp.primaryPick !== null) expect(sp.ugmIds).toContain(sp.primaryPick);
+    }
+    expect(xb4.coverage.coursePlaneJoins?.kinds).toEqual({
+      cross_board_mirror: 119,
+    });
+  });
+
+  test("the two hard GAPs of record (5.2 DE formation, 6.4 separable DEs) carry null pick + zero rows", () => {
+    // the schema-1.2 honest-gap law, exercised for the first time on the
+    // IAL mirror plane: INSUFFICIENT rows are disclosed, never served
+    for (const gap of ["5.2", "6.4"]) {
+      const sp = xb4.specPoints.find((s) => s.code === gap);
+      expect(sp).toBeDefined();
+      expect(sp?.primaryPick).toBeNull();
+      expect(sp?.resourceCount).toBe(0);
+      expect(sp?.ugmIds).toEqual([]);
+      expect(xb4.coverage.specPointsCovered).not.toContain(gap);
+      for (const r of xb4.resources) {
+        expect(r.specPoints.map((e) => e.code)).not.toContain(gap);
+      }
+    }
+  });
+
+  test("every mirrored row is a byte-true CIE mirror with provenance of record", () => {
+    const sources = new Map<string, { bodyMd: string }>();
+    for (const c of [
+      "cie-a-level-maths-20-pure-1",
+      "cie-a-level-maths-20-pure-2",
+      "cie-a-level-maths-20-pure-3",
+    ]) {
+      const b = JSON.parse(
+        readFileSync(
+          join(import.meta.dir, "../../content", c, "ugm-resources.json"),
+          "utf8",
+        ),
+      ) as { resources: Array<{ ugmId: string; bodyMd: string }> };
+      for (const r of b.resources) sources.set(`${c}/${r.ugmId}`, r);
+    }
+    for (const r of xb4.resources) {
+      expect(r.nonOverlap).toBe(false);
+      expect(r.specPoints.length).toBeGreaterThan(0);
+      expect(r.servedFromCourse).toMatch(/^cie-a-level-maths-20-pure-[123]$/);
+      expect(r.textOfRecordUnder).toBe(`${r.servedFromCourse}/ugm-resources.json`);
+      const src = sources.get(`${r.servedFromCourse}/${r.ugmId}`);
+      expect(src).toBeDefined();
+      expect(src?.bodyMd).toBe(r.bodyMd); // the byte-true mirror law
+      for (const sp of r.specPoints) {
+        expect(sp.note ?? "").toMatch(/^\[(SERVES|SERVES_WITH_GUARD)\] <- CIE /);
+      }
+    }
+  });
+
+  test("the guard language rides exactly the 8 thin rows of record", () => {
+    const guardCodes = new Set(
+      xb4.resources
+        .flatMap((r) => r.specPoints)
+        .filter((s) => (s.note ?? "").startsWith("[SERVES_WITH_GUARD]"))
+        .map((s) => s.code),
+    );
+    expect(guardCodes.size).toBe(8);
+  });
+});
