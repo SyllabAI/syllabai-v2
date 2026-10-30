@@ -1,0 +1,48 @@
+version: 1
+task:
+  id: T-MG-INK-1
+  title: "MG parity — the annotation layer + ink persistence, opened via the SDK decision gate (tldraw vs native canvas)"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)"
+  status: OPEN
+  priority: P2
+  band: T-MG-MARK-PARITY (interactive paper marking) — decision gate + API/UI additive modules
+  wave: mg-parity-phase3-ink
+  deps: [T-MG-MP-RECT-1, T-MG-AWARDS-1]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.3"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    - "(gate-a) evidence pin — the verdict is measured, not asserted: bundle sizes from a re-runnable esbuild harness (tldraw 5.6.0 pinned, react external, gzip -9), licence clauses quoted verbatim from the canonical licence text (sha256-pinned), dpr/zoom interplay argued from code law (pdf-pane:987 dpr cap 2, s145 two-phase zoom, RegionOverlay overlay law), persistence fit argued from dossier numbers (11,148 B live doc, single-writer)"
+    - "(gate-b) verdict pin — the decision record of record (docs/MG-INK-SDK-GATE.md) lands BEFORE any surface code and states the verdict + consequences + an explicit reversal clause; the plan §3.3 DEFAULT clause is either triggered or explicitly not, with the reason"
+    - "(gate-c) zero-touch pin — Gate 1 + fence census clean; the gate run touches NO schema, NO API, NO hub code, NO contracts — additive decision record + lane artifacts + T-card only"
+    - "(run-002) schema pin — learner_pdf_drawings exactly per plan §3.3: doc jsonb {schema, shapes[]}, UNIQUE(learnerId, documentRefType, documentRefId) + partial unique for sourceUrl-keyed rows with null documentRefId; sourceUrl nullable WITH the sourceUrl-OR-documentRef refine (their 'Missing sourceUrl' hard-require not copied)"
+    - "(run-002) api pin — GET/PUT /api/v1/learner/pdf-drawings auth-gated; PUT carries revision (LWW, 409 on stale); fallback pin — external PDF (sourceUrl-only) drawings store and load"
+    - "(run-003) surface pin — standalone ink layer over past-papers only (books/citations excluded); toolbar parity list (pen colour + thickness, undo/redo/clear, text boxes); persistence pin — draw, reload, redraw survives byte-faithfully; perf pin — ink stays 60 fps over the windowed renderer with dpr cap 2"
+    - "(deferred) instruments pin — maths instruments (ruler/protractor/compasses) belong to T-MG-INK-2; zero schema impact"
+  execution_record: >
+    run-001 (2026-10-30). Operator dispatch "Phase 3" (trace 1a18bd3f2c4b0901).
+    The gate ran as a measured spike, not a preference poll: tldraw 5.6.0
+    installed from the public registry and bundled three ways with esbuild
+    (full editor 560,987 B JS gz + 14,531 B css gz ≈ 575.5 KB total; headless
+    store core 46,212 B gz; native reference implementation 1,314 B gz,
+    written for the spike as working code — ink-native-ref.js: pointer-capture
+    strokes, undo/redo/clear, normalized 0..1 coordinates, dpr-cap-2 rendering,
+    {schema, shapes[]} doc export/import). Licence census first-hand: umbrella
+    + editor + driver carry the tldraw license whose free tier states "Not to
+    use the Software in Production Environments" with technical enforcement
+    that "may collect and transmit usage data to tldraw for license compliance
+    purposes" — disqualifying for a production learner surface that records
+    learner ink (Phase-2 PII posture law); 6 subpackages (tlschema/state/
+    state-react/store/utils/validate) are MIT but carry only the doc format.
+    Peer compatibility checked: hub react@19.3.0 satisfies tldraw ^19.2.1 —
+    compatibility was NOT the blocker; licence and bundle were. Verdict:
+    NATIVE CANVAS INK on pdf-pane v4 (DEFAULT tldraw-headless NOT triggered —
+    the spike is conclusive). Decision record of record: docs/MG-INK-SDK-GATE.md
+    (E1 licence / E2 bundle / E3 dpr-zoom / E4 persistence / E5 instruments,
+    with consequences for run-002 schema+API, run-003 surface, T-MG-INK-2
+    instruments, and an explicit reversal clause). No schema, API, UI, or
+    contract code in this run — the gate's own law puts the verdict before any
+    surface code. Lane artifacts: .syllabai/lane-artifacts/T-MG-INK-1/run-001/
+    (spike-log.json with pinned measurements and artifact sha256s, measure.js,
+    both bundle entries, the native reference implementation, the canonical
+    licence snapshot). Fence census: cla.ts a9fdabfd / cla service.ts db4573c7
+    EXACT; zero identity-plane paths; zero modified files (pure additive diff).

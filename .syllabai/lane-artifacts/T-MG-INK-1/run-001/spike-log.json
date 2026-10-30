@@ -1,0 +1,89 @@
+{
+ "task": "T-MG-INK-1 run-001 \u2014 SDK decision gate spike",
+ "date": "2026-10-30",
+ "operator_dispatch": {
+  "word": "Phase 3",
+  "trace": "1a18bd3f2c4b0901",
+  "session": "web-123877e4-3cca-4eba-b72d-52233419378e"
+ },
+ "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md \u00a73.3 decision gate + \u00a75.5",
+ "verdict": "native canvas ink on pdf-pane v4 (DEFAULT tldraw-headless NOT triggered \u2014 spike conclusive)",
+ "environment": {
+  "node": "v24.22.1",
+  "bundler": "esbuild",
+  "gzip": "level 9",
+  "react_external": true,
+  "hub_react_resolved": "19.3.0 (bun.lock)"
+ },
+ "subject": {
+  "tldraw_version": "5.6.0",
+  "tldraw_peerDeps": {
+   "react": "^18.2.0 || ^19.2.1",
+   "react-dom": "^18.2.0 || ^19.2.1"
+  },
+  "registry": "npmjs public, installed 2026-10-30"
+ },
+ "measurements": {
+  "a_tldraw_full_editor": {
+   "js_raw": 1849737,
+   "js_gz": 560987,
+   "css_raw": 78827,
+   "css_gz": 14531,
+   "note": "<Tldraw/> mount + tldraw/tldraw.css; drags @tiptap/*, radix-ui, react-intl, idb, lz-string"
+  },
+  "b_tldraw_headless_store": {
+   "js_raw": 153934,
+   "js_gz": 46212,
+   "note": "@tldraw/tlschema + @tldraw/store + @tldraw/state only (their doc format, no UI)"
+  },
+  "c_native_ink_reference": {
+   "js_raw": 3124,
+   "js_gz": 1314,
+   "note": "ink-native-ref.js \u2014 working zero-dep reference impl checked into this artifacts dir"
+  }
+ },
+ "licence_census": {
+  "canonical_source": "https://raw.githubusercontent.com/tldraw/tldraw/main/LICENSE.md",
+  "canonical_sha256_16": "9578fcddc20e404b",
+  "tldraw_licence_packages": [
+   "tldraw (umbrella)",
+   "@tldraw/editor@5.6.0",
+   "@tldraw/driver@5.6.0"
+  ],
+  "mit_packages": [
+   "@tldraw/tlschema@5.6.0",
+   "@tldraw/state@5.6.0",
+   "@tldraw/state-react@5.6.0",
+   "@tldraw/store@5.6.0",
+   "@tldraw/utils@5.6.0",
+   "@tldraw/validate@5.6.0"
+  ],
+  "free_tier_conditions_verbatim": [
+   "Not to use the Software in Production Environments.",
+   "Not to disable, change, or interfere with the Software's License Key enforcement."
+  ],
+  "technical_enforcement_verbatim": "The Software includes technical measures to verify License Key validity, detect deployment environments, enforce usage restrictions based on license type, and ensure proper watermark display. The Software may collect and transmit usage data to tldraw for license compliance purposes."
+ },
+ "substrate_facts": {
+  "pdf_pane": "apps/hub/src/components/pastpapers/pdf-pane.tsx (2,242 lines, v4 monolith \u2014 never modified; overlay law STANDALONE)",
+  "dpr_cap": "Math.min(window.devicePixelRatio || 1, 2) at pdf-pane.tsx:987",
+  "two_phase_zoom": "s145 \u2014 instant compositor-only live phase + debounced 180ms quality refreeze",
+  "overlay_precedent": "apps/hub/src/components/pastpapers/RegionOverlay.tsx \u2014 normalized 0..1 CSS-percentage geometry, no pixel math, no re-measure listeners",
+  "windowed_rendering": {
+   "RENDER_RADIUS": 3,
+   "CLEAR_RADIUS": 6,
+   "MAX_RENDER_SCALE": 4
+  }
+ },
+ "rerun": [
+  "npm i tldraw@5.6.0 esbuild",
+  "node measure.js"
+ ],
+ "artifacts_sha256_16": {
+  "measure.js": "da9a3fea81dfc889",
+  "entry-a-full.jsx": "822a57708117b45f",
+  "entry-b-headless.js": "04e08ec88463e9df",
+  "ink-native-ref.js": "51dacfa7cc0fd133",
+  "tldraw-LICENSE.md": "9578fcddc20e404b"
+ }
+}
