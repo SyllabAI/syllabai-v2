@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { boardOf, loadHubCourse } from "@/lib/courses";
+import { loadHubCourse } from "@/lib/courses";
 import { CourseHeader } from "@/components/hub/course-header";
 import { StrengthsPanel } from "./strengths-panel";
 import { allCourseParams } from "@/lib/static-params";
@@ -30,20 +30,31 @@ export default async function StrengthsPage({
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
+      {/* UX review 2026-10-31 F-09: the old H1 composed the level twice
+          ("Cambridge International AS Chemistry — AS Strength") and truncated
+          to a singular "Strength"; the hero description cited ADR-031. The
+          H1 is the section name (the trail carries the course), the
+          description speaks student, and the internals moved behind an
+          explicit disclosure. */}
       <CourseHeader
         meta={meta}
         activeTab="strengths"
-        title={`${boardOf(meta)} ${meta.level} ${meta.label} Strength`}
+        title="Strengths & Weaknesses"
         crumb="Strengths & Weaknesses"
-        description="Per-spec-point strength driven by learner state + computed decay (ADR-031: computed, never persisted) — the bar honestly falls as skills decay and doubles as your practice-now queue."
+        description="Your strengths per specification point — see what to practise next. Bars update as you practise and gently fade where skills decay. Sign in to see yours."
       />
       <StrengthsPanel course={meta.slug} />
-      <p className="mt-6 rounded-md border bg-muted/40 px-3 py-2 text-xs leading-relaxed text-muted-foreground">
-        <span className="font-medium text-foreground">Where this data lives:</span> the bars read ONLY the
-        drill&apos;s own practice log (the zero-stakes lane — never your gradebook or progress rings), and
-        every decayed value is computed at read and never stored (ADR-031). Structured (written) drill
-        parts stay ungraded until you self-check them against the mark scheme.
-      </p>
+      <details className="mt-6 rounded-md border bg-muted/40 px-3 py-2 text-xs leading-relaxed text-muted-foreground">
+        <summary className="cursor-pointer text-xs font-medium text-foreground">
+          About this data
+        </summary>
+        <p className="mt-2">
+          <span className="font-medium text-foreground">Where this data lives:</span> the bars read ONLY the
+          drill&apos;s own practice log (the zero-stakes lane — never your gradebook or progress rings), and
+          every decayed value is computed at read and never stored (ADR-031). Structured (written) drill
+          parts stay ungraded until you self-check them against the mark scheme.
+        </p>
+      </details>
     </div>
   );
 }

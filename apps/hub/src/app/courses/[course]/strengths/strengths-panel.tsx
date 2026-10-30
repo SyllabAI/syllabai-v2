@@ -73,12 +73,14 @@ export function StrengthsPanel({ course }: { course: string }) {
     return (
       <Card className="mt-8">
         <CardContent className="space-y-3 py-6">
+          {/* UX review F-09: the signed-out state led with system internals;
+              the one thing a signed-out visitor needs is the invitation. */}
           <p className="text-sm text-muted-foreground">
-            Strength is an identity-bearing surface: your bars are computed from the drill evidence keyed
-            to your learner account. Sign in to see where your mastery stands — and where it is decaying.
+            Your strengths are computed from your own practice — only you can see them. Sign in to
+            see where you stand per topic and what to practise next.
           </p>
           <Button asChild>
-            <Link href="/login">Sign in to see your strength</Link>
+            <Link href="/login">Sign in to see your strengths</Link>
           </Button>
         </CardContent>
       </Card>
