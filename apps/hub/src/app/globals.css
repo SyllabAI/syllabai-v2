@@ -1417,3 +1417,26 @@ math-field.answer-mathfield:focus {
   border-color: var(--primary);
   outline: none;
 }
+
+/* ---- Course-page hero band (hub-coursepage-mg-layout) ----
+   MathsGenie-style course hero: a soft pastel wash behind the breadcrumb,
+   title and description, with the hub's brand-blue family instead of MG's
+   literal pink/purple/blue so the band stays on-palette and dark-mode safe.
+   Light mode: brand blue → violet → sky pastels over the card surface.
+   Dark mode: the same hue walk, deeper and fainter. */
+.course-hero-gradient {
+  background: linear-gradient(
+    100deg,
+    oklch(0.541 0.238 264.7 / 0.13) 0%,
+    oklch(0.6 0.16 300 / 0.1) 48%,
+    oklch(0.7 0.13 220 / 0.13) 100%
+  );
+}
+.dark .course-hero-gradient {
+  background: linear-gradient(
+    100deg,
+    oklch(0.72 0.145 264.4 / 0.17) 0%,
+    oklch(0.58 0.14 300 / 0.12) 48%,
+    oklch(0.7 0.12 220 / 0.13) 100%
+  );
+}

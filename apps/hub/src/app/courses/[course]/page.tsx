@@ -23,6 +23,8 @@ import { collectPastPapers } from "@/lib/past-papers";
 import { corpusPapersForCourse } from "@/lib/pastpapers-corpus";
 import { buildPracticePapers } from "@/lib/practice-papers";
 import { CourseHeader } from "@/components/hub/course-header";
+import CourseBodyTabs from "@/components/hub/course-body-tabs";
+import type { TopicGroup } from "@/components/hub/course-body-tabs";
 import { CourseSwitcher } from "@/components/hub/course-switcher";
 import { TagChip } from "@/components/hub/chrome";
 import { allCourseParams } from "@/lib/static-params";
@@ -45,17 +47,24 @@ interface ResourceItem {
    *  phase); the tutor card overrides it ("not yet connected") because the
    *  tutor is BUILT — it gates on the course's serving corpus, ADR-030. */
   notReadyLabel?: string;
+  /** hub-coursepage-mg-layout: the tinted icon-square wash (MG tile
+   *  anatomy), hub tokens at low alpha so dark mode inherits for free. */
+  tint: string;
 }
 
 /**
  * The per-subject Learning Hub (SME "Course Resources"; Task 21-b matched
- * against the real savemyexams.com course reference page):
- *   hero (subject H1 + "Edexcel | IGCSE | 4CH1" line) · course switcher ·
- *   two labelled resource bands — Exam Practice and Revision — each card
- *   carrying SME's Study / Practice / Diagnose framework chips, then the
- *   revision-framework explainer. Corpus discipline kept: a card only
- *   links when the committed bundle actually has the content; roadmap
- *   surfaces stay explicitly marked.
+ * against the real savemyexams.com course reference page), now carrying the
+ * MathsGenie course-page anatomy (hub-coursepage-mg-layout, operator request
+ * via chat trace 1a18c3f754d0e421):
+ *   gradient hero (CourseHeader) · Topics | Resources body tab pair ·
+ *   Resources = MG tile rows (tinted icon square + bold title + count) in
+ *   the same Ask the tutor / Exam Practice / Revision bands, with the spec
+ *   strip and revision-framework explainer kept verbatim in content.
+ * Corpus discipline kept: a card only links when the committed bundle
+ * actually has the content; roadmap surfaces stay explicitly marked.
+ * NOTHING was removed — every card, badge, tag and honest state from the
+ * previous layout is present; only the container anatomy changed.
  */
 
 /** Prerendered at build (ADR-021 perf pass, tranche 4.12) — see static-params.ts. */
@@ -103,6 +112,37 @@ export default async function CourseHubPage({
   // hardcoded; courses without one keep an honest roadmap card.
   const guided = await loadGuidedIndex(meta.slug);
 
+  // Topics tab data (hub-coursepage-mg-layout): the canonical spec tree with
+  // per-subtopic counts + canonical hrefs — the SAME joins the sidebar uses,
+  // so every link here lands on a real surface. A row without any committed
+  // resource renders honestly inert (no ghost links).
+  const topicGroups: TopicGroup[] = hub.index.tree.topics.map((t) => ({
+    code: t.code,
+    number: t.number,
+    title: t.title,
+    subtopics: t.subtopics.map((s) => {
+      const c = hub.counts[s.code] ?? { notes: 0, questions: 0, flashcards: 0 };
+      const links = [
+        c.notes > 0 && hub.hrefs.notes[s.code]
+          ? { label: "Notes", href: hub.hrefs.notes[s.code], count: c.notes }
+          : null,
+        c.questions > 0 && hub.hrefs.questions[s.code]
+          ? { label: "Questions", href: hub.hrefs.questions[s.code], count: c.questions }
+          : null,
+        c.flashcards > 0 && hub.hrefs.flashcards[s.code]
+          ? { label: "Flashcards", href: hub.hrefs.flashcards[s.code], count: c.flashcards }
+          : null,
+      ].filter((x): x is { label: string; href: string; count: number } => x !== null);
+      return {
+        code: s.code,
+        title: s.title,
+        total: c.notes + c.questions + c.flashcards,
+        links,
+      };
+    }),
+  }));
+  const subtopicCount = topicGroups.reduce((a, g) => a + g.subtopics.length, 0);
+
   const bands: { id: string; title: string; tagline: string; items: ResourceItem[] }[] = [
     {
       id: "ask",
@@ -129,6 +169,7 @@ export default async function CourseHubPage({
           ctaLabel: "Ask the tutor",
           ready: !!meta.curriculumCode,
           notReadyLabel: "not yet connected",
+          tint: "bg-primary/10",
         },
       ],
     },
@@ -145,6 +186,7 @@ export default async function CourseHubPage({
           href: `${base}/exam-questions`,
           countLabel: `${stats.questions} question${stats.questions === 1 ? "" : "s"} · ${stats.questionSets} set${stats.questionSets === 1 ? "" : "s"}`,
           ready: stats.questions > 0,
+          tint: "bg-chart-2/15",
         },
         {
           icon: Target,
@@ -152,6 +194,7 @@ export default async function CourseHubPage({
           desc: "Custom exam practice to target your weak spots — Phase C of the build plan.",
           tags: ["Practice", "Diagnose"],
           ready: false,
+          tint: "bg-chart-2/15",
         },
         {
           icon: ScrollText,
@@ -172,6 +215,7 @@ export default async function CourseHubPage({
               : corpusArchivePapers.length > 0
                 ? `${corpusArchivePapers.length} paper${corpusArchivePapers.length === 1 ? "" : "s"} · archive`
                 : undefined,
+          tint: "bg-chart-5/15",
         },
         {
           icon: Files,
@@ -184,6 +228,7 @@ export default async function CourseHubPage({
             practicePapers.length > 0
               ? `${practicePapers.length} papers · ${stats.questions} questions`
               : undefined,
+          tint: "bg-chart-1/15",
         },
         {
           icon: Files,
@@ -191,6 +236,7 @@ export default async function CourseHubPage({
           desc: "Expert-created full practice papers — not part of the pilot corpus yet.",
           tags: ["Practice", "Diagnose"],
           ready: false,
+          tint: "bg-chart-1/15",
         },
       ],
     },
@@ -209,6 +255,7 @@ export default async function CourseHubPage({
           href: `${base}/revision-notes`,
           countLabel: `${stats.notes} note${stats.notes === 1 ? "" : "s"}`,
           ready: stats.notes > 0,
+          tint: "bg-chart-2/15",
         },
         {
           // T-MIG-133 band 133k — the books ENTRY (the shelf page is the
@@ -224,6 +271,7 @@ export default async function CourseHubPage({
           href: courseHasBookArchive(meta.slug) ? `${base}/books` : undefined,
           ctaLabel: "Open the book",
           ready: courseHasBookArchive(meta.slug),
+          tint: "bg-primary/10",
         },
         {
           icon: CircleHelp,
@@ -233,6 +281,7 @@ export default async function CourseHubPage({
           href: `${base}/flashcards`,
           countLabel: `${stats.flashcards} card${stats.flashcards === 1 ? "" : "s"}`,
           ready: stats.flashcards > 0,
+          tint: "bg-chart-4/15",
         },
         // Underground Mathematics lane library — flagged + bundled courses
         // only (see the ugm const above); absent otherwise, never a stub.
@@ -246,6 +295,7 @@ export default async function CourseHubPage({
                 href: `${base}/ugm`,
                 countLabel: `${ugm.coverage.aligned} resources · ${ugm.specPoints.length} spec points`,
                 ready: true,
+                tint: "bg-primary/10",
               },
             ]
           : []),
@@ -275,6 +325,7 @@ export default async function CourseHubPage({
             ? `Live for ${guided.counts.notes} notes · ${guided.counts.lessons} lessons`
             : undefined,
           ready: Boolean(guided),
+          tint: "bg-chart-4/15",
         },
       ],
     },
@@ -294,6 +345,135 @@ export default async function CourseHubPage({
       desc: "Self-marking and strengths views expose your weak spots and guide you to improve.",
     },
   ];
+
+  const resourcesPane = !hub.viaProvider && stats.notes + stats.questions === 0 ? null : (
+    <>
+      {/* specification card (SME: spec download; SyllabAI: parsed spec deep-link) */}
+      <Card>
+        <CardContent className="flex flex-wrap items-center gap-4 p-4">
+          <div className="flex items-center gap-3">
+            <span className="flex size-9 items-center justify-center rounded-lg bg-primary/10">
+              <GraduationCap className="size-4.5 text-primary" aria-hidden />
+            </span>
+            <div>
+              <p className="text-sm font-semibold">Specification {meta.code}</p>
+              <p className="text-xs text-muted-foreground">
+                {officialTree
+                  ? "Parsed specification points — the canonical tree powering this hub"
+                  : "Corpus spec points (SME-native anchors) — the navigation tree powering this hub; official-code mapping is pending upstream"}
+              </p>
+            </div>
+          </div>
+          <div className="ml-auto flex flex-wrap items-center gap-2">
+            <Badge variant="outline" className="font-mono text-[10px]">
+              {stats.specPoints} spec points
+            </Badge>
+            <Badge variant="outline" className="font-mono text-[10px]">
+              data: {cfg.dataMode}
+            </Badge>
+            <Link
+              href={`/courses/${meta.slug}/specification`}
+              className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
+            >
+              <ListTree className="size-4" aria-hidden />
+              Specification tree
+            </Link>
+            <Link
+              href={`/knowledge-graph?course=${meta.slug}`}
+              className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
+            >
+              View parsed spec <ArrowRight className="size-4" aria-hidden />
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* the resource bands as MG tile rows */}
+      {bands.map((band) => (
+        <section key={band.id} aria-label={band.title} className="space-y-3">
+          <div className="space-y-0.5">
+            <h2 className="text-lg font-bold tracking-tight">{band.title}</h2>
+            <p className="text-sm text-muted-foreground">{band.tagline}</p>
+          </div>
+          <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
+            {band.items.map((r) => {
+              const inner = (
+                <>
+                  <span
+                    className={`flex size-14 shrink-0 items-center justify-center rounded-2xl ${r.tint}`}
+                    aria-hidden
+                  >
+                    <r.icon className="size-6 text-foreground" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="flex flex-wrap items-center gap-2">
+                      <span className="font-bold group-hover:text-primary">{r.title}</span>
+                      {r.tags.map((t) => (
+                        <TagChip key={t} tag={t} />
+                      ))}
+                      {!r.ready && (
+                        <span className="rounded-full bg-foreground px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-background">
+                          {r.notReadyLabel ?? "roadmap"}
+                        </span>
+                      )}
+                    </span>
+                    <span className="mt-0.5 block text-sm leading-relaxed text-muted-foreground">
+                      {r.desc}
+                    </span>
+                    {r.ready && (r.countLabel || r.ctaLabel) && (
+                      <span className="mt-1 block text-xs font-medium text-foreground">
+                        {r.countLabel}
+                        {r.ctaLabel && (
+                          <span className="ml-2 inline-flex items-center gap-1 text-primary">
+                            {r.ctaLabel} <ArrowRight className="size-3.5" aria-hidden />
+                          </span>
+                        )}
+                      </span>
+                    )}
+                  </span>
+                </>
+              );
+              const tileClass =
+                "group flex items-start gap-4 rounded-2xl p-2 transition-colors hover:bg-muted";
+              return r.ready ? (
+                <Link
+                  key={r.title}
+                  href={r.href ?? base}
+                  className={`${tileClass} focus-visible:outline-none`}
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <div
+                  key={r.title}
+                  aria-disabled
+                  title="Not part of the demo corpus yet"
+                  className={`${tileClass} opacity-70`}
+                >
+                  {inner}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      ))}
+
+      {/* SME's "Our revision framework" explainer */}
+      <section aria-label="Our revision framework" className="space-y-3 pb-2">
+        <h2 className="text-lg font-semibold">Our revision framework</h2>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {framework.map((f) => (
+            <Card key={f.tag} className="bg-muted/40">
+              <CardContent className="space-y-2 p-4">
+                <TagChip tag={f.tag} />
+                <p className="text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+    </>
+  );
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
@@ -351,125 +531,7 @@ export default async function CourseHubPage({
           </CardContent>
         </Card>
       ) : (
-        <>
-          {/* specification card (SME: spec download; SyllabAI: parsed spec deep-link) */}
-          <Card className="mt-6">
-            <CardContent className="flex flex-wrap items-center gap-4 p-4">
-              <div className="flex items-center gap-3">
-                <span className="flex size-9 items-center justify-center rounded-lg bg-primary/10">
-                  <GraduationCap className="size-4.5 text-primary" aria-hidden />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold">Specification {meta.code}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {officialTree
-                      ? "Parsed specification points — the canonical tree powering this hub"
-                      : "Corpus spec points (SME-native anchors) — the navigation tree powering this hub; official-code mapping is pending upstream"}
-                  </p>
-                </div>
-              </div>
-              <div className="ml-auto flex flex-wrap items-center gap-2">
-                <Badge variant="outline" className="font-mono text-[10px]">
-                  {stats.specPoints} spec points
-                </Badge>
-                <Badge variant="outline" className="font-mono text-[10px]">
-                  data: {cfg.dataMode}
-                </Badge>
-                <Link
-                  href={`/courses/${meta.slug}/specification`}
-                  className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
-                >
-                  <ListTree className="size-4" aria-hidden />
-                  Specification tree
-                </Link>
-                <Link
-                  href={`/knowledge-graph?course=${meta.slug}`}
-                  className="inline-flex items-center gap-1.5 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors hover:bg-muted"
-                >
-                  View parsed spec <ArrowRight className="size-4" aria-hidden />
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* the two SME resource bands */}
-          {bands.map((band) => (
-            <section key={band.id} aria-label={band.title} className="mt-8 space-y-3">
-              <div className="space-y-0.5">
-                <h2 className="text-xl font-bold tracking-tight">{band.title}</h2>
-                <p className="text-sm text-muted-foreground">{band.tagline}</p>
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {band.items.map((r) => {
-                  const inner = (
-                    <Card
-                      className={
-                        r.ready
-                          ? "h-full transition-colors hover:border-primary/40"
-                          : "h-full opacity-70"
-                      }
-                    >
-                      <CardHeader className="pb-2">
-                        <CardTitle className="flex items-center gap-2 text-base">
-                          <r.icon className="size-4 text-primary" aria-hidden />
-                          {r.title}
-                        </CardTitle>
-                        <CardDescription className="pt-1.5">
-                          <span className="flex flex-wrap gap-1.5">
-                            {r.tags.map((t) => (
-                              <TagChip key={t} tag={t} />
-                            ))}
-                          </span>
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-2.5">
-                        <CardDescription className="leading-relaxed">{r.desc}</CardDescription>
-                        {r.ready ? (
-                          <p className="text-xs font-medium text-foreground">
-                            {r.countLabel}
-                            <span className="ml-2 inline-flex items-center gap-1 text-primary">
-                              {r.ctaLabel ?? "All topics"} <ArrowRight className="size-3.5" aria-hidden />
-                            </span>
-                          </p>
-                        ) : (
-                          <p>
-                            <span className="rounded bg-muted px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-muted-foreground">
-                              {r.notReadyLabel ?? "roadmap"}
-                            </span>
-                          </p>
-                        )}
-                      </CardContent>
-                    </Card>
-                  );
-                  return r.ready ? (
-                    <Link key={r.title} href={r.href ?? base} className="group focus-visible:outline-none">
-                      {inner}
-                    </Link>
-                  ) : (
-                    <div key={r.title} aria-disabled title="Not part of the demo corpus yet">
-                      {inner}
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          ))}
-
-          {/* SME's "Our revision framework" explainer */}
-          <section aria-label="Our revision framework" className="mt-10 space-y-3">
-            <h2 className="text-lg font-semibold">Our revision framework</h2>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {framework.map((f) => (
-                <Card key={f.tag} className="bg-muted/40">
-                  <CardContent className="space-y-2 p-4">
-                    <TagChip tag={f.tag} />
-                    <p className="text-sm leading-relaxed text-muted-foreground">{f.desc}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
-        </>
+        <CourseBodyTabs groups={topicGroups} subtopicCount={subtopicCount} resources={resourcesPane} />
       )}
     </div>
   );
