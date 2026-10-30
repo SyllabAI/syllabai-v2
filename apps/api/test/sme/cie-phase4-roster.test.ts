@@ -231,35 +231,40 @@ describe("cie-phase4 roster law", () => {
     // sidecar resolved 0 — the REJOIN-2 record's honest-zero lane). Floors
     // re-pinned from the shim's own admission output (loadRoster, the same
     // single admission law).
-    expect(questions).toBe(8826);
-    expect(parts).toBe(8752);
+    expect(questions).toBe(9916);
+    expect(parts).toBe(11904);
     // the package-shape disclosure (the other half of the law split): the
     // package parts stay counted, never again a floor
     const pkgParts = real.reduce((s, e) => s + e.expectedPackageParts, 0);
-    expect(pkgParts).toBe(13334);
+    expect(pkgParts).toBe(16674);
     expect(parts + (pkgParts - parts)).toBe(pkgParts);
     // bank-level pins of the row law (the run-008 fleet's own numbers):
     // option-part banks (past-paper MCQ shape) emit ~ZERO part rows;
     // mixed banks emit only their plain parts. physics-23 carries exactly
-    // ONE plain part among its 627 questions (fleet parts=1 of record) —
-    // the law counts it, the 626 option-parts ride as MCQ rows.
+    // CONSUME-3 re-pin (operator trace 1a18bc6701800065): the wave3 codes
+    // made the 23-family's plain parts servable — 634/1/634 ->
+    // 703/207/840 (the pre-wave3 law was "ONE plain part among its 627
+    // questions (fleet parts=1 of record)"; the option-parts still ride as
+    // MCQ rows, the plain-part population is now 207 of record)
     const physics23 = real.find((e) => e.slug === "cie-igcse-physics-23");
     expect(physics23).toBeDefined();
-    expect(physics23!.expectedQuestions).toBe(634);
-    expect(physics23!.expectedParts).toBe(1);
-    expect(physics23!.expectedPackageParts).toBe(634);
+    expect(physics23!.expectedQuestions).toBe(703);
+    expect(physics23!.expectedParts).toBe(207);
+    expect(physics23!.expectedPackageParts).toBe(840);
     const bio25 = real.find((e) => e.slug === "cie-a-level-biology-25");
     expect(bio25).toBeDefined();
-    expect(bio25!.expectedParts).toBe(859);
-    expect(bio25!.expectedPackageParts).toBe(1529);
-    // the wave-2 r1 bank pin: the ONE joinable AS bank (the anchor-gap
-    // disclosure — 789 of 1,011 raw questions serve; 222 raw carry no coded
-    // part, honest local-only practice in the player)
+    expect(bio25!.expectedParts).toBe(1225); // CONSUME-3 re-pin (was 859)
+    expect(bio25!.expectedPackageParts).toBe(1895); // (was 1529)
+    // the wave-2 r1 bank pin + the CONSUME-3 re-pin (operator trace
+    // 1a18bc6701800065): the T-SPECS-CIE-JOIN-3 fresh sidecar's gate-3
+    // ACCEPTED codes lifted the bank 789/1055/1561 -> 977/1201/1858
+    // (1,962 of its items coded of record; the T1/T2 divergences were
+    // quarantined per the NO-GUESS posture)
     const asBio25 = real.find((e) => e.slug === "cie-as-biology-25");
     expect(asBio25).toBeDefined();
-    expect(asBio25!.expectedQuestions).toBe(789);
-    expect(asBio25!.expectedParts).toBe(1055);
-    expect(asBio25!.expectedPackageParts).toBe(1561);
+    expect(asBio25!.expectedQuestions).toBe(977);
+    expect(asBio25!.expectedParts).toBe(1201);
+    expect(asBio25!.expectedPackageParts).toBe(1858);
     // the wave-2 CONSUME-2 bank pins: the 7 anchor-gap banks after their
     // first consume (the gate-2 ACCEPTED chain) — each was 0/0/0 of record
     // pre-consume (the JOIN-2 anchor-gap disclosure)
@@ -308,13 +313,14 @@ describe("cie-phase4 roster law", () => {
         unmapped: a.unmapped + (e.shimExclusions?.unmapped ?? 0),
         badSum: a.badSum + (e.shimExclusions?.badSum ?? 0),
         dupOrder: a.dupOrder + (e.shimExclusions?.dupOrder ?? 0),
+        crossSetRefCollision: a.crossSetRefCollision + (e.shimExclusions?.crossSetRefCollision ?? 0),
       }),
-      { unmapped: 0, badSum: 0, dupOrder: 0 },
+      { unmapped: 0, badSum: 0, dupOrder: 0, crossSetRefCollision: 0 },
     );
-    expect(excl).toEqual({ unmapped: 18401, badSum: 0, dupOrder: 19 });
+    expect(excl).toEqual({ unmapped: 16193, badSum: 0, dupOrder: 19, crossSetRefCollision: 1118 });
     // the question-level identity: raw - servable = unmapped + dupOrder (each
     // exclusion removes whole questions; badSum is zero of record)
-    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder); // 27246-8826 == 18401+19
+    expect(rawQ - questions).toBe(excl.unmapped + excl.dupOrder + (excl.crossSetRefCollision ?? 0)); // 27246-9916 == 16193+19+1118
     // the zero-servable real banks of record — see ZERO_SERVABLE_OF_RECORD
     // (the module-level law; econ-25 departed at run-006, the wave-2
     // anchor-gap class joined at the r1 fill and DEPARTED at the CONSUME-2
