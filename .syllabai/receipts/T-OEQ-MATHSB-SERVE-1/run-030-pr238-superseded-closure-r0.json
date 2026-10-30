@@ -1,0 +1,68 @@
+{
+  "task": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-030 closure bookkeeping (superseded-twin discharge)",
+  "actor_lane": "main (Z.ai)",
+  "recorded_at": "2026-10-30T16:40:00Z",
+  "operator_order": {
+    "trace": "1a18d9e9a9aa1609",
+    "text": "close #238 as superseded",
+    "replaces_prior_act": "trace 1a18c871c89b70e9 (watch PR #238 CI -> merge -> post-merge re-verify at resources main tip -> v2 bookkeeping) — the merge leg is DISCHARGED by supersession; the bookkeeping leg is fulfilled by this receipt"
+  },
+  "closed_pr": {
+    "repo": "SyllabAI/syllabai-resources",
+    "number": 238,
+    "title": "T-OEQ-MATHSB-SERVE-1 run-030 — R1 corpus back-sync backfill: the 1,471-pid corpus debt retires; re-export byte-no-op vs plane f7a8c687",
+    "state_before": "open (never merged; mergeable_state clean at close)",
+    "head": "t-oeq-mathsb/run-030-r1-backsync @ 80c587d01aa318d3c7a5f06fe66407ab5632e047",
+    "base_at_open": "main @ 1fa78341a (cut 3f6547b1, 2026-10-30T09:55:05Z)",
+    "opened_at": "2026-10-30T10:28:10Z",
+    "diff": "66 files, +4,469/-3,778, 1 commit",
+    "pre_closure": { "comments": 0, "reviews": 0, "check_runs": [{ "name": "sync", "conclusion": "success" }] },
+    "state_after": "closed",
+    "closed_at": "2026-10-30T16:31:54Z",
+    "closing_comment": "https://github.com/SyllabAI/syllabai-resources/pull/238#issuecomment-6527920921",
+    "closing_comment_id": 6527920921,
+    "branch_disposition": "left in place for audit (not deleted)"
+  },
+  "superseded_by": {
+    "repo": "SyllabAI/syllabai-resources",
+    "number": 236,
+    "title": "content(t-oeq-mathsb-backsync-1): F122 — the R1 maths-B corpus back-sync (corpus := plane of record f7a8c687; re-export ...)",
+    "branch": "t-oeq-mathsb-backsync-1",
+    "opened_at": "2026-10-30T10:11:58Z",
+    "merged_at": "2026-10-30T11:08:16Z",
+    "merge_commit": "b541dda88909d54ebc1808f3d58f7e67f783ed2f",
+    "diff": "141 files, +50,915/-8,550",
+    "content_of_record": "the same R1 maths-B corpus back-sync (1,471-pid debt class; corpus := plane f7a8c687): 2,657 field writes + 271 asset upgrades + questions.md x66 regenerated + CANARIES C145 re-point + the exporter port (scripts/official_examq_export_hub_mb.py, r3 pass-throughs) + the synced-fields LEDGER of record (scripts/oeq_mathsb_synced_fields.json, 2,669 keys) + back-sync pins (oeq_mathsb_backsync_pins.json) + the B1-B7 zero-network CI battery wired into corpus-gates"
+  },
+  "race_of_record": {
+    "timeline_utc": [
+      "2026-10-30T09:55:05Z main @ 3f6547b1 (merge of #234)",
+      "2026-10-30T10:11:58Z PR #236 opened (F122 lane)",
+      "2026-10-30T10:28:10Z PR #238 opened against main @ 1fa78341 (pre-#236-merge cut 3f6547b1)",
+      "2026-10-30T11:08:16Z PR #236 MERGED (b541dda8) — the back-sync lands on main",
+      "2026-10-30T16:31:54Z PR #238 closed as superseded (comment 6527920921)"
+    ],
+    "reading": "two concurrent lanes executed the same operator order class (R1 corpus back-sync backfill; #236 cites IM trace 1a18c23adef78245, #238 cites the run-021 menu ruling trace 1a18c31fdbaf63d9); the merged F122 wave is the delivery of record and #238 is its redundant twin"
+  },
+  "consequences_of_record": [
+    "run-030's landing of record = #236 / LEDGER F122; #238 = the superseded twin, closed not merged",
+    "the R1 corpus back-sync debt class is CLOSED at source by the merged wave (per its body law: the next full converter run is a byte-no-op)",
+    "the serving plane of record has since advanced past f7a8c687 (4PH1 KaTeX run-001 -> 2cfd90da, v2 worklog); this closure touches ZERO plane bytes",
+    "no unique content lost with the closure: any residual reconciliation rides the of-record F122 gates (B1-B7) and the exporter byte-no-op law",
+    "wave-5 / run-025 scope (residual 142 units) UNCHANGED by this closure"
+  ],
+  "disclosures": [
+    ".creds/syllabai.env perms tightened 755 -> 600 at close time (content byte-untouched; standing PAT-rotation order still open)",
+    "zero DB contact, zero prod writes, zero force-push, fetch-first (v2 clone ff'd 593 commits 4008e6ce -> 351f2fe4 at open)",
+    "bookkeeping-only: this receipt + .syllabai/worklog.md append; nothing else in the push",
+    "branch t-oeq-mathsb/run-030-r1-backsync intentionally not deleted"
+  ],
+  "evidence_basis": [
+    "GET /repos/SyllabAI/syllabai-resources/pulls/238 (state/open at open of this lane; body, head, base, diffstat)",
+    "GET /repos/SyllabAI/syllabai-resources/pulls/236 (merged_at 11:08:16Z, merge_commit b541dda8, body, diffstat)",
+    "GET /repos/SyllabAI/syllabai-resources/commits/3f6547b1 (2026-10-30T09:55:05Z, merge of #234)",
+    "GET /repos/SyllabAI/syllabai-resources/pulls/238/comments + /reviews (0/0) + /commits/80c587d0/check-runs (sync: success)",
+    "POST closing comment id 6527920921 + PATCH state=closed + re-read GET confirming state=closed"
+  ]
+}

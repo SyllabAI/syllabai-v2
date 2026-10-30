@@ -22886,3 +22886,20 @@ Stage Summary:
 - The 4PH1 serving plane now typesets its clean symbol math through the hub's KaTeX pipeline (the renderer was already live - question-player.tsx renders solutionMd via rehypeKatexMhchem; the maths-B waves proved the path end-to-end). 194 lines of equations like "V=I×R" and "v = √(21/0.9)" now render as real math; zero content drift (G2 identity), zero marking-content change (G1 marks identical; markPoints touched by the same presentation law only).
 - The honest boundary held: conversion of the DAMAGED classes is NOT automated - 2,701 lines are censused for the page-evidenced eyes-on waves (the NO-GUESS doctrine), each with its own run.
 - Discipline: fetch-first, no force, zero DB contact, resources corpus untouched; evidence mirrored per the MB4 wipe lesson.
+
+---
+Task ID: T-OEQ-MATHSB-SERVE-1 (run-030 closure bookkeeping)
+Agent: main (Z.ai)
+Task: operator order trace 1a18d9e9a9aa1609 — "close #238 as superseded" (the staged prior act, trace 1a18c871c89b70e9 "watch PR #238 CI -> merge -> post-merge re-verify -> v2 bookkeeping", has its merge leg DISCHARGED by supersession; only the closure + bookkeeping legs execute).
+
+Work Log:
+- PR #238 identified of record: SyllabAI/syllabai-resources #238 "T-OEQ-MATHSB-SERVE-1 run-030 — R1 corpus back-sync backfill: the 1,471-pid corpus debt retires; re-export byte-no-op vs plane f7a8c687" — OPEN (never merged), head t-oeq-mathsb/run-030-r1-backsync@80c587d0, base-at-open main@1fa78341, cut 3f6547b1 (09:55:05Z), opened 2026-10-30T10:28:10Z, 66 files +4,469/-3,778, 1 commit; pre-closure 0 comments / 0 reviews / check `sync` success.
+- Supersession verified of record: #236 (LEDGER F122, branch t-oeq-mathsb-backsync-1) is the SAME R1 maths-B corpus back-sync (corpus := plane of record f7a8c687, the 1,471-pid debt class) — MERGED 2026-10-30T11:08:16Z (b541dda8), 141 files +50,915/-8,550, carrying the exporter port (scripts/official_examq_export_hub_mb.py, r3 pass-throughs), the synced-fields ledger of record (2,669 keys) + back-sync pins, the CANARIES C145 re-point, and the B1–B7 zero-network CI battery wired into corpus-gates. RACE of record: #238 was opened 10:28:10Z against the pre-#236-merge cut while the #236 lane was mid-landing; #236 merged ~40 min later — two concurrent deliveries of the same order class (#236 cites IM trace 1a18c23adef78245, #238 cites the run-021 menu ruling trace 1a18c31fdbaf63d9).
+- CLOSED #238 as superseded (not merged; branch left in place for audit): closing comment https://github.com/SyllabAI/syllabai-resources/pull/238#issuecomment-6527920921 (id 6527920921); state=closed re-read confirmed (closed_at 2026-10-30T16:31:54Z).
+- Receipt of record: .syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-030-pr238-superseded-closure-r0.json (full timeline, shas, evidence basis).
+- Consequences of record: run-030's landing of record = #236/F122; #238 = the superseded twin. The R1 corpus back-sync debt class is CLOSED at source by the merged wave (its body law: the next full converter run is a byte-no-op). The serving plane has since advanced past f7a8c687 (4PH1 KaTeX run-001 -> 2cfd90da, per the worklog above) — this closure touches ZERO plane bytes. wave-5 / run-025 scope (residual 142 units) unchanged.
+- Hygiene: .creds/syllabai.env perms tightened 755 -> 600 (content byte-untouched; standing PAT-rotation order still open).
+- Discipline: fetch-first (v2 clone ff'd 593 commits 4008e6ce -> 351f2fe4 at open), no force, zero DB contact, zero prod writes; bookkeeping-only .syllabai/** in this push.
+
+Stage Summary:
+- resources PR #238 closed as superseded by the merged F122 wave (#236, b541dda8); the official-papers corpus back-sync saga is single-threaded of record again — one landing (#236), one discharged twin (#238, closed for audit). No plane bytes, no DB, no other lane touched.
