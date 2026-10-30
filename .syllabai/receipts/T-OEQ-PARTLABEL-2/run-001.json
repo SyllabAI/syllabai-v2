@@ -31,5 +31,19 @@
  "not_done_here": [
   "No exporter/data change — the official plane keeps sourcePaper.questionPart:null; Option A (data-plane label fields + G-E4 byte-exact re-export) remains open pending operator review of this interim.",
   "No resources-repo contact; no DB contact; single learner-surface file."
- ]
+ ],
+ "live_spot_check": {
+  "surface": "https://syllabai-hub-v2.vercel.app (the live bake already serving the merged 2da5a15a code — SSG topic pages carry the new inline spans, zero old-chip spans)",
+  "chemistry_playback": {
+   "url": "/courses/igcse-chemistry-19/past-papers/january-2023-4ch1-1c",
+   "check": "headless-browser DOM boxes: '(c)' label span + 'Explain why hot water evaporates more quickly than cold water.' in the SAME flex row, label left of text, |top delta| < 14px (baseline same line)",
+   "screenshot": "download mirror partlabel2-live/chem-2023-01-1c-q1c-inline.png"
+  },
+  "physics_playback": {
+   "url": "/courses/igcse-physics-19/past-papers/june-2019-4ph1-1p",
+   "check": "47 inline label spans; sampled (a)(i)/(a)(ii)/(b)(i) — all sameLine=true, label left of text (two-level sub-part labels render correctly)",
+   "screenshot": "download mirror partlabel2-live/phys-2019-06-4ph1-1p-inline.png"
+  },
+  "local_serve_note": "local standalone serve of dynamic playback pages 500s with a data-plane ZodError (expected object, received null) that fires identically on revision-notes — a surface this diff cannot reach; the same URLs return 200 on the live bake, so the 500 is a local-serve env gap, not a code defect (pre-existence settled against the live surface without a revert rebuild)."
+ }
 }
