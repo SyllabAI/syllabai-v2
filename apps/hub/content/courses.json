@@ -1,6 +1,6 @@
 {
  "schema": "syllabai-demo.course-registry/1.1",
- "note": "Operator-maintained registry mirroring the 39 Edexcel IAL/IGCSE course variants scraped in SyllabAI/syllabai-resources (authoritative source). Every course has a content bundle under content/<slug>/ imported from the corpus: 'pilot' = official-tree course with the 4CH1 concept graph and learner overlay; 'full' = complete SME-native corpus import (notes, exam questions, flashcards; official-spec mapping pending upstream for all non-4CH1 courses). Slugs, levels, subjects and exam codes come from the upstream manifests — never invented. | RULING (CONTENT-AUDIT run-001-r0 ghost item 3, operator order trace 1a15f79acff5346d \"Proceed with (3) Pure-2 ghost handling\", 2026-10-22): cie-a-level-maths-20-pure-2 is the honest skeleton — CIE 9709 Pure 2 is a real syllabus component but SME never published a P2 course (upstream 404 at the CIE pin and resources main HEAD), so the row is \"registered\" (import-pending class per the courses.ts law) pending a commissioned P2 corpus; the empty bundle stays (validator-acknowledged D1 skeleton) and the 9709 P2 past papers (68) remain served from the syllabai-pastpapers archive via pastpapers-corpus.ts. | WAVE-2 (SME-WAVE2 r0, operator trace 1a17e97cb4e3ae95 'Ok go ahead', 2026-10-28): +12 rows for the SME scrape-lane courses (PR #170 / 7fe3c236) — 9 CIE AS lanes + a-level geography-21 + edexcel igcse-history-17, AS maths split into its 4 unit lanes per corpus layout. status 'registered' (import-pending class; content bundles land in a follow-up import run). Codes are page-sourced from Official-Specifications cover_code (9701/9700/9702/9709/9609/9618/9706/9696/4HI1). curriculumCode and coreBridge deliberately omitted (fail-closed law of record; page-sourced windows exist for 7 lanes and can be added on operator order). Honest empties: as-accounting-21 / a-level-geography-21 / igcse-history-17 have no EQ on SME (no_topic_questions_on_sme); geography-21 + history-17 additionally have no SME notes; flashcards missing on SME for business-23/CS-19/accounting-21/geography-21/history-17. Past papers: NONE of the 12 in syllabai-pastpapers (verified 2026-10-28 — CIE archive carries no a-level/as tree; Edexcel IGCSE carries no history).",
+ "note": "Operator-maintained registry mirroring the SyllabAI/syllabai-resources corpus (authoritative source): 50 Edexcel IAL/IGCSE course variants + 56 Cambridge International lanes, 106 rows of record. Every course has a content bundle under content/<slug>/ imported from the corpus: 'pilot' = official-tree course with the 4CH1 concept graph and learner overlay; 'full' = complete SME-native corpus import (notes, exam questions, flashcards; official-spec mapping pending upstream for all non-4CH1 courses). Slugs, levels, subjects and exam codes come from the upstream manifests — never invented. | RULING (CONTENT-AUDIT run-001-r0 ghost item 3, operator order trace 1a15f79acff5346d \"Proceed with (3) Pure-2 ghost handling\", 2026-10-22): cie-a-level-maths-20-pure-2 is the honest skeleton — CIE 9709 Pure 2 is a real syllabus component but SME never published a P2 course (upstream 404 at the CIE pin and resources main HEAD), so the row is \"registered\" (import-pending class per the courses.ts law) pending a commissioned P2 corpus; the empty bundle stays (validator-acknowledged D1 skeleton) and the 9709 P2 past papers (68) remain served from the syllabai-pastpapers archive via pastpapers-corpus.ts. | WAVE-2 (SME-WAVE2 r0, operator trace 1a17e97cb4e3ae95 'Ok go ahead', 2026-10-28): +12 rows for the SME scrape-lane courses (PR #170 / 7fe3c236) — 9 CIE AS lanes + a-level geography-21 + edexcel igcse-history-17, AS maths split into its 4 unit lanes per corpus layout. status 'registered' (import-pending class; content bundles land in a follow-up import run). Codes are page-sourced from Official-Specifications cover_code (9701/9700/9702/9709/9609/9618/9706/9696/4HI1). curriculumCode and coreBridge deliberately omitted (fail-closed law of record; page-sourced windows exist for 7 lanes and can be added on operator order). Honest empties: as-accounting-21 / a-level-geography-21 / igcse-history-17 have no EQ on SME (no_topic_questions_on_sme); geography-21 + history-17 additionally have no SME notes; flashcards missing on SME for business-23/CS-19/accounting-21/geography-21/history-17. Past papers: NONE of the 12 in syllabai-pastpapers (verified 2026-10-28 — CIE archive carries no a-level/as tree; Edexcel IGCSE carries no history). | COURSES-PAGE AUDIT (select-courses sweep 2026-10-30): census corrected — the 39-Edexcel-variants figure predated the CIE and modular waves (actual 50 Edexcel + 56 Cambridge International = 106). Explicit labels added to the 28 Cambridge lanes sitting in duplicate (subject, code) groups without one (AS/A-Level pairs, syllabus-year republications, International Maths, Combined / Co-ordinated Sciences components), following the registry's existing label conventions. The 3 \"registered\" rows verified NOT status drift: cie-a-level-maths-20-pure-2 per the ruling above; cie-a-level-geography-21 and igcse-history-17 manifests are official-spec honest skeletons (no teaching content bundled yet, manifest license field of record) — statuses stand.",
  "courses": [
   {
    "slug": "cie-a-level-chemistry-25",
@@ -10,7 +10,8 @@
    "code": "9701",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "9701-2025-2027"
+   "curriculumCode": "9701-2025-2027",
+   "label": "Chemistry — A-Level"
   },
   {
    "slug": "cie-a-level-maths-20-mechanics",
@@ -84,7 +85,8 @@
    "code": "9702",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "9702-2025-2027"
+   "curriculumCode": "9702-2025-2027",
+   "label": "Physics — A-Level"
   },
   {
    "slug": "cie-igcse-chemistry-23",
@@ -135,7 +137,8 @@
    "code": "9706",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "9706-2023-2025"
+   "curriculumCode": "9706-2023-2025",
+   "label": "Accounting — A-Level"
   },
   {
    "slug": "cie-a-level-biology-25",
@@ -145,7 +148,8 @@
    "code": "9700",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "9700-2025-2027"
+   "curriculumCode": "9700-2025-2027",
+   "label": "Biology — A-Level"
   },
   {
    "slug": "cie-a-level-business-23",
@@ -154,7 +158,8 @@
    "code": "9609",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "9609-2023-2025"
+   "curriculumCode": "9609-2023-2025",
+   "label": "Business — A-Level"
   },
   {
    "slug": "cie-a-level-computer-science-19",
@@ -164,7 +169,8 @@
    "code": "9618",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "9618-2024-2025"
+   "curriculumCode": "9618-2024-2025",
+   "label": "Computer Science — A-Level"
   },
   {
    "slug": "cie-a-level-economics-23",
@@ -189,7 +195,8 @@
    "subject": "Accounting",
    "code": "9706",
    "status": "full",
-   "board": "Cambridge International"
+   "board": "Cambridge International",
+   "label": "Accounting — AS"
   },
   {
    "slug": "cie-as-biology-25",
@@ -198,7 +205,8 @@
    "code": "9700",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "9700-2025-2027"
+   "curriculumCode": "9700-2025-2027",
+   "label": "Biology — AS"
   },
   {
    "slug": "cie-as-business-23",
@@ -206,7 +214,8 @@
    "subject": "Business",
    "code": "9609",
    "status": "full",
-   "board": "Cambridge International"
+   "board": "Cambridge International",
+   "label": "Business — AS"
   },
   {
    "slug": "cie-as-chemistry-25",
@@ -215,7 +224,8 @@
    "code": "9701",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "9701-2025-2027"
+   "curriculumCode": "9701-2025-2027",
+   "label": "Chemistry — AS"
   },
   {
    "slug": "cie-as-computer-science-19",
@@ -223,7 +233,8 @@
    "subject": "Computer Science",
    "code": "9618",
    "status": "full",
-   "board": "Cambridge International"
+   "board": "Cambridge International",
+   "label": "Computer Science — AS"
   },
   {
    "slug": "cie-as-maths-20-mechanics",
@@ -272,7 +283,8 @@
    "code": "9702",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "9702-2025-2027"
+   "curriculumCode": "9702-2025-2027",
+   "label": "Physics — AS"
   },
   {
    "slug": "cie-as-english-general-paper-21",
@@ -300,7 +312,8 @@
    "code": "0452",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0452-2023-2025"
+   "curriculumCode": "0452-2023-2025",
+   "label": "Accounting — 2021 Syllabus"
   },
   {
    "slug": "cie-igcse-accounting-25",
@@ -309,7 +322,8 @@
    "code": "0452",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0452-2027-2029"
+   "curriculumCode": "0452-2027-2029",
+   "label": "Accounting — 2025 Syllabus"
   },
   {
    "slug": "cie-igcse-biology-23",
@@ -356,7 +370,8 @@
    "code": "0455",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0455-2023-2025"
+   "curriculumCode": "0455-2023-2025",
+   "label": "Economics — 2020 Syllabus"
   },
   {
    "slug": "cie-igcse-economics-25",
@@ -365,7 +380,8 @@
    "code": "0455",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0455-2027-2029"
+   "curriculumCode": "0455-2027-2029",
+   "label": "Economics — 2025 Syllabus"
   },
   {
    "slug": "cie-igcse-english-language-20",
@@ -374,7 +390,8 @@
    "code": "0500",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0500-2024-2026"
+   "curriculumCode": "0500-2024-2026",
+   "label": "English Language — 2020 Syllabus"
   },
   {
    "slug": "cie-igcse-english-language-25",
@@ -383,7 +400,8 @@
    "code": "0500",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0500-2027-2029"
+   "curriculumCode": "0500-2027-2029",
+   "label": "English Language — 2025 Syllabus"
   },
   {
    "slug": "cie-igcse-english-literature-21",
@@ -420,7 +438,8 @@
    "code": "0460",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0460-2025-2026"
+   "curriculumCode": "0460-2025-2026",
+   "label": "Geography — 2020 Syllabus"
   },
   {
    "slug": "cie-igcse-geography-25",
@@ -429,7 +448,8 @@
    "code": "0460",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0460-2025-2026"
+   "curriculumCode": "0460-2025-2026",
+   "label": "Geography — 2025 Syllabus"
   },
   {
    "slug": "cie-igcse-history-18",
@@ -458,7 +478,8 @@
    "code": "0607",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0607-2025-2027"
+   "curriculumCode": "0607-2025-2027",
+   "label": "International Maths — Core"
   },
   {
    "slug": "cie-igcse-maths-international-maths-23-extended",
@@ -468,7 +489,8 @@
    "code": "0607",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0607-2025-2027"
+   "curriculumCode": "0607-2025-2027",
+   "label": "International Maths — Extended"
   },
   {
    "slug": "cie-igcse-religious-studies-23",
@@ -487,7 +509,8 @@
    "code": "0973",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0973-2025-2027"
+   "curriculumCode": "0973-2025-2027",
+   "label": "Co-ordinated Sciences (Double Award) — Biology"
   },
   {
    "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-chemistry",
@@ -497,7 +520,8 @@
    "code": "0973",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0973-2025-2027"
+   "curriculumCode": "0973-2025-2027",
+   "label": "Co-ordinated Sciences (Double Award) — Chemistry"
   },
   {
    "slug": "cie-igcse-science-co-ordinated-sciences-double-award-23-physics",
@@ -507,7 +531,8 @@
    "code": "0973",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0973-2025-2027"
+   "curriculumCode": "0973-2025-2027",
+   "label": "Co-ordinated Sciences (Double Award) — Physics"
   },
   {
    "slug": "cie-igcse-science-combined-science-23-biology",
@@ -517,7 +542,8 @@
    "code": "0653",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0653-2023-2024"
+   "curriculumCode": "0653-2023-2024",
+   "label": "Combined Science — Biology"
   },
   {
    "slug": "cie-igcse-science-combined-science-23-chemistry",
@@ -527,7 +553,8 @@
    "code": "0653",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0653-2023-2024"
+   "curriculumCode": "0653-2023-2024",
+   "label": "Combined Science — Chemistry"
   },
   {
    "slug": "cie-igcse-science-combined-science-23-physics",
@@ -537,7 +564,8 @@
    "code": "0653",
    "status": "full",
    "board": "Cambridge International",
-   "curriculumCode": "0653-2023-2024"
+   "curriculumCode": "0653-2023-2024",
+   "label": "Combined Science — Physics"
   },
   {
    "slug": "ial-biology-18",
