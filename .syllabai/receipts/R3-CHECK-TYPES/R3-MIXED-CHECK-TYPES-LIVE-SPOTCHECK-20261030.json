@@ -1,0 +1,82 @@
+{
+  "receipt": "R3-MIXED-CHECK-TYPES-LIVE-SPOTCHECK-20261030",
+  "format": "live-spotcheck-receipt/0.1",
+  "date": "2026-10-30",
+  "generated_at_utc": "2026-10-30T01:11:16Z",
+  "operator_trace": "1a18a0218b7f44fd",
+  "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/guided-lessons/{rn_2MpXPtNXvn8pQm3r,rn_8T5GfPn2q7sY2YCh}",
+  "deploy_probe": {
+    "method": "curl served HTML (incl. RSC payload) post-merge",
+    "rn_2Mp": {
+      "written_stems_in_html": "present (L1 Q6/Q7/Q8 + L2 Q6 verified; 8 'Written response' cards; 8 'Your answer' labels)",
+      "mcq_stems": "intact (Which functional group do all alcohols contain? present)",
+      "provenance_law_2_1B": "0 hits for 'from the revision note'",
+      "census_line": "2 guided lessons \u00b7 18 checks",
+      "promotion_pins_rendered": "note rn_2MpXPtNXvn8pQm3r, pinned at 80afdb8e02b6 \u00b7 promoted SyllabAI/syllabai-resources 11e63360e498"
+    },
+    "rn_8T5": {
+      "written_stems_in_html": "8/8 present",
+      "mcq_stems": "intact (Which reagent mixture oxidises ethanol present)",
+      "written_cards": 8,
+      "your_answer_labels": 8
+    }
+  },
+  "static_read_layer_walk": {
+    "rn_2Mp_L1_Q6_miss": {
+      "input": "blue bananas taste yellow",
+      "verdict": "Not quite",
+      "model_answer_shown": "Every alcohol carries the hydroxyl group, written -OH.",
+      "input_locked_after_settle": true
+    },
+    "rn_2Mp_L1_Q7_hit": {
+      "input": "It forms a neutral solution when it mixes with water",
+      "verdict": "Correct",
+      "model_answer_shown": "A neutral solution is formed."
+    },
+    "empty_submit_blocked": "Submit answer disabled while textarea empty (continueDisabledUntilChoice spirit)",
+    "tally": "L1 '2 of 9 attempted \u00b7 1 correct' \u2014 written outcomes flow through the same tallies; L2 '0 of 9 attempted \u00b7 0 correct' untouched",
+    "screenshot": "download/r3-spotcheck/static-q6-miss-notquite-model-answer.png, static-q7-hit-correct-model-answer.png"
+  },
+  "flow_walk": {
+    "entry": "Guided lessons for this note -> L1 Continue (confidence gate: Medium rated; locked rating + resumeWithoutReRate verified on resume)",
+    "L1_check_stage": "Question 1 of 9 (was 1 of 5 pre-R3 \u2014 the flow now walks 5 MCQ + 4 written per lesson)",
+    "L1_mcq_Q1_to_Q5": "unchanged behaviour: radiogroup pick -> Submit answer -> 'Great job!' + explanation (byte-conservation of the MCQ path)",
+    "L1_written_Q6_miss": {
+      "input": "blue bananas taste yellow",
+      "verdict": "Not quite.",
+      "model_answer_shown": "Every alcohol carries the hydroxyl group, written -OH.",
+      "next_question_enabled": true
+    },
+    "L1_written_Q7_hit": {
+      "input": "It forms a neutral solution when it mixes with water",
+      "verdict": "Great job!",
+      "model_answer_shown": "A neutral solution is formed."
+    },
+    "L1_check_complete": "Check complete \u2014 7 of 9 correct (5 MCQ + 2 written hits = 7; tally integrity end-to-end)",
+    "L1_recalibration": "post-check recalibration reached and completed after the written items (Medium re-rate, trajectory chip law unchanged)",
+    "L2_check_stage": "gate rated -> walked to Question 1 of 9",
+    "L2_written_Q6_hit": {
+      "stem": "State the molecular formula of methanol.",
+      "tag": "Written response \u00b7 recall",
+      "input": "CH3OH",
+      "verdict": "Great job!",
+      "model_answer_shown": "Methanol is CH3OH."
+    },
+    "L2_written_Q7_miss": {
+      "stem": "State the acceptable shortened name for propan-1-ol in exams.",
+      "input": "because the teacher said so in class yesterday",
+      "verdict": "Not quite.",
+      "model_answer_shown": "Propanol is the acceptable shortened name."
+    },
+    "screenshots": "download/r3-spotcheck/flow-q6-written-card.png, flow-q6-miss-notquite-model-answer.png, flow-q7-hit-greatjob-model-answer.png, flow-check-complete-7of9.png, flow-L2-q6-hit-formula.png"
+  },
+  "figures_family_regression": "figure captions + provenance rendering UNTOUCHED during the walk (2.1/2.1B/2.2 layers hold; captioned figures still render on the gate cards)",
+  "finding": {
+    "id": "R3-A11Y-1",
+    "severity": "minor (a11y)",
+    "what": "duplicate DOM ids on the written-kind textareas: the per-note read layer renders one GuidedCheckList PER MODULE and ids were minted from the per-list index (written-check-6..9 twice); L2 labels' htmlFor associations collided. Flow site carried the same latent pattern.",
+    "fix": "PR #476 (r3-a11y-unique-ids): input ids derived from the question id (globally unique) \u2014 2 lines per file",
+    "state": "PR #476 opened post-walk; CI + merge + live re-probe recorded in the worklog"
+  },
+  "verdict": "ALL ACCEPTANCE BEHAVIOURS VERIFIED LIVE \u2014 written items render in both sites, keyword hit grades Correct, miss shows the model answer, MCQs unchanged, tallies flow, zero-DB held"
+}

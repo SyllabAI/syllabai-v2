@@ -1,0 +1,79 @@
+{
+  "receipt": "R3-MIXED-CHECK-TYPES-STAGE-A-20261030",
+  "format": "wave-receipt/0.1",
+  "date": "2026-10-30",
+  "generated_at_utc": "2026-10-30T01:11:16Z",
+  "operator_trace": "1a18a0218b7f44fd",
+  "operator_directive": "probe and execute (executing the queued spec R3-MIXED-CHECK-TYPES-QUEUED-20261030, queue trace 1a189fd011119961 \u2014 the receipt's own execute word)",
+  "wave": "R3-MIXED-CHECK-TYPES stage A \u2014 SME's mixed check taxonomy (recall / explain-why / application, keyword auto-grade + model answer always shown on settle) ported to the authored format and both renderer sites; stage-A pilot tranche = the walked Alcohols set",
+  "state_context": {
+    "guided_corpus": "112/112 notes live (239 lessons); census post-pilot: 243 lessons, 1,211 checks (1,195 MCQ conserved + 16 written)",
+    "pilot_tranche": "rn_2MpXPtNXvn8pQm3r + rn_8T5GfPn2q7sY2YCh = 4 lessons x 4 written items = 16 (8 recall, 4 explain-why, 4 application)",
+    "stage_b": "corpus rollout ~956 authored items remains OPERATOR-GATED, wave-sized, NOT in this wave"
+  },
+  "resources_side": {
+    "pr": 228,
+    "branch": "integration/r3-check-types-20261030",
+    "commits": {
+      "A": "80afdb8e02b628754f0e522d257e54d046ba5b0f (source-0.5 generation: 2 authored guided-lesson/0.5 notes + schema 0.5)",
+      "B": "f02e6e3 (generation-union target schemas: hub-lesson-import 1.4 + sme-question-package 1.1)",
+      "C": "6aab46b (namespace-complete: hub-import-1.4/ + question-packages-1.1/ + manifest v7 + INT-3 record + promotion receipt + ADAPTER-SPEC 0.5->1.4 + pipeline tooling)"
+    },
+    "merge_commit": "11e63360e498c0d83eb98fb65dc7ab87d166159f (promotion commit of record \u2014 message carries the execute trace; parent 3b2ce8da = main at merge; tree adf81106283bb92f6fc05130ea8945d3caaa33cf)",
+    "ci": "sync check SUCCESS @ commit C (6aab46b) before merge",
+    "additive_only": "14 files added, 0 modified, 0 deleted, +8895/-0",
+    "artifacts": "hub-import-manifest-v7.json: 224 artifacts, exactly 4 re-issued (2 lessons checkRefs 5->9 + 2 packages +16 written items), 220 byte-identical re-pins",
+    "conservation": {
+      "mcqs": "1,195 existing MCQs byte-identical (pilot originals deep-equal in the 1.1 arrays; 110 packages sha256-identical)",
+      "stream": "grand stream 1,429,907 chars (+3,143 vs figures-2.2's 1,426,764); 110 non-pilot per-note anchors == figures-2.2 generation EXACTLY",
+      "law_extension": "kind/modelAnswer/keywords are \u00a77 stream tokens on kind!=mcq (feed-safe walk extension: no kind field -> walk unchanged)"
+    },
+    "pipeline_gates": "33/33 GREEN (P0 pins, C-1/C-2 upstream fidelity, D-1/D-2 determinism, C-6 ajv x226, written-kind invariants x16, MCQ deep conservation, C-5 checkRefs closure, C-9 package sha conservation, G-E stream x112 + grand + waves x10)"
+  },
+  "hub_side": {
+    "pr": 472,
+    "branch": "r3-check-types-hub-v7",
+    "commit": "4a1a6fd5",
+    "merge_commit": "2042ee29a2d282d1875ca171e90c3fa75b850426",
+    "ci": "verify + hub SUCCESS @ PR head (4a1a6fd5) AND at merge sha (2042ee29)",
+    "import_run": {
+      "feed": "r3-check-types-v7",
+      "receipt": "download/integration/HUB-IMPORT-RUN-20261030-r3-check-types.json",
+      "result": "GREEN \u2014 34/34 gates, 0 hard failures",
+      "landing": "0 written + 4 revised + 220 identical-existing (224 artifacts) + re-issued guided-import.json",
+      "identity_from_disk": {
+        "notes": 112,
+        "lessons": 239,
+        "checks": 1211,
+        "keyPoints": 1212,
+        "distractors": 3565,
+        "glossaryTerms": 654
+      },
+      "figures_from_disk": {
+        "figures": 200,
+        "moduleMapped": 122,
+        "noteLevel": 78
+      }
+    },
+    "code": [
+      "GuidedQuestion optional kind/modelAnswer/keywords (absent == mcq, byte-back-compat)",
+      "src/lib/guided-written.ts \u2014 shared grading law imported by BOTH renderer sites (lockstep by construction): case-insensitive whole-token keyword match, >=1 hit correct, 0 hits not-quite + model answer, empty submit blocked, keywords absent -> reveal-only (fail-closed, never a silent wrong grade)",
+      "guided-check.tsx (read/reveal layer): MCQ path untouched; written kinds = labelled free-text input -> verdict role=status + model answer ALWAYS on settle; a11y label/aria-live",
+      "guided-flow.tsx (check stage): same law; keyword-hit boolean rides the existing onAnswer(id, picked, correct) signature \u2014 tallies/gating/recalibration unchanged",
+      "runner FEED r3-check-types-v7: generation-union schema validation, written-kind G-D branch, pilot pin map, lesson-kind census map, declared 4-file revision delta"
+    ]
+  },
+  "acceptance": [
+    "existing 1,195 MCQs byte-identical and rendering unchanged (conservation) \u2014 VERIFIED (pipeline + import gates + live walk)",
+    "pilot tranche live: 16 written items across the 4 Alcohols lessons in the mixed taxonomy, both renderer sites, keyword auto-grade + model answer behaviour verified live \u2014 VERIFIED (see the live spot-check addendum receipt)",
+    "tally integrity: written-kind outcomes flow into answered/correct counts and flow scoring without signature changes \u2014 VERIFIED (static tally '2 of 9 attempted \u00b7 1 correct'; flow 'Check complete \u2014 7 of 9 correct')",
+    "a11y: labelled inputs, role=status verdicts, keyboard-operable \u2014 VERIFIED with ONE finding (duplicate per-list ids across modules) fixed in follow-up PR #476",
+    "eslint + build + CI green; zero-DB held; resources additive-only \u2014 VERIFIED (tsc clean, next build green, CI verify+hub SUCCESS, 14 files +8895/-0)",
+    "receipts of record: wave receipt (this) + landing (import run receipt) + live spot-check addendum \u2014 COMPLETE"
+  ],
+  "followups": [
+    "PR #476 (r3-a11y-unique-ids): unique DOM ids for written-kind inputs \u2014 merged post-walk",
+    "stage B corpus rollout (~956 items): OPERATOR-GATED, wave-sized with per-note SCHEMA PASS gates",
+    "resources promotion receipt commits.B/C carry descriptive placeholders; the authoritative sha map lives in this receipt + worklog (A 80afdb8 / B f02e6e3 / C 6aab46b / merge 11e63360)"
+  ]
+}
