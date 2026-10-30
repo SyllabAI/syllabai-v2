@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_N4HX8tqbdhTQcHyS",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "a0707858f82d4612f2b4f753fbcc303d1d73d97489afe79e90e4c44b50243394",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "fab15971c100e8b90ff9b4d8593cdc621a6dbc33599e98b6e99321af289eac66",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_N4HX8tqbdhTQcHyS",
   "subject": "igcse-chemistry",
@@ -192,6 +192,65 @@
       ]
     },
     {
+      "id": "rn_N4HX8tqbdhTQcHyS::L1::Q6",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L1",
+      "stem": "State where to find an element's relative atomic mass on the Periodic Table.",
+      "misconceptionClass": "Ar location recall",
+      "kind": "recall",
+      "modelAnswer": "It is the larger of the two numbers beside the element's symbol.",
+      "keywords": [
+        "larger",
+        "big",
+        "bigger",
+        "greater",
+        "top"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L1::Q7",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L1",
+      "stem": "State the other name for the relative formula mass when the substance is a simple molecule.",
+      "misconceptionClass": "molecular mass naming",
+      "kind": "recall",
+      "modelAnswer": "The relative molecular mass.",
+      "keywords": [
+        "molecular"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L1::Q8",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L1",
+      "stem": "Explain why a balanced equation's two sides always carry the same mass.",
+      "misconceptionClass": "conservation logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because mass is conserved — balancing only rearranges atoms into new arrangements, so the totals on each side match.",
+      "keywords": [
+        "conserved",
+        "conservation",
+        "same",
+        "rearranges",
+        "rearranged",
+        "match",
+        "totals"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L1::Q9",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L1",
+      "stem": "In the reaction N2 + 3H2 -> 2NH3, work out the total relative formula mass on each side (N 14, H 1) and state what the comparison shows.",
+      "misconceptionClass": "conservation check applied",
+      "kind": "application",
+      "modelAnswer": "Reactants: N2 = 2 x 14 = 28 and 3H2 = 3 x 2 = 6, total 34; products: 2NH3 = 2 x 17 = 34 — the totals are equal, exactly what conservation of mass requires.",
+      "keywords": [
+        "34",
+        "equal"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_N4HX8tqbdhTQcHyS::L2::Q1",
       "moduleId": "rn_N4HX8tqbdhTQcHyS::L2",
       "stem": "How many of each atom does calcium hydroxide, Ca(OH)2, contain?",
@@ -370,6 +429,73 @@
           "misconception": "oxygen miscounted"
         }
       ]
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L2::Q6",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L2",
+      "stem": "State the effect of a subscript written after a closing bracket in a formula.",
+      "misconceptionClass": "bracket subscript law",
+      "kind": "recall",
+      "modelAnswer": "It multiplies every element inside that bracket.",
+      "keywords": [
+        "multiplies",
+        "multiply",
+        "multiplied",
+        "times",
+        "doubles",
+        "triples"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L2::Q7",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L2",
+      "stem": "State the fastest guard against miscounting bracketed groups.",
+      "misconceptionClass": "listing guard recall",
+      "kind": "recall",
+      "modelAnswer": "List the atoms present element by element before adding anything up.",
+      "keywords": [
+        "list",
+        "listing",
+        "element",
+        "elements",
+        "before"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L2::Q8",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L2",
+      "stem": "Explain why calcium hydroxide, Ca(OH)2, contains two oxygens rather than one.",
+      "misconceptionClass": "bracket multiplication logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the subscript 2 after the bracket multiplies every element inside it — the single OH group becomes two O and two H.",
+      "keywords": [
+        "multiplies",
+        "multiply",
+        "multiplied",
+        "two",
+        "2",
+        "bracket",
+        "inside"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_N4HX8tqbdhTQcHyS::L2::Q9",
+      "moduleId": "rn_N4HX8tqbdhTQcHyS::L2",
+      "stem": "A student lists ammonium sulfate, (NH4)2SO4, element by element as N: 2 x 14, H: 8 x 1, S: 1 x 32, O: 4 x 16. State the four sub-totals and the Mr they add up to.",
+      "misconceptionClass": "element-by-element total applied",
+      "kind": "application",
+      "modelAnswer": "N: 28; H: 8; S: 32; O: 64 — the Mr is 28 + 8 + 32 + 64 = 132.",
+      "keywords": [
+        "132",
+        "28",
+        "8",
+        "32",
+        "64"
+      ],
+      "options": []
     }
   ]
 }

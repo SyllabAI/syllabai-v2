@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_4tzwS4GZjPybwtkS",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "6aebcfd15b0060a9de86c028fa4b2ec3e849e0314b8f254ec953b392318becb8",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "49818d4f01f1efde67344a21f49b757ce67ff9c6ba1aa63f355e6b729975b2f9",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_4tzwS4GZjPybwtkS",
   "subject": "igcse-chemistry",
@@ -192,6 +192,71 @@
       ]
     },
     {
+      "id": "rn_4tzwS4GZjPybwtkS::L1::Q6",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L1",
+      "stem": "Define solute, solvent and solution.",
+      "misconceptionClass": "solution vocabulary recall",
+      "kind": "recall",
+      "modelAnswer": "The solute is the solid that dissolves; the solvent is the liquid it dissolves into; together they form the solution.",
+      "keywords": [
+        "solute",
+        "solvent",
+        "solution",
+        "solid",
+        "liquid",
+        "dissolves"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L1::Q7",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L1",
+      "stem": "State the two unit families concentration is quoted in, and which of them is the more useful.",
+      "misconceptionClass": "concentration units recall",
+      "kind": "recall",
+      "modelAnswer": "Grams per dm3 (g / dm3) or moles per dm3 (mol / dm3) — the moles measure is the more useful of the two.",
+      "keywords": [
+        "mol",
+        "mole",
+        "moles",
+        "dm3",
+        "g",
+        "grams",
+        "per"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L1::Q8",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L1",
+      "stem": "Explain why a volume in cm3 must be converted before any concentration working begins.",
+      "misconceptionClass": "volume conversion logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because concentration units are per dm3, so a cm3 volume must be divided by 1000 before it enters the sum.",
+      "keywords": [
+        "dm3",
+        "1000",
+        "divide",
+        "divided",
+        "converted",
+        "convert"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L1::Q9",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L1",
+      "stem": "A solution holds 0.1 mol of solute in 250 cm3 of solution. Convert the volume, then state the concentration in mol / dm3.",
+      "misconceptionClass": "concentration calculation applied",
+      "kind": "application",
+      "modelAnswer": "250 / 1000 = 0.25 dm3; concentration = 0.1 / 0.25 = 0.4 mol / dm3.",
+      "keywords": [
+        "0.4",
+        "0.25"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_4tzwS4GZjPybwtkS::L2::Q1",
       "moduleId": "rn_4tzwS4GZjPybwtkS::L2",
       "stem": "What is the Mr of NaOH? (Na 23, H 1, O 16)",
@@ -370,6 +435,74 @@
           "misconception": "coefficient added not multiplied"
         }
       ]
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L2::Q6",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L2",
+      "stem": "State the relationship between moles, concentration and volume that the formula triangle encodes.",
+      "misconceptionClass": "triangle recall",
+      "kind": "recall",
+      "modelAnswer": "Moles of solute equal concentration multiplied by volume, with the volume in dm3 — cover the one you want on the triangle.",
+      "keywords": [
+        "moles",
+        "mole",
+        "concentration",
+        "volume",
+        "multiplied",
+        "multiply",
+        "dm3"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L2::Q7",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L2",
+      "stem": "State how to find the volume of a solution from its moles and concentration.",
+      "misconceptionClass": "volume from moles recall",
+      "kind": "recall",
+      "modelAnswer": "Volume equals the moles divided by the concentration.",
+      "keywords": [
+        "volume",
+        "divided",
+        "divide",
+        "moles",
+        "mole",
+        "concentration"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L2::Q8",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L2",
+      "stem": "Explain why a titration result needs the balanced equation's ratio.",
+      "misconceptionClass": "titration ratio logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the titration gives the moles of one solution only — the balanced equation's ratio scales those moles across to the other solution.",
+      "keywords": [
+        "ratio",
+        "balanced",
+        "equation",
+        "scales",
+        "scale",
+        "moles",
+        "mole",
+        "other"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_4tzwS4GZjPybwtkS::L2::Q9",
+      "moduleId": "rn_4tzwS4GZjPybwtkS::L2",
+      "stem": "5.0 g of sodium hydroxide (Na 23, O 16, H 1) dissolves to make 250 cm3 of solution. Convert the mass to moles and the volume to dm3, then state the concentration.",
+      "misconceptionClass": "full concentration working applied",
+      "kind": "application",
+      "modelAnswer": "Mr of NaOH = 23 + 16 + 1 = 40; moles = 5.0 / 40 = 0.125 mol; volume = 250 / 1000 = 0.25 dm3; concentration = 0.125 / 0.25 = 0.5 mol / dm3.",
+      "keywords": [
+        "0.5",
+        "0.125",
+        "0.25"
+      ],
+      "options": []
     }
   ]
 }

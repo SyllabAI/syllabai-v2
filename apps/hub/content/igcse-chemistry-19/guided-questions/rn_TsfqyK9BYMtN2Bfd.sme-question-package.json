@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_TsfqyK9BYMtN2Bfd",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "eb583c9a1caa62421301af43745d559987b19ea1cb0db20995466af4f0697e95",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "ba7cc43e8f1f6665e449a2a58692fc6437b6b54fbc48b59033b79c36bc5cc4df",
+    "pinnedRef": "96c261a3a06e359dec72f63c67fd24d337adf463"
   },
   "packageId": "igcse-chemistry::rn_TsfqyK9BYMtN2Bfd",
   "subject": "igcse-chemistry",
@@ -192,6 +192,73 @@
       ]
     },
     {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L1::Q6",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L1",
+      "stem": "State what must be drawn on the paper before any distances are measured.",
+      "misconceptionClass": "solvent front marking",
+      "kind": "recall",
+      "modelAnswer": "A solvent front line, drawn at the wet edge (distances are then measured in mm).",
+      "keywords": [
+        "solvent",
+        "front",
+        "wet",
+        "edge",
+        "line"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L1::Q7",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L1",
+      "stem": "State the two preparations made before the solvent is poured in.",
+      "misconceptionClass": "setup preparations",
+      "kind": "recall",
+      "modelAnswer": "A pencil start line is drawn 2 cm from the bottom edge of the paper, and each colouring is spotted with its own capillary tube in spots no bigger than 2-3 mm.",
+      "keywords": [
+        "pencil",
+        "capillary",
+        "spots",
+        "line",
+        "2"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L1::Q8",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L1",
+      "stem": "Explain why sharing one capillary tube between two colourings would spoil the results.",
+      "misconceptionClass": "contamination logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because each colouring gets its own capillary tube so one sample cannot contaminate another — a shared tube would mix the samples, and the spots would no longer be each dye's own.",
+      "keywords": [
+        "contaminate",
+        "contaminated",
+        "own",
+        "mix",
+        "mixed",
+        "mixing"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L1::Q9",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L1",
+      "stem": "After an hour a student's solvent front has climbed only halfway up the paper. State what they should do, and why.",
+      "misconceptionClass": "run patience applied",
+      "kind": "application",
+      "modelAnswer": "Keep the run going — leave it undisturbed until the solvent has climbed at least three quarters of the paper (lifting it before the front reaches the top).",
+      "keywords": [
+        "three",
+        "quarters",
+        "wait",
+        "continue",
+        "leave",
+        "undisturbed",
+        "more"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q1",
       "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
       "stem": "A student draws the start line with ballpoint ink. What happens to the chromatogram?",
@@ -370,6 +437,73 @@
           "misconception": "agreement mistaken for a fault"
         }
       ]
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q6",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
+      "stem": "State what happens to ink start lines in the solvent, and what is used instead.",
+      "misconceptionClass": "ink vs pencil",
+      "kind": "recall",
+      "modelAnswer": "Ink start lines dissolve and run with the solvent, so every line and label is drawn in pencil.",
+      "keywords": [
+        "dissolve",
+        "dissolves",
+        "run",
+        "pencil"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q7",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
+      "stem": "State the timing rule for lifting the paper out of the beaker.",
+      "misconceptionClass": "lift timing",
+      "kind": "recall",
+      "modelAnswer": "The paper comes out before the solvent front reaches the top, or Rf cannot be calculated.",
+      "keywords": [
+        "before",
+        "front",
+        "top",
+        "reach",
+        "reaches"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q8",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
+      "stem": "Explain why solvent poured above the start line spoils the chromatogram.",
+      "misconceptionClass": "solvent level logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because solvent above the start line dissolves the samples away into the pool of solvent, so no dye ever climbs the paper.",
+      "keywords": [
+        "dissolves",
+        "dissolve",
+        "dissolved",
+        "away",
+        "climbs",
+        "climb",
+        "never"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_TsfqyK9BYMtN2Bfd::L2::Q9",
+      "moduleId": "rn_TsfqyK9BYMtN2Bfd::L2",
+      "stem": "Spot U matches colouring B's Rf exactly, but U also shows a second spot that matches nothing in the table. State what U contains.",
+      "misconceptionClass": "mixed spot applied",
+      "kind": "application",
+      "modelAnswer": "U contains dye B plus at least one other dye — matching Rf values mean the unknown holds that same dye (backed up by a visual check), and the extra unmatched spot is another component, so U is a mixture.",
+      "keywords": [
+        "b",
+        "plus",
+        "other",
+        "another",
+        "mixture",
+        "both",
+        "also"
+      ],
+      "options": []
     }
   ]
 }

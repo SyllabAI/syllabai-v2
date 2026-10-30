@@ -1,12 +1,12 @@
 {
-  "format": "sme-question-package/1.0",
-  "adapter": "guided-lesson-0.1--hub-lesson-import-1.0",
+  "format": "sme-question-package/1.1",
+  "adapter": "guided-lesson-0.5--hub-lesson-import-1.4",
   "source": {
-    "sourceFormat": "guided-lesson/0.1",
+    "sourceFormat": "guided-lesson/0.5",
     "noteId": "rn_VyXFNyxZHZGkxqTG",
     "corpusVersion": "sme-revision-notes-igcse-chemistry-19-2026-09-18",
-    "sourceLayerSha256": "5913ac345bf7e6d0486cf2fe68630fcbfefce2a756ca18a4fcecc45460dee5d2",
-    "pinnedRef": "4d857c472fd725597ac21db189542c8f12c82dba"
+    "sourceLayerSha256": "bf9f47c8ccc3801f76be03c0686560966996d16ddabba31bb3e7787741a6bc19",
+    "pinnedRef": "da18433ed9e8351a2e8ce1282b8eaf5c362442d4"
   },
   "packageId": "igcse-chemistry::rn_VyXFNyxZHZGkxqTG",
   "subject": "igcse-chemistry",
@@ -192,6 +192,73 @@
       ]
     },
     {
+      "id": "rn_VyXFNyxZHZGkxqTG::L1::Q6",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L1",
+      "stem": "State step one of the three-step reacting mass method.",
+      "misconceptionClass": "step one recall",
+      "kind": "recall",
+      "modelAnswer": "Change the given mass into moles by dividing it by the relative formula mass.",
+      "keywords": [
+        "moles",
+        "mole",
+        "dividing",
+        "divide",
+        "divided",
+        "relative",
+        "formula",
+        "mass"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L1::Q7",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L1",
+      "stem": "State what the moles from step two are multiplied by in the final step, and what that produces.",
+      "misconceptionClass": "step three recall",
+      "kind": "recall",
+      "modelAnswer": "The relative formula mass — multiplying the moles by it changes the answer back into a mass.",
+      "keywords": [
+        "mass",
+        "multiplying",
+        "multiply",
+        "multiplied",
+        "moles",
+        "mole",
+        "relative",
+        "formula"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L1::Q8",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L1",
+      "stem": "Explain why the balancing numbers in the equation are needed in step two of the method.",
+      "misconceptionClass": "molar ratio logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the balancing numbers give the molar ratio — the proportion in which the two substances react — and that ratio converts the moles of one substance into the moles of the other.",
+      "keywords": [
+        "ratio",
+        "balancing",
+        "proportion",
+        "moles",
+        "mole"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L1::Q9",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L1",
+      "stem": "Calcium carbonate decomposes: CaCO3 -> CaO + CO2. Starting from 50 g of calcium carbonate (Mr 100), state the moles of calcium carbonate and the mass of calcium oxide (Mr 56) formed.",
+      "misconceptionClass": "three-step method applied",
+      "kind": "application",
+      "modelAnswer": "Moles of CaCO3 = 50 / 100 = 0.5 mol; the ratio is 1 : 1, so 0.5 mol of CaO forms; mass = 0.5 x 56 = 28 g.",
+      "keywords": [
+        "0.5",
+        "28"
+      ],
+      "options": []
+    },
+    {
       "id": "rn_VyXFNyxZHZGkxqTG::L2::Q1",
       "moduleId": "rn_VyXFNyxZHZGkxqTG::L2",
       "stem": "Using Ar values Zn = 65 and O = 16, what is the relative formula mass of zinc oxide, ZnO?",
@@ -370,6 +437,66 @@
           "misconception": "ratio applied to the wrong pair"
         }
       ]
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L2::Q6",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L2",
+      "stem": "State what every mole value is divided by to expose the whole-number ratio.",
+      "misconceptionClass": "smallest division recall",
+      "kind": "recall",
+      "modelAnswer": "By the smallest mole value of the set.",
+      "keywords": [
+        "smallest",
+        "minimum",
+        "least",
+        "lowest"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L2::Q7",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L2",
+      "stem": "State what can be added to the equation once each substance's physical state is known.",
+      "misconceptionClass": "state symbols recall",
+      "kind": "recall",
+      "modelAnswer": "The state symbols.",
+      "keywords": [
+        "state",
+        "symbols",
+        "symbol"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L2::Q8",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L2",
+      "stem": "Explain why each measured mass must be converted to moles before the ratio is taken.",
+      "misconceptionClass": "moles before ratio logic",
+      "kind": "explain-why",
+      "modelAnswer": "Because the equation's balancing numbers compare amounts in moles, not masses — converting to moles puts every substance on a comparable footing before the ratio is read.",
+      "keywords": [
+        "moles",
+        "mole",
+        "masses",
+        "comparable",
+        "ratio",
+        "amounts"
+      ],
+      "options": []
+    },
+    {
+      "id": "rn_VyXFNyxZHZGkxqTG::L2::Q9",
+      "moduleId": "rn_VyXFNyxZHZGkxqTG::L2",
+      "stem": "An experiment burns 1.2 g of magnesium (Ar 24) in 0.8 g of oxygen (Ar 16). Show the two mole results and state the whole-number Mg : O ratio and the formula it gives.",
+      "misconceptionClass": "mole ratio from masses applied",
+      "kind": "application",
+      "modelAnswer": "Mg: 1.2 / 24 = 0.05 mol; O: 0.8 / 16 = 0.05 mol; dividing by the smallest gives 1 : 1, so the formula is MgO.",
+      "keywords": [
+        "0.05",
+        "mgo",
+        "1:1"
+      ],
+      "options": []
     }
   ]
 }
