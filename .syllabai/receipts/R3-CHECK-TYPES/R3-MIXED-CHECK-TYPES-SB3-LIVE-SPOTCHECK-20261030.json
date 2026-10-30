@@ -1,0 +1,80 @@
+{
+  "receipt": "R3-MIXED-CHECK-TYPES-SB3-LIVE-SPOTCHECK-20261030",
+  "format": "live-spotcheck-receipt/0.1",
+  "date": "2026-10-30",
+  "generated_at_utc": "2026-10-30T13:22:00Z",
+  "operator_trace": "1a18c9f53d7b8dd1",
+  "chain_of_record": {
+    "resources": "PR #237 (S-B2) merged e679c919; PR #240 (S-B3) merged 163cb2f3 (manifest v10, 238/238 gates GREEN)",
+    "hub_pr": "PR #501 head c5038ab4 (2 commits: runner FEED r3-stageb3-v10 ca51b5e4 + the 48-artifact tranche landing c5038ab4) opened 2026-10-30T12:41:44Z in the pre-break window of this lane",
+    "hub_merge": "PR #501 merged by this lane (merge method 'merge') -> merge commit 4a535ed3; merge-sha CI verify+hub 2/2 completed success"
+  },
+  "merge_gates": {
+    "import_run": "GREEN 34/34, 0 hard failures @ resources merge 163cb2f (of record in the landing commit message + download/integration/HUB-IMPORT-RUN-20261030-r3-stageb3.json): 48 revised (24 S-B2 re-issues riding the cumulative v10 manifest + 24 S-B3), 176 identical-existing, G-DELTA == declared, identity from disk checks 1,499, grand stream 1,501,204 chars conserved, cold re-read x224 byte-exact",
+    "pr_head_ci": "verify: completed/success; hub: completed/success (check-runs on c5038ab4)",
+    "mergeable_state": "clean",
+    "race_guard": "main moved 3 commits past PR base 8d4d9325 before merge; comm census ZERO file overlap; 50-file diff = guided-import.json x1 + hub-lesson-import x24 + sme-question-package x24 + run_import.mjs x1; zero identity-plane/bookkeeping paths",
+    "merge_sha_ci": "verify: completed/success; hub: completed/success on 4a535ed3 (poll 4)"
+  },
+  "surface": "https://syllabai-hub-v2.vercel.app/courses/igcse-chemistry-19/guided-lessons/{rn_4tzwS4GZjPybwtkS,rn_2VnK66PqbvFKdKYt,rn_xT8XsdJtDX5gNFXj}",
+  "deploy_probe": {
+    "method": "curl served HTML (incl. RSC payload) post-merge, then agent-browser DOM walk",
+    "bake": "pre-bake 3 polls (13:09-13:11Z: 0 written markers on the S-B3 note); bake landed at poll 4 13:12:40Z (~1 bake cycle after the 4a535ed3 merge)",
+    "rn_4tzw_S_B3": {
+      "your_answer_labels": 8,
+      "sb3_stems": {"Define solute, solvent and solution.": 2, "State the two unit families concentration is quoted in": 2}
+    },
+    "rn_2VnK_S_B2": {
+      "your_answer_labels": 8,
+      "sb2_stems": {"In the particle model, how is every particle of a substance represented": 2},
+      "note": "the S-B2 re-issues riding this cumulative manifest are live of record — the S-B2 hub import closes with this wave"
+    },
+    "rn_xT8X_S_B1_calibration": {"your_answer_labels": 8, "note": "S-B1 pattern unchanged on the same build"},
+    "provenance_law_2_1B": "0 hits for 'from the revision note' on all three pages"
+  },
+  "flow_walk": {
+    "note": "rn_4tzwS4GZjPybwtkS",
+    "lesson": "L1 Solute, Solvent and Concentration (Lesson 1 of 2 — Calculate Concentrations of Solutions)",
+    "confidence_gate": "Medium (locked after choice, continue-gated) — selected, radios disabled, flow advanced",
+    "mcq_path": "Q1-Q5 single-select radiogroups (4 options each) + Submit answer (disabled until selection) + Next question — untouched from stage A; 5 verdicts role=status 'Great job!' walked",
+    "written_Q6_recall": {
+      "stem": "Define solute, solvent and solution.",
+      "empty_submit": "Submit answer disabled while textarea empty (blocked)",
+      "miss_input": "the stuff that disappears in the drink",
+      "verdict": "Not quite.",
+      "model_answer_shown": "Model answer: The solute is the solid that dissolves; the solvent is the liquid it dissolves into; together they form the solution.",
+      "input_locked_after_settle": true
+    },
+    "written_Q7_recall": {
+      "stem": "State the two unit families concentration is quoted in, and which of them is the more useful.",
+      "hit_input": "grams per dm3 and moles per dm3 — the moles one is more useful",
+      "verdict": "Great job!",
+      "model_answer_shown": "Model answer: Grams per dm3 (g / dm3) or moles per dm3 (mol / dm3) — the moles measure is the more useful of the two.",
+      "input_locked_after_settle": true
+    },
+    "written_Q8_explain_why": {
+      "kind_label": "WRITTEN RESPONSE · EXPLAIN WHY",
+      "stem": "Explain why a volume in cm3 must be converted before any concentration working begins.",
+      "hit_input": "concentration units are per dm3 so the cm3 volume must be divided by 1000 first",
+      "verdict": "Great job!",
+      "model_answer_shown": "Model answer: Because concentration units are per dm3, so a cm3 volume must be divided by 1000 before it enters the sum.",
+      "input_locked_after_settle": true
+    },
+    "a11y": "role=status verdicts; 'Your answer' label on the textbox; model answer ALWAYS shown on settle"
+  },
+  "static_read_layer": "written cards SSR 8/8 on the S-B3 note (same law as the S-B1 receipt's read-layer walk); S-B2 note SSRs its wave-2 written layer on the same build",
+  "screenshots": [
+    "download/r3-stageb3/sb3-flow-q7-hit-greatjob.png",
+    "download/r3-stageb3/sb3-flow-q8-explainwhy.png"
+  ],
+  "census_landed": {
+    "checks": 1499,
+    "checks_mcq": 1195,
+    "checks_written": 304,
+    "written_recall": 152,
+    "written_explain_why": 76,
+    "written_application": 76,
+    "recomputed_from_disk": "apps/hub/content/igcse-chemistry-19/guided-questions/*.sme-question-package.json @ merge 4a535ed3"
+  },
+  "acceptance": "S-B3 tranche live: 96 written items across the 12 wave-3 notes render with keyword auto-grade + model-answer-on-settle at the flow stage (recall miss/hit + explain-why hit walked); the S-B2 re-issues riding the cumulative v10 manifest are live (S-B2 hub import closes with this wave); MCQs unchanged; 2.1B provenance law held; renderer law per the S-B3 hub_side_note verified in the DOM"
+}
