@@ -1,0 +1,188 @@
+{
+ "lane": "T-OEQ-MATHSB-SERVE-1",
+ "run": "run-032-runnumber-reconciliation",
+ "generatedUtc": "2026-10-30T18:17:01Z",
+ "operatorOrder": "Proceed with: artifacts can be reconciled and added to missing run numbers 023/024 and 026-029 as a next step",
+ "operatorTrace": "1a18dfbfdf69a2cd",
+ "verifiedAt": {
+  "localHead": "2c890529",
+  "originMain": "2c890529",
+  "localIsAncestorOfOrigin": true
+ },
+ "subjectRuns": [
+  {
+   "run": "run-023",
+   "receipt": ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-023-f5-census-revision-and-segment2-and-backsync.json",
+   "receiptOnOriginMain": true,
+   "receiptTitle": "F5 census-class revision + token-fixable subclass attribution; q10(b) head-row completion + q11(a)/(b) overspill reunite (Tier-B class, operator-authorized); corpus back-sync +6 pids with 6/6 EXACT exporter verification",
+   "worklogHeaderLine": 22420,
+   "laneArtifactsDir": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-023/",
+   "laneArtifactFileCount": 7,
+   "planeOfRecord": {
+    "before": "a794747f1a503e12",
+    "afterSegment2": "fbc7f383ed8f5843",
+    "afterTrim": "21f5369ea4e228a1",
+    "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+   },
+   "corpusSide": {
+    "scope": "the operator-ordered +5 pids (run-022 lineage: 2021 10-b/11-a/9-b, 2023 8/9-b) + 11-b (segment-2) = 6 pids / 9 corpus field-writes",
+    "target": "SyllabAI/syllabai-resources Official-ExamQuestion/igcse-maths-b-16/{2021-06,2023-06}/4MB1-02/topic.json @5586acae",
+    "form": "corpus := plane of record values EXACTLY (strip_furniture no-op on all fields as captured); serialization byte-law preserved (indent=1, ensure_ascii=False, no trailing newline; roundtrip-verified True before writes); git diff touches ONLY the 9 fields",
+    "verification": "exporter of record (filed copy unmodified) export_series at the back-synced corpus: 6/6 pids EXACT (solutionMd + markPoints == plane 21f5369ea4e228a1) — the S2 Total-strip divergence is MOOT for 2023-8 ('Total 7 marks' rides the 'A1 cas' line, fullmatch strip does not fire): ZERO-divergence catch-up, the standing S2 class does not grow",
+    "pr": "SyllabAI/syllabai-resources PR #225 (branch t-oeq-mathsb/run-023-backsync, commit c80077d3)",
+    "note": "the 1461-pid standing back-sync debt (run-021 scope_a) is UNCHANGED by this run; R1/R2 exporter-law menu remains operator-gated"
+   },
+   "landingOfRecord": {
+    "/branch": "t-oeq-mathsb/run-023 PUSHED (088e56b3 content+bookkeeping; cc8dde09 empty-commit CI re-fire; ac423e77 race-guard merge of origin/main 0d2c5111 with worklog union resolution)",
+    "/pr": "PR #454 — https://github.com/SyllabAI/syllabai-v2/pull/454",
+    "/ci": "2/2 GREEN (hub + verify) on head ac423e77",
+    "/merge": "5a8c8ea2 merged @ ~19:45Z, merge_method=merge",
+    "/liveSpotCheck": "PASS — corpus endpoint sha16 21f5369ea4e228a1 EXACT (3,717,142B @19:48:39Z, ~3.5min post-merge); june-2021-4mb1-02 page: 6/6 effective positives — 3 NEW head-row transcription markers HIT ('Method I: Using intersecting secants', 'Case 1: Finding length AB', 'M1 correct method for finding FB or BD'),",
+    "/resourcesPr": "SyllabAI/syllabai-resources PR #225 CI 1/1 GREEN, MERGED 6cf1e365 — corpus back-sync +6 pids landed BOTH repos"
+   }
+  },
+  {
+   "run": "run-024",
+   "receipt": ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-024-tranche2-token-wave1.json",
+   "receiptOnOriginMain": true,
+   "receiptTitle": "Tranche-2 token repair wave-1: twin-pair deduplication FIRST (4 full twin pairs, 153 parts -> 149 units) + evidence-gated execution over the wave-1 head (7 units / 10 filed parts) + page-evidenced zero-fix discharge (2 p",
+   "worklogHeaderLine": 22483,
+   "laneArtifactsDir": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-024/",
+   "laneArtifactFileCount": 19,
+   "planeOfRecord": {
+    "before": "21f5369ea4e228a1",
+    "after": "f91f4c1b9d53bec3",
+    "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+   },
+   "corpusSide": "rides the NEXT converter run (standing disposition): +7 changed pids (22-a, 7-a, 7-b, 10-b, 26-twin x2, 28-twin x2 — 16-twins unchanged) join the 1461-pid standing back-sync debt; NO solo converter trigger, NO solo resources PR this run (operator order scoped to the v2 token repair)",
+   "landingOfRecord": {
+    "/branch": "t-oeq-mathsb/run-024 PUSHED (86d71d38 content+bookkeeping; f6cbe9de race-guard merge of fast origin/main ff63de2e with .syllabai/worklog.md append-append UNION resolution — the run-023 documented conflict/remedy class, both run-024 and FIGURES-2.1B entries preserved)",
+    "/pr": "PR #461 — https://github.com/SyllabAI/syllabai-v2/pull/461",
+    "/ciIncident": "zero-check-runs ~20min on the initial PR head (86d71d38) — mergeable unknown/dirty (worklog append-append vs fast main ff63de2e carrying PR #463) = no merge ref = pull_request workflows skip; the run-023 root cause of record REPRODUCED; remedy = merge origin/main into branch with union resolution (f",
+    "/ci": "2/2 GREEN (verify + hub) on merge head f6cbe9de",
+    "/merge": "1122b54b merged, merge_method=merge, mergeable clean",
+    "/liveSpotCheck": "PASS — corpus endpoint sha16 f91f4c1b9d53bec3 EXACT (3,717,560B; deploy propagation observed live: old pin 21f5369e x7 probes then new pin on attempt 8, ~6min post-merge); page markers 13/13 across 4 pages: june-2022-4mb1-01r 4/4 ('$L^2$','$AD^2$','may see $AC^2$','$3^2$'), june-2024-4mb1-02 4/4 ('$"
+   }
+  },
+  {
+   "run": "run-026",
+   "receipt": ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-026-tranche2-token-wave3.json",
+   "receiptOnOriginMain": true,
+   "receiptTitle": "Tranche-2 token repair wave-3 partial discharge: 34/103 ledger-verified residual units adjudicated page-first — 106 fix tuples / 40 field writes / 20 pids changed (plane 1a479c05 -> 37fc0a18), 44 zero-fix discharges, wav",
+   "worklogHeaderLine": 22613,
+   "laneArtifactsDir": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-026/",
+   "laneArtifactFileCount": 40,
+   "planeOfRecord": {
+    "before": "1a479c05194e1da7",
+    "after": "37fc0a18720d82ff",
+    "bytes": 3719167,
+    "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+   },
+   "corpusSide": "rides the NEXT converter run (standing disposition): +20 changed pids join the 1468-pid standing back-sync debt; NO solo converter trigger, NO solo resources PR",
+   "landingOfRecord": {
+    "/branch": "t-oeq-mathsb/run-026 PUSHED (content 106b1df2: plane + lane artifacts incl. 30 evidence PNGs; race-guard fetch-first — origin/main moved +3 mid-run (c4be0034 T-MG-AWARDS-1 receipt + #470 X1 mirror), merged union-clean into branch BEFORE push per the run-023/024 documented remedy)",
+    "/pr": "PR #473 — https://github.com/SyllabAI/syllabai-v2/pull/473",
+    "/ci": "2/2 GREEN (verify + hub) on first head 106b1df2 — the zero-check-runs class did NOT recur (race-guard merge worked)",
+    "/merge": "08b30d7b37f0a140b068cbbe91ab14d47c33dc87 merged, merge_method=merge",
+    "/liveSpotCheck": "PASS — corpus endpoint sha16 37fc0a18720d82ff EXACT (3,719,167B) on attempt 1; live served-content markers 12/12 incl. escaped-quote served-form matching (the run-022 §7 escaped-RSC class: markers carrying \" must match the \\\" JSON-string encoding); negative scoped control '10002 + 20002' (q6-b old f"
+   }
+  },
+  {
+   "run": "run-027",
+   "receipt": ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-027-tranche2-token-wave4.json",
+   "receiptOnOriginMain": true,
+   "receiptTitle": "Tranche-2 token repair wave-4 partial discharge: 15/73 ledger-derived units adjudicated page-first — 32 fix tuples / 15 field writes / 7 pids changed (plane f48ba914 -> edbe22de after race-guard re-base), 8 page-evidence",
+   "worklogHeaderLine": 22643,
+   "laneArtifactsDir": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-027/",
+   "laneArtifactFileCount": 37,
+   "planeOfRecord": {
+    "before": "37fc0a18720d82ff",
+    "rebasedTo": "f48ba914cf598054",
+    "after": "edbe22de25724627",
+    "bytes": 3721734,
+    "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+   },
+   "corpusSide": "rides the NEXT converter run (standing disposition): +7 changed pids join the 1468-pid standing back-sync debt; NO solo converter trigger, NO solo resources PR",
+   "landingOfRecord": {
+    "/branch": "t-oeq-mathsb/run-027 PUSHED (content ff481857 on 37fc0a18 base -> re-based commit on 4fbe8142, head e7163a11: plane + lane artifacts incl 27 evidence PNGs (22 first-hand-read 150dpi pages + 5 300dpi zoom crops)",
+    "/pr": "PR #478 — https://github.com/SyllabAI/syllabai-v2/pull/478",
+    "/ci": "2/2 GREEN (verify + hub) on first head e7163a11",
+    "/merge": "557285d6d92bd0e4b0f18b585903e2c78e63fde1 merged, merge_method=merge",
+    "/liveSpotCheck": "PASS on attempt 1 — corpus endpoint sha16 edbe22de25724627 EXACT (3,721,734 B); live served-content markers 12/12 + bonus marker (AO^2 794 chain) HIT incl escaped-quote served-form matching (run-022 §7 escaped-RSC class); negative control 'AO 2 = 132 + 202 + 152' (9-b old flattened form) ABSENT; pag"
+   }
+  },
+  {
+   "run": "run-028",
+   "receipt": ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-028-tranche2-token-wave5.json",
+   "receiptOnOriginMain": true,
+   "receiptTitle": "Tranche-2 token repair wave-5 partial discharge: 19/58 ledger-derived units adjudicated page-first — 32 fix tuples / 17 field writes / 10 pids changed (plane edbe22de -> f7a8c687), 9 zero-fix discharges (3 page-evidenced",
+   "worklogHeaderLine": 22723,
+   "laneArtifactsDir": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-028/",
+   "laneArtifactFileCount": 27,
+   "planeOfRecord": {
+    "before": "edbe22de25724627",
+    "after": "f7a8c687d329ffb5",
+    "bytes": 3722053,
+    "path": "apps/hub/content/igcse-maths-b-16/official-papers.json"
+   },
+   "corpusSide": "rides the NEXT converter run (standing disposition): +10 changed pids join the standing back-sync debt (1468 + 24 + 20 + 7 = 1519 + 10 = 1529-pid class; exact ledger per run receipts); NO solo converter trigger, NO solo resources PR",
+   "landingOfRecord": {
+    "/branch": "t-oeq-mathsb/run-028 PUSHED (content cf37d3ab on 5ae6ba93 base: plane + lane artifacts incl 18 evidence PNGs; race-guard fetch-first — origin/main +2 mid-run (NEON-PAUSE-001 bookkeeping), plane byte-verified UNTOUCHED, branch cut from 5ae6ba93)",
+    "/pr": "PR #484 — https://github.com/SyllabAI/syllabai-v2/pull/484",
+    "/ci": "2/2 GREEN (verify + hub) on first head cf37d3ab",
+    "/merge": "5d0cd05d9af9c4a3c13df015b1279342c25952de merged, merge_method=merge",
+    "/liveSpotCheck": "PASS — corpus endpoint sha16 f7a8c687d329ffb5 EXACT (3,722,053 B) cache-busted; served-content markers 14/14 HIT (4y^2 twins, ON^2=56.25, 19.5^2, 39^2, escaped \"10\"$^2$ [ = 280.25], eg 3^2=160+13^2, BN=12^2, AN=6.5^2, sin^-1, 15^2, escaped \"48.01\"$^2$+\"64.335\"$^2$, ADC=56, POQ=72, EG or $EG^2$) + ne"
+   }
+  },
+  {
+   "run": "run-029",
+   "receipt": ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-029-exporter-law-alignment.json",
+   "receiptOnOriginMain": true,
+   "receiptTitle": "R2 exporter-law alignment per the run-021 remediation menu (operator pick 'R2-first', trace 1a18be5e96ccb585): the --synced-fields pass-through ledger + the G-E7 fail-closed gate kill the S1/S2 law divergence — the 8/27 ",
+   "worklogHeaderLine": 22691,
+   "laneArtifactsDir": ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-029/",
+   "laneArtifactFileCount": 6,
+   "planeOfRecord": null,
+   "corpusSide": "exporter LAW + ledger land via this bookkeeping-only PR (.syllabai/** only); the STAGED official-papers.json is HELD NOT LANDED (landing it would regress the served plane to the corpus's pre-backsync forms on the ~1,465-pid debt); the plane lands only after the R1 backfill retires the debt and a full re-export runs byte-no-op",
+   "landingOfRecord": {}
+  }
+ ],
+ "chainContinuity": {
+  "cardReceiptNumbersOnOriginMain": [
+   2,
+   3,
+   4,
+   5,
+   6,
+   9,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31
+  ],
+  "gapsWithinFiledRange": [
+   7,
+   8,
+   10
+  ],
+  "note": "run-025 = token wave-2 of record (receipt + artifacts present); run-030 carries three receipts (backsync landing + PR238 disposition + superseded closure); run-031 = R1 closure verification"
+ },
+ "verdict": "OF-RECORD-COMPLETE"
+}

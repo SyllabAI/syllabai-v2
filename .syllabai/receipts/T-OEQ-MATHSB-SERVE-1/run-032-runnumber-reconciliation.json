@@ -1,0 +1,44 @@
+{
+  "lane": "T-OEQ-MATHSB-SERVE-1",
+  "run": "run-032-runnumber-reconciliation",
+  "title": "run-number chain reconciliation for 023/024 and 026–029: all six numbers verified OF-RECORD-COMPLETE (receipts on origin/main tree, lane-artifacts packs, worklog narration, landed PRs) — the 'missing run numbers' view is the stale pre-recovery snapshot, closed with a per-run census of record",
+  "operatorOrder": "Proceed with: artifacts can be reconciled and added to missing run numbers 023/024 and 026–029 as a next step",
+  "operatorTrace": "1a18dfbfdf69a2cd",
+  "date": "2026-10-30",
+  "agent": "main (Z.ai, zai-web session web-da4ab8b1-a924-45d1-ae19-04dc343162a6)",
+  "findingOfRecord": [
+    "NO ARTIFACT GAP EXISTS AT THE SIX NUMBERS: receipts run-023/024/026/027/028/029 are present on the origin/main tree (2c890529, first-hand git cat-file per file), each with its lane-artifacts evidence pack (7/19/40/37/27/6 files) and worklog narration of record (headers at lines 22420/22483/22613/22643/22723/22691 of .syllabai/worklog.md); run-025 (the number the operator view correctly shows as present) is likewise complete — token wave-2 of record, 41/142 discharged.",
+    "LANDED CARRIERS OF RECORD (first-hand from the receipts + git history): run-023 = PR #454 merged 5a8c8ea2 (plane a794747f1a503e12 -> fbc7f383ed8f5843 -> 21f5369ea4e228a1; resources back-sync PR #225 merged 6cf1e365, +6 pids, 6/6 EXACT exporter verification); run-024 = PR #461 merged 1122b54b (plane 21f5369e -> f91f4c1b9d53bec3; +7 pids rider); run-026 = PR #473 merged 08b30d7b (plane 1a479c05194e1da7 -> 37fc0a18720d82ff; +20 pids rider); run-027 = PR #478 merged 557285d6 (plane 37fc0a18 -> edbe22de25724627 after the f48ba914 re-base; +7 pids rider); run-028 = PR #484 merged 5d0cd05d (plane edbe22de -> f7a8c687d329ffb5; +10 pids rider, cumulative 1529-pid class at filing); run-029 = PR #485 merged 7b8e19cc (R2 exporter-law alignment — law + 26-field ledger only, stage HELD NOT LANDED, zero plane bytes by design).",
+    "PROVENANCE OF THE 'MISSING NUMBERS' VIEW: the handoff/summary numbering that shows 023/024 and 026–029 as gaps dates from the sandbox-recycle window in which the v2 clone had reset to the Oct-23 era missing the whole T-OEQ lane (the run-024 environmentRecoveryOfRecord); the fetch-first recovery of record (origin/main 8861ea1c = run-023 tip, then every later wave) healed the view before any of these runs landed. The reconciliation therefore ADDS the verification census to the six numbers rather than fabricating content — zero plane, corpus, or DB bytes touched.",
+    "CHAIN CONTINUITY OF RECORD: the card's receipt JSONs on origin/main cover runs 002–031 without any gap at 023/024/026–029; the only numbers without a receipt JSON are 007/008/010 (pre-receipt-convention era, worklog-narrated; runs 001–006 live in the task-card yaml execution_record) — outside the operator's six-number scope, noted for completeness only."
+  ],
+  "handoffDebtsReconciled": {
+    "153to142minus11": "RECONCILED at the receipts of record: 153 filed parts − 4 full-payload byte-identical twin groups (2020-06/2020-11 01 q16/q26/q28 + 02 1-b) = 149 adjudication units (run-024 receipt title), wave-1 took 7 units → 142 residual = the run-025 opener; the operator-order chain 1a188f9c0b718705 → 1a189540e67f59b1 → 1a189b1cdb854e99 is continuous.",
+    "r1BacksyncMechanism": "RESOLVED of record: the R1 corpus back-sync backfill landed as resources F122/PR #236 (b541dda8, 2026-10-30T11:08:16Z; 2,657 field writes + 2,669-key synced-fields ledger + r3 exporter port + B1–B7 CI battery); the twin delivery PR #238 was CLOSED as superseded (run-030 receipts: disposition + closure, comment 6527920921); run-031 independently re-verified the closure first-hand (re-export BYTE-NO-OP vs served plane, G-E7 2669/2669 at resources main@163cb2f3).",
+    "run023run024skipReason": "NOT APPLICABLE — both runs executed and landed of record; the 'skipped 023/024' line in the handoff view described the pre-recovery snapshot only."
+  },
+  "corpusRiderAccount": {
+    "accruedByTheSixRuns": "+7 (run-024) +20 (run-026) +7 (run-027) +10 (run-028) changed pids, disclosed per-receipt as riders on the NEXT converter run; run-023's +6 pids landed separately of record (resources PR #225) BEFORE the F122 wave.",
+    "standingLaw": "NO solo converter trigger, NO solo resources PR (operator order: riders join the next converter run); F122/#236 retired the debt class as of its cut (corpus := plane f7a8c687); POST-F122 plane deltas (the #496 41-entry mp-label canonicalization f7a8c687 -> bd6f21ea on the maths-B plane, plus the 4PH1 KaTeX waves on the physics plane) are the live rider population for the next converter run."
+  },
+  "residualOpenOnCard": [
+    "wave-6 token continuation: 39 units of record (run028_w6_continuation.json) — the card's open execution item",
+    "PAT rotation standing order (GitHub …JU4 / Vercel vcp_…aoT3) — CRITICAL-OVERDUE, unchanged",
+    "post-F122 corpus rider discharge on the next converter run (per the standing law, operator-gated)"
+  ],
+  "evidence": [
+    ".syllabai/lane-artifacts/T-OEQ-MATHSB-SERVE-1/run-032/runnumber-reconciliation-census.json",
+    ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-023-f5-census-revision-and-segment2-and-backsync.json",
+    ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-024-tranche2-token-wave1.json",
+    ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-025-tranche2-token-wave2.json",
+    ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-026-tranche2-token-wave3.json",
+    ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-027-tranche2-token-wave4.json",
+    ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-028-tranche2-token-wave5.json",
+    ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-029-exporter-law-alignment.json",
+    ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-030-corpus-backsync-landing.json",
+    ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-030-pr238-superseded-closure-r0.json",
+    ".syllabai/receipts/T-OEQ-MATHSB-SERVE-1/run-031-r1-closure-verification.json"
+  ],
+  "verdict": "OF-RECORD-COMPLETE",
+  "bookkeeping": "receipt + worklog entry + census only (.syllabai/**); zero plane/corpus/DB bytes; verified at local==origin/main 2c890529 before write; fetch-first race-guard push, ff-only, no force"
+}
