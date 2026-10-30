@@ -57,8 +57,15 @@ function SheetContent({
       <SheetOverlay />
       <SheetPrimitive.Content
         data-slot="sheet-content"
+        // audit 2026-10-30 (question-player motion review): the drawer curve —
+        // iOS-like cubic-bezier(0.32,0.72,0,1) — with a 400ms open (was 500ms
+        // ease-in-out); the close stays 300ms. Deliberate open, snappier
+        // dismiss. The tw-animate-css --animate-in shorthand (declared
+        // ^1.3.5, lockfile resolves 1.4.0 — same shape in both) reads
+        // var(--tw-duration)/var(--tw-ease), so these classes really drive
+        // the slide keyframes, not just CSS transitions.
         className={cn(
-          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-[cubic-bezier(0.32,0.72,0,1)] data-[state=closed]:duration-300 data-[state=open]:duration-400",
           side === "right" &&
             "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
           side === "left" &&

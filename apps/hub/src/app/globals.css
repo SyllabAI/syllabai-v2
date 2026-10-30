@@ -1325,6 +1325,26 @@
   .animate-spin {
     animation: none;
   }
+  /* audit 2026-10-30 (question-player motion review): the tw-animate-css
+     entrances/exits (Dialog/Sheet/Popover zoom+slide, the player's CLA
+     button/popup fade+zoom) keep their opacity fade and drop the movement —
+     reduced motion is fewer and gentler animations, not zero. Radix surfaces
+     carry data-state; the substring catches cover plain/unvariant
+     animate-in/out uses. These rules are unlayered, so they win over the
+     layered fade/zoom/slide utilities that set the same custom properties. */
+  [data-state="open"],
+  [data-state="closed"],
+  [class*="animate-in"],
+  [class*="animate-out"] {
+    --tw-enter-scale: 0;
+    --tw-enter-translate-x: 0;
+    --tw-enter-translate-y: 0;
+    --tw-enter-rotate: 0deg;
+    --tw-exit-scale: 0;
+    --tw-exit-translate-x: 0;
+    --tw-exit-translate-y: 0;
+    --tw-exit-rotate: 0deg;
+  }
 }
 @media (min-width: 1400px) {
   html[data-cla-sidebar="open"] .course-shell-row {
