@@ -1,0 +1,687 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "T-UGM-XBOARD-IAL-1",
+ "run": "x3-pure-3-mirror-r0",
+ "kind": "cross-board-mirror-build",
+ "generatedUtc": "2026-10-30T00:56:06Z",
+ "unit": "P3",
+ "matrixSource": ".syllabai/receipts/T-UGM-XBOARD-IAL-1/run-001-feasibility-r0.json",
+ "depthGradeLaw": {
+  "mapping": {
+   "DIRECT": "SERVES",
+   "DIRECT_THIN": "SERVES_WITH_GUARD",
+   "PARTIAL": "SERVES_WITH_GUARD",
+   "PARTIAL_VERY_THIN": "SERVES_WITH_GUARD",
+   "GAP": "INSUFFICIENT"
+  },
+  "serving": "SERVES/SERVES_WITH_GUARD rows serve their mirrored rows with the guard language on each resource specPoints note; INSUFFICIENT rows carry null pick + zero rows (schema-1.2 honest-gap law) — disclosed, never served."
+ },
+ "rows": [
+  {
+   "ial": "P3.1.1",
+   "ialCode": "1.1",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.1.5",
+     "role": "serves"
+    }
+   ],
+   "note": "rational-function simplification via partial-fraction material",
+   "served": [
+    "frightening-function",
+    "r5126",
+    "r7792",
+    "r8152",
+    "r8694"
+   ],
+   "primaryPick": "r7792"
+  },
+  {
+   "ial": "P3.1.2",
+   "ialCode": "1.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.2.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.2.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.2.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.2.4",
+     "role": "serves"
+    }
+   ],
+   "note": "year-skew: IAL P3 functions served by CIE P1 function bodies incl. inverse-relation graph (1.2.4)",
+   "served": [
+    "r9527",
+    "r5362",
+    "r7607",
+    "r5764",
+    "r5966",
+    "compose",
+    "composing-gets-me-nowhere",
+    "domain-and-range-dominoes",
+    "forming-functions-defining-domains",
+    "invertibles",
+    "making-inverse-functions",
+    "r7553",
+    "r5646",
+    "r8028",
+    "r5595",
+    "r9824",
+    "r6735",
+    "r8411",
+    "r9523"
+   ],
+   "primaryPick": "forming-functions-defining-domains"
+  },
+  {
+   "ial": "P3.1.3",
+   "ialCode": "1.3",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.1.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-2",
+     "code": "2.1.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.1.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.1.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "absolutely",
+    "inequalities",
+    "piece-it-together",
+    "r5362",
+    "r8427",
+    "can-you-find-cubic-edition",
+    "function-builder-ii",
+    "how-not-to-solve-a-cubic",
+    "r5032",
+    "r5196",
+    "r5248",
+    "r5276",
+    "r6299",
+    "r6317",
+    "r6431",
+    "r6488",
+    "r6546",
+    "r6577",
+    "r6612",
+    "r6790",
+    "r7036",
+    "r7108",
+    "r7243",
+    "r7991",
+    "r8468",
+    "r8701",
+    "r9006",
+    "r9082",
+    "r9330",
+    "r9523",
+    "whats-left"
+   ],
+   "primaryPick": "absolutely"
+  },
+  {
+   "ial": "P3.1.4",
+   "ialCode": "1.4",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.2.5",
+     "role": "serves"
+    }
+   ],
+   "note": "combined transformations y=2f(3x), f(-x)+1",
+   "served": [
+    "r7119",
+    "r5595",
+    "r9673",
+    "its-a-matter-of-perspective",
+    "name-that-graph-again",
+    "order-order",
+    "transformers",
+    "translating-or-not",
+    "r6607"
+   ],
+   "primaryPick": "order-order"
+  },
+  {
+   "ial": "P3.2.1",
+   "ialCode": "2.1",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.3.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.5.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.3.1",
+     "role": "serves"
+    }
+   ],
+   "note": "sec/cosec/cot n=6 thin (2.3.1 + 3.3.1); arcsin/arccos/arctan via principal-value bodies",
+   "served": [
+    "going-round-in-circles",
+    "muddled-trig",
+    "r7616",
+    "trig-tables",
+    "inverse-or-not",
+    "inverse-trig-functions"
+   ],
+   "primaryPick": "going-round-in-circles"
+  },
+  {
+   "ial": "P3.2.2",
+   "ialCode": "2.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.3.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "equation-or-identity-ii",
+    "inspecting-identities",
+    "lost-but-lovely-the-haversine",
+    "proving-half-angle-formulae",
+    "r5113",
+    "r5129",
+    "r5723",
+    "r6018",
+    "r6039",
+    "r6120",
+    "r6696",
+    "r6807",
+    "r7021",
+    "r7050",
+    "r7581",
+    "r7604",
+    "r8525",
+    "r8557",
+    "r8648",
+    "r8709",
+    "r9740",
+    "r9782",
+    "t-for-tan",
+    "transformation-or-not"
+   ],
+   "primaryPick": "equation-or-identity-ii"
+  },
+  {
+   "ial": "P3.2.3",
+   "ialCode": "2.3",
+   "class": "DIRECT_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.3.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.5.4",
+     "role": "adjacent"
+    }
+   ],
+   "note": "double angle: CIE 3.3.2 lane row n=0 is an adjudication artifact — 32 corpus trig bodies cover double/half angle (proving-half-angle-formulae, inspecting-identities, equation-or-identity-ii)",
+   "served": [
+    "equation-or-identity-ii",
+    "inspecting-identities",
+    "lost-but-lovely-the-haversine",
+    "proving-half-angle-formulae",
+    "r5113",
+    "r5129",
+    "r5723",
+    "r6018",
+    "r6039",
+    "r6120",
+    "r6696",
+    "r6807",
+    "r7021",
+    "r7050",
+    "r7581",
+    "r7604",
+    "r8525",
+    "r8557",
+    "r8648",
+    "r8709",
+    "r9740",
+    "r9782",
+    "t-for-tan",
+    "transformation-or-not",
+    "r5269",
+    "equation-or-identity-i",
+    "r6138",
+    "r7370",
+    "r7378",
+    "r8136",
+    "r8923",
+    "r9491",
+    "r9770",
+    "r9817",
+    "r9837",
+    "slices-of-pi",
+    "r8411",
+    "r9924"
+   ],
+   "primaryPick": "equation-or-identity-ii"
+  },
+  {
+   "ial": "P3.3.1",
+   "ialCode": "3.1",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.2.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.2.2",
+     "role": "serves"
+    }
+   ],
+   "note": "e^x graph material thin (n=5)",
+   "served": [
+    "an-irrational-inequality",
+    "r9824",
+    "to-the-limit"
+   ],
+   "primaryPick": "an-irrational-inequality"
+  },
+  {
+   "ial": "P3.3.2",
+   "ialCode": "3.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.2.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.2.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "powerful-fractions",
+    "r5103",
+    "r5462",
+    "r5940",
+    "r6045",
+    "r6414",
+    "r7015",
+    "r7077",
+    "r7384",
+    "r7606",
+    "r7845",
+    "r8260",
+    "r9366",
+    "r9747",
+    "to-log-or-not-to-log"
+   ],
+   "primaryPick": "powerful-fractions"
+  },
+  {
+   "ial": "P3.3.3",
+   "ialCode": "3.3",
+   "class": "DIRECT_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.2.4",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.2.4",
+     "role": "serves"
+    }
+   ],
+   "note": "log-graph estimation n=4",
+   "served": [
+    "how-far-did-the-earth-move",
+    "plotting-planets"
+   ],
+   "primaryPick": "how-far-did-the-earth-move"
+  },
+  {
+   "ial": "P3.4.1",
+   "ialCode": "4.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.4.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.4.1",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "can-you-find-chain-rule-edition",
+    "powerful-derivatives",
+    "r5251",
+    "r5990",
+    "r6938",
+    "r7431",
+    "r8071",
+    "r8671",
+    "r9085",
+    "rotating-derivatives",
+    "similar-derivatives",
+    "sine-stretching",
+    "trig-gradient-match"
+   ],
+   "primaryPick": "can-you-find-chain-rule-edition"
+  },
+  {
+   "ial": "P3.4.2",
+   "ialCode": "4.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.4.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.4.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "how-does-your-rectangle-grow",
+    "r5501",
+    "r6530",
+    "r6549",
+    "r6855",
+    "r8387",
+    "r8774",
+    "r8931",
+    "r9329",
+    "r9391",
+    "r9484",
+    "r9795",
+    "r9898"
+   ],
+   "primaryPick": "how-does-your-rectangle-grow"
+  },
+  {
+   "ial": "P3.4.3",
+   "ialCode": "4.3",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.4.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.4.3",
+     "role": "serves"
+    }
+   ],
+   "note": "inverse-function derivative via implicit/parametric material",
+   "served": [
+    "implicit-circles",
+    "parametric-points",
+    "r5053",
+    "r5237",
+    "r5376",
+    "r5678",
+    "r5696",
+    "r6710",
+    "r7042",
+    "r7833",
+    "r8620",
+    "r8939",
+    "r9325",
+    "r9413",
+    "r9809"
+   ],
+   "primaryPick": "implicit-circles"
+  },
+  {
+   "ial": "P3.4.4",
+   "ialCode": "4.4",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.4.1",
+     "role": "adjacent"
+    }
+   ],
+   "note": "exponential growth/decay embedded; no dedicated CIE SP",
+   "served": [
+    "can-you-find-chain-rule-edition",
+    "powerful-derivatives",
+    "r5251",
+    "r5990",
+    "r6938",
+    "r7431",
+    "r8071",
+    "r8671",
+    "r9085",
+    "rotating-derivatives",
+    "similar-derivatives",
+    "sine-stretching",
+    "trig-gradient-match"
+   ],
+   "primaryPick": "can-you-find-chain-rule-edition"
+  },
+  {
+   "ial": "P3.5.1",
+   "ialCode": "5.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.5.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.5.1",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "inverse-integrals",
+    "r7074",
+    "r8679",
+    "r9184",
+    "stretching-an-integral",
+    "trigsy-integrals",
+    "two-for-one",
+    "r7616",
+    "r8774",
+    "integral-chasing-2"
+   ],
+   "primaryPick": "inverse-integrals"
+  },
+  {
+   "ial": "P3.5.2",
+   "ialCode": "5.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.5.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.5.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "circular-slice",
+    "constant-consistency",
+    "r8134",
+    "r8694",
+    "r8778",
+    "r9297",
+    "trigsy-integrals"
+   ],
+   "primaryPick": "circular-slice"
+  },
+  {
+   "ial": "P3.6.1",
+   "ialCode": "6.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.6.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.6.1",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r5948",
+    "r7549",
+    "r8013",
+    "r8231",
+    "r8711",
+    "r9082",
+    "see-the-power",
+    "to-log-or-not-to-log"
+   ],
+   "primaryPick": "r5948"
+  },
+  {
+   "ial": "P3.6.2",
+   "ialCode": "6.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.6.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-2",
+     "code": "2.6.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.6.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.6.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r8404",
+    "staircase-sequences",
+    "r8679",
+    "r8231"
+   ],
+   "primaryPick": "r8404"
+  }
+ ],
+ "census": {
+  "ialSpecPoints": 18,
+  "depthGrade": {
+   "SERVES_WITH_GUARD": 7,
+   "SERVES": 11
+  },
+  "mirroredResources": 185,
+  "candidateRows": 348,
+  "perSourceCourse": {
+   "cie-a-level-maths-20-pure-3": 6,
+   "cie-a-level-maths-20-pure-1": 42,
+   "cie-a-level-maths-20-pure-2": 137
+  },
+  "specPointsCovered": 18
+ },
+ "validation": {
+  "V1_biject": "PASS (18 matrix keys <-> 18 curriculum SPEC_POINT codes)",
+  "V2_refs": "PASS (every ref resolves to CIE index + resource of record)",
+  "V3_serve": "PASS (pick law, no orphans, no nonOverlap mirrors, delimiter balance, asset existence, INSUFFICIENT never serves, byte-equality across sources)"
+ }
+}

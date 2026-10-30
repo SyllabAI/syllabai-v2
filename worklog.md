@@ -380,3 +380,18 @@ Work Log:
 
 Stage Summary:
 - X2 of record: ial-maths-20-pure-2 carries a validated cross-board mirror bundle (SUGGESTED, review-gated); learner surface visibility unchanged (flag law from X0; surface ships when commissioned). X3 (P3) next on the same shape; X4 (P4) carries the 2 INSUFFICIENT DE rows (5.2/6.4). Bookkeeping + committed data only; zero code behavior change, zero DB contact.
+
+Task ID: T-UGM-XBOARD-IAL-1 X3 run-001 (operator trace 1a18a48aba3dc2a9: "Merge / Start X3" — X3 commissioned on the R0-AUTO-79 merge of X2, PR #471 -> 40b2457e)
+Agent: main agent (Z.ai)
+Task: X3 — the THIRD cross-board mirror bundle: ial-maths-20-pure-3 ugm-resources.json from the run-001 feasibility matrix (vehicle V1 of record).
+
+Work Log:
+- Join of record: run-001-feasibility-r0.json matrix P3 (18 rows; key P3.a.b <-> curriculum SPEC_POINT code a.b, V1 biject asserted) x the three CIE bundles' aligned serving sets. 185 mirrored rows across 15 UGM stations; 18/18 IAL codes covered; zero INSUFFICIENT on P3 (matrix census: DIRECT 11 -> SERVES 11; DIRECT_THIN 2 + PARTIAL 5 -> SERVES_WITH_GUARD 7; the 2 hard GAPs remain P4 5.2/6.4, X4 scope). Unit-level reconciliation with the matrix of record: SERVES 15+14+11 = 40 across P1-P3, GUARD 7+5+7 = 19; P4 residue 8 DIRECT + 8 thin + 2 GAP = 18 (matches the 48/27/2 fleet census exactly).
+- Byte-true mirror law (unchanged from X1/X2): every served bodyMd is byte-equal to its CIE hub bundle row of record, with textOfRecordUnder = "<cie-course>/ugm-resources.json" + servedFromCourse provenance (year-skew refs preserved per row; servedFromCourse census: cie pure-1 x42 + cie pure-2 x137 + cie pure-3 x6). Zero corpus text moves, zero recapture, zero new intake; CIE non-overlap disclosures stay on the CIE bundles (one disclosure one home).
+- depthGrade law fail-closed: guard language rides each resource specPoints note ("[SERVES_WITH_GUARD] <- CIE ..."); primaryPick inherits the source lane's pick of record (18/18, zero null-pick rows on P3); GAP->INSUFFICIENT would carry null pick + zero rows (schema-1.2 honest-gap law, never served).
+- Validation: builder V1/V2/V3 PASS at build (scripts/x3_build.py — rollback-#10 rebuild of the x2_build.py unit-parameterized builder, XB_UNIT=P3); bun suite 78/78 green incl. the new cross-board mirror pin block for pure-3 (185 rows byte-compared to CIE sources in CI, spine officialText byte-equal to curriculum titles, guard set = exactly 7); hub-local tsc 0; validate_cie_bundles PASS (untouched plane); render census untouched by design.
+- Environment disclosure: sandbox rollback #10 struck between sessions (local worklog Tasks 15-24 + all builder scripts wiped; clone found on a stale lane branch with a dirty tree). GitHub of record untouched — X1 (958b1daa) and X2 (40b2457e) merged of-record before the rollback. Lane executed via a detached worktree at origin/main 40b2457e (dirty checkout untouched, T-HUB-FIX-001 fetch-first convention); sparse-checkout inheritance disabled in the worktree to materialize .syllabai/**.
+- Receipts: .syllabai/receipts/T-UGM-XBOARD-IAL-1/x3-pure-3-mirror-r0.json (per-row depthGrade map + census + validation of record).
+
+Stage Summary:
+- X3 of record: ial-maths-20-pure-3 carries a validated cross-board mirror bundle (SUGGESTED, review-gated); learner surface visibility unchanged (flag law from X0; surface ships when commissioned). X4 (P4) remains: carries the 2 INSUFFICIENT DE rows (5.2/6.4) as null-pick/zero-row disclosures. Bookkeeping + committed data only; zero code behavior change, zero DB contact.
