@@ -63,7 +63,7 @@ const baseView = (over: Partial<ClassForesightsView>): ClassForesightsView =>
     unlockPath: null,
     prerequisites: [],
     contextChain: [],
-    distribution: { ready: 0, atRisk: 0, notAssessable: 0, prereqBandCounts: { LOW: 0, DEVELOPING: 0, SECURE: 0 } },
+    distribution: { ready: 0, atRisk: 0, notAssessable: 0, prereqBandCounts: { LOW: 0, DEVELOPING: 0, SECURE: 0 }, atRiskByReason: { LOW_MASTERY_PREREQ: 0, ACTIVE_MISCONCEPTION_PREREQ: 0, LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ: 0 } },
     learners: [],
     ...over,
   });
@@ -87,12 +87,13 @@ const READY: ClassForesightsView = baseView({
       masteryBand: "DEVELOPING",
       weak: false,
       learnersWithActiveMisconception: 0,
+      lastPracticedAt: "2026-09-30T12:00:00.000Z", // v1.1: the recency the panel renders
     },
   ],
   contextChain: [
-    { nodeId: CHAIN_DEEP, code: "4CH1-S1-a", title: "Topic a", depth: 2, learnersMeasured: 2, meanEffectiveMastery: 0.81, masteryBand: "SECURE" },
+    { nodeId: CHAIN_DEEP, code: "4CH1-S1-a", title: "Topic a", depth: 2, learnersMeasured: 2, meanEffectiveMastery: 0.81, masteryBand: "SECURE", lastPracticedAt: "2026-09-25T12:00:00.000Z" },
   ],
-  distribution: { ready: 2, atRisk: 0, notAssessable: 1, prereqBandCounts: { LOW: 0, DEVELOPING: 1, SECURE: 0 } },
+  distribution: { ready: 2, atRisk: 0, notAssessable: 1, prereqBandCounts: { LOW: 0, DEVELOPING: 1, SECURE: 0 }, atRiskByReason: { LOW_MASTERY_PREREQ: 0, ACTIVE_MISCONCEPTION_PREREQ: 0, LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ: 0 } },
   // the SERVER-frozen sort, verbatim: READY (Ada, Ben) → NOT_ASSESSABLE (Cy)
   learners: [
     { learnerId: L1, displayName: "Ada", state: "READY", reason: null, weakPrereqCodes: [], miscoPrereqCodes: [], unmeasuredPrereqCodes: [], meanEffectiveMastery: 0.85 },
@@ -121,9 +122,10 @@ const AT_RISK: ClassForesightsView = baseView({
       masteryBand: "LOW",
       weak: true,
       learnersWithActiveMisconception: 2,
+      lastPracticedAt: "2026-09-29T12:00:00.000Z",
     },
   ],
-  distribution: { ready: 1, atRisk: 2, notAssessable: 0, prereqBandCounts: { LOW: 1, DEVELOPING: 0, SECURE: 0 } },
+  distribution: { ready: 1, atRisk: 2, notAssessable: 0, prereqBandCounts: { LOW: 1, DEVELOPING: 0, SECURE: 0 }, atRiskByReason: { LOW_MASTERY_PREREQ: 0, ACTIVE_MISCONCEPTION_PREREQ: 1, LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ: 1 } },
   // the SERVER-frozen sort: AT_RISK reason-lexical (Cy "ACTIVE…" < Ada "LOW…")
   // → READY (Ben) — the capture pins the panel does NOT re-sort
   learners: [
@@ -154,9 +156,10 @@ const NOT_ASSESSABLE: ClassForesightsView = baseView({
       masteryBand: "UNMEASURED",
       weak: false,
       learnersWithActiveMisconception: 0,
+      lastPracticedAt: null, // v1.1: the honest null — no recency rendered for unmeasured
     },
   ],
-  distribution: { ready: 0, atRisk: 0, notAssessable: 3, prereqBandCounts: { LOW: 0, DEVELOPING: 0, SECURE: 0 } },
+  distribution: { ready: 0, atRisk: 0, notAssessable: 3, prereqBandCounts: { LOW: 0, DEVELOPING: 0, SECURE: 0 }, atRiskByReason: { LOW_MASTERY_PREREQ: 0, ACTIVE_MISCONCEPTION_PREREQ: 0, LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ: 0 } },
   learners: [
     { learnerId: L1, displayName: "Ada", state: "NOT_ASSESSABLE", reason: "UNMEASURED_PREREQ", weakPrereqCodes: [], miscoPrereqCodes: [], unmeasuredPrereqCodes: ["4CH1-S1-a-2"], meanEffectiveMastery: null },
     { learnerId: L2, displayName: "Ben", state: "NOT_ASSESSABLE", reason: "UNMEASURED_PREREQ", weakPrereqCodes: [], miscoPrereqCodes: [], unmeasuredPrereqCodes: ["4CH1-S1-a-2"], meanEffectiveMastery: null },
@@ -169,7 +172,7 @@ const NOT_ASSESSABLE: ClassForesightsView = baseView({
 const TARGET_MEASURED: ClassForesightsView = baseView({
   targetMeasured: true,
   classState: "ASSESSABLE_READY",
-  distribution: { ready: 2, atRisk: 0, notAssessable: 0, prereqBandCounts: { LOW: 0, DEVELOPING: 1, SECURE: 0 } },
+  distribution: { ready: 2, atRisk: 0, notAssessable: 0, prereqBandCounts: { LOW: 0, DEVELOPING: 1, SECURE: 0 }, atRiskByReason: { LOW_MASTERY_PREREQ: 0, ACTIVE_MISCONCEPTION_PREREQ: 0, LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ: 0 } },
   learners: [
     { learnerId: L1, displayName: "Ada", state: "READY", reason: null, weakPrereqCodes: [], miscoPrereqCodes: [], unmeasuredPrereqCodes: [], meanEffectiveMastery: 0.85 },
     { learnerId: L2, displayName: "Ben", state: "READY", reason: null, weakPrereqCodes: [], miscoPrereqCodes: [], unmeasuredPrereqCodes: [], meanEffectiveMastery: 0.6 },
@@ -304,6 +307,34 @@ describe("foresights panel golden — C7 comprehension fixtures (the gate CK-12 
     );
     // nothing to unlock when there is no chain at all
     expect(html).not.toContain("Unlock the prediction");
+  });
+});
+
+describe("foresights panel golden — the v1.1 amendment (ADR-CLASS-0003)", () => {
+  test("READY: the recency line renders on the measured chip with the exact date slice", () => {
+    const html = render(READY);
+    expect(html).toContain('data-testid="foresights-prereq-recency"');
+    expect(html).toContain("last practiced 2026-09-30"); // a pure slice of the wire ISO
+    // no at-risk breakdown when nobody is at risk
+    expect(html).not.toContain("At-risk detail");
+  });
+
+  test("AT_RISK: the breakdown line renders in plain language, zeros included", () => {
+    const html = render(AT_RISK);
+    expect(html).toContain('data-testid="foresights-atrisk-reasons"');
+    expect(html).toContain(
+      "At-risk detail: 0 below the ready line only · 1 active misconception only · 1 both",
+    );
+    // the recency line rides on the measured weak chip too
+    expect(html).toContain("last practiced 2026-09-29");
+  });
+
+  test("NOT_ASSESSABLE: NO recency text anywhere — the honest null renders nothing", () => {
+    const html = render(NOT_ASSESSABLE);
+    expect(html).not.toContain("last practiced");
+    expect(html).not.toContain('data-testid="foresights-prereq-recency"');
+    // and no at-risk breakdown either (atRisk = 0)
+    expect(html).not.toContain("At-risk detail");
   });
 });
 

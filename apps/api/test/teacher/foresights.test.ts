@@ -431,6 +431,11 @@ describe("foresights honesty — the class level (plan §5 rows 1–2, C4)", () 
       atRisk: 0,
       notAssessable: 0,
       prereqBandCounts: { LOW: 0, DEVELOPING: 0, SECURE: 0 },
+      atRiskByReason: {
+        LOW_MASTERY_PREREQ: 0,
+        ACTIVE_MISCONCEPTION_PREREQ: 0,
+        LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ: 0,
+      },
     });
     const issued = (d.sql as ReturnType<typeof fakeSql>).queries;
     expect(issued.filter((q) => q.includes("from skill_states")).length).toBe(0);
@@ -532,6 +537,7 @@ describe("foresights evidence laws", () => {
       learnersMeasured: 0,
       meanEffectiveMastery: null,
       masteryBand: "UNMEASURED",
+      lastPracticedAt: null, // v1.1: honest null — context rows disclose recency too
     });
   });
 });
@@ -590,6 +596,69 @@ describe("foresights batching + determinism (§9.1 + §11 posture)", () => {
     });
     const v = await classForesights(d as never, TEACHER, CLASS_ID, ROOT, TGT);
     expect(() => classForesightsViewSchema.parse(v)).not.toThrow();
+  });
+});
+
+describe("foresights — the v1.1 amendment (ADR-CLASS-0003: context recency + reason breakdown)", () => {
+  test("D1 recency: the cell carries the MOST RECENT roster last_practiced_at (max, not first-seen)", async () => {
+    const d = makeDeps({
+      closureRows: CHAIN_SP1,
+      skills: [skill(L1, SP1, 0.9, 5, ELEVEN_D), skill(L2, SP1, 0.6, 5, FRESH)],
+    });
+    const v = await classForesights(d as never, TEACHER, CLASS_ID, ROOT, TGT);
+    const cell = v.prerequisites[0]!;
+    expect(cell.learnersMeasured).toBe(2);
+    // FRESH (Sep 30) beats ELEVEN_D (Sep 20) — the max over the roster rows
+    expect(cell.lastPracticedAt).toBe(new Date(FRESH).toISOString());
+  });
+
+  test("D1 honesty: an unmeasured cell carries lastPracticedAt null — no date fabricated", async () => {
+    const d = makeDeps({ closureRows: [{ node_id: SP2, depth: 1 }] });
+    const v = await classForesights(d as never, TEACHER, CLASS_ID, ROOT, TGT);
+    expect(v.prerequisites[0]!.learnersMeasured).toBe(0);
+    expect(v.prerequisites[0]!.lastPracticedAt).toBeNull();
+    expect(v.prerequisites[0]!.meanEffectiveMastery).toBeNull();
+  });
+
+  test("D1 context-only law: evidence on a depth-2 row discloses recency AND never moves the state", async () => {
+    const d = makeDeps({
+      closureRows: [
+        { node_id: SP1, depth: 1 },
+        { node_id: SUB, depth: 2 },
+      ],
+      skills: [
+        skill(L1, SP1, 0.2),
+        skill(L2, SP1, 0.3), // SP1 weak → the class is ASSESSABLE_AT_RISK
+        skill(L1, SUB, 0.9, 5, STALE_400D), // context-row evidence — must NOT re-classify
+      ],
+    });
+    const v = await classForesights(d as never, TEACHER, CLASS_ID, ROOT, TGT);
+    expect(v.classState).toBe("ASSESSABLE_AT_RISK"); // context evidence never classifies
+    expect(v.contextChain[0]!.learnersMeasured).toBe(1);
+    expect(v.contextChain[0]!.lastPracticedAt).toBe(new Date(STALE_400D).toISOString());
+  });
+
+  test("D2 breakdown: atRiskByReason folds the learner rows exactly, sum === distribution.atRisk", async () => {
+    const d = makeDeps({
+      closureRows: CHAIN_SP1,
+      skills: [skill(L1, SP1, 0.2), skill(L2, SP1, 0.3)],
+      misconceptions: [misco(L1, 0.9)], // Ada: weak AND active → BOTH; Ben: weak only
+    });
+    const v = await classForesights(d as never, TEACHER, CLASS_ID, ROOT, TGT);
+    expect(v.classState).toBe("ASSESSABLE_AT_RISK");
+    const ada = v.learners.find((l) => l.displayName === "Ada")!;
+    const ben = v.learners.find((l) => l.displayName === "Ben")!;
+    expect(ada.reason).toBe("LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ");
+    expect(ben.reason).toBe("LOW_MASTERY_PREREQ");
+    expect(v.distribution.atRisk).toBe(2);
+    expect(v.distribution.atRiskByReason).toEqual({
+      LOW_MASTERY_PREREQ: 1,
+      ACTIVE_MISCONCEPTION_PREREQ: 0,
+      LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ: 1,
+    });
+    // the invariant, computed from the wire rows (never hand-counted)
+    const sum = Object.values(v.distribution.atRiskByReason).reduce((a, n) => a + n, 0);
+    expect(sum).toBe(v.distribution.atRisk);
   });
 });
 

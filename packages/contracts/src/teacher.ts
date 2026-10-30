@@ -347,7 +347,13 @@ export type ForesightsLearnerReason = z.infer<typeof foresightsLearnerReasonSche
  *  mastery, the shared 4-state band, and the derived-projection flags
  *  (T-C11 mirror of weakPrerequisiteViewSchema). depth is always 1 by
  *  construction — the wire keeps the field so consumers can distinguish
- *  cells from contextChain rows shape-for-shape. */
+ *  cells from contextChain rows shape-for-shape.
+ *
+ *  v1.1 amendment (ADR-CLASS-0003 D1): `lastPracticedAt` is the most recent
+ *  roster last_practiced_at on this node — CONTEXT ONLY, it classifies
+ *  nothing (the §2.7 contextChain law extends to it); null when unmeasured
+ *  (the honesty law of meanEffectiveMastery: null); C6-clean — no staleness
+ *  threshold is invented, the raw instant is exposed and the reader judges. */
 export const foresightsPrerequisiteCellViewSchema = z.object({
   nodeId: z.string().uuid(),
   code: z.string(),
@@ -360,6 +366,7 @@ export const foresightsPrerequisiteCellViewSchema = z.object({
   masteryBand: analyticsBandSchema,
   weak: z.boolean(),
   learnersWithActiveMisconception: z.number().int(),
+  lastPracticedAt: javaInstantSchema.nullable(),
 });
 export type ForesightsPrerequisiteCellView = z.infer<
   typeof foresightsPrerequisiteCellViewSchema
@@ -367,7 +374,11 @@ export type ForesightsPrerequisiteCellView = z.infer<
 
 /** ForesightsContextChainRow — a depth ≥ 2 chain row: CONTEXT ONLY (zero
  *  classification influence, plan §2.7); the RAW node row (no projection —
- *  a concept row reports its own absence of evidence honestly). */
+ *  a concept row reports its own absence of evidence honestly).
+ *
+ *  v1.1 amendment (ADR-CLASS-0003 D1): `lastPracticedAt` rides here too —
+ *  same context-only law, same honest-null-when-unmeasured; free (Query A
+ *  already covers the chain scope). */
 export const foresightsContextChainRowSchema = z.object({
   nodeId: z.string().uuid(),
   code: z.string(),
@@ -376,6 +387,7 @@ export const foresightsContextChainRowSchema = z.object({
   learnersMeasured: z.number().int(),
   meanEffectiveMastery: z.number().nullable(),
   masteryBand: analyticsBandSchema,
+  lastPracticedAt: javaInstantSchema.nullable(),
 });
 export type ForesightsContextChainRow = z.infer<typeof foresightsContextChainRowSchema>;
 
@@ -433,6 +445,15 @@ export const classForesightsViewSchema = z.object({
       LOW: z.number().int(),
       DEVELOPING: z.number().int(),
       SECURE: z.number().int(),
+    }),
+    // v1.1 amendment (ADR-CLASS-0003 D2, plan §11.2 adopted): the AT_RISK
+    // fold by §5 reason — keys ALWAYS present (zeros, not absent) so
+    // consumers never distinguish shapes; the battery pins
+    // sum(atRiskByReason) === atRisk. In-memory only, zero new reads.
+    atRiskByReason: z.object({
+      LOW_MASTERY_PREREQ: z.number().int(),
+      ACTIVE_MISCONCEPTION_PREREQ: z.number().int(),
+      LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ: z.number().int(),
     }),
   }),
   learners: z.array(foresightsLearnerRowSchema),

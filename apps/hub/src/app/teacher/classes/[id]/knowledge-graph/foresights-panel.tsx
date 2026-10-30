@@ -22,6 +22,16 @@
  *   (6) ONLY THEN any chart — and v0 renders NO chart at all: there is no
  *       numeric curve (C2 bans bare probabilistic visuals; the chips ARE
  *       the visual). The law is honored vacuously by construction.
+ *
+ * v1.1 amendment (ADR-CLASS-0003) renders inside this law — no new section:
+ *   (3) measured chips append an evidence-recency line ("last practiced
+ *       YYYY-MM-DD" — a pure slice of the wire ISO string, zero locale math,
+ *       so the static renders stay deterministic); unmeasured chips render
+ *       nothing extra (nothing to say — the honest null); the contextChain
+ *       line still lists codes only;
+ *   (4) the attention-queue header gains the atRiskByReason breakdown line
+ *       when at least one learner is AT_RISK (the §13.3 polarized-class
+ *       answer, same plain-language vocabulary, zeros included).
  * `targetMeasured: true` replaces section (4) with a route chip to the
  * measured topic drill-down — Foresights' home terrain is unmeasured
  * targets; a measured target is honest retrospective material, routed to
@@ -81,6 +91,14 @@ const REASON_LABEL: Record<ForesightsLearnerReason, string> = {
 };
 
 const GROUP_ORDER: ForesightsLearnerState[] = ["AT_RISK", "READY", "NOT_ASSESSABLE"];
+
+/** v1.1 (ADR-CLASS-0003 D2): the at-risk reason breakdown in the same
+ * plain-language words — zeros included so the three-way shape is legible. */
+const AT_RISK_DETAIL: Array<[keyof ClassForesightsView["distribution"]["atRiskByReason"], string]> = [
+  ["LOW_MASTERY_PREREQ", "below the ready line only"],
+  ["ACTIVE_MISCONCEPTION_PREREQ", "active misconception only"],
+  ["LOW_MASTERY_AND_ACTIVE_MISCONCEPTION_PREREQ", "both"],
+];
 
 const GROUP_LABEL: Record<ForesightsLearnerState, string> = {
   AT_RISK: "Needs attention first",
@@ -201,6 +219,14 @@ export function ForesightsPanel({ view }: { view: ClassForesightsView }) {
                   <p className="mt-0.5 text-[11px] leading-snug">
                     {p.title} · {p.learnersMeasured} measured
                     {p.derived ? ` · via ${p.derivedViaConceptCodes.join(", ")}` : ""}
+                    {p.lastPracticedAt ? (
+                      <span
+                        data-testid="foresights-prereq-recency"
+                        className="text-muted-foreground"
+                      >
+                        {" "}· last practiced {p.lastPracticedAt.slice(0, 10)}
+                      </span>
+                    ) : null}
                   </p>
                 </li>
               );
@@ -247,6 +273,17 @@ export function ForesightsPanel({ view }: { view: ClassForesightsView }) {
               {view.distribution.notAssessable} not assessable
             </span>
           </div>
+          {view.distribution.atRisk > 0 ? (
+            <p
+              className="text-[11px] text-muted-foreground"
+              data-testid="foresights-atrisk-reasons"
+            >
+              At-risk detail:{" "}
+              {AT_RISK_DETAIL.map(([key, label]) => `${view.distribution.atRiskByReason[key]} ${label}`).join(
+                " · ",
+              )}
+            </p>
+          ) : null}
           {view.learners.length === 0 ? (
             <p className="text-xs text-muted-foreground">
               Nobody is enrolled yet — the queue fills in as members join.

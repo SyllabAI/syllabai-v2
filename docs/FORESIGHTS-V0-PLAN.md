@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status** | STAGE B EXECUTED (trace `1a18954e7a6ad9bd` operator go: "Stage B (route + hub headline-first panel)") — route `GET /api/v1/teacher/classes/{classId}/foresights?rootId=&nodeId=` mounted on `createTeacherClassesKgRouter` (param laws + service-owned gates + verbatim view, 12-test route battery), hub headline-first panel live on the v2 class-KG heatmap (`/teacher/classes/[id]/knowledge-graph`: "Readiness" node action → `foresights-dialog.tsx` → `foresights-panel.tsx`, the ADR §8 layout order enforced + `targetMeasured` measured-routing chip) + 14 golden captures (server-side renders of the three state fixtures + the §8 laws). Gates: api typecheck + FULL suite 3063/0; hub tsc + v2-surface 34/34 + goldens 14/14 + `next build` compiled successfully. Zero DB contact. Stage C deferred (each item needs its own ADR) |
+| **Status** | STAGE B EXECUTED (trace `1a18954e7a6ad9bd` operator go: "Stage B (route + hub headline-first panel)") — route `GET /api/v1/teacher/classes/{classId}/foresights?rootId=&nodeId=` mounted on `createTeacherClassesKgRouter` (param laws + service-owned gates + verbatim view, 12-test route battery), hub headline-first panel live on the v2 class-KG heatmap (`/teacher/classes/[id]/knowledge-graph`: "Readiness" node action → `foresights-dialog.tsx` → `foresights-panel.tsx`, the ADR §8 layout order enforced + `targetMeasured` measured-routing chip) + 14 golden captures (server-side renders of the three state fixtures + the §8 laws). Gates: api typecheck + FULL suite 3063/0; hub tsc + v2-surface 34/34 + goldens 14/14 + `next build` compiled successfully. Zero DB contact. Stage C menu ADJUDICATED (trace `1a18bd4b7d542cc1` operator go: "Go: one mini-ADR amendment tranche"): §11.2 + SC-3a adopted as the v1.1 context amendment (ADR-CLASS-0003, `FORESIGHTS-V1_1-PLAN.md` — policy marker stays foresights/v1, zero derivation change); SC-1/SC-3b/SC-4 rejected-with-reasons and SC-2 deferred-with-frozen-shape, dispositions of record in ADR-CLASS-0003 |
 | **Task** | T-FORESIGHT-V0-PLAN-1 (leg b), trace `1a1893280de1b2c5` |
 | **Date** | 2026-10-30 |
 | **Design law** | ADR-CLASS-0002 (comprehension-first prediction surfaces) — this plan is its first applicant |
@@ -276,14 +276,21 @@ chip to the drill-down instead of the attention list.
   until the operator go; Neon outage window unaffected).
 - **Stage B (tranche 2, separate PR):** route mount (§7) + hub panel (§8) +
   golden capture of the three state renders.
-- **Stage C (deferred, each needs its own ADR/plan):** numeric projection from
-  cohort priors; LLM narration variants over the C1 templates; review-schedule
-  and attempts-window context rows; whole-chain weighted propagation.
+- **Stage C (adjudicated 2026-10-30, trace `1a18bd4b7d542cc1` — dispositions of
+  record in ADR-CLASS-0003):** numeric projection from cohort priors
+  (REJECTED for now — the corpus moat); LLM narration variants over the C1
+  templates (DEFERRED — only ever as an authoring-time frozen variant pool);
+  review-schedule context rows (REJECTED — intent, not evidence) and
+  attempts-window recency context fields (ADOPTED as the v1.1 amendment,
+  `FORESIGHTS-V1_1-PLAN.md`); whole-chain weighted propagation (REJECTED —
+  C6-banned tuning, C5-breaking opacity).
 
 ## 11. Open decisions for the implementer (flagged, not blocked)
 
 1. `contextChain` depth cap: mirror `prerequisiteChain`'s 10 verbatim (default)
    or cap lower for wire size — implementer's call, disclosed in the PR.
 2. Distribution breakdown of AT_RISK by reason — useful, cheap; recommended.
+   ADOPTED in the v1.1 amendment (ADR-CLASS-0003 D2, `FORESIGHTS-V1_1-PLAN.md`
+   §2) as `distribution.atRiskByReason`.
 3. Hub placement: class-graph side panel vs dedicated workspace tab — R5's
    call with the operator (§8 states the law, not the location).
