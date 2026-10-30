@@ -443,3 +443,16 @@ Work Log:
 
 Stage Summary:
 - The v1.1 amendment LANDED as one tranche on branch t-foresight-v0/v11-20261030 (off origin/main 07e707ec): ADR-CLASS-0003 + FORESIGHTS-V1_1-PLAN + contracts + service + 4 new battery tests + panel renders + 3 new goldens; policy marker foresights/v1 unchanged; zero route bytes, zero new reads, zero new constants, zero DB contact. The Stage C menu is now FULLY adjudicated of record: adopted (SC-3a + §11.2, this tranche), rejected-with-reasons (SC-1/SC-3b/SC-4), deferred-with-frozen-shape (SC-2) — see ADR-CLASS-0003 §Dispositions. CD-A/CD-B/CD-C remain open unfiled candidates (CD-A still the smallest backlog item).
+
+---
+Task ID: T-FORESIGHT-V0-PLAN-1 run-004 landing addendum (same trace 1a18bd4b7d542cc1)
+Agent: main agent (Super Z, session web-528c0352)
+Task: Record the v1.1 amendment landing (PR #482 merged) and the CI state of record.
+
+Work Log:
+- Branch t-foresight-v0/v11-20261030 pushed; PR #482 opened via REST (standing remote-embedded credential channel, token never echoed; the run-002 "Bad credentials" class recurred and was remedied identically — the remote URL is token-only, not user:pass).
+- CI on head 2f576d58: bounded poll 4/8 — verify completed SUCCESS (poll 1), hub completed SUCCESS (poll 4); PR mergeable_state clean (a bookkeeping-only NEON-PAUSE-001 run-004 commit 5ae6ba93 interleaved on main between branch-off and merge — clean intake, zero conflicts); MERGED via REST merge_method=merge → merge sha 6900dfa0; local main ff-synced to 6900dfa0 (no force).
+- Post-merge: main's ci push run on 6900dfa0 expected to fire; the merged tree = the locally-verified tranche tree + the interleaved bookkeeping-only commit (zero code bytes), so the local gates of record carry (FULL suite 3115/0, goldens 17/17, v2-surface 34/34, build compiled).
+
+Stage Summary:
+- The foresights/v1.1 amendment (ADR-CLASS-0003) is ON MAIN: lastPracticedAt context fields (cells + context rows, honest-null law) + distribution.atRiskByReason (sum invariant pinned); policy marker foresights/v1 unchanged; zero route bytes, zero new reads, zero new constants; the Stage C menu FULLY adjudicated of record (adopted/rejected/deferred in ADR-CLASS-0003 §Dispositions). Zero DB contact held across the entire lane. CD-A/CD-B/CD-C remain open unfiled candidates (CD-A still the smallest).
