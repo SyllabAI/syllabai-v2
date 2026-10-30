@@ -2008,3 +2008,179 @@ describe("the cross-board mirror plane (T-UGM-XBOARD-IAL-1 X4 — the FOURTH IAL
     expect(guardCodes.size).toBe(8);
   });
 });
+
+describe("the same-board re-serve plane (T-UGM-AS-PURE-1 r0 — the AS pure-1 bundle, course-plane serve law)", () => {
+  const AS1_PATH = join(
+    import.meta.dir,
+    "../../content/cie-as-maths-20-pure-1/ugm-resources.json",
+  );
+  const as1 = UgmLaneBundle.parse(
+    JSON.parse(readFileSync(AS1_PATH, "utf8")),
+  );
+  // the A-level bundle of record, already parsed at module scope above
+  const srcById1 = new Map(bundle.resources.map((r) => [r.ugmId, r]));
+
+  test("parse succeeds under the reader schema (1.2)", () => {
+    expect(as1.schema).toBe("syllabai-demo.ugm-lane-resources/1.2");
+    expect(as1.lane).toBe("cie-as-maths-20-pure-1");
+    expect(as1.reviewState.state).toBe("SUGGESTED");
+    expect(as1.reviewState.note).toContain("Same-board re-serve");
+  });
+
+  test("spec-point index bijects the A-level index of record (spine identity, native fold law preserved)", () => {
+    const cur = JSON.parse(
+      readFileSync(
+        join(import.meta.dir, "../../content/cie-as-maths-20-pure-1/curriculum.json"),
+        "utf8",
+      ),
+    ) as { nodes: Array<{ family?: string; code?: string; title?: string }> };
+    const curCodes = cur.nodes
+      .filter((n) => n.family === "SPEC_POINT")
+      .map((n) => n.code as string)
+      .sort();
+    expect([...as1.specPoints.map((s) => s.code)].sort()).toEqual(
+      [...bundle.specPoints.map((s) => s.code)].sort(),
+    );
+    // 33 AS spine codes, 30 in the index — the three folded a-codes disclosed below
+    expect(curCodes).toHaveLength(33);
+    expect(as1.specPoints).toHaveLength(30);
+    for (const sp of as1.specPoints) {
+      const node = cur.nodes.find((n) => n.code === sp.code);
+      expect(sp.officialText).toBe(node?.title ?? null); // spine-verbatim (AS title ≡ A-level title)
+      const src = bundle.specPoints.find((s) => s.code === sp.code);
+      expect(src).toBeDefined();
+      expect(sp.primaryPick).toBe(src?.primaryPick ?? null);
+      expect(sp.ugmIds).toEqual(src?.ugmIds ?? []);
+      expect(sp.resourceCount).toBe(src?.resourceCount ?? 0);
+    }
+    // the three folded a-codes ride their parent codes of record — never gap-implied
+    for (const folded of ["1.3.1a", "1.3.2a", "1.4.1a"]) {
+      expect(curCodes).toContain(folded);
+      expect(as1.specPoints.map((s) => s.code)).not.toContain(folded);
+      const parent = as1.specPoints.find((s) => s.code === folded.slice(0, -1));
+      expect(parent?.ugmIds.length ?? 0).toBeGreaterThan(0);
+    }
+  });
+
+  test("re-serve census of record: 348 byte-true rows, zero disclosures moved, same_board_re_serve kind", () => {
+    expect(as1.resources).toHaveLength(348);
+    expect(as1.coverage.aligned).toBe(348);
+    expect(as1.coverage.nonOverlap).toBe(0);
+    expect(as1.coverage.specPointsCovered).toHaveLength(30);
+    expect(as1.coverage.coursePlaneJoins?.kinds).toEqual({
+      same_board_re_serve: 348,
+    });
+    expect(as1.coverage.coursePlaneJoins?.courses).toEqual({
+      "cie-a-level-maths-20-pure-1": 348,
+    });
+    for (const sp of as1.specPoints) {
+      expect(sp.resourceCount).toBe(sp.ugmIds.length);
+      if (sp.primaryPick !== null) expect(sp.ugmIds).toContain(sp.primaryPick);
+    }
+  });
+
+  test("every re-served row is byte-true to the A-level bundle of record with immediate-source provenance", () => {
+    for (const r of as1.resources) {
+      const s = srcById1.get(r.ugmId);
+      if (!s) throw new Error(`source row missing: ${r.ugmId}`);
+      expect(r.bodyMd).toBe(s.bodyMd); // the byte-true re-serve law
+      expect(r.title).toBe(s.title);
+      expect(r.url).toBe(s.url);
+      expect(r.station).toBe(s.station);
+      expect(r.specPoints).toEqual(s.specPoints); // the A-level adjudication of record, verbatim
+      expect(r.nonOverlap).toBe(false);
+      expect(r.servedFromCourse).toBe("cie-a-level-maths-20-pure-1");
+      expect(r.textOfRecordUnder).toBe(
+        "cie-a-level-maths-20-pure-1/ugm-resources.json",
+      );
+    }
+    // the served set == the source aligned set; the 131 non-overlap disclosures stay home
+    const srcAligned = bundle.resources
+      .filter((r) => r.nonOverlap === false)
+      .map((r) => r.ugmId)
+      .sort();
+    expect(as1.resources.map((r) => r.ugmId).sort()).toEqual(srcAligned);
+    for (const r of bundle.resources) {
+      if (r.nonOverlap) {
+        expect(as1.resources.some((x) => x.ugmId === r.ugmId)).toBe(false);
+      }
+    }
+  });
+
+  test("the flag law: both AS planes are flagged", () => {
+    const flags = JSON.parse(
+      readFileSync(join(import.meta.dir, "../../content/flags.json"), "utf8"),
+    );
+    const courses = flags.flags.ugmLaneResources.courses;
+    expect(courses).toContain("cie-as-maths-20-pure-1");
+    expect(courses).toContain("cie-as-maths-20-pure-2");
+  });
+});
+
+describe("the same-board re-serve plane (T-UGM-AS-PURE-1 r0 — the AS pure-2 bundle)", () => {
+  const AS2_PATH = join(
+    import.meta.dir,
+    "../../content/cie-as-maths-20-pure-2/ugm-resources.json",
+  );
+  const as2 = UgmLaneBundle.parse(
+    JSON.parse(readFileSync(AS2_PATH, "utf8")),
+  );
+  const src2 = UgmLaneBundle.parse(
+    JSON.parse(
+      readFileSync(
+        join(import.meta.dir, "../../content/cie-a-level-maths-20-pure-2/ugm-resources.json"),
+        "utf8",
+      ),
+    ),
+  );
+
+  test("parse succeeds under the reader schema (1.2)", () => {
+    expect(as2.schema).toBe("syllabai-demo.ugm-lane-resources/1.2");
+    expect(as2.lane).toBe("cie-as-maths-20-pure-2");
+    expect(as2.reviewState.state).toBe("SUGGESTED");
+    expect(as2.reviewState.note).toContain("Same-board re-serve");
+  });
+
+  test("spec-point index bijects the 17-code A-level P2 index of record", () => {
+    expect([...as2.specPoints.map((s) => s.code)].sort()).toEqual(
+      [...src2.specPoints.map((s) => s.code)].sort(),
+    );
+    for (const sp of as2.specPoints) {
+      const src = src2.specPoints.find((s) => s.code === sp.code);
+      expect(src).toBeDefined();
+      expect(sp.officialText).toBe(src?.officialText ?? null);
+      expect(sp.primaryPick).toBe(src?.primaryPick ?? null);
+      expect(sp.ugmIds).toEqual(src?.ugmIds ?? []);
+      expect(sp.resourceCount).toBe(src?.resourceCount ?? 0);
+    }
+  });
+
+  test("re-serve census of record: 166 whole-row byte-true copies (row-level corpus provenance preserved verbatim)", () => {
+    expect(as2.resources).toHaveLength(166);
+    expect(as2.coverage.aligned).toBe(166);
+    expect(as2.coverage.nonOverlap).toBe(0);
+    expect(as2.coverage.specPointsCovered).toHaveLength(17);
+    expect(as2.coverage.coursePlaneJoins?.kinds).toEqual({
+      same_board_re_serve: 166,
+    });
+    expect(as2.coverage.coursePlaneJoins?.courses).toEqual({
+      "cie-a-level-maths-20-pure-2": 166,
+    });
+    // whole-row equality INCLUDING the rows' own corpus-level provenance of record
+    // (textOfRecordUnder = corpus capture path, servedFromCourse = capture-owner course)
+    const srcById = new Map(src2.resources.map((r) => [r.ugmId, r]));
+    expect(srcById.size).toBe(166);
+    for (const r of as2.resources) {
+      const s = srcById.get(r.ugmId);
+      if (!s) throw new Error(`source row missing: ${r.ugmId}`);
+      expect(r).toEqual(s);
+    }
+  });
+
+  test("the served set == the A-level P2 index-reachable set", () => {
+    const served = new Set<string>();
+    for (const sp of as2.specPoints) for (const id of sp.ugmIds) served.add(id);
+    expect(served.size).toBe(166);
+    for (const r of as2.resources) expect(served.has(r.ugmId)).toBe(true);
+  });
+});

@@ -1,0 +1,31 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "T-UGM-AS-PURE-1",
+ "run": "r0",
+ "kind": "bundle",
+ "generatedUtc": "2026-10-30T16:39:28Z",
+ "operatorTrace": "1a18da1c473ed801",
+ "unit": "cie-as-maths-20-pure-2",
+ "matrixSource": ".syllabai/receipts/T-UGM-AS-PURE-1/run-001-feasibility-r0.json",
+ "serveLaw": "course-plane same-board re-serve (T-UGM-HUB-CONSUME-P2 precedent; X-board V1 byte-true law)",
+ "rowProvenance": "source rows' own corpus-level provenance preserved verbatim (textOfRecordUnder=corpus capture path, servedFromCourse=capture-owner) — the re-serve source is disclosed at coverage.coursePlaneJoins level",
+ "census": {
+  "curriculumSpecPoints": 17,
+  "indexRows": 17,
+  "reServed": 166,
+  "foldedInto": [],
+  "gaps": 0,
+  "nonOverlapDisclosuresLeftHome": 0,
+  "stations": 27,
+  "bytes": 846003
+ },
+ "validation": {
+  "V1_schema": "PASS (bundle parses under the reader zod law — UgmLaneBundle; 1.2 nullable-pick shape, zero null picks needed)",
+  "V2_reconciliation": "PASS (index codes == source index codes; resourceCount == len(ugmIds); pick in ugmIds; served set == index-reachable set; row ref codes subset of index codes; folded parents served)",
+  "V3_byte_equality": "PASS (every row bodyMd/title/url/station/specPoints byte-true vs the A-level bundle of record; delimiter balance per bodyMd; spine identity re-verified at build time)"
+ },
+ "reviewState": {
+  "state": "SUGGESTED",
+  "note": "Agent-generated per AGENT.md rule 2 — candidates until the review/promotion gate"
+ }
+}
