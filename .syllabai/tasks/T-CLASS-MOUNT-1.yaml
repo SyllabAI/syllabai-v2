@@ -1,0 +1,27 @@
+version: 1
+task:
+  id: T-CLASS-MOUNT-1
+  title: T-CLASS-MOUNT-1 - mount the /api/v1/teacher/class/* ClassAnalytics family wire routes in v2 (3 GETs; the routes tranche the T-MIG-053-t2 doctrine deliberately deferred; closes the CD-A run-001 'hub Class Intelligence dark path' finding)
+  owner: '(claimed by the main lane, session web-528c0352, operator trace 1a18c5c44e7136f1 "Proceed with the /teacher/class/* mount gap"; branch t-class-mount-1/run-001 off origin/main 26dea741)'
+  status: 'PR-OPEN-CI-GREEN #493 (head 319e9a24 = 9493b551 + merge-intake of origin/main e097676c, worklog sole-conflict chronological union; CI 2/2 GREEN, mergeable clean; awaiting integrator merge)'
+  priority: P1
+  wave: t2-wire-layer-followup
+  deps: []
+  endpoints:
+  - GET /api/v1/teacher/class/overview?rootId={rootId}
+  - GET /api/v1/teacher/class/learners?rootId={rootId}
+  - GET /api/v1/teacher/class/topics/{nodeId}/drill-down?rootId={rootId}
+  service_status: substrate present (T-MIG-053 tranche-2 services/teacher/analytics.ts — classOverview/classLearners/topicDrillDown, fakeSql-pinned; AWAKE over ONE shared sql client since CD-A run-001's ClassAnalyticsPort wake-up)
+  hub_calls: YES - hub Class Intelligence page (apps/hub/src/app/teacher/class/class-client.tsx) emits api.classOverview / api.classLearners / api.classTopicDrillDown against exactly this family since the teacher-console tranche (2026-09-28) — dark path (404) in production until this mount
+  scope:
+    allowed:
+    - apps/api/src/routes/class-analytics.ts (NEW — this family's wire routes only)
+    - apps/api/src/index.ts (import + ONE mount line + comment — the minimal app-level wiring per the T-MIG-010/020/021/030/032/034/082 disclosed-commit precedent)
+    - apps/api/test/teacher/class-analytics-routes.test.ts (NEW — the fakeSql route battery)
+    - .syllabai/receipts/T-CLASS-MOUNT-1/**; this yaml; .syllabai/worklog.md (append-only)
+    forbidden:
+    - service-layer edits (T-MIG-053 tranche-2 is the frozen substrate; REUSE-not-redeclare — zero new service code, zero new reads, zero new parameters)
+    - contracts edits (the wire schemas are pre-ratified in @syllabai/contracts teacher.ts — zero new wire)
+    - hub files of any kind (the hub surface ledger widening for this family needs its own golden gate — the flip law)
+    - section-2 FULL flip env changes; production writes of any kind (zero-DB discipline — Neon unlock 2026-11-01T00:00Z; fakeSql only)
+    - force-push; self-merge of this PR

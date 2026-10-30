@@ -75,6 +75,7 @@ import { buildLearnerKgRouters } from "./routes/learnerkg";
 import { buildRevisionNotesRouters } from "./routes/revision-notes";
 import { buildKnowledgeRouters } from "./routes/knowledge";
 import { buildTeacherKgRouters } from "./routes/teacher-kg";
+import { buildClassAnalyticsRouters } from "./routes/class-analytics"; // T-CLASS-MOUNT-1 — the ClassAnalytics family wire routes (the T-MIG-053-t2 routes tranche)
 import { buildTutorRouters } from "./routes/tutor";
 import { buildTutorBankRouters } from "./routes/tutor-bank";
 import { buildClaRouters } from "./routes/cla";
@@ -121,6 +122,7 @@ const assignmentPacks = buildAssignmentPacksRouters(); // T-SENECA-001
 const revisionNotes = buildRevisionNotesRouters();
 const knowledge = buildKnowledgeRouters();
 const teacherKg = buildTeacherKgRouters();
+const classAnalytics = buildClassAnalyticsRouters(); // T-CLASS-MOUNT-1
 const research = buildResearchRouters();
 const ingestion = buildIngestionRouters();
 
@@ -735,6 +737,21 @@ app.route("/api/v1/admin/revision-notes", revisionNotes.adminRevisionNotesRoute)
 app.route("/api/v1/knowledge", knowledge.knowledgeRoute);
 app.route("/api/v1/teacher/classes", teacherKg.teacherClassesKgRoute);
 app.route("/api/v1/teacher/concept-graph", teacherKg.teacherConceptGraphRoute);
+
+// Class-analytics router (T-CLASS-MOUNT-1 — the T-MIG-053 tranche-2 routes
+// tranche). Path parity with the frozen core: ClassAnalyticsController under
+// /api/v1/teacher/class (SINGULAR — a different literal prefix from the
+// /api/v1/teacher/classes family above; SecurityConfig.java's
+// hasAnyRole('TEACHER','ADMIN') rule — the router owns its authz internally).
+// The three GETs (overview / learners / topics/{nodeId}/drill-down) serialize
+// the T-MIG-053 tranche-2 services VERBATIM (zero route-level reshaping; the
+// engine inside is the frozen one — C6). This closes the CD-A run-001
+// disclosure: the hub Class Intelligence page emits this exact family since
+// the teacher-console tranche and no mount existed (the "dark path"). The
+// /api/v1/* fallback below stays the 404-after-auth path for NO router
+// claimed. Minimal app-level wiring per the T-MIG-010/020/021/030/032/034/082
+// disclosed-commit precedent.
+app.route("/api/v1/teacher/class", classAnalytics.classAnalyticsRoute);
 
 // Intervention-run router (T-MIG-061 tranche 2 — Wave 6). Path parity with the
 // frozen core: InterventionRunController under /api/v1/learners/me
