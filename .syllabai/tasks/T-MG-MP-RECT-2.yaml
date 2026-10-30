@@ -1,0 +1,52 @@
+version: 1
+task:
+  id: T-MG-MP-RECT-2
+  title: "MG parity — real page-anchored rect extraction into the seeded subset (the RECT-1 Backfill content lane)"
+  owner: "main agent (Z.ai, zai-web session web-123877e4-3cca-4eba-b72d-52233419378e)"
+  status: OPEN
+  priority: P2
+  band: T-MG-MARK-PARITY (interactive paper marking) — content class
+  wave: mg-parity-phase1-backfill
+  deps: [T-MG-MP-RECT-1]
+  plan_of_record: "docs/MG-MARK-PARITY-PLAN.md §3.1 Backfill"
+  parent: T-MG-MARK-PARITY-1
+  acceptance_pins:
+    - "(a) extraction-truth pin — the manifest carries REAL page-anchored geometry extracted deterministically from the paper PDFs of record (sha256-pinned), replacing the RECT-1 joinproof placeholders for the seed family; the instrument of record is checked in under .syllabai/lane-artifacts/T-MG-MP-RECT-2/run-001/ and the manifest sha256 is pinned in test (hand edits fail loudly)"
+    - "(b) census pin — MS point census reconciles with the QP footers: 76 rows, value sum 80 == footer sum 80 == 'TOTAL FOR PAPER IS 80 MARKS'; per-question counts pinned in the manifest test"
+    - "(c) oracle-validation pin — MG's PUBLIC getRegions payload for the same paper asset (read-only fetched, receipt-pinned): geometry 63/64 within 0.03 normalized or containment (zero page mismatches); marks 37/38 by code value; the 8.p1 grain divergence disclosed (their partless grounding vs our MS-faithful 8.a/8.b)"
+    - "(d) zero-touch pin — Gate 1 + fence census clean; additive-only diff (manifest fixture + test + lane artifacts only; the seed script, schema, contracts, API, UI all untouched)"
+  execution_record: >
+    run-001 (2026-10-30). Operator dispatch "RECT-2" (trace 1a18a2f52afe01f1).
+    Sources of record fetched read-only from the MG CDN (the dossier's public
+    assets, zero target-site writes): QP question-paper-562b3d0f.pdf
+    (562b3d0f8c98…, 20pp, print code P76402A0120) + MS mark-scheme-cffb921c.pdf
+    (cffb921c90b8…, 22pp). Instrument: extract_rects.py (pdfplumber/PyMuPDF)
+    — QP anchors: question lines ^N<TAB> bold at x<60 (standalone-gutter
+    variant for q16), part lines ^(a) at x<90 PLUS inline part labels riding
+    the question line (q10/q11/q21 "(a)\t" after the number), "(Total for
+    Question N is M marks)" footers (26/26 found, mark sum 80 verified),
+    turn-over lines, DO-NOT-WRITE/corner-bullet/print-code/footer-page-number
+    furniture excluded; block bottoms = min(next anchor − 8pt, turn-over −
+    2pt, writable bottom) floored at footer bottom; MS census: column-banded
+    (Question x<110 | Mark 235..300) fullmatch B1/B2/M1/M2/A1/A2/P1/C1 rows,
+    value-aware branch-collapse while Σ > footer (q17's OR-branch P1,P1,C1
+    second copy trimmed). GRAIN LAW: part-block rect per MS-labeled part
+    (x 60.1..552.5pt), question-block for MS-partless (x 42.3..552.5pt), one
+    row per mark point ordinal 0 (no page-break spans in this paper);
+    refs q{n}{part}-{k} in MS row order (the live-corpus scheme; 1:1
+    resolution = deployment seed --dry-run loud-fail gate). ORACLE
+    VALIDATION: MG PUBLIC getRegions uuid 1d9e943d-f246-4866-9636-35da6dba7e47
+    (64 regions) — geometry 33 strict + 25 contained + 5 superset = 63/64,
+    sole miss 8.p1 = grain divergence (our 8.a/8.b MS-faithful; question
+    grain contained; their marks=2 == our B1+B1 value), zero page mismatches;
+    marks 37/38 agree by value (the 38th value-consistent through the grain
+    lens). Visual overlays p3/p7/p12 sandbox-checked across the three layout
+    classes. DELIVERABLES: apps/api/scripts/fixtures/
+    mark-point-rects-1ma1-1f-jun2025.json (the manifest of record, 76 rows,
+    sha256 601ccece…pinned in test) + apps/api/test/paper-regions/
+    manifest.test.ts (6 tests / 868 assertions — schema via paperRegionRectSchema,
+    census pins, invariant pins, sha256 instrument gate) + lane artifacts
+    (extract_rects.py, extraction-summary.json, marks-crosscheck.json; PDFs
+    and overlay PNGs stay sandbox-local — no third-party document bytes
+    committed). The seed script/schema/contracts/API/UI are NOT touched —
+    Phase 1 surfaces consume the manifest unchanged at deployment seeding.

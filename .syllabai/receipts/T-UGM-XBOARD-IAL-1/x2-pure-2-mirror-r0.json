@@ -1,0 +1,893 @@
+{
+ "schema": "syllabai-demo.lane-receipt/1.0",
+ "lane": "T-UGM-XBOARD-IAL-1",
+ "run": "x2-pure-2-mirror-r0",
+ "kind": "cross-board-mirror-build",
+ "generatedUtc": "2026-10-30T00:19:59Z",
+ "unit": "P2",
+ "matrixSource": ".syllabai/receipts/T-UGM-XBOARD-IAL-1/run-001-feasibility-r0.json",
+ "depthGradeLaw": {
+  "mapping": {
+   "DIRECT": "SERVES",
+   "DIRECT_THIN": "SERVES_WITH_GUARD",
+   "PARTIAL": "SERVES_WITH_GUARD",
+   "PARTIAL_VERY_THIN": "SERVES_WITH_GUARD",
+   "GAP": "INSUFFICIENT"
+  },
+  "serving": "SERVES/SERVES_WITH_GUARD rows serve their mirrored rows with the guard language on each resource specPoints note; INSUFFICIENT rows carry null pick + zero rows (schema-1.2 honest-gap law) — disclosed, never served."
+ },
+ "rows": [
+  {
+   "ial": "P2.1.1",
+   "ialCode": "1.1",
+   "class": "PARTIAL_VERY_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.7.3",
+     "role": "adjacent"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.6.3",
+     "role": "adjacent"
+    }
+   ],
+   "note": "proof structure: 3 incidental corpus bodies (a-tangent-is-a-tangent-is, connect-three)",
+   "served": [
+    "r8065",
+    "r5703",
+    "r6877",
+    "r7391",
+    "r8286",
+    "r8399",
+    "r8543",
+    "r9942",
+    "a-tangent-is",
+    "gradient-match",
+    "gradients-important-real-world",
+    "r6345",
+    "r6352",
+    "r6584",
+    "r6959",
+    "r7734",
+    "r7750",
+    "r8231",
+    "r8287",
+    "r8625",
+    "r9138",
+    "r9815",
+    "slippery-slopes",
+    "speed-vs-velocity",
+    "tangent-or-normal",
+    "walk-sorting",
+    "r7433",
+    "talking-about-curves",
+    "two-way-calculus",
+    "r8907",
+    "common-terms",
+    "change-one-thing",
+    "r5345",
+    "r6137",
+    "r6153",
+    "r6257",
+    "r6592",
+    "r6608",
+    "r7031",
+    "r7258",
+    "r8121",
+    "r8163",
+    "r8249",
+    "r8260",
+    "r9375",
+    "r9468",
+    "r9613",
+    "r9819",
+    "r9916",
+    "r5849",
+    "r6405",
+    "r7424",
+    "r7487",
+    "r8493",
+    "r9177",
+    "r7553",
+    "r9527"
+   ],
+   "primaryPick": "r8065"
+  },
+  {
+   "ial": "P2.1.2",
+   "ialCode": "1.2",
+   "class": "PARTIAL_VERY_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.6.3",
+     "role": "adjacent"
+    }
+   ],
+   "note": "exhaustion: no dedicated body",
+   "served": [
+    "r8907",
+    "common-terms",
+    "change-one-thing",
+    "r5345",
+    "r6137",
+    "r6153",
+    "r6257",
+    "r6592",
+    "r6608",
+    "r7031",
+    "r7258",
+    "r8121",
+    "r8163",
+    "r8249",
+    "r8260",
+    "r9375",
+    "r9468",
+    "r9613",
+    "r9819",
+    "r9916",
+    "r5849",
+    "r6405",
+    "r7424",
+    "r7487",
+    "r8493",
+    "r9177",
+    "r7553",
+    "r9527"
+   ],
+   "primaryPick": "r8907"
+  },
+  {
+   "ial": "P2.1.3",
+   "ialCode": "1.3",
+   "class": "PARTIAL_VERY_THIN",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.6.3",
+     "role": "adjacent"
+    }
+   ],
+   "note": "counter-example: r6993 when-is-6-times-7-42",
+   "served": [
+    "r8907",
+    "common-terms",
+    "change-one-thing",
+    "r5345",
+    "r6137",
+    "r6153",
+    "r6257",
+    "r6592",
+    "r6608",
+    "r7031",
+    "r7258",
+    "r8121",
+    "r8163",
+    "r8249",
+    "r8260",
+    "r9375",
+    "r9468",
+    "r9613",
+    "r9819",
+    "r9916",
+    "r5849",
+    "r6405",
+    "r7424",
+    "r7487",
+    "r8493",
+    "r9177",
+    "r7553",
+    "r9527"
+   ],
+   "primaryPick": "r8907"
+  },
+  {
+   "ial": "P2.2.1",
+   "ialCode": "2.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-3",
+     "code": "3.1.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.1.4",
+     "role": "serves"
+    }
+   ],
+   "note": "factor/remainder theorem + algebraic division (CIE P3 bodies)",
+   "served": [
+    "function-builder-ii",
+    "r5276",
+    "r6317",
+    "r6577",
+    "whats-left",
+    "can-you-find-cubic-edition",
+    "how-not-to-solve-a-cubic",
+    "r5032",
+    "r5196",
+    "r5248",
+    "r6299",
+    "r6431",
+    "r6488",
+    "r6546",
+    "r6612",
+    "r6790",
+    "r7036",
+    "r7108",
+    "r7243",
+    "r7991",
+    "r8468",
+    "r8701",
+    "r9006",
+    "r9330"
+   ],
+   "primaryPick": "whats-left"
+  },
+  {
+   "ial": "P2.3.1",
+   "ialCode": "3.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.3.2",
+     "role": "serves"
+    }
+   ],
+   "note": "circles: 53 bodies of record under CIE 1.3.2 (finding-circles, pairs-of-circles, r5624, r5717, r5903, r6100...)",
+   "served": [
+    "between-the-lines",
+    "describing-straight-lines",
+    "lots-of-lines",
+    "near-miss",
+    "negatively-triangular",
+    "r5202",
+    "r5255",
+    "r5281",
+    "r5661",
+    "r5737",
+    "r5887",
+    "r5948",
+    "r5967",
+    "r6230",
+    "r6234",
+    "r6366",
+    "r6514",
+    "r6583",
+    "r6803",
+    "r6835",
+    "r7296",
+    "r7320",
+    "r8080",
+    "r8408",
+    "r8449",
+    "r8748",
+    "r9273",
+    "r9709",
+    "simultaneous-squares",
+    "spot-the-difference",
+    "straight-line-pairs",
+    "the-circle-of-apollonius-coordinate-edition",
+    "the-equation-of-a-straight-line",
+    "conic-sections-in-real-life",
+    "finding-circles",
+    "olympic-rings",
+    "pairs-of-circles",
+    "r5624",
+    "r5717",
+    "r5777",
+    "r5903",
+    "r6100",
+    "r6390",
+    "r7171",
+    "r7549",
+    "r7599",
+    "r7656",
+    "r7925",
+    "r8275",
+    "r8419",
+    "r8509",
+    "r8946",
+    "r9045",
+    "r9368",
+    "r9386",
+    "r9452",
+    "r9551",
+    "r9768",
+    "teddy-bear",
+    "teddy-bear-teacher-support"
+   ],
+   "primaryPick": "teddy-bear"
+  },
+  {
+   "ial": "P2.4.1",
+   "ialCode": "4.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.6.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.6.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "sort-it-out",
+    "connect-three",
+    "common-terms",
+    "r8907",
+    "change-one-thing",
+    "r5345",
+    "r6137",
+    "r6153",
+    "r6257",
+    "r6592",
+    "r6608",
+    "r7031",
+    "r7258",
+    "r8121",
+    "r8163",
+    "r8249",
+    "r8260",
+    "r9375",
+    "r9468",
+    "r9613",
+    "r9819",
+    "r9916",
+    "r5849",
+    "r6405",
+    "r7424",
+    "r7487",
+    "r8493",
+    "r9177",
+    "r7553",
+    "r9527"
+   ],
+   "primaryPick": "sort-it-out"
+  },
+  {
+   "ial": "P2.4.2",
+   "ialCode": "4.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.6.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r8907",
+    "common-terms",
+    "change-one-thing",
+    "r5345",
+    "r6137",
+    "r6153",
+    "r6257",
+    "r6592",
+    "r6608",
+    "r7031",
+    "r7258",
+    "r8121",
+    "r8163",
+    "r8249",
+    "r8260",
+    "r9375",
+    "r9468",
+    "r9613",
+    "r9819",
+    "r9916",
+    "r5849",
+    "r6405",
+    "r7424",
+    "r7487",
+    "r8493",
+    "r9177",
+    "r7553",
+    "r9527"
+   ],
+   "primaryPick": "r8907"
+  },
+  {
+   "ial": "P2.4.3",
+   "ialCode": "4.3",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.6.2",
+     "role": "serves"
+    },
+    {
+     "course": "pure-1",
+     "code": "1.6.3",
+     "role": "serves"
+    }
+   ],
+   "note": "increasing/decreasing/periodic classification embedded in progression material",
+   "served": [
+    "sort-it-out",
+    "connect-three",
+    "common-terms",
+    "r8907",
+    "change-one-thing",
+    "r5345",
+    "r6137",
+    "r6153",
+    "r6257",
+    "r6592",
+    "r6608",
+    "r7031",
+    "r7258",
+    "r8121",
+    "r8163",
+    "r8249",
+    "r8260",
+    "r9375",
+    "r9468",
+    "r9613",
+    "r9819",
+    "r9916",
+    "r5849",
+    "r6405",
+    "r7424",
+    "r7487",
+    "r8493",
+    "r9177",
+    "r7553",
+    "r9527"
+   ],
+   "primaryPick": "sort-it-out"
+  },
+  {
+   "ial": "P2.4.4",
+   "ialCode": "4.4",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.6.4",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "square-spirals",
+    "r5849",
+    "r6405",
+    "r7424",
+    "r7487",
+    "r8493",
+    "r9177",
+    "bouncing-to-nothing",
+    "can-you-find-series-edition",
+    "puzzling-pentagon",
+    "r8248",
+    "r8617",
+    "r9185",
+    "r9312"
+   ],
+   "primaryPick": "square-spirals"
+  },
+  {
+   "ial": "P2.4.5",
+   "ialCode": "4.5",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.6.1",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r7078",
+    "r5563",
+    "r5640",
+    "r5965",
+    "r6102",
+    "r6503",
+    "r6770",
+    "r7489",
+    "r7978",
+    "r8014",
+    "r9207",
+    "r9404",
+    "r9928"
+   ],
+   "primaryPick": "r7078"
+  },
+  {
+   "ial": "P2.5.1",
+   "ialCode": "5.1",
+   "class": "PARTIAL",
+   "depthGrade": "SERVES_WITH_GUARD",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.2.2",
+     "role": "serves"
+    }
+   ],
+   "note": "y=a^x: n=3 bodies",
+   "served": [
+    "an-irrational-inequality",
+    "r9824",
+    "to-the-limit"
+   ],
+   "primaryPick": "an-irrational-inequality"
+  },
+  {
+   "ial": "P2.5.2",
+   "ialCode": "5.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.2.1",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.2.1",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "calculators1950",
+    "changing-bases",
+    "factorial-fragments",
+    "log-lattice",
+    "log-lineup",
+    "proving-laws-of-logs",
+    "r5080",
+    "r6137",
+    "r6806",
+    "r7184",
+    "r7231",
+    "r7298",
+    "r7471",
+    "r7607",
+    "r9381",
+    "r9680",
+    "r9976",
+    "see-the-power",
+    "summing-to-one"
+   ],
+   "primaryPick": "calculators1950"
+  },
+  {
+   "ial": "P2.5.3",
+   "ialCode": "5.3",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.2.3",
+     "role": "serves"
+    },
+    {
+     "course": "pure-3",
+     "code": "3.2.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "powerful-fractions",
+    "r5103",
+    "r5462",
+    "r5940",
+    "r6045",
+    "r6414",
+    "r7015",
+    "r7077",
+    "r7384",
+    "r7606",
+    "r7845",
+    "r8260",
+    "r9366",
+    "r9747",
+    "to-log-or-not-to-log"
+   ],
+   "primaryPick": "powerful-fractions"
+  },
+  {
+   "ial": "P2.6.1",
+   "ialCode": "6.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.5.4",
+     "role": "serves"
+    },
+    {
+     "course": "pure-2",
+     "code": "2.3.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r5269",
+    "equation-or-identity-i",
+    "r6138",
+    "r7370",
+    "r7378",
+    "r8136",
+    "r8923",
+    "r9491",
+    "r9770",
+    "r9817",
+    "r9837",
+    "slices-of-pi",
+    "r8411",
+    "r9924",
+    "equation-or-identity-ii",
+    "inspecting-identities",
+    "lost-but-lovely-the-haversine",
+    "proving-half-angle-formulae",
+    "r5113",
+    "r5129",
+    "r5723",
+    "r6018",
+    "r6039",
+    "r6120",
+    "r6696",
+    "r6807",
+    "r7021",
+    "r7050",
+    "r7581",
+    "r7604",
+    "r8525",
+    "r8557",
+    "r8648",
+    "r8709",
+    "r9740",
+    "r9782",
+    "t-for-tan",
+    "transformation-or-not"
+   ],
+   "primaryPick": "r5269"
+  },
+  {
+   "ial": "P2.6.2",
+   "ialCode": "6.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.5.5",
+     "role": "serves"
+    },
+    {
+     "course": "pure-2",
+     "code": "2.3.2",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r6138",
+    "general-solutions",
+    "r5199",
+    "r5269",
+    "r7000",
+    "r7374",
+    "r8136",
+    "r8386",
+    "r8713",
+    "r9491",
+    "r9837",
+    "equation-or-identity-ii",
+    "inspecting-identities",
+    "lost-but-lovely-the-haversine",
+    "proving-half-angle-formulae",
+    "r5113",
+    "r5129",
+    "r5723",
+    "r6018",
+    "r6039",
+    "r6120",
+    "r6696",
+    "r6807",
+    "r7021",
+    "r7050",
+    "r7581",
+    "r7604",
+    "r8525",
+    "r8557",
+    "r8648",
+    "r8709",
+    "r9740",
+    "r9782",
+    "t-for-tan",
+    "transformation-or-not"
+   ],
+   "primaryPick": "r6138"
+  },
+  {
+   "ial": "P2.7.1",
+   "ialCode": "7.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.7.4",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "r9260",
+    "can-you-find-curvy-cubics",
+    "curvy-cubics",
+    "floppy-hair",
+    "r5732",
+    "r6180",
+    "r6537",
+    "r6820",
+    "r6867",
+    "r6868",
+    "r7196",
+    "r7280",
+    "r7386",
+    "r7586",
+    "r7720",
+    "r7785",
+    "r7839",
+    "r7998",
+    "r8441",
+    "r8548",
+    "r9599",
+    "r9671",
+    "r9905",
+    "r7433",
+    "talking-about-curves",
+    "two-way-calculus",
+    "average-turning-points",
+    "r5768",
+    "r6703",
+    "r7212",
+    "r7861",
+    "r8959",
+    "r9506",
+    "r9582",
+    "r9781",
+    "r5640",
+    "r7115",
+    "r8936"
+   ],
+   "primaryPick": "r9260"
+  },
+  {
+   "ial": "P2.8.1",
+   "ialCode": "8.1",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.8.3",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "additional-integrals",
+    "integral-chasing",
+    "r5090",
+    "r5549",
+    "r6067",
+    "r7236",
+    "r8105",
+    "slippery-areas",
+    "stretch-the-function",
+    "what-else-do-you-know"
+   ],
+   "primaryPick": "r6067"
+  },
+  {
+   "ial": "P2.8.2",
+   "ialCode": "8.2",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-1",
+     "code": "1.8.4",
+     "role": "serves"
+    }
+   ],
+   "note": "",
+   "served": [
+    "meaningful-areas",
+    "r5007",
+    "r5584",
+    "r6372",
+    "r7386",
+    "r7444",
+    "r7628",
+    "r7861",
+    "r8130",
+    "r8350",
+    "r9138",
+    "r9357"
+   ],
+   "primaryPick": "r9357"
+  },
+  {
+   "ial": "P2.8.3",
+   "ialCode": "8.3",
+   "class": "DIRECT",
+   "depthGrade": "SERVES",
+   "refs": [
+    {
+     "course": "pure-2",
+     "code": "2.5.3",
+     "role": "serves"
+    }
+   ],
+   "note": "trapezium rule: 7 bodies, direct same-part mapping",
+   "served": [
+    "approximating-areas",
+    "r5642",
+    "r6592",
+    "r7903",
+    "r7912",
+    "r8140",
+    "underneath-the-arches"
+   ],
+   "primaryPick": "r7903"
+  }
+ ],
+ "census": {
+  "ialSpecPoints": 19,
+  "depthGrade": {
+   "SERVES_WITH_GUARD": 5,
+   "SERVES": 14
+  },
+  "mirroredResources": 302,
+  "candidateRows": 523,
+  "perSourceCourse": {
+   "cie-a-level-maths-20-pure-1": 213,
+   "cie-a-level-maths-20-pure-3": 24,
+   "cie-a-level-maths-20-pure-2": 65
+  },
+  "specPointsCovered": 19
+ },
+ "validation": {
+  "V1_biject": "PASS (19 matrix keys <-> 19 curriculum SPEC_POINT codes)",
+  "V2_refs": "PASS (every ref resolves to CIE index + resource of record)",
+  "V3_serve": "PASS (pick law, no orphans, no nonOverlap mirrors, delimiter balance, asset existence, INSUFFICIENT never serves, byte-equality across sources)"
+ }
+}

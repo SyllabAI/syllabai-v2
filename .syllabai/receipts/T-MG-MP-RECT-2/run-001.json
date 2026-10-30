@@ -1,0 +1,27 @@
+{
+  "task": "T-MG-MP-RECT-2 run-001",
+  "date": "2026-10-30",
+  "operator": { "dispatch": "RECT-2", "trace": "1a18a2f52afe01f1", "session": "web-123877e4-3cca-4eba-b72d-52233419378e" },
+  "plan_of_record": "docs/MG-MARK-PARITY-PLAN.md §3.1 Backfill",
+  "class": "content — extraction truth for the seed family (1MA1/1F June 2025)",
+  "sources": {
+    "qp": { "url": "https://assets.mathsgenie.co.uk/sources/genie/past-papers/2025/pearson/gcse-maths/1ma1-1f/question-paper-562b3d0f.pdf", "sha256": "562b3d0f8c98be10c6f183cd883726dac5cbb7100377c1536d34e78f02731f9a", "pages": 20, "printCode": "P76402A0120" },
+    "ms": { "url": "https://assets.mathsgenie.co.uk/sources/genie/past-papers/2025/pearson/gcse-maths/1ma1-1f/mark-scheme-cffb921c.pdf", "sha256": "cffb921c90b87a8d776662d67ac2e82f059764b2d0d133c297803d528df3d1eb", "pages": 22 },
+    "oracle": { "endpoint": "pdfMarking.getRegions (PUBLIC, unauthenticated read)", "documentRef": { "type": "paper_asset", "id": "1d9e943d-f246-4866-9636-35da6dba7e47", "variant": "pdf" }, "payload": "getregions-1d9e943d-f246-4866-9636-35da6dba7e47.json (19034 B)", "regions": 64 }
+  },
+  "discipline": "zero writes to the target site (read-only GETs of public assets, the dossier precedent); zero DB contact (seeding is deployment-time); PDF bytes and overlay PNGs stay sandbox-local (no third-party document bytes committed)",
+  "deliverables": {
+    "manifest": { "path": "apps/api/scripts/fixtures/mark-point-rects-1ma1-1f-jun2025.json", "sha256": "601ccece3f1ecf6899146af14923bed173b940efbc50cfa6f9287ef0e2acf2e9", "rows": 76, "questions": 26 },
+    "test": { "path": "apps/api/test/paper-regions/manifest.test.ts", "results": "6 pass / 0 fail / 868 assertions" },
+    "lane_artifacts": ["extract_rects.py", "extraction-summary.json", "marks-crosscheck.json", "overlay-p3.png (sandbox)", "overlay-p7.png (sandbox)", "overlay-p12.png (sandbox)"]
+  },
+  "validation": {
+    "geometry": { "strict_within_0.03": 33, "contained_ours_in_theirs": 25, "superset_theirs_in_ours": 5, "key_miss": 1, "total": 64, "page_mismatches": 0, "miss_class": "8.p1 grain divergence — their partless grounding vs our MS-faithful 8.a/8.b (question-grain rect contained; marks value-consistent)" },
+    "marks": { "agree_by_value": 37, "compared": 38, "census": { "rows": 76, "ms_value_sum": 80, "qp_footer_sum": 80, "paper_total": "TOTAL FOR PAPER IS 80 MARKS" } },
+    "tests": "manifest.test.ts 6/6; full-suite + typecheck run at PR CI"
+  },
+  "grain_law": "part-block rect per MS-labeled part (x 60.1..552.5pt); question-block rect for MS-partless questions (x 42.3..552.5pt); one row per mark point, ordinal 0; multi-rect reserved for page-break spans (none in this paper)",
+  "ref_law": "q{n}{part}-{k} in MS row order — the live-corpus scheme per the joinproof alignment; 1:1 resolution against mark_points is the deployment seed --dry-run loud-fail gate (exit 3 on 0/N hits)",
+  "deployment": "seed-mark-point-rects.ts consumes this manifest unchanged: DATABASE_URL=... bun apps/api/scripts/seed-mark-point-rects.ts apps/api/scripts/fixtures/mark-point-rects-1ma1-1f-jun2025.json [--dry-run first]",
+  "residuals": ["1H companion paper = run-002 (instrument is family-generic)", "live-corpus ref verification = deployment dry-run", "corpus-wide backfill beyond the seed family = follow-up content runs"]
+}

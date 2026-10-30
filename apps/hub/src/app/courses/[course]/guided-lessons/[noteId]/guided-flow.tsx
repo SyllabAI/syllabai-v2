@@ -1087,11 +1087,11 @@ function CheckQuestion({
         </p>
         {gradable && (
           <div className="grid gap-1.5">
-            <label htmlFor={`flow-written-${index}`} className="text-[13px] font-medium">
+            <label htmlFor={`flow-written-${question.id.replace(/[^a-z0-9]/gi, "-")}`} className="text-[13px] font-medium">
               Your answer
             </label>
             <textarea
-              id={`flow-written-${index}`}
+              id={`flow-written-${question.id.replace(/[^a-z0-9]/gi, "-")}`}
               value={text}
               onChange={(e) => setText(e.target.value)}
               disabled={settled}
