@@ -24,7 +24,6 @@ import {
 
   ChevronDown,
   CircleHelp,
-  Database,
   FileQuestion,
   FlaskConical,
   GraduationCap,
@@ -47,7 +46,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { clearIdentity, useIdentity } from "@/lib/identity";
@@ -149,7 +147,9 @@ export function knowledgeGraphHref(pathname: string): string {
 
 export function AppShell({
   children,
-  config,
+  // `config` stays part of the call contract (root layout still passes it);
+  // the footer no longer renders the data-plane chip (UX review F-02), so
+  // the shell itself no longer reads it.
 }: {
   children: React.ReactNode;
   config: PublicConfig;
@@ -322,17 +322,23 @@ export function AppShell({
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              <Button asChild variant="outline" size="sm" className="hidden gap-1.5 sm:inline-flex">
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="gap-1.5 px-2 sm:px-3"
+                aria-label="Sign in"
+              >
                 <Link href="/login">
                   <LogIn className="size-3.5" aria-hidden />
-                  Sign in
+                  <span className="hidden sm:inline">Sign in</span>
                 </Link>
               </Button>
             )}
-            <Button asChild size="sm" className="hidden gap-1.5 sm:inline-flex">
+            <Button asChild size="sm" className="gap-1.5 px-2 sm:px-3" aria-label="Start studying">
               <Link href="/dashboard">
                 <Zap className="size-3.5" aria-hidden />
-                Start studying
+                <span className="hidden sm:inline">Start studying</span>
               </Link>
             </Button>
           </div>
@@ -349,31 +355,23 @@ export function AppShell({
         {bare ? children : <div className="mx-auto w-full max-w-6xl">{children}</div>}
       </main>
 
-      {/* footer — provenance lives here, not in the learner path. On
+      {/* footer — UX review 2026-10-31 F-02: the old footer spoke operator
+          (repo names, attestation dates, the data-plane chip) in the one
+          strip every page renders. Same honesty, student nouns. On
           document-focus routes (paper viewer / player) it is omitted
-          entirely: the panes fill the viewport exactly, and a footer below the
-          fold would create a pointless 200px page scroll. Immersive app
-          surfaces (tutor) omit it for the same viewport reason. */}
+          entirely (the immersive contract). */}
       {!isImmersiveRoute(pathname) && (
       <footer className="mx-auto w-full max-w-6xl px-4 pb-10 sm:px-6 lg:px-8 print:hidden">
         <div className="flex flex-wrap items-center gap-1.5 border-t pt-4">
           <ThemeToggle variant="row" />
-          <Badge variant="outline" className="gap-1 text-[10px] font-normal">
-            <Database className="size-3" aria-hidden />
-            {config.dataMode}
-          </Badge>
           <span className="text-[11px] text-muted-foreground">
-            canonical educational truth lives in{" "}
-            <span className="font-mono">syllabai-core</span>; everything simulated on this
-            surface is labelled <span className="font-mono">SIMULATED</span>; everything
-            AI-suggested keeps its provenance.
+            Every note, question and flashcard here is real, committed content traced to its
+            specification — and a resource that isn&apos;t ready yet is labelled, never faked.
           </span>
         </div>
         <p className="mt-2 text-xs text-muted-foreground">
-          SyllabAI Hub — the SyllabAI product frontend. Canonical semantics:
-          <span className="font-mono"> syllabai/syllabai</span> · content:
-          <span className="font-mono"> syllabai-resources</span> (pilot-licensed, SME attestation
-          2026-09-17).
+          SyllabAI Hub — revision for Edexcel IGCSE &amp; IAL and Cambridge International
+          qualifications.
         </p>
       </footer>
       )}
