@@ -22733,3 +22733,10 @@ Stage Summary:
 - LIVE SPOT-CHECK PASS: corpus sha16 f7a8c687d329ffb5 EXACT (3,722,053 B) cache-busted; markers 14/14 HIT + negatives 3/3 ABSENT + old 'ON 2' count 0 in served corpus (one probe-side marker-spelling artifact corrected, no plane defect).
 - WAVE-6 CONTINUATION FILED: 39 units. +10 changed pids ride the next converter run (standing debt; NO solo trigger). Both tokens ROTATION-REQUIRED re-flagged (GitHub …JU4, Vercel vcp_…aoT3) — still awaiting rotation.
 - Bookkeeping-only .syllabai/**, fetch-first, ff-only, no force.
+## R0-AUTO-85 receipt — 2026-10-30T09:45Z (Job 438940, sweep 17:30+08)
+
+- Merged PR #486 (T-OEQ-GROUPSTEM-1 — F121 v2 companion, group-stem restore sync: igcse-chemistry-19 official-papers.json + manifest.json re-sequence; head 2d5eb249, CI 2/2 first-try): mergeable=True state=clean, zero dirty intake; single clean PUT -> merge c40c876b (parents 280ad8e9 + 2d5eb249; /branches/main authoritative confirm immediate; NO PUT-disorder recurrence this time — single-request round).
+- Diff boundary: 2 files +617/-617 (perfectly balanced re-sequence: apps/hub/content/igcse-chemistry-19/manifest.json +50/-50, official-papers.json +567/-567); zero *.java, zero Neon/prod writes, reviews 0 / issue comments 0 / review-thread comments 0 / PR body clean.
+- Post-merge verification: main c40c876b CI 2/2 GREEN (two bounded re-checks, hub ~3min); this receipt pushed bookkeeping-only .syllabai/** on that GREEN base per gates-green-first law.
+- Skips: #296 bd2c0b1e FAIL(hub) unchanged (static saga residual); #487 61521879 PENDING both at check time (T-MG-INK-1 run-002 learner_pdf_drawings + GET/PUT API — fresh PR 09:31:07Z, deferred to next sweep, NOT skipped on substance).
+- Ops: mirror reset #276 on sweep entry (local found at signature 89962a5d — FIFTH consecutive hit, restored to origin/main 280ad8e9, zero data loss, signature unchanged); tail re-read: 85 free (prior 84 ours); flap #15 (16:00+08 sweep lost to sandbox-start failure) accumulated earlier today.
