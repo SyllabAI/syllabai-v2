@@ -1,0 +1,51 @@
+{
+ "task": "T-CLASS-MOUNT-1 run-001",
+ "title": "mount the /api/v1/teacher/class/* ClassAnalytics family wire routes (the T-MIG-053 tranche-2 ROUTES tranche; closes the CD-A run-001 'hub Class Intelligence dark path' finding)",
+ "operator_directive": {
+  "trace": "1a18c5c44e7136f1",
+  "word": "Proceed with the /teacher/class/* mount gap",
+  "date": "2026-10-30"
+ },
+ "session": "web-528c0352-0cf7-4715-a187-50aec294b288",
+ "basis": [
+  "T-MIG-053 tranche-2 (services/teacher/analytics.ts) shipped contracts+services+fakeSql pins with the doctrine 'NO routes/mounts' — the routes tranche was deliberately left as its own lane and never carded",
+  "CD-A run-001 (PR #489, MERGED 26dea741) disclosure of record: 'no /api/v1/teacher/class/* route family is mounted in apps/api/src/index.ts — the hub Class Intelligence page calls api.classOverview (/api/v1/teacher/class/overview) which has no mount; the real classOverview service is reachable only through this CD-A adapter today. Needs its own lane'",
+  "the hub Class Intelligence page (apps/hub/src/app/teacher/class/class-client.tsx) has emitted api.classOverview / api.classLearners / api.classTopicDrillDown against exactly this family since the teacher-console tranche (2026-09-28) — every production boot 404s the page's three data calls (the dark path)",
+  "the frozen law (syllabai-core @ 6cad6ef): ClassAnalyticsController @RequestMapping(\"/api/v1/teacher/class\") (:27-71) — the three GETs; SecurityConfig /api/v1/teacher/** hasAnyRole('TEACHER','ADMIN')"
+ ],
+ "change_set": [
+  "apps/api/src/routes/class-analytics.ts: NEW — createClassAnalyticsRouter(deps): the three GETs (/overview, /learners, /topics/:nodeId/drill-down) with the M5 defense-in-depth shell (router-level r.use + per-handler requireRole TEACHER/ADMIN, the teacher-kg.ts shape); the binding law verbatim (missing/'' rootId → 400 validation_failed 'missing required parameter: rootId'; malformed rootId → 400 bad_request 'malformed request'; the drill-down {nodeId} path param binds FIRST — path params → query params, the frozen signature order); the error map verbatim (KnowledgeNotFoundError → 404 not_found; both bodies service-owned); the views serialize VERBATIM (zero route-level reshaping, zero new reads, zero new parameters — the C6 posture: engineOf falls to the frozen LEARNER_ENGINE_PAPER_DEFAULTS + CONFIG 0.45/2); buildClassAnalyticsRouters(env, opts) = the buildTeacherKgRouters shape exactly (env → requireDatabaseUrl → createSql; ONE sql client; opts.now the ADR-031 clock anchor; engine UNSET — no teacher-specific tuning exists anywhere on this surface)",
+  "apps/api/src/index.ts: import + construction + ONE mount line app.route(\"/api/v1/teacher/class\", classAnalytics.classAnalyticsRoute) + the history comment — the minimal app-level wiring per the T-MIG-010/020/021/030/032/034/082 disclosed-commit precedent (the SINGULAR /api/v1/teacher/class prefix is a different literal from the /api/v1/teacher/classes family — no shadowing, Hono resolves per router)",
+  "apps/api/test/teacher/class-analytics-routes.test.ts: NEW — 13 pins over fakeSql (zero Neon): the M5 shells (anon 401 + student 403 with the request path, before any sql x3 paths), the binding laws (missing/''/malformed rootId on all three GETs; the drill-down path-param-first order both ways), the service-owned gates through the wire (unknown root → 404 'knowledge node <id> not found'; outside-subtree topic → 404 'curriculum topic in this subject not found: …'), and the 200 bodies validated through the CANONICAL contracts schemas (classOverviewViewSchema / classLearnerViewSchema / topicDrillDownViewSchema) with the exact-value pins (round4 mean 0.55 DEVELOPING; the windowStart '2026-09-17T12:00:00.000Z' one-anchor law; the frozen attention order [Ada, Ben, Cy-unmeasured]; the affected-learner plain-string reason sort; the servable hand-off) + the determinism pin (byte-identical bodies). Fixture shapes reused VERBATIM from analytics.test.ts (never re-declared law); the 404-first root read stub is param-aware (rowsFor) per the knowledge/routes.test.ts precedent"
+ ],
+ "laws_held": [
+  "REUSE-not-redeclare: the routes serialize the T-MIG-053 tranche-2 services verbatim — zero service-layer edits, zero new wire (the contracts schemas were pre-ratified), zero new reads, zero new parameters",
+  "the roster law rides unchanged: ALL enabled STUDENTS (findEnabledByRole), NO classId param, NO membership filter — the surface predates class scoping (the T-MIG-053 t2 header law); the router carries only the role shell, no ownership gate exists to run",
+  "the §5 subject isolation is service-owned and now wire-reachable: a topic outside the root's subtree 404s, never a silent cross-subject hop",
+  "zero DB contact: every pin runs over fakeSql; the factory issues no query at construction (lazy client); Neon outage discipline held (unlock 2026-11-01T00:00Z)",
+  "hub untouched: zero hub files in the diff — the Class Intelligence page wakes through its EXISTING api.ts calls the moment this mount serves; the hub surface-ledger widening for this family needs its own golden gate (the flip law) and stays open"
+ ],
+ "gates": {
+  "contracts_typecheck": "tsc --noEmit exit 0",
+  "api_typecheck": "tsc --noEmit exit 0",
+  "new_battery": "bun test test/teacher/class-analytics-routes.test.ts -> 13 pass / 0 fail / 66 expects",
+  "full_suite": "bun test apps/api packages -> 3153 pass / 13 skip / 0 fail / 43336 expects (the CD-A-hub floor was 3128/0; the delta = this lane's 13 + the lanes landed on main since)",
+  "hub_typecheck": "bunx tsc --noEmit exit 0 (zero hub diffs)",
+  "hub_v2_surface": "34 pass / 0 fail (untouched plane)"
+ },
+ "disclosures": [
+  "base of record: branch t-class-mount-1/run-001 off origin/main 26dea741 (the PR #489 merge — the CD-A adapter AWAKE tree), fetch-first; the local checkout had been the CD-A-hub lane branch (PR #491 open/unmerged at lane start — zero file overlap with this fence)",
+  "apps/api/src/index.ts is IN-FENCE for this lane by card (the yaml's allowed list carries the mount line explicitly) — the mount is still shipped as the minimal app-level wiring with its own comment block so R0 can ratify or lift it at review (the standing precedent)",
+  "the tracked symlink apps/api/node_modules (a parallel worktree artifact committed to the repo) was found DANGLING in this sandbox and restored byte-identical via git checkout — restored, never removed, never re-targeted (out of fence, disclosed)",
+  "the hub Class Intelligence page ALSO calls api.testBuilderPreview (mounted since T-MIG-034) — with this mount the page's full data plane (overview / learners / drill-down / preview) is served; no dark path remains on the page",
+  "the v2-surface ledger does not track the singular family (it pre-dates the ledger's flip law); widening it is a hub-lane decision needing its own golden verification — NOT silently widened here"
+ ],
+ "follow_ups": [
+  "printable server-paper rendering (TestQuestionView PDF lane) — open, own tranche (unchanged from CD-A-hub)",
+  "CD-B / CD-C from the lost state-check remain unexecuted backlog (re-draft on request)",
+  "PAT rotation standing",
+  "the hub surface-ledger widening for /api/v1/teacher/class/* (the flip law needs its own golden gate) — optional, operator-gated"
+ ],
+ "pr": null,
+ "status": "LANDED-BRANCH (gates green; PR bookkeeping next)"
+}
