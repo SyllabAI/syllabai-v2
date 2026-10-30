@@ -30,7 +30,6 @@ import {
   Target,
   X,
 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -43,6 +42,97 @@ import { isDocumentFocusRoute, isViewerRoute } from "@/lib/focus-routes";
 import { courseHasBookArchive } from "@/lib/books-registry";
 
 export type { SidebarData, SidebarVariant } from "@/components/hub/course-data-context";
+
+type NavItem = {
+  href: string;
+  label: string;
+  icon: typeof BookOpen;
+  disabled?: boolean;
+  badge?: string;
+  exact?: boolean;
+};
+
+/**
+ * run-004 — the course nav row, re-skinned to the MathsGenie × RevisionDojo
+ * look: MG's airy flat rhythm (tall quiet rows, hairline panel, whisper
+ * group labels) with RD's rounded polish (icon tile, xl radius, soft
+ * count chips). Every colour rides theme tokens — --primary/--muted
+ * raws per the alias contract (#500), no hardcoded hex — and the three
+ * non-SME themes keep hooking their spine active treatment on
+ * a.course-nav-item[aria-current="page"] (globals.css), so the class
+ * name, the aria-current attribute and the row's relative geometry are
+ * load-bearing: do not rename or unwrap them.
+ */
+function NavRow({
+  item,
+  active,
+  onNavigate,
+}: {
+  item: NavItem;
+  active: boolean;
+  onNavigate?: () => void;
+}) {
+  // numeric badges (harvested counts, e.g. Seneca "1,736") render as soft
+  // accent pills; "roadmap" renders as a dashed "coming soon" chip
+  const isCount = item.badge !== undefined && /^\d/.test(item.badge);
+  const tile = (
+    <span
+      aria-hidden
+      className={cn(
+        "grid size-8 shrink-0 place-items-center rounded-lg transition-colors",
+        active ? "bg-primary/15 text-primary" : "bg-muted/60 text-muted-foreground",
+        item.disabled && "opacity-60",
+      )}
+    >
+      <item.icon className="size-4" />
+    </span>
+  );
+  if (item.disabled) {
+    return (
+      <span
+        aria-disabled
+        title="Not part of the pilot corpus yet"
+        className="flex cursor-not-allowed items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-muted-foreground"
+      >
+        {tile}
+        <span className="truncate">{item.label}</span>
+        {item.badge && (
+          <span className="ml-auto shrink-0 rounded-full border border-dashed border-foreground/25 px-2 py-0.5 text-[10px] uppercase tracking-wide text-foreground/55">
+            {item.badge}
+          </span>
+        )}
+      </span>
+    );
+  }
+  return (
+    <Link
+      href={item.href}
+      onClick={onNavigate}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "course-nav-item group relative flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors",
+        active
+          ? "bg-primary/10 font-medium text-primary"
+          : "text-foreground/80 hover:bg-muted/70 hover:text-foreground",
+      )}
+    >
+      {tile}
+      <span className="truncate">{item.label}</span>
+      {item.badge && (
+        <span
+          className={cn(
+            "ml-auto shrink-0 rounded-full px-2 py-0.5 leading-4",
+            isCount
+              ? "bg-primary/10 text-[11px] font-medium tabular-nums text-primary"
+              : "border border-dashed border-foreground/25 text-[10px] uppercase tracking-wide text-foreground/55",
+          )}
+        >
+          {item.badge}
+        </span>
+      )}
+    </Link>
+  );
+}
 
 export function CourseShell({
   data,
@@ -153,7 +243,7 @@ export function CourseShell({
 
   const navGroups: {
     label: string;
-    items: { href: string; label: string; icon: typeof BookOpen; disabled?: boolean; badge?: string; exact?: boolean }[];
+    items: NavItem[];
   }[] = [
     {
       label: "Course",
@@ -246,13 +336,13 @@ export function CourseShell({
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-6">
-          <nav aria-label="Course sections" className="space-y-4">
+          <nav aria-label="Course sections" className="space-y-6">
             {navGroups.map((g) => (
               <div key={g.label}>
-                <p className="px-2 pb-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+                <p className="px-2 pb-2 text-[10.5px] font-semibold uppercase tracking-[0.08em] text-muted-foreground/70">
                   {g.label}
                 </p>
-                <ul className="space-y-0.5">
+                <ul className="space-y-1">
                   {g.items.map((item) => {
                     // UX audit 2026-10-02 #13: a sibling row that claims the
                     // current path via `exact` (e.g. Saved questions under
@@ -262,44 +352,9 @@ export function CourseShell({
                       ? false
                       : (item.exact ??
                         (pathname.startsWith(item.href) && !g.items.some((s) => s.exact === true)));
-                    const inner = (
-                      <>
-                        <item.icon className="size-4 shrink-0" aria-hidden />
-                        <span className="truncate">{item.label}</span>
-                        {item.badge && (
-                          <Badge variant="outline" className="ml-auto shrink-0 px-1 text-[10.5px] uppercase text-foreground/70">
-                            {item.badge}
-                          </Badge>
-                        )}
-                      </>
-                    );
                     return (
                       <li key={item.label}>
-                        {item.disabled ? (
-                          <span
-                            aria-disabled
-                            title="Not part of the pilot corpus yet"
-                            className="flex cursor-not-allowed items-center gap-2.5 rounded-md px-3 py-2 text-sm text-muted-foreground"
-                          >
-                            {inner}
-                          </span>
-                        ) : (
-                          <Link
-                            href={item.href}
-                            onClick={() => setOpen(false)}
-                            aria-current={active ? "page" : undefined}
-                            className={cn(
-                              // course-nav-item: QG theme hooks its fern-spine
-                              // active treatment on this class (globals.css)
-                              "course-nav-item flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition-colors",
-                              active
-                                ? "bg-primary/10 font-medium text-primary"
-                                : "text-foreground/80 hover:bg-muted hover:text-foreground",
-                            )}
-                          >
-                            {inner}
-                          </Link>
-                        )}
+                        <NavRow item={item} active={active} onNavigate={() => setOpen(false)} />
                       </li>
                     );
                   })}
@@ -353,7 +408,10 @@ export function CourseShell({
         ) : (
           <aside
             className={cn(
-              "sticky hidden w-64 shrink-0 border-r bg-background lg:block",
+              // run-004: w-64 → w-72 — the icon tiles (RD polish) cost 28px of
+              // label width and "Strengths & Weaknesses" truncated at w-64;
+              // 288px restores MG's comfortable full-label rhythm
+              "sticky hidden w-72 shrink-0 border-r bg-background lg:block",
               viewerRoute
                 ? "top-0 h-[calc(100dvh-1px)]"
                 : "top-14 h-[calc(100dvh-3.5rem-1px)]",
@@ -408,7 +466,7 @@ function MobileDrawerInner({
   onNavigate: () => void;
   navGroups: {
     label: string;
-    items: { href: string; label: string; icon: typeof BookOpen; disabled?: boolean; badge?: string; exact?: boolean }[];
+    items: NavItem[];
   }[];
 }) {
   const base = `/courses/${data.course.slug}`;
@@ -422,56 +480,23 @@ function MobileDrawerInner({
         </Button>
       </div>
       <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-6">
-        <nav aria-label="Course sections" className="space-y-4">
+        <nav aria-label="Course sections" className="space-y-6">
           {navGroups.map((g) => (
             <div key={g.label}>
-              <p className="px-2 pb-1 text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+              <p className="px-2 pb-2 text-[10.5px] font-semibold uppercase tracking-[0.08em] text-muted-foreground/70">
                 {g.label}
               </p>
-              <ul className="space-y-0.5">
+              <ul className="space-y-1">
                 {g.items.map((item) => {
-                  // UX audit 2026-10-02 #13: see the drawer's identical check —
+                  // UX audit 2026-10-02 #13: see the sidebar's identical check —
                   // an exact-matching sibling suppresses prefix rows.
                   const active = item.disabled
                     ? false
                     : (item.exact ??
                       (pathname.startsWith(item.href) && !g.items.some((s) => s.exact === true)));
-                  const inner = (
-                    <>
-                      <item.icon className="size-4 shrink-0" aria-hidden />
-                      <span className="truncate">{item.label}</span>
-                      {item.badge && (
-                        <Badge variant="outline" className="ml-auto shrink-0 px-1 text-[10.5px] uppercase text-foreground/70">
-                          {item.badge}
-                        </Badge>
-                      )}
-                    </>
-                  );
                   return (
                     <li key={item.label}>
-                      {item.disabled ? (
-                        <span
-                          aria-disabled
-                          title="Not part of the pilot corpus yet"
-                          className="flex cursor-not-allowed items-center gap-2.5 rounded-md px-3 py-2 text-sm text-muted-foreground"
-                        >
-                          {inner}
-                        </span>
-                      ) : (
-                        <Link
-                          href={item.href}
-                          onClick={onNavigate}
-                          aria-current={active ? "page" : undefined}
-                          className={cn(
-                            "course-nav-item flex items-center gap-2.5 rounded-md px-3 py-2 text-sm transition-colors",
-                            active
-                              ? "bg-primary/10 font-medium text-primary"
-                              : "text-foreground/80 hover:bg-muted hover:text-foreground",
-                          )}
-                        >
-                          {inner}
-                        </Link>
-                      )}
+                      <NavRow item={item} active={active} onNavigate={onNavigate} />
                     </li>
                   );
                 })}
