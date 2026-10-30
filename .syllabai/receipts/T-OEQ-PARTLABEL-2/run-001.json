@@ -1,0 +1,34 @@
+{
+ "task": "T-OEQ-PARTLABEL-2",
+ "receipt": "run-001",
+ "lane": "Official-ExamQuestion learner surface (Super Z, zai-web session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6)",
+ "operator_trace": "1a18a0eadead9239 (\"Instead of the part numbering being above the question text (question text starting in next line), how about both being in the same line?\")",
+ "recorded_at_utc": "2026-10-30",
+ "base_of_record": "v2 main 954ba7e11100db7d8abb9ccfaeea79f82267025d (T-OEQ-PARTLABEL-1 merged via PR #467 at 74bbab67)",
+ "change_of_record": {
+  "file": "apps/hub/src/app/courses/[course]/exam-questions/[topicSlug]/question-player.tsx",
+  "diff": "+66/-38, single file",
+  "law": [
+   "StructuredPart + McqPart: the printed part label moved from the header chip row INTO the text line — flex items-baseline row, label span shrink-0 (text-base font-semibold leading-relaxed tabular-nums), part-md block min-w-0 flex-1 so wrapped lines hang under the text column and the first line starts right after the label.",
+   "Label metrics match the part text exactly: the hub has no typography plugin; part bodies render at the inherited 16px with the <Markdown> wrapper's leading-relaxed — the label span uses exactly those classes.",
+   "Right-edge residents preserved: per-part marks + CLA lightbulb (StructuredPart header-row condition narrows to showPartBadge||onAskClaPart; McqPart header row collapses to the lightbulb alone, justify-end). MCQ options stay a separate list below the stem line.",
+   "lib/part-label.ts untouched — the fail-closed derivation law (never an index guess) is intact, 13/13 tests green."
+  ]
+ },
+ "censuses_of_record": [
+  "8,439 part bodies across the three EQ courses (both planes, /tmp copies of the served JSONs re-derived): zero figure-first parts — the flex-baseline edge case (label aligned to an image's bottom edge) never fires on attested corpus.",
+  "31/8,439 (0.37%) bodies start with a structural md char ($$ display math / heading / blockquote) — baseline alignment still lands the label on the same line as the first text; accepted.",
+  "Physics official plane re-confirmed in passing: 2,254 parts, 2,239 label-bearing — matches the LANE-STATUS census of record."
+ ],
+ "local_verification": [
+  "bun install --frozen-lockfile — 952 packages, clean",
+  "bun run typecheck (contracts/shared/db/api) — clean",
+  "bun run build:hub (corpus prebuild + next build) — clean",
+  "bun test apps/hub/src/lib/part-label.test.ts — 13 pass / 0 fail"
+ ],
+ "ci_of_record": "this PR's verify + hub jobs green before merge; merge confirmed by API GET merged:true",
+ "not_done_here": [
+  "No exporter/data change — the official plane keeps sourcePaper.questionPart:null; Option A (data-plane label fields + G-E4 byte-exact re-export) remains open pending operator review of this interim.",
+  "No resources-repo contact; no DB contact; single learner-surface file."
+ ]
+}

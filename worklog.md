@@ -339,3 +339,17 @@ Work Log:
 
 Stage Summary:
 - R-3 QUEUED of record with a stage-A pilot spec (Alcohols tranche) and an operator-gated stage-B rollout. AWAITING OPERATOR EXECUTE. R-1/R-2/R-5 remain landed; the R-queue's only open item is now this wave.
+---
+Task ID: T-OEQ-PARTLABEL-2 run-001 (operator trace 1a18a0eadead9239: "Instead of the part numbering being above the question text (question text starting in next line), how about both being in the same line?")
+Agent: main agent (Super Z, session web-246b8ec8-7da7-4d5f-8450-7f4f6bd61bc6)
+Task: Operator refinement of T-OEQ-PARTLABEL-1 (PR #467, merged 74bbab67): the printed part label was a chip on its own line ABOVE the part text; this wave re-places it INLINE — "(b) Explain why hot water evaporates more quickly than cold water." with the text starting on the same line, as on the printed paper. Learner-surface-only; no data, no DB, no exporter contact.
+
+Work Log:
+- Re-grounded on live main 954ba7e1: PARTLABEL-1 confirmed merged (#467 — label chip above the text; lib/part-label.ts fail-closed derivation + tests), so the refinement is renderer-placement-only; the derivation law is untouched.
+- Placement law (StructuredPart AND McqPart): the PartProblem block rides a flex items-baseline row — label span shrink-0, metric-matched to the part text (text-base + leading-relaxed == the <Markdown> wrapper's leading-relaxed at the inherited 16px body; the hub has no typography plugin, so these ARE the part-text metrics), then the md block flex-1 min-w-0 — first line starts right after the label, wrapped lines hang under the text column. null-label parts degenerate to a single flex-1 child, layout-identical to the bare pre-467 block.
+- Edge-case census of record (all three EQ courses, both planes, 8,439 part bodies): zero figure-first parts; 31/8,439 (0.37%) start with a structural md char ($$ display math / heading / blockquote) where baseline alignment still lands the label on the same line — accepted.
+- Right-edge residents preserved: per-part marks + CLA lightbulb keep the header row (StructuredPart condition narrows to showPartBadge||onAskClaPart; McqPart header row collapses to the lightbulb alone). MCQ options list stays a separate block below the stem line.
+- Local green of record: bun install --frozen-lockfile (952 pkgs); bun run typecheck (contracts/shared/db/api) clean; bun run build:hub (corpus prebuild + next build) clean; bun test apps/hub/src/lib/part-label.test.ts 13/13. CI of record: this PR's verify + hub jobs.
+
+Stage Summary:
+- T-OEQ-PARTLABEL-2 of record pending CI: part labels print on the same line as the part text — the printed-paper reading the operator asked for. One file changed (question-player.tsx, +66/-38); lib/part-label.ts derivation untouched (fail-closed law intact, 13/13). Receipt: .syllabai/receipts/T-OEQ-PARTLABEL-2/run-001.json (this commit).

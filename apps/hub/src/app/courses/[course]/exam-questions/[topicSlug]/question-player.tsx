@@ -745,17 +745,13 @@ function StructuredPart({
     <div className="space-y-2">
       {/* SME (figure 16): per-part marks right-aligned, no spec codes on
           the learner face. Single-part questions dedupe — the header badge
-          already carries the total (figure 24). The printed part label
-          ("(a)(i)" — the operator-reported gap) rides the row's left edge
-          when the corpus attests it; the lightbulb keeps the right edge
-          (the web s129 parity entry — scaffolded help, never the answer). */}
-      {(labelChip || showPartBadge || onAskClaPart) && (
+          already carries the total (figure 24). The lightbulb keeps the
+          right edge (the web s129 parity entry — scaffolded help, never
+          the answer). The printed part label lives INLINE with the text
+          (T-OEQ-PARTLABEL-2) — not as a header chip (the PARTLABEL-1
+          above-the-text placement is the operator-refined-away layout). */}
+      {(showPartBadge || onAskClaPart) && (
         <div className="flex items-center gap-1.5">
-          {labelChip && (
-            <span className="rounded-md bg-muted px-1.5 py-0.5 text-xs font-semibold tabular-nums">
-              {labelChip}
-            </span>
-          )}
           <div className="ml-auto flex items-center gap-1.5">
             {showPartBadge && (
               <span className="text-xs text-muted-foreground">
@@ -778,7 +774,30 @@ function StructuredPart({
           </div>
         </div>
       )}
-      <PartProblem md={part.problemMd} />
+      {/* T-OEQ-PARTLABEL-2 (operator refinement, trace 1a18a0ea): the
+          printed part label sits on the SAME line as the part text —
+          "(b) Explain why hot water evaporates…" — as on the printed
+          paper, instead of PARTLABEL-1's chip-on-its-own-line above it.
+          Flex baseline row: the label is metric-matched to the prose body
+          (text-base + leading-relaxed == the <Markdown> wrapper's
+          leading-relaxed at the inherited 16px body size — no typography
+          plugin, so those ARE the part-text metrics), and items-baseline
+          lines the label up with the first text baseline exactly. The md
+          block is flex-1, so wrapped lines hang under the text column.
+          Census of record (all three EQ courses, both planes, 8,439
+          parts): zero figure-first parts, so the baseline edge case never
+          fires on attested corpus. null label = single flex-1 child —
+          layout-identical to the bare pre-467 block. */}
+      <div className="flex items-baseline gap-x-1.5">
+        {labelChip && (
+          <span className="shrink-0 text-base font-semibold leading-relaxed tabular-nums">
+            {labelChip}
+          </span>
+        )}
+        <div className="min-w-0 flex-1">
+          <PartProblem md={part.problemMd} />
+        </div>
+      </div>
       {part.solutionMd && (
         <TypedAnswerWorkspace
           course={course}
@@ -1328,35 +1347,44 @@ function McqPart({
 
   return (
     <div className="space-y-3">
-      {(labelChip || onAskClaPart) && (
-        <div className="flex items-center gap-1.5">
-          {labelChip && (
-            <span className="rounded-md bg-muted px-1.5 py-0.5 text-xs font-semibold tabular-nums">
-              {labelChip}
-            </span>
-          )}
-          {onAskClaPart && (
-            <Button
-              variant="ghost"
-              size="icon"
-              className="ml-auto size-6 text-muted-foreground hover:text-primary"
-              onClick={onAskClaPart}
-              aria-haspopup="dialog"
-              aria-label={`Ask CLA for help with ${partLabel ? `part ${partLabel}` : "this question"} — scaffolded, never the answer`}
-              title="Ask CLA — scaffolded help with this question, never the answer"
-            >
-              <Lightbulb className="size-3.5" aria-hidden />
-            </Button>
-          )}
+      {/* T-OEQ-PARTLABEL-2: the label moved INLINE with the stem below
+          (same law as StructuredPart); this header row now only hosts the
+          CLA lightbulb on the right edge. */}
+      {onAskClaPart && (
+        <div className="flex justify-end">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="size-6 text-muted-foreground hover:text-primary"
+            onClick={onAskClaPart}
+            aria-haspopup="dialog"
+            aria-label={`Ask CLA for help with ${partLabel ? `part ${partLabel}` : "this question"} — scaffolded, never the answer`}
+            title="Ask CLA — scaffolded help with this question, never the answer"
+          >
+            <Lightbulb className="size-3.5" aria-hidden />
+          </Button>
         </div>
       )}
-      <PartProblem
-        md={
-          keyedText || letterOnly || multi
-            ? part.problemMd
-            : stripOptionLines(part.problemMd)
-        }
-      />
+      {/* T-OEQ-PARTLABEL-2 (operator refinement, trace 1a18a0ea): the
+          printed part label sits on the SAME line as the stem — "(b) The
+          circuit shows…" — with the options list staying a separate block
+          below. Same metric-matched baseline row as StructuredPart. */}
+      <div className="flex items-baseline gap-x-1.5">
+        {labelChip && (
+          <span className="shrink-0 text-base font-semibold leading-relaxed tabular-nums">
+            {labelChip}
+          </span>
+        )}
+        <div className="min-w-0 flex-1">
+          <PartProblem
+            md={
+              keyedText || letterOnly || multi
+                ? part.problemMd
+                : stripOptionLines(part.problemMd)
+            }
+          />
+        </div>
+      </div>
       {answerable ? (
         <>
           <p className="text-[13px] font-medium">
